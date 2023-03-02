@@ -2,7 +2,7 @@ import Levenshtein
 import os
 import re
 
-with open('../../pre_research/problem_281/a/sample.py', 'r') as f:
+with open('../pre_research/problem_281/a/sample.py', 'r') as f:
     a = f.readlines()
     b = [s for s in a if not s.startswith('#')]
     c = list(map(lambda x: re.split('\n|\s', x), b))
@@ -13,7 +13,7 @@ with open('../../pre_research/problem_281/a/sample.py', 'r') as f:
     
     text1 = ''.join(d)
 
-with open('../../pre_research/problem_281/a/sample2.py', 'r') as f:
+with open('../pre_research/problem_281/a/sample2.py', 'r') as f:
     a = f.readlines()
     b = [s for s in a if not s.startswith('#')]
     c = list(map(lambda x: re.split('\n|\s', x), b))
