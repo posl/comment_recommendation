@@ -107,11 +107,13 @@ class Scraping():
         
 def change_add(number):
     number = number - 1
+    return number
 
 if __name__ == '__main__':
     if os.path.exists('../../data/errors.txt'):
         os.remove('../../data/errors.txt')
     url = 'https://atcoder.jp/contests/abc'
+    add_id = 16
     '''
     scraping = Scraping(url, 42, 'c', 'ja')
     problem = scraping.get_problem()
@@ -133,13 +135,13 @@ if __name__ == '__main__':
         for difficulty in ['a', 'b']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
-            scraping.change_url(16)
+            scraping.change_url(add_id)
             problem = scraping.get_problem()
             scraping.change_difficulty()
             scraping.write_problem(problem)
             scraping = Scraping(url, number_of_problem, difficulty, 'en')
             problem = scraping.get_problem()
-            scraping.change_url(16)
+            scraping.change_url(add_id)
             problem = scraping.get_problem()
             scraping.change_difficulty()
             scraping.write_problem(problem)
@@ -154,5 +156,451 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-
     
+    # 16 -> 15
+    add_id = change_add(add_id)
+    for number_of_problem in range(52, 54):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(54, 55):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 15 -> 14
+    add_id = change_add(add_id)
+    for number_of_problem in range(55, 57):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(57, 58):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 14 -> 13
+    add_id = change_add(add_id)
+    for number_of_problem in range(58, 61):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(61, 62):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 13 -> 12
+    add_id = change_add(add_id)
+    for number_of_problem in range(62, 64):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(64, 65):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 12 -> 11
+    add_id = change_add(add_id)
+    for number_of_problem in range(65, 70):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(70, 71):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 11 -> 10
+    add_id = change_add(add_id)
+    for number_of_problem in range(71, 73):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(73, 74):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 10 -> 9
+    add_id = change_add(add_id)
+    for number_of_problem in range(74, 75):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(75, 77):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 9 -> 7
+    add_id = change_add(add_id)
+    add_id = change_add(add_id)
+    for number_of_problem in range(77, 79):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(79, 81):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 7 -> 5
+    add_id = change_add(add_id)
+    add_id = change_add(add_id)
+    for number_of_problem in range(81, 84):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(84, 86):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 5 -> 3
+    add_id = change_add(add_id)
+    add_id = change_add(add_id)
+    for number_of_problem in range(86, 88):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(88, 90):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 3 -> 1
+    add_id = change_add(add_id)
+    add_id = change_add(add_id)
+    for number_of_problem in range(90, 96):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(96, 97):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+
+    # 1 -> 0
+    add_id = change_add(add_id)
+    for number_of_problem in range(97, 99):
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+
+        # 実際はc,d
+        for difficulty in ['a', 'b']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.change_url(add_id)
+            problem = scraping.get_problem()
+            scraping.change_difficulty()
+            scraping.write_problem(problem)
+        print(number_of_problem)
+    
+    for number_of_problem in range(99, 100):
+        for difficulty in ['a', 'b', 'c', 'd']:
+            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+            scraping = Scraping(url, number_of_problem, difficulty, 'en')
+            problem = scraping.get_problem()
+            scraping.write_problem(problem)
+        print(number_of_problem)
