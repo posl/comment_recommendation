@@ -1,0 +1,41 @@
+
+Problem Statement
+Given an integer N, solve the following problem.
+Let f(x)= (The number of positive integers at most x with the same number of digits as x).
+Find f(1)+f(2)+dots+f(N) modulo 998244353.
+
+Constraints
+N is an integer.
+1 le N < 10^{18}
+
+Input
+Input is given from Standard Input in the following format:
+N
+
+Output
+Print the answer as an integer.
+
+Sample Input 1
+16
+
+Sample Output 1
+73
+For a positive integer x between 1 and 9, the positive integers at most x with the same number of digits as x are 1,2,dots,x.
+Thus, we have f(1)=1,f(2)=2,...,f(9)=9.
+For a positive integer x between 10 and 16, the positive integers at most x with the same number of digits as x are 10,11,dots,x.
+Thus, we have f(10)=1,f(11)=2,...,f(16)=7.
+
+The final answer is 73.
+
+Sample Input 2
+238
+
+Sample Output 2
+13870
+
+Sample Input 3
+999999999999999999
+
+Sample Output 3
+762062362
+Be sure to find the sum modulo 998244353.

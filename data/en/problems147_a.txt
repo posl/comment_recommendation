@@ -1,0 +1,29 @@
+
+Problem Statement
+Given are three integers A_1, A_2, and A_3.
+If A_1+A_2+A_3 is greater than or equal to 22, print bust; otherwise, print win.
+
+Constraints
+1 ≦ A_i ≦ 13   (i=1,2,3)
+All values in input are integers.
+
+Input
+Input is given from Standard Input in the following format:
+A_1 A_2 A_3
+
+Output
+If A_1+A_2+A_3 is greater than or equal to 22, print bust; otherwise, print win.
+
+Sample Input 1
+5 7 9
+
+Sample Output 1
+win
+5+7+9=21, so print win.
+
+Sample Input 2
+13 7 2
+
+Sample Output 2
+bust
+13+7+2=22, so print bust.

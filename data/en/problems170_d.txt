@@ -1,0 +1,41 @@
+
+Problem Statement
+Given is a number sequence A of length N.
+Find the number of integers i left(1 ≦ i ≦ Nright) with the following property:
+For every integer j left(1 ≦ j ≦ Nright) such that i neq j , A_j does not divide A_i.
+
+Constraints
+All values in input are integers.
+1 ≦ N ≦ 2 times 10^5
+1 ≦ A_i ≦ 10^6
+
+Input
+Input is given from Standard Input in the following format:
+N
+A_1 A_2 cdots A_N
+
+Output
+Print the answer.
+
+Sample Input 1
+5
+24 11 8 3 16
+
+Sample Output 1
+3
+The integers with the property are 2, 3, and 4.
+
+Sample Input 2
+4
+5 5 5 5
+
+Sample Output 2
+0
+Note that there can be multiple equal numbers.
+
+Sample Input 3
+10
+33 18 45 28 8 19 89 86 2 4
+
+Sample Output 3
+5

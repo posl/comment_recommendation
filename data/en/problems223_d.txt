@@ -1,0 +1,42 @@
+
+Problem Statement
+Among the sequences P that are permutations of (1, 2, dots, N) and satisfy the condition below, find the lexicographically smallest sequence.
+For each i = 1, dots, M, A_i appears earlier than B_i in P.
+If there is no such P, print -1.
+
+Constraints
+2 ≦ N ≦ 2 times 10^5
+1 ≦ M ≦ 2 times 10^5
+1 ≦ A_i, B_i ≦ N
+A_i neq B_i
+All values in input are integers.
+
+Input
+Input is given from Standard Input in the following format:
+N M
+A_1 B_1
+vdots
+A_M B_M
+
+Output
+Print the answer.
+
+Sample Input 1
+4 3
+2 1
+3 4
+2 4
+
+Sample Output 1
+2 1 3 4
+The following five permutations P satisfy the condition: (2, 1, 3, 4), (2, 3, 1, 4), (2, 3, 4, 1), (3, 2, 1, 4), (3, 2, 4, 1). The lexicographically smallest among them is (2, 1, 3, 4).
+
+Sample Input 2
+2 3
+1 2
+1 2
+2 1
+
+Sample Output 2
+-1
+No permutations P satisfy the condition.

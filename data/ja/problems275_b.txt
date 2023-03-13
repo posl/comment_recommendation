@@ -1,0 +1,43 @@
+
+問題文
+非負整数 A,B,C,D,E,F があり、Atimes Btimes Cgeq Dtimes Etimes F をみたしています。
+(Atimes Btimes C)-(Dtimes Etimes F) の値を 998244353 で割った余りを求めてください。
+
+制約
+0≦ A,B,C,D,E,F≦ 10^{18}
+Atimes Btimes Cgeq Dtimes Etimes F
+A,B,C,D,E,F は整数
+
+入力
+入力は以下の形式で標準入力から与えられる。
+A B C D E F
+
+出力
+(Atimes Btimes C)-(Dtimes Etimes F) を 998244353 で割った余りを整数で出力
+せよ。  
+
+入力例 1
+2 3 5 1 2 4
+
+出力例 1
+22
+Atimes Btimes C=2times 3times 5=30, Dtimes Etimes F=1times 2times 4=8 より、
+(Atimes Btimes C)-(Dtimes Etimes F)=22 であり、これを 998244353 で割った余りである 22 を出力
+します。
+
+入力例 2
+1 1 1000000000 0 0 0
+
+出力例 2
+1755647
+Atimes Btimes C=1000000000, Dtimes Etimes F=0 より、
+(Atimes Btimes C)-(Dtimes Etimes F)=1000000000 であり、これを 998244353 で割った余りである 1755647 を出力
+します。
+
+入力例 3
+1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000
+
+出力例 3
+0
+(Atimes Btimes C)-(Dtimes Etimes F)=0 であり、これを 998244353 で割った余りである 0 を出力
+します。

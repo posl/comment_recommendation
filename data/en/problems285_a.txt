@@ -1,0 +1,35 @@
+
+Problem Statement
+Determine if there is a segment that directly connects the points numbered a and b in the figure below.
+
+Constraints
+1 ≦ a < b ≦ 15
+a and b are integers.
+
+InputThe input is given from Standard Input in the following format:
+a b
+
+Output
+Print Yes if there is a segment that directly connects the points numbered a and b; print No otherwise.
+
+Sample Input 1
+1 2
+
+Sample Output 1
+Yes
+In the figure in the Problem Statement
+, there is a segment that directly connects the points numbered 1 and 2, so Yes should be printed.
+
+Sample Input 2
+2 8
+
+Sample Output 2
+No
+In the figure in the Problem Statement
+, there is no segment that directly connects the points numbered 2 and 8, so No should be printed.
+
+Sample Input 3
+14 15
+
+Sample Output 3
+No
