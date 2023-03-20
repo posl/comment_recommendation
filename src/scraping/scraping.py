@@ -53,10 +53,15 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\leq', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\geq', '≧'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\lt', '<'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\gt', '>'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\,', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\\', ''), problem_list))
         #print(problem_list)
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'text{(\w+)}', r'\1', i) for i in problem_list)
 
         if self.language == 'ja':
             for i in ['問題文', '制約', '注釈', '出力']:
@@ -65,7 +70,7 @@ class Scraping():
             for i in ['入力入']:
                 problem_list = list(map(lambda x: x.replace(i, i[0:2] + '\n' + i[2]), problem_list))
 
-            for i in range(1, 5):
+            for i in range(1, 6):
                 problem_list = list(map(lambda x: x.replace('入力例 ' + str(i), '入力例 ' + str(i) + '\n'), problem_list))
                 problem_list = list(map(lambda x: x.replace('出力\n例 ' + str(i), '出力例 ' + str(i) + '\n'), problem_list))
 
@@ -76,7 +81,7 @@ class Scraping():
             for i in ['InputThe']:
                 problem_list = list(map(lambda x: x.replace(i, i[0:5] + '\n' + i[5:]), problem_list))
 
-            for i in range(1, 5):
+            for i in range(1, 6):
                 problem_list = list(map(lambda x: x.replace('Sample Input ' + str(i), 'Sample Input ' + str(i) + '\n'), problem_list))
                 problem_list = list(map(lambda x: x.replace('Sample Output\n ' + str(i), 'Sample Output ' + str(i) + '\n'), problem_list))
 
@@ -90,7 +95,7 @@ class Scraping():
             problem_list = list(map(lambda x: x.replace(i, '出力して'), problem_list))
 
         '''
-        制約\n」, 
+        制約\n」, 出力\nは, 出力\nします, 問題文\nの
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)
@@ -145,8 +150,8 @@ if __name__ == '__main__':
 
     
 
-    #for number_of_problem in range(42, 51):
-    for number_of_problem in range(44, 45):
+    for number_of_problem in range(42, 51):
+    #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
@@ -170,7 +175,7 @@ if __name__ == '__main__':
             scraping.change_difficulty()
             scraping.write_problem(problem)
         print(number_of_problem)
-    '''
+    
     for number_of_problem in range(51, 52):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
@@ -736,4 +741,4 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-    '''
+    #'''

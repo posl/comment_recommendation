@@ -11,7 +11,7 @@
 0 ≦ N ≦ min(10^5,H×W)
 1 ≦ a_i ≦ H (1 ≦ i ≦ N)
 1 ≦ b_i ≦ W (1 ≦ i ≦ N)
-(a_i, b_i) neq (a_j, b_j) (i neq j)
+(a_i, b_i) ≠ (a_j, b_j) (i ≠ j)
 
 入力
 入力は以下の形式で標準入力から与えられる。
