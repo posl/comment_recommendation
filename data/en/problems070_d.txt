@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a tree with N vertices.
 Here, a tree is a kind of graph, and more specifically, a connected undirected graph with N-1 edges, where N is the number of its vertices.
@@ -17,8 +16,7 @@ The given graph is a tree.
 x_j≠y_j (1≤j≤Q) 
 x_j≠K,y_j≠K (1≤j≤Q) 
 
-Input
-Input is given from Standard Input in the following format:  
+InputInput is given from Standard Input in the following format:  
 N  
 a_1 b_1 c_1  
 :  

@@ -1,4 +1,3 @@
-
 Problem Statement
 On the Planet AtCoder, there are four types of bases: A, C, G and T. A bonds with T, and C bonds with G.
 You are given a letter b as input, which is A, C, G or T. Write a program that prints the letter representing the base that bonds with the base b.
@@ -6,8 +5,7 @@ You are given a letter b as input, which is A, C, G or T. Write a program that p
 Constraints
 b is one of the letters A, C, G and T.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 b
 
 Output

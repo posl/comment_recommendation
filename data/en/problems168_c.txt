@@ -1,4 +1,3 @@
-
 Problem Statement
 Consider an analog clock whose hour and minute hands are A and B centimeters long, respectively.
 An endpoint of the hour hand and an endpoint of the minute hand are fixed at the same point, around which each hand rotates clockwise at constant angular velocity. It takes the hour and minute hands 12 hours and 1 hour to make one full rotation, respectively.

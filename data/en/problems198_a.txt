@@ -1,4 +1,3 @@
-
 Problem Statement
 Two boys, A and B, will share N indistinguishable sweets.
 How many ways are there to do this so that each boy gets a positive integer number of sweets?
@@ -7,8 +6,7 @@ Constraints
 N is an integer.
  1 ≦ N ≦ 15
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 Iroha has a sequence of N strings S_1, S_2, ..., S_N. The length of each string is L.
 She will concatenate all of the strings in some order, to produce a long string.
@@ -12,7 +11,8 @@ Constraints
 For each i, the length of S_i equals L.
 For each i, S_i consists of lowercase letters.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N L
 S_1
 S_2

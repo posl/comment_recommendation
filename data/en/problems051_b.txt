@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given two integers K and S.
 Three variable X, Y and Z takes integer values satisfying 0≤X,Y,Z≤K.
@@ -9,7 +8,8 @@ Constraints
 0≤S≤3K 
 K and S are integers.  
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 K S
 
 Output

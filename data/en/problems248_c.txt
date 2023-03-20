@@ -1,4 +1,3 @@
-
 Problem Statement
 How many integer sequences of length N, A=(A_1, ldots, A_N), satisfy all of the conditions below?
 1le A_i le M (1 le i le N)
@@ -10,8 +9,7 @@ Constraints
 N ≦ K ≦ NM
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M K
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer sequence of length N, a_1,a_2,...,a_N.
 For each 1≤i≤N, you have three choices: add 1 to a_i, subtract 1 from a_i or do nothing.
@@ -10,7 +9,8 @@ Constraints
 0≤a_i<10^5 (1≤i≤N)
 a_i is an integer.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 a_1 a_2 .. a_N
 

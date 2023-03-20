@@ -1,4 +1,3 @@
-
 Problem Statement
 A country decides to build a palace.
 In this country, the average temperature of a point at an elevation of x meters is T-x times 0.006 degrees Celsius.
@@ -15,8 +14,7 @@ Constraints
 All values in input are integers.
 The solution is unique.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 T A
 H_1 H_2 ... H_N

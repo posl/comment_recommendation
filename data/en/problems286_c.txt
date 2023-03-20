@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S of length N.  Let S_i (1≦ i ≦ N) be the i-th character of S from the left.
 You may perform the following two kinds of operations zero or more times in any order:
@@ -14,7 +13,8 @@ Constraints
 S is a string of length N consisting of lowercase English letters.
 All values in the input except for S are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N A B
 S
 

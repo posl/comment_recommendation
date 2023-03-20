@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a string S. Each character in S is either a digit (0, ..., 9) or ?.
 Among the integers obtained by replacing each occurrence of ? with a digit, how many have a remainder of 5 when divided by 13? An integer may begin with 0.

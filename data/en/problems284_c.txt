@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a simple undirected graph with N vertices numbered 1 to N and M edges numbered 1 to M. Edge i connects vertex u_i and vertex v_i.
 Find the number of connected components in this graph.
@@ -17,7 +16,8 @@ Constraints
 The given graph is simple.
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M
 u_1 v_1
 u_2 v_2

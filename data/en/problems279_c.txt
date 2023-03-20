@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given patterns S and T consisting of # and ., each with H rows and W columns.
 The pattern S is given as H strings, and the j-th character of S_i represents the element at the i-th row and j-th column. The same goes for T.
@@ -15,7 +14,8 @@ H and W are integers.
 1 le H times W le 4 times 10^5
 S_i and T_i are strings of length W consisting of # and ..
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H W
 S_1
 S_2

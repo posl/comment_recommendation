@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a grid with H rows and W columns. Let (i, j) be the square at the i-th row from the top and j-th column from the left.
 Each square is painted black or white. If S_{i, j} is #, (i, j) is painted black; if S_{i, j} is ., (i, j) is painted white.
@@ -17,8 +16,7 @@ S_{1, j} and S_{H, j} are ..
 S_{i, 1} and S_{i, W} are ..
 The part painted black forms a polygon without self-intersection.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 S_{1, 1} S_{1, 2} S_{1, 3} dots S_{1, W}
 S_{2, 1} S_{2, 2} S_{2, 3} dots S_{2, W}

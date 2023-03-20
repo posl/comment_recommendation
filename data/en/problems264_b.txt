@@ -1,4 +1,3 @@
-
 Problem Statement
 Print the color of the cell at the R-th row from the top and C-th column from the left
 in the following grid with 15 vertical rows and 15 horizontal columns.
@@ -7,8 +6,7 @@ Constraints
 1 ≦ R, C ≦ 15
 R and C are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 R C
 
 Output

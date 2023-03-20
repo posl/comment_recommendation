@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid with infinitely many rows and columns. In this grid, there is a rectangular region with consecutive N rows and M columns, and a card is placed in each square in this region.
 The front and back sides of these cards can be distinguished, and initially every card faces up.
@@ -11,8 +10,7 @@ Constraints
 1 ≦ N,M ≦ 10^9
 All input values are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 
 Output

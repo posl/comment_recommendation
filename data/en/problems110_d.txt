@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given positive integers N and M.
 How many sequences a of length N consisting of positive integers satisfy a_1 times a_2 times ... times a_N = M? Find the count modulo 10^9+7.
@@ -9,8 +8,7 @@ All values in input are integers.
 1 ≦ N ≦ 10^5
 1 ≦ M ≦ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 
 Output

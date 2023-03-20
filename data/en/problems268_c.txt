@@ -1,4 +1,3 @@
-
 Problem Statement
 Person 0, Person 1, ldots, and Person (N-1) are sitting around a turntable in their counterclockwise order, evenly spaced.  Dish p_i is in front of Person i on the table.
 You may perform the following operation 0 or more times:
@@ -13,8 +12,7 @@ Constraints
 p_i neq p_j if i neq j.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 p_0 ldots p_{N-1}
 

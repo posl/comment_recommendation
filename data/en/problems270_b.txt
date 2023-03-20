@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is at the origin of a number line. He wants to reach a goal at coordinate X.
 There is a wall at coordinate Y, which Takahashi cannot go beyond at first.
@@ -10,7 +9,8 @@ Constraints
 X, Y, and Z are distinct, and none of them is 0.
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 X Y Z
 
 Output

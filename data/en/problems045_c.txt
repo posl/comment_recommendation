@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S consisting of digits between 1 and 9, inclusive.
 You can insert the letter + into some of the positions (possibly none) between two letters in this string.
@@ -10,7 +9,8 @@ Constraints
 1 ≦ |S| ≦ 10
 All letters in S are digits between 1 and 9, inclusive.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 
 Output

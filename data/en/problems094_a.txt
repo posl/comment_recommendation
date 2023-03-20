@@ -1,4 +1,3 @@
-
 Problem Statement
 There are a total of A + B cats and dogs.
 Among them, A are known to be cats, but the remaining B are not known to be either cats or dogs.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ X ≦ 200
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B X
 
 Output

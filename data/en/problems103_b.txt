@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given string S and T consisting of lowercase English letters.
 Determine if S equals T after rotation.
@@ -11,8 +10,7 @@ Constraints
 |S| = |T|
 S and T consist of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 T
 

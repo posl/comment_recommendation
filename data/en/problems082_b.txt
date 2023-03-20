@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given strings s and t, consisting of lowercase English letters.
 You will create a string s' by freely rearranging the characters in s.
@@ -15,8 +14,7 @@ Constraints
 The lengths of s and t are between 1 and 100 (inclusive).
 s and t consists of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 s
 t
 

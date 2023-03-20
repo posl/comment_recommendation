@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N dishes arranged in a row in front of Takahashi. The i-th dish from the left has A_i oranges on it.
 Takahashi will choose a triple of integers (l, r, x) satisfying all of the following conditions:
@@ -13,8 +12,7 @@ All values in input are integers.
 1 ≦ N ≦ 10^4
 1 ≦ A_i ≦ 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 ldots A_N
 

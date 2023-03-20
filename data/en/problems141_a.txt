@@ -1,4 +1,3 @@
-
 Problem Statement
 The weather in Takahashi's town changes day by day, in the following cycle: Sunny, Cloudy, Rainy, Sunny, Cloudy, Rainy, ...
 Given is a string S representing the weather in the town today. Predict the weather tomorrow.

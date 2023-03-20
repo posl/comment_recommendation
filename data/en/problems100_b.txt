@@ -1,4 +1,3 @@
-
 Problem Statement
 Today, the memorable AtCoder Beginner Contest 100 takes place. On this occasion, Takahashi would like to give an integer to Ringo.
 As the name of the contest is AtCoder Beginner Contest 100, Ringo would be happy if he is given a positive integer that can be divided by 100 exactly D times.

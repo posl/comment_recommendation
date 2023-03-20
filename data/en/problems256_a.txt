@@ -1,4 +1,3 @@
-
 Problem Statement
 Given N, print 2^N.
 
@@ -6,8 +5,7 @@ Constraints
 0 ≦ N ≦ 30
 N is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 Given integers R, C, and a 2 times 2 matrix A, print A_{R,C}.
 
@@ -7,8 +6,7 @@ All values in input are integers.
 1 le R,C le 2
 0 le A_{i,j} le 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 R C
 A_{1,1} A_{1,2}
 A_{2,1} A_{2,2}

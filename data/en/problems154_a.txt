@@ -1,4 +1,3 @@
-
 Problem Statement
 We have A balls with the string S written on each of them and B balls with the string T written on each of them.
 From these balls, Takahashi chooses one with the string U written on it and throws it away.

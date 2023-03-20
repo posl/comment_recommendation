@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a farm whose length and width are A yard and B yard, respectively. A farmer, John, made a vertical road and a horizontal road inside the farm from one border to another, as shown below: (The gray part represents the roads.)
 What is the area of this yard excluding the roads? Find it.

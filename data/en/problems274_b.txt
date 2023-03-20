@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid with H rows from top to bottom and W columns from left to right. Let (i, j) denote the square at the i-th row from the top and j-th column from the left.
 The squares are described by characters C_{i,j}. If C_{i,j} is ., (i, j) is empty; if it is #, (i, j) contains a box.
@@ -12,7 +11,8 @@ Constraints
 H and W are integers.
 C_{i, j} is . or #.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H W
 C_{1,1}C_{1,2}dots C_{1,W}
 C_{2,1}C_{2,2}dots C_{2,W}

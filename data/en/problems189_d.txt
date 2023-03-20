@@ -1,4 +1,3 @@
-
 Problem Statement
 Given are N strings S_1,ldots,S_N, each of which is AND or OR.
 Find the number of tuples of N+1 variables (x_0,ldots,x_N), where each element is text{True} or text{False}, such that the following computation results in y_N being text{True}:
@@ -10,8 +9,7 @@ Constraints
 1 ≦ N ≦ 60
 S_i is AND or OR.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 S_1
 vdots

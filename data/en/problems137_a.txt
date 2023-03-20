@@ -1,4 +1,3 @@
-
 Problem Statement
 We have two integers: A and B.
 Print the largest number among A + B, A - B, and A times B.
@@ -7,8 +6,7 @@ Constraints
 All values in input are integers.
 -100 ≦ A, B ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

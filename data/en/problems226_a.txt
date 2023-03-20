@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a real number X, which is representable using at most three decimal digits, with three decimal digits.
 Round X to the nearest integer and print the result.
@@ -8,8 +7,7 @@ Constraints
 X is representable using at most three decimal digits.
 X has three decimal digits in input.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X
 
 Output

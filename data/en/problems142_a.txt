@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is an integer N.
 Takahashi chooses an integer a from the positive integers not greater than N with equal probability.
@@ -7,8 +6,7 @@ Find the probability that a is odd.
 Constraints
 1 ≦ N ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

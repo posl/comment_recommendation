@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid of square cells with H horizontal rows and W vertical columns. The cell at the i-th row and the j-th column will be denoted as Cell (i, j).
 In Cell (i, j), a_{ij} coins are placed.
@@ -11,8 +10,7 @@ All values in input are integers.
 1 ≦ H, W ≦ 500
 0 ≦ a_{ij} ≦ 9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 a_{11} a_{12} ... a_{1W}
 a_{21} a_{22} ... a_{2W}

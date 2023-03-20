@@ -1,4 +1,3 @@
-
 Problem Statement
 We have many oranges. It is known that every orange weighs between A and B grams, inclusive. (An orange can have a non-integer weight.)
 We chose some of those oranges, and their total weight was exactly W kilograms.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ W ≦ 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B W
 
 Output

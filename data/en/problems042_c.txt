@@ -1,4 +1,3 @@
-
 Problem Statement
 Iroha is very particular about numbers. There are K digits that she dislikes: D_1, D_2, ..., D_K.
 She is shopping, and now paying at the cashier.
@@ -12,7 +11,8 @@ Constraints
  0 ≦ D_1 < D_2 < … < D_K≦9
 {D_1,D_2,...,D_K} ≠ {1,2,3,4,5,6,7,8,9}
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K
 D_1 D_2 … D_K
 

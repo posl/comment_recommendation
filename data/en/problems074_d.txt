@@ -1,4 +1,3 @@
-
 Problem Statement
 In Takahashi Kingdom, which once existed, there are N cities, and some pairs of cities are connected bidirectionally by roads.
 The following are known about the road network:

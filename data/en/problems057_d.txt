@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given N items.
 The value of the i-th item (1 ≦ i ≦ N) is v_i.
@@ -12,7 +11,8 @@ Constraints
 1 ≦ v_i ≦ 10^{15}
 Each v_i is an integer.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N A B
 v_1
 v_2

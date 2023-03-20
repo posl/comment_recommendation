@@ -1,4 +1,3 @@
-
 Problem Statement
 There were N participants in a contest. The participant ranked i-th had the nickname S_i.
 Print the nicknames of the top K participants in lexicographical order.
@@ -16,7 +15,8 @@ K and N are integers.
 S_i is a string of length 10 consisting of lowercase English letters.
 S_i neq S_j if i neq j.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K
 S_1
 S_2

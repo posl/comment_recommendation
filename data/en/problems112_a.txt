@@ -1,4 +1,3 @@
-
 Problem Statement
 In 2020, AtCoder Inc. with an annual sales of more than one billion yen (the currency of Japan) has started a business in programming education.
 One day, there was an exam where a one-year-old child must write a program that prints Hello World, and a two-year-old child must write a program that receives integers A, B and prints A+B.

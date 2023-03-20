@@ -1,4 +1,3 @@
-
 Problem Statement
 In Japan, there are four major categories of ice cream type products:
 an ice cream type product with at least 15 percent milk solids and at least 8 percent milk fat is called an ice cream;
@@ -17,8 +16,7 @@ Constraints
 A + B le 100
 A and B are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

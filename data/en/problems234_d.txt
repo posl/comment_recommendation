@@ -1,4 +1,3 @@
-
 Problem Statement
 Given are a permutation P=(P_1,P_2,ldots,P_N) of (1,2,ldots,N) and a positive integer K.
 For each i=K,K+1,ldots,N, find the following.
@@ -9,8 +8,7 @@ Constraints
 (P_1,P_2,ldots,P_N) is a permutation of (1,2,ldots,N).
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 P_1 P_2 ldots P_N
 

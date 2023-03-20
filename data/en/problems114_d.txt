@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer N. Among the divisors of N! (= 1 times 2 times ... times N), how many Shichi-Go numbers (literally "Seven-Five numbers") are there?
 Here, a Shichi-Go number is a positive integer that has exactly 75 divisors.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ N ≦ 100
 N is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

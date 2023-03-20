@@ -1,4 +1,3 @@
-
 Problem Statement
 We have held a popularity poll for N items on sale. Item i received A_i votes.
 From these N items, we will select M as popular items. However, we cannot select an item with less than dfrac{1}{4M} of the total number of votes.
@@ -10,8 +9,7 @@ Constraints
 A_i are distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 ... A_N
 

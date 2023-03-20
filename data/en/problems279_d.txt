@@ -1,4 +1,3 @@
-
 Problem Statement
 A superman, Takahashi, is about to jump off the roof of a building to help a person in trouble on the ground.
 Takahashi's planet has a constant value g that represents the strength of gravity, and the time it takes for him to reach the ground after starting to fall is frac{A}{sqrt{g}}.
@@ -13,7 +12,8 @@ Constraints
 1 ≦ B ≦ 10^{18}
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 A B
 
 Output

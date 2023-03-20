@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S that is a permutation of atcoder.
 On this string S, you will perform the following operation 0 or more times:
@@ -8,8 +7,7 @@ Find the minimum number of operations required to make S equal atcoder.
 Constraints
 S is a string that is a permutation of atcoder
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 The door of Snuke's laboratory is locked with a security code.
 The security code is a 4-digit number. We say the security code is hard to enter when it contains two consecutive digits that are the same.

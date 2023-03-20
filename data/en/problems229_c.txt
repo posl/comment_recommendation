@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi, who works for a pizza restaurant, is making a delicious cheese pizza for staff meals.
 There are N kinds of cheese in front of him.
@@ -14,8 +13,7 @@ All values in input are integers.
 1 le A_i le 10^9
 1 le B_i le 1000
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N W
 A_1 B_1
 A_2 B_2

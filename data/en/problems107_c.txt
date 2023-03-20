@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N candles placed on a number line.
 The i-th candle from the left is placed on coordinate x_i.
@@ -17,8 +16,7 @@ x_i is an integer.
 |x_i| ≦ 10^8
 x_1 < x_2 < ... < x_N
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 x_1 x_2 ... x_N
 

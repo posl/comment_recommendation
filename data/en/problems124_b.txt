@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N mountains ranging from east to west, and an ocean to the west.
 At the top of each mountain, there is an inn. You have decided to choose where to stay from these inns.
@@ -12,8 +11,7 @@ All values in input are integers.
 1 ≦ N ≦ 20
 1 ≦ H_i ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 H_1 H_2 ... H_N
 

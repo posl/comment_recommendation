@@ -1,4 +1,3 @@
-
 Problem Statement
 We have HW cards arranged in a matrix with H rows and W columns.
 For each i=1, ldots, N, the card at the A_i-th row from the top and B_i-th column from the left has a number i written on it. The other HW-N cards have nothing written on them.
@@ -15,8 +14,7 @@ Constraints
 All pairs (A_i,B_i) are distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W N
 A_1 B_1
 vdots

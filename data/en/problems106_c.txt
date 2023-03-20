@@ -1,4 +1,3 @@
-
 Problem Statement
 Mr. Infinity has a string S consisting of digits from 1 to 9. Each time the date changes, this string changes as follows:
 Each occurrence of 2 in S is replaced with 22. Similarly, each 3 becomes 333, 4 becomes 4444, 5 becomes 55555, 6 becomes 666666, 7 becomes 7777777, 8 becomes 88888888 and 9 becomes 999999999. 1 remains as 1.

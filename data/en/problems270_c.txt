@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a tree T with N vertices. The i-th edge (1≦ i≦ N-1) connects vertex U_i and vertex V_i.
 You are given two different vertices X and Y in T.
@@ -16,7 +15,8 @@ Xneq Y
 All values in the input are integers.
 The given graph is a tree.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N X Y
 U_1 V_1
 U_2 V_2

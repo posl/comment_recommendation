@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is a teacher responsible for a class of N students.
 The students are given distinct student numbers from 1 to N.

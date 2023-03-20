@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi wants to buy the popular video game console called Play Snuke.
 There are N shops that sell Play Snuke: Shop 1, 2, dots, N. Shop i is A_i minutes' walk from where Takahashi is now, sells Play Snuke for P_i yen (Japanese currency), and currently has X_i Play Snukes in stock.
@@ -11,8 +10,7 @@ All values in input are integers.
 1 ≤ N ≤ 10^5
 1 ≤ A_i, P_i, X_i ≤ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 P_1 X_1
 vdots

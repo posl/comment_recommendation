@@ -1,4 +1,3 @@
-
 Problem Statement
 Our world is one-dimensional, and ruled by two empires called Empire A and Empire B.
 The capital of Empire A is located at coordinate X, and that of Empire B is located at coordinate Y.
@@ -19,8 +18,7 @@ x_i are all different.
 y_1, y_2, ..., y_M neq Y
 y_i are all different.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M X Y
 x_1 x_2 ... x_N
 y_1 y_2 ... y_M

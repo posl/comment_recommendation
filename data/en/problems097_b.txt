@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a positive integer X.
 Find the largest perfect power that is at most X.
@@ -8,8 +7,7 @@ Constraints
 1 ≤ X ≤ 1000
 X is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X
 
 Output

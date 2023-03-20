@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a sequence of length N consisting of non-negative integers. Consider performing the following operation on this sequence until the largest element in this sequence becomes N-1 or smaller.
 Determine the largest element in the sequence (if there is more than one, choose one). Decrease the value of this element by N, and increase each of the other elements by 1.
@@ -8,8 +7,7 @@ You are given an integer K. Find an integer sequence a_i such that the number of
 Constraints
 0 ≤ K ≤ 50 times 10^{16}
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 K
 
 Output

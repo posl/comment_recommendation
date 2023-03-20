@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N islands and M bridges.
 The i-th bridge connects the A_i-th and B_i-th islands bidirectionally.
@@ -15,8 +14,7 @@ All values in input are integers.
 All pairs (A_i, B_i) are distinct.
 The inconvenience is initially 0.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1
 A_2 B_2

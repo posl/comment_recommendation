@@ -1,4 +1,3 @@
-
 Problem Statement
 We have A apples and P pieces of apple.
 We can cut an apple into three pieces of apple, and make one apple pie by simmering two pieces of apple in a pan.
@@ -8,8 +7,7 @@ Constraints
 All values in input are integers.
 0 ≦ A, P ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A P
 
 Output

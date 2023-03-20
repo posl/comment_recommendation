@@ -1,4 +1,3 @@
-
 Problem Statement
 For an integer n, let S(n) be the sum of digits in the decimal notation of n. For example, we have S(123) = 1 + 2 + 3 = 6.
 Given two 3-digit integers A and B, find the greater of S(A) and S(B).
@@ -7,8 +6,7 @@ Constraints
 All values in input are integers.
 100 le A, B le 999
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

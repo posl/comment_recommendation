@@ -1,4 +1,3 @@
-
 問題文
 AtCoder Beginner Contest は、今回で 214 回目の開催となりました。
 今までの AtCoder Beginner Contest において、出題される問題数は次のように変化しました。
@@ -16,8 +15,7 @@ N 回目の AtCoder Beginner Contest において出題された問題数を求�
 N
 
 出力
-答えを出力
-せよ。
+答えを出力せよ。
 
 入力例 1
 214

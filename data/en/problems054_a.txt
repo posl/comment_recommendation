@@ -1,4 +1,3 @@
-
 Problem Statement
 Alice and Bob are playing One Card Poker.
 One Card Poker is a two-player game using playing cards.  
@@ -18,7 +17,8 @@ Constraints
 1≦B≦13 
 A and B are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 A B
 
 Output

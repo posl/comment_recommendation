@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence of three numbers: A=(A_1,A_2,A_3).
 Is it possible to rearrange the elements of A into an arithmetic sequence?
@@ -8,8 +7,7 @@ Constrains
 1 ≦ A_i ≦ 100
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A_1 A_2 A_3
 
 Output

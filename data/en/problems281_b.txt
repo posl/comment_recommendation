@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S consisting of uppercase English letters and digits. Determine whether S satisfies the following condition.
 S is a concatenation of the following characters and string in the order listed.
@@ -11,7 +10,8 @@ Constraints
 S consists of uppercase English letters and digits.
 The length of S is between 1 and 10, inclusive.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 Dolphin resides in two-dimensional Cartesian plane, with the positive x-axis pointing right and the positive y-axis pointing up.
 Currently, he is located at the point (sx,sy). In each second, he can move up, down, left or right by a distance of 1.
@@ -12,7 +11,8 @@ Constraints
 -1000 ≤ sy < ty ≤ 1000 
 sx,sy,tx and ty are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 sx sy tx ty
 
 Output

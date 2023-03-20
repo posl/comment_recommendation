@@ -1,4 +1,3 @@
-
 Problem Statement
 Let w be a string consisting of lowercase letters.
 We will call w beautiful if the following condition is satisfied:
@@ -9,7 +8,8 @@ Constraints
 1 ≦ |w| ≦ 100
 w consists of lowercase letters (a-z).
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 w
 
 Output

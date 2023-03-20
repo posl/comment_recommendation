@@ -1,4 +1,3 @@
-
 Problem Statement
 E869120 has A 1-yen coins and infinitely many 500-yen coins.
 Determine if he can pay exactly N yen using only these coins.

@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a circular pizza.
 Takahashi will cut this pizza using a sequence A of length N, according to the following procedure.
@@ -16,8 +15,7 @@ All values in input are integers.
 1 le A_i le 359
 There will be no multiple cuts at the same position.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 A_2 dots A_N
 

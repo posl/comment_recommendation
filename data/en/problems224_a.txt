@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S ending with er or ist.
 If S ends with er, print er; if it ends with ist, print ist.
@@ -8,8 +7,7 @@ Constraints
 S consists of lowercase English letters.
 S ends with er or ist.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

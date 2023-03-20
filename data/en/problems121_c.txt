@@ -1,4 +1,3 @@
-
 Problem Statement
 Hearing that energy drinks increase rating in those sites, Takahashi decides to buy up M cans of energy drinks.
 There are N stores that sell energy drinks. In the i-th store, he can buy at most B_i cans of energy drinks for A_i yen (the currency of Japan) each.
@@ -12,8 +11,7 @@ All values in input are integers.
 1 ≦ B_i ≦ 10^5
 B_1 + ... + B_N geq M
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1
 A_2 B_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 You run a web service with N users.
 The i-th user with a current handle S_i wants to change it to T_i.
@@ -15,7 +14,8 @@ S_i neq T_i
 S_i are pairwise distinct.
 T_i are pairwise distinct.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 S_1 T_1
 S_2 T_2

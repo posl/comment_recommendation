@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi and Aoki will play a game against each other.
 Initially, Takahashi and Aoki have A and B candies, respectively.
@@ -11,8 +10,7 @@ All values in input are integers.
 0 ≤ A, B ≤ 100
 C in {0, 1}
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B C
 
 Output

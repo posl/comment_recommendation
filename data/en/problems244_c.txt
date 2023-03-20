@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi and Aoki will play the following game against each other.
 Starting from Takahashi, the two alternatingly declare an integer between 1 and 2N+1 (inclusive) until the game ends.

@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a string S consisting of lowercase English letters.
 If the length of S is at most K, print S without change.

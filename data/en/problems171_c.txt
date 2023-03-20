@@ -1,4 +1,3 @@
-
 Problem Statement
 1000000000000001 dogs suddenly appeared under the roof of Roger's house, all of which he decided to keep. The dogs had been numbered 1 through 1000000000000001, but he gave them new names, as follows:
 the dogs numbered 1,2,cdots,26 were respectively given the names a, b, ..., z;
@@ -16,8 +15,7 @@ Constraints
 N is an integer.
  1 ≦ N ≦ 1000000000000001
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

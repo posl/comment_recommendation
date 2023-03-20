@@ -1,12 +1,10 @@
-
 Problem Statement
 Given a positive integer N, find the maximum integer k such that 2^k le N. 
 
 Constraints
 N is an integer satisfying 1 le N le 10^{18}.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

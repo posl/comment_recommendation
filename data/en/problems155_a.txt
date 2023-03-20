@@ -1,4 +1,3 @@
-
 Problem Statement
 A triple of numbers is said to be poor when two of those numbers are equal but the other number is different from those two numbers.
 You will be given three integers A, B, and C. If this triple is poor, print Yes; otherwise, print No.

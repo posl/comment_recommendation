@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer sequence of length n+1, a_1,a_2,...,a_{n+1}, which consists of the n integers 1,...,n.
 It is known that each of the n integers 1,...,n appears at least once in this sequence.
@@ -15,8 +14,7 @@ Constraints
 Each of the integers 1,...,n appears in the sequence.
 n and a_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 n
 a_1 a_2 ... a_{n+1}
 

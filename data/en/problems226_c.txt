@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is a martial artist.
 There are N moves that a martial artist can learn, called Move 1, 2, ldots, N.
@@ -18,8 +17,7 @@ sum_{i=1}^N K_i ≦ 2times 10^5
 A_{i,1}, A_{i,2}, ldots, A_{i,K_i} are all distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 T_1 K_1 A_{1,1} A_{1,2} ldots A_{1,K_1}
 T_2 K_2 A_{2,1} A_{2,2} ldots A_{2,K_2}

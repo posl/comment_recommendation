@@ -1,4 +1,3 @@
-
 Problem Statement
 Given strings S_1,S_2,S_3 consisting of lowercase English letters, solve the alphametic S_1+S_2=S_3.
 Formally, determine whether there is a triple of positive integers N_1, N_2, N_3 satisfying all of the three conditions below, and find one such triple if it exists.
@@ -10,8 +9,7 @@ The x-th character of S_i and the y-th character of S_j is the same if and only 
 Constraints
 Each of S_1, S_2, S_3 is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S_1
 S_2
 S_3

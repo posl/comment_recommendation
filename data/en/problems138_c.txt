@@ -1,4 +1,3 @@
-
 Problem Statement
 You have a pot and N ingredients. Each ingredient has a real number parameter called value, and the value of the i-th ingredient (1 ≦ i ≦ N) is v_i.
 When you put two ingredients in the pot, they will vanish and result in the formation of a new ingredient. The value of the new ingredient will be (x + y) / 2 where x and y are the values of the ingredients consumed, and you can put this ingredient again in the pot.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ v_i ≦ 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 v_1 v_2 ldots v_N
 

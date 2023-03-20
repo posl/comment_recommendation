@@ -1,4 +1,3 @@
-
 Problem Statement
 The cat Snuke wants to play a popular Japanese game called ÅtCoder, so Iroha has decided to teach him Japanese.
 When counting pencils in Japanese, the counter word "本" follows the number. The pronunciation of this word varies depending on the number. Specifically, the pronunciation of "本" in the phrase "N 本" for a positive integer N not exceeding 999 is as follows:

@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N persons called Person 1 through Person N.
 You are given M facts that "Person A_i and Person B_i are friends." The same fact may be given multiple times.
@@ -12,8 +11,7 @@ Constraints
 1≦ A_i,B_i≦ N
 A_i neq B_i
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1
 vdots

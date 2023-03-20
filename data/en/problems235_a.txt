@@ -1,4 +1,3 @@
-
 Problem Statement
 Let xyz denote the 3-digit integer whose digits are x, y, z from left to right.
 Given a 3-digit integer abc none of whose digits is 0, find abc+bca+cab.
@@ -6,8 +5,7 @@ Given a 3-digit integer abc none of whose digits is 0, find abc+bca+cab.
 Constraints
 abc is a 3-digit integer abc none of whose digits is 0.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 abc
 
 Output

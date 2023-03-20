@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke Inc. offers various kinds of services.
 A payment plan called Snuke Prime is available.
@@ -16,8 +15,7 @@ Constraints
 1 ≦ c_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N C
 a_1 b_1 c_1
 vdots

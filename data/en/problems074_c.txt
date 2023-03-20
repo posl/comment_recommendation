@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke is making sugar water in a beaker.
 Initially, the beaker is empty. Snuke can perform the following four types of operations any number of times. He may choose not to perform some types of operations.

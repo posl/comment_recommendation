@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence of positive integers: A=(a_1,a_2,ldots,a_N).
 You can choose and perform one of the following operations any number of times, possibly zero.
@@ -12,7 +11,8 @@ Constraints
 1 ≦ a_i ≦ 10^9
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 a_1 a_2 ldots a_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 Iroha loves Haiku. Haiku is a short form of Japanese poetry. A Haiku consists of three phrases with 5, 7 and 5 syllables, in this order.
 To create a Haiku, Iroha has come up with three different phrases. These phrases have A, B and C syllables, respectively. Determine whether she can construct a Haiku by using each of the phrases once, in some order.
@@ -6,7 +5,8 @@ To create a Haiku, Iroha has come up with three different phrases. These phrases
 Constraints
 1≦A,B,C≦10
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 A B C
 
 Output

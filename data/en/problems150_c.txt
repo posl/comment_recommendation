@@ -1,4 +1,3 @@
-
 Problem Statement
 We have two permutations P and Q of size N (that is, P and Q are both rearrangements of (1,~2,~...,~N)).
 There are N! possible permutations of size N. Among them, let P and Q be the a-th and b-th lexicographically smallest permutations, respectively. Find |a - b|.
@@ -10,8 +9,7 @@ Constraints
 2 ≦ N ≦ 8
 P and Q are permutations of size N.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 P_1 P_2 ... P_N
 Q_1 Q_2 ... Q_N

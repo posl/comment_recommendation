@@ -1,4 +1,3 @@
-
 Problem Statement
 In AtCoder City, there are three stations numbered 1, 2, and 3.
 Each of these stations is operated by one of the two railway companies, A and B. A string S of length 3 represents which company operates each station. If S_i is A, Company A operates Station i; if S_i is B, Company B operates Station i.
@@ -9,8 +8,7 @@ Constraints
 Each character of S is A or B.
 |S| = 3
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

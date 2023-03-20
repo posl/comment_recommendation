@@ -1,4 +1,3 @@
-
 Problem Statement
 In AtCoder city, there are five antennas standing in a straight line. They are called Antenna A, B, C, D and E from west to east, and their coordinates are a, b, c, d and e, respectively.
 Two antennas can communicate directly if the distance between them is k or less, and they cannot if the distance is greater than k.

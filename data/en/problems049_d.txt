@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N cities. There are also K roads and L railways, extending between the cities.
 The i-th road bidirectionally connects the p_i-th and q_i-th cities, and the i-th railway bidirectionally connects the r_i-th and s_i-th cities.
@@ -16,7 +15,8 @@ r_i < s_i
 When i ≠ j, (p_i, q_i) ≠ (p_j, q_j)
 When i ≠ j, (r_i, s_i) ≠ (r_j, s_j)
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K L
 p_1 q_1
 :

@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid with H rows from top to bottom and W columns from left to right.  Each square has a piece placed on it or is empty.
 The state of the grid is represented by H strings S_1, S_2, ldots, S_H, each of length W.
@@ -11,7 +10,8 @@ Constraints
 H and W are integers.
 S_i is a string of length W consisting of # and ..
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H W
 S_1
 S_2

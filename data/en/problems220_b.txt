@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given integers A and B, in base K.
 Print A times B in decimal.
@@ -11,8 +10,7 @@ Constraints
 1 ≦ A,B ≦ 10^5
 A and B are in base-K representation.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 K
 A B
 

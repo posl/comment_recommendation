@@ -1,4 +1,3 @@
-
 Problem Statement
 A programming competition site AtCode provides algorithmic problems.
 Each problem is allocated a score based on its difficulty.
@@ -21,8 +20,7 @@ All values in input are integers.
 c_i and G are all multiples of 100.
 It is possible to have a total score of G or more points.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 D G
 p_1 c_1
 :

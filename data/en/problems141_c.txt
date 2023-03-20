@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has decided to hold fastest-finger-fast quiz games. Kizahashi, who is in charge of making the scoreboard, is struggling to write the program that manages the players' scores in a game, which proceeds as follows.
 A game is played by N players, numbered 1 to N. At the beginning of a game, each player has K points.

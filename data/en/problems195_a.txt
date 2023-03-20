@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi, the magician, is fighting with a monster.
 His magic can defeat a monster whose health is a multiple of M. It has no effect on a monster whose health is not a multiple of M.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ H ≦ 1000
 M and H are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 M H
 
 Output

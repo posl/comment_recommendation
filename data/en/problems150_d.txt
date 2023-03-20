@@ -1,4 +1,3 @@
-
 Problem Statement
 Given are a sequence A= {a_1,a_2,......a_N} of N positive even numbers, and an integer M.
 Let a semi-common multiple of A be a positive integer X that satisfies the following condition for every k (1 ≦ k ≦ N):
@@ -12,8 +11,7 @@ Constraints
 a_i is an even number.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 a_1 a_2 ... a_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N integers A_1, A_2, ..., A_N.
 There are frac{N(N-1)}{2} ways to choose two of them and form a pair. If we compute the product of each of those pairs and sort the results in ascending order, what will be the K-th number in that list?

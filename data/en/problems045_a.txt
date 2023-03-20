@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a trapezoid. The lengths of its upper base, lower base, and height are a, b, and h, respectively.
 An example of a trapezoid
@@ -11,7 +10,8 @@ Constraints
 All input values are integers.
 h is even.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 a
 b
 h

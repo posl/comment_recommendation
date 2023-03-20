@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer X. The following action on this integer is called an operation.
 Choose and do one of the following.
@@ -14,8 +13,7 @@ All values in input are integers.
 -10^6 le D le 10^6
 1 le N le 10^{12}
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X A D N
 
 Output

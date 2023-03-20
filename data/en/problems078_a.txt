@@ -1,4 +1,3 @@
-
 Problem Statement
 In programming, hexadecimal notation is often used.
 In hexadecimal notation, besides the ten digits 0, 1, ..., 9, the six letters A, B, C, D, E and F are used to represent the values 10, 11, 12, 13, 14 and 15, respectively.
@@ -8,8 +7,7 @@ When X and Y are seen as hexadecimal numbers, which is larger?
 Constraints
 Each X and Y is A, B, C, D, E or F.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X Y
 
 Output

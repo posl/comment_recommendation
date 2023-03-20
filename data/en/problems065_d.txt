@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N towns on a plane. The i-th town is located at the coordinates (x_i,y_i). There may be more than one town at the same coordinates.
 You can build a road between two towns at coordinates (a,b) and (c,d) for a cost of min(|a-c|,|b-d|) yen (the currency of Japan). It is not possible to build other types of roads.
@@ -9,8 +8,7 @@ Constraints
 0 ≤ x_i,y_i ≤ 10^9
 All input values are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 In an xy-coordinate plane whose x-axis is oriented to the right and whose y-axis is oriented upwards, rotate a point (a, b) around the origin d degrees counterclockwise and find the new coordinates of the point.
 
@@ -7,8 +6,7 @@ Constraints
 1 ≦ d ≦ 360
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 a b d
 
 Output

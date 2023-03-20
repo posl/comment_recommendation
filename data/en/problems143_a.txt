@@ -1,4 +1,3 @@
-
 Problem Statement
 The window of Takahashi's room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the whole window.)
 We will close the window so as to minimize the total horizontal length of the uncovered part of the window.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ B ≦ 100
 A and B are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

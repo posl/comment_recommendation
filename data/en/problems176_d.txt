@@ -1,4 +1,3 @@
-
 Problem Statement
 A maze is composed of a grid of H times W squares - H vertical, W horizontal.
 The square at the i-th row from the top and the j-th column from the left - (i,j) - is a wall if S_{ij} is # and a road if S_{ij} is ..
@@ -16,8 +15,7 @@ S_{ij} is # or ..
 S_{C_h C_w} and S_{D_h D_w} are ..
 (C_h,C_w) neq (D_h,D_w)
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 C_h C_w
 D_h D_w

@@ -1,4 +1,3 @@
-
 Problem Statement
 Tiles are aligned in N horizontal rows and N vertical columns.  Each tile has a grid with A horizontal rows and B vertical columns.  On the whole, the tiles form a grid X with (Atimes N) horizontal rows and (Btimes N) vertical columns.
 For 1≦ i,j ≦ N, Tile (i,j) denotes the tile at the i-th row from the top and the j-th column from the left.
@@ -14,8 +13,7 @@ Constraints
 1 ≦ N,A,B ≦ 10
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N A B
 
 Output

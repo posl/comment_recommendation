@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N dice arranged in a line from left to right. The i-th die from the left shows p_i numbers from 1 to p_i with equal probability when thrown.
 We will choose K adjacent dice, throw each of them independently, and compute the sum of the numbers shown. Find the maximum possible value of the expected value of this sum.
@@ -8,8 +7,7 @@ Constraints
 1 ≤ p_i ≤ 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 p_1 ... p_N
 

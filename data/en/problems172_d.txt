@@ -1,4 +1,3 @@
-
 Problem Statement
 For a positive integer X, let f(X) be the number of positive divisors of X.
 Given a positive integer N, find sum_{K=1}^N Ktimes f(K).
@@ -6,8 +5,7 @@ Given a positive integer N, find sum_{K=1}^N Ktimes f(K).
 Constraints
 1 ≦ N ≦ 10^7
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

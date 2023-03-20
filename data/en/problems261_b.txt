@@ -1,4 +1,3 @@
-
 Problem Statement
 N players played a round-robin tournament.
 You are given an N-by-N table A containing the results of the matches. Let A_{i,j} denote the element at the i-th row and j-th column of A.
@@ -15,8 +14,7 @@ Constraints
 A_{i,i} is -.
 A_{i,j} is W, L, or D, for ineq j.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_{1,1}A_{1,2}ldots A_{1,N}
 A_{2,1}A_{2,2}ldots A_{2,N}

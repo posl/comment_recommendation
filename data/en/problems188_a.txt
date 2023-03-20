@@ -1,4 +1,3 @@
-
 Problem Statement
 A basketball game is being played, and the score is now X-Y. Here, it is guaranteed that X neq Y.
 Can the team which is behind turn the tables with a successful three-point goal?
@@ -10,8 +9,7 @@ Constraints
 X neq Y
 X and Y are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X Y
 
 Output

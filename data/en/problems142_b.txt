@@ -1,4 +1,3 @@
-
 Problem Statement
 N friends of Takahashi has come to a theme park.
 To ride the most popular roller coaster in the park, you must be at least K centimeters tall.

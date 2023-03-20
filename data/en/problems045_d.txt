@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a grid with H rows and W columns. At first, all cells were painted white.
 Snuke painted N of these cells. The i-th ( 1 ≦ i ≦ N ) cell he painted is the cell at the a_i-th row and b_i-th column.
@@ -13,7 +12,8 @@ Constraints
 1 ≦ b_i ≦ W (1 ≦ i ≦ N)
 (a_i, b_i) neq (a_j, b_j) (i neq j)
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H W N
 a_1 b_1
 :

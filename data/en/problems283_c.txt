@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is a cashier.
 There is a cash register with 11 keys: 00, 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -12,7 +11,8 @@ Constraints
 1≦ S≦ 10^{100000}
 S is an integer.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 
 Output

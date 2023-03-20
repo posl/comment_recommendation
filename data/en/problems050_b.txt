@@ -1,4 +1,3 @@
-
 Problem Statement
 Joisino is about to compete in the final round of a certain programming competition.
 In this contest, there are N problems, numbered 1 through N.
@@ -19,7 +18,8 @@ All input values are integers.
 1≦P_i≦N
 1≦X_i≦10^5
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 T_1 T_2 ... T_N
 M

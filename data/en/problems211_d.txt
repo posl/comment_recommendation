@@ -1,4 +1,3 @@
-
 Problem Statement
 The Republic of AtCoder has N cities numbered 1 through N and M roads numbered 1 through M.
 Using Road i, you can travel from City A_i to B_i or vice versa in one hour.
@@ -12,8 +11,7 @@ Constraints
 The pairs (A_i, B_i) are distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1
 vdots

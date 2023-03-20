@@ -1,4 +1,3 @@
-
 Problem Statement
 There are three positive integers A, B and C written on a blackboard. E869120 performs the following operation K times:
 Choose one integer written on the blackboard and let the chosen integer be n. Replace the chosen integer with 2n.

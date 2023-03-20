@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a perfect binary tree with 2^{10^{100}}-1 vertices, numbered 1,2,...,2^{10^{100}}-1.
 Vertex 1 is the root. For each 1≦ i < 2^{10^{100}-1}, Vertex i has two children: Vertex 2i to the left and Vertex 2i+1 to the right.
@@ -17,8 +16,7 @@ When Takahashi is at the root, he never attempts to go to the parent.
 When Takahashi is at a leaf, he never attempts to go to a child.
 The index of the vertex Takahashi is on after N moves is at most 10^{18}.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X
 S
 

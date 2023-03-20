@@ -1,4 +1,3 @@
-
 Problem Statement
 The Patisserie AtCoder sells cakes with number-shaped candles.
 There are X, Y and Z kinds of cakes with 1-shaped, 2-shaped and 3-shaped candles, respectively.

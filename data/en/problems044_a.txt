@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a hotel with the following accommodation fee:
 X yen (the currency of Japan) per night, for the first K nights
@@ -9,9 +8,10 @@ Find his total accommodation fee.
 Constraints
 1 ≦ N, K ≦ 10000
 1 ≦ Y < X ≦ 10000
-N,,K,,X,,Y are integers.
+N,K,X,Y are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 K
 X

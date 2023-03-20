@@ -1,4 +1,3 @@
-
 Problem Statement
 You have an integer variable x.
 Initially, x=0.
@@ -11,7 +10,8 @@ Constraints
 |S|=N
 No characters except I and D occur in S.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 S
 

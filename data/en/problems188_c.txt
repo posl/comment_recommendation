@@ -1,4 +1,3 @@
-
 Problem Statement
 2^N players, labeled 1 through 2^N, will compete against each other in a single-elimination programming tournament.
 The rating of Player i is A_i. Any two players have different ratings, and a match between two players always results in the victory of the player with the higher rating.  
@@ -15,8 +14,7 @@ Constraints
 A_i are pairwise different.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 A_2 A_3 dots A_{2^N}
 

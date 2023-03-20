@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given integer sequences, each of length N: A = (A_1, A_2, dots, A_N) and B = (B_1, B_2, dots, B_N).
 All elements of A are different. All elements of B are different, too.
@@ -14,8 +13,7 @@ A_1, A_2, dots, A_N are all different.
 B_1, B_2, dots, B_N are all different.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 A_2 dots A_N
 B_1 B_2 dots B_N

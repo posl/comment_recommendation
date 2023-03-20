@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N clocks. The hand of the i-th clock (1≤i≤N) rotates through 360° in exactly T_i seconds.
 Initially, the hand of every clock stands still, pointing directly upward.
@@ -11,8 +10,7 @@ Constraints
 All input values are integers.  
 The correct answer is at most 10^{18} seconds.
 
-Input
-Input is given from Standard Input in the following format:  
+InputInput is given from Standard Input in the following format:  
 N
 T_1
 :  

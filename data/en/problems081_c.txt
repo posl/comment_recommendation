@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has N balls. Initially, an integer A_i is written on the i-th ball.
 He would like to rewrite the integer on some balls so that there are at most K different integers written on the N balls.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ A_i ≦ N
 All input values are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 A_1 A_2 ... A_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given strings S and T consisting of lowercase English letters. Determine whether T is a (contiguous) substring of S.
 A string Y is said to be a (contiguous) substring of X if and only if Y can be obtained by performing the operation below on X zero or more times.
@@ -12,7 +11,8 @@ Constraints
 S and T consist of lowercase English letters.
 1 le |S|,|T| le 100 (|X| denotes the length of a string X.)
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 T
 

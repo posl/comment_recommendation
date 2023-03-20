@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi found a puzzle along some road.
 It is composed of an undirected graph with nine vertices and M edges, and eight pieces.
@@ -22,8 +21,7 @@ The given graph has no multi-edges or self-loops.
 j neq j' Rightarrow p_j neq p_{j'}
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 M
 u_1 v_1
 u_2 v_2

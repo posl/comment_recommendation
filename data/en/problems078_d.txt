@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a deck consisting of N cards. Each card has an integer written on it. The integer on the i-th card from the top is a_i.
 Two people X and Y will play a game using this deck. Initially, X has a card with Z written on it in his hand, and Y has a card with W written on it in his hand. Then, starting from X, they will alternately perform the following action:
@@ -11,8 +10,7 @@ All input values are integers.
 1 ≦ N ≦ 2000
 1 ≦ Z, W, a_i ≦ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N Z W
 a_1 a_2 ... a_N
 

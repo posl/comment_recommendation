@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an undirected unweighted graph with N vertices and M edges that contains neither self-loops nor double edges.
 Here, a self-loop is an edge where a_i = b_i (1≤i≤M), and double edges are two edges where (a_i,b_i)=(a_j,b_j) or (a_i,b_i)=(b_j,a_j) (1≤i<j≤M).
@@ -19,7 +18,8 @@ Constraints
 1≦a_i<b_i≦N 
 The given graph contains neither self-loops nor double edges.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M  
 a_1 b_1  
 a_2 b_2

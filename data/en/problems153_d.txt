@@ -1,4 +1,3 @@
-
 Problem Statement
 Caracal is fighting with a monster.
 The health of the monster is H.
@@ -13,8 +12,7 @@ Constraints
 1 ≦ H ≦ 10^{12}
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H
 
 Output

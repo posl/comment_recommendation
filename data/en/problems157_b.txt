@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a bingo card with a 3times3 grid. The square at the i-th row from the top and the j-th column from the left contains the number A_{i, j}.
 The MC will choose N numbers, b_1, b_2, cdots, b_N. If our bingo sheet contains some of those numbers, we will mark them on our sheet.
@@ -12,8 +11,7 @@ A_{i_1, j_1} neq A_{i_2, j_2} ((i_1, j_1) neq (i_2, j_2))
 1 ≦ b_i ≦ 100
 b_i neq b_j (i neq j)
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A_{1, 1} A_{1, 2} A_{1, 3}
 A_{2, 1} A_{2, 2} A_{2, 3}
 A_{3, 1} A_{3, 2} A_{3, 3}

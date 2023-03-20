@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence of positive integers of length N, A=a_1,a_2,…,a_{N}, and an integer K.
 How many contiguous subsequences of A satisfy the following condition?
@@ -11,8 +10,7 @@ Constraints
 1 ≦ N ≦ 10^5
 1 ≦ K ≦ 10^{10}
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 a_1 a_2 ... a_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given strings S and T.  S consists of lowercase English letters, and T is obtained by inserting a lowercase English letter into S.
 Find the position of the inserted character in T.
@@ -9,7 +8,8 @@ Constraints
 S consists of lowercase English letters.
 T is obtained by inserting a lowercase English letter into S.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 T
 

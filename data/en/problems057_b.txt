@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N students and M checkpoints on the xy-plane.
 The coordinates of the i-th student (1 ≦ i ≦ N) is (a_i,b_i), and the coordinates of the checkpoint numbered j (1 ≦ j ≦ M) is (c_j,d_j).
@@ -13,7 +12,8 @@ Constraints
 -10^8 ≦ a_i,b_i,c_j,d_j ≦ 10^8
 All input values are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M
 a_1 b_1
 :  

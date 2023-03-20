@@ -1,4 +1,3 @@
-
 Problem Statement
 You have a digit sequence S of length 4. You are wondering which of the following formats S is in:
 YYMM format: the last two digits of the year and the two-digit representation of the month (example: 01 for January), concatenated in this order
@@ -8,8 +7,7 @@ If S is valid in only YYMM format, print YYMM; if S is valid in only MMYY format
 Constraints
 S is a digit sequence of length 4.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

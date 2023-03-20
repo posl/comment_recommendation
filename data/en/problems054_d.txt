@@ -1,4 +1,3 @@
-
 Problem Statement
 Dolphin is planning to generate a small amount of a certain chemical substance C.
 In order to generate the substance C, he must prepare a solution which is a mixture of two substances A and B in the ratio of M_a:M_b.
@@ -17,7 +16,8 @@ Constraints
 gcd(M_a,M_b)=1
 a_i, b_i, c_i, M_a and M_b are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M_a M_b  
 a_1 b_1 c_1  
 a_2 b_2 c_2

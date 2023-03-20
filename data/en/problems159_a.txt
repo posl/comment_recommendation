@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N+M balls, each of which has an integer written on it.
 It is known that:  

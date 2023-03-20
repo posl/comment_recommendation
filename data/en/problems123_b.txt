@@ -1,4 +1,3 @@
-
 Problem Statement
 The restaurant AtCoder serves the following five dishes:
 ABC Don (rice bowl): takes A minutes to serve.

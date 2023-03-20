@@ -1,4 +1,3 @@
-
 Problem Statement
 In some other world, today is Christmas Eve.
 There are N trees planted in Mr. Takaha's garden. The height of the i-th tree (1 ≦ i ≦ N) is h_i meters.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ h_i ≦ 10^9
 h_i is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 h_1
 h_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N cities numbered 1, dots, N, and M roads connecting cities.
 The i-th road (1 ≦ i ≦ M) connects city A_i and city B_i.
@@ -13,7 +12,8 @@ Constraints
 (A_i, B_i) neq (A_j, B_j) if (i neq j).
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M
 A_1 B_1
 vdots

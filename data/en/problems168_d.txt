@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a cave.
 The cave has N rooms and M passages. The rooms are numbered 1 to N, and the passages are numbered 1 to M. Passage i connects Room A_i and Room B_i bidirectionally. One can travel between any two rooms by traversing passages. Room 1 is a special room with an entrance from the outside.

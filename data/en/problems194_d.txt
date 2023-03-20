@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a graph with N vertices called Vertex 1 through N. Takahashi is standing on Vertex 1.
 The graph has no edges now.
@@ -10,8 +9,7 @@ Find the expected value of the number of times he does the operation until the g
 Constraints
 2 le N le 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

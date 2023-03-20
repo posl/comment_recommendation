@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi loves gold coins. He gains 1000 happiness points for each 500-yen coin he has and gains 5 happiness points for each 5-yen coin he has. (Yen is the currency of Japan.)
 Takahashi has X yen. If he exchanges his money so that he will gain the most happiness points, how many happiness points will he earn?
@@ -8,8 +7,7 @@ Constraints
 0 ≦ X ≦ 10^9
 X is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 There are A slimes.
 Each time Snuke shouts, the slimes multiply by K times.
@@ -9,8 +8,7 @@ Constraints
 2 ≦ K ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B K
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 Kizahashi, who was appointed as the administrator of ABC at National Problem Workshop in the Kingdom of AtCoder, got too excited and took on too many jobs.
 Let the current time be time 0. Kizahashi has N jobs numbered 1 to N.

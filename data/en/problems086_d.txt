@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoDeer is thinking of painting an infinite two-dimensional grid in a checked pattern of side K.
 Here, a checked pattern of side K is a pattern where each square is painted black or white so that each connected component of each color is a K × K square.
@@ -18,8 +17,7 @@ If i ≠ j, then (x_i,y_i) ≠ (x_j,y_j).
 c_i is B or W.
 N, K, x_i and y_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 x_1 y_1 c_1
 x_2 y_2 c_2

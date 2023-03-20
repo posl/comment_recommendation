@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N people numbered 1, 2, dots, N in the xy-plane. Person i is at the coordinates (X_i, Y_i).
 K of these people, Persons A_1, A_2, dots, A_K, will receive lights of the same strength.
@@ -12,8 +11,7 @@ All values in input are integers.
 |X_i|,|Y_i| le 10^5
 (X_i,Y_i) neq (X_j,Y_j), if i neq j.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 A_1 A_2 dots A_K
 X_1 Y_1

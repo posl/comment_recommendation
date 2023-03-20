@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence of non-negative integers A=(a_1,a_2,ldots,a_N).
 Let S be the set of non-negative integers that can be the sum of K terms in A (with distinct indices).
@@ -10,7 +9,8 @@ Constraints
 0 ≦ a_i ≦ 10^9
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K D
 a_1 ldots a_N
 

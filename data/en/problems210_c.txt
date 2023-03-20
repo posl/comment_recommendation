@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N candies arranged in a row from left to right.
 Each of these candies has one color that is one of the 10^9 colors called Color 1, Color 2, ldots, and Color 10^9.
@@ -13,8 +12,7 @@ Constraints
 1 ≦ c_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 c_1 c_2 ldots c_N
 

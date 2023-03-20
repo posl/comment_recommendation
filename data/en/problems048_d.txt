@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a string s of length 3 or greater.
 No two neighboring characters in s are equal.
@@ -12,7 +11,8 @@ Constraints
 s consists of lowercase English letters.
 No two neighboring characters in s are equal.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 s
 
 Output

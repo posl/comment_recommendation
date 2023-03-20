@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a polynomial of degree N, A(x)=A_Nx^N+A_{N-1}x^{N-1}+cdots +A_1x+A_0,
 and another of degree M, B(x)=B_Mx^M+B_{M-1}x^{M-1}+cdots +B_1x+B_0.
@@ -16,8 +15,7 @@ A_N neq 0
 C_{N+M} neq 0
 There is a unique sequence B_0, B_1, ldots, B_M that satisfies the conditions given in the statement.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_0 A_1 ldots A_{N-1} A_N
 C_0 C_1 ldots C_{N+M-1} C_{N+M}

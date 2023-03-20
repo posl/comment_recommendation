@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi will play a game using a piece on an array of squares numbered 1, 2, cdots, N. Square i has an integer C_i written on it. Also, he is given a permutation of 1, 2, cdots, N: P_1, P_2, cdots, P_N.
 Now, he will choose one square and place the piece on that square. Then, he will make the following move some number of times between 1 and K (inclusive):
@@ -14,8 +13,7 @@ P_1, P_2, cdots, P_N are all different.
 -10^9 ≦ C_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 P_1 P_2 cdots P_N
 C_1 C_2 cdots C_N

@@ -1,12 +1,10 @@
-
 Problem Statement
 Given is a lowercase English letter C that is not z. Print the letter that follows C in alphabetical order.
 
 Constraints
 C is a lowercase English letter that is not z.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 C
 
 Output

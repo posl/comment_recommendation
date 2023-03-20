@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
 N squares, (r_1, c_1), (r_2, c_2), ldots, (r_N, c_N), have walls.
@@ -24,7 +23,8 @@ d_i is one of the characters L, R, U, and D.
 1 ≦ l_i ≦ 10^9
 All values in the input other than d_i are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H W r_mathrm{s} c_mathrm{s}
 N
 r_1 c_1

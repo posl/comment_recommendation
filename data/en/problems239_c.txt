@@ -1,4 +1,3 @@
-
 Problem Statement
 On an xy-coordinate plane, is there a lattice point whose distances from two lattice points (x_1, y_1) and (x_2, y_2) are both sqrt{5}?
 
@@ -15,8 +14,7 @@ Constraints
 (x_1, y_1) neq (x_2, y_2)
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 x_1 y_1 x_2 y_2
 
 Output

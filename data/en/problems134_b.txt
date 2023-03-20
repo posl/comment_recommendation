@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N apple trees in a row. People say that one of them will bear golden apples.
 We want to deploy some number of inspectors so that each of these trees will be inspected.
@@ -10,8 +9,7 @@ All values in input are integers.
 1 ≦ N ≦ 20
 1 ≦ D ≦ 20
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N D
 
 Output

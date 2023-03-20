@@ -1,4 +1,3 @@
-
 Problem Statement
 N examinees took an entrance exam.
 The examinee numbered i scored A_i points in math and B_i points in English.
@@ -18,8 +17,7 @@ All values in input are integers.
 1 le X+Y+Z le N
 0 le A_i,B_i le 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X Y Z
 A_1 A_2 dots A_N
 B_1 B_2 dots B_N

@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke has a fair N-sided die that shows the integers from 1 to N with equal probability and a fair coin. He will play the following game with them:
 Throw the die. The current score is the result of the die.
@@ -11,8 +10,7 @@ Constraints
 1 ≤ K ≤ 10^5
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 
 Output

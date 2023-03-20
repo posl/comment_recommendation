@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a grid of squares with H horizontal rows and W vertical columns.
 The square at the i-th row from the top and the j-th column from the left is represented as (i, j).
@@ -16,8 +15,7 @@ Constraints
 a_{i, j} is . or #.
 There is at least one black square in the whole grid.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 a_{1, 1}...a_{1, W}
 :

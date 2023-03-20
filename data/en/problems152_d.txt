@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a positive integer N.
 Find the number of pairs (A, B) of positive integers not greater than N that satisfy the following condition:

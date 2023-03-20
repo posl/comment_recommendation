@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
 (i,j) has a character G_{i,j} written on it.  G_{i,j} is U, D, L, or R.
@@ -17,8 +16,7 @@ Constraints
 G_{i,j} is U, D, L, or R.
 H and W are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 G_{1,1}G_{1,2}dots G_{1,W}
 G_{2,1}G_{2,2}dots G_{2,W}

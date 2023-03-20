@@ -1,4 +1,3 @@
-
 Problem Statement
 The consumption tax rate in the Republic of AtCoder is 8 percent.
 An energy drink shop in this country sells one can of energy drink for N yen (Japanese currency) without tax.
@@ -9,8 +8,7 @@ Constraints
 1 le N le 300
 N is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

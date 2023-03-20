@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a long seat of width X centimeters.
 There are many people who wants to sit here. A person sitting on the seat will always occupy an interval of length Y centimeters.
@@ -10,8 +9,7 @@ All input values are integers.
 1 ≦ X, Y, Z ≦ 10^5
 Y+2Z ≦ X
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X Y Z
 
 Output

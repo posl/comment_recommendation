@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is organizing a party.
 At the party, each guest will receive one or more snack pieces.

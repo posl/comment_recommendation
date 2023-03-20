@@ -1,4 +1,3 @@
-
 Problem Statement
 A string of length 6 consisting of lowercase English letters is said to be coffee-like if and only if its 3-rd and 4-th characters are equal and its 5-th and 6-th characters are also equal.
 Given a string S, determine whether it is coffee-like.
@@ -6,8 +5,7 @@ Given a string S, determine whether it is coffee-like.
 Constraints
 S is a string of length 6 consisting of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

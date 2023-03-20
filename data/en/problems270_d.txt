@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi and Aoki will play a game of taking stones using a sequence (A_1, ldots, A_K).
 There is a pile that initially contains N stones. The two players will alternately perform the following operation, with Takahashi going first.
@@ -12,7 +11,8 @@ Constraints
 1 = A_1 < A_2 < ldots < A_K ≦ N
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K
 A_1 A_2 ldots A_K
 

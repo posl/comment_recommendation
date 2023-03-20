@@ -1,4 +1,3 @@
-
 Problem Statement
 A condominium AtCoder has N floors, called the 1-st floor through the N-th floor.
 Each floor has K rooms, called the 1-st room through the K-th room.
@@ -11,8 +10,7 @@ Constraints
 1 ≦ N,K ≦ 9
 N and K are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 
 Output

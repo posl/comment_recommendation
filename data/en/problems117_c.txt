@@ -1,4 +1,3 @@
-
 Problem Statement
 We will play a one-player game using a number line and N pieces.
 First, we place each of these pieces at some integer coordinate.
@@ -15,8 +14,7 @@ All values in input are integers.
 -10^5 ≦ X_i ≦ 10^5
 X_1, X_2, ..., X_M are all different.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 X_1 X_2 ... X_M
 

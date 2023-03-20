@@ -1,4 +1,3 @@
-
 Problem Statement
 There are three airports A, B and C, and flights between each pair of airports in both directions.
 A one-way flight between airports A and B takes P hours, a one-way flight between airports B and C takes Q hours, and a one-way flight between airports C and A takes R hours.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ P,Q,R ≦ 100
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 P Q R
 
 Output

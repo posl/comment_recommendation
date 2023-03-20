@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N creatures standing in a circle, called Snuke 1, 2, ..., N in counter-clockwise order.
 When Snuke i (1 ≦ i ≦ N) receives a gem at time t, S_i units of time later, it will hand that gem to Snuke i+1 at time t+S_i. Here, Snuke N+1 is Snuke 1.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ S_i,T_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 S_1 S_2 ldots S_N
 T_1 T_2 ldots T_N

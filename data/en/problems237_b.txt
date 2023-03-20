@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an H-by-W matrix A.
 The element at the i-th row from the top and j-th column from the left of A is A_{i,j}.
@@ -12,8 +11,7 @@ H times W ≦ 10^5
 1 ≦ A_{i,j} ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 A_{1,1} A_{1,2} ldots A_{1,W}
 A_{2,1} A_{2,2} ldots A_{2,W}

@@ -1,4 +1,3 @@
-
 Problem Statement
 How many hours do we have until New Year at M o'clock (24-hour notation) on 30th, December?
 
@@ -6,8 +5,7 @@ Constraints
 1≤M≤23
 M is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 M
 
 Output

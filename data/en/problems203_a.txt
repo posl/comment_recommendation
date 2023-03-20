@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi threw three dice, and they showed three numbers a, b, and c.
 If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
@@ -7,8 +6,7 @@ Constraints
 1 ≦ a,b,c ≦ 6
 All of a, b, and c are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 a b c
 
 Output

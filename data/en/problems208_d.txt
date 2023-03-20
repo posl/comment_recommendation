@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N cities and M roads in the Kingdom of Takahashi.
 The cities are numbered 1 through N, and the roads are numbered 1 through M. Road i is a one-way road that leads from City A_i to City B_i, and it takes C_i minutes to go through it.
@@ -16,8 +15,7 @@ A_i neq B_i (1 ≦ i ≦ M)
 A_i neq A_j or B_i neq B_j, if i neq j.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1 C_1
 vdots

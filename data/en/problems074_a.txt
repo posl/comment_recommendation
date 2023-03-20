@@ -1,4 +1,3 @@
-
 Problem Statement
 We have an N times N square grid.
 We will paint each square in the grid either black or white.

@@ -1,4 +1,3 @@
-
 Problem Statement
 Given a non-negative integer X, perform the following operation for i=1,2,dots,K in this order and find the resulting X.
 Round X off to the nearest 10^i.
@@ -16,7 +15,8 @@ X and K are integers.
 0 le X < 10^{15}
 1 le K le 15
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 X K
 
 Output

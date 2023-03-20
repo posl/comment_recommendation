@@ -1,4 +1,3 @@
-
 Problem Statement
 Given are N integers A_1,ldots,A_N.
 Find the sum of |A_i-A_j| over all pairs i,j such that 1≦ i < j ≦ N.
@@ -9,8 +8,7 @@ Constraints
 |A_i|≦ 10^8
 A_i is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 ldots A_N
 

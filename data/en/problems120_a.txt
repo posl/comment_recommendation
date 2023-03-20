@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi likes the sound when he buys a drink from a vending machine.
 That sound can be heard by spending A yen (the currency of Japan) each time.
@@ -9,8 +8,7 @@ Constraints
 All values in input are integers.
 1 ≦ A, B, C ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B C
 
 Output

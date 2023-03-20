@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N squares arranged in a row from left to right. The height of the i-th square from the left is H_i.
 For each square, you will perform either of the following operations once:
@@ -11,8 +10,7 @@ All values in input are integers.
 1 ≦ N ≦ 10^5
 1 ≦ H_i ≦ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 H_1 H_2 ... H_N
 

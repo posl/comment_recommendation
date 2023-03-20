@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer N. Find the number of strings of length N that satisfy the following conditions, modulo 10^9+7:
 The string does not contain characters other than A, C, G and T.
@@ -12,8 +11,7 @@ For example, the substrings of ATCODER include TCO, AT, CODER, ATCODER and  (the
 Constraints
 3 ≦ N ≦ 100
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

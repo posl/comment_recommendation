@@ -1,4 +1,3 @@
-
 Problem Statement
 Two students of AtCoder Kindergarten are fighting over candy packs.
 There are three candy packs, each of which contains a, b, and c candies, respectively.
@@ -8,7 +7,8 @@ Note that Evi cannot take candies out of the packs, and the whole contents of ea
 Constraints
 1 ≦ a, b, c ≦ 100
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 a b c
 
 Output

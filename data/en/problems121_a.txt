@@ -1,4 +1,3 @@
-
 Problem Statement
 There are H rows and W columns of white square cells.
 You will choose h of the rows and w of the columns, and paint all of the cells contained in those rows or columns.
@@ -11,8 +10,7 @@ All values in input are integers.
 1 ≦ h ≦ H
 1 ≦ w ≦ W
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W
 h w
 

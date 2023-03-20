@@ -1,4 +1,3 @@
-
 Problem Statement
 You have a sequence A composed of N positive integers: A_{1}, A_{2}, cdots, A_{N}.
 You will now successively do the following Q operations:
@@ -10,8 +9,7 @@ All values in input are integers.
  1 ≦ N, Q, A_{i}, B_{i}, C_{i} ≦ 10^{5} 
  B_{i} neq C_{i} 
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_{1} A_{2} cdots A_{N}
 Q

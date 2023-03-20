@@ -1,4 +1,3 @@
-
 Problem Statement
 On a two-dimensional plane, there are m lines drawn parallel to the x axis, and n lines drawn parallel to the y axis.
 Among the lines parallel to the x axis, the i-th from the bottom is represented by y = y_i.
@@ -12,8 +11,7 @@ Constraints
 -10^9 ≦ y_1 < ... < y_m ≦ 10^9
 x_i and y_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 n m
 x_1 x_2 ... x_n
 y_1 y_2 ... y_m

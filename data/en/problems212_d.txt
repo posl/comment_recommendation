@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has many balls, on which nothing is written, and one bag.
 Initially, the bag is empty. Takahashi will do Q operations, each of which is of one of the following three types.
@@ -15,8 +14,7 @@ All values in input are integers.
 There is one or more i such that P_i=3.
 If P_i=3, the bag contains at least one ball just before the i-th operation.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 Q
 query_1
 query_2

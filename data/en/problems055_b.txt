@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke loves working out. He is now exercising N times.
 Before he starts exercising, his power is 1. After he exercises for the i-th time, his power gets multiplied by i.
@@ -7,7 +6,8 @@ Find Snuke's power after he exercises N times. Since the answer can be extremely
 Constraints
 1 ≤ N ≤ 10^{5}
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 
 Output

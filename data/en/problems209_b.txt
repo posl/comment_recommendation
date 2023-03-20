@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi's shop sells N products. The usual price of the i-th product is A_i yen (Japanese currency).
 It has a bargain sale today, with a discount of 1 yen off the usual prices for the 2-nd, 4-th, and the subsequent even-indexed products. The 1-st, 3-rd, and the subsequent odd-indexed products are sold for their usual prices.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ A_i ≦ 100
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X
 A_1 A_2 ldots A_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 At an arcade, Takahashi is playing a game called RPS Battle, which is played as follows:
 The player plays N rounds of Rock Paper Scissors against the machine. (See Notes
@@ -27,8 +26,7 @@ N,K,R,S, and P are all integers.
 |T| = N
 T consists of r, p, and s.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 R S P
 T

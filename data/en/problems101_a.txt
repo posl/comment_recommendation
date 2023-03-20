@@ -1,4 +1,3 @@
-
 Problem Statement
 There is always an integer in Takahashi's mind.
 Initially, the integer in Takahashi's mind is 0. Takahashi is now going to eat four symbols, each of which is + or -. When he eats +, the integer in his mind increases by 1; when he eats -, the integer in his mind decreases by 1.
@@ -9,8 +8,7 @@ Constraints
 The length of S is 4.
 Each character in S is + or -.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

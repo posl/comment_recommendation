@@ -1,12 +1,10 @@
-
 Problem Statement
 Does 2^n gt n^2 hold?
 
 Constraints
 n is an integer between 1 and 10^9 (inclusive).
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 n
 
 Output

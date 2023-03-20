@@ -1,4 +1,3 @@
-
 Problem Statement
 In this problem, an input file contains multiple test cases.
 You are first given an integer T. Solve the following problem for T test cases.
@@ -10,7 +9,8 @@ Constraints
 1 ≦ A_i ≦ 10^9
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format, where text{test}_i represents the i-th test case:
+Input
+The input is given from Standard Input in the following format, where text{test}_i represents the i-th test case:
 T
 text{test}_1
 text{test}_2

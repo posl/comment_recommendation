@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N switches with "on" and "off" state, and M bulbs. The switches are numbered 1 to N, and the bulbs are numbered 1 to M.
 Bulb i is connected to k_i switches: Switch s_{i1}, s_{i2}, ..., and s_{ik_i}. It is lighted when the number of switches that are "on" among these switches is congruent to p_i modulo 2.
@@ -12,8 +11,7 @@ s_{ia} neq s_{ib} (a neq b)
 p_i is 0 or 1.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 k_1 s_{11} s_{12} ... s_{1k_1}
 :

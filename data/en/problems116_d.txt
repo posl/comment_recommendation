@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N pieces of sushi. Each piece has two parameters: "kind of topping" t_i and "deliciousness" d_i.
 You are choosing K among these N pieces to eat.
@@ -15,8 +14,7 @@ Constraints
 1 ≦ d_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 t_1 d_1
 t_2 d_2

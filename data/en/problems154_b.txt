@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a string S. Replace every character in S with x and print the result.
 

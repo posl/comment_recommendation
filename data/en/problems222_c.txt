@@ -1,4 +1,3 @@
-
 Problem Statement
 2N players, with ID numbers 1 through 2N, will participate in a rock-scissors-paper contest.
 The contest has M rounds. Each round has N one-on-one matches, where each player plays in one of them.
@@ -24,8 +23,7 @@ Constraints
 1 ≦ M ≦ 100
 A_{i,j} is G, C, or P.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_{1,1}A_{1,2}ldots A_{1,M}
 A_{2,1}A_{2,2}ldots A_{2,M}

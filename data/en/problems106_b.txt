@@ -1,4 +1,3 @@
-
 Problem Statement
 The number 105 is quite special - it is odd but still it has eight divisors.
 Now, your task is this: how many odd numbers with exactly eight positive divisors are there between 1 and N (inclusive)?

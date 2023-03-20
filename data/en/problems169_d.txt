@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a positive integer N. Consider repeatedly applying the operation below on N:
 First, choose a positive integer z satisfying all of the conditions below:

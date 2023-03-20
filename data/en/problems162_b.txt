@@ -1,4 +1,3 @@
-
 Problem Statement
 Let us define the FizzBuzz sequence a_1,a_2,... as follows:
 If both 3 and 5 divides i, a_i=text{FizzBuzz}.
@@ -10,8 +9,7 @@ Find the sum of all numbers among the first N terms of the FizzBuzz sequence.
 Constraints
 1 ≦ N ≦ 10^6
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

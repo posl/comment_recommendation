@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string s.
 Among the different substrings of s, print the K-th lexicographically smallest one.
@@ -16,8 +15,7 @@ s has at least K different substrings.
 Partial Score
 200 points will be awarded as a partial score for passing the test set satisfying |s| ≤ 50.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 s
 K
 

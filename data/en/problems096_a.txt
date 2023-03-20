@@ -1,4 +1,3 @@
-
 Problem Statement
 In AtCoder Kingdom, Gregorian calendar is used, and dates are written in the "year-month-day" order, or the "month-day" order without the year.
 For example, May 3, 2018 is written as 2018-5-3, or 5-3 without the year.  

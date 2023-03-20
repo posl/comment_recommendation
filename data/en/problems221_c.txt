@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer N. Consider permuting the digits in N and separate them into two positive integers.
 For example, for the integer 123, there are six ways to separate it, as follows:
@@ -15,8 +14,7 @@ Constraints
 N is an integer between 1 and 10^9 (inclusive).
 N contains two or more digits that are not 0.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

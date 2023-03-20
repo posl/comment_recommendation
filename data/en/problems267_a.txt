@@ -1,4 +1,3 @@
-
 Problem Statement
 One day, tired from going to school, Takahashi wanted to know how many days there were until Saturday.
 We know that the day was a weekday, and the name of the day of the week was S in English.
@@ -7,8 +6,7 @@ How many days were there until the first Saturday after that day (including Satu
 Constraints
 S is Monday, Tuesday, Wednesday, Thursday, or Friday.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

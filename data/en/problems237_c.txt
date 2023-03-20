@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a string S consisting of lowercase English letters.
 Determine whether adding some number of a's (possibly zero) at the beginning of S can make it a palindrome.
@@ -8,8 +7,7 @@ Constraints
 1 ≦ lvert S rvert ≦ 10^6
 S consists of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

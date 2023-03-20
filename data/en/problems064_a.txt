@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoDeer has three cards, one red, one green and one blue.
 An integer between 1 and 9 (inclusive) is written on each card: r on the red card, g on the green card and b on the blue card.
@@ -8,8 +7,7 @@ Is this integer a multiple of 4?
 Constraints
 1 ≤ r, g, b ≤ 9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 r g b
 
 Output

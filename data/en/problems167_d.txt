@@ -1,4 +1,3 @@
-
 Problem Statement
 The Kingdom of Takahashi has N towns, numbered 1 through N.
 There is one teleporter in each town. The teleporter in Town i (1 ≦ i ≦ N) sends you to Town A_i.

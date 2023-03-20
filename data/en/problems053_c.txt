@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke has decided to play with a six-sided die. Each of its six sides shows an integer 1 through 6, and two numbers on opposite sides always add up to 7.
 Snuke will first put the die on the table with an arbitrary side facing upward, then repeatedly perform the following operation:
@@ -13,7 +12,8 @@ Constraints
 1 ≦ x ≦ 10^{15}
 x is an integer.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 x
 
 Output

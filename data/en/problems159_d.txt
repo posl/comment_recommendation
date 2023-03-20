@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N balls. The i-th ball has an integer A_i written on it.
 For each k=1, 2, ..., N, solve the following problem and print the answer.  

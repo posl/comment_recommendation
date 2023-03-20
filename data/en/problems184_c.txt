@@ -1,4 +1,3 @@
-
 Problem Statement
 There is an infinite two-dimensional grid, and we have a piece called Super Ryuma at square (r_1, c_1). (Ryu means dragon and Ma means horse.)
 In one move, the piece can go to one of the squares shown below:
@@ -12,8 +11,7 @@ Constraints
 All values in input are integers.
 1 le r_1, c_1, r_2, c_2 le 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 r_1 c_1
 r_2 c_2
 

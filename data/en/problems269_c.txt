@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a non-negative integer N. Print all non-negative integers x that satisfy the following condition in ascending order.
 The set of the digit positions containing 1 in the binary representation of x is a subset of the set of the digit positions containing 1 in the binary representation of N.
@@ -10,7 +9,8 @@ N is an integer.
 0 le N < 2^{60}
 In the binary representation of N, at most 15 digit positions contain 1.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 An altar enshrines N stones arranged in a row from left to right. The color of the i-th stone from the left (1 ≦ i ≦ N) is given to you as a character c_i; R stands for red and W stands for white.
 You can do the following two kinds of operations any number of times in any order:
@@ -10,8 +9,7 @@ Constraints
 2 ≦ N ≦ 200000
 c_i is R or W.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 c_{1}c_{2}...c_{N}
 

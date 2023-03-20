@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence A = (A_1, A_2, dots, A_N) of length N.
 You perform the following operation exactly K times:
@@ -11,7 +10,8 @@ Constraints
 1 ≦ A_i ≦ 100
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N K
 A_1 A_2 dots A_N
 

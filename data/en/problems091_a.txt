@@ -1,4 +1,3 @@
-
 Problem Statement
 An elementary school student Takahashi has come to a variety store.
 He has two coins, A-yen and B-yen coins (yen is the currency of Japan), and wants to buy a toy that costs C yen. Can he buy it?
@@ -9,8 +8,7 @@ All input values are integers.
 1 ≦ A, B ≦ 500
 1 ≦ C ≦ 1000
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B C
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a permutation P = (P_1, dots, P_N) of (1, dots, N), where (P_1, dots, P_N) neq (1, dots, N).
 Assume that P is the K-th lexicographically smallest among all permutations of (1 dots, N). Find the (K-1)-th lexicographically smallest permutation.
@@ -17,7 +16,8 @@ P_i neq P_j , (i neq j)
 (P_1, dots, P_N) neq (1, dots, N) 
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 P_1 ldots P_N
 

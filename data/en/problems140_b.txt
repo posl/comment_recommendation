@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi went to an all-you-can-eat buffet with N kinds of dishes and ate all of them (Dish 1, Dish 2, ldots, Dish N) once.
 The i-th dish (1 ≦ i ≦ N) he ate was Dish A_i.
@@ -14,8 +13,7 @@ A_1, A_2, ..., A_N are all different.
 1 ≦ B_i ≦ 50
 1 ≦ C_i ≦ 50
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 A_2 ... A_N
 B_1 B_2 ... B_N

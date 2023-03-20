@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N voting papers. The i-th vote (1 ≦ i ≦ N) has the string S_i written on it.
 Print all strings that are written on the most number of votes, in lexicographical order.

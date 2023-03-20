@@ -1,4 +1,3 @@
-
 Problem Statement
 The Republic of AtCoder has N cities numbered 1 through N and N-1 roads numbered 1 through N-1.
 Road i connects City A_i and City B_i bidirectionally. It is guaranteed that one can travel between every pair of cities using roads.
@@ -15,8 +14,7 @@ Constraints
 1≦ A_i,B_i ≦ N
 It is possible to travel between every pair of cities using roads.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 B_1
 vdots

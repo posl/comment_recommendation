@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N people in an xy-plane. Person i is at (X_i, Y_i). The positions of all people are different.
 We have a string S of length N consisting of L and R.
@@ -14,8 +13,7 @@ Constraints
 All X_i and Y_i are integers.
 S is a string of length N consisting of L and R.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 X_1 Y_1
 X_2 Y_2

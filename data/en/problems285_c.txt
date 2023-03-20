@@ -1,4 +1,3 @@
-
 Problem Statement
 In a parallel universe, AtCoder holds AtCoder Big Contest, where 10^{16} problems are given at once.
 The IDs of the problems are as follows, from the 1-st problem in order: A, B, ..., Z, AA, AB, ..., ZZ, AAA, ...
@@ -12,7 +11,8 @@ Given a string S that is an ID of a problem given in this contest, find the inde
 Constraints
 S is a valid ID of a problem given in AtCoder Big Contest.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 
 Output

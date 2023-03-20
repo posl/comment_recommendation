@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N trampolines on a two-dimensional planar town where Takahashi lives.  The i-th trampoline is located at the point (x_i, y_i) and has a power of P_i.  Takahashi's jumping ability is denoted by S.  Initially, S=0.  Every time Takahashi trains, S increases by 1.
 Takahashi can jump from the i-th to the j-th trampoline if and only if:
@@ -13,8 +12,7 @@ Constraints
 (x_i, y_i) neq (x_j,y_j) (ineq j)
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 x_1 y_1 P_1
 vdots

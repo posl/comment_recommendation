@@ -1,4 +1,3 @@
-
 Problem Statement
 Sig has built his own keyboard. Designed for ultimate simplicity, this keyboard only has 3 keys on it: the 0 key, the 1 key and the backspace key.
 To begin with, he is using a plain text editor with this keyboard. This editor always displays one string (possibly empty). Just after the editor is launched, this string is empty. When each key on the keyboard is pressed, the following changes occur to the string:
@@ -12,7 +11,8 @@ Constraints
 s consists of the letters 0, 1 and B.
 The correct answer is not an empty string.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 s
 
 Output

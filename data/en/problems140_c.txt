@@ -1,4 +1,3 @@
-
 Problem Statement
 There is an integer sequence A of length N whose values are unknown.
 Given is an integer sequence B of length N-1 which is known to satisfy the following:
@@ -10,8 +9,7 @@ All values in input are integers.
 2 ≦ N ≦ 100
 0 ≦ B_i ≦ 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 B_1 B_2 ... B_{N-1}
 

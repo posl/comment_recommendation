@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given an integer sequence A=(A_1,A_2,dots,A_N) of length N.
 Find the maximum value of displaystyle sum_{i=1}^{M} i times B_i for a (not necessarily contiguous) subsequence B=(B_1,B_2,dots,B_M) of length M of A.
@@ -12,8 +11,7 @@ Constraints
 - 2 times 10^5 le A_i le 2 times 10^5
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 A_2 dots A_N
 

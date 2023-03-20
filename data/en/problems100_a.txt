@@ -1,4 +1,3 @@
-
 Problem Statement
 E869120's and square1001's 16-th birthday is coming soon.
 Takahashi from AtCoder Kingdom gave them a round cake cut into 16 equal fan-shaped pieces.

@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is exploring a cave in a video game.
 The cave consists of N rooms arranged in a row.  The rooms are numbered Room 1,2,ldots,N from the entrance.  
@@ -17,8 +16,7 @@ Constraints
 1 ≦ Y_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M T
 A_1 A_2 ldots A_{N-1}
 X_1 Y_1

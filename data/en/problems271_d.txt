@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N cards with an integer written on each side.  Card i (1 ≦ i ≦ N) has an integer a_i written on the front and an integer b_i written on the back.
 You may choose whether to place each card with its front or back side visible.
@@ -10,7 +9,8 @@ Constraints
 1 ≦ a_i, b_i ≦ 100 , (1 ≦ i ≦ N)
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N S
 a_1 b_1
 vdots

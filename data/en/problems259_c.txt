@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given two strings S and T.
 Determine whether it is possible to make S equal T by performing the following operation some number of times (possibly zero).
@@ -12,8 +11,7 @@ Insert a single copy of the character S_i(= S_{i+1}) between the i-th and (i+1)-
 Constraints
 Each of S and T is a string of length between 2 and 2 times 10^5 (inclusive) consisting of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 T
 

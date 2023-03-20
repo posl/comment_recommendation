@@ -1,4 +1,3 @@
-
 Problem Statement
 A robot is put at the origin in a two-dimensional plane.
 Initially, the robot is facing in the positive x-axis direction.
@@ -15,8 +14,7 @@ s consists of F and T.
 x and y are integers.
 |x|, |y| ≦ |s|
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 s
 x y
 

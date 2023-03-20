@@ -1,4 +1,3 @@
-
 Problem Statement
 E869120 found a chest which is likely to contain treasure.
 However, the chest is locked. In order to open it, he needs to enter a string S consisting of lowercase English letters.
@@ -14,8 +13,7 @@ Constraints
 S' consists of lowercase English letters and ?.
 T consists of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 T'
 

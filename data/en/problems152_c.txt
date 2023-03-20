@@ -1,4 +1,3 @@
-
 Problem Statement
 Given is a permutation P_1, ldots, P_N of 1, ldots, N.
 Find the number of integers i (1 ≦ i ≦ N) that satisfy the following condition:  

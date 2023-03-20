@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given N strings S_1,S_2,dots,S_N consisting of lowercase English alphabets.
 Consider choosing some number of strings from S_1,S_2,dots,S_N.
@@ -12,8 +11,7 @@ S_i is a non-empty string consisting of lowercase English alphabets.
 For each integer i such that 1 le i le N, S_i does not contain two or more same alphabets.
 If i neq j, then S_i neq S_j.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 S_1
 S_2

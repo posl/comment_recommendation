@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is meeting up with Aoki.
 They have planned to meet at a place that is D meters away from Takahashi's house in T minutes from now.
@@ -11,8 +10,7 @@ Constraints
 1 ≦ S ≦ 10000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 D T S
 
 Output

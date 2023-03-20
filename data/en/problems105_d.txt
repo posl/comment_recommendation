@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N boxes arranged in a row from left to right. The i-th box from the left contains A_i candies.
 You will take out the candies from some consecutive boxes and distribute them evenly to M children.
@@ -12,8 +11,7 @@ All values in input are integers.
 2 ≦ M ≦ 10^9
 1 ≦ A_i ≦ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 A_2 ... A_N
 

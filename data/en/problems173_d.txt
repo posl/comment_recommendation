@@ -1,4 +1,3 @@
-
 Problem Statement
 Quickly after finishing the tutorial of the online game ATChat, you have decided to visit a particular place with N-1 players who happen to be there. These N players, including you, are numbered 1 through N, and the friendliness of Player i is A_i.
 The N players will arrive at the place one by one in some order. To make sure nobody gets lost, you have set the following rule: players who have already arrived there should form a circle, and a player who has just arrived there should cut into the circle somewhere.

@@ -1,4 +1,3 @@
-
 Problem Statement
 In some other world, today is Christmas.
 Mr. Takaha decides to make a multi-dimensional burger in his party. A level-L burger (L is an integer greater than or equal to 0) is the following thing:
@@ -12,8 +11,7 @@ Constraints
 1 ≦ X ≦ ( the total number of layers in a level-N burger )
 N and X are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X
 
 Output

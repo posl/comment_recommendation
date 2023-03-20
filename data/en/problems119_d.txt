@@ -1,4 +1,3 @@
-
 Problem Statement
 Along a road running in an east-west direction, there are A shrines and B temples.
 The i-th shrine from the west is located at a distance of s_i meters from the west end of the road, and the i-th temple from the west is located at a distance of t_i meters from the west end of the road.
@@ -14,8 +13,7 @@ Constraints
 s_1, ..., s_A, t_1, ..., t_B, x_1, ..., x_Q are all different.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B Q
 s_1
 :

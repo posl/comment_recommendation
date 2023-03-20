@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoder Inc. holds a contest every Saturday.
 There are two types of contests called ABC and ARC, and just one of them is held at a time.
@@ -8,8 +7,7 @@ Given a string S representing the type of the contest held last week, print the 
 Constraints
 S is ABC or ARC.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

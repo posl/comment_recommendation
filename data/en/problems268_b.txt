@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given two strings S and T consisting of lowercase English letters.
 Determine if S is a prefix of T.
@@ -8,8 +7,7 @@ A prefix of a string T_1T_2ldots T_N of length N is a string expressed as the fi
 Constraints
 S and T are strings of lengths between 1 and 100 (inclusive) consisting of lowercase English letters.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 T
 

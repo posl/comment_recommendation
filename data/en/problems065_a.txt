@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has a strong stomach. He never gets a stomachache from eating something whose "best-by" date is at most X days earlier.
 He gets a stomachache if the "best-by" date of the food is X+1 or more days earlier, though.
@@ -9,8 +8,7 @@ Write a program that outputs delicious if he found it delicious, safe if he did 
 Constraints
 1 ≤ X,A,B ≤ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 X A B
 
 Output

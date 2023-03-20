@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has a water bottle with the shape of a rectangular prism whose base is a square of side a~mathrm{cm} and whose height is b~mathrm{cm}. (The thickness of the bottle can be ignored.)
 We will pour x~mathrm{cm}^3 of water into the bottle, and gradually tilt the bottle around one of the sides of the base.
@@ -10,8 +9,7 @@ All values in input are integers.
 1 ≦ b ≦ 100
 1 ≦ x ≦ a^2b
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 a b x
 
 Output

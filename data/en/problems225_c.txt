@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a 10^{100} times 7 matrix A, where the (i,j)-th entry is (i-1) times 7 + j for every pair of integers (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7).
 Given an N times M matrix B, determine whether B is some (unrotated) rectangular part of A.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ B_{i,j} ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 B_{1,1} B_{1,2} ldots B_{1,M}
 B_{2,1} B_{2,2} ldots B_{2,M}

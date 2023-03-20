@@ -1,4 +1,3 @@
-
 Problem Statement
 Akaki, a patissier, can make N kinds of doughnut using only a certain powder called "Okashi no Moto" (literally "material of pastry", simply called Moto below) as ingredient. These doughnuts are called Doughnut 1, Doughnut 2, ..., Doughnut N. In order to make one Doughnut i (1 ≤ i ≤ N), she needs to consume m_i grams of Moto. She cannot make a non-integer number of doughnuts, such as 0.5 doughnuts.
 Now, she has X grams of Moto. She decides to make as many doughnuts as possible for a party tonight. However, since the tastes of the guests differ, she will obey the following condition:
@@ -11,8 +10,7 @@ Constraints
 m_1 + m_2 + ... + m_N ≤ X ≤ 10^5
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X
 m_1
 m_2

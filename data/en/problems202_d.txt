@@ -1,4 +1,3 @@
-
 Problem Statement
 Among the strings of length A + B containing A occurrences of a and B occurrences of b, find the string that comes K-th in the lexicographical order.
 
@@ -7,8 +6,7 @@ Constraints
 1 ≦ K ≦ S, where S is the number of strings of length A + B containing A occurrences of a and B occurrences of b.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B K
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 As a New Year's gift, Dolphin received a string s of length 19.
 The string s has the following format: [five lowercase English letters],[seven lowercase English letters],[five lowercase English letters].
@@ -10,7 +9,8 @@ The length of s is 19.
 The sixth and fourteenth characters in s are ,.
 The other characters in s are lowercase English letters.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 s
 
 Output

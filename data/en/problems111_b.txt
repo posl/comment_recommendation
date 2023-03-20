@@ -1,4 +1,3 @@
-
 Problem Statement
 Kurohashi has never participated in AtCoder Beginner Contest (ABC).
 The next ABC to be held is ABC N (the N-th ABC ever held).
@@ -9,8 +8,7 @@ Constraints
 100 ≦ N ≦ 999
 N is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

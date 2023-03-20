@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is having trouble with deciding a username for a service.  Write a code to help him.
 Find a string X that satisfies all of the following conditions:
@@ -20,8 +19,7 @@ S_i is a string consisting of lowercase English letters.
 T_i neq T_j if i neq j.
 T_i is a string consisting of lowercase English letters and _.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 S_1
 S_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoDeer the deer and his friend TopCoDeer is playing a game.
 The game consists of N turns.
@@ -16,7 +15,8 @@ N=|s|
 Each character in s is g or p.
 The gestures represented by s satisfy the condition (※).
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 s
 
 Output

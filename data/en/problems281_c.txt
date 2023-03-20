@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a playlist with N songs numbered 1, dots, N.
 Song i lasts A_i seconds.
@@ -13,7 +12,8 @@ Constraints
 The playlist does not change songs at exactly T seconds after it starts playing.
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N T
 A_1 ldots A_N
 

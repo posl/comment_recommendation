@@ -1,4 +1,3 @@
-
 Problem Statement
 This contest, AtCoder Beginner Contest, is abbreviated as ABC.
 When we refer to a specific round of ABC, a three-digit number is appended after ABC. For example, ABC680 is the 680th round of ABC.
@@ -7,8 +6,7 @@ What is the abbreviation for the N-th round of ABC? Write a program to output th
 Constraints
 100 ≤ N ≤ 999
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

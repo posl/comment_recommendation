@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi will toss a coin N times.
 He also has a counter, which initially shows 0.
@@ -16,8 +15,7 @@ Constraints
 C_1,C_2,ldots,C_M are all different.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 X_1 X_2 ldots X_N
 C_1 Y_1

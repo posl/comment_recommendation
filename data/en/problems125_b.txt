@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N gems. The value of the i-th gem is V_i.
 You will choose some of these gems, possibly all or none, and get them.
@@ -11,8 +10,7 @@ All values in input are integers.
 1 ≦ N ≦ 20
 1 ≦ C_i, V_i ≦ 50
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 V_1 V_2 ... V_N
 C_1 C_2 ... C_N

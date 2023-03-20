@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a person's systolic blood pressure, A, and diastolic blood pressure, B.
 Find the mean arterial pressure, C, which we define as follows:
@@ -8,8 +7,7 @@ Constraints
 50 ≦ B ≦ A ≦ 300
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

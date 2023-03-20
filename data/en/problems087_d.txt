@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N people standing on the x-axis.
 Let the coordinate of Person i be x_i.
@@ -19,8 +18,7 @@ L_i neq R_i (1 ≦ i ≦ M)
 If i neq j, then (L_i, R_i) neq (L_j, R_j) and (L_i, R_i) neq (R_j, L_j).
 D_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 L_1 R_1 D_1
 L_2 R_2 D_2

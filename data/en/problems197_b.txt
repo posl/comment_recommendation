@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a grid of H horizontal rows and W vertical columns, where some of the squares contain obstacles.
 Let (i, j) denote the square at the i-th row from the top and j-th column from the left.
@@ -14,8 +13,7 @@ Constraints
 S_i is a string of length W consisting of . and #.
 The square (X, Y) does not contain an obstacle.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 H W X Y
 S_1
 S_2

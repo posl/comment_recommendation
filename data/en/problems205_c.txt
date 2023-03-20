@@ -1,4 +1,3 @@
-
 Problem Statement
 For a base number X, the product of multiplying it Y times is called X to the Y-th power and represented as text{pow}(X, Y).
 For example, we have text{pow}(2,3)=2times 2times 2=8.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ C ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B C
 
 Output

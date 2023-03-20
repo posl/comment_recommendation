@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N stations on a certain line operated by AtCoder Railway. The i-th station (1 ≦ i ≦ N) from the starting station is named S_i.
 Local trains stop at all stations, while express trains may not. Specifically, express trains stop at only M , (M ≦ N) stations, and the j-th stop (1 ≦ j ≦ M) is the station named T_j.
@@ -13,8 +12,7 @@ S_i neq S_j , (i neq j)
 T_1 = S_1 and T_M = S_N.
 (T_1, dots, T_M) is obtained by removing zero or more strings from (S_1, dots, S_N) and lining up the remaining strings without changing the order.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 S_1 ldots S_N
 T_1 ldots T_M

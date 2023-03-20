@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N points in a two-dimensional plane. The coordinates of the i-th point are (x_i,y_i).
 Find the maximum length of a segment connecting two of these points.
@@ -9,8 +8,7 @@ Constraints
 (x_i,y_i) neq (x_j,y_j) (i neq j)
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2

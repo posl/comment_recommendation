@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi will do a tap dance. The dance is described by a string S where each character is L, R, U, or D. These characters indicate the positions on which Takahashi should step. He will follow these instructions one by one in order, starting with the first character.
 S is said to be easily playable if and only if it satisfies both of the following conditions:

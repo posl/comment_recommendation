@@ -1,4 +1,3 @@
-
 Problem Statement
 In a public bath, there is a shower which emits water for T seconds when the switch is pushed.
 If the switch is pushed when the shower is already emitting water, from that moment it will be emitting water for T seconds.
@@ -13,8 +12,7 @@ Constraints
 0 = t_1 < t_2 < t_3 < , ..., < t_{N-1} < t_N ≤ 10^9
 T and each t_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N T
 t_1 t_2 ... t_N
 

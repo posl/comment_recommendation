@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence C of N integers. Find the number of sequences A of N integers satisfying all of the following conditions. 
 1 ≦ A_i ≦ C_i, (1 ≦ i ≦ N)
@@ -10,8 +9,7 @@ Constraints
 1 ≦ C_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 C_1 C_2 ldots C_N
 

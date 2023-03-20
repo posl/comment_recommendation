@@ -1,4 +1,3 @@
-
 Problem Statement
 It is September 9 in Japan now.
 You are given a two-digit integer N. Answer the question: Is 9 contained in the decimal notation of N?
@@ -6,8 +5,7 @@ You are given a two-digit integer N. Answer the question: Is 9 contained in the 
 Constraints
 10≤N≤99
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

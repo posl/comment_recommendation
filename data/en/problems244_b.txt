@@ -1,4 +1,3 @@
-
 Problem Statement
 Consider an xy-plane.  The positive direction of the x-axis is in the direction of east, and the positive direction of the y-axis is in the direction of north.
 Takahashi is initially at point (x, y) = (0, 0) and facing east (in the positive direction of the x-axis).
@@ -18,8 +17,7 @@ Constraints
 N is an integer.
 T is a string of length N consisting of S and R.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 T
 

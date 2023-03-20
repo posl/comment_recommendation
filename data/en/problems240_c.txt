@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is standing at the coordinate 0 on a number line.
 He will now perform N jumps. In the i-th jump (1 ≦ i ≦ N), he moves a_i or b_i in the positive direction.
@@ -10,8 +9,7 @@ Constraints
 1 ≦ X ≦ 10000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N X
 a_1 b_1
 vdots

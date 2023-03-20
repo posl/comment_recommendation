@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N integers, A_1, A_2, ..., A_N, written on the blackboard.
 You will choose one of them and replace it with an integer of your choice between 1 and 10^9 (inclusive), possibly the same as the integer originally written.

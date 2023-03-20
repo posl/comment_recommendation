@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi made N problems for competitive programming.
 The problems are numbered 1 to N, and the difficulty of Problem i is represented as an integer d_i (the higher, the harder).
@@ -13,8 +12,7 @@ N is an even number.
 1 ≦ d_i ≦ 10^5
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 d_1 d_2 ... d_N
 

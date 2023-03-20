@@ -1,4 +1,3 @@
-
 Problem Statement
 You are an immigration officer in the Kingdom of AtCoder. The document carried by an immigrant has some number of integers written on it, and you need to check whether they meet certain criteria.
 According to the regulation, the immigrant should be allowed entry to the kingdom if and only if the following condition is satisfied:

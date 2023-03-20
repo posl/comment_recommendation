@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoDeer the deer is seeing a quick report of election results on TV.
 Two candidates are standing for the election: Takahashi and Aoki.
@@ -14,7 +13,8 @@ Constraints
 T_i and A_i (1≦i≦N) are coprime.
 It is guaranteed that the correct answer is at most 10^{18}.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 T_1 A_1
 T_2 A_2

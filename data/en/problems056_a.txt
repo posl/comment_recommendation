@@ -1,4 +1,3 @@
-
 Problem Statement
 Two deer, AtCoDeer and TopCoDeer, are playing a game called Honest or Dishonest.
 In this game, an honest player always tells the truth, and an dishonest player always tell lies.
@@ -11,7 +10,8 @@ Constraints
 a=H or a=D.
 b=H or b=D.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 a b
 
 Output

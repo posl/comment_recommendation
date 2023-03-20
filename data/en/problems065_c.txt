@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke has N dogs and M monkeys. He wants them to line up in a row.
 As a Japanese saying goes, these dogs and monkeys are on bad terms. ("ken'en no naka", literally "the relationship of dogs and monkeys", means a relationship of mutual hatred.) Snuke is trying to reconsile them, by arranging the animals so that there are neither two adjacent dogs nor two adjacent monkeys.
@@ -8,8 +7,7 @@ Here, dogs and monkeys are both distinguishable. Also, two arrangements that res
 Constraints
 1 ≤ N,M ≤ 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 
 Output

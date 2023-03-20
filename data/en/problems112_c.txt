@@ -1,4 +1,3 @@
-
 Problem Statement
 In the Ancient Kingdom of Snuke, there was a pyramid to strengthen the authority of Takahashi, the president of AtCoder Inc.
 The pyramid had center coordinates (C_X, C_Y) and height H. The altitude of coordinates (X, Y) is max(H - |X - C_X| - |Y - C_Y|, 0).  

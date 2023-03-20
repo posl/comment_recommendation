@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N cells arranged in a row, numbered 1, 2, ldots, N from left to right.
 Tak lives in these cells and is currently on Cell 1. He is trying to reach Cell N by using the procedure described below.
@@ -15,8 +14,7 @@ Constraints
 [L_i, R_i] and [L_j, R_j] do not intersect (i neq j) 
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 L_1 R_1
 L_2 R_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi the Jumbo will practice golf.
 His objective is to get a carry distance that is a multiple of K, while he can only make a carry distance of between A and B (inclusive).

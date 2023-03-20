@@ -1,4 +1,3 @@
-
 Problem Statement
 Print all strictly increasing integer sequences of length N where all elements are between 1 and M (inclusive), in lexicographically ascending order.
 
@@ -12,8 +11,7 @@ Constraints
 1 le N le M le 10
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 
 Output

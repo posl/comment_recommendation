@@ -1,4 +1,3 @@
-
 Problem Statement
 We have 9K cards. For each i = 1, 2, dots, 9, there are K cards with i written on it.
 We randomly shuffled these cards and handed out five cards - four face up and one face down - to each of Takahashi and Aoki.
@@ -15,8 +14,7 @@ The first through fourth characters of each of S and T are 1, 2, dots, or 9.
 Each of the digit 1, 2, dots, and 9 appears at most K times in total in S and T.
 The fifth character of each of S and T is #.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 K
 S
 T

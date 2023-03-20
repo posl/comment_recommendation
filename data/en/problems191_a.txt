@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi and Aoki are playing baseball. Takahashi is the pitcher, and Aoki is the batter.
 Takahashi can throw an invisible pitch. When he throws it, the ball moves linearly at a constant speed V , mathrm{m / s}, and it becomes invisible between the moment T seconds after throwing and the moment S seconds after throwing (inclusive). The ball keeps moving when it is invisible.
@@ -11,8 +10,7 @@ Constraints
 1 le D le 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 V T S D
 
 Output

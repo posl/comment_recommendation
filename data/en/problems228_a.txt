@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi turns on the light of his room at S o'clock (on the 24-hour clock) every day and turns it off at T o'clock every day.
 The date may change while the light is on.
@@ -9,8 +8,7 @@ Constraints
 S neq T
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S T X
 
 Output

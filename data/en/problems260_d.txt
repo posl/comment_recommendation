@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a deck consisting of N face-down cards with an integer from 1 through N written on them.  The integer on the i-th card from the top is P_i.
 Using this deck, you will perform N moves, each consisting of the following steps:
@@ -12,8 +11,7 @@ All values in input are integers.
 1 le K le N le 2 times 10^5
 P is a permutation of (1,2,dots,N) (i.e. a sequence obtained by rearranging (1,2,dots,N)).
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N K
 P_1 P_2 dots P_N
 

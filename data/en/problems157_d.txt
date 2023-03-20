@@ -1,4 +1,3 @@
-
 Problem Statement
 An SNS has N users - User 1, User 2, cdots, User N.
 Between these N users, there are some relationships - M friendships and K blockships.
@@ -27,8 +26,7 @@ C_i neq D_i
 (A_i, B_i) neq (C_j, D_j)
 (A_i, B_i) neq (D_j, C_j)
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M K
 A_1 B_1
 vdots

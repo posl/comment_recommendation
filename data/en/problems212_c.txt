@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given two sequences: A=(A_1,A_2, ldots ,A_N) consisting of N positive integers, and B=(B_1, ldots ,B_M) consisting of M positive integers.
 Find the minimum difference of an element of A and an element of B, that is, displaystyle min_{ 1≦ i≦ N}displaystylemin_{1≦ j≦ M} lvert A_i-B_jrvert.
@@ -9,8 +8,7 @@ Constraints
 1 ≦ B_i ≦ 10^9
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 A_2 ldots A_N
 B_1 B_2 ldots B_M

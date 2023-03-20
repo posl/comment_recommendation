@@ -1,4 +1,3 @@
-
 Problem Statement
 Compute A times B, truncate its fractional part, and print the result as an integer.
 
@@ -8,8 +7,7 @@ Constraints
 A is an integer.
 B is a number with two digits after the decimal point.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

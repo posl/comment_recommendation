@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a two-dimensional plane. For integers r and c between 1 and 9, there is a pawn at the coordinates (r,c) if the c-th character of S_{r} is #, and nothing if the c-th character of S_{r} is ..
 Find the number of squares in this plane with pawns placed at all four vertices.
@@ -6,7 +5,8 @@ Find the number of squares in this plane with pawns placed at all four vertices.
 Constraints
 Each of S_1,ldots,S_9 is a string of length 9 consisting of # and ..
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S_1
 S_2
 vdots

@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is participating in a programming contest, AXC001. He has just submitted his code to Problem A.
 The problem has N test cases, all of which must be passed to get an AC verdict.

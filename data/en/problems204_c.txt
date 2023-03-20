@@ -1,4 +1,3 @@
-
 Problem Statement
 The republic of AtCoder has N cities numbered 1 through N and M roads numbered 1 through M.
 Road i leads from City A_i to City B_i, but you cannot use it to get from City B_i to City A_i.
@@ -13,8 +12,7 @@ A_i neq B_i
 (A_i,B_i) are distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 B_1
 vdots

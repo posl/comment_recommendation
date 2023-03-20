@@ -1,4 +1,3 @@
-
 Problem Statement
 Snuke has a favorite restaurant.
 The price of any meal served at the restaurant is 800 yen (the currency of Japan), and each time a customer orders 15 meals, the restaurant pays 200 yen back to the customer.
@@ -9,7 +8,8 @@ Find x-y.
 Constraints
 1 ≤ N ≤ 100
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 
 Output

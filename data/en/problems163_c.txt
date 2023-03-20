@@ -1,4 +1,3 @@
-
 Problem Statement
 A company has N members, who are assigned ID numbers 1, ..., N.
 Every member, except the member numbered 1, has exactly one immediate boss with a smaller ID number.
@@ -9,8 +8,7 @@ Constraints
 2 ≦ N ≦ 2 times 10^5
 1 ≦ A_i < i
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_2 ... A_N
 

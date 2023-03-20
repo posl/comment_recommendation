@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N cream puffs.
 Find all possible number of people to which we can evenly distribute the cream puffs without cutting them.
@@ -7,8 +6,7 @@ Constraints
 1 ≦ N ≦ 10^{12}
 N is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

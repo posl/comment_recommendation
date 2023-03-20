@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi has a string S consisting of lowercase English letters.
 On this string, he will do the operation below just once.
@@ -19,8 +18,7 @@ Constraints
 Each of S and T is a string of length between 1 and 10^5 (inclusive) consisting of lowercase English letters.
 The lengths of S and T are equal.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 T
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 We have a multiset of integers S, which is initially empty.
 Given Q queries, process them in order.
@@ -15,8 +14,7 @@ Constraints
 When a query of type 3 is given, S is not empty.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 Q
 mathrm{query}_1
 vdots

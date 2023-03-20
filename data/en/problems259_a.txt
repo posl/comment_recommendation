@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi had his N-th birthday, when he was T centimeters tall.
 Additionally, we know the following facts:
@@ -14,8 +13,7 @@ Constraints
 Takahashi was at least 1 centimeter tall at his birth.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M X T D
 
 Output

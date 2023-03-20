@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi bought a table clock.
 The clock shows the time as shown in Figure 1 at mathrm{AB}:mathrm{CD} in the 24-hour system.
@@ -18,7 +17,8 @@ Constraints
 0 ≦ M ≦ 59
 H and M are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 H M
 
 Output

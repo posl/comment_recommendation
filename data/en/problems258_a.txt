@@ -1,4 +1,3 @@
-
 Problem Statement
 AtCoder Beginner Contest usually starts at 21:00 JST and lasts for 100 minutes.
 You are given an integer K between 0 and 100 (inclusive). Print the time K minutes after 21:00 in the HH:MM format, where HH denotes the hour on the 24-hour clock and MM denotes the minute. If the hour or the minute has just one digit, append a 0 to the beginning to represent it as a 2-digit integer.
@@ -6,8 +5,7 @@ You are given an integer K between 0 and 100 (inclusive). Print the time K minut
 Constraints
 K is an integer between 0 and 100 (inclusive).
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 K
 
 Output

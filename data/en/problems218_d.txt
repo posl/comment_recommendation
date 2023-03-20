@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N distinct points on a two-dimensional plane, numbered 1,2,ldots,N. Point i (1 ≦ i ≦ N) has the coordinates (x_i,y_i).
 How many rectangles are there whose vertices are among the given points and whose edges are parallel to the x- or y-axis?
@@ -9,8 +8,7 @@ Constraints
 (x_i,y_i) neq (x_j,y_j) (i neq j)
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2

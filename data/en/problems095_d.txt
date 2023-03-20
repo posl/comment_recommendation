@@ -1,4 +1,3 @@
-
 Problem Statement
 "Teishi-zushi", a Japanese restaurant, is a plain restaurant with only one round counter. The outer circumference of the counter is C meters. Customers cannot go inside the counter.
 Nakahashi entered Teishi-zushi, and he was guided to the counter. Now, there are N pieces of sushi (vinegared rice with seafood and so on) on the counter. The distance measured clockwise from the point where Nakahashi is standing to the point where the i-th sushi is placed, is x_i meters. Also, the i-th sushi has a nutritive value of v_i kilocalories.
@@ -15,8 +14,7 @@ All values in input are integers.
 Subscores
 300 points will be awarded for passing the test set satisfying N ≤ 100.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N C
 x_1 v_1
 x_2 v_2

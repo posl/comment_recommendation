@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given strings S and T consisting of lowercase English letters and ?.  Here, |S| gt |T| holds (for a string X, |X| denotes the length of X).
 Two strings X and Y such that |X|=|Y| is said to match if and only if:
@@ -10,7 +9,8 @@ Constraints
 S and T are strings consisting of lowercase English letters and ?.
 1 ≦ |T| <  |S| ≦ 3 times 10^5
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S
 T
 

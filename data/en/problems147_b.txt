@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi loves palindromes. Non-palindromic strings are unacceptable to him. Each time he hugs a string, he can change one of its characters to any character of his choice.
 Given is a string S. Find the minimum number of hugs needed to make S palindromic.

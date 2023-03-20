@@ -1,4 +1,3 @@
-
 Problem Statement
 Alice, Bob and Charlie are playing Card Game for Three, as below:
 At first, each of the three players has a deck consisting of some number of cards. Each card has a letter a, b or c written on it. The orders of the cards in the decks cannot be rearranged.
@@ -15,7 +14,8 @@ Constraints
 1≦|S_C|≦100
 Each letter in S_A, S_B, S_C is a, b or c.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 S_A
 S_B
 S_C

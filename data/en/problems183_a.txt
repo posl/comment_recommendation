@@ -1,4 +1,3 @@
-
 Problem Statement
 The function ReLU is defined as follows:
 Given an integer x, find ReLU(x).
@@ -7,8 +6,7 @@ Constraints
 x is an integer.
  -10 ≦ x ≦ 10
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 x
 
 Output

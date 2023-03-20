@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S of length exactly 9 consisting of digits.
 One but all digits from 0 to 9 appear exactly once in S.
@@ -8,8 +7,7 @@ Constraints
 S is a string of length 9 consisting of digits.
 All characters in S are distinct.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

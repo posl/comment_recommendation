@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi became a pastry chef and opened a shop La Confiserie d'ABC to celebrate AtCoder Beginner Contest 100.
 The shop sells N kinds of cakes.

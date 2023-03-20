@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N people numbered 1 to N.
 Person i guessed the building area of KEYENCE headquarters building to be S_i square meters.
@@ -11,8 +10,7 @@ Constraints
 1 ≦ S_i ≦ 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 S_1 ldots S_N
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is making a computer baseball game.
 He will write a program that shows a batter's batting average with a specified number of digits.
@@ -13,7 +12,8 @@ Constraints
 0 ≦ B ≦ A
 A and B are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 A B
 
 Output

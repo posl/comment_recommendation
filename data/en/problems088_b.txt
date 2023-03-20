@@ -1,4 +1,3 @@
-
 Problem Statement
 We have N cards. A number a_i is written on the i-th card.
 Alice and Bob will play a game using these cards. In this game, Alice and Bob alternately take one card. Alice goes first.

@@ -1,4 +1,3 @@
-
 Problem Statement
 Bowling pins are numbered 1 through 10.  The following figure is a top view of the arrangement of the pins:
 Let us call each part between two dotted lines in the figure a column.
@@ -19,8 +18,7 @@ Determine if the placement of the pins represented by S is a split.
 Constraints
 S is a string of length 10 consisting of 0 and 1.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

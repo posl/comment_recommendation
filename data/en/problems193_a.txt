@@ -1,4 +1,3 @@
-
 Problem Statement
 A shop sells a product whose regular price is A yen (Japanese currency) for B yen. By what percentage of the regular price is this product discounted?
 
@@ -6,8 +5,7 @@ Constraints
 A and B are integers.
 1 ≤ B < A ≤ 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

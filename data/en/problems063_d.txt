@@ -1,4 +1,3 @@
-
 Problem Statement
 You are going out for a walk, when you suddenly encounter N monsters. Each monster has a parameter called health, and the health of the i-th monster is h_i at the moment of encounter. A monster will vanish immediately when its health drops to 0 or below.
 Fortunately, you are a skilled magician, capable of causing explosions that damage monsters. In one explosion, you can damage monsters as follows:
@@ -11,8 +10,7 @@ All input values are integers.
 1 ≤ B < A ≤ 10^9
 1 ≤ h_i ≤ 10^9
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N A B
 h_1
 h_2

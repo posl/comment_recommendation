@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence A = (A_1, A_2, ldots, A_N) of length N.
 For each K = 0, 1, 2, ldots, N-1, solve the following problem.
@@ -11,7 +10,8 @@ Constraints
 1 ≦ A_i ≦ 10^9
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 A_1 A_2 ldots A_N
 

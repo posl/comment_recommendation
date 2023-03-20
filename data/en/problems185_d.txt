@@ -1,4 +1,3 @@
-
 Problem Statement
 There are N squares arranged in a row from left to right. Let Square i be the i-th square from the left.
 M of those squares, Square A_1, A_2, A_3, ldots, A_M, are blue; the others are white. (M may be 0, in which case there is no blue square.)
@@ -12,8 +11,7 @@ Constraints
 A_i are pairwise distinct.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} dots hspace{5pt} A_M
 

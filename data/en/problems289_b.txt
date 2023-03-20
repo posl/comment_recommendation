@@ -1,4 +1,3 @@
-
 Problem Statement
 Studying Kanbun, Takahashi is having trouble figuring out the order to read words.  Help him out!
 There are N integers from 1 through N arranged in a line in ascending order.   
@@ -27,7 +26,8 @@ Constraints
 1 ≦ a_1 < a_2 < dots < a_M ≦ N-1
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N M
 a_1 a_2 dots a_M
 

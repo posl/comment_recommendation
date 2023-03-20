@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given positive integers A and B.
 Let us calculate A+B (in decimal). If it does not involve a carry, print Easy; if it does, print Hard.
@@ -7,8 +6,7 @@ Constraints
 A and B are integers.
 1 le A,B le 10^{18}
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

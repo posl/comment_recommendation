@@ -1,4 +1,3 @@
-
 Problem Statement
 In what century is the year N?
 What is century?
@@ -7,8 +6,7 @@ A century is a period of 100 years. For example, the 1-st century consists of th
 Constraints
 1 le N le 3000
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given two integers A and B.
 Find the largest value among A+B, A-B and A times B.
@@ -7,8 +6,7 @@ Constraints
 -1000 ≦ A,B ≦ 1000
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

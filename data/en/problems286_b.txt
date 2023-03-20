@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a string S of length N.
 Find the string obtained by replacing all contiguous occurrences of na in S with nya.
@@ -7,7 +6,8 @@ Constraints
 N is an integer between 1 and 1000, inclusive.
 S is a string of length N consisting of lowercase English letters.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 S
 

@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a positive integer N. It is known that N can be represented as N=p^2q using two different prime numbers p and q.
 Find p and q.
@@ -10,7 +9,8 @@ All values in the input are integers.
 1≦ N ≦ 9times 10^{18}
 N can be represented as N=p^2q using two different prime numbers p and q.
 
-InputThe input is given from Standard Input in the following format, where text{test}_i represents the i-th test case:
+Input
+The input is given from Standard Input in the following format, where text{test}_i represents the i-th test case:
 T
 text{test}_1
 text{test}_2

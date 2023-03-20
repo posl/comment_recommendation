@@ -1,4 +1,3 @@
-
 Problem Statement
 Print all non-negative integers less than or equal to N in descending order.
 
@@ -6,7 +5,8 @@ Constraints
 1 ≦ N ≦ 100
 N is an integer.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 
 Output

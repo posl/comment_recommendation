@@ -1,7 +1,5 @@
-
 問題文
--10^{18} 以上 10^{18} 以下の整数 X が与えられるので、leftlfloor dfrac{X}{10} rightrfloor を出力
-してください。
+-10^{18} 以上 10^{18} 以下の整数 X が与えられるので、leftlfloor dfrac{X}{10} rightrfloor を出力してください。
 
 注記実数 x に対して、「x 以下の整数の中で最大の整数」を leftlfloor x rightrfloor と表します。たとえば leftlfloor 4.7 rightrfloor = 4, leftlfloor -2.4 rightrfloor = -3, leftlfloor 5 rightrfloor = 5 のようになります。(詳しくは入出力
 例にある説明を参考にしてください。)
@@ -15,8 +13,7 @@
 X
 
 出力
-leftlfloor frac{X}{10} rightrfloor を出力
-せよ。整数として出力
+leftlfloor frac{X}{10} rightrfloor を出力せよ。整数として出力
 する必要があることに注意せよ。
 
 入力例 1

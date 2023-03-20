@@ -1,4 +1,3 @@
-
 Problem Statement
 You observed amoebae and kept some records.
 Initially, there was one amoeba, numbered 1.
@@ -13,7 +12,8 @@ The records are consistent. That is:
 A_i are distinct integers.
 
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 A_1 A_2 ldots A_N
 

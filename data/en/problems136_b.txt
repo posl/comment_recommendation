@@ -1,12 +1,10 @@
-
 Problem Statement
 Given is an integer N. Find the number of positive integers less than or equal to N that have an odd number of digits (in base ten without leading zeros).
 
 Constraints
 1 ≦ N ≦ 10^5
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 
 Output

@@ -1,4 +1,3 @@
-
 Problem Statement
 Poem Online Judge (POJ) is an online judge that gives scores to submitted strings.
 There were N submissions to POJ.  In the i-th earliest submission, string S_i was submitted, and a score of T_i was given.  (The same string may have been submitted multiple times.)
@@ -14,8 +13,7 @@ S_i has a length between 1 and 10, inclusive.
 0 ≦ T_i ≦ 10^9
 N and T_i are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 S_1 T_1
 S_2 T_2

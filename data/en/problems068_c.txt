@@ -1,4 +1,3 @@
-
 Problem Statement
 In Takahashi Kingdom, there is an archipelago of N islands, called Takahashi Islands.
 For convenience, we will call them Island 1, Island 2, ..., Island N.
@@ -15,8 +14,7 @@ Constraints
 (a_i, b_i) neq (1, N)
 If i neq j, (a_i, b_i) neq (a_j, b_j).
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N M
 a_1 b_1
 a_2 b_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 Given a string S, print AC if it perfectly matches Hello,World!; otherwise, print WA.
 What is a perfect match?Strings A is said to perfectly match B when the length of A is equal to that of B, and the i-th character of A is the same as the i-th character of B for every integer i such that 1 le i le |A|.
@@ -7,8 +6,7 @@ Constraints
 1 le |S| le 15
 S consists of English lowercase letters, English uppercase letters, ,, and !.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 S
 
 Output

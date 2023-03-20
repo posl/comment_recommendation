@@ -1,4 +1,3 @@
-
 Problem Statement
 It is only six months until Christmas, and AtCoDeer the reindeer is now planning his travel to deliver gifts.
 There are N houses along TopCoDeer street. The i-th house is located at coordinate a_i. He has decided to deliver gifts to all these houses.
@@ -9,8 +8,7 @@ Constraints
 0 ≤ a_i ≤ 1000
 a_i is an integer.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_N
 

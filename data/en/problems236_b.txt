@@ -1,4 +1,3 @@
-
 Problem Statement
 We have 4 cards with an integer 1 written on it, 4 cards with 2, ldots, 4 cards with N, for a total of 4N cards.
 Takahashi shuffled these cards, removed one of them, and gave you a pile of the remaining 4N-1 cards. The i-th card (1 ≦ i ≦ 4N - 1) of the pile has an integer A_i written on it.
@@ -10,8 +9,7 @@ Constraints
 For each k , (1 ≦ k ≦ N), there are at most 4 indices i such that A_i = k.
 All values in input are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N
 A_1 A_2 ldots A_{4N - 1}
 

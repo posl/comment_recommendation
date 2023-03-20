@@ -1,4 +1,3 @@
-
 Problem Statement
 Takahashi is playing with toy trains, connecting and disconnecting them.
 There are N toy train cars, with car numbers: Car 1, Car 2, ldots, Car N.
@@ -30,8 +29,7 @@ All queries satisfy the conditions in the Problem Statement
 .
 The queries of the format 3 x ask to print at most 10^6 car numbers in total.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 N Q
 mathrm{query}_1
 mathrm{query}_2

@@ -1,4 +1,3 @@
-
 Problem Statement
 There is a kangaroo at coordinate 0 on an infinite number line that runs from left to right, at time 0.
 During the period between time i-1 and time i, the kangaroo can either stay at his position, or perform a jump of length exactly i to the left or to the right.
@@ -10,7 +9,8 @@ Constraints
 X is an integer.
 1≤X≤10^9
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 X
 
 Output

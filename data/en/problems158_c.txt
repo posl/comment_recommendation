@@ -1,4 +1,3 @@
-
 Problem Statement
 Find the price of a product before tax such that, when the consumption tax rate is 8 percent and 10 percent, the amount of consumption tax levied on it is A yen and B yen, respectively. (Yen is the currency of Japan.)
 Here, the price before tax must be a positive integer, and the amount of consumption tax is rounded down to the nearest integer.
@@ -8,8 +7,7 @@ Constraints
 1 ≦ A ≦ B ≦ 100
 A and B are integers.
 
-Input
-Input is given from Standard Input in the following format:
+InputInput is given from Standard Input in the following format:
 A B
 
 Output

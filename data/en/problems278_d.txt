@@ -1,4 +1,3 @@
-
 Problem Statement
 You are given a sequence A = (A_1, A_2, dots, A_N) of length N.
 Given Q queries, process all of them in order.
@@ -16,7 +15,8 @@ If the q-th (1≦ q≦ Q) query is in the first or second format, 0 ≦ x _ q �
 There exists a query in the third format.
 All values in the input are integers.
 
-InputThe input is given from Standard Input in the following format:
+Input
+The input is given from Standard Input in the following format:
 N
 A_1 A_2 dots A_N
 Q
