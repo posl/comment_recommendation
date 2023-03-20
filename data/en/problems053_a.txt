@@ -3,7 +3,7 @@ Smeke has decided to participate in AtCoder Beginner Contest (ABC) if his curren
 You are given Smeke's current rating, x. Print ABC if Smeke will participate in ABC, and print ARC otherwise.
 
 Constraints
-1 ≦ x ≦ 3{,}000
+1 ≦ x ≦ 3000
 x is an integer.
 
 Input

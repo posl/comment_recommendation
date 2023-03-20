@@ -25,7 +25,7 @@ Sample Input 2
 
 Sample Output 2
 NO
-Since 5-2 neq 6-5, this arrangement of poles is not beautiful.
+Since 5-2 ≠ 6-5, this arrangement of poles is not beautiful.
 
 Sample Input 3
 3 2 1

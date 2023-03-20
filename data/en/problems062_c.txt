@@ -45,7 +45,8 @@ Sample Input 4
 Sample Output 4
 1
 
-Sample Input 5100000 100000
+Sample Input 5
+100000 100000
 
-Sample Output
- 550000
+Sample Output 5
+50000

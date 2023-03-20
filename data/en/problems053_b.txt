@@ -3,7 +3,7 @@ Snuke has decided to construct a string that starts with A and ends with Z, by t
 Find the greatest length of the string Snuke can construct. Here, the test set guarantees that there always exists a substring of s that starts with A and ends with Z.
 
 Constraints
-1 ≦ |s| ≦ 200{,}000
+1 ≦ |s| ≦ 200000
 s consists of uppercase English letters.
 There exists a substring of s that starts with A and ends with Z.
 

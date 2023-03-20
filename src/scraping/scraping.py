@@ -57,9 +57,10 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
+        #print(problem_list)
         problem_list = list(map(lambda x: x.replace('\\,', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\\', ''), problem_list))
-        #print(problem_list)
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'text{(\w+)}', r'\1', i) for i in problem_list)
 
@@ -95,7 +96,7 @@ class Scraping():
             problem_list = list(map(lambda x: x.replace(i, '出力して'), problem_list))
 
         '''
-        制約\n」, 出力\nは, 出力\nします, 問題文\nの
+        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)
@@ -149,7 +150,7 @@ if __name__ == '__main__':
     '''
 
     
-
+    '''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -185,10 +186,11 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-    
+    '''
     # 16 -> 15
-    add_id = change_add(add_id, 1)
-    for number_of_problem in range(52, 54):
+    add_id = 15
+    #for number_of_problem in range(52, 54):
+    for number_of_problem in range(53, 54):
         for difficulty in ['a', 'b']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
@@ -212,7 +214,7 @@ if __name__ == '__main__':
             scraping.change_difficulty()
             scraping.write_problem(problem)
         print(number_of_problem)
-    
+    '''
     for number_of_problem in range(54, 55):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
@@ -224,7 +226,7 @@ if __name__ == '__main__':
         print(number_of_problem)
 
     # 15 -> 14
-    add_id = change_add(add_id, 1)
+    add_id = 14
     for number_of_problem in range(55, 57):
         for difficulty in ['a', 'b']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')

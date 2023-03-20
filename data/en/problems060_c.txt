@@ -49,8 +49,9 @@ Sample Input 4
 Sample Output 4
 1
 
-Sample Input 59 10
+Sample Input 5
+9 10
 0 3 5 7 100 110 200 300 311
 
-Sample Output
- 567
+Sample Output 5
+67
