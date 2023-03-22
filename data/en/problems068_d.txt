@@ -45,8 +45,9 @@ Sample Output 4
 7
 27 0 0 0 0 0 0
 
-Sample Input 51234567894848
+Sample Input 5
+1234567894848
 
-Sample Output
- 510
+Sample Output 5
+10
 1000 193 256 777 0 1 1192 1234567891011 48 425

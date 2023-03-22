@@ -81,6 +81,9 @@ class Scraping():
 
             for i in ['InputThe']:
                 problem_list = list(map(lambda x: x.replace(i, i[0:5] + '\n' + i[5:]), problem_list))
+            
+            for i in ['InputInput']:
+                problem_list = list(map(lambda x: x.replace(i, i[0:5] + '\n' + i[5:]), problem_list))
 
             for i in range(1, 6):
                 problem_list = list(map(lambda x: x.replace('Sample Input ' + str(i), 'Sample Input ' + str(i) + '\n'), problem_list))
@@ -96,7 +99,7 @@ class Scraping():
             problem_list = list(map(lambda x: x.replace(i, '出力して'), problem_list))
 
         '''
-        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする
+        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする, 出力\nしなさい, 
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)

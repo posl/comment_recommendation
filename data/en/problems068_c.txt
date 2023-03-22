@@ -11,8 +11,8 @@ Constraints
 3 ≤ N ≤ 200 000
 1 ≤ M ≤ 200 000
 1 ≤ a_i < b_i ≤ N
-(a_i, b_i) neq (1, N)
-If i neq j, (a_i, b_i) neq (a_j, b_j).
+(a_i, b_i) ≠ (1, N)
+If i ≠ j, (a_i, b_i) ≠ (a_j, b_j).
 
 InputInput is given from Standard Input in the following format:
 N M
