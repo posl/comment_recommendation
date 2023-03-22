@@ -41,7 +41,8 @@ Sample Input 4
 Sample Output 4
 110
 
-Sample Input 564145 123 456
+Sample Input 5
+64145 123 456
 
-Sample Output
- 5109
+Sample Output 5
+109

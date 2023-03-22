@@ -57,6 +57,7 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
         #print(problem_list)
         problem_list = list(map(lambda x: x.replace('\\,', ''), problem_list))
@@ -99,7 +100,7 @@ class Scraping():
             problem_list = list(map(lambda x: x.replace(i, '出力して'), problem_list))
 
         '''
-        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする, 出力\nしなさい, 
+        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする, 出力\nしなさい, 制約\n下, Output\ns, 出力\nも, 
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)

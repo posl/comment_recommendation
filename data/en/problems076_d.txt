@@ -77,9 +77,10 @@ In the first 4.5 seconds, it accelerates at a rate of 1m/s^2, covering 10.125 me
 In the last 4.5 seconds, it decelerates at the acceleration of -1m/s^2, covering 10.125 meters.
 The total distance covered is 10.125 + 10.125 = 20.25 meters.
 
-Sample Input 510
+Sample Input 5
+10
 64 55 27 35 76 119 7 18 49 100
 29 19 31 39 27 48 41 87 55 70
 
-Sample Output
- 520291.000000000000
+Sample Output 5
+20291.000000000000
