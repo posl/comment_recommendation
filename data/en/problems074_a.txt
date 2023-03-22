@@ -11,8 +11,8 @@ InputsInput is given from Standard Input in the following format:
 N
 A
 
-Output
-sPrint the number of squares that will be painted black.
+Outputs
+Print the number of squares that will be painted black.
 
 Sample Input 1
 3

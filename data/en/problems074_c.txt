@@ -23,8 +23,8 @@ A, B, C, D, E and F are all integers.
 InputsInput is given from Standard Input in the following format:
 A B C D E F
 
-Output
-sPrint two integers separated by a space.
+Outputs
+Print two integers separated by a space.
 The first integer should be the mass of the desired sugar water, and the second should be the mass of the sugar dissolved in it.
 
 Sample Input 1

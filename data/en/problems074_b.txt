@@ -20,8 +20,8 @@ N
 K
 x_1 x_2 ... x_N
 
-Output
-sPrint the minimum possible total distance covered by robots.
+Outputs
+Print the minimum possible total distance covered by robots.
 
 Sample Input 1
 1

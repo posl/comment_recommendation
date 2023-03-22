@@ -20,8 +20,8 @@ A_{2, 1} A_{2, 2} ... A_{2, N}
 ...
 A_{N, 1} A_{N, 2} ... A_{N, N}
 
-Output
-sIf there exists no network that satisfies the condition, print -1.
+Outputs
+If there exists no network that satisfies the condition, print -1.
 If it exists, print the shortest possible total length of the roads.
 
 Sample Input 1
