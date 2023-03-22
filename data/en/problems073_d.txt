@@ -16,7 +16,8 @@ r_i≠r_j (i≠j)
 Every town can be reached from every town by road.
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M R
 r_1 ... r_R
 A_1 B_1 C_1

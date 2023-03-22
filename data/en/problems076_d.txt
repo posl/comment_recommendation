@@ -12,7 +12,8 @@ Constraints
 1 ≦ v_i ≦ 100
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 t_1 t_2 t_3 … t_N
 v_1 v_2 v_3 … v_N

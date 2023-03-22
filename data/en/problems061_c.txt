@@ -11,7 +11,8 @@ Constraints
 1≤K≤b_1…+…b_n
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 N K
 a_1 b_1
 :  

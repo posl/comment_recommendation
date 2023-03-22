@@ -12,7 +12,8 @@ Constraints
 x, a and b are pairwise distinct.
 The distances between Snuke's residence and stores A and B are different.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x a b
 
 Output

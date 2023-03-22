@@ -11,7 +11,8 @@ Constraints
 -10^9 ≦ y_1 < ... < y_m ≦ 10^9
 x_i and y_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n m
 x_1 x_2 ... x_n
 y_1 y_2 ... y_m

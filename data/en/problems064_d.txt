@@ -12,7 +12,8 @@ The length of S is N.
 1 ≤ N ≤ 100
 S consists of ( and ).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
 

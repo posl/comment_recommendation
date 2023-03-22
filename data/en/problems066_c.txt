@@ -7,11 +7,12 @@ Reverse the order of the elements in b.
 Find the sequence b obtained after these n operations.
 
 Constraints
-1 ≦ n ≦ 2times 10^5
+1 ≦ n ≦ 2× 10^5
 0 ≦ a_i ≦ 10^9
 n and a_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n
 a_1 a_2 ... a_n
 

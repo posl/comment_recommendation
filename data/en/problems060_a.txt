@@ -9,7 +9,8 @@ Constraints
 A, B and C are all composed of lowercase English letters (a - z).
 1 ≤ |A|, |B|, |C| ≤ 10, where |A|, |B| and |C| are the lengths of A, B and C, respectively.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C
 
 Output

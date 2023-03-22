@@ -14,7 +14,8 @@ Constraints
 If c_i=c_j and i≠j, either t_i≤s_j or s_i≥t_j.
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N C
 s_1 t_1 c_1
 :

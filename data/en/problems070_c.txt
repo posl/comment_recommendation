@@ -10,7 +10,8 @@ Constraints
 All input values are integers.  
 The correct answer is at most 10^{18} seconds.
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 N
 T_1
 :  

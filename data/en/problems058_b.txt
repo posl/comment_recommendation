@@ -11,7 +11,8 @@ O and E consists of lowercase English letters (a - z).
 1 ≦ |O|,|E| ≦ 50
 |O| - |E| is either 0 or 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 O
 E
 

@@ -2,7 +2,7 @@ Problem Statement
 You are given an integer N.
 For two positive integers A and B, we will define F(A,B) as the larger of the following: the number of digits in the decimal notation of A, and the number of digits in the decimal notation of B.
 For example, F(3,11) = 2 since 3 has one digit and 11 has two digits.
-Find the minimum value of F(A,B) as (A,B) ranges over all pairs of positive integers such that N = A times B.
+Find the minimum value of F(A,B) as (A,B) ranges over all pairs of positive integers such that N = A × B.
 
 Constraints
 1 ≦ N ≦ 10^{10}
@@ -13,7 +13,7 @@ The input is given from Standard Input in the following format:
 N
 
 Output
-Print the minimum value of F(A,B) as (A,B) ranges over all pairs of positive integers such that N = A times B.
+Print the minimum value of F(A,B) as (A,B) ranges over all pairs of positive integers such that N = A × B.
 
 Sample Input 1
 10000

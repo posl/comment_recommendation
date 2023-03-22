@@ -9,7 +9,8 @@ Find the minimum possible value of S_{max} - S_{min}.
 Constraints
 2 ≤ H, W ≤ 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 
 Output

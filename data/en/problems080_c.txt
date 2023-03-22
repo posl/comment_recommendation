@@ -13,7 +13,8 @@ For every integer i such that 1≤i≤N, there exists at least one pair (j,k) su
 -10^7≤P_{i,j}≤10^7
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 F_{1,1,1} F_{1,1,2} ... F_{1,5,1} F_{1,5,2}
 :

@@ -10,7 +10,8 @@ All input values are integers.
 1 ≤ B < A ≤ 10^9
 1 ≤ h_i ≤ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N A B
 h_1
 h_2

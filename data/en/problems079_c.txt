@@ -9,7 +9,8 @@ Constraints
 All input values are integers.
 It is guaranteed that there is a solution.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 ABCD
 
 Output

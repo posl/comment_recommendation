@@ -6,7 +6,8 @@ Constraints
 s_1, s_2 and s_3 are composed of lowercase English letters.
 1 ≤ |s_i| ≤ 10 (1≤i≤3)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 s_1 s_2 s_3
 
 Output

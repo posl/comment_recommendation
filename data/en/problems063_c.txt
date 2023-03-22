@@ -7,7 +7,8 @@ All input values are integers.
 1 ≤ N ≤ 100
 1 ≤ s_i ≤ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 s_1
 s_2

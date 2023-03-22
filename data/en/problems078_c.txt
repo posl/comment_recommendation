@@ -14,7 +14,8 @@ All input values are integers.
 1 ≦ N ≦ 100
 1 ≦ M ≦ min(N, 5)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 
 Output
@@ -27,14 +28,14 @@ Sample Output 1
 3800
 In this input, there is only one case. Takahashi will repeatedly submit the code that correctly solves this case with 1/2 probability in 1900 milliseconds.
 The code will succeed in one attempt with 1/2 probability, in two attempts with 1/4 probability, and in three attempts with 1/8 probability, and so on.
-Thus, the answer is 1900 times 1/2 + (2 times 1900) times 1/4 + (3 times 1900) times 1/8 + ... = 3800.
+Thus, the answer is 1900 × 1/2 + (2 × 1900) × 1/4 + (3 × 1900) × 1/8 + ... = 3800.
 
 Sample Input 2
 10 2
 
 Sample Output 2
 18400
-The code will take 1900 milliseconds in each of the 2 cases, and 100 milliseconds in each of the 10-2=8 cases. The probability of the code correctly solving all the cases is 1/2 times 1/2 = 1/4.
+The code will take 1900 milliseconds in each of the 2 cases, and 100 milliseconds in each of the 10-2=8 cases. The probability of the code correctly solving all the cases is 1/2 × 1/2 = 1/4.
 
 Sample Input 3
 100 5

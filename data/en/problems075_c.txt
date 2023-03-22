@@ -16,7 +16,8 @@ N-1 ≦ M ≦ min(N(N−1)⁄2,50)
 The given graph does not contain self-loops and double edges.
 The given graph is connected.
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 N M  
 a_1 b_1  
 a_2 b_2

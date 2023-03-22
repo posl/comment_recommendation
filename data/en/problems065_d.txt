@@ -8,7 +8,8 @@ Constraints
 0 ≤ x_i,y_i ≤ 10^9
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2

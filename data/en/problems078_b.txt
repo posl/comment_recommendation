@@ -9,7 +9,8 @@ All input values are integers.
 1 ≦ X, Y, Z ≦ 10^5
 Y+2Z ≦ X
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X Y Z
 
 Output

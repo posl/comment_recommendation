@@ -14,7 +14,8 @@ Constraints
 (a_i, b_i) ≠ (1, N)
 If i ≠ j, (a_i, b_i) ≠ (a_j, b_j).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 a_1 b_1
 a_2 b_2

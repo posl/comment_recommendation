@@ -13,7 +13,8 @@ Constraints
 1 ≦ a_i, b_i ≦ N
 The given graph is a tree.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 b_1
 :

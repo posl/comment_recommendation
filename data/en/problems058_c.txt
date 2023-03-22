@@ -11,7 +11,8 @@ Constraints
 1 ≦ |S_i| ≦ 50 for every i = 1, ..., n.
 S_i consists of lowercase English letters (a - z) for every i = 1, ..., n.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n
 S_1
 ...

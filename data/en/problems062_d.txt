@@ -13,7 +13,8 @@ a_i is an integer.
 Partial Score
 In the test set worth 300 points, N ≤ 1000.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_{3N}
 

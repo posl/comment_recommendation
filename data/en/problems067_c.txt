@@ -8,11 +8,12 @@ They would like to minimize |x-y|.
 Find the minimum possible value of |x-y|.
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 -10^{9} ≦ a_i ≦ 10^{9}
 a_i is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_{N}
 

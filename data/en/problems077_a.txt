@@ -6,7 +6,8 @@ Write a program that prints YES if this grid remains the same when rotated 180 d
 Constraints
 C_{i,j}(1 ≦ i ≦ 2, 1 ≦ j ≦ 3) is a lowercase English letter.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 C_{11}C_{12}C_{13}
 C_{21}C_{22}C_{23}
 

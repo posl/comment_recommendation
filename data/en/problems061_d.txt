@@ -20,7 +20,8 @@ a_i≠a_j or b_i≠b_j (1≤i<j≤M)
 c_i is an integer.
 In the given graph, there exists a path from vertex 1 to vertex N.
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 N M  
 a_1 b_1 c_1  
 a_2 b_2 c_2

@@ -5,7 +5,8 @@ You are given a two-digit integer N. Answer the question: Is 9 contained in the 
 Constraints
 10≤N≤99
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

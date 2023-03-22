@@ -13,7 +13,8 @@ For each i = 2,3,...,N, w_1 ≤ w_i ≤ w_1 + 3.
 1 ≤ v_i ≤ 10^7
 W, each w_i and v_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N W
 w_1 v_1
 w_2 v_2

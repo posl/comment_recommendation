@@ -7,7 +7,8 @@ When X and Y are seen as hexadecimal numbers, which is larger?
 Constraints
 Each X and Y is A, B, C, D, E or F.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X Y
 
 Output

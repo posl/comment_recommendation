@@ -15,7 +15,8 @@ c_{i,j}=0 (i=j)
 All input values are integers.
 There is at least one digit on the wall.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 c_{0,0} ... c_{0,9}
 :

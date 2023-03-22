@@ -21,8 +21,7 @@ happy,newyear,enjoy
 
 出力例 1
 happy newyear enjoy
-happy,newyear,enjoy に含まれるカンマをスペースで置き換えて、happy newyear enjoy を出力
-します。
+happy,newyear,enjoy に含まれるカンマをスペースで置き換えて、happy newyear enjoy を出力します。
 
 入力例 2
 haiku,atcoder,tasks

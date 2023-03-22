@@ -8,7 +8,8 @@ Write a program that outputs delicious if he found it delicious, safe if he did 
 Constraints
 1 ≤ X,A,B ≤ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X A B
 
 Output

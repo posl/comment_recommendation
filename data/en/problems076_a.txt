@@ -12,7 +12,8 @@ Constraints
 0 ≦ R, G ≦ 4500
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 R
 G
 

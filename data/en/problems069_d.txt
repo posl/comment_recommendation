@@ -13,7 +13,8 @@ Constraints
 a_i ≥ 1
 a_1 + a_2 + ... + a_N = H W
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 N
 a_1 a_2 ... a_N

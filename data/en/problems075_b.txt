@@ -12,7 +12,8 @@ Constraints
 1 ≦ H,W ≦ 50
 S_i is a string of length W consisting of # and ..
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 H W
 S_1
 :

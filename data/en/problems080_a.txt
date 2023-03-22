@@ -10,7 +10,8 @@ Constraints
 1≤B≤2000
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N A B
 
 Output

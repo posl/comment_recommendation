@@ -6,7 +6,8 @@ What is the abbreviation for the N-th round of ABC? Write a program to output th
 Constraints
 100 ≤ N ≤ 999
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

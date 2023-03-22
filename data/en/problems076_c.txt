@@ -13,7 +13,8 @@ Constraints
 S' consists of lowercase English letters and ?.
 T consists of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T'
 

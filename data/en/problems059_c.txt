@@ -10,7 +10,8 @@ Constraints
 |a_i| ≤ 10^9
 Each a_i is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n
 a_1 a_2 ... a_n
 

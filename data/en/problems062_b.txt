@@ -8,7 +8,8 @@ Constraints
 1 ≤ H, W ≤ 100
 a_{ij} is a lowercase English letter.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 a_{11} ... a_{1W}
 :

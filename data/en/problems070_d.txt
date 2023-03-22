@@ -16,7 +16,8 @@ The given graph is a tree.
 x_j≠y_j (1≤j≤Q) 
 x_j≠K,y_j≠K (1≤j≤Q) 
 
-InputInput is given from Standard Input in the following format:  
+Input
+Input is given from Standard Input in the following format:  
 N  
 a_1 b_1 c_1  
 :  

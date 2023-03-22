@@ -1,5 +1,5 @@
 Problem Statement
-We have an N times N square grid.
+We have an N × N square grid.
 We will paint each square in the grid either black or white.
 If we paint exactly A squares white, how many squares will be painted black?
 
@@ -20,7 +20,7 @@ Sample Input 1
 
 Sample Output 1
 5
-There are nine squares in a 3 times 3 square grid.
+There are nine squares in a 3 × 3 square grid.
 Four of them will be painted white, so the remaining five squares will be painted black.
 
 Sample Input 2
