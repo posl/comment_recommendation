@@ -23,17 +23,17 @@ Sample Input 1
 
 Sample Output 1
 11 6
-rm{comb}(a_i,a_j) for each possible selection is as follows:
-rm{comb}(4,2)=6 
-rm{comb}(6,2)=15 
-rm{comb}(6,4)=15 
-rm{comb}(9,2)=36 
-rm{comb}(9,4)=126 
-rm{comb}(9,6)=84 
-rm{comb}(11,2)=55 
-rm{comb}(11,4)=330 
-rm{comb}(11,6)=462 
-rm{comb}(11,9)=55
+comb(a_i,a_j) for each possible selection is as follows:
+comb(4,2)=6 
+comb(6,2)=15 
+comb(6,4)=15 
+comb(9,2)=36 
+comb(9,4)=126 
+comb(9,6)=84 
+comb(11,2)=55 
+comb(11,4)=330 
+comb(11,6)=462 
+comb(11,9)=55
 Thus, we should print 11 and 6.
 
 Sample Input 2

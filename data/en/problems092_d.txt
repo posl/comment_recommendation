@@ -1,7 +1,6 @@
 Problem Statement
 You are given two integers A and B.
-Print a grid where each square is painted white or black that satisfies the following conditions, in the format specified in Output
- section:
+Print a grid where each square is painted white or black that satisfies the following conditions, in the format specified in Output section:
 Let the size of the grid be h × w (h vertical, w horizontal). Both h and w are at most 100.
 The set of the squares painted white is divided into exactly A connected components.
 The set of the squares painted black is divided into exactly B connected components.
@@ -25,8 +24,7 @@ Input is given from Standard Input in the following format:
 A B
 
 Output
-Output
- should be in the following format:
+Output should be in the following format:
 In the first line, print integers h and w representing the size of the grid you constructed, with a space in between.
 Then, print h more lines. The i-th (1 ≦ i ≦ h) of these lines should contain a string s_i as follows:
 If the square at the i-th row and j-th column (1 ≦ j ≦ w) in the grid is painted white, the j-th character in s_i should be ..
