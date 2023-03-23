@@ -60,8 +60,9 @@ Sample Output 5
 Yes
 The objective can be achieved by, for example, turning counterclockwise in the first T and turning counterclockwise in the second T.
 
-Sample Input 6TTTT
+Sample Input 6
+TTTT
 1 0
 
-Sample Output
- 6No
+Sample Output 6
+No

@@ -16,8 +16,7 @@ A, B, C は全て英小文字(a ~ z)からなる。
 A B C
 
 出力
-YES か NO を出力
-する。
+YES か NO を出力する。
 
 入力例 1
 rng gorilla apple
