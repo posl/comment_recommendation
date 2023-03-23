@@ -13,12 +13,13 @@ Constraints
 1 ≦ H,W ≦ 300
 1 ≦ D ≦ H×W
 1 ≦ A_{i,j} ≦ H×W
-A_{i,j} neq A_{x,y} ((i,j) neq (x,y))
+A_{i,j} ≠ A_{x,y} ((i,j) ≠ (x,y))
 1 ≦ Q ≦ 10^5
 1 ≦ L_i ≦ R_i ≦ H×W
 (R_i-L_i) is a multiple of D.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W D
 A_{1,1} A_{1,2} ... A_{1,W}
 :

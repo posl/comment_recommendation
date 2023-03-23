@@ -9,7 +9,8 @@ Constraints
 a_1,a_2,...,a_n are pairwise distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n
 a_1 a_2 ... a_n
 

@@ -10,7 +10,8 @@ Constraints
 1 ≤ a_i ≤ b_i ≤ 10^9
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N H
 a_1 b_1
 :

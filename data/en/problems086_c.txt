@@ -13,7 +13,8 @@ Constraints
 t_i < t_{i+1} (1 ≤ i ≤ N-1)
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 t_1 x_1 y_1
 t_2 x_2 y_2

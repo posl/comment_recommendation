@@ -13,7 +13,8 @@ All input values are integers.
 1 ≦ N ≦ 200,000
 0 ≦ a_i, b_i < 2^{28}
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_N
 b_1 b_2 ... b_N

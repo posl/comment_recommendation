@@ -14,7 +14,8 @@ All values in input are integers.
 Subscores
 300 points will be awarded for passing the test set satisfying N ≤ 100.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N C
 x_1 v_1
 x_2 v_2

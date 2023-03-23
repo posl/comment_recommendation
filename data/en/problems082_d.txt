@@ -14,7 +14,8 @@ s consists of F and T.
 x and y are integers.
 |x|, |y| ≦ |s|
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 s
 x y
 
@@ -51,11 +52,12 @@ TF
 Sample Output 4
 No
 
-Sample Input 5FFTTFF
+Sample Input 5
+FFTTFF
 0 0
 
-Sample Output
- 5Yes
+Sample Output 5
+Yes
 The objective can be achieved by, for example, turning counterclockwise in the first T and turning counterclockwise in the second T.
 
 Sample Input 6TTTT

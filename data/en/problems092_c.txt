@@ -14,7 +14,8 @@ Constraints
 -5000 ≦ A_i ≦ 5000 (1 ≦ i ≦ N)
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 A_2 ... A_N
 

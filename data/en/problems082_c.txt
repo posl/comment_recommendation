@@ -11,7 +11,8 @@ Constraints
 a_i is an integer.
 1 ≦ a_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_N
 
@@ -49,8 +50,9 @@ Sample Output 4
 1
 Remove one occurrence of 10^9. Then, () is a good sequence.
 
-Sample Input 58
+Sample Input 5
+8
 2 7 1 8 2 8 1 8
 
-Sample Output
- 55
+Sample Output 5
+5

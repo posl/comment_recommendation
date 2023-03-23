@@ -5,7 +5,8 @@ Constraints
 |S|=3
 S consists of a, b and c.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

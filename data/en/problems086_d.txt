@@ -17,7 +17,8 @@ If i ≠ j, then (x_i,y_i) ≠ (x_j,y_j).
 c_i is B or W.
 N, K, x_i and y_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 x_1 y_1 c_1
 x_2 y_2 c_2

@@ -9,7 +9,8 @@ Constraints
 l_i and r_i are odd.
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 Q
 l_1 r_1
 :

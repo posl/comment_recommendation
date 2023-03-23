@@ -16,7 +16,8 @@ Constraints
 S_i％F_i=0
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 C_1 S_1 F_1
 :

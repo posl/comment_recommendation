@@ -6,7 +6,8 @@ Print the string of length 3 that can be obtained by concatenating the letters i
 Constraints
 Input consists of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 c_{11}c_{12}c_{13}
 c_{21}c_{22}c_{23}
 c_{31}c_{32}c_{33}

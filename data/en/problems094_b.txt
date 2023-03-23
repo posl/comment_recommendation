@@ -11,10 +11,11 @@ Constraints
 1 ≦ M ≦ 100
 1 ≦ X ≦ N - 1
 1 ≦ A_1 < A_2 < ... < A_M ≦ N
-A_i neq X
+A_i ≠ X
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M X
 A_1 A_2 ... A_M
 

@@ -7,7 +7,8 @@ S is a string of length 10.
 The first eight characters in S are 2017/01/.
 The last two characters in S are digits and represent an integer between 1 and 31 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

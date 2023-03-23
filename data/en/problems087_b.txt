@@ -5,12 +5,13 @@ Coins of the same kind cannot be distinguished. Two ways to select coins are dis
 
 Constraints
 0 ≦ A, B, C ≦ 50
-A + B + C geq 1
+A + B + C ≧ 1
 50 ≦ X ≦ 20 000
 A, B and C are integers.
 X is a multiple of 50.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A
 B
 C

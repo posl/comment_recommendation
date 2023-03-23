@@ -1,5 +1,5 @@
 Problem Statement
-We have a 3 times 3 grid. A number c_{i, j} is written in the square (i, j), where (i, j) denotes the square at the i-th row from the top and the j-th column from the left.
+We have a 3 × 3 grid. A number c_{i, j} is written in the square (i, j), where (i, j) denotes the square at the i-th row from the top and the j-th column from the left.
 According to Takahashi, there are six integers a_1, a_2, a_3, b_1, b_2, b_3 whose values are fixed, and the number written in the square (i, j) is equal to a_i + b_j.
 Determine if he is correct.  
 

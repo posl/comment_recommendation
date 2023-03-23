@@ -7,7 +7,8 @@ Constraints
 |S|=A+B+1
 S consists of - and digits from 0 through 9.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 S
 

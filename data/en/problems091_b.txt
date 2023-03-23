@@ -11,7 +11,8 @@ N and M are integers.
 1 ≦ N, M ≦ 100
 s_1, s_2, ..., s_N, t_1, t_2, ..., t_M are all strings of lengths between 1 and 10 (inclusive) consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 s_1
 s_2

@@ -7,7 +7,8 @@ Constraints
 a and b are integers.
 1 ≦ a, b ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b
 
 Output

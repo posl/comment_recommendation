@@ -11,7 +11,8 @@ Constraints
 1 ≦ D ≦ 1 000
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A
 B
 C

@@ -13,7 +13,7 @@ i 回目の実技試験は、以下の手順で行われます。
 1 ≦ H,W ≦ 300
 1 ≦ D ≦ H×W
 1 ≦ A_{i,j} ≦ H×W
-A_{i,j} neq A_{x,y} ((i,j) neq (x,y))
+A_{i,j} ≠ A_{x,y} ((i,j) ≠ (x,y))
 1 ≦ Q ≦ 10^5
 1 ≦ L_i ≦ R_i ≦ H×W
 (R_i-L_i) は D の倍数

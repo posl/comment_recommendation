@@ -1,5 +1,5 @@
 Problem Statement
-We have a 2 times N grid. We will denote the square at the i-th row and j-th column (1 ≦ i ≦ 2, 1 ≦ j ≦ N) as (i, j).
+We have a 2 × N grid. We will denote the square at the i-th row and j-th column (1 ≦ i ≦ 2, 1 ≦ j ≦ N) as (i, j).
 You are initially in the top-left square, (1, 1).
 You will travel to the bottom-right square, (2, N), by repeatedly moving right or down.
 The square (i, j) contains A_{i, j} candies.
@@ -11,7 +11,8 @@ Constraints
 1 ≦ N ≦ 100
 1 ≦ A_{i, j} ≦ 100 (1 ≦ i ≦ 2, 1 ≦ j ≦ N)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_{1, 1} A_{1, 2} ... A_{1, N}
 A_{2, 1} A_{2, 2} ... A_{2, N}

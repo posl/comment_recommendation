@@ -10,9 +10,10 @@ Constraints
 1 ≦ N ≦ 10^5
 S_i consists of uppercase English letters.
 1 ≦ |S_i| ≦ 10
-S_i neq S_j (i neq j)
+S_i ≠ S_j (i ≠ j)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S_1
 :

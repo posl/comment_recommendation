@@ -11,7 +11,8 @@ All input values are integers.
 a_1, a_2, ..., a_N, c_1, c_2, ..., c_N are all different.
 b_1, b_2, ..., b_N, d_1, d_2, ..., d_N are all different.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 b_1
 a_2 b_2
@@ -78,7 +79,8 @@ Sample Input 4
 Sample Output 4
 5
 
-Sample Input 55
+Sample Input 5
+5
 0 0
 1 1
 5 5
@@ -90,5 +92,5 @@ Sample Input 55
 8 8
 9 9
 
-Sample Output
- 54
+Sample Output 5
+4

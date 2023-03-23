@@ -7,7 +7,8 @@ Constraints
 S is a string of length 3.
 Each character in S is o or x.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
@@ -18,14 +19,14 @@ oxo
 
 Sample Output 1
 900
-The price of a ramen topped with two kinds of toppings, boiled egg and green onions, is 700 + 100 times 2 = 900 yen.
+The price of a ramen topped with two kinds of toppings, boiled egg and green onions, is 700 + 100 × 2 = 900 yen.
 
 Sample Input 2
 ooo
 
 Sample Output 2
 1000
-The price of a ramen topped with all three kinds of toppings is 700 + 100 times 3 = 1000 yen.
+The price of a ramen topped with all three kinds of toppings is 700 + 100 × 3 = 1000 yen.
 
 Sample Input 3
 xxx

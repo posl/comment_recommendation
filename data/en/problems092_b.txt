@@ -12,7 +12,8 @@ Constraints
 1 ≦ A_i ≦ 100 (1 ≦ i ≦ N)
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 D X
 A_1

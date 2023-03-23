@@ -1,13 +1,14 @@
 Problem Statement
 You are given a string S consisting of 0 and 1.
 Find the maximum integer K not greater than |S| such that we can turn all the characters of S into 0 by repeating the following operation some number of times.
-Choose a contiguous segment [l,r] in S whose length is at least K (that is, r-l+1geq K must be satisfied). For each integer i such that l≦ i≦ r, do the following: if S_i is 0, replace it with 1; if S_i is 1, replace it with 0.
+Choose a contiguous segment [l,r] in S whose length is at least K (that is, r-l+1≧ K must be satisfied). For each integer i such that l≦ i≦ r, do the following: if S_i is 0, replace it with 1; if S_i is 1, replace it with 0.
 
 Constraints
 1≦ |S|≦ 10^5
 S_i(1≦ i≦ N) is either 0 or 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

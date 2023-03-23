@@ -11,7 +11,8 @@ Constraints
 -10^{6} ≦ a_i ≦ 10^{6}
 All input values are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_{N}
 

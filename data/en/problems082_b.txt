@@ -14,7 +14,8 @@ Constraints
 The lengths of s and t are between 1 and 100 (inclusive).
 s and t consists of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 s
 t
 
@@ -52,8 +53,9 @@ ww
 Sample Output 4
 Yes
 
-Sample Input 5zzz
+Sample Input 5
+zzz
 zzz
 
-Sample Output
- 5No
+Sample Output 5
+No
