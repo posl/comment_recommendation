@@ -8,7 +8,8 @@ Constraints
 The length of S is 4.
 Each character in S is + or -.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

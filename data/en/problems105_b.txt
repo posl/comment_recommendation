@@ -5,7 +5,8 @@ Determine if there is a way to buy some of them for exactly N dollars. You can b
 Constraints
 N is an integer between 1 and 100, inclusive.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output
@@ -23,7 +24,7 @@ Sample Input 2
 
 Sample Output 2
 Yes
-If you buy ten cakes, the total will be 4 times 10 = 40 dollars.
+If you buy ten cakes, the total will be 4 × 10 = 40 dollars.
 
 Sample Input 3
 3

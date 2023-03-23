@@ -9,7 +9,8 @@ Constraints
 4 ≤ |S| ≤ 10 (|S| is the length of the string S.)
 Each character of S is uppercase or lowercase English letter.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
@@ -43,8 +44,9 @@ Sample Output 4
 WA
 There should not be two or more occurrences of C.
 
-Sample Input 5Atcoder
+Sample Input 5
+Atcoder
 
-Sample Output
- 5WA
+Sample Output 5
+WA
 The number of C should not be zero, either.

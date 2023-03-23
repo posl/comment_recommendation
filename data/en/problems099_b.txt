@@ -9,7 +9,8 @@ Constraints
 All values in input are integers.
 There is no input that contradicts the assumption.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b
 
 Output

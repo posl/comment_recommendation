@@ -9,11 +9,12 @@ Let the XOR be X. In the binary representation of X, the digit in the 2^k's plac
 For example, let us compute the XOR of 3 and 5. The binary representation of 3 is 011, and the binary representation of 5 is 101, thus the XOR has the binary representation 110, that is, the XOR is 6.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 0 ≦ A_i < 2^{20}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 A_2 ... A_N
 

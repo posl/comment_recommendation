@@ -9,7 +9,8 @@ Constraints
 All values in input are integers.
 1 ≦ A_1, A_2, A_3 ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A_1 A_2 A_3
 
 Output

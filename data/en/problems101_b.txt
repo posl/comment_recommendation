@@ -6,7 +6,8 @@ Given an integer N, determine if S(N) divides N.
 Constraints
 1 ≦ N ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

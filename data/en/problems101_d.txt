@@ -8,7 +8,8 @@ Constraints
 1 ≦ K
 The K-th smallest Snuke number is not greater than 10^{15}.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 K
 
 Output

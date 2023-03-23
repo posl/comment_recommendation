@@ -9,11 +9,12 @@ The people in the row hate to change their directions, so you would like to sele
 Find the minimum number of people who have to change their directions.
 
 Constraints
-2 ≦ N ≦ 3 times 10^5
+2 ≦ N ≦ 3 × 10^5
 |S| = N
 S_i is E or W.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
 

@@ -10,7 +10,8 @@ Constraints
 2 ≦ K ≦ N ≦ 100000
 A_1, A_2, ..., A_N is a permutation of 1, 2, ..., N.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 A_1 A_2 ... A_N
 

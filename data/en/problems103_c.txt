@@ -9,7 +9,8 @@ All values in input are integers.
 2 ≦ N ≦ 3000
 2 ≦ a_i ≦ 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_N
 

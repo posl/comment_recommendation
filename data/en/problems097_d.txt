@@ -14,7 +14,8 @@ x_j ≠ y_j
 If i ≠ j, {x_i,y_i} ≠ {x_j,y_j}.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 p_1 p_2 .. p_N
 x_1 y_1

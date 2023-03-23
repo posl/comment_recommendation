@@ -13,7 +13,8 @@ All values in input are integers.
 1 ≦ a_i < b_i ≦ N
 All pairs (a_i, b_i) are distinct.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 a_1 b_1
 a_2 b_2
