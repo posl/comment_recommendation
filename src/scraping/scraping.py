@@ -74,7 +74,7 @@ class Scraping():
             for i in ['の', '中']:
                 problem_list = list(map(lambda x: x.replace('問題文\n' + i, '問題文' + i), problem_list))
 
-            for i in ['の', '下', '」']:
+            for i in ['の', 'を', '下', '」']:
                 problem_list = list(map(lambda x: x.replace('制約\n' + i, '制約' + i), problem_list))
             
             for i in ['入力入']:
@@ -84,12 +84,15 @@ class Scraping():
                 problem_list = list(map(lambda x: x.replace('入力例 ' + str(i), '入力例 ' + str(i) + '\n'), problem_list))
                 problem_list = list(map(lambda x: x.replace('出力\n例 ' + str(i), '出力例 ' + str(i) + '\n'), problem_list))
             
-            for i in ['し', 'する', 'せ', 'で', 'の', 'は', 'も、']:
+            for i in ['が', 'し', 'する', 'すれ', 'せよ', 'で', 'の', 'は', 'も、']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
 
         else:
             for i in ['Problem Statement', 'Constraints', 'Notes', 'Output']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
+
+            for i in [')']:
+                problem_list = list(map(lambda x: x.replace('Constraints\n' + i, 'Constraints' + i), problem_list))
 
             for i in ['The', 'Input']:
                 problem_list = list(map(lambda x: x.replace('Input' + i, 'Input' + '\n' + i), problem_list))
@@ -109,7 +112,7 @@ class Scraping():
 
 
         '''
-        制約\n」, 出力\nは, 出力\nします, 問題文\nの, 問題文\n中, 出力\nの, 出力\nする, 出力\nしなさい, 制約\n下, Output\ns, 出力\nも, 
+        104_c: 入力例 1\n と
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)
@@ -598,7 +601,7 @@ if __name__ == '__main__':
             scraping.change_difficulty()
             scraping.write_problem(problem)
         print(number_of_problem)
-    '''
+    
     for number_of_problem in range(96, 97):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
@@ -683,7 +686,7 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-
+    '''
     # -2 -> -6
     add_id = -6
     for number_of_problem in range(107, 109):

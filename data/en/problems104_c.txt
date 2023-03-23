@@ -28,8 +28,7 @@ p_1 c_1
 p_D c_D
 
 Output
-Print the minimum number of problems that needs to be solved in order to have a total score of G or more points. Note that this objective is always achievable (see Constraints
-).
+Print the minimum number of problems that needs to be solved in order to have a total score of G or more points. Note that this objective is always achievable (see Constraints).
 
 Sample Input 1
 2 700
