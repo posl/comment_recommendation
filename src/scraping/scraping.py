@@ -84,6 +84,9 @@ class Scraping():
                 problem_list = list(map(lambda x: x.replace('入力例 ' + str(i), '入力例 ' + str(i) + '\n'), problem_list))
                 problem_list = list(map(lambda x: x.replace('出力\n例 ' + str(i), '出力例 ' + str(i) + '\n'), problem_list))
             
+            for i in ['と']:
+                problem_list = list(map(lambda x: x.replace('入力例 1\n ' + i, '入力例 1' + i), problem_list))
+
             for i in ['が', 'し', 'する', 'すれ', 'せよ', 'で', 'の', 'は', 'も、']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
 
