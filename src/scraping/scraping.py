@@ -66,6 +66,7 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\vdots', '.\n.\n.\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\simeq', '≃'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\bmod', 'mod'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\x08', ''), problem_list))
         #print(problem_list)
@@ -82,6 +83,7 @@ class Scraping():
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'rm{(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'text{(.*?)}', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'dfrac', r'frac', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\w)}{(\w+)}', r'(\1/(\2))', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\w)}{(.*?)}', r'(\1/(\2))', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(.*?)}{(.*?)}', r'((\1)/(\2))', i) for i in problem_list)
@@ -90,6 +92,7 @@ class Scraping():
         problem_list = list(re.sub(r'sqrt{(.*?)}', r'(\1)^(1/2)', i) for i in problem_list)
         problem_list = list(re.sub(r'lfloor', r'⌊', i) for i in problem_list)
         problem_list = list(re.sub(r'rfloor', r'⌋', i) for i in problem_list)
+        problem_list = list(re.sub(r'displaystyle{(.*)}', r'(\1)', i) for i in problem_list)
         
 
         if self.language == 'ja':
@@ -116,7 +119,7 @@ class Scraping():
             for i in ['と']:
                 problem_list = list(map(lambda x: x.replace('入力例 1\n ' + i, '入力例 1' + i), problem_list))
 
-            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'の', 'は', 'も、', '例を']:
+            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'の', 'は', 'も、', '例の', '例を']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
             
             for i in ['はじ', 'でき']:
@@ -125,6 +128,9 @@ class Scraping():
         else:
             for i in ['Problem Statement', 'Constraints', 'Notes', 'Output']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
+
+            for i in [',', '.']:
+                problem_list = list(map(lambda x: x.replace('Statement\n' + i, 'Statement' + i), problem_list))
 
             for i in ['The', 'Input']:
                 problem_list = list(map(lambda x: x.replace('Input' + i, 'Input' + '\n' + i), problem_list))
@@ -777,7 +783,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(112, 161):
+    for number_of_problem in range(112, 171):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()

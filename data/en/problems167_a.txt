@@ -15,8 +15,7 @@ S
 T
 
 Output
-If T satisfies the property in Problem Statement
-, print Yes; otherwise, print No.
+If T satisfies the property in Problem Statement, print Yes; otherwise, print No.
 
 Sample Input 1
 chokudai

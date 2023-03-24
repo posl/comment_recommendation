@@ -14,8 +14,7 @@ K
 S
 
 Output
-Print a string as stated in Problem Statement
-.
+Print a string as stated in Problem Statement.
 
 Sample Input 1
 7
