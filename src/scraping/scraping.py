@@ -61,6 +61,7 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\gt', '>'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\cdots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\vdots', '.\n.\n.\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
@@ -77,6 +78,7 @@ class Scraping():
         #print(problem_list)
         problem_list = list(re.sub(r'~mathrm{(\w+)}', r'[\1]', i) for i in problem_list)
         problem_list = list(re.sub(r'~(\S)', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'textrm{(.*?)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'rm{(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'text{(.*?)}', r'\1', i) for i in problem_list)
@@ -86,6 +88,8 @@ class Scraping():
         problem_list = list(re.sub(r'frac{(\d+)}{(\d+)}', r'(\1/\2)', i) for i in problem_list)
         #problem_list = list(re.sub(r'sqrt{(\w+)}', r'(\1)^(1/2)', i) for i in problem_list)
         problem_list = list(re.sub(r'sqrt{(.*?)}', r'(\1)^(1/2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'lfloor', r'⌊', i) for i in problem_list)
+        problem_list = list(re.sub(r'rfloor', r'⌋', i) for i in problem_list)
         
 
         if self.language == 'ja':
@@ -146,7 +150,7 @@ class Scraping():
 
 
         '''
-        104_c: 入力例 1\n と, 147_d sum_ -> sigma
+        104_c: 入力例 1\n と, 147_d sum_ -> sigma, 159_d {} -> delete
         '''
         problem_list[0] = problem_list[0].lstrip()
         #print(problem_list)
@@ -186,19 +190,6 @@ if __name__ == '__main__':
         os.remove('../../data/errors.txt')
     url = 'https://atcoder.jp/contests/abc'
     add_id = 16
-
-    '''
-    for number_of_problem in range(1, 42):
-        for difficulty in ['a', 'b', 'c', 'd']:
-            scraping = Scraping(url, number_of_problem, difficulty, 'ja')
-            problem = scraping.get_problem()
-            scraping.write_problem(problem)
-            scraping = Scraping(url, number_of_problem, difficulty, 'en')
-            problem = scraping.get_problem()
-            scraping.write_problem(problem)
-        print(number_of_problem)
-    '''
-
     
     #'''
     for number_of_problem in range(42, 51):
@@ -786,7 +777,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(112, 151):
+    for number_of_problem in range(112, 161):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()

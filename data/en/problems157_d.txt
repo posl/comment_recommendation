@@ -1,13 +1,13 @@
 Problem Statement
-An SNS has N users - User 1, User 2, cdots, User N.
+An SNS has N users - User 1, User 2, ..., User N.
 Between these N users, there are some relationships - M friendships and K blockships.
-For each i = 1, 2, cdots, M, there is a bidirectional friendship between User A_i and User B_i.
-For each i = 1, 2, cdots, K, there is a bidirectional blockship between User C_i and User D_i.
+For each i = 1, 2, ..., M, there is a bidirectional friendship between User A_i and User B_i.
+For each i = 1, 2, ..., K, there is a bidirectional blockship between User C_i and User D_i.
 We define User a to be a friend candidate for User b when all of the following four conditions are satisfied:
 a ≠ b.
 There is not a friendship between User a and User b.
 There is not a blockship between User a and User b.
-There exists a sequence c_0, c_1, c_2, cdots, c_L consisting of integers between 1 and N (inclusive) such that c_0 = a, c_L = b, and there is a friendship between User c_i and c_{i+1} for each i = 0, 1, cdots, L - 1.
+There exists a sequence c_0, c_1, c_2, ..., c_L consisting of integers between 1 and N (inclusive) such that c_0 = a, c_L = b, and there is a friendship between User c_i and c_{i+1} for each i = 0, 1, ..., L - 1.
 For each user i = 1, 2, ... N, how many friend candidates does it have?
 
 Constraints

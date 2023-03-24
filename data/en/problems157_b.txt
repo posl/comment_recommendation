@@ -1,6 +1,6 @@
 Problem Statement
 We have a bingo card with a 3×3 grid. The square at the i-th row from the top and the j-th column from the left contains the number A_{i, j}.
-The MC will choose N numbers, b_1, b_2, cdots, b_N. If our bingo sheet contains some of those numbers, we will mark them on our sheet.
+The MC will choose N numbers, b_1, b_2, ..., b_N. If our bingo sheet contains some of those numbers, we will mark them on our sheet.
 Determine whether we will have a bingo when the N numbers are chosen, that is, the sheet will contain three marked numbers in a row, column, or diagonal.
 
 Constraints
