@@ -28,9 +28,9 @@ Sample Input 1
 Sample Output 1
 4 0 4
 If we assume Mountain 1, 2, and 3 received 4, 0, and 4 liters of rain, respectively, it is consistent with this input, as follows:
-Dam 1 should have accumulated (4/2) + (0/2) = 2 liters of water.
-Dam 2 should have accumulated (0/2) + (4/2) = 2 liters of water.
-Dam 3 should have accumulated (4/2) + (4/2) = 4 liters of water.
+Dam 1 should have accumulated (4/(2)) + (0/(2)) = 2 liters of water.
+Dam 2 should have accumulated (0/(2)) + (4/(2)) = 2 liters of water.
+Dam 3 should have accumulated (4/(2)) + (4/(2)) = 4 liters of water.
 
 Sample Input 2
 5

@@ -1,7 +1,7 @@
 Problem Statement
 Let S(n) denote the sum of the digits in the decimal notation of n.
 For example, S(123) = 1 + 2 + 3 = 6.
-We will call an integer n a Snuke number when, for all positive integers m such that m > n, (n/S(n)) ≦ (m/S(m)) holds.
+We will call an integer n a Snuke number when, for all positive integers m such that m > n, (n/(S(n))) ≦ (m/(S(m))) holds.
 Given an integer K, list the K smallest Snuke numbers.
 
 Constraints

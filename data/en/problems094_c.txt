@@ -1,5 +1,5 @@
 Problem Statement
-When l is an odd number, the median of l numbers a_1, a_2, ..., a_l is the (((l+1)/2))-th largest value among a_1, a_2, ..., a_l.
+When l is an odd number, the median of l numbers a_1, a_2, ..., a_l is the (((l+1)/(2)))-th largest value among a_1, a_2, ..., a_l.
 You are given N numbers X_1, X_2, ..., X_N, where N is an even number.
 For each i = 1, 2, ..., N, let the median of X_1, X_2, ..., X_N excluding X_i, that is, the median of X_1, X_2, ..., X_{i-1}, X_{i+1}, ..., X_N be B_i.
 Find B_i for each i = 1, 2, ..., N.
