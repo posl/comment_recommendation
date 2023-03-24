@@ -59,6 +59,7 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\simeq', '≃'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\x08', ''), problem_list))
         #print(problem_list)
@@ -189,7 +190,7 @@ if __name__ == '__main__':
     '''
 
     
-    '''
+    #'''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -775,7 +776,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(138, 139):
+    for number_of_problem in range(112, 141):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
