@@ -16,7 +16,9 @@ Input is given from Standard Input in the following format:
 N D
 X_{11} X_{12} ... X_{1D}
 X_{21} X_{22} ... X_{2D}
-vdots
+.
+.
+.
 X_{N1} X_{N2} ... X_{ND}
 
 Output

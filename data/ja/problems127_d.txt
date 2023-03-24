@@ -17,7 +17,9 @@ N M
 A_1 A_2 ... A_N
 B_1 C_1
 B_2 C_2
-vdots
+.
+.
+.
 B_M C_M
 
 出力

@@ -14,7 +14,9 @@ Input is given from Standard Input in the following format:
 N M
 L_1 R_1
 L_2 R_2
-vdots
+.
+.
+.
 L_M R_M
 
 Output

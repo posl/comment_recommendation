@@ -10,7 +10,7 @@ Snuke will make sugar water with the highest possible density.
 The beaker can contain at most F grams of substances (water and sugar combined), and there must not be any undissolved sugar in the beaker.
 Find the mass of the sugar water Snuke will make, and the mass of sugar dissolved in it.
 If there is more than one candidate, any of them will be accepted.
-We remind you that the sugar water that contains a grams of water and b grams of sugar is frac{100b}{a + b} percent.
+We remind you that the sugar water that contains a grams of water and b grams of sugar is (100b/a + b) percent.
 Also, in this problem, pure water that does not contain any sugar is regarded as 0 percent density sugar water.
 
 Constraints
