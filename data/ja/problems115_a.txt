@@ -1,7 +1,6 @@
 問題文
 とある世界では、今日は 12 月 D 日です。
-D = 25 なら Christmas, D = 24 なら Christmas Eve, D = 23 なら Christmas Eve Eve, D = 22 なら Christmas Eve Eve Eve と出力
-するプログラムを作ってください。
+D = 25 なら Christmas, D = 24 なら Christmas Eve, D = 23 なら Christmas Eve Eve, D = 22 なら Christmas Eve Eve Eve と出力するプログラムを作ってください。
 
 制約
 22 ≦ D ≦ 25

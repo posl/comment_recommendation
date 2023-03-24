@@ -8,7 +8,8 @@ Constraints
 100 ≦ p_i ≦ 10000
 p_i is an even number.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 p_1
 p_2

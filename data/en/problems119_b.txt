@@ -10,7 +10,8 @@ u_i = JPY or BTC.
 If u_i = JPY, x_i is an integer such that 1 ≦ x_i ≦ 10^8.
 If u_i = BTC, x_i is a decimal with 8 decimal digits, such that 0.00000001 ≦ x_i ≦ 100.00000000.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 u_1
 x_2 u_2
@@ -30,8 +31,7 @@ Sample Input 1
 Sample Output 1
 48000.0
 The otoshidama from the first relative is 10000 yen. The otoshidama from the second relative is 0.1 bitcoins, which is worth 38000.0 yen if converted at the rate of 380000.0 JPY per 1.0 BTC. The sum of these is 48000.0 yen.
-Output
-s such as 48000 and 48000.1 will also be judged correct.
+Outputs such as 48000 and 48000.1 will also be judged correct.
 
 Sample Input 2
 3

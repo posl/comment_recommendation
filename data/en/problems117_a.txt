@@ -1,7 +1,7 @@
 Problem Statement
 In order to pass the entrance examination tomorrow, Taro has to study for T more hours.
 Fortunately, he can leap to World B where time passes X times as fast as it does in our world (World A).
-While (X times t) hours pass in World B, t hours pass in World A.
+While (X × t) hours pass in World B, t hours pass in World A.
 How many hours will pass in World A while Taro studies for T hours in World B?
 
 Constraints
@@ -9,7 +9,8 @@ All values in input are integers.
 1 ≦ T ≦ 100
 1 ≦ X ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 T X
 
 Output

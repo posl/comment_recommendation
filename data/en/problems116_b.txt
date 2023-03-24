@@ -11,7 +11,8 @@ Constraints
 All values in input are integers.
 It is guaranteed that all elements in a and the minimum m that satisfies the condition are at most 1000000.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 s
 
 Output

@@ -7,9 +7,10 @@ Constraints
 All values in input are integers.
 1 ≦ A, B ≦ 100
 The K-th largest positive integer that divides both A and B exists.
-K geq 1
+K ≧ 1
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B K
 
 Output

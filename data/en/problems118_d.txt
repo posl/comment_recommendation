@@ -11,7 +11,8 @@ All values in input are integers.
 A_i are all different.
 There exists an integer that can be formed by exactly N matchsticks under the conditions.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 A_2 ... A_M
 

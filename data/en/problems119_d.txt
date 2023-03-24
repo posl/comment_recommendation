@@ -13,7 +13,8 @@ Constraints
 s_1, ..., s_A, t_1, ..., t_B, x_1, ..., x_Q are all different.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B Q
 s_1
 :

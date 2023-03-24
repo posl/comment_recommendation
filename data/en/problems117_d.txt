@@ -5,7 +5,7 @@ Here, for non-negative integers a and b, a XOR b denotes the bitwise exclusive O
 Find the maximum value of f.
 What is XOR?
 The bitwise exclusive OR of a and b, X, is defined as follows:
-When X is written in base two, the digit in the 2^k's place (k geq 0) is 1 if, when written in base two, exactly one of A and B has 1 in the 2^k's place, and 0 otherwise.
+When X is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if, when written in base two, exactly one of A and B has 1 in the 2^k's place, and 0 otherwise.
 For example, 3 XOR 5 = 6. (When written in base two: 011 XOR 101 = 110.)
 
 Constraints
@@ -14,7 +14,8 @@ All values in input are integers.
 0 ≦ K ≦ 10^{12}
 0 ≦ A_i ≦ 10^{12}
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 A_1 A_2 ... A_N
 

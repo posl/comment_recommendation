@@ -9,7 +9,8 @@ Constraints
 1 ≦ h_i ≦ 10^9
 h_i is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 h_1
 h_2

@@ -14,7 +14,8 @@ All values in input are integers.
 -10^5 ≦ X_i ≦ 10^5
 X_1, X_2, ..., X_M are all different.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 X_1 X_2 ... X_M
 

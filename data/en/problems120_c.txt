@@ -9,7 +9,8 @@ Constraints
 |S| = N
 Each character in S is 0 or 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

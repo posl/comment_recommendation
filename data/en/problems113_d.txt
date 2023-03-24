@@ -13,7 +13,8 @@ H is an integer between 1 and 100 (inclusive).
 W is an integer between 1 and 8 (inclusive).
 K is an integer between 1 and W (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W K
 
 Output
@@ -47,14 +48,16 @@ Sample Output 4
 5
 Only the following five amidakuji satisfy the condition:
 
-Sample Input 57 1 1
+Sample Input 5
+7 1 1
 
-Sample Output
- 51
+Sample Output 5
+1
 As there is only one vertical line, we cannot draw any horizontal lines. Thus, there is only one amidakuji that satisfies the condition: the amidakuji with no horizontal lines.
 
-Sample Input 615 8 5
+Sample Input 6
+15 8 5
 
-Sample Output
- 6437760187
+Sample Output 6
+437760187
 Be sure to print the answer modulo 1 000 000 007.

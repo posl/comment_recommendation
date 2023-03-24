@@ -5,7 +5,8 @@ Write a program that prints Heisei if the date represented by S is not later tha
 Constraints
 S is a string that represents a valid date in the year 2019 in the yyyy/mm/dd format.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
