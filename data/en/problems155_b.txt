@@ -16,7 +16,7 @@ All values in input are integers.
 Input
 Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 If the immigrant should be allowed entry according to the regulation, print APPROVED; otherwise, print DENIED.

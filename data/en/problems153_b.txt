@@ -12,7 +12,8 @@ Constraints
 1 ≦ A_i ≦ 10^4
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H N
 A_1 A_2 ... A_N
 

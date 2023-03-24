@@ -3,7 +3,7 @@ We have N voting papers. The i-th vote (1 ≦ i ≦ N) has the string S_i writte
 Print all strings that are written on the most number of votes, in lexicographical order.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 S_i (1 ≦ i ≦ N) are strings consisting of lowercase English letters.
 The length of S_i (1 ≦ i ≦ N) is between 1 and 10 (inclusive).
 

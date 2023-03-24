@@ -12,7 +12,8 @@ Constraints
 0 ≦ A_i ≦ K
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K M
 A_1 A_2 ... A_{N-1}
 

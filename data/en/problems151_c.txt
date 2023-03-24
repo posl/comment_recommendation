@@ -14,7 +14,8 @@ N, M, and p_i are integers.
 1 ≦ p_i ≦ N
 S_i is AC or WA.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 p_1 S_1
 :

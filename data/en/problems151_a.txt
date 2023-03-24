@@ -4,7 +4,8 @@ Given is a lowercase English letter C that is not z. Print the letter that follo
 Constraints
 C is a lowercase English letter that is not z.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 C
 
 Output

@@ -4,7 +4,7 @@ Find the number of pairs (A, B) of positive integers not greater than N that sat
 When A and B are written in base ten without leading zeros, the last digit of A is equal to the first digit of B, and the first digit of A is equal to the last digit of B.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 All values in input are integers.
 
 Input
@@ -39,7 +39,8 @@ Sample Input 4
 Sample Output 4
 40812
 
-Sample Input 5200000
+Sample Input 5
+200000
 
-Sample Output
- 5400000008
+Sample Output 5
+400000008

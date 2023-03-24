@@ -1,5 +1,5 @@
 Problem Statement
-Takahashi has a maze, which is a grid of H times W squares with H horizontal rows and W vertical columns.
+Takahashi has a maze, which is a grid of H × W squares with H horizontal rows and W vertical columns.
 The square at the i-th row from the top and the j-th column is a "wall" square if S_{ij} is #, and a "road" square if S_{ij} is ..
 From a road square, you can move to a horizontally or vertically adjacent road square.
 You cannot move out of the maze, move to a wall square, or move diagonally.
@@ -13,7 +13,8 @@ S_{ij} is . or #.
 S contains at least two occurrences of ..
 Any road square can be reached from any road square in zero or more moves.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 S_{11}...S_{1W}
 :

@@ -9,12 +9,13 @@ Fennec wins when all the monsters' healths become 0 or below.
 Find the minimum number of times Fennec needs to do Attack (not counting Special Move) before winning when she can use Special Move at most K times.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-0 ≦ K ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+0 ≦ K ≦ 2 × 10^5
 1 ≦ H_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 H_1 ... H_N
 
