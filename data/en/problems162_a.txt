@@ -5,7 +5,8 @@ If so, print Yes; otherwise, print No.
 Constraints
 100 ≦ N ≦ 999
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

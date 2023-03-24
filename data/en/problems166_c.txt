@@ -10,11 +10,12 @@ Constraints
 1 ≦ M ≦ 10^5
 1 ≦ H_i ≦ 10^9
 1 ≦ A_i,B_i ≦ N
-A_i neq B_i
+A_i ≠ B_i
 Multiple roads may connect the same pair of observatories.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 H_1 H_2 ... H_N
 A_1 B_1

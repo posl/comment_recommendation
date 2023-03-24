@@ -8,7 +8,8 @@ Find out which variable Snuke assigned 0.
 Constraints
 The values of x_1, x_2, x_3, x_4, and x_5 given as input are a possible outcome of the assignment by Snuke.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x_1 x_2 x_3 x_4 x_5
 
 Output

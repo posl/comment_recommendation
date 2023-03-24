@@ -53,7 +53,8 @@ Sample Output 4
 We can apply the operation once by, for example, making the following choice:
 z=1000000007 (=1000000007^1). (Now we have N=1.)
 
-Sample Input 5997764507000
+Sample Input 5
+997764507000
 
-Sample Output
- 57
+Sample Output 5
+7

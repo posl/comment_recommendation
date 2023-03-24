@@ -5,10 +5,11 @@ When a person X is the immediate boss of a person Y, the person Y is said to be 
 You are given the information that the immediate boss of the member numbered i is the member numbered A_i. For each member, find how many immediate subordinates it has.
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 1 ≦ A_i < i
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_2 ... A_N
 

@@ -5,9 +5,10 @@ We will pick up K among these cards. What is the maximum possible sum of the num
 Constraints
 All values in input are integers.
 0 ≦ A, B, C
-1 ≦ K ≦ A + B + C ≦ 2 times 10^9
+1 ≦ K ≦ A + B + C ≦ 2 × 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C K
 
 Output

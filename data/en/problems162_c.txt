@@ -1,16 +1,17 @@
 Problem Statement
-Find displaystyle{sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd(a,b,c)}.
+Find (sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd(a,b,c)).
 Here gcd(a,b,c) denotes the greatest common divisor of a, b, and c.
 
 Constraints
 1 ≦ K ≦ 200
 K is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 K
 
 Output
-Print the value of displaystyle{sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd(a,b,c)}.
+Print the value of (sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd(a,b,c)).
 
 Sample Input 1
 2

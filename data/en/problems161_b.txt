@@ -1,6 +1,6 @@
 Problem Statement
 We have held a popularity poll for N items on sale. Item i received A_i votes.
-From these N items, we will select M as popular items. However, we cannot select an item with less than dfrac{1}{4M} of the total number of votes.
+From these N items, we will select M as popular items. However, we cannot select an item with less than (1/(4M)) of the total number of votes.
 If M popular items can be selected, print Yes; otherwise, print No.
 
 Constraints
@@ -9,7 +9,8 @@ Constraints
 A_i are distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 ... A_N
 
@@ -30,7 +31,7 @@ Sample Input 2
 
 Sample Output 2
 No
-There were 400 votes in total. The second and third most popular items received less than dfrac{1}{4times 2} of the total number of votes, so we cannot select them. Thus, we cannot select two popular items.
+There were 400 votes in total. The second and third most popular items received less than (1/(4× 2)) of the total number of votes, so we cannot select them. Thus, we cannot select two popular items.
 
 Sample Input 3
 12 3

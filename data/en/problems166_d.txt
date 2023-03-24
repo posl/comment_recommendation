@@ -8,7 +8,8 @@ X is an integer.
 There exists a pair of integers (A, B) satisfying the condition in Problem Statement
 .
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X
 
 Output

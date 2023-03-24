@@ -7,7 +7,8 @@ Constraints
 1 ≤ |S| ≤ 200000
 S is a string consisting of digits from 1 through 9.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

@@ -2,7 +2,7 @@ Problem Statement
 Given are positive integers N, M, Q, and Q quadruples of integers ( a_i , b_i , c_i , d_i ).
 Consider a sequence A satisfying the following conditions:
 A is a sequence of N positive integers.
-1 ≦ A_1 ≦ A_2 le cdots ≦ A_N ≦ M.
+1 ≦ A_1 ≦ A_2 ≦ ... ≦ A_N ≦ M.
 Let us define a score of this sequence as follows:
 The score is the sum of d_i over all indices i such that A_{b_i} - A_{a_i} = c_i. (If there is no such i, the score is 0.)
 Find the maximum possible score of A.
@@ -14,10 +14,11 @@ All values in input are integers.
 1 ≦ Q ≦ 50
 1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
 0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-(a_i, b_i, c_i) neq (a_j, b_j, c_j) (where i neq j)
+(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) (where i ≠ j)
 1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M Q
 a_1 b_1 c_1 d_1
 :

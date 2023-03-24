@@ -3,10 +3,11 @@ You drew lottery N times. In the i-th draw, you got an item of the kind represen
 How many kinds of items did you get?
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 S_i consists of lowercase English letters and has a length between 1 and 10 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S_1
 :

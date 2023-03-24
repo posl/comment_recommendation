@@ -9,9 +9,9 @@ Determine whether there is a way to place signposts satisfying our objective, an
 Constraints
 All values in input are integers.
 2 ≦ N ≦ 10^5
-1 ≦ M ≦ 2 times 10^5
+1 ≦ M ≦ 2 × 10^5
 1 ≦ A_i, B_i ≦ N (1 ≦ i ≦ M)
-A_i neq B_i (1 ≦ i ≦ M)
+A_i ≠ B_i (1 ≦ i ≦ M)
 One can travel between any two rooms by traversing passages.
 
 Input

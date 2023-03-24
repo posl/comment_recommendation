@@ -1,8 +1,8 @@
 問題文
  FizzBuzz列  a_1,a_2,... を次のように定めます。
-i が 3 でも 5 でも割り切れるなら、a_i=text{FizzBuzz}
-そうではなく i が 3 で割り切れるなら、a_i=text{Fizz}
-そうではなく i が 5 で割り切れるなら、a_i=text{Buzz}
+i が 3 でも 5 でも割り切れるなら、a_i=FizzBuzz
+そうではなく i が 3 で割り切れるなら、a_i=Fizz
+そうではなく i が 5 で割り切れるなら、a_i=Buzz
 そうではないなら、a_i=i
 FizzBuzz列の N 項目までに含まれる数の和を求めてください。
 
@@ -22,7 +22,7 @@ FizzBuzz列の N 項目までに含まれる数の和を出力せよ。
 出力例 1
 60
 FizzBuzz列の 15 項目までは次の通りです。
-1,2,text{Fizz},4,text{Buzz},text{Fizz},7,8,text{Fizz},text{Buzz},11,text{Fizz},13,14,text{FizzBuzz}
+1,2,Fizz,4,Buzz,Fizz,7,8,Fizz,Buzz,11,Fizz,13,14,FizzBuzz
 15 項目までには 1,2,4,7,8,11,13,14 が含まれ、これらの和は 60 です。
 
 入力例 2

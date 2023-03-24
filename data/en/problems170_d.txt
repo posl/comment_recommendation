@@ -1,16 +1,17 @@
 Problem Statement
 Given is a number sequence A of length N.
-Find the number of integers i left(1 ≦ i ≦ Nright) with the following property:
-For every integer j left(1 ≦ j ≦ Nright) such that i neq j , A_j does not divide A_i.
+Find the number of integers i (1 ≦ i ≦ N) with the following property:
+For every integer j (1 ≦ j ≦ N) such that i ≠ j , A_j does not divide A_i.
 
 Constraints
 All values in input are integers.
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ A_i ≦ 10^6
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 cdots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer.

@@ -7,7 +7,8 @@ Given a string S representing the type of the contest held last week, print the 
 Constraints
 S is ABC or ARC.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

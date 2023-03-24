@@ -9,7 +9,8 @@ S and T are strings consisting of lowercase English letters.
 1 ≦ |S| ≦ 10
 |T| = |S| + 1
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 
