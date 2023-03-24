@@ -52,12 +52,16 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\r', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\\leqq', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\leq', '≦'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\left', ''), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\right', ''), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\le', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\geq', '≧'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\lt', '<'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\gt', '>'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\vdots', '.\n.\n.\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\simeq', '≃'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
@@ -69,14 +73,17 @@ class Scraping():
         else:
             if self.difficulty == 'a':
                 problem_list = list(map(lambda x: x.replace('\\', '\\'), problem_list))
+        #print(problem_list)
+        problem_list = list(re.sub(r'~mathrm{(\w+)}', r'[\1]', i) for i in problem_list)
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'rm{(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'text{(.*)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\w)}{(\w+)}', r'(\1/\2)', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\w)}{(.*?)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac{(.*?)}{(.*?)}', r'(\1/\2)', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\d+)}{(\d+)}', r'(\1/\2)', i) for i in problem_list)
-        problem_list = list(re.sub(r'sqrt{(\w+)}', r'(\1)^(1/2)', i) for i in problem_list)
-        problem_list = list(re.sub(r'sqrt{(.*)}', r'(\1)^(1/2)', i) for i in problem_list)
+        #problem_list = list(re.sub(r'sqrt{(\w+)}', r'(\1)^(1/2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'sqrt{(.*?)}', r'(\1)^(1/2)', i) for i in problem_list)
         
 
         if self.language == 'ja':
@@ -190,7 +197,7 @@ if __name__ == '__main__':
     '''
 
     
-    #'''
+    '''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -776,7 +783,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(112, 141):
+    for number_of_problem in range(145, 146):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()

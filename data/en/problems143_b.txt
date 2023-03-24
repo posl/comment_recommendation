@@ -1,15 +1,16 @@
 Problem Statement
 It's now the season of TAKOYAKI FESTIVAL!
 This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is d_i.
-As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x times y health points.
-There are frac{N times (N - 1)}{2} ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these frac{N times (N - 1)}{2} values.
+As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x × y health points.
+There are (N × (N - 1)/2) ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these (N × (N - 1)/2) values.
 
 Constraints
 All values in input are integers.
 2 ≦ N ≦ 50
 0 ≦ d_i ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 d_1 d_2 ... d_N
 

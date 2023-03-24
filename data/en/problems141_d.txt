@@ -2,7 +2,7 @@ Problem Statement
 Takahashi is going to buy N items one by one.
 The price of the i-th item he buys is A_i yen (the currency of Japan).
 He has M discount tickets, and he can use any number of them when buying an item.
-If Y tickets are used when buying an item priced X yen, he can get the item for frac{X}{2^Y} (rounded down to the nearest integer) yen.
+If Y tickets are used when buying an item priced X yen, he can get the item for (X/2^Y) (rounded down to the nearest integer) yen.
 What is the minimum amount of money required to buy all the items?
 
 Constraints
@@ -10,7 +10,8 @@ All values in input are integers.
 1 ≦ N, M ≦ 10^5
 1 ≦ A_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 A_2 ... A_N
 

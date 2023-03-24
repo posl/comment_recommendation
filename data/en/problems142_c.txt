@@ -6,15 +6,15 @@ According to Takahashi's record, there were A_i students in the classroom when s
 From these records, reconstruct the order in which the students entered the classroom.
 
 Constraints
- 1 le N le 10^5 
- 1 le A_i le N 
- A_i neq A_j  (i neq j)
+ 1 ≦ N ≦ 10^5 
+ 1 ≦ A_i ≦ N 
+ A_i ≠ A_j  (i ≠ j)
 All values in input are integers.
 
 Input
 Input is given from Standard Input in the following format:
 N
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the student numbers of the students in the order the students entered the classroom.
