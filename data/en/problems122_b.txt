@@ -1,6 +1,5 @@
 Problem Statement
-You are given a string S consisting of uppercase English letters. Find the length of the longest ACGT string that is a substring (see Notes
-) of S.
+You are given a string S consisting of uppercase English letters. Find the length of the longest ACGT string that is a substring (see Notes) of S.
 Here, a ACGT string is a string that contains no characters other than A, C, G and T.
 
 Notes

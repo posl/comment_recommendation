@@ -48,8 +48,9 @@ class Scraping():
         problem_list = []
         for part in pro[0].find_all(class_='part'):
             problem_list.append(part.text)
-
+        #print(problem_list)
         problem_list = list(map(lambda x: x.replace('\r', ''), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\leqq', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\leq', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\geq', '≧'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\lt', '<'), problem_list))
@@ -59,16 +60,22 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
+        problem_list = list(map(lambda x: x.replace('\x08', ''), problem_list))
         #print(problem_list)
         problem_list = list(map(lambda x: x.replace('\\,', ''), problem_list))
-        problem_list = list(map(lambda x: x.replace('\\', ''), problem_list))
+        if int(self.number) != 111:
+            problem_list = list(map(lambda x: x.replace('\\', ''), problem_list))
+        else:
+            if self.difficulty == 'a':
+                problem_list = list(map(lambda x: x.replace('\\', '\\'), problem_list))
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'rm{(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'text{(\w+)}', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac{(\d)}{(\d)}', r'(\1/\2)', i) for i in problem_list)
 
         if self.language == 'ja':
             
-            for i in ['問題文', '制約', '注釈', '出力']:
+            for i in ['問題文', '制約', '注釈', '出力', '注記']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
             
             for i in ['の', '中']:
@@ -76,6 +83,9 @@ class Scraping():
 
             for i in ['の', 'を', '下', '」']:
                 problem_list = list(map(lambda x: x.replace('制約\n' + i, '制約' + i), problem_list))
+            
+            for i in ['を']:
+                problem_list = list(map(lambda x: x.replace('注記\n' + i, '注記' + i), problem_list))
             
             for i in ['入力入']:
                 problem_list = list(map(lambda x: x.replace(i, i[0:2] + '\n' + i[2]), problem_list))
@@ -87,8 +97,11 @@ class Scraping():
             for i in ['と']:
                 problem_list = list(map(lambda x: x.replace('入力例 1\n ' + i, '入力例 1' + i), problem_list))
 
-            for i in ['が', 'し', 'する', 'すれ', 'せよ', 'で', 'の', 'は', 'も、']:
+            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'の', 'は', 'も、']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
+            
+            for i in ['はじ']:
+                problem_list = list(map(lambda x: x.replace('出力' + i, '出力\n' + i), problem_list))
 
         else:
             for i in ['Problem Statement', 'Constraints', 'Notes', 'Output']:
@@ -96,6 +109,7 @@ class Scraping():
 
             for i in [')']:
                 problem_list = list(map(lambda x: x.replace('Constraints\n' + i, 'Constraints' + i), problem_list))
+                problem_list = list(map(lambda x: x.replace('Notes\n' + i, 'Notes' + i), problem_list))
 
             for i in ['The', 'Input']:
                 problem_list = list(map(lambda x: x.replace('Input' + i, 'Input' + '\n' + i), problem_list))
@@ -104,6 +118,7 @@ class Scraping():
                 problem_list = list(map(lambda x: x.replace('Output\n' + i, 'Output' + i + '\n'), problem_list))
 
             for i in ['s']:
+                problem_list = list(map(lambda x: x.replace('Outputs\n ' + i, 'Outputs ' + i), problem_list))
                 problem_list = list(map(lambda x: x.replace('Output\n ' + i, 'Output ' + i), problem_list))
             
             for i in range(1, 7):
@@ -169,7 +184,7 @@ if __name__ == '__main__':
     '''
 
     
-    
+    #'''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -689,7 +704,7 @@ if __name__ == '__main__':
             problem = scraping.get_problem()
             scraping.write_problem(problem)
         print(number_of_problem)
-    '''
+    
     # -2 -> -6
     add_id = -6
     for number_of_problem in range(107, 109):
@@ -753,8 +768,9 @@ if __name__ == '__main__':
             scraping.change_difficulty()
             scraping.write_problem(problem)
         print(number_of_problem)
-
-    for number_of_problem in range(112, 290):
+    #'''
+    #for number_of_problem in range(112, 290):
+    for number_of_problem in range(112, 130):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()

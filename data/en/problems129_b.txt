@@ -1,5 +1,5 @@
 Problem Statement
-We have N weights indexed 1 to N. The mass of the weight indexed i is W_i.
+We have N weights indexed 1 to N. The mass of the weight indexed i is W_i.
 We will divide these weights into two groups: the weights with indices not greater than T, and those with indices greater than T, for some integer 1 ≦ T < N. Let S_1 be the sum of the masses of the weights in the former group, and S_2 be the sum of the masses of the weights in the latter group.
 Consider all possible such divisions and find the minimum possible absolute difference of S_1 and S_2.
 
