@@ -4,7 +4,7 @@ Between these N users, there are some relationships - M friendships and K blocks
 For each i = 1, 2, cdots, M, there is a bidirectional friendship between User A_i and User B_i.
 For each i = 1, 2, cdots, K, there is a bidirectional blockship between User C_i and User D_i.
 We define User a to be a friend candidate for User b when all of the following four conditions are satisfied:
-a neq b.
+a ≠ b.
 There is not a friendship between User a and User b.
 There is not a blockship between User a and User b.
 There exists a sequence c_0, c_1, c_2, cdots, c_L consisting of integers between 1 and N (inclusive) such that c_0 = a, c_L = b, and there is a friendship between User c_i and c_{i+1} for each i = 0, 1, cdots, L - 1.
@@ -16,23 +16,28 @@ All values in input are integers.
 0 ≦ M ≦ 10^5
 0 ≦ K ≦ 10^5
 1 ≦ A_i, B_i ≦ N
-A_i neq B_i
+A_i ≠ B_i
 1 ≦ C_i, D_i ≦ N
-C_i neq D_i
-(A_i, B_i) neq (A_j, B_j) (i neq j)
-(A_i, B_i) neq (B_j, A_j)
-(C_i, D_i) neq (C_j, D_j) (i neq j)
-(C_i, D_i) neq (D_j, C_j)
-(A_i, B_i) neq (C_j, D_j)
-(A_i, B_i) neq (D_j, C_j)
+C_i ≠ D_i
+(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
+(A_i, B_i) ≠ (B_j, A_j)
+(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
+(C_i, D_i) ≠ (D_j, C_j)
+(A_i, B_i) ≠ (C_j, D_j)
+(A_i, B_i) ≠ (D_j, C_j)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M K
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 C_1 D_1
-vdots
+.
+.
+.
 C_K D_K
 
 Output

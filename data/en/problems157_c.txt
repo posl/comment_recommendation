@@ -1,7 +1,7 @@
 Problem Statement
 If there is an integer not less than 0 satisfying the following conditions, print the smallest such integer; otherwise, print -1.
 The integer has exactly N digits in base ten. (We assume 0 to be a 1-digit integer. For other integers, leading zeros are not allowed.)
-The s_i-th digit from the left is c_i. left(i = 1, 2, cdots, Mright)
+The s_i-th digit from the left is c_i. (i = 1, 2, cdots, M)
 
 Constraints
 All values in input are integers.
@@ -10,10 +10,13 @@ All values in input are integers.
 1 ≦ s_i ≦ N
 0 ≦ c_i ≦ 9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 s_1 c_1
-vdots
+.
+.
+.
 s_M c_M
 
 Output

@@ -9,7 +9,8 @@ All values in input are integers.
 1 ≦ N ≦ 10^9
 2 ≦ K ≦ 10
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 
 Output

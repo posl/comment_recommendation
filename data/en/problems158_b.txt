@@ -7,11 +7,12 @@ How many blue balls will be there among the first N balls in the row of balls ma
 
 Constraints
 1 ≦ N ≦ 10^{18}
-A, B geq 0
+A, B ≧ 0
 0 < A + B ≦ 10^{18}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N A B
 
 Output

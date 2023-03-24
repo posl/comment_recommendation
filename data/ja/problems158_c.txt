@@ -20,8 +20,8 @@ A B
 出力例 1
 25
 税抜き価格が 25 円の場合、
-消費税率が 8 %のとき消費税は lfloor 25 times 0.08 rfloor = lfloor 2 rfloor = 2 円です。
-消費税率が 10 %のとき消費税は lfloor 25 times 0.1 rfloor = lfloor 2.5 rfloor = 2 円です。
+消費税率が 8 %のとき消費税は lfloor 25 × 0.08 rfloor = lfloor 2 rfloor = 2 円です。
+消費税率が 10 %のとき消費税は lfloor 25 × 0.1 rfloor = lfloor 2.5 rfloor = 2 円です。
 よって 25 円は条件を満たし、また 26 円のときなども条件を満たしますが、これが最小であるので 25 を出力してください。
 
 入力例 2
@@ -30,8 +30,8 @@ A B
 出力例 2
 100
 税抜き価格が 100 円の場合、
-消費税率が 8 %のとき消費税は lfloor 100 times 0.08 rfloor = 8 円です。
-消費税率が 10 %のとき消費税は lfloor 100 times 0.1 rfloor = 10 円です。
+消費税率が 8 %のとき消費税は lfloor 100 × 0.08 rfloor = 8 円です。
+消費税率が 10 %のとき消費税は lfloor 100 × 0.1 rfloor = 10 円です。
 
 
 入力例 3

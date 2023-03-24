@@ -12,12 +12,13 @@ Help Takahashi by finding the final string that results from the procedure.
 Constraints
 1 ≦ |S| ≦ 10^5
 S consists of lowercase English letters.
-1 ≦ Q ≦ 2 times 10^5
+1 ≦ Q ≦ 2 × 10^5
 T_i = 1 or 2.
 F_i = 1 or 2, if provided.
 C_i is a lowercase English letter, if provided.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 Q
 Query_1

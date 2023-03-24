@@ -9,9 +9,10 @@ Here, two bouquets are considered different when there is a flower that is used 
 Constraints
 All values in input are integers.
 2 ≦ n ≦ 10^9
-1 ≦ a < b ≦ textrm{min}(n, 2 times 10^5)
+1 ≦ a < b ≦ min(n, 2 × 10^5)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n a b
 
 Output

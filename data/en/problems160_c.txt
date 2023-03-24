@@ -6,11 +6,12 @@ Find the minimum distance that needs to be traveled when you start at one of the
 
 Constraints
 2 ≦ K ≦ 10^6
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 0 ≦ A_1 < ... < A_N < K
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 K N
 A_1 A_2 ... A_N
 

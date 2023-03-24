@@ -9,7 +9,8 @@ Constraints
 S consists of lowercase English letters.
 The length of S is an odd number between 3 and 99 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

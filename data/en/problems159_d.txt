@@ -4,7 +4,7 @@ For each k=1, 2, ..., N, solve the following problem and print the answer.
 Find the number of ways to choose two distinct balls (disregarding order) from the N-1 balls other than the k-th ball so that the integers written on them are equal.
 
 Constraints
-3 ≦ N ≦ 2 times 10^5
+3 ≦ N ≦ 2 × 10^5
 1 ≦ A_i ≦ N
 All values in input are integers.
 

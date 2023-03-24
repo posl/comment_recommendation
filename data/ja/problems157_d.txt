@@ -4,7 +4,7 @@
 i = 1, 2, cdots, M について、人 A_i と人 B_i は友達関係にあります。この関係は双方向的です。
 i = 1, 2, cdots, K について、人 C_i と人 D_i はブロック関係にあります。この関係は双方向的です。
 以下の 4 つの条件が満たされるとき、人 a は人 b の「友達候補」であると定義します。
-a neq b である。
+a ≠ b である。
 人 a と人 b はブロック関係に無い。
 人 a と人 b は友達関係に無い。
 1 以上 N 以下の整数から成るある数列 c_0, c_1, c_2, cdots, c_L が存在し、c_0 = a であり、 c_L = b であり、 i = 0, 1, cdots, L - 1 について、人 c_i と人 c_{i+1} は友達関係にある。
@@ -16,24 +16,28 @@ a neq b である。
 0 ≦ M ≦ 10^5
 0 ≦ K ≦ 10^5
 1 ≦ A_i, B_i ≦ N
-A_i neq B_i
+A_i ≠ B_i
 1 ≦ C_i, D_i ≦ N
-C_i neq D_i
-(A_i, B_i) neq (A_j, B_j) (i neq j)
-(A_i, B_i) neq (B_j, A_j)
-(C_i, D_i) neq (C_j, D_j) (i neq j)
-(C_i, D_i) neq (D_j, C_j)
-(A_i, B_i) neq (C_j, D_j)
-(A_i, B_i) neq (D_j, C_j)
+C_i ≠ D_i
+(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
+(A_i, B_i) ≠ (B_j, A_j)
+(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
+(C_i, D_i) ≠ (D_j, C_j)
+(A_i, B_i) ≠ (C_j, D_j)
+(A_i, B_i) ≠ (D_j, C_j)
 
 入力
 入力は以下の形式で標準入力から与えられる。
 N M K
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 C_1 D_1
-vdots
+.
+.
+.
 C_K D_K
 
 出力

@@ -8,7 +8,8 @@ Constraints
 Each character of S is A or B.
 |S| = 3
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

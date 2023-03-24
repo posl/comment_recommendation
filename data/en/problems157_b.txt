@@ -1,23 +1,26 @@
 Problem Statement
-We have a bingo card with a 3times3 grid. The square at the i-th row from the top and the j-th column from the left contains the number A_{i, j}.
+We have a bingo card with a 3×3 grid. The square at the i-th row from the top and the j-th column from the left contains the number A_{i, j}.
 The MC will choose N numbers, b_1, b_2, cdots, b_N. If our bingo sheet contains some of those numbers, we will mark them on our sheet.
 Determine whether we will have a bingo when the N numbers are chosen, that is, the sheet will contain three marked numbers in a row, column, or diagonal.
 
 Constraints
 All values in input are integers.
 1 ≦ A_{i, j} ≦ 100
-A_{i_1, j_1} neq A_{i_2, j_2} ((i_1, j_1) neq (i_2, j_2))
+A_{i_1, j_1} ≠ A_{i_2, j_2} ((i_1, j_1) ≠ (i_2, j_2))
 1 ≦ N ≦ 10
 1 ≦ b_i ≦ 100
-b_i neq b_j (i neq j)
+b_i ≠ b_j (i ≠ j)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A_{1, 1} A_{1, 2} A_{1, 3}
 A_{2, 1} A_{2, 2} A_{2, 3}
 A_{3, 1} A_{3, 2} A_{3, 3}
 N
 b_1
-vdots
+.
+.
+.
 b_N
 
 Output
