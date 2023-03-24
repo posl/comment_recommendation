@@ -9,7 +9,8 @@ All values in input are integers.
 1 ≦ N ≦ 10^5
 1 ≦ H_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 H_1 H_2 ... H_N
 

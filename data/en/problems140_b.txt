@@ -1,5 +1,5 @@
 Problem Statement
-Takahashi went to an all-you-can-eat buffet with N kinds of dishes and ate all of them (Dish 1, Dish 2, ldots, Dish N) once.
+Takahashi went to an all-you-can-eat buffet with N kinds of dishes and ate all of them (Dish 1, Dish 2, ..., Dish N) once.
 The i-th dish (1 ≦ i ≦ N) he ate was Dish A_i.
 When he eats Dish i (1 ≦ i ≦ N), he gains B_i satisfaction points.
 Additionally, when he eats Dish i+1 just after eating Dish i (1 ≦ i ≦ N - 1), he gains C_i more satisfaction points.
@@ -13,7 +13,8 @@ A_1, A_2, ..., A_N are all different.
 1 ≦ B_i ≦ 50
 1 ≦ C_i ≦ 50
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 A_2 ... A_N
 B_1 B_2 ... B_N

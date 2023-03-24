@@ -7,15 +7,16 @@ Operation j (1 ≦ j ≦ Q): Increment by x_j the counter on every vertex contai
 Find the value of the counter on each vertex after all operations.
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
-1 ≦ Q ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
+1 ≦ Q ≦ 2 × 10^5
 1 ≦ a_i < b_i ≦ N
 1 ≦ p_j ≦ N
 1 ≦ x_j ≦ 10^4
 The given graph is a tree.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
 a_1 b_1
 :
@@ -25,7 +26,7 @@ p_1 x_1
 p_Q x_Q
 
 Output
-Print the values of the counters on Vertex 1, 2, ldots, N after all operations, in this order, with spaces in between.
+Print the values of the counters on Vertex 1, 2, ..., N after all operations, in this order, with spaces in between.
 
 Sample Input 1
 4 3

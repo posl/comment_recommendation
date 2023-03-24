@@ -1,7 +1,7 @@
 Problem Statement
 There is an integer sequence A of length N whose values are unknown.
 Given is an integer sequence B of length N-1 which is known to satisfy the following:
- B_i geq max(A_i, A_{i+1}) 
+ B_i ≧ max(A_i, A_{i+1}) 
 Find the maximum possible sum of the elements of A.
 
 Constraints
@@ -9,7 +9,8 @@ All values in input are integers.
 2 ≦ N ≦ 100
 0 ≦ B_i ≦ 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 B_1 B_2 ... B_{N-1}
 

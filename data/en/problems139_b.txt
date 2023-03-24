@@ -9,7 +9,8 @@ All values in input are integers.
 2 ≦ A ≦ 20
 1 ≦ B ≦ 20
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output

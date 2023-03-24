@@ -70,8 +70,13 @@ class Scraping():
                 problem_list = list(map(lambda x: x.replace('\\', '\\'), problem_list))
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'rm{(\w+)}', r'\1', i) for i in problem_list)
-        problem_list = list(re.sub(r'text{(\w+)}', r'\1', i) for i in problem_list)
-        problem_list = list(re.sub(r'frac{(\d)}{(\d)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'text{(.*)}', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac{(\w)}{(\w+)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac{(\w)}{(.*?)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac{(\d+)}{(\d+)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'sqrt{(\w+)}', r'(\1)^(1/2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'sqrt{(.*)}', r'(\1)^(1/2)', i) for i in problem_list)
+        
 
         if self.language == 'ja':
             
@@ -184,7 +189,7 @@ if __name__ == '__main__':
     '''
 
     
-    #'''
+    '''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -770,7 +775,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(112, 130):
+    for number_of_problem in range(138, 139):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()

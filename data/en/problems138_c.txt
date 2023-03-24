@@ -8,9 +8,10 @@ Constraints
 1 ≦ v_i ≦ 1000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-v_1 v_2 ldots v_N
+v_1 v_2 ... v_N
 
 Output
 Print a decimal number (or an integer) representing the maximum possible value of the last ingredient remaining.

@@ -9,7 +9,8 @@ Constraints
 S and T are strings of length 3 each.
 S and T consist of S, C, and R.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 
