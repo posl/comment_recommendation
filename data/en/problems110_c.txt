@@ -5,11 +5,12 @@ Operation: Choose two distinct lowercase English letters c_1 and c_2, then repla
 Determine if S and T can be made equal by performing the operation zero or more times.
 
 Constraints
-1 ≦ |S| ≦ 2 times 10^5
+1 ≦ |S| ≦ 2 × 10^5
 |S| = |T|
 S and T consists of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

@@ -8,7 +8,8 @@ Constraints
 111 ≦ n ≦ 999
 n is an integer consisting of digits 1 and 9.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 n
 
 Output

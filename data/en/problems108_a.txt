@@ -5,7 +5,8 @@ Constraints
 2≦ K≦ 100
 K is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 K
 
 Output

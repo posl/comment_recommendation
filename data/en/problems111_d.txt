@@ -21,7 +21,8 @@ All values in input are integers.
 Partial Score
 In the test cases worth 300 points, -10 ≦ X_i ≦ 10 and -10 ≦ Y_i ≦ 10 hold.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 X_1 Y_1
 X_2 Y_2

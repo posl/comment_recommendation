@@ -10,7 +10,8 @@ All values in input are integers.
 1 ≦ H, W ≦ 500
 0 ≦ a_{ij} ≦ 9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 a_{11} a_{12} ... a_{1W}
 a_{21} a_{22} ... a_{2W}
@@ -24,7 +25,7 @@ y_1 x_1 y_1' x_1'
 y_2 x_2 y_2' x_2'
 :
 y_N x_N y_N' x_N'
-That is, in the first line, print an integer N between 0 and H times W (inclusive), representing the number of operations.
+That is, in the first line, print an integer N between 0 and H × W (inclusive), representing the number of operations.
 In the (i+1)-th line (1 ≦ i ≦ N), print four integers y_i, x_i, y_i' and x_i' (1 ≦ y_i, y_i' ≦ H and 1 ≦ x_i, x_i' ≦ W), representing the i-th operation. These four integers represents the operation of moving one of the coins placed in Cell (y_i, x_i) to a vertically or horizontally adjacent cell, (y_i', x_i').
 Note that if the specified operation violates the specification in the problem statement or the output format is invalid, it will result in Wrong Answer.
 

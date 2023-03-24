@@ -15,7 +15,8 @@ Constraints
 a_{i, j} is . or #.
 There is at least one black square in the whole grid.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 a_{1, 1}...a_{1, W}
 :

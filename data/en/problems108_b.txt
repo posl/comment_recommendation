@@ -9,7 +9,8 @@ Constraints
 (x_1,y_1) ≠ (x_2,y_2)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x_1 y_1 x_2 y_2
 
 Output

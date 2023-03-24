@@ -12,7 +12,8 @@ All values in input are integers.
 1 ≦ t_i ≦ 1000
 The pairs (c_i, t_i) are distinct.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N T
 c_1 t_1
 c_2 t_2

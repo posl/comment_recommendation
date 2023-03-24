@@ -3,10 +3,11 @@ You are given integers N and K. Find the number of triples (a,b,c) of positive i
 The order of a,b,c does matter, and some of them can be the same.
 
 Constraints
-1 ≦ N,K ≦ 2times 10^5
+1 ≦ N,K ≦ 2× 10^5
 N and K are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 
 Output

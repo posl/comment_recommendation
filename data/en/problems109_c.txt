@@ -14,9 +14,10 @@ All values in input are integers.
 1 ≦ X ≦ 10^9
 1 ≦ x_i ≦ 10^9
 x_i are all different.
-x_1, x_2, ..., x_N neq X
+x_1, x_2, ..., x_N ≠ X
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 x_1 x_2 ... x_N
 

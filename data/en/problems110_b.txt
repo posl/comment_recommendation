@@ -5,7 +5,7 @@ One day, Empire A becomes inclined to put the cities at coordinates x_1, x_2, ..
 If there exists an integer Z that satisfies all of the following three conditions, they will come to an agreement, but otherwise war will break out.
 X < Z ≦ Y
 x_1, x_2, ..., x_N < Z
-y_1, y_2, ..., y_M geq Z
+y_1, y_2, ..., y_M ≧ Z
 Determine if war will break out.
 
 Constraints
@@ -13,12 +13,13 @@ All values in input are integers.
 1 ≦ N, M ≦ 100
 -100 ≦ X < Y ≦ 100
 -100 ≦ x_i, y_i ≦ 100
-x_1, x_2, ..., x_N neq X
+x_1, x_2, ..., x_N ≠ X
 x_i are all different.
-y_1, y_2, ..., y_M neq Y
+y_1, y_2, ..., y_M ≠ Y
 y_i are all different.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M X Y
 x_1 x_2 ... x_N
 y_1 y_2 ... y_M
@@ -36,7 +37,7 @@ No War
 The choice Z = 16 satisfies all of the three conditions as follows, thus they will come to an agreement.
 X = 10 < 16 ≦ 20 = Y
 8, 15, 13 < 16
-16, 22 geq 16
+16, 22 ≧ 16
 
 Sample Input 2
 4 2 -48 -1
