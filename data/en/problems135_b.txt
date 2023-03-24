@@ -8,7 +8,8 @@ All values in input are integers.
 2 ≦ N ≦ 50
 p is a permutation of {1, 2, ..., N}.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 p_1 p_2 ... p_N
 

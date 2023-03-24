@@ -6,7 +6,8 @@ Constraints
 1 ≦ r ≦ 100
 r is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 r
 
 Output
@@ -17,7 +18,7 @@ Sample Input 1
 
 Sample Output 1
 48
-The area of the regular dodecagon is 3 times 4^2 = 48.
+The area of the regular dodecagon is 3 × 4^2 = 48.
 
 Sample Input 2
 15

@@ -8,10 +8,11 @@ Does there exist a good set of choices? If the answer is yes, find one good set 
 
 Constraints
 All values in input are integers.
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 a_i is 0 or 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 a_2 ... a_N
 

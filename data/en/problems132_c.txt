@@ -12,7 +12,8 @@ N is an even number.
 1 ≦ d_i ≦ 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 d_1 d_2 ... d_N
 

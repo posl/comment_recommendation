@@ -9,7 +9,8 @@ All values in input are integers.
 1 ≦ N ≦ 20
 1 ≦ D ≦ 20
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N D
 
 Output

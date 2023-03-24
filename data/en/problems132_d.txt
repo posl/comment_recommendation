@@ -7,7 +7,8 @@ How many ways are there for Snuke to arrange the N balls in a row so that Takaha
 Constraints
 1 ≦ K ≦ N ≦ 2000
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 
 Output
