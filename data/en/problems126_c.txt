@@ -10,7 +10,8 @@ Constraints
 1 ≤ K ≤ 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 
 Output
@@ -21,9 +22,9 @@ Sample Input 1
 
 Sample Output 1
 0.145833333333
-If the die shows 1, Snuke needs to get four consecutive heads from four coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} times (frac{1}{2})^4 = frac{1}{48}.
-If the die shows 2, Snuke needs to get three consecutive heads from three coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} times (frac{1}{2})^3 = frac{1}{24}.
-If the die shows 3, Snuke needs to get two consecutive heads from two coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} times (frac{1}{2})^2 = frac{1}{12}.
+If the die shows 1, Snuke needs to get four consecutive heads from four coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} × (frac{1}{2})^4 = frac{1}{48}.
+If the die shows 2, Snuke needs to get three consecutive heads from three coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} × (frac{1}{2})^3 = frac{1}{24}.
+If the die shows 3, Snuke needs to get two consecutive heads from two coin flips to obtain a score of 10 or above. The probability of this happening is frac{1}{3} × (frac{1}{2})^2 = frac{1}{12}.
 Thus, the probability that Snuke wins is frac{1}{48} + frac{1}{24} + frac{1}{12} = frac{7}{48} simeq 0.1458333333.
 
 Sample Input 2

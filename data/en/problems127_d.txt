@@ -11,7 +11,8 @@ All values in input are integers.
 1 ≦ A_i, C_i ≦ 10^9
 1 ≦ B_i ≦ N
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 A_2 ... A_N
 B_1 C_1

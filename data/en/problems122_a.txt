@@ -5,7 +5,8 @@ You are given a letter b as input, which is A, C, G or T. Write a program that p
 Constraints
 b is one of the letters A, C, G and T.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 b
 
 Output

@@ -11,7 +11,8 @@ For example, the substrings of ATCODER include TCO, AT, CODER, ATCODER and  (the
 Constraints
 3 ≦ N ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

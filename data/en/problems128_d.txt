@@ -16,7 +16,8 @@ All values in input are integers.
 1 ≦ K ≦ 100
 -10^7 ≦ V_i ≦ 10^7
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 V_1 V_2 ... V_N
 

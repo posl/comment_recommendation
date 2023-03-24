@@ -8,7 +8,8 @@ Constraints
 1 ≦ P,Q,R ≦ 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 P Q R
 
 Output

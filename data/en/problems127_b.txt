@@ -10,7 +10,8 @@ Constraints
 D < x_{2000} ≤ 200
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 r D x_{2000}
 
 Output
@@ -30,7 +31,7 @@ Sample Output 1
 2570
 5130
 10250
-For example, x_{2001} = rx_{2000} - D = 2 times 20 - 10 = 30 and x_{2002} = rx_{2001} - D = 2 times 30 - 10 = 50.
+For example, x_{2001} = rx_{2000} - D = 2 × 20 - 10 = 30 and x_{2002} = rx_{2001} - D = 2 × 30 - 10 = 50.
 
 Sample Input 2
 4 40 60

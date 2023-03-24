@@ -12,7 +12,8 @@ K is an integer satisfying 1 ≦ K ≦ 10^5.
 The length of the string S is N.
 Each character of the string S is 0 or 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 S
 

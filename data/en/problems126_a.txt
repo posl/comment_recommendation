@@ -7,7 +7,8 @@ Constraints
 1 ≤ K ≤ N
 S is a string of length N consisting of A, B and C.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 S
 

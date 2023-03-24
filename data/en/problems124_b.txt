@@ -11,7 +11,8 @@ All values in input are integers.
 1 ≦ N ≦ 20
 1 ≦ H_i ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 H_1 H_2 ... H_N
 

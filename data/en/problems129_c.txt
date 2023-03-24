@@ -1,7 +1,7 @@
 Problem Statement
 There is a staircase with N steps. Takahashi is now standing at the foot of the stairs, that is, on the 0-th step.
 He can climb up one or two steps at a time.
-However, the treads of the a_1-th, a_2-th, a_3-th, ldots, a_M-th steps are broken, so it is dangerous to set foot on those steps.
+However, the treads of the a_1-th, a_2-th, a_3-th, ..., a_M-th steps are broken, so it is dangerous to set foot on those steps.
 How many are there to climb up to the top step, that is, the N-th step, without setting foot on the broken steps?
 Find the count modulo 1 000 000 007.
 
@@ -10,7 +10,8 @@ Constraints
 0 ≦ M ≦ N-1
 1 ≦ a_1 < a_2 <  ...  < a_M ≦ N-1
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 a_1
 a_2

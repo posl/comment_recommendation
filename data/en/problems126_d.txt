@@ -11,7 +11,8 @@ All values in input are integers.
 1 ≦ u_i < v_i ≦ N
 1 ≦ w_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 u_1 v_1 w_1
 u_2 v_2 w_2

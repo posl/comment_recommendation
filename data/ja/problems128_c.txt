@@ -7,7 +7,7 @@ on と off の状態を持つ N 個の スイッチと、M 個の電球があり
 1 ≦ N, M ≦ 10
 1 ≦ k_i ≦ N
 1 ≦ s_{ij} ≦ N
-s_{ia} neq s_{ib} (a neq b)
+s_{ia} ≠ s_{ib} (a ≠ b)
 p_i は 0 または 1
 入力は全て整数である
 

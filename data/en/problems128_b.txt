@@ -14,7 +14,8 @@ S is a string of length between 1 and 10 (inclusive) consisting of lowercase Eng
 P_i is an integer.
 P_i ≠ P_j (1 ≤ i < j ≤ N)
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S_1 P_1
 :

@@ -7,11 +7,12 @@ Constraints
 1 ≦ N, M ≦ 10
 1 ≦ k_i ≦ N
 1 ≦ s_{ij} ≦ N
-s_{ia} neq s_{ib} (a neq b)
+s_{ia} ≠ s_{ib} (a ≠ b)
 p_i is 0 or 1.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 k_1 s_{11} s_{12} ... s_{1k_1}
 :

@@ -7,7 +7,8 @@ Constraints
 All values in input are integers.
 0 ≦ A, P ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A P
 
 Output

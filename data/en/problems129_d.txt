@@ -13,7 +13,8 @@ Constraints
 S_i is a string of length W consisting of # and ..
 . occurs at least once in one of the strings S_i (1 ≦ i ≦ H).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 S_1
 :

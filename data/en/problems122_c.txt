@@ -13,7 +13,8 @@ S is a string of length N.
 Each character in S is A, C, G or T.
 1 ≦ l_i < r_i ≦ N
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
 S
 l_1 r_1

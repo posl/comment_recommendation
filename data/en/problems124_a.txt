@@ -8,7 +8,8 @@ Constraints
 All values in input are integers.
 3 ≦ A, B ≦ 20
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output

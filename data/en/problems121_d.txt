@@ -2,14 +2,15 @@ Problem Statement
 Let f(A, B) be the exclusive OR of A, A+1, ..., B. Find f(A, B).
 What is exclusive OR?
 The bitwise exclusive OR of integers c_1, c_2, ..., c_n (let us call it y) is defined as follows:
-When y is written in base two, the digit in the 2^k's place (k geq 0) is 1 if, the number of integers among c_1, c_2, ...c_m whose binary representations have 1 in the 2^k's place, is odd, and 0 if that count is even.
+When y is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if, the number of integers among c_1, c_2, ...c_m whose binary representations have 1 in the 2^k's place, is odd, and 0 if that count is even.
 For example, the exclusive OR of 3 and 5 is 6. (When written in base two: the exclusive OR of 011 and 101 is 110.)
 
 Constraints
 All values in input are integers.
 0 ≦ A ≦ B ≦ 10^{12}
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output

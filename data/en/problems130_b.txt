@@ -8,7 +8,8 @@ Constraints
 1 ≦ X ≦ 10000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 L_1 L_2 ... L_{N-1} L_N
 
