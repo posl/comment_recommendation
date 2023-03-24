@@ -6,8 +6,8 @@ We want to paint them so that, for each vertex, the colors of the edges incident
 Among the colorings satisfying the condition above, construct one that uses the minimum number of colors.
 
 Constraints
- 2 le N le 10^5
- 1 le a_i < b_i le N
+ 2 ≦ N ≦ 10^5
+ 1 ≦ a_i < b_i ≦ N
 All values in input are integers.
 The given graph is a tree.
 
@@ -16,13 +16,15 @@ Input is given from Standard Input in the following format:
 N
 a_1 b_1
 a_2 b_2
-vdots
+.
+.
+.
 a_{N-1} b_{N-1}
 
 Output
 Print N lines.
 The first line should contain K, the number of colors used.
-The (i+1)-th line (1 le i le N-1) should contain c_i, the integer representing the color of the i-th edge, where 1 le c_i le K must hold.
+The (i+1)-th line (1 ≦ i ≦ N-1) should contain c_i, the integer representing the color of the i-th edge, where 1 ≦ c_i ≦ K must hold.
 If there are multiple colorings with the minimum number of colors that satisfy the condition, printing any of them will be accepted.
 
 Sample Input 1

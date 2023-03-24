@@ -5,7 +5,8 @@ Constraints
 S and T are strings consisting of lowercase English letters.
 The lengths of S and T are between 1 and 100 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S T
 
 Output

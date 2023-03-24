@@ -6,7 +6,7 @@ A prime number is an integer greater than 1 that cannot be evenly divided by any
 For example, 2, 3, and 5 are prime numbers, while 4 and 6 are not.
 
 Constraints
- 2 le X le 10^5 
+ 2 ≦ X ≦ 10^5 
 All values in input are integers.
 
 Input

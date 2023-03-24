@@ -26,7 +26,8 @@ N,K,R,S, and P are all integers.
 |T| = N
 T consists of r, p, and s.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 R S P
 T

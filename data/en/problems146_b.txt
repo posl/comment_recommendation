@@ -8,7 +8,8 @@ Constraints
 1 ≦ |S| ≦ 10^4
 S consists of uppercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
 
