@@ -8,16 +8,19 @@ Under this condition, find the maximum possible deliciousness of the pizza.
 
 Constraints
 All values in input are integers.
-1 le N le 3 times 10^5
-1 le W le 3 times 10^8
-1 le A_i le 10^9
-1 le B_i le 1000
+1 ≦ N ≦ 3 × 10^5
+1 ≦ W ≦ 3 × 10^8
+1 ≦ A_i ≦ 10^9
+1 ≦ B_i ≦ 1000
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N W
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_N B_N
 
 Output

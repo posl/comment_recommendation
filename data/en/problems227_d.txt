@@ -4,13 +4,14 @@ The company is planning cross-departmental projects. Each project will be compos
 At most how many projects can be made? No employee can participate in multiple projects.
 
 Constraints
-1 ≦ K ≦ N ≦ 2 times 10^5
+1 ≦ K ≦ N ≦ 2 × 10^5
 1 ≦ A_i ≦ 10^{12}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the maximum possible number of projects.

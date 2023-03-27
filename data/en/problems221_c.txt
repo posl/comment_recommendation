@@ -14,7 +14,8 @@ Constraints
 N is an integer between 1 and 10^9 (inclusive).
 N contains two or more digits that are not 0.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output
@@ -25,8 +26,7 @@ Sample Input 1
 
 Sample Output 1
 63
-As described in Problem Statement
-, there are six ways to separate it:
+As described in Problem Statement, there are six ways to separate it:
 12 and 3,
 21 and 3,
 13 and 2,

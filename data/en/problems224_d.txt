@@ -1,16 +1,16 @@
 Problem Statement
 Takahashi found a puzzle along some road.
 It is composed of an undirected graph with nine vertices and M edges, and eight pieces.
-The nine vertices of the graph are called Vertex 1, Vertex 2, ldots, Vertex 9. For each i = 1, 2, ldots, M, the i-th edge connects Vertex u_i and Vertex v_i.
-The eight pieces are called Piece 1, Piece 2, ldots, Piece 8.
-For each j = 1, 2, ldots, 8, Piece j is on Vertex p_j.
+The nine vertices of the graph are called Vertex 1, Vertex 2, ..., Vertex 9. For each i = 1, 2, ..., M, the i-th edge connects Vertex u_i and Vertex v_i.
+The eight pieces are called Piece 1, Piece 2, ..., Piece 8.
+For each j = 1, 2, ..., 8, Piece j is on Vertex p_j.
 Here, it is guaranteed that all pieces are on distinct vertices.
 Note that there is exactly one empty vertex without a piece.
 Takahashi can do the following operation on the puzzle any number of times (possibly zero).
 Choose a piece on a vertex adjacent to the empty vertex, and move it to the empty vertex.
 By repeating this operation, he aims to complete the puzzle.
 The puzzle is considered complete when the following holds.
-For each j = 1, 2, ldots, 8, Piece j is on Vertex j.
+For each j = 1, 2, ..., 8, Piece j is on Vertex j.
 Determine whether it is possible for Takahashi to complete the puzzle. If it is possible, find the minimum number of operations needed to do so.
 
 Constraints
@@ -18,16 +18,19 @@ Constraints
 1 ≦ u_i, v_i ≦ 9
 The given graph has no multi-edges or self-loops.
 1 ≦ p_j ≦ 9
-j neq j' Rightarrow p_j neq p_{j'}
+j ≠ j' Rightarrow p_j ≠ p_{j'}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 M
 u_1 v_1
 u_2 v_2
-vdots
+.
+.
+.
 u_M v_M
-p_1 p_2 ldots p_8
+p_1 p_2 ... p_8
 
 Output
 If it is possible for Takahashi to complete the puzzle, find the minimum number of operations needed to do so.

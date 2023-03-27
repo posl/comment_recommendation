@@ -5,7 +5,8 @@ How many different strings can be obtained by permuting the characters in S?
 Constraints
 S is a string S of length 3 consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

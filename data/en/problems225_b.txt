@@ -1,6 +1,6 @@
 Problem Statement
 You are given a tree with N vertices and N-1 edges.
-The vertices are numbered 1,2,ldots,N. The i-th edge connects Vertex a_i and Vertex b_i.
+The vertices are numbered 1,2,...,N. The i-th edge connects Vertex a_i and Vertex b_i.
 Determine whether this tree is a star.
 Here, a star is a tree where there is a vertex directly connected to all other vertices.
 
@@ -12,10 +12,13 @@ Constraints
 1 ≦ a_i < b_i ≦ N
 The given graph is a tree.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 b_1
-vdots
+.
+.
+.
 a_{N-1} b_{N-1}
 
 Output

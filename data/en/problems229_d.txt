@@ -5,12 +5,13 @@ Replace a . with an X.
 What is the maximum possible number of consecutive Xs in S after the operations?
 
 Constraints
-1 ≦ |S| ≦ 2 times 10^5
+1 ≦ |S| ≦ 2 × 10^5
 Each character of S is X or ..
-0 ≦ K ≦ 2 times 10^5
+0 ≦ K ≦ 2 × 10^5
 K is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 K
 

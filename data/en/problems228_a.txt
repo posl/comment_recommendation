@@ -5,10 +5,11 @@ Determine whether the light is on at 30 minutes past X o'clock.
 
 Constraints
 0 ≦ S, T, X ≦ 23
-S neq T
+S ≠ T
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S T X
 
 Output

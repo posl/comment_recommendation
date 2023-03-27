@@ -7,13 +7,13 @@ Constraints
 Each of S and T is a string of length between 2 and 100 (inclusive) consisting of lowercase English letters.
 S and T have the same length.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 
 Output
-If it is possible to make S and T equal by doing the operation in Problem Statement
- at most once, print Yes; otherwise, print No.
+If it is possible to make S and T equal by doing the operation in Problem Statement at most once, print Yes; otherwise, print No.
 
 Sample Input 1
 abc

@@ -7,11 +7,14 @@ Constraints
 1 ≦ A_i,B_i ≦ 1000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_N B_N
 
 Output

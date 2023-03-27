@@ -5,15 +5,16 @@ Find the number of ways to choose three of these N points so that connecting the
 
 Constraints
 All values in input are integers.
-3 le N le 300
--10^9 le X_i,Y_i le 10^9
-(X_i,Y_i) neq (X_j,Y_j) if i neq j.
+3 ≦ N ≦ 300
+-10^9 ≦ X_i,Y_i ≦ 10^9
+(X_i,Y_i) ≠ (X_j,Y_j) if i ≠ j.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 X_1 Y_1
 X_2 Y_2
-dots
+...
 X_N Y_N
 
 Output

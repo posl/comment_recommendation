@@ -1,5 +1,5 @@
 Problem Statement
-There is an Ntimes N grid with horizontal rows and vertical columns, where all squares are initially painted white. Let (i,j) denote the square at the i-th row and j-th column.
+There is an N× N grid with horizontal rows and vertical columns, where all squares are initially painted white. Let (i,j) denote the square at the i-th row and j-th column.
 Takahashi has integers A and B, which are between 1 and N (inclusive). He will do the following operations.
 For every integer k such that max(1-A,1-B)≦ k≦ min(N-A,N-B), paint (A+k,B+k) black.
 For every integer k such that max(1-A,B-N)≦ k≦ min(N-A,B-1), paint (A+k,B-k) black.
@@ -11,10 +11,11 @@ Constraints
 1 ≦ B ≦ N
 1 ≦ P ≦ Q ≦ N
 1 ≦ R ≦ S ≦ N
-(Q-P+1)times(S-R+1)≦ 3times 10^5
+(Q-P+1)×(S-R+1)≦ 3× 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N A B
 P Q R S
 

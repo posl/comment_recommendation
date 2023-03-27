@@ -1,6 +1,6 @@
 Problem Statement
-We will hand out a total of K cards to N people numbered 1, 2, ldots, N.
-Beginning with Person A, we will give the cards one by one to the people in this order: A, A+1, A+2, ldots, N, 1, 2, ldots. Who will get the last card?
+We will hand out a total of K cards to N people numbered 1, 2, ..., N.
+Beginning with Person A, we will give the cards one by one to the people in this order: A, A+1, A+2, ..., N, 1, 2, .... Who will get the last card?
 Formally, after Person x(1 ≦ x < N) gets a card, Person x+1 will get a card. After Person N gets a card, Person 1 gets a card.
 
 Constraints
@@ -8,7 +8,8 @@ Constraints
 1 ≦ A ≦ N
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K A
 
 Output

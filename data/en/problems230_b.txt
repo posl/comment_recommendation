@@ -8,7 +8,8 @@ Constraints
 S is a string consisting of o and x.
 The length of S is between 1 and 10 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

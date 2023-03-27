@@ -1,16 +1,17 @@
 Problem Statement
 There is an online game with N registered players.
 Today, which is the 10^{100}-th day since its launch, the developer Takahashi examined the users' login history. It turned out that the i-th player logged in for B_i consecutive days from Day A_i, where Day 1 is the launch day, and did not log in for the other days.
-In other words, the i-th player logged in on Day A_i, A_i+1, ldots, A_i+B_i-1, and only on those days.
+In other words, the i-th player logged in on Day A_i, A_i+1, ..., A_i+B_i-1, and only on those days.
 For each integer k such that 1≦ k≦ N, find the number of days on which exactly k players logged in.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 1 ≦ A_i ≦ 10^9
 1 ≦ B_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
 A_2 B_2
@@ -19,7 +20,7 @@ A_N B_N
 
 Output
 Print N integers with spaces in between, as follows:
-D_1 D_2 cdots D_N
+D_1 D_2 ... D_N
 Here, D_i denotes the number of days on which exactly k players logged in.
 
 Sample Input 1

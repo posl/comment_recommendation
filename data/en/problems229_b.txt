@@ -4,9 +4,10 @@ Let us calculate A+B (in decimal). If it does not involve a carry, print Easy; i
 
 Constraints
 A and B are integers.
-1 le A,B le 10^{18}
+1 ≦ A,B ≦ 10^{18}
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output

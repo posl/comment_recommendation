@@ -11,16 +11,19 @@ When a part of a wall is damaged, that whole wall will be destroyed by the impac
 At least how many times does Takahashi need to punch to destroy all walls?
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ D ≦ 10^9
 1 ≦ L_i ≦ R_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N D
 L_1 R_1
 L_2 R_2
-vdots
+.
+.
+.
 L_N R_N
 
 Output

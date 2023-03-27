@@ -1,28 +1,31 @@
 Problem Statement
 Takahashi is a martial artist.
-There are N moves that a martial artist can learn, called Move 1, 2, ldots, N.
+There are N moves that a martial artist can learn, called Move 1, 2, ..., N.
 For each 1 ≦ i ≦ N, it takes T_i minutes of practice to learn Move i.
-Additionally, at the beginning of that practice, all of the Moves A_{i,1}, A_{i,2}, ldots, A_{i,K_i} must be already learned.
+Additionally, at the beginning of that practice, all of the Moves A_{i,1}, A_{i,2}, ..., A_{i,K_i} must be already learned.
 Here, it is guaranteed that A_{i,j} < i for each 1 ≦ j ≦ K_i.
 Takahashi has not learned any move at time 0.
 He cannot practice for more than one move simultaneously, nor can he stop a practice he has already started.
 Find the minimum number of minutes needed for Takahashi to learn Move N.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 1 ≦ T_i ≦ 10^9
 0 ≦ K_i < i
 1 ≦ A_{i,j} < i
-sum_{i=1}^N K_i ≦ 2times 10^5
-A_{i,1}, A_{i,2}, ldots, A_{i,K_i} are all distinct.
+sum_{i=1}^N K_i ≦ 2× 10^5
+A_{i,1}, A_{i,2}, ..., A_{i,K_i} are all distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-T_1 K_1 A_{1,1} A_{1,2} ldots A_{1,K_1}
-T_2 K_2 A_{2,1} A_{2,2} ldots A_{2,K_2}
-vdots
-T_N K_N A_{N,1} A_{N,2} ldots A_{N,K_N}
+T_1 K_1 A_{1,1} A_{1,2} ... A_{1,K_1}
+T_2 K_2 A_{2,1} A_{2,2} ... A_{2,K_2}
+.
+.
+.
+T_N K_N A_{N,1} A_{N,2} ... A_{N,K_N}
 
 Output
 Print the minimum number of minutes needed for Takahashi to learn Move N.

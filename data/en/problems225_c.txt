@@ -1,6 +1,6 @@
 Problem Statement
-There is a 10^{100} times 7 matrix A, where the (i,j)-th entry is (i-1) times 7 + j for every pair of integers (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7).
-Given an N times M matrix B, determine whether B is some (unrotated) rectangular part of A.
+There is a 10^{100} × 7 matrix A, where the (i,j)-th entry is (i-1) × 7 + j for every pair of integers (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7).
+Given an N × M matrix B, determine whether B is some (unrotated) rectangular part of A.
 
 Constraints
 1 ≦ N ≦ 10^4
@@ -8,12 +8,15 @@ Constraints
 1 ≦ B_{i,j} ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-B_{1,1} B_{1,2} ldots B_{1,M}
-B_{2,1} B_{2,2} ldots B_{2,M}
-hspace{1.6cm}vdots
-B_{N,1} B_{N,2} ldots B_{N,M}
+B_{1,1} B_{1,2} ... B_{1,M}
+B_{2,1} B_{2,2} ... B_{2,M}
+.
+.
+.
+B_{N,1} B_{N,2} ... B_{N,M}
 
 Output
 If B is some rectangular part of A, print Yes; otherwise, print No.
@@ -25,7 +28,7 @@ Sample Input 1
 
 Sample Output 1
 Yes
-The given matrix B is the top-left 2 times 3 submatrix of A.
+The given matrix B is the top-left 2 × 3 submatrix of A.
 
 Sample Input 2
 2 1
@@ -34,7 +37,7 @@ Sample Input 2
 
 Sample Output 2
 No
-Although the given matrix B would match the top-left 1 times 2 submatrix of A after rotating 90 degrees, the Problem Statement
+Although the given matrix B would match the top-left 1 × 2 submatrix of A after rotating 90 degrees, the Problem Statement
  asks whether B is an unrotated part of A, so the answer is No.
 
 Sample Input 3

@@ -1,7 +1,7 @@
 Problem Statement
-A sequence of n numbers, S = (s_1, s_2, dots, s_n), is said to be non-decreasing if and only if s_i ≦ s_{i+1} holds for every i (1 ≦ i ≦ n - 1).
-Given are non-decreasing sequences of N integers each: A = (a_1, a_2, dots, a_N) and B = (b_1, b_2, dots, b_N).
-Consider a non-decreasing sequence of N integers, C = (c_1, c_2, dots, c_N), that satisfies the following condition:
+A sequence of n numbers, S = (s_1, s_2, ..., s_n), is said to be non-decreasing if and only if s_i ≦ s_{i+1} holds for every i (1 ≦ i ≦ n - 1).
+Given are non-decreasing sequences of N integers each: A = (a_1, a_2, ..., a_N) and B = (b_1, b_2, ..., b_N).
+Consider a non-decreasing sequence of N integers, C = (c_1, c_2, ..., c_N), that satisfies the following condition:
 a_i ≦ c_i ≦ b_i for every i (1 ≦ i ≦ N).
 Find the number, modulo 998244353, of sequences that can be C.
 
@@ -11,10 +11,11 @@ Constraints
 The sequences A and B are non-decreasing.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-a_1 a_2 dots a_N
-b_1 b_2 dots b_N
+a_1 a_2 ... a_N
+b_1 b_2 ... b_N
 
 Output
 Print the number, modulo 998244353, of sequences that can be C.

@@ -1,6 +1,6 @@
 Problem Statement
 The Republic of AtCoder lies on a Cartesian coordinate plane.
-It has N towns, numbered 1,2,dots,N. Town i is at (x_i, y_i), and no two different towns are at the same coordinates.
+It has N towns, numbered 1,2,...,N. Town i is at (x_i, y_i), and no two different towns are at the same coordinates.
 There are teleportation spells in the nation. A spell is identified by a pair of integers (a,b), and casting a spell (a, b) at coordinates (x, y) teleports you to (x+a, y+b).
 Snuke is a great magician who can learn the spell (a, b) for any pair of integers (a, b) of his choice. The number of spells he can learn is also unlimited.
 To be able to travel between the towns using spells, he has decided to learn some number of spells so that it is possible to do the following for every pair of different towns (i, j).
@@ -11,13 +11,16 @@ Constraints
 2 ≦ N ≦ 500
 0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ N)
 0 ≦ y_i ≦ 10^9 (1 ≦ i ≦ N)
-(x_i, y_i) neq (x_j, y_j) if i neq j.
+(x_i, y_i) ≠ (x_j, y_j) if i ≠ j.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2
-vdots
+.
+.
+.
 x_N y_N
 
 Output
@@ -32,14 +35,14 @@ Sample Input 1
 Sample Output 1
 6
 The figure below illustrates the positions of the towns (along with the coordinates of the four corners).
-If Snuke learns the six spells below, he can get from Town i to Town j by using one of the spells once for every pair (i,j) (i neq j), achieving his objective.
+If Snuke learns the six spells below, he can get from Town i to Town j by using one of the spells once for every pair (i,j) (i ≠ j), achieving his objective.
 (2, 4)
 (-2, -4)
 (4, -2)
 (-4, 2)
 (-6, -2)
 (6, 2)
-Another option is to learn the six spells below. In this case, he can get from Town i to Town j by using one of the spells twice for every pair (i,j) (i neq j), achieving his objective.
+Another option is to learn the six spells below. In this case, he can get from Town i to Town j by using one of the spells twice for every pair (i,j) (i ≠ j), achieving his objective.
 (1, 2)
 (-1, -2)
 (2, -1)
