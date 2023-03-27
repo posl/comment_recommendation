@@ -7,7 +7,7 @@ Here,
 a shifted to the right by 1 is b;
 b shifted to the right by 1 is c;
 c shifted to the right by 1 is d;
-cdots
+...
 y shifted to the right by 1 is z;
 z shifted to the right by 1 is a.
 For example, b shifted to the right by 4 is f, and y shifted to the right by 3 is b.
@@ -18,7 +18,8 @@ Constraints
 Each of S and T is a string of length between 1 and 10^5 (inclusive) consisting of lowercase English letters.
 The lengths of S and T are equal.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

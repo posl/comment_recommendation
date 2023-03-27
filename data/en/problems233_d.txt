@@ -1,19 +1,20 @@
 Problem Statement
-Given is a sequence of length N: A=(A_1,A_2,ldots,A_N), and an integer K.
+Given is a sequence of length N: A=(A_1,A_2,...,A_N), and an integer K.
 How many of the contiguous subsequences of A have the sum of K?
 In other words, how many pairs of integers (l,r) satisfy all of the conditions below?
 1≦ l≦ r≦ N
-displaystylesum_{i=l}^{r}A_i = K
+sum_{i=l}^{r}A_i = K
 
 Constraints
-1≦ N ≦ 2times 10^5
+1≦ N ≦ 2× 10^5
 |A_i| ≦ 10^9
 |K| ≦ 10^{15}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer.

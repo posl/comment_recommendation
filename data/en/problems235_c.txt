@@ -1,23 +1,26 @@
 Problem Statement
-We have a sequence of N numbers: A = (a_1, a_2, dots, a_N).
+We have a sequence of N numbers: A = (a_1, a_2, ..., a_N).
 Process the Q queries explained below.
-Query i: You are given a pair of integers (x_i, k_i). Let us look at the elements of A one by one from the beginning: a_1, a_2, dots Which element will be the k_i-th occurrence of the number x_i?
+Query i: You are given a pair of integers (x_i, k_i). Let us look at the elements of A one by one from the beginning: a_1, a_2, ... Which element will be the k_i-th occurrence of the number x_i?
     Print the index of that element, or -1 if there is no such element.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-1 ≦ Q ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+1 ≦ Q ≦ 2 × 10^5
 0 ≦ a_i ≦ 10^9 (1 ≦ i ≦ N)
 0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ Q)
 1 ≦ k_i ≦ N (1 ≦ i ≦ Q)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
-a_1 a_2 dots a_N
+a_1 a_2 ... a_N
 x_1 k_1
 x_2 k_2
-vdots
+.
+.
+.
 x_Q k_Q
 
 Output

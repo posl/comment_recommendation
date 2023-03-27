@@ -7,23 +7,28 @@ Print B.
 
 Constraints
 1≦ H,W ≦ 10^5
-H times W ≦ 10^5
+H × W ≦ 10^5
 1 ≦ A_{i,j} ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
-A_{1,1} A_{1,2} ldots A_{1,W}
-A_{2,1} A_{2,2} ldots A_{2,W}
-vdots
-A_{H,1} A_{H,2} ldots A_{H,W}
+A_{1,1} A_{1,2} ... A_{1,W}
+A_{2,1} A_{2,2} ... A_{2,W}
+.
+.
+.
+A_{H,1} A_{H,2} ... A_{H,W}
 
 Output
 Print B in the following format:
-B_{1,1} B_{1,2} ldots B_{1,H}
-B_{2,1} B_{2,2} ldots B_{2,H}
-vdots
-B_{W,1} B_{W,2} ldots B_{W,H}
+B_{1,1} B_{1,2} ... B_{1,H}
+B_{2,1} B_{2,2} ... B_{2,H}
+.
+.
+.
+B_{W,1} B_{W,2} ... B_{W,H}
 
 Sample Input 1
 4 3

@@ -1,16 +1,17 @@
 Problem Statement
 Takahashi has N balls. Each ball has an integer not less than 2 written on it. He will insert them in a cylinder one by one. The integer written on the i-th ball is a_i.
-The balls are made of special material. When k balls with k (k geq 2) written on them line up in a row, all these k balls will disappear.
+The balls are made of special material. When k balls with k (k ≧ 2) written on them line up in a row, all these k balls will disappear.
 For each i (1 ≦ i ≦ N), find the number of balls after inserting the i-th ball.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-2 ≦ a_i ≦ 2 times 10^5 , (1 ≦ i ≦ N)
+1 ≦ N ≦ 2 × 10^5
+2 ≦ a_i ≦ 2 × 10^5  (1 ≦ i ≦ N)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 Print N lines. The i-th line (1 ≦ i ≦ N) should contain the number of balls after inserting the i-th ball.

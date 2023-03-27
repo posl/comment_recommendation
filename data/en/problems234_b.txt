@@ -5,14 +5,17 @@ Find the maximum length of a segment connecting two of these points.
 Constraints
 2 ≦ N ≦ 100
 -1000 ≦ x_i,y_i ≦ 1000
-(x_i,y_i) neq (x_j,y_j) (i neq j)
+(x_i,y_i) ≠ (x_j,y_j) (i ≠ j)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 y_1
 x_2 y_2
-hspace{0.4cm} vdots
+.
+.
+.
 x_N y_N
 
 Output
@@ -27,7 +30,7 @@ Sample Input 1
 
 Sample Output 1
 1.4142135624
-For the 1-st and 3-rd points, the length of the segment connecting them is sqrt 2 = 1.41421356237dots, which is the maximum length.
+For the 1-st and 3-rd points, the length of the segment connecting them is sqrt 2 = 1.41421356237..., which is the maximum length.
 
 Sample Input 2
 5

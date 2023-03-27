@@ -6,9 +6,10 @@ At least how many more 10-yen stamps does Takahashi need to put on the envelope?
 
 Constraints
 X and Y are integers.
-1 le X,Y le 1000
+1 ≦ X,Y ≦ 1000
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X Y
 
 Output

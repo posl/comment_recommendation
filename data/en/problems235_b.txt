@@ -10,9 +10,10 @@ Constraints
 1 ≦ H_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-H_1 ldots H_N
+H_1 ... H_N
 
 Output
 Print the answer.

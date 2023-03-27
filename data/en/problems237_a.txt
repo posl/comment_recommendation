@@ -6,7 +6,8 @@ Constraints
 -2^{63} ≦ N < 2^{63}
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

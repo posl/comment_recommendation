@@ -4,11 +4,12 @@ Print this string after reversing (the order of) the L-th through R-th character
 
 Constraints
 S consists of lowercase English letters.
-1 le |S| le 10^5 (|S| is the length of S.)
+1 ≦ |S| ≦ 10^5 (|S| is the length of S.)
 L and R are integers.
-1 le L le R le |S|
+1 ≦ L ≦ R ≦ |S|
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 L R
 S
 

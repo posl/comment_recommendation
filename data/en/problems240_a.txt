@@ -5,7 +5,8 @@ Constraints
 1 ≦ a < b ≦ 10
 a and b are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b
 
 Output
@@ -17,8 +18,7 @@ Sample Input 1
 
 Sample Output 1
 Yes
-In the figure shown in the Problem Statement
-, the points numbered 4 and 5 are directly connected by a line segment.
+In the figure shown in the Problem Statement, the points numbered 4 and 5 are directly connected by a line segment.
 Thus, Yes should be printed.
 
 Sample Input 2
@@ -26,8 +26,7 @@ Sample Input 2
 
 Sample Output 2
 No
-In the figure shown in the Problem Statement
-, the points numbered 3 and 5 are not directly connected by a line segment.
+In the figure shown in the Problem Statement, the points numbered 3 and 5 are not directly connected by a line segment.
 Thus, No should be printed.
 
 Sample Input 3

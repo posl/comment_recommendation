@@ -1,18 +1,19 @@
 Problem Statement
 There is a sequence that contains one 0, A=(0).
-Additionally, you are given a string of length N, S=s_1s_2ldots s_N, consisting of L and R.
-For each i=1, 2, ldots, N in this order, the following will be done.
+Additionally, you are given a string of length N, S=s_1s_2... s_N, consisting of L and R.
+For each i=1, 2, ..., N in this order, the following will be done.
 If s_i is L, insert i to the immediate left of i-1 in A.
 If s_i is R, insert i to the immediate right of i-1 in A.
 Find the final contents of A.
 
 Constraints
-1≦ N ≦ 5times 10^5
+1≦ N ≦ 5× 10^5
 N is an integer.
 |S| = N
 s_i is L or R.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
 

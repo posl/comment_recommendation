@@ -5,7 +5,8 @@ Given a 3-digit integer abc none of whose digits is 0, find abc+bca+cab.
 Constraints
 abc is a 3-digit integer abc none of whose digits is 0.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 abc
 
 Output

@@ -1,20 +1,23 @@
 Problem Statement
 There is a class with N students. The height of the i-th student (1 ≦ i ≦ N) is A_i.
-For each j=1,2,ldots,Q, answer the following question.
+For each j=1,2,...,Q, answer the following question.
 How many of the N students have a height of at least x_j?
 
 Constraints
-1 ≦ N,Q ≦ 2 times 10^5
+1 ≦ N,Q ≦ 2 × 10^5
 1 ≦ A_i ≦ 10^9
 1 ≦ x_j ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 x_1
 x_2
-vdots
+.
+.
+.
 x_Q
 
 Output

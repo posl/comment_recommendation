@@ -1,14 +1,15 @@
 Problem Statement
-In a sequence of N positive integers a = (a_1, a_2, dots, a_N), how many different integers are there?
+In a sequence of N positive integers a = (a_1, a_2, ..., a_N), how many different integers are there?
 
 Constraints
 1 ≦ N ≦ 1000
-1 ≦ a_i ≦ 10^9 , (1 ≦ i ≦ N)
+1 ≦ a_i ≦ 10^9  (1 ≦ i ≦ N)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 Print the answer.

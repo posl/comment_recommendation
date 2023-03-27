@@ -1,11 +1,11 @@
 Problem Statement
 Takahashi and Aoki each have a toy made by attaching M cords to N balls.
-In Takahashi's toy, the balls are numbered 1, dots, N, and the i-th cord ties Ball A_i and B_i.
-Similarly, in Aoki's toy, the balls are numbered 1, dots, N, and the i-th cord ties Ball C_i and D_i.
+In Takahashi's toy, the balls are numbered 1, ..., N, and the i-th cord ties Ball A_i and B_i.
+Similarly, in Aoki's toy, the balls are numbered 1, ..., N, and the i-th cord ties Ball C_i and D_i.
 In each toy, no cord ties a ball to itself, and no two balls are tied by two or more different cords.
 Snuke is wondering whether the two toys have the same shape.
 Here, they are said to have the same shape when there is a sequence P that satisfies the conditions below.
-P is a permutation of (1, dots, N).
+P is a permutation of (1, ..., N).
 For every pair of integers i, j between 1 and N (inclusive), the following holds.
 Balls i and j in Takahashi's toy are tied by a cord if and only if Balls P_i and P_j in Aoki's toy are tied by a cord.
 
@@ -13,20 +13,25 @@ If the two toys have the same shape, print Yes; otherwise, print No.
 
 Constraints
 1 ≦ N ≦ 8
-0 ≦ M ≦ frac{N(N - 1)}{2}
-1 ≦ A_i < B_i ≦ N , (1 ≦ i ≦ M)
-(A_i, B_i) neq (A_j, B_j) , (i neq j)
-1 ≦ C_i < D_i ≦ N , (1 ≦ i ≦ M)
-(C_i, D_i) neq (C_j, D_j) , (i neq j)
+0 ≦ M ≦ ((N(N - 1))/(2))
+1 ≦ A_i < B_i ≦ N  (1 ≦ i ≦ M)
+(A_i, B_i) ≠ (A_j, B_j)  (i ≠ j)
+1 ≦ C_i < D_i ≦ N  (1 ≦ i ≦ M)
+(C_i, D_i) ≠ (C_j, D_j)  (i ≠ j)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 C_1 D_1
-vdots
+.
+.
+.
 C_M D_M
 
 Output

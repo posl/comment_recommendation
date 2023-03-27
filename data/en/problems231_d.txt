@@ -8,10 +8,13 @@ Constraints
 1≦ A_i < B_i ≦ N
 All pairs (A_i,B_i) are distinct.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 
 Output

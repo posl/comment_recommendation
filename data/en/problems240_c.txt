@@ -5,14 +5,17 @@ Is it possible for him to be at the coordinate X after N jumps?
 
 Constraints
 1 ≦ N ≦ 100
-1 ≦ a_i < b_i ≦ 100 , (1 ≦ i ≦ N)
+1 ≦ a_i < b_i ≦ 100  (1 ≦ i ≦ N)
 1 ≦ X ≦ 10000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 a_1 b_1
-vdots
+.
+.
+.
 a_N b_N
 
 Output
