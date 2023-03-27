@@ -6,15 +6,18 @@ Takahashi the evil wants to divide the N persons into some number of groups so t
 At least how many groups does he need to make?
 
 Constraints
-2 ≦ N ≦ 2times 10^5
-0 ≦ M ≦ 2times 10^5
+2 ≦ N ≦ 2× 10^5
+0 ≦ M ≦ 2× 10^5
 1≦ A_i,B_i≦ N
-A_i neq B_i
+A_i ≠ B_i
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 
 Output

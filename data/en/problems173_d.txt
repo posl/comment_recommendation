@@ -6,13 +6,13 @@ What is the maximum total comfort the N players can get by optimally choosing th
 
 Constraints
 All values in input are integers.
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 1 ≦ A_i ≦ 10^9
 
 Input
 Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the maximum total comfort the N players can get.

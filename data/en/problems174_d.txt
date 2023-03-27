@@ -9,7 +9,8 @@ Constraints
 2 ≦ N ≦ 200000
 c_i is R or W.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 c_{1}c_{2}...c_{N}
 

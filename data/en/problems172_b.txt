@@ -3,11 +3,12 @@ Given are strings S and T. Consider changing S to T by repeating the operation b
 Operation: Choose one character of S and replace it with a different character.
 
 Constraints
-S and T have lengths between 1 and 2times 10^5 (inclusive).
+S and T have lengths between 1 and 2× 10^5 (inclusive).
 S and T consists of lowercase English letters.
 S and T have equal lengths.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

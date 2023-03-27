@@ -1,19 +1,20 @@
 Problem Statement
-Given is a point (x_1,ldots,x_N) in an N-dimensional space.
+Given is a point (x_1,...,x_N) in an N-dimensional space.
 Find the Manhattan distance, Euclidian distance, and Chebyshev distance between this point and the origin.
 Here, each of them is defined as follows:
-The Manhattan distance: |x_1|+ldots+|x_N|
-The Euclidian distance: sqrt{|x_1|^2+ldots+|x_N|^2}
-The Chebyshev distance: max(|x_1|,ldots,|x_N|)
+The Manhattan distance: |x_1|+...+|x_N|
+The Euclidian distance: (|x_1|^2+...+|x_N|^2)^(1/2)
+The Chebyshev distance: max(|x_1|,...,|x_N|)
 
 Constraints
 1 ≦ N ≦ 10^5
 -10^5 ≦ x_i ≦ 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-x_1 ldots x_N
+x_1 ... x_N
 
 Output
 Print the Manhattan distance, Euclidian distance, and Chebyshev distance between the given point and the origin, each in its own line.
@@ -29,7 +30,7 @@ Sample Output 1
 2
 Each of the distances is computed as follows:
 The Manhattan distance: |2|+|-1|=3
-The Euclidian distance: sqrt{|2|^2+|-1|^2}=2.236067977499789696ldots
+The Euclidian distance: (|2|^2+|-1|^2)^(1/2)=2.236067977499789696...
 The Chebyshev distance: max(|2|,|-1|)=2
 
 Sample Input 2

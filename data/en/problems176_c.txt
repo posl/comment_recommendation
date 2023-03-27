@@ -5,13 +5,14 @@ Condition: Nobody in front of the person is taller than the person. Here, the he
 Find the minimum total height of the stools needed to meet this goal.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 1 ≦ A_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 ldots A_N
+A_1 ... A_N
 
 Output
 Print the minimum total height of the stools needed to meet the goal.

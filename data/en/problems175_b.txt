@@ -1,5 +1,5 @@
 Problem Statement
-We have sticks numbered 1, cdots, N. The length of Stick i (1 ≦ i ≦ N) is L_i.
+We have sticks numbered 1, ..., N. The length of Stick i (1 ≦ i ≦ N) is L_i.
 In how many ways can we choose three of the sticks with different lengths that can form a triangle?
 That is, find the number of triples of integers (i, j, k) (1 ≦ i < j < k ≦ N) that satisfy both of the following conditions:
 L_i, L_j, and L_k are all different.
@@ -10,9 +10,10 @@ Constraints
 1 ≦ L_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-L_1 L_2 cdots L_N
+L_1 L_2 ... L_N
 
 Output
 Print the number of ways to choose three of the sticks with different lengths that can form a triangle.

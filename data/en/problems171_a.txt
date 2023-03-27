@@ -5,7 +5,8 @@ If alpha is uppercase, print A; if it is lowercase, print a.
 Constraints
 alpha is an uppercase (A - Z) or lowercase (a - z) English letter.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 α
 
 Output

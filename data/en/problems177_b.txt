@@ -9,7 +9,8 @@ The lengths of S and T are each at least 1 and at most 1000.
 The length of T is at most that of S.
 S and T consist of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

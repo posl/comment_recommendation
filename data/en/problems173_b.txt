@@ -2,17 +2,19 @@ Problem Statement
 Takahashi is participating in a programming contest called AXC002, and he has just submitted his code to Problem A.
 The problem has N test cases.
 For each test case i (1≦ i ≦ N), you are given a string S_i representing the verdict for that test case. Find the numbers of test cases for which the verdict is AC, WA, TLE, and RE, respectively.
-See the Output
- section for the output format.
+See the Output section for the output format.
 
 Constraints
 1 ≦ N ≦ 10^5
 S_i is AC, WA, TLE, or RE.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S_1
-vdots
+.
+.
+.
 S_N
 
 Output

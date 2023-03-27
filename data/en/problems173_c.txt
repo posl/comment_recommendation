@@ -9,7 +9,8 @@ Constraints
 1 ≦ K ≦ HW
 c_{i,j} is . or #.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W K
 c_{1,1}c_{1,2}...c_{1,W}
 c_{2,1}c_{2,2}...c_{2,W}

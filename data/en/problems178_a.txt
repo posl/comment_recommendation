@@ -7,7 +7,8 @@ Constraints
 0 ≦ x ≦ 1
 x is an integer
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x
 
 Output

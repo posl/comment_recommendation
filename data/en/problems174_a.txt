@@ -6,7 +6,8 @@ Constraints
 -40 ≦ X ≦ 40
 X is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X
 
 Output

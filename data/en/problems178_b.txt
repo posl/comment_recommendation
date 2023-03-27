@@ -1,13 +1,14 @@
 Problem Statement
 Given are integers a,b,c and d.
-If x and y are integers and a ≦ x ≦ b and c≦ y ≦ d hold, what is the maximum possible value of x times y?
+If x and y are integers and a ≦ x ≦ b and c≦ y ≦ d hold, what is the maximum possible value of x × y?
 
 Constraints
 -10^9 ≦ a ≦ b ≦ 10^9
 -10^9 ≦ c ≦ d ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b c d
 
 Output
@@ -18,8 +19,8 @@ Sample Input 1
 
 Sample Output 1
 2
-If x = 1 and y = 1 then x times y = 1.
-If x = 2 and y = 1 then x times y = 2.
+If x = 1 and y = 1 then x × y = 1.
+If x = 2 and y = 1 then x × y = 2.
 Therefore, the answer is 2.
 
 Sample Input 2

@@ -6,7 +6,8 @@ All values in input are integers.
  100 ≦ N ≦ 200
  1 ≦ A,B ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N A B
 
 Output

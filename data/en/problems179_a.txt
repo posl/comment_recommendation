@@ -10,7 +10,8 @@ Constraints
 S is a string of length 1 between 1000, inclusive.
 S contains only lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
