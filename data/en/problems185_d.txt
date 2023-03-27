@@ -14,7 +14,7 @@ All values in input are integers.
 Input
 Input is given from Standard Input in the following format:
 N M
-A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} ... hspace{5pt} A_M
+A_1 A_2 A_3 ... A_M
 
 Output
 Print the minimum number of uses of the stamp needed to have no white square.

@@ -32,12 +32,12 @@ Sample Input 1
 Sample Output 1
 2
 There are six paths that start at City 1, visit all other cities exactly once, and then go back to City 1:
-1to 2to 3to 4to 1
-1to 2to 4to 3to 1
-1to 3to 2to 4to 1
-1to 3to 4to 2to 1
-1to 4to 2to 3to 1
-1to 4to 3to 2to 1
+1-> 2-> 3-> 4-> 1
+1-> 2-> 4-> 3-> 1
+1-> 3-> 2-> 4-> 1
+1-> 3-> 4-> 2-> 1
+1-> 4-> 2-> 3-> 1
+1-> 4-> 3-> 2-> 1
 The times it takes to travel along these paths are 421, 511, 330, 511, 330, and 421, respectively, among which two are exactly 330.
 
 Sample Input 2

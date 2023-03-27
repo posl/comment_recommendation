@@ -10,7 +10,7 @@ All values in input are integers.
 
 Input
 Input is given from Standard Input in the following format:
-A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{7pt} A_4
+A_1 A_2 A_3 A_4
 
 Output
 Print an integer representing the maximum number of contests that can be held.  

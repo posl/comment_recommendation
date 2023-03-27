@@ -3,8 +3,8 @@ N 個の文字列 S_1,...,S_N が与えられます。各文字列は AND また
 値が True または False であるような N+1 個の変数の組 (x_0,...,x_N) であって、
 以下のような計算を行った際に、y_N が True となるようなものの個数を求めてください。
 y_0=x_0
-i≧ 1 のとき、S_i が AND なら y_i=y_{i-1} land x_i、S_i が OR なら y_i=y_{i-1} lor x_i
-a land b は a と b の論理積を表し、a lor b は a と b の論理和を表します。  
+i≧ 1 のとき、S_i が AND なら y_i=y_{i-1} ∧ x_i、S_i が OR なら y_i=y_{i-1} ∨ x_i
+a ∧ b は a と b の論理積を表し、a ∨ b は a と b の論理和を表します。  
 
 制約
 1 ≦ N ≦ 60
@@ -31,8 +31,8 @@ OR
 5
 例えば (x_0,x_1,x_2)=(True,False,True) のとき
 y_0=x_0=True
-y_1=y_0 land x_1 = True land False=False
-y_2=y_1 lor x_2 = False lor True=True
+y_1=y_0 ∧ x_1 = True ∧ False=False
+y_2=y_1 ∨ x_2 = False ∨ True=True
 となり、y_2 は True になります。
 y_2 が True となるような (x_0,x_1,x_2) の組み合わせは、
 (True,True,True)

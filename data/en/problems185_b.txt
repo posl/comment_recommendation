@@ -17,7 +17,7 @@ N M T
 A_1 B_1
 A_2 B_2
 A_3 B_3
-hspace{15pt} .
+.
 .
 .
 A_M B_M
