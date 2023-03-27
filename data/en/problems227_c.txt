@@ -1,8 +1,7 @@
 Problem Statement
 You are given a positive integer N.
 Find the number of triples of positive integers (A, B, C) such that A≦ B≦ C and ABC≦ N.
-The Constraints
- guarantee that the answer is less than 2^{63}.
+The Constraints guarantee that the answer is less than 2^{63}.
 
 Constraints
 1 ≦ N ≦ 10^{11}
