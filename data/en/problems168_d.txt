@@ -38,9 +38,9 @@ Yes
 2
 2
 If we place the signposts as described in the sample output, the following happens:
-Starting in Room 2, you will reach Room 1 after traversing one passage: (2) to 1. This is the minimum number of passages possible.
-Starting in Room 3, you will reach Room 1 after traversing two passages: (3) to 2 to 1. This is the minimum number of passages possible.
-Starting in Room 4, you will reach Room 1 after traversing two passages: (4) to 2 to 1. This is the minimum number of passages possible.
+Starting in Room 2, you will reach Room 1 after traversing one passage: (2) -> 1. This is the minimum number of passages possible.
+Starting in Room 3, you will reach Room 1 after traversing two passages: (3) -> 2 -> 1. This is the minimum number of passages possible.
+Starting in Room 4, you will reach Room 1 after traversing two passages: (4) -> 2 -> 1. This is the minimum number of passages possible.
 Thus, the objective is satisfied.
 
 Sample Input 2
