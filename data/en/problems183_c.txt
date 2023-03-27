@@ -4,17 +4,20 @@ Among those paths that start at City 1, visit all other cities exactly once, and
 
 Constraints
 2≦ N ≦ 8
-If ineq j, 1≦ T_{i,j} ≦ 10^8.
+If i≠ j, 1≦ T_{i,j} ≦ 10^8.
 T_{i,i}=0
 T_{i,j}=T_{j,i}
 1≦ K ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-T_{1,1} ldots T_{1,N}
-vdots
-T_{N,1} ldots T_{N,N}
+T_{1,1} ... T_{1,N}
+.
+.
+.
+T_{N,1} ... T_{N,N}
 
 Output
 Print the answer as an integer.

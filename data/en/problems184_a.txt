@@ -1,13 +1,14 @@
 Problem Statement
-Given is a 2 times 2 matrix A = begin{bmatrix} a & b  c & d end{bmatrix}.
+Given is a 2 × 2 matrix A = [[a, b], [c, d]].
 The determinant of A can be found as ad-bc.
 Find it.
 
 Constraints
 All values in input are integers.
--100 le a, b, c, d le 100
+-100 ≦ a, b, c, d ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b
 c d
 
@@ -20,7 +21,7 @@ Sample Input 1
 
 Sample Output 1
 -2
-The determinant of begin{bmatrix} 1 & 2  3 & 4 end{bmatrix} is 1 times 4 - 2 times 3 = -2.
+The determinant of [[1, 2], [3, 4]] is 1 × 4 - 2 × 3 = -2.
 
 Sample Input 2
 0 -1

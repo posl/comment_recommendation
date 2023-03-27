@@ -1,15 +1,16 @@
 Problem Statement
 You are on a social networking site called twiblr.
-In twiblr, you can follow at most 2,times,( the number of users following you ),+,100 users.
+In twiblr, you can follow at most 2×( the number of users following you )+100 users.
 You are currently following B users, and A users are following you.
 At most, how many extra users can you follow now?  
 
 Constraints
-0 le A, B le 10000
-B le 2 times A + 100
+0 ≦ A, B ≦ 10000
+B ≦ 2 × A + 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output
@@ -20,7 +21,7 @@ Sample Input 1
 
 Sample Output 1
 200
-You can follow at most 2 times 200 + 100 = 500 users, that is, 200 more users than you are following now.
+You can follow at most 2 × 200 + 100 = 500 users, that is, 200 more users than you are following now.
 
 Sample Input 2
 10000 0

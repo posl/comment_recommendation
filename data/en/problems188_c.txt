@@ -3,20 +3,21 @@ Problem Statement
 The rating of Player i is A_i. Any two players have different ratings, and a match between two players always results in the victory of the player with the higher rating.  
 The tournament looks like a perfect binary tree.
 Formally, the tournament will proceed as follows:  
-For each integer i = 1, 2, 3, dots, N in this order, the following happens.
-For each integer j (1 le j le 2^{N - i}), among the players who have never lost, the player with the (2j - 1)-th smallest label and the player with the 2j-th smallest label play a match against each other.
+For each integer i = 1, 2, 3, ..., N in this order, the following happens.
+For each integer j (1 ≦ j ≦ 2^{N - i}), among the players who have never lost, the player with the (2j - 1)-th smallest label and the player with the 2j-th smallest label play a match against each other.
 
 Find the label of the player who will take second place, that is, lose in the final match.
 
 Constraints
-1 le N le 16
-1 le A_i le 10^9
+1 ≦ N ≦ 16
+1 ≦ A_i ≦ 10^9
 A_i are pairwise different.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 A_3 dots A_{2^N}
+A_1 A_2 A_3 ... A_{2^N}
 
 Output
 Print the label of the player who will take second place.

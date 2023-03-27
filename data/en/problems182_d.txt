@@ -1,21 +1,25 @@
 Problem Statement
-Given is a number sequence A_1, A_2, A_3, dots, A_N, which may contain negative elements.
+Given is a number sequence A_1, A_2, A_3, ..., A_N, which may contain negative elements.
 On a number line, there is a robot at coordinate 0. It will do the following actions in order:  
 Move A_1 in the positive direction.
 Move A_1 in the positive direction, and then move A_2 in the positive direction.
 Move A_1 in the positive direction, then move A_2 in the positive direction, and then move A_3 in the positive direction.
-hspace{140pt} vdots 
-Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ldots, dots, and then move A_N in the positive direction.
+.
+.
+.
+ 
+Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ..., ..., and then move A_N in the positive direction.
 Find the greatest coordinate occupied by the robot from the beginning to the end of the process.
 
 Constraints
-1 le N le 200000
--10^8 le A_i le 10^8
+1 ≦ N ≦ 200000
+-10^8 ≦ A_i ≦ 10^8
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} dots hspace{5pt} A_N
+A_1 A_2 A_3 ... A_N
 
 Output
 Print the greatest coordinate occupied by the robot from the beginning to the end of the process.

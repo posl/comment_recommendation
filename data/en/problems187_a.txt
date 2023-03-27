@@ -4,9 +4,10 @@ Given two 3-digit integers A and B, find the greater of S(A) and S(B).
 
 Constraints
 All values in input are integers.
-100 le A, B le 999
+100 ≦ A, B ≦ 999
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output

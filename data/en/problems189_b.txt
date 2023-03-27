@@ -11,10 +11,13 @@ All values in input are integers.
 1 ≦ V_i ≦ 10^3
 0 ≦ P_i ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 V_1 P_1
-vdots
+.
+.
+.
 V_N P_N
 
 Output
@@ -27,8 +30,8 @@ Sample Input 1
 
 Sample Output 1
 2
-The 1-st liquor contains 200times dfrac{5}{100}=10 milliliters of alcohol.
-The 2-nd liquor contains 350times dfrac{3}{100}=10.5 milliliters of alcohol.
+The 1-st liquor contains 200× (5/(100))=10 milliliters of alcohol.
+The 2-nd liquor contains 350× (3/(100))=10.5 milliliters of alcohol.
 His alcohol intake exceeds 15 milliliters for the first time when drinking the 2-nd liquor.
 
 Sample Input 2

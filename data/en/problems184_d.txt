@@ -6,9 +6,10 @@ Find the expected value of the number of times the operation is done.
 
 Constraints
 0 ≦ A,B,C ≦ 99
-A+B+C geq 1
+A+B+C ≧ 1
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C
 
 Output
@@ -27,7 +28,7 @@ Sample Input 2
 Sample Output 2
 1.331081081
 We will do the second operation only if we take out a gold coin in the first operation.
-Thus, the expected number of operations is 2times frac{98}{98+99+99}+1times frac{99}{98+99+99}+1times frac{99}{98+99+99}=1.331081081ldots
+Thus, the expected number of operations is 2× ((98)/(98+99+99))+1× ((99)/(98+99+99))+1× ((99)/(98+99+99))=1.331081081...
 
 Sample Input 3
 0 0 1

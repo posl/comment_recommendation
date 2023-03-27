@@ -6,11 +6,14 @@ Constraints
 1 ≦ H,W ≦ 100
 0≦ A_{i,j} ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
-A_{1,1} A_{1,2} ldots A_{1,W}
-vdots
-A_{H,1} A_{H,2} ldots A_{H,W}
+A_{1,1} A_{1,2} ... A_{1,W}
+.
+.
+.
+A_{H,1} A_{H,2} ... A_{H,W}
 
 Output
 Print the minimum number of blocks that must be removed.

@@ -5,14 +5,17 @@ The line passing through Point i and Point j has a slope between -1 and 1 (inclu
 
 Constraints
 All values in input are integers.
-1 le N le 10^3
-|x_i|, |y_i| le 10^3
-x_i neq x_j for i neq j.
+1 ≦ N ≦ 10^3
+|x_i|, |y_i| ≦ 10^3
+x_i ≠ x_j for i ≠ j.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 y_1
-vdots
+.
+.
+.
 x_N y_N
 
 Output
@@ -26,7 +29,7 @@ Sample Input 1
 
 Sample Output 1
 2
-The slopes of the lines passing through (0, 0) and (1, 2), passing through (0, 0) and (2, 1), and passing through (1, 2) and (2, 1) are 2, frac{1}{2}, and -1, respectively.
+The slopes of the lines passing through (0, 0) and (1, 2), passing through (0, 0) and (2, 1), and passing through (1, 2) and (2, 1) are 2, (1/(2)), and -1, respectively.
 
 Sample Input 2
 1

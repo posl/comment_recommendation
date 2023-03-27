@@ -1,7 +1,7 @@
 Problem Statement
-We have N dishes numbered 1, 2, dots, N and M conditions numbered 1, 2, dots, M.
+We have N dishes numbered 1, 2, ..., N and M conditions numbered 1, 2, ..., M.
 Condition i is satisfied when both Dish A_i and Dish B_i have (one or more) balls on them.
-There are K people numbered 1, 2, dots, K. Person i will put a ball on Dish C_i or Dish D_i.
+There are K people numbered 1, 2, ..., K. Person i will put a ball on Dish C_i or Dish D_i.
 At most how many conditions will be satisfied?
 
 Constraints
@@ -12,14 +12,19 @@ All values in input are integers.
 1 ≤ K ≤ 16
 1 ≤ C_i < D_i ≤ N
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 B_1
-vdots
+.
+.
+.
 A_M B_M
 K
 C_1 D_1
-vdots
+.
+.
+.
 C_K D_K
 
 Output

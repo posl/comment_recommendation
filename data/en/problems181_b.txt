@@ -9,10 +9,13 @@ All values in input are integers.
 1 ≦ N ≦ 10^5
 1 ≦ A_i ≦ B_i ≦ 10^6
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
-vdots
+.
+.
+.
 A_N B_N
 
 Output

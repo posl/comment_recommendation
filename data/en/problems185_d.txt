@@ -1,19 +1,20 @@
 Problem Statement
 There are N squares arranged in a row from left to right. Let Square i be the i-th square from the left.
-M of those squares, Square A_1, A_2, A_3, ldots, A_M, are blue; the others are white. (M may be 0, in which case there is no blue square.)
+M of those squares, Square A_1, A_2, A_3, ..., A_M, are blue; the others are white. (M may be 0, in which case there is no blue square.)
 You will choose a positive integer k just once and make a stamp with width k. In one use of a stamp with width k, you can choose k consecutive squares from the N squares and repaint them red, as long as those k squares do not contain a blue square.
 At least how many uses of the stamp are needed to have no white square, with the optimal choice of k and the usage of the stamp?
 
 Constraints
-1 le N le 10^9
-0 le M le 2 times 10^5
-1 le A_i le N
+1 ≦ N ≦ 10^9
+0 ≦ M ≦ 2 × 10^5
+1 ≦ A_i ≦ N
 A_i are pairwise distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} dots hspace{5pt} A_M
+A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} ... hspace{5pt} A_M
 
 Output
 Print the minimum number of uses of the stamp needed to have no white square.

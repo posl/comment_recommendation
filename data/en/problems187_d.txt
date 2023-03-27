@@ -8,13 +8,16 @@ To get more votes than Aoki, in how many towns does Takahashi need to make speec
 
 Constraints
 All values in input are integers.
-1 le N le 2 times 10^5
-1 le A_i, B_i le 10^9
+1 ≦ N ≦ 2 × 10^5
+1 ≦ A_i, B_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
-vdots
+.
+.
+.
 A_N B_N
 
 Output

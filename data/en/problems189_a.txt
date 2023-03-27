@@ -6,7 +6,8 @@ Determine whether it is a win.
 Constraints
 C_i is an uppercase English letter.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 C_1 C_2 C_3
 
 Output

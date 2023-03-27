@@ -7,12 +7,15 @@ Constraints
 All values in input are integers.
 3 ≦ N ≦ 10^2
 |x_i|, |y_i| ≦ 10^3
-If i neq j, (x_i, y_i) neq (x_j, y_j).
+If i ≠ j, (x_i, y_i) ≠ (x_j, y_j).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 x_1 y_1
-vdots
+.
+.
+.
 x_N y_N
 
 Output

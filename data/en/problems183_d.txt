@@ -4,15 +4,18 @@ There are N people. The i-th person plans to use P_i liters of hot water per min
 Is it possible to supply hot water to the people according to their plans?
 
 Constraints
-1≦ N ≦ 2times 10^5
-0≦ S_i < T_i ≦ 2times 10^5
+1≦ N ≦ 2× 10^5
+0≦ S_i < T_i ≦ 2× 10^5
 1≦ W, P_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N W
 S_1 T_1 P_1
-vdots
+.
+.
+.
 S_N T_N P_N
 
 Output

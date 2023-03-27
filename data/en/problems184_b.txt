@@ -7,11 +7,12 @@ If the i-th character of S from the left is o, it means his answer for the i-th 
 How many points will he have in the end?
 
 Constraints
-1 le N le 2 times 10^5
-0 le X le 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+0 ≦ X ≦ 2 × 10^5
 S is a string of length N consisting of o and x.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 S
 

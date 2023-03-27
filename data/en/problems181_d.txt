@@ -5,10 +5,11 @@ He is trying to make a multiple of 8 by permuting the digit sequence S.
 Determine whether it is possible.
 
 Constraints
-1 ≦ |S| ≦ 2 times 10^5
+1 ≦ |S| ≦ 2 × 10^5
 Each character of S is one of the digits from 1 through 9.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

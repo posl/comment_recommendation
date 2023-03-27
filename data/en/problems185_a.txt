@@ -5,10 +5,11 @@ When he has A_1, A_2, A_3, and A_4 drafts of 100-, 200-, 300-, and 400-point pro
 The same draft can be used only once.
 
 Constraints
-1 le A_i le 100 (1 le i le 4)
+1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{7pt} A_4
 
 Output

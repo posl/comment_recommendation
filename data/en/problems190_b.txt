@@ -14,10 +14,13 @@ All values in input are integers.
 1 ≤ S ≤ 10^9
 1 ≤ D ≤ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N S D
 X_1 Y_1
-vdots
+.
+.
+.
 X_N Y_N
 
 Output

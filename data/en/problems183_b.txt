@@ -6,10 +6,11 @@ To make the ball hit the x-axis exactly once and then pass (G_x, G_y), where alo
 Constraints
 -10^6 ≦ S_x, G_x ≦ 10^6
 0 < S_y, G_y ≦ 10^6
-S_x neq G_x
+S_x ≠ G_x
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S_x S_y G_x G_y
 
 Output

@@ -1,16 +1,17 @@
 Problem Statement
-Given is an integer sequence A: A_1, A_2, A_3, dots, A_N.
-Let the GCD-ness of a positive integer k be the number of elements among A_1, A_2, A_3, dots, A_N that are divisible by k.
+Given is an integer sequence A: A_1, A_2, A_3, ..., A_N.
+Let the GCD-ness of a positive integer k be the number of elements among A_1, A_2, A_3, ..., A_N that are divisible by k.
 Among the integers greater than or equal to 2, find the integer with the greatest GCD-ness. If there are multiple such integers, you may print any of them.  
 
 Constraints
-1 le N le 100
-2 le A_i le 1000
+1 ≦ N ≦ 100
+2 ≦ A_i ≦ 1000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 hspace{7pt} A_2 hspace{7pt} A_3 hspace{5pt} dots hspace{5pt} A_N
+A_1 A_2 A_3 ... A_N
 
 Output
 Print an integer with the greatest GCD-ness among the integers greater than or equal to 2. If there are multiple such integers, any of them will be accepted.

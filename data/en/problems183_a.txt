@@ -6,7 +6,8 @@ Constraints
 x is an integer.
  -10 ≦ x ≦ 10
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x
 
 Output
@@ -17,7 +18,7 @@ Sample Input 1
 
 Sample Output 1
 1
-We have 1 geq 0, so ReLU(1) = 1.
+We have 1 ≧ 0, so ReLU(1) = 1.
 
 Sample Input 2
 0

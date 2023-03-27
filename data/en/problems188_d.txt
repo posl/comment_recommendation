@@ -9,16 +9,19 @@ Without a subscription to Snuke Prime, he has to pay c_i yen per day to use the 
 Find the minimum total amount of money Takahashi has to pay to use the services.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ C ≦ 10^9
 1 ≦ a_i ≦ b_i ≦ 10^9
 1 ≦ c_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N C
 a_1 b_1 c_1
-vdots
+.
+.
+.
 a_N b_N c_N
 
 Output
