@@ -57,16 +57,23 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\\right', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\\le', '≦'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\geq', '≧'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\ge', '≧'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\lt', '<'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\gt', '>'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\neq', '≠'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\ldots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\cdots', '...'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\dots', '...'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\n \\vdots', '\n.\n.\n.\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\vdots', '.\n.\n.\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\times', '×'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\simeq', '≃'), problem_list))
         problem_list = list(map(lambda x: x.replace('\\bmod', 'mod'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\to', '->'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\land', '∧'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\lor', '∨'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\lvert', '|'), problem_list))
+        problem_list = list(map(lambda x: x.replace('\\rvert', '|'), problem_list))
         problem_list = list(map(lambda x: x.replace('{,}', ''), problem_list))
         problem_list = list(map(lambda x: x.replace('\x08', ''), problem_list))
         #print(problem_list)
@@ -77,7 +84,12 @@ class Scraping():
             if self.difficulty == 'a':
                 problem_list = list(map(lambda x: x.replace('\\', '\\'), problem_list))
         #print(problem_list)
-        problem_list = list(re.sub(r'~mathrm{(\w+)}', r'[\1]', i) for i in problem_list)
+        problem_list = list(re.sub(r'xrightarrow{(.*?)}', r'-{\1}->', i) for i in problem_list)
+        problem_list = list(re.sub(r'begin{bmatrix}\s(\S+)\s&\s(\S+)\s\s(\S+)\s&\s(\S+)\send{bmatrix}', r'[[\1, \2], [\3, \4]]', i) for i in problem_list)
+        problem_list = list(re.sub(r'~mathrm{(.*?)}', r'[\1]', i) for i in problem_list)
+        problem_list = list(re.sub(r'mathrm{(\w+)}', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'mathrm{(.*?)}', r'[\1]', i) for i in problem_list)
+        problem_list = list(re.sub(r'mathbf{(.*?)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'~(\S)', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'textrm{(.*?)}', r'\1', i) for i in problem_list)
         problem_list = list(re.sub(r'{rm\s(\w+)}', r'\1', i) for i in problem_list)
@@ -88,11 +100,16 @@ class Scraping():
         problem_list = list(re.sub(r'frac{(\w)}{(.*?)}', r'(\1/(\2))', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(.*?)}{(.*?)}', r'((\1)/(\2))', i) for i in problem_list)
         problem_list = list(re.sub(r'frac{(\d+)}{(\d+)}', r'(\1/\2)', i) for i in problem_list)
+        problem_list = list(re.sub(r'frac(\d+){(\d+)}', r'(\1/\2)', i) for i in problem_list)
         #problem_list = list(re.sub(r'sqrt{(\w+)}', r'(\1)^(1/2)', i) for i in problem_list)
         problem_list = list(re.sub(r'sqrt{(.*?)}', r'(\1)^(1/2)', i) for i in problem_list)
         problem_list = list(re.sub(r'lfloor', r'⌊', i) for i in problem_list)
         problem_list = list(re.sub(r'rfloor', r'⌋', i) for i in problem_list)
+        problem_list = list(re.sub(r'displaystyle(.*?)displaystyle(.*?)', r'\1\2', i) for i in problem_list)
         problem_list = list(re.sub(r'displaystyle{(.*)}', r'(\1)', i) for i in problem_list)
+        problem_list = list(re.sub(r'displaystyle(.*)', r'\1', i) for i in problem_list)
+        problem_list = list(re.sub(r'hspace{(.*?)} ', '', i) for i in problem_list)
+        problem_list = list(re.sub(r'hspace{(.*?)}', '', i) for i in problem_list)
         
 
         if self.language == 'ja':
@@ -100,10 +117,10 @@ class Scraping():
             for i in ['問題文', '制約', '注釈', '出力', '注記']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
             
-            for i in ['の', '中']:
+            for i in ['に', 'の', '中']:
                 problem_list = list(map(lambda x: x.replace('問題文\n' + i, '問題文' + i), problem_list))
 
-            for i in ['の', 'を', '下', '」']:
+            for i in ['の', 'は', 'を', '下', '」']:
                 problem_list = list(map(lambda x: x.replace('制約\n' + i, '制約' + i), problem_list))
             
             for i in ['を']:
@@ -119,7 +136,7 @@ class Scraping():
             for i in ['と']:
                 problem_list = list(map(lambda x: x.replace('入力例 1\n ' + i, '入力例 1' + i), problem_list))
 
-            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'に', 'の', 'は', 'も、', '例の', '例を', '形式', '欄']:
+            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'に', 'の', 'は', 'も、', '例の', '例を', '形式', '欄', '」']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
             
             for i in ['はじ', 'でき']:
@@ -196,6 +213,7 @@ if __name__ == '__main__':
         os.remove('../../data/errors.txt')
     url = 'https://atcoder.jp/contests/abc'
     add_id = 16
+    
     
     #'''
     for number_of_problem in range(42, 51):
@@ -783,7 +801,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(171, 181):
+    for number_of_problem in range(112, 221):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
