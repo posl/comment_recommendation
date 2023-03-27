@@ -24,7 +24,7 @@ t_i=4 なら (l_i,r_i)
 N
 t_1 l_1 r_1
 t_2 l_2 r_2
-hspace{1cm}.
+.
 .
 .
 t_N l_N r_N

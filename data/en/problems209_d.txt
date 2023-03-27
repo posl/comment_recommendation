@@ -16,13 +16,13 @@ Input is given from Standard Input in the following format:
 N Q
 a_1 b_1
 a_2 b_2
-hspace{0.6cm}.
+.
 .
 .
 a_{N-1} b_{N-1}
 c_1 d_1
 c_2 d_2
-hspace{0.6cm}.
+.
 .
 .
 c_Q d_Q
