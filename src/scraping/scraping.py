@@ -119,7 +119,7 @@ class Scraping():
             for i in ['と']:
                 problem_list = list(map(lambda x: x.replace('入力例 1\n ' + i, '入力例 1' + i), problem_list))
 
-            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'の', 'は', 'も、', '例の', '例を']:
+            for i in ['が', 'さ', 'し', 'する', 'すれ', 'せよ', 'で', 'と', 'に', 'の', 'は', 'も、', '例の', '例を', '形式', '欄']:
                 problem_list = list(map(lambda x: x.replace('出力\n' + i, '出力' + i), problem_list))
             
             for i in ['はじ', 'でき']:
@@ -138,7 +138,7 @@ class Scraping():
             for i in ['s']:
                 problem_list = list(map(lambda x: x.replace('Output\n' + i, 'Output' + i + '\n'), problem_list))
 
-            for i in ['s']:
+            for i in ['s', 'and', 'below', '1 if']:
                 problem_list = list(map(lambda x: x.replace('Outputs\n ' + i, 'Outputs ' + i), problem_list))
                 problem_list = list(map(lambda x: x.replace('Output\n ' + i, 'Output ' + i), problem_list))
 
@@ -783,7 +783,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(112, 171):
+    for number_of_problem in range(171, 181):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
