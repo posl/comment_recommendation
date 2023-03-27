@@ -9,10 +9,11 @@ Constraints
 1 ≦ S_i,T_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-S_1 S_2 ldots S_N
-T_1 T_2 ldots T_N
+S_1 S_2 ... S_N
+T_1 T_2 ... T_N
 
 Output
 Print N lines. The i-th line (1 ≦ i ≦ N) should contain the time when Snuke i receives a gem for the first time.

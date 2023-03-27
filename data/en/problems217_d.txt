@@ -1,6 +1,6 @@
 Problem Statement
 We have a long piece of timber with a length of L meters.
-For each x = 1, 2, dots, L - 1, there is a mark called Mark x at x meters from the left end of the piece.
+For each x = 1, 2, ..., L - 1, there is a mark called Mark x at x meters from the left end of the piece.
 You are given Q queries, the i-th of which is represented as a pair of numbers (c_i, x_i).
 Process the queries in ascending order of i as described below.
 If c_i = 1: cut the piece at Mark x_i into two.
@@ -9,17 +9,20 @@ Here, for both kinds of queries c_i = 1, 2, it is guaranteed that there will hav
 
 Constraints
 1 ≦ L ≦ 10^9
-1 ≦ Q ≦ 2 times 10^5
+1 ≦ Q ≦ 2 × 10^5
 c_i = 1, 2 (1 ≦ i ≦ Q)
 1 ≦ x_i ≦ L - 1 (1 ≦ i ≦ Q)
 For every i (1 ≦ i ≦ Q), the following holds: there is no j such that 1 ≦ j < i and (c_j,x_j) = (1, x_i).
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 L Q
 c_1 x_1
 c_2 x_2
-vdots
+.
+.
+.
 c_Q x_Q
 
 Output

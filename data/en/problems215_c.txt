@@ -3,11 +3,12 @@ Find the K-th lexicographically smallest string among the strings that are permu
 What is a permutation of a string?A string A is said to be a permutation of a string B when any character occurs the same number of times in A and B.
 
 Constraints
-1 le |S| le 8
+1 ≦ |S| ≦ 8
 S consists of lowercase English letters.
 There are at least K distinct strings that are permutations of S.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S K
 
 Output

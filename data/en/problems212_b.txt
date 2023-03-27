@@ -9,7 +9,8 @@ Constraints
 0 ≦ X_1, X_2, X_3, X_4 ≦ 9
 X_1, X_2, X_3, and X_4 are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X_1X_2X_3X_4
 
 Output

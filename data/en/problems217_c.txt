@@ -1,22 +1,23 @@
 Problem Statement
-We will call a sequence of length N where each of 1,2,dots,N occurs once as a permutation of length N.
-Given a permutation of length N, P = (p_1, p_2,dots,p_N), print a permutation of length N, Q = (q_1,dots,q_N), that satisfies the following condition.
+We will call a sequence of length N where each of 1,2,...,N occurs once as a permutation of length N.
+Given a permutation of length N, P = (p_1, p_2,...,p_N), print a permutation of length N, Q = (q_1,...,q_N), that satisfies the following condition.
 For every i (1 ≦ i ≦ N), the p_i-th element of Q is i.
 It can be proved that there exists a unique Q that satisfies the condition.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-(p_1,p_2,dots,p_N) is a permutation of length N (defined in Problem Statement
+1 ≦ N ≦ 2 × 10^5
+(p_1,p_2,...,p_N) is a permutation of length N (defined in Problem Statement
 ).
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-p_1 p_2 dots p_N
+p_1 p_2 ... p_N
 
 Output
 Print the sequence Q in one line, with spaces in between.
-q_1 q_2 dots q_N
+q_1 q_2 ... q_N
 
 Sample Input 1
 3

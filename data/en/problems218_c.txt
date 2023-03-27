@@ -9,14 +9,19 @@ Constraints
 Each of S and T consists of # and ..
 Each of S and T contains at least one #.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-S_{1,1}S_{1,2}ldots S_{1,N}
-vdots
-S_{N,1}S_{N,2}ldots S_{N,N}
-T_{1,1}T_{1,2}ldots T_{1,N}
-vdots
-T_{N,1}T_{N,2}ldots T_{N,N}
+S_{1,1}S_{1,2}... S_{1,N}
+.
+.
+.
+S_{N,1}S_{N,2}... S_{N,N}
+T_{1,1}T_{1,2}... T_{1,N}
+.
+.
+.
+T_{N,1}T_{N,2}... T_{N,N}
 
 Output
 Print Yes if it is possible to exactly match S and T by 90-degree rotations and translations, and No otherwise.

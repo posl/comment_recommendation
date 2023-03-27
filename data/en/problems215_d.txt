@@ -1,15 +1,16 @@
 Problem Statement
-Given a sequence of N positive integers A=(A_1,A_2,dots,A_N), find every integer k between 1 and M (inclusive) that satisfies the following condition:
-gcd(A_i,k)=1 for every integer i such that 1 le i le N.
+Given a sequence of N positive integers A=(A_1,A_2,...,A_N), find every integer k between 1 and M (inclusive) that satisfies the following condition:
+gcd(A_i,k)=1 for every integer i such that 1 ≦ i ≦ N.
 
 Constraints
 All values in input are integers.
-1 le N,M le 10^5
-1 le A_i le 10^5
+1 ≦ N,M ≦ 10^5
+1 ≦ A_i ≦ 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 In the first line, print x: the number of integers satisfying the requirement.

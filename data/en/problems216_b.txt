@@ -7,11 +7,14 @@ Constraints
 N is an integer.
 Each of S_i and T_i is a string of length between 1 and 10 (inclusive) consisting of English lowercase letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S_1 T_1
 S_2 T_2
-hspace{0.6cm}vdots
+.
+.
+.
 S_N T_N
 
 Output

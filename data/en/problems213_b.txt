@@ -1,16 +1,17 @@
 Problem Statement
-N players, who are numbered 1, ldots, N, have played a game. Player i has scored A_i, and a player with a smaller score ranks higher.
+N players, who are numbered 1, ..., N, have played a game. Player i has scored A_i, and a player with a smaller score ranks higher.
 The player who ranks the second lowest will receive a booby prize. Who is this player? Answer with an integer representing the player.
 
 Constraints
-2 ≦ N ≦ 2times 10^5
+2 ≦ N ≦ 2× 10^5
 1 ≦ A_i ≦ 10^9
 A_i are distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 ldots A_N 
+A_1 ... A_N 
 
 Output
 Print the answer.

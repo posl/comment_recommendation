@@ -1,13 +1,14 @@
 Problem Statement
 You are given a person's systolic blood pressure, A, and diastolic blood pressure, B.
 Find the mean arterial pressure, C, which we define as follows:
-C = frac{A-B}{3} +B.
+C = ((A-B)/(3)) +B.
 
 Constraints
 50 ≦ B ≦ A ≦ 300
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B
 
 Output
@@ -19,7 +20,7 @@ Sample Input 1
 
 Sample Output 1
 110
-We have C = frac{130-100}{3} +100 = 10 + 100 = 110.
+We have C = ((130-100)/(3)) +100 = 10 + 100 = 110.
 
 Sample Input 2
 300 50

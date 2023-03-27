@@ -1,6 +1,6 @@
 Problem Statement
 A shop sells N kinds of lunchboxes, one for each kind.
-For each i = 1, 2, ldots, N, the i-th kind of lunchbox contains A_i takoyaki (octopus balls) and B_i taiyaki (fish-shaped cakes).
+For each i = 1, 2, ..., N, the i-th kind of lunchbox contains A_i takoyaki (octopus balls) and B_i taiyaki (fish-shaped cakes).
 Takahashi wants to eat X or more takoyaki and Y or more taiyaki.
 Determine whether it is possible to buy some number of lunchboxes to get at least X takoyaki and at least Y taiyaki. If it is possible, find the minimum number of lunchboxes that Takahashi must buy to get them.
 Note that just one lunchbox is in stock for each kind; you cannot buy two or more lunchboxes of the same kind.
@@ -11,12 +11,15 @@ Constraints
 1 ≦ A_i, B_i ≦ 300
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 X Y
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_N B_N
 
 Output

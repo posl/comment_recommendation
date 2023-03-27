@@ -1,17 +1,18 @@
 Problem Statement
-You are given two sequences: A=(A_1,A_2, ldots ,A_N) consisting of N positive integers, and B=(B_1, ldots ,B_M) consisting of M positive integers.
-Find the minimum difference of an element of A and an element of B, that is, displaystyle min_{ 1≦ i≦ N}displaystylemin_{1≦ j≦ M} lvert A_i-B_jrvert.
+You are given two sequences: A=(A_1,A_2, ... ,A_N) consisting of N positive integers, and B=(B_1, ... ,B_M) consisting of M positive integers.
+Find the minimum difference of an element of A and an element of B, that is,  min_{ 1≦ i≦ N}min_{1≦ j≦ M} | A_i-B_j|.
 
 Constraints
-1 ≦ N,M ≦ 2times 10^5
+1 ≦ N,M ≦ 2× 10^5
 1 ≦ A_i ≦ 10^9
 1 ≦ B_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-A_1 A_2 ldots A_N
-B_1 B_2 ldots B_M
+A_1 A_2 ... A_N
+B_1 B_2 ... B_M
 
 Output
 Print the answer.
@@ -23,7 +24,7 @@ Sample Input 1
 
 Sample Output 1
 2
-Here is the difference for each of the four pair of an element of A and an element of B: lvert 1-4rvert=3, lvert 1-9rvert=8, lvert 6-4rvert=2, and lvert 6-9rvert=3. We should print the minimum of these values, or 2.
+Here is the difference for each of the four pair of an element of A and an element of B: | 1-4|=3, | 1-9|=8, | 6-4|=2, and | 6-9|=3. We should print the minimum of these values, or 2.
 
 Sample Input 2
 1 1

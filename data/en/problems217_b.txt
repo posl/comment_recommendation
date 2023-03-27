@@ -6,7 +6,8 @@ Constraints
 Each of S_1, S_2, and S_3 is ABC, ARC, AGC, or AHC.
 S_1, S_2, and S_3 are pairwise different.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S_1
 S_2
 S_3

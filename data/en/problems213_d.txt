@@ -10,14 +10,17 @@ otherwise, he goes to the city he was in just before visiting the current city f
 Find the sequence of cities visited by Takahashi in the order he visits them.
 
 Constraints
-2 ≦ N ≦ 2times 10^5
+2 ≦ N ≦ 2× 10^5
 1≦ A_i,B_i ≦ N
 It is possible to travel between every pair of cities using roads.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
-vdots
+.
+.
+.
 A_{N-1} B_{N-1}
 
 Output

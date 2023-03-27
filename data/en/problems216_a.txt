@@ -10,7 +10,8 @@ Constraints
 0 ≦ Y ≦ 9
 X and Y are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X.Y
 
 Output

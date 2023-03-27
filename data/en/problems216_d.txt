@@ -6,23 +6,26 @@ Choose two different non-empty cylinders and remove the topmost ball from each o
 Determine whether the objective is achievable.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-2 ≦ M ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+2 ≦ M ≦ 2 × 10^5
 1 ≦ k_i (1 ≦ i ≦ M)
 1 ≦ a_{i,j} ≦ N (1 ≦ i ≦ M,1 ≦ j ≦ k_i)
 sum_{i=1}^{M} k_i = 2N
 For every x (1 ≦ x ≦ N), there exists exactly two pairs of integers (i,j) such that 1 ≦ i ≦ M, 1 ≦ j ≦ k_i, and a_{i,j}=x.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 k_1
-a_{1,1} a_{1,2} ldots a_{1,k_1}
+a_{1,1} a_{1,2} ... a_{1,k_1}
 k_2
-a_{2,1} a_{2,2} ldots a_{2,k_2}
-hspace{2.1cm}vdots
+a_{2,1} a_{2,2} ... a_{2,k_2}
+.
+.
+.
 k_M
-a_{M,1} a_{M,2} ldots a_{M,k_M}
+a_{M,1} a_{M,2} ... a_{M,k_M}
 
 Output
 If the objective is achievable, print Yes; otherwise, print No.

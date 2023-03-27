@@ -7,14 +7,15 @@ Type 3: Pick up the ball with the smallest integer in the bag (if there are mult
 For each 1≦ i≦ Q, you are given the type P_i of the i-th operation and the value of X_i if the operation is of Type 1 or 2. Print the integers recorded in the operations of Type 3 in order.
 
 Constraints
-1 ≦ Q ≦ 2times 10^5
+1 ≦ Q ≦ 2× 10^5
 1 ≦ P_i ≦ 3
 1 ≦ X_i ≦ 10^9
 All values in input are integers.
 There is one or more i such that P_i=3.
 If P_i=3, the bag contains at least one ball just before the i-th operation.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 Q
 query_1
 query_2

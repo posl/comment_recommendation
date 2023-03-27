@@ -1,10 +1,11 @@
 Problem Statement
-Given a positive integer N, find the maximum integer k such that 2^k le N. 
+Given a positive integer N, find the maximum integer k such that 2^k ≦ N. 
 
 Constraints
-N is an integer satisfying 1 le N le 10^{18}.
+N is an integer satisfying 1 ≦ N ≦ 10^{18}.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output
@@ -15,7 +16,7 @@ Sample Input 1
 
 Sample Output 1
 2
-k=2 satisfies 2^2=4 le 6.
+k=2 satisfies 2^2=4 ≦ 6.
 For every integer k such that k ge 3, 2^k > 6 holds.
 Therefore, the answer is k=2.
 

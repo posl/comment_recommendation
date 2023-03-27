@@ -1,12 +1,13 @@
 Problem Statement
-How many triples of non-negative integers (a, b, c) satisfy a+b+c ≦ S and a times b times c ≦ T?
+How many triples of non-negative integers (a, b, c) satisfy a+b+c ≦ S and a × b × c ≦ T?
 
 Constraints
 0 ≦ S ≦ 100
 0 ≦ T ≦ 10000
 S and T are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S T
 
 Output
