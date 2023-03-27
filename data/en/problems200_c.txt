@@ -1,17 +1,18 @@
 Problem Statement
 Ringo loves the integer 200. Solve the problem below for him.
 Given a sequence A of N positive integers, find the pair of integers (i, j) satisfying all of the following conditions:
-1 le i < j le N;
+1 ≦ i < j ≦ N;
 A_i - A_j is a multiple of 200.
 
 Constraints
 All values in input are integers.
-2 le N le 2 times 10^5
-1 le A_i le 10^9
+2 ≦ N ≦ 2 × 10^5
+1 ≦ A_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer as an integer.

@@ -2,10 +2,11 @@ Problem Statement
 Given an integer or a decimal X, round it down to an integer and print the result. 
 
 Constraints
-0 le X le 10^{100}
+0 ≦ X ≦ 10^{100}
 X is an integer or a decimal with at most 100 digits after the decimal point, without unnecessary leading zeros.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X
 
 Output

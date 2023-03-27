@@ -1,8 +1,8 @@
 Problem Statement
 Takahashi wants to buy the popular video game console called Play Snuke.
-There are N shops that sell Play Snuke: Shop 1, 2, dots, N. Shop i is A_i minutes' walk from where Takahashi is now, sells Play Snuke for P_i yen (Japanese currency), and currently has X_i Play Snukes in stock.
+There are N shops that sell Play Snuke: Shop 1, 2, ..., N. Shop i is A_i minutes' walk from where Takahashi is now, sells Play Snuke for P_i yen (Japanese currency), and currently has X_i Play Snukes in stock.
 Now, Takahashi will go to one of those shops on foot and buy Play Snuke if it is still in stock when he gets there.
-However, Play Snuke is so popular that the number of consoles in stock (if any) in every shop will decrease by 1 at the following moments: 0.5, 1.5, 2.5, dots minutes from now.
+However, Play Snuke is so popular that the number of consoles in stock (if any) in every shop will decrease by 1 at the following moments: 0.5, 1.5, 2.5, ... minutes from now.
 Determine whether Takahashi can buy Play Snuke. If he can, find the minimum amount of money needed to buy one.
 
 Constraints
@@ -10,10 +10,13 @@ All values in input are integers.
 1 ≤ N ≤ 10^5
 1 ≤ A_i, P_i, X_i ≤ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 P_1 X_1
-vdots
+.
+.
+.
 A_N P_N X_N
 
 Output

@@ -9,7 +9,8 @@ The x-th character of S_i and the y-th character of S_j is the same if and only 
 Constraints
 Each of S_1, S_2, S_3 is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S_1
 S_2
 S_3
@@ -27,8 +28,7 @@ Sample Output 1
 1
 2
 3
-Output
-s such as (N_1, N_2, N_3) = (4,5,9) will also be accepted, but (1,1,2) will not since it violates the third condition (both a and b correspond to 1).
+Outputs such as (N_1, N_2, N_3) = (4,5,9) will also be accepted, but (1,1,2) will not since it violates the third condition (both a and b correspond to 1).
 
 Sample Input 2
 x
@@ -39,8 +39,7 @@ Sample Output 2
 1
 1
 2
-Output
-s such as (N_1, N_2, N_3) = (3,3,6) will also be accepted, but (1,2,3) will not since it violates the third condition (both 1 and 2 correspond to x).
+Outputs such as (N_1, N_2, N_3) = (3,3,6) will also be accepted, but (1,2,3) will not since it violates the third condition (both 1 and 2 correspond to x).
 
 Sample Input 3
 p
@@ -58,11 +57,12 @@ ijkl
 Sample Output 4
 UNSOLVABLE
 
-Sample Input 5send
+Sample Input 5
+send
 more
 money
 
-Sample Output
- 59567
+Sample Output 5
+9567
 1085
 10652

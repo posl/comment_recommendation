@@ -4,14 +4,15 @@ g_1(x)= the integer obtained by rearranging the digits in the decimal notation o
 g_2(x)= the integer obtained by rearranging the digits in the decimal notation of x in ascending order
 f(x)=g_1(x)-g_2(x)
 For example, we have g_1(314)=431, g_2(3021)=123, f(271)=721-127=594. Note that the leading zeros are ignored.
-Given integers N, K, find a_K in the sequence defined by a_0=N, a_{i+1}=f(a_i)  (igeq 0).
+Given integers N, K, find a_K in the sequence defined by a_0=N, a_{i+1}=f(a_i)  (i≧ 0).
 
 Constraints
 0 ≦ N ≦ 10^9
 0 ≦ K ≦ 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 
 Output
@@ -37,7 +38,10 @@ a_0=1000000000
 a_1=f(1000000000)=1000000000-1=999999999
 a_2=f(999999999)=999999999-999999999=0
 a_3=f(0)=0-0=0
-vdots
+.
+.
+.
+
 
 Sample Input 3
 6174 100000

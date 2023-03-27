@@ -1,6 +1,6 @@
 Problem Statement
 We have a rectangular room that is H meters long and W meters wide.
-We will cover this room with A indistinguishable 2 meters times 1 meters rectangular tatami mats and B indistinguishable 1 meter times 1 meter square tatami mats.
+We will cover this room with A indistinguishable 2 meters × 1 meters rectangular tatami mats and B indistinguishable 1 meter × 1 meter square tatami mats.
 The rectangular mats can be used in either direction: they can be 2 meters long and 1 meter wide, or 1 meter long and 2 meters wide.
 How many ways are there to do this?
 Here, it is guaranteed that 2A + B = HW, and two ways are distinguished if they match only after rotation, reflection, or both.
@@ -12,7 +12,8 @@ HW ≤ 16
 0 ≤ A, B
 2A + B = HW
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W A B
 
 Output

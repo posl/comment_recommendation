@@ -1,34 +1,35 @@
 Problem Statement
 Given is a number sequence A of length N.
 Let us divide this sequence into one or more non-empty contiguous intervals.
-Then, for each of these intervals, let us compute the bitwise mathrm{OR} of the numbers in it.
-Find the minimum possible value of the bitwise mathrm{XOR} of the values obtained in this way.
-        What is bitwise mathrm{OR}?
+Then, for each of these intervals, let us compute the bitwise [OR] of the numbers in it.
+Find the minimum possible value of the bitwise [XOR] of the values obtained in this way.
+        What is bitwise [OR]?
     
-        The bitwise mathrm{OR} of integers A and B, A mathrm{OR} B, is defined as follows:
+        The bitwise [OR] of integers A and B, A [OR] B, is defined as follows:
         
-When A mathrm{OR} B is written in base two, the digit in the 2^k's place (k geq 0) is 1 if at least one of A and B is 1, and 0 otherwise.
-        For example, we have 3 mathrm{OR} 5 = 7 (in base two: 011 mathrm{OR} 101 = 111).  
-        Generally, the bitwise mathrm{OR} of k integers p_1, p_2, p_3, dots, p_k is defined as (dots ((p_1 mathrm{OR} p_2) mathrm{OR} p_3) mathrm{OR} dots mathrm{OR} p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, dots p_k.
+When A [OR] B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if at least one of A and B is 1, and 0 otherwise.
+        For example, we have 3 [OR] 5 = 7 (in base two: 011 [OR] 101 = 111).  
+        Generally, the bitwise [OR] of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 [OR] p_2) [OR] p_3) [OR] ... [OR] p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
     
 
-        What is bitwise mathrm{XOR}?
+        What is bitwise [XOR]?
     
-        The bitwise mathrm{XOR} of integers A and B, A mathrm{XOR} B, is defined as follows:
+        The bitwise [XOR] of integers A and B, A [XOR] B, is defined as follows:
         
-When A mathrm{XOR} B is written in base two, the digit in the 2^k's place (k geq 0) is 1 if exactly one of A and B is 1, and 0 otherwise.
-        For example, we have 3 mathrm{XOR} 5 = 6 (in base two: 011 mathrm{XOR} 101 = 110).  
-        Generally, the bitwise mathrm{XOR} of k integers p_1, p_2, p_3, dots, p_k is defined as (dots ((p_1 mathrm{XOR} p_2) mathrm{XOR} p_3) mathrm{XOR} dots mathrm{XOR} p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, dots p_k.
+When A [XOR] B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if exactly one of A and B is 1, and 0 otherwise.
+        For example, we have 3 [XOR] 5 = 6 (in base two: 011 [XOR] 101 = 110).  
+        Generally, the bitwise [XOR] of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 [XOR] p_2) [XOR] p_3) [XOR] ... [XOR] p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
     
 
 Constraints
-1 le N le 20
-0 le A_i < 2^{30}
+1 ≦ N ≦ 20
+0 ≦ A_i < 2^{30}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 A_3 dots A_N
+A_1 A_2 A_3 ... A_N
 
 Output
 Print the answer.
@@ -39,7 +40,7 @@ Sample Input 1
 
 Sample Output 1
 2
-If we divide [1, 5, 7] into [1, 5] and [7], their bitwise mathrm{OR}s are 5 and 7, whose mathrm{XOR} is 2.
+If we divide [1, 5, 7] into [1, 5] and [7], their bitwise [OR]s are 5 and 7, whose [XOR] is 2.
 It is impossible to get a smaller result, so we print 2.
 
 Sample Input 2

@@ -8,7 +8,8 @@ Constraints
 1 ≦ H ≦ 1000
 M and H are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 M H
 
 Output

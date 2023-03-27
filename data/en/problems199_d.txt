@@ -6,18 +6,21 @@ two vertices directly connected by an edge are always painted in different color
 Here, it is not mandatory to use all the colors.
 
 Constraints
-1 le N le 20
-0 le M le frac{N(N - 1)}{2}
-1 le A_i le N
-1 le B_i le N
+1 ≦ N ≦ 20
+0 ≦ M ≦ ((N(N - 1))/(2))
+1 ≦ A_i ≦ N
+1 ≦ B_i ≦ N
 The given graph is simple (that is, has no multi-edges and no self-loops).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 A_1 B_1
 A_2 B_2
 A_3 B_3
-hspace{15pt} vdots
+.
+.
+.
 A_M B_M
 
 Output

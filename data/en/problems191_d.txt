@@ -3,12 +3,13 @@ We have a circle of radius R centered at (X, Y).
 Find the number of grid points (points whose x- and y-coordinates are both integers) within or on the circle.
 
 Constraints
-|X| le 10^5
-|Y| le 10^5
-0 < R le 10^5
+|X| ≦ 10^5
+|Y| ≦ 10^5
+0 < R ≦ 10^5
 Each of X, Y, and R has at most four digits after the decimal point.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X Y R
 
 Output

@@ -6,7 +6,8 @@ Constraints
 S consists of uppercase and lowercase English letters.
 The length of S is between 1 and 1000 (inclusive).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

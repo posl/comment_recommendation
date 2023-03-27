@@ -5,7 +5,8 @@ Is it possible to add zero or more 0s at the beginning of the string representin
 Constraints
 0 ≦ N ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

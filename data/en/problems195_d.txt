@@ -3,7 +3,7 @@ We have N pieces of baggage called Baggage 1 through N, and M boxes called Box 1
 Baggage i has a size of W_i and a value of V_i.
 Box i can contain a piece of baggage whose size of at most X_i. It cannot contain two or more pieces of baggage.
 You will be given Q queries. In each query, given two integers L and R, solve the following problem:
-Problem: Out of the M boxes, R-L+1 boxes, Box L,L+1,ldots,R, have become unavailable. 
+Problem: Out of the M boxes, R-L+1 boxes, Box L,L+1,...,R, have become unavailable. 
 Find the maximum possible total value of a set of baggage that we can put into the remaining boxes simultaneously.
 
 Constraints
@@ -16,21 +16,26 @@ Constraints
 1 ≦ L ≦ R ≦ M
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M Q
 W_1 V_1
-vdots
+.
+.
+.
 W_N V_N
-X_1 ldots X_M
-mathrm{Query}_1
-vdots
-mathrm{Query}_Q
+X_1 ... X_M
+Query_1
+.
+.
+.
+Query_Q
 Each Query is in the following format:
 L R
 
 Output
 Print Q lines.
-The i-th line should contain the answer to the problem described by mathrm{Query}_i.
+The i-th line should contain the answer to the problem described by Query_i.
 
 Sample Input 1
 3 4 3

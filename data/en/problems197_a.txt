@@ -5,7 +5,8 @@ Move the first character of S to the end of S and print the resulting string S'.
 Constraints
 S is a string of length 3 consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

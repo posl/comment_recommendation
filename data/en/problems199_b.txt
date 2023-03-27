@@ -1,17 +1,18 @@
 Problem Statement
-You are given sequences of length N each: A = (A_1, A_2, A_3, dots, A_N) and B = (B_1, B_2, B_3, dots, B_N).
+You are given sequences of length N each: A = (A_1, A_2, A_3, ..., A_N) and B = (B_1, B_2, B_3, ..., B_N).
 Find the number of integers x satisfying the following condition:
-A_i le x le B_i holds for every integer i such that 1 le i le N.
+A_i ≦ x ≦ B_i holds for every integer i such that 1 ≦ i ≦ N.
 
 Constraints
-1 le N le 100
-1 le A_i le B_i le 1000
+1 ≦ N ≦ 100
+1 ≦ A_i ≦ B_i ≦ 1000
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 A_3 dots A_N
-B_1 B_2 B_3 dots B_N
+A_1 A_2 A_3 ... A_N
+B_1 B_2 B_3 ... B_N
 
 Output
 Print the answer.
@@ -23,7 +24,7 @@ Sample Input 1
 
 Sample Output 1
 3
-x must satisfy both 3 le x le 7 and 2 le x le 5.
+x must satisfy both 3 ≦ x ≦ 7 and 2 ≦ x ≦ 5.
 There are three such integers: 3, 4, and 5.
 
 Sample Input 2

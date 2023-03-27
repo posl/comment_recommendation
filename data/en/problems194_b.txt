@@ -8,17 +8,20 @@ If you assign the works to different employees, the time it takes for them to co
 Find the shortest possible time needed to complete the works.
 
 Constraints
-2 le N le 1000
-1 le A_i le 10^5
-1 le B_i le 10^5
+2 ≦ N ≦ 1000
+1 ≦ A_i ≦ 10^5
+1 ≦ B_i ≦ 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 A_1 B_1
 A_2 B_2
 A_3 B_3
-hspace{15pt} vdots
+.
+.
+.
 A_N B_N
 
 Output

@@ -3,12 +3,13 @@ You are given integers A, B, and C.
 Determine whether A^2 + B^2 < C^2 holds.  
 
 Constraints
-0 le A le 1000
-0 le B le 1000
-0 le C le 1000
+0 ≦ A ≦ 1000
+0 ≦ B ≦ 1000
+0 ≦ C ≦ 1000
 A, B, and C are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C
 
 Output

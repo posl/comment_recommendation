@@ -6,7 +6,8 @@ Takahashi has collected X coins so far. How many more coins does he need to coll
 Constraints
 0 ≦ X ≦ 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X
 
 Output
