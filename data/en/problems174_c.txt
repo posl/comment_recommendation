@@ -1,8 +1,6 @@
 Problem Statement
 Takahashi loves the number 7 and multiples of K.
-Where is the first occurrence of a multiple of K in the sequence 7,77,777,...? (Also see Output
- and Sample Input/Output
- below.)
+Where is the first occurrence of a multiple of K in the sequence 7,77,777,...? (Also see Output and Sample Input/Output below.)
 If the sequence contains no multiples of K, print -1 instead.
 
 Constraints
