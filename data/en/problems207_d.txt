@@ -1,5 +1,5 @@
 Problem Statement
-You are given two sets S={(a_1,b_1),(a_2,b_2),ldots,(a_N,b_N)} and T={(c_1,d_1),(c_2,d_2),ldots,(c_N,d_N)} of N points each on a two-dimensional plane.
+You are given two sets S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)} and T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)} of N points each on a two-dimensional plane.
 Determine whether it is possible to do the following operations on S any number of times (possibly zero) in any order so that S matches T.
 Choose a real number p (0 < p < 360) and rotate every point in S p degrees clockwise about the origin.
 Choose real numbers q and r and move every point in S by q in the x-direction and by r in the y-direction. Here, q and r can be any real numbers, be it positive, negative, or zero.
@@ -7,19 +7,24 @@ Choose real numbers q and r and move every point in S by q in the x-direction an
 Constraints
 1 ≦ N ≦ 100
 -10 ≦ a_i,b_i,c_i,d_i ≦ 10
-(a_i,b_i) neq (a_j,b_j) if i neq j.
-(c_i,d_i) neq (c_j,d_j) if i neq j.
+(a_i,b_i) ≠ (a_j,b_j) if i ≠ j.
+(c_i,d_i) ≠ (c_j,d_j) if i ≠ j.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 a_1 b_1
 a_2 b_2
-hspace{0.6cm}vdots
+hspace{0.6cm}.
+.
+.
 a_N b_N
 c_1 d_1
 c_2 d_2
-hspace{0.6cm}vdots
+hspace{0.6cm}.
+.
+.
 c_N d_N
 
 Output
@@ -53,8 +58,7 @@ Sample Input 2
 Sample Output 2
 No
 The figure below shows the given sets of points:
-Although S and T are symmetric about the y-axis, we cannot match S with T by rotations and translations as stated in Problem Statement
-.
+Although S and T are symmetric about the y-axis, we cannot match S with T by rotations and translations as stated in Problem Statement.
 
 Sample Input 3
 4

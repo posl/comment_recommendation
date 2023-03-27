@@ -7,16 +7,19 @@ The game ends when one of the players is unable to do the operation. Then, the p
 Find the result of the game when both players play the game to get the best outcome.
 
 Constraints
-1 le H, W le 2000
+1 ≦ H, W ≦ 2000
 A_{i, j} is + or -.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
-A_{1, 1}A_{1, 2}A_{1, 3} dots A_{1, W}
-A_{2, 1}A_{2, 2}A_{2, 3} dots A_{2, W}
-A_{3, 1}A_{3, 2}A_{3, 3} dots A_{3, W}
-hspace{2cm}vdots
-A_{H, 1}A_{H, 2}A_{H, 3} dots A_{H, W}
+A_{1, 1}A_{1, 2}A_{1, 3} ... A_{1, W}
+A_{2, 1}A_{2, 2}A_{2, 3} ... A_{2, W}
+A_{3, 1}A_{3, 2}A_{3, 3} ... A_{3, W}
+hspace{2cm}.
+.
+.
+A_{H, 1}A_{H, 2}A_{H, 3} ... A_{H, W}
 
 Output
 If Takahashi will win, print Takahashi; if Aoki will win, print Aoki; if the game will be drawn, print Draw.

@@ -6,7 +6,8 @@ Constraints
 1 ≦ K ≦ S, where S is the number of strings of length A + B containing A occurrences of a and B occurrences of b.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B K
 
 Output

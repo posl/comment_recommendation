@@ -18,11 +18,14 @@ Constraints
 1 ≦ l_i < r_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 t_1 l_1 r_1
 t_2 l_2 r_2
-hspace{1cm}vdots
+hspace{1cm}.
+.
+.
 t_N l_N r_N
 
 Output
@@ -36,8 +39,7 @@ Sample Input 1
 
 Sample Output 1
 2
-As defined in the Problem Statement
-, Interval 1 is [1,2], Interval 2 is [2,3), and Interval 3 is (2,4].
+As defined in the Problem Statement, Interval 1 is [1,2], Interval 2 is [2,3), and Interval 3 is (2,4].
 There are two pairs of integers (i,j) such that Interval i and Interval j intersect: (1,2) and (2,3). For the first pair, the intersection is [2,2], and for the second pair, the intersection is (2,3).
 
 Sample Input 2

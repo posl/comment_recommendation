@@ -6,15 +6,16 @@ Otherwise, let K' be the number of pieces he has at the moment, and hand out one
 When all pieces are handed out, how many pieces will the i-th citizen have?
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ K ≦ 10^{18}
 1 ≦ a_i ≦ 10^9
 All a_i are pairwise different.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-a_1 a_2 ldots a_N
+a_1 a_2 ... a_N
 
 Output
 Print N lines. The i-th line should contain the number of pieces of sweets received by the i-th citizen.

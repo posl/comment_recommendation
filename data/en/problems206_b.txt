@@ -5,10 +5,11 @@ Each night, he will check the amount of money in it.
 On which day will he find out that his piggy bank has N yen or more for the first time?
 
 Constraints
-1 le N le 10^9
+1 ≦ N ≦ 10^9
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

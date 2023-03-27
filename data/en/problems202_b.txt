@@ -8,7 +8,8 @@ Constraints
 1 ≦ |S| ≦ 10^5
 S consists of 0, 1, 6, 8, and 9.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

@@ -1,14 +1,15 @@
 Problem Statement
 The consumption tax rate in the Republic of AtCoder is 8 percent.
 An energy drink shop in this country sells one can of energy drink for N yen (Japanese currency) without tax.
-Including tax, it will be lfloor 1.08 times N rfloor yen, where lfloor x rfloor denotes the greatest integer not exceeding x for a real number x.
+Including tax, it will be ⌊ 1.08 × N ⌋ yen, where ⌊ x ⌋ denotes the greatest integer not exceeding x for a real number x.
 If this tax-included price is lower than the list price of 206 yen, print Yay!; if it is equal to the list price, print so-so; if it is higher than the list price, print :(.
 
 Constraints
-1 le N le 300
+1 ≦ N ≦ 300
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output
@@ -19,7 +20,7 @@ Sample Input 1
 
 Sample Output 1
 Yay!
-For N=180, the tax-included price is lfloor 180 times 1.08 rfloor = 194 yen, which is lower than the list price of 206 yen.
+For N=180, the tax-included price is ⌊ 180 × 1.08 ⌋ = 194 yen, which is lower than the list price of 206 yen.
 
 Sample Input 2
 200

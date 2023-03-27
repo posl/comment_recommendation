@@ -6,7 +6,8 @@ Print the character corresponding to the hand thrown by Serval, which can be uni
 Constraints
 Each of x and y is 0, 1, or 2.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x y
 
 Output

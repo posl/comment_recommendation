@@ -6,20 +6,25 @@ Takahashi is now at Town c_i and Aoki is now at Town d_i. They will leave the to
 Constraints
 2 ≦ N ≦ 10^5
 1 ≦ Q ≦ 10^5
-1 ≦ a_i < b_i ≦ N, (1 ≦ i ≦ N-1)
-1 ≦ c_i < d_i ≦ N, (1 ≦ i ≦ Q)
+1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
+1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
 All values in input are integers.
 It is possible to get from every town to every town by using some roads. 
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
 a_1 b_1
 a_2 b_2
-hspace{0.6cm}vdots
+hspace{0.6cm}.
+.
+.
 a_{N-1} b_{N-1}
 c_1 d_1
 c_2 d_2
-hspace{0.6cm}vdots
+hspace{0.6cm}.
+.
+.
 c_Q d_Q
 
 Output

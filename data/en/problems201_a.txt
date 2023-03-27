@@ -7,7 +7,8 @@ Constrains
 1 ≦ A_i ≦ 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A_1 A_2 A_3
 
 Output

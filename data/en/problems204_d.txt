@@ -8,9 +8,10 @@ Constraints
 1 ≦ T_i ≦ 10^3
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-T_1 ldots T_N
+T_1 ... T_N
 
 Output
 Print the answer.

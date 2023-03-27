@@ -1,17 +1,18 @@
 Problem Statement
-You are given a sequence of N positive integers: A=(A_1,A_2, dots A_N).
+You are given a sequence of N positive integers: A=(A_1,A_2, ... A_N).
 You can do the operation below zero or more times. At least how many operations are needed to make A a palindrome?
 Choose a pair (x,y) of positive integers, and replace every occurrence of x in A with y.
-Here, we say A is a palindrome if and only if A_i=A_{N+1-i} holds for every i (1 le i le N).
+Here, we say A is a palindrome if and only if A_i=A_{N+1-i} holds for every i (1 ≦ i ≦ N).
 
 Constraints
 All values in input are integers.
-1 le N le 2 times 10^5
-1 le A_i le 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+1 ≦ A_i ≦ 2 × 10^5
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer as an integer.

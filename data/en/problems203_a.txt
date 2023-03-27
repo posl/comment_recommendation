@@ -6,7 +6,8 @@ Constraints
 1 ≦ a,b,c ≦ 6
 All of a, b, and c are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b c
 
 Output

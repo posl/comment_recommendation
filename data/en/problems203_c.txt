@@ -1,5 +1,5 @@
 Problem Statement
-There are 10^{100}+1 villages, labeled with numbers 0, 1, ldots, 10^{100}.
+There are 10^{100}+1 villages, labeled with numbers 0, 1, ..., 10^{100}.
 For every integer i between 0 and 10^{100}-1 (inclusive), you can pay 1 yen (the currency) in Village i to get to Village (i + 1).
 There is no other way to travel between villages.
 Taro has K yen and is in Village 0 now. He will try to get to a village labeled with as large a number as possible.
@@ -7,13 +7,14 @@ He has N friends. The i-th friend, who is in Village A_i, will give Taro B_i yen
 Find the number with which the last village he will reach is labeled.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 1 ≦ K ≦ 10^9
 1 ≦ A_i ≦ 10^{18}
 1 ≦ B_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
 A_1 B_1
 :

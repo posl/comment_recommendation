@@ -1,5 +1,5 @@
 Problem Statement
-Given are three sequences of length N each: A = (A_1, A_2, dots, A_N), B = (B_1, B_2, dots, B_N), and C = (C_1, C_2, dots, C_N), consisting of integers between 1 and N (inclusive).
+Given are three sequences of length N each: A = (A_1, A_2, ..., A_N), B = (B_1, B_2, ..., B_N), and C = (C_1, C_2, ..., C_N), consisting of integers between 1 and N (inclusive).
 How many pairs (i, j) of integers between 1 and N (inclusive) satisfy A_i = B_{C_j}?
 
 Constraints
@@ -7,11 +7,12 @@ Constraints
 1 ≦ A_i, B_i, C_i ≦ N
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 ldots A_N
-B_1 B_2 ldots B_N
-C_1 C_2 ldots C_N
+A_1 A_2 ... A_N
+B_1 B_2 ... B_N
+C_1 C_2 ... C_N
 
 Output
 Print the number of pairs (i, j) such that A_i = B_{C_j}.

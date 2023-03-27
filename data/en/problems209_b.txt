@@ -9,9 +9,10 @@ Constraints
 1 ≦ A_i ≦ 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 If you can buy all the N products, print Yes; otherwise, print No.

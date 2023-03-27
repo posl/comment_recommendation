@@ -1,5 +1,5 @@
 Problem Statement
-The coins used in the Kingdom of Takahashi are 1!-yen coins, 2!-yen coins, dots, and 10!-yen coins. Here, N! = 1 times 2 times dots times N.
+The coins used in the Kingdom of Takahashi are 1!-yen coins, 2!-yen coins, ..., and 10!-yen coins. Here, N! = 1 × 2 × ... × N.
 Takahashi has 100 of every kind of coin, and he is going to buy a product worth P yen by giving the exact amount without receiving change.
 We can prove that there is always such a way to make payment.
 At least how many coins does he need to use in his payment?
@@ -8,7 +8,8 @@ Constraints
 1 ≦ P ≦ 10^7
 P is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 P
 
 Output

@@ -1,17 +1,18 @@
 Problem Statement
 You are given a sequence C of N integers. Find the number of sequences A of N integers satisfying all of the following conditions. 
-1 ≦ A_i ≦ C_i, (1 ≦ i ≦ N)
-A_i neq A_j, (1 ≦ i < j ≦ N)
+1 ≦ A_i ≦ C_i (1 ≦ i ≦ N)
+A_i ≠ A_j (1 ≦ i < j ≦ N)
 Since the count may be enormous, print it modulo (10^9+7).
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ C_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-C_1 C_2 ldots C_N
+C_1 C_2 ... C_N
 
 Output
 Print the number of sequences A of N integers satisfying all of the following conditions, modulo (10^9+7).
