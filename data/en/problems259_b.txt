@@ -26,7 +26,7 @@ Sample Input 2
 
 Sample Output 2
 -2.49999999999999911182 4.33012701892219364908
-When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-frac {5}{2} , frac {5(3)^(1/2)}{2}).
+When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-(5/2) , ((5(3)^(1/2))/2)).
 This sample output does not precisely match these values, but the errors are small enough to be considered correct.
 
 Sample Input 3
