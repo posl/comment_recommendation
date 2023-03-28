@@ -27,26 +27,11 @@ After the game ended and Takahashi won, the program must be terminated immediate
 If your program outputs something that violates the rules of the game (such as an integer that has already been declared by either player), your answer is considered incorrect.  In such case, the verdict is indeterminate.  It does not necessarily give WA.
 
 Sample Input and Output
-
-Input
-Output
-Description
-
-2
-First, an integer N is given.
-
-1
-Takahashi declares an integer 1.
-3
-Aoki declares an integer 3.
-
-2
-Takahashi declares an integer 2.
-4
-Aoki declares an integer 4.
-
-5
-Takahashi declares an integer 5.
-0
-Aoki has no more integer to declare, so Takahashi wins, and the game ends.
-
+Input Output Description
+2   First, an integer N is given.
+  1 Takahashi declares an integer 1.
+3   Aoki declares an integer 3.
+  2 Takahashi declares an integer 2.
+4   Aoki declares an integer 4.
+  5 Takahashi declares an integer 5.
+0   Aoki has no more integer to declare, so Takahashi wins, and the game ends.

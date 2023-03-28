@@ -152,6 +152,7 @@ class Scraping():
             for i in ['はじ', 'でき']:
                 problem_list = list(map(lambda x: x.replace('出力' + i, '出力\n' + i), problem_list))
 
+            
         else:
             for i in ['Problem Statement', 'Constraints', 'Notes', 'Output']:
                 problem_list = list(map(lambda x: x.replace(i, i + '\n'), problem_list))
@@ -195,6 +196,11 @@ class Scraping():
         problem_list = list(map(lambda x: x.replace('\n\n\n', '\n\n'), problem_list))
         problem_list = list(map(lambda x: x.replace('\n\n', '\n'), problem_list))
 
+        if (int(self.number) == 244) and (self.difficulty == 'c'):
+            problem_list = list(map(lambda x: x.replace('入出力\n例\n入力\n出力\n説明\n\n', '入出力例\n入力 出力 説明\n'), problem_list))
+            problem_list = list(map(lambda x: x.replace('Sample Input and Output\n\nInput\nOutput\nDescription\n\n', 'Sample Input and Output\nInput Output Description\n'), problem_list))
+            problem_list = list(re.sub(r'(\w)\n(.*?)\n\n(\w)\n(.*?)\n(\w)\n(.*?)\n\n(\w)\n(.*?)\n(\w)\n(.*?)\n\n(\w)\n(.*?)\n(\w)\n(.*?)\n\n', r'\1   \2\n  \3 \4\n\5   \6\n  \7 \8\n\9   \10\n  \11 \12\n\13   \14', i) for i in problem_list)
+            #print(problem_list)
 
         '''
         104_c: 入力例 1\n と, 147_d sum_ -> sigma, 159_d {} -> delete
@@ -239,7 +245,7 @@ if __name__ == '__main__':
     add_id = 16
     
     
-    '''
+    #'''
     for number_of_problem in range(42, 51):
     #for number_of_problem in range(44, 45):
         for difficulty in ['a', 'b']:
@@ -825,7 +831,7 @@ if __name__ == '__main__':
         print(number_of_problem)
     #'''
     #for number_of_problem in range(112, 290):
-    for number_of_problem in range(216, 217):
+    for number_of_problem in range(112, 251):
         for difficulty in ['a', 'b', 'c', 'd']:
             scraping = Scraping(url, number_of_problem, difficulty, 'ja')
             problem = scraping.get_problem()
