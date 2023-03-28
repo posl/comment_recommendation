@@ -1,20 +1,21 @@
 Problem Statement
-There is a sequence A=(A_0,ldots,A_{N-1}) of length N.
+There is a sequence A=(A_0,...,A_{N-1}) of length N.
 Determine if there exists a tuple of integers (x,y,z,w) that satisfies all of the following conditions:
 0 ≦ x < y < z < w ≦ N
-A_x + A_{x+1} + ldots + A_{y-1} = P
-A_y + A_{y+1} + ldots + A_{z-1} = Q
-A_z + A_{z+1} + ldots + A_{w-1} = R
+A_x + A_{x+1} + ... + A_{y-1} = P
+A_y + A_{y+1} + ... + A_{z-1} = Q
+A_z + A_{z+1} + ... + A_{w-1} = R
 
 Constraints
-3 ≦ N ≦ 2times 10^5
+3 ≦ N ≦ 2× 10^5
 1 ≦ A_i ≦ 10^9
 1 ≦ P,Q,R ≦ 10^{15}
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N P Q R
-A_0 A_1 ldots A_{N-1}
+A_0 A_1 ... A_{N-1}
 
 Output
 If there exists a tuple that satisfies the conditions, print Yes; otherwise, print No.  

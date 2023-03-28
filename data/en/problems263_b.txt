@@ -1,16 +1,17 @@
 Problem Statement
-There are N people, called Person 1, Person 2, ldots, Person N.
-The parent of Person i (2 le i le N) is Person P_i. Here, it is guaranteed that P_i < i.
+There are N people, called Person 1, Person 2, ..., Person N.
+The parent of Person i (2 ≦ i ≦ N) is Person P_i. Here, it is guaranteed that P_i < i.
 How many generations away from Person N is Person 1? 
 
 Constraints
-2 le N le 50
-1 le P_i < i(2 le i le N)
+2 ≦ N ≦ 50
+1 ≦ P_i < i(2 ≦ i ≦ N)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-P_2 P_3 dots P_N
+P_2 P_3 ... P_N
 
 Output
 Print the answer as a positive integer.

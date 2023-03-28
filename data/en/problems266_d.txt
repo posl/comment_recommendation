@@ -9,16 +9,19 @@ Find the maximum sum of the sizes of Snuke that Takahashi can catch by moving op
 
 Constraints
 1 ≦ N ≦ 10^5
-0 < T_1 < T_2 < ldots < T_N ≦ 10^5
+0 < T_1 < T_2 < ... < T_N ≦ 10^5
 0 ≦ X_i ≦ 4
 1 ≦ A_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 T_1 X_1 A_1
 T_2 X_2 A_2
-vdots
+.
+.
+.
 T_N X_N A_N
 
 Output

@@ -6,7 +6,7 @@ That is, the following holds for every non-negative integer k: if the digit in t
 
 Constraints
 N is an integer.
-0 le N < 2^{60}
+0 ≦ N < 2^{60}
 In the binary representation of N, at most 15 digit positions contain 1.
 
 Input

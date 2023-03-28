@@ -5,7 +5,8 @@ Constraints
 0 ≦ A, B, C, D, E ≦ 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C D E
 
 Output

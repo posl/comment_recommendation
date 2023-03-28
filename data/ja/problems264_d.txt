@@ -19,7 +19,7 @@ catredo
 
 出力例 1
 8
-catredo rightarrow [ac]tredo rightarrow actre[od] rightarrow actr[oe]d rightarrow actro[de] rightarrow act[or]de rightarrow acto[dr]e rightarrow a[tc]odre rightarrow atcod[er]
+catredo -> [ac]tredo -> actre[od] -> actr[oe]d -> actro[de] -> act[or]de -> acto[dr]e -> a[tc]odre -> atcod[er]
 という流れで操作を行うと、 8 回で S を atcoder にすることができ、これが達成可能な最小の操作回数です。
 
 入力例 2

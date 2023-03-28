@@ -4,8 +4,7 @@ Takahashi, Aoki, and Snuke took this exam.
 Takahashi scored A points, and Aoki scored B points.
 Snuke solved all of the problems solved by at least one of Takahashi and Aoki, and failed to solve any of the problems solved by neither of them.
 Find Snuke's score.
-It can be proved that Snuke's score is uniquely determined under the Constraints
- of this problem.
+It can be proved that Snuke's score is uniquely determined under the Constraints of this problem.
 
 Constraints
 0≦ A,B ≦ 7

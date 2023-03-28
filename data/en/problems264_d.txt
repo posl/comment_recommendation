@@ -7,7 +7,8 @@ Find the minimum number of operations required to make S equal atcoder.
 Constraints
 S is a string that is a permutation of atcoder
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
@@ -19,7 +20,7 @@ catredo
 Sample Output 1
 8
 You can make S equal atcoder in 8 operations as follows:
-catredo rightarrow [ac]tredo rightarrow actre[od] rightarrow actr[oe]d rightarrow actro[de] rightarrow act[or]de rightarrow acto[dr]e rightarrow a[tc]odre rightarrow atcod[er]
+catredo -> [ac]tredo -> actre[od] -> actr[oe]d -> actro[de] -> act[or]de -> acto[dr]e -> a[tc]odre -> atcod[er]
 This is the minimum number of operations achievable.
 
 Sample Input 2

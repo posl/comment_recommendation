@@ -9,7 +9,8 @@ Constraints
 Not all of A, B, C, D, and E are the same.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C D E
 
 Output

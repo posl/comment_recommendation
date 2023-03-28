@@ -6,7 +6,8 @@ How many days were there until the first Saturday after that day (including Satu
 Constraints
 S is Monday, Tuesday, Wednesday, Thursday, or Friday.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

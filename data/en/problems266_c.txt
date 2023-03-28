@@ -15,7 +15,8 @@ no three vertices are colinear; and
 no two edges that are not adjacent have a common point.
 
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A_x A_y
 B_x B_y
 C_x C_y

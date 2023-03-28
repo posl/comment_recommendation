@@ -1,5 +1,5 @@
 Problem Statement
-Takahashi and Aoki will play a game of taking stones using a sequence (A_1, ldots, A_K).
+Takahashi and Aoki will play a game of taking stones using a sequence (A_1, ..., A_K).
 There is a pile that initially contains N stones. The two players will alternately perform the following operation, with Takahashi going first.
 Choose an A_i that is at most the current number of stones in the pile. Remove A_i stones from the pile. 
 The game ends when the pile has no stones.
@@ -8,13 +8,13 @@ If both players attempt to maximize the total number of stones they remove befor
 Constraints
 1 ≦ N ≦ 10^4
 1 ≦ K ≦ 100
-1 = A_1 < A_2 < ldots < A_K ≦ N
+1 = A_1 < A_2 < ... < A_K ≦ N
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N K
-A_1 A_2 ldots A_K
+A_1 A_2 ... A_K
 
 Output
 Print the answer.

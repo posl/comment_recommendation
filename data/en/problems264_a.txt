@@ -3,9 +3,10 @@ Print the L-th through R-th characters of the string atcoder.
 
 Constraints
 L and R are integers.
-1 le L le R le 7
+1 ≦ L ≦ R ≦ 7
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 L R
 
 Output

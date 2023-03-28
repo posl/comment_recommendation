@@ -1,19 +1,20 @@
 Problem Statement
-You are given an integer sequence of length N: A=(A_1,A_2,ldots,A_N).
+You are given an integer sequence of length N: A=(A_1,A_2,...,A_N).
 You will perform the following consecutive operations just once:
-Choose an integer x (0≦ x ≦ N). If x is 0, do nothing. If x is 1 or greater, replace each of A_1,A_2,ldots,A_x with L.
-Choose an integer y (0≦ y ≦ N). If y is 0, do nothing. If y is 1 or greater, replace each of A_{N},A_{N-1},ldots,A_{N-y+1} with R.
+Choose an integer x (0≦ x ≦ N). If x is 0, do nothing. If x is 1 or greater, replace each of A_1,A_2,...,A_x with L.
+Choose an integer y (0≦ y ≦ N). If y is 0, do nothing. If y is 1 or greater, replace each of A_{N},A_{N-1},...,A_{N-y+1} with R.
 Print the minimum possible sum of the elements of A after the operations.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 -10^9 ≦ L, R≦ 10^9
 -10^9 ≦ A_i≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N L R
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer.

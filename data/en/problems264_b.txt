@@ -6,7 +6,8 @@ Constraints
 1 ≦ R, C ≦ 15
 R and C are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 R C
 
 Output

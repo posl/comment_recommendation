@@ -12,14 +12,17 @@ There is a pair (i,j) such that Player i drew with Player j, but Player j did no
 Constraints
 2 ≦ N ≦ 1000
 A_{i,i} is -.
-A_{i,j} is W, L, or D, for ineq j.
+A_{i,j} is W, L, or D, for i≠ j.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_{1,1}A_{1,2}ldots A_{1,N}
-A_{2,1}A_{2,2}ldots A_{2,N}
-vdots
-A_{N,1}A_{N,2}ldots A_{N,N}
+A_{1,1}A_{1,2}... A_{1,N}
+A_{2,1}A_{2,2}... A_{2,N}
+.
+.
+.
+A_{N,1}A_{N,2}... A_{N,N}
 
 Output
 If the given table is not contradictory, print correct; if it is contradictory, print incorrect.

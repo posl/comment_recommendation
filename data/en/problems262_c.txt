@@ -1,18 +1,19 @@
 Problem Statement
-You are given a sequence a = (a_1, dots, a_N) of length N consisting of integers between 1 and N.
+You are given a sequence a = (a_1, ..., a_N) of length N consisting of integers between 1 and N.
 Find the number of pairs of integers i, j that satisfy all of the following conditions:
 1 ≦ i < j ≦ N
 min(a_i, a_j) = i
 max(a_i, a_j) = j
 
 Constraints
-2 ≦ N ≦ 5 times 10^5
-1 ≦ a_i ≦ N , (1 ≦ i ≦ N)
+2 ≦ N ≦ 5 × 10^5
+1 ≦ a_i ≦ N  (1 ≦ i ≦ N)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 Print the answer.

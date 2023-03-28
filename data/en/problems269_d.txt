@@ -8,14 +8,14 @@ Cell (i,j) is adjacent to the following six cells:
 (i,j+1)
 (i+1,j)
 (i+1,j+1)
-Takahashi has painted N cells (X_1,Y_1),(X_2,Y_2),dots,(X_N,Y_N) black.
+Takahashi has painted N cells (X_1,Y_1),(X_2,Y_2),...,(X_N,Y_N) black.
 Find the number of connected components formed by the black cells.
 Two black cells belong to the same connected component when one can travel between those two black cells by repeatedly moving to an adjacent black cell.
 
 Constraints
 All values in the input are integers.
-1 le N le 1000
-|X_i|,|Y_i| le 1000
+1 ≦ N ≦ 1000
+|X_i|,|Y_i| ≦ 1000
 The pairs (X_i,Y_i) are distinct.
 
 Input
@@ -23,7 +23,9 @@ The input is given from Standard Input in the following format:
 N
 X_1 Y_1
 X_2 Y_2
-vdots
+.
+.
+.
 X_N Y_N
 
 Output

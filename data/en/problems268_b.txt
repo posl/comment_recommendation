@@ -2,12 +2,13 @@ Problem Statement
 You are given two strings S and T consisting of lowercase English letters.
 Determine if S is a prefix of T.
 What is a prefix?
-A prefix of a string T_1T_2ldots T_N of length N is a string expressed as the first i characters of T, T_1T_2ldots T_i, where i is an integer such that 0 ≦ i ≦ N.  For example, when T =  abc, there are four prefixes of T: an empty string, a, ab, and abc.
+A prefix of a string T_1T_2... T_N of length N is a string expressed as the first i characters of T, T_1T_2... T_i, where i is an integer such that 0 ≦ i ≦ N.  For example, when T =  abc, there are four prefixes of T: an empty string, a, ab, and abc.
 
 Constraints
 S and T are strings of lengths between 1 and 100 (inclusive) consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

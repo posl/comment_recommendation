@@ -1,5 +1,5 @@
 Problem Statement
-You are given a simple undirected graph with N vertices and M edges.  The vertices are numbered 1, dots, N, and the i-th (1 ≦ i ≦ M) edge connects Vertex U_i and Vertex V_i.
+You are given a simple undirected graph with N vertices and M edges.  The vertices are numbered 1, ..., N, and the i-th (1 ≦ i ≦ M) edge connects Vertex U_i and Vertex V_i.
 Find the number of tuples of integers a, b, c that satisfy all of the following conditions:
 1 ≦ a < b < c ≦ N
 There is an edge connecting Vertex a and Vertex b.
@@ -8,15 +8,18 @@ There is an edge connecting Vertex c and Vertex a.
 
 Constraints
 3 ≦ N ≦ 100
-1 ≦ M ≦ frac{N(N - 1)}{2}
-1 ≦ U_i < V_i ≦ N , (1 ≦ i ≦ M)
-(U_i, V_i) neq (U_j, V_j) , (i neq j)
+1 ≦ M ≦ ((N(N - 1))/(2))
+1 ≦ U_i < V_i ≦ N  (1 ≦ i ≦ M)
+(U_i, V_i) ≠ (U_j, V_j)  (i ≠ j)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
 U_1 V_1
-vdots
+.
+.
+.
 U_M V_M
 
 Output

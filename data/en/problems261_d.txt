@@ -12,15 +12,18 @@ Constraints
 1≦ X_i≦ 10^9
 1≦ C_i≦ N
 1≦ Y_i≦ 10^9
-C_1,C_2,ldots,C_M are all different.
+C_1,C_2,...,C_M are all different.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-X_1 X_2 ldots X_N
+X_1 X_2 ... X_N
 C_1 Y_1
 C_2 Y_2
-vdots
+.
+.
+.
 C_M Y_M
 
 Output

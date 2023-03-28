@@ -1,6 +1,6 @@
 Problem Statement
 Takahashi is exploring a cave in a video game.
-The cave consists of N rooms arranged in a row.  The rooms are numbered Room 1,2,ldots,N from the entrance.  
+The cave consists of N rooms arranged in a row.  The rooms are numbered Room 1,2,...,N from the entrance.  
 Takahashi is initially in Room 1, and the time limit is T.
 For each 1 ≦ i ≦ N-1, he may consume a time of A_i to move from Room i to Room (i+1).  There is no other way to move between rooms.
 He cannot make a move that makes the time limit 0 or less.
@@ -12,16 +12,19 @@ Constraints
 0 ≦ M ≦ N-2
 1 ≦ T ≦ 10^9
 1 ≦ A_i ≦ 10^9 
-1 < X_1 < ldots < X_M < N
+1 < X_1 < ... < X_M < N
 1 ≦ Y_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M T
-A_1 A_2 ldots A_{N-1}
+A_1 A_2 ... A_{N-1}
 X_1 Y_1
 X_2 Y_2
-vdots
+.
+.
+.
 X_M Y_M
 
 Output
