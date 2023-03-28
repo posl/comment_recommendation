@@ -31,8 +31,7 @@ suzuki hanako
 
 Sample Output 1
 Yes
-The following assignment satisfies the conditions of nicknames described in the Problem Statement
-: a_1 = taro, a_2 = jiro, a_3 = hanako.  (a_3 may be suzuki, too.)
+The following assignment satisfies the conditions of nicknames described in the Problem Statement: a_1 = taro, a_2 = jiro, a_3 = hanako.  (a_3 may be suzuki, too.)
 However, note that we cannot let a_1 = tanaka, which violates the second condition of nicknames, since Person 2's family name s_2 is tanaka too.
 
 Sample Input 2
