@@ -1,6 +1,6 @@
 Problem Statement
 Takahashi bought a table clock.
-The clock shows the time as shown in Figure 1 at mathrm{AB}:mathrm{CD} in the 24-hour system.
+The clock shows the time as shown in Figure 1 at AB:CD in the 24-hour system.
 For example, the clock in Figure 2 shows 7:58.
 The format of the time is formally described as follows.
 Suppose that the current time is m minutes past h in the 24-hour system.  Here, the 24-hour system represents the hour by an integer between 0 and 23 (inclusive), and the minute by an integer between 0 and 59 (inclusive). 

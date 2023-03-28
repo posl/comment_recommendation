@@ -1,7 +1,7 @@
 Problem Statement
-You are given an integer N and a sequence S=(S_1,ldots,S_N) of length N.
-Find a sequence A=(A_1,ldots,A_N) of length N that satisfies the following condition for all k=1,ldots,N:
-A_1+A_2+ldots+A_k = S_k.
+You are given an integer N and a sequence S=(S_1,...,S_N) of length N.
+Find a sequence A=(A_1,...,A_N) of length N that satisfies the following condition for all k=1,...,N:
+A_1+A_2+...+A_k = S_k.
 Such a sequence A always exists and is unique.
 
 Constraints
@@ -12,10 +12,10 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N
-S_1 ldots S_N
+S_1 ... S_N
 
 Output
-Print the elements of a sequence A=(A_1,ldots,A_N) that satisfies all the conditions in order, separated by spaces.  
+Print the elements of a sequence A=(A_1,...,A_N) that satisfies all the conditions in order, separated by spaces.  
 
 Sample Input 1
 3

@@ -1,21 +1,23 @@
 Problem Statement
-There are N people numbered 1,2,ldots,N.
-M parties were held.  k_i people attended the i-th (1≦ i ≦ M) party, and they were People x_{i,1},x_{i,2},ldots,x_{i,k_i}.
+There are N people numbered 1,2,...,N.
+M parties were held.  k_i people attended the i-th (1≦ i ≦ M) party, and they were People x_{i,1},x_{i,2},...,x_{i,k_i}.
 Determine if every two people attended the same party at least once.
 
 Constraints
 2≦ N ≦ 100
 1≦ M ≦ 100
 2≦ k_i ≦ N
-1≦ x_{i,1}<x_{i,2}<ldots < x_{i,k_i}≦ N
+1≦ x_{i,1}<x_{i,2}<... < x_{i,k_i}≦ N
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N M
-k_1 x_{1,1} x_{1,2} ldots x_{1,k_1}
-vdots
-k_M x_{M,1} x_{M,2} ldots x_{M,k_M}
+k_1 x_{1,1} x_{1,2} ... x_{1,k_1}
+.
+.
+.
+k_M x_{M,1} x_{M,2} ... x_{M,k_M}
 
 Output
 Print Yes if every two people attended the same party at least once; print No otherwise.

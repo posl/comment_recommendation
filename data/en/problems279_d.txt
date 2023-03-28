@@ -1,6 +1,6 @@
 Problem Statement
 A superman, Takahashi, is about to jump off the roof of a building to help a person in trouble on the ground.
-Takahashi's planet has a constant value g that represents the strength of gravity, and the time it takes for him to reach the ground after starting to fall is frac{A}{sqrt{g}}.
+Takahashi's planet has a constant value g that represents the strength of gravity, and the time it takes for him to reach the ground after starting to fall is (A/((g)^(1/2))).
 It is now time 0, and g = 1.
 Takahashi will perform the following operation as many times as he wants (possibly zero).
 Use a superpower to increase the value of g by 1. This takes a time of B.
@@ -25,12 +25,12 @@ Sample Input 1
 
 Sample Output 1
 7.7735026919
-If he performs the operation zero times, he will reach the ground at time 1times 0+frac{10}{sqrt{1}} = 10.
-If he performs the operation once, he will reach the ground at time 1times 1+frac{10}{sqrt{2}} fallingdotseq 8.07.
-If he performs the operation twice, he will reach the ground at time 1times 2+frac{10}{sqrt{3}} fallingdotseq 7.77.
-If he performs the operation three times, he will reach the ground at time 1times 3+frac{10}{sqrt{4}} = 8.
+If he performs the operation zero times, he will reach the ground at time 1× 0+((10)/((1)^(1/2))) = 10.
+If he performs the operation once, he will reach the ground at time 1× 1+((10)/((2)^(1/2))) fallingdotseq 8.07.
+If he performs the operation twice, he will reach the ground at time 1× 2+((10)/((3)^(1/2))) fallingdotseq 7.77.
+If he performs the operation three times, he will reach the ground at time 1× 3+((10)/((4)^(1/2))) = 8.
 Performing the operation four or more times will only delay the time to reach the ground.
-Therefore, it is optimal to perform the operation twice before jumping off, and the answer is 2+frac{10}{sqrt{3}}.
+Therefore, it is optimal to perform the operation twice before jumping off, and the answer is 2+((10)/((3)^(1/2))).
 
 Sample Input 2
 5 10

@@ -3,18 +3,18 @@ Takahashi is going to read a manga series "Snuke-kun" in 10^9 volumes.
 Initially, Takahashi has N books of this series.  The i-th book is Volume a_i.  
 Takahashi may repeat the following operation any number of (possibly zero) times only before he begins to read:
 Do nothing if he has 1 or less books; otherwise, sell two of the books he has and buy one book of any volume instead.
-Then, Takahashi reads Volume 1, Volume 2, Volume 3, ldots, in order.  However, when he does not have a book of the next volume to read, he stops reading the series (regardless of the other volumes he has).  
+Then, Takahashi reads Volume 1, Volume 2, Volume 3, ..., in order.  However, when he does not have a book of the next volume to read, he stops reading the series (regardless of the other volumes he has).  
 Find the latest volume of the series that he can read up to.  If he cannot read any, let the answer be 0.
 
 Constraints
-1 ≦ N ≦ 3 times 10^5
+1 ≦ N ≦ 3 × 10^5
 1 ≦ a_i ≦ 10^9
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 Print the answer.

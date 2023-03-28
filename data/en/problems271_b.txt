@@ -4,21 +4,26 @@ The i-th (1 ≦ i ≦ N) sequence has L_i terms; the j-th (1 ≦ j ≦ L_i) term
 You are given Q queries.  For the k-th (1 ≦ k ≦ Q) query, given integers s_k and t_k, find the t_k-th term of the s_k-th sequence.
 
 Constraints
-1 ≦ N, Q ≦ 2 times 10^5
-L_i geq 1 , (1 ≦ i ≦ N)
-sum_{i=1}^N L_i ≦ 2 times 10^5
-1 ≦ a_{i, j} ≦ 10^9 , (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k} , (1 ≦ k ≦ Q)
+1 ≦ N, Q ≦ 2 × 10^5
+L_i ≧ 1  (1 ≦ i ≦ N)
+sum_{i=1}^N L_i ≦ 2 × 10^5
+1 ≦ a_{i, j} ≦ 10^9  (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
+1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k}  (1 ≦ k ≦ Q)
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N Q
-L_1 a_{1, 1} ldots a_{1, L_1}
-vdots
-L_N a_{N, 1} ldots a_{N, L_N}
+L_1 a_{1, 1} ... a_{1, L_1}
+.
+.
+.
+L_N a_{N, 1} ... a_{N, L_N}
 s_1 t_1
-vdots 
+.
+.
+.
+ 
 s_Q t_Q
 
 Output

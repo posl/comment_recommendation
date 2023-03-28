@@ -1,23 +1,23 @@
 Problem Statement
-You are given a sequence A = (A_1, A_2, ldots, A_N) of length N.
-For each K = 0, 1, 2, ldots, N-1, solve the following problem.
+You are given a sequence A = (A_1, A_2, ..., A_N) of length N.
+For each K = 0, 1, 2, ..., N-1, solve the following problem.
 Find the number of integers i between 1 and N (inclusive) such that:
 A contains exactly K distinct integers greater than A_i.  
 
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ A_i ≦ 10^9
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print N lines.
-For i = 1, 2, ldots, N, the i-th line should contain the answer for K = i-1.
+For i = 1, 2, ..., N, the i-th line should contain the answer for K = i-1.
 
 Sample Input 1
 6

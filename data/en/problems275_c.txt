@@ -3,13 +3,15 @@ There is a two-dimensional plane. For integers r and c between 1 and 9, there is
 Find the number of squares in this plane with pawns placed at all four vertices.
 
 Constraints
-Each of S_1,ldots,S_9 is a string of length 9 consisting of # and ..
+Each of S_1,...,S_9 is a string of length 9 consisting of # and ..
 
 Input
 The input is given from Standard Input in the following format:
 S_1
 S_2
-vdots
+.
+.
+.
 S_9
 
 Output

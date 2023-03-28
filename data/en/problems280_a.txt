@@ -1,6 +1,6 @@
 Problem Statement
 There is a grid with H rows from top to bottom and W columns from left to right.  Each square has a piece placed on it or is empty.
-The state of the grid is represented by H strings S_1, S_2, ldots, S_H, each of length W.
+The state of the grid is represented by H strings S_1, S_2, ..., S_H, each of length W.
 If the j-th character of S_i is #, the square at the i-th row from the top and j-th column from the left has a piece on it;
 if the j-th character of S_i is ., the square at the i-th row from the top and j-th column from the left is empty.
 How many squares in the grid have pieces on them?
@@ -15,7 +15,9 @@ The input is given from Standard Input in the following format:
 H W
 S_1
 S_2
-vdots
+.
+.
+.
 S_H
 
 Output

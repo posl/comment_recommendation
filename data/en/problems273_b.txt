@@ -1,5 +1,5 @@
 Problem Statement
-Given a non-negative integer X, perform the following operation for i=1,2,dots,K in this order and find the resulting X.
+Given a non-negative integer X, perform the following operation for i=1,2,...,K in this order and find the resulting X.
 Round X off to the nearest 10^i.
 Formally, replace X with Y that is "the largest multiple of 10^i that minimizes |Y-X|."
 Here are some examples:
@@ -12,8 +12,8 @@ Rounding 1015 off to the nearest 10^1 yields 1020.
 
 Constraints
 X and K are integers.
-0 le X < 10^{15}
-1 le K le 15
+0 ≦ X < 10^{15}
+1 ≦ K ≦ 15
 
 Input
 The input is given from Standard Input in the following format:
@@ -27,7 +27,7 @@ Sample Input 1
 
 Sample Output 1
 2100
-X changes as 2048 rightarrow 2050 rightarrow 2100 by the operations.
+X changes as 2048 -> 2050 -> 2100 by the operations.
 
 Sample Input 2
 1 15

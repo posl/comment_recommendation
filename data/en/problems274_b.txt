@@ -3,7 +3,7 @@ There is a grid with H rows from top to bottom and W columns from left to right.
 The squares are described by characters C_{i,j}. If C_{i,j} is ., (i, j) is empty; if it is #, (i, j) contains a box.
 For integers j satisfying 1 ≦ j ≦ W, let the integer X_j defined as follows.
 X_j is the number of boxes in the j-th column. In other words, X_j is the number of integers i such that C_{i,j} is #.
-Find all of X_1, X_2, dots, X_W.
+Find all of X_1, X_2, ..., X_W.
 
 Constraints
 1 ≦ H ≦ 1000
@@ -14,14 +14,16 @@ C_{i, j} is . or #.
 Input
 The input is given from Standard Input in the following format:
 H W
-C_{1,1}C_{1,2}dots C_{1,W}
-C_{2,1}C_{2,2}dots C_{2,W}
-vdots
-C_{H,1}C_{H,2}dots C_{H,W}
+C_{1,1}C_{1,2}... C_{1,W}
+C_{2,1}C_{2,2}... C_{2,W}
+.
+.
+.
+C_{H,1}C_{H,2}... C_{H,W}
 
 Output
-Print X_1, X_2, dots, X_W in the following format:
-X_1 X_2 dots X_W
+Print X_1, X_2, ..., X_W in the following format:
+X_1 X_2 ... X_W
 
 Sample Input 1
 3 4

@@ -3,10 +3,10 @@ You observed amoebae and kept some records.
 Initially, there was one amoeba, numbered 1.
 You made N records. According to the i-th record, the amoeba numbered A_i disappeared by dividing itself into two new amoebae, which were then numbered 2i and 2i+1.
 Here, amoeba A_i is said to be the parent of amoebae 2i and 2i+1.
-For each k=1,ldots,2N+1, how many generations away is amoeba k from amoeba 1?
+For each k=1,...,2N+1, how many generations away is amoeba k from amoeba 1?
 
 Constraints
-1 ≦ N ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
 The records are consistent. That is:
 1≦ A_i ≦ 2i-1.
 A_i are distinct integers.
@@ -15,7 +15,7 @@ A_i are distinct integers.
 Input
 The input is given from Standard Input in the following format:
 N
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print 2N+1 lines. The k-th line should contain the generation distance between amoeba 1 and amoeba k.

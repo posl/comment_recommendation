@@ -12,7 +12,7 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N
-H_1 H_2 ldots H_N
+H_1 H_2 ... H_N
 
 Output
 Print the integer representing the highest bridge in AtCoder village.

@@ -3,7 +3,7 @@ You are given N strings, each of length 2, consisting of uppercase English lette
 Determine whether the following three conditions are all satisfied.
 ・For every string, the first character is one of H, D, C, and S.
 ・For every string, the second character is one of A, 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K.
-・All strings are pairwise different. That is, if i neq j, then S_i neq S_j.
+・All strings are pairwise different. That is, if i ≠ j, then S_i ≠ S_j.
 
 Constraints
 1 ≦ N ≦ 52
@@ -14,7 +14,9 @@ The input is given from Standard Input in the following format:
 N
 S_1
 S_2
-vdots
+.
+.
+.
 S_N
 
 Output

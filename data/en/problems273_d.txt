@@ -1,48 +1,54 @@
 Problem Statement
 There is a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
-N squares, (r_1, c_1), (r_2, c_2), ldots, (r_N, c_N), have walls.
-Takahashi is initially at square (r_mathrm{s}, c_mathrm{s}).
+N squares, (r_1, c_1), (r_2, c_2), ..., (r_N, c_N), have walls.
+Takahashi is initially at square (r_s, c_s).
 Q instructions are given to Takahashi.
-For i = 1, 2, ldots, Q, the i-th instruction is represented by a pair of a character d_i and a positive integer l_i.  d_i is one of L, R, U, and D, representing the directions of left, right, up, and down, respectively.
+For i = 1, 2, ..., Q, the i-th instruction is represented by a pair of a character d_i and a positive integer l_i.  d_i is one of L, R, U, and D, representing the directions of left, right, up, and down, respectively.
 Given the i-th direction, Takahashi repeats the following action l_i times:
 If a square without a wall is adjacent to the current square in the direction represented by d_i, move to that square;
 otherwise, do nothing.
-For i = 1, 2, ldots, Q, print the square where Takahashi will be after he follows the first i instructions.
+For i = 1, 2, ..., Q, print the square where Takahashi will be after he follows the first i instructions.
 
 Constraints
 2 ≦ H, W ≦ 10^9
-1 ≦ r_mathrm{s} ≦ H
-1 ≦ c_mathrm{s} ≦ W
-0 ≦ N ≦ 2 times 10^5
+1 ≦ r_s ≦ H
+1 ≦ c_s ≦ W
+0 ≦ N ≦ 2 × 10^5
 1 ≦ r_i ≦ H
 1 ≦ c_i ≦ W
-i neq j Rightarrow (r_i, c_i) neq (r_j, c_j)
-(r_mathrm{s}, c_mathrm{s}) neq (r_i, c_i) for all i = 1, 2, ldots, N.
-1 ≦ Q ≦ 2 times 10^5
+i ≠ j Rightarrow (r_i, c_i) ≠ (r_j, c_j)
+(r_s, c_s) ≠ (r_i, c_i) for all i = 1, 2, ..., N.
+1 ≦ Q ≦ 2 × 10^5
 d_i is one of the characters L, R, U, and D.
 1 ≦ l_i ≦ 10^9
 All values in the input other than d_i are integers.
 
 Input
 The input is given from Standard Input in the following format:
-H W r_mathrm{s} c_mathrm{s}
+H W r_s c_s
 N
 r_1 c_1
 r_2 c_2
-vdots
+.
+.
+.
 r_N c_N
 Q
 d_1 l_1
 d_2 l_2
-vdots
+.
+.
+.
 d_Q l_Q
 
 Output
 Print Q lines.
-For i = 1, 2, ldots, Q, the i-th line should contain the square (R_i, C_i) where Takahashi will be after he follows the first i instructions, in the following format:
+For i = 1, 2, ..., Q, the i-th line should contain the square (R_i, C_i) where Takahashi will be after he follows the first i instructions, in the following format:
 R_1 C_1
 R_2 C_2
-vdots
+.
+.
+.
 R_Q C_Q
 
 Sample Input 1

@@ -6,9 +6,9 @@ Takahashi can freely move within the same floor, but cannot move between floors 
 What is the highest floor Takahashi can reach?
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
 1 ≦ A_i, B_i ≦ 10^9
-A_i neq B_i
+A_i ≠ B_i
 All values in the input are integers.
 
 Input
@@ -16,7 +16,7 @@ The input is given from Standard Input in the following format:
 N
 A_1 B_1
 A_2 B_2
-ldots
+...
 A_N B_N
 
 Output

@@ -12,7 +12,7 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N X
-P_1 P_2 ldots P_N
+P_1 P_2 ... P_N
 
 Output
 Print the answer.

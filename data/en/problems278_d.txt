@@ -1,5 +1,5 @@
 Problem Statement
-You are given a sequence A = (A_1, A_2, dots, A_N) of length N.
+You are given a sequence A = (A_1, A_2, ..., A_N) of length N.
 Given Q queries, process all of them in order.
 The q-th (1≦ q≦ Q) query is in one of the following three formats, which represents the following queries:
 1 x _ q: assign x_q to every element of A.
@@ -7,8 +7,8 @@ The q-th (1≦ q≦ Q) query is in one of the following three formats, which rep
 3 i _ q: print the value of A _ {i _ q}.
 
 Constraints
-1 ≦ N ≦ 2times10^5
-1 ≦ Q ≦ 2times10^5
+1 ≦ N ≦ 2×10^5
+1 ≦ Q ≦ 2×10^5
 0 ≦ A _ i ≦ 10^9 (1≦ i≦ N)
 If the q-th (1≦ q≦ Q) query is in the second or third format, 1 ≦ i _ q ≦ N.
 If the q-th (1≦ q≦ Q) query is in the first or second format, 0 ≦ x _ q ≦ 10^9.
@@ -18,11 +18,13 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 Q
 operatorname{query}_1
 operatorname{query}_2
-vdots
+.
+.
+.
 operatorname{query}_Q
 Here, operatorname{query}_q denotes the q-th query, which is in one of following formats: 1 x, 2 i x, and 3 i.
 

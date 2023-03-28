@@ -1,5 +1,5 @@
 Problem Statement
-You are given a sequence A = (A_1, A_2, dots, A_N) of length N.
+You are given a sequence A = (A_1, A_2, ..., A_N) of length N.
 You perform the following operation exactly K times:
 remove the initial element of A and append a 0 to the tail of A.
 Print all the elements of A after the operations.
@@ -13,7 +13,7 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N K
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the elements of A after the operations in one line, separated by spaces.

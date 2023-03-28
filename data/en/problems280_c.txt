@@ -4,7 +4,7 @@ Find the position of the inserted character in T.
 If there are multiple candidates, find any of them.
 
 Constraints
-1 ≦ |S| ≦ 5times 10^5
+1 ≦ |S| ≦ 5× 10^5
 S consists of lowercase English letters.
 T is obtained by inserting a lowercase English letter into S.
 

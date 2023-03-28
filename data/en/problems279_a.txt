@@ -1,7 +1,6 @@
 Problem Statement
 You are given a string S consisting of v and w.
-Print the number of "bottoms" in the string S (see the figure at Sample Input/Output
-).
+Print the number of "bottoms" in the string S (see the figure at Sample Input/Outputs).
 
 Constraints
 S is a string consisting of v and w.
