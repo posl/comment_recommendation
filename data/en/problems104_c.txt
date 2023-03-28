@@ -47,8 +47,7 @@ Sample Input 2
 
 Sample Output 2
 7
-This case is similar to Sample Input 1
-, but the Takahashi's objective this time is 2000 points or more. In this case, we inevitably need to solve all five 200-point problems, and by solving two 100-point problems additionally we have the total score of 2000 points.
+This case is similar to Sample Input 1, but the Takahashi's objective this time is 2000 points or more. In this case, we inevitably need to solve all five 200-point problems, and by solving two 100-point problems additionally we have the total score of 2000 points.
 
 Sample Input 3
 2 400
@@ -57,8 +56,7 @@ Sample Input 3
 
 Sample Output 3
 2
-This case is again similar to Sample Input 1
-, but the Takahashi's objective this time is 400 points or more. In this case, we only need to solve two 200-point problems to achieve the objective.
+This case is again similar to Sample Input 1, but the Takahashi's objective this time is 400 points or more. In this case, we only need to solve two 200-point problems to achieve the objective.
 
 Sample Input 4
 5 25000
