@@ -16,7 +16,7 @@ Constraints
 0 ≦ N ≦ 2 × 10^5
 1 ≦ r_i ≦ H
 1 ≦ c_i ≦ W
-i ≠ j Rightarrow (r_i, c_i) ≠ (r_j, c_j)
+i ≠ j -> (r_i, c_i) ≠ (r_j, c_j)
 (r_s, c_s) ≠ (r_i, c_i) for all i = 1, 2, ..., N.
 1 ≦ Q ≦ 2 × 10^5
 d_i is one of the characters L, R, U, and D.

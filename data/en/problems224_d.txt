@@ -18,7 +18,7 @@ Constraints
 1 ≦ u_i, v_i ≦ 9
 The given graph has no multi-edges or self-loops.
 1 ≦ p_j ≦ 9
-j ≠ j' Rightarrow p_j ≠ p_{j'}
+j ≠ j' -> p_j ≠ p_{j'}
 All values in input are integers.
 
 Input

@@ -20,16 +20,16 @@ The input is given from Standard Input in the following format:
 N
 A_1 A_2 ... A_N
 Q
-operatorname{query}_1
-operatorname{query}_2
+query_1
+query_2
 .
 .
 .
-operatorname{query}_Q
-Here, operatorname{query}_q denotes the q-th query, which is in one of following formats: 1 x, 2 i x, and 3 i.
+query_Q
+Here, query_q denotes the q-th query, which is in one of following formats: 1 x, 2 i x, and 3 i.
 
 Output
-Print X lines, where X is the number of q's (1≦ q≦ Q) such that operatorname{query}_q is in the third format.
+Print X lines, where X is the number of q's (1≦ q≦ Q) such that query_q is in the third format.
 The j-th (1≦ j≦ X) line should contain the answer to the j-th such query.
 
 Sample Input 1

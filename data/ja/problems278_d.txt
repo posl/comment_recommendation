@@ -20,16 +20,16 @@ q 番目 (1≦ q≦ Q) のクエリが 1 番目もしくは 2 番目の形式の
 N
 A_1 A_2 ... A_N
 Q
-operatorname{query}_1
-operatorname{query}_2
+query_1
+query_2
 .
 .
 .
-operatorname{query}_Q
-ただし、operatorname{query}_q は q 番目のクエリであり、1 x, 2 i x, 3 i の形式のいずれかで与えられる。
+query_Q
+ただし、query_q は q 番目のクエリであり、1 x, 2 i x, 3 i の形式のいずれかで与えられる。
 
 出力
-operatorname{query}_q が 3 番目の形式であるような q (1≦ q≦ Q) の個数を X として、X 行出力せよ。
+query_q が 3 番目の形式であるような q (1≦ q≦ Q) の個数を X として、X 行出力せよ。
 j (1≦ j≦ X) 行目にはそのようなクエリのうち j 番目のクエリに対する答えを出力せよ。
 
 入力例 1
@@ -71,7 +71,7 @@ A_3=5 なので、5 を出力します。
 
 出力例 2
 8000000000
-A の要素の値が 32operatorname{bit} 整数に収まらない可能性があることに注意してください。
+A の要素の値が 32bit 整数に収まらない可能性があることに注意してください。
 
 入力例 3
 10
