@@ -7,8 +7,9 @@ Constraints
 0≦ a_i ≦ 9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
-a_0 a_1 dots a_9
+Input
+Input is given from Standard Input in the following format:
+a_0 a_1 ... a_9
 
 Output
 Print the answer.  
@@ -18,14 +19,14 @@ Sample Input 1
 
 Sample Output 1
 7
-The number on the screen transitions as 0 rightarrow 9 rightarrow 8 rightarrow 7.  
+The number on the screen transitions as 0 -> 9 -> 8 -> 7.  
 
 Sample Input 2
 4 8 8 8 0 8 8 8 8 8
 
 Sample Output 2
 4
-The number on the screen transitions as 0 rightarrow 4 rightarrow 0 rightarrow 4.  
+The number on the screen transitions as 0 -> 4 -> 0 -> 4.  
 
 Sample Input 3
 0 0 0 0 0 0 0 0 0 0

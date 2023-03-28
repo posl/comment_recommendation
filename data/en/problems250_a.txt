@@ -5,10 +5,11 @@ Here, two squares (a,b) and (c,d) are said to share a side if and only if |a-c|+
 
 Constraints
 All values in input are integers.
-1 le R le H le 10
-1 le C le W le 10
+1 ≦ R ≦ H ≦ 10
+1 ≦ C ≦ W ≦ 10
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 H W
 R C
 
@@ -21,8 +22,8 @@ Sample Input 1
 
 Sample Output 1
 4
-We will describe Sample Inputs/Output
-s 1,2, and 3 at once below Sample Output 3
+We will describe Sample Inputs/Outputs
+ 1,2, and 3 at once below Sample Output 3
 .
 
 Sample Input 2
@@ -54,14 +55,16 @@ Sample Input 4
 Sample Output 4
 2
 
-Sample Input 58 1
+Sample Input 5
+8 1
 8 1
 
-Sample Output
- 51
+Sample Output 5
+1
 
-Sample Input 61 1
+Sample Input 6
+1 1
 1 1
 
-Sample Output
- 60
+Sample Output 6
+0

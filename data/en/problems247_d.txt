@@ -6,16 +6,19 @@ Each query is of one of the following two types.
 We assume that the balls do never change their order in the cylinder.
 
 Constraints
-1 ≦ Q ≦ 2times 10^5
+1 ≦ Q ≦ 2× 10^5
 0 ≦ x ≦ 10^9
 1 ≦ c ≦ 10^9
 Whenever a query of type 2 c is given, there are c or more balls in the cylinder.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 Q
 query_1
-vdots
+.
+.
+.
 query_Q
 The i-th query query_i is in one of the following two formats.
 1 x c

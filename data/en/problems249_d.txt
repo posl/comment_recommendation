@@ -1,17 +1,18 @@
 Problem Statement
-You are given an integer sequence A = (A_1, dots, A_N) of length N.
+You are given an integer sequence A = (A_1, ..., A_N) of length N.
 Find the number of triplets of integers (i, j, k) satisfying all of the conditions below.
 1 ≦ i, j, k ≦ N
-frac{A_i}{A_j} = A_k
+((A_i)/(A_j)) = A_k
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-1 ≦ A_i ≦ 2 times 10^5 , (1 ≦ i ≦ N)
+1 ≦ N ≦ 2 × 10^5
+1 ≦ A_i ≦ 2 × 10^5  (1 ≦ i ≦ N)
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 ldots A_N
+A_1 ... A_N
 
 Output
 Print the answer.

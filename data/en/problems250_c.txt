@@ -2,22 +2,25 @@ Problem Statement
 N balls are lined up in a row from left to right.  Initially, the i-th (1 ≦ i ≦ N) ball from the left has an integer i written on it.
 Takahashi has performed Q operations.  The i-th (1 ≦ i ≦ Q) operation was as follows.
 Swap the ball with the integer x_i written on it with the next ball to the right.  If the ball with the integer x_i written on it was originally the rightmost ball, swap it with the next ball to the left instead.
-Let a_i be the integer written on the i-th (1 ≦ i ≦ N) ball after the operations.  Find a_1,ldots,a_N.
+Let a_i be the integer written on the i-th (1 ≦ i ≦ N) ball after the operations.  Find a_1,...,a_N.
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
-1 ≦ Q ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
+1 ≦ Q ≦ 2 × 10^5
 1 ≦ x_i ≦ N
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
 x_1
-vdots
+.
+.
+.
 x_Q
 
 Output
-Print a_1,ldots,a_N, with spaces in between.
+Print a_1,...,a_N, with spaces in between.
 
 Sample Input 1
 5 5

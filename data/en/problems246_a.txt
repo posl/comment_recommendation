@@ -7,7 +7,8 @@ Constraints
 There uniquely exists a rectangle with all of (x_1, y_1), (x_2, y_2), (x_3, y_3) as vertices, edges parallel to the x- or y-axis, and a non-zero area.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 x_1 y_1
 x_2 y_2
 x_3 y_3

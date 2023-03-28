@@ -8,7 +8,8 @@ Constraints
 S_1, S_2, S_3 are a permutation of R, G, B.
 T_1, T_2, T_3 are a permutation of R, G, B.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S_1 S_2 S_3
 T_1 T_2 T_3
 

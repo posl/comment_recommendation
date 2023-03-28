@@ -9,7 +9,8 @@ Constraints
 0 ≦ D ≦ 59
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C D
 
 Output

@@ -8,7 +8,8 @@ Constraints
 1 ≦ A, B, C, D, E, F, X ≦ 100
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 A B C D E F X
 
 Output
@@ -20,8 +21,8 @@ Sample Input 1
 Sample Output 1
 Takahashi
 During the first 10 seconds after they started to jog, they move as follows.
-Takahashi walks for 4 seconds, takes a rest for 3 seconds, and walks again for 3 seconds.  As a result, he advances a total of (4 + 3) times 3 = 21 meters.
-Aoki walks for 6 seconds and takes a rest for 4 seconds.  As a result, he advances a total of 6 times 2 = 12 meters.
+Takahashi walks for 4 seconds, takes a rest for 3 seconds, and walks again for 3 seconds.  As a result, he advances a total of (4 + 3) × 3 = 21 meters.
+Aoki walks for 6 seconds and takes a rest for 4 seconds.  As a result, he advances a total of 6 × 2 = 12 meters.
 Since Takahashi goes ahead, Takahashi should be printed.
 
 Sample Input 2

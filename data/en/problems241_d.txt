@@ -10,18 +10,21 @@ Each query is of one of the following three types.
 
 
 Constraints
-1≦ Q ≦ 2times 10^5
+1≦ Q ≦ 2× 10^5
 1≦ x≦ 10^{18}
 1≦ k≦ 5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 Q
-text{query}_1
-text{query}_2
-vdots
-text{query}_Q
-In the i-th query text{query}_i, the type of query c_i (which is either 1, 2, or 3) is given first.
+query_1
+query_2
+.
+.
+.
+query_Q
+In the i-th query query_i, the type of query c_i (which is either 1, 2, or 3) is given first.
 If c_i=1, then x is additionally given; if c_i=2, 3, then x and k are additionally given.
 In other words, each query is given in one of the following three formats:  
 1 x
@@ -53,6 +56,6 @@ Sample Output 1
 -1
 -1
 1
-After text{query}_{1,2,3,4} have been processed, we have A=(20,10,30,20).  
-For text{query}_{5,6,7}, the elements of A greater than or equal to 15 are (20,30,20).
+After query_{1,2,3,4} have been processed, we have A=(20,10,30,20).  
+For query_{5,6,7}, the elements of A greater than or equal to 15 are (20,30,20).
 The 1-st smallest value of them is 20; the 2-nd is 20; the 3-rd is 30.  

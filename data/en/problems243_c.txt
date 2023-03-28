@@ -6,18 +6,21 @@ For example, the figure below shows the movement of people when (X_1, Y_1) = (2,
 We say that there is a collision when two people walking in opposite directions come to the same position. Will there be a collision if all people continue walking indefinitely?
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 0 ≦ X_i ≦ 10^9
 0 ≦ Y_i ≦ 10^9
-(X_i, Y_i) neq (X_j, Y_j) if i neq j.
+(X_i, Y_i) ≠ (X_j, Y_j) if i ≠ j.
 All X_i and Y_i are integers.
 S is a string of length N consisting of L and R.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 X_1 Y_1
 X_2 Y_2
-vdots
+.
+.
+.
 X_N Y_N
 S
 
@@ -33,8 +36,7 @@ RRL
 
 Sample Output 1
 Yes
-This input corresponds to the example in the Problem Statement
-.
+This input corresponds to the example in the Problem Statement.
 If all people continue walking, Person 2 and Person 3 will collide. Thus, Yes should be printed.
 
 Sample Input 2

@@ -16,7 +16,8 @@ When Takahashi is at the root, he never attempts to go to the parent.
 When Takahashi is at a leaf, he never attempts to go to a child.
 The index of the vertex Takahashi is on after N moves is at most 10^{18}.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 S
 
@@ -30,7 +31,7 @@ URL
 Sample Output 1
 6
 The perfect binary tree has the following structure.
-In the three moves, Takahashi goes 2 to 1 to 3 to 6.
+In the three moves, Takahashi goes 2 -> 1 -> 3 -> 6.
 
 Sample Input 2
 4 500000000000000000

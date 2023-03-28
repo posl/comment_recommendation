@@ -10,7 +10,8 @@ Determine if there will be a person in each square after the move.  Print the re
 Constraints
 S is a string of length 4 consisting of 0 and 1.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

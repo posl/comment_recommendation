@@ -1,6 +1,6 @@
 Problem Statement
 You are given a string S consisting of A, B, C.
-Let S^{(0)}:=S. For i=1,2,3,ldots, let S^{(i)} be the result of simultaneously replacing the characters of S^{(i-1)} as follows: A → BC, B → CA, C → AB.
+Let S^{(0)}:=S. For i=1,2,3,..., let S^{(i)} be the result of simultaneously replacing the characters of S^{(i-1)} as follows: A → BC, B → CA, C → AB.
 Answer Q queries. The i-th query is as follows.
 Print the k_i-th character from the beginning of S^{(t_i)}.
 
@@ -11,12 +11,15 @@ S is a string of length between 1 and 10^5 (inclusive) consisting of A, B, C.
 1 ≦ k_i ≦ min(10^{18}, the length of S^{(t_i)})
 Q, t_i, k_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 Q
 t_1 k_1
 t_2 k_2
-hspace{0.4cm}vdots
+.
+.
+.
 t_Q k_Q
 
 Output

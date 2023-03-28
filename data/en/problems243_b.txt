@@ -1,22 +1,23 @@
 Problem Statement
-You are given integer sequences, each of length N: A = (A_1, A_2, dots, A_N) and B = (B_1, B_2, dots, B_N).
+You are given integer sequences, each of length N: A = (A_1, A_2, ..., A_N) and B = (B_1, B_2, ..., B_N).
 All elements of A are different. All elements of B are different, too.
 Print the following two values.
 The number of integers contained in both A and B, appearing at the same position in the two sequences. In other words, the number of integers i such that A_i = B_i.
-The number of integers contained in both A and B, appearing at different positions in the two sequences. In other words, the number of pairs of integers (i, j) such that A_i = B_j and i neq j.
+The number of integers contained in both A and B, appearing at different positions in the two sequences. In other words, the number of pairs of integers (i, j) such that A_i = B_j and i ≠ j.
 
 Constraints
 1 ≦ N ≦ 1000
 1 ≦ A_i ≦ 10^9
 1 ≦ B_i ≦ 10^9
-A_1, A_2, dots, A_N are all different.
-B_1, B_2, dots, B_N are all different.
+A_1, A_2, ..., A_N are all different.
+B_1, B_2, ..., B_N are all different.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
-B_1 B_2 dots B_N
+A_1 A_2 ... A_N
+B_1 B_2 ... B_N
 
 Output
 Print the answers in two lines: the answer to1. in the first line, and the answer to2. in the second line.

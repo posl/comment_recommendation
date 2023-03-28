@@ -12,10 +12,11 @@ Constraints
 1 ≦ B_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-A_1 A_2 ldots A_N
-B_1 B_2 ldots B_M
+A_1 A_2 ... A_N
+B_1 B_2 ... B_M
 
 Output
 If Takahashi can accomplish his meal plan, print Yes; otherwise, print No.

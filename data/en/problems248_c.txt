@@ -1,7 +1,7 @@
 Problem Statement
-How many integer sequences of length N, A=(A_1, ldots, A_N), satisfy all of the conditions below?
-1le A_i le M (1 le i le N)
-displaystylesum _{i=1}^N A_i ≦ K
+How many integer sequences of length N, A=(A_1, ..., A_N), satisfy all of the conditions below?
+1≦ A_i ≦ M (1 ≦ i ≦ N)
+sum _{i=1}^N A_i ≦ K
 Since the count can get enormous, find it modulo 998244353.
 
 Constraints
@@ -9,7 +9,8 @@ Constraints
 N ≦ K ≦ NM
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M K
 
 Output

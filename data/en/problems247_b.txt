@@ -1,8 +1,8 @@
 Problem Statement
-There are N people numbered Person 1, Person 2, dots, and Person N.  Person i has a family name s_i and a given name t_i.
+There are N people numbered Person 1, Person 2, ..., and Person N.  Person i has a family name s_i and a given name t_i.
 Consider giving a nickname to each of the N people.  Person i's nickname a_i should satisfy all the conditions below.
 a_i coincides with Person i's family name or given name.  In other words, a_i = s_i and/or a_i = t_i holds.
-a_i does not coincide with the family name and the given name of any other person.  In other words, for all integer j such that 1 ≦ j ≦ N and i neq j, it holds that a_i neq s_j and a_i neq t_j.
+a_i does not coincide with the family name and the given name of any other person.  In other words, for all integer j such that 1 ≦ j ≦ N and i ≠ j, it holds that a_i ≠ s_j and a_i ≠ t_j.
 Is it possible to give nicknames to all the N people?  If it is possible, print Yes; otherwise, print No.
 
 Constraints
@@ -10,11 +10,14 @@ Constraints
 N is an integer.
 s_i and t_i are strings of lengths between 1 and 10 (inclusive) consisting of lowercase English alphabets.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 s_1 t_1
 s_2 t_2
-vdots
+.
+.
+.
 s_N t_N
 
 Output
@@ -40,8 +43,7 @@ bbb yyy
 
 Sample Output 2
 No
-There is no way to give nicknames satisfying the conditions in the Problem Statement
-.
+There is no way to give nicknames satisfying the conditions in the Problem Statement.
 
 Sample Input 3
 2

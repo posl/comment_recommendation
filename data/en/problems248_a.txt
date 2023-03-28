@@ -7,7 +7,8 @@ Constraints
 S is a string of length 9 consisting of digits.
 All characters in S are distinct.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

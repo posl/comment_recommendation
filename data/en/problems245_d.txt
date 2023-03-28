@@ -1,27 +1,28 @@
 Problem Statement
-We have a polynomial of degree N, A(x)=A_Nx^N+A_{N-1}x^{N-1}+cdots +A_1x+A_0,
-and another of degree M, B(x)=B_Mx^M+B_{M-1}x^{M-1}+cdots +B_1x+B_0.
+We have a polynomial of degree N, A(x)=A_Nx^N+A_{N-1}x^{N-1}+... +A_1x+A_0,
+and another of degree M, B(x)=B_Mx^M+B_{M-1}x^{M-1}+... +B_1x+B_0.
 Here, each coefficient of A(x) and B(x) is an integer whose absolute value is at most 100, and the leading coefficients are not 0.
-Also, let the product of them be C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+cdots +C_1x+C_0.
-Given A_0,A_1,ldots, A_N and C_0,C_1,ldots, C_{N+M}, find B_0,B_1,ldots, B_M.
-Here, the given inputs guarantee that there is a unique sequence B_0, B_1, ldots, B_M that satisfies the given conditions.
+Also, let the product of them be C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+... +C_1x+C_0.
+Given A_0,A_1,..., A_N and C_0,C_1,..., C_{N+M}, find B_0,B_1,..., B_M.
+Here, the given inputs guarantee that there is a unique sequence B_0, B_1, ..., B_M that satisfies the given conditions.
 
 Constraints
 1 ≦ N < 100
 1 ≦ M < 100
 |A_i| ≦ 100
 |C_i| ≦ 10^6
-A_N neq 0
-C_{N+M} neq 0
-There is a unique sequence B_0, B_1, ldots, B_M that satisfies the conditions given in the statement.
+A_N ≠ 0
+C_{N+M} ≠ 0
+There is a unique sequence B_0, B_1, ..., B_M that satisfies the conditions given in the statement.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M
-A_0 A_1 ldots A_{N-1} A_N
-C_0 C_1 ldots C_{N+M-1} C_{N+M}
+A_0 A_1 ... A_{N-1} A_N
+C_0 C_1 ... C_{N+M-1} C_{N+M}
 
 Output
-Print the M+1 integers B_0,B_1,ldots, B_M in one line, with spaces in between.
+Print the M+1 integers B_0,B_1,..., B_M in one line, with spaces in between.
 
 Sample Input 1
 1 2

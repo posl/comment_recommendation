@@ -6,7 +6,8 @@ N is an integer.
 1 ≤ N ≤ 1000
 S is a string of length N consisting of lowercase English alphabets.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
 

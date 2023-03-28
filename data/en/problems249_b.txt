@@ -7,10 +7,11 @@ For example, AtCoder and Aa are wonderful strings, while atcoder and Perfect are
 Given a string S, determine if S is a wonderful string.
 
 Constraints
-1 le |S| le 100
+1 ≦ |S| ≦ 100
 S is a string consisting of uppercase and lowercase English alphabets.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output
