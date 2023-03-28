@@ -42,4 +42,4 @@ Sample Input 3
 
 Sample Output 3
 27
-Note that S may not fit into a 64-operatorname{bit} integer type.
+Note that S may not fit into a 64-bit integer type.

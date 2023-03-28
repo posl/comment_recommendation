@@ -1,6 +1,6 @@
 Problem Statement
-You are given N pairs of integers: (A_1, B_1), (A_2, B_2), ldots, (A_N, B_N).
-For each i = 1, 2, ldots, N, print A_i + B_i.
+You are given N pairs of integers: (A_1, B_1), (A_2, B_2), ..., (A_N, B_N).
+For each i = 1, 2, ..., N, print A_i + B_i.
 
 Constraints
 1 ≦ N ≦ 1000
@@ -12,12 +12,14 @@ The input is given from Standard Input in the following format:
 N
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_N B_N
 
 Output
 Print N lines.
-For i = 1, 2, ldots, N, the i-th line should contain A_i+B_i.
+For i = 1, 2, ..., N, the i-th line should contain A_i+B_i.
 
 Sample Input 1
 4

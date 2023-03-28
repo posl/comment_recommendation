@@ -1,11 +1,11 @@
 Problem Statement
 You are given a string S of length N.  Let S_i (1≦ i ≦ N) be the i-th character of S from the left.
 You may perform the following two kinds of operations zero or more times in any order:
-Pay A yen (the currency in Japan).  Move the leftmost character of S to the right end.  In other words, change S_1S_2ldots S_N to S_2ldots S_NS_1.
+Pay A yen (the currency in Japan).  Move the leftmost character of S to the right end.  In other words, change S_1S_2... S_N to S_2... S_NS_1.
 Pay B yen.  Choose an integer i between 1 and N, and replace S_i with any lowercase English letter.
 How many yen do you need to pay to make S a palindrome?
 What is a palindrome?
-A string T is a palindrome if and only if the i-th character from the left and the i-th character from the right are the same for all integers i (1 le i le |T|), where |T| is the length of T.
+A string T is a palindrome if and only if the i-th character from the left and the i-th character from the right are the same for all integers i (1 ≦ i ≦ |T|), where |T| is the length of T.
 
 Constraints
 1≦ N ≦ 5000

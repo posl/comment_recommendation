@@ -4,11 +4,11 @@ Let us delete zero or more edges to remove cycles from the graph. Find the minim
 What is a simple undirected graph?
 A simple undirected graph is a graph without self-loops or multi-edges whose edges have no direction.
 What is a cycle?
-A cycle in a simple undirected graph is a sequence of vertices (v_0, v_1, ldots, v_{n-1}) of length at least 3 satisfying v_i neq v_j if i neq j such that for each 0 ≦ i < n, there is an edge between v_i and v_{i+1 bmod n}.
+A cycle in a simple undirected graph is a sequence of vertices (v_0, v_1, ..., v_{n-1}) of length at least 3 satisfying v_i ≠ v_j if i ≠ j such that for each 0 ≦ i < n, there is an edge between v_i and v_{i+1 mod n}.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-0 ≦ M ≦ 2 times 10^5
+1 ≦ N ≦ 2 × 10^5
+0 ≦ M ≦ 2 × 10^5
 1 ≦ A_i, B_i ≦ N
 The given graph is simple.
 All values in the input are integers.
@@ -18,7 +18,9 @@ The input is given from Standard Input in the following format:
 N M
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_M B_M
 
 Output

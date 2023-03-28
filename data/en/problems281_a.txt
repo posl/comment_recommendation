@@ -11,7 +11,7 @@ N
 
 Output
 Print X lines, where X is the number of non-negative integers less than or equal to N.
-For each i=1, 2, ldots, X, the i-th line should contain the i-th greatest non-negative integer less than or equal to N.
+For each i=1, 2, ..., X, the i-th line should contain the i-th greatest non-negative integer less than or equal to N.
 
 Sample Input 1
 3

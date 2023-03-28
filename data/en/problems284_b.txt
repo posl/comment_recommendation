@@ -10,15 +10,17 @@ Constraints
 All values in the input are integers.
 
 Input
-The input is given from Standard Input in the following format, where text{test}_i represents the i-th test case:
+The input is given from Standard Input in the following format, where test_i represents the i-th test case:
 T
-text{test}_1
-text{test}_2
-vdots
-text{test}_T
+test_1
+test_2
+.
+.
+.
+test_T
 Each test case is in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print T lines. The i-th line should contain the answer for the i-th test case.

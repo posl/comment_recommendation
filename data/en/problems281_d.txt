@@ -1,5 +1,5 @@
 Problem Statement
-You are given a sequence of non-negative integers A=(a_1,a_2,ldots,a_N).
+You are given a sequence of non-negative integers A=(a_1,a_2,...,a_N).
 Let S be the set of non-negative integers that can be the sum of K terms in A (with distinct indices).
 Find the greatest multiple of D in S. If there is no multiple of D in S, print -1 instead.
 
@@ -12,7 +12,7 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N K D
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 Print the answer.

@@ -11,7 +11,7 @@ A connected component is a connected subgraph that is not part of any larger con
 
 Constraints
 1 ≦ N ≦ 100
-0 ≦ M ≦ frac{N(N - 1)}{2}
+0 ≦ M ≦ ((N(N - 1))/(2))
 1 ≦ u_i, v_i ≦ N
 The given graph is simple.
 All values in the input are integers.
@@ -21,7 +21,9 @@ The input is given from Standard Input in the following format:
 N M
 u_1 v_1
 u_2 v_2
-vdots
+.
+.
+.
 u_M v_M
 
 Output

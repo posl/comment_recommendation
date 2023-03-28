@@ -2,28 +2,28 @@ Problem Statement
 There is a staircase with infinite steps.
 The foot of the stairs is the 0-th step, the next step is the 1-st step, the next is the 2-nd, and so on.
 There is a stair-climbing robot on the 0-th step.
-The robot can climb up A _ 1,A _ 2,ldots, or A _ N steps at a time.
-In other words, when the robot is on the i-th step, it can step onto one of the (i+A _ 1)-th step, (i+A _ 2)-th step, ldots, and (i+A _ N)-th step,
+The robot can climb up A _ 1,A _ 2,..., or A _ N steps at a time.
+In other words, when the robot is on the i-th step, it can step onto one of the (i+A _ 1)-th step, (i+A _ 2)-th step, ..., and (i+A _ N)-th step,
 but not onto the others in a single step.
 The robot cannot descend the stairs, either.
-There are traps on the B _ 1-th, B _ 2-th, ldots, and B _ M-th steps.
+There are traps on the B _ 1-th, B _ 2-th, ..., and B _ M-th steps.
 Once the robot steps onto a step with a trap, it cannot move anymore.
 The robot wants to step onto the X-th step.
 Determine whether it is possible to do so.
 
 Constraints
 1≦ N≦10
-1≦ A _ 1< A _ 2<cdots< A _ N≦10^5
+1≦ A _ 1< A _ 2<...< A _ N≦10^5
 1≦ M≦10^5
-1≦ B _ 1< B _ 2<cdots< B _ M< X≦10^5
+1≦ B _ 1< B _ 2<...< B _ M< X≦10^5
 All values in the input are integers.
 
 Input
 The input is given from Standard Input in the following format:
 N
-A _ 1 A _ 2 ldots A _ N
+A _ 1 A _ 2 ... A _ N
 M
-B _ 1 B _ 2 ldots B _ M
+B _ 1 B _ 2 ... B _ M
 X
 
 Output

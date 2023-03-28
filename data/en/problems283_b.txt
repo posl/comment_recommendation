@@ -1,5 +1,5 @@
 Problem Statement
-You are given an integer N and a sequence A=(A _ 1,A _ 2,ldots,A _ N) of length N.
+You are given an integer N and a sequence A=(A _ 1,A _ 2,...,A _ N) of length N.
 Given Q queries, process them in the given order.
 Each query is of one of the following two kinds:
 1 k x : set the value A _ k to x.
@@ -17,13 +17,15 @@ All values in the input are integers.
 Input
 The input is given from Standard Input in the following format:
 N
-A _ 1 A _ 2 ldots A _ N
+A _ 1 A _ 2 ... A _ N
 Q
-operatorname{query} _ 1
-operatorname{query} _ 2
-vdots
-operatorname{query} _ Q
-Here, operatorname{query} _ i denotes the i-th query, given in one of the following formats:
+query _ 1
+query _ 2
+.
+.
+.
+query _ Q
+Here, query _ i denotes the i-th query, given in one of the following formats:
 1 k x
 2 k
 

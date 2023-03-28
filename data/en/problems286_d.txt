@@ -16,7 +16,9 @@ The input is given from Standard Input in the following format:
 N X
 A_1 B_1
 A_2 B_2
-vdots
+.
+.
+.
 A_N B_N
 
 Output
@@ -31,7 +33,7 @@ Sample Input 1
 Sample Output 1
 Yes
 Takahashi has three 2-yen coins and six 5-yen coins.
-He can use two 2-yen coins and three 5-yen coins to pay exactly 2times 2+5times 3=19 yen.
+He can use two 2-yen coins and three 5-yen coins to pay exactly 2× 2+5× 3=19 yen.
 Thus, Yes should be printed.
 
 Sample Input 2

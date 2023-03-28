@@ -1,6 +1,6 @@
 Problem Statement
 You are given a simple undirected graph G with N vertices and M edges (a simple graph does not contain self-loops or multi-edges).
-For i = 1, 2, ldots, M, the i-th edge connects vertex u_i and vertex v_i.
+For i = 1, 2, ..., M, the i-th edge connects vertex u_i and vertex v_i.
 Print the number of pairs of integers (u, v) that satisfy 1 ≦ u < v ≦ N and both of the following conditions.
 The graph G does not have an edge connecting vertex u and vertex v.
 Adding an edge connecting vertex u and vertex v in the graph G results in a bipartite graph.
@@ -10,8 +10,8 @@ An undirected graph is said to be bipartite if and only if one can paint each ve
 
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
-0 ≦ M ≦ min lbrace 2 times 10^5, N(N-1)/2 rbrace
+2 ≦ N ≦ 2 × 10^5
+0 ≦ M ≦ min {2 × 10^5, N(N-1)/2 }
 1 ≦ u_i, v_i ≦ N
 The graph G is simple.
 All values in the input are integers.
@@ -21,7 +21,9 @@ The input is given from Standard Input in the following format:
 N M
 u_1 v_1
 u_2 v_2
-vdots
+.
+.
+.
 u_M v_M
 
 Output

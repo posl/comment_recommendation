@@ -17,16 +17,14 @@ Sample Input 1
 
 Sample Output 1
 Yes
-In the figure in the Problem Statement
-, there is a segment that directly connects the points numbered 1 and 2, so Yes should be printed.
+In the figure in the Problem Statement, there is a segment that directly connects the points numbered 1 and 2, so Yes should be printed.
 
 Sample Input 2
 2 8
 
 Sample Output 2
 No
-In the figure in the Problem Statement
-, there is no segment that directly connects the points numbered 2 and 8, so No should be printed.
+In the figure in the Problem Statement, there is no segment that directly connects the points numbered 2 and 8, so No should be printed.
 
 Sample Input 3
 14 15

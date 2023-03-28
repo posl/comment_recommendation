@@ -1,13 +1,13 @@
 Problem Statement
-You are given strings S and T consisting of lowercase English letters and ?.  Here, |S| gt |T| holds (for a string X, |X| denotes the length of X).
+You are given strings S and T consisting of lowercase English letters and ?.  Here, |S| > |T| holds (for a string X, |X| denotes the length of X).
 Two strings X and Y such that |X|=|Y| is said to match if and only if:
 one can make X equal Y by replacing each ? in X and Y with any English letter independently.
-Solve the following problem for each x=0,1,ldots,|T|:
+Solve the following problem for each x=0,1,...,|T|:
 Let S' be the string of length |T| obtained by concatenating the first x characters and the last (|T|-x) characters of S without changing the order.  Print Yes if S' and T match, and No otherwise.
 
 Constraints
 S and T are strings consisting of lowercase English letters and ?.
-1 ≦ |T| <  |S| ≦ 3 times 10^5
+1 ≦ |T| <  |S| ≦ 3 × 10^5
 
 Input
 The input is given from Standard Input in the following format:
