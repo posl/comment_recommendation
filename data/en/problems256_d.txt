@@ -3,20 +3,25 @@ For real numbers L and R, let us denote by [L,R) the set of real numbers greater
 You are given N right half-open intervals [L_i,R_i).  Let S be their union.  Represent S as a union of the minimum number of right half-open intervals.
 
 Constraints
-1 ≦ N ≦ 2times 10^5
-1 ≦ L_i < R_i ≦ 2times 10^5
+1 ≦ N ≦ 2× 10^5
+1 ≦ L_i < R_i ≦ 2× 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 L_1 R_1
-vdots
+.
+.
+.
 L_N R_N
 
 Output
 Let k be the minimum number of right half-open intervals needed to represent S as their union.   Print k lines containing such k right half-open intervals [X_i,Y_i) in ascending order of X_i, as follows:
 X_1 Y_1
-vdots
+.
+.
+.
 X_k Y_k
 
 Sample Input 1

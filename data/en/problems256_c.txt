@@ -1,6 +1,6 @@
 Problem Statement
 You are given six integers: h_1, h_2, h_3, w_1, w_2, and w_3.
-Consider writing a positive integer on each square of a 3 times 3 grid so that all of the following conditions are satisfied:
+Consider writing a positive integer on each square of a 3 × 3 grid so that all of the following conditions are satisfied:
 For i=1,2,3, the sum of numbers written in the i-th row from the top is h_i.
 For j=1,2,3, the sum of numbers written in the j-th column from the left is w_i.
 For example, if (h_1, h_2, h_3) = (5, 13, 10) and (w_1, w_2, w_3) = (6, 13, 9), then all of the following three ways satisfy the conditions.  (There are other ways to satisfy the conditions.)
@@ -10,7 +10,8 @@ Constraints
 3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 h_1 h_2 h_3 w_1 w_2 w_3
 
 Output

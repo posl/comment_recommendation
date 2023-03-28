@@ -1,22 +1,25 @@
 Problem Statement
-There are N people numbered 1, 2, dots, N in the xy-plane. Person i is at the coordinates (X_i, Y_i).
-K of these people, Persons A_1, A_2, dots, A_K, will receive lights of the same strength.
+There are N people numbered 1, 2, ..., N in the xy-plane. Person i is at the coordinates (X_i, Y_i).
+K of these people, Persons A_1, A_2, ..., A_K, will receive lights of the same strength.
 When a person at coordinates (x, y) has a light of strength R, it lights up the interior of a circle of radius R centered at (x, y) (including the boundary).
 Find the minimum strength of the lights needed for every person to be lit by at least one light.  
 
 Constraints
 All values in input are integers.
-1 le K < N le 1000
-1 le A_1 < A_2 < dots < A_K le N
-|X_i|,|Y_i| le 10^5
-(X_i,Y_i) neq (X_j,Y_j), if i neq j.
+1 ≦ K < N ≦ 1000
+1 ≦ A_1 < A_2 < ... < A_K ≦ N
+|X_i|,|Y_i| ≦ 10^5
+(X_i,Y_i) ≠ (X_j,Y_j), if i ≠ j.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-A_1 A_2 dots A_K
+A_1 A_2 ... A_K
 X_1 Y_1
 X_2 Y_2
-vdots
+.
+.
+.
 X_N Y_N
 
 Output
@@ -34,7 +37,7 @@ Sample Input 1
 Sample Output 1
 2.23606797749978969
 This input contains four people. Among them, Persons 2 and 3 will have lights.
-Every person will be lit by at least one light if R ge sqrt{5} approx 2.236068.
+Every person will be lit by at least one light if R ≧ (5)^(1/2) ≈ 2.236068.
 
 Sample Input 2
 2 1

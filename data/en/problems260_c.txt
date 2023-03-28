@@ -11,7 +11,8 @@ Constraints
 1 ≦ Y ≦ 5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X Y
 
 Output

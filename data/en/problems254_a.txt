@@ -3,10 +3,11 @@ You are given an integer N at least 100. Print the last two digits of N.
 Strictly speaking, print the tens and ones digits of N in this order.
 
 Constraints
-100 le N le 999
+100 ≦ N ≦ 999
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

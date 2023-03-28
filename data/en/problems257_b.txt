@@ -5,19 +5,20 @@ Now, we will perform Q operations against them.
 The i-th operation is as follows:
 If the L_i-th piece from the left is on its rightmost square, do nothing.
 Otherwise, move the L_i-th piece from the left one square right if there is no piece on the next square on the right; if there is, do nothing.
-Print the index of the square on which the i-th piece from the left is after the Q operations have ended, for each i=1,2,ldots,K.
+Print the index of the square on which the i-th piece from the left is after the Q operations have ended, for each i=1,2,...,K.
 
 Constraints
 1≦ K≦ N≦ 200
-1≦ A_1<A_2<cdots<A_K≦ N
+1≦ A_1<A_2<...<A_K≦ N
 1≦ Q≦ 1000
 1≦ L_i≦ K
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K Q
-A_1 A_2 ldots A_K
-L_1 L_2 ldots L_Q
+A_1 A_2 ... A_K
+L_1 L_2 ... L_Q
 
 Output
 Print K integers in one line, with spaces in between.

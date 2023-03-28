@@ -1,5 +1,5 @@
 Problem Statement
-There are N weights called Weight 1, Weight 2, dots, Weight N.  Weight i has a mass of A_i.
+There are N weights called Weight 1, Weight 2, ..., Weight N.  Weight i has a mass of A_i.
 Let us say a positive integer n is a good integer if the following condition is satisfied:
 We can choose at most 3 different weights so that they have a total mass of n.
 How many positive integers less than or equal to W are good integers?
@@ -10,9 +10,10 @@ Constraints
 1 ≦ A_i ≦ 10^6
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N W
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer.

@@ -1,17 +1,18 @@
 Problem Statement
-You are given a sequence of length N: A=(A_1,A_2,ldots,A_N).
+You are given a sequence of length N: A=(A_1,A_2,...,A_N).
 Find the number of triples (i,j,k) that satisfy both of the following conditions.
 1≦ i < j < k ≦ N
 A_i, A_j, and A_k are distinct.
 
 Constraints
-3 ≦ N ≦ 2times 10^5
-1 ≦ A_i ≦ 2times 10^5
+3 ≦ N ≦ 2× 10^5
+1 ≦ A_i ≦ 2× 10^5
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 ldots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the answer.

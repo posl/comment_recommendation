@@ -1,7 +1,7 @@
 Problem Statement
 Takahashi had his N-th birthday, when he was T centimeters tall.
 Additionally, we know the following facts:
-In each year between Takahashi's birth (0-th birthday) and his X-th birthday, his height increased by D centimeters. More formally, for each i = 1, 2, ldots, X, his height increased by D centimeters between his (i-1)-th birthday and his i-th birthday.
+In each year between Takahashi's birth (0-th birthday) and his X-th birthday, his height increased by D centimeters. More formally, for each i = 1, 2, ..., X, his height increased by D centimeters between his (i-1)-th birthday and his i-th birthday.
 Between Takahashi's X-th birthday and his N-th birthday, his height did not change.
 Find Takahashi's height on his M-th birthday, in centimeters.
 
@@ -13,7 +13,8 @@ Constraints
 Takahashi was at least 1 centimeter tall at his birth.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N M X T D
 
 Output

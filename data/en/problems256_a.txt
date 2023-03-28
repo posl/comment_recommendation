@@ -5,7 +5,8 @@ Constraints
 0 ≦ N ≦ 30
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

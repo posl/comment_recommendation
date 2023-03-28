@@ -8,15 +8,16 @@ For a real value X, let f(X) be the number of people whom Takahashi correctly ju
 Find the maximum value of f(X) for all real values of X.
 
 Constraints
-1≦ N≦ 2times 10^5
+1≦ N≦ 2× 10^5
 S is a string of length N consisting of 0 and 1.
 1≦ W_i≦ 10^9
 N and W_i are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 S
-W_1 W_2 ldots W_N
+W_1 W_2 ... W_N
 
 Output
 Print the maximum value of f(X) as an integer in a single line.

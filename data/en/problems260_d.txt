@@ -8,16 +8,17 @@ For each card, find which of the N moves eats it.  If the card is not eaten unti
 
 Constraints
 All values in input are integers.
-1 le K le N le 2 times 10^5
-P is a permutation of (1,2,dots,N) (i.e. a sequence obtained by rearranging (1,2,dots,N)).
+1 ≦ K ≦ N ≦ 2 × 10^5
+P is a permutation of (1,2,...,N) (i.e. a sequence obtained by rearranging (1,2,...,N)).
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-P_1 P_2 dots P_N
+P_1 P_2 ... P_N
 
 Output
 Print N lines.
-The i-th line (1 le i le N) should describe the card with the integer i written on it.  Specifically,
+The i-th line (1 ≦ i ≦ N) should describe the card with the integer i written on it.  Specifically,
 if the card with i written on it is eaten in the x-th move, print x;
 if that card is not eaten in any move, print -1.
 

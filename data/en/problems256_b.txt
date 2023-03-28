@@ -3,7 +3,7 @@ Takahashi is trying to create a game inspired by baseball, but he is having diff
 Write a program for Takahashi that solves the following problem.
 There are 4 squares called Square 0, Square 1, Square 2, and Square 3.  Initially, all squares are empty.
 There is also an integer P; initially, P = 0.
-Given a sequence of positive integers A = (A_1, A_2, dots, A_N), perform the following operations for i = 1, 2, dots, N in this order:
+Given a sequence of positive integers A = (A_1, A_2, ..., A_N), perform the following operations for i = 1, 2, ..., N in this order:
 Put a piece on Square 0.
 Advance every piece on the squares A_i squares ahead.  In other words, if Square x has a piece, move the piece to Square (x + A_i).   
     If, however, the destination square does not exist (i.e. x + A_i is greater than or equal to 4) for a piece, remove it.  Add to P the number of pieces that have been removed.
@@ -14,9 +14,10 @@ Constraints
 1 ≦ A_i ≦ 4
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 
 Output
 Print the value of P after all the operations have been performed.

@@ -12,14 +12,15 @@ Constraints
 1 ≦ W ≦ 10^6
 W is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 W
 
 Output
 Print in the following format, where N is the number of weights and A_i is the mass of the i-th weight.  If multiple solutions exist, printing any of them is accepted.
 N
-A_1 A_2 dots A_N
-Here, N and A_1,A_2,dots,A_N should satisfy the following conditions:
+A_1 A_2 ... A_N
+Here, N and A_1,A_2,...,A_N should satisfy the following conditions:
 1 ≦ N ≦ 300
 1 ≦ A_i ≦ 10^6
 

@@ -6,7 +6,8 @@ Constraints
 1 ≦ d ≦ 360
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 a b d
 
 Output
@@ -25,7 +26,7 @@ Sample Input 2
 
 Sample Output 2
 -2.49999999999999911182 4.33012701892219364908
-When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-frac {5}{2} , frac {5sqrt{3}}{2}).
+When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-frac {5}{2} , frac {5(3)^(1/2)}{2}).
 This sample output does not precisely match these values, but the errors are small enough to be considered correct.
 
 Sample Input 3
@@ -42,7 +43,8 @@ Sample Output 4
 15.00000000000000177636 4.99999999999999555911
 A 360-degree rotation does not change the coordinates of a point.
 
-Sample Input 5-505 191 278
+Sample Input 5
+-505 191 278
 
-Sample Output
- 5118.85878514480690171240 526.66743699786547949770
+Sample Output 5
+118.85878514480690171240 526.66743699786547949770

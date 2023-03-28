@@ -6,7 +6,8 @@ If there is no such character, print -1 instead.
 Constraints
 S is a string of length 3 consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

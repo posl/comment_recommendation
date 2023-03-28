@@ -1,12 +1,13 @@
 Problem Statement
-Given integers R, C, and a 2 times 2 matrix A, print A_{R,C}.
+Given integers R, C, and a 2 × 2 matrix A, print A_{R,C}.
 
 Constraints
 All values in input are integers.
-1 le R,C le 2
-0 le A_{i,j} le 100
+1 ≦ R,C ≦ 2
+0 ≦ A_{i,j} ≦ 100
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 R C
 A_{1,1} A_{1,2}
 A_{2,1} A_{2,2}

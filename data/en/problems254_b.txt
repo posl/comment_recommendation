@@ -1,5 +1,5 @@
 Problem Statement
-Find the N integer sequences A_0,ldots,A_{N-1} defined as follows.
+Find the N integer sequences A_0,...,A_{N-1} defined as follows.
 For each i (0≦ i ≦ N-1), the length of A_i is i+1.
 For each i and j (0≦ i ≦ N-1, 0 ≦ j ≦ i), the (j+1)-th term of A_i, denoted by a_{i,j}, is defined as follows.
 a_{i,j}=1, if j=0 or j=i.
@@ -10,7 +10,8 @@ Constraints
 1 ≦ N ≦ 30
 N is an integer.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N
 
 Output

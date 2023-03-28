@@ -3,10 +3,11 @@ Find the X-th character from the beginning of the string that is obtained by con
 
 Constraints
 1 ≦ N ≦ 100
-1 ≦ X ≦ Ntimes 26
+1 ≦ X ≦ N× 26
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 
 Output

@@ -1,18 +1,19 @@
 Problem Statement
-We have a sequence of length N: A=(a_1,ldots,a_N). Additionally, you are given an integer K.
+We have a sequence of length N: A=(a_1,...,a_N). Additionally, you are given an integer K.
 You can perform the following operation zero or more times.
 Choose an integer i such that 1 ≦ i ≦ N-K, then swap the values of a_i and a_{i+K}.
 Determine whether it is possible to sort A in ascending order.
 
 Constraints
-2 ≦ N ≦ 2 times 10^5
+2 ≦ N ≦ 2 × 10^5
 1 ≦ K ≦ N-1
 1 ≦ a_i ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-a_1 ldots a_N
+a_1 ... a_N
 
 Output
 If it is possible to sort A in ascending order, print Yes; otherwise, print No.

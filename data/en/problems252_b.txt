@@ -1,6 +1,6 @@
 Problem Statement
 Takahashi has N foods in his house. The i-th food has the tastiness of A_i.
-He dislikes K of these foods: for each i=1,2,ldots,K, he dislikes the B_i-th food.
+He dislikes K of these foods: for each i=1,2,...,K, he dislikes the B_i-th food.
 Out of the foods with the greatest tastiness among the N foods, Takahashi will randomly choose one and eat it.
 If he has a chance to eat something he dislikes, print Yes; otherwise, print No.
 
@@ -11,10 +11,11 @@ Constraints
 All B_i are distinct.
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N K
-A_1 A_2 ldots A_N
-B_1 B_2 ldots B_K
+A_1 A_2 ... A_N
+B_1 B_2 ... B_K
 
 Output
 If Takahashi has a chance to eat a food he dislikes, print Yes; otherwise, print No.

@@ -9,11 +9,12 @@ Consider performing zero or more operations to make X a good number. Find the mi
 
 Constraints
 All values in input are integers.
--10^{18} le X,A le 10^{18}
--10^6 le D le 10^6
-1 le N le 10^{12}
+-10^{18} ≦ X,A ≦ 10^{18}
+-10^6 ≦ D ≦ 10^6
+1 ≦ N ≦ 10^{12}
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 X A D N
 
 Output

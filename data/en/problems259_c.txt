@@ -3,15 +3,16 @@ You are given two strings S and T.
 Determine whether it is possible to make S equal T by performing the following operation some number of times (possibly zero).
 Between two consecutive equal characters in S, insert a character equal to these characters.
 That is, take the following three steps.
-Let N be the current length of S, and S = S_1S_2ldots S_N.
+Let N be the current length of S, and S = S_1S_2... S_N.
 Choose an integer i between 1 and N-1 (inclusive) such that S_i = S_{i+1}. (If there is no such i, do nothing and terminate the operation now, skipping step 3.)
-Insert a single copy of the character S_i(= S_{i+1}) between the i-th and (i+1)-th characters of S. Now, S is a string of length N+1: S_1S_2ldots S_i S_i S_{i+1} ldots S_N.
+Insert a single copy of the character S_i(= S_{i+1}) between the i-th and (i+1)-th characters of S. Now, S is a string of length N+1: S_1S_2... S_i S_i S_{i+1} ... S_N.
 
 
 Constraints
-Each of S and T is a string of length between 2 and 2 times 10^5 (inclusive) consisting of lowercase English letters.
+Each of S and T is a string of length between 2 and 2 × 10^5 (inclusive) consisting of lowercase English letters.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 T
 

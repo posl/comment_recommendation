@@ -2,13 +2,13 @@ Problem Statement
 You are given a string S consisting of lowercase English characters.
 The length of S is between 1 and 3, inclusive.
 Print the string of length 6 that is a repetition of S.
-It can be shown that there uniquely exists such a string under the Constraints
- of this problem.
+It can be shown that there uniquely exists such a string under the Constraints of this problem.
 
 Constraints
 S is a string consisting of lowercase English characters of length between 1 and 3, inclusive.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 S
 
 Output

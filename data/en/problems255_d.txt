@@ -1,6 +1,6 @@
 Problem Statement
-You are given a sequence of length N: A=(A_1,A_2,dots,A_N). The following action on this sequence is called an operation.
-First, choose an integer i such that 1 le i le N.
+You are given a sequence of length N: A=(A_1,A_2,...,A_N). The following action on this sequence is called an operation.
+First, choose an integer i such that 1 ≦ i ≦ N.
 Next, choose and do one of the following.
 Add 1 to A_i.
 Subtract 1 from A_i.
@@ -11,16 +11,19 @@ Consider performing zero or more operations to change every element of A to X_i.
 
 Constraints
 All values in input are integers.
-1 le N,Q le 2 times 10^5
-0 le A_i le 10^9
-0 le X_i le 10^9
+1 ≦ N,Q ≦ 2 × 10^5
+0 ≦ A_i ≦ 10^9
+0 ≦ X_i ≦ 10^9
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
-A_1 A_2 dots A_N
+A_1 A_2 ... A_N
 X_1
 X_2
-vdots
+.
+.
+.
 X_Q
 
 Output

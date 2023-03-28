@@ -5,15 +5,18 @@ In the beginning, only the 1-st stage is unlocked, and clearing the i-th stage (
 Find the shortest time needed to clear a stage X times in total. Here, if the same stage is cleared multiple times, all of them count.
 
 Constraints
-1 ≦ N ≦ 2 times 10^5
-1 ≦ A_i, B_i ≦ 10^9 , (1 ≦ i ≦ N)
+1 ≦ N ≦ 2 × 10^5
+1 ≦ A_i, B_i ≦ 10^9  (1 ≦ i ≦ N)
 1 ≦ X ≦ 10^9
 All values in input are integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N X
 A_1 B_1
-vdots
+.
+.
+.
 A_N B_N
 
 Output

@@ -5,21 +5,24 @@ Process Q queries. Each query is of one of the following two types.
 2 x: Print the x-th character of S.
 
 Constraints
-2 le N le 5 times 10^5
-1 le Q le 5 times 10^5
-1 le x le N
+2 ≦ N ≦ 5 × 10^5
+1 ≦ Q ≦ 5 × 10^5
+1 ≦ x ≦ N
 |S|=N
 S consists of lowercase English letters.
 At least one query in the format 2 x.
 N, Q, x are all integers.
 
-InputInput is given from Standard Input in the following format:
+Input
+Input is given from Standard Input in the following format:
 N Q
 S
-mathrm{query}_1
-mathrm{query}_2
-vdots
-mathrm{query}_Q
+query_1
+query_2
+.
+.
+.
+query_Q
 Each query is in the following format, where t is 1 or 2:
 t x
 
