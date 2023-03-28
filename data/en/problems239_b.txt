@@ -2,8 +2,7 @@ Problem Statement
 Given an integer X between -10^{18} and 10^{18} (inclusive), print ⌊ (X/(10)) ⌋.
 
 Notes
-For a real number x, ⌊ x ⌋ denotes "the maximum integer not exceeding x".  For example, we have ⌊ 4.7 ⌋ = 4, ⌊ -2.4 ⌋ = -3, and ⌊ 5 ⌋ = 5.  (For more details, please refer to the description in the Sample Input and Output
-.)
+For a real number x, ⌊ x ⌋ denotes "the maximum integer not exceeding x".  For example, we have ⌊ 4.7 ⌋ = 4, ⌊ -2.4 ⌋ = -3, and ⌊ 5 ⌋ = 5.  (For more details, please refer to the description in the Sample Input and Outputs.)
 
 Constraints
 -10^{18} ≦ X ≦ 10^{18}

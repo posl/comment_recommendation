@@ -3,8 +3,7 @@ There is a sequence A = (A_0, A_1, ..., A_{N - 1}) with N = 2^{20} terms. Initia
 Process Q queries in order. The i-th query (1 ≦ i ≦ Q) is described by an integer t_i such that t_i = 1 or t_i = 2, and another integer x_i, as follows.
 If t_i = 1, do the following in order.
 Define an integer h as h = x_i.
-While A_{h mod N} ≠ -1, keep adding 1 to h. We can prove that this process ends after finite iterations under the Constraints
- of this problem.
+While A_{h mod N} ≠ -1, keep adding 1 to h. We can prove that this process ends after finite iterations under the Constraints of this problem.
 Replace the value of A_{h mod N} with x_i.
 If t_i = 2, print the value of A_{x_i mod N} at that time.
 Here, for integers a and b, a mod b denotes the remainder when a is divided by b.

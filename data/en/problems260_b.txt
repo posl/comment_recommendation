@@ -6,7 +6,7 @@ X examinees with the highest math scores are admitted.
 Then, among the examinees who are not admitted yet, Y examinees with the highest English scores are admitted.
 Then, among the examinees who are not admitted yet, Z examinees with the highest total scores in math and English are admitted.
 Those examinees who are not admitted yet are rejected.
-Here, in each of the steps 1. to 3., ties are broken by examinees' numbers: an examinee with the smaller examinee's number is prioritized.  See also Sample Input and Output.
+Here, in each of the steps 1. to 3., ties are broken by examinees' numbers: an examinee with the smaller examinee's number is prioritized.  See also Sample Input and Outputs.
 Print the examinees' numbers of the admitted examinees determined by the steps above in ascending order, separated by newlines.
 
 Constraints

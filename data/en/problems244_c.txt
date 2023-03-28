@@ -21,8 +21,7 @@ The integer that Aoki declares is given by the judge program to your program fro
 If Aoki has no more integer to declare, 0 is given instead, which means that the game ended and Takahashi won.
 
 Notes
-After each output, you must flush Standard Output
-.  Otherwise, you may get TLE.
+After each output, you must flush Standard Outputs.  Otherwise, you may get TLE.
 After the game ended and Takahashi won, the program must be terminated immediately.  Otherwise, the judge does not necessarily give AC.
 If your program outputs something that violates the rules of the game (such as an integer that has already been declared by either player), your answer is considered incorrect.  In such case, the verdict is indeterminate.  It does not necessarily give WA.
 
