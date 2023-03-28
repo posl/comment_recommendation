@@ -1,0 +1,46 @@
+Problem Statement
+There are N people whose IDs are 1, 2, ..., and N.
+Each of person 1, person 2, ..., and person N performs the following action once in this order:
+If person i's ID has not been called out yet, call out person A_i's ID.
+Enumerate the IDs of all the people whose IDs are never called out until the end in ascending order.
+
+Constraints
+2 ≦ N ≦ 2 × 10^5
+1 ≦ A_i ≦ N
+A_i ≠ i
+All values in the input are integers.
+
+Input
+The input is given from Standard Input in the following format:
+N
+A_1 A_2 ... A_N
+
+Output
+Enumerate the IDs of all the people whose IDs are not called out until the end in ascending order in the following format:
+K
+X_1 X_2 ... X_K
+In other words, the first line should contain the number of people, K, whose IDs are never called out until the end;
+the second line should contain the sequence (X_1, X_2, ..., X_K) of IDs of such people in ascending order, with spaces in between.
+
+Sample Input 1
+5
+3 1 4 5 4
+
+Sample Output 1
+2
+2 4
+The five people's actions are as follows.
+Person 1's ID has not been called out yet, so person 1 calls out person 3's ID.
+Person 2's ID has not been called out yet, so person 2 calls out person 1's ID.
+Person 3's ID has already been called out by person 1, so nothing happens.
+Person 4's ID has not been called out yet, so person 4 calls out person 5's ID.
+Person 5's ID has already been called out by person 4, so nothing happens.
+Therefore, person 2 and 4's IDs are not called out until the end.
+
+Sample Input 2
+20
+9 7 19 7 10 4 13 9 4 8 10 15 16 3 18 19 12 13 2 12
+
+Sample Output 2
+10
+1 2 5 6 8 11 14 17 18 20
