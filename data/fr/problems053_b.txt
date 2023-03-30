@@ -1,0 +1,34 @@
+Énoncé du problème
+Snuke a décidé de construire une chaîne de caractères qui commence par A et se termine par Z, en retirant une sous-chaîne d'une chaîne de caractères s (c'est-à-dire une partie consécutive de s).
+Trouvez la plus grande longueur de la chaîne que Snuke peut construire. Ici, le jeu de test garantit qu'il existe toujours une sous-chaîne de s qui commence par A et se termine par Z.
+
+Contraintes
+1 ≦ |s| ≦ 200000
+s est composé de lettres anglaises majuscules.
+Il existe une sous-chaîne de s qui commence par A et se termine par Z.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+Imprime la réponse.
+
+Exemple d'entrée 1
+QWERTYASDFZXCV
+
+Exemple de sortie 1
+5
+En supprimant les septième à onzième caractères, il est possible de construire ASDFZ, qui commence par A et se termine par Z.
+
+Exemple d'entrée 2
+ZABCZ
+
+Exemple de sortie 2
+4
+
+Exemple d'entrée 3
+HASFJGHOGAKZZFEGA
+
+Exemple de sortie 3
+12

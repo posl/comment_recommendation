@@ -1,0 +1,35 @@
+Énoncé du problème
+Vous disposez d'une variable entière x.
+Initialement, x=0.
+Une personne vous a donné une chaîne de caractères S de longueur N, et en utilisant la chaîne, vous avez effectué l'opération suivante N fois.
+Lors de la i-ième opération, vous avez incrémenté la valeur de x de 1 si S_i=I, et décrémenté la valeur de x de 1 si S_i=D.
+Trouvez la valeur maximale prise par x au cours des opérations (y compris avant la première opération et après la dernière opération).
+
+Contraintes
+1≤N≤100
+|S|=N
+Aucun caractère sauf I et D n'apparaît dans S.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+S
+
+Sortie
+Imprimer la valeur maximale prise par x au cours des opérations.
+
+Exemple d'entrée 1
+5
+IIDID
+
+Échantillon de sortie 1
+2
+Après chaque opération, la valeur de x devient respectivement 1, 2, 1, 2 et 1. La sortie devrait donc être 2, la valeur maximale.
+
+Exemple d'entrée 2
+7
+DDIDDII
+
+Sortie d'échantillon 2
+0
+La valeur initiale x=0 est la valeur maximale prise par x, la sortie doit donc être 0.

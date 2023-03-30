@@ -1,0 +1,52 @@
+Énoncé du problème
+Dans AtCoder, une personne qui a participé à un concours reçoit une couleur, qui correspond à la note de la personne comme suit :  
+Note 1-399 : gris
+Note 400-799 : marron
+Note 800-1199 : vert
+Note 1200-1599 : cyan
+Cote 1600-1999 : bleu
+Cote 2000-2399 : jaune
+Cote 2400-2799 : orange
+Note 2800-3199 : rouge
+En outre, une personne dont la note est supérieure ou égale à 3200 peut choisir librement sa couleur, qui peut être l'une des huit couleurs ci-dessus ou non.
+Actuellement, il y a N utilisateurs qui ont participé à un concours dans AtCoder, et le i-ième utilisateur a une note de a_i.
+Trouvez les nombres minimum et maximum possibles de couleurs différentes pour les utilisateurs.  
+
+Contraintes
+1 ≤ N ≤ 100
+1 ≤ a_i ≤ 4800
+a_i est un nombre entier.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+a_1 a_2 ... a_N
+
+Sortie
+Affiche le nombre minimum possible de couleurs différentes des utilisateurs, et le nombre maximum possible de couleurs différentes, avec un espace entre les deux.  
+
+Exemple d'entrée 1
+4
+2100 2500 2700 2700
+
+Exemple de sortie 1
+2 2
+L'utilisateur ayant la note 2100 est "jaune", et les autres sont "orange". Il existe deux couleurs différentes.  
+
+Exemple d'entrée 2
+5
+1100 1900 2800 3200 3200
+
+Exemple de sortie 2
+3 5
+L'utilisateur ayant une note de 1100 est "vert", l'utilisateur ayant une note de 1900 est bleu et l'utilisateur ayant une note de 2800 est "rouge".
+Si le quatrième utilisateur choisit "rouge" et le cinquième utilisateur choisit "bleu", il y a trois couleurs différentes. Il s'agit d'un scénario possible pour le nombre minimum de couleurs.
+Si le quatrième utilisateur choisit "violet" et que le cinquième utilisateur choisit "noir", il y a cinq couleurs différentes. C'est l'un des scénarios possibles pour le nombre maximal de couleurs.  
+
+Exemple d'entrée 3
+20
+800 810 820 830 840 850 860 870 880 890 900 910 920 930 940 950 960 970 980 990
+
+Exemple de sortie 3
+1 1
+Tous les utilisateurs sont "verts", et il n'y a donc qu'une seule couleur.

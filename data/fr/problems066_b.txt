@@ -1,0 +1,51 @@
+Énoncé du problème
+Nous appellerons chaîne paire une chaîne qui peut être obtenue en concaténant deux chaînes égales.
+Par exemple, xyzxyz et aaaaaa sont pairs, alors que ababab et xyzxy ne le sont pas.
+On vous donne une chaîne paire S composée de lettres anglaises minuscules.
+Trouvez la longueur de la plus longue chaîne paire qui peut être obtenue en supprimant un ou plusieurs caractères à la fin de S.
+Il est garanti qu'une telle chaîne non vide existe pour une entrée donnée.
+
+Contraintes
+2 ≦ |S| ≦ 200
+S est une chaîne paire composée de lettres anglaises minuscules.
+Il existe une chaîne paire non vide qui peut être obtenue en supprimant un ou plusieurs caractères à la fin de S.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S
+
+Sortie
+Imprime la longueur de la plus longue chaîne paire qui peut être obtenue.
+
+Exemple d'entrée 1
+abaababaab
+
+Exemple de sortie 1
+6
+abaababaab est pair, mais nous devons supprimer au moins un caractère.
+abaababaa n'est pas pair.
+abaababa n'est pas pair.
+abaabab n'est pas pair.
+abaaba est pair. Nous devons donc imprimer sa longueur, 6.
+
+Exemple d'entrée 2
+xxxx
+
+Exemple de sortie 2
+2
+xxx n'est pas pair.
+xx est pair.
+
+Exemple d'entrée 3
+abcabcabcabc
+
+Exemple de sortie 3
+6
+La chaîne paire la plus longue que l'on puisse obtenir est abcabc, dont la longueur est de 6.
+
+Exemple d'entrée 4
+akasakaakasakasakaakas
+
+Exemple de sortie 4
+14
+La chaîne paire la plus longue que l'on puisse obtenir est akasakaakasaka, dont la longueur est de 14.

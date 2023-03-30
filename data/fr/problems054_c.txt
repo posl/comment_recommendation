@@ -1,0 +1,57 @@
+Énoncé du problème
+On vous donne un graphe non orienté et non pondéré avec N sommets et M arêtes qui ne contient ni boucles propres ni arêtes doubles.
+Une boucle est une arête où a_i = b_i (1≤i≤M), et les arêtes doubles sont deux arêtes où (a_i,b_i)=(a_j,b_j) ou (a_i,b_i)=(b_j,a_j) (1≤i<j≤M).
+Combien de chemins différents partent du sommet 1 et visitent tous les sommets exactement une fois ?
+Ici, les extrémités d'un chemin sont considérées comme visitées.  
+Par exemple, supposons que le graphe non orienté suivant, illustré à la figure 1, soit donné.
+Figure 1 : un exemple de graphe non orienté
+Le chemin suivant, illustré à la figure 2, satisfait à la condition.
+Figure 2 : un exemple de chemin qui remplit la condition
+En revanche, le chemin suivant, illustré à la figure 3, ne remplit pas la condition, car il ne passe pas par tous les sommets.
+Figure 3 : un exemple de chemin qui ne remplit pas la condition
+Le chemin suivant de la figure 4 ne satisfait pas non plus à la condition, car il ne part pas du sommet 1.
+Figure 4 : un autre exemple de chemin qui ne remplit pas la condition
+
+Contraintes
+2≦N≦8
+0≦M≦N(N-1)/2
+1≦a_i<b_i≦N
+Le graphe donné ne contient pas d'auto-boucles ni d'arêtes doubles.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N M
+a_1 b_1
+a_2 b_2
+:
+a_M b_M
+
+Sortie
+Affichez le nombre de chemins différents qui partent du sommet 1 et qui visitent tous les sommets exactement une fois.
+
+Exemple d'entrée 1
+3 3
+1 2
+1 3
+2 3
+
+Exemple de sortie 1
+2
+Le graphique donné est illustré dans la figure suivante :
+
+Les deux chemins suivants satisfont à la condition :
+
+
+Échantillon Entrée 2
+7 7
+1 3
+2 7
+3 4
+4 5
+4 6
+5 6
+6 7
+
+Exemple de sortie 2
+1
+Ce cas de test est le même que celui décrit dans l'énoncé du problème.

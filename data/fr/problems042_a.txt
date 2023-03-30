@@ -1,0 +1,26 @@
+Énoncé du problème
+Iroha aime les haïkus. Le haïku est une forme courte de poésie japonaise. Un haïku se compose de trois phrases de 5, 7 et 5 syllabes, dans cet ordre.
+Pour créer un haïku, Iroha a trouvé trois phrases différentes. Ces phrases ont respectivement des syllabes A, B et C. Déterminez si elle peut construire un haïku en utilisant chacune des phrases une fois, dans un certain ordre.
+
+Contraintes
+1≦A,B,C≦10
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B C
+
+Sortie
+S'il est possible de construire un Haïku en utilisant une fois chacune des phrases, affichez OUI (sensible à la casse). Dans le cas contraire, la réponse est NON.
+
+Exemple d'entrée 1
+5 5 7
+
+Exemple de sortie 1
+OUI
+En utilisant trois phrases de longueur 5, 5 et 7, il est possible de construire un Haïku.
+
+Exemple d'entrée 2
+7 7 5
+
+Exemple de sortie 2
+NON

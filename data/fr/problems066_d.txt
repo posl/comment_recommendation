@@ -1,0 +1,88 @@
+Énoncé du problème
+On vous donne une suite d'entiers de longueur n+1, a_1,a_2,...,a_{n+1}, composée des n entiers 1,...,n.
+On sait que chacun des n entiers 1,...,n apparaît au moins une fois dans cette séquence.
+Pour chaque entier k=1,...,n+1, trouver le nombre de sous-séquences différentes (non nécessairement contiguës) de la séquence donnée de longueur k, modulo 10^9+7.
+
+Remarques
+Si le contenu de deux sous-séquences est identique, elles ne sont pas comptées séparément même si elles proviennent de positions différentes dans la séquence originale.
+Une sous-séquence d'une séquence a de longueur k est une séquence obtenue en sélectionnant k des éléments de a et en les arrangeant sans changer leur ordre relatif. Par exemple, les séquences 1,3,5 et 1,2,3 sont des sous-séquences de 1,2,3,4,5, alors que 3,1,2 et 1,10,100 ne le sont pas.
+
+
+Contraintes
+1 ≦ n ≦ 10^5
+1 ≦ a_i ≦ n
+Chacun des entiers 1,...,n apparaît dans la séquence.
+n et a_i sont des entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+n
+a_1 a_2 ... a_{n+1}
+
+Sortie
+Imprime n+1 lignes.
+La k-ième ligne doit contenir le nombre de sous-séquences différentes de la séquence donnée de longueur k, modulo 10^9+7.
+
+Exemple d'entrée 1
+3
+1 2 1 3
+
+Exemple de sortie 1
+3
+5
+4
+1
+Il y a trois sous-séquences de longueur 1 : 1, 2 et 3.
+Il y a cinq sous-séquences de longueur 2 : 1,1 et 1,2 et 1,3 et 2,1 et 2,3.
+Il y a quatre sous-séquences de longueur 3 : 1,1,3 et 1,2,1 et 1,2,3 et 2,1,3.
+Il existe une sous-séquence de longueur 4 : 1,2,1,3.
+
+Exemple d'entrée 2
+1
+1 1
+
+Exemple de sortie 2
+1
+1
+Il existe une sous-séquence de longueur 1 : 1.
+Il existe une sous-séquence de longueur 2 : 1,1.
+
+Exemple d'entrée 3
+32
+29 19 7 10 26 32 27 4 11 20 2 8 16 23 5 14 6 12 17 22 18 30 28 24 15 1 25 3 13 21 19 31 9
+
+Exemple de sortie 3
+32
+525
+5453
+40919
+237336
+1107568
+4272048
+13884156
+38567100
+92561040
+193536720
+354817320
+573166440
+818809200
+37158313
+166803103
+166803103
+37158313
+818809200
+573166440
+354817320
+193536720
+92561040
+38567100
+13884156
+4272048
+1107568
+237336
+40920
+5456
+528
+33
+1
+Veillez à imprimer les nombres modulo 10^9+7.

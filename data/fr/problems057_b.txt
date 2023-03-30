@@ -1,0 +1,82 @@
+Énoncé du problème
+Il y a N étudiants et M points de contrôle sur le plan xy.
+Les coordonnées du i-ème élève (1 ≦ i ≦ N) sont (a_i,b_i), et les coordonnées du point de contrôle numéroté j (1 ≦ j ≦ M) sont (c_j,d_j).
+Lorsque l'enseignant donne un signal, chaque élève doit se rendre au point de contrôle le plus proche, mesuré en distance de Manhattan.
+La distance de Manhattan entre deux points (x_1,y_1) et (x_2,y_2) est |x_1-x_2|+|y_1-y_2|.
+Ici, |x| représente la valeur absolue de x.
+S'il existe plusieurs points de contrôle les plus proches pour un élève, celui-ci choisira le point de contrôle ayant l'indice le plus petit.
+À quel point de contrôle chaque élève se rendra-t-il ?
+
+Contraintes
+1 ≦ N,M ≦ 50
+-10^8 ≦ a_i,b_i,c_j,d_j ≦ 10^8
+Toutes les valeurs d'entrée sont des nombres entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N M
+a_1 b_1
+:
+a_N b_N
+c_1 d_1
+:
+c_M d_M
+
+Sortie
+Imprimer N lignes.
+La i-ième ligne (1 ≦ i ≦ N) doit contenir l'index du point de contrôle où doit se rendre le i-ième élève.
+
+Exemple d'entrée 1
+2 2
+2 0
+0 0
+-1 0
+1 0
+
+Exemple de sortie 1
+2
+1
+La distance de Manhattan entre le premier élève et chaque point de contrôle est la suivante :
+Pour le point de contrôle 1 : |2-(-1)|+|0-0|=3
+Pour le point de contrôle 2 : |2-1|+|0-0|=1
+Le point de contrôle le plus proche est le point de contrôle 2. La première ligne de la sortie doit donc contenir 2.
+La distance de Manhattan entre le deuxième élève et chaque point de contrôle est la suivante :
+Pour le point de contrôle 1 : |0-(-1)|+|0-0|=1
+Pour le point de contrôle 2 : |0-1|+|0-0|=1
+Lorsqu'il y a plusieurs points de contrôle les plus proches, l'élève se rendra au point de contrôle dont l'indice est le plus petit. Ainsi, la deuxième ligne de la sortie doit contenir 1.
+
+Exemple d'entrée 2
+3 4
+10 10
+-10 -10
+3 3
+1 2
+2 3
+3 5
+3 5
+
+Exemple de sortie 2
+3
+1
+2
+Il peut y avoir plusieurs points de contrôle aux mêmes coordonnées.
+
+Exemple d'entrée 3
+5 5
+-100000000 -100000000
+-100000000 100000000
+100000000 -100000000
+100000000 100000000
+0 0
+0 0
+100000000 100000000
+100000000 -100000000
+-100000000 100000000
+-100000000 -100000000
+
+Exemple de sortie 3
+5
+4
+3
+2
+1

@@ -1,0 +1,34 @@
+Énoncé du problème
+Snuke achète une bicyclette.
+La bicyclette qu'il a choisie n'est pas équipée d'une sonnette, il doit donc en acheter une séparément.
+Il est très sensible à la sécurité et décide d'acheter deux sonnettes, une pour chaque main.
+Le magasin vend trois types de sonnettes au prix de a, b et c yens (la monnaie du Japon), respectivement.
+Trouvez le prix total minimum de deux cloches différentes.
+
+Contraintes
+1 ≦ a,b,c ≦ 10000
+a, b et c sont des nombres entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a b c
+
+Sortie
+Imprimez le prix total minimum de deux cloches différentes.
+
+Exemple d'entrée 1
+700 600 780
+
+Exemple de sortie 1
+1300
+L'achat d'une cloche de 700 yens et d'une cloche de 600 yens coûte 1300 yens.
+L'achat d'une cloche de 700 yens et d'une cloche de 780 yens coûte 1480 yens.
+L'achat d'une cloche de 600 yens et d'une cloche de 780 yens coûte 1380 yens.
+Le prix minimum est de 1300 yens.
+
+Exemple d'entrée 2
+10000 10000 10000
+
+Exemple de sortie 2
+20000
+L'achat de deux cloches quelconques coûte 20000 yens.

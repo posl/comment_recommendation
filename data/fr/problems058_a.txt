@@ -1,0 +1,36 @@
+Énoncé du problème
+Trois poteaux sont régulièrement espacés le long d'une ligne. Leurs hauteurs sont a, b et c mètres, de gauche à droite.
+Nous dirons que la disposition des poteaux est belle si les sommets des poteaux se trouvent sur la même ligne, c'est-à-dire si b-a = c-b.
+Déterminez si la disposition des poteaux est belle.
+
+Contraintes
+1 ≦ a,b,c ≦ 100
+a, b et c sont des entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+a b c
+
+Sortie
+Imprimez OUI si la disposition des pôles est belle ; imprimez NON dans le cas contraire.
+
+Exemple d'entrée 1
+2 4 6
+
+Exemple de sortie 1
+OUI
+Puisque 4-2 = 6-4, cette disposition des pôles est belle.
+
+Exemple d'entrée 2
+2 5 6
+
+Exemple de sortie 2
+NON
+Puisque 5-2 ≠ 6-5, cette disposition des pôles n'est pas belle.
+
+Exemple d'entrée 3
+3 2 1
+
+Exemple de sortie 3
+OUI
+Puisque 1-2 = 2-3, cette disposition des pôles est belle.

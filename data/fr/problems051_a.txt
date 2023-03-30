@@ -1,0 +1,36 @@
+Énoncé du problème
+En guise de cadeau de Nouvel An, Dauphin a reçu une chaîne de caractères s de longueur 19.
+La chaîne s a le format suivant : [cinq lettres minuscules anglaises], [sept lettres minuscules anglaises], [cinq lettres minuscules anglaises].
+Dolphin souhaite convertir la chaîne s séparée par des virgules en une chaîne séparée par des espaces.
+Écrivez un programme qui effectue la conversion pour lui.  
+
+Contraintes
+La longueur de s est de 19.
+Les sixième et quatorzième caractères de s sont ,.
+Les autres caractères de s sont des lettres minuscules anglaises.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+Imprime la chaîne de caractères après la conversion.
+
+Exemple d'entrée 1
+bonne,nouvelle,année,plaisir
+
+Exemple de sortie 1
+heureux, nouvelle année, plaisir
+Remplacez toutes les virgules de happy,newyear,enjoy par des espaces pour obtenir happy newyear enjoy.
+
+Exemple d'entrée 2
+haiku,atcoder,tasks
+
+Exemple de sortie 2
+haiku atcoder tasks
+
+Exemple d'entrée 3
+abcde,fghihgf,edcba
+
+Exemple de sortie 3
+abcde fghihgf edcba

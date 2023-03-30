@@ -1,0 +1,34 @@
+Énoncé du problème
+Snuke a décidé de jouer à un jeu de cartes.
+Il dispose d'un jeu de N cartes. Sur la i-ième carte en partant du haut, un entier A_i est écrit.
+Il effectuera l'opération décrite ci-dessous zéro ou plusieurs fois, de sorte que les valeurs écrites sur les cartes restantes soient distinctes par paire. Trouver le nombre maximum possible de cartes restantes. Ici, N est impair, ce qui garantit qu'au moins une carte peut être conservée.
+Opération : Retirez trois cartes arbitraires du jeu. Parmi ces trois cartes, mangez-en deux : l'une avec la plus grande valeur, l'autre avec la plus petite. Ensuite, remettez la carte restante dans le jeu.
+
+Contraintes
+3 ≦ N ≦ 10^{5}
+N est impair.
+1 ≦ A_i ≦ 10^{5}
+A_i est un nombre entier.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N
+A_1 A_2 A_3 ... A_{N}
+
+Sortie
+Imprimer la réponse.
+
+Exemple d'entrée 1
+5
+1 2 1 3 7
+
+Exemple de sortie 1
+3
+Une solution optimale consiste à effectuer l'opération une seule fois, en retirant deux cartes avec 1 et une carte avec 2. Une carte avec 1 et une autre avec 2 seront mangées, et la carte restante avec 1 sera remise dans le jeu. Les valeurs inscrites sur les cartes restantes du jeu seront alors distinctes par paire : 1, 3 et 7.
+
+Exemple d'entrée 2
+15
+1 3 5 2 1 3 2 8 8 6 2 6 11 1 1
+
+Exemple de sortie 2
+7

@@ -1,0 +1,35 @@
+Énoncé du problème
+Il y a deux rectangles.
+Les longueurs des côtés verticaux du premier rectangle sont A, et les longueurs des côtés horizontaux du premier rectangle sont B.
+Les longueurs des côtés verticaux du deuxième rectangle sont C, et les longueurs des côtés horizontaux du deuxième rectangle sont D.
+Imprimez l'aire du rectangle dont l'aire est la plus grande.
+Si les deux rectangles ont des aires égales, écrivez cette aire.
+
+Contraintes
+Toutes les valeurs d'entrée sont des entiers.
+1≤A≤10^4
+1≤B≤10^4
+1≤C≤10^4
+1≤D≤10^4
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B C D
+
+Sortie
+Imprimer l'aire du rectangle ayant la plus grande aire.
+Si les deux rectangles ont des surfaces égales, imprimez cette surface.
+
+Exemple d'entrée 1
+3 5 2 7
+
+Exemple de sortie 1
+15
+Le premier rectangle a une aire de 3×5=15, et le second rectangle a une aire de 2×7=14.
+Le résultat doit donc être 15, soit l'aire la plus grande.
+
+Exemple d'entrée 2
+100 600 200 300
+
+Exemple de sortie 2
+60000

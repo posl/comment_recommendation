@@ -1,0 +1,31 @@
+Énoncé du problème
+Il y a N boules placées dans une rangée.
+AtCoDeer le cerf peint chacune d'entre elles dans l'une des K couleurs de ses pots de peinture.
+Pour des raisons esthétiques, deux boules adjacentes doivent être peintes dans des couleurs différentes.
+Trouvez le nombre de façons possibles de peindre les boules.
+
+Contraintes
+1≦N≦1000
+2≦K≦1000
+La réponse correcte est au plus 2^{31}-1.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N K
+
+Sortie
+Imprimez le nombre de façons possibles de peindre les balles.
+
+Exemple d'entrée 1
+2 2
+
+Exemple de sortie 1
+2
+Nous désignerons les couleurs par 0 et 1. Il y a deux possibilités : nous pouvons soit peindre la boule gauche dans la couleur 0 et la boule droite dans la couleur 1, soit peindre la gauche dans la couleur 1 et la droite dans la couleur 0.
+
+Exemple d'entrée 2
+1 10
+
+Exemple de sortie 2
+10
+Comme il n'y a qu'une seule balle, nous pouvons utiliser n'importe laquelle des dix couleurs pour la peindre. La réponse est donc dix.

@@ -1,0 +1,29 @@
+Énoncé du problème
+AtCoDeer a trois cartes, une rouge, une verte et une bleue.
+Un nombre entier compris entre 1 et 9 (inclus) est écrit sur chaque carte : r sur la carte rouge, g sur la carte verte et b sur la carte bleue.
+Nous allons ranger les cartes dans l'ordre rouge, vert et bleu, de gauche à droite, et les lire comme un nombre entier à trois chiffres.
+Cet entier est-il un multiple de 4 ?
+
+Contraintes
+1 ≤ r, g, b ≤ 9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+r g b
+
+Sortie
+Si l'entier à trois chiffres est un multiple de 4, OUI (sensible à la casse) ; sinon, NON.
+
+Exemple d'entrée 1
+4 3 2
+
+Exemple de sortie 1
+OUI
+432 est un multiple de 4, et donc YES doit être imprimé.
+
+Exemple d'entrée 2
+2 3 4
+
+Exemple de sortie 2
+NON
+234 n'est pas un multiple de 4, et donc NO doit être imprimé.

@@ -1,0 +1,38 @@
+Énoncé du problème
+Deux cerfs, AtCoDeer et TopCoDeer, jouent à un jeu appelé Honnête ou Malhonnête.
+Dans ce jeu, un joueur honnête dit toujours la vérité, et un joueur malhonnête dit toujours des mensonges.
+Vous disposez de deux caractères a et b en entrée. Chacun d'entre eux est soit H, soit D, et contient les informations suivantes :
+Si a=H, AtCoDeer est honnête ; si a=D, AtCoDeer est malhonnête.
+Si b=H, AtCoDeer dit que TopCoDeer est honnête ; si b=D, AtCoDeer dit que TopCoDeer est malhonnête.
+Compte tenu de ces informations, déterminez si TopCoDeer est honnête.
+
+Contraintes
+a=H ou a=D.
+b=H ou b=D.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a b
+
+Sortie
+Si TopCoDeer est honnête, on imprime H. S'il est malhonnête, on imprime D.
+
+Exemple d'entrée 1
+H H
+
+Exemple de sortie 1
+H
+Dans cette entrée, AtCoDeer est honnête. Par conséquent, comme il le dit, TopCoDeer est honnête.
+
+Exemple d'entrée 2
+D H
+
+Exemple de sortie 2
+D
+Dans cette entrée, AtCoDeer est malhonnête. Par conséquent, contrairement à ce qu'il dit, TopCoDeer est malhonnête.
+
+Exemple d'entrée 3
+D D
+
+Exemple de sortie 3
+H

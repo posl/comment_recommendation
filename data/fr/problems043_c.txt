@@ -1,0 +1,48 @@
+Énoncé du problème
+Evi a N entiers a_1,a_2,...a_N. Son objectif est d'avoir N entiers égaux en transformant certains d'entre eux.
+Il peut transformer chaque entier au maximum une fois. Transformer un entier x en un autre entier y lui coûte (x-y)^2 dollars. Même si a_i=a_j (i≠j), il doit payer le coût séparément pour transformer chacun d'entre eux (voir exemple 2).
+Trouvez le coût total minimum pour atteindre son objectif.
+
+Contraintes
+1≦N≦100
+-100≦a_i≦100
+
+Entrée
+L'entrée est donnée par l'entrée standard dans le format suivant :
+N
+a_1 a_2 ... a_N
+
+Sortie
+Imprimer le coût total minimum pour atteindre l'objectif d'Evi.
+
+Exemple d'entrée 1
+2
+4 8
+
+Exemple de sortie 1
+8
+La transformation des deux en 6 coûtera (4-6)^2+(8-6)^2=8 dollars, ce qui est le minimum.
+
+Exemple d'entrée 2
+3
+1 1 3
+
+Exemple de sortie 2
+3
+La transformation de tous les 1 en 2 coûtera (1-2)^2+(1-2)^2+(3-2)^2=3 dollars. Notez qu'Evi doit payer (1-2)^2 dollars séparément pour transformer chacun des deux 1.
+
+Exemple d'entrée 3
+3
+4 2 5
+
+Exemple de sortie 3
+5
+En laissant le 4 tel quel et en transformant le 2 et le 5 en 4, on obtient un coût total de (2-4)^2+(5-4)^2=5 dollars, ce qui est le minimum.
+
+Exemple d'entrée 4
+4
+-100 -100 -100 -100
+
+Échantillon de sortie 4
+0
+Sans rien transformer, l'objectif d'Evi est déjà atteint. Le coût nécessaire est donc de 0.

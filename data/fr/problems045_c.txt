@@ -1,0 +1,35 @@
+Énoncé du problème
+On vous donne une chaîne de caractères S composée de chiffres compris entre 1 et 9 inclus.
+Vous pouvez insérer la lettre + dans certaines des positions (éventuellement aucune) entre deux lettres de cette chaîne.
+Dans ce cas, la lettre + ne doit pas apparaître consécutivement après l'insertion.
+Toutes les chaînes qui peuvent être obtenues de cette manière peuvent être évaluées comme des formules.
+Évaluez toutes les formules possibles et affichez la somme des résultats.
+
+Contraintes
+1 ≦ |S| ≦ 10
+Toutes les lettres de S sont des chiffres compris entre 1 et 9 inclus.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S
+
+Sortie
+Imprime la somme de la valeur évaluée pour toutes les formules possibles.
+
+Exemple d'entrée 1
+125
+
+Exemple de sortie 1
+176
+Il y a 4 formules qui peuvent être obtenues : 125, 1+25, 12+5 et 1+2+5. Lorsque chaque formule est évaluée,
+125
+1+25=26
+12+5=17
+1+2+5=8
+La somme est donc de 125+26+17+8=176.
+
+Exemple d'entrée 2
+9999999999
+
+Exemple de sortie 2
+12656242944

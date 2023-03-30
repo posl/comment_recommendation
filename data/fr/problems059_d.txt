@@ -1,0 +1,42 @@
+Énoncé du problème
+Alice et Brown adorent les jeux. Aujourd'hui, ils vont jouer au jeu suivant.
+Dans ce jeu, il y a deux piles composées initialement de X et Y pierres, respectivement.
+Alice et Bob effectuent alternativement l'opération suivante, en commençant par Alice :
+Prendre 2i pierres dans l'une des piles. Puis, ils en jettent i et mettent les i restantes dans l'autre pile. Ici, l'entier i (1≤i) peut être choisi librement tant qu'il y a un nombre suffisant de pierres dans le tas.
+Le joueur qui devient incapable d'effectuer l'opération perd la partie.
+Étant donné X et Y, déterminez le gagnant de la partie, en supposant que les deux joueurs jouent de façon optimale.
+
+Contraintes
+0 ≤ X, Y ≤ 10^{18}
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+X Y
+
+Sortie
+Imprimer le gagnant : soit Alice, soit Brown.
+
+Exemple d'entrée 1
+2 1
+
+Exemple de sortie 1
+Marron
+Alice ne peut rien faire d'autre que de prendre deux pierres de la pile contenant deux pierres. Par conséquent, les piles sont composées respectivement de zéro et de deux pierres. Ensuite, Brown prendra les deux pierres, et les piles seront composées respectivement d'une et de zéro pierre. Alice ne pourra plus effectuer l'opération, ce qui signifie la victoire de Brown.
+
+Exemple d'entrée 2
+5 0
+
+Exemple de sortie 2
+Alice
+
+Exemple d'entrée 3
+0 0
+
+Exemple de sortie 3
+Marron
+
+Exemple d'entrée 4
+4 8
+
+Exemple de sortie 4
+Alice

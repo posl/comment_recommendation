@@ -1,0 +1,45 @@
+Énoncé du problème
+Nous avons une grande grille carrée avec H lignes et W colonnes.
+Iroha se trouve maintenant dans la cellule en haut à gauche.
+Elle va répéter en allant vers la droite ou vers le bas dans la cellule adjacente, jusqu'à ce qu'elle atteigne la cellule en bas à droite.
+Cependant, elle ne peut pas entrer dans les cellules situées à l'intersection des rangées A inférieures et des colonnes B les plus à gauche. (C'est-à-dire qu'il y a A×B cellules interdites.) Il n'y a pas de restriction pour entrer dans les autres cellules.
+Trouvez le nombre de façons dont elle peut se rendre dans la cellule en bas à droite.
+Comme ce nombre peut être extrêmement grand, imprimez le nombre modulo 10^9+7.
+
+Contraintes
+ 1 ≦ H, W ≦ 100 000
+ 1 ≦ A < H
+ 1 ≦ B < W
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+H W A B
+
+Sortie
+Imprimez le nombre de façons dont elle peut se rendre à la cellule en bas à droite, modulo 10^9+7.
+
+Exemple d'entrée 1
+2 3 1 1
+
+Exemple de sortie 1
+2
+Nous avons une grille de 2×3, mais il est interdit d'entrer dans la cellule en bas à gauche. Le nombre de chemins à parcourir est de deux : "Droite, Droite, Bas" et "Droite, Bas, Droite".
+
+Exemple Entrée 2
+10 7 3 4
+
+Exemple de sortie 2
+3570
+Il y a 12 cellules interdites.
+
+Exemple d'entrée 3
+100000 100000 99999 99999
+
+Exemple de sortie 3
+1
+
+Exemple d'entrée 4
+100000 100000 44444 55555
+
+Exemple de sortie 4
+738162020

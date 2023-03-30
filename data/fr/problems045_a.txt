@@ -1,0 +1,38 @@
+Énoncé du problème
+On vous donne un trapèze. Les longueurs de sa base supérieure, de sa base inférieure et de sa hauteur sont respectivement a, b et h.
+Un exemple de trapèze
+Trouvez l'aire de ce trapèze.
+
+Contraintes
+1≦a≦100
+1≦b≦100
+1≦h≦100
+Toutes les valeurs d'entrée sont des nombres entiers.
+h est pair.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a
+b
+h
+
+Sortie
+Imprime la surface du trapèze donné. Il est garanti que l'aire est un entier.
+
+Exemple d'entrée 1
+3
+4
+2
+
+Exemple de sortie 1
+7
+Lorsque les longueurs de la base supérieure, de la base inférieure et de la hauteur sont respectivement 3, 4 et 2, l'aire du trapèze est (3+4)×2/2 = 7.
+
+Exemple d'entrée 2
+4
+4
+4
+
+Sortie d'échantillon 2
+16
+Dans ce cas, un parallélogramme est donné, qui est aussi un trapèze.

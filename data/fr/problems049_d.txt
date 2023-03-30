@@ -1,0 +1,65 @@
+Énoncé du problème
+Il y a N villes. Il y a également K routes et L voies ferrées qui s'étendent entre les villes.
+La i-ième route relie de manière bidirectionnelle les villes p_i-th et q_i-th, et la i-ième voie ferrée relie de manière bidirectionnelle les villes r_i-th et s_i-th.
+Il n'y a pas deux routes qui relient la même paire de villes. De même, il n'y a pas deux chemins de fer qui relient la même paire de villes.
+Nous dirons que les villes A et B sont reliées par des routes si la ville B est accessible depuis la ville A en traversant un certain nombre de routes. Ici, toute ville est considérée comme étant reliée à elle-même par des routes.
+Nous définirons également la connectivité par les chemins de fer de la même manière.
+Pour chaque ville, trouvez le nombre de villes reliées à cette ville à la fois par des routes et par des chemins de fer.
+
+Contraintes
+2 ≦ N ≦ 2*10^5
+1 ≦ K, L≦ 10^5
+1 ≦ p_i, q_i, r_i, s_i ≦ N
+p_i < q_i
+r_i < s_i
+Lorsque i ≠ j, (p_i, q_i) ≠ (p_j, q_j)
+Lorsque i ≠ j, (r_i, s_i) ≠ (r_j, s_j)
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N K L
+p_1 q_1
+:
+p_K q_K
+r_1 s_1
+:
+r_L s_L
+
+Sortie
+Imprimez N nombres entiers. Le i-ième d'entre eux doit représenter le nombre de villes reliées à la i-ième ville à la fois par des routes et des chemins de fer.
+
+Exemple d'entrée 1
+4 3 1
+1 2
+2 3
+3 4
+2 3
+
+Exemple de sortie 1
+1 2 2 1
+Les quatre villes sont reliées entre elles par des routes.
+Seules les deuxième et troisième villes sont reliées par le chemin de fer. Les réponses pour les villes sont donc respectivement 1, 2, 2 et 1.
+
+Exemple d'entrée 2
+4 2 2
+1 2
+2 3
+1 4
+2 3
+
+Exemple de sortie 2
+1 2 2 1
+
+Exemple d'entrée 3
+7 4 4
+1 2
+2 3
+2 5
+6 7
+3 5
+4 5
+3 4
+6 7
+
+Exemple de sortie 3
+1 1 2 1 2 2 2

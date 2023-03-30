@@ -1,0 +1,47 @@
+Énoncé du problème
+Alice, Bob et Charlie jouent à un jeu de cartes à trois, comme ci-dessous :
+Au départ, chacun des trois joueurs dispose d'un jeu composé d'un certain nombre de cartes. Sur chaque carte est inscrite une lettre a, b ou c. L'ordre des cartes dans les paquets ne peut pas être modifié.
+Les joueurs jouent à tour de rôle. Alice commence.
+Si le jeu du joueur actuel contient au moins une carte, il se débarrasse de la carte supérieure du jeu. Ensuite, le joueur dont le nom commence par la lettre figurant sur la carte défaussée prend le tour suivant. (Par exemple, si la carte indique a, c'est Alice qui prend le tour suivant).
+Si la pioche du joueur en cours est vide, la partie se termine et le joueur en cours gagne la partie.
+On vous donne les paquets initiaux des joueurs.
+Plus précisément, on vous donne trois chaînes de caractères S_A, S_B et S_C. La i-ième (1≦i≦|S_A|) lettre de S_A est la lettre de la i-ième carte du jeu initial d'Alice. S_B et S_C décrivent de la même façon les paquets initiaux de Bob et de Charlie.
+Déterminez le gagnant du jeu.
+
+Contraintes
+1≦|S_A|≦100
+1≦|S_B|≦100
+1≦|S_C|≦100
+Chaque lettre de S_A, S_B, S_C est un a, un b ou un c.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S_A
+S_B
+S_C
+
+Sortie
+Si Alice gagne, imprimez A. Si Bob gagne, imprimez B. Si Charlie gagne, imprimez C.
+
+Exemple d'entrée 1
+aca
+accc
+ca
+
+Exemple de sortie 1
+A
+Le jeu se déroule comme suit :
+Alice se défait de la carte supérieure de son jeu, a. Alice joue le tour suivant.
+Alice se défausse de la carte supérieure de son jeu, c. Charlie prend le tour suivant.
+Charlie se défausse de la carte supérieure de son jeu, c. Charlie passe au tour suivant.
+Charlie se défausse de la carte supérieure de son jeu, a. Alice passe au tour suivant.
+Alice se défausse de la carte supérieure de son jeu, a. Alice passe au tour suivant.
+La pioche d'Alice est vide. La partie se termine et Alice gagne la partie.
+
+Exemple d'entrée 2
+abcb
+aacb
+bccc
+
+Exemple de sortie 2
+C

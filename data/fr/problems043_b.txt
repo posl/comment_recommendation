@@ -1,0 +1,33 @@
+Énoncé du problème
+Sig a construit son propre clavier. Conçu pour être extrêmement simple, ce clavier ne comporte que trois touches : la touche 0, la touche 1 et la touche d'effacement arrière.
+Pour commencer, il utilise un éditeur de texte simple avec ce clavier. Cet éditeur affiche toujours une chaîne de caractères (éventuellement vide). Juste après le lancement de l'éditeur, cette chaîne est vide. Lorsque l'on appuie sur chaque touche du clavier, la chaîne subit les modifications suivantes :
+La touche 0 : une lettre 0 est insérée à droite de la chaîne.
+La touche 1 : la lettre 1 est insérée à droite de la chaîne.
+La touche d'effacement arrière : si la chaîne est vide, rien ne se produit. Sinon, la lettre la plus à droite de la chaîne est effacée.
+Sig a lancé l'éditeur et appuyé plusieurs fois sur ces touches. On vous donne une chaîne s, qui est un enregistrement de ses frappes dans l'ordre. Dans cette chaîne, la lettre 0 correspond à la touche 0, la lettre 1 correspond à la touche 1 et la lettre B correspond à la touche d'effacement arrière. Quelle est la chaîne affichée dans l'éditeur à présent ?
+
+Contraintes
+1 ≦ |s| ≦ 10 (|s| représente la longueur de s)
+s est composé des lettres 0, 1 et B.
+La bonne réponse n'est pas une chaîne vide.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+Imprime la chaîne affichée dans l'éditeur à la fin.
+
+Exemple d'entrée 1
+01B0
+
+Exemple de sortie 1
+00
+Chaque fois que l'on appuie sur la touche, la chaîne de caractères dans l'éditeur change comme suit : 0, 01, 0, 00.
+
+Exemple d'entrée 2
+0BB1
+
+Exemple de sortie 2
+1
+Chaque fois que l'on appuie sur la touche, la chaîne de caractères dans l'éditeur change comme suit : 0, (vide), (vide), 1.

@@ -1,0 +1,43 @@
+Énoncé du problème
+Snuke adore le "découpage de papier" : il découpe des caractères dans un titre de journal et les réarrange pour former une autre chaîne.
+Demain, il recevra un titre contenant l'une des chaînes S_1,...,S_n.
+Il est enthousiaste et pense déjà à la chaîne qu'il va créer.
+Comme il ne connaît pas encore la chaîne de caractères du titre, il s'intéresse aux chaînes de caractères qui peuvent être créées indépendamment de la chaîne de caractères contenue dans le titre.
+Trouvez la chaîne la plus longue qui peut être créée quelle que soit la chaîne parmi S_1,...,S_n que contient le titre.
+S'il existe plusieurs chaînes de ce type, trouvez la plus petite d'entre elles d'un point de vue lexicographique.
+
+Contraintes
+1 ≦ n ≦ 50
+1 ≦ |S_i| ≦ 50 pour chaque i = 1, ..., n.
+S_i est composé de lettres minuscules anglaises (a - z) pour chaque i = 1, ..., n.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+n
+S_1
+...
+S_n
+
+Sortie
+Affiche la chaîne lexicographiquement la plus petite parmi les chaînes les plus longues qui satisfont à la condition.
+Si la réponse est une chaîne vide, une ligne vide est imprimée.
+
+Exemple d'entrée 1
+3
+cbaa
+daacc
+acacac
+
+Exemple de sortie 1
+aac
+Les chaînes qui peuvent être créées à partir de cbaa, daacc et acacac sont aa, aac, aca, caa et ainsi de suite.
+Parmi elles, aac, aca et caa sont les plus longues, et la plus petite de ces trois chaînes du point de vue lexicographique est aac.
+
+Exemple d'entrée 2
+3
+a
+aa
+b
+
+Exemple de sortie 2
+La réponse est une chaîne vide.

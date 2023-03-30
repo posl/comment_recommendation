@@ -1,0 +1,37 @@
+Énoncé du problème
+Un kangourou se trouve à la coordonnée 0 sur une droite numérique infinie qui va de gauche à droite, à l'instant 0.
+Pendant la période entre le temps i-1 et le temps i, le kangourou peut soit rester à sa position, soit effectuer un saut de longueur exactement i vers la gauche ou vers la droite.
+En d'autres termes, si sa coordonnée au temps i-1 est x, il peut se trouver à la coordonnée x-i, x ou x+i au temps i.
+Le nid du kangourou se trouve à la coordonnée X, et il veut se rendre à la coordonnée X le plus rapidement possible.
+Trouvez le temps le plus court possible pour atteindre la coordonnée X.
+
+Contraintes
+X est un nombre entier.
+1≤X≤10^9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+X
+
+Sortie
+Imprimez le temps le plus court possible pour que le kangourou atteigne la coordonnée X.
+
+Exemple d'entrée 1
+6
+
+Exemple de sortie 1
+3
+Le kangourou peut atteindre son nid au temps 3 en sautant trois fois à droite, ce qui est le moment le plus précoce possible.
+
+Exemple d'entrée 2
+2
+
+Exemple de sortie 2
+2
+Il peut atteindre son nid au temps 2 en restant à sa position pendant la première seconde, et en sautant vers la droite à la seconde suivante.
+
+Exemple d'entrée 3
+11
+
+Exemple de sortie 3
+5

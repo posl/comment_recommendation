@@ -1,0 +1,49 @@
+Énoncé du problème
+Snuke, qui aime les animaux, a construit un zoo.
+Il y a N animaux dans ce zoo. Ils sont commodément numérotés de 1 à N, et disposés en cercle.
+L'animal numéroté i (2≤i≤N-1) est adjacent aux animaux numérotés i-1 et i+1. De même, l'animal numéroté 1 est adjacent aux animaux numérotés 2 et N, et l'animal numéroté N est adjacent aux animaux numérotés N-1 et 1.
+Il y a deux sortes d'animaux dans ce zoo : les moutons honnêtes qui ne disent que la vérité et les loups menteurs qui ne disent que des mensonges.
+Snuke ne peut pas faire la différence entre ces deux espèces et pose à chaque animal la question suivante : "Vos voisins sont-ils de la même espèce ?" L'animal numéroté i a répondu s_i. Ici, si s_i est o, l'animal dit que les deux animaux voisins sont de la même espèce, et si s_i est x, l'animal dit que les deux animaux voisins sont d'espèces différentes.
+Plus formellement, un mouton répond o si les deux animaux voisins sont tous les deux des moutons ou tous les deux des loups, et répond x sinon.
+De même, un loup répond x si les deux animaux voisins sont tous deux des moutons ou tous deux des loups, et répond o sinon.
+Snuke se demande s'il existe une attribution valide d'espèces aux animaux qui soit cohérente avec ces réponses. S'il existe une telle affectation, montrez-en une. Sinon, imprimez -1.
+
+Contraintes
+3 ≤ N ≤ 10^{5}
+s est une chaîne de longueur N composée de o et x.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N
+s
+
+Sortie
+S'il n'existe pas d'affectation valide compatible avec s, afficher -1.
+Dans le cas contraire, une chaîne de caractères t est imprimée au format suivant. La sortie est considérée comme correcte si l'affectation décrite par t est compatible avec s.
+t est une chaîne de longueur N composée de S et W.
+Si t_i est S, il indique que l'animal numéroté i est un mouton. Si t_i est W, il indique que l'animal numéroté i est un loup.
+
+Exemple d'entrée 1
+6
+ooxoox
+
+Exemple de sortie 1
+SSSWWS
+Par exemple, si les animaux numérotés 1, 2, 3, 4, 5 et 6 sont respectivement un mouton, un mouton, un mouton, un loup, un loup et un mouton, cela est cohérent avec leurs réponses. D'ailleurs, il existe une autre attribution d'espèces valable : un loup, un mouton, un loup, un mouton, un loup et un loup.
+Rappelons que si les animaux neiboring sont de la même espèce, un mouton répond o et un loup répond x. Si les animaux neiboring sont d'espèces différentes, un mouton répond x et un loup répond o.
+
+
+Exemple d'entrée 2
+3
+oox
+
+Exemple de sortie 2
+-1
+Imprimez -1 s'il n'y a pas d'assignation valide d'espèces.
+
+Exemple d'entrée 3
+10
+oxooxoxoxoox
+
+Exemple de sortie 3
+SSWWSSSWWS

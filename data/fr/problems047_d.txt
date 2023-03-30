@@ -1,0 +1,52 @@
+Énoncé du problème
+Il y a N villes alignées, numérotées commodément de 1 à N. Takahashi, le marchand, part en voyage de la ville 1 à la ville N, pour acheter et vendre des pommes.
+Takahashi commencera son voyage à la ville 1, sans aucune pomme en sa possession. Les actions qui peuvent être effectuées au cours du voyage sont les suivantes :
+Déplacement : lorsqu'il est dans la ville i (i < N), il se déplace vers la ville i + 1.
+Marchandises : Acheter ou vendre un nombre arbitraire de pommes dans la ville actuelle. Ici, on suppose qu'une pomme peut toujours être achetée et vendue pour A_i yen (la monnaie du Japon) dans la ville i (1 ≦ i ≦ N), où A_i sont des nombres entiers distincts. Vous pouvez également supposer qu'il dispose d'une quantité infinie de monnaie.
+Pour une raison quelconque, il y a une contrainte sur la commercialisation des pommes pendant le voyage : la somme du nombre de pommes achetées et du nombre de pommes vendues pendant tout le voyage doit être au plus égale à T. (Notez qu'une seule pomme peut être comptée dans les deux cas).
+Pendant le voyage, Takahashi effectuera des actions de manière à maximiser le profit du voyage. Ici, le profit du voyage est la somme d'argent gagnée en vendant des pommes, moins la somme d'argent dépensée pour acheter des pommes. Notez que nous ne nous intéressons pas aux pommes en sa possession à la fin du voyage.
+Aoki, un rival commercial de Takahashi, veut lui causer des ennuis en manipulant le prix des pommes sur le marché. Avant le début du voyage de Takahashi, Aoki peut changer A_i en un autre entier arbitraire non négatif A_i' pour n'importe quelle ville i, n'importe quel nombre de fois. Le coût de cette opération est de |A_i - A_i'|. Après cette opération, différentes villes peuvent avoir des valeurs égales de A_i.
+L'objectif d'Aoki est de diminuer le bénéfice attendu de Takahashi d'au moins 1 yen. Trouvez le coût total minimum pour atteindre cet objectif. Vous pouvez supposer que le bénéfice attendu de Takahashi est initialement d'au moins 1 yen.
+
+Contraintes
+1 ≦ N ≦ 10^5
+1 ≦ A_i ≦ 10^9 (1 ≦ i ≦ N)
+A_i sont distincts.
+2 ≦ T ≦ 10^9
+Dans l'état initial, le bénéfice attendu de Takahashi est d'au moins 1 yen.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N T
+A_1 A_2 ... A_N
+
+Sortie
+Imprimez le coût total minimum pour réduire le bénéfice attendu de Takahashi d'au moins 1 yen.
+
+Exemple d'entrée 1
+3 2
+100 50 200
+
+Échantillon de sortie 1
+1
+Dans l'état initial, Takahashi peut réaliser le profit maximum de 150 yens de la manière suivante :
+Se déplacer de la ville 1 à la ville 2.
+Acheter une pomme pour 50 yens dans la ville 2.
+Déplacement de la ville 2 à la ville 3.
+Vente d'une pomme pour 200 yens dans la ville 3.
+Si, par exemple, Aoki change le prix d'une pomme dans la ville 2 de 50 yens à 51 yens, Takahashi ne pourra pas réaliser le bénéfice de 150 yens. Le coût de cette opération est de 1, la réponse est donc 1.
+Il existe d'autres moyens de diminuer le bénéfice escompté par Takahashi, par exemple en faisant passer le prix d'une pomme de la ville 3 de 200 yens à 199 yens.
+
+Exemple Entrée 2
+5 8
+50 30 40 10 20
+
+Exemple de sortie 2
+2
+
+Exemple d'entrée 3
+10 100
+7 10 4 5 9 3 6 8 2 1
+
+Exemple de sortie 3
+2

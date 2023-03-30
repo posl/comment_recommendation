@@ -1,0 +1,52 @@
+Énoncé du problème
+On vous donne un graphe pondéré connecté non orienté avec N sommets et M arêtes qui ne contient ni boucles ni arêtes doubles.
+La i-ième (1≤i≤M) arête relie le sommet a_i et le sommet b_i avec une distance de c_i.
+Une auto-boucle est une arête où a_i = b_i (1≤i≤M), et les arêtes doubles sont deux arêtes où (a_i,b_i)=(a_j,b_j) ou (a_i,b_i)=(b_j,a_j) (1≤i<j≤M).
+Un graphe connecté est un graphe où il existe un chemin entre chaque paire de sommets différents.
+Trouvez le nombre d'arêtes qui ne sont pas contenues dans un chemin le plus court entre deux sommets différents.  
+
+Contraintes
+2≤N≤100
+N-1≤M≤min(N(N-1)/2,1000)
+1≤a_i,b_i≤N
+1≤c_i≤1000
+c_i est un entier.
+Le graphe donné ne contient pas d'auto-boucles ni d'arêtes doubles.
+Le graphe donné est connecté.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N M
+a_1 b_1 c_1
+a_2 b_2 c_2
+:
+a_M b_M c_M
+
+Sortie
+Affiche le nombre d'arêtes du graphe qui ne sont pas contenues dans un chemin le plus court entre deux sommets différents.
+
+Exemple d'entrée 1
+3 3
+1 2 1
+1 3 1
+2 3 3
+
+Exemple de sortie 1
+1
+Dans le graphe donné, les plus courts chemins entre toutes les paires de sommets différents sont les suivants :
+Le chemin le plus court entre le sommet 1 et le sommet 2 est : sommet 1 → sommet 2, avec une longueur de 1.
+Le plus court chemin du sommet 1 au sommet 3 est : sommet 1 → sommet 3, avec une longueur de 1.
+Le plus court chemin du sommet 2 au sommet 1 est : sommet 2 → sommet 1, de longueur 1.
+Le plus court chemin du sommet 2 au sommet 3 est : sommet 2 → sommet 1 → sommet 3, de longueur 2.
+Le chemin le plus court du sommet 3 au sommet 1 est : sommet 3 → sommet 1, avec une longueur de 1.
+Le chemin le plus court du sommet 3 au sommet 2 est : sommet 3 → sommet 1 → sommet 2, avec une longueur de 2.
+Ainsi, la seule arête qui n'est contenue dans aucun chemin le plus court est l'arête de longueur 3 reliant les sommets 2 et 3, et la sortie doit donc être 1.
+
+Exemple d'entrée 2
+3 2
+1 2 1
+2 3 1
+
+Échantillon de sortie 2
+0
+Chaque arête est contenue dans un chemin le plus court entre deux sommets différents.

@@ -1,0 +1,27 @@
+Énoncé du problème
+Sur la base d'un certain critère, Snuke a divisé les nombres entiers de 1 à 12 en trois groupes, comme le montre la figure ci-dessous.
+Étant donné deux entiers x et y (1 ≤ x < y ≤ 12), déterminez s'ils appartiennent au même groupe.
+
+
+Contraintes
+x et y sont des entiers.
+1 ≤ x < y ≤ 12
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+x y
+
+Sortie
+Si x et y appartiennent au même groupe, on imprime Oui ; sinon, on imprime Non.
+
+Exemple d'entrée 1
+1 3
+
+Exemple de sortie 1
+Oui
+
+Entrée échantillon 2
+2 4
+
+Échantillon de sortie 2
+Non

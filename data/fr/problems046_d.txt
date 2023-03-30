@@ -1,0 +1,37 @@
+Énoncé du problème
+Le cerf AtCoDeer et son ami TopCoDeer jouent à un jeu.
+Le jeu consiste en N tours.
+A chaque tour, chaque joueur joue l'un des deux gestes, Pierre et Papier, comme dans Pierre-Papier-Ciseaux, sous la condition suivante :
+(※) Après chaque tour, (le nombre de fois où le joueur a joué Paper)≦(le nombre de fois où le joueur a joué Rock).
+Le score de chaque joueur est calculé par (le nombre de tours où le joueur gagne) - (le nombre de tours où le joueur perd), où le résultat de chaque tour est déterminé par les règles de Pierre-Papier-Ciseaux.
+(Pour ceux qui ne connaissent pas le jeu de la pierre-papier-ciseaux : Si un joueur joue à la pierre et l'autre au papier, ce dernier gagnera et le premier perdra. Si les deux joueurs jouent le même geste, il y a égalité et aucun des deux joueurs ne gagne ni ne perd).
+Grâce à son pouvoir surnaturel, AtCoDeer a pu prévoir le geste que TopCoDeer jouera à chacun des N tours, avant le début de la partie.
+Planifiez le geste d'AtCoDeer à chaque tour pour maximiser le score d'AtCoDeer.
+Le geste que TopCoDeer jouera à chaque tour est donné par une chaîne de caractères s. Si le i-ième (1≦i≦N) caractère de s est g, TopCoDeer jouera Rock au i-ième tour. De même, si le i-ième (1≦i≦N) caractère de s est p, TopCoDeer jouera Paper au i-ème tour.
+
+Contraintes
+1≦N≦10^5
+N=|s|
+Chaque caractère de s est g ou p.
+Les gestes représentés par s satisfont à la condition (※).
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+Imprime le score maximum possible de l'AtCoDeer.
+
+Exemple d'entrée 1
+gpg
+
+Exemple de sortie 1
+0
+Le fait de jouer le même geste que l'adversaire à chaque tour permet d'obtenir le score de 0, qui est le score maximum possible.
+
+Exemple d'entrée 2
+ggppgggpgg
+
+Exemple de sortie 2
+2
+Par exemple, imaginons que l'on joue les gestes dans l'ordre suivant : Pierre, Papier, Pierre, Papier, Pierre, Pierre, Papier, Papier, Pierre, Papier. Cette stratégie permet de remporter trois victoires et de subir une défaite, ce qui donne un score de 2, soit le score maximal possible.

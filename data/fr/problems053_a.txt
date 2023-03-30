@@ -1,0 +1,28 @@
+Énoncé du problème
+Smeke a décidé de participer au concours AtCoder Beginner Contest (ABC) si sa note actuelle est inférieure à 1200, et de participer au concours AtCoder Regular Contest (ARC) dans le cas contraire.
+On vous donne la note actuelle de Smeke, x. Imprimez ABC si Smeke participera à ABC, et imprimez ARC sinon.
+
+Contraintes
+1 ≦ x ≦ 3000
+x est un nombre entier.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+x
+
+Sortie
+Imprime la réponse.
+
+Exemple d'entrée 1
+1000
+
+Exemple de sortie 1
+ABC
+Le courant nominal de Smeke est inférieur à 1200, la sortie devrait donc être ABC.
+
+Exemple d'entrée 2
+2000
+
+Exemple de sortie 2
+ARC
+Le courant nominal de Smeke n'est pas inférieur à 1200, la sortie devrait donc être ARC.

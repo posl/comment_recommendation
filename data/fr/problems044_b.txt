@@ -1,0 +1,29 @@
+Énoncé du problème
+Soit w une chaîne de caractères composée de lettres minuscules.
+Nous dirons que w est belle si la condition suivante est remplie :
+Chaque lettre minuscule de l'alphabet anglais apparaît un nombre pair de fois dans w.
+On vous donne la chaîne w. Déterminez si w est belle.
+
+Contraintes
+1 ≦ |w| ≦ 100
+w est composé de lettres minuscules (a-z).
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+w
+
+Sortie
+Imprimer Oui si w est beau. Imprimer Non sinon.
+
+Exemple d'entrée 1
+abaccaba
+
+Exemple de sortie 1
+Oui
+a apparaît quatre fois, b apparaît deux fois, c apparaît deux fois et les autres lettres n'apparaissent pas.
+
+Exemple d'entrée 2
+hthth
+
+Exemple de sortie 2
+Non

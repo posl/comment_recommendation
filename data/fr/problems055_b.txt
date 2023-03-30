@@ -1,0 +1,36 @@
+Énoncé du problème
+Snuke adore faire de l'exercice. Il s'entraîne maintenant N fois.
+Avant de commencer à faire de l'exercice, sa puissance est de 1. Après avoir fait de l'exercice pour la i-ième fois, sa puissance est multipliée par i.
+Trouvez la puissance de Snuke après qu'il se soit exercé N fois. Comme la réponse peut être très grande, imprimez la réponse modulo 10^{9}+7.
+
+Contraintes
+1 ≤ N ≤ 10^{5}
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+
+Sortie
+Affiche la réponse modulo 10^{9}+7.
+
+Exemple d'entrée 1
+3
+
+Exemple de sortie 1
+6
+Après le premier exercice de Snuke, son pouvoir est multiplié par 1 et devient 1.
+Après le deuxième exercice de Snuke, sa puissance est multipliée par 2 et devient 2.
+Après le troisième exercice de Snuke, sa puissance est multipliée par 3 et devient 6.
+
+Exemple d'entrée 2
+10
+
+Exemple de sortie 2
+3628800
+
+Exemple d'entrée 3
+100000
+
+Échantillon de sortie 3
+457992974
+Imprimer la réponse modulo 10^{9}+7.

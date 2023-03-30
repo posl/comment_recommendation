@@ -1,0 +1,27 @@
+Énoncé du problème
+On vous donne deux entiers A et B en entrée. Produisez
+ la valeur de A + B.
+Cependant, si A + B est égal ou supérieur à 10, il faut produire une erreur.
+
+Contraintes
+A et B sont des entiers.
+1 ≤ A, B ≤ 9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B
+
+Sortie
+Si A + B est égal ou supérieur à 10, afficher la chaîne d'erreur (sensible à la casse) ; sinon, afficher la valeur de A + B.
+
+Exemple d'entrée 1
+6 3
+
+Exemple de sortie 1
+9
+
+Exemple d'entrée 2
+6 4
+
+Exemple de sortie 2
+erreur

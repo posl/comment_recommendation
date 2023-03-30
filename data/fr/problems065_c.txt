@@ -1,0 +1,40 @@
+Énoncé du problème
+Snuke a N chiens et M singes. Il veut qu'ils soient alignés.
+Comme le dit un dicton japonais, ces chiens et ces singes sont en mauvais termes. ("ken'en no naka", littéralement "la relation des chiens et des singes", signifie une relation de haine mutuelle). Snuke tente de les réconcilier en disposant les animaux de façon à ce qu'il n'y ait ni deux chiens adjacents, ni deux singes adjacents.
+Combien y a-t-il de dispositions de ce type ? Trouvez le nombre modulo 10^9+7 (puisque les animaux ne peuvent pas comprendre les nombres plus grands).
+Ici, on peut distinguer les chiens et les singes. De même, les deux arrangements qui résultent de l'inversion de l'un par rapport à l'autre sont distingués.
+
+Contraintes
+1 ≤ N,M ≤ 10^5
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N M
+
+Sortie
+Affiche le nombre d'arrangements possibles, modulo 10^9+7.
+
+Exemple d'entrée 1
+2 2
+
+Exemple de sortie 1
+8
+Nous désignerons les chiens par A et B, et les singes par C et D. Il y a huit arrangements possibles : ACBD, ADBC, BCAD, BDAC, CADB, CBDA, DACB et DBCA.
+
+Exemple d'entrée 2
+3 2
+
+Exemple de sortie 2
+12
+
+Exemple d'entrée 3
+1 8
+
+Échantillon de sortie 3
+0
+
+Exemple d'entrée 4
+100000 100000
+
+Exemple de sortie 4
+530123477

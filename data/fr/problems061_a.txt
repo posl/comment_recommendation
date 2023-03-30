@@ -1,0 +1,34 @@
+Énoncé du problème
+On vous donne trois nombres entiers A, B et C.
+Déterminez si C est supérieur ou égal à A et supérieur ou égal à B.
+
+Contraintes
+-100≤A,B,C≤100
+A, B et C sont tous des entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :  
+A B C
+
+Sortie
+Si la condition est remplie, la mention Oui est imprimée ; sinon, la mention Non est imprimée.
+
+Exemple d'entrée 1
+1 3 2
+
+Exemple de sortie 1
+Oui
+C=2 n'est pas inférieur à A=1 et n'est pas supérieur à B=3, et la sortie doit donc être Oui.
+
+Exemple d'entrée 2
+6 5 4
+
+Exemple de sortie 2
+Non
+C=4 est inférieur à A=6, et la sortie doit donc être Non.
+
+Exemple d'entrée 3
+2 2 2
+
+Exemple de sortie 3
+Oui

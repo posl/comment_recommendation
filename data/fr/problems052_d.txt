@@ -1,0 +1,55 @@
+Énoncé du problème
+Il y a N villes sur une ligne est-ouest.
+Les villes sont numérotées de 1 à N, dans l'ordre d'ouest en est.
+Chaque point de la ligne a une coordonnée unidimensionnelle, et un point situé plus à l'est a une plus grande valeur de coordonnée.
+La coordonnée de la ville i est X_i.
+Vous êtes maintenant dans la ville 1 et vous voulez visiter toutes les autres villes.
+Vous avez deux possibilités pour vous déplacer :
+Marcher sur la ligne.
+Votre niveau de fatigue augmente de A chaque fois que vous parcourez une distance de 1, quelle que soit la direction.
+Vous téléporter à l'endroit de votre choix.
+Votre niveau de fatigue augmente de B, quelle que soit la distance parcourue.
+Trouvez l'augmentation totale minimale possible de votre niveau de fatigue lorsque vous visitez toutes les villes de ces deux façons.
+
+Contraintes
+Toutes les valeurs d'entrée sont des nombres entiers.
+2≤N≤10^5
+1≤X_i≤10^9
+Pour tous les i(1≤i≤N-1), X_i<X_{i+1}.
+1≤A≤10^9
+1≤B≤10^9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N A B
+X_1 X_2 ... X_N
+
+Sortie
+Imprimez l'augmentation totale minimale possible de votre niveau de fatigue lorsque vous visitez toutes les villes.
+
+Exemple d'entrée 1
+4 2 5
+1 2 5 7
+
+Exemple de sortie 1
+11
+Depuis la ville 1, marchez sur une distance de 1 jusqu'à la ville 2, puis téléportez-vous jusqu'à la ville 3, puis marchez sur une distance de 2 jusqu'à la ville 4.
+L'augmentation totale de votre niveau de fatigue dans ce cas est de 2×1+5+2×2=11, ce qui est la valeur minimale possible.
+
+Exemple d'entrée 2
+7 1 100
+40 43 45 105 108 115 124
+
+Exemple de sortie 2
+84
+Depuis la ville 1, marchez jusqu'à la ville 7.
+L'augmentation totale de votre niveau de fatigue dans ce cas est de 84, ce qui est la valeur minimale possible.
+
+Exemple d'entrée 3
+7 1 2
+24 35 40 68 72 99 103
+
+Exemple de sortie 3
+12
+Visitez toutes les villes dans n'importe quel ordre en vous téléportant six fois.
+L'augmentation totale de votre niveau de fatigue dans ce cas est de 12, ce qui est la valeur minimale possible.

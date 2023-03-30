@@ -1,0 +1,36 @@
+Énoncé du problème
+Iroha est très attachée aux chiffres. Il y a K chiffres qu'elle n'aime pas : D_1, D_2, ..., D_K.
+Elle est en train de faire des achats et de payer à la caisse.
+Son total est de N yens (la monnaie du Japon), elle doit donc remettre au moins N yens à la caissière (et éventuellement recevoir la monnaie).
+Cependant, comme nous l'avons déjà mentionné, elle est très pointilleuse sur les chiffres. Lorsqu'elle remet de l'argent au caissier, la notation décimale du montant ne doit pas contenir de chiffres qu'elle n'aime pas. Dans ces conditions, elle remettra le montant minimum d'argent.
+Trouvez la somme d'argent qu'elle remettra à la caissière.
+
+Contraintes
+ 1 ≦ N < 10000
+ 1 ≦ K < 10
+ 0 ≦ D_1 < D_2 < ... < D_K≦9
+{D_1,D_2,...,D_K} ≠ {1,2,3,4,5,6,7,8,9}
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N K
+D_1 D_2 ... D_K
+
+Sortie
+Imprimez la somme d'argent qu'Iroha remettra au caissier.
+
+Exemple d'entrée 1
+1000 8
+1 3 4 5 6 7 8 9
+
+Exemple de sortie 1
+2000
+Elle n'aime pas tous les chiffres sauf 0 et 2.
+Le plus petit entier supérieur ou égal à N=1000 dont la notation décimale ne contient que 0 et 2 est 2000.
+
+Exemple d'entrée 2
+9999 1
+0
+
+Échantillon de sortie 2
+9999

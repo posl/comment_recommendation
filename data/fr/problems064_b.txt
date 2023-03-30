@@ -1,0 +1,34 @@
+Énoncé du problème
+Il ne reste que six mois avant Noël, et le renne AtCoDeer est en train de préparer son voyage pour livrer des cadeaux.
+Il y a N maisons le long de la rue TopCoDeer. La i-ième maison est située à la coordonnée a_i. Il a décidé de livrer des cadeaux à toutes ces maisons.
+Trouvez la distance minimale à parcourir lorsque AtCoDeer peut commencer et terminer son voyage à n'importe quelle position.  
+
+Contraintes
+1 ≤ N ≤ 100
+0 ≤ a_i ≤ 1000
+a_i est un nombre entier.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+a_1 a_2 ... a_N
+
+Sortie
+Imprime la distance minimale à parcourir.  
+
+Exemple d'entrée 1
+4
+2 3 7 9
+
+Exemple de sortie 1
+7
+La distance de déplacement de 7 peut être atteinte en partant de la coordonnée 9 et en se rendant directement à la coordonnée 2.
+Il n'est pas possible d'obtenir une distance inférieure à 7, c'est pourquoi 7 est la distance minimale à parcourir.  
+
+Exemple d'entrée 2
+8
+3 1 4 1 5 9 2 6
+
+Exemple de sortie 2
+8
+Il peut y avoir plus d'une maison à un endroit donné.  

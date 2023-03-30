@@ -1,0 +1,32 @@
+Énoncé du problème
+Étant donné une chaîne de caractères t, nous la qualifierons de déséquilibrée si et seulement si la longueur de t est au moins égale à 2, et si plus de la moitié des lettres de t sont identiques. Par exemple, voodoo et melee sont tous deux déséquilibrés, alors que ni noon ni a ne le sont.
+On vous donne une chaîne de caractères s composée de lettres minuscules. Déterminez s'il existe une sous-chaîne (contiguë) de s qui n'est pas équilibrée. Si la réponse est positive, montrez une position où une telle sous-chaîne apparaît dans s.
+
+Contraintes
+2 ≦ |s| ≦ 10^5
+s est composé de lettres minuscules.
+
+Score partiel
+200 points seront attribués pour la réussite de l'ensemble de tests satisfaisant à 2 ≦ N ≦ 100.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+S'il n'existe pas de sous-chaîne déséquilibrée de s, imprimer -1 -1.
+S'il existe une sous-chaîne déséquilibrée de s, l'une de ces sous-chaînes sera s_a s_{a+1} ... s_{b} (1 ≦ a < b ≦ |s|), et imprimera a b. S'il existe plusieurs sous-chaînes de ce type, l'une d'entre elles sera acceptée.
+
+Exemple d'entrée 1
+nécessaire
+
+Exemple de sortie 1
+2 5
+La chaîne s_2 s_3 s_4 s_5 = eede est déséquilibrée. Il existe également d'autres sous-chaînes déséquilibrées. Par exemple, la sortie 2 6 sera également acceptée.
+
+Exemple d'entrée 2
+atcoder
+
+Exemple de sortie 2
+-1 -1
+La chaîne atcoder ne contient aucune sous-chaîne non équilibrée.

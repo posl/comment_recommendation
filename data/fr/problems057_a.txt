@@ -1,0 +1,37 @@
+Énoncé du problème
+Dolphin adore les concours de programmation. Aujourd'hui, il va participer à un concours sur AtCoder.
+Dans ce pays, on utilise l'horloge de 24 heures. Par exemple, 21 heures est appelé "21 o'clock".
+L'heure actuelle est A, et un concours commencera dans exactement B heures.
+Quand le concours commencera-t-il ? Répondez en 24 heures.
+
+Contraintes
+0 ≦ A,B ≦ 23
+A et B sont des nombres entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+A B
+
+Sortie
+Imprimer l'heure du début du concours en heure de 24 heures.
+
+Exemple d'entrée 1
+9 12
+
+Exemple de sortie 1
+21
+Dans cette entrée, l'heure actuelle est 9 heures, et 12 heures plus tard, il sera 21 heures en heure de 24 heures.
+
+Exemple d'entrée 2
+19 0
+
+Exemple de sortie 2
+19
+Le concours vient de commencer.
+
+Exemple d'entrée 3
+23 2
+
+Exemple de sortie 3
+1
+Le concours débutera le lendemain à 13 heures.

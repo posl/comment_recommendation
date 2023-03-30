@@ -1,0 +1,71 @@
+Énoncé du problème
+Il y a N villes et M routes.
+La i-ième route (1≤i≤M) relie deux villes a_i et b_i (1≤a_i,b_i≤N) de manière bidirectionnelle.
+Il peut y avoir plus d'une route qui relie la même paire de deux villes.
+Pour chaque ville, combien de routes sont connectées à la ville ?
+
+Contraintes
+2≤N,M≤50
+1≤a_i,b_i≤N
+a_i ≠ b_i
+Toutes les valeurs d'entrée sont des nombres entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :  
+N M
+a_1 b_1
+:
+a_M b_M
+
+Sortie
+Imprimez la réponse en N lignes.
+Dans la i-ième ligne (1≤i≤N), imprimez le nombre de routes connectées à la ville i.
+
+Exemple d'entrée 1
+4 3
+1 2
+2 3
+1 4
+
+Exemple de sortie 1
+2
+2
+1
+1
+La ville 1 est reliée à la première et à la troisième route.
+La ville 2 est reliée à la première et à la deuxième route.
+La ville 3 est reliée à la deuxième route.
+La ville 4 est reliée à la troisième route.
+
+Exemple d'entrée 2
+2 5
+1 2
+2 1
+1 2
+2 1
+1 2
+
+Exemple de sortie 2
+5
+5
+
+Exemple d'entrée 3
+8 8
+1 2
+3 4
+1 5
+2 8
+3 7
+5 2
+4 1
+6 8
+
+Exemple de sortie 3
+3
+3
+2
+2
+2
+1
+1
+2

@@ -1,0 +1,56 @@
+Énoncé du problème
+Takahashi veut prendre du muscle et décide de s'entraîner à AtCoder Gym.
+L'appareil de musculation de la salle de sport a N boutons, et exactement un de ces boutons est "alléger".
+Ces boutons sont numérotés de 1 à N.
+Lorsque le bouton i est éclairé et que vous appuyez dessus, la lumière s'éteint et le bouton a_i est éclairé. Il est possible que i=a_i.
+Lorsque le bouton i n'est pas éclairé, il ne se passe rien si l'on appuie dessus.
+Au départ, le bouton 1 est allumé. Takahashi veut arrêter d'appuyer sur les boutons lorsque le bouton 2 est allumé.
+Déterminez si cela est possible. Si la réponse est positive, trouver le nombre minimum de fois qu'il doit appuyer sur les boutons.
+
+Contraintes
+2 ≤ N ≤ 10^5
+1 ≤ a_i ≤ N
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+a_1
+a_2
+:
+a_N
+
+Sortie
+Affichez -1 s'il est impossible d'allumer le bouton 2.
+Sinon, imprimer le nombre minimum de fois qu'il faut appuyer sur les boutons pour éclairer le bouton 2.
+
+Exemple d'entrée 1
+3
+3
+1
+2
+
+Exemple de sortie 1
+2
+Appuyez sur le bouton 1, puis sur le bouton 3.
+
+Exemple d'entrée 2
+4
+3
+4
+1
+2
+
+Exemple de sortie 2
+-1
+En appuyant sur le bouton 1, le bouton 3 s'allume, et vice versa. Le bouton 2 ne s'allume donc jamais.
+
+Exemple d'entrée 3
+5
+3
+3
+4
+2
+4
+
+Exemple de sortie 3
+3

@@ -1,0 +1,36 @@
+Énoncé du problème
+Deux renards, Jiro et Saburo, jouent à un jeu appelé Reversi 1D. Ce jeu se joue sur un plateau, avec des pierres noires et blanches. Sur le plateau, les pierres sont placées en rangée et chaque joueur place une nouvelle pierre à l'une des extrémités de la rangée. Comme dans le jeu original de Reversi, lorsqu'une pierre blanche est placée, toutes les pierres noires situées entre la nouvelle pierre blanche et une autre pierre blanche se transforment en pierres blanches, et vice versa.
+Au milieu d'une partie, un événement survient et Saburo doit quitter la partie. L'état du plateau à ce moment-là est décrit par une chaîne de caractères S. Il y a |S| (la longueur de S) pierres sur le plateau, et chaque caractère dans S représente la couleur de la i-ième (1 ≦ i ≦ |S|) pierre à partir de la gauche. Si le i-ième caractère de S est B, cela signifie que la couleur de la pierre correspondante sur le plateau est noire. De même, si le i-ème caractère de S est W, cela signifie que la couleur de la pierre correspondante est blanche.
+Jiro veut que toutes les pierres du plateau soient de la même couleur. Pour ce faire, il placera de nouvelles pierres sur le plateau conformément aux règles. Trouvez le nombre minimum de nouvelles pierres qu'il doit placer.
+
+Contraintes
+1 ≦ |S| ≦ 10^5
+Chaque caractère de S est B ou W.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S
+
+Sortie
+Imprimez le nombre minimum de nouvelles pierres que Jiro doit placer pour atteindre son objectif.
+
+Exemple d'entrée 1
+BBBWW
+
+Exemple de sortie 1
+1
+En plaçant une nouvelle pierre noire à l'extrémité droite de la rangée de pierres, toutes les pierres blanches deviennent noires. De même, en plaçant une nouvelle pierre blanche à l'extrémité gauche de la rangée de pierres, toutes les pierres noires deviendront blanches.
+Dans les deux cas, l'objectif de Jiro peut être atteint en plaçant une pierre.
+
+Exemple d'entrée 2
+WWWWWW
+
+Exemple de sortie 2
+0
+Si toutes les pierres sont déjà de la même couleur, aucune nouvelle pierre n'est nécessaire.
+
+Exemple d'entrée 3
+WBWBWBWBWB
+
+Exemple de sortie 3
+9

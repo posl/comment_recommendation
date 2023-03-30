@@ -1,0 +1,64 @@
+Énoncé du problème
+Il existe un rectangle dans le plan xy, dont le coin inférieur gauche est situé à (0, 0) et le coin supérieur droit à (W, H). Chacun de ses côtés est parallèle à l'axe x ou à l'axe y. Initialement, toute la région à l'intérieur du rectangle est peinte en blanc.
+Snuke a tracé N points dans le rectangle. La coordonnée du i-ième (1 ≦ i ≦ N) point était (x_i, y_i).
+Il a ensuite créé une séquence entière a de longueur N et, pour chaque 1 ≦ i ≦ N, il a peint en noir une région à l'intérieur du rectangle, comme suit :
+Si a_i = 1, il a peint la région satisfaisant x < x_i à l'intérieur du rectangle.
+Si a_i = 2, il a peint la région satisfaisant x > x_i à l'intérieur du rectangle.
+Si a_i = 3, il a peint la région satisfaisant y < y_i à l'intérieur du rectangle.
+Si a_i = 4, il a peint la région satisfaisant y > y_i à l'intérieur du rectangle.
+Trouvez l'aire de la région blanche à l'intérieur du rectangle après qu'il a fini de peindre.
+
+Contraintes
+1 ≦ W, H ≦ 100
+1 ≦ N ≦ 100
+0 ≦ x_i ≦ W (1 ≦ i ≦ N)
+0 ≦ y_i ≦ H (1 ≦ i ≦ N)
+W, H (21:32, ajouté), x_i et y_i sont des nombres entiers.
+a_i (1 ≦ i ≦ N) est 1, 2, 3 ou 4.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+W H N
+x_1 y_1 a_1
+x_2 y_2 a_2
+:
+x_N y_N a_N
+
+Sortie
+Imprimer la zone blanche à l'intérieur du rectangle après que Snuke a fini de peindre.
+
+Exemple d'entrée 1
+5 4 2
+2 1 1
+3 3 4
+
+Exemple de sortie 1
+9
+La figure ci-dessous montre le rectangle avant que Snuke ne commence à peindre.
+
+Tout d'abord, comme (x_1, y_1) = (2, 1) et a_1 = 1, il peint la région satisfaisant x < 2 à l'intérieur du rectangle :
+
+Ensuite, comme (x_2, y_2) = (3, 3) et a_2 = 4, il peint la région satisfaisant y > 3 à l'intérieur du rectangle :
+
+L'aire de la région blanche à l'intérieur du rectangle est maintenant de 9.
+
+Exemple d'entrée 2
+5 4 3
+2 1 1
+3 3 4
+1 4 2
+
+Exemple de sortie 2
+0
+Il est possible que toute la région à l'intérieur du rectangle soit peinte en noir.
+
+Exemple d'entrée 3
+10 10 5
+1 6 1
+4 1 3
+6 9 4
+9 4 2
+3 1 3
+
+Exemple de sortie 3
+64

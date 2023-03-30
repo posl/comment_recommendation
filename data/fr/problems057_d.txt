@@ -1,0 +1,52 @@
+Énoncé du problème
+On vous donne N objets.
+La valeur du i-ème élément (1 ≦ i ≦ N) est v_i.
+Vous devez sélectionner au moins A et au plus B de ces objets.
+Sous cette condition, trouvez la moyenne arithmétique maximale possible des valeurs des éléments sélectionnés.
+De plus, trouvez le nombre de façons de sélectionner les éléments de sorte que la moyenne des valeurs des éléments sélectionnés soit maximisée.  
+
+Contraintes
+1 ≦ N ≦ 50
+1 ≦ A,B ≦ N
+1 ≦ v_i ≦ 10^{15}
+Chaque v_i est un nombre entier.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N A B
+v_1
+v_2
+...
+v_N
+
+Sortie
+Imprimez deux lignes.
+La première ligne doit contenir la moyenne arithmétique maximale possible des valeurs des éléments sélectionnés. La sortie doit être considérée comme correcte si l'erreur absolue ou relative est au plus égale à 10^{-6}.
+La deuxième ligne doit contenir le nombre de façons de sélectionner les éléments de sorte que la moyenne des valeurs des éléments sélectionnés soit maximisée.
+
+Exemple d'entrée 1
+5 2 2
+1 2 3 4 5
+
+Exemple de sortie 1
+4.500000
+1
+La moyenne des valeurs des éléments sélectionnés sera maximisée lors de la sélection des quatrième et cinquième éléments. Par conséquent, la première ligne de la sortie doit contenir 4,5.
+Il n'y a pas d'autre moyen de sélectionner les éléments de manière à ce que la moyenne des valeurs soit de 4,5, et la deuxième ligne de la sortie doit donc contenir 1.
+
+Exemple d'entrée 2
+4 2 3
+10 20 10 10
+
+Exemple de sortie 2
+15.000000
+3
+Il peut y avoir plusieurs façons de sélectionner les éléments de manière à ce que la moyenne des valeurs soit maximisée.
+
+Exemple d'entrée 3
+5 1 5
+1000000000000000 999999999999999 999999999999998 999999999999997 999999999999996
+
+Exemple de sortie 3
+1000000000000000.000000
+1

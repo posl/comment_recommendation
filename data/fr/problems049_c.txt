@@ -1,0 +1,36 @@
+Énoncé du problème
+On vous donne une chaîne de caractères S composée de lettres minuscules anglaises.
+Une autre chaîne T est initialement vide.
+Déterminez s'il est possible d'obtenir S = T en effectuant l'opération suivante un nombre arbitraire de fois :
+Ajouter l'un des éléments suivants à la fin de T : dream, dreamer, erase et eraser.
+
+Contraintes
+1≦|S|≦10^5
+S est composé de lettres minuscules anglaises.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S
+
+Sortie
+S'il est possible d'obtenir S = T, imprimer YES. Dans le cas contraire, afficher NO.
+
+Exemple d'entrée 1
+flux effacé
+
+Exemple de sortie 1
+OUI
+Ajouter erase et dream à la fin de T dans cet ordre, pour obtenir S = T.
+
+Exemple d'entrée 2
+dreameraser
+
+Exemple de sortie 2
+OUI
+Ajoutez rêve et gomme à la fin de T dans cet ordre, pour obtenir S = T.
+
+Exemple d'entrée 3
+rêveur
+
+Exemple de sortie 3
+NO

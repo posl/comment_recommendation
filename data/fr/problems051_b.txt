@@ -1,0 +1,36 @@
+Énoncé du problème
+On vous donne deux entiers K et S.
+Trois variables X, Y et Z prennent des valeurs entières satisfaisant 0≤X,Y,Z≤K.
+Combien y a-t-il d'affectations différentes de valeurs à X, Y et Z telles que X + Y + Z = S ?  
+
+Contraintes
+2≤K≤2500
+0≤S≤3K
+K et S sont des nombres entiers.  
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+K S
+
+Sortie
+Affiche le nombre de triplets de X, Y et Z qui satisfont la condition.
+
+Exemple d'entrée 1
+2 2
+
+Exemple de sortie 1
+6
+Il y a six triplets de X, Y et Z qui satisfont la condition :
+X = 0, Y = 0, Z = 2
+X = 0, Y = 2, Z = 0
+X = 2, Y = 0, Z = 0
+X = 0, Y = 1, Z = 1
+X = 1, Y = 0, Z = 1
+X = 1, Y = 1, Z = 0
+
+Exemple d'entrée 2
+5 15
+
+Exemple de sortie 2
+1
+La valeur maximale de X + Y + Z est 15, obtenue par un triple de X, Y et Z.

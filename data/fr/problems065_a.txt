@@ -1,0 +1,37 @@
+Énoncé du problème
+Takahashi a un estomac solide. Il n'a jamais mal à l'estomac lorsqu'il mange un aliment dont la date de péremption est antérieure de X jours au maximum.
+Par contre, il a mal à l'estomac si la date de péremption de l'aliment est antérieure de X+1 jours ou plus.
+Pour le reste, il trouve l'aliment délicieux s'il le mange au plus tard à la date de péremption. Dans le cas contraire, il ne le trouve pas délicieux.
+Takahashi a acheté de la nourriture A jours avant la date de péremption, et l'a mangée B jours après l'avoir achetée.
+Ecrivez un programme qui produit délicieux s'il l'a trouvé délicieux, sûr s'il ne l'a pas trouvé délicieux mais n'a pas non plus eu mal au ventre, et dangereux s'il a eu mal au ventre.
+
+Contraintes
+1 ≤ X,A,B ≤ 10^9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+X A B
+
+Sortie
+Imprimez délicieux si Takahashi a trouvé la nourriture délicieuse ; imprimez sans danger s'il ne l'a pas trouvée délicieuse et n'a pas eu mal à l'estomac ; imprimez dangereux s'il a eu mal à l'estomac.
+
+Exemple d'entrée 1
+4 3 6
+
+Exemple de sortie 1
+sûr
+Il a mangé l'aliment trois jours après la date de péremption. Ce n'était ni délicieux ni dangereux pour lui.
+
+Exemple d'entrée 2
+6 5 1
+
+Exemple de sortie 2
+délicieux
+Il a mangé les aliments avant la date de péremption. C'était délicieux pour lui.
+
+Exemple d'entrée 3
+3 7 12
+
+Exemple de sortie 3
+dangereux
+Il a mangé l'aliment cinq jours après la date de péremption. C'était dangereux pour lui.

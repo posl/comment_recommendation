@@ -1,0 +1,57 @@
+Énoncé du problème
+Tak possède N cartes. Sur la i-ième (1 ≦ i ≦ N) carte est écrit un entier x_i.
+Il choisit une ou plusieurs cartes parmi ces N cartes, de façon à ce que la moyenne des entiers écrits sur les cartes choisies soit exactement A.
+De combien de façons peut-il faire sa sélection ?
+
+Contraintes
+1 ≦ N ≦ 50
+1 ≦ A ≦ 50
+1 ≦ x_i ≦ 50
+N,A,x_i sont des nombres entiers.
+
+Note partielle
+200 points seront attribués pour la réussite de l'ensemble de tests satisfaisant 1 ≦ N ≦ 16.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N A
+x_1 x_2 ... x_N
+
+Sortie
+Affiche le nombre de façons de sélectionner les cartes de façon à ce que la moyenne des entiers écrits soit exactement A.
+
+Exemple d'entrée 1
+4 8
+7 9 8 9
+
+Exemple de sortie 1
+5
+Voici les 5 façons de sélectionner les cartes de façon à ce que la moyenne soit de 8 :
+Sélectionner la troisième carte.
+Sélectionner la première et la deuxième carte.
+Sélectionner la première et la quatrième carte.
+Sélectionner les cartes 1, 2 et 3.
+Choisir la première, la troisième et la quatrième carte.
+
+
+Exemple d'entrée 2
+3 8
+6 6 9
+
+Exemple de sortie 2
+0
+
+Exemple d'entrée 3
+8 5
+3 6 2 8 7 6 5 9
+
+Exemple de sortie 3
+19
+
+Exemple d'entrée 4
+33 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+
+Exemple de sortie 4
+8589934591
+La réponse peut ne pas tenir dans un entier de 32 bits.

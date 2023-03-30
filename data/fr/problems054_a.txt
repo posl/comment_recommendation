@@ -1,0 +1,46 @@
+Énoncé du problème
+Alice et Bob jouent au One Card Poker.
+Le poker à une carte est un jeu à deux joueurs utilisant des cartes à jouer.  
+Dans ce jeu, chaque carte représente un nombre entier compris entre 1 et 13 inclus.
+La force d'une carte est déterminée par le nombre qui y est inscrit, comme suit :  
+Faible 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10 < 11 < 12 < 13 < 1 Forte
+Le poker à une carte se joue comme suit :  
+Chaque joueur choisit une carte dans le jeu. La carte choisie devient la main du joueur.
+Les joueurs se révèlent mutuellement leur main. Le joueur dont la carte est la plus forte gagne la partie.
+Si leurs cartes sont aussi fortes l'une que l'autre, le jeu se termine par un tirage au sort.  
+Vous observez Alice et Bob en train de jouer et vous pouvez voir leurs mains.
+Le nombre inscrit sur la carte d'Alice est A, et le nombre inscrit sur la carte de Bob est B.
+Ecrivez un programme pour déterminer le résultat du jeu.  
+
+Contraintes
+1≦A≦13
+1≦B≦13
+A et B sont des nombres entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B
+
+Sortie
+Imprimer Alice si Alice gagne. Imprimer Bob si Bob gagne. Imprimer Draw (tirage au sort) si le jeu sera tiré au sort.
+
+Exemple d'entrée 1
+8 6
+
+Exemple de sortie 1
+Alice
+8 est écrit sur la carte d'Alice, et 6 est écrit sur la carte de Bob.
+Alice a la carte la plus forte, et la sortie doit donc être Alice.
+
+Exemple d'entrée 2
+1 1
+
+Exemple de sortie 2
+Tirage au sort
+Puisque leurs cartes ont le même numéro, le jeu sera tiré au sort.
+
+Exemple d'entrée 3
+13 1
+
+Exemple de sortie 3
+Bob

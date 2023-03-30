@@ -1,0 +1,46 @@
+Énoncé du problème
+Soit N un entier positif.
+Il existe une suite numérique de longueur 3N, a = (a_1, a_2, ..., a_{3N}).
+Snuke construit une nouvelle séquence de longueur 2N, a', en enlevant exactement N éléments de a sans changer l'ordre des éléments restants.
+Le score de a' est défini comme suit : (la somme des éléments de la première moitié de a') - (la somme des éléments de la seconde moitié de a').
+Trouvez le score maximal possible de a'.
+
+Contraintes
+1 ≤ N ≤ 10^5
+a_i est un entier.
+1 ≤ a_i ≤ 10^9
+
+Score partiel
+Dans l'ensemble de test valant 300 points, N ≤ 1000.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+a_1 a_2 ... a_{3N}
+
+Sortie
+Affiche le score maximal possible de a'.
+
+Exemple d'entrée 1
+2
+3 1 4 1 5 9
+
+Exemple de sortie 1
+1
+Si l'on supprime a_2 et a_6, a' sera (3, 4, 1, 5), ce qui donne un score de (3 + 4) - (1 + 5) = 1.
+
+Exemple d'entrée 2
+1
+1 2 3
+
+Exemple de sortie 2
+-1
+Par exemple, lorsque a_1 est supprimé, a' sera (2, 3), ce qui donne un score de 2 - 3 = -1.
+
+Exemple d'entrée 3
+3
+8 2 2 7 4 6 5 3 8
+
+Exemple de sortie 3
+5
+Par exemple, si l'on supprime a_2, a_3 et a_9, a' sera (8, 7, 4, 6, 5, 3), ce qui donne un score de (8 + 7 + 4) - (6 + 5 + 3) = 5.

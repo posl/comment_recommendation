@@ -1,0 +1,31 @@
+Énoncé du problème
+Étant donné une lettre anglaise minuscule c, déterminez s'il s'agit d'une voyelle. L'alphabet anglais compte cinq voyelles : a, e, i, o et u.
+
+Contraintes
+c est une lettre minuscule anglaise.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+c
+
+Sortie
+Si c est une voyelle, la voyelle est imprimée. Sinon, il s'agit d'une consonne.
+
+Exemple d'entrée 1
+a
+
+Exemple de sortie 1
+voyelle
+Puisque a est une voyelle, imprimez voyelle.
+
+Exemple d'entrée 2
+z
+
+Exemple de sortie 2
+consonne
+
+Exemple d'entrée 3
+s
+
+Exemple de sortie 3
+consonne

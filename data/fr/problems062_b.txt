@@ -1,0 +1,39 @@
+Énoncé du problème
+On vous donne une image d'une hauteur de H pixels et d'une largeur de W pixels.
+Chaque pixel est représenté par une lettre anglaise minuscule.
+Le pixel situé à la i-ième ligne en partant du haut et à la j-ième colonne en partant de la gauche est a_{ij}.
+Placez une boîte autour de cette image et affichez le résultat. La boîte doit être composée de # et avoir une épaisseur de 1.
+
+Contraintes
+1 ≤ H, W ≤ 100
+a_{ij} est une lettre anglaise minuscule.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+H W
+a_{11} ... a_{1W}
+:
+a_{H1} ... a_{HW}
+
+Sortie
+Imprime l'image entourée d'une boîte composée de # et d'une épaisseur de 1.
+
+Exemple d'entrée 1
+2 3
+abc
+arc
+
+Exemple de sortie 1
+#####
+#abc#
+#arc#
+#####
+
+Exemple d'entrée 2
+1 1
+z
+
+Exemple de sortie 2
+###
+#z#
+###

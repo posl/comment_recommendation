@@ -1,0 +1,30 @@
+Énoncé du problème
+Snuke a un restaurant préféré.
+Le prix de tout repas servi dans ce restaurant est de 800 yens (la monnaie du Japon), et chaque fois qu'un client commande 15 repas, le restaurant lui reverse 200 yens.
+Jusqu'à présent, Snuke a commandé N repas au restaurant.
+Soit x yens la somme d'argent que Snuke a payée au restaurant et yens la somme d'argent que le restaurant a remboursée à Snuke.
+Trouvez x-y.
+
+Contraintes
+1 ≤ N ≤ 100
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+
+Sortie
+Imprimer la réponse.
+
+Exemple d'entrée 1
+20
+
+Exemple de sortie 1
+15800
+Jusqu'à présent, Snuke a payé 16000 yens et le restaurant a remboursé 200 yens. La réponse est donc 15800.
+
+Exemple d'entrée 2
+60
+
+Exemple de sortie 2
+47200
+Snuke a payé 48000 yens pour 60 repas et le restaurant lui a remboursé 800 yens.

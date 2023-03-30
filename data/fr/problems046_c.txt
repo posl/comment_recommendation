@@ -1,0 +1,57 @@
+Énoncé du problème
+Le cerf AtCoDeer regarde à la télévision un reportage rapide sur les résultats des élections.
+Deux candidats se présentent aux élections : Takahashi et Aoki.
+Le reportage indique le rapport entre les nombres actuels de voix obtenues par les deux candidats, mais pas les nombres réels de voix.
+AtCoDeer a vérifié le rapport N fois, et lorsqu'il l'a vérifié pour la i-ième (1≦i≦N) fois, le rapport était T_i:A_i.
+On sait que chaque candidat disposait d'au moins une voix lorsqu'il a vérifié le rapport pour la première fois.
+Trouver le nombre total minimum possible de voix obtenues par les deux candidats lorsqu'il a vérifié le rapport pour la N-ième fois.
+On peut supposer que le nombre de voix obtenues par chaque candidat ne diminue jamais.
+
+Contraintes
+1≦N≦1000
+1≦T_i,A_i≦1000 (1≦i≦N)
+T_i et A_i (1≦i≦N) sont premiers.
+On garantit que la réponse correcte est au plus 10^{18}.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+T_1 A_1
+T_2 A_2
+:
+T_N A_N
+
+Sortie
+Imprimer le nombre total minimum possible de votes obtenus par Takahashi et Aoki lorsque AtCoDeer a vérifié le rapport pour la N-ième fois.
+
+Exemple Entrée 1
+3
+2 3
+1 1
+3 2
+
+Exemple de sortie 1
+10
+Lorsque les nombres de voix obtenues par les deux candidats changent comme 2,3 → 3,3 → 6,4, le nombre total de voix à la fin est de 10, ce qui est le nombre minimum possible.
+
+Exemple d'entrée 2
+4
+1 1
+1 1
+1 5
+1 100
+
+Exemple de sortie 2
+101
+Il est possible qu'aucun des candidats n'ait obtenu de voix entre le moment où il a vérifié le rapport et le moment où il l'a vérifié pour la fois suivante.
+
+Exemple d'entrée 3
+5
+3 10
+48 17
+31 199
+231 23
+3 2
+
+Exemple de sortie 3
+6930

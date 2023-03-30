@@ -1,0 +1,32 @@
+Énoncé du problème
+Snuke a décidé de jouer avec un dé à six faces. Chacune de ses six faces représente un nombre entier de 1 à 6, et la somme de deux nombres situés sur des faces opposées est toujours égale à 7.
+Snuke va d'abord poser le dé sur la table avec une face arbitraire vers le haut, puis effectuer plusieurs fois l'opération suivante :
+Opération : Faites pivoter le dé de 90° dans l'une des directions suivantes : gauche, droite, avant (le dé se rapproche) et arrière (le dé s'éloigne). On obtient alors y points où y est le nombre inscrit sur la face tournée vers le haut.
+Par exemple, considérons la situation où la face montrant 1 est tournée vers le haut, la face proche montrant 5 et la face droite montrant 4, comme illustré dans la figure.
+Si le dé est tourné vers la droite comme indiqué sur la figure, la face indiquant 3 sera orientée vers le haut.
+En outre, le côté montrant 4 sera tourné vers le haut si le dé est tourné vers la gauche, le côté montrant 2 sera tourné vers le haut si le dé est tourné vers l'avant, et le côté montrant 5 sera tourné vers le haut si le dé est tourné vers l'arrière.
+
+Trouvez le nombre minimum d'opérations que Snuke doit effectuer pour marquer au moins x points au total.
+
+Contraintes
+1 ≦ x ≦ 10^{15}
+x est un nombre entier.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+x
+
+Sortie
+Imprime la réponse.
+
+Exemple d'entrée 1
+7
+
+Exemple de sortie 1
+2
+
+Exemple d'entrée 2
+149696127901
+
+Exemple de sortie 2
+27217477801

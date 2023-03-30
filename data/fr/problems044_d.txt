@@ -1,0 +1,62 @@
+Énoncé du problème
+Pour les entiers b (b ≧ 2) et n (n ≧ 1), définissons la fonction f(b,n) comme suit :
+f(b,n) = n, lorsque n < b
+f(b,n) = f(b,floor(n / b)) + (n mod b), lorsque n ≧ b
+Ici, floor(n / b) désigne le plus grand entier ne dépassant pas n / b,
+et n mod b désigne le reste de n divisé par b.
+De manière moins formelle, f(b,n) est égal à la somme des chiffres de n écrits en base b.
+Par exemple, les résultats suivants sont valables :
+f(10,87654)=8+7+6+5+4=30
+f(100,87654)=8+76+54=138
+On vous donne des entiers n et s.
+Déterminez s'il existe un entier b (b ≧ 2) tel que f(b,n)=s.
+Si la réponse est positive, trouvez également le plus petit de ces b.
+
+Contraintes
+1 ≦ n ≦ 10^{11}
+1 ≦ s ≦ 10^{11}
+n,s sont des entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+n
+s
+
+Sortie
+S'il existe un entier b (b ≧ 2) tel que f(b,n)=s, affichez le plus petit de ces b.
+Si un tel b n'existe pas, afficher -1 à la place.
+
+Exemple d'entrée 1
+87654
+30
+
+Échantillon de sortie 1
+10
+
+Exemple d'entrée 2
+87654
+138
+
+Échantillon de sortie 2
+100
+
+Exemple d'entrée 3
+87654
+45678
+
+Exemple de sortie 3
+-1
+
+Exemple d'entrée 4
+31415926535
+1
+
+Exemple de sortie 4
+31415926535
+
+Exemple d'entrée 5
+1
+31415926535
+
+Exemple de sortie 5
+-1

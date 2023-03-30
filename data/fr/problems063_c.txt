@@ -1,0 +1,49 @@
+Énoncé du problème
+Vous passez un examen informatisé. L'examen comporte N questions, et la note attribuée à la i-ième question est s_i. Votre réponse à chaque question sera jugée "correcte" ou "incorrecte", et votre note sera la somme des points attribués aux questions auxquelles vous aurez répondu correctement. Lorsque vous aurez répondu aux questions, vos réponses seront immédiatement évaluées et votre note sera affichée... si tout se passe bien.
+Cependant, le système d'examen est en fait imparfait, et si votre note est un multiple de 10, le système affiche 0 comme note. Dans le cas contraire, votre note est affichée correctement. Dans cette situation, quelle est la valeur maximale qui peut être affichée comme note ?
+
+Contraintes
+Toutes les valeurs d'entrée sont des nombres entiers.
+1 ≤ N ≤ 100
+1 ≤ s_i ≤ 100
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+s_1
+s_2
+:
+s_N
+
+Sortie
+Imprimez la valeur maximale qui peut être affichée comme votre note.
+
+Exemple d'entrée 1
+3
+5
+10
+15
+
+Exemple de sortie 1
+25
+Votre note sera de 25 si vous répondez correctement aux questions à 10 et 15 points, mais pas à la question à 5 points, et cette note sera affichée correctement. Votre note sera de 30 si vous avez également répondu correctement à la question sur 5 points, mais cette note sera affichée à tort sous la forme 0.
+
+Exemple d'entrée 2
+3
+10
+10
+15
+
+Exemple de sortie 2
+35
+Votre note sera de 35 si vous répondez correctement à toutes les questions, et cette note sera affichée correctement.
+
+Exemple d'entrée 3
+3
+10
+20
+30
+
+Exemple de sortie 3
+0
+Que vous répondiez correctement ou non à chaque question, votre note sera un multiple de 10 et s'affichera sous la forme 0.

@@ -1,0 +1,43 @@
+Énoncé du problème
+On vous donne trois chaînes de caractères A, B et C. Vérifiez si elles forment une chaîne de mots.
+Plus formellement, déterminez si les deux éléments suivants sont vrais :
+Le dernier caractère de A et le caractère initial de B sont identiques.
+Le dernier caractère de B et le caractère initial de C sont identiques.
+Si les deux sont vrais, imprimez YES. Dans le cas contraire, indiquez NON.
+
+Contraintes
+A, B et C sont tous composés de lettres minuscules anglaises (a - z).
+1 ≤ |A|, |B|, |C| ≤ 10, où |A|, |B| et |C| sont respectivement les longueurs de A, B et C.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B C
+
+Sortie
+Imprimer OUI ou NON.
+
+Exemple d'entrée 1
+rng gorilla apple
+
+Exemple de sortie 1
+OUI
+Ils forment une chaîne de mots.
+
+Exemple d'entrée 2
+yakiniku unagi sushi
+
+Exemple de sortie 2
+NON
+A et B forment une chaîne de mots, mais pas B et C.
+
+Exemple d'entrée 3
+a a a a
+
+Exemple de sortie 3
+OUI
+
+Exemple d'entrée 4
+aaaaaaaaab aaaaaaaaaa aaaaaaaaab
+
+Exemple de sortie 4
+NON

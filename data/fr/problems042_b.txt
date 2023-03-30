@@ -1,0 +1,33 @@
+Énoncé du problème
+Iroha a une séquence de N chaînes de caractères S_1, S_2, ..., S_N. La longueur de chaque chaîne est L.
+Elle va concaténer toutes les chaînes dans un certain ordre, pour produire une longue chaîne.
+Parmi toutes les chaînes qu'elle peut produire de cette manière, trouver la plus petite lexicographiquement.
+Ici, une chaîne s=s_1s_2s_3...s_n est lexicographiquement plus petite qu'une autre chaîne t=t_1t_2t_3...t_m si et seulement si l'une des conditions suivantes est remplie :
+Il existe un indice i(1≦i≦min(n,m)), tel que s_j = t_j pour tous les indices j(1≦j<i), et s_i<t_i.
+s_i = t_i pour tous les entiers i(1≦i≦min(n,m)), et n<m.
+
+Contraintes
+1 ≦ N, L ≦ 100
+Pour chaque i, la longueur de S_i est égale à L.
+Pour chaque i, S_i est composé de lettres minuscules.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N L
+S_1
+S_2
+:
+S_N
+
+Sortie
+Imprimer la chaîne de caractères la plus petite lexicographiquement que Iroha peut produire.
+
+Exemple d'entrée 1
+3 3
+dxx
+axx
+cxx
+
+Exemple de sortie 1
+axxcxxdxx
+L'ordre suivant doit être utilisé : axx, cxx, dxx.

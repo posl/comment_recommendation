@@ -1,0 +1,43 @@
+Énoncé du problème
+Dolphin réside dans un plan cartésien à deux dimensions, dont l'axe x positif pointe vers la droite et l'axe y positif pointe vers le haut.
+Il se trouve actuellement au point (sx,sy). À chaque seconde, il peut se déplacer vers le haut, le bas, la gauche ou la droite d'une distance de 1.
+Ici, les coordonnées x et y avant et après chaque déplacement doivent être des entiers.
+Il se rendra d'abord au point (tx,ty) où sx < tx et sy < ty, puis retournera au point (sx,sy), visitera à nouveau le point (tx,ty), et enfin retournera au point (sx,sy).
+Ici, pendant tout le trajet, il n'est pas autorisé à passer plus d'une fois par le même point, à l'exception des points (sx,sy) et (tx,ty).
+Dans ces conditions, trouvez le chemin le plus court pour lui.  
+
+Contraintes
+-1000 ≤ sx < tx ≤ 1000
+-1000 ≤ sy < ty ≤ 1000
+sx, sy, tx et ty sont des nombres entiers.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+sx sy tx ty
+
+Sortie
+Imprimez une chaîne de caractères S qui représente le chemin le plus court pour Dolphin.
+Le i-ième caractère de S doit correspondre à son i-ième mouvement.
+Les directions des mouvements doivent être indiquées par les caractères suivants :
+U : Haut
+D : Bas
+L : Gauche
+R : Droite
+S'il existe plusieurs plus courts chemins sous cette condition, imprimez n'importe lequel d'entre eux.
+
+Exemple d'entrée 1
+0 0 1 2
+
+Exemple de sortie 1
+UURDDLLUUURRDRDDDLLU
+Un chemin le plus court possible est :
+Aller de (sx,sy) à (tx,ty) pour la première fois : (0,0) → (0,1) → (0,2) → (1,2)
+Passage de (tx,ty) à (sx,sy) pour la première fois : (1,2) → (1,1) → (1,0) → (0,0)
+Passage de (sx,sy) à (tx,ty) pour la deuxième fois : (0,0) → (-1,0) → (-1,1) → (-1,2) → (-1,3) → (0,3) → (1,3) → (1,2)
+Passage de (tx,ty) à (sx,sy) pour la deuxième fois : (1,2) → (2,2) → (2,1) → (2,0) → (2,-1) → (1,-1) → (0,-1) → (0,0)
+
+Exemple d'entrée 2
+-2 -2 1 1
+
+Exemple de sortie 2
+UURRURRDDDLLDLLULUUURRURRDDDLLDL

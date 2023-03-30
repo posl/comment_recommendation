@@ -1,0 +1,40 @@
+Énoncé du problème
+Il existe une chaîne de caractères s de longueur 3 ou plus.
+Il n'y a pas deux caractères voisins dans s qui soient égaux.
+Takahashi et Aoki vont jouer un jeu l'un contre l'autre.
+Les deux joueurs effectuent alternativement l'opération suivante, Takahashi commençant :
+Retirer un des caractères de s, en excluant les deux extrémités. Cependant, un caractère ne peut pas être supprimé s'il en résulte deux caractères voisins égaux dans s.
+Le joueur qui n'est pas en mesure d'effectuer l'opération perd la partie. Déterminez quel joueur gagnera lorsque les deux joueurs joueront de manière optimale.
+
+Contraintes
+3 ≤ |s| ≤ 10^5
+s est composé de lettres minuscules anglaises.
+Il n'y a pas deux caractères voisins dans s qui soient égaux.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s
+
+Sortie
+Si Takahashi gagne, affichez Premier. Si Aoki gagne, affichez Second.
+
+Exemple d'entrée 1
+aba
+
+Exemple de sortie 1
+Deuxièmement
+Takahashi, qui passe en premier, ne peut pas effectuer l'opération, car en enlevant le b, qui est le seul caractère qui ne se trouve pas aux deux extrémités de s, s deviendrait aa, avec deux comme voisin.
+
+Exemple d'entrée 2
+abc
+
+Exemple de sortie 2
+Première
+Lorsque Takahashi enlève b de s, celui-ci devient ac.
+Ensuite, Aoki ne peut pas effectuer l'opération, car il n'y a pas de caractère dans s, à l'exception des deux extrémités.
+
+Exemple d'entrée 3
+abcab
+
+Exemple de sortie 3
+Première

@@ -1,0 +1,58 @@
+Énoncé du problème
+Joisino est sur le point de participer à la phase finale d'un certain concours de programmation.
+Dans ce concours, il y a N problèmes, numérotés de 1 à N.
+Joisino sait qu'il lui faut T_i secondes pour résoudre le problème i(1≦i≦N).
+De plus, il y a M sortes de boissons offertes aux concurrents, numérotées de 1 à M.
+Si Joisino prend la boisson i(1≦i≦M), son cerveau sera stimulé et le temps qu'il lui faudra pour résoudre le problème P_i deviendra X_i secondes.
+Cela n'affecte pas le temps nécessaire pour résoudre les autres problèmes.
+Un concurrent est autorisé à prendre exactement une des boissons avant le début du concours.
+Pour chaque boisson, Joisino veut savoir combien de secondes il lui faut pour résoudre tous les problèmes s'il prend cette boisson.
+On suppose ici que le temps qu'il lui faut pour résoudre tous les problèmes est égal à la somme des temps qu'il lui faut pour résoudre les problèmes individuels.
+Votre tâche consiste à écrire un programme qui calcule ce temps à sa place.
+
+Contraintes
+Toutes les valeurs d'entrée sont des nombres entiers.
+1≦N≦100
+1≦T_i≦10^5
+1≦M≦100
+1≦P_i≦N
+1≦X_i≦10^5
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+T_1 T_2 ... T_N
+M
+P_1 X_1
+P_2 X_2
+:
+P_M X_M
+
+Résultat
+Pour chaque boisson, calculez le nombre de secondes qu'il faut à Joisino pour résoudre tous les problèmes si elle prend cette boisson, et imprimez les résultats, un par ligne.
+
+Exemple d'entrée 1
+3
+2 1 4
+2
+1 1
+2 3
+
+Exemple de sortie 1
+6
+9
+Si Joisino prend la boisson 1, le temps qu'il lui faut pour résoudre chaque problème sera respectivement de 1, 1 et 4 secondes, soit un total de 6 secondes.
+Si Joisino prend la boisson 2, le temps qu'il lui faut pour résoudre chaque problème sera respectivement de 2, 3 et 4 secondes, soit un total de 9 secondes.
+
+Exemple d'entrée 2
+5
+7 2 3 8 5
+3
+4 2
+1 7
+4 13
+
+Exemple de sortie 2
+19
+25
+30

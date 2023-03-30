@@ -1,0 +1,58 @@
+Énoncé du problème
+Dans un bain public, il y a une douche qui émet de l'eau pendant T secondes lorsqu'on appuie sur l'interrupteur.
+Si l'on appuie sur l'interrupteur alors que la douche émet déjà de l'eau, à partir de ce moment, elle émettra de l'eau pendant T secondes.
+Notez que cela ne signifie pas que la douche émet de l'eau pendant T secondes supplémentaires.
+N personnes appuieront sur l'interrupteur en passant devant la douche.
+La i-ième personne appuiera sur l'interrupteur t_i secondes après que la première personne l'ait appuyé.
+Pendant combien de temps la douche émettra-t-elle de l'eau au total ?
+
+Contraintes
+1 ≤ N ≤ 200,000
+1 ≤ T ≤ 10^9
+0 = t_1 < t_2 < t_3 < , ..., < t_{N-1} < t_N ≤ 10^9
+T et chaque t_i sont des nombres entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N T
+t_1 t_2 ... t_N
+
+Sortie
+Supposez que la douche émettra de l'eau pendant un total de X secondes. Imprimez X.
+
+Exemple d'entrée 1
+2 4
+0 3
+
+Exemple de sortie 1
+7
+Trois secondes après que la première personne a poussé l'eau, l'interrupteur est de nouveau actionné et la douche émet de l'eau pendant quatre secondes supplémentaires, soit un total de sept secondes.
+
+Exemple d'entrée 2
+2 4
+0 5
+
+Exemple de sortie 2
+8
+Une seconde après l'arrêt de l'émission d'eau de la douche déclenchée par la première personne, l'interrupteur est de nouveau actionné.
+
+Exemple d'entrée 3
+4 1000000000
+0 1000 1000000 1000000000
+
+Exemple de sortie 3
+2000000000
+
+Exemple d'entrée 4
+1 1
+0
+
+Exemple de sortie 4
+1
+
+Exemple d'entrée 5
+9 10
+0 3 5 7 100 110 200 300 311
+
+Exemple de sortie 5
+67

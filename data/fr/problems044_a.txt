@@ -1,0 +1,46 @@
+Énoncé du problème
+Il existe un hôtel dont les frais d'hébergement sont les suivants :
+X yens (la monnaie du Japon) par nuit, pour les K premières nuits
+Y yens par nuit, pour la (K+1)-ème nuit et les suivantes.
+Tak séjourne dans cet hôtel pour N nuits consécutives.
+Trouvez le montant total de ses frais d'hébergement.
+
+Contraintes
+1 ≦ N, K ≦ 10000
+1 ≦ Y < X ≦ 10000
+N, K, X, Y sont des nombres entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N
+K
+X
+Y
+
+Sortie
+Imprimer le montant total des frais d'hébergement de Tak.
+
+Exemple d'entrée 1
+5
+3
+10000
+9000
+
+Exemple de sortie 1
+48000
+Les frais d'hébergement sont les suivants
+10000 yens pour la 1ère nuit
+10000 yens pour la 2ème nuit
+10000 yens pour la 3ème nuit
+9000 yens pour la 4ème nuit
+9000 yens pour la 5ème nuit
+Le total est donc de 48 000 yens.
+
+Exemple d'entrée 2
+2
+3
+10000
+9000
+
+Échantillon de sortie 2
+20000

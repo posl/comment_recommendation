@@ -1,0 +1,37 @@
+Énoncé du problème
+Le cerf a trouvé sur la table deux rectangles d'une hauteur de 1 et d'une largeur de W.
+Si nous considérons la surface du bureau comme un plan à deux dimensions, le premier rectangle couvre la plage verticale de [0,1] et la plage horizontale de [a,a+W], et le second rectangle couvre la plage verticale de [1,2] et la plage horizontale de [b,b+W], comme le montre la figure suivante :
+AtCoDeer déplacera le deuxième rectangle horizontalement afin qu'il soit relié au premier rectangle.
+Trouvez la distance minimale à laquelle il doit être déplacé.
+
+Contraintes
+Toutes les valeurs d'entrée sont des nombres entiers.
+1≤W≤10^5
+1≤a,b≤10^5
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+W a b
+
+Sortie
+Imprimez la distance minimale à laquelle le deuxième rectangle doit être déplacé.
+
+Exemple d'entrée 1
+3 2 6
+
+Exemple de sortie 1
+1
+Cette entrée correspond à la figure de l'énoncé. Dans ce cas, le deuxième rectangle doit être déplacé vers la gauche d'une distance de 1.
+
+Exemple d'entrée 2
+3 1 3
+
+Exemple de sortie 2
+0
+Les rectangles sont déjà connectés, et aucun déplacement n'est donc nécessaire.
+
+Exemple d'entrée 3
+5 10 1
+
+Exemple de sortie 3
+4

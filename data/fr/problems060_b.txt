@@ -1,0 +1,52 @@
+Énoncé du problème
+Nous vous demandons de choisir un certain nombre d'entiers positifs et d'en calculer la somme.
+Vous pouvez choisir autant d'entiers que vous le souhaitez, et des entiers aussi grands que vous le désirez.
+Vous devez cependant respecter les règles suivantes : chaque entier sélectionné doit être un multiple de A, et vous devez sélectionner au moins un entier.
+Votre objectif est de faire en sorte que la somme soit congruente à C modulo B.
+Déterminez si cela est possible.
+Si l'objectif est réalisable, imprimez OUI. Sinon, écrivez NON.
+
+Contraintes
+1 ≤ A ≤ 100
+1 ≤ B ≤ 100
+0 ≤ C < B
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A B C
+
+Sortie
+Imprimer OUI ou NON.
+
+Exemple d'entrée 1
+7 5 1
+
+Exemple de sortie 1
+OUI
+Par exemple, si vous sélectionnez 7 et 14, la somme 21 est congruente à 1 modulo 5.
+
+Exemple d'entrée 2
+2 2 1
+
+Exemple de sortie 2
+NON
+La somme des nombres pairs, quel que soit leur nombre, n'est jamais impaire.
+
+Exemple d'entrée 3
+1 100 97
+
+Exemple de sortie 3
+OUI
+Vous pouvez sélectionner 97, puisque vous pouvez sélectionner des multiples de 1, c'est-à-dire tous les nombres entiers.
+
+Exemple d'entrée 4
+40 98 58
+
+Exemple de sortie 4
+OUI
+
+Exemple d'entrée 5
+77 42 36
+
+Échantillon de sortie 5
+NON

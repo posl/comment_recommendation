@@ -1,0 +1,39 @@
+Énoncé du problème
+On vous donne trois mots s_1, s_2 et s_3, chacun composé de lettres anglaises minuscules, avec des espaces entre eux.
+Imprimez l'acronyme formé à partir des lettres initiales en majuscules de ces mots.
+
+Contraintes
+s_1, s_2 et s_3 sont composés de lettres anglaises minuscules.
+1 ≤ |s_i| ≤ 10 (1≤i≤3)
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+s_1 s_2 s_3
+
+Sortie
+Imprime la réponse.
+
+Exemple d'entrée 1
+Concours atcoder pour débutants
+
+Exemple de sortie 1
+ABC
+Les lettres initiales de atcoder, beginner et contest sont a, b et c. Mettez-les en majuscules et concaténérez-les pour obtenir ABC.
+
+Exemple d'entrée 2
+numéro du registre des résidents
+
+Exemple de sortie 2
+RRN
+
+Exemple d'entrée 3
+k plus proche voisin
+
+Exemple de sortie 3
+KNN
+
+Exemple d'entrée 4
+codage en couches asynchrone
+
+Échantillon de sortie 4
+ALC

@@ -1,0 +1,30 @@
+Énoncé du problème
+AtCoDeer le cerf a récemment acheté trois pots de peinture.
+La couleur de celui qu'il a acheté il y a deux jours est a, la couleur de celui qu'il a acheté hier est b et la couleur de celui qu'il a acheté aujourd'hui est c.
+Ici, la couleur de chaque pot de peinture est représentée par un nombre entier compris entre 1 et 100 inclus.
+Comme il est distrait, il est possible qu'il ait acheté plus d'un pot de peinture de la même couleur.
+Comptez le nombre de couleurs différentes de ces pots de peinture et dites-lui.
+
+Contraintes
+1≦a,b,c≦100
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a b c
+
+Sortie
+Imprimez le nombre de couleurs différentes des pots de peinture.
+
+Exemple d'entrée 1
+3 1 4
+
+Exemple de sortie 1
+3
+Trois couleurs différentes : 1, 3 et 4.
+
+Exemple d'entrée 2
+3 3 33
+
+Exemple de sortie 2
+2
+Deux couleurs différentes : 3 et 33.

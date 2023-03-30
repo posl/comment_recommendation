@@ -1,0 +1,31 @@
+Énoncé du problème
+On vous donne une chaîne de caractères S composée de lettres minuscules anglaises. Déterminez si tous les caractères de S sont différents.
+
+Contraintes
+2 ≤ |S| ≤ 26, où |S| représente la longueur de S.
+S est composé de lettres anglaises minuscules.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+S
+
+Sortie
+Si tous les caractères de S sont différents, la réponse est oui (sensible à la casse) ; sinon, la réponse est non.
+
+Exemple d'entrée 1
+non soumis au droit d'auteur
+
+Exemple de sortie 1
+oui
+
+Exemple d'entrée 2
+différent
+
+Échantillon de sortie 2
+non
+
+Échantillon d'entrée 3
+non
+
+Échantillon de sortie 3
+oui

@@ -1,0 +1,42 @@
+Énoncé du problème
+On vous donne des entiers non négatifs a et b (a ≤ b), et un entier positif x.
+Parmi les entiers compris entre a et b inclus, combien sont divisibles par x ?
+
+Contraintes
+0 ≤ a ≤ b ≤ 10^{18}
+1 ≤ x ≤ 10^{18}
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a b x
+
+Sortie
+Affiche le nombre d'entiers compris entre a et b, inclus, qui sont divisibles par x.
+
+Exemple d'entrée 1
+4 8 2
+
+Exemple de sortie 1
+3
+Il existe trois entiers compris entre 4 et 8 inclus qui sont divisibles par 2 : 4, 6 et 8.
+
+Exemple d'entrée 2
+0 5 1
+
+Exemple de sortie 2
+6
+Il existe six entiers compris entre 0 et 5 inclus qui sont divisibles par 1 : 0, 1, 2, 3, 4 et 5.
+
+Exemple d'entrée 3
+9 9 2
+
+Exemple de sortie 3
+0
+Aucun nombre entier compris entre 9 et 9 inclus n'est divisible par 2.
+
+Exemple d'entrée 4
+1 1000000000000000000 3
+
+Exemple de sortie 4
+333333333333333333
+Attention aux débordements de nombres entiers.

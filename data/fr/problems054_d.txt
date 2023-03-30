@@ -1,0 +1,48 @@
+Énoncé du problème
+Dolphin souhaite produire une petite quantité d'une certaine substance chimique C.
+Pour produire la substance C, il doit préparer une solution qui est un mélange de deux substances A et B dans le rapport M_a:M_b.
+Comme il n'a pas de stock de produits chimiques, il va en acheter dans une pharmacie locale.
+La pharmacie vend N types de produits chimiques. Pour chaque type de produit chimique, il y a exactement un paquet de ce produit en stock.
+L'emballage du produit chimique i contient a_i grammes de la substance A et b_i grammes de la substance B, et est vendu au prix de c_i yens (la monnaie du Japon).
+Dolphin achètera quelques-uns de ces emballages. Pour une raison quelconque, il doit utiliser tout le contenu des emballages achetés pour produire la substance C.
+Trouvez le montant minimum d'argent nécessaire pour produire la substance C.
+S'il n'est pas possible de produire la substance C en achetant n'importe quelle combinaison d'emballages à la pharmacie, signalez-le.  
+
+Contraintes
+1≦N≦40
+1≦a_i,b_i≦10
+1≦c_i≦100
+1≦M_a,M_b≦10
+pgcd(M_a,M_b)=1
+a_i, b_i, c_i, M_a et M_b sont des entiers.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N M_a M_b
+a_1 b_1 c_1
+a_2 b_2 c_2
+:
+a_N b_N c_N
+
+Sortie
+Affiche le montant minimum d'argent nécessaire pour générer la substance C. S'il n'est pas possible de générer la substance C, affiche -1 à la place.
+
+Exemple d'entrée 1
+3 1 1
+1 2 1
+2 1 2
+3 3 10
+
+Exemple de sortie 1
+3
+La quantité d'argent dépensée sera minimisée en achetant les paquets de produits chimiques 1 et 2.
+Dans ce cas, le mélange des produits chimiques achetés contiendra 3 grammes de la substance A et 3 grammes de la substance B, dans le rapport souhaité : 3:3=1:1.
+Le prix total de ces emballages est de 3 yens.  
+
+Échantillon Entrée 2
+1 1 10
+10 10 10
+
+Exemple de sortie 2
+-1
+Le rapport 1:10 des deux substances A et B ne peut être satisfait par l'achat d'aucune combinaison des emballages. Le résultat doit donc être -1.

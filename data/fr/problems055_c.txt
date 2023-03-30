@@ -1,0 +1,32 @@
+Énoncé du problème
+Snuke adore les puzzles.
+Aujourd'hui, il travaille sur un puzzle utilisant des pièces en forme de S et de c.
+Dans ce puzzle, vous pouvez combiner deux pièces en forme de c en une pièce en forme de S, comme le montre la figure ci-dessous :
+
+Snuke a décidé de créer autant de groupes Scc que possible en assemblant une pièce en forme de S et deux pièces en forme de c.
+Trouvez le nombre maximum de groupes Scc qui peuvent être créés lorsque Snuke a N pièces en forme de S et M pièces en forme de c.
+
+Contraintes
+1 ≤ N,M ≤ 10^{12}
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+N M
+
+Sortie
+Imprimer la réponse.
+
+Exemple d'entrée 1
+1 6
+
+Exemple de sortie 1
+2
+Deux groupes Scc peuvent être créés comme suit :
+Combiner deux pièces en forme de c en une pièce en forme de S
+Créer deux groupes Scc, chacun à partir d'une pièce en forme de S et de deux pièces en forme de C
+
+Exemple d'entrée 2
+12345 678901
+
+Exemple de sortie 2
+175897

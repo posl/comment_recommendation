@@ -1,0 +1,55 @@
+Énoncé du problème
+Vous êtes en train de vous promener lorsque vous rencontrez soudain N monstres. Chaque monstre possède un paramètre appelé santé, et la santé du i-ième monstre est h_i au moment de la rencontre. Un monstre disparaît immédiatement lorsque sa santé tombe à 0 ou moins.
+Heureusement, vous êtes un magicien habile, capable de provoquer des explosions qui endommagent les monstres. Au cours d'une explosion, vous pouvez infliger des dégâts aux monstres de la manière suivante :
+Sélectionnez un monstre vivant et provoquez une explosion centrée sur ce monstre. La santé du monstre au centre de l'explosion diminuera de A, et la santé de chacun des autres monstres diminuera de B. Ici, A et B sont des paramètres prédéterminés, et A > B tient.
+Au moins combien d'explosions devez-vous provoquer pour faire disparaître tous les monstres ?
+
+Contraintes
+Toutes les valeurs d'entrée sont des entiers.
+1 ≤ N ≤ 10^5
+1 ≤ B < A ≤ 10^9
+1 ≤ h_i ≤ 10^9
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N A B
+h_1
+h_2
+:
+h_N
+
+Sortie
+Affiche le nombre minimum d'explosions qu'il faut provoquer pour faire disparaître tous les monstres.
+
+Exemple d'entrée 1
+4 5 3
+8
+7
+4
+2
+
+Exemple de sortie 1
+2
+Vous pouvez faire disparaître tous les monstres en deux explosions, comme suit :
+Premièrement, provoquez une explosion centrée sur le monstre ayant 8 points de vie. Les points de vie des quatre monstres deviennent respectivement 3, 4, 1 et -1, et le dernier monstre disparaît.
+Deuxièmement, provoquez une explosion centrée sur le monstre ayant 4 points de vie restants. Les points de vie des trois monstres restants deviennent respectivement 0, -1 et -2, et tous les monstres ont disparu.
+
+Exemple d'entrée 2
+2 10 4
+20
+20
+
+Exemple de sortie 2
+4
+Vous devez provoquer deux explosions centrées sur chaque monstre, pour un total de quatre.
+
+Exemple d'entrée 3
+5 2 1
+900000000
+900000000
+1000000000
+1000000000
+1000000000
+
+Exemple de sortie 3
+800000000

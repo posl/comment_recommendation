@@ -1,0 +1,43 @@
+Énoncé du problème
+On vous donne deux nombres entiers positifs A et B. Comparez les grandeurs de ces nombres.
+
+Contraintes
+1 ≤ A, B ≤ 10^{100}
+Ni A ni B ne commence par un 0.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+A
+B
+
+Sortie
+Imprimer GREATER si A>B, LESS si A<B et EQUAL si A=B.
+
+Exemple d'entrée 1
+36
+24
+
+Exemple de sortie 1
+PLUS GRAND
+Puisque 36>24, imprimez GREATER.
+
+Exemple d'entrée 2
+850
+3777
+
+Exemple de sortie 2
+LESS
+
+Échantillon d'entrée 3
+9720246
+22516266
+
+Exemple de sortie 3
+LESS
+
+Exemple d'entrée 4
+123456789012345678901234567890
+234567890123456789012345678901
+
+Exemple de sortie 4
+LESS

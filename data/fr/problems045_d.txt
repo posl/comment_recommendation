@@ -1,0 +1,98 @@
+Énoncé du problème
+Nous disposons d'une grille comportant H lignes et W colonnes. Au départ, toutes les cellules ont été peintes en blanc.
+Snuke a peint N de ces cellules. La i-ième ( 1 ≦ i ≦ N ) cellule qu'il a peinte est la cellule située à la a_i-ième ligne et à la b_i-ième colonne.
+Calculez ce qui suit :
+Pour chaque entier j ( 0 ≦ j ≦ 9 ), combien de sous-rectangles de taille 3×3 de la grille contiennent exactement j cellules noires, après que Snuke a peint N cellules ?
+
+Contraintes
+3 ≦ H ≦ 10^9
+3 ≦ W ≦ 10^9
+0 ≦ N ≦ min(10^5,H×W)
+1 ≦ a_i ≦ H (1 ≦ i ≦ N)
+1 ≦ b_i ≦ W (1 ≦ i ≦ N)
+(a_i, b_i) ≠ (a_j, b_j) (i ≠ j)
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+H W N
+a_1 b_1
+:
+a_N b_N
+
+Sortie
+Imprimez 10 lignes.
+La (j+1)-ème ligne ( 0 ≦ j ≦ 9 ) doit contenir le nombre de sous-rectangles de taille 3×3 de la grille qui contient exactement j cellules noires.
+
+Exemple d'entrée 1
+4 5 8
+1 1
+1 4
+1 5
+2 3
+3 1
+3 2
+3 4
+4 4
+
+Exemple de sortie 1
+0
+0
+0
+2
+4
+0
+0
+0
+0
+0
+Il y a six sous-rectangles de taille 3×3. Deux d'entre eux contiennent trois cases noires chacun, et les quatre autres quatre cases noires chacun.
+
+Exemple d'entrée 2
+10 10 20
+1 1
+1 4
+1 9
+2 5
+3 10
+4 2
+4 7
+5 9
+6 4
+6 6
+6 7
+7 1
+7 3
+7 7
+8 1
+8 5
+8 10
+9 2
+10 4
+10 9
+
+Exemple de sortie 2
+4
+26
+22
+10
+2
+0
+0
+0
+0
+0
+
+Exemple d'entrée 3
+1000000000 1000000000 0
+
+Exemple de sortie 3
+999999996000000004
+0
+0
+0
+0
+0
+0
+0
+0
+0

@@ -1,0 +1,32 @@
+Énoncé du problème
+On vous donne un entier N.
+Trouvez le nombre de diviseurs positifs de N !, modulo 10^9+7.
+
+Contraintes
+1≤N≤10^3
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N
+
+Sortie
+Affiche le nombre de diviseurs positifs de N !, modulo 10^9+7.
+
+Exemple d'entrée 1
+3
+
+Exemple de sortie 1
+4
+Il y a quatre diviseurs de 3 ! =6 : 1, 2, 3 et 6. La sortie doit donc être 4.
+
+Exemple d'entrée 2
+6
+
+Exemple de sortie 2
+30
+
+Exemple d'entrée 3
+1000
+
+Échantillon de sortie 3
+972926972

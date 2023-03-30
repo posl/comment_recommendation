@@ -1,0 +1,53 @@
+Énoncé du problème
+Il y a une barre de chocolat d'une hauteur de H blocs et d'une largeur de W blocs.
+Snuke divise cette barre en exactement trois morceaux.
+Il ne peut couper la barre que le long des bords des blocs, et la forme de chaque morceau doit être un rectangle.
+Snuke essaie de diviser la barre aussi uniformément que possible.
+Plus précisément, il essaie de minimiser S_{max} - S_{min}, où S_{max} est l'aire (le nombre de blocs contenus) du plus grand morceau, et S_{min} est l'aire du plus petit morceau.
+Trouvez la valeur minimale possible de S_{max} - S_{min}.
+
+Contraintes
+2 ≤ H, W ≤ 10^5
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+H W
+
+Sortie
+Imprimer la valeur minimale possible de S_{max} - S_{min}.
+
+Exemple d'entrée 1
+3 5
+
+Échantillon de sortie 1
+0
+Dans la division ci-dessous, S_{max} - S_{min} = 5 - 5 = 0.
+
+
+Exemple d'entrée 2
+4 5
+
+Échantillon de sortie 2
+2
+Dans la division ci-dessous, S_{max} - S_{min} = 8 - 6 = 2.
+
+
+Exemple d'entrée 3
+5 5
+
+Échantillon de sortie 3
+4
+Dans la division ci-dessous, S_{max} - S_{min} = 10 - 6 = 4.
+
+
+Exemple d'entrée 4
+100000 2
+
+Échantillon de sortie 4
+1
+
+Exemple d'entrée 5
+100000 100000
+
+Échantillon de sortie 5
+50000

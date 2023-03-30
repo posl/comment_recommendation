@@ -1,0 +1,35 @@
+Énoncé du problème
+Snuke s'est inscrit sur un nouveau site web qui organise des concours de programmation.
+Craignant d'oublier son mot de passe, il l'a noté.
+Comme l'enregistrement direct de son mot de passe lui causerait des ennuis en cas de vol, il a pris deux notes,
+il a pris deux notes : l'une contient les caractères des positions impaires, l'autre les caractères des positions paires.
+On vous donne deux chaînes de caractères O et E. O contient les caractères des positions impaires en conservant leur ordre relatif, et E contient les caractères des positions paires en conservant leur ordre relatif.
+Rétablissez le mot de passe original.
+
+Contraintes
+O et E sont constitués de lettres minuscules anglaises (a - z).
+1 ≦ |O|,|E| ≦ 50
+|O| - |E| est soit 0, soit 1.
+
+Entrée
+L'entrée est fournie par l'entrée standard dans le format suivant :
+O
+E
+
+Sortie
+Imprimer le mot de passe original.
+
+Exemple d'entrée 1
+xyz
+abc
+
+Exemple de sortie 1
+xaybzc
+Le mot de passe original est xaybzc. L'extraction des caractères aux positions impaires donne xyz, et l'extraction des caractères aux positions paires donne abc.
+
+Exemple d'entrée 2
+atcoderbeginnercontest (concours pour débutants)
+atcodercontestrégulier
+
+Exemple de sortie 2
+aattccooddeerrbreeggiunlnaerrccoonntteesstt

@@ -1,0 +1,48 @@
+Énoncé du problème
+Il existe un tableau vide.
+Les N opérations suivantes seront effectuées pour insérer des entiers dans le tableau.
+Lors de la i-ième opération (1≤i≤N), b_i copies d'un entier a_i sont insérées dans le tableau.
+Trouvez le K-ième plus petit entier dans le tableau après les N opérations.
+Par exemple, le 4ème plus petit entier du tableau {1,2,2,3,3,3} est 3.
+
+Contraintes
+1≤N≤10^5
+1≤a_i,b_i≤10^5
+1≤K≤b_1...+...b_n
+Toutes les valeurs d'entrée sont des nombres entiers.
+
+Entrée
+L'entrée est fournie à partir de l'entrée standard dans le format suivant :  
+N K
+a_1 b_1
+:
+a_N b_N
+
+Sortie
+Affiche le K-ième plus petit entier du tableau après les N opérations.  
+
+Exemple d'entrée 1
+3 4
+1 1
+2 2
+3 3
+
+Exemple de sortie 1
+3
+Le tableau obtenu est le même que celui de l'énoncé du problème.
+
+Exemple d'entrée 2
+10 500000
+1 100000
+1 100000
+1 100000
+1 100000
+1 100000
+100000 100000
+100000 100000
+100000 100000
+100000 100000
+100000 100000
+
+Exemple de sortie 2
+1

@@ -1,0 +1,33 @@
+Énoncé du problème
+Il y a N enfants à l'école maternelle AtCoder. M. Evi disposera les enfants en ligne, puis donnera 1 bonbon au premier enfant de la ligne, 2 bonbons au deuxième enfant, ..., N bonbons au N-ième enfant. Combien de bonbons seront nécessaires au total ?
+
+Contraintes
+1≦N≦100
+
+Entrée
+L'entrée est donnée par l'entrée standard dans le format suivant :
+N
+
+Sortie
+Imprimez le nombre nécessaire de bonbons au total.
+
+Exemple d'entrée 1
+3
+
+Exemple de sortie 1
+6
+La réponse est 1+2+3=6.
+
+Exemple d'entrée 2
+10
+
+Exemple de sortie 2
+55
+La somme des nombres entiers de 1 à 10 est 55.
+
+Exemple d'entrée 3
+1
+
+Exemple de sortie 3
+1
+Un seul enfant. La réponse est 1 dans ce cas.

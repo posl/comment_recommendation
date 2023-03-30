@@ -1,0 +1,54 @@
+Énoncé du problème
+On vous donne une image A composée de N lignes et N colonnes de pixels, et une image modèle B composée de M lignes et M colonnes de pixels.
+Un pixel est le plus petit élément d'une image et, dans ce problème, il s'agit d'un carré de taille 1×1.
+En outre, les images données sont des images binaires, et la couleur de chaque pixel est soit blanche, soit noire.  
+Dans l'entrée, chaque pixel est représenté par un caractère : . correspond à un pixel blanc, et # correspond à un pixel noir.
+L'image A est donnée sous la forme de N chaînes A_1,...,A_N.
+Le jème caractère de la chaîne A_i correspond au pixel de la ième ligne et de la jème colonne de l'image A (1≦i,j≦N).
+De même, l'image modèle B est donnée sous la forme de M chaînes B_1,...,B_M.
+Le jème caractère de la chaîne B_i correspond au pixel de la ième ligne et de la jème colonne de l'image modèle B (1≦i,j≦M).  
+Déterminer si l'image modèle B est contenue dans l'image A lorsque seuls des décalages parallèles peuvent être appliqués aux images.  
+
+Contraintes
+1≦M≦N≦50
+A_i est une chaîne de longueur N composée de # et ...
+B_i est une chaîne de longueur M composée de # et ...
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+N M
+A_1
+A_2
+:
+A_N
+B_1
+B_2
+:
+B_M
+
+Sortie
+Imprimez Oui si l'image modèle B est contenue dans l'image A. Imprimez Non sinon.
+
+Exemple d'entrée 1
+3 2
+#.#
+.#.
+#.#
+#.
+.#
+
+Exemple de sortie 1
+Oui
+L'image modèle B est identique à la sous-image 2 × 2 en haut à gauche et à la sous-image 2 × 2 en bas à droite de A. La sortie doit donc être Oui.
+
+Exemple d'entrée 2
+4 1
+....
+....
+....
+....
+#
+
+Exemple de sortie 2
+Non
+L'image modèle B, composée d'un pixel noir, n'est pas contenue dans l'image A composée de pixels blancs.

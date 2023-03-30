@@ -1,0 +1,38 @@
+Énoncé du problème
+Snuke va lancer un concours intitulé "AtCoder s Contest".
+Ici, s est une chaîne de caractères de longueur 1 ou plus, où le premier caractère est une lettre anglaise majuscule, et le deuxième caractère et les suivants sont des lettres anglaises minuscules.
+Snuke a décidé d'abréger le nom du concours en "AxC".
+Ici, x est la lettre anglaise majuscule au début de s.
+Etant donné le nom du concours, imprimez l'abréviation du nom.
+
+Contraintes
+La longueur de s est comprise entre 1 et 100 inclus.
+Le premier caractère de s est une lettre anglaise majuscule.
+Le deuxième caractère et les suivants de s sont des lettres anglaises minuscules.
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+AtCoder s Contest
+
+Sortie
+Affiche l'abréviation du nom du concours.
+
+Exemple d'entrée 1
+Concours AtCoder pour débutants
+
+Exemple de sortie 1
+ABC
+Le concours auquel vous participez actuellement.
+
+Exemple d'entrée 2
+Concours AtCoder Snuke
+
+Exemple de sortie 2
+ASC
+Ce concours n'existe pas encore.
+
+Exemple d'entrée 3
+Concours AtCoder X
+
+Exemple de sortie 3
+AXC

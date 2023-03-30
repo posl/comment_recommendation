@@ -1,0 +1,36 @@
+Énoncé du problème
+Deux élèves de l'école maternelle AtCoder se disputent des paquets de bonbons.
+Il y a trois paquets de bonbons, chacun contenant respectivement a, b et c. L'enseignante Evi essaie de distribuer les paquets entre les deux élèves de façon à ce que chacun reçoive le même nombre de bonbons.
+L'enseignante Evi essaie de distribuer les paquets entre les deux élèves de façon à ce que chacun reçoive le même nombre de bonbons. Déterminez si cela est possible.
+Notez qu'Evi ne peut pas retirer de bonbons des paquets, et que le contenu entier de chaque paquet doit être donné à l'un des élèves.
+
+Contraintes
+1 ≦ a, b, c ≦ 100
+
+Entrée
+L'entrée est donnée à partir de l'entrée standard dans le format suivant :
+a b c
+
+Sortie
+S'il est possible de distribuer les paquets de manière à ce que chaque élève reçoive le même nombre de bonbons, imprimez Oui. Dans le cas contraire, indiquez Non.
+
+Exemple d'entrée 1
+10 30 20
+
+Exemple de sortie 1
+Oui
+Donnez le paquet de 30 bonbons à un élève et donnez les deux paquets de 10 et 20 bonbons à l'autre. Chacun reçoit donc 30 bonbons.
+
+Exemple d'entrée 2
+30 30 100
+
+Exemple de sortie 2
+Non
+Dans ce cas, l'élève qui reçoit le paquet de 100 bonbons a toujours plus de bonbons que l'autre.
+Notez que chaque paquet doit être donné à l'un d'entre eux.
+
+Exemple d'entrée 3
+56 25 31
+
+Exemple de sortie 3
+Oui
