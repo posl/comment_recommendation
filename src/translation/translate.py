@@ -1,7 +1,9 @@
 import requests
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
-API_KEY = ''
+API_KEY = os.getenv('DeepL_API_KEY')
 
 class translation():
     def __init__(self, file):
