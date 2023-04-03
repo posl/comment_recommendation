@@ -1,7 +1,7 @@
 import requests
 import os
 
-API_KEY = 'ea4966da-5551-d78e-849f-8e1a50ab4187:fx'
+API_KEY = ''
 
 class translation():
     def __init__(self, file):
