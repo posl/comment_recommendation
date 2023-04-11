@@ -1,0 +1,41 @@
+#Problem Statement
+#You are given N pairs of integers: (A_1, B_1), (A_2, B_2), ..., (A_N, B_N).
+#For each i = 1, 2, ..., N, print A_i + B_i.
+#
+#Constraints
+#1 ≦ N ≦ 1000
+#-10^9 ≦ A_i, B_i ≦ 10^9
+#All values in the input are integers.
+#
+#Input
+#The input is given from Standard Input in the following format:
+#N
+#A_1 B_1
+#A_2 B_2
+#.
+#.
+#.
+#A_N B_N
+#
+#Output
+#Print N lines.
+#For i = 1, 2, ..., N, the i-th line should contain A_i+B_i.
+#
+#Sample Input 1
+#4
+#3 5
+#2 -6
+#-5 0
+#314159265 123456789
+#
+#Sample Output 1
+#8
+#-4
+#-5
+#437616054
+#The first line should contain A_1 + B_1 = 3 + 5 = 8.
+#The second line should contain A_2 + B_2 = 2 + (-6) = -4.
+#The third line should contain A_3 + B_3 = (-5) + 0 = -5.
+#The fourth line should contain A_4 + B_4 = 314159265 + 123456789 = 437616054.
+
+def 

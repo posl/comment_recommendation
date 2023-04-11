@@ -1,0 +1,55 @@
+#Problem Statement
+#You are given integer sequences, each of length N: A = (A_1, A_2, ..., A_N) and B = (B_1, B_2, ..., B_N).
+#All elements of A are different. All elements of B are different, too.
+#Print the following two values.
+#The number of integers contained in both A and B, appearing at the same position in the two sequences. In other words, the number of integers i such that A_i = B_i.
+#The number of integers contained in both A and B, appearing at different positions in the two sequences. In other words, the number of pairs of integers (i, j) such that A_i = B_j and i ≠ j.
+#
+#Constraints
+#1 ≦ N ≦ 1000
+#1 ≦ A_i ≦ 10^9
+#1 ≦ B_i ≦ 10^9
+#A_1, A_2, ..., A_N are all different.
+#B_1, B_2, ..., B_N are all different.
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#A_1 A_2 ... A_N
+#B_1 B_2 ... B_N
+#
+#Output
+#Print the answers in two lines: the answer to1. in the first line, and the answer to2. in the second line.
+#
+#Sample Input 1
+#4
+#1 3 5 2
+#2 3 1 4
+#
+#Sample Output 1
+#1
+#2
+#There is one integer contained in both A and B, appearing at the same position in the two sequences: A_2 = B_2 = 3.
+#There are two integers contained in both A and B, appearing at different positions in the two sequences: A_1 = B_3 = 1 and A_4 = B_1 = 2.
+#
+#Sample Input 2
+#3
+#1 2 3
+#4 5 6
+#
+#Sample Output 2
+#0
+#0
+#In both 1. and 2., no integer satisfies the condition.
+#
+#Sample Input 3
+#7
+#4 8 1 7 9 5 6
+#3 5 1 7 8 2 6
+#
+#Sample Output 3
+#3
+#2
+
+def 

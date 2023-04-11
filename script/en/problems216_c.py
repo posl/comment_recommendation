@@ -1,0 +1,40 @@
+#Problem Statement
+#We have an empty box.
+#Takahashi can cast the following two spells any number of times in any order.
+#Spell A: puts one new ball into the box.
+#Spell B: doubles the number of balls in the box.
+#Tell us a way to have exactly N balls in the box with at most 120 casts of spells.
+#It can be proved that there always exists such a way under the Constraints
+# given.
+#There is no way other than spells to alter the number of balls in the box.
+#
+#Constraints
+#1 ≦ N ≦ 10^{18}
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print a string S consisting of A and B.
+#The i-th character of S should represent the spell for the i-th cast.
+#S must have at most 120 characters.
+#
+#Sample Input 1
+#5
+#
+#Sample Output 1
+#AABA
+#This changes the number of balls as follows: 0 -{A}-> 1-{A}-> 2 -{B}->4-{A}-> 5.
+#There are also other acceptable outputs, such as AAAAA.
+#
+#Sample Input 2
+#14
+#
+#Sample Output 2
+#BBABBAAAB
+#This changes the number of balls as follows: 0 -{B}-> 0 -{B}-> 0  -{A}->1 -{B}-> 2 -{B}-> 4  -{A}->5  -{A}->6 -{A}-> 7  -{B}->14.
+#It is not required to minimize the length of S.
+
+def 

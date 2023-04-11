@@ -1,0 +1,40 @@
+#Problem Statement
+#There is a knight - the chess piece - at the origin (0, 0) of a two-dimensional grid.
+#When the knight is at the square (i, j), it can be moved to either (i+1,j+2) or (i+2, j+1).
+#In how many ways can the knight reach the square (X, Y)?
+#Find the number of ways modulo 10^9 + 7.
+#
+#Constraints
+#1 ≦ X ≦ 10^6
+#1 ≦ Y ≦ 10^6
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#X Y
+#
+#Output
+#Print the number of ways for the knight to reach (X, Y) from (0, 0), modulo 10^9 + 7.
+#
+#Sample Input 1
+#3 3
+#
+#Sample Output 1
+#2
+#There are two ways: (0,0) -> (1,2) -> (3,3) and (0,0) -> (2,1) -> (3,3).
+#
+#Sample Input 2
+#2 2
+#
+#Sample Output 2
+#0
+#The knight cannot reach (2,2).
+#
+#Sample Input 3
+#999999 999999
+#
+#Sample Output 3
+#151840682
+#Print the number of ways modulo 10^9 + 7.
+
+def 

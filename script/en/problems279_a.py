@@ -1,0 +1,35 @@
+#Problem Statement
+#You are given a string S consisting of v and w.
+#Print the number of "bottoms" in the string S (see the figure at Sample Input/Outputs).
+#
+#Constraints
+#S is a string consisting of v and w.
+#The length of S is between 1 and 100, inclusive.
+#
+#Input
+#The input is given from Standard Input in the following format:
+#S
+#
+#Output
+#Print the answer as an integer.
+#
+#Sample Input 1
+#vvwvw
+#
+#Sample Output 1
+#7
+#The image above shows the seven "bottoms" in the string vvwvw.
+#
+#Sample Input 2
+#v
+#
+#Sample Output 2
+#1
+#
+#Sample Input 3
+#wwwvvvvvv
+#
+#Sample Output 3
+#12
+
+def 

@@ -1,0 +1,45 @@
+#Problem Statement
+#Takahashi loves numbers divisible by 2.
+#You are given a positive integer N. Among the integers between 1 and N (inclusive), find the one that can be divisible by 2 for the most number of times. The solution is always unique.
+#Here, the number of times an integer can be divisible by 2, is how many times the integer can be divided by 2 without remainder.
+#For example,
+#6 can be divided by 2 once: 6 -> 3.
+#8 can be divided by 2 three times: 8 -> 4 -> 2 -> 1.
+#3 can be divided by 2 zero times.
+#
+#Constraints
+#1 ≤ N ≤ 100
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#7
+#
+#Sample Output 1
+#4
+#4 can be divided by 2 twice, which is the most number of times among 1, 2, ..., 7.
+#
+#Sample Input 2
+#32
+#
+#Sample Output 2
+#32
+#
+#Sample Input 3
+#1
+#
+#Sample Output 3
+#1
+#
+#Sample Input 4
+#100
+#
+#Sample Output 4
+#64
+
+def 

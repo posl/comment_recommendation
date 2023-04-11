@@ -1,0 +1,37 @@
+#Problem Statement
+#Takahashi had a pair of two positive integers not exceeding N, (a,b), which he has forgotten.
+#He remembers that the remainder of a divided by b was greater than or equal to K.
+#Find the number of possible pairs that he may have had.
+#
+#Constraints
+#1 ≦ N ≦ 10^5
+#0 ≦ K ≦ N-1
+#All input values are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N K
+#
+#Output
+#Print the number of possible pairs that he may have had.
+#
+#Sample Input 1
+#5 2
+#
+#Sample Output 1
+#7
+#There are seven possible pairs: (2,3),(5,3),(2,4),(3,4),(2,5),(3,5) and (4,5).
+#
+#Sample Input 2
+#10 0
+#
+#Sample Output 2
+#100
+#
+#Sample Input 3
+#31415 9265
+#
+#Sample Output 3
+#287927211
+
+def 

@@ -1,0 +1,39 @@
+#Problem Statement
+#In a sequence of N positive integers a = (a_1, a_2, ..., a_N), how many different integers are there?
+#
+#Constraints
+#1 ≦ N ≦ 1000
+#1 ≦ a_i ≦ 10^9  (1 ≦ i ≦ N)
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#a_1 ... a_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#6
+#1 4 1 2 2 1
+#
+#Sample Output 1
+#3
+#There are three different integers: 1, 2, 4.
+#
+#Sample Input 2
+#1
+#1
+#
+#Sample Output 2
+#1
+#
+#Sample Input 3
+#11
+#3 1 4 1 5 9 2 6 5 3 5
+#
+#Sample Output 3
+#7
+
+def 
