@@ -3,13 +3,13 @@ import re
 
 if __name__ == '__main__':
     base_path = '../../data/en/'
-    result_path = '../../script/en/'
+    result_path = '../../script/pre_gen/en'
     files_l = os.listdir(base_path)
     files_l = sorted(files_l)
 
     for language in ['en', 'ja','zh']:
         base_path = '../../data/{}/'.format(language)
-        result_path = '../../script/{}/'.format(language)
+        result_path = '../../script/pre_gen/{}/'.format(language)
         for file in files_l:
             with open(base_path + file, 'r') as f:
                 source_file_l = f.readlines()
