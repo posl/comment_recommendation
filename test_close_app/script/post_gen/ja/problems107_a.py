@@ -1,1 +1,0 @@
-No synthesized solutions found.
