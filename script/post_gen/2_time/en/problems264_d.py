@@ -1,0 +1,39 @@
+#Problem Statement
+#You are given a string S that is a permutation of atcoder.
+#On this string S, you will perform the following operation 0 or more times:
+#Choose two adjacent characters of S and swap them.
+#Find the minimum number of operations required to make S equal atcoder.
+#
+#Constraints
+#S is a string that is a permutation of atcoder
+#
+#Input
+#Input is given from Standard Input in the following format:
+#S
+#
+#Output
+#Print the answer as an integer.
+#
+#Sample Input 1
+#catredo
+#
+#Sample Output 1
+#8
+#You can make S equal atcoder in 8 operations as follows:
+#catredo -> [ac]tredo -> actre[od] -> actr[oe]d -> actro[de] -> act[or]de -> acto[dr]e -> a[tc]odre -> atcod[er]
+#This is the minimum number of operations achievable.
+#
+#Sample Input 2
+#atcoder
+#
+#Sample Output 2
+#0
+#In this case, the string S is already atcoder.
+#
+#Sample Input 3
+#redocta
+#
+#Sample Output 3
+#21
+
+def 

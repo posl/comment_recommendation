@@ -1,0 +1,30 @@
+#Problem Statement
+#You are given an integer N at least 100. Print the last two digits of N.
+#Strictly speaking, print the tens and ones digits of N in this order.
+#
+#Constraints
+#100 ≦ N ≦ 999
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#254
+#
+#Sample Output 1
+#54
+#The last two digits of 254 are 54, which should be printed.
+#
+#Sample Input 2
+#101
+#
+#Sample Output 2
+#01
+#The last two digits of 101 are 01, which should be printed.
+
+def 

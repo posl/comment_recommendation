@@ -1,0 +1,34 @@
+#Problem Statement
+#Given are N integers A_1,...,A_N.
+#Find the sum of |A_i-A_j| over all pairs i,j such that 1≦ i < j ≦ N.
+#In other words, find (sum_{i=1}^{N-1}sum_{j=i+1}^{N} |A_i-A_j|).
+#
+#Constraints
+#2 ≦ N ≦ 2 × 10^5
+#|A_i|≦ 10^8
+#A_i is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#A_1 ... A_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#3
+#5 1 2
+#
+#Sample Output 1
+#8
+#We have |5-1|+|5-2|+|1-2|=8.
+#
+#Sample Input 2
+#5
+#31 41 59 26 53
+#
+#Sample Output 2
+#176
+
+def 

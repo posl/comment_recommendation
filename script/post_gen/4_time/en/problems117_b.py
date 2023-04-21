@@ -1,0 +1,42 @@
+#Problem Statement
+#Determine if an N-sided polygon (not necessarily convex) with sides of length L_1, L_2, ..., L_N can be drawn in a two-dimensional plane.
+#You can use the following theorem:
+#Theorem: an N-sided polygon satisfying the condition can be drawn if and only if the longest side is strictly shorter than the sum of the lengths of the other N-1 sides.
+#
+#Constraints
+#All values in input are integers.
+#3 ≦ N ≦ 10
+#1 ≦ L_i ≦ 100
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#L_1 L_2 ... L_N
+#
+#Output
+#If an N-sided polygon satisfying the condition can be drawn, print Yes; otherwise, print No.
+#
+#Sample Input 1
+#4
+#3 8 5 1
+#
+#Sample Output 1
+#Yes
+#Since 8 < 9 = 3 + 5 + 1, it follows from the theorem that such a polygon can be drawn on a plane.
+#
+#Sample Input 2
+#4
+#3 8 4 1
+#
+#Sample Output 2
+#No
+#Since 8 ≧ 8 = 3 + 4 + 1, it follows from the theorem that such a polygon cannot be drawn on a plane.
+#
+#Sample Input 3
+#10
+#1 8 10 5 8 12 34 100 11 3
+#
+#Sample Output 3
+#No
+
+def 

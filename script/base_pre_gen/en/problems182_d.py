@@ -1,0 +1,54 @@
+#Problem Statement
+#Given is a number sequence A_1, A_2, A_3, ..., A_N, which may contain negative elements.
+#On a number line, there is a robot at coordinate 0. It will do the following actions in order:  
+#Move A_1 in the positive direction.
+#Move A_1 in the positive direction, and then move A_2 in the positive direction.
+#Move A_1 in the positive direction, then move A_2 in the positive direction, and then move A_3 in the positive direction.
+#.
+#.
+#.
+# 
+#Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ..., ..., and then move A_N in the positive direction.
+#Find the greatest coordinate occupied by the robot from the beginning to the end of the process.
+#
+#Constraints
+#1 ≦ N ≦ 200000
+#-10^8 ≦ A_i ≦ 10^8
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#A_1 A_2 A_3 ... A_N
+#
+#Output
+#Print the greatest coordinate occupied by the robot from the beginning to the end of the process.
+#
+#Sample Input 1
+#3
+#2 -1 -2
+#
+#Sample Output 1
+#5
+#The robot moves as follows:
+#Move 2 in the positive direction, to coordinate 2.
+#Move 2 in the positive direction, to coordinate 4. Then move -1 in the positive direction, to coordinate 3.
+#Move 2 in the positive direction, to coordinate 5. Then move -1 in the positive direction, to coordinate 4. Then move -2 in the positive direction, to coordinate 2.
+#The greatest coordinate occupied during the process is 5, so we should print 5.
+#
+#Sample Input 2
+#5
+#-2 1 3 -1 -1
+#
+#Sample Output 2
+#2
+#
+#Sample Input 3
+#5
+#-1000 -1000 -1000 -1000 -1000
+#
+#Sample Output 3
+#0
+#In this case, the initial coordinate 0 is the greatest coordinate occupied.
+
+def 

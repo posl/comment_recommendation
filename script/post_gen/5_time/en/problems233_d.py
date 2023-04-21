@@ -1,0 +1,38 @@
+#Problem Statement
+#Given is a sequence of length N: A=(A_1,A_2,...,A_N), and an integer K.
+#How many of the contiguous subsequences of A have the sum of K?
+#In other words, how many pairs of integers (l,r) satisfy all of the conditions below?
+#1≦ l≦ r≦ N
+#sum_{i=l}^{r}A_i = K
+#
+#Constraints
+#1≦ N ≦ 2× 10^5
+#|A_i| ≦ 10^9
+#|K| ≦ 10^{15}
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N K
+#A_1 A_2 ... A_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#6 5
+#8 -3 5 7 0 -4
+#
+#Sample Output 1
+#3
+#(l,r)=(1,2),(3,3),(2,6) are the three pairs that satisfy the conditions.
+#
+#Sample Input 2
+#2 -1000000000000000
+#1000000000 -1000000000
+#
+#Sample Output 2
+#0
+#There may be no pair that satisfies the conditions.
+
+def 

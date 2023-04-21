@@ -1,0 +1,32 @@
+#Problem Statement
+#You are on a social networking site called twiblr.
+#In twiblr, you can follow at most 2×( the number of users following you )+100 users.
+#You are currently following B users, and A users are following you.
+#At most, how many extra users can you follow now?  
+#
+#Constraints
+#0 ≦ A, B ≦ 10000
+#B ≦ 2 × A + 100
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#A B
+#
+#Output
+#Print the maximum number of extra users you can follow now.
+#
+#Sample Input 1
+#200 300
+#
+#Sample Output 1
+#200
+#You can follow at most 2 × 200 + 100 = 500 users, that is, 200 more users than you are following now.
+#
+#Sample Input 2
+#10000 0
+#
+#Sample Output 2
+#20100
+
+def 

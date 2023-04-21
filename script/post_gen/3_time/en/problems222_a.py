@@ -1,0 +1,35 @@
+#Problem Statement
+#You are given an integer N between 0 and 9999 (inclusive).
+#Print it as a four-digit string after appending to it the necessary number of leading zeros.
+#
+#Constraints
+#0 ≦ N ≦ 9999
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#321
+#
+#Sample Output 1
+#0321
+#321 has three digits, so we need to add one leading zero to it to make it have four digits.
+#
+#Sample Input 2
+#7777
+#
+#Sample Output 2
+#7777
+#
+#Sample Input 3
+#1
+#
+#Sample Output 3
+#0001
+
+def 

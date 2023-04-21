@@ -1,0 +1,54 @@
+#Problem Statement
+#Given are N strings S_1,...,S_N, each of which is AND or OR.
+#Find the number of tuples of N+1 variables (x_0,...,x_N), where each element is True or False, such that the following computation results in y_N being True:
+#y_0=x_0;
+#for i≧ 1, y_i=y_{i-1} ∧ x_i if S_i is AND, and y_i=y_{i-1} ∨ x_i if S_i is OR.
+#Here, a ∧ b and a ∨ b are logical operators.
+#
+#Constraints
+#1 ≦ N ≦ 60
+#S_i is AND or OR.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#S_1
+#.
+#.
+#.
+#S_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#2
+#AND
+#OR
+#
+#Sample Output 1
+#5
+#For example, if (x_0,x_1,x_2)=(True,False,True), we have y_2 = True, as follows:
+#y_0=x_0=True
+#y_1=y_0 ∧ x_1 = True ∧ False=False
+#y_2=y_1 ∨ x_2 = False ∨ True=True
+#All of the five tuples (x_0,x_1,x_2) resulting in y_2 = True are shown below:
+#(True,True,True)
+#(True,True,False)
+#(True,False,True)
+#(False,True,True)
+#(False,False,True)
+#
+#Sample Input 2
+#5
+#OR
+#OR
+#OR
+#OR
+#OR
+#
+#Sample Output 2
+#63
+#All tuples except the one filled entirely with False result in y_5 = True.
+
+def 

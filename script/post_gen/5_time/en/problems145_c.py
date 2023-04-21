@@ -1,0 +1,59 @@
+#Problem Statement
+#There are N towns in a coordinate plane. Town i is located at coordinates (x_i, y_i). The distance between Town i and Town j is ((x_i-x_j)^2+(y_i-y_j)^2)^(1/2).
+#There are N! possible paths to visit all of these towns once. Let the length of a path be the distance covered when we start at the first town in the path, visit the second, third, ..., towns, and arrive at the last town (assume that we travel in a straight line from a town to another). Compute the average length of these N! paths.
+#
+#Constraints
+#2 ≦ N ≦ 8
+#-1000 ≦ x_i ≦ 1000
+#-1000 ≦ y_i ≦ 1000
+#(x_i, y_i) ≠ (x_j, y_j) (if i ≠ j)
+#(Added 21:12 JST) All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#x_1 y_1
+#:
+#x_N y_N
+#
+#Output
+#Print the average length of the paths.
+#Your output will be judges as correct when the absolute difference from the judge's output is at most 10^{-6}.
+#
+#Sample Input 1
+#3
+#0 0
+#1 0
+#0 1
+#
+#Sample Output 1
+#2.2761423749
+#There are six paths to visit the towns: 1 → 2 → 3, 1 → 3 → 2, 2 → 1 → 3, 2 → 3 → 1, 3 → 1 → 2, and 3 → 2 → 1.
+#The length of the path 1 → 2 → 3 is ((0-1)^2+(0-0)^2)^(1/2) + ((1-0)^2+(0-1)^2)^(1/2) = 1+(2)^(1/2).
+#By calculating the lengths of the other paths in this way, we see that the average length of all routes is:
+#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
+#
+#Sample Input 2
+#2
+#-879 981
+#-866 890
+#
+#Sample Output 2
+#91.9238815543
+#There are two paths to visit the towns: 1 → 2 and 2 → 1. These paths have the same length.
+#
+#Sample Input 3
+#8
+#-406 10
+#512 859
+#494 362
+#-955 -475
+#128 553
+#-986 -885
+#763 77
+#449 310
+#
+#Sample Output 3
+#7641.9817824387
+
+def 

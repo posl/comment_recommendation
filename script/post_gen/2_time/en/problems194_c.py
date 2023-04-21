@@ -1,0 +1,33 @@
+#Problem Statement
+#Given is a number sequence A of length N.
+#Find the sum of squared differences of every pair of elements:  sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2.
+#
+#Constraints
+#2 ≦ N ≦ 3 × 10^5
+#|A_i| ≦ 200
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#A_1 A_2 A_3 ... A_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#3
+#2 8 4
+#
+#Sample Output 1
+#56
+#We have sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2 = (8 - 2)^2 + (4 - 2) ^ 2 + (4 - 8) ^ 2 = 56.
+#
+#Sample Input 2
+#5
+#-5 8 9 -4 -3
+#
+#Sample Output 2
+#950
+
+def 

@@ -1,0 +1,93 @@
+#Problem Statement
+#We have two figures S and T on a two-dimensional grid with square cells.
+#S lies within a grid with N rows and N columns, and consists of the cells where S_{i,j} is #.
+#T lies within the same grid with N rows and N columns, and consists of the cells where T_{i,j} is #.
+#Determine whether it is possible to exactly match S and T by 90-degree rotations and translations.
+#
+#Constraints
+#1 ≦ N ≦ 200
+#Each of S and T consists of # and ..
+#Each of S and T contains at least one #.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#S_{1,1}S_{1,2}... S_{1,N}
+#.
+#.
+#.
+#S_{N,1}S_{N,2}... S_{N,N}
+#T_{1,1}T_{1,2}... T_{1,N}
+#.
+#.
+#.
+#T_{N,1}T_{N,2}... T_{N,N}
+#
+#Output
+#Print Yes if it is possible to exactly match S and T by 90-degree rotations and translations, and No otherwise.
+#
+#Sample Input 1
+#5
+#.....
+#..#..
+#.###.
+#.....
+#.....
+#.....
+#.....
+#....#
+#...##
+#....#
+#
+#Sample Output 1
+#Yes
+#We can match S to T by rotating it 90-degrees counter-clockwise and translating it.
+#
+#Sample Input 2
+#5
+######
+###..#
+##..##
+######
+#.....
+######
+##..##
+###..#
+######
+#.....
+#
+#Sample Output 2
+#No
+#It is impossible to match them by 90-degree rotations and translations.
+#
+#Sample Input 3
+#4
+##...
+#..#.
+#..#.
+#....
+##...
+##...
+#..#.
+#....
+#
+#Sample Output 3
+#Yes
+#Each of S and T may not be connected.
+#
+#Sample Input 4
+#4
+##...
+#.##.
+#..#.
+#....
+###..
+##...
+#..#.
+#....
+#
+#Sample Output 4
+#No
+#Note that it is not allowed to rotate or translate just a part of a figure; it is only allowed to rotate or translate a whole figure.
+
+def 

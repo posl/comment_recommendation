@@ -1,0 +1,58 @@
+#Problem Statement
+#The Republic of AtCoder has N mountains. The i-th mountain has a name S_i and a height of T_i.
+#Return the name of the second highest mountain there. It is guaranteed that all the mountains have different names and different heights.
+#
+#Constraints
+#2 ≦ N ≦ 1000
+#1 ≦ ({}the length of S_i) ≦ 15
+#1 ≦ T_i ≦ 10^5
+#S_i ≠ S_j  (i ≠ j)
+#T_i ≠ T_j  (i ≠ j)
+#S_i consists of uppercase English letters, lowercase English letters, and digits.
+#N and T_i are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#S_1 T_1
+#S_2 T_2
+#.
+#.
+#.
+#S_N T_N
+#
+#Output
+#Print the name of the second highest mountain.
+#
+#Sample Input 1
+#3
+#Everest 8849
+#K2 8611
+#Kangchenjunga 8586
+#
+#Sample Output 1
+#K2
+#The second highest mountain in the world is K2.
+#
+#Sample Input 2
+#4
+#Kita 3193
+#Aino 3189
+#Fuji 3776
+#Okuhotaka 3190
+#
+#Sample Output 2
+#Kita
+#The second highest mountain in Japan is Kita-dake.
+#
+#Sample Input 3
+#4
+#QCFium 2846
+#chokudai 2992
+#kyoprofriends 2432
+#penguinman 2390
+#
+#Sample Output 3
+#QCFium
+
+def 

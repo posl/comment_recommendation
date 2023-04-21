@@ -1,0 +1,37 @@
+#Problem Statement
+#There are S sheep and W wolves.
+#If the number of wolves is greater than or equal to that of sheep, the wolves will attack the sheep.
+#If the wolves will attack the sheep, print unsafe; otherwise, print safe.
+#
+#Constraints
+#1 ≦ S ≦ 100
+#1 ≦ W ≦ 100
+#
+#Input
+#Input is given from Standard Input in the following format:
+#S W
+#
+#Output
+#If the wolves will attack the sheep, print unsafe; otherwise, print safe.
+#
+#Sample Input 1
+#4 5
+#
+#Sample Output 1
+#unsafe
+#There are four sheep and five wolves. The number of wolves is not less than that of sheep, so they will attack them.
+#
+#Sample Input 2
+#100 2
+#
+#Sample Output 2
+#safe
+#Many a sheep drive away two wolves.
+#
+#Sample Input 3
+#10 10
+#
+#Sample Output 3
+#unsafe
+
+def 

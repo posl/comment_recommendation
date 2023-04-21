@@ -1,0 +1,39 @@
+#Problem Statement
+#You are given an integer N. Among the divisors of N! (= 1 × 2 × ... × N), how many Shichi-Go numbers (literally "Seven-Five numbers") are there?
+#Here, a Shichi-Go number is a positive integer that has exactly 75 divisors.
+#
+#NoteWhen a positive integer A divides a positive integer B, A is said to a divisor of B.
+#For example, 6 has four divisors: 1, 2, 3 and 6.
+#
+#Constraints
+#1 ≦ N ≦ 100
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the number of the Shichi-Go numbers that are divisors of N!.
+#
+#Sample Input 1
+#9
+#
+#Sample Output 1
+#0
+#There are no Shichi-Go numbers among the divisors of 9! = 1 × 2 × ... × 9 = 362880.
+#
+#Sample Input 2
+#10
+#
+#Sample Output 2
+#1
+#There is one Shichi-Go number among the divisors of 10! = 3628800: 32400.
+#
+#Sample Input 3
+#100
+#
+#Sample Output 3
+#543
+
+def 

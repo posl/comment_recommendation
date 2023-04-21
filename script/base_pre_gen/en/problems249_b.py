@@ -1,0 +1,48 @@
+#Problem Statement
+#Let us call a string consisting of uppercase and lowercase English alphabets a wonderful string if all of the following conditions are satisfied:
+#The string contains an uppercase English alphabet.
+#The string contains a lowercase English alphabet.
+#All characters in the string are pairwise distinct.
+#For example, AtCoder and Aa are wonderful strings, while atcoder and Perfect are not.
+#Given a string S, determine if S is a wonderful string.
+#
+#Constraints
+#1 ≦ |S| ≦ 100
+#S is a string consisting of uppercase and lowercase English alphabets.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#S
+#
+#Output
+#If S is a wonderful string, print Yes; otherwise, print No.
+#
+#Sample Input 1
+#AtCoder
+#
+#Sample Output 1
+#Yes
+#AtCoder is a wonderful string because it contains an uppercase English alphabet, a lowercase English alphabet, and all characters in the string are pairwise distinct.
+#
+#Sample Input 2
+#Aa
+#
+#Sample Output 2
+#Yes
+#Note that A and a are different characters.  This string is a wonderful string.
+#
+#Sample Input 3
+#atcoder
+#
+#Sample Output 3
+#No
+#It is not a wonderful string because it does not contain an uppercase English alphabet.
+#
+#Sample Input 4
+#Perfect
+#
+#Sample Output 4
+#No
+#It is not a wonderful string because the 2-nd and the 5-th characters are the same.
+
+def 

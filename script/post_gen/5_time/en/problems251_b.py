@@ -1,0 +1,57 @@
+#Problem Statement
+#There are N weights called Weight 1, Weight 2, ..., Weight N.  Weight i has a mass of A_i.
+#Let us say a positive integer n is a good integer if the following condition is satisfied:
+#We can choose at most 3 different weights so that they have a total mass of n.
+#How many positive integers less than or equal to W are good integers?
+#
+#Constraints
+#1 ≦ N ≦ 300
+#1 ≦ W ≦ 10^6
+#1 ≦ A_i ≦ 10^6
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N W
+#A_1 A_2 ... A_N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#2 10
+#1 3
+#
+#Sample Output 1
+#3
+#If we choose only Weight 1, it has a total mass of 1, so 1 is a good integer.
+#If we choose only Weight 2, it has a total mass of 3, so 3 is a good integer.
+#If we choose Weights 1 and 2, they have a total mass of 4, so 4 is a good integer.
+#No other integer is a good integer.  Also, all of 1, 3, and 4 are integers less than or equal to W.  Therefore, the answer is 3.
+#
+#Sample Input 2
+#2 1
+#2 3
+#
+#Sample Output 2
+#0
+#There are no good integers less than or equal to W.
+#
+#Sample Input 3
+#4 12
+#3 3 3 3
+#
+#Sample Output 3
+#3
+#There are 3 good integers: 3, 6, and 9.
+#For example, if we choose Weights 1, 2, and 3, they have a total mass of 9, so 9 is a good integer.
+#Note that 12 is not a good integer.
+#
+#Sample Input 4
+#7 251
+#202 20 5 1 4 2 100
+#
+#Sample Output 4
+#48
+
+def 

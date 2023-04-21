@@ -1,0 +1,88 @@
+#Problem Statement
+#We have N dishes numbered 1, 2, ..., N and M conditions numbered 1, 2, ..., M.
+#Condition i is satisfied when both Dish A_i and Dish B_i have (one or more) balls on them.
+#There are K people numbered 1, 2, ..., K. Person i will put a ball on Dish C_i or Dish D_i.
+#At most how many conditions will be satisfied?
+#
+#Constraints
+#All values in input are integers.
+#2 ≤ N ≤ 100
+#1 ≤ M ≤ 100
+#1 ≤ A_i < B_i ≤ N
+#1 ≤ K ≤ 16
+#1 ≤ C_i < D_i ≤ N
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N M
+#A_1 B_1
+#.
+#.
+#.
+#A_M B_M
+#K
+#C_1 D_1
+#.
+#.
+#.
+#C_K D_K
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#4 4
+#1 2
+#1 3
+#2 4
+#3 4
+#3
+#1 2
+#1 3
+#2 3
+#
+#Sample Output 1
+#2
+#For example, if People 1, 2, 3 put their balls on Dishes 1, 3, 2, respectively, Conditions 1 and 2 will be satisfied.
+#
+#Sample Input 2
+#4 4
+#1 2
+#1 3
+#2 4
+#3 4
+#4
+#3 4
+#1 2
+#2 4
+#2 4
+#
+#Sample Output 2
+#4
+#For example, if People 1, 2, 3, 4 put their balls on Dishes 3, 1, 2, 4, respectively, all conditions will be satisfied.
+#
+#Sample Input 3
+#6 12
+#2 3
+#4 6
+#1 2
+#4 5
+#2 6
+#1 5
+#4 5
+#1 3
+#1 2
+#2 6
+#2 3
+#2 5
+#5
+#3 5
+#1 4
+#2 6
+#4 6
+#5 6
+#
+#Sample Output 3
+#9
+
+def 

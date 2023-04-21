@@ -1,0 +1,38 @@
+#Problem Statement
+#Given is a string S consisting of lowercase English letters.
+#Determine whether adding some number of a's (possibly zero) at the beginning of S can make it a palindrome.
+#Here, a string of length N, A=A_1A_2... A_N, is said to be a palindrome when A_i=A_{N+1-i} for every 1≦ i≦ N.
+#
+#Constraints
+#1 ≦ | S | ≦ 10^6
+#S consists of lowercase English letters.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#S
+#
+#Output
+#If adding some number of a's (possibly zero) at the beginning of S can make it a palindrome, print Yes; otherwise, print No.
+#
+#Sample Input 1
+#kasaka
+#
+#Sample Output 1
+#Yes
+#By adding one a at the beginning of kasaka, we have akasaka, which is a palindrome, so Yes should be printed.
+#
+#Sample Input 2
+#atcoder
+#
+#Sample Output 2
+#No
+#Adding any number of a's at the beginning of atcoder does not make it a palindrome.
+#
+#Sample Input 3
+#php
+#
+#Sample Output 3
+#Yes
+#php itself is a palindrome. Adding zero a's at the beginning of S is allowed, so Yes should be printed.
+
+def 

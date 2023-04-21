@@ -1,0 +1,38 @@
+#Problem Statement
+#How many integer sequences A_1,A_2,...,A_N of length N satisfy all of the following conditions?
+#0 ≦ A_i ≦ 9
+#There exists some i such that A_i=0 holds.
+#There exists some i such that A_i=9 holds.
+#The answer can be very large, so output it modulo 10^9 + 7.
+#
+#Constraints
+#1 ≦ N ≦ 10^6
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the answer modulo 10^9 + 7.
+#
+#Sample Input 1
+#2
+#
+#Sample Output 1
+#2
+#Two sequences {0,9} and {9,0} satisfy all conditions.
+#
+#Sample Input 2
+#1
+#
+#Sample Output 2
+#0
+#
+#Sample Input 3
+#869121
+#
+#Sample Output 3
+#2511445
+
+def 

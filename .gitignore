@@ -1,3 +1,4 @@
 *.env
 *.zip
-test_*
+test_*/
+!test_script/

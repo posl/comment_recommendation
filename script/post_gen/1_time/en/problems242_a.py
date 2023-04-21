@@ -1,0 +1,45 @@
+#Problem Statement
+#In a certain programming contest, T-shirts are awarded to participants according to the following rules.
+#All participants who ranked A-th or higher get a T-shirt.
+#Additionally, from the participants who ranked between (A+1)-th and B-th (inclusive), C participants chosen uniformly at random get a T-shirt.
+#There were 1000 participants in this contest, and all of them got different ranks.
+#Iroha-chan, who participated in this contest, ranked X-th.
+#Find the probability that she gets a T-shirt.
+#
+#Constraints
+#All values in input are integers.
+#1 ≦ A < B ≦ 1000
+#1 ≦ C ≦ B-A
+#1 ≦ X ≦ 1000
+#
+#Input
+#Input is given from Standard Input in the following format:
+#A B C X
+#
+#Output
+#Print the answer.
+#Your output will be considered correct if the absolute or relative error from the judge's answer is at most 10^{−6}.
+#
+#Sample Input 1
+#30 500 20 103
+#
+#Sample Output 1
+#0.042553191489
+#Iroha-chan ranked 103-rd.
+#She will get a T-shirt if she is among the 20 participants chosen uniformly at random from the 470 participants who ranked between 31-st and 500-th, which happens with probability ((20)/(470))=0.04255319....
+#
+#Sample Input 2
+#50 500 100 1
+#
+#Sample Output 2
+#1.000000000000
+#Iroha-chan ranked 1-st. This time, she is guaranteed to get a T-shirt.
+#
+#Sample Input 3
+#1 2 1 1000
+#
+#Sample Output 3
+#0.000000000000
+#Iroha-chan ranked 1000-th. This time, she will never get a T-shirt.
+
+def 

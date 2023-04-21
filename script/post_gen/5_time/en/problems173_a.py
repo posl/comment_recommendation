@@ -1,0 +1,31 @@
+#Problem Statement
+#We will buy a product for N yen (the currency of Japan) at a shop.
+#If we use only 1000-yen bills to pay the price, how much change will we receive?
+#Assume we use the minimum number of bills required.
+#
+#Constraints
+#1 ≦ N ≦ 10000
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the amount of change as an integer.
+#
+#Sample Input 1
+#1900
+#
+#Sample Output 1
+#100
+#We will use two 1000-yen bills to pay the price and receive 100 yen in change.
+#
+#Sample Input 2
+#3000
+#
+#Sample Output 2
+#0
+#We can pay the exact price.
+
+def 

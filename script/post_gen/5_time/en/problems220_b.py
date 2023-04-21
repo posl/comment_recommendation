@@ -1,0 +1,41 @@
+#Problem Statement
+#You are given integers A and B, in base K.
+#Print A × B in decimal.
+#
+#Notes
+#For base-K representation, see Wikipedia's article on Positional notation.
+#
+#Constraints
+#2 ≦ K ≦ 10
+#1 ≦ A,B ≦ 10^5
+#A and B are in base-K representation.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#K
+#A B
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#2
+#1011 10100
+#
+#Sample Output 1
+#220
+#1011 in base 2 corresponds to 11 in base 10.
+#10100 in base 2 corresponds to 20 in base 10.
+#We have 11 × 20 = 220, so print 220.
+#
+#Sample Input 2
+#7
+#123 456
+#
+#Sample Output 2
+#15642
+#123 in base 7 corresponds to 66 in base 10.
+#456 in base 7 corresponds to 237 in base 10.
+#We have 66 × 237 = 15642, so print 15642.
+
+def 

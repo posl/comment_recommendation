@@ -1,0 +1,41 @@
+#Problem Statement
+#How many arithmetic progressions consisting of integers with a common difference of 1 have a sum of N?
+#
+#Constraints
+#1 ≤ N ≤ 10^{12}
+#N is an integer.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#12
+#
+#Sample Output 1
+#4
+#We have four such progressions:
+#[12]
+#[3, 4, 5]
+#[-2, -1, 0, 1, 2, 3, 4, 5]
+#[-11, -10, -9, ..., 10, 11, 12]
+#
+#Sample Input 2
+#1
+#
+#Sample Output 2
+#2
+#We have two such progressions:
+#[1]
+#[0, 1]
+#
+#Sample Input 3
+#963761198400
+#
+#Sample Output 3
+#1920
+
+def 

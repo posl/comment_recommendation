@@ -1,0 +1,44 @@
+#Problem Statement
+#The land of a park AtCoder is an N× N grid with east-west rows and north-south columns. The height of the square at the i-th row from the north and j-th column from the west is given as A_{i,j}.
+#Takahashi, the manager, has decided to build a square pond occupying K × K squares in this park.
+#To do this, he wants to choose a square section of K × K squares completely within the park whose median of the heights of the squares is the lowest. Find the median of the heights of the squares in such a section.
+#Here, the median of the heights of the squares in a K × K section is the height of the (⌊((K^2)/(2))⌋ +1)-th highest square among the K^2 squares in the section, where ⌊ x⌋ is the greatest integer not exceeding x.
+#
+#Constraints
+#1 ≦ K ≦ N ≦ 800
+#0 ≦ A_{i,j} ≦ 10^9
+#All values in input are integers.
+#
+#Input
+#Input is given from Standard Input in the following format:
+#N K
+#A_{1,1} A_{1,2} ... A_{1,N}
+#A_{2,1} A_{2,2} ... A_{2,N}
+#:
+#A_{N,1} A_{N,2} ... A_{N,N}
+#
+#Output
+#Print the answer.
+#
+#Sample Input 1
+#3 2
+#1 7 0
+#5 8 11
+#10 4 2
+#
+#Sample Output 1
+#4
+#Let (i,j) denote the square at the i-th row from the north and j-th column from the west.
+#We have four candidates for the 2 × 2 section occupied by the pond: {(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)}.
+#When K=2, since ⌊((2^2)/(2))⌋+1=3, the median of the heights of the squares in a section is the height of the 3-rd highest square, which is 5, 7, 5, 4 for the candidates above, respectively. We should print the lowest of these: 4.
+#
+#Sample Input 2
+#3 3
+#1 2 3
+#4 5 6
+#7 8 9
+#
+#Sample Output 2
+#5
+
+def 
