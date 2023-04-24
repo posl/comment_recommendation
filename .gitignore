@@ -2,3 +2,5 @@
 *.zip
 test_*/
 !test_script/
+script/mod_gen/
+script/split_gen/

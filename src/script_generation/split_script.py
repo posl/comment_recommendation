@@ -18,19 +18,23 @@ def split_script(base_l, l):
     return script_l
 
 if __name__ == '__main__':
-    which_close = 'test_close_app'
-    base_path = '../../' + which_close + '/script/post_gen/en/'
-    files_l = os.listdir(base_path)
+    #which_close = 'test_close_app'
+    time = '1_time'
+
+    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/'.format(time)
+    files_l = os.listdir(base_path + 'en')
     files_l = sorted(files_l)
 
     for language in ['en', 'ja']:
-        if os.path.exists('../../' + which_close + '/script/split_gen/' + language + '_errors.txt'):
-            os.remove('../../' + which_close + '/script/split_gen/' + language + '_errors.txt')
-        shutil.rmtree('../../' + which_close + '/script/split_gen/' + language)
         
-        os.mkdir('../../' + which_close + '/script/split_gen/' + language)
-        base_path = '../../' + which_close + '/script/post_gen/{}/'.format(language)
-        result_path = '../../' + which_close + '/script/split_gen/{}/'.format(language)
+        base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/{1}/'.format(time, language)
+        result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
+
+        if os.path.exists(result_path + language + '_errors.txt'):
+            os.remove(result_path + language + '_errors.txt')
+        shutil.rmtree(result_path)
+        
+        os.mkdir(result_path)
         for file in files_l:
             with open(base_path + file, 'r') as f:
                 try:
@@ -38,6 +42,7 @@ if __name__ == '__main__':
                         next(f)
                     source_file_l = f.readlines()
                     source_file_l = list(map(lambda x: x.lstrip('\n'), source_file_l))
+                    source_file_l = [i for i in source_file_l if not 'Suggestion' in i]
                     source_file_l = list(filter(None, source_file_l))
                     detect_sign_index_l = detect_sign(source_file_l)
 
@@ -49,14 +54,14 @@ if __name__ == '__main__':
                                 f.write(line)
                     print(file)
                 except:
-                    if os.path.exists('../../' + which_close + '/script/split_gen/' + language + '_errors.txt'):
-                        with open('../../' + which_close + '/script/split_gen/' + language + '_errors.txt', 'w') as f:
+                    if os.path.exists(result_path + language + '_errors.txt'):
+                        with open(result_path + language + '_errors.txt', 'w') as f:
                             f.write(file + '\n')
                         with open(result_path + file, 'w') as f:
                             f.write('#')
                     else:
-                        with open('../../' + which_close + '/script/split_gen/' + language + '_errors.txt', 'a') as f:
+                        with open(result_path + language + '_errors.txt', 'a') as f:
                             f.write(file + '\n')
                         with open(result_path + file, 'w') as f:
                             f.write('#')
-                            
+            break
