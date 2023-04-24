@@ -1,56 +1,231 @@
-#Problem Statement
-#AtCoder City will hold a mayoral election. The candidates are Aoki and Takahashi.
-#The city consists of N towns, the i-th of which has A_i pro-Aoki voters and B_i pro-Takahashi voters. There are no other voters.
-#Takahashi can make a speech in each town.
-#If he makes a speech in some town, all voters in that town, pro-Takahashi or pro-Aoki, will vote for Takahashi.
-#On the other hand, if he does not make a speech in some town, the pro-Aoki voters in that town will vote for Aoki, and the pro-Takahashi voters will not vote.
-#To get more votes than Aoki, in how many towns does Takahashi need to make speeches at least?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#2 1
-#2 2
-#5 1
-#1 3
-#
-#Sample Output 1
-#1
-#After making a speech in the third town, Aoki and Takahashi will get 5 and 6 votes, respectively.
-#
-#Sample Input 2
-#5
-#2 1
-#2 1
-#2 1
-#2 1
-#2 1
-#
-#Sample Output 2
-#3
-#After making speeches in three towns, Aoki and Takahashi will get 4 and 9 votes, respectively.
-#
-#Sample Input 3
-#1
-#273 691
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    Aoki = 0
+    Takahashi = 0
+    for i in range(N):
+        Aoki += A[i]
+        Takahashi += B[i]
+        if Aoki < Takahashi:
+            print(i + 1)
+            return
+    print(N)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB = sorted(AB, key=lambda x: x[0] + x[1], reverse=True)
+    diff = 0
+    ans = 0
+    for i in range(N):
+        diff += AB[i][0]
+        ans += 1
+        if diff > sum(AB[i][1] for i in range(i+1, N)):
+            break
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[0] + x[1], reverse=True)
+    ans = 0
+    takahashi = 0
+    aoki = 0
+    for i in range(N):
+        aoki += AB[i][0]
+    for i in range(N):
+        takahashi += AB[i][1]
+        aoki -= AB[i][0]
+        ans += 1
+        if takahashi > aoki:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x:x[0]+x[1], reverse=True)
+    takahashi = 0
+    aoki = 0
+    for i in range(N):
+        aoki += AB[i][0]
+    ans = 0
+    for i in range(N):
+        takahashi += AB[i][1]
+        aoki -= AB[i][0]
+        ans += 1
+        if takahashi > aoki:
+            print(ans)
+            return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append((a, b))
+        B.append((b, a))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    aoki = 0
+    takahashi = 0
+    for i in range(N):
+        aoki += A[i][0]
+        takahashi += B[i][0]
+        if aoki < takahashi:
+            print(i+1)
+            return
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    town = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        town.append([a, b])
+    town = sorted(town, key=lambda x: x[0] + x[1], reverse=True)
+    takahashi = 0
+    aoki = 0
+    result = 0
+    for i in range(n):
+        takahashi += town[i][0]
+        aoki += town[i][1]
+        result += 1
+        if takahashi > aoki:
+            break
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+
+    a.sort(reverse = True)
+    b.sort(reverse = True)
+
+    #print(a)
+    #print(b)
+
+    takahashi = 0
+    aoki = 0
+    for i in range(n):
+        #print("aoki = ", aoki)
+        #print("takahashi = ", takahashi)
+        if aoki >= takahashi:
+            takahashi += b[i]
+        else:
+            aoki += a[i]
+        #print("aoki = ", aoki)
+        #print("takahashi = ", takahashi)
+        if aoki > takahashi:
+            print(i+1)
+            exit()
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A, B = [], []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(N, A, B)
+
+    #Aokiの得票数が多い順にソート
+    C = sorted([(A[i] + B[i], A[i], B[i]) for i in range(N)], reverse=True)
+    #print(C)
+
+    #TakahashiはAokiの得票数が多い順にスピーチを行う
+    #Aokiの得票数が多い順にスピーチを行うと、
+    #Aokiの得票数が多い順にスピーチを行った時の、
+    #Takahashiの得票数が最大になる
+    takahashi = 0
+    aoki = 0
+    for i in range(N):
+        takahashi += C[i][1]
+        aoki += C[i][2]
+        if takahashi > aoki:
+            print(i + 1)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: -x[0]-x[1])
+    aoki = 0
+    takahashi = 0
+    for i in range(N):
+        aoki += AB[i][0]
+    for i in range(N):
+        takahashi += AB[i][1]
+        aoki -= AB[i][0]
+        if takahashi > aoki:
+            print(i+1)
+            return
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    
+    #A[i] + B[i]の値を昇順に並び替える
+    #A[i] + B[i]の値が同じ場合は、A[i]の値を昇順に並び替える
+    #A[i] + B[i]の値が同じで、A[i]の値も同じ場合は、B[i]の値を昇順に並び替える
+    #これらの値を元に、A[i] + B[i]の値が大きい順に並び替える
+    #並び替え後のリストのインデックスを保持するリストを作成する
+    #インデックスのリストの要素数をカウントする
+    #インデックスのリストの要素数をカウントする
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大きい順に並び替える
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大きい順に並び替える
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大きい順に並び替える
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大きい順に並び替える
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大きい順に並び替える
+    #インデックスのリストの要素数と、A[i] + B[i]の値が大

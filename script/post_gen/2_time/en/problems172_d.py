@@ -1,35 +1,100 @@
-#Problem Statement
-#For a positive integer X, let f(X) be the number of positive divisors of X.
-#Given a positive integer N, find sum_{K=1}^N K× f(K).
-#
-#Constraints
-#1 ≦ N ≦ 10^7
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the value sum_{K=1}^N K× f(K).
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#23
-#We have f(1)=1, f(2)=2, f(3)=2, and f(4)=3, so the answer is 1× 1 + 2× 2 + 3× 2 + 4× 3 =23.
-#
-#Sample Input 2
-#100
-#
-#Sample Output 2
-#26879
-#
-#Sample Input 3
-#10000000
-#
-#Sample Output 3
-#838627288460105
-#Watch out for overflows.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += i * (N // i) * ((N // i) + 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += i * (n // i) * (n // i + 1) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    divisors = [0] * (N+1)
+    for i in range(1, N+1):
+        for j in range(i, N+1, i):
+            divisors[j] += 1
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * divisors[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N // i) * (N // i + 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N//i) * (N//i + 1) // 2
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += (i * (N//i) * (N//i+1))//2
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += (N//i) * i
+    print(ans)
+
+=======
+Suggestion 8
+
+def f(n):
+    r = 0
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            r += i
+            if n // i != i:
+                r += n // i
+    return r
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        #print(i, N//i, (N//i)*(N//i+1)//2, i*((N//i)*(N//i+1)//2))
+        ans += i*((N//i)*(N//i+1)//2)
+    print(ans)

@@ -1,51 +1,230 @@
-#Problem Statement
-#Person 0, Person 1, ..., and Person (N-1) are sitting around a turntable in their counterclockwise order, evenly spaced.  Dish p_i is in front of Person i on the table.
-#You may perform the following operation 0 or more times:
-#Rotate the turntable by one N-th of a counterclockwise turn.  As a result, the dish that was in front of Person i right before the rotation is now in front of Person (i+1) mod N.
-#When you are finished, Person i is happy if Dish i is in front of Person (i-1) mod N, Person i, or Person (i+1) mod N.
-#Find the maximum possible number of happy people.
-# What is a mod m?  For an integer a and a positive integer m, a mod m denotes the integer x between 0 and (m-1) (inclusive) such that (a-x) is a multiple of m.  (It can be proved that such x is unique.)
-#
-#Constraints
-#3 ≦ N ≦ 2 × 10^5
-#0 ≦ p_i ≦ N-1
-#p_i ≠ p_j if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#p_0 ... p_{N-1}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#1 2 0 3
-#
-#Sample Output 1
-#4
-#The figure below shows the table after one operation.
-#Here, there are four happy people:
-#Person 0 is happy because Dish 0 is in front of Person 3 (=(0-1) mod 4);
-#Person 1 is happy because Dish 1 is in front of Person 1 (=1);
-#Person 2 is happy because Dish 2 is in front of Person 2 (=2);
-#Person 3 is happy because Dish 3 is in front of Person 0 (=(3+1) mod 4).
-#There cannot be five or more happy people, so the answer is 4.
-#
-#Sample Input 2
-#3
-#0 1 2
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#10
-#3 9 6 1 7 2 8 0 5 4
-#
-#Sample Output 3
-#5
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if p[i] == i:
+            ans += 1
+            if i+1 < n:
+                p[i], p[i+1] = p[i+1], p[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = [int(x) for x in input().split()]
+    happy = [0] * N
+    for i in range(N):
+        happy[(i - 1) % N] += 1
+        happy[i] += 1
+        happy[(i + 1) % N] += 1
+    happy_count = 0
+    for i in range(N):
+        if happy[P[i]] > 0:
+            happy_count += 1
+    print(happy_count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    ans = 0
+    for i in range(N):
+        ans += (P[i] == i-1 or P[i] == i or P[i] == i+1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if i == 0 and p[i] == p[i+1] - 1:
+            ans += 1
+        elif i == n-1 and p[i] == p[i-1] - 1:
+            ans += 1
+        elif p[i] == p[i-1] - 1 or p[i] == p[i+1] - 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N, p)
+    if p[0] == 0:
+        if p[N-1] == N-1:
+            print(N)
+        else:
+            print(N-1)
+    elif p[N-1] == N-1:
+        print(N-1)
+    else:
+        print(N-2)
+
+main()
+
+This code got 100 points.
+
+Rate this: Share this: Twitter
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    # d[i] = j となるように、d の作成
+    d = [0] * N
+    for i in range(N):
+        d[P[i]] = i
+
+    # d[i] = j となるように、d の作成
+    # d = [0] * N
+    # for i in range(N):
+    #     d[P[i]] = i
+
+    # d の中で最小の値を見つける
+    min_d = min(d)
+
+    # d の中で最小の値を見つける
+    # min_d = min(d)
+
+    # d の中で最小の値を 0 にする
+    for i in range(N):
+        d[i] -= min_d
+
+    # d の中で最小の値を 0 にする
+    # for i in range(N):
+    #     d[i] -= min_d
+
+    # d を d の最小の値で割る
+    for i in range(N):
+        d[i] //= min_d
+
+    # d を d の最小の値で割る
+    # for i in range(N):
+    #     d[i] //= min_d
+
+    # d を d の最小の値で割った結果、最大の値を見つける
+    max_d = max(d)
+
+    # d を d の最小の値で割った結果、最大の値を見つける
+    # max_d = max(d)
+
+    # d を d の最小の値で割った結果、最大の値を見つけたときの d の中でのインデックスを見つける
+    for i in range(N):
+        if d[i] == max_d:
+            break
+
+    # d を d の最小の値で割った結果、最大の値を見つけたときの d の中でのインデックスを見つける
+    # for i in range(N):
+    #     if d[i
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N)
+    #print(p)
+    #print("")
+
+    # 1. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 2. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 3. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 4. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 5. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 6. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 7. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 8. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 9. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    # 1. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 2. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+    # 3. 2, 3, 4, 5, 6, 7, 8, 9, 0, 1
+    # 4. 3, 4, 5, 6, 7, 8, 9, 0, 1, 2
+    # 5. 4, 5,
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    # P[i]が人iの前にいたとする
+    # 人iの前にいるはずの皿はP[P[i]]になる
+    # 人iの前にいるはずの皿をP[i]にするためには、
+    # 人iの前にいるはずの皿をP[P[i]]にする必要がある
+    # つまり、P[P[i]]をP[i]にする操作を行えばよい
+    # 人iの前にいるはずの皿をP[i]にする操作を行うためには、
+    # 人iの前にいるはずの皿をP[P[i]]にする操作を行う必要がある
+    # つまり、P[P[P[i]]]をP[i]にする操作を行えばよい
+    # 人iの前にいるはずの皿をP[i]にする操作を行うためには、
+    # 人iの前にいるはずの皿をP[P[i]]にする操作を行う必要がある
+    # つまり、P[P[P[P[i]]]]をP[i]にする操作を行えばよい
+    # ...
+    # 人iの前にいるはずの皿をP[i]にする操作を行うためには、
+    # 人iの前にいるはずの皿をP[P[i]]にする操作を行う必要がある
+    # つまり、P[P[i]]をP[i]にする操作を行えばよい
+    # 人iの前にいるはずの皿をP[i]にする操作を行うためには、
+    # 人iの前にいるはずの皿をP[P[i]]にする操作を行う必要がある
+    # つまり、P[P[P[i]]]をP
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N)
+    #print(p)
+    #print("=====")
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    # 2. the answer should be the length of the longest consecutive sequence + 1
+    # 3. if the longest consecutive sequence is the whole array, then the answer should be N
+    # 4. if the longest consecutive sequence is 1, then the answer should be 2
+
+    # 1. find the longest consecutive sequence
+    #

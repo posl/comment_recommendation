@@ -1,54 +1,200 @@
-#Problem Statement
-#Hearing that energy drinks increase rating in those sites, Takahashi decides to buy up M cans of energy drinks.
-#There are N stores that sell energy drinks. In the i-th store, he can buy at most B_i cans of energy drinks for A_i yen (the currency of Japan) each.
-#What is the minimum amount of money with which he can buy M cans of energy drinks?
-#It is guaranteed that, in the given inputs, a sufficient amount of money can always buy M cans of energy drinks.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^5
-#B_1 + ... + B_N ≧ M
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the minimum amount of money with which Takahashi can buy M cans of energy drinks.
-#
-#Sample Input 1
-#2 5
-#4 9
-#2 4
-#
-#Sample Output 1
-#12
-#With 12 yen, we can buy one drink at the first store and four drinks at the second store, for the total of five drinks. However, we cannot buy 5 drinks with 11 yen or less.
-#
-#Sample Input 2
-#4 30
-#6 18
-#2 5
-#3 10
-#7 9
-#
-#Sample Output 2
-#130
-#
-#Sample Input 3
-#1 100000
-#1000000000 100000
-#
-#Sample Output 3
-#100000000000000
-#The output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    AB = sorted(zip(A, B))
+    ans = 0
+    for a, b in AB:
+        if M <= b:
+            ans += a * M
+            break
+        else:
+            ans += a * b
+            M -= b
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A, B = zip(*sorted(zip(A, B)))
+    ans = 0
+    for i in range(N):
+        if M < B[i]:
+            ans += A[i] * M
+            break
+        else:
+            ans += A[i] * B[i]
+            M -= B[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A, B = (list(t) for t in zip(*sorted(zip(A, B))))
+    ans = 0
+    for i in range(N):
+        if M - B[i] < 0:
+            ans += A[i] * M
+            break
+        else:
+            M -= B[i]
+            ans += A[i] * B[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    # sort by price
+    idx = sorted(range(N), key=lambda k: A[k])
+    A = [A[i] for i in idx]
+    B = [B[i] for i in idx]
+
+    ans = 0
+    for i in range(N):
+        if B[i] >= M:
+            ans += A[i] * M
+            break
+        else:
+            ans += A[i] * B[i]
+            M -= B[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    stores = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        stores.append((A, B))
+    stores.sort()
+    ans = 0
+    for A, B in stores:
+        if M <= B:
+            ans += A * M
+            break
+        else:
+            ans += A * B
+            M -= B
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for i in range(N):
+        if AB[i][1] < M:
+            M -= AB[i][1]
+            ans += AB[i][0] * AB[i][1]
+        else:
+            ans += AB[i][0] * M
+            break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for A, B in AB:
+        if M > B:
+            ans += A * B
+            M -= B
+        else:
+            ans += A * M
+            break
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    for a, b in AB:
+        if b >= M:
+            ans += a * M
+            break
+        else:
+            ans += a * b
+            M -= b
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    store = [list(map(int, input().split())) for _ in range(N)]
+    store.sort()
+
+    ans = 0
+    for i in range(N):
+        if M - store[i][1] >= 0:
+            ans += store[i][0] * store[i][1]
+            M -= store[i][1]
+        else:
+            ans += store[i][0] * M
+            break
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N,M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for a,b in AB:
+        if M <= b:
+            ans += a*M
+            break
+        else:
+            ans += a*b
+            M -= b
+    print(ans)

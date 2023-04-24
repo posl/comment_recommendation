@@ -1,70 +1,369 @@
-#Problem Statement
-#You are given N intervals numbered 1 through N, that are as follows:
-#if t_i=1, Interval i is [l_i,r_i];
-#if t_i=2, Interval i is [l_i,r_i);
-#if t_i=3, Interval i is (l_i,r_i];
-#if t_i=4, Interval i is (l_i,r_i).
-#How many pairs of integers (i,j) satisfying 1 ≦ i < j ≦ N are there such that Interval i and Interval j intersect?
-#What are [X,Y],[X,Y),(X,Y],(X,Y)?
-#A closed interval [X,Y] is an interval consisting of all real numbers x such that X ≦ x ≦ Y.
-#A half-open interval [X,Y) is an interval consisting of all real numbers x such that X ≦ x < Y.
-#A half-open interval (X,Y] is an interval consisting of all real numbers x such that X < x ≦ Y.
-#A open interval (X,Y) is an interval consisting of all real numbers x such that X < x < Y.
-#Roughly speaking, square brackets [] mean the endpoint is included, and curly brackets () mean the endpoint is excluded.
-#
-#Constraints
-#2 ≦ N ≦ 2000
-#1 ≦ t_i ≦ 4
-#1 ≦ l_i < r_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#t_1 l_1 r_1
-#t_2 l_2 r_2
-#.
-#.
-#.
-#t_N l_N r_N
-#
-#Output
-#Print the number of pairs of integers (i,j) such that Interval i and Interval j intersect.
-#
-#Sample Input 1
-#3
-#1 1 2
-#2 2 3
-#3 2 4
-#
-#Sample Output 1
-#2
-#As defined in the Problem Statement, Interval 1 is [1,2], Interval 2 is [2,3), and Interval 3 is (2,4].
-#There are two pairs of integers (i,j) such that Interval i and Interval j intersect: (1,2) and (2,3). For the first pair, the intersection is [2,2], and for the second pair, the intersection is (2,3).
-#
-#Sample Input 2
-#19
-#4 210068409 221208102
-#4 16698200 910945203
-#4 76268400 259148323
-#4 370943597 566244098
-#1 428897569 509621647
-#4 250946752 823720939
-#1 642505376 868415584
-#2 619091266 868230936
-#2 306543999 654038915
-#4 486033777 715789416
-#1 527225177 583184546
-#2 885292456 900938599
-#3 264004185 486613484
-#2 345310564 818091848
-#1 152544274 521564293
-#4 13819154 555218434
-#3 507364086 545932412
-#4 797872271 935850549
-#2 415488246 685203817
-#
-#Sample Output 2
-#102
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = []
+    L = []
+    R = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        T.append(t)
+        L.append(l)
+        R.append(r)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if T[i] == 1:
+                if T[j] == 1:
+                    if L[i] <= R[j] and L[j] <= R[i]:
+                        ans += 1
+                elif T[j] == 2:
+                    if L[i] < R[j] and L[j] <= R[i]:
+                        ans += 1
+                elif T[j] == 3:
+                    if L[i] <= R[j] and L[j] < R[i]:
+                        ans += 1
+                elif T[j] == 4:
+                    if L[i] < R[j] and L[j] < R[i]:
+                        ans += 1
+            elif T[i] == 2:
+                if T[j] == 1:
+                    if L[i] <= R[j] and L[j] < R[i]:
+                        ans += 1
+                elif T[j] == 2:
+                    if L[i] < R[j] and L[j] < R[i]:
+                        ans += 1
+                elif T[j] == 3:
+                    if L[i] <= R[j] and L[j] <= R[i]:
+                        ans += 1
+                elif T[j] == 4:
+                    if L[i] < R[j] and L[j] <= R[i]:
+                        ans += 1
+            elif T[i] == 3:
+                if T[j] == 1:
+                    if L[i] < R[j] and L[j] <= R[i]:
+                        ans += 1
+                elif T[j] == 2:
+                    if L[i] <= R[j] and L[j] < R[i]:
+                        ans += 1
+                elif T[j] == 3:
+                    if L[i] < R[j] and L[j] < R[i]:
+                        ans += 1
+                elif T[j] == 4:
+                    if L[i] <= R[j] and L[j] < R[i]:
+                        ans += 1
+            elif T[i] == 4:
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    t = [0] * N
+    l = [0] * N
+    r = [0] * N
+    for i in range(N):
+        t[i], l[i], r[i] = map(int, input().split())
+    #print(N, t, l, r)
+    count = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if t[i] == 1 and t[j] == 1:
+                if l[i] <= l[j] <= r[i] or l[j] <= l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 2:
+                if l[i] <= l[j] < r[i] or l[j] < l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 3:
+                if l[i] < l[j] <= r[i] or l[j] <= l[i] < r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 4:
+                if l[i] < l[j] < r[i] or l[j] < l[i] < r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 1:
+                if l[i] <= l[j] <= r[i] or l[j] <= l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 2:
+                if l[i] <= l[j] < r[i] or l[j] < l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 3:
+                if l[i] < l[j] <= r[i] or l[j] <= l[i] < r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 4:
+                if l[i] < l[j] < r[i] or l[j] < l[i] < r[j]:
+                    count += 1
+            elif t[i] == 3 and t[j] == 1:
+                if l[i] <= l[j] <= r[i] or
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    t = []
+    l = []
+    r = []
+    for i in range(N):
+        t_i, l_i, r_i = map(int, input().split())
+        t.append(t_i)
+        l.append(l_i)
+        r.append(r_i)
+    #print(t)
+    #print(l)
+    #print(r)
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if t[i] == 1 and t[j] == 1:
+                if l[i] <= l[j] and l[j] <= r[i]:
+                    count += 1
+                elif l[j] <= l[i] and l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 2:
+                if l[i] <= l[j] and l[j] < r[i]:
+                    count += 1
+                elif l[j] < l[i] and l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 3:
+                if l[i] < l[j] and l[j] <= r[i]:
+                    count += 1
+                elif l[j] <= l[i] and l[i] < r[j]:
+                    count += 1
+            elif t[i] == 1 and t[j] == 4:
+                if l[i] < l[j] and l[j] < r[i]:
+                    count += 1
+                elif l[j] < l[i] and l[i] < r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 1:
+                if l[i] <= l[j] and l[j] <= r[i]:
+                    count += 1
+                elif l[j] <= l[i] and l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 2:
+                if l[i] <= l[j] and l[j] < r[i]:
+                    count += 1
+                elif l[j] < l[i] and l[i] <= r[j]:
+                    count += 1
+            elif t[i] == 2 and t[j] == 3:
+                if l[i] < l[j] and l
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append((l, r))
+        elif t == 2:
+            intervals.append((l, r - 1))
+        elif t == 3:
+            intervals.append((l + 1, r))
+        else:
+            intervals.append((l + 1, r - 1))
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if intervals[i][1] < intervals[j][0] or intervals[j][1] < intervals[i][0]:
+                continue
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append([l, r])
+        elif t == 2:
+            intervals.append([l, r - 1])
+        elif t == 3:
+            intervals.append([l + 1, r])
+        else:
+            intervals.append([l + 1, r - 1])
+
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if intervals[i][0] <= intervals[j][1] and intervals[i][1] >= intervals[j][0]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    tlr = [list(map(int, input().split())) for _ in range(N)]
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if tlr[i][0] == 1:
+                if tlr[j][0] == 1:
+                    if tlr[i][1] <= tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                        cnt += 1
+                elif tlr[j][0] == 2:
+                    if tlr[i][1] <= tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+                elif tlr[j][0] == 3:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                        cnt += 1
+                else:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+            elif tlr[i][0] == 2:
+                if tlr[j][0] == 1:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                        cnt += 1
+                elif tlr[j][0] == 2:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+                elif tlr[j][0] == 3:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+                else:
+                    if tlr[i][1] < tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+            elif tlr[i][0] == 3:
+                if tlr[j][0] == 1:
+                    if tlr[i][1] <= tlr[j][2] and tlr[j][1] < tlr[i][2]:
+                        cnt += 1
+                elif tlr[j][0]
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    tlr = [list(map(int,input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if tlr[i][0] == 1:
+                if tlr[j][0] == 1:
+                    if tlr[i][1] <= tlr[j][1] <= tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] <= tlr[j][2] <= tlr[i][2]:
+                        ans += 1
+                elif tlr[j][0] == 2:
+                    if tlr[i][1] <= tlr[j][1] <= tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] < tlr[j][2] <= tlr[i][2]:
+                        ans += 1
+                elif tlr[j][0] == 3:
+                    if tlr[i][1] < tlr[j][1] <= tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] < tlr[j][2] <= tlr[i][2]:
+                        ans += 1
+                elif tlr[j][0] == 4:
+                    if tlr[i][1] < tlr[j][1] <= tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] < tlr[j][2] < tlr[i][2]:
+                        ans += 1
+            elif tlr[i][0] == 2:
+                if tlr[j][0] == 1:
+                    if tlr[i][1] <= tlr[j][1] <= tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] < tlr[j][2] <= tlr[i][2]:
+                        ans += 1
+                elif tlr[j][0] == 2:
+                    if tlr[i][1] <= tlr[j][1] < tlr[i][2]:
+                        ans += 1
+                    elif tlr[i][1] < tlr[j][2] < tlr[i][2]:
+                        ans += 1
+                elif tlr[j][0] == 3:
+                    if tlr[i][1
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        t,l,r = map(int,input().split())
+        A.append([t,l,r])
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if A[i][0] == 1 and A[j][0] == 1:
+                if A[i][1] <= A[j][1] <= A[i][2] or A[j][1] <= A[i][1] <= A[j][2]:
+                    ans += 1
+            elif A[i][0] == 2 and A[j][0] == 2:
+                if A[i][1] < A[j][1] < A[i][2] or A[j][1] < A[i][1] < A[j][2]:
+                    ans += 1
+            elif A[i][0] == 3 and A[j][0] == 3:
+                if A[i][1] < A[j][1] <= A[i][2] or A[j][1] < A[i][1] <= A[j][2]:
+                    ans += 1
+            elif A[i][0] == 4 and A[j][0] == 4:
+                if A[i][1] < A[j][1] < A[i][2] or A[j][1] < A[i][1] < A[j][2]:
+                    ans += 1
+            elif A[i][0] == 1 and A[j][0] == 2:
+                if A[i][1] <= A[j][1] < A[i][2]:
+                    ans += 1
+            elif A[i][0] == 2 and A[j][0] == 1:
+                if A[j][1] <= A[i][1] < A[j][2]:
+                    ans += 1
+            elif A[i][0] == 1 and A[j][0] == 3:
+                if A[i][1] <= A[j][1] <= A[i][2]:
+                    ans += 1
+            elif A[i][0] == 3 and A[j][0] == 1:
+                if A[j][1] <= A[i][1] <= A[j][2]:
+                    ans += 1
+            elif A[i][0]
+
+=======
+Suggestion 9
+
+def main():
+    N=int(input())
+    left=[0]*N
+    right=[0]*N
+    for i in range(N):
+        t,l,r=map(int,input().split())
+        if t==1:
+            left[i]=l
+            right[i]=r
+        elif t==2:
+            left[i]=l
+            right[i]=r-1
+        elif t==3:
+            left[i]=l+1
+            right[i]=r
+        else:
+            left[i]=l+1
+            right[i]=r-1
+    count=0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            if left[i]<=right[j] and left[j]<=right[i]:
+                count+=1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    #print(N)
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        #print(t, l, r)
+        intervals.append((t, l, r))
+    #print(intervals)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            #print(i, j)
+            ans += intersect(intervals[i], intervals[j])
+    print(ans)

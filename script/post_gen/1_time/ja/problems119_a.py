@@ -1,27 +1,53 @@
-#問題文
-#文字列 S が入力されます。これは、西暦 2019 年の実在する日付を yyyy/mm/dd の形式で表したものです。(例えば、2019 年 4 月 30 日は 2019/04/30 と表されます。)
-#S が表す日付が 2019 年 4 月 30 日またはそれ以前なら Heisei、そうでなければ TBD と出力するプログラムを書いてください。
-#
-#制約
-#S は西暦 2019 年の実在する日付を yyyy/mm/dd の形式で表す文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が表す日付が 2019 年 4 月 30 日またはそれ以前なら Heisei、そうでなければ TBD と出力せよ。
-#
-#入力例 1
-#2019/04/30
-#
-#出力例 1
-#Heisei
-#
-#入力例 2
-#2019/11/01
-#
-#出力例 2
-#TBD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s <= "2019/04/30":
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S <= "2019/04/30":
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 3
+
+def main():
+    date = input()
+    if date <= "2019/04/30":
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = S.split('/')
+    if int(S[0]) == 2019 and int(S[1]) <= 4 and int(S[2]) <= 30:
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s_list = s.split('/')
+    if int(s_list[1]) <= 4:
+        print('Heisei')
+    else:
+        print('TBD')

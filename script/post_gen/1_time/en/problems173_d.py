@@ -1,36 +1,117 @@
-#Problem Statement
-#Quickly after finishing the tutorial of the online game ATChat, you have decided to visit a particular place with N-1 players who happen to be there. These N players, including you, are numbered 1 through N, and the friendliness of Player i is A_i.
-#The N players will arrive at the place one by one in some order. To make sure nobody gets lost, you have set the following rule: players who have already arrived there should form a circle, and a player who has just arrived there should cut into the circle somewhere.
-#When each player, except the first one to arrive, arrives at the place, the player gets comfort equal to the smaller of the friendliness of the clockwise adjacent player and that of the counter-clockwise adjacent player. The first player to arrive there gets the comfort of 0.
-#What is the maximum total comfort the N players can get by optimally choosing the order of arrivals and the positions in the circle to cut into?
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum total comfort the N players can get.
-#
-#Sample Input 1
-#4
-#2 2 1 3
-#
-#Sample Output 1
-#7
-#By arriving at the place in the order Player 4, 2, 1, 3, and cutting into the circle as shown in the figure, they can get the total comfort of 7.
-#They cannot get the total comfort greater than 7, so the answer is 7.
-#
-#Sample Input 2
-#7
-#1 1 1 1 1 1 1
-#
-#Sample Output 2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(1, N):
+        ans += A[i // 2]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-1):
+        ans += a[i]
+    ans += a[-1] // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(1, N):
+        ans += A[i] * (i // 2)
+        ans += A[i - 1] * ((i + 1) // 2)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 * (N - i) - 1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 2:
+        print(max(A))
+        return
+    A.sort()
+    print(A[-1] + sum(A[:-1]))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * 2 ** (i - 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(sum(A[:-1]))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+    ans -= n - 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    A.sort()
+    print(sum(A[:-1]))

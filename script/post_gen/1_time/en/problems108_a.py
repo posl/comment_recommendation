@@ -1,40 +1,81 @@
-#Problem Statement
-#Find the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive). The order does not matter.
-#
-#Constraints
-#2≦ K≦ 100
-#K is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive).
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#2
-#Two pairs can be chosen: (2,1) and (2,3).
-#
-#Sample Input 2
-#6
-#
-#Sample Output 2
-#9
-#
-#Sample Input 3
-#11
-#
-#Sample Output 3
-#30
-#
-#Sample Input 4
-#50
-#
-#Sample Output 4
-#625
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k=int(input())
+    if k%2==0:
+        print((k//2)*(k//2))
+    else:
+        print((k//2)*(k//2+1))
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    even = K // 2
+    odd = K // 2 + K % 2
+    print(even * odd)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(int(N/2 * (N/2-1)))
+    else:
+        print(int(N/2 * (N/2+1)))
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    print(int(k/2) * int((k+1)/2))
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    print((k//2)*(k//2 + k%2))
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    print(int(K/2)*(K-int(K/2)))
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    print((k//2)*(k//2+(k%2)))
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    print((k//2)*((k+1)//2))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    print(int((k/2)*(k/2)))
+
+=======
+Suggestion 10
+
+def main():
+    k = int(input())
+    print(k*(k//2) + (k+1)//2)

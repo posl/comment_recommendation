@@ -1,35 +1,108 @@
-#問題文
-#整数 a, b, c が与えられます。b がこれらの整数の中央値であるかどうか判定してください。
-#
-#制約
-#1 ≦ a, b, c ≦ 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b c
-#
-#出力
-#b が与えられた整数の中央値であるならば Yes、そうでないならば No と出力せよ。
-#
-#入力例 1
-#5 3 2
-#
-#出力例 1
-#Yes
-#与えられた整数を小さい順に並べると 2, 3, 5 となり、b はこれらの整数の中央値です。
-#
-#入力例 2
-#2 5 3
-#
-#出力例 2
-#No
-#b は与えられた整数の中央値ではありません。
-#
-#入力例 3
-#100 100 100
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a <= b <= c or c <= b <= a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a <= b <= c or c <= b <= a:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    if b <= max(a, c) and b >= min(a, c):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c = map(int, input().split())
+    if a < b < c or c < b < a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if (a < b < c) or (c < b < a):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = map(int, input().split())
+    if b < a < c or c < a < b:
+        print("Yes")
+    elif a < b < c or c < b < a:
+        print("Yes")
+    elif a < c < b or b < c < a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    if a < b < c or c < b < a:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    if a > b:
+        if b > c:
+            print("Yes")
+        elif a > c:
+            print("Yes")
+        else:
+            print("No")
+    elif a < b:
+        if a > c:
+            print("No")
+        elif b > c:
+            print("No")
+        else:
+            print("Yes")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    abclist = list(map(int, input().split()))
+    abclist.sort()
+    if abclist[1] == abclist[0] or abclist[1] == abclist[2]:
+        print("Yes")
+    else:
+        print("No")

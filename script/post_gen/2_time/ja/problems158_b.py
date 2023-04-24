@@ -1,42 +1,77 @@
-#問題文
-#高橋君は青と赤の 2 色のボールを持っており、これらを一列に並べようとしています。
-#初め、列にボールはありません。
-#根気のある高橋君は、次の操作を 10^{100} 回繰り返します。
-#列の末尾に、A 個の青いボールを加える。その後、列の末尾に B 個の赤いボールを加える。
-#こうしてできる列の先頭から N 個のボールのうち、青いボールの個数はいくつでしょうか。
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < A + B ≦ 10^{18}
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#列の先頭から N 個のボールのうち、青いボールの個数を出力せよ。
-#
-#入力例 1
-#8 3 4
-#
-#出力例 1
-#4
-#青いボールをb、赤いボールを rで表すと、列の先頭から 8 個のボールは bbbrrrrb であるので、このうち青いボールは 4 個です。
-#
-#入力例 2
-#8 0 4
-#
-#出力例 2
-#0
-#そもそも赤いボールしか並んでいません。
-#
-#入力例 3
-#6 2 4
-#
-#出力例 3
-#2
-#bbrrrr のうち青いボールは 2 個です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    print((n // (a + b)) * a + min(n % (a + b), a))
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    result = N // (A + B) * A
+    rest = N % (A + B)
+    if rest <= A:
+        result += rest
+    else:
+        result += A
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    q, mod = divmod(N, A + B)
+    ans = q * A
+    ans += min(mod, A)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif A + B >= N:
+        print(A)
+    else:
+        print((N // (A + B)) * A + min(A, N % (A + B)))
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    #print(n, a, b)
+    ans = (n // (a + b)) * a + min(n % (a + b), a)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    q, r = divmod(N, A+B)
+    print(A*q + min(A, r))
+
+=======
+Suggestion 7
+
+def main():
+    N,A,B = map(int,input().split())
+    print(N//(A+B)*A + min(N%(A+B),A))
+
+=======
+Suggestion 8
+
+def main():
+    N,A,B = map(int,input().split())
+    q,r = divmod(N,A+B)
+    print(q*A+min(r,A))

@@ -1,38 +1,108 @@
-#問題文
-#英小文字からなる文字列 S が与えられます。 
-#S の先頭に a をいくつか（ 0 個でも良い）つけ加えて回文にすることができるか判定してください。 
-#ただし、長さ N の文字列 A=A_1A_2... A_N が回文であるとは、すべての 1≦ i≦ N について A_i=A_{N+1-i} が成り立っていることをいいます。
-#
-#制約
-#1 ≦ | S | ≦ 10^6
-#S は英小文字のみからなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S の先頭に a をいくつかつけ加えて回文にすることができるならば Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#kasaka
-#
-#出力例 1
-#Yes
-#kasaka の先頭に a を 1 つ付け加えることによって、akasaka となり回文となるため Yes を出力します。
-#
-#入力例 2
-#atcoder
-#
-#出力例 2
-#No
-#atcoder の先頭に a をいくつ付け加えても回文となる事はありません。
-#
-#入力例 3
-#php
-#
-#出力例 3
-#Yes
-#php はそれ自体回文です。S の先頭に付け加える a は 0 個でも許されるため、Yes を出力します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if S[i] != S[len(S)-i-1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    for i in range(N):
+        if S[i] != S[N - i - 1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S + "a"
+    S = S[::-1]
+    if S == S[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S + 'a'
+    S = S[::-1]
+    if S == S[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s == s[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s == s[::-1]:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = s + s[::-1]
+    if s == s[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = 'a' + S
+    print('Yes' if S == S[::-1] else 'No')
+
+=======
+Suggestion 9
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    S = S[::-1]
+    print("Yes" if S == "akasaka" else "No")

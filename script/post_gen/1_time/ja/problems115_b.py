@@ -1,44 +1,127 @@
-#問題文
-#とある世界では、今日はクリスマスイブの前日です。
-#高羽氏は、デパートで N 個の品物を買おうとしています。i 個目の品物 (1 ≦ i ≦ N) の定価は p_i 円です。
-#彼は割引券を持っており、N 個のうち最も定価が高い品物 1 個を定価の半額で買うことができます。残りの N-1 個の品物に対しては定価を支払います。支払金額は合計でいくらになるでしょうか？
-#
-#制約
-#2 ≦ N ≦ 10
-#100 ≦ p_i ≦ 10000
-#p_i は偶数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#p_1
-#p_2
-#:
-#p_N
-#
-#出力
-#合計支払金額を (整数として) 出力せよ。
-#
-#入力例 1
-#3
-#4980
-#7980
-#6980
-#
-#出力例 1
-#15950
-#7980 円の品物が半額になり、合計 4980 + 7980 / 2 + 6980 = 15950 円です。
-#15950.0 などと出力すると Wrong Answer と判定されるので注意してください。
-#
-#入力例 2
-#4
-#4320
-#4320
-#4320
-#4320
-#
-#出力例 2
-#15120
-#4 個の品物のうち 1 個だけが半額になり、合計 4320 / 2 + 4320 + 4320 + 4320 = 15120 円です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    p = []
+    for i in range(N):
+        p.append(int(input()))
+    p.sort(reverse=True)
+    sum = 0
+    for i in range(N):
+        if i == 0:
+            sum += p[i] / 2
+        else:
+            sum += p[i]
+    print(int(sum))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    p = [int(input()) for _ in range(N)]
+    p.sort(reverse=True)
+    ans = 0
+    for i in range(N-1):
+        ans += p[i]
+    ans += p[N-1] / 2
+    print(int(ans))
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    prices = []
+    for _ in range(N):
+        prices.append(int(input()))
+    prices.sort(reverse=True)
+    ans = prices[0] / 2 + sum(prices[1:])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    p[-1] = p[-1] / 2
+    print(int(sum(p)))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = []
+    for i in range(n):
+        p.append(int(input()))
+
+    p.sort(reverse=True)
+    p[0] = p[0] / 2
+
+    print(int(sum(p)))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = [int(input()) for _ in range(N)]
+
+    print(int(sum(p) - max(p) / 2))
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    N = int(input())
+    p = [int(input()) for _ in range(N)]
+    # 処理
+    p.sort()
+    p[-1] = p[-1] // 2
+    # 出力
+    print(sum(p))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p_list = []
+    for i in range(N):
+        p_list.append(int(input()))
+    p_list.sort()
+    p_list.reverse()
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += p_list[i] / 2
+        else:
+            ans += p_list[i]
+    print(int(ans))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    print(sum(p[0:N-1]) + p[N-1]//2)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    p = [int(input()) for _ in range(N)]
+
+    print(sum(p) - max(p)//2)

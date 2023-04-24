@@ -1,42 +1,112 @@
-#問題文
-#カラカルはモンスターと戦っています。
-#モンスターの体力は H です。
-#カラカルはモンスターを 1 体選んで攻撃することができます。モンスターを攻撃したとき、攻撃対象のモンスターの体力に応じて、次のどちらかが起こります。
-#モンスターの体力が 1 なら、そのモンスターの体力は 0 になる
-#モンスターの体力が X >1 なら、そのモンスターは消滅し、体力が ⌊ X/2 ⌋ のモンスターが新たに 2 体現れる
-#（⌊ r ⌋ は r を超えない最大の整数を表す）
-#全てのモンスターの体力を 0 以下にすればカラカルの勝ちです。
-#カラカルがモンスターに勝つまでに行う攻撃の回数の最小値を求めてください。
-#
-#制約
-#1 ≦ H ≦ 10^{12}
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H
-#
-#出力
-#カラカルがモンスターに勝つまでに行う攻撃の回数の最小値を出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#3
-#モンスターを攻撃すると、元のモンスターは消滅し、体力 1 のモンスターが 2 体現れます。
-#この 2 体のモンスターをそれぞれ 1 回ずつ攻撃し、合計 3 回の攻撃で勝つことができます。
-#
-#入力例 2
-#4
-#
-#出力例 2
-#7
-#
-#入力例 3
-#1000000000000
-#
-#出力例 3
-#1099511627775
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(h):
+    if h == 1:
+        return 1
+    else:
+        return 1 + 2 * f(h//2)
+
+h = int(input())
+print(f(h))
+
+=======
+Suggestion 2
+
+def f(n):
+    if n == 1:
+        return 1
+    else:
+        return 2 * f(n // 2) + 1
+
+H = int(input())
+print(f(H))
+
+=======
+Suggestion 3
+
+def solve(H):
+    if H == 1:
+        return 1
+    else:
+        return 2 * solve(H // 2) + 1
+
+H = int(input())
+print(solve(H))
+
+=======
+Suggestion 4
+
+def solve():
+    H = int(input())
+    cnt = 0
+    while H > 0:
+        cnt += 1
+        H = H // 2
+    print(2 ** cnt - 1)
+
+=======
+Suggestion 5
+
+def solve(h):
+    if h == 1:
+        return 1
+    else:
+        return 2*solve(h//2)+1
+
+h = int(input())
+print(solve(h))
+
+=======
+Suggestion 6
+
+def calc_attack_count(hp):
+    if hp == 1:
+        return 1
+    else:
+        return 2 * calc_attack_count(hp // 2) + 1
+
+=======
+Suggestion 7
+
+def count_attack(h):
+    if h == 1:
+        return 1
+    else:
+        return 1 + count_attack(h//2)*2
+
+h = int(input())
+print(count_attack(h))
+
+=======
+Suggestion 8
+
+def solve():
+    h = int(input())
+    ans = 0
+    while h > 0:
+        h = h // 2
+        ans += 1 << ans
+    print(ans)
+
+=======
+Suggestion 9
+
+def f(h):
+    if h==1:
+        return 1
+    return 1+2*f(h//2)
+
+h=int(input())
+print(f(h))
+
+=======
+Suggestion 10
+
+def calc_attack_count(h):
+    if h==1:
+        return 1
+    else:
+        return 1+2*calc_attack_count(h//2)

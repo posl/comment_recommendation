@@ -1,44 +1,179 @@
-#問題文
-#文字列 S が与えられます。S の各文字は、数字 (0 ～ 9) か ? です。
-#? を数字に置き換えてできる整数のうち、13 で割って 5 あまる数は何通りあるでしょうか？ただし、頭文字が 0 である場合も整数とみなすものとします。
-#答えは非常に大きくなる可能性があるため、10^9+7 で割ったあまりを答えてください。
-#
-#制約
-#S は数字 (0 ～ 9) と ? からなる文字列。
-#1 ≦ |S| ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#S
-#
-#出力
-#条件を満たす整数の個数を 10^9+7 で割ったあまりを出力してください。
-#
-#入力例 1
-#??2??5
-#
-#出力例 1
-#768
-#たとえば 482305, 002865, 972665 などが条件を満たします。
-#
-#入力例 2
-#?44
-#
-#出力例 2
-#1
-#044 のみが条件を満たします。
-#
-#入力例 3
-#7?4
-#
-#出力例 3
-#0
-#条件を満たす整数を作ることが不可能な場合もあります。
-#
-#入力例 4
-#?6?42???8??2??06243????9??3???7258??5??7???????774????4?1??17???9?5?70???76???
-#
-#出力例 4
-#153716888
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(s):
+    dp = [[0 for _ in range(13)] for _ in range(len(s)+1)]
+    dp[0][0] = 1
+    for i in range(len(s)):
+        for j in range(13):
+            if s[i] == "?":
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+            else:
+                dp[i+1][(j*10+int(s[i]))%13] += dp[i][j]
+        for j in range(13):
+            dp[i+1][j] %= 10**9+7
+    return dp[len(s)][5]
+
+=======
+Suggestion 2
+
+def solve(s):
+    mod = 10**9 + 7
+    dp = [[0]*13 for _ in range(len(s)+1)]
+    dp[0][0] = 1
+    for i in range(len(s)):
+        for j in range(13):
+            if s[i] == '?':
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+                    dp[i+1][(j*10+k)%13] %= mod
+            else:
+                dp[i+1][(j*10+int(s[i]))%13] += dp[i][j]
+                dp[i+1][(j*10+int(s[i]))%13] %= mod
+    return dp[-1][5]
+
+s = input()
+print(solve(s))
+
+=======
+Suggestion 3
+
+def solve(s):
+    mod = 10 ** 9 + 7
+    dp = [[0] * 13 for _ in range(len(s) + 1)]
+    dp[0][0] = 1
+
+    for i in range(len(s)):
+        for j in range(13):
+            if s[i] != '?':
+                dp[i + 1][(j * 10 + int(s[i])) % 13] += dp[i][j]
+            else:
+                for k in range(10):
+                    dp[i + 1][(j * 10 + k) % 13] += dp[i][j]
+            dp[i + 1][j] %= mod
+    return dp[len(s)][5]
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    mod = 10**9 + 7
+    dp = [[0] * 13 for _ in range(len(s) + 1)]
+    dp[0][0] = 1
+
+    for i in range(len(s)):
+        for j in range(10):
+            if s[i] == '?' or s[i] == str(j):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+                    dp[i+1][(k*10+j)%13] %= mod
+
+    print(dp[len(s)][5])
+
+=======
+Suggestion 5
+
+def solve():
+    S = input()
+    MOD = 10**9+7
+    dp = [[0]*13 for _ in range(len(S)+1)]
+    dp[0][0] = 1
+    for i, s in enumerate(S):
+        for j in range(13):
+            if s == '?':
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+            else:
+                dp[i+1][(j*10+int(s))%13] += dp[i][j]
+            dp[i+1][(j*10)%13] %= MOD
+    print(dp[len(S)][5])
+
+solve()
+
+=======
+Suggestion 6
+
+def solve():
+    S = input()
+    N = len(S)
+    dp = [[0 for i in range(13)] for j in range(N+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(13):
+            if S[i] != "?":
+                dp[i+1][(j*10+int(S[i]))%13] += dp[i][j]
+            else:
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+        for j in range(13):
+            dp[i+1][j] %= 10**9+7
+    print(dp[N][5])
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    S = S[::-1]
+    dp = [[0] * 13 for _ in range(len(S) + 1)]
+    dp[0][0] = 1
+    for i, s in enumerate(S):
+        if s == '?':
+            for j in range(13):
+                for k in range(10):
+                    dp[i + 1][(j * 10 + k) % 13] += dp[i][j]
+        else:
+            for j in range(13):
+                dp[i + 1][(j * 10 + int(s)) % 13] += dp[i][j]
+        for j in range(13):
+            dp[i + 1][j] %= 1000000007
+    print(dp[len(S)][5])
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    d = [0] * 13
+    d[0] = 1
+    for c in s:
+        if c == '?':
+            d = [sum(d[(j - k) % 13] for k in range(10)) % 1000000007 for j in range(13)]
+        else:
+            d = [d[(j - int(c)) % 13] for j in range(13)]
+    print(d[5])
+
+=======
+Suggestion 9
+
+def cal(x, y):
+    if x == 0:
+        return y
+    else:
+        return x * y
+
+=======
+Suggestion 10
+
+def solve(s):
+    # dp[i][j] = sの最後の文字がs[i]であるときの、s[i:]についての答え
+    # j = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ? のいずれか
+    # j = 10は、?を0に置き換えたときの答え
+    dp = [[0] * 11 for _ in range(len(s) + 1)]
+    dp[len(s)][0] = 1
+    for i in range(len(s) - 1, -1, -1):
+        for j in range(11):
+            if s[i] != '?':
+                dp[i][j] += dp[i + 1][(10 * j + int(s[i])) % 13]
+            else:
+                for k in range(10):
+                    dp[i][j] += dp[i + 1][(10 * j + k) % 13]
+            dp[i][j] %= 10 ** 9 + 7
+    return dp[0][5]
+
+s = input()
+print(solve(s))

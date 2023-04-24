@@ -1,32 +1,100 @@
-#Problem Statement
-#There is a rectangle in a coordinate plane. The coordinates of the four vertices are (0,0), (W,0), (W,H), and (0,H).
-#You are given a point (x,y) which is within the rectangle or on its border. We will draw a straight line passing through (x,y) to cut the rectangle into two parts. Find the maximum possible area of the part whose area is not larger than that of the other. Additionally, determine if there are multiple ways to cut the rectangle and achieve that maximum.
-#
-#Constraints
-#1 ≦ W,H ≦ 10^9
-#0≦ x≦ W
-#0≦ y≦ H
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#W H x y
-#
-#Output
-#Print the maximum possible area of the part whose area is not larger than that of the other, followed by 1 if there are multiple ways to cut the rectangle and achieve that maximum, and 0 otherwise.
-#The area printed will be judged correct when its absolute or relative error is at most 10^{-9}.
-#
-#Sample Input 1
-#2 3 1 2
-#
-#Sample Output 1
-#3.000000 0
-#The line x=1 gives the optimal cut, and no other line does.
-#
-#Sample Input 2
-#2 2 1 1
-#
-#Sample Output 2
-#2.000000 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    W, H, x, y = map(int, input().split())
+    if x == W / 2 and y == H / 2:
+        print(W * H / 2, 1)
+    else:
+        print(W * H / 2, 0)
+
+=======
+Suggestion 2
+
+def main():
+    W,H,x,y = map(int,input().split())
+    if x*2==W and y*2==H:
+        print(W*H/2,1)
+    else:
+        print(W*H/2,0)
+
+=======
+Suggestion 3
+
+def main():
+    W, H, x, y = map(int, input().split())
+    if W/2 == x and H/2 == y:
+        print(W * H / 2, 1)
+    else:
+        print(W * H / 2, 0)
+
+=======
+Suggestion 4
+
+def main():
+    W, H, x, y = map(int, input().split())
+    area = W * H / 2
+    if W % 2 == 0 and H % 2 == 0 and x == W / 2 and y == H / 2:
+        print(area, 1)
+    else:
+        print(area, 0)
+
+=======
+Suggestion 5
+
+def main():
+    W,H,x,y = map(int,input().split())
+    ans = W*H/2
+    if x == W/2 and y == H/2:
+        print(ans,1)
+    else:
+        print(ans,0)
+
+=======
+Suggestion 6
+
+def main():
+	W, H, x, y = map(int, input().split())
+
+	area = W * H / 2
+	if 2 * x == W and 2 * y == H:
+		print(area, 1)
+	else:
+		print(area, 0)
+
+=======
+Suggestion 7
+
+def solve(W,H,x,y):
+    if W == x and H == y:
+        return (W*H)/2, 1
+    elif W == x or H == y:
+        return (W*H)/2, 0
+    else:
+        return (W*H)/2, 0
+
+=======
+Suggestion 8
+
+def maxArea(W,H,x,y):
+    if W/2 == x and H/2 == y:
+        return (W*H)/2, 1
+    else:
+        return max(W*y, H*x), 0
+
+=======
+Suggestion 9
+
+def main():
+    # Take input
+    W,H,x,y = map(int,input().split())
+    # Calculate the area of the rectangle
+    area = W*H
+    # If the point is at the center, then there are two ways to cut the rectangle
+    if x == W/2 and y == H/2:
+        print(area/2,1)
+    # If the point is not at the center, then there is only one way to cut the rectangle
+    else:
+        print(area/2,0)

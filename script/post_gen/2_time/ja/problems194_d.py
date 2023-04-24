@@ -1,35 +1,86 @@
-#問題文
-#頂点 1 から頂点 N までの N 頂点からなるグラフの頂点 1 に高橋君がいます。
-#今このグラフに辺は 1 つも張られていません。
-#高橋君は以下の操作を繰り返します。
-#操作 :  
-#(今高橋君がいる頂点も含めた) N 個の頂点の中から 1 つランダムに選ぶ。各頂点が選ばれる確率は全て (1/(N)) であり、選択は操作毎に独立である。  
-#今高橋君がいる頂点と選ばれた頂点の間に無向辺を張り、選ばれた頂点に移動する。
-#グラフが連結になるまでに行われる操作の回数の期待値を求めてください。  
-#
-#制約
-#2 ≦ N ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#想定解答との絶対誤差または相対誤差が 10^{-6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#2
-#
-#出力例 1
-#2.00000000000
-#グラフが連結になるのは、操作において初めて頂点 2 が選ばれた時です。
-#各 i について i 回目の操作で初めて頂点 2 が選ばれる場合を考えると、答えは sum_{i = 1}^{infty} (i × ((1/(2)))^i) = 2 となります。  
-#
-#入力例 2
-#3
-#
-#出力例 2
-#4.50000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n):
+        ans += n/(n-i)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        ans += (N / i)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = 0
+    for i in range(1, n):
+        a += n/(n-i)
+    print(a)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print((n * (n - 1)) / (2 * (n - 1)) + 1)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print((N * (N - 1)) / (2 * N - 2))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print((n * (n-1)) / (2 * (n-1)) + 1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    # print(N)
+    ans = 0.0
+    for i in range(1,N):
+        ans += N/(N-i)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print((n-1)*2/n)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    print((n-1)*2/n)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    print((n/(n-1))*n)

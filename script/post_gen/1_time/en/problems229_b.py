@@ -1,31 +1,102 @@
-#Problem Statement
-#You are given positive integers A and B.
-#Let us calculate A+B (in decimal). If it does not involve a carry, print Easy; if it does, print Hard.
-#
-#Constraints
-#A and B are integers.
-#1 ≦ A,B ≦ 10^{18}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#If the calculation does not involve a carry, print Easy; if it does, print Hard.
-#
-#Sample Input 1
-#229 390
-#
-#Sample Output 1
-#Hard
-#When calculating 229+390, we have a carry from the tens digit to the hundreds digit, so the answer is Hard.
-#
-#Sample Input 2
-#123456789 9876543210
-#
-#Sample Output 2
-#Easy
-#We do not have a carry here; the answer is Easy.
-#Note that the input may not fit into a 32-bit integer.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if A + B >= 10:
+        print('Hard')
+    else:
+        print('Easy')
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A + B < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int, input().split())
+    if len(str(A+B)) == len(str(A)) or len(str(A+B)) == len(str(B)):
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if len(str(A + B)) == len(str(A)) == len(str(B)):
+        print('Easy')
+    else:
+        print('Hard')
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    if A + B < 10**18:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 7
+
+def main():
+    A, B = input().split()
+    A = int(A)
+    B = int(B)
+    C = A + B
+    if len(str(C)) == len(str(A)) and len(str(C)) == len(str(B)):
+        print('Easy')
+    else:
+        print('Hard')
+
+=======
+Suggestion 8
+
+def main():
+    A,B = map(int,input().split())
+    if A+B > 999999999:
+        print("Hard")
+    else:
+        print("Easy")
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    A, B = map(int, input().split())
+    print('Easy' if (A+B) < 10 else 'Hard')
+
+=======
+Suggestion 10
+
+def solve(A, B):
+    if A + B < 10:
+        return "Easy"
+    else:
+        return "Hard"

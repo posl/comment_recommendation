@@ -1,38 +1,131 @@
-#問題文
-#整数 N と長さ N の数列 S=(S_1,...,S_N) が与えられます。
-#長さ N の数列 A=(A_1,...,A_N) であって、k=1,...,N の全てについて以下の条件を満たすものを求めてください。
-#A_1+A_2+...+A_k = S_k 
-#なお、このような数列 A は必ず存在し、一意に定まります。
-#
-#制約
-#1 ≦ N ≦ 10
-#-10^9≦ S_i ≦ 10^9
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 ... S_N
-#
-#出力
-#全ての条件を満たす数列 A=(A_1,...,A_N) の各要素を、順に空白区切りで出力せよ。  
-#
-#入力例 1
-#3
-#3 4 8
-#
-#出力例 1
-#3 1 4
-#A_1=3=S_1
-#A_1+A_2=3+1=4=S_2
-#A_1+A_2+A_3=3+1+4=8=S_3
-#であり、たしかに全ての条件を満たしています。
-#
-#入力例 2
-#10
-#314159265 358979323 846264338 -327950288 419716939 -937510582 97494459 230781640 628620899 -862803482
-#
-#出力例 2
-#314159265 44820058 487285015 -1174214626 747667227 -1357227521 1035005041 133287181 397839259 -1491424381
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    print(*A)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    print(*A)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    print(' '.join(map(str, A)))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    print(" ".join(map(str, A)))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    A = [0]*N
+    A[0] = S[0]
+    for i in range(1,N):
+        A[i] = S[i]-S[i-1]
+    for i in range(N):
+        print(A[i],end=" ")
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i - 1]
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    A = [0 for i in range(N)]
+    A[0] = S[0]
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    print(*A)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = list(map(int,input().split()))
+    a = []
+    a.append(s[0])
+    for i in range(1,n):
+        a.append(s[i]-a[i-1])
+    for i in range(n):
+        print(a[i],end=' ')
+    print()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [int(i) for i in input().split()]
+    A = [0] * N
+    for i in range(N):
+        A[i] = S[i] - sum(A)
+    print(' '.join(str(i) for i in A))
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N = int(input())
+    S = list(map(int, input().split()))
+    #Aの初期値
+    A = [0 for i in range(N)]
+    #Aの最初の要素を決める
+    A[0] = S[0]
+    #Aの残りの要素を決める
+    for i in range(1, N):
+        A[i] = S[i] - A[i-1]
+    #出力
+    print(*A)

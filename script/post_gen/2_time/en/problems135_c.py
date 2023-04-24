@@ -1,48 +1,113 @@
-#Problem Statement
-#There are N+1 towns. The i-th town is being attacked by A_i monsters.
-#We have N heroes. The i-th hero can defeat monsters attacking the i-th or (i+1)-th town, for a total of at most B_i monsters.
-#What is the maximum total number of monsters the heroes can cooperate to defeat?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_{N+1}
-#B_1 B_2 ... B_N
-#
-#Output
-#Print the maximum total number of monsters the heroes can defeat.
-#
-#Sample Input 1
-#2
-#3 5 2
-#4 5
-#
-#Sample Output 1
-#9
-#If the heroes choose the monsters to defeat as follows, they can defeat nine monsters in total, which is the maximum result.
-#The first hero defeats two monsters attacking the first town and two monsters attacking the second town.
-#The second hero defeats three monsters attacking the second town and two monsters attacking the third town.
-#
-#Sample Input 2
-#3
-#5 6 3 8
-#5 100 8
-#
-#Sample Output 2
-#22
-#
-#Sample Input 3
-#2
-#100 1 1
-#1 100
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] -= min(A[i], B[i])
+        ans += min(A[i+1], B[i])
+        A[i+1] -= min(A[i+1], B[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        ans += min(A[i+1], B[i] - min(A[i], B[i]))
+        A[i+1] = max(A[i+1] - B[i] + min(A[i], B[i]), 0)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if B[i] >= A[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+            if B[i] >= A[i+1]:
+                ans += A[i+1]
+                B[i] -= A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+                B[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+    print(ans)
+
+main()
+
+I have a problem with my code. I want to know why my code is not working correctly. I have tried to debug it but I have not been able to find the problem.
+
+My code is this:
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] >= B[i]:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        else:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+            if A[i+1] >= B[i]:
+                ans += B[i]
+                A[i+1] -= B[i]
+                B[i] = 0
+            else:
+                ans += A[i+1]
+                B[i] -= A[i+1]
+                A[i+1] = 0
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += min(B[i], A[i])
+        B[i] -= min(B[i], A[i])
+        ans += min(B[i], A[i+1])
+        A[i+1] -= min(B[i], A[i+1])
+    print(ans)
+
+solve()
+
+=======
+Suggestion 6
+
+def read_int():
+    return int(input())

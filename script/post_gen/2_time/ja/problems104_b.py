@@ -1,54 +1,111 @@
-#問題文
-#文字列 S が与えられます。S のそれぞれの文字は英大文字または英小文字です。
-#S が次の条件すべてを満たすか判定してください。
-#S の先頭の文字は大文字の A である。
-#S の先頭から 3 文字目と末尾から 2 文字目の間（両端含む）に大文字の C がちょうど 1 個含まれる。
-#以上の A, C を除く S のすべての文字は小文字である。
-#
-#制約
-#4 ≤ |S| ≤ 10 （|S| は文字列 S の長さ）
-#S のそれぞれの文字は英大文字または英小文字である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が問題文中の条件すべてを満たすなら AC、そうでなければ WA と出力せよ。
-#
-#入力例 1
-#AtCoder
-#
-#出力例 1
-#AC
-#1 文字目が A、3 文字目が C でそれ以外の文字はすべて小文字であり、すべての条件を満たします。
-#
-#入力例 2
-#ACoder
-#
-#出力例 2
-#WA
-#2 文字目が C であってはいけません。
-#
-#入力例 3
-#AcycliC
-#
-#出力例 3
-#WA
-#最後の文字が C であってもいけません。
-#
-#入力例 4
-#AtCoCo
-#
-#出力例 4
-#WA
-#C を 2 個以上含んではいけません。
-#
-#入力例 5
-#Atcoder
-#
-#出力例 5
-#WA
-#C を 1 個も含まないのもいけません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    if s[1:].lower() != s[1:]:
+        print('WA')
+        return
+    if s[2:].lower() != s[2:]:
+        print('WA')
+        return
+    print('AC')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] != "A":
+        print("WA")
+        return
+    if s[2:-1].count("C") != 1:
+        print("WA")
+        return
+    if s[1:].replace("C", "").islower():
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == 'A' and S[2:-1].count('C') == 1 and S[1:].replace('C', '').islower():
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0] == "A" and S[2:-1].count("C") == 1 and S[1:].replace("C", "").islower():
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1 and s[1:].lower() == s[1:]:
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if len(S) < 4 or len(S) > 10:
+        print('WA')
+        return
+
+    if S[0] != 'A':
+        print('WA')
+        return
+
+    if S[2:-1].count('C') != 1:
+        print('WA')
+        return
+
+    S = S.replace('A', '')
+    S = S.replace('C', '')
+    if S.islower():
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    s = input()
+    #先頭の文字が'A'かどうか
+    if s[0] != 'A':
+        print('WA')
+        return
+    #3文字目と末尾から2文字目の間に'C'がちょうど1個含まれるかどうか
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    #それ以外の文字はすべて小文字であるかどうか
+    if s[1:].replace('C', '').islower() == False:
+        print('WA')
+        return
+    print('AC')
+    return

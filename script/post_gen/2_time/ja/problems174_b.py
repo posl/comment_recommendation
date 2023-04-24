@@ -1,85 +1,158 @@
-#問題文
-#2 次元平面上に N 個の点があります。 i 個目の点の座標は (X_i,Y_i) です。
-#これらのうち、原点からの距離が D 以下であるような点は何個ありますか？
-#なお、座標 (p,q) にある点と原点の距離は (p^2+q^2)^(1/2) で表されます。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ D ≦ 2× 10^5
-#|X_i|,|Y_i| ≦ 2× 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#出力
-#原点からの距離が D 以下であるような点の個数を整数で出力せよ。
-#
-#入力例 1
-#4 5
-#0 5
-#-2 4
-#3 4
-#4 -4
-#
-#出力例 1
-#3
-#それぞれの点の原点からの距離は
-#(0^2+5^2)^(1/2)=5
-#((-2)^2+4^2)^(1/2)=4.472...
-#(3^2+4^2)^(1/2)=5
-#(4^2+(-4)^2)^(1/2)=5.656...
-#となります。したがって、原点からの距離が 5 以下であるような点は 3 個です。
-#
-#入力例 2
-#12 3
-#1 1
-#1 1
-#1 1
-#1 1
-#1 2
-#1 3
-#2 1
-#2 2
-#2 3
-#3 1
-#3 2
-#3 3
-#
-#出力例 2
-#7
-#同じ座標に複数の点があることがあります。
-#
-#入力例 3
-#20 100000
-#14309 -32939
-#-56855 100340
-#151364 25430
-#103789 -113141
-#147404 -136977
-#-37006 -30929
-#188810 -49557
-#13419 70401
-#-88280 165170
-#-196399 137941
-#-176527 -61904
-#46659 115261
-#-153551 114185
-#98784 -6820
-#94111 -86268
-#-30401 61477
-#-55056 7872
-#5901 -163796
-#138819 -185986
-#-69848 -96669
-#
-#出力例 3
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= D**2:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= D**2:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if (x**2 + y**2) <= D**2:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,D = map(int,input().split())
+    count = 0
+    for i in range(N):
+        x,y = map(int,input().split())
+        if x**2+y**2 <= D**2:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N,D = map(int,input().split())
+    count = 0
+    for i in range(N):
+        x,y = map(int,input().split())
+        if (x**2 + y**2) <= D**2:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    N, D = map(int, input().split())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+
+    #問題解決
+    #原点からの距離がD以下であるような点の個数を求める
+    #原点からの距離は(p^2+q^2)^(1/2)で表される
+    #Dの2乗
+    D2 = D**2
+    #原点からの距離がD以下であるような点の個数
+    cnt = 0
+    for i in range(N):
+        #p^2+q^2
+        p2q2 = X[i]**2 + Y[i]**2
+        if p2q2 <= D2:
+            cnt += 1
+
+    #出力
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    N,D = map(int,input().split())
+    ans = 0
+    for _ in range(N):
+        x,y = map(int,input().split())
+        if (x**2 + y**2)**(1/2) <= D:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, D = map(int, input().split())
+    X = []
+    Y = []
+    for _ in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    #座標の絶対値がD以下のものを数える
+    count = 0
+    for i in range(N):
+        if (X[i]**2 + Y[i]**2)**(1/2) <= D:
+            count += 1
+    #出力
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    read = sys.stdin.buffer.read
+    readline = sys.stdin.buffer.readline
+    readlines = sys.stdin.buffer.readlines
+    N, D = map(int, readline().split())
+    X, Y = map(int, read().split())
+    ans = 0
+    for i in range(N):
+        if X**2 + Y**2 <= D**2:
+            ans += 1
+        X, Y = map(int, readline().split())
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N, D = map(int, input().split())
+    #print(N, D)
+    #N個の点の座標をリストに格納
+    list_xy = []
+    for i in range(N):
+        X, Y = map(int, input().split())
+        list_xy.append([X, Y])
+    #print(list_xy)
+    #原点からの距離がD以下であるような点の個数をカウント
+    count = 0
+    for i in range(N):
+        if (list_xy[i][0]**2 + list_xy[i][1]**2)**0.5 <= D:
+            count += 1
+    #出力
+    print(count)

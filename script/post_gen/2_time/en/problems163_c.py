@@ -1,62 +1,194 @@
-#Problem Statement
-#A company has N members, who are assigned ID numbers 1, ..., N.
-#Every member, except the member numbered 1, has exactly one immediate boss with a smaller ID number.
-#When a person X is the immediate boss of a person Y, the person Y is said to be an immediate subordinate of the person X.
-#You are given the information that the immediate boss of the member numbered i is the member numbered A_i. For each member, find how many immediate subordinates it has.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i < i
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_2 ... A_N
-#
-#Output
-#For each of the members numbered 1, 2, ..., N, print the number of immediate subordinates it has, in its own line.
-#
-#Sample Input 1
-#5
-#1 1 2 2
-#
-#Sample Output 1
-#2
-#2
-#0
-#0
-#0
-#The member numbered 1 has two immediate subordinates: the members numbered 2 and 3.
-#The member numbered 2 has two immediate subordinates: the members numbered 4 and 5.
-#The members numbered 3, 4, and 5 do not have immediate subordinates.
-#
-#Sample Input 2
-#10
-#1 1 1 1 1 1 1 1 1
-#
-#Sample Output 2
-#9
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#
-#Sample Input 3
-#7
-#1 2 3 4 5 6
-#
-#Sample Output 3
-#1
-#1
-#1
-#1
-#1
-#1
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n - 1):
+        b[a[i] - 1] += 1
+    print('
+
+'.join(map(str, b)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N-1):
+        ans[A[i]-1] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = [0] * N
+    for i in A:
+        count[i-1] += 1
+    for i in count:
+        print(i)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = [0] * n
+    for i in a:
+        cnt[i-1] += 1
+    for i in cnt:
+        print(i)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sub = [0] * n
+    for i in range(n-1):
+        sub[a[i]-1] += 1
+    for i in range(n):
+        print(sub[i])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    B = [0] * N
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    if N == 2:
+        print(1)
+        print(0)
+        return
+    A.append(0)
+    B = [0] * (N+1)
+    for i in range(N):
+        B[A[i]] += 1
+    for i in range(1,N+1):
+        print(B[i])
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #A = [int(x) for x in input().split()]
+    #print(N)
+    #print(A)
+    #print(len(A))
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print(A[52])
+    #print(A[53])
+    #print(A[54])
+    #print(A[55])
+    #print(A[56])
+    #print(A[57])
+    #print(A[58])
+    #print(A[59])
+    #print(A[60])
+    #print(A[61])
+    #print(A[62])
+    #print(A[63])
+    #

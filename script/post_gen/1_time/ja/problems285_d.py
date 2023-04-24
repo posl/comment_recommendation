@@ -1,67 +1,197 @@
-#問題文
-#あなたの運営する Web サービスには N 人のユーザがいます。
-#i 番目のユーザの現在のユーザ名は S_i ですが、T_i への変更を希望しています。
-#ここで、S_1,...,S_N は相異なり、T_1,...,T_N も相異なります。
-#ユーザ名を変更する順序を適切に定めることで、以下の条件を全て満たすように、全てのユーザのユーザ名を希望通り変更することができるか判定してください。
-#ユーザ名の変更は 1 人ずつ行う
-#どのユーザもユーザ名の変更は一度だけ行う
-#ユーザ名の変更を試みる時点で他のユーザが使っているユーザ名に変更することはできない
-#
-#制約
-#1 ≦ N ≦ 10^5
-#S_i,T_i は英小文字からなる 1 文字以上 8 文字以下の文字列
-#S_i ≠ T_i
-#S_i は相異なる
-#T_i は相異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#出力
-#条件を全て満たすように全てのユーザのユーザ名を希望通り変更することができるとき Yes、できないとき No と出力せよ。
-#
-#入力例 1
-#2
-#b m
-#m d
-#
-#出力例 1
-#Yes
-#1 番目のユーザの現在のユーザ名は b であり、m への変更を希望しています。
-#2 番目のユーザの現在のユーザ名は m であり、d への変更を希望しています。
-#まず、2 番目のユーザのユーザ名を m から d に変更し、
-#その後 1 番目のユーザのユーザ名を b から m に変更することで、条件を満たしながら変更することができます。
-#最初の時点では 2 番目のユーザのユーザ名が m なので、1 番目のユーザのユーザ名を同じ m に変更することはできません。
-#
-#入力例 2
-#3
-#a b
-#b c
-#c a
-#
-#出力例 2
-#No
-#1 番目のユーザの現在のユーザ名は a であり、b への変更を希望しています。
-#2 番目のユーザの現在のユーザ名は b であり、c への変更を希望しています。
-#3 番目のユーザの現在のユーザ名は c であり、a への変更を希望しています。  
-#条件を満たしながらユーザ名の変更を行うことはできません。
-#
-#入力例 3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    if len(set(S)) == len(set(T)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    if len(set(S)) == len(set(T)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s,t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(i+1,N):
+            if S[i] == S[j] or T[i] == T[j] or S[i] == T[j] or T[i] == S[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    #print(S)
+    #print(T)
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if T[i] == T[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    if len(set(S)) != len(set(T)):
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    s_set = set(s)
+    t_set = set(t)
+    if len(s_set) == len(t_set):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    print('Yes' if solve(N, S, T) else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    users = []
+    for i in range(N):
+        users.append(input().split())
+    #print(users)
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if users[i][0] == users[j][1]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s,t = input().split()
+        S.append(s)
+        T.append(t)
+    
+    # 2人以上のユーザが同じユーザ名を希望する場合
+    # そのユーザ名を変更することはできない
+    # そのため、同じユーザ名を希望するユーザがいないかを確認する
+    if len(S) != len(set(S)) or len(T) != len(set(T)):
+        print("No")
+        exit()
+    
+    # 2人以上のユーザが同じユーザ名を現在のユーザ名としている場合
+    # そのユーザ名を変更することはできない
+    # そのため、同じユーザ名を現在のユーザ名としているユーザがいないかを確認する
+    if len(set(S)) != len(set(T)):
+        print("No")
+        exit()
+    
+    # 2人以上のユーザが同じユーザ名を現在のユーザ名としている場合
+    # そのユーザ名を変更することはできない
+    # そのため、同じユーザ名を現在のユーザ名としているユーザがいないかを確認する
+    if len(set(S)) != len(set(T)):
+        print("No")
+        exit()
+    
+    # 2人以上のユーザが同じユーザ名を現在のユーザ名としている場合
+    # そのユーザ名を変更することはできない
+    # そのため、同じユーザ名を現在のユーザ名としているユーザがいないかを確認
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    user = []
+    for i in range(N):
+        user.append(input().split())
+    #print(user)
+    for i in range(N):
+        #print("i:",i)
+        for j in range(N):
+            #print("j:",j)
+            if i == j:
+                continue
+            if user[i][0] == user[j][1]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+main()

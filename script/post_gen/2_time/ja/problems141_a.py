@@ -1,28 +1,89 @@
-#問題文
-#高橋君の住む町の天気は、一日ごとに晴れ(Sunny)、くもり(Cloudy)、雨(Rainy)、晴れ、くもり、雨、… と周期的に変化します。
-#今日の天気を表す文字列 S が与えられるので、明日の天気を予測してください。
-#
-#制約
-#S は Sunny, Cloudy, Rainy のいずれかである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#明日の天気を入力と同じ形式で出力せよ。
-#
-#入力例 1
-#Sunny
-#
-#出力例 1
-#Cloudy
-#高橋くんの住む町では、晴れの日の次の日の天気はくもりです。
-#
-#入力例 2
-#Rainy
-#
-#出力例 2
-#Sunny
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S == "Sunny":
+        print("Cloudy")
+    elif S == "Cloudy":
+        print("Rainy")
+    elif S == "Rainy":
+        print("Sunny")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == "Sunny":
+        print("Cloudy")
+    elif s == "Cloudy":
+        print("Rainy")
+    elif s == "Rainy":
+        print("Sunny")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S == "Sunny":
+        print("Cloudy")
+    elif S == "Cloudy":
+        print("Rainy")
+    else:
+        print("Sunny")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s == "Sunny":
+        print("Cloudy")
+    elif s == "Cloudy":
+        print("Rainy")
+    else:
+        print("Sunny")
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S == 'Sunny':
+        print('Cloudy')
+    elif S == 'Cloudy':
+        print('Rainy')
+    else:
+        print('Sunny')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s == 'Sunny':
+        print('Cloudy')
+    elif s == 'Cloudy':
+        print('Rainy')
+    else:
+        print('Sunny')
+
+=======
+Suggestion 7
+
+def main():
+    weather = input()
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
+    elif weather == 'Rainy':
+        print('Sunny')
+
+main()

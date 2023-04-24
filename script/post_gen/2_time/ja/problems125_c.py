@@ -1,43 +1,94 @@
-#問題文
-#N 個の整数 A_1, A_2, ..., A_N が黒板に書かれています。
-#あなたはこの中から整数を 1 つ選んで、1 以上 10^9 以下の好きな整数に書き換えます。
-#元の整数と同じ整数に書き換えても構いません。
-#書き換えた後の N 個の整数の最大公約数の最大値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#書き換えた後の N 個の整数の最大公約数の最大値を出力せよ。
-#
-#入力例 1
-#3
-#7 6 8
-#
-#出力例 1
-#2
-#7 を 4 に書き換えると 3 つの整数の最大公約数は 2 となり、これが最大です。
-#
-#入力例 2
-#3
-#12 15 18
-#
-#出力例 2
-#6
-#
-#入力例 3
-#2
-#1000000000 1000000000
-#
-#出力例 3
-#1000000000
-#元の整数と同じ整数に書き換えることも可能です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 2:
+        print(gcd(A[0], A[1]))
+        return
+    A.sort()
+    # print(A)
+    # print(gcd(A[0], A[1]))
+    # print(gcd(A[1], A[2]))
+    # print(gcd(A[0], A[2]))
+    print(max(gcd(A[0], A[1]), gcd(A[1], A[2]), gcd(A[0], A[2])))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # Aの最大値を求める
+    max_A = max(A)
+
+    # Aの最大値の約数を求める
+    max_A_divs = []
+    for i in range(1, int(max_A**0.5)+1):
+        if max_A % i == 0:
+            max_A_divs.append(i)
+            if i != max_A // i:
+                max_A_divs.append(max_A // i)
+
+    # Aの最大値の約数のうち、Aの約数になっているものを求める
+    A_divs = []
+    for div in max_A_divs:
+        for a in A:
+            if a % div != 0:
+                break
+        else:
+            A_divs.append(div)
+
+    # Aの最大値の約数のうち、Aの約数になっているもののうち、最大のものを求める
+    print(max(A_divs))

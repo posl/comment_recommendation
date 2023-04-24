@@ -1,38 +1,146 @@
-#問題文
-#あかりさんは n 種類の花を 1 本ずつ持っています。
-#あかりさんは、これらの花から 1 本以上を選び、花束を作ろうとしています。
-#ただし、あかりさんは a と b の 2 つの数を苦手としていて、いずれかと一致するような本数の花からなる花束は作ることができません。
-#あかりさんが作ることのできる花束は何種類あるでしょうか。
-#(10^9 + 7) で割った余りを求めてください。
-#ここで 2 つの花束は、一方では使われているが、
-#もう一方では使われていない種類の花があるとき、別の種類の花束であるとみなします。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ n ≦ 10^9
-#1 ≦ a < b ≦ min(n, 2 × 10^5)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#n a b
-#
-#出力
-#あかりさんが作ることのできる花束の種類数を (10^9 + 7) で割った余りを出力せよ。(そのような花束がないときは 0 と出力せよ。)
-#
-#入力例 1
-#4 1 3
-#
-#出力例 1
-#7
-#この場合、あかりさんは 2 本または 4 本の花を選んで花束を作ることができます。
-#4 本ある花の中から 2 本を選ぶ方法は 6 通り、4 本を選ぶ方法は 1 通りあるので、
-#あかりさんが作ることができる花束の種類数は合わせて 7 通りです。
-#
-#入力例 2
-#1000000000 141421 173205
-#
-#出力例 2
-#34076506
-#(10^9 + 7) で割った余りを出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def mod_pow(x, n, mod):
+    res = 1
+    while n > 0:
+        if n & 1:
+            res = res * x % mod
+        x = x * x % mod
+        n >>= 1
+    return res
+
+=======
+Suggestion 2
+
+def modpow(x, n, mod):
+    res = 1
+    while n > 0:
+        if n & 1:
+            res = res * x % mod
+        x = x * x % mod
+        n >>= 1
+    return res
+
+=======
+Suggestion 3
+
+def modinv(a, mod=10**9+7):
+    b = mod
+    u = 1
+    v = 0
+    while b:
+        t = a // b
+        a -= t * b
+        a, b = b, a
+        u -= t * v
+        u, v = v, u
+    u %= mod
+    if u < 0:
+        u += mod
+    return u
+
+=======
+Suggestion 4
+
+def powmod(x, n, mod):
+    if n == 0:
+        return 1
+    elif n % 2 == 0:
+        return powmod(x * x % mod, n // 2, mod)
+    else:
+        return x * powmod(x, n - 1, mod) % mod
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    mod = 10**9 + 7
+    ans = pow(2, n, mod) - 1
+    ans -= comb(n, a, mod)
+    ans -= comb(n, b, mod)
+    ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    mod = 10**9 + 7
+    ans = pow(2, n, mod) - 1
+    def cmb(n, r, mod):
+        x, y = 1, 1
+        for i in range(r):
+            x = x * (n - i) % mod
+            y = y * (i + 1) % mod
+        return x * pow(y, mod - 2, mod) % mod
+    ans = (ans - cmb(n, a, mod) - cmb(n, b, mod)) % mod
+    print(ans)
+
+=======
+Suggestion 7
+
+def modpow(a, n, mod=10**9+7):
+    if n == 0:
+        return 1
+    elif n % 2 == 0:
+        return modpow(a * a % mod, n // 2, mod)
+    else:
+        return a * modpow(a, n - 1, mod) % mod
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    mod = 10**9 + 7
+    def modinv(a, mod):
+        b = mod
+        u, v = 1, 0
+        while b:
+            t = a // b
+            a -= t * b
+            a, b = b, a
+            u -= t * v
+            u, v = v, u
+        u %= mod
+        if u < 0:
+            u += mod
+        return u
+    def nCr(n, r, mod):
+        if n < r:
+            return 0
+        if n < 0 or r < 0:
+            return 0
+        r = min(r, n - r)
+        return g1[n] * g2[r] * g2[n-r] % mod
+    g1 = [1, 1] # 元テーブル
+    g2 = [1, 1] #逆元テーブル
+    inverse = [0, 1] #逆元テーブル計算用テーブル
+    for i in range( 2, n + 1 ):
+        g1.append( ( g1[-1] * i ) % mod )
+        inverse.append( ( -inverse[mod % i] * (mod//i) ) % mod )
+        g2.append( (g2[-1] * inverse[-1]) % mod )
+    ans = pow(2, n, mod) - 1 - nCr(n, a, mod) - nCr(n, b, mod)
+    print(ans % mod)
+
+=======
+Suggestion 9
+
+def combination(n, r, mod):
+    # nCr
+    r = min(n - r, r)
+    res = 1
+    for i in range(r):
+        res = res * (n - i) * pow(i + 1, mod - 2, mod) % mod
+    return res
+
+=======
+Suggestion 10
+
+def modinv(a, mod):
+    return pow(a, mod-2, mod)

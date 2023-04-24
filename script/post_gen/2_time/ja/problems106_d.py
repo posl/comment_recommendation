@@ -1,90 +1,212 @@
-#問題文
-#高橋王国には, 東西にのびる 1 本の線路がある. これに沿って N 個の都市があり, 西から順に都市 1, 2, 3, ..., N と番号づけられている.
-#AtCoder Express という会社は M 本の列車を保有しており, 列車 i は都市 L_i から都市 R_i の区間 (L_i = R_i の場合もある) を走っている.  
-#この王国の国王である高橋君は, Q 個のことに興味を持った. 具体的には, i=1, 2, 3, ..., Q のときの以下の質問の答えを求めたくなった.  
-#都市 p_i から都市 q_i までの区間に, 走る区間が 完全に含まれる 列車の本数. 言い換えれば, p_i ≦ L_j と R_j ≦ q_i が両方成り立つような列車 j の本数.  
-#高橋君は天才である. しかし流石の彼でも, 膨大なデータを処理することはできない. 高橋君のために, Q 個の質問それぞれに対して答えを求めよ.  
-#
-#制約
-#N は 1 以上 500 以下の整数
-#M は 1 以上 200  000 以下の整数
-#Q は 1 以上 100  000 以下の整数
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#出力
-#Q 行出力せよ. i 行目には, 都市 p_i から都市 q_i までの区間に, それぞれの走る区間が完全に含まれる列車の本数を出力せよ.  
-#
-#入力例 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#出力例 1
-#3
-#全ての列車の走る区間が, 都市 1 から都市 2 までの区間に含まれているので, この質問の答えは 3 となる.  
-#
-#入力例 2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#出力例 2
-#1
-#1
-#1 個目の質問は, 都市 1 から 7 までの区間についてである. その区間に走る区間が完全に含まれている列車は, 列車 1 のみである.
-#2 個目の質問は, 都市 3 から 10 までの区間についてである. その区間に走る区間が完全に含まれている列車は, 列車 3 のみである.
-#
-#入力例 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#出力例 3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    PQ = [list(map(int, input().split())) for _ in range(Q)]
+    #print(N, M, Q)
+    #print(LR)
+    #print(PQ)
+    #LRの要素を順に見ていく
+    for i in range(Q):
+        cnt = 0
+        #print(PQ[i])
+        for j in range(M):
+            #print(LR[j])
+            if PQ[i][0] <= LR[j][0] and LR[j][1] <= PQ[i][1]:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    train = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(M):
+        train[L[i]][R[i]] += 1
+    for i in range(N + 1):
+        for j in range(N + 1):
+            if i > 0:
+                train[i][j] += train[i - 1][j]
+    for i in range(Q):
+        ans = 0
+        for j in range(p[i], q[i] + 1):
+            ans += train[j][q[i]]
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    for i in range(Q):
+        cnt = 0
+        for j in range(M):
+            if p[i] <= L[j] and R[j] <= q[i]:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * (M + 1)
+    R = [0] * (M + 1)
+    for i in range(M):
+        L[i + 1], R[i + 1] = map(int, input().split())
+    p = [0] * (Q + 1)
+    q = [0] * (Q + 1)
+    for i in range(Q):
+        p[i + 1], q[i + 1] = map(int, input().split())
+    ans = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            ans[i][j] = ans[i][j - 1] + ans[i - 1][j] - ans[i - 1][j - 1]
+            if L[i] <= j <= R[i]:
+                ans[i][j] += 1
+    for i in range(1, Q + 1):
+        print(ans[q[i]][q[i]] - ans[p[i] - 1][q[i]] - ans[q[i]][p[i] - 1] + ans[p[i] - 1][p[i] - 1])
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    train = [0] * (N + 1)
+    for i in range(M):
+        L, R = map(int, input().split())
+        train[L - 1] += 1
+        train[R] -= 1
+    for i in range(1, N + 1):
+        train[i] += train[i - 1]
+    for i in range(Q):
+        p, q = map(int, input().split())
+        print(train[q] - train[p - 1])
+
+=======
+Suggestion 6
+
+def main():
+    N, M, Q = map(int, input().split())
+    train = [0] * (N + 1)
+    for i in range(M):
+        L, R = map(int, input().split())
+        train[L] += 1
+        train[R + 1] -= 1
+    for i in range(1, N + 1):
+        train[i] += train[i - 1]
+    for i in range(Q):
+        p, q = map(int, input().split())
+        print(train[q] - train[p - 1])
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    train = [0] * (N+1)
+    for i in range(M):
+        L, R = map(int, input().split())
+        train[L-1] += 1
+        train[R] -= 1
+    for i in range(N):
+        train[i+1] += train[i]
+    for i in range(Q):
+        p, q = map(int, input().split())
+        print(train[q] - train[p-1])
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from collections import defaultdict
+    input = sys.stdin.readline
+    N, M, Q = map(int, input().split())
+    LR = [tuple(map(int, input().split())) for _ in range(M)]
+    PQ = [tuple(map(int, input().split())) for _ in range(Q)]
+    d = defaultdict(int)
+    for l, r in LR:
+        d[l] += 1
+        d[r+1] -= 1
+    for i in range(1, N+1):
+        d[i] += d[i-1]
+    for p, q in PQ:
+        print(d[q]-d[p-1])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n, m, q = map(int, input().split())
+
+    # 1-indexed
+    train = [0] * (n + 1)
+    for _ in range(m):
+        l, r = map(int, input().split())
+        train[l] += 1
+        train[r + 1] -= 1
+
+    # 累積和
+    for i in range(1, n + 1):
+        train[i] += train[i - 1]
+
+    # 累積和
+    for i in range(1, n + 1):
+        train[i] += train[i - 1]
+
+    for _ in range(q):
+        p, q = map(int, input().split())
+        print(train[q] - train[p - 1])
+
+=======
+Suggestion 10
+
+def main():
+    N, M, Q = map(int, input().split())
+    # 区間のリストを作成
+    interval = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        interval.append([l, r])
+    # 区間のリストをソート
+    interval.sort()
+    # クエリのリストを作成
+    query = []
+    for _ in range(Q):
+        p, q = map(int, input().split())
+        query.append([p, q])
+    # クエリのリストをソート
+    query.sort(key=lambda x: x[1])
+    # クエリのリストを走査
+    for p, q in query:
+        # 区間のリストを走査
+        cnt = 0
+        for l, r in interval:
+            # 区間のリストの区間が, クエリのリストの区間に含まれているかを判定
+            if l <= p and q <= r:
+                cnt += 1
+        print(cnt)

@@ -1,30 +1,61 @@
-#Problem Statement
-#The magnitude of an earthquake is a logarithmic scale of the energy released by the earthquake. It is known that each time the magnitude increases by 1, the amount of energy gets multiplied by approximately 32.
-#Here, we assume that the amount of energy gets multiplied by exactly 32 each time the magnitude increases by 1. In this case, how many times is the amount of energy of a magnitude A earthquake as much as that of a magnitude B earthquake?
-#
-#Constraints
-#3≦ B≦ A≦ 9
-#A and B are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#6 4
-#
-#Sample Output 1
-#1024
-#6 is 2 greater than 4, so a magnitude 6 earthquake has 32× 32=1024 times as much energy as a magnitude 4 earthquake has.
-#
-#Sample Input 2
-#5 5
-#
-#Sample Output 2
-#1
-#Earthquakes with the same magnitude have the same amount of energy.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(32 ** (a - b))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(32 ** (A - B))
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print(32**(A-B))
+
+main()
+
+=======
+Suggestion 4
+
+def earthquake():
+    a,b = map(int,input().split())
+    return 32**(a-b)
+
+print(earthquake())
+
+=======
+Suggestion 5
+
+def magnitude():
+    a,b=map(int,input().split())
+    print(32**(a-b))
+magnitude()
+
+=======
+Suggestion 6
+
+def main():
+    from builtins import int, map, list, print
+    from sys import stdin, stdout
+
+    # Read data
+    a, b = map(int, stdin.readline().split())
+
+    # Compute and print result
+    result = 32**(a-b)
+    stdout.write(str(result))
+
+=======
+Suggestion 7
+
+def earthquake(A, B):
+    return 32**(A-B)

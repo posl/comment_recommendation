@@ -1,43 +1,136 @@
-#問題文
-#N 種類の商品に対して人気投票を行いました。商品 i は A_i 票を得ています。
-#この中から人気商品 M 個を選びます。ただし、得票数が総投票数の (1/(4M)) 未満であるような商品は選べません。
-#人気商品 M 個を選べるなら Yes、選べないなら No を出力してください。
-#
-#制約
-#1 ≦ M ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#A_i は相異なる
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 ... A_N
-#
-#出力
-#人気商品 M 個を選べるなら Yes、選べないなら No を出力せよ。
-#
-#入力例 1
-#4 1
-#5 4 2 1
-#
-#出力例 1
-#Yes
-#総投票数は 12 です。1 位の得票数は 5 なので、これを選ぶことができます。
-#
-#入力例 2
-#3 2
-#380 19 1
-#
-#出力例 2
-#No
-#総投票数は 400 です。2,3 位の得票数は総得票数の (1/(4× 2)) 未満なので、これらを選ぶことはできず、人気商品 2 個を選べません。
-#
-#入力例 3
-#12 3
-#4 56 78 901 2 345 67 890 123 45 6 789
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    for i in range(m):
+        if a[i] < total / (4 * m):
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) < 4 * M * A[-1]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    if A[M-1] >= sum(A) / (4*M):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sumA = sum(A)
+    A.sort(reverse=True)
+    if A[M-1] >= sumA/(4*M):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1] >= total / (4*m):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    if a[m-1] < sum(a)/(4*m):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) < M * 4:
+        print("No")
+        return
+    A.sort(reverse=True)
+    if A[M-1] < sum(A[0:M]) / (4*M):
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
+    sumA = sum(A)
+    cnt = 0
+    for i in range(M):
+        if A[i] < (sumA/(4*M)):
+            break
+        else:
+            cnt += 1
+    if cnt == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+	N, M = map(int, input().split())
+	A = list(map(int, input().split()))
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気商品の得票数の合計が総投票数の (1/(4M)) 以上であることを確認する
+	# 人気商品の得票数の合計を求める
+	# 人気

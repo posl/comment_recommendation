@@ -1,67 +1,188 @@
-#問題文
-#1 から N までの番号がついた N 個の数列が与えられます。
-#数列 i は、長さが L_i で j (1 ≦ j ≦ L_i) 番目の要素が a_{i,j} であるような数列です。
-#数列 i と 数列 j は、 L_i = L_j かつすべての k (1 ≦ k ≦ L_i) に対して a_{i,k} = a_{j,k} が成り立つ時に同じであるとみなします。
-#同じ数列は 1 種類として数えるとき、数列 1 から 数列 N の中に全部で何種類の数列がありますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9} (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#すべての数列の要素の個数の和、すなわち sum_{i=1}^N L_i は 2 × 10^5 を超えない。
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#数列の種類数を出力せよ。
-#
-#入力例 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#出力例 1
-#3
-#入力例 1で与えられている数列は以下の 4 個です。
-#数列 1 : (1, 2)
-#数列 2 : (1, 1)
-#数列 3 : (2, 1)
-#数列 4 : (1, 2) 
-#このうち数列 1 と数列 4 は同じ数列で、それ以外は互いに異なる数列なので全部で 3 種類の数列があります。
-#
-#入力例 2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#出力例 2
-#4
-#入力例 2で与えられている数列は以下の 5 個です。
-#数列 1 : (1)
-#数列 2 : (1)
-#数列 3 : (2)
-#数列 4 : (1, 1) 
-#数列 5 : (1, 1, 1) 
-#
-#入力例 3
-#1
-#1 1
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        l = list(map(int, input().split()))
+        l = tuple(l[1:])
+        if l in d:
+            d[l] += 1
+        else:
+            d[l] = 1
+    print(len(d))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = set()
+    for i in range(N):
+        L = list(map(int,input().split()))
+        S.add(tuple(L[1:]))
+    print(len(S))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(input().split())
+    for i in range(N):
+        L[i][0] = int(L[i][0])
+        for j in range(1,L[i][0]+1):
+            L[i][j] = int(L[i][j])
+    L.sort()
+    ans = 1
+    for i in range(1,N):
+        if L[i-1][0] != L[i][0]:
+            ans += 1
+        else:
+            for j in range(1,L[i][0]+1):
+                if L[i-1][j] != L[i][j]:
+                    ans += 1
+                    break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    dict = {}
+    for i in range(N):
+        L = list(map(int, input().split()))
+        if L[0] in dict:
+            dict[L[0]].append(L[1:])
+        else:
+            dict[L[0]] = [L[1:]]
+
+    ans = 0
+    for key in dict:
+        ans += len(set([tuple(v) for v in dict[key]]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    d = dict()
+    for i in range(N):
+        L = list(map(int, input().split()))
+        L = tuple(L[1:])
+        d[L] = d.get(L, 0) + 1
+    print(len(d))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for i in range(N)]
+
+    d = {}
+    for i in range(N):
+        L = A[i][0]
+        a = tuple(A[i][1:])
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+
+    print(len(d))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        L, *a = map(int, input().split())
+        A.append(a)
+
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if i == 0 or A[i - 1] != A[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    #print(A)
+    B = []
+    for i in range(N):
+        B.append(tuple(A[i][1:]))
+    #print(B)
+    ans = len(set(B))
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(tuple(map(int, input().split())))
+    
+    print(len(set(L)))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    # N = 2 * 10 ** 5
+    # N = 1
+    # L = [1] * N
+    # A = [[1] * L[i] for i in range(N)]
+    L = []
+    A = []
+    for _ in range(N):
+        l = list(map(int, input().split()))
+        L.append(l[0])
+        A.append(l[1:])
+    # print(L)
+    # print(A)
+    # print(N, L, A)
+    # print(len(A))
+    # print(len(A[0]))
+    # print(A[0][0])
+
+    # 1. 重複している数列を削除
+    # 2. 同じ数列を削除
+    # 3. 重複している数列を削除
+    # 4. 同じ数列を削除
+    # 5. 重複している数列を削除
+    # 6. 同じ数列を削除
+    # 7. 重複している数列を削除
+    # 8. 同じ数列を削除
+    # 9. 重複している数列を削除
+    # 10. 同じ数列を削除
+    # 11. 重複している数列を削除
+    # 12. 同じ数列を削除
+    # 13. 重複している数列を削除
+    # 14. 同じ数列を削除
+    # 15. 重複している数列を削除
+    # 16. 同じ数列を削除
+    # 17. 重複している数列を削除
+    # 18. 同じ数列を削除
+    # 19. 重複している数列を削除
+    # 20. 同じ数列を削除
+    # 21. 重複している

@@ -1,46 +1,81 @@
-#問題文
-#袋の中に金貨が A 枚、銀貨が B 枚、銅貨が C 枚入っています。
-#袋の中にあるいずれかの種類の硬貨が 100 枚になるまで以下の操作を繰り返します。
-#操作：袋の中から硬貨をランダムに 1 枚取り出す。(どの硬貨も等確率で選ばれる。) 取り出した硬貨と同じ種類の硬貨を 2 枚袋に戻す。
-#操作回数の期待値を求めてください。
-#
-#制約
-#0 ≦ A,B,C ≦ 99
-#A+B+C ≧ 1
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#操作回数の期待値を出力せよ。正しい値との絶対誤差または相対誤差が 10^{-6} 以下であれば正解とみなされる。
-#
-#入力例 1
-#99 99 99
-#
-#出力例 1
-#1.000000000
-#1 回目の操作でどの硬貨を取り出しても、取り出した種類の硬貨が 100 枚になります。
-#
-#入力例 2
-#98 99 99
-#
-#出力例 2
-#1.331081081
-#1 回目の操作で金貨を取り出したときのみ 2 回の操作を行います。
-#よって期待値は 2× ((98)/(98+99+99))+1× ((99)/(98+99+99))+1× ((99)/(98+99+99))=1.331081081... となります。
-#
-#入力例 3
-#0 0 1
-#
-#出力例 3
-#99.000000000
-#操作を行うごとに銅貨が 1 枚ずつ増えていきます。
-#
-#入力例 4
-#31 41 59
-#
-#出力例 4
-#91.835008202
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C = map(int, input().split())
+    print(A * B / (A + B) + B * C / (B + C) + C * A / (C + A))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print(100 * a / (a+b+c) + 100 * b / (a+b+c) + 100 * c / (a+b+c) - 3)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C = map(int, input().split())
+    print(2*A*B + 2*B*C + 2*C*A + A + B + C)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    print(A * B + B * C + C * A + A + B + C)
+
+=======
+Suggestion 5
+
+def main():
+    A, B, C = map(int, input().split())
+    print(100 + (A-1) + (B-1) + (C-1))
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C = map(int,input().split())
+    #A,B,C = map(int,input().split())
+    #A,B,C = map(int,input().split())
+    #A,B,C = map(int,input().split())
+    print(100)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    A, B, C = map(int, input().split())
+    print(A/100 + B/100 + C/100)
+
+=======
+Suggestion 8
+
+def main():
+    A, B, C = map(int, input().split())
+    ans = 0
+    for i in range(100):
+        ans += i * (A + B + C) * (A + B + C - 1) / (100 - i) / 100
+        A, B, C = B, C, A
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    A,B,C = map(int,input().split())
+    print(A*(B+C)+B*C)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c = map(int,input().split())
+    print(a*b*c/(a+b+c)/(a+b+c-1))

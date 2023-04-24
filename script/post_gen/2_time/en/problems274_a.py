@@ -1,57 +1,48 @@
-#Problem Statement
-#Takahashi is making a computer baseball game.
-#He will write a program that shows a batter's batting average with a specified number of digits.
-#There are integers A and B, which satisfy 1 ≦ A ≦ 10 and 0 ≦ B ≦ A.
-#Let S be the string obtained as follows.
-#Round off (B/(A)) to three decimal digits, then write the integer part (1 digit), . (the decimal point), and the decimal part (3 digits) in this order, with trailing zeros.
-#For example, if A=7 and B=4, then (B/(A)) = (4/(7)) = 0.571428... rounded off to three decimal digits is 0.571. Thus, S is 0.571.
-#You are given A and B as the input and asked to print S.
-#
-#Constraints
-#1 ≦ A ≦ 10
-#0 ≦ B ≦ A
-#A and B are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print S in the format specified in the Problem Statement. Note that answers in different formats will be considered wrong.
-#
-#Sample Input 1
-#7 4
-#
-#Sample Output 1
-#0.571
-#As explained in the Problem Statement, (B/(A)) = (4/(7)) = 0.571428... rounded off to three decimal digits is 0.571. Thus, S is 0.571.
-#
-#Sample Input 2
-#7 3
-#
-#Sample Output 2
-#0.429
-#(B/(A)) = (3/(7)) = 0.428571... rounded off to three decimal digits is 0.429. (Note that it got rounded up.)
-#Thus, S is 0.429.
-#
-#Sample Input 3
-#2 1
-#
-#Sample Output 3
-#0.500
-#(B/(A)) = (1/(2)) = 0.5 rounded off to three decimal digits is again 0.5.
-#Thus, S is 0.500. Note that it must have three decimal places.
-#
-#Sample Input 4
-#10 10
-#
-#Sample Output 4
-#1.000
-#
-#Sample Input 5
-#1 0
-#
-#Sample Output 5
-#0.000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print('{:.3f}'.format(b/a))
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int, input().split())
+    print("{:.3f}".format(b/a))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print('{:.3f}'.format(b/a))
+    return
+
+=======
+Suggestion 4
+
+def batting_average():
+    a, b = map(int, input().split())
+    print('{:.3f}'.format(b/a))
+
+=======
+Suggestion 5
+
+def batting_average(a, b):
+    return round(b / a, 3)
+
+=======
+Suggestion 6
+
+def batting_average(A, B):
+    return round(B/A, 3)
+
+=======
+Suggestion 7
+
+def battingAverage(A,B):
+    print(round(B/A,3))

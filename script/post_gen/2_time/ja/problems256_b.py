@@ -1,65 +1,153 @@
-#問題文
-#高橋君は野球をモチーフにしたゲームを作ろうとしましたが、うまくコードが書けなくて困っています。
-#高橋君の代わりに次の問題を解くプログラムを作ってください。
-#マス 0, マス 1, マス 2, マス 3 の 4 つのマス目があります。はじめマスの上には何もありません。
-#また、整数 P があり、はじめ P = 0 です。
-#正の整数からなる数列 A = (A_1, A_2, ..., A_N) が与えられるので、i = 1, 2, ..., N について順番に次の操作を行います。
-#マス 0 に駒を 1 個置く。
-#マス上のすべての駒を番号が A_i 大きいマスに進める。言い換えると、駒がマス x にあればその駒をマス x + A_i に移動する。    
-#    ただし移動先のマスが存在しない (すなわち x + A_i が 4 以上になる) 駒たちに関しては、それらを取り除いて P に取り除いた個数を加算する。
-#すべての操作を行った後の P の値を出力してください。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 4
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#操作終了時点での P の値を出力せよ。
-#
-#入力例 1
-#4
-#1 1 3 2
-#
-#出力例 1
-#3
-#操作を説明すると次のようになり、操作終了時点での P の値は 3 になります。
-#i=1 での操作  
-#マス 0 に駒を置く。この時点でマス 0 にコマが乗っている。
-#すべての駒を 1 大きいマスに進める。移動を終えた時点でマス 1 に駒が乗っている。
-#i=2 での操作  
-#マス 0 に駒を置く。この時点でマス 0, 1 にコマが乗っている。
-#すべての駒を 1 大きいマスに進める。移動を終えた時点でマス 1, 2 に駒が乗っている。
-#i=3 での操作  
-#マス 0 に駒を置く。この時点でマス 0, 1, 2 にコマが乗っている。
-#すべての駒を 3 大きいマスに進める。
-#この時、マス 1,2 にある駒は移動先のマスが存在しないため (それぞれ 1+3=4,2+3=5 なので) 、盤上から取り除いて P に 2 を加算する。P の値は 2 になる。
-#移動を終えた時点でマス 3 に駒が乗っている。
-#i=4 での操作  
-#マス 0 に駒を置く。この時点でマス 0, 3 にコマが乗っている。
-#すべての駒を 2 大きいマスに進める。
-#この時、マス 3 にある駒は移動先のマスが存在しないため (3+2=5 なので) 、盤上から取り除いて P に 1 を加算する。P の値は 3 になる。
-#移動を終えた時点でマス 2 に駒が乗っている。
-#
-#
-#入力例 2
-#3
-#1 1 1
-#
-#出力例 2
-#0
-#P の値が操作中に変化しない場合もあります。
-#
-#入力例 3
-#10
-#2 2 4 1 1 1 4 2 2 1
-#
-#出力例 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    B = [0, 0, 0, 0]
+    for i in range(N):
+        B[0] += 1
+        for j in range(4):
+            if B[j] > 0:
+                B[j] -= 1
+                if j + A[i] < 4:
+                    B[j + A[i]] += 1
+                else:
+                    P += 1
+    print(P)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if i == 0:
+            P += 1
+        else:
+            P += A[i-1]
+        if P >= 4:
+            P -= 4
+    print(P)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if i == 0:
+            P += 1
+        else:
+            if A[i-1] == 1:
+                P += 1
+            elif A[i-1] == 2:
+                P += 2
+            elif A[i-1] == 3:
+                P += 3
+            elif A[i-1] == 4:
+                P += 4
+            else:
+                pass
+    print(P)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    p = 0
+    for i in range(N):
+        p += A[i]
+        if p >= 4:
+            p -= 4
+    print(p)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        p += 1
+        p -= a[i] // 4
+    print(p)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        P += 1
+        P -= A[i] // 4
+    print(P)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    p = 0
+    for i in range(n):
+        p += 1
+        for j in range(4):
+            if j + a[i] >= 4:
+                p += 1
+    print(p)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    P = 0
+    for i in range(N):
+        P += 1
+        if A[i] >= 4:
+            P += 1
+    print(P)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        P += 1
+        P -= (A[i] + P) // 4
+    print(P)
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    p = 0
+    for i in range(n):
+        if i == 0:
+            p += 1
+            continue
+        p += 1
+        if i + a[i] >= 4:
+            p -= 1
+    print(p)

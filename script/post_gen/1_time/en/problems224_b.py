@@ -1,52 +1,228 @@
-#Problem Statement
-#We have a grid with H horizontal rows and W vertical columns, where each square contains an integer.
-#The integer written on the square at the i-th row from the top and j-th column from the left is A_{i, j}.
-#Determine whether the grid satisfies the condition below.
-#A_{i_1, j_1} + A_{i_2, j_2} ≦ A_{i_2, j_1} + A_{i_1, j_2} holds for every quadruple of integers (i_1, i_2, j_1, j_2) such that 1 ≦ i_1 < i_2 ≦ H and 1 ≦ j_1 < j_2 ≦ W.
-#
-#Constraints
-#2 ≦ H, W ≦ 50
-#1 ≦ A_{i, j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#A_{1, 1} A_{1, 2} ... A_{1, W}
-#A_{2, 1} A_{2, 2} ... A_{2, W}
-#.
-#.
-#.
-#A_{H, 1} A_{H, 2} ... A_{H, W}
-#
-#Output
-#If the grid satisfies the condition in the Problem Statement, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 3
-#2 1 4
-#3 1 3
-#6 4 1
-#
-#Sample Output 1
-#Yes
-#There are nine quadruples of integers (i_1, i_2, j_1, j_2) such that 1 ≦ i_1 < i_2 ≦ H and 1 ≦ j_1 < j_2 ≦ W. For all of them, A_{i_1, j_1} + A_{i_2, j_2} ≦ A_{i_2, j_1} + A_{i_1, j_2} holds. Some examples follow.
-#For (i_1, i_2, j_1, j_2) = (1, 2, 1, 2), we have A_{i_1, j_1} + A_{i_2, j_2} = 2 + 1 ≦ 3 + 1 = A_{i_2, j_1} + A_{i_1, j_2}.
-#For (i_1, i_2, j_1, j_2) = (1, 2, 1, 3), we have A_{i_1, j_1} + A_{i_2, j_2} = 2 + 3 ≦ 3 + 4 = A_{i_2, j_1} + A_{i_1, j_2}.
-#For (i_1, i_2, j_1, j_2) = (1, 2, 2, 3), we have A_{i_1, j_1} + A_{i_2, j_2} = 1 + 3 ≦ 1 + 4 = A_{i_2, j_1} + A_{i_1, j_2}.
-#For (i_1, i_2, j_1, j_2) = (1, 3, 1, 2), we have A_{i_1, j_1} + A_{i_2, j_2} = 2 + 4 ≦ 6 + 1 = A_{i_2, j_1} + A_{i_1, j_2}.
-#For (i_1, i_2, j_1, j_2) = (1, 3, 1, 3), we have A_{i_1, j_1} + A_{i_2, j_2} = 2 + 1 ≦ 6 + 4 = A_{i_2, j_1} + A_{i_1, j_2}.
-#We can also see that the property holds for the other quadruples: (i_1, i_2, j_1, j_2) = (1, 3, 2, 3), (2, 3, 1, 2), (2, 3, 1, 3), (2, 3, 2, 3).
-#Thus, we should print Yes.
-#
-#Sample Input 2
-#2 4
-#4 3 2 1
-#5 6 7 8
-#
-#Sample Output 2
-#No
-#We should print No because the condition is not satisfied.
-#This is because, for example, we have A_{i_1, j_1} + A_{i_2, j_2} = 4 + 8 > 5 + 1 = A_{i_2, j_1} + A_{i_1, j_2} for (i_1, i_2, j_1, j_2) = (1, 2, 1, 4).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for _ in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l:
+                        if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                            print("No")
+                            return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if i == H - 1 and j == W - 1:
+                break
+            elif i == H - 1:
+                if A[i][j] > A[i][j + 1]:
+                    print("No")
+                    return
+            elif j == W - 1:
+                if A[i][j] > A[i + 1][j]:
+                    print("No")
+                    return
+            else:
+                if A[i][j] > A[i][j + 1] or A[i][j] > A[i + 1][j]:
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if i == 0 and j == 0:
+                continue
+            elif i == 0:
+                A[i][j] += A[i][j-1]
+            elif j == 0:
+                A[i][j] += A[i-1][j]
+            else:
+                A[i][j] += max(A[i][j-1], A[i-1][j])
+    print('Yes' if A[H-1][W-1] % 2 == 0 else 'No')
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if i + 1 < H and j + 1 < W:
+                if A[i][j] + A[i + 1][j + 1] > A[i + 1][j] + A[i][j + 1]:
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    
+    for i in range(H):
+        for j in range(W):
+            if i == 0 and j == 0:
+                continue
+            if i == 0:
+                A[i][j] += A[i][j-1]
+            elif j == 0:
+                A[i][j] += A[i-1][j]
+            else:
+                A[i][j] += min(A[i-1][j], A[i][j-1])
+    
+    for i in range(H):
+        for j in range(W):
+            if i == H-1 and j == W-1:
+                continue
+            if i == H-1:
+                A[i][j] -= A[i][j+1]
+            elif j == W-1:
+                A[i][j] -= A[i+1][j]
+            else:
+                A[i][j] -= max(A[i+1][j], A[i][j+1])
+    
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] > 0:
+                print('Yes')
+                return
+    print('No')
+    return
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    A = [[0] * W for _ in range(H)]
+    for i in range(H):
+        A[i] = list(map(int, input().split()))
+    for i in range(H):
+        for j in range(W):
+            if i < H-1 and j < W-1:
+                if A[i][j] + A[i+1][j+1] > A[i+1][j] + A[i][j+1]:
+                    print('No')
+                    return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    A = [[0] * W for _ in range(H)]
+    for i in range(H):
+        A[i] = list(map(int, input().split()))
+    for i in range(H):
+        for j in range(W):
+            if i + 1 < H:
+                if A[i][j] + A[i + 1][j] > A[i + 1][j] + A[i][j]:
+                    print("No")
+                    return
+            if j + 1 < W:
+                if A[i][j] + A[i][j + 1] > A[i][j + 1] + A[i][j]:
+                    print("No")
+                    return
+    print("Yes")
+    return
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    for i in range(H):
+        for j in range(W):
+            if i == 0:
+                if j == 0:
+                    continue
+                else:
+                    A[i][j] += A[i][j-1]
+            else:
+                if j == 0:
+                    A[i][j] += A[i-1][j]
+                else:
+                    A[i][j] += A[i][j-1] + A[i-1][j] - A[i-1][j-1]
+
+    for i in range(H):
+        for j in range(W):
+            if i == 0:
+                if j == 0:
+                    continue
+                else:
+                    if A[i][j] <= A[i][j-1]:
+                        print('No')
+                        return
+            else:
+                if j == 0:
+                    if A[i][j] <= A[i-1][j]:
+                        print('No')
+                        return
+                else:
+                    if A[i][j] <= A[i-1][j] + A[i][j-1] - A[i-1][j-1]:
+                        print('No')
+                        return
+
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    for i in range(H):
+        for j in range(W):
+            if i + 1 < H and j + 1 < W:
+                if A[i][j] + A[i + 1][j + 1] > A[i][j + 1] + A[i + 1][j]:
+                    print('No')
+                    return
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            a, b, c, d = A[i][j], A[i][j], A[i][j], A[i][j]
+            if i > 0:
+                a = A[i-1][j]
+            if j > 0:
+                b = A[i][j-1]
+            if i < H-1:
+                c = A[i+1][j]
+            if j < W-1:
+                d = A[i][j+1]
+            if not a+b <= c+d:
+                print('No')
+                return
+    print('Yes')

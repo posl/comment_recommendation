@@ -1,36 +1,92 @@
-#問題文
-#整数 N, M が与えられます。
-#a_1 + a_2 + ... + a_N = M となる正整数からなる長さ N の数列 a において、a_1, a_2, ..., a_N の最大公約数のとり得る最大値を求めてください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 10^5
-#N ≦ M ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#
-#出力
-#条件を満たす数列 a_1, a_2, ..., a_N の最大公約数のとり得る最大値を出力せよ。
-#
-#入力例 1
-#3 14
-#
-#出力例 1
-#2
-#(a_1, a_2, a_3) = (2, 4, 8) としたときこれらの最大公約数が 2 となり最大です。
-#
-#入力例 2
-#10 123
-#
-#出力例 2
-#3
-#
-#入力例 3
-#100000 1000000000
-#
-#出力例 3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(x, y):
+    while y != 0:
+        (x, y) = (y, x % y)
+    return x
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    print(M // N)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+
+    # M が N で割り切れる場合
+    if M % N == 0:
+        print(M // N)
+    # M が N で割り切れない場合
+    else:
+        print(M // N)
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N,M=map(int,input().split())
+a=[]
+for i in range(1,M//N+1):
+    a.append(i)
+#print(a)
+ans=0
+for i in range(len(a)-1):
+    for j in range(i+1,len(a)):
+        ans=max(ans,gcd(a[i],a[j]))
+print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    print(m // n)
+
+=======
+Suggestion 9
+
+def main():
+    # 整数の入力
+    N,M = map(int,input().split())
+    # 出力
+    print(M//N)

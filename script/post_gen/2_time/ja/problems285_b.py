@@ -1,37 +1,165 @@
-#問題文
-#英小文字からなる長さ N の文字列 S が与えられます。 S の x 文字目 (1 ≦ x ≦ N) は S_x です。
-#i=1,2,...,N-1 それぞれについて、以下の条件を全て満たす最大の非負整数 l を求めてください。
-#l+i ≦ N である。
-#全ての 1 ≦ k ≦ l を満たす整数 k について、 S_{k} ≠ S_{k+i} を満たす。
-#なお、 l=0 は常に条件を満たすことに注意してください。
-#
-#制約
-#N は 2 ≦ N ≦ 5000 を満たす整数
-#S は英小文字からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#N-1 行にわたって出力せよ。そのうち x 行目 (1 ≦ x < N) には i=x とした場合の答えを整数として出力せよ。
-#
-#入力例 1
-#6
-#abcbac
-#
-#出力例 1
-#5
-#1
-#2
-#0
-#1
-#この入力では、 S= abcbac です。  
-#i=1 のとき、 S_1 ≠ S_2, S_2 ≠ S_3, ... ,S_5 ≠ S_6 であるため、 最大値は l=5 です。
-#i=2 のとき、 S_1 ≠ S_3 ですが S_2 = S_4 であるため、 最大値は l=1 です。
-#i=3 のとき、 S_1 ≠ S_4, S_2 ≠ S_5 ですが S_3 = S_6 であるため、 最大値は l=2 です。
-#i=4 のとき、 S_1 = S_5 であるため、 最大値は l=0 です。
-#i=5 のとき、 S_1 ≠ S_6 であるため、 最大値は l=1 です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for k in range(1,N-i+1):
+            if S[k-1] != S[k-1+i]:
+                l = k
+        print(l)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for k in range(1,N-i+1):
+            if S[k-1] != S[k+i-1]:
+                l = k
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        ans = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                ans = max(ans,j+1)
+        print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l += 1
+        print(l)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        l = 0
+        for j in range(1, N - i + 1):
+            if S[j - 1] != S[j - 1 + i]:
+                l = j
+        print(l)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        for j in range(1, n-i):
+            if s[j-1] != s[j+i-1]:
+                l = j
+        print(l)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    ans = [0] * (N - 1)
+    for i in range(1, N):
+        for j in range(i):
+            if S[j] != S[j + i]:
+                ans[i - 1] += 1
+    for i in range(N - 1):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        #print(S[:i])
+        #print(S[i:])
+        #print(set(S[:i]) & set(S[i:]))
+        print(len(S[:i]) - len(set(S[:i]) & set(S[i:])))
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N = int(input())
+    S = input()
+    #N-1回繰り返す
+    for i in range(1, N):
+        #lの初期値はN-1
+        l = N-1
+        #lが0になるまで繰り返す
+        while l > 0:
+            #Sのi文字目をS_iとする
+            S_i = S[i-1]
+            #Sのl文字目をS_lとする
+            S_l = S[l-1]
+            #S_iとS_lが等しい場合
+            if S_i == S_l:
+                #lを1減らす
+                l -= 1
+            #S_iとS_lが等しくない場合
+            else:
+                #l+iがNを超える場合
+                if l+i > N:
+                    #lを1減らす
+                    l -= 1
+                #l+iがNを超えない場合
+                else:
+                    #Sのl+i文字目をS_l_iとする
+                    S_l_i = S[l+i-1]
+                    #S_lとS_l_iが等しい場合
+                    if S_l == S_l_i:
+                        #lを1減らす
+                        l -= 1
+                    #S_lとS_l_iが等しくない場合
+                    else:
+                        #ループを抜ける
+                        break
+        #結果を出力
+        print(l)

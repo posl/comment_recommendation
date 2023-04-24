@@ -1,91 +1,314 @@
-#Problem Statement
-#The Kingdom of Takahashi is made up of N towns and N-1 roads, where the towns are numbered 1 through N. The i-th road (1 ≦ i ≦ N-1) connects Town a_i and Town b_i, so that you can get from every town to every town by using some roads. All the roads have the same length.
-#You will be given Q queries. In the i-th query (1 ≦ i ≦ Q), given integers c_i and d_i, solve the following problem:
-#Takahashi is now at Town c_i and Aoki is now at Town d_i. They will leave the towns simultaneously and start traveling at the same speed, Takahashi heading to Town d_i and Aoki heading to Town c_i. Determine whether they will meet at a town or halfway along a road. Here, assume that both of them travel along the shortest paths, and the time it takes to pass towns is negligible.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#All values in input are integers.
-#It is possible to get from every town to every town by using some roads. 
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#Output
-#Print Q lines.
-#The i-th line (1 ≦ i ≦ Q) should contain Town if Takahashi and Aoki will meet at a town in the i-th query, and Road if they meet halfway along a road in that query.
-#
-#Sample Input 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#Sample Output 1
-#Road
-#In the first and only query, Takahashi and Aoki simultaneously leave Town 1 and Town 2, respectively, and they will meet halfway along the 1-st road, so we should print Road.
-#
-#Sample Input 2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#Sample Output 2
-#Town
-#Town
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 3, respectively, and they will meet at Town 2, so we should print Town.
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 5, respectively, and they will meet at Town 3, so we should print Town.
-#
-#Sample Input 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#Sample Output 3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(N - 1)]
+    cd = [list(map(int, input().split())) for _ in range(Q)]
+
+    graph = [[] for _ in range(N)]
+    for a, b in ab:
+        graph[a - 1].append(b - 1)
+        graph[b - 1].append(a - 1)
+
+    # 1. 全ての頂点からの最短距離を求める
+    from collections import deque
+    dist = [-1] * N
+    dist[0] = 0
+    que = deque([0])
+
+    while que:
+        v = que.popleft()
+        for nv in graph[v]:
+            if dist[nv] != -1:
+                continue
+            dist[nv] = dist[v] + 1
+            que.append(nv)
+
+    # 2. 各クエリについて、距離の偶奇が一致しているかで判定する
+    for c, d in cd:
+        if dist[c - 1] % 2 == dist[d - 1] % 2:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    edges = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        a, b = map(int, input().split())
+        edges[a - 1].append(b - 1)
+        edges[b - 1].append(a - 1)
+
+    depth = [-1] * n
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in edges[v]:
+            if depth[u] == -1:
+                depth[u] = depth[v] + 1
+                stack.append(u)
+
+    for _ in range(q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        if (depth[c] + depth[d]) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    edges = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        edges[a].append(b)
+        edges[b].append(a)
+    depth = [-1] * N
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for e in edges[v]:
+            if depth[e] != -1:
+                continue
+            depth[e] = depth[v] + 1
+            stack.append(e)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        if (depth[c] + depth[d]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n-1)]
+    c = [list(map(int, input().split())) for _ in range(q)]
+    b = [[] for _ in range(n+1)]
+    for i in range(n-1):
+        b[a[i][0]].append(a[i][1])
+        b[a[i][1]].append(a[i][0])
+    d = [0]*(n+1)
+    e = [0]*(n+1)
+    def dfs(x, y):
+        for i in b[x]:
+            if i != y:
+                d[i] = d[x] + 1
+                dfs(i, x)
+    def dfs2(x, y):
+        for i in b[x]:
+            if i != y:
+                e[i] = e[x] + 1
+                dfs2(i, x)
+    dfs(1, 0)
+    dfs2(n, 0)
+    for i in range(q):
+        if (d[c[i][0]] + d[c[i][1]]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+main()
+
+I'm not sure if this is the best way to solve this problem, but I'm happy that I could solve it. I'm still learning Python, so I'm not sure if I'm using the best method for some of the things I used. I'm looking forward to your feedback. Thank you for reading!
+
+I'm not sure if this is the best way to solve this problem, but I'm happy that I could solve it.
+
+I'm still learning Python, so I'm not sure if I'm using the best method for some of the things I used. I'm looking forward to your feedback. Thank you for reading!
+
+This is a good solution, but you can make it even better. I have a few suggestions:
+
+I'm not sure if this is the best way to solve this problem, but I'm happy that I could solve it. I'm still learning Python, so I'm not sure if I'm using the best method for some of the things I used. I'm looking forward to your feedback. Thank you for reading!
+
+This is a good solution, but you can make it even better. I have a few suggestions:
+
+Thank you for your feedback! I'll try to
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    road = [[] for _ in range(N+1)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        road[a].append(b)
+        road[b].append(a)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        if (N-1) % 2 == 0:
+            print("Town")
+        else:
+            if len(road[c]) % 2 != len(road[d]) % 2:
+                print("Town")
+            else:
+                print("Road")
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    edges = [[] for i in range(N+1)]
+    for i in range(N-1):
+        a, b = map(int, input().split())
+        edges[a].append(b)
+        edges[b].append(a)
+    queries = []
+    for i in range(Q):
+        c, d = map(int, input().split())
+        queries.append((c, d))
+    dists = [-1] * (N+1)
+    dists[1] = 0
+    stack = [1]
+    while stack:
+        node = stack.pop()
+        for nei in edges[node]:
+            if dists[nei] == -1:
+                dists[nei] = dists[node] + 1
+                stack.append(nei)
+    for c, d in queries:
+        if (dists[c] + dists[d]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 7
+
+def solve():
+    N, Q = map(int, input().split())
+    path = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        path[a-1].append(b-1)
+        path[b-1].append(a-1)
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    dist = [0]*N
+    q = [0]
+    while q:
+        v = q.pop()
+        for nv in path[v]:
+            if dist[nv] == 0:
+                dist[nv] = dist[v] + 1
+                q.append(nv)
+    for c, d in query:
+        if (dist[c-1] + dist[d-1]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n,q = map(int,input().split())
+    a = [0] * (n-1)
+    b = [0] * (n-1)
+    for i in range(n-1):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * q
+    d = [0] * q
+    for i in range(q):
+        c[i],d[i] = map(int,input().split())
+
+    # 木の直径を求める
+    # 木の直径は二点間の最短距離の最大値
+    # 木の直径の端点を求める
+    # 木の直径の端点からの最短距離を求める
+    # 木の直径の端点からの最短距離の偶奇を求める
+    # 木の直径の端点間の最短距離の偶奇を求める
+
+    # 木の直径の端点を求める
+    # 木の直径の端点からの最短距離を求める
+    # 木の直径の端点からの最短距離の偶奇を求める
+    # 木の直径の端点間の最短距離の偶奇を求める
+
+    # 木の直径の端点を求める
+    # 木の直径の端点からの最短距離を求める
+    # 木の直径の端点からの最短距離の偶奇を求める
+    # 木の直径の端点間の最短距離の偶奇を求める
+
+    # 木の直径の端点を求める
+    # 木の直径の端点からの最短距離を求める
+    # 木の直径の端点からの最短距離の偶
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    N, Q = map(int, sys.stdin.readline().split())
+    edge = [[] for _ in range(N)]
+    for i in range(N-1):
+        a, b = map(int, sys.stdin.readline().split())
+        edge[a-1].append(b-1)
+        edge[b-1].append(a-1)
+    depth = [-1] * N
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in edge[v]:
+            if depth[u] == -1:
+                depth[u] = depth[v] + 1
+                stack.append(u)
+    for _ in range(Q):
+        c, d = map(int, sys.stdin.readline().split())
+        c, d = c-1, d-1
+        if depth[c] % 2 == depth[d] % 2:
+            print("Town")
+        else:
+            print("Road")
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    # 隣接リストを作る
+    adj_list = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        adj_list[a-1].append(b-1)
+        adj_list[b-1].append(a-1)
+    # 各頂点の深さを記録する
+    depth = [-1]*N
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for w in adj_list[v]:
+            if depth[w] != -1:
+                continue
+            depth[w] = depth[v] + 1
+            stack.append(w)
+    # 各クエリについて、深さの差が偶数ならTown、奇数ならRoad
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        if abs(depth[c-1] - depth[d-1])%2 == 0:
+            print('Town')
+        else:
+            print('Road')

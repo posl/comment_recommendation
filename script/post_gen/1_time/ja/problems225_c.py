@@ -1,58 +1,161 @@
-#問題文
-#10^{100} 行 7 列の行列 A があり、任意の整数対 (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7) についてその (i,j) 成分は (i-1) × 7 + j です。
-#N 行 M 列の行列 B が与えられるので、B が A から一部の矩形領域を（向きを変えずに）切り出したものであるかを判定してください。
-#
-#制約
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#B_{1,1} B_{1,2} ... B_{1,M}
-#B_{2,1} B_{2,2} ... B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ... B_{N,M}
-#
-#出力
-#B が A から一部の矩形領域を切り出したものであれば Yes と、そうでないなら No と出力せよ。
-#
-#入力例 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#出力例 1
-#Yes
-#与えられる B は、A の左上 2 行 3 列を切り出したものとなっています。
-#
-#入力例 2
-#2 1
-#1
-#2
-#
-#出力例 2
-#No
-#与えられる B を 90 度回転させると A の左上 1 行 2 列と一致しますが、問題文中に「向きを変えずに」とある通り回転による一致は認められていないため、答えは No となります。
-#
-#入力例 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i*M)+j+1:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for i in range(N)]
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i)*7 + j + 1:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[(i-1)*7+j for j in range(1, 8)] for i in range(1, 10**100+1)]
+    for i in range(10**100-N+1):
+        for j in range(7-M+1):
+            if A[i][j:j+M] == B[0]:
+                for k in range(1, N):
+                    if A[i+k][j:j+M] != B[k]:
+                        break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[0] * M for _ in range(N)]
+    for i in range(N):
+        for j in range(M):
+            A[i][j] = (i-1) * 7 + j
+    if A == B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    b = [list(map(int, input().split())) for _ in range(n)]
+    a = [[(i - 1) * 7 + j for j in range(1, 8)] for i in range(1, 10 ** 100)]
+    for i in range(n):
+        for j in range(m):
+            if b[i][j] != a[i][j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    if N == 1 and M == 1:
+        print("Yes")
+        return
+    if N == 1:
+        for i in range(1, M):
+            if B[0][i] - B[0][i - 1] != 1:
+                print("No")
+                return
+        print("Yes")
+        return
+    if M == 1:
+        for i in range(1, N):
+            if B[i][0] - B[i - 1][0] != 7:
+                print("No")
+                return
+        print("Yes")
+        return
+    for i in range(1, N):
+        for j in range(1, M):
+            if B[i][j] - B[i - 1][j] != 7 or B[i][j] - B[i][j - 1] != 1:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int,input().split())))
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i-1)*7+j+1:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    if N == 1:
+        if B[0][0] == 1:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if B[0][0] == 1 and B[1][0] == 8:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+
+    #compute
+    A = [[(i-1)*M+j for j in range(1, M+1)] for i in range(1, N*M+1)]
+    for i in range(N):
+        if B[i] != A[i]:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    print('Yes' if any((all(B[i][j] == 7 * (i + a) + j + b for a in range(N) for b in range(M))) for i in range(10 ** 100 - N) for j in range(7 - M)) else 'No')

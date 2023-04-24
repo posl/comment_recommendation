@@ -1,40 +1,48 @@
-#問題文
-#非負整数 A,B,C,D,E,F があり、A× B× C≧ D× E× F をみたしています。
-#(A× B× C)-(D× E× F) の値を 998244353 で割った余りを求めてください。
-#
-#制約
-#0≦ A,B,C,D,E,F≦ 10^{18}
-#A× B× C≧ D× E× F
-#A,B,C,D,E,F は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D E F
-#
-#出力
-#(A× B× C)-(D× E× F) を 998244353 で割った余りを整数で出力せよ。  
-#
-#入力例 1
-#2 3 5 1 2 4
-#
-#出力例 1
-#22
-#A× B× C=2× 3× 5=30, D× E× F=1× 2× 4=8 より、
-#(A× B× C)-(D× E× F)=22 であり、これを 998244353 で割った余りである 22 を出力します。
-#
-#入力例 2
-#1 1 1000000000 0 0 0
-#
-#出力例 2
-#1755647
-#A× B× C=1000000000, D× E× F=0 より、
-#(A× B× C)-(D× E× F)=1000000000 であり、これを 998244353 で割った余りである 1755647 を出力します。
-#
-#入力例 3
-#1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000
-#
-#出力例 3
-#0
-#(A× B× C)-(D× E× F)=0 であり、これを 998244353 で割った余りである 0 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B,C,D,E,F = map(int,input().split())
+    print((A*B*C-D*E*F)%998244353)
+
+=======
+Suggestion 2
+
+def main():
+    # 入力
+    A, B, C, D, E, F = map(int, input().split())
+
+    # 出力
+    print((A*B*C-D*E*F) % 998244353)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d,e,f=map(int,input().split())
+    print((a*b*c-d*e*f)%998244353)
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C,D,E,F = map(int, input().split())
+    print(((A*B*C)-(D*E*F))%998244353)
+
+=======
+Suggestion 5
+
+def main():
+    # A,B,C,D,E,F = map(int,input().split())
+    # print((A*B*C-D*E*F)%998244353)
+    # return
+
+    # A,B,C,D,E,F = map(int,input().split())
+    # print((A*B*C-D*E*F)%998244353)
+    # return
+
+    A,B,C,D,E,F = map(int,input().split())
+    print((A*B*C-D*E*F)%998244353)
+    return

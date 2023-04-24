@@ -1,58 +1,145 @@
-#Problem Statement
-#Our world is one-dimensional, and ruled by two empires called Empire A and Empire B.
-#The capital of Empire A is located at coordinate X, and that of Empire B is located at coordinate Y.
-#One day, Empire A becomes inclined to put the cities at coordinates x_1, x_2, ..., x_N under its control, and Empire B becomes inclined to put the cities at coordinates y_1, y_2, ..., y_M under its control.
-#If there exists an integer Z that satisfies all of the following three conditions, they will come to an agreement, but otherwise war will break out.
-#X < Z ≦ Y
-#x_1, x_2, ..., x_N < Z
-#y_1, y_2, ..., y_M ≧ Z
-#Determine if war will break out.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 100
-#-100 ≦ X < Y ≦ 100
-#-100 ≦ x_i, y_i ≦ 100
-#x_1, x_2, ..., x_N ≠ X
-#x_i are all different.
-#y_1, y_2, ..., y_M ≠ Y
-#y_i are all different.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M X Y
-#x_1 x_2 ... x_N
-#y_1 y_2 ... y_M
-#
-#Output
-#If war will break out, print War; otherwise, print No War.
-#
-#Sample Input 1
-#3 2 10 20
-#8 15 13
-#16 22
-#
-#Sample Output 1
-#No War
-#The choice Z = 16 satisfies all of the three conditions as follows, thus they will come to an agreement.
-#X = 10 < 16 ≦ 20 = Y
-#8, 15, 13 < 16
-#16, 22 ≧ 16
-#
-#Sample Input 2
-#4 2 -48 -1
-#-20 -35 -91 -23
-#-22 66
-#
-#Sample Output 2
-#War
-#
-#Sample Input 3
-#5 3 6 8
-#-10 3 1 5 -100
-#100 6 14
-#
-#Sample Output 3
-#War
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, X, Y = [int(x) for x in input().split()]
+    x = [int(x) for x in input().split()]
+    y = [int(x) for x in input().split()]
+    x.append(X)
+    y.append(Y)
+    x.sort()
+    y.sort()
+    if x[-1] < y[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 2
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x_max = max(x)
+    y_min = min(y)
+    if x_max < y_min and x_max < Y and X < y_min:
+        print("No War")
+    else:
+        print("War")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    if max(x) < min(y) and max(x) < Y and X < min(y):
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 4
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+
+    x_max = max(x)
+    y_min = min(y)
+
+    if x_max < y_min:
+        if X < y_min <= Y:
+            print("No War")
+        else:
+            print("War")
+    else:
+        print("War")
+
+=======
+Suggestion 5
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_max = max(x_list)
+    y_min = min(y_list)
+    if x_max < y_min and x < y_min and x_max < y:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 6
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x.sort()
+    y.sort()
+    print("War" if x[-1] >= y[0] or x[-1] >= Y or y[0] <= X else "No War")
+
+=======
+Suggestion 7
+
+def main():
+    n,m,x,y = map(int,input().split())
+    xlist = list(map(int,input().split()))
+    ylist = list(map(int,input().split()))
+    xlist.append(x)
+    ylist.append(y)
+    xlist.sort()
+    ylist.sort()
+    if xlist[-1] < ylist[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    NMXY = input().split()
+    x = input().split()
+    y = input().split()
+    N = int(NMXY[0])
+    M = int(NMXY[1])
+    X = int(NMXY[2])
+    Y = int(NMXY[3])
+    #compute
+    x.sort()
+    y.sort()
+    x = list(map(int, x))
+    y = list(map(int, y))
+    if x[N-1] < y[0] and X < y[0] and x[N-1] < Y:
+        print('No War')
+    else:
+        print('War')
+    #output
+
+=======
+Suggestion 9
+
+def main():
+    # read input
+    n, m, x, y = map(int, input().split())
+    xa = list(map(int, input().split()))
+    ya = list(map(int, input().split()))
+    
+    # determine war or no war
+    if max(xa) >= min(ya) or max(xa) >= y or min(ya) <= x:
+        print("War")
+    else:
+        print("No War")
+
+main()

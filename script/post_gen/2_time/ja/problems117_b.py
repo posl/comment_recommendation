@@ -1,42 +1,96 @@
-#問題文
-#2 次元平面上に辺の長さがそれぞれ L_1, L_2, ..., L_N の N 角形(凸多角形でなくてもよい)が描けるかを判定してください。
-#ここで、次の定理を利用しても構いません。
-#定理 : 一番長い辺が他の N-1 辺の長さの合計よりも真に短い場合に限り、条件を満たす N 角形が描ける。
-#
-#制約
-#入力は全て整数である。
-#3 ≦ N ≦ 10
-#1 ≦ L_i ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 L_2 ... L_N
-#
-#出力
-#条件を満たす N 角形が描けるなら Yes、そうでないなら No を出力せよ。
-#
-#入力例 1
-#4
-#3 8 5 1
-#
-#出力例 1
-#Yes
-#8 < 9 = 3 + 5 + 1 なので、定理より 2 次元平面上に条件を満たす N 角形が描けます。
-#
-#入力例 2
-#4
-#3 8 4 1
-#
-#出力例 2
-#No
-#8 ≧ 8 = 3 + 4 + 1 なので、定理より 2 次元平面上に条件を満たす N 角形は描けません。
-#
-#入力例 3
-#10
-#1 8 10 5 8 12 34 100 11 3
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort(reverse=True)
+    if L[0] < sum(L[1:]):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse=True)
+    if l[0] < sum(l[1:]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    L = list(map(int,input().split()))
+    L.sort(reverse=True)
+    if L[0] < sum(L[1:]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    if L[-1] < sum(L[:-1]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse = True)
+    if l[0] < sum(l[1:]):
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort(reverse=True)
+    print("Yes" if L[0] < sum(L[1:]) else "No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    if L[N-1] < sum(L[:N-1]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse = True) # 降順にソート
+    if l[0] < sum(l[1:]):
+        print("Yes")
+    else:
+        print("No")

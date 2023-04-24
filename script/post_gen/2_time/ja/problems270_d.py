@@ -1,59 +1,145 @@
-#問題文
-#数列 (A_1,...,A_K) を使って、高橋君と青木君が石取りゲームをします。
-#最初、山には N 個の石があります。高橋君から順に、二人が交互に次の操作を行います。
-#現在山にある石の個数以下であるような A_i を 1 つ選ぶ。山から A_i 個の石を取り除く。
-#山から石がなくなったとき、ゲームは終了します。
-#二人がともに、ゲーム終了までに自分が取り除いた石の個数を最大化しようとするとき、高橋君は何個の石を取り除くことができますか？
-#
-#制約
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ... < A_K ≦ N
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_1 A_2 ... A_K
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#10 2
-#1 4
-#
-#出力例 1
-#5
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#この例では高橋君は 5 個の石を取り除くことができます。高橋君が 6 個以上の石を取り除くことはできないためこれが最大です。  
-#高橋君は 5 個の石を取り除くことができるゲームの進行の例には、他にも次のようなものがあります。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#
-#入力例 2
-#11 4
-#1 2 3 6
-#
-#出力例 2
-#8
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 6 個の石を取り除く。
-#青木君が山から 3 個の石を取り除く。
-#高橋君が山から 2 個の石を取り除く。
-#この例では高橋君は 8 個の石を取り除くことができます。高橋君が 9 個以上の石を取り除くことはできないためこれが最大です。  
-#
-#入力例 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#出力例 3
-#5136
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                if dp[i - A[j]] == 0:
+                    dp[i] = 1
+                    break
+    if dp[N] == 1:
+        print('Takahashi')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                dp[i] = max(dp[i], dp[i - A[j]] + 1)
+    print(dp[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N+1)
+    for i in range(1, N+1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                dp[i] |= not dp[i-A[j]]
+    print('Takahashi' if dp[N] else 'Aoki')
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    dp = [0] * (N+1)
+    for i in range(1, N+1):
+        for a in A:
+            if i - a >= 0 and dp[i-a] == 0:
+                dp[i] = 1
+                break
+
+    print("Takahashi" if dp[N] else "Aoki")
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N+1)
+    for i in range(N):
+        if dp[i] == 0:
+            for a in A:
+                if i+a <= N:
+                    dp[i+a] = 1
+    if dp[N] == 1:
+        print("Second")
+    else:
+        print("First")
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    for i in range(2, N + 1):
+        if i in A:
+            dp[i] = 0
+            continue
+        for a in A:
+            if i - a >= 0:
+                if dp[i - a] == 0:
+                    dp[i] = 1
+                    break
+    print(dp[N])
+
+=======
+Suggestion 7
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    dp = [False] * (N+1)
+    dp[0] = True
+    for i in range(N+1):
+        if dp[i] == True:
+            for j in range(K):
+                if i + A[j] <= N:
+                    dp[i + A[j]] = True
+    print(N - dp[::-1].index(True))
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    N, K = map(int, readline().split())
+    A = list(map(int, readline().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] < 0:
+                break
+            if dp[i - A[j]] == 0:
+                dp[i] = 1
+                break
+    print(dp[N] * "Takahashi" or "Aoki")
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.reverse()
+    for a in A:
+        if N % a == 0:
+            print(N - a)
+            break
+        else:
+            N -= N % a

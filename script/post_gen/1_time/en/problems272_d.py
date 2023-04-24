@@ -1,47 +1,220 @@
-#Problem Statement
-#There is a grid with N × N squares.  We denote by (i, j) the square at the i-th row from the top and j-th column from the left.
-#Initially, a piece is placed on (1, 1).  You may repeat the following operation any number of times:
-#Let (i, j) be the square the piece is currently on.  Move the piece to the square whose distance from (i, j) is exactly (M)^(1/2).
-#Here, we define the distance between square (i, j) and square (k, l) as ((i-k)^2+(j-l)^2)^(1/2).
-#For all squares (i, j), determine if the piece can reach (i, j).  If it can, find the minimum number of operations required to do so.
-#
-#Constraints
-#1 ≦ N ≦ 400
-#1 ≦ M ≦ 10^6
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N M
-#
-#Output
-#Print N lines.  The i-th line should contain N integers.  If the piece can reach (i, j), the j-th integer in the i-th line should be the minimum number of operations required to do so; otherwise, it should be -1.
-#
-#Sample Input 1
-#3 1
-#
-#Sample Output 1
-#0 1 2
-#1 2 3
-#2 3 4
-#You can move the piece to four adjacent squares.
-#For example, we can move the piece to (2,2) with two operations as follows.
-#The piece is now on (1,1). The distance between (1,1) and (1,2) is exactly (1)^(1/2), so move the piece to (1,2).
-#The piece is now on (1,2). The distance between (1,2) and (2,2) is exactly (1)^(1/2), so move the piece to (2,2).
-#
-#Sample Input 2
-#10 5
-#
-#Sample Output 2
-#0 3 2 3 2 3 4 5 4 5
-#3 4 1 2 3 4 3 4 5 6
-#2 1 4 3 2 3 4 5 4 5
-#3 2 3 2 3 4 3 4 5 6
-#2 3 2 3 4 3 4 5 4 5
-#3 4 3 4 3 4 5 4 5 6
-#4 3 4 3 4 5 4 5 6 5
-#5 4 5 4 5 4 5 6 5 6
-#4 5 4 5 4 5 6 5 6 7
-#5 6 5 6 5 6 5 6 7 6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 2
+
+def bfs(sx, sy):
+    dist = [[-1] * N for _ in range(N)]
+    dist[sx][sy] = 0
+    que = deque([(sx, sy)])
+    while que:
+        x, y = que.popleft()
+        for dx, dy in dxy:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < N and 0 <= ny < N and dist[nx][ny] == -1:
+                dist[nx][ny] = dist[x][y] + 1
+                que.append((nx, ny))
+    return dist
+
+N, M = map(int, input().split())
+dxy = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+dist = bfs(0, 0)
+for i in range(N):
+    for j in range(N):
+        if dist[i][j] == -1:
+            print(-1, end=" ")
+        else:
+            print(dist[i][j] // 2 + 1, end=" ")
+    print()
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, raw_input().split())
+    dist = [[0 for x in range(n)] for y in range(n)]
+    for i in range(n):
+        for j in range(n):
+            dist[i][j] = (i - 0) ** 2 + (j - 0) ** 2
+    for i in range(n):
+        for j in range(n):
+            if dist[i][j] == m:
+                print 1
+            elif dist[i][j] < m:
+                print 2
+            else:
+                print -1
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int, input().split())
+    if m == 1:
+        for i in range(n):
+            for j in range(n):
+                print(0 if i == j else 1)
+    else:
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    print(0)
+                elif j == 0:
+                    print(i+1)
+                elif i == 0:
+                    print(j+1)
+                else:
+                    print(min(i+1,j+1))
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    d = list(map(int,input().split()))
+    e = list(map(int,input().split()))
+    f = list(map(int,input().split()))
+    g = list(map(int,input().split()))
+    h = list(map(int,input().split()))
+    i = list(map(int,input().split()))
+    j = list(map(int,input().split()))
+    k = list(map(int,input().split()))
+    l = list(map(int,input().split()))
+    m = list(map(int,input().split()))
+    n = list(map(int,input().split()))
+    o = list(map(int,input().split()))
+    p = list(map(int,input().split()))
+    q = list(map(int,input().split()))
+    r = list(map(int,input().split()))
+    s = list(map(int,input().split()))
+    t = list(map(int,input().split()))
+    u = list(map(int,input().split()))
+    v = list(map(int,input().split()))
+    w = list(map(int,input().split()))
+    x = list(map(int,input().split()))
+    y = list(map(int,input().split()))
+    z = list(map(int,input().split()))
+    aa = list(map(int,input().split()))
+    ab = list(map(int,input().split()))
+    ac = list(map(int,input().split()))
+    ad = list(map(int,input().split()))
+    ae = list(map(int,input().split()))
+    af = list(map(int,input().split()))
+    ag = list(map(int,input().split()))
+    ah = list(map(int,input().split()))
+    ai = list(map(int,input().split()))
+    aj = list(map(int,input().split()))
+    ak = list(map(int,input().split()))
+    al = list(map(int,input().split()))
+    am = list(map(int,input().split()))
+    an = list(map(int,input().split()))
+    ao = list(map(int,input().split()))
+    ap = list(map(int,input().split()))
+    aq = list(map(int,input().split()))
+    ar = list(map(int,input().split()))
+    as_ = list(map(int,input().split()))
+    at = list(map(int,input().split()))
+    au = list(map(int,input().split()))
+    av = list(map(int,input().split()))
+    aw = list(map(int
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    if n == 1:
+        print(0)
+        return
+    elif m == 1:
+        for i in range(n):
+            print(i)
+        return
+    else:
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    print(0,end="")
+                elif i == 0:
+                    print(j,end="")
+                elif j == 0:
+                    print(i,end="")
+                else:
+                    print(i+j,end="")
+            print()
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    if n < 2 or n > 400 or m < 1 or m > 10**6:
+        print("Wrong Input")
+        return
+    for i in range(n):
+        for j in range(n):
+            if i == 0 and j == 0:
+                print(0,end=' ')
+            else:
+                print(1,end=' ')
+        print()
+
+=======
+Suggestion 8
+
+def bfs(graph, start, end, nodes):
+    queue = []
+    queue.append(start)
+    distance = {}
+    distance[start] = 0
+    while len(queue) > 0:
+        current = queue.pop(0)
+        for neighbor in graph[current]:
+            if neighbor not in distance:
+                distance[neighbor] = distance[current] + 1
+                queue.append(neighbor)
+    if end in distance:
+        return distance[end]
+    else:
+        return -1
+
+=======
+Suggestion 9
+
+def find_min_dist(x,y,grid):
+    if grid[x][y] != -1:
+        return grid[x][y]
+    else:
+        min_dist = 1000000
+        for i in range(N):
+            for j in range(N):
+                if grid[i][j] != -1:
+                    dist = ((x-i)**2 + (y-j)**2)**0.5
+                    if dist.is_integer():
+                        min_dist = min(min_dist, grid[i][j] + dist)
+        grid[x][y] = min_dist
+        return min_dist
+
+N,M = map(int, input().split())
+grid = [[-1 for _ in range(N)] for _ in range(N)]
+grid[0][0] = 0
+for i in range(N):
+    for j in range(N):
+        find_min_dist(i,j,grid)
+for row in grid:
+    print(" ".join(map(str,row)))
+
+=======
+Suggestion 10
+
+def get_input():
+    return map(int, input().strip().split(' '))

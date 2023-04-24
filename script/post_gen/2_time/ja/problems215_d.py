@@ -1,32 +1,143 @@
-#問題文
-#長さ N の正整数列 A=(A_1,A_2,...,A_N) が与えられるので、以下の条件を満たす 1 以上 M 以下の整数 k を全て求めてください。
-#全ての 1 ≦ i ≦ N を満たす整数 i について、 gcd(A_i,k)=1 である。
-#
-#制約
-#入力は全て整数
-#1 ≦ N,M ≦ 10^5
-#1 ≦ A_i ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#1 行目に、出力する整数の数 x を出力せよ。
-#続く x 行に、答えとなる整数を小さい方から順に 1 行に 1 つずつ出力せよ。
-#
-#入力例 1
-#3 12
-#6 1 5
-#
-#出力例 1
-#3
-#1
-#7
-#11
-#例えば、 7 は gcd(6,7)=1,gcd(1,7)=1,gcd(5,7)=1 を満たすので答えとなる整数の集合に含まれます。
-#一方、 9 は gcd(6,9)=3 となるため、答えとなる整数の集合に含まれません。
-#条件を満たす 1 以上 12 以下の整数は 1,7,11 の 3 つです。これらを小さい方から出力することに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a
+
+n,m = map(int,input().split())
+a = list(map(int,input().split()))
+
+l = [0]*(m+1)
+for i in range(n):
+    for j in range(1,m+1):
+        if gcd(a[i],j) == 1:
+            l[j] += 1
+
+ans = []
+for i in range(1,m+1):
+    if l[i] == n:
+        ans.append(i)
+
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N,M = map(int,input().split())
+A = list(map(int,input().split()))
+A.sort()
+A = list(set(A))
+B = [0]*(M+1)
+for i in range(len(A)):
+    if A[i] == 1:
+        continue
+    if B[A[i]] == 1:
+        continue
+    else:
+        B[A[i]] = 1
+        for j in range(2,M//A[i]+1):
+            B[A[i]*j] = 1
+ans = []
+for i in range(1,M+1):
+    if B[i] == 0:
+        ans.append(i)
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a
+
+N,M = map(int,input().split())
+A = list(map(int,input().split()))
+
+L = [True]*(M+1)
+for i in A:
+    if L[i]:
+        for j in range(i,M+1,i):
+            L[j] = False
+
+ans = []
+for i in range(1,M+1):
+    if L[i]:
+        ans.append(i)
+
+print(len(ans))
+print(*ans,sep="\n")

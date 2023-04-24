@@ -1,64 +1,241 @@
-#Problem Statement
-#Snuke Inc. offers various kinds of services.
-#A payment plan called Snuke Prime is available.
-#In this plan, by paying C yen (the currency of Japan) per day, you can use all services offered by the company without additional fees.
-#You can start your subscription to this plan at the beginning of any day and cancel your subscription at the end of any day.
-#Takahashi is going to use N of the services offered by the company.
-#He will use the i-th of those services from the beginning of the a_i-th day until the end of the b_i-th day, where today is the first day.
-#Without a subscription to Snuke Prime, he has to pay c_i yen per day to use the i-th service.  
-#Find the minimum total amount of money Takahashi has to pay to use the services.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C ≦ 10^9
-#1 ≦ a_i ≦ b_i ≦ 10^9
-#1 ≦ c_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N C
-#a_1 b_1 c_1
-#.
-#.
-#.
-#a_N b_N c_N
-#
-#Output
-#Print the minimum total amount of money Takahashi has to pay.
-#
-#Sample Input 1
-#2 6
-#1 2 4
-#2 2 4
-#
-#Sample Output 1
-#10
-#He will use the 1-st service on the 1-st and 2-nd days, and the 2-nd service on the 2-nd day.
-#If he subscribes to Snuke Prime only on the 2-nd day, he will pay 4 yen on the 1-st day and 6 yen on the 2-nd day, for a total of 10 yen.
-#It is impossible to make the total payment less than 10 yen, so we should print 10.
-#
-#Sample Input 2
-#5 1000000000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#Sample Output 2
-#163089627821228
-#It is optimal to do without Snuke Prime.
-#
-#Sample Input 3
-#5 100000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#Sample Output 3
-#88206004785464
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, C = map(int, input().split())
+    events = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        events.append((a, c))
+        events.append((b + 1, -c))
+    events.sort()
+
+    ans = 0
+    current = 0
+    for i in range(len(events) - 1):
+        current += events[i][1]
+        ans += min(current, C) * (events[i + 1][0] - events[i][0])
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, C = map(int, input().split())
+    events = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        events.append((a, c))
+        events.append((b+1, -c))
+    events.sort()
+    total = 0
+    prev = 0
+    ans = 0
+    for day, cost in events:
+        ans += min(C, total) * (day - prev)
+        total += cost
+        prev = day
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, C = map(int, input().split())
+    events = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        events.append((a, c))
+        events.append((b + 1, -c))
+    events.sort()
+
+    ans = 0
+    cur = 0
+    prev = -1
+    for day, cost in events:
+        if prev >= 0:
+            ans += min(C, cur) * (day - prev)
+        cur += cost
+        prev = day
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, C = map(int, input().split())
+    events = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        events.append((a, c))
+        events.append((b+1, -c))
+    events.sort()
+    ans = 0
+    d = 0
+    t = 0
+    for event in events:
+        if t > 0:
+            ans += min(C, t) * (event[0] - d)
+        d = event[0]
+        t += event[1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, C = map(int, input().split())
+    services = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        services.append((a, c))
+        services.append((b + 1, -c))
+    services.sort()
+    ans = 0
+    sum = 0
+    last = 0
+    for i in range(len(services)):
+        if i == 0:
+            last = services[i][0]
+        if last != services[i][0]:
+            ans += min(sum, C) * (services[i][0] - last)
+            last = services[i][0]
+        sum += services[i][1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, C = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        a = AB[i][0]
+        b = AB[i][1]
+        c = AB[i][2]
+        ans += min(C, c) * (b - a + 1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, C = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        ans += AB[i][2]
+    ans *= C
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if AB[i][1] >= AB[j][0]:
+                ans = min(ans, (AB[j][1]-AB[j][0]+1)*C*AB[j][2]+(AB[i][1]-AB[j][0]+1)*C*AB[i][2])
+            else:
+                ans = min(ans, (AB[j][1]-AB[j][0]+1)*C*AB[j][2]+(AB[i][1]-AB[i][0]+1)*C*AB[i][2])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N, C = map(int, input().split())
+    ABC = [[int(i) for i in input().split()] for _ in range(N)]
+    ABC.sort(key=lambda x: x[0])
+
+    #compute
+    ans = 0
+    for i in range(N):
+        ans += ABC[i][2]
+        ABC[i][1] += 1
+    ABC.sort(key=lambda x: x[1])
+    for i in range(N):
+        ABC[i][0] += 1
+    ABC.sort(key=lambda x: x[0])
+    #print(ABC)
+
+    for i in range(N):
+        if i == 0:
+            pass
+        elif ABC[i][0] == ABC[i-1][0]:
+            ABC[i][2] += ABC[i-1][2]
+    #print(ABC)
+
+    for i in range(N):
+        if i == 0:
+            pass
+        elif ABC[i][1] == ABC[i-1][1]:
+            ABC[i][2] -= ABC[i-1][2]
+    #print(ABC)
+
+    for i in range(N):
+        if ABC[i][2] > C:
+            ans += C*(ABC[i][1]-ABC[i][0])
+        else:
+            ans += ABC[i][2]*(ABC[i][1]-ABC[i][0])
+    #print(ans)
+
+    #output
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    from bisect import bisect_left
+    from collections import defaultdict
+    input = sys.stdin.readline
+    N, C = map(int, input().split())
+    service = [list(map(int, input().split())) for _ in range(N)]
+    service.sort()
+    #print(service)
+    #print(N, C)
+    #print(service)
+    #print(service)
+    s = defaultdict(int)
+    for i in range(N):
+        s[service[i][0]] += service[i][2]
+        s[service[i][1] + 1] -= service[i][2]
+    #print(s)
+    d = [0]
+    for i in range(1, 10 ** 9 + 1):
+        d.append(d[-1] + s[i])
+    #print(d)
+    ans = 10 ** 20
+    for i in range(1, 10 ** 9 + 1):
+        ans = min(ans, d[bisect_left(d, C)])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N, C = map(int, input().split())
+    ABC = [tuple(map(int, input().split())) for _ in range(N)]
+    #初期化
+    ABC.sort()
+    #print(ABC)
+    ans = 0
+    for i in range(N):
+        #print(i, ABC[i])
+        ans += ABC[i][2]
+        #print(ans)
+        for j in range(i+1, N):
+            #print(j, ABC[j])
+            if ABC[i][1] >= ABC[j][0]:
+                ans += min(ABC[j][2], C*(ABC[j][0]-ABC[i][1]))
+            else:
+                break
+            #print(ans)
+    print(ans)
+
+main()

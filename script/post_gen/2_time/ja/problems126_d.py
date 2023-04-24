@@ -1,53 +1,259 @@
-#問題文
-#N 頂点の木があります。
-#この木の i 番目の辺は頂点 u_i と頂点 v_i を結んでおり、その長さは w_i です。
-#あなたは以下の条件を満たすように、この木の頂点を白と黒の 2 色で塗り分けたいです (すべての頂点を同じ色で塗っても構いません)。
-#同じ色に塗られた任意の 2 頂点について、その距離が偶数である。
-#条件を満たす塗り分け方を 1 つ見つけて出力してください。この問題の制約下では、そのような塗り分け方が必ず 1 つは存在することが証明できます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ u_i < v_i ≦ N
-#1 ≦ w_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#u_1 v_1 w_1
-#u_2 v_2 w_2
-#.
-#.
-#.
-#u_{N - 1} v_{N - 1} w_{N - 1}
-#
-#出力
-#題意の条件を満たすような頂点の塗り分け方を N 行に分けて出力せよ。
-#i 行目には、頂点 i を白く塗る場合は 0 を、黒く塗る場合は 1 を出力せよ。
-#条件を満たす塗り分け方が複数存在する場合、どれを出力してもよい。
-#
-#入力例 1
-#3
-#1 2 2
-#2 3 1
-#
-#出力例 1
-#0
-#0
-#1
-#
-#入力例 2
-#5
-#2 5 2
-#2 3 10
-#1 3 8
-#3 4 2
-#
-#出力例 2
-#1
-#0
-#1
-#0
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        G[u - 1].append([v - 1, w])
+        G[v - 1].append([u - 1, w])
+
+    ans = [-1] * N
+    ans[0] = 0
+    que = [0]
+    while que:
+        now = que.pop()
+        for nxt, w in G[now]:
+            if ans[nxt] != -1:
+                continue
+            ans[nxt] = ans[now] if w % 2 == 0 else 1 - ans[now]
+            que.append(nxt)
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        G[u - 1].append((v - 1, w))
+        G[v - 1].append((u - 1, w))
+
+    # 深さ優先探索
+    # 訪問済みにする
+    # 隣接リストを辿っていく
+    # 隣接リストが偶数か奇数かで色を変える
+
+    # 隣接リストが偶数か奇数かで色を変える
+    # 1: 白
+    # 0: 黒
+    color = [None] * N
+    color[0] = 1
+
+    # 訪問済みにする
+    visited = [False] * N
+    visited[0] = True
+
+    # 深さ優先探索
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for nv, w in G[v]:
+            if visited[nv]:
+                continue
+            visited[nv] = True
+            if w % 2 == 0:
+                color[nv] = color[v]
+            else:
+                color[nv] = 1 - color[v]
+            stack.append(nv)
+
+    for c in color:
+        print(c)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        G[u - 1].append((v - 1, w))
+        G[v - 1].append((u - 1, w))
+
+    ans = [0] * N
+    stack = [(0, 0)]
+    while stack:
+        v, p = stack.pop()
+        ans[v] = ans[p] + G[v][p][1]
+        for i, (nv, w) in enumerate(G[v]):
+            if nv == p:
+                continue
+            stack.append((nv, v))
+
+    for i in range(N):
+        print(ans[i] % 2)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        u -= 1
+        v -= 1
+        G[u].append((v, w))
+        G[v].append((u, w))
+
+    ans = [0] * N
+    stack = [(0, 0)]
+    while stack:
+        v, d = stack.pop()
+        ans[v] = d % 2
+        for u, w in G[v]:
+            if ans[u] == -1:
+                stack.append((u, d + w))
+
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N-1):
+        u, v, w = map(int, input().split())
+        G[u-1].append((v-1, w))
+        G[v-1].append((u-1, w))
+    dp = [-1] * N
+    dp[0] = 0
+    stack = [0]
+    while stack:
+        i = stack.pop()
+        for j, w in G[i]:
+            if dp[j] == -1:
+                dp[j] = dp[i] ^ (w % 2)
+                stack.append(j)
+    print(*dp, sep='
+
+')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N-1):
+        u, v, w = map(int, input().split())
+        G[u-1].append((v-1, w))
+        G[v-1].append((u-1, w))
+    #print(G)
+
+    color = [-1] * N
+    color[0] = 0
+    stack = [(0, 0)]
+    while stack:
+        v, c = stack.pop()
+        for nv, w in G[v]:
+            if color[nv] == -1:
+                color[nv] = (c + w) % 2
+                stack.append((nv, color[nv]))
+
+    for c in color:
+        print(c)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    tree = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v, w = map(int, input().split())
+        tree[u - 1].append((v - 1, w))
+        tree[v - 1].append((u - 1, w))
+
+    color = [-1] * n
+    color[0] = 0
+    que = [(0, 0)]
+    while que:
+        now, c = que.pop()
+        for nxt, w in tree[now]:
+            if color[nxt] == -1:
+                color[nxt] = c ^ (w % 2)
+                que.append((nxt, color[nxt]))
+
+    print(*color, sep='
+
+')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    edge = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v, w = map(int, input().split())
+        edge[u - 1].append((v - 1, w))
+        edge[v - 1].append((u - 1, w))
+
+    color = [-1] * n
+    color[0] = 0
+    stack = [0]
+    while stack:
+        now = stack.pop()
+        for to, w in edge[now]:
+            if color[to] != -1:
+                continue
+            if w % 2 == 0:
+                color[to] = color[now]
+            else:
+                color[to] = 1 - color[now]
+            stack.append(to)
+
+    for c in color:
+        print(c)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    V = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        V[u - 1].append((v - 1, w))
+        V[v - 1].append((u - 1, w))
+    #print(V)
+    color = [-1] * N
+    color[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u, w in V[v]:
+            if color[u] == -1:
+                color[u] = (color[v] + w) % 2
+                stack.append(u)
+    for c in color:
+        print(c)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    #N
+    N = int(input())
+    #u_1 v_1 w_1
+    #u_2 v_2 w_2
+    #.
+    #.
+    #.
+    #u_{N - 1} v_{N - 1} w_{N - 1}

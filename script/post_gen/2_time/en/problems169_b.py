@@ -1,41 +1,148 @@
-#Problem Statement
-#Given N integers A_1, ..., A_N, compute A_1 × ... × A_N.
-#However, if the result exceeds 10^{18}, print -1 instead.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 10^{18}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print the value A_1 × ... × A_N as an integer, or -1 if the value exceeds 10^{18}.
-#
-#Sample Input 1
-#2
-#1000000000 1000000000
-#
-#Sample Output 1
-#1000000000000000000
-#We have 1000000000 × 1000000000 = 1000000000000000000.
-#
-#Sample Input 2
-#3
-#101 9901 999999000001
-#
-#Sample Output 2
-#-1
-#We have 101 × 9901 × 999999000001 = 1000000000000000001, which exceeds 10^{18}, so we should print -1 instead.
-#
-#Sample Input 3
-#31
-#4 1 5 9 2 6 5 3 5 8 9 7 9 3 2 3 8 4 6 2 6 4 3 3 8 3 2 7 9 5 0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    for a in A:
+        ans *= a
+        if ans > 10**18:
+            ans = -1
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    for a in A:
+        ans *= a
+        if ans > 10**18:
+            ans = -1
+            break
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    for i in range(N):
+        ans *= A[i]
+        if ans > 10**18:
+            ans = -1
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    for i in range(N):
+        ans *= A[i]
+        if ans > 10**18:
+            print(-1)
+            return
+    print(ans)
+    return
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1
+    for i in range(n):
+        if a[i] == 0:
+            print(0)
+            return
+        ans *= a[i]
+        if ans > 10**18:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if 0 in A:
+        print(0)
+    else:
+        product = 1
+        for i in range(N):
+            product *= A[i]
+            if product > 10**18:
+                print(-1)
+                return
+        print(product)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    flag = 0
+    for i in range(N):
+        if A[i] == 0:
+            flag = 1
+            print(0)
+            break
+        if ans > 10 ** 18 // A[i]:
+            flag = 1
+            print(-1)
+            break
+        ans *= A[i]
+    if flag == 0:
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    z = 1
+    for i in range(n):
+        z *= a[i]
+    if z > 10**18:
+        print(-1)
+    else:
+        print(z)
+
+=======
+Suggestion 9
+
+def main():
+    # Read the input
+    n = int(input())
+    a = list(map(int, input().split()))
+    # Compute the product
+    product = 1
+    for i in range(n):
+        product *= a[i]
+    # Check if the product is > 10^18
+    if product > 10**18:
+        print(-1)
+    else:
+        print(product)

@@ -1,38 +1,113 @@
-#Problem Statement
-#Takahashi turns on the light of his room at S o'clock (on the 24-hour clock) every day and turns it off at T o'clock every day.
-#The date may change while the light is on.
-#Determine whether the light is on at 30 minutes past X o'clock.
-#
-#Constraints
-#0 ≦ S, T, X ≦ 23
-#S ≠ T
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S T X
-#
-#Output
-#If the light is on at 30 minutes past X o'clock, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#7 20 12
-#
-#Sample Output 1
-#Yes
-#The light is on between 7 o'clock and 20 o'clock. At 30 minutes past 12 o'clock, it is on, so we print Yes. 
-#
-#Sample Input 2
-#20 7 12
-#
-#Sample Output 2
-#No
-#The light is on between 0 o'clock and 7 o'clock, and between 20 o'clock and 0 o'clock (on the next day). At 30 minutes past 12 o'clock, it is off, so we print No. 
-#
-#Sample Input 3
-#23 0 23
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s < x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s < x or x < t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S, T, X = map(int, input().split())
+    if S < T:
+        if S < X and X < T:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if S < X or X < T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= t:
+        if s <= x and x < t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s <= x or x < t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    s, t, x = map(int, input().split())
+    if (s < t):
+        if (s < x and x < t):
+            print("Yes")
+        else:
+            print("No")
+    elif (t < s):
+        if (s < x or x < t):
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        print('Yes' if s <= x and t > x else 'No')
+    else:
+        print('Yes' if s <= x or t > x else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    s, t, x = map(int, input().split())
+    if (s <= x and x < t):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def is_light_on(s, t, x):
+    if s < t:
+        return s < x and x < t
+    else:
+        return s < x or x < t
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    if (a < b):
+        if (a < c and c <= b):
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if (a < c or c <= b):
+            print("Yes")
+        else:
+            print("No")
+main()

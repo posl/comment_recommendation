@@ -1,28 +1,40 @@
-#問題文
-#長さ 3 の文字列 S が与えられます。
-#S の先頭の文字を S の末尾に移動して得られる文字列 S' を出力してください。  
-#
-#制約
-#S は英小文字のみからなる長さ 3 の文字列である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S' を出力せよ。  
-#
-#入力例 1
-#abc
-#
-#出力例 1
-#bca
-#abc の先頭の文字 a を末尾に移動すると bca となります。  
-#
-#入力例 2
-#aab
-#
-#出力例 2
-#aba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s[1] + s[2] + s[0])
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[1] + s[2] + s[0])
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S[1] + S[2] + S[0])
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s[1:] + s[0]
+    print(s)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = S[1:] + S[0]
+    print(S)

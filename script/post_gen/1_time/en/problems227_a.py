@@ -1,37 +1,77 @@
-#Problem Statement
-#We will hand out a total of K cards to N people numbered 1, 2, ..., N.
-#Beginning with Person A, we will give the cards one by one to the people in this order: A, A+1, A+2, ..., N, 1, 2, .... Who will get the last card?
-#Formally, after Person x(1 ≦ x < N) gets a card, Person x+1 will get a card. After Person N gets a card, Person 1 gets a card.
-#
-#Constraints
-#1 ≦ N,K ≦ 1000
-#1 ≦ A ≦ N
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K A
-#
-#Output
-#Print a number representing the person who will get the last card.
-#
-#Sample Input 1
-#3 3 2
-#
-#Sample Output 1
-#1
-#The cards are given to Person 2, 3, 1 in this order.
-#
-#Sample Input 2
-#1 100 1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#3 14 2
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, A = map(int, input().split())
+    print((A + K - 2) % N + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n, k, a = map(int, input().split())
+    print((a + k - 2) % n + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, K, A = map(int, raw_input().split())
+    print (A + K - 1) % N + 1
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, K, A = [int(x) for x in raw_input().split()]
+    print (A + K - 1) % N + 1
+
+=======
+Suggestion 5
+
+def main():
+    n, k, a = map(int, input().split())
+    a -= 1
+    print((a + k) % n + 1)
+
+=======
+Suggestion 6
+
+def get_last_person(N, K, A):
+    last_person = A + K - 1
+    while last_person > N:
+        last_person -= N
+    return last_person
+
+N, K, A = map(int, input().split())
+print(get_last_person(N, K, A))
+
+=======
+Suggestion 7
+
+def getPerson(N, K, A):
+    person = (A + K - 1) % N
+    if person == 0:
+        person = N
+    return person
+
+=======
+Suggestion 8
+
+def main():
+    N, K, A = map(int, input().split())
+    print((A + K - 1) % N + 1)
+main()
+
+import sys
+input = sys.stdin.readline
+
+=======
+Suggestion 9
+
+def last_person(n, k, a):
+    return (a + k - 2) % n + 1

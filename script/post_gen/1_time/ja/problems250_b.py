@@ -1,81 +1,130 @@
-#問題文
-#縦 A 行、横 B 列のマスからなるタイルを縦 N 行、横 N 列に並べてできた、縦 (A× N) 行、横 (B× N) 列のマス目 X があります。
-#1≦ i,j ≦ N について、上から i 行目、左から j 列目のタイルをタイル (i,j) とします。
-#X の各マスは以下のように塗られています。  
-#各タイルは白いタイルまたは黒いタイルである。
-#白いタイルのすべてのマスは白で塗られ、黒いタイルのすべてのマスは黒で塗られている。
-#タイル (1,1) は白いタイルである。
-#辺で隣接する 2 つのタイルは異なる色のタイルである。ただし、タイル (a,b) とタイル (c,d) が辺で隣接するとは、|a-c|+|b-d|=1 ( |x| を x の絶対値とする)であることを言う。
-#マス目 X を出力の形式に従って出力してください。
-#
-#制約
-#1 ≦ N,A,B ≦ 10
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#次の条件をみたす (A× N) 個の文字列 S_1,...,S_{A× N} を改行区切りで出力せよ。  
-#S_1,...,S_{A× N} はそれぞれ長さ (B× N) の . または # からなる文字列である。  
-#各 i,j (1 ≦ i ≦ A× N,1 ≦ j ≦ B× N) に対し、マス目 X の上から i 行目かつ左から j 列目のマスが白で塗られているならば S_i の j 文字目は .であり、黒く塗られているならば # である。
-#
-#入力例 1
-#4 3 2
-#
-#出力例 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#入力例 2
-#5 1 5
-#
-#出力例 2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#入力例 3
-#4 4 1
-#
-#出力例 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#入力例 4
-#1 4 4
-#
-#出力例 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A * N):
+        for j in range(B * N):
+            if (i // N + j // N) % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A * N):
+        for j in range(B * N):
+            if (i // A + j // B) % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A):
+        for j in range(B):
+            for k in range(N):
+                if (i + j) % 2 == 0:
+                    print('.', end='')
+                else:
+                    print('#', end='')
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(a):
+        for j in range(n):
+            for k in range(b):
+                for l in range(n):
+                    if (i + j + k + l) % 2 == 0:
+                        print("#", end="")
+                    else:
+                        print(".", end="")
+            print()
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+
+    for i in range(A):
+        for j in range(N):
+            for k in range(B):
+                for l in range(N):
+                    if (i + j + k + l) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+            print()
+
+=======
+Suggestion 6
+
+def main():
+    N,A,B = map(int,input().split())
+    for i in range(A*N):
+        for j in range(B*N):
+            if (i//A+j//B)%2 == 0:
+                print(".",end="")
+            else:
+                print("#",end="")
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    n,a,b = map(int,input().split())
+    for i in range(a):
+        for j in range(n):
+            for k in range(b):
+                for l in range(n):
+                    if (i+j+k+l)%2 == 0:
+                        print(".",end="")
+                    else:
+                        print("#",end="")
+            print()
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+
+    for i in range(A):
+        for j in range(B):
+            if (i + j) % 2 == 0:
+                for k in range(N):
+                    print('.' * N, end='')
+            else:
+                for k in range(N):
+                    print('#' * N, end='')
+        print('')
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(1, A * N + 1):
+        for j in range(1, B * N + 1):
+            if  ((i - 1) // A + (j - 1) // B) % 2 == 0:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()

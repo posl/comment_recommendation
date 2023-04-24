@@ -1,66 +1,165 @@
-#問題文
-#2 つの文字列 A,B に対して、A の末尾に B を連結した文字列を A+B と表します。
-#N 個の文字列 S_1,...,S_N が与えられます。i=1,...,N の順に、次の指示に従って加工して出力してください。
-#S_1,...,S_{i-1} の中に S_i と同じ文字列が存在しないならば、S_i を出力する。
-#S_1,...,S_{i-1} の中に S_i と同じ文字列が X 個 (X>0) 存在するならば、X を文字列として扱って S_i+ ( +X+ ) を出力する。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#S_i は英小文字のみからなる長さ 1 以上 10 以下の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#問題文中の指示にしたがって、N 行出力せよ。  
-#
-#入力例 1
-#5
-#newfile
-#newfile
-#newfolder
-#newfile
-#newfolder
-#
-#出力例 1
-#newfile
-#newfile(1)
-#newfolder
-#newfile(2)
-#newfolder(1)
-#
-#入力例 2
-#11
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#
-#出力例 2
-#a
-#a(1)
-#a(2)
-#a(3)
-#a(4)
-#a(5)
-#a(6)
-#a(7)
-#a(8)
-#a(9)
-#a(10)
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    d = {}
+    for s in S:
+        if s not in d:
+            d[s] = 1
+            print(s)
+        else:
+            print(s + '(' + str(d[s]) + ')')
+            d[s] += 1
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    D = {}
+    for i in range(N):
+        if S[i] in D:
+            D[S[i]] += 1
+            print(S[i] + "(" + str(D[S[i]]) + ")")
+        else:
+            D[S[i]] = 0
+            print(S[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    d = {}
+    for i in range(n):
+        if s[i] not in d:
+            d[s[i]] = 1
+            print(s[i])
+        else:
+            print(s[i] + "(" + str(d[s[i]]) + ")")
+            d[s[i]] += 1
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    d = {}
+    for i in range(N):
+        if S[i] not in d:
+            d[S[i]] = 1
+            print(S[i])
+        else:
+            print(S[i] + "(" + str(d[S[i]]) + ")")
+            d[S[i]] += 1
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = []
+    for i in range(N):
+        if S[i] not in S[:i]:
+            ans.append(S[i])
+        else:
+            X = S[:i].count(S[i])
+            ans.append(S[i] + "(" + str(X) + ")")
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S_dic = {}
+    for i in range(N):
+        if S[i] in S_dic:
+            S_dic[S[i]] += 1
+            print(S[i] + "(" + str(S_dic[S[i]]) + ")")
+        else:
+            S_dic[S[i]] = 0
+            print(S[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    ans = []
+    for s in S:
+        if s in ans:
+            ans.append(s + '(' + str(ans.count(s)) + ')')
+        else:
+            ans.append(s)
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    for i in range(N):
+        if S[i] in S[:i]:
+            count = 0
+            for j in range(i):
+                if S[i] == S[j]:
+                    count += 1
+            print(S[i] + '(' + str(count) + ')')
+        else:
+            print(S[i])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    ans = []
+    for i in range(N):
+        if S[i] in ans:
+            cnt = 0
+            for j in range(i):
+                if S[i] == S[j]:
+                    cnt += 1
+            ans.append(S[i] + "(" + str(cnt) + ")")
+        else:
+            ans.append(S[i])
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    str_list = []
+    for i in range(N):
+        str_list.append(input())
+    for i in range(N):
+        if str_list.count(str_list[i]) > 1:
+            print(str_list[i] + "(" + str(str_list.count(str_list[i])-1) + ")")
+        else:
+            print(str_list[i])

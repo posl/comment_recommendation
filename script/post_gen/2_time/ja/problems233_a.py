@@ -1,40 +1,94 @@
-#問題文
-#サンタさんに手紙を出したい高橋くんは、 X 円切手が 1 枚だけ貼られた封筒を用意しました。
-#サンタさんに手紙を届けるためには、貼られている切手の総額が Y 円以上である必要があります。
-#高橋くんは、この封筒に 10 円切手を何枚か貼り足すことで、貼られている切手の総額を Y 円以上にしたいです。
-#高橋くんはこの封筒に、最小で何枚の 10 円切手を貼り足す必要がありますか?
-#
-#制約
-#X,Y は整数
-#1 ≦ X,Y ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#80 94
-#
-#出力例 1
-#2
-#80 円切手に 0 枚の 10 円切手を貼り足せば総額が 80 円となり、これは手紙を届けるのに必要な 94 円未満です。   
-#80 円切手に 1 枚の 10 円切手を貼り足せば総額が 90 円となり、これは手紙を届けるのに必要な 94 円未満です。   
-#80 円切手に 2 枚の 10 円切手を貼り足せば総額が 100 円となり、これは手紙を届けるのに必要な 94 円以上です。  
-#
-#入力例 2
-#1000 63
-#
-#出力例 2
-#0
-#もともと貼られている切手だけで金額が十分である可能性もあります。
-#
-#入力例 3
-#270 750
-#
-#出力例 3
-#48
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y = map(int, input().split())
+    if X > Y:
+        print(0)
+    else:
+        print((Y - X + 9) // 10)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    print(max(0, (y + 9) // 10 - (x + 9) // 10))
+
+=======
+Suggestion 3
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y + 9) // 10 - X // 10)
+
+=======
+Suggestion 4
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y - 1) // 10 - X // 10)
+
+=======
+Suggestion 5
+
+def main():
+    x,y = map(int,input().split())
+    if y % 10 == 0:
+        if y <= x:
+            print(0)
+        else:
+            print((y-x)//10)
+    else:
+        if y <= x:
+            print(0)
+        else:
+            print((y-x)//10+1)
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    x, y = map(int, input().split())
+    #計算
+    ans = (y - x + 9) // 10
+    #出力
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y-X+9)//10)
+
+=======
+Suggestion 8
+
+def main():
+    # 1行目の入力
+    X, Y = map(int, input().split())
+    # ここに処理を書く
+    if X >= Y:
+        print(0)
+    else:
+        print((Y - X + 9) // 10)
+
+=======
+Suggestion 9
+
+def main():
+    x, y = map(int, input().split())
+
+    # 10円切手の枚数
+    count = 0
+
+    # 10円切手を貼り付ける
+    while x < y:
+        x += 10
+        count += 1
+
+    print(count)

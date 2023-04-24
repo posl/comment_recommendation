@@ -1,41 +1,136 @@
-#Problem Statement
-#You are given a positive integer N. It is known that N can be represented as N=p^2q using two different prime numbers p and q.
-#Find p and q.
-#You have T test cases to solve.
-#
-#Constraints
-#All values in the input are integers.
-#1≦ T≦ 10
-#1≦ N ≦ 9× 10^{18}
-#N can be represented as N=p^2q using two different prime numbers p and q.
-#
-#Input
-#The input is given from Standard Input in the following format, where test_i represents the i-th test case:
-#T
-#test_1
-#test_2
-#.
-#.
-#.
-#test_T
-#Each test case is in the following format:
-#N
-#
-#Output
-#Print T lines.
-#The i-th (1≦ i ≦ T) line should contain p and q for the i-th test case, separated by a space.
-#Under the constraints of this problem, it can be proved that the pair of prime numbers p and q such that N=p^2q is unique.
-#
-#Sample Input 1
-#3
-#2023
-#63
-#1059872604593911
-#
-#Sample Output 1
-#17 7
-#3 7
-#104149 97711
-#For the first test case, we have N=2023=17^2× 7. Thus, p=17 and q=7.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    return pow(2, n - 1, n) == 1
+
+=======
+Suggestion 2
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    return all(n % i for i in range(3, int(n**0.5) + 1, 2))
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0 or n <= 1:
+        return False
+
+    sqr = int(n**0.5) + 1
+
+    for divisor in range(3, sqr, 2):
+        if n % divisor == 0:
+            return False
+    return True
+
+=======
+Suggestion 4
+
+def isPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0 or n <= 1:
+        return False
+    sqr = int(n**0.5) + 1
+    for divisor in range(3, sqr, 2):
+        if n % divisor == 0:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def is_prime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for i in range(2, n):
+            if n % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 6
+
+def isPrime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def is_prime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
+    else:
+        for i in range(3, int(n**0.5)+1, 2):
+            if n % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 8
+
+def isprime(n):
+    if n == 2:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5)+2, 2):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+
+    for i in range(3, int(n**0.5)+1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def get_primes(n):
+    is_prime = [True for i in range(n + 1)]
+    is_prime[0] = False
+    is_prime[1] = False
+    for i in range(2, n + 1):
+        if is_prime[i]:
+            for j in range(i * 2, n + 1, i):
+                is_prime[j] = False
+    return [i for i in range(n + 1) if is_prime[i]]

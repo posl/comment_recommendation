@@ -1,39 +1,120 @@
-#Problem Statement
-#You are given positive integers A and B.
-#Find the K-th largest positive integer that divides both A and B.
-#The input guarantees that there exists such a number.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A, B ≦ 100
-#The K-th largest positive integer that divides both A and B exists.
-#K ≧ 1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B K
-#
-#Output
-#Print the K-th largest positive integer that divides both A and B.
-#
-#Sample Input 1
-#8 12 2
-#
-#Sample Output 1
-#2
-#Three positive integers divides both 8 and 12: 1, 2 and 4.
-#Among them, the second largest is 2.
-#
-#Sample Input 2
-#100 50 4
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#1 1 1
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, K = map(int, input().split())
+    for i in range(min(A, B), 0, -1):
+        if A % i == 0 and B % i == 0:
+            K -= 1
+        if K == 0:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    A, B, K = map(int, input().split())
+    count = 0
+    for i in range(1, min(A, B) + 1):
+        if A % i == 0 and B % i == 0:
+            count += 1
+            if count == K:
+                print(i)
+                break
+
+=======
+Suggestion 4
+
+def main():
+    a, b, k = map(int, input().split())
+    divs = []
+    for i in range(1, min(a, b) + 1):
+        if a % i == 0 and b % i == 0:
+            divs.append(i)
+    print(divs[-k])
+
+=======
+Suggestion 5
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, n+1):
+        if n % i == 0:
+            divisors.append(i)
+    return divisors
+
+=======
+Suggestion 6
+
+def main():
+    A, B, K = map(int, input().split())
+    count = 0
+    for i in range(1, max(A,B)+1):
+        if A % i == 0 and B % i == 0:
+            count += 1
+        if count == K:
+            print(i)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    a,b,k = map(int,input().split())
+    div = []
+    for i in range(1,max(a,b)+1):
+        if a%i == 0 and b%i == 0:
+            div.append(i)
+    print(div[-k])
+
+=======
+Suggestion 8
+
+def main():
+    a, b, k = map(int, input().split())
+    common_divisors = []
+    for i in range(1, min(a,b)+1):
+        if a%i == 0 and b%i == 0:
+            common_divisors.append(i)
+    print(common_divisors[-k])
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 10
+
+def main():
+    a, b, k = map(int, input().split())
+    c = min(a, b)
+    ans = 0
+    while c > 0:
+        if a % c == 0 and b % c == 0:
+            k -= 1
+            if k == 0:
+                ans = c
+                break
+        c -= 1
+    print(ans)
+
+main()

@@ -1,43 +1,99 @@
-#問題文
-#高橋君は料理 1 から N の N 品の料理を作ろうとしています。
-#料理 i はオーブンを連続した T_i 分間使うことで作れます。1 つのオーブンを 2 つ以上の料理のために同時に使うことはできません。
-#2 つのオーブンを使えるとき、N 品の料理を全て作るまでに最短で何分かかりますか？　なお、オーブンを使う時間以外は無視できるものとします。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ T_i ≦ 10^3
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T_1 ... T_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#5
-#8 3 7 2 5
-#
-#出力例 1
-#13
-#例えば 2 つのオーブンを次のように使うことで、13 分で全ての料理を作ることができます。
-#1 つ目のオーブン：料理 5,1 を順に作る。
-#2 つ目のオーブン：料理 2,4,3 を順に作る。
-#
-#入力例 2
-#2
-#1000 1
-#
-#出力例 2
-#1000
-#
-#入力例 3
-#9
-#3 14 15 9 26 5 35 89 79
-#
-#出力例 3
-#138
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    ans = T[0]
+    for i in range(1, N):
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = list(map(int,input().split()))
+    T.sort()
+    ans = 0
+    for i in range(N):
+        ans += T[i] * (N-i)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    print(sum(T) - T[-1] + T[-1] // 2)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort(reverse=True)
+    ans = t[0]
+    for i in range(n-1):
+        ans += t[i+1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort(reverse=True)
+    if N == 1:
+        print(T[0])
+    else:
+        print(T[0]+sum(T[1:N-1])+int(T[N-1]/2))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = list(map(int,input().split()))
+    T.sort()
+    if N == 1:
+        print(T[0])
+    else:
+        oven1 = T[0]
+        oven2 = T[1]
+        for i in range(2,N):
+            if oven1 < oven2:
+                oven1 += T[i]
+            else:
+                oven2 += T[i]
+        print(max(oven1,oven2))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    ans = 0
+    T.sort()
+    ans = T[-1]
+    for i in range(N-1):
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    print(T[N-1] + sum(T[:N-1]))

@@ -1,49 +1,105 @@
-#Problem Statement
-#On an xy-coordinate plane, is there a lattice point whose distances from two lattice points (x_1, y_1) and (x_2, y_2) are both (5)^(1/2)?
-#
-#Notes
-#A point on an xy-coordinate plane whose x and y coordinates are both integers is called a lattice point.
-#The distance between two points (a, b) and (c, d) is defined to be the Euclidean distance between them, ((a - c)^2 + (b-d)^2)^(1/2).
-#The following figure illustrates an xy-plane with a black circle at (0, 0) and white circles at the lattice points whose distances from (0, 0) are (5)^(1/2).  (The grid shows where either x or y is an integer.)
-#
-#Constraints
-#-10^9 ≦ x_1 ≦ 10^9
-#-10^9 ≦ y_1 ≦ 10^9
-#-10^9 ≦ x_2 ≦ 10^9
-#-10^9 ≦ y_2 ≦ 10^9
-#(x_1, y_1) ≠ (x_2, y_2)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x_1 y_1 x_2 y_2
-#
-#Output
-#If there is a lattice point satisfying the condition, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#0 0 3 3
-#
-#Sample Output 1
-#Yes
-#The distance between points (2,1) and (x_1, y_1) is ((0-2)^2 + (0-1)^2)^(1/2) = (5)^(1/2);
-#the distance between points (2,1) and (x_2, y_2) is ((3-2)^2 + (3-1)^2)^(1/2) = (5)^(1/2);
-#point (2, 1) is a lattice point,
-#so point (2, 1) satisfies the condition.  Thus, Yes should be printed.
-#One can also assert in the same way that (1, 2) also satisfies the condition.
-#
-#Sample Input 2
-#0 1 2 3
-#
-#Sample Output 2
-#No
-#No lattice point satisfies the condition, so No should be printed.
-#
-#Sample Input 3
-#1000000000 1000000000 999999999 999999999
-#
-#Sample Output 3
-#Yes
-#Point (10^9 + 1, 10^9 - 2) and point (10^9 - 2, 10^9 + 1) satisfy the condition.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if x1 == x2:
+        print("Yes")
+        return
+    elif y1 == y2:
+        print("Yes")
+        return
+    elif abs(x1 - x2) == abs(y1 - y2):
+        print("Yes")
+        return
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1, y1) == (x2, y2):
+        print("No")
+        return
+    if (x1 - x2) % 2 == 0:
+        print("Yes")
+        return
+    if (y1 - y2) % 2 == 0:
+        print("Yes")
+        return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    x = x1 - x2
+    y = y1 - y2
+    if x * x + y * y == 5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if ((x1 - x2)**2 + (y1 - y2)**2) % 2 == 1:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    x1, y1, x2, y2 = map(int, input().split())
+    #compute
+    #output
+    print(['No', 'Yes'][((x1-x2)**2+(y1-y2)**2)**.5%1==0])
+
+=======
+Suggestion 9
+
+def lattice_points(x1, y1, x2, y2):
+    # This function takes in two points (x1, y1) and (x2, y2) on a 2D plane and returns the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (

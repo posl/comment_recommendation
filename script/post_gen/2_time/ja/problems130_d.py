@@ -1,45 +1,242 @@
-#問題文
-#長さ N の正整数列 A=a_1,a_2,…,a_{N} と整数 K が与えられます。A の連続する部分列であって、以下の条件を満たすようなものは何個あるでしょうか。
-#(条件) 連続部分列に含まれる全ての要素の値の和は、K 以上である。
-#ただし、ある二つの連続部分列が列として同じでも、取り出された位置が異なるならそれらは別々に数えるものとします。
-#出力が 32bit 整数型に収まらない場合があることに注意してください。
-#
-#制約
-#1 ≦ a_i ≦ 10^5
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^{10}
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N K
-#a_1 a_2 ... a_N
-#
-#出力
-#条件を満たすような連続部分列の個数を出力してください。
-#
-#入力例 1
-#4 10
-#6 1 2 7
-#
-#出力例 1
-#2
-#A[1..4]=a_1,a_2,a_3,a_4 (要素の値の和は 16)
-#A[2..4]=a_2,a_3,a_4 (要素の値の和は 10)
-#の二通りです。
-#
-#入力例 2
-#3 5
-#3 3 3
-#
-#出力例 2
-#3
-#ある二つの連続部分列が列として同じでも、取り出された位置が異なるならそれらは別々に数えることに注意してください。
-#
-#入力例 3
-#10 53462
-#103 35322 232 342 21099 90000 18843 9010 35221 19352
-#
-#出力例 3
-#36
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(N):
+        while (right < N) and (total < K):
+            total += A[right]
+            right += 1
+        if total < K:
+            break
+        ans += N - right + 1
+        total -= A[left]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(N):
+        while right < N and total < K:
+            total += A[right]
+            right += 1
+        if total < K:
+            break
+        ans += N - right + 1
+        total -= A[left]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    r = 0
+    tmp = 0
+    for l in range(N):
+        while r < N and tmp < K:
+            tmp += A[r]
+            r += 1
+        if tmp >= K:
+            ans += N - r + 1
+        tmp -= A[l]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        s = 0
+        for j in range(i, N):
+            s += A[j]
+            if s >= K:
+                ans += N - j
+                break
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        sum = 0
+        for j in range(i, N):
+            sum += A[j]
+            if sum >= K:
+                count += N - j
+                break
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    left = 0
+    right = 0
+    sum = 0
+    while left < N:
+        while right < N and sum < K:
+            sum += A[right]
+            right += 1
+        if sum >= K:
+            ans += N - right + 1
+        sum -= A[left]
+        left += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    l = 0
+    r = 0
+    ans = 0
+    s = 0
+    while l < n:
+        while s < k and r < n:
+            s += a[r]
+            r += 1
+        if s < k:
+            break
+        ans += n - r + 1
+        s -= a[l]
+        l += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K)
+    #print(A)
+    ans = 0
+    l = 0
+    r = 0
+    S = 0
+    while l < N:
+        while r < N and S < K:
+            S += A[r]
+            r += 1
+        #print(l, r, S)
+        if S >= K:
+            ans += N - r + 1
+        S -= A[l]
+        l += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    #累積和
+    sumA = [0]
+    for i in range(N):
+        sumA.append(sumA[i] + A[i])
+    #print(sumA)
+    #print(sumA[1:5])
+    #print(sumA[2:5])
+    #print(sumA[3:5])
+    #print(sumA[4:5])
+    #print(sumA[5:5])
+    #print(sumA[6:5])
+    #print(sumA[7:5])
+    #print(sumA[8:5])
+    #print(sumA[9:5])
+    #print(sumA[10:5])
+    #print(sumA[11:5])
+    #print(sumA[12:5])
+    #print(sumA[13:5])
+    #print(sumA[14:5])
+    #print(sumA[15:5])
+    #print(sumA[16:5])
+    #print(sumA[17:5])
+    #print(sumA[18:5])
+    #print(sumA[19:5])
+    #print(sumA[20:5])
+    #print(sumA[21:5])
+    #print(sumA[22:5])
+    #print(sumA[23:5])
+    #print(sumA[24:5])
+    #print(sumA[25:5])
+    #print(sumA[26:5])
+    #print(sumA[27:5])
+    #print(sumA[28:5])
+    #print(sumA[29:5])
+    #print(sumA[30:5])
+    #print(sumA[31:5])
+    #print(sumA[32:5])
+    #print(sumA[33:5])
+    #print(sumA[34:5])
+    #print(sumA[35:5])
+    #print(sumA[36:5])
+    #print(sumA[37:5])
+    #print(sumA[38:5])
+    #print(sumA[39:5])
+    #print(sumA[40:5])
+    #print(sumA[41:5])
+    #print(sumA[42:5])
+    #print(sumA[43:5
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    # 連続部分列の開始位置
+    left = 0
+    # 連続部分列の終了位置
+    right = 0
+    # 連続部分列の和
+    sum = 0
+    while True:
+        # 連続部分列の和がK以上になるまで右端を伸ばす
+        while right < N and sum < K:
+            sum += A[right]
+            right += 1
+        # 連続部分列の和がK以上になったら、その時点での連続部分列の個数を加算し、左端を右にずらす
+        if sum >= K:
+            ans += N - right + 1
+        # 左端を右にずらす
+        sum -= A[left]
+        left += 1
+        # 左端がNに到達したら終了
+        if left == N:
+            break
+    print(ans)
+
+main()

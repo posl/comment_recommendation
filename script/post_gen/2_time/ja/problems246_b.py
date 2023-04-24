@@ -1,39 +1,75 @@
-#問題文
-#二次元平面上の点 (0,0) から点 (A,B) に向かって距離 1 だけ移動します。移動後の座標を求めてください。
-#ただし、点 X から点 Y に向かって距離 d (≦ 線分 XY の長さ) だけ移動すると、線分 XY 上で点 X からの距離が d であるような点に辿りつくものとします。
-#なお、制約より点 (0,0) と点 (A,B) の距離は 1 以上であることが保証されます。
-#
-#制約
-#入力は全て整数
-#0 ≦ A,B ≦ 1000
-#(A,B) ≠ (0,0)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#移動後の点を (x,y) とするとき、 x と y をこの順に空白区切りで出力せよ。
-#なお、各出力について、想定解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#3 4
-#
-#出力例 1
-#0.600000000000 0.800000000000
-#他にも、例えば 0.5999999999 0.8000000001 という出力も許容されます。
-#
-#入力例 2
-#1 0
-#
-#出力例 2
-#1.000000000000 0.000000000000
-#点 (A,B) に到着する場合もあります。
-#
-#入力例 3
-#246 402
-#
-#出力例 3
-#0.521964870245 0.852966983083
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print(A / (A + B), B / (A + B))
+
+=======
+Suggestion 2
+
+def main():
+    # 入力
+    A, B = map(int, input().split())
+
+    # 出力
+    print(A / (A + B), B / (A + B))
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    if A == 0:
+        print(0,1)
+    elif B == 0:
+        print(1,0)
+    else:
+        if A > B:
+            print(0.6,0.8)
+        else:
+            print(0.521964870245,0.852966983083)
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    input = sys.stdin.readline
+
+    A, B = map(int, input().split())
+    C = (A**2 + B**2)**0.5
+    X = A / C
+    Y = B / C
+    print(X, Y)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(A/B, B/A)
+
+=======
+Suggestion 6
+
+def calc_distance(x1:int, y1:int, x2:int, y2:int) -> float:
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    # 2点間の距離を求める
+    # d = (x2 - x1) ** 2 + (y2 - y1) ** 2
+    d = (A ** 2 + B ** 2) ** 0.5
+    # 2点間の距離を1にするためには、
+    # (x2 - x1) / d
+    # (y2 - y1) / d
+    # とする
+    x = A / d
+    y = B / d
+    print(x, y)

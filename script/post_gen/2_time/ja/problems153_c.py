@@ -1,49 +1,84 @@
-#問題文
-#フェネックは N 体のモンスターと戦っています。
-#i 番目のモンスターの体力は H_i です。
-#フェネックは次の 2 種類の行動を行うことができます。
-#攻撃：モンスターを 1 体選んで攻撃することで、そのモンスターの体力を 1 減らす
-#必殺技：モンスターを 1 体選んで必殺技を使うことで、そのモンスターの体力を 0 にする
-#攻撃と必殺技以外の方法でモンスターの体力を減らすことはできません。
-#全てのモンスターの体力を 0 以下にすればフェネックの勝ちです。
-#フェネックが K 回まで必殺技を使えるとき、モンスターに勝つまでに行う攻撃の回数 (必殺技は数えません) の最小値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#0 ≦ K ≦ 2 × 10^5
-#1 ≦ H_i ≦ 10^9
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#H_1 ... H_N
-#
-#出力
-#フェネックがモンスターに勝つまでに行う攻撃の回数 (必殺技は数えない) の最小値を出力せよ。
-#
-#入力例 1
-#3 1
-#4 1 5
-#
-#出力例 1
-#5
-#3 番目のモンスターに必殺技を使い、1 番目のモンスターに 4 回、2 番目のモンスターに 1 回攻撃を行うことで、攻撃の回数を 5 回にできます。
-#
-#入力例 2
-#8 9
-#7 9 3 2 3 8 4 6
-#
-#出力例 2
-#0
-#全てのモンスターに必殺技を使うことができます。
-#
-#入力例 3
-#3 0
-#1000000000 1000000000 1000000000
-#
-#出力例 3
-#3000000000
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    if N <= K:
+        print(0)
+    else:
+        print(sum(H[:N-K]))
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    if K >= N:
+        print(0)
+    else:
+        print(sum(H[:N-K]))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    ans = 0
+    for i in range(N-K):
+        ans += H[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    print(sum(H[K:]))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        if i < K:
+            continue
+        ans += H[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort(reverse=True)
+    ans = sum(h[k:])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    ans = 0
+    if K > 0:
+        ans = sum(H[:-K])
+    else:
+        ans = sum(H)
+    print(ans)

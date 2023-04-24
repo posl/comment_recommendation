@@ -1,28 +1,54 @@
-#Problem Statement
-#Given is a string S of length 3.
-#Move the first character of S to the end of S and print the resulting string S'.
-#
-#Constraints
-#S is a string of length 3 consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print S'.
-#
-#Sample Input 1
-#abc
-#
-#Sample Output 1
-#bca
-#Moving the first character a of the string abc results in bca.
-#
-#Sample Input 2
-#aab
-#
-#Sample Output 2
-#aba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S[1] + S[2] + S[0])
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = S[1:] + S[0]
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S[1:] + S[0])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print(s[1:] + s[0])
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print(S[1:] + S[0])
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print(s[1:3] + s[0])
+
+=======
+Suggestion 7
+
+def main():
+    # Read a string
+    s = input()
+    print(s[1] + s[2] + s[0])

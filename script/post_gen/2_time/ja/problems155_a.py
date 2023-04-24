@@ -1,41 +1,117 @@
-#問題文
-#3 つ組の数について、ある 2 つが等しく、残りの 1 つがそれらと異なるとき、その 3 つ組を「かわいそう」であるといいます。
-#3 つの整数 A, B, C が与えられるので、この 3 つ組がかわいそうであれば Yes を、そうでなければ No を出力してください。
-#
-#制約
-#A, B, C はいずれも 1 以上 9 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#与えられる 3 つ組がかわいそうであれば Yes を、そうでなければ No を出力せよ。
-#
-#入力例 1
-#5 7 5
-#
-#出力例 1
-#Yes
-#A と C が等しく、B がそれらと異なるので、この 3 つ組はかわいそうです。
-#
-#入力例 2
-#4 4 4
-#
-#出力例 2
-#No
-#A, B, C がいずれも等しいので、この 3 つ組はかわいそうではありません。
-#
-#入力例 3
-#4 9 6
-#
-#出力例 3
-#No
-#
-#入力例 4
-#3 3 4
-#
-#出力例 4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b or b == c or c == a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if (a == b and a != c) or (a == c and a != b) or (b == c and b != a):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C = map(int, input().split())
+    if A == B and A != C:
+        print("Yes")
+    elif B == C and B != A:
+        print("Yes")
+    elif C == A and C != B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    if A == B or A == C or B == C:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b and b != c:
+        print("Yes")
+    elif a == c and c != b:
+        print("Yes")
+    elif b == c and c != a:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b or b == c or a == c:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    A, B, C = map(int, input().split())
+    # 処理
+    if A == B or A == C or B == C:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    # A, B, C = map(int, input().split())
+    A, B, C = map(int, input().split())
+    if A == B:
+        if B == C:
+            print("No")
+        else:
+            print("Yes")
+    elif B == C:
+        print("Yes")
+    elif A == C:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    # 1行目の入力
+    A, B, C = map(int, input().split())
+    # 3つの整数が全て同じかどうか
+    if A == B == C:
+        print("No")
+    # 3つの整数のうち、2つが同じかどうか
+    elif A == B or A == C or B == C:
+        print("Yes")
+    # 3つの整数が全て異なる場合
+    else:
+        print("No")

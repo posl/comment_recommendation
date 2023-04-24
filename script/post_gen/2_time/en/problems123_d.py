@@ -1,102 +1,215 @@
-#Problem Statement
-#The Patisserie AtCoder sells cakes with number-shaped candles.
-#There are X, Y and Z kinds of cakes with 1-shaped, 2-shaped and 3-shaped candles, respectively.
-#Each cake has an integer value called deliciousness, as follows:
-#The deliciousness of the cakes with 1-shaped candles are A_1, A_2, ..., A_X.
-#The deliciousness of the cakes with 2-shaped candles are B_1, B_2, ..., B_Y.
-#The deliciousness of the cakes with 3-shaped candles are C_1, C_2, ..., C_Z.
-#Takahashi decides to buy three cakes, one for each of the three shapes of the candles, to celebrate ABC 123.
-#There are X × Y × Z such ways to choose three cakes.
-#We will arrange these X × Y × Z ways in descending order of the sum of the deliciousness of the cakes.
-#Print the sums of the deliciousness of the cakes for the first, second, ..., K-th ways in this list.
-#
-#Constraints
-#1 ≦ X ≦ 1  000
-#1 ≦ Y ≦ 1  000
-#1 ≦ Z ≦ 1  000
-#1 ≦ K ≦ min(3  000, X × Y × Z)
-#1 ≦ A_i ≦ 10  000  000  000
-#1 ≦ B_i ≦ 10  000  000  000
-#1 ≦ C_i ≦ 10  000  000  000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y Z K
-#A_1  A_2  A_3  ...  A_X
-#B_1  B_2  B_3  ...  B_Y
-#C_1  C_2  C_3  ...  C_Z
-#
-#Output
-#Print K lines. The i-th line should contain the i-th value stated in the problem statement.
-#
-#Sample Input 1
-#2 2 2 8
-#4 6
-#1 5
-#3 8
-#
-#Sample Output 1
-#19
-#17
-#15
-#14
-#13
-#12
-#10
-#8
-#There are 2 × 2 × 2 = 8 ways to choose three cakes, as shown below in descending order of the sum of the deliciousness of the cakes:
-#(A_2, B_2, C_2): 6 + 5 + 8 = 19
-#(A_1, B_2, C_2): 4 + 5 + 8 = 17
-#(A_2, B_1, C_2): 6 + 1 + 8 = 15
-#(A_2, B_2, C_1): 6 + 5 + 3 = 14
-#(A_1, B_1, C_2): 4 + 1 + 8 = 13
-#(A_1, B_2, C_1): 4 + 5 + 3 = 12
-#(A_2, B_1, C_1): 6 + 1 + 3 = 10
-#(A_1, B_1, C_1): 4 + 1 + 3 = 8
-#
-#Sample Input 2
-#3 3 3 5
-#1 10 100
-#2 20 200
-#1 10 100
-#
-#Sample Output 2
-#400
-#310
-#310
-#301
-#301
-#There may be multiple combinations of cakes with the same sum of the deliciousness. For example, in this test case, the sum of A_1, B_3, C_3 and the sum of A_3, B_3, C_1 are both 301.
-#However, they are different ways of choosing cakes, so 301 occurs twice in the output.
-#
-#Sample Input 3
-#10 10 10 20
-#7467038376 5724769290 292794712 2843504496 3381970101 8402252870 249131806 6310293640 6690322794 6082257488
-#1873977926 2576529623 1144842195 1379118507 6003234687 4925540914 3902539811 3326692703 484657758 2877436338
-#4975681328 8974383988 2882263257 7690203955 514305523 6679823484 4263279310 585966808 3752282379 620585736
-#
-#Sample Output 3
-#23379871545
-#22444657051
-#22302177772
-#22095691512
-#21667941469
-#21366963278
-#21287912315
-#21279176669
-#21160477018
-#21085311041
-#21059876163
-#21017997739
-#20703329561
-#20702387965
-#20590247696
-#20383761436
-#20343962175
-#20254073196
-#20210218542
-#20150096547
-#Note that the input or output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ABC = []
+    for a in A:
+        for b in B:
+            ABC.append(a+b)
+    ABC.sort(reverse=True)
+    ABC = ABC[:K]
+    ABC2 = []
+    for abc in ABC:
+        for c in C:
+            ABC2.append(abc+c)
+    ABC2.sort(reverse=True)
+    ABC2 = ABC2[:K]
+    for abc2 in ABC2:
+        print(abc2)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a+b)
+    AB.sort(reverse=True)
+    ABC = []
+    for ab in AB[:K]:
+        for c in C:
+            ABC.append(ab+c)
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
+
+main()
+
+I got AC. I think this solution is not so efficient because I used 3 nested loops. But I couldn’t find any other way to solve this problem. If you have any idea, please let me know.
+
+Thank you for reading my blog.
+
+=======
+Suggestion 3
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = sorted([a + b for a in A for b in B], reverse = True)[:K]
+    ABC = sorted([a + b for a in AB for b in C], reverse = True)[:K]
+    print('\n'.join(map(str, ABC)))
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    AB = sorted([a + b for a in A for b in B], reverse=True)
+    ABC = sorted([ab + c for ab in AB[:K] for c in C], reverse=True)
+
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 5
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+
+    AB = []
+    for i in range(X):
+        for j in range(Y):
+            AB.append(A[i] + B[j])
+    AB.sort(reverse=True)
+
+    ABC = []
+    for i in range(min(K, X * Y)):
+        for j in range(Z):
+            ABC.append(AB[i] + C[j])
+    ABC.sort(reverse=True)
+
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 6
+
+def solve():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a + b)
+    AB.sort(reverse=True)
+    AB = AB[:K]
+    ABC = []
+    for ab in AB:
+        for c in C:
+            ABC.append(ab + c)
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 7
+
+def main():
+  X, Y, Z, K = map(int, input().split())
+  A = list(map(int, input().split()))
+  B = list(map(int, input().split()))
+  C = list(map(int, input().split()))
+  A.sort(reverse=True)
+  B.sort(reverse=True)
+  C.sort(reverse=True)
+  AB = []
+  for a in A:
+    for b in B:
+      AB.append(a+b)
+  AB.sort(reverse=True)
+  ABC = []
+  for ab in AB[:K]:
+    for c in C:
+      ABC.append(ab+c)
+  ABC.sort(reverse=True)
+  for i in range(K):
+    print(ABC[i])
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x, y, z, k = map(int, input().split())
+    a = sorted(list(map(int, input().split())), reverse=True)
+    b = sorted(list(map(int, input().split())), reverse=True)
+    c = sorted(list(map(int, input().split())), reverse=True)
+    ab = sorted([a[i] + b[j] for i in range(x) for j in range(y)], reverse=True)
+    abc = sorted([ab[i] + c[j] for i in range(min(x * y, k)) for j in range(z)], reverse=True)
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 9
+
+def main():
+    import heapq
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ab = []
+    for i in a:
+        for j in b:
+            ab.append(i + j)
+    ab.sort(reverse=True)
+    ab = ab[:k]
+    abc = []
+    for i in ab:
+        for j in c:
+            abc.append(i + j)
+    abc.sort(reverse=True)
+    for i in abc[:k]:
+        print(i)
+
+=======
+Suggestion 10
+
+def solve(X, Y, Z, K, A, B, C):
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    AB = []
+    for i in range(X):
+        for j in range(Y):
+            AB.append(A[i] + B[j])
+    AB.sort(reverse=True)
+    ABC = []
+    for i in range(min(K, X * Y)):
+        for j in range(Z):
+            ABC.append(AB[i] + C[j])
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])

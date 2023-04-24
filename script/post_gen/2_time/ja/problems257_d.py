@@ -1,56 +1,224 @@
-#問題文
-#高橋君が住んでいる二次元平面上の街には N 個のジャンプ台があります。i 番目のジャンプ台は点 (x_i, y_i) にあり、ジャンプ台のパワーは P_i です。また高橋君のジャンプ力は S で表され、はじめ S=0 です。高橋君が訓練を 1 回行う度に S は 1 増えます。
-#高橋君は以下の条件を満たす場合に限り、i 番目のジャンプ台から j 番目のジャンプ台にジャンプすることができます。
-#P_iS≧ |x_i - x_j| +|y_i - y_j|
-#高橋君の目的は、適切に始点とするジャンプ台を決めることで、そのジャンプ台からどのジャンプ台にも何回かのジャンプで移動できるようにすることです。
-#目的を達成するためには高橋君は最低で何回訓練を行う必要があるでしょうか？
-#
-#制約
-#2 ≦ N ≦ 200
-#-10^9 ≦ x_i,y_i ≦ 10^9
-#1 ≦ P_i ≦ 10^9
-#(x_i, y_i) ≠ (x_j,y_j) (i≠ j)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 y_1 P_1
-#.
-#.
-#.
-#x_N y_N P_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#-10 0 1
-#0 0 5
-#10 0 1
-#11 0 1
-#
-#出力例 1
-#2
-#高橋君が 2 回訓練したとすると、 S=2 です。
-#このとき、2 番目のジャンプ台から全てのジャンプ台に移動することができます。
-#例えば、4 番目のジャンプ台へは以下の方法で移動ができます。
-#2 番目のジャンプ台から 3 番目のジャンプ台へジャンプする。（ P_2 S = 10, |x_2-x_3| + |y_2-y_3| = 10 であり、 P_2 S ≧ |x_2-x_3| + |y_2-y_3| を満たす。）
-#3 番目のジャンプ台から 4 番目のジャンプ台へジャンプする。（ P_3 S = 2, |x_3-x_4| + |y_3-y_4| = 1 であり、 P_3 S ≧ |x_3-x_4| + |y_3-y_4| を満たす。）
-#
-#
-#入力例 2
-#7
-#20 31 1
-#13 4 3
-#-10 -15 2
-#34 26 5
-#-2 39 4
-#0 -50 1
-#5 -20 2
-#
-#出力例 2
-#18
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    x = [0 for i in range(N)]
+    y = [0 for i in range(N)]
+    P = [0 for i in range(N)]
+    for i in range(N):
+        x[i],y[i],P[i] = map(int,input().split())
+    S = 0
+    for i in range(N):
+        for j in range(N):
+            if P[i]*S >= abs(x[i]-x[j]) + abs(y[i]-y[j]):
+                S = S + 1
+    print(S)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for i in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    ans = -1
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            S = (abs(x[i] - x[j]) + abs(y[i] - y[j])) / P[i]
+            if S.is_integer():
+                S = int(S)
+            else:
+                S = int(S) + 1
+            if ans < S:
+                ans = S
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    x = [0] * N
+    y = [0] * N
+    P = [0] * N
+    for i in range(N):
+        x[i], y[i], P[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if P[i] * (ans + 1) >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                ans = 1
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x, y, P = [], [], []
+    for i in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    S = 0
+    for i in range(N):
+        for j in range(N):
+            if P[i] * S >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                if i == j:
+                    break
+                else:
+                    S += 1
+                    break
+    print(S)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x, y, p = [], [], []
+    for i in range(n):
+        x_i, y_i, p_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        p.append(p_i)
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            ans = max(ans, (abs(x[i] - x[j]) + abs(y[i] - y[j])) // p[i])
+    print(ans + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    jump = []
+    for i in range(N):
+        x, y, p = map(int, input().split())
+        jump.append([x, y, p])
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            d = abs(jump[i][0] - jump[j][0]) + abs(jump[i][1] - jump[j][1])
+            if jump[i][2] * ans >= d:
+                continue
+            else:
+                ans = d / jump[i][2]
+    print(int(ans + 1))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    jump = []
+    for i in range(N):
+        x, y, p = map(int, input().split())
+        jump.append((x, y, p))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            d = abs(jump[i][0] - jump[j][0]) + abs(jump[i][1] - jump[j][1])
+            if jump[i][2]*ans < d:
+                ans = d // jump[i][2] + 1
+            if jump[j][2]*ans < d:
+                ans = d // jump[j][2] + 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    jump = []
+    for i in range(N):
+        x,y,p = map(int,input().split())
+        jump.append([x,y,p])
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if jump[i][2] > jump[j][2]:
+                tmp = jump[i]
+                jump[i] = jump[j]
+                jump[j] = tmp
+    for i in range(N):
+        for j in range(i+1,N):
+            if jump[i][2]*ans >= abs(jump[i][0]-jump[j][0]) + abs(jump[i][1]-jump[j][1]):
+                continue
+            else:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    jump = []
+    for i in range(N):
+        jump.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if jump[i][2] * ans < abs(jump[i][0] - jump[j][0]) + abs(jump[i][1] - jump[j][1]):
+                ans = (abs(jump[i][0] - jump[j][0]) + abs(jump[i][1] - jump[j][1])) // jump[i][2] + 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    from collections import deque
+    from heapq import heappush, heappop
+    input = sys.stdin.readline
+
+    N = int(input())
+    jump = []
+    for i in range(N):
+        x, y, p = map(int, input().split())
+        jump.append([x, y, p, i])
+    jump.sort(key=lambda x:(x[2], -x[0], -x[1]))
+
+    INF = 10**18
+    dp = [[INF]*N for _ in range(N)]
+    for i in range(N):
+        dp[i][i] = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if jump[i][2]*jump[j][2] >= abs(jump[i][0]-jump[j][0]) + abs(jump[i][1]-jump[j][1]):
+                dp[i][j] = 1
+                dp[j][i] = 1
+
+    for k in range(N):
+        for i in range(N):
+            for j in range(i+1, N):
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+                dp[j][i] = dp[i][j]
+
+    ans = INF
+    for i in range(N):
+        ans = min(ans, dp[i][0])
+    print(ans)

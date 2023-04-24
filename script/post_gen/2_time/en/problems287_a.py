@@ -1,52 +1,104 @@
-#Problem Statement
-#There are N people.  Each of them agrees or disagrees with a proposal.  Here, N is an odd number.
-#The i-th (i = 1, 2, ..., N) person's opinion is represented by a string S_i: the person agrees if S_i =  For and disagrees if S_i =  Against.
-#Determine whether the majority agrees with the proposal.
-#
-#Constraints
-#N is an odd number between 1 and 99, inclusive.
-#S_i =  For or S_i =  Against, for all i = 1, 2, ..., N.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print Yes if the majority of the N people agree with the proposal; print No otherwise.
-#
-#Sample Input 1
-#3
-#For
-#Against
-#For
-#
-#Sample Output 1
-#Yes
-#The proposal is supported by two people, which is the majority, so Yes should be printed.
-#
-#Sample Input 2
-#5
-#Against
-#Against
-#For
-#Against
-#For
-#
-#Sample Output 2
-#No
-#The proposal is supported by two people, which is not the majority, so No should be printed.
-#
-#Sample Input 3
-#1
-#For
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > s.count('Against'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print("Yes" if s.count("For") > s.count("Against") else "No")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [input() for i in range(n)]
+    if a.count("For") > a.count("Against"):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    for_count = 0
+    against_count = 0
+    for i in range(n):
+        s = input()
+        if s == "For":
+            for_count += 1
+        else:
+            against_count += 1
+    if for_count > against_count:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    if s.count("For") > n//2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S_list = []
+    for i in range(N):
+        S_list.append(input())
+    if S_list.count("For") > N/2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    for i in range(n):
+        s = input()
+        if s == "For":
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 8
+
+def check_majority():
+    N = int(input())
+    if N%2 != 0:
+        S = []
+        for i in range(N):
+            S.append(input())
+        if S.count('For') > S.count('Against'):
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')

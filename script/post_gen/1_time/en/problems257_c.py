@@ -1,57 +1,268 @@
-#Problem Statement
-#There are N people, each of whom is either a child or an adult.  The i-th person has a weight of W_i.
-#Whether each person is a child or an adult is specified by a string S of length N consisting of 0 and 1.
-#If the i-th character of S is 0, then the i-th person is a child; if it is 1, then the i-th person is an adult.  
-#When Takahashi the robot is given a real number X,
-#Takahashi judges a person with a weight less than X to be a child and a person with a weight more than or equal to X to be an adult.
-#For a real value X, let f(X) be the number of people whom Takahashi correctly judges whether they are children or adults.
-#Find the maximum value of f(X) for all real values of X.
-#
-#Constraints
-#1≦ N≦ 2× 10^5
-#S is a string of length N consisting of 0 and 1.
-#1≦ W_i≦ 10^9
-#N and W_i are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S
-#W_1 W_2 ... W_N
-#
-#Output
-#Print the maximum value of f(X) as an integer in a single line.
-#
-#Sample Input 1
-#5
-#10101
-#60 45 30 40 80
-#
-#Sample Output 1
-#4
-#When Takahashi is given X=50, it judges the 2-nd, 3-rd, and 4-th people to be children and the 1-st and 5-th to be adults.
-#In reality, the 2-nd and 4-th are children, and the 1-st, 3-rd, and 5-th are adults, so the 1-st, 2-nd, 4-th, and 5-th people are correctly judged.
-#Thus, f(50)=4.
-#This is the maximum since there is no X that judges correctly for all 5 people.  Thus, 4 should be printed.
-#
-#Sample Input 2
-#3
-#000
-#1 2 3
-#
-#Sample Output 2
-#3
-#For example, X=10 achieves the maximum value f(10)=3.
-#Note that the people may be all children or all adults.
-#
-#Sample Input 3
-#5
-#10101
-#60 50 50 50 60
-#
-#Sample Output 3
-#4
-#For example, X=55 achieves the maximum value f(55)=4.
-#Note that there may be multiple people with the same weight.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if S[i] == '0':
+            if W[i] < 50:
+                count += 1
+        else:
+            if W[i] >= 50:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if S[i - 1] != S[i]:
+            ans += 1
+    print(ans + 1)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, 10**9):
+        cnt = 0
+        for j in range(N):
+            if S[j] == '0' and W[j] < i:
+                cnt += 1
+            elif S[j] == '1' and W[j] >= i:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    W = sorted(W)
+    ans = 0
+    for i in range(N):
+        if S[i] == '0':
+            ans += N - i
+        else:
+            ans += i
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    W = [int(x) for x in input().split()]
+
+    w = []
+    for i in range(N):
+        if S[i] == '0':
+            w.append(W[i])
+    w.sort()
+    w.append(10**10)
+
+    ans = 0
+    for i in range(N):
+        if S[i] == '1':
+            ind = bisect.bisect_left(w, W[i])
+            if ind > ans:
+                ans = ind
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    #print(N, S, W)
+    S = S[::-1]
+    W = sorted(W)
+    #print(S, W)
+    ans = 0
+    for i in range(N):
+        if S[i] == '0':
+            ans += N - i - W[i:].count(W[i])
+        else:
+            ans += W[:W.index(W[i])].count(W[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+
+    W_sorted = sorted(W)
+    W_sorted.append(-1)
+
+    ans = 0
+    for i in range(N):
+        if S[i] == '0' and W_sorted[i] != W_sorted[i+1]:
+            ans += 1
+        elif S[i] == '1' and W_sorted[i] == W_sorted[i+1]:
+            ans += 1
+
+    print(ans)
+
+main()
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I have sorted the weights and then used binary search to find the correct value of X.
+
+I am not sure why this is not working. I am getting only 3 points for this problem. Can you please help me with this?
+
+I have tried to solve this problem using binary search. I
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    # print(N)
+    # print(S)
+    # print(W)
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    S = S.replace("0", "1")
+    S = S.replace("1", "0")
+    S = S.replace("0", "1")
+    # print("S =", S)
+    # print("S =", S)
+    w = []
+    for i in range(N):
+        w.append((W[i], S[i]))
+    # p
+
+=======
+Suggestion 9
+
+def solve(N, S, W):
+    # N = int(input())
+    # S = input()
+    # W = list(map(int, input().split()))
+    # print(N, S, W)
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # S = "10101"
+    # W = [60, 45, 30, 40, 80]
+    # N = len(S)
+
+    # S = "000"
+    # W = [1, 2, 3]
+    # N = len(S)
+
+    # S = "10101"
+    # W = [60, 50, 50, 50, 60]
+    # N = len(S)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("W =", W)
+    # print("")
+
+    # print("S =", S)
+    # print("W =", W)
+
+    # print("N =", N)
+    # print("S =", S)
+    # print("

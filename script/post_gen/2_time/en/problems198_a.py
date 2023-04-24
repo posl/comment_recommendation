@@ -1,35 +1,61 @@
-#Problem Statement
-#Two boys, A and B, will share N indistinguishable sweets.
-#How many ways are there to do this so that each boy gets a positive integer number of sweets?
-#
-#Constraints
-#N is an integer.
-# 1 ≦ N ≦ 15
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#1
-#There is only one way to share the sweets: A and B get one sweet each.
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#3
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+    else:
+        print(int(n*(n-1)/2))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        ans += i
+    print(ans)
+
+=======
+Suggestion 3
+
+def divide_sweets(n):
+    if n == 1:
+        return 0
+    elif n%2 == 0:
+        return n//2 - 1
+    else:
+        return n//2
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(n-1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print(N-1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print(int((n-1)*n/2))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    result = N - 1
+    print(result)

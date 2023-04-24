@@ -1,76 +1,118 @@
-#Problem Statement
-#The Republic of AtCoder lies on a Cartesian coordinate plane.
-#It has N towns, numbered 1,2,...,N. Town i is at (x_i, y_i), and no two different towns are at the same coordinates.
-#There are teleportation spells in the nation. A spell is identified by a pair of integers (a,b), and casting a spell (a, b) at coordinates (x, y) teleports you to (x+a, y+b).
-#Snuke is a great magician who can learn the spell (a, b) for any pair of integers (a, b) of his choice. The number of spells he can learn is also unlimited.
-#To be able to travel between the towns using spells, he has decided to learn some number of spells so that it is possible to do the following for every pair of different towns (i, j).
-#Choose just one spell among the spells learned. Then, repeatedly use just the chosen spell to get from Town i to Town j.
-#At least how many spells does Snuke need to learn to achieve the objective above?
-#
-#Constraints
-#2 ≦ N ≦ 500
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ y_i ≦ 10^9 (1 ≦ i ≦ N)
-#(x_i, y_i) ≠ (x_j, y_j) if i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-#x_N y_N
-#
-#Output
-#Print the minimum number of spells Snuke needs to learn.
-#
-#Sample Input 1
-#3
-#1 2
-#3 6
-#7 4
-#
-#Sample Output 1
-#6
-#The figure below illustrates the positions of the towns (along with the coordinates of the four corners).
-#If Snuke learns the six spells below, he can get from Town i to Town j by using one of the spells once for every pair (i,j) (i ≠ j), achieving his objective.
-#(2, 4)
-#(-2, -4)
-#(4, -2)
-#(-4, 2)
-#(-6, -2)
-#(6, 2)
-#Another option is to learn the six spells below. In this case, he can get from Town i to Town j by using one of the spells twice for every pair (i,j) (i ≠ j), achieving his objective.
-#(1, 2)
-#(-1, -2)
-#(2, -1)
-#(-2, 1)
-#(-3, -1)
-#(3, 1)
-#There is no combination of spells that consists of less than six spells and achieve the objective, so we should print 6.
-#
-#Sample Input 2
-#3
-#1 2
-#2 2
-#4 2
-#
-#Sample Output 2
-#2
-#The optimal choice is to learn the two spells below:
-#(1, 0)
-#(-1, 0)
-#
-#Sample Input 3
-#4
-#0 0
-#0 1000000000
-#1000000000 0
-#1000000000 1000000000
-#
-#Sample Output 3
-#8
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for _ in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    #print(x)
+    #print(y)
+    
+    # (a, b) について、(x_i + a, y_i + b) が全て異なるような a, b の組み合わせを求める
+    # これは、(x_i + a, y_i + b) が全て異なるような a, b の組み合わせが 2N 個以上あればいい
+    # これは、(x_i, y_i) が全て異なるような a, b の組み合わせが N 個以上あればいい
+    # これは、(x_i, y_i) が全て異なるような a, b の組み合わせが N 個以上あればいい
+    # (x_i, y_i) が全て異なるような a, b の組み合わせは、(x_i - x_j, y_i - y_j) が全て異なるような a, b の組み合わせが N 個以上あればいい
+    # (x_i, y_i) が全て異なるような a, b の組み合わせは、(x_i - x_j, y_i - y_j) が全て異なるような a, b の組み合わせが N 個以上あればいい
+    # (x_i, y_i) が全て異なるような a, b の組み合わせは、(x_i - x_j, y_i - y_j) が全て異なるような a, b の組み合わせが N 個以上あればいい
+    # (x_i, y_i) が全
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    D = {}
+    for i in range(N):
+        for j in range(i+1, N):
+            x1, y1 = XY[i]
+            x2, y2 = XY[j]
+            d = (x2-x1, y2-y1)
+            if d in D:
+                D[d] += 1
+            else:
+                D[d] = 1
+    ans = N-1
+    for v in D.values():
+        ans = min(ans, N-v)
+    print(ans)
+
+=======
+Suggestion 6
+
+def  main():
+    n  =  int (input())
+    x  =  [ 0 ] * n
+    y  =  [ 0 ] * n
+    for  i  in  range(n):
+        x[i], y[i]  =  map( int , input().split())
+
+    s  =  set ()
+    for  i  in  range(n):
+        for  j  in  range(n):
+            if  i  ==  j:  continue 
+            s.add((x[i] - x[j], y[i] - y[j]))
+    print( len (s))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    towns = []
+    for i in range(n):
+        towns.append(tuple(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            x = towns[i][0] - towns[j][0]
+            y = towns[i][1] - towns[j][1]
+            ans = max(ans, x*x + y*y)
+    print(ans)
+
+=======
+Suggestion 8
+
+def find_gcd(x, y):
+    while(y):
+        x, y = y, x % y
+    return x
+
+=======
+Suggestion 9
+
+def f(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])

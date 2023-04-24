@@ -1,48 +1,190 @@
-#問題文
-#Mr. Infinity は, 1 から 9 までの数字からなる文字列 S を持っている. この文字列は, 日付が変わるたびに次のように変化する.
-#文字列 S に含まれるそれぞれの 2 が 22, 3 が 333, 4 が 4444, 5 が 55555, 6 が 666666, 7 が 7777777, 8 が 88888888, 9 が 999999999 に置き換わる. 1 は 1 のまま残る.
-#例えば, S が 1324 の場合, 翌日には 1333224444 になり, 翌々日には 133333333322224444444444444444 になる.
-#あなたは 5000 兆日後に文字列がどのようになっているか知りたい. 5000 兆日後の文字列の左から K 文字目は何か？  
-#
-#制約
-#S は 1 文字以上 100 文字以下の文字列.
-#K は 1 以上 10^{18} 以下の整数.
-#5000 兆日後の文字列の長さは K 文字以上である.
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#S
-#K
-#
-#出力
-#5000 兆日後に Mr. Infinity が持っている文字列の K 文字目の数字を出力しなさい.  
-#
-#入力例 1
-#1214
-#4
-#
-#出力例 1
-#2
-#文字列 S は次のように変化していく.  
-#現在: 1214
-#1 日後: 12214444
-#2 日後: 1222214444444444444444
-#3 日後: 12222222214444444444444444444444444444444444444444444444444444444444444444
-#5000 兆日後の文字列の最初 5 文字は 12222 となる. K=4 なので, 4 文字目の 2 を出力すればよい.  
-#
-#入力例 2
-#3
-#157
-#
-#出力例 2
-#3
-#文字列ははじめ 3 である. 5000 兆日経ったとき, 文字列は 3 だけで構成される.  
-#
-#入力例 3
-#299792458
-#9460730472580800
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    K = int(input())
+    S = S.replace("2","22")
+    S = S.replace("3","333")
+    S = S.replace("4","4444")
+    S = S.replace("5","55555")
+    S = S.replace("6","666666")
+    S = S.replace("7","7777777")
+    S = S.replace("8","88888888")
+    S = S.replace("9","999999999")
+    print(S[K-1])
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    K = int(input())
+    S = S.replace('1', '1 ')
+    S = S.replace('2', '2 22 ')
+    S = S.replace('3', '3 333 ')
+    S = S.replace('4', '4 4444 ')
+    S = S.replace('5', '5 55555 ')
+    S = S.replace('6', '6 666666 ')
+    S = S.replace('7', '7 7777777 ')
+    S = S.replace('8', '8 88888888 ')
+    S = S.replace('9', '9 999999999 ')
+    S = S.split()
+    print(S[K-1])
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    k = int(input())
+    for i in range(k):
+        if s[i] != '1':
+            print(s[i])
+            break
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    K = int(input())
+    for i in range(K):
+        if S[i] == "1":
+            continue
+        else:
+            print(S[i])
+            break
+    else:
+        print(1)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    K = int(input())
+    for i in range(K):
+        S = S.replace('1', '11')
+        S = S.replace('2', '22')
+        S = S.replace('3', '33')
+        S = S.replace('4', '44')
+        S = S.replace('5', '55')
+        S = S.replace('6', '66')
+        S = S.replace('7', '77')
+        S = S.replace('8', '88')
+        S = S.replace('9', '99')
+        if len(S) >= K:
+            break
+    print(S[K-1])
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    K = int(input())
+    count = 0
+    for i in range(K):
+        if S[i] == '1':
+            count += 1
+        else:
+            print(S[i])
+            break
+        if count == K:
+            print(1)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    K = int(input())
+    for i in range(K):
+        if S[i] != "1":
+            print(S[i])
+            break
+    else:
+        print("1")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    k = int(input())
+    i = 0
+    for i in range(k):
+        if s[i] != '1':
+            break
+    if i == k:
+        print(1)
+    else:
+        print(s[i])
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    K = int(input())
+    s = S
+    i = 0
+    while i < K:
+        if len(s) > K:
+            print(s[K-1])
+            break
+        s = s.replace('1', '11')
+        s = s.replace('2', '22')
+        s = s.replace('3', '33')
+        s = s.replace('4', '44')
+        s = s.replace('5', '55')
+        s = s.replace('6', '66')
+        s = s.replace('7', '77')
+        s = s.replace('8', '88')
+        s = s.replace('9', '99')
+        i += 1
+    else:
+        print(s[K-1])
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    K = int(input())
+    #print("S:", S)
+    #print("K:", K)
+    #print("len(S):", len(S))
+    #print("type(S):", type(S))
+    #print("type(K):", type(K))
+    #print("S[0]:", S[0])
+    #print("S[0:1]:", S[0:1])
+    #print("S[0:2]:", S[0:2])
+    #print("S[0:3]:", S[0:3])
+    #print("S[0:4]:", S[0:4])
+    #print("S[0:5]:", S[0:5])
+    #print("S[0:6]:", S[0:6])
+    #print("S[0:7]:", S[0:7])
+    #print("S[0:8]:", S[0:8])
+    #print("S[0:9]:", S[0:9])
+    #print("S[0:10]:", S[0:10])
+    #print("S[0:11]:", S[0:11])
+    #print("S[0:12]:", S[0:12])
+    #print("S[0:13]:", S[0:13])
+    #print("S[0:14]:", S[0:14])
+    #print("S[0:15]:", S[0:15])
+    #print("S[0:16]:", S[0:16])
+    #print("S[0:17]:", S[0:17])
+    #print("S[0:18]:", S[0:18])
+    #print("S[0:19]:", S[0:19])
+    #print("S[0:20]:", S[0:20])
+    #print("S[0:21]:", S[0:21])
+    #print("S[0:22]:", S[0:22])
+    #print("S[0:23]:", S[0:23])
+    #print("S[0:24]:", S[0:24])
+    #print("S[0:25]:", S[0:25])

@@ -1,30 +1,79 @@
-#問題文
-#高橋君はゲームで遊んでいます。
-#このゲームでは、今までに集めたコインの枚数が 100 の倍数になるごとにご褒美がもらえます。
-#高橋君が今までに集めたコインの枚数は X 枚です。次にご褒美をもらうためには、あと何枚のコインを集めればよいでしょうか？ (X が 100 の倍数の場合、コインを累計で X 枚集めたことに対するご褒美はすでにもらったとします。)
-#
-#制約
-#0 ≦ X ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#次にご褒美をもらうために、追加で集める必要のあるコインの枚数を出力せよ。
-#
-#入力例 1
-#140
-#
-#出力例 1
-#60
-#次にご褒美がもらえるのは、コインを累計で 200 枚集めたときなので、あと 200-140=60 枚のコインを集める必要があります。
-#
-#入力例 2
-#1000
-#
-#出力例 2
-#100
-#次にご褒美がもらえるのは、コインを累計で 1100 枚集めたときです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - x % 100)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - (x % 100))
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X % 100 == 0:
+        print(100)
+    else:
+        print(100 - (X % 100))
+
+=======
+Suggestion 4
+
+def main():
+    X = int(input())
+    if X % 100 == 0:
+        print(0)
+    else:
+        print(100 - (X % 100))
+
+=======
+Suggestion 5
+
+def main():
+    X = int(input())
+    print(100 - (X % 100))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    print(100 - (x % 100))
+
+=======
+Suggestion 7
+
+def main():
+    X = int(input())
+    print(100 - X % 100)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    X = int(input())
+    #処理
+    #100の倍数の場合
+    if X % 100 == 0:
+        #出力
+        print(100)
+    else:
+        #出力
+        print(100 - (X % 100))

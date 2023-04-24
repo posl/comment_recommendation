@@ -1,41 +1,203 @@
-#問題文
-#長さ N の正整数のみからなる数列 A=(A_1,...,A_N) があります。
-#A を 10^{100} 回連結した数列を数列 B とします。  
-#B の項を前から順に足したとき、和が初めて X を超えるのは何項目まで足したときですか？
-#すなわち、以下の式を満たす最小の整数 k を求めてください。  
-#(sum_{i=1}^{k} B_i > X) 
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#X
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#3 5 2
-#26
-#
-#出力例 1
-#8
-#B=(3,5,2,3,5,2,3,5,2,...) です。
-#(sum_{i=1}^{8} B_i = 28 > 26) であり、k が 7 以下のとき条件を満たさないので、8 が答えです。
-#
-#入力例 2
-#4
-#12 34 56 78
-#1000
-#
-#出力例 2
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    X = int(input())
+    sumA = sum(A)
+    k = (X // sumA) * N
+    X -= (X // sumA) * sumA
+    sumA = 0
+    for i in range(N):
+        sumA += A[i]
+        k += 1
+        if sumA > X:
+            print(k)
+            exit()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * 10**5
+    sum = 0
+    for i in range(10**5):
+        sum += B[i]
+        if sum > X:
+            print(i+1)
+            exit()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    x = int(input())
+    sum_a = sum(a)
+    sum_b = sum_a * (x // sum_a)
+    ans = n * (x // sum_a)
+    for i in range(n):
+        sum_b += a[i]
+        ans += 1
+        if sum_b > x:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    x = int(input())
+
+    sum_a = sum(a_list)
+    sum_b = sum_a * (x // sum_a)
+    i = n * (x // sum_a)
+    while sum_b <= x:
+        sum_b += a_list[i % n]
+        i += 1
+
+    print(i)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    sumA = sum(A)
+    if X < sumA:
+        print(0)
+        return
+    k = (X // sumA) * N
+    X -= (X // sumA) * sumA
+    for i in range(N):
+        if X < 0:
+            break
+        X -= A[i]
+        k += 1
+    print(k)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    X = int(input())
+    B = A * (10**100//N) + A[:(10**100%N)]
+    #print(B)
+    sumB = 0
+    for i in range(len(B)):
+        sumB += B[i]
+        if sumB > X:
+            print(i+1)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    sumA = sum(A)
+    count = 0
+    if X <= sumA:
+        for i in range(N):
+            count += 1
+            if sumA >= X:
+                break
+            sumA += A[i]
+    else:
+        count = N * (X // sumA)
+        sumA = sumA * (X // sumA)
+        for i in range(N):
+            count += 1
+            if sumA >= X:
+                break
+            sumA += A[i]
+    print(count)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    sumA = sum(A)
+    sumB = (X // sumA) * sumA
+    cnt = (X // sumA) * N
+    for a in A:
+        sumB += a
+        cnt += 1
+        if sumB > X:
+            break
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a_list = [int(i) for i in input().split()]
+    x = int(input())
+    loop = 0
+    sum_a = sum(a_list)
+    if x < sum_a:
+        for i in range(n):
+            if sum_a <= x:
+                loop += 1
+                sum_a += a_list[i]
+            else:
+                break
+    else:
+        loop = n * (x // sum_a)
+        sum_a = sum_a * (x // sum_a)
+        for i in range(n):
+            if sum_a <= x:
+                loop += 1
+                sum_a += a_list[i]
+            else:
+                break
+    print(loop)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+
+    # 10^5回連結した数列を作成
+    b = []
+    for i in range(10**5):
+        for j in range(n):
+            b.append(a[j])
+
+    # Bの累積和を作成
+    c = [0]
+    for i in range(10**5*n):
+        c.append(c[i] + b[i])
+
+    # 累積和の中でXを超える最小の値を探す
+    ans = 0
+    for i in range(10**5*n):
+        if c[i] > x:
+            ans = i
+            break
+
+    print(ans)

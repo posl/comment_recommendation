@@ -1,50 +1,102 @@
-#Problem Statement
-#You are given two strings S and T consisting of lowercase English letters.
-#Determine if S is a prefix of T.
-#What is a prefix?
-#A prefix of a string T_1T_2... T_N of length N is a string expressed as the first i characters of T, T_1T_2... T_i, where i is an integer such that 0 ≦ i ≦ N.  For example, when T =  abc, there are four prefixes of T: an empty string, a, ab, and abc.
-#
-#Constraints
-#S and T are strings of lengths between 1 and 100 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#Print Yes if S is a prefix of T; print No otherwise.
-#Note that the judge is case-sensitive.
-#
-#Sample Input 1
-#atco
-#atcoder
-#
-#Sample Output 1
-#Yes
-#atco is a prefix of atcoder.  Thus, Yes should be printed.
-#
-#Sample Input 2
-#code
-#atcoder
-#
-#Sample Output 2
-#No
-#code is not a prefix of atcoder.  Thus, No should be printed.
-#
-#Sample Input 3
-#abc
-#abc
-#
-#Sample Output 3
-#Yes
-#Note that a string is also a prefix of itself.
-#
-#Sample Input 4
-#aaaa
-#aa
-#
-#Sample Output 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    if S == T[0:len(S)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s == t[0:len(s)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if S == T[:len(S)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:len(s)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s == t[0:len(s)]:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    if T.startswith(S):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s in t[:len(s)]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def isPrefix(s, t):
+    if s == t:
+        return True
+    if len(s) > len(t):
+        return False
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def check_prefix(s,t):
+    if s == t[0:len(s)]:
+        return "Yes"
+    else:
+        return "No"

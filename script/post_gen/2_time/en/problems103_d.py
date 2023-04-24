@@ -1,63 +1,169 @@
-#Problem Statement
-#There are N islands lining up from west to east, connected by N-1 bridges.
-#The i-th bridge connects the i-th island from the west and the (i+1)-th island from the west.
-#One day, disputes took place between some islands, and there were M requests from the inhabitants of the islands:
-#Request i: A dispute took place between the a_i-th island from the west and the b_i-th island from the west. Please make traveling between these islands with bridges impossible.
-#You decided to remove some bridges to meet all these M requests.
-#Find the minimum number of bridges that must be removed.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#All pairs (a_i, b_i) are distinct.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#a_1 b_1
-#a_2 b_2
-#:
-#a_M b_M
-#
-#Output
-#Print the minimum number of bridges that must be removed.
-#
-#Sample Input 1
-#5 2
-#1 4
-#2 5
-#
-#Sample Output 1
-#1
-#The requests can be met by removing the bridge connecting the second and third islands from the west.
-#
-#Sample Input 2
-#9 5
-#1 8
-#2 7
-#3 5
-#4 6
-#7 9
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#Sample Output 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A, B = [], []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    ans = 0
+    for i in range(M):
+        a = A[i]
+        b = B[i]
+        for j in range(i+1, M):
+            c = A[j]
+            d = B[j]
+            if (a < c < b < d) or (c < a < d < b):
+                ans += 1
+                break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    bridges = [set() for _ in range(N + 1)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        bridges[a].add(b)
+        bridges[b].add(a)
+    ans = 0
+    for i in range(1, N + 1):
+        if bridges[i]:
+            ans += 1
+            for j in bridges[i]:
+                bridges[j].discard(i)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    bridges = [0] * N
+    for i in range(M):
+        a, b = map(int, input().split())
+        bridges[a-1] += 1
+        bridges[b-1] += 1
+    print(bridges.count(1))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    bridges = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        bridges.append([a, b])
+    bridges.sort(key=lambda x: x[1])
+    ans = 0
+    last = 0
+    for bridge in bridges:
+        if last < bridge[0]:
+            last = bridge[1] - 1
+            ans += 1
+    print(M - ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    bridges = [list(map(int, input().split())) for _ in range(M)]
+    bridges.sort(key=lambda x: x[1])
+    ans = 0
+    prev = 0
+    for i in range(M):
+        if prev < bridges[i][0]:
+            ans += 1
+            prev = bridges[i][1]
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    bridges = [list(map(int, input().split())) for _ in range(M)]
+    bridges.sort(key=lambda x: x[1])
+    ans = 0
+    bridge = 0
+    for a, b in bridges:
+        if bridge < a:
+            ans += 1
+            bridge = b-1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    bridge = [0] * (N-1)
+    for _ in range(M):
+        a, b = map(int, input().split())
+        bridge[min(a, b)-1] += 1
+    print(bridge.count(0))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    L = [0] * M
+    for i in range(M):
+        a, b = map(int, input().split())
+        L[i] = [a, b]
+    L.sort()
+    ans = 0
+    for i in range(M):
+        for j in range(i + 1, M):
+            if L[i][1] <= L[j][0]:
+                ans += 1
+                break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(M)]
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    last = 0
+    for a, b in AB:
+        if a <= last:
+            continue
+        else:
+            last = b - 1
+            ans += 1
+    print(ans)
+    return
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    bridges = [list(map(int, input().split())) for _ in range(M)]
+    bridges.sort(key=lambda x: x[1])
+
+    cnt = 0
+    last = 0
+    for a, b in bridges:
+        if last < a:
+            cnt += 1
+            last = b - 1
+
+    print(M - cnt)

@@ -1,38 +1,73 @@
-#Problem Statement
-#Takahashi loves gold coins. He gains 1000 happiness points for each 500-yen coin he has and gains 5 happiness points for each 5-yen coin he has. (Yen is the currency of Japan.)
-#Takahashi has X yen. If he exchanges his money so that he will gain the most happiness points, how many happiness points will he earn?
-#(We assume that there are six kinds of coins available: 500-yen, 100-yen, 50-yen, 10-yen, 5-yen, and 1-yen coins.)
-#
-#Constraints
-#0 ≦ X ≦ 10^9
-#X is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Print the maximum number of happiness points that can be earned.
-#
-#Sample Input 1
-#1024
-#
-#Sample Output 1
-#2020
-#By exchanging his money so that he gets two 500-yen coins and four 5-yen coins, he gains 2020 happiness points, which is the maximum number of happiness points that can be earned.
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#0
-#He is penniless - or yenless.
-#
-#Sample Input 3
-#1000000000
-#
-#Sample Output 3
-#2000000000
-#He is a billionaire - in yen.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = int(input())
+    print((X // 500) * 1000 + ((X % 500) // 5) * 5)
+
+=======
+Suggestion 2
+
+def main():
+    X = int(input())
+    happiness = 0
+    happiness += X // 500 * 1000
+    happiness += X % 500 // 5 * 5
+    print(happiness)
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    ans = 0
+    ans += X // 500 * 1000
+    X = X % 500
+    ans += X // 5 * 5
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    X = int(input())
+    print((X // 500) * 1000 + (X % 500) // 5 * 5)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    print(1000 * (x // 500) + 5 * ((x % 500) // 5))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    X = int(input())
+    print((X//500)*1000 + (X%500//5)*5)
+
+=======
+Suggestion 7
+
+def main():
+    X = int(input())
+    print(X//500*1000+X%500//5*5)
+
+=======
+Suggestion 8
+
+def happiness(x):
+    return (x//500)*1000 + (x%500//5)*5
+
+=======
+Suggestion 9
+
+def happiness(x):
+    return (x//500)*1000 + (x%500)//5*5

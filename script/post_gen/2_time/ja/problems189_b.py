@@ -1,56 +1,175 @@
-#問題文
-#高橋君はお酒を N 杯飲みました。
-#i 番目に飲んだお酒は、量が V_i ml、アルコール度数が P_i % です。
-#高橋君はアルコールの摂取量が X ml を超えると酔っ払います。
-#高橋君が酔っ払ったのは何杯目のお酒を飲んでいるときですか。ただし、N 杯全てのお酒を飲んだあとでも酔っ払っていない場合は、かわりに -1 を出力してください。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 10^3
-#0 ≦ X ≦ 10^6
-#1 ≦ V_i ≦ 10^3
-#0 ≦ P_i ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#V_1 P_1
-#.
-#.
-#.
-#V_N P_N
-#
-#出力
-#高橋君が酔っ払ったのが何杯目のお酒を飲んでいるときか出力せよ。ただし、N 杯全てのお酒を飲んだあとでも酔っ払っていない場合は、かわりに -1 を出力せよ。
-#
-#入力例 1
-#2 15
-#200 5
-#350 3
-#
-#出力例 1
-#2
-#1 杯目のお酒には、200× (5/(100))=10 ml のアルコールが含まれています。
-#2 杯目のお酒には、350× (3/(100))=10.5 ml のアルコールが含まれています。
-#2 杯目のお酒を飲んでいるときに、初めてアルコールの摂取量が 15 ml を超えます。
-#
-#入力例 2
-#2 10
-#200 5
-#350 3
-#
-#出力例 2
-#2
-#アルコールの摂取量がちょうど X ml のとき、高橋君はまだ酔っ払っていません。
-#
-#入力例 3
-#3 1000000
-#1000 100
-#1000 100
-#1000 100
-#
-#出力例 3
-#-1
-#高橋くんはお酒にとても強いようです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p / 100
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    for i in range(N):
+        V, P = map(int, input().split())
+        X -= V * P / 100
+        if X < 0:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    for i in range(N):
+        V, P = map(int, input().split())
+        X -= V * P / 100
+        if X < 0:
+            print(i + 1)
+            exit()
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    sum = 0
+    for i in range(N):
+        sum += V[i] * P[i] / 100
+        if sum > X:
+            print(i+1)
+            return
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+    #print(N, X)
+    #print(V)
+    #print(P)
+    #print(V[0])
+    #print(P[0])
+    #print(V[0] * P[0] / 100)
+    #print(V[1])
+    #print(P[1])
+    #print(V[1] * P[1] / 100)
+    #print(V[2])
+    #print(P[2])
+    #print(V[2] * P[2] / 100)
+    #print(V[3])
+    #print(P[3])
+    #print(V[3] * P[3] / 100)
+    #print(V[4])
+    #print(P[4])
+    #print(V[4] * P[4] / 100)
+    #print(V[5])
+    #print(P[5])
+    #print(V[5] * P[5] / 100)
+    #print(V[6])
+    #print(P[6])
+    #print(V[6] * P[6] / 100)
+    #print(V[7])
+    #print(P[7])
+    #print(V[7] * P[7] / 100)
+    #print(V[8])
+    #print(P[8])
+    #print(V[8] * P[8] / 100)
+    #print(V[9])
+    #print(P[9])
+    #print(V[9] * P[9] / 100)
+    #print(V[10])
+    #print(P[10])
+    #print(V[10] * P[10] / 100)
+    #print(V[11])
+    #print(P[11])
+    #print(V[11] * P[11] / 100)
+    #print(V[12])
+    #print(P[12])
+    #print(V[12] * P[12] / 100)
+    #print(V[13])
+    #print(P[13])
+    #print(V[13] * P[13] / 100)
+    #print(V[14])
+    #
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+    for i in range(N):
+        X -= V[i] * P[i] / 100
+        if X < 0:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = 0
+    for i in range(N):
+        V, P = map(int, input().split())
+        A += V * P
+        if A > X * 100:
+            print(i + 1)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    ans = -1
+    for i in range(N):
+        V, P = map(int, input().split())
+        X -= V*P/100
+        if X < 0:
+            ans = i + 1
+            break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    ans = -1
+    for i in range(N):
+        v, p = map(int, input().split())
+        X -= v * p / 100
+        if X < 0:
+            ans = i + 1
+            break
+    print(ans)

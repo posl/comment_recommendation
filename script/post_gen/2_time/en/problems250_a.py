@@ -1,67 +1,95 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns. Let (i,j) denote the square at the i-th row from the top and the j-th column from the left.
-#Find the number of squares that share a side with Square (R, C).
-#Here, two squares (a,b) and (c,d) are said to share a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ R ≦ H ≦ 10
-#1 ≦ C ≦ W ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#R C
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3 4
-#2 2
-#
-#Sample Output 1
-#4
-#We will describe Sample Inputs/Outputs 1,2, and 3 at once below Sample Output 3.
-#
-#Sample Input 2
-#3 4
-#1 3
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#3 4
-#3 4
-#
-#Sample Output 3
-#2
-#When H=3 and W=4, the grid looks as follows.
-#For Sample Input 1, there are 4 squares adjacent to Square (2,2).
-#For Sample Input 2, there are 3 squares adjacent to Square (1,3).
-#For Sample Input 3, there are 2 squares adjacent to Square (3,4).
-#
-#
-#Sample Input 4
-#1 10
-#1 5
-#
-#Sample Output 4
-#2
-#
-#Sample Input 5
-#8 1
-#8 1
-#
-#Sample Output 5
-#1
-#
-#Sample Input 6
-#1 1
-#1 1
-#
-#Sample Output 6
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    if H == 1 and W == 1:
+        print(0)
+    elif H == 1 or W == 1:
+        print(1)
+    else:
+        print(4)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+
+    if H == 1 and W == 1:
+        print(0)
+    elif H == 1 or W == 1:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H - R) + (W - C))
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print((h - r) * (w - c))
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H-1)*W + (W-1)*H - (H-1)*(W-1))
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(2*(H-1) + 2*(W-1) - (R==H) - (C==W))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print(2 * (h + w) - 4 - (r == h) - (c == w))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    H,W = list(map(int, input().split()))
+    R,C = list(map(int, input().split()))
+    print(H*W - (H+W-1))
+
+=======
+Suggestion 9
+
+def check_square(x, y, h, w):
+    if (x > 1 and y > 1) and (x < h and y < w):
+        return 4
+    elif (x > 1 and y > 1) or (x < h and y < w):
+        return 3
+    else:
+        return 2
+
+h, w = map(int, input().split())
+r, c = map(int, input().split())
+print(check_square(r, c, h, w))

@@ -1,50 +1,150 @@
-#問題文
-#スーパーマンである高橋くんは、地上で困っている人を助けるため、あるビルの屋上から飛び降りようとしています。
-#高橋くんがいる星には重力の大きさを表す g という値が定まっており、
-#高橋くんが落下を開始してから地面に到達するまでにかかる時間は (A/((g)^(1/2))) です。
-#現在の時刻は 0 であり、g = 1 が成り立ちます。
-#高橋くんは、今から次の操作を好きな回数（0 回でもよい）行います。
-#超能力により g の値を 1 増やす。時間が B 経過する。
-#その後、高橋くんはビルから飛び降ります。落下を開始した後は g の値を変えることはできません。
-#また、操作によって経過する時間と落下にかかる時間以外は考えないものとします。
-#高橋くんが地面に到達できる最も早い時刻を求めてください。
-#
-#制約
-#1 ≦ A ≦ 10^{18}
-#1 ≦ B ≦ 10^{18}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#高橋くんが地面に到達できる最も早い時刻を出力せよ。
-#出力は、真の値との絶対誤差または相対誤差が 10^{-6} 以下のとき正解と判定される。
-#
-#入力例 1
-#10 1
-#
-#出力例 1
-#7.7735026919
-#操作を 0 回行うとき、地面に到達する時刻は 1× 0+((10)/((1)^(1/2))) = 10 です。
-#操作を 1 回行うとき、地面に到達する時刻は 1× 1+((10)/((2)^(1/2))) ≒ 8.07 です。
-#操作を 2 回行うとき、地面に到達する時刻は 1× 2+((10)/((3)^(1/2))) ≒ 7.77 です。
-#操作を 3 回行うとき、地面に到達する時刻は 1× 3+((10)/((4)^(1/2))) = 8 です。
-#操作を 4 回以上行っても、地面への到達時刻は遅くなるのみです。
-#よって、操作を 2 回行ってから飛び降りるのが最適で、答えは 2+((10)/((3)^(1/2))) です。
-#
-#入力例 2
-#5 10
-#
-#出力例 2
-#5.0000000000
-#操作を 1 回も行わないのが最適です。
-#
-#入力例 3
-#1000000000000000000 100
-#
-#出力例 3
-#8772053214538.5976562500
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    g = 1
+    ans = 10**18
+    for i in range(B+1):
+        ans = min(ans, i + A/((g+i)**0.5))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    A,B = map(int,input().split())
+    g = 1
+    t = 0
+    while True:
+        if A/(g**0.5) < t:
+            break
+        t += B
+        g += 1
+    print(t)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    g = 1
+    t = 0
+    while g <= A:
+        g += 1
+        t += B
+    print(t + A / (g ** 0.5))
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    g = 1
+    t = 0
+    while A > t:
+        t += B
+        g += 1
+        t += A / (g ** (1/2))
+    print(t - B)
+
+=======
+Suggestion 5
+
+def main():
+    import math
+    A,B = map(int,input().split())
+    #A = 1000000000000000000
+    #B = 100
+    g = 1
+    t = 0
+    while True:
+        t += B
+        g += 1
+        if A/((g)**(1/2)) <= t:
+            break
+    print(t)
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    from math import sqrt
+    input = sys.stdin.readline
+    A, B = map(int, input().split())
+
+    g = 1
+    time = 0
+    while True:
+        if time >= A / sqrt(g):
+            break
+        g += 1
+        time += B
+
+    print(time - B)
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    g = 1
+    ans = 0
+    while True:
+        if g * B + A / (g ** 0.5) < A:
+            ans = g * B + A / (g ** 0.5)
+            g += 1
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+
+    if A <= B:
+        print(A)
+        return
+
+    g = 1
+    ans = float('inf')
+    for i in range(100):
+        ans = min(ans, i + A / (g ** 0.5))
+        g += 1
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    g = 1
+    t = 0
+    while True:
+        if t + A/((g)**(1/2)) < 1 + t + B:
+            print(t + A/((g)**(1/2)))
+            return
+        else:
+            g += 1
+            t += B
+
+=======
+Suggestion 10
+
+def solve():
+    A,B = map(int,input().split())
+    g = 1
+    ans = A/((g) ** (1/2))
+    while (1):
+        g += 1
+        if A/((g) ** (1/2)) <= B * (g-1):
+            break
+        ans = A/((g) ** (1/2))
+    print(ans)
+    return 0

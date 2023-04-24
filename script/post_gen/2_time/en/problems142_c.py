@@ -1,46 +1,101 @@
-#Problem Statement
-#Takahashi is a teacher responsible for a class of N students.
-#The students are given distinct student numbers from 1 to N.
-#Today, all the students entered the classroom at different times.
-#According to Takahashi's record, there were A_i students in the classroom when student number i entered the classroom (including student number i).
-#From these records, reconstruct the order in which the students entered the classroom.
-#
-#Constraints
-# 1 ≦ N ≦ 10^5 
-# 1 ≦ A_i ≦ N 
-# A_i ≠ A_j  (i ≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the student numbers of the students in the order the students entered the classroom.
-#
-#Sample Input 1
-#3
-#2 3 1
-#
-#Sample Output 1
-#3 1 2
-#First, student number 3 entered the classroom.
-#Then, student number 1 entered the classroom.
-#Finally, student number 2 entered the classroom.
-#
-#Sample Input 2
-#5
-#1 2 3 4 5
-#
-#Sample Output 2
-#1 2 3 4 5
-#
-#Sample Input 3
-#8
-#8 2 7 3 4 5 6 1
-#
-#Sample Output 3
-#8 2 4 5 6 7 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(*B)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(" ".join(map(str, B)))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[A[i]-1] = i+1
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    ans = [0] * N
+    for i in range(N):
+        ans[A[i] - 1] = i + 1
+    print(*ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(*B)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # A[i] = j となるようにiを入れる
+    # j = 1,2,...,N
+    # A[i] = 1 となる i の値を順に出力する
+    # その後、A[i] = 2 となる i の値を順に出力する
+    # ...
+    # A[i] = N となる i の値を順に出力する
+    # ということを繰り返す。
+    # 1 <= N <= 10^5 なので、O(N) で解ける。
+    # A[i] = j となるように i を入れるには、
+    # A[i] = j となるような i を順に見ていき、
+    # A[i] = j となる i が見つかったら、
+    # その i を順に出力していく。
+    # その後、A[i] = j+1 となるような i を順に見ていき、
+    # A[i] = j+1 となる i が見つかったら、
+    # その i を順に出力していく。
+    # ...
+    # ということを繰り返す。
+    # 1 <= N <= 10^5 なので、O(N) で解ける。
+    # A[i] = j となるような i を見つけるには、
+    # A[i] = j となるような i を順に見ていく。
+    # その i を順に出力していく。
+    # ということを繰り返す。
+    # 1 <= N <= 10^5 なので、O(N) で解ける。
+    # A[i] = j となるような i を順に見ていくには、

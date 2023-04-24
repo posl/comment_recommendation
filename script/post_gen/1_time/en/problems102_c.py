@@ -1,53 +1,157 @@
-#Problem Statement
-#Snuke has an integer sequence A of length N.
-#He will freely choose an integer b.
-#Here, he will get sad if A_i and b+i are far from each other.
-#More specifically, the sadness of Snuke is calculated as follows:
-#abs(A_1 - (b+1)) + abs(A_2 - (b+2)) + ... + abs(A_N - (b+N))
-#Here, abs(x) is a function that returns the absolute value of x.
-#Find the minimum possible sadness of Snuke.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the minimum possible sadness of Snuke.
-#
-#Sample Input 1
-#5
-#2 2 3 5 5
-#
-#Sample Output 1
-#2
-#If we choose b=0, the sadness of Snuke would be abs(2-(0+1))+abs(2-(0+2))+abs(3-(0+3))+abs(5-(0+4))+abs(5-(0+5))=2.
-#Any choice of b does not make the sadness of Snuke less than 2, so the answer is 2.
-#
-#Sample Input 2
-#9
-#1 2 3 4 5 6 7 8 9
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#6
-#6 5 4 3 2 1
-#
-#Sample Output 3
-#18
-#
-#Sample Input 4
-#7
-#1 1 1 1 2 3 4
-#
-#Sample Output 4
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - (i + 1)
+    b.sort()
+    if n % 2 == 1:
+        ans = 0
+        for i in range(n):
+            ans += abs(b[i] - b[n // 2])
+        print(ans)
+    else:
+        ans1 = 0
+        for i in range(n):
+            ans1 += abs(b[i] - b[n // 2])
+        ans2 = 0
+        for i in range(n):
+            ans2 += abs(b[i] - b[n // 2 - 1])
+        print(min(ans1, ans2))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - (i + 1)
+    b.sort()
+    if n % 2 == 1:
+        m = b[n // 2]
+    else:
+        m = (b[n // 2] + b[n // 2 - 1]) // 2
+    ans = 0
+    for i in range(n):
+        ans += abs(b[i] - m)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - (i + 1)
+    b.sort()
+    if n % 2 == 0:
+        print(b[n // 2] - b[n // 2 - 1] + 1)
+    else:
+        print(b[n // 2] - b[n // 2] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = a[n//2]
+    ans = 0
+    for i in range(n):
+        ans += abs(a[i] - b)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [a[i] - (i+1) for i in range(n)]
+    b.sort()
+    if n % 2 == 1:
+        x = b[n//2]
+    else:
+        x = (b[n//2-1] + b[n//2]) // 2
+    print(sum([abs(b[i]-x) for i in range(n)]))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        b.append(a[i] - i - 1)
+    b.sort()
+    if n % 2 == 1:
+        median = b[n // 2]
+    else:
+        median = (b[n // 2] + b[n // 2 - 1]) // 2
+    ans = 0
+    for i in range(n):
+        ans += abs(b[i] - median)
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    a = [a[i] - i - 1 for i in range(n)]
+    a.sort()
+    b = a[n//2]
+    print(sum([abs(a[i]-b) for i in range(n)]))
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i] - (i+1)
+    sum = abs(sum)
+    print(sum)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    b = 0
+    for i in range(N):
+        b += A[i] - i - 1
+    A.sort()
+    b1 = b
+    b2 = b
+    if N % 2 == 0:
+        b1 -= A[int(N/2)] - int(N/2)
+        b2 -= A[int(N/2)-1] - int(N/2)
+    else:
+        b1 -= A[int(N/2)] - int(N/2)
+        b2 -= A[int(N/2)] - int(N/2)
+    print(min(abs(b1), abs(b2)))
+
+=======
+Suggestion 10
+
+def min_sadness(a):
+    b = sum(a) // len(a)
+    return sum(abs(a[i] - (b + i + 1)) for i in range(len(a)))

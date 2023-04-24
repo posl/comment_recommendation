@@ -1,35 +1,114 @@
-#Problem Statement
-#You are given integers A and B, each between 1 and 3 (inclusive).
-#Determine if there is an integer C between 1 and 3 (inclusive) such that A × B × C is an odd number.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A, B ≦ 3
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#If there is an integer C between 1 and 3 that satisfies the condition, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 1
-#
-#Sample Output 1
-#Yes
-#Let C = 3. Then, A × B × C = 3 × 1 × 3 = 9, which is an odd number.
-#
-#Sample Input 2
-#1 2
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#2 2
-#
-#Sample Output 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if (A * B) % 2 == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if (A == 1 and B == 2) or (A == 2 and B == 1):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a == 1:
+        if b == 1:
+            print('No')
+        else:
+            print('Yes')
+    elif a == 2:
+        if b == 2:
+            print('No')
+        else:
+            print('Yes')
+    else:
+        if b == 3:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if (A*B)%2 == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a == 1 or b == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    input = sys.stdin.readline
+    A, B = map(int, input().split())
+    if (A * B) % 2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if A*B%2 == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if a*b%2 == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 9
+
+def is_odd(a, b):
+    if (a * b) % 2 == 0:
+        return "No"
+    else:
+        return "Yes"
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    A,B = map(int,input().split())
+    #output
+    if A*B%2 == 0:
+        print("No")
+    else:
+        print("Yes")

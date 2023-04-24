@@ -1,35 +1,25 @@
-#問題文
-#整数 A, B が与えられます。
-#A^B の値を出力してください。
-#
-#制約
-#1 ≦ A, B ≦ 9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 3
-#
-#出力例 1
-#64
-#4^3 = 64 であるので、64 を出力します。
-#
-#入力例 2
-#5 5
-#
-#出力例 2
-#3125
-#
-#入力例 3
-#8 1
-#
-#出力例 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(a**b)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(A**B)
+
+=======
+Suggestion 3
+
+def main():
+    #input
+    A, B = map(int, input().split())
+
+    #output
+    print(A ** B)

@@ -1,30 +1,41 @@
-#Problem Statement
-#Takahashi is wearing white now.
-#He wears black on the day after he wears white, and he wears white on the day after he wears black.
-#What color will he wear N days later?
-#
-#Constraints
-#N is an integer.
-#1 ≦ N ≦ 30
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If he will wear white N days later, print White; if he will wear black, print Black.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#White
-#Takahashi will wear black one day later and wear white two days later.
-#
-#Sample Input 2
-#5
-#
-#Sample Output 2
-#Black
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print("White")
+    else:
+        print("Black")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print('White')
+    else:
+        print('Black')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print("White")
+    else:
+        print("Black")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if (n % 2 == 0):
+        print("White")
+    else:
+        print("Black")

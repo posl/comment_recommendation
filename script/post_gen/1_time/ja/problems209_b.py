@@ -1,43 +1,127 @@
-#問題文
-#高橋商店では N 個の商品が売られています。i (1 ≦ i ≦ N) 番目の商品の定価は A_i 円です。
-#今日はセールが行われており、偶数番目の商品は定価の 1 円引きの値段で買うことができます。奇数番目の商品は定価で売られています。
-#あなたの所持金は X 円です。これら N 個の商品を全て買うことができますか？
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ 10000
-#1 ≦ A_i ≦ 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 ... A_N
-#
-#出力
-#N 個の商品を全て買うことができるなら Yes、できないなら No と出力せよ。
-#
-#入力例 1
-#2 3
-#1 3
-#
-#出力例 1
-#Yes
-#1 番目の商品は 1 円、2 番目の商品は定価より 1 円引きの 2 円で買うことができます。あなたの所持金は 3 円なので、ちょうどの金額で 2 個の商品を全て買うことができます。
-#
-#入力例 2
-#4 10
-#3 3 4 4
-#
-#出力例 2
-#No
-#4 個の商品はそれぞれ 3 円、2 円、4 円、3 円で買うことができます。4 個の商品を全て買うためには 12 円必要ですが、あなたの所持金は 10 円なので全て買うことはできません。
-#
-#入力例 3
-#8 30
-#3 1 4 1 5 9 2 6
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i % 2 == 0:
+            ans += A[i]
+        else:
+            ans += A[i] - 1
+    if ans <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        if i % 2 == 0:
+            total += A[i]
+        else:
+            total += A[i] - 1
+    if total <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if i % 2 == 1:
+            A[i] -= 1
+    if sum(A) <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if i % 2 == 1:
+            A[i] -= 1
+    if sum(A) <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if i % 2 == 0:
+            sum += A[i]
+        else:
+            sum += A[i] - 1
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if i % 2 == 0:
+            X -= A[i]
+        else:
+            X -= A[i] - 1
+    if X >= 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if i % 2 == 1:
+            A[i] = max(0, A[i] - 1)
+    if sum(A) <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    i = 0
+    while i < N:
+        if i % 2 == 0:
+            X -= A[i]
+        i += 1
+    
+    if X >= 0:
+        print('Yes')
+    else:
+        print('No')

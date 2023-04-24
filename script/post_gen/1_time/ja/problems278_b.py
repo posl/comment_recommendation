@@ -1,53 +1,203 @@
-#問題文
-#高橋君は置き時計を買いました。
-#この時計は、現在の時刻が 24 時制で AB 時 CD 分であるときに図 1 のように時刻を表します。
-#例えば図 2 では、時計は 7 時 58 分を示しています。
-#時刻の表示方法をより形式的に説明すると次のようになります。
-#現在の時刻が 24 時制で h 時 m 分であるとします。ここで 24 時制とは、時間を 0 以上 23 以下の整数で、分を 0 以上 59 以下の整数で表す時刻の表現方法を言います。 
-#h の 10 の位を A, 1 の位を B, m の 10 の位を C, 1 の位を D とします。(ただし h, m が 1 桁である場合は先行ゼロを追加して考えます。)
-#このとき時計は左上に A を、左下に B を、右上に C を、右下に D を表示します。
-#高橋君は、次の条件を満たす時刻を 見間違えやすい時刻 と呼ぶことにしました。
-#時計の表示の右上と左下を入れ替えても、それに対応する 24 時制の時刻が存在する。
-#例えば 図 3 は 20 時 13 分を示していますが、時計の表示の右上と左下を入れ替えると 21 時 3 分を意味する表示になります。よって 20 時 13 分は見間違えやすい時刻です。
-#今、時計は H 時 M 分を示しています。
-#(現時点も含めて)以降はじめて訪れる見間違えやすい時刻を 24 時制で答えてください。
-#
-#制約
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H, M は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H M
-#
-#出力
-#答えを h 時 m 分とする。ここで h, m は 0 ≦ h ≦ 23, 0 ≦ m ≦ 59 である必要がある。
-#このとき h, m を以下の形式で出力せよ。  
-#h m
-#なお、h, m を 2 桁に揃えるために先行ゼロをつけた形式で出力しても正答と見なされる。
-#
-#入力例 1
-#1 23
-#
-#出力例 1
-#1 23
-#1 時 23 分は見間違えやすい時刻です。なぜならば、時計の表示の右上と左下を入れ替えると 2 時 13 分を意味する表示になるからです。
-#よって答えは 1 時 23 分です。
-#なお、01 23 のように先行ゼロをつけた形式で出力しても正答として扱われます。
-#
-#入力例 2
-#19 57
-#
-#出力例 2
-#20 0
-#19 時 57 分以降ではじめて訪れる見間違えやすい時刻は 20 時 0 分です。
-#
-#入力例 3
-#20 40
-#
-#出力例 3
-#21 0
-#24 時制では 24 時 0 分という表記は合法でないのに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, M = map(int, input().split())
+    if M == 59:
+        H += 1
+        M = 0
+    else:
+        M += 1
+    print(H, M)
+
+=======
+Suggestion 2
+
+def main():
+    H, M = map(int, input().split())
+    if M == 59:
+        H += 1
+        M = 0
+    else:
+        M += 1
+    if H >= 24:
+        H = 0
+    print(H, M)
+
+=======
+Suggestion 3
+
+def main():
+    H, M = map(int, input().split())
+    if M == 59:
+        H += 1
+        M = 0
+    else:
+        M += 1
+    print(str(H).zfill(2), str(M).zfill(2))
+
+=======
+Suggestion 4
+
+def main():
+    H, M = map(int, input().split())
+    if M == 0:
+        print(H, 0)
+    else:
+        print(H + 1, 0)
+
+=======
+Suggestion 5
+
+def main():
+    h, m = map(int, input().split())
+    if m == 0:
+        if h == 0:
+            print("0 0")
+        else:
+            print(h, 0)
+    else:
+        print(h, m)
+
+=======
+Suggestion 6
+
+def main():
+    H, M = map(int, input().split())
+    if H == 0 and M == 0:
+        print("0 0")
+    else:
+        if M < 10:
+            M = "0" + str(M)
+        if H < 10:
+            H = "0" + str(H)
+        if M == "00":
+            M = "0" + str(M)
+        if H == "00":
+            H = "0" + str(H)
+
+        if M[0] == H[1] and M[1] == H[0]:
+            print(H, M)
+        else:
+            if M[0] == H[1]:
+                if int(M[1]) < 9:
+                    print(H, int(M[1]) + 1)
+                else:
+                    print(int(H) + 1, "0" + str(0))
+            elif M[1] == H[0]:
+                if int(M[0]) < 5:
+                    print(H, int(M[0]) + 1)
+                else:
+                    print(int(H) + 1, "0" + str(0))
+            else:
+                if int(M[0]) < 5:
+                    print(H, int(M[0]) + 1)
+                else:
+                    print(int(H) + 1, "0" + str(0))
+
+=======
+Suggestion 7
+
+def main():
+    H, M = map(int, input().split())
+    m = M
+    h = H
+    while True:
+        if (h%10 == m//10 and h//10 == m%10):
+            print(h, m)
+            break
+        m += 1
+        if m >= 60:
+            m = 0
+            h += 1
+        if h >= 24:
+            h = 0
+
+=======
+Suggestion 8
+
+def main():
+    h, m = map(int, input().split())
+    if m >= 10:
+        h += 1
+    if h >= 24:
+        h -= 24
+    print(h, 0)
+
+=======
+Suggestion 9
+
+def main():
+    H, M = map(int, input().split())
+    if M == 0:
+        print(H, M)
+    else:
+        print(H, M)
+        print(H+1, M)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    h, m = map(int, input().split())
+    #処理
+    if m == 0:
+        print(h, "0")
+    elif m <= 59:
+        print(h, "0")
+    elif m <= 69:
+        print(h + 1, "0")
+    elif m <= 79:
+        print(h + 1, "1")
+    elif m <= 89:
+        print(h + 1, "2")
+    elif m <= 99:
+        print(h + 1, "3")
+    elif m <= 109:
+        print(h + 1, "4")
+    elif m <= 119:
+        print(h + 1, "5")
+    elif m <= 129:
+        print(h + 1, "6")
+    elif m <= 139:
+        print(h + 1, "7")
+    elif m <= 149:
+        print(h + 1, "8")
+    elif m <= 159:
+        print(h + 1, "9")
+    elif m <= 169:
+        print(h + 2, "0")
+    elif m <= 179:
+        print(h + 2, "1")
+    elif m <= 189:
+        print(h + 2, "2")
+    elif m <= 199:
+        print(h + 2, "3")
+    elif m <= 209:
+        print(h + 2, "4")
+    elif m <= 219:
+        print(h + 2, "5")
+    elif m <= 229:
+        print(h + 2, "6")
+    elif m <= 239:
+        print(h + 2, "7")
+    elif m <= 249:
+        print(h + 2, "8")
+    elif m <= 259:
+        print(h + 2, "9")
+    elif m <= 269:
+        print(h + 3, "0")
+    elif m <= 279:
+        print(h + 3, "1")
+    elif m <= 289:
+        print(h + 3, "2")
+    elif m <= 299:
+        print(h + 3, "3")
+    elif m <= 309:
+        print(h + 3, "4")
+    elif m <= 319:
+        print(h + 3, "5")
+    elif m <=

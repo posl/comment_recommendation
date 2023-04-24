@@ -1,39 +1,164 @@
-#Problem Statement
-#Let f(A, B) be the exclusive OR of A, A+1, ..., B. Find f(A, B).
-#What is exclusive OR?
-#The bitwise exclusive OR of integers c_1, c_2, ..., c_n (let us call it y) is defined as follows:
-#When y is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if, the number of integers among c_1, c_2, ...c_m whose binary representations have 1 in the 2^k's place, is odd, and 0 if that count is even.
-#For example, the exclusive OR of 3 and 5 is 6. (When written in base two: the exclusive OR of 011 and 101 is 110.)
-#
-#Constraints
-#All values in input are integers.
-#0 ≦ A ≦ B ≦ 10^{12}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Compute f(A, B) and print it.
-#
-#Sample Input 1
-#2 4
-#
-#Sample Output 1
-#5
-#2, 3, 4 are 010, 011, 100 in base two, respectively.
-#The exclusive OR of these is 101, which is 5 in base ten.
-#
-#Sample Input 2
-#123 456
-#
-#Sample Output 2
-#435
-#
-#Sample Input 3
-#123456789012 123456789012
-#
-#Sample Output 3
-#123456789012
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(a, b):
+    if a % 4 == 0:
+        return a
+    elif a % 4 == 1:
+        return 1
+    elif a % 4 == 2:
+        return a + 1
+    elif a % 4 == 3:
+        return 0
+    if b % 4 == 0:
+        return b
+    elif b % 4 == 1:
+        return 1
+    elif b % 4 == 2:
+        return b + 1
+    elif b % 4 == 3:
+        return 0
+
+a, b = map(int, input().split())
+ans = f(a - 1, b)
+print(ans)
+
+=======
+Suggestion 2
+
+def f(a, b):
+    if a % 2 == 0:
+        if b % 2 == 0:
+            return b - a
+        else:
+            return b - a + 1
+    else:
+        if b % 2 == 0:
+            return b - a + 1
+        else:
+            return b - a
+
+=======
+Suggestion 3
+
+def f(a,b):
+    if a%2==0:
+        if b%2==0:
+            return a^b
+        else:
+            return a^b^1
+    else:
+        if b%2==0:
+            return a^b^1
+        else:
+            return a^b
+
+=======
+Suggestion 4
+
+def f(A, B):
+    if A == B:
+        return A
+    elif A % 2 == 0 and B % 2 == 0:
+        return 0 ^ f(A + 1, B - 1)
+    elif A % 2 == 0 and B % 2 == 1:
+        return 1 ^ f(A + 1, B - 1)
+    elif A % 2 == 1 and B % 2 == 0:
+        return A ^ f(A + 1, B - 1)
+    elif A % 2 == 1 and B % 2 == 1:
+        return (A + 1) ^ f(A + 1, B - 1)
+
+A, B = map(int, input().split())
+print(f(A, B))
+
+=======
+Suggestion 5
+
+def solve(a, b):
+    if a == b:
+        return a
+    elif a % 2 == 0 and b % 2 == 1:
+        return 1
+    elif a % 2 == 1 and b % 2 == 0:
+        return 0
+    elif a % 2 == 0 and b % 2 == 0:
+        return solve(a // 2, b // 2)
+    elif a % 2 == 1 and b % 2 == 1:
+        return solve(a // 2, b // 2) ^ 1
+
+=======
+Suggestion 6
+
+def f(A, B):
+    if A == B:
+        return A
+    elif A + 1 == B:
+        return A ^ B
+    else:
+        if A % 2 == 0:
+            if B % 2 == 0:
+                return f(A, B - 1) ^ B
+            else:
+                return f(A, B - 1)
+        else:
+            if B % 2 == 0:
+                return f(A + 1, B) ^ A
+            else:
+                return f(A + 1, B - 1)
+
+A, B = map(int, input().split())
+print(f(A, B))
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    if A % 2 == 0:
+        if B % 2 == 0:
+            print((A ^ B) ^ B)
+        else:
+            print((A ^ B) ^ A)
+    else:
+        if B % 2 == 0:
+            print(A ^ B)
+        else:
+            print(A ^ B ^ A)
+
+=======
+Suggestion 8
+
+def f(A, B):
+    def f1(N):
+        if N % 2 == 0:
+            return N
+        else:
+            return 1 - N
+    return f1(A - 1) ^ f1(B)
+
+=======
+Suggestion 9
+
+def f(A, B):
+    return A ^ B ^ ((A ^ B) + 1) >> 1
+
+A, B = map(int, input().split())
+print(f(A, B))
+
+=======
+Suggestion 10
+
+def f(A,B):
+    #print("A: {}, B: {}".format(A,B))
+    if A==B:
+        return A
+    elif A==0:
+        return f(1,B)
+    elif A%2==0:
+        return f(A+1,B)
+    elif B%2==0:
+        return f(A,B-1)
+    else:
+        return f(A+1,B-1)

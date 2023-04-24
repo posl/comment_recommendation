@@ -1,82 +1,235 @@
-#Problem Statement
-#The battery of Takahashi's smartphone has N mAh capacity. At time 0.5, 1.5, 2.5, and so on (that is, at time n + 0.5 for every integer n), the battery charge decreases by 1 mAh.
-#Takahashi will leave his house with his phone fully charged at time 0, visit a cafe M times, and return home at time T.
-#He will stay at the i-th cafe from time A_i to time B_i. During this stay, he charges his phone, so the battery charge does not decrease. Instead, at time n + 0.5 for every integer n, it increases by 1. However, if it is already equal to the battery capacity, it does not increase nor decrease.
-#Determine whether he can return home without the battery charge dropping to 0 on the way.
-#
-#Constraints
-#1 ≦ N ≦ 10^9
-#1 ≦ M ≦ 1000
-#1 ≦ T ≦ 10^9
-#0 < A_1 < B_1 < A_2 < B_2 < A_3 < B_3 < ... < A_M < B_M < T
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M T
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_M B_M
-#
-#Output
-#If Takahashi can return home without the battery charge dropping to 0 on the way, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#10 2 20
-#9 11
-#13 17
-#
-#Sample Output 1
-#Yes
-#The battery charge changes as follows:
-#Time 0 (leaving home): 10 mAh
-#Time 9 (the beginning of the stay at the first cafe): 1 mAh
-#Time 11 (the end of the stay at the first cafe): 3 mAh (He charges his phone in a cafe.)
-#Time 13 (the beginning of the stay at the second cafe): 1 mAh
-#Time 17 (the end of the stay at the second cafe): 5 mAh
-#Time 20 (getting home): 2 mAh
-#During this process, the battery charge never drops to 0, so we print Yes.
-#
-#Sample Input 2
-#10 2 20
-#9 11
-#13 16
-#
-#Sample Output 2
-#No
-#This case is the same as Sample Input/Output
-# 1 until he starts his stay at the second cafe with 1 mAh charge.
-#When he ends his stay there at time 16, the battery charge is 4 mAh.
-#Then at time 19.5, it drops to 0, so we print No.
-#
-#Sample Input 3
-#15 3 30
-#5 8
-#15 17
-#24 27
-#
-#Sample Output 3
-#Yes
-#The battery charge drops to 1 mAh when he gets home, but it never drops to 0 on the way.
-#
-#Sample Input 4
-#20 1 30
-#20 29
-#
-#Sample Output 4
-#No
-#The battery charge drops to 0 at time 19.5.
-#
-#Sample Input 5
-#20 1 30
-#1 10
-#
-#Sample Output 5
-#No
-#Note that when the battery charge is equal to the battery capacity, staying at a cafe does not increase the battery charge.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, T = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    charge = N
+    for i in range(M):
+        charge -= A[i] - (0 if i == 0 else B[i - 1])
+        if charge <= 0:
+            print("No")
+            return
+        charge += B[i] - A[i]
+        if charge >= N:
+            charge = N
+    charge -= T - B[M - 1]
+    if charge <= 0:
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, M, T = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    now = N
+    for i in range(M):
+        now -= A[i] - (0 if i == 0 else B[i - 1])
+        if now <= 0:
+            print('No')
+            return
+        now += B[i] - A[i]
+        now = N if now > N else now
+    now -= T - B[-1]
+    if now <= 0:
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    N, M, T = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    charge = N
+    for i in range(M):
+        charge -= A[i]
+        if charge <= 0:
+            print("No")
+            return
+        charge += B[i] - A[i]
+        if charge > N:
+            charge = N
+    charge -= T - B[-1]
+    if charge <= 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n, m, t = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    charge = n
+    for i in range(m):
+        if i == 0:
+            charge -= a[i]
+        else:
+            charge -= a[i] - b[i - 1]
+        if charge <= 0:
+            print('No')
+            return
+        charge = min(charge + b[i] - a[i], n)
+    charge -= t - b[m - 1]
+    if charge <= 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n, m, t = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    a.append(t)
+    b.append(t)
+    m += 1
+    c = 0
+    for i in range(m):
+        if i == 0:
+            c = n - a[i]
+        else:
+            c = c + b[i - 1] - a[i]
+        if c <= 0:
+            print('No')
+            return
+        c = min(c + a[i] - b[i - 1], n)
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    n, m, t = map(int, input().split())
+    a = [0] * (m + 1)
+    b = [0] * (m + 1)
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    a[m] = t
+    b[m] = t
+    charge = n
+    for i in range(m + 1):
+        charge -= a[i] - b[i - 1]
+        if charge <= 0:
+            print("No")
+            return
+        charge += a[i] - b[i - 1]
+        if charge > n:
+            charge = n
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n, m, t = map(int, input().split())
+    a = [0 for _ in range(m)]
+    b = [0 for _ in range(m)]
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    charge = n
+    for i in range(m):
+        charge -= a[i] - b[i - 1] if i > 0 else a[i]
+        if charge <= 0:
+            print("No")
+            return
+        charge += b[i] - a[i]
+        charge = min(charge, n)
+    charge -= t - b[-1]
+    print("Yes" if charge > 0 else "No")
+
+=======
+Suggestion 8
+
+def main():
+    n,m,t = map(int,input().split())
+    a = []
+    b = []
+    for _ in range(m):
+        a_,b_ = map(int,input().split())
+        a.append(a_)
+        b.append(b_)
+    charge = n
+    for i in range(m):
+        if i == 0:
+            charge -= a[i]
+            if charge <= 0:
+                print('No')
+                return
+            charge += (b[i] - a[i])
+            if charge > n:
+                charge = n
+        else:
+            charge -= (a[i] - b[i-1])
+            if charge <= 0:
+                print('No')
+                return
+            charge += (b[i] - a[i])
+            if charge > n:
+                charge = n
+    charge -= (t - b[-1])
+    if charge <= 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    N, M, T = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.append([T, T])
+    charge = N
+    for i in range(M):
+        charge -= AB[i][0] - AB[i-1][1]
+        if charge <= 0:
+            print("No")
+            return
+        charge += AB[i][1] - AB[i][0]
+        charge = min(N, charge)
+    print("Yes")
+
+=======
+Suggestion 10
+
+def solve(n, m, t, ab):
+    battery = n
+    for i in range(m):
+        if i == 0:
+            battery -= ab[i][0]
+        else:
+            battery -= ab[i][0] - ab[i - 1][1]
+        if battery <= 0:
+            return False
+        battery += ab[i][1] - ab[i][0]
+        if battery > n:
+            battery = n
+    battery -= t - ab[m - 1][1]
+    if battery <= 0:
+        return False
+    return True

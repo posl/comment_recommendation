@@ -1,35 +1,102 @@
-#Problem Statement
-#Given is a three-digit integer N. Does N contain the digit 7?
-#If so, print Yes; otherwise, print No.
-#
-#Constraints
-#100 ≦ N ≦ 999
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If N contains the digit 7, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#117
-#
-#Sample Output 1
-#Yes
-#117 contains 7 as its last digit.
-#
-#Sample Input 2
-#123
-#
-#Sample Output 2
-#No
-#123 does not contain the digit 7.
-#
-#Sample Input 3
-#777
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N % 10 == 7 or (N // 10) % 10 == 7 or (N // 100) % 10 == 7:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 10 == 7 or n // 10 % 10 == 7 or n // 100 == 7:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n % 10 == 7 or (n // 10) % 10 == 7 or (n // 100) % 10 == 7:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 10 == 7 or (N // 10) % 10 == 7 or N // 100 == 7:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N = input()
+    if '7' in N:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if "7" in str(N):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    if "7" in str(n):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    num = input()
+    if '7' in num:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print("Yes" if "7" in str(n) else "No")
+
+=======
+Suggestion 10
+
+def main():
+    # Get input
+    n = int(input())
+    # Check if 7 is in the number
+    if "7" in str(n):
+        print("Yes")
+    else:
+        print("No")

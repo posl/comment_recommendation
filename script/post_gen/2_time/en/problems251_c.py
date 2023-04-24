@@ -1,71 +1,216 @@
-#Problem Statement
-#Poem Online Judge (POJ) is an online judge that gives scores to submitted strings.
-#There were N submissions to POJ.  In the i-th earliest submission, string S_i was submitted, and a score of T_i was given.  (The same string may have been submitted multiple times.)
-#Note that POJ may not necessarily give the same score to submissions with the same string.
-#A submission is said to be an original submission if the string in the submission is never submitted in any earlier submission.
-#A submission is said to be the best submission if it is an original submission with the highest score.  If there are multiple such submissions, only the earliest one is considered the best submission.
-#Find the index of the best submission.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#S_i is a string consisting of lowercase English characters.
-#S_i has a length between 1 and 10, inclusive.
-#0 ≦ T_i ≦ 10^9
-#N and T_i are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#aaa 10
-#bbb 20
-#aaa 30
-#
-#Sample Output 1
-#2
-#We will refer to the i-th earliest submission as Submission i.
-#Original submissions are Submissions 1 and 2.  Submission 3 is not original because it has the same string as that in Submission 1.
-#Among the original submissions, Submission 2 has the highest score.  Therefore, this is the best submission.
-#
-#Sample Input 2
-#5
-#aaa 9
-#bbb 10
-#ccc 10
-#ddd 10
-#bbb 11
-#
-#Sample Output 2
-#2
-#Original submissions are Submissions 1, 2, 3, and 4.
-#Among them, Submissions 2, 3, and 4 have the highest scores.  In this case, the earliest submission among them, Submission 2, is the best.
-#As in this sample, beware that if multiple original submissions have the highest scores, only the one with the earliest among them is considered the best submission.
-#
-#Sample Input 3
-#10
-#bb 3
-#ba 1
-#aa 4
-#bb 1
-#ba 5
-#aa 9
-#aa 2
-#ab 6
-#bb 5
-#ab 3
-#
-#Sample Output 3
-#8
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    score = {}
+    for i in range(n):
+        s, t = input().split()
+        t = int(t)
+        if s not in score:
+            score[s] = t
+    print(n - len(score) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    max_score = 0
+    max_score_index = 0
+    for i in range(N):
+        if S[i] not in S[:i] and T[i] > max_score:
+            max_score = T[i]
+            max_score_index = i
+    print(max_score_index+1)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    d = {}
+    for i in range(N-1, -1, -1):
+        if S[i] not in d:
+            d[S[i]] = T[i]
+    print(N - len(d))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S_i, T_i = input().split()
+        S.append(S_i)
+        T.append(int(T_i))
+
+    #print(S)
+    #print(T)
+
+    # 既出の文字列を記録
+    S_set = set()
+    # 各文字列の最高得点を記録
+    T_max = {}
+    # 各文字列の最高得点を記録したSubmissionのインデックスを記録
+    T_max_index = {}
+    for i in range(N):
+        if S[i] not in S_set:
+            S_set.add(S[i])
+            T_max[S[i]] = T[i]
+            T_max_index[S[i]] = i
+        else:
+            if T[i] > T_max[S[i]]:
+                T_max[S[i]] = T[i]
+                T_max_index[S[i]] = i
+
+    #print(S_set)
+    #print(T_max)
+    #print(T_max_index)
+
+    # 各文字列の最高得点を記録したSubmissionのインデックスのうち、最小のものを探す
+    T_max_index_min = N
+    for s in S_set:
+        T_max_index_min = min(T_max_index_min, T_max_index[s])
+
+    print(T_max_index_min + 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    submissions = []
+    for i in range(N):
+        S, T = input().split()
+        submissions.append([S, int(T), i + 1])
+    submissions = sorted(submissions, key=lambda x: x[2])
+    submissions = sorted(submissions, key=lambda x: x[1], reverse=True)
+    best = []
+    for i in range(N):
+        if submissions[i][0] not in [s[0] for s in best]:
+            best.append(submissions[i])
+    print(best[0][2])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(int(b))
+    best = 0
+    best_index = 0
+    for i in range(n):
+        if s[i] not in s[:i] and best < t[i]:
+            best = t[i]
+            best_index = i
+    print(best_index + 1)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    dict = {}
+    for i in range(n):
+        s, t = input().split()
+        if s in dict:
+            dict[s].append([i, int(t)])
+        else:
+            dict[s] = [[i, int(t)]]
+    max = 0
+    max_index = 0
+    for key, value in dict.items():
+        if len(value) == 1:
+            if value[0][1] > max:
+                max = value[0][1]
+                max_index = value[0][0]
+        else:
+            value.sort(key=lambda x: x[1], reverse=True)
+            if value[0][1] > max:
+                max = value[0][1]
+                max_index = value[0][0]
+    print(max_index + 1)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        st = input().split()
+        S.append(st[0])
+        T.append(int(st[1]))
+    T_max = max(T)
+    T_max_idx = T.index(T_max)
+    S_max = S[T_max_idx]
+    T_max_idx2 = 0
+    for i in range(N):
+        if T[i] == T_max and S[i] == S_max:
+            T_max_idx2 = i
+            break
+    print(T_max_idx2 + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+
+    # 1. 元の提出を抽出する
+    # 2. 最高得点の提出を抽出する
+    # 3. 最高得点の提出のうち、最も早い提出を抽出する
+    # 4. 3の提出の番号を出力する
+
+    # 1. 元の提出を抽出する
+    original_submissions = []
+    for i in range(N):
+        # S[i] が S[:i] に存在するかどうか
+        if S[i] not in S[:i]:
+            original_submissions.append(i)
+
+    # 2. 最高得点の提出を抽出する
+    best_submissions = []
+    best_score = -1
+    for i in original_submissions:
+        if T[i] > best_score:
+            best_score = T[i]
+
+    # 3. 最高得点の提出のうち、最も早い提出を抽出する
+    best_submission = -1
+    for i in original_submissions:
+        if T[i] == best_score:
+            best_submission = i
+            break
+
+    # 4. 3の提出の番号を出力する
+    print(best_submission + 1)

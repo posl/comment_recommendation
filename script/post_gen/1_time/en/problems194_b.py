@@ -1,53 +1,207 @@
-#Problem Statement
-#Your company has N employees, called Employee 1 through N.
-#You have received two work orders, called Work A and B, which must be completed.
-#Employee i can complete Work A in A_i minutes and Work B in B_i minutes.
-#You will assign each work to one employee.
-#You can assign both works to the same employee, in which case the time it takes for him/her to complete them is the sum of the times it takes for him/her to do them individually.
-#If you assign the works to different employees, the time it takes for them to complete them is the longer of the times it takes for them to do their respective works.
-#Find the shortest possible time needed to complete the works.
-#
-#Constraints
-#2 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^5
-#1 ≦ B_i ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the shortest possible time needed to complete the works, in minutes.
-#
-#Sample Input 1
-#3
-#8 5
-#4 4
-#7 9
-#
-#Sample Output 1
-#5
-#If you assign Work A to Employee 2 and Work B to Employee 1, they will complete them in 4 and 5 minutes, respectively.
-#Since you assigned the works to different employees, it will take max(4, 5) = 5 minutes for the two works to be finished.
-#It is impossible to finish them earlier.
-#
-#Sample Input 2
-#3
-#11 7
-#3 2
-#6 7
-#
-#Sample Output 2
-#5
-#It is optimal to assign both works to Employee 2.
-#Note that if you assign both works to the same employee, the time it takes for him/her to complete them is the sum of the times it takes for him/her to do them individually.  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 0:
+        print(B[N // 2] + B[N // 2 - 1] - A[N // 2] - A[N // 2 - 1] + 1)
+    else:
+        print(B[N // 2] - A[N // 2] + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 1:
+        # N is odd
+        print(max(A[N//2], B[N//2]))
+    else:
+        # N is even
+        print(max(A[N//2-1]+A[N//2], B[N//2-1]+B[N//2]))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 1:
+        print(B[N // 2] - A[N // 2] + 1)
+    else:
+        print(min(B[N // 2], B[N // 2 - 1]) - max(A[N // 2], A[N // 2 - 1]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 0:
+        print((B[N // 2] + B[N // 2 - 1]) - (A[N // 2] + A[N // 2 - 1]) + 1)
+    else:
+        print(B[N // 2] - A[N // 2] + 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 1:
+        ans = B[N // 2] - A[N // 2] + 1
+    else:
+        ans = min(B[N // 2] + B[N // 2 - 1], A[N // 2] + A[N // 2 - 1]) - max(A[N // 2], B[N // 2]) + 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                ans = min(ans, A[i] + B[j])
+            else:
+                ans = min(ans, max(A[i], B[j]))
+    print(ans)
+
+main()
+
+I'm not sure if this is the best way to
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        tmp1, tmp2 = map(int, input().split())
+        a.append(tmp1)
+        b.append(tmp2)
+
+    a.sort()
+    b.sort()
+
+    if n % 2 == 0:
+        print((a[n//2-1]+a[n//2]+b[n//2-1]+b[n//2])//2)
+    else:
+        print(max(a[n//2], b[n//2]))
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        ans = max(ans, min(A[i], B[(i+1)%N]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    min = 100000
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                if A[i] + B[j] < min:
+                    min = A[i] + B[j]
+            else:
+                if max(A[i],B[j]) < min:
+                    min = max(A[i],B[j])
+    print(min)
+
+=======
+Suggestion 10
+
+def path(N, A, B):
+    minTime = 10**9
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                minTime = min(minTime, A[i] + B[j])
+            else:
+                minTime = min(minTime, max(A[i], B[j]))
+    return minTime
+
+N = int(input())
+A, B = [], []
+for i in range(N):
+    a, b = map(int, input().split())
+    A.append(a)
+    B.append(b)
+print(path(N, A, B))
+
+I have a question regarding the time complexity of this solution. I believe that the time complexity should be O(N^2) because there are two nested for loops. Is this correct?
+
+Yes, I think so. You can check the complexity of the min() and max() functions in Python to make sure, though.
+
+The max() and min() functions are O(N) in Python.
+
+Thanks for contributing an answer to Code Golf Stack Exchange!
+
+Sign up using Email and Password

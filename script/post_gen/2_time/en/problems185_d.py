@@ -1,62 +1,223 @@
-#Problem Statement
-#There are N squares arranged in a row from left to right. Let Square i be the i-th square from the left.
-#M of those squares, Square A_1, A_2, A_3, ..., A_M, are blue; the others are white. (M may be 0, in which case there is no blue square.)
-#You will choose a positive integer k just once and make a stamp with width k. In one use of a stamp with width k, you can choose k consecutive squares from the N squares and repaint them red, as long as those k squares do not contain a blue square.
-#At least how many uses of the stamp are needed to have no white square, with the optimal choice of k and the usage of the stamp?
-#
-#Constraints
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i are pairwise distinct.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#Output
-#Print the minimum number of uses of the stamp needed to have no white square.
-#
-#Sample Input 1
-#5 2
-#1 3
-#
-#Sample Output 1
-#3
-#If we choose k = 1 and repaint the three white squares one at a time, three uses are enough, which is optimal.
-#Choosing k = 2 or greater would make it impossible to repaint Square 2, because of the restriction that does not allow the k squares to contain a blue square.
-#
-#Sample Input 2
-#13 3
-#13 3 9
-#
-#Sample Output 2
-#6
-#One optimal strategy is choosing k = 2 and using the stamp as follows:
-#Repaint Squares 1, 2 red.
-#Repaint Squares 4, 5 red.
-#Repaint Squares 5, 6 red.
-#Repaint Squares 7, 8 red.
-#Repaint Squares 10, 11 red.
-#Repaint Squares 11, 12 red.
-#Note that, although the k consecutive squares chosen when using the stamp cannot contain blue squares, they can contain already red squares.
-#
-#Sample Input 3
-#5 5
-#5 2 1 4 3
-#
-#Sample Output 3
-#0
-#If there is no white square from the beginning, we do not have to use the stamp at all.
-#
-#Sample Input 4
-#1 0
-#
-#
-#Sample Output 4
-#1
-#M may be 0.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if M == 0:
+        print(1)
+        return
+    A.sort()
+    A = [0] + A + [N + 1]
+    D = [A[i + 1] - A[i] - 1 for i in range(M + 1)]
+    D = [d for d in D if d != 0]
+    K = max(D)
+    print((sum(D) + K - 1) // K + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = [0] + A + [N + 1]
+    B = []
+    for i in range(M + 1):
+        B.append(A[i + 1] - A[i] - 1)
+    B = list(filter(lambda x: x > 0, B))
+    if len(B) == 0:
+        print(0)
+        return
+    k = min(B)
+    for b in B:
+        k = gcd(k, b)
+    print((max(B) + k - 1) // k)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    if M == 0:
+        print(1)
+        return
+
+    if N == M:
+        print(0)
+        return
+
+    diff = []
+    for i in range(M - 1):
+        diff.append(A[i + 1] - A[i] - 1)
+
+    diff.sort(reverse=True)
+
+    if diff[0] == 0:
+        print(1)
+        return
+
+    print(max(1, (diff[0] - 1) // (M - 1) + 1))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [A[0] - 1]
+    for i in range(1, M):
+        B.append(A[i] - A[i - 1] - 1)
+    B.append(N - A[M - 1])
+    if M == 0:
+        print(1)
+        return
+    k = min(B)
+    if k <= 0:
+        print(M)
+        return
+    ans = M
+    for b in B:
+        ans += b // k
+        if b % k == 0:
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [0] + a + [n + 1]
+    a.sort()
+    b = []
+    for i in range(m + 1):
+        b.append(a[i + 1] - a[i] - 1)
+    b = [x for x in b if x > 0]
+    k = min(b)
+    ans = 0
+    for x in b:
+        ans += (x + k - 1) // k
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.insert(0, 0)
+    A.append(N + 1)
+    B = []
+    for i in range(M + 1):
+        if A[i + 1] - A[i] - 1 > 0:
+            B.append(A[i + 1] - A[i] - 1)
+    if len(B) == 0:
+        print(0)
+        return
+    K = min(B)
+    for i in range(len(B)):
+        if B[i] % K == 0:
+            B[i] = B[i] // K
+        else:
+            B[i] = B[i] // K + 1
+    print(sum(B))
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        return
+
+    if N == M:
+        print(0)
+        return
+
+    if M == 1:
+        print(1)
+        return
+
+    if M == 2:
+        print(2)
+        return
+
+    d = []
+    for i in range(M-1):
+        d.append(A[i+1] - A[i] - 1)
+
+    d.sort(reverse=True)
+    k = 1
+    for i in range(M-2):
+        k = max(k, d[i] + 1)
+    print((k + 1) // 2)
+
+main()
+
+=======
+Suggestion 8
+
+def read_input():
+    N, M = map(int, input().split())
+    A = set(map(int, input().split()))
+    return N, M, A
+
+=======
+Suggestion 9
+
+def solve():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    A.append(N+1)
+    A.insert(0,0)
+    B = []
+    for i in range(1,M+2):
+        if A[i]-A[i-1]-1 > 0:
+            B.append(A[i]-A[i-1]-1)
+    if len(B) == 0:
+        print(0)
+    else:
+        K = min(B)
+        for i in range(len(B)):
+            if B[i] % K != 0:
+                K = max(K,B[i]//2)
+                break
+        for i in range(len(B)):
+            if B[i] % K != 0:
+                K = B[i]
+                break
+        ans = 0
+        for i in range(len(B)):
+            ans += (B[i]-1)//K + 1
+        print(ans)
+
+=======
+Suggestion 10
+
+def get_num_of_stamps(num_of_squares, num_of_blue_squares, blue_squares):
+    if num_of_blue_squares == 0:
+        return 1
+    if num_of_squares == num_of_blue_squares:
+        return 0
+    blue_squares.sort()
+    max_distance = 0
+    for i in range(num_of_blue_squares - 1):
+        max_distance = max(max_distance, blue_squares[i + 1] - blue_squares[i])
+    return (max_distance + 1) // 2 + 1
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+print(get_num_of_stamps(N, M, A))

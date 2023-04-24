@@ -1,48 +1,191 @@
-#問題文
-#長さ N の数列 A=(A_1,...,A_N) が与えられます。
-#以下の形式で与えられる Q 個のクエリに答えてください。
-#整数 L,R,X が与えられる。 A_L, ...,A_R のうち、値が X に等しいものの個数を求めよ。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ Q ≦ 2× 10^5
-#各クエリについて、 1≦ L ≦ R ≦ N, 1 ≦ X ≦ N
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N 
-#A_1 A_2 ... A_N
-#Q
-#Query_1
-#Query_2
-#.
-#.
-#.
-#Query_Q
-#ただし、Query_i は i 個目のクエリを表す。
-#各クエリは以下の形式で与えられる。
-#L R X
-#
-#出力
-#Q 行出力せよ。i 行目には、i 個目のクエリに対する答えを出力せよ。
-#
-#入力例 1
-#5
-#3 1 4 1 5
-#4
-#1 5 1
-#2 4 3
-#1 5 2
-#1 3 3
-#
-#出力例 1
-#2
-#0
-#0
-#1
-#1 個目のクエリでは、 (A_1,A_2,A_3,A_4,A_5) =(3,1,4,1,5) のうち値が 1 に等しいものの個数は 2 です。
-#2 個目のクエリでは、 (A_2,A_3,A_4) =(1,4,1) のうち値が 3 に等しいものの個数は 0 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for _ in range(Q):
+        L, R, X = map(int, input().split())
+        print(A[L-1:R].count(X))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    for i in range(Q):
+        L,R,X = map(int,input().split())
+        print(A[L-1:R].count(X))
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    Q = int(input())
+    Query = [[int(i) for i in input().split()] for j in range(Q)]
+    #問題文にある条件を満たすために、N+1の配列を用意する
+    #配列の各要素には、各数字の出現回数が入る
+    #例えば、Aが[3,1,4,1,5]のとき、
+    #A[0]=3,A[1]=1,A[2]=4,A[3]=1,A[4]=5
+    #なので、A[0]=3のとき、A[3]の値を+1する
+    #答えは、A[1]=1のとき、A[4]の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0の値を出力する
+    #A[1]=1のとき、A[4]の値は、A[4]=5のとき、A[5]=0
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    L = []
+    R = []
+    X = []
+    for i in range(Q):
+        l,r,x = map(int,input().split())
+        L.append(l)
+        R.append(r)
+        X.append(x)
+    #print(N,A,Q,L,R,X)
+    for i in range(Q):
+        print(A[L[i]-1:R[i]].count(X[i]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    Query = [list(map(int, input().split())) for _ in range(Q)]
+    #print(N)
+    #print(A)
+    #print(Q)
+    #print(Query)
+
+    #数列Aの要素をインデックスとするリストを作成
+    #Aの要素をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格納する
+    #Aの要素の値で、Aの要素のインデックスを格納する
+    #Aの要素の値をインデックスとして、Aの要素の値を格
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    #print(query)
+    #print(A)
+    #print(N)
+    #print(Q)
+    #print(query)
+    
+    #累積和を作る
+    #cumsum = [[0 for _ in range(N+1)] for _ in range(N+1)]
+    cumsum = [0] * (N+1)
+    for i in range(N):
+        cumsum[A[i]] += 1
+
+    #print(cumsum)
+    #print(cumsum[1])
+    #print(cumsum[2])
+    #print(cumsum[3])
+    #print(cumsum[4])
+    #print(cumsum[5])
+    
+    #累積和を作る
+    #for i in range(N):
+    #    for j in range(i+1, N+1):
+    #        cumsum[i+1][j] = cumsum[i][j] + cumsum[i+1][j-1] - cumsum[i][j-1]
+    #print(cumsum)
+    #print(cumsum[1])
+    #print(cumsum[2])
+    #print(cumsum[3])
+    #print(cumsum[4])
+    #print(cumsum[5])
+    
+    #クエリごとに処理する
+    for i in range(Q):
+        L = query[i][0]
+        R = query[i][1]
+        X = query[i][2]
+        #print(L)
+        #print(R)
+        #print(X)
+        #print(cumsum[R][X] - cumsum[L-1][X])
+        print(cumsum[X])
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    Q = int(input())
+    #クエリを入れるリスト
+    L = []
+    R = []
+    X = []
+    for i in range(Q):
+        l,r,x = map(int,input().split())
+        L.append(l)
+        R.append(r)
+        X.append(x)
+    #各クエリに答える
+    for i in range(Q):
+        #A[L[i]-1]からA[R[i]-1]までのXの個数を数える
+        print(A[L[i]-1:R[i]].count(X[i]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+
+    # 2次元配列を作る
+    # 0を作る
+    arr = [[0 for i in range(n+1)] for j in range(n+1)]
+    # 1を作る
+    for i in range(n):
+        arr[i+1][a[i]] = 1
+
+    # 累積和をとる
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            arr[i][j] += arr[i][j-1]
+
+    # クエリの個数分ループ
+    for i in range(q):
+        l, r, x = map(int, input().split())
+        print(arr[r][x] - arr[l-1][x])

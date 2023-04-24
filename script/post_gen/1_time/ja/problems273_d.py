@@ -1,137 +1,360 @@
-#問題文
-#H 行 W 列のグリッドがあります。上から i 行目、左から j 列目にあるマスをマス (i, j) で表します。
-#N 個のマス (r_1, c_1), (r_2, c_2), ..., (r_N, c_N) は壁になっています。
-#はじめ、高橋君はマス (r_s, c_s) にいます。
-#高橋君に Q 個の指示が与えられます。
-#i = 1, 2, ..., Q について、i 番目の指示は文字 d_i と正整数 l_i の組で表されます。d_i は L 、R 、U 、D のいずれかの文字であり、それぞれ左、右、上、下の方向を表します。
-#i 番目の指示に対して高橋君は下記の行動を l_i 回繰り返します。
-#現在いるマスに対して、d_i が表す向きに壁のないマスが隣接しているなら、そのマスに移動する。
-#そのようなマスが存在しない場合は、何もしない。
-#i = 1, 2, ..., Q について、i 番目までの指示を実行した直後に高橋君がいるマスを出力してください。
-#
-#制約
-#2 ≦ H, W ≦ 10^9
-#1 ≦ r_s ≦ H
-#1 ≦ c_s ≦ W
-#0 ≦ N ≦ 2 × 10^5
-#1 ≦ r_i ≦ H
-#1 ≦ c_i ≦ W
-#i ≠ j -> (r_i, c_i) ≠ (r_j, c_j)
-#すべての i = 1, 2, ..., Nについて、(r_s, c_s) ≠ (r_i, c_i)
-#1 ≦ Q ≦ 2 × 10^5
-#d_i は L 、R 、U 、D のいずれかの文字
-#1 ≦ l_i ≦ 10^9
-#d_i 以外の入力値は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W r_s c_s
-#N
-#r_1 c_1
-#r_2 c_2
-#.
-#.
-#.
-#r_N c_N
-#Q
-#d_1 l_1
-#d_2 l_2
-#.
-#.
-#.
-#d_Q l_Q
-#
-#出力
-#Q 行出力せよ。
-#下記の形式にしたがい、i = 1, 2, ..., Q について、i 番目までの指示を実行した直後に高橋君がいるマス (R_i, C_i) を i 行目に出力せよ。
-#R_1 C_1
-#R_2 C_2
-#.
-#.
-#.
-#R_Q C_Q
-#
-#入力例 1
-#5 5 4 4
-#3
-#5 3
-#2 2
-#1 4
-#4
-#L 2
-#U 3
-#L 2
-#R 4
-#
-#出力例 1
-#4 2
-#3 2
-#3 1
-#3 5
-#与えられるグリッドと高橋君の初期位置は下記の通りです。
-#ここで、# は壁のマスを、T は高橋君がいるマスを表し、. がその他のマスを表します。
-#...#.
-#.#...
-#.....
-#...T.
-#..#..
-#1 つ目の指示に対して高橋君は、左に 2 マス移動し、高橋君の位置は下記の通り、マス (4, 2) になります。
-#...#.
-#.#...
-#.....
-#.T...
-#..#..
-#2 つ目の指示に対して高橋君は、上に 1 マスに移動した後、次の移動先が壁であるために「何もしない」を 2 回行います。その結果、高橋君の位置は下記の通り、マス (3, 2) になります。
-#...#.
-#.#...
-#.T...
-#.....
-#..#..
-#3 つ目の指示に対して高橋君は、左に 1 マス移動した後、次の移動先となるマスが存在しないために「何もしない」を 1 回行います。その結果、高橋君の位置は下記の通り、マス (3, 1) になります。
-#...#.
-#.#...
-#T....
-#.....
-#..#..
-#4 つ目の指示に対して高橋君は、右に 4 マス移動し、高橋君の位置は下記の通り、マス (3, 5) になります。
-#...#.
-#.#...
-#....T
-#.....
-#..#..
-#
-#入力例 2
-#6 6 6 3
-#7
-#3 1
-#4 3
-#2 6
-#3 4
-#5 5
-#1 1
-#3 2
-#10
-#D 3
-#U 3
-#L 2
-#D 2
-#U 3
-#D 3
-#U 3
-#R 3
-#L 3
-#D 1
-#
-#出力例 2
-#6 3
-#5 3
-#5 1
-#6 1
-#4 1
-#6 1
-#4 1
-#4 2
-#4 1
-#5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    blocks = [tuple(map(int, input().split())) for _ in range(N)]
+    Q = int(input())
+    instructions = [tuple(input().split()) for _ in range(Q)]
+
+    blocks = set(blocks)
+
+    for d, l in instructions:
+        for _ in range(int(l)):
+            if d == 'L':
+                c_s -= 1
+            elif d == 'R':
+                c_s += 1
+            elif d == 'U':
+                r_s -= 1
+            elif d == 'D':
+                r_s += 1
+
+            if (r_s, c_s) in blocks:
+                if d == 'L':
+                    c_s += 1
+                elif d == 'R':
+                    c_s -= 1
+                elif d == 'U':
+                    r_s += 1
+                elif d == 'D':
+                    r_s -= 1
+                break
+
+        print(r_s, c_s)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    block = set()
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        block.add((r_i, c_i))
+    Q = int(input())
+    for i in range(Q):
+        d_i, l_i = input().split()
+        l_i = int(l_i)
+        if d_i == 'L':
+            for j in range(l_i):
+                if (r_s, c_s - 1) in block:
+                    break
+                else:
+                    c_s -= 1
+        if d_i == 'R':
+            for j in range(l_i):
+                if (r_s, c_s + 1) in block:
+                    break
+                else:
+                    c_s += 1
+        if d_i == 'U':
+            for j in range(l_i):
+                if (r_s - 1, c_s) in block:
+                    break
+                else:
+                    r_s -= 1
+        if d_i == 'D':
+            for j in range(l_i):
+                if (r_s + 1, c_s) in block:
+                    break
+                else:
+                    r_s += 1
+        print(r_s, c_s)
+
+=======
+Suggestion 3
+
+def solve():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    block = set()
+    for _ in range(N):
+        r, c = map(int, input().split())
+        block.add((r, c))
+    Q = int(input())
+    for _ in range(Q):
+        d, l = input().split()
+        l = int(l)
+        for _ in range(l):
+            if d == 'L' and (r_s, c_s - 1) not in block:
+                c_s -= 1
+            elif d == 'R' and (r_s, c_s + 1) not in block:
+                c_s += 1
+            elif d == 'U' and (r_s - 1, c_s) not in block:
+                r_s -= 1
+            elif d == 'D' and (r_s + 1, c_s) not in block:
+                r_s += 1
+        print(r_s, c_s)
+solve()
+
+=======
+Suggestion 4
+
+def solve():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    blocks = [tuple(map(int, input().split())) for _ in range(N)]
+    Q = int(input())
+    directions = [input().split() for _ in range(Q)]
+
+    blocks = set(blocks)
+    blocks.add((r_s, c_s))
+    for d, l in directions:
+        if d == "L":
+            for i in range(l):
+                if (r_s, c_s - 1) not in blocks:
+                    c_s -= 1
+        elif d == "R":
+            for i in range(l):
+                if (r_s, c_s + 1) not in blocks:
+                    c_s += 1
+        elif d == "U":
+            for i in range(l):
+                if (r_s - 1, c_s) not in blocks:
+                    r_s -= 1
+        elif d == "D":
+            for i in range(l):
+                if (r_s + 1, c_s) not in blocks:
+                    r_s += 1
+        print(r_s, c_s)
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    blocks = set()
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        blocks.add((r_i, c_i))
+    Q = int(input())
+    for i in range(Q):
+        d_i, l_i = input().split()
+        l_i = int(l_i)
+        if d_i == "L":
+            for j in range(l_i):
+                if (r_s, c_s - 1) not in blocks:
+                    c_s -= 1
+        elif d_i == "R":
+            for j in range(l_i):
+                if (r_s, c_s + 1) not in blocks:
+                    c_s += 1
+        elif d_i == "U":
+            for j in range(l_i):
+                if (r_s - 1, c_s) not in blocks:
+                    r_s -= 1
+        elif d_i == "D":
+            for j in range(l_i):
+                if (r_s + 1, c_s) not in blocks:
+                    r_s += 1
+        print(r_s, c_s)
+
+=======
+Suggestion 6
+
+def   main (): 
+     # 入力を受け取る 
+     H ,   W ,   r_s ,   c_s   =   map ( int ,   input (). split ()) 
+     N   =   int ( input ()) 
+     black   =   [] 
+     for   _   in   range ( N ): 
+         r_i ,   c_i   =   map ( int ,   input (). split ()) 
+         black . append (( r_i ,   c_i )) 
+     Q   =   int ( input ()) 
+     LRUD   =   [] 
+     for   _   in   range ( Q ): 
+         d_i ,   l_i   =   input (). split () 
+         LRUD . append (( d_i ,   int ( l_i ))) 
+
+     # 高橋君の初期位置 
+     r ,   c   =   r_s ,   c_s 
+
+     # 各方向の壁までの距離 
+     d   =   { 
+         "L" :   c   -   1 , 
+         "R" :   W   -   c , 
+         "U" :   r   -   1 , 
+         "D" :   H   -   r 
+     } 
+
+     # 各方向の壁までの距離を更新 
+     for   d_i ,   l_i   in   LRUD : 
+         d [ d_i ]   =   min ( d [ d_i ],   l_i ) 
+
+     # 高橋君の移動 
+     r   +=   d [ "D" ]   -   d [ "U" ] 
+     c   +=   d [ "R" ]   -   d [ "L" ] 
+
+     # 高橋君の移動後の位置を出力 
+     print ( r ,   c ) 
+
+     # 高橋君の移動後の位置を更新 
+     r_s ,   c_s   =   r ,   c 
+
+     # 各方向の壁までの距離を更新 
+     for   d_i ,   l_i   in   LRUD : 
+         d [ d_i ]   -=   l_i 
+
+     # 高橋
+
+=======
+Suggestion 7
+
+def   main (): 
+     h ,   w ,   r_s ,   c_s   =   map ( int ,   input (). split ()) 
+     n   =   int ( input ()) 
+     r_c   =   [ tuple ( map ( int ,   input (). split ()))   for   _   in   range ( n )] 
+     q   =   int ( input ()) 
+     d_l   =   [ tuple ( input (). split ())   for   _   in   range ( q )] 
+
+     r_c . sort () 
+
+     for   r ,   c   in   r_c : 
+         if   r   <   r_s   and   c   <   c_s : 
+             r_s   -=   1 
+         elif   r   <   r_s   and   c_s   <   c : 
+             r_s   -=   1 
+             c_s   +=   1 
+         elif   r_s   <   r   and   c   <   c_s : 
+             r_s   +=   1 
+             c_s   -=   1 
+         elif   r_s   <   r   and   c_s   <   c : 
+             r_s   +=   1 
+         elif   r   ==   r_s   and   c   <   c_s : 
+             c_s   -=   1 
+         elif   r   ==   r_s   and   c_s   <   c : 
+             c_s   +=   1 
+         elif   r   <   r_s   and   c   ==   c_s : 
+             r_s   -=   1 
+         elif   r_s   <   r   and   c   ==   c_s : 
+             r_s   +=   1 
+
+     for   d ,   l   in   d_l : 
+         if   d   ==   'L' : 
+             c_s   =   max ( c_s   -   l ,   1 ) 
+         elif   d   ==   'R' : 
+             c_s   =   min ( c_s   +   l ,   w ) 
+         elif   d   ==   'U' : 
+             r_s   =   max ( r_s   -   l ,   1 ) 
+         elif   d   ==   'D' :
+
+=======
+Suggestion 8
+
+def main():
+    H, W, r, c = map(int, input().split())
+    N = int(input())
+    block = set()
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        block.add((r_i, c_i))
+    Q = int(input())
+    for i in range(Q):
+        d, l = input().split()
+        l = int(l)
+        for j in range(l):
+            if d == 'L':
+                c -= 1
+            elif d == 'R':
+                c += 1
+            elif d == 'U':
+                r -= 1
+            elif d == 'D':
+                r += 1
+            if (r, c) in block:
+                if d == 'L':
+                    c += 1
+                elif d == 'R':
+                    c -= 1
+                elif d == 'U':
+                    r += 1
+                elif d == 'D':
+                    r -= 1
+                break
+        print(r, c)
+
+=======
+Suggestion 9
+
+def main():
+    H, W, r, c = map(int, input().split())
+    N = int(input())
+    block = set()
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        block.add((r_i, c_i))
+    Q = int(input())
+    for i in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for j in range(l):
+                if (r, c - 1) not in block:
+                    c -= 1
+        elif d == 'R':
+            for j in range(l):
+                if (r, c + 1) not in block:
+                    c += 1
+        elif d == 'U':
+            for j in range(l):
+                if (r - 1, c) not in block:
+                    r -= 1
+        elif d == 'D':
+            for j in range(l):
+                if (r + 1, c) not in block:
+                    r += 1
+        print(r, c)
+
+=======
+Suggestion 10
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    block = [[0, 0, 0, 0] for _ in range(N)]
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        block[i] = [r_i - 1, c_i - 1, r_i, c_i]
+    Q = int(input())
+    for _ in range(Q):
+        d_i, l_i = input().split()
+        l_i = int(l_i)
+        if d_i == "L":
+            c_s = max(c_s - l_i, 1)
+        elif d_i == "R":
+            c_s = min(c_s + l_i, W)
+        elif d_i == "U":
+            r_s = max(r_s - l_i, 1)
+        elif d_i == "D":
+            r_s = min(r_s + l_i, H)
+        for i in range(N):
+            if r_s == block[i][0] and c_s == block[i][1]:
+                if d_i == "L":
+                    c_s = min(c_s + l_i, W)
+                elif d_i == "R":
+                    c_s = max(c_s - l_i, 1)
+                elif d_i == "U":
+                    r_s = min(r_s + l_i, H)
+                elif d_i == "D":
+                    r_s = max(r_s - l_i, 1)
+        print(r_s, c_s)

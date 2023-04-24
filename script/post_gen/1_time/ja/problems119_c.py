@@ -1,71 +1,169 @@
-#問題文
-#あなたは N 本の竹を持っています。これらの長さはそれぞれ l_1, l_2, ..., l_N です (単位: センチメートル)。
-#あなたの目的は、これらの竹のうち何本か (全部でもよい) を使い、長さが A, B, C であるような 3 本の竹を得ることです。そのために、以下の三種類の魔法を任意の順に何度でも使うことができます。
-#延長魔法: 1 MP (マジックポイント) を消費し、1 本の竹を選んでその長さを 1 増やす。
-#短縮魔法: 1 MP を消費し、1 本の長さ 2 以上の竹を選んでその長さを 1 減らす。
-#合成魔法: 10 MP を消費し、2 本の竹を選んで接続し 1 本の竹とする。この新たな竹の長さは接続した 2 本の竹の長さの合計に等しい。(以後、この竹に対してさらに魔法を使用することもできる。)
-#目的を達成するには、最小でいくつの MP が必要でしょうか？
-#
-#制約
-#3 ≦ N ≦ 8
-#1 ≦ C < B < A ≦ 1000
-#1 ≦ l_i ≦ 1000
-#入力される値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B C
-#l_1
-#l_2
-#:
-#l_N
-#
-#出力
-#目的の達成に必要な MP の最小量を出力せよ。
-#
-#入力例 1
-#5 100 90 80
-#98
-#40
-#30
-#21
-#80
-#
-#出力例 1
-#23
-#長さ 98, 40, 30, 21, 80 の 5 本の竹から長さ 100, 90, 80 の 3 本の竹を得ようとしています。長さ 80 の竹ははじめから持っており、長さ 100, 90 の竹は次のように魔法を使うと合計 23 MP を消費することで得られ、これが最適です。
-#長さ 98 の竹に延長魔法を 2 回使い、長さ 100 の竹を得る。(消費 MP: 2)
-#長さ 40, 30 の竹に合成魔法を使い、長さ 70 の竹を得る。(消費 MP: 10)
-#長さ 21 の竹に短縮魔法を 1 回使い、長さ 20 の竹を得る。(消費 MP: 1)
-#手順 2. で得た長さ 70 の竹と手順 3. で得た長さ 20 の竹に合成魔法を使い、長さ 90 の竹を得る。(消費 MP: 10)
-#
-#入力例 2
-#8 100 90 80
-#100
-#100
-#90
-#90
-#90
-#80
-#80
-#80
-#
-#出力例 2
-#0
-#欲しい長さの竹をすでにすべて持っている場合、必要な MP は 0 です。このように、必ずしもすべての竹を使う必要はありません。
-#
-#入力例 3
-#8 1000 800 100
-#300
-#333
-#400
-#444
-#500
-#555
-#600
-#666
-#
-#出力例 3
-#243
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else float('inf')
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + L[i], b, c) + 10
+    ret2 = dfs(i + 1, a, b + L[i], c) + 10
+    ret3 = dfs(i + 1, a, b, c + L[i]) + 10
+    return min(ret0, ret1, ret2, ret3)
+
+n, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 2
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else 10 ** 9
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + L[i], b, c) + 10 if a > 0 else 10 ** 9
+    ret2 = dfs(i + 1, a, b + L[i], c) + 10 if b > 0 else 10 ** 9
+    ret3 = dfs(i + 1, a, b, c + L[i]) + 10 if c > 0 else 10 ** 9
+    return min(ret0, ret1, ret2, ret3)
+
+n, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 3
+
+def dfs(i, a, b, c):
+    global ans
+    if i == n:
+        if min(a, b, c) > 0:
+            ans = min(ans, abs(a - A) + abs(b - B) + abs(c - C) - 30)
+        return
+    dfs(i + 1, a, b, c)
+    dfs(i + 1, a + l[i], b, c)
+    dfs(i + 1, a, b + l[i], c)
+    dfs(i + 1, a, b, c + l[i])
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for i in range(n)]
+ans = 10**9
+dfs(0, 0, 0, 0)
+print(ans)
+
+=======
+Suggestion 4
+
+def dfs(i, a, b, c):
+    global ans
+    if i == n:
+        if min(a, b, c) > 0:
+            ans = min(ans, abs(a - A) + abs(b - B) + abs(c - C) - 30)
+        return
+    dfs(i + 1, a, b, c)
+    dfs(i + 1, a + l[i], b, c)
+    dfs(i + 1, a, b + l[i], c)
+    dfs(i + 1, a, b, c + l[i])
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+ans = 10 ** 9
+dfs(0, 0, 0, 0)
+print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 6
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a-A) + abs(b-B) + abs(c-C) - 30 if min(a,b,c) > 0 else float('inf')
+    ret0 = dfs(i+1, a, b, c)
+    ret1 = dfs(i+1, a+l[i], b, c) + 10 if a else float('inf')
+    ret2 = dfs(i+1, a, b+l[i], c) + 10 if b else float('inf')
+    ret3 = dfs(i+1, a, b, c+l[i]) + 10 if c else float('inf')
+    ret4 = dfs(i+1, a, b, c) + min(l[i], 10)
+    return min(ret0, ret1, ret2, ret3, ret4)
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(0,0,0,0))
+
+=======
+Suggestion 7
+
+def dfs(now, a, b, c, mp):
+    global ans
+    if now == N:
+        if min(a, b, c) > 0:
+            ans = min(ans, mp + abs(a - A) + abs(b - B) + abs(c - C))
+        return
+
+    dfs(now + 1, a, b, c, mp)
+    dfs(now + 1, a + l[now], b, c, mp + 10 * (a > 0))
+    dfs(now + 1, a, b + l[now], c, mp + 10 * (b > 0))
+    dfs(now + 1, a, b, c + l[now], mp + 10 * (c > 0))
+
+N, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(N)]
+ans = 10 ** 10
+
+dfs(0, 0, 0, 0, 0)
+print(ans)
+
+問題文
+高橋君��
+
+=======
+Suggestion 8
+
+def dfs(depth, a, b, c):
+    global ans
+    if depth == n:
+        if a and b and c:
+            ans = min(ans, abs(a - A) + abs(b - B) + abs(c - C) - 30)
+        return
+    dfs(depth + 1, a, b, c)
+    dfs(depth + 1, a + l[depth], b, c)
+    dfs(depth + 1, a, b + l[depth], c)
+    dfs(depth + 1, a, b, c + l[depth])
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+ans = float("inf")
+dfs(0, 0, 0, 0)
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,A,B,C = map(int,input().split())
+    l = [int(input()) for _ in range(N)]
+    ans = 10**9
+    for i in range(4**N):
+        a,b,c = 0,0,0
+        mp = 0
+        for j in range(N):
+            if (i >> (2*j)) & 3 == 1:
+                a += l[j]
+                mp += 10
+            elif (i >> (2*j)) & 3 == 2:
+                b += l[j]
+                mp += 10
+            elif (i >> (2*j)) & 3 == 3:
+                c += l[j]
+                mp += 10
+        if a == 0 or b == 0 or c == 0:
+            continue
+        mp += abs(A-a) + abs(B-b) + abs(C-c)
+        ans = min(ans,mp)
+    print(ans)

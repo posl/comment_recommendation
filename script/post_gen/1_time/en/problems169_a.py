@@ -1,29 +1,29 @@
-#Problem Statement
-#Compute A × B.
-#
-#Constraints
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the value A × B as an integer.
-#
-#Sample Input 1
-#2 5
-#
-#Sample Output 1
-#10
-#We have 2 × 5 = 10.
-#
-#Sample Input 2
-#100 100
-#
-#Sample Output 2
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(a*b)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(A * B)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = [int(x) for x in input().split()]
+    print(a*b)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().strip().split(" "))
+    print(A*B)

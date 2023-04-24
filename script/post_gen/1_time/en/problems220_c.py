@@ -1,41 +1,201 @@
-#Problem Statement
-#We have a sequence of N positive integers: A=(A_1,...,A_N).
-#Let B be the concatenation of 10^{100} copies of A.
-#Consider summing up the terms of B from left to right. When does the sum exceed X for the first time?
-#In other words, find the minimum integer k such that:
-#(sum_{i=1}^{k} B_i > X).
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#X
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#3 5 2
-#26
-#
-#Sample Output 1
-#8
-#We have B=(3,5,2,3,5,2,3,5,2,...).
-#(sum_{i=1}^{8} B_i = 28 > 26) holds, but the condition is not satisfied when k is 7 or less, so the answer is 8.
-#
-#Sample Input 2
-#4
-#12 34 56 78
-#1000
-#
-#Sample Output 2
-#23
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    #print("N:", N)
+    #print("A:", A)
+    #print("X:", X)
+    sumA = sum(A)
+    #print("sumA:", sumA)
+    if sumA > X:
+        #print("sumA > X")
+        k = 0
+        for i in range(N):
+            if k > X:
+                break
+            k += A[i]
+            #print("i:", i)
+            #print("k:", k)
+        print(i+1)
+    else:
+        #print("sumA <= X")
+        k = 0
+        for i in range(N):
+            if k > X:
+                break
+            k += A[i]
+            #print("i:", i)
+            #print("k:", k)
+        #print("i:", i)
+        #print("k:", k)
+        #print("i+1:", i+1)
+        #print("N:", N)
+        #print("(i+1)*N:", (i+1)*N)
+        #print("k:", k)
+        #print("sumA:", sumA)
+        k = k + ((X-k)//sumA)*sumA
+        #print("k:", k)
+        for i in range(N):
+            if k > X:
+                break
+            k += A[i]
+            #print("i:", i)
+            #print("k:", k)
+        print((i+1)+(i+1)*N)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    S = sum(A)
+    T = 0
+    for i in range(N):
+        T += A[i]
+        if T > X:
+            print(i+1)
+            return
+    if S <= 0:
+        print(-1)
+        return
+    K = (X - T) // S
+    T += K * S
+    for i in range(N):
+        T += A[i]
+        if T > X:
+            print(K * N + i + 1)
+            return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * 10**5
+    ans = 0
+    sum = 0
+    for i in range(len(B)):
+        sum += B[i]
+        ans += 1
+        if sum > X:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve(N, A, X):
+    B = A * 100000
+    sum = 0
+    for i in range(1000000):
+        sum += B[i]
+        if sum > X:
+            return i + 1
+    return 0
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * 100000
+    #print(B)
+    sum = 0
+    for i in range(1000000):
+        sum += B[i]
+        if sum > X:
+            print(i+1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * 100
+    sumB = sum(B)
+    if sumB > X:
+        k = 0
+        sumBk = 0
+        while sumBk <= X:
+            sumBk += B[k]
+            k += 1
+        print(k)
+    else:
+        k = 0
+        sumBk = 0
+        while sumBk <= X:
+            sumBk += B[k]
+            k += 1
+        print(k + (X - sumBk) // sumB * N)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    
+    sum_a = sum(a)
+    sum_a100 = sum_a * 100
+    
+    if sum_a100 < x:
+        print(-1)
+        return
+    
+    k = 0
+    s = 0
+    for i in range(100):
+        for j in range(n):
+            s += a[j]
+            k += 1
+            if s > x:
+                print(k)
+                return
+
+=======
+Suggestion 8
+
+def solve(N,A,X):
+    B = A*100
+    sum = 0
+    for i in range(1000):
+        sum += B[i]
+        if sum > X:
+            return i+1
+
+N = int(input())
+A = list(map(int,input().split()))
+X = int(input())
+print(solve(N,A,X))
+
+=======
+Suggestion 9
+
+def solve(N, A, X):
+    if sum(A) >= X:
+        return 0
+    B = A * 100
+    k = 0
+    s = 0
+    while s < X:
+        s += B[k]
+        k += 1
+    return k

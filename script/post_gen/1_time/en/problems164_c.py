@@ -1,50 +1,66 @@
-#Problem Statement
-#You drew lottery N times. In the i-th draw, you got an item of the kind represented by a string S_i.
-#How many kinds of items did you get?
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#S_i consists of lowercase English letters and has a length between 1 and 10 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#:
-#S_N
-#
-#Output
-#Print the number of kinds of items you got.
-#
-#Sample Input 1
-#3
-#apple
-#orange
-#apple
-#
-#Sample Output 1
-#2
-#You got two kinds of items: apple and orange.
-#
-#Sample Input 2
-#5
-#grape
-#grape
-#grape
-#grape
-#grape
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#4
-#aaaa
-#a
-#aaa
-#aa
-#
-#Sample Output 3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print(len(set(S)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print(len(set(S)))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    print(len(S))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    s = set()
+    for i in range(N):
+        s.add(input())
+    print(len(s))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print(len(set(s)))
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N = int(input())
+    Ss = [input() for _ in range(N)]
+
+    #compute
+    Ss.sort()
+    ans = 1
+    for i in range(1,N):
+        if Ss[i] != Ss[i-1]:
+            ans += 1
+
+    #output
+    print(ans)

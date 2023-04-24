@@ -1,70 +1,136 @@
-#Problem Statement
-#You have decided to write a book introducing good restaurants.
-#There are N restaurants that you want to introduce: Restaurant 1, Restaurant 2, ..., Restaurant N. Restaurant i is in city S_i, and your assessment score of that restaurant on a 100-point scale is P_i.
-#No two restaurants have the same score.
-#You want to introduce the restaurants in the following order:
-#The restaurants are arranged in lexicographical order of the names of their cities.
-#If there are multiple restaurants in the same city, they are arranged in descending order of score.
-#Print the identification numbers of the restaurants in the order they are introduced in the book.
-#
-#Constraints
-#1 ≤ N ≤ 100
-#S is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
-#0 ≤ P_i ≤ 100
-#P_i is an integer.
-#P_i ≠ P_j (1 ≤ i < j ≤ N)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1 P_1
-#:
-#S_N P_N
-#
-#Output
-#Print N lines. The i-th line (1 ≤ i ≤ N) should contain the identification number of the restaurant that is introduced i-th in the book.
-#
-#Sample Input 1
-#6
-#khabarovsk 20
-#moscow 10
-#kazan 50
-#kazan 35
-#moscow 60
-#khabarovsk 40
-#
-#Sample Output 1
-#3
-#4
-#6
-#1
-#5
-#2
-#The lexicographical order of the names of the three cities is kazan < khabarovsk < moscow. For each of these cities, the restaurants in it are introduced in descending order of score. Thus, the restaurants are introduced in the order 3,4,6,1,5,2.
-#
-#Sample Input 2
-#10
-#yakutsk 10
-#yakutsk 20
-#yakutsk 30
-#yakutsk 40
-#yakutsk 50
-#yakutsk 60
-#yakutsk 70
-#yakutsk 80
-#yakutsk 90
-#yakutsk 100
-#
-#Sample Output 2
-#10
-#9
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        s, p = input().split()
+        restaurants.append([s, int(p), i + 1])
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for r in restaurants:
+        print(r[2])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    restaurants = []
+    for i in range(N):
+        S, P = input().split()
+        restaurants.append((S, int(P), i+1))
+    restaurants.sort(key=lambda x: (-x[1], x[0], x[2]))
+    for i in range(N):
+        print(restaurants[i][2])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    data = []
+    for i in range(N):
+        S, P = input().split()
+        data.append([S, int(P), i+1])
+    data.sort(key=lambda x: (-x[1], x[0]))
+    for i in data:
+        print(i[2])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = []
+    P = []
+    for _ in range(N):
+        s, p = input().split()
+        S.append(s)
+        P.append(int(p))
+    for i in sorted(range(N), key=lambda i: (-P[i], S[i])):
+        print(i + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    r = []
+    for i in range(n):
+        s, p = input().split()
+        r.append((s, int(p), i + 1))
+    r.sort(key=lambda x: (-x[1], x[0]))
+    for i in range(n):
+        print(r[i][2])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    city = [0]*N
+    score = [0]*N
+    for i in range(N):
+        city[i], score[i] = input().split()
+        score[i] = int(score[i])
+    for i in range(N):
+        print(score.index(max(score))+1)
+        score[score.index(max(score))] = -1
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        s, p = input().split()
+        list.append((s, int(p), i + 1))
+    list.sort(key=lambda x: (x[0], -x[1]))
+    for i in range(n):
+        print(list[i][2])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    city = []
+    for i in range(N):
+        S, P = input().split()
+        city.append([S, int(P), i+1])
+    city.sort(key=lambda x: (x[0], -x[1]))
+    for i in city:
+        print(i[2])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [input().split() for _ in range(N)]
+
+    for i in range(N):
+        S[i][1] = int(S[i][1])
+
+    S.sort(key=lambda x: x[0])
+    S.sort(key=lambda x: x[1], reverse=True)
+
+    for i in range(N):
+        print(S[i][0])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    rest_list = []
+    for i in range(N):
+        rest_list.append(input().split())
+    rest_list.sort(key = lambda x: x[0])
+    rest_list.sort(key = lambda x: int(x[1]), reverse = True)
+    for i in range(N):
+        print(rest_list[i][2])

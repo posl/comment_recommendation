@@ -1,47 +1,143 @@
-#問題文
-#10^{100}, 10^{100}+1, ..., 10^{100}+N の N+1 個の数があります。
-#この中から K 個以上の数を選ぶとき、その和としてあり得るものの個数を mod (10^9+7) で求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ N+1
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#
-#出力
-#和としてあり得るものの個数を mod (10^9+7) で出力せよ。
-#
-#入力例 1
-#3 2
-#
-#出力例 1
-#10
-#以下の 10 通りが考えられます。
-#(10^{100})+(10^{100}+1)=2× 10^{100}+1
-#(10^{100})+(10^{100}+2)=2× 10^{100}+2
-#(10^{100})+(10^{100}+3)=(10^{100}+1)+(10^{100}+2)=2× 10^{100}+3
-#(10^{100}+1)+(10^{100}+3)=2× 10^{100}+4
-#(10^{100}+2)+(10^{100}+3)=2× 10^{100}+5
-#(10^{100})+(10^{100}+1)+(10^{100}+2)=3× 10^{100}+3
-#(10^{100})+(10^{100}+1)+(10^{100}+3)=3× 10^{100}+4
-#(10^{100})+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+5
-#(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+6
-#(10^{100})+(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=4× 10^{100}+6
-#
-#入力例 2
-#200000 200001
-#
-#出力例 2
-#1
-#全てを選ぶしかないので 1 通りです。
-#
-#入力例 3
-#141421 35623
-#
-#出力例 3
-#220280457
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    mod = 10 ** 9 + 7
+    ans = 0
+    for i in range(K, N + 2):
+        ans += (N * i - i * (i - 1) // 2) - (i * (i - 1) // 2) + 1
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (N-i+1)*i + 1
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (i * (N - i + 1) + 1) * i // 2
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (i*(N-i+1)+1)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (N - i + 1) * i + 1
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+
+    # input
+    N, K = map(int, input().split())
+
+    # compute
+    ans = 0
+    for i in range(K, N+2):
+        ans += i*(N-i+1)+1
+        ans %= 10**9+7
+
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(N, K):
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (N+1)*N//2 - (N-i+1)*i//2 + 1
+        ans %= mod
+    return ans
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    N, K = map(int, input().split())
+    
+    # 10^9+7
+    mod = 10**9+7
+    
+    # 答え
+    ans = 0
+    
+    # 答えを求める
+    for i in range(K, N+2):
+        # 1~iの総和
+        sum1 = i*(i+1)//2
+        # N~N-i+1の総和
+        sum2 = (N-i+1)*N//2 + (N-i+1)
+        # 答えに加算
+        ans = (ans + sum1 - sum2 + 1) % mod
+    
+    # 出力
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+
+    # 累積和を作る
+    sum_list = [0]
+    for i in range(1, N + 2):
+        sum_list.append(sum_list[i - 1] + i)
+
+    # 答えを求める
+    ans = 0
+    for i in range(K, N + 2):
+        ans += sum_list[i] - sum_list[i - K] + 1
+        ans %= MOD
+
+    print(ans)
+
+=======
+Suggestion 10
+
+def calc(n, k):
+    if k == 1:
+        return n
+    else:
+        return (n-k+1)*calc(n, k-1) % (10**9+7)

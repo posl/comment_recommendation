@@ -1,39 +1,83 @@
-#Problem Statement
-#We have two distinct integers A and B.
-#Print the integer K such that |A - K| = |B - K|.
-#If such an integer does not exist, print IMPOSSIBLE instead.
-#
-#Constraints
-#All values in input are integers.
-#0 ≦ A, B ≦ 10^9
-#A and B are distinct.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the integer K satisfying the condition.
-#If such an integer does not exist, print IMPOSSIBLE instead.
-#
-#Sample Input 1
-#2 16
-#
-#Sample Output 1
-#9
-#|2 - 9| = 7 and |16 - 9| = 7, so 9 satisfies the condition.
-#
-#Sample Input 2
-#0 3
-#
-#Sample Output 2
-#IMPOSSIBLE
-#No integer satisfies the condition.
-#
-#Sample Input 3
-#998244353 99824435
-#
-#Sample Output 3
-#549034394
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print(int((a + b) / 2))
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 4
+
+def problems135_a():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 5
+
+def main():
+    A, B = [int(x) for x in input().split()]
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int, input().split())
+    k = (a+b)/2
+    if k.is_integer():
+        print(int(k))
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 7
+
+def problems135_a(a,b):
+    if (a+b)%2 == 0:
+        return int((a+b)/2)
+    else:
+        return "IMPOSSIBLE"
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    A,B = map(int, input().split())
+    #output
+    if (A+B)%2 == 0:
+        print(int((A+B)/2))
+    else:
+        print("IMPOSSIBLE")

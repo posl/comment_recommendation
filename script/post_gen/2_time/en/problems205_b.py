@@ -1,48 +1,125 @@
-#Problem Statement
-#You are given a sequence of N integers between 1 and N (inclusive): A = (A_1, A_2, ..., A_N).
-#Determine whether A is a permutation of (1, 2, ..., N).
-#
-#Constraints
-#1 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ N
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#If A is a permutation of (1, 2, ..., N), print Yes; otherwise, print No.
-#
-#Sample Input 1
-#5
-#3 1 2 4 5
-#
-#Sample Output 1
-#Yes
-#(3, 1, 2, 4, 5) is a permutation of (1, 2, 3, 4, 5), so we should print Yes.
-#
-#Sample Input 2
-#6
-#3 1 4 1 5 2
-#
-#Sample Output 2
-#No
-#(3, 1, 4, 1, 5, 2) is not a permutation of (1, 2, 3, 4, 5, 6), so we should print No.
-#
-#Sample Input 3
-#3
-#1 2 3
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#1
-#1
-#
-#Sample Output 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n):
+        if a[i] != i+1:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        if A[i] != i+1:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n):
+        if a[i] != i+1:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    if a == list(range(1,n+1)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def isPermutation(A):
+    A.sort()
+    for i in range(len(A)):
+        if A[i] != i + 1:
+            return "No"
+    return "Yes"
+
+N = int(input())
+A = list(map(int,input().split()))
+print(isPermutation(A))
+
+=======
+Suggestion 6
+
+def is_permutation(a):
+    a.sort()
+    for i in range(len(a)):
+        if a[i] != i+1:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def checkPermutation(n, seq):
+    seq.sort()
+    for i in range(n):
+        if seq[i] != i+1:
+            return "No"
+    return "Yes"
+
+=======
+Suggestion 8
+
+def main():
+    # Get input here
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # Compute desired result
+    result = 'Yes' if sorted(A) == list(range(1, N+1)) else 'No'
+
+    # Print result
+    print(result)
+
+=======
+Suggestion 9
+
+def check_permutation(N, A):
+    #print("N: ", N)
+    #print("A: ", A)
+    A.sort()
+    #print("A: ", A)
+    for i in range(N):
+        if A[i] != i+1:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def is_permutation(numbers):
+    numbers.sort()
+    for index, number in enumerate(numbers):
+        if index+1 != number:
+            return False
+    return True

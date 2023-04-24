@@ -1,36 +1,114 @@
-#問題文
-#整数 S が与えられます。
-#すべての項が 3 以上の整数で、その総和が S であるような数列がいくつあるか求めてください。ただし、答えは非常に大きくなる可能性があるので、 10^9+7 で割った余りを出力してください。
-#
-#制約
-#1 ≦ S ≦ 2000
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#7
-#
-#出力例 1
-#3
-#数列 {3,4},{4,3},{7} の 3 つが条件を満たします。
-#
-#入力例 2
-#2
-#
-#出力例 2
-#0
-#条件を満たす数列は存在しません。
-#
-#入力例 3
-#1729
-#
-#出力例 3
-#294867501
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = int(input())
+    MOD = 10 ** 9 + 7
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    for i in range(3, S + 1):
+        for j in range(i, S + 1):
+            dp[j] = (dp[j] + dp[j - i]) % MOD
+    print(dp[S])
+
+=======
+Suggestion 2
+
+def main():
+    S = int(input())
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    for i in range(3, S + 1):
+        for j in range(i, S + 1):
+            dp[j] = (dp[j] + dp[j - i]) % (10 ** 9 + 7)
+    print(dp[S])
+
+=======
+Suggestion 3
+
+def main():
+    S = int(input())
+    dp = [0]*(S+1)
+    dp[0] = 1
+    for i in range(3,S+1):
+        for j in range(i,S+1):
+            dp[j] += dp[j-i]
+    print(dp[S]%1000000007)
+
+=======
+Suggestion 4
+
+def main():
+    S = int(input())
+    mod = 10**9 + 7
+    dp = [0] * (S+1)
+    dp[0] = 1
+    for i in range(3, S+1):
+        for j in range(i, S+1):
+            dp[j] += dp[j-i]
+            dp[j] %= mod
+    print(dp[S])
+
+=======
+Suggestion 5
+
+def main():
+    s = int(input())
+    dp = [0] * (s+1)
+    dp[0] = 1
+    for i in range(3, s+1):
+        for j in range(i, s+1):
+            dp[j] += dp[j-i]
+    print(dp[s] % 1000000007)
+
+=======
+Suggestion 6
+
+def main():
+    mod = 10**9 + 7
+    S = int(input())
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    for i in range(1, S + 1):
+        for j in range(3, S + 1):
+            if i - j >= 0:
+                dp[i] += dp[i - j]
+                dp[i] %= mod
+    print(dp[S])
+
+=======
+Suggestion 7
+
+def solve(S):
+    dp = [0] * (S+1)
+    dp[0] = 1
+    for i in range(1, S+1):
+        for j in range(3, i+1):
+            dp[i] += dp[i-j]
+            dp[i] %= 10**9+7
+    return dp[S]
+
+=======
+Suggestion 8
+
+def main():
+    S = int(input())
+    dp = [0 for i in range(S+1)]
+    dp[0] = 1
+    for i in range(3,S+1):
+        for j in range(S-i+1):
+            dp[i+j] += dp[j]
+            dp[i+j] %= 10**9+7
+    print(dp[S])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(3,N+1):
+        ans += (N-i)//i + 1
+    print(ans%1000000007)

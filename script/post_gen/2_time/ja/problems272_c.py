@@ -1,36 +1,134 @@
-#問題文
-#長さ N の非負整数列 A=(A_1,A_2,...,A_N) が与えられます。
-#A の異なる 2 要素の和として表せる値の中に偶数が存在するか判定し、存在する場合その最大値を求めてください。
-#
-#制約
-#2≦ N ≦ 2× 10^5
-#0≦ A_i≦ 10^9
-#A の要素は相異なる
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#A の異なる 2 要素の和として表せる値の中に偶数が存在しない場合、-1 を出力せよ。
-#偶数が存在する場合、その最大値を出力せよ。
-#
-#入力例 1
-#3
-#2 3 4
-#
-#出力例 1
-#6
-#A の異なる 2 要素の和として表せる値は 5,6,7 です。この中に偶数は存在し、その最大値は 6 です。
-#
-#入力例 2
-#2
-#1 0
-#
-#出力例 2
-#-1
-#A の異なる 2 要素の和として表せる値は 1 です。この中に偶数は存在しないので、 -1 を出力してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_even = [a for a in A if a % 2 == 0]
+    if len(A_even) == 0:
+        print(-1)
+    else:
+        print(max(A_even))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    if A[0] % 2 == 0:
+        print(A[0] + A[1])
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = -1
+    for i in range(N):
+        if A[i] % 2 == 0:
+            ans = max(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[-1] % 2 == 0:
+        print(A[-1])
+    else:
+        for i in range(N-1):
+            if A[i] % 2 == 0:
+                print(A[i])
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[-1] % 2 == 0:
+        print(A[-1])
+    elif A[-2] % 2 == 0:
+        print(A[-2])
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    if A[-1] % 2 == 0:
+        print(A[-1])
+    elif A[-1] % 2 == 1:
+        if A[-2] % 2 == 0:
+            print(A[-2])
+        else:
+            print(-1)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    #print(N)
+    #print(A)
+    if A[0] % 2 == 0:
+        print(A[0])
+    else:
+        for i in range(1, N):
+            if A[i] % 2 == 0:
+                print(A[i])
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    #print(A)
+    ans = -1
+    for i in range(N-1):
+        if A[i] % 2 == 0:
+            ans = max(ans, A[i]+A[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    # a.sort(reverse=True)
+    ans = -1
+    for i in range(n):
+        for j in range(i+1,n):
+            if (a[i]+a[j])%2 == 0:
+                ans = max(ans,a[i]+a[j])
+    print(ans)

@@ -1,53 +1,241 @@
-#問題文
-#無限に広がる 2 次元グリッドがあり、マス (r_1, c_1) に駒「超竜馬」が置かれています。
-#この駒は、 1 手で次のような動きができます。
-#より正確には、超竜馬がマス (a, b) にあるとき、以下のいずれかの条件を満たすマス (c, d) に動かすことができます。
-#a + b = c + d
-#a - b = c - d
-#|a - c| + |b - d| ≦ 3
-#超竜馬を (r_1, c_1) から (r_2, c_2) に動かすのに必要な最小手数を求めてください。
-#
-#制約
-#入力は全て整数
-#1 ≦ r_1, c_1, r_2, c_2 ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#r_1 c_1
-#r_2 c_2
-#
-#出力
-#超竜馬を (r_1, c_1) から (r_2, c_2) に動かすのに必要な最小手数を出力せよ。
-#
-#入力例 1
-#1 1
-#5 6
-#
-#出力例 1
-#2
-#例えば、 (1, 1) -> (5, 5) -> (5, 6) と動かすと 2 手になります。
-#
-#入力例 2
-#1 1
-#1 200001
-#
-#出力例 2
-#2
-#例えば、 (1, 1) -> (100001, 100001) -> (1, 200001) と動かすと 2 手になります。
-#
-#入力例 3
-#2 3
-#998244353 998244853
-#
-#出力例 3
-#3
-#例えば、 (2, 3) -> (3, 3) -> (-247, 253) -> (998244353, 998244853) と動かすと 3 手になります。
-#
-#入力例 4
-#1 1
-#1 1
-#
-#出力例 4
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2:
+        print(1)
+        return
+    if r1 - c1 == r2 - c2:
+        print(1)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1 + r2 + c2) % 2 == 0:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if i == 0 or j == 0 or abs(i) == abs(j):
+                continue
+            if abs(r1 - (r2 + i)) + abs(c1 - (c2 + j)) <= 3:
+                print(2)
+                return
+    print(3)
+
+=======
+Suggestion 2
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) > 3:
+                continue
+            if r1 + i + c1 + j == r2 + c2 or r1 + i - c1 - j == r2 - c2:
+                print(2)
+                return
+    print(3)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1 + r2 + c2) % 2 == 0:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) == 3:
+                if r1 + i + c1 + j == r2 + c2 or r1 + i - c1 - j == r2 - c2 or abs(r1 + i - r2) + abs(c1 + j - c2) <= 3:
+                    print(2)
+                    return
+    print(3)
+
+=======
+Suggestion 4
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 6:
+        print(2)
+        return
+    if abs(r1 - r2 + c1 - c2) <= 3 or abs(r1 - r2 - c1 + c2) <= 3:
+        print(2)
+        return
+    print(3)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1+c1 == r2+c2 or r1-c1 == r2-c2 or abs(r1-r2)+abs(c1-c2) <= 3:
+        print(1)
+        return
+    if (r1+c1)%2 == (r2+c2)%2 or abs(r1-r2)+abs(c1-c2) <= 6 or abs(r1+c1-(r2+c2)) <= 3 or abs(r1-c1-(r2-c2)) <= 3:
+        print(2)
+        return
+    print(3)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    r1,c1 = map(int, input().split())
+    r2,c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+    elif r1+c1 == r2+c2 or r1-c1 == r2-c2 or abs(r1-r2)+abs(c1-c2) <= 3:
+        print(1)
+    elif (r1+c1)%2 == (r2+c2)%2 or abs(r1-r2)+abs(c1-c2) <= 6 or abs((r1+c1)-(r2+c2)) <= 3 or abs((r1-c1)-(r2-c2)) <= 3:
+        print(2)
+    else:
+        print(3)
+
+=======
+Suggestion 7
+
+def main():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if(r1==r2 and c1==c2):
+        print(0)
+        return
+    if(r1+c1==r2+c2 or r1-c1==r2-c2 or abs(r1-r2)+abs(c1-c2)<=3):
+        print(1)
+        return
+    if(abs(r1-r2)+abs(c1-c2)<=6 or abs(r1+c1-r2-c2)<=3 or abs(r1-c1-r2+c2)<=3):
+        print(2)
+        return
+    if((r1+c1)%2==(r2+c2)%2):
+        print(2)
+        return
+    if(abs(r1-r2)+abs(c1-c2)<=3 or abs(r1+c1-r2-c2)<=6 or abs(r1-c1-r2+c2)<=6):
+        print(2)
+        return
+    print(3)
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if r1==r2 and c1==c2:
+        return 0
+    if r1+c1==r2+c2 or r1-c1==r2-c2 or abs(r1-r2)+abs(c1-c2)<=3:
+        return 1
+    if (r1+c1)%2==(r2+c2)%2:
+        return 2
+    if abs(r1-r2)+abs(c1-c2)<=6:
+        return 2
+    if abs(r1-r2)+abs(c1-c2)%2<=3:
+        return 2
+    return 3
+
+=======
+Suggestion 9
+
+def solve():
+    from collections import deque
+    import sys
+    input = sys.stdin.readline
+
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+
+    for dr in range(-4, 5):
+        for dc in range(-4, 5):
+            if abs(dr) + abs(dc) > 3:
+                continue
+
+            if r1 + dr + c1 + dc == r2 + c2 or r1 + dr - c1 - dc == r2 + c2 or r1 - dr + c1 - dc == r2 + c2 or r1 - dr - c1 + dc == r2 + c2:
+                print(2)
+                return
+
+    print(3)
+
+=======
+Suggestion 10
+
+def solve():
+    # ここに書いてね
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if (r1, c1) == (r2, c2):
+        print(0)
+        return
+    if abs(r1-r2)+abs(c1-c2) <= 3:
+        print(1)
+        return
+    if r1+c1 == r2+c2 or r1-c1 == r2-c2:
+        print(1)
+        return
+    if (r1+c1+r2+c2)%2 == 0:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i)+abs(j) <= 3:
+                if (r1+i)+(c1+j) == r2+c2 or (r1+i)-(c1+j) == r2-c2:
+                    print(2)
+                    return
+    print(3)
+    return

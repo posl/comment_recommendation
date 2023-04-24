@@ -1,47 +1,142 @@
-#Problem Statement
-#Takahashi is taking exams on N subjects. The score on each subject will be an integer between 0 and K (inclusive).
-#He has already taken exams on N-1 subjects and scored A_i points on the i-th subject.
-#His goal is to achieve the average score of M points or above on the N subjects.
-#Print the minimum number of points Takahashi needs on the final subject to achieve his goal.
-#If the goal is unachievable, print -1 instead.
-#
-#Constraints
-#2 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ M ≦ K
-#0 ≦ A_i ≦ K
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K M
-#A_1 A_2 ... A_{N-1}
-#
-#Output
-#Print the minimum number of points required on the final subject, or -1.
-#
-#Sample Input 1
-#5 10 7
-#8 10 3 6
-#
-#Sample Output 1
-#8
-#If he scores 8 points on the final subject, his average score will be (8+10+3+6+8)/5 = 7 points, which meets the goal.
-#
-#Sample Input 2
-#4 100 60
-#100 100 100
-#
-#Sample Output 2
-#0
-#Scoring 0 points on the final subject still meets the goal.
-#
-#Sample Input 3
-#4 100 60
-#0 0 0
-#
-#Sample Output 3
-#-1
-#He can no longer meet the goal.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if N * M - sum(A) > K:
+        print(-1)
+    else:
+        print(max(0, N * M - sum(A)))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    print(max(0, N * M - sum(A)))
+
+=======
+Suggestion 3
+
+def main():
+    N, K, M = [int(x) for x in input().split()]
+    A = [int(x) for x in input().split()]
+
+    score = M * N - sum(A)
+    if score <= 0:
+        print(0)
+    elif score > K:
+        print(-1)
+    else:
+        print(score)
+
+=======
+Suggestion 4
+
+def main():
+    n, k, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) >= m * n:
+        print(0)
+    elif sum(a) + k >= m * n:
+        print(m * n - sum(a))
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A_sum = sum(A)
+    if A_sum + K * (N - 1) < M * N:
+        print(-1)
+    else:
+        print(max(M * N - A_sum, 0))
+
+=======
+Suggestion 6
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    sumA = sum(A)
+    need = N * M - sumA
+    if need <= 0:
+        print(0)
+    elif need <= K:
+        print(need)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K, M)
+    #print(A)
+    sumA = sum(A)
+    #print(sumA)
+    minPoint = M * N - sumA
+    #print(minPoint)
+    if minPoint <= 0:
+        print(0)
+    elif minPoint <= K:
+        print(minPoint)
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A_sum = sum(A)
+    if A_sum + K * N >= M * N:
+        print(max(M * N - A_sum, 0))
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    n,k,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    if sum(a)+m*n>=n*m:
+        print(max(0,n*m-sum(a)))
+    else:
+        print(-1)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # Calculate the total score
+    total = 0
+    for i in range(N-1):
+        total += A[i]
+
+    # Calculate the minimum score on the final subject
+    min_score = M * N - total
+
+    # If the minimum score is negative or larger than K, the goal can not be achieved
+    if min_score < 0 or min_score > K:
+        print(-1)
+    else:
+        print(min_score)

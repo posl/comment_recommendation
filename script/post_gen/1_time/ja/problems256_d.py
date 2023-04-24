@@ -1,48 +1,222 @@
-#問題文
-#実数 L,R に対して、L 以上 R 未満からなる実数の集合を [L,R) と表します。このような形で表される集合を右半開区間といいます。
-#N 個の右半開区間 [L_i,R_i) が与えられます。これらの和集合を S とします。S を最小の個数の右半開区間の和集合として表してください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ L_i < R_i ≦ 2× 10^5
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 R_1
-#.
-#.
-#.
-#L_N R_N
-#
-#出力
-#S が最小で k 個の右半開区間の和集合で表せるとする。そのような k 個の右半開区間 [X_i,Y_i) を X_i の昇順で以下のように k 行出力せよ。
-#X_1 Y_1
-#.
-#.
-#.
-#X_k Y_k
-#
-#入力例 1
-#3
-#10 20
-#20 30
-#40 50
-#
-#出力例 1
-#10 30
-#40 50
-#3 つの右半開区間 [10,20),[20,30),[40,50) の和集合は 2 つの右半開区間 [10,30),[40,50) の和集合と等しくなります。
-#
-#入力例 2
-#3
-#10 40
-#30 60
-#20 50
-#
-#出力例 2
-#10 60
-#3 つの右半開区間 [10,40),[30,60),[20,50) の和集合は 1 つの右半開区間 [10,60) と等しくなります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = []
+    for i in range(N - 1):
+        if R[i] < L[i + 1]:
+            ans.append([L[i], R[i]])
+            L[i + 1] = L[i]
+    ans.append([L[N - 1], R[N - 1]])
+    print(len(ans))
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+
+    L.sort()
+    R.sort()
+
+    for i in range(N):
+        if L[i] != R[i]:
+            print(L[i], R[i])
+            return
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+
+    # 1つの区間に収まる
+    if L[N-1] == R[0]:
+        print(L[N-1], R[0])
+
+    # 2つの区間に分かれる
+    else:
+        print(L[0], R[N-1])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    L = []
+    R = []
+    for i in range(n):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    l = L[0]
+    r = R[0]
+    for i in range(1, n):
+        if l < L[i]:
+            l = L[i]
+        if r > R[i]:
+            r = R[i]
+    if l < r:
+        print(l, r)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    L = [0] * N
+    R = [0] * N
+    for i in range(N):
+        L[i], R[i] = map(int, input().split())
+    LR = list(zip(L, R))
+    LR.sort(key=lambda x: x[0])
+    ans = []
+    ans.append(LR[0])
+    for i in range(1, N):
+        if ans[-1][1] < LR[i][0]:
+            ans.append(LR[i])
+        else:
+            ans[-1] = (ans[-1][0], max(ans[-1][1], LR[i][1]))
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    for _ in range(N):
+        L, R = map(int, input().split())
+        S.append([L, R])
+    S.sort()
+    X = []
+    Y = []
+    for i in range(N):
+        if i == 0:
+            X.append(S[i][0])
+            Y.append(S[i][1])
+        else:
+            if S[i][0] <= Y[-1]:
+                Y[-1] = max(Y[-1], S[i][1])
+            else:
+                X.append(S[i][0])
+                Y.append(S[i][1])
+    for i in range(len(X)):
+        print(X[i], Y[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    LR = [list(map(int, input().split())) for i in range(N)]
+    LR.sort()
+    ans = []
+    ans.append(LR[0])
+    for i in range(1, N):
+        if ans[-1][1] >= LR[i][1]:
+            continue
+        elif ans[-1][1] >= LR[i][0]:
+            ans[-1][1] = LR[i][1]
+        else:
+            ans.append(LR[i])
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    LR = [list(map(int, input().split())) for _ in range(N)]
+    LR.sort(key=lambda x: x[0])
+    ans = []
+    for i in range(N):
+        if i == 0:
+            l, r = LR[i][0], LR[i][1]
+            continue
+        if LR[i][0] > r:
+            ans.append([l, r])
+            l, r = LR[i][0], LR[i][1]
+        else:
+            r = max(r, LR[i][1])
+    ans.append([l, r])
+    print(len(ans))
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    LR = [list(map(int,input().split())) for i in range(N)]
+    LR.sort(key=lambda x:x[0])
+    ans = []
+    l,r = LR[0]
+    for i in range(1,N):
+        if r >= LR[i][0]:
+            r = max(r,LR[i][1])
+        else:
+            ans.append([l,r])
+            l,r = LR[i]
+    ans.append([l,r])
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort(key=lambda x:x[0])
+    ans = []
+    for i in range(n):
+        if len(ans) == 0:
+            ans.append(l[i])
+        else:
+            if ans[-1][1] >= l[i][1]:
+                continue
+            elif ans[-1][1] >= l[i][0]:
+                ans[-1][1] = l[i][1]
+            else:
+                ans.append(l[i])
+    for i in range(len(ans)):
+        print(ans[i][0], ans[i][1])

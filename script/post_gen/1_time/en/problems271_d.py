@@ -1,53 +1,304 @@
-#Problem Statement
-#There are N cards with an integer written on each side.  Card i (1 ≦ i ≦ N) has an integer a_i written on the front and an integer b_i written on the back.
-#You may choose whether to place each card with its front or back side visible.
-#Determine if you can place the cards so that the sum of the visible integers exactly equals S.  If possible, find a placement of the cards to realize it.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ S ≦ 10000
-#1 ≦ a_i, b_i ≦ 100  (1 ≦ i ≦ N)
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N S
-#a_1 b_1
-#.
-#.
-#.
-#a_N b_N
-#
-#Output
-#First, print Yes if you can make the sum of the visible integers exactly equal S, and No otherwise, followed by a newline.
-#Additionally, if such a placement is possible, print a string of length N consisting of H and T that represents the placement of the cards to realize it.
-#The i-th (1 ≦ i ≦ N) character should be H if the i-th card should be placed with its front side visible, and T with its back.
-#If there are multiple possible placements to realize the sum, printing any of them is accepted.
-#
-#Sample Input 1
-#3 11
-#1 4
-#2 3
-#5 7
-#
-#Sample Output 1
-#Yes
-#THH
-#For example, the following placements make the sum of the visible integers exactly equal S (= 11):
-#Place the 1-st card with its front side visible, 2-nd with its back, and 3-rd with its back.
-#Place the 1-st card with its back side visible, 2-nd with its front, and 3-rd with its front.
-#Therefore, outputs like HTT and THH are accepted.
-#
-#Sample Input 2
-#5 25
-#2 8
-#9 3
-#4 11
-#5 1
-#12 6
-#
-#Sample Output 2
-#No
-#You cannot place the cards so that the sum of the visible integers exactly equals S (= 25).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, S = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    if sum(a) < S:
+        print("No")
+        return
+    if sum(b) > S:
+        print("No")
+        return
+    dp = [[False for j in range(S+1)] for i in range(N+1)]
+    dp[0][0] = True
+    for i in range(1, N+1):
+        for j in range(S+1):
+            if j - a[i-1] >= 0:
+                dp[i][j] = dp[i-1][j-a[i-1]] or dp[i-1][j]
+            else:
+                dp[i][j] = dp[i-1][j]
+    if dp[N][S]:
+        print("Yes")
+        ans = []
+        j = S
+        for i in range(N, 0, -1):
+            if j - a[i-1] >= 0:
+                if dp[i-1][j-a[i-1]]:
+                    ans.append("H")
+                    j = j - a[i-1]
+                else:
+                    ans.append("T")
+            else:
+                ans.append("T")
+        print("".join(ans[::-1]))
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, S = map(int, input().split())
+    A = [None] * N
+    B = [None] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    dp = [[False] * (S + 1) for _ in range(N + 1)]
+    dp[0][0] = True
+    for i in range(N):
+        for j in range(S + 1):
+            if j - A[i] >= 0:
+                dp[i + 1][j] |= dp[i][j - A[i]]
+            if j - B[i] >= 0:
+                dp[i + 1][j] |= dp[i][j - B[i]]
+    if dp[N][S]:
+        print('Yes')
+        ans = ''
+        for i in range(N - 1, -1, -1):
+            if S - A[i] >= 0 and dp[i][S - A[i]]:
+                ans += 'H'
+                S -= A[i]
+            else:
+                ans += 'T'
+                S -= B[i]
+        print(ans[::-1])
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    N, S = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    dp = [[False] * (S + 1) for _ in range(N + 1)]
+    dp[0][0] = True
+    for i in range(N):
+        for j in range(S + 1):
+            if j - A[i] >= 0:
+                dp[i + 1][j] |= dp[i][j - A[i]]
+            if j - B[i] >= 0:
+                dp[i + 1][j] |= dp[i][j - B[i]]
+    if dp[N][S]:
+        print("Yes")
+        i = N
+        j = S
+        ans = ""
+        while i > 0:
+            if j - A[i - 1] >= 0 and dp[i - 1][j - A[i - 1]]:
+                ans += "H"
+                j -= A[i - 1]
+            else:
+                ans += "T"
+                j -= B[i - 1]
+            i -= 1
+        print(ans[::-1])
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N, S = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(N):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    # dp[i][j] := i枚目まで見たときに、jを作ることができるかどうか
+    dp = [[False for _ in range(S+1)] for _ in range(N+1)]
+    dp[0][0] = True
+    for i in range(1, N+1):
+        for j in range(S+1):
+            if dp[i-1][j]:
+                dp[i][j] = True
+                if j+a[i-1] <= S:
+                    dp[i][j+a[i-1]] = True
+                if j+b[i-1] <= S:
+                    dp[i][j+b[i-1]] = True
+
+    if dp[N][S]:
+        print('Yes')
+        ans = ''
+        j = S
+        for i in range(N, 0, -1):
+            if j-a[i-1] >= 0 and dp[i-1][j-a[i-1]]:
+                ans += 'H'
+                j -= a[i-1]
+            else:
+                ans += 'T'
+                j -= b[i-1]
+        print(ans[::-1])
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N, S = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[False] * (S + 1) for _ in range(N + 1)]
+    dp[0][0] = True
+    for i in range(N):
+        for j in range(S + 1):
+            if dp[i][j]:
+                dp[i + 1][j] = True
+                if j + A[i][0] <= S:
+                    dp[i + 1][j + A[i][0]] = True
+                if j + A[i][1] <= S:
+                    dp[i + 1][j + A[i][1]] = True
+    if dp[N][S]:
+        print("Yes")
+        ans = ""
+        j = S
+        for i in range(N, 0, -1):
+            if j - A[i - 1][0] >= 0 and dp[i - 1][j - A[i - 1][0]]:
+                ans += "H"
+                j -= A[i - 1][0]
+            else:
+                ans += "T"
+                j -= A[i - 1][1]
+        print(ans[::-1])
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N, S = map(int, input().split())
+    A = [tuple(map(int, input().split())) for _ in range(N)]
+    dp = [[False] * (S + 1) for _ in range(N + 1)]
+    dp[0][0] = True
+    for i in range(N):
+        for j in range(S + 1):
+            dp[i + 1][j] = dp[i][j] or dp[i][j - A[i][0]] or dp[i][j - A[i][1]]
+    if dp[N][S]:
+        print('Yes')
+        ans = []
+        j = S
+        for i in range(N, 0, -1):
+            if dp[i - 1][j - A[i - 1][0]]:
+                ans.append('H')
+                j -= A[i - 1][0]
+            elif dp[i - 1][j - A[i - 1][1]]:
+                ans.append('T')
+                j -= A[i - 1][1]
+            else:
+                ans.append('H')
+        print(''.join(ans[::-1]))
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n,s = map(int, input().split())
+    a = [0]*n
+    b = [0]*n
+    for i in range(n):
+        a[i],b[i] = map(int, input().split())
+    dp = [[False]*(s+1) for i in range(n+1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(s+1):
+            if j-a[i]>=0:
+                dp[i+1][j] = dp[i+1][j] or dp[i][j-a[i]]
+            if j-b[i]>=0:
+                dp[i+1][j] = dp[i+1][j] or dp[i][j-b[i]]
+    if dp[n][s]:
+        print('Yes')
+        ans = ''
+        i = n
+        j = s
+        while i>0:
+            if j-a[i-1]>=0 and dp[i-1][j-a[i-1]]:
+                ans += 'H'
+                j -= a[i-1]
+            else:
+                ans += 'T'
+                j -= b[i-1]
+            i -= 1
+        print(ans[::-1])
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def solve(N, S, A, B):
+    dp = [[0 for _ in range(S+1)] for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(S+1):
+            if j >= A[i]:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j-A[i]])
+            if j >= B[i]:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j-B[i]])
+    if dp[N][S] == 0:
+        print("No")
+    else:
+        print("Yes")
+        ans = ""
+        for i in range(N):
+            if S >= A[N-i-1] and dp[N-i-1][S-A[N-i-1]] == 1:
+                ans += "H"
+                S -= A[N-i-1]
+            else:
+                ans += "T"
+                S -= B[N-i-1]
+        print(ans)
+
+=======
+Suggestion 9
+
+def solve(n, s, a, b):
+    for i in range(1 << n):
+        t = 0
+        for j in range(n):
+            if (i >> j) & 1:
+                t += a[j]
+            else:
+                t += b[j]
+        if t == s:
+            return "Yes" + "
+
+" + "".join(["T" if (i >> j) & 1 else "H" for j in range(n)])
+    return "No"
+
+n, s = map(int, input().split())
+a, b = [], []
+for _ in range(n):
+    x, y = map(int, input().split())
+    a.append(x)
+    b.append(y)
+print(solve(n, s, a, b))
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))
+
+n, s = read_ints()
+
+cards = []
+for i in range(n):
+    a, b = read_ints()
+    cards.append((a, b))

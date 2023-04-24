@@ -1,34 +1,35 @@
-#Problem Statement
-#Given is a string S. Replace every character in S with x and print the result.
-#
-#Constraints
-#S is a string consisting of lowercase English letters.
-#The length of S is between 1 and 100 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Replace every character in S with x and print the result.
-#
-#Sample Input 1
-#sardine
-#
-#Sample Output 1
-#xxxxxxx
-#Replacing every character in S with x results in xxxxxxx.
-#
-#Sample Input 2
-#xxxx
-#
-#Sample Output 2
-#xxxx
-#
-#Sample Input 3
-#gone
-#
-#Sample Output 3
-#xxxx
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print('x' * len(S))
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    print("x" * len(S))
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    print('x' * len(s))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print("x" * len(s))
+
+=======
+Suggestion 5
+
+def main():
+    print(input().replace(input(), 'x'))

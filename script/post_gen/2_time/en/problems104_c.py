@@ -1,73 +1,263 @@
-#Problem Statement
-#A programming competition site AtCode provides algorithmic problems.
-#Each problem is allocated a score based on its difficulty.
-#Currently, for each integer i between 1 and D (inclusive), there are p_i problems with a score of 100i points.
-#These p_1 + … + p_D problems are all of the problems available on AtCode.
-#A user of AtCode has a value called total score.
-#The total score of a user is the sum of the following two elements:
-#Base score: the sum of the scores of all problems solved by the user.
-#Perfect bonuses: when a user solves all problems with a score of 100i points, he/she earns the perfect bonus of c_i points, aside from the base score (1 ≤ i ≤ D).
-#Takahashi, who is the new user of AtCode, has not solved any problem.
-#His objective is to have a total score of G or more points.
-#At least how many problems does he need to solve for this objective?
-#
-#Constraints
-#1 ≤ D ≤ 10
-#1 ≤ p_i ≤ 100
-#100 ≤ c_i ≤ 10^6
-#100 ≤ G
-#All values in input are integers.
-#c_i and G are all multiples of 100.
-#It is possible to have a total score of G or more points.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#D G
-#p_1 c_1
-#:
-#p_D c_D
-#
-#Output
-#Print the minimum number of problems that needs to be solved in order to have a total score of G or more points. Note that this objective is always achievable (see Constraints).
-#
-#Sample Input 1
-#2 700
-#3 500
-#5 800
-#
-#Sample Output 1
-#3
-#In this case, there are three problems each with 100 points and five problems each with 200 points. The perfect bonus for solving all the 100-point problems is 500 points, and the perfect bonus for solving all the 200-point problems is 800 points. Takahashi's objective is to have a total score of 700 points or more.
-#One way to achieve this objective is to solve four 200-point problems and earn a base score of 800 points. However, if we solve three 100-point problems, we can earn the perfect bonus of 500 points in addition to the base score of 300 points, for a total score of 800 points, and we can achieve the objective with fewer problems.
-#
-#Sample Input 2
-#2 2000
-#3 500
-#5 800
-#
-#Sample Output 2
-#7
-#This case is similar to Sample Input 1, but the Takahashi's objective this time is 2000 points or more. In this case, we inevitably need to solve all five 200-point problems, and by solving two 100-point problems additionally we have the total score of 2000 points.
-#
-#Sample Input 3
-#2 400
-#3 500
-#5 800
-#
-#Sample Output 3
-#2
-#This case is again similar to Sample Input 1, but the Takahashi's objective this time is 400 points or more. In this case, we only need to solve two 200-point problems to achieve the objective.
-#
-#Sample Input 4
-#5 25000
-#20 1000
-#40 1000
-#50 1000
-#30 1000
-#1 1000
-#
-#Sample Output 4
-#66
-#There is only one 500-point problem, but the perfect bonus can be earned even in such a case. 
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    ans = 10000
+    for i in range(2 ** D):
+        score = 0
+        cnt = 0
+        for j in range(D):
+            if i & (1 << j):
+                score += 100 * (j + 1) * p[j] + c[j]
+                cnt += p[j]
+        if score < G:
+            for j in range(D - 1, -1, -1):
+                if not (i & (1 << j)):
+                    for k in range(p[j]):
+                        score += 100 * (j + 1)
+                        cnt += 1
+                        if score >= G:
+                            ans = min(ans, cnt)
+                            break
+                    break
+        else:
+            ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    #print(p)
+    #print(c)
+    #print(D, G)
+    #print(p)
+    #print(c)
+    #print("-----")
+    min = 1000000
+    for i in range(1, 2**D):
+        #print("i",i)
+        sum = 0
+        num = 0
+        for j in range(D):
+            if (i >> j) & 1:
+                sum += 100 * (j + 1) * p[j] + c[j]
+                num += p[j]
+        #print("sum",sum)
+        #print("num",num)
+        if sum >= G:
+            if num < min:
+                min = num
+        else:
+            for j in range(D):
+                if not ((i >> j) & 1):
+                    for k in range(p[j]):
+                        sum += 100 * (j + 1)
+                        num += 1
+                        if sum >= G:
+                            if num < min:
+                                min = num
+                            break
+                    break
+        #print("sum",sum)
+        #print("num",num)
+        #print("-----")
+    print(min)
+
+=======
+Suggestion 3
+
+def main():
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    ans = 10**9
+    for i in range(2**D):
+        tmp = 0
+        score = 0
+        for j in range(D):
+            if (i >> j) & 1:
+                tmp += p[j]
+                score += 100 * (j+1) * p[j] + c[j]
+        if score >= G:
+            ans = min(ans, tmp)
+        else:
+            for j in range(D-1, -1, -1):
+                if (i >> j) & 1:
+                    continue
+                for k in range(p[j]):
+                    if score >= G:
+                        break
+                    score += 100 * (j+1)
+                    tmp += 1
+                break
+            if score >= G:
+                ans = min(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    ans = 1000000000
+    for i in range(2 ** D):
+        sum = 0
+        num = 0
+        max_num = 0
+        for j in range(D):
+            if (i >> j) & 1:
+                sum += 100 * (j + 1) * p[j] + c[j]
+                num += p[j]
+            else:
+                max_num = j
+        if sum < G:
+            k = G - sum
+            if k > 100 * (max_num + 1) * p[max_num]:
+                continue
+            else:
+                num += -(-k // (100 * (max_num + 1)))
+        ans = min(ans, num)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    D, G = map(int, input().split())
+    p = [0 for i in range(D)]
+    c = [0 for i in range(D)]
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    #print(p)
+    #print(c)
+    ans =
+
+=======
+Suggestion 6
+
+def main():
+    D, G = map(int, input().split())
+    p = []
+    c = []
+    for i in range(D):
+        tmp = list(map(int, input().split()))
+        p.append(tmp[0])
+        c.append(tmp[1])
+    ans = 100000
+    for i in range(2**D):
+        tmp = 0
+        cnt = 0
+        for j in range(D):
+            if (i >> j) & 1:
+                tmp += 100*(j+1)*p[j] + c[j]
+                cnt += p[j]
+        if tmp >= G:
+            ans = min(ans, cnt)
+            continue
+        for j in range(D-1, -1, -1):
+            if (i >> j) & 1:
+                continue
+            for k in range(p[j]):
+                if tmp >= G:
+                    break
+                tmp += 100*(j+1)
+                cnt += 1
+            if tmp >= G:
+                ans = min(ans, cnt)
+                break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+    #compute
+    ans = 10**9
+    for i in range(2**D):
+        score = 0
+        num = 0
+        for j in range(D):
+            if (i >> j) & 1:
+                score += 100 * (j + 1) * p[j] + c[j]
+                num += p[j]
+        if score < G:
+            for j in range(D):
+                if not (i >> (D - 1 - j)) & 1:
+                    for k in range(p[D - 1 - j]):
+                        if score >= G:
+                            break
+                        score += 100 * (D - j)
+                        num += 1
+        if score >= G:
+            ans = min(ans, num)
+    #output
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    D, G = map(int, input().split())
+    p = [0 for i in range(D)]
+    c = [0 for i in range(D)]
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+
+    #calc
+    ans = 10**10
+    for i in range(2**D):
+        cnt = 0
+        score = 0
+        for j in range(D):
+            if (i >> j) & 1 == 1:
+                cnt += p[j]
+                score += (j+1)*100*p[j] + c[j]
+        if score >= G:
+            ans = min(ans, cnt)
+        else:
+            for j in range(D-1, -1, -1):
+                if (i >> j) & 1 == 0:
+                    for k in range(p[j]):
+                        if score >= G:
+                            break
+                        score += (j+1)*100
+                        cnt += 1
+                    if score >= G:
+                        ans = min(ans, cnt)
+                    break
+
+    #output
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(D, G, p, c):
+    # Write your code here
+    pass

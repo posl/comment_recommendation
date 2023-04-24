@@ -1,67 +1,62 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns. Let (i,j) denote the square at the i-th row from the top and the j-th column from the left.
-#Find the number of squares that share a side with Square (R, C).
-#Here, two squares (a,b) and (c,d) are said to share a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ R ≦ H ≦ 10
-#1 ≦ C ≦ W ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#R C
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3 4
-#2 2
-#
-#Sample Output 1
-#4
-#We will describe Sample Inputs/Outputs 1,2, and 3 at once below Sample Output 3.
-#
-#Sample Input 2
-#3 4
-#1 3
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#3 4
-#3 4
-#
-#Sample Output 3
-#2
-#When H=3 and W=4, the grid looks as follows.
-#For Sample Input 1, there are 4 squares adjacent to Square (2,2).
-#For Sample Input 2, there are 3 squares adjacent to Square (1,3).
-#For Sample Input 3, there are 2 squares adjacent to Square (3,4).
-#
-#
-#Sample Input 4
-#1 10
-#1 5
-#
-#Sample Output 4
-#2
-#
-#Sample Input 5
-#8 1
-#8 1
-#
-#Sample Output 5
-#1
-#
-#Sample Input 6
-#1 1
-#1 1
-#
-#Sample Output 6
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H - R) * (W - C))
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print((h-r+1)*(w-c+1))
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print((h-r) * (w-c) + (r-1) * (w-c) + (h-r) * (c-1) + (r-1) * (c-1) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print((h-r)*(w-c))
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(2*(H-1)*(W-1) - (H-1) - (W-1) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    # read number of rows and columns
+    h,w = map(int, input().split(" "))
+    # read row and column of the square
+    r,c = map(int, input().split(" "))
+    # calculate the number of squares that share a side with Square (R, C)
+    # there are 4 squares adjacent to Square (R, C)
+    # if Square (R, C) is on the edge of the grid, the number of squares is less than 4
+    # if Square (R, C) is on the corner of the grid, the number of squares is less than 4
+    # if Square (R, C) is at the center of the grid, the number of squares is 4
+    # if Square (R, C) is not at the center of the grid, the number of squares is 4
+    if (r == 1 and c == 1) or (r == 1 and c == w) or (r == h and c == 1) or (r == h and c == w):
+        print(1)
+    elif r == 1 or r == h or c == 1 or c == w:
+        print(2)
+    else:
+        print(4)

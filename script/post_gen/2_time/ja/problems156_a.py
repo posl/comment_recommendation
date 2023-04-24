@@ -1,33 +1,80 @@
-#問題文
-#高橋君はプログラミングコンテストサイト「ButCoder」の会員です。
-#ButCoder の会員には 2 つのレーティング 内部レーティング と 表示レーティング が割り当てられています。
-#表示レーティングは、その会員のコンテスト参加回数が 10 以上のときは内部レーティングに等しく、そうでないときは、会員のコンテスト参加回数を K として、内部レーティングから 100 × (10 - K) を引いたものになります。
-#高橋君のコンテスト参加回数が N で表示レーティングが R であるとき、高橋君の内部レーティングを求めてください。
-#
-#制約
-#入力は全て整数である
-#1 ≦ N ≦ 100
-#0 ≦ R ≦ 4111
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N R
-#
-#出力
-#高橋君の内部レーティングを出力せよ。
-#
-#入力例 1
-#2 2919
-#
-#出力例 1
-#3719
-#コンテスト参加回数が 10 より少ない 2 であるため、内部レーティングから 100 × (10 - 2) = 800 を引いたものが高橋君の表示レーティングになっています。
-#よって高橋君の内部レーティングは 2919 + 800 = 3719 となります。
-#
-#入力例 2
-#22 3051
-#
-#出力例 2
-#3051
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, R = map(int, input().split())
+    if N >= 10:
+        print(R)
+    else:
+        print(R + 100 * (10 - N))
+
+=======
+Suggestion 2
+
+def main():
+    n, r = map(int, input().split())
+    if n >= 10:
+        print(r)
+    else:
+        print(r + 100 * (10 - n))
+
+=======
+Suggestion 3
+
+def main():
+    N, R = map(int, input().split())
+    if N < 10:
+        print(R + 100 * (10 - N))
+    else:
+        print(R)
+
+=======
+Suggestion 4
+
+def main():
+    N, R = map(int, input().split())
+    if N < 10:
+        R += 100 * (10 - N)
+    print(R)
+
+=======
+Suggestion 5
+
+def main():
+    n, r = map(int, input().split())
+    if n < 10:
+        r = r + 100 * (10 - n)
+    print(r)
+
+=======
+Suggestion 6
+
+def main():
+    n,r = map(int,input().split())
+    if n < 10:
+        print(r + 100 * (10 - n))
+    else:
+        print(r)
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    n, r = map(int, input().split())
+    #出力
+    if n >= 10:
+        print(r)
+    else:
+        print(r + 100 * (10 - n))
+
+=======
+Suggestion 8
+
+def main():
+    n,r = map(int,input().split())
+    if n < 10:
+        r += 100 * (10 - n)
+    print(r)

@@ -1,28 +1,55 @@
-#Problem Statement
-#Given N, print 2^N.
-#
-#Constraints
-#0 ≦ N ≦ 30
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.  
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#8
-#We have 2^3=8.
-#
-#Sample Input 2
-#30
-#
-#Sample Output 2
-#1073741824
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(2**n)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(2**N)
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    n = int(input())
+
+    # compute
+
+    # output
+    print(2**n)
+
+=======
+Suggestion 4
+
+def problems256_a():
+    n = int(input())
+    print(2**n)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(pow(2, n))
+
+=======
+Suggestion 6
+
+def main():
+
+    # input
+    n = int(input())
+
+    # compute
+    ans = 2 ** n
+
+    # output
+    print(ans)

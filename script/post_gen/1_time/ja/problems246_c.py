@@ -1,50 +1,118 @@
-#問題文
-#N 個の商品があります。i = 1, 2, ..., N について、i 番目の商品の値段は A_i 円です。
-#高橋君は K 枚のクーポンを持っています。
-#1 枚のクーポンは 1 つの商品に対して使用することができ、1 つの商品に対してはクーポンを何枚でも（ 0 枚でもよい）使用することができます。
-#値段が a 円の商品に対して k 枚のクーポンを使用すると、その商品を max{a - kX, 0} 円で買うことができます。
-#高橋君がすべての商品を買うために支払う合計金額の最小値を出力してください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K, X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K X
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5 4 7
-#8 3 10 5 13
-#
-#出力例 1
-#12
-#1 番目の商品に対してクーポン 1 枚、3 番目の商品に対してクーポン 1 枚、5 番目の商品に対してクーポン 2 枚を使用すると、
-#1 番目の商品を max{A_1-X, 0 } = 1 円で買うことができ、
-#2 番目の商品を max{A_2, 0 } = 3 円で買うことができ、
-#3 番目の商品を max{A_3-X, 0 } = 3 円で買うことができ、
-#4 番目の商品を max{A_4, 0 } = 5 円で買うことができ、
-#5 番目の商品を max{A_5-2X, 0 } = 0 円で買うことができます。
-#よって、すべての商品を 1 + 3 + 3 + 5 + 0 = 12 円で買うことができ、これが最小です。
-#
-#入力例 2
-#5 100 7
-#8 3 10 5 13
-#
-#出力例 2
-#0
-#
-#入力例 3
-#20 815 60
-#2066 3193 2325 4030 3725 1669 1969 763 1653 159 5311 5341 4671 2374 4513 285 810 742 2981 202
-#
-#出力例 3
-#112
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > X:
+            ans += X
+            K -= 1
+        else:
+            ans += A[i]
+    if K > 0:
+        ans += X * K
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > X:
+            ans += A[i] - K * X
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > x:
+            ans += a[i] - x
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += max(A[i] - X * K, 0)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for a in A:
+        ans += max(a - K*X, 0)
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > X:
+            ans += A[i] - X
+    print(max(0, ans - K))
+
+=======
+Suggestion 7
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = max(A[i] - X * K, 0)
+    print(sum(B))
+
+=======
+Suggestion 8
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(N):
+        if i < K:
+            sum += max(A[i] - X, 0)
+        else:
+            sum += A[i]
+    print(sum)
+
+=======
+Suggestion 9
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    #print(A)
+    for i in range(N):
+        if i < K:
+            A[i] = max(A[i] - X, 0)
+    print(sum(A))

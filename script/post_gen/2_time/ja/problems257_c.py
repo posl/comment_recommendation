@@ -1,57 +1,270 @@
-#問題文
-#子供と大人があわせて N 人います。i 番目の人の体重は W_i です。
-#それぞれの人が子供か大人かは、0 と 1 からなる長さ N の文字列 S によって表され、
-#S の i 文字目が 0 であるとき i 番目の人が子供であることを、1 であるとき i 番目の人が大人であることをさします。
-#ロボットである高橋君に対して実数 X を設定すると、
-#高橋君はそれぞれの人に対して、体重が X 未満なら子供、X 以上なら大人と判定します。
-#実数 X に対してf(X) を、高橋君に X を設定したときに N 人のうち子供か大人かを正しく判定できる人数で定めます。
-#X が実数全体を動くとき、f(X) の最大値を求めてください。
-#
-#制約
-#1≦ N≦ 2× 10^5
-#S は 0 と 1 からなる長さ N の文字列
-#1≦ W_i≦ 10^9
-#N,W_i は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#W_1 W_2 ... W_N
-#
-#出力
-#f(X) の最大値を整数で一行に出力せよ。
-#
-#入力例 1
-#5
-#10101
-#60 45 30 40 80
-#
-#出力例 1
-#4
-#X=50 と設定すると、高橋君は 2,3,4 番目の人を子供、 1,5 番目の人を大人と判定します。
-#実際には 2,4 番目の人が子供、 1,3,5 番目の人が大人であるので、このとき、1,2,4,5 番目の合計 4 人に対して正しく判定できています。
-#よって、f(50)=4 です。
-#5 人全員に対して正しく判定できるような X は存在しないのでこのときが最大です。よって、4 を出力します。
-#
-#入力例 2
-#3
-#000
-#1 2 3
-#
-#出力例 2
-#3
-#例えば、X=10 とすると最大値 f(10)=3 を達成します。
-#全員が大人、または全員が子供である可能性もあることに注意してください。
-#
-#入力例 3
-#5
-#10101
-#60 50 50 50 60
-#
-#出力例 3
-#4
-#例えば、X=55 とすると最大値 f(55)=4 を達成します。
-#同じ体重の人が複数人存在する可能性もあることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    # N = 5
+    # S = '10101'
+    # W = [60, 45, 30, 40, 80]
+    # N = 3
+    # S = '000'
+    # W = [1, 2, 3]
+    # N = 5
+    # S = '10101'
+    # W = [60, 50, 50, 50, 60]
+
+    # 体重の昇順にソート
+    W = sorted(W)
+    # print(W)
+
+    # 体重の昇順にソートしたときの、各体重の人数を求める
+    # 体重が同じ人がいる場合は、同じ体重の人数を加算する
+    num = 1
+    w = []
+    for i in range(N - 1):
+        if W[i] == W[i + 1]:
+            num += 1
+        else:
+            w.append(num)
+            num = 1
+    w.append(num)
+    # print(w)
+
+    # 体重の昇順にソートしたときの、各体重の人数の累積和を求める
+    # 体重が同じ人がいる場合は、同じ体重の人数を加算する
+    w_sum = [w[0]]
+    for i in range(1, len(w)):
+        w_sum.append(w_sum[i - 1] + w[i])
+    # print(w_sum)
+
+    # 体重の昇順にソートしたときの、各体重の人数の累積和のリストを逆順にする
+    w_sum = w_sum[::-1]
+    # print(w_sum)
+
+    # 体重の降順にソート
+    W = sorted(W, reverse=True)
+    # print(W)
+
+    # 判定を正しく行える人数の最大値を求める
+    # Sのi文字目が0の場合は、W[i]
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    W1 = []
+    W2 = []
+    for i in range(N):
+        if S[i] == "0":
+            W1.append(W[i])
+        else:
+            W2.append(W[i])
+    W1.sort()
+    W2.sort()
+    ans = 0
+    for i in range(N):
+        if S[i] == "0":
+            idx = bisect_left(W2, W[i])
+            ans = max(ans, idx + N - i - 1)
+        else:
+            idx = bisect_right(W1, W[i])
+            ans = max(ans, i - idx + 1)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        cnt = 0
+        for j in range(N):
+            if S[j] == "0" and W[j] < W[i]:
+                cnt += 1
+            if S[j] == "1" and W[j] >= W[i]:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    S = S[::-1]
+    W = W[::-1]
+    ans = 0
+    for i in range(N):
+        if S[i] == '0':
+            if W[i] < W[ans]:
+                ans = i
+        else:
+            if W[i] > W[ans]:
+                ans = i
+    print(ans+1)
+
+=======
+Suggestion 5
+
+def main():
+    # 入力
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    # 処理
+    ans = 0
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            ans += 1
+    # 出力
+    print(ans+1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+
+    # 体重の昇順に並び替え
+    W_sort = sorted(W)
+    # 体重の昇順に並び替えたときのインデックス
+    W_sort_index = sorted(range(N), key=lambda x: W[x])
+    # 体重の昇順に並び替えたときのインデックスの逆順
+    W_sort_index_reverse = sorted(range(N), key=lambda x: W[x], reverse=True)
+
+    # 体重の昇順に並び替えたときの、体重が i 以上の人数
+    W_sort_cnt = [0] * (N + 1)
+    for i in range(N):
+        W_sort_cnt[i + 1] = W_sort_cnt[i] + (S[W_sort_index[i]] == '1')
+
+    # 体重の降順に並び替えたときの、体重が i 未満の人数
+    W_sort_reverse_cnt = [0] * (N + 1)
+    for i in range(N):
+        W_sort_reverse_cnt[i + 1] = W_sort_reverse_cnt[i] + (S[W_sort_index_reverse[i]] == '0')
+
+    ans = 0
+    for i in range(N):
+        ans = max(ans, W_sort_cnt[i] + W_sort_reverse_cnt[N - i])
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    #print(N, S, W)
+
+    # 体重の昇順に並び替える
+    W.sort()
+
+    # Xの候補を列挙する
+    X = []
+    for i in range(N-1):
+        if W[i] != W[i+1]:
+            X.append((W[i] + W[i+1]) / 2)
+
+    #print(X)
+
+    # Xの候補の中で最大値を求める
+    ans = 0
+    for x in X:
+        cnt = 0
+        for i in range(N):
+            if W[i] < x and S[i] == '0':
+                cnt += 1
+            elif W[i] >= x and S[i] == '1':
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    #print(N,S,W)
+    #print(S[0])
+    #print(W[0])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    w = [int(i) for i in input().split()]
+    #print(n,s,w)
+    
+    #初期化
+    t = [0 for i in range(n)]
+    for i in range(n):
+        t[i] = 1 if s[i] == "1" else 0
+    #print(t)
+    
+    #初期化
+    ans = 0
+    #Xを動かしていく
+    for x in range(1,1000000001):
+        #初期化
+        cnt = 0
+        #Xを動かしていく
+        for i in range(n):
+            if w[i] >= x and t[i] == 1:
+                cnt += 1
+            elif w[i] < x and t[i] == 0:
+                cnt += 1
+        if ans < cnt:
+            ans = cnt
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = input()
+    w = list(map(int, input().split()))
+    #print(n, s, w)
+    #print(len(s), len(w), n)
+
+    # 体重の小さい順にソート
+    # 体重が同じ人は、sの値が小さい順にソート
+    # 体重が同じ人は、sの値が小さい順にソート
+    w_s = sorted(zip(w, s), key=lambda x: (x[0], x[1]))
+    #print(w_s)
+
+    # 体重の小さい順にソートしたリスト
+    w_sort = [x[0] for x in w_s]
+    #print(w_sort)
+
+    # sの値が小さい順にソートしたリスト
+    s_sort = [x[1] for x in w_s]
+    #print(s_sort)
+
+    # 体重の小さい順にソートしたリストの中で、sの値が0の人の数
+    #print(s_sort.count('0'))
+
+    # 体重の小さい順にソートしたリストの中で、sの値が0の人の数の最大値
+    #print(max(s_sort.count('0'), s_sort.count('1')))
+
+    # 体重の小さい順にソートしたリストの中で、sの値が0の人の数の最大値を出力
+    print(max(s_sort.count('0'), s_sort.count('1')))

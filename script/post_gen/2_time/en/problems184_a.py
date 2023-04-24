@@ -1,40 +1,51 @@
-#Problem Statement
-#Given is a 2 × 2 matrix A = [[a, b], [c, d]].
-#The determinant of A can be found as ad-bc.
-#Find it.
-#
-#Constraints
-#All values in input are integers.
-#-100 ≦ a, b, c, d ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b
-#c d
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#1 2
-#3 4
-#
-#Sample Output 1
-#-2
-#The determinant of [[1, 2], [3, 4]] is 1 × 4 - 2 × 3 = -2.
-#
-#Sample Input 2
-#0 -1
-#1 0
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#100 100
-#100 100
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a * d - b * c)
+
+=======
+Suggestion 2
+
+def determinant(a, b, c, d):
+    return a * d - b * c
+
+a, b = map(int, input().split())
+c, d = map(int, input().split())
+print(determinant(a, b, c, d))
+
+=======
+Suggestion 3
+
+def main():
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    print(a[0]*b[1]-a[1]*b[0])
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    c,d = map(int,input().split())
+    print(a*d-b*c)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    a, b = (int(x) for x in input().split())
+    c, d = (int(x) for x in input().split())
+    print(a*d-c*b)
+
+=======
+Suggestion 6
+
+def solve(a, b, c, d):
+    return a * d - b * c

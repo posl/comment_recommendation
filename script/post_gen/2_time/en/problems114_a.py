@@ -1,30 +1,61 @@
-#Problem Statement
-#Shichi-Go-San (literally "Seven-Five-Three") is a traditional event in a certain country to celebrate the growth of seven-, five- and three-year-old children.
-#Takahashi is now X years old. Will his growth be celebrated in Shichi-Go-San this time?
-#
-#Constraints
-#1 ≤ X ≤ 9
-#X is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#If Takahashi's growth will be celebrated, print YES; if it will not, print NO.
-#
-#Sample Input 1
-#5
-#
-#Sample Output 1
-#YES
-#The growth of a five-year-old child will be celebrated.
-#
-#Sample Input 2
-#6
-#
-#Sample Output 2
-#NO
-#See you next year.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x == 3 or x == 5 or x == 7:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 2
+
+def main():
+    X = int(input())
+    if X == 3 or X == 5 or X == 7:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X == 3 or X == 5 or X == 7:
+        print("YES")
+    else:
+        print("NO")
+main()
+
+=======
+Suggestion 4
+
+def main():
+    age = int(input())
+    if age == 3 or age == 5 or age == 7:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 5
+
+def main():
+    age = int(input())
+    if age == 7 or age == 5 or age == 3:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 6
+
+def shichi_go_san(x):
+    if x == 3 or x == 5 or x == 7:
+        return 'YES'
+    else:
+        return 'NO'

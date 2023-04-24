@@ -1,46 +1,159 @@
-#問題文
-#N 項からなる正整数列 A=(A_1,A_2, ... A_N) が与えられます。
-#以下の操作を 0 回以上何度でも行える時、操作を最小何回行えば、A を回文にすることができますか？  
-#ある正整数の組 (x,y) を選ぶ。その後、現在 A に含まれる x をすべて y に置き換える。
-#なお、この問題では、全ての整数 i (1 ≦ i ≦ N) について、A_i=A_{N+1-i} が成り立つとき、またその時に限って、A が回文であると言います。  
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#出力例 1
-#2
-#はじめ、A=(1,5,3,2,5,2,3,1) です。
-#A に含まれる 3 を全て 2 に置き換えると、A=(1,5,2,2,5,2,2,1) となります。
-#A に含まれる 2 を全て 5 に置き換えると、A=(1,5,5,5,5,5,5,1) となります。
-#以上の操作を行うと、A を 2 回の操作で回文にすることができ、これが最小です。
-#
-#入力例 2
-#7
-#1 2 3 4 1 2 3
-#
-#出力例 2
-#1
-#
-#入力例 3
-#1
-#200000
-#
-#出力例 3
-#0
-#A がはじめから回文である可能性もあります。
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N//2):
+        if A[i] != A[N-1-i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N//2):
+        if A[i] != A[N-1-i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n//2):
+        if a[i] == a[n-1-i]:
+            continue
+        elif a[i] == a[n-2-i] and a[i+1] == a[n-1-i]:
+            ans += 1
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(N//2):
+        a = A[i]
+        b = A[N-1-i]
+        if a != b:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [0] + A + [0]
+    ans = 0
+    for i in range(1, N+1):
+        if A[i] != A[N+1-i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A1 = A[:N//2]
+    A2 = A[N//2:]
+    A2.reverse()
+    A2 = A2[:N//2]
+    A = A1 + A2
+    #print(A)
+    A.sort()
+    A1 = A[:N//2]
+    A2 = A[N//2:]
+    A2.reverse()
+    A2 = A2[:N//2]
+    A = A1 + A2
+    #print(A)
+    B = A1 + A2
+    B.sort()
+    #print(B)
+    ans = 0
+    for i in range(N):
+        if B[i] != A[i]:
+            ans += 1
+    print(ans//2)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #Aの各要素の出現回数をカウント
+    cnt = [0 for i in range(200001)]
+    for i in range(N):
+        cnt[A[i]] += 1
+    #Aの各要素の出現回数を奇数のみにする
+    for i in range(200001):
+        cnt[i] %= 2
+    #Aの各要素の出現回数の奇数の数をカウント
+    odd = 0
+    for i in range(200001):
+        if cnt[i] == 1:
+            odd += 1
+    #Aの各要素の出現回数の奇数の数が0か1のとき、Aを回文にするのに必要な操作回数は0
+    #それ以外のとき、Aを回文にするのに必要な操作回数は、Aの要素の出現回数の奇数の数-1
+    if odd == 0 or odd == 1:
+        print(0)
+    else:
+        print(odd-1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 1. aを回文にするために必要な操作数を求める
+    # 2. 1の操作数が奇数なら、aを回文にできない
+    # 3. 1の操作数が偶数なら、aを回文にできる
+    # 4. 2の操作数が偶数なら、aを回文にするために必要な操作数は、1の操作数の半分
+    # 5. 2の操作数が奇数なら、aを回文にするために必要な操作数は、1の操作数の半分+1
+
+    # 1. aを回文にするために必要な操作数を求める
+    # aの要素をキーとして、要素の出現回数を値とする辞書
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+
+    # 出現回数が奇数である要素の数
+    odd_count = 0
+    for k, v in d.items():
+        if v % 2 == 1:
+            odd_count += 1
+
+    # 2. 1の操作数が奇数なら、aを回文にできない
+    if odd_count % 2 == 1:
+        print(-1)
+        return
+
+    # 3. 1の操作数が偶数なら、aを回文にできる
+    # 4. 2の操作数が偶数なら、aを回文にするために必要な操作数は、1の操作数の半分
+    # 5. 2の操作数が奇数なら、aを回文にするために必要な操作数は、1の操作数の半分+1
+    print(n - odd_count)

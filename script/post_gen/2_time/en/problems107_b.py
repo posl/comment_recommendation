@@ -1,80 +1,205 @@
-#Problem Statement
-#There is a grid of squares with H horizontal rows and W vertical columns.
-#The square at the i-th row from the top and the j-th column from the left is represented as (i, j).
-#Each square is black or white.
-#The color of the square is given as an H-by-W matrix (a_{i, j}).
-#If a_{i, j} is ., the square (i, j) is white; if a_{i, j} is #, the square (i, j) is black.
-#Snuke is compressing this grid.
-#He will do so by repeatedly performing the following operation while there is a row or column that consists only of white squares:
-#Operation: choose any one row or column that consists only of white squares, remove it and delete the space between the rows or columns.
-#It can be shown that the final state of the grid is uniquely determined regardless of what row or column is chosen in each operation.
-#Find the final state of the grid.
-#
-#Constraints
-#1 ≦ H, W ≦ 100
-#a_{i, j} is . or #.
-#There is at least one black square in the whole grid.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#a_{1, 1}...a_{1, W}
-#:
-#a_{H, 1}...a_{H, W}
-#
-#Output
-#Print the final state of the grid in the same format as input (without the numbers of rows and columns); see the samples for clarity.
-#
-#Sample Input 1
-#4 4
-###.#
-#....
-###.#
-#.#.#
-#
-#Sample Output 1
-####
-####
-#.##
-#The second row and the third column in the original grid will be removed.
-#
-#Sample Input 2
-#3 3
-##..
-#.#.
-#..#
-#
-#Sample Output 2
-##..
-#.#.
-#..#
-#As there is no row or column that consists only of white squares, no operation will be performed.
-#
-#Sample Input 3
-#4 5
-#.....
-#.....
-#..#..
-#.....
-#
-#Sample Output 3
-##
-#
-#Sample Input 4
-#7 6
-#......
-#....#.
-#.#....
-#..#...
-#..#...
-#......
-#.#..#.
-#
-#Sample Output 4
-#..#
-##..
-#.#.
-#.#.
-##.#
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    row = [False] * h
+    col = [False] * w
+    for i in range(h):
+        for j in range(w):
+            if a[i][j] == '#':
+                row[i] = True
+                col[j] = True
+    for i in range(h):
+        if row[i]:
+            for j in range(w):
+                if col[j]:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for _ in range(H)]
+    h = [False for _ in range(H)]
+    w = [False for _ in range(W)]
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                h[i] = True
+                w[j] = True
+    for i in range(H):
+        if h[i]:
+            for j in range(W):
+                if w[j]:
+                    print(a[i][j], end='')
+            print()
+    return
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = [input() for _ in range(H)]
+    B = []
+    for i in range(H):
+        if '#' in A[i]:
+            B.append(A[i])
+    C = []
+    for j in range(W):
+        if '#' in [A[i][j] for i in range(H)]:
+            C.append(j)
+    for i in range(len(B)):
+        print(''.join([B[i][j] for j in C]))
+    return
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [input() for _ in range(H)]
+    h = [i for i in range(H) if '#' in A[i]]
+    w = [j for j in range(W) if '#' in [A[i][j] for i in range(H)]]
+    for i in h:
+        print(''.join(A[i][j] for j in w))
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = [input() for _ in range(H)]
+    A = list(map(list, zip(*A)))
+    A = [a for a in A if '#' in a]
+    A = list(map(list, zip(*A)))
+    for a in A:
+        print(''.join(a))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for i in range(H)]
+    b = [[a[i][j] for i in range(H)] for j in range(W)]
+    a = ["".join(i) for i in a if i.count("#") > 0]
+    b = ["".join(i) for i in b if i.count("#") > 0]
+    for i in a:
+        print(i)
+    for i in b:
+        print(i)
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for _ in range(H)]
+    b = [list(a[i]) for i in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                b[i][j] = 1
+            else:
+                b[i][j] = 0
+    c = [0] * W
+    d = [0] * H
+    for i in range(H):
+        if sum(b[i]) == 0:
+            d[i] = 1
+    for j in range(W):
+        for i in range(H):
+            if a[i][j] == '#':
+                c[j] = 1
+    for i in range(H):
+        if d[i] == 0:
+            for j in range(W):
+                if c[j] == 1:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 8
+
+def main():
+    H,W = map(int, input().split())
+    grid = [list(input()) for _ in range(H)]
+    Hs = [0]*H
+    Ws = [0]*W
+    for i in range(H):
+        for j in range(W):
+            if grid[i][j] == '#':
+                Hs[i] = 1
+                Ws[j] = 1
+    for i in range(H):
+        if Hs[i] == 1:
+            for j in range(W):
+                if Ws[j] == 1:
+                    print(grid[i][j], end = '')
+            print()
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = [input() for _ in range(H)]
+    B = list(zip(*A))
+    C = ["".join(i) for i in B]
+    i = 0
+    j = 0
+    while True:
+        if i == H:
+            break
+        if "#" not in A[i]:
+            del A[i]
+            H -= 1
+            continue
+        i += 1
+    while True:
+        if j == W:
+            break
+        if "#" not in C[j]:
+            for k in range(H):
+                A[k] = A[k][:j] + A[k][j+1:]
+            W -= 1
+            continue
+        j += 1
+    for i in range(H):
+        print(A[i])
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # ひとまず、#がある行と列を抽出
+    rows = []
+    cols = []
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                rows.append(i)
+                cols.append(j)
+    # 重複を除く
+    rows = list(set(rows))
+    cols = list(set(cols))
+    # print(rows)
+    # print(cols)
+
+    # 抽出した行と列を使って、新しい行列を作成
+    for i in range(len(rows)):
+        for j in range(len(cols)):
+            print(S[rows[i]][cols[j]], end="")
+        print("")

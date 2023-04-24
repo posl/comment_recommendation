@@ -1,46 +1,101 @@
-#Problem Statement
-#You are given a sequence A = (A_1, A_2, ..., A_N) of length N.
-#You perform the following operation exactly K times:
-#remove the initial element of A and append a 0 to the tail of A.
-#Print all the elements of A after the operations.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ A_i ≦ 100
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the elements of A after the operations in one line, separated by spaces.
-#
-#Sample Input 1
-#3 2
-#2 7 8
-#
-#Sample Output 1
-#8 0 0
-#Before the operations, A = (2, 7, 8).
-#After performing the operation once, A = (7, 8, 0).
-#After performing the operation twice, A = (8, 0, 0).
-#Thus, (8, 0, 0) is the answer.
-#
-#Sample Input 2
-#3 4
-#9 9 9
-#
-#Sample Output 2
-#0 0 0
-#
-#Sample Input 3
-#9 5
-#1 2 3 4 5 6 7 8 9
-#
-#Sample Output 3
-#6 7 8 9 0 0 0 0 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(K):
+        A.pop(0)
+        A.append(0)
+    print(*A)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for _ in range(k):
+        a.pop(0)
+        a.append(0)
+    print(*a)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(k):
+        a.append(0)
+        a.pop(0)
+    print(*a)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(k):
+        a[i] = 0
+    print(*a)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(k):
+        a.append(0)
+        a.pop(0)
+    print(' '.join(map(str,a)))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    for i in range(K):
+        if i == 0:
+            A = A[1:]
+            A.append(0)
+        else:
+            A = A[1:]
+            A.append(0)
+
+    print(' '.join(map(str, A)))
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    N, K = map(int, input().split())
+    As = list(map(int, input().split()))
+
+    # compute
+    for i in range(K):
+        As.append(0)
+        As.pop(0)
+
+    # output
+    print(' '.join(map(str, As)))
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #operation
+    for i in range(K):
+        A[i] = 0
+    #output
+    print(*A)

@@ -1,41 +1,216 @@
-#問題文
-#高橋君には N 人の友達がいます。N 人の友達はそれぞれ、友達 1 、友達 2 、... 、友達 N というあだ名で呼ばれています。
-#ある日、高橋君はある恥ずかしい秘密を、友達の一人である友達 X に知られてしまいました。
-#i = 1, 2, ..., N について、友達 i が高橋君の秘密を知ったとき、友達 A_i がまだ高橋君の秘密を知らなければ、友達 i は高橋君の秘密を友達 A_i にも教えてしまいます。
-#高橋君の秘密は最終的に何人の友達に知られることになるでしょうか？
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#3 1 1 2
-#
-#出力例 1
-#3
-#高橋君の秘密は以下の流れで友達 1 、友達 2 、友達 3 の 3 人に知れ渡ります。
-#ある日、高橋君は秘密を友達 2 に知られてしまいました。
-#秘密を知った友達 2 は、その秘密を友達 1 に教えます。
-#秘密を知った友達 1 は、その秘密を友達 3 に教えます。
-#高橋君の秘密は最終的に 3 人の友達に知られることになるため、3 を出力します。
-#
-#入力例 2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#出力例 2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if X == A[X-1]:
+            cnt += 1
+            break
+        else:
+            X = A[X-1]
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a - 1 for a in A]
+    X -= 1
+    ans = 0
+    visited = [False] * N
+    while not visited[X]:
+        visited[X] = True
+        X = A[X]
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    ans = 0
+    X = A[X]
+    while X != 1:
+        ans += 1
+        X = A[X]
+    ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    cnt = 1
+    next = X
+    while True:
+        if A[next] == X:
+            break
+        next = A[next]
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    x -= 1
+    ans = 0
+    d = set()
+    while True:
+        if x in d:
+            print(-1)
+            return
+        if x == 1:
+            print(ans)
+            return
+        d.add(x)
+        x = a[x] - 1
+        ans += 1
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [i-1 for i in A]
+    count = 0
+    a = X-1
+    while True:
+        a = A[a]
+        count += 1
+        if a == X-1:
+            break
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    #print(A)
+    #print(A[X])
+    #print(A[A[X]])
+    #print(A[A[A[X]]])
+
+    ans = 0
+    ans_list = []
+    ans_list.append(X)
+    ans_list.append(A[X])
+    ans_list.append(A[A[X]])
+    ans_list.append(A[A[A[X]]])
+
+    #print(ans_list)
+
+    for i in range(4, N+1):
+        if A[ans_list[i-1]] in ans_list:
+            ans = i
+            break
+        else:
+            ans_list.append(A[ans_list[i-1]])
+            #print(ans_list)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    # print(N, X)
+    # print(A)
+    # print(A[X-1])
+    # print(A[A[X-1]-1])
+    # print(A[A[A[X-1]-1]-1])
+    # print(A[A[A[A[X-1]-1]-1]-1])
+    # print(A[A[A[A[A[X-1]-1]-1]-1]-1])
+    # print(A[A[A[A[A[A[X-1]-1]-1]-1]-1]-1])
+    # print(A[A[A[A[A[A[A[X-1]-1]-1]-1]-1]-1]-1])
+    # print(A[A[A[A[A[A[A[A[X-1]-1]-1]-1]-1]-1]-1]-1])
+    # print(A[A[A[A[A[A[A[A[A[X-1]-1]-1]-1]-1]-1]-1]-1]-1])
+    # print(A[A[A[A[A[A[A[A[A[A[X-1]-1]-1]-1]-1]-1]-1]-1]-1]-1])
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, X)
+    #print(A)
+
+    #友達の数Nと、友達Xの位置を取得
+    #友達のリストAを取得
+    #print(A[X-1])
+    #print(A[X-1])
+    #print(A[X-1])
+    #print(A[X-1])
+
+    #友達Xの位置を取得
+    #友達Xの位置の友達番号を取得
+    #友達番号の友達番号を取得
+    #友達番号の友達番号の友達番号を取得
+    #友達番号の友達番号の友達番号の友達番号を取得
+    #友達番号の友達番号の友達番号の友達番号の友達番号を取得
+    #友達番号の友達番号の友達番号の友達番号の友達番号の友達�
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    # Xの値を0から始めるために1を引く
+    X -= 1
+    # 0からNまでのリストを作成
+    # 0:未知, 1:知っている, 2:知られている
+    ans = [0] * N
+    # Xの友達は知っている
+    ans[X] = 1
+    # Xの友達を知っている人数
+    cnt = 1
+    # Xの友達の友達を知っている人数
+    cnt2 = 0
+    # Xの友達の友達を知っている人数が0になるまで繰り返す
+    while cnt2 != 0:
+        # Xの友達の友達を知っている人数を0にする
+        cnt2 = 0
+        # Xの友達の友達を知っている人数を数える
+        for i in range(N):
+            if ans[i] == 2:
+                cnt2 += 1
+        # Xの友達の友達を知っている人数が0になったら終了
+        if cnt2 == 0:
+            break
+        # Xの友達の友達を知っている人数を0にする
+        cnt2 = 0
+        # Xの友達の友達を知っている人数を数える
+        for i in range(N):
+            if ans[i] == 2:
+                cnt2 += 1
+        # Xの友達の友達を知っている人数が0になったら終了
+        if cnt2 == 0:
+            break
+        # Xの友達の友達を知っている人数を0にする
+        cnt2 = 0
+        # Xの友達の友達を知っている人数を数える
+        for i in range

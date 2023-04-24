@@ -1,57 +1,205 @@
-#Problem Statement
-#We have 2N balls. Each ball has a color represented by an integer between 1 and N (inclusive). For each of the N colors, there are exactly two balls of that color.
-#These balls are contained in M cylinders placed perpendicularly to the floor. Initially, the i-th cylinder (1 ≦ i ≦ M) contains k_i balls, the j-th of which from the top (1 ≦ j ≦ k_i) has the color a_{i, j}.
-#Your objective is to empty all M cylinders by repeating the following operation.
-#Choose two different non-empty cylinders and remove the topmost ball from each of them. Here, the two balls removed must be of the same color.
-#Determine whether the objective is achievable.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 2 × 10^5
-#1 ≦ k_i (1 ≦ i ≦ M)
-#1 ≦ a_{i,j} ≦ N (1 ≦ i ≦ M,1 ≦ j ≦ k_i)
-#sum_{i=1}^{M} k_i = 2N
-#For every x (1 ≦ x ≦ N), there exists exactly two pairs of integers (i,j) such that 1 ≦ i ≦ M, 1 ≦ j ≦ k_i, and a_{i,j}=x.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#k_1
-#a_{1,1} a_{1,2} ... a_{1,k_1}
-#k_2
-#a_{2,1} a_{2,2} ... a_{2,k_2}
-#.
-#.
-#.
-#k_M
-#a_{M,1} a_{M,2} ... a_{M,k_M}
-#
-#Output
-#If the objective is achievable, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 2
-#2
-#1 2
-#2
-#1 2
-#
-#Sample Output 1
-#Yes
-#The objective can be achieved as follows.
-#Choose the first and second cylinders to remove the topmost ball from each of them, which is allowed since the removed balls have the same color: 1.
-#Choose the first and second cylinders to remove the topmost ball from each of them, which is allowed since the removed balls have the same color: 2.
-#
-#Sample Input 2
-#2 2
-#2
-#1 2
-#2
-#2 1
-#
-#Sample Output 2
-#No
-#No operation can be done at all, which means it is impossible to achieve the objective of emptying the M cylinders.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    K = [0] * M
+    A = [0] * M
+    for i in range(M):
+        K[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    #print(N, M, K, A)
+    #print(A)
+    #print(sum(K))
+    #print(sum(K) == 2*N)
+    #print(len(A))
+    #print(len(A) == M)
+    #print(all([len(A[i]) == K[i] for i in range(M)]))
+    if not (sum(K) == 2*N and len(A) == M and all([len(A[i]) == K[i] for i in range(M)])):
+        print("No")
+        return
+    #print("Yes")
+    #print(A)
+    #print([A[i][0] for i in range(M)])
+    #print([A[i][0] for i in range(M)].count(1))
+    #print([A[i][0] for i in range(M)].count(2))
+    #print([A[i][0] for i in range(M)].count(3))
+    #print([A[i][0] for i in range(M)].count(4))
+    #print([A[i][0] for i in range(M)].count(5))
+    #print([A[i][0] for i in range(M)].count(6))
+    #print([A[i][0] for i in range(M)].count(7))
+    #print([A[i][0] for i in range(M)].count(8))
+    #print([A[i][0] for i in range(M)].count(9))
+    #print([A[i][0] for i in range(M)].count(10))
+    #print([A[i][0] for i in range(M)].count(11))
+    #print([A[i][0] for i in range(M)].count(12))
+    #print([A[i][0] for i in range(M)].count(13))
+    #print([A[i][0] for i in range(M)].count(14))
+    #print([A[i][0] for i in range(M)].count(15))
+    #print([A[i][0] for i in range(M)].count(16
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    K = [0] * M
+    A = [0] * M
+    for i in range(M):
+        K[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    #print(N, M)
+    #print(K)
+    #print(A)
+    count = [0] * (N + 1)
+    for i in range(M):
+        for j in range(K[i]):
+            count[A[i][j]] += 1
+    #print(count)
+    for i in range(1, N + 1):
+        if count[i] % 2 != 0:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    k = [0] * M
+    a = [0] * M
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k_i = int(input())
+        k.append(k_i)
+        a_i = list(map(int, input().split()))
+        a.append(a_i)
+    #print(N, M)
+    #print(k)
+    #print(a)
+    #print("
+
+")
+    for i in range(M):
+        for j in range(k[i]):
+            a[i][j] = a[i][j] - 1
+    #print(a)
+    #print("
+
+")
+    for i in range(M):
+        for j in range(k[i]):
+            a[i][j] = a[i][j] + N * i
+    #print(a)
+    #print("
+
+")
+    for i in range(M):
+        for j in range(k[i]):
+            a[i][j] = a[i][j] + 1
+    #print(a)
+    #print("
+
+")
+    b = []
+    for i in range(M):
+        for j in range(k[i]):
+            b.append(a[i][j])
+    #print(b)
+    #print("
+
+")
+    b.sort()
+    #print(b)
+    #print("
+
+")
+    for i in range(2 * N):
+        if b[i] % N != b[i + 1] % N:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    k = [int(input()) for _ in range(M)]
+    a = [[int(x) for x in input().split()] for _ in range(M)]
+    balls = [0] * (N + 1)
+    for i in range(M):
+        for j in range(k[i]):
+            balls[a[i][j]] += 1
+    for i in range(1, N + 1):
+        if balls[i] != 2:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(solve(N, M, k, a))
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for _ in range(m):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    count = [0] * (n + 1)
+    for i in range(m):
+        for j in range(k[i]):
+            count[a[i][j]] += 1
+    for i in range(1, n + 1):
+        if count[i] % 2 != 0:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def solve(N, M, k, a):
+    # write your code here
+    return "Yes"
+
+=======
+Suggestion 9
+
+def isPossible(N,M,K,A):
+    from collections import Counter
+    #print("M,K,A",M,K,A)
+    if M==2:
+        if K[0]==K[1]:
+            if Counter(A[0])==Counter(A[1]):
+                return True
+    return False

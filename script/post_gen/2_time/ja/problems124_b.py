@@ -1,44 +1,124 @@
-#問題文
-#東西に N 個の山が連なっており、西の果てには広大な海が広がっています。
-#各山頂には旅館があり、あなたは海を眺められる旅館を選ぶことにしました。
-#西から i 番目の山の高さは H_i です。
-#西から 1 番目の山頂にある旅館からは必ず海を眺めることができます。
-#西から i (i = 2, 3, ..., N) 番目の山頂にある旅館については、H_1 ≦ H_i, H_2 ≦ H_i, ..., かつ H_{i-1} ≦ H_i のとき、その旅館から海を眺めることができます。
-#これら N 個の旅館のうち、海を眺められる旅館はいくつあるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 20
-#1 ≦ H_i ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 H_2 ... H_N
-#
-#出力
-#海を眺められる旅館の数を出力せよ。
-#
-#入力例 1
-#4
-#6 5 6 8
-#
-#出力例 1
-#3
-#西から 1, 3, 4 番目の旅館から海を眺めることができます。
-#
-#入力例 2
-#5
-#4 5 3 5 4
-#
-#出力例 2
-#3
-#
-#入力例 3
-#5
-#9 5 6 8 4
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 1
+    for i in range(1, N):
+        if H[i-1] <= H[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 1
+    for i in range(1, N):
+        if H[i-1] <= H[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 1
+    for i in range(1, n):
+        if h[i-1] <= h[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    cnt = 1
+    for i in range(N-1):
+        if H[i] <= H[i+1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        if h[i - 1] <= h[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += 1
+        else:
+            if H[i-1] <= H[i]:
+                ans += 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    ans = 1
+    for i in range(1, N):
+        if H[i-1] < H[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if H[i] >= max(H[:i+1]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    if N == 1:
+        print(1)
+    else:
+        count = 0
+        for i in range(N):
+            if i == 0:
+                if H[i] <= H[i+1]:
+                    count += 1
+            elif i == N-1:
+                if H[i] <= H[i-1]:
+                    count += 1
+            else:
+                if H[i] <= H[i-1] and H[i] <= H[i+1]:
+                    count += 1
+        print(count)

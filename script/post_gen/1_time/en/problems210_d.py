@@ -1,48 +1,126 @@
-#Problem Statement
-#The Kingdom of Takahashi can be represented as a grid with H rows and W columns. Let (i, j) denote the square at the i-th row from the north and j-th column from the west.
-#Recently, there have been more and more requests from the kingdom's citizens to build a railway, and now the king, Takahashi, has no choice but to build one.
-#The construction of the railway will have the following two phases.
-#First, choose two different squares and build a station on each of them. It costs A_{i,j} yen to build a station on the square (i, j).
-#Then, build a railway track connecting these two stations. This costs C × (|i-i'| + |j-j'|) yen when the two stations are on the squares (i, j) and (i', j'). (|x| denotes the absolute value of x.)
-#Takahashi's priority is to spend as little as possible on this construction, rather than to improve convenience for the citizens.
-#Print the minimum possible total cost of the construction of the railway.
-#
-#Constraints
-#2 ≦ H, W ≦ 1000
-#1 ≦ C ≦ 10^9
-#1 ≦ A_{ij} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W C
-#A_{1,1} A_{1,2} ... A_{1,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ... A_{H,W}
-#
-#Output
-#Print the minimum possible total cost of the construction of the railway.
-#
-#Sample Input 1
-#3 4 2
-#1 7 7 9
-#9 6 3 7
-#7 8 6 4
-#
-#Sample Output 1
-#10
-#If we build stations on the squares (1, 1) and (2, 3), it will cost 1 + 3 = 4 yen to build the stations and 2 × (|1-2| + |1-3|) = 6 yen to build the track, for a total of 4+6 = 10 yen.
-#This is the minimum possible total cost of the construction.
-#
-#Sample Input 2
-#3 3 1000000000
-#1000000 1000000 1
-#1000000 1000000 1000000
-#1 1000000 1000000
-#
-#Sample Output 2
-#1001000001
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, C = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = float('inf')
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i == k and j == l:
+                        continue
+                    ans = min(ans, A[i][j] + A[k][l] + C * (abs(i - k) + abs(j - l)))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, C = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = 10**18
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i == k and j == l:
+                        continue
+                    ans = min(ans, A[i][j] + A[k][l] + C * (abs(i - k) + abs(j - l)))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    h, w, c = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    ans = 10 ** 18
+    for i in range(h):
+        for j in range(w):
+            ans = min(ans, a[i][j] + c * (i + j))
+    for i in range(h):
+        for j in range(w):
+            ans = min(ans, a[i][j] - c * (i + j))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h, w, c = map(int, input().split())
+    a = [list(map(int, input().split())) for i in range(h)]
+
+    ans = 10**18
+    for i in range(h):
+        for j in range(w):
+            ans = min(ans, a[i][j] + c * (i + j), a[i][j] - c * (i + j))
+
+    for i in range(h):
+        for j in range(w):
+            ans = min(ans, a[i][j] + c * (i - j), a[i][j] - c * (i - j))
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, C = list(map(int, input().split()))
+    A = []
+    for _ in range(H):
+        A.append(list(map(int, input().split())))
+    min_cost = 10**18
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i == k and j == l:
+                        continue
+                    cost = A[i][j] + A[k][l] + C*abs(i-k) + C*abs(j-l)
+                    if cost < min_cost:
+                        min_cost = cost
+    print(min_cost)
+
+=======
+Suggestion 6
+
+def main():
+    H,W,C = map(int,input().split())
+    A = [list(map(int,input().split())) for _ in range(H)]
+
+    min_A = [[10**9]*W for _ in range(H)]
+    min_A[0][0] = A[0][0]
+    for i in range(H):
+        for j in range(W):
+            if i == 0 and j == 0:
+                continue
+            if i == 0:
+                min_A[i][j] = min(min_A[i][j-1],A[i][j])
+            elif j == 0:
+                min_A[i][j] = min(min_A[i-1][j],A[i][j])
+            else:
+                min_A[i][j] = min(min_A[i-1][j],min_A[i][j-1],A[i][j])
+
+    max_A = [[0]*W for _ in range(H)]
+    max_A[H-1][W-1] = A[H-1][W-1]
+    for i in range(H-1,-1,-1):
+        for j in range(W-1,-1,-1):
+            if i == H-1 and j == W-1:
+                continue
+            if i == H-1:
+                max_A[i][j] = max(max_A[i][j+1],A[i][j])
+            elif j == W-1:
+                max_A[i][j] = max(max_A[i+1][j],A[i][j])
+            else:
+                max_A[i][j] = max(max_A[i+1][j],max_A[i][j+1],A[i][j])
+
+    ans = 10**18
+    for i in range(H):
+        for j in range(W):
+            ans = min(ans,min_A[i][j]+max_A[i][j]+C*(i+j))
+
+    print(ans)

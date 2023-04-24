@@ -1,45 +1,141 @@
-#Problem Statement
-#In a flower bed, there are N flowers, numbered 1,2,......,N. Initially, the heights of all flowers are 0.
-#You are given a sequence h={h_1,h_2,h_3,......} as input. You would like to change the height of Flower k to h_k for all k (1 ≦  k ≦ N), by repeating the following "watering" operation:
-#Specify integers l and r. Increase the height of Flower x by 1 for all x such that l ≦ x ≦ r.
-#Find the minimum number of watering operations required to satisfy the condition.
-#
-#Constraints
-#1 ≦ N  ≦ 100
-#0 ≦ h_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#h_1 h_2 h_3 ...... h_N
-#
-#Output
-#Print the minimum number of watering operations required to satisfy the condition.
-#
-#Sample Input 1
-#4
-#1 2 2 1
-#
-#Sample Output 1
-#2
-#The minimum number of watering operations required is 2.
-#One way to achieve it is:
-#Perform the operation with (l,r)=(1,3).
-#Perform the operation with (l,r)=(2,4).
-#
-#Sample Input 2
-#5
-#3 1 2 3 1
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#8
-#4 23 75 0 23 96 50 100
-#
-#Sample Output 3
-#221
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        if h[i] > h[i+1]:
+            ans += h[i] - h[i+1]
+            h[i+1] = h[i]
+    return ans
+
+print(solve())
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if H[i] == 0:
+            continue
+        ans += 1
+        for j in range(i+1, N):
+            if H[j] <= H[i]:
+                H[j] = 0
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if H[i] == 0:
+            continue
+        ans += 1
+        for j in range(i + 1, N):
+            if H[j] > 0:
+                H[j] -= 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    h = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(1, N):
+        if h[i] > h[i - 1]:
+            ans += h[i] - h[i - 1]
+    print(ans + h[0])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for h in H:
+        ans += h
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    h = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+        else:
+            if h[i] > h[i-1]:
+                ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    h = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+        else:
+            ans += max(0, h[i] - h[i-1])
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if H[i] > H[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    heights = list(map(int, input().split()))
+    operations = 0
+    for i in range(1, N):
+        if heights[i] < heights[i-1]:
+            operations += heights[i-1] - heights[i]
+            heights[i] = heights[i-1]
+    print(operations)
+
+=======
+Suggestion 10
+
+def   main (): 
+     N   =   int ( input ()) 
+     h   =   list ( map ( int ,   input (). split ())) 
+
+     # 連続した区間を見つける

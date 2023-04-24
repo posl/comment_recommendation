@@ -1,46 +1,173 @@
-#Problem Statement
-#We have many oranges. It is known that every orange weighs between A and B grams, inclusive. (An orange can have a non-integer weight.)
-#We chose some of those oranges, and their total weight was exactly W kilograms.
-#Find the minimum and maximum possible numbers of oranges chosen. If no set of oranges can weigh exactly W kilograms in total, report that fact.
-#
-#Constraints
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ W ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B W
-#
-#Output
-#Print the minimum and maximum possible numbers of oranges chosen, in this order, with space in between. If there is no number of oranges that can have the specified total weight, print UNSATISFIABLE instead.
-#
-#Sample Input 1
-#100 200 2
-#
-#Sample Output 1
-#10 20
-#Here, one range weighs between 100 and 200 grams (inclusive).
-#If we choose 10 200-gram oranges, their total weight will be exactly 2 kilograms.
-#If we choose 20 100-gram oranges, their total weight will be exactly 2 kilograms.
-#With less than 10 oranges or more than 20 oranges, the total weight will never be exactly 2 kilograms, so the minimum and maximum possible numbers of oranges chosen are 10 and 20, respectively.
-#
-#Sample Input 2
-#120 150 2
-#
-#Sample Output 2
-#14 16
-#Here, one range weighs between 120 and 150 grams (inclusive).
-#If we choose 10 140-gram oranges and 4 150-gram oranges, for example, their total weight will be exactly 2 kilograms.
-#If we choose 8 120-gram oranges and 8 130-gram oranges, for example, their total weight will be exactly 2 kilograms.
-#With less than 14 oranges or more than 16 oranges, the total weight will never be exactly 2 kilograms, so the minimum and maximum possible numbers of oranges chosen are 14 and 16, respectively.
-#
-#Sample Input 3
-#300 333 1
-#
-#Sample Output 3
-#UNSATISFIABLE
-#Here, one range weighs between 300 and 333 grams (inclusive).
-#No set of oranges of this kind can weigh exactly 1 kilograms in total.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    min_orange = w // b
+    max_orange = w // a
+    if min_orange * a <= w <= max_orange * b:
+        print(min_orange, max_orange)
+    else:
+        print("UNSATISFIABLE")
+
+=======
+Suggestion 2
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+
+    min_oranges = w // b
+    max_oranges = w // a
+    if w % b != 0:
+        min_oranges += 1
+    if w % a != 0:
+        max_oranges -= 1
+    if min_oranges > max_oranges:
+        print('UNSATISFIABLE')
+    else:
+        print(min_oranges, max_oranges)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, W = map(int, input().split())
+    W *= 1000
+    min_orange = 0
+    max_orange = 0
+    for i in range(1, W+1):
+        if A*i <= W <= B*i:
+            if min_orange == 0:
+                min_orange = i
+            max_orange = i
+    if min_orange == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min_orange, max_orange)
+
+=======
+Suggestion 4
+
+def main():
+    A, B, W = map(int, input().split())
+    W *= 1000
+    min_orange = 10**9
+    max_orange = 0
+    for i in range(1, 1001):
+        if A * i <= W <= B * i:
+            min_orange = min(min_orange, i)
+            max_orange = max(max_orange, i)
+    if min_orange == 10**9:
+        print('UNSATISFIABLE')
+    else:
+        print(min_orange, max_orange)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    if w % b == 0:
+        mini = w // b
+    else:
+        mini = w // b + 1
+    if w % a == 0:
+        maxi = w // a
+    else:
+        maxi = w // a + 1
+    if mini <= maxi:
+        print(mini,maxi)
+    else:
+        print("UNSATISFIABLE")
+
+=======
+Suggestion 6
+
+def main():
+    A,B,W = map(int,input().split())
+    W *= 1000
+    min_oranges = W//B
+    max_oranges = W//A
+    if min_oranges*B < W:
+        min_oranges += 1
+    if max_oranges*A > W:
+        max_oranges -= 1
+    if min_oranges <= max_oranges:
+        print(min_oranges,max_oranges)
+    else:
+        print("UNSATISFIABLE")
+
+=======
+Suggestion 7
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    n = w//a
+    m = w//b
+    if n*b <= w <= m*a:
+        print(n, m)
+    else:
+        print("UNSATISFIABLE")
+
+=======
+Suggestion 8
+
+def find_min_max_oranges(A,B,W):
+    min_oranges = 0
+    max_oranges = 0
+    min_weight = A * 1000
+    max_weight = B * 1000
+    total_weight = W * 1000
+    if min_weight > total_weight:
+        return "UNSATISFIABLE"
+    else:
+        min_oranges = total_weight // max_weight
+        max_oranges = total_weight // min_weight
+        if total_weight % max_weight != 0:
+            min_oranges += 1
+        if total_weight % min_weight != 0:
+            max_oranges += 1
+        return str(min_oranges) + " " + str(max_oranges)
+
+=======
+Suggestion 9
+
+def get_orange_count(A, B, W):
+    W = W * 1000
+    min_count = 0
+    max_count = 0
+    min_count = W // B
+    if W % B != 0:
+        min_count += 1
+    max_count = W // A
+    return min_count, max_count
+
+=======
+Suggestion 10
+
+def main():
+    # Read the input
+    a, b, w = map(int, input().split())
+    w *= 1000
+    # If the range is too large, report that fact
+    if a * 1000 > w:
+        print("UNSATISFIABLE")
+        return
+    # Find the minimum and maximum possible numbers of oranges chosen
+    min_oranges = 1000
+    max_oranges = 0
+    for i in range(1000):
+        if a * i <= w and w <= b * i:
+            min_oranges = min(min_oranges, i)
+            max_oranges = max(max_oranges, i)
+    # Output the result
+    if min_oranges == 1000:
+        print("UNSATISFIABLE")
+    else:
+        print(min_oranges, max_oranges)

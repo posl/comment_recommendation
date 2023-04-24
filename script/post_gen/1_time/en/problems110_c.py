@@ -1,45 +1,145 @@
-#Problem Statement
-#You are given strings S and T consisting of lowercase English letters.
-#You can perform the following operation on S any number of times:
-#Operation: Choose two distinct lowercase English letters c_1 and c_2, then replace every occurrence of c_1 with c_2, and every occurrence of c_2 with c_1.
-#Determine if S and T can be made equal by performing the operation zero or more times.
-#
-#Constraints
-#1 ≦ |S| ≦ 2 × 10^5
-#|S| = |T|
-#S and T consists of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If S and T can be made equal, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#azzel
-#apple
-#
-#Sample Output 1
-#Yes
-#azzel can be changed to apple, as follows:
-#Choose e as c_1 and l as c_2. azzel becomes azzle.
-#Choose z as c_1 and p as c_2. azzle becomes apple.
-#
-#Sample Input 2
-#chokudai
-#redcoder
-#
-#Sample Output 2
-#No
-#No sequences of operation can change chokudai to redcoder.
-#
-#Sample Input 3
-#abcdefghijklmnopqrstuvwxyz
-#ibyhqfrekavclxjstdwgpzmonu
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    s_set = set(s)
+    t_set = set(t)
+    if len(s_set) == len(t_set):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    s = set(S)
+    t = set(T)
+    if len(s) == len(t):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if len(set(S)) == len(set(T)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if len(set(S)) == len(set(T)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = list(input())
+    T = list(input())
+    S = sorted(S)
+    T = sorted(T, reverse = True)
+    if S < T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+
+    if len(set(s)) < len(set(t)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    S = sorted(S)
+    T = sorted(T, reverse=True)
+    print('Yes' if S < T else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    pairs = []
+    for i in range(len(S)):
+        pairs.append([S[i], T[i]])
+    pairs.sort()
+    for i in range(len(pairs)-1):
+        if pairs[i][0] == pairs[i+1][0] and pairs[i][1] != pairs[i+1][1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    T = input()
+
+    # Check if the number of distinct characters in S and T are the same
+    if len(set(S)) == len(set(T)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+
+    # 1. Check if |S| = |T|
+    if len(S) != len(T):
+        print("No")
+        return
+
+    # 2. Check if |S| = |T| = 26
+    if len(S) == 26:
+        print("Yes")
+        return
+
+    # 3. Check if S and T have the same set of characters
+    if set(S) == set(T):
+        print("Yes")
+        return
+
+    # 4. Check if S and T have the same number of distinct characters
+    if len(set(S)) == len(set(T)):
+        print("Yes")
+        return
+
+    print("No")
+    return
+
+main()

@@ -1,45 +1,119 @@
-#問題文
-#x 軸の正の向きを右、y 軸の正の向きを上とする 2 次元座標平面上に、p_0, p_1, p_2, ..., p_{N - 1} の N 個の頂点からなる正 N 角形があります。
-#ここで N は偶数であることが保証され、頂点 p_0, p_1, p_2, ..., p_{N - 1} はこの順に反時計回りに並んでいます。
-#p_i の座標を (x_i, y_i) とします。
-#x_0, y_0, x_{(N/(2))}, y_{(N/(2))} が与えられるので、x_1, y_1 を求めてください。  
-#
-#制約
-#4 ≦ N ≦ 100
-#N は偶数
-#0 ≦ x_0, y_0 ≦ 100
-#0 ≦ x_{(N/(2))}, y_{(N/(2))} ≦ 100
-#(x_0, y_0) ≠ (x_{(N/(2))}, y_{(N/(2))})
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_0 y_0
-#x_{(N/(2))} y_{(N/(2))}
-#
-#出力
-#x_1, y_1 をこの順に空白区切りで出力せよ。
-#出力されたそれぞれの値について、想定解答との絶対誤差または相対誤差が 10^{-5} 以下であれば正解と判定される。  
-#
-#入力例 1
-#4
-#1 1
-#2 2
-#
-#出力例 1
-#2.00000000000 1.00000000000
-#p_0 = (1, 1), p_2 = (2, 2) という情報が与えられています。
-#p_0, p_1, p_2, p_3 が正方形をなし、反時計回りに並んでいるという情報から残りの頂点の座標は一意に定まり、以下のようになります。  
-#p_1 = (2, 1)
-#p_3 = (1, 2)
-#
-#入力例 2
-#6
-#5 3
-#7 4
-#
-#出力例 2
-#5.93301270189 2.38397459622
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2 + (y0 - y2) / N
+    y1 = (y0 + y2) / 2 + (x2 - x0) / N
+    print(x1, y1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2 - (y2 - y0) / (N / 2)
+    y1 = (y0 + y2) / 2 + (x2 - x0) / (N / 2)
+    print(x1, y1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2
+    y1 = (y0 + y2) / 2
+    print(x1, y1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+
+    x1 = (x0 + x2) / 2 - (y2 - y0) / 2
+    y1 = (y0 + y2) / 2 + (x2 - x0) / 2
+
+    print(x1, y1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+
+    x1 = x2 - x0
+    y1 = y2 - y0
+
+    print(x1, y1)
+
+=======
+Suggestion 6
+
+def readinput():
+    n=int(input())
+    x0,y0=map(int,input().split())
+    x2,y2=map(int,input().split())
+    return n,x0,y0,x2,y2
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    x2 = (x0 + x1) / 2 + (y0 - y1) / 2
+    y2 = (y0 + y1) / 2 + (x1 - x0) / 2
+    print(x2, y2)
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    import math
+    input = sys.stdin.readline
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2
+    y1 = (y0 + y2) / 2
+    print(x1, y1)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N = int(input())
+    x_0, y_0 = map(int, input().split())
+    x_N_2, y_N_2 = map(int, input().split())
+    #処理
+    x_1 = x_0 + (x_N_2 - x_0) * (N / 4) / (N / 2)
+    y_1 = y_0 + (y_N_2 - y_0) * (N / 4) / (N / 2)
+    #出力
+    print(x_1, y_1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input()) 
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x2 + 2 * x0) / 3
+    y1 = (y2 + 2 * y0) / 3
+    print(x1, y1)

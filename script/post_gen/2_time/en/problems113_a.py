@@ -1,34 +1,37 @@
-#Problem Statement
-#There is a train going from Station A to Station B that costs X yen (the currency of Japan).
-#Also, there is a bus going from Station B to Station C that costs Y yen.
-#Joisino got a special ticket. With this ticket, she can take the bus for half the fare if she travels from Station A to Station B by train and then travels from Station B to Station C by bus.
-#How much does it cost to travel from Station A to Station C if she uses this ticket?
-#
-#Constraints
-#1 ≦ X,Y ≦ 100
-#Y is an even number.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y
-#
-#Output
-#If it costs x yen to travel from Station A to Station C, print x.
-#
-#Sample Input 1
-#81 58
-#
-#Sample Output 1
-#110
-#The train fare is 81 yen.
-#The train fare is 58 ⁄ 2=29 yen with the 50% discount.
-#Thus, it costs 110 yen to travel from Station A to Station C.
-#
-#Sample Input 2
-#4 54
-#
-#Sample Output 2
-#31
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    print(x + y // 2)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y = map(int, input().split())
+    print(X + Y // 2)
+
+=======
+Suggestion 3
+
+def main():
+    x, y = [int(x) for x in input().split()]
+    print(x + y // 2)
+
+=======
+Suggestion 4
+
+def main():
+    #write your code below this line
+    x,y = map(int,input().split())
+    print(x + y // 2)
+
+=======
+Suggestion 5
+
+def main():
+    #write your code below this line
+    pass

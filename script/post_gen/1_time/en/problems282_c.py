@@ -1,42 +1,165 @@
-#Problem Statement
-#You are given a string S of length N consisting of lowercase English letters, ,, and ". It is guaranteed that S contains an even number of ".
-#Let 2K be the number of " in S. For each i=1,2,...,K, the characters from the (2i-1)-th " through the (2i)-th " are said to be enclosed.
-#Your task is to replace each , in S that is not an enclosed character with . and print the resulting string.
-#
-#Constraints
-#N is an integer between 1 and 2× 10^5, inclusive.
-#S is a string of length N consisting of lowercase English letters, ,, and ".
-#S contains an even number of ".
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#8
-#"a,b"c,d
-#
-#Sample Output 1
-#"a,b"c.d
-#In S, "a,b" are enclosed characters, and c,d are not.
-#The , in S that is not an enclosed character is the seventh character from the left in S, so replace that character with . to get the answer.
-#
-#Sample Input 2
-#5
-#,,,,,
-#
-#Sample Output 2
-#.....
-#
-#Sample Input 3
-#20
-#a,"t,"c,"o,"d,"e,"r,
-#
-#Sample Output 3
-#a."t,"c."o,"d."e,"r.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(len(S)):
+        if S[i] == ',' and i % 2 == 1:
+            print('.', end='')
+        else:
+            print(S[i], end='')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    i = 0
+    while i < N:
+        if S[i] == '"':
+            i += 1
+            while S[i] != '"':
+                if S[i] == ',':
+                    S = S[:i] + '.' + S[i+1:]
+                i += 1
+        i += 1
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(N):
+        if S[i] == ',':
+            if i%2 == 0:
+                S = S[:i] + '.' + S[i+1:]
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    ans = ""
+    count = 0
+    for i in range(n):
+        if s[i] == '"':
+            count += 1
+        if count % 2 == 0:
+            if s[i] == ',':
+                ans += '.'
+            else:
+                ans += s[i]
+        else:
+            ans += s[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    result = ""
+    enclosed = False
+    for i in range(N):
+        if S[i] == '"':
+            enclosed = not enclosed
+            result += S[i]
+        elif enclosed and S[i] == ',':
+            result += S[i]
+        elif not enclosed and S[i] == ',':
+            result += '.'
+        else:
+            result += S[i]
+    print(result)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = input()
+    k = s.count('"')
+    for i in range(n):
+        if s[i] == ',' and k % 2 == 0:
+            print('.', end='')
+        else:
+            print(s[i], end='')
+        if s[i] == '"':
+            k -= 1
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 1:
+        print("error")
+        return
+    cnt = 0
+    for i in range(N):
+        if S[i] == "\"":
+            cnt += 1
+        if S[i] == "," and cnt % 2 == 0:
+            S = S[:i] + "." + S[i+1:]
+    print(S)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    ans = ""
+    q = 0
+    for c in s:
+        if c == '"':
+            q += 1
+        elif q % 2 == 0 and c == ',':
+            ans += '.'
+        else:
+            ans += c
+    print(ans)
+
+=======
+Suggestion 9
+
+def replace_comma(string):
+    #print(string)
+    string = list(string)
+    #print(string)
+    #print(len(string))
+    #print(string.count('"'))
+    #print(string.count(','))
+    #print(string.count('"')/2)
+    #print(string.count(',')/2)
+    #print(string.count('"')/2 - string.count(',')/2)
+    #print(int(string.count('"')/2 - string.count(',')/2))
+    for i in range(int(string.count('"')/2 - string.count(',')/2)):
+        #print(i)
+        #print(string.index('"'))
+        string[string.index('"')] = '.'
+        #print(string)
+        string.pop(string.index('"'))
+        #print(string)
+        string.pop(string.index('"'))
+        #print(string)
+    return ''.join(string)
+
+=======
+Suggestion 10
+
+def replaceCommas(s):
+    s = s[0:len(s)-1]
+    s = s.replace(',"', '.')
+    s = s + '"'
+    return s

@@ -1,67 +1,216 @@
-#Problem Statement
-#Takahashi, who works for a pizza restaurant, is making a delicious cheese pizza for staff meals.
-#There are N kinds of cheese in front of him.
-#The deliciousness of the i-th kind of cheese is A_i per gram, and B_i grams of this cheese are available.
-#The deliciousness of the pizza will be the total deliciousness of cheese he puts on top of the pizza.
-#However, using too much cheese would make his boss angry, so the pizza can have at most W grams of cheese on top of it.
-#Under this condition, find the maximum possible deliciousness of the pizza.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 3 × 10^5
-#1 ≦ W ≦ 3 × 10^8
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 1000
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N W
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3 5
-#3 1
-#4 2
-#2 3
-#
-#Sample Output 1
-#15
-#The optimal choice is to use 1 gram of cheese of the first kind, 2 grams of the second kind, and 2 grams of the third kind.
-#The pizza will have a deliciousness of 15.
-#
-#Sample Input 2
-#4 100
-#6 2
-#1 5
-#3 9
-#8 7
-#
-#Sample Output 2
-#100
-#There may be less than W grams of cheese in total.
-#
-#Sample Input 3
-#10 3141
-#314944731 649
-#140276783 228
-#578012421 809
-#878510647 519
-#925326537 943
-#337666726 611
-#879137070 306
-#87808915 39
-#756059990 244
-#228622672 291
-#
-#Sample Output 3
-#2357689932073
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_a = min(A)
+    C = []
+    for i in range(N):
+        C.append(A[i] - min_a)
+    D = []
+    for i in range(min_a + 1):
+        D.append(0)
+    for i in range(N):
+        D[C[i]] += B[i]
+    for i in range(min_a):
+        D[i + 1] += D[i]
+    ans = 0
+    for i in range(min_a + 1):
+        if D[i] <= W:
+            ans = max(ans, i * D[i] + D[i])
+        else:
+            ans = max(ans, i * W + W)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, W = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A, B = zip(*sorted(zip(A, B)))
+    dp = [0] * (W + 1)
+    for i in range(N):
+        for j in range(W, A[i] - 1, -1):
+            dp[j] = max(dp[j], dp[j - A[i]] + B[i] * A[i])
+    print(dp[W])
+
+=======
+Suggestion 3
+
+def main():
+    N, W = map(int, input().split())
+    cheese = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        cheese.append((A, B))
+    cheese = sorted(cheese, key=lambda x: x[0])
+    dp = [0] * (W + 1)
+    for i in range(N):
+        for j in range(W, -1, -1):
+            if j + cheese[i][1] <= W:
+                dp[j + cheese[i][1]] = max(dp[j + cheese[i][1]], dp[j] + cheese[i][0] * cheese[i][1])
+            dp[j] = max(dp[j], dp[j + cheese[i][1] - W] + cheese[i][0] * (W - j))
+    print(max(dp))
+
+=======
+Suggestion 4
+
+def main():
+    N, W = map(int, input().split())
+    cheese = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        cheese.append((A, B))
+    cheese.sort()
+    dp = [0] * (W+1)
+    for i in range(N):
+        for j in range(W, -1, -1):
+            if j + cheese[i][1] <= W:
+                dp[j + cheese[i][1]] = max(dp[j + cheese[i][1]], dp[j] + cheese[i][0] * cheese[i][1])
+            dp[j] = max(dp[j], dp[j] + cheese[i][0] * min(W - j, cheese[i][1]))
+    print(max(dp))
+
+=======
+Suggestion 5
+
+def main():
+    N, W = map(int, input().split())
+    cheese = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        cheese.append([A, B])
+    cheese.sort(key=lambda x: x[0])
+    maxA = cheese[-1][0]
+    dp = [0] * (maxA * 1000 + 1)
+    for A, B in cheese:
+        for i in range(maxA * 1000, A - 1, -1):
+            dp[i] = max(dp[i], dp[i - A] + B)
+    ans = 0
+    for i in range(maxA * 1000 + 1):
+        if dp[i] >= W:
+            ans = i
+            break
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, W = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(N)]
+    AB.sort()
+    dp = [0] * (W + 1)
+    for a, b in AB:
+        for i in range(W, 0, -1):
+            if i >= b:
+                dp[i] = max(dp[i], dp[i - b] + a * b)
+            else:
+                dp[i] = max(dp[i], dp[i - 1] + a * i)
+    print(dp[W])
+
+=======
+Suggestion 7
+
+def main():
+    N, W = map(int, input().split())
+    cheese = [list(map(int, input().split())) for _ in range(N)]
+    cheese.sort(key=lambda x: x[0])
+    #print(cheese)
+    max_cheese = cheese[-1][0]
+    #print(max_cheese)
+    dp = [0] * (max_cheese + 1)
+    for i in range(N):
+        for j in range(max_cheese, -1, -1):
+            if j + cheese[i][0] > max_cheese:
+                continue
+            dp[j + cheese[i][0]] = max(dp[j + cheese[i][0]], dp[j] + cheese[i][0] * cheese[i][1])
+    #print(dp)
+    ans = 0
+    for i in range(len(dp)):
+        if W >= i:
+            ans = max(ans, dp[i] + (W - i) * dp[-1])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, W = map(int, input().split())
+    cheese = [list(map(int, input().split())) for _ in range(N)]
+    cheese.sort(key=lambda x: x[0])
+    INF = 10**9+7
+    dp = [INF] * (W+1)
+    dp[0] = 0
+    for a, b in cheese:
+        for i in range(W):
+            if i+a <= W:
+                dp[i+a] = min(dp[i+a], dp[i]+b)
+    print(max([a*b for a, b in cheese if b <= dp[W]]))
+
+=======
+Suggestion 9
+
+def main():
+    N, W = map(int, input().split())
+    cheese = [list(map(int, input().split())) for i in range(N)]
+    cheese.sort()
+    dp = [[0 for i in range(1001)] for j in range(N+1)]
+    for i in range(1, N+1):
+        for j in range(1001):
+            if j < cheese[i-1][0]:
+                dp[i][j] = dp[i-1][j]
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-cheese[i-1][0]]+cheese[i-1][0]*cheese[i-1][1])
+    for i in range(1001):
+        if dp[N][i] > W:
+            print(i-1)
+            return
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    from collections import defaultdict
+    from bisect import bisect_left
+
+    # # for debug
+    # f = open("input.txt", "r")
+    # sys.stdin = f
+
+    N, W = map(int, input().split())
+    cheese = sorted([list(map(int, input().split())) for _ in range(N)], key=lambda x: x[0])
+
+    # 重さをiとしたとき、価値の最大値を記録する
+    dp = defaultdict(int)
+    # 重さ0のときの価値は0
+    dp[0] = 0
+    # 重さ1~Wのときの価値を記録する
+    for i in range(1, W+1):
+        # 重さiに対応する価値の初期値は0
+        dp[i] = 0
+        # 価値の最大値を探す
+        for j in range(N):
+            # 重さi以下であれば、価値を計算する
+            if cheese[j][0] <= i:
+                # 価値が最大値を超えていれば、更新する
+                if dp[i] < dp[i-cheese[j][0]] + cheese[j][0] * cheese[j][1]:
+                    dp[i] = dp[i-cheese[j][0]] + cheese[j][0] * cheese[j][1]
+            # 重さiより大きい場合は、価値は計算する必要がない
+            else:
+                break
+    print(dp[W])

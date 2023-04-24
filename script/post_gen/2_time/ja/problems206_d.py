@@ -1,46 +1,181 @@
-#問題文
-#N 項からなる正整数列 A=(A_1,A_2, ... A_N) が与えられます。
-#以下の操作を 0 回以上何度でも行える時、操作を最小何回行えば、A を回文にすることができますか？  
-#ある正整数の組 (x,y) を選ぶ。その後、現在 A に含まれる x をすべて y に置き換える。
-#なお、この問題では、全ての整数 i (1 ≦ i ≦ N) について、A_i=A_{N+1-i} が成り立つとき、またその時に限って、A が回文であると言います。  
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#出力例 1
-#2
-#はじめ、A=(1,5,3,2,5,2,3,1) です。
-#A に含まれる 3 を全て 2 に置き換えると、A=(1,5,2,2,5,2,2,1) となります。
-#A に含まれる 2 を全て 5 に置き換えると、A=(1,5,5,5,5,5,5,1) となります。
-#以上の操作を行うと、A を 2 回の操作で回文にすることができ、これが最小です。
-#
-#入力例 2
-#7
-#1 2 3 4 1 2 3
-#
-#出力例 2
-#1
-#
-#入力例 3
-#1
-#200000
-#
-#出力例 3
-#0
-#A がはじめから回文である可能性もあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N//2):
+        if A[i] == A[N-1-i]:
+            continue
+        elif A[i] == A[i+1] and A[i+1] == A[N-1-i-1]:
+            ans += 1
+        else:
+            ans += 2
+    if N % 2 == 1 and A[N//2] != A[N//2+1]:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # N = 8
+    # A = [1, 5, 3, 2, 5, 2, 3, 1]
+    # N = 7
+    # A = [1, 2, 3, 4, 1, 2, 3]
+    # N = 1
+    # A = [200000]
+    # print(A)
+    # print(A[::-1])
+    # print(N)
+    # print(A[:N//2])
+    # print(A[N//2+1:])
+    # print(A[N//2])
+    # print(A[N//2+1])
+    # print(A[N//2-1])
+    # print(A[N//2-1::-1])
+    # print(A[N//2+1:])
+    # print(A[N//2+1:][::-1])
+    # print(A[N//2-1::-1]==A[N//2+1:])
+    # print(A[:N//2]==A[N//2+1:][::-1])
+    # print(A[:N//2]==A[N//2+1:])
+    # print(A[N//2+1:][::-1]==A[N//2+1:])
+    # print(A[:N//2]==A[N//2+1:][::-1])
+    # print(A[N//2+1:][::-1]==A[N//2+1:])
+    # print(A[:N//2]==A[N//2+1:])
+    # print(A[:N//2+1])
+    # print(A[N//2:])
+    # print(A[:N//2+1]==A[N//2:])
+    # print(A[:N//2+1]==A[N//2:][::-1])
+    # print(A[:N//2+1][::-1]==A[N//2:])
+    # print(A[:N//2+1][::-1]==A[N//2:][::-1])
+    # print(A[:N//2+1][::-1]==A[N//2:])
+    # print(A[:N//2+1][::-1]==A[N//2:][::-1])
+    # print(A[:N//2+1][::-1]==A[N//2:][::-1])
+    # print(A
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N//2):
+        if A[i] != A[-(i+1)]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A = [0] + A + [0]
+    cnt = 0
+    for i in range(1,N+1):
+        if A[i] != A[N+1-i]:
+            cnt += 1
+    print(cnt//2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(N - max([A.count(i) for i in set(A)]))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # Aを反転させた配列を作成
+    A_rev = A[::-1]
+    # AとA_revの各要素を比較し、一致しない要素の数をカウント
+    count = 0
+    for i in range(N):
+        if A[i] != A_rev[i]:
+            count += 1
+    # countが0の場合は、Aが回文なので0を出力
+    if count == 0:
+        print(0)
+    # countが1の場合は、Aを1回操作するだけで回文にできるので1を出力
+    elif count == 1:
+        print(1)
+    # countが2以上の場合は、Aを2回操作する必要があるので2を出力
+    else:
+        print(2)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    INF = 10**5+5
+    dp = [[INF for _ in range(3)] for _ in range(N+1)]
+    dp[0][0] = 0
+    dp[0][1] = 1
+    dp[0][2] = 2
+    for i in range(N):
+        dp[i+1][0] = min(dp[i][0], dp[i][1], dp[i][2]) + (A[i] != A[N-i-1])
+        dp[i+1][1] = min(dp[i][0]+1, dp[i][1], dp[i][2]) + (A[i] != A[N-i-1])
+        dp[i+1][2] = min(dp[i][0]+2, dp[i][1]+1, dp[i][2]) + (A[i] != A[N-i-1])
+    print(min(dp[N][0], dp[N][1], dp[N][2]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    #print("N",N)
+    #print("A",A)
+    #print("len(A)",len(A))
+    #print("len(A)//2",len(A)//2)
+    min_count = 0
+    for i in range(len(A)//2):
+        #print("i",i)
+        #print("A[i]",A[i])
+        #print("A[-i-1]",A[-i-1])
+        if A[i] == A[-i-1]:
+            continue
+        elif A[i] != A[-i-1]:
+            #print("min_count",min_count)
+            min_count += 1
+    print(min_count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # Aの中で最も多く出現する数字を求める
+    num = [0] * 200001
+    for i in range(N):
+        num[A[i]] += 1
+    max_num = max(num)
+    # print(max_num)
+
+    # Aの中で最も多く出現する数字の個数を求める
+    max_num_count = 0
+    for i in range(200001):
+        if num[i] == max_num:
+            max_num_count += 1
+    # print(max_num_count)
+
+    # Aの中で最も多く出現する数字の個数をNから引いた数が答え
+    print(N - max_num_count)

@@ -1,49 +1,146 @@
-#Problem Statement
-#There are N items in a shop. For each i = 1, 2, ..., N, the price of the i-th item is A_i yen (the currency of Japan).
-#Takahashi has K coupons.
-#Each coupon can be used on one item. You can use any number of coupons, possibly zero, on the same item. Using k coupons on an item with a price of a yen allows you to buy it for max{a - kX, 0} yen.
-#Print the minimum amount of money Takahashi needs to buy all the items.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K, X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K X
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5 4 7
-#8 3 10 5 13
-#
-#Sample Output 1
-#12
-#By using 1 coupon on the 1-st item, 1 coupon on the 3-rd item, and 2 coupons on the 5-th item, Takahashi can:
-#buy the 1-st item for max{A_1-X, 0 } = 1 yen,
-#buy the 2-nd item for max{A_2, 0 } = 3 yen,
-#buy the 3-rd item for max{A_3-X, 0 } = 3 yen,
-#buy the 4-th item for max{A_4, 0 } = 5 yen,
-#buy the 5-th item for max{A_5-2X, 0 } = 0 yen,
-#for a total of 1 + 3 + 3 + 5 + 0 = 12 yen, which is the minimum possible.
-#
-#Sample Input 2
-#5 100 7
-#8 3 10 5 13
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#20 815 60
-#2066 3193 2325 4030 3725 1669 1969 763 1653 159 5311 5341 4671 2374 4513 285 810 742 2981 202
-#
-#Sample Output 3
-#112
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += max(A[i] - K * X, 0)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        if i < K:
+            ans += max(A[i] - X, 0)
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = 0
+    for i in range(n):
+        s += max(a[i] - k * x, 0)
+    print(s)
+
+=======
+Suggestion 4
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse = True)
+    ans = 0
+    for i in range(N):
+        if K > 0:
+            ans += max(A[i] - X, 0)
+            K -= 1
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    ans = 0
+    for i in range(N):
+        if i < K:
+            ans += max(A[i] - X, 0)
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = max(A[i] - X * K, 0)
+    print(sum(B))
+
+=======
+Suggestion 7
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    total = 0
+    for i in range(N):
+        if i < K:
+            total += max(A[i] - X, 0)
+        else:
+            total += A[i]
+    print(total)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    print(sum([max(A[i] - X * K, 0) for i in range(N)]))
+
+=======
+Suggestion 9
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    for i in range(N):
+        if A[i] >= X:
+            A[i] -= X
+            K -= 1
+        else:
+            break
+    if K > 0:
+        for i in range(N):
+            if A[i] > 0:
+                if K >= A[i] // X:
+                    K -= A[i] // X
+                    A[i] %= X
+                else:
+                    A[i] -= K * X
+                    K = 0
+    print(sum(A))
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    #solve
+    for i in range(N):
+        if A[i] > X:
+            A[i] = X
+    #output
+    print(sum(A))

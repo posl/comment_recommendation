@@ -1,89 +1,240 @@
-#問題文
-#高橋君はあるサービスで使うユーザー名を決めるのに困っています。彼を助けるプログラムを書いてください。
-#以下の条件をすべて満たす文字列 X を 1 つ求めてください。
-#X は次の手順で得られる文字列である。
-#N 個の文字列 S_1,S_2,...,S_N を好きな順番で並べたものを S_1', S_2', ...,S_N' とする。そして、S_1'、( 1 個以上の _ )、S_2'、( 1 個以上の _ )、...、( 1 個以上の _ )、S_N' をこの順番で連結したものを X とする。
-#X の文字数は 3 以上 16 以下である。
-#X は M 個の文字列 T_1,T_2,...,T_M のいずれとも一致しない。
-#ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 と出力してください。
-#
-#制約
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N,M は整数
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16
-#i ≠ j ならば S_i ≠ S_j
-#S_i は英小文字のみからなる文字列
-#3 ≦ |T_i| ≦ 16
-#i ≠ j ならば T_i ≠ T_j
-#T_i は英小文字と _ のみからなる文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#出力
-#条件をすべて満たす文字列 X を 1 つ出力せよ。ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 を出力せよ。
-#答えが複数存在する場合、どれを出力しても良い。
-#
-#入力例 1
-#1 1
-#chokudai
-#chokudai
-#
-#出力例 1
-#-1
-#条件のうち 1 番目と 2 番目を満たす文字列は X= chokudai しかありませんが、これは T_1 と一致します。
-#このため、条件をすべて満たす文字列 X が存在せず、-1 が正しい出力となります。
-#
-#入力例 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#出力例 2
-#dai_choku
-#この他に、choku__dai (choku と dai の間の _ が 2 つ) 等も条件をすべて満たします。
-#
-#入力例 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#出力例 3
-#-1
-#chokudai__atcoder や atcoder__chokudai (chokudai と atcoder の間の _ が 2 つ)は文字数が 17 なので 2 番目の条件を満たしません。
-#
-#入力例 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#出力例 4
-#ab__ef___cd_gh
-#1 番目の条件で記述されている操作で得られないような文字列が T_i として与えられる場合があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            for k in range(N):
+                if k == i or k == j:
+                    continue
+                for l in range(N):
+                    if l == i or l == j or l == k:
+                        continue
+                    X = S[i] + "_" + S[j] + "_" + S[k] + "_" + S[l]
+                    X = X.replace("____", "_")
+                    X = X.replace("___", "_")
+                    X = X.replace("__", "_")
+                    if len(X) < 4 or len(X) > 16:
+                        continue
+                    if X not in T:
+                        print(X)
+                        return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    for i in range(N):
+        for j in range(M):
+            if S[i] in T[j]:
+                print(-1)
+                return
+    for i in range(2**N):
+        x = ''
+        for j in range(N):
+            if (i >> j) & 1:
+                x += S[j] + '_'
+            else:
+                x += '_' + S[j]
+        if 3 <= len(x) <= 16:
+            for j in range(M):
+                if x == T[j]:
+                    break
+            else:
+                print(x)
+                return
+    print(-1)
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    for i in range(N):
+        for j in range(i + 1, N):
+            if S[i] in T or S[j] in T:
+                continue
+
+            for k in range(1, 17 - len(S[i]) - len(S[j]) + 1):
+                X = S[i] + "_" * k + S[j]
+                if X not in T:
+                    print(X)
+                    return
+    print(-1)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(3, 17):
+        for j in range(1 << (i - 1)):
+            X = ''
+            for k in range(N):
+                if k > 0:
+                    for l in range(i - 1):
+                        if j >> l & 1:
+                            X += '_'
+                X += S[k]
+            if len(X) != i:
+                continue
+            if X in T:
+                continue
+            print(X)
+            return
+    print(-1)
+
+=======
+Suggestion 5
+
+def solve():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            for k in range(n):
+                if k == i or k == j:
+                    continue
+                for l in range(n):
+                    if l == i or l == j or l == k:
+                        continue
+                    x = s[i] + "_" + s[j] + "_" + s[k] + "_" + s[l]
+                    if len(x) > 16:
+                        continue
+                    if x in t:
+                        continue
+                    print(x)
+                    return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    ans = ""
+    for i in range(3, 17):
+        for j in range(2 ** (i - 1)):
+            tmp = ""
+            for k in range(i - 1):
+                if j >> k & 1:
+                    tmp += "_"
+                tmp += S[k]
+            tmp += S[i - 1]
+            if tmp not in T:
+                ans = tmp
+                break
+        if ans:
+            break
+    print(ans if ans else -1)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(1, N):
+        S[i] = '_' + S[i]
+    ans = ''.join(S)
+    if ans in T:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N, M = list(map(int, input().split()))
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(2 ** N):
+        x = []
+        for j in range(N):
+            if (i >> j) & 1:
+                x.append(S[j])
+            else:
+                x.append("_" * len(S[j]))
+        X = "".join(x)
+        if 3 <= len(X) <= 16 and X not in T:
+            print(X)
+            return
+    print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N, M = list(map(int, input().split()))
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    # 処理
+    def is_ok(x):
+        for t in T:
+            if t == x:
+                return False
+        return True
+
+    def dfs(s):
+        if len(s) > 16:
+            return
+        if is_ok(s):
+            print(s)
+            exit()
+        for i in range(N):
+            dfs(s + "_" + S[i])
+        return
+
+    # 出力
+    dfs("")
+    print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    N,M = map(int,input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    X = ""
+    for s in S:
+        X += s
+        X += "_"
+    X = X[:-1]
+    if len(X) < 3 or 16 < len(X):
+        print(-1)
+        return
+
+    for t in T:
+        if X == t:
+            print(-1)
+            return
+
+    print(X)

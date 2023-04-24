@@ -1,89 +1,227 @@
-#Problem Statement
-#Takahashi is having trouble with deciding a username for a service.  Write a code to help him.
-#Find a string X that satisfies all of the following conditions:
-#X is obtained by the following procedure:
-#Let S_1', S_2', ...,S_N' be a permutation of S_1, S_2, ...,S_N.  Let X be the concatenation of S_1', (1 or more copies of _), S_2', (1 or more copies of _), ..., (1 or more copies of _), and S_N', in this order.
-#The length of X is between 3 and 16, inclusive.
-#X does not coincide with any of M strings T_1,T_2,...,T_M.
-#If there is no X that satisfies all of the conditions, print -1 instead.
-#
-#Constraints
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N and M are integers.
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16
-#S_i ≠ S_j if i ≠ j.
-#S_i is a string consisting of lowercase English letters.
-#3 ≦ |T_i| ≦ 16
-#T_i ≠ T_j if i ≠ j.
-#T_i is a string consisting of lowercase English letters and _.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#Output
-#Print a string X that satisfies all of the conditions.  If there is no X that satisfies all of the conditions, print -1 instead.
-#If there are multiple solutions, print any of them.
-#
-#Sample Input 1
-#1 1
-#chokudai
-#chokudai
-#
-#Sample Output 1
-#-1
-#The only string that satisfies the first and second conditions is X= chokudai, but it coincides with T_1.
-#Thus, there is no X that satisfies all of the conditions, so -1 should be printed.
-#
-#Sample Input 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#Sample Output 2
-#dai_choku
-#Strings like choku__dai (which has two _'s between choku and dai) also satisfy all of the conditions.
-#
-#Sample Input 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#Sample Output 3
-#-1
-#chokudai__atcoder and atcoder__chokudai (which have two _'s between chokudai and atcoder) have a length of 17, which violates the second condition.
-#
-#Sample Input 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#Sample Output 4
-#ab__ef___cd_gh
-#The given T_i may contain a string that cannot be obtained by the procedure described in the first condition.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(N):
+        for j in range(i + 1, N):
+            if len(S[i] + S[j]) > 16:
+                break
+            for k in range(j + 1, N):
+                if len(S[i] + S[j] + S[k]) > 16:
+                    break
+                X = S[i] + '_' + S[j] + '_' + S[k]
+                if X not in T:
+                    print(X)
+                    return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    from itertools import permutations
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    for p in permutations(s):
+        x = '_'.join(p)
+        if len(x) < 3 or len(x) > 16 or x in t:
+            continue
+        print(x)
+        return
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            for k in range(N):
+                if i == k or j == k:
+                    continue
+                for l in range(N):
+                    if i == l or j == l or k == l:
+                        continue
+                    s = S[i] + "_" + S[j] + "_" + S[k] + "_" + S[l]
+                    if len(s) < 3 or len(s) > 16:
+                        continue
+                    if s in T:
+                        continue
+                    print(s)
+                    return
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    X = ""
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                X = S[i] + "_" + S[j]
+                if X in T:
+                    continue
+                else:
+                    print(X)
+                    return
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(1, 1 << N):
+        X = ''
+        for j in range(N):
+            if i & (1 << j):
+                X += S[j]
+            else:
+                X += '_'
+        if 3 <= len(X) <= 16 and X not in T:
+            print(X)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(1, 1 << N):
+        X = ''
+        for j in range(N):
+            if i & (1 << j):
+                X += S[j]
+            else:
+                X += '_'
+        if not any(X in t for t in T):
+            print(X)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def check(n, m, s, t):
+    for i in range(n):
+        if len(s[i]) == 0:
+            return False
+    for i in range(m):
+        if len(t[i]) == 0:
+            return False
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j]:
+                return False
+    for i in range(m):
+        for j in range(m):
+            if i == j:
+                continue
+            if t[i] == t[j]:
+                return False
+    for i in range(n):
+        for j in range(m):
+            if t[j] == s[i]:
+                return False
+    return True
+
+=======
+Suggestion 8
+
+def solve(N, M, S, T):
+    if N == 1:
+        for i in range(3, 17):
+            if S[0] + '_' * (i - len(S[0])) not in T:
+                return S[0] + '_' * (i - len(S[0]))
+        return -1
+    else:
+        for i in range(3, 17):
+            for j in range(3, 17):
+                if i + j < 3 or i + j > 16:
+                    continue
+                for s1 in S[0]:
+                    for s2 in S[1]:
+                        if s1 + '_' * (i - 1) + s2 + '_' * (j - 1) + S[2] not in T:
+                            return s1 + '_' * (i - 1) + s2 + '_' * (j - 1) + S[2]
+        return -1
+
+N, M = map(int, input().split())
+S = []
+T = []
+for i in range(N):
+    S.append(input())
+for i in range(M):
+    T.append(input())
+print(solve(N, M, S, T))
+
+I am trying to get the following code to work. I have a list of lists, and I want to get a list of the values in the first column. The code below is what I have so far, but it doesn’t work. Any help is appreciated.
+
+a = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+
+b = []
+
+for i in a:
+    b.append(i[0])
+
+print(b)
+
+I have a list of lists and I want to get a list of the values in the first column. The code below is what I have so far, but it doesn’t work. Any help is appreciated.
+
+a = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+
+b = []
+
+for i in a:
+    b.append(i[0])
+
+print(b)
+
+I have a list of lists and I want to get a list of the values in the first column. The code below is what I have so far, but it doesn’t work. Any help is appreciated.
+
+a = [[1,
+
+=======
+Suggestion 9
+
+def get_permutations(s):
+    if len(s) == 1:
+        return s
+    else:
+        permutations = []
+        for i in range(len(s)):
+            for p in get_permutations(s[:i] + s[i+1:]):
+                permutations.append(s[i] + p)
+        return permutations
+
+=======
+Suggestion 10
+
+def get_permutation(s, t):
+    if len(s) == 0:
+        print(t)
+        return
+    for i in range(len(s)):
+        get_permutation(s[:i] + s[i+1:], t + s[i])

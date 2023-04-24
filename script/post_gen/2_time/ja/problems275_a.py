@@ -1,47 +1,76 @@
-#問題文
-#AtCoder 村には N 本の橋があり、i 本目（ i は 1 以上 N 以下の整数）の橋の高さは H_i です。
-#ここで、AtCoder 村にある N 本の橋のうち、どの相異なる 2 本の橋も高さが異なります。
-#AtCoder 村で最も高い橋は何本目の橋か出力してください。
-#
-#制約
-#1≦ N ≦ 100
-#1≦ H_i ≦ 10^9
-#H_i はすべて異なる
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 H_2 ... H_N
-#
-#出力
-#AtCoder 村で最も高い橋は何本目の橋かを、整数で出力せよ。
-#
-#入力例 1
-#3
-#50 80 70
-#
-#出力例 1
-#2
-#AtCoder 村には 3 本の橋があります。
-#1,2,3 本目の橋の高さはそれぞれ, 50,80,70 であり、
-#最も高い橋は 2 本目の橋です。
-#よって、2 を出力します。
-#
-#入力例 2
-#1
-#1000000000
-#
-#出力例 2
-#1
-#AtCoder 村に橋が 1 本しか存在しないため、2 本目以降の橋は存在せず、最も高い橋は 1 本目の橋となります。  
-#
-#入力例 3
-#10
-#22 75 26 45 72 81 47 29 97 2
-#
-#出力例 3
-#9
-#AtCoder 村には 10 本の橋があり、それらのうち最も高い橋は 9 番目の橋（高さは 97 ）です。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    print(H.index(max(H)) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(a.index(max(a)) + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+    m = 0
+    ans = 0
+    for i in range(N):
+        if m < H[i]:
+            m = H[i]
+            ans = i+1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 標準入力から整数を受け取る
+    N = int(input())
+    # 標準入力から整数のリストを受け取る
+    H = list(map(int, input().split()))
+    # 最も高い橋の高さを求める
+    H_max = max(H)
+    # 最も高い橋の何番目にあるかを求める
+    H_max_idx = H.index(H_max) + 1
+    # 結果を出力する
+    print(H_max_idx)
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N = int(input())
+    H = list(map(int, input().split()))
+    #最大値のインデックスを取得
+    ans = H.index(max(H))
+    #出力
+    print(ans+1)
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    N = int(input())
+    H = list(map(int,input().split()))
+
+    #処理
+    max = 0
+    for i in range(0,N):
+        if H[i] > max:
+            max = H[i]
+            ans = i + 1
+
+    #出力
+    print(ans)

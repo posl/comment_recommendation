@@ -1,36 +1,74 @@
-#Problem Statement
-#How many integers not less than A and not more than B are there?
-#
-#Constraints
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A and B are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the number of integers not less than A and not more than B.
-#
-#Sample Input 1
-#2 4
-#
-#Sample Output 1
-#3
-#We have three integers not less than 2 and not more than 4: 2, 3, 4, so we should print 3.
-#
-#Sample Input 2
-#10 100
-#
-#Sample Output 2
-#91
-#
-#Sample Input 3
-#3 2
-#
-#Sample Output 3
-#0
-#We have no integers not less than 3 and not more than 2, so we should print 0.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b - a + 1)
+
+=======
+Suggestion 2
+
+def count_integers(a, b):
+    count = 0
+    for i in range(a, b+1):
+        count += 1
+    return count
+
+a, b = map(int, input().split())
+print(count_integers(a, b))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(max(0, b - a + 1))
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    print(max(0, B - A + 1))
+
+=======
+Suggestion 5
+
+def solution():
+    a, b = map(int, input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b - a + 1)
+
+solution()
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    a, b = map(int, input().strip().split())
+    # Calculate result here
+    result = 0
+    for i in range(a, b+1):
+        result += 1
+    # Print output here
+    print(result)
+
+=======
+Suggestion 7
+
+def findIntegers():
+    A, B = map(int, input().split())
+    if A > B:
+        print(0)
+    else:
+        print(B - A + 1)
+
+findIntegers()

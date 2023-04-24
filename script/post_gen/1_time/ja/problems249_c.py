@@ -1,59 +1,194 @@
-#問題文
-#英小文字のみからなる N 個の文字列 S_1,S_2,...,S_N が与えられます。
-#S_1,S_2,...,S_N から文字列を好きな個数選ぶことを考えます。
-#このとき、「選んだ文字列の中でちょうど K 個の文字列に登場する英小文字」の種類数としてあり得る最大値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 15
-#1 ≦ K ≦ N
-#N,K は整数
-#S_i は英小文字からなる空でない文字列である。
-#1 ≦ i ≦ N を満たす整数 i に対し、S_i に同じ文字は 2 個以上含まれない。
-#i ≠ j ならば S_i ≠ S_j である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#abi
-#aef
-#bc
-#acg
-#
-#出力例 1
-#3
-#S_1,S_3,S_4 を選んだ場合、a,b,c がちょうど 2 個の文字列に含まれます。
-#4 個以上の文字がちょうど 2 個の文字列に含まれるような選び方は存在しないため、答えは 3 です。
-#
-#入力例 2
-#2 2
-#a
-#b
-#
-#出力例 2
-#0
-#同じ文字列を複数回選ぶことはできません。
-#
-#入力例 3
-#5 2
-#abpqxyz
-#az
-#pq
-#bc
-#cy
-#
-#出力例 3
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            cnt = 0
+            for c in S[i]:
+                if c in S[j]:
+                    cnt += 1
+            if cnt >= K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    cnt = [0] * 26
+    for i in range(N):
+        for j in range(len(S[i])):
+            cnt[ord(S[i][j]) - ord('a')] += 1
+    cnt.sort(reverse=True)
+    print(sum(cnt[:K]))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(2 ** N):
+        bit = bin(i)[2:].zfill(N)
+        if bit.count("1") != K:
+            continue
+        s = set()
+        for j, b in enumerate(bit):
+            if b == "1":
+                s |= set(S[j])
+        ans = max(ans, len(s))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    S = [input() for i in range(N)]
+    print(solve(N, K, S))
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from itertools import combinations
+    from collections import Counter
+    input = sys.stdin.readline
+    N, K = map(int, input().split())
+    S = [input().rstrip() for _ in range(N)]
+    L = []
+    for s in S:
+        L += list(s)
+    C = Counter(L)
+    L = [x for x in C if C[x] >= K]
+    ans = 0
+    for i in range(K, len(L)+1):
+        for c in combinations(L, i):
+            cnt = 0
+            for s in S:
+                for x in c:
+                    if x in s:
+                        cnt += 1
+                        break
+            if cnt == K:
+                ans = i
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    S = [set(input()) for _ in range(N)]
+    print(dfs(0, S, K, set()))
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    s = [input() for i in range(n)]
+    print(solve(n,k,s))
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+
+    # すべての文字列の集合を作る
+    all_str = set()
+    for s in S:
+        for c in s:
+            all_str.add(c)
+
+    # 選ぶ文字列の集合を作る
+    choose_str = set()
+    for s in S:
+        if len(s) < K:
+            continue
+        for c in s:
+            choose_str.add(c)
+
+    # 選ぶ文字列の集合からすべての文字列の集合を引く
+    diff = all_str - choose_str
+
+    # 選ばない文字列の集合からすべての文字列の集合を引く
+    diff2 = all_str - diff
+
+    # 選ぶ文字列の集合から選ばない文字列の集合を引く
+    diff3 = choose_str - diff2
+
+    # 選ぶ文字列の集合から選ばない文字列の集合を引く
+    diff4 = choose_str - diff3
+
+    # 選ぶ文字列の集合から選ばない文字列の集合を引く
+    diff5 = choose_str - diff4
+
+    # 選ぶ文字列の集合から選ばない文字列の集合を引く
+    diff6 = choose_str - diff5
+
+    # 選ぶ文字列の集合から選
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    #各文字列に含まれる文字を集合として保持
+    S = [set(s) for s in S]
+    #全ての文字列を結合した集合
+    allS = set()
+    for s in S:
+        allS |= s
+    #全ての文字列を結合した集合の要素数
+    allSlen = len(allS)
+    #全ての文字列を結合した集合の各要素の出現回数
+    allScount = [0]*allSlen
+    #各文字列を結合した集合の各要素の出現回数をカウント
+    for s in S:
+        for i, v in enumerate(allS):
+            if v in s:
+                allScount[i] += 1
+    #出現回数がKと同じ要素数をカウント
+    count = 0
+    for c in allScount:
+        if c == K:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    import re
+    from collections import Counter
+    from itertools import combinations
+
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    # 重複を除いた文字列を作成
+    S2 = []
+    for s in S:
+        S2.append("".join(set(s)))
+    # 重複しない文字列の組み合わせを作成
+    comb = combinations(S2, K)
+    # 重複しない文字列の組み合わせの文字数をカウント
+    count = []
+    for c in comb:
+        count.append(len("".join(c)))
+    # 最大値を出力
+    print(max(count))

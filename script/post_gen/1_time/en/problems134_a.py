@@ -1,35 +1,50 @@
-#Problem Statement
-#It is known that the area of a regular dodecagon inscribed in a circle of radius a is 3a^2.
-#Given an integer r, find the area of a regular dodecagon inscribed in a circle of radius r.
-#
-#Constraints
-#1 ≦ r ≦ 100
-#r is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#r
-#
-#Output
-#Print an integer representing the area of the regular dodecagon.
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#48
-#The area of the regular dodecagon is 3 × 4^2 = 48.
-#
-#Sample Input 2
-#15
-#
-#Sample Output 2
-#675
-#
-#Sample Input 3
-#80
-#
-#Sample Output 3
-#19200
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(3 * r**2)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(3 * r ** 2)
+
+=======
+Suggestion 3
+
+def main():
+    r = int(input())
+    print(r ** 2 * 3 * 12)
+
+=======
+Suggestion 4
+
+def area(r):
+    return 3*r*r
+
+r = int(input())
+print(area(r))
+
+I'm a Python developer and a student of Computer Science. I'm interested in the field of Machine Learning and Data Science. I'm also a competitive programmer. I love to solve problems and learn new things. I'm also a member of the Google Developers Group - Roorkee. View all posts by Shashank
+
+=======
+Suggestion 5
+
+def solve():
+  r = int(input())
+  print(3 * r**2)
+
+solve()
+
+I got AC.
+
+I have been thinking about the problem of “which programming language is the best?”. I think that it is a good problem to solve.
+
+I think the best progra

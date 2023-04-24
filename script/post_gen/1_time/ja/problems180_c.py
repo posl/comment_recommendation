@@ -1,68 +1,120 @@
-#問題文
-#N 個のシュークリームがあります。
-#シュークリームを分割することなく平等に分けることができるような人数としてあり得るものを全て求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^{12}
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを改行区切りで昇順に出力せよ。
-#
-#入力例 1
-#6
-#
-#出力例 1
-#1
-#2
-#3
-#6
-#例えば、2 人で分けるには 1 人あたり 3 個とすればよいです。
-#
-#入力例 2
-#720
-#
-#出力例 2
-#1
-#2
-#3
-#4
-#5
-#6
-#8
-#9
-#10
-#12
-#15
-#16
-#18
-#20
-#24
-#30
-#36
-#40
-#45
-#48
-#60
-#72
-#80
-#90
-#120
-#144
-#180
-#240
-#360
-#720
-#
-#入力例 3
-#1000000007
-#
-#出力例 3
-#1
-#1000000007
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            ans.append(i)
+            if i != N // i:
+                ans.append(N // i)
+    ans.sort()
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if i != N // i:
+                ans.append(N // i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            ans.append(i)
+            if N//i != i:
+                ans.append(N//i)
+    ans.sort()
+    for i in range(len(ans)):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if N//i != i:
+                ans.append(N//i)
+    ans.sort()
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            print(i)
+            if N//i != i:
+                print(N//i)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if i * i != N:
+                ans.append(N//i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    divisors = []
+    i = 1
+    while i*i <= N:
+        if N%i == 0:
+            divisors.append(i)
+            if i*i != N:
+                divisors.append(N//i)
+        i += 1
+    divisors.sort()
+    for d in divisors:
+        print(d)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    # 約数を求める
+    div = []
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            div.append(i)
+            if i**2 != n:
+                div.append(n//i)
+    div.sort()
+    for i in div:
+        print(i)

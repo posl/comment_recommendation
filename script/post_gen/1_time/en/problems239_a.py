@@ -1,31 +1,53 @@
-#Problem Statement
-#Assuming that the horizon seen from a place x meters above the ground is (x(12800000+x))^(1/2) meters away,
-#find how many meters away the horizon seen from a place H meters above the ground is.
-#
-#Constraints
-#1 ≦ H ≦ 10^5
-#H is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H
-#
-#Output
-#Print the answer.
-#Your answer will be considered correct when the absolute or relative error from the judge's answer is at most 10^{-6}.
-#
-#Sample Input 1
-#333
-#
-#Sample Output 1
-#65287.907678222
-#We have (333(12800000+333))^(1/2) = 65287.9076782....  Outputs such as 65287.91 would also be accepted.
-#
-#Sample Input 2
-#634
-#
-#Sample Output 2
-#90086.635834623
-#We have (634(12800000+634))^(1/2) = 90086.6358346....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H = int(input())
+    print((H*(12800000+H))**(1/2))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    H = int(input())
+    print(((H * (12800000 + H)) ** 0.5))
+
+=======
+Suggestion 3
+
+def main():
+    H = int(input())
+    print(((H*(12800000+H))**(1/2)))
+
+=======
+Suggestion 4
+
+def main():
+    import math
+    H = int(input())
+    print(math.sqrt(H*(12800000+H)))
+
+=======
+Suggestion 5
+
+def main():
+    from math import sqrt
+    H = int(input())
+    print(sqrt((H*(12800000+H))))
+
+=======
+Suggestion 6
+
+def main():
+    H = int(input())
+    print(((12800000+H)*H)**(1/2))
+
+main()
+
+I made this program for a contest. I think it's correct, but the judge says it's wrong. I don't know why. Can someone explain to me what's wrong with it?
+
+I think it's because of the floating point error. I tried to change the code like this:

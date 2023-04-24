@@ -1,44 +1,202 @@
-#Problem Statement
-#The land of a park AtCoder is an N× N grid with east-west rows and north-south columns. The height of the square at the i-th row from the north and j-th column from the west is given as A_{i,j}.
-#Takahashi, the manager, has decided to build a square pond occupying K × K squares in this park.
-#To do this, he wants to choose a square section of K × K squares completely within the park whose median of the heights of the squares is the lowest. Find the median of the heights of the squares in such a section.
-#Here, the median of the heights of the squares in a K × K section is the height of the (⌊((K^2)/(2))⌋ +1)-th highest square among the K^2 squares in the section, where ⌊ x⌋ is the greatest integer not exceeding x.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_{1,1} A_{1,2} ... A_{1,N}
-#A_{2,1} A_{2,2} ... A_{2,N}
-#:
-#A_{N,1} A_{N,2} ... A_{N,N}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#Sample Output 1
-#4
-#Let (i,j) denote the square at the i-th row from the north and j-th column from the west.
-#We have four candidates for the 2 × 2 section occupied by the pond: {(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)}.
-#When K=2, since ⌊((2^2)/(2))⌋+1=3, the median of the heights of the squares in a section is the height of the 3-rd highest square, which is 5, 7, 5, 4 for the candidates above, respectively. We should print the lowest of these: 4.
-#
-#Sample Input 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#Sample Output 2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    B = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(N):
+            B[i + 1][j + 1] = B[i + 1][j] + B[i][j + 1] - B[i][j] + A[i][j]
+    ans = 10 ** 18
+    for i in range(N - K + 1):
+        for j in range(N - K + 1):
+            x = B[i + K][j + K] - B[i + K][j] - B[i][j + K] + B[i][j]
+            ans = min(ans, x)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            arr = []
+            for m in range(K):
+                arr += A[i+m][j:j+K]
+            arr.sort()
+            ans = min(ans, arr[K*K//2])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 10**9
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            m = sorted([a[i+x][j+y] for x in range(k) for y in range(k)])
+            ans = min(ans, m[k**2//2])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    A.sort()
+    A = [list(x) for x in zip(*A)]
+    A.sort()
+    A = [list(x) for x in zip(*A)]
+    min_height = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            height = A[i+K-1][j+K-1]
+            if K % 2 == 0:
+                height += A[i+K-1][j+K-2]
+                height += A[i+K-2][j+K-1]
+                height += A[i+K-2][j+K-2]
+                height //= 4
+            else:
+                height += A[i+K-1][j+K-2]
+                height += A[i+K-2][j+K-1]
+                height += A[i+K-2][j+K-2]
+                height //= 4
+                height += A[i+K-1][j+K-2]
+                height += A[i+K-2][j+K-1]
+                height += A[i+K-2][j+K-2]
+                height //= 4
+                height += A[i+K-1][j+K-2]
+                height += A[i+K-2][j+K-1]
+                height += A[i+K-2][j+K-2]
+                height //= 4
+            if height < min_height:
+                min_height = height
+    print(min_height)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    A.sort()
+    A = [list(x) for x in zip(*A)]
+    A.sort()
+    A = [list(x) for x in zip(*A)]
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        for j in range(N - K + 1):
+            tmp = []
+            for k in range(K):
+                tmp.extend(A[i + k][j:j + K])
+            tmp.sort()
+            ans = min(ans, tmp[K ** 2 // 2])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+    A.sort()
+    print(A[K-1][K-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    A.sort()
+    B = [A[i][j] for i in range(N) for j in range(N)]
+    B.sort()
+    left = 0
+    right = N * N - 1
+    while left < right:
+        mid = (left + right) // 2
+        count = 0
+        for i in range(N):
+            count += bisect.bisect_right(A[i], B[mid])
+        if count < K * K // 2 + 1:
+            left = mid + 1
+        else:
+            right = mid
+    print(B[left])
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    def is_ok(x):
+        B = [[1 if A[i][j] > x else 0 for j in range(N)] for i in range(N)]
+        C = [[0 for j in range(N+1)] for i in range(N+1)]
+        for i in range(N):
+            for j in range(N):
+                C[i+1][j+1] = C[i+1][j] + C[i][j+1] - C[i][j] + B[i][j]
+        for i in range(N-K+1):
+            for j in range(N-K+1):
+                if C[i+K][j+K] - C[i][j+K] - C[i+K][j] + C[i][j] <= K**2//2:
+                    return True
+        return False
+
+    ok = 10**9
+    ng = -1
+    while ok - ng > 1:
+        mid = (ok+ng)//2
+        if is_ok(mid):
+            ok = mid
+        else:
+            ng = mid
+    print(ok)
+
+=======
+Suggestion 9
+
+def solve():
+    n,k = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    a.sort()
+    a = list(map(list, zip(*a)))
+    a.sort()
+    a = list(map(list, zip(*a)))
+    ans = 10**9
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            b = []
+            for l in range(k):
+                for m in range(k):
+                    b.append(a[i+l][j+m])
+            b.sort()
+            ans = min(ans, b[(k*k)//2])
+    print(ans)
+
+=======
+Suggestion 10
+
+def f(n, k, a):
+    a = sorted([a[i][j] for i in range(n) for j in range(n)])
+    return a[k*k//2]
+
+n, k = map(int, input().split())
+a = [list(map(int, input().split())) for _ in range(n)]
+print(f(n, k, a))

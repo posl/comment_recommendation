@@ -1,38 +1,53 @@
-#問題文
-#2 個のボタンがあり、大きさはそれぞれ A, B です。
-#大きさ X のボタンを押すと、X 枚のコインを獲得し、そのボタンの大きさが 1 小さくなります。
-#あなたは、いずれかのボタンを押すことを 2 回行います。
-#同じボタンを 2 回押しても構いません。
-#最大で何枚のコインを獲得できるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#3 ≦ A, B ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#獲得できるコインの枚数の最大値を出力せよ。
-#
-#入力例 1
-#5 3
-#
-#出力例 1
-#9
-#大きさ 5 のボタンを 2 回押すと 5 + 4 = 9 枚のコインが獲得でき、これが最大です。
-#
-#入力例 2
-#3 4
-#
-#出力例 2
-#7
-#
-#入力例 3
-#6 6
-#
-#出力例 3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + b, a + a - 1, b + b - 1))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A + B, A + A - 1, B + B - 1))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        print(a + b - 1)
+    else:
+        print(a + b)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A+B, A+B-1, A+B-2))
+
+=======
+Suggestion 5
+
+def main():
+    a, b = [int(x) for x in input().split()]
+    print(max(a+b, a+a-1, b+b-1))
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(a + b - 1)
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    print(max(A+B,A+B-1,A-1+B-1))

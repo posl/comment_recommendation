@@ -1,41 +1,146 @@
-#問題文
-#数列 a={a_1,a_2,a_3,......} は、以下のようにして定まります。
-#初項 s は入力で与えられる。
-#関数 f(n) を以下のように定める: n が偶数なら f(n) = n/2、n が奇数なら f(n) = 3n+1。
-#i = 1 のとき a_i = s、i > 1 のとき a_i = f(a_{i-1}) である。
-#このとき、次の条件を満たす最小の整数 m を求めてください。
-#a_m = a_n (m > n) を満たす整数 n が存在する。
-#
-#制約
-#1 ≦ s ≦ 100
-#入力はすべて整数である。
-#a のすべての要素、および条件を満たす最小の m は 1000000 以下となることが保証される。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#s
-#
-#出力
-#条件を満たす最小の整数 m を出力してください。
-#
-#入力例 1
-#8
-#
-#出力例 1
-#5
-#a={8,4,2,1,4,2,1,4,2,1,......} です。a_5=a_2 なので、答えは 5 です。
-#
-#入力例 2
-#7
-#
-#出力例 2
-#18
-#a={7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1,4,2,1,......} です。
-#
-#入力例 3
-#54
-#
-#出力例 3
-#114
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+=======
+Suggestion 2
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    a.append(f(a[-1]))
+    if a[-1] in a[:-1]:
+        print(len(a))
+        break
+
+=======
+Suggestion 3
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    a.append(f(a[i - 1]))
+    i += 1
+    if a.count(a[i - 1]) == 2:
+        break
+print(a.index(a[i - 1]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    s = int(input())
+    a = [s]
+    while True:
+        if a[-1] % 2 == 0:
+            a.append(a[-1] // 2)
+        else:
+            a.append(3*a[-1] + 1)
+        if a[-1] in a[:-1]:
+            print(len(a))
+            break
+
+=======
+Suggestion 5
+
+def f(n):
+    if n % 2 == 0:
+        return n/2
+    else:
+        return 3*n+1
+
+=======
+Suggestion 6
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+n = 1
+while True:
+    a.append(f(a[n-1]))
+    if a[n-1] in a[:n-1]:
+        print(n)
+        break
+    n += 1
+
+=======
+Suggestion 7
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+m = 0
+while True:
+    n = f(a[-1])
+    if n in a:
+        m = a.index(n)
+        break
+    a.append(n)
+print(m + 1)
+
+=======
+Suggestion 8
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s=int(input())
+a=[s]
+for i in range(1000000):
+    a.append(f(a[i]))
+    if a[i] in a[:i]:
+        print(i+1)
+        break
+
+=======
+Suggestion 9
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+S = int(input())
+a = [S]
+
+i = 1
+while True:
+    a.append(f(a[i-1]))
+    if a[i] in a[:i]:
+        print(i+1)
+        break
+    i += 1

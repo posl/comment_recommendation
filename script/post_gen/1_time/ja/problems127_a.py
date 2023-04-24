@@ -1,40 +1,113 @@
-#問題文
-#A 歳の高橋君が観覧車に乗ろうとしています。
-#この観覧車は、13 歳以上が乗るには B 円 (B は偶数) かかりますが、6 歳以上 12 歳以下の人はその半額で乗ることができ、
-#さらに 5 歳以下の人は無料で乗ることができます。
-#高橋君が観覧車に乗るには何円かかるかを求めてください。
-#
-#制約
-#0 ≤ A ≤ 100
-#2 ≤ B ≤ 1000
-#B は偶数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#高橋君が観覧車に乗るには何円かかるかを出力せよ。
-#
-#入力例 1
-#30 100
-#
-#出力例 1
-#100
-#現在 30 歳の高橋君は、観覧車に乗るのに 100 円かかります。
-#
-#入力例 2
-#12 100
-#
-#出力例 2
-#50
-#12 歳の高橋君は、観覧車に乗るのに 100 円の半額、すなわち 50 円かかります。
-#
-#入力例 3
-#0 100
-#
-#出力例 3
-#0
-#0 歳の高橋君は、観覧車に無料で乗ることができます。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(b // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a >= 13:
+        print(b)
+    elif 6 <= a <= 12:
+        print(b // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(B // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if a <= 5:
+        print(0)
+    elif a <= 12:
+        print(b // 2)
+    else:
+        print(b)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a < 6:
+        print(0)
+    elif a < 13:
+        print(b // 2)
+    else:
+        print(b)
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A <= 5:
+        print(0)
+    else:
+        print(B//2)
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6 and A <= 12:
+        print(B // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    A,B = map(int,input().split())
+    #出力
+    if A >= 13:
+        print(B)
+    elif 6 <= A <= 12:
+        print(B//2)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    a,b = map(int,input().split())
+    #出力
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(b//2)
+    else:
+        print(0)

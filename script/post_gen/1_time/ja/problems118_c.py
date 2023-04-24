@@ -1,45 +1,90 @@
-#問題文
-#N 体のモンスターが居て、それぞれ 1, 2, ..., N と番号付けられています。
-#はじめ、モンスター i の体力は A_i です。
-#以降、体力が 1 以上のモンスターを生きているモンスターと呼びます。
-#生きているモンスターが 1 体になるまで以下を繰り返します。
-#ランダムに 1 体の生きているモンスターがランダムに別の生きているモンスターに攻撃します。
-#その結果、攻撃されたモンスターの体力を攻撃したモンスターの体力と同じ値だけ減らします。
-#最後に生き残ったモンスターの最終的な体力の最小値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#最後に生き残ったモンスターの最終的な体力の最小値を出力せよ。
-#
-#入力例 1
-#4
-#2 10 8 40
-#
-#出力例 1
-#2
-#1 番目のモンスターだけが攻撃し続けた場合、最後に生き残ったモンスターの体力は 2 となり、このときが最小です。
-#
-#入力例 2
-#4
-#5 13 8 1000000000
-#
-#出力例 2
-#1
-#
-#入力例 3
-#3
-#1000000000 1000000000 1000000000
-#
-#出力例 3
-#1000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b:
+        a, b = b, a % b
+    return a
+
+N = int(input())
+A = list(map(int, input().split()))
+
+g = A[0]
+for i in range(1, N):
+    g = gcd(g, A[i])
+print(g)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = math.gcd(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 2:
+        print(max(A))
+        return
+    A.sort()
+    ans = A[0]
+    for i in range(1,N):
+        ans = gcd(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    print(gcd_list(A))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 体力の最小値を出力する
+    print(gcd_list(A))

@@ -1,36 +1,107 @@
-#問題文
-#シカのAtCoDeerくんは、空の貯金箱を持っています。
-#AtCoDeerくんは、その貯金箱に、1 日目の朝に 1 円、2 日目の朝に 2 円 ... というように、i 日目の朝に i 円を貯金箱に入れます。
-#また、AtCoDeerくんは、毎日夜に貯金箱にいくら入っているかを確認します。
-#AtCoDeerくんが貯金箱に N 円以上入っていることを初めて確認するのは、何日目の夜でしょうか?
-#
-#制約
-#1 ≦ N ≦ 10^9
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#12
-#
-#出力例 1
-#5
-#1 日目の朝に 1 円貯金する。 この日の夜、貯金箱の中身は 1 円である。
-#2 日目の朝に 2 円貯金する。 この日の夜、貯金箱の中身は 3 円である。
-#3 日目の朝に 3 円貯金する。 この日の夜、貯金箱の中身は 6 円である。
-#4 日目の朝に 4 円貯金する。 この日の夜、貯金箱の中身は 10 円である。
-#5 日目の朝に 5 円貯金する。 この日の夜、貯金箱の中身は 15 円である。
-#よって、AtCoDeerくんが貯金箱に 12 円以上入っていることを初めて確認するのは、 5 日目の夜です。
-#
-#入力例 2
-#100128
-#
-#出力例 2
-#447
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    total = 0
+    for i in range(1, n+1):
+        total += i
+        if total >= n:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    x = 0
+    for i in range(1, N+1):
+        x += i
+        if x >= N:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    total = 0
+    for i in range(1, 100000):
+        total += i
+        if total >= n:
+            print(i)
+            break
+
+=======
+Suggestion 4
+
+def resolve():
+    N = int(input())
+    i = 0
+    while True:
+        i += 1
+        N -= i
+        if N <= 0:
+            print(i)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    sum = 0
+    count = 0
+    while(sum < n):
+        count += 1
+        sum += count
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    for i in range(1, N+1):
+        if i*(i+1)//2 >= N:
+            print(i)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            print(i)
+            exit()
+        else:
+            pass
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    for i in range(1, N+1):
+        if N <= i*(i+1)/2:
+            print(i)
+            exit()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    i = 1
+    while i*(i+1)//2 < n:
+        i += 1
+    print(i)
+    return

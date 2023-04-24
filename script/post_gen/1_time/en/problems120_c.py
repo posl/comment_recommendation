@@ -1,40 +1,68 @@
-#Problem Statement
-#There are N cubes stacked vertically on a desk.
-#You are given a string S of length N. The color of the i-th cube from the bottom is red if the i-th character in S is 0, and blue if that character is 1.
-#You can perform the following operation any number of times: choose a red cube and a blue cube that are adjacent, and remove them. Here, the cubes that were stacked on the removed cubes will fall down onto the object below them.
-#At most how many cubes can be removed?
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#|S| = N
-#Each character in S is 0 or 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the maximum number of cubes that can be removed.
-#
-#Sample Input 1
-#0011
-#
-#Sample Output 1
-#4
-#All four cubes can be removed, by performing the operation as follows:
-#Remove the second and third cubes from the bottom. Then, the fourth cube drops onto the first cube.
-#Remove the first and second cubes from the bottom.
-#
-#Sample Input 2
-#11011010001011
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(min(S.count('0'), S.count('1')) * 2)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    print(min(S.count('0'), S.count('1')) * 2)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(min(S.count("0"), S.count("1")) * 2)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    n = len(s)
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        if s[i] == "0":
+            a[i] = 1
+        else:
+            b[i] = 1
+    for i in range(1, n):
+        a[i] += a[i - 1]
+        b[i] += b[i - 1]
+    ans = 0
+    for i in range(n):
+        ans = max(ans, a[i] + b[n - 1] - b[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    N = len(S)
+    B = 0
+    for s in S:
+        if s == '1':
+            B += 1
+    R = N - B
+    ans = min(B, R) * 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    # 0の数と1の数をカウント
+    # 0の数と1の数の小さい方が答え
+    print(min(S.count('0'), S.count('1')) * 2)

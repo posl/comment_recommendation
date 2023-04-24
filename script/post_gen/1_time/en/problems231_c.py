@@ -1,68 +1,124 @@
-#Problem Statement
-#There is a class with N students. The height of the i-th student (1 ≦ i ≦ N) is A_i.
-#For each j=1,2,...,Q, answer the following question.
-#How many of the N students have a height of at least x_j?
-#
-#Constraints
-#1 ≦ N,Q ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ x_j ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#A_1 A_2 ... A_N
-#x_1
-#x_2
-#.
-#.
-#.
-#x_Q
-#
-#Output
-#Print Q lines.
-#The j-th line (1 ≦ j ≦ Q) should contain the number of students with a height of at least x_j.
-#
-#Sample Input 1
-#3 1
-#100 160 130
-#120
-#
-#Sample Output 1
-#2
-#The students with a height of at least 120 are the 2-nd and 3-rd ones.
-#
-#Sample Input 2
-#5 5
-#1 2 3 4 5
-#6
-#5
-#4
-#3
-#2
-#
-#Sample Output 2
-#0
-#1
-#2
-#3
-#4
-#
-#Sample Input 3
-#5 5
-#804289384 846930887 681692778 714636916 957747794
-#424238336
-#719885387
-#649760493
-#596516650
-#189641422
-#
-#Sample Output 3
-#5
-#3
-#5
-#5
-#5
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        j = 0
+        while j < n and a[j] < x[i]:
+            j += 1
+        print(n - j)
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [0] * q
+    for i in range(q):
+        x[i] = int(input())
+    a.sort()
+    for i in range(q):
+        print(n - bisect.bisect_left(a, x[i]))
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x = int(input())
+        cnt = 0
+        for a in A:
+            if a >= x:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    for x in X:
+        import bisect
+        print(N-bisect.bisect_left(A, x))
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    a = [int(i) for i in input().split()]
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in x:
+        idx = bisect.bisect_left(a, i)
+        print(n-idx)
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for _ in range(q):
+        x = int(input())
+        index = binary_search(a, x)
+        print(n - index)
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    for i in range(Q):
+        x = int(input())
+        count = 0
+        for j in range(N):
+            if A[j] >= x:
+                count += 1
+        print(count)
+
+=======
+Suggestion 8
+
+def main():
+    #n = int(input())
+    #a, b = map(int, input().split())
+    #s = input()
+    n,q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        idx = bisect.bisect_left(a,x[i])
+        print(n-idx)
+
+=======
+Suggestion 9
+
+def solve(n, q, a, x):
+    a.sort()
+    for i in range(q):
+        print(n - bisect.bisect_left(a, x[i]))
+
+import bisect
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
+x = []
+for i in range(q):
+    x.append(int(input()))
+solve(n, q, a, x)

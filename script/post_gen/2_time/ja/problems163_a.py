@@ -1,29 +1,53 @@
-#問題文
-#半径 R の円の周長を出力してください。
-#
-#制約
-#1 ≦ R ≦ 100
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#R
-#
-#出力
-#円の周長を出力せよ。
-#なお、想定解答との絶対誤差または相対誤差が 10^{−2} 以下であれば正解として扱われる。
-#
-#入力例 1
-#1
-#
-#出力例 1
-#6.28318530717958623200
-#10^{-2} 以下の絶対誤差・相対誤差が許容されるので、 6.28 も正解になりますが、6 は不正解となります。
-#
-#入力例 2
-#73
-#
-#出力例 2
-#458.67252742410977361942
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    R = int(input())
+    print(2 * R * 3.14159265358979323846)
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(2*r*3.14159265358979323846)
+
+=======
+Suggestion 3
+
+def main():
+    r = int(input())
+    print(2 * 3.14159265358979323846 * r)
+
+=======
+Suggestion 4
+
+def main():
+    r = int(input())
+    pi = 3.14159265358979323846
+    print(2 * r * pi)
+
+=======
+Suggestion 5
+
+def main():
+    r = int(input())
+    print(r*2*3.14159265358979323846)
+
+=======
+Suggestion 6
+
+def main():
+    import math
+    R = int(input())
+    print(2 * R * math.pi)
+
+=======
+Suggestion 7
+
+def main():
+    R = int(input())
+    print(2*R*3.14159265358979323846)
+    return

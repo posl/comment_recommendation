@@ -1,57 +1,155 @@
-#問題文
-#高橋くんは N 種類の料理が食べ放題のビュッフェに行き、全種類の料理 (料理 1, 料理 2, ..., 料理 N) を 1 度ずつ食べました。
-#高橋くんが i (1 ≦ i ≦ N) 番目に食べた料理は料理 A_i でした。
-#高橋くんは、料理 i (1 ≦ i ≦ N) を食べると満足度 B_i を得ます。
-#また、料理 i (1 ≦ i ≦ N - 1) を食べた直後に料理 i+1 を食べると満足度 C_i を追加で得ます。
-#高橋くんが得た満足度の合計を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 20
-#1 ≦ A_i ≦ N
-#A_1, A_2, ..., A_N は全て異なる。
-#1 ≦ B_i ≦ 50
-#1 ≦ C_i ≦ 50
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_N
-#C_1 C_2 ... C_{N-1}
-#
-#出力
-#高橋くんが得た満足度の合計を整数で出力せよ。
-#
-#入力例 1
-#3
-#3 1 2
-#2 5 4
-#3 6
-#
-#出力例 1
-#14
-#以下のように高橋くんは合計 14 の満足度を得ました。
-#高橋くんはまず料理 3 を食べ、満足度 4 を得ました。
-#高橋くんは次に料理 1 を食べ、満足度 2 を得ました。
-#高橋くんは最後に料理 2 を食べ、満足度 5 + 3 = 8 を得ました。
-#
-#入力例 2
-#4
-#2 3 4 1
-#13 5 8 24
-#45 9 15
-#
-#出力例 2
-#74
-#
-#入力例 3
-#2
-#1 2
-#50 50
-#50
-#
-#出力例 3
-#150
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    satisfaction = 0
+    for i in range(N):
+        satisfaction += B[A[i]-1]
+        if i < N-1 and A[i]+1 == A[i+1]:
+            satisfaction += C[A[i]-1]
+
+    print(satisfaction)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [int(i) - 1 for i in input().split()]
+    b = [int(i) for i in input().split()]
+    c = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += b[a[i]]
+        if i != 0 and a[i] == a[i - 1] + 1:
+            ans += c[a[i - 1]]
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        ans += B[A[i]-1]
+        if i+1 < N and A[i]+1 == A[i+1]:
+            ans += C[A[i]-1]
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    satisfaction = 0
+    for i in range(N):
+        satisfaction += B[A[i] - 1]
+        if i > 0 and A[i] - A[i - 1] == 1:
+            satisfaction += C[A[i - 1] - 1]
+    print(satisfaction)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    satisfaction = 0
+    for i in range(n):
+        satisfaction += b[a[i]-1]
+        if i < n-1 and a[i+1]-a[i] == 1:
+            satisfaction += c[a[i]-1]
+
+    print(satisfaction)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        ans += b[a[i]-1]
+        if i < n-1 and a[i]+1 == a[i+1]:
+            ans += c[a[i]-1]
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    satisfaction = 0
+    for i in range(0, N):
+        satisfaction += B[A[i] - 1]
+        if i < N - 1 and A[i] + 1 == A[i + 1]:
+            satisfaction += C[A[i] - 1]
+    print(satisfaction)
+
+=======
+Suggestion 8
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    return n, a, b, c
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+
+    for i in range(n):
+        ans += b[a[i]-1]
+        if i != n-1 and a[i+1] == a[i] + 1:
+            ans += c[a[i]-1]
+
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_score(N, A, B, C):
+    score = 0
+    for i in range(N):
+        score += B[A[i]-1]
+        if i < N-1 and A[i] == A[i+1]-1:
+            score += C[A[i]-1]
+    return score

@@ -1,34 +1,84 @@
-#問題文
-#明日からの 7 日間の天気予報を表す文字列 S が与えられます。
-#i 日後の予報は S の i 文字目が o であるとき晴れ、x であるとき雨です。
-#N 日後の天気予報が晴れかどうかを教えてください。
-#
-#制約
-#N は 1 以上 7 以下の整数
-#S は長さ 7 の文字列であり、o と x のみからなる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#N 日後の天気予報が晴れであるとき Yes を、雨であるとき No を出力せよ。
-#
-#入力例 1
-#4
-#oooxoox
-#
-#出力例 1
-#No
-#明日からの 7 日間の天気予報は順に、晴れ、晴れ、晴れ、雨、晴れ、晴れ、雨です。
-#特に、今日から 4 日後の天気予報は雨です。
-#
-#入力例 2
-#7
-#ooooooo
-#
-#出力例 2
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    if s[n-1] == "o":
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == "o":
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == 'o':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    print('Yes' if s[n-1] == 'o' else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    print("Yes" if s[n-1] == "o" else "No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == "o":
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 8
+
+def weather_forecast():
+    N = int(input())
+    S = input()
+    if S[N-1] == 'o':
+        print("Yes")
+    else:
+        print("No")

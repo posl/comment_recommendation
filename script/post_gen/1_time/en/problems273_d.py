@@ -1,136 +1,368 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
-#N squares, (r_1, c_1), (r_2, c_2), ..., (r_N, c_N), have walls.
-#Takahashi is initially at square (r_s, c_s).
-#Q instructions are given to Takahashi.
-#For i = 1, 2, ..., Q, the i-th instruction is represented by a pair of a character d_i and a positive integer l_i.  d_i is one of L, R, U, and D, representing the directions of left, right, up, and down, respectively.
-#Given the i-th direction, Takahashi repeats the following action l_i times:
-#If a square without a wall is adjacent to the current square in the direction represented by d_i, move to that square;
-#otherwise, do nothing.
-#For i = 1, 2, ..., Q, print the square where Takahashi will be after he follows the first i instructions.
-#
-#Constraints
-#2 ≦ H, W ≦ 10^9
-#1 ≦ r_s ≦ H
-#1 ≦ c_s ≦ W
-#0 ≦ N ≦ 2 × 10^5
-#1 ≦ r_i ≦ H
-#1 ≦ c_i ≦ W
-#i ≠ j -> (r_i, c_i) ≠ (r_j, c_j)
-#(r_s, c_s) ≠ (r_i, c_i) for all i = 1, 2, ..., N.
-#1 ≦ Q ≦ 2 × 10^5
-#d_i is one of the characters L, R, U, and D.
-#1 ≦ l_i ≦ 10^9
-#All values in the input other than d_i are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W r_s c_s
-#N
-#r_1 c_1
-#r_2 c_2
-#.
-#.
-#.
-#r_N c_N
-#Q
-#d_1 l_1
-#d_2 l_2
-#.
-#.
-#.
-#d_Q l_Q
-#
-#Output
-#Print Q lines.
-#For i = 1, 2, ..., Q, the i-th line should contain the square (R_i, C_i) where Takahashi will be after he follows the first i instructions, in the following format:
-#R_1 C_1
-#R_2 C_2
-#.
-#.
-#.
-#R_Q C_Q
-#
-#Sample Input 1
-#5 5 4 4
-#3
-#5 3
-#2 2
-#1 4
-#4
-#L 2
-#U 3
-#L 2
-#R 4
-#
-#Sample Output 1
-#4 2
-#3 2
-#3 1
-#3 5
-#The given grid and the initial position of Takahashi are as follows, where # denotes a square with a wall, T a square where Takahashi is, and . the other squares:
-#...#.
-#.#...
-#.....
-#...T.
-#..#..
-#Given the 1-st instruction, Takahashi moves 2 squares to the left, ending up in square (4, 2) as follows:
-#...#.
-#.#...
-#.....
-#.T...
-#..#..
-#Given the 2-nd instruction, Takahashi first moves 1 square upward, then he "does nothing" twice because the adjacent square in his direction has a wall.  As a result, he ends up in square (3, 2) as follows:
-#...#.
-#.#...
-#.T...
-#.....
-#..#..
-#Given the 3-rd instruction, Takahashi first moves 1 square to the left, then he "does nothing" once because there is no square in his direction.  As a result, he ends up in square (3, 1) as follows:
-#...#.
-#.#...
-#T....
-#.....
-#..#..
-#Given the 4-th instruction, Takahashi moves 4 squares to the right, ending up in square (3, 5) as follows:
-#...#.
-#.#...
-#....T
-#.....
-#..#..
-#
-#Sample Input 2
-#6 6 6 3
-#7
-#3 1
-#4 3
-#2 6
-#3 4
-#5 5
-#1 1
-#3 2
-#10
-#D 3
-#U 3
-#L 2
-#D 2
-#U 3
-#D 3
-#U 3
-#R 3
-#L 3
-#D 1
-#
-#Sample Output 2
-#6 3
-#5 3
-#5 1
-#6 1
-#4 1
-#6 1
-#4 1
-#4 2
-#4 1
-#5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r, c = map(int, input().split())
+        walls.add((r, c))
+    Q = int(input())
+    for _ in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            while l > 0 and (r_s, c_s - 1) not in walls:
+                c_s -= 1
+                l -= 1
+        elif d == 'R':
+            while l > 0 and (r_s, c_s + 1) not in walls:
+                c_s += 1
+                l -= 1
+        elif d == 'U':
+            while l > 0 and (r_s - 1, c_s) not in walls:
+                r_s -= 1
+                l -= 1
+        else:
+            while l > 0 and (r_s + 1, c_s) not in walls:
+                r_s += 1
+                l -= 1
+        print(r_s, c_s)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r_i, c_i = map(int, input().split())
+        walls.add((r_i, c_i))
+    Q = int(input())
+    r_t = r_s
+    c_t = c_s
+    for _ in range(Q):
+        d_i, l_i = input().split()
+        l_i = int(l_i)
+        if d_i == 'L':
+            while l_i > 0:
+                if (r_t, c_t - 1) not in walls:
+                    c_t -= 1
+                l_i -= 1
+        elif d_i == 'R':
+            while l_i > 0:
+                if (r_t, c_t + 1) not in walls:
+                    c_t += 1
+                l_i -= 1
+        elif d_i == 'U':
+            while l_i > 0:
+                if (r_t - 1, c_t) not in walls:
+                    r_t -= 1
+                l_i -= 1
+        else:
+            while l_i > 0:
+                if (r_t + 1, c_t) not in walls:
+                    r_t += 1
+                l_i -= 1
+        print(r_t, c_t)
+
+=======
+Suggestion 3
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r_i, c_i = map(int, input().split())
+        walls.add((r_i, c_i))
+    Q = int(input())
+    for _ in range(Q):
+        d_i, l_i = input().split()
+        if d_i == "L":
+            for _ in range(int(l_i)):
+                if (r_s, c_s-1) not in walls:
+                    c_s -= 1
+        elif d_i == "R":
+            for _ in range(int(l_i)):
+                if (r_s, c_s+1) not in walls:
+                    c_s += 1
+        elif d_i == "U":
+            for _ in range(int(l_i)):
+                if (r_s-1, c_s) not in walls:
+                    r_s -= 1
+        elif d_i == "D":
+            for _ in range(int(l_i)):
+                if (r_s+1, c_s) not in walls:
+                    r_s += 1
+        print(r_s, c_s)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r_i, c_i = map(int, input().split())
+        walls.add((r_i, c_i))
+    Q = int(input())
+    instructions = []
+    for _ in range(Q):
+        d_i, l_i = input().split()
+        instructions.append((d_i, int(l_i)))
+    for d_i, l_i in instructions:
+        if d_i == 'L':
+            for _ in range(l_i):
+                c_s -= 1
+                if (r_s, c_s) in walls:
+                    c_s += 1
+                    break
+        elif d_i == 'R':
+            for _ in range(l_i):
+                c_s += 1
+                if (r_s, c_s) in walls:
+                    c_s -= 1
+                    break
+        elif d_i == 'U':
+            for _ in range(l_i):
+                r_s -= 1
+                if (r_s, c_s) in walls:
+                    r_s += 1
+                    break
+        else:
+            for _ in range(l_i):
+                r_s += 1
+                if (r_s, c_s) in walls:
+                    r_s -= 1
+                    break
+        print(r_s, c_s)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    wall = set()
+    for i in range(N):
+        r, c = map(int, input().split())
+        wall.add((r, c))
+    Q = int(input())
+    d = []
+    l = []
+    for i in range(Q):
+        d_i, l_i = input().split()
+        d.append(d_i)
+        l.append(int(l_i))
+    for i in range(Q):
+        if d[i] == "L":
+            while True:
+                if (r_s, c_s - 1) in wall:
+                    break
+                else:
+                    c_s -= 1
+                    l[i] -= 1
+                    if l[i] == 0:
+                        break
+        if d[i] == "R":
+            while True:
+                if (r_s, c_s + 1) in wall:
+                    break
+                else:
+                    c_s += 1
+                    l[i] -= 1
+                    if l[i] == 0:
+                        break
+        if d[i] == "U":
+            while True:
+                if (r_s - 1, c_s) in wall:
+                    break
+                else:
+                    r_s -= 1
+                    l[i] -= 1
+                    if l[i] == 0:
+                        break
+        if d[i] == "D":
+            while True:
+                if (r_s + 1, c_s) in wall:
+                    break
+                else:
+                    r_s += 1
+                    l[i] -= 1
+                    if l[i] == 0:
+                        break
+        print(r_s, c_s)
+
+=======
+Suggestion 6
+
+def solve():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r, c = map(int, input().split())
+        walls.add((r, c))
+    Q = int(input())
+    for _ in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for i in range(l):
+                c_s -= 1
+                if (r_s, c_s) in walls:
+                    c_s += 1
+                    break
+        elif d == 'R':
+            for i in range(l):
+                c_s += 1
+                if (r_s, c_s) in walls:
+                    c_s -= 1
+                    break
+        elif d == 'U':
+            for i in range(l):
+                r_s -= 1
+                if (r_s, c_s) in walls:
+                    r_s += 1
+                    break
+        elif d == 'D':
+            for i in range(l):
+                r_s += 1
+                if (r_s, c_s) in walls:
+                    r_s -= 1
+                    break
+        print(r_s, c_s)
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    wall = set()
+    for i in range(N):
+        r, c = map(int, input().split())
+        wall.add((r, c))
+    Q = int(input())
+    for i in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for j in range(l):
+                if (r_s, c_s - 1) in wall:
+                    break
+                c_s -= 1
+        elif d == 'R':
+            for j in range(l):
+                if (r_s, c_s + 1) in wall:
+                    break
+                c_s += 1
+        elif d == 'U':
+            for j in range(l):
+                if (r_s - 1, c_s) in wall:
+                    break
+                r_s -= 1
+        elif d == 'D':
+            for j in range(l):
+                if (r_s + 1, c_s) in wall:
+                    break
+                r_s += 1
+        print(r_s, c_s)
+
+=======
+Suggestion 8
+
+def main():
+    h, w, rs, cs = map(int, input().split())
+    n = int(input())
+    walls = set()
+    for _ in range(n):
+        r, c = map(int, input().split())
+        walls.add((r, c))
+    q = int(input())
+    for _ in range(q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for _ in range(l):
+                cs -= 1
+                if (rs, cs) in walls:
+                    cs += 1
+                    break
+        elif d == 'R':
+            for _ in range(l):
+                cs += 1
+                if (rs, cs) in walls:
+                    cs -= 1
+                    break
+        elif d == 'U':
+            for _ in range(l):
+                rs -= 1
+                if (rs, cs) in walls:
+                    rs += 1
+                    break
+        elif d == 'D':
+            for _ in range(l):
+                rs += 1
+                if (rs, cs) in walls:
+                    rs -= 1
+                    break
+        print(rs, cs)
+
+=======
+Suggestion 9
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    grid = [[1 for j in range(W)] for i in range(H)]
+    for i in range(N):
+        r, c = map(int, input().split())
+        grid[r-1][c-1] = 0
+    Q = int(input())
+    for i in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for j in range(l):
+                if c_s-2-j >= 0 and grid[r_s-1][c_s-2-j] == 1:
+                    c_s -= 1
+        elif d == 'R':
+            for j in range(l):
+                if c_s+j < W and grid[r_s-1][c_s+j] == 1:
+                    c_s += 1
+        elif d == 'U':
+            for j in range(l):
+                if r_s-2-j >= 0 and grid[r_s-2-j][c_s-1] == 1:
+                    r_s -= 1
+        elif d == 'D':
+            for j in range(l):
+                if r_s+j < H and grid[r_s+j][c_s-1] == 1:
+                    r_s += 1
+        print(r_s, c_s)
+    return 0
+
+=======
+Suggestion 10
+
+def get_input():
+    H, W, r_s, c_s = [int(x) for x in input().split()]
+    N = int(input())
+    walls = set()
+    for _ in range(N):
+        r, c = [int(x) for x in input().split()]
+        walls.add((r, c))
+    Q = int(input())
+    instructions = []
+    for _ in range(Q):
+        d, l = input().split()
+        instructions.append((d, int(l)))
+    return H, W, r_s, c_s, walls, Q, instructions

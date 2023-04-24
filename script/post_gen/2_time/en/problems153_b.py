@@ -1,52 +1,94 @@
-#Problem Statement
-#Raccoon is fighting with a monster.
-#The health of the monster is H.
-#Raccoon can use N kinds of special moves. Using the i-th move decreases the monster's health by A_i.
-#There is no other way to decrease the monster's health.
-#Raccoon wins when the monster's health becomes 0 or below.
-#If Raccoon can win without using the same move twice or more, print Yes; otherwise, print No.
-#
-#Constraints
-#1 ≦ H ≦ 10^9
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^4
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H N
-#A_1 A_2 ... A_N
-#
-#Output
-#If Raccoon can win without using the same move twice or more, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#10 3
-#4 5 6
-#
-#Sample Output 1
-#Yes
-#The monster's health will become 0 or below after, for example, using the second and third moves.
-#
-#Sample Input 2
-#20 3
-#4 5 6
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#210 5
-#31 41 59 26 53
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#211 5
-#31 41 59 26 53
-#
-#Sample Output 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 3
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= sum(A):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    print("Yes" if H <= sum(A) else "No")
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 6
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    if h <= max(a):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 8
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= max(A):
+        print("Yes")
+    else:
+        if H % min(A) == 0:
+            print("No")
+        else:
+            print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    #output
+    if H <= sum(A):
+        print('Yes')
+    else:
+        print('No')

@@ -1,44 +1,146 @@
-#問題文
-#200 という整数が大好きなりんごさんのために、次の問題を解いてください。
-#N 個の正整数からなる数列 A が与えられるので、以下の条件をすべて満たす整数の組 (i,j) の個数を求めてください。
-#1 ≦ i < j ≦ N
-#A_i - A_j は 200 の倍数である。
-#
-#制約
-#入力は全て整数
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#6
-#123 223 123 523 200 2000
-#
-#出力例 1
-#4
-#例えば、(i, j) = (1, 3) のとき、A_1 - A_3 = 0 は 200 の倍数です。
-#(i,j)=(1,3),(1,4),(3,4),(5,6) の 4 つが条件を満たします。  
-#
-#入力例 2
-#5
-#1 2 3 4 5
-#
-#出力例 2
-#0
-#条件を満たす組がひとつも無い場合があります。
-#
-#入力例 3
-#8
-#199 100 200 400 300 500 600 200
-#
-#出力例 3
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if (A[i] - A[j]) % 200 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] - a[j]) % 200 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] - A[j]) % 200 == 0:
+                count += 1
+
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = [0] * 200
+    for i in range(N):
+        cnt[A[i] % 200] += 1
+    ans = 0
+    for i in range(200):
+        ans += cnt[i] * (cnt[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [a % 200 for a in A]
+    c = [0] * 200
+    for a in A:
+        c[a] += 1
+    ans = 0
+    for i in range(200):
+        ans += c[i] * (c[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [a % 200 for a in A]
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] - A[j] == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [a%200 for a in A]
+    #print(A)
+    d = dict()
+    for a in A:
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+    #print(d)
+    ans = 0
+    for k in d:
+        ans += d[k]*(d[k]-1)//2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [a % 200 for a in A]
+    #print(A)
+
+    dict = {}
+    for a in A:
+        if a in dict:
+            dict[a] += 1
+        else:
+            dict[a] = 1
+    #print(dict)
+
+    ans = 0
+    for d in dict:
+        ans += dict[d] * (dict[d] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+
+    for i in range(N-1):
+        cnt = 0
+        for j in range(i+1, N):
+            if (A[j] - A[i]) % 200 == 0:
+                cnt += 1
+            else:
+                break
+        ans += cnt * (cnt - 1) // 2
+    print(ans)

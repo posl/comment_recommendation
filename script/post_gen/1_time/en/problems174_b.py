@@ -1,85 +1,133 @@
-#Problem Statement
-#We have N points in the two-dimensional plane. The coordinates of the i-th point are (X_i,Y_i).
-#Among them, we are looking for the points such that the distance from the origin is at most D. How many such points are there?
-#We remind you that the distance between the origin and the point (p, q) can be represented as (p^2+q^2)^(1/2).
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ D ≦ 2× 10^5
-#|X_i|,|Y_i| ≦ 2× 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#Output
-#Print an integer representing the number of points such that the distance from the origin is at most D.
-#
-#Sample Input 1
-#4 5
-#0 5
-#-2 4
-#3 4
-#4 -4
-#
-#Sample Output 1
-#3
-#The distance between the origin and each of the given points is as follows:
-#(0^2+5^2)^(1/2)=5
-#((-2)^2+4^2)^(1/2)=4.472...
-#(3^2+4^2)^(1/2)=5
-#(4^2+(-4)^2)^(1/2)=5.656...
-#Thus, we have three points such that the distance from the origin is at most 5.
-#
-#Sample Input 2
-#12 3
-#1 1
-#1 1
-#1 1
-#1 1
-#1 2
-#1 3
-#2 1
-#2 2
-#2 3
-#3 1
-#3 2
-#3 3
-#
-#Sample Output 2
-#7
-#Multiple points may exist at the same coordinates.
-#
-#Sample Input 3
-#20 100000
-#14309 -32939
-#-56855 100340
-#151364 25430
-#103789 -113141
-#147404 -136977
-#-37006 -30929
-#188810 -49557
-#13419 70401
-#-88280 165170
-#-196399 137941
-#-176527 -61904
-#46659 115261
-#-153551 114185
-#98784 -6820
-#94111 -86268
-#-30401 61477
-#-55056 7872
-#5901 -163796
-#138819 -185986
-#-69848 -96669
-#
-#Sample Output 3
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, d = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        x, y = map(int, input().split())
+        if x ** 2 + y ** 2 <= d ** 2:
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= D**2:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,d=map(int,input().split())
+    count=0
+    for i in range(n):
+        x,y=map(int,input().split())
+        if x**2+y**2<=d**2:
+            count+=1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n,d = map(int,input().split())
+    count = 0
+    for i in range(n):
+        x,y = map(int,input().split())
+        if x**2 + y**2 <= d**2:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    count = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if (x**2 + y**2) <= D**2:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    import math
+    N, D = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if math.sqrt(x**2 + y**2) <= D:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N, D = map(int, input().split())
+    Xs = []
+    Ys = []
+    for i in range(N):
+        X, Y = map(int, input().split())
+        Xs.append(X)
+        Ys.append(Y)
+    #compute
+    ans = 0
+    for i in range(N):
+        if (Xs[i]**2+Ys[i]**2)**(1/2) <= D:
+            ans += 1
+    #output
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    #N, D = map(int, input().split())
+    #X = []
+    #Y = []
+    #for i in range(N):
+    #    x, y = map(int, input().split())
+    #    X.append(x)
+    #    Y.append(y)
+    N, D = 20, 100000
+    X = [14309, -56855, 151364, 103789, 147404, -37006, 188810, 13419, -88280, -196399, -176527, 46659, -153551, 98784, 94111, -30401, -55056, 5901, 138819, -69848]
+    Y = [-32939, 100340, 25430, -113141, -136977, -30929, -49557, 70401, 165170, 137941, -61904, 115261, 114185, -6820, -86268, 61477, 7872, -163796, -185986, -96669]
+    cnt = 0
+    for i in range(N):
+        if X[i]**2 + Y[i]**2 <= D**2:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    # Enter your code here. Read input from STDIN. Print output to STDOUT
+    import math
+    N,D=map(int,input().split())
+    count=0
+    for i in range(N):
+        X,Y=map(int,input().split())
+        if math.sqrt(X**2+Y**2)<=D:
+            count+=1
+    print(count)

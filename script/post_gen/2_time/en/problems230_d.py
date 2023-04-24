@@ -1,72 +1,212 @@
-#Problem Statement
-#In a town divided into a grid with N rows and 10^9 columns, there are N walls, numbered 1 to N.
-#Wall i ranges from the L_i-th column to the R_i-th column from the left in the i-th row from the top. (See also the figure at Sample Input and Output
-# 1.)
-#Takahashi has decided to destroy all N walls.
-#With his superhuman strength, his one punch can damage consecutive D columns at once.
-#More formally, he can choose an integer x between 1 and 10^9 - D + 1 (inclusive) to damage all walls that exist (or partly exist) in the x-th through (x + D - 1)-th columns and are not yet destroyed.
-#When a part of a wall is damaged, that whole wall will be destroyed by the impact of the punch.
-#(See also the figure at Sample Input and Output
-# 1.)
-#At least how many times does Takahashi need to punch to destroy all walls?
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#Output
-#Print the minimum number of punches needed to destroy all walls.
-#
-#Sample Input 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#Sample Output 1
-#2
-#The figure below describes the arrangements of walls in Sample Input 1
-#.
-#He can destroy all walls with two punches, such as the following. (Below, lbrack a, b rbrack denotes the range from the a-th through b-th columns.)
-#First, punch lbrack 2, 4 rbrack. The walls existing in lbrack 2, 4 rbrack ― Walls 1 and 2 ― are damaged and destroyed.
-#Second, punch lbrack 5, 7 rbrack. The wall existing in lbrack 5, 7 rbrack ― Wall 3 ― is damaged and destroyed.
-#It is also possible to destroy all walls with two punches in this way:
-#First, punch lbrack 7, 9 rbrack to destroy Walls 2 and 3.
-#Second, punch lbrack 1, 3 rbrack to destroy Wall 1.
-#
-#Sample Input 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#Sample Output 2
-#1
-#The difference from Sample Input/Output
-# 1 is that Wall 3 now covers lbrack 4, 9 rbrack, not lbrack 5, 9 rbrack.
-#In this case, he can punch lbrack 2, 4 rbrack to destroy all walls with one punch.
-#
-#Sample Input 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    p = 0
+    q = 0
+    while p < N:
+        if L[p] <= R[q]:
+            p += 1
+            ans += 1
+        else:
+            q += 1
+            ans -= 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    L = [0] * N
+    R = [0] * N
+    for i in range(N):
+        L[i], R[i] = map(int, input().split())
+
+    L.sort()
+    R.sort()
+
+    ans = 0
+    i = 0
+    j = 0
+    cnt = 0
+    while i < N and j < N:
+        if L[i] <= R[j]:
+            cnt += 1
+            i += 1
+        else:
+            cnt -= 1
+            j += 1
+        ans = max(ans, cnt)
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    l = []
+    r = []
+    for i in range(n):
+        li, ri = map(int, input().split())
+        l.append(li)
+        r.append(ri)
+    l.sort()
+    r.sort()
+    ans = 0
+    i = 0
+    j = 0
+    count = 0
+    while i < n:
+        if l[i] <= r[j]:
+            count += 1
+            i += 1
+        else:
+            count -= 1
+            j += 1
+        ans = max(ans, count)
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, D = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(N)]
+    LR.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        if ans >= LR[i][1]:
+            continue
+        ans = LR[i][0] + D - 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, d = map(int, input().split())
+    walls = [list(map(int, input().split())) for _ in range(n)]
+    walls.sort(key=lambda x: x[0])
+    ans = 0
+    i = 0
+    while i < n:
+        ans += 1
+        j = i + 1
+        while j < n and walls[j][0] < walls[i][1]:
+            j += 1
+        i = j
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, d = map(int, input().split())
+    l_r = []
+    for _ in range(n):
+        l, r = map(int, input().split())
+        l_r.append([l, r])
+
+    l_r.sort(key=lambda x: x[0])
+
+    l = 0
+    r = 0
+    cnt = 0
+    for i in range(n):
+        if l_r[i][0] > r:
+            l = l_r[i][0]
+            r = l_r[i][0] + d - 1
+            cnt += 1
+        else:
+            l = l_r[i][0]
+            r = min(l_r[i][1], l_r[i][0] + d - 1)
+
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    N, D = map(int, input().split())
+    walls = [list(map(int, input().split())) for _ in range(N)]
+    walls.sort(key=lambda x: x[1])
+
+    ans = 0
+    for i in range(N):
+        if walls[i][0] - 1 > ans:
+            ans += (walls[i][0] - 1 - ans) // D + 1
+        ans += (walls[i][1] - walls[i][0] + 1) // D
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, D = map(int, input().split())
+    walls = []
+    for i in range(N):
+        walls.append(list(map(int, input().split())))
+    walls.sort(key=lambda x: x[0])
+    # print(walls)
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += 1
+            continue
+        if walls[i][0] - walls[i-1][0] < D:
+            if walls[i][1] - walls[i-1][1] < D:
+                ans += 1
+            else:
+                ans += 1
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,d = map(int,input().split())
+    lrs = [list(map(int,input().split())) for _ in range(n)]
+    lrs.sort()
+    lrs.append([d,d])
+    ans = 0
+    now = 0
+    for i in range(n):
+        l,r = lrs[i]
+        if l <= now:
+            now = max(now,r)
+        else:
+            ans += (now-l)//d+1
+            now = r
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve(n, d, walls):
+    walls.sort()
+    walls.append([10**9, 10**9])
+    ans = 0
+    cur = 0
+    for i in range(n):
+        while walls[cur][1] < walls[i][0]:
+            cur += 1
+        ans = max(ans, (walls[cur][0] - walls[i][0] + d - 1) // d + 1)
+    return ans

@@ -1,42 +1,158 @@
-#問題文
-#とある世界では、今日はクリスマスです。
-#高羽氏のパーティで、彼は多次元バーガーを作ることにしました。レベル L バーガー (L は 0 以上の整数) とは次のようなものです。
-#レベル 0 バーガーとは、パティ 1 枚である。
-#レベル L バーガー (L ≧ 1) とは、バン 1 枚、レベル L-1 バーガー、パティ 1 枚、レベル L-1 バーガー、バン 1 枚、をこの順に下から積み重ねたものである。
-#例えば、パティを P、バンを B で表すと、レベル 1 バーガーは BPPPB (を 90 度回転したもの)、レベル 2 バーガーは BBPPPBPBPPPBB といった見た目になります。
-#高羽氏が作るのはレベル N バーガーです。ダックスフンドのルンルンは、このバーガーの下から X 層を食べます (パティまたはバン 1 枚を 1 層とします)。ルンルンはパティを何枚食べるでしょうか？
-#
-#制約
-#1 ≦ N ≦ 50
-#1 ≦ X ≦ ( レベル N バーガーの層の総数 )
-#N, X は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#
-#出力
-#レベル N バーガーの下から X 層に含まれるパティの枚数を出力せよ。
-#
-#入力例 1
-#2 7
-#
-#出力例 1
-#4
-#レベル 2 バーガー (BBPPPBPBPPPBB) の下から 7 層にはパティが 4 枚含まれます。
-#
-#入力例 2
-#1 1
-#
-#出力例 2
-#0
-#レベル 1 バーガーの一番下の層はバンです。
-#
-#入力例 3
-#50 4321098765432109
-#
-#出力例 3
-#2160549382716056
-#レベル 50 バーガーは層の数が 32 ビット整数に収まらない程度に分厚いです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    burger = [0] * (N + 1)
+    burger[0] = 1
+    for i in range(1, N + 1):
+        burger[i] = burger[i - 1] * 2 + 3
+
+    def eat_burger(N, X):
+        if N == 0:
+            return 0
+        elif X == 1:
+            return 0
+        elif X <= burger[N - 1] + 1:
+            return eat_burger(N - 1, X - 1)
+        elif X == burger[N - 1] + 2:
+            return burger[N - 1] + 1
+        elif X <= 2 * burger[N - 1] + 2:
+            return burger[N - 1] + 1 + eat_burger(N - 1, X - burger[N - 1] - 2)
+        else:
+            return burger[N]
+
+    print(eat_burger(N, X))
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    burger = [1]
+    for i in range(N):
+        burger.append(burger[-1] * 2 + 3)
+    ans = 0
+    while N >= 0:
+        if X > burger[N] + 1:
+            ans += burger[N] + 1
+            X -= burger[N] + 2
+        elif X == burger[N] + 1:
+            ans += 1
+            break
+        N -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    burger = [1]
+    for i in range(N):
+        burger = [burger[0]+burger[1]+1] + burger + [burger[0]+burger[1]+1]
+    print(burger[N+1] if X == 1 else burger[N+1] if X == burger[0]+burger[1]+1 else min(burger[N+1], max(0, burger[N]-(burger[0]+burger[1]+1-X))))
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    print(solve(N, X))
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    p = 1
+    for i in range(N):
+        p = p * 2 + 3
+    print(solve(N, X, p))
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    print(solve(n, x))
+
+=======
+Suggestion 7
+
+def solve(N, X):
+    # レベル N のバーガーの層の数
+    n = 2 ** (N + 1) - 3
+
+    # レベル N のバーガーの下から X 層に含まれるパティの枚数
+    # 1. レベル N のバーガーの一番下の層はバン
+    # 2. レベル N のバーガーの下から X 層に含まれるパティの枚数は、
+    #    レベル N-1 のバーガーの下から X-1 層に含まれるパティの枚数と等しい
+    if X == 1:
+        return 0
+    elif X <= n + 1:
+        return solve(N - 1, X - 1)
+    elif X == n + 2:
+        return 2 ** N - 1
+    elif X <= 2 * n + 2:
+        return 2 ** N - 1 - solve(N - 1, 2 * n + 3 - X)
+    elif X == 2 * n + 3:
+        return 2 ** N - 1
+
+N, X = map(int, input().split())
+print(solve(N, X))
+
+=======
+Suggestion 8
+
+def solve():
+    N, X = map(int, input().split())
+    # レベルNバーガーの層の総数を求める
+    sum = 1
+    for i in range(N):
+        sum = sum * 2 + 3
+
+    # レベルNバーガーの下からX層を食べる
+    cnt = 0
+    while X > 0:
+        if X == sum:
+            # レベルNバーガーの下からX層を食べる
+            cnt += 1
+            break
+        elif X == sum - 1:
+            # レベルNバーガーの下からX層を食べる
+            break
+        elif X == sum - 2:
+            # レベルNバーガーの下からX層を食べる
+            cnt += 1
+            break
+        else:
+            # レベルNバーガーの下からX層を食べる
+            cnt += 1
+            X -= 1
+            sum -= 1
+            # レベルN-1バーガーの下からX層を食べる
+            sum -= 1
+            X -= sum
+            # レベルNバーガーの下からX層を食べる
+            cnt += 1
+            X -= 1
+            sum -= 1
+
+    print(cnt)
+
+=======
+Suggestion 9
+
+def solve(n, x):
+    # ここに処理を書く
+    return 0
+
+=======
+Suggestion 10
+
+def main():
+    # Write your code here
+    pass

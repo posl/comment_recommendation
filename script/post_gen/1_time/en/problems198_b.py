@@ -1,35 +1,99 @@
-#Problem Statement
-#Given is an integer N.
-#Is it possible to add zero or more 0s at the beginning of the string representing N in base ten to get a palindrome?
-#
-#Constraints
-#0 ≦ N ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If a palindrome can be made, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#1210
-#
-#Sample Output 1
-#Yes
-#Adding one 0 at the beginning of 1210 results in 01210, a palindrome.
-#
-#Sample Input 2
-#777
-#
-#Sample Output 2
-#Yes
-#777 is already a palindrome.
-#
-#Sample Input 3
-#123456789
-#
-#Sample Output 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    n = n[::-1]
+    while n[0] == '0':
+        n = n[1:]
+    if n == n[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def is_palindrome(s):
+    if len(s) == 1:
+        return True
+    if len(s) == 2:
+        return s[0] == s[1]
+    if len(s) % 2 == 0:
+        return s[0:int(len(s)/2)] == s[int(len(s)/2):][::-1]
+    else:
+        return s[0:int(len(s)/2)] == s[int(len(s)/2)+1:][::-1]
+
+n = input()
+
+=======
+Suggestion 3
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+N = input()
+for i in range(10):
+    if is_palindrome('0'*i + N):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 4
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+n = int(input())
+
+=======
+Suggestion 5
+
+def palindrome(n):
+    if n == n[::-1]:
+        return 'Yes'
+    else:
+        return 'No'
+
+n = input()
+print(palindrome(n))
+
+=======
+Suggestion 6
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+=======
+Suggestion 7
+
+def isPalindrome(number):
+    string = str(number)
+    if string == string[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 9
+
+def is_palindrome(n):
+    n = str(n)
+    return n == n[::-1]
+
+=======
+Suggestion 10
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+n = input()

@@ -1,46 +1,186 @@
-#問題文
-#N 個の整数があり、i 番目の整数は A_i です。
-#sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j) を 10^9+7 で割った余りを求めてください。
-# XOR  とは
-#整数 A, B のビットごとの排他的論理和 a  XOR  b は、以下のように定義されます。
-# a  XOR  b を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち一方のみが 1 であれば 1、そうでなければ 0 である。
-#例えば、3  XOR  5 = 6 となります (二進表記すると: 011  XOR  101 = 110)。
-#
-#
-#制約
-#2 ≦ N ≦ 3 × 10^5
-#0 ≦ A_i < 2^{60}
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j) を 10^9+7 で割った余りを出力せよ。
-#
-#入力例 1
-#3
-#1 2 3
-#
-#出力例 1
-#6
-#(1 XOR  2)+(1 XOR  3)+(2 XOR  3)=3+2+1=6 となります。
-#
-#入力例 2
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#出力例 2
-#237
-#
-#入力例 3
-#10
-#3 14 159 2653 58979 323846 2643383 27950288 419716939 9375105820
-#
-#出力例 3
-#103715602
-#和を 10^9+7 で割った余りを出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for a in A:
+            if a>>i&1:
+                cnt += 1
+        ans += cnt*(N-cnt)*pow(2, i, MOD)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += A[i] ^ A[j]
+            ans %= 10**9+7
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        ans += cnt * (n - cnt) * (2 ** i)
+        ans %= 10 ** 9 + 7
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if (A[j] >> i) & 1:
+                cnt += 1
+        ans += cnt * (N - cnt) * pow(2, i, mod)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for k in range(60):
+        cnt = 0
+        for i in range(N):
+            if (A[i] >> k) & 1:
+                cnt += 1
+        ans += (1 << k) * cnt * (N - cnt)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in a:
+            if j >> i & 1:
+                cnt += 1
+        ans += cnt * (n - cnt) * 2 ** i
+        ans %= 10 ** 9 + 7
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+
+    ans = 0
+    for i in range(60):
+        c = 0
+        for j in range(N):
+            if A[j] & 1 << i:
+                c += 1
+        ans += c * (N - c) * pow(2, i, 10 ** 9 + 7)
+        ans %= 10 ** 9 + 7
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from collections import defaultdict
+    input = sys.stdin.readline
+    N = int(input())
+    A = list(map(int, input().split()))
+    d = defaultdict(int)
+    for a in A:
+        for i in range(60):
+            if a >> i & 1:
+                d[i] += 1
+    ans = 0
+    for i in range(60):
+        ans += ((N - d[i]) * d[i] * pow(2, i, 10 ** 9 + 7)) % (10 ** 9 + 7)
+    print(ans % (10 ** 9 + 7))
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+    # 処理
+    ans = 0
+    for i in range(60):
+        cnt_1 = 0
+        for a in A:
+            if (a >> i) & 1:
+                cnt_1 += 1
+        ans += (2**i)*cnt_1*(N-cnt_1)
+        ans %= mod
+    # 出力
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+
+    # 2進数へ
+    bin_list = []
+    for a in A:
+        bin_list.append(bin(a)[2:])
+
+    # 2進数の桁数を揃える
+    max_len = max([len(a) for a in bin_list])
+    bin_list = [a.zfill(max_len) for a in bin_list]
+
+    # 1の数を数える
+    cnt = [0] * max_len
+    for a in bin_list:
+        for i, b in enumerate(a[::-1]):
+            if b == "1":
+                cnt[i] += 1
+
+    # 答えを求める
+    ans = 0
+    for i, c in enumerate(cnt):
+        ans += (2 ** i) * c * (N - c)
+        ans %= MOD
+
+    print(ans)

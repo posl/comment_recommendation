@@ -1,36 +1,138 @@
-#Problem Statement
-#Snuke has a fair N-sided die that shows the integers from 1 to N with equal probability and a fair coin. He will play the following game with them:
-#Throw the die. The current score is the result of the die.
-#As long as the score is between 1 and K-1 (inclusive), keep flipping the coin. The score is doubled each time the coin lands heads up, and the score becomes 0 if the coin lands tails up.
-#The game ends when the score becomes 0 or becomes K or above. Snuke wins if the score is K or above, and loses if the score is 0.
-#You are given N and K. Find the probability that Snuke wins the game.
-#
-#Constraints
-#1 ≤ N ≤ 10^5
-#1 ≤ K ≤ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the probability that Snuke wins the game. The output is considered correct when the absolute or relative error is at most 10^{-9}.
-#
-#Sample Input 1
-#3 10
-#
-#Sample Output 1
-#0.145833333333
-#If the die shows 1, Snuke needs to get four consecutive heads from four coin flips to obtain a score of 10 or above. The probability of this happening is (1/(3)) × ((1/(2)))^4 = (1/(48)).
-#If the die shows 2, Snuke needs to get three consecutive heads from three coin flips to obtain a score of 10 or above. The probability of this happening is (1/(3)) × ((1/(2)))^3 = (1/(24)).
-#If the die shows 3, Snuke needs to get two consecutive heads from two coin flips to obtain a score of 10 or above. The probability of this happening is (1/(3)) × ((1/(2)))^2 = (1/(12)).
-#Thus, the probability that Snuke wins is (1/(48)) + (1/(24)) + (1/(12)) = (7/(48)) ≃ 0.1458333333.
-#
-#Sample Input 2
-#100000 5
-#
-#Sample Output 2
-#0.999973749998
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N + 1):
+        cnt = 0
+        while i < K:
+            i *= 2
+            cnt += 1
+        ans += ((1 / N) * ((1 / 2) ** cnt))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N + 1):
+        cnt = 0
+        while i < K:
+            i *= 2
+            cnt += 1
+        ans += 1 / N * 0.5 ** cnt
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+        return
+    ans = 0
+    for i in range(1, N+1):
+        cnt = 0
+        while i < K:
+            i *= 2
+            cnt += 1
+        ans += 1/N * (1/2)**cnt
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+        return
+    ans = 0
+    for i in range(1, N+1):
+        cnt = 0
+        while i < K:
+            i *= 2
+            cnt += 1
+        ans += (1/N) * (1/2)**cnt
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+    else:
+        print((N - K) * (K - 1) * 6 + (N - 1) * 3 + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+        return
+    if N == 1:
+        print(1)
+        return
+    ans = 0
+    for i in range(1, N + 1):
+        p = 1 / N
+        j = i
+        while j < K:
+            j *= 2
+            p /= 2
+        ans += p
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    result = 0
+    for i in range(1, N+1):
+        cnt = 0
+        while i < K:
+            i *= 2
+            cnt += 1
+        result += (1 / N) * (1 / 2) ** cnt
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+    else:
+        print((N - K + 1) / (N * N))
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+    else:
+        print((N - K + 1) * (N - K + 1) / N / N)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    if K == 1:
+        print(0)
+    else:
+        print((N - 2) * (K - 1) / (N * N))

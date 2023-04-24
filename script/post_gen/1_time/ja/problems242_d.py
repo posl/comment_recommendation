@@ -1,60 +1,210 @@
-#問題文
-#A, B, C のみからなる文字列 S が与えられます。
-#S^{(0)}:=S とし、i=1,2,3,... について S^{(i)} を S^{(i-1)} の各文字を A → BC, B → CA, C → AB と同時に置き換えたものと定義します。
-#以下の Q 個のクエリに答えてください。i 個目のクエリの内容は以下の通りです。
-#S^{(t_i)} の先頭から k_i 文字目を出力せよ。
-#
-#制約
-#S は A, B, C のみからなる長さ 1 以上 10^5 以下の文字列
-#1 ≦ Q ≦ 10^5
-#0 ≦ t_i ≦ 10^{18}
-#1 ≦ k_i ≦ min(10^{18}, S^{(t_i)} の長さ)
-#Q, t_i, k_i は整数 
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#Q
-#t_1 k_1
-#t_2 k_2
-#.
-#.
-#.
-#t_Q k_Q
-#
-#出力
-#Q 個のクエリを添字の昇順に、すなわち与えられる順に処理し、出力ごとに改行せよ。
-#
-#入力例 1
-#ABC
-#4
-#0 1
-#1 1
-#1 3
-#1 6
-#
-#出力例 1
-#A
-#B
-#C
-#B
-#S^{(0)}=ABC, S^{(1)}=BCCAAB です。
-#よって各クエリへの答えは順に A, B, C, B となります。
-#
-#入力例 2
-#CBBAACCCCC
-#5
-#57530144230160008 659279164847814847
-#29622990657296329 861239705300265164
-#509705228051901259 994708708957785197
-#176678501072691541 655134104344481648
-#827291290937314275 407121144297426665
-#
-#出力例 2
-#A
-#A
-#C
-#A
-#A
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    A = S.count("A")
+    B = S.count("B")
+    C = S.count("C")
+    for t, k in query:
+        t %= (A + B + C)
+        for _ in range(t):
+            if S[k - 1] == "A":
+                k = (k - 1) % B + A + 1
+            elif S[k - 1] == "B":
+                k = (k - 1) % C + A + B + 1
+            else:
+                k = (k - 1) % A + 1
+        print(S[k - 1])
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    q = int(input())
+    for _ in range(q):
+        t, k = map(int, input().split())
+        if t % 3 == 0:
+            print(s[(k - 1) % len(s)])
+        elif t % 3 == 1:
+            if s[(k - 1) % len(s)] == 'A':
+                print('B')
+            elif s[(k - 1) % len(s)] == 'B':
+                print('C')
+            elif s[(k - 1) % len(s)] == 'C':
+                print('A')
+        elif t % 3 == 2:
+            if s[(k - 1) % len(s)] == 'A':
+                print('C')
+            elif s[(k - 1) % len(s)] == 'B':
+                print('A')
+            elif s[(k - 1) % len(s)] == 'C':
+                print('B')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    q = int(input())
+    tki = []
+    for _ in range(q):
+        t, k = map(int, input().split())
+        tki.append([t, k])
+    for t, k in tki:
+        print(solve(s, t, k))
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t, k = map(int, input().split())
+        k -= 1
+        for j in range(t):
+            if s[k] == 'A':
+                k //= 3
+            elif s[k] == 'B':
+                k = (k+len(s))//3
+            else:
+                k = (k+2*len(s))//3
+        print(s[k])
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    q = int(input())
+    s_list = list(s)
+    a = s_list.count("A")
+    b = s_list.count("B")
+    c = s_list.count("C")
+    for i in range(q):
+        ti, ki = map(int, input().split())
+        if ti % 3 == 1:
+            if ki <= a:
+                print("A")
+            elif ki <= a + b:
+                print("B")
+            else:
+                print("C")
+        elif ti % 3 == 2:
+            if ki <= b:
+                print("B")
+            elif ki <= a + b:
+                print("C")
+            else:
+                print("A")
+        else:
+            if ki <= c:
+                print("C")
+            elif ki <= a + c:
+                print("A")
+            else:
+                print("B")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    q = int(input())
+    for _ in range(q):
+        t, k = map(int, input().split())
+        # S = s
+        # for i in range(t):
+        #     S = S.replace('A', 'BC').replace('B', 'CA').replace('C', 'AB')
+        # print(S[k-1])
+        # ここから解説
+        # 0回置換したときのsの各文字の置換後の文字数
+        a, b, c = s.count('A'), s.count('B'), s.count('C')
+        # 置換回数tに対して、各文字が何回置換されるか
+        a_t = t % 3 * a
+        b_t = t % 3 * b
+        c_t = t % 3 * c
+        # 置換回数tに対して、各文字が何回置換されるか
+        a_t2 = (t // 3) % 3 * a
+        b_t2 = (t // 3) % 3 * b
+        c_t2 = (t // 3) % 3 * c
+        # 置換回数tに対して、各文字が何回置換されるか
+        a_t3 = (t // 9) % 3 * a
+        b_t3 = (t // 9) % 3 * b
+        c_t3 = (t // 9) % 3 * c
+        # 置換回数tに対して、各文字が何回置換されるか
+        a_t4 = (t // 27) % 3 * a
+        b_t4 = (t // 27) % 3 * b
+        c_t4 = (t // 27) % 3 * c
+        # 置換回数tに対して、各文字が何回置換されるか
+        a_t5 = (t // 81) % 3 * a
+        b_t5 = (t // 81) % 3 * b
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    q = int(input())
+    tki = [list(map(int, input().split())) for _ in range(q)]
+    c = s.count('C')
+    for i in range(q):
+        t = tki[i][0]
+        k = tki[i][1]
+        if t % 3 == 0:
+            if k <= len(s) - c:
+                print(s[k - 1])
+            else:
+                print(s[k + c - len(s) - 1])
+        elif t % 3 == 1:
+            if k <= c:
+                print(s[len(s) - k])
+            else:
+                print(s[k - c - 1])
+        else:
+            if k <= len(s) - c:
+                print(s[k + c - 1])
+            else:
+                print(s[k - len(s) + c - 1])
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    Q = int(input())
+    # S の 1 文字目から i 文字目までの A,B,C の個数を格納する配列
+    # A[i] = S[0:i+1] の A の個数
+    # B[i] = S[0:i+1] の B の個数
+    # C[i] = S[0:i+1] の C の個数
+    A = [0] * (len(S) + 1)
+    B = [0] * (len(S) + 1)
+    C = [0] * (len(S) + 1)
+    for i in range(len(S)):
+        if S[i] == "A":
+            A[i + 1] = A[i] + 1
+            B[i + 1] = B[i]
+            C[i + 1] = C[i]
+        elif S[i] == "B":
+            A[i + 1] = A[i]
+            B[i + 1] = B[i] + 1
+            C[i + 1] = C[i]
+        else:
+            A[i + 1] = A[i]
+            B[i + 1] = B[i]
+            C[i + 1] = C[i] + 1
+
+    for _ in range(Q):
+        t, k = map(int, input().split())
+        # S^{(t)} の先頭から k 文字目を出力
+        # S^{(t)} の先頭から k 文字目の A,B,C の個数を求める
+        # S^{(t)} の先頭から k 文字目の A,B,C の個数のうち最大のものを出力する
+        # この処理を Q 回行う
+        a = A[k] + (A[-1] - A[k]) * (t % 3 == 1) + (B[-1] - B[k]) * (t % 3 == 2) + (C[-1] - C[k]) * (t % 3 == 0)
+        b = B[k] + (A[-1] - A[k]) * (t % 3 == 2

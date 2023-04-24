@@ -1,40 +1,106 @@
-#問題文
-#高橋君は A 枚、青木君は B 枚のクッキーを持っています。
-#高橋君は以下の行動を K 回繰り返します。
-#もし高橋君がクッキーを 1 枚以上持っているなら、高橋君のクッキーを 1 枚食べる。
-#そうでなく、もし青木君がクッキーを 1 枚以上持っているなら、青木君のクッキーを 1 枚食べる。
-#高橋君も青木君もクッキーを持っていないなら、何もしない。
-#高橋君と青木君が最終的に持っているクッキーの枚数をそれぞれ求めてください。
-#
-#制約
-#0 ≦ A ≦ 10^{12}
-#0 ≦ B ≦ 10^{12}
-#0 ≦ K ≦ 10^{12}
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B K
-#
-#出力
-#高橋君と青木君のそれぞれが最終的に持っているクッキーの枚数を出力せよ。
-#
-#入力例 1
-#2 3 3
-#
-#出力例 1
-#0 2
-#高橋君は次のように行動します。
-#高橋君はクッキーを 2 枚持っているので、自分のクッキーを 1 枚食べる。
-#高橋君はクッキーを 1 枚持っているので、自分のクッキーを 1 枚食べる。
-#高橋君はクッキーを持っておらず、青木君はクッキーを 3 枚持っているので、青木君のクッキーを 1 枚食べる。
-#したがって、最終的に持っているクッキーの枚数は、高橋君が 0 枚、青木君が 2 枚になります。
-#
-#入力例 2
-#500000000000 500000000000 1000000000000
-#
-#出力例 2
-#0 0
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        A -= K
+    else:
+        K -= A
+        A = 0
+        if B >= K:
+            B -= K
+        else:
+            B = 0
+    print(A, B)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        print(A-K, B)
+    elif A + B >= K:
+        print(0, A+B-K)
+    else:
+        print(0, 0)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        A -= K
+    elif A < K:
+        K -= A
+        A = 0
+        if B >= K:
+            B -= K
+        elif B < K:
+            B = 0
+    print(A, B)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,k = map(int,input().split())
+    if k <= a:
+        print(a-k,b)
+    elif k <= a+b:
+        print(0,b-(k-a))
+    else:
+        print(0,0)
+
+=======
+Suggestion 5
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        print(A-K, B)
+    else:
+        if B >= K-A:
+            print(0, B-(K-A))
+        else:
+            print(0, 0)
+
+=======
+Suggestion 6
+
+def main():
+    A, B, K = map(int, input().split())
+
+    if A > K:
+        print(A-K, B)
+    elif A+B > K:
+        print(0, A+B-K)
+    else:
+        print(0, 0)
+
+=======
+Suggestion 7
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        print(A-K, B)
+    else:
+        if A+B >= K:
+            print(0, A+B-K)
+        else:
+            print(0, 0)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,k=map(int,input().split())
+    if a>=k:
+        print(a-k,b)
+    else:
+        print(0,max(0,b-(k-a)))

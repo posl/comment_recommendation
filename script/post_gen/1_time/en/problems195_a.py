@@ -1,33 +1,62 @@
-#Problem Statement
-#Takahashi, the magician, is fighting with a monster.
-#His magic can defeat a monster whose health is a multiple of M. It has no effect on a monster whose health is not a multiple of M.
-#Can his magic defeat a monster whose health is H?
-#
-#Constraints
-#1 ≦ M ≦ 1000
-#1 ≦ H ≦ 1000
-#M and H are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#M H
-#
-#Output
-#If Takahashi's magic can defeat the monster, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#10 120
-#
-#Sample Output 1
-#Yes
-#Takahashi's magic can defeat a monster whose health is a multiple of 10.
-#120 is a multiple of 10, so his magic can defeat the monster with health 120.
-#
-#Sample Input 2
-#10 125
-#
-#Sample Output 2
-#No
-#125 is not a multiple of 10, so his magic cannot defeat the monster with health 125.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    M, H = map(int, input().split())
+    if H % M == 0:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    M, H = map(int, input().split())
+    if H % M == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    m, h = map(int, input().split())
+    if h % m == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    m, h = map(int, input().split())
+    if h % m == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    M, H = map(int, input().split())
+
+    if H % M == 0:
+        print('Yes')
+    else:
+        print('No')
+
+solve()
+
+I'm not sure how to make this more efficient. I'm not sure if I need to make it more efficient. I'm just trying to learn how to write code that is as efficient as possible.
+
+Thanks for any help you can provide!
+
+I'm trying to make a program that will read a file and then print out the contents of the file. I've been trying to use the open() function to open the file, but it doesn't seem to be working. I've tried using it with a relative path and an absolute path, but neither seems to work. I'm using Python 3.4.3. Here's my code:

@@ -1,61 +1,217 @@
-#問題文
-#xy 平面上に 1 から N までの番号が付いた N 個の点があります。
-#点 i は座標 (X_i,Y_i) にあり、相異なる 2 点は異なる位置に存在します。
-#この N 点から 3 点を選ぶとき、選ばれた 3 点を線分で結んだ図形が正の面積を持つ三角形になるような点の選び方の総数を求めてください。  
-#
-#制約
-#入力は全て整数である
-#3 ≦ N ≦ 300
-#-10^9 ≦ X_i,Y_i ≦ 10^9
-#i ≠ j ならば (X_i,Y_i) ≠ (X_j,Y_j)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#X_1 Y_1
-#X_2 Y_2
-#...
-#X_N Y_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#4
-#0 1
-#1 3
-#1 1
-#-1 -1
-#
-#出力例 1
-#3
-#点を図示すると、以下のようになります。
-#三角形をなすような点の選び方は、 {1,2,3},{1,3,4},{2,3,4} の 3 つです。
-#
-#入力例 2
-#20
-#224 433
-#987654321 987654321
-#2 0
-#6 4
-#314159265 358979323
-#0 0
-#-123456789 123456789
-#-1000000000 1000000000
-#124 233
-#9 -6
-#-4 0
-#9 5
-#-7 3
-#333333333 -333333333
-#-9 -1
-#7 -10
-#-1 5
-#324 633
-#1000000000 -1000000000
-#20 0
-#
-#出力例 2
-#1124
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                a = X[j]-X[i]
+                b = Y[j]-Y[i]
+                c = X[k]-X[i]
+                d = Y[k]-Y[i]
+                if a*d-b*c != 0:
+                    ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if X[i] == X[j] and X[j] == X[k]:
+                    continue
+                elif Y[i] == Y[j] and Y[j] == Y[k]:
+                    continue
+                elif (Y[j] - Y[i])*(X[k] - X[j]) == (Y[k] - Y[j])*(X[j] - X[i]):
+                    continue
+                else:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    count = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if (X[i]-X[k])*(Y[j]-Y[k]) != (X[j]-X[k])*(Y[i]-Y[k]):
+                    count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        xi, yi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if (x[j]-x[i])*(y[k]-y[i])-(x[k]-x[i])*(y[j]-y[i]) != 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if (XY[i][0]-XY[j][0])*(XY[j][1]-XY[k][1]) == (XY[j][0]-XY[k][0])*(XY[i][1]-XY[j][1]):
+                    continue
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if (XY[i][0]-XY[j][0])*(XY[j][1]-XY[k][1]) == (XY[j][0]-XY[k][0])*(XY[i][1]-XY[j][1]):
+                    continue
+                ans += 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    #print(X)
+    #print(Y)
+    cnt = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            for k in range(j + 1, N):
+                #print(i, j, k)
+                #print(X[i], Y[i])
+                #print(X[j], Y[j])
+                #print(X[k], Y[k])
+                #print((X[j] - X[i]) * (Y[k] - Y[i]) - (X[k] - X[i]) * (Y[j] - Y[i]))
+                if (X[j] - X[i]) * (Y[k] - Y[i]) - (X[k] - X[i]) * (Y[j] - Y[i]) != 0:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    x = [0]*N
+    y = [0]*N
+    for i in range(N):
+        x[i],y[i] = map(int, input().split())
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if (y[k]-y[i])*(x[j]-x[i]) != (y[j]-y[i])*(x[k]-x[i]):
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i],Y[i] = map(int,input().split())
+    #print(X)
+    #print(Y)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if X[i]*(Y[j]-Y[k])+X[j]*(Y[k]-Y[i])+X[k]*(Y[i]-Y[j]) != 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    # print(N)
+    # print(XY)
+
+    #組み合わせの計算
+    import itertools
+    comb = list(itertools.combinations(XY, 3))
+    # print(comb)
+
+    #三角形の判定
+    count = 0
+    for i in range(len(comb)):
+        # print(comb[i])
+        x1 = comb[i][0][0]
+        y1 = comb[i][0][1]
+        x2 = comb[i][1][0]
+        y2 = comb[i][1][1]
+        x3 = comb[i][2][0]
+        y3 = comb[i][2][1]
+
+        # print(x1, y1, x2, y2, x3, y3)
+        if (x1 - x2) * (y2 - y3) - (y1 - y2) * (x2 - x3) != 0:
+            count += 1
+        # else:
+        #     print('三角形ではない')
+
+    #出力
+    print(count)

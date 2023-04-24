@@ -1,35 +1,82 @@
-#問題文
-#正整数 X に対し、X の正の約数の個数を f(X) とします。
-#正整数 N が与えられるので、sum_{K=1}^N K× f(K) を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^7
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#値 sum_{K=1}^N K× f(K) を出力せよ。
-#
-#入力例 1
-#4
-#
-#出力例 1
-#23
-#f(1)=1, f(2)=2, f(3)=2, f(4)=3 なので、答えは 1× 1 + 2× 2 + 3× 2 + 4× 3 =23 となります。
-#
-#入力例 2
-#100
-#
-#出力例 2
-#26879
-#
-#入力例 3
-#10000000
-#
-#出力例 3
-#838627288460105
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N // i) * ((N // i) + 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def divisor_count(n):
+    count = 0
+    for i in range(1, n + 1):
+        if n % i == 0:
+            count += 1
+    return count
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N//i)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * f(i)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * len([x for x in range(1, i+1) if i % x == 0])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += (N//i) * (N//i+1) * i // 2
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += i * (n // i)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    # 約数の個数を求める
+    for i in range(1,N+1):
+        ans += i * (N//i)
+    print(ans)

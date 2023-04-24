@@ -1,36 +1,85 @@
-#Problem Statement
-#You are given a real number X, which is representable using at most three decimal digits, with three decimal digits.
-#Round X to the nearest integer and print the result.
-#
-#Constraints
-#0 ≦ X < 100
-#X is representable using at most three decimal digits.
-#X has three decimal digits in input.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Print the integer resulting from rounding X to the nearest integer.
-#
-#Sample Input 1
-#3.456
-#
-#Sample Output 1
-#3
-#The digit in the first decimal place of 3.456 is 4, so we should round it down to 3.
-#
-#Sample Input 2
-#99.500
-#
-#Sample Output 2
-#100
-#
-#Sample Input 3
-#0.000
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def round(x):
+    if x - int(x) >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+x = float(input())
+print(round(x))
+
+=======
+Suggestion 2
+
+def round(x):
+    if x - int(x) >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+=======
+Suggestion 3
+
+def round(x):
+    if x - int(x) >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+print(round(float(input())))
+
+=======
+Suggestion 4
+
+def round(number):
+    if number >= 0:
+        if number % 1 >= 0.5:
+            return int(number) + 1
+        else:
+            return int(number)
+    else:
+        if number % 1 <= -0.5:
+            return int(number) - 1
+        else:
+            return int(number)
+
+=======
+Suggestion 5
+
+def main():
+    x = float(input())
+    print(int(x + 0.5))
+
+=======
+Suggestion 6
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 7
+
+def main():
+    x = float(input())
+    print(int(round(x)))
+
+=======
+Suggestion 8
+
+def round(x):
+    if x % 1 >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+x = float(input())
+print(round(x))
+
+This is the first time I've ever written a program in Python, so I'm not sure if this is the best way to do it. It seems to work fine, though.
+
+I'm not sure if there's a better way to do this, but I would probably use the round function.

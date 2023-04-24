@@ -1,42 +1,157 @@
-#問題文
-#長さ N の数列 A が与えられます。
-#次の性質を満たす整数 i (1 ≦ i ≦ N ) の数を答えてください。
-#i ≠ j  である任意の整数 j (1 ≦ j ≦ N) について A_i は A_j で割り切れない
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^6
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5
-#24 11 8 3 16
-#
-#出力例 1
-#3
-#問の性質を満たすのは 2 , 3 , 4 です。
-#
-#入力例 2
-#4
-#5 5 5 5
-#
-#出力例 2
-#0
-#同じ数が存在する場合に注意してください。
-#
-#入力例 3
-#10
-#33 18 45 28 8 19 89 86 2 4
-#
-#出力例 3
-#5
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+N = int(input())
+A = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = list(map(int, input().split()))
+
+L = [0] * (N + 1)
+R = [0] * (N + 1)
+
+for i in range(1, N + 1):
+    L[i] = gcd(L[i - 1], A[i - 1])
+    R[N - i] = gcd(R[N - i + 1], A[N - i])
+
+ans = 0
+for i in range(N):
+    ans = max(ans, gcd(L[i], R[i + 1]))
+print(ans)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n = int(input())
+a = list(map(int, input().split()))
+
+l = [0] * n
+r = [0] * n
+for i in range(1, n):
+    l[i] = gcd(l[i - 1], a[i - 1])
+    r[n - i - 1] = gcd(r[n - i], a[n - i])
+
+ans = 0
+for i in range(n):
+    ans = max(ans, gcd(l[i], r[i]))
+
+print(ans)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+N = int(input())
+A = list(map(int,input().split()))
+
+L = [0]*N
+R = [0]*N
+
+L[0] = A[0]
+R[-1] = A[-1]
+
+for i in range(1,N):
+    L[i] = gcd(L[i-1],A[i])
+
+for i in range(N-2,-1,-1):
+    R[i] = gcd(R[i+1],A[i])
+
+ans = 1
+for i in range(N):
+    if i == 0:
+        ans = max(ans,R[i+1])
+    elif i == N-1:
+        ans = max(ans,L[i-1])
+    else:
+        ans = max(ans,gcd(L[i-1],R[i+1]))
+
+print(ans)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n = int(input())
+a = list(map(int,input().split()))
+l = [0] * (10**6+1)
+for i in range(n):
+    l[a[i]] += 1
+ans = 0
+for i in range(2,10**6+1):
+    cnt = 0
+    for j in range(i,10**6+1,i):
+        cnt += l[j]
+    if cnt == 1:
+        ans += 1
+print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    B = [True]*N
+    for i in range(N):
+        if B[i]:
+            for j in range(i+1,N):
+                if A[j]%A[i]==0:
+                    B[j] = False
+    print(sum(B))
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a

@@ -1,70 +1,195 @@
-#Problem Statement
-#We have a horizontal cylinder.  Given Q queries, process them in the given order.
-#Each query is of one of the following two types.
-#1 x c: Insert c balls, with a number x written on each of them, to the right end of the cylinder.
-#2 c: Take out the c leftmost balls contained in the cylinder and print the sum of the numbers written on the balls that have been taken out.
-#We assume that the balls do never change their order in the cylinder.
-#
-#Constraints
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ 10^9
-#Whenever a query of type 2 c is given, there are c or more balls in the cylinder.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#The i-th query query_i is in one of the following two formats.
-#1 x c
-#2 c
-#
-#Output
-#Print the response to the queries of type 2 c in the given order, with newlines in between.
-#
-#Sample Input 1
-#4
-#1 2 3
-#2 2
-#1 3 4
-#2 3
-#
-#Sample Output 1
-#4
-#8
-#For the 1-st query, insert 3 balls, with a number 2 written on each of them, to the right end of the cylinder.
-#  The cylinder has now balls with numbers (2,2,2) written on them, from left to right.
-#For the 2-nd query, take out the 2 leftmost balls contained in the cylinder.
-#  The numbers written on the balls taken out are 2,2, for a sum of 4, which should be printed.
-#  The cylinder has now a ball with a number (2) written on it, from left to right.
-#For the 3-rd query, insert 4 balls, with a number 3 written on each of them, to the right end of the cylinder.
-#  The cylinder has now balls with numbers (2,3,3,3,3) written on them, from left to right.
-#For the 4-th query, take out the 3 leftmost balls contained in the cylinder.
-#  The numbers written on the balls taken out are 2,3,3, for a sum of 8, which should be printed.
-#  The cylinder has now balls with numbers (3,3) written on them, from left to right.
-#
-#Sample Input 2
-#2
-#1 1000000000 1000000000
-#2 1000000000
-#
-#Sample Output 2
-#1000000000000000000
-#
-#Sample Input 3
-#5
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#
-#Sample Output 3
-#There may be nothing you should print.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    q = int(input())
+    balls = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            balls.append(int(query[2]))
+        else:
+            print(sum(balls[:int(query[1])]))
+            balls = balls[int(query[1]):]
+
+=======
+Suggestion 2
+
+def main():
+    from collections import deque
+    q = int(input())
+    d = deque()
+    sum = 0
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            d.append(query[1])
+            sum += query[2]
+        else:
+            for j in range(query[1]):
+                sum -= d.popleft()
+            print(sum)
+
+=======
+Suggestion 3
+
+def main():
+    q = int(input())
+    balls = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            balls.append(int(query[1]))
+        else:
+            print(sum(balls[:int(query[1])]))
+            balls = balls[int(query[1]):]
+
+=======
+Suggestion 4
+
+def main():
+    from collections import deque
+    q = int(input())
+    d = deque()
+    for _ in range(q):
+        query = input().split()
+        if query[0] == '1':
+            d.append((int(query[1]), int(query[2])))
+        else:
+            c = int(query[1])
+            s = 0
+            while c > 0:
+                x, y = d.popleft()
+                if c >= y:
+                    s += x * y
+                    c -= y
+                else:
+                    s += x * c
+                    d.appendleft((x, y-c))
+                    c = 0
+            print(s)
+
+=======
+Suggestion 5
+
+def main():
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+
+    balls = []
+    sum = 0
+    for i in range(Q):
+        if query[i][0] == 1:
+            balls.append(query[i][1])
+            sum += query[i][1] * query[i][2]
+        else:
+            for j in range(query[i][1]):
+                sum -= balls.pop(0)
+            print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    Q = int(input())
+    queries = []
+    for i in range(Q):
+        queries.append(list(map(int, input().split())))
+
+    balls = []
+    sum = 0
+    for i in range(Q):
+        if queries[i][0] == 1:
+            for j in range(queries[i][2]):
+                balls.append(queries[i][1])
+        elif queries[i][0] == 2:
+            for j in range(queries[i][1]):
+                sum += balls[j]
+            print(sum)
+            sum = 0
+            del balls[:queries[i][1]]
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    q = []
+    for i in range(n):
+        q.append([int(x) for x in input().split()])
+    q1 = [x for x in q if x[0] == 1]
+    q2 = [x for x in q if x[0] == 2]
+    q2 = [x[1] for x in q2]
+    q2.reverse()
+    for i in range(len(q2)):
+        q2[i] = [i, q2[i]]
+    q2.reverse()
+    q1.reverse()
+    ans = []
+    for i in range(len(q2)):
+        while q2[i][1] > 0:
+            if q1[-1][2] <= q2[i][1]:
+                ans.append([q1[-1][1], q1[-1][2]])
+                q2[i][1] -= q1[-1][2]
+                q1.pop()
+            else:
+                ans.append([q1[-1][1], q2[i][1]])
+                q1[-1][2] -= q2[i][1]
+                q2[i][1] = 0
+    ans.reverse()
+    for i in ans:
+        print(i[0] * i[1])
+
+=======
+Suggestion 8
+
+def main():
+    q = int(input())
+    balls = {}
+    ball_num = 0
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            balls[ball_num] = [query[1], query[2]]
+            ball_num += 1
+        else:
+            count = query[1]
+            sum = 0
+            for i in range(ball_num):
+                sum += balls[i][0]
+                count -= 1
+                if count == 0:
+                    break
+            print(sum)
+            ball_num -= query[1]
+
+=======
+Suggestion 9
+
+def main():
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    # print(query)
+    stack = []
+    for i in range(Q):
+        if query[i][0] == 1:
+            for j in range(query[i][2]):
+                stack.append(query[i][1])
+        elif query[i][0] == 2:
+            sum = 0
+            for j in range(query[i][1]):
+                sum += stack.pop(0)
+            print(sum)
+
+=======
+Suggestion 10
+
+def main():
+    #print("start")
+    #print("end")

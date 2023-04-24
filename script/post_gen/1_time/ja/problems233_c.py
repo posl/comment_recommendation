@@ -1,60 +1,252 @@
-#問題文
-#N 個の袋があります。
-#袋 i には L_i 個のボールが入っていて、袋 i の j(1≦ j≦ L_i) 番目のボールには正の整数 a_{i,j} が書かれています。  
-#それぞれの袋から 1 つずつボールを取り出します。
-#取り出したボールに書かれた数の総積が X になるような取り出し方は何通りありますか？  
-#ただし、書かれた数が同じであっても全てのボールは区別します。
-#
-#制約
-#N ≧ 2
-#L_i ≧ 2
-#袋に入っているボールの個数の総積は 10^5 を超えない。すなわち、prod_{i=1}^{N}L_i ≦ 10^5
-#1 ≦ a_{i,j} ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#入力に含まれる値は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2 40
-#3 1 8 4
-#2 10 5
-#
-#出力例 1
-#2
-#袋 1 の 3 番目のボールと袋 2 の 1 番目のボールを選ぶと、a_{1,3} × a_{2,1} = 4 × 10 = 40 となります。
-#袋 1 の 2 番目のボールと袋 2 の 2 番目のボールを選ぶと、a_{1,2} × a_{2,2} = 8 × 5 = 40 となります。
-#これ以外に総積が 40 になる取り出し方は存在しないので、答えは 2 です。
-#
-#入力例 2
-#3 200
-#3 10 10 10
-#3 10 10 10
-#5 2 2 2 2 2
-#
-#出力例 2
-#45
-#書かれた数が同じであっても全てのボールは区別することに注意してください。  
-#
-#入力例 3
-#3 1000000000000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#
-#出力例 3
-#0
-#総積が X になる取り出し方が 1 つも存在しないこともあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(2**N):
+        num = 1
+        for j in range(N):
+            if ((i >> j) & 1):
+                num *= L[j][1]
+            else:
+                num *= L[j][2]
+        if num <= X:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_divisor(n):
+    divisor = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisor.append(i)
+            if i != n // i:
+                divisor.append(n//i)
+    return divisor
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    N, X = map(int, input().split())
+    L = [0] * N
+    A = [0] * N
+    for i in range(N):
+        L[i] = list(map(int, input().split()))
+        A[i] = L[i][1:]
+
+    #組み合わせを列挙
+    import itertools
+    comb = list(itertools.product(*A))
+
+    #組み合わせに対して総積を計算
+    #総積がXになるものをカウント
+    ans = 0
+    for i in range(len(comb)):
+        tmp = 1
+        for j in range(N):
+            tmp *= comb[i][j]
+        if tmp == X:
+            ans += 1
+
+    #出力
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N, X)
+    #print(A)
+    ans = 0
+    for i in range(1, 2**N):
+        #print("i:", i)
+        tmp = 1
+        for j in range(N):
+            if i & 1 << j:
+                #print("j:", j)
+                tmp *= A[j][0]
+        #print("tmp:", tmp)
+        if tmp > X:
+            continue
+        #print("i:", i)
+        for j in range(N):
+            if i & 1 << j:
+                #print("j:", j)
+                for k in range(1, A[j][0]+1):
+                    #print("k:", k)
+                    if tmp * A[j][k] == X:
+                        ans += 1
+                    elif tmp * A[j][k] > X:
+                        break
+    print(ans)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    #print(N, X)
+    #print(L)
+    ans = 0
+    for i in range(2**N):
+        a = [0 for j in range(N)]
+        for j in range(N):
+            if (i >> j) & 1:
+                a[j] = 1
+        #print(a)
+        tmp = 1
+        for j in range(N):
+            if a[j] == 1:
+                tmp *= L[j][a[j]]
+        if tmp == X:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    input = sys.stdin.readline
+
+    N, X = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N, X)
+    #print(A)
+
+    #A = [[3, 1, 8, 4], [2, 10, 5]]
+    #X = 40
+
+    #A = [[3, 10, 10, 10], [3, 10, 10, 10], [5, 2, 2, 2, 2, 2]]
+    #X = 200
+
+    #A = [[2, 1000000000, 1000000000], [2, 1000000000, 1000000000], [2, 1000000000, 1000000000]]
+    #X = 1000000000000000000
+
+    #A = [[2, 1, 1], [2, 2, 2], [2, 3, 3]]
+    #X = 36
+
+    #A = [[3, 1, 2, 3], [3, 2, 3, 4], [3, 3, 4, 5]]
+    #X = 120
+
+    #A = [[3, 1, 2, 3], [3, 2, 3, 4], [3, 3, 4, 5]]
+    #X = 120
+
+    #A = [[2, 1, 1], [2, 1, 1], [2, 1, 1]]
+    #X = 1
+
+    #A = [[2, 1, 1], [2, 1, 1], [2, 1, 1]]
+    #X = 2
+
+    #A = [[2, 1, 1], [2, 1, 1], [2, 1, 1]]
+    #X = 3
+
+    #A = [[2, 1, 1], [2, 1, 1], [2, 1, 1]]
+    #X = 4
+
+    #A = [[2, 1, 1], [
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    for i in range(N):
+        L = list(map(int, input().split()))
+        A.append(L[1:])
+    #print(A)
+
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(len(A[i])):
+                for l in range(len(A[j])):
+                    if A[i][k] * A[j][l] == X:
+                        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    from itertools import combinations
+    from math import gcd
+
+    N, X = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    print(A)
+
+    # 総積が X になる取り出し方が 1 つも存在しないこともあります。
+    # なので、最初に X が A の中に存在するかチェックする。
+    for i in range(N):
+        if X in A[i]:
+            print(1)
+            sys.exit()
+
+    # A の中に X が存在しない場合、総積が X になる取り出し方は、
+    # A の中の数字の組み合わせで作れるかどうかをチェックする。
+    # そのために、A の中の数字の組み合わせを全て作る。
+    # その組み合わせの中で、X と互いに素なものをカウントする。
+    count = 0
+    for i in range(2, N+1):
+        for j in combinations(range(N), i):
+            #print(j)
+            #print(A[j[0]][1])
+            #print(A[j[1]][1])
+            #print(A[j[2]][1])
+            #print(A[j[3]][1])
+            #print(A[j[4]][1])
+
+            # A の中の数字の組み合わせを全て作る。
+            # その組み合わせの中で、X と互いに素なものをカウントする。
+            # そのために、組み合わせの中の数字を全て掛け合わせる。
+            # その結果が X と互いに素なら、カウントする。
+            # なお、X と互いに素なら、gcd は 1 になる。
+            #print(gcd(X, A[j[0]][1]))
+            #print(gcd(X, A[j[1]][1]))
+            #print(g
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(A) #A[0][1] A[1][1] A[2][1] がそれぞれ最初の袋の2番目のボールの書かれた数
+    #print(A[0][1]) #A[0][1] が最初の袋の2番目のボールの書かれた数
+    #print(A[1][1]) #A[1][1] が2番目の袋の2番目のボールの書かれた数
+    #print(A[2][1]) #A[2][1] が3番目の袋の2番目のボールの書かれた数
+    #print(A[0][2]) #A[0][2] が最初の袋の3番目のボールの書かれた数
+    #print(A[1][2]) #A[1][2] が2番目の袋の3番目のボールの書かれた数
+    #print(A[2][2]) #A[2][2] が3番目の袋の3番目のボールの書かれた数
+    #print(A[0][3]) #A[0][3] が最初の袋の4番目のボールの書かれた数
+    #print(A[1][3]) #A[1][3] が2番目の袋の4番目のボールの書かれた数
+    #print(A[2][3]) #A[2][3] が3番目の袋の4番目のボールの書かれた数
+    #print(A[0][4]) #A[0][4] が最初の袋の5番目のボールの書かれた数
+    #print(A[1][4]) #A[1][4] が2番目

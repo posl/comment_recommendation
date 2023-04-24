@@ -1,67 +1,195 @@
-#問題文
-#高橋君は何も書かれていないたくさんのボールと 1 つの袋を持っています。
-#最初、袋は空で、高橋君は Q 回の操作を行います。
-#それぞれの操作は以下の 3 種類のうちのいずれかです。
-#操作 1 : まだ何も書かれていないボール 1 つに整数 X_i を書き込み、袋に入れる。
-#操作 2 : 袋に入っているすべてのボールについて、そこに書かれている数を、それに X_i を加えたものに書き換える。
-#操作 3 : 袋に入っているボールのうち書かれている数が最小のもの（複数ある場合はそのうちの 1 つ）を取り出し、そこに書かれている数を記録する。その後、そのボールを捨てる。
-#1≦ i≦ Q について i 回目の操作の種類 P_i および操作 1 , 2 における X_i の値が与えられるので、操作 3 において記録された数を順に出力してください。
-#
-#制約
-#1 ≦ Q ≦ 2× 10^5
-#1 ≦ P_i ≦ 3
-#1 ≦ X_i ≦ 10^9
-#入力は全て整数である。
-#P_i=3 であるような i が 1 つ以上存在する。
-#P_i=3 であるとき、 i 回目の操作の直前の時点で、袋には 1 つ以上のボールが入っている。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#query_1
-#query_2
-#:
-#query_Q
-#2 行目から Q+1 行目の各 query_i は次のいずれかの形で与えられる。
-#1 X_i
-#2 X_i
-#3
-#まず、1≦ P_i≦ 3 が与えられる。これは操作の種類を表す。 
-#P_i=1 または P_i=2 ならば、その後に空白区切りで X_i が与えられる。
-#
-#出力
-#Q 回の操作のうち操作の種類が P_i=3 であるような各操作について、記録された数を改行区切りで出力せよ。
-#
-#入力例 1
-#5
-#1 3
-#1 5
-#3
-#2 2
-#3
-#
-#出力例 1
-#3
-#7
-#高橋君は次のように操作を行います。
-#3 の書かれたボールを袋に入れる。
-#5 の書かれたボールを袋に入れる。
-#今、袋には 3 の書かれたボールと 5 の書かれたボールが入っているため、このうち小さい 3 の書かれたボールを取り出し、 3 を記録した後に捨てる。
-#今、袋には 5 の書かれたボールのみが入っているため、この数を 5+2=7 に書き換える。
-#今、袋には 7 の書かれたボールのみが入っているため、このボールを取り出し、 7 を記録した後に捨てる。
-#よって、記録された順に 3 , 7 を出力します。
-#
-#入力例 2
-#6
-#1 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#3
-#
-#出力例 2
-#5000000000
-#答えが 32 bit整数に収まらないことがある事に注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    Q = int(input())
+    ball = []
+    add = 0
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            ball.append(query[1] - add)
+        elif query[0] == 2:
+            add += query[1]
+        else:
+            ball.sort()
+            print(ball[0] + add)
+            ball.pop(0)
+
+=======
+Suggestion 2
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    Q = int(input())
+    P = []
+    X = []
+    for i in range(Q):
+        p, x = map(int, input().split())
+        P.append(p)
+        X.append(x)
+    print(P)
+    print(X)
+
+=======
+Suggestion 3
+
+def main():
+    import heapq
+    import sys
+    input = sys.stdin.readline
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    heap = []
+    add = 0
+    for q in query:
+        if q[0] == 1:
+            heapq.heappush(heap, q[1] - add)
+        elif q[0] == 2:
+            add += q[1]
+        else:
+            print(heapq.heappop(heap) + add)
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    import heapq
+    input = sys.stdin.readline
+    Q = int(input())
+    q = []
+    for _ in range(Q):
+        p, *x = map(int, input().split())
+        if p == 1:
+            heapq.heappush(q, x[0])
+        elif p == 2:
+            for i in range(len(q)):
+                q[i] += x[0]
+        else:
+            print(heapq.heappop(q))
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from heapq import heappush,heappop
+    input = sys.stdin.readline
+    Q = int(input())
+    heap = []
+    add = 0
+    for i in range(Q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            heappush(heap,query[1]-add)
+        elif query[0] == 2:
+            add += query[1]
+        else:
+            print(heappop(heap)+add)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    from collections import deque
+    from heapq import heappush, heappop
+    input = sys.stdin.readline
+
+    Q = int(input())
+    query = [input().split() for _ in range(Q)]
+    q = deque()
+    h = []
+    for p, x in query:
+        if p == "1":
+            q.append(int(x))
+        elif p == "2":
+            q.append(int(x))
+        else:
+            while h:
+                heappop(h)
+            while q:
+                heappush(h, q.popleft())
+            print(h[0])
+    return
+
+=======
+Suggestion 7
+
+def main():
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+
+    #初期化
+    #ボールに書かれている数を記録する配列
+    ball = []
+    #袋に入っているボールのうち書かれている数が最小のものの値を記録する変数
+    minimum = 0
+    #袋に入っているボールのうち書かれている数が最小のものの個数を記録する変数
+    min_cnt = 0
+    #袋に入っているボールのうち書かれている数が最小のものの個数を記録する変数
+    add = 0
+    for i in range(Q):
+        #操作の種類
+        op = query[i][0]
+        if op == 1:
+            #1 : まだ何も書かれていないボール 1 つに整数 X_i を書き込み、袋に入れる。
+            #袋に入っているボールのうち書かれている数が最小のものの個数を記録する変数
+            min_cnt = 0
+            #袋に入っているボールのうち書かれている数が最小のものの値を記録する変数
+            minimum = 0
+            #袋に入っているボールのうち書かれている数が最小のものの個数を記録する変数
+            add = 0
+            #ボールに書かれている数を記録する配列にボールを追加
+            ball.append(query[i][1])
+        elif op == 2:
+            #2 : 袋に入っているすべてのボールについて、そこに書かれてい
+
+=======
+Suggestion 8
+
+def main():
+    import heapq
+    import sys
+    input = sys.stdin.readline
+    q = int(input())
+    # ヒープキューを用いて、最小値を常に取り出せるようにする
+    q1 = []
+    # 今までの操作の合計値を保持する
+    s = 0
+    for _ in range(q):
+        p, *x = map(int, input().split())
+        if p == 1:
+            heapq.heappush(q1, x[0] - s)
+        elif p == 2:
+            s += x[0]
+        else:
+            print(heapq.heappop(q1) + s)
+
+=======
+Suggestion 9
+
+def main():
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    # 1回目の操作は、ボールを袋に入れる操作なので、
+    # ボールに書かれている数は、その操作の直前の時点での数に等しくなる。
+    # そのため、袋に入っているボールのうち書かれている数が最小のものを取り出す操作は、
+    # 1回目の操作の直前の時点で、袋に入っているボールのうち書かれている数が最小のものを取り出す操作と等しい。
+    # 1回目の操作の直前の時点で、袋に入っているボールのうち書かれている数が最小のものを取り出す操作は、
+    # ボールに書かれている数が 0 であるボールを取り出す操作と等しい。
+    # したがって、1回目の操作の直前の時点で、袋に入っているボールのうち書かれている数が最小のものを取り出す操作は、
+    # ボールに書かれている数が 0 であるボールを取り出す操作と等しい。
+    # 1回目の操作の直前の時点で、袋に入っているボールのうち書かれている数が最小のものを取り出す操作は、
+    # ボールに書かれている数が 0 であるボールを取り出す操作と等しい。
+    # 1回目の操作の直前の時点で、袋に入っているボールのうち書かれている数が最小のものを取り出す操作は、
+    # ボールに書かれている数が 0

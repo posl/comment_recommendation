@@ -1,53 +1,103 @@
-#Problem Statement
-#You are given a sequence A=(A_1,A_2,...,A_N) of length N and positive integers P,Q,R, and S.
-#Here, P,Q,R, and S satisfy 1≦ P≦ Q<R≦ S ≦ N and Q-P=S-R.
-#Let B=(B_1, B_2,..., B_N) be the sequence obtained by swapping the P-th through Q-th terms and the R-th through S-th terms of A.
-#Print the sequence B.
-#
-#Constraints
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N P Q R S
-#A_1 A_2 ... A_N
-#
-#Output
-#Print B_1, B_2,..., B_N, with spaces in between.
-#
-#Sample Input 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#5 6 7 4 1 2 3 8
-#Swapping the 1-st through 3-rd terms (1,2,3) and the 5-th through 7-th terms (5,6,7) of the sequence A=(1,2,3,4,5,6,7,8)
-#results in B=(5,6,7,4,1,2,3,8), which should be printed with spaces in between.
-#
-#Sample Input 2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#Sample Output 2
-#2 1 1 2 1
-#The same integer may occur multiple times in the sequence.
-#
-#Sample Input 3
-#2 1 1 2 2
-#50 100
-#
-#Sample Output 3
-#100 50
-#
-#Sample Input 4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#Sample Output 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[Q:R-1] + A[S:]
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 2
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[Q:R-1] + A[S:]
+    print(*B)
+
+=======
+Suggestion 3
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[P-1:Q] + A[R-1:S]
+    print(*B)
+
+=======
+Suggestion 4
+
+def main():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(*a[:p-1], *a[q:r-1:-1], *a[s-1:p-1:-1], *a[r-1:], sep=' ')
+
+=======
+Suggestion 5
+
+def main():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = a[:]
+    b[p - 1:q] = a[q - 1:r - 1: -1]
+    b[r - 1:s] = a[s - 1:p - 1: -1]
+    print(*b)
+
+=======
+Suggestion 6
+
+def main():
+    N,P,Q,R,S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[0:P-1] + A[Q:R-1] + A[S-1:N]
+    print(*B)
+
+=======
+Suggestion 7
+
+def swap(a, p, q, r, s):
+    b = []
+    for i in range(p-1):
+        b.append(a[i])
+    for i in range(r-1, s):
+        b.append(a[i])
+    for i in range(q, r-1):
+        b.append(a[i])
+    for i in range(s, len(a)):
+        b.append(a[i])
+    return b
+
+=======
+Suggestion 8
+
+def swap(a, p, q, r, s):
+    b = a[0:p-1]
+    b.extend(a[r-1:s])
+    b.extend(a[q:r-1])
+    b.extend(a[p-1:q])
+    b.extend(a[s:])
+    return b
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N,P,Q,R,S=map(int,input().split())
+    A=list(map(int,input().split()))
+    #output
+    print(' '.join(map(str,A[P-1:Q]+A[R-1:S])))
+
+=======
+Suggestion 10
+
+def swap(a, b, c, d):
+    #a = list, b = p, c = q, d = r, e = s
+    e = d
+    temp = a[b-1:c]
+    a[b-1:c] = a[d-1:e]
+    a[d-1:e] = temp
+    return a

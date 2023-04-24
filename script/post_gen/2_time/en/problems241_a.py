@@ -1,37 +1,101 @@
-#Problem Statement
-#There is a device with a screen that shows a single-digit number, and a button.  
-#When the screen is showing a number k, pressing the button once changes the number on the screen to a_k.  
-#The device currently shows 0.  After pressing the button 3 times, what will be shown on the screen?
-#
-#Constraints
-#0≦ a_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a_0 a_1 ... a_9
-#
-#Output
-#Print the answer.  
-#
-#Sample Input 1
-#9 0 1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#7
-#The number on the screen transitions as 0 -> 9 -> 8 -> 7.  
-#
-#Sample Input 2
-#4 8 8 8 0 8 8 8 8 8
-#
-#Sample Output 2
-#4
-#The number on the screen transitions as 0 -> 4 -> 0 -> 4.  
-#
-#Sample Input 3
-#0 0 0 0 0 0 0 0 0 0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print(n)
+
+=======
+Suggestion 2
+
+def main():
+    a = [int(x) for x in input().split()]
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    a = list(map(int,input().split()))
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    i = 0
+    for j in range(3):
+        i = a[i]
+    print(i)
+
+=======
+Suggestion 5
+
+def main():
+    a = input().split()
+    n = 0
+    for i in range(3):
+        n = int(a[n])
+    print(n)
+
+=======
+Suggestion 6
+
+def main():
+    a = input().split()
+    num = 0
+    for i in range(3):
+        num = int(a[num])
+    print(num)
+
+=======
+Suggestion 7
+
+def main():
+    a = input().split()
+    current = 0
+    for i in range(3):
+        current = int(a[current])
+    print(current)
+
+=======
+Suggestion 8
+
+def main():
+    a = input().split()
+    print(a[1])
+
+=======
+Suggestion 9
+
+def main():
+    #read input
+    a = input()
+    a = a.split()
+
+    #convert the input to integers
+    for i in range(len(a)):
+        a[i] = int(a[i])
+
+    #set the starting value of the screen
+    screen = 0
+
+    #loop through the input 3 times
+    for j in range(3):
+        #set the screen to the value of the input at that index
+        screen = a[screen]
+
+    #print the final value of the screen
+    print(screen)

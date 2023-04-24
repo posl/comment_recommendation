@@ -1,45 +1,134 @@
-#問題文
-#長さ N かつ全ての要素が 1 以上 M 以下である整数列のうち、狭義単調増加であるものを全て辞書順に出力してください。
-#
-#注記
-#ある 2 個の異なる長さの等しい整数列 A_1,A_2,...,A_N と B_1,B_2,...,B_N が以下を満たすとき、またその時に限り辞書順で A が B より早いと定義されます。
-#ある整数 i(1 ≦ i ≦ N) が存在し、1 ≦ j < i である全ての整数 j に対し A_j=B_j が成り立ち、かつ A_i < B_i が成り立つ。
-#ある整数列 A_1,A_2,...,A_N は以下を満たすとき、またその時に限り狭義単調増加です。
-#全ての整数 i(1 ≦ i ≦ N-1) に対し A_i < A_{i+1} が成り立つ。
-#
-#制約
-#1 ≦ N ≦ M ≦ 10
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#
-#出力
-#条件を満たす整数列を一行に一つずつ、辞書順に出力せよ（出力例を参考にせよ）。
-#
-#入力例 1
-#2 3
-#
-#出力例 1
-#1 2 
-#1 3 
-#2 3 
-#条件を満たす数列は (1,2),(1,3),(2,3) の 3 個です。これらを辞書順で早い方から出力します。
-#
-#入力例 2
-#3 5
-#
-#出力例 2
-#1 2 3 
-#1 2 4 
-#1 2 5 
-#1 3 4 
-#1 3 5 
-#1 4 5 
-#2 3 4 
-#2 3 5 
-#2 4 5 
-#3 4 5 
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    for i in range(1, m+1):
+        for j in range(i+1, m+1):
+            for k in range(j+1, m+1):
+                print(i, j, k, sep=' ')
+
+=======
+Suggestion 2
+
+def dfs(a, n, m):
+    if len(a) == n:
+        print(" ".join(map(str, a)))
+        return
+    for i in range(1, m+1):
+        if len(a) == 0 or a[-1] < i:
+            a.append(i)
+            dfs(a, n, m)
+            a.pop()
+
+n, m = map(int, input().split())
+dfs([], n, m)
+
+=======
+Suggestion 3
+
+def solve(N, M):
+    if N == 1:
+        for i in range(1, M+1):
+            print(i)
+        return
+    for i in range(1, M+1):
+        solve(N-1, M-i)
+
+N, M = map(int, input().split())
+solve(N, M)
+
+=======
+Suggestion 4
+
+def solve(N, M):
+    if N == 1:
+        for i in range(1, M+1):
+            print(i)
+        return
+    for i in range(1, M+1):
+        for j in solve(N-1, M):
+            print(i, *j)
+
+N, M = map(int, input().split())
+solve(N, M)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    ans = []
+    for i in range(1,m+1):
+        ans.append([i])
+    for i in range(n-1):
+        tmp = []
+        for j in range(len(ans)):
+            for k in range(ans[j][-1]+1,m+1):
+                tmp.append(ans[j]+[k])
+        ans = tmp
+    for i in range(len(ans)):
+        print(*ans[i])
+
+=======
+Suggestion 6
+
+def dfs(n, m, a):
+    if len(a) == n:
+        print(' '.join(map(str, a)))
+        return
+    for i in range(1, m+1):
+        if len(a) > 0 and a[-1] >= i:
+            continue
+        a.append(i)
+        dfs(n, m, a)
+        a.pop()
+
+=======
+Suggestion 7
+
+def dfs(n, m, s, ans):
+    if len(s) == n:
+        ans.append(s)
+        return
+    for i in range(1, m+1):
+        if len(s) == 0 or s[-1] < i:
+            dfs(n, m, s+[i], ans)
+
+=======
+Suggestion 8
+
+def dfs(n, m, pre, ans):
+    if n == 0:
+        print(*ans)
+        return
+    for i in range(pre + 1, m + 1):
+        dfs(n - 1, m, i, ans + [i])
+
+=======
+Suggestion 9
+
+def dfs(n,m,k,ans):
+    if k==n:
+        print(' '.join(map(str,ans)))
+        return
+    for i in range(ans[-1],m+1):
+        ans.append(i)
+        dfs(n,m,k+1,ans)
+        ans.pop()
+
+=======
+Suggestion 10
+
+def dfs(n, m, A):
+    if n == 0:
+        print(" ".join(map(str, A)))
+    else:
+        for i in range(1, m + 1):
+            if len(A) > 0 and A[-1] > i:
+                continue
+            A.append(i)
+            dfs(n - 1, m, A)
+            A.pop()

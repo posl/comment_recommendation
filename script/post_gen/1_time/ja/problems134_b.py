@@ -1,38 +1,87 @@
-#問題文
-#一列に並んだ N 本の林檎の木のうちいずれかに黄金の林檎が実ると言われています。
-#そこで、何人かの監視員を配置してどの林檎の木もいずれかの監視員に監視された状態にしたいです。
-#それぞれの監視員は N 本の木のうちいずれかに配置します。便宜上、これらの木に 1 から N までの番号をつけます。番号 i の木に配置された監視員は、番号が i-D 以上 i+D 以下のすべての林檎の木を監視します。
-#条件を満たすために少なくとも何人の監視員を配置する必要があるか求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 20
-#1 ≦ D ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#
-#出力
-#条件を満たすために配置する必要のある監視員の人数の最小値を出力せよ。
-#
-#入力例 1
-#6 2
-#
-#出力例 1
-#2
-#例えば、番号 3, 4 の木に 1 人ずつ監視員を配置すれば条件を満たすことができます。
-#
-#入力例 2
-#14 3
-#
-#出力例 2
-#2
-#
-#入力例 3
-#20 4
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    if N % (2*D+1) == 0:
+        print(N // (2*D+1))
+    else:
+        print(N // (2*D+1) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n, d = map(int, input().split())
+    ans = n // (2 * d + 1)
+    if n % (2 * d + 1) != 0:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    print((N + 2 * D) // (2 * D + 1))
+
+=======
+Suggestion 4
+
+def main():
+    n, d = map(int, input().split())
+    print((n + 2 * d) // (2 * d + 1))
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    N, D = map(int, input().split())
+
+    # compute
+    ans = N//(2*D+1)
+    if N%(2*D+1) != 0:
+        ans += 1
+
+    # output
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    # 入力
+    N, D = map(int, input().split())
+
+    # 処理
+    # 条件を満たすために配置する必要のある監視員の人数の最小値
+    min_num = N // (2 * D + 1)
+    if N % (2 * D + 1) != 0:
+        min_num += 1
+
+    # 出力
+    print(min_num)
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N, D = map(int, input().split())
+    #出力
+    print((N + D * 2) // (D * 2 + 1))
+
+=======
+Suggestion 8
+
+def main():
+    N, D = map(int, input().split())
+
+    # 入力を読み込んで解く
+    ans = 0
+
+    # 出力
+    print(ans)

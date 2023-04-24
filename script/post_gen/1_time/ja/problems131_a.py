@@ -1,42 +1,146 @@
-#問題文
-#すぬけ君の管理する研究室の扉にはロックがかかっており、解錠にはセキュリティコードを入力する必要があります。
-#セキュリティコードは 4 桁の数字列です。セキュリティコードが「入力しづらい」とは、同じ数字が連続する箇所が存在することを言います。
-#現在のセキュリティコード S が与えられます。S が「入力しづらい」なら Bad を、そうでなければ Good を出力してください。
-#
-#制約
-#S は半角数字のみからなる長さ 4 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#S
-#
-#出力
-#セキュリティコード S が「入力しづらい」なら Bad を、そうでなければ Good を出力してください。
-#
-#入力例 1
-#3776
-#
-#出力例 1
-#Bad
-#2 文字目と 3 文字目が同じなので、3776 は入力しづらいセキュリティコードです。
-#
-#入力例 2
-#8080
-#
-#出力例 2
-#Good
-#同じ数字が連続していないので、8080 は入力しづらいセキュリティコードではありません。
-#
-#入力例 3
-#1333
-#
-#出力例 3
-#Bad
-#
-#入力例 4
-#0024
-#
-#出力例 4
-#Bad
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2] or s[1] == s[2] == s[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] or S[1] == S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] or S[1] == S[2] == S[3]:
+        print('Bad')
+    else:
+        print('Good')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if (s[0] == s[1] and s[1] == s[2]) or (s[1] == s[2] and s[2] == s[3]):
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2] == s[3]:
+        print("Bad")
+    elif s[1] == s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] == s[2]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[2]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[3]:
+        print("Bad")
+    elif S[0] == S[2] and S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    S = input()
+
+    # compute
+
+    # output
+    if S[0] == S[1] == S[2] or S[1] == S[2] == S[3]:
+        print('Bad')
+    else:
+        print('Good')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[2]:
+        print("Bad")
+    elif S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    S = input()
+
+    # compute
+
+    # output
+    if S[0] == S[1] == S[2] == S[3]:
+        print('Bad')
+    elif S[0] != S[1] != S[2] != S[3]:
+        print('Good')
+    else:
+        print('Bad')
+
+=======
+Suggestion 10
+
+def solve():
+    # === 数値の入力 ===
+    #n = int(input())
+    #n, k = map(int, input().split())
+    #a = list(map(int, input().split()))
+    # === 行列の入力 ===
+    #a = [list(map(int, input().split())) for _ in range(n)]
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print('Bad')
+    elif S[1] == S[2] == S[3]:
+        print('Bad')
+    elif S[0] == S[1] == S[2]:
+        print('Bad')
+    else:
+        print('Good')
+    return

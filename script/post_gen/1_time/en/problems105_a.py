@@ -1,36 +1,72 @@
-#Problem Statement
-#Takahashi has decided to distribute N AtCoder Crackers to K users of as evenly as possible.
-#When all the crackers are distributed, find the minimum possible (absolute) difference between the largest number of crackers received by a user and the smallest number received by a user.
-#
-#Constraints
-#1 ≦ N,K ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the minimum possible (absolute) difference between the largest number of crackers received by a user and the smallest number received by a user.
-#
-#Sample Input 1
-#7 3
-#
-#Sample Output 1
-#1
-#When the users receive two, two and three crackers, respectively, the (absolute) difference between the largest number of crackers received by a user and the smallest number received by a user, is 1.
-#
-#Sample Input 2
-#100 10
-#
-#Sample Output 2
-#0
-#The crackers can be distributed evenly.
-#
-#Sample Input 3
-#1 1
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    if n % k == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    print(0 if n % k == 0 else 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    if N%K == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def problems105_a():
+    N, K = map(int, input().split())
+    if N%K == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    print(0 if N%K == 0 else 1)
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N, K = map(int, input().split())
+
+    # compute
+
+    # output
+    print(0 if N%K==0 else 1)
+
+=======
+Suggestion 7
+
+def main():
+    num_of_crackers, num_of_users = map(int, input().split())
+    print(num_of_crackers % num_of_users)
+
+=======
+Suggestion 8
+
+def get_input():
+    input_line = input()
+    input_line = input_line.split()
+    return input_line

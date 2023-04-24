@@ -1,62 +1,180 @@
-#問題文
-#高橋君が N 回コイントスを行います。
-#また、高橋君はカウンタを持っており、最初カウンタの数値は 0 です。
-#i 回目のコイントスで表裏のどちらが出たかによって、次のことが起こります。
-#表が出たとき：高橋君はカウンタの数値を 1 増やし、X_i 円もらう。
-#裏が出たとき：高橋君はカウンタの数値を 0 に戻す。お金をもらうことは出来ない。
-#また、M 種類の連続ボーナスがあり、i 種類目の連続ボーナスではカウンタの数値が C_i になるたびに Y_i 円もらうことができます。
-#高橋君は最大で何円もらうことができるかを求めてください。
-#
-#制約
-#1≦ M≦ N≦ 5000
-#1≦ X_i≦ 10^9
-#1≦ C_i≦ N
-#1≦ Y_i≦ 10^9
-#C_1,C_2,...,C_M はすべて異なる。
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#X_1 X_2 ... X_N
-#C_1 Y_1
-#C_2 Y_2
-#.
-#.
-#.
-#C_M Y_M
-#
-#出力
-#高橋君がもらうことのできる金額の最大値を整数で出力せよ。
-#
-#入力例 1
-#6 3
-#2 7 1 8 2 8
-#2 10
-#3 1
-#5 5
-#
-#出力例 1
-#48
-#順に 表, 表, 裏, 表, 表, 表 が出た時、もらえる金額は次のようになります。
-#1 回目のコイントスで表が出る。カウンタの数値を 0 から 1 にして、2 円もらう。
-#2 回目のコイントスで表が出る。カウンタの数値を 1 から 2 にして、7 円もらう。さらに、連続ボーナスとして 10 円もらう。
-#3 回目のコイントスで裏が出る。カウンタの数値を 2 から 0 にする。
-#4 回目のコイントスで表が出る。カウンタの数値を 0 から 1 にして、8 円もらう。
-#5 回目のコイントスで表が出る。カウンタの数値を 1 から 2 にして、2 円もらう。さらに、連続ボーナスとして 10 円もらう。
-#6 回目のコイントスで表が出る。カウンタの数値を 2 から 3 にして、8 円もらう。さらに、連続ボーナスとして 1 円もらう。
-#このとき高橋君は合計で 2+(7+10)+0+8+(2+10)+(8+1)=48 円もらうことができ、このときが最大です。
-#連続ボーナスはカウンタの数値が C_i になるたびに何度でももらえることに注意してください。
-#ちなみに、6 回のコイントスで全部表が出た時は 2+(7+10)+(1+1)+8+(2+5)+8=44 円しかもらうことが出来ず、この時は最大ではありません。
-#
-#入力例 2
-#3 2
-#1000000000 1000000000 1000000000
-#1 1000000000
-#3 1000000000
-#
-#出力例 2
-#5000000000
-#答えが 32 bit 整数型に収まらないこともあることに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        C[i], Y[i] = map(int, input().split())
+    dp = [0] * (N + 1)
+    for i in range(N):
+        dp[i + 1] = max(dp[i + 1], dp[i] + X[i])
+        for j in range(M):
+            if i + C[j] <= N:
+                dp[i + C[j]] = max(dp[i + C[j]], dp[i] + Y[j])
+    print(dp[N])
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = []
+    Y = []
+    for _ in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+    #print(N, M)
+    #print(X)
+    #print(C, Y)
+
+    #dp[i][j] := i回目までのコイントスで、カウンタの数値がjのときにもらえる最大金額
+    dp = [[0] * (N+1) for _ in range(N+1)]
+    for i in range(N):
+        for j in range(N+1):
+            dp[i+1][j] = max(dp[i+1][j], dp[i][j])
+            if j == 0:
+                dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j] + X[i])
+            else:
+                dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j] + X[i] + Y[C.index(j)])
+    #print(dp)
+    print(max(dp[N]))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = []
+    Y = []
+    for i in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+    # print(N, M)
+    # print(X)
+    # print(C)
+    # print(Y)
+
+    ans = 0
+    for i in range(N):
+        ans += X[i]
+        for j in range(M):
+            if i >= C[j] - 1:
+                ans += Y[j] * (i - C[j] + 2)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = [0] * m
+    y = [0] * m
+    for i in range(m):
+        c[i], y[i] = map(int, input().split())
+    dp = [0] * (n + 1)
+    dp[0] = 0
+    for i in range(1, n + 1):
+        dp[i] = dp[i - 1] + x[i - 1]
+        for j in range(m):
+            if i - c[j] >= 0:
+                dp[i] = max(dp[i], dp[i - c[j]] + y[j])
+    print(dp[n])
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_, y_ = map(int, input().split())
+        c.append(c_)
+        y.append(y_)
+    dp = [0] * (n+1)
+    for i in range(n):
+        dp[i+1] = max(dp[i+1], dp[i] + x[i])
+        for j in range(m):
+            if i + c[j] <= n:
+                dp[i+c[j]] = max(dp[i+c[j]], dp[i] + y[j])
+    print(dp[n])
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = [0 for _ in range(N)]
+    Y = [0 for _ in range(N)]
+    for _ in range(M):
+        c, y = map(int, input().split())
+        C[c-1] = c
+        Y[c-1] = y
+    dp = [0 for _ in range(N+1)]
+    for i in range(N):
+        dp[i+1] = max(dp[i+1], dp[i]+X[i])
+        dp[C[i]] = max(dp[C[i]], dp[i]+Y[i])
+    print(dp[N])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C_Y = [list(map(int, input().split())) for _ in range(M)]
+    C_Y.sort(key=lambda x: x[0])
+    C, Y = zip(*C_Y)
+    dp = [0] * (N + 1)
+    for i in range(N):
+        dp[i + 1] = max(dp[i + 1], dp[i] + X[i])
+        for j in range(M):
+            if i + 1 < C[j]:
+                break
+            dp[i + 1] = max(dp[i + 1], dp[i + 1 - C[j]] + Y[j])
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    N,M = map(int,input().split())
+    X = [int(x) for x in input().split()]
+    C = [0]*M
+    Y = [0]*M
+    for i in range(M):
+        C[i],Y[i] = map(int,input().split())
+    # 処理
+    # dp[i] = i回目までのコイントスでもらえる最大の金額
+    dp = [0]*(N+1)
+    # 連続ボーナスを受け取る
+    for i in range(M):
+        dp[C[i]] = max(dp[C[i]],Y[i])
+    # 連続ボーナスを受け取る
+    for i in range(N):
+        dp[i+1] = max(dp[i+1],dp[i])
+    # 連続ボーナスを受け取っていない場合の金額を計算
+    for i in range(N):
+        if dp[i+1] == dp[i]:
+            dp[i+1] = dp[i] + X[i]
+    # 出力
+    print(max(dp))
+
+=======
+Suggestion 9
+
+def read_int():
+    return int(input())

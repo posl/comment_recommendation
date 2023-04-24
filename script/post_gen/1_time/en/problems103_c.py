@@ -1,42 +1,84 @@
-#Problem Statement
-#You are given N positive integers a_1, a_2, ..., a_N.
-#For a non-negative integer m, let f(m) = (m mod a_1) + (m mod a_2) + ... + (m mod a_N).
-#Here, X mod Y denotes the remainder of the division of X by Y.
-#Find the maximum value of f.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 3000
-#2 ≦ a_i ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 a_2 ... a_N
-#
-#Output
-#Print the maximum value of f.
-#
-#Sample Input 1
-#3
-#3 4 6
-#
-#Sample Output 1
-#10
-#f(11) = (11 mod 3) + (11 mod 4) + (11 mod 6) = 10 is the maximum value of f.
-#
-#Sample Input 2
-#5
-#7 46 11 20 11
-#
-#Sample Output 2
-#90
-#
-#Sample Input 3
-#7
-#994 518 941 851 647 2 581
-#
-#Sample Output 3
-#4527
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for a in A:
+        ans += a - 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(N * max(A) - sum(A))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = sum(A) - N
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(sum(A) - N)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(sum([a - 1 for a in A]))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(sum(a)-n)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    As = list(map(int, input().split()))
+    mod = [0] * (10**5 + 1)
+    for a in As:
+        for i in range(1, a):
+            mod[i] += 1
+    ans = 0
+    for i in range(1, 10**5 + 1):
+        if mod[i] == N:
+            ans += i
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    a_list.sort()
+    max_a = a_list[-1]
+    a_list.pop()
+    a_list.reverse()
+    max_sum = 0
+    for i in range(n-1):
+        max_sum += max_a % a_list[i]
+    print(max_sum)

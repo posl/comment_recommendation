@@ -1,41 +1,45 @@
-#問題文
-#収縮期血圧 A と拡張期血圧 B が与えられます。
-#平均血圧 C を求めてください。
-#ただし、平均血圧は以下のように定義されるとします。  
-#C = ((A-B)/(3)) +B
-#
-#制約
-#50 ≦ B ≦ A ≦ 300
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#C を出力せよ。
-#出力
-#値と想定解答の絶対誤差または相対誤差が 10^{-5} 以下であれば正解と判定される。
-#
-#入力例 1
-#130 100
-#
-#出力例 1
-#110
-#C = ((130-100)/(3)) +100 = 10 + 100 = 110
-#となります。
-#
-#入力例 2
-#300 50
-#
-#出力例 2
-#133.3333333
-#入力される値は全て整数ですが、出力する値は整数とは限らないことに注意してください。
-#
-#入力例 3
-#123 123
-#
-#出力例 3
-#123
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    C = ((A-B)/(3)) +B
+    print(C)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(((a-b)/3)+b)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print((A-B)/3 + B)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    print((a-b)/3 + b)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int, input().split())
+    print(((a-b)/(3))+b)
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+
+    print(((A-B)/(3)) +B)

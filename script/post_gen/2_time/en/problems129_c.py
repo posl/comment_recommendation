@@ -1,59 +1,184 @@
-#Problem Statement
-#There is a staircase with N steps. Takahashi is now standing at the foot of the stairs, that is, on the 0-th step.
-#He can climb up one or two steps at a time.
-#However, the treads of the a_1-th, a_2-th, a_3-th, ..., a_M-th steps are broken, so it is dangerous to set foot on those steps.
-#How many are there to climb up to the top step, that is, the N-th step, without setting foot on the broken steps?
-#Find the count modulo 1 000 000 007.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 <  ...  < a_M ≦ N-1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#Output
-#Print the number of ways to climb up the stairs under the condition, modulo 1 000 000 007.
-#
-#Sample Input 1
-#6 1
-#3
-#
-#Sample Output 1
-#4
-#There are four ways to climb up the stairs, as follows:
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#Sample Input 2
-#10 2
-#4
-#5
-#
-#Sample Output 2
-#0
-#There may be no way to climb up the stairs without setting foot on the broken steps.
-#
-#Sample Input 3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#Sample Output 3
-#608200469
-#Be sure to print the count modulo 1 000 000 007.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = [int(input()) for _ in range(m)]
+    dp = [0] * (n+1)
+    dp[0] = 1
+    for i in range(1, n+1):
+        if i in a:
+            continue
+        dp[i] = dp[i-1] + dp[i-2]
+    print(dp[-1] % (10**9+7))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    MOD = 10**9 + 7
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i not in A:
+            dp[i] = (dp[i-1] + dp[i-2]) % MOD
+    print(dp[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    MOD = 1000000007
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i - 1] + dp[i - 2]
+            dp[i] %= MOD
+    print(dp[N])
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    dp = [0] * (N+1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2, N+1):
+        if i in a:
+            continue
+        dp[i] = dp[i-1] + dp[i-2]
+        dp[i] %= 1000000007
+    print(dp[N])
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = set([int(input()) for _ in range(M)])
+    mod = 10**9 + 7
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % mod
+    print(dp[N])
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N, M = map(int, input().split())
+    As = [int(input()) for _ in range(M)]
+
+    # compute
+    """WRITE BELOW"""
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(N):
+        if i not in As:
+            dp[i+1] += dp[i]
+            dp[i+1] %= 10**9 + 7
+        if i+1 not in As:
+            dp[i+2] += dp[i]
+            dp[i+2] %= 10**9 + 7
+
+    # output
+    print(dp[-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for i in range(M)]
+    A.append(N)
+    A = [0] + A
+    dp = [0] * (N+1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(1, N+1):
+        if i in A:
+            continue
+        dp[i] = dp[i-1] + dp[i-2]
+        dp[i] %= 1000000007
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N, M = map(int, input().split())
+    a = [0] * M
+    for i in range(M):
+        a[i] = int(input())
+    a.append(N)
+
+    #compute
+    dp = [0] * (N+1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2, N+1):
+        if i in a:
+            dp[i] = 0
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
+
+    #output
+    print(dp[N])
+
+=======
+Suggestion 9
+
+def main():
+    #read
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    MOD = 10**9+7
+    
+    #solve
+    dp = [0] * N
+    dp[0] = 1
+    for i in range(N):
+        if i+1 not in A:
+            dp[i+1] += dp[i]
+        if i+2 not in A:
+            dp[i+2] += dp[i]
+        dp[i+1] %= MOD
+        dp[i+2] %= MOD
+    
+    #print
+    print(dp[N-1])
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+
+    #dp[i] := i段目に到達する方法の数
+    dp = [0]*(N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in a:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i-1] + dp[i-2]
+    print(dp[N] % 1000000007)

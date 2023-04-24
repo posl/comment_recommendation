@@ -1,35 +1,35 @@
-#問題文
-#N 個のボールが入っていた箱から A 個のボールを取り出し、新たに B 個のボールを入れました。今、箱にはボールが何個入っていますか?
-#
-#制約
-#入力はすべて整数
-# 100 ≦ N ≦ 200
-# 1 ≦ A,B ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#答えを整数で出力せよ。
-#
-#入力例 1
-#100 1 2
-#
-#出力例 1
-#101
-#箱にはもともと 100 個のボールが入っていましたが 1 個のボールを取り出し、新たに 2 個のボールを入れたことで、今は 101 個のボールが入っています。
-#
-#入力例 2
-#100 2 1
-#
-#出力例 2
-#99
-#
-#入力例 3
-#100 1 1
-#
-#出力例 3
-#100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N - A + B)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N + B - A)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n-a+b)
+
+=======
+Suggestion 4
+
+def main():
+    # 入力
+    N, A, B = map(int,input().split())
+
+    # 処理
+    ans = N + B - A
+
+    # 出力
+    print(ans)

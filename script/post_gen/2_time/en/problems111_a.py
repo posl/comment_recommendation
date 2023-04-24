@@ -1,31 +1,100 @@
-#Problem Statement
-#Cat Snuke is learning to write characters.
-#Today, he practiced writing digits 1 and 9, but he did it the other way around.
-#You are given a three-digit integer n written by Snuke.
-#Print the integer obtained by replacing each digit 1 with 9 and each digit 9 with 1 in n.
-#
-#Constraints
-#111 ≦ n ≦ 999
-#n is an integer consisting of digits 1 and 9.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#n
-#
-#Output
-#Print the integer obtained by replacing each occurrence of 1 with 9 and each occurrence of 9 with 1 in n.
-#
-#Sample Input 1
-#119
-#
-#Sample Output 1
-#991
-#Replace the 9 in the ones place with 1, the 1 in the tens place with 9 and the 1 in the hundreds place with 9. The answer is 991.
-#
-#Sample Input 2
-#999
-#
-#Sample Output 2
-#111
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    n = n.replace('1', 'x')
+    n = n.replace('9', '1')
+    n = n.replace('x', '9')
+    print(n)
+
+=======
+Suggestion 2
+
+def main():
+    n = input()
+    n = n.replace("1", "x")
+    n = n.replace("9", "1")
+    n = n.replace("x", "9")
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    n = str(n)
+    n = n.replace('1', '2')
+    n = n.replace('9', '1')
+    n = n.replace('2', '9')
+    print(n)
+
+=======
+Suggestion 4
+
+def main():
+    n = input()
+    print(n.replace('1', 'x').replace('9', '1').replace('x', '9'))
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = input()
+    print(n.replace('1','x').replace('9','1').replace('x','9'))
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    print(n.replace('1','X').replace('9','1').replace('X','9'))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    n = str(n)
+    print(n.replace('9', 'x').replace('1', '9').replace('x', '1'))
+
+=======
+Suggestion 8
+
+def main():
+    num = input()
+    print(num.replace('1', '9').replace('9', '1').replace('9', '9'))
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = input("Enter a 3 digit number: ")
+    if n.isdigit():
+        if len(n) == 3:
+            if n[0] == '1' and n[1] == '1' and n[2] == '9':
+                print("991")
+            elif n[0] == '9' and n[1] == '1' and n[2] == '1':
+                print("111")
+            elif n[0] == '9' and n[1] == '1' and n[2] == '9':
+                print("111")
+            elif n[0] == '1' and n[1] == '9' and n[2] == '9':
+                print("919")
+            elif n[0] == '1' and n[1] == '9' and n[2] == '1':
+                print("919")
+            elif n[0] == '9' and n[1] == '9' and n[2] == '1':
+                print("191")
+            elif n[0] == '9' and n[1] == '9' and n[2] == '9':
+                print("111")
+            elif n[0] == '1' and n[1] == '9' and n[2] == '9':
+                print("919")
+            elif n[0] == '1' and n[1] == '1' and n[2] == '1':
+                print("999")
+        else:
+            print("Please enter a 3 digit number")
+    else:
+        print("Please enter a 3 digit number")

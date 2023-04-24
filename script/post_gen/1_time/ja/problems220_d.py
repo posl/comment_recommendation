@@ -1,61 +1,180 @@
-#問題文
-#0 以上 9 以下の整数からなる長さ N の数列 A=(A_1,...,A_N) があり、この順に左から右に並んでいます。  
-#数列の長さが 1 になるまで、操作 F または操作 G を繰り返し行います。  
-#操作 F ：左端の 2 つの値 ( x,y とする ) を削除した後、一番左に (x+y)%10 を挿入する  
-#操作 G ：左端の 2 つの値 ( x,y とする ) を削除した後、一番左に (x× y)%10 を挿入する  
-#なお、a%b は a を b で割った余りを意味します。  
-#K=0,1,...,9 について、以下の問題に答えてください。  
-#操作手順としてあり得るものは 2^{N-1} 通りありますが、このうち最終的に残る値が K となる操作手順は何通りありますか？
-#ただし答えは非常に大きくなる可能性があるので、998244353 で割った余りを求めてください。  
-#
-#制約
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#答えを 10 行に出力せよ。
-#ただし、i 行目には K=i-1 としたときの答えを出力せよ。  
-#
-#入力例 1
-#3
-#2 7 6
-#
-#出力例 1
-#1
-#0
-#0
-#0
-#2
-#1
-#0
-#0
-#0
-#0
-#1 回目に操作 F 、2 回目に操作 F を行ったとき：数列は (2,7,6)→(9,6)→(5) となります。
-#1 回目に操作 F 、2 回目に操作 G を行ったとき：数列は (2,7,6)→(9,6)→(4) となります。
-#1 回目に操作 G 、2 回目に操作 F を行ったとき：数列は (2,7,6)→(4,6)→(0) となります。
-#1 回目に操作 G 、2 回目に操作 G を行ったとき：数列は (2,7,6)→(4,6)→(4) となります。  
-#
-#入力例 2
-#5
-#0 1 2 3 4
-#
-#出力例 2
-#6
-#0
-#1
-#1
-#4
-#0
-#1
-#1
-#0
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * 10
+    ans[A[0]] = 1
+
+    for i in range(1, N):
+        tmp = [0] * 10
+        for j in range(10):
+            tmp[(j + A[i]) % 10] += ans[j]
+            tmp[(j * A[i]) % 10] += ans[j]
+            tmp[(j + A[i]) % 10] %= 998244353
+            tmp[(j * A[i]) % 10] %= 998244353
+        ans = tmp
+
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * 10
+    for i in range(10):
+        dp = [[0] * 10 for _ in range(n + 1)]
+        dp[0][a[0]] = 1
+        for j in range(n - 1):
+            for k in range(10):
+                val = (k + a[j + 1]) % 10
+                dp[j + 1][val] += dp[j][k]
+                dp[j + 1][val] %= 998244353
+                val = (k * a[j + 1]) % 10
+                dp[j + 1][val] += dp[j][k]
+                dp[j + 1][val] %= 998244353
+        ans[i] = dp[n - 1][i]
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    ans[A[0]] = 1
+    for i in range(1,N):
+        B = [0] * 10
+        for j in range(10):
+            B[(j+A[i])%10] += ans[j]
+            B[(j*A[i])%10] += ans[j]
+        for j in range(10):
+            B[j] %= MOD
+        ans = B
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    dp = [[0] * 10 for _ in range(N + 1)]
+    dp[0][A[0]] = 1
+    for i in range(1, N):
+        for j in range(10):
+            dp[i][(j + A[i]) % 10] += dp[i - 1][j]
+            dp[i][(j + A[i]) % 10] %= mod
+            dp[i][(j * A[i]) % 10] += dp[i - 1][j]
+            dp[i][(j * A[i]) % 10] %= mod
+    for i in range(10):
+        print(dp[N - 1][i])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = [0] * 10
+    ans[a[0]] = 1
+    for i in range(1,n):
+        tmp = [0] * 10
+        for j in range(10):
+            tmp[(j+a[i])%10] += ans[j]
+            tmp[(j*a[i])%10] += ans[j]
+        ans = tmp
+    for i in range(10):
+        print(ans[i]%998244353)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = 0
+    ans[A[0]] = 1
+    for i in range(1, N):
+        tmp = [0] * 10
+        tmp[A[i]] += 1
+        for j in range(10):
+            tmp[(j + A[i]) % 10] += ans[j]
+            tmp[(j * A[i]) % 10] += ans[j]
+        ans = tmp
+    for i in range(10):
+        print(ans[i] % 998244353)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = [0 for i in range(10)]
+    ans[A[0]] = 1
+    for i in range(1,N):
+        tmp = [0 for i in range(10)]
+        for j in range(10):
+            tmp[(j+A[i])%10] += ans[j]
+            tmp[(j*A[i])%10] += ans[j]
+        ans = tmp
+    for i in range(10):
+        print(ans[i]%998244353)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N,A)
+    ans = [0] * 10
+    ans[A[0]] = 1
+    for i in range(1,N):
+        tmp = [0] * 10
+        for j in range(10):
+            tmp[(j+A[i])%10] += ans[j]
+            tmp[(j*A[i])%10] += ans[j]
+        ans = tmp
+    for i in range(10):
+        print(ans[i]%998244353)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = [0]*10
+    for i in range(10):
+        ans[i] = a.count(i)
+    print(ans)
+    for i in range(1,n):
+        tmp = [0]*10
+        for j in range(10):
+            tmp[(j+a[i])%10] += ans[j]
+            tmp[(j*a[i])%10] += ans[j]
+        ans = tmp
+        print(ans)
+    for i in range(10):
+        print(ans[i]%998244353)
+
+=======
+Suggestion 10
+
+def f(x,y):
+    return (x+y)%10

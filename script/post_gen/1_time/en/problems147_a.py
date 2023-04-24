@@ -1,30 +1,71 @@
-#Problem Statement
-#Given are three integers A_1, A_2, and A_3.
-#If A_1+A_2+A_3 is greater than or equal to 22, print bust; otherwise, print win.
-#
-#Constraints
-#1 ≦ A_i ≦ 13   (i=1,2,3)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A_1 A_2 A_3
-#
-#Output
-#If A_1+A_2+A_3 is greater than or equal to 22, print bust; otherwise, print win.
-#
-#Sample Input 1
-#5 7 9
-#
-#Sample Output 1
-#win
-#5+7+9=21, so print win.
-#
-#Sample Input 2
-#13 7 2
-#
-#Sample Output 2
-#bust
-#13+7+2=22, so print bust.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a1, a2, a3 = map(int, input().split())
+    if a1 + a2 + a3 >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 2
+
+def main():
+    A_1, A_2, A_3 = map(int, input().split())
+    if A_1 + A_2 + A_3 >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 3
+
+def main():
+    A1, A2, A3 = map(int, input().split())
+    if A1+A2+A3 >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c = map(int, input().split())
+    if a+b+c >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 5
+
+def main():
+    A = list(map(int, input().split()))
+    if sum(A) >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 6
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 7
+
+def main():
+    a = map(int, raw_input().split())
+    if sum(a) >= 22:
+        print 'bust'
+    else:
+        print 'win'

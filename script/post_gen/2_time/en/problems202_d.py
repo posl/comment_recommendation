@@ -1,31 +1,160 @@
-#Problem Statement
-#Among the strings of length A + B containing A occurrences of a and B occurrences of b, find the string that comes K-th in the lexicographical order.
-#
-#Constraints
-#1 ≦ A, B ≦ 30
-#1 ≦ K ≦ S, where S is the number of strings of length A + B containing A occurrences of a and B occurrences of b.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 2 4
-#
-#Sample Output 1
-#baab
-#Here are the strings containing two as and two bs in the lexicographical order: aabb, abab, abba, baab, baba, and bbaa.
-#The fourth string, baab, should be printed.
-#
-#Sample Input 2
-#30 30 118264581564861424
-#
-#Sample Output 2
-#bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-#K may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 2
+
+def ncr(n,r):
+    p = 1
+    k = 1
+    if n - r < r:
+        r = n - r
+    if r != 0:
+        while r:
+            p *= n
+            k *= r
+            m = gcd(p, k)
+            p //= m
+            k //= m
+            n -= 1
+            r -= 1
+    else:
+        p = 1
+    return p
+
+=======
+Suggestion 3
+
+def fact(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fact(n-1)
+
+=======
+Suggestion 4
+
+def fact(n):
+    if n==0:
+        return 1
+    else:
+        return n*fact(n-1)
+
+=======
+Suggestion 5
+
+def solve():
+    a, b, k = map(int, input().split())
+    comb = [[1] * (a + b + 1) for _ in range(a + b + 1)]
+    for i in range(1, a + b + 1):
+        for j in range(1, i):
+            comb[i][j] = comb[i - 1][j - 1] + comb[i - 1][j]
+    ans = []
+    while a + b > 0:
+        if a > 0:
+            if k <= comb[a + b - 1][a - 1]:
+                ans.append('a')
+                a -= 1
+            else:
+                ans.append('b')
+                b -= 1
+                k -= comb[a + b][a]
+        else:
+            ans.append('b')
+            b -= 1
+    print(''.join(ans))
+solve()
+
+=======
+Suggestion 6
+
+def nCr(n,r):
+    if n<r:
+        return 0
+    elif n==r:
+        return 1
+    else:
+        return nCr(n-1,r-1) + nCr(n-1,r)
+
+=======
+Suggestion 7
+
+def main():
+    A, B, K = map(int, input().split())
+    s = A + B
+    ans = ''
+    for i in range(s):
+        if A == 0:
+            ans += 'b'
+            B -= 1
+        elif B == 0:
+            ans += 'a'
+            A -= 1
+        elif K <= comb(A + B - 1, B):
+            ans += 'a'
+            A -= 1
+        else:
+            ans += 'b'
+            K -= comb(A + B - 1, B)
+            B -= 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    a, b, k = map(int, input().split())
+
+    def comb(n, r):
+        if n < r:
+            return 0
+        else:
+            r = min(r, n-r)
+            return fact[n] * factinv[r] * factinv[n-r] % mod
+
+    mod = 10**9 + 7
+    n = a + b
+    fact = [1, 1]
+    factinv = [1, 1]
+    inv = [0, 1]
+
+    for i in range(2, n+1):
+        fact.append((fact[-1] * i) % mod)
+        inv.append((-inv[mod%i] * (mod//i)) % mod)
+        factinv.append((factinv[-1] * inv[-1]) % mod)
+
+    ans = []
+    while a + b > 0:
+        if a == 0:
+            ans.append('b')
+            b -= 1
+            continue
+        elif b == 0:
+            ans.append('a')
+            a -= 1
+            continue
+        num = comb(a+b-1, a-1)
+        if k <= num:
+            ans.append('a')
+            a -= 1
+        else:
+            ans.append('b')
+            b -= 1
+            k -= num
+    print(''.join(ans))
+
+=======
+Suggestion 9
+
+def count(n):
+    if n == 0:
+        return 1
+    return n * count(n-1)

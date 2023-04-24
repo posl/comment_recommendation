@@ -1,47 +1,152 @@
-#Problem Statement
-#There are N empty boxes arranged in a row from left to right.
-#The integer i is written on the i-th box from the left (1 ≦ i ≦ N).
-#For each of these boxes, Snuke can choose either to put a ball in it or to put nothing in it.
-#We say a set of choices to put a ball or not in the boxes is good when the following condition is satisfied:
-#For every integer i between 1 and N (inclusive), the total number of balls contained in the boxes with multiples of i written on them is congruent to a_i modulo 2.
-#Does there exist a good set of choices? If the answer is yes, find one good set of choices.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 2 × 10^5
-#a_i is 0 or 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 a_2 ... a_N
-#
-#Output
-#If a good set of choices does not exist, print -1.
-#If a good set of choices exists, print one such set of choices in the following format:
-#M
-#b_1 b_2 ... b_M
-#where M denotes the number of boxes that will contain a ball, and b_1, b_2, ..., b_M are the integers written on these boxes, in any order.
-#
-#Sample Input 1
-#3
-#1 0 0
-#
-#Sample Output 1
-#1
-#1
-#Consider putting a ball only in the box with 1 written on it.
-#There are three boxes with multiples of 1 written on them: the boxes with 1, 2, and 3. The total number of balls contained in these boxes is 1.
-#There is only one box with a multiple of 2 written on it: the box with 2. The total number of balls contained in these boxes is 0.
-#There is only one box with a multiple of 3 written on it: the box with 3. The total number of balls contained in these boxes is 0.
-#Thus, the condition is satisfied, so this set of choices is good.
-#
-#Sample Input 2
-#5
-#0 0 0 0 0
-#
-#Sample Output 2
-#0
-#Putting nothing in the boxes can be a good set of choices.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n-1, -1, -1):
+        if sum(a[i::i+1]) % 2 != a[i]:
+            ans.append(i+1)
+            a[i] = 1
+    print(len(ans))
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(N-1, -1, -1):
+        if a[i] == 0:
+            continue
+        ans.append(i+1)
+        for j in range(2*i+1, N, i+1):
+            a[j] = 1 - a[j]
+    print(len(ans))
+    print(*ans, sep=' ')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N - 1, -1, -1):
+        if sum(b[i::i + 1]) % 2 != a[i]:
+            b[i] = 1
+    print(sum(b))
+    for i in range(N):
+        if b[i] == 1:
+            print(i + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N-1, -1, -1):
+        if sum(b[i::i+1]) % 2 != a[i]:
+            b[i] = 1
+    print(sum(b))
+    for i in range(N):
+        if b[i] == 1:
+            print(i+1, end=" ")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N - 1, -1, -1):
+        if sum(B[i::i + 1]) % 2 != A[i]:
+            B[i] = 1
+    print(sum(B))
+    print(*[i + 1 for i, x in enumerate(B) if x])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(N):
+        if a[N-i-1] == 1:
+            b.append(N-i)
+            for j in range(N-i-1, N, N-i-1):
+                a[j] = 1 - a[j]
+    print(len(b))
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    M = 0
+    B = []
+    for i in range(N-1, -1, -1):
+        if sum(A[i::i+1]) % 2 != A[i]:
+            M += 1
+            B.append(i+1)
+    print(M)
+    for b in B:
+        print(b)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N, 0, -1):
+        if sum(b[i - 1::i]) % 2 != a[i - 1]:
+            b[i - 1] = 1
+    print(sum(b))
+    print(*[i + 1 for i in range(N) if b[i]])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+
+    # 1つ目の要素について、2つ目以降の要素に対して、
+    # 2つ目の要素の倍数であるかを判定する。
+    # 2つ目の要素が2の倍数であれば、
+    # 3つ目の要素が3の倍数であるか、4つ目の要素が4の倍数であるか、
+    # 5つ目の要素が5の倍数であるか、というように、
+    # 2つ目の要素の倍数であるかを判定する。
+    # 2つ目の要素が2の倍数でなければ、
+    # 3つ目の要素が3の倍数であるか、4つ目の要素が4の倍数であるか、
+    # 5つ目の要素が5の倍数であるか、というように、
+    # 2つ目の要素の倍数であるかを判定する。
+    # これを、2つ目の要素がNの倍数であるか、
+    # 3つ目の要素がNの倍数であるか、4つ目の要素がNの倍数であるか、
+    # 5つ目の要素がNの倍数であるか、というように、
+    # Nつ目の要素がNの倍数であるかを判定する。
+
+    # 1つ目の要素について、2つ目以降の要素に対して、
+    # 2つ目の要素の倍数であるかを判定する。
+    # 2つ目の要素が2の倍数であれば、
+    # 3つ目の要素が3の倍数であるか、4つ目の要素が4の倍数であるか、
+    # 5つ目
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

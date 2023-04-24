@@ -1,62 +1,127 @@
-#問題文
-#N 人の社員からなる会社があり、各社員には 1,...,N の社員番号が割り当てられています。
-#社員番号 1 の社員以外の全ての社員には、自分より社員番号が小さい直属の上司がちょうど 1 人います。
-#X さんが Y さんの直属の上司であるとき、Y さんは X さんの直属の部下であるといいます。
-#社員番号 i の社員の直属の上司の社員番号が A_i であることが与えられます。各社員について直属の部下が何人いるか求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i < i
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_2 ... A_N
-#
-#出力
-#社員番号 1,2,...,N のそれぞれの社員について、直属の部下が何人いるか、改行区切りで出力せよ。
-#
-#入力例 1
-#5
-#1 1 2 2
-#
-#出力例 1
-#2
-#2
-#0
-#0
-#0
-#社員番号 1 の社員の直属の部下は社員番号 2,3 の 2 人です。
-#社員番号 2 の社員の直属の部下は社員番号 4,5 の 2 人です。
-#社員番号 3,4,5 の社員には直属の部下はいません。
-#
-#入力例 2
-#10
-#1 1 1 1 1 1 1 1 1
-#
-#出力例 2
-#9
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#
-#入力例 3
-#7
-#1 2 3 4 5 6
-#
-#出力例 3
-#1
-#1
-#1
-#1
-#1
-#1
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N - 1):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N - 1):
+        B[A[i] - 1] += 1
+    print(*B, sep = '
+
+')
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for b in B:
+        print(b)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    C = [0] * N
+    for i in range(N-1):
+        C[A[i]-1] += 1
+    for c in C:
+        print(c)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0 for _ in range(N)]
+    for i in range(N - 1):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = [0] * n
+    for i in range(n - 1):
+        cnt[a[i + 1] - 1] += 1
+    for i in range(n):
+        print(cnt[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    #print(N)
+    #print(A)
+    B = [0]*N
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 直属の部下を数える
+    subordinates = [0] * n
+    for i in range(n - 1):
+        subordinates[a[i] - 1] += 1
+
+    # 結果を出力
+    for i in range(n):
+        print(subordinates[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 1から始まるので、要素数はn+1にする
+    # このリストのi番目は、社員番号iの部下の数
+    b = [0] * (n+1)
+
+    # aの要素を走査する
+    for i in a:
+        # aの要素は、社員番号iの直属の上司
+        # したがって、社員番号iの部下の数を1増やす
+        b[i] += 1
+
+    # 1からnまでの社員の部下の数を出力する
+    for i in range(1, n+1):
+        print(b[i])

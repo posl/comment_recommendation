@@ -1,30 +1,95 @@
-#Problem Statement
-#You are given an integer N at least 100. Print the last two digits of N.
-#Strictly speaking, print the tens and ones digits of N in this order.
-#
-#Constraints
-#100 ≦ N ≦ 999
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#254
-#
-#Sample Output 1
-#54
-#The last two digits of 254 are 54, which should be printed.
-#
-#Sample Input 2
-#101
-#
-#Sample Output 2
-#01
-#The last two digits of 101 are 01, which should be printed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = input()
+    print(N[-2:])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(str(N)[-2:])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print(str(n)[-2:])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print(N % 100)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n >= 100:
+        print(str(n)[-2:])
+
+=======
+Suggestion 6
+
+def main():
+    print(input()[-2:])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(str(N)[-2:])
+
+main()
+
+I want to get the last two digits of a number.
+
+I tried the following code. It works. But I am not sure if this is the best solution.
+
+N = input()
+print(N[-2:])
+
+I think it is the best solution. You can also use %100
+
+N = input()
+print(N%100)
+
+The first solution is better in my opinion. If I have a number with 10 digits I will have to do N%10000000000 and then N%1000000000 to get the last two digits. It is better to just use N[-2:] .
+
+I think it is better to use %100 because it is more general. You can use it for any number of digits.
+
+I think it is better to use %100 because it is more general. You can use it for any number of digits.
+
+I agree, but I think the question is about last two digits.
+
+The question is about the last two digits. But the answer is not.
+
+N = input()
+print(N%100)
+
+The answer is not. The answer is 01 . The last two digits of 101 are 01, which should be printed.
+
+N = input()
+print(N%100)
+
+The answer is not. The answer is  01 . The last two digits of  101  are  01, which should be printed.
+
+I think you are right. I did not read the question carefully.
+
+I think you are right. I did not read the question carefully.
+
+I think it is the best solution. You can also use %100
+
+N = input()
+print(N%100)
+
+I think it is the best solution. You

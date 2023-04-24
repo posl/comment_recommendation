@@ -1,33 +1,139 @@
-#問題文
-#N 個の整数 A_1,...,A_N が与えられます。
-#1≦ i < j ≦ N を満たす全ての組 (i,j) についての A_i × A_j の和を mod (10^9+7) で求めてください。
-#
-#制約
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#sum_{i=1}^{N-1}sum_{j=i+1}^{N} A_i A_j を mod (10^9+7) で出力せよ。
-#
-#入力例 1
-#3
-#1 2 3
-#
-#出力例 1
-#11
-#1 × 2 + 1 × 3 + 2 × 3 = 11 です。
-#
-#入力例 2
-#4
-#141421356 17320508 22360679 244949
-#
-#出力例 2
-#437235829
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            ans += A[i] * A[j]
+    print(ans % (10**9+7))
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            ans += A[i] * A[j]
+            ans %= 10**9 + 7
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += (A[i] * A[j]) % MOD
+            ans %= MOD
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N-1):
+        ans += A[i] * (N-i-1) * A[i+1]
+        ans %= 10**9 + 7
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N-1):
+        ans += A[i] * (N-i-1)
+    print(ans % (10**9+7))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    sum_a = sum(a)
+    ans = 0
+    for i in range(n-1):
+        sum_a -= a[i]
+        ans += a[i] * sum_a
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                ans += A[i] * A[j]
+    print(ans % mod)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-1):
+        ans += (i+1)*a[i]
+        ans -= (n-i-1)*a[i]
+    print(ans%(10**9+7))
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += (A[i] * (i - N + 1 + i)) % (10 ** 9 + 7)
+        ans %= (10 ** 9 + 7)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+
+    A.sort()
+    sum = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            sum += (A[i] * A[j])
+    print(sum % mod)
+
+main()

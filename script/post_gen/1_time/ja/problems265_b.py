@@ -1,54 +1,359 @@
-#問題文
-#高橋君はゲームの中で洞窟を探索しています。
-#洞窟は N 個の部屋が一列に並んだ構造であり、入り口から順に部屋 1,2,...,N と番号がついています。  
-#最初、高橋君は部屋 1 におり、持ち時間 は T です。
-#各 1 ≦ i ≦ N-1 について、持ち時間を A_i 消費することで、部屋 i から部屋 i+1 へ移動することができます。これ以外に部屋を移動する方法はありません。
-#また、持ち時間が 0 以下になるような移動は行うことができません。
-#洞窟内には M 個のボーナス部屋があります。i 番目のボーナス部屋は部屋 X_i であり、この部屋に到達すると持ち時間が Y_i 増加します。
-#高橋君は部屋 N にたどりつくことができますか？
-#
-#制約
-#2 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-2
-#1 ≦ T ≦ 10^9
-#1 ≦ A_i ≦ 10^9 
-#1 < X_1 < ... < X_M < N
-#1 ≦ Y_i ≦ 10^9
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M T
-#A_1 A_2 ... A_{N-1}
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_M Y_M
-#
-#出力
-#高橋君が部屋 N にたどりつくことができるなら Yes を、できないなら No を出力せよ。
-#
-#入力例 1
-#4 1 10
-#5 7 5
-#2 10
-#
-#出力例 1
-#Yes
-#高橋君は最初、部屋 1 にいて持ち時間は 10 です。
-#持ち時間を 5 消費して部屋 2 に移動します。持ち時間は 5 になります。その後、持ち時間が 10 増え 15 になります。
-#持ち時間を 7 消費して部屋 3 に移動します。持ち時間は 8 になります。
-#持ち時間を 5 消費して部屋 4 に移動します。持ち時間は 3 になります。
-#
-#入力例 2
-#4 1 10
-#10 7 5
-#2 10
-#
-#出力例 2
-#No
-#部屋 1 から部屋 2 へ移動することができません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    time = T
+    for i in range(N-1):
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if X[j] == i+1:
+                time += Y[j]
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    #print(N, M, T)
+    #print(A)
+    #print(X)
+    #print(Y)
+    now = 0
+    time = T
+    for i in range(N-1):
+        #print("now:%d time:%d" % (now, time))
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if X[j] == now+1:
+                time += Y[j]
+        now += 1
+    print("Yes")
+    return
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+
+    #print(N, M, T)
+    #print(A)
+    #print(X)
+    #print(Y)
+
+    #初期値
+    t = T
+    n = 1
+
+    #print(t, n)
+
+    #部屋1から部屋Nへ移動
+    for i in range(N - 1):
+        #print("i=", i)
+        #print(t, n)
+        #持ち時間を消費して部屋i+1へ移動
+        t -= A[i]
+        #print(t, n)
+        #持ち時間が0以下になるような移動は行わない
+        if t <= 0:
+            print("No")
+            return
+        #部屋i+1に到達したらボーナス部屋かチェック
+        if n == X[i]:
+            t += Y[i]
+        #print(t, n)
+        #部屋i+1に到達したら部屋i+2に移動
+        n += 1
+        #print(t, n)
+        #print()
+
+    #最後の部屋へ移動した後に持ち時間が0以下になるような移動は行わない
+    t -= A[N - 1]
+    #print(t, n)
+    if t <= 0:
+        print("No")
+        return
+
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    #print(N, M, T)
+    #print(A)
+    #print(X)
+    #print(Y)
+    #print("------------")
+    #print(A[0])
+    #print("------------")
+    #print(A[1])
+    #print("------------")
+    #print(A[2])
+    #print("------------")
+    #print(A[3])
+    #print("------------")
+    #print(A[4])
+    #print("------------")
+    #print(A[5])
+    #print("------------")
+    #print(A[6])
+    #print("------------")
+    #print(A[7])
+    #print("------------")
+    #print(A[8])
+    #print("------------")
+    #print(A[9])
+    #print("------------")
+    #print(A[10])
+    #print("------------")
+    #print(A[11])
+    #print("------------")
+    #print(A[12])
+    #print("------------")
+    #print(A[13])
+    #print("------------")
+    #print(A[14])
+    #print("------------")
+    #print(A[15])
+    #print("------------")
+    #print(A[16])
+    #print("------------")
+    #print(A[17])
+    #print("------------")
+    #print(A[18])
+    #print("------------")
+    #print(A[19])
+    #print("------------")
+    #print(A[20])
+    #print("------------")
+    #print(A[21])
+    #print("------------")
+    #print(A[22])
+    #print("------------")
+    #print(A[23])
+    #print("------------")
+    #print(A[24])
+    #print("------------")
+    #print(A[25])
+    #print("------------")
+    #print(A[26])
+    #print("------------")
+    #print(A[27])
+    #print("------------")
+    #print(A[28])
+    #print("------------")
+    #print(A[29])
+    #print("------------")
+    #print(A[30])
+    #print("------------")
+
+=======
+Suggestion 5
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    #print(N, M, T)
+    #print(A)
+    #print(X, Y)
+    #print("-----")
+    #初期値
+    time = T
+    room = 1
+    #print("time:", time, "room:", room)
+    for i in range(N-1):
+        #print("time:", time, "room:", room)
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if room == X[j]:
+                time += Y[j]
+        room += 1
+    #print("time:", time, "room:", room)
+    if time > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N,M,T = map(int,input().split())
+    A = list(map(int,input().split()))
+    X = [0]*M
+    Y = [0]*M
+    for i in range(M):
+        X[i],Y[i] = map(int,input().split())
+    #print(N,M,T,A,X,Y)
+    time = T
+    for i in range(N-1):
+        time -= A[i]
+        #print(time)
+        if time <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if i+1 == X[j]:
+                time += Y[j]
+                #print(time)
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    #初期化
+    now = 0
+    time = T
+    #処理
+    for i in range(N-1):
+        time -= A[i] #移動時間を減らす
+        for j in range(M):
+            if X[j] == i+1 and time + Y[j] > T:
+                time = T #ボーナス部屋の処理
+            elif X[j] == i+1:
+                time += Y[j] #ボーナス部屋の処理
+        if time <= 0:
+            now = i+1 #移動できない部屋を記録
+            break
+    #出力
+    if now == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0]*M
+    Y = [0]*M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    #初期化
+    t = T
+    #処理
+    for i in range(N-1):
+        t -= A[i]
+        if t <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if X[j] == i+1:
+                t += Y[j]
+                break
+    #出力
+    if t > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        X[i], Y[i] = map(int, input().split())
+    
+    # 準備
+    ans = "Yes"
+    h = T
+    for i in range(N-1):
+        h -= A[i]
+        if h <= 0:
+            ans = "No"
+            break
+        for j in range(M):
+            if i+1 == X[j]:
+                h += Y[j]
+                break
+    # 出力
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N,M,T = map(int,input().split())
+    A = list(map(int,input().split()))
+    bonus = []
+    for i in range(M):
+        bonus.append(list(map(int,input().split())))
+    #print(N,M,T)
+    #print(A)
+    #print(bonus)
+
+    #部屋1から部屋Nへの移動時間を計算
+    time = 0
+    for i in range(N-1):
+        time += A[i]
+        #print(time)
+        #ボーナス部屋に到達したら持ち時間を増やす
+        for j in range(M):
+            if i+1 == bonus[j][0]:
+                time += bonus[j][1]
+                #print(time)
+    #print(time)
+
+    #部屋1から部屋Nへの移動時間が持ち時間Tを超えていなければYes
+    if time <= T:
+        print("Yes")
+    else:
+        print("No")

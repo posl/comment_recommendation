@@ -1,52 +1,115 @@
-#問題文
-#縦 H 行、横 W 列のマス目があり、各マスには 1 つの整数が書かれています。
-#上から i 行目、左から j 列目のマスに書かれている整数は A_{i, j} です。
-#マス目が下記の条件を満たすかどうかを判定してください。
-#1 ≦ i_1 < i_2 ≦ H および 1 ≦ j_1 < j_2 ≦ W を満たすすべての整数の組 (i_1, i_2, j_1, j_2) について、A_{i_1, j_1} + A_{i_2, j_2} ≦ A_{i_2, j_1} + A_{i_1, j_2} が成り立つ。
-#
-#制約
-#2 ≦ H, W ≦ 50
-#1 ≦ A_{i, j} ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#A_{1, 1} A_{1, 2} ... A_{1, W}
-#A_{2, 1} A_{2, 2} ... A_{2, W}
-#.
-#.
-#.
-#A_{H, 1} A_{H, 2} ... A_{H, W}
-#
-#出力
-#マス目が問題文中の条件を満たす場合は Yes と出力し、条件を満たさない場合は No と出力せよ。
-#
-#入力例 1
-#3 3
-#2 1 4
-#3 1 3
-#6 4 1
-#
-#出力例 1
-#Yes
-#1 ≦ i_1 < i_2 ≦ H および 1 ≦ j_1 < j_2 ≦ W を満たす整数の組 (i_1, i_2, j_1, j_2) は 9 個存在し、それらすべてについて A_{i_1, j_1} + A_{i_2, j_2} ≦ A_{i_2, j_1} + A_{i_1, j_2} が成り立ちます。例えば、
-#(i_1, i_2, j_1, j_2) = (1, 2, 1, 2) について、A_{i_1, j_1} + A_{i_2, j_2} = 2 + 1 ≦ 3 + 1 = A_{i_2, j_1} + A_{i_1, j_2}
-#(i_1, i_2, j_1, j_2) = (1, 2, 1, 3) について、A_{i_1, j_1} + A_{i_2, j_2} = 2 + 3 ≦ 3 + 4 = A_{i_2, j_1} + A_{i_1, j_2}
-#(i_1, i_2, j_1, j_2) = (1, 2, 2, 3) について、A_{i_1, j_1} + A_{i_2, j_2} = 1 + 3 ≦ 1 + 4 = A_{i_2, j_1} + A_{i_1, j_2}
-#(i_1, i_2, j_1, j_2) = (1, 3, 1, 2) について、A_{i_1, j_1} + A_{i_2, j_2} = 2 + 4 ≦ 6 + 1 = A_{i_2, j_1} + A_{i_1, j_2}
-#(i_1, i_2, j_1, j_2) = (1, 3, 1, 3) について、A_{i_1, j_1} + A_{i_2, j_2} = 2 + 1 ≦ 6 + 4 = A_{i_2, j_1} + A_{i_1, j_2}
-#が成り立ちます。残りの (i_1, i_2, j_1, j_2) = (1, 3, 2, 3), (2, 3, 1, 2), (2, 3, 1, 3), (2, 3, 2, 3) についても同様に確認できます。
-#よって、Yes を出力します。
-#
-#入力例 2
-#2 4
-#4 3 2 1
-#5 6 7 8
-#
-#出力例 2
-#No
-#問題文中の条件を満たさないので、No を出力します。
-#例えば、(i_1, i_2, j_1, j_2) = (1, 2, 1, 4) について、A_{i_1, j_1} + A_{i_2, j_2} = 4 + 8 > 5 + 1 = A_{i_2, j_1} + A_{i_1, j_2} です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l:
+                        if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                            print("No")
+                            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l and A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                        print("No")
+                        return
+
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    for i in range(H):
+        for j in range(W):
+            for k in range(i, H):
+                for l in range(j, W):
+                    if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                        print("No")
+                        return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l:
+                        if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                            print("No")
+                            exit()
+    print("Yes")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for _ in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l:
+                        if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                            print("No")
+                            return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(i + 1, H):
+                for l in range(j + 1, W):
+                    if a[i][j] + a[k][l] > a[k][j] + a[i][l]:
+                        print('No')
+                        return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    H,W = map(int,input().split())
+    A = [list(map(int,input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(H):
+                for l in range(W):
+                    if i < k and j < l and A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                        print('No')
+                        return
+    print('Yes')

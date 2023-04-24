@@ -1,47 +1,115 @@
-#Problem Statement
-#We have N+1 integers: 10^{100}, 10^{100}+1, ..., 10^{100}+N.
-#We will choose K or more of these integers. Find the number of possible values of the sum of the chosen numbers, modulo (10^9+7).
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ N+1
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the number of possible values of the sum, modulo (10^9+7).
-#
-#Sample Input 1
-#3 2
-#
-#Sample Output 1
-#10
-#The sum can take 10 values, as follows:
-#(10^{100})+(10^{100}+1)=2× 10^{100}+1
-#(10^{100})+(10^{100}+2)=2× 10^{100}+2
-#(10^{100})+(10^{100}+3)=(10^{100}+1)+(10^{100}+2)=2× 10^{100}+3
-#(10^{100}+1)+(10^{100}+3)=2× 10^{100}+4
-#(10^{100}+2)+(10^{100}+3)=2× 10^{100}+5
-#(10^{100})+(10^{100}+1)+(10^{100}+2)=3× 10^{100}+3
-#(10^{100})+(10^{100}+1)+(10^{100}+3)=3× 10^{100}+4
-#(10^{100})+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+5
-#(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+6
-#(10^{100})+(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=4× 10^{100}+6
-#
-#Sample Input 2
-#200000 200001
-#
-#Sample Output 2
-#1
-#We must choose all of the integers, so the sum can take just 1 value.
-#
-#Sample Input 3
-#141421 35623
-#
-#Sample Output 3
-#220280457
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10 ** 9 + 7
+    ans = 0
+    for i in range(K, N + 2):
+        ans += (i * (N + N - i + 1) // 2) - (i * (i - 1) // 2) + 1
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    mod = 10 ** 9 + 7
+    ans = 0
+    for i in range(k, n + 2):
+        a = i * (n - i + 1) + 1
+        b = i * (i - 1) // 2
+        ans += a - b
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        ans += (i * (N-i+1) + 1)
+    print(ans%MOD)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10 ** 9 + 7
+    ans = 0
+    for i in range(K, N + 2):
+        ans += (i + N) * (N - i + 1) // 2 + 1
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(K, N + 2):
+        ans += (N + i + 1) * i // 2 - N * (i - 1)
+    print(ans % MOD)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(K, N+2):
+        min_sum = i * (i-1) // 2
+        max_sum = N * (N+1) // 2 - (N-i) * (N-i-1) // 2
+        ans += max_sum - min_sum + 1
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10**9 + 7
+
+    ans = 0
+    for i in range(K, N+2):
+        ans += i*(N-i+1)+1
+        ans %= MOD
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    ans = 0
+    for i in range(k,n+2):
+        ans += (i*(n+1-i+1)+1)*(n+1-i+1)//2
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    MOD = 10 ** 9 + 7
+    def sum_of_arithmetic_series(first, last, n):
+        return (first + last) * n // 2
+    ans = 0
+    for i in range(K, N + 2):
+        ans += sum_of_arithmetic_series(10 ** 100, 10 ** 100 + i - 1, i) - sum_of_arithmetic_series(10 ** 100, 10 ** 100 + N - i, N - i + 1) + 1
+        ans %= MOD
+    print(ans)

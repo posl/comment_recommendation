@@ -1,32 +1,78 @@
-#Problem Statement
-#Given a sequence of N positive integers A=(A_1,A_2,...,A_N), find every integer k between 1 and M (inclusive) that satisfies the following condition:
-#gcd(A_i,k)=1 for every integer i such that 1 ≦ i ≦ N.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N,M ≦ 10^5
-#1 ≦ A_i ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_N
-#
-#Output
-#In the first line, print x: the number of integers satisfying the requirement.
-#In the following x lines, print the integers satisfying the requirement, in ascending order, each in its own line.
-#
-#Sample Input 1
-#3 12
-#6 1 5
-#
-#Sample Output 1
-#3
-#1
-#7
-#11
-#For example, 7 has the properties gcd(6,7)=1,gcd(1,7)=1,gcd(5,7)=1, so it is included in the set of integers satisfying the requirement.
-#On the other hand, 9 has the property gcd(6,9)=3, so it is not included in that set.
-#We have three integers between 1 and 12 that satisfy the condition: 1, 7, and 11. Be sure to print them in ascending order.
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def generate_primes(n):
+    primes = [True for _ in range(n+1)]
+    p = 2
+    while (p * p <= n):
+        if (primes[p] == True):
+            for i in range(p * p, n+1, p):
+                primes[i] = False
+        p += 1
+    return [p for p in range(2, n+1) if primes[p]]
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    #gcd
+    import fractions
+    def gcd(*numbers):
+        return fractions.gcd(*numbers)
+    #solve
+    def solve():
+        import math
+        g = gcd(*A)
+        if g != 1:
+            return 0
+        ans = 0
+        for i in range(1, M+1):
+            if gcd(*A, i) == 1:
+                ans += 1
+        return ans
+    #output
+    print(solve())

@@ -1,36 +1,80 @@
-#問題文
-#英小文字のみからなる長さ 3 の文字列 S が与えられます。
-#S の各文字を並び替えて得られる文字列は、何種類ありますか？
-#
-#制約
-#S は英小文字のみからなる長さ 3 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S の各文字を並び替えて得られる文字列の種類数を出力せよ。
-#
-#入力例 1
-#aba
-#
-#出力例 1
-#3
-#S= aba の各文字を並び替えて得られる文字列は、aab, aba, baa の 3 通りです。
-#
-#入力例 2
-#ccc
-#
-#出力例 2
-#1
-#S= ccc の各文字を並び替えて得られる文字列は、ccc の 1 通りのみです。
-#
-#入力例 3
-#xyz
-#
-#出力例 3
-#6
-#S= xyz の各文字を並び替えて得られる文字列は、xyz, xzy, yxz, yzx, zxy, zyx の 6 通りです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[1] == S[2] or S[2] == S[0]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[1] == S[2] or S[2] == S[0]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[0] == S[2] or S[1] == S[2]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(len(set(S)))
+
+=======
+Suggestion 5
+
+def main():
+    # 文字列Sを取得
+    S = input()
+    # 文字列Sの文字をリスト化
+    S_list = list(S)
+    # 文字列Sの文字をソート
+    S_list.sort()
+    # 文字列Sの文字をソートしたリストを文字列に変換
+    S_sort = ''.join(S_list)
+    # 文字列Sの文字をソートしたリストをsetに変換
+    S_set = set(S_sort)
+    # setの長さを出力
+    print(len(S_set))
+
+=======
+Suggestion 6
+
+def main():
+    # 文字列を入力
+    S = input()
+    # abcの順列を作成
+    abc = list(itertools.permutations('abc', 3))
+    # 文字列をリストに変換
+    S = list(S)
+    # 文字列をリストに変換
+    S = list(S)
+    # abcの順列のリストをループ
+    for i in abc:
+        # 文字列のリストとabcの順列のリストを比較
+        if S == list(i):
+            # 一致したら出力
+            print(abc.index(i)+1)

@@ -1,56 +1,163 @@
-#Problem Statement
-#Bowling pins are numbered 1 through 10.  The following figure is a top view of the arrangement of the pins:
-#Let us call each part between two dotted lines in the figure a column.
-#For example, Pins 1 and 5 belong to the same column, and so do Pin 3 and 9.
-#When some of the pins are knocked down, a special situation called split may occur.
-#A placement of the pins is a split if both of the following conditions are satisfied:
-#Pin 1 is knocked down.
-#There are two different columns that satisfy both of the following conditions:
-#Each of the columns has one or more standing pins.
-#There exists a column between these columns such that all pins in the column are knocked down.
-#
-#See also Sample Inputs and Outputs for examples.
-#Now, you are given a placement of the pins as a string S of length 10.
-#For i = 1, ..., 10, the i-th character of S is 0 if Pin i is knocked down, and is 1 if it is standing.
-#Determine if the placement of the pins represented by S is a split.
-#
-#Constraints
-#S is a string of length 10 consisting of 0 and 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If the placement of the pins represented by S is a split, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#0101110101
-#
-#Sample Output 1
-#Yes
-#In the figure below, the knocked-down pins are painted gray, and the standing pins are painted white:
-#Between the column containing a standing pin 5 and the column containing a standing pin 6 is a column containing Pins 3 and 9.  Since Pins 3 and 9 are both knocked down, the placement is a split.
-#
-#Sample Input 2
-#0100101001
-#
-#Sample Output 2
-#Yes
-#
-#
-#Sample Input 3
-#0000100110
-#
-#Sample Output 3
-#No
-#This placement is not a split.
-#
-#Sample Input 4
-#1101110101
-#
-#Sample Output 4
-#No
-#This is not a split because Pin 1 is not knocked down.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == "0":
+        print("No")
+        return
+    if s[1:4] == "000" and s[4:7] == "000" and s[7:] == "000":
+        print("No")
+        return
+    if s[1:4] == "111" and s[4:7] == "111" and s[7:] == "111":
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    for i in range(1, len(s)):
+        if s[i] == '1':
+            for j in range(i):
+                if s[j] == '1' and s[i+1:j] == '0'*(j-i-1):
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 3
+
+def isSplit(s):
+    if s[0] == '0':
+        return 'No'
+    else:
+        for i in range(1, 9):
+            if s[i] == '1':
+                if s[i-1] == '1' and s[i+1] == '1':
+                    return 'Yes'
+        return 'No'
+
+s = input()
+print(isSplit(s))
+
+=======
+Suggestion 4
+
+def isSplit(S):
+    if S[0] == '0':
+        return 'No'
+    else:
+        for i in range(1, 10):
+            for j in range(i+1, 10):
+                if S[i] == '1' and S[j] == '1':
+                    if S[i+1:j] == '0' * (j-i-1):
+                        return 'Yes'
+        return 'No'
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] == '1':
+        print('No')
+        return
+    split = False
+    for i in range(1, len(S)):
+        if S[i] == '1':
+            if S[i-1] == '0':
+                split = True
+                break
+    if split:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 6
+
+def isSplit(s):
+    if s[0] != '0':
+        return False
+    else:
+        for i in range(1, 10):
+            if s[i] == '1':
+                for j in range(i+1, 10):
+                    if s[j] == '1':
+                        for k in range(i, j+1):
+                            if s[k] == '0':
+                                return True
+    return False
+
+s = input()
+
+=======
+Suggestion 7
+
+def is_split(pins):
+    if pins[0] == '0':
+        return False
+    columns = []
+    for i in range(1, 11):
+        if pins[i-1] == '1':
+            columns.append(i)
+    for i in range(len(columns)):
+        for j in range(i+1, len(columns)):
+            if columns[j] - columns[i] == 2:
+                return True
+    return False
+
+=======
+Suggestion 8
+
+def isSplit(s):
+    if s[0] == '1':
+        return 'No'
+    else:
+        for i in range(2, 11):
+            if s[i-1] == '1' and s[i-2] == '1':
+                return 'Yes'
+        return 'No'
+
+s = input()
+print(isSplit(s))
+
+=======
+Suggestion 9
+
+def isSplit(S):
+    if S[0] == '0':
+        return 'No'
+    else:
+        for i in range(len(S)):
+            for j in range(len(S)):
+                if i != j:
+                    if S[i] == '1' and S[j] == '1':
+                        if i < j:
+                            for k in range(i+1, j):
+                                if S[k] == '0':
+                                    return 'Yes'
+                        else:
+                            for k in range(j+1, i):
+                                if S[k] == '0':
+                                    return 'Yes'
+        return 'No'
+
+S = input()
+print(isSplit(S))
+
+=======
+Suggestion 10
+
+def get_input():
+    return input()

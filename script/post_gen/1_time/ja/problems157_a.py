@@ -1,35 +1,56 @@
-#問題文
-#高橋君は、全 N ページから成る書類を両面印刷します。両面印刷では、1 枚の紙に 2 ページ分のデータを印刷することが出来ます。
-#最小で何枚の紙が必要か求めてください。
-#
-#制約
-#N は整数
-#1 ≦ N ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5
-#
-#出力例 1
-#3
-#1 枚目の紙に 1, 2 ページ目のデータを印刷し、 2 枚目の紙に 3, 4 ページ目のデータを印刷し、 3 枚目の紙に 5 ページ目のデータを印刷すれば、 3枚の紙に全てのデータを印刷することが出来ます。
-#
-#入力例 2
-#2
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100
-#
-#出力例 3
-#50
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(n // 2)
+    else:
+        print(n // 2 + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(int(n / 2))
+    else:
+        print(int(n / 2 + 1))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(int(N/2))
+    else:
+        print(int(N/2)+1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(int(N / 2))
+    else:
+        print(int(N / 2 + 1))
+main()
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    print((n+1)//2)
+
+=======
+Suggestion 6
+
+def get_input():
+    n = int(input())
+    return n

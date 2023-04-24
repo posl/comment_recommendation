@@ -1,37 +1,110 @@
-#Problem Statement
-#N tiles are arranged in a row from left to right. The initial color of each tile is represented by a string S of length N.
-#The i-th tile from the left is painted black if the i-th character of S is 0, and painted white if that character is 1.
-#You want to repaint some of the tiles black or white, so that any two adjacent tiles have different colors.
-#At least how many tiles need to be repainted to satisfy the condition?
-#
-#Constraints
-#1 ≦ |S| ≦ 10^5
-#S_i is 0 or 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the minimum number of tiles that need to be repainted to satisfy the condition.
-#
-#Sample Input 1
-#000
-#
-#Sample Output 1
-#1
-#The condition can be satisfied by repainting the middle tile white.
-#
-#Sample Input 2
-#10010010
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    ans = 0
+    for i in range(len(S)-1):
+        if S[i] == S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    count = 0
+    for i in range(len(S)-1):
+        if S[i] == S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)-1):
+        if s[i] == s[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if len(S) == 1:
+        print(0)
+        return
+    ans = 0
+    for i in range(len(S)-1):
+        if S[i] == S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    prev = S[0]
+    count = 0
+    for i in range(1,len(S)):
+        if S[i] == prev:
+            count += 1
+        else:
+            prev = S[i]
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    N = len(S)
+    if N == 1:
+        print(0)
+        return
+    ans = 0
+    for i in range(N-1):
+        if S[i] == S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    N = len(S)
+    if N == 1:
+        print(0)
+        exit()
+    ans = 0
+    for i in range(N-1):
+        if S[i] == S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    #print(S)
+    count = 0
+    for i in range(len(S)-1):
+        if S[i] == S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def get_input():
+    return input()

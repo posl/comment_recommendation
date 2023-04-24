@@ -1,41 +1,94 @@
-#問題文
-#整数 A,B が K 進法表記で与えられます。
-#A × B を 10 進法表記で出力してください。
-#
-#注記
-#K 進法表記については、Wikipedia「位取り記数法」 を参照してください。
-#
-#制約
-#2 ≦ K ≦ 10
-#1 ≦ A,B ≦ 10^5
-#A,B は K 進法表記で与えられる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#A B
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2
-#1011 10100
-#
-#出力例 1
-#220
-#2 進法表記の 1011 を 、10 進法表記すると 11 です。
-#2 進法表記の 10100 を、 10 進法表記すると 20 です。
-#11 × 20 = 220 なので 220 を出力します。
-#
-#入力例 2
-#7
-#123 456
-#
-#出力例 2
-#15642
-#7 進法表記の 123 を 、10 進法表記すると 66 です。
-#7 進法表記の 456 を、 10 進法表記すると 237 です。
-#66 × 237 = 15642 なので 15642 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = map(str, input().split())
+    print(int(A, K) * int(B, K))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    A, B = input().split()
+    print(int(A, K) * int(B, K))
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    A, B = map(str, input().split())
+    print(int(A, K) * int(B, K))
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    a = int(a, k)
+    b = int(b, k)
+    print(a * b)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    a10 = int(str(a), k)
+    b10 = int(str(b), k)
+    print(a10 * b10)
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    A = int(str(A), K)
+    B = int(str(B), K)
+    print(A*B)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    K = int(input())
+    A, B = map(str, input().split())
+    # 処理
+    A10 = int(A, K)
+    B10 = int(B, K)
+    # 出力
+    print(A10 * B10)
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    A,B = map(str,input().split())
+    ans = int(A,K)*int(B,K)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    K = int(input())
+    A,B = map(int,input().split())
+    # 10進数に変換
+    A10 = int(str(A),K)
+    B10 = int(str(B),K)
+    # 出力
+    print(A10*B10)

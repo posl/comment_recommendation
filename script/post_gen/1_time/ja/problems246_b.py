@@ -1,39 +1,81 @@
-#問題文
-#二次元平面上の点 (0,0) から点 (A,B) に向かって距離 1 だけ移動します。移動後の座標を求めてください。
-#ただし、点 X から点 Y に向かって距離 d (≦ 線分 XY の長さ) だけ移動すると、線分 XY 上で点 X からの距離が d であるような点に辿りつくものとします。
-#なお、制約より点 (0,0) と点 (A,B) の距離は 1 以上であることが保証されます。
-#
-#制約
-#入力は全て整数
-#0 ≦ A,B ≦ 1000
-#(A,B) ≠ (0,0)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#移動後の点を (x,y) とするとき、 x と y をこの順に空白区切りで出力せよ。
-#なお、各出力について、想定解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#3 4
-#
-#出力例 1
-#0.600000000000 0.800000000000
-#他にも、例えば 0.5999999999 0.8000000001 という出力も許容されます。
-#
-#入力例 2
-#1 0
-#
-#出力例 2
-#1.000000000000 0.000000000000
-#点 (A,B) に到着する場合もあります。
-#
-#入力例 3
-#246 402
-#
-#出力例 3
-#0.521964870245 0.852966983083
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print(A / (A + B), B / (A + B))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    d = (A**2 + B**2)**0.5
+    print(A/d, B/d)
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    A, B = map(int, input().split())
+    #A, B = 3, 4
+    #A, B = 1, 0
+    #A, B = 246, 402
+
+    #処理
+    X = A / (A**2 + B**2)**0.5
+    Y = B / (A**2 + B**2)**0.5
+
+    #出力
+    print(X, Y)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if A == 0:
+        print(0, 1)
+    elif B == 0:
+        print(1, 0)
+    else:
+        print(B / (A**2 + B**2)**0.5, A / (A**2 + B**2)**0.5)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    x = a/(a+b)
+    y = b/(a+b)
+    print(x,y)
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    G = (A*A+B*B)**0.5
+    print(A/G,B/G)
+
+=======
+Suggestion 7
+
+def main():
+    # A,Bを取得
+    A,B = map(int,input().split())
+    # A,Bの最大公約数を取得
+    gcd = GCD(A,B)
+    # 最大公約数で割った時のA,Bの値を出力
+    print(A/gcd,B/gcd)
+
+=======
+Suggestion 8
+
+def main():
+    A,B = map(int, input().split())
+    #print(A,B)
+    print(A/(A+B),B/(A+B))

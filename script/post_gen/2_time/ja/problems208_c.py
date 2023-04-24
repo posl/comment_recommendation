@@ -1,58 +1,228 @@
-#問題文
-#高橋王国には N 人の国民がいます。 全ての国民には国民番号が割り振られており、 i 人目の国民の国民番号は a_i です。ここで、a_i は互いに異なります。
-#高橋君は K 個のお菓子を持っています。高橋君は次のルールに従って、持っているお菓子が無くなるまで国民にお菓子を配ることにしました。
-#持っているお菓子が N 個以上ある場合、全員に 1 個ずつお菓子を配る。
-#そうでない場合、その時点で高橋くんが持っているお菓子の個数を K' として、国民番号が小さい方から K' 人に 1 個ずつ配る。より厳密には、a_i の値が小さい方から K' 人を選び、選んだ人に 1 個ずつお菓子を配る。
-#全てのお菓子を配り終えたとき、i 人目の国民は何個のお菓子を持っていますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ 10^{18}
-#1 ≦ a_i ≦ 10^9
-#a_i は互いに異なる。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#a_1 a_2 ... a_N
-#
-#出力
-#N 行出力せよ。i 行目には i 人目の国民がもらったお菓子の個数を出力せよ。
-#
-#入力例 1
-#2 7
-#1 8
-#
-#出力例 1
-#4
-#3
-#高橋君はお菓子を次の手順で配ります。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 5 個になる。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 3 個になる。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 1 個になる。
-#1 人目の国民に 1 個お菓子を配り、高橋君の持っているお菓子は無くなる。
-#最終的に 1 人目の国民は 4 個、2 人目の国民は 3 個のお菓子を手に入れることができます。
-#
-#入力例 2
-#1 3
-#33
-#
-#出力例 2
-#3
-#国民が 1 人しかいないので、高橋君は全てのお菓子を 1 人目の国民に配ることになります。
-#
-#入力例 3
-#7 1000000000000
-#99 8 2 4 43 5 3
-#
-#出力例 3
-#142857142857
-#142857142857
-#142857142858
-#142857142857
-#142857142857
-#142857142857
-#142857142857
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+
+    if K <= N:
+        for i in range(N):
+            if i < K:
+                print(1)
+            else:
+                print(0)
+    else:
+        K -= N
+        div, mod = divmod(K, N)
+        for i in range(N):
+            if mod > i:
+                print(div + 1)
+            else:
+                print(div)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0] * N
+    for i in range(N):
+        if K >= N:
+            ans[i] += 1
+            K -= 1
+        else:
+            ans[i] += K // N
+            K -= K // N
+    for i in range(N):
+        if i < N - K:
+            ans[i] += K // (N - i)
+        else:
+            ans[i] += K // (N - i) + 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [0] * N
+    for i in range(N):
+        if K >= N - i:
+            ans[i] = K // (N - i)
+            K -= ans[i] * (N - i)
+    for i in range(N):
+        if K > 0 and A[i] >= ans[i]:
+            ans[i] += 1
+            K -= 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = k // n
+        if i < k % n:
+            ans[i] += 1
+
+    for i in range(n):
+        if a[i] <= k:
+            ans[i] += k // n
+            if i < k % n:
+                ans[i] += 1
+        else:
+            break
+
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0] * N
+    for i in range(N):
+        if K > (N - 1 - i):
+            ans[i] += K // (N - i)
+            K = K % (N - i)
+        else:
+            ans[i] += K
+            break
+    for i in range(N):
+        print(ans[i] + (a[i] - 1))
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    ans = [0]*n
+    for i in range(n):
+        if k >= n-i:
+            ans[i] += k//(n-i)
+            k %= (n-i)
+        else:
+            ans[i] += k
+            break
+    for i in range(n):
+        print(ans[i]+a[i]//a[0])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = [0] + A + [10**9+1]
+    ans = [0] * N
+    for i in range(N):
+        if A[i+1] - A[i] > 0:
+            ans[i] = (A[i+1] - A[i]) * ((i+1) * K // N) - K
+            K -= ans[i]
+    for i in range(N):
+        print(ans[i] // (i+1) + K // N + 1)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    
+    # 国民番号でソート
+    A.sort()
+    
+    # お菓子の配り方の総数
+    cnt = K // N
+    
+    # 1人あたりのお菓子の個数
+    for i in range(N):
+        if A[i] <= cnt:
+            print(cnt)
+        else:
+            print(K // N + 1)
+    
+    # 余ったお菓子の配り方
+    mod = K % N
+    
+    # 余ったお菓子の配り方の総数
+    cnt = cnt + 1
+    
+    # 余ったお菓子の配り方で配る人数
+    for i in range(mod):
+        print(cnt)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 配る回数
+    count = K // N
+    # 配るお菓子の個数
+    candy = K % N
+
+    # 回数分配る
+    for i in range(N):
+        print(count, end="")
+
+        # 配るお菓子の個数が残っている場合
+        if candy > 0:
+            # 国民番号が小さい順に配る
+            if a[i] <= candy:
+                print(" " + str(count + 1), end="")
+                candy -= a[i]
+            else:
+                print(" " + str(count), end="")
+        else:
+            print(" " + str(count), end="")
+
+        print()
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    #a_iの値が小さい方からK人を選ぶ
+    a.sort()
+
+    #K人選べる回数
+    div = K // N
+    #余りの人数
+    mod = K % N
+
+    for i in range(N):
+        if a[i] <= div:
+            print(div)
+        else:
+            if i < mod:
+                print(div + 1)
+            else:
+                print(div)

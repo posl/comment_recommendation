@@ -1,44 +1,176 @@
-#問題文
-#AtCoder 公園の敷地は東西南北に広がる N× N のマス目からなっており、北から i 番目かつ西から j 番目のマスの高さは A_{i,j} で与えられます。
-#公園の管理者である高橋君はここに K × K の区画の池を作る事にしました。
-#池を作るにあたって、高橋君は AtCoder 公園の敷地内に完全に含まれる K × K の区画であってその区画に含まれるマスの高さの中央値が最も低いようなものを選ぼうと考えました。そのような区画のマスの高さの中央値を求めてください。
-#ここで、 K × K の区画に含まれるマスの高さの中央値とはその区画に含まれる K^2 個のマスのうち ⌊((K^2)/(2))⌋ +1 番目に高いマスの高さを指します。また、⌊ x⌋ は x 以下の最大の整数を表します。
-#
-#制約
-#1 ≦ K ≦ N ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_{1,1} A_{1,2} ... A_{1,N}
-#A_{2,1} A_{2,2} ... A_{2,N}
-#:
-#A_{N,1} A_{N,2} ... A_{N,N}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#出力例 1
-#4
-#北から i 番目で西から j 番目のマスを (i,j) で表すとして、
-#池の候補となる 2× 2 の区画は、{(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)} の 4 つです。
-#K=2 のとき、各区画に含まれるマスの高さの中央値は各区画に含まれるマスのうち ⌊((2^2)/(2))⌋+1=3 番目に高いマスの高さとなるので、それぞれの区画の中央値は 5, 7, 5, 4 であり、このうち最小である 4 を出力します。
-#
-#入力例 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#出力例 2
-#5
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            tmp = []
+            for k in range(K):
+                tmp += A[i+k][j:j+K]
+            tmp.sort()
+            ans = min(ans, tmp[K**2//2])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            B = []
+            for k in range(K):
+                for l in range(K):
+                    B.append(A[i+k][j+l])
+            B.sort()
+            ans = min(ans, B[K*K//2])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        for j in range(N - K + 1):
+            tmp = []
+            for k in range(K):
+                tmp += A[i + k][j:j + K]
+            tmp.sort()
+            ans = min(ans, tmp[K * K // 2])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 10 ** 10
+    for i in range(n - k + 1):
+        for j in range(n - k + 1):
+            tmp = []
+            for x in range(i, i + k):
+                for y in range(j, j + k):
+                    tmp.append(a[x][y])
+            tmp.sort()
+            ans = min(ans, tmp[k * k // 2])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,K = map(int,input().split())
+    A = [list(map(int,input().split())) for _ in range(N)]
+    ans = 10**10
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            tmp = []
+            for k in range(K):
+                tmp.extend(A[i+k][j:j+K])
+            tmp.sort()
+            ans = min(ans,tmp[K*K//2])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = [list(map(int,input().split())) for i in range(N)]
+    B = [[0 for i in range(N+1)] for j in range(N+1)]
+    for i in range(N):
+        for j in range(N):
+            B[i+1][j+1] = B[i+1][j] + B[i][j+1] - B[i][j] + A[i][j]
+    ans = 10**10
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            tmp = B[i+K][j+K] - B[i+K][j] - B[i][j+K] + B[i][j]
+            ans = min(ans,tmp//(K*K))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # 中央値を求めるためにソートする
+    A = [sorted(a) for a in A]
+
+    # 中央値を求める
+    # K=3の場合、中央値はA[1][1]にある
+    # K=4の場合、中央値はA[1][1]とA[1][2]の平均
+    # K=5の場合、中央値はA[2][1]にある
+    # K=6の場合、中央値はA[2][1]とA[2][2]の平均
+    # K=7の場合、中央値はA[3][1]にある
+    # ...
+    # K=2n+1の場合、中央値はA[n][1]にある
+    # K=2nの場合、中央値はA[n][1]とA[n][2]の平均
+    # ...
+    # K=2の場合、中央値はA[0][1]にある
+    # K=1の場合、中央値はA[0][0]にある
+    # ということになる
+    # つまり、中央値はA[(K-1)//2][(K-1)//2]またはA[(K-1)//2][(K-1)//2]とA[(K-1)//2][(K-1)//2+1]の平均
+    # これを求めるためには、Aの各マスについて、
+    # A[i][j]の左上(K×K)の部分行列に含まれるA[i][j]以下のマスの数を数えておく必要がある
+    # これは、A[i][j]の左上(K×K)の部分
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N, K)
+    #print(A)
+    #print(A[0][0])
+    
+    #中央値を求めるためには、ソートが必要
+    #ソートの前に、各区画に含まれるマスの高さの中央値を求める
+    #区画の左上のマスの座標を決める
+    #区画の左上のマスの座標は、(i,j)とする
+    #区画の右下のマスの座標は、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座標を、(i,j)とする
+    #区画の右下のマスの座標を、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座標を、(i,j)とする
+    #区画の右下のマスの座標を、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座標を、(i,j)とする
+    #区画の右下のマスの座標を、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座標を、(i,j)とする
+    #区画の右下のマスの座標を、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座標を、(i,j)とする
+    #区画の右下のマスの座標を、(i+K-1, j+K-1)とする
+    #区画の左上のマスの座
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # K=3のとき、各区画に含まれるマスの高さの中央値は各区画に含まれるマスのうち
+    # ⌊((3^2)/(2))⌋+1=5 番目に高いマスの高さとなるので、それぞれの区画の中央値は
+    # 2, 3, 4, 5, 5, 6, 7, 8, 9 であり、このうち最小である 5 を出力します。
+    # 2, 3, 4, 5, 6, 7, 8, 9 は、
+    # 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 9
+    # となるので、
+    # 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 9, 9
+    # として、
+    # 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 8, 9
+    # として、
+    # 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 9
+    # として、
+    # 2, 2, 2

@@ -1,90 +1,201 @@
-#問題文
-#高橋王国には, 東西にのびる 1 本の線路がある. これに沿って N 個の都市があり, 西から順に都市 1, 2, 3, ..., N と番号づけられている.
-#AtCoder Express という会社は M 本の列車を保有しており, 列車 i は都市 L_i から都市 R_i の区間 (L_i = R_i の場合もある) を走っている.  
-#この王国の国王である高橋君は, Q 個のことに興味を持った. 具体的には, i=1, 2, 3, ..., Q のときの以下の質問の答えを求めたくなった.  
-#都市 p_i から都市 q_i までの区間に, 走る区間が 完全に含まれる 列車の本数. 言い換えれば, p_i ≦ L_j と R_j ≦ q_i が両方成り立つような列車 j の本数.  
-#高橋君は天才である. しかし流石の彼でも, 膨大なデータを処理することはできない. 高橋君のために, Q 個の質問それぞれに対して答えを求めよ.  
-#
-#制約
-#N は 1 以上 500 以下の整数
-#M は 1 以上 200  000 以下の整数
-#Q は 1 以上 100  000 以下の整数
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#出力
-#Q 行出力せよ. i 行目には, 都市 p_i から都市 q_i までの区間に, それぞれの走る区間が完全に含まれる列車の本数を出力せよ.  
-#
-#入力例 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#出力例 1
-#3
-#全ての列車の走る区間が, 都市 1 から都市 2 までの区間に含まれているので, この質問の答えは 3 となる.  
-#
-#入力例 2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#出力例 2
-#1
-#1
-#1 個目の質問は, 都市 1 から 7 までの区間についてである. その区間に走る区間が完全に含まれている列車は, 列車 1 のみである.
-#2 個目の質問は, 都市 3 から 10 までの区間についてである. その区間に走る区間が完全に含まれている列車は, 列車 3 のみである.
-#
-#入力例 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#出力例 3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    PQ = [list(map(int, input().split())) for _ in range(Q)]
+    #print(N, M, Q)
+    #print(LR)
+    #print(PQ)
+    #print()
+    #N, M, Q = 2, 3, 1
+    #LR = [[1, 1], [1, 2], [2, 2]]
+    #PQ = [[1, 2]]
+    #print(N, M, Q)
+    #print(LR)
+    #print(PQ)
+    #print()
+    LR.sort()
+    #print(N, M, Q)
+    #print(LR)
+    #print(PQ)
+    #print()
+    for i in range(Q):
+        #print(PQ[i])
+        #print()
+        #print(LR)
+        #print(PQ[i])
+        #print()
+        #print(LR[0][0])
+        #print(PQ[i][0])
+        #print()
+        #print(LR[0][1])
+        #print(PQ[i][1])
+        #print()
+        #print()
+        #print()
+        print(sum([1 for j in range(M) if LR[j][0] <= PQ[i][0] and LR[j][1] >= PQ[i][1]]))
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    P = []
+    Q = []
+    for i in range(Q):
+        p, q = map(int, input().split())
+        P.append(p)
+        Q.append(q)
+    for i in range(Q):
+        ans = 0
+        for j in range(M):
+            if P[i] <= L[j] and R[j] <= Q[i]:
+                ans += 1
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,M,Q = map(int,input().split())
+    LR = [list(map(int,input().split())) for _ in range(M)]
+    PQ = [list(map(int,input().split())) for _ in range(Q)]
+    #p
+
+=======
+Suggestion 4
+
+def main():
+    n,m,q = map(int,input().split())
+    l = [0] * m
+    r = [0] * m
+    p = [0] * q
+    q = [0] * q
+    for i in range(m):
+        l[i],r[i] = map(int,input().split())
+    for i in range(q):
+        p[i],q[i] = map(int,input().split())
+    for i in range(q):
+        cnt = 0
+        for j in range(m):
+            if p[i] <= l[j] and r[j] <= q[i]:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N,M,Q = map(int,input().split())
+    L = [0]*M
+    R = [0]*M
+    p = [0]*Q
+    q = [0]*Q
+    for i in range(M):
+        L[i],R[i] = map(int,input().split())
+    for i in range(Q):
+        p[i],q[i] = map(int,input().split())
+    #print(N,M,Q,L,R,p,q)
+    for i in range(Q):
+        cnt = 0
+        for j in range(M):
+            if p[i]<=L[j] and R[j]<=q[i]:
+                cnt+=1
+        print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n, m, q = map(int, input().split())
+    trains = []
+    for _ in range(m):
+        l, r = map(int, input().split())
+        trains.append((l, r))
+    trains.sort()
+    #print(trains)
+    for _ in range(q):
+        p, q = map(int, input().split())
+        cnt = 0
+        for train in trains:
+            if p <= train[0] and train[1] <= q:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 7
+
+def solve():
+    N,M,Q = map(int, input().split())
+    L = [0]*M
+    R = [0]*M
+    for i in range(M):
+        L[i],R[i] = map(int, input().split())
+    p = [0]*Q
+    q = [0]*Q
+    for i in range(Q):
+        p[i],q[i] = map(int, input().split())
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if p[i] <= L[j] and R[j] <= q[i]:
+                count += 1
+        print(count)
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    N,M,Q = map(int,input().split())
+    LR = [list(map(int,input().split())) for _ in range(M)]
+    PQ = [list(map(int,input().split())) for _ in range(Q)]
+    LR.sort()
+    PQ.sort()
+    LR = [[l,r] for l,r in LR]
+    PQ = [[p,q] for p,q in PQ]
+    #print(LR)
+    #print(PQ)
+    for p,q in PQ:
+        count = 0
+        for l,r in LR:
+            if p <= l and r <= q:
+                count += 1
+        print(count)
+
+=======
+Suggestion 9
+
+def get_input_data():
+    n, m, q = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(m)]
+    pq = [list(map(int, input().split())) for _ in range(q)]
+    return n, m, q, lr, pq
+
+=======
+Suggestion 10
+
+def main():
+    n,m,q = map(int,input().split())
+    train = [0]*n
+    for i in range(m):
+        l,r = map(int,input().split())
+        for j in range(l-1,r):
+            train[j] += 1
+    for i in range(q):
+        p,q = map(int,input().split())
+        count = 0
+        for j in range(p-1,q):
+            count += train[j]
+        print(count)
+main()

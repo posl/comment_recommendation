@@ -1,37 +1,122 @@
-#Problem Statement
-#There are N people living on a number line.
-#The i-th person lives at coordinate X_i.
-#You are going to hold a meeting that all N people have to attend.
-#The meeting can be held at any integer coordinate. If you choose to hold the meeting at coordinate P, the i-th person will spend (X_i - P)^2 points of stamina to attend the meeting.
-#Find the minimum total points of stamina the N people have to spend.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 100
-#1 ≦ X_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#X_1 X_2 ... X_N
-#
-#Output
-#Print the minimum total stamina the N people have to spend.
-#
-#Sample Input 1
-#2
-#1 4
-#
-#Sample Output 1
-#5
-#Assume the meeting is held at coordinate 2. In this case, the first person will spend (1 - 2)^2 points of stamina, and the second person will spend (4 - 2)^2 = 4 points of stamina, for a total of 5 points of stamina. This is the minimum total stamina that the 2 people have to spend.
-#Note that you can hold the meeting only at an integer coordinate.
-#
-#Sample Input 2
-#7
-#14 14 2 13 56 2 37
-#
-#Sample Output 2
-#2354
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+    ans = 10**9
+    for p in range(101):
+        tmp = 0
+        for x in X:
+            tmp += (x - p)**2
+        ans = min(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+    X.sort()
+    P = X[N // 2]
+    ans = 0
+    for i in range(N):
+        ans += abs(X[i] - P)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    ans = 10**10
+    for i in range(min(x), max(x) + 1):
+        ans = min(ans, sum([(j - i) ** 2 for j in x]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x = [int(i) for i in input().split()]
+    x = sorted(x)
+    ans = 0
+    for i in range(n):
+        ans += (x[i] - x[n // 2]) ** 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    ans = 1000000000000000000
+    for i in range(1, 101):
+        tmp = 0
+        for j in range(n):
+            tmp += (x[j] - i) ** 2
+        ans = min(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(1, N):
+        ans += (X[i] - X[i-1])**2
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    X = list(map(int,input().split()))
+    ans = 0
+    for i in range(1,101):
+        ans += sum([(X[j]-i)**2 for j in range(N)])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    X = list(map(int,input().split()))
+    ans = 0
+    for i in range(1,101):
+        ans += sum([(i-j)**2 for j in X])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x.sort()
+    #print(x)
+    sum = 0
+    for i in range(n-1):
+        sum += x[i+1] - x[i]
+    print(sum)
+
+main()

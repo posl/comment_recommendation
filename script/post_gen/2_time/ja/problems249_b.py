@@ -1,48 +1,172 @@
-#問題文
-#英大文字と英小文字からなる文字列のうち、以下の条件を全て満たすものを素晴らしい文字列ということとします。
-#英大文字が文字列の中に現れる。
-#英小文字が文字列の中に現れる。
-#全ての文字が相異なる。
-#例えば、AtCoder や Aa は素晴らしい文字列ですが、atcoder や Perfect は素晴らしい文字列ではありません。
-#文字列 S が与えられるので、S が素晴らしい文字列か判定してください。
-#
-#制約
-#1 ≦ |S| ≦ 100
-#S は英大文字と英小文字からなる文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が素晴らしい文字列ならば Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#AtCoder
-#
-#出力例 1
-#Yes
-#AtCoder は、英大文字が含まれ、英小文字も含まれ、かつ全ての文字が相異なるため素晴らしい文字列です。
-#
-#入力例 2
-#Aa
-#
-#出力例 2
-#Yes
-#A と a は違う文字であることに注意してください。この文字列は素晴らしい文字列です。
-#
-#入力例 3
-#atcoder
-#
-#出力例 3
-#No
-#英大文字が含まれていないため、素晴らしい文字列ではありません。
-#
-#入力例 4
-#Perfect
-#
-#出力例 4
-#No
-#2 文字目と 5 文字目が等しいため、素晴らしい文字列ではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print('No')
+    elif len(s) != len(set(s)):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S.islower() or S.isupper():
+        print("No")
+    elif len(S) != len(set(S)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.islower() or s.isupper() or len(s) != len(set(s)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S.islower() or S.isupper():
+        print('No')
+    else:
+        if len(set(S)) == len(S):
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if len(S) < 2:
+        print('No')
+        return
+    if S.islower():
+        print('No')
+        return
+    if S.isupper():
+        print('No')
+        return
+    if len(S) != len(set(S)):
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if 'A' in s and 'a' in s:
+        if len(set(s)) == len(s):
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+
+    if len(S) < 2:
+        print("No")
+        return
+
+    if S.isupper():
+        print("No")
+        return
+
+    if S.islower():
+        print("No")
+        return
+
+    if S.isalpha() == False:
+        print("No")
+        return
+
+    if len(S) != len(set(S)):
+        print("No")
+        return
+
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if len(S) < 2:
+        print("No")
+        return
+
+    if S.islower():
+        print("No")
+        return
+
+    if S.isupper():
+        print("No")
+        return
+
+    if not S.isalpha():
+        print("No")
+        return
+
+    for i in range(len(S)):
+        for j in range(i + 1, len(S)):
+            if S[i] == S[j]:
+                print("No")
+                return
+
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s.isupper() or s.islower():
+        print("No")
+        return
+
+    for i in range(len(s)-1):
+        for j in range(i+1,len(s)):
+            if s[i] == s[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    if len(S) < 2:
+        print("No")
+        return
+    if S[0].isupper() and S[1].islower():
+        for i in range(2, len(S)):
+            if S[i].isupper():
+                print("No")
+                return
+    else:
+        print("No")
+        return
+    if len(set(S)) == len(S):
+        print("Yes")
+    else:
+        print("No")

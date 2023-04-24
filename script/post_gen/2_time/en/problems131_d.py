@@ -1,89 +1,189 @@
-#Problem Statement
-#Kizahashi, who was appointed as the administrator of ABC at National Problem Workshop in the Kingdom of AtCoder, got too excited and took on too many jobs.
-#Let the current time be time 0. Kizahashi has N jobs numbered 1 to N.
-#It takes A_i units of time for Kizahashi to complete Job i. The deadline for Job i is time B_i, and he must complete the job before or at this time.
-#Kizahashi cannot work on two or more jobs simultaneously, but when he completes a job, he can start working on another immediately.
-#Can Kizahashi complete all the jobs in time? If he can, print Yes; if he cannot, print No.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9 (1 ≦ i ≦ N)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#If Kizahashi can complete all the jobs in time, print Yes; if he cannot, print No.
-#
-#Sample Input 1
-#5
-#2 4
-#1 9
-#1 8
-#4 9
-#3 12
-#
-#Sample Output 1
-#Yes
-#He can complete all the jobs in time by, for example, doing them in the following order:
-#Do Job 2 from time 0 to 1.
-#Do Job 1 from time 1 to 3.
-#Do Job 4 from time 3 to 7.
-#Do Job 3 from time 7 to 8.
-#Do Job 5 from time 8 to 11.
-#Note that it is fine to complete Job 3 exactly at the deadline, time 8.
-#
-#Sample Input 2
-#3
-#334 1000
-#334 1000
-#334 1000
-#
-#Sample Output 2
-#No
-#He cannot complete all the jobs in time, no matter what order he does them in.
-#
-#Sample Input 3
-#30
-#384 8895
-#1725 9791
-#170 1024
-#4 11105
-#2 6
-#578 1815
-#702 3352
-#143 5141
-#1420 6980
-#24 1602
-#849 999
-#76 7586
-#85 5570
-#444 4991
-#719 11090
-#470 10708
-#1137 4547
-#455 9003
-#110 9901
-#15 8578
-#368 3692
-#104 1286
-#3 4
-#366 12143
-#7 6649
-#610 2374
-#152 7324
-#4 7042
-#292 11386
-#334 5720
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    jobs = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        jobs.append((A, B))
+    jobs.sort(key=lambda x: x[1])
+    now = 0
+    for i in range(N):
+        now += jobs[i][0]
+        if now > jobs[i][1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    jobs = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        jobs.append((b, a))
+    jobs.sort()
+    time = 0
+    for b, a in jobs:
+        time += a
+        if time > b:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    jobs = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        jobs.append((b, a))
+    jobs.sort()
+    time = 0
+    for b, a in jobs:
+        time += a
+        if time > b:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    jobs = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        jobs.append((B, A))
+    jobs.sort()
+    time = 0
+    for B, A in jobs:
+        time += A
+        if time > B:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    jobs = [list(map(int, input().split())) for _ in range(n)]
+    jobs.sort(key=lambda x: x[1])
+    time = 0
+    for a, b in jobs:
+        time += a
+        if time > b:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    jobs = [list(map(int, input().split())) for _ in range(N)]
+    jobs.sort(key=lambda x: x[1])
+    time = 0
+    for a, b in jobs:
+        time += a
+        if time > b:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    job = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        job.append([a, b])
+    job.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += job[i][0]
+        if time > job[i][1]:
+            print('No')
+            return
+    print('Yes')
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #compute
+    jobs = []
+    for i in range(N):
+        jobs.append([A[i], B[i]])
+    jobs.sort(key=lambda x: x[1])
+    time = 0
+    for a, b in jobs:
+        time += a
+        if time > b:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    jobs = []
+    for i in range(N):
+        jobs.append(list(map(int, input().split())))
+
+    jobs.sort(key=lambda x: x[1])
+
+    time = 0
+    for j in jobs:
+        time += j[0]
+        if time > j[1]:
+            print('No')
+            return
+
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    # Read input
+    n = int(input())
+    jobs = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        jobs.append((b, a))
+    jobs.sort()
+    # Check if it is possible to complete all jobs
+    time = 0
+    for b, a in jobs:
+        time += a
+        if time > b:
+            print("No")
+            return
+    print("Yes")

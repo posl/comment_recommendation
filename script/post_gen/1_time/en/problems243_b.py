@@ -1,55 +1,213 @@
-#Problem Statement
-#You are given integer sequences, each of length N: A = (A_1, A_2, ..., A_N) and B = (B_1, B_2, ..., B_N).
-#All elements of A are different. All elements of B are different, too.
-#Print the following two values.
-#The number of integers contained in both A and B, appearing at the same position in the two sequences. In other words, the number of integers i such that A_i = B_i.
-#The number of integers contained in both A and B, appearing at different positions in the two sequences. In other words, the number of pairs of integers (i, j) such that A_i = B_j and i ≠ j.
-#
-#Constraints
-#1 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#A_1, A_2, ..., A_N are all different.
-#B_1, B_2, ..., B_N are all different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_N
-#
-#Output
-#Print the answers in two lines: the answer to1. in the first line, and the answer to2. in the second line.
-#
-#Sample Input 1
-#4
-#1 3 5 2
-#2 3 1 4
-#
-#Sample Output 1
-#1
-#2
-#There is one integer contained in both A and B, appearing at the same position in the two sequences: A_2 = B_2 = 3.
-#There are two integers contained in both A and B, appearing at different positions in the two sequences: A_1 = B_3 = 1 and A_4 = B_1 = 2.
-#
-#Sample Input 2
-#3
-#1 2 3
-#4 5 6
-#
-#Sample Output 2
-#0
-#0
-#In both 1. and 2., no integer satisfies the condition.
-#
-#Sample Input 3
-#7
-#4 8 1 7 9 5 6
-#3 5 1 7 8 2 6
-#
-#Sample Output 3
-#3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = 0
+    d = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            c += 1
+    for i in range(n):
+        if a[i] in b and a[i] != b[i]:
+            d += 1
+    print(c)
+    print(d)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = 0
+    d = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            c += 1
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[j] and i != j:
+                d += 1
+    print(c)
+    print(d)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    count1 = 0
+    count2 = 0
+
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[j] and i != j:
+                count2 += 1
+
+    print(count1)
+    print(count2)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    count = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            count += 1
+
+    A_set = set(A)
+    B_set = set(B)
+    C_set = A_set & B_set
+
+    print(count)
+    print(len(C_set) - count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    ans1 = 0
+    ans2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            ans1 += 1
+        else:
+            for j in range(n):
+                if a[i] == b[j]:
+                    ans2 += 1
+
+    print(ans1)
+    print(ans2)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    ans1 = 0
+    ans2 = 0
+
+    for i in range(n):
+        if a[i] == b[i]:
+            ans1 += 1
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                ans2 += 1
+
+    print(ans1)
+    print(ans2)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    same = 0
+    diff = 0
+
+    for i in range(n):
+        if a[i] == b[i]:
+            same += 1
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                diff += 1
+
+    print(same)
+    print(diff)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    cnt1 = 0
+    cnt2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            cnt1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                cnt2 += 1
+    print(cnt1)
+    print(cnt2)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a_b = 0
+    b_b = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            a_b += 1
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                b_b += 1
+
+    print(a_b)
+    print(b_b)
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    #compute
+    a_b = 0
+    b_b = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            a_b += 1
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[j] and i != j:
+                b_b += 1
+
+    #output
+    print(a_b)
+    print(b_b)

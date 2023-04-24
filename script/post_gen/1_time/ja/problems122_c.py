@@ -1,42 +1,171 @@
-#問題文
-#A, C, G, T からなる長さ N の文字列 S が与えられます。以下の Q 個の問いに答えてください。
-#問 i (1 ≦ i ≦ Q): 整数 l_i, r_i (1 ≦ l_i < r_i ≦ N) が与えられる。S の先頭から l_i 文字目から r_i 文字目までの (両端含む) 部分文字列を考える。この文字列に AC は部分文字列として何回現れるか。
-#
-#注記
-#文字列 T の部分文字列とは、T の先頭と末尾から 0 文字以上を取り去って得られる文字列です。
-#例えば、ATCODER の部分文字列には TCO, AT, CODER, ATCODER,  (空文字列) が含まれ、AC は含まれません。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#S は長さ N の文字列である。
-#S の各文字は A, C, G, T のいずれかである。
-#1 ≦ l_i < r_i ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#S
-#l_1 r_1
-#:
-#l_Q r_Q
-#
-#出力
-#Q 行出力せよ。i 行目に問 i への答えを出力すること。
-#
-#入力例 1
-#8 3
-#ACACTACG
-#3 7
-#2 3
-#1 8
-#
-#出力例 1
-#2
-#0
-#3
-#問 1: S の先頭から 3 文字目から 7 文字目までの部分文字列は ACTAC です。この文字列に AC は部分文字列として 2 回現れます。
-#問 2: S の先頭から 2 文字目から 3 文字目までの部分文字列は CA です。この文字列に AC は部分文字列として 0 回現れます。
-#問 3: S の先頭から 1 文字目から 8 文字目までの部分文字列は ACACTACG です。この文字列に AC は部分文字列として 3 回現れます。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    AC = [0] * (N + 1)
+    for i in range(1, N):
+        if S[i - 1] == 'A' and S[i] == 'C':
+            AC[i + 1] = AC[i] + 1
+        else:
+            AC[i + 1] = AC[i]
+    for i in range(Q):
+        l, r = map(int, input().split())
+        print(AC[r] - AC[l])
+
+=======
+Suggestion 2
+
+def main():
+    N,Q = map(int,input().split())
+    S = input()
+    l = []
+    r = []
+    for i in range(Q):
+        l_i,r_i = map(int,input().split())
+        l.append(l_i)
+        r.append(r_i)
+    for i in range(Q):
+        print(S[l[i]-1:r[i]].count("AC"))
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = [0] * (N + 1)
+    for i in range(N):
+        l[i + 1] = l[i]
+        if S[i:i + 2] == 'AC':
+            l[i + 1] += 1
+    for _ in range(Q):
+        l_i, r_i = map(int, input().split())
+        print(l[r_i - 1] - l[l_i - 1])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    AC = [0] * (N + 1)
+    for i in range(1, N):
+        if S[i-1] == "A" and S[i] == "C":
+            AC[i] = AC[i-1] + 1
+        else:
+            AC[i] = AC[i-1]
+    for _ in range(Q):
+        l, r = map(int, input().split())
+        print(AC[r-1] - AC[l-1])
+
+=======
+Suggestion 5
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    ac = [0]*n
+    for i in range(n-1):
+        if s[i] == 'A' and s[i+1] == 'C':
+            ac[i] = 1
+    for i in range(1,n):
+        ac[i] += ac[i-1]
+    for i in range(q):
+        l,r = map(int,input().split())
+        print(ac[r-1]-ac[l-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    AC = [0] * (N + 1)
+    for i in range(N):
+        if S[i] == 'A' and S[i+1] == 'C':
+            AC[i+1] = AC[i] + 1
+        else:
+            AC[i+1] = AC[i]
+    for i in range(Q):
+        l, r = map(int, input().split())
+        print(AC[r-1] - AC[l-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    AC_count = [0] * (N+1)
+    for i in range(N):
+        if S[i:i+2] == 'AC':
+            AC_count[i+1] = AC_count[i] + 1
+        else:
+            AC_count[i+1] = AC_count[i]
+    for i in range(Q):
+        l, r = map(int, input().split())
+        print(AC_count[r-1] - AC_count[l-1])
+
+=======
+Suggestion 8
+
+def main():
+    N,Q = map(int,input().split())
+    S = input()
+    AC = [0] * N
+    for i in range(1,N):
+        if S[i-1] == 'A' and S[i] == 'C':
+            AC[i] = AC[i-1] + 1
+        else:
+            AC[i] = AC[i-1]
+    for i in range(Q):
+        l,r = map(int,input().split())
+        print(AC[r-1]-AC[l-1])
+
+=======
+Suggestion 9
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    ac = [0]*(n+1)
+
+    for i in range(n):
+        ac[i+1] = ac[i]
+        if s[i:i+2] == "AC":
+            ac[i+1] += 1
+
+    for i in range(q):
+        l,r = map(int,input().split())
+        print(ac[r-1]-ac[l-1])
+
+=======
+Suggestion 10
+
+def main():
+    N,Q = map(int,input().split())
+    S = input()
+    #print(N,Q,S)
+    l = []
+    r = []
+    for i in range(Q):
+        l_i,r_i = map(int,input().split())
+        l.append(l_i)
+        r.append(r_i)
+    #print(l)
+    #print(r)
+
+    #文字列のACの数をカウント
+    #ACの数をカウントするためには、ACで始まる文字列の数とACで終わる文字列の数をそれぞれカウントすれば良い
+    #ACで始まる文字列の数をカウントするためには、Sの先頭から2文字目以降でACが出現する回数をカウント
+    #ACで終わる文字列の数をカウントするためには、Sの末尾から2文字目以前でACが出現する回数をカウント
+    #ACで始まる文字列の数とACで終わる文字列の数をそれぞれカウントし、その積がACの数になる
+    #ACで始まる文字列の数をカウントするためには、Sの先頭から2文字目以降でACが出現する回数をカウント
+    #ACで終わる文字列の数をカウントするためには、Sの末尾から2文字目以前でACが出現する回数をカウント
+    #ACで始まる文字列の数とACで終わる文字列の数をそれぞれカウントし、その積がACの数になる
+    #ACで始まる文字列の数をカウントするためには、Sの先頭から2文字目以降でACが出現する回数をカウント
+    #ACで終わる文字列の数をカウントするためには、Sの末尾から2文字目以前でACが出現する

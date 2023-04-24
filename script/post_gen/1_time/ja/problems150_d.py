@@ -1,49 +1,162 @@
-#問題文
-#長さ N の偶数からなる正の整数列 A= {a_1,a_2,...,a_N} と、整数 M が与えられます。
-#任意の k(1 ≦ k ≦ N) に対して以下の条件を満たす正の整数 X を A の「半公倍数」と定義します。
-#X= a_k × (p+0.5) を満たす負でない整数 p が存在する。
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#2 ≦ a_i ≦ 10^9
-#a_i は偶数である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#a_1 a_2 ... a_N
-#
-#出力
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を出力せよ。
-#
-#入力例 1
-#2 50
-#6 10
-#
-#出力例 1
-#2
-#15 = 6  × 2.5 
-#15 = 10 × 1.5 
-#45 = 6  × 7.5 
-#45 = 10 × 4.5 
-#より、15,45 は A の半公倍数です。1 以上 50 以下の整数に他に A の半公倍数はないので、答えは 2 となります。
-#
-#入力例 2
-#3 100
-#14 22 40
-#
-#出力例 2
-#0
-#答えが 0 の場合もあります。
-#
-#入力例 3
-#5 1000000000
-#6 6 2 6 2
-#
-#出力例 3
-#166666667
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a = list(map(lambda x: x // 2, a))
+
+lcm = 1
+for i in a:
+    lcm = lcm * i // gcd(lcm, i)
+
+for i in a:
+    if (lcm // i) % 2 == 0:
+        print(0)
+        exit()
+
+m = m // lcm
+ans = (m + 1) // 2
+print(ans)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x%y)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a = list(map(lambda x: x // 2, a))
+lcm = 1
+for i in range(n):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+for i in range(n):
+    if (lcm // a[i]) % 2 == 0:
+        print(0)
+        exit()
+print((m // lcm + 1) // 2)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        c = a % b
+        a = b
+        b = c
+    return a
+
+=======
+Suggestion 7
+
+def lcm(x, y):
+    return (x * y) // math.gcd(x, y)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+x = a[0] // 2
+for i in range(1, n):
+    x = lcm(x, a[i] // 2)
+
+ans = m // x
+print((ans + 1) // 2)
+
+=======
+Suggestion 8
+
+def gcd(x,y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y,x%y)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    # まずは素因数分解して素因数のリストを作成
+    A_factor = []
+    for i in range(N):
+        A_factor.append([])
+        temp = A[i]
+        for j in range(2, int(A[i]**(1/2))+1):
+            while temp % j == 0:
+                A_factor[i].append(j)
+                temp //= j
+        if temp != 1:
+            A_factor[i].append(temp)
+    # 素因数のリストを繋げる
+    A_factor_all = []
+    for i in range(N):
+        A_factor_all += A_factor[i]
+    # 素因数のリストから重複を削除
+    A_factor_all = list(set(A_factor_all))
+    # 素因数のリストから半公倍数を作成
+    half_multiple = []
+    for i in range(len(A_factor_all)):
+        temp = A_factor_all[i]
+        while temp <= M:
+            half_multiple.append(temp)
+            temp *= 2
+    # 半公倍数のリストから重複を削除
+    half_multiple = list(set(half_multiple))
+    # 半公倍数のリストからAの要素の倍数を削除
+    for i in range(N):
+        for j in range(len(half_multiple)):
+            if half_multiple[j] % A[i] == 0:
+                half_multiple[j] = 0
+    half_multiple = list(set(half_multiple))
+    half_multiple.remove(0)
+    # 半公倍数の個数を出力
+    print(len(half_multiple))

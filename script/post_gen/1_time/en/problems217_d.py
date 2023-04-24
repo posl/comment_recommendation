@@ -1,74 +1,224 @@
-#Problem Statement
-#We have a long piece of timber with a length of L meters.
-#For each x = 1, 2, ..., L - 1, there is a mark called Mark x at x meters from the left end of the piece.
-#You are given Q queries, the i-th of which is represented as a pair of numbers (c_i, x_i).
-#Process the queries in ascending order of i as described below.
-#If c_i = 1: cut the piece at Mark x_i into two.
-#If c_i = 2: choose the piece with Mark x_i on it and print its length.
-#Here, for both kinds of queries c_i = 1, 2, it is guaranteed that there will have been no cut at Mark x_i when the query is to be processed.
-#
-#Constraints
-#1 ≦ L ≦ 10^9
-#1 ≦ Q ≦ 2 × 10^5
-#c_i = 1, 2 (1 ≦ i ≦ Q)
-#1 ≦ x_i ≦ L - 1 (1 ≦ i ≦ Q)
-#For every i (1 ≦ i ≦ Q), the following holds: there is no j such that 1 ≦ j < i and (c_j,x_j) = (1, x_i).
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L Q
-#c_1 x_1
-#c_2 x_2
-#.
-#.
-#.
-#c_Q x_Q
-#
-#Output
-#Print the number of lines equal to the number of queries c_i = 2.
-#In the j-th line, print the response to the j-th such query.
-#
-#Sample Input 1
-#5 3
-#2 2
-#1 3
-#2 2
-#
-#Sample Output 1
-#5
-#3
-#At the time of the first query, no cut has been made, so the piece with Mark 2 has a length of 5 meters. Thus, you should print 5.
-#In the second query, the piece is cut into two pieces with lengths of 3 and 2 meters.
-#At the time of the third query, the piece with Mark 2 has a length of 3 meters, so you should print 3.  
-#
-#Sample Input 2
-#5 3
-#1 2
-#1 4
-#2 3
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#100 10
-#1 31
-#2 41
-#1 59
-#2 26
-#1 53
-#2 58
-#1 97
-#2 93
-#1 23
-#2 84
-#
-#Sample Output 3
-#69
-#31
-#6
-#38
-#38
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L, Q = map(int, input().split())
+    cuts = [0, L]
+    for _ in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cuts.append(x)
+        else:
+            cuts.sort()
+            idx = cuts.index(x)
+            print(cuts[idx + 1] - cuts[idx - 1])
+
+=======
+Suggestion 2
+
+def main():
+    L, Q = map(int, input().split())
+    cuts = [0, L]
+    for i in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cuts.append(x)
+        elif c == 2:
+            cuts.sort()
+            for j in range(len(cuts)):
+                if cuts[j] == x:
+                    print(cuts[j + 1] - cuts[j])
+                    break
+
+=======
+Suggestion 3
+
+def main():
+    L, Q = map(int, input().split())
+    cut = [0, L]
+    for _ in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cut.append(x)
+            cut.sort()
+        else:
+            for i in range(len(cut)):
+                if cut[i] == x:
+                    print(cut[i+1] - cut[i])
+                    break
+
+=======
+Suggestion 4
+
+def main():
+    L, Q = map(int, input().split())
+    cut = [0, L]
+    for i in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cut.append(x)
+            cut.sort()
+        else:
+            print(cut[cut.index(x) + 1] - cut[cut.index(x)])
+
+=======
+Suggestion 5
+
+def main():
+    L, Q = map(int, input().split())
+    cut = [0] * (L + 1)
+    cut[0] = 1
+    cut[L] = 1
+    for _ in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cut[x] = 1
+        else:
+            ans = 0
+            for i in range(x, L + 1):
+                if cut[i] == 1:
+                    ans = i - x
+                    break
+            print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    L, Q = map(int, input().split())
+    #L = 5
+    #Q = 3
+    #c = [2, 1, 2]
+    #x = [2, 3, 2]
+    c = []
+    x = []
+    for i in range(Q):
+        c_i, x_i = map(int, input().split())
+        c.append(c_i)
+        x.append(x_i)
+    #print(c)
+    #print(x)
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =", x)
+    #print("")
+    #print("")
+
+    #print("L =", L)
+    #print("Q =", Q)
+    #print("c =", c)
+    #print("x =",
+
+=======
+Suggestion 7
+
+def main():
+    L, Q = map(int, input().split())
+    #print(L, Q)
+    cut = [0] * (L + 1)
+    cut[0] = 1
+    cut[L] = 1
+    for i in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cut[x] = 1
+        if c == 2:
+            #print(cut)
+            for j in range(x, -1, -1):
+                if cut[j] == 1:
+                    x1 = j
+                    break
+            for j in range(x, L + 1):
+                if cut[j] == 1:
+                    x2 = j
+                    break
+            print(x2 - x1)
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from bisect import bisect_left
+    from collections import deque
+    input = sys.stdin.readline
+    L,Q = map(int,input().split())
+    L = L
+    Q = Q
+    d = deque()
+    d.append(0)
+    d.append(L)
+    for i in range(Q):
+        c,x = map(int,input().split())
+        if c == 1:
+            d.append(x)
+            d = deque(sorted(d))
+        if c == 2:
+            idx = bisect_left(d,x)
+            print(d[idx]-d[idx-1])
+
+=======
+Suggestion 9
+
+def main():
+    L, Q = map(int, input().split())
+    #print(L, Q)
+    #print("

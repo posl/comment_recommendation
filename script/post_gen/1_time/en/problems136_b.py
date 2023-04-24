@@ -1,34 +1,97 @@
-#Problem Statement
-#Given is an integer N. Find the number of positive integers less than or equal to N that have an odd number of digits (in base ten without leading zeros).
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the number of positive integers less than or equal to N that have an odd number of digits.
-#
-#Sample Input 1
-#11
-#
-#Sample Output 1
-#9
-#Among the positive integers less than or equal to 11, nine integers have an odd number of digits: 1, 2, ..., 9.
-#
-#Sample Input 2
-#136
-#
-#Sample Output 2
-#46
-#In addition to 1, 2, ..., 9, another 37 integers also have an odd number of digits: 100, 101, ..., 136.
-#
-#Sample Input 3
-#100000
-#
-#Sample Output 3
-#90909
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 1:
+            count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 1:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N < 10:
+        print(N)
+    else:
+        print(9 + (N - 9) // 10)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N < 10:
+        print(N)
+    else:
+        print(9 + (N-9)//10)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = N//10*9 + max(0, N%10 - 9 + 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print(N//10*9 + (N%10+1)//2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print(int(N/2) + int(N%2))
+
+=======
+Suggestion 10
+
+def num_digits(n):
+    return len(str(n))

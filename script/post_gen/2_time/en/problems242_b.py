@@ -1,34 +1,148 @@
-#Problem Statement
-#You are given a string S. Find the lexicographically smallest string S' obtained by permuting the characters of S.
-#Here, for different two strings s = s_1 s_2 ... s_n and t = t_1 t_2 ... t_m, s < t holds lexicographically when one of the conditions below is satisfied.
-#There is an integer i (1 ≦ i ≦ min(n,m)) such that s_i < t_i and s_j=t_j for all integers j (1 ≦ j < i).
-#s_i = t_i for all integers i (1 ≦ i ≦ min(n,m)), and n < m.
-#
-#Constraints
-#S is a string of length between 1 and 2 × 10^5 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the lexicographically smallest string S' obtained by permuting the characters in S.
-#
-#Sample Input 1
-#aba
-#
-#Sample Output 1
-#aab
-#Three strings can be obtained by permuting aba:
-#aba
-#aab
-#baa
-#The lexicographically smallest among them is aab.
-#
-#Sample Input 2
-#zzzz
-#
-#Sample Output 2
-#zzzz
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    S = sorted(S)
+    S = ''.join(S)
+    print(S)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = sorted(S)
+    print(''.join(S))
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    print("".join(sorted(s)))
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = sorted(s)
+    print(''.join(s))
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = sorted(S)
+    print("".join(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print(''.join(sorted(s)))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = sorted(s)
+    print("".join(t))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    print(''.join(sorted(S)))
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    print("".join(sorted(s)))
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    S = sorted(S)
+    print(''.join(S))
+
+main()
+
+Learning Python The Hard Way
+
+I’m reading the book Learning Python The Hard Way by Zed Shaw. It’s a great book to learn Python. I’m reading it in Python 3.7.1. I’m not going to post the code here. Instead, I’ll just post the notes I take while reading the book.
+
+I’m reading the book in Python 3.7.1. I’m not going to post the code here. Instead, I’ll just post the notes I take while reading the book.
+
+Chapter 1
+
+Python is a very simple language. It’s a high level language. It’s interpreted, not compiled. It’s also very powerful. It’s a good language to learn to program.
+
+Python 3 is the current version. Python 2 is the old version. Python 2 is no longer supported.
+
+Chapter 2
+
+The Python interpreter is called the command line. You can type python3.7 and enter the interactive interpreter. You can exit the interpreter with Ctrl-D.
+
+You can also type python3.7 filename.py to run a Python program.
+
+You can use the print command to print a line to the console. You can use the input command to get input from the user.
+
+You can use the # to start a comment.
+
+You can use the = to assign a value to a variable.
+
+You can use the type command to get the type of a variable.
+
+You can use the + to add two numbers.
+
+You can use the - to subtract two numbers.
+
+You can use the * to multiply two numbers.
+
+You can use the / to divide two numbers.
+
+You can use the % to get the remainder of two numbers.
+
+You can use the < to compare two numbers.
+
+You can use the > to compare two numbers.
+
+You can use the <= to compare two numbers.
+
+You can use the >= to compare two numbers.
+
+You can use the == to compare two numbers.
+
+You can use the != to compare two numbers.
+
+You can use the and to combine two comparisons.
+
+You can use the or to combine two comparisons.
+
+You can use the not to combine two comparisons.
+
+You can use the if to make a conditional.
+
+You can use the else to make a conditional.
+
+You can use the elif to make a conditional.
+
+You can use the while to make a loop.
+
+You can use the break to break a

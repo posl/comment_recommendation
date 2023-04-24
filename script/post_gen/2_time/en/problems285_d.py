@@ -1,67 +1,184 @@
-#Problem Statement
-#You run a web service with N users.
-#The i-th user with a current handle S_i wants to change it to T_i.
-#Here, S_1,..., and S_N are pairwise distinct, and so are T_1,..., and T_N.
-#Determine if there is an appropriate order to change their handles to fulfill all of their requests subject to the following conditions:
-#you change only one user's handle at a time;
-#you change each user's handle only once;
-#when changing the handle, the new handle should not be used by other users at that point.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#S_i and T_i are strings of length between 1 and 8 (inclusive) consisting of lowercase English letters.
-#S_i ≠ T_i
-#S_i are pairwise distinct.
-#T_i are pairwise distinct.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#Output
-#Print Yes if they can change their handles to fulfill all of their requests subject to the conditions; print No otherwise.
-#
-#Sample Input 1
-#2
-#b m
-#m d
-#
-#Sample Output 1
-#Yes
-#The 1-st user with a current handle b wants to change it to m.
-#The 2-nd user with a current handle m wants to change it to d.
-#First, you change the 2-nd user's handle from m to d;
-#then you change the 1-st user's handle from b to m.  This way, you can achieve the objective.
-#Note that you cannot change the 1-st user's handle to m at first, because it is used by the 2-nd user at that point.
-#
-#Sample Input 2
-#3
-#a b
-#b c
-#c a
-#
-#Sample Output 2
-#No
-#The 1-st user with a current handle a wants to change it to b.
-#The 2-nd user with a current handle b wants to change it to c.
-#The 3-rd user with a current handle c wants to change it to a.
-#We cannot change their handles subject to the conditions.
-#
-#Sample Input 3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == S[j] and T[i] == T[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(i):
+            if S[i] == S[j] or T[i] == T[j] or S[i] == T[j] or T[i] == S[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 4
+
+def get_input():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    return N, S, T
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+
+    if len(set(S)) != len(set(T)):
+        print('No')
+        return
+
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if S[i] == T[j] and T[i] == S[j]:
+                print('No')
+                return
+
+    print('Yes')
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    S_set = set(S)
+    T_set = set(T)
+    if len(S_set) == N and len(T_set) == N:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    if len(set(S)) == len(S) and len(set(T)) == len(T):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    S_set = set(S)
+    T_set = set(T)
+    if len(S_set) == len(S) and len(T_set) == len(T) and len(S_set & T_set) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    #print(S, T)
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == S[j] or S[i] == T[j] or T[i] == S[j] or T[i] == T[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+
+    # 2つのリストを結合して、重複を削除する
+    # 重複がなければ、すべてのユーザーがその名前を使える
+    # 重複があれば、その名前を使うユーザーが存在する
+    if len(set(S+T)) == len(S+T):
+        print("Yes")
+    else:
+        print("No")

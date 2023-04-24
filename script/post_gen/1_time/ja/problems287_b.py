@@ -1,76 +1,140 @@
-#問題文
-#数字のみからなる長さ 6 の文字列が N 個与えられます。i  (i = 1, 2, ..., N) 番目のものを S_i と表します。
-#さらに、数字のみからなる長さ 3 の文字列が M 個与えられます。j  (j = 1, 2, ..., M) 番目のものを T_j と表します。
-#S_1, S_2, ..., S_N のうち、末尾 3 文字が T_1, T_2, ..., T_M のいずれかに一致するものの個数を求めてください。
-#
-#制約
-#1 ≦ N, M ≦ 1000
-#N, M は整数
-#全ての i = 1, 2, ..., N に対し、S_i は数字のみからなる長さ 6 の文字列
-#全ての j = 1, 2, ..., M に対し、T_j は数字のみからなる長さ 3 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 3
-#142857
-#004159
-#071028
-#159
-#287
-#857
-#
-#出力例 1
-#2
-#S_1 の末尾 3 文字は 857 であり、これは T_3 に一致します。
-#S_2 の末尾 3 文字は 159 であり、これは T_1 に一致します。
-#S_3 の末尾 3 文字は 028 であり、これは T_1, T_2, T_3 のいずれにも一致しません。
-#以上から、答えは 2 です。
-#
-#入力例 2
-#5 4
-#235983
-#109467
-#823476
-#592801
-#000333
-#333
-#108
-#467
-#983
-#
-#出力例 2
-#3
-#
-#入力例 3
-#4 4
-#000000
-#123456
-#987111
-#000000
-#000
-#111
-#999
-#111
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    ans = 0
+    for s in S:
+        ans += s[-3:] in T
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if S[i][-3:] == T[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                ans += 1
+                break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(M):
+        T.append(input())
+
+    count = 0
+    for i in range(N):
+        for j in range(M):
+            if S[i][-3:] == T[j]:
+                count += 1
+
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    #処理
+    ans = 0
+    for s in S:
+        ans += sum([s[-3:] == t for t in T])
+    #出力
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    # 出力
+    for i in range(N):
+        ans = 0
+        for j in range(M):
+            if S[i][-3:] == T[j]:
+                ans += 1
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+
+    # print(N, M)
+    # print(S)
+    # print(T)
+
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if S[i][-3:] == T[j]:
+                ans += 1
+                break
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+
+    print(sum(s.count(t[-3:]) for t in t))

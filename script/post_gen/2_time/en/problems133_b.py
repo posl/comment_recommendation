@@ -1,60 +1,124 @@
-#Problem Statement
-#There are N points in a D-dimensional space.
-#The coordinates of the i-th point are (X_{i1}, X_{i2}, ..., X_{iD}).
-#The distance between two points with coordinates (y_1, y_2, ..., y_D) and (z_1, z_2, ..., z_D) is ((y_1 - z_1)^2 + (y_2 - z_2)^2 + ... + (y_D - z_D)^2)^(1/2).
-#How many pairs (i, j) (i < j) are there such that the distance between the i-th point and the j-th point is an integer?
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10
-#1 ≦ D ≦ 10
-#-20 ≦ X_{ij} ≦ 20
-#No two given points have the same coordinates. That is, if i ≠ j, there exists k such that X_{ik} ≠ X_{jk}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#X_{11} X_{12} ... X_{1D}
-#X_{21} X_{22} ... X_{2D}
-#.
-#.
-#.
-#X_{N1} X_{N2} ... X_{ND}
-#
-#Output
-#Print the number of pairs (i, j) (i < j) such that the distance between the i-th point and the j-th point is an integer.
-#
-#Sample Input 1
-#3 2
-#1 2
-#5 5
-#-2 8
-#
-#Sample Output 1
-#1
-#The number of pairs with an integer distance is one, as follows:
-#The distance between the first point and the second point is (|1-5|^2 + |2-5|^2)^(1/2) = 5, which is an integer.
-#The distance between the second point and the third point is (|5-(-2)|^2 + |5-8|^2)^(1/2) = (58)^(1/2), which is not an integer.
-#The distance between the third point and the first point is (|-2-1|^2+|8-2|^2)^(1/2) = 3(5)^(1/2), which is not an integer.
-#
-#Sample Input 2
-#3 4
-#-3 7 8 2
-#-12 1 10 2
-#-2 8 9 3
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5 1
-#1
-#2
-#3
-#4
-#5
-#
-#Sample Output 3
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k]) ** 2
+            if dist ** 0.5 == int(dist ** 0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for d in range(D):
+                dist += (X[i][d] - X[j][d])**2
+            if dist**0.5 == int(dist**0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            d = 0
+            for k in range(D):
+                d += (X[i][k] - X[j][k])**2
+            if d**0.5 == int(d**0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for i in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k])**2
+            if dist**0.5 == int(dist**0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def distance(x, y):
+    return sum([(x[i]-y[i])**2 for i in range(len(x))])**0.5
+
+n, d = map(int, input().split())
+points = [list(map(int, input().split())) for i in range(n)]
+count = 0
+for i in range(n):
+    for j in range(i+1, n):
+        if distance(points[i], points[j]) == int(distance(points[i], points[j])):
+            count += 1
+print(count)
+
+I am trying to create a function that will take a list of numbers and return the sum of the numbers that are divisible by 3 and 5.
+
+=======
+Suggestion 6
+
+def distance(x1,x2):
+    dist = 0
+    for i in range(len(x1)):
+        dist += (x1[i] - x2[i])**2
+    return dist**(1/2)
+
+=======
+Suggestion 7
+
+def distance(a, b):
+    return sum([(a[i] - b[i]) ** 2 for i in range(len(a))]) ** 0.5
+
+=======
+Suggestion 8
+
+def get_ints(): return map(int, input().split())
+
+n, d = get_ints()
+
+x = [list(get_ints()) for _ in range(n)]
+
+ans = 0
+
+for i in range(n):
+    for j in range(i+1, n):
+        dist = 0
+        for k in range(d):
+            dist += (x[i][k] - x[j][k])**2
+        if int(dist**0.5) == dist**0.5:
+            ans += 1
+
+print(ans)
+
+=======
+Suggestion 9
+
+def dist( point1, point2 ):
+    return sum( (x-y)**2 for x, y in zip(point1, point2) )**0.5

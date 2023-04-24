@@ -1,81 +1,170 @@
-#Problem Statement
-#Tiles are aligned in N horizontal rows and N vertical columns.  Each tile has a grid with A horizontal rows and B vertical columns.  On the whole, the tiles form a grid X with (A× N) horizontal rows and (B× N) vertical columns.
-#For 1≦ i,j ≦ N, Tile (i,j) denotes the tile at the i-th row from the top and the j-th column from the left.
-#Each square of X is painted as follows.  
-#Each tile is either a white tile or a black tile.
-#Every square in a white tile is painted white; every square in a black tile is painted black.
-#Tile (1,1) is a white tile.
-#Two tiles sharing a side have different colors.  Here, Tile (a,b) and Tile (c,d) are said to be sharing a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#Print the grid X in the format specified in the Output section.
-#
-#Constraints
-#1 ≦ N,A,B ≦ 10
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print (A× N) strings S_1,...,S_{A× N} that satisfy the following condition, with newlines in between.
-#Each of S_1,...,S_{A× N} is a string of length (B× N) consisting of . and #.
-#For each i and j (1 ≦ i ≦ A× N,1 ≦ j ≦ B× N), the j-th character of S_i is . if the square at the i-th row from the top and j-th column from the left in grid X is painted white; the character is # if the square is painted black.
-#
-#Sample Input 1
-#4 3 2
-#
-#Sample Output 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#Sample Input 2
-#5 1 5
-#
-#Sample Output 2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#Sample Input 3
-#4 4 1
-#
-#Sample Output 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#Sample Input 4
-#1 4 4
-#
-#Sample Output 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def print_grid(N, A, B):
+    for i in range(A*N):
+        for j in range(B*N):
+            if (i//A + j//B) % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(a):
+        for j in range(n):
+            for k in range(b):
+                if ((i + j) % 2 == 0):
+                    print('.', end='')
+                else:
+                    print('#', end='')
+            if (j != n - 1):
+                print('.', end='')
+        print()
+
+=======
+Suggestion 3
+
+def print_tile(n, a, b):
+    for i in range(a):
+        for j in range(n):
+            if (i + j) % 2 == 0:
+                print('.' * b, end='')
+            else:
+                print('#' * b, end='')
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A):
+        for j in range(N):
+            if j % 2 == 0:
+                print((".#"*B)[:B], end="")
+            else:
+                print(("#."*B)[:B], end="")
+        print()
+    for i in range(N):
+        for j in range(A):
+            if i % 2 == 0:
+                print((".#"*B)[:B], end="")
+            else:
+                print(("#."*B)[:B], end="")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = (int(x) for x in input().split())
+    for i in range(A*N):
+        if i % A == 0:
+            for j in range(B*N):
+                if j % B == 0:
+                    if (i//A) % 2 == 0:
+                        if (j//B) % 2 == 0:
+                            print('.', end='')
+                        else:
+                            print('#', end='')
+                    else:
+                        if (j//B) % 2 == 0:
+                            print('#', end='')
+                        else:
+                            print('.', end='')
+                else:
+                    print('.', end='')
+        else:
+            for j in range(B*N):
+                if j % B == 0:
+                    if (i//A) % 2 == 0:
+                        if (j//B) % 2 == 0:
+                            print('#', end='')
+                        else:
+                            print('.', end='')
+                    else:
+                        if (j//B) % 2 == 0:
+                            print('.', end='')
+                        else:
+                            print('#', end='')
+                else:
+                    print('#', end='')
+        print()
+
+=======
+Suggestion 6
+
+def get_tiles(n, a, b):
+    tiles = []
+    for i in range(n):
+        for j in range(n):
+            if i % 2 == 0:
+                if j % 2 == 0:
+                    tiles.append(['.'] * b)
+                else:
+                    tiles.append(['#'] * b)
+            else:
+                if j % 2 == 0:
+                    tiles.append(['#'] * b)
+                else:
+                    tiles.append(['.'] * b)
+    return tiles
+
+=======
+Suggestion 7
+
+def get_tile(N, A, B):
+    tile = [['.' for i in range(B)] for j in range(A)]
+    for i in range(A):
+        for j in range(B):
+            if (i + j) % 2 == 0:
+                tile[i][j] = '#'
+    return tile
+
+=======
+Suggestion 8
+
+def make_tiles(n, a, b):
+    tiles = []
+    for i in range(n):
+        for j in range(n):
+            if i%2 == 0:
+                if j%2 == 0:
+                    tiles.append(['#']*b)
+                else:
+                    tiles.append(['.']*b)
+            else:
+                if j%2 == 0:
+                    tiles.append(['.']*b)
+                else:
+                    tiles.append(['#']*b)
+    return tiles
+
+=======
+Suggestion 9
+
+def  solve ( N ,  A ,  B ):
+    ans  =  [ [ 0  for  _  in  range ( B * N )]  for  _  in  range ( A * N )]
+     for  i  in  range ( N ):
+         for  j  in  range ( N ):
+             for  k  in  range ( A ):
+                 for  l  in  range ( B ):
+                    ans [ A * i + k ][ B * j + l ] =  ( i + j + k + l )  %  2 
+     for  i  in  range ( A * N ):
+         for  j  in  range ( B * N ):
+            ans [ i ][ j ] =  '.'   if  ans [ i ][ j ] ==  0   else  '#'
+         print ( '' . join ( ans [ i ]))
+
+=======
+Suggestion 10
+
+def printBoard(board):
+    for row in board:
+        print("".join(row))

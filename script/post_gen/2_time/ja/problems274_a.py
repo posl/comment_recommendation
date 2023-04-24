@@ -1,57 +1,73 @@
-#問題文
-#高橋君は野球ゲームを作っています。
-#高橋君はバッターの打率を指定された桁数の分だけ表示するプログラムを作ることにしました。  
-#整数 A, B があります。ここで A, B は 1 ≦ A ≦ 10, 0 ≦ B ≦ A を満たします。
-#このとき、文字列 S を次のように定義します。
-#(B/(A)) を小数点第 4 位で四捨五入した値を「整数部 1 桁」「 . 」「小数部 3 桁」の順に末尾ゼロを省略せずに表記した文字列。
-#例えば A=7, B = 4 の場合は、(B/(A)) = (4/(7)) = 0.571428... で、これを小数点第 4 位で四捨五入した値は 0.571 です。よって S は 0.571 になります。
-#A, B が入力として与えられるので S を出力してください。
-#
-#制約
-#1 ≦ A ≦ 10
-#0 ≦ B ≦ A
-#A, B は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#S を問題文の指示に従った形式で出力せよ。問題文の指示と異なる形式で出力した場合は誤答となることに注意せよ。
-#
-#入力例 1
-#7 4
-#
-#出力例 1
-#0.571
-#問題文本文でも説明した通り、(B/(A)) = (4/(7)) = 0.571428... で、これを小数点第 4 位で四捨五入した値は 0.571 です。よって S は 0.571 になります。
-#
-#入力例 2
-#7 3
-#
-#出力例 2
-#0.429
-#(B/(A)) = (3/(7)) = 0.428571... で、これを小数点第 4 位で四捨五入した値は 0.429 です。(繰り上がりが発生するのに注意してください。)
-#よって S は 0.429 となります。
-#
-#入力例 3
-#2 1
-#
-#出力例 3
-#0.500
-#(B/(A)) = (1/(2)) = 0.5 で、これを小数点第 4 位で四捨五入した値も同様に 0.5 です。
-#よって S は 0.500 となります。小数部を 3 桁並べる必要があるのに注意してください。
-#
-#入力例 4
-#10 10
-#
-#出力例 4
-#1.000
-#
-#入力例 5
-#1 0
-#
-#出力例 5
-#0.000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print('{:.3f}'.format(b/a))
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print("{:.3f}".format(b/a))
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    C = B / A
+    D = round(C, 3)
+    print('{:.3f}'.format(D))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print("{0:.3f}".format(b/a))
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print("{:.3f}".format((b/a)))
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    print('{:.3f}'.format(B / A))
+
+=======
+Suggestion 7
+
+def main():
+    a, b = list(map(int, input().strip().split()))
+    print('{:.3f}'.format(round(b/a, 4)))
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int, input().split())
+    print("{:0.3f}".format(b/a))
+
+=======
+Suggestion 9
+
+def main():
+    a, b = map(int, input().split())
+    print("{:03}".format(round(b/a, 3)*1000))
+
+=======
+Suggestion 10
+
+def calc():
+    a,b = map(int, input().split())
+    print("{:.3f}".format(b/a))

@@ -1,45 +1,117 @@
-#問題文
-#N 体のモンスターが居て、それぞれ 1, 2, ..., N と番号付けられています。
-#はじめ、モンスター i の体力は A_i です。
-#以降、体力が 1 以上のモンスターを生きているモンスターと呼びます。
-#生きているモンスターが 1 体になるまで以下を繰り返します。
-#ランダムに 1 体の生きているモンスターがランダムに別の生きているモンスターに攻撃します。
-#その結果、攻撃されたモンスターの体力を攻撃したモンスターの体力と同じ値だけ減らします。
-#最後に生き残ったモンスターの最終的な体力の最小値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#最後に生き残ったモンスターの最終的な体力の最小値を出力せよ。
-#
-#入力例 1
-#4
-#2 10 8 40
-#
-#出力例 1
-#2
-#1 番目のモンスターだけが攻撃し続けた場合、最後に生き残ったモンスターの体力は 2 となり、このときが最小です。
-#
-#入力例 2
-#4
-#5 13 8 1000000000
-#
-#出力例 2
-#1
-#
-#入力例 3
-#3
-#1000000000 1000000000 1000000000
-#
-#出力例 3
-#1000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n == 2:
+        print(a[0])
+    else:
+        ans = a[0]
+        for i in range(1, n - 1):
+            ans = gcd(ans, a[i])
+        print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(gcd_list(A))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 最小公倍数を求める
+    from fractions import gcd
+    from functools import reduce
+    def lcm_base(x, y):
+        return (x * y) // gcd(x, y)
+
+    def lcm(*numbers):
+        return reduce(lcm_base, numbers, 1)
+
+    # 最小公倍数を求める
+    ans = lcm(*A)
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for a in A:
+        ans = ans ^ a
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 体力が最小のモンスターを選ぶ
+    minA = min(A)
+
+    # 体力が最小のモンスターの体力を出力
+    print(minA)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 最小値を求める問題なので、最大公約数を求める
+    from fractions import gcd
+    from functools import reduce
+    print(reduce(gcd, A))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 最小公倍数を求める
+    # 1. 2つの数の最大公約数を求める
+    def gcd(a, b):
+        while b:
+            a, b = b, a%b
+        return a
+    # 2. 2つの数の最小公倍数を求める
+    def lcm(a, b):
+        return a*b//gcd(a,b)
+    # 3. 3つ以上の数の最小公倍数を求める
+    def lcmm(*args):
+        return functools.reduce(lcm, args)
+    print(lcmm(*A))

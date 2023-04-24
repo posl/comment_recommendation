@@ -1,43 +1,146 @@
-#問題文
-#{1, 2, ..., N} を並び替えた数列 p = {p_1, p_2, ..., p_N} があります。
-#あなたは一度だけ、整数  i, j  (1 ≦ i < j ≦ N) を選んで  p_i  と  p_j  を入れ替える操作を行うことができます。操作を行わないことも可能です。
-#p を昇順にすることができるなら YES を、できないならば NO を出力してください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 50
-#p は {1, 2, ..., N} を並び替えた数列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#p_1 p_2 ... p_N
-#
-#出力
-#p を昇順にすることができるなら YES を、できないならば NO を出力せよ。
-#
-#入力例 1
-#5
-#5 2 3 4 1
-#
-#出力例 1
-#YES
-#p_1 と p_5 を入れ替えることで p を昇順にできます。
-#
-#入力例 2
-#5
-#2 4 3 5 1
-#
-#出力例 2
-#NO
-#この場合、どのような操作を行っても p を昇順にすることはできません。
-#
-#入力例 3
-#7
-#1 2 3 4 5 6 7
-#
-#出力例 3
-#YES
-#p が最初から昇順なので、操作を行う必要はありません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if p[i] != i+1:
+            cnt += 1
+    if cnt == 2 or cnt == 0:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if p[i] != i+1:
+            count += 1
+    if count <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if p[i] != i+1:
+            cnt += 1
+    if cnt <= 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if p[i] != i+1:
+            count += 1
+    if count <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p_sorted = sorted(p)
+    cnt = 0
+    for i in range(n):
+        if p[i] != p_sorted[i]:
+            cnt += 1
+    if cnt <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = list(map(int,input().split()))
+    p_sort = sorted(p)
+    count = 0
+    for i in range(N):
+        if p[i] != p_sort[i]:
+            count += 1
+    if count <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.sort()
+    cnt = 0
+    for i in range(n):
+        if p[i] != i+1:
+            cnt += 1
+    if cnt <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 8
+
+def check_sort(list):
+    for i in range(len(list)-1):
+        if list[i] > list[i+1]:
+            return False
+    return True
+
+N = int(input())
+p_list = list(map(int, input().split()))
+for i in range(N):
+    for j in range(i+1, N):
+        p_list[i], p_list[j] = p_list[j], p_list[i]
+        if check_sort(p_list):
+            print("YES")
+            exit()
+        p_list[i], p_list[j] = p_list[j], p_list[i]
+print("NO")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    for i in range(n):
+        if p[i] == i+1:
+            continue
+        if i+1 in p:
+            j = p.index(i+1)
+            p[i], p[j] = p[j], p[i]
+        else:
+            print('NO')
+            return
+    print('YES')

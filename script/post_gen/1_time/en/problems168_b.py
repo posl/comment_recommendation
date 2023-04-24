@@ -1,36 +1,82 @@
-#Problem Statement
-#We have a string S consisting of lowercase English letters.
-#If the length of S is at most K, print S without change.
-#If the length of S exceeds K, extract the first K characters in S, append ... to the end of them, and print the result.
-#
-#Constraints
-#K is an integer between 1 and 100 (inclusive).
-#S is a string consisting of lowercase English letters.
-#The length of S is between 1 and 100 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#S
-#
-#Output
-#Print a string as stated in Problem Statement.
-#
-#Sample Input 1
-#7
-#nikoandsolstice
-#
-#Sample Output 1
-#nikoand...
-#nikoandsolstice has a length of 15, which exceeds K=7.
-#We should extract the first 7 characters in this string, append ... to the end of them, and print the result nikoand....
-#
-#Sample Input 2
-#40
-#ferelibenterhominesidquodvoluntcredunt
-#
-#Sample Output 2
-#ferelibenterhominesidquodvoluntcredunt
-#The famous quote from Gaius Julius Caesar.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[:K] + "...")
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[:k] + "...")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[:K] + '...')
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[:k] + '...')
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    K = int(input())
+    S = input()
+
+    # compute
+    if len(S) <= K:
+        ans = S
+    else:
+        ans = S[:K] + '...'
+
+    # output
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) > K:
+        print(S[:K] + '...')
+    else:
+        print(S)
+
+=======
+Suggestion 7
+
+def main():
+    #write your code below this line
+    pass

@@ -1,37 +1,51 @@
-#問題文
-#高橋君は 500 円玉を K 枚持っています。
-#これらの総額が X 円以上である場合は Yes を、そうでない場合は No を出力してください。
-#
-#制約
-#1 ≤ K ≤ 100
-#1 ≤ X ≤ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K X
-#
-#出力
-#総額が X 円以上である場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#2 900
-#
-#出力例 1
-#Yes
-#500 円玉が 2 枚なので総額は 1000 円であり、これは X = 900 円以上です。
-#
-#入力例 2
-#1 501
-#
-#出力例 2
-#No
-#500 円玉が 1 枚なので総額は 500 円であり、これは X = 501 円未満です。
-#
-#入力例 3
-#4 2000
-#
-#出力例 3
-#Yes
-#500 円玉が 4 枚なので総額は 2000 円であり、これは X = 2000 円以上です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K, X = map(int, input().split())
+    if K * 500 >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    K, X = map(int, input().split())
+    if K * 500 >= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    K, X = map(int, input().split())
+    if 500 * K >= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    k, x = map(int, input().split())
+    if 500 * k >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    K, X = map(int, input().split())
+    if 500*K >= X:
+        print("Yes")
+    else:
+        print("No")

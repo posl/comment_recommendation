@@ -1,99 +1,517 @@
-#問題文
-#すぬけ君の工場では，次のような特徴を持つ ロボットアーム を導入することになりました：
-#ロボットアームは，m 個の 腕 と m+1 個の 関節 からなる．腕には 1, 2, ..., m で，関節には 0, 1, ..., m で番号が付けられている．腕 i は関節 i-1 と関節 i をつなぐ．腕 i の長さは d_i である．
-#各腕には，それぞれ独立に モード を指定することができる．モードは L, R, D, U のいずれかであり，腕のモードはその腕の向きを指定する．工場を座標平面とみなすと，関節 i の座標 (x_i, y_i) は次のように定まる：
-#(x_0, y_0) = (0, 0)．
-#腕 i のモードが L のとき，(x_i, y_i) = (x_{i-1} - d_{i}, y_{i-1})．
-#腕 i のモードが R のとき，(x_i, y_i) = (x_{i-1} + d_{i}, y_{i-1})．
-#腕 i のモードが D のとき，(x_i, y_i) = (x_{i-1}, y_{i-1} - d_{i})．
-#腕 i のモードが U のとき，(x_i, y_i) = (x_{i-1}, y_{i-1} + d_{i})．
-#
-#すぬけ君は，腕のモードをうまく指定することにより，N 個の点 (X_1, Y_1), (X_2, Y_2), ..., (X_N, Y_N) のいずれにもロボットアームの関節 m をちょうど一致させられるようなロボットアームを導入したいです．
-#このようなことは可能でしょうか？
-#可能ならば，条件を満たすロボットアームおよび，各点 (X_j, Y_j) にそのロボットアームの関節 m を到達させるためのモードの指定方法を求めてください．
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分点
-#300 点分のテストケースでは，-10 ≦ X_i ≦ 10 および -10 ≦ Y_i ≦ 10 が成り立つ．
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#出力
-#条件を満たすことが可能なら，次の形式で出力せよ．不可能な場合は -1 を出力せよ．
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m および d_i はロボットアームの情報を表す．それぞれの変数の意味は問題文
-#を参照せよ．
-#ここで，1 ≦ m ≦ 40, 1 ≦ d_i ≦ 10^{12} かつ m, d_i はすべて整数でなければならない．
-#w_j は m 文字からなる文字列であり，点 (X_j, Y_j) にロボットアームの関節 m を到達させる方法を表す．
-#w_j の i 文字目は L, R, D, U のいずれかの文字であり，腕 i のモードを表す．
-#
-#入力例 1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#出力例 1
-#2
-#1 2
-#RL
-#UU
-#DR
-#それぞれの (X_j, Y_j) にロボットアームの関節 m を到達させる方法において，各関節の位置は次のようになります．
-#(X_1, Y_1) = (-1, 0) に到達させる方法では，まず関節 0 の位置は (x_0, y_0) = (0, 0) です．腕 1 のモードが R なので，関節 1 の位置は (x_1, y_1) = (1, 0) です．腕 2 のモードが L なので，関節 m=2 の位置は (x_2, y_2) = (-1, 0) です．
-#(X_2, Y_2) = (0, 3) に到達させる方法では，(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3) です．
-#(X_3, Y_3) = (2, -1) に到達させる方法では，(x_0, y_0) = (0, 0), (x_1, y_1) = (0, -1), (x_2, y_2) = (2, -1) です．
-#
-#入力例 2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#出力例 2
-#-1
-#
-#入力例 3
-#2
-#1 1
-#1 1
-#
-#出力例 3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j) の中に同じ点が含まれることもあります．
-#
-#入力例 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#出力例 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    if N == 1:
+        print(1)
+        print(1, 1)
+        print("R")
+        return
+
+    if N == 2:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            print(2)
+            print(1, 1)
+            print("RU")
+            print("UR")
+            return
+        else:
+            print(-1)
+            return
+
+    if N == 3:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            if X[1] == X[2] and Y[1] == Y[2]:
+                print(2)
+                print(1, 1)
+                print("RU")
+                print("UR")
+                return
+            else:
+                print(-1)
+                return
+        else:
+            if X[1] == X[2] and Y[1] == Y[2]:
+                print(-1)
+                return
+            else:
+                if X[0] == X[1] and X[1] == X[2]:
+                    print(2)
+                    print(1, 1)
+                    print("RU")
+                    print("UR")
+                    return
+                elif Y[0] == Y[1] and Y[1] == Y[2]:
+                    print(2)
+                    print(1, 1)
+                    print("RU")
+                    print("UR")
+                    return
+                elif (X[0] - X[1]) == (X[1] - X[2]) and (Y[0] - Y[1]) == (Y[1] - Y[2]):
+                    print(2)
+                    print(1, 1)
+                    print("RU")
+                    print("UR")
+                    return
+                else:
+                    print(-1)
+                    return
+
+    if N == 4:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            if X[1] == X[2] and Y[1] == Y[2]:
+                if X[2] == X[3] and Y[2]
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    if N == 1:
+        print(2)
+        print(1, 1)
+        print('RU')
+        return
+    if N == 2:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 3:
+        if X[0] == X[1] and X[1] == X[2] and Y[0] == Y[1] and Y[1] == Y[2]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            print('RU')
+            return
+        else:
+            print(-1)
+            return
+    if N == 4:
+        if X[0] == X[1] and X[1] == X[2] and X[2] == X[3] and Y[0] == Y[1] and Y[1] == Y[2] and Y[2] == Y[3]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            print('RU')
+            print('UR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 5:
+        if X[0] == X[1] and X[1] == X[2] and X[2] == X[3] and X[3] == X[4] and Y[0] == Y[1] and Y[1] == Y[2] and Y[2] == Y[3] and Y[3] == Y[4]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            print('RU')
+            print('UR')
+            print('RU')
+            return
+        else:
+            print(-1)
+            return
+    if N == 6:
+        if X[0] == X[1
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    if N == 1:
+        print(0)
+        return
+    if N == 2:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            print(1)
+            print(1)
+            print('R')
+            print('L')
+        else:
+            print(-1)
+        return
+    d = []
+    for i in range(N - 1):
+        d.append(abs(X[i] - X[i + 1]) + abs(Y[i] - Y[i + 1]))
+    if d[0] != d[1] or d[1] != d[2]:
+        print(-1)
+        return
+    m = 0
+    for i in range(N - 1):
+        m = max(m, abs(X[i] - X[i + 1]))
+        m = max(m, abs(Y[i] - Y[i + 1]))
+    print(m)
+    print(*d)
+    for i in range(N):
+        s = ''
+        for j in range(m):
+            if X[i] > 0:
+                X[i] -= 1
+                s += 'R'
+            elif X[i] < 0:
+                X[i] += 1
+                s += 'L'
+            elif Y[i] > 0:
+                Y[i] -= 1
+                s += 'U'
+            else:
+                Y[i] += 1
+                s += 'D'
+        print(s)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for _ in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    if N == 1:
+        print(0)
+        return
+    if N == 2:
+        if X[0] != X[1] and Y[0] != Y[1]:
+            print(2)
+            print(1, 1)
+            print('RU' if X[0] < X[1] else 'DR')
+            print('UR' if X[0] < X[1] else 'LD')
+        else:
+            print(1)
+            print(1)
+            print('R' if X[0] < X[1] else 'L')
+        return
+    if N == 3:
+        if X[0] != X[1] and Y[0] != Y[1] and X[1] != X[2] and Y[1] != Y[2]:
+            print(2)
+            print(1, 1)
+            print('RU' if X[0] < X[1] else 'DR')
+            print('UR' if X[0] < X[1] else 'LD')
+        else:
+            print(1)
+            print(1)
+            print('R' if X[0] < X[1] else 'L')
+        return
+    if N == 4:
+        if X[0] != X[1] and Y[0] != Y[1] and X[1] != X[2] and Y[1] != Y[2] and X[2] != X[3] and Y[2] != Y[3]:
+            print(2)
+            print(1, 1)
+            print('RU' if X[0] < X[1] else 'DR')
+            print('UR' if X[0] < X[1] else 'LD')
+        else:
+            print(1)
+            print(1)
+            print('R' if X[0] < X[1] else 'L')
+        return
+    if N == 5:
+        if X[0] != X[1] and Y[0] != Y[1] and X[1] != X[2]
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    if N == 1:
+        print(2)
+        print(1, 1)
+        print("RU")
+        print("UR")
+        return
+    if N == 2:
+        if X[0] == X[1] and Y[0] == Y[1]:
+            print(2)
+            print(1, 1)
+            print("RU")
+            print("UR")
+            return
+        else:
+            print(-1)
+            return
+    # N >= 3
+    m = 40
+    d = [1] * m
+    for i in range(1, m):
+        d[i] = d[i-1] * 2
+    w = [""] * N
+    for i in range(N):
+        if X[i] < 0:
+            w[i] += "L" * abs(X[i])
+        else:
+            w[i] += "R" * abs(X[i])
+        if Y[i] < 0:
+            w[i] += "D" * abs(Y[i])
+        else:
+            w[i] += "U" * abs(Y[i])
+    print(m)
+    print(*d)
+    for i in range(N):
+        print(w[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+
+    if N == 1:
+        print(2)
+        print(1, 1)
+        print('RU')
+        print('UR')
+        return
+
+    if N == 2:
+        if sum(XY[0]) == sum(XY[1]):
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+        else:
+            print(-1)
+        return
+
+    if N == 3:
+        if sum(XY[0]) == sum(XY[1]) == sum(XY[2]):
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+        else:
+            print(-1)
+        return
+
+    if N == 4:
+        if sum(XY[0]) == sum(XY[1]) == sum(XY[2]) == sum(XY[3]):
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+        else:
+            print(-1)
+        return
+
+    if N == 5:
+        if sum(XY[0]) == sum(XY[1]) == sum(XY[2]) == sum(XY[3]) == sum(XY[4]):
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+        else:
+            print(-1)
+        return
+
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    if N == 1:
+        print(1)
+        print(1)
+        print('R')
+        return
+    if N == 2:
+        if XY[0] == XY[1]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 3:
+        if XY[0] == XY[1] == XY[2]:
+            print(3)
+            print(1, 1, 1)
+            print('RUU')
+            print('URU')
+            print('UUR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 4:
+        if XY[0] == XY[1] == XY[2] == XY[3]:
+            print(4)
+            print(1, 1, 1, 1)
+            print('RUUU')
+            print('URUU')
+            print('UURU')
+            print('UUUR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 5:
+        if XY[0] == XY[1] == XY[2] == XY[3] == XY[4]:
+            print(5)
+            print(1, 1, 1, 1, 1)
+            print('RUUUU')
+            print('URUUU')
+            print('UURUU')
+            print('UUURU')
+            print('UUUUR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 6:
+        if XY[0] == XY[1] == XY[2] == XY[3] == XY[4] == XY[5]:
+            print(6)
+            print(1, 1, 1, 1, 1, 1)
+            print('RUUUUU')
+            print('URUUUU')
+            print('UURUUU')
+            print('UUURUU')
+            print('UUUURU')
+            print('UUUUUR')
+            return
+        else:
+            print(-1)
+            return
+    if N == 7:
+        if XY[0
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    if N == 1:
+        print(1)
+        print(1)
+        print('R')
+        return
+    if N == 2:
+        if XY[0] == XY[1]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            return
+        d = max(abs(XY[0][0] - XY[1][0]), abs(XY[0][1] - XY[1][1]))
+        print(2)
+        print(d, d)
+        print('RU')
+        print('UR')
+        return
+    d = max(abs(XY[0][0] - XY[1][0]), abs(XY[0][1] - XY[1][1]))
+    for i in range(2, N):
+        d = max(d, abs(XY[0][0] - XY[i][0]), abs(XY[0][1] - XY[i][1]))
+    print(2)
+    print(d, d)
+    print('RU')
+    print('UR')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+
+    if N == 1:
+        print(1)
+        print(1)
+        print(1)
+        return
+
+    if N == 2:
+        if XY[0] == XY[1]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            return
+        else:
+            print(-1)
+            return
+
+    # N >= 3
+    m = 40
+    d = [1] + [2 ** i for i in range(1, m)]
+    w = [''] * N
+    for i in range(N):
+        for j in range(m):
+            if XY[i][0] & (1 << j):
+                w[i] += 'R'
+            else:
+                w[i] += 'L'
+            if XY[i][1] & (1 << j):
+                w[i] += 'U'
+            else:
+                w[i] += 'D'
+
+    print(m)
+    print(*d)
+    for wi in w:
+        print(wi)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    if N == 1:
+        print(0)
+    elif N == 2:
+        if XY[0][0] == XY[1][0] or XY[0][1] == XY[1][1]:
+            print(1)
+            print(abs(XY[0][0] - XY[1][0]) + abs(XY[0][1] - XY[1][1]))
+            print(''.join(['R' if XY[0][0] < XY[1][0] else 'L' if XY[0][0] > XY[1][0] else '',
+                           'U' if XY[0][1] < XY[1][1] else 'D' if XY[0][1] > XY[1][1] else '']))
+            print(''.join(['R' if XY[0][0] > XY[1][0] else 'L' if XY[0][0] < XY[1][0] else '',
+                           'U' if XY[0][1] > XY[1][1] else 'D' if XY[0][1] < XY[1][1] else '']))
+        else:
+            print(2)
+            print(abs(XY[0][0] - XY[1][0]), abs(XY[0][1] - XY[1][1]))
+            print(''.join(['R' if XY[0][0] < XY[1][0] else 'L' if XY[0][0] > XY[1][0] else '',
+                           'U' if XY[0][1] < XY[1][1] else 'D' if XY[0][1] > XY[1][1] else '']))
+            print(''.join(['R' if XY[0][0] > XY[1][0] else 'L' if XY[0][0] < XY[1][0] else '',
+                           'U' if XY[0][1] > XY[1][1] else 'D' if XY[0][1] < XY[1][1] else '']))
+    else:
+        if XY[0][0] == XY[1][0] or XY[0][1

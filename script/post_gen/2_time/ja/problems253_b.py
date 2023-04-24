@@ -1,44 +1,151 @@
-#問題文
-#H 行 W 列のマス目があり、そのうち二つの異なるマスに駒が置かれています。
-#マス目の状態は H 個の長さ W の文字列 S_1, ..., S_H で表されます。S_{i, j} =  o ならば i 行目 j 列目のマスに駒が置かれていることを、S_{i, j} =  - ならばそのマスには駒が置かれていないことを表します。なお、S_{i, j} は文字列 S_i の j 文字目を指します。
-#一方の駒をマス目の外側に出ないように上下左右の隣接するマスに動かすことを繰り返すとき、もう一方の駒と同じマスに移動させるためには最小で何回動かす必要がありますか？
-#
-#制約
-#2 ≦ H, W ≦ 100
-#H, W は整数
-#S_i  (1 ≦ i ≦ H) は o および - のみからなる長さ W の文字列
-#S_{i, j} =  o となる整数 1 ≦ i ≦ H, 1 ≦ j ≦ W の組がちょうど二つ存在する
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_1
-#.
-#.
-#.
-#S_H
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 3
-#--o
-#o--
-#
-#出力例 1
-#3
-#1 行目 3 列目に置かれている駒を 下 -> 左 -> 左 と移動すると 3 回でもう一方の駒と同じマスに移動させることができます。2 回以下で移動させることはできないので、3 を出力します。
-#
-#入力例 2
-#5 4
-#-o--
-#----
-#----
-#----
-#-o--
-#
-#出力例 2
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                x1, y1 = i, j
+            if S[i][j] == 'o':
+                x2, y2 = i, j
+    print(max(abs(x1-x2), abs(y1-y2)))
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o":
+                x, y = i, j
+                break
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o":
+                print(abs(x - i) + abs(y - j))
+                return
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o":
+                x, y = i, j
+                break
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o" and (i != x or j != y):
+                print(abs(x-i)+abs(y-j))
+                return
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                a = i
+                b = j
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                c = i
+                d = j
+    print(max(abs(a-c), abs(b-d)))
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "o":
+                x, y = i, j
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "o":
+                ans = max(ans, abs(x-i)+abs(y-j))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                a, b = i, j
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                c, d = i, j
+    print(max(abs(a-c), abs(b-d)))
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "o":
+                x, y = i, j
+    print(max(x, h-x-1) + max(y, w-y-1))
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                x, y = i, j
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                ans = max(ans, abs(x-i) + abs(y-j))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # 二つの駒の位置を求める
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o":
+                x0, y0 = i, j
+            elif S[i][j] == "o":
+                x1, y1 = i, j
+
+    # 二つの駒の距離を求める
+    ans = abs(x0 - x1) + abs(y0 - y1)
+
+    print(ans)

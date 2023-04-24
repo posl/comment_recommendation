@@ -1,54 +1,160 @@
-#Problem Statement
-#We have N ID cards, and there are M gates.
-#We can pass the i-th gate if we have one of the following ID cards: the L_i-th, (L_i+1)-th, ..., and R_i-th ID cards.
-#How many of the ID cards allow us to pass all the gates alone?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#Output
-#Print the number of ID cards that allow us to pass all the gates alone.
-#
-#Sample Input 1
-#4 2
-#1 3
-#2 4
-#
-#Sample Output 1
-#2
-#Two ID cards allow us to pass all the gates alone, as follows:
-#The first ID card does not allow us to pass the second gate.
-#The second ID card allows us to pass all the gates.
-#The third ID card allows us to pass all the gates.
-#The fourth ID card does not allow us to pass the first gate.
-#
-#Sample Input 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#100000 1
-#1 100000
-#
-#Sample Output 3
-#100000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    print(max(min(R) - max(L) + 1, 0))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    Lmax = max(L)
+    Rmin = min(R)
+    if Lmax > Rmin:
+        print(0)
+    else:
+        print(Rmin - Lmax + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    L = [0]*M
+    R = [0]*M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    print(max(0, min(R)-max(L)+1))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    L, R = [], []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    print(max(0, min(R) - max(L) + 1))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    l, r = [], []
+    for _ in range(m):
+        li, ri = map(int, input().split())
+        l.append(li)
+        r.append(ri)
+
+    print(min(r) - max(l) + 1 if min(r) - max(l) + 1 > 0 else 0)
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int,input().split())
+    L = [0]*M
+    R = [0]*M
+    for i in range(M):
+        L[i],R[i] = map(int,input().split())
+    Lmax = max(L)
+    Rmin = min(R)
+    if Rmin-Lmax+1>0:
+        print(Rmin-Lmax+1)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    l = [0] * (n + 1)
+    for _ in range(m):
+        a, b = map(int, input().split())
+        l[a - 1] += 1
+        l[b] -= 1
+    for i in range(n):
+        l[i + 1] += l[i]
+    print(l.count(m))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    LR.sort(key=lambda x: x[1])
+    ans = 0
+    right = 0
+    for L, R in LR:
+        if right < L:
+            ans += 1
+            right = R
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    l = [0] * N
+    r = [0] * N
+    for i in range(M):
+        l[LR[i][0] - 1] += 1
+        r[LR[i][1] - 1] += 1
+    ans = 0
+    now = 0
+    for i in range(N):
+        now += l[i]
+        now -= r[i]
+        if now == M:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #N and M
+    N, M = map(int, input().split())
+    #List of L_i and R_i
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    #Sort the list of L_i and R_i
+    LR.sort()
+    #The number of ID cards that allow us to pass all the gates alone
+    count = 0
+    #The maximum of the L_i
+    maxL = 0
+    #The minimum of the R_i
+    minR = N
+    #Check the list of L_i and R_i
+    for i in range(M):
+        #Update the maximum of the L_i
+        maxL = max(maxL, LR[i][0])
+        #Update the minimum of the R_i
+        minR = min(minR, LR[i][1])
+        #Check if the maximum of the L_i is less than the minimum of the R_i
+        if maxL <= minR:
+            #Update the number of ID cards that allow us to pass all the gates alone
+            count += 1
+    #Print the number of ID cards that allow us to pass all the gates alone
+    print(count)

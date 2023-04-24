@@ -1,44 +1,124 @@
-#Problem Statement
-#Takahashi had his N-th birthday, when he was T centimeters tall.
-#Additionally, we know the following facts:
-#In each year between Takahashi's birth (0-th birthday) and his X-th birthday, his height increased by D centimeters. More formally, for each i = 1, 2, ..., X, his height increased by D centimeters between his (i-1)-th birthday and his i-th birthday.
-#Between Takahashi's X-th birthday and his N-th birthday, his height did not change.
-#Find Takahashi's height on his M-th birthday, in centimeters.
-#
-#Constraints
-#0 ≦ M < N ≦ 100
-#1 ≦ X ≦ N
-#1 ≦ T ≦ 200
-#1 ≦ D ≦ 100
-#Takahashi was at least 1 centimeter tall at his birth.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M X T D
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#38 20 17 168 3
-#
-#Sample Output 1
-#168
-#In this sample, Takahashi was 168 centimeters tall on his 38-th birthday. Also, his height did not change between his 17-th birthday and 38-th birthday.
-#From these facts, we find that he was 168 centimeters tall on his 20-th birthday, so the answer is 168.
-#
-#Sample Input 2
-#1 0 1 3 2
-#
-#Sample Output 2
-#1
-#In this sample, Takahashi was 1 centimeter tall on his 0(=M)-th birthday and 3(=T) centimeters tall on his 1(=N)-st birthday.
-#
-#Sample Input 3
-#100 10 100 180 1
-#
-#Sample Output 3
-#90
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    if M < X:
+        print(T + (N - X) * D)
+    else:
+        print(T - (M - X) * D)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    if M < X:
+        print(T + D * (N - X))
+    else:
+        print(T + D * (N - X) - D * (M - X))
+
+=======
+Suggestion 3
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    if N == M:
+        print(T)
+    elif N == X:
+        print(T + (N - M) * D)
+    else:
+        print(T + (X - M) * D)
+
+=======
+Suggestion 4
+
+def main():
+    n, m, x, t, d = map(int, input().split())
+    if n == m:
+        print(t)
+    elif m < x:
+        print(t + (x - m) * d)
+    else:
+        print(t + (n - m) * d)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    #print(N, M, X, T, D)
+    if M < X:
+        print(T + D * (N - X))
+    else:
+        print(T + D * (N - M - 1))
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N, M, X, T, D = map(int, input().split())
+
+    #compute
+    if M < X:
+        ans = T + (N - X) * D
+    else:
+        ans = T + (M - X) * D + (N - M) * D
+
+    #output
+    print(ans)
+
+=======
+Suggestion 7
+
+def solution():
+    N, M, X, T, D = map(int, input().split())
+    if M < X:
+        print(T + D * (N - X))
+    else:
+        print(T + D * (M - X))
+
+=======
+Suggestion 8
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    result = T
+    if M < X:
+        result += (X - M) * D
+    elif M > X:
+        result += (N - M) * D
+    print(result)
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N, M, X, T, D = map(int, input().split())
+
+    #compute
+    if M >= X:
+        h = T + D*(M-X)
+    else:
+        h = T
+
+    #output
+    print(h)
+
+=======
+Suggestion 10
+
+def main():
+    #Read the input
+    N, M, X, T, D = map(int, input().split())
+    #Calculate the height
+    if M < X:
+        height = T + (X - M) * D
+    else:
+        height = T
+    #Print the answer
+    print(height)

@@ -1,61 +1,195 @@
-#問題文
-#xy 平面上に 1 から N までの番号が付いた N 個の点があります。
-#点 i は座標 (X_i,Y_i) にあり、相異なる 2 点は異なる位置に存在します。
-#この N 点から 3 点を選ぶとき、選ばれた 3 点を線分で結んだ図形が正の面積を持つ三角形になるような点の選び方の総数を求めてください。  
-#
-#制約
-#入力は全て整数である
-#3 ≦ N ≦ 300
-#-10^9 ≦ X_i,Y_i ≦ 10^9
-#i ≠ j ならば (X_i,Y_i) ≠ (X_j,Y_j)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#X_1 Y_1
-#X_2 Y_2
-#...
-#X_N Y_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#4
-#0 1
-#1 3
-#1 1
-#-1 -1
-#
-#出力例 1
-#3
-#点を図示すると、以下のようになります。
-#三角形をなすような点の選び方は、 {1,2,3},{1,3,4},{2,3,4} の 3 つです。
-#
-#入力例 2
-#20
-#224 433
-#987654321 987654321
-#2 0
-#6 4
-#314159265 358979323
-#0 0
-#-123456789 123456789
-#-1000000000 1000000000
-#124 233
-#9 -6
-#-4 0
-#9 5
-#-7 3
-#333333333 -333333333
-#-9 -1
-#7 -10
-#-1 5
-#324 633
-#1000000000 -1000000000
-#20 0
-#
-#出力例 2
-#1124
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if (X[j]-X[i])*(Y[k]-Y[i]) - (X[k]-X[i])*(Y[j]-Y[i]) != 0:
+                    ans += 1
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if (X[k]-X[i])*(Y[j]-Y[i]) == (X[j]-X[i])*(Y[k]-Y[i]):
+                    continue
+                else:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    count = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if (X[j]-X[i])*(Y[k]-Y[i])-(Y[j]-Y[i])*(X[k]-X[i]) != 0:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    #正の面積を持つ三角形になるような点の選び方の総数を求める
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if X[i]*(Y[j]-Y[k])+X[j]*(Y[k]-Y[i])+X[k]*(Y[i]-Y[j]) != 0:
+                    ans += 1
+    #出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    P = [tuple(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                # 点の位置関係を調べる
+                # 3点が一直線上にある場合は、面積が0になるのでスキップ
+                if (P[j][0] - P[i][0]) * (P[k][1] - P[i][1]) == (P[j][1] - P[i][1]) * (P[k][0] - P[i][0]):
+                    continue
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    X = [None]*N
+    Y = [None]*N
+    for i in range(N):
+        X[i],Y[i] = map(int,input().split())
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if X[i]*(Y[j]-Y[k])+X[j]*(Y[k]-Y[i])+X[k]*(Y[i]-Y[j]) != 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i],Y[i] = map(int, input().split())
+    cnt = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if ((X[j]-X[i])*(Y[k]-Y[i])-(X[k]-X[i])*(Y[j]-Y[i])) != 0:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for _ in range(N):
+        X, Y = map(int, input().split())
+        x.append(X)
+        y.append(Y)
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if (x[j]-x[i])*(y[k]-y[i]) != (x[k]-x[i])*(y[j]-y[i]):
+                    cnt += 1
+    print(cnt)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    #print(N)
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    #print(X,Y)
+    count = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if (X[j]-X[i])*(Y[k]-Y[i]) != (X[k]-X[i])*(Y[j]-Y[i]):
+                    count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input()) #Nは整数である
+    points = [] #座標を格納する配列
+    for i in range(N): #N個の座標を入力する
+        X,Y = map(int,input().split()) #X,Yは整数である
+        points.append([X,Y]) #座標を配列に格納する
+    count = 0 #三角形の数をカウントする変数
+    for i in range(N): #N個の座標のうち一つ目の座標を選ぶ
+        for j in range(i+1,N): #N個の座標のうち二つ目の座標を選ぶ
+            for k in range(j+1,N): #N個の座標のうち三つ目の座標を選ぶ
+                #三角形の面積を求める
+                area = (points[i][0]*(points[j][1]-points[k][1]) + points[j][0]*(points[k][1]-points[i][1]) + points[k][0]*(points[i][1]-points[j][1]))/2
+                if area > 0: #三角形の面積が正の場合
+                    count += 1 #三角形の数をカウントする変数を1増やす
+    print(count) #三角形の数を出力する

@@ -1,44 +1,122 @@
-#問題文
-#高橋君の家には、高橋君、高橋君の父、高橋君の母の 3 人が住んでおり、全員が毎晩風呂で髪を洗います。
-#風呂には、高橋君の父、高橋君の母、高橋君の順に入り、それぞれシャンプーを A,B,C ミリリットル使います。
-#今朝の時点で、ボトルには V ミリリットルのシャンプーが残っていました。このまま補充しない時、初めてシャンプーが不足するのは誰が使おうとした時ですか？
-#
-#制約
-#1 ≦ V,A,B,C ≦ 10^5
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#V A B C
-#
-#出力
-#初めてシャンプーが不足するのが、高橋君の父が使おうとしたときならば F、高橋君の母が使おうとしたときならば M、高橋君が使おうとしたときならば T を出力せよ。
-#
-#入力例 1
-#25 10 11 12
-#
-#出力例 1
-#T
-#シャンプーは 25 ミリリットル残っています。
-#まず高橋君の父が 10 ミリリットル使い、残りは 15 ミリリットルになります。
-#次に高橋君の母が 11 ミリリットル使い、残りは 4 ミリリットルになります。
-#最後に高橋君が 12 ミリリットル使おうとしますが、4 ミリリットルしか残っておらず、不足しています。
-#
-#入力例 2
-#30 10 10 10
-#
-#出力例 2
-#F
-#シャンプーは 30 ミリリットル残っています。
-#まず高橋君の父が 10 ミリリットル使い、残りは 20 ミリリットルになります。
-#次に高橋君の母が 10 ミリリットル使い、残りは 10 ミリリットルになります。
-#続いて高橋君が 10 ミリリットル使い、残りは 0 ミリリットルになります。
-#翌日、高橋君の父が 10 ミリリットル使おうとしますが、0 ミリリットルしか残っておらず、不足しています。
-#
-#入力例 3
-#100000 1 1 1
-#
-#出力例 3
-#M
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if V < A:
+        print("F")
+    elif V < B:
+        print("M")
+    elif V < C:
+        print("T")
+    else:
+        print("T")
+
+=======
+Suggestion 2
+
+def main():
+    V,A,B,C = map(int,input().split())
+    if V < A:
+        print("F")
+    elif V < B:
+        print("M")
+    elif V < C:
+        print("T")
+
+=======
+Suggestion 3
+
+def main():
+    V,A,B,C = map(int,input().split())
+    if V % A == 0:
+        print("F")
+    elif V % B == 0:
+        print("M")
+    elif V % C == 0:
+        print("T")
+    else:
+        print("F")
+
+=======
+Suggestion 4
+
+def main():
+    v, a, b, c = map(int, input().split())
+    if v % a == 0 or v % b == 0 or v % c == 0:
+        print("F")
+    else:
+        if v % a <= v % b and v % a <= v % c:
+            print("F")
+        elif v % b <= v % a and v % b <= v % c:
+            print("M")
+        else:
+            print("T")
+
+=======
+Suggestion 5
+
+def main():
+    V,A,B,C = map(int,input().split())
+    if V <= A:
+        print("F")
+    elif V <= A+B:
+        print("F")
+    elif V <= A+B+C:
+        print("M")
+    else:
+        print("T")
+
+=======
+Suggestion 6
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if V >= A+B+C:
+        print('T')
+    elif V >= A+B:
+        print('M')
+    elif V >= A:
+        print('F')
+    else:
+        print('T')
+
+=======
+Suggestion 7
+
+def main():
+    v,a,b,c = map(int,input().split())
+    if v % a == 0:
+        if v % b == 0:
+            if v % c == 0:
+                print('T')
+            else:
+                print('M')
+        else:
+            print('F')
+    else:
+        print('F')
+
+=======
+Suggestion 8
+
+def main():
+    V,A,B,C = map(int,input().split())
+    if V >= A and V >= B and V >= C:
+        print('T')
+    elif V >= A and V >= B and V < C:
+        print('M')
+    elif V >= A and V < B and V >= C:
+        print('M')
+    elif V >= A and V < B and V < C:
+        print('F')
+    elif V < A and V >= B and V >= C:
+        print('M')
+    elif V < A and V >= B and V < C:
+        print('F')
+    elif V < A and V < B and V >= C:
+        print('F')
+    elif V < A and V < B and V < C:
+        print('F')

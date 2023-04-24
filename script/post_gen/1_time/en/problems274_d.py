@@ -1,62 +1,145 @@
-#Problem Statement
-#You are given a sequence A = (A_1, A_2, ..., A_N) of length N consisting of positive integers, and integers x and y.
-#Determine whether it is possible to place N+1 points p_1, p_2, ..., p_N, p_{N+1} in the xy-coordinate plane to satisfy all of the following conditions. (It is allowed to place two or more points at the same coordinates.)
-#p_1 = (0, 0). 
-#p_2 = (A_1, 0).
-#p_{N+1} = (x, y).
-#The distance between the points p_i and p_{i+1} is A_i. (1 ≦ i ≦ N)
-#The segments p_i p_{i+1} and p_{i+1} p_{i+2} form a 90 degree angle. (1 ≦ i ≦ N - 1)
-#
-#Constraints
-#2 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ 10
-#|x|, |y| ≦ 10^4
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N x y
-#A_1 A_2 ... A_N
-#
-#Output
-#If it is possible to place p_1, p_2, ..., p_N, p_{N+1} to satisfy all of the conditions in the Problem Statement, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 -1 1
-#2 1 3
-#
-#Sample Output 1
-#Yes
-#The figure below shows a placement where p_1 = (0, 0), p_2 = (2, 0), p_3 = (2, 1), and p_4 = (-1, 1). All conditions in the Problem Statement
-# are satisfied.
-#
-#Sample Input 2
-#5 2 0
-#2 2 2 2 2
-#
-#Sample Output 2
-#Yes
-#Letting p_1 = (0, 0), p_2 = (2, 0), p_3 = (2, 2), p_4 = (0, 2), p_5 = (0, 0), and p_6 = (2, 0) satisfies all the conditions. Note that multiple points may be placed at the same coordinates.
-#
-#Sample Input 3
-#4 5 5
-#1 2 3 4
-#
-#Sample Output 3
-#No
-#
-#Sample Input 4
-#3 2 7
-#2 7 4
-#
-#Sample Output 4
-#No
-#
-#Sample Input 5
-#10 8 -7
-#6 10 4 1 5 9 8 6 5 1
-#
-#Sample Output 5
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.insert(0, 0)
+    for i in range(1, N+1):
+        for j in range(i+1, N+2):
+            if abs(A[i] - A[j]) == abs(i - j):
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n, x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(0)
+    a.insert(0, 0)
+    for i in range(n):
+        for j in range(i+1, n+1):
+            if abs(a[i]-a[j]) == abs(i-j):
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    N,x,y = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.append(0)
+    A.insert(0,0)
+    for i in range(1,N+1):
+        for j in range(i+1,N+2):
+            if abs(A[i]-A[j])+abs(j-i)==abs(x-y):
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n,x,y = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [0] + a + [0]
+    for i in range(1,n+1):
+        if a[i] > a[i-1] + a[i+1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    if x < min(A) or y < min(A):
+        print("No")
+        return
+
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            if abs(A[i] - A[j]) == 1:
+                print("No")
+                return
+
+    print("Yes")
+
+=======
+Suggestion 6
+
+def solve(n, x, y, a):
+    for i in range(n):
+        for j in range(i + 1, n):
+            if (a[i] + a[j]) % 2 == 1:
+                return 'No'
+    return 'Yes'
+
+=======
+Suggestion 7
+
+def solve(n, x, y, a):
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[j]-a[i])*(y-x) == (j-i)*(a[i]+a[j]):
+                return True
+    return False
+
+n, x, y = map(int, input().split())
+a = list(map(int, input().split()))
+print('Yes' if solve(n, x, y, a) else 'No')
+
+=======
+Suggestion 8
+
+def solve():
+    N, x, y = map(int, input().split())
+    A = map(int, input().split())
+    A = list(A)
+    A.append(0)
+    A.append(0)
+    if x < max(A) or y < max(A):
+        return "No"
+    else:
+        return "Yes"
+print(solve())
+
+=======
+Suggestion 9
+
+def check(x,y,li):
+    if x == 0 and y == 0:
+        return True
+    if x == 0:
+        for i in range(len(li)):
+            if li[i][1] == y:
+                return True
+    if y == 0:
+        for i in range(len(li)):
+            if li[i][0] == x:
+                return True
+    for i in range(len(li)):
+        if li[i][0] == x and li[i][1] == y:
+            return True
+    return False
+
+=======
+Suggestion 10
+
+def check(x, y, a):
+    for i in range(1, len(a)):
+        if a[i] == abs(x) + abs(y):
+            return True
+    return False

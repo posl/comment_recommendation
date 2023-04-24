@@ -1,75 +1,23 @@
-#Problem Statement
-#There are N cities and M roads in the Kingdom of Takahashi.
-#The cities are numbered 1 through N, and the roads are numbered 1 through M. Road i is a one-way road that leads from City A_i to City B_i, and it takes C_i minutes to go through it.
-#Let us define f(s, t, k) as the answer to the following query.
-#Compute the minimum time needed to get from City s to City t. Here, other than the Cities s and t, it is only allowed to pass through Cities 1 through k. If City t is unreachable or s = t, the answer should be 0.
-#Compute f(s,t,k) for all triples s,t,k and print the sum of them. More formally, print  sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#Constraints
-#1 ≦ N ≦ 400
-#0 ≦ M ≦ N(N-1)
-#1 ≦ A_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#1 ≦ C_i ≦ 10^6 (1 ≦ i ≦ M)
-#A_i ≠ A_j or B_i ≠ B_j, if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 B_1 C_1
-#.
-#.
-#.
-#A_M B_M C_M
-#
-#Output
-#Print  sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#Sample Input 1
-#3 2
-#1 2 3
-#2 3 2
-#
-#Sample Output 1
-#25
-#The triples s,t,k such that f(s,t,k) ≠ 0 are as follows.
-#For k = 1: f(1,2,1) = 3, f(2,3,1) = 2.
-#For k = 2: f(1,2,2) = 3, f(2,3,2) = 2, f(1,3,2) = 5.
-#For k = 3: f(1,2,3) = 3, f(2,3,3) = 2, f(1,3,3) = 5.
-#
-#Sample Input 2
-#3 0
-#
-#Sample Output 2
-#0
-#We have f(s,t,k) = 0 for all s,t,k.
-#
-#Sample Input 3
-#5 20
-#1 2 6
-#1 3 10
-#1 4 4
-#1 5 1
-#2 1 5
-#2 3 9
-#2 4 8
-#2 5 6
-#3 1 5
-#3 2 1
-#3 4 7
-#3 5 9
-#4 1 4
-#4 2 6
-#4 3 4
-#4 5 8
-#5 1 2
-#5 2 5
-#5 3 6
-#5 4 5
-#
-#Sample Output 3
-#517
+Synthesizing 1/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * M
+    for i in range(M):
+        A[i], B[i], C[i] = map(int, input().split())
+    for i in range(M):
+        A[i] -= 1
+        B[i] -= 1
+    #print(N, M)
+    #print(A)
+    #print(B)
+    #print(C)
+    #print()
+    #print()
+    #print()
+    #print()

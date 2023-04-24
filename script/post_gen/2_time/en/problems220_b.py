@@ -1,41 +1,96 @@
-#Problem Statement
-#You are given integers A and B, in base K.
-#Print A × B in decimal.
-#
-#Notes
-#For base-K representation, see Wikipedia's article on Positional notation.
-#
-#Constraints
-#2 ≦ K ≦ 10
-#1 ≦ A,B ≦ 10^5
-#A and B are in base-K representation.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#1011 10100
-#
-#Sample Output 1
-#220
-#1011 in base 2 corresponds to 11 in base 10.
-#10100 in base 2 corresponds to 20 in base 10.
-#We have 11 × 20 = 220, so print 220.
-#
-#Sample Input 2
-#7
-#123 456
-#
-#Sample Output 2
-#15642
-#123 in base 7 corresponds to 66 in base 10.
-#456 in base 7 corresponds to 237 in base 10.
-#We have 66 × 237 = 15642, so print 15642.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = input().split()
+    A = int(A, K)
+    B = int(B, K)
+    print(A * B)
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    a = int(a, k)
+    b = int(b, k)
+    print(a*b)
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    a, b = input().split()
+    print(int(a, k) * int(b, k))
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    A, B = map(str, input().split())
+    print(int(A, K) * int(B, K))
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    print(a * b)
+
+=======
+Suggestion 6
+
+def main():
+    # K = int(input())
+    # A, B = map(int, input().split())
+    K = 7
+    A, B = 123, 456
+
+    A = str(A)
+    B = str(B)
+
+    A10 = 0
+    B10 = 0
+    for i in range(len(A)):
+        A10 += int(A[len(A) - i - 1]) * (K ** i)
+    for i in range(len(B)):
+        B10 += int(B[len(B) - i - 1]) * (K ** i)
+
+    print(A10 * B10)
+
+=======
+Suggestion 7
+
+def convert_to_decimal(number, base):
+    number = str(number)
+    number = number[::-1]
+    decimal = 0
+    for i in range(len(number)):
+        decimal += int(number[i]) * (base ** i)
+    return decimal
+
+=======
+Suggestion 8
+
+def solve(K, A, B):
+    a = int(A, K)
+    b = int(B, K)
+    return a * b
+
+=======
+Suggestion 9
+
+def base_k_to_decimal(x, k):
+    x = str(x)
+    k = int(k)
+    result = 0
+    for i in range(len(x)):
+        result += int(x[i])*(k**(len(x)-i-1))
+    return result

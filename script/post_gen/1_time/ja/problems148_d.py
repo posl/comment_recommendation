@@ -1,53 +1,185 @@
-#問題文
-#N 個のレンガが横一列に並んでいます。
-#左から i(1 ≦ i ≦ N) 番目のレンガには、整数 a_i が書かれています。
-#あなたはこのうち N - 1 個以下の任意のレンガを選んで砕くことができます。
-#その結果、K 個のレンガが残っているとします。このとき、任意の整数 i(1 ≦ i ≦ K) について、残っているレンガの中で左から i 番目のものに書かれた整数が i であるとき、すぬけさんは満足します。
-#すぬけさんが満足するために砕く必要のあるレンガの最小個数を出力してください。もし、どのように砕いてもそれが不可能な場合、代わりに -1 を出力してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 200000
-#1 ≦ a_i ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#すぬけさんが満足するために砕く必要のあるレンガの最小個数を出力せよ。もし、どのように砕いてもそれが不可能な場合、代わりに -1 を出力せよ。
-#
-#入力例 1
-#3
-#2 1 2
-#
-#出力例 1
-#1
-#一番左のレンガ 1 個を砕くと、残ったレンガに書かれた整数は左から 1, 2 となります。
-#このとき、すぬけさんは満足します。
-#
-#入力例 2
-#3
-#2 2 2
-#
-#出力例 2
-#-1
-#この場合、すぬけさんが満足するレンガの砕き方は存在しません。
-#
-#入力例 3
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#出力例 3
-#7
-#
-#入力例 4
-#1
-#1
-#
-#出力例 4
-#0
-#レンガを 1 つも砕かなくていい場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if a[i] != i+1:
+            ans += 1
+    if ans > 2:
+        print(-1)
+    else:
+        print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    if n == 1:
+        if a[0] == 1:
+            print(0)
+        else:
+            print(-1)
+        return
+    
+    if a[0] != 1:
+        print(-1)
+        return
+    
+    i = 1
+    ans = 0
+    while i < n:
+        if a[i] != i + 1:
+            ans += 1
+        else:
+            i += 1
+        i += 1
+    
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if A[0] != 1:
+        return -1
+    ans = 0
+    for i in range(N-1):
+        if A[i+1] - A[i] > 1:
+            return -1
+        elif A[i+1] - A[i] == 1:
+            ans += 1
+        else:
+            ans += A[i+1]
+    return ans
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if a[i-1] == i:
+            ans += 1
+            a[i-1] = 0
+            a[i] = 0
+    if a[N-1] == N:
+        ans += 1
+    print(N-ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    if a[0] != 1:
+        print(-1)
+        exit()
+    for i in range(n-1):
+        if a[i+1] > a[i] + 1:
+            print(-1)
+            exit()
+    ans = 0
+    for i in range(n-1):
+        if a[i+1] == a[i] + 1:
+            ans += 1
+    print(n-1-ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    if 1 not in a:
+        print(-1)
+        return
+    if a[0] != 1:
+        print(-1)
+        return
+    count = 0
+    now = 1
+    for i in range(1, N):
+        if a[i] == now + 1:
+            now += 1
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if a[i] > n-1:
+            print(-1)
+            return
+        b[a[i]] += 1
+    ans = 0
+    for i in range(n):
+        if b[i] > i:
+            ans += b[i] - i
+    print(ans)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    ans = 0
+    for i in range(1, N+1):
+        if a[i] == i:
+            ans += 1
+    if ans == N:
+        print(0)
+    else:
+        print(N-ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N):
+        b[A[i] - 1] += 1
+    ans = 0
+    for i in range(N):
+        if b[i] > i + 1:
+            ans += b[i] - (i + 1)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    if max(a) > n:
+        print("-1")
+        return
+    b = [0] * n
+    for i in range(n):
+        b[a[i]-1] += 1
+    print(n - max(b))

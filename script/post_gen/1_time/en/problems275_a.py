@@ -1,47 +1,61 @@
-#Problem Statement
-#There are N bridges in AtCoder Village. The height of the bridge numbered i is H_i (i is an integer between 1 and N).
-#Every two different bridges in the village have different heights.
-#Print the number representing the highest bridge in the village.
-#
-#Constraints
-#1≦ N ≦ 100
-#1≦ H_i ≦ 10^9
-#All H_i are different.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#H_1 H_2 ... H_N
-#
-#Output
-#Print the integer representing the highest bridge in AtCoder village.
-#
-#Sample Input 1
-#3
-#50 80 70
-#
-#Sample Output 1
-#2
-#The village has three bridges.
-#The first, second, and third bridges have heights of 50, 80, and 70, respectively,
-#so the second bridge is the highest.
-#Thus, 2 should be printed.
-#
-#Sample Input 2
-#1
-#1000000000
-#
-#Sample Output 2
-#1
-#The village has only one bridge, so the first bridge is the highest.
-#
-#Sample Input 3
-#10
-#22 75 26 45 72 81 47 29 97 2
-#
-#Sample Output 3
-#9
-#The village has ten bridges, and the ninth bridge (with a height of 97) is the highest.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    print(h.index(max(h))+1)
+
+=======
+Suggestion 2
+
+def highest_bridge(N, H):
+    highest = H[0]
+    highest_index = 0
+    for i in range(1, N):
+        if H[i] > highest:
+            highest = H[i]
+            highest_index = i
+    return highest_index + 1
+
+N = int(input())
+H = list(map(int, input().split()))
+print(highest_bridge(N, H))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = input().split()
+    H = list(map(int, H))
+    print(H.index(max(H))+1)
+
+=======
+Suggestion 4
+
+def main():
+    # Get the number of bridges
+    num_bridges = int(input())
+
+    # Get the heights of the bridges
+    bridge_heights = list(map(int, input().split()))
+
+    # Print the number of the highest bridge
+    print(bridge_heights.index(max(bridge_heights)) + 1)
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    heights = [int(x) for x in input().split()]
+    return n, heights
+
+=======
+Suggestion 6
+
+def solve(N, H):
+    return H.index(max(H))+1

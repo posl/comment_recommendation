@@ -1,64 +1,129 @@
-#問題文
-#数直線上に N 本のろうそくが置かれています。
-#左から i 番目のろうそくは座標 x_i に置かれています。
-#ただし、x_1 < x_2 < ... < x_N が成り立ちます。
-#最初、どのろうそくにも火が付いていません。
-#すぬけ君は、N 本のうち K 本のろうそくに火を付けることにしました。
-#今、すぬけ君は座標 0 にいます。
-#すぬけ君は、数直線上を左右に速度 1 で移動することができます。
-#また、自分と同じ座標のろうそくに火を付けることができます。
-#このとき、火を付けるのに掛かる時間は無視できます。
-#K 本のろうそくに火を付けるのに必要な最小の時間を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ N
-#x_i は整数である。
-#|x_i| ≦ 10^8
-#x_1 < x_2 < ... < x_N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#x_1 x_2 ... x_N
-#
-#出力
-#K 本のろうそくに火を付けるのに必要な最小の時間を出力せよ。
-#
-#入力例 1
-#5 3
-#-30 -10 10 20 50
-#
-#出力例 1
-#40
-#次のように移動しながらろうそくに火を付ければよいです。
-#座標 0 から -10 へ移動する。
-#左から 2 番目のろうそくに火を付ける。
-#座標 -10 から 10 へ移動する。
-#左から 3 番目のろうそくに火を付ける。
-#座標 10 から 20 へ移動する。
-#左から 4 番目のろうそくに火を付ける。
-#
-#入力例 2
-#3 2
-#10 20 30
-#
-#出力例 2
-#20
-#
-#入力例 3
-#1 1
-#0
-#
-#出力例 3
-#0
-#座標 0 にろうそくが置かれていることもあります。
-#
-#入力例 4
-#8 5
-#-9 -7 -4 -3 1 2 3 4
-#
-#出力例 4
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        ans = min(ans, X[i + K - 1] - X[i] + min(abs(X[i]), abs(X[i + K - 1])))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, x[i+K-1]-x[i]+min(abs(x[i+K-1]), abs(x[i])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, abs(X[i])+abs(X[i+K-1]-X[i]), abs(X[i+K-1])+abs(X[i+K-1]-X[i]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10**18
+    for i in range(n-k+1):
+        ans = min(ans, x[i+k-1]-x[i]+min(abs(x[i]), abs(x[i+k-1])))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = float('inf')
+    for i in range(N-K+1):
+        left = x[i]
+        right = x[i+K-1]
+        ans = min(ans, abs(left) + abs(left - right), abs(right) + abs(left - right))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N, K = map(int, input().split())
+    xs = list(map(int, input().split()))
+
+    # compute
+    """WRITE BELOW"""
+
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, X[i+K-1]-X[i]+min(abs(X[i]), abs(X[i+K-1])))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    if N == K:
+        print(0)
+        return
+    if K == 1:
+        print(min(abs(X[0]), abs(X[-1])))
+        return
+
+    # 絶対値の小さい順にソート
+    X.sort(key=lambda x: abs(x))
+
+    # 左端と右端のろうそくを除いた、残りのろうそくの絶対値の和
+    # これを最小化する
+    # 左端と右端のろうそくは、どちらかを選べば良いので、
+    # それぞれの絶対値の和を計算する
+    # 左端のろうそくの絶対値の和
+    left = sum(map(abs, X[:K - 1]))
+    # 右端のろうそくの絶対値の和
+    right = sum(map(abs, X[-(K - 1):]))
+
+    # 左端のろうそくの絶対値の和と右端のろうそくの絶対値の和の最小値
+    print(min(left, right))
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10**10
+    # N-K+1 個の区間について考える
+    for i in range(N-K+1):
+        # 区間の左端のろうそくに火を付けるときの最小の時間
+        left = abs(X[i]) + abs(X[i]-X[i+K-1])
+        # 区間の右端のろうそくに火を付けるときの最小の時間
+        right = abs(X[i+K-1]) + abs(X[i]-X[i+K-1])
+        # どちらかの時間が最小のものを答えにする
+        ans = min(ans, left, right)
+    print(ans)

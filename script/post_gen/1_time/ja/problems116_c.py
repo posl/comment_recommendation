@@ -1,45 +1,173 @@
-#問題文
-#花壇に N 本の花が咲いており、それぞれ 1,2,......,N と番号が振られています。最初、全ての花の高さは 0 です。
-#数列 h={h_1,h_2,h_3,......} が入力として与えられます。以下の「水やり」操作を繰り返すことで、すべての k(1 ≦  k ≦ N) に対して花 k の高さを h_k にしたいです。
-#整数 l,r を指定する。l ≦ x ≦ r を満たすすべての x に対して、花 x の高さを 1 高くする。
-#条件を満たすための最小の「水やり」操作の回数を求めてください。
-#
-#制約
-#1 ≦ N  ≦ 100
-#0 ≦ h_i ≦ 100
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N
-#h_1 h_2 h_3 ...... h_N
-#
-#出力
-#条件を満たすような最小の「水やり」操作の回数を出力してください。
-#
-#入力例 1
-#4
-#1 2 2 1
-#
-#出力例 1
-#2
-#「水やり」操作の回数は 2 回が最小です。
-#以下が一つの例です。
-#(l,r)=(1,3) の「水やり」操作を行う。
-#(l,r)=(2,4) の「水やり」操作を行う。
-#
-#入力例 2
-#5
-#3 1 2 3 1
-#
-#出力例 2
-#5
-#
-#入力例 3
-#8
-#4 23 75 0 23 96 50 100
-#
-#出力例 3
-#221
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if h[i] > ans:
+            ans = h[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    for i in range(1,N):
+        if h[i-1] < h[i]:
+            ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if h[i] > h[i-1]:
+            ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if h[i] > 0:
+            count += 1
+            for j in range(i+1, N):
+                if h[j] > 0:
+                    h[j] -= 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+        else:
+            if h[i] > h[i-1]:
+                ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while max(h) > 0:
+        l = 0
+        r = 0
+        for i in range(N):
+            if h[i] > 0:
+                l = i
+                break
+        for i in range(N - 1, -1, -1):
+            if h[i] > 0:
+                r = i
+                break
+        for i in range(l, r + 1):
+            h[i] -= 1
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    while sum(h) > 0:
+        i = 0
+        while i < N:
+            if h[i] > 0:
+                j = i
+                while j < N and h[j] > 0:
+                    h[j] -= 1
+                    j += 1
+                ans += 1
+            i += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while 1:
+        if max(h) == 0:
+            break
+        i = 0
+        while 1:
+            if i == N:
+                break
+            if h[i] != 0:
+                break
+            i += 1
+        l = i
+        while 1:
+            if i == N:
+                break
+            if h[i] == 0:
+                break
+            i += 1
+        r = i
+        for j in range(l, r):
+            h[j] -= 1
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    print(min([sum([abs(H[i] - H[j]) for j in range(N) if i != j]) for i in range(N)]))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    while True:
+        #print(h)
+        if h == [0]*N:
+            break
+        l = 0
+        r = 0
+        for i in range(N):
+            if h[i] != 0:
+                l = i
+                break
+        for i in range(N-1,-1,-1):
+            if h[i] != 0:
+                r = i
+                break
+        for i in range(l,r+1):
+            h[i] -= 1
+        ans += 1
+    print(ans)

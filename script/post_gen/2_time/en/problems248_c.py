@@ -1,39 +1,149 @@
-#Problem Statement
-#How many integer sequences of length N, A=(A_1, ..., A_N), satisfy all of the conditions below?
-#1≦ A_i ≦ M (1 ≦ i ≦ N)
-#sum _{i=1}^N A_i ≦ K
-#Since the count can get enormous, find it modulo 998244353.
-#
-#Constraints
-#1 ≦ N, M ≦ 50
-#N ≦ K ≦ NM
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3 4
-#
-#Sample Output 1
-#6
-#The following six sequences satisfy the conditions.
-#(1,1)
-#(1,2)
-#(1,3)
-#(2,1)
-#(2,2)
-#(3,1)
-#
-#Sample Input 2
-#31 41 592
-#
-#Sample Output 2
-#798416518
-#Be sure to print the count modulo 998244353.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    dp = [[0] * (K + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(1, N + 1):
+        for j in range(K + 1):
+            for k in range(1, M + 1):
+                if j - k >= 0:
+                    dp[i][j] += dp[i - 1][j - k]
+    print(dp[N][K] % 998244353)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    MOD = 998244353
+    dp = [[0] * (K + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(1, N + 1):
+        for j in range(K + 1):
+            for k in range(M + 1):
+                if j + k <= K:
+                    dp[i][j + k] += dp[i - 1][j]
+                    dp[i][j + k] %= MOD
+    print(dp[N][K])
+
+=======
+Suggestion 3
+
+def main():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+    dp = [[0] * (K + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(1, N + 1):
+        for j in range(K + 1):
+            for k in range(1, M + 1):
+                if j - k >= 0:
+                    dp[i][j] += dp[i - 1][j - k]
+                    dp[i][j] %= mod
+    print(dp[N][K])
+
+=======
+Suggestion 4
+
+def main():
+    N, M, K = map(int, input().split())
+    MOD = 998244353
+    dp = [[0] * (K+1) for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(1, N+1):
+        for j in range(K+1):
+            for k in range(1, M+1):
+                if j-k >= 0:
+                    dp[i][j] += dp[i-1][j-k]
+                    dp[i][j] %= MOD
+    print(dp[N][K])
+
+=======
+Suggestion 5
+
+def main():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+    dp = [[0 for _ in range(K + 1)] for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(1, N + 1):
+        for j in range(1, K + 1):
+            for k in range(1, M + 1):
+                if j - k >= 0:
+                    dp[i][j] += dp[i - 1][j - k]
+                    dp[i][j] %= mod
+    print(dp[N][K])
+
+=======
+Suggestion 6
+
+def main():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+    dp = [0] * (K + 1)
+    dp[0] = 1
+    for i in range(N):
+        ndp = [0] * (K + 1)
+        for j in range(K + 1):
+            for k in range(M + 1):
+                if j + k <= K:
+                    ndp[j + k] += dp[j]
+                    ndp[j + k] %= mod
+        dp = ndp
+    print(dp[K])
+
+=======
+Suggestion 7
+
+def solve():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+    dp = [[0 for _ in range(K+1)] for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(1, N+1):
+        for j in range(K+1):
+            for k in range(1, M+1):
+                if j+k <= K:
+                    dp[i][j+k] += dp[i-1][j]
+                    dp[i][j+k] %= mod
+    print(dp[N][K])
+
+solve()
+
+=======
+Suggestion 8
+
+def read_ints():
+    return list(map(int, input().split()))
+
+N, M, K = read_ints()
+MOD = 998244353
+
+=======
+Suggestion 9
+
+def   main ():
+
+    n, m, k   =   map ( int ,   input (). split ())
+
+    mod   =   998244353
+
+    dp   =   [ [ [ 0   for   _   in   range ( k + 1 )]   for   _   in   range ( m + 1 )]   for   _   in   range ( n + 1 )]
+    dp [ 0 ][ 0 ][ 0 ]   =   1
+
+    for   i   in   range ( n ):
+         for   j   in   range ( m ):
+             for   x   in   range ( k + 1 ):
+                 dp [ i + 1 ][ j + 1 ][ x ]   +=   dp [ i ][ j ][ x ]
+                 dp [ i + 1 ][ j + 1 ][ x ]   %=   mod
+
+                 if   x   +   j   +   1   <=   k :
+                     dp [ i + 1 ][ j + 1 ][ x   +   j   +   1 ]   +=   dp [ i ][ j ][ x ]
+                     dp [ i + 1 ][ j + 1 ][ x   +   j   +   1 ]   %=   mod
+
+    res   =   sum ( dp [ n ][ m ])   %   mod
+     print ( res )

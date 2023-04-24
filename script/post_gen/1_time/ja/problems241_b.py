@@ -1,51 +1,205 @@
-#問題文
-#高橋君の家には N 本の麺からなるパスタがあり、i 本目の麺の長さは A_i です。
-#高橋君はこれから M 日間の食事計画を立てており、
-#i 日目にはパスタの麺のうち長さがちょうど B_i であるようなものを 1 本選び、食べようと考えています。
-#もし、1 日目から M 日目の間に 1 日でもそのような麺が無い日があれば、食事計画は失敗となります。
-#また、同じ麺を複数の日に食べることはできません。
-#高橋君が食事計画を最後まで実行することは可能ですか？
-#
-#制約
-#1 ≦ M ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_M
-#
-#出力
-#高橋君が食事計画を最後まで実行できる場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#3 2
-#1 1 3
-#3 1
-#
-#出力例 1
-#Yes
-#1 日目に 3 本目の麺を、2 日目に 1 本目の麺を食べれば良いので、高橋君の食事計画は実行可能です。
-#
-#入力例 2
-#1 1
-#1000000000
-#1
-#
-#出力例 2
-#No
-#長さがちょうど 1 の麺が存在する必要があります。
-#
-#入力例 3
-#5 2
-#1 2 3 4 5
-#5 5
-#
-#出力例 3
-#No
-#長さが 5 の麺は 1 本しか存在しないため、2 日目に食事をとる事が出来ません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    for i in range(M):
+        if A[i] != B[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if A[i] == B[j]:
+            i += 1
+            j += 1
+        elif A[i] < B[j]:
+            i += 1
+        else:
+            j += 1
+    if j == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    for i in range(M):
+        if B[i] not in A:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A.sort()
+    B.sort()
+
+    for i in range(M):
+        if B[i] < A[0]:
+            print("No")
+            return
+        elif B[i] > A[N-1]:
+            print("No")
+            return
+        else:
+            a = 0
+            b = N-1
+            while True:
+                c = (a+b)//2
+                if A[c] == B[i]:
+                    print("No")
+                    return
+                elif A[c] > B[i]:
+                    if A[c-1] < B[i]:
+                        print("No")
+                        return
+                    else:
+                        b = c
+                elif A[c] < B[i]:
+                    if A[c+1] > B[i]:
+                        print("Yes")
+                        break
+                    else:
+                        a = c
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    
+    A.sort()
+    B.sort()
+    
+    for i in range(M):
+        if B[i] in A:
+            A.remove(B[i])
+        else:
+            print("No")
+            return
+        
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    ans = 'Yes'
+    for i in range(M):
+        if B[i] not in A:
+            ans = 'No'
+            break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 1行目
+    N, M = map(int, input().split())
+    # 2行目
+    A = list(map(int, input().split()))
+    # 3行目
+    B = list(map(int, input().split()))
+
+    # Aの中にBの要素があるかどうかを判定する。
+    # あればYes、なければNo
+    if all([b in A for b in B]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from bisect import bisect_left
+    input = sys.stdin.readline
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    for b in B:
+        if bisect_left(A, b) == N or A[bisect_left(A, b)] != b:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort() #ソート
+    B.sort() #ソート
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if A[i] == B[j]:
+            i += 1
+            j += 1
+        elif A[i] > B[j]:
+            print("No")
+            return
+        else:
+            i += 1
+    if j == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # Aの中にBの要素があればYesを出力
+    if set(B) <= set(A):
+        print("Yes")
+    else:
+        print("No")

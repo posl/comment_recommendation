@@ -1,52 +1,201 @@
-#Problem Statement
-#There are N boxes arranged in a row from left to right. The i-th box from the left contains A_i candies.
-#You will take out the candies from some consecutive boxes and distribute them evenly to M children.
-#Such being the case, find the number of the pairs (l, r) that satisfy the following:
-#l and r are both integers and satisfy 1 ≦ l ≦ r ≦ N.
-#A_l + A_{l+1} + ... + A_r is a multiple of M.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#2 ≦ M ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the number of the pairs (l, r) that satisfy the conditions.
-#Note that the number may not fit into a 32-bit integer type.
-#
-#Sample Input 1
-#3 2
-#4 1 5
-#
-#Sample Output 1
-#3
-#The sum A_l + A_{l+1} + ... + A_r for each pair (l, r) is as follows:
-#Sum for (1, 1): 4
-#Sum for (1, 2): 5
-#Sum for (1, 3): 10
-#Sum for (2, 2): 1
-#Sum for (2, 3): 6
-#Sum for (3, 3): 5
-#Among these, three are multiples of 2.
-#
-#Sample Input 2
-#13 17
-#29 7 5 7 9 51 7 13 8 55 42 9 81
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#10 400000000
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#Sample Output 3
-#25
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = (S[i] + A[i]) % M
+    from collections import Counter
+    C = Counter(S)
+    ans = 0
+    for v in C.values():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0] * (n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    d = {}
+    for i in range(n+1):
+        r = s[i] % m
+        if r in d:
+            d[r] += 1
+        else:
+            d[r] = 1
+    ans = 0
+    for v in d.values():
+        ans += v * (v-1) // 2
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    for i in range(1, N+1):
+        A[i] = (A[i-1] + A[i]) % M
+    from collections import defaultdict
+    d = defaultdict(int)
+    for a in A:
+        d[a] += 1
+    ans = 0
+    for k in d:
+        ans += d[k] * (d[k] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    S = [0]*(N+1)
+    for i in range(N):
+        S[i+1] = S[i] + A[i]
+    from collections import defaultdict
+    d = defaultdict(int)
+    for i in range(N+1):
+        d[S[i]%M] += 1
+    ans = 0
+    for k,v in d.items():
+        ans += v*(v-1)//2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[i] + a[i])
+    d = {}
+    for i in range(n + 1):
+        r = s[i] % m
+        if r in d:
+            d[r] += 1
+        else:
+            d[r] = 1
+    ans = 0
+    for v in d.values():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [x % m for x in a]
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = (s[i] + a[i]) % m
+    from collections import Counter
+    c = Counter(s)
+    ans = 0
+    for v in c.values():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, m, a
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    #累積和を求める
+    s = [0] * (N + 1)
+    for i in range(N):
+        s[i + 1] = (s[i] + A[i]) % M
+
+    #累積和をソートする
+    s.sort()
+
+    ans = 0
+    #s[i] == s[i + 1] となる要素の個数を求める
+    cnt = 1
+    for i in range(N):
+        if s[i] == s[i + 1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    ans += cnt * (cnt - 1) // 2
+    print(ans)
+
+main()
+
+=======
+Suggestion 9
+
+def countSubarrays(arr, n, m): 
+    mod = [0] * m 
+  
+    cumSum = 0
+    for i in range(n): 
+        cumSum = (cumSum + arr[i]) % m 
+        mod[cumSum] += 1
+  
+    result = 0 
+    for i in range(m): 
+        if (mod[i] > 1): 
+            result += (mod[i] * (mod[i] - 1)) // 2
+  
+    result += mod[0] 
+    return result 
+  
+n, m = map(int, input().split()) 
+arr = list(map(int, input().split())) 
+  
+print(countSubarrays(arr, n, m))
+
+=======
+Suggestion 10
+
+def main():
+    from sys import stdin
+    from collections import defaultdict
+
+    n,m = map(int,stdin.readline().strip().split())
+    a = list(map(int,stdin.readline().strip().split()))
+
+    s = [0]
+    for i in range(n):
+        s.append((s[i]+a[i])%m)
+
+    d = defaultdict(int)
+    for i in range(n+1):
+        d[s[i]] += 1
+
+    ans = 0
+    for k,v in d.items():
+        ans += v*(v-1)//2
+
+    print(ans)
+
+main()

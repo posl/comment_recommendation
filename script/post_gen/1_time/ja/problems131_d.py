@@ -1,89 +1,203 @@
-#問題文
-#AtCoder王国の王立問題工房でABC管理官の座に就いたキザハシ君は、浮かれるあまり仕事を引き受けすぎてしまいました。
-#現在の時刻は 0 です。キザハシ君は 1 から N までの番号が振られた N 件の仕事を持っています。
-#キザハシ君が仕事 i を終えるには A_i 単位時間かかります。また、仕事 i の〆切は時刻 B_i であり、これまでに仕事を終わらせる必要があります。時刻 B_i ちょうどに仕事 i を終わらせてもかまいません。
-#キザハシ君は 2 件以上の仕事を同時にすることはできませんが、ある仕事を終わらせた直後に別の仕事を始めることはできます。
-#キザハシ君はすべての仕事を〆切までに終わらせることができるでしょうか。可能ならば Yes、不可能ならば No を出力してください。
-#
-#制約
-#入力はすべて整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9 (1 ≦ i ≦ N)
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#全ての仕事を〆切までに終わらせることが可能ならば Yes、不可能ならば No を出力してください。
-#
-#入力例 1
-#5
-#2 4
-#1 9
-#1 8
-#4 9
-#3 12
-#
-#出力例 1
-#Yes
-#たとえば以下の順番で仕事を行うことで、すべての仕事を達成できます。
-#時刻 0 から 1 までの間、仕事 2 を行う。
-#時刻 1 から 3 までの間、仕事 1 を行う。
-#時刻 3 から 7 までの間、仕事 4 を行う。
-#時刻 7 から 8 までの間、仕事 3 を行う。
-#時刻 8 から 11 までの間、仕事 5 を行う。
-#仕事 3 は〆切である時刻 8 ちょうどに終えていますが、問題ないことに注意してください。
-#
-#入力例 2
-#3
-#334 1000
-#334 1000
-#334 1000
-#
-#出力例 2
-#No
-#どんな順番で仕事をしても、全ての仕事を間に合わせることはできません。
-#
-#入力例 3
-#30
-#384 8895
-#1725 9791
-#170 1024
-#4 11105
-#2 6
-#578 1815
-#702 3352
-#143 5141
-#1420 6980
-#24 1602
-#849 999
-#76 7586
-#85 5570
-#444 4991
-#719 11090
-#470 10708
-#1137 4547
-#455 9003
-#110 9901
-#15 8578
-#368 3692
-#104 1286
-#3 4
-#366 12143
-#7 6649
-#610 2374
-#152 7324
-#4 7042
-#292 11386
-#334 5720
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(N):
+        for j in range(N - 1 - i):
+            if B[j] > B[j + 1]:
+                A[j], A[j + 1] = A[j + 1], A[j]
+                B[j], B[j + 1] = B[j + 1], B[j]
+    time = 0
+    for i in range(N):
+        time += A[i]
+        if time > B[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    jobs = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        jobs.append([A, B])
+    jobs.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += jobs[i][0]
+        if time > jobs[i][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    work = [list(map(int, input().split())) for _ in range(N)]
+    work.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += work[i][0]
+        if time > work[i][1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    AB = []
+    for i in range(N):
+        AB.append([A[i], B[i]])
+    AB.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += AB[i][0]
+        if time > AB[i][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    work = []
+    for i in range(N):
+        work.append(list(map(int, input().split())))
+    work = sorted(work, key=lambda x: x[1])
+    time = 0
+    for a, b in work:
+        time += a
+        if time > b:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # 仕事を終わらせるまでの時間の短い順に並べる
+    # 仕事を終わらせるまでの時間が同じなら、仕事の〆切が早い順に並べる
+    # 仕事を終わらせるまでの時間と仕事の〆切が同じなら、仕事の番号が小さい順に並べる
+    # 仕事番号は 1 から N までの整数なので、仕事番号が小さい順に並べると、
+    # 仕事番号が小さい順に仕事を終わらせることになる
+    # 仕事番号が小さい順に仕事を終わらせると、
+    # 仕事番号が小さい順に仕事を終わらせることになる
+    # 仕事番号が小さい順に仕事を終わらせると、
+    # 仕事番号が小さい順に仕事を終わらせることになる
+    # 仕事番号が小さい順に仕事を終わらせると、
+    # 仕事番号が小さい順に仕事を終わらせることになる
+    # 仕事番号が小さい順に仕事を終わらせると、
+    # 仕事番号が小さい順に仕事を終わらせることになる
+    # 仕事番号が小さい順に仕事を終わらせると、
+    #
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    work = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        work.append([B, A])
+    work.sort()
+
+    time = 0
+    for i in range(N):
+        time += work[i][1]
+        if time > work[i][0]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = list(reversed(A))
+    B = list(reversed(B))
+    t = 0
+    for i in range(N):
+        if t <= B[i]:
+            t = B[i]
+        else:
+            t -= t % A[i]
+        if t > B[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for i in range(N)]
+
+    AB.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += AB[i][0]
+        if time > AB[i][1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    task = [list(map(int, input().split())) for _ in range(N)]
+    task = sorted(task, key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += task[i][0]
+        if time > task[i][1]:
+            print('No')
+            return
+    print('Yes')

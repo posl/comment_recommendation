@@ -1,34 +1,156 @@
-#問題文
-#R, G, B のみからなる、長さ N の文字列 S があります。
-#以下の 2 つの条件をともに満たす組 (i,j,k)(1 ≦ i < j < k ≦ N) の数を求めてください。
-#S_i ≠ S_j かつ S_i ≠ S_k かつ S_j ≠ S_k である
-#j - i ≠ k - j である
-#
-#制約
-#1 ≦ N ≦ 4000
-#S は R, G, B のみからなる、長さ N の文字列である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#題意を満たす組の数を出力せよ。
-#
-#入力例 1
-#4
-#RRGB
-#
-#出力例 1
-#1
-#組 (1,3,4) だけが 2 つの条件をともに満たします。組 (2,3,4) は、1 つ目の条件は満たしますが 2 つ目の条件を満たさないので不適です。
-#
-#入力例 2
-#39
-#RBRBGRBGGBBRRGBBRRRBGGBRBGBRBGBRBBBGBBB
-#
-#出力例 2
-#1800
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if S[i] != S[j] and S[i] != S[k] and S[j] != S[k] and j-i != k-j:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i] and j-i != k-j:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if S[i] != S[j] and S[i] != S[k] and S[j] != S[k] and j-i != k-j:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j-i != k-j:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
+                    if j - i != k - j:
+                        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
+                    if j - i != k - j:
+                        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j-i != k-j:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    rgb = [0, 0, 0]
+    for c in S:
+        if c == "R":
+            rgb[0] += 1
+        elif c == "G":
+            rgb[1] += 1
+        elif c == "B":
+            rgb[2] += 1
+    ans = rgb[0] * rgb[1] * rgb[2]
+    for i in range(N):
+        for j in range(i + 1, N):
+            k = j + (j - i)
+            if k >= N:
+                break
+            if S[i] != S[j] and S[i] != S[k] and S[j] != S[k]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    # 1文字目と3文字目が異なる場合、3通り
+    # 2文字目と3文字目が異なる場合、3通り
+    # 1文字目と2文字目が異なる場合、3通り
+    #

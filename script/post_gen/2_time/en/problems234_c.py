@@ -1,36 +1,117 @@
-#Problem Statement
-#Among the positive integers that consist of 0's and 2's when written in base 10, find the K-th smallest integer.
-#
-#Constraints
-#K is an integer between 1 and 10^{18} (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the answer as an integer.
-#Here, the exact value must be printed as an integer, even if it is big. Exponential notations such as 2.34e+22, for example, or unnecessary leading zeros such as 0523 are not allowed.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#22
-#The positive integers that consist of 0's and 2's when written in base 10 are 2,20,22,... in ascending order.
-#The (K=) 3-rd of them, which is 22, should be printed.
-#
-#Sample Input 2
-#11
-#
-#Sample Output 2
-#2022
-#
-#Sample Input 3
-#923423423420220108
-#
-#Sample Output 3
-#220022020000202020002022022000002020002222002200002022002200
-#Note that the exact value of the answer must be printed as an integer, even if it is big.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    stack = [2, 20, 202, 2022, 20222, 202222, 2022222, 20222222, 202222222, 2022222222, 20222222222, 202222222222, 2022222222222, 20222222222222, 202222222222222, 2022222222222222, 20222222222222222, 202222222222222222, 2022222222222222222]
+    for i in range(19):
+        stack.append(stack[i] * 10 + 2)
+        stack.append(stack[i] * 10 + 20)
+    stack.sort()
+    print(stack[K - 1])
+
+=======
+Suggestion 2
+
+def make_2s(n):
+    if n == 0:
+        return ['']
+    else:
+        return ['0' + x for x in make_2s(n-1)] + ['2' + x for x in make_2s(n-1)]
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    #K = 923423423420220108
+    #K = 11
+    #K = 3
+    ans = ""
+    while K > 0:
+        ans = str(K % 2) + ans
+        K //= 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    K = int(input())
+    ans = []
+    for i in range(1, 60):
+        for j in range(2**i):
+            s = bin(j)[2:]
+            s = "0" * (i - len(s)) + s
+            s = s.replace("0", "2")
+            ans.append(int(s))
+    ans.sort()
+    print(ans[K - 1])
+
+solve()
+
+=======
+Suggestion 5
+
+def   solve ( K ): 
+     # 1, 10, 100, 1000, ... 
+     # 2, 20, 200, 2000, ... 
+     # 22, 220, 2200, ... 
+     # 202, 2020, ... 
+     # 2002, 20020, 200200, ... 
+     # 20202, 202020, ... 
+     # 220002, 2200020, ... 
+     # 2200002, 22000020, ... 
+     # 22200002, 222000020, ... 
+     # 222200002, 2222000020, ... 
+     # 22222000002, 222220000020, ... 
+     # 222222000002, 2222220000020, ... 
+     # 22222220000002, 222222200000020, ... 
+     # 222222220000002, 2222222200000020, ... 
+     # 22222222200000002, 222222222000000020, ... 
+     # 222222222200000002, 2222222222000000020, ... 
+     # 22222222222000000002, 222222222220000000020, ... 
+     # 222222222222000000002, 2222222222220000000020, ... 
+     # 22222222222220000000002, 222222222222200000000020, ... 
+     # 222222222222220000000002, 2222222222222200000000020, ... 
+     # 22222222222222200000000002, 222222222222222000000000020, ... 
+     # 222222222222222200000000002, 2222222222222222000000000020, ... 
+     # 22222222222222222000000000002, 222222222222222220000000000020, ... 
+     # 222222222222222222000000000002, 2222222222222222220000000000020, ... 
+     # 22222222222222222220000000000002, 222222222222222222200000000000020, ... 
+     # 222222222
+
+=======
+Suggestion 6
+
+def solve(K):
+    # Write your code here
+    return
+
+=======
+Suggestion 7
+
+def solve(K):
+    # Write your code here
+    return ans
+
+=======
+Suggestion 8
+
+def solve(K):
+    # write your code here
+    return 0
+
+=======
+Suggestion 9
+
+def f(x):
+    return (x+1)//2
+
+=======
+Suggestion 10
+
+def get_kth_smallest_0_2_k(k):
+    return 0

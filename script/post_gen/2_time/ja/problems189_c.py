@@ -1,39 +1,116 @@
-#問題文
-#高橋君の前に N 枚の皿が一列に並べられており、左から i 番目の皿には A_i 個のみかんが置かれています。
-#高橋君は次の 3 つの条件を全て満たすような整数の組 (l,r,x) を 1 つ選びます。
-#1≦ l ≦ r ≦ N
-#1 ≦ x
-#l 以上 r 以下の全ての整数 i について、x ≦ A_i
-#その後、高橋君は l 番目から r 番目まで (両端を含む) の全ての皿からみかんを x 個ずつ取って食べます。
-#整数の組 (l,r,x) を適切に選んだとき、高橋君は最大で何個のみかんを食べることができますか。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 10^4
-#1 ≦ A_i ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#高橋君が食べることのできるみかんの個数の最大値を出力せよ。
-#
-#入力例 1
-#6
-#2 4 4 9 4 9
-#
-#出力例 1
-#20
-#(l,r,x)=(2,6,4) としたとき、20 個のみかんを食べることができます。
-#
-#入力例 2
-#6
-#200 4 4 9 4 9
-#
-#出力例 2
-#200
-#(l,r,x)=(1,1,200) としたとき、200 個のみかんを食べることができます。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for l in range(N):
+        x = A[l]
+        for r in range(l, N):
+            x = min(x, A[r])
+            ans = max(ans, x * (r - l + 1))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for l in range(n):
+        x = a[l]
+        for r in range(l, n):
+            x = min(x, a[r])
+            ans = max(ans, x * (r - l + 1))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        x = a[i]
+        for j in range(i, n):
+            x = min(x, a[j])
+            ans = max(ans, x * (j - i + 1))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        x = A[i]
+        for j in range(i, N):
+            x = min(x, A[j])
+            ans = max(ans, x * (j - i + 1))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            x = min(a[i:j+1])
+            ans = max(ans, x * (j - i + 1))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for x in range(1, 10**5+1):
+        l = 0
+        r = 0
+        cnt = 0
+        while r < n:
+            while r < n and a[r] >= x:
+                r += 1
+            cnt += max(0, r-l)
+            while l < r and a[l] < x:
+                l += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N+1):
+            x = min(A[i:j])
+            ans = max(ans, x*(j-i))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(1, n):
+        if a[i] < a[i-1]:
+            ans += a[i-1]-a[i]
+            a[i] = a[i-1]
+    print(ans)

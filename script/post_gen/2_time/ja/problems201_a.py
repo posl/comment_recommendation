@@ -1,38 +1,54 @@
-#問題文
-#長さ 3 の数列 A=(A_1,A_2,A_3) が与えられます。
-#A を適切に並び替えて等差数列にすることはできますか？
-#即ち、A_3-A_2=A_2-A_1 を満たすように A を並び替えることはできますか？
-#
-#制約
-#1 ≦ A_i ≦ 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A_1 A_2 A_3
-#
-#出力
-#A を並び替えて等差数列にできるなら Yes、できないなら No と出力せよ。
-#
-#入力例 1
-#5 1 3
-#
-#出力例 1
-#Yes
-#例えば (1,3,5) と並び替えることで等差数列になります。
-#
-#入力例 2
-#1 4 3
-#
-#出力例 2
-#No
-#どのように並び替えても A は等差数列になりません。
-#
-#入力例 3
-#5 5 5
-#
-#出力例 3
-#Yes
-#A の要素が全て等しい場合や、A が元から等差数列になっている場合もあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[2] - A[1] == A[1] - A[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[2] - A[1] == A[1] - A[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    A = [int(i) for i in input().split()]
+    #並び替え
+    A.sort()
+    #出力
+    if A[2]-A[1] == A[1]-A[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    #数列の長さ
+    N = 3
+    #数列を格納する配列
+    A = [0]*N
+    #数列の要素を格納
+    for i in range(N):
+        A[i] = int(input())
+    #等差数列にできるか判定
+    if (A[1]-A[0]) == (A[2]-A[1]):
+        print("Yes")
+    else:
+        print("No")

@@ -1,38 +1,52 @@
-#問題文
-#高橋君は九九を覚えたので、1 以上 9 以下の 2 つの整数の積を計算することができます。それ以外の計算はできません。
-#2 つの整数 A, B が与えられます。
-#高橋君が A × B を計算できるならその結果を、できないなら代わりに -1 を出力してください。
-#
-#制約
-#1 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#高橋君が A × B を計算できるならその結果を、できないなら -1 を出力せよ。
-#
-#入力例 1
-#2 5
-#
-#出力例 1
-#10
-#2 × 5 は 10 です。
-#
-#入力例 2
-#5 10
-#
-#出力例 2
-#-1
-#5× 10 は 50 ですが、高橋君には計算できないので、かわりに -1 を出力します。
-#
-#入力例 3
-#9 9
-#
-#出力例 3
-#81
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if 1 <= a <= 9 and 1 <= b <= 9:
+        print(a * b)
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a >= 1 and a <= 9 and b >= 1 and b <= 9:
+        print(a * b)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a <= 9 and b <= 9:
+        print(a * b)
+    else:
+        print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if A <= 9 and B <= 9:
+        print(A * B)
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+
+    if A > 9 or B > 9:
+        print(-1)
+    else:
+        print(A * B)

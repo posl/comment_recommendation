@@ -1,69 +1,226 @@
-#Problem Statement
-#Takahashi is trying to catch many Snuke.
-#There are five pits at coordinates 0, 1, 2, 3, and 4 on a number line, connected to Snuke's nest.
-#Now, N Snuke will appear from the pits. It is known that the i-th Snuke will appear from the pit at coordinate X_i at time T_i, and its size is A_i.
-#Takahashi is at coordinate 0 at time 0 and can move on the line at a speed of at most 1.
-#He can catch a Snuke appearing from a pit if and only if he is at the coordinate of that pit exactly when it appears.
-#The time it takes to catch a Snuke is negligible.
-#Find the maximum sum of the sizes of Snuke that Takahashi can catch by moving optimally.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#0 < T_1 < T_2 < ... < T_N ≦ 10^5
-#0 ≦ X_i ≦ 4
-#1 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#T_1 X_1 A_1
-#T_2 X_2 A_2
-#.
-#.
-#.
-#T_N X_N A_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3
-#1 0 100
-#3 3 10
-#5 4 1
-#
-#Sample Output 1
-#101
-#The optimal strategy is as follows.
-#Wait at coordinate 0 to catch the first Snuke at time 1.
-#Go to coordinate 4 to catch the third Snuke at time 5.
-#It is impossible to catch both the first and second Snuke, so this is the best he can.
-#
-#Sample Input 2
-#3
-#1 4 1
-#2 4 1
-#3 4 1
-#
-#Sample Output 2
-#0
-#Takahashi cannot catch any Snuke.
-#
-#Sample Input 3
-#10
-#1 4 602436426
-#2 1 623690081
-#3 3 262703497
-#4 4 628894325
-#5 3 450968417
-#6 1 161735902
-#7 1 707723857
-#8 2 802329211
-#9 0 317063340
-#10 2 125660016
-#
-#Sample Output 3
-#2978279323
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = [0] * N
+    X = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    dp = [[0] * 5 for i in range(N + 1)]
+    for i in range(N):
+        for j in range(5):
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
+            if T[i] - j >= 0:
+                dp[i + 1][X[i]] = max(dp[i + 1][X[i]], dp[i][j] + A[i])
+    ans = 0
+    for i in range(5):
+        ans = max(ans, dp[N][i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = [0] * N
+    T = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    dp = [[0] * 5 for i in range(N + 1)]
+    for i in range(N):
+        for j in range(5):
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
+            if T[i] >= abs(X[i] - j):
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][X[i]] + A[i])
+    print(max(dp[N]))
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    T, X, A = [], [], []
+    for _ in range(N):
+        t, x, a = map(int, input().split())
+        T.append(t)
+        X.append(x)
+        A.append(a)
+
+    # dp[i][j] = i番目までのスヌークを捕まえたときの、座標jでの最大のスヌークの総和
+    # dp[i][j] = max(dp[i-1][j], dp[i-1][j-1], dp[i-1][j+1]) + A[i] (j == X[i])
+    # dp[i][j] = max(dp[i-1][j], dp[i-1][j-1], dp[i-1][j+1]) (j != X[i])
+    dp = [[0] * 5 for _ in range(N)]
+    dp[0][X[0]] = A[0]
+    for i in range(1, N):
+        for j in range(5):
+            if j == X[i]:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-1], dp[i-1][j+1]) + A[i]
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-1], dp[i-1][j+1])
+
+    print(max(dp[N-1]))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = [0] * N
+    T = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    dp = [[[0] * 5 for _ in range(5)] for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(5):
+            for k in range(5):
+                if j != k:
+                    dp[i + 1][k][X[i]] = max(dp[i + 1][k][X[i]], dp[i][j][k] + A[i])
+                if T[i] >= abs(j - k):
+                    dp[i + 1][j][k] = max(dp[i + 1][j][k], dp[i][j][k])
+    print(max([dp[N][j][k] for j in range(5) for k in range(5)]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    X = [0] * N
+    T = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    dp = [[0] * 5 for _ in range(N)]
+    for i in range(N):
+        for j in range(5):
+            if j == X[i]:
+                dp[i][j] = dp[i-1][j] + A[i]
+            else:
+                dp[i][j] = dp[i-1][j]
+        for j in range(5):
+            if T[i] - 1 == T[i-1] and j == X[i-1]:
+                dp[i][j] = max(dp[i-1][j], dp[i-1][X[i]] + A[i])
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j])
+    print(max(dp[N-1]))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    Snuke = []
+    for i in range(N):
+        T, X, A = map(int, input().split())
+        Snuke.append([T, X, A])
+    Snuke = sorted(Snuke, key=lambda x: x[0])
+    #print(Snuke)
+
+    dp = [[0] * 5 for i in range(N+1)]
+    for i in range(N):
+        for j in range(5):
+            dp[i+1][j] = max(dp[i+1][j], dp[i][j])
+            if Snuke[i][1] == j:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j] + Snuke[i][2])
+            if j > 0:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j-1])
+            if j < 4:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j+1])
+    #print(dp)
+    print(max(dp[-1]))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    Snuke = []
+    for i in range(N):
+        T, X, A = map(int, input().split())
+        Snuke.append((T, X, A))
+    Snuke.sort()
+
+    dp = [[0 for j in range(5)] for i in range(N)]
+    for i in range(N):
+        for j in range(5):
+            if i == 0:
+                if Snuke[i][1] == j:
+                    dp[i][j] = Snuke[i][2]
+                else:
+                    dp[i][j] = 0
+            else:
+                dp[i][j] = dp[i - 1][j]
+
+                if Snuke[i][1] == j:
+                    dp[i][j] = max(dp[i][j], dp[i - 1][j] + Snuke[i][2])
+                if Snuke[i][1] == j - 1 and Snuke[i][0] - Snuke[i - 1][0] >= abs(j - (j - 1)):
+                    dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + Snuke[i][2])
+                if Snuke[i][1] == j + 1 and Snuke[i][0] - Snuke[i - 1][0] >= abs(j - (j + 1)):
+                    dp[i][j] = max(dp[i][j], dp[i - 1][j + 1] + Snuke[i][2])
+
+    print(max(dp[N - 1]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    snukes = []
+    for _ in range(N):
+        T, X, A = map(int, input().split())
+        snukes.append((T, X, A))
+    snukes.sort()
+    dp = [[0 for _ in range(5)] for _ in range(N+1)]
+    for i in range(N):
+        T, X, A = snukes[i]
+        for j in range(5):
+            dp[i+1][j] = max(dp[i+1][j], dp[i][j])
+            if j == X:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j] + A)
+            if j < X:
+                dp[i+1][X] = max(dp[i+1][X], dp[i][j] + A)
+            if j > X:
+                dp[i+1][X] = max(dp[i+1][X], dp[i][j] + A)
+    print(max(dp[-1]))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [list(map(int, input().split())) for i in range(N)]
+    dp = [[0] * 5 for i in range(N + 1)]
+    for i in range(N):
+        for j in range(5):
+            dp[i + 1][j] = dp[i][j]
+        dp[i + 1][S[i][1]] = max(dp[i + 1][S[i][1]], dp[i][S[i][1]])
+        for j in range(5):
+            if j == S[i][1]:
+                continue
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j] + S[i][2] * (S[i][0] - i))
+    print(max(dp[N]))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    #dp[t][i] = t秒目に座標iにいる時の最大スコア
+    dp = [[0]*5 for _ in range(10**5+1)]
+    for _ in range(N):
+        T, X, A = map(int, input().split())
+        for i in range(5):
+            if i == X:
+                dp[T][i] = max(dp[T-1][i] + A, dp[T][i])
+            else:
+                dp[T][i] = max(dp[T-1][i], dp[T][i])
+        for i in range(5):
+            dp[T+1][i] = max(dp[T][i], dp[T+1][i])
+    print(max(dp[-1]))

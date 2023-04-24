@@ -1,56 +1,240 @@
-#問題文
-#正の整数 a があります。また、黒板に 1 個の数が 10 進表記で書かれています。
-#黒板に現在書かれている数を x としたとき、高橋君は次のいずれかの操作を行い、黒板に書かれている数を変化させることができます。
-#x を消し、 x を a 倍した数を 10 進表記で新たに書きこむ。
-#x を文字列とみなして、列の末尾の数字を文字列の先頭に移動させる。
-#    ただし、この操作は x ≧ 10 かつ x が 10 で割り切れないときにしか行えない。
-#たとえば a = 2, x = 123 であるとき、高橋君は次のいずれかの操作を行うことができます。
-#x を消して、 x × a = 123 × 2 = 246 を新たに書きこむ。
-#x を文字列とみなして、123 の末尾の数字である 3 を先頭に移動させる。黒板に書かれている数は 123 から 312 に変化する。
-#はじめ、黒板には 1 が書かれています。書かれている数を N に変化させるには最小で何回の操作が必要ですか？ただし、どのように操作しても書かれている数を N に変化させられない場合は -1 を出力してください。
-#
-#制約
-#2 ≦ a < 10^6
-#2 ≦ N < 10^6
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 72
-#
-#出力例 1
-#4
-#以下に説明する操作を行うことで、 黒板に書かれている数を 4 回で 1 から 72 に変化させることができます。
-#1 つ目の操作を行う。黒板に書かれている数は 1 -> 3 に変わる。
-#1 つ目の操作を行う。黒板に書かれている数は 3 -> 9 に変わる。
-#1 つ目の操作を行う。黒板に書かれている数は 9 -> 27 に変わる。
-#2 つ目の操作を行う。黒板に書かれている数は 27 -> 72 に変わる。
-#3 回以下の操作で 72 に変化させることはできないため、答えは 4 になります。
-#
-#入力例 2
-#2 5
-#
-#出力例 2
-#-1
-#どのように操作しても黒板に書かれている数を 5 に変化させることはできません。
-#
-#入力例 3
-#2 611
-#
-#出力例 3
-#12
-#適切に操作を選ぶことで、 1 -> 2 -> 4 -> 8 -> 16 -> 32 -> 64 -> 46 -> 92 -> 29 -> 58 -> 116 -> 611 と 12 回の操作で黒板に書かれている数を 611 に変化させることができ、これが最小です。
-#
-#入力例 4
-#2 767090
-#
-#出力例 4
-#111
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, n = map(int, input().split())
+    ans = 0
+    while n != 1:
+        if n % a == 0:
+            n //= a
+            ans += 1
+        else:
+            if len(str(n)) == 1:
+                print(-1)
+                return
+            n = int(str(n)[-1] + str(n)[:-1])
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    a, n = map(int, input().split())
+    count = 0
+    while n > 1:
+        if n % a == 0:
+            n //= a
+        elif n % 10 != 0:
+            n = int(str(n % 10) + str(n // 10))
+        else:
+            break
+        count += 1
+    if n == 1:
+        print(count)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    a, N = map(int, input().split())
+    if N % a != 0:
+        print(-1)
+        return
+    N //= a
+    ans = 0
+    while N > 0:
+        if N % 10 == 1:
+            N //= 10
+        elif N % 2 == 0:
+            N //= 2
+        else:
+            print(-1)
+            return
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    a, n = map(int, input().split())
+    x = 1
+    ans = 0
+    while x < n:
+        ans += 1
+        x = x * a
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    a, n = map(int, input().split())
+    #初期値
+    x = 1
+    cnt = 0
+    #処理
+    while x < n:
+        #a倍する
+        x *= a
+        cnt += 1
+        #10で割り切れないなら
+        if x % 10 != 0:
+            #末尾の数字を先頭に持ってくる
+            x = int(str(x)[-1] + str(x)[:-1])
+            cnt += 1
+    #出力
+    if x == n:
+        print(cnt)
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    a, N = map(int, input().split())
+    if N == a:
+        print(1)
+        return
+    if N <= 1:
+        print(-1)
+        return
+    if a == 2:
+        print(len(bin(N)[2:]) - 1)
+        return
+    if a == 3:
+        if N == 3:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 4:
+        if N == 4:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 5:
+        if N == 5:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 6:
+        if N == 6:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 7:
+        if N == 7:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 8:
+        if N == 8:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 9:
+        if N == 9:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 10:
+        if N == 10:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 11:
+        if N == 11:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 12:
+        if N == 12:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 13:
+        if N == 13:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 14:
+        if N == 14:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 15:
+        if N == 15:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 16:
+        if N == 16:
+            print(2)
+        else:
+            print(3)
+        return
+    if a == 17:
+        if N == 17:
+
+=======
+Suggestion 7
+
+def main():
+    a, n = map(int, input().split())
+    if n == 1:
+        print(0)
+    else:
+        print(bfs(a, n))
+
+=======
+Suggestion 8
+
+def solve(a, n):
+    if n == 1:
+        return 0
+    elif n % a == 0:
+        return solve(a, n // a) + 1
+    else:
+        num = n % 10
+        if num == 1:
+            return solve(a, n // 10) + 1
+        elif num == 0:
+            return -1
+        else:
+            return solve(a, n - num) + 1
+
+=======
+Suggestion 9
+
+def main():
+    a, N = map(int, input().split())
+    if N % a == 0:
+        print(-1)
+        return
+
+    # a が N の約数になるまでの回数
+    count = 0
+    while N % a != 0:
+        N = int(str(N)[1:] + str(N)[0])
+        count += 1
+    print(count)

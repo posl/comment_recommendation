@@ -1,63 +1,196 @@
-#Problem Statement
-#Given are positive integers N, M, Q, and Q quadruples of integers ( a_i , b_i , c_i , d_i ).
-#Consider a sequence A satisfying the following conditions:
-#A is a sequence of N positive integers.
-#1 ≦ A_1 ≦ A_2 ≦ ... ≦ A_N ≦ M.
-#Let us define a score of this sequence as follows:
-#The score is the sum of d_i over all indices i such that A_{b_i} - A_{a_i} = c_i. (If there is no such i, the score is 0.)
-#Find the maximum possible score of A.
-#
-#Constraints
-#All values in input are integers.
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) (where i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#a_1 b_1 c_1 d_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#Output
-#Print the maximum possible score of A.
-#
-#Sample Input 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#Sample Output 1
-#110
-#When A = {1, 3, 4}, its score is 110. Under these conditions, no sequence has a score greater than 110, so the answer is 110.
-#
-#Sample Input 2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#Sample Output 2
-#357500
-#
-#Sample Input 3
-#10 10 1
-#1 10 9 1
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    a = [0] * Q
+    b = [0] * Q
+    c = [0] * Q
+    d = [0] * Q
+    for i in range(Q):
+        a[i], b[i], c[i], d[i] = map(int, input().split())
+        a[i] -= 1
+        b[i] -= 1
+    ans = 0
+    A = [0] * N
+    def dfs(x):
+        global ans
+        if x == N:
+            score = 0
+            for i in range(Q):
+                if A[b[i]] - A[a[i]] == c[i]:
+                    score += d[i]
+            ans = max(ans, score)
+            return
+        for i in range(A[x - 1], M + 1):
+            A[x] = i
+            dfs(x + 1)
+    dfs(0)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M, Q = map(int, input().split())
+    abcd = [list(map(int, input().split())) for _ in range(Q)]
+    ans = 0
+    def dfs(A):
+        global ans
+        if len(A) == N:
+            score = 0
+            for a, b, c, d in abcd:
+                if A[b-1] - A[a-1] == c:
+                    score += d
+            ans = max(ans, score)
+        else:
+            for i in range(A[-1], M+1):
+                dfs(A + [i])
+    dfs([1])
+    print(ans)
+
+=======
+Suggestion 3
+
+def   main ():
+    n ,  m ,  q  =  map ( int ,  input (). split ())
+    abcd  =  [ list ( map ( int ,  input (). split ()))  for  _  in   range ( q )]
+
+    ans  =   0 
+     for  a  in   range ( 1 ,  m  +   1 ):
+        A  =   [ a ]  +   [ 0 ] * ( n  -   1 )
+         for  i  in   range ( 1 ,  n ):
+            A [ i ]  =   max ( A [ i - 1 ],  m  -  ( n  -  i ))
+             if  A [ i ]  ==  m  -  ( n  -  i ):
+                 break 
+         for  b  in   range ( A [ i ],  m  +   1 ):
+            A [ i ]  =  b
+             for  j  in   range ( i + 1 ,  n ):
+                A [ j ]  =   max ( A [ j - 1 ],  m  -  ( n  -  j ))
+                 if  A [ j ]  ==  m  -  ( n  -  j ):
+                     break 
+             for  c  in   range ( A [ j ],  m  +   1 ):
+                A [ j ]  =  c
+                 for  k  in   range ( j + 1 ,  n ):
+                    A [ k ]  =   max ( A [ k - 1 ],  m  -  ( n  -  k ))
+                     if  A [ k ]  ==  m  -  ( n  -  k ):
+                         break 
+                 for  d  in   range ( A [ k ],  m  +   1 ):
+                    A [ k ]  =  d
+                    score  =   0 
+                     for  a_i ,  b_i ,  c_i ,  d_i  in  abcd:
+                         if  A [ b_i  -   1 ]  -  A [ a_i  -   1 ]  ==  c_i:
+                            score  +=  d_i
+                    ans  =   max ( ans ,  score )
+    print ( ans )
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    questions = [list(map(int, input().split())) for _ in range(Q)]
+    print(solver(N, M, Q, questions))
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [0] * N
+    A[0] = 1
+    A[-1] = M
+    for i in range(N - 2):
+        A[i + 1] = M - N + 2 + i
+    max_score = 0
+    while True:
+        score = 0
+        for i in range(Q):
+            a, b, c, d = map(int, input().split())
+            if A[b - 1] - A[a - 1] == c:
+                score += d
+        max_score = max(max_score, score)
+        if not next_permutation(A):
+            break
+    print(max_score)
+
+=======
+Suggestion 6
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [0] * (N + 1)
+    d = [0] * (N + 1)
+    for i in range(Q):
+        a, b, c, dd = map(int, input().split())
+        if A[a] == 0:
+            A[a] = c
+            d[a] = dd
+        else:
+            if A[a] > c:
+                A[a] = c
+                d[a] = dd
+    print(A)
+    print(d)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [1] * N
+    ans = 0
+    def dfs(i):
+        nonlocal ans
+        if i == N:
+            score = 0
+            for a, b, c, d in abcd:
+                if A[b - 1] - A[a - 1] == c:
+                    score += d
+            ans = max(ans, score)
+            return
+        for j in range(A[i - 1], M + 1):
+            A[i] = j
+            dfs(i + 1)
+    abcd = [list(map(int, input().split())) for _ in range(Q)]
+    dfs(1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M, Q = map(int, input().split())
+    # print(N, M, Q)
+    quad = []
+    for i in range(Q):
+        quad.append(list(map(int, input().split())))
+    # print(quad)
+    ans = 0
+    for i in range(M):
+        A = [i+1]
+        ans = max(ans, dfs(N, M, Q, quad, A))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [0] * N
+    A[0] = 1
+    A[N-1] = M
+    print(A)
+    # for i in range(Q):
+    #     a, b, c, d = map(int, input().split())
+    #     if A[b-1] - A[a-1] == c:
+    #         score += d
+    # print(score)
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

@@ -1,36 +1,146 @@
-#問題文
-#あなたはオンラインゲーム「ATChat」のチュートリアルを終え、その場に居合わせたプレイヤー N 人で早速とある場所を訪ねることにしました。この N 人には 1 から N の番号が振られており、人 i (1 ≦ i ≦ N) の フレンドリーさ は A_i です。
-#訪ねる際、N 人は好きな順番で 1 人ずつ到着します。あなたたちは迷子にならないために、既に到着した人たちで環状に並び、新たに到着した人は好きな位置に割り込んで加わるというルールを決めました。
-#最初に到着した人以外の各人は、割り込んだ位置から到着した時点で「時計回りで最も近い人」と「反時計回りで最も近い人」のフレンドリーさのうち小さい方に等しい 心地よさ を感じます。最初に到着した人の心地よさは 0 です。
-#N 人が到着する順番や割り込む位置を適切に決めたとき、N 人の心地よさの合計の最大値はいくらになるでしょう？
-#
-#制約
-#入力はすべて整数
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#N 人の心地よさの合計の最大値を出力せよ。
-#
-#入力例 1
-#4
-#2 2 1 3
-#
-#出力例 1
-#7
-#人 4, 2, 1, 3 がこの順に到着し、図のように輪に割り込むことで、心地よさの合計は 7 になります。
-#心地よさの合計を 7 より大きくすることはできないので、7 が答えになります。
-#
-#入力例 2
-#7
-#1 1 1 1 1 1 1
-#
-#出力例 2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 * i - N + 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (N - i - 1) - A[i] * i
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (i * 2 - N + 1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (N - 1 - 2 * i)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (N - 1 - i * 2)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(1, N):
+        ans += A[i] * (i - (N - i))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(sum(A[0:N-1]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    print(sum(A[0::2]))
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N = int(input())
+    A = list(map(int, input().split()))
+    
+    #Aを降順にソート
+    A.sort(reverse=True)
+    
+    #Aの降順ソートの最初の要素と最後の要素をそれぞれ最初と最後に配置する
+    #その時の心地よさの合計を求める
+    ans = A[0] + A[-1]
+    
+    #Aの降順ソートの2番目からN-1番目の要素をそれぞれ順番に配置する
+    #その時の心地よさの合計を求める
+    for i in range(1, N-1):
+        ans += min(A[i], A[i+1])
+    
+    #出力
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # A[i] が最大値の人の番号を求める
+    max_index = 0
+    for i in range(N):
+        if A[i] > A[max_index]:
+            max_index = i
+
+    # 最大値の人を中心に時計回りに並べる
+    B = [0] * N
+    for i in range(N):
+        B[i] = A[(max_index + i) % N]
+
+    # 時計回りに並べたときの心地よさを求める
+    C = [0] * N
+    C[0] = 0
+    C[1] = B[0]
+    for i in range(2, N):
+        C[i] = min(C[i-1], B[i-1])
+
+    # 時計回りに並べたときの心地よさの合計を求める
+    ans = 0
+    for i in range(N):
+        ans += C[i]
+
+    print(ans)

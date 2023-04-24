@@ -1,40 +1,147 @@
-#Problem Statement
-#Takahashi and Aoki decided to jog.
-#Takahashi repeats the following: "walk at B meters a second for A seconds and take a rest for C seconds."
-#Aoki repeats the following: "walk at E meters a second for D seconds and take a rest for F seconds."
-#When X seconds have passed since they simultaneously started to jog, which of Takahashi and Aoki goes ahead?
-#
-#Constraints
-#1 ≦ A, B, C, D, E, F, X ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C D E F X
-#
-#Output
-#When X seconds have passed since they simultaneously started to jog, if Takahashi goes ahead of Aoki, print Takahashi; if Aoki goes ahead of Takahashi, print Aoki; if they have advanced the same distance, print Draw.
-#
-#Sample Input 1
-#4 3 3 6 2 5 10
-#
-#Sample Output 1
-#Takahashi
-#During the first 10 seconds after they started to jog, they move as follows.
-#Takahashi walks for 4 seconds, takes a rest for 3 seconds, and walks again for 3 seconds.  As a result, he advances a total of (4 + 3) × 3 = 21 meters.
-#Aoki walks for 6 seconds and takes a rest for 4 seconds.  As a result, he advances a total of 6 × 2 = 12 meters.
-#Since Takahashi goes ahead, Takahashi should be printed.
-#
-#Sample Input 2
-#3 1 4 1 5 9 2
-#
-#Sample Output 2
-#Aoki
-#
-#Sample Input 3
-#1 1 1 1 1 1 1
-#
-#Sample Output 3
-#Draw
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d, e, f, x = map(int, input().split())
+    takahashi = (a + c) * b
+    aoki = d * e
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+    takahashi = (A + C) * B
+    aoki = D * E
+    if takahashi > aoki:
+        print("Takahashi")
+    elif aoki > takahashi:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+    takahashi = (A + C) * B
+    aoki = D * E
+    if takahashi > aoki:
+        print('Takahashi')
+    elif takahashi < aoki:
+        print('Aoki')
+    else:
+        print('Draw')
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c,d,e,f,x = map(int, input().split())
+    takahashi = b * (a + c)
+    aoki = e * (d + f)
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 5
+
+def jog():
+    A, B, C, D, E, F, X = map(int, input().split())
+    takahashi = 0
+    aoki = 0
+    for i in range(X):
+        if i % (A + C) < A:
+            takahashi += B
+        if i % (D + F) < D:
+            aoki += E
+    if takahashi > aoki:
+        print('Takahashi')
+    elif aoki > takahashi:
+        print('Aoki')
+    else:
+        print('Draw')
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C,D,E,F,X = map(int,input().split())
+    taka = (A+B)*B
+    aoki = (D+E)*E
+    if taka > aoki:
+        print("Takahashi")
+    elif aoki > taka:
+        print("Aoki")
+    else:
+        print("Draw")
+
+main()
+
+=======
+Suggestion 7
+
+def jog (a, b, c, d, e, f, x):
+    takahashi = (a + c) * b
+    aoki = d * e
+    if (takahashi > aoki):
+        print("Takahashi")
+    elif (takahashi < aoki):
+        print("Aoki")
+    else:
+        print("Draw")
+
+a, b, c, d, e, f, x = map(int, input().split())
+jog(a, b, c, d, e, f, x)
+
+I am trying to understand the logic behind the following code. I have a list of strings and for each string I want to create a dictionary where the key is the string and the value is the length of the string. I am having a hard time understanding the following code.
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C,D,E,F,X = map(int,input().split())
+
+    Takahashi = X//(A+B)*A
+    if X%(A+B) < A:
+        Takahashi += X%(A+B)
+    else:
+        Takahashi += A
+
+    Aoki = X//(C+D)*D
+    if X%(C+D) < D:
+        Aoki += X%(C+D)
+    else:
+        Aoki += D
+
+    if Takahashi > Aoki:
+        print("Takahashi")
+    elif Takahashi < Aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 9
+
+def takahashi(a, b, c, x):
+    return (a + c) * b
+
+=======
+Suggestion 10
+
+def aoki_walk_time(d, e, f, x):
+    return (x - 1) // (d * e + f)

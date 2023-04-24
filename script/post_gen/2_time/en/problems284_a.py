@@ -1,51 +1,91 @@
-#Problem Statement
-#You are given N strings S_1,S_2,...,S_N in this order.
-#Print S_N,S_{N-1},...,S_1 in this order.
-#
-#Constraints
-#1≦ N ≦ 10
-#N is an integer.
-#S_i is a string of length between 1 and 10, inclusive, consisting of lowercase English letters, uppercase English letters, and digits.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print N lines.
-#The i-th (1≦ i ≦ N) line should contain S_{N+1-i}.
-#
-#Sample Input 1
-#3
-#Takahashi
-#Aoki
-#Snuke
-#
-#Sample Output 1
-#Snuke
-#Aoki
-#Takahashi
-#We have N=3, S_1= Takahashi, S_2= Aoki, and S_3= Snuke.
-#Thus, you should print Snuke, Aoki, and Takahashi in this order.
-#
-#Sample Input 2
-#4
-#2023
-#Year
-#New
-#Happy
-#
-#Sample Output 2
-#Happy
-#New
-#Year
-#2023
-#The given strings may contain digits.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N-1, -1, -1):
+        print(S[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-1-i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-i-1])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(input())
+    l.reverse()
+    for i in l:
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    for i in range(N):
+        print(S[N-i-1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    for i in range(N):
+        print(S[N - 1 - i])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print(*s[::-1], sep='
+
+')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        print(S[-i-1])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    for i in range(n):
+        print(input())

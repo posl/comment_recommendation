@@ -1,95 +1,280 @@
-#Problem Statement
-#You are given two sets S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)} and T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)} of N points each on a two-dimensional plane.
-#Determine whether it is possible to do the following operations on S any number of times (possibly zero) in any order so that S matches T.
-#Choose a real number p (0 < p < 360) and rotate every point in S p degrees clockwise about the origin.
-#Choose real numbers q and r and move every point in S by q in the x-direction and by r in the y-direction. Here, q and r can be any real numbers, be it positive, negative, or zero.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) if i ≠ j.
-#(c_i,d_i) ≠ (c_j,d_j) if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#Output
-#If we can match S with T, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#Sample Output 1
-#Yes
-#The figure below shows the given sets of points, where the points in S and T are painted red and green, respectively:
-#In this case, we can match S with T as follows:
-#Rotate every point in S 270 degrees clockwise about the origin.
-#Move every point in S by 3 in the x-direction and by 0 in the y-direction.
-#
-#Sample Input 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#Sample Output 2
-#No
-#The figure below shows the given sets of points:
-#Although S and T are symmetric about the y-axis, we cannot match S with T by rotations and translations as stated in Problem Statement.
-#
-#Sample Input 3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#Sample Output 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        S.append((a, b))
+    for _ in range(N):
+        c, d = map(int, input().split())
+        T.append((c, d))
+
+    for p in range(360):
+        for q in range(-10, 11):
+            for r in range(-10, 11):
+                S_ = [(a * math.cos(math.radians(p)) - b * math.sin(math.radians(p)) + q, a * math.sin(math.radians(p)) + b * math.cos(math.radians(p)) + r) for a, b in S]
+                if S_ == T:
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        S.append((a, b))
+    for i in range(N):
+        c, d = map(int, input().split())
+        T.append((c, d))
+    # Sを回転させてTに一致するか
+    for i in range(4):
+        if S == T:
+            print('Yes')
+            exit()
+        S = [(b, -a) for a, b in S]
+    # Sを平行移動させてTに一致するか
+    for i in range(N):
+        dx = T[i][0] - S[0][0]
+        dy = T[i][1] - S[0][1]
+        S2 = [(a + dx, b + dy) for a, b in S]
+        if S2 == T:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [list(map(int, input().split())) for _ in range(n)]
+    t = [list(map(int, input().split())) for _ in range(n)]
+    s.sort()
+    t.sort()
+    for i in range(4):
+        if i == 1:
+            s = [[-y, x] for x, y in s]
+        elif i == 2:
+            s = [[-x, -y] for x, y in s]
+        elif i == 3:
+            s = [[y, -x] for x, y in s]
+        for j in range(n):
+            dx = t[0][0] - s[j][0]
+            dy = t[0][1] - s[j][1]
+            for k in range(n):
+                s[k][0] += dx
+                s[k][1] += dy
+            s.sort()
+            if s == t:
+                print('Yes')
+                return
+            for k in range(n):
+                s[k][0] -= dx
+                s[k][1] -= dy
+    print('No')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s, t = [], []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        s.append((x, y))
+    for _ in range(n):
+        x, y = map(int, input().split())
+        t.append((x, y))
+    if n == 1:
+        print('Yes')
+        return
+    if n == 2:
+        if (s[0][0] - s[1][0]) * (t[0][1] - t[1][1]) == (s[0][1] - s[1][1]) * (t[0][0] - t[1][0]):
+            print('Yes')
+        else:
+            print('No')
+        return
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            for k in range(n):
+                if k == i or k == j:
+                    continue
+                for l in range(n):
+                    if l == i or l == j or l == k:
+                        continue
+                    p1 = (s[i][0] - s[j][0], s[i][1] - s[j][1])
+                    p2 = (t[i][0] - t[j][0], t[i][1] - t[j][1])
+                    p3 = (s[k][0] - s[l][0], s[k][1] - s[l][1])
+                    p4 = (t[k][0] - t[l][0], t[k][1] - t[l][1])
+                    if p1[0] * p2[1] == p1[1] * p2[0] and p3[0] * p4[1] == p3[1] * p4[0]:
+                        print('Yes')
+                        return
+    print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [list(map(int, input().split())) for _ in range(N)]
+    T = [list(map(int, input().split())) for _ in range(N)]
+    ans = "No"
+    for i in range(4):
+        if i != 0:
+            S = [[x[1], -x[0]] for x in S]
+        for dx in range(-10, 11):
+            for dy in range(-10, 11):
+                if [[x[0]+dx, x[1]+dy] for x in S] == T:
+                    ans = "Yes"
+                    break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [tuple(map(int, input().split())) for _ in range(n)]
+    t = [tuple(map(int, input().split())) for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            s[i], t[j] = t[j], s[i]
+            if set(s) == set(t):
+                print('Yes')
+                return
+            s[i], t[j] = t[j], s[i]
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [tuple(map(int, input().split())) for _ in range(N)]
+    T = [tuple(map(int, input().split())) for _ in range(N)]
+
+    def rotate(p):
+        return [(x * cos(p) - y * sin(p), x * sin(p) + y * cos(p)) for x, y in S]
+
+    def translate(q, r):
+        return [(x + q, y + r) for x, y in S]
+
+    def match(S, T):
+        return sorted(S) == sorted(T)
+
+    for p in range(1, 360):
+        if match(rotate(p), T):
+            print("Yes")
+            break
+    else:
+        for q in range(-10, 10):
+            for r in range(-10, 10):
+                if match(translate(q, r), T):
+                    print("Yes")
+                    break
+            else:
+                continue
+            break
+        else:
+            print("No")
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    N = int(sys.stdin.readline())
+    S = [[int(x) for x in sys.stdin.readline().split()] for _ in range(N)]
+    T = [[int(x) for x in sys.stdin.readline().split()] for _ in range(N)]
+    if N == 1:
+        print('Yes')
+    elif N == 2:
+        if (T[0][0] - S[0][0]) * (T[1][1] - S[1][1]) == (T[1][0] - S[1][0]) * (T[0][1] - S[0][1]):
+            print('Yes')
+        else:
+            print('No')
+    else:
+        for i in range(N):
+            for j in range(N):
+                if i == j:
+                    continue
+                else:
+                    x = T[0][0] - S[i][0]
+                    y = T[0][1] - S[i][1]
+                    if S[j][0] + x == T[1][0] and S[j][1] + y == T[1][1]:
+                        break
+            else:
+                continue
+            break
+        else:
+            print('No')
+            return
+        for i in range(N):
+            if S[i][0] + x != T[i][0] or S[i][1] + y != T[i][1]:
+                print('No')
+                return
+        print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [list(map(int, input().split())) for _ in range(N)]
+    T = [list(map(int, input().split())) for _ in range(N)]
+
+    def same(S, T):
+        for i in range(N):
+            for j in range(N):
+                if S[i][0] == T[j][0] and S[i][1] == T[j][1]:
+                    break
+            else:
+                return False
+        return True
+
+    def rotate(S, theta):
+        return [[S[i][0] * cos(theta) - S[i][1] * sin(theta), S[i][0] * sin(theta) + S[i][1] * cos(theta)] for i in range(N)]
+
+    def translate(S, dx, dy):
+        return [[S[i][0] + dx, S[i][1] + dy] for i in range(N)]
+
+    if same(S, T):
+        print('Yes')
+        return
+
+    for i in range(4):
+        S = rotate(S, pi / 2)
+        if same(S, T):
+            print('Yes')
+            return
+
+    for dx in range(-100, 101):
+        for dy in range(-100, 101):
+            S = translate(S, dx, dy)
+            if same(S, T):
+                print('Yes')
+                return
+
+    print('No')
+
+=======
+Suggestion 10
+
+def gcd(a,b):
+    while b:
+        a,b=b,a%b
+    return a

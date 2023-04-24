@@ -1,43 +1,193 @@
-#Problem Statement
-#You are given strings S and T.  S consists of lowercase English letters, and T is obtained by inserting a lowercase English letter into S.
-#Find the position of the inserted character in T.
-#If there are multiple candidates, find any of them.
-#
-#Constraints
-#1 ≦ |S| ≦ 5× 10^5
-#S consists of lowercase English letters.
-#T is obtained by inserting a lowercase English letter into S.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#Print an integer i, representing that the inserted character is the i-th character from the beginning of T.  If there are multiple possible answers, printing any of them is accepted.  
-#
-#Sample Input 1
-#atcoder
-#atcorder
-#
-#Sample Output 1
-#5
-#The 5-th character from the beginning of T, r, is inserted.
-#
-#Sample Input 2
-#million
-#milllion
-#
-#Sample Output 2
-#5
-#One of the 3-rd, 4-th, and 5-th characters from the beginning of T is inserted.
-#Thus, printing any one of 3, 4, and 5 is accepted.
-#
-#Sample Input 3
-#vvwvw
-#vvvwvw
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            break
+    else:
+        print(len(S)+1)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            return
+    print(len(s)+1)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            return
+    print(len(S)+1)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            return
+    print(len(S)+1)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans = i + 1
+            break
+    if ans == 0:
+        ans = len(s) + 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            break
+    else:
+        print(len(S)+1)
+main()
+
+This code is contributed by @yukicoder
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)+1):
+        if S[:i]+S[i:] == T:
+            print(i+1)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    T = input()
+    # S = "atcoder"
+    # T = "atcorder"
+    # S = "million"
+    # T = "milllion"
+    # S = "vvwvw"
+    # T = "vvvwvw"
+    # S = "abcde"
+    # T = "abcde"
+    # S = "a"
+    # T = "aa"
+    # S = "a"
+    # T = "ab"
+    # S = "a"
+    # T = "ba"
+    # S = "aa"
+    # T = "aaa"
+    # S = "aa"
+    # T = "aab"
+    # S = "aa"
+    # T = "aba"
+    # S = "aa"
+    # T = "baa"
+    # S = "aa"
+    # T = "baab"
+    # S = "aa"
+    # T = "bbab"
+    # S = "a"
+    # T = "ba"
+    # S = "a"
+    # T = "aa"
+    # S = "a"
+    # T = "ab"
+    # S = "a"
+    # T = "aaa"
+    # S = "aa"
+    # T = "aaa"
+    # S = "aa"
+    # T = "aab"
+    # S = "aa"
+    # T = "aba"
+    # S = "aa"
+    # T = "baa"
+    # S = "aa"
+    # T = "baab"
+    # S = "aa"
+    # T = "bbab"
+    # S = "a"
+    # T = "ba"
+    # S = "a"
+    # T = "aa"
+    # S = "a"
+    # T = "ab"
+    # S = "a"
+    # T = "aaa"
+    # S = "aa"
+    # T = "aaa"
+    # S = "aa"
+    # T = "aab"
+    # S = "aa"
+    # T = "aba"
+    # S = "aa"
+    # T = "baa"
+    # S = "aa"
+    # T = "baab"
+    # S = "aa"
+    # T = "bbab"
+    # S = "a"
+
+=======
+Suggestion 10
+
+def find_inserted_char(S, T):
+    #print(S)
+    #print(T)
+    S = list(S)
+    T = list(T)
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            return i+1
+    return len(S)+1

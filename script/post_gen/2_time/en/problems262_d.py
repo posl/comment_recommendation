@@ -1,42 +1,182 @@
-#Problem Statement
-#You are given a sequence of positive integers A=(a_1,...,a_N) of length N.
-#There are (2^N-1) ways to choose one or more terms of A.  How many of them have an integer-valued average?  Find the count modulo 998244353.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ a_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 ... a_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#2 6 2
-#
-#Sample Output 1
-#6
-#For each way to choose terms of A, the average is obtained as follows:
-#If just a_1 is chosen, the average is ((a_1)/(1))=(2/(1)) = 2, which is an integer.  
-#If just a_2 is chosen, the average is ((a_2)/(1))=(6/(1)) = 6, which is an integer.  
-#If just a_3 is chosen, the average is ((a_3)/(1))=(2/(1)) = 2, which is an integer.  
-#If a_1 and a_2 are chosen, the average is ((a_1+a_2)/(2))=((2+6)/(2)) = 4, which is an integer.  
-#If a_1 and a_3 are chosen, the average is ((a_1+a_3)/(2))=((2+2)/(2)) = 2, which is an integer.  
-#If a_2 and a_3 are chosen, the average is ((a_2+a_3)/(2))=((6+2)/(2)) = 4, which is an integer.  
-#If a_1, a_2, and a_3 are chosen, the average is ((a_1+a_2+a_3)/(3))=((2+6+2)/(3)) = ((10)/(3)), which is not an integer.
-#Therefore, 6 ways satisfy the condition.
-#
-#Sample Input 2
-#5
-#5 5 5 5 5
-#
-#Sample Output 2
-#31
-#Regardless of the choice of one or more terms of A, the average equals 5.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 0
+    for i in range(N):
+        ans += pow(2, i, MOD) * pow(2, N - i - 1, MOD) * A[i]
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 0
+    for i in range(N):
+        ans += pow(2, N-i-1, MOD) * A[i] * pow(N, MOD-2, MOD)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 0
+    for i in range(1, 1 << N):
+        cnt = 0
+        s = 0
+        for j in range(N):
+            if i >> j & 1:
+                cnt += 1
+                s += A[j]
+        if s % cnt == 0:
+            ans += 1
+    ans = ans * pow(2, MOD - 2, MOD)
+    ans %= MOD
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 998244353
+    ans = 0
+    for i in range(1, n+1):
+        ans += pow(2, i-1, mod) * pow(2, n-i, mod) * a[i-1]
+    print(ans%mod)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = 0
+    for i in range(1, 1 << N):
+        s = 0
+        for j in range(N):
+            if i & (1 << j):
+                s += A[j]
+        if s % bin(i).count("1") == 0:
+            ans += 1
+    print(ans % mod)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+
+    # 2^N-1
+    ways = pow(2, N, MOD) - 1
+
+    # 2^N-1 - (2^N-1) / gcd(a_1, a_2, ..., a_N)
+    gcd = A[0]
+    for i in range(1, N):
+        gcd = math.gcd(gcd, A[i])
+    ways -= pow(2, N, MOD) * pow(gcd, MOD-2, MOD) % MOD
+    print(ways % MOD)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    MOD = 998244353
+
+    # dp[i][j] = the number of ways to choose j terms from the first i terms
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        for j in range(N + 1):
+            dp[i + 1][j] += dp[i][j] * 2
+            dp[i + 1][j + 1] += dp[i][j]
+            dp[i + 1][j] %= MOD
+            dp[i + 1][j + 1] %= MOD
+
+    ans = 0
+    for i in range(1, N + 1):
+        ans += (dp[N][i] * A[i - 1]) % MOD
+        ans %= MOD
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+
+    # dp[i][j]: i番目までの整数の和をjとする選び方の数
+    dp = [[0] * (N * 10 ** 9 + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        for j in range(N * 10 ** 9 + 1):
+            dp[i + 1][j] += dp[i][j] * 2
+            dp[i + 1][j] %= MOD
+            if j - A[i] >= 0:
+                dp[i + 1][j] += dp[i][j - A[i]]
+                dp[i + 1][j] %= MOD
+
+    ans = 0
+    for i in range(1, N + 1):
+        ans += dp[i][i * sum(A) // N]
+        ans %= MOD
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    
+    # dp[i][j] = (i個の整数の和がjとなるような選び方の数)
+    dp = [[0] * (N*10**9+1) for _ in range(N+1)]
+    dp[0][0] = 1
+    
+    for i in range(N):
+        for j in range(N*10**9+1):
+            dp[i+1][j] = dp[i][j]
+            if j - A[i] >= 0:
+                dp[i+1][j] += dp[i][j-A[i]]
+            dp[i+1][j] %= MOD
+    
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(N*10**9+1):
+            if dp[i][j] > 0 and j % i == 0:
+                ans += 1
+                ans %= MOD
+    
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve(n, a):
+    return 0

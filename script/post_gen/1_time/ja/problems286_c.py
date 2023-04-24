@@ -1,42 +1,189 @@
-#問題文
-#長さ N の文字列 S が与えられます。S_i (1≦ i ≦ N) を S の左から i 番目の文字とします。
-#あなたは以下の 2 種類の操作を好きな順番で 0 回以上好きな回数行うことができます。
-#A 円払う。 S の左端の文字を右端に移動する。すなわち、S_1S_2... S_N を S_2... S_NS_1 に変える。
-#B 円払う。 1 以上 N 以下の整数 i を選び、 S_i を好きな英小文字で置き換える。
-#S を回文にするためには最低で何円必要ですか？
-#回文とは
-#ある文字列 T について、 T の長さを |T| として、全ての整数 i (1 ≦ i ≦ |T|) について、 T の前から i 文字目と後ろから i 文字目が同じであるとき、またそのときに限って、 T は回文です。
-#
-#制約
-#1≦ N ≦ 5000
-#1≦ A,B≦ 10^9
-#S は英小文字からなる長さ N の文字列
-#S 以外の入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#S
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#5 1 2
-#rrefa
-#
-#出力例 1
-#3
-#最初に 2 番目の操作を 1 回行います。2 円払い、i=5 として S_5 を e で置き換えます。 S は rrefe となります。
-#次に 1 番目の操作を 1 回行います。1 円払い、S は refer となります。これは回文です。
-#よって 3 円払うことで S を回文にすることができました。 2 円以下払うことで S を回文にすることは不可能なので、これが答えです。
-#
-#入力例 2
-#8 1000000000 1000000000
-#bcdfcgaa
-#
-#出力例 2
-#4000000000
-#答えは 32 bit 整数に収まらない場合があることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N // 2):
+        if S[i] != S[N - i - 1]:
+            ans += min(A, B)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(n // 2):
+        if s[i] != s[n - i - 1]:
+            ans += b
+    print(min(ans, (n - 1) * a))
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(n//2):
+        if s[i] != s[-(i+1)]:
+            ans += b
+    if n%2==1:
+        if s[n//2] != s[-(n//2+1)]:
+            ans += b
+    if ans == 0:
+        print(0)
+    else:
+        print(ans+a)
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    if S == S[::-1]:
+        print(ans)
+        return
+    for i in range(N//2):
+        if S[i] != S[N-1-i]:
+            ans += min(A, B)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    S = S + S
+    ans = 0
+    for i in range(N):
+        if S[i] == S[i + N - 1]:
+            continue
+        else:
+            ans += B
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    # 入力
+    N, A, B = map(int, input().split())
+    S = input()
+    # 処理
+    ans = 0
+    for i in range(N):
+        if S[i] == S[N-i-1]:
+            continue
+        else:
+            ans += min(A, B)
+    # 出力
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    #S = "rrefa"
+    #A = 1
+    #B = 2
+    #S = "bcdfcgaa"
+    #A = 10**9
+    #B = 10**9
+
+    #文字列が回文かどうか判定する関数
+    def is_palindrome(s):
+        return s == s[::-1]
+
+    #文字列を左に1つずつずらす関数
+    def shift(s):
+        return s[1:] + s[0]
+
+    #文字列を回文にするために必要なコストを計算する関数
+    def cost(s):
+        #文字列が回文なら0を返す
+        if is_palindrome(s):
+            return 0
+        #文字列の左端と右端が同じなら文字列を左に1つずつずらして再帰的にコストを計算する
+        if s[0] == s[-1]:
+            return cost(s[1:-1])
+        #文字列の左端と右端が異なるなら文字列を左に1つずつずらして再帰的にコストを計算し、その結果にBを足す
+        else:
+            return cost(s[1:-1]) + B
+
+    #文字列を回文にするために必要なコストを計算する
+    c = cost(S)
+
+    #文字列を回文にするために必要なコストがAより小さいならAを出力する
+    if c < A:
+        print(A)
+    #文字列を回文にするために必要なコストがAより大きいなら文字列を左に1つずつずらして回文になるまで繰り返す
+    else:
+        #文字列を回文にするために必要なコストを計算する
+        c = cost(S)
+        #文字列を回文にするために必要なコストがA
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    S = list(S)
+    S2 = S[:]
+    S2.reverse()
+    if S == S2:
+        print(0)
+        return
+    count = 0
+    for i in range(N):
+        if S[i] == S2[i]:
+            count += 1
+        else:
+            break
+    if count == N:
+        print(0)
+        return
+    if count == N-2:
+        print(min(A, B))
+        return
+    if count == N-1:
+        print(B)
+        return
+    print(min(A, B)*count + B)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    if A <= B:
+        print(A * (N - 1))
+        return
+    ans = 0
+    for i in range(N - 1):
+        if S[i] != S[i + 1]:
+            ans += B
+        else:
+            ans += A
+    print(ans)
+
+=======
+Suggestion 10
+
+def is_palindrome(s):
+    return s == s[::-1]

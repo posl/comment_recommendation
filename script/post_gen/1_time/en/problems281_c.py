@@ -1,54 +1,158 @@
-#Problem Statement
-#We have a playlist with N songs numbered 1, ..., N.
-#Song i lasts A_i seconds.
-#When the playlist is played, song 1, song 2, ..., and song N play in this order. When song N ends, the playlist repeats itself, starting from song 1 again. While a song is playing, the next song does not play; when a song ends, the next song starts immediately.
-#At exactly T seconds after the playlist starts playing, which song is playing? Also, how many seconds have passed since the start of that song?
-#There is no input where the playlist changes songs at exactly T seconds after it starts playing.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ T ≦ 10^{18}
-#1 ≦ A_i ≦ 10^9
-#The playlist does not change songs at exactly T seconds after it starts playing.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N T
-#A_1 ... A_N
-#
-#Output
-#Print an integer representing the song that is playing at exactly T seconds after the playlist starts playing, and an integer representing the number of seconds that have passed since the start of that song, separated by a space.
-#
-#Sample Input 1
-#3 600
-#180 240 120
-#
-#Sample Output 1
-#1 60
-#When the playlist is played, the following happens. (Assume that it starts playing at time 0.)
-#From time 0 to time 180, song 1 plays.
-#From time 180 to time 420, song 2 plays.
-#From time 420 to time 540, song 3 plays.
-#From time 540 to time 720, song 1 plays.
-#From time 720 to time 960, song 2 plays.
-#.
-#.
-#.
-#At time 600, song 1 is playing, and 60 seconds have passed since the start of that song.
-#
-#Sample Input 2
-#3 281
-#94 94 94
-#
-#Sample Output 2
-#3 93
-#
-#Sample Input 3
-#10 5678912340
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#Sample Output 3
-#6 678912340
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    time = 0
+    count = 0
+    for i in range(N):
+        if time + A[i] > T:
+            break
+        time += A[i]
+        count += 1
+    print(count + 1, T - time)
+
+=======
+Suggestion 2
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    count = (t // sum) * n
+    t = t % sum
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum > t:
+            print(count + i + 1, sum - a[i] - t)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        total += A[i]
+    num = T // total
+    mod = T % total
+    if mod == 0:
+        mod = total
+        num -= 1
+    total = 0
+    for i in range(N):
+        total += A[i]
+        if total >= mod:
+            print(i + 1, mod - (total - A[i]))
+            break
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        total += A[i]
+    ans = (T // total) * N
+    T %= total
+    for i in range(N):
+        if T >= A[i]:
+            ans += 1
+            T -= A[i]
+        else:
+            break
+    print(ans, T)
+
+=======
+Suggestion 5
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    u = t % s
+    c = 0
+    for i in range(n):
+        c += a[i]
+        if u <= c:
+            print(i+1, u)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    n, t = map(int, input().split())
+    songs = list(map(int, input().split()))
+
+    song = 0
+    for i in range(n):
+        t -= songs[i]
+        if t < 0:
+            song = i + 1
+            t += songs[i]
+            break
+
+    print(song, t)
+
+=======
+Suggestion 7
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = sorted(A)
+    s = 0
+    for i in range(N):
+        s += A[i]
+        if s > T:
+            print(i)
+            break
+    else:
+        print(N)
+
+=======
+Suggestion 8
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    c = t // s
+    r = t % s
+    a = a * 2
+    for i in range(2 * n):
+        r -= a[i]
+        if r < 0:
+            print(i + 1, -r)
+            break
+
+=======
+Suggestion 9
+
+def read_ints():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 10
+
+def calc_song(N, T, A):
+    song = 0
+    time = 0
+    for i in range(N):
+        if time + A[i] > T:
+            break
+        time += A[i]
+        song = i + 1
+    time = T - time
+    return song, time

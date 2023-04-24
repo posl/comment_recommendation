@@ -1,39 +1,176 @@
-#Problem Statement
-#How many integer sequences of length N, A=(A_1, ..., A_N), satisfy all of the conditions below?
-#1≦ A_i ≦ M (1 ≦ i ≦ N)
-#sum _{i=1}^N A_i ≦ K
-#Since the count can get enormous, find it modulo 998244353.
-#
-#Constraints
-#1 ≦ N, M ≦ 50
-#N ≦ K ≦ NM
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3 4
-#
-#Sample Output 1
-#6
-#The following six sequences satisfy the conditions.
-#(1,1)
-#(1,2)
-#(1,3)
-#(2,1)
-#(2,2)
-#(3,1)
-#
-#Sample Input 2
-#31 41 592
-#
-#Sample Output 2
-#798416518
-#Be sure to print the count modulo 998244353.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    dp = [[[0 for _ in range(K+1)] for _ in range(M+1)] for _ in range(N+1)]
+    dp[0][0][0] = 1
+    for n in range(N):
+        for m in range(M+1):
+            for k in range(K+1):
+                dp[n+1][m][k] += dp[n][m][k] * (m+1)
+                dp[n+1][m][k] %= 998244353
+                if k + m + 1 <= K:
+                    dp[n+1][m+1][k+m+1] += dp[n][m][k]
+                    dp[n+1][m+1][k+m+1] %= 998244353
+    print(dp[N][M][K])
+
+=======
+Suggestion 2
+
+def main():
+    n, m, k = map(int, input().split())
+    dp = [[[0 for _ in range(k+1)] for _ in range(m+1)] for _ in range(n+1)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(m+1):
+            for l in range(k+1):
+                for a in range(j, m+1):
+                    if l + a <= k:
+                        dp[i+1][a][l+a] += dp[i][j][l]
+                        dp[i+1][a][l+a] %= 998244353
+    print(sum(dp[n][j][k] for j in range(m+1)) % 998244353)
+
+=======
+Suggestion 3
+
+def main():
+    n, m, k = map(int, input().split())
+    dp = [[[0 for _ in range(k+1)] for _ in range(m+1)] for _ in range(n+1)]
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            for l in range(1, k+1):
+                if i == 1 and j <= l:
+                    dp[i][j][l] = 1
+                elif i >= 2 and j <= l:
+                    dp[i][j][l] = dp[i-1][j][l] + dp[i][j][l-j]
+    print(dp[n][m][k] % 998244353)
+
+=======
+Suggestion 4
+
+def solve(n,m,k):
+    dp = [[[0 for _ in range(k+1)] for _ in range(m+1)] for _ in range(n+1)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(m):
+            for l in range(k):
+                dp[i+1][j+1][l+1] += dp[i][j][l]
+                dp[i+1][j+1][l+1] %= 998244353
+                dp[i+1][j][l+1] += dp[i][j][l] * (m-j)
+                dp[i+1][j][l+1] %= 998244353
+    return dp[n][m][k]
+
+=======
+Suggestion 5
+
+def main():
+    N, M, K = map(int, input().split())
+    MOD = 998244353
+    dp = [[[0 for _ in range(K + 1)] for _ in range(M + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 1
+    for i in range(N):
+        for j in range(M):
+            for k in range(K):
+                dp[i][j][k + 1] += dp[i][j][k]
+                dp[i][j + 1][k + 1] += dp[i][j][k]
+                dp[i + 1][j + 1][k + 1] += dp[i][j][k]
+                dp[i][j][k + 1] %= MOD
+                dp[i][j + 1][k + 1] %= MOD
+                dp[i + 1][j + 1][k + 1] %= MOD
+    print(dp[N][M][K])
+
+=======
+Suggestion 6
+
+def main():
+    n, m, k = map(int, input().split())
+    mod = 998244353
+    dp = [[0 for _ in range(k+1)] for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(1, n+1):
+        for j in range(1, k+1):
+            for l in range(1, m+1):
+                if j-l >= 0:
+                    dp[i][j] += dp[i-1][j-l]
+                    dp[i][j] %= mod
+                else:
+                    break
+    print(dp[n][k])
+
+=======
+Suggestion 7
+
+def main():
+    N, M, K = map(int, input().split())
+    dp = [[[0] * (K+1) for _ in range(M+1)] for __ in range(N+1)]
+    dp[0][0][0] = 1
+    for i in range(N):
+        for j in range(M+1):
+            for k in range(K+1):
+                dp[i+1][j][k] += dp[i][j][k]
+                dp[i+1][j][k] %= 998244353
+                if j+1 <= M and k+i+1 <= K:
+                    dp[i+1][j+1][k+i+1] += dp[i][j][k]
+                    dp[i+1][j+1][k+i+1] %= 998244353
+    print(dp[N][M][K])
+
+=======
+Suggestion 8
+
+def main():
+    N,M,K = map(int,input().split())
+    mod = 998244353
+
+    dp = [[[0 for i in range(K+1)] for j in range(M+1)] for k in range(N+1)]
+    dp[0][0][0] = 1
+
+    for i in range(N):
+        for j in range(M+1):
+            for k in range(K+1):
+                dp[i+1][j][k] += dp[i][j][k]
+                dp[i+1][j][k] %= mod
+                if k+j <= K:
+                    dp[i+1][j][k+j] += dp[i][j][k]
+                    dp[i+1][j][k+j] %= mod
+                if j+1 <= M:
+                    dp[i+1][j+1][k] += dp[i][j][k]
+                    dp[i+1][j+1][k] %= mod
+    print(dp[N][M][K])
+
+=======
+Suggestion 9
+
+def comb(n, r):
+    if n < 0 or r < 0 or n < r:
+        return 0
+    if n == 0 or r == 0 or n == r:
+        return 1
+    if n - r < r:
+        r = n - r
+    c = 1
+    for i in range(r):
+        c = c * (n - i) // (i + 1)
+    return c
+
+n, m, k = map(int, input().split())
+mod = 998244353
+ans = 0
+for i in range(n):
+    ans += comb(n - 1, i) * m * pow(m - 1, n - i - 1, mod)
+    ans %= mod
+print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, M, K = map(int, input().split())
+    A = [1] * N
+    for i in range(1, N):
+        A[i] = A[i-1] * (M-1)
+    for i in range(N-1, 0, -1):
+        A[i] -= A[i-1] * (M-1)
+    print(sum(A) % 998244353)

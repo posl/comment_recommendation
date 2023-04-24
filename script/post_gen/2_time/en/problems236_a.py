@@ -1,42 +1,69 @@
-#Problem Statement
-#You are given a string S consisting of lowercase English letters.
-#Swap the a-th and b-th characters from the beginning of S and print the resulting string.
-#
-#Constraints
-#S is a string consisting of lowercase English letters.
-#The length of S, |S|, satisfies 2 ≦ |S| ≦ 10.
-#1 ≦ a < b ≦ |S|
-#a and b are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#a b
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#chokudai
-#3 5
-#
-#Sample Output 1
-#chukodai
-#After swapping the 3-rd character o and 5-th character u of chokudai, we have chukodai.
-#
-#Sample Input 2
-#aa
-#1 2
-#
-#Sample Output 2
-#aa
-#In this sample, after swapping the 1-st and 2-nd characters of S, we have the same string as S.
-#
-#Sample Input 3
-#aaaabbbb
-#1 8
-#
-#Sample Output 3
-#baaabbba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    print(s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:])
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    a, b = map(int, input().split())
+    S = S[:a-1] + S[b-1] + S[a:b-1] + S[a-1] + S[b:]
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    a, b = map(int, input().split())
+    S = list(S)
+    S[a-1], S[b-1] = S[b-1], S[a-1]
+    print(''.join(S))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    a,b = map(int,input().split())
+    s = list(s)
+    s[a-1],s[b-1] = s[b-1],s[a-1]
+    print(''.join(s))
+
+=======
+Suggestion 5
+
+def main():
+    S, a, b = input().split()
+    a = int(a)
+    b = int(b)
+    S = list(S)
+    S[a-1], S[b-1] = S[b-1], S[a-1]
+    S = ''.join(S)
+    print(S)
+
+=======
+Suggestion 6
+
+def main():
+    s=input()
+    a,b=map(int,input().split())
+    s=s[:a-1]+s[b-1]+s[a:b-1]+s[a-1]+s[b:]
+    print(s)
+
+=======
+Suggestion 7
+
+def swap(s, a, b):
+    s = list(s)
+    s[a], s[b] = s[b], s[a]
+    return ''.join(s)

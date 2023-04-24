@@ -1,53 +1,111 @@
-#問題文
-#長さ N の数列 A=(A_1,A_2,...,A_N) および正整数 P,Q,R,S が与えられます。
-#ここで、P,Q,R,S は、1≦ P≦ Q<R≦ S ≦ N および Q-P=S-R をみたしています。
-#数列 A の P 番目から Q 番目の項までと R 番目から S 番目の項までを入れ替えた数列を B=(B_1, B_2,..., B_N) とします。
-#数列 B を出力してください。
-#
-#制約
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N P Q R S
-#A_1 A_2 ... A_N
-#
-#出力
-#B_1, B_2,..., B_N を空白区切りで出力せよ。
-#
-#入力例 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#出力例 1
-#5 6 7 4 1 2 3 8
-#数列 A=(1,2,3,4,5,6,7,8) の 1 番目から 3 番目の項 (1,2,3) と 5 番目から 7 番目までの項 (5,6,7) を
-#入れ替えると, B=(5,6,7,4,1,2,3,8) となります。 よってこれを空白区切りで出力します。
-#
-#入力例 2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#出力例 2
-#2 1 1 2 1
-#数列には同じ整数が複数回現れる事もあります。
-#
-#入力例 3
-#2 1 1 2 2
-#50 100
-#
-#出力例 3
-#100 50
-#
-#入力例 4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#出力例 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[Q:R-1] + A[S-1:]
+    print(*B)
+
+=======
+Suggestion 2
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[P-1:Q] + A[R-1:S]
+    print(*B)
+
+=======
+Suggestion 3
+
+def main():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = a[:]
+    b[p-1:q] = a[r-1:s]
+    b[r-1:s] = a[p-1:q]
+    print(*b)
+
+=======
+Suggestion 4
+
+def solve():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[Q:R-1] + A[S-1:] + A[R-1:Q] + A[P-1:R-1]
+    print(*B)
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    #出力
+    print(*A[:P-1], *A[Q:R-1], *A[S:], *A[R-1:Q], *A[P-1:R-1])
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    #出力
+    print(*A[:P-1], *A[Q:R-1], *A[S-1:], *A[R-1:Q], *A[P-1:Q])
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    #入れ替え
+    B = A[:P-1] + A[Q:R-1] + A[S:] + A[R-1:Q] + A[P-1:R-1]
+    #出力
+    print(*B)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N,P,Q,R,S=map(int,input().split())
+    A=list(map(int,input().split()))
+    #処理
+    B=A[:P-1]+A[Q:R-1]+A[S:]+A[P-1:Q]+A[R-1:S]
+    #出力
+    print(*B)
+
+=======
+Suggestion 9
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    #AのP番目からQ番目の項までとR番目からS番目の項までを入れ替えた数列をBとする
+    B = A[:P-1] + A[R-1:S] + A[Q:S-1] + A[P-1:R-1] + A[S:]
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N,P,Q,R,S = map(int,input().split())
+    A = list(map(int,input().split()))
+    #print(N,P,Q,R,S)
+    #print(A)
+    #処理
+    #数列 A の P 番目から Q 番目の項までと R 番目から S 番目の項までを入れ替えた数列を B=(B_1, B_2,..., B_N) とします。
+    #数列 B を出力してください。
+    #B = A[0:P-1] + A[Q:R-1] + A[S:N]
+    B = A[0:P-1] + A[Q:R-1] + A[S:N]
+    #出力
+    print(B)

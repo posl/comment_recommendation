@@ -1,38 +1,110 @@
-#Problem Statement
-#Given is a string S consisting of lowercase English letters.
-#Determine whether adding some number of a's (possibly zero) at the beginning of S can make it a palindrome.
-#Here, a string of length N, A=A_1A_2... A_N, is said to be a palindrome when A_i=A_{N+1-i} for every 1≦ i≦ N.
-#
-#Constraints
-#1 ≦ | S | ≦ 10^6
-#S consists of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If adding some number of a's (possibly zero) at the beginning of S can make it a palindrome, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#kasaka
-#
-#Sample Output 1
-#Yes
-#By adding one a at the beginning of kasaka, we have akasaka, which is a palindrome, so Yes should be printed.
-#
-#Sample Input 2
-#atcoder
-#
-#Sample Output 2
-#No
-#Adding any number of a's at the beginning of atcoder does not make it a palindrome.
-#
-#Sample Input 3
-#php
-#
-#Sample Output 3
-#Yes
-#php itself is a palindrome. Adding zero a's at the beginning of S is allowed, so Yes should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+for i in range(len(s)+1):
+    if is_palindrome("a" * i + s):
+        print("Yes")
+        exit()
+print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == s[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S == S[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    l = len(s)
+    s1 = s[0:int((l-1)/2)]
+    s2 = s[int((l+3)/2)-1:l]
+    if s1 == s2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def isPalindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+for i in range(len(s)):
+    s2 = 'a'*i + s
+    if is_palindrome(s2):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s_inv = s[::-1]
+    if s == s_inv:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def check_palindrome(s):
+    if s == s[::-1]:
+        return True
+    return False
+
+=======
+Suggestion 9
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+S = input()
+N = len(S)
+
+=======
+Suggestion 10
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+S = input()
+N = len(S)
+S_rev = S[::-1]
+S_rev_a = S_rev[:N//2]
+S_a = S[:N//2]

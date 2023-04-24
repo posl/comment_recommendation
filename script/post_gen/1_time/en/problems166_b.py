@@ -1,53 +1,147 @@
-#Problem Statement
-#N Snukes called Snuke 1, Snuke 2, ..., Snuke N live in a town.
-#There are K kinds of snacks sold in this town, called Snack 1, Snack 2, ..., Snack K. The following d_i Snukes have Snack i: Snuke A_{i, 1}, A_{i, 2}, ..., A_{i, {d_i}}.
-#Takahashi will walk around this town and make mischief on the Snukes who have no snacks. How many Snukes will fall victim to Takahashi's mischief?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ d_i ≦ N
-#1 ≦ A_{i, 1} < ... < A_{i, d_i} ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#d_1
-#A_{1, 1} ... A_{1, d_1}
-#.
-#.
-#.
-#d_K
-#A_{K, 1} ... A_{K, d_K}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 2
-#2
-#1 3
-#1
-#3
-#
-#Sample Output 1
-#1
-#Snuke 1 has Snack 1.
-#Snuke 2 has no snacks.
-#Snuke 3 has Snack 1 and 2.
-#Thus, there will be one victim: Snuke 2.
-#
-#Sample Input 2
-#3 3
-#1
-#3
-#1
-#3
-#1
-#3
-#
-#Sample Output 2
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    d = [0] * K
+    A = [0] * K
+    for i in range(K):
+        d[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N + 1):
+        flag = 0
+        for j in range(K):
+            if i in A[j]:
+                flag = 1
+                break
+        if flag == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = [0] * N
+    for i in range(K):
+        d = int(input())
+        for j in map(int, input().split()):
+            A[j-1] = 1
+    print(A.count(0))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    d = [0] * K
+    A = [[0] * N for _ in range(K)]
+    for i in range(K):
+        d[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(K):
+            if i+1 in A[j]:
+                ans += 1
+                break
+    print(N - ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    d = [0] * n
+    for i in range(k):
+        for j in map(int, input().split()[1:]):
+            d[j - 1] += 1
+    print(d.count(0))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = []
+    for i in range(K):
+        d = int(input())
+        A += list(map(int, input().split()))
+    print(N - len(set(A)))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = []
+    for i in range(K):
+        d = int(input())
+        A.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(K):
+            if i in A[j]:
+                ans += 1
+                break
+    print(N - ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    d = [0 for i in range(N)]
+    for i in range(K):
+        d_i = int(input())
+        for j in range(d_i):
+            d[int(input()) - 1] += 1
+    print(d.count(0))
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    d = []
+    for i in range(K):
+        d.append(int(input()))
+        A = list(map(int, input().split()))
+        d.append(A)
+    #print(d)
+
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(0, len(d), 2):
+            if i in d[j + 1]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    d = []
+    for i in range(K):
+        d.append(input())
+    A = []
+    for i in range(K):
+        A.append(input().split())
+    d = [int(i) for i in d]
+    A = [[int(j) for j in i] for i in A]
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            A[i][j] -= 1
+    a = []
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            a.append(A[i][j])
+    a = list(set(a))
+    print(N - len(a))

@@ -1,39 +1,63 @@
-#Problem Statement
-#N of us are going on a trip, by train or taxi.
-#The train will cost each of us A yen (the currency of Japan).
-#The taxi will cost us a total of B yen.
-#How much is our minimum total travel expense?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 20
-#1 ≦ A ≦ 50
-#1 ≦ B ≦ 50
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print an integer representing the minimum total travel expense.
-#
-#Sample Input 1
-#4 2 9
-#
-#Sample Output 1
-#8
-#The train will cost us 4 × 2 = 8 yen, and the taxi will cost us 9 yen, so the minimum total travel expense is 8 yen.
-#
-#Sample Input 2
-#4 2 7
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#4 2 8
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(N * A, B))
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(A * N, B))
+
+=======
+Suggestion 3
+
+def main():
+  n,a,b = map(int,input().split())
+  if a*n < b:
+    print(a*n)
+  else:
+    print(b)
+
+=======
+Suggestion 4
+
+def main():
+    # Input
+    N, A, B = map(int, input().split())
+    # Output
+    print(min(N*A, B))
+
+=======
+Suggestion 5
+
+def main():
+    # Get the input
+    N, A, B = map(int, input().split())
+    # Calculate the minimum total travel expense
+    min_expense = min(N * A, B)
+    # Print the minimum total travel expense
+    print(min_expense)
+
+=======
+Suggestion 6
+
+def main():
+    #read input
+    line = input()
+    num = line.split(" ")
+    n = int(num[0])
+    a = int(num[1])
+    b = int(num[2])
+    #calculate
+    train = a*n
+    taxi = b
+    if train > taxi:
+        print(taxi)
+    else:
+        print(train)

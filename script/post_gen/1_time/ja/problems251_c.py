@@ -1,71 +1,258 @@
-#問題文
-#ポエムオンラインジャッジ (Poem Online Judge, 以下 POJ と表記) は提出された文字列に得点をつけるオンラインジャッジです。
-#POJ に N 回の提出がありました。早い方から i 番目の提出では文字列 S_i が提出されて、得点は T_i でした。(同じ文字列が複数回提出される場合もあります)
-#ただし、POJ では 同じ文字列を提出しても得点が等しいとは限らない のに注意してください。
-#N 回の提出のうち、その提出よりも早い提出であって文字列が一致するものが存在しないような提出を オリジナル であると呼びます。
-#また、オリジナルな提出の中で最も得点が高いものを 最優秀賞 と呼びます。ただし、そのような提出が複数ある場合は、最も提出が早いものを最優秀賞とします。
-#最優秀賞は早い方から何番目の提出ですか？
-#
-#制約
-#1 ≦ N ≦ 10^5
-#S_i は英小文字からなる文字列
-#S_i の長さは 1 以上 10 以下
-#0 ≦ T_i ≦ 10^9
-#N, T_i は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#aaa 10
-#bbb 20
-#aaa 30
-#
-#出力例 1
-#2
-#以下では早い方から i 番目の提出を提出 i と呼びます。
-#オリジナルな提出は提出 1 と 提出 2 です。提出 3 は提出 1 と文字列が一致しているためオリジナルではありません。
-#オリジナルな提出のうち最も得点が高い提出は提出 2 です。よってこれが最優秀賞になります。
-#
-#入力例 2
-#5
-#aaa 9
-#bbb 10
-#ccc 10
-#ddd 10
-#bbb 11
-#
-#出力例 2
-#2
-#オリジナルな提出は提出 1・提出 2・提出 3・提出 4 です。
-#その中で最も得点が高い提出は提出 2・提出 3・提出 4 です。この場合はこの中でもっとも提出の早い提出 2 を最優秀賞とします。
-#このように、オリジナルな提出の中で最も得点が高い提出が複数ある場合は、さらにその中で最も提出が早いものを最優秀賞とするのに注意してください。
-#
-#入力例 3
-#10
-#bb 3
-#ba 1
-#aa 4
-#bb 1
-#ba 5
-#aa 9
-#aa 2
-#ab 6
-#bb 5
-#ab 3
-#
-#出力例 3
-#8
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [0] * N
+    T = [0] * N
+    for i in range(N):
+        S[i], T[i] = input().split()
+        T[i] = int(T[i])
+    #print(N, S, T)
+
+    # 1. S と T を対応付けた辞書を作る
+    # 2. S と T を対応付けた辞書を S でソートする
+    # 3. S と T を対応付けた辞書を T でソートする
+    # 4. T でソートした辞書の中で最も後ろにあるものを最優秀賞とする
+
+    # 1. S と T を対応付けた辞書を作る
+    ST = {}
+    for i in range(N):
+        ST[S[i]] = T[i]
+
+    # 2. S と T を対応付けた辞書を S でソートする
+    ST_sort_S = sorted(ST.items(), key=lambda x:x[0])
+    #print(ST_sort_S)
+
+    # 3. S と T を対応付けた辞書を T でソートする
+    ST_sort_T = sorted(ST.items(), key=lambda x:x[1], reverse=True)
+    #print(ST_sort_T)
+
+    # 4. T でソートした辞書の中で最も後ろにあるものを最優秀賞とする
+    #print(ST_sort_T[0][0])
+    #print(ST_sort_S)
+    for i in range(N):
+        if ST_sort_T[0][0] == ST_sort_S[i][0]:
+            print(i+1)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    ans = 0
+    for i in range(N):
+        if S[i] in S[:i]:
+            continue
+        if ans == 0:
+            ans = i
+        elif T[i] > T[ans]:
+            ans = i
+    print(ans+1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    ans = 0
+    max = 0
+    for i in range(N):
+        for j in range(i):
+            if S[i] == S[j]:
+                break
+        else:
+            if T[i] > max:
+                ans = i + 1
+                max = T[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s, t = input().split()
+        t = int(t)
+        if s not in d:
+            d[s] = [t, i]
+        else:
+            if d[s][0] < t:
+                d[s] = [t, i]
+    d = sorted(d.items(), key=lambda x: x[1][1])
+    print(d[0][1][1] + 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    D = {}
+    for i in range(N):
+        S, T = input().split()
+        T = int(T)
+        if S in D:
+            D[S] = max(D[S], T)
+        else:
+            D[S] = T
+
+    T = []
+    for s, t in D.items():
+        T.append((t, s))
+
+    T.sort(reverse=True)
+
+    for i in range(N):
+        S, T = input().split()
+        T = int(T)
+        if (T, S) == T[0]:
+            print(i+1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    d = {}
+    for i in range(N):
+        s, t = input().split()
+        t = int(t)
+        if s not in d:
+            d[s] = [t, i]
+        else:
+            if d[s][0] < t:
+                d[s] = [t, i]
+    ans = 10**5
+    for i in d.values():
+        ans = min(ans, i[1])
+    print(ans+1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S_i, T_i = input().split()
+        S.append(S_i)
+        T.append(int(T_i))
+
+    # 重複を削除したSを作成
+    S_set = list(set(S))
+    # 重複を削除したSの要素数を取得
+    S_set_len = len(S_set)
+
+    # 重複を削除したSの要素数分だけループ
+    for i in range(S_set_len):
+        # 重複を削除したSの要素を取得
+        S_set_i = S_set[i]
+        # 同じ要素のインデックスを取得
+        S_set_i_index = [j for j, x in enumerate(S) if x == S_set_i]
+        # 同じ要素のインデックスの要素数を取得
+        S_set_i_index_len = len(S_set_i_index)
+        # 同じ要素のインデックスの要素数が1の場合は最優秀賞
+        if S_set_i_index_len == 1:
+            # 最優秀賞のインデックスを取得
+            best_index = S_set_i_index[0]
+            # 最優秀賞のインデックス+1を出力
+            print(best_index+1)
+            break
+        # 同じ要素のインデックスの要素数が1より大きい場合は最優秀賞を探す
+        else:
+            # 同じ要素のインデックスの要素数分だけループ
+            for j in range(S_set_i_index_len):
+                # 同じ要素のインデックスを取得
+                S_set_i_index_j = S_set_i_index[j]
+                # 同じ要素のインデックスの要素数分だけループ
+                for k in range(S_set_i_index_len):
+                    # 同じ要素のインデックスを取得
+                    S_set_i_index_k
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    max_point = -1
+    max_point_index = -1
+    for i in range(N):
+        if T[i] > max_point:
+            max_point = T[i]
+            max_point_index = i
+    max_point_count = 0
+    for i in range(N):
+        if T[i] == max_point:
+            max_point_count += 1
+    if max_point_count == 1:
+        print(max_point_index+1)
+        return
+    for i in range(N):
+        if T[i] == max_point:
+            for j in range(i):
+                if S[i] == S[j]:
+                    max_point_count -= 1
+                    break
+    if max_point_count == 1:
+        for i in range(N):
+            if T[i] == max_point:
+                for j in range(i):
+                    if S[i] == S[j]:
+                        print(j+1)
+                        return
+    else:
+        for i in range(N):
+            if T[i] == max_point:
+                print(i+1)
+                return
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for _ in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+
+    # まずは最も得点が高い提出を探す
+    max_score = max(T)
+    max_score_index = T.index(max_score)
+
+    # 最も得点が高い提出の文字列を取得
+    max_score_string = S[max_score_index]
+
+    # 最も得点が高い提出よりも早い提出で、最も得点が高い提出と文字列が一致する提出を探す
+    for i in range(max_score_index):
+        if T[i] == max_score and S[i] == max_score_string:
+            max_score_index = i
+
+    print(max_score_index + 1)

@@ -1,52 +1,222 @@
-#Problem Statement
-#You are given a sequence C of N integers. Find the number of sequences A of N integers satisfying all of the following conditions. 
-#1 ≦ A_i ≦ C_i (1 ≦ i ≦ N)
-#A_i ≠ A_j (1 ≦ i < j ≦ N)
-#Since the count may be enormous, print it modulo (10^9+7).
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the number of sequences A of N integers satisfying all of the following conditions, modulo (10^9+7).
-#
-#Sample Input 1
-#2
-#1 3
-#
-#Sample Output 1
-#2
-#We have two sequences A satisfying all of the conditions: (1,2) and (1,3).
-#On the other hand, A=(1,1), for example, does not satisfy the second condition.
-#
-#Sample Input 2
-#4
-#3 3 4 4
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#2
-#1 1
-#
-#Sample Output 3
-#0
-#We have no sequences A satisfying all of the conditions, so we should print 0.
-#
-#Sample Input 4
-#10
-#999999917 999999914 999999923 999999985 999999907 999999965 999999914 999999908 999999951 999999979
-#
-#Sample Output 4
-#405924645
-#Be sure to print the count modulo (10^9+7).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 1
+    for i in range(N):
+        if i == 0:
+            ans *= C[i]
+            ans %= mod
+            continue
+        if C[i] == C[i-1]:
+            ans *= C[i] - 1
+            ans %= mod
+            continue
+        if C[i] < C[i-1]:
+            ans *= 0
+            ans %= mod
+            continue
+        if C[i] > C[i-1]:
+            ans *= C[i] - 1
+            ans %= mod
+            continue
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    mod = 10**9 + 7
+    N = int(input())
+    C = list(map(int, input().split()))
+    if C[0] == 1:
+        ans = 1
+    else:
+        ans = 0
+    for i in range(1, N):
+        if C[i] < C[i-1]:
+            ans = 0
+            break
+        elif C[i] == C[i-1]:
+            ans *= 2
+        elif C[i] - C[i-1] == 1:
+            ans *= C[i-1]
+        else:
+            ans *= C[i-1] * (C[i] - C[i-1] + 1)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    N = int(input())
+    C = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 1
+    for i in range(N-1):
+        if C[i] < C[i+1]:
+            ans *= 1
+        elif C[i] > C[i+1]:
+            ans *= 0
+        else:
+            ans *= 2
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    MOD = 10**9 + 7
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    ans = 1
+    for i in range(n):
+        if c[i] < i + 1:
+            print(0)
+            return
+        ans = ans * (c[i] - i) % MOD
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    A = [0] * (N+1)
+    A[0] = 1
+    for i in range(N):
+        A[i+1] = A[i] * (C[i] - i)
+        A[i+1] %= MOD
+    print(A[N])
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    ans = 1
+    for i in range(N):
+        ans *= min(C[i] - i, N)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N=int(input())
+    C=list(map(int,input().split()))
+    MOD=10**9+7
+    ans=1
+    for i in range(N):
+        if i==0:
+            ans*=C[i]
+        else:
+            ans*=max(0,C[i]-i)
+            ans%=MOD
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+
+    mod = 10 ** 9 + 7
+    ans = 1
+    prev = 0
+    for i in range(N):
+        if prev == C[i]:
+            ans = ans * (C[i] - 1) % mod
+        elif prev + 1 == C[i]:
+            ans = ans * C[i] % mod
+        elif prev < C[i]:
+            ans = ans * C[i] * (C[i] - 1) // 2 % mod
+        else:
+            ans = 0
+        prev = C[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N = int(input())
+    Cs = list(map(int, input().split()))
+    MOD = 10**9+7
+
+    #compute
+    if Cs[0] == 1:
+        ans = 1
+    else:
+        ans = 0
+    for i in range(1, N):
+        ans *= Cs[i-1]-Cs[i]+1
+        ans %= MOD
+        if Cs[i] < Cs[i-1]:
+            ans *= pow(Cs[i-1]-Cs[i]+1, MOD-2, MOD)
+            ans %= MOD
+        elif Cs[i] > Cs[i-1]+1:
+            ans = 0
+            break
+
+    #output
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    N = int(input())
+    Cs = list(map(int, input().split()))
+    #count
+    if N == 1:
+        print(1)
+        return
+    if N == 2:
+        if Cs[0] == Cs[1]:
+            print(1)
+        else:
+            print(2)
+        return
+    mod = 10**9+7
+    ans = 1
+    for i in range(1,N):
+        if Cs[i-1] != Cs[i]:
+            ans *= 2
+            ans %= mod
+        else:
+            if Cs[i-1] == 1 and Cs[i] == 1:
+                print(0)
+                return
+            elif Cs[i-1] == 1 and Cs[i] != 1:
+                ans *= 1
+                ans %= mod
+            elif Cs[i-1] != 1 and Cs[i] == 1:
+                ans *= 1
+                ans %= mod
+            else:
+                ans *= 1
+                ans %= mod
+    print(ans)

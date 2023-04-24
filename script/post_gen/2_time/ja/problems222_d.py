@@ -1,57 +1,216 @@
-#問題文
-#長さ n の数列 S = (s_1, s_2, ..., s_n) がすべての i (1 ≦ i ≦ n - 1) に対して s_i ≦ s_{i+1} を満たすとき、かつそのときに限り「数列 S は広義単調増加である」と呼びます。  
-#広義単調増加な長さ N の整数列 A = (a_1, a_2, ..., a_N), B = (b_1, b_2, ..., b_N) が与えられます。
-#このとき、次の条件を満たす広義単調増加な長さ N の整数列 C = (c_1, c_2, ..., c_N) を考えます。
-#すべての i (1 ≦ i ≦ N) に対して a_i ≦ c_i ≦ b_i が成り立つ。
-#整数列 C としてあり得る数列の個数を 998244353 で割ったあまりを求めてください。
-#
-#制約
-#1 ≦ N ≦ 3000
-#0 ≦ a_i ≦ b_i ≦ 3000 (1 ≦ i ≦ N)
-#整数列 A,B は広義単調増加である。
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#b_1 b_2 ... b_N
-#
-#出力
-#C としてあり得る数列の個数を 998244353 で割ったあまりを出力せよ。
-#
-#入力例 1
-#2
-#1 1
-#2 3
-#
-#出力例 1
-#5
-#C としてあり得る数列は次の 5 個です。
-#(1, 1)
-#(1, 2)
-#(1, 3)
-#(2, 2)
-#(2, 3)
-#数列 (2, 1) は広義単調増加でないため条件を満たさないことに注意してください。
-#
-#入力例 2
-#3
-#2 2 2
-#2 2 2
-#
-#出力例 2
-#1
-#C としてあり得る数列は次の 1 個です。
-#(2, 2, 2)
-#
-#入力例 3
-#10
-#1 2 3 4 5 6 7 8 9 10
-#1 4 9 16 25 36 49 64 81 100
-#
-#出力例 3
-#978222082
-#個数を 998244353 で割ったあまりを求めることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    mod = 998244353
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(N):
+            dp[i + 1][j] += dp[i][j] * max(0, B[i] - A[i] - j + 1)
+            dp[i + 1][j] %= mod
+            dp[i + 1][j + 1] += dp[i][j] * max(0, B[i] - A[i] - j)
+            dp[i + 1][j + 1] %= mod
+    print(dp[N][N])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+    dp = [[0 for _ in range(3001)] for _ in range(N)]
+    for i in range(A[0], B[0] + 1):
+        dp[0][i] = 1
+    for i in range(1, N):
+        for j in range(1, 3001):
+            dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % MOD
+    ans = 0
+    for i in range(A[-1], B[-1] + 1):
+        ans = (ans + dp[N - 1][i]) % MOD
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+    dp = [[0]*3001 for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(A[i], B[i]+1):
+            dp[i+1][j] = (dp[i+1][j] + dp[i][j]) % MOD
+        for j in range(1, 3001):
+            dp[i+1][j] = (dp[i+1][j] + dp[i+1][j-1]) % MOD
+    print(dp[N][3000])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+
+    dp = [[0] * (B[-1] + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(B[i] + 1):
+            dp[i + 1][j] += dp[i][j]
+            dp[i + 1][j] %= MOD
+            if j < A[i]:
+                dp[i + 1][A[i]] += dp[i][j]
+                dp[i + 1][A[i]] %= MOD
+            else:
+                dp[i + 1][j + 1] += dp[i][j]
+                dp[i + 1][j + 1] %= MOD
+    print(dp[N][-1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+
+    # DPテーブル
+    # dp[i][j] := i番目までの数列のうち、最後の要素がjのものの個数
+    dp = [[0] * (3001) for _ in range(N+1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        # 累積和
+        sum = [0] * (3001)
+        for j in range(3001):
+            if j == 0:
+                sum[j] = dp[i][j]
+            else:
+                sum[j] = (sum[j-1] + dp[i][j]) % MOD
+
+        for j in range(A[i], B[i]+1):
+            dp[i+1][j] = (sum[j] - sum[A[i]-1]) % MOD
+
+    ans = 0
+    for i in range(3001):
+        ans = (ans + dp[N][i]) % MOD
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+
+    # dp[i][j] = i番目までの数列で、最後の要素がjのときの個数
+    dp = [[0] * (3001) for _ in range(N + 1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        for j in range(A[i], B[i] + 1):
+            dp[i + 1][j] = (dp[i + 1][j] + dp[i][j]) % MOD
+            dp[i + 1][j] = (dp[i + 1][j] + dp[i + 1][j - 1]) % MOD
+
+    print(dp[N][B[-1]])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+    # dp[i][j] := Aのi番目までの要素を使って、jを作る場合の数
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(N):
+            dp[i + 1][j + 1] += dp[i][j]
+            dp[i + 1][j + 1] %= MOD
+            dp[i + 1][j] += dp[i][j]
+            dp[i + 1][j] %= MOD
+    ans = 0
+    for i in range(N):
+        ans += dp[N][i + 1] * (B[i] - A[i] + 1)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # dp[i][j] := i番目までの数列で、最大値がj以下となる数列の個数
+    dp = [[0] * (3001) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(3001):
+            # i番目の数を選ばない場合
+            dp[i + 1][j] += dp[i][j]
+            dp[i + 1][j] %= 998244353
+            # i番目の数を選ぶ場合
+            if A[i] <= j <= B[i]:
+                dp[i + 1][j] += dp[i][j]
+                dp[i + 1][j] %= 998244353
+    print(sum(dp[N]) % 998244353)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    # C[i][j] = (i,j)の範囲のCの個数
+    C = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(N):
+        C[i][i] = 1
+
+    # 逆順に埋めていく
+    for i in range(N - 1, -1, -1):
+        for j in range(i + 1, N + 1):
+            # C[i][j] = C[i][k] * C[k][j]の和
+            for k in range(i, j):
+                C[i][j] += C[i][k] * C[k][j]
+            # A[i] <= C[i][j] <= B[i]になるように調整
+            C[i][j] -= C[i][j] - A[i] - B[i]
+            C[i][j] %= 998244353
+
+    print(C[0][N])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # DP[i][j] = (i番目まで見て、j以下の数が何個あるか)
+    DP = [[0] * (N + 1) for _ in range(N + 1)]
+    DP[0][0] = 1
+    for i in range(N):
+        for j in range(N):
+            DP[i + 1][j] += DP[i][j]
+            DP[i + 1][j] %= 998244353
+            if A[i] <= j <= B[i]:
+                DP[i + 1][j + 1] += DP[i][j]
+                DP[i + 1][j + 1] %= 998244353
+    print(DP[N][N])

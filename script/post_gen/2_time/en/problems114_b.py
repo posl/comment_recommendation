@@ -1,41 +1,115 @@
-#Problem Statement
-#There is a string S consisting of digits 1, 2, ..., 9.
-#Lunlun, the Dachshund, will take out three consecutive digits from S, treat them as a single integer X and bring it to her master. (She cannot rearrange the digits.)
-#The master's favorite number is 753. The closer to this number, the better.
-#What is the minimum possible (absolute) difference between X and 753?
-#
-#Constraints
-#S is a string of length between 4 and 10 (inclusive).
-#Each character in S is 1, 2, ..., or 9.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the minimum possible difference between X and 753.
-#
-#Sample Input 1
-#1234567876
-#
-#Sample Output 1
-#34
-#Taking out the seventh to ninth characters results in X = 787, and the difference between this and 753 is 787 - 753 = 34. The difference cannot be made smaller, no matter where X is taken from.
-#Note that the digits cannot be rearranged. For example, taking out 567 and rearranging it to 765 is not allowed.
-#We cannot take out three digits that are not consecutive from S, either. For example, taking out the seventh digit 7, the ninth digit 7 and the tenth digit 6 to obtain 776 is not allowed.
-#
-#Sample Input 2
-#35753
-#
-#Sample Output 2
-#0
-#If 753 itself can be taken out, the answer is 0.
-#
-#Sample Input 3
-#1111111111
-#
-#Sample Output 3
-#642
-#No matter where X is taken from, X = 111, with the difference 753 - 111 = 642.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    ans = 753
+    for i in range(len(S)-2):
+        ans = min(ans, abs(753 - int(S[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    ans = 1000
+    for i in range(len(s)-2):
+        ans = min(ans, abs(753 - int(s[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    min = 753
+    for i in range(len(s) - 2):
+        if abs(int(s[i:i+3]) - 753) < min:
+            min = abs(int(s[i:i+3]) - 753)
+    print(min)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(min([abs(int(S[i:i + 3]) - 753) for i in range(len(S) - 2)]))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    min = 1000
+    for i in range(len(s) - 2):
+        n = int(s[i:i+3])
+        if abs(753 - n) < min:
+            min = abs(753 - n)
+    print(min)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    min_diff = 1000
+    for i in range(len(S)-2):
+        num = int(S[i:i+3])
+        if abs(num-753) < min_diff:
+            min_diff = abs(num-753)
+    print(min_diff)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = [int(i) for i in s]
+    answer = 753
+    for i in range(len(s)-2):
+        if answer > abs(753 - int(s[i] * 100 + s[i+1] * 10 + s[i+2])):
+            answer = abs(753 - int(s[i] * 100 + s[i+1] * 10 + s[i+2]))
+    print(answer)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+
+    #Initialize the minimum difference to be 753
+    min_diff = 753
+
+    #Loop through the string S to find the minimum difference between 753 and the integer X
+    for i in range(len(S) - 2):
+        #Convert the string to integer
+        X = int(S[i : i + 3])
+
+        #Find the difference between 753 and X
+        diff = abs(X - 753)
+
+        #If the difference is smaller than the current minimum difference, update the minimum difference
+        if diff < min_diff:
+            min_diff = diff
+
+    #Print the minimum difference
+    print(min_diff)
+
+=======
+Suggestion 9
+
+def main():
+    # 1. input
+    s = input()
+
+    # 2. process
+    # 2.1. create a list of possible triplets
+    # 2.2. calculate the absolute difference between each triplet and 753
+    # 2.3. return the minimum of the differences
+    # 3. output
+    print(min([abs(int(s[i:i+3]) - 753) for i in range(len(s)-2)]))

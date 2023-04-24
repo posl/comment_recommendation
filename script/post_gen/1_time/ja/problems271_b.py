@@ -1,63 +1,158 @@
-#問題文
-#整数からなる数列が N 個あります。
-#i  (1 ≦ i ≦ N) 番目の数列は L_i 項からなり、i 番目の数列の第 j  (1 ≦ j ≦ L_i) 項 は a_{i, j} です。
-#Q 個のクエリが与えられます。k  (1 ≦ k ≦ Q) 番目のクエリでは、整数 s_k, t_k が与えられるので、s_k 番目の数列の第 t_k 項を求めてください。
-#
-#制約
-#1 ≦ N, Q ≦ 2 × 10^5
-#L_i ≧ 1  (1 ≦ i ≦ N)
-#sum_{i=1}^N L_i ≦ 2 × 10^5
-#1 ≦ a_{i, j} ≦ 10^9  (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k}  (1 ≦ k ≦ Q)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#L_1 a_{1, 1} ... a_{1, L_1}
-#.
-#.
-#.
-#L_N a_{N, 1} ... a_{N, L_N}
-#s_1 t_1
-#.
-#.
-#.
-# 
-#s_Q t_Q
-#
-#出力
-#Q 行出力せよ。k  (1 ≦ k ≦ Q) 行目には、k 番目のクエリに対する答えを出力せよ。
-#
-#入力例 1
-#2 2
-#3 1 4 7
-#2 5 9
-#1 3
-#2 1
-#
-#出力例 1
-#7
-#5
-#1 番目の数列は (1, 4, 7)、2 番目の数列は (5, 9) です。
-#それぞれのクエリに対する答えは次のようになります。
-#1 番目の数列の第 3 項は 7 です。
-#2 番目の数列の第 1 項は 5 です。
-#
-#入力例 2
-#3 4
-#4 128 741 239 901
-#2 1 1
-#3 314 159 26535
-#1 1
-#2 2
-#3 3
-#1 4
-#
-#出力例 2
-#128
-#1
-#26535
-#901
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(A[s - 1][t])
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+    B = [list(map(int, input().split())) for i in range(Q)]
+    for i in range(Q):
+        print(A[B[i][0] - 1][B[i][1] - 1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = []
+    for i in range(N):
+        a = list(map(int, input().split()))
+        A.append(a)
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t])
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    S = []
+    T = []
+    for i in range(Q):
+        s, t = map(int, input().split())
+        S.append(s)
+        T.append(t)
+    for i in range(Q):
+        print(L[S[i] - 1][T[i]])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    L = [list(map(int, input().split())) for _ in range(N)]
+    S, T = zip(*[map(int, input().split()) for _ in range(Q)])
+    for s, t in zip(S, T):
+        print(L[s-1][t])
+
+=======
+Suggestion 7
+
+def solve():
+    N, Q = map(int, input().split())
+    A = []
+    for _ in range(N):
+        A.append(list(map(int, input().split())))
+    for _ in range(Q):
+        s, t = map(int, input().split())
+        print(A[s - 1][t])
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, Q = map(int, input().split())
+    A = []
+    for i in range(N):
+        L = list(map(int, input().split()))
+        A.append(L)
+    #print(A)
+    B = []
+    for i in range(Q):
+        s, t = map(int, input().split())
+        B.append(s)
+        B.append(t)
+    #print(B)
+    for i in range(Q):
+        print(A[B[2*i]-1][B[2*i+1]])
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    #N, Q = 3, 4
+    #L = [4, 2, 3]
+    #A = [[128, 741, 239, 901], [1, 1], [314, 159, 26535]]
+    L = []
+    A = []
+    for i in range(N):
+        l = list(map(int, input().split()))
+        #l = A[i]
+        L.append(l[0])
+        A.append(l[1:])
+    #print(L)
+    #print(A)
+    #print(N, Q)
+    #print(A)
+    #print(L)
+    for i in range(Q):
+        s, t = map(int, input().split())
+        #s, t = A[i + N]
+        print(A[s - 1][t - 1])
+    #print(A)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    #数列の長さの配列
+    L = []
+    #数列の配列
+    A = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+        A.append(L[i][1:])
+    
+    #クエリの配列
+    S = []
+    T = []
+    for i in range(Q):
+        S.append(list(map(int, input().split())))
+        T.append(S[i][1])
+    
+    #Sの配列の要素をAの要素に変換
+    for i in range(Q):
+        print(A[S[i][0]-1][T[i]-1])

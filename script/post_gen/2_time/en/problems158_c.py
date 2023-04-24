@@ -1,43 +1,121 @@
-#Problem Statement
-#Find the price of a product before tax such that, when the consumption tax rate is 8 percent and 10 percent, the amount of consumption tax levied on it is A yen and B yen, respectively. (Yen is the currency of Japan.)
-#Here, the price before tax must be a positive integer, and the amount of consumption tax is rounded down to the nearest integer.
-#If multiple prices satisfy the condition, print the lowest such price; if no price satisfies the condition, print -1.
-#
-#Constraints
-#1 ≦ A ≦ B ≦ 100
-#A and B are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#If there is a price that satisfies the condition, print an integer representing the lowest such price; otherwise, print -1.
-#
-#Sample Input 1
-#2 2
-#
-#Sample Output 1
-#25
-#If the price of a product before tax is 25 yen, the amount of consumption tax levied on it is:
-#When the consumption tax rate is 8 percent: ⌊ 25 × 0.08 ⌋ = ⌊ 2 ⌋ = 2 yen.
-#When the consumption tax rate is 10 percent: ⌊ 25 × 0.1 ⌋ = ⌊ 2.5 ⌋ = 2 yen.
-#Thus, the price of 25 yen satisfies the condition. There are other possible prices, such as 26 yen, but print the minimum such price, 25.
-#
-#Sample Input 2
-#8 10
-#
-#Sample Output 2
-#100
-#If the price of a product before tax is 100 yen, the amount of consumption tax levied on it is:
-#When the consumption tax rate is 8 percent: ⌊ 100 × 0.08 ⌋ = 8 yen.
-#When the consumption tax rate is 10 percent: ⌊ 100 × 0.1 ⌋ = 10 yen.
-#
-#Sample Input 3
-#19 99
-#
-#Sample Output 3
-#-1
-#There is no price before tax satisfying this condition, so print -1.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1001):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1001):
+        if A == int(i * 0.08) and B == int(i * 0.1):
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    ans = -1
+    for i in range(1, 1001):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            ans = i
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int,input().split())
+    for i in range(1,1001):
+        if int(i*0.08) == A and int(i*0.1) == B:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 101):
+        if i * 8 // 100 == a and i * 10 // 100 == b:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1000):
+        if i * 0.08 // 1 == A and i * 0.1 // 1 == B:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1000):
+        if (i * 8) // 100 == A and (i * 10) // 100 == B:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1000):
+        if A == i // 0.08 and B == i // 0.1:
+            print(i)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 9
+
+def main():
+    #write your code here
+    a,b=map(int,input().split())
+    for i in range(1,1001):
+        if int(i*0.08)==a and int(i*0.1)==b:
+            print(i)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    A, B = map(int, input().split())
+
+    #compute
+    for i in range(1, 1001):
+        if A == i//1.08 and B == i//1.1:
+            print(i)
+            break
+    else:
+        print(-1)
+
+    #output

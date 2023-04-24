@@ -1,44 +1,278 @@
-#Problem Statement
-#You are given two strings S and T.
-#Determine whether it is possible to make S equal T by performing the following operation some number of times (possibly zero).
-#Between two consecutive equal characters in S, insert a character equal to these characters.
-#That is, take the following three steps.
-#Let N be the current length of S, and S = S_1S_2... S_N.
-#Choose an integer i between 1 and N-1 (inclusive) such that S_i = S_{i+1}. (If there is no such i, do nothing and terminate the operation now, skipping step 3.)
-#Insert a single copy of the character S_i(= S_{i+1}) between the i-th and (i+1)-th characters of S. Now, S is a string of length N+1: S_1S_2... S_i S_i S_{i+1} ... S_N.
-#
-#
-#Constraints
-#Each of S and T is a string of length between 2 and 2 × 10^5 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If it is possible to make S equal T, print Yes; otherwise, print No.
-#Note that the judge is case-sensitive.
-#
-#Sample Input 1
-#abbaac
-#abbbbaaac
-#
-#Sample Output 1
-#Yes
-#You can make S = abbaac equal T = abbbbaaac by the following three operations.
-#First, insert b between the 2-nd and 3-rd characters of S. Now, S = abbbaac.
-#Next, insert b again between the 2-nd and 3-rd characters of S. Now, S = abbbbaac.
-#Lastly, insert a between the 6-th and 7-th characters of S. Now, S = abbbbaaac.
-#Thus, Yes should be printed.
-#
-#Sample Input 2
-#xyzz
-#xyyzz
-#
-#Sample Output 2
-#No
-#No sequence of operations makes S = xyzz equal T = xyyzz.
-#Thus, No should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    if n != m:
+        print('No')
+        return
+    for i in range(n):
+        if s[i] != t[i]:
+            if s[i+1:] != t[i+1:]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if len(s) < len(t):
+        print("No")
+        return
+    i = 0
+    j = 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+            j += 1
+        else:
+            i += 1
+    if j == len(t):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if len(S) > len(T):
+        print("No")
+        return
+    if S == T:
+        print("Yes")
+        return
+    for i in range(len(S)):
+        if S[i] == T[i]:
+            continue
+        if S[i] != T[i+1]:
+            print("No")
+            return
+        if S[i+1] != T[i+2]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    t = input()
+    if len(s) > len(t):
+        print("No")
+        return
+    i, j = 0, 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+        j += 1
+    if i == len(s):
+        print("Yes")
+    else:
+        print("No")
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if len(s) < len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    i = 0
+    while i < len(s):
+        if i == len(t):
+            print("Yes")
+            return
+        if s[i] == t[i]:
+            i += 1
+        else:
+            if i + 1 < len(s) and s[i] == s[i + 1]:
+                s = s[:i] + s[i + 1:]
+            else:
+                print("No")
+                return
+    if i == len(t):
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+
+    N = len(S)
+    M = len(T)
+
+    if N > M:
+        print('No')
+        return
+
+    for i in range(M - N + 1):
+        s = S
+        t = T[i:i + N]
+        for j in range(N):
+            if s[j] != t[j] and s[j] != '?':
+                break
+        else:
+            print('Yes')
+            return
+
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    if len(S) == 1:
+        print("No")
+        return
+    if len(S) == 2:
+        if S[0] == T[0] or S[1] == T[1]:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if S[0] == T[0] and S[-1] == T[-1]:
+        print("Yes")
+    elif S[0] == T[0]:
+        print("Yes")
+    elif S[-1] == T[-1]:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+I got WA and I don't know why. I think I have covered all the cases.
+
+Can someone please help me?
+
+Thanks in advance.
+
+I am new to python and I am trying to write a program that will take a list of numbers and find the max and min of the list. I have the code below but when I run it, it says that the input is invalid. I don't know what I am doing wrong. Any help would be appreciated.
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    S = S.replace("a", "aa")
+    S = S.replace("b", "bb")
+    S = S.replace("c", "cc")
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    T = input()
+    #print(S)
+    #print(T)
+    S = S.replace('a', 'b')
+    T = T.replace('a', 'b')
+    #print(S)
+    #print(T)
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def solve(S, T):
+    # S = abbaac
+    # T = abbbbaaac
+    # S = xyzz
+    # T = xyyzz
+    # S = aaaaa
+    # T = aaaaaa
+    # S = aaaaa
+    # T = aaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T = aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    # S = aaaaa
+    # T =

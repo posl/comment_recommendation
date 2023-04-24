@@ -1,55 +1,171 @@
-#問題文
-#1 から N までの番号がついた N 人の参加者が、1 から M までの番号がついた M 問からなるコンテストに参加します。
-#1 以上 N 以下の整数 i 、1 以上 M 以下の整数 j について、S_i の j 番目の文字が o のとき参加者 i は問題 j を解くことが可能で、S_i の j 番目の文字が x のとき参加者 i は問題 j を解くことが不可能です。
-#このコンテストは、二人の参加者でペアを組んで参加します。二人が協力することで M 問全てを解くことが可能であるようなペアの個数を答えてください。
-#より厳密には、1≦ x < y≦ N を満たす整数の組 (x,y) であって、 1 以上 M 以下の任意の整数 j について、参加者 x か参加者 y の少なくとも一方は問題 j を解くことが可能であるという条件を満たすものの個数を答えてください。
-#
-#制約
-#N は 2 以上 30 以下の整数
-#M は 1 以上 30 以下の整数
-#S_i は o, x からなる長さ M の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5 5
-#ooooo
-#oooxx
-#xxooo
-#oxoxo
-#xxxxx
-#
-#出力例 1
-#5
-#参加者 1 と 2 のペア、参加者 1 と 3 のペア、参加者 1 と 4 のペア、参加者 1 と 5 のペア、参加者 2 と 3 のペアの 5 個のペアが条件を満たします。
-#例えば参加者 2 と 4 のペアは、問題 4 が解けないので条件を満たしません。
-#
-#入力例 2
-#3 2
-#ox
-#xo
-#xx
-#
-#出力例 2
-#1
-#
-#入力例 3
-#2 4
-#xxxx
-#oxox
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(M):
+                if S[i][k] == "o" or S[j][k] == "o":
+                    ans += 1
+                    break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            for k in range(M):
+                if S[i][k] == 'o' or S[j][k] == 'o':
+                    ans += 1
+                    break
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if 'o' in s[i] or 'o' in s[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(M):
+                if S[i][k] == 'o' or S[j][k] == 'o':
+                    ans += 1
+                    break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    cnt = 0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            for k in range(M):
+                if S[i][k] == 'o' or S[j][k] == 'o':
+                    cnt += 1
+                    break
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(1, N):
+        for j in range(i+1, N+1):
+            if "o" not in S[i-1] and "o" not in S[j-1]:
+                continue
+            else:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    ans += 1
+                    break
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+
+    #oの数を数える
+    o_count = [0] * N
+    for i in range(N):
+        for j in range(M):
+            if S[i][j] == 'o':
+                o_count[i] += 1
+
+    #oの数が1以上の人を抽出
+    o_count_person = []
+    for i in range(N):
+        if o_count[i] > 0:
+            o_count_person.append(i)
+
+    #oの数が1以上の人の組み合わせを出す
+    import itertools
+    o_count_person_combi = list(itertools.combinations(o_count_person, 2))
+
+    #oの数が1以上の人の組み合わせの中にxが含まれていないものをカウント
+    count = 0
+    for c in o_count_person_combi:
+        x_flag = False
+        for i in range(M):
+            if S[c[0]][i] == 'x' and S[c[1]][i] == 'x':
+                x_flag = True
+        if x_flag == False:
+            count += 1
+
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    #print(N, M)
+    #print(S)
+
+    # 答えを出力
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(M):
+                if S[i][k] == 'o' or S[j][k] == 'o':
+                    count += 1
+                    break
+    print(count)
+
+=======
+Suggestion 10
+
+def count_pair(N, M, S):
+    # ここに処理を書く
+    return 0

@@ -1,46 +1,123 @@
-#Problem Statement
-#You are given six integers: h_1, h_2, h_3, w_1, w_2, and w_3.
-#Consider writing a positive integer on each square of a 3 × 3 grid so that all of the following conditions are satisfied:
-#For i=1,2,3, the sum of numbers written in the i-th row from the top is h_i.
-#For j=1,2,3, the sum of numbers written in the j-th column from the left is w_i.
-#For example, if (h_1, h_2, h_3) = (5, 13, 10) and (w_1, w_2, w_3) = (6, 13, 9), then all of the following three ways satisfy the conditions.  (There are other ways to satisfy the conditions.)
-#How many ways are there to write numbers to satisfy the conditions?
-#
-#Constraints
-#3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#h_1 h_2 h_3 w_1 w_2 w_3
-#
-#Output
-#Print the number of ways to write numbers to satisfy the conditions.
-#
-#Sample Input 1
-#3 4 6 3 3 7
-#
-#Sample Output 1
-#1
-#The following is the only way to satisfy the conditions.  Thus, 1 should be printed.
-#
-#Sample Input 2
-#3 4 5 6 7 8
-#
-#Sample Output 2
-#0
-#There may not be a way to satisfy the conditions.
-#
-#Sample Input 3
-#5 13 10 6 13 9
-#
-#Sample Output 3
-#120
-#
-#Sample Input 4
-#20 25 30 22 29 24
-#
-#Sample Output 4
-#30613
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print(solve(h1, h2, h3, w1, w2, w3))
+
+=======
+Suggestion 2
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for a in range(1, h1 + 1):
+        for b in range(1, h2 + 1):
+            for c in range(1, h3 + 1):
+                for d in range(1, w1 + 1):
+                    for e in range(1, w2 + 1):
+                        for f in range(1, w3 + 1):
+                            if a + b + c == h1 and a + d + e == w1 and b + d + f == w2 and c + e + f == w3:
+                                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    h = list(map(int, input().split()))
+    w = list(map(int, input().split()))
+    ans = 0
+    for a in range(1, 31):
+        for b in range(1, 31):
+            for c in range(1, 31):
+                for d in range(1, 31):
+                    for e in range(1, 31):
+                        for f in range(1, 31):
+                            for g in range(1, 31):
+                                for i in range(1, 31):
+                                    for j in range(1, 31):
+                                        if h[0] == a + b + c and h[1] == d + e + f and h[2] == g + i + j and w[0] == a + d + g and w[1] == b + e + i and w[2] == c + f + j:
+                                            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h1,h2,h3,w1,w2,w3 = map(int,input().split())
+    ans = 0
+    for a in range(1,31):
+        for b in range(1,31):
+            for c in range(1,31):
+                for d in range(1,31):
+                    for e in range(1,31):
+                        for f in range(1,31):
+                            if a+b+c == h1 and d+e+f == h2 and a+d == w1 and b+e == w2 and c+f == w3 and c+e == h3:
+                                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for x1 in range(1, h1):
+        for x2 in range(1, h2):
+            for x3 in range(1, h3):
+                for y1 in range(1, w1):
+                    for y2 in range(1, w2):
+                        for y3 in range(1, w3):
+                            if (x1+x2+x3 == h1 and x1+x2+x3 == h2 and x1+x2+x3 == h3 and
+                                y1+y2+y3 == w1 and y1+y2+y3 == w2 and y1+y2+y3 == w3 and
+                                x1+y1 == x2+y2 == x3+y3):
+                                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def check(h, w):
+    if h[0] == w[0] + w[1] + w[2] and h[1] == w[0] + w[1] + w[2] and h[2] == w[0] + w[1] + w[2]:
+        if w[0] == h[0] + h[1] + h[2] and w[1] == h[0] + h[1] + h[2] and w[2] == h[0] + h[1] + h[2]:
+            return True
+    return False
+
+=======
+Suggestion 7
+
+def solve(h1, h2, h3, w1, w2, w3):
+    s = set()
+    for i in range(1, 31):
+        for j in range(1, 31):
+            for k in range(1, 31):
+                if i + j + k == h1 and i + k + j == h2 and j + k + i == h3 and i + j + k == w1 and i + k + j == w2 and j + k + i == w3:
+                    s.add((i, j, k))
+    return len(s)
+
+=======
+Suggestion 8
+
+def check(h1,h2,h3,w1,w2,w3):
+    if h1 == h2 == h3 and w1 == w2 == w3:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def main():
+    h = [int(x) for x in input().split()]
+    w = [int(x) for x in input().split()]
+    print(h)
+    print(w)
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))

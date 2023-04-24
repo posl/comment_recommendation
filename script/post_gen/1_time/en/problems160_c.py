@@ -1,37 +1,109 @@
-#Problem Statement
-#There is a circular pond with a perimeter of K meters, and N houses around them.
-#The i-th house is built at a distance of A_i meters from the northmost point of the pond, measured clockwise around the pond.
-#When traveling between these houses, you can only go around the pond.
-#Find the minimum distance that needs to be traveled when you start at one of the houses and visit all the N houses.
-#
-#Constraints
-#2 ≦ K ≦ 10^6
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ A_1 < ... < A_N < K
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the minimum distance that needs to be traveled when you start at one of the houses and visit all the N houses.
-#
-#Sample Input 1
-#20 3
-#5 10 15
-#
-#Sample Output 1
-#10
-#If you start at the 1-st house and go to the 2-nd and 3-rd houses in this order, the total distance traveled will be 10.
-#
-#Sample Input 2
-#20 3
-#0 5 15
-#
-#Sample Output 2
-#10
-#If you start at the 2-nd house and go to the 1-st and 3-rd houses in this order, the total distance traveled will be 10.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n-1):
+        b.append(a[i+1] - a[i])
+    b.append(k - a[-1] + a[0])
+    print(sum(b) - max(b))
+
+=======
+Suggestion 2
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    dist = [a[i + 1] - a[i] for i in range(n - 1)]
+    dist.append(k - a[-1] + a[0])
+
+    print(k - max(dist))
+
+=======
+Suggestion 3
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0]+k)
+    d = []
+    for i in range(n):
+        d.append(a[i+1]-a[i])
+    print(k-max(d))
+
+=======
+Suggestion 4
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(k+a[0])
+    d = [a[i+1]-a[i] for i in range(n)]
+    print(k - max(d))
+
+=======
+Suggestion 5
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    D = [A[i+1]-A[i] for i in range(N-1)]
+    D.append(K - A[-1] + A[0])
+    print(K - max(D))
+
+=======
+Suggestion 6
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    diff = [A[i]-A[i-1] for i in range(1, N)]
+    diff.append(K-A[N-1]+A[0])
+    print(K-max(diff))
+
+=======
+Suggestion 7
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0] + k)
+    for i in range(n):
+        a[i] = a[i+1] - a[i]
+    print(k - max(a))
+
+=======
+Suggestion 8
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(A[0]+K)
+    A.sort()
+    dist = 0
+    for i in range(N):
+        dist = max(dist, A[i+1]-A[i])
+    print(K-dist)
+
+=======
+Suggestion 9
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0]+k)
+    a.sort()
+    print(k-max([a[i+1]-a[i] for i in range(n)]))
+
+=======
+Suggestion 10
+
+def getDistance(a, b, k):
+    if a > b:
+        a, b = b, a
+    return min(b - a, a + k - b)

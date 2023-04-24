@@ -1,52 +1,185 @@
-#Problem Statement
-#Takahashi has N foods in his house. The i-th food has the tastiness of A_i.
-#He dislikes K of these foods: for each i=1,2,...,K, he dislikes the B_i-th food.
-#Out of the foods with the greatest tastiness among the N foods, Takahashi will randomly choose one and eat it.
-#If he has a chance to eat something he dislikes, print Yes; otherwise, print No.
-#
-#Constraints
-#1≦ K≦ N≦ 100
-#1≦ A_i≦ 100
-#1≦ B_i≦ N
-#All B_i are distinct.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_K
-#
-#Output
-#If Takahashi has a chance to eat a food he dislikes, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#5 3
-#6 8 10 7 10
-#2 3 4
-#
-#Sample Output 1
-#Yes
-#Among the five foods, the ones with the greatest tastiness are Food 3 and 5, of which he eats one.
-#He dislikes Food 2, 3, and 4, one of which he has a chance to eat: Food 3.
-#Therefore, the answer is Yes.
-#
-#Sample Input 2
-#5 2
-#100 100 100 1 1
-#5 4
-#
-#Sample Output 2
-#No
-#The foods with the greatest tastiness are Food 1, 2, and 3, none of which he has a chance to eat.
-#
-#Sample Input 3
-#2 1
-#100 1
-#2
-#
-#Sample Output 3
-#No
-#The food with the greatest tastiness is Food 1, which he has no chance to eat.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    if max(A) in [A[i] for i in B]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, K = [int(x) for x in input().split()]
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+
+    A.sort()
+    B.sort()
+
+    for i in range(K):
+        if A[-1] == B[i]:
+            A.pop()
+        else:
+            break
+
+    if len(A) > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort()
+    i = 0
+    for j in range(K):
+        while A[i] == B[j]:
+            i += 1
+            j += 1
+        if A[i] > B[j]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    B = set(B)
+    A.sort(reverse=True)
+    for i in range(K):
+        if A[i] in B:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    B = [b-1 for b in B]
+    A.sort(reverse=True)
+    for i in range(K):
+        if A[i] in B:
+            print("Yes")
+            return
+    print("No")
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # compute
+    A.sort(reverse=True)
+    for i in range(K):
+        if A[i] in B:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #compute
+    A.sort(reverse=True)
+    B.sort()
+
+    #output
+    for i in range(K):
+        if A[i] == A[i+1]:
+            continue
+        if i+1 == B[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    B = set(B)
+    
+    for i in range(N):
+        if (N - i) in B:
+            continue
+        else:
+            print(A[N - i - 1])
+            break
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # Sort A in descending order
+    A.sort(reverse=True)
+
+    # Check if the greatest tastiness food is disliked
+    if B.count(A.index(B[0])+1) > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N,K = map(int,input().split())
+    A = map(int,input().split())
+    B = map(int,input().split())
+    A = list(A)
+    B = list(B)
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    i = 0
+    for j in range(K):
+        while i<N:
+            if A[i] == A[i+1]:
+                i += 1
+            else:
+                if A[i] == A[i+1] and B[j] == i+1:
+                    print("Yes")
+                    return
+                elif A[i] != A[i+1] and B[j] == i+1:
+                    print("Yes")
+                    return
+                else:
+                    i += 1
+    print("No")

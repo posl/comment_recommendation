@@ -1,39 +1,100 @@
-#Problem Statement
-#Kurohashi has never participated in AtCoder Beginner Contest (ABC).
-#The next ABC to be held is ABC N (the N-th ABC ever held).
-#Kurohashi wants to make his debut in some ABC x such that all the digits of x in base ten are the same.
-#What is the earliest ABC where Kurohashi can make his debut?
-#
-#Constraints
-#100 ≦ N ≦ 999
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If the earliest ABC where Kurohashi can make his debut is ABC n, print n.
-#
-#Sample Input 1
-#111
-#
-#Sample Output 1
-#111
-#The next ABC to be held is ABC 111, where Kurohashi can make his debut.
-#
-#Sample Input 2
-#112
-#
-#Sample Output 2
-#222
-#The next ABC to be held is ABC 112, which means Kurohashi can no longer participate in ABC 111.
-#Among the ABCs where Kurohashi can make his debut, the earliest one is ABC 222.
-#
-#Sample Input 3
-#750
-#
-#Sample Output 3
-#777
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print(N + (111 - N % 111))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print(n + (111 - n % 111))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n//111+1)*111)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print((n + 111) // 111 * 111)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print((n + 111 - 1) // 111 * 111)
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N = int(input())
+    #compute
+    if N%111 == 0:
+        print(N)
+    else:
+        print(111*(N//111+1))
+    #output
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print((N+111)//111*111)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N = int(input())
+    #output
+    print(N//111*111+111 if N%111!=0 else N)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    if N%111 == 0:
+        print(N)
+    else:
+        print(((N//111)+1)*111)
+main()
+
+I was wondering if there was a better way to do this, as I feel like my solution is a bit messy. I'm also wondering if there is a way to do this without using any if statements.
+
+I'm just starting out with Python so any help would be greatly appreciated. Thanks!
+
+I'm trying to write a program that will print the first 100 prime numbers. I've got it working, but I'm not sure if there is a more efficient way to do it. Here's what I've got so far:
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    print(N//111*111+111)

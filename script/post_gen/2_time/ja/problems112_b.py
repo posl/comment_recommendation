@@ -1,62 +1,194 @@
-#問題文
-#外出している X さんは、ABC に参加するためにスマートウォッチで最適な帰宅経路を調べることにしました。
-#スマートウォッチであるあなたは、N 個の帰宅経路を見つけました。
-#X さんが i 番目の経路を使う場合、コスト c_i かけて時間 t_i で帰宅できます。
-#時間 T 以内に帰宅できる経路のうち、コストが最小となる経路のコストを求めてください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 100
-#1 ≦ T ≦ 1000
-#1 ≦ c_i ≦ 1000
-#1 ≦ t_i ≦ 1000
-#各 (c_i, t_i) の組は異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N T
-#c_1 t_1
-#c_2 t_2
-#:
-#c_N t_N
-#
-#出力
-#時間 T 以内に帰宅できる経路のうち、コストが最小となる経路のコストを出力せよ。
-#ただし、どの経路を使っても時間 T 以内に帰宅できない場合、TLE と出力せよ。
-#
-#入力例 1
-#3 70
-#7 60
-#1 80
-#4 50
-#
-#出力例 1
-#4
-#1 番目の経路を使うと、コスト 7 で帰宅できます
-#2 番目の経路では時間 T = 70 以内に帰宅できません
-#3 番目の経路を使うと、コスト 4 で帰宅できます
-#従って、3 番目の経路を使ったときのコスト 4 が最小です。
-#
-#入力例 2
-#4 3
-#1 1000
-#2 4
-#3 1000
-#4 500
-#
-#出力例 2
-#TLE
-#どの経路を使っても時間 T = 3 以内に帰宅できません。
-#
-#入力例 3
-#5 9
-#25 8
-#5 9
-#4 10
-#1000 1000
-#6 1
-#
-#出力例 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    ans = 1001
+    for i in range(N):
+        c, t = map(int, input().split())
+        if t <= T:
+            ans = min(ans, c)
+    if ans == 1001:
+        print("TLE")
+    else:
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for _ in range(N):
+        c_i, t_i = map(int, input().split())
+        c.append(c_i)
+        t.append(t_i)
+    #print(c)
+    #print(t)
+    min_cost = 1000
+    for i in range(N):
+        if t[i] <= T:
+            if c[i] < min_cost:
+                min_cost = c[i]
+    if min_cost == 1000:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 3
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for _ in range(N):
+        c_i, t_i = map(int, input().split())
+        c.append(c_i)
+        t.append(t_i)
+
+    cost = 1001
+    for i in range(N):
+        if t[i] <= T:
+            cost = min(cost, c[i])
+
+    if cost == 1001:
+        print('TLE')
+    else:
+        print(cost)
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    costs = []
+    for i in range(N):
+        c, t = map(int, input().split())
+        if t <= T:
+            costs.append(c)
+    if len(costs) == 0:
+        print("TLE")
+    else:
+        print(min(costs))
+
+=======
+Suggestion 5
+
+def main():
+    N, T = map(int, input().split())
+    min_cost = 1001
+    for i in range(N):
+        c, t = map(int, input().split())
+        if t <= T:
+            min_cost = min(min_cost, c)
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 6
+
+def main():
+    n, t = map(int, input().split())
+    ans = 1000
+    for i in range(n):
+        c, ti = map(int, input().split())
+        if ti <= t:
+            ans = min(ans, c)
+    if ans == 1000:
+        print("TLE")
+    else:
+        print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, T = map(int, input().split())
+    #print(N, T)
+    c = []
+    t = []
+    for i in range(N):
+        c_i, t_i = map(int, input().split())
+        c.append(c_i)
+        t.append(t_i)
+    #print(c, t)
+    ans = 10000
+    for i in range(N):
+        if t[i] <= T:
+            ans = min(ans, c[i])
+    if ans == 10000:
+        print('TLE')
+    else:
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # 標準入力から N, T を取得
+    N, T = map(int, input().split())
+    # 標準入力から N 個の経路を取得し、リストに格納
+    routes = [list(map(int, input().split())) for _ in range(N)]
+    # 最小コストを格納する変数
+    min_cost = float("inf")
+    # 経路を1つずつ取り出す
+    for route in routes:
+        # 経路のコストと時間を取得
+        cost, time = route
+        # 経路の時間が T 以内であれば
+        if time <= T:
+            # 経路のコストを最小コストと比較し、もし経路のコストが小さければ
+            if cost < min_cost:
+                # 最小コストを更新
+                min_cost = cost
+    # 最小コストが更新されていれば
+    if min_cost != float("inf"):
+        # 最小コストを出力
+        print(min_cost)
+    # 最小コストが更新されていなければ
+    else:
+        # TLE を出力
+        print("TLE")
+
+=======
+Suggestion 9
+
+def main():
+    N, T = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    A.sort(key=lambda x: x[0])
+    ans = 1001
+    for i in range(N):
+        if A[i][1] <= T:
+            ans = min(ans, A[i][0])
+    if ans == 1001:
+        print('TLE')
+    else:
+        print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N, T = map(int, input().split())
+    c_t_list = [list(map(int, input().split())) for _ in range(N)]
+
+    #処理
+    c_t_list.sort(key=lambda x: x[1])
+    ans = 1001
+    for c_t in c_t_list:
+        if c_t[1] <= T:
+            ans = min(ans, c_t[0])
+
+    #出力
+    if ans == 1001:
+        print("TLE")
+    else:
+        print(ans)

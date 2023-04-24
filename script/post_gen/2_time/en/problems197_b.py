@@ -1,66 +1,268 @@
-#Problem Statement
-#We have a grid of H horizontal rows and W vertical columns, where some of the squares contain obstacles.
-#Let (i, j) denote the square at the i-th row from the top and j-th column from the left.
-#You are given H strings S_1, S_2, S_3, ..., S_H. The j-th character of S_i describes the square (i, j); # means the square contains an obstacle, and . means it does not.
-#We say a square is visible from another when it is on the same row or the same column, and there is no obstacle between them (including themselves).
-#Print the number of squares visible from the square (X, Y) (including (X, Y) itself).
-#
-#Constraints
-#1 ≦ H ≦ 100
-#1 ≦ W ≦ 100
-#1 ≦ X ≦ H
-#1 ≦ Y ≦ W
-#S_i is a string of length W consisting of . and #.
-#The square (X, Y) does not contain an obstacle.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W X Y
-#S_1
-#S_2
-#S_3
-#.
-#.
-#.
-#S_H
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4 4 2 2
-###..
-#...#
-##.#.
-#.#.#
-#
-#Sample Output 1
-#4
-#The squares visible from the square (2, 2) are:
-#(2, 1)
-#(2, 2)
-#(2, 3)
-#(3, 2)
-#
-#Sample Input 2
-#3 5 1 4
-##....
-######
-#....#
-#
-#Sample Output 2
-#4
-#Even if two squares are on the same row or the same column, they are not visible from each other when there are obstacles between them.
-#
-#Sample Input 3
-#5 5 4 2
-#.#..#
-##.###
-###...
-##..#.
-##.###
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+    ans = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X+1, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(Y-1, -1, -1):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    for i in range(Y+1, W):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    X -= 1
+    Y -= 1
+    S = []
+    for i in range(H):
+        S.append(input())
+    ans = 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X + 1, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(Y - 1, -1, -1):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    for i in range(Y + 1, W):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X, Y = X - 1, Y - 1
+    ans = 1
+    for i in range(X + 1, H):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(Y + 1, W):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    for i in range(Y - 1, -1, -1):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    X -= 1
+    Y -= 1
+    S = []
+    for _ in range(H):
+        S.append(input())
+    ans = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X+1, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(Y-1, -1, -1):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    for i in range(Y+1, W):
+        if S[X][i] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+
+    ans = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X+1, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for j in range(Y-1, -1, -1):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    for j in range(Y+1, W):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+
+    ans = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(X+1, H):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(Y-1, -1, -1):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    for i in range(Y+1, W):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    X -= 1
+    Y -= 1
+    cnt = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        cnt += 1
+    for i in range(X+1, H):
+        if S[i][Y] == '#':
+            break
+        cnt += 1
+    for i in range(Y-1, -1, -1):
+        if S[X][i] == '#':
+            break
+        cnt += 1
+    for i in range(Y+1, W):
+        if S[X][i] == '#':
+            break
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [list(input()) for i in range(H)]
+
+    count = 1
+    for i in range(X - 2, -1, -1):
+        if S[i][Y - 1] == '#':
+            break
+        count += 1
+    for i in range(X, H):
+        if S[i][Y - 1] == '#':
+            break
+        count += 1
+    for i in range(Y - 2, -1, -1):
+        if S[X - 1][i] == '#':
+            break
+        count += 1
+    for i in range(Y, W):
+        if S[X - 1][i] == '#':
+            break
+        count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    count = 0
+    # 上下左右の方向を表すベクトル
+    dx = [1, 0, -1, 0]
+    dy = [0, 1, 0, -1]
+    for i in range(4):
+        x = X - 1
+        y = Y - 1
+        while True:
+            x += dx[i]
+            y += dy[i]
+            if 0 <= x < H and 0 <= y < W and S[x][y] == '.':
+                count += 1
+            else:
+                break
+    print(count + 1)
+
+=======
+Suggestion 10
+
+def main():
+    # Take the input
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # Start from (X, Y) and go in all 4 directions
+    # until you hit a wall or an obstacle
+    count = 1
+    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        x, y = X-1, Y-1
+        while True:
+            x += dx
+            y += dy
+            if x < 0 or x >= H or y < 0 or y >= W or S[x][y] == '#':
+                break
+            count += 1
+
+    # Print the answer
+    print(count)

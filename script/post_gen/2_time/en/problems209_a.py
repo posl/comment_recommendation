@@ -1,36 +1,38 @@
-#Problem Statement
-#How many integers not less than A and not more than B are there?
-#
-#Constraints
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A and B are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the number of integers not less than A and not more than B.
-#
-#Sample Input 1
-#2 4
-#
-#Sample Output 1
-#3
-#We have three integers not less than 2 and not more than 4: 2, 3, 4, so we should print 3.
-#
-#Sample Input 2
-#10 100
-#
-#Sample Output 2
-#91
-#
-#Sample Input 3
-#3 2
-#
-#Sample Output 3
-#0
-#We have no integers not less than 3 and not more than 2, so we should print 0.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(B - A + 1)
+
+=======
+Suggestion 3
+
+def main():
+    # read the input
+    a, b = map(int, input().split())
+    # print the output
+    print(b - a + 1)
+
+=======
+Suggestion 4
+
+def main():
+    # Read the first line of input
+    line1 = input()
+    # Split the line into two numbers
+    a, b = line1.split()
+    # Convert the numbers from strings to integers
+    a = int(a)
+    b = int(b)
+    # Print the result
+    print(b - a + 1)

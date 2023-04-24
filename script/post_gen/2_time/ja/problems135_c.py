@@ -1,48 +1,190 @@
-#問題文
-#N+1 個の街があり、i 番目の街は A_i 体のモンスターに襲われています。
-#N 人の勇者が居て、i 番目の勇者は i 番目または i+1 番目の街を襲っているモンスターを合計で B_i 体まで倒すことができます。
-#N 人の勇者がうまく協力することで、合計して最大で何体のモンスターを倒せるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_{N+1}
-#B_1 B_2 ... B_N
-#
-#出力
-#合計して倒せるモンスターの数の最大値を出力せよ。
-#
-#入力例 1
-#2
-#3 5 2
-#4 5
-#
-#出力例 1
-#9
-#以下のようにモンスターを倒すと、合計 9 体のモンスターを倒すことができ、このときが最大です。
-#1 番目の勇者が 1 番目の街を襲っているモンスターを 2 体、2 番目の街を襲っているモンスターを 2 体倒します。
-#2 番目の勇者が 2 番目の街を襲っているモンスターを 3 体、3 番目の街を襲っているモンスターを 2 体倒します。
-#
-#入力例 2
-#3
-#5 6 3 8
-#5 100 8
-#
-#出力例 2
-#22
-#
-#入力例 3
-#2
-#100 1 1
-#1 100
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] -= min(A[i], B[i])
+        ans += min(A[i+1], B[i])
+        A[i+1] -= min(A[i+1], B[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] = max(0, B[i]-A[i])
+        ans += min(A[i+1], B[i])
+        A[i+1] = max(0, A[i+1]-B[i])
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if B[i] >= A[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if B[i] >= A[i+1]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        ans += min(A[i+1], B[i] - min(A[i], B[i]))
+        A[i+1] -= min(A[i+1], B[i] - min(A[i], B[i]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] -= min(A[i], B[i])
+        ans += min(A[i+1], B[i])
+        A[i+1] -= min(A[i+1], B[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                B[i] -= A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        if a[i] <= b[i]:
+            ans += a[i]
+            b[i] -= a[i]
+            a[i] = 0
+        else:
+            ans += b[i]
+            a[i] -= b[i]
+            b[i] = 0
+
+        if a[i+1] <= b[i]:
+            ans += a[i+1]
+            b[i] -= a[i+1]
+            a[i+1] = 0
+        else:
+            ans += b[i]
+            a[i+1] -= b[i]
+            b[i] = 0
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        if a[i] <= b[i]:
+            ans += a[i]
+            b[i] -= a[i]
+            if a[i+1] <= b[i]:
+                ans += a[i+1]
+                a[i+1] = 0
+            else:
+                ans += b[i]
+                a[i+1] -= b[i]
+        else:
+            ans += b[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10 ** 9 + 7
+    N = int(readline())
+    A = list(map(int,readline().split()))
+    B = list(map(int,readline().split()))
+
+    ans = 0
+    for i in range(N):
+        if A[i] >= B[i]:
+            ans += B[i]
+            A[i] -= B[i]
+        else:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i + 1] >= B[i]:
+                ans += B[i]
+                A[i + 1] -= B[i]
+            else:
+                ans += A[i + 1]
+                A[i + 1] = 0
+
+    print(ans)

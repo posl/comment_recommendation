@@ -1,45 +1,162 @@
-#Problem Statement
-#In a flower bed, there are N flowers, numbered 1,2,......,N. Initially, the heights of all flowers are 0.
-#You are given a sequence h={h_1,h_2,h_3,......} as input. You would like to change the height of Flower k to h_k for all k (1 ≦  k ≦ N), by repeating the following "watering" operation:
-#Specify integers l and r. Increase the height of Flower x by 1 for all x such that l ≦ x ≦ r.
-#Find the minimum number of watering operations required to satisfy the condition.
-#
-#Constraints
-#1 ≦ N  ≦ 100
-#0 ≦ h_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#h_1 h_2 h_3 ...... h_N
-#
-#Output
-#Print the minimum number of watering operations required to satisfy the condition.
-#
-#Sample Input 1
-#4
-#1 2 2 1
-#
-#Sample Output 1
-#2
-#The minimum number of watering operations required is 2.
-#One way to achieve it is:
-#Perform the operation with (l,r)=(1,3).
-#Perform the operation with (l,r)=(2,4).
-#
-#Sample Input 2
-#5
-#3 1 2 3 1
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#8
-#4 23 75 0 23 96 50 100
-#
-#Sample Output 3
-#221
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def   main (): 
+     N   =   int ( input ()) 
+     h   =   list ( map ( int ,   input (). split ())) 
+     ans   =   0 
+     for   i   in   range ( N ): 
+         if   i   ==   0 : 
+             ans   +=   h [ i ] 
+         else : 
+             if   h [ i - 1 ]   <   h [ i ]: 
+                 ans   +=   h [ i ]   -   h [ i - 1 ] 
+     print ( ans )
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if h[i] > 0:
+            ans += 1
+            for j in range(i, N):
+                h[j] -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if H[i] == 0:
+            continue
+        ans += 1
+        for j in range(i, N):
+            if H[j] == 0:
+                break
+            H[j] -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+            continue
+        if h[i] > h[i - 1]:
+            ans += h[i] - h[i - 1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+        else:
+            if h[i] > h[i-1]:
+                ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += h[i]
+        elif h[i] > h[i-1]:
+            ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    h = list(map(int,input().split()))
+    count = 0
+    for i in range(N):
+        if h[i] > 0:
+            count += 1
+            for j in range(i,N):
+                h[j] -= 1
+    print(count)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while True:
+        flag = False
+        for i in range(n):
+            if h[i] > 0:
+                flag = True
+                break
+        if flag == False:
+            break
+        ans += 1
+        for j in range(i, n):
+            if h[j] > 0:
+                h[j] -= 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        if h[i] == 0:
+            continue
+        ans += h[i]
+        for j in range(i+1, N):
+            if h[j] >= h[i]:
+                h[j] = 0
+            else:
+                break
+
+    print(ans)
+
+main()
+
+I tried to solve this problem by myself, but it was not solved. I referred to the editorial and solved it.
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    print(N - len(set(h)))

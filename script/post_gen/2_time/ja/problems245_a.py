@@ -1,44 +1,122 @@
-#問題文
-#ある日、高橋君は A 時 B 分ちょうどに、青木君は C 時 D 分 1 秒に起きました。
-#高橋君の起床時刻が青木君より早いならば Takahashi を、そうでないならば Aoki を出力してください。
-#
-#制約
-#0 ≦ A ≦ 23
-#0 ≦ B ≦ 59
-#0 ≦ C ≦ 23
-#0 ≦ D ≦ 59
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#高橋君の起床時刻が青木君より早いならば Takahashi を、そうでないならば Aoki を出力せよ。
-#
-#入力例 1
-#7 0 6 30
-#
-#出力例 1
-#Aoki
-#高橋君は 7 時ちょうどに、青木君は 6 時 30 分 1 秒に起きました。
-#青木君の起床時刻の方が早いため、Aoki を出力します。
-#
-#入力例 2
-#7 30 7 30
-#
-#出力例 2
-#Takahashi
-#高橋君は 7 時 30 分ちょうどに、青木君は 7 時 30 分 1 秒に起きました。
-#高橋君の起床時刻の方が 1 秒だけ早いため、Takahashi を出力します。
-#
-#入力例 3
-#0 0 23 59
-#
-#出力例 3
-#Takahashi
-#ある日の 0 時 0 分ちょうどはその日の 0 時 1 分の 1 分前であり、
-#その日の 23 時 59 分の 1 分後、すなわちいわゆる 24 時ちょうどのことではありません。
-#よって、高橋君の起床時刻の方が早く、Takahashi を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A * 60 + B < C * 60 + D:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A * 60 + B < C * 60 + D:
+        print("Aoki")
+    else:
+        print("Takahashi")
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A < C:
+        print("Takahashi")
+    elif A > C:
+        print("Aoki")
+    else:
+        if B < D:
+            print("Takahashi")
+        else:
+            print("Aoki")
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c, d = map(int, input().split())
+    if a < c:
+        print("Takahashi")
+    elif a == c:
+        if b < d:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        print("Aoki")
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    A, B, C, D = map(int, input().split())
+
+    if A < C:
+        print("Takahashi")
+    elif A == C:
+        if B < D:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A == C:
+        if B < D:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    elif A < C:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a < c:
+        print("Takahashi")
+    elif a > c:
+        print("Aoki")
+    else:
+        if b < d:
+            print("Takahashi")
+        else:
+            print("Aoki")
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    A, B, C, D = map(int, input().split())
+
+    if A * 60 + B < C * 60 + D:
+        print('Aoki')
+    else:
+        print('Takahashi')
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a*60+b < c*60+d:
+        print("Takahashi")
+    else:
+        print("Aoki")

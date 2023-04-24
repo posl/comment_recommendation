@@ -1,51 +1,166 @@
-#問題文
-#頂点数 2^{10^{100}}-1 の完全二分木があり、頂点には 1,2,...,2^{10^{100}}-1 の番号がついています。
-#頂点 1 が根であり、各 1≦ i < 2^{10^{100}-1} について、頂点 i は 頂点 2i を左の子、頂点 2i+1 を右の子として持ちます。
-#高橋君は最初頂点 X におり、N 回移動を行います。移動は文字列 S により表され、i 回目の移動は次のように行います。
-#S の i 番目の文字が U のとき、今いる頂点の親に移動する
-#S の i 番目の文字が L のとき、今いる頂点の左の子に移動する
-#S の i 番目の文字が R のとき、今いる頂点の右の子に移動する
-#N 回の移動後に高橋君がいる頂点の番号を求めてください。なお、答えが 10^{18} 以下になるような入力のみが与えられます。
-#
-#制約
-#1 ≦ N ≦ 10^6
-#1 ≦ X ≦ 10^{18}
-#N,X は整数
-#S は長さ N であり、U,L,R のみからなる
-#高橋君が根にいるとき、親に移動しようとすることはない
-#高橋君が葉にいるとき、子に移動しようとすることはない
-#高橋君が N 回の移動後にいる頂点の番号は 10^{18} 以下である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#S
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3 2
-#URL
-#
-#出力例 1
-#6
-#完全二分木は次のような構造をしています。
-#各移動により、高橋君がいる頂点の番号は 2 -> 1 -> 3 -> 6 と変化します。
-#
-#入力例 2
-#4 500000000000000000
-#RRUU
-#
-#出力例 2
-#500000000000000000
-#移動の途中過程において、高橋君がいる頂点の番号が 10^{18} を超えることもあります。
-#
-#入力例 3
-#30 123456789
-#LRULURLURLULULRURRLRULRRRUURRU
-#
-#出力例 3
-#126419752371
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            X = X // 2
+        elif S[i] == 'L':
+            X = 2 * X - 1
+        else:
+            X = 2 * X + 1
+    print(X)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            X = (X + 1) // 2
+        elif S[i] == 'L':
+            X *= 2
+        elif S[i] == 'R':
+            X = X * 2 + 1
+    print(X)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == "U":
+            if X % 2 == 1:
+                X = (X - 1) // 2
+        elif S[i] == "L":
+            X = X * 2 + 1
+        elif S[i] == "R":
+            X = X * 2
+    print(X)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == "U":
+            X = (X - 1) // 2
+        elif S[i] == "L":
+            X = X * 2
+        else:
+            X = X * 2 + 1
+    print(X)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            if X % 2 == 0:
+                X = X // 2
+        elif S[i] == 'L':
+            X = 2 * X - 1
+        elif S[i] == 'R':
+            X = 2 * X + 1
+    print(X)
+
+=======
+Suggestion 6
+
+def main():
+    N,X = map(int,input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            X = X//2
+        elif S[i] == 'L':
+            X = (X-1)//2
+        else:
+            X = (X+1)//2
+    print(X)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for s in S:
+        if s == 'U':
+            X = (X - 1) // 2
+        elif s == 'L':
+            X = 2 * X - 1
+        else:
+            X = 2 * X + 1
+    print(X)
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for s in S:
+        if s == "U":
+            if X % 2 == 0:
+                X //= 2
+        elif s == "L":
+            X *= 2
+        elif s == "R":
+            X = X * 2 + 1
+    print(X)
+
+=======
+Suggestion 9
+
+def main():
+    N,X = map(int,input().split())
+    S = input()
+    for s in S:
+        if s == 'U':
+            X = (X-1)//2
+        elif s == 'L':
+            X = 2*X
+        else:
+            X = 2*X+1
+    print(X)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    N, X = map(int, input().split())
+    S = input().rstrip()
+    # X が 10^18 以下なので、2^100 以下の完全二分木を考えればよい
+    # これは 2^100-1 以下の完全二分木で、これは 2^99-1 以下の完全二分木で、…
+    # これは 2^1-1 以下の完全二分木で、これは 1 以下の完全二分木である
+    # つまり、完全二分木の頂点数は 2^k-1 である
+    # ここで、k は 1 以上 100 以下の整数である
+    # したがって、完全二分木の高さは 100 以下である
+    # したがって、N は 100 以下である
+    # したがって、S は 100 文字以下である
+    # したがって、N^2 以下の計算量で解ける
+    ans = X
+    for i in range(N):
+        if S[i] == "U":
+            ans = ans // 2
+        elif S[i] == "L":
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2
+    print(ans)

@@ -1,35 +1,24 @@
-#Problem Statement
-#Let us assume that water pressure depends only on depth and is (x/(100)) megapascal at a depth of x meters.
-#What is the water pressure in megapascals at a depth of D meters?
-#
-#Constraints
-#1 ≦ D ≦ 10000
-#D is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#D
-#
-#Output
-#Print the answer. Your output will be considered correct when its absolute or relative error from our answer is at most 10^{-3}.
-#
-#Sample Input 1
-#1000
-#
-#Sample Output 1
-#10
-#The water pressure at a depth of 1000 meters is 10 megapascal. Outputs such as 10.0 and 9.999999 would also be accepted.
-#
-#Sample Input 2
-#50
-#
-#Sample Output 2
-#0.5
-#
-#Sample Input 3
-#3141
-#
-#Sample Output 3
-#31.41
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    depth = int(input())
+    pressure = depth / 100
+    print(pressure)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    D = int(input())
+    print(D/100)
+
+=======
+Suggestion 3
+
+def pressure(D):
+    return D/100

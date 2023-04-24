@@ -1,61 +1,174 @@
-#Problem Statement
-#In the xy-plane, we have N points numbered 1 through N.
-#Point i is at the coordinates (X_i,Y_i). Any two different points are at different positions.
-#Find the number of ways to choose three of these N points so that connecting the chosen points with segments results in a triangle with a positive area.
-#
-#Constraints
-#All values in input are integers.
-#3 ≦ N ≦ 300
-#-10^9 ≦ X_i,Y_i ≦ 10^9
-#(X_i,Y_i) ≠ (X_j,Y_j) if i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#X_1 Y_1
-#X_2 Y_2
-#...
-#X_N Y_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#4
-#0 1
-#1 3
-#1 1
-#-1 -1
-#
-#Sample Output 1
-#3
-#The figure below illustrates the points.
-#There are three ways to choose points that form a triangle: {1,2,3},{1,3,4},{2,3,4}.
-#
-#Sample Input 2
-#20
-#224 433
-#987654321 987654321
-#2 0
-#6 4
-#314159265 358979323
-#0 0
-#-123456789 123456789
-#-1000000000 1000000000
-#124 233
-#9 -6
-#-4 0
-#9 5
-#-7 3
-#333333333 -333333333
-#-9 -1
-#7 -10
-#-1 5
-#324 633
-#1000000000 -1000000000
-#20 0
-#
-#Sample Output 2
-#1124
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                x1 = X[i]
+                y1 = Y[i]
+                x2 = X[j]
+                y2 = Y[j]
+                x3 = X[k]
+                y3 = Y[k]
+                if (x1-x3)*(y2-y3) - (x2-x3)*(y1-y3) != 0:
+                    ans += 1
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if (X[j]-X[i])*(Y[k]-Y[i]) != (X[k]-X[i])*(Y[j]-Y[i]):
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if (X[i] - X[k]) * (Y[j] - Y[k]) - (Y[i] - Y[k]) * (X[j] - X[k]) != 0:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            for k in range(j + 1, N):
+                if (X[i] - X[k]) * (Y[j] - Y[k]) - (Y[i] - Y[k]) * (X[j] - X[k]) != 0:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append([int(x) for x in input().split()])
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                a = points[i][0] - points[j][0]
+                b = points[i][1] - points[j][1]
+                c = points[k][0] - points[j][0]
+                d = points[k][1] - points[j][1]
+                if a*d != b*c:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    xys = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if ((xys[j][0] - xys[i][0]) * (xys[k][1] - xys[i][1]) - (xys[k][0] - xys[i][0]) * (xys[j][1] - xys[i][1])) != 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_input():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    return N,X,Y
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+        
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                x1, y1 = points[i]
+                x2, y2 = points[j]
+                x3, y3 = points[k]
+                if (x1*y2 + x2*y3 + x3*y1 - x1*y3 - x2*y1 - x3*y2) != 0:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def isTriangle(x1,y1,x2,y2,x3,y3):
+    return x1*y2+x2*y3+x3*y1-x1*y3-x2*y1-x3*y2 != 0
+
+=======
+Suggestion 10
+
+def isTriangle(x1,y1,x2,y2,x3,y3):
+    #print("isTriangle",x1,y1,x2,y2,x3,y3)
+    if x1 == x2 and x2 == x3:
+        return False
+    if y1 == y2 and y2 == y3:
+        return False
+    if x1 == x2:
+        return (y2-y1)*(x3-x2) != (y3-y2)*(x2-x1)
+    if x2 == x3:
+        return (y3-y2)*(x1-x3) != (y1-y3)*(x3-x2)
+    if x1 == x3:
+        return (y1-y3)*(x2-x1) != (y2-y1)*(x1-x3)
+    return (y1-y3)*(x2-x1) != (y2-y1)*(x1-x3)

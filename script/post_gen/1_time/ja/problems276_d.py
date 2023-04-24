@@ -1,48 +1,219 @@
-#問題文
-#正整数列 A=(a_1,a_2,...,a_N) が与えられます。
-#あなたは以下の操作のうち 1 つを選んで行うことを 0 回以上何度でも繰り返せます。
-#1 ≦ i ≦ N かつ a_i が 2 の倍数であるような整数 i を選び、a_i を ((a_i)/(2)) に置き換える
-#1 ≦ i ≦ N かつ a_i が 3 の倍数であるような整数 i を選び、a_i を ((a_i)/(3)) に置き換える
-#あなたの目標は A が a_1=a_2=...=a_N を満たす状態にすることです。
-#目標を達成するために必要な操作の回数の最小値を求めてください。ただし、どのように操作を行っても目標を達成できない場合、代わりに -1 と出力してください。
-#
-#制約
-#2 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1 4 3
-#
-#出力例 1
-#3
-#次のように操作をすると 3 回で目標を達成でき、これが最小の回数です。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,2,3) となる。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,1,3) となる。
-#a_i が 3 の倍数であるような整数 i として 3 を選び、a_3 を ((a_3)/(3)) に置き換える。A は (1,1,1) となる。
-#
-#入力例 2
-#3
-#2 7 6
-#
-#出力例 2
-#-1
-#どのように操作を行っても目標を達成できません。
-#
-#入力例 3
-#6
-#1 1 1 1 1 1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] / 2
+            elif A[i] % 3 == 0:
+                A[i] = A[i] / 3
+            else:
+                print("-1")
+                return
+        count += 1
+        if len(set(A)) == 1:
+            print(count)
+            return
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+            elif A[i] % 3 == 0:
+                A[i] = A[i] // 3
+            else:
+                break
+        else:
+            count += 1
+            continue
+        break
+    if A.count(A[0]) == N:
+        print(count)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+            else:
+                break
+        else:
+            ans += 1
+            continue
+        break
+    while True:
+        for i in range(N):
+            if A[i] % 3 == 0:
+                A[i] = A[i] // 3
+            else:
+                break
+        else:
+            ans += 1
+            continue
+        break
+    if len(set(A)) == 1:
+        print(ans)
+    else:
+        print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    cnt2 = 0
+    cnt3 = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] /= 2
+            cnt2 += 1
+        while a[i] % 3 == 0:
+            a[i] /= 3
+            cnt3 += 1
+    if len(set(a)) == 1:
+        print(max(cnt2,cnt3) - min(cnt2,cnt3))
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] / 2
+            else:
+                break
+        else:
+            ans += 1
+            continue
+        break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+            elif A[i] % 3 == 0:
+                A[i] = A[i] // 3
+            else:
+                break
+        else:
+            ans += 1
+            continue
+        break
+    if A.count(A[0]) == N:
+        print(ans)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 != 0:
+                print(-1)
+                return
+            else:
+                A[i] = A[i] // 2
+        ans += 1
+        if A.count(A[0]) == N:
+            break
+    print(ans - 1)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 2で割れる回数と3で割れる回数をそれぞれカウント
+    count2 = 0
+    count3 = 0
+    for i in range(N):
+        while A[i] % 2 == 0:
+            A[i] /= 2
+            count2 += 1
+        while A[i] % 3 == 0:
+            A[i] /= 3
+            count3 += 1
+
+    # 2で割れる回数と3で割れる回数が全て同じであれば、2で割れる回数を出力
+    if count2 == count3:
+        print(count2)
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [a%2 if a%2 == 1 else a%3 if a%3 == 1 else a for a in A]
+    if len(set(A)) == 1 and A[0] == 1:
+        print(0)
+    else:
+        print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    count = 0
+    while True:
+        #print(A)
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+            else:
+                break
+        else:
+            count += 1
+            continue
+        break
+    print(count)

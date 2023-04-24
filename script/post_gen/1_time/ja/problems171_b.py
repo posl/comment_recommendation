@@ -1,34 +1,55 @@
-#問題文
-#ある店で N 種類の果物、果物 1, ..., N が売られており、それぞれの価格は一個あたり p_1, ..., p_N 円です。
-#この店で K 種類の果物を一個ずつ買うとき、それらの合計価格として考えられる最小の金額を求めてください。
-#
-#制約
-#1 ≦ K ≦ N ≦ 1000
-#1 ≦ p_i ≦ 1000
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#p_1 p_2 ... p_N
-#
-#出力
-#果物の最小の合計価格を表す整数を出力せよ。
-#
-#入力例 1
-#5 3
-#50 100 80 120 80
-#
-#出力例 1
-#210
-#この店では、果物 1, 2, 3, 4, 5 がそれぞれ 50 円、100 円、80 円、120 円、80 円で売られています。
-#これらから 3 種類を買うときの最小合計価格は、果物 1, 3, 5 を買うときの 50 + 80 + 80 = 210 円です。
-#
-#入力例 2
-#1 1
-#1000
-#
-#出力例 2
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    print(sum(p[:K]))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    print(sum(p[:K]))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P.sort()
+    print(sum(P[:K]))
+
+=======
+Suggestion 4
+
+def main():
+    # 入力
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    # 処理
+    p.sort()
+    ans = sum(p[:K])
+    # 出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    #ソート
+    p.sort()
+    #出力
+    print(sum(p[0:K]))

@@ -1,48 +1,87 @@
-#Problem Statement
-#Takahashi has a red jewel of level N.  (He has no other jewels.) 
-#Takahashi can do the following operations any number of times.
-#Convert a red jewel of level n (n is at least 2) into "a red jewel of level (n-1) and X blue jewels of level n".
-#Convert a blue jewel of level n (n is at least 2) into "a red jewel of level (n-1) and Y blue jewels of level (n-1)".
-#Takahashi wants as many blue jewels of level 1 as possible.  At most, how many blue jewels of level 1 can he obtain by the operations?
-#
-#Constraints
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X Y
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3 4
-#
-#Sample Output 1
-#12
-#Takahashi can obtain 12 blue jewels of level 1 by the following conversions.
-#First, he converts a red jewel of level 2 into a red jewel of level 1 and 3 blue jewels of level 2.
-#After this operation, Takahashi has 1 red jewel of level 1 and 3 blue jewels of level 2.
-#Next, he repeats the following conversion 3 times: converting a blue jewel of level 2 into a red jewel of level 1 and 4 blue jewels of level 1.
-#After these operations, Takahashi has 4 red jewels of level 1 and 12 blue jewels of level 1.
-#He cannot perform a conversion anymore.
-#He cannot obtain more than 12 blue jewels of level 1, so the answer is 12.
-#
-#Sample Input 2
-#1 5 5
-#
-#Sample Output 2
-#0
-#Takahashi may not be able to obtain a blue jewel of level 1.
-#
-#Sample Input 3
-#10 5 5
-#
-#Sample Output 3
-#3942349900
-#Note that the answer may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def calc(n, x, y):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return x
+    else:
+        return calc(n-1, x, y) + x + (n-2)*y
+
+=======
+Suggestion 2
+
+def calc(N,X,Y):
+    if N == 1:
+        return 0
+    elif N == 2:
+        return X + Y
+    else:
+        return calc(N-1,X,Y) + X + calc(N-1,X,Y) + Y
+
+=======
+Suggestion 3
+
+def main():
+    N, X, Y = map(int, input().split())
+    print((N-1)*Y+X)
+
+=======
+Suggestion 4
+
+def get_max_blue_jewels(N, X, Y):
+    if N == 1:
+        return 0
+
+    if X == 1 and Y == 1:
+        return (N - 1) * 2
+
+    if X == 1:
+        return (N - 1) * 2 * Y
+
+    if Y == 1:
+        return (N - 1) * 2 * X
+
+    return (N - 1) * 2 * X * Y
+
+=======
+Suggestion 5
+
+def main():
+    n, x, y = map(int, input().split())
+    print(n, x, y)
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    n, x, y = map(int, input().split())
+    print((n-1) * x + y)
+
+=======
+Suggestion 7
+
+def get_input():
+    return map(int, raw_input().split())
+
+=======
+Suggestion 8
+
+def get_input():
+    return map(int, input().split())
+
+=======
+Suggestion 9
+
+def convert_red(n, x):
+    return n-1, x+n
+
+=======
+Suggestion 10
+
+def solve():
+    return 0

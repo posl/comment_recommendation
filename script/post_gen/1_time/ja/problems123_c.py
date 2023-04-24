@@ -1,72 +1,206 @@
-#問題文
-#AtCoder 社は成長し、2028 年になってついに 6 つの都市 (都市 1, 2, 3, 4, 5, 6) からなる AtCoder 帝国を作りました！  
-#AtCoder 帝国には 5 つの交通機関があります。
-#電車：都市 1 から 2 まで 1 分で移動する。1 つの電車には A 人まで乗ることができる。
-#バス：都市 2 から 3 まで 1 分で移動する。1 つのバスには B 人まで乗ることができる。
-#タクシー：都市 3 から 4 まで 1 分で移動する。1 つのタクシーには C 人まで乗ることができる。
-#飛行機：都市 4 から 5 まで 1 分で移動する。1 つの飛行機には D 人まで乗ることができる。
-#船：都市 5 から 6 までを 1 分で移動する。1 つの船には E 人まで乗ることができる。
-#それぞれの交通機関は、各整数時刻 (0, 1, 2, 3, ...) に、都市から出発します。
-#いま、N 人のグループが都市 1 におり、全員都市 6 まで移動したいです。全員が都市 6 に到着するまでに最短で何分かかるでしょうか？
-#なお、乗り継ぎにかかる時間を考える必要はありません。  
-#
-#制約
-#1 ≦ N, A, B, C, D, E ≦ 10^{15}
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#N
-#A
-#B
-#C
-#D
-#E
-#
-#出力
-#全員が都市 6 に移動するのに必要な最小の時間を分単位で出力せよ。  
-#
-#入力例 1
-#5
-#3
-#2
-#4
-#3
-#5
-#
-#出力例 1
-#7
-#例えば、次のような移動方法が考えられます。
-#はじめ、次の画像のように、N = 5 人が都市 1 にいます。  
-#1 分後までに、3 人が都市 1 から都市 2 に電車で移動します。ここで、電車は一度に 3 人までしか運べないことに注意してください。  
-#2 分後までに、残り 2 人が都市 1 から都市 2 に電車で移動し、都市 2 にいた 3 人のうち 2 人がバスで都市 3 に移動します。ここで、バスは一度に 2 人までしか運べないことに注意してください。  
-#3 分後までに、2 人が都市 2 から都市 3 にバスで移動し、2 人が都市 3 から都市 4 にタクシーで移動します。    
-#それ以降は、まだ都市 6 に到着していない人が止まらずに移動し続けると、全員が 7 分で都市 6 に着くことができます。
-#また、6 分以内で全員が都市 6 に着く方法はありません。  
-#
-#入力例 2
-#10
-#123
-#123
-#123
-#123
-#123
-#
-#出力例 2
-#5
-#どの交通機関も N = 10 人を 1 回で運ぶことができます。
-#したがって、全員が止まらずに移動し続ければ 5 分で都市 6 に着くことができます。  
-#
-#入力例 3
-#10000000007
-#2
-#3
-#5
-#7
-#11
-#
-#出力例 3
-#5000000008
-#入力・出力が 32 ビット整数型に収まらない可能性があることに注意してください。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    print(5 + (N - 1) // min(A, B, C, D, E))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    m = min(a,b,c,d,e)
+    print(5 + (n-1)//m)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(N,A,B,C,D,E)
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #print("C:{}".format(C))
+    #print("D:{}".format(D))
+    #print("E:{}".format(E))
+    #print("N:{}".format(N))
+    #print("A:{}".format(A))
+    #print("B:{}".format(B))
+    #
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    if N % A == 0:
+        train = int(N / A)
+    else:
+        train = int(N / A) + 1
+    if N % B == 0:
+        bus = int(N / B)
+    else:
+        bus = int(N / B) + 1
+    if N % C == 0:
+        taxi = int(N / C)
+    else:
+        taxi = int(N / C) + 1
+    if N % D == 0:
+        plane = int(N / D)
+    else:
+        plane = int(N / D) + 1
+    if N % E == 0:
+        ship = int(N / E)
+    else:
+        ship = int(N / E) + 1
+
+    a = max(train, bus, taxi, plane, ship)
+    print(a + 4)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    print(4 + (N + min([A,B,C,D,E])-1)//min([A,B,C,D,E]))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    min = 0
+    for i in range(0, 5):
+        if i == 0:
+            min = min + 1
+        elif i == 1:
+            min = min + (n + a - 1) // a
+        elif i == 2:
+            min = min + (n + b - 1) // b
+        elif i == 3:
+            min = min + (n + c - 1) // c
+        elif i == 4:
+            min = min + (n + d - 1) // d
+        else:
+            min = min + (n + e - 1) // e
+    print(min)
+
+=======
+Suggestion 7
+
+def solve(n, a, b, c, d, e):
+    m = min(a, b, c, d, e)
+    if n <= m:
+        return 5
+    return 4 + (n + m - 1) // m
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from math import ceil
+    readline = sys.stdin.buffer.readline
+    mod = 10**9+7
+    N = int(readline())
+    A = int(readline())
+    B = int(readline())
+    C = int(readline())
+    D = int(readline())
+    E = int(readline())
+    print(ceil(N/min(A,B,C,D,E))+4)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+
+    # 交通機関の数は5つ
+    # 交通機関の移動時間は1分
+    # 交通機関の乗車人数はそれぞれA,B,C,D,E
+    # 乗車人数が多い順に乗車していく
+    # 乗車人数が多い順に乗車していくと、乗車人数が多い交通機関で移動する時間が短くなる
+    # 乗車人数が多い順に乗車していくと、乗車人数が多い交通機関で移動する時間が短くなるので、乗車人数が多い順に乗車していく
+    # 乗車人数が多い順に乗車していくと、乗車人数が多い交通機関で移動する時間が短くなるので、乗車人数が多い順に乗車していく
+    # 乗車人数が多い順に乗車していくと、乗車人数が多い交通機関で移動する時間が短くなるので、乗車人数が多い順に乗車していく
+    # 乗車人数が多い順に乗車していくと、乗車人数が多い交通機関で移動する時間が短くなるので、乗車人数が多い順に乗車していく
+    # 乗

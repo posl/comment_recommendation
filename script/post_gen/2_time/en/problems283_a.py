@@ -1,35 +1,58 @@
-#Problem Statement
-#Given integers A and B,
-#print the value A^B.
-#
-#Constraints
-#1 ≦ A, B ≦ 9
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4 3
-#
-#Sample Output 1
-#64
-#4^3 = 64, so 64 should be printed.
-#
-#Sample Input 2
-#5 5
-#
-#Sample Output 2
-#3125
-#
-#Sample Input 3
-#8 1
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print(A**B)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(a ** b)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = [int(x) for x in input().split()]
+    print(a**b)
+
+=======
+Suggestion 4
+
+def main():
+    A,B = input().split()
+    A = int(A)
+    B = int(B)
+    print(A**B)
+
+=======
+Suggestion 5
+
+def main():
+    # A, B = map(int, input().split())
+    A, B = map(int, input().split())
+    print(A**B)
+
+=======
+Suggestion 6
+
+def main():
+    # Read the input
+    A, B = map(int, input().split())
+
+    # Print the answer
+    print(A**B)
+
+=======
+Suggestion 7
+
+def main():
+    # get input
+    a, b = map(int, input().split())
+    # print the answer
+    print(a**b)

@@ -1,39 +1,66 @@
-#問題文
-#直角三角形 ABC があります。∠ABC=90° です。
-#三角形 ABC の三辺の長さである |AB|,|BC|,|CA| が与えられるので、直角三角形 ABC の面積を求めて下さい。
-#ただし、三角形 ABC の面積は整数となることが保証されています。
-#
-#制約
-#1 ≦ |AB|,|BC|,|CA| ≦ 100
-#入力はすべて整数である。
-#三角形 ABC の面積は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#|AB| |BC| |CA|
-#
-#出力
-#三角形 ABC の面積を出力してください。
-#
-#入力例 1
-#3 4 5
-#
-#出力例 1
-#6
-#この三角形の面積は 6 です。
-#
-#入力例 2
-#5 12 13
-#
-#出力例 2
-#30
-#この三角形の面積は 30 です。
-#
-#入力例 3
-#45 28 53
-#
-#出力例 3
-#630
-#この三角形の面積は 630 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    AB, BC, CA = map(int, input().split())
+    print(int(AB * BC / 2))
+
+=======
+Suggestion 2
+
+def main():
+    s = input().split()
+    a = int(s[0])
+    b = int(s[1])
+    c = int(s[2])
+    print(int(a * b / 2))
+
+=======
+Suggestion 3
+
+def main():
+    # 標準入力から a, b, c を取得する
+    a, b, c = map(int, input().split())
+    # 三角形の面積を出力する
+    print(int(a * b / 2))
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c = map(int, input().split())
+    print(int(a*b/2))
+
+=======
+Suggestion 5
+
+def main():
+    num = input().split()
+    a = int(num[0])
+    b = int(num[1])
+    c = int(num[2])
+    print(int(a*b/2))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = map(int, input().split())
+    print((a*b)//2)
+
+=======
+Suggestion 7
+
+def area():
+    a = [int(x) for x in input().split()]
+    print(a[0] * a[1] // 2)
+
+area()
+
+=======
+Suggestion 8
+
+def area_of_right_triangle(a, b):
+    return a * b / 2

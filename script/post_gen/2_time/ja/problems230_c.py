@@ -1,65 +1,220 @@
-#問題文
-#上下左右に広がる N× N のマス目があり、最初全てのマスは白く塗られています。このマス目の上から i 行目、左から j 列目のマスを (i,j) で表します。
-#高橋君は 1 以上 N 以下の整数 A, B を持っており、次のような操作を行います。
-#max(1-A,1-B)≦ k≦ min(N-A,N-B) をみたす全ての整数 k について、(A+k,B+k) を黒く塗る。
-#max(1-A,B-N)≦ k≦ min(N-A,B-1) をみたす全ての整数 k について、(A+k,B-k) を黒く塗る。
-#この操作を行った後のマス目について、P≦ i≦ Q かつ R≦ j≦ S をみたす各マス (i,j) がそれぞれ何色で塗られているか求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#P Q R S
-#
-#出力
-#Q-P+1 行出力せよ。
-#各行は # と . のみからなる長さ S-R+1 の文字列であり、
-#i 行目の文字列の j 番目の文字が
-# # であることは (P+i-1,R+j-1) が黒く塗られていることを、
-# . であることは (P+i-1,R+j-1) が白く塗られていることをさす。
-#
-#入力例 1
-#5 3 2
-#1 5 1 5
-#
-#出力例 1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#1 つめの操作で (2,1), (3,2), (4,3), (5,4) の 4 マスが、
-#2 つめの操作で (4,1), (3,2), (2,3), (1,4) の 4 マスが黒く塗られます。
-#よって、P=1, Q=5, R=1, S=5 より、上のように出力します。
-#
-#入力例 2
-#5 3 3
-#4 5 2 5
-#
-#出力例 2
-##.#.
-#...#
-#操作によって、
-#(1,1), (1,5), (2,2), (2,4), (3,3), (4,2), (4,4), (5,1), (5,5) の 9 マスが
-#黒く塗られます。
-#P=4, Q=5, R=2, S=5 より、上のように出力します。
-#
-#入力例 3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#出力例 3
-##.#
-#.#.
-##.#
-#入力が 32 bit 整数型に収まらないことがあることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (max(1-A, 1-B) <= i+j-A-B <= min(N-A, N-B)) or (max(1-A, B-N) <= i-j-A+B <= min(N-A, B-1)):
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q + 1):
+        for j in range(R, S + 1):
+            if (max(1 - A, 1 - B) <= i + j - A - B <= min(N - A, N - B) or
+                    max(1 - A, B - N) <= i - j - A + B <= min(N - A, B - 1)):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q + 1):
+        for j in range(R, S + 1):
+            if max(1 - A, 1 - B) <= min(N - A, N - B):
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    #print(N, A, B, P, Q, R, S)
+    #N, A, B, P, Q, R, S = 5, 3, 2, 1, 5, 1, 5
+    #N, A, B, P, Q, R, S = 5, 3, 3, 4, 5, 2, 5
+    #N, A, B, P, Q, R, S = 1000000000000000000, 999999999999999999, 999999999999999999, 999999999999999998, 1000000000000000000, 999999999999999998, 1000000000000000000
+    #print(N, A, B, P, Q, R, S)
+
+    #max(1-A,1-B)≦ k≦ min(N-A,N-B) をみたす全ての整数 k について、(A+k,B+k) を黒く塗る。
+    #max(1-A,B-N)≦ k≦ min(N-A,B-1) をみたす全ての整数 k について、(A+k,B-k) を黒く塗る。
+
+    #print(P, Q, R, S)
+
+    #print(1-A, 1-B, N-A, N-B)
+    #print(1-A, B-N, N-A, B-1)
+
+    #print(max(1-A,1-B), min(N-A,N-B))
+    #print(max(1-A,B-N), min(N-A,B-1))
+
+    #print(max(1-A,1-B) <= min(N-A,N-B))
+    #print(max(1-A,B-N) <= min(N-A,B-1))
+
+    #print(max(1-A,1-B) <= min(N-A,N-B) and max(1-A,B-N) <= min(N-A,B-1))
+
+    #print(max(1-A,1-B) <= min(N-A,N-B) and max(1-A,B-N) <= min(N-A,B-1)
+
+=======
+Suggestion 5
+
+def main():
+    N,A,B = map(int,input().split())
+    P,Q,R,S = map(int,input().split())
+    for i in range(P,Q+1):
+        for j in range(R,S+1):
+            if (max(1-A,1-B) <= (i-j) <= min(N-A,N-B)) or (max(1-A,B-N) <= (i+j) <= min(N-A,B-1)):
+                print("#",end="")
+            else:
+                print(".",end="")
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    # Q-P+1行出力せよ。
+    for i in range(Q-P+1):
+        # 各行は # と . のみからなる長さ S-R+1 の文字列であり、
+        # i 行目の文字列の j 番目の文字が
+        # # であることは (P+i-1,R+j-1) が黒く塗られていることを、
+        # . であることは (P+i-1,R+j-1) が白く塗られていることをさす。
+        for j in range(S-R+1):
+            x = P+i-1
+            y = R+j-1
+            if (A <= x <= N-B+1) and (B <= y <= N-A+1):
+                print('#', end='')
+            elif (A <= x <= N-B+1) and (N-A+1 <= y <= B-1):
+                print('#', end='')
+            elif (N-B+1 <= x <= A-1) and (B <= y <= N-A+1):
+                print('#', end='')
+            elif (N-B+1 <= x <= A-1) and (N-A+1 <= y <= B-1):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    def f(x, y):
+        return x * (x + 1) // 2 * (N - y + 1) + (N - x + 1) * (N - x) // 2 * y
+    for i in range(P, Q + 1):
+        for j in range(R, S + 1):
+            print('#' if f(i, j) - f(i, B) - f(A, j) + f(A, B) > 0 else '.', end='')
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    # 1 つめの操作で塗るマスの数
+    num1 = min(N - A, B - 1) + 1
+    # 2 つめの操作で塗るマスの数
+    num2 = min(N - A, N - B) + 1
+    # 1 つめの操作で塗るマスのうち、P≦ i≦ Q をみたすマスの数
+    num3 = max(0, min(Q, N - A) - max(P, A) + 1)
+    # 2 つめの操作で塗るマスのうち、P≦ i≦ Q をみたすマスの数
+    num4 = max(0, min(Q, N - A) - max(P, A - N + B + 1) + 1)
+    # 1 つめの操作で塗るマスのうち、R≦ j≦ S をみたすマスの数
+    num5 = max(0, min(S, B) - max(R, B - N + A + 1) + 1)
+    # 2 つめの操作で塗るマスのうち、R≦ j≦ S をみたすマスの数
+    num6 = max(0, min(S, N - B) - max(R, B) + 1)
+    # 1 つめの操作で塗るマスのうち、P≦ i≦ Q かつ R≦ j≦ S をみたすマスの数
+    num7 = max(0, min(Q, N - A) - max(P, A) + 1) * max(0, min(S, B) - max(R, B - N + A + 1) + 1)
+    # 2 つめの操作で塗るマスのうち、P≦ i≦ Q かつ R≦ j≦ S をみたすマスの数
+    num8
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    # マス目を作成する
+    # 1:黒, 0:白
+    masu = [[0 for i in range(N)] for j in range(N)]
+    # (A,B)を黒く塗る
+    masu[A-1][B-1] = 1
+    # max(1-A,1-B)≦ k≦ min(N-A,N-B) をみたす全ての整数 k について、(A+k,B+k) を黒く塗る。
+    for k in range(max(1-A,1-B),min(N-A,N-B)+1):
+        masu[A+k-1][B+k-1] = 1
+    # max(1-A,B-N)≦ k≦ min(N-A,B-1) をみたす全ての整数 k について、(A+k,B-k) を黒く塗る。
+    for k in range(max(1-A,B-N),min(N-A,B-1)+1):
+        masu[A+k-1][B-k-1] = 1
+    # 出力
+    for i in range(P-1,Q):
+        for j in range(R-1,S):
+            if masu[i][j] == 1:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 10
+
+def solve(N, A, B, P, Q, R, S):
+    # 1. (A, B)を黒く塗る
+    # 2. (A+k, B+k)を黒く塗る
+    # 3. (A+k, B-k)を黒く塗る
+    # 4. (P, R)から(S, Q)までのマスを黒く塗る
+    # 5. (P, R)から(S, Q)までのマスを白く塗る
+    # 1.と4.を同時に行う
+    # 2.と3.を同時に行う
+    # 2.と3.を同時に行う
+    # 1.と4.を同時に行う
+
+    # 1.と4.を同時に行う
+    # 1.と4.を同時に行う
+    # 2.と3.を同時に行う
+    # 2.と3.を同時に行う
+    # 5.を行う
+    # 5.を行う
+
+    # 1.と4.を同時に行う
+    # 1.と4.を同時に行う
+    # 2.と3.を同時に行う
+    # 2.と3.を同時に行う
+    # 5.を行う
+    # 5.を行う
+
+    # 1.と4.を同時に行う
+    # 1.と4.を同時に行う
+    # 2.と3.を同時に行う
+    # 2.と3.を同時に行う
+    # 5.を行う
+    # 5.を行う
+
+    # 1.と4.を同時に行う
+    # 1.と4.を同時に行う
+    # 2.と3.を同時に行う
+    # 2.と3.を同時に行う
+    # 5.を行う
+    # 5.を行う

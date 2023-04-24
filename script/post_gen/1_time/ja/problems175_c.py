@@ -1,55 +1,151 @@
-#問題文
-#数直線上で暮らす高橋君は、今座標 X にいます。これから高橋君はちょうど K 回、座標の正または負の方向に D 移動する行為を繰り返そうと考えています。
-#より正確には、1 回の移動では 座標 x から x + D または x - D に移動できます。
-#高橋君は、ちょうど K 回移動した後にいる座標の絶対値が最小となるように移動したいです。
-#K 回の移動後の座標の絶対値としてあり得る値の最小値を求めてください。
-#
-#制約
-#-10^{15} ≦ X ≦ 10^{15}
-#1 ≦ K ≦ 10^{15}
-#1 ≦ D ≦ 10^{15}
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X K D
-#
-#出力
-#K 回の移動後の座標の絶対値としてあり得る値の最小値を出力せよ。
-#
-#入力例 1
-#6 2 4
-#
-#出力例 1
-#2
-#高橋君は、今座標 6 にいます。次のように移動するのが最適です。
-#6 から (6 - 4 =) 2 に移動する。
-#2 から (2 - 4 =) -2 に移動する。
-#移動後の座標の絶対値は 2 で、これより小さくすることはできません。
-#
-#入力例 2
-#7 4 3
-#
-#出力例 2
-#1
-#高橋君は、今座標 7 にいます。例えば次のように移動するのが最適です。
-#7 から 4 に移動する。
-#4 から 7 に移動する。
-#7 から 4 に移動する。
-#4 から 1 に移動する。
-#移動後の座標の絶対値は 1 で、これより小さくすることはできません。
-#
-#入力例 3
-#10 1 2
-#
-#出力例 3
-#8
-#
-#入力例 4
-#1000000000000000 1000000000000000 1000000000000000
-#
-#出力例 4
-#1000000000000000
-#答えは非常に大きな値になる場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(abs(X % D - D))
+
+=======
+Suggestion 2
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X >= K * D:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(abs(X % D - D))
+
+=======
+Suggestion 3
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if K * D <= X:
+        print(X - K * D)
+    else:
+        K -= X // D
+        X %= D
+        if K % 2 == 0:
+            print(X)
+        else:
+            print(D - X)
+
+=======
+Suggestion 4
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if K * D <= X:
+        print(X - K * D)
+    else:
+        K -= X // D
+        X %= D
+        if K % 2 == 0:
+            print(X)
+        else:
+            print(abs(X - D))
+
+=======
+Suggestion 5
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    m = min(X // D, K)
+    X -= m * D
+    K -= m
+    if K % 2 == 0:
+        print(X)
+    else:
+        print(abs(X - D))
+
+=======
+Suggestion 6
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X - K * D >= 0:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(abs(X % D - D))
+
+=======
+Suggestion 7
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D > K:
+        print(X - K * D)
+        return
+    if (K - X // D) % 2 == 0:
+        print(X % D)
+    else:
+        print(abs(X % D - D))
+
+=======
+Suggestion 8
+
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+        return
+    else:
+        if (k - x // d) % 2 == 0:
+            print(abs(x - (x // d) * d))
+        else:
+            print(abs(x - (x // d + 1) * d))
+
+=======
+Suggestion 9
+
+def main():
+    x,k,d = map(int,input().split())
+    if x < 0:
+        x = -x
+    if k <= x // d:
+        print(x - k * d)
+    else:
+        if (k - x // d) % 2 == 0:
+            print(x % d)
+        else:
+            print(abs((x % d) - d))
+
+=======
+Suggestion 10
+
+def main():
+    x, k, d = map(int, input().split())
+    #print(x, k, d)
+    x = abs(x)
+    #print(x)
+    if x > k * d:
+        print(x - k * d)
+    else:
+        k -= x // d
+        x %= d
+        if k % 2 == 0:
+            print(x)
+        else:
+            print(d - x)

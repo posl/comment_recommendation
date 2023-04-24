@@ -1,51 +1,102 @@
-#Problem Statement
-#We have a blackboard with nothing written on it.
-#Takahashi will do N operations to write integers on it.
-#In the i-th operation, he will write each integer from A_i through B_i once, for a total of B_i - A_i + 1 integers.
-#Find the sum of the integers written on the blackboard after the N operations.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ B_i ≦ 10^6
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the sum of the integers written on the blackboard after the N operations.
-#
-#Sample Input 1
-#2
-#1 3
-#3 5
-#
-#Sample Output 1
-#18
-#In the 1-st operation, he will write 1, 2, and 3 on the blackboard.
-#In the 2-nd operation, he will write 3, 4, and 5 on the blackboard.
-#The sum of the integers written is 1+2+3+3+4+5=18.
-#
-#Sample Input 2
-#3
-#11 13
-#17 47
-#359 44683
-#
-#Sample Output 2
-#998244353
-#
-#Sample Input 3
-#1
-#1 1000000
-#
-#Sample Output 3
-#500000500000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += (b - a + 1) * (a + b) / 2
+    print(int(sum))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    total = 0
+    for _ in range(n):
+        a, b = map(int, input().split())
+        total += (a + b) * (b - a + 1) // 2
+    print(total)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    print(sum(b) - sum(a) + n)
+
+=======
+Suggestion 4
+
+def main():
+    # Get input
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    # Calculate the sum of the integers written
+    sum = 0
+    for i in range(n):
+        sum += (b[i] - a[i] + 1) * (a[i] + b[i]) / 2
+
+    # Print the sum of the integers written
+    print(int(sum))
+
+=======
+Suggestion 5
+
+def sum_natural_numbers(n):
+    return (n*(n+1))//2
+
+n = int(input())
+sum = 0
+for i in range(n):
+    a,b = map(int,input().split())
+    sum += sum_natural_numbers(b) - sum_natural_numbers(a-1)
+print(sum)
+
+=======
+Suggestion 6
+
+def getSumOfIntegersWrittenOnBlackboard():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        sum += (B - A + 1) * (A + B) / 2
+    print(int(sum))
+
+getSumOfIntegersWrittenOnBlackboard()
+
+=======
+Suggestion 7
+
+def sum_of_arithmetic_progression(first_term, last_term, number_of_terms):
+    sum = ((first_term + last_term) * number_of_terms) / 2
+    return sum
+
+=======
+Suggestion 8
+
+def sum_of_all_nums(start_num, end_num):
+    return (start_num + end_num) * (end_num - start_num + 1) // 2
+
+=======
+Suggestion 9
+
+def calc(n, a):
+    return int((n * (n + 1)) / 2) - int((a * (a + 1)) / 2)

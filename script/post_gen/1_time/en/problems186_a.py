@@ -1,30 +1,35 @@
-#Problem Statement
-#We have a truck, which can carry at most N kilograms.
-#We will load bricks onto this truck, each of which weighs W kilograms. At most how many bricks can be loaded?
-#
-#Constraints
-#1≦ N,W ≦ 1000
-#N and W are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N W
-#
-#Output
-#Print an integer representing the maximum number of bricks that can be loaded onto the truck.
-#
-#Sample Input 1
-#10 3
-#
-#Sample Output 1
-#3
-#Each brick weighs 3 kilograms, so 3 bricks weigh 9 kilograms, and 4 weigh 12 kilograms.
-#Thus, we can load at most 3 bricks onto the truck that can carry at most 10 kilograms.
-#
-#Sample Input 2
-#1000 1
-#
-#Sample Output 2
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, W = map(int, input().split())
+    print(N // W)
+
+=======
+Suggestion 2
+
+def main():
+    input = sys.stdin.readline
+    N, W = map(int, input().split())
+    print(N//W)
+
+=======
+Suggestion 3
+
+def main():
+    #input
+    N, W = map(int, input().split())
+    #output
+    print(N//W)
+
+=======
+Suggestion 4
+
+def main():
+    #read input
+    n,w = map(int,input().split())
+
+    #output
+    print(n//w)

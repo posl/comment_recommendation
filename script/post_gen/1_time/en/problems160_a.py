@@ -1,34 +1,89 @@
-#Problem Statement
-#A string of length 6 consisting of lowercase English letters is said to be coffee-like if and only if its 3-rd and 4-th characters are equal and its 5-th and 6-th characters are also equal.
-#Given a string S, determine whether it is coffee-like.
-#
-#Constraints
-#S is a string of length 6 consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S is coffee-like, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#sippuu
-#
-#Sample Output 1
-#Yes
-#In sippuu, the 3-rd and 4-th characters are equal, and the 5-th and 6-th characters are also equal.
-#
-#Sample Input 2
-#iphone
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#coffee
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print('Yes' if S[2] == S[3] and S[4] == S[5] else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    input_string = input()
+    if input_string[2] == input_string[3] and input_string[4] == input_string[5]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def coffee_like():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print('Yes')
+    else:
+        print('No')
+
+coffee_like()
+
+=======
+Suggestion 8
+
+def coffee_like(S):
+    if S[2]==S[3] and S[4]==S[5]:
+        return "Yes"
+    else:
+        return "No"
+
+=======
+Suggestion 9
+
+def coffee_like ( s ):
+    if s [ 2 ] == s [ 3 ] and s [ 4 ] == s [ 5 ]:
+        return "Yes"
+    return "No"

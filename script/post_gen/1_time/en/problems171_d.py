@@ -1,80 +1,208 @@
-#Problem Statement
-#You have a sequence A composed of N positive integers: A_{1}, A_{2}, ..., A_{N}.
-#You will now successively do the following Q operations:
-#In the i-th operation, you replace every element whose value is B_{i} with C_{i}.
-#For each i (1 ≦ i ≦ Q), find S_{i}: the sum of all elements in A just after the i-th operation.
-#
-#Constraints
-#All values in input are integers.
-# 1 ≦ N, Q, A_{i}, B_{i}, C_{i} ≦ 10^{5} 
-# B_{i} ≠ C_{i} 
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_{1} A_{2} ... A_{N}
-#Q
-#B_{1} C_{1}
-#B_{2} C_{2}
-#.
-#.
-#.
-#B_{Q} C_{Q}
-#
-#Output
-#Print Q integers S_{i} to Standard Output
-# in the following format:
-#S_{1}
-#S_{2}
-#.
-#.
-#.
-#S_{Q}
-#Note that S_{i} may not fit into a 32-bit integer.
-#
-#Sample Input 1
-#4
-#1 2 3 4
-#3
-#1 2
-#3 4
-#2 4
-#
-#Sample Output 1
-#11
-#12
-#16
-#Initially, the sequence A is 1,2,3,4.
-#After each operation, it becomes the following:
-#2, 2, 3, 4
-#2, 2, 4, 4
-#4, 4, 4, 4
-#
-#Sample Input 2
-#4
-#1 1 1 1
-#3
-#1 2
-#2 1
-#3 5
-#
-#Sample Output 2
-#8
-#4
-#4
-#Note that the sequence A may not contain an element whose value is B_{i}.
-#
-#Sample Input 3
-#2
-#1 2
-#3
-#1 100
-#2 100
-#100 1000
-#
-#Sample Output 3
-#102
-#200
-#2000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    S = sum(A)
+    count = [0] * (10 ** 5 + 1)
+    for a in A:
+        count[a] += 1
+    for i in range(Q):
+        count[B[i]] -= 1
+        count[C[i]] += 1
+        S += (C[i] - B[i]) * count[B[i]]
+        print(S)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    S = sum(A)
+    for i in range(Q):
+        S += (C[i] - B[i]) * A.count(B[i])
+        print(S)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    ans = sum(A)
+    for i in range(Q):
+        ans += (C[i] - B[i]) * A.count(B[i])
+        print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0]*Q
+    C = [0]*Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    
+    sum_A = sum(A)
+    count_B = [0]*10**5
+    for i in range(N):
+        count_B[A[i]-1] += 1
+    for i in range(Q):
+        sum_A += (C[i] - B[i]) * count_B[B[i]-1]
+        count_B[C[i]-1] += count_B[B[i]-1]
+        count_B[B[i]-1] = 0
+        print(sum_A)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = [int(x) for x in input().split()]
+    S = 0
+    for i in range(N):
+        S += A[i]
+    for i in range(Q):
+        S -= B[i] * A.count(B[i])
+        S += C[i] * A.count(B[i])
+        print(S)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = [int(j) for j in input().split()]
+    S = sum(A)
+    for i in range(Q):
+        S += (C[i] - B[i]) * A.count(B[i])
+        print(S)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        B.append(list(map(int, input().split())))
+    #print(B)
+    for i in range(Q):
+        C.append(B[i][1])
+    #print(C)
+    sum_A = sum(A)
+    #print(sum_A)
+    for i in range(Q):
+        if B[i][0] in A:
+            sum_A = sum_A - B[i][0] * A.count(B[i][0]) + C[i] * A.count(B[i][0])
+        print(sum_A)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        B.append(list(map(int, input().split())))
+    for i in range(Q):
+        C.append(B[i][1])
+        B[i] = B[i][0]
+    sumA = sum(A)
+    for i in range(Q):
+        sumA += (C[i] - B[i]) * A.count(B[i])
+        print(sumA)
+
+=======
+Suggestion 9
+
+def main():
+    #read
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    
+    #solve
+    ans = [0] * Q
+    dic = {}
+    for i in range(N):
+        if A[i] in dic:
+            dic[A[i]] += 1
+        else:
+            dic[A[i]] = 1
+    total = sum(A)
+    for i in range(Q):
+        if B[i] in dic:
+            total += (C[i] - B[i]) * dic[B[i]]
+            if C[i] in dic:
+                dic[C[i]] += dic[B[i]]
+            else:
+                dic[C[i]] = dic[B[i]]
+            del dic[B[i]]
+        ans[i] = total
+    
+    #print
+    for i in range(Q):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    BC = []
+    for _ in range(Q):
+        BC.append(list(map(int,input().split())))
+    B = [x[0] for x in BC]
+    C = [x[1] for x in BC]
+    S = sum(A)
+    for i in range(N):
+        if A[i] in B:
+            S += C[B.index(A[i])]-A[i]
+        print(S)

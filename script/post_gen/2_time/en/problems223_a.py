@@ -1,36 +1,78 @@
-#Problem Statement
-#Takahashi's purse has one or more 100-yen coins in it and nothing else. (Yen is the Japanese currency.)
-#Is it possible that the total amount of money in the purse is X yen?
-#
-#Constraints
-#0 ≦ X ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#If it is possible that the total amount of money in Takahashi's purse is X yen, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#500
-#
-#Sample Output 1
-#Yes
-#If the purse has five 100-yen coins, the total amount of money is 500 yen. Thus, it is possible that the total amount is X=500 yen, so we should print Yes.
-#
-#Sample Input 2
-#40
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#No
-#Note that the purse has at least one 100-yen coin.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x == 0:
+        print("No")
+    elif x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    X = int(input())
+    if X % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def solve():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x >= 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def check(x):
+    if x%100 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def solve(X):
+    return "Yes" if X%100 == 0 else "No"

@@ -1,69 +1,180 @@
-#Problem Statement
-#There are N cells arranged in a row, numbered 1, 2, ..., N from left to right.
-#Tak lives in these cells and is currently on Cell 1. He is trying to reach Cell N by using the procedure described below.
-#You are given an integer K that is less than or equal to 10, and K non-intersecting segments [L_1, R_1], [L_2, R_2], ..., [L_K, R_K].
-#Let S be the union of these K segments.
-#Here, the segment [l, r] denotes the set consisting of all integers i that satisfy l ≦ i ≦ r.
-#When you are on Cell i, pick an integer d from S and move to Cell i + d. You cannot move out of the cells.
-#To help Tak, find the number of ways to go to Cell N, modulo 998244353.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ min(N, 10)
-#1 ≦ L_i ≦ R_i ≦ N
-#[L_i, R_i] and [L_j, R_j] do not intersect (i ≠ j) 
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#L_1 R_1
-#L_2 R_2
-#:
-#L_K R_K
-#
-#Output
-#Print the number of ways for Tak to go from Cell 1 to Cell N, modulo 998244353.
-#
-#Sample Input 1
-#5 2
-#1 1
-#3 4
-#
-#Sample Output 1
-#4
-#The set S is the union of the segment [1, 1] and the segment [3, 4], therefore S = { 1, 3, 4 } holds.
-#There are 4 possible ways to get to Cell 5:
-#1 -> 2 -> 3 -> 4 -> 5,
-#1 -> 2 -> 5,
-#1 -> 4 -> 5 and
-#1 -> 5.
-#
-#Sample Input 2
-#5 2
-#3 3
-#5 5
-#
-#Sample Output 2
-#0
-#Because S = { 3, 5 } holds, you cannot reach to Cell 5.
-#Print 0.
-#
-#Sample Input 3
-#5 1
-#1 2
-#
-#Sample Output 3
-#5
-#
-#Sample Input 4
-#60 3
-#5 8
-#1 3
-#10 15
-#
-#Sample Output 4
-#221823067
-#Note that you have to print the answer modulo 998244353.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            dp[i] += dp[max(i - R[j], 0)] - dp[max(i - L[j] - 1, 0)]
+    print((dp[N] % 998244353))
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    #dp[i] = i番目までのセルに到達する方法の総数
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    #dp[i] = dp[i-1] + ... + dp[i-k]
+    #dp[i] = dp[i-1] - dp[i-k-1] + dp[i]
+    #dp[i] = 2*dp[i-1] - dp[i-k-1]
+    dp2 = [0] * (N + 1)
+    dp2[1] = 1
+    for i in range(2, N + 1):
+        dp[i] = (2 * dp[i - 1]) % 998244353
+        for j in range(K):
+            if i - L[j] > 0:
+                dp[i] = (dp[i] - dp2[i - L[j]] + 998244353) % 998244353
+        dp2[i] = (dp2[i - 1] + dp[i]) % 998244353
+    print(dp[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dp[2] = 1
+    dp[3] = 2
+    for i in range(4, N + 1):
+        for j in range(K):
+            if i - L[j] >= 1:
+                dp[i] += dp[i - L[j]]
+            if i - R[j] >= 1:
+                dp[i] -= dp[i - R[j] - 1]
+    print(dp[N] % 998244353)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    L, R = [], []
+    for i in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dp[2] = 2
+    for i in range(3, N + 1):
+        for j in range(K):
+            dp[i] += dp[i - L[j]]
+            dp[i] %= 998244353
+            dp[i] += dp[i - R[j] - 1]
+            dp[i] %= 998244353
+    print(dp[N])
+
+=======
+Suggestion 5
+
+def solve():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            dp[i] += dp[max(0, i - R[j] - 1)] - dp[max(0, i - L[j] - 1)]
+        dp[i] %= 998244353
+    print(dp[N])
+
+solve()
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    sumdp = [0] * (N + 1)
+    sumdp[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            l = max(1, i - R[j])
+            r = max(1, i - L[j])
+            dp[i] += sumdp[r] - sumdp[l - 1]
+        dp[i] %= 998244353
+        sumdp[i] = sumdp[i - 1] + dp[i]
+    print(dp[N])
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(K)]
+    dp = [0] * (N+1)
+    dp[1] = 1
+    dp[2] = 1
+    for i in range(3, N+1):
+        for l, r in LR:
+            dp[i] += dp[i-l] - dp[i-r-1]
+    print(dp[N] % 998244353)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(K)]
+    mod = 998244353
+    dp = [0] * (N+1)
+    dp[1] = 1
+    s = [0] * (N+1)
+    for i in range(1, N+1):
+        s[i] = s[i-1] + dp[i]
+    for i in range(1, N+1):
+        for l, r in LR:
+            dp[i] += s[min(i+l-1, N)] - s[max(i+r-1, 0)]
+            dp[i] %= mod
+    print(dp[N])
+
+=======
+Suggestion 9
+
+def   count_ways ( n ,  k ,  l ,  r ): 
+     # dp[i] is the number of ways to reach cell i 
+     dp   =   [ 0 ]   *   ( n   +   1 ) 
+     dp [ 0 ]   =   1 
+     for   i   in   range ( n ): 
+         for   j   in   range ( k ): 
+             if   i   +   l [ j ]   <=   n : 
+                 dp [ i   +   l [ j ]]   +=   dp [ i ] 
+             if   i   +   r [ j ]   +   1   <=   n : 
+                 dp [ i   +   r [ j ]   +   1 ]   -=   dp [ i ] 
+         dp [ i   +   1 ]   +=   dp [ i ] 
+     return   dp [ n ]
+
+=======
+Suggestion 10
+
+def dp ( n , k , l , r ): # n: N, k: K, l: L_i, r: R_i dp = [ 0 for _ in range ( n )] dp [ 0 ] = 1 for i in range ( n - 1 ): for j in range ( k ): dp [ i + l [ j ]] += dp [ i ] dp [ i + l [ j ]] %= 998244353 for j in range ( k ): dp [ i + r [ j ] + 1 ] -= dp [ i ] dp [ i + r [ j ] + 1 ] %= 998244353 return dp [ n - 1 ] n , k = map ( int , input (). split ()) l = [ 0 ] * k r = [ 0 ] * k for i in range ( k ): l [ i ], r [ i ] = map ( int , input (). split ()) print ( dp ( n , k , l , r ))

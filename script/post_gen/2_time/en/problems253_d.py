@@ -1,28 +1,79 @@
-#Problem Statement
-#Find the sum of integers between 1 and N (inclusive) that are not multiples of A or B.
-#
-#Constraints
-#1 ≦ N, A,B ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#10 3 5
-#
-#Sample Output 1
-#22
-#The integers between 1 and 10 (inclusive) that are not multiples of 3 or 5 are 1,2,4,7, and 8, whose sum is 1+2+4+7+8 =22.
-#
-#Sample Input 2
-#1000000000 314 159
-#
-#Sample Output 2
-#495273003954006262
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N*(N+1)//2 - A*(N//A)*(N//A+1)//2 - B*(N//B)*(N//B+1)//2 + A*B*(N//(A*B))*(N//(A*B)+1)//2)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N * (N + 1) // 2 - A * (N // A) * (N // A + 1) // 2 - B * (N // B) * (N // B + 1) // 2 + A * B * (N // A // B) * (N // A // B + 1) // 2)
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N * (N + 1) // 2 - A * (N // A) * (N // A + 1) // 2 - B * (N // B) * (N // B + 1) // 2 + A * B * (N // (A * B)) * (N // (A * B) + 1) // 2)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    print((N // A) * (A * (A + 1) // 2) + (N // B) * (B * (B + 1) // 2) - (N // (A * B)) * ((A * B) * ((A * B) + 1) // 2))
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    sum = 0
+    for i in range(1, N+1):
+        if i % A != 0 and i % B != 0:
+            sum += i
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    print(sum(range(1, N + 1)) - sum(range(A, N + 1, A)) - sum(range(B, N + 1, B)) + sum(range(A * B, N + 1, A * B)))
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    sum = 0
+    for i in range(1, N+1):
+        if (i % A != 0) and (i % B != 0):
+            sum += i
+    print(sum)
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    x = N // A
+    y = N // B
+    z = N // (A * B)
+    print(N * (x + y) - A * (x * (x + 1) // 2) - B * (y * (y + 1) // 2) + A * B * (z * (z + 1) // 2))
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    lcm = A*B//math.gcd(A,B)
+    ans = N//A + N//B - N//lcm
+    print(ans)

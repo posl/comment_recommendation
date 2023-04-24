@@ -1,40 +1,103 @@
-#Problem Statement
-#You are given four strings S_1, S_2, S_3, and S_4.
-#Determine whether this sequence of strings has one of each of the following: H, 2B, 3B, and HR.
-#Here, it is guaranteed that every S_i is H, 2B, 3B, or HR.
-#
-#Constraints
-#Each S_i is H, 2B, 3B, or HR.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S_1
-#S_2
-#S_3
-#S_4
-#
-#Output
-#If the given sequence of strings has one of each of H, 2B, 3B, and HR, print Yes.
-#Otherwise, print No.
-#
-#Sample Input 1
-#3B
-#HR
-#2B
-#H
-#
-#Sample Output 1
-#Yes
-#We have one of each of H, 2B, 3B, and HR.
-#
-#Sample Input 2
-#2B
-#3B
-#HR
-#3B
-#
-#Sample Output 2
-#No
-#We have no H.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = [input() for i in range(4)]
+    if S.count("H") == 1 and S.count("2B") == 1 and S.count("3B") == 1 and S.count("HR") == 1:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    S = [input() for _ in range(4)]
+    if "H" in S and "2B" in S and "3B" in S and "HR" in S:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    s4 = input()
+    
+    if s1 == 'H' and s2 == '2B' and s3 == '3B' and s4 == 'HR':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def check(s):
+    if s.count("H") == 1 and s.count("2B") == 1 and s.count("3B") == 1 and s.count("HR") == 1:
+        return "Yes"
+    else:
+        return "No"
+
+s = [input() for i in range(4)]
+print(check(s))
+
+=======
+Suggestion 5
+
+def main():
+    S = [input() for _ in range(4)]
+    S.sort()
+    if S == ['2B', '3B', 'H', 'HR']:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def   main () : 
+     s1   =   input () 
+     s2   =   input () 
+     s3   =   input () 
+     s4   =   input () 
+
+     if   ( s1   ==   'H'   or   s2   ==   'H'   or   s3   ==   'H'   or   s4   ==   'H' )   and   ( s1   ==   '2B'   or   s2   ==   '2B'   or   s3   ==   '2B'   or   s4   ==   '2B' )   and   ( s1   ==   '3B'   or   s2   ==   '3B'   or   s3   ==   '3B'   or   s4   ==   '3B' )   and   ( s1   ==   'HR'   or   s2   ==   'HR'   or   s3   ==   'HR'   or   s4   ==   'HR' ) : 
+         print ( 'Yes' ) 
+     else : 
+         print ( 'No' )
+
+=======
+Suggestion 7
+
+def main():
+    s = set(input() for _ in range(4))
+    if len(s) == 4:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = [input() for i in range(4)]
+    if len(set(s)) == 4:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    S = [input() for _ in range(4)]
+    print('Yes' if len(set(S)) == 4 else 'No')

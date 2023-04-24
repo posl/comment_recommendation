@@ -1,54 +1,246 @@
-#Problem Statement
-#Takahashi is going to buy N items one by one.
-#The price of the i-th item he buys is A_i yen (the currency of Japan).
-#He has M discount tickets, and he can use any number of them when buying an item.
-#If Y tickets are used when buying an item priced X yen, he can get the item for (X/(2^Y)) (rounded down to the nearest integer) yen.
-#What is the minimum amount of money required to buy all the items?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the minimum amount of money required to buy all the items.
-#
-#Sample Input 1
-#3 3
-#2 13 8
-#
-#Sample Output 1
-#9
-#We can buy all the items for 9 yen, as follows:
-#Buy the 1-st item for 2 yen without tickets.
-#Buy the 2-nd item for 3 yen with 2 tickets.
-#Buy the 3-rd item for 4 yen with 1 ticket.
-#
-#Sample Input 2
-#4 4
-#1 9 3 5
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#1 100000
-#1000000000
-#
-#Sample Output 3
-#0
-#We can buy the item priced 1000000000 yen for 0 yen with 100000 tickets.
-#
-#Sample Input 4
-#10 1
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#Sample Output 4
-#9500000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] // (2 ** M)
+        A[i] %= (2 ** M)
+        A.sort(reverse=True)
+        for j in range(M):
+            if A[j] == 0:
+                break
+            ans += 1
+            A[j] -= 1
+            A.sort(reverse=True)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        if i < m:
+            ans = ans // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        if M == 0:
+            break
+        if A[i] >= 2**M:
+            break
+        else:
+            A[i] = A[i]//(2**(bin(A[i]).count("1")-1))
+            M -= bin(A[i]).count("1")
+    if M > 0:
+        A[i] = A[i]//(2**M)
+    print(sum(A))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        y = 0
+        x = A[i]
+        while x % 2 == 0:
+            x //= 2
+            y += 1
+        if y <= M:
+            M -= y
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] // (2**M)
+        A[i] %= 2**M
+        A.sort(reverse=True)
+        for j in range(M):
+            if A[i] == 0:
+                break
+            A[i] //= 2
+            A.sort(reverse=True)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        print(A[i])
+        for j in range(M):
+            if A[i] >= A[i+1]:
+                A[i] = A[i]/(2**(j+1))
+            else:
+                A[i] = A[i]/(2**(j))
+    print(A)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    A.sort(reverse=True)
+    B = [0] * (M+1)
+    for a in A:
+        for i in range(M+1):
+            if B[i] >= a:
+                break
+            if a > B[i] * 2:
+                B[i+1] = max(B[i+1], B[i] * 2)
+            else:
+                B[i+1] = max(B[i+1], a)
+
+    print(sum(B))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    A = [0] + A
+    #print(A)
+    for i in range(1, N + 1):
+        A[i] += A[i - 1]
+    #print(A)
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print(A[52])
+    #print(A[53])
+    #print(A[54])
+    #print(A[55])
+    #print(A[56])
+    #print(A[57])
+    #print(A[58])
+    #print(A[59])
+    #print(A[60])
+    #print(A
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    # 1. A を昇順にソートする
+    # 2. A[i] が A[i-1] に対して 2^k 倍であるとして、
+    #    A[i-1] を 2^k 倍したものを A[i] に置き換える
+    # 3. A を降順にソートする
+    # 4. A[i] に対して、M 個のチケットを使う
+    # 5. A[i] を A[i-1] に置き換える
+    # 6. A を降順にソートする
+    # 7. 3 ～ 6 を A[0] に対して繰り返す
+    # 8. A の総和を出力する
+
+    for i in range(1, N):
+        if A[i] % A[i-1] == 0:
+            k = 0
+            while A[i] % (2**k) == 0:
+                k += 1
+            A[i] = A[i-1] * (2**(k-1))
+
+    for i in range(M):
+        A[0] = A[0] // 2
+
+    print(sum(A))
+
+=======
+Suggestion 10
+
+def get_min_cost(n, m, a):
+    a.sort(reverse=True)
+    cost = 0
+    for i in range(n):
+        cost += a[i]
+        if i < m:
+            cost -= a[i] // 2
+    return cost

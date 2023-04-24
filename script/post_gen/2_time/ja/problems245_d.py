@@ -1,48 +1,141 @@
-#問題文
-#N 次多項式 A(x)=A_Nx^N+A_{N-1}x^{N-1}+... +A_1x+A_0 と
-#M 次多項式 B(x)=B_Mx^M+B_{M-1}x^{M-1}+... +B_1x+B_0 があります。
-#ここで、A(x), B(x) の各係数は絶対値が 100 以下の整数であり、最高次の係数は 0 ではありません。
-#また、それらの積を C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+... +C_1x+C_0 とします。
-#A_0,A_1,..., A_N および C_0,C_1,..., C_{N+M} が与えられるので、B_0,B_1,..., B_M を求めてください。
-#ただし、与えられる入力に対して、条件をみたす B_0,B_1,..., B_M がただ一つ存在することが保証されます。
-#
-#制約
-#1 ≦ N < 100
-#1 ≦ M < 100
-#|A_i| ≦ 100
-#|C_i| ≦ 10^6
-#A_N ≠ 0
-#C_{N+M} ≠ 0
-#条件をみたす B_0,B_1,..., B_M がただ一つ存在する。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_0 A_1 ... A_{N-1} A_N
-#C_0 C_1 ... C_{N+M-1} C_{N+M}
-#
-#出力
-#M+1 個の整数 B_0,B_1,..., B_M を空白区切りで一行に出力せよ。
-#
-#入力例 1
-#1 2
-#2 1
-#12 14 8 2
-#
-#出力例 1
-#6 4 2
-#A(x)=x+2, B(x)=2x^2+4x+6 のとき、C(x)=A(x)B(x)=(x+2)(2x^2+4x+6)=2x^3+8x^2+14x+12 であるので、
-#B(x)=2x^2+4x+6 が条件をみたします。
-#よって、B_0=6, B_1=4, B_2=2 をこの順に空白区切りで出力します。
-#
-#入力例 2
-#1 1
-#100 1
-#10000 0 -1
-#
-#出力例 2
-#100 -1
-#A(x)=x+100, C(x)=-x^2+10000 であり、B(x)=-x+100 が条件をみたします。
-#よって、100, -1 をこの順に空白区切りで出力します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(M + 1):
+        B[i] = C[i] - sum([A[j] * B[i - j] for j in range(i)])
+    print(*B)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(N + M + 1):
+        for j in range(min(i, N + 1)):
+            B[i - j] += A[N - j] * C[i]
+    print(*B)
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B = [0] * (M+1)
+    for i in range(M+1):
+        B[i] = C[N+M-i] // A[N]
+        for j in range(N+1):
+            C[j+M-i] -= B[i] * A[j]
+
+    print(*B)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B = [0] * (M+1)
+
+    for i in range(M+1):
+        B[i] = C[i] - sum([A[j] * B[i-j] for j in range(i)])
+
+    print(*B)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0]*(m+1)
+    b[0] = c[0]//a[0]
+    for i in range(1,m+1):
+        b[i] = (c[i] - sum([b[j]*a[i-j] for j in range(i)]))//a[0]
+    print(*b)
+
+=======
+Suggestion 6
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    return n, m, a, c
+
+=======
+Suggestion 7
+
+def main():
+    N,M=map(int,input().split())
+    A=list(map(int,input().split()))
+    C=list(map(int,input().split()))
+    B=[0]*(M+1)
+    for i in range(M+1):
+        B[i]=C[N+M-i]
+        for j in range(N):
+            B[i]-=A[N-j]*B[i-j-1]
+    print(*B)
+
+=======
+Suggestion 8
+
+def solve(n, m, a, c):
+    b = [0] * (m + 1)
+    b[0] = c[0] // a[0]
+    for i in range(1, m + 1):
+        b[i] = (c[i] - sum([b[j] * a[i - j] for j in range(i)])) // a[0]
+    return b
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+
+    B = []
+    for i in range(M+1):
+        B.append(0)
+
+    for i in range(M+1):
+        B[i] = C[i]
+
+    for i in range(M+1):
+        for j in range(N+1):
+            B[i] -= A[j] * B[i-j]
+
+    for i in range(M+1):
+        print(B[i], end=" ")
+
+=======
+Suggestion 10
+
+def solve():
+    N,M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M+1)
+
+    B[0] = C[0] // A[0]
+
+    for i in range(1, M+1):
+        B[i] = (C[i] - sum([B[j]*A[i-j] for j in range(i)])) // A[0]
+
+    print(*B)

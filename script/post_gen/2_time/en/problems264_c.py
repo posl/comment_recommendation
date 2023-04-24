@@ -1,82 +1,243 @@
-#Problem Statement
-#You are given a matrix A with H_1 rows and W_1 columns, and a matrix B with H_2 rows and W_2 columns.
-#For all integer pairs (i, j) such that 1 ≦ i ≦ H_1 and 1 ≦ j ≦ W_1, the element at the i-th row and j-th column of matrix A is A_{i, j}.
-#For all integer pairs (i, j) such that 1 ≦ i ≦ H_2 and 1 ≦ j ≦ W_2, the element at the i-th row and j-th column of matrix B is B_{i, j}.
-#You may perform the following operations on the matrix A any number of (possibly 0) times in any order:
-#Choose an arbitrary row of A and remove it.
-#Choose an arbitrary column of A and remove it.
-#Determine if it is possible to make the matrix A equal the matrix B.
-#
-#Constraints
-#1 ≦ H_2 ≦ H_1 ≦ 10
-#1 ≦ W_2 ≦ W_1 ≦ 10
-#1 ≦ A_{i, j} ≦ 10^9
-#1 ≦ B_{i, j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H_1 W_1
-#A_{1, 1} A_{1, 2} ... A_{1, W_1}
-#A_{2, 1} A_{2, 2} ... A_{2, W_1}
-#.
-#.
-#.
-#A_{H_1, 1} A_{H_1, 2} ... A_{H_1, W_1}
-#H_2 W_2
-#B_{1, 1} B_{1, 2} ... B_{1, W_2}
-#B_{2, 1} B_{2, 2} ... B_{2, W_2}
-#.
-#.
-#.
-#B_{H_2, 1} B_{H_2, 2} ... B_{H_2, W_2}
-#
-#Output
-#Print Yes if it is possible to make the matrix A equal the matrix B;
-#print No otherwise.
-#Note that the judge is case-sensitive.
-#
-#Sample Input 1
-#4 5
-#1 2 3 4 5
-#6 7 8 9 10
-#11 12 13 14 15
-#16 17 18 19 20
-#2 3
-#6 8 9
-#16 18 19
-#
-#Sample Output 1
-#Yes
-#Removing the 2-nd column from the initial A results in:
-#1 3 4 5
-#6 8 9 10
-#11 13 14 15
-#16 18 19 20
-#Then, removing the 3-rd row from A results in:
-#1 3 4 5
-#6 8 9 10
-#16 18 19 20
-#Then, removing the 1-st row from A results in:
-#6 8 9 10
-#16 18 19 20
-#Then, removing the 4-th column from A results in:
-#6 8 9
-#16 18 19
-#Now the matrix equals the matrix B.
-#Thus, we can make the matrix A equal the matrix B by repeating the operations, so Yes should be printed.
-#
-#Sample Input 2
-#3 3
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1
-#2
-#
-#Sample Output 2
-#No
-#Regardless of how we perform the operations, we cannot make the matrix A equal the matrix B,
-#so No should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if A[i][j] == B[0][0]:
+                for k in range(H2):
+                    if A[i + k][j: j + W2] != B[k]:
+                        break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    if H1 < H2 or W1 < W2:
+        print("No")
+        return
+    for i in range(H1-H2+1):
+        for j in range(W1-W2+1):
+            if sum([A[i+k][j:j+W2] for k in range(H2)], []) == sum(B, []):
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    # Aの各行の和を計算
+    Asum = [0] * H1
+    for i in range(H1):
+        Asum[i] = sum(A[i])
+    # Bの各行の和を計算
+    Bsum = [0] * H2
+    for i in range(H2):
+        Bsum[i] = sum(B[i])
+
+    # Aの各行の和とBの各行の和が一致しているかどうかを判定
+    Asum.sort()
+    Bsum.sort()
+    if Asum == Bsum:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    for h in range(H1 - H2 + 1):
+        for w in range(W1 - W2 + 1):
+            if A[h][w] == B[0][0]:
+                for i in range(H2):
+                    for j in range(W2):
+                        if A[h + i][w + j] != B[i][j]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 5
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if all(A[i + k][j + l] == B[k][l] for k in range(H2) for l in range(W2)):
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    if H1 < H2 or W1 < W2:
+        print("No")
+        return
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            flag = True
+            for k in range(H2):
+                for l in range(W2):
+                    if A[i + k][j + l] != B[k][l]:
+                        flag = False
+                        break
+                if not flag:
+                    break
+            if flag:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if B[0][0] == A[i][j]:
+                for k in range(H2):
+                    for l in range(W2):
+                        if B[k][l] != A[i + k][j + l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = []
+    for _ in range(H1):
+        A.append(list(map(int, input().split())))
+    H2, W2 = map(int, input().split())
+    B = []
+    for _ in range(H2):
+        B.append(list(map(int, input().split())))
+    for i in range(H1-H2+1):
+        for j in range(W1-W2+1):
+            if A[i][j] == B[0][0]:
+                flag = True
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i+k][j+l] != B[k][l]:
+                            flag = False
+                            break
+                    if not flag:
+                        break
+                if flag:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = []
+    for i in range(H1):
+        A.append(list(map(int, input().split())))
+    H2, W2 = map(int, input().split())
+    B = []
+    for i in range(H2):
+        B.append(list(map(int, input().split())))
+
+    #Aの各行の和とBの各行の和が等しくない場合はNo
+    for i in range(H1):
+        if sum(A[i]) != sum(B[i]):
+            print("No")
+            return
+
+    #Aの各列の和とBの各列の和が等しくない場合はNo
+    for i in range(W1):
+        sumA = 0
+        sumB = 0
+        for j in range(H1):
+            sumA += A[j][i]
+            sumB += B[j][i]
+        if sumA != sumB:
+            print("No")
+            return
+
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+
+    def solve():
+        h1, w1 = map(int, input().split())
+        a = [list(map(int, input().split())) for _ in range(h1)]
+        h2, w2 = map(int, input().split())
+        b = [list(map(int, input().split())) for _ in range(h2)]
+        for i in range(h1 - h2 + 1):
+            for j in range(w1 - w2 + 1):
+                flag = True
+                for k in range(h2):
+                    for l in range(w2):
+                        if a[i + k][j + l] != b[k][l]:
+                            flag = False
+                            break
+                    if not flag:
+                        break
+                if flag:
+                    print('Yes')
+                    return
+        print('No')
+
+    solve()

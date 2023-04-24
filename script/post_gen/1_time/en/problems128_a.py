@@ -1,37 +1,56 @@
-#Problem Statement
-#We have A apples and P pieces of apple.
-#We can cut an apple into three pieces of apple, and make one apple pie by simmering two pieces of apple in a pan.
-#Find the maximum number of apple pies we can make with what we have now.
-#
-#Constraints
-#All values in input are integers.
-#0 ≦ A, P ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A P
-#
-#Output
-#Print the maximum number of apple pies we can make with what we have.
-#
-#Sample Input 1
-#1 3
-#
-#Sample Output 1
-#3
-#We can first make one apple pie by simmering two of the three pieces of apple. Then, we can make two more by simmering the remaining piece and three more pieces obtained by cutting the whole apple.
-#
-#Sample Input 2
-#0 1
-#
-#Sample Output 2
-#0
-#We cannot make an apple pie in this case, unfortunately.
-#
-#Sample Input 3
-#32 21
-#
-#Sample Output 3
-#58
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, p = map(int, input().split())
+    print((a * 3 + p) // 2)
+
+=======
+Suggestion 2
+
+def main():
+    A, P = map(int, input().split())
+    print((A * 3 + P) // 2)
+
+=======
+Suggestion 3
+
+def main():
+    A, P = map(int, input().split())
+    print((A * 3 + P) // 2)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    A,P = map(int, input().split())
+    print(int((A*3+P)/2))
+
+=======
+Suggestion 5
+
+def apple_pie(A, P):
+    return (A * 3 + P) // 2
+
+=======
+Suggestion 6
+
+def get_max_pies(apples, pieces):
+    return int((apples * 3 + pieces) / 2)
+
+=======
+Suggestion 7
+
+def my_code():
+    A, P = map(int, input().split())
+    print((3*A+P)//2)
+
+=======
+Suggestion 8
+
+def max_pie(a,p):
+    return (a*3 + p) // 2

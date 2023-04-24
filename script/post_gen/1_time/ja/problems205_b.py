@@ -1,48 +1,135 @@
-#問題文
-#1 以上 N 以下の整数からなる長さ N の数列 A = (A_1, A_2, ..., A_N) が与えられます。
-#A が (1, 2, ..., N) の並び替えによって得られるかどうか判定してください。
-#
-#制約
-#1 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ N
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#A が (1, 2, ..., N) の並び替えによって得られるなら Yes、そうでないなら No と出力せよ。
-#
-#入力例 1
-#5
-#3 1 2 4 5
-#
-#出力例 1
-#Yes
-#(3, 1, 2, 4, 5) は (1, 2, 3, 4, 5) を並び替えて得られるため、Yes と出力します。
-#
-#入力例 2
-#6
-#3 1 4 1 5 2
-#
-#出力例 2
-#No
-#(1, 2, 3, 4, 5, 6) をどのように並び替えても (3, 1, 4, 1, 5, 2) にすることはできないので、No と出力します。
-#
-#入力例 3
-#3
-#1 2 3
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#1
-#1
-#
-#出力例 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A == list(range(1, N+1)):
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = sorted(A)
+    if A == B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(range(1, N+1))
+    if A == B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        if A[i] != i+1:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if A == sorted(A):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a == [i for i in range(1, n+1)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [i for i in range(1, N+1)]
+    if A == B:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a == [i for i in range(1, n+1)]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+    B = list(range(1, N+1))
+
+    if A == B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+
+    A.sort()
+    #print(A)
+
+    for i in range(N):
+        if A[i] != i+1:
+            print("No")
+            break
+    else:
+        print("Yes")

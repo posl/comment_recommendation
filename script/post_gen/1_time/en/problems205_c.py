@@ -1,39 +1,214 @@
-#Problem Statement
-#For a base number X, the product of multiplying it Y times is called X to the Y-th power and represented as pow(X, Y).
-#For example, we have pow(2,3)=2× 2× 2=8.
-#Given three integers A, B, and C, compare pow(A,C) and pow(B,C) to determine which is greater.
-#
-#Constraints
-#-10^9 ≦ A,B ≦ 10^9
-#1 ≦ C ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C
-#
-#Output
-#If pow(A,C)< pow(B,C), print <; if pow(A,C)>pow(B,C), print >; if pow(A,C)=pow(B,C), print =.
-#
-#Sample Input 1
-#3 2 4
-#
-#Sample Output 1
-#>
-#We have pow(3,4)=81 and pow(2,4)=16.
-#
-#Sample Input 2
-#-7 7 2
-#
-#Sample Output 2
-#=
-#We have pow(-7,2)=49 and pow(7,2)=49.
-#
-#Sample Input 3
-#-8 6 3
-#
-#Sample Output 3
-#<
-#We have pow(-8,3)=-512 and pow(6,3)=216.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C = map(int, input().split())
+    if A**C > B**C:
+        print(">")
+    elif A**C < B**C:
+        print("<")
+    else:
+        print("=")
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a**c > b**c:
+        print(">")
+    elif a**c < b**c:
+        print("<")
+    else:
+        print("=")
+
+=======
+Suggestion 3
+
+def main():
+    A,B,C = map(int,input().split())
+    if A**C > B**C:
+        print('>')
+    elif A**C < B**C:
+        print('<')
+    else:
+        print('=')
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    if A == B:
+        print('=')
+    elif A < 0 and B < 0:
+        if C % 2 == 0:
+            if abs(A) < abs(B):
+                print('>')
+            else:
+                print('<')
+        else:
+            if A < B:
+                print('>')
+            else:
+                print('<')
+    elif A < 0:
+        if C % 2 == 0:
+            if abs(A) < B:
+                print('>')
+            else:
+                print('<')
+        else:
+            print('<')
+    elif B < 0:
+        if C % 2 == 0:
+            if A < abs(B):
+                print('>')
+            else:
+                print('<')
+        else:
+            print('>')
+    else:
+        if A < B:
+            print('<')
+        else:
+            print('>')
+
+=======
+Suggestion 5
+
+def main():
+    A, B, C = map(int, input().split())
+    pow_A = A ** C
+    pow_B = B ** C
+    if pow_A > pow_B:
+        print(">")
+    elif pow_A == pow_B:
+        print("=")
+    else:
+        print("<")
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C = map(int,input().split())
+    if A<0 and B<0:
+        if C%2==0:
+            if A<B:
+                print(">")
+            elif A>B:
+                print("<")
+            else:
+                print("=")
+        else:
+            if A<B:
+                print("<")
+            elif A>B:
+                print(">")
+            else:
+                print("=")
+    elif A<0 and B>=0:
+        if C%2==0:
+            print(">")
+        else:
+            if A<B:
+                print("<")
+            elif A>B:
+                print(">")
+            else:
+                print("=")
+    elif A>=0 and B<0:
+        if C%2==0:
+            print("<")
+        else:
+            if A<B:
+                print("<")
+            elif A>B:
+                print(">")
+            else:
+                print("=")
+    else:
+        if A<B:
+            print("<")
+        elif A>B:
+            print(">")
+        else:
+            print("=")
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C = map(int,input().split())
+    #print(A,B,C)
+    if A > 0 and B > 0:
+        if A > B:
+            print(">")
+        elif A < B:
+            print("<")
+        else:
+            print("=")
+    elif A < 0 and B < 0:
+        if C % 2 == 0:
+            if abs(A) > abs(B):
+                print(">")
+            elif abs(A) < abs(B):
+                print("<")
+            else:
+                print("=")
+        else:
+            if A > B:
+                print(">")
+            elif A < B:
+                print("<")
+            else:
+                print("=")
+    else:
+        if C % 2 == 0:
+            if abs(A) > abs(B):
+                print(">")
+            elif abs(A) < abs(B):
+                print("<")
+            else:
+                print("=")
+        else:
+            if A > B:
+                print(">")
+            elif A < B:
+                print("<")
+            else:
+                print("=")
+
+=======
+Suggestion 8
+
+def pow(a,b,c):
+    if a<0 and b>0:
+        if c%2==0:
+            return '>'
+        else:
+            return '<'
+    elif a<0 and b<0:
+        if c%2==0:
+            return '='
+        else:
+            return '<'
+    elif a>0 and b<0:
+        if c%2==0:
+            return '='
+        else:
+            return '>'
+    elif a==0 and b==0:
+        return '='
+    elif a==0:
+        return '<'
+    elif b==0:
+        return '>'
+    elif a>0 and b>0:
+        return '>'
+
+a,b,c = map(int,input().split())
+print(pow(a,b,c))

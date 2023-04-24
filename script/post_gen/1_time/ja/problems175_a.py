@@ -1,37 +1,116 @@
-#問題文
-#AtCoder 町の、ある連続した 3 日間の天気の記録があります。天気の記録は長さ 3 の文字列 S で表され、i (1 ≦ i ≦ 3) 日目の天気は i 文字目が S のとき晴れ、R のとき雨でした。
-#天気が雨である日が連続していた最大の日数を求めてください。
-#
-#制約
-#|S| = 3
-#S の各文字は S または R である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#天気が雨である日が連続していた最大の日数を出力せよ。
-#
-#入力例 1
-#RRS
-#
-#出力例 1
-#2
-#3 日間のうち、1, 2 日目が雨で、最大では 2 日間雨である日が連続していたので 2 を出力してください。
-#
-#入力例 2
-#SSS
-#
-#出力例 2
-#0
-#3 日間のうち、3 日とも晴れでした。雨である日は無かったため、0 を出力してください。
-#
-#入力例 3
-#RSR
-#
-#出力例 3
-#1
-#3 日間のうち、1, 3 日目が雨でした。共に 1 日雨である日が連続していたので、1 を出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S == "RRR":
+        print(3)
+    elif S == "RRS" or S == "SRR":
+        print(2)
+    elif S == "SSS":
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S == 'RRR':
+        print(3)
+    elif S == 'RRS' or S == 'SRR':
+        print(2)
+    elif S == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2]:
+        print(1)
+    elif s[0] == s[1] or s[1] == s[2]:
+        print(2)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2]:
+        print(0)
+    elif s[0] != s[1] != s[2]:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    cnt = 0
+    max_cnt = 0
+    for i in range(len(S)):
+        if S[i] == 'R':
+            cnt += 1
+            if max_cnt < cnt:
+                max_cnt = cnt
+        else:
+            cnt = 0
+    print(max_cnt)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    result = 0
+    count = 0
+    for i in range(3):
+        if S[i] == 'R':
+            count += 1
+        else:
+            result = max(result, count)
+            count = 0
+    result = max(result, count)
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    print(s.count('R'))
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    print(S.count("R"))
+
+=======
+Suggestion 9
+
+def solve():
+    # -*- coding: utf-8 -*-
+    s = input()
+    print(s.count('R'))
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    r = s.split('S')
+    print(len(max(r)))
+main()

@@ -1,37 +1,113 @@
-#Problem Statement
-#N tiles are arranged in a row from left to right. The initial color of each tile is represented by a string S of length N.
-#The i-th tile from the left is painted black if the i-th character of S is 0, and painted white if that character is 1.
-#You want to repaint some of the tiles black or white, so that any two adjacent tiles have different colors.
-#At least how many tiles need to be repainted to satisfy the condition?
-#
-#Constraints
-#1 ≦ |S| ≦ 10^5
-#S_i is 0 or 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the minimum number of tiles that need to be repainted to satisfy the condition.
-#
-#Sample Input 1
-#000
-#
-#Sample Output 1
-#1
-#The condition can be satisfied by repainting the middle tile white.
-#
-#Sample Input 2
-#10010010
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == '1':
+                count += 1
+        else:
+            if s[i] == '0':
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    count = 0
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == '1':
+                count += 1
+        else:
+            if S[i] == '0':
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    S = input()
+    count = 0
+    for i in range(len(S)):
+        if (i % 2 == 0 and S[i] == '1') or (i % 2 == 1 and S[i] == '0'):
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    N = len(S)
+    count = 0
+    for i in range(N):
+        if i % 2 == 0:
+            if S[i] == '0':
+                count += 1
+        else:
+            if S[i] == '1':
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print(0)
+    else:
+        count = 0
+        for i in range(1, len(s)):
+            if s[i-1] == s[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def main():
+    S = input().strip()
+    count = 0
+    for i in range(0,len(S)-1):
+        if S[i] == S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    count = 0
+    if S == "0" or S == "1":
+        print(count)
+    else:
+        for i in range(len(S)):
+            if i == 0:
+                if S[i] == "0":
+                    count += 1
+            else:
+                if S[i] != S[i-1]:
+                    count += 1
+        print(count)
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    n = len(s)
+    a = 0
+    for i in range(n):
+        if int(s[i]) == (i % 2):
+            a += 1
+    print(min(a, n - a))

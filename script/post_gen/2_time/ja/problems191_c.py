@@ -1,45 +1,297 @@
-#問題文
-#H 行 W 列のマス目があります。このマス目の、上から i 番目、左から j 番目のマスを、マス (i, j) と呼ぶことにします。
-#各マスは黒または白に塗られています。S_{i, j} が # ならばマス (i, j) は黒に塗られており、. ならば白に塗られています。
-#マス目の一番外側のマス、すなわち (1, j), (H, j), (i, 1), (i, W) のいずれかの形で表されるマスは白に塗られていることが保証されます。  
-#黒に塗られた部分を多角形として見たとき、これが (最小で) 何角形になるかを求めてください。  
-#ここで、黒に塗られた部分は一つの自己交叉のない多角形となることが保証されます。すなわち、以下のことが保証されます。  
-#黒に塗られたマスが少なくとも一つ存在する
-#黒に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、黒に塗られたマスのみを通って互いに到達可能である
-#白に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、白に塗られたマスのみを通って互いに到達可能である(マス目の一番外側のマスは全て白に塗られていることに注意してください)
-#
-#制約
-#3 ≦ H ≦ 10
-#3 ≦ W ≦ 10
-#S_{i, j} は # または .
-#S_{1, j}, S_{H, j} は .
-#S_{i, 1}, S_{i, W} は .
-#黒に塗られた部分は一つの自己交叉のない多角形となる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_{1, 1} S_{1, 2} S_{1, 3} ... S_{1, W}
-#S_{2, 1} S_{2, 2} S_{2, 3} ... S_{2, W}
-#S_{3, 1} S_{3, 2} S_{3, 3} ... S_{3, W}
-#.
-#.
-#.
-#S_{H, 1} S_{H, 2} S_{H, 3} ... S_{H, W}
-#
-#出力
-#黒に塗られた部分を n 角形として見ることができるような最小の n を出力せよ。  
-#
-#入力例 1
-#5 5
-#.....
-#.###.
-#.###.
-#.###.
-#.....
-#
-#出力例 1
-#4
-#マス目の左上、左下、右上、右下の隅をそれぞれ (0, 0), (H, 0), (0, W), (H, W) とする座標系で表すと、与えられる図形は (1, 1), (4, 1), (4, 4), (1, 4) を頂点とする 4 角形です。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    print(solve(H, W, S))
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    #print(S)
+    n = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                n += 1
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    #print(S)
+    #print(S[0])
+    #print(S[0][0])
+    #print(S[0][1])
+
+    #print(S[0][0] == "#")
+    #print(S[0][1] == "#")
+
+    #print(S[0][0] == ".")
+
+    #print(S[0][0] == "." and S[0][1] == "#")
+    #print(S[0][0] == "#" and S[0][1] == ".")
+
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "#")
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == ".")
+
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == "#")
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == ".")
+
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == "." and S[1][2] == "#")
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == "." and S[1][2] == ".")
+
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == "." and S[1][2] == "." and S[2][0] == "#")
+    #print(S[0][0] == "." and S[0][1] == "#" and S[1][0] == "." and S[1][1] == "." and S[1][2] == "." and S[2][0] == ".")
+
+    #print(S[0][0] == "." and S[
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    #print(S)
+    #print(H, W)
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    #print(S)
+    #print(H, W)
+    #print(S[0])
+    #print(S[1])
+    #print(S[2])
+    #print(S[3])
+    #print(S[4])
+    #print(S[0][0])
+    #print(S[0][1])
+    #print(S[0][2])
+    #print(S[0][3])
+    #print(S[0][4])
+    #print(S[1][0])
+    #print(S[1][1])
+    #print(S[1][2])
+    #print(S[1][3])
+    #print(S[1][4])
+    #print(S[2][0])
+    #print(S[2][1])
+    #print(S[2][2])
+    #print(S[2][3])
+    #print(S[2][4])
+    #print(S[3][0])
+    #print(S[3][1])
+    #print(S[3][2])
+    #print(S[3][3])
+    #print(S[3][4])
+    #print(S[4][0])
+    #print(S[4][1])
+    #print(S[4][2])
+    #print(S[4][3])
+    #print(S[4][4])
+    #print(S[0][0] == '#')
+    #print(S[0][1] == '#')
+    #print(S[0][2] == '#')
+    #print(S[0][3] == '#')
+    #print(S[0][4] == '#')
+    #print(S[1][0] == '#')
+    #print(S[1][1] == '#')
+    #print(S[1][2] == '#')
+    #print(S[1][3] == '#')
+    #print(S[1][4] == '#')
+    #print(S[2][0] == '#')
+    #print(S[2][1] == '#')
+    #print(S[2][2] == '#')
+    #print(S[2][3] == '#')
+    #print(S[2][4] == '#')
+    #print(S[3][0] == '#')
+    #print(S[3][1] ==
+
+=======
+Suggestion 6
+
+def main():
+    H, W = list(map(int, input().split()))
+    S = [list(map(str, input())) for _ in range(H)]
+    #print(S)
+    #print(S[0][0])
+    #print(S[0][1])
+    #print(S[1][0])
+    #print(S[1][1])
+    #print(S[2][0])
+    #print(S[2][1])
+    #print(S[0][0] == '#')
+    #print(S[0][1] == '#')
+    #print(S[1][0] == '#')
+    #print(S[1][1] == '#')
+    #print(S[2][0] == '#')
+    #print(S[2][1] == '#')
+    #print(S[0][0] == '.' and S[0][1] == '.' and S[1][0] == '.' and S[1][1] == '.')
+    #print(S[0][0] == '.' and S[0][1] == '.' and S[1][0] == '.' and S[1][1] == '.' and S[2][0] == '.' and S[2][1] == '.')
+    #print(S[0][0] == '#' and S[0][1] == '#' and S[1][0] == '#' and S[1][1] == '#')
+    #print(S[0][0] == '#' and S[0][1] == '#' and S[1][0] == '#' and S[1][1] == '#' and S[2][0] == '#' and S[2][1] == '#')
+    #print(S[0][0] == '#' and S[0][1] == '.' and S[1][0] == '#' and S[1][1] == '.')
+    #print(S[0][0] == '.' and S[0][1] == '#' and S[1][0] == '.' and S[1][1] == '#')
+    #print(S[0][0] == '#' and S[0][1] == '.' and S[1][0] == '.' and S[1][1] == '#')
+    #print(S[0][0] == '.' and S[0][1] == '#' and S[1][0] == '#'
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for _ in range(H):
+        S.append(input())
+    #print(S)
+    
+    #黒マスの数をカウント
+    cnt = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                cnt += 1
+    #print(cnt)
+    
+    #黒マスの数が 3 以上の場合、
+    #黒マスの数を頂点数として出力
+    if cnt >= 3:
+        print(cnt)
+    #黒マスの数が 2 の場合、
+    #黒マスの数を頂点数として出力
+    elif cnt == 2:
+        print(cnt)
+    #黒マスの数が 1 の場合、
+    #黒マスの数を頂点数として出力
+    elif cnt == 1:
+        print(cnt)
+    #黒マスの数が 0 の場合、
+    #黒マスの数を頂点数として出力
+    elif cnt == 0:
+        print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    #print(S)
+    #print(H, W)
+
+    # H, W = 5, 5
+    # S = [['.', '.', '.', '.', '.'], ['.', '#', '#', '#', '.'], ['.', '#', '#', '#', '.'], ['.', '#', '#', '#', '.'], ['.', '.', '.', '.', '.']]
+
+    # H, W = 5, 6
+    # S = [['.', '.', '.', '.', '.', '.'], ['.', '#', '#', '#', '#', '.'], ['.', '#', '#', '#', '#', '.'], ['.', '#', '#', '#', '#', '.'], ['.', '.', '.', '.', '.', '.']]
+
+    # H, W = 6, 5
+    # S
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    #print(S)
+
+    #左から探索
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                left = j
+                break
+        if S[i][j] == "#":
+            break
+
+    #右から探索
+    for i in range(H):
+        for j in range(W-1, -1, -1):
+            if S[i][j] == "#":
+                right = j
+                break
+        if S[i][j] == "#":
+            break
+
+    #上から探索
+    for i in range(W):
+        for j in range(H):
+            if S[j][i] == "#":
+                up = j
+                break
+        if S[j][i] == "#":
+            break
+
+    #下から探索
+    for i in range(W):
+        for j in range(H-1, -1, -1):
+            if S[j][i] == "#":
+                down = j
+                break
+        if S[j][i] == "#":
+            break
+
+    #print(left, right, up, down)
+    print(right-left+down-up+4)
+
+=======
+Suggestion 10
+
+def main():
+    H,W = map(int,input().split())
+    S = [input() for _ in range(H)]
+    #print(S)
+
+    #黒マスを白マスに変換
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                S[i] = S[i][:j] + '.' + S[i][j+1:]
+
+    #print(S)
+
+    #白マスを黒マスに変換
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '.':
+                S[i] = S[i][:j] + '#' + S[i][j+1:]
+
+    #print(S)
+
+    #上下左右のマスを調べる
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                if S[i-1][j] == '.':
+                    count += 1
+                if S[i+1][j] == '.':
+                    count += 1
+                if S[i][j-1] == '.':
+                    count += 1
+                if S[i][j+1] == '.':
+                    count += 1
+
+    print(count//2)

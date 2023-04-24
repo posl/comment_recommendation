@@ -1,91 +1,347 @@
-#Problem Statement
-#The Kingdom of Takahashi is made up of N towns and N-1 roads, where the towns are numbered 1 through N. The i-th road (1 ≦ i ≦ N-1) connects Town a_i and Town b_i, so that you can get from every town to every town by using some roads. All the roads have the same length.
-#You will be given Q queries. In the i-th query (1 ≦ i ≦ Q), given integers c_i and d_i, solve the following problem:
-#Takahashi is now at Town c_i and Aoki is now at Town d_i. They will leave the towns simultaneously and start traveling at the same speed, Takahashi heading to Town d_i and Aoki heading to Town c_i. Determine whether they will meet at a town or halfway along a road. Here, assume that both of them travel along the shortest paths, and the time it takes to pass towns is negligible.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#All values in input are integers.
-#It is possible to get from every town to every town by using some roads. 
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#Output
-#Print Q lines.
-#The i-th line (1 ≦ i ≦ Q) should contain Town if Takahashi and Aoki will meet at a town in the i-th query, and Road if they meet halfway along a road in that query.
-#
-#Sample Input 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#Sample Output 1
-#Road
-#In the first and only query, Takahashi and Aoki simultaneously leave Town 1 and Town 2, respectively, and they will meet halfway along the 1-st road, so we should print Road.
-#
-#Sample Input 2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#Sample Output 2
-#Town
-#Town
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 3, respectively, and they will meet at Town 2, so we should print Town.
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 5, respectively, and they will meet at Town 3, so we should print Town.
-#
-#Sample Input 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#Sample Output 3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    CD = [list(map(int, input().split())) for _ in range(Q)]
+
+    # グラフの作成
+    G = [[] for _ in range(N)]
+    for a, b in AB:
+        G[a-1].append(b-1)
+        G[b-1].append(a-1)
+
+    # 各頂点の深さを求める
+    depth = [-1] * N
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for w in G[v]:
+            if depth[w] == -1:
+                depth[w] = depth[v] + 1
+                stack.append(w)
+
+    # 各頂点の親を求める
+    parent = [-1] * N
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for w in G[v]:
+            if parent[w] == -1:
+                parent[w] = v
+                stack.append(w)
+
+    # 各クエリについて答える
+    for c, d in CD:
+        c -= 1
+        d -= 1
+        if depth[c] < depth[d]:
+            c, d = d, c
+        while depth[c] > depth[d]:
+            c = parent[c]
+        while c != d:
+            c = parent[c]
+            d = parent[d]
+        if depth[c] % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    edges = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        edges[a-1].append(b-1)
+        edges[b-1].append(a-1)
+
+    def dfs(v, p, d):
+        depth[v] = d
+        for u in edges[v]:
+            if u != p:
+                dfs(u, v, d+1)
+
+    depth = [0] * N
+    dfs(0, -1, 0)
+
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        if (depth[c-1] + depth[d-1]) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    edges = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        edges[a - 1].append(b - 1)
+        edges[b - 1].append(a - 1)
+    depth = [-1] * N
+    depth[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for w in edges[v]:
+            if depth[w] == -1:
+                depth[w] = depth[v] + 1
+                stack.append(w)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        if (depth[c - 1] + depth[d - 1]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    edge = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        edge[a - 1].append(b - 1)
+        edge[b - 1].append(a - 1)
+    dist = [0] * N
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in edge[v]:
+            if dist[u] == 0 and u != 0:
+                dist[u] = dist[v] + 1
+                stack.append(u)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        if (dist[c - 1] + dist[d - 1]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    AB = []
+    for i in range(N - 1):
+        AB.append(list(map(int, input().split())))
+    CD = []
+    for i in range(Q):
+        CD.append(list(map(int, input().split())))
+    edges = [[] for i in range(N)]
+    for i in range(N - 1):
+        a, b = AB[i]
+        edges[a - 1].append(b - 1)
+        edges[b - 1].append(a - 1)
+    depth = [0] * N
+    parent = [0] * N
+    parent[0] = -1
+    q = [0]
+    while len(q) > 0:
+        v = q.pop()
+        for i in edges[v]:
+            if depth[i] == 0:
+                depth[i] = depth[v] + 1
+                parent[i] = v
+                q.append(i)
+    for c, d in CD:
+        c -= 1
+        d -= 1
+        if (depth[c] + depth[d]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+
+    N, Q = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        G[a-1].append(b-1)
+        G[b-1].append(a-1)
+
+    depth = [0]*N
+    parent = [0]*N
+    q = deque([0])
+    while q:
+        v = q.popleft()
+        for w in G[v]:
+            if depth[w] == 0:
+                depth[w] = depth[v] + 1
+                parent[w] = v
+                q.append(w)
+
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        if depth[c] < depth[d]:
+            c, d = d, c
+
+        while depth[c] > depth[d]:
+            c = parent[c]
+
+        while c != d:
+            c = parent[c]
+            d = parent[d]
+
+        if c == d:
+            if depth[c] % 2 == 0:
+                print("Town")
+            else:
+                print("Road")
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    # 隣接リスト
+    adj = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        adj[a].append(b)
+        adj[b].append(a)
+    # 頂点の深さ
+    depth = [-1] * N
+    depth[0] = 0
+    # 頂点の親
+    parent = [-1] * N
+    # 深さ優先探索
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in adj[v]:
+            if depth[u] == -1:
+                depth[u] = depth[v] + 1
+                parent[u] = v
+                stack.append(u)
+    # 各クエリについて
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        # 同じ深さにする
+        while depth[c] > depth[d]:
+            c = parent[c]
+        while depth[d] > depth[c]:
+            d = parent[d]
+        # 共通の親を探す
+        while c != d:
+            c = parent[c]
+            d = parent[d]
+        # 答えを出力
+        if depth[c] % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+
+    # 隣接リスト
+    graph = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+
+    # クエリ
+    query = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 隣接リストを隣接行列に変換
+    adj = [[0] * N for _ in range(N)]
+    for i in range(N):
+        for j in graph[i]:
+            adj[i][j] = 1
+
+    # 1からの距離を求める
+    dist = [0] * N
+    stack = [0]
+    while stack:
+        i = stack.pop()
+        for j in graph[i]:
+            if dist[j] == 0:
+                dist[j] = dist[i] + 1
+                stack.append(j)
+
+    # クエリを処理
+    for c, d in query:
+        if dist[c-1] % 2 == dist[d-1] % 2:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 9
+
+def dfs(v, p, d):
+    depth[v] = d
+    for u in graph[v]:
+        if u == p:
+            continue
+        dfs(u, v, d + 1)
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    # 各頂点について、その頂点からの距離を記録する
+    distance = [-1] * N
+    # 0番目の頂点は、0番目の頂点からの距離は0
+    distance[0] = 0
+    # 隣接リストを用意する
+    edges = [[] for _ in range(N)]
+    # 隣接リストに、各頂点の隣接する頂点を格納していく
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        edges[a-1].append(b-1)
+        edges[b-1].append(a-1)
+    # 幅優先探索で、各頂点からの距離を計算する
+    queue = [0]
+    while queue:
+        # 今いる頂点を取り出す
+        now = queue.pop(0)
+        # 今いる頂点から隣接する頂点を取り出していく
+        for edge in edges[now]:
+            # すでに距離が計算されている頂点はスキップする
+            if distance[edge] != -1:
+                continue
+            # 距離を計算する
+            distance[edge] = distance[now] + 1
+            # 計算した頂点をqueueに追加する
+            queue.append(edge)
+    # 各クエリについて処理を行う
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        # cとdの距離が偶数なら、Townに到着する
+        if (distance[c-1] + distance[d-1]) % 2 == 0:
+            print('Town')
+        # cとdの距離が奇数なら、Roadに到着する
+        else:
+            print('Road')

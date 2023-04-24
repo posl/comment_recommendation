@@ -1,41 +1,135 @@
-#問題文
-#正整数 N 及び、長さ N の英小文字から成る文字列 S が与えられます。
-#この文字列が、ある文字列を二度繰り返したものであるかを判定してください。
-#則ち、文字列 T であって、 S = T + T となるものが存在するかを判定してください。
-#
-#制約
-#1 ≤ N ≤ 100
-#S は英小文字から成る
-#|S| = N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#S が文字列を二度繰り返したものであるならば Yes と、そうでないならば No と出力せよ。
-#
-#入力例 1
-#6
-#abcabc
-#
-#出力例 1
-#Yes
-#T =  abc とおくと、 S = T + T となります。
-#
-#入力例 2
-#6
-#abcadc
-#
-#出力例 2
-#No
-#
-#入力例 3
-#1
-#z
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 0:
+        if s[:n//2] == s[n//2:]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    if s[:n//2] == s[n//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[0:int(N/2)] == S[int(N/2):]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    if S[0:N//2] == S[N//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+
+    if N % 2 != 0:
+        print("No")
+        return
+
+    if S[:N//2] == S[N//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 != 0:
+        print('No')
+        return
+    if s[:n//2] == s[n//2:]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    print('Yes' if S[:N//2] == S[N//2:] else 'No')
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    T = S[:N//2]
+    if N%2 == 1:
+        print("No")
+        return
+    if S == T + T:
+        print("Yes")
+    else:
+        print("No")

@@ -1,55 +1,128 @@
-#Problem Statement
-#You are given an H-by-W matrix A.
-#The element at the i-th row from the top and j-th column from the left of A is A_{i,j}.
-#Let B be a W-by-H matrix whose element at the i-th row from the top and j-th column from the left equals A_{j, i}.
-#That is, B is the transpose of A.
-#Print B.
-#
-#Constraints
-#1≦ H,W ≦ 10^5
-#H × W ≦ 10^5
-#1 ≦ A_{i,j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#A_{1,1} A_{1,2} ... A_{1,W}
-#A_{2,1} A_{2,2} ... A_{2,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ... A_{H,W}
-#
-#Output
-#Print B in the following format:
-#B_{1,1} B_{1,2} ... B_{1,H}
-#B_{2,1} B_{2,2} ... B_{2,H}
-#.
-#.
-#.
-#B_{W,1} B_{W,2} ... B_{W,H}
-#
-#Sample Input 1
-#4 3
-#1 2 3
-#4 5 6
-#7 8 9
-#10 11 12
-#
-#Sample Output 1
-#1 4 7 10
-#2 5 8 11
-#3 6 9 12
-#For example, we have A_{2,1}=4, so the element at the 1-st row from the top and 2-nd column from the left of the transpose B is 4.
-#
-#Sample Input 2
-#2 2
-#1000000000 1000000000
-#1000000000 1000000000
-#
-#Sample Output 2
-#1000000000 1000000000
-#1000000000 1000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(W):
+        for j in range(H):
+            if j == H-1:
+                print(A[j][i])
+            else:
+                print(A[j][i], end=' ')
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(W):
+        for j in range(H):
+            print(A[j][i], end=' ')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(W):
+        for j in range(H):
+            print(A[j][i], end = " ")
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    for i in range(W):
+        for j in range(H):
+            print(A[j][i], end=" ")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for j in range(W):
+        for i in range(H):
+            print(A[i][j], end=' ')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    B = [[0] * H for _ in range(W)]
+    for i in range(H):
+        for j in range(W):
+            B[j][i] = A[i][j]
+    for i in range(W):
+        print(' '.join(map(str, B[i])))
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    b = [[0 for _ in range(h)] for _ in range(w)]
+    for i in range(h):
+        for j in range(w):
+            b[j][i] = a[i][j]
+    for i in range(w):
+        print(' '.join(map(str, b[i])))
+
+=======
+Suggestion 8
+
+def main():
+    h,w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    for i in range(w):
+        ans = []
+        for j in range(h):
+            ans.append(str(a[j][i]))
+        print(" ".join(ans))
+
+=======
+Suggestion 9
+
+def transpose_matrix(matrix):
+    return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+=======
+Suggestion 10
+
+def main():
+    H,W = map(int,input().split())
+    A = [list(map(int,input().split())) for i in range(H)]
+    # print(A)
+    B = []
+    for i in range(W):
+        B.append([])
+        for j in range(H):
+            B[i].append(A[j][i])
+    # print(B)
+    for i in range(W):
+        print(*B[i])
+    return 0

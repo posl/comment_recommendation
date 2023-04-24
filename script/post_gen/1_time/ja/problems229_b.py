@@ -1,31 +1,100 @@
-#問題文
-#正整数 A,B が与えられます。
-#A+B を(十進法で)計算する時、繰り上がりが生じないなら Easy 、生じるなら Hard と出力してください。
-#
-#制約
-#A,B は整数
-#1 ≦ A,B ≦ 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#繰り上がりが生じないなら Easy 、生じるなら Hard と出力せよ。
-#
-#入力例 1
-#229 390
-#
-#出力例 1
-#Hard
-#229+390 を計算する際、十の位から百の位へと繰り上がりが発生します。よって、答えは Hard です。
-#
-#入力例 2
-#123456789 9876543210
-#
-#出力例 2
-#Easy
-#繰り上がりは発生しません。答えは Easy です。
-#また、入力が 32bit 整数に収まらないこともあります。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if A + B < 10 ** 19:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A + B >= 10 ** 18:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    if A+B >= 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a+b >= 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a+b > 10**18:
+        print('Hard')
+    else:
+        print('Easy')
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) // 10 == 0:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a+b >= 10**18:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if a+b < 10**(len(str(a))):
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    if A+B <= 9999999999:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    A,B = map(int,input().split())
+    print('Hard' if len(str(A+B))>len(str(A)) else 'Easy')

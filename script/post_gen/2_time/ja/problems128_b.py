@@ -1,71 +1,152 @@
-#問題文
-#あなたは美味しいレストランを紹介する本を書くことにしました。
-#あなたは N 個のレストラン、レストラン 1、レストラン 2、…、レストラン N を紹介しようとしています。レストラン i は S_i 市にあり、あなたは 100 点満点中 P_i 点と評価しています。
-#異なる 2 個のレストランに同じ点数がついていることはありません。
-#この本では、次のような順でレストランを紹介しようとしています。
-#市名が辞書順で早いものから紹介していく。
-#同じ市に複数レストランがある場合は、点数が高いものから紹介していく。
-#この本で紹介される順にレストランの番号を出力してください。
-#
-#制約
-#1 ≤ N ≤ 100
-#S は英小文字のみからなる長さ 1 以上 10 以下の文字列
-#0 ≤ P_i ≤ 100
-#P_i は整数
-#P_i ≠ P_j (1 ≤ i < j ≤ N)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 P_1
-#:
-#S_N P_N
-#
-#出力
-#N 行出力せよ。i 行目 (1 ≤ i ≤ N) には、i 番目に紹介されるレストランの番号を出力せよ。
-#
-#入力例 1
-#6
-#khabarovsk 20
-#moscow 10
-#kazan 50
-#kazan 35
-#moscow 60
-#khabarovsk 40
-#
-#出力例 1
-#3
-#4
-#6
-#1
-#5
-#2
-#3 種類の市名は辞書順で kazan < khabarovsk < moscow です。
-#それぞれの市について、点数が高いレストランから順に紹介されていきます。よって、レストランは 3,4,6,1,5,2 の順に紹介されていきます。
-#
-#入力例 2
-#10
-#yakutsk 10
-#yakutsk 20
-#yakutsk 30
-#yakutsk 40
-#yakutsk 50
-#yakutsk 60
-#yakutsk 70
-#yakutsk 80
-#yakutsk 90
-#yakutsk 100
-#
-#出力例 2
-#10
-#9
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    P = []
+    for i in range(N):
+        s, p = input().split()
+        S.append(s)
+        P.append(int(p))
+    for i in range(N):
+        for j in range(N):
+            if S[i] < S[j]:
+                S[i], S[j] = S[j], S[i]
+                P[i], P[j] = P[j], P[i]
+            elif S[i] == S[j]:
+                if P[i] > P[j]:
+                    S[i], S[j] = S[j], S[i]
+                    P[i], P[j] = P[j], P[i]
+    for i in range(N):
+        for j in range(N):
+            if S[i] == S[j]:
+                if P[i] == P[j]:
+                    if i < j:
+                        S[i], S[j] = S[j], S[i]
+                        P[i], P[j] = P[j], P[i]
+    for i in range(N):
+        print(S.index(S[i])+1)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    data = []
+    for i in range(n):
+        s, p = input().split()
+        data.append([s, int(p), i+1])
+    data.sort(key=lambda x:(x[0],-x[1]))
+    for i in range(n):
+        print(data[i][2])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    data = []
+    for i in range(N):
+        S, P = input().split()
+        data.append([S, int(P), i+1])
+    data.sort(key=lambda x: (x[0], -x[1]))
+    for d in data:
+        print(d[2])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    data = []
+    for i in range(N):
+        s, p = input().split()
+        data.append([s, int(p), i + 1])
+    data.sort(key=lambda x: (x[0], -x[1]))
+    for i in data:
+        print(i[2])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    restaurant = []
+    for i in range(N):
+        S, P = input().split()
+        P = int(P)
+        restaurant.append([i+1, S, P])
+    restaurant.sort(key=lambda x: (x[1], -x[2]))
+    for i in range(N):
+        print(restaurant[i][0])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    lst = []
+    for i in range(N):
+        S, P = input().split()
+        lst.append([S, int(P), i+1])
+    lst.sort(key=lambda x: (-x[1], x[0], x[2]))
+    for i in range(N):
+        print(lst[i][2])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    # レストランのリスト
+    restaurants = []
+    for i in range(N):
+        s, p = input().split()
+        restaurants.append((s, int(p), i+1))
+    # レストランのリストをソート
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurant[2])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    # N 個のレストランの情報を格納するリスト
+    rest_list = []
+    for i in range(N):
+        # S_i 市にあり、あなたは 100 点満点中 P_i 点と評価しています。
+        S_i, P_i = input().split()
+        rest_list.append([i+1, S_i, int(P_i)])
+
+    # 1.市名が辞書順で早いものから紹介していく。
+    # 2.同じ市に複数レストランがある場合は、点数が高いものから紹介していく。
+    rest_list.sort(key=lambda x: (x[1], -x[2]))
+
+    # N 行出力せよ。i 行目 (1 ≤ i ≤ N) には、i 番目に紹介されるレストランの番号を出力せよ。
+    for rest in rest_list:
+        print(rest[0])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    # リストの要素は、(市名, 点数, レストラン番号)のタプル
+    R = []
+    for i in range(N):
+        S, P = input().split()
+        P = int(P)
+        R.append((S, P, i+1))
+    # 市名で昇順にソート
+    R.sort()
+    # 同じ市名のレストランの点数で降順にソート
+    R = sorted(R, key=lambda x: (x[0], -x[1]))
+    for r in R:
+        print(r[2])

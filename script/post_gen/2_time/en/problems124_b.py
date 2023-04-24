@@ -1,44 +1,107 @@
-#Problem Statement
-#There are N mountains ranging from east to west, and an ocean to the west.
-#At the top of each mountain, there is an inn. You have decided to choose where to stay from these inns.
-#The height of the i-th mountain from the west is H_i.
-#You can certainly see the ocean from the inn at the top of the westmost mountain.
-#For the inn at the top of the i-th mountain from the west (i = 2, 3, ..., N), you can see the ocean if and only if H_1 ≦ H_i, H_2 ≦ H_i, ..., and H_{i-1} ≦ H_i.
-#From how many of these N inns can you see the ocean?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 20
-#1 ≦ H_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#H_1 H_2 ... H_N
-#
-#Output
-#Print the number of inns from which you can see the ocean.
-#
-#Sample Input 1
-#4
-#6 5 6 8
-#
-#Sample Output 1
-#3
-#You can see the ocean from the first, third and fourth inns from the west.
-#
-#Sample Input 2
-#5
-#4 5 3 5 4
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#5
-#9 5 6 8 4
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 1
+    for i in range(N-1):
+        if H[i] <= H[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(n-1):
+        if h[i] <= h[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if H[i] >= max(H[:i+1]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = [int(x) for x in input().split()]
+    count = 1
+    max = h[0]
+    for i in range(1, n):
+        if h[i] >= max:
+            count += 1
+            max = h[i]
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if all(h[i] >= h[j] for j in range(i)):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    c = 0
+    for i in range(1, n):
+        if max(h[0:i]) <= h[i]:
+            c += 1
+    print(c+1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 0
+    for i in range(1, N):
+        if all([H[j] <= H[i] for j in range(i)]):
+            count += 1
+    print(count + 1)
+
+=======
+Suggestion 8
+
+def can_see_ocean(h):
+    max_height = 0
+    for i in h:
+        if i >= max_height:
+            max_height = i
+        else:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    print(len([i for i in range(1, N) if H[i-1] <= H[i]]))

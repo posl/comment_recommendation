@@ -1,42 +1,136 @@
-#Problem Statement
-#Takahashi has many red balls and blue balls. Now, he will place them in a row.
-#Initially, there is no ball placed.
-#Takahashi, who is very patient, will do the following operation 10^{100} times:
-#Place A blue balls at the end of the row of balls already placed. Then, place B red balls at the end of the row.
-#How many blue balls will be there among the first N balls in the row of balls made this way?
-#
-#Constraints
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < A + B ≦ 10^{18}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print the number of blue balls that will be there among the first N balls in the row of balls.
-#
-#Sample Input 1
-#8 3 4
-#
-#Sample Output 1
-#4
-#Let b denote a blue ball, and r denote a red ball. The first eight balls in the row will be bbbrrrrb, among which there are four blue balls.
-#
-#Sample Input 2
-#8 0 4
-#
-#Sample Output 2
-#0
-#He placed only red balls from the beginning.
-#
-#Sample Input 3
-#6 2 4
-#
-#Sample Output 3
-#2
-#Among bbrrrr, there are two blue balls.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n // (a + b) * a + min(n % (a + b), a))
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif A + B > N:
+        print(N // (A + B) * A + min(A, N % (A + B)))
+    else:
+        print(N // (A + B) * A + A)
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+        return
+    if A + B > N:
+        print(N // (A + B) * A + min(N % (A + B), A))
+    else:
+        print(N // (A + B) * A + min(N % (A + B), A))
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+
+    if A == 0:
+        print(0)
+    elif A + B > N:
+        print(N // (A + B) * A)
+    else:
+        print(A * (N // (A + B)) + min(A, N % (A + B)))
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    if a == 0:
+        print(0)
+        return
+    if b == 0:
+        print(n // (a+b) * a)
+        return
+    if a + b > n:
+        print(min(a, n))
+        return
+    if a + b == n:
+        print(a)
+        return
+    if n % (a+b) <= a:
+        print((n // (a+b)) * a + n % (a+b))
+    else:
+        print((n // (a+b)) * a + a)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif A + B == 0:
+        print(0)
+    elif A + B > N:
+        print((N // (A + B)) * A + min(N % (A + B), A))
+    else:
+        print((N // (A + B)) * A + min(N % (A + B), A))
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+
+    if A == 0 or B == 0:
+        print(0)
+        return
+
+    if A + B > N:
+        print(0)
+        return
+
+    if A + B == N:
+        print(1)
+        return
+
+    if A + B < N:
+        print((N - (A + B)) // (A + B) + 1)
+        return
+
+=======
+Suggestion 8
+
+def solve(N, A, B):
+    if A == 0 or B == 0:
+        return 0
+    return (N // (A + B)) * A + min(N % (A + B), A)
+
+=======
+Suggestion 9
+
+def main():
+    n,a,b = map(int,input().split())
+    if a == 0:
+        print(0)
+    else:
+        print((n//(a+b))*a + min(n%(a+b),a))
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    N, A, B = map(int, input().split())
+    #compute
+    #output
+    print(min(N//A*B + min(N%A, B), N))
+
+main()

@@ -1,54 +1,295 @@
-#問題文
-#東西一列に N 人の人が並んでいます。
-#各人の状態を表す長さ N の文字列 S が与えられます。
-#西から i 番目の人は、文字列 S の i 文字目が L ならば西を、R ならば東を向いています。
-#どの人も、目の前の人が自分と同じ方向を向いていれば幸福です。
-#ただし、目の前に人が居ない場合、幸福ではありません。
-#あなたは、以下の操作を 0 回以上 K 回以下の好きな回数だけ行います。
-#操作: 1 ≦ l ≦ r ≦ N を満たす整数 l, r を選ぶ。西から l, l+1, ..., r 番目の人の列を 180 度回転する。すなわち、i = 0, 1, ..., r-l について、西から l + i 番目の人は操作後には西から r - i 番目に移動し、元々西を向いていれば東を、東を向いていれば西を向く。
-#幸福である人は最大で何人にできるでしょうか。
-#
-#制約
-#N は 1 ≦ N ≦ 10^5 を満たす整数である。
-#K は 1 ≦ K ≦ 10^5 を満たす整数である。
-#|S| = N
-#S の各文字は L または R である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#S
-#
-#出力
-#K 回以下の操作後に幸福である人数の最大値を出力せよ。
-#
-#入力例 1
-#6 1
-#LRLRRL
-#
-#出力例 1
-#3
-#(l, r) = (2, 5) と選べば LLLRLL となり、西から 2, 3, 6 番目の人が幸福です。
-#
-#入力例 2
-#13 3
-#LRRLRLRRLRLLR
-#
-#出力例 2
-#9
-#
-#入力例 3
-#10 1
-#LLLLLRRRRR
-#
-#出力例 3
-#9
-#
-#入力例 4
-#9 2
-#RRRLRLRLL
-#
-#出力例 4
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == 'L':
+            ans += 1
+        else:
+            break
+    for i in range(N-1, -1, -1):
+        if S[i] == 'R':
+            ans += 1
+        else:
+            break
+    ans = min(ans + 2*K, N)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == 'L':
+            cnt = 0
+            for j in range(i, -1, -1):
+                if S[j] == 'L':
+                    cnt += 1
+                else:
+                    break
+            ans = max(ans, cnt)
+        else:
+            cnt = 0
+            for j in range(i, N):
+                if S[j] == 'R':
+                    cnt += 1
+                else:
+                    break
+            ans = max(ans, cnt)
+    print(min(ans + 2 * K, N))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += 1
+        elif S[i] != S[i - 1]:
+            ans += 1
+    if ans % 2 == 0:
+        ans -= 1
+    print(min(ans + 2 * K, N))
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == "R":
+            if i == 0:
+                ans += 1
+            else:
+                if S[i - 1] == "L":
+                    ans += 1
+    for i in range(N - 1, -1, -1):
+        if S[i] == "L":
+            if i == N - 1:
+                ans += 1
+            else:
+                if S[i + 1] == "R":
+                    ans += 1
+    ans = min(ans + 2 * K, N)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == "L":
+            r = i
+            for j in range(i-1, -1, -1):
+                if S[j] == "R":
+                    l = j
+                    break
+            else:
+                l = -1
+        else:
+            l = i
+            for j in range(i+1, N):
+                if S[j] == "L":
+                    r = j
+                    break
+            else:
+                r = N
+        ans = max(ans, r - l - 1)
+    print(min(ans + 2*K, N))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    S = S + S
+    ans = 0
+    for i in range(N):
+        if S[i] == "R":
+            ans += 1
+            if S[i+1] == "L":
+                ans += 1
+    if ans == N:
+        ans = N - 1
+    ans = min(ans + 2 * K, N)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    #K回の操作で幸福になれる人数の最大値を求める
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作で幸福になれる人数の最大値は、
+    #K回の操作で幸福になれる人数の最大値のうち、
+    #最小のものと等しい
+    #K回の操作
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    N, K = map(int, input().split())
+    S = input()
+    # 連続するLの数を保持する配列
+    L = []
+    # 連続するRの数を保持する配列
+    R = []
+    # 連続するLの数を数える
+    count = 0
+    for i in range(N):
+        if S[i] == "L":
+            count += 1
+        else:
+            L.append(count)
+            count = 0
+    L.append(count)
+    # 連続するRの数を数える
+    count = 0
+    for i in range(N):
+        if S[N-i-1] == "R":
+            count += 1
+        else:
+            R.append(count)
+            count = 0
+    R.append(count)
+    # Rの数が多い順にソート
+    R.sort(reverse=True)
+    # 操作
+    ans = 0
+    for i in range(min(K, len(R))):
+        ans += R[i]
+    # 連続するLの数が偶数の場合、幸福な人数を増やす
+    for i in range(len(L)):
+        if L[i] % 2 == 0:
+            ans += L[i]
+    # 出力
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    #Lの連続する個数を記録するリスト
+    L_list = []
+    #Rの連続する個数を記録するリスト
+    R_list = []
+    #Lの連続する個数を記録する変数
+    L = 0
+    #Rの連続する個数を記録する変数
+    R = 0
+    #Sの最初がLの場合
+    if S[0] == "L":
+        #Lの連続する個数を記録するリストに0を追加
+        L_list.append(0)
+    #Sの最初がRの場合
+    else:
+        #Rの連続する個数を記録するリストに0を追加
+        R_list.append(0)
+    #Sの各文字について
+    for i in range(N):
+        #Sのi文字目がLの場合
+        if S[i] == "L":
+            #Lの連続する個数を記録する変数に1を加える
+            L += 1
+            #Rの連続する個数を記録する変数が0でない場合
+            if R != 0:
+                #Rの連続する個数を記録するリストにRの連続する個数を記録する変数を追加
+                R_list.append(R)
+                #Rの連続する個数を記録する変数を0にする
+                R = 0
+        #Sのi文字目がRの場合
+        else:
+            #Rの連続する個数を記録する変数に1を加える
+            R += 1
+            #Lの連続する個数を記録する変数が0でない場合
+            if L != 0:
+                #Lの連続する
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N, K = map(int, input().split())
+    S = input()
+
+    #初期値
+    ans = 0
+    #0 から N-1 までの各 i について、
+    #i から左に向かって連続する L の数を Lcnt[i] とする。
+    Lcnt = [0] * N
+    #i から右に向かって連続する R の数を Rcnt[i] とする。
+    Rcnt = [0] * N
+
+    #Lcnt, Rcnt を求める
+    for i in range(N):
+        if S[i] == "L":
+            if i == 0:
+                Lcnt[i] = 1
+            else:
+                Lcnt[i] = Lcnt[i-1] + 1
+        else:
+            Lcnt[i] = 0
+
+    for i in range(N-1, -1, -1):
+        if S[i] == "R":
+            if i == N-1:
+                Rcnt[i] = 1
+            else:
+                Rcnt[i] = Rcnt[i+1] + 1
+        else:
+            Rcnt[i] = 0
+
+    #0 から N-1 までの各 i について、
+    #i から左に向かって連続する L の数が K より大きいならば、
+    #Lcnt[i] + Rcnt[i] が答えである。
+    #そうでないならば、Lcnt[i] + Rcnt[i] - 1 が答えである。
+    for i in range(N):
+        if Lcnt[i] > K:
+            ans = max(ans, Lcnt[i] + Rcnt[i])
+        else:
+            ans = max(ans, Lcnt[i] + Rcnt[i] - 1)
+
+    #出力
+    print(ans)

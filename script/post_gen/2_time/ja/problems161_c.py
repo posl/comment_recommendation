@@ -1,40 +1,48 @@
-#問題文
-#青木君は任意の整数 x に対し、以下の操作を行うことができます。
-#操作: x を x と K の差の絶対値で置き換える。
-#整数 N の初期値が与えられます。この整数に上記の操作を 0 回以上好きな回数行った時にとりうる N の最小値を求めてください。
-#
-#制約
-#0 ≤ N ≤ 10^{18}
-#1 ≤ K ≤ 10^{18}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#
-#出力
-#操作を 0 回以上好きな回数行った時にとりうる N の最小値を出力せよ。
-#
-#入力例 1
-#7 4
-#
-#出力例 1
-#1
-#最初、 N=7 です。
-#1 回操作を行うと、N は |7-4| = 3 となります。
-#2 回操作を行うと、N は |3-4|=1 となり、これが最小です。
-#
-#入力例 2
-#2 6
-#
-#出力例 2
-#2
-#1 回も操作を行わなかった場合の N=2 が最小です。
-#
-#入力例 3
-#1000000000000000000 1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    if N % K == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    if n % k == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    ans = N % K
+    ans = min(ans, abs(ans - K))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    print(N % K)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    #print(n,k)
+    if n%k == 0:
+        print(0)
+    else:
+        print(1)

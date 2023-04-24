@@ -1,69 +1,143 @@
-#問題文
-#英大文字および数字からなる 2 文字の文字列が N 個与えられます。i 個目の文字列は S_i です。
-#以下の 3 つの条件をすべて満たすか判定してください。
-#・すべての文字列に対して、1 文字目は H , D , C , S のどれかである。
-#・すべての文字列に対して、2 文字目は A , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , T , J , Q , K のどれかである。
-#・すべての文字列は相異なる。つまり、i ≠ j ならば S_i ≠ S_j である。
-#
-#制約
-#1 ≦ N ≦ 52
-#S_i は英大文字および数字からなる 2 文字の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#3 つの条件をすべて満たす場合は Yes、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#4
-#H3
-#DA
-#D3
-#SK
-#
-#出力例 1
-#Yes
-#このとき 3 つの条件をすべて満たすことが確認できます。
-#
-#入力例 2
-#5
-#H3
-#DA
-#CK
-#H3
-#S7
-#
-#出力例 2
-#No
-#S_1 と S_4 がともに H3 となってしまっているため、3 番目の条件に反します。
-#
-#入力例 3
-#4
-#3H
-#AD
-#3D
-#KS
-#
-#出力例 3
-#No
-#
-#入力例 4
-#5
-#00
-#AA
-#XX
-#YY
-#ZZ
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    if len(set(S)) == N and all(s[0] in 'HDCS' and s[1] in 'A23456789TJQK' for s in S):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print('Yes' if len(S) == len(set(S)) and all(s[0] in 'HDCS' and s[1] in 'A23456789TJQK' for s in S) else 'No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    if len(set(s)) != n:
+        print("No")
+        return
+    for i in range(n):
+        if s[i][0] not in "HDCS":
+            print("No")
+            return
+        if s[i][1] not in "A23456789TJQK":
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    if len(set(s)) != n:
+        print('No')
+        return
+    for si in s:
+        if si[0] not in 'HDCK' or si[1] not in 'A23456789TJQK':
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    if len(s) != len(set(s)):
+        print('No')
+        return
+    for i in s:
+        if i[0] not in 'HDCS':
+            print('No')
+            return
+        if i[1] not in 'A23456789TJQK':
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    if len(set(S)) != N:
+        print("No")
+        return
+    if len(set([s[0] for s in S])) != 1:
+        print("No")
+        return
+    if len(set([s[1] for s in S])) != 9:
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    if len(s) == n and all(s[i][0] in "HDCS" and s[i][1] in "A23456789TJQK" for i in range(n)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    if len(set(S)) != N:
+        print("No")
+        return
+    if not all([s[0] in "HDCS" for s in S]):
+        print("No")
+        return
+    if not all([s[1] in "A23456789TJQK" for s in S]):
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    card = [input() for _ in range(N)]
+    if len(set(card)) == N and all([c[0] in 'HDCS' and c[1] in 'A23456789TJQK' for c in card]):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N = int(input())
+    S = [input() for i in range(N)]
+    
+    #出力
+    if len(set(S)) == N and all(s[0] in 'HDCS' and s[1] in 'A23456789TJQK' for s in S):
+        print('Yes')
+    else:
+        print('No')

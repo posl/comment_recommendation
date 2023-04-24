@@ -1,44 +1,152 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns, in which two distinct squares have a piece.
-#The state of the squares is represented by H strings S_1, ..., S_H of length W.  S_{i, j} =  o means that there is a piece in the square at the i-th row from the top and j-th column from the left; S_{i, j} =  - means that the square does not have a piece.  Here, S_{i, j} denotes the j-th character of the string S_i.
-#Consider repeatedly moving one of the pieces to one of the four adjacent squares.  It is not allowed to move the piece outside the grid.  How many moves are required at minimum for the piece to reach the square with the other piece?
-#
-#Constraints
-#2 ≦ H, W ≦ 100
-#H and W are integers.
-#S_i  (1 ≦ i ≦ H) is a string of length W consisting of o and -.
-#There exist exactly two pairs of integers 1 ≦ i ≦ H, 1 ≦ j ≦ W such that S_{i, j} =  o.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#S_1
-#.
-#.
-#.
-#S_H
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3
-#--o
-#o--
-#
-#Sample Output 1
-#3
-#The piece at the 1-st row from the top and 3-rd column from the left can reach the square with the other piece in 3 moves: down, left, left.  Since it is impossible to do so in two or less moves, 3 should be printed.
-#
-#Sample Input 2
-#5 4
-#-o--
-#----
-#----
-#----
-#-o--
-#
-#Sample Output 2
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                x1, y1 = i, j
+            elif S[i][j] == 'o':
+                x2, y2 = i, j
+    print(max(abs(x1-x2), abs(y1-y2)))
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                y1, x1 = i, j
+            if S[i][j] == 'o':
+                y2, x2 = i, j
+    print(max(abs(y1-y2), abs(x1-x2)))
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "o":
+                x1, y1 = i, j
+            elif S[i][j] == "o":
+                x2, y2 = i, j
+    print(max(abs(x1-x2), abs(y1-y2)))
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                x = i
+                y = j
+                break
+    ans = 0
+    for i in range(h):
+        ans = max(ans, abs(x - i))
+    for j in range(w):
+        ans = max(ans, abs(y - j))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for _ in range(H):
+        S.append(input())
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                a = i
+                b = j
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                c = i
+                d = j
+    print(max(abs(a - c), abs(b - d)))
+
+=======
+Suggestion 6
+
+def solve():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "o":
+                x1, y1 = i, j
+            if s[i][j] == "o":
+                x2, y2 = i, j
+    print(max(abs(x1-x2), abs(y1-y2)))
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int,input().split())
+    s = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "o":
+                x1,y1 = i,j
+            if s[i][j] == "o":
+                x2,y2 = i,j
+    print(max(abs(x1-x2),abs(y1-y2)))
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    o1 = o2 = None
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                if o1 is None:
+                    o1 = (i, j)
+                else:
+                    o2 = (i, j)
+    print(abs(o1[0] - o2[0]) + abs(o1[1] - o2[1]))
+
+=======
+Suggestion 9
+
+def main():
+    H,W = input().split()
+    H = int(H)
+    W = int(W)
+    S = []
+    for i in range(H):
+        S.append(input())
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                x = i
+                y = j
+    print(abs(x - (H-1)) + abs(y - (W-1)))
+main()
+
+=======
+Suggestion 10
+
+def get_input():
+    H, W = [int(x) for x in input().split()]
+    S = [input() for i in range(H)]
+    return H, W, S

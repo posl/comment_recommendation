@@ -1,65 +1,188 @@
-#問題文
-#あみだくじは, 日本に古くから伝わる伝統的なくじ引きである.
-#あみだくじを作るには, まず W 本の平行な縦線を引き, 次にそれらを繋ぐ横線を引いていく. それぞれの縦棒の長さは H+1 [cm] であり、横線の端点となれるのは上から 1,2,3,...,H [cm] の位置のみである.
-#ここで,「正しいあみだくじ」とは, 以下のような条件を満たすあみだくじのことである.
-#どの 2 つの横棒も端点を共有しない.
-#それぞれの横棒の 2 つの端点は同じ高さになければならない.
-#横棒は隣り合う縦線を繋がなければならない.
-#縦棒 1 の上端から, 横線があれば必ずそれを通るというルールで下へたどったときに, 最終的にたどり着く縦棒の番号が K となるような「正しいあみだくじ」の本数を 1 000 000 007 で割った余りを求めなさい.
-#例として, 以下のあみだくじにおいて, 最終的にたどり着く縦棒の番号は 4 である.
-#
-#制約
-#H は 1 以上 100 以下の整数
-#W は 1 以上 8 以下の整数
-#K は 1 以上 W 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W K
-#
-#出力
-#条件を満たすあみだくじの本数を 1 000 000 007 で割った余りを出力しなさい.
-#
-#入力例 1
-#1 3 2
-#
-#出力例 1
-#1
-#以下の 1 個のあみだくじのみが条件を満たす.
-#
-#入力例 2
-#1 3 1
-#
-#出力例 2
-#2
-#以下の 2 個のあみだくじのみが条件を満たす.
-#
-#入力例 3
-#2 3 3
-#
-#出力例 3
-#1
-#以下の 1 個のあみだくじのみが条件を満たす.
-#
-#入力例 4
-#2 3 1
-#
-#出力例 4
-#5
-#以下の 5 個のあみだくじのみが条件を満たす.
-#
-#入力例 5
-#7 1 1
-#
-#出力例 5
-#1
-#縦線が 1 本しかないので, 横線をそもそも引くことができない. よって条件を満たすあみだくじは「一本も横線を引かない」の 1 通りしかない.
-#
-#入力例 6
-#15 8 5
-#
-#出力例 6
-#437760187
-#答えを 1 000 000 007 で割った余りを出力すること.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, K = map(int, input().split())
+    MOD = 10 ** 9 + 7
+    dp = [[0] * (W + 1) for _ in range(H + 1)]
+    dp[0][1] = 1
+    for i in range(H):
+        for j in range(1, W + 1):
+            dp[i + 1][j] += dp[i][j] * fib(j - 1) * fib(W - j) % MOD
+            dp[i + 1][j] += dp[i][j - 1] * fib(j - 2) * fib(W - j) % MOD
+            dp[i + 1][j] += dp[i][j + 1] * fib(j - 1) * fib(W - j - 1) % MOD
+            dp[i + 1][j] %= MOD
+    print(dp[H][K])
+
+=======
+Suggestion 2
+
+def solve():
+    H, W, K = map(int, input().split())
+    if W == 1:
+        print(1)
+        return
+    dp = [[0] * W for _ in range(H + 1)]
+    dp[0][0] = 1
+    for i in range(H):
+        for j in range(W):
+            if j == 0:
+                dp[i + 1][j + 1] += dp[i][j]
+                dp[i + 1][j] += dp[i][j] * (W - 1)
+            elif j == W - 1:
+                dp[i + 1][j - 1] += dp[i][j]
+                dp[i + 1][j] += dp[i][j] * (W - 1)
+            else:
+                dp[i + 1][j - 1] += dp[i][j]
+                dp[i + 1][j + 1] += dp[i][j]
+                dp[i + 1][j] += dp[i][j] * (W - 2)
+    print(dp[H][K - 1] % 1000000007)
+
+=======
+Suggestion 3
+
+def solve():
+    H,W,K = map(int,input().split())
+    dp = [[0 for i in range(W)] for j in range(H+1)]
+    dp[0][0] = 1
+    for i in range(H):
+        for j in range(W):
+            dp[i+1][j] += dp[i][j]*fib(j)*fib(W-j-1)
+            dp[i+1][j] %= mod
+            if j > 0:
+                dp[i+1][j-1] += dp[i][j]*fib(j-1)*fib(W-j-1)
+                dp[i+1][j-1] %= mod
+            if j < W-1:
+                dp[i+1][j+1] += dp[i][j]*fib(j)*fib(W-j-2)
+                dp[i+1][j+1] %= mod
+    print(dp[H][K-1])
+
+=======
+Suggestion 4
+
+def dfs(h,w):
+    if h==H:
+        return w==K
+    elif w==1:
+        return dfs(h+1,w+1)
+    elif w==W:
+        return dfs(h+1,w-1)
+    else:
+        return dfs(h+1,w+1)+dfs(h+1,w-1)
+
+H,W,K=map(int,input().split())
+print(dfs(0,1)%1000000007)
+
+=======
+Suggestion 5
+
+def dfs(h,w,k):
+    if h == 0:
+        if k == w:
+            return 1
+        else:
+            return 0
+    elif k == 1:
+        return dfs(h-1,w,k+1)
+    elif k == w:
+        return dfs(h-1,w,k-1)
+    else:
+        return dfs(h-1,w,k-1) + dfs(h-1,w,k+1)
+
+h,w,k = map(int,input().split())
+print(dfs(h,w,k) % 1000000007)
+
+=======
+Suggestion 6
+
+def main():
+    H, W, K = map(int, input().split())
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+    #print(H, W, K)
+    #print(type(H), type(W), type(K))
+
+=======
+Suggestion 7
+
+def get_all_patterns(h, w):
+    # 縦線の数がw本の時のあみだくじのパターン数を返す
+    # ただし、縦線の数が1本の時は、横線を引けないので、パターン数は1
+    if w == 1:
+        return 1
+    else:
+        # 縦線の数がw-1本の時のあみだくじのパターン数を返す
+        # ただし、横線を引けない位置には縦線を引くことができないので、
+        # 縦線の数がw-2本の時のあみだくじのパターン数を返す
+        return get_all_patterns(h, w-1) + get_all_patterns(h, w-2)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def func():
+    #横線を引くところのリスト
+    #yoko = [[0,0],[0,1],[1,1],[1,2],[2,2],[2,3],[3,3]]
+    yoko = []
+    for i in range(1,W):
+        yoko.append([i,i])
+        yoko.append([i,i+1])
+    yoko.append([W,W])
+    #print(yoko)
+
+    #横線を引かないところのリスト
+    yoko_not = []
+    for i in range(1,W+1):
+        yoko_not.append([i,i])
+    #print(yoko_not)
+
+    #横線を引くところのリストの中からK個選ぶ場合の数
+    #yoko_comb = list(itertools.combinations(yoko,K))
+    yoko_comb = []
+    for i in itertools.combinations(yoko,K):
+        yoko_comb.append(i)
+    #print(yoko_comb)
+
+    #横線を引かないところのリストの中からW-K個選ぶ場合の数
+    #yoko_not_comb = list(itertools.combinations(yoko_not,W-K))
+    yoko_not_comb = []
+    for i in itertools.combinations(yoko_not,W-K):
+        yoko_not_comb.append(i)
+    #print(yoko_not_comb)
+
+    #横線を引くところのリストの中からK個選ぶ場合の数の中から
+    #横線を引かないところのリストの中からW-K個選ぶ場合の数を引いた数
+    #print(len(yoko_comb))
+    #print(len(yoko_not_comb))
+    #print(len(yoko_comb)-len(yoko_not_comb))
+
+    #答え
+    ans = len(yoko_comb)-len(yoko_not_comb)
+    print(ans%1000000007)
+
+=======
+Suggestion 10
+
+def solve():
+    pass

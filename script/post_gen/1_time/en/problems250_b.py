@@ -1,81 +1,159 @@
-#Problem Statement
-#Tiles are aligned in N horizontal rows and N vertical columns.  Each tile has a grid with A horizontal rows and B vertical columns.  On the whole, the tiles form a grid X with (A× N) horizontal rows and (B× N) vertical columns.
-#For 1≦ i,j ≦ N, Tile (i,j) denotes the tile at the i-th row from the top and the j-th column from the left.
-#Each square of X is painted as follows.  
-#Each tile is either a white tile or a black tile.
-#Every square in a white tile is painted white; every square in a black tile is painted black.
-#Tile (1,1) is a white tile.
-#Two tiles sharing a side have different colors.  Here, Tile (a,b) and Tile (c,d) are said to be sharing a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#Print the grid X in the format specified in the Output section.
-#
-#Constraints
-#1 ≦ N,A,B ≦ 10
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print (A× N) strings S_1,...,S_{A× N} that satisfy the following condition, with newlines in between.
-#Each of S_1,...,S_{A× N} is a string of length (B× N) consisting of . and #.
-#For each i and j (1 ≦ i ≦ A× N,1 ≦ j ≦ B× N), the j-th character of S_i is . if the square at the i-th row from the top and j-th column from the left in grid X is painted white; the character is # if the square is painted black.
-#
-#Sample Input 1
-#4 3 2
-#
-#Sample Output 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#Sample Input 2
-#5 1 5
-#
-#Sample Output 2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#Sample Input 3
-#4 4 1
-#
-#Sample Output 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#Sample Input 4
-#1 4 4
-#
-#Sample Output 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A * N):
+        for j in range(B * N):
+            if (i // A + j // B) % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A):
+        for j in range(N):
+            if j % 2 == 0:
+                print("#" * B, end="")
+            else:
+                print("." * B, end="")
+        print()
+    for i in range(N):
+        for j in range(A):
+            if i % 2 == 0:
+                print("." * B, end="")
+            else:
+                print("#" * B, end="")
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(A):
+        for j in range(N):
+            print("." * B, end="")
+            print("#" * B, end="")
+        print()
+
+    for i in range(A):
+        for j in range(N):
+            print("#" * B, end="")
+            print("." * B, end="")
+        print()
+
+=======
+Suggestion 4
+
+def paint(N, A, B):
+    for i in range(0, A*N):
+        for j in range(0, B*N):
+            if (i//A + j//B)%2 == 0:
+                print(".", end="")
+            else:
+                print("#", end="")
+        print("")
+
+=======
+Suggestion 5
+
+def paint_tile(tile, a, b):
+    for i in range(a):
+        for j in range(b):
+            if i % 2 == 0:
+                tile[i][j] = "."
+            else:
+                tile[i][j] = "#"
+    return tile
+
+=======
+Suggestion 6
+
+def paint(n, a, b):
+    for i in range(a):
+        for j in range(b):
+            if (i+j)%2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        for j in range(n-1):
+            if (i+j)%2 == 0:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+n, a, b = map(int, input().split())
+for i in range(a):
+    paint(n, a, b)
+for i in range(n-1):
+    paint(n, a, b)
+
+I'm not sure what the problem is. I've tried to copy and paste the code from the editor and it works fine.
+
+What's wrong with this code? I'm getting the correct output, but it's not accepted.
+
+I'm getting the correct output, but it's not accepted.
+
+That's because you're not printing the newlines. You're printing dots and hashes, but the problem statement says that you need to print newlines in between.
+
+I'm getting the correct output, but it's not accepted.
+
+That's because you're not printing the newlines. You're printing dots and hashes, but the problem statement says that you need to print newlines in between.
+
+I'm sorry, I was looking at the wrong part of the code. I've fixed it now.
+
+I'm sorry, I was looking at the wrong part of the code. I've fixed it now.
+
+I'm not sure what the problem is. I've tried to copy and paste the code from the editor and it works fine.
+
+I've tried to copy and paste the code from the editor and it works fine.
+
+You should try to run your code locally. It's much easier to debug your code if you don't have to submit it every time.
+
+You should try to run your code locally. It's much easier to debug your code if you don't have to submit it every time.
+
+I've tried running it locally, but it still works fine. I'm not sure what the problem is.
+
+I've tried running it locally, but it still works fine. I'm not sure what the problem is.
+
+I've tried running it locally, but it still works fine.
+
+That's because the sample inputs and outputs are small. Try running it with larger inputs. For example, try running it with N = 10, A = 10, and B =
+
+=======
+Suggestion 7
+
+def print_grid(grid):
+    for row in grid:
+        print("".join(row))
+
+=======
+Suggestion 8
+
+def paint_pattern(n,a,b):
+    if n==1:
+        for i in range(2*a):
+            print("#"*b)
+    else:
+        for i in range(a):
+            print("#"*b,end="")
+            for j in range(n-1):
+                print("."*b,end="")
+                print("#"*b,end="")
+            print("")
+
+=======
+Suggestion 9
+
+def printBoard(board):
+    for row in board:
+        print("".join(row))

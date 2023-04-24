@@ -1,73 +1,263 @@
-#問題文
-#H 行 W 列の格子状に HW 枚のカードが並べられています。
-#i=1,...,N について、上から A_i 行目、左から B_i 列目にあるカードには数 i が書かれており、それ以外の HW-N 枚のカードには何も書かれていません。
-#これらのカードに対し、以下の 2 種類の操作を可能な限り繰り返します。
-#数の書かれたカードを含まない行が存在するとき、その行のカードを全て取り除き、残りのカードを上へ詰める
-#数の書かれたカードを含まない列が存在するとき、その列のカードを全て取り除き、残りのカードを左へ詰める
-#操作が終了したとき、数が書かれたカードがそれぞれどこにあるか求めてください。なお、答えは操作の仕方に依らず一意に定まることが証明されます。
-#
-#制約
-#1 ≦ H,W ≦ 10^9
-#1 ≦ N ≦ min(10^5,HW)
-#1 ≦ A_i ≦ H
-#1 ≦ B_i ≦ W
-#(A_i,B_i) は相異なる
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#N 行出力せよ。
-#操作終了後に数 i が書かれたカードが上から C_i 行目、左から D_i 列目に存在するとき、i 行目には C_i,D_i をこの順に空白区切りで出力せよ。
-#
-#入力例 1
-#4 5 2
-#3 2
-#2 5
-#
-#出力例 1
-#2 1
-#1 2
-#何も書かれていないカードを * で表すことにします。最初、カードの配置は以下の通りです。
-#*****
-#****2
-#*1***
-#*****
-#操作終了後、カードの配置は以下の通りになります。
-#*2
-#1*
-#1 が書かれたカードは上から 2 行目、左から 1 列目にあり、2 が書かれたカードは上から 1 行目、左から 2 列目にあります。
-#
-#入力例 2
-#1000000000 1000000000 10
-#1 1
-#10 10
-#100 100
-#1000 1000
-#10000 10000
-#100000 100000
-#1000000 1000000
-#10000000 10000000
-#100000000 100000000
-#1000000000 1000000000
-#
-#出力例 2
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#7 7
-#8 8
-#9 9
-#10 10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i])+1, B.index(B[i])+1)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    A = sorted(A)
+    B = sorted(B)
+    #print(A)
+    #print(B)
+    #print(A[0])
+    #print(B[0])
+    for i in range(N):
+        print(A.index(A[i]) + 1, B.index(B[i]) + 1)
+
+=======
+Suggestion 3
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    #print(A)
+    #print(B)
+    A = list(set(A))
+    B = list(set(B))
+    #print(A)
+    #print(B)
+    A.sort()
+    B.sort()
+    #print(A)
+    #print(B)
+    for i in range(N):
+        print(A.index(A[i]) + 1, B.index(B[i]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(str(A.index(A[i]) + 1) + " " + str(B.index(B[i]) + 1))
+
+=======
+Suggestion 5
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    # 重複を削除
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+
+    # 座標圧縮
+    # 重複を削除した後の座標をキーとして、圧縮前の座標を値とする辞書を作成
+    # 例えば、A = [1, 1, 3, 5, 5, 5, 7] のとき、A_dict = {1: 1, 3: 3, 5: 5, 7: 7} となる
+    A_dict = {A[i]: i + 1 for i in range(len(A))}
+    B_dict = {B[i]: i + 1 for i in range(len(B))}
+    for i in range(N):
+        print(A_dict[A[i]], B_dict[B[i]])
+
+=======
+Suggestion 6
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i])+1, B.index(B[i])+1)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, N = map(int, input().split())
+
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # 重複を削除
+    A = list(set(A))
+    B = list(set(B))
+
+    # ソート
+    A.sort()
+    B.sort()
+
+    # 座標を圧縮
+    A = {a: i + 1 for i, a in enumerate(A)}
+    B = {b: i + 1 for i, b in enumerate(B)}
+
+    for a, b in zip(A, B):
+        print(A[a], B[b])
+
+=======
+Suggestion 8
+
+def main():
+    H, W, N = map(int, input().split())
+    A, B = [], []
+    for n in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    
+    #print(A)
+    #print(B)
+    
+    #print(set(A))
+    #print(set(B))
+    
+    #print(list(set(A)))
+    #print(list(set(B)))
+    
+    #print(sorted(list(set(A))))
+    #print(sorted(list(set(B))))
+    
+    #print(sorted(list(set(A)))[0])
+    #print(sorted(list(set(B)))[0])
+    
+    #print(sorted(list(set(A)))[1])
+    #print(sorted(list(set(B)))[1])
+    
+    #print(sorted(list(set(A)))[2])
+    #print(sorted(list(set(B)))[2])
+    
+    #print(sorted(list(set(A)))[3])
+    #print(sorted(list(set(B)))[3])
+    
+    #print(sorted(list(set(A)))[4])
+    #print(sorted(list(set(B)))[4])
+    
+    #print(sorted(list(set(A)))[5])
+    #print(sorted(list(set(B)))[5])
+    
+    #print(sorted(list(set(A)))[6])
+    #print(sorted(list(set(B)))[6])
+    
+    #print(sorted(list(set(A)))[7])
+    #print(sorted(list(set(B)))[7])
+    
+    #print(sorted(list(set(A)))[8])
+    #print(sorted(list(set(B)))[8])
+    
+    #print(sorted(list(set(A)))[9])
+    #print(sorted(list(set(B)))[9])
+    
+    #print(sorted(list(set(A)))[10])
+    #print(sorted(list(set(B)))[10])
+    
+    #print(sorted(list(set(B)))[11])
+    #print(sorted(list(set(B)))[11])
+    
+    #print(sorted(list(set(B)))[12])
+    #print(sorted(list(set(B)))[12])
+    
+    #print(sorted(list(set(B)))[13])
+    #print(sorted(list(set(B)))[13])
+    
+    #print(sorted(list(set(B)))[14])
+    #print(sorted(list(set(B)))[14])
+    
+    #print(sorted(list(set(B)))[15])
+    #print(sorted(list(set(B)))[15])
+    
+    #print(sorted(list(set(B)))[16])
+    #print(sorted(list(set(B)))[16])
+
+=======
+Suggestion 9
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a1, b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    for i in range(n):
+        print(a.index(a[i])+1, b.index(b[i])+1)
+
+=======
+Suggestion 10
+
+def main():
+    H,W,N = map(int,input().split())
+    a_list = []
+    b_list = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        a_list.append(a)
+        b_list.append(b)
+    a_list = list(set(a_list))
+    b_list = list(set(b_list))
+    a_list.sort()
+    b_list.sort()
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a_list)):
+        a_dict[a_list[i]] = i+1
+    for i in range(len(b_list)):
+        b_dict[b_list[i]] = i+1
+    for i in range(N):
+        print(a_dict[a_list[i]],b_dict[b_list[i]])

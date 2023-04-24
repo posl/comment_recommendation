@@ -1,45 +1,105 @@
-#問題文
-#N 次元空間内の点 (x_1,...,x_N) が与えられます。
-#原点からこの点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれ求めてください。
-#ただし、それぞれの距離は次のように計算されます。
-#マンハッタン距離： |x_1|+...+|x_N|
-#ユークリッド距離： (|x_1|^2+...+|x_N|^2)^(1/2)
-#チェビシェフ距離： max(|x_1|,...,|x_N|)
-#
-#制約
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 ... x_N
-#
-#出力
-#原点から与えられた点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれこの順に改行区切りで出力せよ。
-#正しい値との絶対誤差または相対誤差が 10^{-9} 以下であれば正解とみなされる。
-#
-#入力例 1
-#2
-#2 -1
-#
-#出力例 1
-#3
-#2.236067977499790
-#2
-#それぞれ次のように計算されます。
-#マンハッタン距離： |2|+|-1|=3
-#ユークリッド距離： (|2|^2+|-1|^2)^(1/2)=2.236067977499789696...
-#チェビシェフ距離： max(|2|,|-1|)=2
-#
-#入力例 2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#出力例 2
-#39
-#14.387494569938159
-#9
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    print(sum([abs(i) for i in x]))
+    print((sum([i**2 for i in x]))**0.5)
+    print(max([abs(i) for i in x]))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    print(sum([abs(i) for i in x]))
+    print((sum([i**2 for i in x]))**(1/2))
+    print(max([abs(i) for i in x]))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = list(map(int,input().split()))
+    print(sum([abs(i) for i in x]))
+    print((sum([i**2 for i in x]))**0.5)
+    print(max([abs(i) for i in x]))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x = list(map(int,input().split()))
+
+    manhattan = 0
+    euclidean = 0
+    chebyshev = 0
+
+    for i in range(N):
+        manhattan += abs(x[i])
+        euclidean += abs(x[i])**2
+        if chebyshev < abs(x[i]):
+            chebyshev = abs(x[i])
+
+    print(manhattan)
+    print(euclidean**(1/2))
+    print(chebyshev)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x = list(map(int, input().split()))
+    print(sum([abs(x_i) for x_i in x]))
+    print(sum([abs(x_i)**2 for x_i in x])**0.5)
+    print(max([abs(x_i) for x_i in x]))
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    N = int(input())
+    X = list(map(int,input().split()))
+    print(sum(map(abs,X)))
+    print((sum(map(lambda x:x**2,X)))**0.5)
+    print(max(map(abs,X)))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+    #print("N =", N)
+    #print("X =", X)
+    # マンハッタン距離
+    sum = 0
+    for i in range(N):
+        sum += abs(X[i])
+    print(sum)
+    # ユークリッド距離
+    sum = 0
+    for i in range(N):
+        sum += X[i] * X[i]
+    print(sum ** 0.5)
+    # チェビシェフ距離
+    max = 0
+    for i in range(N):
+        if max < abs(X[i]):
+            max = abs(X[i])
+    print(max)
+
+=======
+Suggestion 8
+
+def manhattan_distance(x):
+    return sum(abs(i) for i in x)

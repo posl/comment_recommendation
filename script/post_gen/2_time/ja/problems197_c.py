@@ -1,62 +1,130 @@
-#問題文
-#長さ N の数列 A が与えられます。
-#この数列を、1 つ以上の空でない連続した区間に分けます。
-#その後、分けた各区間で、区間内の数のビット単位 OR を計算します。
-#こうして得られた全ての値のビット単位 XOR として考えられる最小値を求めてください。  
-#        ビット単位 OR 演算とは
-#    
-#        整数 A, B のビット単位 OR、A OR B は以下のように定義されます。
-#        
-#A OR B を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち少なくとも片方が 1 であれば 1、そうでなければ 0 である。
-#        例えば、3 OR 5 = 7 となります (二進表記すると: 011 OR 101 = 111)。  
-#        一般に k 個の整数 p_1, p_2, p_3, ..., p_k のビット単位 OR は (... ((p_1 OR p_2) OR p_3) OR ... OR p_k) と定義され、これは p_1, p_2, p_3, ... p_k の順番によらないことが証明できます。  
-#    
-#
-#        ビット単位 XOR 演算とは
-#    
-#        整数 A, B のビット単位 XOR 、A XOR B は、以下のように定義されます。
-#        
-#A XOR B を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち一方のみが 1 であれば 1、そうでなければ 0 である。
-#        例えば、3 XOR 5 = 6 となります (二進表記すると: 011 XOR 101 = 110)。  
-#        一般に k 個以上の整数 p_1, p_2, p_3, ..., p_k のビット単位 XOR は (... ((p_1 XOR p_2) XOR p_3) XOR ... XOR p_k) と定義され、これは p_1, p_2, p_3, ... p_k の順番によらないことが証明できます。  
-#    
-#
-#制約
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#1 5 7
-#
-#出力例 1
-#2
-#[1, 5, 7] を [1, 5] と [7] の 2 つの区間に分けると、それぞれの区間内の数のビット単位 OR は 5, 7 となり、その XOR は 2 です。
-#これより小さくすることはできないので、2 を出力します。  
-#
-#入力例 2
-#3
-#10 10 10
-#
-#出力例 2
-#0
-#[10] と [10, 10] に分けるとよいです。  
-#
-#入力例 3
-#4
-#1 3 3 1
-#
-#出力例 3
-#0
-#[1, 3] と [3, 1] に分けるとよいです。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans |= a[i]
+    print(ans ^ a[0])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans |= A[i]
+    print(ans ^ A[0])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = ans | A[i]
+    print(ans ^ A[0])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-1):
+        ans |= a[i]
+        ans ^= a[i]
+    ans ^= a[-1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    for a in A:
+        ans |= a
+    print(ans ^ A[0])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i,N):
+            ans |= A[j]
+    print(ans ^ A[0])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(0)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = 0
+    for i in range(n):
+        b |= a[i]
+    print(b ^ a[0])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 1つ目の区間のビット単位ORを取っておく
+    A0 = A[0]
+    for i in range(1, N):
+        A0 = A0 | A[i]
+    # 2つ目の区間のビット単位ORを取っておく
+    A1 = A[-1]
+    for i in range(N-2, -1, -1):
+        A1 = A1 | A[i]
+    # 1つ目の区間のビット単位ORと2つ目の区間のビット単位ORのビット単位XORを取っておく
+    A01 = A0 ^ A1
+
+    # 1つ目の区間のビット単位ORと2つ目の区間のビット単位ORのビット単位XORの最小値を出力する
+    print(min(A01, A0, A1))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1つの数に対して、その数のビット単位ORを計算する
+    # すなわち、数のビット列に対して、その数のビット列のうち1が立っているビットを1にする
+    # 例えば、3 (011) のビット単位ORは、3のビット列のうち1が立っているビット（2^0, 2^1, 2^2）を1にする
+    # つまり、3のビット列のうち1が立っているビットは2^0, 2^1, 2^2のみ
+    # そのため、3のビット単位ORは、3のビット列のうち1が立っているビット（2^0, 2^1, 2^2）を1にする
+    # つまり、3のビット列のうち1が立っているビットは2^0, 2^1, 2^2のみ
+    # そのため、3のビット単位ORは、3のビット列のうち1が立っているビット（2^0, 2^1, 2^2）を1にする
+    # つまり、3のビット列のうち1が立っているビットは2^0, 2^1, 2^2のみ
+    # そのため、3のビット単位ORは、3のビット列のうち1が立っているビット（2^0, 2^1, 2^2）を1にする
+    # つまり、3のビット列のうち1が立っているビットは2^0, 2^1, 2^2のみ
+    # そのため、3のビット単位ORは、3のビット列のうち1が立っているビット（2^0, 2

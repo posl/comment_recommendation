@@ -1,55 +1,160 @@
-#Problem Statement
-#N participants, numbered 1 to N, will participate in a contest with M problems, numbered 1 to M.
-#For an integer i between 1 and N and an integer j between 1 and M, participant i can solve problem j if the j-th character of S_i is o, and cannot solve it if that character is x.
-#The participants must be in pairs. Print the number of ways to form a pair of participants who can collectively solve all the M problems.
-#More formally, print the number of pairs (x,y) of integers satisfying 1≦ x < y≦ N such that for any integer j between 1 and M, at least one of participant x and participant y can solve problem j.
-#
-#Constraints
-#N is an integer between 2 and 30, inclusive.
-#M is an integer between 1 and 30, inclusive.
-#S_i is a string of length M consisting of o and x.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5 5
-#ooooo
-#oooxx
-#xxooo
-#oxoxo
-#xxxxx
-#
-#Sample Output 1
-#5
-#The following five pairs satisfy the condition: participants 1 and 2, participants 1 and 3, participants 1 and 4, participants 1 and 5, and participants 2 and 3.
-#On the other hand, the pair of participants 2 and 4, for instance, does not satisfy the condition because they cannot solve problem 4.
-#
-#Sample Input 2
-#3 2
-#ox
-#xo
-#xx
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#2 4
-#xxxx
-#oxox
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == "o" or s[j][k] == "o":
+                    continue
+                ok = False
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            c = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    c += 1
+            if c == m:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            flag = True
+            for k in range(M):
+                if S[i][k] != S[j][k]:
+                    flag = False
+                    break
+            if flag:
+                count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if sum([S[i][k] == 'o' or S[j][k] == 'o' for k in range(M)]) == M:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == "o" or s[j][k] == "o":
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    problems = [input() for _ in range(n)]
+
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if all(problems[i][k] == "o" or problems[j][k] == "o" for k in range(m)):
+                count += 1
+
+    print(count)
+
+=======
+Suggestion 10
+
+def read_ints():
+  return [int(x) for x in input().split()]

@@ -1,76 +1,170 @@
-#Problem Statement
-#The Republic of AtCoder lies on a Cartesian coordinate plane.
-#It has N towns, numbered 1,2,...,N. Town i is at (x_i, y_i), and no two different towns are at the same coordinates.
-#There are teleportation spells in the nation. A spell is identified by a pair of integers (a,b), and casting a spell (a, b) at coordinates (x, y) teleports you to (x+a, y+b).
-#Snuke is a great magician who can learn the spell (a, b) for any pair of integers (a, b) of his choice. The number of spells he can learn is also unlimited.
-#To be able to travel between the towns using spells, he has decided to learn some number of spells so that it is possible to do the following for every pair of different towns (i, j).
-#Choose just one spell among the spells learned. Then, repeatedly use just the chosen spell to get from Town i to Town j.
-#At least how many spells does Snuke need to learn to achieve the objective above?
-#
-#Constraints
-#2 ≦ N ≦ 500
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ y_i ≦ 10^9 (1 ≦ i ≦ N)
-#(x_i, y_i) ≠ (x_j, y_j) if i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-#x_N y_N
-#
-#Output
-#Print the minimum number of spells Snuke needs to learn.
-#
-#Sample Input 1
-#3
-#1 2
-#3 6
-#7 4
-#
-#Sample Output 1
-#6
-#The figure below illustrates the positions of the towns (along with the coordinates of the four corners).
-#If Snuke learns the six spells below, he can get from Town i to Town j by using one of the spells once for every pair (i,j) (i ≠ j), achieving his objective.
-#(2, 4)
-#(-2, -4)
-#(4, -2)
-#(-4, 2)
-#(-6, -2)
-#(6, 2)
-#Another option is to learn the six spells below. In this case, he can get from Town i to Town j by using one of the spells twice for every pair (i,j) (i ≠ j), achieving his objective.
-#(1, 2)
-#(-1, -2)
-#(2, -1)
-#(-2, 1)
-#(-3, -1)
-#(3, 1)
-#There is no combination of spells that consists of less than six spells and achieve the objective, so we should print 6.
-#
-#Sample Input 2
-#3
-#1 2
-#2 2
-#4 2
-#
-#Sample Output 2
-#2
-#The optimal choice is to learn the two spells below:
-#(1, 0)
-#(-1, 0)
-#
-#Sample Input 3
-#4
-#0 0
-#0 1000000000
-#1000000000 0
-#1000000000 1000000000
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            a = x[i] - x[j]
+            b = y[i] - y[j]
+            a2 = x[j] - x[i]
+            b2 = y[j] - y[i]
+            count = 0
+            for k in range(N):
+                if x[k] == x[i] + a and y[k] == y[i] + b:
+                    count += 1
+                if x[k] == x[i] + a2 and y[k] == y[i] + b2:
+                    count += 1
+            ans = max(ans, count)
+    print(N - ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    X.sort()
+    Y.sort()
+    dist = []
+    for i in range(N-1):
+        dist.append(X[i+1]-X[i])
+        dist.append(Y[i+1]-Y[i])
+    dist.sort()
+    ans = 0
+    for i in range(N-1):
+        ans += dist[i]*(N-1-i)
+    print(ans)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    S = set()
+    for i in range(N):
+        for j in range(i+1, N):
+            x1, y1 = XY[i]
+            x2, y2 = XY[j]
+            S.add((x2-x1, y2-y1))
+            S.add((x1-x2, y1-y2))
+    print(len(S))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a,b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            ans = max(ans,abs(x[i]-x[j])+abs(y[i]-y[j]))
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    XY.sort()
+    X = [xy[0] for xy in XY]
+    Y = [xy[1] for xy in XY]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans = max(ans, abs(X[i]-X[j])+abs(Y[i]-Y[j]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    points.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            dx = x2 - x1
+            dy = y2 - y1
+            if (x1 - dx, y1 - dy) not in points:
+                ans += 1
+            if (x2 + dx, y2 + dy) not in points:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    X,Y = [],[]
+    for i in range(N):
+        a,b = map(int,input().split())
+        X.append(a)
+        Y.append(b)
+    ans = set()
+    for i in range(N):
+        for j in range(i+1,N):
+            ans.add((X[i]-X[j],Y[i]-Y[j]))
+            ans.add((X[j]-X[i],Y[j]-Y[i]))
+    print(len(ans))
+
+main()

@@ -1,63 +1,173 @@
-#Problem Statement
-#Takahashi wants to buy the popular video game console called Play Snuke.
-#There are N shops that sell Play Snuke: Shop 1, 2, ..., N. Shop i is A_i minutes' walk from where Takahashi is now, sells Play Snuke for P_i yen (Japanese currency), and currently has X_i Play Snukes in stock.
-#Now, Takahashi will go to one of those shops on foot and buy Play Snuke if it is still in stock when he gets there.
-#However, Play Snuke is so popular that the number of consoles in stock (if any) in every shop will decrease by 1 at the following moments: 0.5, 1.5, 2.5, ... minutes from now.
-#Determine whether Takahashi can buy Play Snuke. If he can, find the minimum amount of money needed to buy one.
-#
-#Constraints
-#All values in input are integers.
-#1 ≤ N ≤ 10^5
-#1 ≤ A_i, P_i, X_i ≤ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 P_1 X_1
-#.
-#.
-#.
-#A_N P_N X_N
-#
-#Output
-#If Takahashi can buy Play Snuke, print the minimum amount of money needed to buy one, as an integer.
-#If he cannot buy one, print -1.
-#
-#Sample Input 1
-#3
-#3 9 5
-#4 8 5
-#5 7 5
-#
-#Sample Output 1
-#8
-#If he goes to Shop 1, it will still have 2 Play Snukes when he gets there, and he can buy one for 9 yen.
-#If he goes to Shop 2, it will still have 1 Play Snuke when he gets there, and he can buy one for 8 yen.
-#If he goes to Shop 3, Play Snuke will be out of stock when he gets there; he cannot buy one.
-#
-#Sample Input 2
-#3
-#5 9 5
-#6 8 5
-#7 7 5
-#
-#Sample Output 2
-#-1
-#
-#Sample Input 3
-#10
-#158260522 877914575 602436426
-#24979445 861648772 623690081
-#433933447 476190629 262703497
-#211047202 971407775 628894325
-#731963982 822804784 450968417
-#430302156 982631932 161735902
-#880895728 923078537 707723857
-#189330739 910286918 802329211
-#404539679 303238506 317063340
-#492686568 773361868 125660016
-#
-#Sample Output 3
-#861648772
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = []
+    P = []
+    X = []
+    for i in range(N):
+        a, p, x = map(int, input().split())
+        A.append(a)
+        P.append(p)
+        X.append(x)
+    ans = -1
+    for i in range(N):
+        if X[i] - A[i] > 0:
+            if ans == -1:
+                ans = P[i]
+            else:
+                ans = min(ans, P[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    P = []
+    X = []
+    for i in range(N):
+        a, p, x = map(int, input().split())
+        A.append(a)
+        P.append(p)
+        X.append(x)
+    min_price = 1000000001
+    for i in range(N):
+        if X[i] - A[i] > 0:
+            if min_price > P[i]:
+                min_price = P[i]
+    if min_price == 1000000001:
+        print(-1)
+    else:
+        print(min_price)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    P = []
+    X = []
+    for i in range(N):
+        A_i, P_i, X_i = map(int, input().split())
+        A.append(A_i)
+        P.append(P_i)
+        X.append(X_i)
+    ans = -1
+    for i in range(N):
+        if X[i] > A[i]:
+            if ans == -1:
+                ans = P[i]
+            else:
+                ans = min(ans, P[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = -1
+    for _ in range(N):
+        A, P, X = map(int, input().split())
+        if X - A > 0:
+            if ans == -1:
+                ans = P
+            else:
+                ans = min(ans, P)
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A, P, X = [], [], []
+    for i in range(N):
+        a, p, x = map(int, input().split())
+        A.append(a)
+        P.append(p)
+        X.append(x)
+    ans = -1
+    for i in range(N):
+        if X[i] - A[i] > 0:
+            if ans == -1:
+                ans = P[i]
+            else:
+                ans = min(ans, P[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = -1
+    for i in range(n):
+        a, p, x = map(int, input().split())
+        if a < x:
+            if ans == -1 or ans > p:
+                ans = p
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 10**10
+    for _ in range(n):
+        a, p, x = map(int, input().split())
+        if x - a > 0:
+            ans = min(ans, p)
+    if ans == 10**10:
+        ans = -1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    shops = []
+    for i in range(N):
+        A, P, X = map(int, input().split())
+        shops.append([A, P, X])
+    shops.sort(key=lambda x: x[0])
+    for shop in shops:
+        if shop[2] - shop[0] > 0:
+            return shop[1]
+    return -1
+
+print(main())
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    min_price = -1
+    for n in range(N):
+        A, P, X = map(int, input().split())
+        if X - A > 0:
+            if min_price == -1:
+                min_price = P
+            elif min_price > P:
+                min_price = P
+    print(min_price)
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    shops = []
+    for _ in range(n):
+        a, p, x = map(int, input().split())
+        shops.append((a, p, x))
+    return shops

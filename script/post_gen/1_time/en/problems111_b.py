@@ -1,39 +1,109 @@
-#Problem Statement
-#Kurohashi has never participated in AtCoder Beginner Contest (ABC).
-#The next ABC to be held is ABC N (the N-th ABC ever held).
-#Kurohashi wants to make his debut in some ABC x such that all the digits of x in base ten are the same.
-#What is the earliest ABC where Kurohashi can make his debut?
-#
-#Constraints
-#100 ≦ N ≦ 999
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If the earliest ABC where Kurohashi can make his debut is ABC n, print n.
-#
-#Sample Input 1
-#111
-#
-#Sample Output 1
-#111
-#The next ABC to be held is ABC 111, where Kurohashi can make his debut.
-#
-#Sample Input 2
-#112
-#
-#Sample Output 2
-#222
-#The next ABC to be held is ABC 112, which means Kurohashi can no longer participate in ABC 111.
-#Among the ABCs where Kurohashi can make his debut, the earliest one is ABC 222.
-#
-#Sample Input 3
-#750
-#
-#Sample Output 3
-#777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n // 111 + 1) * 111)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n // 111 + 1) * 111)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print(((N // 111) + 1) * 111)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    n = str(n)
+    if n[0] == n[1] and n[1] == n[2]:
+        print(n)
+    else:
+        if n[0] == n[1]:
+            if n[0] < n[2]:
+                print(n[0] + n[1] + n[1])
+            else:
+                print(n[0] + n[0] + n[0])
+        elif n[0] == n[2]:
+            if n[0] < n[1]:
+                print(n[0] + n[1] + n[0])
+            else:
+                print(n[0] + n[0] + n[0])
+        else:
+            if n[1] < n[2]:
+                print(n[0] + n[1] + n[1])
+            else:
+                print(n[0] + n[0] + n[0])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        N = 111 * (int(N / 111) + 1)
+        print(N)
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    n = int(input())
+    #compute
+    if n % 111 == 0:
+        ans = n
+    else:
+        ans = int((n / 111 + 1) * 111)
+    #output
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print((n+111)//111*111)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print((n+111)//111*111)

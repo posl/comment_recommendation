@@ -1,64 +1,228 @@
-#問題文
-#株式会社すぬけは様々なサービスを提供しています。
-#この会社は、すぬけプライムという支払いプランを用意しています。
-#すぬけプライムへの加入中は、1 日あたり C 円を支払うことで、提供される全てのサービスを追加料金の支払いなしに利用することができます。
-#すぬけプライムへの加入および脱退は、それぞれ 1 日の始めおよび終わりに自由に行うことができます。  
-#高橋くんは、この会社のサービスのうち N 個を利用しようとしています。
-#そのうち i 個目のサービスは、今日を 1 日目として、a_i 日目の始めから b_i 日目の終わりまで利用する予定です。
-#すぬけプライムに加入していない期間中は、i 個目のサービスを利用する際に 1 日あたり c_i 円を支払う必要があります。  
-#サービスを利用するために高橋くんが支払う必要のある最小の合計金額を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C ≦ 10^9
-#1 ≦ a_i ≦ b_i ≦ 10^9
-#1 ≦ c_i ≦ 10^9
-#入力に含まれる値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N C
-#a_1 b_1 c_1
-#.
-#.
-#.
-#a_N b_N c_N
-#
-#出力
-#高橋くんが支払う必要のある最小の合計金額を出力せよ。
-#
-#入力例 1
-#2 6
-#1 2 4
-#2 2 4
-#
-#出力例 1
-#10
-#1 番目のサービスは 1 日目と 2 日目に、 2 番目のサービスは 2 日目に利用します。
-#2 日目のみすぬけプライムに加入すると、 1 日目に 4 円、 2 日目に 6 円がかかるため、高橋くんが支払う合計金額は 10 円です。
-#高橋くんが支払う金額を 10 円より少なくすることはできないため、 10 を出力します。
-#
-#入力例 2
-#5 1000000000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#出力例 2
-#163089627821228
-#すぬけプライムに全く加入しないのが最適です。
-#
-#入力例 3
-#5 100000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#出力例 3
-#88206004785464
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, C = map(int, input().split())
+    AB = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        AB.append((a, c))
+        AB.append((b+1, -c))
+    AB.sort()
+    ans = 0
+    now = 0
+    for i in range(len(AB)-1):
+        now += AB[i][1]
+        ans += min(now, C) * (AB[i+1][0] - AB[i][0])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, C = map(int, input().split())
+    service = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        service.append((a, c))
+        service.append((b+1, -c))
+    service.sort()
+    ans = 0
+    cost = 0
+    prev = 0
+    for i in range(2*N):
+        ans += min(cost, C) * (service[i][0] - prev)
+        cost += service[i][1]
+        prev = service[i][0]
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, C = map(int, input().split())
+    ABC = [list(map(int, input().split())) for _ in range(N)]
+    ABC.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        ans += ABC[i][2]
+        for j in range(i+1, N):
+            if ABC[i][1] < ABC[j][0]:
+                ans += C * (ABC[j][0] - ABC[i][1])
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, C = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += AB[i][1] * C
+        else:
+            if AB[i][0] <= AB[i-1][1]:
+                if AB[i][1] > AB[i-1][1]:
+                    ans += (AB[i][1] - AB[i-1][1]) * C
+            else:
+                ans += (AB[i][1] - AB[i][0] + 1) * C
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, C = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        ans += AB[i][1] - AB[i][0] + 1
+    ans *= C
+    for i in range(N):
+        if i == 0:
+            ans -= C
+            continue
+        if AB[i][0] <= AB[i - 1][1]:
+            ans -= C * (AB[i - 1][1] - AB[i][0] + 1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, C = map(int, input().split())
+    data = [list(map(int, input().split())) for _ in range(N)]
+    data.sort(key=lambda x: x[1])
+    ans = 0
+    for i in range(N):
+        ans += data[i][2] * (data[i][1] - data[i][0] + 1)
+    for i in range(N):
+        for j in range(i + 1, N):
+            if data[i][1] < data[j][0]:
+                break
+            if data[i][1] <= data[j][1]:
+                ans -= min(C, data[i][2]) * (data[i][1] - data[j][0] + 1)
+            else:
+                ans -= min(C, data[i][2]) * (data[j][1] - data[j][0] + 1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, C = map(int, input().split())
+    D = [list(map(int, input().split())) for _ in range(N)]
+    D.sort(key=lambda x: x[1])
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += D[i][2] * (D[i][1] - D[i][0] + 1)
+        else:
+            ans += D[i][2] * (D[i][1] - D[i][0] + 1)
+            for j in range(i):
+                if D[j][1] >= D[i][0]:
+                    ans -= min(D[j][2], D[i][2]) * (D[i][1] - max(D[j][1], D[i][0]) + 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, C = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    #print(AB)
+
+    #各日にちにおける利用するサービスの個数
+    use = [0]*(AB[-1][1]+1)
+    for i in range(N):
+        use[AB[i][0]] += 1
+        use[AB[i][1]+1] -= 1
+    #print(use)
+
+    #各日にちにおける利用するサービスの個数の累積和
+    for i in range(1, AB[-1][1]+1):
+        use[i] += use[i-1]
+    #print(use)
+
+    #各日にちにおける利用するサービスの個数の累積和の最小値
+    for i in range(1, AB[-1][1]+1):
+        use[i] = min(use[i], use[i-1])
+    #print(use)
+
+    #各日にちにおけるサービスを利用するために支払う金額
+    cost = [0]*(AB[-1][1]+1)
+    for i in range(N):
+        cost[AB[i][0]] += AB[i][2]
+        cost[AB[i][1]+1] -= AB[i][2]
+    #print(cost)
+
+    #各日にちにおけるサービスを利用するために支払う金額の累積和
+    for i in range(1, AB[-1][1]+1):
+        cost[i] += cost[i-1]
+    #print(cost)
+
+    #各日にちにおけるサービスを利用するために支払う金額の累積和の最小値
+    for i in range(1, AB[-1][1]+1):
+        cost[i] = min(cost[i], cost[i-1])
+    #print(cost)
+
+    #各日にちにおけるサービスを利用
+
+=======
+Suggestion 9
+
+def main():
+    N, C = map(int, input().split())
+    #print(N, C)
+    events = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        #print(a, b, c)
+        events.append((a, c))
+        events.append((b+1, -c))
+    #print(events)
+    events.sort()
+    #print(events)
+    ans = 0
+    t = 0
+    for day, cost in events:
+        #print(day, cost)
+        if day != t:
+            ans += min(C, t) * (day - t)
+            t = day
+        t += cost
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, C = map(int, input().split())
+    ABC = [list(map(int, input().split())) for _ in range(N)]
+
+    # すぬけプライムに加入する日、脱退する日を取得
+    day = []
+    for a, b, c in ABC:
+        day.append((a, c))
+        day.append((b + 1, -c))
+    day.sort()
+
+    # すぬけプライムに加入している日数を取得
+    sum = 0
+    cnt = 0
+    for i in range(len(day) - 1):
+        sum += day[i][1]
+        cnt += min(C, sum) * (day[i + 1][0] - day[i][0])
+
+    print(cnt)

@@ -1,88 +1,164 @@
-#問題文
-#高橋君はプロのパティシエになり, AtCoder Beginner Contest 100 を記念して, 「ABC洋菓子店」というお店を開いた.  
-#ABC洋菓子店では, N 種類のケーキを売っている.
-#各種類のケーキには「綺麗さ」「おいしさ」「人気度」の 3 つの値を持ち, i 種類目のケーキの綺麗さは x_i, おいしさは y_i, 人気度は z_i である.
-#これらの値は 0 以下である可能性もある.  
-#りんごさんは, ABC洋菓子店で M 個のケーキを食べることにした. 彼は次のように, 食べるケーキの組み合わせを選ぶことにした.  
-#同じ種類のケーキを 2 個以上食べない.
-#上の条件を満たしつつ, (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) が最大になるように選ぶ.
-#このとき, りんごさんが選ぶケーキの (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) の最大値を求めなさい.  
-#
-#制約
-#N は 1 以上 1  000 以下の整数
-#M は 0 以上 N 以下の整数
-#x_i, y_i, z_i  (1 ≦ i ≦ N) は, それぞれ -10  000  000  000 以上 10  000  000  000 以下の整数.
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#N M
-#x_1 y_1 z_1
-#x_2 y_2 z_2
-# :  :
-#x_N y_N z_N
-#
-#出力
-#りんごさんが選ぶケーキの (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) の最大値を出力しなさい.  
-#
-#入力例 1
-#5 3
-#3 1 4
-#1 5 9
-#2 6 5
-#3 5 8
-#9 7 9
-#
-#出力例 1
-#56
-#2, 4, 5 種類目のケーキを食べることを考える. そのとき, 「綺麗さ」「おいしさ」「人気度」の合計はそれぞれ次のようになる.  
-#綺麗さ：1 + 3 + 9 = 13
-#おいしさ：5 + 5 + 7 = 17
-#人気度：9 + 8 + 9 = 26
-#このときの (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) は 13 + 17 + 26 = 56 となり, これが最大になる.  
-#
-#入力例 2
-#5 3
-#1 -2 3
-#-4 5 -6
-#7 -8 -9
-#-10 11 -12
-#13 -14 15
-#
-#出力例 2
-#54
-#1, 3, 5 種類目のケーキを食べることを考える. そのとき, 「綺麗さ」「おいしさ」「人気度」の合計はそれぞれ次のようになる.  
-#綺麗さ：1 + 7 + 13 = 21
-#おいしさ：(-2) + (-8) + (-14) = -24
-#人気度：3 + (-9) + 15 = 9
-#このときの (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) は 21 + 24 + 9 = 54 となり, これが最大になる.  
-#
-#入力例 3
-#10 5
-#10 -80 21
-#23 8 38
-#-94 28 11
-#-26 -2 18
-#-69 72 79
-#-26 -86 -54
-#-72 -50 59
-#21 65 -32
-#40 -94 87
-#-62 18 82
-#
-#出力例 3
-#638
-#3, 4, 5, 7, 10 種類目のケーキを食べると, 綺麗さの合計は -323, おいしさの合計は 66, 人気度の合計は 249 となる.
-#このときの (綺麗さの合計の絶対値) + (おいしさの合計の絶対値) + (人気度の合計の絶対値) は 323 + 66 + 249 = 638 となり, これが最大になる.  
-#
-#入力例 4
-#3 2
-#2000000000 -9000000000 4000000000
-#7000000000 -5000000000 3000000000
-#6000000000 -1000000000 8000000000
-#
-#出力例 4
-#30000000000
-#ケーキの綺麗さ, おいしさ, 人気度や出力
-#すべき値が, 32bit 整数に収まらない場合もある.  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    cake = []
+    for i in range(N):
+        cake.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(8):
+        cake.sort(key=lambda x: -abs(x[i%3]) if i < 3 else abs(x[i%3]))
+        ans = max(ans, sum([abs(sum(cake[j][i%3] for j in range(M))) for i in range(3)]))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    cake = []
+    for i in range(n):
+        cake.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(8):
+        cake.sort(key = lambda x: sum([(-1)**((i>>j)&1)*x[j] for j in range(3)]), reverse = True)
+        ans = max(ans, sum([sum([(-1)**((i>>j)&1)*cake[k][j] for j in range(3)]) for k in range(m)]))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    cake = []
+    for _ in range(N):
+        cake.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(8):
+        tmp = []
+        for j in range(N):
+            tmp.append(sum([cake[j][k] * (-1)**(i>>k & 1) for k in range(3)]))
+        tmp.sort(reverse=True)
+        ans = max(ans, sum(tmp[:M]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    cake = [list(map(int, input().split())) for _ in range(N)]
+    
+    ans = 0
+    for i in range(2**3):
+        tmp = []
+        for j in range(N):
+            tmp.append(sum([cake[j][k] * (-1)**((i>>k)&1) for k in range(3)]))
+        tmp.sort(reverse=True)
+        ans = max(ans, sum(tmp[:M]))
+    
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    cake = []
+    for _ in range(n):
+        cake.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(2**3):
+        tmp = []
+        for j in range(n):
+            tmp.append(sum([cake[j][k] if (i >> k) & 1 else -cake[j][k] for k in range(3)]))
+        tmp.sort(reverse=True)
+        ans = max(ans, sum(tmp[:m]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    cake = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(2**3):
+        tmp = [0] * N
+        for j in range(N):
+            for k in range(3):
+                if i >> k & 1:
+                    tmp[j] += cake[j][k]
+                else:
+                    tmp[j] -= cake[j][k]
+        tmp.sort(reverse=True)
+        ans = max(ans, sum(tmp[:M]))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    cake = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(8):
+        cake.sort(key=lambda x: x[i%3]*(-1)**(i//3))
+        ans = max(ans, sum(map(abs, [sum(x) for x in zip(*cake[:m])])))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    cake = [list(map(int, input().split())) for _ in range(N)]
+    ans = -float("inf")
+    for i in range(2**3):
+        tmp = 0
+        for j in range(N):
+            tmp += max([cake[j][k] if (i >> k) & 1 else -cake[j][k] for k in range(3)])
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    cake = []
+    for i in range(n):
+        cake.append(list(map(int, input().split())))
+    #print(cake)
+    
+    ans = 0
+    for i in range(2**3):
+        tmp = []
+        for j in range(n):
+            tmp.append(cake[j][0] * ((i >> 0) & 1) + cake[j][1] * ((i >> 1) & 1) + cake[j][2] * ((i >> 2) & 1))
+        tmp.sort(reverse=True)
+        ans = max(ans, sum(tmp[:m]))
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    # この問題では、綺麗さ、おいしさ、人気度の順にソートすると、
+    # 綺麗さは降順、おいしさは昇順、人気度は降順になる。
+    # したがって、綺麗さの最大値は、最大の M 個の綺麗さの合計となる。
+    # おいしさの最大値は、最小の M 個のおいしさの合計となる。
+    # 人気度の最大値は、最大の M 個の人気度の合計となる。
+    # したがって、綺麗さ、おいしさ、人気度の合計の最大値は、
+    # max(綺麗さの合計) + min(おいしさの合計) + max(人気度の合計) となる。
+    # これを全ての組み合わせについて計算すると、計算量が O(N^3) となってしまう。
+    # しかし、綺麗さ、おいしさ、人気度の順にソートしたとき、
+    # それぞれの要素を固定して、残りの要素の合計を計算することで、
+    # それぞれの合計の最大値を O(N^2) で求めることができる。
+    # したがって、全体の計算量は O(N^2) となる。
+    # また、綺麗さ、おいしさ、人気度の順にソートすると、
+    # 綺麗さは降順、おいしさは昇順、人気度は降順にな

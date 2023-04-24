@@ -1,42 +1,196 @@
-#問題文
-#長さ N の文字列 S が与えられます。S_i (1≦ i ≦ N) を S の左から i 番目の文字とします。
-#あなたは以下の 2 種類の操作を好きな順番で 0 回以上好きな回数行うことができます。
-#A 円払う。 S の左端の文字を右端に移動する。すなわち、S_1S_2... S_N を S_2... S_NS_1 に変える。
-#B 円払う。 1 以上 N 以下の整数 i を選び、 S_i を好きな英小文字で置き換える。
-#S を回文にするためには最低で何円必要ですか？
-#回文とは
-#ある文字列 T について、 T の長さを |T| として、全ての整数 i (1 ≦ i ≦ |T|) について、 T の前から i 文字目と後ろから i 文字目が同じであるとき、またそのときに限って、 T は回文です。
-#
-#制約
-#1≦ N ≦ 5000
-#1≦ A,B≦ 10^9
-#S は英小文字からなる長さ N の文字列
-#S 以外の入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#S
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#5 1 2
-#rrefa
-#
-#出力例 1
-#3
-#最初に 2 番目の操作を 1 回行います。2 円払い、i=5 として S_5 を e で置き換えます。 S は rrefe となります。
-#次に 1 番目の操作を 1 回行います。1 円払い、S は refer となります。これは回文です。
-#よって 3 円払うことで S を回文にすることができました。 2 円以下払うことで S を回文にすることは不可能なので、これが答えです。
-#
-#入力例 2
-#8 1000000000 1000000000
-#bcdfcgaa
-#
-#出力例 2
-#4000000000
-#答えは 32 bit 整数に収まらない場合があることに注意してください。
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    if S == S[::-1]:
+        ans = 0
+    else:
+        for i in range(N//2):
+            if S[i] != S[N-1-i]:
+                ans += min(A, B)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+
+    if S == S[::-1]:
+        print(0)
+        return
+
+    cnt = 0
+    for i in range(N):
+        if S[i] != S[-i-1]:
+            cnt += 1
+    cnt //= 2
+
+    if cnt == 1:
+        print(min(A, B))
+        return
+
+    if cnt == 0:
+        print(min(A, B*(N//2)))
+        return
+
+    print(min(A*(cnt-1)+B, A*cnt+B))
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    if S == S[::-1]:
+        print(ans)
+        return
+    for i in range(N):
+        if S[i] != S[N-1-i]:
+            ans = A
+            break
+    if ans == 0:
+        ans = B
+    print(ans)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    if A < B:
+        cnt = 1
+        for i in range(1, N):
+            if S[i] != S[i-1]:
+                if S[i-1] == "a":
+                    ans += A
+                else:
+                    ans += B
+                cnt = 1
+            else:
+                cnt += 1
+        if cnt % 2 == 1:
+            ans += A
+    else:
+        ans = A * N
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    if A > B:
+        print(0)
+        return
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print(0)
+            return
+        print(A)
+        return
+    if S[:N//2] == S[N//2+1:]:
+        print(0)
+        return
+    if S[:N//2] == S[N//2:]:
+        print(B)
+        return
+    print(A)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B, S = read()
+    ans = 0
+    for i in range(N//2):
+        if S[i] != S[N-1-i]:
+            ans += min(A, B)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+
+    if N == 1:
+        print(0)
+        return
+
+    # 総費用
+    cost = 0
+
+    # 現在の文字列
+    now = S
+
+    # 1文字ずつチェック
+    for i in range(N//2):
+        # 両端が同じなら何もしない
+        if now[i] == now[N-1-i]:
+            continue
+        # 両端が異なるなら、A円払うかB円払うかを選択する
+        else:
+            # A円払う
+            if A < B:
+                cost += A
+            # B円払う
+            else:
+                cost += B
+
+    print(cost)
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+
+    # 1文字目と最後の文字が同じかどうか
+    is_same = True
+    for i in range(N // 2):
+        if S[i] != S[N - 1 - i]:
+            is_same = False
+            break
+
+    if is_same:
+        # 同じならば、A円払っても回文にならない
+        print(0)
+        return
+
+    # 1文字目と最後の文字が違うならば、A円払っても回文にならない
+    # ただし、1文字目と最後の文字以外が全て同じならば、A円払っても回文にならない
+    is_same_except_1st_and_last = True
+    for i in range(1, N // 2):
+        if S[i] != S[N - 1 - i]:
+            is_same_except_1st_and_last = False
+            break
+
+    if is_same_except_1st_and_last:
+        # 1文字目と最後の文字以外が全て同じならば、A円払っても回文にならない
+        # ただし、1文字目と最後の文字以外が全て同じならば、B円払っても回文にならない
+        is_same_except_1st_and_last = True
+        for i in range(1, N // 2):
+            if S[i] != S[N - 2 - i]:
+                is_same_except_1st_and_last = False
+                break
+
+    if is_same_except_1st_and_last:
+        # 1文字目と最後の文字以外が全て同じならば、B円払っても回文にならない
+        # ただし、1文字目と最後の文字以外が全て同じならば、A円払っても回文にならない
+        is_same_except_1st_and_last = True
+        for i in range(1, N // 2):
+            if S[i] != S[N

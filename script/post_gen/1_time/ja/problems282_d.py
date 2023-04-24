@@ -1,73 +1,201 @@
-#問題文
-#N 個の頂点と M 本の辺からなる単純な（すなわち、自己ループも多重辺も含まない）無向グラフ G が与えられます。
-#i = 1, 2, ..., M について、i 番目の辺は頂点 u_i と頂点 v_i を結びます。
-#1 ≦ u < v ≦ N を満たす整数の組 (u, v) であって、下記の 2 つの条件をともに満たすものの個数を出力してください。
-#グラフ G において、頂点 u と頂点 v を結ぶ辺は存在しない。
-#グラフ G に、頂点 u と頂点 v を結ぶ辺を追加して得られるグラフは、二部グラフである。
-# 二部グラフとは？
-#無向グラフが二部グラフであるとは、下記の条件を満たすように各頂点を黒または白のどちらかの色で塗ることができることを言います。
-# 同じ色に塗られた頂点どうしを結ぶ辺は存在しない。
-#
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ min {2 × 10^5, N(N-1)/2 }
-#1 ≦ u_i, v_i ≦ N
-#グラフ G は単純
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5 4
-#4 2
-#3 1
-#5 2
-#3 2
-#
-#出力例 1
-#2
-#問題文中の条件を満たす整数の組 (u, v) は、(1, 4) と (1, 5) の 2 つです。よって、2 を出力します。
-#他の組については、例えば、(1, 3) はグラフ G において頂点 1 と頂点 3 を結ぶ辺が存在することから、
-#(4, 5) はグラフ G に頂点 4 と頂点 5 を結ぶ辺を追加して得られるグラフが二部グラフではないことから、
-#それぞれ問題文中の条件を満たしません。
-#
-#入力例 2
-#4 3
-#3 1
-#3 2
-#1 2
-#
-#出力例 2
-#0
-#与えられるグラフが二部グラフであったり連結であるとは限らないことに注意してください。
-#
-#入力例 3
-#9 11
-#4 9
-#9 1
-#8 2
-#8 3
-#9 2
-#8 4
-#6 7
-#4 6
-#7 5
-#4 5
-#7 8
-#
-#出力例 3
-#9
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    E = [[] for _ in range(N)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        E[u-1].append(v-1)
+        E[v-1].append(u-1)
+    ans = 0
+    for u in range(N):
+        for v in range(u+1, N):
+            if v in E[u]:
+                continue
+            if all(u not in E[v] for v in E[u]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    edge = [[] for i in range(N)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        edge[u-1].append(v-1)
+        edge[v-1].append(u-1)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if j in edge[i]:
+                continue
+            else:
+                if len(edge[i]) + len(edge[j]) == N-2:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,M = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for _ in range(M):
+        u,v = map(int, input().split())
+        G[u-1].append(v-1)
+        G[v-1].append(u-1)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if j not in G[i]:
+                if (len(G[i])+len(G[j]))%2==0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    u = [0]*M
+    v = [0]*M
+    for i in range(M):
+        u[i],v[i] = map(int,input().split())
+    ans = 0
+    for i in range(M):
+        for j in range(i+1,M):
+            if u[i] == u[j] or u[i] == v[j] or v[i] == u[j] or v[i] == v[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    adj = [[] for _ in range(N)]
+    for u, v in edges:
+        u -= 1
+        v -= 1
+        adj[u].append(v)
+        adj[v].append(u)
+    ans = 0
+    for i in range(M):
+        u, v = edges[i]
+        u -= 1
+        v -= 1
+        for a in adj[u]:
+            if a == v:
+                continue
+            for b in adj[v]:
+                if b == u:
+                    continue
+                if a in adj[b]:
+                    continue
+                ans += 1
+    print(ans // 6)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    import numpy as np
+    read = sys.stdin.buffer.read
+    N, M, *UV = map(int, read().split())
+    #N, M, *UV = map(int, input().split())
+    #N, M, *UV = map(int, open(0).read().split())
+    #N, M, *UV = map(int, open('problems282_d.txt').read().split())
+    #N, M, *UV = map(int, open('problems282_d_1.txt').read().split())
+    #N, M, *UV = map(int, open('problems282_d_2.txt').read().split())
+    #N, M, *UV = map(int, open('problems282_d_3.txt').read().split())
+
+    #N, M = 10**5,
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    edge = [list(map(int, input().split())) for _ in range(M)]
+    edge.sort()
+    # 連結成分の個数を求める
+    # 連結成分の個数は、辺の個数 + 1 である
+    # 連結成分の個数 - 1 を出力すればよい
+    # 連結成分の個数が 2 つ以上ある場合、
+    # 連結成分の個数 - 1 が答えとなる
+    # 連結成分の個数が 1 つの場合、
+    # 連結成分の個数 - 1 が答えとなる
+
+    # 連結成分の個数を求める
+    # 連結成分の個数は、辺の個数 + 1 である
+    # 連結成分の個数 - 1 を出力すればよい
+    # 連結成分の個数が 2 つ以上ある場合、
+    # 連結成分の個数 - 1 が答えとなる
+    # 連結成分の個数が 1 つの場合、
+    # 連結成分の個数 - 1 が答えとなる
+
+    # 連結成分の個数を求める
+    # 連結成分の個数は、辺の個数 + 1 である
+    # 連結成分の個数 - 1 を出力すればよい
+    # 連結成分の個数が 2 つ以上ある場合、
+    # 連結成分の個数 - 1 が答えとなる
+    # 連結成分の個数が 1 つの場合、
+
+=======
+Suggestion 8
+
+def solve():
+    N, M = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    # 頂点の接続関係を記録
+    graph = [[] for _ in range(N+1)]
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    # 頂点の色を記録
+    color = [0] * (N+1)
+    # 二部グラフか判定
+    def dfs(v, c):
+        color[v] = c
+        for nv in graph[v]:
+            if color[nv] == c:
+                return False
+            if color[nv] == 0 and not dfs(nv, -c):
+                return False
+        return True
+    ans = 0
+    for i in range(1, N+1):
+        if color[i] == 0:
+            if dfs(i, 1):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    # まず、与えられたグラフを作成する
+    # 二部グラフの条件を満たすグラフであることは保証されている
+    # つまり、頂点 u と頂点 v を結ぶ辺が存在しない場合は、
+    # 頂点 u と頂点 v は同じ色に塗られている
+    # したがって、同じ色に塗られている頂点どうしを結ぶ辺が存在してはいけない
+    # つまり、頂点 u と頂点 v を結ぶ辺が存在しない場合、
+    # 頂点 u と頂点 v は同じグループに属するということになる
+    # したがって、頂点 u と頂点 v を結ぶ辺が存在しない場合、
+    # 頂点 u と頂点 v を結ぶ辺を追加して得られるグラフは二部グラフである
+    # つまり、頂点 u と頂点 v を結ぶ辺が存在しない場合、
+    # 頂点 u と頂点 v を結ぶ辺を追加して得られるグラフが二部グラフである
+    # ということはない
+    # つまり、頂点 u と頂点 v を結ぶ辺が存在しない場合、
+    # 頂点 u と頂点 v を結ぶ辺を追加して得られるグラフが二部グラフではない
+    # ということはない
+    # つまり、頂点 u と頂点 v を結ぶ

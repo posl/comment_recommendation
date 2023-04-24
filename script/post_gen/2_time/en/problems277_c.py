@@ -1,58 +1,175 @@
-#Problem Statement
-#There is a 10^9-story building with N ladders.
-#Takahashi, who is on the 1-st (lowest) floor, wants to reach the highest floor possible by using ladders (possibly none).
-#The ladders are numbered from 1 to N, and ladder i connects the A_i-th and B_i-th floors. One can use ladder i in either direction to move from the A_i-th floor to the B_i-th floor or vice versa, but not between other floors.
-#Takahashi can freely move within the same floor, but cannot move between floors without using ladders.
-#What is the highest floor Takahashi can reach?
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#A_i ≠ B_i
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#A_2 B_2
-#...
-#A_N B_N
-#
-#Output
-#Print an integer representing the answer.
-#
-#Sample Input 1
-#4
-#1 4
-#4 3
-#4 10
-#8 3
-#
-#Sample Output 1
-#10
-#He can reach the 10-th floor by using ladder 1 to get to the 4-th floor and then ladder 3 to get to the 10-th floor.
-#
-#Sample Input 2
-#6
-#1 3
-#1 5
-#1 12
-#3 5
-#3 12
-#5 12
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#3
-#500000000 600000000
-#600000000 700000000
-#700000000 800000000
-#
-#Sample Output 3
-#1
-#He may be unable to move between floors.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ladders = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        ladders.append((a, b))
+    ladders.sort(key=lambda x: x[0], reverse=True)
+    ans = 1
+    for a, b in ladders:
+        if a <= ans:
+            ans = b
+        elif b <= ans:
+            ans = a
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ladders = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        ladders.append((A, B))
+    ladders.sort()
+    print(ladders[-1][1])
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+    N = int(input())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    ladders = [[] for _ in range(10**9+1)]
+    for i in range(N):
+        ladders[A[i]].append(B[i])
+        ladders[B[i]].append(A[i])
+    for i in range(1, 10**9+1):
+        ladders[i].sort()
+    q = deque()
+    q.append(1)
+    visited = [False]*(10**9+1)
+    visited[1] = True
+    while q:
+        v = q.popleft()
+        for w in ladders[v]:
+            if not visited[w]:
+                visited[w] = True
+                q.append(w)
+    for i in range(10**9, 0, -1):
+        if visited[i]:
+            print(i)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ladders = [list(map(int, input().split())) for _ in range(n)]
+    ladders.sort(key=lambda x: x[1])
+    ans = 1
+    for a, b in ladders:
+        if ans < a:
+            ans = b
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ladders = []
+    for i in range(N):
+        ladders.append(list(map(int, input().split())))
+    ladders.sort(key=lambda x: x[1])
+    for i in range(N):
+        if ladders[i][0] > ladders[i][1]:
+            ladders[i][0], ladders[i][1] = ladders[i][1], ladders[i][0]
+
+    floor = 1
+    for i in range(N):
+        if ladders[i][0] <= floor <= ladders[i][1]:
+            floor = ladders[i][1]
+    print(floor)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1], reverse=True)
+    ans = 0
+    for a, b in AB:
+        if a <= ans:
+            ans = b
+        else:
+            ans = a
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ladders = [tuple(map(int, input().split())) for _ in range(N)]
+    ladders.sort(key=lambda x: x[0])
+    pos = 1
+    for a, b in ladders:
+        if a <= pos <= b:
+            pos = b if a == pos else a
+    print(pos)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+
+    current = 1
+    for a, b in AB:
+        if current < a:
+            current = a
+        elif current < b:
+            current = b
+        else:
+            print(1)
+            return
+
+    print(current)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ladders = [list(map(int, input().split())) for _ in range(n)]
+
+    # Sort the ladders by the second element (the higher floor)
+    ladders.sort(key=lambda x: x[1])
+
+    # The highest floor that Takahashi can reach
+    highest_floor = 1
+
+    # For each ladder
+    for i in range(n):
+        # If the ladder's lower floor is higher than the current highest floor
+        if ladders[i][0] > highest_floor:
+            # Then he can't reach the higher floor using the ladder
+            continue
+        # Otherwise, update the highest floor
+        highest_floor = ladders[i][1]
+
+    # Print the highest floor that Takahashi can reach
+    print(highest_floor)
+
+=======
+Suggestion 10
+
+def readInt():
+    return int(input())

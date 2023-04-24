@@ -1,42 +1,72 @@
-#問題文
-#整数 L,R と、英小文字のみからなる文字列 S が与えられます。
-#S の L 文字目から R 文字目までの部分を反転した(すなわち、 L 文字目から R 文字目までの文字の並びを逆にした)文字列を出力してください。  
-#
-#制約
-#S は英小文字のみからなる。
-#1 ≦ |S| ≦ 10^5 (|S| は S の長さ)
-#L,R は整数
-#1 ≦ L ≦ R ≦ |S|
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#L R
-#S
-#
-#出力
-#問題文の指示通り出力せよ。
-#
-#入力例 1
-#3 7
-#abcdefgh
-#
-#出力例 1
-#abgfedch
-#abcdefgh の 3 文字目から 7 文字目までの部分を反転すると、 abgfedch となります。
-#
-#入力例 2
-#1 7
-#reviver
-#
-#出力例 2
-#reviver
-#操作を行った結果が元の文字列と同一であることもあります。
-#
-#入力例 3
-#4 13
-#merrychristmas
-#
-#出力例 3
-#meramtsirhcyrs
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L, R = map(int, input().split())
+    S = input()
+    print(S[:L-1] + S[L-1:R][::-1] + S[R:])
+
+=======
+Suggestion 2
+
+def main():
+    l, r = map(int, input().split())
+    s = input()
+    print(s[:l-1] + s[l-1:r][::-1] + s[r:])
+
+=======
+Suggestion 3
+
+def main():
+    L, R = map(int, input().split())
+    S = list(input())
+    S[L-1:R] = S[L-1:R][::-1]
+    print(''.join(S))
+
+=======
+Suggestion 4
+
+def main():
+    L, R = map(int, input().split())
+    S = list(input())
+    S[L-1:R] = S[L-1:R][::-1]
+    print("".join(S))
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    L, R = map(int, input().split())
+    S = input()
+    #処理
+    S = S[:L-1] + S[L-1:R][::-1] + S[R:]
+    #出力
+    print(S)
+
+=======
+Suggestion 6
+
+def main():
+    # L R
+    # S
+    L, R = map(int, input().split())
+    S = input()
+    print(S[:L-1]+S[L-1:R][::-1]+S[R:])
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    L, R = map(int, input().split())
+    S = input()
+    #L-1文字目までとR文字目以降を別々に取得
+    front = S[:L-1]
+    back = S[R:]
+    #L-1文字目からR文字目までを反転して取得
+    middle = S[L-1:R][::-1]
+    #結合して出力
+    print(front + middle + back)

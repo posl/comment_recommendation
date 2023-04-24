@@ -1,45 +1,167 @@
-#問題文
-#高橋君は、互いに区別出来る N 本の棒を持っています。i 本目の棒の長さは L_i です。
-#高橋君は、これらのうち 3 本の棒を使って三角形を作ろうとしています。このとき、棒の長さを a, b, c として、以下の条件がすべて成り立たなければなりません。
-#a < b + c
-#b < c + a
-#c < a + b
-#作れる三角形は何種類あるでしょうか。ただし、2 つの三角形は、そのうち一方にのみ使われている棒が存在するときに異なるとします。
-#
-#制約
-#入力は全て整数
-#3 ≤ N ≤ 2 × 10^3
-#1 ≦ L_i ≦ 10^3
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 L_2 ... L_N
-#
-#出力
-#作れる三角形が何種類あるかを出力せよ。
-#
-#入力例 1
-#4
-#3 4 2 1
-#
-#出力例 1
-#1
-#作れる三角形は、1、2、3 番目の棒から成る三角形のみです。
-#
-#入力例 2
-#3
-#1 1000 1
-#
-#出力例 2
-#0
-#作れる三角形はありません。
-#
-#入力例 3
-#7
-#218 786 704 233 645 728 389
-#
-#出力例 3
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[k] != L[i]:
+                    if L[i] + L[j] > L[k]:
+                        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    cnt = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] < L[j] + L[k]:
+                    cnt += 1
+                else:
+                    break
+    print(cnt)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k] and L[j] + L[k] > L[i] and L[k] + L[i] > L[j]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i]+L[j] > L[k] and L[i] != L[j] and L[j] != L[k] and L[k] != L[i]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        a = L[i]
+        for j in range(i+1, N-1):
+            b = L[j]
+            for k in range(j+1, N):
+                c = L[k]
+                if a < b + c and b < c + a and c < a + b:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # N = int(input())
+    # L = list(map(int, input().split()))
+    N = 7
+    L = [218, 786, 704, 233, 645, 728, 389]
+    # N = 4
+    # L = [3, 4, 2, 1]
+    # N = 3
+    # L = [1, 1000, 1]
+
+    ans = 0
+    L.sort()
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if L[i] + L[j] > L[k]:
+                    ans += 1
+                else:
+                    break
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+
+    ans = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    ans += 1
+                else:
+                    break
+    print(ans)
+
+=======
+Suggestion 9
+
+def check(a,b,c):
+	if a < b + c and b < c + a and c < a + b:
+		return True
+	else:
+		return False
+
+N = int(input())
+L = list(map(int,input().split()))
+L.sort()
+ans = 0
+for i in range(N):
+	for j in range(i+1,N):
+		for k in range(j+1,N):
+			if check(L[i],L[j],L[k]):
+				ans += 1
+print(ans)
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    l = list(map(int, input().split()))
+    return n, l

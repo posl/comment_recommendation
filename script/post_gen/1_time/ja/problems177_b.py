@@ -1,36 +1,137 @@
-#問題文
-#2 つの文字列 S, T が与えられます。
-#T が S の部分文字列となるように、S のいくつかの文字を書き換えます。
-#少なくとも何文字書き換える必要がありますか？
-#ただし、部分文字列とは連続する部分列のことを指します。例えば、xxx は yxxxy の部分文字列ですが、xxyxx の部分文字列ではありません。
-#
-#制約
-#S,T は 1 文字以上 1000 文字以下
-#T の長さは S の長さ以下
-#S,T は 英小文字のみを含む
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#S を書き換える文字数の最小値を出力せよ。
-#
-#入力例 1
-#cabacc
-#abc
-#
-#出力例 1
-#1
-#例えば S の 4 文字目の a を c に書き換えることで、S の 2～4 文字目が T と一致します。
-#S 自身は T を部分文字列に持たないので、この 1 文字を書き換えるのが最小です。
-#
-#入力例 2
-#codeforces
-#atcoder
-#
-#出力例 2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    ans = n
+    for i in range(n-m+1):
+        cnt = 0
+        for j in range(m):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    ans = 1000
+    for i in range(len(S)-len(T)+1):
+        tmp = 0
+        for j in range(len(T)):
+            if S[i+j] != T[j]:
+                tmp += 1
+        ans = min(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    ans = 0
+    for i in range(len(T)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    S_len = len(S)
+    T_len = len(T)
+    count = 0
+    for i in range(S_len-T_len+1):
+        for j in range(T_len):
+            if S[i+j] != T[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    len_s = len(s)
+    len_t = len(t)
+    min = len_t
+    for i in range(len_s-len_t+1):
+        cnt = 0
+        for j in range(len_t):
+            if s[i+j] != t[j]:
+                cnt += 1
+        if cnt < min:
+            min = cnt
+    print(min)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(len(t)):
+        ans += 1 if t[i] != s[i] else 0
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    S = list(S)
+    T = list(T)
+    S.reverse()
+    T.reverse()
+    ans = 0
+    for i in range(len(T)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    print(len(t) - max([len([1 for i in range(len(t)) if s[i+j] == t[i]]) for j in range(len(s)-len(t)+1)]))
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    #print(S,T)
+    print(len(T) - max([len([1 for j in range(len(T)) if S[i+j] == T[j]]) for i in range(len(S)-len(T)+1)]))

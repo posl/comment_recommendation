@@ -1,54 +1,109 @@
-#Problem Statement
-#You are given a string S. Each character of S is uppercase or lowercase English letter.
-#Determine if S satisfies all of the following conditions:
-#The initial character of S is an uppercase A.
-#There is exactly one occurrence of C between the third character from the beginning and the second to last character (inclusive).
-#All letters except the A and C mentioned above are lowercase.
-#
-#Constraints
-#4 ≤ |S| ≤ 10 (|S| is the length of the string S.)
-#Each character of S is uppercase or lowercase English letter.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S satisfies all of the conditions in the problem statement, print AC; otherwise, print WA.
-#
-#Sample Input 1
-#AtCoder
-#
-#Sample Output 1
-#AC
-#The first letter is A, the third letter is C and the remaining letters are all lowercase, so all the conditions are satisfied.
-#
-#Sample Input 2
-#ACoder
-#
-#Sample Output 2
-#WA
-#The second letter should not be C.
-#
-#Sample Input 3
-#AcycliC
-#
-#Sample Output 3
-#WA
-#The last letter should not be C, either.
-#
-#Sample Input 4
-#AtCoCo
-#
-#Sample Output 4
-#WA
-#There should not be two or more occurrences of C.
-#
-#Sample Input 5
-#Atcoder
-#
-#Sample Output 5
-#WA
-#The number of C should not be zero, either.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    if s[1:].replace('C', '').islower() == False:
+        print('WA')
+        return
+    print('AC')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    if s[1:].replace('C', '').islower() == False:
+        print('WA')
+        return
+    print('AC')
+    return
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == 'A' and S[2:-1].count('C') == 1 and S[1:].replace('C', '').islower():
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1 and s[1:].lower() == s[1:]:
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1 and s.replace('A','').replace('C','').islower():
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 6
+
+def check(s):
+    if s[0] != 'A':
+        return False
+    if s[2:-1].count('C') != 1:
+        return False
+    if s[1:].lower() != s[1:]:
+        return False
+    if s[2:-1].lower() != s[2:-1]:
+        return False
+    return True
+
+s = input()
+print('AC' if check(s) else 'WA')
+
+=======
+Suggestion 7
+
+def check(s):
+    if s[0] != "A":
+        return False
+    if s[2:-1].count("C") != 1:
+        return False
+    if s[1:].lower() != s[1:]:
+        return False
+    if s[2:-1].replace("C", "").lower() != s[2:-1].replace("C", ""):
+        return False
+    return True
+
+s = input()
+
+=======
+Suggestion 8
+
+def check_ac(s):
+    if s[0] != 'A':
+        return False
+    if s[2:-1].count('C') != 1:
+        return False
+    if not s[1:].replace('C', '').islower():
+        return False
+    return True

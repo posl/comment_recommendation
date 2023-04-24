@@ -1,70 +1,192 @@
-#Problem Statement
-#You are given a sequence of length N: A=(A_1,A_2,...,A_N). The following action on this sequence is called an operation.
-#First, choose an integer i such that 1 ≦ i ≦ N.
-#Next, choose and do one of the following.
-#Add 1 to A_i.
-#Subtract 1 from A_i.
-#
-#Answer Q questions.
-#The i-th question is the following.
-#Consider performing zero or more operations to change every element of A to X_i. Find the minimum number of operations required to do so.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N,Q ≦ 2 × 10^5
-#0 ≦ A_i ≦ 10^9
-#0 ≦ X_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#A_1 A_2 ... A_N
-#X_1
-#X_2
-#.
-#.
-#.
-#X_Q
-#
-#Output
-#Print Q lines.
-#The i-th line should contain the answer to the i-th question as an integer.
-#
-#Sample Input 1
-#5 3
-#6 11 2 5 5
-#5
-#20
-#0
-#
-#Sample Output 1
-#10
-#71
-#29
-#We have A=(6,11,2,5,5) and three questions in this input.
-#For the 1-st question, you can change every element of A to 5 in 10 operations as follows.
-#Subtract 1 from A_1.
-#Subtract 1 from A_2 six times.
-#Add 1 to A_3 three times.
-#It is impossible to change every element of A to 5 in 9 or fewer operations.
-#For the 2-nd question, you can change every element of A to 20 in 71 operations.
-#For the 3-rd question, you can change every element of A to 0 in 29 operations.
-#
-#Sample Input 2
-#10 5
-#1000000000 314159265 271828182 141421356 161803398 0 777777777 255255255 536870912 998244353
-#555555555
-#321654987
-#1000000000
-#789456123
-#0
-#
-#Sample Output 2
-#3316905982
-#2811735560
-#5542639502
-#4275864946
-#4457360498
-#The output may not fit into 32-bit integers.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    return N, Q, A, X
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    b = [0] * (n + 1)
+    for i in range(n):
+        b[i] += a[i]
+        b[i + 1] -= a[i]
+    for i in range(n):
+        b[i + 1] += b[i]
+    for i in range(q):
+        print(x[i] * n + b[n] - b[0])
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        ans = 0
+        left = 0
+        right = n - 1
+        while left < right:
+            if a[left] < x[i]:
+                left += 1
+            if a[right] > x[i]:
+                right -= 1
+            if a[left] >= x[i] and a[right] <= x[i]:
+                break
+        ans += min(abs(a[left] - x[i]), abs(a[right] - x[i]))
+        ans += abs(a[left] - a[right])
+        print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    for x in X:
+        i = 0
+        j = N - 1
+        while i < j:
+            if A[i] < x:
+                i += 1
+            else:
+                j -= 1
+        if A[i] < x:
+            print(2 * (x - A[i]) + N)
+        else:
+            print(N)
+
+=======
+Suggestion 5
+
+def solve():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+
+    s = sum(a)
+    for i in range(q):
+        print(s + x[i])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    for i in range(Q):
+        X.append(int(input()))
+    A.sort()
+    s = [0] * (N+1)
+    for i in range(N):
+        s[i+1] = s[i] + A[i]
+    for i in range(Q):
+        left = 0
+        right = N-1
+        while left < right:
+            mid = (left + right) // 2
+            if A[mid] >= X[i]:
+                right = mid
+            else:
+                left = mid + 1
+        print(N* X[i] - s[left] - (N-left) * X[i])
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    A.sort()
+    A.append(0)
+    A.append(10**9)
+
+    for x in X:
+        s = 0
+        t = 0
+        for i in range(N+1):
+            if A[i] <= x:
+                s += A[i]
+            else:
+                t += A[i]
+        print(t-s)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+
+    # compute
+    s = sum(a)
+    for i in range(q):
+        print(s + x[i] * n)
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for i in range(Q)]
+
+    A.sort()
+    A.append(0)
+    A.append(10**9)
+    A.sort()
+
+    ans = 0
+    for i in range(1, N+2):
+        ans += (A[i]-A[i-1]) * (i-1) * (N-i+1)
+
+    for x in X:
+        print(ans + (x-A[0])*(N+1))
+
+=======
+Suggestion 10
+
+def solve(n,q,a,x):
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - x
+    b.sort()
+    s = sum(b)
+    res = 0
+    for i in range(n):
+        if b[i] > 0:
+            break
+        res += -b[i]
+    for i in range(n-1,-1,-1):
+        if b[i] < 0:
+            break
+        res += b[i]
+    return res
+
+n,q = map(int,input().split())
+a = list(map(int,input().split()))
+x = [0] * q
+for i in range(q):
+    x[i] = int(input())
+for i in range(q):
+    print(solve(n,q,a,x[i]))

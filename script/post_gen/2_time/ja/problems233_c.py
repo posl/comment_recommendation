@@ -1,60 +1,202 @@
-#問題文
-#N 個の袋があります。
-#袋 i には L_i 個のボールが入っていて、袋 i の j(1≦ j≦ L_i) 番目のボールには正の整数 a_{i,j} が書かれています。  
-#それぞれの袋から 1 つずつボールを取り出します。
-#取り出したボールに書かれた数の総積が X になるような取り出し方は何通りありますか？  
-#ただし、書かれた数が同じであっても全てのボールは区別します。
-#
-#制約
-#N ≧ 2
-#L_i ≧ 2
-#袋に入っているボールの個数の総積は 10^5 を超えない。すなわち、prod_{i=1}^{N}L_i ≦ 10^5
-#1 ≦ a_{i,j} ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#入力に含まれる値は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2 40
-#3 1 8 4
-#2 10 5
-#
-#出力例 1
-#2
-#袋 1 の 3 番目のボールと袋 2 の 1 番目のボールを選ぶと、a_{1,3} × a_{2,1} = 4 × 10 = 40 となります。
-#袋 1 の 2 番目のボールと袋 2 の 2 番目のボールを選ぶと、a_{1,2} × a_{2,2} = 8 × 5 = 40 となります。
-#これ以外に総積が 40 になる取り出し方は存在しないので、答えは 2 です。
-#
-#入力例 2
-#3 200
-#3 10 10 10
-#3 10 10 10
-#5 2 2 2 2 2
-#
-#出力例 2
-#45
-#書かれた数が同じであっても全てのボールは区別することに注意してください。  
-#
-#入力例 3
-#3 1000000000000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#
-#出力例 3
-#0
-#総積が X になる取り出し方が 1 つも存在しないこともあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    from math import gcd
+    input = sys.stdin.readline
+    N, X = map(int, input().split())
+    L = [list(map(int, input().split())) for _ in range(N)]
+    A = [L[i][1:] for i in range(N)]
+    G = [gcd(A[i][j], A[i][j+1]) for i in range(N) for j in range(L[i][0]-1)]
+    for i in range(N):
+        for j in range(L[i][0]):
+            G.append(gcd(X, A[i][j]))
+    G = list(set(G))
+    ans = 0
+    for i in range(len(G)):
+        cnt = 0
+        for j in range(N):
+            for k in range(L[j][0]):
+                if A[j][k] % G[i] == 0:
+                    cnt += 1
+        if cnt == N * L[0][0]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    N, X = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+
+    #処理
+    ans = 0
+    for i in range(N):
+        for j in range(1, L[i][0]+1):
+            if X % L[i][j] == 0:
+                ans += 1
+
+    #出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = [[int(x) for x in input().split()] for _ in range(N)]
+    #print(N, X)
+    #prin
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    #N個の袋の中身をリストに格納
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #袋の中身を一つずつ取り出す
+    for a in A:
+        #袋の中身の個数を取得
+        L = a.pop(0)
+        #袋の中身の数を格納
+        a = a
+    #袋の中身を全て掛け合わせる
+    #全ての袋の中身を掛け合わせた結果を格納するリスト
+    A = []
+    #袋の中身の個数を格納するリスト
+    L = []
+    #袋の中身を全て掛け合わせる
+    for a in A:
+        #袋の中身の個数を取得
+        l = a.pop(0)
+        #袋の中身の数を格納
+        a = a
+        #袋の中身の個数を格納
+        L.append(l)
+        #袋の中身を全て掛け合わせる
+        for i in range(0, l):
+            for j in range(i + 1, l):
+                #袋の中身を全て掛け合わせた結果を格納
+                A.append(a[i] * a[j])
+    #袋の中身を全て掛け合わせた結果をソート
+    A.sort()
+    #袋の中身の個数をソート
+    L.sort()
+    #袋の中身を全て掛け合わせた結果の個数を格納
+    l = len(A)
+    #袋の中身を全て掛け合わせた結果の個数を格納
+    L = len(L)
+    #袋の中身を全て掛け合わせた結果の個数を格納
+
+=======
+Suggestion 7
+
+def main():
+    #データ入力
+    N, X = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    #Xの素因数分解
+    X_list = prime_factorize(X)
+
+    #Aの素因数分解
+    A_list = []
+    for i in range(N):
+        A_list.append([])
+        for j in range(1, A[i][0]+1):
+            A_list[i].append(prime_factorize(A[i][j]))
+
+    #Aの素因数分解のリストを1つのリストにまとめる
+    A_list_sum = []
+    for i in range(N):
+        A_list_sum += A_list[i]
+
+    #Xの素因数分解をAの素因数分解のリストにあるかどうかでカウントする
+    count = 0
+    for i in range(len(X_list)):
+        if X_list[i] in A_list_sum:
+            count += 1
+
+    #Xの素因数分解の数と一致したらOK
+    if count == len(X_list):
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N, X)
+    #print(A)
+    #N=2, X=40
+    #A=[[3, 1, 8, 4], [2, 10, 5]]
+    #N=3, X=200
+    #A=[[3, 10, 10, 10], [3, 10, 10, 10], [5, 2, 2, 2, 2, 2]]
+    #N=3, X=1000000000000000000
+    #A=[[2, 1000000000, 1000000000], [2, 1000000000, 1000000000], [2, 1000000000, 1000000000]]
+    ans = 0
+    #for i in r
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N, X = map(int, input().split())
+    #N 個の袋の情報を入れるリスト
+    bag = []
+    #N 個の袋の情報を入力
+    for i in range(N):
+        bag.append(list(map(int, input().split())))
+    #袋 i の j 番目のボールに書かれた数の総積が X になる取り出し方の個数
+    ans = 0
+    #袋 i の j 番目のボールを選ぶか選ばないかの全探索
+    for i in range(2 ** N):
+        #袋 i の j 番目のボールを選ぶか選ばないかのフラグ
+        flag = [0] * N
+        #袋 i の j 番目のボールを選ぶか選ばないかのフラグの設定
+        for j in range(N):
+            if (i >> j) & 1:
+                flag[j] = 1
+        #袋 i の j 番目のボールに書かれた数の総積
+        mul = 1
+        #袋 i の j 番目のボールに書かれた数の総積の計算
+        for j in range(N):
+            if flag[j] == 1:
+                mul *= bag[j][1 + flag[j]]
+        #袋 i の j 番目のボールに書かれた数の総積が X になる取り出し方の個数の計算
+        if mul == X:
+            ans += 1
+    #出力
+    print(ans)

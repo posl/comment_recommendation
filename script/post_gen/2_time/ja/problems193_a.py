@@ -1,35 +1,61 @@
-#問題文
-#定価 A 円の商品が B 円で売られているとき、この商品の売値は定価の何パーセント引きですか？
-#
-#制約
-#A, B は整数
-#1 ≤ B < A ≤ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#答えを小数で出力せよ。
-#想定解答との絶対誤差または相対誤差が 10^{-2} 以下であれば正解と判定される。
-#
-#入力例 1
-#100 80
-#
-#出力例 1
-#20.0
-#定価 100 円の商品が 80 円で売られているとき、この売値は定価の 20 %引きです。
-#
-#入力例 2
-#7 6
-#
-#出力例 2
-#14.285714285714285714
-#
-#入力例 3
-#99999 99998
-#
-#出力例 3
-#0.00100001000010000100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print((A - B) / A * 100)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print((a - b) / a * 100)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print((1 - b / a) * 100)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print((a - b) * 100 / a)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(100 - (B / A) * 100)
+
+=======
+Suggestion 6
+
+def main():
+    # A, B = map(int, input().split())
+    A, B = map(int, input().split())
+    print((A-B)/A*100)
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    print((A-B)*100/A)
+
+=======
+Suggestion 8
+
+def main():
+    # 標準入力から数値を受け取る
+    A, B = map(int, input().split())
+
+    # 計算結果を出力する
+    print((A - B) / A * 100)

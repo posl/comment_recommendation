@@ -1,52 +1,134 @@
-#問題文
-#x 軸の正の向きが右、y 軸の正の向きが上であるような xy 座標平面において、点 (a,b) を原点を中心として反時計回りに d 度回転させた点を求めてください。
-#
-#制約
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b d
-#
-#出力
-#求めるべき点を (a',b') とするとき、 a' と b' をこの順に空白区切りで出力せよ。
-#なお、各出力について、解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#2 2 180
-#
-#出力例 1
-#-2 -2
-#(2,2) を原点を中心として反時計回りに 180 度回転させた点は、(2,2) を原点について対称な位置に移動させた点であり、(-2,-2) となります。
-#
-#入力例 2
-#5 0 120
-#
-#出力例 2
-#-2.49999999999999911182 4.33012701892219364908
-#(5,0) を原点を中心として反時計回りに 120 度回転させた点は (-(5/2) , ((5(3)^(1/2))/2)) です。
-#この例での出力はこれらの値と厳密には一致しませんが、誤差が十分に小さいため正解として扱われます。
-#
-#入力例 3
-#0 0 11
-#
-#出力例 3
-#0.00000000000000000000 0.00000000000000000000
-#(a,b) が原点(回転の中心)なので回転させても座標が変わりません。
-#
-#入力例 4
-#15 5 360
-#
-#出力例 4
-#15.00000000000000177636 4.99999999999999555911
-#360 度回転させたので座標が変わりません。
-#
-#入力例 5
-#-505 191 278
-#
-#出力例 5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate(a,b,d):
+    import math
+    rad = math.radians(d)
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    return x,y
+
+a,b,d = map(int, input().split())
+x,y = rotate(a,b,d)
+print(x,y)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, d = map(int, input().split())
+    import math
+    rad = math.radians(d)
+    x = a*math.cos(rad) - b*math.sin(rad)
+    y = a*math.sin(rad) + b*math.cos(rad)
+    print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,d = map(int, input().split())
+    import math
+    rad = math.radians(d)
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    print(x,y)
+
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    # -*- coding: utf-8 -*-
+    # 整数の入力
+    a,b,d = map(int, input().split())
+    # スペース区切りの整数の入力
+    #a = int(input())
+    #b = int(input())
+    # 出力
+    #print("{} {}".format((a+b+c), s))
+    #print("{}".format(s))
+    #print("{:.10f} {:.10f}".format((a+b+c), s))
+    #print("{:.10f}".format(s))
+    #print("{:.10f} {:.10f}".format(a,b))
+    #print("{:.10f} {:.10f}".format(a,b))
+    print("{:.10f} {:.10f}".format(a,b))
+    return 0
+
+=======
+Suggestion 5
+
+def main():
+    a,b,d = map(int,input().split())
+    #print(a,b,d)
+    x = a * math.cos(math.radians(d)) - b * math.sin(math.radians(d))
+    y = a * math.sin(math.radians(d)) + b * math.cos(math.radians(d))
+    print(x,y)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    import math
+    a,b,d = map(int, input().split())
+    rad = math.radians(d)
+    cos = math.cos(rad)
+    sin = math.sin(rad)
+    x = a * cos - b * sin
+    y = a * sin + b * cos
+    print(x,y)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,d = map(int,input().split())
+    from math import cos,sin,pi
+    rad = d * pi / 180
+    x = a * cos(rad) - b * sin(rad)
+    y = a * sin(rad) + b * cos(rad)
+    print(x,y)
+
+=======
+Suggestion 8
+
+def rotate(x,y,d):
+    import math
+    rad = math.radians(d)
+    x_dash = x*math.cos(rad) - y*math.sin(rad)
+    y_dash = x*math.sin(rad) + y*math.cos(rad)
+    return [x_dash,y_dash]
+
+a,b,d = input().split()
+a = float(a)
+b = float(b)
+d = float(d)
+x,y = rotate(a,b,d)
+print(x,y)
+
+=======
+Suggestion 9
+
+def rotate(x, y, d):
+    from math import cos, sin, radians
+    a = cos(radians(d))
+    b = sin(radians(d))
+    return a*x - b*y, b*x + a*y
+
+a, b, d = map(int, input().split())
+x, y = rotate(a, b, d)
+print(x, y)
+
+=======
+Suggestion 10
+
+def main():
+    a, b, d = map(int, input().split())
+    #print(a, b, d)
+    #print(math.cos(math.radians(d)))
+    #print(math.sin(math.radians(d)))
+    print(a * math.cos(math.radians(d)) - b * math.sin(math.radians(d)), a * math.sin(math.radians(d)) + b * math.cos(math.radians(d)))

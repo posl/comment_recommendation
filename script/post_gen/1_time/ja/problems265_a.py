@@ -1,48 +1,150 @@
-#問題文
-#果物屋さんでりんごが売られています。
-#あなたは次の操作を好きな順で好きなだけ繰り返すことができます。
-#X 円を払ってりんごを 1 個手に入れる。
-#Y 円を払ってりんごを 3 個手に入れる。
-#りんごをちょうど N 個手に入れるには最低何円必要ですか？  
-#
-#制約
-#1 ≦ X ≦ Y ≦ 100
-#1 ≦ N ≦ 100
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#10 25 10
-#
-#出力例 1
-#85
-#25 円払って 3 個のりんごを手に入れる操作を 3 回繰り返した後、10 円払って 1 個のりんごを手に入れると丁度 10 個のりんごを手に入れられます。このときあなたは 85 円を消費します。
-#これより少ない金額でちょうど 10 個のりんごを手に入れることはできないので、答えは 85 円になります。
-#
-#入力例 2
-#10 40 10
-#
-#出力例 2
-#100
-#10 円払って 1 個のりんごを手に入れる操作を 10 回繰り返すのが最適です。
-#
-#入力例 3
-#100 100 2
-#
-#出力例 3
-#200
-#100 円を払って 1 個のりんごを手に入れる操作を 2 回繰り返す以外に ちょうど 2 個のりんごを手に入れる方法はありません。
-#
-#入力例 4
-#100 100 100
-#
-#出力例 4
-#3400
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, N = map(int, input().split())
+    ans = 0
+    while N > 0:
+        if N >= 3:
+            ans += Y
+            N -= 3
+        else:
+            ans += X
+            N -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, N = map(int, input().split())
+    ans = 0
+    while N > 0:
+        if N >= 3:
+            N -= 3
+            ans += Y
+        else:
+            N -= 1
+            ans += X
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    x, y, n = map(int, input().split())
+    ans = 0
+    ans = (n//3) * y + (n%3) * x
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    X, Y, N = map(int, input().split())
+    # 処理
+    ans = 0
+    while N > 0:
+        if N % 3 == 0:
+            ans += Y * (N // 3)
+            N -= N // 3 * 3
+        else:
+            ans += X
+            N -= 1
+    #出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    x,y,n = map(int,input().split())
+    #print(x,y,n)
+    ans = 0
+    while n > 0:
+        if n%3 == 0:
+            ans += y
+            n -= 3
+        else:
+            ans += x
+            n -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    x, y, n = map(int, input().split())
+    print((n//3)*min(x*3,y) + (n%3)*x)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    X, Y, N = map(int, input().split())
+    # 処理
+    # 1個のりんごを買うのに必要な金額
+    A = X
+    # 3個のりんごを買うのに必要な金額
+    B = Y
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った商
+    C = (B - A) // 2
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った余り
+    D = (B - A) % 2
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った商をNで割った商
+    E = N // C
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った商をNで割った余り
+    F = N % C
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った商をNで割った商に3個のりんごを買うのに必要な金額を掛けた金額
+    G = E * B
+    # 1個のりんごを買うのに必要な金額を3個のりんごを買うのに必要な金額で割った商をNで割った余りに1個のりんごを買うのに必
+
+=======
+Suggestion 8
+
+def main():
+    x,y,n = map(int,input().split())
+    a = x
+    b = y
+    c = 0
+    for i in range(n):
+        a += x
+        b += y
+        if a <= b:
+            c = a
+        else:
+            c = b
+    print(c)
+
+=======
+Suggestion 9
+
+def main():
+    x,y,n = map(int,input().split())
+    print(n*x if n%2==1 else n*y if n%3==0 else n//3*y+(n%3)*x)
+
+=======
+Suggestion 10
+
+def main():
+    x, y, n = map(int, input().split())
+    # ループの回数
+    loop = n // 3
+    # 余り
+    mod = n % 3
+    # 答え
+    ans = 0
+    # 3個買う場合
+    if mod == 0:
+        ans = loop * y
+    # 1個買う場合
+    elif mod == 1:
+        ans = loop * y + x
+    # 2個買う場合
+    else:
+        ans = loop * y + x * 2
+    print(ans)

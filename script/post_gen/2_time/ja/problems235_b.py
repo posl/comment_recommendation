@@ -1,46 +1,114 @@
-#問題文
-#N 個の台が一列に並んでおり、左から i 番目の台の高さは H_i です。
-#高橋君は最初、左端の台の上に立っています。
-#高橋君は高い所が好きなので、次のルールで可能な限り移動を繰り返します。
-#いま立っているのが右端の台ではなく、かつ、右隣にある台の高さが自分がいま立っている台より高いとき、右隣の台に移動する
-#最終的に高橋君が立っている台の高さを求めてください。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 ... H_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#5
-#1 5 10 4 2
-#
-#出力例 1
-#10
-#最初、高橋君は左端にある高さ 1 の台に立っています。右隣の台の高さは 5 であり、いま立っている台より高いので、右隣の台に移動します。
-#移動後、高橋君は左から 2 番目にある高さ 5 の台に立っています。右隣の台の高さは 10 であり、いま立っている台より高いので、右隣の台に移動します。
-#移動後、高橋君は左から 3 番目にある高さ 10 の台に立っています。右隣の台の高さは 4 であり、いま立っている台より低いので、高橋君は移動をやめます。
-#よって、最終的に高橋君が立っている台の高さは 10 です。
-#
-#入力例 2
-#3
-#100 1000 100000
-#
-#出力例 2
-#100000
-#
-#入力例 3
-#4
-#27 1828 1828 9242
-#
-#出力例 3
-#1828
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if ans < H[i]:
+            ans = H[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    h = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-1):
+        if h[i] >= h[i+1]:
+            h[i+1] = h[i]
+        ans = max(ans,h[i+1])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    max_H = 0
+
+    for i in range(N):
+        if H[i] >= max_H:
+            max_H = H[i]
+
+    print(max_H)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    print(max(H))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    print(max(h))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    #print(N)
+    #print(H)
+    max = 0
+    for i in range(N):
+        if max <= H[i]:
+            max = H[i]
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+    #print(N)
+    #print(H)
+    maxH = H[0]
+    for i in range(1,N):
+        if H[i] >= maxH:
+            maxH = H[i]
+    print(maxH)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+    #print(N)
+    #print(H)
+    H_max = H[0]
+    for i in range(1,N):
+        if H[i-1] <= H[i]:
+            H_max = H[i]
+    print(H_max)
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N = int(input())
+    H = list(map(int, input().split()))
+    # ここに処理を書く
+    max_h = H[0]
+    for i in range(N):
+        if H[i] >= max_h:
+            max_h = H[i]
+    # 出力
+    print(max_h)

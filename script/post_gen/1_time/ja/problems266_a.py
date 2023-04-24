@@ -1,31 +1,43 @@
-#問題文
-#英小文字からなる長さが奇数の文字列 S が与えられます。
-#S の中央の文字を出力してください。
-#中央の文字とは
-#ある長さが奇数の文字列 T について、 T の長さを |T| として、T の前から ((|T|+1)/(2)) 番目の文字を中央の文字とします。
-#
-#制約
-#S は英小文字からなる長さが奇数の文字列
-#S の長さは 1 以上 99 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#atcoder
-#
-#出力例 1
-#o
-#atcoder の中央の文字は o です。
-#
-#入力例 2
-#a
-#
-#出力例 2
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S[int((len(S)+1)/2)-1])
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[len(s)//2])
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S[len(S)//2])
+
+=======
+Suggestion 4
+
+def main():
+    # 文字列を入力
+    s = input()
+    # 文字列の長さを取得
+    l = len(s)
+    # 文字列の長さを2で割った値を取得
+    n = l // 2
+    # 文字列の長さを2で割った値を取得
+    print(s[n])
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    print(s[len(s)//2])
+    return

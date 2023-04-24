@@ -1,42 +1,157 @@
-#問題文
-#高橋君は青と赤の 2 色のボールを持っており、これらを一列に並べようとしています。
-#初め、列にボールはありません。
-#根気のある高橋君は、次の操作を 10^{100} 回繰り返します。
-#列の末尾に、A 個の青いボールを加える。その後、列の末尾に B 個の赤いボールを加える。
-#こうしてできる列の先頭から N 個のボールのうち、青いボールの個数はいくつでしょうか。
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < A + B ≦ 10^{18}
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#列の先頭から N 個のボールのうち、青いボールの個数を出力せよ。
-#
-#入力例 1
-#8 3 4
-#
-#出力例 1
-#4
-#青いボールをb、赤いボールを rで表すと、列の先頭から 8 個のボールは bbbrrrrb であるので、このうち青いボールは 4 個です。
-#
-#入力例 2
-#8 0 4
-#
-#出力例 2
-#0
-#そもそも赤いボールしか並んでいません。
-#
-#入力例 3
-#6 2 4
-#
-#出力例 3
-#2
-#bbrrrr のうち青いボールは 2 個です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    if A + B == 0:
+        print(0)
+        return
+    if A == 0:
+        print(0)
+        return
+    if B == 0:
+        print(N)
+        return
+
+    if A > B:
+        A, B = B, A
+
+    if N // (A + B) == 0:
+        print(N // (A + B) * A + min(N % (A + B), A))
+    else:
+        print(N // (A + B) * A + min(N % (A + B), A))
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    # N, A, B = 8, 3, 4
+    # N, A, B = 8, 0, 4
+    # N, A, B = 6, 2, 4
+    if A == 0:
+        print(0)
+    elif A == 0 and B == 0:
+        print(0)
+    elif A + B > N:
+        print(N)
+    else:
+        print(A * (N // (A + B)) + min(A, N % (A + B)))
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif A + B == 0:
+        print(N)
+    else:
+        print(N // (A + B) * A + min(A, N % (A + B)))
+
+=======
+Suggestion 4
+
+def main():
+    n, a, b = map(int, input().split())
+
+    if a == 0:
+        print(0)
+        return
+    elif b == 0:
+        print(n)
+        return
+
+    q, r = divmod(n, a + b)
+    ans = a * q + min(a, r)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    if a == 0:
+        print(0)
+        return
+    if b == 0:
+        print(n)
+        return
+    print((n // (a+b)) * a + min(a, n % (a+b)))
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif A + B == 0:
+        print(0)
+    else:
+        print(min(N, (N // (A + B)) * A + min(N % (A + B), A)))
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+
+    if A == 0 or B == 0:
+        print(0)
+        return
+
+    if A + B > N:
+        print(0)
+        return
+
+    if A + B == N:
+        print(A)
+        return
+
+    if A + B < N:
+        if N % (A + B) == 0:
+            print(A * (N // (A + B)))
+            return
+        else:
+            print(A * (N // (A + B)) + min(A, N % (A + B)))
+            return
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, A, B = map(int, input().split())
+    #処理
+    if A == 0:
+        print(0)
+    elif A + B <= N:
+        print(A * (N // (A + B)) + min(A, N % (A + B)))
+    else:
+        print(min(A, N))
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    n, a, b = map(int, input().split())
+    # 処理
+    if a == 0 or b == 0:
+        print(0)
+    else:
+        if a > b:
+            print((n//(a+b))*a + min(n%(a+b), a))
+        else:
+            print((n//(a+b))*b + min(n%(a+b), b))
+
+=======
+Suggestion 10
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(N, A) - abs(A - B) // 2)

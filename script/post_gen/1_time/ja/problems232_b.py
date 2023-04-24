@@ -1,69 +1,170 @@
-#問題文
-#高橋君は英小文字からなる文字列 S を持っています。
-#高橋君は文字列 S に対して、下記の操作をちょうど 1 回行います。
-#まず、非負整数 K を選ぶ。
-#その後、S の各文字を K 個後ろの英小文字に変更する。
-#ただし、
-#a の 1 個後ろの英小文字は b であり、
-#b の 1 個後ろの英小文字は c であり、
-#c の 1 個後ろの英小文字は d であり、
-#...
-#y の 1 個後ろの英小文字は z であり、
-#z の 1 個後ろの英小文字は a です。
-#例えば、b の 4 個後ろの英小文字は f であり、y の 3 個後ろの英小文字は b です。
-#文字列 T が与えられます。
-#高橋君が上記の操作によって S を T に一致させることができるかを判定してください。
-#
-#制約
-#S と T はそれぞれ英小文字からなる長さ 1 以上 10^5 以下の文字列
-#S の長さと T の長さは等しい
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#高橋君が S を T に一致させることができる場合は Yes と出力し、
-#できない場合は No と出力せよ。
-#
-#入力例 1
-#abc
-#ijk
-#
-#出力例 1
-#Yes
-#高橋君が K=8 を選ぶと、
-#a は 8 個後ろの i に
-#b は 8 個後ろの j に
-#c は 8 個後ろの k に
-#それぞれ変更され、S と T が一致します。
-#高橋君が S を T に一致させることができるため Yes と出力します。
-#
-#入力例 2
-#z
-#a
-#
-#出力例 2
-#Yes
-#高橋君が K=1 を選ぶと S と T が一致します。
-#z の 1 個後ろの英小文字は a であることに注意してください。
-#
-#入力例 3
-#ppq
-#qqp
-#
-#出力例 3
-#No
-#高橋君は非負整数 K をどのように選んでも S を T に一致させることができません。
-#よって、No と出力します。
-#
-#入力例 4
-#atcoder
-#atcoder
-#
-#出力例 4
-#Yes
-#高橋君が K=0 を選ぶと S と T が一致します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    for i in range(1, len(S)):
+        if S[i:] + S[:i] == T:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if (ord(t[i]) - ord(s[i]) + 26) % 26 != 0:
+            print("No")
+            exit()
+    print("Yes")
+    return
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] == t[i]:
+            continue
+        elif s[i] == 'a' and t[i] == 'z':
+            continue
+        elif s[i] == 'z' and t[i] == 'a':
+            continue
+        elif ord(s[i]) + 1 == ord(t[i]):
+            continue
+        elif ord(s[i]) - 1 == ord(t[i]):
+            continue
+        else:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    for i in range(26):
+        if S == T:
+            print("Yes")
+            return
+        S = "".join([chr((ord(s) - ord("a") + 1) % 26 + ord("a")) for s in S])
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    for i in range(1, 26):
+        tmp = ''
+        for c in s:
+            tmp += chr((ord(c) - ord('a') + i) % 26 + ord('a'))
+        if tmp == t:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] == t[i]:
+            continue
+        if ord(s[i]) > ord(t[i]):
+            if ord(s[i]) - ord(t[i]) <= 13:
+                continue
+            else:
+                print("No")
+                return
+        else:
+            if ord(t[i]) - ord(s[i]) <= 13:
+                continue
+            else:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+
+    if s == t:
+        print("Yes")
+        return
+
+    for i in range(1, 26):
+        if "".join([chr((ord(c) - ord("a") + i) % 26 + ord("a")) for c in s]) == t:
+            print("Yes")
+            return
+
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        for k in range(1, 26):
+            if s == ''.join([chr((ord(c) - ord('a') + k) % 26 + ord('a')) for c in t]):
+                print('Yes')
+                return
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(1, 26):
+        if t == "".join([chr(((ord(c) - 97 + i) % 26) + 97) for c in s]):
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    if len(S) == len(T):
+        for i in range(26):
+            if S == T:
+                print('Yes')
+                exit()
+            S = S[1:] + S[0]
+    print('No')

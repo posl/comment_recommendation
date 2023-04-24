@@ -1,68 +1,280 @@
-#Problem Statement
-#There is a grid of square cells with H horizontal rows and W vertical columns. The cell at the i-th row and the j-th column will be denoted as Cell (i, j).
-#In Cell (i, j), a_{ij} coins are placed.
-#You can perform the following operation any number of times:
-#Operation: Choose a cell that was not chosen before and contains one or more coins, then move one of those coins to a vertically or horizontally adjacent cell.
-#Maximize the number of cells containing an even number of coins.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ H, W ≦ 500
-#0 ≦ a_{ij} ≦ 9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#a_{11} a_{12} ... a_{1W}
-#a_{21} a_{22} ... a_{2W}
-#:
-#a_{H1} a_{H2} ... a_{HW}
-#
-#Output
-#Print a sequence of operations that maximizes the number of cells containing an even number of coins, in the following format:
-#N
-#y_1 x_1 y_1' x_1'
-#y_2 x_2 y_2' x_2'
-#:
-#y_N x_N y_N' x_N'
-#That is, in the first line, print an integer N between 0 and H × W (inclusive), representing the number of operations.
-#In the (i+1)-th line (1 ≦ i ≦ N), print four integers y_i, x_i, y_i' and x_i' (1 ≦ y_i, y_i' ≦ H and 1 ≦ x_i, x_i' ≦ W), representing the i-th operation. These four integers represents the operation of moving one of the coins placed in Cell (y_i, x_i) to a vertically or horizontally adjacent cell, (y_i', x_i').
-#Note that if the specified operation violates the specification in the problem statement or the output format is invalid, it will result in Wrong Answer.
-#
-#Sample Input 1
-#2 3
-#1 2 3
-#0 1 1
-#
-#Sample Output 1
-#3
-#2 2 2 3
-#1 1 1 2
-#1 3 1 2
-#Every cell contains an even number of coins after the following sequence of operations:
-#Move the coin in Cell (2, 2) to Cell (2, 3).
-#Move the coin in Cell (1, 1) to Cell (1, 2).
-#Move one of the coins in Cell (1, 3) to Cell (1, 2).
-#
-#Sample Input 2
-#3 2
-#1 0
-#2 1
-#1 0
-#
-#Sample Output 2
-#3
-#1 1 1 2
-#1 2 2 2
-#3 1 3 2
-#
-#Sample Input 3
-#1 5
-#9 9 9 9 9
-#
-#Sample Output 3
-#2
-#1 1 1 2
-#1 3 1 4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = []
+    for i in range(H):
+        for j in range(W):
+            if (i+j) % 2 == 1 and A[i][j] % 2 == 1:
+                if j+1 < W:
+                    ans.append((i+1, j+1, i+1, j+2))
+                    A[i][j+1] += 1
+                elif i+1 < H:
+                    ans.append((i+1, j+1, i+2, j+1))
+                    A[i+1][j] += 1
+    for i in range(H):
+        for j in range(W-1):
+            if A[i][j] % 2 == 1:
+                ans.append((i+1, j+1, i+1, j+2))
+                A[i][j+1] += 1
+    print(len(ans))
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = []
+    for i in range(H):
+        for j in range(W):
+            if i % 2 == 0 and j != W - 1:
+                if A[i][j] % 2 == 1:
+                    ans.append((i + 1, j + 1, i + 1, j + 2))
+                    A[i][j + 1] += 1
+            elif i % 2 == 0 and j == W - 1:
+                if i != H - 1 and A[i][j] % 2 == 1:
+                    ans.append((i + 1, j + 1, i + 2, j + 1))
+                    A[i + 1][j] += 1
+            elif i % 2 == 1 and j != 0:
+                if A[i][j] % 2 == 1:
+                    ans.append((i + 1, j + 1, i + 1, j))
+                    A[i][j - 1] += 1
+            elif i % 2 == 1 and j == 0:
+                if i != H - 1 and A[i][j] % 2 == 1:
+                    ans.append((i + 1, j + 1, i + 2, j + 1))
+                    A[i + 1][j] += 1
+    print(len(ans))
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = []
+    for i in range(H):
+        for j in range(W-1):
+            if A[i][j] % 2 == 1:
+                A[i][j] -= 1
+                A[i][j+1] += 1
+                ans.append([i+1, j+1, i+1, j+2])
+    for i in range(H-1):
+        if A[i][W-1] % 2 == 1:
+            A[i][W-1] -= 1
+            A[i+1][W-1] += 1
+            ans.append([i+1, W, i+2, W])
+    print(len(ans))
+    for i in ans:
+        print(*i)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    ans = []
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] % 2 == 0:
+                continue
+            if j != W - 1:
+                A[i][j] -= 1
+                A[i][j + 1] += 1
+                ans.append((i + 1, j + 1, i + 1, j + 2))
+            elif i != H - 1:
+                A[i][j] -= 1
+                A[i + 1][j] += 1
+                ans.append((i + 1, j + 1, i + 2, j + 1))
+
+    print(len(ans))
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    ans = []
+    for h in range(H):
+        for w in range(W):
+            if h % 2 == 0:
+                if w == W - 1:
+                    if h == H - 1:
+                        continue
+                    if A[h][w] % 2 == 1:
+                        A[h + 1][w] += 1
+                        ans.append((h + 1, w + 1, h + 2, w + 1))
+                else:
+                    if A[h][w] % 2 == 1:
+                        A[h][w + 1] += 1
+                        ans.append((h + 1, w + 1, h + 1, w + 2))
+            else:
+                if w == 0:
+                    if A[h][w] % 2 == 1:
+                        A[h + 1][w] += 1
+                        ans.append((h + 1, w + 1, h + 2, w + 1))
+                else:
+                    if A[h][w] % 2 == 1:
+                        A[h][w - 1] += 1
+                        ans.append((h + 1, w + 1, h + 1, w))
+
+    print(len(ans))
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for i in range(h)]
+    ans = []
+    for i in range(h):
+        for j in range(w - 1):
+            if a[i][j] % 2 == 1:
+                a[i][j] -= 1
+                a[i][j + 1] += 1
+                ans.append((i + 1, j + 1, i + 1, j + 2))
+    for i in range(h - 1):
+        if a[i][w - 1] % 2 == 1:
+            a[i][w - 1] -= 1
+            a[i + 1][w - 1] += 1
+            ans.append((i + 1, w, i + 2, w))
+    print(len(ans))
+    for y1, x1, y2, x2 in ans:
+        print(y1, x1, y2, x2)
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    N = 0
+    ans = []
+    for h in range(H):
+        for w in range(W):
+            if A[h][w] % 2 == 0:
+                continue
+            if w + 1 < W:
+                A[h][w] -= 1
+                A[h][w + 1] += 1
+                N += 1
+                ans.append([h + 1, w + 1, h + 1, w + 2])
+            elif h + 1 < H:
+                A[h][w] -= 1
+                A[h + 1][w] += 1
+                N += 1
+                ans.append([h + 1, w + 1, h + 2, w + 1])
+
+    print(N)
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    print(H*W-1)
+    for i in range(H):
+        for j in range(W):
+            if j < W-1:
+                if A[i][j] % 2 == 1:
+                    print(i+1, j+1, i+1, j+2)
+                    A[i][j+1] += 1
+            else:
+                if A[i][j] % 2 == 1 and i < H-1:
+                    print(i+1, j+1, i+2, j+1)
+                    A[i+1][j] += 1
+
+=======
+Suggestion 9
+
+def solve(h, w, A):
+    ans = []
+    for i in range(h):
+        for j in range(w):
+            if i%2 == 0:
+                if j == w-1:
+                    if i == h-1:
+                        break
+                    else:
+                        if A[i+1][j]%2 == 1:
+                            ans.append([i+1, j+1, i+2, j+1])
+                            A[i+1][j] -= 1
+                else:
+                    if A[i][j+1]%2 == 1:
+                        ans.append([i+1, j+1, i+1, j+2])
+                        A[i][j+1] -= 1
+            else:
+                if j == 0:
+                    if A[i+1][j]%2 == 1:
+                        ans.append([i+1, j+1, i+2, j+1])
+                        A[i+1][j] -= 1
+                else:
+                    if A[i][j-1]%2 == 1:
+                        ans.append([i+1, j+1, i+1, j])
+                        A[i][j-1] -= 1
+    return ans
+
+h, w = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(h)]
+ans = solve(h, w, A)
+print(len(ans))
+for a in ans:
+    print(*a)
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    # N: number of operations
+    N = 0
+    # ops: operations
+    ops = []
+
+    # for each row
+    for i in range(H):
+        # for each column
+        for j in range(W):
+            # if the number of coins is odd
+            if A[i][j] % 2 == 1:
+                # if the cell is not the last cell in the row
+                if j < W - 1:
+                    # move one coin to the right
+                    A[i][j] -= 1
+                    A[i][j + 1] += 1
+                    N += 1
+                    ops.append((i + 1, j + 1, i + 1, j + 2))
+                # if the cell is the last cell in the row
+                else:
+                    # move one coin to the bottom
+                    A[i][j] -= 1
+                    A[i + 1][j] += 1
+                    N += 1
+                    ops.append((i + 1, j + 1, i + 2, j + 1))
+
+    # output
+    print(N)
+    for op in ops:
+        print(*op)

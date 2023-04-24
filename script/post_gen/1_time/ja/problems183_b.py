@@ -1,41 +1,58 @@
-#問題文
-#高橋君は 2 次元平面上でビリヤードをしています。x 軸は壁になっており、球をぶつけると入射角と反射角が等しくなるように球が跳ね返されます。
-#いま高橋君の球が (S_x,S_y) にあります。ある座標を狙って球を撞くと、球はその座標へ向かって直線的に転がっていきます。
-#x 軸で球をちょうど 1 回反射させたのち、(G_x,G_y) を通過させるためには、x 軸のどこを狙えば良いでしょうか？
-#
-#制約
-#-10^6 ≦ S_x, G_x ≦ 10^6
-#0 < S_y, G_y ≦ 10^6
-#S_x ≠ G_x
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_x S_y G_x G_y
-#
-#出力
-#狙う座標を (x,0) としたときの x を出力せよ。
-#なお、想定解答との絶対誤差または相対誤差が 10^{-6} 以下であれば正解として扱われる。
-#
-#入力例 1
-#1 1 7 2
-#
-#出力例 1
-#3.0000000000
-#図のように (3,0) を狙って球を撞くことで (7,2) を通過させることができます。
-#
-#入力例 2
-#1 1 3 2
-#
-#出力例 2
-#1.6666666667
-#
-#
-#入力例 3
-#-9 99 -999 9999
-#
-#出力例 3
-#-18.7058823529
-#絶対誤差または相対誤差が 10^{-6} 以下のとき正解となります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((G_x * S_y + S_x * G_y) / (S_y + G_y))
+
+=======
+Suggestion 2
+
+def main():
+    s_x, s_y, g_x, g_y = map(int, input().split())
+    print(s_x + (g_x - s_x) * s_y / (s_y + g_y))
+
+=======
+Suggestion 3
+
+def main():
+    Sx, Sy, Gx, Gy = map(int, input().split())
+    print((Sx*Gy+Gx*Sy)/(Sy+Gy))
+
+=======
+Suggestion 4
+
+def solve():
+    sx, sy, gx, gy = map(int, input().split())
+    print((sx * gy + gx * sy) / (sy + gy))
+
+=======
+Suggestion 5
+
+def solve():
+    Sx, Sy, Gx, Gy = map(int, input().split())
+    print((Gx*Sy+Sx*Gy)/(Sy+Gy))
+
+=======
+Suggestion 6
+
+def main():
+    sx, sy, gx, gy = map(int, input().split())
+    print((sx*gy+sy*gx)/(sy+gy))
+
+=======
+Suggestion 7
+
+def solve():
+    Sx, Sy, Gx, Gy = map(int, input().split())
+    print((Sx*Gy + Gx*Sy)/(Sy+Gy))
+
+=======
+Suggestion 8
+
+def solve():
+    sx, sy, gx, gy = map(int, input().split())
+    ans = sx + (gx - sx) * (sy / (sy + gy))
+    print(ans)

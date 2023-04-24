@@ -1,127 +1,206 @@
-#問題文
-#高橋君が運営する SNS「Twidai」にはユーザー 1 からユーザー N までの N 人のユーザーがいます。
-#Twidai では、ユーザーは別のユーザーをフォローすることや、フォローを解除することができます。
-#Twidai がサービスを開始してから、Q 回の操作が行われました。
-#i 回目 (1≦ i≦ Q) の操作は 3 つの整数 T _ i, A _ i, B _ i で表され、それぞれ次のような操作を表します。
-#T _ i=1 のとき：ユーザー A _ i がユーザー B _ i をフォローしたことを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしている場合、ユーザーのフォロー状況に変化はない。
-#T _ i=2 のとき：ユーザー A _ i がユーザー B _ i のフォローを解除したことを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしていない場合、ユーザーのフォロー状況に変化はない。
-#T _ i=3 のとき：ユーザー A _ i とユーザー B _ i が互いにフォローしているかをチェックすることを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしており、かつユーザー B _ i がユーザー A _ i をフォローしているとき、このチェックに対して Yes と答え、そうでないときこのチェックに対して No と答える必要がある。
-#サービス開始時には、どのユーザーも他のユーザーをフォローしていません。
-#すべての T _ i=3 であるような操作に対して、i が小さいほうから順番に正しい答えを出力してください。
-#
-#制約
-#2 ≦ N ≦ 10 ^ 9
-#1 ≦ Q ≦ 2×10 ^ 5
-#T _ i=1,2,3 (1≦ i≦ Q)
-#1 ≦ A _ i ≦ N (1≦ i≦ Q)
-#1 ≦ B _ i ≦ N (1≦ i≦ Q)
-#A _ i≠ B _ i (1≦ i≦ Q)
-#T _ i=3 となる i (1≦ i≦ Q) が存在する
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#T _ 1 A _ 1 B _ 1
-#T _ 2 A _ 2 B _ 2
-#.
-#.
-#.
-#T _ Q A _ Q B _ Q
-#
-#出力
-#T _ i=3 であるような i (1≦ i≦ Q) の個数を X として、X 行出力せよ。
-#j (1≦ j≦ X) 行目には j 番目の T _ i=3 であるような操作に対する答えを出力せよ。
-#
-#入力例 1
-#3 9
-#1 1 2
-#3 1 2
-#1 2 1
-#3 1 2
-#1 2 3
-#1 3 2
-#3 1 3
-#2 1 2
-#3 1 2
-#
-#出力例 1
-#No
-#Yes
-#No
-#No
-#Twidai には 3 人のユーザーがいます。
-#9 回の操作はそれぞれ次のようになっています。
-#ユーザー 1 がユーザー 2 をフォローします。そのほかにフォローしている/されているユーザーはいません。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 2 をフォローしていますが、ユーザー 2 はユーザー 1 をフォローしていません。この操作への正しい答えは No です。
-#ユーザー 2 がユーザー 1 をフォローします。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 2 をフォローしており、ユーザー 2 はユーザー 1 をフォローしています。この操作への正しい答えは Yes です。
-#ユーザー 2 がユーザー 3 をフォローします。
-#ユーザー 3 がユーザー 2 をフォローします。
-#ユーザー 1 とユーザー 3 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 3 をフォローしておらず、ユーザー 3 もユーザー 1 をフォローしていません。この操作への正しい答えは No です。
-#ユーザー 1 がユーザー 2 のフォローを解除します。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 2 はユーザー 1 をフォローしていますが、ユーザー 1 はユーザー 2 をフォローしていません。この操作への正しい答えは No です。
-#
-#入力例 2
-#2 8
-#1 1 2
-#1 2 1
-#3 1 2
-#1 1 2
-#1 1 2
-#1 1 2
-#2 1 2
-#3 1 2
-#
-#出力例 2
-#Yes
-#No
-#同じユーザーに対して何度もフォロー操作をする場合があります。
-#
-#入力例 3
-#10 30
-#3 1 6
-#3 5 4
-#1 6 1
-#3 1 7
-#3 8 4
-#1 1 6
-#2 4 3
-#1 6 5
-#1 5 6
-#1 1 8
-#1 8 1
-#2 3 10
-#1 7 6
-#3 5 6
-#1 6 7
-#3 6 7
-#1 9 5
-#3 8 6
-#3 3 8
-#2 6 9
-#1 7 1
-#3 10 8
-#2 9 2
-#1 10 9
-#2 6 10
-#2 6 8
-#3 1 6
-#3 1 8
-#2 8 5
-#1 9 10
-#
-#出力例 3
-#No
-#No
-#No
-#No
-#Yes
-#Yes
-#No
-#No
-#No
-#Yes
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    uf = UnionFind(n)
+    for _ in range(q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            uf.union(a - 1, b - 1)
+        elif t == 2:
+            if uf.same(a - 1, b - 1):
+                uf.union(a - 1, b - 1)
+                uf.union(b - 1, a - 1)
+        else:
+            if uf.same(a - 1, b - 1):
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    follow = [[0] * N for _ in range(N)]
+    for _ in range(Q):
+        t, a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        if t == 1:
+            follow[a][b] = 1
+        elif t == 2:
+            follow[b][a] = 1
+        else:
+            if follow[a][b]:
+                print('Yes')
+            elif any(follow[a][c] and follow[c][b] for c in range(N)):
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    follow = [[0] * N for _ in range(N)]
+    for _ in range(Q):
+        t, a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        if t == 1:
+            follow[a][b] = 1
+        elif t == 2:
+            follow[b][a] = 1
+        else:
+            if follow[a][b] == 1:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    follow = [[0 for _ in range(n + 1)] for _ in range(n + 1)]
+    for _ in range(q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            follow[a][b] = 1
+        elif t == 2:
+            follow[b][a] = 1
+        else:
+            ans = 'No'
+            for i in range(1, n + 1):
+                if follow[a][i] and follow[i][b]:
+                    ans = 'Yes'
+                    break
+            print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    N, Q = map(int, input().split())
+    Ts = [[0]*3 for _ in range(Q)]
+    for i in range(Q):
+        Ts[i] = list(map(int, input().split()))
+
+    # compute
+    follow = [[False]*(N+1) for _ in range(N+1)]
+    for i in range(Q):
+        if Ts[i][0] == 1:
+            follow[Ts[i][1]][Ts[i][2]] = True
+        elif Ts[i][0] == 2:
+            follow[Ts[i][1]][Ts[i][2]] = False
+        else:
+            ans = 'No'
+            for j in range(1, N+1):
+                if follow[Ts[i][1]][j] and follow[j][Ts[i][2]]:
+                    ans = 'Yes'
+                    break
+            print(ans)
+
+    # output
+
+=======
+Suggestion 6
+
+def solve():
+    N, Q = map(int, input().split())
+    follow = [set() for i in range(N+1)]
+    for i in range(Q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            follow[a].add(b)
+        elif t == 2:
+            if a in follow[b]:
+                print("Yes")
+            else:
+                print("No")
+        else:
+            if len(follow[a] & follow[b]) > 0:
+                print("Yes")
+            else:
+                print("No")
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N,Q = map(int,input().split())
+    follow = [set() for _ in range(N)]
+    for _ in range(Q):
+        t,a,b = map(int,input().split())
+        if t == 1:
+            follow[a-1].add(b-1)
+        elif t == 2:
+            follow[b-1].add(a-1)
+        else:
+            if a-1 in follow[b-1]:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    f = [set() for i in range(N)]
+    for i in range(Q):
+        t, a, b = map(lambda x: int(x) - 1, input().split())
+        if t == 0:
+            f[a].add(b)
+            f[b].add(a)
+        elif t == 1:
+            f[a].discard(b)
+            f[b].discard(a)
+        else:
+            print('Yes' if f[a] & f[b] else 'No')
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+
+    # 各ユーザーのフォローしているユーザーのリスト
+    followed_by = [[] for _ in range(n)]
+    # 各ユーザーのフォローされているユーザーのリスト
+    following = [[] for _ in range(n)]
+
+    for _ in range(q):
+        t, a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+
+        if t == 1:
+            followed_by[a].append(b)
+            following[b].append(a)
+        elif t == 2:
+            if b in followed_by[a]:
+                followed_by[a].remove(b)
+                following[b].remove(a)
+        else:
+            if any(f in followed_by[a] for f in following[b]):
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 10
+
+def get_input():
+    N,Q = map(int, input().split())
+    return N,Q

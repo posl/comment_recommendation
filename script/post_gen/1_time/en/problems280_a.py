@@ -1,60 +1,152 @@
-#Problem Statement
-#There is a grid with H rows from top to bottom and W columns from left to right.  Each square has a piece placed on it or is empty.
-#The state of the grid is represented by H strings S_1, S_2, ..., S_H, each of length W.
-#If the j-th character of S_i is #, the square at the i-th row from the top and j-th column from the left has a piece on it;
-#if the j-th character of S_i is ., the square at the i-th row from the top and j-th column from the left is empty.
-#How many squares in the grid have pieces on them?
-#
-#Constraints
-#1≦ H,W ≦ 10
-#H and W are integers.
-#S_i is a string of length W consisting of # and ..
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#Output
-#Print the number of squares with pieces as an integer.
-#
-#Sample Input 1
-#3 5
-##....
-#.....
-#.##..
-#
-#Sample Output 1
-#3
-#The following three squares have pieces on them:
-#the square at the 1-st row from the top and 1-st column from the left;
-#the square at the 3-rd row from the top and 2-nd column from the left;
-#the square at the 3-rd row from the top and 3-rd column from the left.
-#Thus, 3 should be printed.
-#
-#Sample Input 2
-#1 10
-#..........
-#
-#Sample Output 2
-#0
-#Since no square has a piece on it, 0 should be printed.
-#
-#Sample Input 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#Sample Output 3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    cnt = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    h,w = map(int,input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    print(sum([S[i][j] == '#' for i in range(H) for j in range(W)]))
+
+=======
+Suggestion 5
+
+def main():
+    #input
+    H,W = map(int,input().split())
+    S = [input() for i in range(H)]
+    #solve
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    #output
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    grid = [input() for _ in range(h)]
+    print(sum([row.count('#') for row in grid]))
+
+=======
+Suggestion 7
+
+def main():
+    #write code here
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # Read input
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # Count the number of squares with pieces
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                count += 1
+
+    # Output the number of squares with pieces
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    h, w = map(int, input().split())
+    grid = []
+    for _ in range(h):
+        grid.append(list(input()))
+    print(sum(row.count('#') for row in grid))
+
+=======
+Suggestion 10
+
+def main():
+    # H: Number of rows in the grid
+    # W: Number of columns in the grid
+    H, W = input().split()
+    H = int(H)
+    W = int(W)
+    # S: The state of the grid
+    S = []
+    for i in range(H):
+        S.append(input())
+    # Write your code here
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    #print("{}".format(S[0][0]), file=sys.stderr, flush=True)
+    #print("{}".format(S[0][1]), file=sys.stderr, flush=True)
+    #print("{}".format(S[0][2]), file=sys.stderr, flush=True)
+    #print("{}".format(S[0][3]), file=sys.stderr, flush=True)
+    #print("{}".format(S[0][4]), file=sys.stderr, flush=True)
+    #print("{}".format(S[0][5]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][0]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][1]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][2]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][3]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][4]), file=sys.stderr, flush=True)
+    #print("{}".format(S[1][5]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][0]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][1]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][2]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][3]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][4]), file=sys.stderr, flush=True)
+    #print("{}".format(S[2][5]), file=sys.stderr, flush=True)
+    #print("{}".format(S[3][0]), file=sys.stderr, flush=True)
+    #print("{}".format(S[3][1]), file=sys.stderr, flush=True)
+    #print("{}".format(S[3][2]), file=sys.stderr, flush=True)
+    #print("{}".format

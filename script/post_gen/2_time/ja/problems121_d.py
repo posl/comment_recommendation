@@ -1,39 +1,130 @@
-#問題文
-#f(A, B) を A, A+1, ..., B の排他的論理和としたとき、f(A, B) を求めてください。
-#排他的論理和とは
-#整数 c_1, c_2, ..., c_n のビットごとの排他的論理和 y は、以下のように定義されます。
-#y を二進表記した際の 2^k (k ≧ 0) の位の数は、c_1, c_2, ..., c_n のうち、二進表記した際の 2^k の位の数が 1 となるものが奇数個ならば 1、偶数個ならば 0 である。
-#例えば、3 と 5 の排他的論理和は 6 です(二進数表記すると: 011 と 101 の排他的論理和は 110 です)。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A ≦ B ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#f(A, B) を計算し、出力せよ。
-#
-#入力例 1
-#2 4
-#
-#出力例 1
-#5
-#2, 3, 4 は 2 進数でそれぞれ 010, 011, 100 です。
-#これらの排他的論理和は 101 であり、これを 10 進数表記にすると 5 になります。
-#
-#入力例 2
-#123 456
-#
-#出力例 2
-#435
-#
-#入力例 3
-#123456789012 123456789012
-#
-#出力例 3
-#123456789012
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    if x % 2 == 0:
+        if x % 4 == 0:
+            return x
+        else:
+            return 1 ^ x
+    else:
+        if (x+1) % 4 == 0:
+            return 0
+        else:
+            return 1
+
+A, B = map(int, input().split())
+print(f(B) ^ f(A-1))
+
+=======
+Suggestion 2
+
+def f(a, b):
+    if a == b:
+        return a
+    if a % 2 == 0:
+        if b % 2 == 0:
+            return b ^ f(a, b - 1)
+        else:
+            return f(a, b - 1)
+    else:
+        if b % 2 == 0:
+            return f(a + 1, b) ^ a
+        else:
+            return a ^ f(a + 1, b)
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 3
+
+def f(a,b):
+    if a==b:
+        return a
+    else:
+        return f(a,b-1)^b
+
+a,b=map(int,input().split())
+print(f(a,b))
+
+=======
+Suggestion 4
+
+def f(a,b):
+    if a == b:
+        return a
+    elif a == 0:
+        return f(1,b)
+    elif a % 2 == 0 and b % 2 == 0:
+        return f(a//2, b//2) * 2
+    elif a % 2 == 0 and b % 2 != 0:
+        return f(a//2, b//2) * 2 + 1
+    elif a % 2 != 0 and b % 2 == 0:
+        return f((a+1)//2, b//2) * 2
+    elif a % 2 != 0 and b % 2 != 0:
+        return f((a+1)//2, b//2) * 2 + 1
+
+a, b = map(int, input().split())
+
+print(f(a,b))
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+
+    def calc(x):
+        if x % 2 == 0:
+            return x ^ ((x + 1) // 2) % 2
+        else:
+            return ((x + 1) // 2) % 2
+
+    print(calc(A - 1) ^ calc(B))
+
+=======
+Suggestion 6
+
+def f(a,b):
+    if a == 0:
+        if b == 0:
+            return 0
+        else:
+            return f(0,b) + 1
+    else:
+        if b == 0:
+            return f(a,0) + 1
+        else:
+            return f(0,b) + f(a,0)
+
+=======
+Suggestion 7
+
+def f(A, B):
+    if (A == B):
+        return A
+    else:
+        return A ^ f(A + 1, B)
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    print(a^b)
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    print(A^B)
+
+=======
+Suggestion 10
+
+def f(a, b):
+    return a ^ b

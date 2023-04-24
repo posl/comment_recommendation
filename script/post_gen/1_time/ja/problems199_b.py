@@ -1,47 +1,140 @@
-#問題文
-#長さ N の数列 A = (A_1, A_2, A_3, ..., A_N), B = (B_1, B_2, B_3, ..., B_N) が与えられます。
-#以下の条件を満たす整数 x の個数を求めてください。  
-#1 ≦ i ≦ N を満たす全ての整数 i について A_i ≦ x ≦ B_i
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ B_i ≦ 1000
-#入力に含まれる値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 A_3 ... A_N
-#B_1 B_2 B_3 ... B_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2
-#3 2
-#7 5
-#
-#出力例 1
-#3
-#x は 3 ≦ x ≦ 7 と 2 ≦ x ≦ 5 の両方を満たさなければなりません。
-#そのような整数 x は 3, 4, 5 の 3 個あります。  
-#
-#入力例 2
-#3
-#1 5 3
-#10 7 3
-#
-#出力例 2
-#0
-#条件を満たす整数 x が存在しないこともあります。  
-#
-#入力例 3
-#3
-#3 2 5
-#6 9 8
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    count = 0
+    for i in range(min(A), max(B) + 1):
+        if min(A) <= i <= max(B):
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, 1001):
+        if all([A[j] <= i and i <= B[j] for j in range(N)]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, 1001):
+        if all([A[j] <= i <= B[j] for j in range(N)]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print(min(B)-max(A)+1 if min(B)-max(A)+1 > 0 else 0)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    cnt = 0
+    for x in range(1, 1001):
+        if all(A[i] <= x <= B[i] for i in range(N)):
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        count += B[i] - A[i] + 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = input().split()
+    B = input().split()
+    for i in range(N):
+        A[i] = int(A[i])
+        B[i] = int(B[i])
+    count = 0
+    for x in range(1,1001):
+        flag = True
+        for i in range(N):
+            if A[i] > x or B[i] < x:
+                flag = False
+                break
+        if flag == True:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    #print(B)
+    count = 0
+    for i in range(1, 1001):
+        for j in range(N):
+            if i < A[j] or i > B[j]:
+                break
+            elif j == N-1:
+                count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = ans + (B[i] - A[i] + 1)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    x = list(range(min(A), max(B) + 1))
+    count = 0
+    for i in x:
+        if all([i >= A[j] and i <= B[j] for j in range(N)]):
+            count += 1
+    print(count)

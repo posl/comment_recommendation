@@ -1,36 +1,103 @@
-#Problem Statement
-#Given is an integer N.
-#Takahashi chooses an integer a from the positive integers not greater than N with equal probability.
-#Find the probability that a is odd.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the probability that a is odd.
-#Your output will be considered correct when its absolute or relative error from the judge's output is at most 10^{-6}.
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#0.5000000000
-#There are four positive integers not greater than 4: 1, 2, 3, and 4. Among them, we have two odd numbers: 1 and 3. Thus, the answer is (2/(4)) = 0.5.
-#
-#Sample Input 2
-#5
-#
-#Sample Output 2
-#0.6000000000
-#
-#Sample Input 3
-#1
-#
-#Sample Output 3
-#1.0000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(0.5)
+    else:
+        print((N//2+1)/N)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(N/2/N)
+    else:
+        print((N+1)/2/N)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N%2 == 0:
+        print((N/2)/N)
+    else:
+        print(((N+1)/2)/N)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(N / (N + 1))
+    else:
+        print((N + 1) / (N + 1))
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(0.5)
+    else:
+        print((n/2+1)/n)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n%2 == 0:
+        print(0.5)
+    else:
+        print((n+1)/2/n)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(1)
+    else:
+        print(0.5)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(1)
+    else:
+        print((n//2)/n)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print(0.5 if N % 2 == 0 else 1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(1)
+        return
+    print((N//2)/N)
+main()

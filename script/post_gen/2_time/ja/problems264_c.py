@@ -1,82 +1,229 @@
-#問題文
-#H_1 行 W_1 列の行列 A と、H_2 行 W_2 列の行列 B が与えられます。
-#1 ≦ i ≦ H_1 かつ 1 ≦ j ≦ W_1 を満たす整数の組 (i, j) について、行列 A の i 行目 j 列目の要素は A_{i, j} です。
-#1 ≦ i ≦ H_2 かつ 1 ≦ j ≦ W_2 を満たす整数の組 (i, j) について、行列 B の i 行目 j 列目の要素は B_{i, j} です。
-#行列 A に対して、下記の 2 つの操作のうちどちらかを行うことを、好きなだけ（ 0 回でも良い）繰り返すことができます。
-#A の行を任意に 1 つ選んで削除する。
-#A の列を任意に 1 つ選んで削除する。
-#行列 A を行列 B に一致させることができるかどうかを判定して下さい。
-#
-#制約
-#1 ≦ H_2 ≦ H_1 ≦ 10
-#1 ≦ W_2 ≦ W_1 ≦ 10
-#1 ≦ A_{i, j} ≦ 10^9
-#1 ≦ B_{i, j} ≦ 10^9
-#入力中の値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H_1 W_1
-#A_{1, 1} A_{1, 2} ... A_{1, W_1}
-#A_{2, 1} A_{2, 2} ... A_{2, W_1}
-#.
-#.
-#.
-#A_{H_1, 1} A_{H_1, 2} ... A_{H_1, W_1}
-#H_2 W_2
-#B_{1, 1} B_{1, 2} ... B_{1, W_2}
-#B_{2, 1} B_{2, 2} ... B_{2, W_2}
-#.
-#.
-#.
-#B_{H_2, 1} B_{H_2, 2} ... B_{H_2, W_2}
-#
-#出力
-#行列 A を行列 B に一致させることができる場合は Yes を、
-#一致させることができない場合は No を出力せよ。
-#ジャッジは英小文字と英大文字を厳密に区別することに注意せよ。
-#
-#入力例 1
-#4 5
-#1 2 3 4 5
-#6 7 8 9 10
-#11 12 13 14 15
-#16 17 18 19 20
-#2 3
-#6 8 9
-#16 18 19
-#
-#出力例 1
-#Yes
-#初期状態の行列 A から 2 列目を削除すると、行列 A は
-#1 3 4 5
-#6 8 9 10
-#11 13 14 15
-#16 18 19 20
-#となります。そこからさらに 3 行目を削除すると、行列 A は
-#1 3 4 5
-#6 8 9 10
-#16 18 19 20
-#となります。そこからさらに 1 行目を削除すると、行列 A は
-#6 8 9 10
-#16 18 19 20
-#となります。そこからさらに 4 列目を削除すると、行列 A は
-#6 8 9
-#16 18 19
-#となります。これは行列 B と一致します。
-#操作の繰り返しによって行列 A を行列 B に一致させることができるので Yes を出力します。
-#
-#入力例 2
-#3 3
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1
-#2
-#
-#出力例 2
-#No
-#どのように操作を行っても、 行列 A を行列 B に一致させることはできません。
-#よって、No を出力します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    #print(A)
+    #print(B)
+    for i in range(H1-H2+1):
+        for j in range(W1-W2+1):
+            if A[i][j] == B[0][0]:
+                #print(i,j)
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i+k][j+l] != B[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    # B の各要素が A のどこにあるかを確認する
+    for i in range(H2):
+        for j in range(W2):
+            if B[i][j] not in A[i]:
+                print('No')
+                return
+
+    # B の各要素が A のどこにあるかを確認する
+    for i in range(H2):
+        for j in range(W2):
+            if B[i][j] not in A[i]:
+                print('No')
+                return
+
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if A[i][j] == B[0][0]:
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i + k][j + l] != B[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    print('Yes' if all([A[i][j] == B[i][j] for i in range(H2) for j in range(W2)]) else 'No')
+
+=======
+Suggestion 5
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+    for i in range(H1):
+        for j in range(W1):
+            if A[i][j] in [b for a in B for b in a]:
+                B[B.index([b for a in B for b in a if a == A[i][j]])//W2][B.index([b for a in B for b in a if a == A[i][j]])%W2] = 0
+    if 0 in [b for a in B for b in a]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if A[i][j] == B[0][0]:
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i + k][j + l] != B[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print('Yes')
+                    return
+
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    h1, w1 = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h1)]
+    h2, w2 = map(int, input().split())
+    b = [list(map(int, input().split())) for _ in range(h2)]
+    #print(a)
+    #print(b)
+    for i in range(h1-h2+1):
+        for j in range(w1-w2+1):
+            if a[i][j] == b[0][0]:
+                #print(i, j)
+                for k in range(h2):
+                    for l in range(w2):
+                        if a[i+k][j+l] != b[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print('Yes')
+                    return
+    print('No')
+    return
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for i in range(H2)]
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if A[i][j] == B[0][0]:
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i + k][j + l] != B[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    H1, W1 = map(int, input().split())
+    A = [[int(x) for x in input().split()] for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [[int(x) for x in input().split()] for _ in range(H2)]
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            if A[i][j] == B[0][0]:
+                for k in range(H2):
+                    for l in range(W2):
+                        if A[i+k][j+l] != B[k][l]:
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    for i in range(H1-H2+1):
+        for j in range(W1-W2+1):
+            flag = True
+            for k in range(H2):
+                for l in range(W2):
+                    if B[k][l] != A[i+k][j+l]:
+                        flag = False
+                        break
+                if not flag:
+                    break
+            if flag:
+                print("Yes")
+                return
+    print("No")

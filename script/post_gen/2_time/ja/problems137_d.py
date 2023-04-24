@@ -1,58 +1,169 @@
-#問題文
-#N 件の日雇いアルバイトがあり、i 件目の日雇いアルバイトを請けて働くと、その A_i 日後に報酬 B_i が得られます。
-#あなたは、これらの中から 1 日に 1 件まで選んで請け、働くことができます。
-#ただし、請けたことのある日雇いアルバイトは選べません。
-#今日から M 日後まで(M 日後を含む)に得られる報酬の合計の最大値を求めてください。
-#なお、日雇いアルバイトは今日から請けて働くことができます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i ≦ 10^5
-#1 ≦ B_i ≦ 10^4
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#M 日後までに得られる報酬の合計の最大値を出力せよ。
-#
-#入力例 1
-#3 4
-#4 3
-#4 1
-#2 2
-#
-#出力例 1
-#5
-#以下のように日雇いアルバイトを請けて働くと、報酬の合計は 5 となり、このときが最大です。
-#今日、1 件目の日雇いアルバイトを請けて働き、今日から 4 日後に報酬 3 を得ます。
-#明日(今日から 1 日後)、3 件目の日雇いアルバイトを請けて働き、今日から 1+2 = 3 日後に報酬 2 を得ます。
-#
-#入力例 2
-#5 3
-#1 2
-#1 3
-#1 4
-#2 1
-#2 3
-#
-#出力例 2
-#10
-#
-#入力例 3
-#1 1
-#2 1
-#
-#出力例 3
-#0
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        AB.append([A, B])
+    AB.sort(key=lambda x: x[0])
+    ans = 0
+    q = []
+    for i in range(M):
+        while q and q[0][0] < i:
+            heapq.heappop(q)
+        while AB and AB[0][0] == i + 1:
+            heapq.heappush(q, [-AB[0][1], AB[0][1]])
+            AB.pop(0)
+        if q:
+            ans += heapq.heappop(q)[1]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    import heapq
+    heap = []
+    ans = 0
+    for i in range(1, M+1):
+        while AB and AB[0][0] == i:
+            heapq.heappush(heap, -AB[0][1])
+            AB.pop(0)
+        if heap:
+            ans -= heapq.heappop(heap)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for i in range(M):
+        for j in range(N):
+            if AB[j][0] == i + 1:
+                ans += AB[j][1]
+                AB[j][0] = 0
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    AB.append([M+1, 0])
+    ans = 0
+    B = []
+    for i in range(N+1):
+        if AB[i][0] <= M:
+            B.append(AB[i][1])
+        else:
+            break
+    B.sort(reverse=True)
+    for i in range(M):
+        ans += B[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    B = [0] * (M + 1)
+    for i in range(M):
+        B[i + 1] = B[i]
+        while AB and AB[0][0] == i + 1:
+            B[i + 1] = max(B[i + 1], AB[0][1])
+            AB.pop(0)
+        if i > 0:
+            B[i + 1] = max(B[i + 1], B[i])
+    print(B[-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(N)]
+
+    AB.sort(key=lambda x: x[0])
+    AB.sort(key=lambda x: x[1], reverse=True)
+    #print(AB)
+
+    dp = [0] * (M + 1)
+    for i in range(M):
+        dp[i + 1] = max(dp[i + 1], dp[i])
+        for j in range(N):
+            if i + AB[j][0] > M:
+                continue
+            dp[i + AB[j][0]] = max(dp[i + AB[j][0]], dp[i] + AB[j][1])
+
+    print(dp[M])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    que = []
+    for i in range(1, M + 1):
+        while AB and AB[0][0] == i:
+            a, b = AB.pop(0)
+            heapq.heappush(que, -b)
+        if que:
+            ans -= heapq.heappop(que)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    #print(AB)
+    import heapq
+    heap = []
+    ans = 0
+    for i in range(1, M+1):
+        while AB and AB[0][0] == i:
+            a, b = AB.pop(0)
+            heapq.heappush(heap, -b)
+        if heap:
+            ans -= heapq.heappop(heap)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    #print(AB)
+    ans = 0
+    i = 0
+    for j in range(1, M+1):
+        while i < N and AB[i][0] == j:
+            ans += AB[i][1]
+            i += 1
+        print(ans)

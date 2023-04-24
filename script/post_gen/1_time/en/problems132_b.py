@@ -1,34 +1,84 @@
-#Problem Statement
-#We have a permutation p = {p_1, p_2, ..., p_n} of {1, 2, ..., n}.
-#Print the number of elements p_i (1 < i < n) that satisfy the following condition:
-#p_i is the second smallest number among the three numbers p_{i - 1}, p_i, and p_{i + 1}.
-#
-#Constraints
-#All values in input are integers.
-#3 ≦ n ≦ 20
-#p is a permutation of {1, 2, ..., n}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#n
-#p_1 p_2 ... p_n
-#
-#Output
-#Print the number of elements p_i (1 < i < n) that satisfy the condition.
-#
-#Sample Input 1
-#5
-#1 3 5 4 2
-#
-#Sample Output 1
-#2
-#p_2 = 3 is the second smallest number among p_1 = 1, p_2 = 3, and p_3 = 5. Also, p_4 = 4 is the second smallest number among p_3 = 5, p_4 = 4, and p_5 = 2. These two elements satisfy the condition.
-#
-#Sample Input 2
-#9
-#9 6 3 2 5 8 7 4 1
-#
-#Sample Output 2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i + 1] < p[i] < p[i - 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i - 1] > p[i] > p[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i - 1] > p[i] > p[i + 1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n - 1):
+        if (p[i - 1] < p[i] < p[i + 1]) or (p[i + 1] < p[i] < p[i - 1]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n - 1):
+        if p[i] > p[i - 1] and p[i] < p[i + 1]:
+            count += 1
+        elif p[i] < p[i - 1] and p[i] > p[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n - 1):
+        if p[i] == min(p[i - 1], p[i], p[i + 1]) or p[i] == max(p[i - 1], p[i], p[i + 1]):
+            continue
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    print(sum([1 for i in range(1, n - 1) if p[i] > min(p[i - 1], p[i + 1]) and p[i] < max(p[i - 1], p[i + 1])]))

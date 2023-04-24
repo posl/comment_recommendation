@@ -1,27 +1,176 @@
-#問題文
-#1, 2, 3 の番号がついた 3 人の高橋くんがおり、赤・緑・青の色がついた 3 種類の帽子がそれぞれ 1 つずつあります。それぞれの高橋くんは帽子を 1 つかぶっており、高橋くん i がはじめにかぶっている帽子の色は文字 S_i で表されます。ここで、R は赤、G は緑、B は青に対応しています。これから、以下の操作をちょうど 10^{18} 回行います。
-#操作
-#3 人の高橋くんのうち 2 人を選ぶ。2 人はお互いのかぶっている帽子を交換する。
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできますか？
-#
-#制約
-#S_1, S_2, S_3 は R, G, B の並べ替えである
-#T_1, T_2, T_3 は R, G, B の並べ替えである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_1 S_2 S_3
-#T_1 T_2 T_3
-#
-#出力
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできる場合は Yes を、できない場合は No を出力せよ。
-#
-#入力例 1
-#R G B
-#R G B
-#
-#出力例 1
-#Yes
-#例えば、高橋くん 1 と高橋くん 2 の帽子を交換する操作を 10^{18} 回行うと目的を達成できます。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S[0] == T[0] and S[1] == T[1] and S[2] == T[2]:
+        print('Yes')
+    elif S[0] == T[0] and S[1] == T[2] and S[2] == T[1]:
+        print('Yes')
+    elif S[0] == T[1] and S[1] == T[0] and S[2] == T[2]:
+        print('Yes')
+    elif S[0] == T[1] and S[1] == T[2] and S[2] == T[0]:
+        print('Yes')
+    elif S[0] == T[2] and S[1] == T[0] and S[2] == T[1]:
+        print('Yes')
+    elif S[0] == T[2] and S[1] == T[1] and S[2] == T[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s.count("R") % 2 == t.count("R") % 2 and s.count("G") % 2 == t.count("G") % 2 and s.count("B") % 2 == t.count("B") % 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input().split()
+    t = input().split()
+    if len(set(s)) == len(set(t)) == 3:
+        print('Yes')
+    elif len(set(s)) == 2 and len(set(t)) == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S == T:
+        print("Yes")
+    elif S[0] == S[1] == S[2] or T[0] == T[1] == T[2]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S == T:
+        print("Yes")
+        return
+    for i in range(3):
+        for j in range(i+1, 3):
+            S[i], S[j] = S[j], S[i]
+            if S == T:
+                print("Yes")
+                return
+            S[i], S[j] = S[j], S[i]
+    print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    S = list(input().split())
+    T = list(input().split())
+    if S == T:
+        print('Yes')
+    elif S == ['R', 'G', 'B'] and T == ['R', 'B', 'G']:
+        print('Yes')
+    elif S == ['R', 'G', 'B'] and T == ['G', 'R', 'B']:
+        print('Yes')
+    elif S == ['R', 'G', 'B'] and T == ['G', 'B', 'R']:
+        print('Yes')
+    elif S == ['R', 'G', 'B'] and T == ['B', 'R', 'G']:
+        print('Yes')
+    elif S == ['R', 'G', 'B'] and T == ['B', 'G', 'R']:
+        print('Yes')
+    elif S == ['R', 'B', 'G'] and T == ['R', 'G', 'B']:
+        print('Yes')
+    elif S == ['R', 'B', 'G'] and T == ['G', 'R', 'B']:
+        print('Yes')
+    elif S == ['R', 'B', 'G'] and T == ['G', 'B', 'R']:
+        print('Yes')
+    elif S == ['R', 'B', 'G'] and T == ['B', 'R', 'G']:
+        print('Yes')
+    elif S == ['R', 'B', 'G'] and T == ['B', 'G', 'R']:
+        print('Yes')
+    elif S == ['G', 'R', 'B'] and T == ['R', 'G', 'B']:
+        print('Yes')
+    elif S == ['G', 'R', 'B'] and T == ['R', 'B', 'G']:
+        print('Yes')
+    elif S == ['G', 'R', 'B'] and T == ['G', 'B', 'R']:
+        print('Yes')
+    elif S == ['G', 'R', 'B'] and T == ['B', 'R', 'G']:
+        print('Yes')
+    elif S == ['G', 'R', 'B'] and T == ['B', 'G', 'R']:
+        print('Yes')
+    elif S == ['G', 'B', 'R'] and T == ['R', 'G
+
+=======
+Suggestion 7
+
+def main():
+    s = input().split()
+    t = input().split()
+
+    if s == t:
+        print('Yes')
+    elif s[0] == t[0] and s[1] == t[1] and s[2] == t[2]:
+        print('Yes')
+    elif s[0] == t[1] and s[1] == t[2] and s[2] == t[0]:
+        print('Yes')
+    elif s[0] == t[2] and s[1] == t[0] and s[2] == t[1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    S = input().split()
+    T = input().split()
+    #print(S)
+    #print(T)
+    for i in range(3):
+        if S[i] == T[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def solve():
+    s = input().split()
+    t = input().split()
+    if s == t:
+        print("Yes")
+    elif s == t[::-1]:
+        print("Yes")
+    else:
+        print("No")
+solve()

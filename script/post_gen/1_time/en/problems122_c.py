@@ -1,42 +1,212 @@
-#Problem Statement
-#You are given a string S of length N consisting of A, C, G and T. Answer the following Q queries:
-#Query i (1 ≦ i ≦ Q): You will be given integers l_i and r_i (1 ≦ l_i < r_i ≦ N). Consider the substring of S starting at index l_i and ending at index r_i (both inclusive). In this string, how many times does AC occurs as a substring?
-#
-#Notes
-#A substring of a string T is a string obtained by removing zero or more characters from the beginning and the end of T.
-#For example, the substrings of ATCODER include TCO, AT, CODER, ATCODER and  (the empty string), but not AC.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#S is a string of length N.
-#Each character in S is A, C, G or T.
-#1 ≦ l_i < r_i ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#S
-#l_1 r_1
-#:
-#l_Q r_Q
-#
-#Output
-#Print Q lines. The i-th line should contain the answer to the i-th query.
-#
-#Sample Input 1
-#8 3
-#ACACTACG
-#3 7
-#2 3
-#1 8
-#
-#Sample Output 1
-#2
-#0
-#3
-#Query 1: the substring of S starting at index 3 and ending at index 7 is ACTAC. In this string, AC occurs twice as a substring.
-#Query 2: the substring of S starting at index 2 and ending at index 3 is CA. In this string, AC occurs zero times as a substring.
-#Query 3: the substring of S starting at index 1 and ending at index 8 is ACACTACG. In this string, AC occurs three times as a substring.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = []
+    r = []
+    for i in range(Q):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+
+    #print(N, Q)
+    #print(S)
+    #print(l)
+    #print(r)
+
+    #print(S[2:3])
+    #print(S[3:7])
+    #print(S[2:7])
+    #print(S[1:8])
+    #print(S[0:8])
+
+    #print(S[2:3] == 'A')
+    #print(S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0:8] == 'AC')
+
+    #print(S[2:3] == 'A' and S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0:8] == 'AC')
+
+    #print(S[2:3] == 'A' and S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0:8] == 'AC')
+
+    #print(S[2:3] == 'A' and S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0:8] == 'AC')
+
+    #print(S[2:3] == 'A' and S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0:8] == 'AC')
+
+    #print(S[2:3] == 'A' and S[3:7] == 'AC')
+    #print(S[2:7] == 'AC')
+    #print(S[1:8] == 'AC')
+    #print(S[0
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = [0] * (N + 1)
+    for i in range(N):
+        l[i + 1] = l[i] + (1 if S[i:i + 2] == 'AC' else 0)
+    for i in range(Q):
+        l_i, r_i = map(int, input().split())
+        print(l[r_i] - l[l_i])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = [0]
+    for i in range(N-1):
+        if S[i] == "A" and S[i+1] == "C":
+            l.append(l[-1]+1)
+        else:
+            l.append(l[-1])
+    for i in range(Q):
+        l_i, r_i = map(int, input().split())
+        print(l[r_i-1]-l[l_i-1])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = [0] * (N + 1)
+    for i in range(N):
+        l[i + 1] = l[i]
+        if S[i] == 'A' and i < N - 1 and S[i + 1] == 'C':
+            l[i + 2] = l[i + 1] + 1
+        else:
+            l[i + 2] = l[i + 1]
+    for i in range(Q):
+        l_i, r_i = map(int, input().split())
+        print(l[r_i] - l[l_i])
+
+=======
+Suggestion 5
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    l = [0]
+    for i in range(1,n):
+        if s[i-1:i+1] == "AC":
+            l.append(l[-1]+1)
+        else:
+            l.append(l[-1])
+    for _ in range(q):
+        a,b = map(int,input().split())
+        print(l[b-1]-l[a-1])
+
+=======
+Suggestion 6
+
+def main():
+    N,Q = map(int,input().split())
+    S = input()
+    l = [0]*(N+1)
+    for i in range(N-1):
+        if S[i:i+2] == "AC":
+            l[i+2] = l[i+1] + 1
+        else:
+            l[i+2] = l[i+1]
+    for i in range(Q):
+        x,y = map(int,input().split())
+        print(l[y]-l[x])
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    l = [0] * (n + 1)
+    for i in range(n):
+        if s[i] == 'A' and s[i + 1] == 'C':
+            l[i + 1] = 1
+    for i in range(n):
+        l[i + 1] += l[i]
+    for i in range(q):
+        a, b = map(int, input().split())
+        print(l[b - 1] - l[a - 1])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    cumsum = [0]*(N+1)
+    for i in range(N-1):
+        if S[i:i+2] == "AC":
+            cumsum[i+2] = cumsum[i+1] + 1
+        else:
+            cumsum[i+2] = cumsum[i+1]
+    for _ in range(Q):
+        l, r = map(int, input().split())
+        print(cumsum[r] - cumsum[l])
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N,Q = map(int,input().split())
+    S = input()
+    l = [0]*Q
+    r = [0]*Q
+    for i in range(Q):
+        l[i],r[i] = map(int,input().split())
+    
+    #solve
+    count = [0]*(N+1)
+    for i in range(1,N):
+        if S[i-1:i+1] == "AC":
+            count[i+1] = count[i] + 1
+        else:
+            count[i+1] = count[i]
+    
+    #output
+    for i in range(Q):
+        print(count[r[i]]-count[l[i]])
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    LR = [tuple(map(int, input().split())) for _ in range(Q)]
+
+    # ACが出現する場所を記録
+    AC = [0] * N
+    for i in range(N - 1):
+        if S[i:i + 2] == 'AC':
+            AC[i + 1] = 1
+
+    # ACが出現した場所の累積和を求める
+    AC_cumsum = [0] * (N + 1)
+    for i in range(1, N + 1):
+        AC_cumsum[i] = AC_cumsum[i - 1] + AC[i - 1]
+
+    for l, r in LR:
+        print(AC_cumsum[r - 1] - AC_cumsum[l - 1])

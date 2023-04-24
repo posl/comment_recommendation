@@ -1,38 +1,135 @@
-#問題文
-#0、1、6、8、9 からなる文字列 S が与えられます。
-#S を 180 度回転したものを出力してください。すなわち、S に次の操作を施してできる文字列を出力してください。
-#S を反転する。
-#0 を 0 に、1 を 1 に、6 を 9 に、8 を 8 に、9 を 6 に変換する。
-#
-#制約
-#1 ≦ |S| ≦ 10^5
-#S は 0、1、6、8、9 からなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S を 180 度回転した文字列を出力せよ。
-#
-#入力例 1
-#0601889
-#
-#出力例 1
-#6881090
-#0601889 を 180 度回転すると 6881090 になります。
-#
-#入力例 2
-#86910
-#
-#出力例 2
-#01698
-#
-#入力例 3
-#01010
-#
-#出力例 3
-#01010
-#S が変化しないこともあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0', 'a')
+    S = S.replace('1', 'b')
+    S = S.replace('6', 'c')
+    S = S.replace('8', 'd')
+    S = S.replace('9', 'e')
+    S = S.replace('a', '9')
+    S = S.replace('b', '1')
+    S = S.replace('c', '6')
+    S = S.replace('d', '8')
+    S = S.replace('e', '0')
+    print(S)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    ans = ""
+    for i in s:
+        if i == "6":
+            ans = "9" + ans
+        elif i == "9":
+            ans = "6" + ans
+        else:
+            ans = i + ans
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace("6","a")
+    S = S.replace("9","6")
+    S = S.replace("a","9")
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace("0", "o")
+    S = S.replace("1", "i")
+    S = S.replace("6", "9")
+    S = S.replace("8", "8")
+    S = S.replace("9", "6")
+    S = S.replace("o", "0")
+    S = S.replace("i", "1")
+    print(S)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0','o')
+    S = S.replace('1','i')
+    S = S.replace('6','9')
+    S = S.replace('8','8')
+    S = S.replace('9','6')
+    S = S.replace('o','0')
+    S = S.replace('i','1')
+    print(S)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0', 't')
+    S = S.replace('1', 'o')
+    S = S.replace('6', 'n')
+    S = S.replace('8', 'e')
+    S = S.replace('9', 's')
+    S = S.replace('t', '9')
+    S = S.replace('o', '1')
+    S = S.replace('n', '6')
+    S = S.replace('e', '8')
+    S = S.replace('s', '0')
+    print(S)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('6','9')
+    S = S.replace('9','6')
+    print(S)
+
+=======
+Suggestion 8
+
+def main():
+    S=input()
+    S=S[::-1]
+    S=S.replace('6','x')
+    S=S.replace('9','6')
+    S=S.replace('x','9')
+    print(S)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    print(S[::-1].replace('6','a').replace('9','6').replace('a','9'))
+
+=======
+Suggestion 10
+
+def main():
+    # 入力
+    S = input()
+    # 処理
+    S = S[::-1] # 反転
+    S = S.replace('6', 'x') # 6をxに置換
+    S = S.replace('9', '6') # 9を6に置換
+    S = S.replace('x', '9') # xを9に置換
+    # 出力
+    print(S)

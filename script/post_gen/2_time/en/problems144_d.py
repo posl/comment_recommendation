@@ -1,41 +1,95 @@
-#Problem Statement
-#Takahashi has a water bottle with the shape of a rectangular prism whose base is a square of side a[cm] and whose height is b[cm]. (The thickness of the bottle can be ignored.)
-#We will pour x[cm]^3 of water into the bottle, and gradually tilt the bottle around one of the sides of the base.
-#When will the water be spilled? More formally, find the maximum angle in which we can tilt the bottle without spilling any water.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ a ≦ 100
-#1 ≦ b ≦ 100
-#1 ≦ x ≦ a^2b
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b x
-#
-#Output
-#Print the maximum angle in which we can tilt the bottle without spilling any water, in degrees.
-#Your output will be judged as correct when the absolute or relative error from the judge's output is at most 10^{-6}.
-#
-#Sample Input 1
-#2 2 4
-#
-#Sample Output 1
-#45.0000000000
-#This bottle has a cubic shape, and it is half-full. The water gets spilled when we tilt the bottle more than 45 degrees.
-#
-#Sample Input 2
-#12 21 10
-#
-#Sample Output 2
-#89.7834636934
-#This bottle is almost empty. When the water gets spilled, the bottle is nearly horizontal.
-#
-#Sample Input 3
-#3 1 8
-#
-#Sample Output 3
-#4.2363947991
-#This bottle is almost full. When the water gets spilled, the bottle is still nearly vertical.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, x = map(int, input().split())
+    if x > a ** 2 * b / 2:
+        h = (a ** 2 * b - x) * 2 / a ** 2
+        print(math.degrees(math.atan(b / h)))
+    else:
+        h = x * 2 / a / b
+        print(math.degrees(math.atan(h / a)))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, x = map(int, input().split())
+    if x >= a**2 * b / 2:
+        print(90 - math.degrees(math.atan(2 * (a**2 * b - x) / a**3)))
+    else:
+        print(math.degrees(math.atan(a * b**2 / 2 / x)))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, x = map(int, input().split())
+    if x <= a**2 * b / 2:
+        print(math.degrees(math.atan(2 * x / (a**2 * b))))
+    else:
+        print(math.degrees(math.atan(2 * (a**2 * b - x) / (a**3))))
+
+=======
+Suggestion 4
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a**2*b/2:
+        print(math.degrees(math.atan(2*x/(a**2*b))))
+    else:
+        print(math.degrees(math.atan(a*b**2/(2*(a**2*b-x)))))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a**2 * b / 2:
+        print(math.degrees(math.atan(2 * x / (a**2 * b))))
+    else:
+        print(math.degrees(math.atan(a * b**2 / (2 * x))))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a ** 2 * b / 2:
+        print((180 / math.pi) * math.atan(2 * x / (a ** 2)))
+    else:
+        print((180 / math.pi) * math.atan(2 * (a ** 2 * b - x) / (a ** 3)))
+
+=======
+Suggestion 7
+
+def main():
+    a, b, x = map(int, input().split())
+
+    if x >= a**2*b/2:
+        print(90 - math.degrees(math.atan(2*(a**2*b - x)/(a**3))))
+    else:
+        print(math.degrees(math.atan(a*b**2/(2*x))))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,x = map(int,input().split())
+    if x <= a**2 * b / 2:
+        ans = math.degrees(math.atan(2 * x / (a * b**2)))
+    else:
+        ans = math.degrees(math.atan(2 * (a**2 * b - x) / (a**3 * b)))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,x = map(int, input().split())
+    if x > a**2*b/2:
+        print(2*(a**2*b-x)/(a**3))
+    else:
+        print(90-2*x/(a**2))

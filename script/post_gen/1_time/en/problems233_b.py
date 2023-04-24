@@ -1,42 +1,71 @@
-#Problem Statement
-#You are given integers L, R, and a string S consisting of lowercase English letters.
-#Print this string after reversing (the order of) the L-th through R-th characters.
-#
-#Constraints
-#S consists of lowercase English letters.
-#1 ≦ |S| ≦ 10^5 (|S| is the length of S.)
-#L and R are integers.
-#1 ≦ L ≦ R ≦ |S|
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L R
-#S
-#
-#Output
-#Print the specified string.
-#
-#Sample Input 1
-#3 7
-#abcdefgh
-#
-#Sample Output 1
-#abgfedch
-#After reversing the 3-rd through 7-th characters of abcdefgh, we have abgfedch.
-#
-#Sample Input 2
-#1 7
-#reviver
-#
-#Sample Output 2
-#reviver
-#The operation may result in the same string as the original.
-#
-#Sample Input 3
-#4 13
-#merrychristmas
-#
-#Sample Output 3
-#meramtsirhcyrs
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L, R = map(int, input().split())
+    S = input()
+    print(S[:L-1] + S[L-1:R][::-1] + S[R:])
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    L, R = map(int, input().split())
+    S = input()
+    print(S[:L-1] + S[L-1:R][::-1] + S[R:])
+
+=======
+Suggestion 3
+
+def main():
+    L, R = map(int, input().split())
+    S = list(input())
+    S[L-1:R] = S[L-1:R][::-1]
+    print(''.join(S))
+
+=======
+Suggestion 4
+
+def main():
+    l, r = map(int, input().split())
+    s = list(input())
+    s[l-1:r] = s[l-1:r][::-1]
+    print(''.join(s))
+
+=======
+Suggestion 5
+
+def main():
+    L, R = map(int, input().split())
+    S = list(input())
+    S[L - 1:R] = S[L - 1:R][::-1]
+    print("".join(S))
+
+=======
+Suggestion 6
+
+def reverse(s, l, r):
+    return s[:l-1] + s[l-1:r][::-1] + s[r:]
+
+=======
+Suggestion 7
+
+def reverse(l, r, s):
+    return s[:l-1] + s[l-1:r][::-1] + s[r:]
+
+=======
+Suggestion 8
+
+def reverseString(s, l, r):
+    s = s[:l-1] + s[l-1:r][::-1] + s[r:]
+    return s
+
+=======
+Suggestion 9
+
+def reverse_string(string, l, r):
+    return string[:l-1] + string[l-1:r][::-1] + string[r:]

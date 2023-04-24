@@ -1,55 +1,155 @@
-#問題文
-#高橋くんは N 個の品物を 1 個ずつ順番に買う予定です。
-#i 番目に買う品物の値段は A_i 円です。
-#高橋くんは M 枚の割引券を持っています。
-#品物を買う際に割引券を好きな枚数使うことができます。
-#X 円の品物を買う際に Y 枚の割引券を使った場合、その品物を (X/(2^Y)) 円(小数点以下切り捨て)で買うことができます。
-#最小で何円あれば全ての品物を買うことができるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N, M ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#全ての品物を買うのに必要なお金の最小値を出力せよ。
-#
-#入力例 1
-#3 3
-#2 13 8
-#
-#出力例 1
-#9
-#以下のように割引券を使えば、合計 9 円で全ての商品を買うことができます。
-#1 番目に買う品物には割引券を使わず、2 円で買います。
-#2 番目に買う品物には 2 枚の割引券を使い、3 円で買います。
-#3 番目に買う品物には 1 枚の割引券を使い、4 円で買います。
-#
-#入力例 2
-#4 4
-#1 9 3 5
-#
-#出力例 2
-#6
-#
-#入力例 3
-#1 100000
-#1000000000
-#
-#出力例 3
-#0
-#1000000000 円の品物を買う際に 100000 枚の割引券を使うと 0 円で買うことができます。
-#
-#入力例 4
-#10 1
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#出力例 4
-#9500000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] // (2 ** min(i, M))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] // 2**M
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans % 2 == 1:
+            continue
+        if M > 0:
+            ans //= 2
+            M -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    discount = [0] * M
+    for i in range(M):
+        discount[i] = 2 ** i
+    ans = 0
+    for i in range(N):
+        if A[i] >= discount[M-1]:
+            ans += A[i]
+        else:
+            for j in range(M):
+                if A[i] >= discount[j]:
+                    ans += A[i] // discount[j]
+                    break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        ans = ans // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * (N + 1)
+    for i in range(N):
+        B[i + 1] = B[i] + A[i]
+    ans = 0
+    for i in range(N):
+        ans += A[i] * 2 ** min(M, i)
+    print(ans - B[N])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        if M == 0:
+            break
+        if A[i] < 2 ** M:
+            A[i] = 0
+            M -= 1
+        else:
+            A[i] -= 2 ** M
+            M = 0
+    print(sum(A))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = sum(A)
+    for i in range(1, N):
+        A[i] += A[i-1]
+    for i in range(M):
+        ans = min(ans, A[-1-i]//2**i)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    #ソート
+    A.sort(reverse=True)
+    #割引券の枚数をカウント
+    count = [0]*M
+    for i in range(M):
+        count[i] = count[i-1]+2**i
+    #割引券の枚数をカウント
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if A[i]//count[j] >= 1:
+                ans += A[i]//count[j]
+                A[i] = A[i]%count[j]
+                break
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(max(0, A[0] - (A[0] >> M)))

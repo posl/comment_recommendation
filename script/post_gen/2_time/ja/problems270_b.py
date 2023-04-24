@@ -1,39 +1,138 @@
-#問題文
-#数直線の原点に高橋君がいます。高橋君は座標 X にあるゴールに移動しようとしています。
-#座標 Y には壁があり、最初、高橋君は壁を超えて移動することができません。
-#座標 Z にあるハンマーを拾った後でなら、壁を破壊して通過できるようになります。
-#高橋君がゴールに到達することが可能か判定し、可能であれば移動距離の最小値を求めてください。
-#
-#制約
-#-1000 ≦ X,Y,Z ≦ 1000
-#X,Y,Z は相異なり、いずれも 0 でない
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y Z
-#
-#出力
-#高橋君がゴールに到達することが可能であれば、移動距離の最小値を出力せよ。不可能であれば、かわりに -1 と出力せよ。
-#
-#入力例 1
-#10 -10 1
-#
-#出力例 1
-#10
-#高橋君はまっすぐゴールに向かうことができます。
-#
-#入力例 2
-#20 10 -10
-#
-#出力例 2
-#40
-#ゴールは壁の向こう側にあります。まずハンマーを拾い、壁を壊すことでゴールに到達することができます。
-#
-#入力例 3
-#100 1 1000
-#
-#出力例 3
-#-1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, z = map(int, input().split())
+    if z > 0:
+        if x > y:
+            print(x - y)
+        else:
+            print(-1)
+    else:
+        if x < y:
+            print(y - x)
+        else:
+            print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, Z = map(int, input().split())
+    if abs(X) > abs(Y):
+        print(abs(X) + abs(X - Z))
+    else:
+        print(abs(X) + abs(Y) + abs(Y - Z))
+
+=======
+Suggestion 3
+
+def main():
+    x, y, z = map(int, input().split())
+    if z >= 0:
+        print(abs(x-y))
+    else:
+        print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    x, y, z = map(int, input().split())
+    if x > 0:
+        print(x - y)
+    elif x < 0:
+        print(-x + y)
+    else:
+        if y > 0:
+            print(y - z)
+        elif y < 0:
+            print(-y + z)
+        else:
+            print(z)
+
+=======
+Suggestion 5
+
+def main():
+    X, Y, Z = map(int, input().split())
+    if Z >= X:
+        print(-1)
+    else:
+        print(abs(X-Y))
+
+=======
+Suggestion 6
+
+def main():
+    x,y,z = map(int,input().split())
+    if y < 0:
+        print(abs(x) + abs(y) + abs(z))
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    x,y,z = map(int,input().split())
+    if x > y:
+        if -z < y:
+            print(-1)
+        else:
+            print(x-y)
+    else:
+        if -z < x:
+            print(-1)
+        else:
+            print(y-x)
+
+=======
+Suggestion 8
+
+def main():
+    X,Y,Z = map(int,input().split())
+    if X > 0:
+        if Y < 0:
+            if Z > 0:
+                print(abs(X-Y)+abs(Z-Y))
+            else:
+                print(abs(X-Y))
+        else:
+            if Z > 0:
+                print(abs(X-Y)+abs(Z-Y))
+            else:
+                print(-1)
+    else:
+        if Y < 0:
+            if Z > 0:
+                print(-1)
+            else:
+                print(abs(X-Y))
+        else:
+            if Z > 0:
+                print(abs(X-Y)+abs(Z-Y))
+            else:
+                print(abs(X-Y))
+
+=======
+Suggestion 9
+
+def main():
+    X,Y,Z = map(int,input().split())
+    if Z < Y:
+        print(-1)
+    else:
+        print(X/(Z-Y))
+
+=======
+Suggestion 10
+
+def main():
+    x,y,z=map(int,input().split())
+    if z>y:
+        print(-1)
+    else:
+        print(x+y-z)

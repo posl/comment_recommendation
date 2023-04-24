@@ -1,67 +1,323 @@
-#問題文
-#縦 H マス、横 W マスのグリッドがあります。上から i 行目、左から j 列目のマスを (i,j) と表します。
-#(i,j) には文字 G_{i,j} が書きこまれています。ここで G_{i,j} は U, D, L, R のいずれかです。
-#あなたは (1,1) にいます。あなたは移動することができなくなるまで次の操作を繰り返します。
-#あなたは現在 (i,j) にいるとする。
-#G_{i,j} が U であり、かつ i ≠ 1 ならば (i-1,j) へ移動する。
-#G_{i,j} が D であり、かつ i ≠ H ならば (i+1,j) へ移動する。
-#G_{i,j} が L であり、かつ j ≠ 1 ならば (i,j-1) へ移動する。
-#G_{i,j} が R であり、かつ j ≠ W ならば (i,j+1) へ移動する。
-#それ以外の場合、あなたは移動することができない。  
-#操作を終了した時点であなたがいるマスを出力してください。
-#ただし、あなたが操作を終了することなく無限に移動し続ける場合は -1 を出力してください。
-#
-#制約
-#1 ≦ H, W ≦ 500
-#G_{i,j} は U, D, L, R のいずれかである。
-#H, W は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#G_{1,1}G_{1,2}... G_{1,W}
-#G_{2,1}G_{2,2}... G_{2,W}
-#.
-#.
-#.
-#G_{H,1}G_{H,2}... G_{H,W}
-#
-#出力
-#操作を終了した時点であなたが (i,j) にいる場合は次の形式で出力せよ。
-#i j
-#また、無限に動き続ける場合は -1 を出力せよ。
-#
-#入力例 1
-#2 3
-#RDU
-#LRU
-#
-#出力例 1
-#1 3
-#あなたは (1, 1) -> (1, 2) -> (2, 2) -> (2, 3) -> (1, 3) の順に動いたあとに操作を終了します。よって答えは (1, 3) です。
-#
-#入力例 2
-#2 3
-#RRD
-#ULL
-#
-#出力例 2
-#-1
-#あなたは (1, 1) -> (1, 2) -> (1, 3) -> (2, 3) -> (2, 2) -> (2, 1) -> (1, 1) -> (1, 2) -> ... というように無限に動き続けます。この場合は -1 を出力します。
-#
-#入力例 3
-#9 44
-#RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR
-#RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD
-#DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR
-#DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD
-#RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR
-#RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR
-#RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR
-#RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR
-#RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR
-#
-#出力例 3
-#9 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    i, j = 0, 0
+    for _ in range(H*W):
+        if G[i][j] == "U":
+            if i == 0:
+                break
+            else:
+                i -= 1
+        elif G[i][j] == "D":
+            if i == H-1:
+                break
+            else:
+                i += 1
+        elif G[i][j] == "L":
+            if j == 0:
+                break
+            else:
+                j -= 1
+        elif G[i][j] == "R":
+            if j == W-1:
+                break
+            else:
+                j += 1
+    else:
+        print(-1)
+        return
+    print(i+1, j+1)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    grid = [input() for _ in range(H)]
+    i, j = 0, 0
+    for _ in range(H*W):
+        if i == H-1 and j == W-1:
+            break
+        if grid[i][j] == "U":
+            i -= 1
+        elif grid[i][j] == "D":
+            i += 1
+        elif grid[i][j] == "L":
+            j -= 1
+        elif grid[i][j] == "R":
+            j += 1
+        if i < 0 or i >= H or j < 0 or j >= W:
+            print(-1)
+            return
+    print(i+1, j+1)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    x = 0
+    y = 0
+    for i in range(10**6):
+        if x == H-1 and y == W-1:
+            print(x+1, y+1)
+            return
+        if G[x][y] == 'U' and x != 0:
+            x -= 1
+        elif G[x][y] == 'D' and x != H-1:
+            x += 1
+        elif G[x][y] == 'L' and y != 0:
+            y -= 1
+        elif G[x][y] == 'R' and y != W-1:
+            y += 1
+        else:
+            print(-1)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    ans = [1, 1]
+    for _ in range(H*W):
+        i, j = ans[0]-1, ans[1]-1
+        if G[i][j] == "U":
+            if i == 0:
+                break
+            ans[0] -= 1
+        elif G[i][j] == "D":
+            if i == H-1:
+                break
+            ans[0] += 1
+        elif G[i][j] == "L":
+            if j == 0:
+                break
+            ans[1] -= 1
+        elif G[i][j] == "R":
+            if j == W-1:
+                break
+            ans[1] += 1
+    else:
+        ans = [-1]
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    grid = [list(input()) for _ in range(h)]
+
+    sy, sx = 0, 0
+    while True:
+        if sy == h - 1 and sx == w - 1:
+            print(sy + 1, sx + 1)
+            return
+
+        if grid[sy][sx] == 'U':
+            sy -= 1
+        elif grid[sy][sx] == 'D':
+            sy += 1
+        elif grid[sy][sx] == 'L':
+            sx -= 1
+        elif grid[sy][sx] == 'R':
+            sx += 1
+
+        if sy < 0 or sy >= h or sx < 0 or sx >= w:
+            print(-1)
+            return
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    s = [input() for _ in range(H)]
+    x = 0
+    y = 0
+    c = 0
+    while 1:
+        c += 1
+        if c > H * W:
+            print(-1)
+            break
+        if s[y][x] == 'U':
+            if y != 0:
+                y -= 1
+            else:
+                print(y+1, x+1)
+                break
+        elif s[y][x] == 'D':
+            if y != H - 1:
+                y += 1
+            else:
+                print(y+1, x+1)
+                break
+        elif s[y][x] == 'L':
+            if x != 0:
+                x -= 1
+            else:
+                print(y+1, x+1)
+                break
+        elif s[y][x] == 'R':
+            if x != W - 1:
+                x += 1
+            else:
+                print(y+1, x+1)
+                break
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    h, w = map(int, input().split())
+    g = [input() for _ in range(h)]
+    #print(h, w)
+    #print(g)
+    #処理
+    x = 0
+    y = 0
+    for i in range(10**5):
+        if g[x][y] == "U":
+            if x == 0:
+                break
+            else:
+                x -= 1
+        elif g[x][y] == "D":
+            if x == h-1:
+                break
+            else:
+                x += 1
+        elif g[x][y] == "L":
+            if y == 0:
+                break
+            else:
+                y -= 1
+        elif g[x][y] == "R":
+            if y == w-1:
+                break
+            else:
+                y += 1
+        else:
+            print("Error")
+    else:
+        print("-1")
+        return
+    #出力
+    print(x+1, y+1)
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    grid = [input() for _ in range(h)]
+
+    # 0:U, 1:D, 2:L, 3:R
+    dx = [0, 0, -1, 1]
+    dy = [-1, 1, 0, 0]
+    d = [0, 1, 2, 3]
+
+    # 0:U, 1:D, 2:L, 3:R
+    d2c = ['U', 'D', 'L', 'R']
+
+    # 0:U, 1:D, 2:L, 3:R
+    d2i = {'U': 0, 'D': 1, 'L': 2, 'R': 3}
+
+    x, y = 0, 0
+    while True:
+        c = grid[y][x]
+        i = d2i[c]
+        x += dx[i]
+        y += dy[i]
+
+        # 範囲外に出たら終了
+        if x < 0 or x >= w or y < 0 or y >= h:
+            break
+
+        # 始点に戻ったら無限ループ
+        if x == 0 and y == 0:
+            print(-1)
+            return
+
+    print(y + 1, x + 1)
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+
+    #print(H, W)
+    #print(G)
+
+    # すでに通った場所を記録する
+    visited = [[False] * W for _ in range(H)]
+    #print(visited)
+
+    # 今いる場所
+    i = 0
+    j = 0
+
+    # 移動回数
+    cnt = 0
+
+    # すでに通った場所かどうかを確認
+    while not visited[i][j]:
+        visited[i][j] = True
+        cnt += 1
+        #print(i, j)
+
+        # 移動する
+        if G[i][j] == 'U':
+            i -= 1
+        elif G[i][j] == 'D':
+            i += 1
+        elif G[i][j] == 'L':
+            j -= 1
+        elif G[i][j] == 'R':
+            j += 1
+
+        # 移動先がグリッドの範囲外ならば終了
+        if i < 0 or i >= H or j < 0 or j >= W:
+            break
+
+    # 移動回数がグリッドのマス数より多ければ無限ループ
+    if cnt > H * W:
+        print(-1)
+    else:
+        print(i + 1, j + 1)
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    G = [list(input()) for _ in range(H)]
+    ans = [1, 1] #初期位置
+    for i in range(1000000):
+        if ans[0] == H and ans[1] == W:
+            break
+        if G[ans[0]-1][ans[1]-1] == 'U' and ans[0] != 1:
+            ans[0] -= 1
+        elif G[ans[0]-1][ans[1]-1] == 'D' and ans[0] != H:
+            ans[0] += 1
+        elif G[ans[0]-1][ans[1]-1] == 'L' and ans[1] != 1:
+            ans[1] -= 1
+        elif G[ans[0]-1][ans[1]-1] == 'R' and ans[1] != W:
+            ans[1] += 1
+        else:
+            ans = [-1]
+            break
+    print(*ans)

@@ -1,94 +1,261 @@
-#問題文
-#とあるSNSに、人 1 、人 2、 ...、人 N が登録しています。
-#この N 人の間には、 M 組の「友達関係」と、 K 組の「ブロック関係」が存在します。
-#i = 1, 2, ..., M について、人 A_i と人 B_i は友達関係にあります。この関係は双方向的です。
-#i = 1, 2, ..., K について、人 C_i と人 D_i はブロック関係にあります。この関係は双方向的です。
-#以下の 4 つの条件が満たされるとき、人 a は人 b の「友達候補」であると定義します。
-#a ≠ b である。
-#人 a と人 b はブロック関係に無い。
-#人 a と人 b は友達関係に無い。
-#1 以上 N 以下の整数から成るある数列 c_0, c_1, c_2, ..., c_L が存在し、c_0 = a であり、 c_L = b であり、 i = 0, 1, ..., L - 1 について、人 c_i と人 c_{i+1} は友達関係にある。
-#人 i = 1, 2, ... N について、友達候補の数を答えてください。
-#
-#制約
-#入力は全て整数
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#出力
-#答えを空白区切りで順に出力せよ。
-#
-#入力例 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#出力例 1
-#0 1 0 1
-#人 2 と人 3 は友達関係にあり, 人 3 と人 4 は友達関係にあり, かつ人 2 と人 4 は友達関係にもブロック関係にもありませんから, 人 4 は人 2の友達候補です。
-#人 1 と人 3 は人 2 の友達候補ではありませんから, 人 2 の友達候補は 1 人です。
-#
-#入力例 2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#出力例 2
-#0 0 0 0 0
-#全ての人は他の全ての人と友達関係にありますが、友達候補は 0 人です。
-#
-#入力例 3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#出力例 3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for _ in range(K):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    #print(N, M, K)
+    #print(A)
+    #print(B)
+    #print(C)
+    #print(D)
+    #print(len(A))
+    #print(len(B))
+    #print(len(C))
+    #print(len(D))
+    #print(A[0])
+    #print(B[0])
+    #print(C[0])
+    #print(D[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    friend = [set() for _ in range(N)]
+    block = [set() for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        A -= 1
+        B -= 1
+        friend[A].add(B)
+        friend[B].add(A)
+    for _ in range(K):
+        C, D = map(int, input().split())
+        C -= 1
+        D -= 1
+        block[C].add(D)
+        block[D].add(C)
+
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = len(friend[i] - block[i] - set([i])) - 1
+
+    print(*ans)
+
+=======
+Suggestion 3
+
+def dfs(v, c):
+    color[v] = c
+    for i in graph[v]:
+        if color[i] == c:
+            return False
+        if color[i] == 0 and not dfs(i, -c):
+            return False
+    return True
+
+n, m, k = map(int, input().split())
+graph = [[] for _ in range(n)]
+color = [0] * n
+
+for _ in range(m):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    graph[a].append(b)
+    graph[b].append(a)
+
+for i in range(n):
+    if color[i] == 0:
+        if not dfs(i, 1):
+            print('No')
+            exit()
+
+print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    n, m, k = map(int, input().split())
+    a = [0] * (n + 1)
+    b = [0] * (n + 1)
+    c = [0] * (n + 1)
+    d = [0] * (n + 1)
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    for i in range(k):
+        c[i], d[i] = map(int, input().split())
+    for i in range(m):
+        a[i] -= 1
+        b[i] -= 1
+    for i in range(k):
+        c[i] -= 1
+        d[i] -= 1
+    uf = UnionFind(n)
+    for i in range(m):
+        uf.union(a[i], b[i])
+    for i in range(k):
+        uf.union(c[i], d[i])
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = uf.size(i) - uf.size_tree(i) - 1
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m,k = map(int,input().split())
+    f = [set() for _ in range(n)]
+    b = [set() for _ in range(n)]
+    for _ in range(m):
+        a,b = map(int,input().split())
+        a,b = a-1,b-1
+        f[a].add(b)
+        f[b].add(a)
+    for _ in range(k):
+        c,d = map(int,input().split())
+        c,d = c-1,d-1
+        b[c].add(d)
+        b[d].add(c)
+    ans = [0]*n
+    for i in range(n):
+        ans[i] = len(f[i] - b[i] - {i}) - 1
+    print(*ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n,m,k=map(int,input().split())
+    friend=set()
+    block=set()
+    for _ in range(m):
+        a,b=map(int,input().split())
+        friend.add((a,b))
+        friend.add((b,a))
+    for _ in range(k):
+        c,d=map(int,input().split())
+        block.add((c,d))
+        block.add((d,c))
+    ans=[0]*n
+    for i in range(n):
+        for j in range(1,n+1):
+            if i+1==j:
+                continue
+            if (i+1,j) in block:
+                continue
+            if (i+1,j) in friend:
+                continue
+            if (j,i+1) in friend:
+                continue
+            ans[i]+=1
+    print(*ans)
+
+=======
+Suggestion 7
+
+def dfs(v, c):
+    global color
+    color[v] = c
+    for i in range(len(graph[v])):
+        if color[graph[v][i]] == c:
+            return False
+        if color[graph[v][i]] == 0 and not dfs(graph[v][i], -c):
+            return False
+    return True
+
+=======
+Suggestion 8
+
+def dfs(start, end, graph, visited):
+    visited[start] = True
+    if start == end:
+        return True
+    for node in graph[start]:
+        if not visited[node]:
+            if dfs(node, end, graph, visited):
+                return True
+    return False
+
+=======
+Suggestion 9
+
+def dfs(u, color):
+    color[u] = 1
+    for v in edge[u]:
+        if color[v] == 0:
+            dfs(v, color)
+
+=======
+Suggestion 10
+
+def dfs(graph, start, goal):
+    stack = [start]
+    paths = []
+    while stack:
+        v = stack.pop()
+        if v not in paths:
+            paths.append(v)
+            stack += graph[v]
+    return paths
+
+N, M, K = map(int, input().split())
+friends = [[] for _ in range(N)]
+blocks = [[] for _ in range(N)]
+for _ in range(M):
+    a, b = map(int, input().split())
+    friends[a-1].append(b)
+    friends[b-1].append(a)
+for _ in range(K):
+    c, d = map(int, input().split())
+    blocks[c-1].append(d)
+    blocks[d-1].append(c)
+ans = [0] * N
+for i in range(N):
+    ans[i] = len(set(dfs(friends, i+1, 0)) & set(dfs(blocks, i+1, 0))) - 1 - len(friends[i])
+print(*ans)

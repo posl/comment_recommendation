@@ -1,37 +1,105 @@
-#問題文
-#整数 n に対して，n を十進法で表したときの各桁の和を S(n) で表すことにします．
-#たとえば，S(101) = 1 + 0 + 1 = 2 です．
-#整数 N が与えられたとき，N が S(N) で割り切れるかどうかを判定してください．
-#
-#制約
-#1 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#N
-#
-#出力
-#N が S(N) で割り切れるなら Yes を，割り切れないなら No を出力せよ．
-#
-#入力例 1
-#12
-#
-#出力例 1
-#Yes
-#この入力では N=12 です．
-#S(12) = 1 + 2 = 3 なので，N は S(N) で割り切れます．
-#
-#入力例 2
-#101
-#
-#出力例 2
-#No
-#S(101) = 1 + 0 + 1 = 2 なので，N は S(N) で割り切れません．
-#
-#入力例 3
-#999999999
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    sum = 0
+    for i in n:
+        sum += int(i)
+    if int(n) % sum == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = sum(map(int, str(N)))
+    if N % S == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def s(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 4
+
+def sum_of_digit(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+n = int(input())
+print('Yes' if n % sum_of_digit(n) == 0 else 'No')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = 0
+    while N > 0:
+        S += N % 10
+        N = N // 10
+    if S % 2 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print("Yes" if N % sum(int(i) for i in str(N)) == 0 else "No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print("Yes" if n % sum(map(int, str(n))) == 0 else "No")
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N = int(input())
+    #S(N)を計算
+    S = 0
+    while N > 0:
+        S += N % 10
+        N //= 10
+    #S(N)で割り切れるか判定
+    if N % S == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def sum_of_digits(n):
+    return sum(int(c) for c in str(n))
+
+=======
+Suggestion 10
+
+def S(N):
+    return sum(map(int, str(N)))

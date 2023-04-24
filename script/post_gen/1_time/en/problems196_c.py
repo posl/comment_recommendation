@@ -1,37 +1,98 @@
-#Problem Statement
-#Given is an integer N.
-#How many integers x between 1 and N (inclusive) satisfy the following condition?
-#The decimal representation (without leading zeros) of x has an even number of digits, and its first and second halves are equal as strings.
-#
-#Constraints
-#N is an integer.
-#1 ≤ N < 10^{12}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#33
-#
-#Sample Output 1
-#3
-#Three numbers 11, 22, and 33 satisfy the condition.
-#
-#Sample Input 2
-#1333
-#
-#Sample Output 2
-#13
-#For example, the decimal representation of 1313 has four digits, and its first and second halves are both 13, so 1313 satisfies the condition.
-#
-#Sample Input 3
-#10000000
-#
-#Sample Output 3
-#999
+Synthesizing 8/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:int(len(str(i))/2)] == str(i)[int(len(str(i))/2):]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[0:int(len(str(i))/2)] == str(i)[int(len(str(i))/2):len(str(i))]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        if len(str(i)) % 2 == 0:
+            s = str(i)
+            if s[:len(s) // 2] == s[len(s) // 2:]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n < 11:
+        print(0)
+    elif n < 111:
+        print(9)
+    elif n < 1111:
+        print(9 + 10)
+    elif n < 11111:
+        print(9 + 10 + 100)
+    elif n < 111111:
+        print(9 + 10 + 100 + 1000)
+    elif n < 1111111:
+        print(9 + 10 + 100 + 1000 + 10000)
+    elif n < 11111111:
+        print(9 + 10 + 100 + 1000 + 10000 + 100000)
+    elif n < 111111111:
+        print(9 + 10 + 100 + 1000 + 10000 + 100000 + 1000000)
+    elif n < 1111111111:
+        print(9 + 10 + 100 + 1000 + 10000 + 100000 + 1000000 + 10000000)
+    elif n < 11111111111:
+        print(9 + 10 + 100 + 1000 + 10000 + 100000 + 1000000 + 10000000 + 100000000)
+    else:
+        print(9 + 10 + 100 + 1000 + 10000 + 100000 + 1000000 + 10000000 + 100000000 + 1000000000)
+
+=======
+Suggestion 6
+
+def  main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        s = str(i)
+        if len(s) % 2 == 0 and s[:len(s)//2] == s[len(s)//2:]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def   f ( n ): 
+     if   n   ==   0 : 
+         return   1 
+     return   9   *   10   **   ( n   //   2   -   1 )

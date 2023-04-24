@@ -1,89 +1,242 @@
-#問題文
-#高橋君はあるサービスで使うユーザー名を決めるのに困っています。彼を助けるプログラムを書いてください。
-#以下の条件をすべて満たす文字列 X を 1 つ求めてください。
-#X は次の手順で得られる文字列である。
-#N 個の文字列 S_1,S_2,...,S_N を好きな順番で並べたものを S_1', S_2', ...,S_N' とする。そして、S_1'、( 1 個以上の _ )、S_2'、( 1 個以上の _ )、...、( 1 個以上の _ )、S_N' をこの順番で連結したものを X とする。
-#X の文字数は 3 以上 16 以下である。
-#X は M 個の文字列 T_1,T_2,...,T_M のいずれとも一致しない。
-#ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 と出力してください。
-#
-#制約
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N,M は整数
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16
-#i ≠ j ならば S_i ≠ S_j
-#S_i は英小文字のみからなる文字列
-#3 ≦ |T_i| ≦ 16
-#i ≠ j ならば T_i ≠ T_j
-#T_i は英小文字と _ のみからなる文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#出力
-#条件をすべて満たす文字列 X を 1 つ出力せよ。ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 を出力せよ。
-#答えが複数存在する場合、どれを出力しても良い。
-#
-#入力例 1
-#1 1
-#chokudai
-#chokudai
-#
-#出力例 1
-#-1
-#条件のうち 1 番目と 2 番目を満たす文字列は X= chokudai しかありませんが、これは T_1 と一致します。
-#このため、条件をすべて満たす文字列 X が存在せず、-1 が正しい出力となります。
-#
-#入力例 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#出力例 2
-#dai_choku
-#この他に、choku__dai (choku と dai の間の _ が 2 つ) 等も条件をすべて満たします。
-#
-#入力例 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#出力例 3
-#-1
-#chokudai__atcoder や atcoder__chokudai (chokudai と atcoder の間の _ が 2 つ)は文字数が 17 なので 2 番目の条件を満たしません。
-#
-#入力例 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#出力例 4
-#ab__ef___cd_gh
-#1 番目の条件で記述されている操作で得られないような文字列が T_i として与えられる場合があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            for k in range(n):
+                if k == i or k == j:
+                    continue
+                for l in range(n):
+                    if l == i or l == j or l == k:
+                        continue
+                    x = s[i] + '_' + s[j] + '_' + s[k] + '_' + s[l]
+                    if 3 <= len(x) <= 16 and x not in t:
+                        print(x)
+                        return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    for i in range(3, 17):
+        for j in range(N):
+            for k in range(j+1, N):
+                D = [S[j], "_"*(i-len(S[j])-len(S[k])), S[k]]
+                X = "".join(D)
+                if len(X) == i and X not in T:
+                    print(X)
+                    return
+    print(-1)
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(3, 17):
+        for j in range(N):
+            if len(S[j]) > i:
+                continue
+            for k in range(N):
+                if j == k:
+                    continue
+                if len(S[k]) > i - len(S[j]) - 1:
+                    continue
+                for l in range(N):
+                    if j == l or k == l:
+                        continue
+                    if len(S[l]) > i - len(S[j]) - len(S[k]) - 2:
+                        continue
+                    for m in range(N):
+                        if j == m or k == m or l == m:
+                            continue
+                        if len(S[m]) > i - len(S[j]) - len(S[k]) - len(S[l]) - 3:
+                            continue
+                        for n in range(N):
+                            if j == n or k == n or l == n or m == n:
+                                continue
+                            if len(S[n]) > i - len(S[j]) - len(S[k]) - len(S[l]) - len(S[m]) - 4:
+                                continue
+                            for o in range(N):
+                                if j == o or k == o or l == o or m == o or n == o:
+                                    continue
+                                if len(S[o]) > i - len(S[j]) - len(S[k]) - len(S[l]) - len(S[m]) - len(S[n]) - 5:
+                                    continue
+                                for p in range(N):
+                                    if j == p or k == p or l == p or m == p or n == p or o == p:
+                                        continue
+                                    if len(S[p]) > i - len(S[j]) - len(S[k]) - len(S[l]) - len(S[m]) - len(S[n]) - len(S[o]) - 6:
+                                        continue
+                                    for q in range(N):
+                                        if j == q or k == q or l == q or m == q or n == q or o == q or p == q:
+                                            continue
+                                        if len(S[q]) > i - len(S[j]) - len(S[k]) - len(S[l]) - len(S[m]) - len(S[n]) - len(S[o]) - len(S
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(3, 17):
+        for j in range(3 ** i):
+            s = ""
+            for k in range(i):
+                s += S[(j // (3 ** k)) % 3]
+            if s not in T:
+                print(s)
+                return
+    print(-1)
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(3, 17):
+        for c in product(S, repeat=i):
+            s = "".join(c)
+            if s in T:
+                continue
+            if len(s) != len(set(s)):
+                continue
+            print(s)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    if N == 1:
+        for i in range(1, 17):
+            T.append("_" * i + S[0])
+        for i in range(1, 17):
+            T.append(S[0] + "_" * i)
+    else:
+        for i in range(1, 17):
+            T.append("_" * i + S[0])
+        for i in range(1, 17):
+            T.append(S[0] + "_" * i)
+        for i in range(1, 17):
+            T.append(S[1] + "_" * i)
+        for i in range(1, 17):
+            T.append("_" * i + S[1])
+    T = set(T)
+    ans = []
+    for s in S:
+        for t in T:
+            if s in t:
+                ans.append(t)
+    ans = set(ans)
+    if len(ans) == len(T):
+        print(-1)
+    else:
+        print(list(T - ans)[0])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    ans = ""
+    for i in range(N):
+        ans += S[i]
+        ans += "_"
+    ans = ans[:-1]
+    for i in range(M):
+        if ans == T[i]:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    for a in S:
+        for b in S:
+            for c in S:
+                for d in S:
+                    s = a + "_" + b + "_" + c + "_" + d
+                    if s.count("_") == N and len(s) >= 3 and len(s) <= 16 and s not in T:
+                        print(s.replace("_", ""))
+                        return
+    print(-1)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for c in product("_", repeat=N-1):
+        X = "".join(s1 + s2 for s1, s2 in zip(S, c + ("",)))
+        if all(X != t for t in T) and 3 <= len(X) <= 16:
+            print(X)
+            return
+    print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    # 1文字目が一致するものを取得
+    for s in S:
+        for t in T:
+            if s[0] == t[0]:
+                # 2文字目が一致するものを取得
+                for s2 in S:
+                    for t2 in T:
+                        if s[1] == t[1] and s2[1] == t2[1]:
+                            # 3文字目が一致するものを取得
+                            for s3 in S:
+                                for t3 in T:
+                                    if s[2] == t[2] and s2[2] == t2[2] and s3[2] == t3[2]:
+                                        # 4文字目が一致するものを取得
+                                        for s4 in S:
+                                            for t4 in T:
+                                                if s[3] == t[3] and s2[3] == t2[3] and s3[3] == t3[3] and s4[3] == t4[3]:
+                                                    # 5文字目が一致するものを取得
+                                                    for s5 in S:
+                                                        for t5 in T:
+                                                            if s[4] == t[4] and s2[4] == t2[4] and s3[4] == t3[4] and s4[4] == t4[4] and s5[4] == t5[4]:
+                                                                # 6文字目が一致するものを取得
+                                                                for s6 in S:
+                                                                    for t6 in T:
+                                                                        if s[5] == t[5] and s2[5] == t2[5] and s3[5] == t3[5] and s4[5] == t4[5] and s5[5] == t5[5] and s6[5] == t6[5]:
+                                                                            # 7文字目が一致するものを取得
+                                                                            for s7 in S:
+                                                                                for t7 in T:

@@ -1,55 +1,153 @@
-#問題文
-#あなたはアメーバの観察記録をつけました。
-#最初 1 匹のアメーバがおり、番号は 1 です。
-#観察記録は時系列順に N 個あり、i 番目の観察記録は「番号 A_i のアメーバが分裂して消滅し、新たに 2 匹のアメーバが生まれ、それらにそれぞれ 2i,2i+1 と番号をつけた」というものです。
-#このとき、アメーバ A_i を アメーバ 2i,2i+1 の親と呼びます。
-#各 k=1,...,2N+1 について、アメーバ k から何代親を遡るとアメーバ 1 になるか求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#観察記録は矛盾していない。すなわち
-#1≦ A_i ≦ 2i-1
-#A_i は相異なる整数
-#
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#2N+1 行出力せよ。k 行目にはアメーバ k から何代親を遡るとアメーバ 1 になるかを出力せよ。
-#
-#入力例 1
-#2
-#1 2
-#
-#出力例 1
-#0
-#1
-#1
-#2
-#2
-#アメーバ 1 からアメーバ 2,3 が生まれ、アメーバ 2 からアメーバ 4,5 が生まれました。
-#アメーバ 1 は 0 代遡るとアメーバ 1 になります。
-#アメーバ 2 は 1 代遡るとアメーバ 1 になります。
-#アメーバ 3 は 1 代遡るとアメーバ 1 になります。
-#アメーバ 4 は 1 代遡るとアメーバ 2 になり、2 代遡るとアメーバ 1 になります。
-#アメーバ 5 は 1 代遡るとアメーバ 2 になり、2 代遡るとアメーバ 1 になります。
-#
-#入力例 2
-#4
-#1 3 5 2
-#
-#出力例 2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2 * N + 1)
+    for i in range(N):
+        ans[A[i]] = 1
+        ans[2 * i + 1] = ans[A[i]] + 1
+        ans[2 * i + 2] = ans[A[i]] + 1
+    for i in range(2 * N + 1):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    parent = [0] * (2 * N + 1)
+    for i in range(N):
+        parent[2 * i + 1] = A[i]
+        parent[2 * i + 2] = A[i]
+    for i in range(2 * N + 1):
+        if parent[i] == 0:
+            print(0)
+        else:
+            count = 1
+            while parent[i] != 1:
+                parent[i] = parent[parent[i]]
+                count += 1
+            print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[2*i] = ans[A[i]-1] + 1
+        ans[2*i+1] = ans[A[i]-1] + 1
+        ans[A[i]-1] += 1
+    for i in range(2*N+1):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[A[i]] = 1
+        ans[2*i+1] = ans[2*i+2] = ans[A[i]] + 1
+    for i in range(2*N+1):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[2*i+1] = ans[A[i]-1] + 1
+        ans[2*i+2] = ans[A[i]-1] + 1
+    for i in range(2*N+1):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[A[i]-1] = min(ans[A[i]-1], i)
+        ans[2*i] = min(ans[2*i], i+1)
+        ans[2*i+1] = min(ans[2*i+1], i+1)
+    for i in range(2*N+1):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    N=int(input())
+    A=list(map(int,input().split()))
+    B = [0] * (2*N+1)
+    for i in range(N):
+        B[2*i+1] = A[i]
+        B[2*i+2] = A[i]
+    for i in range(2*N,0,-1):
+        if i%2==1:
+            B[i//2] = B[i]
+    for i in range(2*N+1):
+        print(B[i])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # アメーバの親を記録する配列
+    parents = [0] * (2 * n + 2)
+
+    # 親を記録
+    for i in range(n):
+        parents[2 * i + 1] = a[i]
+        parents[2 * i + 2] = a[i]
+
+    # 各アメーバの親を辿ってアメーバ1になるまでの距離を計算
+    for i in range(2, 2 * n + 2):
+        parents[i] = parents[parents[i]] + 1
+
+    # 計算結果を出力
+    for i in range(1, 2 * n + 2):
+        print(parents[i])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # A:観察記録
+    # A[i]:i番目の観察記録で、親の番号
+    # A[i] = 2i-1,2i はありえない
+    # A[i] = 2j+1,2j+2 はありえない
+    # A[i] = 2j,2j+1 はありえる
+    # A[i] = 2j,2j+2 はありえる
+    # A[i] = 2j+1,2j+3 はありえる
+    # A[i] = 2j+2,2j+3 はありえる
+    # A[i] = 2j+1,2j+2 はありえない
+    # A[i] = 2j+2,2j+1 はありえない
+
+    # 答えを格納するリスト
+    ans = []
+    # 2N+1個のアメーバの親を格納するリスト
+    parent = [0] * (2*N+1)
+    # 2N+1個のアメーバの親を格納するリスト
+    parent[1] = 1
+    # 2N+1個のアメーバの何代親を格

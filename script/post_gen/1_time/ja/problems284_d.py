@@ -1,41 +1,201 @@
-#問題文
-#正整数 N が与えられます。N は、2 つの相異なる素数 p,q を用いて N=p^2q と表せることがわかっています。
-#p,q を求めてください。
-#T 個のテストケースが与えられるので、それぞれについて答えを求めてください。
-#
-#制約
-#入力は全て整数
-#1≦ T≦ 10
-#1≦ N ≦ 9× 10^{18}
-#N は、2 つの相異なる素数 p,q を用いて N=p^2q と表せる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。ここで test_i は i 番目のテストケースを意味する。
-#T
-#test_1
-#test_2
-#.
-#.
-#.
-#test_T
-#各テストケースは以下の形式で与えられる。
-#N
-#
-#出力
-#T 行出力せよ。
-#i (1≦ i ≦ T) 行目には、i 番目のテストケースにおける p,q を空白区切りで出力せよ。
-#なお、この問題の制約下では、N=p^2q を満たす素数 p,q の組は 1 通りしか存在しないことが証明できる。
-#
-#入力例 1
-#3
-#2023
-#63
-#1059872604593911
-#
-#出力例 1
-#17 7
-#3 7
-#104149 97711
-#1 番目のテストケースについて、N=2023=17^2× 7 です。よって、p=17,q=7 です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+T = int(input())
+for i in range(T):
+    N = int(input())
+    a = prime_factorize(N)
+    p = a[0]
+    q = N // (p ** 2)
+    print(p, q)
+
+=======
+Suggestion 2
+
+def prime_factorization(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+T = int(input())
+for i in range(T):
+    N = int(input())
+    p = prime_factorization(N)
+    print(p[0],p[-1])
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    for i in range(2, int(N**0.5)+1):
+        if N % i == 0:
+            if is_prime(i) and is_prime(N//i):
+                print(i, N//i)
+                break
+
+=======
+Suggestion 4
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        N = int(input())
+        p = 0
+        q = 0
+        for i in range(2, int(N**0.5)+1):
+            if N % i == 0:
+                p = i
+                q = N // i
+                break
+        print(p, q)
+
+=======
+Suggestion 5
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        p = 0
+        q = 0
+        for j in range(2, int(N**0.5)+1):
+            if N % j == 0:
+                p = j
+                q = N // (j**2)
+                break
+        print(p, q)
+
+=======
+Suggestion 6
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        p = 0
+        q = 0
+        for j in range(2, N):
+            if N % j == 0:
+                p = j
+                N = N // j
+                break
+        for j in range(2, N):
+            if N % j == 0:
+                q = j
+                N = N // j
+                break
+        print(p, q)
+
+=======
+Suggestion 7
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        for p in range(2, N):
+            if N % p == 0:
+                q = N // p ** 2
+                break
+        print(p, q)
+
+=======
+Suggestion 8
+
+def main():
+    T = int(input())
+    N = [int(input()) for _ in range(T)]
+    for i in range(T):
+        p = 0
+        q = 0
+        for j in range(2, int(N[i] ** (1/2)) + 1):
+            if N[i] % j == 0:
+                p = j
+                q = N[i] // j
+                break
+        print(p, q)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    T = int(input())
+    N = [int(input()) for _ in range(T)]
+    
+    #処理
+    #N=p^2q
+    #p,qを求める
+    #pは平方根をとる
+    #qはNをpで割ったものの平方根をとる
+    p = [int(N[i]**(1/2)) for i in range(T)]
+    q = [int(N[i]/p[i]**2) for i in range(T)]
+    
+    #出力
+    for i in range(T):
+        print(p[i],q[i])
+
+=======
+Suggestion 10
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        #素数リストを作成
+        prime_list = [2]
+        for j in range(3, int(N**0.5)+1, 2):
+            for k in prime_list:
+                if j % k == 0:
+                    break
+            else:
+                prime_list.append(j)
+        #N=p^2qを満たす素数p,qを探す
+        for p in prime_list:
+            if N % p == 0:
+                q = N // p
+                if q % p == 0:
+                    print(p, q // p)
+                    break

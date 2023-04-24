@@ -1,52 +1,161 @@
-#Problem Statement
-#You are given a sequence C of N integers. Find the number of sequences A of N integers satisfying all of the following conditions. 
-#1 ≦ A_i ≦ C_i (1 ≦ i ≦ N)
-#A_i ≠ A_j (1 ≦ i < j ≦ N)
-#Since the count may be enormous, print it modulo (10^9+7).
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the number of sequences A of N integers satisfying all of the following conditions, modulo (10^9+7).
-#
-#Sample Input 1
-#2
-#1 3
-#
-#Sample Output 1
-#2
-#We have two sequences A satisfying all of the conditions: (1,2) and (1,3).
-#On the other hand, A=(1,1), for example, does not satisfy the second condition.
-#
-#Sample Input 2
-#4
-#3 3 4 4
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#2
-#1 1
-#
-#Sample Output 3
-#0
-#We have no sequences A satisfying all of the conditions, so we should print 0.
-#
-#Sample Input 4
-#10
-#999999917 999999914 999999923 999999985 999999907 999999965 999999914 999999908 999999951 999999979
-#
-#Sample Output 4
-#405924645
-#Be sure to print the count modulo (10^9+7).
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(n):
+        ans *= c[i] - i
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    c = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(n):
+        ans *= c[i] - i
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    C = list(map(int,input().split()))
+    MOD = 10**9+7
+    ans = 1
+    for i in range(N):
+        if i == 0:
+            ans *= C[i]
+            continue
+        if C[i] == C[i-1]:
+            ans *= C[i]-1
+        else:
+            ans *= C[i]
+        ans %= MOD
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    mod = 10**9 + 7
+    dp = [0 for i in range(N)]
+    dp[0] = 1
+    for i in range(1, N):
+        if C[i] > C[i-1]:
+            dp[i] = dp[i-1] + 1
+        else:
+            dp[i] = 1
+    ans = 1
+    for i in range(N):
+        if C[i] > i+1:
+            ans = (ans * dp[i]) % mod
+        else:
+            ans = 0
+            break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 1
+    for i in range(N):
+        ans *= C[i]-i
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    mod = 1000000007
+    ans = 1
+    for i in range(n):
+        ans *= c[i] - i
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    c = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(n):
+        ans *= min(i + 1, c[i])
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    if N == 1:
+        print(1)
+        return
+    MOD = 10**9 + 7
+    C.sort()
+    if C[0] == 1:
+        print(0)
+        return
+    ans = 1
+    for i in range(N):
+        ans *= (C[i] - i)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    mod = 10**9 + 7
+    # 配列Cの最大値を求める
+    max_C = max(C)
+    # Cの要素の個数を数える
+    C_count = [0] * (max_C + 1)
+    for c in C:
+        C_count[c] += 1
+    # 2つ以上ある要素の個数を数える
+    C_2more = 0
+    for c in C_count:
+        if c >= 2:
+            C_2more += 1
+    # 2つ以上ある要素がある場合は0
+    if C_2more >= 2:
+        print(0)
+        return
+    # 2つ以上ある要素がない場合は、Cの要素の個数を数える
+    ans = 1
+    for c in C_count:
+        if c >= 1:
+            ans = ans * c % mod
+    print(ans)

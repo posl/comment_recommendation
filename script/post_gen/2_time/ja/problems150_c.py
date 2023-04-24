@@ -1,47 +1,197 @@
-#問題文
-#大きさ N の順列 ((1,2,...,N) を並び替えてできる数列) P,Q があります。
-#大きさ N の順列は N! 通り考えられます。このうち、P が辞書順で a 番目に小さく、Q が辞書順で b 番目に小さいとして、|a - b| を求めてください。
-#
-#注記
-#2 つの数列 X,Y について、ある整数 k が存在して X_i = Y_i(1 ≦ i < k) かつ X_k < Y_k が成り立つとき、X は Y より辞書順で小さいと定義されます。
-#
-#制約
-#2 ≦ N ≦ 8
-#P,Q は大きさ N の順列である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#P_1 P_2 ... P_N
-#Q_1 Q_2 ... Q_N
-#
-#出力
-#|a - b| を出力せよ。
-#
-#入力例 1
-#3
-#1 3 2
-#3 1 2
-#
-#出力例 1
-#3
-#大きさ 3 の順列は、(1,2,3)、(1,3,2)、(2,1,3)、(2,3,1)、(3,1,2)、(3,2,1) の 6 個あります。このうち (1,3,2) は辞書順で 2 番目、(3,1,2) は辞書順で 5 番目なので、答えは |2 - 5| = 3 です。
-#
-#入力例 2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#出力例 2
-#17517
-#
-#入力例 3
-#3
-#1 2 3
-#1 2 3
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def   main (): 
+     n   =   int ( input ()) 
+     p   =   list ( map ( int ,   input (). split ())) 
+     q   =   list ( map ( int ,   input (). split ())) 
+     from   itertools   import   permutations 
+     x   =   0 
+     y   =   0 
+     for   i ,   j   in   enumerate ( permutations ( range ( 1 ,   n   +   1 ))): 
+         if   list ( j )   ==   p : 
+             x   =   i 
+         if   list ( j )   ==   q : 
+             y   =   i 
+     print ( abs ( x   -   y ))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    P = [x - 1 for x in P]
+    Q = [x - 1 for x in Q]
+    a = 0
+    b = 0
+    for i in range(N):
+        a += P[i] * math.factorial(N - i - 1)
+        b += Q[i] * math.factorial(N - i - 1)
+    print(abs(a - b))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    x = 0
+    y = 0
+    for i in range(N):
+        p = 1
+        q = 1
+        for j in range(i+1, N):
+            if P[i] > P[j]:
+                p += 1
+            if Q[i] > Q[j]:
+                q += 1
+        x += (p - 1) * factorial(N - i - 1)
+        y += (q - 1) * factorial(N - i - 1)
+    print(abs(x - y))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    P = [int(i) for i in input().split()]
+    Q = [int(i) for i in input().split()]
+    perm = [i for i in range(1, N+1)]
+    P_index = 0
+    Q_index = 0
+    for i, p in enumerate(permutations(perm)):
+        if list(p) == P:
+            P_index = i
+        if list(p) == Q:
+            Q_index = i
+    print(abs(P_index - Q_index))
+
+=======
+Suggestion 5
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    import itertools
+    X = list(itertools.permutations(range(1,N+1)))
+    print(abs(X.index(tuple(P)) - X.index(tuple(Q))))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+
+    # 順列を列挙
+    from itertools import permutations
+    perms = permutations(range(1, N+1))
+
+    # 辞書順でソート
+    perms = sorted(perms)
+
+    # 何番目かを調べる
+    print(abs(perms.index(tuple(P)) - perms.index(tuple(Q))))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    Q = list(map(int,input().split()))
+    #N!通りの順列を作成
+    import itertools
+    a = list(itertools.permutations(range(1,N+1),N))
+    #a.index(P)は、Pがaの何番目かを返す
+    print(abs(a.index(tuple(P))-a.index(tuple(Q))))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+
+    import itertools
+    from itertools import permutations
+
+    #順列の生成
+    li = []
+    for i in range(1, N+1):
+        li.append(i)
+
+    #順列の生成
+    li = list(permutations(li))
+    #print(li)
+
+    #順列を辞書順に並び替える
+    li.sort()
+    #print(li)
+
+    #P,Qの順列を辞書順に並び替える
+    P.sort()
+    Q.sort()
+    #print(P)
+    #print(Q)
+
+    #P,Qの順列の辞書順の番号を取得
+    a = li.index(tuple(P)) + 1
+    b = li.index(tuple(Q)) + 1
+    #print(a)
+    #print(b)
+
+    #答えを出力
+    print(abs(a - b))
+
+=======
+Suggestion 10
+
+def permutation(N, P, Q):
+    #N:順列の数
+    #P:順列
+    #Q:順列
+    #P,Qの辞書順の差を返す
+    #N = int(input())
+    #P = list(map(int, input().split()))
+    #Q = list(map(int, input().split()))
+    #N = 3
+    #P = [1,3,2]
+    #Q = [3,1,2]
+    #N = 8
+    #P = [7,3,5,4,2,1,6,8]
+    #Q = [3,8,2,5,4,6,7,1]
+    #N = 3
+    #P = [1,2,3]
+    #Q = [1,2,3]
+    #P,Qの辞書順の差を返す
+    import itertools
+    import bisect
+    L = list(itertools.permutations(range(1,N+1)))
+    #print(L)
+    P = tuple(P)
+    Q = tuple(Q)
+    #print(P)
+    #print(Q)
+    a = bisect.bisect_left(L, P)
+    b = bisect.bisect_left(L, Q)
+    #print(a)
+    #print(b)
+    return abs(a-b)

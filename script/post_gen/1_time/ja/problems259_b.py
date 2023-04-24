@@ -1,52 +1,144 @@
-#問題文
-#x 軸の正の向きが右、y 軸の正の向きが上であるような xy 座標平面において、点 (a,b) を原点を中心として反時計回りに d 度回転させた点を求めてください。
-#
-#制約
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b d
-#
-#出力
-#求めるべき点を (a',b') とするとき、 a' と b' をこの順に空白区切りで出力せよ。
-#なお、各出力について、解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#2 2 180
-#
-#出力例 1
-#-2 -2
-#(2,2) を原点を中心として反時計回りに 180 度回転させた点は、(2,2) を原点について対称な位置に移動させた点であり、(-2,-2) となります。
-#
-#入力例 2
-#5 0 120
-#
-#出力例 2
-#-2.49999999999999911182 4.33012701892219364908
-#(5,0) を原点を中心として反時計回りに 120 度回転させた点は (-(5/2) , ((5(3)^(1/2))/2)) です。
-#この例での出力はこれらの値と厳密には一致しませんが、誤差が十分に小さいため正解として扱われます。
-#
-#入力例 3
-#0 0 11
-#
-#出力例 3
-#0.00000000000000000000 0.00000000000000000000
-#(a,b) が原点(回転の中心)なので回転させても座標が変わりません。
-#
-#入力例 4
-#15 5 360
-#
-#出力例 4
-#15.00000000000000177636 4.99999999999999555911
-#360 度回転させたので座標が変わりません。
-#
-#入力例 5
-#-505 191 278
-#
-#出力例 5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, d = map(int, input().split())
+    print(a * math.cos(math.radians(d)) - b * math.sin(math.radians(d)), a * math.sin(math.radians(d)) + b * math.cos(math.radians(d)))
+
+=======
+Suggestion 2
+
+def main():
+    import math
+    a,b,d = map(int,input().split())
+    d = math.radians(d)
+    print(a*math.cos(d)-b*math.sin(d),a*math.sin(d)+b*math.cos(d))
+
+=======
+Suggestion 3
+
+def main():
+    from math import cos, sin, radians
+    a, b, d = map(int, input().split())
+    d = radians(d)
+    print(a*cos(d)-b*sin(d), a*sin(d)+b*cos(d))
+
+=======
+Suggestion 4
+
+def rotate(x, y, r):
+    import math
+    x1 = x * math.cos(math.radians(r)) - y * math.sin(math.radians(r))
+    y1 = x * math.sin(math.radians(r)) + y * math.cos(math.radians(r))
+    return x1, y1
+
+a, b, d = map(int, input().split())
+x1, y1 = rotate(a, b, d)
+print(x1, y1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, d = map(int,input().split())
+    rad = d * math.pi / 180
+    print(a * math.cos(rad) - b * math.sin(rad), a * math.sin(rad) + b * math.cos(rad))
+
+=======
+Suggestion 6
+
+def rotation(x,y,d):
+    import math
+    r = math.radians(d)
+    x2 = x * math.cos(r) - y * math.sin(r)
+    y2 = x * math.sin(r) + y * math.cos(r)
+    return x2, y2
+
+a, b, d = map(int, input().split())
+x2, y2 = rotation(a,b,d)
+print(x2, y2)
+
+=======
+Suggestion 7
+
+def main():
+    import math
+    a,b,d = map(int,input().split())
+    rad = math.radians(d)
+    print(a*math.cos(rad) - b*math.sin(rad),a*math.sin(rad) + b*math.cos(rad))
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    a,b,d = map(int, input().split())
+    #処理
+    import math
+    d = math.radians(d)
+    x = a * math.cos(d) - b * math.sin(d)
+    y = a * math.sin(d) + b * math.cos(d)
+    #出力
+    print(x,y)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,d = map(int,input().split())
+    print(a,b,d)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,d = map(int,input().split())
+    #print(a,b,d)
+    
+    import math
+    #d = 180 - d
+    #print(d)
+    #d = math.radians(d)
+    #print(d)
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)
+    
+    #a = a * math.cos(d) - b * math.sin(d)
+    #b = a * math.sin(d) + b * math.cos(d)
+    #print(a,b)

@@ -1,68 +1,209 @@
-#問題文
-#N 個のマスが左右一列に並んでおり、左から順にマス 1、マス 2、…、マス N と番号づけられています。
-#また、K 個のコマがあり、最初左から i 番目のコマはマス A_i に置かれています。
-#これらに対して、Q 回の操作を行います。
-#i 回目の操作では次の操作を行います。
-#左から L_i 番目のコマが一番右のマスにあるならば何も行わない。
-#そうでない時、左から L_i 番目のコマがあるマスの 1 つ右のマスにコマが無いならば、左から L_i 番目のコマを 1 つ右のマスに移動させる。 1 つ右のマスにコマがあるならば、何も行わない。
-#Q 回の操作が終了した後の状態について、i=1,2,...,K に対して左から i 番目のコマがあるマスの番号を出力してください。
-#
-#制約
-#1≦ K≦ N≦ 200
-#1≦ A_1<A_2<...<A_K≦ N
-#1≦ Q≦ 1000
-#1≦ L_i≦ K
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K Q
-#A_1 A_2 ... A_K
-#L_1 L_2 ... L_Q
-#
-#出力
-#K 個の整数を空白区切りで一行に出力せよ。
-#ここで、i 個目の整数は、 Q 回の操作が終了した後の状態について、左から i 番目のコマの番号を表す。
-#
-#入力例 1
-#5 3 5
-#1 3 4
-#3 3 1 1 2
-#
-#出力例 1
-#2 4 5
-#最初、コマはマス 1, 3, 4 にあります。これに対して以下のように操作が行われます。
-#左から 3 番目のコマはマス 4 にあります。
-#これは一番右のマスでなく、その 1 つ右のマスにもコマが置かれていないため、左から 3 番目のコマをマス 5 に動かします。
-#コマはマス 1, 3, 5 にある状態になります。
-#左から 3 番目のコマはマス 5 にあります。
-#これは一番右のマスなので、何も行いません。
-#コマはマス 1, 3, 5 にある状態のままです。
-#左から 1 番目のコマはマス 1 にあります。
-#これは一番右のマスでなく、その 1 つ右のマスにもコマが置かれていないため、左から 1 番目のコマをマス 2 に動かします。
-#コマはマス 2, 3, 5 にある状態になります。
-#左から 1 番目のコマはマス 2 にあります。
-#これは一番右のマスでありませんが、その 1 つ右のマス（マス 3 ）にコマが置かれているため、何も行いません。
-#コマはマス 2, 3, 5 にある状態のままです。
-#左から 2 番目のコマはマス 3 にあります。
-#これは一番右のマスでなく、その右のマスにもコマが置かれていないため、左から 2 番目のコマをマス 4 に動かします。
-#コマはマス 2, 4, 5 にある状態になります。
-#よって、Q 回の操作が終わった後でコマはマス 2, 4, 5 に置かれているため、2,4,5 を空白区切りでこの順に出力します。
-#
-#入力例 2
-#2 2 2
-#1 2
-#1 2
-#
-#出力例 2
-#1 2
-#
-#入力例 3
-#10 6 9
-#1 3 5 7 8 9
-#1 2 3 4 5 6 5 6 2
-#
-#出力例 3
-#2 5 6 7 9 10
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(K):
+        B[A[i] - 1] = i + 1
+    for i in range(Q):
+        if B[L[i] - 1] != 0:
+            if L[i] != K:
+                if B[L[i]] == 0:
+                    B[L[i]] = B[L[i] - 1]
+                    B[L[i] - 1] = 0
+            L[i] += 1
+    for i in range(N):
+        if B[i] != 0:
+            print(B[i], end=' ')
+
+=======
+Suggestion 2
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(K):
+        B[A[i] - 1] = i + 1
+    for i in range(Q):
+        if L[i] == K:
+            continue
+        if B[L[i]] != 0 and B[L[i] - 1] == 0:
+            B[L[i] - 1] = B[L[i]]
+            B[L[i]] = 0
+    print(*B)
+
+=======
+Suggestion 3
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(K):
+        B[A[i]-1] = i+1
+    for i in range(Q):
+        if B[L[i]-1] != 0:
+            if B[L[i]-1] == N:
+                pass
+            elif B[L[i]] == 0:
+                B[L[i]-1], B[L[i]] = B[L[i]], B[L[i]-1]
+    for i in range(N):
+        if B[i] != 0:
+            print(B[i], end = " ")
+
+=======
+Suggestion 4
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(K):
+        B[A[i]-1] = i+1
+    for i in range(Q):
+        if L[i] == 1:
+            if B[0] != 0:
+                if B[1] == 0:
+                    B[0], B[1] = B[1], B[0]
+        else:
+            for j in range(N-1):
+                if B[j] == L[i]:
+                    if B[j+1] == 0:
+                        B[j], B[j+1] = B[j+1], B[j]
+    for i in range(K):
+        print(B.index(i+1)+1, end=" ")
+
+=======
+Suggestion 5
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    #print(N, K, Q)
+    #print(A)
+    #print(L)
+    #print("")
+
+    #init
+    B = [0] * (N+1)
+    for i in range(K):
+        B[A[i]] = 1
+
+    #print(B)
+
+    for i in range(Q):
+        #print(i, L[i])
+        if B[L[i]] == 1:
+            #print("B[L[i]] == 1")
+            if L[i] == N:
+                #print("L[i] == N")
+                pass
+            else:
+                if B[L[i]+1] == 0:
+                    #print("B[L[i]+1] == 0")
+                    B[L[i]] = 0
+                    B[L[i]+1] = 1
+        else:
+            #print("B[L[i]] == 0")
+            pass
+        #print(B)
+
+    for i in range(1, N+1):
+        if B[i] == 1:
+            print(i, end=" ")
+    print("")
+
+=======
+Suggestion 6
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(k):
+        b[a[i] - 1] = i + 1
+    for i in range(q):
+        if b[l[i] - 1] != 0:
+            if b[l[i] - 1] == k:
+                b[l[i] - 1] = 0
+            else:
+                b[l[i] - 1] = b[l[i] - 1] + 1
+    for i in range(n):
+        if b[i] != 0:
+            print(b[i], end=' ')
+        else:
+            print(0, end=' ')
+
+=======
+Suggestion 7
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    for i in range(Q):
+        if A[L[i]-1] < N:
+            if A[L[i]] != A[L[i]-1] + 1:
+                A[L[i]] += 1
+                A[L[i]-1] += 1
+    for i in range(K):
+        print(A[i], end=" ")
+    print()
+
+=======
+Suggestion 8
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    pos = [0] * (N+1)
+    for i in range(K):
+        pos[A[i]] = i+1
+    for i in L:
+        if pos.index(i) == N:
+            continue
+        elif pos[pos.index(i)+1] == 0:
+            pos[pos.index(i)] = 0
+            pos[pos.index(i)+1] = i
+        else:
+            continue
+    for i in range(1, N+1):
+        if pos[i] == 0:
+            print(i, end=' ')
+        else:
+            print(pos.index(pos[i]), end=' ')
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N,K,Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    # 処理
+    B = [0]*N
+    for i in range(K):
+        B[A[i]-1] = i+1
+    for i in range(Q):
+        if B[L[i]-1] != 0 and L[i] < K:
+            B[L[i]-1], B[L[i]] = B[L[i]], B[L[i]-1]
+    # 出力
+    for i in range(N):
+        if B[i] == 0:
+            print(i+1, end=" ")
+        else:
+            print(B[i], end=" ")
+    print()

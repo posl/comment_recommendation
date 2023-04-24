@@ -1,45 +1,102 @@
-#問題文
-#正整数 A, B が与えられます。
-#A と B の正の公約数の中からいくつかを選びます。
-#ただし、選んだ整数の中のどの異なる 2 つの整数についても互いに素でなければなりません。
-#最大でいくつ選べるでしょうか。
-#公約数とは
-#整数 d が整数 x と整数 y の公約数であるとは、d が x と y をともに割り切ることをいいます。
-#互いに素とは
-#整数 x, y が互いに素であるとは、x, y の正の公約数が 1 のみであることをいいます。
-#割り切るとは
-#整数 x が整数 y を割り切るとは、y = alpha x なる整数 alpha が存在することをいいます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A, B ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#条件を満たすように選べる整数の個数の最大値を出力せよ。
-#
-#入力例 1
-#12 18
-#
-#出力例 1
-#3
-#12 と 18 の正の公約数は 1, 2, 3, 6 です。
-#1 と 2、2 と 3、3 と 1 は互いに素なので、1, 2, 3 を選ぶことができ、このときが最大です。
-#
-#入力例 2
-#420 660
-#
-#出力例 2
-#4
-#
-#入力例 3
-#1 2019
-#
-#出力例 3
-#1
-#1 と 2019 の正の公約数は 1 しかありません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+    return divisors
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def divisors(n):
+    divs = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divs.append(i)
+            if i != n // i:
+                divs.append(n//i)
+    return divs
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().
+
+=======
+Suggestion 7
+
+def main():
+    from math import gcd
+    a, b = map(int, input().split())
+    g = gcd(a, b)
+    print(len([i for i in range(1, g + 1) if g % i == 0]))
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    return gcd(b,a%b)
+
+a,b=map(int,input().split())
+g=gcd(a,b)
+print(len([i for i in range(1,g+1) if g%i==0]))
+
+=======
+Suggestion 9
+
+def main():
+    A, B = map(int, input().split())
+    # 約数を求める
+    def divisor(n):
+        i = 1
+        res = []
+        while i * i <= n:
+            if n % i == 0:
+                res.append(i)
+                if i != n // i:
+                    res.append(n // i)
+            i += 1
+        return res
+    # AとBの約数の中で、AとBの最大公約数を含むものを求める
+    res = divisor(A)
+    res = [i for i in res if B % i == 0]
+    # 最大公約数を除く
+    res.remove(gcd(A, B))
+    print(len(res))

@@ -1,42 +1,170 @@
-#問題文
-#文字列 S, T が与えられます。以下の操作を高々 1 回行うことで、S を T と一致させることができるかを判定してください。
-#S の隣り合う 2 文字を選び、入れ替える。
-#なお、上記の操作を一度も行わないことも可能です。
-#
-#制約
-#S, T はそれぞれ英小文字のみからなる、長さ 2 以上 100 以下の文字列
-#S の長さと T の長さは等しい
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#問題文中の操作を高々 1 回行うことで S を T と一致させることができるなら Yes を、できないなら No を出力せよ。
-#
-#入力例 1
-#abc
-#acb
-#
-#出力例 1
-#Yes
-#S の 2 文字目と 3 文字目を入れ替えることで、S を T と一致させることができます。
-#
-#入力例 2
-#aabb
-#bbaa
-#
-#出力例 2
-#No
-#どのように操作を行っても、S を T と一致させることはできません。
-#
-#入力例 3
-#abcde
-#abcde
-#
-#出力例 3
-#Yes
-#S と T は既に一致しています。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        for i in range(len(s)-1):
+            if s[i] == t[i+1] and s[i+1] == t[i]:
+                print("Yes")
+                exit()
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        for i in range(len(s)-1):
+            if s[i] == t[i+1] and s[i+1] == t[i]:
+                print("Yes")
+                break
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    for i in range(len(s)-1):
+        if s[i] == t[i+1] and s[i+1] == t[i]:
+            print('Yes')
+            return
+    print('No')
+    return
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+    else:
+        for i in range(len(S)-1):
+            if S[i] == T[i+1] and S[i+1] == T[i]:
+                print("Yes")
+                exit()
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    if len(s) != len(t):
+        print("No")
+        return
+    for i in range(len(s)-1):
+        if s[i] == t[i+1] and s[i+1] == t[i]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    for i in range(len(s) - 1):
+        if s[i] == t[i + 1] and s[i + 1] == t[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    S = list(S)
+    T = list(T)
+    for i in range(len(S) - 1):
+        S[i], S[i + 1] = S[i + 1], S[i]
+        if S == T:
+            print("Yes")
+            return
+        S[i], S[i + 1] = S[i + 1], S[i]
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        if s[i] == t[i+1] and s[i+1] == t[i]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    flag = False
+    if s == t:
+        flag = True
+    else:
+        for i in range(len(s)-1):
+            s = s[:i] + s[i+1] + s[i] + s[i+2:]
+            if s == t:
+                flag = True
+                break
+            else:
+                s = s[:i] + s[i+1] + s[i] + s[i+2:]
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def check(s, t):
+    for i in range(len(s)-1):
+        if s[i] == t[i]:
+            continue
+        else:
+            if s[i] == t[i+1] and s[i+1] == t[i]:
+                return True
+            else:
+                return False
+    return True
+
+s = input()
+t = input()

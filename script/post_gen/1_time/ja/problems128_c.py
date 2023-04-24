@@ -1,61 +1,250 @@
-#問題文
-#on と off の状態を持つ N 個の スイッチと、M 個の電球があります。スイッチには 1 から N の、電球には 1 から M の番号がついています。
-#電球 i は k_i 個のスイッチに繋がっており、スイッチ s_{i1}, s_{i2}, ..., s_{ik_i} のうち on になっているスイッチの個数を 2 で割った余りが p_i に等しい時に点灯します。
-#全ての電球が点灯するようなスイッチの on/off の状態の組み合わせは何通りあるでしょうか。
-#
-#制約
-#1 ≦ N, M ≦ 10
-#1 ≦ k_i ≦ N
-#1 ≦ s_{ij} ≦ N
-#s_{ia} ≠ s_{ib} (a ≠ b)
-#p_i は 0 または 1
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#k_1 s_{11} s_{12} ... s_{1k_1}
-#:
-#k_M s_{M1} s_{M2} ... s_{Mk_M}
-#p_1 p_2 ... p_M
-#
-#出力
-#全ての電球が点灯するようなスイッチの on/off の状態の組み合わせの個数を出力せよ。
-#
-#入力例 1
-#2 2
-#2 1 2
-#1 2
-#0 1
-#
-#出力例 1
-#1
-#電球 1 は、次のスイッチのうち偶数個が on の時に点灯します: スイッチ 1, 2
-#電球 2 は、次のスイッチのうち奇数個が on の時に点灯します: スイッチ 2
-#(スイッチ 1、スイッチ 2) の状態としては (on,on),(on,off),(off,on),(off,off) が考えられますが、このうち (on,on) のみが条件を満たすので、1 を出力してください。
-#
-#入力例 2
-#2 3
-#2 1 2
-#1 1
-#1 2
-#0 0 1
-#
-#出力例 2
-#0
-#電球 1 は、次のスイッチのうち偶数個が on の時に点灯します: スイッチ 1, 2
-#電球 2 は、次のスイッチのうち偶数個が on の時に点灯します: スイッチ 1
-#電球 3 は、次のスイッチのうち奇数個が on の時に点灯します: スイッチ 2
-#電球 2 を点灯させるためには スイッチ 1 が off, 電球 3 を点灯させるためにはスイッチ 2 が on である必要がありますが、この時電球 1 は点灯しません。
-#よって、全ての電球が点灯するようなスイッチの on/off の状態の組み合わせは存在しないので、0 を出力してください。
-#
-#入力例 3
-#5 2
-#3 1 2 5
-#2 2 3
-#1 0
-#
-#出力例 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [list(map(int, input().split())) for _ in range(M)]
+    P = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(2**N):
+        flag = 1
+        for j in range(M):
+            cnt = 0
+            for k in range(S[j][0]):
+                if ((i >> (S[j][k+1] - 1)) & 1):
+                    cnt += 1
+            if (cnt % 2) != P[j]:
+                flag = 0
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    K = []
+    S = []
+    P = []
+    for i in range(M):
+        k, *s = map(int, input().split())
+        K.append(k)
+        S.append(s)
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**N):
+        on = [0] * M
+        for j in range(N):
+            if ((i >> j) & 1):
+                for k in range(M):
+                    if j+1 in S[k]:
+                        on[k] += 1
+        for j in range(M):
+            if on[j] % 2 != P[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    k = [list(map(int, input().split())) for _ in range(M)]
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for l in k[j][1:]:
+                if i & (1 << (l - 1)):
+                    cnt += 1
+            if cnt % 2 != p[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    S = [list(map(int, input().split())) for i in range(M)]
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**N):
+        bit = [0]*N
+        for j in range(N):
+            if (i >> j) & 1:
+                bit[j] = 1
+        for j in range(M):
+            cnt = 0
+            for s in S[j][1:]:
+                if bit[s-1] == 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    k = [0] * M
+    s = [[0] * N for i in range(M)]
+    p = [0] * M
+    for i in range(M):
+        input_list = list(map(int, input().split()))
+        k[i] = input_list[0]
+        for j in range(1, k[i] + 1):
+            s[i][input_list[j] - 1] = 1
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(2 ** N):
+        tmp = 0
+        for j in range(M):
+            cnt = 0
+            for l in range(N):
+                if s[j][l] == 1 and (i >> l & 1):
+                    cnt += 1
+            if cnt % 2 == p[j]:
+                tmp += 1
+        if tmp == M:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    s = [0] * M
+    p = [0] * M
+    for i in range(M):
+        s[i] = list(map(int, input().split()))
+        s[i].pop(0)
+    p = list(map(int, input().split()))
+    ans = 0
+    for bit in range(2 ** N):
+        flag = True
+        for i in range(M):
+            cnt = 0
+            for j in range(len(s[i])):
+                if (bit >> (s[i][j] - 1)) & 1:
+                    cnt += 1
+            if cnt % 2 != p[i]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    S = []
+    for i in range(M):
+        S.append(list(map(int, input().split())))
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**N):
+        ok = True
+        for j in range(M):
+            cnt = 0
+            for k in range(1, S[j][0]+1):
+                if i & (1<<(S[j][k]-1)):
+                    cnt += 1
+            if cnt%2 != P[j]:
+                ok = False
+        if ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    s = [[int(x) for x in input().split()] for _ in range(M)]
+    p = [int(x) for x in input().split()]
+
+    ans = 0
+    for i in range(2**N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in range(1, s[j][0]+1):
+                if (i >> (s[j][k]-1)) & 1:
+                    cnt += 1
+            if cnt % 2 != p[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    s = []
+    p = []
+    for i in range(M):
+        s.append(list(map(int, input().split())))
+        s[i].pop(0)
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(2 ** N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in s[j]:
+                if ((i >> (k - 1)) & 1) == 1:
+                    cnt += 1
+            if cnt % 2 != p[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N,M = map(int,input().split())
+    S = [0]*M
+    P = [0]*M
+    for i in range(M):
+        S[i] = list(map(int,input().split()))
+        S[i].pop(0)
+    P = list(map(int,input().split()))
+    ans = 0
+    for i in range(2**N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in S[j]:
+                if (i >> (k-1)) & 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)

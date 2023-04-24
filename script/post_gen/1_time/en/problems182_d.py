@@ -1,54 +1,142 @@
-#Problem Statement
-#Given is a number sequence A_1, A_2, A_3, ..., A_N, which may contain negative elements.
-#On a number line, there is a robot at coordinate 0. It will do the following actions in order:  
-#Move A_1 in the positive direction.
-#Move A_1 in the positive direction, and then move A_2 in the positive direction.
-#Move A_1 in the positive direction, then move A_2 in the positive direction, and then move A_3 in the positive direction.
-#.
-#.
-#.
-# 
-#Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ..., ..., and then move A_N in the positive direction.
-#Find the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Constraints
-#1 ≦ N ≦ 200000
-#-10^8 ≦ A_i ≦ 10^8
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Sample Input 1
-#3
-#2 -1 -2
-#
-#Sample Output 1
-#5
-#The robot moves as follows:
-#Move 2 in the positive direction, to coordinate 2.
-#Move 2 in the positive direction, to coordinate 4. Then move -1 in the positive direction, to coordinate 3.
-#Move 2 in the positive direction, to coordinate 5. Then move -1 in the positive direction, to coordinate 4. Then move -2 in the positive direction, to coordinate 2.
-#The greatest coordinate occupied during the process is 5, so we should print 5.
-#
-#Sample Input 2
-#5
-#-2 1 3 -1 -1
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5
-#-1000 -1000 -1000 -1000 -1000
-#
-#Sample Output 3
-#0
-#In this case, the initial coordinate 0 is the greatest coordinate occupied.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans < 0:
+            ans = 0
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    tmp = 0
+    for i in range(n):
+        tmp += a[i]
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    now = 0
+    for i in range(N):
+        now += A[i]
+        ans = max(ans, now)
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if sum(a) <= 0:
+        print(0)
+        return
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        if ans < 0:
+            print(0)
+            return
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += max(0, a[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += max(0, A[i])
+    print(ans)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans < 0:
+            ans = 0
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(1, N+1):
+        B.append(sum(A[:i]))
+    print(max(max(B), 0))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    max = 0
+    for i in range(N):
+        max += A[i]
+        if max < 0:
+            max = 0
+    print(max)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #A = [2, -1, -2]
+    #N = len(A)
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans < 0:
+            ans = 0
+    print(ans)

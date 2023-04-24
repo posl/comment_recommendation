@@ -1,35 +1,137 @@
-#Problem Statement
-#For an integer N, we will choose a permutation {P_1, P_2, ..., P_N} of {1, 2, ..., N}.
-#Then, for each i=1,2,...,N, let M_i be the remainder when i is divided by P_i.
-#Find the maximum possible value of M_1 + M_2 + ... + M_N.
-#
-#Constraints
-#N is an integer satisfying 1 ≦ N ≦ 10^9.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the maximum possible value of M_1 + M_2 + ... + M_N.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#1
-#When the permutation {P_1, P_2} = {2, 1} is chosen, M_1 + M_2 = 1 + 0 = 1.
-#
-#Sample Input 2
-#13
-#
-#Sample Output 2
-#78
-#
-#Sample Input 3
-#1
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(0)
+    else:
+        print(N * (N - 1) // 2)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(0)
+        return
+    ans = N * (N - 1) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(0)
+    else:
+        print(N * (N-1) // 2)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(0)
+    else:
+        print(N - 1 + (N - 2) * (N - 1) // 2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print(N * (N - 1) // 2)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+    else:
+        print(n-2)
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N = int(input())
+
+    #compute
+    if N==1:
+        ans = 0
+    elif N==2:
+        ans = 1
+    else:
+        ans = 0
+        for i in range(2,N+1):
+            ans += (i-1)*(N//i)
+            ans += max(0,(N%i)-(i//2))
+
+    #output
+    print(ans)
+
+main()
+
+I got a WA for this code. I don't understand why. Can someone help me with this?
+
+I have the following code:
+
+=======
+Suggestion 8
+
+def max_sum(N):
+    if N <= 2:
+        return N - 1
+    else:
+        return N + max_sum(N - 1)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print(n*(n-1)//2)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    print(n * (n - 1) // 2)
+
+main()
+
+I think this is a good way to solve this problem. I think this is a good way to solve this problem.
+
+I'm not good at English. So, if you don't understand what I wrote, please tell me. I'm not good at English. So, if you don't understand what I wrote, please tell me.
+
+This is the first time I've written a blog in English. This is the first time I've written a blog in English.
+
+I've been using python for about 2 years. I've been using python for about 2 years.
+
+I love python so much. I love python so much.
+
+I'm a newbie in programming. I'm a newbie in programming.
+
+I will continue to improve my programming skills. I will continue to improve my programming skills.
+
+I will continue to write blogs. I will continue to write blogs.
+
+I'm looking forward to your comments. I'm looking forward to your comments.
+
+I'm looking forward to your advice. I'm looking forward to your advice.
+
+Thank you for reading. Thank you for reading.
+
+I'm a newbie in programming.

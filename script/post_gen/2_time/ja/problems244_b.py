@@ -1,49 +1,282 @@
-#問題文
-#xy 平面を考えます。x 軸の正の向きを東向き、y 軸の正の向きを北向きとします。
-#高橋君ははじめ、点 (x, y) = (0, 0) にいて東（ x 軸の正の向き）を向いています。  
-#S と R のみからなる長さ N の文字列 T = t_1t_2... t_N が与えられます。
-#高橋君は i = 1, 2, ..., N の順番で下記を行います。
-#t_i = S ならば、高橋君はいま向いている方向に距離 1 だけ進む。
-#t_i = R ならば、高橋君はその場で右に 90 度回転する。その結果、高橋君の向いている方向が下記の通りに変わる。
-#回転前の向きが東向き（ x 軸の正の向き）ならば、回転後の向きは南向き（ y 軸の負の向き）になる。
-#回転前の向きが南向き（ y 軸の負の向き）ならば、回転後の向きは西向き（ x 軸の負の向き）になる。
-#回転前の向きが西向き（ x 軸の負の向き）ならば、回転後の向きは北向き（ y 軸の正の向き）になる。
-#回転前の向きが北向き（ y 軸の正の向き）ならば、回転後の向きは東向き（ x 軸の正の向き）になる。
-#
-#上記の手順を終えた後に高橋君がいる点の座標を出力してください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#N は整数
-#T は S と R のみからなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T
-#
-#出力
-#問題文中の手順を終えた後に高橋君がいる点の座標 (x, y) を、下記の形式にしたがって空白区切りで出力せよ。
-#x y
-#
-#入力例 1
-#4
-#SSRS
-#
-#出力例 1
-#2 -1
-#高橋君ははじめ (0, 0) にいて東を向いています。その後、高橋君は下記の通りに行動します。
-#t_1 = S であるので、高橋君は東に距離 1 だけ進んだ (1, 0) に移動します。
-#t_2 = S であるので、高橋君は東に距離 1 だけ進んだ (2, 0) に移動します。
-#t_3 = R であるので、高橋君は右に 90 度回転し、高橋君は南を向きます。
-#t_4 = S であるので、高橋君は南に距離 1 だけ進んだ (2, -1) に移動します。
-#よって、高橋君の最終的な位置である (x, y) = (2, -1) を出力します。
-#
-#入力例 2
-#20
-#SRSRSSRSSSRSRRRRRSRR
-#
-#出力例 2
-#0 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 0
+    for i in range(N):
+        if T[i] == "S":
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y -= 1
+            elif direction == 2:
+                x -= 1
+            else:
+                y += 1
+        else:
+            direction = (direction + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y += 1
+            elif direction == 2:
+                x -= 1
+            elif direction == 3:
+                y -= 1
+        elif T[i] == 'R':
+            direction = (direction + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 'E'
+    for i in range(N):
+        if T[i] == 'S':
+            if direction == 'E':
+                x += 1
+            elif direction == 'S':
+                y -= 1
+            elif direction == 'W':
+                x -= 1
+            elif direction == 'N':
+                y += 1
+        elif T[i] == 'R':
+            if direction == 'E':
+                direction = 'S'
+            elif direction == 'S':
+                direction = 'W'
+            elif direction == 'W':
+                direction = 'N'
+            elif direction == 'N':
+                direction = 'E'
+    print(x,y)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = "east"
+    for i in range(N):
+        if T[i] == "S":
+            if direction == "east":
+                x += 1
+            elif direction == "west":
+                x -= 1
+            elif direction == "south":
+                y -= 1
+            elif direction == "north":
+                y += 1
+        elif T[i] == "R":
+            if direction == "east":
+                direction = "south"
+            elif direction == "west":
+                direction = "north"
+            elif direction == "south":
+                direction = "west"
+            elif direction == "north":
+                direction = "east"
+    print(x, y)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 1
+    for i in range(N):
+        if T[i] == "S":
+            if direction == 1:
+                x += 1
+            elif direction == 2:
+                y -= 1
+            elif direction == 3:
+                x -= 1
+            elif direction == 4:
+                y += 1
+        else:
+            if direction == 4:
+                direction = 1
+            else:
+                direction += 1
+    print(x,y)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = input()
+
+    x = 0
+    y = 0
+    direction = "E"
+
+    for i in range(N):
+        if T[i] == "S":
+            if direction == "E":
+                x += 1
+            elif direction == "W":
+                x -= 1
+            elif direction == "N":
+                y += 1
+            else:
+                y -= 1
+        else:
+            if direction == "E":
+                direction = "S"
+            elif direction == "W":
+                direction = "N"
+            elif direction == "N":
+                direction = "E"
+            else:
+                direction = "W"
+
+    print(x, y)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = "East"
+    for i in range(N):
+        if direction == "East":
+            if T[i] == "S":
+                x += 1
+            else:
+                direction = "South"
+        elif direction == "South":
+            if T[i] == "S":
+                y -= 1
+            else:
+                direction = "West"
+        elif direction == "West":
+            if T[i] == "S":
+                x -= 1
+            else:
+                direction = "North"
+        elif direction == "North":
+            if T[i] == "S":
+                y += 1
+            else:
+                direction = "East"
+    print(x, y)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    dir = 0
+    for c in T:
+        if c == 'S':
+            if dir == 0:
+                x += 1
+            elif dir == 1:
+                y -= 1
+            elif dir == 2:
+                x -= 1
+            elif dir == 3:
+                y += 1
+        elif c == 'R':
+            dir += 1
+            if dir > 3:
+                dir = 0
+    print(x, y)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    d = 0 # 0:東 1:南 2:西 3:北
+    for i in range(n):
+        if t[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            else:
+                y += 1
+        else:
+            d = (d + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    T = input()
+    #東西南北の移動をリストに
+    move = []
+    #東西南北の移動をリストに
+    move.append([1,0])
+    move.append([-1,0])
+    move.append([0,-1])
+    move.append([0,1])
+    #向きのリストを作成
+    direction = []
+    #東西南北の向きをリストに
+    direction.append(0)
+    direction.append(1)
+    direction.append(2)
+    direction.append(3)
+    #現在の向き
+    now_direction = 0
+    #現在の位置
+    now_position = [0,0]
+    for i in range(N):
+        #Rの場合
+        if T[i] == "R":
+            #向きを変更
+            now_direction = direction[(direction.index(now_direction) + 1) % 4]
+        #Sの場合
+        else:
+            #移動
+            now_position[0] += move[now_direction][0]
+            now_position[1] += move[now_direction][1]
+    print(now_position[0], now_position[1])

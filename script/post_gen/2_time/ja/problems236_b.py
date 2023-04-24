@@ -1,42 +1,128 @@
-#問題文
-#整数 1, 2, ..., N が書かれたカードが 4 枚ずつ、合計 4N 枚あります。
-#高橋君は、これらのカードをシャッフルしたのち 1 枚のカードを選んで抜き取り、残りの 4N - 1 枚を束にしてあなたに渡しました。渡された束の i  (1 ≦ i ≦ 4N - 1) 枚目のカードには、整数 A_i が書かれています。
-#高橋君が抜き取ったカードに書かれていた整数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N  (1 ≦ i ≦ 4N - 1)
-#各 k  (1 ≦ k ≦ N) に対し、A_i = k となる i は 4 個以下である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_{4N - 1}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#出力例 1
-#3
-#高橋君が抜き取ったカードには 3 が書かれています。
-#
-#入力例 2
-#1
-#1 1 1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = [0] * (N + 1)
+    for a in A:
+        cnt[a] += 1
+    for i in range(1, N + 1):
+        if cnt[i] % 2 == 1:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, 4*N-1, 2):
+        if A[i] != A[i+1]:
+            print(A[i])
+            break
+    else:
+        print(A[-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, 4*N-1, 2):
+        if A[i] != A[i+1]:
+            print(A[i])
+            break
+
+=======
+Suggestion 4
+
+def main():
+    from collections import Counter
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = Counter(a)
+    for i in c:
+        if c[i] == 1:
+            print(i)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    S = set()
+    for i in range(len(A)):
+        if A[i] in S:
+            S.remove(A[i])
+        else:
+            S.add(A[i])
+    print(S.pop())
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(4*N-1):
+        if A[i] == A[i+1]:
+            i += 1
+        else:
+            print(A[i])
+            break
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    a.sort()
+
+    for i in range(4*n-1):
+        if a[i] != a[i+1]:
+            print(a[i])
+            return
+        else:
+            i += 3
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    card = list(map(int, input().split()))
+    card.sort()
+    for i in range(4*N-1):
+        if card[i] != card[i+1]:
+            print(card[i])
+            break
+        else:
+            i += 1
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    #print(N)
+    #print(A)
+    B = []
+    for i in range(1,N+1):
+        B.append(A.count(i))
+    #print(B)
+    for i in range(len(B)):
+        if B[i] == 1:
+            print(i+1)

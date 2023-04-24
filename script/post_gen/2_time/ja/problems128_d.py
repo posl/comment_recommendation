@@ -1,54 +1,167 @@
-#問題文
-#あなたは誕生日プレゼントとして友人から dequeue D を貰いました。
-#D は左右に長い筒であり、N 個の宝石が一列に詰められています。
-#宝石の価値は左から順に V_1, V_2, ..., V_N です。負の価値の宝石が詰められている場合もあります。
-#はじめ、あなたは 1 つも宝石を持っていません。
-#あなたは、D に対して以下の 4 種類の操作から 1 つを選んで実行することを K 回まで行うことができます。
-#操作 A: D に詰められた宝石のうち、左端の宝石を取り出して手に入れる。D が空の場合、この操作を行えない。
-#操作 B: D に詰められた宝石のうち、右端の宝石を取り出して手に入れる。D が空の場合、この操作を行えない。
-#操作 C: 持っている宝石を 1 つ選んで D の左端に詰める。宝石を持っていない場合、この操作を行えない。
-#操作 D: 持っている宝石を 1 つ選んで D の右端に詰める。宝石を持っていない場合、この操作を行えない。
-#操作終了後に持っている宝石の価値の合計の最大値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 50
-#1 ≦ K ≦ 100
-#-10^7 ≦ V_i ≦ 10^7
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#V_1 V_2 ... V_N
-#
-#出力
-#操作終了後に持っている宝石の価値の合計の最大値を出力せよ。
-#
-#入力例 1
-#6 4
-#-10 8 2 1 2 6
-#
-#出力例 1
-#14
-#以下の順に操作を行うことで、価値 8, 6 の宝石をそれぞれ 1 個ずつ手に入れることができ、このときの合計価値 14 が最大です。
-#操作 A を行い、D の左端から価値 -10 の宝石を取り出します。
-#操作 B を行い、D の右端から価値 6 の宝石を取り出します。
-#操作 A を行い、D の左端から価値 8 の宝石を取り出します。
-#操作 D を行い、D の右端に価値 -10 の宝石を詰めます。
-#
-#入力例 2
-#6 4
-#-6 -100 50 -2 -5 -3
-#
-#出力例 2
-#44
-#
-#入力例 3
-#6 3
-#-6 -100 50 -2 -5 -3
-#
-#出力例 3
-#0
-#操作を行わないのが最適です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N - i, K - i) + 1):
+            tmp = V[:i] + V[N - j:]
+            tmp.sort()
+            tmp = tmp[:K - i - j]
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N, K) - i + 1):
+            v = V[:i] + V[N - j:]
+            v.sort()
+            ans = max(ans, sum(v[max(0, K - i - j):]))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N, K) + 1):
+            if i + j > K:
+                continue
+            tmp = V[:i] + V[N - j:]
+            tmp.sort()
+            for k in range(min(i + j, K - i - j)):
+                if tmp[k] < 0:
+                    tmp[k] = 0
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for a in range(min(N, K) + 1):
+        for b in range(min(N - a, K - a) + 1):
+            tmp = V[:a] + V[N - b:]
+            tmp.sort()
+            for i in range(K - a - b):
+                if len(tmp) == 0:
+                    break
+                if tmp[0] > 0:
+                    break
+                tmp.pop(0)
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K)+1):
+        for j in range(min(N-i, K-i)+1):
+            tmp = sorted(V[:i]+V[N-j:])
+            tmp = tmp[:K-i-j]
+            tmp = sum(tmp)
+            ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    v = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(n, k) + 1):
+        for j in range(min(n, k) - i + 1):
+            if i + j == 0:
+                continue
+            tmp = sorted(v[:i] + v[n - j:])
+            for l in range(min(i + j, k - i - j)):
+                if tmp[l] < 0:
+                    tmp[l] = 0
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for left in range(min(N, K) + 1):
+        for right in range(min(N, K) - left + 1):
+            gems = V[:left] + V[N - right:]
+            gems.sort()
+            tmp = sum(gems)
+            for i in range(min(left + right, K - left - right)):
+                if gems[i] < 0:
+                    tmp -= gems[i]
+                else:
+                    break
+            ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(N+1):
+        for j in range(N-i+1):
+            if i+j > K:
+                break
+            tmp = V[:i] + V[N-j:]
+            tmp.sort()
+            for k in range(K-(i+j)):
+                if k >= len(tmp) or tmp[k] >= 0:
+                    break
+                tmp[k] = 0
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    #解答
+    ans = 0
+    for i in range(K+1):
+        for j in range(K+1-i):
+            if i+j > N:
+                continue
+            tmp = V[:i] + V[-j:]
+            tmp.sort()
+            for k in range(K-i-j):
+                if len(tmp) == 0:
+                    break
+                if tmp[0] < 0:
+                    tmp.pop(0)
+                else:
+                    break
+            ans = max(ans, sum(tmp))
+    print(ans)

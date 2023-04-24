@@ -1,42 +1,75 @@
-#Problem Statement
-#There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.
-#Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.
-#Ultimately, how many slimes will be there?
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S consists of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S
-#
-#Output
-#Print the final number of slimes.
-#
-#Sample Input 1
-#10
-#aabbbbaaca
-#
-#Sample Output 1
-#5
-#Ultimately, these slimes will fuse into abaca.
-#
-#Sample Input 2
-#5
-#aaaaa
-#
-#Sample Output 2
-#1
-#All the slimes will fuse into one.
-#
-#Sample Input 3
-#20
-#xxzaffeeeeddfkkkkllq
-#
-#Sample Output 3
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    cnt = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N - 1):
+        if S[i] != S[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    slimes = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            slimes += 1
+    print(slimes)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    S = input()
+    ans = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 6
+
+def count_slimes(s):
+    count = 1
+    prev = s[0]
+    for c in s[1:]:
+        if c != prev:
+            count += 1
+            prev = c
+    return count

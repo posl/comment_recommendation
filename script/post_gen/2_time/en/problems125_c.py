@@ -1,42 +1,77 @@
-#Problem Statement
-#There are N integers, A_1, A_2, ..., A_N, written on the blackboard.
-#You will choose one of them and replace it with an integer of your choice between 1 and 10^9 (inclusive), possibly the same as the integer originally written.
-#Find the maximum possible greatest common divisor of the N integers on the blackboard after your move.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Output
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum possible greatest common divisor of the N integers on the blackboard after your move.
-#
-#Sample Input 1
-#3
-#7 6 8
-#
-#Sample Output 1
-#2
-#If we replace 7 with 4, the greatest common divisor of the three integers on the blackboard will be 2, which is the maximum possible value.
-#
-#Sample Input 2
-#3
-#12 15 18
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#2
-#1000000000 1000000000
-#
-#Sample Output 3
-#1000000000
-#We can replace an integer with itself.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a == b:
+        return a
+    elif a > b:
+        return gcd(a - b, b)
+    else:
+        return gcd(a, b - a)
+
+=======
+Suggestion 6
+
+def gcd(a, b): # greatest common divisor
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    if n == 2:
+        print(max(a))
+        return
+    a.sort()
+    if a[0] == a[1]:
+        print(a[0])
+        return
+    g = a[1]
+    for i in range(2,n):
+        g = gcd(g,a[i])
+    print(g)

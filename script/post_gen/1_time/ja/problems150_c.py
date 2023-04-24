@@ -1,47 +1,208 @@
-#問題文
-#大きさ N の順列 ((1,2,...,N) を並び替えてできる数列) P,Q があります。
-#大きさ N の順列は N! 通り考えられます。このうち、P が辞書順で a 番目に小さく、Q が辞書順で b 番目に小さいとして、|a - b| を求めてください。
-#
-#注記
-#2 つの数列 X,Y について、ある整数 k が存在して X_i = Y_i(1 ≦ i < k) かつ X_k < Y_k が成り立つとき、X は Y より辞書順で小さいと定義されます。
-#
-#制約
-#2 ≦ N ≦ 8
-#P,Q は大きさ N の順列である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#P_1 P_2 ... P_N
-#Q_1 Q_2 ... Q_N
-#
-#出力
-#|a - b| を出力せよ。
-#
-#入力例 1
-#3
-#1 3 2
-#3 1 2
-#
-#出力例 1
-#3
-#大きさ 3 の順列は、(1,2,3)、(1,3,2)、(2,1,3)、(2,3,1)、(3,1,2)、(3,2,1) の 6 個あります。このうち (1,3,2) は辞書順で 2 番目、(3,1,2) は辞書順で 5 番目なので、答えは |2 - 5| = 3 です。
-#
-#入力例 2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#出力例 2
-#17517
-#
-#入力例 3
-#3
-#1 2 3
-#1 2 3
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+
+    from itertools import permutations
+    for i, p in enumerate(permutations(range(1, N+1)), 1):
+        if list(p) == P:
+            a = i
+        if list(p) == Q:
+            b = i
+
+    print(abs(a-b))
+
+=======
+Suggestion 2
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    A = []
+    B = []
+    for i in range(N):
+        A.append(i+1)
+        B.append(i+1)
+    a = 0
+    b = 0
+    for i in range(N):
+        a += (A.index(P[i])) * (math.factorial(N-i-1))
+        A.remove(P[i])
+        b += (B.index(Q[i])) * (math.factorial(N-i-1))
+        B.remove(Q[i])
+    print(abs(a-b))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = input().split()
+    q = input().split()
+    p = [int(i) for i in p]
+    q = [int(i) for i in q]
+    p = list(map(lambda x: x - 1, p))
+    q = list(map(lambda x: x - 1, q))
+    # print(p)
+    # print(q)
+    # print(p.index(2))
+    # print(q.index(2))
+    import math
+    from itertools import permutations
+    # print(math.factorial(n))
+    # print(list(permutations(range(1, n+1))))
+    # print(list(permutations(range(1, n+1))).index(tuple(p)))
+    # print(list(permutations(range(1, n+1))).index(tuple(q)))
+    print(abs(list(permutations(range(1, n+1))).index(tuple(p)) - list(permutations(range(1, n+1))).index(tuple(q))))
+
+=======
+Suggestion 5
+
+def getPermutation(n):
+    if n == 1:
+        return [[1]]
+    else:
+        return [[n] + p for p in getPermutation(n-1)] + [p + [n] for p in getPermutation(n-1)]
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    #print(N)
+    #print(P)
+    #print(Q)
+    def permutation(N, P):
+        if N == 1:
+            return [P]
+        ret = []
+        for i in range(N):
+            for p in permutation(N-1, P[:i] + P[i+1:]):
+                ret.append([P[i]] + p)
+        return ret
+    def calc(N, P, Q):
+        P_permutation = permutation(N, P)
+        Q_permutation = permutation(N, Q)
+        P_permutation.sort()
+        Q_permutation.sort()
+        P_permutation_index = 0
+        Q_permutation_index = 0
+        for i in range(len(P_permutation)):
+            if P_permutation[i] == P:
+                P_permutation_index = i
+            if Q_permutation[i] == Q:
+                Q_permutation_index = i
+        print(abs(P_permutation_index - Q_permutation_index))
+    calc(N, P, Q)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    # print(N)
+    # print(P)
+    # print(Q)
+    def permutation(n):
+        if n == 0:
+            return [[]]
+        else:
+            return [[i] + p for i in range(n) for p in permutation(n - 1) if i not in p]
+
+    p_list = permutation(N)
+    # print(p_list)
+    p_num = 0
+    q_num = 0
+    for i in range(len(p_list)):
+        if p_list[i] == P:
+            p_num = i + 1
+        if p_list[i] == Q:
+            q_num = i + 1
+    # print(p_num)
+    # print(q_num)
+    print(abs(p_num - q_num))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = [int(x) for x in input().split()]
+    Q = [int(x) for x in input().split()]
+
+    def calc_num(l):
+        n = 0
+        for i in range(len(l)):
+            n += l[i] * (math.factorial(len(l) - i - 1))
+        return n
+
+    print(abs(calc_num(P) - calc_num(Q)))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+
+    def count_permutation(N, P):
+        count = 0
+        for i in range(1, N):
+            count += i * math.factorial(N - i)
+            for j in range(i + 1, N):
+                if P[i - 1] < P[j - 1]:
+                    count -= math.factorial(N - i - 1)
+        return count
+
+    print(abs(count_permutation(N, P) - count_permutation(N, Q)))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+
+    # 1,2,...,N の順列を作成
+    # 1,2,...,N の順列を作成
+    def perm(N):
+        if N == 1:
+            return [[1]]
+        else:
+            return [[N] + p for p in perm(N-1)] + [p + [N] for p in perm(N-1)]
+    # 1,2,...,N の順列を作成
+    # 1,2,...,N の順列を作成
+    def perm(N):
+        if N == 1:
+            return [[1]]
+        else:
+            return [[N] + p for p in perm(N-1)] + [p + [N] for p in perm(N-1)]
+
+    Pp = perm(N)
+    #print(Pp)
+    #print(P)
+    #print(Q)
+    #print(Pp.index(P))
+    #print(Pp.index(Q))
+    print(abs(Pp.index(P) - Pp.index(Q)))

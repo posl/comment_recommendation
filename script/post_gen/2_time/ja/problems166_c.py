@@ -1,57 +1,241 @@
-#問題文
-#AtCoder丘陵には N 個の展望台があり、展望台 i の標高は H_i です。
-#また、異なる展望台どうしを結ぶ M 本の道があり、道 j は展望台 A_j と展望台 B_j を結んでいます。
-#展望台 i が良い展望台であるとは、展望台 i から一本の道を使って辿り着けるどの展望台よりも展望台 i の方が標高が高いことをいいます。
-#展望台 i から一本の道を使って辿り着ける展望台が存在しない場合も、展望台 i は良い展望台であるといいます。
-#良い展望台がいくつあるか求めてください。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#同じ展望台の組を結ぶ道が複数あることもある。
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#H_1 H_2 ... H_N
-#A_1 B_1
-#A_2 B_2
-#:
-#A_M B_M
-#
-#出力
-#良い展望台の数を出力せよ。
-#
-#入力例 1
-#4 3
-#1 2 3 4
-#1 3
-#2 3
-#2 4
-#
-#出力例 1
-#2
-#
-#展望台 1 から一本の道を使って辿り着ける展望台は展望台 3 ですが、展望台 1 の標高は展望台 3 の標高より高くないため、展望台 1 は良い展望台ではありません。
-#展望台 2 から一本の道を使って辿り着ける展望台は展望台 3 と展望台 4 ですが、展望台 2 の標高は展望台 3 の標高より高くないため、展望台 2 は良い展望台ではありません。
-#展望台 3 から一本の道を使って辿り着ける展望台は展望台 1 と展望台 2 ですが、展望台 3 の標高は展望台 1 の標高より高く、かつ展望台 2 の標高より高いため、展望台 3 は良い展望台です。
-#展望台 4 から一本の道を使って辿り着ける展望台は展望台 2 ですが、展望台 4 の標高は展望台 2 の標高より高いため、展望台 4 は良い展望台です。
-#展望台 3 と展望台 4 が良い展望台なので、良い展望台の数は 2 です。
-#
-#入力例 2
-#6 5
-#8 6 9 1 2 1
-#1 3
-#4 2
-#4 3
-#4 6
-#4 6
-#
-#出力例 2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        ok = True
+        for j in range(M):
+            if A[j] == i + 1:
+                if H[i] <= H[B[j] - 1]:
+                    ok = False
+                    break
+            elif B[j] == i + 1:
+                if H[i] <= H[A[j] - 1]:
+                    ok = False
+                    break
+        if ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if A[j] == i + 1 and H[A[j] - 1] <= H[B[j] - 1]:
+                flag = False
+            if B[j] == i + 1 and H[B[j] - 1] <= H[A[j] - 1]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    G = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        G[A - 1].append(B - 1)
+        G[B - 1].append(A - 1)
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in G[i]:
+            if H[i] <= H[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = []
+    B = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if i == A[j]-1 and H[i] <= H[B[j]-1]:
+                break
+            if i == B[j]-1 and H[i] <= H[A[j]-1]:
+                break
+        else:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = []
+    B = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a-1)
+        B.append(b-1)
+
+    # 隣接リスト
+    G = [[] for _ in range(N)]
+    for i in range(M):
+        G[A[i]].append(B[i])
+        G[B[i]].append(A[i])
+
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in G[i]:
+            if H[i] <= H[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    h = list(map(int, input().split()))
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        g[a-1].append(b-1)
+        g[b-1].append(a-1)
+    ans = 0
+    for i in range(n):
+        ok = True
+        for j in g[i]:
+            if h[i] <= h[j]:
+                ok = False
+        if ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0]*M
+    B = [0]*M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        ok = True
+        for j in range(M):
+            if A[j] == i+1 and H[i] <= H[B[j]-1]:
+                ok = False
+                break
+            if B[j] == i+1 and H[i] <= H[A[j]-1]:
+                ok = False
+                break
+        if ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0]*M
+    B = [0]*M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if A[j]-1 == i:
+                if H[i] <= H[B[j]-1]:
+                    flag = False
+                    break
+            if B[j]-1 == i:
+                if H[i] <= H[A[j]-1]:
+                    flag = False
+                    break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    good = [True] * N
+    for a, b in AB:
+        if H[a - 1] < H[b - 1]:
+            good[a - 1] = False
+        elif H[a - 1] > H[b - 1]:
+            good[b - 1] = False
+        else:
+            good[a - 1] = False
+            good[b - 1] = False
+    print(sum(good))
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    AB = [tuple(map(int, input().split())) for _ in range(M)]
+
+    # 隣接リスト
+    G = [[] for _ in range(N)]
+    for a, b in AB:
+        G[a-1].append(b-1)
+        G[b-1].append(a-1)
+
+    # 標高の高い方から順に訪問していく
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in G[i]:
+            if H[i] <= H[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)

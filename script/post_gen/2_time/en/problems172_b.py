@@ -1,45 +1,109 @@
-#Problem Statement
-#Given are strings S and T. Consider changing S to T by repeating the operation below. Find the minimum number of operations required to do so.
-#Operation: Choose one character of S and replace it with a different character.
-#
-#Constraints
-#S and T have lengths between 1 and 2× 10^5 (inclusive).
-#S and T consists of lowercase English letters.
-#S and T have equal lengths.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#cupofcoffee
-#cupofhottea
-#
-#Sample Output 1
-#4
-#We can achieve the objective in four operations, such as the following:
-#First, replace the sixth character c with h.
-#Second, replace the eighth character f with t.
-#Third, replace the ninth character f with t.
-#Fourth, replace the eleventh character e with a.
-#
-#Sample Input 2
-#abcde
-#bcdea
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#apple
-#apple
-#
-#Sample Output 3
-#0
-#No operations may be needed to achieve the objective.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    ans = 0
+    for s, t in zip(S, T):
+        if s != t:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    print(sum([1 for i in range(len(S)) if S[i] != T[i]]))
+
+=======
+Suggestion 8
+
+def count_diff_chars(s1, s2):
+    count = 0
+    for i in range(len(s1)):
+        if s1[i] != s2[i]:
+            count += 1
+    return count
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    from collections import defaultdict
+
+    def input(): return sys.stdin.readline().rstrip()
+
+    S = input()
+    T = input()
+    cnt = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            cnt += 1
+    print(cnt)

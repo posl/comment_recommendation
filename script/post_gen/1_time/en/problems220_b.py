@@ -1,41 +1,80 @@
-#Problem Statement
-#You are given integers A and B, in base K.
-#Print A × B in decimal.
-#
-#Notes
-#For base-K representation, see Wikipedia's article on Positional notation.
-#
-#Constraints
-#2 ≦ K ≦ 10
-#1 ≦ A,B ≦ 10^5
-#A and B are in base-K representation.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#1011 10100
-#
-#Sample Output 1
-#220
-#1011 in base 2 corresponds to 11 in base 10.
-#10100 in base 2 corresponds to 20 in base 10.
-#We have 11 × 20 = 220, so print 220.
-#
-#Sample Input 2
-#7
-#123 456
-#
-#Sample Output 2
-#15642
-#123 in base 7 corresponds to 66 in base 10.
-#456 in base 7 corresponds to 237 in base 10.
-#We have 66 × 237 = 15642, so print 15642.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = input().split()
+    A = int(A, K)
+    B = int(B, K)
+    print(A * B)
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a, b = input().split()
+    a = int(a, k)
+    b = int(b, k)
+    print(a*b)
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    A, B = input().split()
+    print(int(A, K) * int(B, K))
+
+=======
+Suggestion 4
+
+def toDecimal(base, number):
+    decimal = 0
+    for i in range(len(number)):
+        decimal += int(number[i]) * (base ** (len(number) - i - 1))
+    return decimal
+
+=======
+Suggestion 5
+
+def base_to_decimal(base, num):
+    num = str(num)
+    result = 0
+    for i in range(len(num)):
+        result += int(num[len(num) - 1 - i]) * pow(base, i)
+    return result
+
+=======
+Suggestion 6
+
+def baseToDec (base, num):
+    dec = 0
+    for i in range(len(num)):
+        dec += int(num[i]) * pow(base, len(num) - 1 - i)
+    return dec
+
+=======
+Suggestion 7
+
+def convertToDecimal(num, base):
+    num = str(num)
+    dec = 0
+    for i, val in enumerate(num[::-1]):
+        dec += int(val) * base ** i
+    return dec
+
+=======
+Suggestion 8
+
+def convert_to_decimal(base, number):
+    # Convert a number in base to decimal
+    # base: integer
+    # number: string
+    # return: integer
+    decimal = 0
+    for i in range(len(number)):
+        decimal += int(number[-i-1]) * base**i
+    return decimal

@@ -1,31 +1,23 @@
-#Problem Statement
-#Given is an integer r.
-#How many times is the area of a circle of radius r larger than the area of a circle of radius 1?
-#It can be proved that the answer is always an integer under the constraints given.
-#
-#Constraints
-#1 ≦ r ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#r
-#
-#Output
-#Print the area of a circle of radius r, divided by the area of a circle of radius 1, as an integer.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#4
-#The area of a circle of radius 2 is 4 times larger than the area of a circle of radius 1.
-#Note that output must be an integer - for example, 4.0 will not be accepted.
-#
-#Sample Input 2
-#100
-#
-#Sample Output 2
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(r*r)
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(r**2)
+
+=======
+Suggestion 3
+
+def main():
+    # Write your code here
+    r = int(input())
+    print(r*r)

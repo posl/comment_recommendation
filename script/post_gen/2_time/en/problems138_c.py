@@ -1,49 +1,96 @@
-#Problem Statement
-#You have a pot and N ingredients. Each ingredient has a real number parameter called value, and the value of the i-th ingredient (1 ≦ i ≦ N) is v_i.
-#When you put two ingredients in the pot, they will vanish and result in the formation of a new ingredient. The value of the new ingredient will be (x + y) / 2 where x and y are the values of the ingredients consumed, and you can put this ingredient again in the pot.
-#After you compose ingredients in this way N-1 times, you will end up with one ingredient. Find the maximum possible value of this ingredient.
-#
-#Constraints
-#2 ≦ N ≦ 50
-#1 ≦ v_i ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#v_1 v_2 ... v_N
-#
-#Output
-#Print a decimal number (or an integer) representing the maximum possible value of the last ingredient remaining.
-#Your output will be judged correct when its absolute or relative error from the judge's output is at most 10^{-5}.
-#
-#Sample Input 1
-#2
-#3 4
-#
-#Sample Output 1
-#3.5
-#If you start with two ingredients, the only choice is to put both of them in the pot. The value of the ingredient resulting from the ingredients of values 3 and 4 is (3 + 4) / 2 = 3.5.
-#Printing 3.50001, 3.49999, and so on will also be accepted.
-#
-#Sample Input 2
-#3
-#500 300 200
-#
-#Sample Output 2
-#375
-#You start with three ingredients this time, and you can choose what to use in the first composition. There are three possible choices:
-#Use the ingredients of values 500 and 300 to produce an ingredient of value (500 + 300) / 2 = 400. The next composition will use this ingredient and the ingredient of value 200, resulting in an ingredient of value (400 + 200) / 2 = 300.
-#Use the ingredients of values 500 and 200 to produce an ingredient of value (500 + 200) / 2 = 350. The next composition will use this ingredient and the ingredient of value 300, resulting in an ingredient of value (350 + 300) / 2 = 325.
-#Use the ingredients of values 300 and 200 to produce an ingredient of value (300 + 200) / 2 = 250. The next composition will use this ingredient and the ingredient of value 500, resulting in an ingredient of value (250 + 500) / 2 = 375.
-#Thus, the maximum possible value of the last ingredient remaining is 375.
-#Printing 375.0 and so on will also be accepted.
-#
-#Sample Input 3
-#5
-#138 138 138 138 138
-#
-#Sample Output 3
-#138
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = (v[0] + v[1]) / 2
+    for i in range(2, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = (v[0] + v[1]) / 2
+    for i in range(2, N):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = v[0]
+    for i in range(1, N):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    for i in range(n - 1):
+        v[i + 1] = (v[i] + v[i + 1]) / 2
+    print(v[n - 1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    vs = list(map(int, input().split()))
+    vs.sort()
+    ans = vs[0]
+    for i in range(1, n):
+        ans = (ans + vs[i]) / 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    for i in range(n-1):
+        v[i+1] = (v[i]+v[i+1])/2
+    print(v[-1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    V = [int(x) for x in input().split()]
+
+    V.sort()
+    ans = V[0]
+    for i in range(1, N):
+        ans = (ans + V[i]) / 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    v.append(0)
+    for i in range(N-1):
+        v.append((v[i] + v[i+1]) / 2)
+    print(v[-1])

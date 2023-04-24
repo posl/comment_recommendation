@@ -1,37 +1,118 @@
-#問題文
-#整数 n に対して，n を十進法で表したときの各桁の和を S(n) で表すことにします．
-#たとえば，S(101) = 1 + 0 + 1 = 2 です．
-#整数 N が与えられたとき，N が S(N) で割り切れるかどうかを判定してください．
-#
-#制約
-#1 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#N
-#
-#出力
-#N が S(N) で割り切れるなら Yes を，割り切れないなら No を出力せよ．
-#
-#入力例 1
-#12
-#
-#出力例 1
-#Yes
-#この入力では N=12 です．
-#S(12) = 1 + 2 = 3 なので，N は S(N) で割り切れます．
-#
-#入力例 2
-#101
-#
-#出力例 2
-#No
-#S(101) = 1 + 0 + 1 = 2 なので，N は S(N) で割り切れません．
-#
-#入力例 3
-#999999999
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = 0
+    for i in str(n):
+        s += int(i)
+    if n % s == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = 0
+    for i in str(n):
+        s += int(i)
+    if n % s == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = 0
+    for n in str(N):
+        S += int(n)
+    if N % S == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = 0
+    for c in str(n):
+        s += int(c)
+    if n % s == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    n_str = str(n)
+    s = 0
+    for i in range(len(n_str)):
+        s += int(n_str[i])
+    if n % s == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = sum(map(int,str(n)))
+    if n % s == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = input()
+    N = int(N)
+    S = 0
+    for i in range(len(str(N))):
+        S += int(str(N)[i])
+    if N % S == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    N = int(input())
+    S = 0
+    for i in str(N):
+        S += int(i)
+    if N % S == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    #print(N)
+    #print(sum(map(int, str(N))))
+    if N % sum(map(int, str(N))) == 0:
+        print("Yes")
+    else:
+        print("No")

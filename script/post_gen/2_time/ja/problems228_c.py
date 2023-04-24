@@ -1,61 +1,198 @@
-#問題文
-#N 人の生徒が 4 日間にわたる試験を受けています。
-#それぞれの日に行われる試験は 300 点満点です。すなわち、4 日間を通した試験の満点は 1200 点です。
-#現在 3 日目までの試験が終わり、これから 4 日目の試験が行われようとしています。i  (1 ≦ i ≦ N) 番目の生徒は j  (1 ≦ j ≦ 3) 日目の試験で P_{i, j} 点獲得しました。
-#それぞれの生徒について、4 日目の試験後に上位 K 位以内に入っていることがあり得るかどうか判定してください。
-#ただし、4 日目の試験後の生徒の順位は、その生徒よりも 4 日間の合計点が高い生徒の人数に 1 を加えた値として定めます。
-#
-#制約
-#1 ≦ K ≦ N ≦ 10^5
-#0 ≦ P_{i, j} ≦ 300  (1 ≦ i ≦ N, 1 ≦ j ≦ 3)
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#P_{1,1} P_{1,2} P_{1,3}
-#.
-#.
-#.
-#P_{N,1} P_{N,2} P_{N,3}
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、i 番目の生徒が 4 日目の試験後に上位 K 位以内に入っていることがあり得るならば Yes と、そうでないならば No と出力せよ。
-#
-#入力例 1
-#3 1
-#178 205 132
-#112 220 96
-#36 64 20
-#
-#出力例 1
-#Yes
-#Yes
-#No
-#4 日目に全員が 100 点を取ると、1 番目の生徒が 1 位になります。
-#4 日目に 2 番目の生徒が 100 点を取り、それ以外の生徒が 0 点を取ると、2 番目の生徒が 1 位になります。
-#3 番目の生徒が 1 位になることはあり得ません。
-#
-#入力例 2
-#2 1
-#300 300 300
-#200 200 200
-#
-#出力例 2
-#Yes
-#Yes
-#
-#入力例 3
-#4 2
-#127 235 78
-#192 134 298
-#28 56 42
-#96 120 250
-#
-#出力例 3
-#Yes
-#Yes
-#No
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = [0] * N
+    for i in range(N):
+        P[i] = sum(map(int, input().split()))
+    P.sort(reverse=True)
+    if P[K - 1] < P[K]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    for i in range(n):
+        if sum(p[i]) + 300 * (3 - len(p[i])) >= sum(sorted([sum(p[j]) for j in range(n) if i != j])[-k:]):
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = []
+    for i in range(N):
+        p = list(map(int, input().split()))
+        P.append(p)
+    for i in range(N):
+        rank = 1
+        for j in range(N):
+            if P[i][0] + P[i][1] + P[i][2] < P[j][0] + P[j][1] + P[j][2]:
+                rank += 1
+        if rank <= K:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+    for i in range(N):
+        x = 0
+        for j in range(N):
+            if sum(A[i]) < sum(A[j]):
+                x += 1
+        if x < K:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+    P = sorted(P, key=lambda x: sum(x), reverse=True)
+    print('Yes' if P[K-1][0] + P[K-1][1] + P[K-1][2] >= P[K][0] + P[K][1] + P[K][2] else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+
+    # 各生徒の合計点を求める
+    S = [sum(p) for p in P]
+
+    # 合計点の降順にソートしたインデックスを求める
+    # 例えば、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、[0, 1, 2, 3, 4] の順でソートされている
+    # これを、[0, 1, 2, 3, 4] というインデックスでソートする
+    # つまり、[0, 1, 2, 3, 4] の順でソートされている
+    # つまり、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、S = [5, 4, 3, 2, 1] の場合、
+    # [0, 1, 2, 3, 4] となる
+    # つまり、
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    # 入力を受け取る
+    P = [list(map(int, input().split())) for _ in range(N)]
+
+    # 3 日目の合計点のリストを作る
+    S = [sum(p) for p in P]
+
+    # 4 日目の試験後の順位を計算する
+    # 4 日目の試験後の順位は、その生徒よりも 4 日間の合計点が高い生徒の人数に 1 を加えた値として定めます。
+    R = [sum(s > t for t in S) + 1 for s in S]
+
+    # 上位 K 位以内に入っていることがあり得るかどうか判定して出力する
+    for r in R:
+        print('Yes' if r <= K else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+
+    # 3日目までの合計点
+    S = [p[0] + p[1] + p[2] for p in P]
+
+    # 4日目の得点
+    T = [300 - p[3] for p in P]
+
+    # 4日目の得点でソート
+    T_sorted = sorted(T)
+
+    # 4日目の得点でソートしたときの順位
+    rank = [0] * N
+    for i, t in enumerate(T_sorted):
+        rank[T.index(t)] = i + 1
+
+    # 3日目までの合計点でソート
+    S_sorted = sorted(S)
+
+    # 4日目の得点でソートしたときの順位と、3日目までの合計点でソートしたときの順位の差がK以下であればYes
+    for i in range(N):
+        if rank[i] - S_sorted.index(S[i]) <= K:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+
+    # 3日目までの合計点
+    score = [sum(p[i]) for i in range(n)]
+
+    # 4日目の試験の点数の上位k人の合計点
+    score.sort(reverse=True)
+    top = sum(score[:k])
+
+    for i in range(n):
+        # 4日目の試験で最大の合計点を取れる場合
+        if score[k-1] + p[i][3] >= top:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+    # 3日目の合計点を計算
+    sum3 = [sum(p) for p in P]
+    # 4日目の合計点の上位 K 位までを求める
+    sum4 = sorted([sum(p) for p in P], reverse=True)[:K]
+    for i in range(N):
+        # 4日目の合計点が上位 K 位に入る場合
+        if sum3[i] + 300 in sum4:
+            print("Yes")
+        # 4日目の合計点が上位 K 位に入らない場合
+        else:
+            # 3日目の合計点が上位 K 位に入る場合
+            if sum3[i] in sum4:
+                # 3日目の合計点が上位 K 位に入るが、4日目の合計点が上位 K 位に入らない場合
+                if sum3[i] + 300 not in sum4:
+                    print("Yes")
+                # 3日目の合計点が上位 K 位に入るが、4日目の合計点が上位 K 位に入る場合
+                else:
+                    print("No")
+            # 3日目の合計点が上位 K 位に入らない場合
+            else:
+                print("No")

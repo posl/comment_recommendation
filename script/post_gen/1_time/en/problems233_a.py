@@ -1,40 +1,75 @@
-#Problem Statement
-#Takahashi wants to send a letter to Santa Claus. He has an envelope with an X-yen (Japanese currency) stamp stuck on it.
-#To be delivered to Santa Claus, the envelope must have stamps in a total value of at least Y yen.
-#Takahashi will put some more 10-yen stamps so that the envelope will have stamps worth at least Y yen in total.
-#At least how many more 10-yen stamps does Takahashi need to put on the envelope?
-#
-#Constraints
-#X and Y are integers.
-#1 ≦ X,Y ≦ 1000
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#80 94
-#
-#Sample Output 1
-#2
-#After adding zero 10-yen stamps to the 80-yen stamp, the total is 80 yen, which is less than the required amount of 94 yen.
-#After adding one 10-yen stamp to the 80-yen stamp, the total is 90 yen, which is less than the required amount of 94 yen.
-#After adding two 10-yen stamps to the 80-yen stamp, the total is 100 yen, which is not less than the required amount of 94 yen.
-#
-#Sample Input 2
-#1000 63
-#
-#Sample Output 2
-#0
-#The envelope may already have a stamp with enough value.
-#
-#Sample Input 3
-#270 750
-#
-#Sample Output 3
-#48
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x + 9) // 10)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y + 9) // 10 - X // 10)
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x + 10 - 1) // 10)
+
+=======
+Suggestion 4
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y - X + 9) // 10)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    x,y = input().split()
+    x = int(x)
+    y = int(y)
+    if x%10 == 0:
+        x = x + 10
+    else:
+        x = x + (10 - x%10)
+    count = 0
+    while x < y:
+        x = x + 10
+        count = count + 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    # Read in input
+    X, Y = map(int, input().split())
+    # Calculate the minimum number of 10-yen stamps to add
+    stamps = (Y - (X % Y)) % Y
+    # Print the answer
+    print(stamps)
+
+=======
+Suggestion 7
+
+def main():
+    #Get Input
+    x, y = map(int, input().split())
+
+    #Calculate the number of 10yen stamps needed
+    stamps = y - x
+
+    #Check to see if the stamps are already there
+    if stamps <= 0:
+        stamps = 0
+
+    #Print the answer
+    print(stamps)

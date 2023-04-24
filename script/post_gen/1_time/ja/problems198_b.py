@@ -1,35 +1,107 @@
-#問題文
-#整数 N が与えられます。
-#N を十進法で表した文字列の先頭に 0 個以上の 0 をつけることで、回文にすることはできますか？
-#
-#制約
-#0 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#回文にできるなら Yes、できないなら No を出力せよ。
-#
-#入力例 1
-#1210
-#
-#出力例 1
-#Yes
-#1210 の先頭に 1 個の 0 をつけると 01210 となり回文になります。
-#
-#入力例 2
-#777
-#
-#出力例 2
-#Yes
-#777 はもともと回文です。
-#
-#入力例 3
-#123456789
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = input()
+    if N == N[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    N_str = str(N)
+    N_str_rev = N_str[::-1]
+    if N_str == N_str_rev:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n = input()
+    if n == n[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = input()
+    for i in range(len(N)):
+        if N[i] != N[-i-1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print("Yes" if str(n) == str(n)[::-1] else "No")
+
+=======
+Suggestion 6
+
+def main():
+    N = input()
+    N = N[::-1]
+    N = N.lstrip('0')
+    if N == N[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N = input()
+    N = N.zfill(10)
+    print("Yes" if N == N[::-1] else "No")
+
+=======
+Suggestion 8
+
+def palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+=======
+Suggestion 10
+
+def main():
+    N = input()
+
+    # Nの文字列の先頭に0を加えても回文になるか
+    # 0を加えても回文にならないなら、Nの文字列の末尾に0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+
+    # Nの文字列の先頭に0を加えても回文になるか
+    # 0を加えても回文にならないなら、Nの文字列の末尾に0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+
+    # 0を加えても回文にならないなら、Nの文字列の先頭と末尾にそれぞれ0を加えても回文にならない
+    #

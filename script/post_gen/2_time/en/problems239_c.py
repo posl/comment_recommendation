@@ -1,49 +1,115 @@
-#Problem Statement
-#On an xy-coordinate plane, is there a lattice point whose distances from two lattice points (x_1, y_1) and (x_2, y_2) are both (5)^(1/2)?
-#
-#Notes
-#A point on an xy-coordinate plane whose x and y coordinates are both integers is called a lattice point.
-#The distance between two points (a, b) and (c, d) is defined to be the Euclidean distance between them, ((a - c)^2 + (b-d)^2)^(1/2).
-#The following figure illustrates an xy-plane with a black circle at (0, 0) and white circles at the lattice points whose distances from (0, 0) are (5)^(1/2).  (The grid shows where either x or y is an integer.)
-#
-#Constraints
-#-10^9 ≦ x_1 ≦ 10^9
-#-10^9 ≦ y_1 ≦ 10^9
-#-10^9 ≦ x_2 ≦ 10^9
-#-10^9 ≦ y_2 ≦ 10^9
-#(x_1, y_1) ≠ (x_2, y_2)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x_1 y_1 x_2 y_2
-#
-#Output
-#If there is a lattice point satisfying the condition, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#0 0 3 3
-#
-#Sample Output 1
-#Yes
-#The distance between points (2,1) and (x_1, y_1) is ((0-2)^2 + (0-1)^2)^(1/2) = (5)^(1/2);
-#the distance between points (2,1) and (x_2, y_2) is ((3-2)^2 + (3-1)^2)^(1/2) = (5)^(1/2);
-#point (2, 1) is a lattice point,
-#so point (2, 1) satisfies the condition.  Thus, Yes should be printed.
-#One can also assert in the same way that (1, 2) also satisfies the condition.
-#
-#Sample Input 2
-#0 1 2 3
-#
-#Sample Output 2
-#No
-#No lattice point satisfies the condition, so No should be printed.
-#
-#Sample Input 3
-#1000000000 1000000000 999999999 999999999
-#
-#Sample Output 3
-#Yes
-#Point (10^9 + 1, 10^9 - 2) and point (10^9 - 2, 10^9 + 1) satisfy the condition.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 + y1 + x2 + y2) % 2 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    x1, x2 = sorted([x1, x2])
+    y1, y2 = sorted([y1, y2])
+    if (x2 - x1) % 2 == 0 and (y2 - y1) % 2 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if x1 == x2 and y1 == y2:
+        print("No")
+        return
+    dx = x2 - x1
+    dy = y2 - y1
+    x3 = x2 - dy
+    y3 = y2 + dx
+    x4 = x1 - dy
+    y4 = y1 + dx
+    if (x3 - x1) ** 2 + (y3 - y1) ** 2 == (x3 - x2) ** 2 + (y3 - y2) ** 2 and \
+       (x4 - x1) ** 2 + (y4 - y1) ** 2 == (x4 - x2) ** 2 + (y4 - y2) ** 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2)**2 + (y1 - y2)**2 in [5, 10]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def lattice_point(x1, y1, x2, y2):
+    if (x1 == x2 and y1 == y2):
+        return "No"
+    #check if (x1, y1) is a lattice point
+    if ((x1**2 + y1**2)**0.5).is_integer():
+        return "Yes"
+    #check if (x2, y2) is a lattice point
+    if ((x2**2 + y2**2)**0.5).is_integer():
+        return "Yes"
+    #if (x1, y1) and (x2, y2) are both lattice points, then a point (x, y) is a lattice point if and only if
+    #x = x1 + a(x2 - x1) and y = y1 + a(y2 - y1) where a is an integer
+    #if (x1, y1) and (x2, y2) are not both lattice points, then a point (x, y) is a lattice point if and only if
+    #x = x1 + a(x2 - x1) and y = y1 + a(y2 - y1) where a is an integer and a is not 0
+    #if a is 0, then (x, y) = (x1, y1) or (x, y) = (x2, y2)
+    #if a is not 0, then (x, y) = (x1, y1) + a(x2 - x1, y2 - y1)
+    #if (x1, y1) is a lattice point, then (x1, y1) + a(x2 - x1, y2 - y1) is a lattice point
+    #if (x2, y2) is a lattice point, then (x1, y1) + a(x2 - x1, y2 - y1) is a lattice point
+    #if (x1, y1) and (x2, y2) are both not lattice points, then (x1, y1) + a(x2 - x1, y2 - y1) is a lattice point
+    #if (x1, y1) and (x2, y2) are both not lattice points

@@ -1,66 +1,168 @@
-#問題文
-#1, ..., N と番号付けられた N 個の都市と、都市間を結ぶ M 本の道路があります。
-#i  (1 ≦ i ≦ M) 番目の道路は都市 A_i と都市 B_i を結んでいます。
-#以下の指示に従い、N 行にわたって出力してください。
-#都市 i  (1 ≦ i ≦ N) と道路で直接結ばれた都市が d_i 個あるとし、それらを昇順に都市 a_{i, 1}, ..., a_{i, d_i} とおく。
-#i  (1 ≦ i ≦ N) 行目には、d_i + 1 個の整数 d_i, a_{i, 1}, ..., a_{i, d_i} を、この順番で空白区切りで出力せよ。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i < B_i ≦ N  (1 ≦ i ≦ M)
-#(i ≠ j) ならば (A_i, B_i) ≠ (A_j, B_j)
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#出力
-#問題文の指示に従い、N 行にわたって出力せよ。
-#
-#入力例 1
-#6 6
-#3 6
-#1 3
-#5 6
-#2 5
-#1 2
-#1 6
-#
-#出力例 1
-#3 2 3 6
-#2 1 5
-#2 1 6
-#0
-#2 2 6
-#3 1 3 5
-#都市 1 と道路で直接結ばれているのは都市 2, 3, 6 です。よって、d_1 = 3, a_{1, 1} = 2, a_{1, 2} = 3, a_{1, 3} = 6 であるので、1 行目には 3, 2, 3, 6 をこの順番で空白区切りで出力します。
-#a_{i, 1}, ..., a_{i, d_i} は昇順に並んでいなければならないことに注意してください。例えば、1 行目に 3, 3, 2, 6 をこの順番で出力した場合、不正解となります。
-#
-#入力例 2
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#出力例 2
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    ans = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        ans[a-1].append(b)
+        ans[b-1].append(a)
+    for a in ans:
+        print(len(a), *sorted(a))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    road = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        road[A - 1].append(B)
+        road[B - 1].append(A)
+    for r in road:
+        print(len(r), *sorted(r))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    a = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        a[A - 1].append(B)
+        a[B - 1].append(A)
+    for i in range(N):
+        a[i].sort()
+        print(len(a[i]), *a[i])
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    road = [[] for _ in range(N)]
+
+    for _ in range(M):
+        a, b = map(int, input().split())
+        road[a-1].append(b-1)
+        road[b-1].append(a-1)
+
+    for i in range(N):
+        road[i].sort()
+        print(len(road[i]), end=" ")
+        for j in road[i]:
+            print(j+1, end=" ")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    edges = [set() for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        edges[a - 1].add(b - 1)
+        edges[b - 1].add(a - 1)
+    for i in range(N):
+        print(len(edges[i]), end=' ')
+        for j in sorted(edges[i]):
+            print(j + 1, end=' ')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    from collections import deque
+    N, M = map(int, input().split())
+    road = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        road[a-1].append(b-1)
+        road[b-1].append(a-1)
+    for i in range(N):
+        road[i].sort()
+        road[i] = deque(road[i])
+    for i in range(N):
+        d = len(road[i])
+        print(d, end=" ")
+        for _ in range(d):
+            print(road[i].popleft()+1, end=" ")
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    # 都市と道路の関係をリストで保持
+    roads = [[] for i in range(N)]
+    for i in range(M):
+        a, b = map(int, input().split())
+        roads[a - 1].append(b - 1)
+        roads[b - 1].append(a - 1)
+    # 都市と道路の関係を出力
+    for i in range(N):
+        print(len(roads[i]) + 1, end = ' ')
+        for j in range(len(roads[i])):
+            print(roads[i][j] + 1, end = ' ')
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    # 都市と道路の隣接リストを作る
+    city = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        city[a-1].append(b-1)
+        city[b-1].append(a-1)
+    # 都市iと直接結ばれている都市の数と、都市iと直接結ばれている都市を出力
+    for i in range(N):
+        print(len(city[i]), end='')
+        for j in city[i]:
+            print(' ' + str(j+1), end='')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    # 都市をキーにして、道路で直接結ばれた都市のリストを値とする辞書を作成
+    d = {i: [] for i in range(1, N + 1)}
+    for _ in range(M):
+        A, B = map(int, input().split())
+        d[A].append(B)
+        d[B].append(A)
+    # 道路で直接結ばれた都市のリストの要素数と、その都市の番号を出力
+    for i in range(1, N + 1):
+        print(len(d[i]), *sorted(d[i]))
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    # 都市と道路の関係を表すリスト
+    # 都市iと道路で直接結ばれた都市の数
+    d = [0] * N
+    # 都市iと道路で直接結ばれた都市のリスト
+    a = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        d[A-1] += 1
+        d[B-1] += 1
+        a[A-1].append(B)
+        a[B-1].append(A)
+    for i in range(N):
+        a[i] = sorted(a[i])
+        print(d[i], *a[i])

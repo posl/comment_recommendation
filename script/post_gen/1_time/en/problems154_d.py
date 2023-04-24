@@ -1,42 +1,153 @@
-#Problem Statement
-#We have N dice arranged in a line from left to right. The i-th die from the left shows p_i numbers from 1 to p_i with equal probability when thrown.
-#We will choose K adjacent dice, throw each of them independently, and compute the sum of the numbers shown. Find the maximum possible value of the expected value of this sum.
-#
-#Constraints
-#1 ≤ K ≤ N ≤ 200000
-#1 ≤ p_i ≤ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#p_1 ... p_N
-#
-#Output
-#Print the maximum possible value of the expected value of the sum of the numbers shown.
-#Your output will be considered correct when its absolute or relative error from our answer is at most 10^{-6}.
-#
-#Sample Input 1
-#5 3
-#1 2 2 4 5
-#
-#Sample Output 1
-#7.000000000000
-#When we throw the third, fourth, and fifth dice from the left, the expected value of the sum of the numbers shown is 7. This is the maximum value we can achieve.
-#
-#Sample Input 2
-#4 1
-#6 6 6 6
-#
-#Sample Output 2
-#3.500000000000
-#Regardless of which die we choose, the expected value of the number shown is 3.5.
-#
-#Sample Input 3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#Sample Output 3
-#32.000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += (p[i] + 1) / 2
+    tmp = ans
+    for i in range(N - K):
+        tmp -= (p[i] + 1) / 2
+        tmp += (p[i + K] + 1) / 2
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += (p[i]+1)/2
+    tmp = ans
+    for i in range(N-K):
+        tmp = tmp - (p[i]+1)/2 + (p[i+K]+1)/2
+        ans = max(ans, tmp)
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    s = 0
+    for i in range(K):
+        s += (p[i] + 1) / 2
+    ans = s
+    for i in range(K, N):
+        s += (p[i] + 1) / 2 - (p[i - K] + 1) / 2
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    s = sum(p[:k])
+    m = s
+    for i in range(n - k):
+        s -= p[i]
+        s += p[i + k]
+        m = max(m, s)
+    print((m + k) / 2)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    s = 0
+    for i in range(K):
+        s += p[i]
+    m = s
+    for i in range(K, N):
+        s += p[i] - p[i - K]
+        m = max(m, s)
+    print(m / 2 + K / 2)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = [0] * (N + 1)
+    for i in range(N):
+        c[i + 1] = c[i] + (p[i] + 1) / 2
+    ans = 0
+    for i in range(N - K + 1):
+        ans = max(ans, c[i + K] - c[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [i * (i + 1) / 2 / i for i in p]
+    print(max(sum(p[i: i + K]) for i in range(N - K + 1)))
+
+=======
+Suggestion 8
+
+def main():
+    N,K = map(int,input().split())
+    p = list(map(int,input().split()))
+    sum_p = 0
+    for i in range(K):
+        sum_p += (p[i]+1)/2
+    max_p = sum_p
+    for i in range(K,N):
+        sum_p += (p[i]+1)/2 - (p[i-K]+1)/2
+        max_p = max(max_p,sum_p)
+    print(max_p)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K, P)
+    sum = 0
+    for i in range(K):
+        sum += (P[i] + 1) / 2
+    max = sum
+    for i in range(N - K):
+        sum -= (P[i] + 1) / 2
+        sum += (P[i + K] + 1) / 2
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split(' '))
+    p = list(map(int, input().split(' ')))
+    p = [i+1 for i in p]
+    p = [i/2 for i in p]
+    ans = sum(p[0:K])
+    tmp = ans
+    for i in range(N-K):
+        tmp = tmp - p[i] + p[i+K]
+        if tmp > ans:
+            ans = tmp
+    print(ans)

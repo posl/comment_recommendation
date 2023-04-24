@@ -1,60 +1,220 @@
-#Problem Statement
-#We have N switches with "on" and "off" state, and M bulbs. The switches are numbered 1 to N, and the bulbs are numbered 1 to M.
-#Bulb i is connected to k_i switches: Switch s_{i1}, s_{i2}, ..., and s_{ik_i}. It is lighted when the number of switches that are "on" among these switches is congruent to p_i modulo 2.
-#How many combinations of "on" and "off" states of the switches light all the bulbs?
-#
-#Constraints
-#1 ≦ N, M ≦ 10
-#1 ≦ k_i ≦ N
-#1 ≦ s_{ij} ≦ N
-#s_{ia} ≠ s_{ib} (a ≠ b)
-#p_i is 0 or 1.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#k_1 s_{11} s_{12} ... s_{1k_1}
-#:
-#k_M s_{M1} s_{M2} ... s_{Mk_M}
-#p_1 p_2 ... p_M
-#
-#Output
-#Print the number of combinations of "on" and "off" states of the switches that light all the bulbs.
-#
-#Sample Input 1
-#2 2
-#2 1 2
-#1 2
-#0 1
-#
-#Sample Output 1
-#1
-#Bulb 1 is lighted when there is an even number of switches that are "on" among the following: Switch 1 and 2.
-#Bulb 2 is lighted when there is an odd number of switches that are "on" among the following: Switch 2.
-#There are four possible combinations of states of (Switch 1, Switch 2): (on, on), (on, off), (off, on) and (off, off). Among them, only (on, on) lights all the bulbs, so we should print 1.
-#
-#Sample Input 2
-#2 3
-#2 1 2
-#1 1
-#1 2
-#0 0 1
-#
-#Sample Output 2
-#0
-#Bulb 1 is lighted when there is an even number of switches that are "on" among the following: Switch 1 and 2.
-#Bulb 2 is lighted when there is an even number of switches that are "on" among the following: Switch 1.
-#Bulb 3 is lighted when there is an odd number of switches that are "on" among the following: Switch 2.
-#Switch 1 has to be "off" to light Bulb 2 and Switch 2 has to be "on" to light Bulb 3, but then Bulb 1 will not be lighted. Thus, there are no combinations of states of the switches that light all the bulbs, so we should print 0.
-#
-#Sample Input 3
-#5 2
-#3 1 2 5
-#2 2 3
-#1 0
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [list(map(int, input().split())) for _ in range(M)]
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(2 ** N):
+        is_ok = True
+        for j in range(M):
+            cnt = 0
+            for k in range(S[j][0]):
+                if (i >> (S[j][k + 1] - 1)) & 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                is_ok = False
+                break
+        if is_ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = [list(map(int, input().split())) for _ in range(M)]
+    P = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(2**N):
+        on = [0]*M
+        for j in range(N):
+            if (i >> j) & 1:
+                for k in range(M):
+                    if j+1 in S[k][1:]:
+                        on[k] += 1
+        if all([on[k]%2 == P[k] for k in range(M)]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    K = [0] * M
+    S = [[0] * N for _ in range(M)]
+    P = [0] * M
+    for i in range(M):
+        t = list(map(int, input().split()))
+        K[i] = t[0]
+        S[i] = t[1:]
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(2 ** N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in range(K[j]):
+                if i & (1 << (S[j][k] - 1)):
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    S = []
+    P = []
+    for _ in range(M):
+        s = list(map(int, input().split()))
+        S.append(s[1:])
+        P.append(s[0])
+    ans = 0
+    for i in range(2 ** N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in S[j]:
+                if i >> (k - 1) & 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = []
+    P = []
+    for _ in range(M):
+        s = list(map(int, input().split()))
+        S.append(s[1:])
+        P.append(int(input()))
+    ans = 0
+    for i in range(2**N):
+        f = True
+        for j in range(M):
+            if P[j] != sum([i >> (s-1) & 1 for s in S[j]]) % 2:
+                f = False
+                break
+        if f:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, M = map(int, input().split())
+    S = []
+    P = []
+    for _ in range(M):
+        s = list(map(int, input().split()))
+        S.append(s[1:])
+        P.append(int(input()))
+    S = list(zip(*S))
+    ans = 0
+    for i in range(2 ** N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in S[j]:
+                if (i >> (k - 1)) & 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    S = [[int(x) for x in input().split()] for _ in range(M)]
+    P = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(2**N):
+        if sum([sum([P[j] if i & 1 << (S[j][k] - 1) else 0 for k in range(1, S[j][0] + 1)]) % 2 for j in range(M)]) == 0:
+            ans += 1
+    print(ans)
+solve()
+
+Thank you for your time!
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    switches = [list(map(int, input().split())) for _ in range(M)]
+    p = list(map(int, input().split()))
+
+    ans = 0
+
+    for i in range(2**N):
+        flag = True
+        for j in range(M):
+            cnt = 0
+            for k in range(1, switches[j][0]+1):
+                if i >> (switches[j][k]-1) & 1:
+                    cnt += 1
+            if cnt % 2 != p[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    s = []
+    p = []
+    for _ in range(M):
+        k.append(list(map(int, input().split())))
+        s.append(k[-1][1:])
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**N):
+        state = [0]*M
+        for j in range(N):
+            if ((i >> j) & 1):
+                for l in range(M):
+                    if (j+1) in s[l]:
+                        state[l] += 1
+        for m in range(M):
+            state[m] %= 2
+        if state == p:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

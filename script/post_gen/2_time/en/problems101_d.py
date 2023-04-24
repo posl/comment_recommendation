@@ -1,33 +1,87 @@
-#Problem Statement
-#Let S(n) denote the sum of the digits in the decimal notation of n.
-#For example, S(123) = 1 + 2 + 3 = 6.
-#We will call an integer n a Snuke number when, for all positive integers m such that m > n, (n/(S(n))) ≦ (m/(S(m))) holds.
-#Given an integer K, list the K smallest Snuke numbers.
-#
-#Constraints
-#1 ≦ K
-#The K-th smallest Snuke number is not greater than 10^{15}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print K lines. The i-th line should contain the i-th smallest Snuke number.
-#
-#Sample Input 1
-#10
-#
-#Sample Output 1
-#1
-#2
-#3
-#4
-#5
-#6
-#7
-#8
-#9
-#19
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    ans = []
+    for i in range(1, 10):
+        ans.append(i)
+    for i in range(10, 10 ** 15):
+        if i % sum(map(int, list(str(i)))) == 0:
+            ans.append(i)
+        if len(ans) == K:
+            break
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 3
+
+def snuke():
+    K = int(input())
+    snuke_numbers = [1]
+    for i in range(K):
+        print(snuke_numbers[i])
+        snuke_numbers.append(snuke_numbers[i] * 10)
+        snuke_numbers.append(snuke_numbers[i] * 10 + 1)
+        snuke_numbers.sort()
+
+=======
+Suggestion 4
+
+def sum_digits(n):
+    return sum([int(d) for d in str(n)])
+
+=======
+Suggestion 5
+
+def sum_digits(n):
+    return sum(int(d) for d in str(n))
+
+=======
+Suggestion 6
+
+def S(n):
+    return sum(int(d) for d in str(n))
+
+=======
+Suggestion 7
+
+def snuke_numbers(k):
+    s = 0
+    for i in range(1, k + 1):
+        s += i
+        if s > 9:
+            s = s % 9
+        if s == 1 or s == 3 or s == 6 or s == 8:
+            print(i)
+
+=======
+Suggestion 8
+
+def S(n):
+    return sum(map(int, str(n)))
+
+=======
+Suggestion 9
+
+def sum_digits(n):
+    return sum(map(int, str(n)))
+
+=======
+Suggestion 10
+
+def s(n):
+    return sum(map(int, list(str(n))))

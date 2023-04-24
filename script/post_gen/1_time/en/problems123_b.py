@@ -1,75 +1,129 @@
-#Problem Statement
-#The restaurant AtCoder serves the following five dishes:
-#ABC Don (rice bowl): takes A minutes to serve.
-#ARC Curry: takes B minutes to serve.
-#AGC Pasta: takes C minutes to serve.
-#APC Ramen: takes D minutes to serve.
-#ATC Hanbagu (hamburger patty): takes E minutes to serve.
-#Here, the time to serve a dish is the time between when an order is placed and when the dish is delivered.
-#This restaurant has the following rules on orders:
-#An order can only be placed at a time that is a multiple of 10 (time 0, 10, 20, ...).
-#Only one dish can be ordered at a time.
-#No new order can be placed when an order is already placed and the dish is still not delivered, but a new order can be placed at the exact time when the dish is delivered.
-#E869120 arrives at this restaurant at time 0. He will order all five dishes. Find the earliest possible time for the last dish to be delivered.
-#Here, he can order the dishes in any order he likes, and he can place an order already at time 0.
-#
-#Constraints
-#A, B, C, D and E are integers between 1 and 123 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A
-#B
-#C
-#D
-#E
-#
-#Output
-#Print the earliest possible time for the last dish to be delivered, as an integer.
-#
-#Sample Input 1
-#29
-#20
-#7
-#35
-#120
-#
-#Sample Output 1
-#215
-#If we decide to order the dishes in the order ABC Don, ARC Curry, AGC Pasta, ATC Hanbagu, APC Ramen, the earliest possible time for each order is as follows:
-#Order ABC Don at time 0, which will be delivered at time 29.
-#Order ARC Curry at time 30, which will be delivered at time 50.
-#Order AGC Pasta at time 50, which will be delivered at time 57.
-#Order ATC Hanbagu at time 60, which will be delivered at time 180.
-#Order APC Ramen at time 180, which will be delivered at time 215.
-#There is no way to order the dishes in which the last dish will be delivered earlier than this.
-#
-#Sample Input 2
-#101
-#86
-#119
-#108
-#57
-#
-#Sample Output 2
-#481
-#If we decide to order the dishes in the order AGC Pasta, ARC Curry, ATC Hanbagu, APC Ramen, ABC Don, the earliest possible time for each order is as follows:
-#Order AGC Pasta at time 0, which will be delivered at time 119.
-#Order ARC Curry at time 120, which will be delivered at time 206.
-#Order ATC Hanbagu at time 210, which will be delivered at time 267.
-#Order APC Ramen at time 270, which will be delivered at time 378.
-#Order ABC Don at time 380, which will be delivered at time 481.
-#There is no way to order the dishes in which the last dish will be delivered earlier than this.
-#
-#Sample Input 3
-#123
-#123
-#123
-#123
-#123
-#
-#Sample Output 3
-#643
-#This is the largest valid case.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print((max(A, B, C, D, E) + 9) // 10 * 10)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D, E = [int(input()) for _ in range(5)]
+    print(10 * ((A + 9) // 10 + (B + 9) // 10 + (C + 9) // 10 + (D + 9) // 10 + (E + 9) // 10) - max(A, B, C, D, E))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c, d, e = [int(input()) for _ in range(5)]
+    print(((a + 9) // 10 + (b + 9) // 10 + (c + 9) // 10 + (d + 9) // 10 + (e + 9) // 10) * 10 - 9)
+
+=======
+Suggestion 4
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print((10 - max(A, B, C, D, E) % 10) % 10 + max(A, B, C, D, E))
+
+main()
+
+Here is the code for the problem 124 A. Button.
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    ans = 0
+    ans += a + (10 - a % 10) % 10
+    ans += b + (10 - b % 10) % 10
+    ans += c + (10 - c % 10) % 10
+    ans += d + (10 - d % 10) % 10
+    ans += e + (10 - e % 10) % 10
+    ans -= max(a, b, c, d, e) + (10 - max(a, b, c, d, e) % 10) % 10
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    ans = 0
+    ans += ((a + 9) // 10) * 10
+    ans += ((b + 9) // 10) * 10
+    ans += ((c + 9) // 10) * 10
+    ans += ((d + 9) // 10) * 10
+    ans += ((e + 9) // 10) * 10
+    ans -= max(a % 10, b % 10, c % 10, d % 10, e % 10)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    A, B, C, D, E = [int(input()) for _ in range(5)]
+    N = 5
+    ans = 0
+    ans = max(A, B, C, D, E)
+    ans = ans + (ans - 1) // 9 * 10
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    As = [int(input()) for _ in range(5)]
+
+    # compute
+    # 10の倍数に切り上げる
+    As = [((a+9)//10)*10 for a in As]
+    # 最小値を求める
+    m = min(As)
+    # 最小値の10の倍数の差分を求める
+    d = m - As[0]
+    # 最小値の10の倍数に合わせる
+    As = [a+d for a in As]
+    # 最大値を求める
+    M = max(As)
+    # 最大値に合わせる
+    As = [M for _ in range(5)]
+
+    # output
+    print(sum(As))
+
+=======
+Suggestion 10
+
+def main():
+    # Put your code here
+    pass

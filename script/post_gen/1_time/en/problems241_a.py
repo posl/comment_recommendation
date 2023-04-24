@@ -1,37 +1,87 @@
-#Problem Statement
-#There is a device with a screen that shows a single-digit number, and a button.  
-#When the screen is showing a number k, pressing the button once changes the number on the screen to a_k.  
-#The device currently shows 0.  After pressing the button 3 times, what will be shown on the screen?
-#
-#Constraints
-#0≦ a_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a_0 a_1 ... a_9
-#
-#Output
-#Print the answer.  
-#
-#Sample Input 1
-#9 0 1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#7
-#The number on the screen transitions as 0 -> 9 -> 8 -> 7.  
-#
-#Sample Input 2
-#4 8 8 8 0 8 8 8 8 8
-#
-#Sample Output 2
-#4
-#The number on the screen transitions as 0 -> 4 -> 0 -> 4.  
-#
-#Sample Input 3
-#0 0 0 0 0 0 0 0 0 0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    for i in range(3):
+        a = [a[a[i]] for i in range(10)]
+    print(a[0])
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)
+
+=======
+Suggestion 3
+
+def main():
+    a = list(map(int, input().split()))
+    for i in range(3):
+        a = [a[a[0]]] + a[1:]
+    print(a[0])
+
+=======
+Suggestion 4
+
+def main():
+    a = [int(i) for i in input().split()]
+    for i in range(3):
+        a = [a[j] for j in range(10) if j != a[j]]
+    print(a[0])
+
+=======
+Suggestion 5
+
+def main():
+    a = map(int, raw_input().split())
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print n
+
+=======
+Suggestion 6
+
+def main():
+    a = list(map(int, input().split()))
+    print(a[1])
+
+=======
+Suggestion 7
+
+def main():
+    # Get input here
+    a = list(map(int, input().strip().split()))
+    # Calculate result here
+    a = a[1:] + [a[0]]
+    a = a[1:] + [a[0]]
+    a = a[1:] + [a[0]]
+    # Print output here
+    print(a[0])
+
+=======
+Suggestion 8
+
+def main():
+    # get input
+    a = list(map(int, input().split()))
+    # set initial value
+    k = 0
+    # set counter
+    count = 0
+    # loop until counter reaches 3
+    while count < 3:
+        # set next value
+        k = a[k]
+        # increment counter
+        count += 1
+    # print result
+    print(k)

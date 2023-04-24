@@ -1,48 +1,106 @@
-#Problem Statement
-#Given is a positive integer N.
-#Find the number of pairs (A, B) of positive integers not greater than N that satisfy the following condition:
-#When A and B are written in base ten without leading zeros, the last digit of A is equal to the first digit of B, and the first digit of A is equal to the last digit of B.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#25
-#
-#Sample Output 1
-#17
-#The following 17 pairs satisfy the condition: (1,1), (1,11), (2,2), (2,22), (3,3), (4,4), (5,5), (6,6), (7,7), (8,8), (9,9), (11,1), (11,11), (12,21), (21,12), (22,2), and (22,22).
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#100
-#
-#Sample Output 3
-#108
-#
-#Sample Input 4
-#2020
-#
-#Sample Output 4
-#40812
-#
-#Sample Input 5
-#200000
-#
-#Sample Output 5
-#400000008
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if str(i)[-1] == str(j)[0]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if str(i)[0] == str(j)[-1] and str(i)[-1] == str(j)[0]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if str(i)[-1] == str(j)[0] and str(i)[0] == str(j)[-1]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    cnt = [0] * 10
+    for i in range(1, N + 1):
+        cnt[i % 10] += 1
+    ans = 0
+    for i in range(1, N + 1):
+        ans += cnt[i // 10 % 10] * cnt[i % 10]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += 9 * (i // 10) + (i % 10)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N == 1:
+        print(1)
+        return
+    counter = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if str(i)[-1] == str(j)[0] and str(i)[0] == str(j)[-1]:
+                counter += 1
+    print(counter)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += N // 10 ** len(str(i))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    # 1桁の数の数は10
+    # 10桁の数の数は9*9=81
+    # 100桁の数の数は9*9*9=729
+    # 1000桁の数の数は9*9*9*9=6561
+    # 10000桁の数の数は9*9*9*9*9=59049
+    # 100000桁の数の数は9*9*9*9*9*9=531441
+    # 1000000桁の数の数は9*9*9*9*9*9*9=4782969
+    # 10000000桁の数の数は9*9*9*9*9*9*9*9=43046721
+    # 100000000桁の数の数は9*9*9*9*9*9*9*9*9=387420489
+    # 1000000000桁の数の数は9*9*9*9*9*9*9*9*9*9=3486784401
+    # 10000000000桁の数の数は9*9*9*9*9*9*9*9*9*9*9=31381059609
+    # 100000000000桁の数の数は9*9*9*9*9*9*9*9*9*9*9*9=282429536481
+    # 1000000000000桁の数の数は9*9*9*9*9*9*9*9*9*9*9*9*9=2541865828329
+    # 10000000000000桁の数の数は9*9*9*9*9*9*9*9*9*9*9*9*9*9=22876792454961
+    # 100000000000000桁の数の数は9*9*9*9*9*9*9*9*9*9*9*9*9*9*9=205891132094649

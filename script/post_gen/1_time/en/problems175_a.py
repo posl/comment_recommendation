@@ -1,37 +1,163 @@
-#Problem Statement
-#We have weather records at AtCoder Town for some consecutive three days. A string of length 3, S, represents the records - if the i-th character is S, it means it was sunny on the i-th day; if that character is R, it means it was rainy on that day.
-#Find the maximum number of consecutive rainy days in this period.
-#
-#Constraints
-#|S| = 3
-#Each character of S is S or R.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the maximum number of consecutive rainy days in the period.
-#
-#Sample Input 1
-#RRS
-#
-#Sample Output 1
-#2
-#We had rain on the 1-st and 2-nd days in the period. Here, the maximum number of consecutive rainy days is 2, so we should print 2.
-#
-#Sample Input 2
-#SSS
-#
-#Sample Output 2
-#0
-#It was sunny throughout the period. We had no rainy days, so we should print 0.
-#
-#Sample Input 3
-#RSR
-#
-#Sample Output 3
-#1
-#We had rain on the 1-st and 3-rd days - two "streaks" of one rainy day, so we should print 1.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    count = 0
+    max_count = 0
+    for i in range(len(S)):
+        if S[i] == 'R':
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S == 'SSS':
+        print(0)
+    elif S == 'RRS' or S == 'SRR' or S == 'RSR':
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    cnt = 0
+    max_cnt = 0
+    for s in S:
+        if s == 'R':
+            cnt += 1
+        else:
+            if cnt > max_cnt:
+                max_cnt = cnt
+            cnt = 0
+    if cnt > max_cnt:
+        max_cnt = cnt
+    print(max_cnt)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    count = 0
+    maxCount = 0
+    for i in range(len(s)):
+        if s[i] == 'R':
+            count += 1
+        else:
+            if count > maxCount:
+                maxCount = count
+            count = 0
+    if count > maxCount:
+        maxCount = count
+    print(maxCount)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S == "RRS":
+        print(2)
+    elif S == "SSS":
+        print(0)
+    else:
+        print(1)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    max_count = 0
+    count = 0
+    for i in range(0, 3):
+        if S[i] == 'R':
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    maxRainyDays = 0
+    currentRainyDays = 0
+    for i in range(3):
+        if S[i] == 'R':
+            currentRainyDays += 1
+            if currentRainyDays > maxRainyDays:
+                maxRainyDays = currentRainyDays
+        else:
+            currentRainyDays = 0
+    print(maxRainyDays)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = 0
+    m = 0
+    for i in range(len(s)):
+        if s[i] == "R":
+            n += 1
+            m = max(n, m)
+        else:
+            n = 0
+    print(m)
+
+=======
+Suggestion 9
+
+def maxRainyDays():
+    S = input()
+    count = 0
+    maxCount = 0
+    for i in range(len(S)):
+        if S[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if count > maxCount:
+            maxCount = count
+    return maxCount
+
+print(maxRainyDays())
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    #print(s)
+    max = 0
+    count = 0
+    for i in range(3):
+        if s[i] == "R":
+            count += 1
+            if count > max:
+                max = count
+        else:
+            count = 0
+    print(max)
+
+main()

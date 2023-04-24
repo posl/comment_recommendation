@@ -1,49 +1,127 @@
-#Problem Statement
-#There are N mountains in a circle, called Mountain 1, Mountain 2, ..., Mountain N in clockwise order. N is an odd number.
-#Between these mountains, there are N dams, called Dam 1, Dam 2, ..., Dam N. Dam i (1 ≦ i ≦ N) is located between Mountain i and i+1 (Mountain N+1 is Mountain 1).
-#When Mountain i (1 ≦ i ≦ N) receives 2x liters of rain, Dam i-1 and Dam i each accumulates x liters of water (Dam 0 is Dam N).
-#One day, each of the mountains received a non-negative even number of liters of rain.
-#As a result, Dam i (1 ≦ i ≦ N) accumulated a total of A_i liters of water.
-#Find the amount of rain each of the mountains received. We can prove that the solution is unique under the constraints of this problem.
-#
-#Constraints
-#All values in input are integers.
-#3 ≦ N ≦ 10^5-1
-#N is an odd number.
-#0 ≦ A_i ≦ 10^9
-#The situation represented by input can occur when each of the mountains receives a non-negative even number of liters of rain.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print N integers representing the number of liters of rain Mountain 1, Mountain 2, ..., Mountain N received, in this order.
-#
-#Sample Input 1
-#3
-#2 2 4
-#
-#Sample Output 1
-#4 0 4
-#If we assume Mountain 1, 2, and 3 received 4, 0, and 4 liters of rain, respectively, it is consistent with this input, as follows:
-#Dam 1 should have accumulated (4/(2)) + (0/(2)) = 2 liters of water.
-#Dam 2 should have accumulated (0/(2)) + (4/(2)) = 2 liters of water.
-#Dam 3 should have accumulated (4/(2)) + (4/(2)) = 4 liters of water.
-#
-#Sample Input 2
-#5
-#3 8 7 5 5
-#
-#Sample Output 2
-#2 4 12 2 8
-#
-#Sample Input 3
-#3
-#1000000000 1000000000 0
-#
-#Sample Output 3
-#0 2000000000 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    ans[0] = sum(A) - 2 * sum(A[1::2])
+    for i in range(N-1):
+        ans[i+1] = 2 * A[i] - ans[i]
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        if i % 2 == 0:
+            ans[0] += A[i]
+        else:
+            ans[0] -= A[i]
+    for i in range(1, N):
+        ans[i] = 2 * A[i - 1] - ans[i - 1]
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    ans[0] = sum(A) - 2 * sum(A[1::2])
+    for i in range(N - 1):
+        ans[i + 1] = 2 * A[i] - ans[i]
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+    ans[0] = sum(a) - 2 * sum(a[1::2])
+    for i in range(1, n):
+        ans[i] = 2 * a[i - 1] - ans[i - 1]
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    B[0] = (A[0] + A[1] - A[-1]) // 2
+    for i in range(1, N):
+        B[i] = A[i-1] - B[i-1]
+    print(*B)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    ans[0] = sum(A) // (N - 1)
+    for i in range(1, N):
+        ans[i] = A[i - 1] - ans[i - 1]
+    print(*ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    B[0] = sum(A) // (N * 2)
+    for i in range(N - 1):
+        B[i + 1] = A[i] - B[i]
+    print(*B)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = (A[i] - A[i - 1]) // 2
+    ans[0] += sum(A)
+    ans = [str(a) for a in ans]
+    print(' '.join(ans))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 3:
+        print(A[2]//2, A[2]//2, A[0])
+        return
+    x = (A[0] + A[1] - A[N-1]) // 2
+    B = [x]
+    for i in range(1, N):
+        B.append(A[i-1] - B[i-1])
+    for i in range(N):
+        print(B[i], end = " ")
+    print()
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

@@ -1,37 +1,156 @@
-#問題文
-#N 人が 1 列に並んでおり、前から i 番目の人の身長は A_i です。
-#それぞれの人の足元に、高さが 0 以上の踏み台を設置し、全ての人が次の条件を満たすようにしたいです。
-#条件：踏み台を込めて身長を比較したとき、自分より前に、自分より背の高い人が存在しない
-#この条件を満たす時の、踏み台の高さの合計の最小値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#踏み台の高さの合計の最小値を出力せよ。
-#
-#入力例 1
-#5
-#2 1 5 4 3
-#
-#出力例 1
-#4
-#それぞれ、高さ 0,1,0,1,2 の踏み台を与えると、踏み台を込めた身長は 2,2,5,5,5 となり、条件を満たします。
-#踏み台の高さの合計をこれより小さくすることはできません。
-#
-#入力例 2
-#5
-#3 3 3 3 3
-#
-#出力例 2
-#0
-#全員に高さ 0 の踏み台を与えればよいです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    b[0] = a[0]
+    for i in range(1, n):
+        b[i] = max(a[i], b[i - 1])
+    ans = 0
+    for i in range(n):
+        ans += b[i] - a[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1, 0, -1):
+        if a[i-1] > a[i]:
+            ans += a[i-1] - a[i]
+            a[i-1] = a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(1, N):
+        if A[i - 1] < A[i]:
+            B[i] = B[i - 1] + 1
+    print(sum(B))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - i
+    b.sort()
+    #print(b)
+    ans = 0
+    for i in range(n):
+        ans += abs(b[i] - b[n//2])
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - i
+    b.sort()
+    if n % 2 == 0:
+        x = b[n//2-1]
+        y = b[n//2]
+        ans = y - x + 1
+    else:
+        ans = b[n//2] * 2 + 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*N
+    for i in range(N):
+        B[i] = A[i] - i - 1
+    B.sort()
+    if N%2:
+        median = B[N//2]
+    else:
+        median = (B[N//2-1]+B[N//2])//2
+    ans = 0
+    for i in range(N):
+        ans += abs(B[i]-median)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1, -1, -1):
+        if a[i] > ans:
+            ans = a[i]
+        else:
+            ans = a[i] - 1
+        if ans < 0:
+            print(-1)
+            return
+    print(sum(a) - n)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = a[::-1]
+    ans = 0
+    for i in range(1, n):
+        if a[i] > a[i-1]:
+            ans += a[i] - a[i-1]
+            a[i] = a[i-1]
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A[::-1]
+    ans = 0
+    for i in range(N):
+        if A[i] <= ans:
+            ans = A[i]
+        else:
+            ans = A[i] - 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #print(n,a)
+    ans = 0
+    for i in range(n-1,0,-1):
+        if a[i-1] > a[i]:
+            ans += a[i-1] - a[i]
+            a[i-1] = a[i]
+    print(ans)

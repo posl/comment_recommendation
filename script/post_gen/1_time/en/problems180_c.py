@@ -1,68 +1,135 @@
-#Problem Statement
-#We have N cream puffs.
-#Find all possible number of people to which we can evenly distribute the cream puffs without cutting them.
-#
-#Constraints
-#1 ≦ N ≦ 10^{12}
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the numbers of people in ascending order, each in its own line.
-#
-#Sample Input 1
-#6
-#
-#Sample Output 1
-#1
-#2
-#3
-#6
-#For example, we can evenly distribute the cream puffs to two people by giving three to each person.
-#
-#Sample Input 2
-#720
-#
-#Sample Output 2
-#1
-#2
-#3
-#4
-#5
-#6
-#8
-#9
-#10
-#12
-#15
-#16
-#18
-#20
-#24
-#30
-#36
-#40
-#45
-#48
-#60
-#72
-#80
-#90
-#120
-#144
-#180
-#240
-#360
-#720
-#
-#Sample Input 3
-#1000000007
-#
-#Sample Output 3
-#1
-#1000000007
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = set()
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.add(i)
+            ans.add(N//i)
+    for i in sorted(ans):
+        print(i)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            ans.append(i)
+            if i != n // i:
+                ans.append(n // i)
+    ans.sort()
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            ans.append(i)
+            if i != N//i:
+                ans.append(N//i)
+    ans.sort()
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if i != N//i:
+                ans.append(N//i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            print(i)
+            if i != N // i:
+                print(N // i)
+        i += 1
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = []
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            ans.append(i)
+            if n//i != i:
+                ans.append(n//i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            print(i)
+            if i != N//i:
+                print(N//i)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if i*i != N:
+                ans.append(N//i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def puffs():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            ans.append(i)
+            ans.append(N // i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 10
+
+def  main():
+     N  =  int (input())

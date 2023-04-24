@@ -1,120 +1,109 @@
-#問題文
-#整数 N と長さ N の数列 A=(A _ 1,A _ 2,...,A _ N) が与えられます。
-#クエリが Q 個与えられるので、与えられた順番に処理してください。
-#クエリは次の 2 種類のいずれかです。
-#1 k x : A _ k の値を x に変更する。
-#2 k : A _ k の値を出力する。
-#
-#制約
-#1 ≦ N ≦ 10 ^ 5
-#1 ≦ Q ≦ 10 ^ 5
-#0 ≦ A _ i ≦ 10 ^ 9 (1≦ i≦ N)
-#どのクエリについても、1≦ k≦ N
-#1 番目の形式のクエリについて、0≦ x≦ 10 ^ 9
-#2 番目の形式のクエリが 1 つ以上存在する
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A _ 1 A _ 2 ... A _ N
-#Q
-#query _ 1
-#query _ 2
-#.
-#.
-#.
-#query _ Q
-#ただし、query _ i は i 個目のクエリを表しており、次の形式のいずれかで与えられる。
-#1 k x
-#2 k
-#
-#出力
-#2 番目の形式のクエリの回数を q 回として q 行出力せよ。
-#j (1≦ j≦ q) 行目には、2 番目の形式のクエリのうち j 個目のものに対する答えを出力せよ。
-#
-#入力例 1
-#3
-#1 3 5
-#7
-#2 2
-#2 3
-#1 3 0
-#2 3
-#1 2 8
-#2 2
-#2 1
-#
-#出力例 1
-#3
-#5
-#0
-#8
-#1
-#はじめ、A=(1,3,5) です。
-#1 つめのクエリにおいて、A=(1,3,5) です。A _ 2=3 なので、3 を出力します。
-#2 つめのクエリにおいて、A=(1,3,5) です。A _ 3=5 なので、5 を出力します。
-#3 つめのクエリでは、A _ 3 の値を 0 に変更し、A=(1,3,0) となります。
-#4 つめのクエリにおいて、A=(1,3,0) です。A _ 3=0 なので、0 を出力します。
-#5 つめのクエリでは、A _ 2 の値を 8 に変更し、A=(1,8,0) となります。
-#6 つめのクエリにおいて、A=(1,8,0) です。A _ 2=8 なので、8 を出力します。
-#7 つめのクエリにおいて、A=(1,8,0) です。A _ 1=1 なので、1 を出力します。
-#
-#入力例 2
-#5
-#22 2 16 7 30
-#10
-#1 4 0
-#1 5 0
-#2 2
-#2 3
-#2 4
-#2 5
-#1 4 100
-#1 5 100
-#2 3
-#2 4
-#
-#出力例 2
-#2
-#16
-#0
-#0
-#16
-#100
-#
-#入力例 3
-#7
-#478 369 466 343 541 42 165
-#20
-#2 1
-#1 7 729
-#1 6 61
-#1 6 838
-#1 3 319
-#1 4 317
-#2 4
-#1 1 673
-#1 3 176
-#1 5 250
-#1 1 468
-#2 6
-#1 7 478
-#1 5 595
-#2 6
-#1 6 599
-#1 6 505
-#2 3
-#2 5
-#2 1
-#
-#出力例 3
-#478
-#317
-#838
-#838
-#176
-#595
-#468
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A[query[1] - 1] = query[2]
+        elif query[0] == 2:
+            print(A[query[1] - 1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A[query[1] - 1] = query[2]
+        else:
+            print(A[query[1] - 1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1] - 1] = query[2]
+        else:
+            print(a[query[1] - 1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    ans = []
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A[query[1]-1] = query[2]
+        else:
+            ans.append(A[query[1]-1])
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    ans = []
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1] - 1] = query[2]
+        elif query[0] == 2:
+            ans.append(a[query[1] - 1])
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = list(map(int,input().split()))
+        if query[0]==1:
+            A[query[1]-1] = query[2]
+        else:
+            print(A[query[1]-1])
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    for i in range(Q):
+        if query[i][0] == 1:
+            A[query[i][1] - 1] = query[i][2]
+        elif query[i][0] == 2:
+            print(A[query[i][1] - 1])

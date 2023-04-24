@@ -1,59 +1,179 @@
-#問題文
-#N 段の階段があります。高橋君は現在、上り口(0 段目)にいます。
-#高橋君は一歩で 1 段か 2 段上ることができます。
-#ただし、a_1,a_2,a_3,....a_M 段目の床は壊れており、その段に足を踏み入れることは危険です。
-#壊れている床を踏まないようにしながら、最上段(N 段目)にたどりつくまでの移動方法は何通りあるでしょうか？
-#総数を 1,000,000,007 で割った余りを求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2  <  ...  < a_M ≦ N-1
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#出力
-#条件を満たすような移動方法の総数を、1,000,000,007 で割った余りを出力してください。
-#
-#入力例 1
-#6 1
-#3
-#
-#出力例 1
-#4
-#移動方法は以下の 4 通りです。
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#入力例 2
-#10 2
-#4
-#5
-#
-#出力例 2
-#0
-#壊れている床を踏まないような移動方法がない場合もあります。
-#
-#入力例 3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#出力例 3
-#608200469
-#総数を 1,000,000,007 で割った余りを出力することに注意して下さい。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    MOD = 10**9 + 7
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if i in A:
+            continue
+        if i == 1:
+            dp[i] = dp[i - 1]
+        else:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % MOD
+    print(dp[N])
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    broken = [False] * (N + 1)
+    for i in range(M):
+        broken[int(input())] = True
+    dp = [0] * (N + 2)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if not broken[i]:
+            dp[i] = dp[i - 1] + dp[i - 2]
+    print(dp[N] % 1000000007)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    MOD = 10**9 + 7
+
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i-1] + dp[i-2]
+            dp[i] %= MOD
+
+    print(dp[N])
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    mod = 10**9 + 7
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in a:
+            continue
+        dp[i] = (dp[i-1] + dp[i-2]) % mod
+    print(dp[N])
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    mod = 10 ** 9 + 7
+
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if i in a:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i - 1] + dp[i - 2]
+            dp[i] %= mod
+    print(dp[N])
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    mod = 10**9+7
+    dp = [0]*(N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in a:
+            dp[i] = 0
+            continue
+        if i == 1:
+            dp[i] = dp[i-1]
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % mod
+    print(dp[N])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    for i in range(M):
+        A.append(int(input()))
+    A.append(N+1)
+    A.append(0)
+    A.sort()
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    #初期化
+    mod = 10**9+7
+    dp = [0]*(N+1)
+    dp[0] = 1
+    #計算
+    for i in range(1, N+1):
+        if i in a:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i-1]+dp[i-2]
+            dp[i] %= mod
+    #出力
+    print(dp[N])
+
+=======
+Suggestion 9
+
+def calc(N, M, A):
+    MOD = 10**9 + 7
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i-1] + dp[i-2]
+            dp[i] %= MOD
+    return dp[N]
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    N,M = map(int,input().split())
+    A = [int(input()) for i in range(M)]
+    #dp[i] = i段目にたどり着く方法の総数
+    dp = [0]*(N+1)
+    dp[0] = 1
+    for i in range(1,N+1):
+        #壊れている床を踏んでいないか
+        if i not in A:
+            #1段上がるか2段上がるか
+            dp[i] = dp[i-1] + dp[i-2]
+            dp[i] %= 1000000007
+    print(dp[N])

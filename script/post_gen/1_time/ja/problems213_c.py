@@ -1,73 +1,124 @@
-#問題文
-#H 行 W 列の格子状に HW 枚のカードが並べられています。
-#i=1,...,N について、上から A_i 行目、左から B_i 列目にあるカードには数 i が書かれており、それ以外の HW-N 枚のカードには何も書かれていません。
-#これらのカードに対し、以下の 2 種類の操作を可能な限り繰り返します。
-#数の書かれたカードを含まない行が存在するとき、その行のカードを全て取り除き、残りのカードを上へ詰める
-#数の書かれたカードを含まない列が存在するとき、その列のカードを全て取り除き、残りのカードを左へ詰める
-#操作が終了したとき、数が書かれたカードがそれぞれどこにあるか求めてください。なお、答えは操作の仕方に依らず一意に定まることが証明されます。
-#
-#制約
-#1 ≦ H,W ≦ 10^9
-#1 ≦ N ≦ min(10^5,HW)
-#1 ≦ A_i ≦ H
-#1 ≦ B_i ≦ W
-#(A_i,B_i) は相異なる
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#N 行出力せよ。
-#操作終了後に数 i が書かれたカードが上から C_i 行目、左から D_i 列目に存在するとき、i 行目には C_i,D_i をこの順に空白区切りで出力せよ。
-#
-#入力例 1
-#4 5 2
-#3 2
-#2 5
-#
-#出力例 1
-#2 1
-#1 2
-#何も書かれていないカードを * で表すことにします。最初、カードの配置は以下の通りです。
-#*****
-#****2
-#*1***
-#*****
-#操作終了後、カードの配置は以下の通りになります。
-#*2
-#1*
-#1 が書かれたカードは上から 2 行目、左から 1 列目にあり、2 が書かれたカードは上から 1 行目、左から 2 列目にあります。
-#
-#入力例 2
-#1000000000 1000000000 10
-#1 1
-#10 10
-#100 100
-#1000 1000
-#10000 10000
-#100000 100000
-#1000000 1000000
-#10000000 10000000
-#100000000 100000000
-#1000000000 1000000000
-#
-#出力例 2
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#7 7
-#8 8
-#9 9
-#10 10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i]) + 1, B.index(B[i]) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i])+1, B.index(B[i])+1)
+
+=======
+Suggestion 3
+
+def main():
+    h, w, n = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    for i in range(n):
+        print(a.index(a[i])+1, b.index(b[i])+1)
+
+=======
+Suggestion 4
+
+def main():
+    H,W,N = map(int,input().split())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i],B[i] = map(int,input().split())
+    A.sort()
+    B.sort()
+    C = [0]*N
+    D = [0]*N
+    for i in range(N):
+        C[i] = A.index(A[i])+1
+        D[i] = B.index(B[i])+1
+    for i in range(N):
+        print(C[i],D[i])
+
+=======
+Suggestion 5
+
+def main():
+    H,W,N = map(int,input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i],B[i] = map(int,input().split())
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A[i] - bisect.bisect_left(A,A[i]) + 1,B[i] - bisect.bisect_left(B,B[i]) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    h,w,n = map(int,input().split())
+    #print(h,w,n)
+    a = [0]*n
+    b = [0]*n
+    for i in range(n):
+        a[i],b[i] = map(int,input().split())
+        #print(a[i],b[i])
+    #print(a)
+    #print(b)
+    a = list(set(a))
+    a.sort()
+    b = list(set(b))
+    b.sort()
+    #print(a)
+    #print(b)
+    for i in range(n):
+        print(a.index(a[i])+1,b.index(b[i])+1)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, N = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+
+    # 重複を排除した座標を得る
+    A = sorted(set([ab[0] for ab in AB]))
+    B = sorted(set([ab[1] for ab in AB]))
+
+    # 座標の変換
+    for i in range(N):
+        # 重複を排除した座標の順番を得る
+        a = bisect.bisect_left(A, AB[i][0])
+        b = bisect.bisect_left(B, AB[i][1])
+        print(a+1, b+1)

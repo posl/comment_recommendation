@@ -1,57 +1,184 @@
-#Problem Statement
-#On the xy-plane, We have N points numbered 1 to N. Point i is at (x_i, y_i), and the x-coordinates of the N points are pairwise different.
-#Find the number of pairs of integers (i, j) (i < j) that satisfy the following condition:
-#The line passing through Point i and Point j has a slope between -1 and 1 (inclusive).
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^3
-#|x_i|, |y_i| ≦ 10^3
-#x_i ≠ x_j for i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#.
-#.
-#.
-#x_N y_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#0 0
-#1 2
-#2 1
-#
-#Sample Output 1
-#2
-#The slopes of the lines passing through (0, 0) and (1, 2), passing through (0, 0) and (2, 1), and passing through (1, 2) and (2, 1) are 2, (1/(2)), and -1, respectively.
-#
-#Sample Input 2
-#1
-#-691 273
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#10
-#-31 -35
-#8 -36
-#22 64
-#5 73
-#-14 8
-#18 -58
-#-41 -85
-#1 -88
-#-21 -85
-#-11 82
-#
-#Sample Output 3
-#11
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (y[j] - y[i]) / (x[j] - x[i]) <= 1:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = [0]*n
+    y = [0]*n
+    for i in range(n):
+        x[i], y[i] = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if -1 <= (y[j]-y[i])/(x[j]-x[i]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for _ in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (y[j]-y[i])/(x[j]-x[i]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        xi, yi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if x[i] == x[j]:
+                continue
+            if -1 <= (y[i] - y[j]) / (x[i] - x[j]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if points[i][1] - points[j][1] != 0:
+                if -1 <= (points[i][0] - points[j][0]) / (points[i][1] - points[j][1]) <= 1:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+
+    #compute
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if -1 <= (Y[j]-Y[i])/(X[j]-X[i]) <= 1:
+                ans += 1
+
+    #output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    points = [tuple(map(int, input().split())) for _ in range(N)]
+    slopes = []
+    for i in range(N):
+        for j in range(i+1, N):
+            if points[i][0] == points[j][0]:
+                slopes.append(10000000000)
+            else:
+                slopes.append((points[i][1] - points[j][1]) / (points[i][0] - points[j][0]))
+    slopes = sorted(slopes)
+    print(slopes)
+    ans = 0
+    for i in range(len(slopes)):
+        for j in range(i+1, len(slopes)):
+            if slopes[i] < slopes[j] and slopes[j] <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p = [tuple(map(int, input().split())) for _ in range(N)]
+    p.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (p[i][1] - p[j][1]) / (p[i][0] - p[j][0]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    points = [list(map(int, input().split())) for _ in range(N)]
+    slopes = [0] * N
+    for i in range(N):
+        for j in range(i+1, N):
+            if points[i][0] == points[j][0]:
+                slopes[i] += 1
+                slopes[j] += 1
+            else:
+                slope = (points[i][1] - points[j][1]) / (points[i][0] - points[j][0])
+                if -1 <= slope <= 1:
+                    slopes[i] += 1
+                    slopes[j] += 1
+    print(sum([s * (s-1) // 2 for s in slopes]))
+
+=======
+Suggestion 10
+
+def main():
+    # Your code here
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if -1 <= (y[j]-y[i])/(x[j]-x[i]) <= 1:
+                ans += 1
+    print(ans)

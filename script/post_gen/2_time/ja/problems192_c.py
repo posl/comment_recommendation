@@ -1,51 +1,55 @@
-#問題文
-#0 以上の整数 x に対して、g_1(x), g_2(x), f(x) を次のように定めます。
-#g_1(x)= x を十進法で表したときの各桁の数字を大きい順に並び替えてできる整数
-#g_2(x)= x を十進法で表したときの各桁の数字を小さい順に並び替えてできる整数
-#f(x)=g_1(x)-g_2(x)
-#例えば g_1(314)=431, g_2(3021)=123, f(271)=721-127=594 です。先頭の余分な 0 は無視されることに注意してください。
-#整数 N,K が与えられるので、a_0=N, a_{i+1}=f(a_i)  (i≧ 0) で定まる数列の a_K を求めてください。
-#
-#制約
-#0 ≦ N ≦ 10^9
-#0 ≦ K ≦ 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#
-#出力
-#a_K を出力せよ。
-#
-#入力例 1
-#314 2
-#
-#出力例 1
-#693
-#a_0=314
-#a_1=f(314)=431-134=297
-#a_2=f(297)=972-279=693
-#です。
-#
-#入力例 2
-#1000000000 100
-#
-#出力例 2
-#0
-#a_0=1000000000
-#a_1=f(1000000000)=1000000000-1=999999999
-#a_2=f(999999999)=999999999-999999999=0
-#a_3=f(0)=0-0=0
-#.
-#.
-#.
-#となります。
-#
-#入力例 3
-#6174 100000
-#
-#出力例 3
-#6174
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def g1(x):
+    x = str(x)
+    x = sorted(x, reverse=True)
+    x = ''.join(x)
+    return int(x)
+
+=======
+Suggestion 2
+
+def g1(x):
+    s = list(str(x))
+    s.sort(reverse=True)
+    return int("".join(s))
+
+=======
+Suggestion 3
+
+def g1(x):
+    s = str(x)
+    s = sorted(s, reverse=True)
+    return int(''.join(s))
+
+=======
+Suggestion 4
+
+def g1(x):
+    return int(''.join(sorted(str(x), reverse=True)))
+
+=======
+Suggestion 5
+
+def g1(x):
+    s = str(x)
+    s = sorted(s, reverse=True)
+    return int("".join(s))
+
+=======
+Suggestion 6
+
+def g1(x):
+    list_x = list(str(x))
+    list_x.sort(reverse=True)
+    str_x = "".join(list_x)
+    return int(str_x)
+
+=======
+Suggestion 7
+
+def g1(x):
+    return int("".join(sorted(str(x), reverse=True)))

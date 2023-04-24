@@ -1,112 +1,452 @@
-#Problem Statement
-#Takahashi found a puzzle along some road.
-#It is composed of an undirected graph with nine vertices and M edges, and eight pieces.
-#The nine vertices of the graph are called Vertex 1, Vertex 2, ..., Vertex 9. For each i = 1, 2, ..., M, the i-th edge connects Vertex u_i and Vertex v_i.
-#The eight pieces are called Piece 1, Piece 2, ..., Piece 8.
-#For each j = 1, 2, ..., 8, Piece j is on Vertex p_j.
-#Here, it is guaranteed that all pieces are on distinct vertices.
-#Note that there is exactly one empty vertex without a piece.
-#Takahashi can do the following operation on the puzzle any number of times (possibly zero).
-#Choose a piece on a vertex adjacent to the empty vertex, and move it to the empty vertex.
-#By repeating this operation, he aims to complete the puzzle.
-#The puzzle is considered complete when the following holds.
-#For each j = 1, 2, ..., 8, Piece j is on Vertex j.
-#Determine whether it is possible for Takahashi to complete the puzzle. If it is possible, find the minimum number of operations needed to do so.
-#
-#Constraints
-#0 ≦ M ≦ 36
-#1 ≦ u_i, v_i ≦ 9
-#The given graph has no multi-edges or self-loops.
-#1 ≦ p_j ≦ 9
-#j ≠ j' -> p_j ≠ p_{j'}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#p_1 p_2 ... p_8
-#
-#Output
-#If it is possible for Takahashi to complete the puzzle, find the minimum number of operations needed to do so.
-#Otherwise, print -1.
-#
-#Sample Input 1
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#3 9 2 4 5 6 7 8
-#
-#Sample Output 1
-#5
-#The following procedure completes the puzzle in five operations.
-#Move Piece 2 from Vertex 9 to Vertex 1.
-#Move Piece 3 from Vertex 2 to Vertex 9.
-#Move Piece 2 from Vertex 1 to Vertex 2.
-#Move Piece 1 from Vertex 3 to Vertex 1.
-#Move Piece 3 from Vertex 9 to Vertex 3.
-#On the other hand, it is impossible to complete the puzzle in less than five operations. Thus, we should print 5.
-#Note that the given graph may not be connected.
-#
-#Sample Input 2
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#1 2 3 4 5 6 7 8
-#
-#Sample Output 2
-#0
-#The puzzle is already complete from the beginning.
-#Thus, the minimum number of operations needed to complete the puzzle is 0.
-#
-#Sample Input 3
-#12
-#8 5
-#9 6
-#4 5
-#4 1
-#2 5
-#8 9
-#2 1
-#3 6
-#8 7
-#6 5
-#7 4
-#2 3
-#1 2 3 4 5 6 8 7
-#
-#Sample Output 3
-#-1
-#No sequence of operations can complete the puzzle, so we should print -1.
-#
-#Sample Input 4
-#12
-#6 5
-#5 4
-#4 1
-#4 7
-#8 5
-#2 1
-#2 5
-#6 9
-#3 6
-#9 8
-#8 7
-#3 2
-#2 3 4 6 1 9 7 8
-#
-#Sample Output 4
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    M = int(input())
+    G = [[] for _ in range(9)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        G[u-1].append(v-1)
+        G[v-1].append(u-1)
+    P = list(map(int, input().split()))
+    for i in range(8):
+        P[i] -= 1
+    P.insert(0, -1)
+    P.append(-1)
+    for i in range(9):
+        for j in range(9):
+            if i == j:
+                continue
+            if j in G[i]:
+                G[i].remove(j)
+            else:
+                G[i].append(j)
+    for i in range(9):
+        G[i] = sorted(G[i])
+    def dfs(v, p, d, used):
+        if v == 8:
+            if d == 0:
+                return 0
+            else:
+                return 10**9
+        if d == 0:
+            return 10**9
+        if used[v]:
+            return 10**9
+        res = 10**9
+        used[v] = True
+        for u in G[p[v]]:
+            res = min(res, dfs(v+1, p, d-1, used))
+        used[v] = False
+        res = min(res, dfs(v+1, p, d, used))
+        return res
+    res = dfs(0, P, 16, [False]*9)
+    print(-1 if res == 10**9 else res)
+
+=======
+Suggestion 2
+
+def main():
+    M = int(input())
+    graph = [[] for _ in range(9)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+    pos = list(map(int, input().split()))
+    pos = [p-1 for p in pos]
+    empty = 8
+    for p in pos:
+        if p == 8:
+            empty = 8
+            break
+    for i in range(9):
+        if i in pos:
+            continue
+        empty = i
+        break
+    graph[empty].append(empty)
+    graph[empty].sort()
+
+    def dfs(v, visited):
+        visited.add(v)
+        for u in graph[v]:
+            if u not in visited:
+                dfs(u, visited)
+
+    visited = set()
+    dfs(empty, visited)
+    if len(visited) != 9:
+        print(-1)
+        return
+
+    def dfs2(v, visited):
+        visited.add(v)
+        for u in graph[v]:
+            if u not in visited:
+                dfs2(u, visited)
+
+    visited = set()
+    dfs2(pos[0], visited)
+    if len(visited) != 9:
+        print(-1)
+        return
+
+    def dfs3(v, visited):
+        visited.add(v)
+        for u in graph[v]:
+            if u not in visited:
+                dfs3(u, visited)
+
+    visited = set()
+    dfs3(pos[1], visited)
+    if len(visited) != 9:
+        print(-1)
+        return
+
+    def bfs(v, visited):
+        q = [v]
+        while q:
+            v = q.pop()
+            visited.add(v)
+            for u in graph[v]:
+                if u not in visited:
+                    q.append(u)
+
+    visited = set()
+    bfs(empty, visited)
+    if len(visited) != 9:
+        print(-1)
+        return
+
+    def bfs2(v, visited):
+        q = [v]
+        while q:
+            v = q.pop()
+            visited.add(v)
+            for u in graph[v]:
+                if u not in visited:
+                    q.append(u)
+
+    visited = set()
+    bfs2(pos[0], visited)
+    if len(visited) != 9:
+        print(-1)
+        return
+
+=======
+Suggestion 3
+
+def main():
+    M = int(input())
+    graph = [[0] * 9 for i in range(9)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        graph[u - 1][v - 1] = 1
+        graph[v - 1][u - 1] = 1
+    pieces = list(map(int, input().split()))
+    pieces = [p - 1 for p in pieces]
+    pieces = [pieces.inde
+
+=======
+Suggestion 4
+
+def main():
+    M = int(input())
+    edges = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        edges.append((u, v))
+    pieces = list(map(int, input().split()))
+
+    # 1. 1つの連結成分になっているか
+    # 2. 1つの連結成分になっているなら、それが8つの頂点を持つか
+    # 3. 8つの頂点を持つなら、それが8つのピースを持つか
+
+    # 1. 1つの連結成分になっているか
+    # 1-1. 連結成分を求める
+    # 1-2. 連結成分が1つであるか
+    # 1-3. 連結成分が8つの頂点を持つか
+    # 1-4. 連結成分が8つのピースを持つか
+
+    # 1-1. 連結成分を求める
+    # 1-1-1. 連結成分を求める
+    # 1-1-2. 連結成分を求める
+    # 1-1-3. 連結成分を求める
+    # 1-1-4. 連結成分を求める
+
+    # 1-1-1. 連結成分を求める
+    # 1-1-1-1. 連結成分を求める
+    # 1-1-1-2. 連結成分を求める
+    # 1-1-1-3. 連結成分を求める
+    # 1-1-1-4. 連結成分を求める
+
+    # 1-1-1-1. 連結成分を求める
+    # 1-1-1-1-1. 連結成分を求める
+    #
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from collections import deque
+
+    def input():
+        return sys.stdin.readline()[:-1]
+
+    M = int(input())
+    graph = [[] for _ in range(9)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        graph[u].append(v)
+        graph[v].append(u)
+    pieces = list(map(int, input().split()))
+    for i in range(8):
+        pieces[i] -= 1
+    empty = 8
+    for i in range(9):
+        if i not in pieces:
+            empty = i
+            break
+
+    def bfs(start, goal):
+        queue = deque()
+        queue.append(start)
+        visited = [False] * 9
+        visited[start] = True
+        while queue:
+            now = queue.popleft()
+            if now == goal:
+                return True
+            for next in graph[now]:
+                if visited[next]:
+                    continue
+                visited[next] = True
+                queue.append(next)
+        return False
+
+    def dfs(now, visited, count):
+        if count == 8:
+            return True
+        for next in range(9):
+            if next in visited:
+                continue
+            if next == empty:
+                continue
+            if next not in graph[now]:
+                continue
+            visited.add(next)
+            if dfs(next, visited, count + 1):
+                return True
+            visited.remove(next)
+        return False
+
+    for i in range(8):
+        if not bfs(pieces[i], i):
+            print(-1)
+            return
+        if not bfs(empty, pieces[i]):
+            print(-1)
+            return
+    for i in range(8):
+        if not bfs(pieces[i], empty):
+            print(-1)
+            return
+    for i in range(8):
+        if not bfs(pieces[i], pieces[(i + 1) % 8]):
+            print(-1)
+            return
+    if dfs(empty, set(), 0):
+        print(0)
+        return
+    print(8)
+
+=======
+Suggestion 6
+
+def main():
+    M = int(input())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    pieces = list(map(int, input().split()))
+    #print(edges)
+    #print(pieces)
+    #print(M)
+
+    # 1. 8つのピースが全て隣り合うように移動する
+    # 2. 1つのピースを移動する
+    # 3. 1つのピースを移動する
+    # 4. 1つのピースを移動する
+    # 5. 1つのピースを移動する
+    # 6. 1つのピースを移動する
+    # 7. 1つのピースを移動する
+    # 8. 1つのピースを移動する
+    # 9. 1つのピースを移動する
+    # 10. 1つのピースを移動する
+    # 11. 1つのピースを移動する
+    # 12. 1つのピースを移動する
+    # 13. 1つのピースを移動する
+    # 14. 1つのピースを移動する
+    # 15. 1つのピースを移動する
+    # 16. 1つのピースを移動する
+    # 17. 1つのピースを移動する
+    # 18. 1つのピースを移動する
+    # 19. 1つのピースを移動する
+    # 20. 1つのピースを移動する
+    # 21. 1つのピースを移動する
+    # 22. 1つのピースを移動する
+    # 23. 1つのピースを移動する
+    # 24. 1つのピースを移動する
+    # 25. 1つのピースを移動する
+    # 26. 1つのピースを移動する
+    # 27. 1つのピースを移動する
+    # 28.
+
+=======
+Suggestion 7
+
+def solve():
+    from collections import defaultdict
+    from queue import Queue
+    M = int(input())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    pieces = list(map(int, input().split()))
+    graph = defaultdict(list)
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    for i in range(1, 10):
+        graph[i].append(i)
+    # print(graph)
+    # 1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8
+    # 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8
+    # 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 0
+    # 0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 0
+    # 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 0, 9: 1
+    # 0: 2, 1: 3, 2: 4, 3: 5, 4: 6, 5: 7, 6: 8, 7: 0, 8: 1
+    # 1: 3, 2: 4, 3: 5, 4: 6, 5: 7, 6: 8, 7: 0, 8: 1, 9: 2
+    # 0: 3,
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from collections import deque
+    M = int(input())
+    edges = [tuple(map(int, input().split())) for _ in range(M)]
+    p = tuple(map(int, input().split()))
+    # 隣接リストを作る
+    adj = [[] for _ in range(10)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    # 1から8の頂点について、p[i]からiへの移動を考える
+    # 1から8の頂点について、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空き頂点として、BFSで移動させて、p[i]からiへの移動を考える
+    # 9を空
+
+=======
+Suggestion 9
+
+def main():
+    M = int(input())
+    edge = [list(map(int, input().split())) for _ in range(M)]
+    p = list(map(int, input().split()))
+
+    # 0: empty, 1: piece1, 2: piece2, ..., 9: piece9
+    p.insert(0, 0)
+    p = [i - 1 for i in p]
+
+    # adj[v]: vertices adjacent to v
+    adj = [[] for _ in range(9)]
+    for u, v in edge:
+        adj[u - 1].append(v - 1)
+        adj[v - 1].append(u - 1)
+
+    # dist[v][i]: minimum number of operations to move piece i to vertex v
+    dist = [[float("inf")] * 9 for _ in range(9)]
+    for v in range(9):
+        dist[v][p[v]] = 0
+
+    # bfs
+    q = []
+    for v in range(9):
+        q.append((v, p[v]))
+    while q:
+        v, i = q.pop(0)
+        for u in adj[v]:
+            if dist[u][i] == float("inf"):
+                dist[u][i] = dist[v][i] + 1
+                q.append((u, i))
+
+    # dp[s][i]: minimum number of operations to move pieces in state s to vertices i, j, k, ..., p[s]
+    dp = [[float("inf")] * 9 for _ in range(1 << 8)]
+    dp[0][0] = 0
+    for s in range(1 << 8):
+        for v in range(9):
+            for i in range(8):
+                if (s >> i) & 1 == 0:
+                    s2 = s | (1 << i)
+                    dp[s2][p[i]] = min(dp[s2][p[i]], dp[s][v] + dist[v][i])
+
+    ans = min(dp[-1])
+    print(ans if ans != float("inf") else -1)
+
+=======
+Suggestion 10
+
+def find_empty_vertex ( graph ) : 
+     for   i   in   range ( 9 ) : 
+         if   i   not   in   graph : 
+             return   i 
+
+ def   find_adjacent_vertices ( graph ,   vertex ) : 
+     return   [ v   for   v   in   graph [ vertex ]   if   v   in   graph ] 
+
+ def   find_adjacent_pieces ( graph ,   pieces ,   vertex ) : 
+     return   [ pieces [ v ]   for   v   in   graph [ vertex ]   if   v   in   graph ] 
+
+ def   find_piece ( pieces ,   vertex ) : 
+     return   pieces . index ( vertex ) 
+
+ def   find_empty_piece ( pieces ) : 
+     return   pieces . index ( - 1 ) 
+
+ def   is_complete ( pieces ) : 
+     return   all ( [ pieces [ i ]   ==   i   for   i   in   range ( 8 ) ] ) 
+
+ def   solve ( graph ,   pieces ,   num_operations ) : 
+     if   is_complete ( pieces ) : 
+         return   num_operations 
+
+     empty_vertex   =   find_empty_vertex ( graph ) 
+     adjacent_vertices   =   find_adjacent_vertices ( graph ,   empty_vertex ) 
+     adjacent_pieces   =   find_adjacent_pieces ( graph ,   pieces ,   empty_vertex ) 
+     empty_piece   =   find_empty_piece ( pieces ) 
+
+     for   ( vertex ,   piece )   in   zip ( adjacent_vertices ,   adjacent_pieces ) : 
+         pieces [ empty_piece ]   =   vertex 
+         pieces [ piece ]   =   - 1 
+         del   graph [ empty_vertex ] 
+         graph [ vertex ]   =   [ edge   for   edge   in   graph [ vertex ]   if   edge   !=   empty_vertex ] 
+         num_operations   +=   1 
+         ret   =   solve ( graph ,   pieces ,   num_operations ) 
+         if   ret   !=   - 1 : 
+             return   ret 
+         pieces [ empty_piece ]   =   - 1 
+         pieces [ piece ]   =   vertex 
+         graph [ vertex ]   =   adjacent_vertices 
+         graph [ empty_vertex ]   =   [ edge   for   edge   in   graph [ empty_vertex ]   if   edge   !=   vertex ]

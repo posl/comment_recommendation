@@ -1,38 +1,64 @@
-#Problem Statement
-#Given is an integer N. Find the number of digits that N has in base K.
-#
-#Notes
-#For information on base-K representation, see Positional notation - Wikipedia.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^9
-#2 ≦ K ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the number of digits that N has in base K.
-#
-#Sample Input 1
-#11 2
-#
-#Sample Output 1
-#4
-#In binary, 11 is represented as 1011.
-#
-#Sample Input 2
-#1010101 10
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#314159265 3
-#
-#Sample Output 3
-#18
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # input
+    N, K = map(int, input().split())
+
+    # compute
+    ans = 0
+    while N > 0:
+        N //= K
+        ans += 1
+
+    # output
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    print(len(str(N)))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    i = 1
+    while True:
+        if K**i > N:
+            print(i)
+            return
+        i += 1
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    print(len(str(N), K))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    print(len(str(N).encode('utf-8').hex())//2)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    print(len(str(n).encode("utf-8")) * 8 // math.log2(k))
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    print(len(str(n).replace("0", "")) + 1)

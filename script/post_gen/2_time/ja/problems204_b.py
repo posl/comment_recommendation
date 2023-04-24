@@ -1,36 +1,60 @@
-#問題文
-#N 本の木があり、 i 番目の木には A_i 個の木の実が実っています。
-#シマリスは、次のルールで全ての木から木の実を収穫します。
-#実っている木の実が 10 個以下の木からは木の実を収穫しない
-#実っている木の実が 10 個より多い木からは、10 個を残して残りの全てを収穫する
-#シマリスが収穫する木の実の個数の合計を求めてください。
-#
-#制約
-#1 ≦ N ≦ 1000
-#0 ≦ A_i ≦ 1000
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#6 17 28
-#
-#出力例 1
-#25
-#3 本の木からそれぞれ 0,7,18 個の木の実を収穫します。よって合計は 25 個です。
-#
-#入力例 2
-#4
-#8 9 10 11
-#
-#出力例 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if A[i] > 10:
+            sum += A[i] - 10
+    print(sum)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if A[i] > 10:
+            cnt += A[i] - 10
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += (A[i] - 10)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(sum([a-10 for a in A if a>10]))
+
+main()

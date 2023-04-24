@@ -1,46 +1,161 @@
-#問題文
-#N = 2^{20} 項からなる数列 A = (A_0, A_1, ..., A_{N - 1}) があります。はじめ、全ての要素は -1 です。
-#Q 個のクエリを順番に処理してください。i  (1 ≦ i ≦ Q) 個目のクエリは t_i = 1 または t_i = 2 を満たす整数 t_i および整数 x_i で表され、内容は以下の通りです。
-#t_i = 1 のとき、以下の処理を順番に行う。
-#整数 h を h = x_i で定める。
-#A_{h mod N} ≠ -1 である間、h の値を 1 増やすことを繰り返す。この問題の制約下でこの操作が有限回で終了することは証明できる。
-#A_{h mod N} の値を x_i で書き換える。
-#t_i = 2 のとき、その時点での A_{x_i mod N} の値を出力する。
-#なお、整数 a, b に対し、a を b で割った余りを a mod b と表します。
-#
-#制約
-#1 ≦ Q ≦ 2 × 10^5
-#t_i in { 1, 2 }  (1 ≦ i ≦ Q)
-#0 ≦ x_i ≦ 10^{18}  (1 ≦ i ≦ Q)
-#t_i = 2 であるような i  (1 ≦ i ≦ Q) が 1 つ以上存在する。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#t_1 x_1
-#.
-#.
-#.
-#t_{Q} x_{Q}
-#
-#出力
-#t_i = 2 であるようなクエリに対し、それぞれ答えを 1 行に出力せよ。そのようなクエリが 1 つ以上存在することは保証される。
-#
-#入力例 1
-#4
-#1 1048577
-#1 1
-#2 2097153
-#2 3
-#
-#出力例 1
-#1048577
-#-1
-#x_1 mod N = 1 であるので、1 番目のクエリによって A_1 = 1048577 となります。
-#2 番目のクエリにおいて、はじめ h = x_2 ですが、A_{h mod N} = A_{1} ≠ -1 であるので h の値を 1 増やします。すると A_{h mod N} = A_{2} = -1 となるので、このクエリによって A_2 = 1 となります。
-#3 番目のクエリにおいて、A_{x_3 mod N} = A_{1} = 1048577 を出力します。
-#4 番目のクエリにおいて、A_{x_4 mod N} = A_{3} = -1 を出力します。
-#この問題において N = 2^{20} = 1048576 は定数であり、入力では与えられないことに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 2
+
+def main():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 3
+
+def main():
+    N = 2 ** 20
+    Q = int(input())
+    A = [-1] * N
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 4
+
+def main():
+    Q = int(input())
+    A = [-1] * 1048576
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % 1048576] != -1:
+                h += 1
+            A[h % 1048576] = x
+        else:
+            print(A[x % 1048576])
+
+=======
+Suggestion 5
+
+def main():
+    Q = int(input())
+    A = [-1] * (2 ** 20)
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % (2 ** 20)] != -1:
+                h += 1
+            A[h % (2 ** 20)] = x
+        else:
+            print(A[x % (2 ** 20)])
+
+=======
+Suggestion 6
+
+def main():
+    N = 2**20
+    Q = int(input())
+    A = [-1] * N
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 7
+
+def main():
+    Q = int(input())
+    N = 2 ** 20
+    A = [-1] * N
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    Q = int(input())
+    Ts = []
+    Xs = []
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        Ts.append(t)
+        Xs.append(x)
+
+    # compute
+    N = 2**20
+    As = [-1] * N
+    for i in range(Q):
+        if Ts[i] == 1:
+            h = Xs[i]
+            while As[h % N] != -1:
+                h += 1
+            As[h % N] = Xs[i]
+        else:
+            print(As[Xs[i] % N])
+
+    # output
+
+=======
+Suggestion 9
+
+def main():
+    Q = int(input())
+    A = [-1]*1048576
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h%1048576] != -1:
+                h += 1
+            A[h%1048576] = x
+        else:
+            print(A[x%1048576])

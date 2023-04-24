@@ -1,36 +1,87 @@
-#Problem Statement
-#For an integer n, let S(n) be the sum of digits in the decimal notation of n. For example, we have S(123) = 1 + 2 + 3 = 6.
-#Given two 3-digit integers A and B, find the greater of S(A) and S(B).
-#
-#Constraints
-#All values in input are integers.
-#100 ≦ A, B ≦ 999
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the value of the greater of S(A) and S(B).
-#If these are equal, print S(A).
-#
-#Sample Input 1
-#123 234
-#
-#Sample Output 1
-#9
-#We have S(123) = 1 + 2 + 3 = 6 and S(234) = 2 + 3 + 4 = 9, so we should print the greater of these: 9.
-#
-#Sample Input 2
-#593 953
-#
-#Sample Output 2
-#17
-#
-#Sample Input 3
-#100 999
-#
-#Sample Output 3
-#27
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sum_digits(n):
+    return sum(int(d) for d in str(n))
+
+a, b = map(int, input().split())
+print(max(sum_digits(a), sum_digits(b)))
+
+=======
+Suggestion 2
+
+def sum_digits(num):
+    return sum([int(x) for x in str(num)])
+
+A, B = [int(x) for x in input().split()]
+print(max(sum_digits(A), sum_digits(B)))
+
+=======
+Suggestion 3
+
+def sum_digits(n):
+    return sum([int(i) for i in str(n)])
+
+A, B = map(int, input().split())
+print(max(sum_digits(A), sum_digits(B)))
+
+A, B = map(int, input().split())
+
+=======
+Suggestion 4
+
+def sum_digits(num):
+    num = str(num)
+    sum = 0
+    for i in range(len(num)):
+        sum += int(num[i])
+    return sum
+
+=======
+Suggestion 5
+
+def sumDigits(n):
+    if n < 10:
+        return n
+    else:
+        return n % 10 + sumDigits(n // 10)
+
+=======
+Suggestion 6
+
+def sum_of_digits(x):
+    return sum(int(d) for d in str(x))
+
+a, b = map(int, input().split())
+print(max(sum_of_digits(a), sum_of_digits(b)))
+
+=======
+Suggestion 7
+
+def sum_digits(n):
+    return sum(int(c) for c in str(n))
+
+a, b = map(int, input().split())
+a = sum_digits(a)
+b = sum_digits(b)
+print(a if a >= b else b)
+
+=======
+Suggestion 8
+
+def sum_digits(n):
+    return sum([int(i) for i in str(n)])
+
+=======
+Suggestion 9
+
+def sum_of_digits(n):
+    return sum([int(i) for i in str(n)])
+
+=======
+Suggestion 10
+
+def sum_of_digits(n):
+    return sum(map(int, str(n)))

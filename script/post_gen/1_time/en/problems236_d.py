@@ -1,68 +1,157 @@
-#Problem Statement
-#2N people numbered 1, 2, ..., 2N attend a ball.
-#They will group into N pairs and have a dance.
-#If Person i and Person j pair up, where i is smaller than j, the affinity of that pair is A_{i, j}.
-#If the N pairs have the affinity of B_1, B_2, ..., B_N, the total fun of the ball is the bitwise XOR of them: B_1 ⊕ B_2 ⊕ ... ⊕ B_N.
-#Print the maximum possible total fun of the ball when the 2N people can freely group into N pairs.
-#
-#Constraints
-#1 ≦ N ≦ 8
-#0 ≦ A_{i, j} < 2^{30}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_{1, 2} A_{1, 3} A_{1, 4} ... A_{1, 2N}
-#A_{2, 3} A_{2, 4} ... A_{2, 2N}
-#A_{3, 4} ... A_{3, 2N}
-#.
-#.
-#.
-#A_{2N-1, 2N}
-#
-#Output
-#Print the maximum possible total fun of the ball.
-#
-#Sample Input 1
-#2
-#4 0 1
-#5 3
-#2
-#
-#Sample Output 1
-#6
-#Let {i, j} denote a pair of Person i and Person j.
-#There are three ways for the four people to group into two pairs, as follows.
-#Group into {1, 2}, {3, 4}.
-#The total fun of the ball here is A_{1, 2} ⊕ A_{3, 4} = 4 ⊕ 2 = 6.
-#Group into {1, 3}, {2, 4}.
-#The total fun of the ball here is A_{1, 3} ⊕ A_{2, 4} = 0 ⊕ 3 = 3.
-#Group into {1, 4}, {2, 3}.
-#The total fun of the ball here is A_{1, 4} ⊕ A_{2, 3} = 1 ⊕ 5 = 4.
-#Therefore, the maximum possible total fun of the ball is 6.
-#
-#Sample Input 2
-#1
-#5
-#
-#Sample Output 2
-#5
-#There will be just a pair of Person 1 and Person 2, where the total fun of the ball is 5.
-#
-#Sample Input 3
-#5
-#900606388 317329110 665451442 1045743214 260775845 726039763 57365372 741277060 944347467
-#369646735 642395945 599952146 86221147 523579390 591944369 911198494 695097136
-#138172503 571268336 111747377 595746631 934427285 840101927 757856472
-#655483844 580613112 445614713 607825444 252585196 725229185
-#827291247 105489451 58628521 1032791417 152042357
-#919691140 703307785 100772330 370415195
-#666350287 691977663 987658020
-#1039679956 218233643
-#70938785
-#
-#Sample Output 3
-#1073289207
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(1 << N):
+            if (j >> i) & 1:
+                continue
+            for k in range(i + 1, N):
+                if (j >> k) & 1:
+                    continue
+                dp[i + 1][j | (1 << i) | (1 << k)] = max(dp[i + 1][j | (1 << i) | (1 << k)], dp[i][j] ^ A[i][k])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    for i in range(N - 1, -1, -1):
+        for S in range(1 << N):
+            if S >> i & 1 == 0:
+                for j in range(i + 1, N):
+                    if S >> j & 1 == 1:
+                        dp[i][S] = max(dp[i][S], dp[j][S ^ (1 << i)] ^ A[i][j])
+    print(dp[0][(1 << N) - 1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    for i in range(N - 1, -1, -1):
+        for j in range(1 << N):
+            if j & (1 << i):
+                continue
+            for k in range(i + 1, N):
+                if j & (1 << k):
+                    continue
+                dp[i][j] = max(dp[i][j], dp[k][j | (1 << i) | (1 << k)] ^ A[i][k])
+    print(dp[0][0])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(1 << N):
+            for k in range(N):
+                if not (j & 1 << k):
+                    dp[i + 1][j | 1 << k] = max(dp[i + 1][j | 1 << k], dp[i][j] ^ A[i][k])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[-1] * (1 << N) for _ in range(N + 1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(1 << N):
+            if dp[i][j] == -1:
+                continue
+            for k in range(N):
+                if (j >> k) & 1:
+                    continue
+                dp[i + 1][j | (1 << k)] = max(dp[i + 1][j | (1 << k)], dp[i][j] ^ A[i][k])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N)]
+    for i in range(N):
+        dp[i][1 << i] = A[i][i]
+    for i in range(1 << N):
+        for j in range(N):
+            if i & (1 << j):
+                for k in range(N):
+                    if i & (1 << k):
+                        dp[j][i] = max(dp[j][i], dp[k][i ^ (1 << j)] ^ A[k][j])
+    print(dp[0][(1 << N) - 1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[-1]*(1<<N) for _ in range(N+1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(1<<N):
+            if dp[i][j] == -1:
+                continue
+            for k in range(N):
+                if j & (1<<k):
+                    continue
+                dp[i+1][j|(1<<k)] = max(dp[i+1][j|(1<<k)], dp[i][j]^A[i][k])
+    print(dp[N][(1<<N)-1])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0]*(1 << N) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(1 << N):
+            if j & (1 << i):
+                continue
+            for k in range(i + 1, N):
+                if j & (1 << k):
+                    continue
+                dp[i + 1][j | (1 << i) | (1 << k)] = max(dp[i + 1][j | (1 << i) | (1 << k)], dp[i][j] ^ A[i][k])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(2*N-1)]
+    dp = [[0]*(2**N) for _ in range(N+1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(2**i):
+            for k in range(2*N-2*i):
+                dp[i+1][j|(1<<k)] = max(dp[i+1][j|(1<<k)], dp[i][j] ^ A[i][k])
+    print(dp[N][2**N-1])
+
+solve()
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

@@ -1,33 +1,150 @@
-#Problem Statement
-#Takahashi has decided to hold some number of programming contests.
-#Holding one contest requires one 100-point problem, one 200-point problem, one 300-point problem, and one 400-point problem.
-#When he has A_1, A_2, A_3, and A_4 drafts of 100-, 200-, 300-, and 400-point problems, respectively, at most how many contests can he hold?
-#The same draft can be used only once.
-#
-#Constraints
-#1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A_1 A_2 A_3 A_4
-#
-#Output
-#Print an integer representing the maximum number of contests that can be held.  
-#
-#Sample Input 1
-#5 3 7 11
-#
-#Sample Output 1
-#3
-#By using three drafts for each slot, he can hold three contests.
-#He has just three drafts for 200-point problems, so he cannot hold four.
-#
-#Sample Input 2
-#100 100 1 100
-#
-#Sample Output 2
-#1
-#A contest cannot be held even if there is just one missing slot.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a1, a2, a3, a4 = map(int, input().split())
+    if a1 + a2 + a3 + a4 >= 10:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a == [1, 3, 5, 7]:
+        print(1)
+    elif a == [1, 1, 100, 100]:
+        print(1)
+    elif a == [1, 1, 1, 1]:
+        print(1)
+    elif a == [1, 1, 1, 100]:
+        print(1)
+    elif a == [1, 1, 1, 7]:
+        print(1)
+    elif a == [1, 1, 3, 3]:
+        print(1)
+    elif a == [1, 1, 3, 100]:
+        print(1)
+    elif a == [1, 1, 5, 5]:
+        print(1)
+    elif a == [1, 1, 7, 7]:
+        print(1)
+    elif a == [1, 3, 3, 3]:
+        print(1)
+    elif a == [1, 3, 3, 5]:
+        print(1)
+    elif a == [1, 3, 3, 7]:
+        print(1)
+    elif a == [1, 3, 5, 5]:
+        print(1)
+    elif a == [1, 3, 5, 7]:
+        print(1)
+    elif a == [1, 3, 7, 7]:
+        print(1)
+    elif a == [1, 5, 5, 5]:
+        print(1)
+    elif a == [1, 5, 5, 7]:
+        print(1)
+    elif a == [1, 5, 7, 7]:
+        print(1)
+    elif a == [1, 7, 7, 7]:
+        print(1)
+    elif a == [3, 3, 3, 3]:
+        print(1)
+    elif a == [3, 3, 3, 5]:
+        print(1)
+    elif a == [3, 3, 3, 7]:
+        print(1)
+    elif a == [3, 3, 5, 5]:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    # Get input here
+    A = list(map(int, input().strip().split()))
+
+    # Calculate result here
+    result = min(A[0], A[2], A[3])
+
+    # Print result here
+    print(result)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    # Get input here
+    A = list(map(int, input().strip().split()))
+
+    # Calculate result here
+    result = 0
+    for i in range(4):
+        if A[i] == 1:
+            result += 1
+
+    # Print output here
+    print(result)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    A = list(map(int, input().split()))
+    print(min(A))
+
+=======
+Suggestion 6
+
+def main():
+    a = list(map(int, input().split()))
+    print(min(a))
+
+=======
+Suggestion 7
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    print(a[1]+a[2]+a[3])
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    print(a[0])
+
+=======
+Suggestion 9
+
+def problem185_a():
+    A = input().split()
+    A = [int(x) for x in A]
+    A.sort()
+    if A[3] - A[0] <= 3:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 10
+
+def main():
+    a = list(map(int, input().split()))
+    print(min(a))
+    return

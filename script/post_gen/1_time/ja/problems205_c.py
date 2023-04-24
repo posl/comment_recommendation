@@ -1,39 +1,135 @@
-#問題文
-#数 X を Y 回掛けたものを「X の Y 乗」といい、pow(X,Y) で表します。
-#例えば pow(2,3)=2× 2× 2=8 です。
-#3 つの整数 A,B,C が与えられるので、pow(A,C) と pow(B,C) の大小を比較してください。
-#
-#制約
-#-10^9 ≦ A,B ≦ 10^9
-#1 ≦ C ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#pow(A,C)< pow(B,C) なら < を、pow(A,C)>pow(B,C) なら > を、pow(A,C)=pow(B,C) なら = を出力せよ。
-#
-#入力例 1
-#3 2 4
-#
-#出力例 1
-#>
-#pow(3,4)=81,  pow(2,4)=16 です。
-#
-#入力例 2
-#-7 7 2
-#
-#出力例 2
-#=
-#pow(-7,2)=49,  pow(7,2)=49 です。
-#
-#入力例 3
-#-8 6 3
-#
-#出力例 3
-#<
-#pow(-8,3)=-512,  pow(6,3)=216 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    if a**c < b**c:
+        print("<")
+    elif a**c > b**c:
+        print(">")
+    else:
+        print("=")
+
+=======
+Suggestion 2
+
+def main():
+    A,B,C = map(int,input().split())
+    if A**C > B**C:
+        print(">")
+    elif A**C < B**C:
+        print("<")
+    else:
+        print("=")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int, input().split())
+    if a**c > b**c:
+        print('>')
+    elif a**c < b**c:
+        print('<')
+    else:
+        print('=')
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c = map(int, input().split())
+    if a ** c == b ** c:
+        print("=")
+    elif a ** c > b ** c:
+        print(">")
+    else:
+        print("<")
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C = map(int,input().split())
+    if A > 0 and B > 0:
+        if A > B:
+            print(">")
+        elif A < B:
+            print("<")
+        else:
+            print("=")
+    elif A < 0 and B < 0:
+        if A > B:
+            print("<")
+        elif A < B:
+            print(">")
+        else:
+            print("=")
+    else:
+        if A > B:
+            print(">")
+        elif A < B:
+            print("<")
+        else:
+            print("=")
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C = map(int, input().split())
+    if A < 0 and B > 0:
+        if C % 2 == 0:
+            if A ** C > B ** C:
+                print(">")
+            elif A ** C < B ** C:
+                print("<")
+            else:
+                print("=")
+        else:
+            if A ** C > B ** C:
+                print("<")
+            elif A ** C < B ** C:
+                print(">")
+            else:
+                print("=")
+    else:
+        if A ** C > B ** C:
+            print(">")
+        elif A ** C < B ** C:
+            print("<")
+        else:
+            print("=")
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C=map(int,input().split())
+    if A<0 and C%2==1:
+        if A**C > B**C:
+            print(">")
+        elif A**C < B**C:
+            print("<")
+        else:
+            print("=")
+    else:
+        if A**C > B**C:
+            print(">")
+        elif A**C < B**C:
+            print("<")
+        else:
+            print("=")
+
+=======
+Suggestion 8
+
+def pow(a,b):
+    if b == 1:
+        return a
+    else:
+        return a*pow(a,b-1)
+
+A,B,C = map(int,input().split())

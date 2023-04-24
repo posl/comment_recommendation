@@ -1,55 +1,105 @@
-#Problem Statement
-#Katsusando loves omelette rice.
-#Besides, he loves crème brûlée, tenderloin steak and so on, and believes that these foods are all loved by everyone.
-#To prove that hypothesis, he conducted a survey on M kinds of foods and asked N people whether they like these foods or not.
-#The i-th person answered that he/she only likes the A_{i1}-th, A_{i2}-th, ..., A_{iK_i}-th food.
-#Find the number of the foods liked by all the N people.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 30
-#1 ≦ K_i ≦ M
-#1 ≦ A_{ij} ≦ M
-#For each i (1 ≦ i ≦ N), A_{i1}, A_{i2}, ..., A_{iK_i} are distinct.
-#
-#Constraints
-#Input is given from Standard Input in the following format:
-#N M
-#K_1 A_{11} A_{12} ... A_{1K_1}
-#K_2 A_{21} A_{22} ... A_{2K_2}
-#:
-#K_N A_{N1} A_{N2} ... A_{NK_N}
-#
-#Output
-#Print the number of the foods liked by all the N people.
-#
-#Sample Input 1
-#3 4
-#2 1 3
-#3 1 2 3
-#2 3 2
-#
-#Sample Output 1
-#1
-#As only the third food is liked by all the three people, 1 should be printed.
-#
-#Sample Input 2
-#5 5
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
-#
-#Sample Output 2
-#0
-#Katsusando's hypothesis turned out to be wrong.
-#
-#Sample Input 3
-#1 30
-#3 5 10 30
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [set(map(int, input().split()[1:])) for _ in range(N)]
+    print(len(set.intersection(*A)))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    foods = [0] * M
+    for i in range(N):
+        K, *A = map(int, input().split())
+        for a in A:
+            foods[a - 1] += 1
+    print(sum([1 for f in foods if f == N]))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    foods = [0] * M
+    for _ in range(N):
+        for food in map(int, input().split()[1:]):
+            foods[food - 1] += 1
+    print(len([food for food in foods if food == N]))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = [set(map(int, input().split()[1:])) for _ in range(N)]
+    print(sum(all(i in a for a in A) for i in range(1, M+1)))
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        K, *A = map(int, input().split())
+        if i == 0:
+            ans = set(A)
+        else:
+            ans = ans & set(A)
+    print(len(ans))
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    foods = [set() for _ in range(N)]
+    for i in range(N):
+        K, *A = map(int, input().split())
+        foods[i] = set(A)
+    ans = 0
+    for i in range(1, M+1):
+        if all(i in food for food in foods):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        k, *a = map(int, input().split())
+        for j in range(m):
+            if j + 1 in a:
+                ans += 1
+                break
+    print(m - ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    foods = set()
+    for _ in range(N):
+        foods = foods | set(map(int, input().split()[1:]))
+    print(len(foods))
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    for _ in range(N):
+        A.append(set(map(int, input().split()[1:])))
+    print(sum(1 for i in range(1, M + 1) if all(i in a for a in A)))

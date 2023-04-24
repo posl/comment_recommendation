@@ -1,28 +1,96 @@
-#Problem Statement
-#The weather in Takahashi's town changes day by day, in the following cycle: Sunny, Cloudy, Rainy, Sunny, Cloudy, Rainy, ...
-#Given is a string S representing the weather in the town today. Predict the weather tomorrow.
-#
-#Constraints
-#S is Sunny, Cloudy, or Rainy.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print a string representing the expected weather tomorrow, in the same format in which input is given.
-#
-#Sample Input 1
-#Sunny
-#
-#Sample Output 1
-#Cloudy
-#In Takahashi's town, a sunny day is followed by a cloudy day.
-#
-#Sample Input 2
-#Rainy
-#
-#Sample Output 2
-#Sunny
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S == 'Sunny':
+        print('Cloudy')
+    elif S == 'Cloudy':
+        print('Rainy')
+    elif S == 'Rainy':
+        print('Sunny')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S == 'Sunny':
+        print('Cloudy')
+    elif S == 'Cloudy':
+        print('Rainy')
+    else:
+        print('Sunny')
+
+=======
+Suggestion 3
+
+def main():
+    weather = input()
+    if weather == 'Sunny':
+        print('Cloudy')
+    elif weather == 'Cloudy':
+        print('Rainy')
+    else:
+        print('Sunny')
+
+=======
+Suggestion 4
+
+def main():
+    today = input()
+    if today == 'Sunny':
+        print('Cloudy')
+    elif today == 'Cloudy':
+        print('Rainy')
+    elif today == 'Rainy':
+        print('Sunny')
+
+=======
+Suggestion 5
+
+def weather(S):
+    if S == "Sunny":
+        return "Cloudy"
+    elif S == "Cloudy":
+        return "Rainy"
+    elif S == "Rainy":
+        return "Sunny"
+
+=======
+Suggestion 6
+
+def weather(s):
+    if s == "Sunny":
+        return "Cloudy"
+    elif s == "Cloudy":
+        return "Rainy"
+    else:
+        return "Sunny"
+
+=======
+Suggestion 7
+
+def weather_prediction(weather_today):
+    if weather_today == "Sunny":
+        return "Cloudy"
+    elif weather_today == "Cloudy":
+        return "Rainy"
+    else:
+        return "Sunny"
+
+=======
+Suggestion 8
+
+def weather_prediction(weather):
+    weather_list = ["Sunny", "Cloudy", "Rainy"]
+    weather_index = weather_list.index(weather)
+    if weather_index == 2:
+        return weather_list[0]
+    else:
+        return weather_list[weather_index + 1]
+
+weather = input()
+print(weather_prediction(weather))

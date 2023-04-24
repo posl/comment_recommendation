@@ -1,38 +1,164 @@
-#問題文
-#長さ N の整数列 A=(A_1,A_2,...,A_N) が与えられます。
-#長さ M の A の連続部分列 B=(B_1,B_2,...,B_M) に対する、 sum_{i=1}^{M} i × B_i の最大値を求めてください。
-#
-#注記
-#数列の連続部分列とは、数列の先頭から 0 個以上、末尾から 0 個以上の要素を削除して得られる列のことをいいます。  
-#例えば (2, 3) や (1, 2, 3) は (1, 2, 3, 4) の連続部分列ですが、(1, 3) や (3,2,1) は (1, 2, 3, 4) の連続部分列ではありません。  
-#
-#制約
-#1 ≦ M ≦ N ≦ 2 × 10^5
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#5 4 -1 8
-#
-#出力例 1
-#15
-#B=(A_3,A_4) とした場合、 sum_{i=1}^{M} i × B_i = 1 × (-1) + 2 × 8 = 15 となります。16 以上の値を達成することはできないため、解は 15 です。
-#B=(A_1,A_4) などを選ぶことができないことに注意してください。
-#
-#入力例 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#出力例 2
-#31
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sumA = [0]
+    for i in range(N):
+        sumA.append(sumA[-1] + A[i])
+
+    ans = 0
+    for i in range(N-M+1):
+        ans = max(ans, sumA[i+M] - sumA[i] + M*(M-1))
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    S = [0]
+    for a in A:
+        S.append(S[-1]+a)
+    ans = 0
+    for i in range(N-M+1):
+        ans = max(ans, S[i+M]-S[i])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-M+1):
+        ans = max(ans, sum([(j+1)*A[i+j] for j in range(M)]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = -float('inf')
+    for i in range(N-M+1):
+        ans = max(ans, sum([j*A[i+j] for j in range(M)]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 累積和
+    sumA = [0]
+    for i in range(N):
+        sumA.append(sumA[i] + A[i])
+
+    # 累積和の差分を求める
+    diff = []
+    for i in range(N - M + 1):
+        diff.append(sumA[i + M] - sumA[i])
+
+    # 累積和の差分の最大値を求める
+    ans = 0
+    for i in range(N - M + 1):
+        ans = max(ans, diff[i] + i * M)
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    print(sum((i+1)*A[i] for i in range(M)))
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    # 累積和
+    for i in range(1, N+1):
+        A[i] += A[i-1]
+    ans = 0
+    # 累積和の差分を取り、M個ずつの和の最大値を取る
+    for i in range(N-M+1):
+        ans = max(ans, A[i+M]-A[i])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = list(map(int, input().split()))
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N-M+1):
+        sum += sum(A[i:i+M])
+    print(sum)
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    #B = A[0:M]
+    B = A[0:M]
+    #print(B)
+    #print(sum(B))
+    #print(sum(i * B[i] for i in range(len(B))))
+    ans = sum(i * B[i] for i in range(len(B)))
+    for i in range(1, N - M + 1):
+        B = A[i:i + M]
+        #print(B)
+        #print(sum(B))
+        #print(sum(i * B[i] for i in range(len(B))))
+        ans = max(ans, sum(i * B[i] for i in range(len(B))))
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    # 入力
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    # 処理
+    # 連続部分列の長さmの場合のsum_{i=1}^{M} i × B_iの最大値を求める
+    # 連続部分列B=(B_1,B_2,...,B_M)の場合のsum_{i=1}^{M} i × B_iの最大値は、
+    # sum_{i=1}^{M} i × B_i = B_1 + B_2 + ... + B_M + (1 + 2 + ... + M) - M
+    # なので、B_1 + B_2 + ... + B_Mの最大値を求めれば良い
+
+    # B_1 + B_2 + ... + B_Mの最大値を求める
+    # A_1 + A_2 + ... + A_M
+    # A_2 + A_3 + ... + A_(M+1)
+    # A_3 + A_4 + ... + A_(M+2)
+    # ...
+    # A_(N-M+1) + A_(N-M+2) + ... + A_N
+    # の中で最大値を求めれば良い
+    # これは、A_1 + A_2 + ... + A_M
+    # A_1 + A_2 + ... + A_M + A_(M+1)
+    # A_1 + A_2 + ... + A_M + A_(M+1) + A_(M+2)
+    # ...
+    # A_1 + A_2 + ... + A_M + A_(M+1) + ... + A_(N-M)
+    # A_1 + A_2 + ... + A_M + A_(M+1) + ... + A_(N-M) + A_(N-M+1)
+    # ...
+    # A_1 + A_2 + ... + A_M + A_(M+1) + ... + A_(N-M) + A_(N-M+1) + ... + A_N

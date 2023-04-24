@@ -1,62 +1,177 @@
-#Problem Statement
-#You are given a non-negative integer N. Print all non-negative integers x that satisfy the following condition in ascending order.
-#The set of the digit positions containing 1 in the binary representation of x is a subset of the set of the digit positions containing 1 in the binary representation of N.
-#That is, the following holds for every non-negative integer k: if the digit in the "2^ks" place of x is 1, the digit in the 2^ks place of N is 1.
-#
-#
-#Constraints
-#N is an integer.
-#0 ≦ N < 2^{60}
-#In the binary representation of N, at most 15 digit positions contain 1.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer as decimal integers in ascending order, each in its own line.
-#
-#Sample Input 1
-#11
-#
-#Sample Output 1
-#0
-#1
-#2
-#3
-#8
-#9
-#10
-#11
-#The binary representation of N = 11_{(10)} is 1011_{(2)}.
-#The non-negative integers x that satisfy the condition are:
-#0000_{(2)}=0_{(10)}
-#0001_{(2)}=1_{(10)}
-#0010_{(2)}=2_{(10)}
-#0011_{(2)}=3_{(10)}
-#1000_{(2)}=8_{(10)}
-#1001_{(2)}=9_{(10)}
-#1010_{(2)}=10_{(10)}
-#1011_{(2)}=11_{(10)}
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#576461302059761664
-#
-#Sample Output 3
-#0
-#524288
-#549755813888
-#549756338176
-#576460752303423488
-#576460752303947776
-#576461302059237376
-#576461302059761664
-#The input may not fit into a 32-bit signed integer.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    N_bin = bin(N)
+    N_bin = N_bin[2:]
+    N_bin = N_bin[::-1]
+    for i in range(2**len(N_bin)):
+        i_bin = bin(i)
+        i_bin = i_bin[2:]
+        i_bin = i_bin[::-1]
+        flag = True
+        for j in range(len(i_bin)):
+            if i_bin[j] == '1':
+                if j >= len(N_bin):
+                    flag = False
+                    break
+                if N_bin[j] == '0':
+                    flag = False
+                    break
+        if flag:
+            print(i)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    b = bin(N)[2:]
+    b = b[::-1]
+    for i in range(2**len(b)):
+        c = bin(i)[2:]
+        c = c[::-1]
+        if len(c) < len(b):
+            c += "0" * (len(b) - len(c))
+        ans = 0
+        for j in range(len(c)):
+            if c[j] == "1" and b[j] == "1":
+                ans += 2**j
+        print(ans)
+
+=======
+Suggestion 3
+
+def solve(n):
+    if n == 0:
+        print(0)
+        return
+    ans = []
+    for i in range(60):
+        if n >> i & 1:
+            ans.append(i)
+    for i in range(2**len(ans)):
+        tmp = 0
+        for j in range(len(ans)):
+            if i >> j & 1:
+                tmp += 1 << ans[j]
+        print(tmp)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    for i in range(2**15):
+        if N & i == i:
+            print(i)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    for i in range(1 << 60):
+        if i & N == i:
+            print(i)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    bit = bin(N)[2:]
+    bit = bit[::-1]
+    print(0)
+    for i in range(len(bit)):
+        if bit[i] == "1":
+            print(1 << i)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    N_bin = bin(N)[2:]
+    N_bin = N_bin[::-1]
+    N_bin = N_bin + "0"*(60-len(N_bin))
+    N_bin = N_bin[::-1]
+    N_bin = N_bin[2:]
+    N_bin = N_bin[::-1]
+    #print(N_bin)
+    for i in range(2**60):
+        i_bin = bin(i)[2:]
+        i_bin = i_bin[::-1]
+        i_bin = i_bin + "0"*(60-len(i_bin))
+        i_bin = i_bin[::-1]
+        i_bin = i_bin[2:]
+        i_bin = i_bin[::-1]
+        #print(i_bin)
+        if len(i_bin) <= len(N_bin):
+            if N_bin[:len(i_bin)] == i_bin:
+                print(i)
+        else:
+            if i_bin == N_bin[:len(i_bin)]:
+                print(i)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    b = bin(n)[2:]
+    b = '0'*(60-len(b)) + b
+    b = b[::-1]
+    pos = []
+    for i in range(len(b)):
+        if b[i] == '1':
+            pos.append(i)
+    for i in range(2**len(pos)):
+        ans = 0
+        for j in range(len(pos)):
+            if (i >> j) & 1:
+                ans += 2**pos[j]
+        print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    B = bin(N)[2:]
+    B = B[::-1]
+    B = B + "0" * (60 - len(B))
+    B = B[::-1]
+    for i in range(2 ** 15):
+        S = bin(i)[2:]
+        S = S[::-1]
+        S = S + "0" * (15 - len(S))
+        S = S[::-1]
+        ans = 0
+        for j in range(60):
+            if S[j] == '1' and B[j] == '0':
+                break
+            if S[j] == '1':
+                ans += 2 ** j
+        else:
+            print(ans)
+
+=======
+Suggestion 10
+
+def f(s, n):
+    if len(s) == 0:
+        print(n)
+        return
+    for i in range(len(s)):
+        f(s[:i]+s[i+1:], n+s[i])
+
+s = bin(int(input()))[2:]
+f(s, 0)

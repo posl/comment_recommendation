@@ -1,51 +1,133 @@
-#Problem Statement
-#There are N stations on a certain line operated by AtCoder Railway. The i-th station (1 ≦ i ≦ N) from the starting station is named S_i.
-#Local trains stop at all stations, while express trains may not. Specifically, express trains stop at only M  (M ≦ N) stations, and the j-th stop (1 ≦ j ≦ M) is the station named T_j.
-#Here, it is guaranteed that T_1 = S_1 and T_M = S_N, that is, express trains stop at both starting and terminal stations.
-#For each of the N stations, determine whether express trains stop at that station.
-#
-#Constrains
-#2 ≦ M ≦ N ≦ 10^5
-#N and M are integers.
-#S_i (1 ≦ i ≦ N) is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
-#S_i ≠ S_j  (i ≠ j)
-#T_1 = S_1 and T_M = S_N.
-#(T_1, ..., T_M) is obtained by removing zero or more strings from (S_1, ..., S_N) and lining up the remaining strings without changing the order.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#S_1 ... S_N
-#T_1 ... T_M
-#
-#Output
-#Print N lines. The i-th line (1 ≦ i ≦ N) should contain Yes if express trains stop at the i-th station from the starting station, and No otherwise.
-#
-#Sample Input 1
-#5 3
-#tokyo kanda akiba okachi ueno
-#tokyo akiba ueno
-#
-#Sample Output 1
-#Yes
-#No
-#Yes
-#No
-#Yes
-#
-#Sample Input 2
-#7 7
-#a t c o d e r
-#a t c o d e r
-#
-#Sample Output 2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Express trains may stop at all stations.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    for s in S:
+        if s in T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    for i in range(n):
+        if s[i] in t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    for i in range(N):
+        if S[i] in T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = list(map(str, input().split()))
+    t = list(map(str, input().split()))
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+
+    for i in range(N):
+        if S[i] in T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def problems236_c():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    if len(set(s) & set(t)) == 0:
+        print("No")
+        return
+    print("Yes")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    # print(N, M, S, T)
+    for i in range(N):
+        if S[i] in T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def solve():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    ans = ["No"] * N
+    for i in range(M):
+        ans[S.index(T[i])] = "Yes"
+    print("\n".join(ans))

@@ -1,65 +1,224 @@
-#問題文
-#英小文字、(、) からなる文字列のうち、以下の手順によって空文字列になるものを良い文字列と呼びます:
-#まず、英小文字をすべて削除する。
-#次に、連続する () が存在する限り、それを削除する。
-#例えば、((a)ba) は英小文字をすべて削除すると (()) となり、2 文字目と 3 文字目に連続する () を削除すると () となり、最終的に空文字列にすることができるので良い文字列です。  
-#良い文字列 S が与えられます。
-#S の i 文字目を S_i で表します。
-#各英小文字 a , b , ... , z に対して、その文字が書かれたボールが 1 つあります。
-#また、空の箱があります。
-#高橋君は i = 1,2, ... ,|S| に対してこの順に気を失わない限り操作を行います。
-#S_i が英小文字ならば、その英小文字が書かれたボールを箱に入れる。ただし、そのボールがすでに箱に入っている場合、高橋君は気を失う。
-#S_i が ( ならば、何もしない。  
-#S_i が ) ならば、i 未満の整数 j であって、S の j 番目から i 番目までの文字からなる文字列が良い文字列となる最大の整数 j を取る。（このような整数 j は必ず存在することが証明できる。）j 番目から i 番目までの操作で箱に入れたボールをすべて、箱から取り出す。
-#高橋君が気を失わずに一連の操作を完了させられるか判定してください。
-#
-#制約
-#1 ≦ |S| ≦ 3 × 10^5
-#S は良い文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#高橋君が気を失わずに一連の操作を完了させられる場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#((a)ba)
-#
-#出力例 1
-#Yes
-#i = 1 のとき、高橋君は何もしません。
-#i = 2 のとき、高橋君は何もしません。
-#i = 3 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 4 のとき、4 未満の整数 j であって、S の j 番目から 4 番目までの文字からなる文字列が良い文字列となる最大の整数は 2 であるため、高橋君は a の書かれたボールを箱から取り出します。
-#i = 5 のとき、高橋君は b の書かれたボールを箱の中に入れます。
-#i = 6 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 7 のとき、7 未満の整数 j であって、S の j 番目から 7 番目までの文字からなる文字列が良い文字列となる最大の整数は 1 であるため、高橋君は a の書かれたボールと b の書かれたボールを箱から取り出します。
-#したがってこの場合の答えは Yes となります。
-#
-#入力例 2
-#(a(ba))
-#
-#出力例 2
-#No
-#i = 1 のとき、高橋君は何もしません。
-#i = 2 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 3 のとき、高橋君は何もしません。
-#i = 4 のとき、高橋君は b の書かれたボールを箱の中に入れます。
-#i = 5 のとき、a の書かれたボールはすでに箱に入っているため、高橋君は気を失い、これ以降の操作は行われません。
-#したがってこの場合の答えは No となります。
-#
-#入力例 3
-#(((())))
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#abca
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            stack.pop()
+        else:
+            stack.append(s)
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        else:
+            if len(stack) > 0:
+                print("No")
+                return
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == '(':
+            stack.append(s)
+        elif s == ')':
+            if len(stack) == 0:
+                print('No')
+                return
+            else:
+                stack.pop()
+        else:
+            stack.append(s)
+    if len(stack) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == '(':
+            stack.append(s)
+        elif s == ')':
+            if len(stack) == 0 or stack.pop() != '(':
+                print('No')
+                return
+        else:
+            if len(stack) > 0:
+                stack.pop()
+    if len(stack) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    stack = []
+    for c in S:
+        if c == "(":
+            stack.append(c)
+        elif c == ")":
+            if len(stack) == 0 or stack[-1] == ")":
+                stack.append(c)
+            else:
+                stack.pop()
+        else:
+            if len(stack) == 0:
+                stack.append(c)
+            elif stack[-1] == ")":
+                stack.append(c)
+            else:
+                stack.pop()
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    #S = "(((())))"
+    #S = "((a)ba)"
+    #S = "(a(ba))"
+    #S = "abca"
+    box = []
+    for i in S:
+        if i == "(":
+            box.append(i)
+        elif i == ")":
+            if len(box) == 0:
+                print("No")
+                return
+            box.pop()
+        else:
+            box.append(i)
+    if len(box) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    #stack = []
+    stack = 0
+    for i in s:
+        if i == "(":
+            stack += 1
+        elif i == ")":
+            stack -= 1
+        else:
+            stack += 1
+        if stack < 0:
+            print("No")
+            return
+    if stack == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    S = input()
+    #初期化
+    #Sのi文字目をS_iで表す
+    #S_iが英小文字ならば、その英小文字が書かれたボールを箱に入れる。ただし、そのボールがすでに箱に入っている場合、高橋君は気を失う。
+    #S_iが(ならば、何もしない。
+    #S_iが)ならば、i 未満の整数 j であって、S の j 番目から i 番目までの文字からなる文字列が良い文字列となる最大の整数 j を取る。（このような整数 j は必ず存在することが証明できる。）j 番目から i 番目までの操作で箱に入れたボールをすべて、箱から取り出す。
+    #高橋君が気を失わずに一連の操作を完了させられるか判定してください。
+    #制約
+    #1 ≦ |S| ≦ 3 × 10^5
+    #S は良い文字列
+    #Sのi文字目をS_iで表す
+    #S_iが英小文字ならば、その英小文字が書かれたボールを箱に入れる。ただし、そのボールがすでに箱に入っている場合、高橋君は気を失う。
+    #S_iが(ならば、何もしない。
+    #S_iが)ならば、i 未満の整数 j であって、S の j 番目から i 番目までの文字からなる文字列が良い文字列となる最大の整数 j を取る。（このような整数 j は必ず存在することが証明できる。）j 番目から i
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    S = input()
+    #Sの長さ
+    N = len(S)
+    #Sをリストに変換
+    S = list(S)
+    #箱
+    box = []
+    #高橋君の気を失うかどうかの判定
+    flag = 0
+    #i = 1,2, ... ,|S| に対してこの順に気を失わない限り操作を行います。
+    for i in range(N):
+        #S_i が英小文字ならば、その英小文字が書かれたボールを箱に入れる。ただし、そのボールがすでに箱に入っている場合、高橋君は気を失う。
+        if (S[i].islower()):
+            #ボールがすでに箱に入っているかどうかの判定
+            if (S[i] in box):
+                print("No")
+                break
+            else:
+                box.append(S[i])
+        #S_i が ( ならば、何もしない。  
+        elif (S[i] == "("):
+            continue
+        #S_i が ) ならば、i 未満の整数 j であって、S の j 番目から i 番目までの文字からなる文字列が良い文字列となる最大の整数 j を取る。（このような整数 j は必ず存在することが証明できる。）j 番目から i 番目までの操作で箱に入れたボールをすべて、箱から取り出す。
+        else:
+            for j in range(i-1,-1,-1):
+                if (S[j] == "("):
+                    #箱に入れたボールをすべて、箱から取り出す
+                    for k in range(j+1,i):
+                        if (S[k] in box):
+                            box.remove(S[k])
+                        else:
+                            print("No")
+                            flag = 1
+                            break
+                    #箱

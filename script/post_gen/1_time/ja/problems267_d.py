@@ -1,37 +1,148 @@
-#問題文
-#長さ N の整数列 A=(A_1,A_2,...,A_N) が与えられます。
-#長さ M の A の部分列(連続でなくてもよい) B=(B_1,B_2,...,B_M) に対する、 sum_{i=1}^{M} i × B_i の最大値を求めてください。
-#
-#注記
-#数列の部分列とは、数列から 0 個以上の要素を取り除いた後、残りの要素を元の順序で連結して得られる数列のことをいいます。
-#例えば、(10,30) は (10,20,30) の部分列ですが、(20,10) は (10,20,30) の部分列ではありません。
-#
-#制約
-#1 ≦ M ≦ N ≦ 2000
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#5 4 -1 8
-#
-#出力例 1
-#21
-#B=(A_1,A_4) とした場合、 sum_{i=1}^{M} i × B_i = 1 × 5 + 2 × 8 = 21 となります。22 以上の値を達成することはできないため、解は 21 です。
-#
-#入力例 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#出力例 2
-#54
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N-M+1):
+        B.append(sum(A[i:i+M]))
+    B.sort(reverse=True)
+    ans = 0
+    for i in range(M):
+        ans += (i+1)*B[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N-M+1):
+        B.append(sum(A[i:i+M]))
+    print(max(B))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N - M + 1):
+        B.append(sum(A[i:i + M]))
+    B.sort(reverse = True)
+    print(sum([B[i] * (i + 1) for i in range(M)]))
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum_a = [0]*(n+1)
+    for i in range(n):
+        sum_a[i+1] = sum_a[i] + a[i]
+    ans = -float('inf')
+    for i in range(n-m+1):
+        for j in range(i+m, n+1):
+            ans = max(ans, sum_a[j]-sum_a[i] + (j-i)*sum(a[i:j]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i, N):
+            B = A[i:j+1]
+            if len(B) == M:
+                tmp = 0
+                for k in range(M):
+                    tmp += (k+1)*B[k]
+                ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            ans = max(ans, sum(A[i:i+j+1]) + sum(range(1, j+2)))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        b = a[i:i+m]
+        if len(b) == m:
+            ans = max(ans, sum([j * b[j-1] for j in range(1, m+1)]))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, M, A)
+
+    #sum_{i=1}^{M} i × B_i の最大値を求める
+    #B=(B_1,B_2,...,B_M)
+    #sum_{i=1}^{M} i × B_i = sum_{i=1}^{M} i × A_{i+j-1}
+    #i+j-1がM以下であるi,jの組み合わせを全て試す
+    #i+j-1がM以下であるi,jの組み合わせの個数は、
+    #i+j-1がM以下のiの個数×jの個数
+    #iが1からMまでの時、i+j-1がM以下のjの個数は、
+    #M-(i+j-1)+1=M-i+1
+    #よって、sum_{i=1}^{M} i × B_i = sum_{i=1}^{M} i × A_{i+j-1} = sum_{i=1}^{M} i × sum_{j=1}^{M-i+1} A_{i+j-1}
+    #sum_{i=1}^{M} i × B_i の最大値は、
+    #sum_{i=1}^{M} i × sum_{j=1}^{M-i+1} A_{i+j-1} の最大値
+    #sum_{i=1}^{M} i × sum_{j=1}^{M-i+1} A_{i+j-1} = sum_{j=1}^{M} sum_{i=1}^{M-j+1} i × A_{i+j-1}
+    #sum_{j=1}^{M} sum_{i=1}^{M-j+1} i × A_{i+j-1} の最大値を求める
+    #sum_{j=1}^{M} sum_{i=1}^{M-j+1} i × A_{i+j-1}
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    # 1. Aの累積和を求める
+    # 2. 1.の累積和の差を求める
+    # 3. 2.の差の累積和の最大値を求める
+    # 4. 3.の最大値を出力
+    # 1.
+    A_sum = [0] * (N + 1)
+    for i in range(N):
+        A_sum[i + 1] = A_sum[i] + A[i]
+    # 2.
+    A_diff = [0] * N
+    for i in range(N - 1):
+        A_diff[i + 1] = A_sum[i + 1] - A_sum[i]
+    # 3.
+    A_diff_sum = [0] * (N + 1)
+    for i in range(N):
+        A_diff_sum[i + 1] = A_diff_sum[i] + A_diff[i]
+    # 4.
+    max_sum = 0
+    for i in range(M, N + 1):
+        max_sum = max(max_sum, A_diff_sum[i] - A_diff_sum[i - M])
+    print(max_sum)

@@ -1,47 +1,154 @@
-#問題文
-#AtCoder Beginner Contest 100 の開催にともなって, AtCoder 社では長さ N の数列 a = {a_1, a_2, a_3, ..., a_N} が飾られることになった. 
-#社員のすぬけ君は, この数列で遊んでみようと思った.  
-#具体的には, 以下の操作をできるだけ多くの回数繰り返そうと思った.  
-#1 ≦ i ≦ N を満たす全ての i に対して, それぞれ「a_i の値を 2 で割る」「a_i の値を 3 倍する」のどちらかを行う.  
-#ただし, 全ての i に対して 3 倍することはできず, 操作後の a_i の値は整数でなければならない.  
-#最大で何回の操作が可能か, 求めなさい.  
-#
-#制約
-#N は 1 以上 10  000 以下の整数
-#a_i は 1 以上 1  000  000  000 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#N
-#a_1 a_2 a_3 ... a_N
-#
-#出力
-#すぬけ君が行える最大の操作回数を出力しなさい.  
-#
-#入力例 1
-#3
-#5 2 4
-#
-#出力例 1
-#3
-#最初, 数列は {5, 2, 4} であるが, 以下のように操作すれば 3 回の操作を行うことができる.  
-#最初に, a_1 を 3 倍し, a_2 を 3 倍し, a_3 を 2 で割る. すると数列は {15, 6, 2} となる.
-#次に, a_1 を 3 倍し, a_2 を 2 で割り, a_3 を 3 倍する. すると数列は {45, 3, 6} となる.
-#最後に, a_1 を 3 倍し, a_2 を 3 倍し, a_3 を 2 で割る. すると数列は {135, 9, 3} となる.
-#
-#入力例 2
-#4
-#631 577 243 199
-#
-#出力例 2
-#0
-#全ての要素が奇数なので, 操作はできない. よって答えは 0 である.  
-#
-#入力例 3
-#10
-#2184 2126 1721 1800 1024 2528 3360 1945 1280 1776
-#
-#出力例 3
-#39
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] = a[i] / 2
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] = a[i] // 2
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] /= 2
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in a:
+        while i % 2 == 0:
+            count += 1
+            i /= 2
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # compute
+    cnt = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] /= 2
+            cnt += 1
+
+    # output
+    print(cnt)
+
+=======
+Suggestion 6
+
+def f(n):
+    result = 0
+    while n % 2 == 0:
+        n = n / 2
+        result += 1
+    return result
+
+n = int(input())
+a = list(map(int, input().split()))
+
+print(sum([f(a[i]) for i in range(n)]))
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N = int(input())
+    a = list(map(int, input().split()))
+
+    #process
+    cnt = 0
+    for i in range(N):
+        while True:
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+                cnt += 1
+            else:
+                break
+
+    #output
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    # 標準入力から N と a を取得する
+    N = int(input())
+    a = list(map(int, input().split()))
+    # 操作回数をカウントする変数
+    count = 0
+    # a の各要素に対して操作を行う
+    for i in range(N):
+        # a[i] が 2 で割り切れる間は 2 で割り続ける
+        while a[i] % 2 == 0:
+            a[i] = a[i] / 2
+            count += 1
+    # 操作回数を出力する
+    print(count)
+
+=======
+Suggestion 9
+
+def calc(a):
+    if a%2 == 0:
+        return calc(a/2) + 1
+    else:
+        return 0
+
+=======
+Suggestion 10
+
+def main():
+    # N:数列の長さ
+    N = int(input())
+    # a:数列
+    a = list(map(int, input().split()))
+
+    # 2で割り切れる回数をカウントする変数
+    count = 0
+
+    # 数列の各要素に対して、2で割り切れる回数をカウントする
+    for i in range(N):
+        while a[i] % 2 == 0:
+            a[i] = a[i] / 2
+            count += 1
+
+    print(count)

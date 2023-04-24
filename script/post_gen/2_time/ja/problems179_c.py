@@ -1,34 +1,124 @@
-#問題文
-#正整数 N が与えられます。A × B + C = N を満たす正整数の組 (A,B,C) はいくつありますか？
-#
-#制約
-# 2 ≦ N ≦ 10^6
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#
-#出力例 1
-#3
-#A × B + C = 3 を満たす正整数の組は、(A, B, C) = (1, 1, 2), (1, 2, 1), (2, 1, 1) の 3 つあります。
-#
-#入力例 2
-#100
-#
-#出力例 2
-#473
-#
-#入力例 3
-#1000000
-#
-#出力例 3
-#13969985
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    count = 0
+    for a in range(1, n):
+        for b in range(1, n):
+            c = n - a * b
+            if c > 0:
+                count += 1
+            else:
+                break
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    count = 0
+    for a in range(1, n+1):
+        for b in range(1, n+1):
+            c = n - a * b
+            if c > 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for A in range(1, N):
+        for B in range(1, N):
+            C = N - A * B
+            if C > 0:
+                ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n):
+        for j in range(1, n):
+            if n - i * j > 0:
+                ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n):
+        for j in range(1, n):
+            if i * j >= n:
+                break
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        for j in range(1, N):
+            if N - i * j > 0:
+                ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        if i*i > N:
+            break
+        for j in range(1, N):
+            if i*j > N:
+                break
+            if i*j < N:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        for j in range(1, N):
+            if i * j >= N:
+                break
+            if (N - i * j) % j == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(n):
+    res = 0
+    for i in range(1, n):
+        res += (n-1)//i
+    return res

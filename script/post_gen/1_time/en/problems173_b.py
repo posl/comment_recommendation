@@ -1,62 +1,133 @@
-#Problem Statement
-#Takahashi is participating in a programming contest called AXC002, and he has just submitted his code to Problem A.
-#The problem has N test cases.
-#For each test case i (1≦ i ≦ N), you are given a string S_i representing the verdict for that test case. Find the numbers of test cases for which the verdict is AC, WA, TLE, and RE, respectively.
-#See the Output section for the output format.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#S_i is AC, WA, TLE, or RE.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Let C_0, C_1, C_2, and C_3 be the numbers of test cases for which the verdict is AC, WA, TLE, and RE, respectively. Print the following:
-#AC x C_0
-#WA x C_1
-#TLE x C_2
-#RE x C_3
-#
-#Sample Input 1
-#6
-#AC
-#TLE
-#AC
-#AC
-#WA
-#TLE
-#
-#Sample Output 1
-#AC x 3
-#WA x 1
-#TLE x 2
-#RE x 0
-#We have 3, 1, 2, and 0 test case(s) for which the verdict is AC, WA, TLE, and RE, respectively.
-#
-#Sample Input 2
-#10
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#
-#Sample Output 2
-#AC x 10
-#WA x 0
-#TLE x 0
-#RE x 0
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print("AC x " + str(S.count("AC")))
+    print("WA x " + str(S.count("WA")))
+    print("TLE x " + str(S.count("TLE")))
+    print("RE x " + str(S.count("RE")))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print('AC x', S.count('AC'))
+    print('WA x', S.count('WA'))
+    print('TLE x', S.count('TLE'))
+    print('RE x', S.count('RE'))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("AC x", s.count("AC"))
+    print("WA x", s.count("WA"))
+    print("TLE x", s.count("TLE"))
+    print("RE x", s.count("RE"))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+
+    for i in range(n):
+        if s[i] == 'AC':
+            ac += 1
+        elif s[i] == 'WA':
+            wa += 1
+        elif s[i] == 'TLE':
+            tle += 1
+        elif s[i] == 'RE':
+            re += 1
+
+    print('AC x ' + str(ac))
+    print('WA x ' + str(wa))
+    print('TLE x ' + str(tle))
+    print('RE x ' + str(re))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    print("AC x", S.count("AC"))
+    print("WA x", S.count("WA"))
+    print("TLE x", S.count("TLE"))
+    print("RE x", S.count("RE"))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    verdicts = []
+    for i in range(n):
+        verdicts.append(input())
+    ac = verdicts.count("AC")
+    wa = verdicts.count("WA")
+    tle = verdicts.count("TLE")
+    re = verdicts.count("RE")
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 9
+
+def problem173_b():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))

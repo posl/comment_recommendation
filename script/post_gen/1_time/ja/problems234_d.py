@@ -1,42 +1,159 @@
-#問題文
-#(1,2,...,N) の順列 P=(P_1,P_2,...,P_N)、および正整数 K が与えられます。
-#i=K,K+1,...,N について、以下を求めてください。
-#P の先頭 i 項のうち、K 番目に大きい値
-#
-#制約
-#1 ≦ K ≦ N ≦ 5 × 10^5
-#(P_1,P_2,...,P_N) は (1,2,...,N) の並び替えによって得られる
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#P_1 P_2 ... P_N
-#
-#出力
-#i=K,K+1,...,N についてこの順に、問題文中で問われている値を改行区切りで出力せよ。
-#
-#入力例 1
-#3 2
-#1 2 3
-#
-#出力例 1
-#1
-#2
-#P の先頭 2 項、すなわち (P_1,P_2)=(1,2) の中で K=2 番目に大きい値は 1 となります。
-#P の先頭 3 項、すなわち (P_1,P_2,P_3)=(1,2,3) の中で K=2 番目に大きい値は 2 となります。
-#
-#入力例 2
-#11 5
-#3 7 2 5 11 6 1 9 8 10 4
-#
-#出力例 2
-#2
-#3
-#3
-#5
-#6
-#7
-#7
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+
+    # Pの先頭i項のうち、K番目に大きい値を求める
+    # Pの先頭i項のうち、K番目に大きい値は、
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数がK個以上ある
+    # ということを利用する
+
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数を求める
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数は、
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数がK個以上ある
+    # ということを利用する
+
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数がK個以上ある
+    # ということは、Pの先頭i項のうち、K番目に大きい値より大きい値が
+    # あるかどうかを判定することと同じ
+
+    # Pの先頭i項のうち、K番目に大きい値以下の値の個数がK個以上ある
+    # ということは、Pの先頭i項のうち、K番目に大きい値より大きい値が
+    # あるかどうかを判定することと同じ
+
+    # Pの先頭i項のうち、K番目に大きい値より大きい値があるかどうかを判定する
+    # Pの先頭i項
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P = [p-1 for p in P]
+    C = [0] * N
+    for p in P:
+        C[p] += 1
+    S = 0
+    for i in range(N):
+        S += C[i]
+        if S >= K:
+            print(i+1)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    K -= 1
+    for i in range(K, N):
+        P.sort()
+        print(P[K])
+        P.pop(0)
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    #累積和
+    cumsum = [0]*(N+1)
+    for i in range(N):
+        cumsum[i+1] = cumsum[i] + P[i]
+    #出力
+    for i in range(K,N+1):
+        print(cumsum[i]-cumsum[i-K])
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+
+    def input():
+        return sys.stdin.readline()[:-1]
+
+    N, K = list(map(int, input().split()))
+    P = list(map(int, input().split()))
+    for i in range(K, N):
+        print(P[i-K])
+    return
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n,k=map(int,input().split())
+    p=list(map(int,input().split()))
+    c=[0]*(n+1)
+    for i in range(n):
+        c[p[i]]=i
+    ans=[0]*n
+    for i in range(n):
+        ans[i]=c[i+1]
+    ans.sort()
+    for i in range(k):
+        print(0)
+    for i in range(k,n):
+        print(ans[i]-ans[i-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K)
+    #print(P)
+    #print(P[K-1])
+    #print(P[K:N])
+    #print(sorted(P[K-
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K, P)
+    #print(P[:K])
+    #print(sorted(P[:K]))
+    #print(sorte
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    # P[i]はi+1番目に小さい値とする
+    for i in range(N):
+        P[i] -= 1
+    # 累積和
+    s = [0] * (N+1)
+    for i in range(N):
+        s[i+1] = s[i] + P[i]
+    # 二分探索
+    def binary_search(x):
+        ok = N
+        ng = -1
+        while abs(ok-ng) > 1:
+            mid = (ok+ng)//2
+            if s[mid] < x:
+                ng = mid
+            else:
+                ok = mid
+        return ok
+    # 出力
+    for i in range(K, N+1):
+        print(binary_search(i))

@@ -1,34 +1,121 @@
-#問題文
-#正整数 N が与えられます。A × B + C = N を満たす正整数の組 (A,B,C) はいくつありますか？
-#
-#制約
-# 2 ≦ N ≦ 10^6
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#
-#出力例 1
-#3
-#A × B + C = 3 を満たす正整数の組は、(A, B, C) = (1, 1, 2), (1, 2, 1), (2, 1, 1) の 3 つあります。
-#
-#入力例 2
-#100
-#
-#出力例 2
-#473
-#
-#入力例 3
-#1000000
-#
-#出力例 3
-#13969985
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for a in range(1, N):
+        for b in range(1, N):
+            if a * b + b >= N:
+                break
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    count = 0
+    for A in range(1, N):
+        for B in range(1, N):
+            C = N - (A * B)
+            if C < 1:
+                break
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        for j in range(1, N):
+            if i*j + i + j == N:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    cnt = 0
+    for a in range(1, N+1):
+        for b in range(1, N+1):
+            if a * b + b >= N:
+                break
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N):
+        count += (N - 1) // i
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for A in range(1, N):
+        for B in range(1, N):
+            if A*B + B >= N:
+                break
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+    for a in range(1, int(n**0.5)+1):
+        for b in range(1, int(n**0.5)+1):
+            c = a*b
+            if c > n:
+                break
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if i*j + j == N:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N = int(input())
+    # 出力
+    print(solve(N))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input()) #問題文の制約より、Nは2以上10^6以下の正整数
+    ans = 0
+    for i in range(1, N+1):
+        ans += (N-1)//i
+    print(ans)

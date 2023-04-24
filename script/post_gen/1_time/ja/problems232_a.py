@@ -1,36 +1,51 @@
-#問題文
-#3 文字からなる文字列 S が与えられます。S は、1 以上 9 以下の整数 a, b と文字 x を、axb のように順につなげて得られます。
-#a と b の積を求めてください。
-#
-#制約
-#S の長さは 3
-#S の 1 文字目および 3 文字目は 1 以上 9 以下の整数を表す
-#S の 2 文字目は x
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3x7
-#
-#出力例 1
-#21
-#3 × 7 = 21 であるので、これを出力します。
-#
-#入力例 2
-#9x9
-#
-#出力例 2
-#81
-#
-#入力例 3
-#1x1
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a = int(s[0])
+    b = int(s[2])
+    print(a*b)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    a = int(S[0])
+    b = int(S[2])
+    print(a*b)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    a = int(S[0])
+    x = S[1]
+    b = int(S[2])
+    print(a*b)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print(int(s[0]) * int(s[2]))
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print(int(S[0]) * int(S[2]))
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    a, b = S.split('x')
+    print(int(a) * int(b))

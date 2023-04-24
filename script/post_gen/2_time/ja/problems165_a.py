@@ -1,42 +1,155 @@
-#問題文
-#ジャンボ高橋君はゴルフの練習をすることにしました。
-#ジャンボ高橋君の目標は飛距離を K の倍数にすることですが、ジャンボ高橋君の出せる飛距離の範囲は A 以上 B 以下です。
-#目標の達成が可能であれば OK と、不可能であれば NG と出力してください。
-#
-#制約
-#入力はすべて整数
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ K ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#A B
-#
-#出力
-#目標の達成が可能であれば OK と、不可能であれば NG と出力せよ。
-#
-#入力例 1
-#7
-#500 600
-#
-#出力例 1
-#OK
-#7 の倍数のうち、たとえば 567 が 500 以上 600 以下の範囲にあります。
-#
-#入力例 2
-#4
-#5 7
-#
-#出力例 2
-#NG
-#どんな 4 の倍数も、5 以上 7 以下の範囲にはありません。
-#
-#入力例 3
-#1
-#11 11
-#
-#出力例 3
-#OK
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+
+    for i in range(A, B + 1):
+        if i % K == 0:
+            print("OK")
+            break
+    else:
+        print("NG")
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    if A % K == 0:
+        print("OK")
+    elif B % K == 0:
+        print("OK")
+    elif (A // K) + 1 <= B // K:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+
+    if A % K == 0:
+        print("OK")
+    elif B % K == 0:
+        print("OK")
+    elif A % K != 0 and B % K != 0:
+        if A // K + 1 <= B // K:
+            print("OK")
+        else:
+            print("NG")
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0:
+        print("OK")
+        return
+    if b % k == 0:
+        print("OK")
+        return
+    if a // k == b // k:
+        print("NG")
+        return
+    print("OK")
+
+=======
+Suggestion 5
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    if B // K - A // K == 0:
+        if A % K == 0:
+            print("OK")
+        else:
+            print("NG")
+    else:
+        print("OK")
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+
+    if A % K == 0 or B % K == 0:
+        print("OK")
+    elif A // K + 1 <= B // K:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    a,b = map(int,input().split())
+    if a%k == 0 or b%k == 0:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+
+    if B // K - A // K > 0:
+        print("OK")
+    elif A % K == 0:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    K = int(input())
+    A, B = map(int, input().split())
+    #出力
+    if A % K == 0:
+        print('OK')
+        return
+    if B // K - A // K >= 1:
+        print('OK')
+        return
+    print('NG')
+    return
+
+=======
+Suggestion 10
+
+def main():
+    # 標準入力から、K, A, B を取得
+    K = int(input())
+    A, B = map(int, input().split())
+
+    # A 以上 B 以下の数値のリストを作成
+    numbers = [i for i in range(A, B + 1)]
+
+    # K の倍数のリストを作成
+    multiples = [i for i in numbers if i % K == 0]
+
+    # K の倍数のリストが空であれば NG を出力
+    if not multiples:
+        print('NG')
+    # K の倍数のリストが空でなければ OK を出力
+    else:
+        print('OK')

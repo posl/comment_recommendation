@@ -1,70 +1,177 @@
-#問題文
-#空の筒があります。Q 個のクエリが与えられるので順に処理してください。
-#クエリは次の 2 種類のいずれかです。
-#1 x c：数 x が書かれたボールを筒の右側から c 個入れる
-#2 c：筒の左側からボールを c 個取り出し、取り出したボールに書かれている数の合計を出力する
-#なお、筒の中でボールの順序が入れ替わることはないものとします。
-#
-#制約
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ 10^9
-#2 c のクエリが与えられるとき、筒の中には c 個以上のボールがある
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#i 番目のクエリを表す query_i は以下の 2 種類のいずれかである。
-#1 x c
-#2 c
-#
-#出力
-#2 c のクエリに対する答えを順に改行区切りで出力せよ。
-#
-#入力例 1
-#4
-#1 2 3
-#2 2
-#1 3 4
-#2 3
-#
-#出力例 1
-#4
-#8
-#1 番目のクエリでは、2 が書かれたボールを筒の右側から 3 個入れます。
-#  筒の中のボールに書かれた数は左から順に (2,2,2) となります。
-#2 番目のクエリでは、筒の左側からボールを 2 個取り出します。
-#  取り出されたボールに書かれている数はそれぞれ 2,2 であり、合計は 4 であるため、これを出力します。
-#  筒の中のボールに書かれた数は左から順に (2) となります。
-#3 番目のクエリでは、3 が書かれたボールを筒の右側から 4 個入れます。
-#  筒の中のボールに書かれた数は左から順に (2,3,3,3,3) となります。
-#4 番目のクエリでは、筒の左側からボールを 3 個取り出します。
-#  取り出されたボールに書かれている数はそれぞれ 2,3,3 であり、合計は 8 であるため、これを出力します。
-#  筒の中のボールに書かれた数は左から順に (3,3) となります。
-#
-#入力例 2
-#2
-#1 1000000000 1000000000
-#2 1000000000
-#
-#出力例 2
-#1000000000000000000
-#
-#入力例 3
-#5
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#
-#出力例 3
-#出力するものがないこともあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    Q = int(input())
+    balls = []
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            balls += [query[1]] * query[2]
+        else:
+            print(sum(balls[:query[1]]))
+            balls = balls[query[1]:]
+    return
+
+=======
+Suggestion 2
+
+def main():
+    from collections import deque
+    q = int(input())
+    que = deque()
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            que.append(query[1])
+        elif query[0] == 2:
+            sum = 0
+            for j in range(query[1]):
+                sum += que.popleft()
+            print(sum)
+
+=======
+Suggestion 3
+
+def main():
+    q = int(input())
+    balls = []
+    sum = 0
+    for i in range(q):
+        query = input().split()
+        if query[0] == "1":
+            balls.append(int(query[1]))
+            sum = sum + int(query[1])
+        else:
+            for i in range(int(query[1])):
+                sum = sum - balls[0]
+                balls.pop(0)
+            print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    q = int(input())
+    balls = []
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            balls.extend([query[1] for i in range(query[2])])
+        else:
+            print(sum(balls[:query[1]]))
+            balls = balls[query[1]:]
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+    q = int(input())
+    que = deque()
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            que.appendleft([query[1], query[2]])
+        else:
+            cnt = query[1]
+            ans = 0
+            while cnt > 0:
+                if que[0][1] > cnt:
+                    que[0][1] -= cnt
+                    ans += que[0][0] * cnt
+                    cnt = 0
+                else:
+                    ans += que[0][0] * que[0][1]
+                    cnt -= que[0][1]
+                    que.popleft()
+            print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    q = int(input())
+    x = []
+    c = []
+    for i in range(q):
+        temp = list(map(int, input().split()))
+        if temp[0] == 1:
+            x.append(temp[1])
+            c.append(temp[2])
+        elif temp[0] == 2:
+            ball = 0
+            for j in range(temp[1]):
+                ball += x.pop()
+            print(ball)
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+    q = int(input())
+    d = deque()
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            d.extend([query[1]]*query[2])
+        elif query[0] == 2:
+            print(sum(list(d)[:query[1]]))
+
+=======
+Suggestion 8
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        a.append(list(map(int, input().split())))
+
+    ans = []
+    for i in range(q):
+        if a[i][0] == 1:
+            ans.append([a[i][1]] * a[i][2])
+        else:
+            print(sum(ans.pop(0)))
+
+=======
+Suggestion 9
+
+def main():
+    Q = int(input())
+    query = [list(map(int,input().split())) for _ in range(Q)]
+    balls = []
+    for q in query:
+        if q[0]==1:
+            balls += [q[1]]*q[2]
+        else:
+            print(sum(balls[:q[1]]))
+            balls = balls[q[1]:]
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    #print('Q',Q)
+    query_list = []
+    for i in range(Q):
+        query_list.append(input().split())
+    #print('query_list',query_list)
+    ball_list = []
+    for i in range(Q):
+        if query_list[i][0] == '1':
+            for j in range(int(query_list[i][2])):
+                ball_list.append(query_list[i][1])
+        else:
+            print(sum([int(ball_list.pop(0)) for i in range(int(query_list[i][1]))]))
+    #print('ball_list',ball_list)

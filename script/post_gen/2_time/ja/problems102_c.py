@@ -1,53 +1,159 @@
-#問題文
-#すぬけ君は、長さ N の整数列 A を持っています。
-#すぬけ君は、整数 b を自由に選びます。
-#この時、A_i と b+i が離れているとすぬけ君は悲しいです。
-#より具体的には、すぬけ君の悲しさの値は、次の式で計算されます。
-#なおここで、abs(x) は x の絶対値を返す関数です。
-#abs(A_1 - (b+1)) + abs(A_2 - (b+2)) + ... + abs(A_N - (b+N))
-#すぬけ君の悲しさの値の最小値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#すぬけ君の悲しさの値の最小値を出力せよ。
-#
-#入力例 1
-#5
-#2 2 3 5 5
-#
-#出力例 1
-#2
-#b=0 とすれば、すぬけ君の悲しさの値は、abs(2-(0+1))+abs(2-(0+2))+abs(3-(0+3))+abs(5-(0+4))+abs(5-(0+5))=2 となります。
-#b をどのように選んでも、すぬけ君の悲しさの値を 2 未満にすることは出来ないので、答えは 2 になります。
-#
-#入力例 2
-#9
-#1 2 3 4 5 6 7 8 9
-#
-#出力例 2
-#0
-#
-#入力例 3
-#6
-#6 5 4 3 2 1
-#
-#出力例 3
-#18
-#
-#入力例 4
-#7
-#1 1 1 1 2 3 4
-#
-#出力例 4
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [A[i] - (i + 1) for i in range(N)]
+    A.sort()
+    b = A[N // 2]
+    print(sum([abs(a - b) for a in A]))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += abs(A[i] - (i+1))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [A[i] - i - 1 for i in range(N)]
+    A.sort()
+    b = A[N//2]
+    print(sum(abs(b - a) for a in A))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = float('inf')
+    for i in range(N):
+        ans = min(ans, abs(A[i] - (i + 1)))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    ans = 10**10
+    for i in range(N):
+        ans = min(ans, abs(A[i] - (i+1)))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = float('inf')
+    for i in range(1,N+1):
+        ans = min(ans,abs(A[i-1]-i))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 処理
+    A = [a - (i + 1) for i, a in enumerate(A)]
+    A.sort()
+    b = A[N // 2]
+    print(sum([abs(a - b) for a in A]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(n):
+        tmp = a[i] - (i+1)
+        ans = min(ans, tmp)
+    ans = abs(ans)
+    sum = 0
+    for i in range(n):
+        sum += abs(a[i] - (i+1) - ans)
+    print(sum)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # b = 0 とする
+    b = 0
+    # すぬけ君の悲しさの値を計算
+    sadness = 0
+    for i in range(N):
+        sadness += abs(A[i] - (b + i + 1))
+
+    # b = 1 ~ N として、すぬけ君の悲しさの値を計算し、最小値を求める
+    for i in range(1, N):
+        # すぬけ君の悲しさの値を計算
+        sadness_tmp = 0
+        for j in range(N):
+            sadness_tmp += abs(A[j] - (i + j + 1))
+
+        # すぬけ君の悲しさの値が最小値なら更新
+        if sadness_tmp < sadness:
+            sadness = sadness_tmp
+
+    print(sadness)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # b = 0 の時の悲しさ
+    b = 0
+    ans = 0
+    for i in range(n):
+        ans += abs(a[i] - (b + i + 1))
+
+    # b = 1 の時の悲しさ
+    b = 1
+    tmp = 0
+    for i in range(n):
+        tmp += abs(a[i] - (b + i + 1))
+
+    # b = 1 の時の悲しさが最小の場合
+    if tmp < ans:
+        ans = tmp
+
+    # b = -1 の時の悲しさ
+    b = -1
+    tmp = 0
+    for i in range(n):
+        tmp += abs(a[i] - (b + i + 1))
+
+    # b = -1 の時の悲しさが最小の場合
+    if tmp < ans:
+        ans = tmp
+
+    print(ans)

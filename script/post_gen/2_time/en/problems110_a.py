@@ -1,39 +1,85 @@
-#Problem Statement
-#You have decided to give an allowance to your child depending on the outcome of the game that he will play now.
-#The game is played as follows:
-#There are three "integer panels", each with a digit between 1 and 9 (inclusive) printed on it, and one "operator panel" with a + printed on it.
-#The player should construct a formula of the form X + Y, by arranging the four panels from left to right. (The operator panel should not be placed at either end of the formula.)
-#Then, the amount of the allowance will be equal to the resulting value of the formula.
-#Given the values A, B and C printed on the integer panels used in the game, find the maximum possible amount of the allowance.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A, B, C ≦ 9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C
-#
-#Output
-#Print the maximum possible amount of the allowance.
-#
-#Sample Input 1
-#1 5 2
-#
-#Sample Output 1
-#53
-#The amount of the allowance will be 53 when the panels are arranged as 52+1, and this is the maximum possible amount.
-#
-#Sample Input 2
-#9 9 9
-#
-#Sample Output 2
-#108
-#
-#Sample Input 3
-#6 6 7
-#
-#Sample Output 3
-#82
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C = map(int, input().split())
+    print(max(A + B + C, 10 * A + B + C, A + 10 * B + C, A + B + 10 * C, 10 * A + 10 * B + C, 10 * A + B + 10 * C, A + 10 * B + 10 * C, 10 * A + 10 * B + 10 * C))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a + b * 10 + c, a * 10 + b + c, a + b + c * 10))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a + b + c, a * b * c, a * b + c, a * (b + c), a + b * c, (a + b) * c))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    print(max(A + B + C, A * B * C, A * (B + C), (A + B) * C))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int, input().split())
+    print(max(a+b+c, a+b*c, (a+b)*c, a*b*c, a*b+c, a*(b+c)))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C = input().split()
+    A, B, C = int(A), int(B), int(C)
+    print(max(A+B+C, A*B*C, A+B*C, A*B+C, (A+B)*C))
+
+=======
+Suggestion 7
+
+def main():
+    numbers = [int(x) for x in input().split()]
+    numbers.sort()
+    print((numbers[0] + numbers[1]) * 10 + numbers[2])
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C = map(int, input().split())
+    print(max(A+B+C, A+B*C, A*B+C, A*B*C))
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    print(max(a+b+c,a*b*c,a*(b+c),(a+b)*c))
+
+=======
+Suggestion 10
+
+def main():
+    # Read the input
+    A, B, C = map(int, input().split())
+    # Find the maximum possible amount of the allowance
+    max_allowance = 0
+    for i in range(1, 3):
+        if i == 1:
+            allowance = int(str(A) + str(B) + str(C))
+        elif i == 2:
+            allowance = int(str(A) + str(C) + str(B))
+        if allowance > max_allowance:
+            max_allowance = allowance
+    print(max_allowance)

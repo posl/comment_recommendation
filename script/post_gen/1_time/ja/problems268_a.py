@@ -1,29 +1,58 @@
-#問題文
-#与えられる 5 つの整数 A, B, C, D, E の中に何種類の整数があるかを出力してください。
-#
-#制約
-#0 ≦ A, B, C, D, E ≦ 100
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D E
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#31 9 24 31 24
-#
-#出力例 1
-#3
-#与えられる 5 つの整数 31, 9, 24, 31, 24 の中には、9, 24, 31 という 3 種類の整数があります。
-#よって、3 を出力します。
-#
-#入力例 2
-#0 0 0 0 0
-#
-#出力例 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D, E = map(int, input().split())
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 2
+
+def main():
+    # A, B, C, D, E = map(int, input().split())
+    # print(len(set([A, B, C, D, E])))
+    print(len(set(input().split())))
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    As = [*map(int, input().split())]
+
+    # compute
+    As = set(As)
+
+    # output
+    print(len(As))
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    print(len(set(a)))
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    A, B, C, D, E = map(int, input().split())
+    #print(A, B, C, D, E)
+    #リストに値を格納
+    L = [A, B, C, D, E]
+    #print(L)
+    #リストの要素の個数を出力
+    print(len(set(L)))
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    A = list(map(int,input().split()))
+    #出力
+    print(len(set(A)))

@@ -1,39 +1,98 @@
-#問題文
-#3 つの箱 A,B,C があります。それぞれの箱には、整数が 1 つ入っています。
-#現在、箱 A,B,C に入っている整数はそれぞれ X,Y,Z です。
-#これらの箱に対して以下の操作を順に行った後の、それぞれの箱に入っている整数を求めてください。
-#箱 A と箱 B の中身を入れ替える
-#箱 A と箱 C の中身を入れ替える
-#
-#制約
-#1 ≦ X,Y,Z ≦ 100
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#X Y Z
-#
-#出力
-#箱 A,B,C に入っている整数を、順番に空白区切りで出力せよ。
-#
-#入力例 1
-#1 2 3
-#
-#出力例 1
-#3 1 2
-#箱 A と箱 B の中身を入れ替えた後、箱 A,B,C に入っている整数はそれぞれ 2,1,3 です。
-#箱 A と箱 C の中身を入れ替えた後、箱 A,B,C に入っている整数はそれぞれ 3,1,2 です。  
-#
-#入力例 2
-#100 100 100
-#
-#出力例 2
-#100 100 100
-#
-#入力例 3
-#41 59 31
-#
-#出力例 3
-#31 41 59
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+
+    tmp = a
+    a = b
+    b = tmp
+
+    tmp = a
+    a = c
+    c = tmp
+
+    print(a, b, c)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, Z = map(int, input().split())
+    print(Z, X, Y)
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    X,Y,Z = map(int,input().split())
+    #操作
+    X,Y = Y,X
+    X,Z = Z,X
+    #出力
+    print(X,Y,Z)
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    X,Y,Z = map(int,input().split())
+    #処理
+    tmp = X
+    X = Y
+    Y = tmp
+    tmp = X
+    X = Z
+    Z = tmp
+    #出力
+    print(X,Y,Z)
+
+=======
+Suggestion 5
+
+def main():
+    x,y,z = map(int,input().split())
+    print(z,x,y)
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    X, Y, Z = map(int, input().split())
+    #出力
+    print(Z, X, Y)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int,input().split())
+    print(c,a,b)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    X,Y,Z = map(int,input().split())
+    
+    #出力
+    print(Z,X,Y)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    inp = input().split()
+    a = int(inp[0])
+    b = int(inp[1])
+    c = int(inp[2])
+    print(c,a,b)
+    return

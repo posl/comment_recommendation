@@ -1,67 +1,152 @@
-#問題文
-#N 個のボールが左右一列に並んでいます。初め、左から i  (1 ≦ i ≦ N) 番目のボールには整数 i が書かれています。  
-#高橋君は Q 回の操作を行いました。 i  (1 ≦ i ≦ Q) 回目に行われた操作は次のようなものです。
-#整数 x_i が書かれているボールをその右隣のボールと入れ替える。ただし、整数 x_i が書かれているボールが元々右端にあった場合、代わりに左隣のボールと入れ替える。
-#操作後において左から i  (1 ≦ i ≦ N) 番目のボールに書かれている整数を a_i とします。 a_1,...,a_N を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#出力
-#a_1,...,a_N を空白区切りで出力せよ。
-#
-#入力例 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#出力例 1
-#1 2 3 5 4
-#操作は以下のように行われます。  
-#1 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 2,1,3,4,5 となる。
-#2 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#3 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,4,3,5 となる。
-#4 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#5 と書かれたボールは右端にあるので左隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,5,4 となる。
-#
-#入力例 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#出力例 2
-#1 2 3 4 5 7 6
-#
-#入力例 3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#出力例 3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = [i for i in range(1, n+1)]
+    for i in range(q):
+        x = int(input())
+        a[x-1], a[x] = a[x], a[x-1]
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    a = list(range(1, N + 1))
+    for i in range(Q):
+        x = int(input())
+        a[x - 1], a[x] = a[x], a[x - 1]
+    print(*a)
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    a = [i for i in range(1, n+1)]
+    for _ in range(q):
+        x = int(input())
+        a[x-1], a[x] = a[x], a[x-1]
+    print(*a)
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    a = [0] * n
+    for i in range(n):
+        a[i] = i + 1
+    for i in range(q):
+        x = int(input())
+        for j in range(n):
+            if a[j] == x:
+                if j != n - 1:
+                    a[j], a[j + 1] = a[j + 1], a[j]
+                else:
+                    a[j], a[j - 1] = a[j - 1], a[j]
+                break
+    for i in range(n):
+        print(a[i], end = " ")
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    ball = [i for i in range(1, N+1)]
+    for i in range(Q):
+        x = int(input())
+        ball[x-1], ball[x] = ball[x], ball[x-1]
+    print(*ball)
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    ball = [0] * n
+    for i in range(n):
+        ball[i] = i + 1
+    for i in range(q):
+        x = int(input())
+        for j in range(n):
+            if ball[j] == x:
+                ball[j], ball[j + 1] = ball[j + 1], ball[j]
+                break
+    for i in range(n):
+        print(ball[i], end=" ")
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    a = list(range(1, N + 1))
+    for i in range(Q):
+        x = int(input())
+        idx = a.index(x)
+        if idx == len(a) - 1:
+            a[idx], a[idx - 1] = a[idx - 1], a[idx]
+        else:
+            a[idx], a[idx + 1] = a[idx + 1], a[idx]
+    print(*a)
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    a = [i + 1 for i in range(N)]
+    b = [0] * N
+    for _ in range(Q):
+        x = int(input())
+        b[x - 1] += 1
+    for i in range(N):
+        a[i] = a[i] - b[i]
+    for i in range(N):
+        a[i] = a[i] + b[a[i] - 1]
+    print(*a)
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    # 1-indexed
+    balls = [i for i in range(1, n+1)]
+    for _ in range(q):
+        x = int(input())
+        # x-1番目のボールを右隣のボールと入れ替える
+        # x-1番目のボールが右端にある場合は左隣のボールと入れ替える
+        if x == n:
+            balls[x-1], balls[x-2] = balls[x-2], balls[x-1]
+        else:
+            balls[x-1], balls[x] = balls[x], balls[x-1]
+    print(*balls)
+
+=======
+Suggestion 10
+
+def main():
+    n, q = map(int, input().split())
+    # ボールを並べる
+    balls = [i for i in range(1, n + 1)]
+    # ボールの位置を記録する
+    ball_pos = [i for i in range(n)]
+    for _ in range(q):
+        x = int(input())
+        # ボールを入れ替える
+        # ボールの位置を記録する
+        balls[ball_pos[x - 1]], balls[ball_pos[x - 1] + 1] = balls[ball_pos[x - 1] + 1], balls[ball_pos[x - 1]]
+        ball_pos[x - 1], ball_pos[x - 1] + 1 = ball_pos[x - 1] + 1, ball_pos[x - 1]
+        # ボールの位置を記録する
+        if ball_pos[x - 1] == n - 1:
+            ball_pos[x - 1] = 0
+        else:
+            ball_pos[x - 1] += 1
+    print(*balls)

@@ -1,37 +1,151 @@
-#問題文
-#AtCoder 町の、ある連続した 3 日間の天気の記録があります。天気の記録は長さ 3 の文字列 S で表され、i (1 ≦ i ≦ 3) 日目の天気は i 文字目が S のとき晴れ、R のとき雨でした。
-#天気が雨である日が連続していた最大の日数を求めてください。
-#
-#制約
-#|S| = 3
-#S の各文字は S または R である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#天気が雨である日が連続していた最大の日数を出力せよ。
-#
-#入力例 1
-#RRS
-#
-#出力例 1
-#2
-#3 日間のうち、1, 2 日目が雨で、最大では 2 日間雨である日が連続していたので 2 を出力してください。
-#
-#入力例 2
-#SSS
-#
-#出力例 2
-#0
-#3 日間のうち、3 日とも晴れでした。雨である日は無かったため、0 を出力してください。
-#
-#入力例 3
-#RSR
-#
-#出力例 3
-#1
-#3 日間のうち、1, 3 日目が雨でした。共に 1 日雨である日が連続していたので、1 を出力してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S == 'RRR':
+        print(3)
+    elif S == 'RRS' or S == 'SRR':
+        print(2)
+    elif S == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == 'RRR':
+        print(3)
+    elif s == 'RRS' or s == 'SRR':
+        print(2)
+    elif s == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S == "RRR":
+        print(3)
+    elif S[0:2] == "RR" or S[1:3] == "RR":
+        print(2)
+    elif S[0] == "R" or S[1] == "R" or S[2] == "R":
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    count = 0
+    max_count = 0
+    for i in range(len(S)):
+        if S[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if count > max_count:
+            max_count = count
+    print(max_count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    cnt = 0
+    max_cnt = 0
+    for i in range(3):
+        if S[i] == "R":
+            cnt += 1
+        else:
+            cnt = 0
+        if cnt > max_cnt:
+            max_cnt = cnt
+    print(max_cnt)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    count = 0
+    max_count = 0
+    for i in range(3):
+        if S[i] == 'R':
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    count = 0
+    max = 0
+    for i in range(3):
+        if S[i] == 'R':
+            count += 1
+            if count > max:
+                max = count
+        else:
+            count = 0
+    print(max)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+
+    cnt = 0
+    max_cnt = 0
+    for s in S:
+        if s == 'R':
+            cnt += 1
+            max_cnt = max(cnt, max_cnt)
+        else:
+            cnt = 0
+
+    print(max_cnt)
+
+=======
+Suggestion 9
+
+def main():
+    # 文字列の入力
+    S = input()
+    # 雨の日数
+    R_count = 0
+    # 雨の日数の最大値
+    R_max = 0
+    # 文字列の文字を取り出す
+    for s in S:
+        # 文字が雨の日の場合
+        if s == 'R':
+            # 雨の日数をカウントアップ
+            R_count += 1
+        # 文字が雨の日ではない場合
+        else:
+            # 雨の日数の最大値を更新
+            R_max = max(R_count, R_max)
+            # 雨の日数をリセット
+            R_count = 0
+    # 最後の日の雨の日数の最大値を更新
+    R_max = max(R_count, R_max)
+    # 雨の日数の最大値を出力
+    print(R_max)

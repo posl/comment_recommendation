@@ -1,35 +1,84 @@
-#Problem Statement
-#Given is a three-digit integer N. Does N contain the digit 7?
-#If so, print Yes; otherwise, print No.
-#
-#Constraints
-#100 ≦ N ≦ 999
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If N contains the digit 7, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#117
-#
-#Sample Output 1
-#Yes
-#117 contains 7 as its last digit.
-#
-#Sample Input 2
-#123
-#
-#Sample Output 2
-#No
-#123 does not contain the digit 7.
-#
-#Sample Input 3
-#777
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = input()
+    if '7' in N:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = input()
+    if '7' in n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if "7" in str(N):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if '7' in str(n):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N = input()
+    if N.count('7') > 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    if n.find('7') >= 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    number = input()
+    if "7" in number:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if 100 <= n <= 999:
+        if '7' in str(n):
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('Number is not three-digit')

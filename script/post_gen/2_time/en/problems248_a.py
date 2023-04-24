@@ -1,34 +1,150 @@
-#Problem Statement
-#You are given a string S of length exactly 9 consisting of digits.
-#One but all digits from 0 to 9 appear exactly once in S.
-#Print the only digit missing in S.
-#
-#Constraints
-#S is a string of length 9 consisting of digits.
-#All characters in S are distinct.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the only digit missing in S.
-#
-#Sample Input 1
-#023456789
-#
-#Sample Output 1
-#1
-#The string 023456789 only lacks 1.
-#Thus, 1 should be printed.
-#
-#Sample Input 2
-#459230781
-#
-#Sample Output 2
-#6
-#The string 459230781 only lacks 6.
-#Thus, 6 should be printed.
-#Note that the digits in the string may not appear in increasing order.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(10):
+        if str(i) not in S:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = list(S)
+    S = list(map(int, S))
+    for i in range(1, 10):
+        if i not in S:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    for i in range(10):
+        if str(i) not in s:
+            print(i)
+            break
+
+solve()
+
+=======
+Suggestion 4
+
+def missing_number(s):
+    for i in range(10):
+        if str(i) not in s:
+            return i
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = [int(s) for s in S]
+    print(45 - sum(S))
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    print(45 - sum(map(int, S)))
+
+=======
+Suggestion 7
+
+def main():
+    num_str = input()
+    num_list = [int(n) for n in num_str]
+    result = 45 - sum(num_list)
+    print(result)
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    print(45 - sum(map(int, s)))
+
+=======
+Suggestion 9
+
+def find_missing_digit(string):
+    #converting string to set
+    string_set = set(string)
+    #converting set to list
+    string_list = list(string_set)
+    #converting list to int
+    string_int_list = [int(i) for i in string_list]
+    #sorting list
+    string_int_list.sort()
+    #print(string_int_list)
+    #converting list to string
+    string_int_list = [str(i) for i in string_int_list]
+    #converting list to string
+    string_int = ''.join(string_int_list)
+    #print(string_int)
+    #converting string to int
+    string_int = int(string_int)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set))
+    #print(type(string))
+    #print(string)
+    #print(string_set)
+    #print(string_list)
+    #print(string_int_list)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set))
+    #print(type(string))
+    #print(string)
+    #print(string_set)
+    #print(string_list)
+    #print(string_int_list)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set))
+    #print(type(string))
+    #print(string)
+    #print(string_set)
+    #print(string_list)
+    #print(string_int_list)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set))
+    #print(type(string))
+    #print(string)
+    #print(string_set)
+    #print(string_list)
+    #print(string_int_list)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set))
+    #print(type(string))
+    #print(string)
+    #print(string_set)
+    #print(string_list)
+    #print(string_int_list)
+    #print(string_int)
+    #print(type(string_int))
+    #print(type(string_int_list))
+    #print(type(string_list))
+    #print(type(string_set

@@ -1,39 +1,109 @@
-#問題文
-#たこ焼きフェスティバル (たこフェス) の季節がやってきました！
-#今年のたこフェスでは N 個のたこ焼きがふるまわれる予定です。このうち i 個目のたこ焼きのおいしさは d_i です。
-#ところで、おいしさが x と y であるたこ焼きを一緒に食べると、体力が x × y 回復することが一般に知られています。
-#たこフェスでふるまわれる N 個のたこ焼きから、2 個を選ぶ方法は ((N × (N - 1))/(2)) 通り考えられます。そのそれぞれについて、一緒に食べたときの体力の回復量を求めて、その総和を出力してください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 50
-#0 ≦ d_i ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#d_1 d_2 ... d_N
-#
-#出力
-#たこフェスでふるまわれる N 個のたこやきから、2 個を選んで一緒に食べたときの体力の回復量の総和を出力せよ。
-#
-#入力例 1
-#3
-#3 1 2
-#
-#出力例 1
-#11
-#以下の 3 通りの食べ方が考えられます。
-#1,2 個目のたこ焼きを選んで一緒に食べる。このとき、体力の回復量は 3 である。
-#2,3 個目のたこ焼きを選んで一緒に食べる。このとき、体力の回復量は 2 である。
-#1,3 個目のたこ焼きを選んで一緒に食べる。このとき、体力の回復量は 6 である。
-#体力の回復量の総和は 11 です。
-#
-#入力例 2
-#7
-#5 0 7 8 3 3 2
-#
-#出力例 2
-#312
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += d[i] * d[j]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += d[i] * d[j]
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            ans += d[i]*d[j]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            ans += d[i]*d[j]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d = [int(i) for i in input().split()]
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i] * d[j]
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N = int(input())
+    ds = list(map(int, input().split()))
+
+    # compute
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += ds[i] * ds[j]
+
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    N = int(input())
+    d = list(map(int, input().split()))
+    # 処理
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += d[i] * d[j]
+    # 出力
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    N = int(input())
+    d = list(map(int, input().split()))
+    # 出力
+    ans = 0
+    for i in range(0, N):
+        for j in range(i + 1, N):
+            ans += d[i] * d[j]
+    print(ans)

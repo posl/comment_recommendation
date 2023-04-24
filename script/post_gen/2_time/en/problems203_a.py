@@ -1,37 +1,93 @@
-#Problem Statement
-#Takahashi threw three dice, and they showed three numbers a, b, and c.
-#If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
-#
-#Constraints
-#1 ≦ a,b,c ≦ 6
-#All of a, b, and c are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b c
-#
-#Output
-#If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
-#
-#Sample Input 1
-#2 5 2
-#
-#Sample Output 1
-#5
-#The first and third dice both showed 2, so we should print the number on the remaining dice, which is 5.
-#
-#Sample Input 2
-#4 5 6
-#
-#Sample Output 2
-#0
-#Any two numbers are different, so we should print 0.
-#
-#Sample Input 3
-#1 1 1
-#
-#Sample Output 3
-#1
-#Any two numbers are the same. Whichever two dice we choose, the number on the remaining dice will be 1.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif c == a:
+        print(b)
+    else:
+        print(0)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif a == c:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    nums = input().split()
+    nums = [int(x) for x in nums]
+    if nums[0] == nums[1]:
+        print(nums[2])
+    elif nums[0] == nums[2]:
+        print(nums[1])
+    elif nums[1] == nums[2]:
+        print(nums[0])
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    # read input
+    a, b, c = map(int, input().split())
+
+    # solve problem
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif c == a:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    # Read three integers
+    a, b, c = map(int, input().split())
+    # If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)

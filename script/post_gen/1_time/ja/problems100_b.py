@@ -1,41 +1,115 @@
-#問題文
-#今日は, 記念すべき AtCoder Beginner Contest 100 が開催される. そのため, 高橋君はりんごさんに, ある整数をプレゼントしようと思った.
-#今日のコンテストは「AtCoder Beginner Contest 100」なので, りんごさんは 100 で ちょうど D 回割りきれる正の整数をプレゼントされると喜ぶ.  
-#さて, りんごさんがプレゼントされると喜ぶような整数のうち N 番目に小さいものを求めなさい.  
-#
-#制約
-#D は 0, 1, 2 のいずれかである
-#N は 1 以上 100 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#D N
-#
-#出力
-#100 でちょうど D 回割りきれる正の整数の中で N 番目に小さいものを出力しなさい.  
-#
-#入力例 1
-#0 5
-#
-#出力例 1
-#5
-#100 でちょうど 0 回割り切れる（すなわち, 100 で割り切れない）整数は, 1, 2, 3, 4, 5, 6, 7, ... と続く.
-#よって, 5 番目に小さいりんごさんが喜ぶ整数は 5 である.  
-#
-#入力例 2
-#1 11
-#
-#出力例 2
-#1100
-#100 でちょうど 1 回割り切れる整数は, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1  000, 1  100, ... と続く.
-#よって, 求めたい整数は 1  100 である.  
-#
-#入力例 3
-#2 85
-#
-#出力例 3
-#850000
-#100 でちょうど 2 回割り切れる整数は, 10  000, 20  000, 30  000, ... と続く.
-#よって, 求めたい整数は 850  000 である.  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    elif D == 2:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+=======
+Suggestion 2
+
+def main():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    else:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+=======
+Suggestion 3
+
+def main():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    elif D == 2:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    d, n = map(int, input().split())
+    if d == 0:
+        if n == 100:
+            print(101)
+        else:
+            print(n)
+    elif d == 1:
+        if n == 100:
+            print(10100)
+        else:
+            print(n*100)
+    elif d == 2:
+        if n == 100:
+            print(1010000)
+        else:
+            print(n*10000)
+
+=======
+Suggestion 5
+
+def main():
+    D, N = map(int, input().split())
+    if N == 100:
+        N += 1
+    print(100 ** D * N)
+
+=======
+Suggestion 6
+
+def main():
+    d, n = map(int, input().split())
+    if n != 100:
+        print(100**d * n)
+    else:
+        print(100**d * n + 100**d)
+
+=======
+Suggestion 7
+
+def main():
+    D, N = map(int, input().split())
+    if N == 100:
+        N += 1
+    print(N * 100 ** D)

@@ -1,28 +1,73 @@
-#問題文
-#あなたは、室温が 30 度以上のとき、またそのときに限り、冷房の電源を入れます。
-#今の室温は X 度です。冷房の電源を入れますか？
-#
-#制約
-#-40 ≦ X ≦ 40
-#X は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#冷房の電源を入れるならば Yes、入れないならば No を出力せよ。
-#
-#入力例 1
-#25
-#
-#出力例 1
-#No
-#
-#入力例 2
-#30
-#
-#出力例 2
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = int(input())
+    if X >= 30:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x >= 30:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X >= 30:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    X = int(input())
+
+    #処理
+    if X >= 30:
+        ans = "Yes"
+    else:
+        ans = "No"
+
+    #出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    X = int(input())
+
+    #出力
+    if X >= 30:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    #入力
+    X = int(input())
+
+    #冷房の電源を入れるかどうかの判定
+    if X >= 30:
+        print("Yes")
+    else:
+        print("No")

@@ -1,40 +1,117 @@
-#問題文
-#いろはちゃんはペットを育てるゲームにはまっています。
-#いろはちゃんはペットとして高橋君を飼っており、はじめ高橋君の 強さ は X 、経験値 は 0 です。
-#これらの値は次の 2 種類の特訓によって増加します。
-#カコモンジムに通う：強さが A 倍になり、経験値は 1 増える。
-#AtCoderジムに通う：強さが B 増え、経験値は 1 増える。
-#高橋君は強さが Y 以上になると進化しますが、進化しない方がかわいいといろはちゃんは思っています。
-#そこで、強さが Y 以上にならないように高橋君に特訓を課すとき、経験値の最大値を求めてください。
-#
-#制約
-#1 ≦ X < Y ≦ 10^{18}
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y A B
-#
-#出力
-#与えられた条件の下での経験値の最大値を出力せよ。
-#
-#入力例 1
-#4 20 2 10
-#
-#出力例 1
-#2
-#最初、高橋君の強さは 4 です。次のような特訓方法によって、経験値を 2 にすることができます。
-#まず カコモンジムに通うことで、高橋君の強さは 8、経験値は 1 になります。
-#次に、AtCoderジムに通うことで、高橋君の強さは 18、経験値は 2 になります。
-#どのような特訓方法によっても、経験値を 2 より大きくすることはできません。
-#
-#入力例 2
-#1 1000000000000000000 10 1000000000
-#
-#出力例 2
-#1000000007
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while X * A < Y and X * A < X + B:
+        X *= A
+        ans += 1
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while X * A < Y and X * A - X <= B:
+        X *= A
+        ans += 1
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while True:
+        if X * A < X + B and X * A < Y:
+            X *= A
+            exp += 1
+        else:
+            exp += (Y - 1 - X) // B
+            print(exp)
+            return
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while X * (A - 1) < B and X * A < Y:
+        X *= A
+        exp += 1
+    exp += (Y - X - 1) // B
+    print(exp)
+
+=======
+Suggestion 5
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while X * A < Y:
+        if X * A - X <= B:
+            ans += 1
+            X *= A
+        else:
+            break
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while True:
+        if X * A >= Y:
+            break
+        if X * A - X <= B:
+            break
+        X *= A
+        ans += 1
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    x, y, a, b = map(int, input().split())
+    
+    count = 0
+    while True:
+        if x * a >= x + b and x * a < y:
+            x *= a
+            count += 1
+        elif x + b < y:
+            x += b
+            count += 1
+        else:
+            break
+    
+    print(count)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    # X < Y
+    # A >= 2
+    # B >= 1
+    # 1 ≦ X < Y ≦ 10^{18}
+    # 2 ≦ A ≦ 10^9
+    # 1 ≦ B ≦ 10^9
+    # X

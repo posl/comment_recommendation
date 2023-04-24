@@ -1,50 +1,160 @@
-#問題文
-#左右一列に N 個のマスが並んでおり、左から i 番目のマスの高さは H_i です。
-#あなたは各マスについて 1 度ずつ次のいずれかの操作を行います。
-#マスの高さを 1 低くする。
-#何もしない。
-#操作をうまく行うことでマスの高さを左から右に向かって単調非減少にできるか求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 H_2 ... H_N
-#
-#出力
-#マスの高さを左から右に向かって単調非減少にできるなら Yes、そうでないなら No を出力せよ。
-#
-#入力例 1
-#5
-#1 2 1 1 3
-#
-#出力例 1
-#Yes
-#左から 2 番目のマスのみ高さを 1 低くすることで目的を達成できます。
-#
-#入力例 2
-#4
-#1 3 2 1
-#
-#出力例 2
-#No
-#
-#入力例 3
-#5
-#1 2 3 4 5
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#1
-#1000000000
-#
-#出力例 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            H[i+1] += 1
+        if H[i] > H[i+1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+    for i in range(N-1):
+        if H[i] < H[i+1]:
+            H[i+1] -= 1
+        if H[i] > H[i+1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    for i in range(N-1):
+        if H[i] - H[i+1] > 1:
+            print('No')
+            return
+        elif H[i] - H[i+1] == 1:
+            H[i+1] += 1
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    H.append(0)
+    for i in range(N):
+        if H[i] < H[i + 1]:
+            H[i + 1] -= 1
+        elif H[i] > H[i + 1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    if N == 1:
+        print("Yes")
+        return
+
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            print("No")
+            return
+        elif H[i] == H[i+1]:
+            continue
+        elif H[i] < H[i+1]:
+            H[i+1] -= 1
+
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    for i in range(1, N):
+        if H[i] - H[i - 1] >= 2:
+            print("No")
+            return
+        elif H[i] - H[i - 1] == 1:
+            H[i] -= 1
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    for i in range(N-1):
+        if H[i+1] < H[i]:
+            H[i+1] += 1
+
+    if H == sorted(H):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    H = list(map(int, input().split()))
+    for i in range(1, N):
+        if H[i] >= H[i - 1]:
+            continue
+        elif H[i] == H[i - 1] - 1:
+            H[i] += 1
+        else:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    # ここに処理を書く
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            print("No")
+            exit()
+        elif H[i] == H[i+1]:
+            pass
+        else:
+            H[i+1] -= 1
+    print("Yes")

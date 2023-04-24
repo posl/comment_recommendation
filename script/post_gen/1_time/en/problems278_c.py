@@ -1,127 +1,222 @@
-#Problem Statement
-#Takahashi runs an SNS "Twidai," which has N users from user 1 through user N.
-#In Twidai, users can follow or unfollow other users.
-#Q operations have been performed since Twidai was launched.
-#The i-th (1≦ i≦ Q) operation is represented by three integers T_i, A_i, and B_i, whose meanings are as follows:
-#If T_i = 1: it means that user A_i follows user B_i.  If user A_i is already following user B_i at the time of this operation, it does not make any change.
-#If T_i = 2: it means that user A_i unfollows user B_i.  If user A_i is not following user B_i at the time of this operation, it does not make any change.
-#If T_i = 3: it means that you are asked to determine if users A_i and B_i are following each other.  You need to print Yes if user A_i is following user B_i and user B_i is following user A_i, and No otherwise.
-#When the service was launched, no users were following any users.
-#Print the correct answers for all operations such that T_i = 3 in ascending order of i.
-#
-#Constraints
-#2 ≦ N ≦ 10 ^ 9
-#1 ≦ Q ≦ 2×10 ^ 5
-#T _ i=1,2,3 (1≦ i≦ Q)
-#1 ≦ A _ i ≦ N (1≦ i≦ Q)
-#1 ≦ B _ i ≦ N (1≦ i≦ Q)
-#A _ i≠ B _ i (1≦ i≦ Q)
-#There exists i (1≦ i≦ Q) such that T _ i=3.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N Q
-#T _ 1 A _ 1 B _ 1
-#T _ 2 A _ 2 B _ 2
-#.
-#.
-#.
-#T _ Q A _ Q B _ Q
-#
-#Output
-#Print X lines, where X is the number of i's (1≦ i≦ Q) such that T _ i=3.
-#The j-th (1≦ j≦ X) line should contain the answer to the j-th operation such that T _ i=3.
-#
-#Sample Input 1
-#3 9
-#1 1 2
-#3 1 2
-#1 2 1
-#3 1 2
-#1 2 3
-#1 3 2
-#3 1 3
-#2 1 2
-#3 1 2
-#
-#Sample Output 1
-#No
-#Yes
-#No
-#No
-#Twidai has three users.
-#The nine operations are as follows.
-#User 1 follows user 2.  No other users are following or followed by any users.
-#Determine if users 1 and 2 are following each other.  User 1 is following user 2, but user 2 is not following user 1, so No is the correct answer to this operation.
-#User 2 follows user 1.
-#Determine if users 1 and 2 are following each other.  User 1 is following user 2, and user 2 is following user 1, so Yes is the correct answer to this operation.
-#User 2 follows user 3.
-#User 3 follows user 2.
-#Determine if users 1 and 3 are following each other.  User 1 is not following user 3, and user 3 is not following user 1, so No is the correct answer to this operation.
-#User 1 unfollows user 2.
-#Determine if users 1 and 2 are following each other.  User 2 is following user 1, but user 1 is not following user 2, so No is the correct answer to this operation.
-#
-#Sample Input 2
-#2 8
-#1 1 2
-#1 2 1
-#3 1 2
-#1 1 2
-#1 1 2
-#1 1 2
-#2 1 2
-#3 1 2
-#
-#Sample Output 2
-#Yes
-#No
-#A user may follow the same user multiple times.
-#
-#Sample Input 3
-#10 30
-#3 1 6
-#3 5 4
-#1 6 1
-#3 1 7
-#3 8 4
-#1 1 6
-#2 4 3
-#1 6 5
-#1 5 6
-#1 1 8
-#1 8 1
-#2 3 10
-#1 7 6
-#3 5 6
-#1 6 7
-#3 6 7
-#1 9 5
-#3 8 6
-#3 3 8
-#2 6 9
-#1 7 1
-#3 10 8
-#2 9 2
-#1 10 9
-#2 6 10
-#2 6 8
-#3 1 6
-#3 1 8
-#2 8 5
-#1 9 10
-#
-#Sample Output 3
-#No
-#No
-#No
-#No
-#Yes
-#Yes
-#No
-#No
-#No
-#Yes
-#Yes
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    follow = [set() for _ in range(N)]
+    for _ in range(Q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            follow[a-1].add(b-1)
+        elif t == 2:
+            follow[a-1].discard(b-1)
+        else:
+            if b-1 in follow[a-1] and a-1 in follow[b-1]:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    follow = [[0 for i in range(n)] for j in range(n)]
+    for i in range(q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            follow[a - 1][b - 1] = 1
+        elif t == 2:
+            follow[a - 1][b - 1] = 0
+        else:
+            if follow[a - 1][b - 1] == 1 and follow[b - 1][a - 1] == 1:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    from collections import defaultdict
+    input = sys.stdin.readline
+    N, Q = map(int, input().split())
+    G = defaultdict(set)
+    for _ in range(Q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            G[a].add(b)
+        elif t == 2:
+            G[a].discard(b)
+        else:
+            print("Yes" if b in G[a] and a in G[b] else "No")
+
+=======
+Suggestion 4
+
+def main():
+    # Step #1. Input
+    n, q = map(int, input().split())
+    t = [0] * q
+    a = [0] * q
+    b = [0] * q
+    for i in range(q):
+        t[i], a[i], b[i] = map(int, input().split())
+
+    # Step #2. Solve
+    # Step #2-1. Initialize
+    ans = [0] * q
+    follow = [0] * n
+    follower = [0] * n
+    for i in range(q):
+        if t[i] == 1:
+            follow[a[i] - 1] += 1
+            follower[b[i] - 1] += 1
+        elif t[i] == 2:
+            if follow[a[i] - 1] > 0:
+                follow[a[i] - 1] -= 1
+            if follower[b[i] - 1] > 0:
+                follower[b[i] - 1] -= 1
+        else:
+            if follow[a[i] - 1] > 0 and follower[b[i] - 1] > 0:
+                ans[i] = 1
+
+    # Step #2-2. Output
+    for i in range(q):
+        if ans[i] == 1:
+            print('Yes')
+        elif t[i] == 3:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    # 1-index
+    follow = [[] for _ in range(N+1)]
+    followed = [[] for _ in range(N+1)]
+    for _ in range(Q):
+        T, A, B = map(int, input().split())
+        if T == 1:
+            follow[A].append(B)
+            followed[B].append(A)
+        elif T == 2:
+            if A in follow[B]:
+                follow[B].remove(A)
+            if B in followed[A]:
+                followed[A].remove(B)
+        else:
+            if A in followed[B] and B in follow[A]:
+                print("Yes")
+            else:
+                print("No")
+
+main()
+
+This is my solution. I created two lists, one for each direction of following. The first list is for following and the second list is for followed. Each list is indexed by the user ID. Each list contains the user ID of the users that are either following or followed by the user ID of the list.
+
+The first two if statements are for the first two cases. The first if statement is for when the user is following another user. The second if statement is for when the user is unfollowing another user. The third if statement is for when the user is asking if two users are following each other. The third if statement checks if the user is following the other user and the other user is following the user. If both of these are true, then the user is following the other user and the other user is following the user, so the answer is Yes. Otherwise, the answer is No.
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    # フォロー関係を管理するリスト
+    follow = [set() for _ in range(N)]
+    # フォローの逆関係を管理するリスト
+    follower = [set() for _ in range(N)]
+    for _ in range(Q):
+        T, A, B = map(int, input().split())
+        A -= 1
+        B -= 1
+        # フォロー関係の登録
+        if T == 1:
+            follow[A].add(B)
+            follower[B].add(A)
+        # フォロー関係の解除
+        elif T == 2:
+            follow[A].discard(B)
+            follower[B].discard(A)
+        # フォロー関係の判定
+        else:
+            if B in follow[A] and A in follow[B]:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    # 1: follow, 2: unfollow
+    t, a, b = [0]*q, [0]*q, [0]*q
+    for i in range(q):
+        t[i], a[i], b[i] = map(int, input().split())
+
+    # 1: follow, 2: unfollow
+    for i in range(q):
+        if t[i] == 1:
+            print('follow')
+        elif t[i] == 2:
+            print('unfollow')
+        else:
+            print('check')
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    # N = 10^9
+    # Q = 2*10^5
+    # T_i = 1,2,3, A_i = 1,2,3, B_i = 1,2,3
+    # A_i != B_i
+    # T_i = 3 がある
+    # 1 <= i <= Q
+    # 1 <= A_i <= N
+    # 1 <= B_i <= N
+    # 2 <= N <= 10^9
+    # 1 <= Q <= 2*10^5
+    # T_i = 1,2,3
+    # T_i = 3 がある
+    # A_i != B_i
+
+    # 1 <= i <= Q
+    # 1 <= A_i <= N
+    # 1 <= B_i <= N
+    # 2 <= N <= 10^9
+    # 1 <= Q <= 2*10^5
+    # T_i = 1,2,3
+    # T_i = 3 がある
+    # A_i != B_i
+
+    # 1 <= i <= Q
+    # 1 <= A_i <= N
+    # 1 <= B_i <= N
+    # 2 <= N <= 10^9
+    # 1 <= Q <= 2*10^5
+    # T_i = 1,2,3
+    # T_i = 3 がある
+    # A_i != B_i
+
+    # 1 <= i <= Q
+    # 1 <= A_i <= N
+    # 1 <= B_i <= N
+    # 2 <= N <= 10^9
+    # 1 <= Q <= 2*10^5
+    # T_i = 1,2,3
+    # T_i = 3 がある
+    # A_i != B_i
+
+    # 1 <= i <= Q
+    # 1 <= A_i <= N
+    # 1 <= B_i <= N
+    # 2 <= N <= 10^9
+    # 1 <= Q <= 2*10^5
+    # T_i = 1,2,3

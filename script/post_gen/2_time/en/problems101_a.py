@@ -1,42 +1,52 @@
-#Problem Statement
-#There is always an integer in Takahashi's mind.
-#Initially, the integer in Takahashi's mind is 0. Takahashi is now going to eat four symbols, each of which is + or -. When he eats +, the integer in his mind increases by 1; when he eats -, the integer in his mind decreases by 1.
-#The symbols Takahashi is going to eat are given to you as a string S. The i-th character in S is the i-th symbol for him to eat.
-#Find the integer in Takahashi's mind after he eats all the symbols.
-#
-#Constraints
-#The length of S is 4.
-#Each character in S is + or -.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the integer in Takahashi's mind after he eats all the symbols.
-#
-#Sample Input 1
-#+-++
-#
-#Sample Output 1
-#2
-#Initially, the integer in Takahashi's mind is 0.
-#The first integer for him to eat is +. After eating it, the integer in his mind becomes 1.
-#The second integer to eat is -. After eating it, the integer in his mind becomes 0.
-#The third integer to eat is +. After eating it, the integer in his mind becomes 1.
-#The fourth integer to eat is +. After eating it, the integer in his mind becomes 2.
-#Thus, the integer in Takahashi's mind after he eats all the symbols is 2.
-#
-#Sample Input 2
-#-+--
-#
-#Sample Output 2
-#-2
-#
-#Sample Input 3
-#----
-#
-#Sample Output 3
-#-4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in s:
+        if i == '+':
+            count += 1
+        else:
+            count -= 1
+    print(count)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.count('+') - s.count('-'))
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S.count('+') - S.count('-'))
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S.count("+") - S.count("-"))
+
+=======
+Suggestion 5
+
+def main():
+    # Read input
+    s = input()
+    # Solve problem
+    result = 0
+    for i in range(4):
+        if s[i] == '+':
+            result += 1
+        else:
+            result -= 1
+    # Output result
+    print(result)

@@ -1,30 +1,89 @@
-#問題文
-#サーバル、フェネック、アライグマの 3 人がじゃんけんをして、あいこになりました。
-#フェネックが出した手を表す文字 x とアライグマが出した手を表す文字 y が与えられます。それぞれ、0 はグー、1 はチョキを、2 はパーを表します。
-#サーバルが出した手を表す文字を出力してください。なお、答えは一意に定まります。
-#
-#制約
-#x, y は 0, 1, 2 のいずれか
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#x y
-#
-#出力
-#答えを出力せよ。出力についても、0 はグー、1 はチョキを、2 はパーを表すものとする。  
-#
-#入力例 1
-#0 1
-#
-#出力例 1
-#2
-#フェネックが出した手はグー、アライグマが出した手はチョキでした。あいこになるのはサーバルがパーを出したときです。
-#
-#入力例 2
-#0 0
-#
-#出力例 2
-#0
-#フェネックが出した手はグー、アライグマが出した手はグーでした。あいこになるのはサーバルがグーを出したときです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    elif x == 0 and y == 1:
+        print(2)
+    elif x == 1 and y == 2:
+        print(0)
+    elif x == 2 and y == 0:
+        print(1)
+    elif x == 0 and y == 2:
+        print(1)
+    elif x == 1 and y == 0:
+        print(2)
+    elif x == 2 and y == 1:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    elif x == 0 and y == 1:
+        print(2)
+    elif x == 1 and y == 0:
+        print(2)
+    elif x == 1 and y == 2:
+        print(0)
+    elif x == 2 and y == 1:
+        print(0)
+    elif x == 2 and y == 0:
+        print(1)
+    elif x == 0 and y == 2:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    elif x == 0 and y == 1 or x == 1 and y == 2 or x == 2 and y == 0:
+        print(2)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(int, input().split())
+    print((x + 1) % 3) if x != y else print(x)
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split())
+    print(3 - (x + y))

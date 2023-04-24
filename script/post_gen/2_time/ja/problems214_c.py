@@ -1,78 +1,172 @@
-#問題文
-#N 人のすぬけ君が円周上に並んでおり、反時計回りに 1,2,...,N の番号がついています。
-#i (1 ≦ i ≦ N) 番目のすぬけ君は時刻 t に宝石をもらうと S_i 単位時間後、すなわち時刻 t+S_i にその宝石を (i+1) 番目のすぬけ君に渡します。ただし、(N+1) 番目のすぬけ君とは 1 番目のすぬけ君のことを指すとします。
-#また、高橋君は時刻 T_i に i 番目のすぬけ君に宝石を渡します。
-#全ての i (1 ≦ i ≦ N) について、i 番目のすぬけ君が初めて宝石をもらう時刻を求めてください。なお、宝石の受け渡しにかかる時間は無視できるものとします。
-#
-#制約
-#1 ≦ N ≦ 200000
-#1 ≦ S_i,T_i ≦ 10^9
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 S_2 ... S_N
-#T_1 T_2 ... T_N
-#
-#出力
-#N 行出力せよ。i (1 ≦ i ≦ N) 行目には、i 番目のすぬけ君が初めて宝石をもらう時刻を出力すること。
-#
-#入力例 1
-#3
-#4 1 5
-#3 10 100
-#
-#出力例 1
-#3
-#7
-#8
-#時刻 13 までのすぬけ君と高橋君の行動を時系列順に並べます。
-#時刻 3 : 高橋君が 1 番目のすぬけ君に宝石を渡します。
-#時刻 7 : 1 番目のすぬけ君が 2 番目のすぬけ君に宝石を渡します。
-#時刻 8 : 2 番目のすぬけ君が 3 番目のすぬけ君に宝石を渡します。
-#時刻 10 : 高橋君が 2 番目のすぬけ君に宝石を渡します。
-#時刻 11 : 2 番目のすぬけ君が 3 番目のすぬけ君に宝石を渡します。
-#時刻 13 : 3 番目のすぬけ君が 1 番目のすぬけ君に宝石を渡します。
-#時刻 14 以降も彼らは宝石の受け渡しを行いますが、答えには影響しません。
-#
-#入力例 2
-#4
-#100 100 100 100
-#1 1 1 1
-#
-#出力例 2
-#1
-#1
-#1
-#1
-#S_i や T_i が相異なるとは限らないことに注意してください。
-#
-#入力例 3
-#4
-#1 2 3 4
-#1 2 4 7
-#
-#出力例 3
-#1
-#2
-#4
-#7
-#あるすぬけくんが同時刻に複数の宝石の受け渡しをする可能性があること、特に高橋くんとすぬけくんの両方から同時に宝石を貰う可能性があることに注意してください。
-#
-#入力例 4
-#8
-#84 87 78 16 94 36 87 93
-#50 22 63 28 91 60 64 27
-#
-#出力例 4
-#50
-#22
-#63
-#28
-#44
-#60
-#64
-#27
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+    for i in range(N):
+        for j in range(N):
+            if ans[(i + j) % N] > ans[i] + S[i]:
+                ans[(i + j) % N] = ans[i] + S[i]
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+        for j in range(i+1, N):
+            if ans[j] < ans[j-1] + S[j-1]:
+                ans[j] = ans[j-1] + S[j-1]
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [10**10] * N
+    for i in range(N):
+        for j in range(N):
+            if ans[j] > T[i]:
+                ans[j] = T[i]
+                T[i] += S[j]
+                break
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    ans = T
+
+    for i in range(N):
+        for j in range(N):
+            if T[i] < T[j] and T[i] + S[i] < T[j]:
+                ans[i] = T[j]
+                break
+        else:
+            continue
+        break
+
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    #処理
+    ans = [0]*N
+    for i in range(N):
+        ans[i] = T[i]
+        for j in range(N):
+            if T[i] < ans[(i+j)%N]:
+                ans[(i+j)%N] = T[i] + sum(S[(i+j)%N:(i+j)%N+j+1])
+
+    #出力
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [int(i) for i in input().split()]
+    T = [int(i) for i in input().split()]
+
+    # すぬけくんの情報
+    # 0: 初めて宝石をもらう時刻
+    # 1: 宝石をもらった時刻
+    # 2: 宝石を渡した時刻
+    # 3: 宝石を渡した相手の番号
+    # 4: 宝石を渡した相手に渡した時刻
+    # 5: 宝石を渡した相手に渡した相手の番号
+    # 6: 宝石を渡した相手に渡した相手に渡した時刻
+    # 7: 宝石を渡した相手に渡した相手に渡した相手の番号
+    # 8: 宝石を渡した相手に渡した相手に渡した相手に渡した時刻
+    # 9: 宝石を渡した相手に渡した相手に渡した相手に渡した相手の番号
+    # 10: 宝石を渡した相手に渡した相手に渡した相手に渡した相手に渡した時刻
+    # 11: 宝石を渡した相手に渡した相手に渡した相手に渡した相手に渡した相手の番号
+    # 12: 宝石を渡した相手に渡した相手に渡した相手に渡した相手に渡した相手に渡した時刻
+    # 13: 宝石を渡した相手に渡した相手に渡した相手に渡した相手に渡した相手に渡した相手の番号
+    # 14: 宝石を渡した相手に
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    # すぬけくんの番号をキー、初めて宝石を貰う時刻を値とする辞書を作成する。
+    # すぬけくんは、初めに高橋くんから宝石を貰うので、
+    # すぬけくんの初めて宝石を貰う時刻は、高橋くんから宝石を貰う時刻となる。
+    # すぬけくんの初めて宝石を貰う時刻を初期値として、
+    # すぬけくんの初めて宝石を貰う時刻を更新していく。
+    # すぬけくんの初めて宝石を貰う時刻が、高橋くんから宝石を貰う時刻よりも後の場合は、
+    # 高橋くんから宝石を貰う時刻を初めて宝石を貰う時刻とする。
+    # すぬけくんの初めて宝石を貰う時刻が、高橋くんから宝石を貰う時刻よりも前の場合は、
+    # すぬけくんの初めて宝石を貰う時刻をそのままとする。
+    # すぬけくんの初めて宝石を貰う時刻が、高橋くんから宝石を貰う時刻と同じ場合は、
+    # すぬけくんの初めて宝石を貰う時刻をそのままとする。
+    # すぬけくんの初めて宝石を貰う
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    T = list(map(int,input().split()))
+    #Sの最大値
+    maxS = max(S)
+    #Tの最小値
+    minT = min(T)
+    #Tの最小値がSの最大値を超えたら、最小値を最大値にする
+    if minT > maxS:
+        minT = maxS
+    #Tの最小値を超えるSの値を取り除く
+    S = list(filter(lambda x: x > minT,S))
+    #Tの最小値を超えるTの値を取り除く
+    T = list(filter(lambda x: x > minT,T))
+    #Tの最小値を超えるSの値の最小値
+    minS = min(S)
+    #Tの最小値を超えるSの値の最小値を超えるTの値を取り除く
+    T = list(filter(lambda x: x > minS,T))
+    #Tの最小値を超えるSの値の最小値を超えるTの値の最小値
+    minT = min(T)
+    #Tの最小値を超えるSの値の最小値を超えるTの値の最小値を超えるSの値を取り除く
+    S = list(filter(lambda x: x > minT,S))
+    #Tの最小値を超えるSの値の最小値を超えるTの値の最小値を超えるSの値の最小値
+    minS = min(S)
+    #Tの最小値を超えるSの値の最小値を超えるTの値の最小値を超えるSの値の最小値を超えるTの値を取り除く
+    T = list(filter(lambda x: x > minS,T))
+    #Tの最小値

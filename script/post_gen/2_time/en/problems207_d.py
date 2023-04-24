@@ -1,95 +1,199 @@
-#Problem Statement
-#You are given two sets S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)} and T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)} of N points each on a two-dimensional plane.
-#Determine whether it is possible to do the following operations on S any number of times (possibly zero) in any order so that S matches T.
-#Choose a real number p (0 < p < 360) and rotate every point in S p degrees clockwise about the origin.
-#Choose real numbers q and r and move every point in S by q in the x-direction and by r in the y-direction. Here, q and r can be any real numbers, be it positive, negative, or zero.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) if i ≠ j.
-#(c_i,d_i) ≠ (c_j,d_j) if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#Output
-#If we can match S with T, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#Sample Output 1
-#Yes
-#The figure below shows the given sets of points, where the points in S and T are painted red and green, respectively:
-#In this case, we can match S with T as follows:
-#Rotate every point in S 270 degrees clockwise about the origin.
-#Move every point in S by 3 in the x-direction and by 0 in the y-direction.
-#
-#Sample Input 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#Sample Output 2
-#No
-#The figure below shows the given sets of points:
-#Although S and T are symmetric about the y-axis, we cannot match S with T by rotations and translations as stated in Problem Statement.
-#
-#Sample Input 3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#Sample Output 4
-#Yes
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(list(map(int, input().split())))
+    for i in range(N):
+        T.append(list(map(int, input().split())))
+    S.sort()
+    T.sort()
+    for i in range(N):
+        for j in range(N):
+            a = T[i][0] - S[j][0]
+            b = T[i][1] - S[j][1]
+            for k in range(N):
+                if [S[k][0] + a, S[k][1] + b] in T:
+                    continue
+                else:
+                    break
+            else:
+                print('Yes')
+                exit()
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(map(int,input().split())))
+    for i in range(n):
+        t.append(list(map(int,input().split())))
+    s.sort()
+    t.sort()
+    for i in range(n):
+        for j in range(n):
+            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
+                continue
+            else:
+                dx = t[j][0] - s[i][0]
+                dy = t[j][1] - s[i][1]
+                for k in range(n):
+                    if s[k][0] + dx == t[k][0] and s[k][1] + dy == t[k][1]:
+                        continue
+                    else:
+                        break
+                else:
+                    print("Yes")
+                    exit()
+    print("No")
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        S.append((a, b))
+    for i in range(N):
+        c, d = map(int, input().split())
+        T.append((c, d))
+    S.sort()
+    T.sort()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                for l in range(N):
+                    dx = T[i][0] - S[j][0]
+                    dy = T[i][1] - S[j][1]
+                    dx2 = T[k][0] - S[l][0]
+                    dy2 = T[k][1] - S[l][1]
+                    if dx == dx2 and dy == dy2:
+                        print('Yes')
+                        return
+    print('No')
+    return
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        s.append([a, b])
+    for i in range(n):
+        a, b = map(int, input().split())
+        t.append([a, b])
+    #print(s)
+    #print(t)
+    s.sort()
+    t.sort()
+    #print(s)
+    #print(t)
+    for i in range(n):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [list(map(int, input().split())) for _ in range(n)]
+    t = [list(map(int, input().split())) for _ in range(n)]
+    if n == 1:
+        print("Yes")
+        return
+    if n == 2:
+        if s[0][0] == s[1][0] and s[0][1] == s[1][1]:
+            print("Yes")
+            return
+        if s[0][0] == s[1][1] and s[0][1] == -s[1][0]:
+            print("Yes")
+            return
+        if s[0][0] == -s[1][0] and s[0][1] == -s[1][1]:
+            print("Yes")
+            return
+        if s[0][0] == -s[1][1] and s[0][1] == s[1][0]:
+            print("Yes")
+            return
+        print("No")
+        return
+    for i in range(n):
+        for j in range(n):
+            dx = t[i][0] - s[j][0]
+            dy = t[i][1] - s[j][1]
+            ok = True
+            for k in range(n):
+                if [s[k][0] + dx, s[k][1] + dy] not in t:
+                    ok = False
+            if ok:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [tuple(map(int, input().split())) for _ in range(N)]
+    T = [tuple(map(int, input().split())) for _ in range(N)]
+    S.sort()
+    T.sort()
+
+    for i in range(N):
+        x = T[0][0] - S[i][0]
+        y = T[0][1] - S[i][1]
+        for j in range(N):
+            if (S[j][0] + x, S[j][1] + y) not in T:
+                break
+        else:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 7
+
+def rotate(x, y, p):
+    import math
+    rad = math.radians(p)
+    return x * math.cos(rad) - y * math.sin(rad), x * math.sin(rad) + y * math.cos(rad)
+
+=======
+Suggestion 8
+
+def rotate(x, y, p):
+    rad = math.radians(p)
+    return (x*math.cos(rad)-y*math.sin(rad), x*math.sin(rad)+y*math.cos(rad))
+
+=======
+Suggestion 9
+
+def calc_angle(a, b):
+    return math.atan2(b, a) * 180.0 / math.pi

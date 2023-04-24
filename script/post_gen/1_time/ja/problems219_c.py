@@ -1,68 +1,159 @@
-#問題文
-#AtCoder 王国を治める高橋君は、英小文字のアルファベット順を変更することにしました。
-#新たなアルファベット順はa , b , ..., z を並べ替えて得られる文字列 X を用いて表されます。X の i  (1 ≦ i ≦ 26) 文字目は、新たな順番において i 番目に小さい英小文字を表します。
-#AtCoder 王国には N 人の国民がおり、それぞれの国民の名前は S_1, S_2, ..., S_N です。ここで、S_i  (1 ≦ i ≦ N) は英小文字からなります。
-#これらの名前を、高橋君の定めたアルファベット順に基づく辞書順に従って並べ替えてください。
-#辞書順とは？
-#辞書順とは簡単に説明すると「単語が辞書に載っている順番」を意味します。より厳密な説明として、英小文字からなる相異なる文字列 S, T の大小を判定するアルゴリズムを以下に説明します。
-#以下では「 S の i 文字目の文字」を S_i のように表します。また、 S が T より辞書順で小さい場合は S < T 、大きい場合は S > T と表します。
-# S, T のうち長さが大きくない方の文字列の長さを L とします。i=1,2,...,L に対して S_i と T_i が一致するか調べます。 
-# S_i ≠ T_i である i が存在する場合、そのような i のうち最小のものを j とします。そして、S_j と T_j を比較して、S_j が T_j よりアルファベット順で小さい場合は S < T 、そうでない場合は S > T と決定して、アルゴリズムを終了します。
-#  
-# S_i ≠ T_i である i が存在しない場合、S と T の長さを比較して、S が T より短い場合は S < T 、長い場合は S > T と決定して、アルゴリズムを終了します。 
-#
-#
-#制約
-#X は a , b , ..., z を並べ替えて得られる
-#2 ≦ N ≦ 50000
-#N は整数
-#1 ≦ |S_i| ≦ 10  (1 ≦ i ≦ N)
-#S_i は英小文字からなる (1 ≦ i ≦ N)
-#S_i ≠ S_j (1 ≦ i < j ≦ N)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、高橋君の定めたアルファベット順に基づく辞書順に従って国民の名前を並べ替えたとき、i 番目に小さいものを出力すること。
-#
-#入力例 1
-#bacdefghijklmnopqrstuvwxzy
-#4
-#abx
-#bzz
-#bzy
-#caa
-#
-#出力例 1
-#bzz
-#bzy
-#abx
-#caa
-#高橋君が新たに設定したアルファベット順において、b は a より小さく、z は y より小さいです。そのため、国民の名前を辞書順に並べ替えると、小さい順に bzz , bzy , abx , caa となります。
-#
-#入力例 2
-#zyxwvutsrqponmlkjihgfedcba
-#5
-#a
-#ab
-#abc
-#ac
-#b
-#
-#出力例 2
-#b
-#a
-#ac
-#ab
-#abc
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort(key=lambda s: [X.index(c) for c in s])
+    for s in S:
+        print(s)
+
+=======
+Suggestion 2
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.sort(key=lambda s: [X.index(c) for c in s])
+    print(*S, sep='
+
+')
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.sort(key=lambda x: [X.index(c) for c in x])
+    for s in S:
+        print(s)
+
+=======
+Suggestion 4
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.sort(key=lambda s: [X.index(c) for c in s])
+    print('
+
+'.join(S))
+
+=======
+Suggestion 5
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort(key=lambda x: [X.index(c) for c in x])
+    for s in S:
+        print(s)
+
+=======
+Suggestion 6
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    T = [sorted(s, key=lambda x: X.index(x)) for s in S]
+    for s, t in sorted(zip(S, T), key=lambda x: x[1]):
+        print(s)
+
+=======
+Suggestion 7
+
+def main():
+    alphabet = input()
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort(key=lambda x: [alphabet.index(c) for c in x])
+    print(*S, sep='
+
+')
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    #処理
+    #アルファベット順に並べ替える
+    S.sort(key=lambda x: [X.index(c) for c in x])
+
+    #出力
+    for i in range(N):
+        print(S[i])
+
+=======
+Suggestion 9
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    # アルファベット順を辞書型で作成
+    alphabet_dict = {}
+    for i, alphabet in enumerate(X):
+        alphabet_dict[alphabet] = i
+
+    # アルファベットの値を辞書型で作成
+    value_dict = {}
+    for i, value in enumerate(sorted(alphabet_dict.values())):
+        value_dict[value] = i
+
+    # アルファベットを数値に変換
+    S = [[value_dict[alphabet_dict[alphabet]] for alphabet in s] for s in S]
+
+    # 数値をアルファベットに変換
+    S = [[X[value] for value in s] for s in S]
+
+    # アルファベットを辞書順に並び替え
+    S.sort()
+
+    # 数値をアルファベットに変換
+    S = [[X[value] for value in s] for s in S]
+
+    # アルファベットを文字列に変換
+    S = [''.join(s) for s in S]
+
+    for s in S:
+        print(s)
+
+=======
+Suggestion 10
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    #辞書順を定義する
+    def comp(a, b):
+        for i in range(min(len(a),len(b))):
+            if X.index(a[i]) < X.index(b[i]):
+                return -1
+            elif X.index(a[i]) > X.index(b[i]):
+                return 1
+        if len(a) < len(b):
+            return -1
+        elif len(a) > len(b):
+            return 1
+        return 0
+    #辞書順でソート
+    S.sort(key=functools.cmp_to_key(comp))
+    print(*S, sep='
+
+')

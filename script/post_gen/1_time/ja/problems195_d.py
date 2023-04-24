@@ -1,60 +1,305 @@
-#問題文
-#1 から N の番号がついた N 個の荷物と、1 から M の番号がついた M 個の箱があります。
-#荷物 i の大きさは W_i で、価値は V_i です。
-#箱 i には大きさが X_i 以下の荷物を入れることができます。1 つの箱に 2 つ以上の荷物を入れることはできません。
-#Q 個のクエリが与えられます。各クエリでは 2 つの整数 L,R が与えられるので、次の問題を解いてください。
-#問題：M 個の箱のうち、箱 L,L+1,...,R の R-L+1 個の箱が使えなくなってしまいました。
-#残りの箱の中に同時に入れることができる荷物の価値の合計の最大値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 50
-#1 ≦ Q ≦ 50
-#1 ≦ W_i ≦ 10^6
-#1 ≦ V_i ≦ 10^6
-#1 ≦ X_i ≦ 10^6
-#1 ≦ L ≦ R ≦ M
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M Q
-#W_1 V_1
-#.
-#.
-#.
-#W_N V_N
-#X_1 ... X_M
-#Query_1
-#.
-#.
-#.
-#Query_Q
-#各クエリは以下の形式で与えられる。
-#L R
-#
-#出力
-#Q 行出力せよ。
-#i 行目には、Query_i に対応する問題の答えを出力せよ。
-#
-#入力例 1
-#3 4 3
-#1 9
-#5 3
-#7 8
-#1 8 6 9
-#4 4
-#1 4
-#1 3
-#
-#出力例 1
-#20
-#0
-#9
-#1 番目のクエリでは箱 4 が使えません。
-#箱 1 に荷物 1 を、箱 2 に荷物 3 を、箱 3 に荷物 2 を入れることで、
-#全ての荷物を箱の中に入れることができ、箱の中の荷物の価値の合計を 20 にすることができます。
-#2 番目のクエリでは全ての箱が使えません。したがって、答えは 0 です。
-#3 番目のクエリでは、箱 4 だけが使えます。箱 4 に荷物 1 を入れることで、箱の中の荷物の価値の合計は 9 となり、これが最大です。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i], V[i] = map(int, input().split())
+    X = [0] * M
+    for i in range(M):
+        X[i] = int(input())
+    for i in range(Q):
+        L, R = map(int, input().split())
+        X_tmp = X.copy()
+        for j in range(L-1, R):
+            X_tmp[j] = -1
+        X_tmp.sort()
+        W_tmp = W.copy()
+        V_tmp = V.copy()
+        for j in range(M):
+            if X_tmp[j] == -1:
+                continue
+            for k in range(N):
+                if W_tmp[k] > X_tmp[j]:
+                    W_tmp[k] = -1
+                    V_tmp[k] = -1
+        W_tmp.sort()
+        V_tmp.sort()
+        ans = 0
+        for j in range(N):
+            if W_tmp[j] == -1:
+                continue
+            for k in range(N):
+                if W_tmp[j] <= W[k] and V_tmp[N-1-k] != -1:
+                    ans += V_tmp[N-1-k]
+                    W_tmp[j] = -1
+                    V_tmp[N-1-k] = -1
+                    break
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i], V[i] = map(int, input().split())
+    X = [0] * M
+    for i in range(M):
+        X[i] = int(input())
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        #print(L, R)
+        #print(X)
+        #print(W)
+        #print(V)
+        #print()
+
+        # 箱を選ぶ
+        box = X[:L - 1] + X[R:]
+        #print(box)
+        #print()
+
+        # 箱に入れる荷物を選ぶ
+        # 箱の大きさでソートする
+        box.sort()
+        #print(box)
+        #print()
+
+        # 荷物を大きさでソートする
+        W_V = sorted(zip(W, V), key=lambda x: x[0])
+        #print(W_V)
+        #print()
+
+        # 荷物を箱に入れる
+        value = 0
+        for w, v in W_V:
+            for i, b in enumerate(box):
+                if w <= b:
+                    value += v
+                    box[i] = 0
+                    break
+        print(value)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = []
+    V = []
+    for _ in range(N):
+        w, v = map(int, input().split())
+        W.append(w)
+        V.append(v)
+    X = list(map(int, input().split()))
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        # ボールを箱に入れる
+        # 重さの重複を許す
+        # 価値の合計を最大化
+        # 価値の合計が最大になるような箱の選び方を
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = []
+    V = []
+    for _ in range(N):
+        w, v = map(int, input().split())
+        W.append(w)
+        V.append(v)
+    X = list(map(int, input().split()))
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        #print(L, R)
+        #箱を選ぶ
+        box = X[:L-1] + X[R:]
+        #print(box)
+        #荷物を選ぶ
+        wv = [[W[i], V[i]] for i in range(N)]
+        #print(wv)
+        #価値の高い順にソート
+        wv.sort(key=lambda x: x[1], reverse=True)
+        #print(wv)
+        #箱に入れる
+        ans = 0
+        for w, v in wv:
+            #print(w, v)
+            for i in range(len(box)):
+                if box[i] >= w:
+                    ans += v
+                    box[i] = 0
+                    break
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = [0] * N
+    V = [0] * N
+    X = [0] * M
+    for i in range(N):
+        W[i], V[i] = map(int, input().split())
+    for i in range(M):
+        X[i] = int(input())
+    for i in range(Q):
+        L, R = map(int, input().split())
+        used = [False] * M
+        for j in range(L-1, R):
+            used[j] = True
+        box = []
+        for j in range(M):
+            if not used[j]:
+                box.append(X[j])
+        box.sort()
+        w = W.copy()
+        v = V.copy()
+        for j in range(len(box)):
+            for k in range(N):
+                if w[k] <= box[j]:
+                    w[k] = 0
+                    v[k] = 0
+        print(sum(v))
+
+=======
+Suggestion 6
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = []
+    V = []
+    X = []
+    for _ in range(N):
+        w, v = map(int, input().split())
+        W.append(w)
+        V.append(v)
+    for _ in range(M):
+        x = int(input())
+        X.append(x)
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        X_ = X[:L-1] + X[R:]
+        X_.sort()
+        X_.reverse()
+        W_ = W[:]
+        V_ = V[:]
+        ans = 0
+        for x in X_:
+            w_max = 0
+            v_max = 0
+            for i in range(len(W_)):
+                if W_[i] <= x:
+                    if v_max < V_[i]:
+                        w_max = W_[i]
+                        v_max = V_[i]
+                        index = i
+            if v_max != 0:
+                W_.pop(index)
+                V_.pop(index)
+                ans += v_max
+        print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    WV = [list(map(int, input().split())) for _ in range(N)]
+    X = list(map(int, input().split()))
+    Query = [list(map(int, input().split())) for _ in range(Q)]
+    for L, R in Query:
+        #print(L, R)
+        boxes = X[:L-1] + X[R:]
+        boxes.sort()
+        #print(boxes)
+        wv = WV[:]
+        wv.sort(key=lambda x:x[1], reverse=True)
+        #print(wv)
+        ans = 0
+        for w, v in wv:
+            for i, b in enumerate(boxes):
+                if w <= b:
+                    ans += v
+                    boxes[i] = 0
+                    break
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N,M,Q = map(int,input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i],V[i] = map(int,input().split())
+    X = [0] * M
+    X = list(map(int,input().split()))
+    Query = []
+    for i in range(Q):
+        L,R = map(int,input().split())
+        Query.append([L,R])
+    for i in range(Q):
+        L,R = Query[i]
+        L -= 1
+        R -= 1
+        tmp = X[:L] + X[R+1:]
+        tmp.sort(reverse = True)
+        w = []
+        v = []
+        for j in range(N):
+            if W[j] <= tmp[0]:
+                w.append(W[j])
+                v.append(V[j])
+        dp = [[0 for j in range(len(tmp))] for k in range(len(w)+1)]
+        for j in range(1,len(w)+1):
+            for k in range(len(tmp)):
+                if w[j-1] <= tmp[k]:
+                    dp[j][k] = max(dp[j-1][k],dp[j-1][k-w[j-1]]+v[j-1])
+                else:
+                    dp[j][k] = dp[j-1][k]
+        print(dp[-1][-1])
+
+=======
+Suggestion 9
+
+def solve():
+    N,M,Q = map(int,input().split())
+    W = [0]*N
+    V = [0]*N
+    for i in range(N):
+        W[i],V[i] = map(int,input().split())
+    X = [0]*M
+    for i in range(M):
+        X[i] = int(input())
+    query = [0]*Q
+    for i in range(Q):
+        L,R = map(int,input().split())
+        L -= 1
+        R -= 1
+        query[i] = (L,R)
+    for L,R in query:
+        #箱の大きさのリストを作る
+        x = []
+        for i in range(M):
+            if i < L or R < i:
+                x.append(X[i])
+        #箱の大きさのリストを使って、各荷物の価値の合計の最大値を求める
+        dp = [0]*(sum(x)+1)
+        for i in range(N):
+            for j in range(sum(x),W[i]-1,-1):
+                dp[j] = max(dp[j],dp[j-W[i]]+V[i])
+        print(max(dp))
+
+solve()

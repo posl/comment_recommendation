@@ -1,66 +1,254 @@
-#Problem Statement
-#Takahashi will play a game using a piece on an array of squares numbered 1, 2, ..., N. Square i has an integer C_i written on it. Also, he is given a permutation of 1, 2, ..., N: P_1, P_2, ..., P_N.
-#Now, he will choose one square and place the piece on that square. Then, he will make the following move some number of times between 1 and K (inclusive):
-#In one move, if the piece is now on Square i (1 ≦ i ≦ N), move it to Square P_i. Here, his score increases by C_{P_i}.
-#Help him by finding the maximum possible score at the end of the game. (The score is 0 at the beginning of the game.)
-#
-#Constraints
-#2 ≦ N ≦ 5000
-#1 ≦ K ≦ 10^9
-#1 ≦ P_i ≦ N
-#P_i ≠ i
-#P_1, P_2, ..., P_N are all different.
-#-10^9 ≦ C_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#P_1 P_2 ... P_N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the maximum possible score at the end of the game.
-#
-#Sample Input 1
-#5 2
-#2 4 5 1 3
-#3 4 -10 -8 8
-#
-#Sample Output 1
-#8
-#When we start at some square of our choice and make at most two moves, we have the following options:
-#If we start at Square 1, making one move sends the piece to Square 2, after which the score is 4. Making another move sends the piece to Square 4, after which the score is 4 + (-8) = -4.
-#If we start at Square 2, making one move sends the piece to Square 4, after which the score is -8. Making another move sends the piece to Square 1, after which the score is -8 + 3 = -5.
-#If we start at Square 3, making one move sends the piece to Square 5, after which the score is 8. Making another move sends the piece to Square 3, after which the score is 8 + (-10) = -2.
-#If we start at Square 4, making one move sends the piece to Square 1, after which the score is 3. Making another move sends the piece to Square 2, after which the score is 3 + 4 = 7.
-#If we start at Square 5, making one move sends the piece to Square 3, after which the score is -10. Making another move sends the piece to Square 5, after which the score is -10 + 8 = -2.
-#The maximum score achieved is 8.
-#
-#Sample Input 2
-#2 3
-#2 1
-#10 -7
-#
-#Sample Output 2
-#13
-#
-#Sample Input 3
-#3 3
-#3 1 2
-#-1000 -2000 -3000
-#
-#Sample Output 3
-#-1000
-#We have to make at least one move.
-#
-#Sample Input 4
-#10 58
-#9 1 6 7 8 4 3 2 10 5
-#695279662 988782657 -119067776 382975538 -151885171 -177220596 -169777795 37619092 389386780 980092719
-#
-#Sample Output 4
-#29507023469
-#The absolute value of the answer may be enormous.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = [int(x) for x in input().split()]
+    P = [int(x) for x in input().split()]
+    C = [int(x) for x in input().split()]
+    ans = -10**10
+    for i in range(N):
+        tmp = 0
+        now = i
+        for j in range(K):
+            now = P[now]-1
+            tmp += C[now]
+            if tmp <= 0:
+                break
+            if now == i:
+                ans = max(ans, (K-j-1)//j*tmp+tmp)
+                break
+            ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ans = -10**18
+    for i in range(N):
+        total = 0
+        cycle = [i]
+        while P[cycle[-1]]-1 not in cycle:
+            cycle.append(P[cycle[-1]]-1)
+        for j in range(len(cycle)):
+            total += C[cycle[j]]
+            if total <= 0:
+                continue
+            temp = total*((K-j-1)//len(cycle))
+            for k in range(K-j-1-(K-j-1)//len(cycle)*len(cycle)):
+                temp += C[cycle[k]]
+                ans = max(ans, temp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ans = -10**9
+    for i in range(N):
+        cycle = []
+        j = i
+        while True:
+            cycle.append(C[j])
+            j = P[j]-1
+            if j == i:
+                break
+        cycle_sum = sum(cycle)
+        cycle_len = len(cycle)
+        cycle_max = max(cycle)
+        if cycle_sum > 0:
+            cycle_time = min(K//cycle_len, (K-cycle_len)//cycle_len+1)
+            ans = max(ans, cycle_sum*cycle_time+cycle_max)
+        else:
+            cycle_time = min(K//cycle_len, (K-cycle_len)//cycle_len+1)
+            ans = max(ans, cycle_sum*cycle_time)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    score = 0
+    for i in range(N):
+        if P[i] != 0:
+            j = i
+            cycle = []
+            while True:
+                cycle.append(C[j])
+                P[j], j = 0, P[j] - 1
+                if j == i:
+                    break
+            cycle_sum = sum(cycle)
+            cycle_len = len(cycle)
+            max_cycle = 0
+            for j in range(cycle_len):
+                max_cycle = max(max_cycle, cycle[j])
+                if j + 1 <= K:
+                    max_cycle = max(max_cycle, cycle[j] + cycle_sum * ((K - j - 1) // cycle_len))
+            score = max(score, max_cycle)
+    print(score)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    ans = -10**9
+
+    for i in range(N):
+        x = i
+        score = 0
+        path = []
+        while True:
+            x = P[x] - 1
+            score += C[x]
+            path.append(x)
+            if x == i:
+                break
+        if score <= 0:
+            ans = max(ans, max(C))
+        else:
+            cycle = len(path)
+            loop = min(K // cycle, 2 * 10**5)
+            score = score * loop
+            ans = max(ans, score)
+            for j in range(loop * cycle, K):
+                x = P[x] - 1
+                score += C[x]
+                ans = max(ans, score)
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N,K=map(int,input().split())
+    P=list(map(int,input().split()))
+    C=list(map(int,input().split()))
+    ans=-float('inf')
+    for i in range(N):
+        j=i
+        score=0
+        count=0
+        while count<K:
+            score+=C[P[j]-1]
+            if score>ans:
+                ans=score
+            j=P[j]-1
+            count+=1
+            if j==i:
+                break
+        if count<K:
+            loop=K//count
+            score*=loop
+            if score>ans:
+                ans=score
+            count+=loop*count
+            while count<K:
+                score+=C[P[j]-1]
+                if score>ans:
+                    ans=score
+                j=P[j]-1
+                count+=1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # P[i] = P_i - 1
+    for i in range(N):
+        P[i] -= 1
+
+    # C[i] = C_i
+    # C[i] = C_{P_i}
+    for i in range(N):
+        C[i] = C[P[i]]
+
+    # C[i] = C_{P_i} + C_{P_{P_i}} + ... + C_{P_{P_{P_{P_i}}}}
+    for i in range(N):
+        C[i] += C[P[i]]
+
+    # C[i] = C_{P_i} + C_{P_{P_i}} + ... + C_{P_{P_{P_{P_i}}}} + C_{P_{P_{P_{P_{P_i}}}}}
+    for i in range(N):
+        C[i] += C[P[i]]
+
+    # C[i] = C_{P_i} + C_{P_{P_i}} + ... + C_{P_{P_{P_{P_i}}}} + C_{P_{P_{P_{P_{P_i}}}}} + C_{P_{P_{P_{P_{P_{P_i}}}}}}
+    for i in range(N):
+        C[i] += C[P[i]]
+
+    # C[i] = C_{P_i} + C_{P_{P_i}} + ... + C_{P_{P_{P_{P_i}}}} + C_{P_{P_{P_{P_{P_i}}}}} + C_{P_{P_{P_{P_{P_{P_i}}}}}} + C_{P_{P_{P_{P_{P_{P_{P_i}}}}}}}
+    for i in range(N):
+        C[i] += C[P[i]]
+
+    # C[i] = C_{P_i} + C_{P_{P_i}} + ... + C_{P_{P_{P_{P_i}}}} + C_{P_{P_{P_{P_{P_i}}}}} + C_{P_{P_{P_{P_{P_{P_i}}}}}} + C_{P_{P_{P_{P_{P_{P_{P_i}}}}}}} + C_{P_{P_{P_{P_{
+
+=======
+Suggestion 8
+
+def solve(N, K, P, C):
+    res = -float("inf")
+    for i in range(N):
+        s = 0
+        t = 0
+        j = i
+        while True:
+            s += C[P[j]-1]
+            t += 1
+            j = P[j]-1
+            if j == i:
+                break
+        if s > 0:
+            if K >= t:
+                res = max(res, s*((K-t)//t)+max(0, s))
+            else:
+                res = max(res, max(C[:t]))
+        else:
+            res = max(res, max(C[:t]))
+    return res
+
+=======
+Suggestion 9
+
+def solve(n, k, p, c):
+    ans = -10**18
+    for i in range(n):
+        #print("i:", i)
+        j = i
+        s = 0
+        m = 0
+        while True:
+            #print("j:", j)
+            j = p[j] - 1
+            s += c[j]
+            m += 1
+            if j == i:
+                break
+        if s > 0:
+            #print("s:", s)
+            #print("m:", m)
+            t = (k - m) // m
+            #print("t:", t)
+            ans = max(ans, s * t + max(0, max(c[:j+1]) * (k - m - t * m)))
+        else:
+            ans = max(ans, max(c[:j+1]) * k)
+    return ans

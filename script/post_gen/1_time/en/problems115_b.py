@@ -1,44 +1,142 @@
-#Problem Statement
-#In some other world, today is the day before Christmas Eve.
-#Mr. Takaha is buying N items at a department store. The regular price of the i-th item (1 ≦ i ≦ N) is p_i yen (the currency of Japan).
-#He has a discount coupon, and can buy one item with the highest price for half the regular price. The remaining N-1 items cost their regular prices. What is the total amount he will pay?
-#
-#Constraints
-#2 ≦ N ≦ 10
-#100 ≦ p_i ≦ 10000
-#p_i is an even number.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#p_1
-#p_2
-#:
-#p_N
-#
-#Output
-#Print the total amount Mr. Takaha will pay.
-#
-#Sample Input 1
-#3
-#4980
-#7980
-#6980
-#
-#Sample Output 1
-#15950
-#The 7980-yen item gets the discount and the total is 4980 + 7980 / 2 + 6980 = 15950 yen.
-#Note that outputs such as 15950.0 will be judged as Wrong Answer.
-#
-#Sample Input 2
-#4
-#4320
-#4320
-#4320
-#4320
-#
-#Sample Output 2
-#15120
-#Only one of the four items gets the discount and the total is 4320 / 2 + 4320 + 4320 + 4320 = 15120 yen.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    p.sort(reverse=True)
+    ans = p[0] // 2
+    for i in range(1, n):
+        ans += p[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = [int(input()) for _ in range(N)]
+    P.sort(reverse=True)
+    total = 0
+    for i in range(N):
+        if i == 0:
+            total += P[i] // 2
+        else:
+            total += P[i]
+    print(total)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort(reverse=True)
+    sum = 0
+    for i in range(N):
+        if i == 0:
+            sum += p[i] // 2
+        else:
+            sum += p[i]
+    print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = []
+    for i in range(N):
+        p.append(int(input()))
+    p.sort(reverse=True)
+    result = 0
+    for i in range(N):
+        if i == 0:
+            result += p[i] / 2
+        else:
+            result += p[i]
+    print(int(result))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    p = [int(input()) for _ in range(N)]
+    p.sort(reverse=True)
+    p[0] //= 2
+    print(sum(p))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = []
+    for i in range(N):
+        p.append(int(input()))
+    p.sort()
+    for i in range(N-1):
+        p[i] /= 2
+    print(int(sum(p)))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = []
+    for i in range(n):
+        p.append(int(input()))
+    p.sort()
+    p.reverse()
+    ans = p[0] // 2
+    for i in range(1, n):
+        ans += p[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    ans = sum(p[0:N-1]) + p[N-1] // 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def  main():
+    N = int(input())
+    p = []
+    for i in range(N):
+        p.append(int(input()))
+    p.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        if i % 2 == 1:
+            ans += p[i]
+        else:
+            ans += p[i] / 2
+    print(int(ans))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    prices = []
+    for i in range(n):
+        prices.append(int(input()))
+    prices.sort()
+    prices.pop()
+    prices[0] = prices[0] / 2
+    print(int(sum(prices)))
+
+main()
+
+import sys

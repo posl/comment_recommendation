@@ -1,52 +1,181 @@
-#Problem Statement
-#2^N players, labeled 1 through 2^N, will compete against each other in a single-elimination programming tournament.
-#The rating of Player i is A_i. Any two players have different ratings, and a match between two players always results in the victory of the player with the higher rating.  
-#The tournament looks like a perfect binary tree.
-#Formally, the tournament will proceed as follows:  
-#For each integer i = 1, 2, 3, ..., N in this order, the following happens.
-#For each integer j (1 ≦ j ≦ 2^{N - i}), among the players who have never lost, the player with the (2j - 1)-th smallest label and the player with the 2j-th smallest label play a match against each other.
-#
-#Find the label of the player who will take second place, that is, lose in the final match.
-#
-#Constraints
-#1 ≦ N ≦ 16
-#1 ≦ A_i ≦ 10^9
-#A_i are pairwise different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_{2^N}
-#
-#Output
-#Print the label of the player who will take second place.
-#
-#Sample Input 1
-#2
-#1 4 2 5
-#
-#Sample Output 1
-#2
-#First, there will be two matches between Players 1 and 2 and between Players 3 and 4. According to the ratings, Players 2 and 4 will win.
-#Then, there will be a match between Players 2 and 4, and the tournament will end with Player 4 becoming champion.
-#The player who will lose in the final match is Player 2, so we should print 2.  
-#
-#Sample Input 2
-#2
-#3 1 5 4
-#
-#Sample Output 2
-#1
-#First, there will be two matches between Players 1 and 2 and between Players 3 and 4. According to the ratings, Players 1 and 3 will win.
-#Then, there will be a match between Players 1 and 3, and the tournament will end with Player 3 becoming champion.
-#The player who will lose in the final match is Player 1, so we should print 1.  
-#
-#Sample Input 3
-#4
-#6 13 12 5 3 7 10 11 16 9 8 15 2 1 14 4
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        B = []
+        for j in range(0, len(A), 2):
+            if A[j] > A[j + 1]:
+                B.append(A[j])
+            else:
+                B.append(A[j + 1])
+        A = B
+    print(A[0])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        a = [max(a[j], a[j+1]) for j in range(0, len(a), 2)]
+    print(a.index(min(a)) + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [(a, i + 1) for i, a in enumerate(A)]
+    A.sort()
+    for i in range(N):
+        B = []
+        for j in range(0, len(A), 2):
+            B.append(A[j + 1])
+        A = B
+    print(A[0][1])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [(a, i) for i, a in enumerate(A)]
+    A.sort()
+    A = [a[1] for a in A]
+    for i in range(N):
+        A = [min(a, b) for a, b in zip(A[::2], A[1::2])]
+    print(A[0] + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 ** n)
+    for i in range(n):
+        for j in range(2 ** i):
+            if a[2 * j] > a[2 * j + 1]:
+                b[j] = a[2 * j]
+                a[j] = a[2 * j]
+            else:
+                b[j] = a[2 * j + 1]
+                a[j] = a[2 * j + 1]
+    print(a.index(b[-1]) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = list(range(1,2**N+1))
+    for i in range(N):
+        for j in range(2**(N-i-1)):
+            if A[B[2*j]-1] < A[B[2*j+1]-1]:
+                B[j] = B[2*j+1]
+            else:
+                B[j] = B[2*j]
+    print(B[0])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A = sorted(A)
+    print(A[1])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    A = sorted(A)
+    #print(A)
+    print(A[1])
+
+=======
+Suggestion 9
+
+def solve(N, A):
+    B = [0] + A
+    for i in range(N):
+        for j in range(1, 2**(N-i)):
+            if B[2*j-1] < B[2*j]:
+                B[2*j-1] = 0
+            else:
+                B[2*j] = 0
+    return B.index(max(B))
+
+N = int(input())
+A = list(map(int, input().split()))
+print(solve(N, A))
+
+The answer is correct, but the time limit is exceeded. I am not sure how to improve the algorithm. Any suggestions?
+
+I suspect you are doing a lot of unnecessary work. For each round, you are checking every pair of players, but you only need to check the pair of players that are playing each other. Also, you can use a binary heap to find the next pair of players to play each other.
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I think you can use a binary heap to find the next pair of players to play each other.
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but it is still too slow. I am not sure how to improve the algorithm.
+
+I'm not sure what you mean by "too slow". Can you post your code?
+
+I tried to use a binary heap, but
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    #print(N,A)
+    B = sorted(A)
+    #print(B)
+    #print(B[0],B[1],B[2],B[3])
+    #print(B[4],B[5],B[6],B[7])
+    #print(B[8],B[9],B[10],B[11])
+    #print(B[12],B[13],B[14],B[15])
+    for i in range(2**N):
+        if A[i] == B[1]:
+            print(i+1)
+            break
+
+main()

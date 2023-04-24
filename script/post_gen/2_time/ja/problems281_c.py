@@ -1,54 +1,181 @@
-#問題文
-#N 曲からなるプレイリストがあり、曲には 1, ..., N の番号が付けられています。
-#曲 i の長さは A_i 秒です。
-#プレイリストを再生すると、曲 1、曲 2、...、曲 N の順に流れます。曲 N が流れ終わると、再び曲 1 から順に流れていきます。ある曲の途中で次の曲が流れることはなく、曲が流れ終わると、その瞬間に次の曲が流れ始めます。
-#プレイリストを再生してから T 秒後に流れているのはどの曲ですか？また、その曲が流れ始めてから何秒の時点ですか？
-#ただし、T 秒後ちょうどに曲が切り替わるような入力は与えられません。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ T ≦ 10^{18}
-#1 ≦ A_i ≦ 10^9
-#プレイリストを再生して T 秒後ちょうどに曲が切り替わることはない
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N T
-#A_1 ... A_N
-#
-#出力
-#プレイリストを再生してから T 秒後に流れている曲の番号と、その曲が流れ始めてから何秒たったかを表す整数を空白区切りで出力せよ。
-#
-#入力例 1
-#3 600
-#180 240 120
-#
-#出力例 1
-#1 60
-#プレイリストを再生してからの様子は次のようになります。
-#0 秒後から 180 秒後まで曲 1 が流れる。
-#180 秒後から 420 秒後まで曲 2 が流れる。
-#420 秒後から 540 秒後まで曲 3 が流れる。
-#540 秒後から 720 秒後まで曲 1 が流れる。
-#720 秒後から 960 秒後まで曲 2 が流れる。
-#.
-#.
-#.
-#600 秒後の時点で流れているのは曲 1 であり、流れ始めて 60 秒の時点です。
-#
-#入力例 2
-#3 281
-#94 94 94
-#
-#出力例 2
-#3 93
-#
-#入力例 3
-#10 5678912340
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#出力例 3
-#6 678912340
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+        if sum > T:
+            print(i+1, T-(sum-A[i]))
+            break
+        elif sum == T:
+            print(i+1, 0)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+        if sum >= T:
+            print(i+1, T - sum + A[i])
+            return
+
+=======
+Suggestion 3
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, T)
+    #print(A)
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    #print(sum)
+    if sum <= T:
+        T = T % sum
+    #print(T)
+    for i in range(N):
+        if T < A[i]:
+            print(i+1, T)
+            break
+        else:
+            T -= A[i]
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for a in A:
+        sum += a
+    r = T % sum
+    for i in range(N):
+        if r < A[i]:
+            print(i+1, r)
+            return
+        else:
+            r -= A[i]
+
+=======
+Suggestion 5
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, T, A)
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+        if sum > T:
+            print(i+1, T-(sum-A[i]))
+            break
+
+=======
+Suggestion 6
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum_A = sum(A)
+    play = T % sum_A
+    for i in range(N):
+        play -= A[i]
+        if play <= 0:
+            print(i + 1, A[i] + play)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    total = sum(a)
+    q,r = divmod(t,total)
+    ans = 0
+    for i in range(n):
+        r -= a[i]
+        if r < 0:
+            ans = i+1
+            break
+    print(ans,r+a[i])
+
+=======
+Suggestion 8
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 1曲の長さの合計
+    sum_a = sum(A)
+    # 何周したか
+    cnt = T // sum_a
+    # 余り
+    amari = T - cnt * sum_a
+
+    # 余りを引いたときの曲の番号
+    for i in range(N):
+        amari -= A[i]
+        if amari < 0:
+            print(i+1, A[i]+amari)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N, T = map(int, input().split())
+    As = list(map(int, input().split()))
+
+    #compute
+    #Aの合計値
+    Asum = sum(As)
+    #Aの合計値で割った余り
+    T %= Asum
+    #Aの合計値で割った商
+    Quotient = T // Asum
+    #TをAの合計値で割った余りで割った商
+    Quotient2 = Quotient // N
+    #TをAの合計値で割った余りで割った余り
+    Remainder = Quotient % N
+    #TをAの合計値で割った余りで割った余りをAの合計値で割った商にかけたもの
+    Quotient3 = Remainder * Quotient2
+    #TをAの合計値で割った余りで割った余りをAの合計値で割った商にかけたものをAの合計値で割った余りに足したもの
+    Remainder2 = Quotient3 + (T % Asum)
+    #TをAの合計値で割った余りで割った余りをAの合計値で割った商にかけたものをAの合計値で割った余りに足したものをAの合計値で割った余りで割った商
+    Quotient4 = Remainder2 // Asum
+    #TをAの合計値で割った余りで割った余りをAの合計値で割った商にかけたものをAの合計値で割った余りに足したものをAの合計値で割った余りで割った余り
+    Remainder3 = Remainder2 % Asum
+
+=======
+Suggestion 10
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    # プレイリストの曲数
+    # 曲iの長さ
+    # プレイリストを再生してからの時間
+    # プレイリストを再生してからの時間を曲の長さで割った余り
+    # プレイリストを再生してからの時間を曲の長さで割った商
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1の曲の長さ
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1の曲の長さ - プレイリストを再生してからの時間を曲の長さで割った余り
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1の曲の長さ - プレイリストを再生してからの時間を曲の長さで割った余り + 1
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1の曲の長さ - プレイリストを再生してからの時間を曲の長さで割った余り + 1の曲番号
+    # プレイリストを再生してからの時間を曲の長さで割った商 + 1の曲の長さ - プレイリストを再生してからの時間を曲の長さで割った余り + 1の曲番号の曲の長さ
+    # プレイリストを再生して

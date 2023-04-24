@@ -1,44 +1,176 @@
-#Problem Statement
-#Ringo loves the integer 200. Solve the problem below for him.
-#Given a sequence A of N positive integers, find the pair of integers (i, j) satisfying all of the following conditions:
-#1 ≦ i < j ≦ N;
-#A_i - A_j is a multiple of 200.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#6
-#123 223 123 523 200 2000
-#
-#Sample Output 1
-#4
-#For example, for (i, j) = (1, 3), A_1 - A_3 = 0 is a multiple of 200.
-#We have four pairs satisfying the conditions: (i,j)=(1,3),(1,4),(3,4),(5,6).
-#
-#Sample Input 2
-#5
-#1 2 3 4 5
-#
-#Sample Output 2
-#0
-#There may be no pair satisfying the conditions.
-#
-#Sample Input 3
-#8
-#199 100 200 400 300 500 600 200
-#
-#Sample Output 3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if (A[i] - A[j]) % 200 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] - A[j]) % 200 == 0:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if (a[i] - a[j]) % 200 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(x) % 200 for x in input().split()]
+    d = {}
+    for i in range(n):
+        if a[i] not in d:
+            d[a[i]] = 0
+        d[a[i]] += 1
+    ans = 0
+    for k in d:
+        ans += d[k] * (d[k] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * 200
+    for a in A:
+        B[a%200] += 1
+    ans = 0
+    for b in B:
+        ans += b * (b - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    d = dict()
+    for a in A:
+        r = a % 200
+        if r in d:
+            d[r] += 1
+        else:
+            d[r] = 1
+    ans = 0
+    for v in d.values():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #A = [123, 223, 123, 523, 200, 2000]
+    #N = len(A)
+    
+    # 余りのリストを作成
+    mod_list = [a % 200 for a in A]
+    
+    # 余りのリストを辞書に変換
+    mod_dict = {}
+    for i, mod in enumerate(mod_list):
+        if mod in mod_dict:
+            mod_dict[mod].append(i)
+        else:
+            mod_dict[mod] = [i]
+    
+    # 辞書の値のリストから組み合わせを作成
+    # 組み合わせ数をカウント
+    count = 0
+    for mod, index_list in mod_dict.items():
+        if len(index_list) > 1:
+            count += len(index_list) * (len(index_list) - 1) // 2
+    
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A = [x % 200 for x in A]
+    D = {}
+    for a in A:
+        D[a] = D.get(a, 0) + 1
+    ans = 0
+    for k, v in D.items():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    
+    # 200で割った余りをキーとした辞書を作成
+    mod_dict = {}
+    for i in range(N):
+        mod = A[i] % 200
+        if mod in mod_dict:
+            mod_dict[mod] += 1
+        else:
+            mod_dict[mod] = 1
+    
+    # 余りが同じものの組み合わせの数を求める
+    sum = 0
+    for i in mod_dict.values():
+        sum += i * (i - 1) // 2
+    
+    print(sum)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 200で割った余りをキーとして、その余りの数を値とする辞書を作成
+    d = {}
+    for i in range(n):
+        r = a[i] % 200
+        if r in d:
+            d[r] += 1
+        else:
+            d[r] = 1
+    # 余りの数が2以上のものを抜き出し、それらの組み合わせの数を計算
+    ans = 0
+    for k, v in d.items():
+        if v >= 2:
+            ans += v * (v - 1) // 2
+    print(ans)

@@ -1,72 +1,222 @@
-#Problem Statement
-#We have a simple undirected graph with N vertices and M edges. The vertices are numbered 1 through N, and the edges are numbered 1 through M.
-#Edge i connects Vertex A_i and Vertex B_i.
-#Find the number of ways to paint each vertex in this graph red, green, or blue so that the following condition is satisfied:
-#two vertices directly connected by an edge are always painted in different colors.
-#Here, it is not mandatory to use all the colors.
-#
-#Constraints
-#1 ≦ N ≦ 20
-#0 ≦ M ≦ ((N(N - 1))/(2))
-#1 ≦ A_i ≦ N
-#1 ≦ B_i ≦ N
-#The given graph is simple (that is, has no multi-edges and no self-loops).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_M B_M
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 3
-#1 2
-#2 3
-#3 1
-#
-#Sample Output 1
-#6
-#Let c_1, c_2, c_3 be the colors of Vertices 1, 2, 3 and R, G, B denote red, green, blue, respectively. There are six ways to satisfy the condition:
-#c_1c_2c_3 =  RGB
-#c_1c_2c_3 =  RBG
-#c_1c_2c_3 =  GRB
-#c_1c_2c_3 =  GBR
-#c_1c_2c_3 =  BRG
-#c_1c_2c_3 =  BGR
-#
-#Sample Input 2
-#3 0
-#
-#Sample Output 2
-#27
-#Since the graph has no edge, we can freely choose the colors of the vertices.
-#
-#Sample Input 3
-#4 6
-#1 2
-#2 3
-#3 4
-#2 4
-#1 3
-#1 4
-#
-#Sample Output 3
-#0
-#There may be no way to satisfy the condition.
-#
-#Sample Input 4
-#20 0
-#
-#Sample Output 4
-#3486784401
-#The answer may not fit into the 32-bit signed integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    A = [0]*M
+    B = [0]*M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    if M == 0:
+        print(3**N)
+        return
+    G = [[] for _ in range(N)]
+    for i in range(M):
+        G[A[i]-1].append(B[i]-1)
+        G[B[i]-1].append(A[i]-1)
+    for i in range(N):
+        G[i].sort()
+    for i in range(N):
+        G[i] = tuple(G[i])
+    G = tuple(G)
+    if M == (N*(N-1))//2:
+        print(0)
+        return
+    #print(G)
+    def dfs(v, c, used):
+        if used[c][v]:
+            return
+        used[c][v] = True
+        for u in G[v]:
+            dfs(u, c^1, used)
+            dfs(u, c^2, used)
+    used = [[False]*N for _ in range(3)]
+    dfs(0, 0, used)
+    dfs(0, 1, used)
+    dfs(0, 2, used)
+    #print(used)
+    ans = 3**N
+    for i in range(N):
+        if used[0][i] and used[1][i] and used[2][i]:
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = list(map(int, input().split()))
+    G = [[] for i in range(N)]
+    for i in range(M):
+        a, b = list(map(int, input().split()))
+        G[a-1].append(b-1)
+        G[b-1].append(a-1)
+    print(dfs(G, 0, [-1 for i in range(N)]))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    if m == 0:
+        print(3**n)
+        return
+    edges = []
+    for _ in range(m):
+        edges.append(tuple(map(int, input().split())))
+    #print(edges)
+    ans = 0
+    for i in range(3**n):
+        colors = [0]*n
+        for j in range(n):
+            colors[j] = i // (3**j) % 3
+        #print(colors)
+        flag = True
+        for edge in edges:
+            if colors[edge[0]-1] == colors[edge[1]-1]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    if M == 0:
+        print(3**N)
+        return
+
+    G = [[] for i in range(N)]
+    for i in range(M):
+        a,b = map(int,input().split())
+        G[a-1].append(b-1)
+        G[b-1].append(a-1)
+
+    ans = 0
+    for i in range(3**N):
+        flag = True
+        for j in range(N):
+            for k in G[j]:
+                if j > k:
+                    continue
+                if (i//(3**j))%3 == (i//(3**k))%3:
+                    flag = False
+                    break
+            if not flag:
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    ans = 3 ** N
+    for i in range(M):
+        for j in range(i + 1, M):
+            if AB[i][0] == AB[j][0] or AB[i][0] == AB[j][1] or AB[i][1] == AB[j][0] or AB[i][1] == AB[j][1]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_input():
+    N, M = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    return N, M, edges
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    edges = []
+    for _ in range(M):
+        edges.append(list(map(int, input().split())))
+    edges = sorted(edges, key=lambda x: x[0])
+    print(N, M)
+    print(edges)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    #print(N, M)
+    if M == 0:
+        print(3 ** N)
+        return
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    ans = 0
+    for i in range(3 ** N):
+        c = []
+        for j in range(N):
+            c.append(i // (3 ** j) % 3)
+        #print(c)
+        flag = True
+        for j in range(M):
+            if c[A[j] - 1] == c[B[j] - 1]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # 1. input
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    
+    # 2. create graph
+    G = [[0] * N for _ in range(N)]
+    for a, b in AB:
+        G[a-1][b-1] = 1
+        G[b-1][a-1] = 1
+    
+    # 3. search
+    ans = 0
+    for i in range(3**N):
+        # 3.1. check condition
+        flag = True
+        for j in range(N):
+            for k in range(j+1, N):
+                if G[j][k] == 1 and (i//3**j)%3 == (i//3**k)%3:
+                    flag = False
+                    break
+            if not flag:
+                break
+        # 3.2. count
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def color(graph, node, color):
+    if node in graph:
+        if color in graph[node]:
+            return False
+        for n in graph[node]:
+            if not color(graph, n, color):
+                return False
+    return True

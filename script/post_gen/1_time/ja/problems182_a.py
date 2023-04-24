@@ -1,32 +1,33 @@
-#問題文
-#あなたは twiblr という SNS をしています。
-#twiblr では、フォロー数が 2×( フォロワー数 )+100 を超えない範囲でフォロー数を増やすことができます。
-#あなたの現在のフォロワー数は A で、フォロー数は B です。
-#フォロー数はあといくつ増やせますか?  
-#
-#制約
-#0 ≦ A, B ≦ 10000
-#B ≦ 2 × A + 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#フォロー数があといくつ増やせるかを出力せよ。
-#
-#入力例 1
-#200 300
-#
-#出力例 1
-#200
-#フォロー数は 2 × 200 + 100 = 500 まで増やせるので、あと 200 増やせます。
-#
-#入力例 2
-#10000 0
-#
-#出力例 2
-#20100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(2 * a + 100 - b)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if 2 * a + 100 < b:
+        print(0)
+    else:
+        print(2 * a + 100 - b)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print(2*A+100-B)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    print(2*a+100-b)
+main()

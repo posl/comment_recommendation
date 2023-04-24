@@ -1,101 +1,182 @@
-#問題文
-#AtCoder 洋菓子店は数字の形をしたキャンドルがついたケーキを販売しています。
-#ここには 1, 2, 3 の形をしたキャンドルがついたケーキがそれぞれ X 種類、Y 種類、Z 種類あります。
-#それぞれのケーキには「美味しさ」という整数の値が以下のように割り当てられています。  
-#1 の形のキャンドルがついたケーキの美味しさはそれぞれ A_1, A_2, ..., A_X
-#2 の形のキャンドルがついたケーキの美味しさはそれぞれ B_1, B_2, ..., B_Y
-#3 の形のキャンドルがついたケーキの美味しさはそれぞれ C_1, C_2, ..., C_Z
-#高橋君は ABC 123 を記念するために、1, 2, 3 の形のキャンドルがついたケーキを 1 つずつ買うことにしました。
-#そのようにケーキを買う方法は X × Y × Z 通りあります。  
-#これらの選び方を 3 つのケーキの美味しさの合計が大きい順に並べたとき、1, 2, ..., K 番目の選び方でのケーキの美味しさの合計をそれぞれ出力してください。  
-#
-#制約
-#1 ≦ X ≦ 1  000
-#1 ≦ Y ≦ 1  000
-#1 ≦ Z ≦ 1  000
-#1 ≦ K ≦ min(3  000, X × Y × Z)
-#1 ≦ A_i ≦ 10  000  000  000
-#1 ≦ B_i ≦ 10  000  000  000
-#1 ≦ C_i ≦ 10  000  000  000
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#X Y Z K
-#A_1  A_2  A_3  ...  A_X
-#B_1  B_2  B_3  ...  B_Y
-#C_1  C_2  C_3  ...  C_Z
-#
-#出力
-#i 行目に、問題文中の i 番目の値を出力せよ。  
-#
-#入力例 1
-#2 2 2 8
-#4 6
-#1 5
-#3 8
-#
-#出力例 1
-#19
-#17
-#15
-#14
-#13
-#12
-#10
-#8
-#3 つのケーキの選び方は 2 × 2 × 2 = 8 通りあり、それらをケーキの美味しさの合計が大きい順に並べると以下の通りです。
-#(A_2, B_2, C_2): 6 + 5 + 8 = 19
-#(A_1, B_2, C_2): 4 + 5 + 8 = 17
-#(A_2, B_1, C_2): 6 + 1 + 8 = 15
-#(A_2, B_2, C_1): 6 + 5 + 3 = 14
-#(A_1, B_1, C_2): 4 + 1 + 8 = 13
-#(A_1, B_2, C_1): 4 + 5 + 3 = 12
-#(A_2, B_1, C_1): 6 + 1 + 3 = 10
-#(A_1, B_1, C_1): 4 + 1 + 3 = 8
-#
-#入力例 2
-#3 3 3 5
-#1 10 100
-#2 20 200
-#1 10 100
-#
-#出力例 2
-#400
-#310
-#310
-#301
-#301
-#美味しさの合計が同じになる組み合わせが複数ある可能性もあります。例えば、このテストケースで (A_1, B_3, C_3) を選ぶときと (A_3, B_3, C_1) を選ぶときはともに、美味しさの合計が 301 となります。
-#しかし、これらは異なる選び方であるため、出力には 301 が 2 回出現します。
-#
-#入力例 3
-#10 10 10 20
-#7467038376 5724769290 292794712 2843504496 3381970101 8402252870 249131806 6310293640 6690322794 6082257488
-#1873977926 2576529623 1144842195 1379118507 6003234687 4925540914 3902539811 3326692703 484657758 2877436338
-#4975681328 8974383988 2882263257 7690203955 514305523 6679823484 4263279310 585966808 3752282379 620585736
-#
-#出力例 3
-#23379871545
-#22444657051
-#22302177772
-#22095691512
-#21667941469
-#21366963278
-#21287912315
-#21279176669
-#21160477018
-#21085311041
-#21059876163
-#21017997739
-#20703329561
-#20702387965
-#20590247696
-#20383761436
-#20343962175
-#20254073196
-#20210218542
-#20150096547
-#入力・出力は 32 ビット整数に収まらない可能性があることに注意してください。  
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = [a + b for a in A for b in B]
+    AB.sort(reverse=True)
+    ABC = [ab + c for ab in AB[:K] for c in C]
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 2
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = [a+b for a in A for b in B]
+    AB.sort(reverse=True)
+    AB = AB[:K]
+    ABC = [ab+c for ab in AB for c in C]
+    ABC.sort(reverse=True)
+    ABC = ABC[:K]
+    for abc in ABC:
+        print(abc)
+
+=======
+Suggestion 3
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = sorted([a + b for a in A for b in B], reverse=True)[:K]
+    ABC = sorted([ab + c for ab in AB for c in C], reverse=True)[:K]
+    for abc in ABC:
+        print(abc)
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    S = []
+    for i in range(X):
+        for j in range(Y):
+            S.append(A[i] + B[j])
+    S.sort(reverse=True)
+    T = []
+    for i in range(min(K, X * Y)):
+        for j in range(Z):
+            T.append(S[i] + C[j])
+    T.sort(reverse=True)
+    for i in range(K):
+        print(T[i])
+
+=======
+Suggestion 5
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a + b)
+    AB.sort(reverse=True)
+    ABC = []
+    for ab in AB[:K]:
+        for c in C:
+            ABC.append(ab + c)
+    ABC.sort(reverse=True)
+    for abc in ABC[:K]:
+        print(abc)
+
+=======
+Suggestion 6
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    AB = [a + b for a in A for b in B]
+    AB.sort(reverse=True)
+    ABC = [ab + c for ab in AB[:K] for c in C[:K]]
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 7
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    AB = []
+    for i in range(X):
+        for j in range(Y):
+            AB.append(A[i] + B[j])
+    AB.sort(reverse=True)
+    ABC = []
+    for i in range(min(K, X * Y)):
+        for j in range(Z):
+            ABC.append(AB[i] + C[j])
+    ABC.sort(reverse=True)
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 8
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a + b)
+    AB.sort(reverse=True)
+
+    ABC = []
+    for ab in AB[:K]:
+        for c in C:
+            ABC.append(ab + c)
+    ABC.sort(reverse=True)
+
+    for ans in ABC[:K]:
+        print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i] + b[j])
+    ab.sort(reverse=True)
+    abc = []
+    for i in range(min(k, x * y)):
+        for j in range(z):
+            abc.append(ab[i] + c[j])
+    abc.sort(reverse=True)
+    for i in range(k):
+        print(abc[i])

@@ -1,78 +1,270 @@
-#Problem Statement
-#There is a deck consisting of N face-down cards with an integer from 1 through N written on them.  The integer on the i-th card from the top is P_i.
-#Using this deck, you will perform N moves, each consisting of the following steps:
-#Draw the topmost card from the deck.  Let X be the integer written on it.
-#Stack the drawn card, face up, onto the card with the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.  If there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
-#Then, if there is a pile consisting of K face-up cards on the table, eat all those cards.  The eaten cards all disappear from the table.
-#For each card, find which of the N moves eats it.  If the card is not eaten until the end, report that fact.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ K ≦ N ≦ 2 × 10^5
-#P is a permutation of (1,2,...,N) (i.e. a sequence obtained by rearranging (1,2,...,N)).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#P_1 P_2 ... P_N
-#
-#Output
-#Print N lines.
-#The i-th line (1 ≦ i ≦ N) should describe the card with the integer i written on it.  Specifically,
-#if the card with i written on it is eaten in the x-th move, print x;
-#if that card is not eaten in any move, print -1.
-#
-#Sample Input 1
-#5 2
-#3 5 2 1 4
-#
-#Sample Output 1
-#4
-#3
-#3
-#-1
-#4
-#In this input, P=(3,5,2,1,4) and K=2.
-#In the 1-st move, the card with 3 written on it is put on the table, face up, without stacked onto any card.
-#In the 2-nd move, the card with 5 written on it is put on the table, face up, without stacked onto any card.
-#In the 3-rd move, the card with 2 written on it is stacked, face up, onto the card with 3 written on it.
-#Now there is a pile consisting of K=2 face-up cards, on which 2 and 3 from the top are written, so these cards are eaten.
-#In the 4-th move, the card with 1 written on it is stacked, face up, onto the card with 5 written on it.
-#Now there is a pile consisting of K=2 face-up cards, on which 1 and 5 from the top are written, so these cards are eaten.
-#In the 5-th move, the card with 4 written on it is put on the table, face up, without stacked onto any card.
-#The card with 4 written on it was not eaten until the end.
-#
-#Sample Input 2
-#5 1
-#1 2 3 4 5
-#
-#Sample Output 2
-#1
-#2
-#3
-#4
-#5
-#If K=1, every card is eaten immediately after put on the table within a single move.
-#
-#Sample Input 3
-#15 3
-#3 14 15 9 2 6 5 13 1 7 10 11 8 12 4
-#
-#Sample Output 3
-#9
-#9
-#9
-#15
-#15
-#6
-#-1
-#-1
-#6
-#-1
-#-1
-#-1
-#-1
-#6
-#15
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = [-1] * n
+    for i in range(n):
+        p[i] -= 1
+    for i in range(n):
+        if ans[i] != -1:
+            continue
+        j = i
+        while ans[j] == -1:
+            ans[j] = i
+            j = p[j]
+    for i in range(n):
+        print(ans[i] // k + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = [-1] * n
+    for i in range(n):
+        p[i] -= 1
+    for i in range(n):
+        if ans[i] != -1:
+            continue
+        cur = i
+        cnt = 0
+        while ans[cur] == -1:
+            ans[cur] = i
+            cur = p[cur]
+            cnt += 1
+        if cnt % k == 0:
+            continue
+        cur = i
+        while ans[cur] == i:
+            ans[cur] = -1
+            cur = p[cur]
+    for i in range(n):
+        if ans[i] == -1:
+            print(-1)
+        else:
+            print(ans[i] + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    ans = [-1] * N
+    for i in range(N):
+        P[i] -= 1
+    for i in range(N):
+        if ans[i] != -1:
+            continue
+        now = i
+        cnt = 0
+        while ans[now] == -1:
+            ans[now] = cnt
+            now = P[now]
+            cnt += 1
+        if cnt <= K:
+            continue
+        now = i
+        while cnt > K:
+            ans[now] = -1
+            now = P[now]
+            cnt -= 1
+    for i in range(N):
+        print(ans[i] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    ans = [-1] * N
+    for i in range(N):
+        P[i] -= 1
+    for i in range(N):
+        if ans[i] == -1:
+            move = 1
+            cur = P[i]
+            while ans[cur] == -1:
+                ans[cur] = move
+                move += 1
+                cur = P[cur]
+            for j in range(N):
+                if ans[j] != -1:
+                    ans[j] = (ans[j] - 1) % (move - 1) + 1
+    for i in range(N):
+        if ans[i] > K:
+            ans[i] = -1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    cards = [0] * N
+    for i in range(N):
+        cards[P[i] - 1] = i
+    eaten = [0] * N
+    for i in range(N):
+        eaten[i] = -1
+    for i in range(N):
+        if eaten[i] != -1:
+            continue
+        eaten[i] = i
+        j = cards[i]
+        for k in range(K - 1):
+            if j + 1 >= N:
+                break
+            j += 1
+            if eaten[j] != -1:
+                break
+            eaten[j] = i
+    for i in range(N):
+        print(eaten[i] + 1)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+
+    for i in range(N):
+        P[i] -= 1
+
+    eaten = [False] * N
+    table = [0] * N
+    table[0] = P[0]
+    eaten[P[0]] = True
+    top = 0
+    for i in range(1, N):
+        if P[i] > table[top]:
+            top += 1
+            table[top] = P[i]
+            eaten[P[i]] = True
+        else:
+            j = 0
+            while table[j] < P[i]:
+                j += 1
+            table[j] = P[i]
+            eaten[P[i]] = True
+
+    for i in range(N):
+        if eaten[i]:
+            for j in range(i + K - 1, N, K):
+                eaten[j] = True
+            for j in range(i - K + 1, -1, -K):
+                eaten[j] = True
+
+    for i in range(N):
+        if eaten[i]:
+            print(i + 1)
+        else:
+            print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    ans = [-1]*N
+    for i in range(N):
+        P[i] -= 1
+    for i in range(N):
+        if ans[i] != -1:
+            continue
+        cnt = 1
+        j = i
+        while ans[j] == -1:
+            ans[j] = cnt
+            cnt += 1
+            j = P[j]
+    for i in range(N):
+        if ans[i] <= K:
+            print(i+1)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P = [x - 1 for x in P]
+    ans = [-1] * N
+    stack = []
+    for i in range(N):
+        while stack and P[stack[-1]] < P[i]:
+            stack.pop()
+        if stack and i - stack[-1] == K:
+            ans[stack[-1]] = i
+            stack.pop()
+        stack.append(i)
+    for i in range(N):
+        if ans[i] == -1:
+            ans[i] = N
+    for i in range(N - 1):
+        ans[i] = min(ans[i], ans[i + 1])
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    eaten = [False] * N
+    eatable = [False] * N
+    eatable[N - 1] = True
+    for i in range(N - 2, -1, -1):
+        if P[i] < P[i + 1]:
+            eatable[i] = True
+        else:
+            eatable[i] = False
+    for i in range(N):
+        if eatable[i]:
+            for j in range(i, i + K):
+                eaten[j] = True
+    for i in range(N):
+        if eaten[i]:
+            print(P[i])
+        else:
+            print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K, P)
+    
+    # 1. find the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.
+    # 2. if there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
+    # 3. if there is a pile consisting of K face-up cards on the table, eat all those cards. The eaten cards all disappear from the table.
+    # 4. For each card, find which of the N moves eats it. If the card is not eaten until the end, report that fact.
+    
+    # 1. find the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.
+    # 2. if there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
+    # 3. if there is a pile consisting of K face-up cards on the table, eat all those cards. The eaten cards all disappear from the table.
+    # 4. For each card, find which of the N moves eats it. If the card is not eaten until the end, report that fact.
+    
+    # 1. find the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.
+    # 2. if there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
+    # 3. if there is a pile consisting of K face-up cards on the table, eat all those cards. The eaten cards all disappear from the table.
+    # 4. For each card, find which of the N moves eats it. If the card is not eaten until the end, report that fact.
+    
+    # 1. find the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.
+    # 2. if there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
+    # 3

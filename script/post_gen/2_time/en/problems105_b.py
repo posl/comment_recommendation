@@ -1,36 +1,134 @@
-#Problem Statement
-#La Confiserie d'ABC sells cakes at 4 dollars each and doughnuts at 7 dollars each.
-#Determine if there is a way to buy some of them for exactly N dollars. You can buy two or more doughnuts and two or more cakes, and you can also choose to buy zero doughnuts or zero cakes.
-#
-#Constraints
-#N is an integer between 1 and 100, inclusive.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If there is a way to buy some cakes and some doughnuts for exactly N dollars, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#11
-#
-#Sample Output 1
-#Yes
-#If you buy one cake and one doughnut, the total will be 4 + 7 = 11 dollars.
-#
-#Sample Input 2
-#40
-#
-#Sample Output 2
-#Yes
-#If you buy ten cakes, the total will be 4 × 10 = 40 dollars.
-#
-#Sample Input 3
-#3
-#
-#Sample Output 3
-#No
-#The prices of cakes (4 dollars) and doughnuts (7 dollars) are both higher than 3 dollars, so there is no such way.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    for i in range(N//4 + 1):
+        for j in range(N//7 + 1):
+            if 4*i + 7*j == N:
+                print('Yes')
+                return
+    print('No')
+    return
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N == 1 or N == 2 or N == 3 or N == 5 or N == 6:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    for i in range(N // 4 + 1):
+        if (N - 4 * i) % 7 == 0:
+            print("Yes")
+            return
+    print("No")
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    for i in range(N//4+1):
+        for j in range(N//7+1):
+            if i*4 + j*7 == N:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    for i in range(n//4+1):
+        for j in range(n//7+1):
+            if i*4 + j*7 == n:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 'No'
+    for i in range(N // 4 + 1):
+        for j in range(N // 7 + 1):
+            if 4 * i + 7 * j == N:
+                ans = 'Yes'
+                break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    for i in range(0, n//4+1):
+        for j in range(0, n//7+1):
+            if 4*i + 7*j == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    flag = False
+    for i in range(N//4+1):
+        for j in range(N//7+1):
+            if 4*i + 7*j == N:
+                flag = True
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    for i in range(1, 100):
+        for j in range(1, 100):
+            if i * 4 + j * 7 == N:
+                print("Yes")
+                return
+    print("No")
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    if N < 4:
+        print("No")
+        return
+    for i in range(N//4+1):
+        if (N-4*i)%7 == 0:
+            print("Yes")
+            return
+    print("No")
+main()

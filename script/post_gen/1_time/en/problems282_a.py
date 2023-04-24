@@ -1,29 +1,66 @@
-#Problem Statement
-#You are given an integer K.
-#Print a string that is a concatenation of the first K uppercase English letters in ascending order, starting from A.
-#
-#Constraints
-#K is an integer between 1 and 26, inclusive.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#ABC
-#The uppercase English letters in ascending order are A, B, C, ...
-#By concatenating the first three uppercase English letters, we get ABC.
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#A
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    print(''.join([chr(i) for i in range(65, 65+k)]))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    print(''.join([chr(i) for i in range(65, 65+K)]))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    print("".join([chr(i) for i in range(65, 65 + k)]))
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    print(''.join(chr(i) for i in range(ord('A'), ord('A') + k)))
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    print(''.join(chr(ord('A') + i) for i in range(k)))
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    print("".join([chr(c) for c in range(65, 65 + k)]))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    print("".join(chr(65+i) for i in range(K)))
+
+=======
+Suggestion 8
+
+def main():
+    # Put your code here
+    input = int(input())
+    print(''.join([chr(i) for i in range(65, 65+input)]))
+
+main()
+
+I was able to solve it with the following code:

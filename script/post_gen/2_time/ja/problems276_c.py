@@ -1,49 +1,179 @@
-#問題文
-#(1, ..., N) の順列 P = (P_1, ..., P_N) が与えられます。ただし、(P_1, ..., P_N) ≠ (1, ..., N) です。
-#(1 ..., N) の順列を全て辞書順で小さい順に並べたとき、P が K 番目であるとします。辞書順で小さい方から K-1 番目の順列を求めてください。
-# 順列とは？
-#(1, ..., N) の順列とは、(1, ..., N) を並べ替えて得られる数列のことをいいます。
-# 辞書順とは？
-#長さ N の数列 A = (A_1, ..., A_N), B = (B_1, ..., B_N) に対し、A が B より辞書順で真に小さいとは、ある整数 1 ≦ i ≦ N が存在して、下記の 2 つがともに成り立つことをいいます。
-#(A_{1},...,A_{i-1}) = (B_1,...,B_{i-1})
-#A_i < B_i
-#
-#
-#制約
-#2 ≦ N ≦ 100
-#1 ≦ P_i ≦ N  (1 ≦ i ≦ N)
-#P_i ≠ P_j  (i ≠ j)
-#(P_1, ..., P_N) ≠ (1, ..., N) 
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#P_1 ... P_N
-#
-#出力
-#求める順列を Q = (Q_1, ..., Q_N) として、Q_1, ..., Q_N をこの順に空白区切りで一行に出力せよ。
-#
-#入力例 1
-#3
-#3 1 2
-#
-#出力例 1
-#2 3 1
-#(1, 2, 3) の順列を辞書順で小さい順に並べると次のようになります。
-#(1, 2, 3)
-#(1, 3, 2)
-#(2, 1, 3)
-#(2, 3, 1)
-#(3, 1, 2)
-#(3, 2, 1)
-#よって P = (3, 1, 2) は小さい方から 5 番目であり、求める順列、すなわち小さい方から 5 - 1 = 4 番目の順列は (2, 3, 1) です。
-#
-#入力例 2
-#10
-#9 8 6 5 10 3 1 2 4 7
-#
-#出力例 2
-#9 8 6 5 10 2 7 4 3 1
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def next_permutation(a):
+    n = len(a)
+    i = n - 1
+    while i > 0 and a[i - 1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = n - 1
+    while a[j] <= a[i - 1]:
+        j -= 1
+    a[i - 1], a[j] = a[j], a[i - 1]
+    j = n - 1
+    while i < j:
+        a[i], a[j] = a[j], a[i]
+        i += 1
+        j -= 1
+    return True
+
+=======
+Suggestion 2
+
+def next_permutation(a):
+    n = len(a)
+    i = n - 2
+    while i >= 0 and a[i] >= a[i + 1]:
+        i -= 1
+    if i == -1:
+        return False
+    j = n - 1
+    while a[j] <= a[i]:
+        j -= 1
+    a[i], a[j] = a[j], a[i]
+    a[i + 1:] = a[n - 1:i:-1]
+    return True
+
+=======
+Suggestion 3
+
+def next_permutation(seq):
+    i = len(seq) - 1
+    while i > 0 and seq[i - 1] >= seq[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = len(seq) - 1
+    while seq[j] <= seq[i - 1]:
+        j -= 1
+    seq[i - 1], seq[j] = seq[j], seq[i - 1]
+    j = len(seq) - 1
+    while i < j:
+        seq[i], seq[j] = seq[j], seq[i]
+        i += 1
+        j -= 1
+    return True
+
+=======
+Suggestion 4
+
+def next_permutation(A):
+    N = len(A)
+    i = N - 1
+    while i > 0 and A[i - 1] >= A[i]:
+        i -= 1
+    if i == 0:
+        return False
+    j = N - 1
+    while A[j] <= A[i - 1]:
+        j -= 1
+    A[i - 1], A[j] = A[j], A[i - 1]
+    j = N - 1
+    while i < j:
+        A[i], A[j] = A[j], A[i]
+        i += 1
+        j -= 1
+    return True
+
+=======
+Suggestion 5
+
+def next_permutation(a):
+    l = len(a)
+    i = l - 2
+    while i >= 0 and a[i] >= a[i + 1]:
+        i -= 1
+    if i == -1:
+        return False
+    j = l - 1
+    while a[i] >= a[j]:
+        j -= 1
+    a[i], a[j] = a[j], a[i]
+    a[i + 1:] = reversed(a[i + 1:])
+    return True
+
+=======
+Suggestion 6
+
+def nextPermutation(a):
+    # 1. Find the largest index k such that a[k] < a[k + 1]. If no such index exists, the permutation is the last permutation.
+    k = -1
+    for i in range(len(a) - 1):
+        if a[i] < a[i + 1]:
+            k = i
+    if k == -1:
+        return False
+
+    # 2. Find the largest index l greater than k such that a[k] < a[l].
+    l = -1
+    for i in range(k + 1, len(a)):
+        if a[k] < a[i]:
+            l = i
+    if l == -1:
+        return False
+
+    # 3. Swap the value of a[k] with that of a[l].
+    a[k], a[l] = a[l], a[k]
+
+    # 4. Reverse the sequence from a[k + 1] up to and including the final element a[n].
+    a[k + 1:] = a[len(a) - 1:k:-1]
+    return True
+
+n = int(input())
+p = list(map(int, input().split()))
+
+a = list(range(1, n + 1))
+ans = []
+for i in range(n):
+    for j in range(1, n + 1):
+        a[i], a[j] = a[j], a[i]
+        if a == p:
+            ans = a[:]
+        a[i], a[j] = a[j], a[i]
+
+print(*ans)
+
+=======
+Suggestion 7
+
+def next_permutation(L):
+    if len(L) == 1:
+        return False
+    i = len(L) - 1
+    while i > 0 and L[i-1] >= L[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = len(L) - 1
+    while L[j] <= L[i-1]:
+        j -= 1
+    L[i-1], L[j] = L[j], L[i-1]
+    j = len(L) - 1
+    while i < j:
+        L[i], L[j] = L[j], L[i]
+        i += 1
+        j -= 1
+    return True
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [i-1 for i in p]
+    #print(p)
+    a = [i for i in range(n)]
+    #print(a)
+    for i in range(n):
+        for j in range(i+1, n):
+            if p[i] > p[j]:
+                p[i], p[j] = p[j], p[i]
+                a[i], a[j] = a[j], a[i]
+    for i in range(n):
+        print(a[i] + 1, end=' ')
+    print()

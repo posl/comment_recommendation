@@ -1,37 +1,169 @@
-#問題文
-#英小文字からなる長さ N の文字列 S が与えられます。 S の x 文字目 (1 ≦ x ≦ N) は S_x です。
-#i=1,2,...,N-1 それぞれについて、以下の条件を全て満たす最大の非負整数 l を求めてください。
-#l+i ≦ N である。
-#全ての 1 ≦ k ≦ l を満たす整数 k について、 S_{k} ≠ S_{k+i} を満たす。
-#なお、 l=0 は常に条件を満たすことに注意してください。
-#
-#制約
-#N は 2 ≦ N ≦ 5000 を満たす整数
-#S は英小文字からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#N-1 行にわたって出力せよ。そのうち x 行目 (1 ≦ x < N) には i=x とした場合の答えを整数として出力せよ。
-#
-#入力例 1
-#6
-#abcbac
-#
-#出力例 1
-#5
-#1
-#2
-#0
-#1
-#この入力では、 S= abcbac です。  
-#i=1 のとき、 S_1 ≠ S_2, S_2 ≠ S_3, ... ,S_5 ≠ S_6 であるため、 最大値は l=5 です。
-#i=2 のとき、 S_1 ≠ S_3 ですが S_2 = S_4 であるため、 最大値は l=1 です。
-#i=3 のとき、 S_1 ≠ S_4, S_2 ≠ S_5 ですが S_3 = S_6 であるため、 最大値は l=2 です。
-#i=4 のとき、 S_1 = S_5 であるため、 最大値は l=0 です。
-#i=5 のとき、 S_1 ≠ S_6 であるため、 最大値は l=1 です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(1,N-i+1):
+            if S[j-1] != S[j+i-1]:
+                l = j
+        print(l)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l = j+1
+        print(l)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l = j+1
+            else:
+                break
+        print(l)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        for j in range(n-i):
+            if s[j] != s[j+i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        for j in range(N-i):
+            if S[j] == S[j+i]:
+                print(j)
+                break
+        else:
+            print(N-i)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        ans = 0
+        for j in range(i):
+            if S[j] != S[j + i]:
+                ans += 1
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n-1):
+        l = 0
+        for j in range(1, n-i):
+            if s[i] != s[i+j]:
+                l = j
+        print(l)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())  # 2 ≦ N ≦ 5000
+    S = input()  # 英小文字からなる長さ N の文字列
+    # print(N)
+    # print(S)
+
+    # 1 ≦ i ≦ N-1
+    for i in range(1, N):
+        # print("i: ", i)
+        # print("S[i]: ", S[i])
+        # print("S[i-1]: ", S[i-1])
+        # print("S[i+i]: ", S[i+i])
+        # print("S[i+i-1]: ", S[i+i-1])
+        # print("S[i+i-2]: ", S[i+i-2])
+        # print("S[i+i-3]: ", S[i+i-3])
+        # print("S[i+i-4]: ", S[i+i-4])
+        # print("S[i+i-5]: ", S[i+i-5])
+        # print("S[i+i-6]: ", S[i+i-6])
+        # print("S[i+i-7]: ", S[i+i-7])
+        # print("S[i+i-8]: ", S[i+i-8])
+        # print("S[i+i-9]: ", S[i+i-9])
+        # print("S[i+i-10]: ", S[i+i-10])
+        # print("S[i+i-11]: ", S[i+i-11])
+        # print("S[i+i-12]: ", S[i+i-12])
+        # print("S[i+i-13]: ", S[i+i-13])
+        # print("S[i+i-14]: ", S[i+i-14])
+        # print("S[i+i-15]: ", S[i+i-15])
+        # print("S[i+i-16]: ", S[i+i-16])
+        # print("S[i+i-17]: ", S[i+i-17])
+        # print("S[i+i-18]: ", S[i+i-18])
+        # print("S[i+i-19]: ", S[i+i-19])
+        # print("S[i+i-20]: ", S[i+i-20])
+        # print("S[i+i-21]: ", S[i+i-21])
+        # print("S[i+i-22]: ", S[i+i-22])
+        #
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        #print(i)
+        result = 0
+        for j in range(1, N - i + 1):
+            if S[j - 1] != S[j + i - 1]:
+                result += 1
+            else:
+                break
+        print(result)

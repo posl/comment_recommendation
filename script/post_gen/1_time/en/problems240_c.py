@@ -1,52 +1,212 @@
-#Problem Statement
-#Takahashi is standing at the coordinate 0 on a number line.
-#He will now perform N jumps. In the i-th jump (1 ≦ i ≦ N), he moves a_i or b_i in the positive direction.
-#Is it possible for him to be at the coordinate X after N jumps?
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ a_i < b_i ≦ 100  (1 ≦ i ≦ N)
-#1 ≦ X ≦ 10000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#a_1 b_1
-#.
-#.
-#.
-#a_N b_N
-#
-#Output
-#If it is possible for Takahashi to be at the coordinate X after N jumps, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 10
-#3 6
-#4 5
-#
-#Sample Output 1
-#Yes
-#By moving b_1 (= 6) in the first jump and a_2 (= 4) in the second jump, he can be at the coordinate X (= 10).
-#
-#Sample Input 2
-#2 10
-#10 100
-#10 100
-#
-#Sample Output 2
-#No
-#He can be at the coordinate X (= 10) after the first jump, but not after all jumps.
-#
-#Sample Input 3
-#4 12
-#1 8
-#5 7
-#3 4
-#2 6
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    #print(a)
+    #print(b)
+    ans = "No"
+    current = 0
+    for i in range(n):
+        current += a[i]
+        if current > x:
+            break
+        current += b[i]
+        if current == x:
+            ans = "Yes"
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+
+    distance = 0
+    for i in range(n):
+        distance += a[i]
+        if distance > x:
+            print("No")
+            exit()
+        distance += b[i]
+
+    if distance > x:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    #print(n, x)
+    #print(a)
+    #print(b)
+
+    for i in range(n):
+        x -= a[i]
+        if x < 0:
+            print("No")
+            return
+        x += b[i]
+        #print(x)
+
+    print("Yes")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    sum = 0
+    for i in range(n):
+        sum += a[i]*b[i]
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    for i in range(n):
+        x -= a[i]
+        if x < 0:
+            print("No")
+            return
+        x += b[i]
+    if x < 0:
+        print("No")
+    else:
+        print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    sum = 0
+    for i in range(n):
+        if i == 0:
+            sum += a[i]
+        else:
+            sum += a[i] - b[i-1]
+    sum += b[n-1]
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = [0]*n
+    b = [0]*n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    ans = 'No'
+    for i in range(n):
+        if a[i] <= x <= b[i]:
+            ans = 'Yes'
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    total = 0
+    for i in range(N):
+        if i % 2 == 0:
+            total += a[i]
+        else:
+            total += b[i]
+
+    if total <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    sum = 0
+    for i in range(N):
+        a, b = map(int, input().split())
+        sum += a * b
+        if sum > X * 100:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 'No'
+    for i in range(n):
+        x -= a[i][0]
+        if x < 0:
+            ans = 'No'
+            break
+        if x == 0:
+            ans = 'Yes'
+            break
+        x += a[i][1]
+    print(ans)

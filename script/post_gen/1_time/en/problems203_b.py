@@ -1,34 +1,74 @@
-#Problem Statement
-#A condominium AtCoder has N floors, called the 1-st floor through the N-th floor.
-#Each floor has K rooms, called the 1-st room through the K-th room.
-#Here, both N and K are one-digit integers, and the j-th room on the i-th floor has the room number i0j.
-#For example, the 2-nd room on the 1-st floor has the room number 102.
-#Takahashi, the manager, got interested in the sum of the room numbers of all rooms in the condominium, where each room number is seen as a three-digit integer.
-#Find this sum.
-#
-#Constraints
-#1 ≦ N,K ≦ 9
-#N and K are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#1 2
-#
-#Sample Output 1
-#203
-#The condominium has two rooms 101 and 102.
-#We have 101+102=203.
-#
-#Sample Input 2
-#3 3
-#
-#Sample Output 2
-#1818
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    sum = 0
+    for i in range(1, N+1):
+        for j in range(1, K+1):
+            sum += i*100+j
+    print(sum)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, K + 1):
+            ans += int(str(i) + '0' + str(j))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    print((N*100 + N*10 + N) + (K*100 + K*10 + K))
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    print((N * 100 + K) * (N * K) // 2)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    print((N * 100 + K) * (N * 100 + K))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    print(N * 100 + K * 10 + N + K)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    print(100*N + 10*K + N + K)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    print((N*100+K)*N)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    print(100 * N * K)

@@ -1,30 +1,101 @@
-#問題文
-#あなたはスロットマシーンで遊んでいます。
-#スロットを回した結果は 3 文字の英大文字 C_1,C_2,C_3 で表され、これらが全て同じ文字であるとき当たりです。
-#当たりかどうか判定してください。
-#
-#制約
-#C_i は英大文字
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#C_1 C_2 C_3
-#
-#出力
-#当たりなら Won を、当たりでないなら Lost を出力せよ。
-#
-#入力例 1
-#SSS
-#
-#出力例 1
-#Won
-#全て同じ文字なので当たりです。
-#
-#入力例 2
-#WVW
-#
-#出力例 2
-#Lost
-#当たりではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] == s[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 2
+
+def main():
+    c = input()
+    if c[0] == c[1] and c[1] == c[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[0] == s[2]:
+        print('Won')
+    else:
+        print('Lost')
+
+=======
+Suggestion 4
+
+def main():
+    c1, c2, c3 = input().split()
+    if c1 == c2 and c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 5
+
+def main():
+    str = input()
+    if str[0] == str[1] and str[0] == str[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 6
+
+def main():
+    c1, c2, c3 = input().rstrip().split()
+    if c1 == c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 7
+
+def main():
+    c1,c2,c3 = input().strip()
+    if c1 == c2 and c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 8
+
+def main():
+    c = list(input())
+    if c[0]==c[1] and c[1]==c[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 9
+
+def main():
+    c1,c2,c3 = input().rstrip().split()
+    if c1 == c2 and c1 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 10
+
+def solve():
+    a,b,c = map(str, input().split())
+    if a==b and b==c:
+        print("Won")
+    else:
+        print("Lost")

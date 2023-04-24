@@ -1,52 +1,144 @@
-#問題文
-#高橋君の夏休みは N 日間です。
-#夏休みの宿題が M 個出されており、i 番目の宿題をやるには A_i 日間かかります。
-#複数の宿題を同じ日にやることはできず、また、宿題をやる日には遊ぶことができません。
-#夏休み中に全ての宿題を終わらせるとき、最大何日間遊ぶことができますか？
-#ただし、夏休み中に全ての宿題を終わらせることができないときは、かわりに -1 を出力してください。
-#
-#制約
-#1 ≦ N ≦ 10^6
-#1 ≦ M ≦ 10^4
-#1 ≦ A_i ≦ 10^4
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 ... A_M
-#
-#出力
-#高橋君が遊ぶことのできる日数、または、-1 を出力せよ。
-#
-#入力例 1
-#41 2
-#5 6
-#
-#出力例 1
-#30
-#例えば、最初の 5 日間で 1 番目の宿題をやり、その後 30 日間遊んで、最後の 6 日間で 2 番目の宿題をやることで、30 日間遊ぶことができます。
-#
-#入力例 2
-#10 2
-#5 6
-#
-#出力例 2
-#-1
-#宿題を終わらせることができません。
-#
-#入力例 3
-#11 2
-#5 6
-#
-#出力例 3
-#0
-#宿題を終わらせることはできますが、遊ぶことはできません。
-#
-#入力例 4
-#314 15
-#9 26 5 35 8 9 79 3 23 8 46 2 6 43 3
-#
-#出力例 4
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(m):
+        n -= a[i]
+        if n < 0:
+            print(m - i)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    for i in range(M):
+        N -= A[i]
+        if N < 0:
+            print(-1)
+            return
+    print(N)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(M):
+        if A[i] <= N:
+            N -= A[i]
+        else:
+            print(N)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(m):
+        n -= a[i]
+    if n < 0:
+        print(-1)
+    else:
+        print(n)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum_A = sum(A)
+    if sum_A > N:
+        print(-1)
+    else:
+        print(N - sum_A)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(M):
+        if N - A[i] < 0:
+            print(N)
+            exit()
+        else:
+            N -= A[i]
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a_list = list(map(int, input().split()))
+    a_list.sort()
+    for a in a_list:
+        n -= a
+        if n < 0:
+            print(-1)
+            return
+    print(n)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    for i in range(M):
+        N = N - A[i]
+        if N < 0:
+            print(-1)
+            return
+
+    print(N)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    for i in range(M):
+        N -= A[i]
+    print(N)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, M)
+    #print(A)
+    A.sort()
+    #print(A)
+    for i in range(M):
+        N -= A[i]
+        if N < 0:
+            print(-1)
+            return
+    print(N)

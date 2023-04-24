@@ -1,48 +1,128 @@
-#問題文
-#この問題は 1 つの入力ファイルに複数のテストケースが含まれる問題です。
-#はじめに整数 T が与えられます。T 個のテストケースについて次の問題を解いてください。
-#N 個の正整数 A_1, A_2, ..., A_N があります。このうち奇数は何個ありますか？
-#
-#制約
-#1 ≦ T ≦ 100
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。ここで test_i は i 番目のテストケースを意味する。
-#T
-#test_1
-#test_2
-#.
-#.
-#.
-#test_T
-#各テストケースは以下の形式で与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#T 行出力せよ。i 行目には i 番目のテストケースに対する答えを出力せよ。
-#
-#入力例 1
-#4
-#3
-#1 2 3
-#2
-#20 23
-#10
-#6 10 4 1 5 9 8 6 5 1
-#1
-#1000000000
-#
-#出力例 1
-#2
-#1
-#5
-#0
-#この入力は 4 個のテストケースが含まれています。  
-#入力の 2 行目と 3 行目が 1 番目のテストケースに対応する入力で、N = 3, A_1 = 1, A_2 = 2, A_3 = 3 になります。
-#A_1, A_2, A_3 のうち奇数は全部で 2 個なので 1 行目に 2 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int,input().split()))
+        count = 0
+        for j in range(N):
+            if A[j] % 2 != 0:
+                count += 1
+        print(count)
+
+=======
+Suggestion 2
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for j in range(N):
+            if A[j]%2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        odd = 0
+        for j in range(N):
+            if A[j] % 2 == 1:
+                odd += 1
+        print(odd)
+
+=======
+Suggestion 4
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        print(len(list(filter(lambda x: x % 2 == 1, A))))
+
+=======
+Suggestion 5
+
+def main():
+    T = int(input())
+    for i in range(0,T):
+        N = int(input())
+        A = list(map(int,input().split()))
+        count = 0
+        for j in range(0,N):
+            if A[j] % 2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(len([i for i in A if i % 2 == 1]))
+
+=======
+Suggestion 7
+
+def main():
+    # 1行目の読み込み
+    N = int(input())
+    # 2行目の読み込み
+    A = list(map(int, input().split()))
+    # 奇数の個数をカウントする変数
+    count = 0
+    # 奇数の個数をカウントする
+    for i in range(N):
+        if A[i] % 2 != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    #T = int(input())
+    T = 4
+    #for i in range(T):
+    #    N = int(input())
+    #    A = list(map(int, input().split()))
+    N = 3
+    A = [1,2,3]
+    N = 2
+    A = [20,23]
+    N = 10
+    A = [6,10,4,1,5,9,8,6,5,1]
+    N = 1
+    A = [1000000000]
+    count = 0
+    for j in range(N):
+        if A[j] % 2 != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    t = int(input()) #input()で標準入力から1行読み込み、int()で整数に変換
+    for i in range(t):
+        n = int(input())
+        a = list(map(int,input().split()))
+        odd = 0
+        for j in range(n):
+            if a[j]%2 != 0:
+                odd += 1
+        print(odd)

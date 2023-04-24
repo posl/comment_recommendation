@@ -1,44 +1,229 @@
-#問題文
-#AtCoder 公園の敷地は東西南北に広がる N× N のマス目からなっており、北から i 番目かつ西から j 番目のマスの高さは A_{i,j} で与えられます。
-#公園の管理者である高橋君はここに K × K の区画の池を作る事にしました。
-#池を作るにあたって、高橋君は AtCoder 公園の敷地内に完全に含まれる K × K の区画であってその区画に含まれるマスの高さの中央値が最も低いようなものを選ぼうと考えました。そのような区画のマスの高さの中央値を求めてください。
-#ここで、 K × K の区画に含まれるマスの高さの中央値とはその区画に含まれる K^2 個のマスのうち ⌊((K^2)/(2))⌋ +1 番目に高いマスの高さを指します。また、⌊ x⌋ は x 以下の最大の整数を表します。
-#
-#制約
-#1 ≦ K ≦ N ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_{1,1} A_{1,2} ... A_{1,N}
-#A_{2,1} A_{2,2} ... A_{2,N}
-#:
-#A_{N,1} A_{N,2} ... A_{N,N}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#出力例 1
-#4
-#北から i 番目で西から j 番目のマスを (i,j) で表すとして、
-#池の候補となる 2× 2 の区画は、{(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)} の 4 つです。
-#K=2 のとき、各区画に含まれるマスの高さの中央値は各区画に含まれるマスのうち ⌊((2^2)/(2))⌋+1=3 番目に高いマスの高さとなるので、それぞれの区画の中央値は 5, 7, 5, 4 であり、このうち最小である 4 を出力します。
-#
-#入力例 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#出力例 2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            tmp = []
+            for k in range(K):
+                for l in range(K):
+                    tmp.append(A[i+k][j+l])
+            tmp.sort()
+            ans = min(ans, tmp[K**2//2])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            a = []
+            for x in range(K):
+                for y in range(K):
+                    a.append(A[i+x][j+y])
+            a.sort()
+            ans = min(a[K*K//2], ans)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    B = [[0 for _ in range(N + 1)] for _ in range(N + 1)]
+
+    for i in range(N):
+        for j in range(N):
+            B[i + 1][j + 1] = B[i + 1][j] + B[i][j + 1] - B[i][j] + A[i][j]
+
+    def check(x):
+        for i in range(N - K + 1):
+            for j in range(N - K + 1):
+                if B[i + K][j + K] - B[i][j + K] - B[i + K][j] + B[i][j] >= x:
+                    return True
+        return False
+
+    ok, ng = 10 ** 9 + 1, -1
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if check(mid):
+            ok = mid
+        else:
+            ng = mid
+    print(ok)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # 二次元累積和
+    B = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(N):
+            B[i + 1][j + 1] = B[i + 1][j] + B[i][j + 1] - B[i][j] + A[i][j]
+
+    # 二分探索
+    def check(x):
+        for i in range(N - K + 1):
+            for j in range(N - K + 1):
+                if B[i + K][j + K] - B[i][j + K] - B[i + K][j] + B[i][j] >= x:
+                    return True
+        return False
+
+    ok = 0
+    ng = 10 ** 9 + 1
+    while ng - ok > 1:
+        mid = (ok + ng) // 2
+        if check(mid):
+            ok = mid
+        else:
+            ng = mid
+
+    print(ok)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    cnt = 0
+    for i in range(N - K + 1):
+        for j in range(N - K + 1):
+            cnt += 1
+    print(cnt)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+
+    # 二次元累積和
+    # dp[i][j] = A[0][0] + ... + A[i-1][j-1]
+    dp = [[0] * (N+1) for _ in range(N+1)]
+    for i in range(N):
+        for j in range(N):
+            dp[i+1][j+1] = dp[i][j+1] + dp[i+1][j] - dp[i][j] + A[i][j]
+
+    # 二分探索
+    def check(x):
+        for i in range(N-K+1):
+            for j in range(N-K+1):
+                if dp[i+K][j+K] - dp[i+K][j] - dp[i][j+K] + dp[i][j] >= x:
+                    return True
+        return False
+
+    # 答えの候補は0以上10**9以下なので、二分探索で探す
+    ok = 0
+    ng = 10**9+1
+    while ng - ok > 1:
+        mid = (ok + ng) // 2
+        if check(mid):
+            ok = mid
+        else:
+            ng = mid
+    print(ok)
+
+=======
+Suggestion 7
+
+def get_median(list):
+    list.sort()
+    return list[4]
+
+N, K = map(int, input().split())
+A = []
+for i in range(N):
+    A.append(list(map(int, input().split())))
+
+ans = 10**9
+for i in range(N-K+1):
+    for j in range(N-K+1):
+        list = []
+        for k in range(K):
+            for l in range(K):
+                list.append(A[i+k][j+l])
+        ans = min(ans, get_median(list))
+
+print(ans)
+
+=======
+Suggestion 8
+
+def get_center_value(matrix, k, x, y):
+    center_value = []
+    for i in range(k):
+        for j in range(k):
+            center_value.append(matrix[x+i][y+j])
+    center_value.sort()
+    return center_value[int((k**2)/2)]
+
+n, k = map(int, input().split())
+matrix = []
+for i in range(n):
+    matrix.append(list(map(int, input().split())))
+
+min_center_value = 10**9
+for i in range(n-k+1):
+    for j in range(n-k+1):
+        min_center_value = min(min_center_value, get_center_value(matrix, k, i, j))
+
+print(min_center_value)
+
+=======
+Suggestion 9
+
+def get_median_index(arr):
+    arr.sort()
+    return int((len(arr) / 2) + 1) - 1
+
+n, k = map(int, input().split())
+
+a = []
+for i in range(n):
+    a.append(list(map(int, input().split())))
+
+ans = 10 ** 9
+for i in range(n - k + 1):
+    for j in range(n - k + 1):
+        tmp = []
+        for l in range(k):
+            for m in range(k):
+                tmp.append(a[i + l][j + m])
+        ans = min(ans, tmp[get_median_index(tmp)])
+
+print(ans)
+
+=======
+Suggestion 10
+
+def calc_median(a, k, n):
+    # a: 2d array
+    # k: size of the subarray
+    # n: size of the array
+    ans = []
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            sub_array = []
+            for p in range(k):
+                for q in range(k):
+                    sub_array.append(a[i+p][j+q])
+            sub_array.sort()
+            ans.append(sub_array[(k*k)//2])
+    return min(ans)

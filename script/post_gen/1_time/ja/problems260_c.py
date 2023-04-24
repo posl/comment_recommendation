@@ -1,48 +1,167 @@
-#問題文
-#高橋君はレベル N の赤い宝石を 1 個持っています。(他に宝石は持っていません。) 
-#高橋君は次の操作を好きなだけ行うことができます。
-#レベル n の赤い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n の青い宝石 X 個」に変換する。
-#レベル n の青い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n-1 の青い宝石 Y 個」に変換する。
-#高橋君はレベル 1 の青い宝石ができるだけたくさんほしいです。操作によって高橋君はレベル 1 の青い宝石を最大何個入手できますか？
-#
-#制約
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X Y
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 3 4
-#
-#出力例 1
-#12
-#次のような変換を行うことで、高橋君はレベル 1 の青い宝石を 12 個手に入れることができます。
-#まず、レベル 2 の赤い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個に変換します。  
-#操作後の高橋君は、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個を持っています。
-#次に、レベル 2 の青い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 1 の青い宝石 4 個に変換します。この変換を 3 回繰り返します。
-#操作後の高橋君は、レベル 1 の赤い宝石 4 個とレベル 1 の青い宝石 12 個を持っています。
-#これ以上変換を行うことはできません。
-#12 個より多くレベル 1 の青い宝石を手に入れることはできないので、答えは 12 になります。
-#
-#入力例 2
-#1 5 5
-#
-#出力例 2
-#0
-#高橋君がレベル 1 の青い宝石を 1 個も手に入れられない場合もあります。
-#
-#入力例 3
-#10 5 5
-#
-#出力例 3
-#3942349900
-#答えが 32 bit 整数に収まらない場合があることに注意してください。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x, y = map(int, input().split())
+    if n == 1:
+        print(0)
+        return
+    if n == 2:
+        print(x)
+        return
+    if n == 3:
+        print(x + y)
+        return
+    a = [0] * (n + 1)
+    a[1] = 0
+    a[2] = x
+    a[3] = x + y
+    for i in range(4, n + 1):
+        a[i] = min(a[i - 1] + x, a[i - 2] + y)
+    print(a[n])
+
+=======
+Suggestion 2
+
+def main():
+    N, X, Y = map(int, input().split())
+    ans = 0
+    for i in range(1, N):
+        ans += i * (N - i)
+    ans *= X
+    ans += N * Y
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    N, X, Y = map(int, input().split())
+    #初期化
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    dp[0][1] = 1
+    #漸化式
+    for i in range(N):
+        for j in range(N + 1):
+            #赤い宝石を青い宝石に変換
+            if j > 1:
+                dp[i + 1][j - 1] += dp[i][j] * (j - 1)
+            #青い宝石を赤い宝石に変換
+            if j < N:
+                dp[i + 1][j + 1] += dp[i][j] * (N - j)
+            #青い宝石を赤い宝石に変換
+            if j < N - 1:
+                dp[i + 1][j + 2] += dp[i][j] * (N - j) * Y
+            #赤い宝石を青い宝石に変換
+            if j > 0:
+                dp[i + 1][j] += dp[i][j] * j * X
+    #出力
+    print(dp[N][1])
+
+=======
+Suggestion 4
+
+def main():
+    N, X, Y = map(int, input().split())
+    print(0)
+
+=======
+Suggestion 5
+
+def main():
+    N,X,Y = map(int,input().split())
+    #print(N)
+    #print(X)
+    #print(Y)
+    #pr
+
+=======
+Suggestion 6
+
+def main():
+    N, X, Y = map(int, input().split())
+    #print(N, X, Y)
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X={}, Y={}".format(N, X, Y))
+    #print("N="+str(N)+", X="+str(X)+", Y="+str(Y))
+
+    #print("N={}, X
+
+=======
+Suggestion 7
+
+def main():
+    N, X, Y = map(int, input().split())
+    # レベル 1 の青い宝石の個数を求める
+    def get_blue(N):
+        if N == 1:
+            return 0
+        elif N == 2:
+            return X
+        else:
+            return Y * get_blue(N - 1) + get_blue(N - 2)
+    # レベル 1 の青い宝石の個数を出力
+    print(get_blue(N))
+
+=======
+Suggestion 8
+
+def main():
+    N, X, Y = map(int,input().split())
+    print(N*X*Y)
+
+=======
+Suggestion 9
+
+def main():
+    N, X, Y = map(int, input().split())
+    #print(N, X, Y)
+
+    # 1からNまでの宝石の数をリストに格納する
+    # 1からNまでの宝石の数をリストに格納する
+    gem = [0] * (N + 1)
+    gem[1] = 1
+    #print(gem)
+
+    # 1からNまでの宝石の数をリストに格納する
+    for i in range(1, N):
+        gem[i + 1] = gem[i] * X + gem[i - 1] * Y
+    #print(gem)
+
+    # 答えを出力する
+    print(gem[N])

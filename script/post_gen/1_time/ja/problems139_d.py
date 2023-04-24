@@ -1,35 +1,81 @@
-#問題文
-#整数 N に対して、{1, 2, ..., N} を並べ替えた数列 {P_1, P_2, ..., P_N} を選びます。
-#そして、各 i=1,2,...,N について、i を P_i で割った余りを M_i とします。
-#M_1 + M_2 + ... + M_N の最大値を求めてください。
-#
-#制約
-#N は 1 ≦ N ≦ 10^9 を満たす整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#M_1 + M_2 + ... + M_N の最大値を出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#1
-#{1, 2} を並び替えた数列として {P_1, P_2} = {2, 1} を選ぶと、M_1 + M_2 = 1 + 0 = 1 となります。
-#
-#入力例 2
-#13
-#
-#出力例 2
-#78
-#
-#入力例 3
-#1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def calc(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return n * (n - 1) // 2
+
+n = int(input())
+print(calc(n))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = N * (N - 1) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i-1
+    print(ans)
+
+=======
+Suggestion 4
+
+def calc(n):
+    if n == 1:
+        return 0
+    if n == 2:
+        return 1
+    if n % 2 == 0:
+        return (n // 2) * (n - 1)
+    else:
+        return n * ((n - 1) // 2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print((N*(N-1))//2)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print(N * (N - 1) // 2)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print((n - 1) * n // 2)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    print((n-1)*n//2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print((N*(N-1)//2))

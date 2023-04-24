@@ -1,44 +1,106 @@
-#問題文
-#消費税率が 8 %のとき A 円、10 ％のとき B 円の消費税が課されるような商品の税抜き価格を求めてください。
-#ただし、税抜き価格は正の整数でなければならないものとし、消費税の計算において小数点以下は切り捨てて計算するものとします。
-#条件を満たす税抜き価格が複数存在する場合は最も小さい金額を出力してください。また、条件を満たす税抜き価格が存在しない場合は -1 と出力してください。
-#
-#制約
-#1 ≦ A ≦ B ≦ 100
-#A, B は整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#条件を満たす税抜き価格が存在する場合は最小の金額を表す整数を、存在しない場合は -1 を出力せよ。
-#
-#入力例 1
-#2 2
-#
-#出力例 1
-#25
-#税抜き価格が 25 円の場合、
-#消費税率が 8 %のとき消費税は ⌊ 25 × 0.08 ⌋ = ⌊ 2 ⌋ = 2 円です。
-#消費税率が 10 %のとき消費税は ⌊ 25 × 0.1 ⌋ = ⌊ 2.5 ⌋ = 2 円です。
-#よって 25 円は条件を満たし、また 26 円のときなども条件を満たしますが、これが最小であるので 25 を出力してください。
-#
-#入力例 2
-#8 10
-#
-#出力例 2
-#100
-#税抜き価格が 100 円の場合、
-#消費税率が 8 %のとき消費税は ⌊ 100 × 0.08 ⌋ = 8 円です。
-#消費税率が 10 %のとき消費税は ⌊ 100 × 0.1 ⌋ = 10 円です。
-#
-#
-#入力例 3
-#19 99
-#
-#出力例 3
-#-1
-#条件を満たす税抜き価格は存在しないので、-1 を出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 1000):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 101):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 10000):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            print(i)
+            return
+    print(-1)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    for i in range(1, 1000):
+        if int(i * 0.08) == A and int(i * 0.1) == B:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 100000):
+        if int(i * 0.08) == a and int(i * 0.1) == b:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    for i in range(1, 1000):
+        if (i * 0.08 // 1) == a and (i * 0.1 // 1) == b:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 7
+
+def solve():
+    a,b = map(int,input().split())
+    for i in range(1,100):
+        if int(i*0.08) == a and int(i*0.1) == b:
+            print(i)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 8
+
+def calc_tax(price, rate):
+    return price * rate // 100
+
+a, b = map(int, input().split())
+
+for i in range(1, 1000):
+    if calc_tax(i, 8) == a and calc_tax(i, 10) == b:
+        print(i)
+        exit()
+print(-1)
+
+=======
+Suggestion 9
+
+def calc_tax(n):
+    return int(n*0.08), int(n*0.1)
+
+=======
+Suggestion 10
+
+def get_integer():
+    return int(input())

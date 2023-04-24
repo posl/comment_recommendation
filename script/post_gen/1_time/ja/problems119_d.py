@@ -1,69 +1,223 @@
-#問題文
-#東西方向に伸びる道路に沿って A 社の神社と B 軒の寺が建っています。
-#西から i 社目の神社は道路の西端から s_i メートルの地点に、西から i 軒目の寺は道路の西端から t_i メートルの地点にあります。
-#以下の Q 個の問いに答えてください。
-#問 i (1 ≦ i ≦ Q): 道路の西端から x_i メートルの地点から出発して道路上を自由に移動するとき、神社一社と寺一軒を訪れるのに必要な最小の移動距離は何メートルか？ (必要数を超えた数の寺社を通過してもよい。)
-#
-#制約
-#1 ≦ A, B ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ s_1 < s_2 < ... < s_A ≦ 10^{10}
-#1 ≦ t_1 < t_2 < ... < t_B ≦ 10^{10}
-#1 ≦ x_i ≦ 10^{10}
-#s_1, ..., s_A, t_1, ..., t_B, x_1, ..., x_Q はすべて異なる。
-#入力される値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B Q
-#s_1
-#:
-#s_A
-#t_1
-#:
-#t_B
-#x_1
-#:
-#x_Q
-#
-#出力
-#Q 行出力せよ。i 行目に問 i への答えを出力すること。
-#
-#入力例 1
-#2 3 4
-#100
-#600
-#400
-#900
-#1000
-#150
-#2000
-#899
-#799
-#
-#出力例 1
-#350
-#1400
-#301
-#399
-#2 社の神社と 3 軒の寺があり、神社は道路の西端から 100, 600 メートルの地点に、寺は道路の西端から 400, 900, 1000 メートルの地点にあります。
-#問 1: 道路の西端から 150 メートルの地点から出発する場合、まず西に 50 メートル進んで神社を訪れ、次に東に 300 メートル進んで寺を訪れるのが最適です。
-#問 2: 道路の西端から 2000 メートルの地点から出発する場合、まず西に 1000 メートル進んで寺を訪れ、次に西に 400 メートル進んで神社を訪れるのが最適です。途中で寺をもう一軒通過しますが、構いません。
-#問 3: 道路の西端から 899 メートルの地点から出発する場合、まず東に 1 メートル進んで寺を訪れ、次に西に 300 メートル進んで神社を訪れるのが最適です。
-#問 4: 道路の西端から 799 メートルの地点から出発する場合、まず西に 199 メートル進んで神社を訪れ、次に西に 200 メートル進んで寺を訪れるのが最適です。
-#
-#入力例 2
-#1 1 3
-#1
-#10000000000
-#2
-#9999999999
-#5000000000
-#
-#出力例 2
-#10000000000
-#10000000000
-#14999999998
-#道路は長く、32 ビット整数に収まらない距離を移動する必要があるかもしれません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, q = map(int, input().split())
+    s = [int(input()) for _ in range(a)]
+    t = [int(input()) for _ in range(b)]
+    x = [int(input()) for _ in range(q)]
+
+    import bisect
+
+    ss = [-float("inf")] + s + [float("inf")]
+    tt = [-float("inf")] + t + [float("inf")]
+
+    for xx in x:
+        i = bisect.bisect_right(ss, xx)
+        j = bisect.bisect_right(tt, xx)
+        res = float("inf")
+        for s1 in [ss[i - 1], ss[i]]:
+            for t1 in [tt[j - 1], tt[j]]:
+                d1 = abs(xx - s1) + abs(s1 - t1)
+                d2 = abs(xx - t1) + abs(t1 - s1)
+                res = min(res, d1, d2)
+        print(res)
+
+=======
+Suggestion 2
+
+def main():
+    A,B,Q = map(int,input().split())
+    s = [int(input()) for _ in range(A)]
+    t = [int(input()) for _ in range(B)]
+    x = [int(input()) for _ in range(Q)]
+    for i in range(Q):
+        ans = 10**20
+        for j in range(A):
+            for k in range(B):
+                ans = min(ans,abs(x[i]-s[j])+abs(s[j]-t[k]),abs(x[i]-t[k])+abs(t[k]-s[j]))
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    A,B,Q = map(int,input().split())
+    s = [int(input()) for _ in range(A)]
+    t = [int(input()) for _ in range(B)]
+    x = [int(input()) for _ in range(Q)]
+
+    import bisect
+    for i in range(Q):
+        s1 = bisect.bisect_left(s,x[i])
+        t1 = bisect.bisect_left(t,x[i])
+        s2 = bisect.bisect_right(s,x[i])
+        t2 = bisect.bisect_right(t,x[i])
+
+        if s1 == 0 and t1 == 0:
+            print(max(s[s1],t[t1]) - x[i])
+        elif s1 == A and t1 == B:
+            print(x[i] - min(s[s1-1],t[t1-1]))
+        elif s1 == 0:
+            print(min(max(s[s1],t[t1]) - x[i],x[i] - t[t1-1] + max(s[s1],t[t1]) - t[t1-1]))
+        elif t1 == 0:
+            print(min(max(s[s1],t[t1]) - x[i],x[i] - s[s1-1] + max(s[s1],t[t1]) - s[s1-1]))
+        elif s1 == A:
+            print(min(x[i] - min(s[s1-1],t[t1-1]) + min(s[s1-1],t[t1-1]) - s[s1-1],x[i] - max(s[s1-1],t[t1-1]) + max(s[s1-1],t[t1-1]) - s[s1-1]))
+        elif t1 == B:
+            print(min(x[i] - min(s[s1-1],t[t1-1]) + min(s[s1-1],t[t1-1]) - t[t1-1],x[i] - max(s[s1-1],t[t1-1]) + max(s[s1-1],t[t1-1]) - t[t1-1]))
+        else:
+            print(min(max(s[s1],t[t1]) - x[i],x[i] - s[s1-1] + max(s[s1],t[t1]) - s[s1-1],
+
+=======
+Suggestion 4
+
+def main():
+    A,B,Q = map(int,input().split())
+    S = [int(input()) for _ in range(A)]
+    T = [int(input()) for _ in range(B)]
+    X = [int(input()) for _ in range(Q)]
+    S.sort()
+    T.sort()
+    import bisect
+    for x in X:
+        i = bisect.bisect_left(S,x)
+        j = bisect.bisect_left(T,x)
+        ans = 10**18
+        for s in [S[i-1],S[i]]:
+            for t in [T[j-1],T[j]]:
+                d1,d2 = abs(s-x)+abs(t-s),abs(t-x)+abs(s-t)
+                ans = min(ans,d1,d2)
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,q = map(int,input().split())
+    s = [int(input()) for i in range(a)]
+    t = [int(input()) for i in range(b)]
+    x = [int(input()) for i in range(q)]
+    s.insert(0,0)
+    s.append(10000000000000000000)
+    t.insert(0,0)
+    t.append(10000000000000000000)
+    import bisect
+    for i in x:
+        si = bisect.bisect_left(s,i)
+        ti = bisect.bisect_left(t,i)
+        ans = 10000000000000000000
+        for sj in (s[si-1],s[si]):
+            for tj in (t[ti-1],t[ti]):
+                ans = min(ans,abs(i-sj)+abs(sj-tj),abs(i-tj)+abs(tj-sj))
+        print(ans)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    A,B,Q=map(int,input().split())
+    S=[int(input())for _ in range(A)]
+    T=[int(input())for _ in range(B)]
+    X=[int(input())for _ in range(Q)]
+    from bisect import bisect_left,bisect_right
+    for x in X:
+        s=S[bisect_left(S,x)]
+        t=T[bisect_left(T,x)]
+        sl=s-x if bisect_left(S,x)>0 else float('inf')
+        sr=x-s if bisect_left(S,x)<A else float('inf')
+        tl=t-x if bisect_left(T,x)>0 else float('inf')
+        tr=x-t if bisect_left(T,x)<B else float('inf')
+        print(min(max(sl,tl),max(sr,tr),sl+tr+min(sl,tr),sr+tl+min(sr,tl)))
+main()
+
+=======
+Suggestion 7
+
+def binary_search(list, value):
+    left = 0
+    right = len(list) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if list[mid] == value:
+            return mid
+        elif list[mid] < value:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return left
+
+=======
+Suggestion 8
+
+def solve():
+    from bisect import bisect_left,bisect_right
+    a,b,q = map(int,input().split())
+    s = [int(input()) for _ in range(a)]
+    t = [int(input()) for _ in range(b)]
+    x = [int(input()) for _ in range(q)]
+    s.append(10**11)
+    t.append(10**11)
+    s.append(-10**11)
+    t.append(-10**11)
+    s.sort()
+    t.sort()
+    for i in range(q):
+        ans = 10**11
+        si = bisect_right(s,x[i])
+        sj = bisect_left(s,x[i])
+        ti = bisect_right(t,x[i])
+        tj = bisect_left(t,x[i])
+        for j in [si,sj]:
+            for k in [ti,tj]:
+                ans = min(ans,abs(x[i]-s[j])+abs(s[j]-t[k]),abs(x[i]-t[k])+abs(t[k]-s[j]))
+        print(ans)
+
+=======
+Suggestion 9
+
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+    while True:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            if right == mid:
+                return mid
+            right = mid
+        elif arr[mid] < target:
+            if left == mid:
+                return mid + 1
+            left = mid
+
+=======
+Suggestion 10
+
+def solve():
+    # 二分探索
+    # ある地点から東に移動するときに通過する神社と寺の最小値を求める
+    # ある地点から西に移動するときに通過する神社と寺の最小値を求める
+    # 二分探索で解く
+    # 東西それぞれの最小値を求める
+    # 二分探索で解く
+    # ある地点から東に移動するときに通過する神社と寺の最小値を求める
+    # ある地点から西に移動するときに通過する神社と寺の最小値を求める
+    # 二分探索で解く
+    # 東西それぞれの最小値を求める
+    # 二分探索で解く
+    # ある地点から東に移動するときに通過する神社と寺の最小値を求める
+    # ある地点から西に移動するときに通過する神社と寺の最小値を求める
+    # 二分探索で解く
+    # 東西それぞれの最小値を求める
+    # 二分探索で解く
+    # ある地点から東に移動するときに通過する神社と寺の最小値を求める
+    # ある地点から西に移動するときに通過する神社と寺の最小値を求める
+    # 二分探索で解く
+    # 東西それぞれの最小値を求める
+    # 二分探索で解く
+    # ある地点から東に移動するときに通過する神社と

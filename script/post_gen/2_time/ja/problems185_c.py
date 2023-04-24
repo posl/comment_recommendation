@@ -1,37 +1,112 @@
-#問題文
-#長さ L の鉄の棒が東西方向に横たわっています。この棒を 11 箇所で切断して、12 本に分割します。このとき分割後の各棒の長さが全て正整数になるように分割しなければなりません。
-#分割のしかたが何通りあるかを求めてください。二つの分割の方法は、一方で分割されているが他方で分割されていない位置が存在する場合に、そしてその場合に限って区別されます。
-#なお、この問題の制約下で答えは 2^{63} 未満であることが証明できます。  
-#
-#制約
-#12 ≦ L ≦ 200
-#L は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#L
-#
-#出力
-#分割のしかたが何通りあるかを表す整数を出力せよ。  
-#
-#入力例 1
-#12
-#
-#出力例 1
-#1
-#全て長さ 1 の棒になるように切断する 1 通りです。  
-#
-#入力例 2
-#13
-#
-#出力例 2
-#12
-#ちょうど一つだけ長さ 2 の棒ができますが、切断後の 12 本のうち西から何番目の棒が長さ 2 になるように切断するかで 12 通りの切断方法があります。  
-#
-#入力例 3
-#17
-#
-#出力例 3
-#4368
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L = int(input())
+    dp = [[0 for _ in range(L+1)] for _ in range(L+1)]
+    dp[0][0] = 1
+    for i in range(1, L+1):
+        for j in range(L+1):
+            if j-i >= 0:
+                dp[i][j] = dp[i-1][j] + dp[i][j-i]
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[L][L])
+
+=======
+Suggestion 2
+
+def main():
+    L = int(input())
+    dp = [[0 for i in range(L+1)] for j in range(L+1)]
+    dp[0][0] = 1
+    for i in range(1,L+1):
+        for j in range(0,L+1):
+            if j == 0:
+                dp[i][j] = dp[i-1][j+1]
+            elif j == L:
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
+    print(dp[L][0] % (10**9+7))
+
+=======
+Suggestion 3
+
+def main():
+    L = int(input())
+    dp = [0] * (L + 1)
+    dp[0] = 1
+    for i in range(1, L + 1):
+        for j in range(i):
+            dp[i] += dp[j] * dp[i - j - 1]
+    print(dp[L])
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    dp = [0 for _ in range(L+1)]
+    dp[0] = 1
+    for i in range(1, L+1):
+        for j in range(1, i+1):
+            dp[i] += dp[i-j]
+
+    print(dp[L])
+
+=======
+Suggestion 5
+
+def main():
+    L = int(input())
+    dp = [[0] * 201 for _ in range(201)]
+    dp[0][0] = 1
+    for i in range(1, L):
+        for j in range(1, L):
+            dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1]
+    print(dp[L - 1][L - 1])
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    # dp[i][j] := i 本の棒を j 本に分割する場合の数
+    dp = [[0] * (L + 1) for _ in range(L + 1)]
+    dp[0][0] = 1
+    for i in range(1, L + 1):
+        for j in range(1, i + 1):
+            for k in range(i):
+                dp[i][j] += dp[k][j - 1] * dp[i - k - 1][j]
+    print(dp[L][L])
+
+=======
+Suggestion 7
+
+def main():
+    L = int(input())
+    print((L-1)*(L-2)//2)
+
+=======
+Suggestion 8
+
+def main():
+    L = int(input())
+    print(2**(L-12))
+
+=======
+Suggestion 9
+
+def main():
+    L = int(input())
+    print((L-12)*(L-11)//2)
+
+=======
+Suggestion 10
+
+def main():
+    L = int(input())
+    print((L-1)**2)

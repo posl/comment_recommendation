@@ -1,57 +1,228 @@
-#Problem Statement
-#The Republic of AtCoder has N cities numbered 1 through N and N-1 roads numbered 1 through N-1.
-#Road i connects City A_i and City B_i bidirectionally. It is guaranteed that one can travel between every pair of cities using roads.
-#Takahashi will depart City 1 and have a journey by repeating the following.
-#If there are unvisited cities that are directly connected to the city Takahashi is in now, he goes to the city with the smallest number among those cities.
-#Otherwise,
-#if he is in City 1, he ends the journey;
-#otherwise, he goes to the city he was in just before visiting the current city for the first time.
-#
-#Find the sequence of cities visited by Takahashi in the order he visits them.
-#
-#Constraints
-#2 ≦ N ≦ 2× 10^5
-#1≦ A_i,B_i ≦ N
-#It is possible to travel between every pair of cities using roads.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_{N-1} B_{N-1}
-#
-#Output
-#Print the sequence of cities visited by Takahashi in the order he visits them, including City 1 at the beginning and end of the journey, with spaces in between.
-#
-#Sample Input 1
-#4
-#1 2
-#4 2
-#3 1
-#
-#Sample Output 1
-#1 2 4 2 1 3 1
-#His journey will be as follows.
-#Start in City 1.
-#The unvisited cities directly connected to City 1 are City 2 and 3. Go to the city with the smaller number, that is, City 2.
-#The unvisited city directly connected to City 2 is City 4. Go there.
-#There is no unvisited city directly connected to City 4. Go back to City 2.
-#There is no unvisited city directly connected to City 2. Go to City 1, where he was in just before visiting City 2 for the first time.
-#The unvisited city directly connected to City 1 is City 3. Go there.
-#There is no unvisited city directly connected to City 3. Go back to City 1.
-#There is no unvisited city directly connected to City 1. End the journey.
-#
-#Sample Input 2
-#5
-#1 2
-#1 3
-#1 4
-#1 5
-#
-#Sample Output 2
-#1 2 1 3 1 4 1 5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    graph = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        graph[a - 1].append(b - 1)
+        graph[b - 1].append(a - 1)
+    ans = [0]
+    stack = [0]
+    while len(stack) > 0:
+        v = stack[-1]
+        if len(graph[v]) > 0:
+            next_v = graph[v].pop()
+            stack.append(next_v)
+            ans.append(next_v)
+            ans.append(v)
+        else:
+            stack.pop()
+    print(*[x + 1 for x in ans])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    adj = [[] for _ in range(n)]
+    for _ in range(n-1):
+        a, b = map(int, input().split())
+        adj[a-1].append(b-1)
+        adj[b-1].append(a-1)
+    visited = [False] * n
+    visited[0] = True
+    cur = 0
+    seq = [1]
+    while True:
+        next = None
+        for nxt in adj[cur]:
+            if not visited[nxt]:
+                next = nxt
+                break
+        if next is None:
+            if cur == 0:
+                break
+            next = seq[-2]
+        visited[next] = True
+        seq.append(next+1)
+        cur = next
+    print(' '.join(map(str, seq)))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    edge = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        a, b = map(int, input().split())
+        edge[a - 1].append(b - 1)
+        edge[b - 1].append(a - 1)
+    q = [0]
+    ans = []
+    while q:
+        v = q.pop()
+        ans.append(v)
+        for i in edge[v]:
+            if i not in ans:
+                q.append(i)
+                q.append(v)
+    print(*[i + 1 for i in ans])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    road = [[] for _ in range(n)]
+    for i in range(n-1):
+        a,b = map(int,input().split())
+        road[a-1].append(b-1)
+        road[b-1].append(a-1)
+    #print(road)
+    visited = [0]*n
+    visited[0] = 1
+    stack = [0]
+    res = []
+    while stack:
+        v = stack.pop()
+        res.append(v+1)
+        for i in road[v]:
+            if visited[i] == 0:
+                visited[i] = 1
+                stack.append(i)
+                stack.append(v)
+    print(*res)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    graph = [[] for _ in range(n)]
+    for _ in range(n-1):
+        a,b = map(int, input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    prev = [-1]*n
+    prev[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for nv in graph[v]:
+            if prev[nv] == -1:
+                prev[nv] = v
+                stack.append(nv)
+    print(*[p+1 for p in prev])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    road = [[] for _ in range(N)]
+    for _ in range(N-1):
+        A,B = map(int,input().split())
+        road[A-1].append(B-1)
+        road[B-1].append(A-1)
+    #print(road)
+    stack = [0]
+    visited = [False]*N
+    visited[0] = True
+    while stack:
+        v = stack.pop()
+        print(v+1,end=' ')
+        for i in road[v]:
+            if visited[i]:
+                continue
+            visited[i] = True
+            stack.append(v)
+            stack.append(i)
+            break
+    print()
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    path = [set() for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        path[a-1].add(b-1)
+        path[b-1].add(a-1)
+    def dfs(i, prev, ans):
+        ans.append(i)
+        for j in path[i]:
+            if j != prev:
+                dfs(j, i, ans)
+        ans.append(i)
+    ans = []
+    dfs(0, -1, ans)
+    print(*ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    ans = []
+    ans.append(1)
+    for i in range(N-1):
+        ans.append(AB[i][0])
+        ans.append(AB[i][1])
+    ans.append(1)
+    print(*ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = [list(map(int,input().split())) for _ in range(N-1)]
+    AB = [[a-1,b-1] for a,b in AB]
+    AB.sort(key=lambda x:x[0])
+    G = [[] for _ in range(N)]
+    for a,b in AB:
+        G[a].append(b)
+        G[b].append(a)
+    ans = []
+    def dfs(v,p):
+        ans.append(v+1)
+        for nv in G[v]:
+            if nv==p:
+                continue
+            dfs(nv,v)
+            ans.append(v+1)
+    dfs(0,-1)
+    print(*ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    road = [list(map(int, input().split())) for _ in range(n - 1)]
+
+    # 1. 1から出発したときの各都市の訪問順を求める
+    # 1-1. 1から出発したときの各都市の訪問順を求める
+    # 1-2. 1から出発したときの各都市の訪問順を求める
+    # 2. 各都市の訪問順をもとに、1から出発したときの各都市の訪問順を求める
+    # 3. 1から出発したときの各都市の訪問順をもとに、各都市の訪問順を求める
+
+    # 1. 1から出発したときの各都市の訪問順を求める
+    # 1-1. 1から出発したときの各都市の訪問順を求める
+    # 1-2. 1から出発したときの各都市の訪問順を求める
+
+    # 1-1. 1から出発したときの各都市の訪問順を求める
+    # 1-1-1. 各都市の訪問順を保持するリストを準備する
+    # 1-1-2. 1から出発したときの各都市の訪問順を求める
+    # 1-2. 1から出発したときの各都市の訪問順を求める
+    # 1-2-1. 各都市の訪問順を保持するリストを準備する
+    # 1-2-2. 1から出発したときの各都市の訪問順を

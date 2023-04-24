@@ -1,74 +1,189 @@
-#問題文
-#AtCoder 料理店では、以下の 5 つの料理が提供されています。ここで、「調理時間」は料理を注文してから客に届くまでの時間とします。  
-#ABC 丼： 調理時間 A 分
-#ARC カレー： 調理時間 B 分
-#AGC パスタ： 調理時間 C 分
-#APC ラーメン： 調理時間 D 分
-#ATC ハンバーグ： 調理時間 E 分
-#また、この店には以下のような「注文のルール」があります。  
-#注文は、10 の倍数の時刻 (時刻 0, 10, 20, 30, ...) にしかできない。
-#一回の注文につき一つの料理しか注文できない。
-#ある料理を注文したら、それが届くまで別の注文ができない。ただし、料理が届いたちょうどの時刻には注文ができる。
-#E869120 君は時刻 0 に料理店に着きました。彼は 5 つの料理全てを注文します。最後の料理が届く最も早い時刻を求めてください。
-#ただし、料理を注文する順番は自由であり、時刻 0 に注文することも可能とであるとします。  
-#
-#制約
-#A, B, C, D, E は 1 以上 123 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#A
-#B
-#C
-#D
-#E
-#
-#出力
-#最後の料理が届く最も早い時刻を整数で出力せよ。  
-#
-#入力例 1
-#29
-#20
-#7
-#35
-#120
-#
-#出力例 1
-#215
-#ABC 丼→ARC カレー→AGC パスタ→ATC ハンバーグ→APC ラーメン の順に注文することにすると、各料理の最も早い注文時刻・届く時刻は以下の通りになります。  
-#時刻 0 に ABC 丼を注文する。時刻 29 に ABC 丼が届く。
-#時刻 30 に ARC カレーを注文する。時刻 50 に ARC カレーが届く。
-#時刻 50 に AGC パスタを注文する。57 に AGC パスタが届く。
-#時刻 60 に ATC ハンバーグを注文する。時刻 180 に ATC ハンバーグが届く。
-#時刻 180 に APC ラーメンを注文する。時刻 215 に APC ラーメンが届く。
-#これより早く最後の料理が届くような方法は存在しません。  
-#
-#入力例 2
-#101
-#86
-#119
-#108
-#57
-#
-#出力例 2
-#481
-#AGC パスタ→ARC カレー→ATC ハンバーグ→APC ラーメン→ABC 丼の順に注文することにすると、各料理の最も早い注文時刻・届く時刻は以下の通りになります。  
-#時刻 0 に AGC パスタを注文する。時刻 119 に AGC パスタが届く。
-#時刻 120 に ARC カレーを注文する。時刻 206 に ARC カレーが届く。
-#時刻 210 に ATC ハンバーグを注文する。時刻 267 に ATC ハンバーグが届く。
-#時刻 270 に APC ラーメンを注文する。時刻 378 に APC ラーメンが届く。
-#時刻 380 に ABC 丼を注文する。時刻 481 に ABC 丼が届く。
-#これより早く最後の料理が届くような方法は存在しません。  
-#
-#入力例 3
-#123
-#123
-#123
-#123
-#123
-#
-#出力例 3
-#643
-#これが入力される最大のケースです。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    t = [a, b, c, d, e]
+    t.sort()
+    ans = 0
+    for i in range(4):
+        if t[i] % 10 != 0:
+            ans += (t[i] // 10 + 1) * 10
+        else:
+            ans += t[i]
+    ans += t[4]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    t = [A, B, C, D, E]
+    t.sort()
+    print((t[0] + 9) // 10 * 10 + t[1] + t[2] + t[3] + t[4])
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    time = [a, b, c, d, e]
+    time.sort()
+    if time[4] % 10 == 0:
+        print(time[4] * 4)
+    else:
+        print(time[4] // 10 * 10 * 4 + 10 * 4)
+
+=======
+Suggestion 4
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    time = [A, B, C, D, E]
+    time.sort()
+    print(10 * (len(time) - 1) + time[-1])
+
+=======
+Suggestion 5
+
+def main():
+    A, B, C, D, E = [int(input()) for _ in range(5)]
+    print((A + 9) // 10 * 10 + (B + 9) // 10 * 10 + (C + 9) // 10 * 10 + (D + 9) // 10 * 10 + E - max(A, B, C, D, E) + 9)
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    print((a-1)//10*10+10+(b-1)//10*10+10+(c-1)//10*10+10+(d-1)//10*10+10+(e-1)//10*10+10)
+
+=======
+Suggestion 7
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    order_time = 0
+    order_list = [A, B, C, D, E]
+    order_list.sort()
+    for i in range(0, 5):
+        if order_time % 10 != 0:
+            order_time += 10 - order_time % 10
+        order_time += order_list[i]
+    print(order_time)
+
+=======
+Suggestion 8
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(A, B, C, D, E)
+    
+    #料理の調理時間をリストに格納
+    cook_time = [A, B, C, D, E]
+    #料理の調理時間を昇順にソート
+    cook_time.sort()
+    #print(cook_time)
+    
+    #料理の調理時間が最小の料理の調理時間を取得
+    min_cook_time = cook_time[0]
+    #print(min_cook_time)
+    
+    #料理の調理時間が最小の料理の調理時間を 10 で割った余りを取得
+    #余りが 0 でなければ、料理の調理時間が最小の料理の調理時間を 10 で割った商に 1 を足した値を取得
+    if min_cook_time % 10 == 0:
+        min_cook_time_10 = min_cook_time // 10
+    else:
+        min_cook_time_10 = min_cook_time // 10 + 1
+    #print(min_cook_time_10)
+    
+    #料理の調理時間が最小の料理の調理時間を 10 で割った商に 10 を掛けた値を取得
+    #print(min_cook_time_10 * 10)
+    
+    #料理の調理時間が最小の料理の調理時間を 10 で割った商に 10 を掛けた値を最も早く注文できる時刻とする
+    #print(min_cook_time_10 * 10)
+    
+    #料理の調理時間が最小の料理の調理時間を 10 で割った商に 10 を掛けた値 + 料理の調理時間が最大の料理の調理時間を取得
+
+=======
+Suggestion 9
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(A,B,C,D,E)
+    a = (A+9)//10*10
+    b = (B+9)//10*10
+    c = (C+9)//10*10
+    d = (D+9)//10*10
+    e = (E+9)//10*10
+    #print(a,b,c,d,e)
+    f = min(a,b,c,d,e)
+    #print(f)
+    if f == a:
+        print(a+A)
+    elif f == b:
+        print(b+B)
+    elif f == c:
+        print(c+C)
+    elif f == d:
+        print(d+D)
+    elif f == e:
+        print(e+E)
+
+=======
+Suggestion 10
+
+def main():
+    # 入力
+    A=int(input())
+    B=int(input())
+    C=int(input())
+    D=int(input())
+    E=int(input())
+    # 処理
+    # ABC 丼→ARC カレー→AGC パスタ→ATC ハンバーグ→APC ラーメンの順に注文することにする
+    # 時刻 0 に ABC 丼を注文する。時刻 29 に ABC 丼が届く。
+    # 時刻 30 に ARC カレーを注文する。時刻 50 に ARC カレーが届く。
+    # 時刻 50 に AGC パスタを注文する。57 に AGC パスタが届く。
+    # 時刻 60 に ATC ハンバーグを注文する。時刻 180 に ATC ハンバーグが届く。
+    # 時刻 180 に APC ラーメンを注文する。時刻 215 に APC ラーメンが届く。
+    # 時刻 215 に ABC 丼を注文する。時刻 244 に ABC 丼が届く。
+    # 時刻 245 に ARC カレーを注文する。時刻 265 に ARC カレーが届く。
+    # 時刻 265 に AGC パスタを注文する。時刻 272 に AGC パスタが届く。
+    # 時刻 280 に ATC ハンバーグを注文する。時刻 400 に ATC ハンバーグが届く。
+    # 時刻 400 に APC ラーメンを注文する。時刻 435 に APC ラーメンが届く。
+    # 時刻 435 に ABC 丼を注文する。時刻 464 に ABC 丼が

@@ -1,41 +1,111 @@
-#Problem Statement
-#KEYENCE has N departments, where A_i employees belong to the i-th department (1 ≦ i ≦ N). No employee belongs to multiple departments.
-#The company is planning cross-departmental projects. Each project will be composed of exactly K employees chosen from K distinct departments.
-#At most how many projects can be made? No employee can participate in multiple projects.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^{12}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum possible number of projects.
-#
-#Sample Input 1
-#3 3
-#2 3 4
-#
-#Sample Output 1
-#2
-#There can be two projects, each composed of three employees from distinct departments.
-#
-#Sample Input 2
-#4 2
-#1 1 3 4
-#
-#Sample Output 2
-#4
-#
-#Sample Input 3
-#4 3
-#1 1 3 4
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    print(sum(A[:K]))
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n-k):
+        ans += a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if K >= N:
+        print(0)
+        return
+    print(sum(A[:N-K]))
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if k == 1:
+        print(n)
+        return
+    if k == n:
+        print(1)
+        return
+    if n == 2:
+        if a[0] == a[1]:
+            print(1)
+        else:
+            print(2)
+        return
+    if k == 2:
+        a = list(set(a))
+        cnt = 0
+        for i in range(len(a)-1):
+            if a[i] == a[i+1]:
+                cnt += 1
+        print(n-cnt)
+        return
+    if k == 3:
+        a = list(set(a))
+        cnt = 0
+        for i in range(len(a)-2):
+            if a[i] == a[i+1]-1 and a[i+1] == a[i+2]-1:
+                cnt += 1
+        print(n-cnt)
+        return
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-K])
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    #print(a)
+    ans = 0
+    for i in range(n):
+        if i < k:
+            continue
+        ans += a[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    A.reverse()
+    print(sum(A[:K]))
+    return 0
+
+=======
+Suggestion 8
+
+def solve():
+    pass
