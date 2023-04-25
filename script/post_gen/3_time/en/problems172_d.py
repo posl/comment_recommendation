@@ -1,35 +1,88 @@
-#Problem Statement
-#For a positive integer X, let f(X) be the number of positive divisors of X.
-#Given a positive integer N, find sum_{K=1}^N K× f(K).
-#
-#Constraints
-#1 ≦ N ≦ 10^7
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the value sum_{K=1}^N K× f(K).
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#23
-#We have f(1)=1, f(2)=2, f(3)=2, and f(4)=3, so the answer is 1× 1 + 2× 2 + 3× 2 + 4× 3 =23.
-#
-#Sample Input 2
-#100
-#
-#Sample Output 2
-#26879
-#
-#Sample Input 3
-#10000000
-#
-#Sample Output 3
-#838627288460105
-#Watch out for overflows.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += i * (N // i) * (N // i + 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N//i) * ((N//i)+1) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N//i) * (N//i+1) // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * (N//i)
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def divisorCount(n):
+    if n == 1:
+        return 1
+    count = 2
+    i = 2
+    while i*i < n:
+        if n % i == 0:
+            count += 2
+        i += 1
+    if i*i == n:
+        count += 1
+    return count
+
+=======
+Suggestion 6
+
+def f(x):
+    if x == 1:
+        return 1
+    if x % 2 == 0:
+        return 2*f(x//2)
+    else:
+        return 2*f((x+1)//2)
+
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    ans += i*f(i)
+print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(sum(K*divisors(K) for K in range(1, N+1)))
+
+=======
+Suggestion 8
+
+def solve(n):

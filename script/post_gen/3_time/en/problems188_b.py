@@ -1,48 +1,138 @@
-#Problem Statement
-#Given are two N-dimensional vectors A = (A_1, A_2, A_3, ..., A_N) and B = (B_1, B_2, B_3, ..., B_N).
-#Determine whether the inner product of A and B is 0.
-#In other words, determine whether A_1B_1 + A_2B_2 + A_3B_3 + ... + A_NB_N = 0.
-#
-#Constraints
-#1 ≦ N ≦ 100000
-#-100 ≦ A_i ≦ 100
-#-100 ≦ B_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#B_1 B_2 B_3 ... B_N
-#
-#Output
-#If the inner product of A and B is 0, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2
-#-3 6
-#4 2
-#
-#Sample Output 1
-#Yes
-#The inner product of A and B is (-3) × 4 + 6 × 2 = 0.
-#
-#Sample Input 2
-#2
-#4 5
-#-1 -3
-#
-#Sample Output 2
-#No
-#The inner product of A and B is 4 × (-1) + 5 × (-3) = -19.
-#
-#Sample Input 3
-#3
-#1 3 5
-#3 -6 3
-#
-#Sample Output 3
-#Yes
-#The inner product of A and B is 1 × 3 + 3 × (-6) + 5 × 3 = 0.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if sum([a[i] * b[i] for i in range(n)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    if sum([A[i]*B[i] for i in range(N)]) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    if sum([A[i]*B[i] for i in range(N)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print("Yes" if sum([A[i] * B[i] for i in range(N)]) == 0 else "No")
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    if sum([a*b for a,b in zip(A,B)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    print("Yes" if sum([a[i]*b[i] for i in range(n)]) == 0 else "No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    B = [int(i) for i in input().split()]
+    dot = 0
+    for i in range(N):
+        dot += A[i] * B[i]
+    if dot == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #compute
+    ab = 0
+    for i in range(N):
+        ab += A[i] * B[i]
+
+    #output
+    if ab == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    
+    #calc
+    ans = 0
+    for i in range(N):
+        ans += A[i]*B[i]
+    
+    #output
+    if ans == 0:
+        print("Yes")
+    else:
+        print("No")

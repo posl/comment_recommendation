@@ -1,66 +1,170 @@
-#Problem Statement
-#For two strings A and B, let A+B denote the concatenation of A and B in this order.
-#You are given N strings S_1,...,S_N. Modify and print them as follows, in the order i=1, ..., N:
-#if none of S_1,...,S_{i-1} is equal to S_i, print S_i;
-#if X (X>0) of S_1,...,S_{i-1} are equal to S_i, print S_i+ ( +X+ ), treating X as a string. 
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#S_i is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print N lines as specified in the Problem Statement.
-#
-#Sample Input 1
-#5
-#newfile
-#newfile
-#newfolder
-#newfile
-#newfolder
-#
-#Sample Output 1
-#newfile
-#newfile(1)
-#newfolder
-#newfile(2)
-#newfolder(1)
-#
-#Sample Input 2
-#11
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#
-#Sample Output 2
-#a
-#a(1)
-#a(2)
-#a(3)
-#a(4)
-#a(5)
-#a(6)
-#a(7)
-#a(8)
-#a(9)
-#a(10)
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    d = {}
+    for i in range(n):
+        if s[i] not in d:
+            d[s[i]] = 0
+            print(s[i])
+        else:
+            d[s[i]] += 1
+            print(s[i] + "(" + str(d[s[i]]) + ")")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    d = {}
+    for i in range(n):
+        if s[i] not in d:
+            d[s[i]] = 0
+            print(s[i])
+        else:
+            d[s[i]] += 1
+            print(s[i] + '({})'.format(d[s[i]]))
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    D = {}
+    for s in S:
+        if s in D:
+            D[s] += 1
+            print(s + '(' + str(D[s]) + ')')
+        else:
+            D[s] = 0
+            print(s)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    D = {}
+    for i in range(N):
+        if S[i] in D:
+            D[S[i]] += 1
+            print(S[i] + '(' + str(D[S[i]]) + ')')
+        else:
+            D[S[i]] = 0
+            print(S[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    count = {}
+    for s in S:
+        if s not in count:
+            count[s] = 1
+            print(s)
+        else:
+            print(s + '(' + str(count[s]) + ')')
+            count[s] += 1
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    T = []
+    for s in S:
+        if s not in T:
+            T.append(s)
+            print(s)
+        else:
+            print(s + '(' + str(T.count(s)) + ')')
+            T.append(s)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    cnt = {}
+    for s in S:
+        if s in cnt:
+            cnt[s] += 1
+            print(s+'('+str(cnt[s])+')')
+        else:
+            cnt[s] = 0
+            print(s)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = [0] * n
+    for i in range(n):
+        for j in range(i):
+            if s[i] == s[j]:
+                ans[i] = ans[j] + 1
+                break
+    for i in range(n):
+        if ans[i] == 0:
+            print(s[i])
+        else:
+            print(s[i] + "(" + str(ans[i]) + ")")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s2 = []
+    for i in range(n):
+        s2.append(s[i])
+    for i in range(n):
+        if s2.count(s[i]) == 1:
+            print(s[i])
+        else:
+            for j in range(1, s2.count(s[i]) + 1):
+                if s[i] not in s2[j:]:
+                    print(s[i])
+                else:
+                    print(s[i] + "(" + str(j) + ")")
+                    s2[j] = s[i] + "(" + str(j) + ")"
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    #print(S)
+    D = {}
+    for i in range(N):
+        if S[i] in D:
+            D[S[i]] += 1
+            S[i] = S[i] + '(' + str(D[S[i]]) + ')'
+        else:
+            D[S[i]] = 0
+    for i in range(N):
+        print(S[i])
+
+main()

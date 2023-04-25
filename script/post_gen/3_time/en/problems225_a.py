@@ -1,36 +1,115 @@
-#Problem Statement
-#You are given a string S of length 3 consisting of lowercase English letters.
-#How many different strings can be obtained by permuting the characters in S?
-#
-#Constraints
-#S is a string S of length 3 consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the number of different strings that can be obtained by permuting the characters in S.
-#
-#Sample Input 1
-#aba
-#
-#Sample Output 1
-#3
-#By permuting the characters in S= aba, three different strings can be obtained: aab, aba, baa.
-#
-#Sample Input 2
-#ccc
-#
-#Sample Output 2
-#1
-#By permuting the characters in S= ccc, just one string can be obtained: ccc.
-#
-#Sample Input 3
-#xyz
-#
-#Sample Output 3
-#6
-#By permuting the characters in S= xyz, six different strings can be obtained: xyz, xzy, yxz, yzx, zxy, zyx.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[1] == S[2] or S[2] == S[0]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[1] == S[2] or S[0] == S[2]:
+        print(3)
+    else:
+        print(6)
+
+main()
+
+I am a beginner in Python. I have a problem with the following code:
+
+import os
+import sys
+import time
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[1] == S[2] or S[0] == S[2]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] == s[2]:
+        print(1)
+    elif s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[0] == S[2] or S[1] == S[2]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[0] == S[2]:
+        print(1)
+    elif S[0] == S[1] or S[0] == S[2] or S[1] == S[2]:
+        print(3)
+    else:
+        print(6)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if len(s) == 3:
+        if s[0] == s[1] and s[1] == s[2]:
+            print(1)
+        elif s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+            print(3)
+        else:
+            print(6)
+    else:
+        print("Input is not of length 3.")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = len(s)
+    if n == 2:
+        if s[0] == s[1]:
+            print(1)
+        else:
+            print(2)
+    else:
+        if s[0] == s[1] and s[1] == s[2]:
+            print(1)
+        elif s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+            print(3)
+        else:
+            print(6)

@@ -1,52 +1,92 @@
-#Problem Statement
-#In an xy-coordinate plane whose x-axis is oriented to the right and whose y-axis is oriented upwards, rotate a point (a, b) around the origin d degrees counterclockwise and find the new coordinates of the point.
-#
-#Constraints
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b d
-#
-#Output
-#Let the new coordinates of the point be (a', b'). Print a' and b' in this order, with a space in between.
-#Your output will be considered correct when, for each value printed, the absolute or relative error from the answer is at most 10^{-6}.
-#
-#Sample Input 1
-#2 2 180
-#
-#Sample Output 1
-#-2 -2
-#When (2, 2) is rotated around the origin 180 degrees counterclockwise, it becomes the symmetric point of (2, 2) with respect to the origin, which is (-2, -2).
-#
-#Sample Input 2
-#5 0 120
-#
-#Sample Output 2
-#-2.49999999999999911182 4.33012701892219364908
-#When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-(5/2) , ((5(3)^(1/2))/2)).
-#This sample output does not precisely match these values, but the errors are small enough to be considered correct.
-#
-#Sample Input 3
-#0 0 11
-#
-#Sample Output 3
-#0.00000000000000000000 0.00000000000000000000
-#Since (a, b) is the origin (the center of rotation), a rotation does not change its coordinates.
-#
-#Sample Input 4
-#15 5 360
-#
-#Sample Output 4
-#15.00000000000000177636 4.99999999999999555911
-#A 360-degree rotation does not change the coordinates of a point.
-#
-#Sample Input 5
-#-505 191 278
-#
-#Sample Output 5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,d = map(int,input().split())
+    d = d * math.pi / 180
+    x = a * math.cos(d) - b * math.sin(d)
+    y = a * math.sin(d) + b * math.cos(d)
+    print(x,y)
+
+=======
+Suggestion 2
+
+def rotate(a,b,d):
+    import math
+    d = math.radians(d)
+    x = a * math.cos(d) - b * math.sin(d)
+    y = a * math.sin(d) + b * math.cos(d)
+    return x, y
+
+a, b, d = input().split()
+a = int(a)
+b = int(b)
+d = int(d)
+
+x, y = rotate(a,b,d)
+
+print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,d = map(int, input().split())
+    d = d * math.pi / 180
+    print(a * math.cos(d) - b * math.sin(d), a * math.sin(d) + b * math.cos(d))
+
+=======
+Suggestion 4
+
+def main():
+    a, b, d = map(int, input().split())
+    print(a * cos(d) - b * sin(d), a * sin(d) + b * cos(d))
+
+=======
+Suggestion 5
+
+def rotate(x, y, degree):
+    import math
+    r = math.radians(degree)
+    x1 = x * math.cos(r) - y * math.sin(r)
+    y1 = x * math.sin(r) + y * math.cos(r)
+    return x1, y1
+
+=======
+Suggestion 6
+
+def main():
+    a, b, d = [int(i) for i in input().split()]
+    d = d * math.pi / 180
+    a = a * math.cos(d) - b * math.sin(d)
+    b = a * math.sin(d) + b * math.cos(d)
+    print(a, b)
+
+=======
+Suggestion 7
+
+def main():
+    a, b, d = map(int, input().split())
+    d = d * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 / 180
+    print(a * math.cos(d) - b * math.sin(d), a * math.sin(d) + b * math.cos(d))
+
+=======
+Suggestion 8
+
+def rotate(x,y,degree):
+    import math
+    degree = math.radians(degree)
+    x = x * math.cos(degree) - y * math.sin(degree)
+    y = x * math.sin(degree) + y * math.cos(degree)
+    return x,y
+
+=======
+Suggestion 9
+
+def main():
+    from math import cos, sin, pi
+    a, b, d = [int(i) for i in input().split()]
+    d = d * pi / 180
+    print(a * cos(d) - b * sin(d), a * sin(d) + b * cos(d))

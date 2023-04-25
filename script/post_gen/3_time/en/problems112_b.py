@@ -1,62 +1,221 @@
-#Problem Statement
-#When Mr. X is away from home, he has decided to use his smartwatch to search the best route to go back home, to participate in ABC.
-#You, the smartwatch, has found N routes to his home.
-#If Mr. X uses the i-th of these routes, he will get home in time t_i at cost c_i.
-#Find the smallest cost of a route that takes not longer than time T.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 100
-#1 ≦ T ≦ 1000
-#1 ≦ c_i ≦ 1000
-#1 ≦ t_i ≦ 1000
-#The pairs (c_i, t_i) are distinct.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N T
-#c_1 t_1
-#c_2 t_2
-#:
-#c_N t_N
-#
-#Output
-#Print the smallest cost of a route that takes not longer than time T.
-#If there is no route that takes not longer than time T, print TLE instead.
-#
-#Sample Input 1
-#3 70
-#7 60
-#1 80
-#4 50
-#
-#Sample Output 1
-#4
-#The first route gets him home at cost 7.
-#The second route takes longer than time T = 70.
-#The third route gets him home at cost 4.
-#Thus, the cost 4 of the third route is the minimum.
-#
-#Sample Input 2
-#4 3
-#1 1000
-#2 4
-#3 1000
-#4 500
-#
-#Sample Output 2
-#TLE
-#There is no route that takes not longer than time T = 3.
-#
-#Sample Input 3
-#5 9
-#25 8
-#5 9
-#4 10
-#1000 1000
-#6 1
-#
-#Sample Output 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        c_i, t_i = map(int, input().split())
+        c.append(c_i)
+        t.append(t_i)
+    min_cost = 1001
+    for i in range(N):
+        if t[i] <= T:
+            min_cost = min(min_cost, c[i])
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 2
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        ci, ti = map(int, input().split())
+        c.append(ci)
+        t.append(ti)
+
+    min_cost = 1001
+    for i in range(N):
+        if t[i] <= T:
+            min_cost = min(min_cost, c[i])
+
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+main()
+
+My code is here.
+
+I have a question. I have a list of lists. I want to find the index of the smallest value in each list. For example, if I have a list of lists like this:
+
+[[1, 2, 3], [2, 1, 3], [1, 3, 2]]
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I have a list of lists. I want to find the index of the smallest value in each list. For example, if I have a list of lists like this:
+
+[[1, 2, 3], [2, 1, 3], [1, 3, 2]]
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index of the smallest value in each list. In this case, the answer is 0, 1, 0. How can I do that?
+
+I want to find the index
+
+=======
+Suggestion 3
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        ci, ti = map(int, input().split())
+        c.append(ci)
+        t.append(ti)
+    c_min = 1000
+    for i in range(N):
+        if t[i] <= T:
+            if c[i] < c_min:
+                c_min = c[i]
+    if c_min == 1000:
+        print("TLE")
+    else:
+        print(c_min)
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    c = [0]*N
+    t = [0]*N
+    for i in range(N):
+        c[i], t[i] = map(int, input().split())
+    min_cost = 1001
+    for i in range(N):
+        if t[i] <= T:
+            if c[i] < min_cost:
+                min_cost = c[i]
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 5
+
+def main():
+    N, T = map(int, input().split())
+    ans = 1000
+    for _ in range(N):
+        c, t = map(int, input().split())
+        if t <= T:
+            ans = min(ans, c)
+    if ans == 1000:
+        print("TLE")
+    else:
+        print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for _ in range(N):
+        _c, _t = map(int, input().split())
+        c.append(_c)
+        t.append(_t)
+    ans = 1001
+    for i in range(N):
+        if t[i] <= T:
+            ans = min(ans, c[i])
+    if ans == 1001:
+        print("TLE")
+    else:
+        print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        c_, t_ = map(int, input().split())
+        c.append(c_)
+        t.append(t_)
+    min_cost = 1000
+    for i in range(N):
+        if t[i] <= T:
+            if c[i] < min_cost:
+                min_cost = c[i]
+    if min_cost == 1000:
+        print('TLE')
+    else:
+        print(min_cost)
+
+=======
+Suggestion 8
+
+def solve():
+    N, T = map(int, input().split())
+    min_cost = 1001
+    for i in range(N):
+        c, t = map(int, input().split())
+        if t <= T:
+            min_cost = min(min_cost, c)
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+solve()
+
+I solved this problem by using a greedy algorithm. If the time is less than or equal to the time limit, then check if the cost is less than the minimum cost. If it is, update the minimum cost. If the minimum cost is not updated, then there is no route that takes not longer than time T. In this case, print TLE instead.
+
+=======
+Suggestion 9
+
+def main():
+    N,T = map(int,input().split())
+    t = []
+    c = []
+    for i in range(N):
+        c_i,t_i = map(int,input().split())
+        t.append(t_i)
+        c.append(c_i)
+    min_c = 1001
+    for i in range(N):
+        if t[i] <= T:
+            if min_c > c[i]:
+                min_c = c[i]
+    if min_c == 1001:
+        print("TLE")
+    else:
+        print(min_c)
+
+=======
+Suggestion 10
+
+def main():
+    N, T = [int(x) for x in input().split()]
+    routes = [tuple(int(x) for x in input().split()) for _ in range(N)]
+    routes.sort(key = lambda x: x[1])
+    min_cost = 1001
+    for cost, time in routes:
+        if time > T:
+            break
+        min_cost = min(min_cost, cost)
+    print(min_cost if min_cost < 1001 else "TLE")

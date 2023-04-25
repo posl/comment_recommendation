@@ -1,54 +1,198 @@
-#Problem Statement
-#Given is a number sequence A_1, A_2, A_3, ..., A_N, which may contain negative elements.
-#On a number line, there is a robot at coordinate 0. It will do the following actions in order:  
-#Move A_1 in the positive direction.
-#Move A_1 in the positive direction, and then move A_2 in the positive direction.
-#Move A_1 in the positive direction, then move A_2 in the positive direction, and then move A_3 in the positive direction.
-#.
-#.
-#.
-# 
-#Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ..., ..., and then move A_N in the positive direction.
-#Find the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Constraints
-#1 ≦ N ≦ 200000
-#-10^8 ≦ A_i ≦ 10^8
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Sample Input 1
-#3
-#2 -1 -2
-#
-#Sample Output 1
-#5
-#The robot moves as follows:
-#Move 2 in the positive direction, to coordinate 2.
-#Move 2 in the positive direction, to coordinate 4. Then move -1 in the positive direction, to coordinate 3.
-#Move 2 in the positive direction, to coordinate 5. Then move -1 in the positive direction, to coordinate 4. Then move -2 in the positive direction, to coordinate 2.
-#The greatest coordinate occupied during the process is 5, so we should print 5.
-#
-#Sample Input 2
-#5
-#-2 1 3 -1 -1
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5
-#-1000 -1000 -1000 -1000 -1000
-#
-#Sample Output 3
-#0
-#In this case, the initial coordinate 0 is the greatest coordinate occupied.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * (N + 1)
+    for i in range(N):
+        B[i + 1] = B[i] + A[i]
+    B = [0] + B
+    B.sort()
+    ans = 0
+    for i in range(N + 1):
+        ans = max(ans, B[i + 1] - B[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans <= 0:
+            print(0)
+            return
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    for i in range(1, N+1):
+        A[i] += A[i-1]
+    ans = 0
+    for i in range(N+1):
+        ans = max(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(max(0, A[0]))
+        return
+    if N == 2:
+        print(max(0, A[0]+A[1]))
+        return
+    if N == 3:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2]))
+        return
+    if N == 4:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2], A[0]+A[1]+A[2]+A[3]))
+        return
+    if N == 5:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2], A[0]+A[1]+A[2]+A[3], A[0]+A[1]+A[2]+A[3]+A[4]))
+        return
+    if N == 6:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2], A[0]+A[1]+A[2]+A[3], A[0]+A[1]+A[2]+A[3]+A[4], A[0]+A[1]+A[2]+A[3]+A[4]+A[5]))
+        return
+    if N == 7:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2], A[0]+A[1]+A[2]+A[3], A[0]+A[1]+A[2]+A[3]+A[4], A[0]+A[1]+A[2]+A[3]+A[4]+A[5], A[0]+A[1]+A[2]+A[3]+A[4]+A[5]+A[6]))
+        return
+    if N == 8:
+        print(max(0, A[0]+A[1], A[0]+A[1]+A[2], A[0]+A[1]+A[2]+A[3], A[0]+A[1]+
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans < 0:
+            ans = 0
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if sum(A) <= 0:
+        print(0)
+        return
+    ans = 0
+    for a in A:
+        ans += a
+        if ans < 0:
+            print(0)
+            return
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    sum = 0
+    for i in range(N):
+        ans = max(ans, sum+A[i])
+        sum += A[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if sum(A) <= 0:
+        print(0)
+        return
+    else:
+        print(sum(A) - min(A))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        if a[i] <= 0:
+            ans += -a[i]
+        else:
+            ans += a[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    
+    #N = 3
+    #A = [2, -1, -2]
+    
+    #N = 5
+    #A = [-2, 1, 3, -1, -1]
+    
+    #N = 5
+    #A = [-1000, -1000, -1000, -1000, -1000]
+    
+    B = [0] * N
+    B[0] = A[0]
+    for i in range(1, N):
+        B[i] = B[i-1] + A[i]
+    
+    #print(B)
+    
+    C = [0] * N
+    C[0] = B[0]
+    for i in range(1, N):
+        C[i] = max(C[i-1], B[i])
+    
+    #print(C)
+    
+    D = [0] * N
+    D[0] = max(0, A[0])
+    for i in range(1, N):
+        D[i] = max(D[i-1], 0) + A[i]
+    
+    #print(D)
+    
+    E = [0] * N
+    E[0] = D[0]
+    for i in range(1, N):
+        E[i] = max(E[i-1], D[i])
+    
+    #print(E)
+    
+    ans = 0
+    for i in range(N):
+        ans = max(ans, C[i], E[i])
+    
+    print(ans)

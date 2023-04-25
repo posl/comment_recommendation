@@ -1,48 +1,125 @@
-#Problem Statement
-#In the Kingdom of AtCoder, there is a standardized test of competitive programming proficiency.
-#An examinee will get a score out of 100 and obtain a rank according to the score, as follows:
-#Novice, for a score not less than 0 but less than 40;
-#Intermediate, for a score not less than 40 but less than 70;
-#Advanced, for a score not less than 70 but less than 90;
-#Expert, for a score not less than 90.
-#Takahashi took this test and got X points.
-#Find the minimum number of extra points needed to go up one rank higher. If, however, his rank was Expert, print expert, as there is no higher rank than that. 
-#
-#Constraints
-#0 ≦ X ≦ 100
-#X is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#56
-#
-#Sample Output 1
-#14
-#He got 56 points and was certified as Intermediate. In order to reach the next rank of Advanced, he needs at least 14 more points.
-#
-#Sample Input 2
-#32
-#
-#Sample Output 2
-#8
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#40
-#
-#Sample Input 4
-#100
-#
-#Sample Output 4
-#expert
-#He got full points and was certified as Expert. There is no rank higher than that, so print expert.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print('expert')
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print("expert")
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X < 40:
+        print(40 - X)
+    elif X < 70:
+        print(70 - X)
+    elif X < 90:
+        print(90 - X)
+    else:
+        print("expert")
+
+=======
+Suggestion 4
+
+def main():
+    score = int(input())
+    if score < 40:
+        print(40 - score)
+    elif score < 70:
+        print(70 - score)
+    elif score < 90:
+        print(90 - score)
+    else:
+        print('expert')
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x >= 90:
+        print("expert")
+    elif x >= 70:
+        print(90 - x)
+    elif x >= 40:
+        print(70 - x)
+    else:
+        print(40 - x)
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    X = int(input())
+    if X >= 0 and X < 40:
+        print(40 - X)
+    elif X >= 40 and X < 70:
+        print(70 - X)
+    elif X >= 70 and X < 90:
+        print(90 - X)
+    else:
+        print("expert")
+main()
+
+=======
+Suggestion 7
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(40)
+    elif x == 40:
+        print(40)
+    elif x == 80:
+        print(20)
+    elif x == 100:
+        print("expert")
+    else:
+        print(40 - (x % 40))
+
+=======
+Suggestion 8
+
+def main():
+    # get the score
+    score = int(input())
+    # if the score is less than 40 print 40 - score
+    if score < 40:
+        print(40 - score)
+    # if the score is less than 70 print 70 - score
+    elif score < 70:
+        print(70 - score)
+    # if the score is less than 90 print 90 - score
+    elif score < 90:
+        print(90 - score)
+    # if the score is less than 100 print expert
+    elif score < 100:
+        print("expert")
+    # if the score is 100 print expert
+    elif score == 100:
+        print("expert")

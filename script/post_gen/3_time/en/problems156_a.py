@@ -1,33 +1,69 @@
-#Problem Statement
-#Takahashi is a member of a programming competition site, ButCoder.
-#Each member of ButCoder is assigned two values: Inner Rating and Displayed Rating.
-#The Displayed Rating of a member is equal to their Inner Rating if the member has participated in 10 or more contests. Otherwise, the Displayed Rating will be their Inner Rating minus 100 × (10 - K) when the member has participated in K contests.
-#Takahashi has participated in N contests, and his Displayed Rating is R. Find his Inner Rating.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 100
-#0 ≦ R ≦ 4111
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N R
-#
-#Output
-#Print his Inner Rating.
-#
-#Sample Input 1
-#2 2919
-#
-#Sample Output 1
-#3719
-#Takahashi has participated in 2 contests, which is less than 10, so his Displayed Rating is his Inner Rating minus 100 × (10 - 2) = 800.
-#Thus, Takahashi's Inner Rating is 2919 + 800 = 3719.
-#
-#Sample Input 2
-#22 3051
-#
-#Sample Output 2
-#3051
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, R = map(int, input().split())
+    if N >= 10:
+        print(R)
+    else:
+        print(R + 100 * (10 - N))
+
+=======
+Suggestion 2
+
+def main():
+    n, r = map(int, input().split())
+    if n >= 10:
+        print(r)
+    else:
+        print(r + 100 * (10 - n))
+
+=======
+Suggestion 3
+
+def main():
+    N, R = map(int, input().split())
+    if N < 10:
+        print(R + 100 * (10 - N))
+    else:
+        print(R)
+
+=======
+Suggestion 4
+
+def main():
+    n, r = map(int, input().split())
+    if n < 10:
+        print(r + 100 * (10 - n))
+    else:
+        print(r)
+
+=======
+Suggestion 5
+
+def main():
+    N, R = map(int, input().split())
+    if N < 10:
+        print(R + (100 * (10 - N)))
+    else:
+        print(R)
+
+=======
+Suggestion 6
+
+def solve(n, r):
+    if n >= 10:
+        return r
+    else:
+        return r + 100 * (10 - n)
+
+=======
+Suggestion 7
+
+def get_inner_rating(n, r):
+    if n >= 10:
+        return r
+    else:
+        return r + (100 * (10 - n))

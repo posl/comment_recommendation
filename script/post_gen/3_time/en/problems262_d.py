@@ -1,42 +1,140 @@
-#Problem Statement
-#You are given a sequence of positive integers A=(a_1,...,a_N) of length N.
-#There are (2^N-1) ways to choose one or more terms of A.  How many of them have an integer-valued average?  Find the count modulo 998244353.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ a_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 ... a_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#2 6 2
-#
-#Sample Output 1
-#6
-#For each way to choose terms of A, the average is obtained as follows:
-#If just a_1 is chosen, the average is ((a_1)/(1))=(2/(1)) = 2, which is an integer.  
-#If just a_2 is chosen, the average is ((a_2)/(1))=(6/(1)) = 6, which is an integer.  
-#If just a_3 is chosen, the average is ((a_3)/(1))=(2/(1)) = 2, which is an integer.  
-#If a_1 and a_2 are chosen, the average is ((a_1+a_2)/(2))=((2+6)/(2)) = 4, which is an integer.  
-#If a_1 and a_3 are chosen, the average is ((a_1+a_3)/(2))=((2+2)/(2)) = 2, which is an integer.  
-#If a_2 and a_3 are chosen, the average is ((a_2+a_3)/(2))=((6+2)/(2)) = 4, which is an integer.  
-#If a_1, a_2, and a_3 are chosen, the average is ((a_1+a_2+a_3)/(3))=((2+6+2)/(3)) = ((10)/(3)), which is not an integer.
-#Therefore, 6 ways satisfy the condition.
-#
-#Sample Input 2
-#5
-#5 5 5 5 5
-#
-#Sample Output 2
-#31
-#Regardless of the choice of one or more terms of A, the average equals 5.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = 0
+    for i in range(N):
+        ans += pow(2, i, mod) * (N - i) * A[i]
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    mod = 998244353
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += pow(2, i, mod) * pow(2, N-1-i, mod) * A[i]
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(2**N):
+            if bin(j).count("1") == i:
+                tmp = 0
+                for k in range(N):
+                    if (j >> k) & 1:
+                        tmp += A[k]
+                if tmp % i == 0:
+                    ans += 1
+    print(ans % MOD)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    mod = 998244353
+    ans = 0
+    for i in range(1, 1 << N):
+        cnt = 0
+        sum = 0
+        for j in range(N):
+            if (i >> j) & 1:
+                cnt += 1
+                sum += A[j]
+        if sum % cnt == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    MOD = 998244353
+    ans = 0
+    for i in range(1,N+1):
+        ans += pow(2,N-i,MOD)*i*pow(2,i-1,MOD)*sum(A[i-1::i])
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += pow(2, i, 998244353) * (N - i) * A[i]
+        ans %= 998244353
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(1, 2**N):
+        S = 0
+        for j in range(N):
+            if i >> j & 1:
+                S += A[j]
+        if S % bin(i).count('1') == 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for bit in range(1 << n):
+        count = 0
+        sum = 0
+        for i in range(n):
+            if bit & (1 << i):
+                count += 1
+                sum += a[i]
+        if sum % count == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def input():
+    return sys.stdin.readline()[:-1]

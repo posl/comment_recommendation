@@ -1,60 +1,107 @@
-#Problem Statement
-#There is a grid with H rows from top to bottom and W columns from left to right.  Each square has a piece placed on it or is empty.
-#The state of the grid is represented by H strings S_1, S_2, ..., S_H, each of length W.
-#If the j-th character of S_i is #, the square at the i-th row from the top and j-th column from the left has a piece on it;
-#if the j-th character of S_i is ., the square at the i-th row from the top and j-th column from the left is empty.
-#How many squares in the grid have pieces on them?
-#
-#Constraints
-#1≦ H,W ≦ 10
-#H and W are integers.
-#S_i is a string of length W consisting of # and ..
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#Output
-#Print the number of squares with pieces as an integer.
-#
-#Sample Input 1
-#3 5
-##....
-#.....
-#.##..
-#
-#Sample Output 1
-#3
-#The following three squares have pieces on them:
-#the square at the 1-st row from the top and 1-st column from the left;
-#the square at the 3-rd row from the top and 2-nd column from the left;
-#the square at the 3-rd row from the top and 3-rd column from the left.
-#Thus, 3 should be printed.
-#
-#Sample Input 2
-#1 10
-#..........
-#
-#Sample Output 2
-#0
-#Since no square has a piece on it, 0 should be printed.
-#
-#Sample Input 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#Sample Output 3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,w = map(int,input().split())
+    count = 0
+    for i in range(h):
+        s = input()
+        for j in range(w):
+            if s[j] == '#':
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    print(sum([s[i][j] == "#" for i in range(h) for j in range(w)]))
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+
+    count = 0
+    for i in range(H):
+        count += input().count('#')
+
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    print(sum([s.count('#') for s in S]))
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+
+    # compute
+
+    # output
+    print(S)
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+
+    # Calculate result here
+    result = 0
+    for i in range(h):
+        result += s[i].count('#')
+
+    # Print output here
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # compute
+
+    # output
+    print(sum([s.count("#") for s in S]))
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    print(sum([si.count('#') for si in s]))
+
+=======
+Suggestion 9
+
+def main():
+    H,W = map(int,input().strip().split())
+    S = [input() for _ in range(H)]
+    print(sum([s.count('#') for s in S]))
+
+=======
+Suggestion 10
+
+def solve():
+    h, w = map(int, input().split())
+    print(sum([input().count('#') for i in range(h)]))

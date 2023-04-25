@@ -1,71 +1,149 @@
-#Problem Statement
-#You have N bamboos. The lengths (in centimeters) of these are l_1, l_2, ..., l_N, respectively.
-#Your objective is to use some of these bamboos (possibly all) to obtain three bamboos of length A, B, C. For that, you can use the following three kinds of magics any number:
-#Extension Magic: Consumes 1 MP (magic point). Choose one bamboo and increase its length by 1.
-#Shortening Magic: Consumes 1 MP. Choose one bamboo of length at least 2 and decrease its length by 1.
-#Composition Magic: Consumes 10 MP. Choose two bamboos and combine them into one bamboo. The length of this new bamboo is equal to the sum of the lengths of the two bamboos combined. (Afterwards, further magics can be used on this bamboo.)
-#At least how much MP is needed to achieve the objective?
-#
-#Constraints
-#3 ≦ N ≦ 8
-#1 ≦ C < B < A ≦ 1000
-#1 ≦ l_i ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B C
-#l_1
-#l_2
-#:
-#l_N
-#
-#Output
-#Print the minimum amount of MP needed to achieve the objective.
-#
-#Sample Input 1
-#5 100 90 80
-#98
-#40
-#30
-#21
-#80
-#
-#Sample Output 1
-#23
-#We are obtaining three bamboos of lengths 100, 90, 80 from five bamboos 98, 40, 30, 21, 80. We already have a bamboo of length 80, and we can obtain bamboos of lengths 100, 90 by using the magics as follows at the total cost of 23 MP, which is optimal.
-#Use Extension Magic twice on the bamboo of length 98 to obtain a bamboo of length 100. (MP consumed: 2)
-#Use Composition Magic on the bamboos of lengths 40, 30 to obtain a bamboo of length 70. (MP consumed: 10)
-#Use Shortening Magic once on the bamboo of length 21 to obtain a bamboo of length 20. (MP consumed: 1)
-#Use Composition Magic on the bamboo of length 70 obtained in step 2 and the bamboo of length 20 obtained in step 3 to obtain a bamboo of length 90. (MP consumed: 10)
-#
-#Sample Input 2
-#8 100 90 80
-#100
-#100
-#90
-#90
-#90
-#80
-#80
-#80
-#
-#Sample Output 2
-#0
-#If we already have all bamboos of the desired lengths, the amount of MP needed is 0. As seen here, we do not necessarily need to use all the bamboos.
-#
-#Sample Input 3
-#8 1000 800 100
-#300
-#333
-#400
-#444
-#500
-#555
-#600
-#666
-#
-#Sample Output 3
-#243
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def dfs(i, a, b, c):
+    if i == N:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else float('inf')
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + l[i], b, c) + 10
+    ret2 = dfs(i + 1, a, b + l[i], c) + 10
+    ret3 = dfs(i + 1, a, b, c + l[i]) + 10
+    return min(ret0, ret1, ret2, ret3)
+
+N, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(N)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 2
+
+def dfs(i, a, b, c):
+    if i == N:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else 10 ** 9
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + L[i], b, c) + 10 if a > 0 else 10 ** 9
+    ret2 = dfs(i + 1, a, b + L[i], c) + 10 if b > 0 else 10 ** 9
+    ret3 = dfs(i + 1, a, b, c + L[i]) + 10 if c > 0 else 10 ** 9
+    return min(ret0, ret1, ret2, ret3)
+
+N, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(N)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 3
+
+def dfs(i, a, b, c):
+    if i == N:
+        return abs(a - A) + abs(b - B) + abs(c - C) if min(a, b, c) > 0 else float('inf')
+    res0 = dfs(i + 1, a, b, c)
+    res1 = dfs(i + 1, a + L[i], b, c) + 10 if a else float('inf')
+    res2 = dfs(i + 1, a, b + L[i], c) + 10 if b else float('inf')
+    res3 = dfs(i + 1, a, b, c + L[i]) + 10 if c else float('inf')
+    return min(res0, res1, res2, res3)
+
+N, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(N)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B, C = map(int, input().split())
+    L = [int(input()) for i in range(N)]
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B, C = map(int, input().split())
+    L = [int(input()) for _ in range(N)]
+    ans = float('inf')
+
+    def dfs(cur, a, b, c):
+        nonlocal ans
+        if cur == N:
+            if min(a, b, c) > 0:
+                ans = min(ans, abs(a - A) + abs(b - B) + abs(c - C) - 30)
+            return
+        dfs(cur + 1, a, b, c)
+        dfs(cur + 1, a + L[cur], b, c) + 10
+        dfs(cur + 1, a, b + L[cur], c) + 10
+        dfs(cur + 1, a, b, c + L[cur]) + 10
+
+    dfs(0, 0, 0, 0)
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, a, b, c = map(int, input().split())
+    l = [int(input()) for i in range(n)]
+    return n, a, b, c, l
+
+=======
+Suggestion 8
+
+def search(n, a, b, c, l, mp):
+    if n == len(l):
+        if min(a, b, c) > 0:
+            return abs(a - A) + abs(b - B) + abs(c - C) - 30
+        else:
+            return 1000000000
+    mp1 = search(n + 1, a, b, c, l, mp)
+    mp2 = search(n + 1, a + l[n], b, c, l, mp + 10)
+    mp3 = search(n + 1, a, b + l[n], c, l, mp + 10)
+    mp4 = search(n + 1, a, b, c + l[n], l, mp + 10)
+    return min(mp1, mp2, mp3, mp4)
+
+N, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(N)]
+print(search(0, 0, 0, 0, L, 0))
+
+8 1000 800 100
+300
+333
+400
+444
+500
+555
+600
+666
+
+243
+
+=======
+Suggestion 9
+
+def solve(N,A,B,C,l):
+    if N == 0:
+        return 0 if min(A,B,C) > 0 else float('inf')
+    ret = float('inf')
+    ret = min(ret, solve(N-1,A,B,C,l) + 10)
+    ret = min(ret, solve(N-1,A-l[N],B,C,l) + 10)
+    ret = min(ret, solve(N-1,A,B-l[N],C,l) + 10)
+    ret = min(ret, solve(N-1,A,B,C-l[N],l) + 10)
+    return ret
+
+N,A,B,C = map(int,input().split())
+l = [int(input()) for _ in range(N)]
+print(solve(N,A,B,C,l))
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))

@@ -1,48 +1,93 @@
-#Problem Statement
-#A superman, Takahashi, is about to jump off the roof of a building to help a person in trouble on the ground.
-#Takahashi's planet has a constant value g that represents the strength of gravity, and the time it takes for him to reach the ground after starting to fall is (A/((g)^(1/2))).
-#It is now time 0, and g = 1.
-#Takahashi will perform the following operation as many times as he wants (possibly zero).
-#Use a superpower to increase the value of g by 1. This takes a time of B.
-#Then, he will jump off the building. After starting to fall, he cannot change the value of g. Additionally, we only consider the time it takes to perform the operation and fall.
-#Find the earliest time Takahashi can reach the ground.
-#
-#Constraints
-#1 ≦ A ≦ 10^{18}
-#1 ≦ B ≦ 10^{18}
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the earliest time Takahashi can reach the ground.
-#Your output will be accepted when its absolute or relative error from the true value is at most 10^{-6}.
-#
-#Sample Input 1
-#10 1
-#
-#Sample Output 1
-#7.7735026919
-#If he performs the operation zero times, he will reach the ground at time 1× 0+((10)/((1)^(1/2))) = 10.
-#If he performs the operation once, he will reach the ground at time 1× 1+((10)/((2)^(1/2))) ≒ 8.07.
-#If he performs the operation twice, he will reach the ground at time 1× 2+((10)/((3)^(1/2))) ≒ 7.77.
-#If he performs the operation three times, he will reach the ground at time 1× 3+((10)/((4)^(1/2))) = 8.
-#Performing the operation four or more times will only delay the time to reach the ground.
-#Therefore, it is optimal to perform the operation twice before jumping off, and the answer is 2+((10)/((3)^(1/2))).
-#
-#Sample Input 2
-#5 10
-#
-#Sample Output 2
-#5.0000000000
-#It is optimal not to perform the operation at all.
-#
-#Sample Input 3
-#1000000000000000000 100
-#
-#Sample Output 3
-#8772053214538.5976562500
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(A, B, g):
+    return (A / (g ** 0.5)) + B
+
+A, B = map(int, input().split())
+g = 1
+while True:
+    if f(A, B, g) >= f(A, B, g + 1):
+        print(f(A, B, g))
+        break
+    else:
+        g += 1
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print((A + B) ** 0.5 - B)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print((A/B)**(1/2))
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print((A + B) / 2)
+
+=======
+Suggestion 6
+
+def solve(A, B):
+    import math
+    g = 1
+    t = 0
+    while True:
+        t += A / (g ** 0.5)
+        if g + B > A:
+            t += A / ((g + B) ** 0.5)
+            break
+        else:
+            g += B
+    return t
+
+=======
+Suggestion 7
+
+def solve():
+    a, b = map(int, input().split())
+    if b >= a:
+        return 1 + (a / 2)
+    else:
+        return 1 + b + (a / (2 * b))
+
+=======
+Suggestion 8
+
+def main():
+    A,B = map(int,input().split())
+    g = 1
+    time = 0
+    while(True):
+        if A >= (B * time) / (g ** (1/2)):
+            time += 1
+            g += 1
+        else:
+            break
+    time -= 1
+    print((time + (A / (g ** (1/2)))))
+
+=======
+Suggestion 9
+
+def solve(a,b):
+    return ((a**3)/(b**2))**(1/2)

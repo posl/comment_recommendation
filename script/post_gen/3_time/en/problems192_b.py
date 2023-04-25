@@ -1,36 +1,167 @@
-#Problem Statement
-#We call a string hard-to-read when its odd-positioned (1-st, 3-rd, 5-th, ... from the beginning) characters are all lowercase English letters and its even-positioned characters (2-nd, 4-th, 6-th, ... from the beginning) are all uppercase English letters.
-#Determine whether a string S is hard-to-read.
-#
-#Constraints
-#S consists of uppercase and lowercase English letters.
-#The length of S is between 1 and 1000 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S is hard-to-read, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#dIfFiCuLt
-#
-#Sample Output 1
-#Yes
-#The odd-positioned characters are all lowercase and the even-positioned characters are all uppercase, so it is hard-to-read.
-#
-#Sample Input 2
-#eASY
-#
-#Sample Output 2
-#No
-#The 3-rd character is not lowercase, so it is not hard-to-read.
-#
-#Sample Input 3
-#a
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_hard_to_read(s):
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i].isupper():
+                return False
+        else:
+            if s[i].islower():
+                return False
+    return True
+
+s = input()
+print('Yes' if is_hard_to_read(s) else 'No')
+
+=======
+Suggestion 2
+
+def hard_to_read(s):
+    for i in range(0, len(s), 2):
+        if s[i].isupper():
+            return False
+    for i in range(1, len(s), 2):
+        if s[i].islower():
+            return False
+    return True
+
+S = input()
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    ans = "Yes"
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i].isupper():
+                ans = "No"
+                break
+        else:
+            if S[i].islower():
+                ans = "No"
+                break
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def isHardToRead(s):
+    for i in range(len(s)):
+        if i%2==0:
+            if s[i].islower():
+                return False
+        else:
+            if s[i].isupper():
+                return False
+    return True
+
+=======
+Suggestion 5
+
+def isHardToRead(s):
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i].isupper():
+                return False
+        else:
+            if s[i].islower():
+                return False
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print("Yes" if all([s[i].islower() if i % 2 == 0 else s[i].isupper() for i in range(len(s))]) else "No")
+
+=======
+Suggestion 7
+
+def hard_to_read(s):
+    return all(s[i].islower() for i in range(0, len(s), 2)) and all(s[i].isupper() for i in range(1, len(s), 2))
+
+s = input()
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if len(S) == 1:
+        print("Yes")
+        return
+    if S[0].isupper() or S[1].islower():
+        print("No")
+        return
+    for i in range(2, len(S)):
+        if i % 2 == 0:
+            if S[i].islower():
+                print("No")
+                return
+        else:
+            if S[i].isupper():
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print("Yes")
+    else:
+        for i in range(0, len(s), 2):
+            if s[i].islower() == False:
+                print("No")
+                return
+        for i in range(1, len(s), 2):
+            if s[i].isupper() == False:
+                print("No")
+                return
+        print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    if len(S) == 1:
+        print("Yes")
+        return
+    if S[0].islower():
+        for i in range(1, len(S), 2):
+            if S[i].islower():
+                continue
+            else:
+                print("No")
+                return
+        for i in range(2, len(S), 2):
+            if S[i].isupper():
+                continue
+            else:
+                print("No")
+                return
+    elif S[0].isupper():
+        for i in range(1, len(S), 2):
+            if S[i].isupper():
+                continue
+            else:
+                print("No")
+                return
+        for i in range(2, len(S), 2):
+            if S[i].islower():
+                continue
+            else:
+                print("No")
+                return
+    print("Yes")

@@ -1,54 +1,139 @@
-#Problem Statement
-#We have N ID cards, and there are M gates.
-#We can pass the i-th gate if we have one of the following ID cards: the L_i-th, (L_i+1)-th, ..., and R_i-th ID cards.
-#How many of the ID cards allow us to pass all the gates alone?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#Output
-#Print the number of ID cards that allow us to pass all the gates alone.
-#
-#Sample Input 1
-#4 2
-#1 3
-#2 4
-#
-#Sample Output 1
-#2
-#Two ID cards allow us to pass all the gates alone, as follows:
-#The first ID card does not allow us to pass the second gate.
-#The second ID card allows us to pass all the gates.
-#The third ID card allows us to pass all the gates.
-#The fourth ID card does not allow us to pass the first gate.
-#
-#Sample Input 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#100000 1
-#1 100000
-#
-#Sample Output 3
-#100000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    print(max(min(R) - max(L) + 1, 0))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    print(max(0, min(R) - max(L) + 1))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    print(min(R) - max(L) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    print(max(0, min(R) - max(L) + 1))
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    print(min(R) - max(L) + 1)
+
+=======
+Suggestion 6
+
+def solve():
+    N, M = map(int, input().split())
+    L, R = [], []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    print(min(R) - max(L) + 1 if min(R) >= max(L) else 0)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    l = [0] * N
+    r = [0] * N
+    for _ in range(M):
+        L, R = map(int, input().split())
+        l[L-1] += 1
+        r[R-1] += 1
+    cnt = 0
+    ans = 0
+    for i in range(N):
+        cnt += l[i]
+        if cnt == M:
+            ans += 1
+        cnt -= r[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    LR.sort(key=lambda x: x[1])
+    ans = 0
+    last = 0
+    for l, r in LR:
+        if l > last:
+            ans += 1
+            last = r
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    gates = [tuple(map(int, input().split())) for _ in range(M)]
+    gates.sort(key=lambda x: x[1])
+    ans = 0
+    end = 0
+    for gate in gates:
+        if gate[0] > end:
+            end = gate[1]
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    for i in range(m):
+        l.append(list(map(int, input().split())))
+    l.sort(key=lambda x: x[1])
+    ans = 0
+    end = 0
+    for i in range(m):
+        if end < l[i][0]:
+            ans += 1
+            end = l[i][1]
+    print(ans)

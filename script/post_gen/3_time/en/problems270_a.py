@@ -1,48 +1,129 @@
-#Problem Statement
-#There was an exam consisting of three problems worth 1, 2, and 4 points.
-#Takahashi, Aoki, and Snuke took this exam.
-#Takahashi scored A points, and Aoki scored B points.
-#Snuke solved all of the problems solved by at least one of Takahashi and Aoki, and failed to solve any of the problems solved by neither of them.
-#Find Snuke's score.
-#It can be proved that Snuke's score is uniquely determined under the Constraints of this problem.
-#
-#Constraints
-#0≦ A,B ≦ 7
-#A and B are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print Snuke's score as an integer.
-#
-#Sample Input 1
-#1 2
-#
-#Sample Output 1
-#3
-#Since Takahashi scored 1 point, we see that he solved only the 1-point problem and failed to solve the other two.
-#Similarly, since Aoki scored 2 points, we see that he solved only the 2-point problem and failed to solve the other two.  
-#Therefore, Snuke must have solved the 1- and 2-point problems, but not the 4-point one, which Takahashi and Aoki both failed to solve, for a score of 3 points.
-#Thus, 3 should be printed.
-#
-#Sample Input 2
-#5 3
-#
-#Sample Output 2
-#7
-#Since Takahashi scored 5 points, we see that he solved the 1- and 4-point problems but not the 2-point one.
-#Similarly, since Aoki scored 3 points, we see that he solved the 1- and 2-point problems but not the 4-point one.
-#Therefore, each of the three problems is solved by at least one of Takahashi and Aoki, so we see that Snuke solved all of the problems, for a  score of 7 points.
-#Thus, 7 should be printed.
-#
-#Sample Input 3
-#0 0
-#
-#Sample Output 3
-#0
-#Both Takahashi and Aoki solved none of the problems.
-#Therefore, so did Snuke. Thus, 0 should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    s = 0
+    if a == 1:
+        s += 300000
+    elif a == 2:
+        s += 200000
+    elif a == 3:
+        s += 100000
+    if b == 1:
+        s += 300000
+    elif b == 2:
+        s += 200000
+    elif b == 3:
+        s += 100000
+    if a == 1 and b == 1:
+        s += 400000
+    print(s)
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    A,B = map(int,input().split())
+    C = A+B
+    if C == 3:
+        print(3)
+    elif C == 2:
+        print(4)
+    elif C == 1:
+        print(2)
+    elif C == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    sol = 0
+    if a == 1:
+        sol += 300000
+    elif a == 2:
+        sol += 200000
+    elif a == 3:
+        sol += 100000
+    if b == 1:
+        sol += 300000
+    elif b == 2:
+        sol += 200000
+    elif b == 3:
+        sol += 100000
+    if a == b == 1:
+        sol += 400000
+    print(sol)
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    A,B = map(int,input().split())
+    C = A+B
+    if C == 3:
+        print(3)
+    elif C == 2:
+        print(4)
+    elif C == 1:
+        print(5)
+    elif C == 0:
+        print(0)
+    else:
+        print(6-C)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(3 - a - b)
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(2*b-a)
+
+=======
+Suggestion 7
+
+def solve():
+    a, b = map(int, input().split())
+    print(2*b - a)
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int, input().split())
+    c = a | b
+    d = 7 - c
+    print(d)
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    print(3 - (A+B)//2)
+
+=======
+Suggestion 10
+
+def main():
+    # get input
+    a, b = map(int, input().split())
+    # compute output
+    c = a ^ b
+    # output
+    print(c)

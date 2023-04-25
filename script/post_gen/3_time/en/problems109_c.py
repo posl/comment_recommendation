@@ -1,55 +1,155 @@
-#Problem Statement
-#There are N cities on a number line. The i-th city is located at coordinate x_i.
-#Your objective is to visit all these cities at least once.
-#In order to do so, you will first set a positive integer D.
-#Then, you will depart from coordinate X and perform Move 1 and Move 2 below, as many times as you like:
-#Move 1: travel from coordinate y to coordinate y + D.
-#Move 2: travel from coordinate y to coordinate y - D.
-#Find the maximum value of D that enables you to visit all the cities.
-#Here, to visit a city is to travel to the coordinate where that city is located.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ x_i ≦ 10^9
-#x_i are all different.
-#x_1, x_2, ..., x_N ≠ X
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#x_1 x_2 ... x_N
-#
-#Output
-#Print the maximum value of D that enables you to visit all the cities.
-#
-#Sample Input 1
-#3 3
-#1 7 11
-#
-#Sample Output 1
-#2
-#Setting D = 2 enables you to visit all the cities as follows, and this is the maximum value of such D.
-#Perform Move 2 to travel to coordinate 1.
-#Perform Move 1 to travel to coordinate 3.
-#Perform Move 1 to travel to coordinate 5.
-#Perform Move 1 to travel to coordinate 7.
-#Perform Move 1 to travel to coordinate 9.
-#Perform Move 1 to travel to coordinate 11.
-#
-#Sample Input 2
-#3 81
-#33 105 57
-#
-#Sample Output 2
-#24
-#
-#Sample Input 3
-#1 1
-#1000000000
-#
-#Sample Output 3
-#999999999
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+N, X = map(int, input().split())
+x = list(map(int, input().split()))
+x.append(X)
+x.sort()
+x = [x[i+1] - x[i] for i in range(N)]
+ans = x[0]
+for i in range(1, N):
+    ans = gcd(ans, x[i])
+print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.append(X)
+    x.sort()
+    D = x[1] - x[0]
+    for i in range(1, N):
+        D = gcd(D, x[i + 1] - x[i])
+    print(D)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    diff_list = []
+    for i in range(len(x_list)-1):
+        diff_list.append(x_list[i+1]-x_list[i])
+    diff_list.sort()
+    if len(diff_list) == 1:
+        print(diff_list[0])
+    else:
+        gcd = diff_list[0]
+        for i in range(1, len(diff_list)):
+            gcd = euclid(gcd, diff_list[i])
+        print(gcd)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    if n == 1:
+        print(x_list[1] - x_list[0])
+    else:
+        d_list = []
+        for i in range(n):
+            d_list.append(x_list[i+1] - x_list[i])
+        import math
+        d = math.gcd(d_list[0], d_list[1])
+        for i in range(n-2):
+            d = math.gcd(d, d_list[i+2])
+        print(d)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    cities = list(map(int, input().split()))
+    cities.append(x)
+    cities.sort()
+
+    distances = []
+    for i in range(n):
+        distances.append(cities[i+1] - cities[i])
+
+    gcd = distances[0]
+    for i in range(n-1):
+        gcd = calc_gcd(gcd, distances[i+1])
+
+    print(gcd)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(X)
+    x_list.sort()
+    x_diff_list = [x_list[i+1] - x_list[i] for i in range(N)]
+    gcd = x_diff_list[0]
+    for i in range(1, N):
+        gcd = gcd_calc(gcd, x_diff_list[i])
+    print(gcd)
+
+=======
+Suggestion 7
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x % y)
+
+n, x = map(int, input().split())
+nums = list(map(int, input().split()))
+
+nums.append(x)
+nums.sort()
+diff = [nums[i+1] - nums[i] for i in range(n)]
+ans = diff[0]
+for i in range(1, n):
+    ans = gcd(ans, diff[i])
+
+print(ans)
+
+=======
+Suggestion 8
+
+def find_gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return find_gcd(b,a%b)
+
+n,x = map(int,input().split())
+x_list = list(map(int,input().split()))
+x_list.append(x)
+x_list.sort()
+diff_list = []
+for i in range(n):
+    diff_list.append(x_list[i+1]-x_list[i])
+gcd = diff_list[0]
+for i in range(n-1):
+    gcd = find_gcd(gcd,diff_list[i+1])
+print(gcd)
+
+=======
+Suggestion 9
+
+def get_input():
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    return (n,x,x_list)

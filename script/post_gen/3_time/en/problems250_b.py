@@ -1,81 +1,149 @@
-#Problem Statement
-#Tiles are aligned in N horizontal rows and N vertical columns.  Each tile has a grid with A horizontal rows and B vertical columns.  On the whole, the tiles form a grid X with (A× N) horizontal rows and (B× N) vertical columns.
-#For 1≦ i,j ≦ N, Tile (i,j) denotes the tile at the i-th row from the top and the j-th column from the left.
-#Each square of X is painted as follows.  
-#Each tile is either a white tile or a black tile.
-#Every square in a white tile is painted white; every square in a black tile is painted black.
-#Tile (1,1) is a white tile.
-#Two tiles sharing a side have different colors.  Here, Tile (a,b) and Tile (c,d) are said to be sharing a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#Print the grid X in the format specified in the Output section.
-#
-#Constraints
-#1 ≦ N,A,B ≦ 10
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print (A× N) strings S_1,...,S_{A× N} that satisfy the following condition, with newlines in between.
-#Each of S_1,...,S_{A× N} is a string of length (B× N) consisting of . and #.
-#For each i and j (1 ≦ i ≦ A× N,1 ≦ j ≦ B× N), the j-th character of S_i is . if the square at the i-th row from the top and j-th column from the left in grid X is painted white; the character is # if the square is painted black.
-#
-#Sample Input 1
-#4 3 2
-#
-#Sample Output 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#Sample Input 2
-#5 1 5
-#
-#Sample Output 2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#Sample Input 3
-#4 4 1
-#
-#Sample Output 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#Sample Input 4
-#1 4 4
-#
-#Sample Output 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+        print('')
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+            print()
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print(end='')
+            print()
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+        print('')
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(0, N):
+        for j in range(0, A):
+            for k in range(0, N):
+                for l in range(0, B):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+        print('')
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i+k)%2 == 0:
+                        print(".", end="")
+                    else:
+                        print("#", end="")
+                print()
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    print('.' if (i+j)%2 == 0 else '#', end='')
+                print(end='')
+            print()
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    N,A,B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i+j)%2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print(end='')
+            print()
+        print()

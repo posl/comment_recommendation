@@ -1,68 +1,190 @@
-#Problem Statement
-#There are N squares, indexed Square 1, Square 2, …, Square N, arranged in a row from left to right.
-#Also, there are K pieces.  The i-th piece from the left is initially placed on Square A_i.
-#Now, we will perform Q operations against them.
-#The i-th operation is as follows:
-#If the L_i-th piece from the left is on its rightmost square, do nothing.
-#Otherwise, move the L_i-th piece from the left one square right if there is no piece on the next square on the right; if there is, do nothing.
-#Print the index of the square on which the i-th piece from the left is after the Q operations have ended, for each i=1,2,...,K.
-#
-#Constraints
-#1≦ K≦ N≦ 200
-#1≦ A_1<A_2<...<A_K≦ N
-#1≦ Q≦ 1000
-#1≦ L_i≦ K
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K Q
-#A_1 A_2 ... A_K
-#L_1 L_2 ... L_Q
-#
-#Output
-#Print K integers in one line, with spaces in between.
-#The i-th of them should be the index of the square on which the i-th piece from the left is after the Q operations have ended.
-#
-#Sample Input 1
-#5 3 5
-#1 3 4
-#3 3 1 1 2
-#
-#Sample Output 1
-#2 4 5
-#At first, the pieces are on Squares 1, 3, and 4.  The operations are performed against them as follows:
-#The 3-rd piece from the left is on Square 4.
-#This is not the rightmost square, and the next square on the right does not contain a piece, so move the 3-rd piece from the left to Square 5.
-#Now, the pieces are on Squares 1, 3, and 5.
-#The 3-rd piece from the left is on Square 5.
-#This is the rightmost square, so do nothing.
-#The pieces are still on Squares 1, 3, and 5.
-#The 1-st piece from the left is on Square 1.
-#This is not the rightmost square, and the next square on the right does not contain a piece, so move the 1-st piece from the left to Square 2.
-#Now, the pieces are on Squares 2, 3, and 5.
-#The 1-st piece from the left is on Square 2.
-#This is not the rightmost square, but the next square on the right (Square 3) contains a piece, so do nothing.
-#The pieces are still on Squares 2, 3, and 5.
-#The 2-nd piece from the left is on Square 3.
-#This is not the rightmost square, and the next square on the right does not contain a piece, so move the 2-nd piece from the left to Square 4;
-#Now, the pieces are still on Squares 2, 4, and 5.
-#Thus, after the Q operations have ended, the pieces are on Squares 2, 4, and 5, so 2, 4, and 5 should be printed in this order, with spaces in between.
-#
-#Sample Input 2
-#2 2 2
-#1 2
-#1 2
-#
-#Sample Output 2
-#1 2
-#
-#Sample Input 3
-#10 6 9
-#1 3 5 7 8 9
-#1 2 3 4 5 6 5 6 2
-#
-#Sample Output 3
-#2 5 6 7 9 10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    return N, K, Q, A, L
+
+=======
+Suggestion 2
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = [0] * n
+    for i in range(q):
+        l[int(input()) - 1] += 1
+    for i in range(n):
+        if a[i] + l[i] >= q + 1:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = [0] * n
+    for i in range(q):
+        l[int(input()) - 1] += 1
+    for i in range(n):
+        if a[i] + l[i] - q > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = [int(input()) for _ in range(Q)]
+    S = [0] * N
+    for i in range(Q):
+        S[L[i] - 1] += 1
+    for i in range(N):
+        if K - Q + S[i] > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    result = [0] * N
+    for i in range(K):
+        result[A[i]-1] += 1
+    for i in range(N):
+        if result[i] > 0:
+            result[i] = result[i] - Q + K
+    for i in range(N):
+        if result[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+    winners = [0] * N
+    for i in range(Q):
+        winners[L[i]-1] += 1
+    for i in range(N):
+        if K - Q + winners[i] > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n,k,q = map(int, input().split())
+    a = [0] * n
+    for i in map(int, input().split()):
+        a[i-1] += 1
+    for i in range(q):
+        l = int(input())
+        print(k - a[l-1])
+
+=======
+Suggestion 8
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = list(map(int, input().split()))
+    for i in range(q):
+        if l[i] == 1:
+            a.sort()
+        else:
+            a.sort(reverse=True)
+        if a[0] == l[i]:
+            a[0] = a[1]
+        else:
+            a[0] = l[i]
+    for i in range(k):
+        if a[0] == a[i]:
+            print(a[0])
+        else:
+            print(a[1])
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+
+    #print("N: {0}, K: {1}, Q: {2}".format(N, K, Q))
+    #print("A: {0}".format(A))
+    #print("L: {0}".format(L))
+    #print("N: {0}, K: {
+
+=======
+Suggestion 10
+
+def run():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = []
+    for _ in range(q):
+        l.append(int(input()))
+    s = [0] * n
+    for i in range(k):
+        s[a[i]-1] += 1
+    for i in range(n):
+        if s[i] > 0:
+            if s[i] - q <= 0:
+                print("Yes")
+            else:
+                print("No")

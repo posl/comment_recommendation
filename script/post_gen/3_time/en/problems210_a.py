@@ -1,36 +1,90 @@
-#Problem Statement
-#Takahashi is visiting a shop specializing in cabbage.
-#The shop sells cabbage for X yen (Japanese currency) per head.
-#However, if you buy more than A heads of cabbage at once, the (A+1)-th and subsequent heads will be sold for Y yen per head.
-#(It is guaranteed that Y < X. See Sample Input/Output
-# 1 for clarity.)
-#Print the amount of money needed to buy N heads of cabbage.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ A ≦ 10^5
-#1 ≦ Y < X ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A X Y
-#
-#Output
-#Print the amount of money needed to buy N heads of cabbage (as an integer).
-#
-#Sample Input 1
-#5 3 20 15
-#
-#Sample Output 1
-#90
-#You need to pay 20 yen for each of the 1-st through 3-rd heads of cabbage, and 15 yen for each of the 4-th and 5-th heads of cabbage.
-#Thus, you need to pay a total of 20+20+20+15+15 = 90 yen for the 5 heads of cabbage.
-#
-#Sample Input 2
-#10 10 100 1
-#
-#Sample Output 2
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, X, Y = map(int, input().split())
+    if N > A:
+        print(A*X + (N-A)*Y)
+    else:
+        print(N*X)
+
+=======
+Suggestion 3
+
+def buy_cabbage(n, a, x, y):
+    if n <= a:
+        return n * x
+    else:
+        return a * x + (n - a) * y
+
+=======
+Suggestion 4
+
+def main():
+    n,a,x,y = map(int,input().split())
+    total = 0
+    for i in range(1,n+1):
+        if i <= a:
+            total += x
+        else:
+            total += y
+    print(total)
+
+=======
+Suggestion 5
+
+def buy_cabbage(N, A, X, Y):
+    if N > A:
+        return A * X + (N - A) * Y
+    else:
+        return N * X
+
+=======
+Suggestion 6
+
+def cabbage():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)
+
+=======
+Suggestion 7
+
+def solve():
+    N, A, X, Y = map(int, input().split())
+    return min(N, A) * X + max(N - A, 0) * Y
+
+print(solve())
+
+=======
+Suggestion 8
+
+def solve():
+    N, A, X, Y = map(int, input().split())
+    print(min(N, A) * X + max(0, N - A) * Y)
+
+=======
+Suggestion 9
+
+def main():
+    #N, A, X, Y = map(int, input().split())
+    #print(N, A, X, Y)
+    N, A, X, Y = 5, 3, 20, 15
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)

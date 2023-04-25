@@ -1,65 +1,272 @@
-#Problem Statement
-#At an arcade, Takahashi is playing a game called RPS Battle, which is played as follows:
-#The player plays N rounds of Rock Paper Scissors against the machine. (See Notes
-# for the description of Rock Paper Scissors. A draw also counts as a round.)
-#Each time the player wins a round, depending on which hand he/she uses, he/she earns the following score (no points for a draw or a loss):
-#R points for winning with Rock;
-#S points for winning with Scissors;
-#P points for winning with Paper.
-#However, in the i-th round, the player cannot use the hand he/she used in the (i-K)-th round. (In the first K rounds, the player can use any hand.)
-#Before the start of the game, the machine decides the hand it will play in each round. With supernatural power, Takahashi managed to read all of those hands.
-#The information Takahashi obtained is given as a string T. If the i-th character of T (1 ≦ i ≦ N) is r, the machine will play Rock in the i-th round. Similarly, p and s stand for Paper and Scissors, respectively.
-#What is the maximum total score earned in the game by adequately choosing the hand to play in each round?
-#
-#Notes
-#In this problem, Rock Paper Scissors can be thought of as a two-player game, in which each player simultaneously forms Rock, Paper, or Scissors with a hand.
-#If a player chooses Rock and the other chooses Scissors, the player choosing Rock wins;
-#if a player chooses Scissors and the other chooses Paper, the player choosing Scissors wins;
-#if a player chooses Paper and the other chooses Rock, the player choosing Paper wins;
-#if both players play the same hand, it is a draw.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ R,S,P ≦ 10^4
-#N,K,R,S, and P are all integers.
-#|T| = N
-#T consists of r, p, and s.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#R S P
-#T
-#
-#Output
-#Print the maximum total score earned in the game.
-#
-#Sample Input 1
-#5 2
-#8 7 6
-#rsrpr
-#
-#Sample Output 1
-#27
-#The machine will play {Rock, Scissors, Rock, Paper, Rock}.
-#We can, for example, play {Paper, Rock, Rock, Scissors, Paper} against it to earn 27 points.
-#We cannot earn more points, so the answer is 27.
-#
-#Sample Input 2
-#7 1
-#100 10 1
-#ssssppr
-#
-#Sample Output 2
-#211
-#
-#Sample Input 3
-#30 5
-#325 234 123
-#rspsspspsrpspsppprpsprpssprpsr
-#
-#Sample Output 3
-#4996
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    ans = 0
+    for i in range(N):
+        if i < K:
+            if T[i] == "r":
+                ans += P
+            elif T[i] == "s":
+                ans += R
+            else:
+                ans += S
+        else:
+            if T[i] == "r":
+                if T[i-K] != "r":
+                    ans += P
+            elif T[i] == "s":
+                if T[i-K] != "s":
+                    ans += R
+            else:
+                if T[i-K] != "p":
+                    ans += S
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    r, s, p = map(int, input().split())
+    t = input()
+
+    ans = 0
+    for i in range(n):
+        if i < k:
+            if t[i] == 'r':
+                ans += p
+            elif t[i] == 's':
+                ans += r
+            else:
+                ans += s
+        else:
+            if t[i] == 'r' and t[i-k] != 'p':
+                ans += p
+                t = t[:i] + 'p' + t[i+1:]
+            elif t[i] == 's' and t[i-k] != 'r':
+                ans += r
+                t = t[:i] + 'r' + t[i+1:]
+            elif t[i] == 'p' and t[i-k] != 's':
+                ans += s
+                t = t[:i] + 's' + t[i+1:]
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,K = map(int,input().split())
+    R,S,P = map(int,input().split())
+    T = input()
+    ans = 0
+    for i in range(N):
+        if i < K:
+            if T[i] == 'r':
+                ans += P
+            elif T[i] == 's':
+                ans += R
+            elif T[i] == 'p':
+                ans += S
+        else:
+            if T[i] == 'r' and T[i-K] != 'p':
+                ans += P
+            elif T[i] == 's' and T[i-K] != 'r':
+                ans += R
+            elif T[i] == 'p' and T[i-K] != 's':
+                ans += S
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    T = list(T)
+    for i in range(N):
+        if T[i] == 'r':
+            T[i] = P
+        elif T[i] == 's':
+            T[i] = R
+        else:
+            T[i] = S
+    for i in range(K, N):
+        if T[i] == T[i-K]:
+            T[i] = 0
+    print(sum(T))
+
+=======
+Suggestion 5
+
+def rps_battle(N,K,R,S,P,T):
+    #N = int(input())
+    #K = int(input())
+    #R = int(input())
+    #S = int(input())
+    #P = int(input())
+    #T = input()
+    score = 0
+    for i in range(N):
+        if i < K:
+            if T[i] == 'r':
+                score += P
+            elif T[i] == 's':
+                score += R
+            elif T[i] == 'p':
+                score += S
+        else:
+            if T[i] == T[i-K]:
+                T = T[:i]+'X'+T[i+1:]
+            else:
+                if T[i] == 'r':
+                    score += P
+                elif T[i] == 's':
+                    score += R
+                elif T[i] == 'p':
+                    score += S
+    return score
+
+=======
+Suggestion 6
+
+def calc_score(T, N, K, R, S, P):
+    score = 0
+    for i in range(N):
+        if T[i] == 'r':
+            score += P
+        elif T[i] == 's':
+            score += R
+        elif T[i] == 'p':
+            score += S
+        if i >= K:
+            if T[i] == T[i-K]:
+                T[i] = ' '
+    return score
+
+=======
+Suggestion 7
+
+def main():
+    # Read input
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+
+    # Initialize
+    score = 0
+    prev = [None]*K
+
+    # Play
+    for i in range(N):
+        # Get score
+        if T[i] == "r":
+            score += P
+            prev[i%K] = "p"
+        elif T[i] == "s":
+            score += R
+            prev[i%K] = "r"
+        elif T[i] == "p":
+            score += S
+            prev[i%K] = "s"
+
+        # Check previous hand
+        if i >= K and prev[i%K] == prev[(i-K)%K]:
+            score -= R if prev[i%K] == "r" else (S if prev[i%K] == "s" else P)
+            prev[i%K] = None
+
+    # Output
+    print(score)
+
+=======
+Suggestion 8
+
+def main():
+    #read input
+    n,k=map(int,input().split())
+    r,s,p=map(int,input().split())
+    t=input()
+    #initialize variables
+    ans=0
+    #process
+    for i in range(n):
+        if i-k>=0 and t[i]==t[i-k]:
+            t=t[:i]+'x'+t[i+1:]
+        if t[i]=='r':
+            ans+=p
+        elif t[i]=='s':
+            ans+=r
+        elif t[i]=='p':
+            ans+=s
+    #print answer
+    print(ans)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, K = list(map(int, input().split()))
+    R, S, P = list(map(int, input().split()))
+    T = input()
+    
+    #dp[i] = max score if we play the i-th hand
+    #dp[i] = max(dp[i-K] + score if we play the i-th hand, dp[i-1])
+    dp = [0] * N
+    for i in range(N):
+        if i < K:
+            if T[i] == 'r':
+                dp[i] = P
+            elif T[i] == 's':
+                dp[i] = R
+            else:
+                dp[i] = S
+        else:
+            if T[i] == 'r':
+                dp[i] = max(dp[i-K] + P, dp[i-1])
+            elif T[i] == 's':
+                dp[i] = max(dp[i-K] + R, dp[i-1])
+            else:
+                dp[i] = max(dp[i-K] + S, dp[i-1])
+    print(dp[-1])
+
+=======
+Suggestion 10
+
+def RPS_Battle(N,K,R,S,P,T):
+    #N: number of rounds
+    #K: number of rounds that cannot be used the same hand
+    #R: point for winning with Rock
+    #S: point for winning with Scissors
+    #P: point for winning with Paper
+    #T: string of hands that the machine will play in each round
+    #return: maximum total score earned in the game
+    
+    score = 0
+    for i in range(N):
+        if i < K:
+            if T[i] == 'r':
+                score += P
+            elif T[i] == 's':
+                score += R
+            else:
+                score += S
+        else:
+            if T[i-K] == T[i]:
+                T = T[:i] + 'x' + T[i+1:]
+            else:
+                if T[i] == 'r':
+                    score += P
+                elif T[i] == 's':
+                    score += R
+                else:
+                    score += S
+    return score

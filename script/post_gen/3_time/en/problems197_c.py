@@ -1,62 +1,189 @@
-#Problem Statement
-#Given is a number sequence A of length N.
-#Let us divide this sequence into one or more non-empty contiguous intervals.
-#Then, for each of these intervals, let us compute the bitwise OR of the numbers in it.
-#Find the minimum possible value of the bitwise XOR of the values obtained in this way.
-#        What is bitwise OR?
-#    
-#        The bitwise OR of integers A and B, A OR B, is defined as follows:
-#        
-#When A OR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if at least one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 OR 5 = 7 (in base two: 011 OR 101 = 111).  
-#        Generally, the bitwise OR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 OR p_2) OR p_3) OR ... OR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#        What is bitwise XOR?
-#    
-#        The bitwise XOR of integers A and B, A XOR B, is defined as follows:
-#        
-#When A XOR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if exactly one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 XOR 5 = 6 (in base two: 011 XOR 101 = 110).  
-#        Generally, the bitwise XOR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 XOR p_2) XOR p_3) XOR ... XOR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#Constraints
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#1 5 7
-#
-#Sample Output 1
-#2
-#If we divide [1, 5, 7] into [1, 5] and [7], their bitwise ORs are 5 and 7, whose XOR is 2.
-#It is impossible to get a smaller result, so we print 2.
-#
-#Sample Input 2
-#3
-#10 10 10
-#
-#Sample Output 2
-#0
-#We should divide this sequence into [10] and [10, 10].
-#
-#Sample Input 3
-#4
-#1 3 3 1
-#
-#Sample Output 3
-#0
-#We should divide this sequence into [1, 3] and [3, 1].
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(A[0])
+        return
+    if N == 2:
+        print(A[0] ^ A[1])
+        return
+    if N == 3:
+        print(min(A[0] ^ A[1] ^ A[2], A[0] ^ A[1] | A[2], A[0] | A[1] ^ A[2], A[0] | A[1] | A[2]))
+        return
+    if N == 4:
+        print(min(A[0] ^ A[1] ^ A[2] ^ A[3], A[0] ^ A[1] ^ A[2] | A[3], A[0] ^ A[1] | A[2] ^ A[3], A[0] ^ A[1] | A[2] | A[3], A[0] | A[1] ^ A[2] ^ A[3], A[0] | A[1] ^ A[2] | A[3], A[0] | A[1] | A[2] ^ A[3], A[0] | A[1] | A[2] | A[3]))
+        return
+    if N == 5:
+        print(min(A[0] ^ A[1] ^ A[2] ^ A[3] ^ A[4], A[0] ^ A[1] ^ A[2] ^ A[3] | A[4], A[0] ^ A[1] ^ A[2] | A[3] ^ A[4], A[0] ^ A[1] ^ A[2] | A[3] | A[4], A[0] ^ A[1] | A[2] ^ A[3] ^ A[4], A[0] ^ A[1] | A[2] ^ A[3] | A[4], A[0] ^ A[1] | A[2] | A[3] ^ A[4], A[0] ^ A[1] | A[2] | A[3] | A[4], A[0] | A[1
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(0)
+        return
+    if N == 2:
+        print(A[0] ^ A[1])
+        return
+    A.sort()
+    if A[0] == A[1] == A[2]:
+        print(0)
+        return
+    if A[1] == A[2]:
+        print(A[0] ^ A[1])
+        return
+    print(A[0] ^ A[1] ^ A[2])
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(A[0])
+        return
+    if N == 2:
+        print(A[0] ^ A[1])
+        return
+    if N == 3:
+        print(A[0] ^ A[1] ^ A[2])
+        return
+
+    # N >= 4
+    # 1. Get the first number
+    # 2. Get the last number
+    # 3. Get the middle numbers
+    # 4. If there is only one number in the middle, get that
+    # 5. If there is more than one number in the middle, get the XOR of all of them
+    # 6. XOR all of the first, middle and last numbers
+    first = A[0]
+    last = A[N - 1]
+    middle = A[1:N - 1]
+    if len(middle) == 1:
+        middle = middle[0]
+    else:
+        middle = reduce(lambda x, y: x ^ y, middle)
+    print(first ^ middle ^ last)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(30):
+        cnt = 0
+        for j in range(N):
+            if A[j] >> i & 1:
+                cnt += 1
+        ans |= (1 << i) * (cnt % 2)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = ans | A[i]
+    print(ans ^ A[0])
+
+=======
+Suggestion 6
+
+def solve(A):
+    N = len(A)
+    if N == 1:
+        return 0
+    if N == 2:
+        return A[0] ^ A[1]
+    if N == 3:
+        return min(A[0] ^ A[1] ^ A[2], A[0] ^ A[1] | A[2], A[0] | A[1] ^ A[2])
+    return min(A[0] ^ A[1] ^ A[2] ^ A[3], A[0] ^ A[1] ^ A[2] | A[3], A[0] ^ A[1] | A[2] ^ A[3], A[0] | A[1] ^ A[2] ^ A[3])
+
+N = int(input())
+A = list(map(int, input().split()))
+print(solve(A))
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    dp = [[0] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(i, N):
+            if i == j:
+                dp[i][j] = A[i]
+            else:
+                dp[i][j] = dp[i][j - 1] | A[j]
+    ans = 0
+    for i in range(N):
+        for j in range(i, N):
+            ans |= dp[i][j]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(A[0])
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2 ** 30
+    for i in range(2 ** (N - 1)):
+        bits = bin(i)[2:].zfill(N - 1)
+        res = 0
+        tmp = A[0]
+        for j in range(N - 1):
+            if bits[j] == '1':
+                res ^= tmp
+                tmp = A[j + 1]
+            else:
+                tmp |= A[j + 1]
+        res ^= tmp
+        ans = min(ans, res)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    if N == 1:
+        print(A[0])
+        return
+    A.sort(reverse = True)
+    #print(A)
+    ans = 0
+    for i in range(N):
+        ans = ans | A[i]
+    print(ans)

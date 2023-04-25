@@ -1,49 +1,164 @@
-#Problem Statement
-#Takahashi has come to an integer shop to buy an integer.
-#The shop sells the integers from 1 through 10^9. The integer N is sold for A × N + B × d(N) yen (the currency of Japan), where d(N) is the number of digits in the decimal notation of N.
-#Find the largest integer that Takahashi can buy when he has X yen. If no integer can be bought, print 0.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B X
-#
-#Output
-#Print the greatest integer that Takahashi can buy. If no integer can be bought, print 0.
-#
-#Sample Input 1
-#10 7 100
-#
-#Sample Output 1
-#9
-#The integer 9 is sold for 10 × 9 + 7 × 1 = 97 yen, and this is the greatest integer that can be bought.
-#Some of the other integers are sold for the following prices:
-#10: 10 × 10 + 7 × 2 = 114 yen
-#100: 10 × 100 + 7 × 3 = 1021 yen
-#12345: 10 × 12345 + 7 × 5 = 123485 yen
-#
-#Sample Input 2
-#2 1 100000000000
-#
-#Sample Output 2
-#1000000000
-#He can buy the largest integer that is sold. Note that input may not fit into a 32-bit integer type.
-#
-#Sample Input 3
-#1000000000 1000000000 100
-#
-#Sample Output 3
-#0
-#
-#Sample Input 4
-#1234 56789 314159265
-#
-#Sample Output 4
-#254309
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, X = map(int, input().split())
+    if A * 10**9 + B * 10 <= X:
+        print(10**9)
+        return
+
+    left = 0
+    right = 10**9
+    while right - left > 1:
+        mid = (left + right) // 2
+        if A * mid + B * len(str(mid)) <= X:
+            left = mid
+        else:
+            right = mid
+    print(left)
+
+=======
+Suggestion 2
+
+def main():
+    #input
+    A, B, X = map(int, input().split())
+
+    #compute
+    if A * 10**9 + B * 10 <= X:
+        ans = 10**9
+    else:
+        ans = 0
+        for i in range(1, 10):
+            if A * 10**(i-1) + B * i <= X:
+                ans = max(ans, 10**(i-1) + (X - A * 10**(i-1) - B * i) // (A * 10**(i-1) + B * i))
+
+    #output
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, X = map(int, input().split())
+    N = X // A
+    if N >= 10**9:
+        N = 10**9
+    while A * N + B * len(str(N)) > X:
+        N -= 1
+    print(N)
+
+=======
+Suggestion 4
+
+def main():
+    A, B, X = map(int, input().split())
+    if X < A:
+        print(0)
+        return
+    X -= A
+    if X / B > 10 ** 9:
+        print(10 ** 9)
+        return
+    X = int(X / B)
+    if X == 0:
+        print(1)
+        return
+    print(X)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, x = map(int, input().split())
+    n = x // a
+    if n > 10**9:
+        n = 10**9
+    for i in range(n, 0, -1):
+        if a * i + b * len(str(i)) <= x:
+            print(i)
+            return
+    print(0)
+
+=======
+Suggestion 6
+
+def main():
+    A, B, X = map(int, input().split())
+
+    # 1桁の場合
+    if X < A + B:
+        print(0)
+        return
+
+    # 10^9桁の場合
+    if X >= A * 10**9 + B * 10:
+        print(10**9)
+        return
+
+    # 1桁から9桁までの場合
+    left = 1
+    right = 10**9
+    while right - left > 1:
+        mid = (left + right) // 2
+        # A * mid + B * d(mid) <= X
+        if A * mid + B * len(str(mid)) <= X:
+            left = mid
+        else:
+            right = mid
+
+    print(left)
+
+=======
+Suggestion 7
+
+def main():
+    A, B, X = map(int, input().split())
+    if A == 1:
+        print(X // B)
+        return
+    if A * (10 ** 9) + B * 10 < X:
+        print(10 ** 9)
+        return
+    for i in range(1, 10):
+        if A * (10 ** i) + B * (i + 1) > X:
+            print(10 ** (i - 1) - 1)
+            return
+    print(10 ** 9)
+
+=======
+Suggestion 8
+
+def num_digits(n):
+    if n == 0:
+        return 1
+    return int(math.log10(n)) + 1
+
+=======
+Suggestion 9
+
+def main():
+    A,B,X = list(map(int, input().split()))
+    if A > X:
+        print(0)
+        return
+    if A == X:
+        print(1)
+        return
+    if X >= A + B * 10:
+        print(10 ** 9)
+        return
+    for i in range(1, 10):
+        if A * (10 ** i) + B * (i + 1) > X:
+            print(10 ** (i - 1))
+            return
+
+main()
+
+=======
+Suggestion 10
+
+def d(N):
+    return len(str(N))

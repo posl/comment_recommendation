@@ -1,65 +1,255 @@
-#Problem Statement
-#A string consisting of lowercase English letters, (, and ) is said to be a good string if you can make it an empty string by the following procedure:
-#First, remove all lowercase English letters.
-#Then, repeatedly remove consecutive () while possible.
-#For example, ((a)ba) is a good string, because removing all lowercase English letters yields (()), from which we can remove consecutive () at the 2-nd and 3-rd characters to obtain (), which in turn ends up in an empty string.  
-#You are given a good string S.
-#We denote by S_i the i-th character of S.
-#For each lowercase English letter a, b, ..., and z, we have a ball with the letter written on it.
-#Additionally, we have an empty box.
-#For each i = 1,2, ... ,|S| in this order, Takahashi performs the following operation unless he faints.
-#If S_i is a lowercase English letter, put the ball with the letter written on it into the box.  If the ball is already in the box, he faints.  
-#If S_i is (, do nothing.  
-#If S_i is ), take the maximum integer j less than i such that the j-th through i-th characters of S form a good string.  (We can prove that such an integer j always exists.)  Take out from the box all the balls that he has put in the j-th through i-th operations.
-#Determine if Takahashi can complete the sequence of operations without fainting.
-#
-#Constraints
-#1 ≦ |S| ≦ 3 × 10^5
-#S is a good string.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print Yes if he can complete the sequence of operations without fainting; print No otherwise.
-#
-#Sample Input 1
-#((a)ba)
-#
-#Sample Output 1
-#Yes
-#For i = 1, he does nothing.
-#For i = 2, he does nothing.
-#For i = 3, he puts the ball with a written on it into the box.
-#For i = 4, j=2 is the maximum integer less than 4 such that the j-th through 4-th characters of S form a good string, so he takes out the ball with a written on it from the box.
-#For i = 5, he puts the ball with b written on it into the box.
-#For i = 6, he puts the ball with a written on it into the box.
-#For i = 7, j=1 is the maximum integer less than 7 such that the j-th through 7-th characters of S form a good string, so he takes out the ball with a written on it, and another with b, from the box.
-#Therefore, the answer to this case is Yes.
-#
-#Sample Input 2
-#(a(ba))
-#
-#Sample Output 2
-#No
-#For i = 1, he does nothing.
-#For i = 2, he puts the ball with a written on it into the box.
-#For i = 3, he does nothing.
-#For i = 4, he puts the ball with b written on it into the box.
-#For i = 5, the ball with a written on it is already in the box, so he faints, aborting the sequence of operations.
-#Therefore, the answer to this case is No.
-#
-#Sample Input 3
-#(((())))
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#abca
-#
-#Sample Output 4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        else:
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+                stack.append(s)
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    stack = []
+    for s in S:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        else:
+            if s in stack:
+                print("No")
+                return
+            else:
+                stack.append(s)
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    stack = []
+    for c in s:
+        if c == "(":
+            stack.append(c)
+        elif c == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            stack.pop()
+        else:
+            if c in stack:
+                print("No")
+                return
+            stack.append(c)
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    stack = []
+    for c in s:
+        if c == '(':
+            stack.append(c)
+        elif c == ')':
+            if len(stack) == 0:
+                print('No')
+                return
+            stack.pop()
+        else:
+            if c in stack:
+                print('No')
+                return
+            stack.append(c)
+    if len(stack) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    stack = []
+    for i in range(len(S)):
+        if S[i] == "(":
+            stack.append("(")
+        elif S[i] == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        else:
+            if len(stack) == 0:
+                stack.append(S[i])
+            elif stack[-1] == "(":
+                stack.append(S[i])
+            else:
+                if stack[-1] == S[i]:
+                    print("No")
+                    return
+                else:
+                    stack.pop()
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    stack = []
+    for i in range(len(S)):
+        if S[i] == "(":
+            stack.append(i)
+        elif S[i] == ")":
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        else:
+            if len(stack) != 0:
+                print("No")
+                return
+    if len(stack) != 0:
+        print("No")
+    else:
+        print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    box = set()
+    for i in range(len(s)):
+        if s[i] == '(':
+            continue
+        elif s[i] == ')':
+            if len(box) == 0:
+                print('No')
+                return
+            else:
+                box.pop()
+        else:
+            if s[i] in box:
+                print('No')
+                return
+            else:
+                box.add(s[i])
+    if len(box) != 0:
+        print('No')
+        return
+    print('Yes')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    box = []
+    for c in S:
+        if c == '(':
+            box.append(c)
+        elif c == ')':
+            if len(box) > 0 and box[-1] == '(':
+                box.pop()
+            else:
+                box.append(c)
+        else:
+            if c in box:
+                box.append(c)
+            else:
+                box = [c]
+    if len(box) == 0:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 9
+
+def is_good_string(S):
+    stack = []
+    for s in S:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
+            if stack and stack[-1] == "(":
+                stack.pop()
+            else:
+                return False
+        else:
+            if stack and stack[-1] == s:
+                stack.pop()
+            else:
+                stack.append(s)
+    return len(stack) == 0
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    stack = []
+    for i in range(len(S)):
+        if S[i] == ')':
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+        elif S[i] == '(':
+            stack.append('(')
+        else:
+            if len(stack) == 0:
+                print("No")
+                return
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+    return

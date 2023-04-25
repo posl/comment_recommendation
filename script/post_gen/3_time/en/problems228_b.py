@@ -1,41 +1,191 @@
-#Problem Statement
-#Takahashi has N friends. They have nicknames: Friend 1, Friend 2, ..., Friend N.
-#One day, Takahashi accidentally let one of his friends, Friend X, learn his shameful secret.
-#For each i = 1, 2, ..., N, when Friend i learns the secret, he/she will share it with Friend A_i, if Friend A_i has not already learned it.
-#How many of Takahashi's friends will learn the secret in the end?
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4 2
-#3 1 1 2
-#
-#Sample Output 1
-#3
-#Takahashi's secret will be learned by Friend 1, Friend 2, and Friend 3, as follows.
-#One day, Takahashi let Friend 2 learn the secret.
-#Friend 2 shares it with Friend 1.
-#Friend 1 shares it with Friend 3.
-#In the end, three of his friends learn the secret, so we print 3.
-#
-#Sample Input 2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#Sample Output 2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    visited = [False] * (N + 1)
+    visited[X] = True
+    count = 0
+    while True:
+        X = A[X]
+        if visited[X] == True:
+            break
+        else:
+            visited[X] = True
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    visited = [False] * (N + 1)
+    count = 0
+    while not visited[X]:
+        visited[X] = True
+        X = A[X]
+        count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [i-1 for i in A]
+    visited = [False]*N
+    visited[X-1] = True
+    count = 1
+    current = X-1
+    while True:
+        current = A[current]
+        if visited[current]:
+            print(-1)
+            break
+        else:
+            visited[current] = True
+            count += 1
+            if current == 0:
+                print(count)
+                break
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a - 1 for a in A]
+    X -= 1
+    ans = 0
+    visited = [False] * N
+    while True:
+        if visited[X]:
+            ans = -1
+            break
+        ans += 1
+        visited[X] = True
+        X = A[X]
+        if visited[X]:
+            break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    count = 0
+    for i in range(N):
+        if X == A[X]:
+            print(count)
+            break
+        else:
+            X = A[X]
+            count += 1
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    x -= 1
+    count = 0
+    used = [False] * n
+    while not used[x]:
+        used[x] = True
+        x = a[x] - 1
+        count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    X = A[X]
+    count = 0
+    while X != 1:
+        X = A[X]
+        count += 1
+        if count > 100:
+            break
+    if count > 100:
+        print(-1)
+    else:
+        print(count+1)
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a-1 for a in A]
+    X -= 1
+    B = [0]*N
+    B[X] = 1
+    while True:
+        X = A[X]
+        if B[X]:
+            print(-1)
+            return
+        B[X] = 1
+        if X == 1:
+            break
+    print(sum(B))
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, X)
+    #print(A)
+    l = [0] * N
+    l[X-1] = 1
+    #print(l)
+    i = X-1
+    while 1:
+        #print(i, A[i])
+        i = A[i] - 1
+        l[i] += 1
+        if l[i] == 2:
+            break
+    print(sum(l))
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    #print(n, x, a)
+    s = set()
+    s.add(x-1)
+    i = x-1
+    while True:
+        i = a[i]-1
+        if i in s:
+            break
+        else:
+            s.add(i)
+    print(len(s))

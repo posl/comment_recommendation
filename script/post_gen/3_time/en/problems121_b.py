@@ -1,63 +1,131 @@
-#Problem Statement
-#There are N pieces of source code. The characteristics of the i-th code is represented by M integers A_{i1}, A_{i2}, ..., A_{iM}.
-#Additionally, you are given integers B_1, B_2, ..., B_M and C.
-#The i-th code correctly solves this problem if and only if A_{i1} B_1 + A_{i2} B_2 + ... + A_{iM} B_M + C > 0.
-#Among the N codes, find the number of codes that correctly solve this problem.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 20
-#-100 ≦ A_{ij} ≦ 100
-#-100 ≦ B_i ≦ 100
-#-100 ≦ C ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M C
-#B_1 B_2 ... B_M
-#A_{11} A_{12} ... A_{1M}
-#A_{21} A_{22} ... A_{2M}
-#.
-#.
-#.
-#A_{N1} A_{N2} ... A_{NM}
-#
-#Output
-#Print the number of codes among the given N codes that correctly solve this problem.
-#
-#Sample Input 1
-#2 3 -10
-#1 2 3
-#3 2 1
-#1 2 2
-#
-#Sample Output 1
-#1
-#Only the second code correctly solves this problem, as follows:
-#Since 3 × 1 + 2 × 2 + 1 × 3 + (-10) = 0 ≦ 0, the first code does not solve this problem.
-#1 × 1 + 2 × 2 + 2 × 3 + (-10) = 1 > 0, the second code solves this problem.
-#
-#Sample Input 2
-#5 2 -4
-#-2 5
-#100 41
-#100 40
-#-3 0
-#-6 -2
-#18 -13
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#3 3 0
-#100 -100 0
-#0 100 100
-#100 100 100
-#-100 100 100
-#
-#Sample Output 3
-#0
-#All of them are Wrong Answer. Except yours.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        A = list(map(int, input().split()))
+        if sum([a * b for a, b in zip(A, B)]) + C > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        a = list(map(int, input().split()))
+        if sum([a[j] * b[j] for j in range(m)]) + c > 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        a = list(map(int, input().split()))
+        if sum([ai*bi for ai, bi in zip(a, b)]) + c > 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    ans = 0
+    for _ in range(N):
+        A = list(map(int, input().split()))
+        if sum(a * b for a, b in zip(A, B)) + C > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for a in A:
+        if sum([x*y for x, y in zip(a, B)]) + C > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [list(map(int, input().split())) for _ in range(N)]
+    count = 0
+    for i in range(N):
+        if sum([A[i][j] * B[j] for j in range(M)]) + C > 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    count = 0
+    for i in range(n):
+        s = 0
+        for j in range(m):
+            s += a[i][j] * b[j]
+        s += c
+        if s > 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        if sum([a[i][j] * b[j] for j in range(m)]) + c > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [[0 for i in range(M)] for j in range(N)]
+    for i in range(N):
+        A[i] = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        sum = 0
+        for j in range(M):
+            sum += A[i][j] * B[j]
+        if sum + C > 0:
+            count += 1
+    print(count)

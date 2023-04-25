@@ -1,46 +1,101 @@
-#Problem Statement
-#Takahashi is a teacher responsible for a class of N students.
-#The students are given distinct student numbers from 1 to N.
-#Today, all the students entered the classroom at different times.
-#According to Takahashi's record, there were A_i students in the classroom when student number i entered the classroom (including student number i).
-#From these records, reconstruct the order in which the students entered the classroom.
-#
-#Constraints
-# 1 ≦ N ≦ 10^5 
-# 1 ≦ A_i ≦ N 
-# A_i ≠ A_j  (i ≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the student numbers of the students in the order the students entered the classroom.
-#
-#Sample Input 1
-#3
-#2 3 1
-#
-#Sample Output 1
-#3 1 2
-#First, student number 3 entered the classroom.
-#Then, student number 1 entered the classroom.
-#Finally, student number 2 entered the classroom.
-#
-#Sample Input 2
-#5
-#1 2 3 4 5
-#
-#Sample Output 2
-#1 2 3 4 5
-#
-#Sample Input 3
-#8
-#8 2 7 3 4 5 6 1
-#
-#Sample Output 3
-#8 2 4 5 6 7 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(*B)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = [0]*N
+    for i in range(N):
+        ans[A[i]-1] = i+1
+    print(" ".join(map(str,ans)))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(' '.join(str(b) for b in B))
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = [0]*N
+    for i in range(N):
+        B[A[i]-1] = i+1
+    print(*B)
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    order = [0]*N
+    for i in range(N):
+        order[A[i]-1] = i+1
+    print(*order)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(1, N+1):
+        print(A.index(A.index(i)+1)+1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        print(a.index(i + 1) + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    ans = [0] * (N+1)
+    for i in range(N, 0, -1):
+        ans[i] = A[i]
+        for j in range(2*i, N+1, i):
+            ans[i] -= ans[j]
+    print(*ans[1:])

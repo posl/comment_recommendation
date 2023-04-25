@@ -1,38 +1,101 @@
-#Problem Statement
-#The cat Snuke wants to play a popular Japanese game called ÅtCoder, so Iroha has decided to teach him Japanese.
-#When counting pencils in Japanese, the counter word "本" follows the number. The pronunciation of this word varies depending on the number. Specifically, the pronunciation of "本" in the phrase "N 本" for a positive integer N not exceeding 999 is as follows:
-#hon when the digit in the one's place of N is 2, 4, 5, 7, or 9;
-#pon when the digit in the one's place of N is 0, 1, 6 or 8;
-#bon when the digit in the one's place of N is 3.
-#Given N, print the pronunciation of "本" in the phrase "N 本".
-#
-#Constraints
-#N is a positive integer not exceeding 999.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#16
-#
-#Sample Output 1
-#pon
-#The digit in the one's place of 16 is 6, so the "本" in "16 本" is pronounced pon.
-#
-#Sample Input 2
-#2
-#
-#Sample Output 2
-#hon
-#
-#Sample Input 3
-#183
-#
-#Sample Output 3
-#bon
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 10 == 2 or n % 10 == 4 or n % 10 == 5 or n % 10 == 7 or n % 10 == 9:
+        print('hon')
+    elif n % 10 == 0 or n % 10 == 1 or n % 10 == 6 or n % 10 == 8:
+        print('pon')
+    else:
+        print('bon')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 10 in [2, 4, 5, 7, 9]:
+        print('hon')
+    elif n % 10 in [0, 1, 6, 8]:
+        print('pon')
+    elif n % 10 == 3:
+        print('bon')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 10 in [2, 4, 5, 7, 9]:
+        print("hon")
+    elif N % 10 in [0, 1, 6, 8]:
+        print("pon")
+    else:
+        print("bon")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 10 in [2, 4, 5, 7, 9]:
+        print('hon')
+    elif N % 10 in [0, 1, 6, 8]:
+        print('pon')
+    else:
+        print('bon')
+
+=======
+Suggestion 5
+
+def main():
+    num = input()
+    if num[-1] in ['2', '4', '5', '7', '9']:
+        print('hon')
+    elif num[-1] in ['0', '1', '6', '8']:
+        print('pon')
+    else:
+        print('bon')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    r = n % 10
+    if r == 3:
+        print("bon")
+    elif r == 0 or r == 1 or r == 6 or r == 8:
+        print("pon")
+    else:
+        print("hon")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+
+    if n == 3:
+        print('bon')
+    elif n % 10 in [0, 1, 6, 8]:
+        print('pon')
+    else:
+        print('hon')
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N = int(input())
+    #output
+    if N%10==2 or N%10==4 or N%10==5 or N%10==7 or N%10==9:
+        print('hon')
+    elif N%10==0 or N%10==1 or N%10==6 or N%10==8:
+        print('pon')
+    else:
+        print('bon')

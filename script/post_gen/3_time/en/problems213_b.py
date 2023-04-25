@@ -1,34 +1,62 @@
-#Problem Statement
-#N players, who are numbered 1, ..., N, have played a game. Player i has scored A_i, and a player with a smaller score ranks higher.
-#The player who ranks the second lowest will receive a booby prize. Who is this player? Answer with an integer representing the player.
-#
-#Constraints
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#A_i are distinct.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N 
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#6
-#1 123 12345 12 1234 123456
-#
-#Sample Output 1
-#3
-#It is Player 3 who ranks fifth among the six players.
-#
-#Sample Input 2
-#5
-#3 1 4 15 9
-#
-#Sample Output 2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[1])
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [(a, i) for i, a in enumerate(A)]
+    A = sorted(A, key=lambda x: x[0])
+    print(A[1][1] + 1)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = sorted(A)
+    print(A[1])

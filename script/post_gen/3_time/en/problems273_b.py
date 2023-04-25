@@ -1,51 +1,80 @@
-#Problem Statement
-#Given a non-negative integer X, perform the following operation for i=1,2,...,K in this order and find the resulting X.
-#Round X off to the nearest 10^i.
-#Formally, replace X with Y that is "the largest multiple of 10^i that minimizes |Y-X|."
-#Here are some examples:
-#Rounding 273 off to the nearest 10^2 yields 300.
-#Rounding 999 off to the nearest 10^3 yields 1000.
-#Rounding 100 off to the nearest 10^{10} yields 0.
-#Rounding 1015 off to the nearest 10^1 yields 1020.
-#
-#
-#
-#Constraints
-#X and K are integers.
-#0 ≦ X < 10^{15}
-#1 ≦ K ≦ 15
-#
-#Input
-#The input is given from Standard Input in the following format:
-#X K
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#2048 2
-#
-#Sample Output 1
-#2100
-#X changes as 2048 -> 2050 -> 2100 by the operations.
-#
-#Sample Input 2
-#1 15
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#999 3
-#
-#Sample Output 3
-#1000
-#
-#Sample Input 4
-#314159265358979 12
-#
-#Sample Output 4
-#314000000000000
-#X may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, k = map(int, input().split())
+    for i in range(1, k+1):
+        x = round(x, -i)
+    print(x)
+
+=======
+Suggestion 2
+
+def main():
+    x, k = map(int, input().split())
+    print((x + 5 * 10 ** (k - 1)) // 10 ** k * 10 ** k)
+
+=======
+Suggestion 3
+
+def main():
+    X, K = [int(x) for x in input().split()]
+    for i in range(1, K+1):
+        X = round(X, -i)
+    print(X)
+
+=======
+Suggestion 4
+
+def main():
+    x, k = map(int, input().split())
+    for i in range(k):
+        x = round(x, -i)
+    print(x)
+
+=======
+Suggestion 5
+
+def roundoff(x, k):
+    for i in range(1, k+1):
+        x = int(x / (10**i)) * (10**i)
+    return x
+
+x, k = map(int, input().split())
+print(roundoff(x, k))
+
+=======
+Suggestion 6
+
+def main():
+    x, k = map(int, input().split())
+    #print(x, k)
+    for i in range(1, k+1):
+        y = round(x, -i)
+        #print(y)
+        x = y
+    print(x)
+
+=======
+Suggestion 7
+
+def main():
+    x,k = map(int,input().split())
+    print(x+10**k-1-(x+10**k-1)%(10**k))
+
+=======
+Suggestion 8
+
+def roundoff(x):
+    if x % 1000 == 0:
+        return x
+    else:
+        return (x // 1000 + 1) * 1000
+
+=======
+Suggestion 9
+
+def nearestTen(x, i):
+    return int(x/(10**i)+0.5)*(10**i)

@@ -1,33 +1,76 @@
-#Problem Statement
-#Takahashi has decided to hold some number of programming contests.
-#Holding one contest requires one 100-point problem, one 200-point problem, one 300-point problem, and one 400-point problem.
-#When he has A_1, A_2, A_3, and A_4 drafts of 100-, 200-, 300-, and 400-point problems, respectively, at most how many contests can he hold?
-#The same draft can be used only once.
-#
-#Constraints
-#1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A_1 A_2 A_3 A_4
-#
-#Output
-#Print an integer representing the maximum number of contests that can be held.  
-#
-#Sample Input 1
-#5 3 7 11
-#
-#Sample Output 1
-#3
-#By using three drafts for each slot, he can hold three contests.
-#He has just three drafts for 200-point problems, so he cannot hold four.
-#
-#Sample Input 2
-#100 100 1 100
-#
-#Sample Output 2
-#1
-#A contest cannot be held even if there is just one missing slot.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A_1, A_2, A_3, A_4 = map(int, input().split())
+    print(min(A_1, A_2, A_3, A_4))
+
+=======
+Suggestion 2
+
+def get_max_contests(A_1, A_2, A_3, A_4):
+    contests = 0
+    if A_1 > 0:
+        contests += 1
+    if A_2 > 0:
+        contests += 1
+    if A_3 > 0:
+        contests += 1
+    if A_4 > 0:
+        contests += 1
+    return contests
+
+=======
+Suggestion 3
+
+def main():
+    A = list(map(int, input().split()))
+    print(min(A))
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    print(min(a))
+
+=======
+Suggestion 5
+
+def main():
+    a = [int(x) for x in input().split()]
+    print(min(a))
+
+=======
+Suggestion 6
+
+def main():
+    a = [int(i) for i in input().split()]
+    print(min(a))
+
+=======
+Suggestion 7
+
+def main():
+    A = input().split()
+    A = [int(i) for i in A]
+    A.sort()
+    print(A[0])
+
+=======
+Suggestion 8
+
+def solve():
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[0])
+
+=======
+Suggestion 9
+
+def main():
+    A = input().split()
+    A = [int(s) for s in A]
+    print(min(A))

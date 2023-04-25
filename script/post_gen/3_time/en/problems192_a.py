@@ -1,30 +1,86 @@
-#Problem Statement
-#Takahashi is playing a game.
-#In this game, each time the number of coins you have collected so far becomes a multiple of 100, you get a prize.
-#Takahashi has collected X coins so far. How many more coins does he need to collect before he gets the next prize? (If X is a multiple of 100, we assume that he has already got the prize for collecting X coins in total.)
-#
-#Constraints
-#0 ≦ X ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Print the number of additional coins that he needs to collect before he gets the next prize.
-#
-#Sample Input 1
-#140
-#
-#Sample Output 1
-#60
-#He gets the next prize when he has collected 200 coins in total. To get it, he needs to collect 60 more coins.
-#
-#Sample Input 2
-#1000
-#
-#Sample Output 2
-#100
-#He gets the next prize when he has collected 1100 coins in total.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(0)
+    else:
+        print(100 - (x % 100))
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(0)
+    else:
+        print(100 - x % 100)
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X % 100 == 0:
+        print(0)
+    else:
+        print(100 - X % 100)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - (x % 100))
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(0)
+    else:
+        print(100 - (x % 100))
+main()
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    print(100 - (x % 100))
+
+=======
+Suggestion 7
+
+def main():
+    X = int(input())
+    print(100 - (X % 100))
+
+=======
+Suggestion 8
+
+def main():
+    x = int(input())
+    print(100 - x % 100)
+
+=======
+Suggestion 9
+
+def main():
+    # Get the number of coins
+    X = int(input())
+    # If the number of coins is a multiple of 100, then he has already got the prize
+    if X % 100 == 0:
+        print(0)
+    # Otherwise, he needs to collect 100 - (X % 100) more coins
+    else:
+        print(100 - (X % 100))

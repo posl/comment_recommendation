@@ -1,38 +1,119 @@
-#Problem Statement
-#There are some animals in a garden. Each of them is a crane with two legs or a turtle with four legs.
-#Takahashi says: "there are X animals in total in the garden, and they have Y legs in total." Determine whether there is a combination of numbers of cranes and turtles in which this statement is correct.
-#
-#Constraints
-#1 ≦ X ≦ 100
-#1 ≦ Y ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y
-#
-#Output
-#If there is a combination of numbers of cranes and turtles in which the statement is correct, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 8
-#
-#Sample Output 1
-#Yes
-#The statement "there are 3 animals in total in the garden, and they have 8 legs in total" is correct if there are two cranes and one turtle. Thus, there is a combination of numbers of cranes and turtles in which the statement is correct.
-#
-#Sample Input 2
-#2 100
-#
-#Sample Output 2
-#No
-#There is no combination of numbers of cranes and turtles in which this statement is correct.
-#
-#Sample Input 3
-#1 2
-#
-#Sample Output 3
-#Yes
-#We also consider the case in which there are only cranes or only turtles.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y = map(int, input().split())
+    for i in range(X+1):
+        for j in range(X+1):
+            if i + j == X and 2*i + 4*j == Y:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    X, Y = map(int, input().split())
+    if Y % 2 == 0 and 2 * X <= Y <= 4 * X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    X, Y = map(int, input().split())
+    if X*2 <= Y <= X*4:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    x, y = map(int, input().split())
+    if x*2 <= y <= x*4:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    X, Y = map(int, input().split())
+    if X == 1 and Y == 2:
+        print("Yes")
+        return
+    for i in range(1, X):
+        if i * 2 + (X - i) * 4 == Y:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    X, Y = map(int, input().split())
+    if X*4 < Y or Y < X*2:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split())
+    if x == 1 and y == 2:
+        print('Yes')
+        return
+    if y % 2 == 0:
+        if x * 2 == y:
+            print('Yes')
+            return
+        elif x * 4 == y:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    x, y = map(int, input().split())
+    if y % 2 == 0 and x <= y//2 <= x*2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    X, Y = map(int, input().split())
+
+    #output
+    if (X*2 <= Y <= X*4):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    x,y = map(int,input().split())
+    
+    if x >= 1 and x <= 100 and y >= 1 and y <= 100:
+        if (y - 2*x) == 0:
+            print("Yes")
+        else:
+            print("No")

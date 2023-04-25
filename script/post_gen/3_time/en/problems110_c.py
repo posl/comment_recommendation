@@ -1,45 +1,136 @@
-#Problem Statement
-#You are given strings S and T consisting of lowercase English letters.
-#You can perform the following operation on S any number of times:
-#Operation: Choose two distinct lowercase English letters c_1 and c_2, then replace every occurrence of c_1 with c_2, and every occurrence of c_2 with c_1.
-#Determine if S and T can be made equal by performing the operation zero or more times.
-#
-#Constraints
-#1 ≦ |S| ≦ 2 × 10^5
-#|S| = |T|
-#S and T consists of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If S and T can be made equal, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#azzel
-#apple
-#
-#Sample Output 1
-#Yes
-#azzel can be changed to apple, as follows:
-#Choose e as c_1 and l as c_2. azzel becomes azzle.
-#Choose z as c_1 and p as c_2. azzle becomes apple.
-#
-#Sample Input 2
-#chokudai
-#redcoder
-#
-#Sample Output 2
-#No
-#No sequences of operation can change chokudai to redcoder.
-#
-#Sample Input 3
-#abcdefghijklmnopqrstuvwxyz
-#ibyhqfrekavclxjstdwgpzmonu
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    S_set = set(S)
+    T_set = set(T)
+    if len(S_set) == len(T_set):
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    if sorted(S) == sorted(T):
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    
+    S_set = set(S)
+    T_set = set(T)
+    
+    if len(S_set) == len(T_set):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if len(set(S)) == len(set(T)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    if len(set(S)) == len(set(T)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    s = sorted(s)
+    t = sorted(t, reverse=True)
+    if s < t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    if len(set(S)) == len(set(T)) == 26:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    if len(set(s)) == len(set(t)) == 26:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    if s == t:
+        print("Yes")
+        return
+    if sorted(s) != sorted(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            if s[i] in t[i + 1:]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    if sorted(s) != sorted(t):
+        print("No")
+    else:
+        print("Yes")

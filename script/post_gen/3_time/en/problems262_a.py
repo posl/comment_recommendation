@@ -1,35 +1,102 @@
-#Problem Statement
-#A sport event is held in June of every year whose remainder when divided by 4 is 2.
-#Suppose that it is now January of the year Y.  In what year will this sport event be held next time?
-#
-#Constraints
-#2000 ≦ Y ≦ 3000
-#Y is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#Y
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2022
-#
-#Sample Output 1
-#2022
-#The remainder when 2022 is divided by 4 is 2, so if it is now January of 2022, the next games will be held in June of the same year.
-#
-#Sample Input 2
-#2023
-#
-#Sample Output 2
-#2026
-#
-#Sample Input 3
-#3000
-#
-#Sample Output 3
-#3002
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    y = int(input())
+    while True:
+        if y % 4 == 2:
+            print(y)
+            break
+        y += 1
+
+=======
+Suggestion 2
+
+def main():
+    year = int(input())
+    while True:
+        if year % 4 == 2:
+            print(year)
+            break
+        else:
+            year += 1
+
+=======
+Suggestion 3
+
+def main():
+    Y = int(input())
+    for i in range(Y, 3000):
+        if i % 4 == 2:
+            print(i)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    y = int(input())
+    if y%4 == 2:
+        print(y)
+    else:
+        print(y + 4 - y%4)
+
+=======
+Suggestion 5
+
+def main():
+    #input
+    y = int(input())
+    #calculate
+    while True:
+        if y % 4 == 2:
+            break
+        else:
+            y += 1
+    #output
+    print(y)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    y = int(input())
+    y += 4 - y % 4
+    print(y)
+
+=======
+Suggestion 7
+
+def main():
+    y = int(input())
+    print(y + (4 - y % 4))
+
+=======
+Suggestion 8
+
+def main():
+    # Get input
+    Y = int(input())
+
+    # Find next event
+    if Y % 4 == 2:
+        print(Y)
+    else:
+        print(Y + 2 - (Y % 4))
+
+=======
+Suggestion 9
+
+def main():
+    # get input
+    y = int(input())
+
+    # solve
+    ans = y + 2 - (y % 4)
+
+    # output
+    print(ans)

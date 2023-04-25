@@ -1,36 +1,89 @@
-#Problem Statement
-#AtCoDeer has an empty piggy bank.
-#On the morning of the i-th day, he will put i yen (Japanese currency) in it: 1 yen on the morning of the 1-st day, 2 yen on the morning of the 2-nd day, and so on.
-#Each night, he will check the amount of money in it.
-#On which day will he find out that his piggy bank has N yen or more for the first time?
-#
-#Constraints
-#1 ≦ N ≦ 10^9
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print an integer x such that AtCoDeer will find out that his piggy bank has N yen or more for the first time on the x-th day.
-#
-#Sample Input 1
-#12
-#
-#Sample Output 1
-#5
-#On the 1-st day, the piggy bank gets 1 yen in the morning and has 1 yen at night.
-#On the 2-st day, the piggy bank gets 2 yen in the morning and has 3 yen at night.
-#On the 3-rd day, the piggy bank gets 3 yen in the morning and has 6 yen at night.
-#On the 4-th day, the piggy bank gets 4 yen in the morning and has 10 yen at night.
-#On the 5-th day, the piggy bank gets 5 yen in the morning and has 15 yen at night.
-#Thus, on the 5-th night, AtCoDeer will find out that his piggy bank has 12 yen or more for the first time.
-#
-#Sample Input 2
-#100128
-#
-#Sample Output 2
-#447
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i
+        if ans >= N:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    i = 1
+    while N > 0:
+        N -= i
+        i += 1
+    print(i-1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(1)
+    else:
+        i = 1
+        while True:
+            if n <= (i*(i+1)/2):
+                print(i)
+                break
+            else:
+                i += 1
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(int((2 * n) ** 0.5))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N <= 0:
+        print(0)
+    else:
+        print(int((2*N)**0.5))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(int((N*2)**0.5))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print(int(N * (N+1) / 2))
+
+=======
+Suggestion 9
+
+def getN():
+    return int(input())

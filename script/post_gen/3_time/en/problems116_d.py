@@ -1,72 +1,334 @@
-#Problem Statement
-#There are N pieces of sushi. Each piece has two parameters: "kind of topping" t_i and "deliciousness" d_i.
-#You are choosing K among these N pieces to eat.
-#Your "satisfaction" here will be calculated as follows:
-#The satisfaction is the sum of the "base total deliciousness" and the "variety bonus".
-#The base total deliciousness is the sum of the deliciousness of the pieces you eat.
-#The variety bonus is x*x, where x is the number of different kinds of toppings of the pieces you eat.
-#You want to have as much satisfaction as possible.
-#Find this maximum satisfaction.
-#
-#Constraints
-#1 ≦ K ≦ N  ≦ 10^5
-#1 ≦ t_i ≦ N
-#1 ≦ d_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#t_1 d_1
-#t_2 d_2
-#.
-#.
-#.
-#t_N d_N
-#
-#Output
-#Print the maximum satisfaction that you can obtain.
-#
-#Sample Input 1
-#5 3
-#1 9
-#1 7
-#2 6
-#2 5
-#3 1
-#
-#Sample Output 1
-#26
-#If you eat Sushi 1,2 and 3:
-#The base total deliciousness is 9+7+6=22.
-#The variety bonus is 2*2=4.
-#Thus, your satisfaction will be 26, which is optimal.
-#
-#Sample Input 2
-#7 4
-#1 1
-#2 1
-#3 1
-#4 6
-#4 5
-#4 5
-#4 5
-#
-#Sample Output 2
-#25
-#It is optimal to eat Sushi 1,2,3 and 4.
-#
-#Sample Input 3
-#6 5
-#5 1000000000
-#2 990000000
-#3 980000000
-#6 970000000
-#6 960000000
-#4 950000000
-#
-#Sample Output 3
-#4900000016
-#Note that the output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    sushi = []
+    for _ in range(N):
+        t, d = map(int, input().split())
+        sushi.append((t, d))
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    ans = 0
+    t_set = set()
+    d_sum = 0
+    for i in range(K):
+        t, d = sushi[i]
+        t_set.add(t)
+        d_sum += d
+        ans = max(ans, d_sum + len(t_set)**2)
+    for i in range(K, N):
+        t, d = sushi[i]
+        if t in t_set:
+            continue
+        t_set.add(t)
+        d_sum += d
+        d_sum -= sushi[K-1][1]
+        K -= 1
+        ans = max(ans, d_sum + len(t_set)**2)
+    print(ans)
+
+main()
+
+The following code is the solution for the problem "D - Grid Components" on AtCoder.
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    Sushi = []
+    for i in range(N):
+        t, d = map(int, input().split())
+        Sushi.append([t, d])
+    Sushi.sort(key = lambda x: x[1], reverse = True)
+    #print(Sushi)
+    Sushi_t = [x[0] for x in Sushi]
+    Sushi_d = [x[1] for x in Sushi]
+    #print(Sushi_t)
+    #print(Sushi_d)
+    Sushi_t_unique = list(set(Sushi_t))
+    #print(Sushi_t_unique)
+    Sushi_t_unique.sort()
+    #print(Sushi_t_unique)
+    Sushi_t_unique_count = [0] * len(Sushi_t_unique)
+    #print(Sushi_t_unique_count)
+    for i in range(len(Sushi_t_unique)):
+        Sushi_t_unique_count[i] = Sushi_t.count(Sushi_t_unique[i])
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.sort(reverse = True)
+    #print(Sushi_t_unique_count)
+    if K >= len(Sushi_t_unique):
+        print(sum(Sushi_d))
+        return
+    if K == 1:
+        print(max(Sushi_d))
+        return
+    Sushi_t_unique_count = Sushi_t_unique_count[:K]
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.sort(reverse = True)
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count = Sushi_t_unique_count[1:]
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.append(K - len(Sushi_t_unique_count))
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.sort(reverse = True)
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count = Sushi_t_unique_count[:K]
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.sort(reverse = True)
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count = Sushi_t_unique_count[1:]
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.append(K - len(Sushi_t_unique_count))
+    #print(Sushi_t_unique_count)
+    Sushi_t_unique_count.sort(reverse = True)
+    #print(Sushi_t_unique_count)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    sushi = []
+    for i in range(N):
+        t, d = map(int, input().split())
+        sushi.append((d, t))
+    sushi.sort(reverse=True)
+    sushi_set = set()
+    ans = 0
+    for i in range(K):
+        ans += sushi[i][0]
+        sushi_set.add(sushi[i][1])
+    ans += len(sushi_set)**2
+    for i in range(K, N):
+        if sushi[i][1] in sushi_set:
+            continue
+        for j in range(K):
+            if sushi[j][1] not in sushi_set:
+                continue
+            sushi_set.remove(sushi[j][1])
+            sushi_set.add(sushi[i][1])
+            ans = max(ans, ans - sushi[j][0] + sushi[i][0] + len(sushi_set)**2)
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    T = []
+    for i in range(N):
+        t, d = map(int, input().split())
+        T.append((d, t))
+    T.sort(reverse=True)
+    S = set()
+    S.add(T[0][1])
+    ans = T[0][0]
+    for i in range(1, K):
+        ans += T[i][0]
+        S.add(T[i][1])
+    ans += len(S) * len(S)
+    for i in range(K, N):
+        if T[i][1] in S:
+            continue
+        tmp = ans
+        tmp -= T[K-1][0]
+        tmp += T[i][0]
+        tmp -= len(S) * len(S)
+        tmp += (len(S) + 1) * (len(S) + 1)
+        if tmp > ans:
+            ans = tmp
+            S.add(T[i][1])
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    Sushi = []
+    for i in range(N):
+        Sushi.append(list(map(int, input().split())))
+    Sushi.sort(key=lambda x:x[1], reverse=True)
+    Topping = [0]*(N+1)
+    Topping[Sushi[0][0]] += 1
+    ToppingNum = 1
+    ToppingSum = Sushi[0][1]
+    SushiEat = [Sushi[0][1]]
+    for i in range(1, N):
+        if Topping[Sushi[i][0]] == 0:
+            Topping[Sushi[i][0]] += 1
+            ToppingNum += 1
+            ToppingSum += Sushi[i][1]
+            SushiEat.append(Sushi[i][1])
+        else:
+            Topping[Sushi[i][0]] += 1
+            ToppingSum += Sushi[i][1]
+            SushiEat.append(Sushi[i][1])
+        if ToppingNum == K:
+            break
+    ans = ToppingSum + ToppingNum**2
+    for i in range(K, N):
+        if Topping[Sushi[i][0]] == 0:
+            Topping[Sushi[i][0]] += 1
+            ToppingNum += 1
+            ToppingSum += Sushi[i][1]
+            SushiEat.append(Sushi[i][1])
+            ToppingSum -= SushiEat[0]
+            SushiEat.pop(0)
+            while Topping[SushiEat[0]] > 1:
+                ToppingSum -= SushiEat[0]
+                Topping[SushiEat[0]] -= 1
+                SushiEat.pop(0)
+            ans = max(ans, ToppingSum + ToppingNum**2)
+        else:
+            Topping[Sushi[i][0]] += 1
+            ToppingSum += Sushi[i][1]
+            SushiEat.append(Sushi[i][1])
+            ToppingSum -= SushiEat[0]
+            SushiEat.pop(0)
+            while Topping[SushiEat[0]] > 1:
+                ToppingSum -= SushiEat[0]
+                Topping[SushiEat[0]] -= 1
+                SushiEat.pop(0)
+            ans = max(ans, ToppingSum + T
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    Sushi = [tuple(map(int, input().split())) for _ in range(N)]
+    Sushi.sort(key=lambda x: x[1], reverse=True)
+    T = set([s[0] for s in Sushi[:K]])
+    S = sum([s[1] for s in Sushi[:K]])
+    ans = S + len(T) ** 2
+    for i in range(K, N):
+        if len(T) == K:
+            break
+        if Sushi[i][0] in T:
+            continue
+        T.add(Sushi[i][0])
+        S -= Sushi[i-K][1]
+        S += Sushi[i][1]
+        ans = max(ans, S + len(T) ** 2)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    S = [list(map(int, input().split())) for _ in range(N)]
+    S.sort(key=lambda x: x[1], reverse=True)
+    ans = 0
+    for i in range(K):
+        ans += S[i][1]
+    ans += K**2
+    cnt = K
+    kind = set()
+    for i in range(K):
+        kind.add(S[i][0])
+    for i in range(K, N):
+        if S[i][0] not in kind:
+            if cnt >= K:
+                continue
+            cnt += 1
+            kind.add(S[i][0])
+            ans += S[i][1] - S[K - 1][1]
+            ans += 2 * cnt - K - 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    sushi = [list(map(int, input().split())) for _ in range(n)]
+    sushi.sort(key=lambda x: x[1], reverse=True)
+
+    kind = set()
+    ans = 0
+    tmp = 0
+    for i in range(k):
+        ans += sushi[i][1]
+        kind.add(sushi[i][0])
+        tmp += 1
+    ans += tmp * tmp
+
+    for i in range(k, n):
+        if sushi[i][0] not in kind:
+            for j in range(k):
+                if sushi[j][0] not in kind:
+                    if sushi[j][1] < sushi[i][1]:
+                        kind.remove(sushi[j][0])
+                        kind.add(sushi[i][0])
+                        ans = ans - sushi[j][1] + sushi[i][1] + 2 * tmp - 1
+                        sushi[j][1] = sushi[i][1]
+                        break
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,K = map(int,input().split())
+    sushi = [tuple(map(int,input().split())) for _ in range(N)]
+    sushi.sort(key=lambda x:x[1],reverse=True)
+    #print(sushi)
+    ans = 0
+    for i in range(K):
+        ans += sushi[i][1]
+    #print(ans)
+    kinds = set()
+    for i in range(K):
+        kinds.add(sushi[i][0])
+    #print(kinds)
+    if len(kinds) == K:
+        print(ans + len(kinds)**2)
+    else:
+        for i in range(K,N):
+            if len(kinds) == K:
+                break
+            if sushi[i][0] not in kinds:
+                kinds.add(sushi[i][0])
+                ans += sushi[i][1]
+        print(ans + len(kinds)**2)
+
+=======
+Suggestion 10
+
+def main():
+    #read input
+    n,k = map(int,input().split())
+    td = [list(map(int,input().split())) for i in range(n)]
+    #sort by deliciousness
+    td.sort(key=lambda x:x[1],reverse=True)
+    #use set to count variety
+    kind = set()
+    #use heap to store the "deliciousness" of pieces you eat
+    h = []
+    #base total deliciousness
+    total = 0
+    for i in range(k):
+        total += td[i][1]
+        kind.add(td[i][0])
+        heapq.heappush(h,td[i][1])
+    #calculate satisfaction
+    ans = total + len(kind)*len(kind)
+    for i in range(k,n):
+        #if the kind of topping is new
+        if td[i][0] not in kind:
+            #update total deliciousness
+            total += td[i][1] - heapq.heappop(h)
+            #update variety
+            kind.add(td[i][0])
+            #update satisfaction
+            ans = max(ans,total+len(kind)*len(kind))
+    print(ans)

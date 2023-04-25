@@ -1,40 +1,80 @@
-#Problem Statement
-#Takahashi wants to send a letter to Santa Claus. He has an envelope with an X-yen (Japanese currency) stamp stuck on it.
-#To be delivered to Santa Claus, the envelope must have stamps in a total value of at least Y yen.
-#Takahashi will put some more 10-yen stamps so that the envelope will have stamps worth at least Y yen in total.
-#At least how many more 10-yen stamps does Takahashi need to put on the envelope?
-#
-#Constraints
-#X and Y are integers.
-#1 ≦ X,Y ≦ 1000
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#80 94
-#
-#Sample Output 1
-#2
-#After adding zero 10-yen stamps to the 80-yen stamp, the total is 80 yen, which is less than the required amount of 94 yen.
-#After adding one 10-yen stamp to the 80-yen stamp, the total is 90 yen, which is less than the required amount of 94 yen.
-#After adding two 10-yen stamps to the 80-yen stamp, the total is 100 yen, which is not less than the required amount of 94 yen.
-#
-#Sample Input 2
-#1000 63
-#
-#Sample Output 2
-#0
-#The envelope may already have a stamp with enough value.
-#
-#Sample Input 3
-#270 750
-#
-#Sample Output 3
-#48
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    if x >= y:
+        print(0)
+    else:
+        print(y - x)
+
+=======
+Suggestion 2
+
+def main():
+    X, Y = map(int, input().split())
+    if X >= Y:
+        print(0)
+    else:
+        print(Y-X)
+
+=======
+Suggestion 3
+
+def main():
+    x,y = map(int, input().split())
+    z = y - x
+    if z % 10 == 0:
+        print(z // 10)
+    else:
+        print(z // 10 + 1)
+
+=======
+Suggestion 4
+
+def main():
+    x, y = list(map(int, input().split()))
+    if x >= y:
+        print(0)
+    else:
+        print(y - x)
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x) if (y - x) > 0 else 0)
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(int, input().split())
+    print(0 if x >= y else y - x)
+
+=======
+Suggestion 7
+
+def problem233_a():
+    x, y = map(int, input().split())
+    if x < y:
+        print(y - x)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    x, y = map(int, input().split())
+    print(max(0, y - x))
+
+=======
+Suggestion 9
+
+def main():
+    x, y = map(int, input().split())
+    print(y // x)

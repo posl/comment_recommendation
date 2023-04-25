@@ -1,51 +1,100 @@
-#Problem Statement
-#You are given N strings S_1,S_2,...,S_N in this order.
-#Print S_N,S_{N-1},...,S_1 in this order.
-#
-#Constraints
-#1≦ N ≦ 10
-#N is an integer.
-#S_i is a string of length between 1 and 10, inclusive, consisting of lowercase English letters, uppercase English letters, and digits.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print N lines.
-#The i-th (1≦ i ≦ N) line should contain S_{N+1-i}.
-#
-#Sample Input 1
-#3
-#Takahashi
-#Aoki
-#Snuke
-#
-#Sample Output 1
-#Snuke
-#Aoki
-#Takahashi
-#We have N=3, S_1= Takahashi, S_2= Aoki, and S_3= Snuke.
-#Thus, you should print Snuke, Aoki, and Takahashi in this order.
-#
-#Sample Input 2
-#4
-#2023
-#Year
-#New
-#Happy
-#
-#Sample Output 2
-#Happy
-#New
-#Year
-#2023
-#The given strings may contain digits.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.reverse()
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-1-i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        print(S[N-i-1])
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for s in S[::-1]:
+        print(s)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print(*S[::-1], sep='
+
+')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    for i in range(n):
+        print(s[n - i - 1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print('
+
+'.join(s[::-1]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    for i in range(n):
+        s = input()
+        print(s)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    for i in range(n):
+        print(input())
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    print('
+
+'.join([input() for i in range(n)][::-1]))

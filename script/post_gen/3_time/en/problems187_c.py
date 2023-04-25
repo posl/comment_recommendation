@@ -1,55 +1,180 @@
-#Problem Statement
-#Given are N strings S_1, S_2, ..., S_N.
-#Each of these is a non-empty string consisting of lowercase English letters, with zero or one ! added at the beginning.
-#We say a string T to be unsatisfied when it matches one of S_1, S_2, ..., S_N regardless of whether we add an ! at the beginning of T.
-#Determine whether there exists an unsatisfied string. If so, present one such string.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ |S_i| ≦ 10
-#S_i is a non-empty string consisting of lowercase English letters, with zero or one ! added at the beginning.  
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#Output
-#If there exists an unsatisfied string, print one such string.
-#If there is no unsatisfied string, print satisfiable.  
-#
-#Sample Input 1
-#6
-#a
-#!a
-#b
-#!c
-#d
-#!d
-#
-#Sample Output 1
-#a
-#a matches S_1 as is, and it matches S_2 when we add an !, so it is unsatisfied.
-#Besides that, d will also be accepted.
-#
-#Sample Input 2
-#10
-#red
-#red
-#red
-#!orange
-#yellow
-#!blue
-#cyan
-#!green
-#brown
-#!gray
-#
-#Sample Output 2
-#satisfiable
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    for i in range(n):
+        if '!' + s[i] in s:
+            print(s[i])
+            return
+    print('satisfiable')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print(s[i])
+            return
+        elif s[i] == s[i+1][1:]:
+            print(s[i+1])
+            return
+    print('satisfiable')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    s = set()
+    for i in range(N):
+        if S[i][0] == "!":
+            if S[i][1:] in s:
+                print(S[i][1:])
+                return
+        else:
+            if "!" + S[i] in s:
+                print(S[i])
+                return
+        s.add(S[i])
+    print("satisfiable")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    s1 = []
+    s2 = []
+    for i in s:
+        if i[0] == "!":
+            s1.append(i[1:])
+        else:
+            s2.append(i)
+    s1 = set(s1)
+    s2 = set(s2)
+    s3 = s1 & s2
+    if len(s3) == 0:
+        print("satisfiable")
+    else:
+        print(s3.pop())
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort()
+    for i in range(N-1):
+        if S[i][0] == '!':
+            if S[i][1:] == S[i+1]:
+                print(S[i][1:])
+                return
+    print('satisfiable')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    i = 0
+    while i < n-1:
+        if s[i] == s[i+1]:
+            i += 2
+        elif s[i] == '!'+s[i+1]:
+            print(s[i][1:])
+            return
+        else:
+            i += 1
+    print('satisfiable')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    s1 = [i[1:] for i in s if i[0] == '!']
+    s2 = [i for i in s if i[0] != '!']
+    for i in s1:
+        if i in s2:
+            print(i)
+            return
+    print('satisfiable')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.reverse()
+    for s in S:
+        if '!' + s in S:
+            print(s)
+            return
+    print('satisfiable')
+    return
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    #create a dictionary
+    D = {}
+    for s in S:
+        if s[0] == '!':
+            D[s[1:]] = 1
+        else:
+            D[s] = 0
+
+    #output
+    for s in S:
+        if s[0] == '!':
+            if D[s[1:]] == 0:
+                print(s[1:])
+                return
+        else:
+            if D[s] == 1:
+                print(s)
+                return
+    print('satisfiable')
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    #print(N)
+    #print(S)
+    for i in range(N):
+        if S[i][0] == '!':
+            S[i] = S[i][1:]
+            if S[i] in S:
+                print(S[i])
+                break
+        else:
+            if '!' + S[i] in S:
+                print(S[i])
+                break
+    else:
+        print('satisfiable')

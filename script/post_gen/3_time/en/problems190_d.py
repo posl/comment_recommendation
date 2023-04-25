@@ -1,41 +1,126 @@
-#Problem Statement
-#How many arithmetic progressions consisting of integers with a common difference of 1 have a sum of N?
-#
-#Constraints
-#1 ≤ N ≤ 10^{12}
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#12
-#
-#Sample Output 1
-#4
-#We have four such progressions:
-#[12]
-#[3, 4, 5]
-#[-2, -1, 0, 1, 2, 3, 4, 5]
-#[-11, -10, -9, ..., 10, 11, 12]
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#2
-#We have two such progressions:
-#[1]
-#[0, 1]
-#
-#Sample Input 3
-#963761198400
-#
-#Sample Output 3
-#1920
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N ** 0.5) + 1):
+        if (N - i) % i == 0:
+            ans += 1
+    print(ans * 2 - 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            if i % 2 == 1:
+                ans += 1
+            if N // i % 2 == 1:
+                ans += 1
+            if i * i == N:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            if i%2 == 1:
+                ans += 1
+            if N//i%2 == 1:
+                ans += 1
+            if i**2 == N:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            ans += 2
+        if i*i == N:
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(n):
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            ans += 1
+            if i*i != n:
+                ans += 1
+    return ans
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def solve(n):
+    count = 0
+    for i in range(1, int(n ** 0.5) + 1):
+        if n % i == 0:
+            count += 2
+            if i * i == n:
+                count -= 1
+    return count
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0 and N // i - i >= 0:
+            ans += 2
+        if N % i == 0 and N // i - i == 1:
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def num_of_arithmetic_progressions(n):
+    result = 0
+    for i in range(1, n+1):
+        if (n-i) % i == 0:
+            result += 1
+    return result
+
+n = int(input())
+print(num_of_arithmetic_progressions(n))
+
+=======
+Suggestion 9
+
+def sum_of_progression(a1, an, n):
+    return (a1 + an) * n // 2
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    print(N)

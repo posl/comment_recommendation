@@ -1,27 +1,98 @@
-#Problem Statement
-#You are given a string S as input. This represents a valid date in the year 2019 in the yyyy/mm/dd format. (For example, April 30, 2019 is represented as 2019/04/30.)
-#Write a program that prints Heisei if the date represented by S is not later than April 30, 2019, and prints TBD otherwise.
-#
-#Constraints
-#S is a string that represents a valid date in the year 2019 in the yyyy/mm/dd format.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print Heisei if the date represented by S is not later than April 30, 2019, and print TBD otherwise.
-#
-#Sample Input 1
-#2019/04/30
-#
-#Sample Output 1
-#Heisei
-#
-#Sample Input 2
-#2019/11/01
-#
-#Sample Output 2
-#TBD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s <= "2019/04/30":
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s <= '2019/04/30':
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 3
+
+def main():
+    date = input()
+    if date <= "2019/04/30":
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 4
+
+def main():
+    date = input()
+    if date <= '2019/04/30':
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s <= '2019/04/30':
+        print('Heisei')
+    else:
+        print('TBD')
+main()
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S = S.split("/")
+    if int(S[0]) < 2019:
+        print("Heisei")
+    elif int(S[0]) > 2019:
+        print("TBD")
+    else:
+        if int(S[1]) < 4:
+            print("Heisei")
+        elif int(S[1]) > 4:
+            print("TBD")
+        else:
+            if int(S[2]) <= 30:
+                print("Heisei")
+            else:
+                print("TBD")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if int(s[5:7]) <= 4:
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 8
+
+def main():
+    date = input()
+    year, month, day = date.split('/')
+    if month == '04' and day == '30':
+        print('Heisei')
+    elif month == '04' and day < '30':
+        print('Heisei')
+    elif month < '04':
+        print('Heisei')
+    else:
+        print('TBD')

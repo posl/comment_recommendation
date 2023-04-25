@@ -1,31 +1,88 @@
-#Problem Statement
-#We will buy a product for N yen (the currency of Japan) at a shop.
-#If we use only 1000-yen bills to pay the price, how much change will we receive?
-#Assume we use the minimum number of bills required.
-#
-#Constraints
-#1 ≦ N ≦ 10000
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the amount of change as an integer.
-#
-#Sample Input 1
-#1900
-#
-#Sample Output 1
-#100
-#We will use two 1000-yen bills to pay the price and receive 100 yen in change.
-#
-#Sample Input 2
-#3000
-#
-#Sample Output 2
-#0
-#We can pay the exact price.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print(1000 - N % 1000 if N % 1000 != 0 else 0)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(N%1000)
+    if N%1000 == 0:
+        print(0)
+    else:
+        print(1000 - N%1000)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(N % 1000 if N % 1000 != 0 else 1000)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print(1000 - N%1000 if N%1000 != 0 else 0)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print(1000 - (N % 1000))
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N = int(input())
+
+    #calculate
+    ans = 1000 - N % 1000
+    if ans == 1000:
+        ans = 0
+
+    #output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(N%1000)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print(N % 1000)
+    return
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    #Read input
+    N = int(input())
+    #Calculate change
+    change = N % 1000
+    #Output result
+    if change == 0:
+        print(0)
+    else:
+        print(1000 - change)

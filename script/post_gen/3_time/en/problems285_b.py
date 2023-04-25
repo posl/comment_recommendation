@@ -1,37 +1,128 @@
-#Problem Statement
-#You are given a string S of length N consisting of lowercase English letters.  The x-th (1 ≦ x ≦ N) character of S is S_x.
-#For each i=1,2,...,N-1, find the maximum non-negative integer l that satisfies all of the following conditions:
-#l+i ≦ N, and
-#for all integers k such that 1 ≦ k ≦ l, it holds that S_{k} ≠ S_{k+i}.
-#Note that l=0 always satisfies the conditions.
-#
-#Constraints
-#N is an integer such that 2 ≦ N ≦ 5000.
-#S is a string of length N consisting of lowercase English letters.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S
-#
-#Output
-#Print (N-1) lines.  The x-th (1 ≦ x < N) line should contain the answer as an integer when i=x.
-#
-#Sample Input 1
-#6
-#abcbac
-#
-#Sample Output 1
-#5
-#1
-#2
-#0
-#1
-#In this input, S= abcbac.  
-#When i=1, we have S_1 ≠ S_2, S_2 ≠ S_3, ..., and S_5 ≠ S_6, so the maximum value is l=5.
-#When i=2, we have S_1 ≠ S_3 but S_2 = S_4, so the maximum value is l=1.
-#When i=3, we have S_1 ≠ S_4 and S_2 ≠ S_5 but S_3 = S_6, so the maximum value is l=2.
-#When i=4, we have S_1 = S_5, so the maximum value is l=0.
-#When i=5, we have S_1 ≠ S_6, so the maximum value is l=1.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1,n):
+        l = 0
+        while i+l < n:
+            if s[l] != s[i+l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        count = 0
+        for j in range(n - i):
+            if s[j] != s[j + i]:
+                count += 1
+        print(count)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        while i + l < N:
+            if S[l] != S[i+l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(0,N-i):
+            if S[j] != S[i+j]:
+                l = j+1
+        print(l)
+
+=======
+Suggestion 5
+
+def problems285_b():
+    N=int(input())
+    S=input()
+    for i in range(1,N):
+        l=0
+        while i+l<N and S[l]!=S[i+l]:
+            l+=1
+        print(l)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        l = 0
+        while True:
+            if i + l >= n:
+                break
+            if s[i] != s[i+l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 7
+
+def find(s, i):
+    l = 0
+    while i + l < len(s):
+        if s[l] == s[i + l]:
+            break
+        l += 1
+    return l
+
+n = int(input())
+s = input()
+
+for i in range(1, n):
+    print(find(s, i))
+
+=======
+Suggestion 8
+
+def get_max_non_negative_integer(s):
+    l = 0
+    for i in range(1, len(s)):
+        while i + l < len(s) and s[l] != s[i + l]:
+            l += 1
+        print(l)
+        l = 0
+
+=======
+Suggestion 9
+
+def max_non_negative_integer(s):
+    N = len(s)
+    max_non_negative_integer = [0] * (N-1)
+    for i in range(0, N-1):
+        j = 0
+        while (i+j+1 < N) and (s[j] != s[i+j+1]):
+            j += 1
+        max_non_negative_integer[i] = j
+    return max_non_negative_integer

@@ -1,36 +1,118 @@
-#Problem Statement
-#Takahashi's purse has one or more 100-yen coins in it and nothing else. (Yen is the Japanese currency.)
-#Is it possible that the total amount of money in the purse is X yen?
-#
-#Constraints
-#0 ≦ X ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#If it is possible that the total amount of money in Takahashi's purse is X yen, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#500
-#
-#Sample Output 1
-#Yes
-#If the purse has five 100-yen coins, the total amount of money is 500 yen. Thus, it is possible that the total amount is X=500 yen, so we should print Yes.
-#
-#Sample Input 2
-#40
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#No
-#Note that the purse has at least one 100-yen coin.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = int(input())
+    if X == 0:
+        print('No')
+    elif X % 100 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x <= 1000:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    X = int(input())
+
+    # compute
+
+    # output
+    if X%100 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def purse(x):
+    if x % 100 == 0 and x <= 1000 and x >= 0:
+        return "Yes"
+    else:
+        return "No"
+
+print purse(500)
+print purse(40)
+print purse(0)
+
+=======
+Suggestion 8
+
+def purse(x):
+    if x % 100 == 0:
+        return "Yes"
+    else:
+        return "No"
+
+x = int(input())
+print(purse(x))
+
+=======
+Suggestion 9
+
+def main():
+    #write your code below this line
+    x = int(input())
+    if x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    # Take input from standard input
+    X = int(input())
+    # Check if X is divisible by 100
+    if X % 100 == 0:
+        # If yes, print Yes
+        print("Yes")
+    else:
+        # If no, print No
+        print("No")

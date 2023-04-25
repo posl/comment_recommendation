@@ -1,60 +1,149 @@
-#Problem Statement
-#There are N points in a D-dimensional space.
-#The coordinates of the i-th point are (X_{i1}, X_{i2}, ..., X_{iD}).
-#The distance between two points with coordinates (y_1, y_2, ..., y_D) and (z_1, z_2, ..., z_D) is ((y_1 - z_1)^2 + (y_2 - z_2)^2 + ... + (y_D - z_D)^2)^(1/2).
-#How many pairs (i, j) (i < j) are there such that the distance between the i-th point and the j-th point is an integer?
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10
-#1 ≦ D ≦ 10
-#-20 ≦ X_{ij} ≦ 20
-#No two given points have the same coordinates. That is, if i ≠ j, there exists k such that X_{ik} ≠ X_{jk}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#X_{11} X_{12} ... X_{1D}
-#X_{21} X_{22} ... X_{2D}
-#.
-#.
-#.
-#X_{N1} X_{N2} ... X_{ND}
-#
-#Output
-#Print the number of pairs (i, j) (i < j) such that the distance between the i-th point and the j-th point is an integer.
-#
-#Sample Input 1
-#3 2
-#1 2
-#5 5
-#-2 8
-#
-#Sample Output 1
-#1
-#The number of pairs with an integer distance is one, as follows:
-#The distance between the first point and the second point is (|1-5|^2 + |2-5|^2)^(1/2) = 5, which is an integer.
-#The distance between the second point and the third point is (|5-(-2)|^2 + |5-8|^2)^(1/2) = (58)^(1/2), which is not an integer.
-#The distance between the third point and the first point is (|-2-1|^2+|8-2|^2)^(1/2) = 3(5)^(1/2), which is not an integer.
-#
-#Sample Input 2
-#3 4
-#-3 7 8 2
-#-12 1 10 2
-#-2 8 9 3
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5 1
-#1
-#2
-#3
-#4
-#5
-#
-#Sample Output 3
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            d = 0
+            for k in range(D):
+                d += (X[i][k] - X[j][k]) ** 2
+            if d ** 0.5 % 1 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k]) ** 2
+            if (dist ** 0.5) % 1 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dist = 0
+            for k in range(d):
+                dist += (x[i][k] - x[j][k]) ** 2
+            if dist ** 0.5 == int(dist ** 0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    count = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k])**2
+            if (dist**0.5).is_integer():
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def get_input():
+    n, d = map(int, input().split())
+    x = []
+    for i in range(n):
+        x.append(list(map(int, input().split())))
+    return n, d, x
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    n, d = map(int, input().split())
+    coordinates = []
+    for _ in range(n):
+        coordinates.append(list(map(int, input().split())))
+
+    # Calculate result here
+    result = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            distance = 0
+            for k in range(d):
+                distance += (coordinates[i][k] - coordinates[j][k]) ** 2
+            if (distance ** 0.5).is_integer():
+                result += 1
+
+    # Print result here
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    from collections import defaultdict
+    import itertools
+    from math import sqrt
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i, j in itertools.combinations(range(n), 2):
+        dist = 0
+        for k in range(d):
+            dist += (x[i][k] - x[j][k])**2
+        if sqrt(dist).is_integer():
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def euclideanDistance(x1, x2, y1, y2):
+    return ((x1 - x2)**2 + (y1 - y2)**2)**0.5
+
+=======
+Suggestion 9
+
+def get_distance(x,y):
+    square_sum = 0
+    for i in range(len(x)):
+        square_sum += (x[i] - y[i])**2
+    return int(square_sum**0.5)
+
+n, d = map(int, input().split())
+x = [list(map(int, input().split())) for _ in range(n)]
+
+count = 0
+for i in range(n):
+    for j in range(i+1,n):
+        if get_distance(x[i], x[j])**2 == get_distance(x[i], x[j]):
+            count += 1
+print(count)
+
+=======
+Suggestion 10
+
+def get_int():
+    return int(input().strip())

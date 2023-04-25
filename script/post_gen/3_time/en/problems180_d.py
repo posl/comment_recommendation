@@ -1,40 +1,154 @@
-#Problem Statement
-#Iroha is into a game where you keep pets.
-#Iroha's pet is Takahashi. Initially, Takahashi's STR and EXP are X and 0, respectively.
-#These parameters increase in the following two kinds of training:
-#Go to Kakomon Gym: the STR gets multiplied by A, and the EXP increases by 1.
-#Go to AtCoder Gym: the STR increases by B, and the EXP increases by 1.
-#Takahashi evolves when his STR becomes Y or greater, but Iroha thinks that makes him less cute.
-#Find the maximum possible EXP of Takahashi when he is trained without letting him evolve.
-#
-#Constraints
-#1 ≦ X < Y ≦ 10^{18}
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y A B
-#
-#Output
-#Print the maximum possible EXP of Takahashi under the given situation.
-#
-#Sample Input 1
-#4 20 2 10
-#
-#Sample Output 1
-#2
-#Initially, Takahashi's STR is 4. We can make his EXP 2 in the following course of training:
-#First, go to Kakomon Gym, which makes his STR 8 and his EXP 1.
-#Then, go to AtCoder Gym, which makes his STR 18 and his EXP 2.
-#On the other hand, there is no way to train him so that his EXP becomes greater than 2.
-#
-#Sample Input 2
-#1 1000000000000000000 10 1000000000
-#
-#Sample Output 2
-#1000000007
-#Watch out for overflows.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, a, b = map(int, input().split())
+    ans = 0
+    while x * a < y and x * a - x <= b:
+        x *= a
+        ans += 1
+    ans += (y - 1 - x) // b
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    x, y, a, b = map(int, input().split())
+    cnt = 0
+    while x * a < y and x * a - x <= b:
+        x *= a
+        cnt += 1
+    cnt += (y - x - 1) // b
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while X < Y:
+        if X * A < X + B:
+            X *= A
+            ans += 1
+        else:
+            break
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while X * A <= Y and X * A - X <= B:
+        X *= A
+        ans += 1
+    ans += (Y - X - 1) // B
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    x, y, a, b = map(int, input().split())
+    ans = 0
+    while x < y:
+        if x * a < x + b:
+            if x * a < y:
+                x *= a
+                ans += 1
+            else:
+                break
+        else:
+            ans += (y - x - 1) // b
+            break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while True:
+        if A * X >= Y:
+            break
+        if A * X < X + B:
+            break
+        X *= A
+        exp += 1
+    exp += (Y - X - 1) // B
+    print(exp)
+
+=======
+Suggestion 7
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    count = 0
+    while X * A < Y:
+        if X * A - X <= B:
+            count += (Y - 1 - X) // B
+            break
+        else:
+            X *= A
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    x,y,a,b = map(int,input().split())
+    exp = 0
+    while x*a < y and x*a < x+b:
+        x *= a
+        exp+=1
+    exp += (y-x-1)//b
+    print(exp)
+
+=======
+Suggestion 9
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    #X: initial strength
+    #Y: maximum strength
+    #A: multiplier for Kakomon Gym
+    #B: increment for AtCoder Gym
+    if A * X >= Y:
+        print(0)
+        return
+    n = 0
+    while A * X <= Y - B:
+        X *= A
+        n += 1
+    print(n + (Y - 1 - X) // B)
+
+=======
+Suggestion 10
+
+def main():
+    X, Y, A, B = map(int, input().split())
+
+    #Aで進める回数を求める
+    num_A = 0
+    tmp = X
+    while tmp * A < Y:
+        num_A += 1
+        tmp *= A
+
+    #Bで進める回数を求める
+    num_B = (Y - X - 1) // B
+
+    #Aで進める回数が多い場合は、Aで進める回数を出力する
+    if num_A >= num_B:
+        print(num_A)
+    #Bで進める回数が多い場合は、Aで進める回数とBで進める回数の和を出力する
+    else:
+        print(num_A + num_B)

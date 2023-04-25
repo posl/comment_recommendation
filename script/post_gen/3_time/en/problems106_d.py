@@ -1,90 +1,157 @@
-#Problem Statement
-#In Takahashi Kingdom, there is a east-west railroad and N cities along it, numbered 1, 2, 3, ..., N from west to east.
-#A company called AtCoder Express possesses M trains, and the train i runs from City L_i to City R_i (it is possible that L_i = R_i).
-#Takahashi the king is interested in the following Q matters:
-#The number of the trains that runs strictly within the section from City p_i to City q_i, that is, the number of trains j such that p_i ≦ L_j and R_j ≦ q_i.
-#Although he is genius, this is too much data to process by himself. Find the answer for each of these Q queries to help him.
-#
-#Constraints
-#N is an integer between 1 and 500 (inclusive).
-#M is an integer between 1 and 200  000 (inclusive).
-#Q is an integer between 1 and 100  000 (inclusive).
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#Output
-#Print Q lines. The i-th line should contain the number of the trains that runs strictly within the section from City p_i to City q_i.
-#
-#Sample Input 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#Sample Output 1
-#3
-#As all the trains runs within the section from City 1 to City 2, the answer to the only query is 3.
-#
-#Sample Input 2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#Sample Output 2
-#1
-#1
-#The first query is on the section from City 1 to 7. There is only one train that runs strictly within that section: Train 1.
-#The second query is on the section from City 3 to 10. There is only one train that runs strictly within that section: Train 3.
-#
-#Sample Input 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#Sample Output 3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    PQ = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 1. LRを左端でソートする
+    # 2. PQを左端でソートする
+    # 3. LRを左端がPQの左端以降のものを抽出し、右端でソートする
+    # 4. LRを右端がPQの右端以前のものを抽出する
+    # 5. LRを右端でソートする
+    # 6. LRを右端がPQの左端以降のものを抽出する
+    # 7. LRの長さを出力する
+    LR = sorted(LR, key=lambda x: x[0])
+    PQ = sorted(PQ, key=lambda x: x[0])
+    LR = sorted([lr for lr in LR if lr[0] >= PQ[0][0]], key=lambda x: x[1])
+    LR = [lr for lr in LR if lr[1] <= PQ[0][1]]
+    LR = sorted(LR, key=lambda x: x[1])
+    LR = [lr for lr in LR if lr[1] >= PQ[0][0]]
+    print(len(LR))
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if p[i] <= L[j] and R[j] <= q[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if L[j] < p[i] or q[i] < R[j]:
+                continue
+            elif L[j] == p[i] and R[j] == q[i]:
+                continue
+            else:
+                count += 1
+        print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    trains = [list(map(int, input().split())) for _ in range(M)]
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+    for q in queries:
+        print(sum([1 for t in trains if q[0] <= t[0] and t[1] <= q[1]]))
+
+=======
+Suggestion 5
+
+def main():
+    n, m, q = map(int, input().split())
+    train = [[0] * (n + 1) for _ in range(n + 1)]
+    for _ in range(m):
+        l, r = map(int, input().split())
+        train[l][r] += 1
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            train[i][j] += train[i][j - 1]
+    for _ in range(q):
+        p, q = map(int, input().split())
+        ans = 0
+        for i in range(p, q + 1):
+            ans += train[i][q] - train[i][p - 1]
+        print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M, Q = map(int, input().split())
+    trains = []
+    for i in range(M):
+        L, R = map(int, input().split())
+        trains.append((L, R))
+    queries = []
+    for i in range(Q):
+        p, q = map(int, input().split())
+        queries.append((p, q))
+    for p, q in queries:
+        ans = 0
+        for L, R in trains:
+            if p <= L and R <= q:
+                ans += 1
+        print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    trains = [set() for _ in range(N)]
+    for _ in range(M):
+        L, R = map(int, input().split())
+        trains[L-1].add(R)
+    for i in range(1, N):
+        trains[i] |= trains[i-1]
+    for _ in range(Q):
+        p, q = map(int, input().split())
+        print(len(trains[q-1] & set(range(p, q))))
+
+=======
+Suggestion 8
+
+def main():
+    N, M, Q = map(int, input().split())
+
+    train = [[0] * (N + 1) for i in range(N + 1)]
+    for i in range(M):
+        L, R = map(int, input().split())
+        train[L][R] += 1
+
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            train[i][j] += train[i - 1][j] + train[i][j - 1] - train[i - 1][j - 1]
+
+    for i in range(Q):
+        p, q = map(int, input().split())
+        print(train[q][q] - train[q][p - 1] - train[p - 1][q] + train[p - 1][p - 1])
+
+=======
+Suggestion 9
+
+def read_ints():
+    return list(map(int, input().split()))

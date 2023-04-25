@@ -1,29 +1,55 @@
-#Problem Statement
-#Print how many distinct integers there are in given five integers A, B, C, D, and E.
-#
-#Constraints
-#0 ≦ A, B, C, D, E ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C D E
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#31 9 24 31 24
-#
-#Sample Output 1
-#3
-#In the given five integers 31, 9, 24, 31, and 24, there are three distinct integers 9, 24, and 31.
-#Thus, 3 should be printed.
-#
-#Sample Input 2
-#0 0 0 0 0
-#
-#Sample Output 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D, E = map(int, input().split())
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 2
+
+def main():
+    # read input
+    a, b, c, d, e = map(int, input().split())
+    # print output
+    print(len(set([a, b, c, d, e])))
+
+=======
+Suggestion 3
+
+def main():
+    # read the input
+    A, B, C, D, E = map(int, input().split())
+    # print the answer
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 4
+
+def main():
+    a = input().split()
+    b = set(a)
+    print(len(b))
+
+=======
+Suggestion 5
+
+def main():
+    print(len(set(input().split())))
+
+=======
+Suggestion 6
+
+def main():
+    A = input().split()
+    A = set(A)
+    print(len(A))
+
+=======
+Suggestion 7
+
+def main():
+    a = input().split(" ")
+    print(len(set(a)))

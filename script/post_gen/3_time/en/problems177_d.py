@@ -1,62 +1,193 @@
-#Problem Statement
-#There are N persons called Person 1 through Person N.
-#You are given M facts that "Person A_i and Person B_i are friends." The same fact may be given multiple times.
-#If X and Y are friends, and Y and Z are friends, then X and Z are also friends. There is no friendship that cannot be derived from the M given facts.
-#Takahashi the evil wants to divide the N persons into some number of groups so that every person has no friend in his/her group.
-#At least how many groups does he need to make?
-#
-#Constraints
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#Sample Output 1
-#3
-#Dividing them into three groups such as {1,3}, {2,4}, and {5} achieves the goal.
-#
-#Sample Input 2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#Sample Output 2
-#4
-#
-#Sample Input 3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    uf = UnionFind(N)
+    for _ in range(M):
+        a, b = map(int, input().split())
+        uf.union(a - 1, b - 1)
+    print(uf.groups)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        friends[a].append(b)
+        friends[b].append(a)
+    groups = [0] * N
+    group = 1
+    for i in range(N):
+        if groups[i] == 0:
+            groups[i] = group
+            q = [i]
+            while q:
+                p = q.pop()
+                for f in friends[p]:
+                    if groups[f] == 0:
+                        groups[f] = group
+                        q.append(f)
+            group += 1
+    print(group - 1)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    friends = [set() for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a-1].add(b-1)
+        friends[b-1].add(a-1)
+
+    for i in range(N):
+        if friends[i]:
+            for j in friends[i]:
+                friends[i] |= friends[j]
+
+    print(len({frozenset(f) for f in friends}))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    E = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        E[a - 1].append(b - 1)
+        E[b - 1].append(a - 1)
+    ans = 0
+    for i in range(N):
+        if E[i] == []:
+            ans += 1
+            continue
+        v = [False] * N
+        v[i] = True
+        q = [i]
+        while q:
+            w = q.pop()
+            for e in E[w]:
+                if not v[e]:
+                    v[e] = True
+                    q.append(e)
+        if not all(v):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    friends = [[] for _ in range(n)]
+    for i in range(m):
+        a,b = map(int,input().split())
+        friends[a-1].append(b-1)
+        friends[b-1].append(a-1)
+    #print(friends)
+    group = [-1]*n
+    num_group = 0
+    for i in range(n):
+        if group[i] == -1:
+            group[i] = num_group
+            num_group += 1
+        for j in friends[i]:
+            if group[j] == -1:
+                group[j] = group[i]
+    print(num_group)
+
+=======
+Suggestion 7
+
+def main():
+  n,m = map(int,input().split())
+  g = [[] for i in range(n)]
+  for i in range(m):
+    a,b = map(int,input().split())
+    g[a-1].append(b-1)
+    g[b-1].append(a-1)
+  ans = 0
+  for i in range(n):
+    ans = max(ans, len(g[i])+1)
+  print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB = [[a-1, b-1] for a, b in AB]
+    AB = [[a, b] if a < b else [b, a] for a, b in AB]
+    AB = list(set([tuple(a) for a in AB]))
+    AB = sorted(AB, key=lambda x: x[0])
+    AB = sorted(AB, key=lambda x: x[1])
+    d = {}
+    for a, b in AB:
+        if a not in d:
+            d[a] = []
+        d[a].append(b)
+    ans = 0
+    while len(d) > 0:
+        ans += 1
+        k = list(d.keys())[0]
+        q = [k]
+        while len(q) > 0:
+            k = q.pop()
+            if k in d:
+                for v in d[k]:
+                    q.append(v)
+                del d[k]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int, input().split())))
+    AB = sorted(AB)
+    AB = sorted(AB, key=lambda x:x[0])
+    AB = sorted(AB, key=lambda x:x[1])
+    
+    ans = 1
+    if N == 2:
+        ans = 1
+    else:
+        ans = 2
+        for i in range(1, len(AB)):
+            if AB[i][0] == AB[i-1][0] and AB[i][1] == AB[i-1][1]:
+                continue
+            else:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

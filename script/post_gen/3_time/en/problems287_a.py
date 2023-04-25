@@ -1,52 +1,123 @@
-#Problem Statement
-#There are N people.  Each of them agrees or disagrees with a proposal.  Here, N is an odd number.
-#The i-th (i = 1, 2, ..., N) person's opinion is represented by a string S_i: the person agrees if S_i =  For and disagrees if S_i =  Against.
-#Determine whether the majority agrees with the proposal.
-#
-#Constraints
-#N is an odd number between 1 and 99, inclusive.
-#S_i =  For or S_i =  Against, for all i = 1, 2, ..., N.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print Yes if the majority of the N people agree with the proposal; print No otherwise.
-#
-#Sample Input 1
-#3
-#For
-#Against
-#For
-#
-#Sample Output 1
-#Yes
-#The proposal is supported by two people, which is the majority, so Yes should be printed.
-#
-#Sample Input 2
-#5
-#Against
-#Against
-#For
-#Against
-#For
-#
-#Sample Output 2
-#No
-#The proposal is supported by two people, which is not the majority, so No should be printed.
-#
-#Sample Input 3
-#1
-#For
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    if S.count('For') > N // 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    if S.count("For") > N // 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    if S.count('For') > N // 2:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(n):
+        if input() == 'For':
+            count += 1
+    if count > n/2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    if S.count('For') > N//2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    if s.count("For") > n // 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    print('Yes' if S.count('For') > N/2 else 'No')
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    ans = 'Yes' if S.count('For') > N // 2 else 'No'
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+
+    if N == 1:
+        print('Yes')
+        return
+
+    count = 0
+    for i in range(N):
+        if input() == 'For':
+            count += 1
+
+    if count > N // 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s_list = [input() for _ in range(n)]
+    s_list.sort()
+    if s_list[n//2] == s_list[n//2-1]:
+        print('Yes')
+    else:
+        print('No')

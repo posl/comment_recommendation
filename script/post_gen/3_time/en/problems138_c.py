@@ -1,49 +1,157 @@
-#Problem Statement
-#You have a pot and N ingredients. Each ingredient has a real number parameter called value, and the value of the i-th ingredient (1 ≦ i ≦ N) is v_i.
-#When you put two ingredients in the pot, they will vanish and result in the formation of a new ingredient. The value of the new ingredient will be (x + y) / 2 where x and y are the values of the ingredients consumed, and you can put this ingredient again in the pot.
-#After you compose ingredients in this way N-1 times, you will end up with one ingredient. Find the maximum possible value of this ingredient.
-#
-#Constraints
-#2 ≦ N ≦ 50
-#1 ≦ v_i ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#v_1 v_2 ... v_N
-#
-#Output
-#Print a decimal number (or an integer) representing the maximum possible value of the last ingredient remaining.
-#Your output will be judged correct when its absolute or relative error from the judge's output is at most 10^{-5}.
-#
-#Sample Input 1
-#2
-#3 4
-#
-#Sample Output 1
-#3.5
-#If you start with two ingredients, the only choice is to put both of them in the pot. The value of the ingredient resulting from the ingredients of values 3 and 4 is (3 + 4) / 2 = 3.5.
-#Printing 3.50001, 3.49999, and so on will also be accepted.
-#
-#Sample Input 2
-#3
-#500 300 200
-#
-#Sample Output 2
-#375
-#You start with three ingredients this time, and you can choose what to use in the first composition. There are three possible choices:
-#Use the ingredients of values 500 and 300 to produce an ingredient of value (500 + 300) / 2 = 400. The next composition will use this ingredient and the ingredient of value 200, resulting in an ingredient of value (400 + 200) / 2 = 300.
-#Use the ingredients of values 500 and 200 to produce an ingredient of value (500 + 200) / 2 = 350. The next composition will use this ingredient and the ingredient of value 300, resulting in an ingredient of value (350 + 300) / 2 = 325.
-#Use the ingredients of values 300 and 200 to produce an ingredient of value (300 + 200) / 2 = 250. The next composition will use this ingredient and the ingredient of value 500, resulting in an ingredient of value (250 + 500) / 2 = 375.
-#Thus, the maximum possible value of the last ingredient remaining is 375.
-#Printing 375.0 and so on will also be accepted.
-#
-#Sample Input 3
-#5
-#138 138 138 138 138
-#
-#Sample Output 3
-#138
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = (v[0] + v[1]) / 2
+    for i in range(2, N):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    V.sort()
+
+    ans = (V[0] + V[1]) / 2
+    for i in range(2, N):
+        ans = (ans + V[i]) / 2
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = [int(x) for x in input().split()]
+    v.sort()
+    ans = v[0]
+    for i in range(1, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    while len(v) > 1:
+        v.append((v.pop(0) + v.pop(0)) / 2)
+        v.sort()
+    print(v[0])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    vs = sorted(list(map(int, input().split())))
+    ans = vs[0]
+    for i in range(1, N):
+        ans = (ans + vs[i]) / 2
+    print(ans)
+
+main()
+
+from sys import stdin, stdout
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+
+    v.sort()
+    for i in range(1, N):
+        v[i] = (v[i] + v[i-1]) / 2
+    print(v[-1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    v = list(map(int,input().split()))
+    v.sort()
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans = v[i]
+        else:
+            ans = (ans + v[i])/2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+
+    # v.sort()  # これはなくてもいい
+
+    # 2つの数字を合成する関数
+    def composition(x, y):
+        return (x + y) / 2
+
+    # 1つの数字を合成する関数
+    def composition_1(x):
+        return x
+
+    # 2つの数字を合成する関数2
+    def composition_2(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数3
+    def composition_3(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数4
+    def composition_4(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数5
+    def composition_5(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数6
+    def composition_6(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数7
+    def composition_7(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数8
+    def composition_8(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数9
+    def composition_9(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数10
+    def composition_10(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数11
+    def composition_11(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数12
+    def composition_12(x, y):
+        return (x + y) / 2
+
+    # 2つの数字を合成する関数13
+    def composition_13(x,

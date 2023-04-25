@@ -1,53 +1,158 @@
-#Problem Statement
-#Solve the following problem for T test cases.
-#Given are non-negative integers a and s. Is there a pair of non-negative integers (x,y) that satisfies both of the conditions below?
-#x AND y=a
-#x+y=s
-#
-#        What is bitwise AND?
-#    
-#        The bitwise AND of integers A and B, A AND B, is defined as follows:
-#        
-#When A AND B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if those of A and B are both 1, and 0 otherwise.
-#        For example, we have 4 AND 6 = 4 (in base two: 100 AND 110 = 100).
-#
-#
-#Constraints
-#1 ≦ T ≦ 10^5
-#0 ≦ a,s < 2^{60}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input. The first line is in the following format:
-#T
-#Then, T test cases follow. Each test case is in the following format:
-#a s
-#
-#Output
-#Print T lines. The i-th line (1 ≦ i ≦ T) should contain Yes if, in the i-th test case, there is a pair of non-negative integers (x,y) that satisfies both of the conditions in the Problem Statement, and No otherwise.
-#
-#Sample Input 1
-#2
-#1 8
-#4 2
-#
-#Sample Output 1
-#Yes
-#No
-#In the first test case, some pairs such as (x,y)=(3,5) satisfy the conditions.
-#In the second test case, no pair of non-negative integers satisfies the conditions.
-#
-#Sample Input 2
-#4
-#201408139683277485 381410962404666524
-#360288799186493714 788806911317182736
-#18999951915747344 451273909320288229
-#962424162689761932 1097438793187620758
-#
-#Sample Output 2
-#No
-#Yes
-#Yes
-#No
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    T = int(input())
+    for i in range(T):
+        a, s = map(int, input().split())
+        if a == s:
+            print("Yes")
+        elif a > s:
+            print("No")
+        elif a < s:
+            if (s-a) % 2 == 0:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 2
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if (s - a) % 2 == 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        a, s = map(int, input().split())
+        if a > s:
+            print('No')
+        elif a == s:
+            if a == 0:
+                print('Yes')
+            else:
+                print('No')
+        else:
+            if (s - a) % 2 == 0:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 4
+
+def solve(a, s):
+    if a > s:
+        return 'No'
+    elif a == s:
+        return 'Yes'
+    elif (s - a) % 2 == 0:
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 5
+
+def solve():
+    a,s=map(int,input().split())
+    if a==s:
+        print("Yes")
+        return
+    if a>s:
+        print("No")
+        return
+    if a==0:
+        print("No")
+        return
+    if (s-a)&1==1:
+        print("No")
+        return
+    print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def solve():
+    a,s = map(int,input().split())
+    if a > s:
+        print("No")
+        return
+    if a == s:
+        if s == 0:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if (s-a)%2 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def solve(a, s):
+    if a > s:
+        return 'No'
+    if a == s:
+        return 'Yes'
+    if s % 2 == 1:
+        return 'No'
+    x = s // 2
+    if a < x:
+        return 'No'
+    return 'Yes'
+
+=======
+Suggestion 8
+
+def check(a,s):
+    if a==0:
+        if s==0:
+            return True
+        else:
+            return False
+    else:
+        if s%a==0:
+            return True
+        else:
+            return False
+
+=======
+Suggestion 9
+
+def solve(a,s):
+    if a>s:
+        return 'No'
+    if a==s:
+        return 'Yes'
+    if a==0:
+        return 'No'
+    if a==1:
+        return 'Yes'
+    if s%2==0:
+        return 'Yes'
+    if a%2==0:
+        return 'Yes'
+    return 'No'
+
+T = int(input())
+for i in range(T):
+    a,s = [int(x) for x in input().split()]
+    print(solve(a,s))

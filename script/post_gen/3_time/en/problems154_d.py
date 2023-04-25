@@ -1,42 +1,158 @@
-#Problem Statement
-#We have N dice arranged in a line from left to right. The i-th die from the left shows p_i numbers from 1 to p_i with equal probability when thrown.
-#We will choose K adjacent dice, throw each of them independently, and compute the sum of the numbers shown. Find the maximum possible value of the expected value of this sum.
-#
-#Constraints
-#1 ≤ K ≤ N ≤ 200000
-#1 ≤ p_i ≤ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#p_1 ... p_N
-#
-#Output
-#Print the maximum possible value of the expected value of the sum of the numbers shown.
-#Your output will be considered correct when its absolute or relative error from our answer is at most 10^{-6}.
-#
-#Sample Input 1
-#5 3
-#1 2 2 4 5
-#
-#Sample Output 1
-#7.000000000000
-#When we throw the third, fourth, and fifth dice from the left, the expected value of the sum of the numbers shown is 7. This is the maximum value we can achieve.
-#
-#Sample Input 2
-#4 1
-#6 6 6 6
-#
-#Sample Output 2
-#3.500000000000
-#Regardless of which die we choose, the expected value of the number shown is 3.5.
-#
-#Sample Input 3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#Sample Output 3
-#32.000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P_cum = [0]
+    for p in P:
+        P_cum.append(P_cum[-1] + p)
+    ans = 0
+    for i in range(K, N+1):
+        ans = max(ans, (P_cum[i] - P_cum[i-K]) / 2 + P_cum[i-K])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    s = [0] * (N + 1)
+    for i in range(1, N + 1):
+        s[i] = s[i - 1] + p[i]
+    ans = 0
+    for i in range(K, N + 1):
+        ans = max(ans, s[i] - s[i - K])
+    print((ans + K) / 2)
+
+=======
+Suggestion 3
+
+def problems154_d():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    ans = 0
+    for i in range(K):
+        ans += (p[N-i-1] + 1) / 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def dice():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += p[i]
+    tmp = ans
+    for i in range(K, N):
+        tmp += p[i] - p[i-K]
+        ans = max(ans, tmp)
+    print((ans+K)/2)
+
+dice()
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+
+    ans = 0
+    tmp = sum(p[:k])
+    ans = max(ans, tmp)
+    for i in range(n-k):
+        tmp += p[i+k] - p[i]
+        ans = max(ans, tmp)
+    print((ans+k)/2)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+
+    sum_p = [0]
+    for i in range(1, N+1):
+        sum_p.append(sum_p[i-1] + p[i])
+
+    max_expect = 0
+    for i in range(N-K+1):
+        expect = (sum_p[i+K] - sum_p[i]) / 2 + p[i+K]
+        if max_expect < expect:
+            max_expect = expect
+
+    print(max_expect)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [x/2 for x in p]
+    s = sum(p[:K])
+    max_s = s
+    for i in range(N-K):
+        s = s - p[i] + p[i+K]
+        max_s = max(max_s, s)
+    print(max_s)
+
+=======
+Suggestion 8
+
+def dice(n,k,p):
+    sum = 0
+    for i in range(0,k):
+        sum += p[i]
+    max = sum
+    for i in range(k,n):
+        sum += p[i]
+        sum -= p[i-k]
+        if sum > max:
+            max = sum
+    return max
+
+n,k = map(int,input().split())
+p = list(map(int,input().split()))
+max = dice(n,k,p)
+print((max+k)/2)
+
+=======
+Suggestion 9
+
+def dice(n,k,p):
+    max_sum = 0
+    for i in range(0, n-k+1):
+        sum = 0
+        for j in range(i, i+k):
+            sum += p[j]
+        max_sum = max(max_sum, sum)
+    return max_sum/2.0
+
+n, k = map(int, input().split())
+p = list(map(int, input().split()))
+print(dice(n,k,p))
+
+=======
+Suggestion 10
+
+def dice(dice, k):
+    if k == 1:
+        return max(dice)
+    else:
+        return max(dice) + dice(dice[1:], k-1)
+
+n, k = map(int, input().split())
+dice = list(map(int, input().split()))
+
+print(dice(dice, k)/2)

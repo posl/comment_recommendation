@@ -1,45 +1,141 @@
-#Problem Statement
-#On a two-dimensional coordinate plane where the x axis points to the right and the y axis points up, we have a regular N-gon with N vertices p_0, p_1, p_2, ..., p_{N - 1}.
-#Here, N is guaranteed to be even, and the vertices p_0, p_1, p_2, ..., p_{N - 1} are in counter-clockwise order.
-#Let (x_i, y_i) denotes the coordinates of p_i.
-#Given x_0, y_0, x_{(N/(2))}, and y_{(N/(2))}, find x_1 and y_1.
-#
-#Constraints
-#4 ≦ N ≦ 100
-#N is even.
-#0 ≦ x_0, y_0 ≦ 100
-#0 ≦ x_{(N/(2))}, y_{(N/(2))} ≦ 100
-#(x_0, y_0) ≠ (x_{(N/(2))}, y_{(N/(2))})
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_0 y_0
-#x_{(N/(2))} y_{(N/(2))}
-#
-#Output
-#Print x_1 and y_1 in this order, with a space in between.
-#Your output is considered correct when, for each value printed, the absolute or relative error from our answer is at most 10^{-5}.
-#
-#Sample Input 1
-#4
-#1 1
-#2 2
-#
-#Sample Output 1
-#2.00000000000 1.00000000000
-#We are given p_0 = (1, 1) and p_2 = (2, 2).
-#The fact that p_0, p_1, p_2, and p_3 form a square and they are in counter-clockwise order uniquely determines the coordinates of the other vertices, as follows:
-#p_1 = (2, 1)
-#p_3 = (1, 2)
-#
-#Sample Input 2
-#6
-#5 3
-#7 4
-#
-#Sample Output 2
-#5.93301270189 2.38397459622
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    dx = x1 - x0
+    dy = y1 - y0
+    x2 = x1 - dy
+    y2 = y1 + dx
+    print(x2, y2)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2.0
+    y1 = (y0 + y2) / 2.0
+    print(x1, y1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    x2 = (x0 + x1) / 2 + (y1 - y0) / (2 * N)
+    y2 = (y0 + y1) / 2 - (x1 - x0) / (2 * N)
+    print(x2, y2)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) - y0 + y2
+    y1 = (y0 + y2) - x2 + x0
+    print(x1, y1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x_0, y_0 = map(int, input().split())
+    x_N_2, y_N_2 = map(int, input().split())
+    print((x_0 + x_N_2) / 2, (y_0 + y_N_2) / 2)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    x2, y2 = (x0 + x1) / 2, (y0 + y1) / 2
+    x3 = x2 - (y2 - y0)
+    y3 = y2 + (x2 - x0)
+    print(x3, y3)
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+
+    x1 = (N/2*x0+xN2)/(N/2+1)
+    y1 = (N/2*y0+yN2)/(N/2+1)
+    print(x1, y1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    x1 = (x0 + x2) / 2
+    y1 = (y0 + y2) / 2
+    print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+    # y1 = (y0 + y2) / 2
+    # print(x1, y1)
+    # x1 = (x0 + x2) / 2
+
+=======
+Suggestion 10
+
+def Main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+    x1 = xN2 + (xN2 - x0) * (N / 4) / (N / 2)
+    y1 = yN2 + (yN2 - y0) * (N / 4) / (N / 2)
+    print(x1, y1)

@@ -1,30 +1,54 @@
-#Problem Statement
-#You are given an integer N at least 100. Print the last two digits of N.
-#Strictly speaking, print the tens and ones digits of N in this order.
-#
-#Constraints
-#100 ≦ N ≦ 999
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#254
-#
-#Sample Output 1
-#54
-#The last two digits of 254 are 54, which should be printed.
-#
-#Sample Input 2
-#101
-#
-#Sample Output 2
-#01
-#The last two digits of 101 are 01, which should be printed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = input()
+    print(N[-2:])
+
+=======
+Suggestion 2
+
+def main():
+    n = input()
+    print(n[-2:])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(str(N)[-2:])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(str(n)[-2:])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(n % 100)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print(N%100)
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N = int(input())
+    #solve
+    ans = N % 100
+    #output
+    print(ans)

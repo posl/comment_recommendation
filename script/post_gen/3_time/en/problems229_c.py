@@ -1,67 +1,212 @@
-#Problem Statement
-#Takahashi, who works for a pizza restaurant, is making a delicious cheese pizza for staff meals.
-#There are N kinds of cheese in front of him.
-#The deliciousness of the i-th kind of cheese is A_i per gram, and B_i grams of this cheese are available.
-#The deliciousness of the pizza will be the total deliciousness of cheese he puts on top of the pizza.
-#However, using too much cheese would make his boss angry, so the pizza can have at most W grams of cheese on top of it.
-#Under this condition, find the maximum possible deliciousness of the pizza.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 3 × 10^5
-#1 ≦ W ≦ 3 × 10^8
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 1000
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N W
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3 5
-#3 1
-#4 2
-#2 3
-#
-#Sample Output 1
-#15
-#The optimal choice is to use 1 gram of cheese of the first kind, 2 grams of the second kind, and 2 grams of the third kind.
-#The pizza will have a deliciousness of 15.
-#
-#Sample Input 2
-#4 100
-#6 2
-#1 5
-#3 9
-#8 7
-#
-#Sample Output 2
-#100
-#There may be less than W grams of cheese in total.
-#
-#Sample Input 3
-#10 3141
-#314944731 649
-#140276783 228
-#578012421 809
-#878510647 519
-#925326537 943
-#337666726 611
-#879137070 306
-#87808915 39
-#756059990 244
-#228622672 291
-#
-#Sample Output 3
-#2357689932073
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[0] * (W + 1) for i in range(N + 1)]
+    for i in range(N):
+        for w in range(W + 1):
+            if w - B[i] >= 0:
+                dp[i + 1][w] = max(dp[i + 1][w], dp[i][w - B[i]] + A[i])
+            dp[i + 1][w] = max(dp[i + 1][w], dp[i][w])
+    print(dp[N][W])
+
+=======
+Suggestion 2
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # dp[i][j] = i番目までの品物の中から、重さがj以下となるように選んだときの、価値の総和の最大値
+    dp = [[0 for _ in range(W+1)] for _ in range(N+1)]
+
+    for i in range(N):
+        for j in range(W+1):
+            if j >= A[i]:
+                dp[i+1][j] = max(dp[i][j-A[i]] + B[i], dp[i][j])
+            else:
+                dp[i+1][j] = dp[i][j]
+
+    print(dp[N][W])
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            if j - B[i] >= 0:
+                dp[i + 1][j] = max(dp[i][j - B[i]] + A[i], dp[i][j])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[N][W])
+
+=======
+Suggestion 4
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * B[i]
+    ans = ans // W
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, W = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    #print(N, W)
+    #print(A)
+    #print(B)
+
+    #dp = [[0] * (W+1)] * (N+1)
+    dp = [[0] * (W+1) for i in range(N+1)]
+    #print(dp)
+
+    for i in range(N):
+        for j in range(W+1):
+            if j - B[i] >= 0:
+                dp[i+1][j] = max(dp[i][j-B[i]] + A[i], dp[i][j])
+            else:
+                dp[i+1][j] = dp[i][j]
+    #print(dp)
+    print(dp[N][W])
+
+=======
+Suggestion 6
+
+def solve():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [0] * (W + 1)
+    for i in range(N):
+        for j in range(W, 0, -1):
+            if j - B[i] >= 0:
+                dp[j] = max(dp[j], dp[j - B[i]] + A[i])
+    print(dp[W])
+
+=======
+Suggestion 7
+
+def main():
+    N, W = map(int, input().split())
+    A = [None] * N
+    B = [None] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    # dp[i][j] = (i番目までのチーズを使って, 重さjのときの価値の最大値)
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            if j - A[i] >= 0:
+                dp[i + 1][j] = max(dp[i][j], dp[i + 1][j - A[i]] + B[i])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[N][W])
+
+=======
+Suggestion 8
+
+def main():
+    n, w = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    c = []
+    for i in range(n):
+        c.append(a[i] / b[i])
+
+    c = [x for _, x in sorted(zip(c, b), reverse=True)]
+
+    ans = 0
+    for i in range(n):
+        if w >= c[i]:
+            ans += c[i] * a[i]
+            w -= c[i]
+        else:
+            ans += w * a[i]
+            break
+
+    print(int(ans))
+
+=======
+Suggestion 9
+
+def solve():
+    n, w = map(int, input().split())
+    a, b = [], []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    dp = [[0 for i in range(w + 1)] for j in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(w + 1):
+            if j - b[i - 1] >= 0:
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - b[i - 1]] + a[i - 1])
+            else:
+                dp[i][j] = dp[i - 1][j]
+    print(dp[n][w])
+
+=======
+Suggestion 10
+
+def main():
+    n, w = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    sum = 0
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+        sum += a[i] * b[i]
+    dp = [0] * (sum+1)
+    for i in range(n):
+        for j in range(sum, a[i]-1, -1):
+            dp[j] = max(dp[j], dp[j-a[i]] + b[i])
+    print(min(sum, w, max(dp[:w+1])))

@@ -1,37 +1,38 @@
-#Problem Statement
-#We have two integers: A and B.
-#Print the largest number among A + B, A - B, and A × B.
-#
-#Constraints
-#All values in input are integers.
-#-100 ≦ A, B ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the largest number among A + B, A - B, and A × B.
-#
-#Sample Input 1
-#-13 3
-#
-#Sample Output 1
-#-10
-#The largest number among A + B = -10, A - B = -16, and A × B = -39 is -10.
-#
-#Sample Input 2
-#1 -33
-#
-#Sample Output 2
-#34
-#The largest number among A + B = -32, A - B = 34, and A × B = -33 is 34.
-#
-#Sample Input 3
-#13 3
-#
-#Sample Output 3
-#39
-#The largest number among A + B = 16, A - B = 10, and A × B = 39 is 39.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a+b, a-b, a*b))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A+B, A-B, A*B))
+
+=======
+Suggestion 3
+
+def main():
+    # Get input here
+    a, b = map(int, input().strip().split())
+
+    # Calculate result here
+    result = max(a+b, a-b, a*b)
+
+    # Print output here
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    sum = a + b
+    diff = a - b
+    prod = a * b
+    print(max(sum, diff, prod))

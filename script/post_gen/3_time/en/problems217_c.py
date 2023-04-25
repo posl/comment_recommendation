@@ -1,48 +1,86 @@
-#Problem Statement
-#We will call a sequence of length N where each of 1,2,...,N occurs once as a permutation of length N.
-#Given a permutation of length N, P = (p_1, p_2,...,p_N), print a permutation of length N, Q = (q_1,...,q_N), that satisfies the following condition.
-#For every i (1 ≦ i ≦ N), the p_i-th element of Q is i.
-#It can be proved that there exists a unique Q that satisfies the condition.
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#(p_1,p_2,...,p_N) is a permutation of length N (defined in Problem Statement
-#).
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#p_1 p_2 ... p_N
-#
-#Output
-#Print the sequence Q in one line, with spaces in between.
-#q_1 q_2 ... q_N
-#
-#Sample Input 1
-#3
-#2 3 1
-#
-#Sample Output 1
-#3 1 2
-#The permutation Q=(3,1,2) satisfies the condition, as follows.
-#For i = 1, we have p_i = 2, q_2 = 1.
-#For i = 2, we have p_i = 3, q_3 = 2.
-#For i = 3, we have p_i = 1, q_1 = 3.
-#
-#Sample Input 2
-#3
-#1 2 3
-#
-#Sample Output 2
-#1 2 3
-#If p_i = i for every i (1 ≦ i ≦ N), we will have P = Q.
-#
-#Sample Input 3
-#5
-#5 3 2 4 1
-#
-#Sample Output 3
-#5 3 2 4 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(*Q)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(' '.join(map(str, Q)))
+
+main()
+
+My solution is O(N) time complexity and O(N) space complexity. I used a list Q to store the sequence Q.
+
+I used a for loop to iterate through the list P. For every i, I set Q[P[i] - 1] to i + 1. The reason why I subtracted 1 from P[i] is because the elements of P are 1, 2, ..., N, but the index of a list starts from 0. I added 1 to i because the elements of Q are 1, 2, ..., N.
+
+After the for loop, I printed the list Q. I converted each element of Q to a string and joined them with spaces in between. Then, I printed the string.
+
+The code passed all test cases.
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0 for _ in range(n)]
+    for i in range(n):
+        q[p[i] - 1] = i + 1
+    print(*q)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * N
+    for i in range(N):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    print(' '.join(map(str, Q)))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = [int(x) for x in input().split()]
+    Q = [0 for i in range(N)]
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(*Q)
+
+=======
+Suggestion 7
+
+def solve(N, P):
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    return Q

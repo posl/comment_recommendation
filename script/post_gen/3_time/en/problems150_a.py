@@ -1,37 +1,78 @@
-#Problem Statement
-#Takahashi has K 500-yen coins. (Yen is the currency of Japan.)
-#If these coins add up to X yen or more, print Yes; otherwise, print No.
-#
-#Constraints
-#1 ≦ K ≦ 100
-#1 ≦ X ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K X
-#
-#Output
-#If the coins add up to X yen or more, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 900
-#
-#Sample Output 1
-#Yes
-#Two 500-yen coins add up to 1000 yen, which is not less than X = 900 yen.
-#
-#Sample Input 2
-#1 501
-#
-#Sample Output 2
-#No
-#One 500-yen coin is worth 500 yen, which is less than X = 501 yen.
-#
-#Sample Input 3
-#4 2000
-#
-#Sample Output 3
-#Yes
-#Four 500-yen coins add up to 2000 yen, which is not less than X = 2000 yen.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K, X = map(int, input().split())
+    if K * 500 >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    K, X = map(int, input().split())
+    if 500 * K >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    K, X = input().split()
+    K = int(K)
+    X = int(X)
+    if K * 500 >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    K, X = [int(i) for i in input().split()]
+    if 500*K >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    # Read the input
+    K, X = map(int, input().split())
+
+    # Check if the coins add up to X yen or more
+    if K * 500 >= X:
+        print("Yes")
+    else:
+        print("No")

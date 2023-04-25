@@ -1,39 +1,101 @@
-#Problem Statement
-#There is a right triangle ABC with ∠ABC=90°.
-#Given the lengths of the three sides, |AB|,|BC| and |CA|, find the area of the right triangle ABC.
-#It is guaranteed that the area of the triangle ABC is an integer.
-#
-#Constraints
-#1 ≦ |AB|,|BC|,|CA| ≦ 100
-#All values in input are integers.
-#The area of the triangle ABC is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#|AB| |BC| |CA|
-#
-#Output
-#Print the area of the triangle ABC.
-#
-#Sample Input 1
-#3 4 5
-#
-#Sample Output 1
-#6
-#This triangle has an area of 6.
-#
-#Sample Input 2
-#5 12 13
-#
-#Sample Output 2
-#30
-#This triangle has an area of 30.
-#
-#Sample Input 3
-#45 28 53
-#
-#Sample Output 3
-#630
-#This triangle has an area of 630.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    AB, BC, CA = map(int, input().split())
+    print(AB * BC // 2)
+
+=======
+Suggestion 2
+
+def area_of_triangle(a,b,c):
+    s = (a + b + c)/2
+    return (s*(s-a)*(s-b)*(s-c)) ** 0.5
+
+a, b, c = [int(x) for x in input().split()]
+print(int(area_of_triangle(a,b,c)))
+
+=======
+Suggestion 3
+
+def main():
+    AB, BC, CA = map(int, input().split())
+    area = int((AB*BC)/2)
+    print(area)
+
+=======
+Suggestion 4
+
+def main():
+    sides = list(map(int, input().split()))
+    print(sides[0] * sides[1] // 2)
+
+=======
+Suggestion 5
+
+def main():
+    # Read input
+    ab, bc, ca = map(int, input().split())
+
+    # Calculate area
+    area = (ab * bc) // 2
+
+    # Print area
+    print(area)
+
+=======
+Suggestion 6
+
+def main():
+    # Read the three sides of the triangle
+    AB, BC, CA = map(int, input().split())
+    # Calculate the area of the triangle
+    area = (AB*BC)//2
+    # Print the area of the triangle
+    print(area)
+
+=======
+Suggestion 7
+
+def main():
+    # Get input
+    ab, bc, ca = map(int, input().split())
+    # Calculate area of triangle
+    area = (ab * bc) // 2
+    # Print area of triangle
+    print(area)
+
+=======
+Suggestion 8
+
+def main():
+    # get the input
+    ab, bc, ca = map(int, input().split())
+    # get the area of the triangle
+    area = (ab * bc) // 2
+    # print the area
+    print(area)
+
+=======
+Suggestion 9
+
+def main():
+    # Read the three sides of the triangle
+    a, b, c = map(int, input().split())
+    # Calculate the area of the triangle
+    area = int(a * b * c / 2)
+    # Output the result
+    print(area)
+
+=======
+Suggestion 10
+
+def main():
+    #read input
+    AB, BC, CA = map(int, input().split())
+    #calculation
+    S = (AB * BC) // 2
+    #output
+    print(S)

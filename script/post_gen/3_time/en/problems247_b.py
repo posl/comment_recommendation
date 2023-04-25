@@ -1,66 +1,176 @@
-#Problem Statement
-#There are N people numbered Person 1, Person 2, ..., and Person N.  Person i has a family name s_i and a given name t_i.
-#Consider giving a nickname to each of the N people.  Person i's nickname a_i should satisfy all the conditions below.
-#a_i coincides with Person i's family name or given name.  In other words, a_i = s_i and/or a_i = t_i holds.
-#a_i does not coincide with the family name and the given name of any other person.  In other words, for all integer j such that 1 ≦ j ≦ N and i ≠ j, it holds that a_i ≠ s_j and a_i ≠ t_j.
-#Is it possible to give nicknames to all the N people?  If it is possible, print Yes; otherwise, print No.
-#
-#Constraints
-#2 ≦ N ≦ 100
-#N is an integer.
-#s_i and t_i are strings of lengths between 1 and 10 (inclusive) consisting of lowercase English alphabets.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#s_1 t_1
-#s_2 t_2
-#.
-#.
-#.
-#s_N t_N
-#
-#Output
-#If it is possible to give nicknames to all the N people, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3
-#tanaka taro
-#tanaka jiro
-#suzuki hanako
-#
-#Sample Output 1
-#Yes
-#The following assignment satisfies the conditions of nicknames described in the Problem Statement: a_1 = taro, a_2 = jiro, a_3 = hanako.  (a_3 may be suzuki, too.)
-#However, note that we cannot let a_1 = tanaka, which violates the second condition of nicknames, since Person 2's family name s_2 is tanaka too.
-#
-#Sample Input 2
-#3
-#aaa bbb
-#xxx aaa
-#bbb yyy
-#
-#Sample Output 2
-#No
-#There is no way to give nicknames satisfying the conditions in the Problem Statement.
-#
-#Sample Input 3
-#2
-#tanaka taro
-#tanaka taro
-#
-#Sample Output 3
-#No
-#There may be a pair of people with the same family name and the same given name.
-#
-#Sample Input 4
-#3
-#takahashi chokudai
-#aoki kensho
-#snu ke
-#
-#Sample Output 4
-#Yes
-#We can let a_1 = chokudai, a_2 = kensho, and a_3 = ke.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j] or s[i] == t[j] or t[i] == s[j] or t[i] == t[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = [0] * N
+    T = [0] * N
+    for i in range(N):
+        S[i], T[i] = input().split()
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if S[i] == S[j] or T[i] == T[j]:
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    s = []
+    t = []
+    for i in range(N):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    if len(set(s)) == len(set(t)) == len(set(s + t)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input().split())
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if names[i][0] == names[j][0] or names[i][0] == names[j][1] or names[i][1] == names[j][0] or names[i][1] == names[j][1]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    s = []
+    t = []
+    for i in range(N):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    if len(s) == len(set(s)) and len(t) == len(set(t)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_, t_ = input().split()
+        s.append(s_)
+        t.append(t_)
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j] or t[i] == t[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input().split())
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if names[i][0] == names[j][0] or names[i][1] == names[j][1]:
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input().split())
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if names[i][0] == names[j][0] or names[i][1] == names[j][1]:
+                    print("No")
+                    return
+    print("Yes")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    s = []
+    t = []
+    for i in range(N):
+        st = input().split()
+        s.append(st[0])
+        t.append(st[1])
+    if len(s) != len(set(s)) or len(t) != len(set(t)):
+        print("No")
+        return
+    for i in range(N):
+        for j in range(i+1, N):
+            if s[i] == s[j] and t[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    name = []
+    for i in range(N):
+        name.append(input().split())
+    name = sorted(name, key=lambda x: (x[0], x[1]))
+    for i in range(N-1):
+        if name[i][0] == name[i+1][0] and name[i][1] == name[i+1][1]:
+            print('No')
+            return
+    print('Yes')

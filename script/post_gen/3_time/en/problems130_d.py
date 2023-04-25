@@ -1,46 +1,194 @@
-#Problem Statement
-#You are given a sequence of positive integers of length N, A=a_1,a_2,…,a_{N}, and an integer K.
-#How many contiguous subsequences of A satisfy the following condition?
-#(Condition) The sum of the elements in the contiguous subsequence is at least K.
-#We consider two contiguous subsequences different if they derive from different positions in A, even if they are the same in content.
-#Note that the answer may not fit into a 32-bit integer type.
-#
-#Constraints
-#1 ≦ a_i ≦ 10^5
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^{10}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#a_1 a_2 ... a_N
-#
-#Output
-#Print the number of contiguous subsequences of A that satisfy the condition.
-#
-#Sample Input 1
-#4 10
-#6 1 2 7
-#
-#Sample Output 1
-#2
-#The following two contiguous subsequences satisfy the condition:
-#A[1..4]=a_1,a_2,a_3,a_4, with the sum of 16
-#A[2..4]=a_2,a_3,a_4, with the sum of 10
-#
-#Sample Input 2
-#3 5
-#3 3 3
-#
-#Sample Output 2
-#3
-#Note again that we consider two contiguous subsequences different if they derive from different positions, even if they are the same in content.
-#
-#Sample Input 3
-#10 53462
-#103 35322 232 342 21099 90000 18843 9010 35221 19352
-#
-#Sample Output 3
-#36
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    s = 0
+    l = 0
+    for r in range(N):
+        s += A[r]
+        while s >= K:
+            ans += N - r
+            s -= A[l]
+            l += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    sum = 0
+    right = 0
+    for left in range(N):
+        while right < N and sum < K:
+            sum += A[right]
+            right += 1
+        if sum < K:
+            break
+        ans += N - right + 1
+        sum -= A[left]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[-1] + a[i])
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n+1):
+            if s[j] - s[i] >= k:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    sum = 0
+    l = 0
+    for r in range(N):
+        sum += A[r]
+        while sum >= K:
+            ans += N - r
+            sum -= A[l]
+            l += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = 0
+    cnt = 0
+    l = 0
+    for r in range(n):
+        s += a[r]
+        while s >= k:
+            cnt += n-r
+            s -= a[l]
+            l += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    count = 0
+    i = 0
+    j = 0
+    while i < N:
+        while j < N:
+            sum += A[j]
+            if sum >= K:
+                count += N - j
+                break
+            j += 1
+        sum -= A[i]
+        i += 1
+    print(count)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    result = 0
+    right = 0
+    total = 0
+    for left in range(N):
+        while right < N and total < K:
+            total += A[right]
+            right += 1
+        if total < K:
+            break
+        result += N - right + 1
+        total -= A[left]
+
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0]
+    for x in a:
+        s.append(s[-1] + x)
+    s.append(0)
+    # print(s)
+    ans = 0
+    for i in range(n+1):
+        for j in range(i+1, n+2):
+            if s[j] - s[i] >= k:
+                # print(i, j, s[j] - s[i])
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(N, K, A):
+    #print(N, K, A)
+    s = 0
+    l = 0
+    r = 0
+    ans = 0
+    while r < N:
+        s += A[r]
+        while s >= K:
+            ans += N-r
+            s -= A[l]
+            l += 1
+        r += 1
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(A)
+    #print(N)
+    #print(K)
+    #print(len(A))
+
+    s = 0
+    r = 0
+    ans = 0
+    for l in range(N):
+        while r < N and s < K:
+            s += A[r]
+            r += 1
+        if s < K:
+            break
+        ans += N-r+1
+        if l == r:
+            r += 1
+        else:
+            s -= A[l]
+    print(ans)

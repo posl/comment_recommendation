@@ -1,43 +1,92 @@
-#Problem Statement
-#Takahashi is going to cook N dishes called Dish 1 through N.
-#Dish i can be cooked by using an oven for T_i consecutive minutes. An oven cannot be used for two or more dishes simultaneously.
-#If Takahashi has two ovens to use, what is the shortest number of minutes needed to cook all the N dishes? Assume that all processes other than using ovens take negligible time.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ T_i ≦ 10^3
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#T_1 ... T_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5
-#8 3 7 2 5
-#
-#Sample Output 1
-#13
-#We can, for example, use the two ovens as follows to cook all the dishes in 13 minutes.
-#The first oven: Cook Dishes 5 and 1 in this order.
-#The second oven: Cook Dishes 2, 4, and 3 in this order.
-#
-#Sample Input 2
-#2
-#1000 1
-#
-#Sample Output 2
-#1000
-#
-#Sample Input 3
-#9
-#3 14 15 9 26 5 35 89 79
-#
-#Sample Output 3
-#138
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    print(sum(T) - max(T) + max(T) // 2)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    print(sum(T) - max(T) // 2)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    print(sum(t) - max(t) // 2)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    ans = T[0]
+    for i in range(1,N):
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    t = [int(x) for x in input().split()]
+    t.sort()
+    ans = t[0]
+    for i in range(1,n):
+        ans += t[i]
+    ans -= t[0]//2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = [int(_) for _ in input().split()]
+    T.sort()
+    print(sum(T) - T[-1] + T[-1] // 2)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    if N == 1:
+        print(T[0])
+    else:
+        print(sum(T) - (T[0] / 2))
+
+=======
+Suggestion 8
+
+def oven():
+    # N個の料理を作る
+    N = int(input())
+    # T_iはi番目の料理の焼く時間
+    T = list(map(int, input().split()))
+    # 一番時間がかかる料理の時間を求める
+    max_time = max(T)
+    # 一番時間がかかる料理の時間を除いた残りの料理の時間を求める
+    T.remove(max_time)
+    # 一番時間がかかる料理の時間と残りの料理の時間の合計を求める
+    total_time = max_time + sum(T)
+    # 一番時間がかかる料理の時間と残りの料理の時間の合計を出力する
+    print(total_time)
+
+oven()

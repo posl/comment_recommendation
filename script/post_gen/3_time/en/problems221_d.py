@@ -1,47 +1,185 @@
-#Problem Statement
-#There is an online game with N registered players.
-#Today, which is the 10^{100}-th day since its launch, the developer Takahashi examined the users' login history. It turned out that the i-th player logged in for B_i consecutive days from Day A_i, where Day 1 is the launch day, and did not log in for the other days.
-#In other words, the i-th player logged in on Day A_i, A_i+1, ..., A_i+B_i-1, and only on those days.
-#For each integer k such that 1≦ k≦ N, find the number of days on which exactly k players logged in.
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#A_2 B_2
-#:
-#A_N B_N
-#
-#Output
-#Print N integers with spaces in between, as follows:
-#D_1 D_2 ... D_N
-#Here, D_i denotes the number of days on which exactly k players logged in.
-#
-#Sample Input 1
-#3
-#1 2
-#2 3
-#3 1
-#
-#Sample Output 1
-#2 2 0
-#The first player logged in on Day 1, 2, the second player logged in on Day 2, 3, 4, and the third player logged in on Day 3 only.
-#Thus, we can see that Day 1, 4 had 1 player logged in, Day 2, 3 had 2 players logged in, and the other days had no players logged in.
-#The answer is: there were 2 days with exactly 1 player logged in, 2 days with exactly 2 players logged in, and 0 days with exactly 3 players logged in.
-#
-#Sample Input 2
-#2
-#1000000000 1000000000
-#1000000000 1000000000
-#
-#Sample Output 2
-#0 1000000000
-#There may be two or more players who logged in during the same period.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    D = [0] * (N + 1)
+    for i in range(N):
+        D[A[i]] += 1
+        D[A[i] + B[i]] -= 1
+    for i in range(1, N + 1):
+        D[i] += D[i - 1]
+    for i in range(1, N + 1):
+        D[i] = D[i - 1] + (D[i] == i)
+    for i in range(N):
+        print(D[i + 1] - D[i], end=' ')
+    print()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    D = [0] * (N + 1)
+    for i in range(N):
+        D[A[i]] += 1
+        D[A[i] + B[i]] -= 1
+    for i in range(1, N + 1):
+        D[i] += D[i - 1]
+    D.pop(0)
+    print(' '.join(map(str, D)))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    D = [0 for i in range(N+1)]
+    for i in range(N):
+        D[A[i]-1] += 1
+        D[A[i]+B[i]-1] -= 1
+    for i in range(1, N):
+        D[i] += D[i-1]
+    D.pop()
+    D.sort()
+    print(*D)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    C = [0] * (10**5 + 1)
+    for i in range(N):
+        C[A[i]] += 1
+        C[A[i] + B[i]] -= 1
+    for i in range(1, 10**5 + 1):
+        C[i] += C[i - 1]
+    D = [0] * (N + 1)
+    for i in range(1, 10**5 + 1):
+        D[C[i]] += 1
+    for i in range(1, N + 1):
+        D[i] += D[i - 1]
+    print(*D[1:])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = list(map(int, input().split()))
+        a.append(a_i)
+        b.append(b_i)
+    d = [0] * (n + 1)
+    for i in range(n):
+        d[a[i]] += 1
+        d[a[i] + b[i]] -= 1
+    for i in range(1, n + 1):
+        d[i] += d[i - 1]
+    for i in range(1, n + 1):
+        print(d.count(i))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for n in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(N, A, B)
+    D = [0] * (10**5 + 1)
+    for n in range(N):
+        D[A[n]] += 1
+        D[A[n] + B[n]] -= 1
+    #print(D)
+    for i in range(1, 10**5 + 1):
+        D[i] += D[i - 1]
+    #print(D)
+    E = [0] * (N + 1)
+    for i in range(1, 10**5 + 1):
+        E[D[i]] += 1
+    #print(E)
+    for i in range(1, N + 1):
+        print(E[i], end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    #A[i] + B[i] - 1 = Day
+    #A[i] + B[i] - 1 = A[i+1] + B[i+1] - 1
+    #B[i] =
+
+=======
+Suggestion 8
+
+def main():
+
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # 1日目から10^9日目までの各日にログインした人数をカウント
+    # 1日目から10^9日目までの各日にログインした人数の累積和を取る
+    # 1日目から10^9日目までの各日にログインした人数の累積和の差分を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分の累積和を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分の累積和を出力
+
+    # 1日目から10^9日目までの各日にログインした人数をカウント
+    # 1日目から10^9日目までの各日にログインした人数の累積和を取る
+    # 1日目から10^9日目までの各日にログインした人数の累積和の差分を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分の累積和を取る
+    # 1日目から10^9日目までの各日にログインした人数の差分の累積和を出力
+
+    # 1日目から10^9日目までの各日にログインした人数をカウント
+    # 1日目から10
+
+=======
+Suggestion 9
+
+def read_int():
+    return int(input())

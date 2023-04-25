@@ -1,27 +1,146 @@
-#Problem Statement
-#On the Planet AtCoder, there are four types of bases: A, C, G and T. A bonds with T, and C bonds with G.
-#You are given a letter b as input, which is A, C, G or T. Write a program that prints the letter representing the base that bonds with the base b.
-#
-#Constraints
-#b is one of the letters A, C, G and T.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#b
-#
-#Output
-#Print the letter representing the base that bonds with the base b.
-#
-#Sample Input 1
-#A
-#
-#Sample Output 1
-#T
-#
-#Sample Input 2
-#G
-#
-#Sample Output 2
-#C
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+
+=======
+Suggestion 2
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+    else:
+        print("Unknown")
+
+=======
+Suggestion 3
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    elif b == 'C':
+        print('G')
+
+=======
+Suggestion 4
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+    else:
+        print('A')
+
+=======
+Suggestion 5
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    else:
+        print('C')
+
+=======
+Suggestion 6
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    else:
+        print('G')
+
+=======
+Suggestion 7
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "G":
+        print("C")
+    else:
+        print("G")
+
+=======
+Suggestion 8
+
+def main():
+    base = input()
+    if base == "A":
+        print("T")
+    elif base == "T":
+        print("A")
+    elif base == "C":
+        print("G")
+    elif base == "G":
+        print("C")
+
+=======
+Suggestion 9
+
+def main():
+    base = input()
+    if base == "A":
+        print("T")
+    elif base == "C":
+        print("G")
+    elif base == "G":
+        print("C")
+    elif base == "T":
+        print("A")
+    else:
+        print("Error")
+        return
+
+=======
+Suggestion 10
+
+def main():
+    base = input()
+    if base == 'A':
+        print('T')
+    elif base == 'C':
+        print('G')
+    elif base == 'G':
+        print('C')
+    else:
+        print('A')

@@ -1,42 +1,84 @@
-#Problem Statement
-#We have a rectangular room that is H meters long and W meters wide.
-#We will cover this room with A indistinguishable 2 meters × 1 meters rectangular tatami mats and B indistinguishable 1 meter × 1 meter square tatami mats.
-#The rectangular mats can be used in either direction: they can be 2 meters long and 1 meter wide, or 1 meter long and 2 meters wide.
-#How many ways are there to do this?
-#Here, it is guaranteed that 2A + B = HW, and two ways are distinguished if they match only after rotation, reflection, or both.
-#
-#Constraints
-#All values in input are integers.
-#1 ≤ H, W
-#HW ≤ 16
-#0 ≤ A, B
-#2A + B = HW
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 2 1 2
-#
-#Sample Output 1
-#4
-#There are four ways as follows:
-#
-#Sample Input 2
-#3 3 4 1
-#
-#Sample Output 2
-#18
-#There are six ways as follows, and their rotations.
-#
-#Sample Input 3
-#4 4 8 0
-#
-#Sample Output 3
-#36
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(h, w, a, b):
+    if a == 0 or b == 0:
+        return 1
+    return solve(h, w, a - 1, b) + solve(h, w, a, b - 1)
+
+h, w, a, b = map(int, input().split())
+print(solve(h, w, a, b))
+
+=======
+Suggestion 2
+
+def main():
+    H, W, A, B = map(int, input().s
+
+=======
+Suggestion 3
+
+def main():
+    H, W, A, B = map(int, input().split())
+    ans = 0
+    for i in range(2**H):
+        for j in range(2**W):
+            cnt = 0
+            for k in range(H):
+                if (i >> k) & 1 == 1:
+                    continue
+                for l in range(W):
+                    if (j >> l) & 1 == 1:
+                        continue
+                    cnt += 1
+            if cnt == A:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H, W, A, B)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(0)
+
+=======
+Suggestion 6
+
+def solve():
+    H, W, A, B = map(int, input().split())
+    return 0
+
+print(solve())
+
+=======
+Suggestion 7
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H,W,A,B)
+    print('Hello World!')
+    return
+
+=======
+Suggestion 8
+
+def problem():
+  H, W, A, B = map(int, input().split())
+  print(H*W)
+
+=======
+Suggestion 9
+
+def main():
+    print('Hello')
+    return

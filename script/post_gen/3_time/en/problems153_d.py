@@ -1,42 +1,93 @@
-#Problem Statement
-#Caracal is fighting with a monster.
-#The health of the monster is H.
-#Caracal can attack by choosing one monster. When a monster is attacked, depending on that monster's health, the following happens:
-#If the monster's health is 1, it drops to 0.
-#If the monster's health, X, is greater than 1, that monster disappears. Then, two new monsters appear, each with the health of ⌊ X/2 ⌋.
-#(⌊ r ⌋ denotes the greatest integer not exceeding r.)
-#Caracal wins when the healths of all existing monsters become 0 or below.
-#Find the minimum number of attacks Caracal needs to make before winning.
-#
-#Constraints
-#1 ≦ H ≦ 10^{12}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H
-#
-#Output
-#Find the minimum number of attacks Caracal needs to make before winning.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#3
-#When Caracal attacks the initial monster, it disappears, and two monsters appear, each with the health of 1.
-#Then, Caracal can attack each of these new monsters once and win with a total of three attacks.
-#
-#Sample Input 2
-#4
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#1000000000000
-#
-#Sample Output 3
-#1099511627775
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H = int(input())
+    ans = 0
+    while H > 0:
+        ans += H
+        H //= 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H = int(input())
+    cnt = 0
+    while H > 0:
+        H = H // 2
+        cnt += 1
+    print(2 ** cnt - 1)
+
+=======
+Suggestion 3
+
+def main():
+    H = int(input())
+    ans = 0
+    while H > 0:
+        ans += H
+        H = H // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H = int(input())
+    ans = 1
+    while H > 1:
+        ans += H
+        H //= 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    h = int(input())
+    ans = 0
+    while h > 0:
+        h >>= 1
+        ans += 1
+    print(2 ** ans - 1)
+
+=======
+Suggestion 6
+
+def main():
+    H = int(input())
+    ans = 0
+    while H > 0:
+        ans += 1
+        H >>= 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    H = int(input())
+    A = [H]
+    while True:
+        if A[-1] <= 1:
+            break
+        else:
+            A.append(A[-1]//2)
+    print(sum(A))
+
+main()
+
+=======
+Suggestion 8
+
+def main(h):
+    #h = int(input())
+    ans = 1
+    while h > 1:
+        h = h//2
+        ans += h
+    print(ans)

@@ -1,73 +1,165 @@
-#Problem Statement
-#We have HW cards arranged in a matrix with H rows and W columns.
-#For each i=1, ..., N, the card at the A_i-th row from the top and B_i-th column from the left has a number i written on it. The other HW-N cards have nothing written on them.
-#We will repeat the following two kinds of operations on these cards as long as we can.
-#If there is a row without a numbered card, remove all the cards in that row and fill the gap by shifting the remaining cards upward.
-#If there is a column without a numbered card, remove all the cards in that column and fill the gap by shifting the remaining cards to the left.
-#Find the position of each numbered card after the end of the process above. It can be proved that these positions are uniquely determined without depending on the order in which the operations are done.
-#
-#Constraints
-#1 ≦ H,W ≦ 10^9
-#1 ≦ N ≦ min(10^5,HW)
-#1 ≦ A_i ≦ H
-#1 ≦ B_i ≦ W
-#All pairs (A_i,B_i) are distinct.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print N lines.
-#If, after the end of the process, the card with the number i is at the C_i-th row from the top and D_i-th column from the left, the i-th line should contain C_i and D_i in this order with a space between them.
-#
-#Sample Input 1
-#4 5 2
-#3 2
-#2 5
-#
-#Sample Output 1
-#2 1
-#1 2
-#Let * represent a card with nothing written on it. The initial arrangement of cards is:
-#*****
-#****2
-#*1***
-#*****
-#After the end of the process, they will be arranged as follows:
-#*2
-#1*
-#Here, the card with 1 is at the 2-nd row from the top and 1-st column from the left, and the card with 2 is at the 1-st row from the top and 2-nd column from the left.
-#
-#Sample Input 2
-#1000000000 1000000000 10
-#1 1
-#10 10
-#100 100
-#1000 1000
-#10000 10000
-#100000 100000
-#1000000 1000000
-#10000000 10000000
-#100000000 100000000
-#1000000000 1000000000
-#
-#Sample Output 2
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#7 7
-#8 8
-#9 9
-#10 10
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i]) + 1, B.index(B[i]) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, N = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    h = [0] * (H + 1)
+    w = [0] * (W + 1)
+    for i in range(N):
+        h[A[i]] = 1
+        w[B[i]] = 1
+    for i in range(1, H + 1):
+        h[i] += h[i - 1]
+    for i in range(1, W + 1):
+        w[i] += w[i - 1]
+    for i in range(N):
+        print(h[A[i]], w[B[i]])
+
+=======
+Suggestion 3
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = list(set(A))
+    B = list(set(B))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        print(A.index(A[i]) + 1, B.index(B[i]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, N = map(int, input().split())
+    x = []
+    y = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+
+    x = list(set(x))
+    y = list(set(y))
+    x.sort()
+    y.sort()
+
+    for i in range(N):
+        a, b = map(int, input().split())
+        print(x.index(a) + 1, y.index(b) + 1)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, N = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    A = [a for a, b in AB]
+    B = [b for a, b in AB]
+    A.sort()
+    B.sort()
+    d = {a: i for i, a in enumerate(A)}
+    e = {b: i for i, b in enumerate(B)}
+    for a, b in AB:
+        print(d[a] + 1, e[b] + 1)
+
+=======
+Suggestion 6
+
+def main():
+    H, W, N = map(int, input().split())
+    cards = [list(map(int, input().split())) for _ in range(N)]
+    cards.sort(key=lambda x: x[0])
+    cards.sort(key=lambda x: x[1])
+    row = 1
+    col = 1
+    row_list = []
+    col_list = []
+    for i in range(N):
+        while row < cards[i][0]:
+            row_list.append(row)
+            row += 1
+        while col < cards[i][1]:
+            col_list.append(col)
+            col += 1
+        row_list.append(cards[i][0])
+        col_list.append(cards[i][1])
+        row += 1
+        col += 1
+    while row <= H:
+        row_list.append(row)
+        row += 1
+    while col <= W:
+        col_list.append(col)
+        col += 1
+
+    for i in range(N):
+        print(row_list[i], col_list[i])
+
+=======
+Suggestion 7
+
+def main():
+    H, W, N = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(N)]
+    A, B = zip(*AB)
+    A = list(A)
+    B = list(B)
+    A.sort()
+    B.sort()
+    A = [i for i, v in enumerate(A)]
+    B = [i for i, v in enumerate(B)]
+    for i in range(N):
+        print(A[i]+1, B[i]+1)
+
+=======
+Suggestion 8
+
+def main():
+    H, W, N = map(int, input().split())
+    cards = [list(map(int, input().split())) for _ in range(N)]
+    cards.sort(key = lambda x: x[0])
+    cards.sort(key = lambda x: x[1])
+    cards.sort(key = lambda x: x[0] + x[1])
+    cards.sort(key = lambda x: x[0] * x[1])
+    cards.sort(key = lambda x: x[0] + x[1])
+
+    for i in range(N):
+        print(cards[i][0], cards[i][1])
+
+=======
+Suggestion 9
+
+def main():
+    H, W, N = map(int, input().split())
+    cards = [list(map(int, input().split())) for _ in range(N)]
+    cards.sort(key=lambda x:x[0]*W+x[1])
+    cards.sort(key=lambda x:x[0])
+    for i in range(N):
+        print(cards[i][0], cards[i][1])

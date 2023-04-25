@@ -1,31 +1,35 @@
-#Problem Statement
-#You are given an odd-length string S consisting of lowercase English letters.
-#Print the central character of S.
-#What is the central character?
-#For an odd-length string T, its central character is the ((|T|+1)/(2))-th character from the beginning, where |T| is the length of T.
-#
-#Constraints
-#S is an odd-length string consisting of lowercase English letters.
-#The length of S is between 1 and 99 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#atcoder
-#
-#Sample Output 1
-#o
-#The central character of atcoder is o.
-#
-#Sample Input 2
-#a
-#
-#Sample Output 2
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S[int((len(S)+1)/2)-1])
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[len(s)//2])
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S[(len(S)+1)//2-1])
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S[len(S)//2])
+
+=======
+Suggestion 5
+
+def main():
+    print(input()[len(input())//2])

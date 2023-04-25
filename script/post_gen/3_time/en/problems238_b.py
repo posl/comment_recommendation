@@ -1,49 +1,126 @@
-#Problem Statement
-#We have a circular pizza.
-#Takahashi will cut this pizza using a sequence A of length N, according to the following procedure.
-#First, make a cut from the center in the 12 o'clock direction.
-#Next, do N operations. The i-th operation is as follows.
-#Rotate the pizza A_i degrees clockwise.
-#Then, make a cut from the center in the 12 o'clock direction.
-#
-#For example, if A=(90,180,45,195), the procedure cuts the pizza as follows.
-#Find the center angle of the largest pizza after the procedure.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 359
-#1 ≦ A_i ≦ 359
-#There will be no multiple cuts at the same position.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#4
-#90 180 45 195
-#
-#Sample Output 1
-#120
-#This input coincides with the example in the Problem Statement.
-#The center angle of the largest pizza is 120 degrees.
-#
-#Sample Input 2
-#1
-#1
-#
-#Sample Output 2
-#359
-#
-#Sample Input 3
-#10
-#215 137 320 339 341 41 44 18 241 149
-#
-#Sample Output 3
-#170
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    ans = 360 - ans
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    angle = 0
+    for i in range(n):
+        angle += a[i]
+        angle %= 360
+    print((360 - angle) % 360)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = 0
+    for i in range(n):
+        s += a[i]
+    print(360 - s)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 360
+    for i in range(N):
+        ans = min(ans, abs(360 - 2 * (sum(A[i:]) % 360)))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = 360
+    for i in range(N):
+        X = min(X, abs(X-A[i]))
+    print(X)
+
+=======
+Suggestion 6
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n, a
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.reverse()
+    A.append(360)
+    A.append(0)
+    A.rever
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [360 - a for a in A]
+    A = A[::-1]
+    A.append(0)
+    ans = 0
+    for i in range(N + 1):
+        ans += min(A[i], A[i + 1])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A = [360 - x for x in A]
+    A.sort()
+    A.append(360 + A[0])
+    ans = 360
+    for i in range(N):
+        ans = min(ans, A[i + 1] - A[i])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.reverse()
+    upper = 180
+    lower = 0
+    for i in range(n):
+        if a[i] <= upper and a[i] >= lower:
+            upper = a[i] + 180
+            lower = a[i]
+        elif a[i] > upper:
+            upper = upper + 360 - a[i]
+            lower = a[i] - 180
+        else:
+            upper = a[i] + 180
+            lower = lower - 360 + a[i]
+    print(upper - 180)

@@ -1,58 +1,194 @@
-#Problem Statement
-#There are N citizens in the Kingdom of Takahashi. Each citizen has a national ID number; the ID of the i-th citizen is a_i. Here, all a_i are pairwise different.
-#Takahashi has K pieces of sweets. He has decided to hand out these pieces to the citizens in the following way until he has no more pieces.
-#When he has N or more pieces, hand out one piece to every citizen.
-#Otherwise, let K' be the number of pieces he has at the moment, and hand out one piece to each of the citizens with the K' smallest IDs.
-#When all pieces are handed out, how many pieces will the i-th citizen have?
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ 10^{18}
-#1 ≦ a_i ≦ 10^9
-#All a_i are pairwise different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#a_1 a_2 ... a_N
-#
-#Output
-#Print N lines. The i-th line should contain the number of pieces of sweets received by the i-th citizen.
-#
-#Sample Input 1
-#2 7
-#1 8
-#
-#Sample Output 1
-#4
-#3
-#Takahashi will hand out the pieces as follows.
-#Hand out one piece to everyone, leaving Takhashi with 5 pieces.
-#Hand out one piece to everyone, leaving Takhashi with 3 pieces.
-#Hand out one piece to everyone, leaving Takhashi with 1 piece.
-#Hand out one piece to the 1-st citizen, leaving Takhashi with no pieces.
-#In the end, the 1-st citizen will receive 4 pieces, and the 2-nd citizen will receive 3 pieces.
-#
-#Sample Input 2
-#1 3
-#33
-#
-#Sample Output 2
-#3
-#Since there is just one citizen, Takahashi will hand out all pieces to that 1-st citizen.
-#
-#Sample Input 3
-#7 1000000000000
-#99 8 2 4 43 5 3
-#
-#Sample Output 3
-#142857142857
-#142857142857
-#142857142858
-#142857142857
-#142857142857
-#142857142857
-#142857142857
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * (N + 1)
+    for i in range(N):
+        B[i + 1] = B[i] + A[i]
+    for i in range(N):
+        if i == N - 1:
+            print(K)
+        else:
+            if (A[i + 1] - 1) * (i + 1) <= K:
+                K -= (A[i + 1] - 1) * (i + 1)
+            else:
+                print(K // (i + 1) + B[i])
+                K = 0
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = [0] + a
+    ans = [0] * (N + 1)
+    for i in range(N):
+        if K >= (a[i + 1] - a[i]) * (i + 1):
+            ans[i + 1] = ans[i] + (a[i + 1] - a[i])
+            K -= (a[i + 1] - a[i]) * (i + 1)
+        else:
+            ans[i + 1] = ans[i] + K // (i + 1)
+            K = 0
+            break
+    for i in range(N):
+        if K >= N - i:
+            ans[i + 1] += N - i
+            K -= N - i
+        else:
+            ans[i + 1] += K
+            K = 0
+            break
+    for i in range(N):
+        print(ans[i + 1])
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = [0] + a
+    ans = [0] * (N + 1)
+    for i in range(N):
+        if a[i + 1] - a[i] > 1:
+            ans[i + 1] = (a[i + 1] - a[i] - 1) * (i + 1)
+    ans = [0] + list(map(int, np.cumsum(ans)))
+    for i in range(N):
+        if K >= ans[i + 1]:
+            continue
+        else:
+            K -= ans[i]
+            break
+    if K == 0:
+        print(a[i])
+    else:
+        print(a[i] + 1 + (K - 1) // (i + 1))
+
+=======
+Suggestion 5
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    a = sorted(a)
+    ans = [0]*N
+    for i in range(N):
+        ans[i] = K//(N-i)
+        K -= ans[i]
+    for i in range(N):
+        if K == 0:
+            break
+        ans[i] += 1
+        K -= 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [0] * N
+    if K >= N:
+        ans = [K//N] * N
+        K = K % N
+    for i in range(K):
+        ans[A.index(A[i])] += 1
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    #print(N, K, a)
+    a.sort()
+    ans = [0] * N
+    #print(a)
+    for i in range(N):
+        if K <= 0:
+            break
+        if i == N-1:
+            ans[i] += K
+            break
+        diff = a[i+1] - a[i]
+        if K >= diff * (i+1):
+            ans[i] += diff
+            K -= diff * (i+1)
+        else:
+            ans[i] += K // (i+1)
+            break
+    #print(ans)
+    for i in range(N):
+        ans[i] += K // N
+    for i in range(K % N):
+        ans[i] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    a.insert(0,0)
+    ans = []
+    for i in range(N):
+        ans.append(K//(N-i))
+        K -= K//(N-i)
+    for i in range(N):
+        if K == 0:
+            break
+        if a[i+1] - a[i] <= K:
+            ans[i] += a[i+1] - a[i]
+            K -= a[i+1] - a[i]
+        else:
+            ans[i] += K
+            K = 0
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def solve(N, K, a):
+    a.sort()
+    ans = [0] * N
+    count = 0
+    while K > 0:
+        if count == N:
+            for i in range(N):
+                ans[i] += K // N
+            K %= N
+        else:
+            if K >= N - count:
+                K -= N - count
+                ans[count] += 1
+            else:
+                ans[count + K] += 1
+                K = 0
+        count += 1
+    return ans

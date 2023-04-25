@@ -1,39 +1,176 @@
-#Problem Statement
-#Given an integer N, find the base -2 representation of N.
-#Here, S is the base -2 representation of N when the following are all satisfied:
-#S is a string consisting of 0 and 1.
-#Unless S = 0, the initial character of S is 1.
-#Let S = S_k S_{k-1} ... S_0, then S_0 × (-2)^0 + S_1 × (-2)^1 + ... + S_k × (-2)^k = N.
-#It can be proved that, for any integer M, the base -2 representation of M is uniquely determined.
-#
-#Constraints
-#Every value in input is integer.
-#-10^9 ≦ N ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the base -2 representation of N.
-#
-#Sample Input 1
-#-9
-#
-#Sample Output 1
-#1011
-#As (-2)^0 + (-2)^1 + (-2)^3 = 1 + (-2) + (-8) = -9, 1011 is the base -2 representation of -9.
-#
-#Sample Input 2
-#123456789
-#
-#Sample Output 2
-#11000101011001101110100010101
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+    else:
+        ans = ""
+        while N != 0:
+            if N % 2 == 0:
+                ans += "0"
+            else:
+                ans += "1"
+                N -= 1
+            N //= -2
+        print(ans[::-1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            ans += "0"
+            N //= -2
+        else:
+            ans += "1"
+            N = (N - 1) // -2
+    print(ans[::-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            ans = "0" + ans
+            N = N // -2
+        else:
+            ans = "1" + ans
+            N = (N - 1) // -2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    S = []
+    while N != 0:
+        if N % 2 == 0:
+            S.append(0)
+            N //= -2
+        else:
+            S.append(1)
+            N = (N - 1) // -2
+    print("".join(map(str, reversed(S))))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ''
+    while N != 0:
+        if N % 2 == 0:
+            ans = '0' + ans
+            N = N // -2
+        else:
+            ans = '1' + ans
+            N = (N - 1) // -2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+    else:
+        S = ''
+        while N != 0:
+            if N % 2 == 0:
+                S = '0' + S
+                N //= -2
+            else:
+                S = '1' + S
+                N = (N - 1) // -2
+        print(S)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = []
+    while N != 0:
+        if N % 2 == 0:
+            ans.append('0')
+            N = N // (-2)
+        else:
+            ans.append('1')
+            N = (N - 1) // (-2)
+    print(''.join(ans[::-1]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+    else:
+        s = ''
+        while n:
+            if n % (-2) == 0:
+                s = '0' + s
+                n //= (-2)
+            else:
+                s = '1' + s
+                n = (n - 1) // (-2)
+        print(s)
+
+=======
+Suggestion 9
+
+def base_minus2(n):
+    if n == 0:
+        return '0'
+    s = ''
+    while n:
+        s += str(n % -2)
+        n = (n - n % -2) // -2
+    return s[::-1]
+
+=======
+Suggestion 10
+
+def base_m(N, m):
+    if N == 0:
+        return '0'
+    elif N < 0:
+        N = -N
+        minus = True
+    else:
+        minus = False
+    ans = ''
+    while N > 0:
+        ans = str(N % m) + ans
+        N //= m
+    if minus:
+        ans = '-' + ans
+    return ans

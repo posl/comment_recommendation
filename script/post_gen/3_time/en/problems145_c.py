@@ -1,59 +1,128 @@
-#Problem Statement
-#There are N towns in a coordinate plane. Town i is located at coordinates (x_i, y_i). The distance between Town i and Town j is ((x_i-x_j)^2+(y_i-y_j)^2)^(1/2).
-#There are N! possible paths to visit all of these towns once. Let the length of a path be the distance covered when we start at the first town in the path, visit the second, third, ..., towns, and arrive at the last town (assume that we travel in a straight line from a town to another). Compute the average length of these N! paths.
-#
-#Constraints
-#2 ≦ N ≦ 8
-#-1000 ≦ x_i ≦ 1000
-#-1000 ≦ y_i ≦ 1000
-#(x_i, y_i) ≠ (x_j, y_j) (if i ≠ j)
-#(Added 21:12 JST) All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#Output
-#Print the average length of the paths.
-#Your output will be judges as correct when the absolute difference from the judge's output is at most 10^{-6}.
-#
-#Sample Input 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#Sample Output 1
-#2.2761423749
-#There are six paths to visit the towns: 1 → 2 → 3, 1 → 3 → 2, 2 → 1 → 3, 2 → 3 → 1, 3 → 1 → 2, and 3 → 2 → 1.
-#The length of the path 1 → 2 → 3 is ((0-1)^2+(0-0)^2)^(1/2) + ((1-0)^2+(0-1)^2)^(1/2) = 1+(2)^(1/2).
-#By calculating the lengths of the other paths in this way, we see that the average length of all routes is:
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#
-#Sample Input 2
-#2
-#-879 981
-#-866 890
-#
-#Sample Output 2
-#91.9238815543
-#There are two paths to visit the towns: 1 → 2 and 2 → 1. These paths have the same length.
-#
-#Sample Input 3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#Sample Output 3
-#7641.9817824387
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def distance(x1, y1, x2, y2):
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+
+=======
+Suggestion 2
+
+def read():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    return N, X, Y
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += ((X[i]-X[j])**2+(Y[i]-Y[j])**2)**0.5
+    print(ans*N*2/N/N)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x = [0] * N
+    y = [0] * N
+    for i in range(N):
+        x[i], y[i] = map(int, input().split())
+    perm = [i for i in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            ans += ((x[perm[i]] - x[perm[j]]) ** 2 + (y[perm[i]] - y[perm[j]]) ** 2) ** 0.5
+    for i in range(2, N + 1):
+        ans /= i
+    print(ans)
+
+=======
+Suggestion 5
+
+def distance(t1, t2):
+    return ((t1[0]-t2[0])**2 + (t1[1]-t2[1])**2)**(1/2)
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    from itertools import permutations
+    input = sys.stdin.readline
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    ans = 0
+    for p in permutations(range(N)):
+        for i in range(N-1):
+            ans += ((X[p[i]]-X[p[i+1]])**2+(Y[p[i]]-Y[p[i+1]])**2)**0.5
+    print(ans/N)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    town = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        town.append((x, y))
+    from itertools import permutations
+    perm = permutations(range(N))
+    ans = 0
+    for p in perm:
+        for i in range(N-1):
+            ans += ((town[p[i]][0]-town[p[i+1]][0])**2+(town[p[i]][1]-town[p[i+1]][1])**2)**(1/2)
+    print(ans/N/math.factorial(N))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    import itertools
+    l = list(itertools.permutations(range(n)))
+    ans = 0
+    for i in l:
+        for j in range(n-1):
+            ans += ((xy[i[j]][0]-xy[i[j+1]][0])**2+(xy[i[j]][1]-xy[i[j+1]][1])**2)**0.5
+    print(ans/len(l))
+
+=======
+Suggestion 9
+
+def main():
+    from itertools import permutations
+    import math
+    N = int(input())
+    town = [list(map(int,input().split())) for _ in range(N)]
+    path = list(permutations(range(N)))
+    ans = 0
+    for i in range(len(path)):
+        for j in range(N-1):
+            ans += math.sqrt((town[path[i][j]][0]-town[path[i][j+1]][0])**2+(town[path[i][j]][1]-town[path[i][j+1]][1])**2)
+    print(ans/len(path))
+
+=======
+Suggestion 10
+
+def input(): return sys.stdin.readline().rstrip()

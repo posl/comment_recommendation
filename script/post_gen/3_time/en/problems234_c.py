@@ -1,36 +1,203 @@
-#Problem Statement
-#Among the positive integers that consist of 0's and 2's when written in base 10, find the K-th smallest integer.
-#
-#Constraints
-#K is an integer between 1 and 10^{18} (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the answer as an integer.
-#Here, the exact value must be printed as an integer, even if it is big. Exponential notations such as 2.34e+22, for example, or unnecessary leading zeros such as 0523 are not allowed.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#22
-#The positive integers that consist of 0's and 2's when written in base 10 are 2,20,22,... in ascending order.
-#The (K=) 3-rd of them, which is 22, should be printed.
-#
-#Sample Input 2
-#11
-#
-#Sample Output 2
-#2022
-#
-#Sample Input 3
-#923423423420220108
-#
-#Sample Output 3
-#220022020000202020002022022000002020002222002200002022002200
-#Note that the exact value of the answer must be printed as an integer, even if it is big.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    l = [2, 20, 202, 2020, 20202, 202020, 2020202, 20202020, 202020202, 2020202020, 20202020202, 202020202020, 2020202020202, 20202020202020, 202020202020202, 2020202020202020, 20202020202020202, 202020202020202020, 2020202020202020202, 20202020202020202020, 202020202020202020202, 2020202020202020202020, 20202020202020202020202, 202020202020202020202020, 2020202020202020202020202, 20202020202020202020202020, 202020202020202020202020202, 2020202020202020202020202020, 20202020202020202020202020202, 202020202020202020202020202020, 2020202020202020202020202020202, 20202020202020202020202020202020, 202020202020202020202020202020202, 2020202020202020202020202020202020, 20202020202020202020202020202020202, 202020202020202020202020202020202020, 2020202020202020202020202020202020202, 20202020202020202020202020202020202020, 202020202020202020202020202020202020202, 2020202020202020202020202020202020202020, 20202020202020202020202020202020202020202, 202020202020202020202020202020202020202020, 2020202020202020202020202020202020202020202, 20202020202020202020202020202020202020202020, 202020202020202020202020202020202020202020202, 2020202020202020202020202020202020202020202020, 20202020202020202020202020202020202020202020202, 202020
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    q = [2, 20, 202, 2022, 20222, 202222, 2022222, 20222222, 202222222, 2022222222]
+    for i in range(10):
+        q.append(q[i] * 10 + 2)
+        q.append(q[i] * 10 + 20)
+        q.append(q[i] * 10 + 202)
+        q.append(q[i] * 10 + 2022)
+    q.sort()
+    print(q[K - 1])
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    ans = ""
+    while K > 0:
+        K -= 1
+        ans = str(K % 3) + ans
+        K //= 3
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    K -= 1
+    a = K // 3
+    b = K % 3
+    ans = 2 ** a
+    if b == 0:
+        ans *= 2
+    elif b == 1:
+        ans *= 20
+    elif b == 2:
+        ans *= 22
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    K = int(input())
+    # 2進数の桁数
+    digit = 1
+    # 2進数の桁数を1ずつ増やしていく
+    while True:
+        # 2進数の桁数に応じた値を求める
+        # 2進数の桁数が1の場合は、2,20,22,...を考える
+        # 2進数の桁数が2の場合は、200,202,220,222,...を考える
+        # 2進数の桁数が3の場合は、2000,2002,2020,2022,...を考える
+        # 2進数の桁数が4の場合は、20000,20002,20020,20022,...を考える
+        # ...
+        # 2進数の桁数がnの場合は、2×10^(n-1),2×10^(n-1)+2,20×10^(n-1),20×10^(n-1)+2,...を考える
+        # 2進数の桁数がn+1の場合は、2×10^n,2×10^n+2,20×10^n,20×10^n+2,...を考える
+        # 2進数の桁数がn+2の場合は、2×10^(n+1),2×10^(n+1)+2,20×10^(n+1),20×10^(n+1)+2,...を考える
+        # 2進数の桁数がn+mの場合は、2×10^(n+m-1),2×10^(n+m-1)+2,20×10^(n+m-1),20×10^(n+m-1)+2,...を考える
+        # 2進数の桁数がn+m+1の場合は、2×10^(n+m),2×10^(n+m)+2,20×10^(n+m),20×10^(n+m)+2,...を考える
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    if K <= 200:
+        print(K)
+        return
+    K -= 200
+    L = 3
+    while True:
+        if K < 2 ** (L - 2):
+            break
+        K -= 2 ** (L - 2)
+        L += 1
+    S = 2 ** (L - 2)
+    K += 1
+    N = 0
+    for i in range(L - 1):
+        if K & (1 << i):
+            N = N * 10 + 2
+        else:
+            N = N * 10
+    print(N)
+
+=======
+Suggestion 7
+
+def main():
+    K=int(input())
+    #print(K)
+    #print(type(K))
+    K1=K
+    K2=K
+    K3=K
+    K4=K
+    K5=K
+    K6=K
+    K7=K
+    K8=K
+    K9=K
+    K10=K
+    K11=K
+    K12=K
+    K13=K
+    K14=K
+    K15=K
+    K16=K
+    K17=K
+    K18=K
+    K19=K
+    K20=K
+    K21=K
+    K22=K
+    K23=K
+    K24=K
+    K25=K
+    K26=K
+    K27=K
+    K28=K
+    K29=K
+    K30=K
+    K31=K
+    K32=K
+    K33=K
+    K34=K
+    K35=K
+    K36=K
+    K37=K
+    K38=K
+    K39=K
+    K40=K
+    K41=K
+    K42=K
+    K43=K
+    K44=K
+    K45=K
+    K46=K
+    K47=K
+    K48=K
+    K49=K
+    K50=K
+    K51=K
+    K52=K
+    K53=K
+    K54=K
+    K55=K
+    K56=K
+    K57=K
+    K58=K
+    K59=K
+    K60=K
+    K61=K
+    K62=K
+    K63=K
+    K64=K
+    K65=K
+    K66=K
+    K67=K
+    K68=K
+    K69=K
+    K70=K
+    K71=K
+    K72=K
+    K73=K
+    K74=K
+    K75=K
+    K76=K
+    K77=K
+    K78=K
+    K79=K
+    K80=K
+    K
+
+=======
+Suggestion 8
+
+def get_digit(K, base):
+    digit = 0
+    while K > 0:
+        digit += 1
+        K //= base
+    return digit
+
+=======
+Suggestion 9
+
+def main():
+    K = int(input())
+    print(solve(K))

@@ -1,36 +1,54 @@
-#Problem Statement
-#You are given positive integers A and B.
-#If A is a divisor of B, print A + B; otherwise, print B - A.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A ≦ B ≦ 20
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#If A is a divisor of B, print A + B; otherwise, print B - A.
-#
-#Sample Input 1
-#4 12
-#
-#Sample Output 1
-#16
-#As 4 is a divisor of 12, 4 + 12 = 16 should be printed.
-#
-#Sample Input 2
-#8 20
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#1 1
-#
-#Sample Output 3
-#2
-#1 is a divisor of 1.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(A + B)
+    else:
+        print(B - A)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = input().split()
+    A = int(A)
+    B = int(B)
+    if B % A == 0:
+        print(A + B)
+    else:
+        print(B - A)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = [int(x) for x in input().split()]
+    if B % A == 0:
+        print(A + B)
+    else:
+        print(B - A)
+
+=======
+Suggestion 5
+
+def main():
+    #Read input from console
+    a, b = [int(x) for x in input().split()]
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)

@@ -1,52 +1,147 @@
-#Problem Statement
-#You are given a sequence C of N integers. Find the number of sequences A of N integers satisfying all of the following conditions. 
-#1 ≦ A_i ≦ C_i (1 ≦ i ≦ N)
-#A_i ≠ A_j (1 ≦ i < j ≦ N)
-#Since the count may be enormous, print it modulo (10^9+7).
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the number of sequences A of N integers satisfying all of the following conditions, modulo (10^9+7).
-#
-#Sample Input 1
-#2
-#1 3
-#
-#Sample Output 1
-#2
-#We have two sequences A satisfying all of the conditions: (1,2) and (1,3).
-#On the other hand, A=(1,1), for example, does not satisfy the second condition.
-#
-#Sample Input 2
-#4
-#3 3 4 4
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#2
-#1 1
-#
-#Sample Output 3
-#0
-#We have no sequences A satisfying all of the conditions, so we should print 0.
-#
-#Sample Input 4
-#10
-#999999917 999999914 999999923 999999985 999999907 999999965 999999914 999999908 999999951 999999979
-#
-#Sample Output 4
-#405924645
-#Be sure to print the count modulo (10^9+7).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= max(0, C[i] - i)
+        ans %= 10**9+7
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= max(0, C[i] - i)
+        ans %= 1000000007
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(n):
+        ans = ans * max(0, c[i]-i) % mod
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(N):
+        ans *= (C[i]-i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans = ans * max(0, C[i] - i) % 1000000007
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(N):
+        ans = (ans * (C[i] - i)) % mod
+    print(ans)
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+
+    C.sort()
+    mod = 10**9 + 7
+    ans = 1
+    for i in range(N):
+        ans = (ans * max(0, C[i]-i)) % mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def count_seq(N, C):
+    mod = 10**9 + 7
+    C.sort()
+    count = 1
+    for i in range(N):
+        count *= C[i] - i
+        count %= mod
+    return count
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    print()
+    print(C)
+    print(N)
+    print()
+
+=======
+Suggestion 10
+
+def solve(n, c):
+    mod = 10**9 + 7
+
+    # dp[i]: number of sequences satisfying the conditions
+    dp = [1] * n
+
+    # cum[i]: cumulative sum of dp[i]
+    cum = [0] * n
+    cum[0] = dp[0]
+    for i in range(1, n):
+        cum[i] = cum[i - 1] + dp[i]
+
+    # last[j]: the last index of j
+    last = [-1] * (max(c) + 1)
+    for i in range(n):
+        last[c[i]] = i
+
+    for i in range(1, n):
+        if c[i - 1] == c[i]:
+            dp[i] = cum[i - 1]
+        elif last[c[i]] < i - 1:
+            dp[i] = cum[i - 1]
+        else:
+            dp[i] = (cum[i - 1] - cum[last[c[i]] - 1]) % mod
+
+    return dp[-1]

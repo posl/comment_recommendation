@@ -1,36 +1,133 @@
-#Problem Statement
-#You are given a sequence of 26 integers P=(P_1,P_2, ... ,P_{26}) consisting of integers from 1 through 26. It is guaranteed that all elements in P are distinct.
-#Print a string S of length 26 that satisfies the following condition.
-#For every i (1 ≦ i ≦ 26), the i-th character of S is the lowercase English letter that comes P_i-th in alphabetical order.
-#
-#Constraints
-#1 ≦ P_i ≦ 26
-#P_i ≠ P_j (i ≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#P_1 P_2 ... P_{26}
-#
-#Output
-#Print the string S.
-#
-#Sample Input 1
-#1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 1
-#abcdefghijklmnopqrstuvwxyz
-#
-#Sample Input 2
-#2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 2
-#bacdefghijklmnopqrstuvwxyz
-#
-#Sample Input 3
-#5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21
-#
-#Sample Output 3
-#eklpyqragjdwtcbxzsnifvhmou
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    P = list(map(int, input().split()))
+    S = ""
+    for i in range(26):
+        S += chr(ord('a') + P[i] - 1)
+    print(S)
+
+=======
+Suggestion 2
+
+def main():
+    P = list(map(int, input().split()))
+    S = ""
+    for i in range(1, 27):
+        S += chr(ord("a") + P.index(i))
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    P = list(map(int, input().split()))
+    S = list("abcdefghijklmnopqrstuvwxyz")
+    for i in range(len(P)):
+        S[P[i] - 1] = chr(i + 97)
+    print("".join(S))
+
+=======
+Suggestion 4
+
+def main():
+    S = "abcdefghijklmnopqrstuvwxyz"
+    P = list(map(int, input().split()))
+    ans = ""
+    for i in range(26):
+        ans += S[P[i]-1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    P = input().split()
+    S = [''] * 26
+    for i in range(26):
+        S[int(P[i])-1] = chr(ord('a')+i)
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    P = input().split()
+    S = ''
+    for i in range(1, 27):
+        S = S + chr(P.index(str(i)) + 97)
+    print(S)
+
+=======
+Suggestion 7
+
+def main():
+    p = list(map(int,input().split()))
+    s = ""
+    for i in range(26):
+        s += chr(ord('a') + p[i] - 1)
+    print(s)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    P = input().split()
+    S = ""
+    for i in range(1,27):
+        S += chr(96 + int(P[i-1]))
+    print(S)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    P = list(map(int,input().split()))
+    #A-Zをリストに格納
+    A = [chr(i) for i in range(97,123)]
+    #出力
+    print(''.join([A[i-1] for i in P]))
+
+=======
+Suggestion 10
+
+def main():
+    # Read the input
+    P = [int(x) for x in input().split()]
+
+    # Create a list of 26 elements
+    alphabet = [0]*26
+
+    # For each element in P, add 1 to that element's index in alphabet
+    for i in P:
+        alphabet[i-1] += 1
+
+    # Create a list of 26 elements
+    output = [0]*26
+
+    # For each element in alphabet, add the number of elements before that element to that element's index in output
+    for i in range(len(alphabet)):
+        output[i] = sum(alphabet[:i])
+
+    # For each element in output, add 97 to that element's index in output
+    for i in range(len(output)):
+        output[i] += 97
+
+    # Convert the list of ASCII values to a string
+    output = ''.join(chr(i) for i in output)
+
+    # Print the output
+    print(output)
+
+main()
+
+My code is very similar to yours, except that I used the enumerate() function, which returns the index and the value for each element in a list. This made it easier to create the output list.
+
+I think this is a good solution. If you want to make it more Pythonic, you can use a list comprehension for the output, and you can also use the chr() function to convert the ASCII values to letters.
+
+Thank you for the reply! I didn't know about the enumerate() function. I'll look into it. I'm still learning Python so I'm trying to write as much code as I can to practice.

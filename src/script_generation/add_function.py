@@ -16,26 +16,23 @@ def main(read_path, write_path):
             pass
 
 if __name__ == '__main__':
-    if os.path.exists('../../test_close_app/script/mod_gen'):
-        shutil.rmtree('../../test_close_app/script/mod_gen')
-        os.mkdir('../../test_close_app/script/mod_gen')
-        os.mkdir('../../test_close_app/script/mod_gen/en/')
-        os.mkdir('../../test_close_app/script/mod_gen/ja/')
-        #os.mkdir('../../test_close_app/script/mod_gen/zh/')
-    
-    which_path = 'test_close_app'
-    base_path = '../../' + which_path + '/script/split_gen/'
-    result_path = '../../' + which_path + '/script/mod_gen/'
+    time = '1_time'
+    del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/'.format(time)
+    if os.path.exists(del_dir_path):
+        shutil.rmtree(del_dir_path)
+        os.mkdir(del_dir_path)
 
-    en_files_l = os.listdir(base_path + 'en/')
-    ja_files_l = os.listdir(base_path + 'ja/')
-    en_files_l = sorted(en_files_l)
-    ja_files_l = sorted(ja_files_l)
+    for language in ['en', 'ja']:
+    #for language in ['zh']:
+        base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
+        result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/'.format(time, language)
+        
+        os.mkdir(result_path)
 
-    for file in en_files_l:
-        main(base_path + 'en/' + file, result_path + 'en/' + file)
-        print(file)
+        each_files_l = os.listdir(base_path)
+        each_files_l = sorted(each_files_l)
 
-    for file in ja_files_l:
-        main(base_path + 'ja/' + file, result_path + 'ja/' + file)
-        print(file)
+        for file in each_files_l:
+            main(base_path + file, result_path + file)
+            print(file)
+            break

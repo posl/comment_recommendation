@@ -1,68 +1,153 @@
-#Problem Statement
-#Takahashi, who governs the Kingdom of AtCoder, has decided to change the alphabetical order of English lowercase letters.
-#The new alphabetical order is represented by a string X, which is a permutation of a, b, ..., z. The i-th character of X (1 ≦ i ≦ 26) would be the i-th smallest English lowercase letter in the new order.
-#The kingdom has N citizens, whose names are S_1, S_2, ..., S_N, where each S_i (1 ≦ i ≦ N) consists of lowercase English letters.
-#Sort these names lexicographically according to the alphabetical order decided by Takahashi.
-#What is the lexicographical order?
-#Simply speaking, the lexicographical order is the order in which words are listed in a dictionary. As a more formal definition, here is the algorithm to determine the lexicographical order between different strings S and T.
-#Below, let S_i denote the i-th character of S. Also, if S is lexicographically smaller than T, we will denote that fact as S < T; if S is lexicographically larger than T, we will denote that fact as S > T.
-# Let L be the smaller of the lengths of S and T. For each i=1,2,...,L, we check whether S_i and T_i are the same. 
-# If there is an i such that S_i ≠ T_i, let j be the smallest such i. Then, we compare S_j and T_j. If S_j comes earlier than T_j in alphabetical order, we determine that S < T and quit; if S_j comes later than T_j, we determine that S > T and quit.
-#  
-# If there is no i such that S_i ≠ T_i, we compare the lengths of S and T. If S is shorter than T, we determine that S < T and quit; if S is longer than T, we determine that S > T and quit. 
-#
-#
-#Constraints
-#X is a permutation of a, b, ..., z.
-#2 ≦ N ≦ 50000
-#N is an integer.
-#1 ≦ |S_i| ≦ 10  (1 ≦ i ≦ N)
-#S_i consists of lowercase English letters. (1 ≦ i ≦ N)
-#S_i ≠ S_j (1 ≦ i < j ≦ N)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print N lines. The i-th line (1 ≦ i ≦ N) should contain the i-th smallest name when the citizens' names are sorted according to the alphabetical order decided by Takahashi.
-#
-#Sample Input 1
-#bacdefghijklmnopqrstuvwxzy
-#4
-#abx
-#bzz
-#bzy
-#caa
-#
-#Sample Output 1
-#bzz
-#bzy
-#abx
-#caa
-#In the new alphabetical order set by Takahashi, b is smaller than a and z is smaller than y. Thus, sorting the citizens' names lexicographically would result in bzz, bzy, abx, caa in ascending order.
-#
-#Sample Input 2
-#zyxwvutsrqponmlkjihgfedcba
-#5
-#a
-#ab
-#abc
-#ac
-#b
-#
-#Sample Output 2
-#b
-#a
-#ac
-#ab
-#abc
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.sort(key=lambda s: [X.index(c) for c in s])
+    for s in S:
+        print(s)
+
+=======
+Suggestion 2
+
+def main():
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S.sort(key=lambda x: [X.index(c) for c in x])
+    for s in S:
+        print(s)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort(key=lambda x: [X.index(c) for c in x])
+    for s in S:
+        print(s)
+
+=======
+Suggestion 4
+
+def main():
+    X = input()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort(key = lambda x: [X.index(c) for c in x])
+    for i in range(N):
+        print(S[i])
+
+=======
+Suggestion 5
+
+def main():
+    x = input()
+    n = int(input())
+    s = [input() for _ in range(n)]
+    s = sorted(s, key=lambda x: [x.index(c) for c in x])
+    for i in s:
+        print(i)
+
+=======
+Suggestion 6
+
+def get_key(s):
+    return [key.index(c) for c in s]
+
+key = input()
+N = int(input())
+S = [input() for _ in range(N)]
+
+for s in sorted(S, key=get_key):
+    print(s)
+
+import sys
+from collections import defaultdict
+from itertools import permutations
+
+=======
+Suggestion 7
+
+def main():
+    #read input
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    #sort S
+    S.sort(key=lambda s: [X.index(c) for c in s])
+    #print output
+    for s in S:
+        print(s)
+
+=======
+Suggestion 8
+
+def main():
+    # read data
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    # sort data
+    sorted_S = sorted(S, key=lambda x: [X.index(c) for c in x])
+    # output
+    for s in sorted_S:
+        print(s)
+
+=======
+Suggestion 9
+
+def main():
+    # Get the input
+    X = input()
+    N = int(input())
+    S = [input() for i in range(N)]
+    # Sort the list S based on the new alphabetical order
+    S.sort(key=lambda x: [X.index(c) for c in x])
+    # Print the list
+    for s in S:
+        print(s)
+
+=======
+Suggestion 10
+
+def main():
+    # Read the input
+    X = input()
+    N = int(input())
+    S = [input() for _ in range(N)]
+    # Create a dictionary to map the new alphabetical order to the old one
+    X_map = {X[i]: chr(ord('a')+i) for i in range(26)}
+    # Create a new list of names that are mapped to the new alphabetical order
+    S_new = []
+    for name in S:
+        name_new = []
+        for char in name:
+            name_new.append(X_map[char])
+        S_new.append(''.join(name_new))
+    # Sort the list of names lexicographically
+    S_new.sort()
+    # Map the sorted names back to the old alphabetical order
+    S_sorted = []
+    for name in S_new:
+        name_sorted = []
+        for char in name:
+            name_sorted.append(X[ord(char)-ord('a')])
+        S_sorted.append(''.join(name_sorted))
+    # Print the sorted list of names
+    for name in S_sorted:
+        print(name)
+
+main()

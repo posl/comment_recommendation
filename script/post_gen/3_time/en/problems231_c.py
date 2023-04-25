@@ -1,68 +1,140 @@
-#Problem Statement
-#There is a class with N students. The height of the i-th student (1 ≦ i ≦ N) is A_i.
-#For each j=1,2,...,Q, answer the following question.
-#How many of the N students have a height of at least x_j?
-#
-#Constraints
-#1 ≦ N,Q ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ x_j ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#A_1 A_2 ... A_N
-#x_1
-#x_2
-#.
-#.
-#.
-#x_Q
-#
-#Output
-#Print Q lines.
-#The j-th line (1 ≦ j ≦ Q) should contain the number of students with a height of at least x_j.
-#
-#Sample Input 1
-#3 1
-#100 160 130
-#120
-#
-#Sample Output 1
-#2
-#The students with a height of at least 120 are the 2-nd and 3-rd ones.
-#
-#Sample Input 2
-#5 5
-#1 2 3 4 5
-#6
-#5
-#4
-#3
-#2
-#
-#Sample Output 2
-#0
-#1
-#2
-#3
-#4
-#
-#Sample Input 3
-#5 5
-#804289384 846930887 681692778 714636916 957747794
-#424238336
-#719885387
-#649760493
-#596516650
-#189641422
-#
-#Sample Output 3
-#5
-#3
-#5
-#5
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    x = [int(input()) for _ in range(Q)]
+    A.sort()
+    for i in range(Q):
+        print(N - bisect.bisect_right(A, x[i]))
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    for x in X:
+        print(N - bisect.bisect_right(A, x))
+
+=======
+Suggestion 3
+
+def main():
+    import bisect
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    x = [int(input()) for _ in range(Q)]
+    A.sort()
+    for i in x:
+        print(bisect.bisect_left(A, i))
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in x:
+        print(n - bisect.bisect_right(a, i - 1))
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    x = [int(input()) for _ in range(Q)]
+
+    A.sort()
+
+    for j in range(Q):
+        left = 0
+        right = N
+        while right - left > 1:
+            mid = (left + right) // 2
+            if A[mid] >= x[j]:
+                right = mid
+            else:
+                left = mid
+        print(N - right + 1)
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    #solve
+    A.sort()
+    for x in X:
+        print(N - bisect.bisect_right(A, x))
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from bisect import bisect_right
+    input = sys.stdin.readline
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    for x in X:
+        print(bisect_right(A, x))
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N, Q = map(int, input().split())
+    As = list(map(int, input().split()))
+    xs = [int(input()) for _ in range(Q)]
+
+    #process
+    As.sort()
+    As = [0] + As
+    for i in range(N):
+        As[i+1] += As[i]
+    for x in xs:
+        #binary search
+        ng = -1
+        ok = N+1
+        while ok - ng > 1:
+            mid = (ok + ng) // 2
+            if As[mid] >= x*(N-mid+1):
+                ok = mid
+            else:
+                ng = mid
+        print(N-ok+1)
+
+=======
+Suggestion 9
+
+def  main ( ) :
+    # read the number of students and the number of queries
+     n ,  q  =  map ( int ,  input ( ) . split ( ) )
+    # read the heights of students
+     a  =  list ( map ( int ,  input ( ) . split ( ) ) )
+    # read the queries
+     x  = [ int ( input ( ) )  for  _  in  range ( q ) ]
+
+    # sort the heights in ascending order
+     a . sort ( )
+
+    # find the index of the first student with a height of at least x_j
+     # by using binary search
+     for  j  in  range ( q ) :
+        print ( bisect . bisect_left ( a ,  x [ j ] ) )

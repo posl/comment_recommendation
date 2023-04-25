@@ -1,37 +1,118 @@
-#Problem Statement
-#AtCoder Beginner Contest usually starts at 21:00 JST and lasts for 100 minutes.
-#You are given an integer K between 0 and 100 (inclusive). Print the time K minutes after 21:00 in the HH:MM format, where HH denotes the hour on the 24-hour clock and MM denotes the minute. If the hour or the minute has just one digit, append a 0 to the beginning to represent it as a 2-digit integer.
-#
-#Constraints
-#K is an integer between 0 and 100 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the time K minutes after 21:00 in the format specified in the Problem Statement.
-#
-#Sample Input 1
-#63
-#
-#Sample Output 1
-#22:03
-#63 minutes after 21:00, it will be 22:03, so 22:03 should be printed.
-#The following outputs would be judged incorrect:
-#10:03
-#22:3
-#
-#Sample Input 2
-#45
-#
-#Sample Output 2
-#21:45
-#
-#Sample Input 3
-#100
-#
-#Sample Output 3
-#22:40
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    H = 21
+    M = 0
+    M += K
+    if M > 59:
+        H += M // 60
+        M = M % 60
+    if H > 23:
+        H = H % 24
+    print(str(H).zfill(2) + ':' + str(M).zfill(2))
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    hour = 21 + k // 60
+    minute = k % 60
+    if hour >= 24:
+        hour -= 24
+    print('{:02}:{:02}'.format(hour, minute))
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    print("{:02d}:{:02d}".format((K + 21) // 60 % 24, (K + 21) % 60))
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    hour = 21
+    minute = 0
+    minute += k
+    if minute >= 60:
+        hour += minute // 60
+        minute %= 60
+    print(f'{hour:02}:{minute:02}')
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    print('22:03' if k>63 else '21:45' if k>45 else '21:40' if k>40 else '21:30' if k>30 else '21:15' if k>15 else '21:00')
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    hour = 21
+    minute = 0
+    if k <= 60:
+        minute += k
+    elif k > 60:
+        hour += 1
+        minute = k - 60
+    if minute == 60:
+        hour += 1
+        minute = 0
+    if hour == 24:
+        hour = 0
+    print(f'{hour:02d}:{minute:02d}')
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    k = int(input())
+    
+    #calculate
+    h = 21
+    m = 0
+    m += k
+    if m >= 60:
+        h += m // 60
+        m = m % 60
+    if h >= 24:
+        h = h % 24
+    
+    #output
+    print(str(h).zfill(2) + ":" + str(m).zfill(2))
+    
+    return
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    print("22:0{0}".format(k%60) if k%60 < 10 else "22:{0}".format(k%60))
+
+=======
+Suggestion 9
+
+def main():
+    K = int(input())
+    print(f"{21 + (K // 60):02}:{(K % 60):02}")
+
+=======
+Suggestion 10
+
+def main():
+    k = int(input())
+    print("22:03")

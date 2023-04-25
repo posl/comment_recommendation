@@ -1,37 +1,117 @@
-#Problem Statement
-#There is a device with a screen that shows a single-digit number, and a button.  
-#When the screen is showing a number k, pressing the button once changes the number on the screen to a_k.  
-#The device currently shows 0.  After pressing the button 3 times, what will be shown on the screen?
-#
-#Constraints
-#0≦ a_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a_0 a_1 ... a_9
-#
-#Output
-#Print the answer.  
-#
-#Sample Input 1
-#9 0 1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#7
-#The number on the screen transitions as 0 -> 9 -> 8 -> 7.  
-#
-#Sample Input 2
-#4 8 8 8 0 8 8 8 8 8
-#
-#Sample Output 2
-#4
-#The number on the screen transitions as 0 -> 4 -> 0 -> 4.  
-#
-#Sample Input 3
-#0 0 0 0 0 0 0 0 0 0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    x = 0
+    for i in range(3):
+        x = a[x]
+    print(x)
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    b = 0
+    for i in range(3):
+        b = a[b]
+    print(b)
+
+=======
+Suggestion 3
+
+def main():
+    a = list(map(int, input().split()))
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print(n)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    a = list(map(int, input().split()))
+    # compute
+    ans = a[0]
+    for i in range(3):
+        ans = a[ans]
+    # output
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    a = input().split()
+    b = []
+    for i in a:
+        b.append(int(i))
+    count = 0
+    while True:
+        if count == 3:
+            print(b[0])
+            break
+        else:
+            count += 1
+            b[0] = b[b[0]]
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    inputString = input()
+    # Calculate result here
+    result = 0
+    for i in range(3):
+        result = int(inputString[result])
+    # Print output here
+    print(result)
+
+=======
+Suggestion 7
+
+def problem():
+    a = map(int, raw_input().split())
+    for i in range(3):
+        a = [a[x] for x in a]
+    print a[0]
+
+problem()
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    print(a[3])
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    a = list(map(int, input().split()))
+    # compute
+    for i in range(3):
+        a = a[a[0]]
+        # output
+    print(a)
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    #a = list(map(int, input().split()))
+    a = [int(x) for x in input().split()]
+    # compute
+    # output
+    print(a[3])

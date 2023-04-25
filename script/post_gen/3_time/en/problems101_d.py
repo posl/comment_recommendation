@@ -1,33 +1,105 @@
-#Problem Statement
-#Let S(n) denote the sum of the digits in the decimal notation of n.
-#For example, S(123) = 1 + 2 + 3 = 6.
-#We will call an integer n a Snuke number when, for all positive integers m such that m > n, (n/(S(n))) ≦ (m/(S(m))) holds.
-#Given an integer K, list the K smallest Snuke numbers.
-#
-#Constraints
-#1 ≦ K
-#The K-th smallest Snuke number is not greater than 10^{15}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print K lines. The i-th line should contain the i-th smallest Snuke number.
-#
-#Sample Input 1
-#10
-#
-#Sample Output 1
-#1
-#2
-#3
-#4
-#5
-#6
-#7
-#8
-#9
-#19
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def S(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 2
+
+def sum_digits(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 3
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 4
+
+def S(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 5
+
+def getSum(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    S = [0] * 10
+    for i in range(1, 10):
+        S[i] = i
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if (i * 10 + j) > 10 ** 15:
+                break
+            S.append(i * 10 + j)
+            if len(S) == K + 1:
+                break
+    S.sort()
+    for i in range(1, K + 1):
+        print(S[i])
+
+main()
+
+=======
+Suggestion 7
+
+def sum_digits(n):
+    return sum([int(x) for x in str(n)])
+
+=======
+Suggestion 8
+
+def sum_digits(n):
+    return sum(map(int, list(str(n))))
+
+=======
+Suggestion 9
+
+def sum_digits(n):
+    return sum(map(int, str(n)))
+
+=======
+Suggestion 10
+
+def snuke(k):
+    def sum_digits(n):
+        return sum([int(x) for x in str(n)])
+
+    def snuke_gen():
+        yield 1
+        for i in range(2, 10**15):
+            if i % sum_digits(i) == 0:
+                yield i
+
+    return list(itertools.islice(snuke_gen(), k))

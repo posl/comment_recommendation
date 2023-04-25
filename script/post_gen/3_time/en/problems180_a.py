@@ -1,35 +1,65 @@
-#Problem Statement
-#We have removed A balls from a box that contained N balls and then put B new balls into that box. How many balls does the box contain now?
-#
-#Constraints
-#All values in input are integers.
-# 100 ≦ N ≦ 200
-# 1 ≦ A,B ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#100 1 2
-#
-#Sample Output 1
-#101
-#The box contained 100 balls. After removing 1 ball and putting 2 new balls, it now contains 101 balls.
-#
-#Sample Input 2
-#100 2 1
-#
-#Sample Output 2
-#99
-#
-#Sample Input 3
-#100 1 1
-#
-#Sample Output 3
-#100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n - a + b)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = [int(x) for x in input().split()]
+    print(N - A + B)
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N + B - A)
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = [int(x) for x in input().split()]
+    print(N + B - A)
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N-A+B)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N - A + B)
+
+main()
+
+Solution 2
+
+=======
+Suggestion 7
+
+def main():
+    #Write code here
+    N, A, B = map(int, input().split())
+    print(N+A-B)
+
+=======
+Suggestion 8
+
+def main():
+    # Read input
+    n, a, b = map(int, input().split())
+
+    # Print output
+    print(n + b - a)

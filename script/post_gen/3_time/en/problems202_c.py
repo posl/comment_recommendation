@@ -1,50 +1,193 @@
-#Problem Statement
-#Given are three sequences of length N each: A = (A_1, A_2, ..., A_N), B = (B_1, B_2, ..., B_N), and C = (C_1, C_2, ..., C_N), consisting of integers between 1 and N (inclusive).
-#How many pairs (i, j) of integers between 1 and N (inclusive) satisfy A_i = B_{C_j}?
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i, B_i, C_i ≦ N
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the number of pairs (i, j) such that A_i = B_{C_j}.
-#
-#Sample Input 1
-#3
-#1 2 2
-#3 1 2
-#2 3 2
-#
-#Sample Output 1
-#4
-#Four pairs satisfy the condition: (1, 1), (1, 3), (2, 2), (3, 2).
-#
-#Sample Input 2
-#4
-#1 1 1 1
-#1 1 1 1
-#1 2 3 4
-#
-#Sample Output 2
-#16
-#All the pairs satisfy the condition.
-#
-#Sample Input 3
-#3
-#2 3 3
-#1 3 3
-#1 1 1
-#
-#Sample Output 3
-#0
-#No pair satisfies the condition.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    return n,a,b,c
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    C = [int(x) for x in input().split()]
+
+    #print(N)
+    #print(A)
+    #print(B)
+    #print(C)
+
+    cnt = 0
+    for i in range(1, N+1):
+        cnt += B[C[i-1]-1] == A[i-1]
+
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    c = [int(x) for x in input().split()]
+    count = 0
+    d = [0] * (n + 1)
+    for i in range(n):
+        d[b[c[i] - 1]] += 1
+    for i in range(n):
+        count += d[a[i]]
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    B = [int(i) for i in input().split()]
+    C = [int(i) for i in input().split()]
+
+    D = [0] * N
+
+    for i in range(N):
+        D[B[C[i]-1]-1] += 1
+
+    count = 0
+    for i in range(N):
+        count += D[A[i]-1]
+
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x) - 1, input().split()))
+    d = [0] * n
+    for i in range(n):
+        d[b[c[i]]] += 1
+    ans = 0
+    for i in range(n):
+        ans += d[a[i]]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    A.sort()
+    B.sort()
+    C.sort()
+
+    count = 0
+
+    for i in range(N):
+        count += len([j for j in range(N) if A[i] == B[C[j] - 1]])
+
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    count = 0
+    for i in range(N):
+        count += B[C[i]-1] == A[i]
+
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+
+    a.sort()
+    b.sort()
+    c.sort()
+
+    ans = 0
+
+    for i in range(n):
+        ans += (bisect.bisect_left(a,b[i])) * (n - bisect.bisect_right(c,b[i]))
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B_C = [0] * (N + 1)
+    for j in range(N):
+        B_C[C[j]] += 1
+
+    A_B_C = [0] * (N + 1)
+    for i in range(N):
+        A_B_C[A[i]] += B_C[i + 1]
+
+    print(sum(A_B_C))
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B_dict = {}
+    for i in range(N):
+        b = B[i]
+        if b in B_dict:
+            B_dict[b].append(i)
+        else:
+            B_dict[b] = [i]
+
+    C_dict = {}
+    for i in range(N):
+        c = C[i]
+        if c in C_dict:
+            C_dict[c].append(i)
+        else:
+            C_dict[c] = [i]
+
+    count = 0
+    for a in A:
+        if a in B_dict:
+            for b_i in B_dict[a]:
+                if C[b_i] in C_dict:
+                    count += len(C_dict[C[b_i]])
+
+    return count
+
+print(solve())

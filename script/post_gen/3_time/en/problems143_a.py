@@ -1,39 +1,77 @@
-#Problem Statement
-#The window of Takahashi's room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the whole window.)
-#We will close the window so as to minimize the total horizontal length of the uncovered part of the window.
-#Find the total horizontal length of the uncovered parts of the window then.
-#
-#Constraints
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A and B are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the total horizontal length of the uncovered parts of the window.
-#
-#Sample Input 1
-#12 4
-#
-#Sample Output 1
-#4
-#We have a window with a horizontal length of 12, and two curtains, each of length 4, that cover both ends of the window, for example. The uncovered part has a horizontal length of 4.
-#
-#Sample Input 2
-#20 15
-#
-#Sample Output 2
-#0
-#If the window is completely covered, print 0.
-#
-#Sample Input 3
-#20 30
-#
-#Sample Output 3
-#0
-#Each curtain may be longer than the window.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a >= b * 2:
+        print(a - b * 2)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if b >= a:
+        print(0)
+    else:
+        print(a - b)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a <= b:
+        print(0)
+    else:
+        print(a - b)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(max(0, a - 2 * b))
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a - 2 * b, 0))
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    print(max(0, A - 2 * B))
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    print(max(0, A - B * 2))
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    print((A - B) if (A - B) > 0 else 0)
+
+=======
+Suggestion 9
+
+def main():
+    # Write your code here
+    a,b = map(int,input().split())
+    if a > b*2:
+        print(a-b*2)
+    else:
+        print(0)

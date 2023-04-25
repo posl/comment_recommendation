@@ -1,43 +1,159 @@
-#Problem Statement
-#Takahashi's shop sells N products. The usual price of the i-th product is A_i yen (Japanese currency).
-#It has a bargain sale today, with a discount of 1 yen off the usual prices for the 2-nd, 4-th, and the subsequent even-indexed products. The 1-st, 3-rd, and the subsequent odd-indexed products are sold for their usual prices.
-#You have X yen. Can you buy all the N products with this money?
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ 10000
-#1 ≦ A_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#A_1 A_2 ... A_N
-#
-#Output
-#If you can buy all the N products, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 3
-#1 3
-#
-#Sample Output 1
-#Yes
-#You can buy the 1-st product for 1 yen and the 2-nd product for 2 yen, 1 yen off the usual price. You have just enough money, 3 yen, to buy both of them.
-#
-#Sample Input 2
-#4 10
-#3 3 4 4
-#
-#Sample Output 2
-#No
-#You can buy these four products for 3 yen, 2 yen, 4 yen, and 3 yen, respectively. You need 12 yen to buy all of them, and since you have only 10 yen, you cannot buy all of them.
-#
-#Sample Input 3
-#8 30
-#3 1 4 1 5 9 2 6
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        if i % 2 == 1:
+            total += A[i] - 1
+        else:
+            total += A[i]
+
+    if total <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if i % 2 == 1:
+            sum += A[i] - 1
+        else:
+            sum += A[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        if (i + 1) % 2 == 0:
+            sum += a[i] - 1
+        else:
+            sum += a[i]
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        if (i+1)%2 == 0:
+            sum += a[i]-1
+        else:
+            sum += a[i]
+    if sum <= x:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        if i%2 == 0:
+            sum += A[i]
+        else:
+            sum += A[i] - 1
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def problems209_b():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = 0
+    for i in range(n):
+        if i % 2 == 1:
+            s += a[i] - 1
+        else:
+            s += a[i]
+    if s <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int, input().split())
+    a_list = list(map(int, input().split()))
+    total = 0
+    for i in range(n):
+        if i % 2 == 0:
+            total += a_list[i]
+        else:
+            total += a_list[i] - 1
+    if total <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def check(x,n,a):
+    for i in range(n):
+        if i%2==0:
+            x-=a[i]
+        else:
+            x-=a[i]-1
+        if x<0:
+            return False
+    return True
+
+n,x=map(int,input().split())
+a=list(map(int,input().split()))
+
+=======
+Suggestion 9
+
+def main():
+    # Get the input
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # Process
+    total = 0
+    for i in range(n):
+        if i % 2 == 1:
+            total += a[i] - 1
+        else:
+            total += a[i]
+
+    # Output
+    if total <= x:
+        print("Yes")
+    else:
+        print("No")

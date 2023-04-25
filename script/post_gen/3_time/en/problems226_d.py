@@ -1,76 +1,117 @@
-#Problem Statement
-#The Republic of AtCoder lies on a Cartesian coordinate plane.
-#It has N towns, numbered 1,2,...,N. Town i is at (x_i, y_i), and no two different towns are at the same coordinates.
-#There are teleportation spells in the nation. A spell is identified by a pair of integers (a,b), and casting a spell (a, b) at coordinates (x, y) teleports you to (x+a, y+b).
-#Snuke is a great magician who can learn the spell (a, b) for any pair of integers (a, b) of his choice. The number of spells he can learn is also unlimited.
-#To be able to travel between the towns using spells, he has decided to learn some number of spells so that it is possible to do the following for every pair of different towns (i, j).
-#Choose just one spell among the spells learned. Then, repeatedly use just the chosen spell to get from Town i to Town j.
-#At least how many spells does Snuke need to learn to achieve the objective above?
-#
-#Constraints
-#2 ≦ N ≦ 500
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ y_i ≦ 10^9 (1 ≦ i ≦ N)
-#(x_i, y_i) ≠ (x_j, y_j) if i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-#x_N y_N
-#
-#Output
-#Print the minimum number of spells Snuke needs to learn.
-#
-#Sample Input 1
-#3
-#1 2
-#3 6
-#7 4
-#
-#Sample Output 1
-#6
-#The figure below illustrates the positions of the towns (along with the coordinates of the four corners).
-#If Snuke learns the six spells below, he can get from Town i to Town j by using one of the spells once for every pair (i,j) (i ≠ j), achieving his objective.
-#(2, 4)
-#(-2, -4)
-#(4, -2)
-#(-4, 2)
-#(-6, -2)
-#(6, 2)
-#Another option is to learn the six spells below. In this case, he can get from Town i to Town j by using one of the spells twice for every pair (i,j) (i ≠ j), achieving his objective.
-#(1, 2)
-#(-1, -2)
-#(2, -1)
-#(-2, 1)
-#(-3, -1)
-#(3, 1)
-#There is no combination of spells that consists of less than six spells and achieve the objective, so we should print 6.
-#
-#Sample Input 2
-#3
-#1 2
-#2 2
-#4 2
-#
-#Sample Output 2
-#2
-#The optimal choice is to learn the two spells below:
-#(1, 0)
-#(-1, 0)
-#
-#Sample Input 3
-#4
-#0 0
-#0 1000000000
-#1000000000 0
-#1000000000 1000000000
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans = max(ans, abs(x[i]-x[j]) + abs(y[i]-y[j]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if a < b:
+        return gcd(b, a)
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a == 0:
+        return b
+    if b == 0:
+        return a
+    if a >= b:
+        return gcd(a%b,b)
+    if a < b:
+        return gcd(a,b%a)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    XY = [tuple(map(int, input().split())) for _ in range(N)]
+
+    # (x, y) -> (x + a, y + b) となる a, b を全通り試す
+    # その組み合わせを全て試してみる
+    # その組み合わせの中で、全ての点を結ぶことができるか確認する
+    # できるなら、その組み合わせの長さを記録する
+    # できないなら、その組み合わせは捨てる
+    # 最後に、残った組み合わせの中で最短のものを探す
+
+    # (x, y) -> (x + a, y + b) となる a, b を全通り試す
+    # その組み合わせを全て試してみる
+    # その組み合わせの中で、全ての点を結ぶことができるか確認する
+    # できるなら、その組み合わせの長さを記録する
+    # できないなら、その組み合わせは捨てる
+    # 最後に、残った組み合わせの中で最短のものを探す
+
+    # (x, y) -> (x + a, y + b) となる a, b を全通り試す
+    # その組み合わせを全て試してみる
+    # その組み合わせの中で、全ての点を結ぶことができるか確認する
+    # できるなら、その組み合わせの長さを記録する
+    # できないなら、その組み合わせは捨てる
+    # 最後
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    xy = []
+    for _ in range(N):
+        xy.append(list(map(int, input().split())))
+    #print(xy)
+    xy.sort()
+    #print(xy)
+    #print(xy[0][0])
+    #print(xy[1][0])
+    #print(xy[2][0])
+    #print(xy[3][0])
+    #print(xy[0][1])
+    #print(xy[1][1])
+    #print(xy[2][1])
+    #print(xy[3][1])
+    #print(xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0])
+    #print(xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1])
+    #print(xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1])
+    #print(xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1] + xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1])
+    #print(xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1] + xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[1][1] + xy[2][1] + xy[3][1] + xy[0][0] + xy[1][0] + xy[2][0] + xy[3][0] + xy[0][1] + xy[
+
+=======
+Suggestion 8
+
+def get_abs(x, y):
+    return abs(x) + abs(y)

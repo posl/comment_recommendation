@@ -1,36 +1,124 @@
-#Problem Statement
-#There are N people, called Person 1, Person 2, ..., Person N.
-#The parent of Person i (2 ≦ i ≦ N) is Person P_i. Here, it is guaranteed that P_i < i.
-#How many generations away from Person N is Person 1? 
-#
-#Constraints
-#2 ≦ N ≦ 50
-#1 ≦ P_i < i(2 ≦ i ≦ N)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#P_2 P_3 ... P_N
-#
-#Output
-#Print the answer as a positive integer.
-#
-#Sample Input 1
-#3
-#1 2
-#
-#Sample Output 1
-#2
-#Person 2 is a parent of Person 3, and thus is one generation away from Person 3.
-#Person 1 is a parent of Person 2, and thus is two generations away from Person 3.
-#Therefore, the answer is 2.
-#
-#Sample Input 2
-#10
-#1 2 3 4 5 6 7 8 9
-#
-#Sample Output 2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    P.insert(0, 0)
+    ans = 0
+    for i in range(N, 0, -1):
+        if P[i] == 1:
+            ans = i
+            break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1,0,-1):
+        ans = max(ans, p[i-1])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    P.insert(0, 0)
+    count = 0
+    while N != 1:
+        N = P[N]
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    d = [0 for i in range(n + 1)]
+    for i in range(1, n + 1):
+        d[i] = d[p[i]] + 1
+    print(max(d))
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+    P.insert(0, 0)
+    G = [0] * (N + 1)
+    for i in range(1, N + 1):
+        G[i] = G[P[i]] + 1
+    print(max(G))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    g = 0
+    for i in range(n, 0, -1):
+        if p[i] == 1:
+            g += 1
+            break
+        else:
+            g += 1
+            i = p[i]
+    print(g)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        temp = 0
+        while p[i] != 1:
+            p[i] = p[p[i] - 2]
+            temp += 1
+        ans = max(ans, temp)
+    print(ans + 1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    print(solve(n, p))
+
+=======
+Suggestion 9
+
+def get_generation(n, p):
+    if p[n] == 1:
+        return 1
+    else:
+        return get_generation(n, p) + 1
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, None)
+    print(get_generation(n, p))

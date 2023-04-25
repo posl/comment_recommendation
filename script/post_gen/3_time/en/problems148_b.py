@@ -1,39 +1,103 @@
-#Problem Statement
-#Given are strings s and t of length N each, both consisting of lowercase English letters.
-#Let us form a new string by alternating the characters of S and the characters of T, as follows: the first character of S, the first character of T, the second character of S, the second character of T, ..., the N-th character of S, the N-th character of T. Print this new string.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#|S| = |T| = N
-#S and T are strings consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S T
-#
-#Output
-#Print the string formed.
-#
-#Sample Input 1
-#2
-#ip cc
-#
-#Sample Output 1
-#icpc
-#
-#Sample Input 2
-#8
-#hmhmnknk uuuuuuuu
-#
-#Sample Output 2
-#humuhumunukunuku
-#
-#Sample Input 3
-#5
-#aaaaa aaaaa
-#
-#Sample Output 3
-#aaaaaaaaaa
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ""
+    for i in range(N):
+        ans += S[i] + T[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    for i in range(N):
+        print(S[i], end='')
+        print(T[i], end='')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    for i in range(N):
+        print(S[i], T[i], sep='', end='')
+    print()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    print(''.join([S[i] + T[i] for i in range(N)]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S, T = input().split()
+
+    for i in range(N):
+        print(S[i], end='')
+        print(T[i], end='')
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S,T = input().split()
+    S = list(S)
+    T = list(T)
+    ans = []
+    for i in range(N):
+        ans.append(S[i])
+        ans.append(T[i])
+    print(''.join(ans))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    print(''.join([i + j for i, j in zip(s, t)]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    for i in range(N):
+        print(S[i], T[i], end='')
+    print()
+
+main()
+
+Python3で提出したところ、Acceptedとなりました。
+
+Python3の解答を提出するときには、ファイル名を「problem148_b.py」として提出してください。
+
+問題文の通り、SとTの文字を交互に出力していくだけです。
+
+Python3のfor文は、以下のように書くことができます。
+
+for i in range(N):
+    print(S[i], T[i], end='')
+
+range(N)は、0からN-1までの整数を返します。
+
+print(S[i], T[i], end='')では、S[i]とT[i]を連結して出力しています。
+
+end=''は、改行を出力しないようにしています。

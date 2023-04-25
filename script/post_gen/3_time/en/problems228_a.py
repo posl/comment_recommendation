@@ -1,38 +1,114 @@
-#Problem Statement
-#Takahashi turns on the light of his room at S o'clock (on the 24-hour clock) every day and turns it off at T o'clock every day.
-#The date may change while the light is on.
-#Determine whether the light is on at 30 minutes past X o'clock.
-#
-#Constraints
-#0 ≦ S, T, X ≦ 23
-#S ≠ T
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S T X
-#
-#Output
-#If the light is on at 30 minutes past X o'clock, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#7 20 12
-#
-#Sample Output 1
-#Yes
-#The light is on between 7 o'clock and 20 o'clock. At 30 minutes past 12 o'clock, it is on, so we print Yes. 
-#
-#Sample Input 2
-#20 7 12
-#
-#Sample Output 2
-#No
-#The light is on between 0 o'clock and 7 o'clock, and between 20 o'clock and 0 o'clock (on the next day). At 30 minutes past 12 o'clock, it is off, so we print No. 
-#
-#Sample Input 3
-#23 0 23
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X and X < T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= x and x < t:
+        print("Yes")
+    elif t < s and (x < t or s <= x):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X and X < T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X < T:
+        print('Yes')
+    elif S > T and (X < T or S <= X):
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    S, T, X = map(int, input().split())
+    if (S <= X and X < T) or (S <= X + 24 and X + 24 < T):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= x <= t:
+        print("Yes")
+    elif t < s and (x >= s or x <= t):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    S, T, X = map(int, input().split())
+    if X >= S and X+1 <= T:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    S,T,X = [int(x) for x in input().split()]
+    if S <= X and X < T:
+        print('Yes')
+    elif S > T and (X >= S or X < T):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s,t,x = map(int, input().split())
+    if s <= x:
+        if x < t:
+            print("Yes")
+        elif s < t:
+            print("No")
+        else:
+            if x == s:
+                print("Yes")
+            else:
+                print("No")
+    else:
+        if t < s:
+            print("Yes")
+        else:
+            print("No")

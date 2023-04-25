@@ -1,33 +1,47 @@
-#Problem Statement
-#In some village, there are 999 towers that are 1,(1+2),(1+2+3),...,(1+2+3+...+999) meters high from west to east, at intervals of 1 meter.
-#It had been snowing for a while before it finally stopped. For some two adjacent towers located 1 meter apart, we measured the lengths of the parts of those towers that are not covered with snow, and the results are a meters for the west tower, and b meters for the east tower.
-#Assuming that the depth of snow cover and the altitude are the same everywhere in the village, find the amount of the snow cover.
-#Assume also that the depth of the snow cover is always at least 1 meter.
-#
-#Constraints
-#1 ≦ a < b < 499500(=1+2+3+...+999)
-#All values in input are integers.
-#There is no input that contradicts the assumption.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b
-#
-#Output
-#If the depth of the snow cover is x meters, print x as an integer.
-#
-#Sample Input 1
-#8 13
-#
-#Sample Output 1
-#2
-#The heights of the two towers are 10 meters and 15 meters, respectively.
-#Thus, we can see that the depth of the snow cover is 2 meters.
-#
-#Sample Input 2
-#54 65
-#
-#Sample Output 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print((b - a) * (b - a + 1) // 2 - b)
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    a, b = map(int, input().split())
+
+    # compute
+
+    # output
+    print()
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(int((b - a) * (b - a + 1) / 2 - b))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(int(((b-a)*(b-a+1))/2-b))
+
+=======
+Suggestion 5
+
+def get_ints(): return map(int, input().strip().split())
+
+=======
+Suggestion 6
+
+def solve(a,b):
+    #print(a,b)
+    #print(b-a-1)
+    return (b-a-1)*b//2-a

@@ -1,48 +1,87 @@
-#Problem Statement
-#Takahashi has a red jewel of level N.  (He has no other jewels.) 
-#Takahashi can do the following operations any number of times.
-#Convert a red jewel of level n (n is at least 2) into "a red jewel of level (n-1) and X blue jewels of level n".
-#Convert a blue jewel of level n (n is at least 2) into "a red jewel of level (n-1) and Y blue jewels of level (n-1)".
-#Takahashi wants as many blue jewels of level 1 as possible.  At most, how many blue jewels of level 1 can he obtain by the operations?
-#
-#Constraints
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X Y
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3 4
-#
-#Sample Output 1
-#12
-#Takahashi can obtain 12 blue jewels of level 1 by the following conversions.
-#First, he converts a red jewel of level 2 into a red jewel of level 1 and 3 blue jewels of level 2.
-#After this operation, Takahashi has 1 red jewel of level 1 and 3 blue jewels of level 2.
-#Next, he repeats the following conversion 3 times: converting a blue jewel of level 2 into a red jewel of level 1 and 4 blue jewels of level 1.
-#After these operations, Takahashi has 4 red jewels of level 1 and 12 blue jewels of level 1.
-#He cannot perform a conversion anymore.
-#He cannot obtain more than 12 blue jewels of level 1, so the answer is 12.
-#
-#Sample Input 2
-#1 5 5
-#
-#Sample Output 2
-#0
-#Takahashi may not be able to obtain a blue jewel of level 1.
-#
-#Sample Input 3
-#10 5 5
-#
-#Sample Output 3
-#3942349900
-#Note that the answer may not fit into a 32-bit integer type.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, X, Y = map(int, input().split())
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    dp[0][1] = 1
+    for i in range(N):
+        for j in range(N - i + 1):
+            dp[i + j][j] += dp[i][j] * (i + j)
+            dp[i + j - 1][j + 1] += dp[i][j] * j
+            dp[i + j - 1][j] += dp[i][j] * (i + 1)
+    print(dp[N][1] * X + dp[N][0] * Y)
+
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    N, X, Y = map(int, input().split())
+    #N = int(input())
+    #A = list(map(int, input().split()))
+    #A = [int(input()) for _ in range(N)]
+    #S = [input() for _ in range(N)]
+    #S = [list(input()) for _
+
+=======
+Suggestion 3
+
+def solve(N, X, Y):
+    if N == 1:
+        return 0
+    else:
+        return (N-1) * X
+
+=======
+Suggestion 4
+
+def main():
+    N, X, Y = map(int, input().split())
+    print((N-1)*X + Y)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, X, Y = map(int, input().split())
+    print((X+Y)*N)
+
+=======
+Suggestion 6
+
+def main():
+    N, X, Y = map(int, input().split())
+    #print(N, X, Y)
+    #dp[i][j] = i番目の宝石をj個の宝石に変換するときの最大値
+    dp = [[0] * (N+1) for _ in range(N+1)]
+    for i in range(N):
+        for j in range(N):
+            dp[i][j] = max(dp[i][j], dp[i][j+1] + X)
+            dp[i][j] = max(dp[i][j], dp[i+1][j] + Y)
+    print(dp[0][0])
+
+=======
+Suggestion 7
+
+def solve(N, X, Y):
+    # WRITE YOUR CODE HERE
+    ans = 0
+    return ans
+
+=======
+Suggestion 8
+
+def solve(N, X, Y):
+    return 0
+
+=======
+Suggestion 9
+
+def solve(n, x, y):
+    return 0

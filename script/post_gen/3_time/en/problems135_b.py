@@ -1,43 +1,127 @@
-#Problem Statement
-#We have a sequence p = {p_1, p_2, ..., p_N} which is a permutation of {1, 2, ..., N}.
-#You can perform the following operation at most once: choose integers i and j (1 ≦ i < j ≦ N), and swap p_i and p_j. Note that you can also choose not to perform it.
-#Print YES if you can sort p in ascending order in this way, and NO otherwise.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 50
-#p is a permutation of {1, 2, ..., N}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#p_1 p_2 ... p_N
-#
-#Output
-#Print YES if you can sort p in ascending order in the way stated in the problem statement, and NO otherwise.
-#
-#Sample Input 1
-#5
-#5 2 3 4 1
-#
-#Sample Output 1
-#YES
-#You can sort p in ascending order by swapping p_1 and p_5.
-#
-#Sample Input 2
-#5
-#2 4 3 5 1
-#
-#Sample Output 2
-#NO
-#In this case, swapping any two elements does not sort p in ascending order.
-#
-#Sample Input 3
-#7
-#1 2 3 4 5 6 7
-#
-#Sample Output 3
-#YES
-#p is already sorted in ascending order, so no operation is needed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if p[i] != i + 1:
+            cnt += 1
+    if cnt <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if p[i] != i+1:
+            cnt += 1
+    if cnt <= 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n-1):
+        if p[i] > p[i+1]:
+            count += 1
+            if count >= 2:
+                print("NO")
+                return
+    print("YES")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = [int(i) for i in input().split()]
+    c = 0
+    for i in range(N):
+        if p[i] != i+1:
+            c += 1
+    if c <= 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    if p == sorted(p):
+        print("YES")
+    elif p[0] == 1 or p[-1] == N:
+        print("NO")
+    elif p[0] == N and p[-1] == 1:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 6
+
+def  main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if p[i] != i + 1:
+            count += 1
+    if count <= 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    if p == sorted(p):
+        print('YES')
+    else:
+        if p[0] == 1 or p[-1] == N:
+            print('YES')
+        else:
+            if p[0] == N and p[-1] == 1:
+                print('YES')
+            else:
+                print('NO')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    if p == sorted(p):
+        print('YES')
+    else:
+        ans = 'NO'
+        for i in range(N):
+            for j in range(i + 1, N):
+                p[i], p[j] = p[j], p[i]
+                if p == sorted(p):
+                    ans = 'YES'
+                p[i], p[j] = p[j], p[i]
+        print(ans)

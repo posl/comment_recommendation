@@ -1,37 +1,96 @@
-#Problem Statement
-#Let S(n) denote the sum of the digits in the decimal notation of n.
-#For example, S(101) = 1 + 0 + 1 = 2.
-#Given an integer N, determine if S(N) divides N.
-#
-#Constraints
-#1 ≦ N ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If S(N) divides N, print Yes; if it does not, print No.
-#
-#Sample Input 1
-#12
-#
-#Sample Output 1
-#Yes
-#In this input, N=12.
-#As S(12) = 1 + 2 = 3, S(N) divides N.
-#
-#Sample Input 2
-#101
-#
-#Sample Output 2
-#No
-#As S(101) = 1 + 0 + 1 = 2, S(N) does not divide N.
-#
-#Sample Input 3
-#999999999
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = sum(map(int, str(N)))
+    if N % S == 0:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 3
+
+def sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum = sum + n % 10
+        n = n // 10
+    return sum
+
+=======
+Suggestion 4
+
+def sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+n = int(input())
+
+=======
+Suggestion 5
+
+def sum_of_digits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n = n // 10
+    return sum
+
+n = int(input())
+
+=======
+Suggestion 6
+
+def sum_digits(n):
+    sum = 0
+    while n:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 7
+
+def sum_digits(n):
+    n = str(n)
+    sum = 0
+    for i in n:
+        sum += int(i)
+    return sum
+
+=======
+Suggestion 8
+
+def S(n):
+    sum = 0
+    while n>0:
+        sum += n%10
+        n = n//10
+    return sum
+
+n = int(input())
+
+=======
+Suggestion 9
+
+def sum_digits(n):
+    return sum(int(i) for i in str(n))

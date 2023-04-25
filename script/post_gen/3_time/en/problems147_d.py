@@ -1,46 +1,186 @@
-#Problem Statement
-#We have N integers. The i-th integer is A_i.
-#Find sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j), modulo (10^9+7).
-#What is  XOR ?
-#The XOR of integers A and B, A  XOR  B, is defined as follows:
-#When A  XOR  B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if either A or B, but not both, has 1 in the 2^k's place, and 0 otherwise.
-#For example, 3  XOR  5 = 6. (In base two: 011  XOR  101 = 110.)
-#
-#
-#Constraints
-#2 ≦ N ≦ 3 × 10^5
-#0 ≦ A_i < 2^{60}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the value sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j), modulo (10^9+7).
-#
-#Sample Input 1
-#3
-#1 2 3
-#
-#Sample Output 1
-#6
-#We have (1 XOR  2)+(1 XOR  3)+(2 XOR  3)=3+2+1=6.
-#
-#Sample Input 2
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#Sample Output 2
-#237
-#
-#Sample Input 3
-#10
-#3 14 159 2653 58979 323846 2643383 27950288 419716939 9375105820
-#
-#Sample Output 3
-#103715602
-#Print the sum modulo (10^9+7).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        c = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                c += 1
+        ans += c * (n - c) * (1 << i)
+        ans %= (10 ** 9 + 7)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if (A[j] >> i) & 1:
+                cnt += 1
+        ans += cnt * (N - cnt) * pow(2, i, MOD)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if A[j] & (1<<i):
+                cnt += 1
+        ans += cnt * (N - cnt) * (1<<i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        one = 0
+        zero = 0
+        for a in A:
+            if (a >> i) & 1:
+                one += 1
+            else:
+                zero += 1
+        ans += one * zero * pow(2, i, 10 ** 9 + 7)
+        ans %= 10 ** 9 + 7
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for a in A:
+            if (a >> i) & 1:
+                cnt += 1
+        ans += cnt * (N - cnt) * pow(2, i, 10 ** 9 + 7)
+        ans %= 10 ** 9 + 7
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        c = 0
+        for a in A:
+            if a & (1 << i):
+                c += 1
+        ans += (c * (N - c) * (1 << i)) % MOD
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10 ** 9 + 7
+    ans = 0
+    for i in range(60):
+        c0 = 0
+        c1 = 0
+        for a in A:
+            if a & (1 << i) == 0:
+                c0 += 1
+            else:
+                c1 += 1
+        ans += (1 << i) * c0 * c1 % mod
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    *A, = map(int, input().split())
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(61):
+        cnt = 0
+        for a in A:
+            if a & (1 << i):
+                cnt += 1
+        ans += cnt * (N - cnt) * (1 << i)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(n, A):
+    MOD = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for a in A:
+            if a & (1<<i):
+                cnt += 1
+        ans += (1<<i) * cnt * (n-cnt)
+        ans %= MOD
+    return ans
+
+n = int(input())
+A = list(map(int, input().split()))
+print(solve(n, A))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    MOD = 10 ** 9 + 7
+
+    # A[i]の下位60bitの各bitについて、そのbitが立っている数を数える
+    # その数がbitが立っている数を数える
+    # その数がbitが立っている数を数える
+    bit_count = [0] * 60
+    for a in A:
+        for i in range(60):
+            if a >> i & 1:
+                bit_count[i] += 1
+
+    # bit_count[i]が立っている数を数える
+    # その数がbitが立っている数を数える
+    # その数がbitが立っている数を数える
+    ans = 0
+    for i in range(60):
+        ans += (1 << i) * bit_count[i] * (N - bit_count[i])
+        ans %= MOD
+    print(ans)
