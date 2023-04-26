@@ -30,12 +30,13 @@ if __name__ == '__main__':
         os.mkdir(result_path)
 
         base_each_dir_l = os.listdir(base_path)
+        #each_dir_l = list(map(lambda x: x if os.path.isdir(base_path + x) else '', base_each_dir_l))
         each_dir_l = []
         for dir in base_each_dir_l:
             if os.path.isdir(base_path + dir):
                 each_dir_l.append(dir)
         each_dir_l = sorted(each_dir_l)
-        
+                
         for dir in each_dir_l:
             os.mkdir(result_path + dir + '/')
 

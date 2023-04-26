@@ -40,7 +40,9 @@ if __name__ == '__main__':
             if os.path.exists(result_path + file.split('problems')[1].split('.py')[0] + '/'):
                 shutil.rmtree(result_path + file.split('problems')[1].split('.py')[0] + '/')
             '''
-            os.mkdir(result_path + file.split('problems')[1].split('.py')[0] + '/')
+            difficulty = (file.split('problems')[1].split('.py')[0]).upper()
+            new_dir_path = result_path + difficulty + '/'
+            os.mkdir(new_dir_path)
             with open(base_path + file, 'r') as f:
                 try:
                     for i in range(4):
@@ -54,7 +56,7 @@ if __name__ == '__main__':
                     all_script_l = split_script(source_file_l, detect_sign_index_l)
 
                     for index, each_script_l in enumerate(all_script_l):
-                        with open(result_path + file.split('problems')[1].split('.py')[0] + '/' + str(index) + '.py', 'w') as f:
+                        with open(new_dir_path + str(index) + '.py', 'w') as f:
                             for line in each_script_l:
                                 f.write(line)
                     print(file)
@@ -62,11 +64,11 @@ if __name__ == '__main__':
                     if os.path.exists(result_path + language + '_errors.txt'):
                         with open(result_path + language + '_errors.txt', 'w') as f:
                             f.write(file + '\n')
-                        with open(result_path + file.split('problems')[1].split('.py')[0] + '/' + str(index) + '.py', 'w') as f:
+                        with open(new_dir_path + str(index) + '.py', 'w') as f:
                             f.write('#')
                     else:
                         with open(result_path + language + '_errors.txt', 'a') as f:
                             f.write(file + '\n')
-                        with open(result_path + file.split('problems')[1].split('.py')[0] + '/' + str(index) + '.py', 'w') as f:
+                        with open(new_dir_path + str(index) + '.py', 'w') as f:
                             f.write('#')
             #break
