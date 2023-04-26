@@ -1,37 +1,79 @@
-#問題文
-#長さ L の鉄の棒が東西方向に横たわっています。この棒を 11 箇所で切断して、12 本に分割します。このとき分割後の各棒の長さが全て正整数になるように分割しなければなりません。
-#分割のしかたが何通りあるかを求めてください。二つの分割の方法は、一方で分割されているが他方で分割されていない位置が存在する場合に、そしてその場合に限って区別されます。
-#なお、この問題の制約下で答えは 2^{63} 未満であることが証明できます。  
-#
-#制約
-#12 ≦ L ≦ 200
-#L は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#L
-#
-#出力
-#分割のしかたが何通りあるかを表す整数を出力せよ。  
-#
-#入力例 1
-#12
-#
-#出力例 1
-#1
-#全て長さ 1 の棒になるように切断する 1 通りです。  
-#
-#入力例 2
-#13
-#
-#出力例 2
-#12
-#ちょうど一つだけ長さ 2 の棒ができますが、切断後の 12 本のうち西から何番目の棒が長さ 2 になるように切断するかで 12 通りの切断方法があります。  
-#
-#入力例 3
-#17
-#
-#出力例 3
-#4368
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def comb(n, r):
+    r = min(r, n-r)
+    if r == 0: return 1
+    over = reduce(lambda a, b: a*b, xrange(n, n-r, -1))
+    under = reduce(lambda a, b: a*b, xrange(1, r+1))
+    return over/under
+
+l = input()
+print comb(l-1, 11)
+
+=======
+Suggestion 2
+
+def main():
+    l = int(input())
+    l -= 12
+    ans = 1
+    for i in range(1, 11):
+        ans *= l + i
+        ans //= i
+    print(ans)
+
+=======
+Suggestion 3
+
+def calc_cut(n):
+    if n == 12:
+        return 1
+    else:
+        return calc_cut(n-1) + (n-1)
+
+n = int(input())
+print(calc_cut(n))
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    print(solve(L))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(2**(n-1)-1)
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    print(L-1)
+
+=======
+Suggestion 7
+
+def solve():
+    L = int(input())
+    print(L-1)
+
+=======
+Suggestion 8
+
+def get_input_data():
+    l = int(input())
+    return l
+
+=======
+Suggestion 9
+
+def main():
+    print("Hello World!")

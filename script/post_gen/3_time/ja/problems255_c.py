@@ -1,51 +1,249 @@
-#問題文
-#整数 X が与えられます。この X に以下を施すことを「操作」と呼びます。  
-#以下の 2 つのうちどちらかを選択し、実行する。
-#X に 1 を加算する。
-#X から 1 を減算する。
-#
-#初項 A 、公差 D 、項数 N の等差数列 S に含まれる数を「良い数」と呼びます。
-#「操作」を 0 回以上何度でも使って X を「良い数」にする時、必要な「操作」の最小回数を求めてください。
-#
-#制約
-#入力は全て整数
-#-10^{18} ≦ X,A ≦ 10^{18}
-#-10^6 ≦ D ≦ 10^6
-#1 ≦ N ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X A D N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#6 2 3 3
-#
-#出力例 1
-#1
-#A=2,D=3,N=3 であるため、 S=(2,5,8) です。
-#X=6 を「良い数」にするためには、 X から 1 を減算することを 1 度行えば良いです。
-#0 回の操作で X を「良い数」にすることはできません。
-#
-#入力例 2
-#0 0 0 1
-#
-#出力例 2
-#0
-#D=0 である場合もあります。また、操作を 1 回も必要としない場合もあります。
-#
-#入力例 3
-#998244353 -10 -20 30
-#
-#出力例 3
-#998244363
-#
-#入力例 4
-#-555555555555555555 -1000000000000000000 1000000 1000000000000
-#
-#出力例 4
-#444445
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, A, D, N = map(int, input().split())
+    if D == 0:
+        if X == A:
+            print(0)
+        else:
+            print(abs(X - A))
+    else:
+        if D > 0:
+            if X < A:
+                print(abs(X - A))
+            elif X > A + D * (N - 1):
+                print(abs(X - (A + D * (N - 1))))
+            else:
+                print(min(abs(X - A), abs(X - (A + D * (N - 1)))))
+        else:
+            if X > A:
+                print(abs(X - A))
+            elif X < A + D * (N - 1):
+                print(abs(X - (A + D * (N - 1))))
+            else:
+                print(min(abs(X - A), abs(X - (A + D * (N - 1)))))
+
+=======
+Suggestion 2
+
+def main():
+    X,A,D,N=map(int,input().split())
+    if D==0:
+        if X==A:
+            print(0)
+        else:
+            print(abs(X-A))
+    else:
+        if X>=A:
+            if D>0:
+                if (X-A)%D==0:
+                    print(0)
+                else:
+                    print(min((X-A)%D,D-(X-A)%D))
+            else:
+                print(abs(X-A))
+        else:
+            if D<0:
+                if (A-X)%abs(D)==0:
+                    print(0)
+                else:
+                    print(min((A-X)%abs(D),abs(D)-(A-X)%abs(D)))
+            else:
+                print(abs(X-A))
+
+=======
+Suggestion 3
+
+def main():
+    X, A, D, N = map(int, input().split())
+    if D == 0:
+        print(abs(X-A))
+    elif D < 0:
+        D = -D
+        A = -A
+        X = -X
+        print(min(abs(X-A), abs(X-A-D*(N-1))))
+    else:
+        print(min(abs(X-A), abs(X-A-D*(N-1))))
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    X,A,D,N = map(int,input().split())
+
+    #処理
+    if D == 0:
+        if X == A:
+            print(0)
+        else:
+            print(abs(X-A))
+    else:
+        if D > 0:
+            if X < A:
+                print(abs(X-A))
+            else:
+                if (X-A) % D == 0:
+                    print(0)
+                else:
+                    print(min(abs(X-(A+D*((X-A)//D))),abs(X-(A+D*((X-A)//D+1)))))
+        else:
+            if X > A:
+                print(abs(X-A))
+            else:
+                if (X-A) % D == 0:
+                    print(0)
+                else:
+                    print(min(abs(X-(A+D*((X-A)//D))),abs(X-(A+D*((X-A)//D-1)))))
+
+=======
+Suggestion 5
+
+def main():
+    X,A,D,N = map(int,input().split())
+    if D == 0:
+        print(abs(X-A))
+        return
+    elif D > 0:
+        if X < A:
+            print(A-X)
+        elif X > A+(N-1)*D:
+            print(X-(A+(N-1)*D))
+        else:
+            print(min(X-A,(A+(N-1)*D)-X))
+    else:
+        if X > A:
+            print(X-A)
+        elif X < A+(N-1)*D:
+            print((A+(N-1)*D)-X)
+        else:
+            print(min(A-X,X-(A+(N-1)*D)))
+
+=======
+Suggestion 6
+
+def main():
+    x,a,d,n = map(int,input().split())
+    if d==0:
+        print(abs(x-a))
+        return
+    if d>0:
+        if x<=a:
+            print(a-x)
+            return
+        if x>=a+d*(n-1):
+            print(x-a-d*(n-1))
+            return
+        print(min(abs(x-a-d*(n-1)),abs(x-a)))
+        return
+    if d<0:
+        if x>=a:
+            print(x-a)
+            return
+        if x<=a+d*(n-1):
+            print(a-x-d*(n-1))
+            return
+        print(min(abs(x-a-d*(n-1)),abs(x-a)))
+        return
+
+=======
+Suggestion 7
+
+def main():
+    x,a,d,n=map(int,input().split())
+    if d>0:
+        if x<=a:
+            print(abs(x-a))
+        elif x>=a+d*(n-1):
+            print(abs(x-a-d*(n-1)))
+        else:
+            print(min(abs(x-a),abs(x-a-d*(n-1))))
+    elif d==0:
+        if x==a:
+            print(0)
+        else:
+            print(abs(x-a))
+    else:
+        if x>=a:
+            print(abs(x-a))
+        elif x<=a+d*(n-1):
+            print(abs(x-a-d*(n-1)))
+        else:
+            print(min(abs(x-a),abs(x-a-d*(n-1))))
+
+=======
+Suggestion 8
+
+def main():
+    X, A, D, N = map(int, input().split())
+    # X, A, D, N = map(int, input().split())
+    # print(X, A, D, N)
+
+    # X, A, D, N = 6, 2, 3, 3
+    # X, A, D, N = 0, 0, 0, 1
+    # X, A, D, N = 998244353, -10, -20, 30
+    # X, A, D, N = -555555555555555555, -1000000000000000000, 1000000, 1000000000000
+
+    # 1. AからXまでの差分を求める
+    diff = X - A
+    # print(diff)
+
+    # 2. AからXまでの差分をDで割った商と余りを求める
+    # 商をq、余りをrとする
+    q, r = diff // D, diff % D
+    # print(q, r)
+
+    # 3. 余りが0の場合、qがN以下の場合はqを出力する
+    if r == 0 and q <= N:
+        print(q)
+        return
+
+    # 4. 余りが0でない場合、q+1がN以下の場合はq+1を出力する
+    if r != 0 and q + 1 <= N:
+        print(q + 1)
+        return
+
+    # 5. それ以外の場合は-1を出力する
+    print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    x,a,d,n = map(int,input().split())
+    if d == 0:
+        print(abs(x-a))
+    else:
+        if x < a:
+            if d < 0:
+                print(abs(x-a)+abs(a+(n-1)*d))
+            else:
+                print(abs(x-a))
+        elif x > a:
+            if d > 0:
+                print(abs(x-a)+abs(a+(n-1)*d))
+            else:
+                print(abs(x-a))
+        else:
+            print(abs(a+(n-1)*d))
+
+=======
+Suggestion 10
+
+def main():
+    X, A, D, N = map(int, input().split())
+    # X が A + (N - 1) * D 以上の場合
+    if X >= A + (N - 1) * D:
+        print(X - (A + (N - 1) * D))
+    # X が A + (N - 1) * D 以下の場合
+    else:
+        # X が A + (N - 2) * D 以上の場合
+        if X >= A + (N - 2) * D:
+            print(0)
+        # X が A + (N - 2) * D 以下の場合
+        else:
+            print(min(abs(X - (A + (N - 2) * D)), abs(X - (A + (N - 1) * D))))

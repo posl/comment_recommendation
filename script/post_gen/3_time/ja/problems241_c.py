@@ -1,72 +1,239 @@
-#問題文
-#N 行 N 列のマス目があり、それぞれのマスは白または黒で塗られています。
-#マス目の状態は N 個の文字列 S_i で表され、
-#S_i の j 文字目が # であることはマス目の上から i 行目、左から j 列目のマスが黒く塗られていることを、
-#. であることは白く塗られていることをさします。
-#高橋君はこのマス目のうち高々 2 つの白く塗られているマスを選び、黒く塗ることができます。
-#マス目の中に、黒く塗られたマスが縦、横、ななめのいずれかの向きに 6 つ以上連続するようにできるか判定してください。
-#ただし、黒く塗られたマスがななめに 6 つ以上連続するとは、N 行 N 列のマス目に完全に含まれる 6 行 6 列のマス目であって、その少なくとも一方の対角線上のマスがすべて黒く塗られているようなものが存在する事をさします。
-#
-#制約
-#6 ≦ N ≦ 1000
-#| S_i| =N
-#S_i は # と . のみからなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#高々 2 つのマス目を黒く塗ることで条件をみたすようにできるなら Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#8
-#........
-#........
-#.#.##.#.
-#........
-#........
-#........
-#........
-#........
-#
-#出力例 1
-#Yes
-#上から 3 行目の左から 3, 6 番目のマスを塗ることで横方向に 6 つの黒く塗られたマスを連続させることができます。
-#
-#入力例 2
-#6
-#######
-#######
-#######
-#######
-#######
-#######
-#
-#出力例 2
-#Yes
-#高橋君はマス目を新たに黒く塗ることはできませんが、すでにこのマス目は条件をみたしています。
-#
-#入力例 3
-#10
-#..........
-##..##.....
-#..........
-#..........
-#....#.....
-#....#.....
-#.#...#..#.
-#..........
-#..........
-#..........
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+                if check(S):
+                    print("Yes")
+                    return
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+                if check(S):
+                    print("Yes")
+                    return
+                for k in range(N):
+                    for l in range(N):
+                        if S[k][l] == ".":
+                            S[k] = S[k][:l] + "#" + S[k][l+1:]
+                            if check(S):
+                                print("Yes")
+                                return
+                            S[k] = S[k][:l] + "." + S[k][l+1:]
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    ans = 'No'
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '.':
+                S[i] = S[i][:j] + '#' + S[i][j+1:]
+                for k in range(N):
+                    for l in range(N):
+                        if S[k][l] == '.':
+                            S[k] = S[k][:l] + '#' + S[k][l+1:]
+                            for m i
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    ans = "No"
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+                for k in range(N):
+                    for l in range(N):
+                        if S[k][l] == ".":
+                            S[k] = S[k][:l] + "#" + S[k][l+1:]
+                            for m in range(N):
+                                for n in range(N):
+                                    if S[m][n] == "#":
+                                        if m+5 < N:
+                                            if S[m+1][n] == "#" and S[m+2][n] == "#" and S[m+3][n] == "#" and S[m+4][n] == "#" and S[m+5][n] == "#":
+                                                ans = "Yes"
+                                        if n+5 < N:
+                                            if S[m][n+1] == "#" and S[m][n+2] == "#" and S[m][n+3] == "#" and S[m][n+4] == "#" and S[m][n+5] == "#":
+                                                ans = "Yes"
+                                        if m+5 < N and n+5 < N:
+                                            if S[m+1][n+1] == "#" and S[m+2][n+2] == "#" and S[m+3][n+3] == "#" and S[m+4][n+4] == "#" and S[m+5][n+5] == "#":
+                                                ans = "Yes"
+                                        if m+5 < N and n-5 >= 0:
+                                            if S[m+1][n-1] == "#" and S[m+2][n-2] == "#" and S[m+3][n-3] == "#" and S[m+4][n-4] == "#" and S[m+5][n-5] == "#":
+                                                ans = "Yes"
+                            S[k] = S[k][:l] + "." + S[k][l+1:]
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+                if check(S):
+                    print("Yes")
+                    return
+                for k in range(N):
+                    for l in range(N):
+                        if S[k][l] == ".":
+                            S[k] = S[k][:l] + "#" + S[k][l+1:]
+                            if check(S):
+                                print("Yes")
+                                return
+                            S[k] = S[k][:l] + "." + S[k][l+1:]
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == "#":
+                continue
+            s[i] = s[i][:j] + "#" + s[i][j+1:]
+            if check(s):
+                print("Yes")
+                return
+            s[i] = s[i][:j] + "." + s[i][j+1:]
+            for k in range(i, n):
+                for l in range(n):
+                    if s[k][l] == "#":
+                        continue
+                    s[k] = s[k][:l] + "#" + s[k][l+1:]
+                    if check(s):
+                        print("Yes")
+                        return
+                    s[k] = s[k][:l] + "." + s[k][l+1:]
+
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == "#":
+                continue
+            for d in range(4):
+                cnt = 1
+                for k in range(1, 6):
+                    ni = i + k * dx[d]
+                    nj = j + k * dy[d]
+                    if ni < 0 or ni >= N or nj < 0 or nj >= N:
+                        break
+                    if S[ni][nj] == "#":
+                        cnt += 1
+                    else:
+                        break
+                if cnt == 6:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N-5):
+        for j in range(N-5):
+            # 横方向
+            if S[i][j:j+6] == "######":
+                print("Yes")
+                return
+            # 縦方向
+            if all(S[i+k][j] == "#" for k in range(6)):
+                print("Yes")
+                return
+            # 右下方向
+            if all(S[i+k][j+k] == "#" for k in range(6)):
+                print("Yes")
+                return
+            # 左下方向
+            if all(S[i+k][j-k] == "#" for k in range(6)):
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print("Yes" if check(N, S) else "No")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    #縦方向に黒く塗られたマスが6つ以上連続するか判定
+    for i in range(N):
+        for j in range(N-5):
+            if S[i][j] == '#' and S[i][j+1] == '#' and S[i][j+2] == '#' and S[i][j+3] == '#' and S[i][j+4] == '#' and S[i][j+5] == '#':
+                print('Yes')
+                return
+    #横方向に黒く塗られたマスが6つ以上連続するか判定
+    for i in range(N-5):
+        for j in range(N):
+            if S[i][j] == '#' and S[i+1][j] == '#' and S[i+2][j] == '#' and S[i+3][j] == '#' and S[i+4][j] == '#' and S[i+5][j] == '#':
+                print('Yes')
+                return
+    #右下方向に黒く塗られたマスが6つ以上連続するか判定
+    for i in range(N-5):
+        for j in range(N-5):
+            if S[i][j] == '#' and S[i+1][j+1] == '#' and S[i+2][j+2] == '#' and S[i+3][j+3] == '#' and S[i+4][j+4] == '#' and S[i+5][j+5] == '#':
+                print('Yes')
+                return
+    #左下方向に黒く塗られたマスが6つ以上連続するか判定
+    for i in range(5,N):
+        for j in range(N-5):
+            if S[i][j] == '#' and S[i-1][j+1] == '#' and S[i-2][j+2] == '#' and S[i-3][j+3] == '#' and S[i-4][j+4] == '#' and S[i-5][j+5] == '#':
+                print('Yes')

@@ -1,55 +1,208 @@
-#問題文
-#数直線上で暮らす高橋君は、今座標 X にいます。これから高橋君はちょうど K 回、座標の正または負の方向に D 移動する行為を繰り返そうと考えています。
-#より正確には、1 回の移動では 座標 x から x + D または x - D に移動できます。
-#高橋君は、ちょうど K 回移動した後にいる座標の絶対値が最小となるように移動したいです。
-#K 回の移動後の座標の絶対値としてあり得る値の最小値を求めてください。
-#
-#制約
-#-10^{15} ≦ X ≦ 10^{15}
-#1 ≦ K ≦ 10^{15}
-#1 ≦ D ≦ 10^{15}
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X K D
-#
-#出力
-#K 回の移動後の座標の絶対値としてあり得る値の最小値を出力せよ。
-#
-#入力例 1
-#6 2 4
-#
-#出力例 1
-#2
-#高橋君は、今座標 6 にいます。次のように移動するのが最適です。
-#6 から (6 - 4 =) 2 に移動する。
-#2 から (2 - 4 =) -2 に移動する。
-#移動後の座標の絶対値は 2 で、これより小さくすることはできません。
-#
-#入力例 2
-#7 4 3
-#
-#出力例 2
-#1
-#高橋君は、今座標 7 にいます。例えば次のように移動するのが最適です。
-#7 から 4 に移動する。
-#4 から 7 に移動する。
-#7 から 4 に移動する。
-#4 から 1 に移動する。
-#移動後の座標の絶対値は 1 で、これより小さくすることはできません。
-#
-#入力例 3
-#10 1 2
-#
-#出力例 3
-#8
-#
-#入力例 4
-#1000000000000000 1000000000000000 1000000000000000
-#
-#出力例 4
-#1000000000000000
-#答えは非常に大きな値になる場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(abs(X % D - D))
+
+=======
+Suggestion 2
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(D - X % D)
+
+=======
+Suggestion 3
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X >= K * D:
+        print(X - K * D)
+    else:
+        if (K - X // D) % 2 == 0:
+            print(X % D)
+        else:
+            print(D - X % D)
+
+=======
+Suggestion 4
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if X // D >= K:
+        print(X - K * D)
+    else:
+        K -= X // D
+        X %= D
+        if K % 2 == 0:
+            print(X)
+        else:
+            print(D - X)
+
+=======
+Suggestion 5
+
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x // d > k:
+        print(x - k * d)
+    else:
+        if (x // d) % 2 == k % 2:
+            print(x % d)
+        else:
+            print(d - x % d)
+
+=======
+Suggestion 6
+
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+    else:
+        k -= x//d
+        x %= d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(abs(x-d))
+
+=======
+Suggestion 7
+
+def main():
+    X, K, D = map(int, input().split())
+    # X:今の座標
+    # K:移動回数
+    # D:移動距離
+    # 0に近づくほど絶対値が小さくなるので、
+    # 0に近づくほど絶対値が小さくなるように移動するのが最適
+    # Xが0より大きい場合はXをDで割った値の商が移動回数の最大値
+    # Xが0より小さい場合はXをDで割った値の商の絶対値が移動回数の最大値
+    # この最大値がKより大きい場合は、絶対値が0になる
+    # この最大値がKより小さい場合は、絶対値が0にならず、
+    # Xが0より大きい場合はXからKと最大値の差の2倍分のDを引いた値が絶対値が0になる
+    # Xが0より小さい場合はXからKと最大値の差の2倍分のDを足した値が絶対値が0になる
+    if X > 0:
+        if X//D > K:
+            print(X - K*D)
+        else:
+            if (K - X//D) % 2 == 0:
+                print(X % D)
+            else:
+                print(abs(X % D - D))
+    elif X < 0:
+        if abs(X)//D > K:
+            print(abs(X) - K*D)
+        else:
+            if (K - abs(X)//D) % 2 == 0:
+                print(abs(X) % D)
+            else:
+                print(abs(abs(X) % D - D))
+    else:
+        print(K*D)
+
+=======
+Suggestion 8
+
+def main():
+    X, K, D = map(int, input().split())
+    # XをDで割った商
+    q = X // D
+    # XをDで割った余り
+    r = X % D
+    # qがK以下ならば、Dの倍数の移動をK回繰り返すことで、Xに近づくことができる
+    if q <= K:
+        # Kからqを引いた値が偶数ならば、Xの絶対値はrで決まる
+        if (K - q) % 2 == 0:
+            print(abs(r))
+        # Kからqを引いた値が奇数ならば、Xの絶対値はD-rで決まる
+        else:
+            print(abs(D - r))
+    # qがKより大きいならば、Dの倍数の移動をq回繰り返した後に、Xの絶対値はDで割った余りで決まる
+    else:
+        print(abs(X - D * K))
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    X, K, D = map(int, input().split())
+
+    #絶対値を取る
+    X = abs(X)
+
+    #移動回数が移動距離を超えている場合
+    if K > X // D:
+
+        #移動回数から移動距離を引いた回数だけ移動距離を減らす
+        K -= X // D
+
+        #移動距離を減らす
+        X -= X // D * D
+
+        #移動回数が奇数の場合
+        if K % 2 == 1:
+            #移動距離を減らす
+            X -= D
+
+    #移動回数が移動距離を超えていない場合
+    else:
+        #移動距離を減らす
+        X -= K * D
+
+    #絶対値を取る
+    X = abs(X)
+
+    #出力
+    print(X)
+
+=======
+Suggestion 10
+
+def main():
+    X, K, D = map(int, input().split())
+    #Xの絶対値を取得
+    X = abs(X)
+    #K回の移動でXが0になる場合
+    if X // D >= K:
+        print(X - K * D)
+        return
+    #K回の移動でXが0にならない場合
+    else:
+        #Xが0になるまでの移動回数
+        move_count = X // D
+        #Xが0になるまでの移動で移動した距離
+        move_distance = move_count * D
+        #Xが0になるまでの移動で移動した距離を引いた値
+        X = X - move_distance
+        #Xが0になるまでに移動した回数が奇数回の場合
+        if move_count % 2 == 1:
+            print(abs(X - D))
+            return
+        #Xが0になるまでに移動した回数が偶数回の場合
+        else:
+            print(X)
+            return

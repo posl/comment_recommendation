@@ -1,29 +1,74 @@
-#問題文
-#与えられる 5 つの整数 A, B, C, D, E の中に何種類の整数があるかを出力してください。
-#
-#制約
-#0 ≦ A, B, C, D, E ≦ 100
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D E
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#31 9 24 31 24
-#
-#出力例 1
-#3
-#与えられる 5 つの整数 31, 9, 24, 31, 24 の中には、9, 24, 31 という 3 種類の整数があります。
-#よって、3 を出力します。
-#
-#入力例 2
-#0 0 0 0 0
-#
-#出力例 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D, E = map(int, input().split())
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 2
+
+def main():
+    # A, B, C, D, E = map(int, input().split())
+    # print(len(set([A, B, C, D, E])))
+    print(len(set(map(int, input().split()))))
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    A, B, C, D, E = map(int, input().split())
+    #出力
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    a, b, c, d, e = map(int, input().split())
+    #出力
+    print(len(set([a, b, c, d, e])))
+
+=======
+Suggestion 5
+
+def main():
+    # 自分の得意な言語で
+    # Let's チャレンジ！！
+
+    A, B, C, D, E = map(int, input().split())
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 6
+
+def main():
+    # 入力
+    a, b, c, d, e = map(int, input().split())
+    # 処理
+    set_a = set([a, b, c, d, e])
+    # 出力
+    print(len(set_a))
+
+=======
+Suggestion 7
+
+def main():
+    a = list(map(int, input().split()))
+    print(len(set(a)))
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    a, b, c, d, e = map(int, input().split())
+    #処理
+    #set関数を用いて、重複する値を取り除く
+    #len関数を用いて、要素数を数える
+    #出力
+    print(len(set([a, b, c, d, e])))

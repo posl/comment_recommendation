@@ -1,48 +1,129 @@
-#問題文
-#2 つの N 次元ベクトル A = (A_1, A_2, A_3, ..., A_N), B = (B_1, B_2, B_3, ..., B_N) が与えられます。
-#A と B の内積が 0 かどうかを判定してください。
-#すなわち、A_1B_1 + A_2B_2 + A_3B_3 + ... + A_NB_N = 0 かどうかを判定してください。  
-#
-#制約
-#1 ≦ N ≦ 100000
-#-100 ≦ A_i ≦ 100
-#-100 ≦ B_i ≦ 100
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 A_3 ... A_N
-#B_1 B_2 B_3 ... B_N
-#
-#出力
-#A と B の内積が 0 ならば Yes を、0 でないならば No を出力せよ。  
-#
-#入力例 1
-#2
-#-3 6
-#4 2
-#
-#出力例 1
-#Yes
-#A と B の内積は (-3) × 4 + 6 × 2 = 0 です。  
-#
-#入力例 2
-#2
-#4 5
-#-1 -3
-#
-#出力例 2
-#No
-#A と B の内積は 4 × (-1) + 5 × (-3) = -19 です。  
-#
-#入力例 3
-#3
-#1 3 5
-#3 -6 3
-#
-#出力例 3
-#Yes
-#A と B の内積は 1 × 3 + 3 × (-6) + 5 × 3 = 0 です。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if sum([a[i] * b[i] for i in range(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    if sum([a[i] * b[i] for i in range(n)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    if sum([A[i]*B[i] for i in range(N)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = 0
+    for i in range(n):
+        c += a[i] * b[i]
+    if c == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print('Yes' if sum([A[i]*B[i] for i in range(N)]) == 0 else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    # 1行目
+    n = int(input())
+    # 2行目
+    a = list(map(int, input().split()))
+    # 3行目
+    b = list(map(int, input().split()))
+    
+    # AとBの内積
+    ab = 0
+    for i in range(n):
+        ab += a[i] * b[i]
+    
+    # 内積が0かどうか判定
+    if ab == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    #内積
+    ans = 0
+    for i in range(N):
+        ans += A[i]*B[i]
+    #出力
+    if ans == 0:
+        print("Yes")
+    else:
+        print("No")

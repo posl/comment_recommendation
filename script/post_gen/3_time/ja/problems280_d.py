@@ -1,41 +1,99 @@
-#問題文
-#2 以上の整数 K が与えられます。
-#正の整数 N であって、N! が K の倍数となるようなもののうち最小のものを求めてください。
-#ただし、N! は N の階乗を表し、問題の制約下で、そのような N が必ず存在することが証明できます。
-#
-#制約
-#2≦ K≦ 10^{12}
-#K は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#
-#出力
-#N! が K の倍数となるような最小の正整数 N を出力せよ。  
-#
-#入力例 1
-#30
-#
-#出力例 1
-#5
-#1!=1
-#2!=2× 1=2
-#3!=3× 2× 1=6
-#4!=4× 3× 2× 1=24
-#5!=5× 4× 3× 2× 1=120
-#より、N! が 30 の倍数となる最小の正整数 N は 5 です。よって、5 を出力します。
-#
-#入力例 2
-#123456789011
-#
-#出力例 2
-#123456789011
-#
-#入力例 3
-#280
-#
-#出力例 3
-#7
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    n = 0
+    for i in range(2, k+1):
+        if k % i == 0:
+            n = i
+            break
+    print(n)
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    n = 1
+    while True:
+        if n % 2 == 0 or n % 5 == 0:
+            n += 1
+            continue
+        if k % n == 0:
+            print(n)
+            break
+        n += 1
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    N = 1
+    while True:
+        if N % K == 0:
+            print(N)
+            break
+        N += 1
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    n = 2
+    while True:
+        if K % n == 0:
+            print(n)
+            break
+        else:
+            n += 1
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    n = 1
+    for i in range(2, k):
+        n *= i
+        if n%k==0:
+            print(i)
+            break
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    n = k
+    while True:
+        if n % k == 0:
+            break
+        n += k
+    print(n)
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    n = 1
+    while True:
+        #print(n)
+        if k%n == 0:
+            n += 1
+        else:
+            print(n)
+            break

@@ -1,48 +1,121 @@
-#問題文
-#高橋君はレベル N の赤い宝石を 1 個持っています。(他に宝石は持っていません。) 
-#高橋君は次の操作を好きなだけ行うことができます。
-#レベル n の赤い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n の青い宝石 X 個」に変換する。
-#レベル n の青い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n-1 の青い宝石 Y 個」に変換する。
-#高橋君はレベル 1 の青い宝石ができるだけたくさんほしいです。操作によって高橋君はレベル 1 の青い宝石を最大何個入手できますか？
-#
-#制約
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X Y
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 3 4
-#
-#出力例 1
-#12
-#次のような変換を行うことで、高橋君はレベル 1 の青い宝石を 12 個手に入れることができます。
-#まず、レベル 2 の赤い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個に変換します。  
-#操作後の高橋君は、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個を持っています。
-#次に、レベル 2 の青い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 1 の青い宝石 4 個に変換します。この変換を 3 回繰り返します。
-#操作後の高橋君は、レベル 1 の赤い宝石 4 個とレベル 1 の青い宝石 12 個を持っています。
-#これ以上変換を行うことはできません。
-#12 個より多くレベル 1 の青い宝石を手に入れることはできないので、答えは 12 になります。
-#
-#入力例 2
-#1 5 5
-#
-#出力例 2
-#0
-#高橋君がレベル 1 の青い宝石を 1 個も手に入れられない場合もあります。
-#
-#入力例 3
-#10 5 5
-#
-#出力例 3
-#3942349900
-#答えが 32 bit 整数に収まらない場合があることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def calc(n, x, y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x + y
+    return calc(n - 1, x, y) + calc(n - 2, x, y)
+
+=======
+Suggestion 2
+
+def calc(n, x, y, memo):
+    if n == 1:
+        return 1
+    if n in memo:
+        return memo[n]
+    memo[n] = 1 + calc(n-1, x, y, memo)
+    if n % 2 == 0:
+        memo[n] = min(memo[n], calc(n//2, x, y, memo) + x)
+    else:
+        memo[n] = min(memo[n], calc(n//2, x, y, memo) + x + y)
+        memo[n] = min(memo[n], calc(n//2+1, x, y, memo) + x + y)
+    return memo[n]
+
+=======
+Suggestion 3
+
+def calc(n, x, y):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return x
+    else:
+        return x + (n - 1) * y
+
+=======
+Suggestion 4
+
+def solve():
+    #n, x, y = map(int, input().split())
+    n, x, y = 10, 5, 5
+    dp = [0] * (n+1)
+    dp[2] = min(x, y) + 1
+    for i in range(3, n+1):
+        dp[i] = min(dp[i-1] + x, dp[i-2] + y) + 1
+    print(dp[n])
+
+=======
+Suggestion 5
+
+def calc(N, X, Y):
+    if N == 1:
+        return 0
+    if N == 2:
+        return X + Y
+    if N == 3:
+        return X * 2 + Y
+    if N == 4:
+        return X * 3 + Y
+    if N == 5:
+        return X * 4 + Y
+    if N == 6:
+        return X * 5 + Y
+    if N == 7:
+        return X * 6 + Y
+    if N == 8:
+        return X * 7 + Y
+    if N == 9:
+        return X * 8 + Y
+    if N == 10:
+        return X * 9 + Y
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    n,x,y = map(int,input().split())
+    ans = 0
+    if x > y:
+        ans = x*(n-1)
+    else:
+        ans = x*(n-1)+y*(n-2)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, x, y = map(int, input().split())
+    print(n, x, y)
+
+=======
+Suggestion 8
+
+def getNumOfBlueStone(n, x, y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x
+    if n == 3:
+        return x + y
+    return getNumOfBlueStone(n - 1, x, y) + getNumOfBlueStone(n - 2, x, y)
+
+=======
+Suggestion 9
+
+def main():
+    N, X, Y = map(int, input().split())
+    print((N-1)*X if N < 2 else (N-1) * min(X, Y) + max(0, Y - X))
+
+=======
+Suggestion 10
+
+def get_input
+  gets.chomp.split.map(&:to_i)
+end

@@ -1,45 +1,129 @@
-#問題文
-#正整数 A, B が与えられます。
-#A と B の正の公約数の中からいくつかを選びます。
-#ただし、選んだ整数の中のどの異なる 2 つの整数についても互いに素でなければなりません。
-#最大でいくつ選べるでしょうか。
-#公約数とは
-#整数 d が整数 x と整数 y の公約数であるとは、d が x と y をともに割り切ることをいいます。
-#互いに素とは
-#整数 x, y が互いに素であるとは、x, y の正の公約数が 1 のみであることをいいます。
-#割り切るとは
-#整数 x が整数 y を割り切るとは、y = alpha x なる整数 alpha が存在することをいいます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A, B ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#条件を満たすように選べる整数の個数の最大値を出力せよ。
-#
-#入力例 1
-#12 18
-#
-#出力例 1
-#3
-#12 と 18 の正の公約数は 1, 2, 3, 6 です。
-#1 と 2、2 と 3、3 と 1 は互いに素なので、1, 2, 3 を選ぶことができ、このときが最大です。
-#
-#入力例 2
-#420 660
-#
-#出力例 2
-#4
-#
-#入力例 3
-#1 2019
-#
-#出力例 3
-#1
-#1 と 2019 の正の公約数は 1 しかありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+a, b = map(int, input().split())
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+ans = 1
+for i in range(2, int(g ** 0.5) + 1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+ans = 1
+for i in range(2, int(g**0.5)+1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 7
+
+def gcd(x, y):
+    if x % y == 0:
+        return y
+    else:
+        return gcd(y, x % y)
+
+A, B = map(int, input().split())
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+A, B = map(int, input().split())
+g = gcd(A, B)
+ans = 1
+for i in range(2, int(g ** 0.5) + 1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b:
+        a, b = b, a%b
+    return a
+
+a,b = map(int, input().split())
+g = gcd(a,b)
+ans = 1
+for i in range(2, int(g**0.5)+1):
+    if g%i == 0:
+        ans += 1
+        while g%i == 0:
+            g //= i

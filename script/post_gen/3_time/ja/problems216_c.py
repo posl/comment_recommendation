@@ -1,39 +1,151 @@
-#問題文
-#空の箱があります。
-#髙橋君は以下の 2 種類の魔法を好きな順番で好きな回数使えます。
-#魔法 A ：箱の中にボールを 1 つ増やす
-#魔法 B ：箱の中のボールの数を 2 倍にする
-#合計 120 回以内の魔法で、箱の中のボールの数をちょうど N 個にする方法を 1 つ教えてください。
-#なお、与えられた制約のもとで条件を満たす方法が必ず存在することが示せます。  
-#魔法以外の方法でボールの数を変化させることはできません。  
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#A , B のみからなる文字列 S を出力せよ。
-#S の i 文字目が A ならば、髙橋君が i 回目に使う魔法が魔法 A であることを表し、B ならば魔法 B であることを表す。
-#S の長さは 120 以下でなければならない。  
-#
-#入力例 1
-#5
-#
-#出力例 1
-#AABA
-#ボールの数は、0 -{A}-> 1-{A}-> 2 -{B}->4-{A}-> 5 と変化します。
-#AAAAA などの答えも正解になります。  
-#
-#入力例 2
-#14
-#
-#出力例 2
-#BBABBAAAB
-#ボールの数は、0 -{B}-> 0 -{B}-> 0  -{A}->1 -{B}-> 2 -{B}-> 4  -{A}->5  -{A}->6 -{A}-> 7  -{B}->14 と変化します。
-#S の長さを最小化する必要はありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = ''
+    while n > 0:
+        if n % 2 == 0:
+            n //= 2
+            ans += 'B'
+        else:
+            n -= 1
+            ans += 'A'
+    print(ans[::-1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = []
+    while N > 0:
+        if N % 2 == 0:
+            N //= 2
+            ans.append("B")
+        else:
+            N -= 1
+            ans.append("A")
+    ans.reverse()
+    print("".join(ans))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            ans.append('B')
+        else:
+            n -= 1
+            ans.append('A')
+    ans.reverse()
+    print(''.join(ans))
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    ans = ''
+    while N > 0:
+        if N % 2 == 0:
+            ans += 'B'
+            N //= 2
+        else:
+            ans += 'A'
+            N -= 1
+    print(ans[::-1])
+
+=======
+Suggestion 5
+
+def solve(n):
+    ans = []
+    while n > 0:
+        if n % 2 == 0:
+            ans.append('B')
+            n = n // 2
+        else:
+            ans.append('A')
+            n -= 1
+    return ''.join(ans[::-1])
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    S = ""
+    while N > 0:
+        if N % 2 == 0:
+            S = "B" + S
+            N //= 2
+        else:
+            S = "A" + S
+            N -= 1
+    print(S)
+    return 0
+
+=======
+Suggestion 7
+
+def solve(n):
+    if n == 0:
+        return ''
+    if n % 2 == 0:
+        return solve(n // 2) + 'B'
+    else:
+        return solve(n - 1) + 'A'
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    ans = ''
+    while N > 0:
+        if N % 2 == 0:
+            ans = 'B' + ans
+            N //= 2
+        else:
+            ans = 'A' + ans
+            N -= 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = ""
+    while N > 0:
+        if N%2 == 0:
+            S = "B" + S
+            N = N//2
+        else:
+            S = "A" + S
+            N = N-1
+    print(S)
+
+=======
+Suggestion 10
+
+def solve(N):
+    res = []
+    while N > 0:
+        if N % 2 == 1:
+            res.append('A')
+            N -= 1
+        else:
+            res.append('B')
+            N //= 2
+    res.reverse()
+    return "".join(res)

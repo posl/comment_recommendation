@@ -1,40 +1,141 @@
-#問題文
-#高橋君と青木君が次のようなゲームをします。
-#まず、高橋君が A 以上 B 以下の好きな整数を選び、青木君に伝える
-#次に、青木君が C 以上 D 以下の好きな整数を選ぶ
-#二人の選んだ整数の和が素数なら青木君の勝ち、そうでなければ高橋君の勝ち
-#二人が最適な戦略を取るとき、どちらが勝ちますか？
-#
-#制約
-#1 ≦ A ≦ B ≦ 100
-#1 ≦ C ≦ D ≦ 100
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#二人が最適な戦略をとったとき、高橋君が勝つなら Takahashi、青木君が勝つなら Aoki を出力せよ。
-#
-#入力例 1
-#2 3 3 4
-#
-#出力例 1
-#Aoki
-#例えば高橋君が 2 を選んだときは、青木君は 3 を選ぶことで、和を素数である 5 にすることができます。
-#
-#入力例 2
-#1 100 50 60
-#
-#出力例 2
-#Takahashi
-#最適な戦略を取ると高橋君が必ず勝ちます。
-#
-#入力例 3
-#3 14 1 5
-#
-#出力例 3
-#Aoki
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+A, B, C, D = map(int, input().split())
+for i in range(C, D+1):
+    if is_prime(A+i):
+        print('Takahashi')
+        exit()
+print('Aoki')
+
+=======
+Suggestion 3
+
+def is_prime(x):
+    if x == 1:
+        return False
+    elif x == 2:
+        return True
+    else:
+        for i in range(2, int(x**0.5)+1):
+            if x % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if B < C or D < A:
+        print("Aoki")
+    else:
+        print("Takahashi")
+
+=======
+Suggestion 5
+
+def isPrime(x):
+    if x == 1:
+        return False
+    for i in range(2, int(x**0.5)+1):
+        if x % i == 0:
+            return False
+    return True
+
+A, B, C, D = map(int, input().split())
+
+for i in range(A, B+1):
+    for j in range(C, D+1):
+        if isPrime(i+j):
+            print("Aoki")
+            exit()
+print("Takahashi")
+
+=======
+Suggestion 6
+
+def prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+A, B, C, D = map(int, input().split())
+
+=======
+Suggestion 7
+
+def isPrime(n): #素数判定
+    if n == 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+A, B, C, D = map(int, input().split())
+
+=======
+Suggestion 8
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A <= 2 and C <= 2:
+        print('Aoki')
+    else:
+        print('Takahashi')
+
+=======
+Suggestion 9
+
+def main():
+    A, B, C, D = map(int, input().split())
+    # A以上B以下の整数の和が素数であるかどうかを判定する
+    # A以上B以下の整数の和は、
+    # 1以上B以下の整数の和から1以上A-1以下の整数の和を引けば求めることができる
+    # 1以上B以下の整数の和は、
+    # B以下の素数の個数にBを掛けたものに、
+    # B以下の合成数の個数にBを掛けたものを加えたものになる
+    # つまり、B以下の合成数の個数を求めれば良い
+    # 1以上B以下の合成数の個数は、
+    # 1以上B以下の整数のうち、B以下の素数の倍数の個数に、
+    # 1以上B以下の整数のうち、B以下の素数の2乗以上の倍数の個数を加えたものになる
+    # つまり、B以下の素数の倍数の個数とB以下の素数の2乗以上の倍数の個数を求めれば良い
+    # 1以上B以下の素数の倍数の個数は、
+    # B以下の素数の個数にB以下の素数の個数を掛けたものになる
+    # つまり、B以下の素数の個数を求めれば良い
+    # 1以上B以下の素数の個数は、
+    # B以下の素数のリストの長さになる
+    # 1以上B以下の素数のリストを求めるにはエラトステネスの篩を使う
+    # 1以上B以下の素数の2乗以上の倍数の個数は、
+    # B

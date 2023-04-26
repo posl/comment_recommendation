@@ -1,63 +1,204 @@
-#問題文
-#東西一列に並んだ N 個の島と N-1 本の橋があります。
-#i 番目の橋は、西から i 番目の島と西から i+1 番目の島を接続しています。
-#ある日、いくつかの島同士で争いが起こり、島の住人たちから M 個の要望がありました。
-#要望 i: 西から a_i 番目の島と西から b_i 番目の島の間で争いが起こったために、これらの島をいくつかの橋を渡って行き来できないようにしてほしい
-#あなたは橋をいくつか取り除くことでこれら M 個の要望全てを叶えることにしました。
-#取り除く必要のある橋の本数の最小値を求めてください。
-#
-#制約
-#入力は全て整数である
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#組 (a_i, b_i) は全て異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#a_1 b_1
-#a_2 b_2
-#:
-#a_M b_M
-#
-#出力
-#取り除く必要のある橋の本数の最小値を出力せよ。
-#
-#入力例 1
-#5 2
-#1 4
-#2 5
-#
-#出力例 1
-#1
-#西から 2 番目の島と 3 番目の島を接続する橋を取り除くことで達成できます。
-#
-#入力例 2
-#9 5
-#1 8
-#2 7
-#3 5
-#4 6
-#7 9
-#
-#出力例 2
-#2
-#
-#入力例 3
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#出力例 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    a.sort()
+    b.sort()
+    ans = 0
+    for i in range(m):
+        ans = max(ans, b[i] - a[i] - 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    a.sort()
+    b.sort()
+    #print(a)
+    #print(b)
+    a_max = a[m-1]
+    b_min = b[0]
+    #print(a_max)
+    #print(b_min)
+    if a_max < b_min:
+        print(b_min - a_max)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    ab.sort(key=lambda x: x[1])
+    ans = 0
+    last = 0
+    for a, b in ab:
+        if a > last:
+            ans += 1
+            last = b - 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(M)]
+    ab.sort(key=lambda x: x[1])
+    ans = 0
+    bridge = 0
+    for i in range(M):
+        if ab[i][0] > bridge:
+            ans += 1
+            bridge = ab[i][1] - 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    ab = sorted(ab, key=lambda x: x[1])
+    count = 1
+    bridge = ab[0][1]
+    for i in range(1, m):
+        if bridge <= ab[i][0]:
+            count += 1
+            bridge = ab[i][1]
+    print(m - count)
+
+main()
+
+=======
+Suggestion 6
+
+def find_parent(x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find_parent(parent[x])
+        return parent[x]
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort(key=lambda x:x[1])
+    ans = 1
+    bridge = AB[0][1]
+    for i in range(1, M):
+        if AB[i][0] > bridge:
+            ans += 1
+            bridge = AB[i][1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(M)]
+
+    # 橋を取り除く必要のある島の最大値
+    max_remove = 0
+
+    # 橋を取り除く必要のある島の最小値
+    min_remove = N
+
+    # 橋を取り除く必要のある島の個数
+    remove_count = 0
+
+    for i in range(1, N):
+        for j in range(M):
+            if AB[j][0] == i or AB[j][1] == i:
+                remove_count += 1
+
+        if remove_count < min_remove:
+            min_remove = remove_count
+
+        if remove_count > max_remove:
+            max_remove = remove_count
+
+        remove_count = 0
+
+    print(min_remove)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    #print("N, M = ", N, M)
+    #print("")
+
+    a = []
+    b = []
+    for i in range(M):
+        a_i, b_i = map(int, input().split())
+        #print("a_i, b_i = ", a_i, b_i)
+        #print("")
+        a.append(a_i)
+        b.append(b_i)
+
+    #print("a = ", a)
+    #print("b = ", b)
+    #print("")
+
+    #print("len(a) = ", len(a))
+    #print("len(b) = ", len(b))
+    #print("")
+
+    #print("len(set(a)) = ", len(set(a)))
+    #print("len(set(b)) = ", len(set(b)))
+    #print("")
+
+    #print("len(set(a)) + len(set(b)) = ", len(set(a)) + len(set(b)))
+    #print("")
+
+    #print("len(set(a + b)) = ", len(set(a + b)))
+    #print("")
+
+    #print("len(set(a + b)) - len(set(a)) - len(set(b)) = ", len(set(a + b)) - len(set(a)) - len(set(b)))
+    #print("")
+
+    print(len(set(a + b)) - len(set(a)) - len(set(b)))
+
+main()
+
+=======
+Suggestion 10
+
+def solve():
+    # 橋の数を数える
+    # 橋の数 = 島の数 - 1
+    # つまり、橋の数が島の数 - 1 以上の場合は
+    # どの橋を取り除いても、島同士の行き来ができる
+    # つまり、取り除く橋の数は 0 となる
+    # この場合は、島の数 - 1 を出力する
+    # 逆に、橋の数が島の数 - 1 未満の場合は
+    # どの橋を取り除いても、島同士の行き来ができない
+    # つまり、取り除く橋の数は 1 以上となる
+    # この場合は、橋の数 - (島の数 - 1) を出力する
+    n, m = map(int, input().split())
+    if m >= n:
+        print(n - 1)
+    else:
+        print(n - m)

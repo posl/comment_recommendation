@@ -1,35 +1,92 @@
-#問題文
-#整数 N が与えられます。
-#N を十進法で表した文字列の先頭に 0 個以上の 0 をつけることで、回文にすることはできますか？
-#
-#制約
-#0 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#回文にできるなら Yes、できないなら No を出力せよ。
-#
-#入力例 1
-#1210
-#
-#出力例 1
-#Yes
-#1210 の先頭に 1 個の 0 をつけると 01210 となり回文になります。
-#
-#入力例 2
-#777
-#
-#出力例 2
-#Yes
-#777 はもともと回文です。
-#
-#入力例 3
-#123456789
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = input()
+    if N == N[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = input()
+    if N == N[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = input()
+    if N == N[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = input()
+    if n == n[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    N_str = str(N)
+    N_str_reverse = N_str[::-1]
+    if N_str == N_str_reverse:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    N_str = str(N)
+    N_str_rev = N_str[::-1]
+    if N_str == N_str_rev:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N = input()
+    N = N[::-1]
+    N = N.lstrip("0")
+    N2 = N[::-1]
+    if N == N2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+=======
+Suggestion 9
+
+def is_palindrome(s):
+    return s == s[::-1]

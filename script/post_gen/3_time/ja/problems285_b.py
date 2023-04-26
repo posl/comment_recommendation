@@ -1,37 +1,136 @@
-#問題文
-#英小文字からなる長さ N の文字列 S が与えられます。 S の x 文字目 (1 ≦ x ≦ N) は S_x です。
-#i=1,2,...,N-1 それぞれについて、以下の条件を全て満たす最大の非負整数 l を求めてください。
-#l+i ≦ N である。
-#全ての 1 ≦ k ≦ l を満たす整数 k について、 S_{k} ≠ S_{k+i} を満たす。
-#なお、 l=0 は常に条件を満たすことに注意してください。
-#
-#制約
-#N は 2 ≦ N ≦ 5000 を満たす整数
-#S は英小文字からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#N-1 行にわたって出力せよ。そのうち x 行目 (1 ≦ x < N) には i=x とした場合の答えを整数として出力せよ。
-#
-#入力例 1
-#6
-#abcbac
-#
-#出力例 1
-#5
-#1
-#2
-#0
-#1
-#この入力では、 S= abcbac です。  
-#i=1 のとき、 S_1 ≠ S_2, S_2 ≠ S_3, ... ,S_5 ≠ S_6 であるため、 最大値は l=5 です。
-#i=2 のとき、 S_1 ≠ S_3 ですが S_2 = S_4 であるため、 最大値は l=1 です。
-#i=3 のとき、 S_1 ≠ S_4, S_2 ≠ S_5 ですが S_3 = S_6 であるため、 最大値は l=2 です。
-#i=4 のとき、 S_1 = S_5 であるため、 最大値は l=0 です。
-#i=5 のとき、 S_1 ≠ S_6 であるため、 最大値は l=1 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l += 1
+        print(l)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        l = 0
+        for j in range(1,N-i+1):
+            if S[j-1] != S[j+i-1]:
+                l = j
+        print(l)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(N-1):
+        l = 0
+        for j in range(N-i-1):
+            if S[j] != S[j+i+1]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        for k in range(1, n - i):
+            if s[k - 1] != s[k + i - 1]:
+                l = k
+        print(l)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        for j in range(N-i):
+            if S[j] == S[j+i]:
+                print(j)
+                break
+        else:
+            print(N-i)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    S = input()
+    ans = []
+    for i in range(1,N):
+        l = 0
+        for j in range(N-i):
+            if S[j] != S[j+i]:
+                l += 1
+            else:
+                break
+        ans.append(l)
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        S1 = S[:i]
+        S2 = S[i:]
+        l = 0
+        for j in range(i):
+            if S1[j] != S2[j]:
+                l += 1
+        print(l)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        S1 = S[i:]
+        S2 = S[:N-i]
+        l = 0
+        for j in range(N-i):
+            if S1[j] != S2[j]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        s = S[:i]
+        t = S[i:]
+        l = 0
+        for j in range(1,len(s)+1):
+            if s[-j] != t[-j]:
+                l = j
+                break
+        print(l)

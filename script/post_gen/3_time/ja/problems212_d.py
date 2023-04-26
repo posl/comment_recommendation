@@ -1,67 +1,200 @@
-#問題文
-#高橋君は何も書かれていないたくさんのボールと 1 つの袋を持っています。
-#最初、袋は空で、高橋君は Q 回の操作を行います。
-#それぞれの操作は以下の 3 種類のうちのいずれかです。
-#操作 1 : まだ何も書かれていないボール 1 つに整数 X_i を書き込み、袋に入れる。
-#操作 2 : 袋に入っているすべてのボールについて、そこに書かれている数を、それに X_i を加えたものに書き換える。
-#操作 3 : 袋に入っているボールのうち書かれている数が最小のもの（複数ある場合はそのうちの 1 つ）を取り出し、そこに書かれている数を記録する。その後、そのボールを捨てる。
-#1≦ i≦ Q について i 回目の操作の種類 P_i および操作 1 , 2 における X_i の値が与えられるので、操作 3 において記録された数を順に出力してください。
-#
-#制約
-#1 ≦ Q ≦ 2× 10^5
-#1 ≦ P_i ≦ 3
-#1 ≦ X_i ≦ 10^9
-#入力は全て整数である。
-#P_i=3 であるような i が 1 つ以上存在する。
-#P_i=3 であるとき、 i 回目の操作の直前の時点で、袋には 1 つ以上のボールが入っている。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#query_1
-#query_2
-#:
-#query_Q
-#2 行目から Q+1 行目の各 query_i は次のいずれかの形で与えられる。
-#1 X_i
-#2 X_i
-#3
-#まず、1≦ P_i≦ 3 が与えられる。これは操作の種類を表す。 
-#P_i=1 または P_i=2 ならば、その後に空白区切りで X_i が与えられる。
-#
-#出力
-#Q 回の操作のうち操作の種類が P_i=3 であるような各操作について、記録された数を改行区切りで出力せよ。
-#
-#入力例 1
-#5
-#1 3
-#1 5
-#3
-#2 2
-#3
-#
-#出力例 1
-#3
-#7
-#高橋君は次のように操作を行います。
-#3 の書かれたボールを袋に入れる。
-#5 の書かれたボールを袋に入れる。
-#今、袋には 3 の書かれたボールと 5 の書かれたボールが入っているため、このうち小さい 3 の書かれたボールを取り出し、 3 を記録した後に捨てる。
-#今、袋には 5 の書かれたボールのみが入っているため、この数を 5+2=7 に書き換える。
-#今、袋には 7 の書かれたボールのみが入っているため、このボールを取り出し、 7 を記録した後に捨てる。
-#よって、記録された順に 3 , 7 を出力します。
-#
-#入力例 2
-#6
-#1 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#3
-#
-#出力例 2
-#5000000000
-#答えが 32 bit整数に収まらないことがある事に注意してください。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    Q = int(input())
+    bag = []
+    add = 0
+
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            bag.append(query[1] - add)
+        elif query[0] == 2:
+            add += query[1]
+        else:
+            print(min(bag) + add)
+            bag.remove(min(bag))
+
+=======
+Suggestion 2
+
+def main():
+    import heapq
+    Q = int(input())
+    que = []
+    heapq.heapify(que)
+    for _ in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            heapq.heappush(que, query[1])
+        elif query[0] == 2:
+            que = [x + query[1] for x in que]
+        else:
+            print(heapq.heappop(que))
+
+=======
+Suggestion 3
+
+def main():
+    import heapq
+    q = int(input())
+    a = []
+    heapq.heapify(a)
+    total = 0
+    for i in range(q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            heapq.heappush(a,query[1]-total)
+        elif query[0] == 2:
+            total += query[1]
+        else:
+            print(heapq.heappop(a)+total)
+
+=======
+Suggestion 4
+
+def main():
+    import heapq
+    import sys
+    input = sys.stdin.readline
+    Q = int(input())
+    query = [input().split() for _ in range(Q)]
+    heap = []
+    add = 0
+    for p, x in query:
+        if p == '1':
+            heapq.heappush(heap, int(x) - add)
+        elif p == '2':
+            add += int(x)
+        else:
+            print(heapq.heappop(heap) + add)
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from heapq import heappush, heappop
+    readline = sys.stdin.readline
+    Q = int(readline())
+    balls = []
+    balls_sum = 0
+    for _ in range(Q):
+        query = list(map(int, readline().split()))
+        if query[0] == 1:
+            heappush(balls, query[1])
+        elif query[0] == 2:
+            balls_sum += query[1]
+        else:
+            print(heappop(balls) + balls_sum)
+            balls_sum = 0
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    from heapq import heappop, heappush
+    # 1行目
+    Q = int(input())
+    # 2行目以降
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    #print(query)
+    #print("Q", Q)
+    #print("quer
+
+=======
+Suggestion 7
+
+def main():
+    Q = int(input())
+    # 0: 何もしない
+    # 1: 1を足す
+    # 2: 2を足す
+    # 3: 3を足す
+    # 4: 4を足す
+    # 5: 5を足す
+    add = 0
+    # 0: 何もしない
+    # 1: 1を引く
+    # 2: 2を引く
+    # 3: 3を引く
+    # 4: 4を引く
+    # 5: 5を引く
+    sub = 0
+    # 0: 何もしない
+    # 1: 1を掛ける
+    # 2: 2を掛ける
+    # 3: 3を掛ける
+    # 4: 4を掛ける
+    # 5: 5を掛ける
+    mul = 0
+    # 0: 何もしない
+    # 1: 1で割る
+    # 2: 2で割る
+    # 3: 3で割る
+    # 4: 4で割る
+    # 5: 5で割る
+    div = 0
+    # 0: 何もしない
+    # 1: 1で割った余りを出す
+    # 2: 2で割った余りを出す
+    # 3: 3で割った余りを出す
+    # 4: 4で割った余りを出す
+    # 5: 5で割った余りを出す
+    rem = 0
+    # 0: 何もしない
+    # 1: 1で割った余りを出す
+    # 2: 2で割った余りを出す
+    # 3: 3で割った余りを出す
+    # 4:
+
+=======
+Suggestion 8
+
+def main():
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 1. クエリを処理していく
+    # 2. 1の処理で、ボールの数が0になった場合は、ボールを作成して、袋に入れる
+    # 3. 2の処理で、袋に入っているボールのうち書かれている数が最小のもの（複数ある場合はそのうちの 1 つ）を取り出し、そこに書かれている数を記録する。その後、そのボールを捨てる。
+    # 4. 3の処理で、記録された数を順に出力してください。
+
+    # 1. クエリを処理していく
+    # 2. 1の処理で、ボールの数が0になった場合は、ボールを作成して、袋に入れる
+    # 3. 2の処理で、袋に入っているボールのうち書かれている数が最小のもの（複数ある場合はそのうちの 1 つ）を取り出し、そこに書かれている数を記録する。その後、そのボールを捨てる。
+    # 4. 3の処理で、記録された数を順に出力してください。
+    # 5. 4の処理で、記録された数を順に出力してください。
+    # 6. 5の処理で、記録された数を順に出力してください。
+    # 7. 6の処理で、記録された数を順に出力してください。
+    # 8. 7の処理で、記録された数を順に出
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    que = []
+    for i in range(N):
+        que.append(input())
+    que = que[::-1]
+    #print(que)
+    ball = []
+    add = 0
+    while(que):
+        q = que.pop()
+        q = q.split()
+        #print(q)
+        if q[0] == "1":
+            ball.append(int(q[1]) - add)
+        elif q[0] == "2":
+            add += int(q[1])
+        else:
+            min_ball = min(ball)
+            print(min_ball + add)
+            ball.remove(min_ball)

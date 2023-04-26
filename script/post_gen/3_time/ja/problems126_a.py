@@ -1,32 +1,35 @@
-#問題文
-#A, B, C からなる長さ N の文字列 S と、1 以上 N 以下の整数 K が与えられます。
-#文字列 S の K 文字目を小文字に書き換え、新しくできた S を出力してください。
-#
-#制約
-#1 ≤ N ≤ 50
-#1 ≤ K ≤ N
-#S は A, B, C からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#S
-#
-#出力
-#文字列 S の K 文字目を小文字に書き換え、新しくできた S を出力せよ。
-#
-#入力例 1
-#3 1
-#ABC
-#
-#出力例 1
-#aBC
-#
-#入力例 2
-#4 3
-#CABA
-#
-#出力例 2
-#CAbA
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    print(S[:K-1] + S[K-1].lower() + S[K:])
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    print(s[:k-1] + s[k-1].lower() + s[k:])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    S = S[:K-1] + S[K-1].lower() + S[K:]
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = S[:K-1] + S[K-1].lower() + S[K:]
+    print(ans)

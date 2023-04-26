@@ -1,82 +1,255 @@
-#問題文
-#高橋君は、英小文字から成る文字列 S を持っています。
-#この S から始めて、ある与えられた手順に従って文字列を作ることにしました。
-#手順は Q 回の操作から成ります。操作 i(1 ≦ i ≦ Q) では、まず整数 T_i が与えられます。
-#T_i = 1 のとき : 文字列 S の前後を反転する。
-#T_i = 2 のとき : 追加で整数 F_i と英小文字 C_i が与えられる。
-#F_i = 1 のとき : 文字列 S の先頭に C_i を追加する。
-#F_i = 2 のとき : 文字列 S の末尾に C_i を追加する。
-#
-#高橋君のために、手順の後に最終的にできる文字列を求めてあげてください。
-#
-#制約
-#1 ≦ |S| ≦ 10^5
-#S は英小文字から成る
-#1 ≦ Q ≦ 2 × 10^5
-#T_i = 1 または 2
-#F_i = 1 または 2
-#C_i は英小文字である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#Q
-#Query_1
-#:
-#Query_Q
-#3 行目から Q + 2 行目の Query_i は、以下の 2 つのいずれかである。
-#1
-#T_i = 1 として操作を行うことを表す。
-#2 F_i C_i
-#T_i = 2 として操作を行うことを表す。
-#
-#出力
-#手順の後に最終的にできる文字列を出力せよ。
-#
-#入力例 1
-#a
-#4
-#2 1 p
-#1
-#2 2 c
-#1
-#
-#出力例 1
-#cpa
-#Q = 4 回の操作を行います。初め S は a です。
-#操作 1 : S の先頭に p を追加する。S は pa となる。
-#操作 2 : S の前後を反転する。S は ap となる。
-#操作 3 : S の末尾に c を追加する。S は apc となる。
-#操作 4 : S の前後を反転する。S は cpa となる。
-#よって最終的にできる文字列は cpa となります。
-#
-#入力例 2
-#a
-#6
-#2 2 a
-#2 1 b
-#1
-#2 2 c
-#1
-#1
-#
-#出力例 2
-#aabc
-#Q = 6 回の操作を行います。初め S は a です。
-#操作 1 : S は aa となる。
-#操作 2 : S は baa となる。
-#操作 3 : S は aab となる。
-#操作 4 : S は aabc となる。
-#操作 5 : S は cbaa となる。
-#操作 6 : S は aabc となる。
-#よって最終的にできる文字列は aabc となります。
-#
-#入力例 3
-#y
-#1
-#2 1 x
-#
-#出力例 3
-#xy
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    Q = int(input())
+    reverse = False
+    for i in range(Q):
+        query = input().split()
+        if query[0] == "1":
+            reverse = not reverse
+        elif query[1] == "1":
+            if reverse:
+                S += query[2]
+            else:
+                S = query[2] + S
+        else:
+            if reverse:
+                S = query[2] + S
+            else:
+                S += query[2]
+    print(S[::-1] if reverse else S)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    q = int(input())
+    ans = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            s = s[::-1]
+        else:
+            if query[1] == '1':
+                s = query[2] + s
+            else:
+                s += query[2]
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    Q = int(input())
+
+    T = []
+    F = []
+    C = []
+    for i in range(Q):
+        t = list(map(str, input().split()))
+        T.append(t[0])
+        if len(t) == 3:
+            F.append(t[1])
+            C.append(t[2])
+
+    a = []
+    b = []
+    for i in range(Q):
+        if T[i] == "1":
+            a, b = b, a
+        else:
+            if F[i] == "1":
+                a.append(C[i])
+            else:
+                b.append(C[i])
+
+    S = "".join(a[::-1]) + S + "".join(b)
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    Q = int(input())
+    query = [input().split() for _ in range(Q)]
+    ans = []
+    for i in range(Q):
+        if query[i][0] == "1":
+            query = query[::-1]
+        else:
+            if query[i][1] == "1":
+                ans.append(query[i][2])
+            else:
+                ans.append(query[i][2])
+    ans = "".join(ans)
+    if query[0][0] == "1":
+        ans = ans[::-1]
+    ans = ans + S
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    Q = int(input())
+    S = list(S)
+    reverse = False
+    for i in range(Q):
+        query = input()
+        if query == '1':
+            reverse = not reverse
+        else:
+            query = query.split()
+            if query[1] == '1':
+                if reverse:
+                    S.append(query[2])
+                else:
+                    S.insert(0, query[2])
+            else:
+                if reverse:
+                    S.insert(0, query[2])
+                else:
+                    S.append(query[2])
+    if reverse:
+        S = S[::-1]
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    q = int(input())
+    queries = [list(map(str, input().split())) for _ in range(q)]
+
+    is_reverse = False
+
+    for query in queries:
+        if query[0] == '1':
+            is_reverse = not is_reverse
+        else:
+            if (query[1] == '1' and not is_reverse) or (query[1] == '2' and is_reverse):
+                s = query[2] + s
+            else:
+                s = s + query[2]
+
+    if is_reverse:
+        print(s[::-1])
+    else:
+        print(s)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    q = int(input())
+    query = [input().split() for _ in range(q)]
+    reverse = 0
+    head = ""
+    tail = ""
+    for q in query:
+        if q[0] == "1":
+            reverse = 1 - reverse
+        elif q[0] == "2":
+            if q[1] == "1":
+                if reverse == 0:
+                    head = q[2] + head
+                else:
+                    tail = tail + q[2]
+            else:
+                if reverse == 0:
+                    tail = tail + q[2]
+                else:
+                    head = q[2] + head
+    if reverse == 1:
+        print(tail[::-1] + s + head[::-1])
+    else:
+        print(head + s + tail)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    q = int(input())
+    querys = [input().split() for _ in range(q)]
+    querys.reverse()
+    reverse = False
+    for query in querys:
+        if query[0] == '1':
+            reverse = not reverse
+        else:
+            if query[1] == '1':
+                if reverse:
+                    s += query[2]
+                else:
+                    s = query[2] + s
+            else:
+                if reverse:
+                    s = query[2] + s
+                else:
+                    s += query[2]
+    if reverse:
+        s = s[::-1]
+    print(s)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    Q = int(input())
+    N = len(S)
+    rev = 0
+    for i in range(Q):
+        query = list(map(str, input().split()))
+        if len(query) == 1:
+            rev += 1
+        else:
+            if query[1] == '1':
+                if rev % 2 == 0:
+                    S = query[2] + S
+                else:
+                    S = S + query[2]
+            else:
+                if rev % 2 == 0:
+                    S = S + query[2]
+                else:
+                    S = query[2] + S
+    if rev % 2 == 1:
+        S = S[::-1]
+    print(S)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    q = int(input())
+    query = [input().split() for _ in range(q)]
+    query.reverse()
+
+    ans = list(s)
+    reverse = False
+
+    for i in range(q):
+        if query[i][0] == '1':
+            reverse = not reverse
+        else:
+            if (query[i][1] == '1' and not reverse) or (query[i][1] == '2' and reverse):
+                ans.insert(0, query[i][2])
+            else:
+                ans.append(query[i][2])
+
+    if reverse:
+        ans.reverse()
+    print(''.join(ans))

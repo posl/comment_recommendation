@@ -1,40 +1,107 @@
-#問題文
-#黒橋君は，AtCoder Beginner Contest (ABC) にまだ参加したことがありません．
-#次に行われる ABC は第 N 回です．
-#黒橋君は，初めて参加する ABC を第 x 回としたときに，x の十進法表記でのすべての桁の数字が同じであるようにしたいです．
-#黒橋君が初めて参加する ABC としてふさわしいもののうち，最も早いものは第何回でしょうか？
-#
-#制約
-#100 ≦ N ≦ 999
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#N
-#
-#出力
-#黒橋君が初めて参加する ABC としてふさわしいもののうち，最も早いものは第何回かを出力せよ．
-#
-#入力例 1
-#111
-#
-#出力例 1
-#111
-#次に行われる ABC は第 111 回です．
-#これは黒橋君が初めて参加する ABC としてふさわしいです．
-#
-#入力例 2
-#112
-#
-#出力例 2
-#222
-#次に行われる ABC は第 112 回です．そのため，第 111 回の ABC にはもう参加することはできません．
-#黒橋君が初めて参加する ABC としてふさわしいもののうち，最も早いものは第 222 回です．
-#
-#入力例 3
-#750
-#
-#出力例 3
-#777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N <= 111:
+        print(111)
+    elif N <= 222:
+        print(222)
+    elif N <= 333:
+        print(333)
+    elif N <= 444:
+        print(444)
+    elif N <= 555:
+        print(555)
+    elif N <= 666:
+        print(666)
+    elif N <= 777:
+        print(777)
+    elif N <= 888:
+        print(888)
+    elif N <= 999:
+        print(999)
+    else:
+        print('error')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n < 111:
+        print(111)
+    elif n < 222:
+        print(222)
+    elif n < 333:
+        print(333)
+    elif n < 444:
+        print(444)
+    elif n < 555:
+        print(555)
+    elif n < 666:
+        print(666)
+    elif n < 777:
+        print(777)
+    elif n < 888:
+        print(888)
+    else:
+        print(999)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N < 100:
+        print(111)
+    elif N < 200:
+        print(222)
+    elif N < 300:
+        print(333)
+    elif N < 400:
+        print(444)
+    elif N < 500:
+        print(555)
+    elif N < 600:
+        print(666)
+    elif N < 700:
+        print(777)
+    elif N < 800:
+        print(888)
+    elif N < 900:
+        print(999)
+    else:
+        print(1111)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n % 111 == 0:
+        print(n)
+    else:
+        print((n // 111 + 1) * 111)
+
+=======
+Suggestion 6
+
+def main():
+    N = input()
+    if len(set(N)) == 1:
+        print(N)
+    else:
+        print(str(int(N[0])+1)*3)

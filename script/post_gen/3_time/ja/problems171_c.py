@@ -1,43 +1,111 @@
-#問題文
-#ロジャーは、彼のもとに突如現れた 1000000000000001 匹の犬をすべて飼うことを決意しました。犬たちにはもともと 1 から 1000000000000001 までの番号がふられていましたが、ロジャーは彼らに以下のルールで名前を授けました。
-#1,2,...,26 番の番号がついた犬はその順に a,b,...,z と命名されます。
-#27,28,29,...,701,702  番の番号がついた犬はその順に aa,ab,ac,...,zy,zz と命名されます。
-#703,704,705,...,18277,18278  番の番号がついた犬はその順に aaa,aab,aac,...,zzy,zzz と命名されます。
-#18279,18280,18281,...,475253,475254  番の番号がついた犬はその順に aaaa,aaab,aaac,...,zzzy,zzzz と命名されます。
-#475255,475256,...  番の番号がついた犬はその順に aaaaa,aaaab,... と命名されます。
-#(以下省略)
-#つまり、ロジャーが授けた名前を番号順に並べると:
-#a,b,...,z,aa,ab,...,az,ba,bb,...,bz,...,za,zb,...,zz,aaa,aab,...,aaz,aba,abb,...,abz,...,zzz,aaaa,... のようになります。
-#ロジャーはあなたに問題を出しました。
-#「番号 N の犬の名前を答えよ。」
-#
-#制約
-#N は整数
-# 1 ≦ N ≦ 1000000000000001
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#ロジャーの問題に対する答えを、英小文字のみからなる文字列として出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#b
-#
-#入力例 2
-#27
-#
-#出力例 2
-#aa
-#
-#入力例 3
-#123456789
-#
-#出力例 3
-#jjddja
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = ''
+    while n > 0:
+        n -= 1
+        ans = chr(ord('a') + n % 26) + ans
+        n //= 26
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        n -= 1
+        ans += chr(ord('a') + n % 26)
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = ''
+    while N > 0:
+        N -= 1
+        ans = chr(ord('a') + N % 26) + ans
+        N //= 26
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = []
+    while n > 0:
+        n -= 1
+        ans.append(chr(ord('a') + (n % 26)))
+        n //= 26
+    print(''.join(ans[::-1]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    name = ''
+    while N > 0:
+        N -= 1
+        name = chr(ord('a') + N % 26) + name
+        N //= 26
+    print(name)
+
+=======
+Suggestion 6
+
+def convert(num):
+    if num == 0:
+        return ""
+    else:
+        return convert((num - 1) // 26) + chr((num - 1) % 26 + ord("a"))
+
+n = int(input())
+print(convert(n))
+
+=======
+Suggestion 7
+
+def get_str(n):
+    if n <= 26:
+        return chr(ord('a') + n - 1)
+    else:
+        return get_str((n - 1) // 26) + chr(ord('a') + (n - 1) % 26)
+
+=======
+Suggestion 8
+
+def get_char(n):
+    if n <= 26:
+        return chr(96+n)
+    else:
+        return get_char((n-1)//26) + chr(96+(n-1)%26+1)
+
+n = int(input())
+print(get_char(n))
+
+=======
+Suggestion 9
+
+def calc(n):
+    if n == 0:
+        return ""
+    elif n <= 26:
+        return chr(96+n)
+    else:
+        if n % 26 == 0:
+            return calc(n//26-1) + chr(122)
+        else:
+            return calc(n//26) + chr(96+n%26)
+
+n = int(input())
+print(calc(n))

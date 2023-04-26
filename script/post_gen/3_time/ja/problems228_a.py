@@ -1,39 +1,122 @@
-#問題文
-#高橋君は、毎日 S 時 0 分に部屋の電気をつけ、毎日 T 時 0 分に消します。
-#電気をつけている間に日付が変わることもあります。
-#X 時 30 分に部屋の電気がついているかどうか判定してください。
-#
-#制約
-#0 ≦ S, T, X ≦ 23
-#S ≠ T
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S T X
-#
-#出力
-#X 時 30 分に部屋の電気がついているならば Yes と、そうでなければ No と出力せよ。
-#
-#入力例 1
-#7 20 12
-#
-#出力例 1
-#Yes
-#部屋の電気がついているのは 7 時 0 分から 20 時 0 分までの間です。12 時 30 分には電気がついているので、Yes と出力します。
-#
-#入力例 2
-#20 7 12
-#
-#出力例 2
-#No
-#部屋の電気がついているのは 0 時 0 分から 7 時 0 分までの間と、20 時 0 分から（次の日の）0 時 0 分までの間です。
-#12 時 30 分には電気がついていないので、No と出力します。
-#
-#入力例 3
-#23 0 23
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S, T, X = map(int, input().split())
+    if S < T:
+        if S <= X and X < T:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if S <= X or X < T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s <= x and x < t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s <= x or x < t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    S, T, X = map(int, input().split())
+    if S < T:
+        if S <= X < T:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if 0 <= X < T or S <= X < 24:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= x and x < t:
+        print("Yes")
+    elif s > t and (x >= s or x < t):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X and X < T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s,t,x = map(int,input().split())
+    if s < t:
+        if s <= x <= t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if 0 <= x <= t:
+            print("Yes")
+        elif s <= x <= 23:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X and X < T:
+        print("Yes")
+    elif S == 23 and T == 0 and X == 23:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s, t, x = map(int, input().split())
+    if x < s:
+        print("No")
+    elif x >= t:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    s, t, x = map(int, input().split())
+    #出力
+    print('Yes' if s <= x < t else 'No')

@@ -1,32 +1,46 @@
-#問題文
-#英小文字からなる長さ N の文字列 S が与えられます。S の末尾の文字を出力してください。
-#
-#制約
-#N は整数
-#1 ≤ N ≤ 1000
-#S は英小文字からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#S の末尾の文字を出力せよ。
-#
-#入力例 1
-#5
-#abcde
-#
-#出力例 1
-#e
-#S = abcdeです。S の末尾の文字は e なので、e を出力します。
-#
-#入力例 2
-#1
-#a
-#
-#出力例 2
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    print(S[-1])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    print(s[-1])
+
+=======
+Suggestion 3
+
+def main():
+    # 入力
+    N = int(input())
+    S = input()
+    # 出力
+    print(S[-1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    print(S[-1])
+    return
+
+=======
+Suggestion 5
+
+def main():
+    #標準入力を受け取る
+    #N = int(input())
+    #S = input()
+    #print(S[-1])
+    print(input()[-1])

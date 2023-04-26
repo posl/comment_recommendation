@@ -1,67 +1,128 @@
-#問題文
-#N 個のボールが左右一列に並んでいます。初め、左から i  (1 ≦ i ≦ N) 番目のボールには整数 i が書かれています。  
-#高橋君は Q 回の操作を行いました。 i  (1 ≦ i ≦ Q) 回目に行われた操作は次のようなものです。
-#整数 x_i が書かれているボールをその右隣のボールと入れ替える。ただし、整数 x_i が書かれているボールが元々右端にあった場合、代わりに左隣のボールと入れ替える。
-#操作後において左から i  (1 ≦ i ≦ N) 番目のボールに書かれている整数を a_i とします。 a_1,...,a_N を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#出力
-#a_1,...,a_N を空白区切りで出力せよ。
-#
-#入力例 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#出力例 1
-#1 2 3 5 4
-#操作は以下のように行われます。  
-#1 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 2,1,3,4,5 となる。
-#2 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#3 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,4,3,5 となる。
-#4 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#5 と書かれたボールは右端にあるので左隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,5,4 となる。
-#
-#入力例 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#出力例 2
-#1 2 3 4 5 7 6
-#
-#入力例 3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#出力例 3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    a = [i for i in range(1, N + 1)]
+    for i in range(Q):
+        x = int(input())
+        a[x - 1], a[x] = a[x], a[x - 1]
+    for i in range(N):
+        print(a[i], end=" ")
+    print()
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    balls = [i for i in range(1, N+1)]
+    for _ in range(Q):
+        x = int(input())
+        balls[x-1], balls[x] = balls[x], balls[x-1]
+    print(*balls)
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    balls = list(range(N+1))
+    for i in range(Q):
+        x = int(input())
+        balls[x], balls[x+1] = balls[x+1], balls[x]
+    print(*balls[1:])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    ball = [i for i in range(1,N+1)]
+    for i in range(Q):
+        x = int(input())
+        ball[x-1], ball[x] = ball[x], ball[x-1]
+    print(*ball)
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    ball = [i for i in range(1, N+1)]
+    for q in range(Q):
+        x = int(input())
+        ball[x-1], ball[x] = ball[x], ball[x-1]
+    print(*ball)
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    balls = [i for i in range(1, N+1)]
+    for i in range(Q):
+        x = int(input())
+        if x == 1:
+            balls[0], balls[1] = balls[1], balls[0]
+        elif x == N:
+            balls[N-2], balls[N-1] = balls[N-1], balls[N-2]
+        else:
+            balls[x-2], balls[x-1] = balls[x-1], balls[x-2]
+    print(*balls)
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    ball = [i for i in range(1, N+1)]
+    for i in range(Q):
+        x = int(input())
+        if x == N:
+            ball[x-1], ball[0] = ball[0], ball[x-1]
+        else:
+            ball[x-1], ball[x] = ball[x], ball[x-1]
+    print(*ball)
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    A = [i for i in range(1, N + 1)]
+    for _ in range(Q):
+        x = int(input())
+        if x == N:
+            A[0], A[N - 1] = A[N - 1], A[0]
+        else:
+            A[x], A[x - 1] = A[x - 1], A[x]
+    print(*A)
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    x = [int(input()) for _ in range(Q)]
+    a = [i for i in range(1, N+1)]
+    for i in x:
+        a[i-1], a[i] = a[i], a[i-1]
+    print(*a)
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    a = [i for i in range(1, N+1)]
+    for _ in range(Q):
+        x = int(input())
+        a_index = a.index(x)
+        if a_index == N-1:
+            a[a_index], a[a_index-1] = a[a_index-1], a[a_index]
+        else:
+            a[a_index], a[a_index+1] = a[a_index+1], a[a_index]
+    print(*a)

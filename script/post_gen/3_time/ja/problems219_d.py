@@ -1,54 +1,257 @@
-#問題文
-#N 種類の弁当が、それぞれ 1 個ずつ売られています。
-#i = 1, 2, ..., N について、i 種類目の弁当には A_i 個のたこ焼きと B_i 個のたい焼きが入っています。
-#高橋君は、 X 個以上のたこ焼きと Y 個以上のたい焼きを食べたいです。
-#高橋君がいくつかの弁当を選んで買うことで、 X 個以上のたこ焼きと Y 個以上のたい焼きを手に入れることが可能かどうか判定して下さい。また、可能な場合はそのために高橋君が購入しなければならない弁当の個数の最小値を求めて下さい。
-#各種類の弁当は 1 個しか売られていないため、同じ種類の弁当を 2 個以上購入することは出来ないことに注意して下さい。
-#
-#制約
-#1 ≦ N ≦ 300
-#1 ≦ X, Y ≦ 300
-#1 ≦ A_i, B_i ≦ 300
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#X Y
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#高橋君が X 個以上のたこ焼きと Y 個以上のたい焼きを手に入れることが不可能な場合は -1 を出力し、
-#可能な場合はそのために高橋君が購入しなければならない弁当の個数の最小値を出力せよ。
-#
-#入力例 1
-#3
-#5 6
-#2 1
-#3 4
-#2 3
-#
-#出力例 1
-#2
-#高橋君は、5 個以上のたこ焼きと 6 個以上のたい焼きを食べたいです。
-#高橋君は 2 種類目の弁当と 3 種類目の弁当を買うことで、
-#たこ焼きを 3 + 2 = 5 個、たい焼きを 4 + 3 = 7 個手に入れることができます。
-#
-#入力例 2
-#3
-#8 8
-#3 4
-#2 3
-#2 1
-#
-#出力例 2
-#-1
-#高橋君がたとえすべての弁当を買ったとしても、高橋君は 8 個以上のたこ焼きと 8 個以上のたい焼きを手に入れることが出来ません。
-#よって、-1 を出力します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[0 for _ in range(X + Y + 1)] for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        for j in range(1, X + Y + 1):
+            dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+            if j >= A[i - 1]:
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - A[i - 1]] + B[i - 1])
+            if j >= B[i - 1]:
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - B[i - 1]] + A[i - 1])
+    for i in range(X, X + Y + 1):
+        if dp[N][i] >= X:
+            print(i - X)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[float("inf")] * (X + Y + 1) for _ in range(N + 1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(X + Y + 1):
+            if j - A[i] >= 0:
+                dp[i + 1][j] = min(dp[i + 1][j], dp[i][j - A[i]] + 1)
+            if j - B[i] >= 0:
+                dp[i + 1][j] = min(dp[i + 1][j], dp[i][j - B[i]] + 1)
+            dp[i + 1][j] = min(dp[i + 1][j], dp[i][j])
+    if dp[N][X] == float("inf") or dp[N][Y] == float("inf"):
+        print(-1)
+    else:
+        print(min(dp[N][X], dp[N][Y]))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # dp[i][j][k] = i 番目までの弁当を見て、たこ焼きが j 個、たい焼きが k 個あるときの、
+    # 買う弁当の最小個数
+    dp = [[[float('inf')] * (Y + 1) for _ in range(X + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 0
+    for i in range(N):
+        for j in range(X + 1):
+            for k in range(Y + 1):
+                dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][j][k])
+                nj = j + A[i]
+                nk = k + B[i]
+                if nj <= X and nk <= Y:
+                    dp[i + 1][nj][nk] = min(dp[i + 1][nj][nk], dp[i][j][k] + 1)
+    ans = dp[N][X][Y]
+    if ans == float('inf'):
+        ans = -1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    # dp[i][j][k] = たこ焼きがj個、たい焼きがk個の時の最小個数
+    dp = [[[float('inf')] * (Y + 1) for _ in range(X + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 0
+
+    for i in range(N):
+        for j in range(X + 1):
+            for k in range(Y + 1):
+                dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][j][k])
+                if j + A[i] <= X and k + B[i] <= Y:
+                    dp[i + 1][j + A[i]][k + B[i]] = min(dp[i + 1][j + A[i]][k + B[i]], dp[i][j][k] + 1)
+
+    if dp[N][X][Y] == float('inf'):
+        print(-1)
+    else:
+        print(dp[N][X][Y])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    dp = [[[float("inf")] * (X + 1) for _ in range(Y + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 0
+    for i in range(N):
+        for j in range(Y + 1):
+            for k in range(X + 1):
+                if j - B[i] >= 0 and k - A[i] >= 0:
+                    dp[i + 1][j][k] = min(dp[i][j][k], dp[i][j - B[i]][k - A[i]] + 1)
+                else:
+                    dp[i + 1][j][k] = min(dp[i][j][k], dp[i][j][k])
+    if dp[N][Y][X] == float("inf"):
+        print(-1)
+    else:
+        print(dp[N][Y][X])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    dp = [[[float("inf")] * (X + 1) for _ in range(Y + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 0
+
+    for i in range(N):
+        for j in range(Y + 1):
+            for k in range(X + 1):
+                dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][j][k])
+                if j + B[i] <= Y and k + A[i] <= X:
+                    dp[i + 1][j + B[i]][k + A[i]] = min(dp[i + 1][j + B[i]][k + A[i]], dp[i][j][k] + 1)
+
+    if dp[N][Y][X] == float("inf"):
+        print(-1)
+    else:
+        print(dp[N][Y][X])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        A_i, B_i = map(int, input().split())
+        A.append(A_i)
+        B.append(B_i)
+
+    dp = [[[0 for k in range(Y + 1)] for j in range(X + 1)] for i in range(N + 1)]
+    for i in range(N):
+        for j in range(X + 1):
+            for k in range(Y + 1):
+                dp[i + 1][j][k] = max(dp[i + 1][j][k], dp[i][j][k])
+                if j - A[i] >= 0 and k - B[i] >= 0:
+                    dp[i + 1][j][k] = max(dp[i + 1][j][k], dp[i][j - A[i]][k - B[i]] + 1)
+
+    if dp[N][X][Y] == 0:
+        print(-1)
+    else:
+        print(dp[N][X][Y])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(0, N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[[0 for i in range(0, Y + 1)] for j in range(0, X + 1)] for k in range(0, N + 1)]
+    for n in range(1, N + 1):
+        for x in range(0, X + 1):
+            for y in range(0, Y + 1):
+                dp[n][x][y] = min(dp[n][x][y], dp[n - 1][x][y])
+                if x >= A[n - 1]:
+                    dp[n][x][y] = min(dp[n][x][y], dp[n - 1][x - A[n - 1]][y] + 1)
+                if y >= B[n - 1]:
+                    dp[n][x][y] = min(dp[n][x][y], dp[n - 1][x][y - B[n - 1]] + 1)
+    if dp[N][X][Y] == 10 ** 10:
+        print(-1)
+    else:
+        print(dp[N][X][Y])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+
+    dp = [[float("inf")] * (X + Y + 1) for _ in range(N + 1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(X + Y + 1):
+            if j < AB[i][0] + AB[i][1]:
+                dp[i + 1][j] = dp[i][j]
+            else:
+                dp[i + 1][j] = min(dp[i][j], dp[i + 1][j - AB[i][0] - AB[i][1]] + 1)
+
+    if dp[N][X + Y] == float("inf"):
+        print(-1)
+    else:
+        print(dp[N][X + Y])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[[float('inf')] * (X + 1) for _ in range(Y + 1)] for _ in range(N + 1)]
+    dp[0][0][0] = 0
+    for i in range(N):
+        for j in range(Y + 1):
+            for k in range(X + 1):
+                dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][j][k])
+                if j - AB[i][1] >= 0 and k - AB[i][0] >= 0:
+                    dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][j - AB[i][1]][k - AB[i][0]] + 1)
+    ans = dp[N][Y][X]
+    if ans == float('inf'):
+        ans = -1
+    print(ans)

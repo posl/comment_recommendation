@@ -1,42 +1,120 @@
-#問題文
-#ジャンボ高橋君はゴルフの練習をすることにしました。
-#ジャンボ高橋君の目標は飛距離を K の倍数にすることですが、ジャンボ高橋君の出せる飛距離の範囲は A 以上 B 以下です。
-#目標の達成が可能であれば OK と、不可能であれば NG と出力してください。
-#
-#制約
-#入力はすべて整数
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ K ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#A B
-#
-#出力
-#目標の達成が可能であれば OK と、不可能であれば NG と出力せよ。
-#
-#入力例 1
-#7
-#500 600
-#
-#出力例 1
-#OK
-#7 の倍数のうち、たとえば 567 が 500 以上 600 以下の範囲にあります。
-#
-#入力例 2
-#4
-#5 7
-#
-#出力例 2
-#NG
-#どんな 4 の倍数も、5 以上 7 以下の範囲にはありません。
-#
-#入力例 3
-#1
-#11 11
-#
-#出力例 3
-#OK
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    for i in range(A, B+1):
+        if i % K == 0:
+            print("OK")
+            exit()
+    print("NG")
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+    elif a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print('OK')
+    elif a // k != b // k:
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0 or a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 5
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    if A % K == 0 or B % K == 0:
+        print("OK")
+        return
+    for i in range(A, B+1):
+        if i % K == 0:
+            print("OK")
+            return
+    print("NG")
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    a,b = map(int, input().split())
+    if a%k == 0 or b%k == 0:
+        print("OK")
+    elif a//k < b//k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+    else:
+        if a // k < b // k:
+            print("OK")
+        else:
+            print("NG")
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    a,b = map(int, input().split())
+    if a%k == 0 or b%k == 0:
+        print('OK')
+    elif a//k < b//k:
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 9
+
+def check():
+    #K
+    k = int(input())
+    #A B
+    a,b = map(int, input().split())
+    if a%k == 0 or b%k == 0:
+        print('OK')
+    elif a//k != b//k:
+        print('OK')
+    else:
+        print('NG')

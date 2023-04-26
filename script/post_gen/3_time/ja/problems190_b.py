@@ -1,65 +1,113 @@
-#問題文
-#魔法使いの高橋君は魔物と戦っています。
-#高橋君は N 種類の呪文を使うことができます。
-#i 番目の呪文は詠唱に X_i 秒かかり、威力は Y_i です。
-#ただし、この魔物は強いので、詠唱に S 秒以上かかる呪文や、威力が D 以下の呪文ではダメージを与えられません。
-#また、呪文以外の方法でダメージを与えることもできません。
-#高橋君は魔物にダメージを与えられるでしょうか？
-#
-#制約
-#入力は全て整数
-#1 ≤ N ≤ 100
-#1 ≤ X_i ≤ 10^9
-#1 ≤ Y_i ≤ 10^9
-#1 ≤ S ≤ 10^9
-#1 ≤ D ≤ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N S D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#出力
-#魔物にダメージを与えられるならば Yes を、与えられないならば No を出力せよ。
-#
-#入力例 1
-#4 9 9
-#5 5
-#15 5
-#5 15
-#15 15
-#
-#出力例 1
-#Yes
-#2, 4 番目の呪文は詠唱の時間が長いためダメージを与えられません。
-#また、 1, 2 番目の呪文は威力が足りないためダメージを与えられません。
-#したがって、3 番目の呪文でのみダメージを与えられます。  
-#
-#入力例 2
-#3 691 273
-#691 997
-#593 273
-#691 273
-#
-#出力例 2
-#No
-#
-#入力例 3
-#7 100 100
-#10 11
-#12 67
-#192 79
-#154 197
-#142 158
-#20 25
-#17 108
-#
-#出力例 3
-#Yes
-#7 番目の呪文でのみダメージを与えられます。
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, S, D = map(int, input().split())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    for i in range(N):
+        if X[i] < S and Y[i] > D:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, S, D = map(int, input().split())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    for i in range(N):
+        if X[i] < S and Y[i] > D:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 3
+
+def solve():
+    N, S, D = map(int, input().split())
+    for _ in range(N):
+        X, Y = map(int, input().split())
+        if X < S and Y > D:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def solve():
+    N, S, D = map(int, input().split())
+    for i in range(N):
+        X, Y = map(int, input().split())
+        if X < S and Y > D:
+            print('Yes')
+            return
+    print('No')
+    return
+
+=======
+Suggestion 5
+
+def solve():
+    N,S,D = map(int,input().split())
+    for i in range(N):
+        X,Y = map(int,input().split())
+        if X < S and Y > D:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n,s,d = map(int,input().split())
+    xy = [list(map(int,input().split())) for _ in range(n)]
+    for x,y in xy:
+        if x < s and y > d:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    n,s,d = map(int, input().split())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+
+    for i in range(n):
+        if x[i] < s and y[i] > d:
+            print("Yes")
+            return
+
+    print("No")
+
+=======
+Suggestion 8
+
+def get_input_data():
+    n, s, d = map(int, input().split())
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    return n, s, d, xy

@@ -1,77 +1,148 @@
-#問題文
-#縦 H マス、横 W マスのグリッドがあります。上から i 行目、左から j 列目のマスを (i,j) と表します。
-#各マスの状態は文字 C_{i,j} で表されます。C_{i,j} が . ならば (i, j) には何も置かれておらず、 # ならば箱が 1 個置かれています。
-#1 ≦ j ≦ W を満たす整数 j に対して、整数 X_j を次のように定義します。  
-#j 列目に置かれている箱の個数。言い換えると、C_{i,j} が # であるような整数 i の個数。
-#X_1, X_2, ..., X_W をすべて求めてください。
-#
-#制約
-#1 ≦ H ≦ 1000
-#1 ≦ W ≦ 1000
-#H, W は整数
-#C_{i, j} は . または #
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#C_{1,1}C_{1,2}... C_{1,W}
-#C_{2,1}C_{2,2}... C_{2,W}
-#.
-#.
-#.
-#C_{H,1}C_{H,2}... C_{H,W}
-#
-#出力
-#X_1, X_2, ..., X_W を以下の形式に従って出力せよ。
-#X_1 X_2 ... X_W
-#
-#入力例 1
-#3 4
-##..#
-#.#.#
-#.#.#
-#
-#出力例 1
-#1 2 0 3
-#1 列目の箱が置かれているマスは (1, 1) の 1 ヵ所です。よって X_1 = 1 です。
-#2 列目の箱が置かれているマスは (2, 2), (3, 2) の 2 ヵ所です。よって X_2 = 2 です。
-#3 列目の箱が置かれているマスは存在しません。よって X_3 = 0 です。
-#4 列目の箱が置かれているマスは (1, 4), (2, 4), (3, 4) の 3 ヵ所です。よって X_4 = 3 です。 
-#よって (X_1, X_2, X_3, X_4) = (1, 2, 0, 3) が答えとなります。
-#
-#入力例 2
-#3 7
-#.......
-#.......
-#.......
-#
-#出力例 2
-#0 0 0 0 0 0 0
-#箱が置かれているマスが存在しない場合もあります。
-#
-#入力例 3
-#8 3
-#.#.
-####
-#.#.
-#.#.
-#.##
-#..#
-###.
-#.##
-#
-#出力例 3
-#2 7 4
-#
-#入力例 4
-#5 47
-#.#..#..#####..#...#..#####..#...#...###...#####
-#.#.#...#.......#.#...#......##..#..#...#..#....
-#.##....#####....#....#####..#.#.#..#......#####
-#.#.#...#........#....#......#..##..#...#..#....
-#.#..#..#####....#....#####..#...#...###...#####
-#
-#出力例 4
-#0 5 1 2 2 0 0 5 3 3 3 3 0 0 1 1 3 1 1 0 0 5 3 3 3 3 0 0 5 1 1 1 5 0 0 3 2 2 2 2 0 0 5 3 3 3 3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    C = [list(input()) for _ in range(H)]
+    X = [0] * W
+    for j in range(W):
+        for i in range(H):
+            if C[i][j] == "#":
+                X[j] += 1
+    print(*X)
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    c = [input() for _ in range(h)]
+    for j in range(w):
+        x = 0
+        for i in range(h):
+            if c[i][j] == '#':
+                x += 1
+        print(x, end=' ')
+    print()
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    C = [list(input()) for _ in range(H)]
+    X = [0 for _ in range(W)]
+    for j in range(W):
+        for i in range(H):
+            if C[i][j] == '#':
+                X[j] += 1
+    print(*X)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    C = [list(input()) for i in range(H)]
+    X = [0] * W
+    for i in range(W):
+        for j in range(H):
+            if C[j][i] == '#':
+                X[i] += 1
+    print(" ".join(map(str, X)))
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    c = [input() for _ in range(h)]
+    for i in range(w):
+        print(sum(1 for j in range(h) if c[j][i] == '#'), end=' ')
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    C = [list(input()) for i in range(H)]
+    #print(C)
+    X = [0] * W
+    for j in range(W):
+        for i in range(H):
+            if C[i][j] == "#":
+                X[j] += 1
+    print(*X)
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    H, W = map(int, input().split())
+    C = [input() for _ in range(H)]
+    # 出力
+    for j in range(W):
+        print(sum(1 for i in range(H) if C[i][j] == '#'), end=' ')
+    print()
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    #print(h, w)
+    c = []
+    for i in range(h):
+        c.append(input())
+    #print(c)
+    for i in range(w):
+        x = 0
+        for j in range(h):
+            if c[j][i] == "#":
+                x += 1
+        print(x, end = " ")
+    print()
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    H, W = map(int, input().split())
+    C = [input() for i in range(H)]
+    #print(H, W)
+    #print(C)
+    #初期化
+    X = [0 for i in range(W)]
+    #print(X)
+    #計算
+    for i in range(H):
+        for j in range(W):
+            if C[i][j] == '#':
+                X[j] += 1
+    #出力
+    print(*X)
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    H, W = map(int, input().split())
+    C = []
+    for i in range(H):
+        C.append(input())
+    #print(H, W, C)
+    #処理
+    #X_j = j 列目に置かれている箱の個数
+    X = [0] * W
+    for i in range(W):
+        for j in range(H):
+            if C[j][i] == '#':
+                X[i] += 1
+    #出力
+    print(*X)

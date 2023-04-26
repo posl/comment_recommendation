@@ -1,30 +1,91 @@
-#問題文
-#西暦 N 年は何世紀ですか？
-#世紀とは？
-#西暦 1 年から 100 年までを 1 世紀、 101 年から 200 年までを 2 世紀と、以降も同様に西暦を 100 年単位で区切って呼称したものです。
-#
-#制約
-#1 ≦ N ≦ 3000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#2021
-#
-#出力例 1
-#21
-#今年、西暦 2021 年は 21 世紀です。
-#
-#入力例 2
-#200
-#
-#出力例 2
-#2
-#西暦 200 年は 2 世紀です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 100 == 0:
+        print(n // 100)
+    else:
+        print(n // 100 + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 100 == 0:
+        print(N // 100)
+    else:
+        print(N // 100 + 1)
+
+=======
+Suggestion 3
+
+def century(n):
+    if n % 100 == 0:
+        return n // 100
+    else:
+        return n // 100 + 1
+
+n = int(input())
+print(century(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if n % 100 == 0:
+        print(int(n / 100))
+    else:
+        print(int(n / 100 + 1))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = n // 100
+    if n % 100 != 0:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = N // 100
+    if N % 100 != 0:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print((n+99)//100)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print((n + 99) // 100)
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print((N-1)//100 + 1)
+
+=======
+Suggestion 10
+
+def century(year):
+    return (year + 99) // 100

@@ -1,38 +1,98 @@
-#問題文
-#0、1、6、8、9 からなる文字列 S が与えられます。
-#S を 180 度回転したものを出力してください。すなわち、S に次の操作を施してできる文字列を出力してください。
-#S を反転する。
-#0 を 0 に、1 を 1 に、6 を 9 に、8 を 8 に、9 を 6 に変換する。
-#
-#制約
-#1 ≦ |S| ≦ 10^5
-#S は 0、1、6、8、9 からなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S を 180 度回転した文字列を出力せよ。
-#
-#入力例 1
-#0601889
-#
-#出力例 1
-#6881090
-#0601889 を 180 度回転すると 6881090 になります。
-#
-#入力例 2
-#86910
-#
-#出力例 2
-#01698
-#
-#入力例 3
-#01010
-#
-#出力例 3
-#01010
-#S が変化しないこともあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = list(input())
+    s.reverse()
+    for i in range(len(s)):
+        if s[i] == "6":
+            s[i] = "9"
+        elif s[i] == "9":
+            s[i] = "6"
+    print("".join(s))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    ans = ''
+    for i in s:
+        if i == '6':
+            ans += '9'
+        elif i == '9':
+            ans += '6'
+        else:
+            ans += i
+    print(ans[::-1])
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0', 'a')
+    S = S.replace('1', 'b')
+    S = S.replace('6', 'c')
+    S = S.replace('8', 'd')
+    S = S.replace('9', 'e')
+    S = S.replace('a', '9')
+    S = S.replace('b', '1')
+    S = S.replace('c', '6')
+    S = S.replace('d', '8')
+    S = S.replace('e', '0')
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('0','a')
+    s = s.replace('1','b')
+    s = s.replace('6','c')
+    s = s.replace('8','d')
+    s = s.replace('9','e')
+    s = s.replace('a','9')
+    s = s.replace('b','1')
+    s = s.replace('c','6')
+    s = s.replace('d','8')
+    s = s.replace('e','0')
+    print(s)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('6', 'x')
+    s = s.replace('9', '6')
+    s = s.replace('x', '9')
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('6', 'a')
+    s = s.replace('9', '6')
+    s = s.replace('a', '9')
+    print(s)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace("6", "x")
+    S = S.replace("9", "6")
+    S = S.replace("x", "9")
+    print(S)

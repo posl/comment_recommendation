@@ -1,63 +1,123 @@
-#問題文
-#整数からなる数列が N 個あります。
-#i  (1 ≦ i ≦ N) 番目の数列は L_i 項からなり、i 番目の数列の第 j  (1 ≦ j ≦ L_i) 項 は a_{i, j} です。
-#Q 個のクエリが与えられます。k  (1 ≦ k ≦ Q) 番目のクエリでは、整数 s_k, t_k が与えられるので、s_k 番目の数列の第 t_k 項を求めてください。
-#
-#制約
-#1 ≦ N, Q ≦ 2 × 10^5
-#L_i ≧ 1  (1 ≦ i ≦ N)
-#sum_{i=1}^N L_i ≦ 2 × 10^5
-#1 ≦ a_{i, j} ≦ 10^9  (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k}  (1 ≦ k ≦ Q)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#L_1 a_{1, 1} ... a_{1, L_1}
-#.
-#.
-#.
-#L_N a_{N, 1} ... a_{N, L_N}
-#s_1 t_1
-#.
-#.
-#.
-# 
-#s_Q t_Q
-#
-#出力
-#Q 行出力せよ。k  (1 ≦ k ≦ Q) 行目には、k 番目のクエリに対する答えを出力せよ。
-#
-#入力例 1
-#2 2
-#3 1 4 7
-#2 5 9
-#1 3
-#2 1
-#
-#出力例 1
-#7
-#5
-#1 番目の数列は (1, 4, 7)、2 番目の数列は (5, 9) です。
-#それぞれのクエリに対する答えは次のようになります。
-#1 番目の数列の第 3 項は 7 です。
-#2 番目の数列の第 1 項は 5 です。
-#
-#入力例 2
-#3 4
-#4 128 741 239 901
-#2 1 1
-#3 314 159 26535
-#1 1
-#2 2
-#3 3
-#1 4
-#
-#出力例 2
-#128
-#1
-#26535
-#901
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    B = []
+    for i in range(Q):
+        B.append(list(map(int, input().split())))
+    for i in range(Q):
+        print(A[B[i][0]-1][B[i][1]-1])
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, input().split())))
+    for _ in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t-1])
+
+=======
+Suggestion 4
+
+def main():
+    n,q = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    b = []
+    for i in range(q):
+        b.append(list(map(int, input().split())))
+    for i in range(q):
+        print(a[b[i][0]-1][b[i][1]-1])
+
+=======
+Suggestion 5
+
+def main():
+    n,q=map(int,input().split())
+    a=[[] for _ in range(n)]
+    for i in range(n):
+        a[i]=list(map(int,input().split()))
+    for i in range(q):
+        s,t=map(int,input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 6
+
+def main():
+    #n, q = map(int, input().split())
+    #l = [list(map(int, input().split())) for _ in range(n)]
+    #s = [list(map(int, input().split())) for _ in range(q)]
+    n, q = 2, 2
+    l = [[3, 1, 4, 7], [2, 5, 9]]
+    s = [[1, 3], [2, 1]]
+    for i in range(q):
+        print(l[s[i][0]-1][s[i][1]-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    # print(L)
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t-1])
+    return
+
+=======
+Suggestion 8
+
+def get_input():
+    n, q = map(int, input().split())
+    l = list()
+    a = list()
+    for _ in range(n):
+        l.append(int(input().split()[0]))
+        a.append(list(map(int, input().split())))
+    s = list()
+    t = list()
+    for _ in range(q):
+        s_i, t_i = map(int, input().split())
+        s.append(s_i)
+        t.append(t_i)
+    return n, q, l, a, s, t
+
+=======
+Suggestion 9
+
+def main():
+    # ここに書く
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t-1])

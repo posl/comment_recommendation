@@ -1,71 +1,206 @@
-#問題文
-#N 行 10^9 列の格子状の区画に区切られた街に N 枚の壁があり、1 から N までの番号が割り振られています。
-#壁 i は上から i 行目、左から L_i 列目から R_i 列目の範囲にあります。(入出力例 1
-# の図も参考にしてください。)
-#高橋君は N 枚の壁をすべて破壊することにしました。
-#超人的な腕力を持つ高橋君は、1 回のパンチで連続する D 列にまとめてダメージを与えることができます。  
-#より厳密に言い換えると、1 以上 10^9 - D + 1 以下の 整数 x を選んで、x 列目から x + D - 1 列目に (一部でも) 存在するすべての破壊されていない壁にパンチによるダメージを与えることができます。  
-#壁は一部分でもダメージを受けると、パンチの衝撃波により全体が木っ端みじんに破壊されてしまいます。
-#(入出力例 1
-# の説明も参考にしてください。)
-#高橋君がすべての壁を破壊するには、少なくとも何回のパンチを放つ必要がありますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#出力
-#すべての壁を破壊するのに必要なパンチの最少回数を出力せよ。
-#
-#入力例 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#出力例 1
-#2
-#入力例 1に対応する壁の配置を図示したものが下図です。
-#たとえば次のようにパンチを放つことで、 2 回のパンチですべての壁を破壊することができます。(以下の説明では、a 列目から b 列目までの範囲を lbrack a, b rbrack と表記します。)
-#まず、 lbrack 2, 4 rbrack にパンチを放つ。 lbrack 2, 4 rbrack に存在する壁である壁 1 と壁 2 はダメージを受け、破壊される。
-#次に lbrack 5, 7rbrack にパンチを放つ。lbrack 5, 7rbrack に存在する壁 3 はダメージを受け、破壊される。
-#また、次の方法でもすべての壁を 2 回のパンチで破壊することができます。
-#まず、lbrack 7, 9 rbrack にパンチを放ち、壁 2 と壁 3 を破壊する。
-#次に、lbrack 1, 3 rbrack にパンチを放ち、壁 1 を破壊する。
-#
-#入力例 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#出力例 2
-#1
-#入出力例 1
-# と比べると、壁 3 の範囲が lbrack 5, 9 rbrack から lbrack 4, 9 rbrack に変わりました。
-#この場合は lbrack 2, 4 rbrack にパンチを放つことで 1 回ですべての壁を破壊できます。
-#
-#入力例 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    for i in range(N):
+        l = L[i]
+        r = l + D - 1
+        if r > R[i]:
+            continue
+        else:
+            ans += 1
+            L[i] = r + 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = N
+    i = 0
+    j = 0
+    while i < N:
+        if L[i] - R[j] > D:
+            ans -= 1
+            j += 1
+        else:
+            i += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L = sorted(L)
+    R = sorted(R)
+    cnt = 0
+    for i in range(N):
+        if R[i] - L[i] + 1 < D:
+            cnt += 1
+        else:
+            cnt += 2
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N,D = map(int,input().split())
+    L = [0]*N
+    R = [0]*N
+    for i in range(N):
+        L[i],R[i] = map(int,input().split())
+    #print(N,D)
+    #print(L)
+    #print(R)
+    L.sort()
+    R.sort()
+    #print(L)
+    #print(R)
+    ans = 0
+    for i in range(N):
+        if L[i] + D - 1 < R[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    wall = []
+    for i in range(N):
+        L, R = map(int, input().split())
+        wall.a
+
+=======
+Suggestion 6
+
+def main():
+    N, D = map(int, input().split())
+    walls = []
+    for i in range(N):
+        L, R = map(int, input().split())
+        walls.append([L, R])
+    walls.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if walls[j][0] - walls[i][1] > D:
+                break
+            if walls[j][1] - walls[i][0] <= D:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    R.sort()
+    L.sort()
+    ans = 0
+    for i in range(N):
+        if L[i] + D - 1 >= R[i]:
+            ans += 1
+        else:
+            j = bisect.bisect_left(R, L[i] + D)
+            ans += N - j
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, D = map(int, input().split())
+    walls = [list(map(int, input().split())) for _ in range(N)]
+    walls.sort(key=lambda x: x[0])
+    ans = 0
+    while walls:
+        ans += 1
+        start = walls[0][0]
+        for i in range(len(walls)):
+            if walls[i][0] - start >= D:
+                walls = walls[i:]
+                break
+            if walls[i][1] - start >= D:
+                walls = walls[i+1:]
+                break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, d = map(int, input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort(key=lambda x: x[0])
+    ans = 0
+    r = 0
+    for i in range(n):
+        if l[i][1] <= r:
+            continue
+        if l[i][0] > r:
+            r = l[i][0]
+        ans += (l[i][1] - r) // d + 1
+        r += ((l[i][1] - r) // d + 1) * d
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, D = map(int, input().split())
+    wall = [list(map(int, input().split())) for _ in range(N)]
+    wall.sort(key=lambda x:x[0])
+    ans = 0
+    while len(wall) > 0:
+        ans += 1
+        wall.sort(key=lambda x:x[0])
+        now = wall[0][0]
+        del wall[0]
+        for i in range(len(wall)):
+            if wall[i][0] <= now < wall[i][1]:
+                wall[i][0] = now + D
+            if wall[i][1] <= now + D:
+                del wall[i]
+                break
+    print(ans)

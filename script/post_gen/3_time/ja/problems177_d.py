@@ -1,62 +1,132 @@
-#問題文
-#人 1 から 人 N までの N 人の人がいます。
-#「人 A_i と人 B_i は友達である」という情報が M 個与えられます。同じ情報が複数回与えられることもあります。
-#X と Y が友達、かつ、Y と Z が友達ならば、X と Z も友達です。また、M 個の情報から導くことができない友達関係は存在しません。
-#悪の高橋君は、この N 人をいくつかのグループに分け、全ての人について「同じグループの中に友達がいない」という状況を作ろうとしています。
-#最小でいくつのグループに分ければ良いでしょうか？
-#
-#制約
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#出力例 1
-#3
-#例えば {1,3},{2,4},{5} という 3 つのグループに分けることで目的を達成できます。
-#
-#入力例 2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#出力例 2
-#4
-#
-#入力例 3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def find(x):
+    if par[x] < 0:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 2
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def find_root(x):
+    if root[x] == x:
+        return x
+    else:
+        root[x] = find_root(root[x])
+        return root[x]
+
+=======
+Suggestion 4
+
+def dfs(v):
+    seen[v] = True
+    for next_v in graph[v]:
+        if seen[next_v]:
+            continue
+        dfs(next_v)
+
+N, M = map(int, input().split())
+
+graph = [[] for _ in range(N)]
+for _ in range(M):
+    A, B = map(int, input().split())
+    A -= 1
+    B -= 1
+    graph[A].append(B)
+    graph[B].append(A)
+
+seen = [False] * N
+
+ans = 0
+for v in range(N):
+    if seen[v]:
+        continue
+    dfs(v)
+    ans += 1
+
+print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * (n+1)
+    for i in range(m):
+        x,y = map(int,input().split())
+        a[x] += 1
+        a[y] += 1
+    for i in range(1,n+1):
+        if a[i] % 2 != 0:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    friends = [list(map(int, input().split())) for _ in range(M)]
+    friend_list = [[] for _ in range(N)]
+    for i in range(M):
+        friend_list[friends[i][0]-1].append(friends[i][1]-1)
+        friend_list[friends[i][1]-1].append(friends[i][0]-1)
+    #print(friend_list)
+    group = 0
+    for i in range(N):
+        if friend_list[i] == []:
+            group += 1
+            continue
+        if i in friend_list[i]:
+            group += 1
+            continue
+        for j in friend_list[i]:
+            if j in friend_list[j]:
+                group += 1
+                break
+    print(group)
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    ab = sorted(ab, key=lambda x: x[0])
+    ab = sorted(ab, key=lambda x: x[1])
+    #print(ab)
+
+    # 隣り合う要素が同じ値であるかどうかを確認する
+    # 隣り合う要素が同じ値である場合、グループ数を1つ減らす
+    cnt = 0
+    for i in range(1,m):
+        if ab[i-1][1] == ab[i][1]:
+            cnt += 1
+    #print(cnt)
+
+    # グループ数は、m-1からcntを引いた値
+    print(m-1-cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    #print(N, M)
+    #

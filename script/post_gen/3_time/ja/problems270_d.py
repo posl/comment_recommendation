@@ -1,59 +1,226 @@
-#問題文
-#数列 (A_1,...,A_K) を使って、高橋君と青木君が石取りゲームをします。
-#最初、山には N 個の石があります。高橋君から順に、二人が交互に次の操作を行います。
-#現在山にある石の個数以下であるような A_i を 1 つ選ぶ。山から A_i 個の石を取り除く。
-#山から石がなくなったとき、ゲームは終了します。
-#二人がともに、ゲーム終了までに自分が取り除いた石の個数を最大化しようとするとき、高橋君は何個の石を取り除くことができますか？
-#
-#制約
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ... < A_K ≦ N
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_1 A_2 ... A_K
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#10 2
-#1 4
-#
-#出力例 1
-#5
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#この例では高橋君は 5 個の石を取り除くことができます。高橋君が 6 個以上の石を取り除くことはできないためこれが最大です。  
-#高橋君は 5 個の石を取り除くことができるゲームの進行の例には、他にも次のようなものがあります。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#
-#入力例 2
-#11 4
-#1 2 3 6
-#
-#出力例 2
-#8
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 6 個の石を取り除く。
-#青木君が山から 3 個の石を取り除く。
-#高橋君が山から 2 個の石を取り除く。
-#この例では高橋君は 8 個の石を取り除くことができます。高橋君が 9 個以上の石を取り除くことはできないためこれが最大です。  
-#
-#入力例 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#出力例 3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                if dp[i - A[j]] == 0:
+                    dp[i] = 1
+                    break
+    if dp[N] == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] >= 0 and dp[i - A[j]] == 0:
+                dp[i] = 1
+                break
+    print('Takahashi' if dp[N] == 1 else 'Aoki')
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                dp[i] |= not dp[i - A[j]]
+    if dp[-1]:
+        print("First")
+    else:
+        print("Second")
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        for j in range(k):
+            if i - a[j] < 0:
+                break
+            if dp[i - a[j]] == 0:
+                dp[i] = 1
+                break
+    if dp[n] == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [0] * (N+1)
+    for i in range(N+1):
+        for a in A:
+            if i + a > N:
+                break
+            if dp[i+a] == 0:
+                dp[i] = 1
+    if dp[N] == 1:
+        print('Takahashi')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    dp = [0] * (N+1)
+    dp[0] = 0
+
+    for i in range(1, N+1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                dp[i] = max(dp[i], dp[i - A[j]] + 1)
+            else:
+                break
+    print(N - dp[N])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K)
+    #print(A)
+    dp = [0] * (N+1)
+    dp[0] = 0
+    for i in range(1, N+1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                if dp[i - A[j]] == 0:
+                    dp[i] = 1
+                    break
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    #初期化
+    dp = [0] * (N+1)
+    dp[0] = 0
+    dp[1] = 1
+
+    for i in range(2, N+1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                if dp[i - A[j]] == 0:
+                    dp[i] = 1
+                    break
+                else:
+                    dp[i] = 0
+    print(dp[N])
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    # dp[i] = i 個の石があるときに、高橋君が最大何個取り除けるか
+    dp = [0] * (N + 1)
+    for i in range(N + 1):
+        for j in range(K):
+            if i - A[j] < 0:
+                break
+            if dp[i - A[j]] == 0:
+                dp[i] = 1
+                break
+    if dp[N] == 1:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K)
+    #print(A)
+    #print(N % A[0])
+    #print(N % A[1])
+    #print(N % A[2])
+    #print(N % A[3])
+    #print(N % A[4])
+    #print(N % A[5])
+    #print(N % A[6])
+    #print(N % A[7])
+    #print(N % A[8])
+    #print(N % A[9])
+    #print(N % A[10])
+    #print(N % A[11])
+    #print(N % A[12])
+    #print(N % A[13])
+    #print(N % A[14])
+    #print(N % A[15])
+    #print(N % A[16])
+    #print(N % A[17])
+    #print(N % A[18])
+    #print(N % A[19])
+    #print(N % A[20])
+    #print(N % A[21])
+    #print(N % A[22])
+    #print(N % A[23])
+    #print(N % A[24])
+    #print(N % A[25])
+    #print(N % A[26])
+    #print(N % A[27])
+    #print(N % A[28])
+    #print(N % A[29])
+    #print(N % A[30])
+    #print(N % A[31])
+    #print(N % A[32])
+    #print(N % A[33])
+    #print(N % A[34])
+    #print(N % A[35])
+    #print(N % A[36])
+    #print(N % A[37])
+    #print(N % A[38])
+    #print(N % A[39])
+    #print(N % A[40])
+    #print(N % A[41])
+    #print(N % A[42])
+    #print(N % A[43])
+    #print(N % A[44])
+    #print(N % A[45])
+    #print(N % A[46])
+    #print(N % A[47])
+    #print(N % A[48])
+    #print(N % A[49])
+    #print(N % A[50])
+    #print(N

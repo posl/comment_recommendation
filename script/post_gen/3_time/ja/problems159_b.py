@@ -1,42 +1,140 @@
-#問題文
-#長さが奇数である文字列 S が以下の条件をすべて満たすとき、S は「強い回文」であるといいます。
-#S は回文である。
-#N を S の長さとするとき、S の 1 文字目から (N-1)/2 文字目まで(両端含む)からなる文字列は回文である。
-#S の (N+3)/2 文字目から N 文字目まで(両端含む)からなる文字列は回文である。
-#S が強い回文かどうかを判定してください。
-#
-#制約
-#S は英小文字のみからなる
-#S の長さは 3 以上 99 以下の奇数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が強い回文ならば Yes 、
-#強い回文でないならば No と出力せよ。
-#
-#入力例 1
-#akasaka
-#
-#出力例 1
-#Yes
-#S は akasaka
-#S の 1 文字目から 3 文字目までからなる文字列は aka
-#S の 5 文字目から 7 文字目までからなる文字列は aka
-#これらはすべて回文であるため、S は強い回文です。
-#
-#入力例 2
-#level
-#
-#出力例 2
-#No
-#
-#入力例 3
-#atcoder
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    N = len(S)
+    if S == S[::-1] and S[:(N-1)//2] == S[:(N-1)//2][::-1] and S[(N+3)//2-1:] == S[(N+3)//2-1:][::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    if S == S[::-1]:
+        if S[:(N-1)//2] == S[:(N-1)//2][::-1]:
+            if S[(N+3)//2-1:] == S[(N+3)//2-1:][::-1]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    n = len(s)
+    if s == s[::-1]:
+        if s[:int((n-1)/2)] == s[:int((n-1)/2)][::-1]:
+            if s[int((n+3)/2)-1:] == s[int((n+3)/2)-1:][::-1]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    N = len(S)
+
+    if S == S[::-1] and S[0:(N-1)//2] == S[0:(N-1)//2][::-1] and S[(N+3)//2-1:N] == S[(N+3)//2-1:N][::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    N = len(S)
+    if S != S[::-1]:
+        print('No')
+        return
+    if S[:N//2] != S[:N//2][::-1]:
+        print('No')
+        return
+    if S[N//2+1:] != S[N//2+1:][::-1]:
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    if s == s[::-1]:
+        if s[:n//2] == s[:n//2][::-1]:
+            if s[n//2+1:] == s[n//2+1:][::-1]:
+                print('Yes')
+            else:
+                print('No')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    N = len(S)
+
+    if S == S[::-1] and S[:N//2] == S[:N//2][::-1] and S[(N+1)//2:] == S[(N+1)//2:][::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    N = len(S)
+    if S != S[::-1]:
+        print("No")
+        return
+    if S[:(N - 1) // 2] != S[:(N - 1) // 2][::-1]:
+        print("No")
+        return
+    if S[(N + 3) // 2 - 1:] != S[(N + 3) // 2 - 1:][::-1]:
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    S = input()
+    #Sの長さ
+    N = len(S)
+    #Sの1文字目から(N-1)/2文字目まで(両端含む)からなる文字列
+    S1 = S[0:int((N-1)/2)]
+    #Sの(N+3)/2文字目からN文字目まで(両端含む)からなる文字列
+    S2 = S[int((N+3)/2-1):N]
+    #Sが強い回文かどうかを判定して出力
+    if S == S[::-1] and S1 == S1[::-1] and S2 == S2[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)

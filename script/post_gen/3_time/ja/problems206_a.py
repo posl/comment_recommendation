@@ -1,38 +1,113 @@
-#問題文
-#ABC 国の消費税率は 8 パーセントです。
-#ABC 国にはエナジードリンク屋さんがあります。ここでは、エナジードリンク 1 本を、税抜き N 円で販売しています。
-#ここに消費税を加算した後の金額は ⌊ 1.08 × N ⌋ 円となります。ただし、実数 x に対し、⌊ x ⌋ は x 以下の最大の整数を表します。 
-#この金額が定価の 206 円より安いなら Yay! 、定価と等しいなら so-so 、定価より高いなら :( と出力して下さい。
-#
-#制約
-#1 ≦ N ≦ 300
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#180
-#
-#出力例 1
-#Yay!
-#N=180 であるとき、税込価格は ⌊ 180 × 1.08 ⌋ = 194 円ですが、この金額は定価の 206 円より安いです。
-#
-#入力例 2
-#200
-#
-#出力例 2
-#:(
-#
-#入力例 3
-#191
-#
-#出力例 3
-#so-so
-#この場合、税込価格がちょうど定価の 206 円と一致します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if int(n * 1.08) < 206:
+        print("Yay!")
+    elif int(n * 1.08) == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    price = int(1.08 * N)
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    price = int(1.08 * n)
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N*1.08 < 206:
+        print("Yay!")
+    elif N*1.08 == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N * 1.08 < 206:
+        print('Yay!')
+    elif N * 1.08 == 206:
+        print('so-so')
+    else:
+        print(':(')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if int(n*1.08) < 206:
+        print("Yay!")
+    elif int(n*1.08) > 206:
+        print(":(")
+    else:
+        print("so-so")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    tax = int(N * 1.08)
+    if tax < 206:
+        print("Yay!")
+    elif tax == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    m = int(n * 1.08)
+    if m < 206:
+        print("Yay!")
+    elif m == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    if N * 1.08 < 206:
+        print('Yay!')
+    elif N * 1.08 > 206:
+        print(':(')
+    else:
+        print('so-so')

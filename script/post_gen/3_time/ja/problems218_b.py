@@ -1,36 +1,109 @@
-#問題文
-#1 以上 26 以下の整数からなる長さ 26 の数列 P=(P_1,P_2, ... ,P_{26}) が与えられます。ここで、P の要素は相異なることが保証されます。
-#以下の条件を満たす長さ 26 の文字列 S を出力してください。
-#任意の i (1 ≦ i ≦ 26) について、S の i 文字目は辞書順で小さい方から P_i 番目の英小文字である。
-#
-#制約
-#1 ≦ P_i ≦ 26
-#P_i ≠ P_j (i ≠ j)
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#P_1 P_2 ... P_{26}
-#
-#出力
-#文字列 S を出力せよ。
-#
-#入力例 1
-#1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#出力例 1
-#abcdefghijklmnopqrstuvwxyz
-#
-#入力例 2
-#2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#出力例 2
-#bacdefghijklmnopqrstuvwxyz
-#
-#入力例 3
-#5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21
-#
-#出力例 3
-#eklpyqragjdwtcbxzsnifvhmou
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    P = list(map(int, input().split()))
+    S = []
+    for i in range(26):
+        S.append(chr(ord('a') + P[i] - 1))
+    print(''.join(S))
+
+=======
+Suggestion 2
+
+def main():
+    P = list(map(int, input().split()))
+    S = [chr(ord('a') + i) for i in range(26)]
+    for i in range(26):
+        S[i], S[P[i] - 1] = S[P[i] - 1], S[i]
+    print(''.join(S))
+
+=======
+Suggestion 3
+
+def main():
+    P = input().split()
+    S = ""
+    for i in range(26):
+        S += chr(ord('a') + int(P[i]) - 1)
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    P = list(map(int, input().split()))
+    S = ""
+    for i in range(26):
+        S += chr(97 + P[i] - 1)
+    print(S)
+
+=======
+Suggestion 5
+
+def main():
+    P = list(map(int, input().split()))
+    S = ''
+    for i in range(26):
+        S += chr(ord('a')+P[i]-1)
+    print(S)
+
+=======
+Suggestion 6
+
+def main():
+    s = 'abcdefghijklmnopqrstuvwxyz'
+    p = list(map(int, input().split()))
+    for i in range(len(p)):
+        print(s[p[i] - 1], end='')
+
+=======
+Suggestion 7
+
+def main():
+    p = list(map(int, input().split()))
+    s = 'abcdefghijklmnopqrstuvwxyz'
+    for i in range(26):
+        print(s[p[i]-1], end='')
+
+=======
+Suggestion 8
+
+def main():
+    P = list(map(int, input().split()))
+    #print(P)
+    S = ""
+    for i in range(26):
+        S = S + chr(ord('a') + P[i] - 1)
+    print(S)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    P = list(map(int,input().split()))
+
+    #処理
+    S = ['a']*26
+    for i in range(26):
+        S[P[i]-1] = chr(97+i)
+
+    #出力
+    print(''.join(S))
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    P = list(map(int,input().split()))
+
+    #辞書順で小さい方からP_i番目の英小文字をリストに格納
+    S = [chr(97+i) for i in range(26)]
+    S = [S[i-1] for i in P]
+
+    #出力
+    print(*S,sep="")

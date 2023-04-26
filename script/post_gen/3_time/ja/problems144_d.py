@@ -1,41 +1,110 @@
-#問題文
-#高橋君は、底面が 1 辺 a[cm] の正方形であり、高さが b[cm] であるような直方体型の水筒を持っています。(水筒の厚みは無視できます。)
-#この水筒の中に体積 x[cm]^3 の水を入れ、底面の正方形の 1 辺を軸として、この水筒を徐々に傾けます。
-#水を溢れさせずに水筒を傾けることができる最大の角度を求めてください。
-#
-#制約
-#入力は全て整数
-#1 ≤ a ≦ 100
-#1 ≤ b ≦ 100
-#1 ≤ x ≤ a^2b
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b x
-#
-#出力
-#水を溢れさせずに水筒を傾けることができる最大の角度を度数法で出力せよ。
-#出力は、ジャッジの出力との絶対誤差または相対誤差が 10^{-6} 以下のとき正解と判定される。
-#
-#入力例 1
-#2 2 4
-#
-#出力例 1
-#45.0000000000
-#水筒は立方体であり、水は半分まで入っています。この水筒を 45° より大きく傾けると水が溢れます。
-#
-#入力例 2
-#12 21 10
-#
-#出力例 2
-#89.7834636934
-#水筒はほぼ空であり、水が溢れるときにはほぼ水平になっています。
-#
-#入力例 3
-#3 1 8
-#
-#出力例 3
-#4.2363947991
-#水筒はほぼ満杯であり、ほぼ垂直の状態で水が溢れます。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a * a * b / 2:
+        print(math.degrees(math.atan(2 * x / (a * a * b))))
+    else:
+        print(math.degrees(math.atan(2 * (a * a * b - x) / (a * a * a))))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a * a * b / 2:
+        print(math.degrees(math.atan(a * b * b / 2 / x)))
+    else:
+        print(math.degrees(math.atan(2 * (a * a * b - x) / (a * a * a))))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a * a * b / 2:
+        ans = math.degrees(math.atan(2 * x / (a * a * b)))
+    else:
+        ans = math.degrees(math.atan(a * b * b / (2 * x)))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    a, b, x = map(int, input().split())
+    if x >= a * a * b / 2:
+        print(90 - math.degrees(math.atan(2 * (a * a * b - x) / (a * a * a))))
+    else:
+        print(math.degrees(math.atan(a * b * b / (2 * x))))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, x = map(int, input().split())
+    if x <= a * a * b / 2:
+        print(90 - math.degrees(math.atan(a * b * b / (2 * x))))
+    else:
+        print(math.degrees(math.atan(2 * (a * a * b - x) / (a * a * a))))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, x = map(int, input().split())
+    if a * a * b / 2 <= x:
+        print(180 * math.atan(2 * (a * a * b - x) / (a * a * a)) / math.pi)
+    else:
+        print(180 * math.atan(a * b * b / (2 * x)) / math.pi)
+
+=======
+Suggestion 7
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a**2 * b / 2:
+        h = (2 * x) / (a * b)
+        print(math.degrees(math.atan(b / h)))
+    else:
+        h = (2 * (a**2 * b - x)) / (a * b)
+        print(math.degrees(math.atan(h / a)))
+
+=======
+Suggestion 8
+
+def main():
+    a, b, x = map(int, input().split())
+    if x < a*a*b/2:
+        h = 2*x/(a*b)
+        print(math.degrees(math.atan2(b-h, a)))
+    else:
+        h = 2*(a*a*b-x)/(a*a)
+        print(math.degrees(math.atan2(b-h, a)))
+
+=======
+Suggestion 9
+
+def main():
+    a,b,x=map(int,input().split())
+    if x/a**2<=b/2:
+        print(degrees(atan(2*x/a**3)))
+    else:
+        print(degrees(atan(2*b/a-x/a**2)))
+
+=======
+Suggestion 10
+
+def main():
+    #入力
+    a,b,x = map(int,input().split())
+    #解答
+    if x <= a**2*b/2:
+        ans = math.degrees(math.atan(2*x/a**2/b))
+    else:
+        ans = math.degrees(math.atan(2*(a**2*b-x)/a**3))
+    #出力
+    print(ans)

@@ -1,39 +1,95 @@
-#問題文
-#相違なる整数 A, B があります。
-#|A - K| = |B - K| となるような整数 K を出力してください。
-#そのような整数が存在しなければ、代わりに IMPOSSIBLE を出力してください。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A, B ≦ 10^9
-#A と B は相違なる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#条件を満たす整数 K を出力せよ。
-#そのような整数が存在しなければ、代わりに IMPOSSIBLE を出力せよ。
-#
-#入力例 1
-#2 16
-#
-#出力例 1
-#9
-#|2 - 9| = 7, |16 - 9| = 7 であるため、9 は条件を満たす整数です。
-#
-#入力例 2
-#0 3
-#
-#出力例 2
-#IMPOSSIBLE
-#条件を満たす整数は存在しません。
-#
-#入力例 3
-#998244353 99824435
-#
-#出力例 3
-#549034394
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    K = (A + B) // 2
+    if abs(A - K) == abs(B - K):
+        print(K)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print(int((A + B) / 2))
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 1:
+        print("IMPOSSIBLE")
+    else:
+        print((A + B) // 2)
+
+=======
+Suggestion 7
+
+def solve():
+    A, B = map(int, input().split())
+    K = (A + B) // 2
+    if (A - K) == (B - K):
+        print(K)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 1:
+        print("IMPOSSIBLE")
+    else:
+        print((a+b)//2)
+
+=======
+Suggestion 9
+
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        a, b = b, a
+    if (b - a) % 2:
+        print("IMPOSSIBLE")
+    else:
+        print((a + b) // 2)

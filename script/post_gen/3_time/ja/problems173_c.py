@@ -1,66 +1,196 @@
-#問題文
-#H 行 W 列に並ぶマスからなるマス目があります。上から i 行目、左から j 列目 (1 ≦ i ≦ H, 1 ≦ j ≦ W) のマスの色は文字 c_{i,j} として与えられ、c_{i,j} が . のとき白、# のとき黒です。
-#次の操作を行うことを考えます。
-#行を何行か選び (0 行でもよい)、列を何列か選ぶ (0 列でもよい)。そして、選んだ行に含まれるマスと、選んだ列に含まれるマスをすべて赤く塗る。
-#正の整数 K が与えられます。操作後に黒いマスがちょうど K 個残るような行と列の選び方は何通りでしょうか。ここで、二つの選び方は、一方においてのみ選ばれる行または列が存在するときに異なるとみなされます。
-#
-#制約
-#1 ≦ H, W ≦ 6
-#1 ≦ K ≦ HW
-#c_{i,j} は . または #
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W K
-#c_{1,1}c_{1,2}...c_{1,W}
-#c_{2,1}c_{2,2}...c_{2,W}
-#:
-#c_{H,1}c_{H,2}...c_{H,W}
-#
-#出力
-#条件を満たす行と列の選び方の個数を表す整数を出力せよ。
-#
-#入力例 1
-#2 3 2
-#..#
-####
-#
-#出力例 1
-#5
-#以下の 5 通りの選び方が条件を満たします。
-#1 行目、1 列目
-#1 行目、2 列目
-#1 行目、3 列目
-#1 列目、2 列目
-#3 列目
-#
-#入力例 2
-#2 3 4
-#..#
-####
-#
-#出力例 2
-#1
-#何も選ばないという 1 通りの選び方が条件を満たします。
-#
-#入力例 3
-#2 2 3
-###
-###
-#
-#出力例 3
-#0
-#
-#入力例 4
-#6 6 8
-#..##..
-#.#..#.
-##....#
-#######
-##....#
-##....#
-#
-#出力例 4
-#208
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, K = map(int, input().split())
+    C = [input() for _ in range(H)]
+
+    ans = 0
+    for i in range(2**H):
+        for j in range(2**W):
+            cnt = 0
+            for h in range(H):
+                for w in range(W):
+                    if i >> h & 1 or j >> w & 1:
+                        continue
+                    if C[h][w] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    h, w, k = map(int, input().split())
+    c = [input() for _ in range(h)]
+    ans = 0
+    for i in range(2 ** h):
+        for j in range(2 ** w):
+            cnt = 0
+            for y in range(h):
+                for x in range(w):
+                    if not i >> y & 1 and not j >> x & 1 and c[y][x] == "#":
+                        cnt += 1
+            if cnt == k:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    H, W, K = map(int, input().split())
+    C = [list(input()) for _ in range(H)]
+    ans = 0
+    for i in range(2**H):
+        for j in range(2**W):
+            cnt = 0
+            for h in range(H):
+                for w in range(W):
+                    if (i >> h) & 1 == 0 and (j >> w) & 1 == 0 and C[h][w] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, K = map(int, input().split())
+    C = [list(input()) for _ in range(H)]
+    ans = 0
+    for i in range(2 ** H):
+        for j in range(2 ** W):
+            tmp = 0
+            for k in range(H):
+                for l in range(W):
+                    if (i >> k & 1) == 0 and (j >> l & 1) == 0:
+                        if C[k][l] == '#':
+                            tmp += 1
+            if tmp == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, K = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for h in range(2 ** H):
+        for w in range(2 ** W):
+            cnt = 0
+            for i in range(H):
+                if h >> i & 1:
+                    continue
+                for j in range(W):
+                    if w >> j & 1:
+                        continue
+                    if S[i][j] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    H, W, K = map(int, input().split())
+    c = [input() for _ in range(H)]
+
+    ans = 0
+    for h in range(2**H):
+        for w in range(2**W):
+            cnt = 0
+            for i in range(H):
+                for j in range(W):
+                    if (h >> i) & 1 == 0 and (w >> j) & 1 == 0 and c[i][j] == "#":
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, K = map(int, input().split())
+    grid = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1 << H):
+        for j in range(1 << W):
+            cnt = 0
+            for h in range(H):
+                for w in range(W):
+                    if (i >> h) & 1 == 0 and (j >> w) & 1 == 0 and grid[h][w] == "#":
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    H, W, K = map(int, input().split())
+    c = [input() for _ in range(H)]
+
+    ans = 0
+    for h in range(1 << H):
+        for w in range(1 << W):
+            cnt = 0
+            for i in range(H):
+                for j in range(W):
+                    if (h >> i) & 1 or (w >> j) & 1:
+                        continue
+                    if c[i][j] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    H,W,K = map(int,input().split())
+    grid = [input() for _ in range(H)]
+    ans = 0
+    for h in range(2**H):
+        for w in range(2**W):
+            cnt = 0
+            for i in range(H):
+                for j in range(W):
+                    if (h >> i & 1) == 0 and (w >> j & 1) == 0 and grid[i][j] == '#':
+                        cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    H, W, K = map(int, input().split())
+    C = []
+    for _ in range(H):
+        C.append(input())
+    ans = 0
+    for row in range(1 << H):
+        for col in range(1 << W):
+            cnt = 0
+            for i in range(H):
+                for j in range(W):
+                    if row >> i & 1 == 0 and col >> j & 1 == 0:
+                        if C[i][j] == '#':
+                            cnt += 1
+            if cnt == K:
+                ans += 1
+    print(ans)

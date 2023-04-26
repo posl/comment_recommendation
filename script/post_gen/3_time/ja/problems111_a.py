@@ -1,34 +1,63 @@
-#問題文
-#猫のすぬけは文字を書く練習をしています。
-#すぬけは今日、数字の 1 と 9 を書く練習をしていたのですが、
-#間違えて  1 と 9 をあべこべに書いてしまいました。
-#すぬけが書いた 3 桁の整数 n が与えられます。
-#n に含まれる 1 という桁をそれぞれ 9 に、
-#9 という桁をそれぞれ 1 に置き換えて得られる整数を出力してください。
-#
-#制約
-#111 ≦ n ≦ 999
-#n は各桁が 1 か 9 である整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#n
-#
-#出力
-#n の各桁の 1 と 9 を入れ替えた整数を出力してください。
-#
-#入力例 1
-#119
-#
-#出力例 1
-#991
-#一の位の 9 を 1 に、十の位の 1 を 9 に、百の位の 1 を 9 に書き換えた
-# 991 が答えとなります．
-#
-#入力例 2
-#999
-#
-#出力例 2
-#111
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    n = n.replace('1', 'x')
+    n = n.replace('9', '1')
+    n = n.replace('x', '9')
+    print(n)
+
+=======
+Suggestion 2
+
+def main():
+    n = input()
+    n = n.replace('1', 'a')
+    n = n.replace('9', '1')
+    n = n.replace('a', '9')
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    n = input()
+    n = n.replace("1","x")
+    n = n.replace("9","1")
+    n = n.replace("x","9")
+    print(n)
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    N = input()
+    # compute
+    ans = ''
+    for n in N:
+        if n == '1':
+            ans += '9'
+        elif n == '9':
+            ans += '1'
+        else:
+            ans += n
+    # output
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = input()
+    print(n.replace('1','x').replace('9','1').replace('x','9'))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print(str(n)[::-1].replace('1', '2').replace('9', '1').replace('2', '9'))

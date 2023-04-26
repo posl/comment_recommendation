@@ -1,53 +1,167 @@
-#問題文
-#高橋君は置き時計を買いました。
-#この時計は、現在の時刻が 24 時制で AB 時 CD 分であるときに図 1 のように時刻を表します。
-#例えば図 2 では、時計は 7 時 58 分を示しています。
-#時刻の表示方法をより形式的に説明すると次のようになります。
-#現在の時刻が 24 時制で h 時 m 分であるとします。ここで 24 時制とは、時間を 0 以上 23 以下の整数で、分を 0 以上 59 以下の整数で表す時刻の表現方法を言います。 
-#h の 10 の位を A, 1 の位を B, m の 10 の位を C, 1 の位を D とします。(ただし h, m が 1 桁である場合は先行ゼロを追加して考えます。)
-#このとき時計は左上に A を、左下に B を、右上に C を、右下に D を表示します。
-#高橋君は、次の条件を満たす時刻を 見間違えやすい時刻 と呼ぶことにしました。
-#時計の表示の右上と左下を入れ替えても、それに対応する 24 時制の時刻が存在する。
-#例えば 図 3 は 20 時 13 分を示していますが、時計の表示の右上と左下を入れ替えると 21 時 3 分を意味する表示になります。よって 20 時 13 分は見間違えやすい時刻です。
-#今、時計は H 時 M 分を示しています。
-#(現時点も含めて)以降はじめて訪れる見間違えやすい時刻を 24 時制で答えてください。
-#
-#制約
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H, M は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H M
-#
-#出力
-#答えを h 時 m 分とする。ここで h, m は 0 ≦ h ≦ 23, 0 ≦ m ≦ 59 である必要がある。
-#このとき h, m を以下の形式で出力せよ。  
-#h m
-#なお、h, m を 2 桁に揃えるために先行ゼロをつけた形式で出力しても正答と見なされる。
-#
-#入力例 1
-#1 23
-#
-#出力例 1
-#1 23
-#1 時 23 分は見間違えやすい時刻です。なぜならば、時計の表示の右上と左下を入れ替えると 2 時 13 分を意味する表示になるからです。
-#よって答えは 1 時 23 分です。
-#なお、01 23 のように先行ゼロをつけた形式で出力しても正答として扱われます。
-#
-#入力例 2
-#19 57
-#
-#出力例 2
-#20 0
-#19 時 57 分以降ではじめて訪れる見間違えやすい時刻は 20 時 0 分です。
-#
-#入力例 3
-#20 40
-#
-#出力例 3
-#21 0
-#24 時制では 24 時 0 分という表記は合法でないのに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h // 10 % 10 == m % 10 and h % 10 == m // 10 % 10:
+            break
+    print("{0:02d} {1:02d}".format(h, m))
+
+=======
+Suggestion 2
+
+def solve():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h//10 == m%10 and h%10 == m//10:
+            break
+    print(h, m)
+
+=======
+Suggestion 3
+
+def main():
+    h, m = map(int, input().split())
+    h1 = h // 10
+    h2 = h % 10
+    m1 = m // 10
+    m2 = m % 10
+    if h1 == 0 and m1 == 0:
+        print(h2, m2)
+    elif h1 == 0:
+        if m1 <= 2 and m2 <= 3:
+            print(m1, m2)
+        else:
+            print(h2, m2)
+    elif m1 == 0:
+        if h1 <= 2 and h2 <= 3:
+            print(h1, h2)
+        else:
+            print(h2, m2)
+    else:
+        if h1 <= 2 and h2 <= 3 and m1 <= 2 and m2 <= 3:
+            print(h1, h2)
+        else:
+            print(h2, m2)
+
+=======
+Suggestion 4
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        if m == 59:
+            if h == 23:
+                h = 0
+                m = 0
+            else:
+                h += 1
+                m = 0
+        else:
+            m += 1
+
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print(f'{h:02d} {m:02d}')
+            break
+
+=======
+Suggestion 5
+
+def main():
+    h, m = map(int, input().split())
+    if m == 0:
+        h += 1
+        m = 0
+    else:
+        h += 1
+        m = 60 - m
+    print(h, m)
+
+=======
+Suggestion 6
+
+def main():
+    H,M = map(int,input().split())
+    if M >= 30:
+        H += 1
+        M -= 30
+    else:
+        M += 30
+    if H >= 24:
+        H -= 24
+    print("{:02d} {:02d}".format(H,M))
+main()
+
+=======
+Suggestion 7
+
+def main():
+    H,M = map(int,input().split())
+    if M < 30:
+        H -= 1
+        M += 30
+    else:
+        M -= 30
+    if H < 0:
+        H += 24
+    print(str(H).zfill(2) + " " + str(M).zfill(2))
+
+=======
+Suggestion 8
+
+def main():
+    input_line = input()
+    input_line_split = input_line.split()
+    hour = int(input_line_split[0])
+    minute = int(input_line_split[1])
+
+    while True:
+        minute += 1
+        if minute >= 60:
+            minute = 0
+            hour += 1
+            if hour >= 24:
+                hour = 0
+
+        minute_1 = minute % 10
+        minute_10 = int(minute / 10)
+        hour_1 = hour % 10
+        hour_10 = int(hour / 10)
+
+        if minute_1 == hour_10 and minute_10 == hour_1:
+            print(hour, minute)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    h,m = map(int, input().split())
+    if m >= 60:
+        h += 1
+        m -= 60
+    if h >= 24:
+        h -= 24
+    print(f"{h:02} {m:02}")
+
+=======
+Suggestion 10
+
+def main():
+    H, M = map(int, input().split())
+    print(24 - H - 1, 60 - M)

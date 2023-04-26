@@ -1,38 +1,112 @@
-#問題文
-#高橋王国では 1! 円硬貨 , 2! 円硬貨 , ..., 10! 円硬貨が流通しています。ここで、N! = 1 × 2 × ... × N です。
-#高橋君は全ての種類の硬貨を 100 枚ずつ持っており、P 円の商品をお釣りが出ないようにちょうどの金額を支払って買おうとしています。
-#問題の制約下で条件を満たす支払い方は必ず存在することが証明できます。
-#最小で何枚の硬貨を使えば支払うことができますか？
-#
-#制約
-#1 ≦ P ≦ 10^7
-#P は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#P
-#
-#出力
-#必要となる硬貨の最小枚数を出力せよ。
-#
-#入力例 1
-#9
-#
-#出力例 1
-#3
-#1! = 1 円硬貨、2! = 2 円硬貨、3! = 6 円硬貨を 1 枚ずつ使うと 3 枚の硬貨で 9 円の商品をちょうどの金額で支払うことができます。これより少ない枚数で支払う方法は存在しません。
-#
-#入力例 2
-#119
-#
-#出力例 2
-#10
-#1! 円硬貨を 1 枚、2! 円硬貨を 2 枚、3! 円硬貨を 3 枚、4! 円硬貨を 4 枚使えばよいです。
-#
-#入力例 3
-#10000000
-#
-#出力例 3
-#24
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    P = int(input())
+    coins = [1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800]
+    ans = 0
+    for i in range(9, -1, -1):
+        ans += P // coins[i]
+        P %= coins[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    P = int(input())
+    coin = [1, 1, 1, 2, 1, 2, 1, 5, 2, 2, 1, 5, 1, 2, 1, 14, 1, 5, 1, 5, 2, 2, 1, 15, 2, 2, 5, 4, 1, 4, 1, 51, 1, 2, 1, 14, 1, 2, 2, 14, 1, 6, 1, 4, 2, 2, 1, 52, 2, 5, 1, 5, 1, 15, 2, 13, 2, 2, 1, 13, 1, 2, 4, 267, 1, 4, 1, 5, 1, 4, 1, 50, 1, 2, 3, 4, 1, 6, 1, 52, 15, 2, 1, 15, 1, 2, 1, 12, 1, 10, 1, 4, 2]
+    count = 0
+    for i in range(10, 0, -1):
+        while P >= coin[i]:
+            P -= coin[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    P = int(input())
+    ans = 0
+    for i in range(10, 0, -1):
+        ans += P // math.factorial(i)
+        P %= math.factorial(i)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    p = int(input())
+    coins = [1]
+    for i in range(2,11):
+        coins.append(coins[i-2]*i)
+    coins.reverse()
+    ans = 0
+    for coin in coins:
+        ans += p // coin
+        p %= coin
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    P = int(input())
+    coins = [1]
+    for i in range(2, 11):
+        coins.append(coins[-1]*i)
+    ans = 0
+    for i in range(len(coins)-1, -1, -1):
+        ans += P//coins[i]
+        P %= coins[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    P = int(input())
+    coin = [1]
+    for i in range(2, 11):
+        coin.append(coin[-1] * i)
+    ans = 0
+    for i in range(10, 0, -1):
+        ans += P // coin[i - 1]
+        P %= coin[i - 1]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    P = int(input())
+    A = [1]
+    for i in range(1, 11):
+        A.append(A[i - 1] * i)
+    A.reverse()
+    ans = 0
+    for i in range(10):
+        ans += P // A[i]
+        P %= A[i]
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    p = int(input())
+    coin = [1]
+    for i in range(2, 11):
+        coin.append(coin[i-2]*i)
+    coin.reverse()
+    ans = 0
+    for c in coin:
+        ans += p//c
+        p %= c
+    print(ans)

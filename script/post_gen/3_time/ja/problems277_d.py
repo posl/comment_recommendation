@@ -1,51 +1,200 @@
-#問題文
-#高橋君は N 枚のカードを手札として持っています。
-#i = 1, 2, ..., N について、i 番目のカードには非負整数 A_i が書かれています。
-#高橋君は、まず手札から好きなカードを 1 枚選んで、テーブルの上に置きます。
-#その後、高橋君は好きな回数（ 0 回でも良い）だけ、下記の操作を繰り返します。
-#最後にテーブルの上に置いたカードに書かれた整数を X とする。手札に整数 X または整数 (X+1)mod M が書かれたカードがあれば、そのうち好きなものを 1 枚選んで、テーブルの上に置く。ここで、(X+1)mod M は (X+1) を M で割ったあまりを表す。
-#最終的に手札に残ったカードに書かれている整数の総和としてあり得る最小値を出力してください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 10^9
-#0 ≦ A_i < M
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#9 7
-#3 0 2 5 5 3 0 6 3
-#
-#出力例 1
-#11
-#高橋君が、まず 4 番目のカード（書かれた整数は 5 ）をテーブルの上に置き、その後、以下の手順で操作を行う場合を考えます。
-#5 番目のカード（書かれた整数は 5 ）をテーブルの上に置く。
-#8 番目のカード（書かれた整数は 6 ）をテーブルの上に置く。
-#2 番目のカード（書かれた整数は 0 ）をテーブルの上に置く。
-#7 番目のカード（書かれた整数は 0 ）をテーブルの上に置く。
-#このとき、最終的に手札に残ったカードは、1, 3, 6, 9 枚目のカードであり、それらに書かれた整数の総和は 3 + 2 + 3 +3 = 11 です。
-#これが、最終的に手札に残ったカードに書かれている整数の総和としてあり得る最小値です。
-#
-#入力例 2
-#1 10
-#4
-#
-#出力例 2
-#0
-#
-#入力例 3
-#20 20
-#18 16 15 9 8 8 17 1 3 17 11 9 12 11 7 3 2 14 3 12
-#
-#出力例 3
-#99
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    ans = 0
+    for i in range(n):
+        ok = n + 1
+        ng = i
+        while abs(ok - ng) > 1:
+            mid = (ok + ng) // 2
+            if s[mid] - s[i] >= m:
+                ok = mid
+            else:
+                ng = mid
+        ans = max(ans, s[ok] - s[i] - m)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = []
+    for i in range(N):
+        B.append(A[i] % M)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * M
+    for a in A:
+        B[a] += 1
+    ans = 0
+    for i in range(M):
+        if B[i] == 0:
+            ans = i
+            break
+    if ans == 0:
+        ans = M
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    B = [0]*N
+    for i in range(N):
+        B[i] = A[i] % M
+    C = [0]*M
+    for i in range(N):
+        C[B[i]] += 1
+    C.sort()
+    ans = 0
+    for i in range(M):
+        if C[i] == 0:
+            continue
+        else:
+            ans += C[i]*i
+            C[i+1] += C[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0] * m
+    for i in a:
+        b[i] += 1
+    c = 0
+    for i in range(m):
+        if b[i] == 0:
+            c = i
+            break
+    d = 0
+    for i in range(m):
+        if b[i] > 1:
+            d = i
+            break
+    if c == 0 and d == 0:
+        print(0)
+        return
+    for i in range(m):
+        if b[i] == 0:
+            c = i
+            break
+    e = 0
+    for i in range(m):
+        if b[i] > 1:
+            e = i
+            break
+    if c == 0 and e == 0:
+        print(m)
+        return
+    f = 0
+    for i in range(m):
+        if b[i] >= 1:
+            f += i
+    if f == 0:
+        print(m)
+        return
+    g = 0
+    for i in range(m):
+        if b[i] >= 1:
+            g += i
+    if g == 0:
+        print(m)
+        return
+    h = 0
+    for i in range(m):
+        if b[i] >= 2:
+            h += i
+    if h == 0:
+        print(m)
+        return
+    print(min(f,g,h))
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] > ans:
+            ans += a[i] - ans
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(A[0] + M)
+    D = []
+    for i in range(N):
+        D.append(A[i + 1] - A[i])
+    D.sort(reverse=True)
+    print(sum(D[N-1:]))
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i%m for i in a]
+    a.sort()
+    a.append(a[0]+m)
+    ans = 0
+    for i in range(n):
+        if a[i] > a[i+1]:
+            ans += m - a[i] + a[i+1]
+        else:
+            ans += a[i+1] - a[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] + a[i+1] if a[i] + a[i+1] < m else a[i] + a[i+1] - m
+        if a[i] + a[i+1] >= m:
+            a[i+1] = a[i] + a[i+1] - m
+    print(ans)

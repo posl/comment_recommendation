@@ -1,48 +1,109 @@
-#問題文
-#英大文字と英小文字からなる文字列のうち、以下の条件を全て満たすものを素晴らしい文字列ということとします。
-#英大文字が文字列の中に現れる。
-#英小文字が文字列の中に現れる。
-#全ての文字が相異なる。
-#例えば、AtCoder や Aa は素晴らしい文字列ですが、atcoder や Perfect は素晴らしい文字列ではありません。
-#文字列 S が与えられるので、S が素晴らしい文字列か判定してください。
-#
-#制約
-#1 ≦ |S| ≦ 100
-#S は英大文字と英小文字からなる文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が素晴らしい文字列ならば Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#AtCoder
-#
-#出力例 1
-#Yes
-#AtCoder は、英大文字が含まれ、英小文字も含まれ、かつ全ての文字が相異なるため素晴らしい文字列です。
-#
-#入力例 2
-#Aa
-#
-#出力例 2
-#Yes
-#A と a は違う文字であることに注意してください。この文字列は素晴らしい文字列です。
-#
-#入力例 3
-#atcoder
-#
-#出力例 3
-#No
-#英大文字が含まれていないため、素晴らしい文字列ではありません。
-#
-#入力例 4
-#Perfect
-#
-#出力例 4
-#No
-#2 文字目と 5 文字目が等しいため、素晴らしい文字列ではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower():
+        print('No')
+    elif s.isupper():
+        print('No')
+    elif len(s) != len(set(s)):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if len(s) == len(set(s)) and s.islower() == False and s.isupper() == False:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.islower() == True or s.isupper() == True:
+        print("No")
+    else:
+        if len(s) == len(set(s)):
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def is_upper_and_lower(s):
+    is_upper = False
+    is_lower = False
+    for i in range(len(s)):
+        if s[i].isupper():
+            is_upper = True
+        if s[i].islower():
+            is_lower = True
+    return is_upper and is_lower
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if 'A' in s and 'a' in s and len(s) == len(set(s)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def check_string(s):
+    if s.islower():
+        return False
+    if s.isupper():
+        return False
+    if len(set(s)) != len(s):
+        return False
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    #n = int(input())
+    #a, b = map(int, input().split())
+    #c = list(map(int, input().split()))
+    #s = input()
+    s = input()
+    s1 = sorted(s)
+    s2 = sorted(set(s))
+    if len(s1) == len(s2) and s1[0].isupper() and s1[0] != s2[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def check(s):
+    return (s.islower() and s.isupper())
+
+s = input()
+
+=======
+Suggestion 9
+
+def is_upper_or_lower(c):
+    return c.isupper() or c.islower()
+
+=======
+Suggestion 10
+
+def is_upper(s):
+    return s.isupper()

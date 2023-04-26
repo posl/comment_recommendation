@@ -1,66 +1,300 @@
-#問題文
-#縦 H 行、横 W 列のマス目があり、いくつかのマスには障害物が置かれています。
-#上から i 番目、左から j 番目のマスをマス (i, j) と表すことにします。
-#H 個の文字列 S_1, S_2, S_3, ..., S_H が与えられます。S_i の j 文字目はマス (i, j) の状態を表し、# なら障害物が置かれていることを、. なら障害物が置かれていないことを表します。
-#このマス目上のあるマスからあるマスが見えるとは、2 つのマスが同じ行または列にあり、2 つのマスの間 (2 つのマス自身を含む) に障害物が 1 つも置かれていないことを意味します。
-#このマス目上のマスであって、マス (X, Y) から見えるもの (マス (X, Y) 自身を含む) の数を求めてください。
-#
-#制約
-#1 ≦ H ≦ 100
-#1 ≦ W ≦ 100
-#1 ≦ X ≦ H
-#1 ≦ Y ≦ W
-#S_i は . および # のみからなる長さ W の文字列
-#マス (X, Y) に障害物は置かれていない
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W X Y
-#S_1
-#S_2
-#S_3
-#.
-#.
-#.
-#S_H
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#4 4 2 2
-###..
-#...#
-##.#.
-#.#.#
-#
-#出力例 1
-#4
-#以下がマス (2, 2) から見えるマスです。  
-#マス (2, 1)
-#マス (2, 2)
-#マス (2, 3)
-#マス (3, 2)
-#
-#入力例 2
-#3 5 1 4
-##....
-######
-#....#
-#
-#出力例 2
-#4
-#行または列が同じでも、間に障害物があるようなマスは見えません。  
-#
-#入力例 3
-#5 5 4 2
-#.#..#
-##.###
-###...
-##..#.
-##.###
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w, x, y = map(int, input().split())
+    s = [input() for _ in range(h)]
+    x -= 1
+    y -= 1
+    ans = 1
+    for i in range(x+1, h):
+        if s[i][y] == ".":
+            ans += 1
+        else:
+            break
+    for i in range(x-1, -1, -1):
+        if s[i][y] == ".":
+            ans += 1
+        else:
+            break
+    for i in range(y+1, w):
+        if s[x][i] == ".":
+            ans += 1
+        else:
+            break
+    for i in range(y-1, -1, -1):
+        if s[x][i] == ".":
+            ans += 1
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    h, w, x, y = map(int, input().split())
+    s = [list(input()) for i in range(h)]
+    x -= 1
+    y -= 1
+    ans = 1
+    for i in range(x + 1, h):
+        if s[i][y] == '.':
+            ans += 1
+        else:
+            break
+    for i in range(x - 1, -1, -1):
+        if s[i][y] == '.':
+            ans += 1
+        else:
+            break
+    for j in range(y + 1, w):
+        if s[x][j] == '.':
+            ans += 1
+        else:
+            break
+    for j in range(y - 1, -1, -1):
+        if s[x][j] == '.':
+            ans += 1
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+
+    ans = 0
+    for i in range(X, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for j in range(Y, W):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    for j in range(Y - 1, -1, -1):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    print(ans - 3)
+
+=======
+Suggestion 4
+
+def main():
+    h, w, x, y = map(int, input().split())
+    x -= 1
+    y -= 1
+    s = [input() for i in range(h)]
+    ans = 1
+    for i in range(x - 1, -1, -1):
+        if s[i][y] == '.':
+            ans += 1
+        else:
+            break
+    for i in range(x + 1, h):
+        if s[i][y] == '.':
+            ans += 1
+        else:
+            break
+    for i in range(y - 1, -1, -1):
+        if s[x][i] == '.':
+            ans += 1
+        else:
+            break
+    for i in range(y + 1, w):
+        if s[x][i] == '.':
+            ans += 1
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input_data():
+    h, w, x, y = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    return h, w, x, y, s
+
+=======
+Suggestion 6
+
+def main():
+    h, w, x, y = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    ans = 1
+    for i in range(y-2, -1, -1):
+        if s[x-1][i] == "#":
+            break
+        ans += 1
+    for i in range(y, w):
+        if s[x-1][i] == "#":
+            break
+        ans += 1
+    for i in range(x-2, -1, -1):
+        if s[i][y-1] == "#":
+            break
+        ans += 1
+    for i in range(x, h):
+        if s[i][y-1] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+    #print(H, W, X, Y)
+    #print(S)
+    #print(S[X])
+    #print(S[X][Y])
+    count = 0
+    if S[X][Y] == ".":
+        count += 1
+    #print(count)
+    for i in range(X-1, -1, -1):
+        if S[i][Y] == "#":
+            break
+        else:
+            count += 1
+    #print(count)
+    for i in range(X+1, H):
+        if S[i][Y] == "#":
+            break
+        else:
+            count += 1
+    #print(count)
+    for i in range(Y-1, -1, -1):
+        if S[X][i] == "#":
+            break
+        else:
+            count += 1
+    #print(count)
+    for i in range(Y+1, W):
+        if S[X][i] == "#":
+            break
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    h, w, x, y = map(int, input().split())
+    s = [list(input()) for _ in range(h)]
+    ans = 1
+    for i in range(x-1,-1,-1):
+        if s[i][y-1] == '#':
+            break
+        ans += 1
+    for i in range(x,h):
+        if s[i][y-1] == '#':
+            break
+        ans += 1
+    for i in range(y-1,-1,-1):
+        if s[x-1][i] == '#':
+            break
+        ans += 1
+    for i in range(y,w):
+        if s[x-1][i] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def check(x,y):
+    if x < 0 or x >= h or y < 0 or y >= w:
+        return False
+    if s[x][y] == '#':
+        return False
+    return True
+
+h,w,x,y = map(int,input().split())
+s = [input() for _ in range(h)]
+
+ans = 1
+x -= 1
+y -= 1
+for i in range(1,h):
+    if check(x-i,y):
+        ans += 1
+    else:
+        break
+for i in range(1,w):
+    if check(x,y-i):
+        ans += 1
+    else:
+        break
+for i in range(1,h):
+    if check(x+i,y):
+        ans += 1
+    else:
+        break
+for i in range(1,w):
+    if check(x,y+i):
+        ans += 1
+    else:
+        break
+print(ans)
+
+=======
+Suggestion 10
+
+def check(x,y):
+    if (x<0) or (x>=h) or (y<0) or (y>=w):
+        return False
+    if s[x][y] == "#":
+        return False
+    return True
+
+h,w,x,y=map(int,input().split())
+s=[list(input()) for _ in range(h)]
+x-=1
+y-=1
+ans=1
+for i in range(x-1,-1,-1):
+    if check(i,y):
+        ans+=1
+    else:
+        break
+for i in range(x+1,h):
+    if check(i,y):
+        ans+=1
+    else:
+        break
+for i in range(y-1,-1,-1):
+    if check(x,i):
+        ans+=1
+    else:
+        break
+for i in range(y+1,w):
+    if check(x,i):
+        ans+=1
+    else:
+        break
+print(ans)

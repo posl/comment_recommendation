@@ -1,43 +1,137 @@
-#問題文
-#1 個の 0 のみからなる数列 A=(0) があります。
-#また、L と R のみからなる長さ N の文字列 S=s_1s_2... s_N が与えられます。  
-#i=1,2,... ,N の順番で、次の操作を行います。  
-#s_i が L のとき、A 内にある i-1 のすぐ左に i を挿入する
-#s_i が R のとき、A 内にある i-1 のすぐ右に i を挿入する
-#最終的な A を求めてください。
-#
-#制約
-#1≦ N ≦ 5× 10^5
-#N は整数である
-#|S| = N
-#s_i は L か R のいずれかである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#最終的な A を空白区切りで出力せよ。
-#
-#入力例 1
-#5
-#LRRLR
-#
-#出力例 1
-#1 2 4 5 3 0
-#はじめ、A=(0) です。
-#s_1 が L なので、A=(1,0) となります。
-#s_2 が R なので、A=(1,2,0) となります。
-#s_3 が R なので、A=(1,2,3,0) となります。
-#s_4 が L なので、A=(1,2,4,3,0) となります。
-#s_5 が R なので、A=(1,2,4,5,3,0) となります。  
-#
-#入力例 2
-#7
-#LLLLLLL
-#
-#出力例 2
-#7 6 5 4 3 2 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == "L":
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(*A)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(*A)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == "L":
+            a.insert(0, i+1)
+        else:
+            a.append(i+1)
+    print(*a)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0, i+1)
+        else:
+            a.append(i+1)
+    print(*a)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    ans = [0]
+    for i in range(n):
+        if s[i] == "L":
+            ans.insert(0, i+1)
+        else:
+            ans.append(i+1)
+    print(*ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    ans = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            ans.insert(0, i+1)
+        else:
+            ans.append(i+1)
+    print(*ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(*A)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    # N = 5
+    # S = "LRRLR"
+    # N = 7
+    # S = "LLLLLLL"
+    A = [0]
+    for i in range(1,N+1):
+        if S[i-1] == "L":
+            A.insert(0,i)
+        else:
+            A.append(i)
+    print(" ".join(map(str,A)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    # 0を含めた数列の長さ
+    l = n + 1
+    a = [0] * l
+    # 0の位置
+    zero = 0
+    for i in range(n):
+        if s[i] == "L":
+            a[zero] = i + 1
+            zero -= 1
+        else:
+            a[zero + 1] = i + 1
+            zero += 1
+    print(*a)

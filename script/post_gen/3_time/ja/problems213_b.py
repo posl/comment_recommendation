@@ -1,34 +1,87 @@
-#問題文
-#1,...,N の番号のついた N 人の選手がゲームを行いました。選手 i のスコアは A_i であり、スコアが小さい方が上位になります。
-#ブービー賞に該当する選手、すなわち、下位から 2 番目の選手の番号を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#A_i は相異なる
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N 
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#6
-#1 123 12345 12 1234 123456
-#
-#出力例 1
-#3
-#6 人中 5 位になるのは、選手 3 です。
-#
-#入力例 2
-#5
-#3 1 4 15 9
-#
-#出力例 2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_sorted = sorted(A)
+    print(A.index(A_sorted[1]) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = sorted(A)
+    print(A.index(B[1])+1)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_sorted = sorted(A)
+    print(A.index(A_sorted[1]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    print(a[1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = sorted(A)
+    print(A[1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    min_score = min(A)
+    A.remove(min_score)
+    print(A.index(min(A)) + 2)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+
+    print(A[1])
+
+main()

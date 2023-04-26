@@ -1,41 +1,108 @@
-#問題文
-#列 S_n を次のように定義します。
-#S_1 は 1 つの 1 からなる長さ 1 の列である。
-#S_n (n は 2 以上の整数) は S_{n-1}, n, S_{n-1} をこの順につなげた列である。
-#たとえば S_2,S_3 は次のような列です。
-#S_2 は S_1, 2, S_1 をこの順につなげた列なので 1,2,1 である。
-#S_3 は S_2, 3, S_2 をこの順につなげた列なので 1,2,1,3,1,2,1 である。
-#N が与えられるので、列 S_N をすべて出力してください。
-#
-#制約
-#N は整数
-#1 ≦ N ≦ 16
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#S_N を空白区切りで出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#1 2 1
-#問題文の説明にある通り、S_2 は 1,2,1 となります。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#4
-#
-#出力例 3
-#1 2 1 3 1 2 1 4 1 2 1 3 1 2 1
-#S_4 は S_3,4,S_3 をこの順につなげた列です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        return s(n-1) + [n] + s(n-1)
+
+=======
+Suggestion 2
+
+def s(n):
+    if n == 1:
+        return [1]
+    return s(n-1) + [n] + s(n-1)
+
+=======
+Suggestion 3
+
+def make_s(n):
+    if n == 1:
+        return [1]
+    else:
+        return make_s(n-1) + [n] + make_s(n-1)
+
+n = int(input())
+print(" ".join(map(str,make_s(n))))
+
+=======
+Suggestion 4
+
+def s(n):
+    if n==1:
+        return [1]
+    else:
+        return s(n-1)+[n]+s(n-1)
+
+n=int(input())
+print(' '.join(map(str,s(n))))
+
+=======
+Suggestion 5
+
+def solve(N):
+    if N == 1:
+        return [1]
+    else:
+        return solve(N-1) + [N] + solve(N-1)
+
+N = int(input())
+print(*solve(N))
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    ans = []
+    def f(N):
+        if N == 1:
+            ans.append(1)
+            return
+        f(N-1)
+        ans.append(N)
+        f(N-1)
+    f(N)
+    print(*ans)
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    s = [1]
+    for i in range(2,N+1):
+        s = s + [i] + s
+    print(*s)
+
+=======
+Suggestion 8
+
+def dfs(n, s):
+    if n == 0:
+        return s
+    return dfs(n - 1, s + [n] + s)
+
+=======
+Suggestion 9
+
+def main():
+    # 入力
+    N = int(input())
+    # N=1の時の例外処理
+    if N == 1:
+        print(1)
+        return
+    # リストの作成
+    s = [1]
+    # 処理
+    for i in range(2, N + 1):
+        s.append(i)
+        s.extend(s)
+    # 出力
+    print(*s)

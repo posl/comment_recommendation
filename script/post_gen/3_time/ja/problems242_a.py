@@ -1,45 +1,106 @@
-#問題文
-#あるプログラミングコンテストでは、以下のルールに従って参加者に T シャツをプレゼントします。
-#上位 A 位までの参加者は、必ず T シャツが貰える。
-#加えて、上位 A+1 位から B 位までの参加者のうち C 人が一様ランダムに選ばれ、選ばれた参加者は T シャツを貰える。
-#コンテストには 1000 人が参加し、全ての参加者が相異なる順位を取りました。
-#このコンテストの参加者であるいろはちゃんは、X 位を取りました。
-#このとき、いろはちゃんが T シャツを貰える確率を求めてください。
-#
-#制約
-#入力はすべて整数
-#1 ≦ A < B ≦ 1000
-#1 ≦ C ≦ B-A
-#1 ≦ X ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C X
-#
-#出力
-#答えを出力せよ。
-#なお、想定解との絶対誤差または相対誤差が 10^{−6} 以下であれば、正解として扱われる。
-#
-#入力例 1
-#30 500 20 103
-#
-#出力例 1
-#0.042553191489
-#いろはちゃんは 103 位を取りました。
-#31 位から 500 位までの 470 人の参加者の中から 20 人が一様ランダムに選ばれ、ここで選ばれるといろはちゃんは T シャツを貰えます。この確率は ((20)/(470))=0.04255319... です。
-#
-#入力例 2
-#50 500 100 1
-#
-#出力例 2
-#1.000000000000
-#いろはちゃんは 1 位を取りました。この入力において、いろはちゃんは確実に T シャツを貰えます。
-#
-#入力例 3
-#1 2 1 1000
-#
-#出力例 3
-#0.000000000000
-#いろはちゃんは 1000 位を取りました。この入力において、いろはちゃんが T シャツを貰えることはありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, x = map(int, input().split())
+    if x <= a:
+        print(1)
+    elif a < x <= a + c:
+        print(1 / (b - a + 1))
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, X = map(int, input().split())
+    if X <= A:
+        print(1)
+    elif A < X <= A+C:
+        print((C+1)/(B-A+1))
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    # 入力
+    A, B, C, X = map(int, input().split())
+    # 出力
+    if X <= A:
+        print(1)
+    elif X <= B:
+        print(C / (B - A + 1))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, X = map(int, input().split())
+    print(1 - (B - X) / (B - A) * (B - A - C) / (B - A))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,x=map(int,input().split())
+    if x<=a:
+        print(1)
+    elif a<x<=a+c:
+        print((c+1)/(b-a+1))
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C, X = map(int, input().split())
+    print(1 - (B - X) / (B - A) * (C - 1) / C)
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C,X = [int(x) for x in input().split()]
+    if X <= A:
+        print(1)
+    elif A < X <= A+C:
+        print((C+1)/(B-A+1))
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C,X = map(int,input().split())
+    if X <= A:
+        print(1)
+    elif X <= B:
+        print((B-X+1)/B)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    A,B,C,X = map(int,input().split())
+    if A<=X<=B:
+        print((C/(B-A+1)))
+    else:
+        print(0)
+
+=======
+Suggestion 10
+
+def main():
+    A,B,C,X = map(int,input().split())
+    print((C/B)*((B-C)/(B-A))**(X-A-1))

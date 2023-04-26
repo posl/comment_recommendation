@@ -1,45 +1,140 @@
-#問題文
-#ある国で、宮殿を作ることになりました。
-#この国では、標高が x メートルの地点での平均気温は T-x × 0.006 度です。
-#宮殿を建設する地点の候補は N 個あり、地点 i の標高は H_i メートルです。
-#joisinoお姫様は、これらの中から平均気温が A 度に最も近い地点を選んで宮殿を建設するようにあなたに命じました。
-#宮殿を建設すべき地点の番号を出力してください。
-#ただし、解は一意に定まることが保証されます。
-#
-#制約
-#1 ≦ N ≦ 1000
-#0 ≦ T ≦ 50
-#-60 ≦ A ≦ T
-#0 ≦ H_i ≦ 10^5
-#入力は全て整数
-#解は一意に定まる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T A
-#H_1 H_2 ... H_N
-#
-#出力
-#宮殿を建設すべき地点の番号を出力せよ。
-#
-#入力例 1
-#2
-#12 5
-#1000 2000
-#
-#出力例 1
-#1
-#地点 1 の平均気温は 12-1000 × 0.006=6 度です。
-#地点 2 の平均気温は 12-2000 × 0.006=0 度です。
-#よって、宮殿を建設すべき地点は地点 1 となります。
-#
-#入力例 2
-#3
-#21 -11
-#81234 94124 52141
-#
-#出力例 2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    mi
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+
+    # 宮殿を建設すべき地点の番号を出力
+    print(H.index(min(H, key=lambda x: abs(A - (T - x * 0.006)))))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    d = []
+    for i in range(N):
+        d.append(abs(A - (T - H[i] * 0.006)))
+    print(d.index(min(d)) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    h = [abs(a - (t - x * 0.006)) for x in h]
+    print(h.index(min(h)) + 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min = 10**10
+    for i in range(N):
+        if abs(T - H[i] * 0.006 - A) < min:
+            ans = i
+            min = abs(T - H[i] * 0.006 - A)
+    print(ans + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min = 100000000
+    for i in range(N):
+        if abs(T - H[i]*0.006 - A) < min:
+            min = abs(T - H[i]*0.006 - A)
+            ans = i
+    print(ans+1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T,A = map(int,input().split())
+    H = list(map(int,input().split()))
+    ans = 0
+    min = 1000
+    for i in range(N):
+        if abs(A-(T-H[i]*0.006)) < min:
+            ans = i+1
+            min = abs(A-(T-H[i]*0.006))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    T = T - A
+    ans = 0
+    for i in range(N):
+        if T - H[i]*0.006 > 0:
+            if T - H[i]*0.006 < T - H[ans]*0.006:
+                ans = i
+        else:
+            if T - H[i]*0.006 > T - H[ans]*0.006:
+                ans = i
+    print(ans+1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min = 1000000000000
+    for i in range(N):
+        if min > abs(A - (T - H[i] * 0.006)):
+            min = abs(A - (T - H[i] * 0.006))
+            ans = i + 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+
+    ans = 0
+    min_diff = 1000000000
+    for i in range(n):
+        diff = abs(A-(T-H[i]*0.006))
+        if diff < min_diff:
+            ans = i + 1
+            min_diff = diff
+
+    print(ans)

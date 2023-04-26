@@ -1,50 +1,141 @@
-#問題文
-#整数 W が与えられます。
-#あなたは以下の条件をすべて満たすようにいくつかのおもりを用意することにしました。
-#おもりの個数は 1 個以上 300 個以下である。
-#おもりの重さは 10^6 以下の正整数である。
-#1 以上 W 以下のすべての正整数は 良い整数 である。ここで、以下の条件を満たす正整数 n を良い整数と呼ぶ。
-#用意したおもりのうち 3 個以下 の異なるおもりを自由に選んで、選んだおもりの重さの和を n にすることができる。  　
-#
-#条件を満たすようなおもりの組を 1 つ出力してください。
-#
-#制約
-#1 ≦ W ≦ 10^6
-#W は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#W
-#
-#出力
-#N をおもりの個数、A_i を i 番目のおもりの重さとして、以下の形式で出力せよ。答えが複数存在する場合、どれを出力しても正解とみなされる。
-#N
-#A_1 A_2 ... A_N
-#ただし、N および A_1,A_2,...,A_N は以下の条件を満たす必要がある。
-#1 ≦ N ≦ 300
-#1 ≦ A_i ≦ 10^6
-#
-#入力例 1
-#6
-#
-#出力例 1
-#3
-#1 2 3
-#上の出力は重さ 1 のおもり、重さ 2 のおもり、重さ 3 のおもりの 3 個のおもりを用意しています。
-#この出力は条件を満たしています。特に 3 番目の条件について、以下のようにおもりを選ぶことで 1 以上 W 以下の整数すべてが良い整数であることが確認できます。
-#1 番目のおもりのみを選ぶと、重さの和は 1 になる。
-#2 番目のおもりのみを選ぶと、重さの和は 2 になる。
-#3 番目のおもりのみを選ぶと、重さの和は 3 になる。
-#1 番目と 3 番目のおもりを選ぶと、重さの和は 4 になる。
-#2 番目と 3 番目のおもりを選ぶと、重さの和は 5 になる。
-#1 番目、2 番目と 3 番目のおもりを選ぶと、重さの和は 6 になる。
-#
-#入力例 2
-#12
-#
-#出力例 2
-#6
-#2 5 1 2 5 1
-#同じ重さのおもりを 2 個以上用意しても良いです。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    w = int(input())
+    if w <= 2:
+        print("NO")
+    elif w % 2 == 0:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 2
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1, 2)
+    elif w == 2:
+        print(2)
+        print(1, 2)
+    elif w == 1:
+        print(1)
+        print(1)
+    else:
+        print(3)
+        print(1, 2, 3)
+
+=======
+Suggestion 3
+
+def main():
+    W = int(input())
+    if W == 3:
+        print(2)
+        print(1,2)
+    elif W == 2:
+        print(2)
+        print(1,1)
+    elif W == 1:
+        print(1)
+        print(1)
+    elif W == 0:
+        print(0)
+    else:
+        print(3)
+        print(1,2,3)
+
+=======
+Suggestion 4
+
+def main():
+    W = int(input())
+    if W % 2 == 0:
+        print(W // 2)
+        for i in range(W // 2):
+            print(2)
+    else:
+        print(W // 2 + 1)
+        for i in range(W // 2):
+            print(2)
+        print(1)
+
+=======
+Suggestion 5
+
+def main():
+    W = int(input())
+    if W <= 2:
+        print(1)
+        print(W)
+    elif W <= 4:
+        print(2)
+        print(1, W-1)
+    else:
+        print(3)
+        if W % 2 == 0:
+            print(W//2, W//2)
+        else:
+            print(W//2, W//2+1)
+
+=======
+Suggestion 6
+
+def main():
+    w = int(input())
+    if w <= 2:
+        print('NO')
+    elif w % 2 == 1:
+        print('NO')
+    else:
+        print('YES')
+
+=======
+Suggestion 7
+
+def solve():
+    W = int(input())
+    if W <= 2:
+        print("NO")
+    elif W % 2 == 0:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 8
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1, 2)
+        return
+    print(3)
+    if w % 2 == 0:
+        print(w // 2, w // 2, 2)
+    else:
+        print(w // 2, w // 2 + 1, 1)
+
+=======
+Suggestion 9
+
+def solve(W):
+    N = 300
+    A = [0] * N
+    A[0] = 1
+    A[1] = 2
+    A[2] = 3
+    if W <= 3:
+        return A[0:W]
+    else:
+        for i in range(3, N):
+            A[i] = A[i - 1] + A[i - 2] + A[i - 3]
+            if A[i] > W:
+                return A[0:i]
+        return A[0:N]

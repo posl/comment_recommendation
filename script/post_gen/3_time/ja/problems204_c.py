@@ -1,55 +1,152 @@
-#問題文
-#AtCoder 国には 1 から N の番号がついた N 個の都市と、1 から M の番号がついた M 個の道路があります。
-#道路 i を通ると都市 A_i から B_i へ移動することができます。都市 B_i から都市 A_i への通行はできません。
-#ピューマは、どこかの都市からスタートし、0 本以上の道路を使い移動して、どこかの都市をゴールとするような旅行の計画を立てようとしています。
-#スタート地点とゴール地点の都市の組として考えられるものは何通りありますか？
-#
-#制約
-#2 ≦ N ≦ 2000
-#0 ≦ M ≦ min(2000,N(N-1))
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#(A_i,B_i) は相異なる
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3 3
-#1 2
-#2 3
-#3 2
-#
-#出力例 1
-#7
-#スタート地点とゴール地点の組として考えられるものは (1,1),(1,2),(1,3),(2,2),(2,3),(3,2),(3,3) の 7 通りです。
-#
-#入力例 2
-#3 0
-#
-#出力例 2
-#3
-#スタート地点とゴール地点の組として考えられるものは (1,1),(2,2),(3,3) の 3 通りです。
-#
-#入力例 3
-#4 4
-#1 2
-#2 3
-#3 4
-#4 1
-#
-#出力例 3
-#16
-#スタート地点とゴール地点の組として全ての都市の組み合わせが可能です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(N*N - N - M)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(N)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    ans = n * (n-1) // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    g = [[0]*n for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        g[a-1][b-1] = 1
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if g[i][j] == 1:
+                for k in range(n):
+                    if g[j][k] == 1 and g[k][i] == 1:
+                        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    print(N, M)
+    for i in range(M):
+        A, B = map(int, input().split())
+        print(A, B)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    print(N * N - N * M - M * N + M * (M - 1) // 2)
+
+=======
+Suggestion 7
+
+def comb(n,r):
+    if r == 0:
+        return 1
+    else:
+        return comb(n,r-1)*(n-r+1)//r
+
+N,M = map(int,input().split())
+print(comb(N,2) - M)
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    print(n, m)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    AB = [list(map(int,input().split())) for _ in range(M)]
+
+    #print(N,M)
+    #print(AB)
+
+    # 都市の組み合わせはN*(N-1)/2
+    # それぞれの組み合わせに対して、スタート地点とゴール地点を決める
+    # スタート地点とゴール地点の組み合わせが何通りあるかを計算する
+    # 都市の組み合わせの数
+    city_combination = int(N*(N-1)/2)
+    # スタート地点とゴール地点の組み合わせの数
+    start_goal_combination = 0
+    for i in range(city_combination):
+        for j in range(M):
+            if i+1 == AB[j][0] or i+1 == AB[j][1]:
+                #print(i+1,AB[j][0],AB[j][1])
+                start_goal_combination += 1
+                break
+    #print(city_combination,start_goal_combination)
+    print(city_combination - start_goal_combination)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(3)
+        return
+    # 都市を通る道路のリスト
+    cities = [set() for _ in range(n)]
+    for _ in range(m):
+        a,b = map(int,input().split())
+        cities[a-1].add(b-1)
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if i in cities[j]:
+                continue
+            for k in range(n):
+                if i == k:
+                    continue
+                if j == k:
+                    continue
+                if i in cities[k]:
+                    continue
+                if j in cities[k]:
+                    continue
+                ans += 1
+    print(ans)

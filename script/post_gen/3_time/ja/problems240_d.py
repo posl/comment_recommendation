@@ -1,53 +1,226 @@
-#問題文
-#高橋君は 2 以上の整数が書かれた N 個のボールを持っており、これらを細長い筒の中に落としていきます。i  (1 ≦ i ≦ N) 回目には、a_i が書かれたボールを落とします。
-#ボールは特殊な材質でできており、筒の中において k  (k ≧ 2) が書かれたボールが k 個連続すると、それら k 個のボールは全て消えてしまいます。
-#各 i  (1 ≦ i ≦ N) について、i 個目のボールを筒の中に落とした後、筒の中に何個のボールがあるか求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ a_i ≦ 2 × 10^5  (1 ≦ i ≦ N)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 ... a_N
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、i 個目のボールを筒の中に落とした後、筒の中にあるボールの個数を出力せよ。
-#
-#入力例 1
-#5
-#3 2 3 2 2
-#
-#出力例 1
-#1
-#2
-#3
-#4
-#3
-#筒の中は次のように変化します。
-#1 個目のボールを落とす。筒の中にあるボールに書かれた整数は 3 である。
-#2 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2 である。
-#3 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3 である。
-#4 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3, 2 である。
-#5 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3, 2, 2 となるが、2 が書かれたボールが 2 個連続しているのでこれらは消え、下から順に 3, 2, 3 となる。
-#
-#
-#入力例 2
-#10
-#2 3 2 3 3 3 2 3 3 2
-#
-#出力例 2
-#1
-#2
-#3
-#4
-#5
-#3
-#2
-#3
-#1
-#0
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * N
+    ans[0] = 1
+    for i in range(1, N):
+        if a[i] == a[i-1]:
+            ans[i] = ans[i-1] + 1
+        else:
+            ans[i] = 1
+    for i in range(N):
+        if ans[i] % 2 == 0:
+            print(0)
+        else:
+            print(1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    balls = []
+    for i in range(N):
+        if len(balls) == 0:
+            balls.append([A[i], 1])
+        else:
+            if balls[-1][0] == A[i]:
+                balls[-1][1] += 1
+                if balls[-1][1] == balls[-1][0]:
+                    balls.pop()
+            else:
+                balls.append([A[i], 1])
+        print(len(balls))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * (max(A) + 1)
+    for a in A:
+        B[a] += 1
+    cnt = 0
+    for i in range(2, max(A) + 1):
+        cnt += B[i] // i
+        B[i] = B[i] % i
+        B[i + 1] += B[i]
+    print(N - cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    num = [0] * 200001
+    ans = []
+    for i in a:
+        num[i] += 1
+        if num[i] >= 2:
+            num[i] = 0
+            num[i + 1] += 1
+        ans.append(sum(num))
+    print(*ans, sep="
+
+")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 筒に入っているボールの個数
+    ball = 0
+    # 筒に入っているボールの個数が変わる時間
+    time = 0
+    # 筒に入っているボールの個数が変わる時間とその個数を格納するリスト
+    timeball = [[0, 0]]
+    for i in range(N):
+        if A[i] == timeball[time][0]:
+            timeball[time][1] += 1
+        else:
+            time += 1
+            timeball.append([A[i], 1])
+    # 筒に入っているボールの個数が変わる時間とその個数を格納するリストの長さ
+    t = len(timeball)
+    # 筒に入っているボールの個数が変わる時間とその個数を格納するリストのインデックス
+    index = 0
+    for i in range(N):
+        while index < t - 1 and i >= timeball[index + 1][1]:
+            index += 1
+        if index % 2 == 0:
+            print(ball + timeball[index][1])
+        else:
+            print(ball)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 筒の中にあるボールの個数を格納する変数
+    balls = 0
+
+    # 筒の中にあるボールの個数を格納するリスト
+    balls_list = []
+
+    # 筒の中にあるボールの個数を格納するリストのインデックス
+    index = 0
+
+    # 筒の中にあるボールの個数を格納するリストのインデックス
+    index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値
+    last_ball = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中にあるボールの個数を格納するリストの最後の値のインデックス
+    last_index = 0
+
+    # 筒の中に
+
+=======
+Suggestion 7
+
+def   main (): 
+     N   =   int ( input ()) 
+     a   =   list ( map ( int ,   input (). split ())) 
+     cnt   =   0 
+     cnt_list   =   [] 
+     for   i   in   range ( N ): 
+         if   i   ==   0 : 
+             cnt   =   1 
+         else : 
+             if   a [ i ]   ==   a [ i - 1 ]: 
+                 cnt   +=   1 
+             else : 
+                 cnt_list . append ( cnt ) 
+                 cnt   =   1 
+     cnt_list . append ( cnt ) 
+     # print(cnt_list) 
+     ans   =   [] 
+     for   i   in   range ( N ): 
+         if   i   ==   0 : 
+             ans . append ( 1 ) 
+         else : 
+             if   a [ i ]   ==   a [ i - 1 ]: 
+                 ans . append ( ans [ i - 1 ] + 1 ) 
+             else : 
+                 ans . append ( 1 ) 
+     # print(ans) 
+     for   i   in   range ( N ): 
+         if   i   ==   0 : 
+             print ( ans [ i ]) 
+         else : 
+             if   cnt_list [ i - 1 ]   ==   1 : 
+                 print ( ans [ i ]) 
+             else : 
+                 if   ans [ i ]   ==   cnt_list [ i - 1 ]: 
+                     print ( ans [ i ] - 1 ) 
+                 else : 
+                     print ( ans [ i ])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する
+    # 筒の中にあるボールの個数を管理する
+    ball = 0
+    # 筒の中にあるボールの個数を管理する

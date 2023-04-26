@@ -1,28 +1,48 @@
-#問題文
-#z でない英小文字 C が与えられます。アルファベット順で C の次の文字を出力してください。
-#
-#制約
-#C は z でない英小文字
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#C
-#
-#出力
-#アルファベット順で C の次の文字を出力せよ。
-#
-#入力例 1
-#a
-#
-#出力例 1
-#b
-#a の次は b です。
-#
-#入力例 2
-#y
-#
-#出力例 2
-#z
-#y の次は z です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    c = input()
+    print(chr(ord(c) + 1))
+
+=======
+Suggestion 2
+
+def main():
+    c = input()
+    print(chr(ord(c)+1))
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    C = input()
+    print(chr(ord(C)+1))
+
+=======
+Suggestion 4
+
+def main():
+    # 文字列の入力
+    C = input()
+    # 出力
+    print(chr(ord(C)+1))
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    C = input()
+
+    #処理
+    #ord()は文字のアスキーコードを返す関数
+    #chr()はアスキーコードを文字に変換する関数
+    ans = chr(ord(C) + 1)
+
+    #出力
+    print(ans)

@@ -1,34 +1,59 @@
-#問題文
-#N 個の整数 A_1,A_2,...,A_N が与えられます。
-#N 個の整数を合計した値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 100
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#2 7 2
-#
-#出力例 1
-#11
-#3 個の整数 2,7,2 が与えられます。
-#答えは 2 + 7 + 2 = 11 です。
-#
-#入力例 2
-#1
-#3
-#
-#出力例 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(sum(A))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(sum(a))
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    #処理
+    ans = sum(A)
+
+    #出力
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 入力を受け取る
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 答えを出力する
+    print(sum(a))
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    #出力
+    print(sum(A))
+
+=======
+Suggestion 6
+
+def main():
+    input()
+    print(sum(map(int, input().split())))

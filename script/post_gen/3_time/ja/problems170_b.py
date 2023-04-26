@@ -1,38 +1,125 @@
-#問題文
-#庭に何匹かの動物がいます。これらはそれぞれ、2 本の足を持つ鶴か 4 本の足を持つ亀のいずれかです。
-#高橋くんは、「庭の動物の総数は X 匹で、それらの足の総数は Y 本である」と発言しています。この発言が正しいような鶴と亀の数の組合せが存在するか判定してください。
-#
-#制約
-#1 ≦ X ≦ 100
-#1 ≦ Y ≦ 100
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y
-#
-#出力
-#発言が正しいような鶴と亀の数の組合せが存在すれば Yes、なければ No と出力せよ。
-#
-#入力例 1
-#3 8
-#
-#出力例 1
-#Yes
-#「庭にいる動物の総数は 3 匹で、それらの動物の足の総数は 8 本である」という発言は、鶴が 2 羽、亀が 1 匹いる場合に正しいため、発言が正しいような鶴と亀の数の組合せは存在します。
-#
-#入力例 2
-#2 100
-#
-#出力例 2
-#No
-#この発言が正しいような鶴と亀の数の組合せは存在しません。
-#
-#入力例 3
-#1 2
-#
-#出力例 3
-#Yes
-#鶴と亀のうち一方のみが存在する場合も考慮します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    X, Y = map(int, input().split())
+    for i in range(X+1):
+        if 2*i + 4*(X-i) == Y:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    X, Y = map(int, input().split())
+    for i in range(X+1):
+        if 2*i+(X-i)*4 == Y:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    # 入力
+    X, Y = map(int, input().split())
+
+    # 処理
+    for i in range(X+1):
+        if 2*i + 4*(X-i) == Y:
+            # 出力
+            print('Yes')
+            return
+    # 出力
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    X, Y = map(int, input().split())
+    if Y % 2 == 0 and Y // 2 >= X and 4 * X >= Y:
+        print('Yes')
+    else:
+        print('No')
+main()
+
+=======
+Suggestion 5
+
+def main():
+    X, Y = map(int, input().split())
+    if X * 4 < Y or Y % 2 == 1:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    X, Y = map(int, input().split())
+    if X * 4 < Y or Y % 2 != 0:
+        print("No")
+    else:
+        if X * 2 <= Y:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    x,y = map(int,input().split())
+    if x*4>=y and y%2==0 and x*2<=y:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x, y = map(int, input().split())
+    if x >= 0 and x <= 100 and y >= 0 and y <= 100:
+        if x * 4 >= y and x * 2 <= y:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("入力値が範囲外です")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    X,Y = map(int,input().split())
+
+    #出力
+    if 2*X <= Y <= 4*X and Y%2 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    # 入力
+    X, Y = map(int, input().split())
+    # 処理
+    if 4 * X < Y or Y < 2 * X:
+        print("No")
+    elif Y % 2 == 0:
+        print("Yes")
+    else:
+        print("No")

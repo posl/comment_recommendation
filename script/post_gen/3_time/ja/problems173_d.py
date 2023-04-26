@@ -1,36 +1,140 @@
-#問題文
-#あなたはオンラインゲーム「ATChat」のチュートリアルを終え、その場に居合わせたプレイヤー N 人で早速とある場所を訪ねることにしました。この N 人には 1 から N の番号が振られており、人 i (1 ≦ i ≦ N) の フレンドリーさ は A_i です。
-#訪ねる際、N 人は好きな順番で 1 人ずつ到着します。あなたたちは迷子にならないために、既に到着した人たちで環状に並び、新たに到着した人は好きな位置に割り込んで加わるというルールを決めました。
-#最初に到着した人以外の各人は、割り込んだ位置から到着した時点で「時計回りで最も近い人」と「反時計回りで最も近い人」のフレンドリーさのうち小さい方に等しい 心地よさ を感じます。最初に到着した人の心地よさは 0 です。
-#N 人が到着する順番や割り込む位置を適切に決めたとき、N 人の心地よさの合計の最大値はいくらになるでしょう？
-#
-#制約
-#入力はすべて整数
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#N 人の心地よさの合計の最大値を出力せよ。
-#
-#入力例 1
-#4
-#2 2 1 3
-#
-#出力例 1
-#7
-#人 4, 2, 1, 3 がこの順に到着し、図のように輪に割り込むことで、心地よさの合計は 7 になります。
-#心地よさの合計を 7 より大きくすることはできないので、7 が答えになります。
-#
-#入力例 2
-#7
-#1 1 1 1 1 1 1
-#
-#出力例 2
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (N - 1 - 2 * i)
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (N - i - 1) * (2 * i + 1)
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 ** i)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (i % 2 * 2 - 1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 ** i - 2 ** (N - i - 1))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (i + 1)
+        ans -= A[i] * (N - i - 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    A.sort()
+    #print(A)
+    ans = 0
+    for i in range(N):
+        #print(i)
+        #print(A[i])
+        #print(A[i] * (N - i - 1))
+        ans += A[i] * (N - i - 1)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1. 環状に並ぶ人の順番を決める
+    # 2. それぞれの人の心地よさを計算する
+
+    # 1. 環状に並ぶ人の順番を決める
+    # 降順に並べる
+    A = sorted(A, reverse=True)
+
+    # 2. それぞれの人の心地よさを計算する
+    # 1番目の人は、2番目の人との距離が最短
+    # 2番目の人は、1番目と3番目の人との距離が最短
+    # 3番目の人は、2番目と4番目の人との距離が最短
+    # 4番目の人は、3番目と5番目の人との距離が最短
+    # 5番目の人は、4番目と6番目の人との距離が最短
+    # ...
+    # 人iは、人i-1と人i+1の距離が最短
+    # 人N-1は、人N-2と人Nの距離が最短
+    # 人Nは、人N-1と人1の距離が最短
+    # 人1は、人Nと人2の距離が最短
+    # 人2は、人1と人3の距離が最短
+    # 人3は、人2と人4の距離が最短
+    # 人4は、人3と人5の距離が最短
+    # ...
+    # 人iは、人i-2と人i+2の距離が最短
+    # 人N-1

@@ -1,50 +1,135 @@
-#問題文
-#高橋くんは整数を 1 つ買いに整数屋さんに行きました。
-#整数屋さんには 1 以上 10^9 以下の整数が売られていて、整数 N を買うためには A × N + B × d(N) 円が必要です。ここで、d(N) は N の十進表記での桁数です。
-#高橋くんの所持金が X 円のとき、高橋くんの買うことのできる最も大きい整数を求めてください。ただし、買うことのできる整数が 1 つもない場合は 0 を出力してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B X
-#
-#出力
-#高橋くんの買うことのできる最も大きい整数を出力せよ。ただし、買うことのできる整数が 1 つもない場合は 0 を出力せよ。
-#
-#入力例 1
-#10 7 100
-#
-#出力例 1
-#9
-#9 の値段は 10 × 9 + 7 × 1 = 97 円で、これが買うことのできる最大の整数です。
-#他の整数の値段の例をいくつかあげると
-#10: 10 × 10 + 7 × 2 = 114 円
-#100: 10 × 100 + 7 × 3 = 1021 円
-#12345: 10 × 12345 + 7 × 5 = 123485 円
-#です。
-#
-#入力例 2
-#2 1 100000000000
-#
-#出力例 2
-#1000000000
-#お店に売られている最大の整数を買うことができます。入力が 32 bit整数型に収まらないことがあることに注意してください。
-#
-#入力例 3
-#1000000000 1000000000 100
-#
-#出力例 3
-#0
-#
-#入力例 4
-#1234 56789 314159265
-#
-#出力例 4
-#254309
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, X = map(int, input().split())
+    N = 0
+    for i in range(10, 0, -1):
+        if A * i + B * len(str(i)) <= X:
+            N = i
+            break
+    print(N)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, x = map(int, input().split())
+
+    def d(n):
+        return len(str(n))
+
+    def f(n):
+        return a * n + b * d(n)
+
+    left = 0
+    right = 10 ** 9 + 1
+    while right - left > 1:
+        mid = (left + right) // 2
+        if f(mid) <= x:
+            left = mid
+        else:
+            right = mid
+
+    print(left)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, X = map(int, input().split())
+    max = 0
+    for i in range(1,10):
+        if A * i + B * len(str(i)) <= X:
+            max = i
+    print(max)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,x = map(int, input().split())
+    ans = 0
+    for i in range(1, 10):
+        if a * i + b * len(str(i)) <= x:
+            ans = max(ans, i)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    # 標準入力から A, B, X を取得する
+    A, B, X = map(int, input().split())
+
+    # X を買うことのできる最大の整数を出力する
+    if A + B > X:
+        print(0)
+    elif A * 10 + B * 10 <= X:
+        print(10 ** 9)
+    else:
+        #10 ** 9 以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        #10 ** 9以下の整数の中で、X を買うことのできる最大の整数を出力する
+        print((X - B) // A)
+
+=======
+Suggestion 6
+
+def main():
+    a, b, x = map(int, input().split())
+    if a*10**9 + b*10 < x:
+        print(10**9)
+    else:
+        if a*10**9 + b*1 > x:
+            print(0)
+        else:
+            for i in range(2, 10**9):
+                if a*i + b*len(str(i)) > x:
+                    print(i-1)
+                    break
+
+=======
+Suggestion 7
+
+def main():
+    a,b,x = map(int,input().split())
+    if a * 10**9 + b * 10 > x:
+        print(0)
+    else:
+        print(10**9)
+
+=======
+Suggestion 8
+
+def main():
+    a, b, x = map(int, input().split())
+    #print("a,b,x:", a, b, x)
+    #print("x / a:", x / a)
+    #print("x / b:", x / b)
+    if x / a > 10**9:
+        print(10**9)
+    elif x / b > 10**9:
+        print(10**9)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    a, b, x = map(int, input().split())
+    print(int((x - b) / a)) if x >= a else print(0)
+
+=======
+Suggestion 10
+
+def calc_price(a,b,n):
+    return a*n + b*len(str(n))

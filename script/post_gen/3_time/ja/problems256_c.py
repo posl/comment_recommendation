@@ -1,46 +1,201 @@
-#問題文
-#6 個の整数 h_1, h_2, h_3, w_1, w_2, w_3 が与えられます。
-#縦横 3 × 3 のマス目に、以下の条件をすべて満たすように各マスに正の整数を 1 つずつ書きこむことを考えます。
-#i=1,2,3 について、上から i 行目に書きこんだ数の和が h_i になる。
-#j=1,2,3 について、左から j 列目に書きこんだ数の和が w_j になる。
-#例えば (h_1, h_2, h_3) = (5, 13, 10), (w_1, w_2, w_3) = (6, 13, 9) のとき、以下の 3 通りの書きこみ方はすべて条件を満たしています。(条件を満たす書きこみ方は他にもあります)
-#さて、条件を満たす書きこみ方は全部で何通り存在しますか？
-#
-#制約
-#3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#h_1 h_2 h_3 w_1 w_2 w_3
-#
-#出力
-#条件を満たす書きこみ方が何通りあるかを出力せよ。
-#
-#入力例 1
-#3 4 6 3 3 7
-#
-#出力例 1
-#1
-#条件を満たす数の書きこみ方は次の 1 通りのみです。よって 1 を出力します。
-#
-#入力例 2
-#3 4 5 6 7 8
-#
-#出力例 2
-#0
-#条件を満たす書きこみ方が存在しないこともあります。
-#
-#入力例 3
-#5 13 10 6 13 9
-#
-#出力例 3
-#120
-#
-#入力例 4
-#20 25 30 22 29 24
-#
-#出力例 4
-#30613
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    sum_h = h1 + h2 + h3
+    sum_w = w1 + w2 + w3
+    if sum_h != sum_w:
+        print(0)
+        return
+    else:
+        sum_h = sum_h // 3
+        sum_w = sum_w // 3
+    if h1 != w1:
+        print(0)
+        return
+    if h1 + h2 != w1 + w2:
+        print(0)
+        return
+    if h1 + h2 + h3 != w1 + w2 + w3:
+        print(0)
+        return
+    if h1 + h3 != w1 + w3:
+        print(0)
+        return
+    if h1 + h2 + h3 != sum_h * 3:
+        print(0)
+        return
+    if h1 + h2 != sum_h * 2:
+        print(0)
+        return
+    if h1 != sum_h:
+        print(0)
+        return
+    if h1 + h3 != sum_h * 2:
+        print(0)
+        return
+    if h1 + h2 + h3 != sum_w * 3:
+        print(0)
+        return
+    if h1 + h2 != sum_w * 2:
+        print(0)
+        return
+    if h1 != sum_w:
+        print(0)
+        return
+    if h1 + h3 != sum_w * 2:
+        print(0)
+        return
+    if h1 + h2 + h3 != sum_w * 3:
+        print(0)
+        return
+    if h1 + h2 != sum_w * 2:
+        print(0)
+        return
+    if h1 != sum_w:
+        print(0)
+        return
+    if h1 + h3 != sum_w * 2:
+        print(0)
+        return
+
+    if h1 == w1:
+        if h1 + h2 == w1 + w2:
+            if h1 + h2 + h3 == w1 + w2 + w3:
+                if h1 + h3 == w1 + w3:
+                    print(1)
+                    return
+
+=======
+Suggestion 2
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    count = 0
+    for i in range(1, 31):
+        for j in range(1, 31):
+            for k in range(1, 31):
+                if i + j + k == h1 and i + k + j == h2 and j + k + i == h3 and i + j + k == w1 and i + k + j == w2 and j + k + i == w3:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    count = 0
+    for i in range(1, 31):
+        for j in range(1, 31):
+            for k in range(1, 31):
+                if h1 == i + j + k and w1 == i + j + k:
+                    for l in range(1, 31):
+                        for m in range(1, 31):
+                            for n in range(1, 31):
+                                if h2 == l + m + n and w2 == l + m + n:
+                                    for o in range(1, 31):
+                                        for p in range(1, 31):
+                                            for q in range(1, 31):
+                                                if h3 == o + p + q and w3 == o + p + q:
+                                                    if i + l + o == j + m + p == k + n + q:
+                                                        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for a in range(1, 31):
+        for b in range(1, 31):
+            for c in range(1, 31):
+                for d in range(1, 31):
+                    for e in range(1, 31):
+                        for f in range(1, 31):
+                            for g in range(1, 31):
+                                for i in range(1, 31):
+                                    for j in range(1, 31):
+                                        if h1 == a + b + c and h2 == d + e + f and h3 == g + i + j and w1 == a + d + g and w2 == b + e + i and w3 == c + f + j:
+                                            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for i in range(1, h1 + 1):
+        for j in range(1, h2 + 1):
+            for k in range(1, h3 + 1):
+                for l in range(1, w1 + 1):
+                    for m in range(1, w2 + 1):
+                        for n in range(1, w3 + 1):
+                            if i + j + k == h1 and i + l + m == w1 and j + m + n == w2 and k + l + n == w3:
+                                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for a in range(1, 30):
+        for b in range(1, 30):
+            for c in range(1, 30):
+                for d in range(1, 30):
+                    for e in range(1, 30):
+                        for f in range(1, 30):
+                            for g in range(1, 30):
+                                for i in range(1, 30):
+                                    for j in range(1, 30):
+                                        if a + b + c == h1 and d + e + f == h2 and g + i + j == h3 and a + d + g == w1 and b + e + i == w2 and c + f + j == w3:
+                                            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    for h4 in range(1, 31):
+        for h5 in range(1, 31):
+            for h6 in range(1, 31):
+                for w4 in range(1, 31):
+                    for w5 in range(1, 31):
+                        for w6 in range(1, 31):
+                            if h1 == h4 + h5 + h6 and h2 == h4 + h5 + h6 and h3 == h4 + h5 + h6:
+                                if w1 == w4 + w5 + w6 and w2 == w4 + w5 + w6 and w3 == w4 + w5 + w6:
+                                    ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    h1,h2,h3,w1,w2,w3 = map(int,input().split())
+    print(solve(h1,h2,h3,w1,w2,w3))
+
+=======
+Suggestion 9
+
+def check(h, w):
+    for i in range(3):
+        if sum(h[i]) != h[i][3]:
+            return False
+    for i in range(3):
+        if sum(w[i]) != w[i][3]:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def get_num_list():
+    return list(map(int, input().split()))

@@ -1,42 +1,99 @@
-#問題文
-#整数 N が与えられるので、以下の問題を解いてください。
-#f(x)= ( x 以下の正整数で、 x と桁数が同じものの数) とします。
-#f(1)+f(2)+...+f(N) を 998244353 で割った余りを求めてください。
-#
-#制約
-#N は整数
-#1 ≦ N < 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#16
-#
-#出力例 1
-#73
-#1 以上 9 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 1,2,...,x です。
-#これより、 f(1)=1,f(2)=2,...,f(9)=9 となります。
-#10 以上 16 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 10,11,...,x です。
-#これより、 f(10)=1,f(11)=2,...,f(16)=7 となります。
-#
-#結局、求める答えは 73 です。
-#
-#入力例 2
-#238
-#
-#出力例 2
-#13870
-#
-#入力例 3
-#999999999999999999
-#
-#出力例 3
-#762062362
-#998244353 で割った余りを求めることに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    return len(str(x))
+
+n = int(input())
+ans = 0
+for i in range(1, n+1):
+    ans += f(i)
+print(ans % 998244353)
+
+=======
+Suggestion 2
+
+def f(x):
+    return len(str(x))
+
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    ans += f(i)
+print(ans%998244353)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) == len(str(N)):
+            ans += 1
+    print(ans % 998244353)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += len(str(i))
+    print(ans % 998244353)
+
+=======
+Suggestion 5
+
+def solve(n):
+    ans = 0
+    i = 1
+    while i <= n:
+        ans += n // i
+        i *= 10
+    return ans
+
+n = int(input())
+print(solve(n) % 998244353)
+
+=======
+Suggestion 6
+
+def f(x):
+    if x < 10:
+        return x
+    else:
+        return 1 + f(x // 10)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    MOD = 998244353
+    ans = 0
+    for i in range(1, N+1):
+        ans += len(str(i))
+    print(ans%MOD)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    N_str = str(N)
+    N_len = len(N_str)
+    N_first = int(N_str[0])
+    N_last = int(N_str[-1])
+    N_mid = int(N_str[1:-1]) if N_len > 2 else 0
+    #print(N, N_len, N_first, N_mid, N_last)
+    if N_len == 1:
+        print(N)
+    elif N_len == 2:
+        print(N_first + (N_last - 1) * 2)
+    else:
+        print(N_first + (N_mid - 1) * 2 + 9 * (N_len - 2) * (N_mid + 1) + N_last)

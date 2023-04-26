@@ -1,36 +1,44 @@
-#問題文
-#正整数 A, B が与えられます。
-#A が B の約数なら A + B を、そうでなければ B - A を出力してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A ≦ B ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#A が B の約数なら A + B を、そうでなければ B - A を出力せよ。
-#
-#入力例 1
-#4 12
-#
-#出力例 1
-#16
-#4 は 12 の約数なので 4 + 12 = 16 を出力します。
-#
-#入力例 2
-#8 20
-#
-#出力例 2
-#12
-#
-#入力例 3
-#1 1
-#
-#出力例 3
-#2
-#1 は 1 の約数です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(A + B)
+    else:
+        print(B - A)
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    a, b = map(int, input().split())
+    #出力
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+=======
+Suggestion 4
+
+def main():
+    # A, B = [int(i) for i in input().split()]
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(A + B)
+    else:
+        print(B - A)

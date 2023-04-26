@@ -1,41 +1,137 @@
-#問題文
-#あなたは AtCoder 王国の入国審査官です。入国者の書類にはいくつかの整数が書かれており、あなたの仕事はこれらが条件を満たすか判定することです。
-#規約では、次の条件を満たすとき、またその時に限り、入国を承認することになっています。
-#書類に書かれている整数のうち、偶数であるものは全て、3 または 5 で割り切れる。
-#上の規約に従うとき、書類に N 個の整数 A_1, A_2, ..., A_N が書かれた入国者を承認するならば APPROVED を、しないならば DENIED を出力してください。
-#
-#注記
-#問題文中の条件は、「x が書類に書かれている整数のうち、偶数であるものならば、x は 3 または 5 で割り切れる。」 と言い換えられます。
-#ここで、「または」 「ならば」 は論理学における意味です。
-#
-#制約
-#入力はすべて整数
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#規約に従うとき、入国者を承認するならば APPROVED を、しないならば DENIED を出力せよ。
-#
-#入力例 1
-#5
-#6 7 9 10 31
-#
-#出力例 1
-#APPROVED
-#書類に書かれている整数のうち、偶数であるものは 6, 10 です。
-#これらは全て 3 または 5 で割り切れるので、この入国者は承認します。
-#
-#入力例 2
-#3
-#28 27 24
-#
-#出力例 2
-#DENIED
-#28 が条件を満たさないので、この入国者は承認しません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for a in A:
+        if a % 2 == 0:
+            if a % 3 != 0 and a % 5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")
+    return
+
+=======
+Suggestion 3
+
+def check(num):
+    if num % 2 == 0:
+        if num % 3 == 0 or num % 5 == 0:
+            return True
+        else:
+            return False
+    else:
+        return True
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    for a in A:
+        if a % 2 == 0:
+            if a % 3 != 0 and a % 5 != 0:
+                print("DENIED")
+                exit()
+    print("APPROVED")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0 and (i % 3 != 0 and i % 5 != 0):
+            print("DENIED")
+            break
+    else:
+        print("APPROVED")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    for i in range(N):
+        if A[i] % 2 == 0:
+            if A[i] % 3 != 0 and A[i] % 5 != 0:
+                print("DENIED")
+                exit()
+    print("APPROVED")
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i]%2 == 0:
+            if a[i]%3 != 0 and a[i]%5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")
+    return
+
+=======
+Suggestion 8
+
+def check():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                return False
+    return True
+
+=======
+Suggestion 9
+
+def check(n):
+    if n % 2 == 0:
+        if n % 3 == 0 or n % 5 == 0:
+            return True
+    return False
+
+n = int(input())
+a = list(map(int, input().split()))
+for i in a:
+    if not check(i):
+        print("DENIED")
+        exit()
+print("APPROVED")
+
+=======
+Suggestion 10
+
+def check():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    for a in a_list:
+        if a % 2 == 0 and (a % 3 != 0 and a % 5 != 0):
+            return False
+    return True
+
+print("APPROVED" if check() else "DENIED")

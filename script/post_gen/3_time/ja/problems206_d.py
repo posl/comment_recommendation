@@ -1,46 +1,195 @@
-#問題文
-#N 項からなる正整数列 A=(A_1,A_2, ... A_N) が与えられます。
-#以下の操作を 0 回以上何度でも行える時、操作を最小何回行えば、A を回文にすることができますか？  
-#ある正整数の組 (x,y) を選ぶ。その後、現在 A に含まれる x をすべて y に置き換える。
-#なお、この問題では、全ての整数 i (1 ≦ i ≦ N) について、A_i=A_{N+1-i} が成り立つとき、またその時に限って、A が回文であると言います。  
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#出力例 1
-#2
-#はじめ、A=(1,5,3,2,5,2,3,1) です。
-#A に含まれる 3 を全て 2 に置き換えると、A=(1,5,2,2,5,2,2,1) となります。
-#A に含まれる 2 を全て 5 に置き換えると、A=(1,5,5,5,5,5,5,1) となります。
-#以上の操作を行うと、A を 2 回の操作で回文にすることができ、これが最小です。
-#
-#入力例 2
-#7
-#1 2 3 4 1 2 3
-#
-#出力例 2
-#1
-#
-#入力例 3
-#1
-#200000
-#
-#出力例 3
-#0
-#A がはじめから回文である可能性もあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] != A[N-1-i]:
+            ans += 1
+    print(ans//2)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N//2):
+        if A[i] != A[N-i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n//2):
+        if a[i] == a[-i-1]:
+            continue
+        elif a[i] != a[-i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N // 2):
+        if A[i] != A[-i - 1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+
+    if N == 1:
+        print(0)
+        return
+
+    if N % 2 == 0:
+        #print("N is even")
+        #print(A[0:N//2])
+        #print(A[N//2:])
+
+        #print(A[0:N//2])
+        #print(A[N//2:])
+        if A[0:N//2] == A[N//2:]:
+            print(0)
+            return
+        else:
+            print(1)
+            return
+
+    else:
+        #print("N is odd")
+        #print(A[0:N//2])
+        #print(A[N//2+1:])
+        if A[0:N//2] == A[N//2+1:]:
+            print(0)
+            return
+        else:
+            print(1)
+            return
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #A = [int(x) for x in input().split()]
+    #print(N, A)
+    #print(type(N), type(A))
+    
+    #Aの要素の個数を数える
+    #Aの要素の個数が偶数の時は、要素の個数を2で割った値が、Aの中で最も多い個数
+    #Aの要素の個数が奇数の時は、要素の個数を2で割った値の1つ大きい値が、Aの中で最も多い個数
+    #Aの中で最も多い個数を求める
+    
+    #Aの要素の個数を数える
+    #Aの要素の個数が偶数の時は、要素の個数を2で割った値が、Aの中で最も多い個数
+    #Aの要素の個数が奇数の時は、要素の個数を2で割った値の1つ大きい値が、Aの中で最も多い個数
+    #Aの中で最も多い個数を求める
+    #Aの要素の個数を数える
+    #Aの要素の個数が偶数の時は、要素の個数を2で割った値が、Aの中で最も多い個数
+    #Aの要素の個数が奇数の時は、要素の個数を2で割った値の1つ大きい値が、Aの中で最も多い個数
+    #Aの中で最も多い個数を求める
+    #Aの要素の個数を数える
+    #Aの要素の個数が偶数の時は、要素の個数を2で割
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+
+    #Aの要素をカウント
+    count = [0] * 200001
+    for i in range(N):
+        count[A[i]] += 1
+
+    #print(count)
+
+    #countの要素が奇数のものの数を数える
+    odd = 0
+    for i in range(200001):
+        if count[i] % 2 == 1:
+            odd += 1
+
+    #print(odd)
+
+    #Nが偶数のとき、oddは必ず0
+    #Nが奇数のとき、oddは必ず1
+    if N % 2 == 0:
+        if odd == 0:
+            print(0)
+        else:
+            print(odd - 1)
+    else:
+        if odd == 1:
+            print(0)
+        else:
+            print(odd - 1)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1. A の各要素が偶数個か奇数個かをカウント
+    # 2. 奇数個の要素がいくつあるかをカウント
+    # 3. 奇数個の要素が 2 個以上あるなら、操作を必要とする
+    # 4. 奇数個の要素が 1 個なら、操作を必要としない
+
+    # 1. A の各要素が偶数個か奇数個かをカウント
+    # 2. 奇数個の要素がいくつあるかをカウント
+    # 3. 奇数個の要素が 2 個以上あるなら、操作を必要とする
+    # 4. 奇数個の要素が 1 個なら、操作を必要としない
+
+    # 1. A の各要素が偶数個か奇数個かをカウント
+    # 2. 奇数個の要素がいくつあるかをカウント
+    # 3. 奇数個の要素が 2 個以上あるなら、操作を必要とする
+    # 4. 奇数個の要素が 1 個なら、操作を必要としない
+
+    # 1. A の各要素が偶数個か奇数個かをカウント
+    # 2. 奇数個の要素がいくつあるかをカウント
+    # 3. 奇数個の要素が 2 個以上あるなら、操作を必要とする
+    # 4. 奇数個の要素が 1 個なら、操作を必要としない
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 2 つの操作を交互に行う
+    # 1 回目の操作では、A の最大値を A の最小値にする
+    # 2 回目の操作では、A の最小値を A の最大値にする
+    # この操作を繰り返すことで、A の最大値と最小値を交互に増やすことができる
+    # 最終的に、A の最大値と最小値が同じになる
+    # このとき、A は回文になる
+    # この操作を最小何回行えば、A を回文にすることができるか？
+    # 2 つの操作を交互に行うので、最小何回行えばいいかは、A の最大値と最小値の差の半分
+    # ただし、A の最大値と最小値が同じ場合は、0 回
+    print((max(A) - min(A)) // 2)

@@ -1,34 +1,187 @@
-#問題文
-#R, G, B のみからなる、長さ N の文字列 S があります。
-#以下の 2 つの条件をともに満たす組 (i,j,k)(1 ≦ i < j < k ≦ N) の数を求めてください。
-#S_i ≠ S_j かつ S_i ≠ S_k かつ S_j ≠ S_k である
-#j - i ≠ k - j である
-#
-#制約
-#1 ≦ N ≦ 4000
-#S は R, G, B のみからなる、長さ N の文字列である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#題意を満たす組の数を出力せよ。
-#
-#入力例 1
-#4
-#RRGB
-#
-#出力例 1
-#1
-#組 (1,3,4) だけが 2 つの条件をともに満たします。組 (2,3,4) は、1 つ目の条件は満たしますが 2 つ目の条件を満たさないので不適です。
-#
-#入力例 2
-#39
-#RBRBGRBGGBBRRGBBRRRBGGBRBGBRBGBRBBBGBBB
-#
-#出力例 2
-#1800
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = 2 * j - i
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count("R")
+    g = s.count("G")
+    b = s.count("B")
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = 2 * j - i
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    r = S.count('R')
+    g = S.count('G')
+    b = S.count('B')
+    ans = r * g * b
+    for i in range(N):
+        for j in range(i + 1, N):
+            k = j + (j - i)
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            k = j + (j - i)
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+    ans = R*G*B
+    for i in range(N):
+        for j in range(i+1,N):
+            k = j + (j-i)
+            if k >= N:
+                break
+            if S[i] != S[j] and S[i] != S[k] and S[j] != S[k]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == S[j]:
+                continue
+            k = j + (j - i)
+            if k >= N:
+                continue
+            if S[i] == S[k] or S[j] == S[k]:
+                continue
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+
+    ans = R * G * B
+
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2 * j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    #print(N,S)
+    R = 0
+    G = 0
+    B = 0
+    for i in range(N):
+        if S[i] == "R":
+            R += 1
+        elif S[i] == "G":
+            G += 1
+        elif S[i] == "B":
+            B += 1
+    #print(R,G,B)
+    ans = R * G * B
+    #print(ans)
+    for i in range(N):
+        for j in range(i+1,N):
+            k = 2*j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def countRGB(s, s_len):
+    count_r = 0
+    count_g = 0
+    count_b = 0
+    for i in range(s_len):
+        if s[i] == "R":
+            count_r += 1
+        elif s[i] == "G":
+            count_g += 1
+        elif s[i] == "B":
+            count_b += 1
+    return count_r, count_g, count_b
+
+=======
+Suggestion 10
+
+def count_r(s):
+    return s.count("R")

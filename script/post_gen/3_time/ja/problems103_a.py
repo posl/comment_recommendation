@@ -1,41 +1,71 @@
-#問題文
-#3 個のタスクがあり、あなたは全てのタスクを完了させなければなりません。
-#はじめ、任意の 1 個のタスクをコスト 0 で完了できます。
-#また、i 番目のタスクを完了した直後にコスト |A_j - A_i| で j 番目のタスクを完了できます。
-#ここで |x| は x の絶対値を表します。
-#全てのタスクを完了するのに要する合計コストの最小値を求めてください。
-#
-#制約
-#入力は全て整数である
-#1 ≦ A_1, A_2, A_3 ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A_1 A_2 A_3
-#
-#出力
-#全てのタスクを完了するのに要する合計コストの最小値を出力せよ。
-#
-#入力例 1
-#1 6 3
-#
-#出力例 1
-#5
-#以下の順番でタスクを完了させたとき、合計コストは 5 となり最小です。
-#1 番目のタスクをコスト 0 で完了させます
-#3 番目のタスクをコスト 2 で完了させます
-#2 番目のタスクをコスト 3 で完了させます
-#
-#入力例 2
-#11 5 5
-#
-#出力例 2
-#6
-#
-#入力例 3
-#100 100 100
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A = list(map(int, input().split()))
+    print(min(abs(A[1] - A[0]) + abs(A[2] - A[1]), abs(A[2] - A[0]) + abs(A[1] - A[2]), abs(A[1] - A[0]) + abs(A[0] - A[2])))
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[1] - a[0] + a[2] - a[1])
+
+=======
+Suggestion 3
+
+def main():
+    A = list(map(int,input().split()))
+    A.sort()
+    print(A[1] - A[0] + A[2] - A[1])
+
+=======
+Suggestion 4
+
+def main():
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, len(A)):
+        ans += abs(A[i] - A[i-1])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1] - A[0])
+
+=======
+Suggestion 6
+
+def main():
+    # 入力
+    A = list(map(int, input().split()))
+    # 処理
+    A.sort()
+    ans = A[1] - A[0]
+    # 出力
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[2]-A[0])
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    A = list(map(int, input().split()))
+    # 出力
+    print(min(A[2]-A[0], A[1]-A[0], A[1]-A[2]))

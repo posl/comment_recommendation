@@ -1,52 +1,171 @@
-#問題文
-#高橋君の家には N 個の食品があり、i 番目の食品のおいしさは A_i です。
-#また、高橋君には嫌いな食品が K 個あり、具体的には i=1,2,...,K について、B_i 番目の食品が嫌いです。
-#高橋君は N 個の食品のうち、おいしさが最大の食品から 1 つを選んで食べようと考えています。
-#高橋君が嫌いな食品を食べる可能性があるならば Yes を、食べる可能性が無いならば No を出力してください。
-#
-#制約
-#1≦ K≦ N≦ 100
-#1≦ A_i≦ 100
-#1≦ B_i≦ N
-#B_i はすべて相異なる
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_K
-#
-#出力
-#高橋君が嫌いな食品を食べる可能性があるならば Yes を、無いならば No を出力せよ。
-#
-#入力例 1
-#5 3
-#6 8 10 7 10
-#2 3 4
-#
-#出力例 1
-#Yes
-#5 個の食品の中でおいしさが最大の食品は食品 3 と 5 の 2 つであり、この 2 つのいずれかを食べます。
-#高橋君が嫌いな食品は 2,3,4 の 3 つであり、そのうち食品 3 を食べる可能性があります。
-#よって、Yes を出力します。
-#
-#入力例 2
-#5 2
-#100 100 100 1 1
-#5 4
-#
-#出力例 2
-#No
-#おいしさが最大の食品は食品 1,2,3 の 3 つであり、高橋君は嫌いな食品を食べる可能性はありません。
-#
-#入力例 3
-#2 1
-#100 1
-#2
-#
-#出力例 3
-#No
-#おいしさが最大の食品は食品 1 であり、高橋君は嫌いな食品を食べる可能性はありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    for i in range(K):
+        A[B[i]-1] = 0
+    if max(A) == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    max_A = max(A)
+    max_B = max(B)
+
+    if max_A > max_B:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    
+    for i in range(K):
+        A[B[i]-1] = 0
+    if max(A) > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    for i in range(k):
+        a[b[i]-1] = 0
+
+    if max(a) == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort(reverse=True)
+    b.sort()
+
+    for i in range(k):
+        if a[i] < b[i]:
+            print('Yes')
+            return
+
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    max = 0
+    for i in range(0, n):
+        if max < a[i]:
+            max = a[i]
+
+    for i in range(0, k):
+        if max == b[i]:
+            print("Yes")
+            return
+
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort(reverse=True)
+    b.sort()
+    for i in range(k):
+        if a[0] == b[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+
+    b_i = 0
+    for i in range(n):
+        if i == b[b_i]-1:
+            b_i += 1
+            continue
+        else:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort()
+    B.sort()
+    B.reverse()
+    for i in range(K):
+        if A[N-1] < B[i]:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #Aの最大値
+    max_a = max(A)
+    #Bの最小値
+    min_b = min(B)
+
+    if max_a > min_b:
+        print("Yes")
+    else:
+        print("No")

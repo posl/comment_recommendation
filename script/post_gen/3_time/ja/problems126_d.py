@@ -1,53 +1,261 @@
-#問題文
-#N 頂点の木があります。
-#この木の i 番目の辺は頂点 u_i と頂点 v_i を結んでおり、その長さは w_i です。
-#あなたは以下の条件を満たすように、この木の頂点を白と黒の 2 色で塗り分けたいです (すべての頂点を同じ色で塗っても構いません)。
-#同じ色に塗られた任意の 2 頂点について、その距離が偶数である。
-#条件を満たす塗り分け方を 1 つ見つけて出力してください。この問題の制約下では、そのような塗り分け方が必ず 1 つは存在することが証明できます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ u_i < v_i ≦ N
-#1 ≦ w_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#u_1 v_1 w_1
-#u_2 v_2 w_2
-#.
-#.
-#.
-#u_{N - 1} v_{N - 1} w_{N - 1}
-#
-#出力
-#題意の条件を満たすような頂点の塗り分け方を N 行に分けて出力せよ。
-#i 行目には、頂点 i を白く塗る場合は 0 を、黒く塗る場合は 1 を出力せよ。
-#条件を満たす塗り分け方が複数存在する場合、どれを出力してもよい。
-#
-#入力例 1
-#3
-#1 2 2
-#2 3 1
-#
-#出力例 1
-#0
-#0
-#1
-#
-#入力例 2
-#5
-#2 5 2
-#2 3 10
-#1 3 8
-#3 4 2
-#
-#出力例 2
-#1
-#0
-#1
-#0
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, v, w = map(int, input().split())
+        G[u - 1].append((v - 1, w))
+        G[v - 1].append((u - 1, w))
+
+    color = [-1] * N
+    color[0] = 0
+    stack = [0]
+    while stack:
+        c = stack.pop()
+        for v, w in G[c]:
+            if color[v] == -1:
+                color[v] = (color[c] + w) % 2
+                stack.append(v)
+
+    for c in color:
+        print(c)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    g = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v, w = map(int, input().split())
+        g[u - 1].append((v - 1, w))
+        g[v - 1].append((u - 1, w))
+    ans = [-1] * n
+    ans[0] = 0
+    q = [0]
+    while q:
+        v = q.pop()
+        for nv, w in g[v]:
+            if ans[nv] == -1:
+                if w % 2 == 0:
+                    ans[nv] = ans[v]
+                else:
+                    ans[nv] = 1 - ans[v]
+                q.append(nv)
+    for a in ans:
+        print(a)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    edge = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v, w = map(int, input().split())
+        edge[u - 1].append((v - 1, w))
+        edge[v - 1].append((u - 1, w))
+
+    color = [-1] * n
+    color[0] = 0
+    que = [0]
+    while que:
+        q = que.pop()
+        for v, w in edge[q]:
+            if color[v] == -1:
+                color[v] = color[q] ^ (w % 2)
+                que.append(v)
+
+    for c in color:
+        print(c)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    G = [[] for i in range(N)]
+    for i in range(N-1):
+        u, v, w = map(int, input().split())
+        G[u-1].append((v-1, w))
+        G[v-1].append((u-1, w))
+    color = [-1] * N
+    color[0] = 0
+    stack = [(0, 0)]
+    while stack:
+        u, c = stack.pop()
+        for v, w in G[u]:
+            if color[v] == -1:
+                color[v] = (c + w) % 2
+                stack.append((v, color[v]))
+    for c in color:
+        print(c)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    G = [[] for _ in range(N+1)]
+    for _ in range(N-1):
+        u,v,w = map(int,input().split())
+        G[u].append((v,w))
+        G[v].append((u,w))
+    ans = [0] * (N+1)
+    def dfs(s,p):
+        for t,w in G[s]:
+            if t == p: continue
+            ans[t] = ans[s] ^ (w%2)
+            dfs(t,s)
+    dfs(1,-1)
+    for i in range(1,N+1):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    g = [[] for _ in range(N)]
+    for _ in range(N-1):
+        u, v, w = map(int, input().split())
+        g[u-1].append((v-1, w))
+        g[v-1].append((u-1, w))
+    color = [-1]*N
+    color[0] = 0
+    stack = [0]
+    while stack:
+        p = stack.pop()
+        for q, w in g[p]:
+            if color[q] == -1:
+                color[q] = color[p] ^ (w%2)
+                stack.append(q)
+    for i in range(N):
+        print(color[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    node = [[] for _ in range(N)]
+    for _ in range(N-1):
+        u,v,w = map(int,input().split())
+        node[u-1].append([v-1,w])
+        node[v-1].append([u-1,w])
+
+    ans = [-1]*N
+    ans[0] = 0
+    stack = [0]
+    while stack:
+        now = stack.pop()
+        for next in node[now]:
+            if ans[next[0]] == -1:
+                ans[next[0]] = (ans[now] + next[1])%2
+                stack.append(next[0])
+    print(*ans,sep='
+
+')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    uvw = [[int(i) for i in input().split()] for i in range(N - 1)]
+    # 隣接リスト
+    adj = [[] for i in range(N + 1)]
+    for u, v, w in uvw:
+        adj[u].append((v, w))
+        adj[v].append((u, w))
+    # 頂点1からの距離を記録する配列
+    dist = [-1] * (N + 1)
+    dist[1] = 0
+    # 頂点1からの距離を計算
+    stack = [1]
+    while stack:
+        v = stack.pop()
+        for nv, w in adj[v]:
+            if dist[nv] == -1:
+                dist[nv] = dist[v] + w
+                stack.append(nv)
+    # 頂点1からの距離が偶数なら0、奇数なら1
+    for i in range(1, N + 1):
+        print(dist[i] % 2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    uvw = [list(map(int, input().split())) for _ in range(N-1)]
+    #print(N,uvw)
+    # 隣接リストを作る
+    g = [[] for _ in range(N)]
+    for u, v, w in uvw:
+        u -= 1
+        v -= 1
+        g[u].append((v, w))
+        g[v].append((u, w))
+    #print(g)
+    # 0 からの距離を求める
+    dist = [-1] * N
+    dist[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for nv, w in g[v]:
+            if dist[nv] != -1:
+                continue
+            dist[nv] = dist[v] + w
+            stack.append(nv)
+    #print(dist)
+    for i in range(N):
+        if dist[i] % 2 == 0:
+            print(0)
+        else:
+            print(1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    # 木の構造を保持する
+    # 1-indexedで保持する
+    tree = [[] for _ in range(N+1)]
+    for _ in range(N-1):
+        u, v, w = map(int, input().split())
+        tree[u].append((v, w))
+        tree[v].append((u, w))
+
+    # 木をDFSで探索する
+    # 1-indexedで保持する
+    # 0: 白, 1: 黒
+    color = [0] * (N+1)
+    # 1-indexedで保持する
+    # 0: 未探索, 1: 探索済み
+    visited = [0] * (N+1)
+    # 1-indexedで保持する
+    # 0: 未探索, 1: 探索済み
+    # 頂点1からの距離を保持する
+    dist = [0] * (N+1)
+    stack = [1]
+    while stack:
+        now = stack.pop()
+        visited[now] = 1
+        for next, w in tree[now]:
+            if visited[next] == 1:
+                continue
+            stack.append(next)
+            dist[next] = dist[now] + w
+            color[next] = color[now] if w % 2 == 0 else 1 - color[now]
+
+    for c in color[1:]:
+        print(c)

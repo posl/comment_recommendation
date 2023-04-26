@@ -1,34 +1,76 @@
-#問題文
-#長さ N の整数列 A と整数 X が与えられます。
-#A から X と等しい要素を全て取り除き、残った要素をそのままの順序で並べた数列 A' を出力してください。  
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#A' の要素を空白区切りで順に出力せよ。  
-#
-#入力例 1
-#5 5
-#3 5 6 5 4
-#
-#出力例 1
-#3 6 4
-#[3, 5, 6, 5, 4] から 5 を取り除くと、[3, 6, 4] になります。  
-#
-#入力例 2
-#3 3
-#3 3 3
-#
-#出力例 2
-#A' が要素数 0 の数列となる場合があります。この場合、空行を出力するだけで構いません。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] != X:
+            print(A[i], end = " ")
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a for a in A if a != X]
+    print(*A)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [i for i in A if i != X]
+    print(*A)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=" ")
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = [i for i in a if i != x]
+    print(*ans)
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    #output
+    for i in range(N):
+        if A[i] != X:
+            print(A[i], end = ' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    # 入力
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 処理
+    A = [i for i in A if i != X]
+
+    # 出力
+    print(*A)

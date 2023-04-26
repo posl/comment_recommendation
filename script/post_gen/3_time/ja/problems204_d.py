@@ -1,43 +1,173 @@
-#問題文
-#高橋君は料理 1 から N の N 品の料理を作ろうとしています。
-#料理 i はオーブンを連続した T_i 分間使うことで作れます。1 つのオーブンを 2 つ以上の料理のために同時に使うことはできません。
-#2 つのオーブンを使えるとき、N 品の料理を全て作るまでに最短で何分かかりますか？　なお、オーブンを使う時間以外は無視できるものとします。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ T_i ≦ 10^3
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T_1 ... T_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#5
-#8 3 7 2 5
-#
-#出力例 1
-#13
-#例えば 2 つのオーブンを次のように使うことで、13 分で全ての料理を作ることができます。
-#1 つ目のオーブン：料理 5,1 を順に作る。
-#2 つ目のオーブン：料理 2,4,3 を順に作る。
-#
-#入力例 2
-#2
-#1000 1
-#
-#出力例 2
-#1000
-#
-#入力例 3
-#9
-#3 14 15 9 26 5 35 89 79
-#
-#出力例 3
-#138
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort(reverse=True)
+    oven1 = 0
+    oven2 = 0
+    for i in range(n):
+        if oven1 <= oven2:
+            oven1 += t[i]
+        else:
+            oven2 += t[i]
+    print(max(oven1, oven2))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+
+    T.sort()
+
+    if N == 1:
+        print(T[0])
+    elif N == 2:
+        print(max(T[0], T[1]))
+    else:
+        T1 = T[0]
+        T2 = T[1]
+        for i in range(2, N):
+            if T1 < T2:
+                T1 += T[i]
+            else:
+                T2 += T[i]
+        print(max(T1, T2))
+
+=======
+Suggestion 3
+
+def func(n, t):
+    if n == 1:
+        return t[0]
+    if n == 2:
+        return max(t[0], t[1])
+    if n == 3:
+        return max(t[0]+t[1], t[2])
+    if n == 4:
+        return max(t[0]+t[3], t[1]+t[2])
+    if n == 5:
+        return max(t[0]+t[3]+t[4], t[1]+t[2]+t[4])
+    if n == 6:
+        return max(t[0]+t[3]+t[5], t[1]+t[2]+t[5], t[0]+t[1]+t[2]+t[3]+t[4]+t[5])
+    if n == 7:
+        return max(t[0]+t[3]+t[6], t[1]+t[2]+t[6], t[0]+t[1]+t[2]+t[3]+t[4]+t[6])
+    if n == 8:
+        return max(t[0]+t[3]+t[7], t[1]+t[2]+t[7], t[0]+t[1]+t[2]+t[3]+t[4]+t[7], t[0]+t[1]+t[2]+t[3]+t[5]+t[6])
+    if n == 9:
+        return max(t[0]+t[3]+t[8], t[1]+t[2]+t[8], t[0]+t[1]+t[2]+t[3]+t[4]+t[8], t[0]+t[1]+t[2]+t[3]+t[5]+t[8], t[0]+t[1]+t[2]+t[3]+t[6]+t[7])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+
+    T.sort()
+    t1 = 0
+    t2 = 0
+    for i in range(N):
+        if t1 <= t2:
+            t1 += T[N-i-1]
+        else:
+            t2 += T[N-i-1]
+    print(max(t1, t2))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    T.reverse()
+    T1 = 0
+    T2 = 0
+    for i in range(N):
+        if T1 <= T2:
+            T1 += T[i]
+        else:
+            T2 += T[i]
+    print(max(T1, T2))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    #print(T)
+    t1 = 0
+    t2 = 0
+    for i in range(N):
+        if t1 <= t2:
+            t1 += T[N-i-1]
+        else:
+            t2 += T[N-i-1]
+    print(max(t1,t2))
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    N = int(input())
+    T = list(map(int, input().split()))
+
+    # compute
+    ans = 0
+    for i in range(N):
+        ans += T[i]
+    ans = ans - max(T) + max(T)/2
+
+    # output
+    print(int(ans))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort()
+    #print(t)
+    t1 = 0
+    t2 = 0
+    for i in range(n):
+        if t1 < t2:
+            t1 += t[-1-i]
+        else:
+            t2 += t[-1-i]
+    print(max(t1, t2))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    print(T[-1])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    T.reverse()
+    ovens = [0, 0]
+    for t in T:
+        if ovens[0] < ovens[1]:
+            ovens[0] += t
+        else:
+            ovens[1] += t
+    print(max(ovens))

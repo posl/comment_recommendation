@@ -1,48 +1,151 @@
-#問題文
-#N 次多項式 A(x)=A_Nx^N+A_{N-1}x^{N-1}+... +A_1x+A_0 と
-#M 次多項式 B(x)=B_Mx^M+B_{M-1}x^{M-1}+... +B_1x+B_0 があります。
-#ここで、A(x), B(x) の各係数は絶対値が 100 以下の整数であり、最高次の係数は 0 ではありません。
-#また、それらの積を C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+... +C_1x+C_0 とします。
-#A_0,A_1,..., A_N および C_0,C_1,..., C_{N+M} が与えられるので、B_0,B_1,..., B_M を求めてください。
-#ただし、与えられる入力に対して、条件をみたす B_0,B_1,..., B_M がただ一つ存在することが保証されます。
-#
-#制約
-#1 ≦ N < 100
-#1 ≦ M < 100
-#|A_i| ≦ 100
-#|C_i| ≦ 10^6
-#A_N ≠ 0
-#C_{N+M} ≠ 0
-#条件をみたす B_0,B_1,..., B_M がただ一つ存在する。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_0 A_1 ... A_{N-1} A_N
-#C_0 C_1 ... C_{N+M-1} C_{N+M}
-#
-#出力
-#M+1 個の整数 B_0,B_1,..., B_M を空白区切りで一行に出力せよ。
-#
-#入力例 1
-#1 2
-#2 1
-#12 14 8 2
-#
-#出力例 1
-#6 4 2
-#A(x)=x+2, B(x)=2x^2+4x+6 のとき、C(x)=A(x)B(x)=(x+2)(2x^2+4x+6)=2x^3+8x^2+14x+12 であるので、
-#B(x)=2x^2+4x+6 が条件をみたします。
-#よって、B_0=6, B_1=4, B_2=2 をこの順に空白区切りで出力します。
-#
-#入力例 2
-#1 1
-#100 1
-#10000 0 -1
-#
-#出力例 2
-#100 -1
-#A(x)=x+100, C(x)=-x^2+10000 であり、B(x)=-x+100 が条件をみたします。
-#よって、100, -1 をこの順に空白区切りで出力します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int,
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    b = [0] * (m + 1)
+    b[0] = c[0] // a[n]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            c[i - j] -= a[n - j] * b[i - 1]
+        b[i] = c[i] // a[n]
+    print(*b)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+
+    for i in range(N + M, M, -1):
+        for j in range(M, -1, -1):
+            B[j] = C[i - j] - sum([A[k] * B[j - k] for k in range(1, j + 1)])
+        A = B[:]
+
+    print(*B)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0 for _ in range(M+1)]
+    for i in range(N+M, -1, -1):
+        B[M-(N+M-i)] = int((C[i] - sum([A[j]*(i-j) for j in range(N+1)])) / A[N])
+    print(*B)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B = [0 for i in range(M+1)]
+
+    for i in range(N+M, N, -1):
+        B[M-(N+M-i)] = C[i]
+        for j in range(N, -1, -1):
+            C[i-(N-j)] -= A[j]*B[M-(N+M-i)]
+
+    for i in range(M, 0, -1):
+        B[M-i] = C[i]/A[N]
+        for j in range(N, -1, -1):
+            C[i-(N-j)] -= A[j]*B[M-i]
+
+    for i in range(M+1):
+        print(int(B[i]), end=" ")
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0 for i in range(m+1)]
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j] += a[i]*c[i+j]
+    print(*b)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    return n, m, a, c
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = []
+    for i in range(n+m+1):
+        b.append(0)
+    for i in range(n+1):
+        for j in range(m+1):
+            b[i+j] += a[i]*c[j]
+    for i in range(m+1):
+        print(b[i],end=" ")
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+
+    b = [0] * (m+1)
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j] += a[i] * c[i+j]
+    print(*b)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    #Cの最高次の係数を割る
+    a = C[-1]
+    A = [a // A[-1] * ai for ai in A]
+    C = [ai // A[-1] for ai in C]
+
+    #Aをずらす
+    A = [0] * (M + 1) + A
+
+    #Bを計算
+    B = [0] * (M + 1)
+    for i in range(M + 1):
+        B[i] = C[i] - sum([B[j] * A[i - j] for j in range(i)])
+
+    print(*B)

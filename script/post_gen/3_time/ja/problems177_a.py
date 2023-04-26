@@ -1,41 +1,99 @@
-#問題文
-#高橋君は青木君と待ち合わせをしています。
-#待ち合わせ場所は高橋君の家から D メートル離れた地点であり、待ち合わせの時刻は T 分後です。
-#高橋君は今から家を出発し、分速 S メートルで待ち合わせ場所までまっすぐ移動します。
-#待ち合わせに間に合うでしょうか？
-#
-#制約
-#1 ≦ D ≦ 10000
-#1 ≦ T ≦ 10000
-#1 ≦ S ≦ 10000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#D T S
-#
-#出力
-#高橋君が待ち合わせ時刻までに待ち合わせ場所に到着するならば Yes、そうでないなら No を出力せよ。
-#
-#入力例 1
-#1000 15 80
-#
-#出力例 1
-#Yes
-#高橋君から待ち合わせ場所までの距離 1000 メートルを分速 80 メートルで移動すると 12.5 分かかります。待ち合わせ時刻は 15 分後なので間に合います。
-#
-#入力例 2
-#2000 20 100
-#
-#出力例 2
-#Yes
-#高橋君から待ち合わせ場所までの距離 2000 メートルを分速 100 メートルで移動すると 20 分かかります。待ち合わせ時刻は 20 分後なのでちょうど間に合います。
-#
-#入力例 3
-#10000 1 1
-#
-#出力例 3
-#No
-#間に合いません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    d, t, s = map(int, input().split())
+    if d / s <= t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    D, T, S = map(int, input().split())
+    if D <= T * S:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    D, T, S = map(int, input().split())
+    if D <= T * S:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    D, T, S = map(int, input().split())
+    if D/S <= T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    D, T, S = map(int, input().split())
+    if T >= D / S:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    d, t, s = map(int, input().split())
+    if d <= t*s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    D, T, S = map(int, input().split())
+
+    #output
+    if D/S <= T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    D, T, S = map(int, input().split())
+    # 処理
+    if D <= T*S:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    d,t,s = map(int,input().split())
+    
+    #計算
+    if d/s <= t:
+        print("Yes")
+    else:
+        print("No")

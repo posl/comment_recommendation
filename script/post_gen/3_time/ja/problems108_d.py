@@ -1,58 +1,270 @@
-#問題文
-#整数 L が与えられます。以下の条件を満たす有向グラフをひとつ構成してください。構成したグラフに多重辺が含まれていても構いません。
-#なお、条件を満たす有向グラフは必ず存在することが証明できます。
-#頂点数 N は 20 以下で、すべての頂点には 1 以上 N 以下の相異なる番号が付けられている
-#辺数 M は 60 以下で、すべての辺には 0 以上 10^6 以下の整数の長さが付けられている
-#全ての辺は番号の小さい方の頂点から大きい方の頂点に向かって向きづけられている。すなわち、1,2,...,N はこのグラフの頂点の番号を適当なトポロジカル順序で並べてできる列である
-#頂点 1 から頂点 N への異なるパスはちょうど L 個あり、それらの長さは 0 から L-1 までの相異なる整数である
-#ただし、パスの長さとは、そのパス上の辺の長さの和を表します。また、2 つのパスが異なるとは、パス上の辺の集合が異なることを指します。
-#
-#制約
-#2 ≦ L ≦ 10^6
-#L は整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#L
-#
-#出力
-#1 行目には、構成したグラフの頂点数 N と辺数 M を出力せよ。
-#続く M 行のうちの i 行目には、3 つの整数 u_i,v_i,w_i を出力せよ。これらはそれぞれ、i 本目の辺の始点、i 本目の辺の終点、i 本目の辺の長さを表す。
-#解が複数考えられる場合、どれを出力してもよい。
-#
-#入力例 1
-#4
-#
-#出力例 1
-#8 10
-#1 2 0
-#2 3 0
-#3 4 0
-#1 5 0
-#2 6 0
-#3 7 0
-#4 8 0
-#5 6 1
-#6 7 1
-#7 8 1
-#出力例のグラフには 頂点 1 から N=8 への 4 本のパスがあり、
-#パス 1 → 2 → 3 → 4 → 8 の長さは 0
-#パス 1 → 2 → 3 → 7 → 8 の長さは 1
-#パス 1 → 2 → 6 → 7 → 8 の長さは 2
-#パス 1 → 5 → 6 → 7 → 8 の長さは 3
-#となります。これ以外にも、正答として認められる出力があります。
-#
-#入力例 2
-#5
-#
-#出力例 2
-#5 7
-#1 2 0
-#2 3 1
-#3 4 0
-#4 5 0
-#2 4 0
-#1 3 3
-#3 5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L = int(input())
+    if L == 2:
+        print(4, 4)
+        print(1, 2, 0)
+        print(2, 3, 0)
+        print(3, 4, 0)
+        print(1, 4, 1)
+    else:
+        print(2 * L, 2 * L)
+        for i in range(L):
+            print(1, i + 2, i)
+            print(i + 2, L + i + 2, 0)
+        print(1, L + 1, L - 1)
+
+=======
+Suggestion 2
+
+def main():
+    L = int(input())
+    if L == 2:
+        print(4, 5)
+        print(1, 2, 0)
+        print(2, 3, 0)
+        print(3, 4, 0)
+        print(1, 3, 1)
+        print(2, 4, 1)
+    else:
+        print(2 * L + 1, 2 * L + 2)
+        for i in range(1, L + 1):
+            print(i, i + 1, 0)
+            print(i, i + L + 1, 1)
+        print(L + 1, 2 * L + 2, L)
+
+=======
+Suggestion 3
+
+def main():
+    L = int(input())
+    N = 20
+    M = 60
+    print(N, M)
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, N):
+        print(i, i+1, 10**6)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6)
+    for i in range(1, N):
+        print(i, i+1, 10**6 - 1)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 1)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 2)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 3)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 4)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 5)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 6)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 7)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 8)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 9)
+    for i in range(1, N):
+        for j in range(i+2, N+1):
+            print(i, j, 10**6 - 10)
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    N = 20
+    M = 60
+    print(N, M)
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, N):
+        print(i, i+1, 10**6)
+    for i in range(1, N):
+        print(i, i+1, L-1)
+    for i in range(1, N):
+        print(i, i+1, L)
+
+=======
+Suggestion 5
+
+def main():
+    L = int(input())
+    if L <= 3:
+        print(L + 1, L)
+        for i in range(L):
+            print(i + 1, i + 2, 0)
+    else:
+        print(2 * L, 2 * L)
+        for i in range(L - 1):
+            print(i + 1, i + 2, 0)
+        print(L - 1, L, 0)
+        print(L, L + 1, 0)
+        for i in range(L):
+            print(i + 1, L + i + 1, i)
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    N = 20
+    M = 60
+    print(N,M)
+    for i in range(1,N):
+        print(i,i+1,0)
+    for i in range(1,N):
+        print(i,i+1,10**6)
+    for i in range(1,N-1):
+        print(i,i+2,1)
+    L -= 2*(N-1)
+    for i in range(1,N-1):
+        if L <= 0:
+            break
+        print(i,i+2,10**6-1)
+        L -= 1
+    for i in range(1,N-1):
+        if L <= 0:
+            break
+        print(i,i+2,10**6-2)
+        L -= 1
+    for i in range(1,N-1):
+        if L <= 0:
+            break
+        print(i,i+2,10**6-3)
+        L -= 1
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    L = int(input())
+    #L = 4
+    #L = 5
+    #L = 6
+    #L = 7
+    #L = 8
+    #L = 9
+    #L = 10
+    #L = 11
+    #L = 12
+    #L = 13
+    #L = 14
+    #L = 15
+    #L = 16
+    #L = 17
+    #L = 18
+    #L = 19
+    #L = 20
+    #L = 21
+    #L = 22
+    #L = 23
+    #L = 24
+    #L = 25
+    #L = 26
+    #L = 27
+    #L = 28
+    #L = 29
+    #L = 30
+    #L = 31
+    #L = 32
+    #L = 33
+    #L = 34
+    #L = 35
+    #L = 36
+    #L = 37
+    #L = 38
+    #L = 39
+    #L = 40
+    #L = 41
+    #L = 42
+    #L = 43
+    #L = 44
+    #L = 45
+    #L = 46
+    #L = 47
+    #L = 48
+    #L = 49
+    #L = 50
+    #L = 51
+    #L = 52
+    #L = 53
+    #L = 54
+    #L = 55
+    #L = 56
+    #L = 57
+    #L = 58
+    #L = 59
+    #L = 60
+    #L = 61
+    #L = 62
+    #L = 63
+    #L = 64
+    #L = 65
+    #L = 66
+    #L = 67
+    #L = 68
+    #L = 69
+    #L = 70
+    #L = 71
+    #L = 72
+    #L = 73
+    #
+
+=======
+Suggestion 8
+
+def main():
+    L = int(input())
+    if L == 2:
+        print(2, 1)
+        print(1, 2, 1)
+        return
+
+    N = 2 * L - 1
+    M = N - 1 + N // 2
+    print(N, M)
+    for i in range(1, N):
+        print(i, i + 1, 0)
+    for i in range(1, N, 2):
+        print(i, i + 2, 1)
+    for i in range(2, N, 2):
+        print(i, i + 2, i // 2)
+
+=======
+Suggestion 9
+
+def main():
+    L = int(input())
+    N = 2*L+1
+    print(N,N-1)
+    for i in range(1,N):
+        print(i, i+1, 0)
+    for i in range(1,L+1):
+        print(i, i+L, 1)
+
+=======
+Suggestion 10
+
+def get_input():
+    L = int(input())
+    return L

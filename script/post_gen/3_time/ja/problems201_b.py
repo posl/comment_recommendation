@@ -1,58 +1,130 @@
-#問題文
-#AtCoder国には N 個の山があり、i 個目の山の名前は S_i, 高さは T_i です。
-#2 番目に高い山の名前を答えてください。N 個の山の名前、高さはそれぞれ相異なることが保証されます。
-#
-#制約
-#2 ≦ N ≦ 1000
-#1 ≦ (S_i の長さ{}) ≦ 15
-#1 ≦ T_i ≦ 10^5
-#S_i ≠ S_j  (i ≠ j)
-#T_i ≠ T_j  (i ≠ j)
-#S_i は英小文字、英大文字、数字のみからなる
-#N, T_i は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#出力
-#2 番目に高い山の名前を出力せよ。
-#
-#入力例 1
-#3
-#Everest 8849
-#K2 8611
-#Kangchenjunga 8586
-#
-#出力例 1
-#K2
-#世界で 2 番目に高い山は K2 です。
-#
-#入力例 2
-#4
-#Kita 3193
-#Aino 3189
-#Fuji 3776
-#Okuhotaka 3190
-#
-#出力例 2
-#Kita
-#日本で 2 番目に高い山は北岳です。
-#
-#入力例 3
-#4
-#QCFium 2846
-#chokudai 2992
-#kyoprofriends 2432
-#penguinman 2390
-#
-#出力例 3
-#QCFium
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    T_max = max(T)
+    T.remove(T_max)
+    T_max2 = max(T)
+    print(S[T.index(T_max2)])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S_i, T_i = input().split()
+        S.append(S_i)
+        T.append(int(T_i))
+    T_max = max(T)
+    T_max_index = T.index(T_max)
+    T[T_max_index] = 0
+    T_second_max = max(T)
+    T_second_max_index = T.index(T_second_max)
+    print(S[T_second_max_index])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S_i, T_i = input().split()
+        S.append(S_i)
+        T.append(int(T_i))
+    T_max = max(T)
+    T.remove(T_max)
+    T_second = max(T)
+    print(S[T.index(T_second)])
+
+=======
+Suggestion 4
+
+def main():
+    #入力
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    #問題文の通りに処理
+    T.sort(reverse=True)
+    print(S[T.index(T[1])])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(int(t))
+    T.sort(reverse=True)
+    print(S[T.index(T[1])])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    mountain = []
+    for i in range(n):
+        s, t = input().split()
+        mountain.append([s, int(t)])
+    mountain.sort(key=lambda x: x[1], reverse=True)
+    print(mountain[1][0])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input().split()[0])
+        T.append(int(input().split()[1]))
+    print(S[T.index(sorted(T)[-2])])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        s, t = input().split()
+        list.append([s, int(t)])
+    list.sort(key=lambda x: x[1], reverse=True)
+    print(list[1][0])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input().split()[0])
+        T.append(int(input().split()[1]))
+    T.sort(reverse=True)
+    print(S[T.index(T[1])])

@@ -1,39 +1,70 @@
-#問題文
-#あなたは子供にゲームをプレイさせ、その結果に応じてお小遣いをあげることにしました。
-#そのゲームの内容は以下の通りです。
-#1 以上 9 以下の整数 1 つが書かれた整数パネル 3 枚と + が書かれた演算子パネル 1 枚がある
-#これら 4 枚のパネルを横一列に並べて X + Y の形の数式を作る (すなわち、演算子パネルを端に置くことはできない)
-#数式を計算した結果と同じ値のお小遣いをあげる
-#ゲームで使用する各整数パネルの値 A, B, C が与えられるので、あげることになり得るお小遣いの最大値を求めてください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ A, B, C ≦ 9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#あげることになり得るお小遣いの最大値を出力せよ。
-#
-#入力例 1
-#1 5 2
-#
-#出力例 1
-#53
-#52+1 と並べたときにあげることになるお小遣いは 53 となりこれが最大です。
-#
-#入力例 2
-#9 9 9
-#
-#出力例 2
-#108
-#
-#入力例 3
-#6 6 7
-#
-#出力例 3
-#82
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    print(a + b + c + max(a, b, c) * 9)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b+c, a+b*c, a*b+c, a*b*c))
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C = map(int, input().split())
+    print(max(10*A+B+C, A+10*B+C, A+B+10*C))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    print(A+B+C+max(A*10+B+C, B*10+A+C, C*10+A+B))
+
+=======
+Suggestion 5
+
+def main():
+    # データ入力
+    a, b, c = map(int, input().split())
+
+    # 計算
+    ans = a + b + c
+    ans = max(ans, a + b * c)
+    ans = max(ans, a * b + c)
+    ans = max(ans, a * b * c)
+    ans = max(ans, a * (b + c))
+    ans = max(ans, (a + b) * c)
+
+    # 結果出力
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = list(map(int, input().split()))
+    print(10 * max(a, b, c) + a + b + c)
+
+=======
+Suggestion 7
+
+def main():
+    # 整数の入力
+    a, b, c = map(int, input().split())
+    print(a+b+c+max(a,b,c)*9)
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+
+    print(10 * a + b + c)

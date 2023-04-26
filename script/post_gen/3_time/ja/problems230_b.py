@@ -1,39 +1,101 @@
-#問題文
-#文字列 S が文字列 T の部分文字列であるとは、次の条件を満たすような整数 i, j (1 ≦ i ≦ j ≦ |T|) が存在することを言います。
-#T の i 文字目から j 文字目までを順番を変えずに抜き出してできる文字列が S と一致する。
-#文字列 T を oxx を 10^5 個結合した文字列として定めます。
-#文字列 S が与えられるので、 S が T の部分文字列である場合は Yes を、そうでない場合は No を出力してください。
-#
-#制約
-#S は o と x のみからなる文字列である。
-#S の長さは 1 以上 10 以下である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が条件を満たす場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#xoxxoxxo
-#
-#出力例 1
-#Yes
-#T のはじめの方を抜き出すと oxxoxxoxxoxx... となっています。
-#T の 3 文字目から 10 文字目までを抜き出した文字列は S と一致するので、 S は T の部分文字列です。よって Yes を出力します。
-#
-#入力例 2
-#xxoxxoxo
-#
-#出力例 2
-#No
-#T から文字列をどのように抜き出しても S と一致しないので、S は T の部分文字列でありません。よって No を出力します。
-#
-#入力例 3
-#ox
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = 'o' * 100000 + 'x' * 100000 + 'o' * 100000
+    if s in t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = "o" + "x" * 10**5
+    if S in T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = "o" + "x" * 10 ** 5 + "o" + "x" * 10 ** 5 + "o"
+    if s in t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = "oxx" * 10**5
+    for i in range(len(T) - len(S) + 1):
+        if T[i:i+len(S)] == S:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    # 文字列 S が与えられる
+    S = input()
+    # 文字列 T を oxx を 10^5 個結合した文字列として定める
+    T = "oxx" * 10**5
+    # 文字列 S が T の部分文字列であるかどうかを調べる
+    if S in T:
+        print("Yes")
+    else:
+        print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = "o" + "x" * 10**5 + "o"
+    if s in t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = 'o' + 'x' * 10 ** 5 + 'o'
+    if s in t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    S
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    T = 'o' + 'x' * 10**5
+    T = T + T
+    if S in T:
+        print('Yes')
+    else:
+        print('No')

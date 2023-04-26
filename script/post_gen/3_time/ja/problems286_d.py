@@ -1,59 +1,203 @@
-#問題文
-#高橋君は N 種類の硬貨をそれぞれ何枚か持っており、
-#具体的には、1≦ i≦ N について A_i 円硬貨を B_i 枚持っています。
-#高橋君が現在持っている硬貨を用いて、（お釣りが出ないように）ちょうど X 円を支払うことができるか判定してください。
-#
-#制約
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i はすべて異なる。
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#高橋君が現在持っている硬貨を用いてちょうど X 円を支払うことができる場合は Yes を、
-#できない場合は No を出力せよ。
-#
-#入力例 1
-#2 19
-#2 3
-#5 6
-#
-#出力例 1
-#Yes
-#高橋君は 2 円硬貨を 3 枚、5 円硬貨を 6 枚持っています。
-#このうち、2 円硬貨を 2 枚、5 円硬貨を 3 枚用いることでちょうど 2× 2+5× 3=19 円を支払うことができます。
-#よって、Yes を出力します。
-#
-#入力例 2
-#2 18
-#2 3
-#5 6
-#
-#出力例 2
-#No
-#持っている硬貨をどのように組み合わせてもちょうど 18 円を支払うことはできません。
-#よって、No を出力します。
-#
-#入力例 3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#出力例 3
-#Yes
-#1 枚も使用しない硬貨が存在しても構いません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    dp = [[False for i in range(X+1)] for j in range(N+1)]
+    dp[0][0] = True
+    for i in range(N):
+        for j in range(X+1):
+            for k in range(B[i]+1):
+                if j >= A[i] * k and dp[i][j - A[i] * k]:
+                    dp[i+1][j] = True
+
+    if dp[N][X]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    for i in range(N):
+        for j in range(B[i]):
+            X -= A[i]
+            if X == 0:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    for i in range(2**N):
+        sum = 0
+        for j in range(N):
+            if (i>>j & 1):
+                sum += A[j] * B[j]
+        if (sum == X):
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    for i in range(2 ** n):
+        sum = 0
+        for j in range(n):
+            if (i >> j) & 1:
+                sum += a[j] * b[j]
+        if sum == x:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    #解答
+    for i in range(N):
+        for j in range(B[i]+1):
+            if A[i]*j == X:
+                print("Yes")
+                return
+            elif A[i]*j > X:
+                break
+            else:
+                X -= A[i]
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N,X = map(int,input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i],B[i] = map(int,input().split())
+    for i in range(N):
+        if X >= A[i] * B[i]:
+            X -= A[i] * B[i]
+        else:
+            X %= A[i]
+    if X == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int,input().split())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int,input().split())
+    
+    for i in range(N):
+        for j in range(B[i]+1):
+            if X == A[i] * j:
+                print('Yes')
+                return
+    
+    print('No')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    N, X = map(int, input().split())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    # 1枚も使わない場合を追加
+    A.append(0)
+    B.append(0)
+
+    # 計算
+    ans = "No"
+    for i in range(N+1):
+        for j in range(N+1):
+            if A[i]*i + A[j]*j == X:
+                ans = "Yes"
+
+    # 出力
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    a, b = [], []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    print("Yes" if solve(n, x, a, b) else "No")
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    N, X = map(int, input().split())
+    ABs = [list(map(int, input().split())) for _ in range(N)]
+
+    # compute
+    for i in range(N):
+        if ABs[i][0]*ABs[i][1] >= X:
+            ABs[i][1] = X//ABs[i][0]
+            X -= ABs[i][0]*ABs[i][1]
+        else:
+            X -= ABs[i][0]*ABs[i][1]
+
+    # output
+    if X == 0:
+        print('Yes')
+    else:
+        print('No')

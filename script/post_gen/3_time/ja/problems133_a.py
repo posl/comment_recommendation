@@ -1,39 +1,66 @@
-#問題文
-#私たちは N 人で旅行しようとしており、その交通手段として電車とタクシーがあります。
-#電車を使うと 1 人あたり A 円かかります。
-#タクシーを使うと N 人で B 円かかります。
-#全員の交通費の合計は最小でいくらになるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 20
-#1 ≦ A ≦ 50
-#1 ≦ B ≦ 50
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#最小の合計交通費を表す整数を出力せよ。
-#
-#入力例 1
-#4 2 9
-#
-#出力例 1
-#8
-#電車を使うと 4 × 2 = 8 円かかり、タクシーを使うと 9 円かかるので、全員の交通費の合計の最小値は 8 円です。
-#
-#入力例 2
-#4 2 7
-#
-#出力例 2
-#7
-#
-#入力例 3
-#4 2 8
-#
-#出力例 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    train = N * A
+    taxi = B
+    if train < taxi:
+        print(train)
+    else:
+        print(taxi)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    if A * N > B:
+        print(B)
+    else:
+        print(A * N)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    taxi = n * b
+    train = n * a
+    if taxi <= train:
+        print(taxi)
+    else:
+        print(train)
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(N * A, B))
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    if a*n < b:
+        print(a*n)
+    else:
+        print(b)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(A * N, B))
+
+=======
+Suggestion 7
+
+def main():
+    n, a, b = map(int, input().split())
+    print(min(a*n, b))

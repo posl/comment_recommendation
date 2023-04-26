@@ -1,46 +1,142 @@
-#問題文
-#N 個の台が一列に並んでおり、左から i 番目の台の高さは H_i です。
-#高橋君は最初、左端の台の上に立っています。
-#高橋君は高い所が好きなので、次のルールで可能な限り移動を繰り返します。
-#いま立っているのが右端の台ではなく、かつ、右隣にある台の高さが自分がいま立っている台より高いとき、右隣の台に移動する
-#最終的に高橋君が立っている台の高さを求めてください。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 ... H_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#5
-#1 5 10 4 2
-#
-#出力例 1
-#10
-#最初、高橋君は左端にある高さ 1 の台に立っています。右隣の台の高さは 5 であり、いま立っている台より高いので、右隣の台に移動します。
-#移動後、高橋君は左から 2 番目にある高さ 5 の台に立っています。右隣の台の高さは 10 であり、いま立っている台より高いので、右隣の台に移動します。
-#移動後、高橋君は左から 3 番目にある高さ 10 の台に立っています。右隣の台の高さは 4 であり、いま立っている台より低いので、高橋君は移動をやめます。
-#よって、最終的に高橋君が立っている台の高さは 10 です。
-#
-#入力例 2
-#3
-#100 1000 100000
-#
-#出力例 2
-#100000
-#
-#入力例 3
-#4
-#27 1828 1828 9242
-#
-#出力例 3
-#1828
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    max = 0
+    count = 0
+    for i in range(N-1):
+        if H[i] >= H[i+1]:
+            count += 1
+            if max < count:
+                max = count
+        else:
+            count = 0
+    print(max+1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if H[i-1] < H[i]:
+            H[i] -= 1
+        if H[i-1] > H[i]:
+            ans = 1
+    if ans == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    maxH = H[0]
+    for i in range(1, N):
+        if maxH <= H[i]:
+            maxH = H[i]
+    print(maxH)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += 1
+        elif H[i-1] < H[i]:
+            ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            ans += 1
+        else:
+            if h[i] >= h[i-1]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += 1
+        elif H[i-1] < H[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += H[i]
+        elif H[i-1] < H[i]:
+            ans += H[i] - H[i-1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def problem235_b():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    ans = 0
+    max = 0
+    for i in range(N):
+        if max <= H[i]:
+            ans += 1
+            max = H[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    i = 1
+    max_h = h[0]
+    while i < n:
+        if h[i] >= h[i-1]:
+            max_h = h[i]
+        i += 1
+    print(max_h)
+
+=======
+Suggestion 10
+
+def get_input_data():
+    n = int(input())
+    h_list = list(map(int, input().split()))
+    return n, h_list

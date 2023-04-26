@@ -1,48 +1,47 @@
-#問題文
-#高橋君は、  N 個の競技プログラミング用の問題をつくりました。
-#それぞれの問題には 1 から N の番号がついており、問題 i の難易度は整数 d_i で表されます(大きいほど難しいです)。
-#高橋君はある整数 K を決めることで、
-#難易度が K 以上ならば「 ARC 用の問題」
-#難易度が K 未満ならば「 ABC 用の問題」
-#という風に、これらの問題を二種類に分類しようとしています。
-#「ARC 用の問題」と「ABC 用の問題」が同じ数になるような整数 K の選び方は何通りあるでしょうか。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#N は偶数である。
-#1 ≦ d_i ≦ 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N
-#d_1 d_2 ... d_N
-#
-#出力
-#「ARC 用の問題」と「ABC 用の問題」が同じ数になるような整数 K の選び方の数を出力してください。
-#
-#入力例 1
-#6
-#9 1 4 4 6 7
-#
-#出力例 1
-#2
-#K=5,6 としたとき、問題 1,5,6 が「ARC 用の問題」、問題 2,3,4 が「ABC 用の問題」となり、条件を満たします。
-#よって、答えは 2 通りです。
-#
-#入力例 2
-#8
-#9 1 14 5 5 4 4 14
-#
-#出力例 2
-#0
-#「ARC 用の問題」と「ABC 用の問題」が同じ数になるような整数 K の選び方が存在しない場合もあります。
-#
-#入力例 3
-#14
-#99592 10342 29105 78532 83018 11639 92015 77204 30914 21912 34519 80835 100000 1
-#
-#出力例 3
-#42685
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[N//2]-d[N//2-1])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[n//2] - d[n//2 - 1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[int(N/2)] - d[int(N/2) - 1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    d = [int(x) for x in input().split()]
+    d.sort()
+    print(d[N//2] - d[N//2-1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+
+    d.sort()
+    print(d[(N // 2)] - d[(N // 2) - 1])

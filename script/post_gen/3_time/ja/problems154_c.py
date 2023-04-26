@@ -1,41 +1,118 @@
-#問題文
-#整数列 A_1, A_2, ..., A_N が与えられます。
-#この整数列のどの 2 つの要素も互いに異なるならば YES を、そうでないなら NO を出力してください。
-#
-#制約
-#2 ≤ N ≤ 200000
-#1 ≤ A_i ≤ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#整数列のどの 2 つの要素も互いに異なるならば YES を、そうでないなら NO を出力せよ。
-#
-#入力例 1
-#5
-#2 6 1 4 5
-#
-#出力例 1
-#YES
-#どの 2 つの要素も互いに異なります。
-#
-#入力例 2
-#6
-#4 1 3 1 6 2
-#
-#出力例 2
-#NO
-#2 番目の要素と 4 番目の要素が同じです。
-#
-#入力例 3
-#2
-#10000000 10000000
-#
-#出力例 3
-#NO
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print("NO")
+            return
+    print("YES")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print('NO')
+            return
+    print('YES')
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.sort()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    if len(set(A)) == N:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    if len(set(A)) == N:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(n-1):
+        if A[i] == A[i+1]:
+            print('NO')
+            return
+    print('YES')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = input().split()
+    if len(set(A)) == N:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N = int(input())
+    A = list(map(int, input().split()))
+    #ソート
+    A.sort()
+    #出力
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print('NO')
+            return
+    print('YES')

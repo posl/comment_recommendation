@@ -1,39 +1,119 @@
-#問題文
-#高橋くんはAtCoder銀行に 100 円を預けています。
-#AtCoder銀行では、毎年預金額の 1 % の利子がつきます(複利、小数点以下切り捨て)。
-#利子以外の要因で預金額が変化することはないと仮定したとき、高橋くんの預金額が初めて X 円以上になるのは何年後でしょうか。
-#
-#制約
-# 101 ≦ X ≦ 10^{18} 
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#高橋くんの預金額が初めて X 円以上になるのは何年後かを出力せよ。
-#
-#入力例 1
-#103
-#
-#出力例 1
-#3
-#1 年後の預金額は 101 円です。
-#2 年後の預金額は 102 円です。
-#3 年後の預金額は 103 円です。
-#したがって、預金額が初めて 103 円以上になるのは 3 年後です。
-#
-#入力例 2
-#1000000000000000000
-#
-#出力例 2
-#3760
-#
-#入力例 3
-#1333333333
-#
-#出力例 3
-#1706
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = int(input())
+    money = 100
+    year = 0
+    while money < X:
+        money += money // 100
+        year += 1
+    print(year)
+
+=======
+Suggestion 2
+
+def main():
+    X = int(input())
+    money = 100
+    year = 0
+    while money < X:
+        money = money * 101 // 100
+        year += 1
+    print(year)
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    money = 100
+    year = 0
+    while money < X:
+        money = money + money // 100
+        year += 1
+    print(year)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    y = 100
+    count = 0
+    while y < x:
+        y = y + y//100
+        count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    n = 0
+    while x > 100:
+        x = x * 101 // 100
+        n += 1
+    print(n)
+
+=======
+Suggestion 6
+
+def main():
+    X = int(input())
+    #print(X)
+    year = 0
+    money = 100
+    while money < X:
+        money = int(money * 1.01)
+        year = year + 1
+    print(year)
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    X = int(input())
+    #初期値
+    year = 0
+    money = 100
+    #処理
+    while money < X:
+        money = int(money * 1.01)
+        year += 1
+    #出力
+    print(year)
+
+=======
+Suggestion 8
+
+def main():
+    #入力
+    X = int(input())
+    #変数
+    year = 0
+    #処理
+    while X > 100:
+        X = int(X * 1.01)
+        year += 1
+    #出力
+    print(year)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    X = int(input())
+    #初期値
+    Y = 100
+    #処理
+    for i in range(1, 10**10):
+        Y = Y * 101 // 100
+        if Y >= X:
+            print(i)
+            break

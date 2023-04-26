@@ -1,42 +1,158 @@
-#問題文
-#(1,2,...,N) の順列 P=(P_1,P_2,...,P_N)、および正整数 K が与えられます。
-#i=K,K+1,...,N について、以下を求めてください。
-#P の先頭 i 項のうち、K 番目に大きい値
-#
-#制約
-#1 ≦ K ≦ N ≦ 5 × 10^5
-#(P_1,P_2,...,P_N) は (1,2,...,N) の並び替えによって得られる
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#P_1 P_2 ... P_N
-#
-#出力
-#i=K,K+1,...,N についてこの順に、問題文中で問われている値を改行区切りで出力せよ。
-#
-#入力例 1
-#3 2
-#1 2 3
-#
-#出力例 1
-#1
-#2
-#P の先頭 2 項、すなわち (P_1,P_2)=(1,2) の中で K=2 番目に大きい値は 1 となります。
-#P の先頭 3 項、すなわち (P_1,P_2,P_3)=(1,2,3) の中で K=2 番目に大きい値は 2 となります。
-#
-#入力例 2
-#11 5
-#3 7 2 5 11 6 1 9 8 10 4
-#
-#出力例 2
-#2
-#3
-#3
-#5
-#6
-#7
-#7
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    for i in range(K,N):
+        if P[i] > P[i-K]:
+            print(1)
+        else:
+            print(0)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    P.sort()
+    for i in range(K, N):
+        print(P[i - K])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    ans = [0] * (N-K+1)
+    ans[0] = min(P[:K])
+    for i in range(K, N):
+        ans[i-K+1] = max(P[i-K+1:i+1])
+    print('
+
+'.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    A = []
+    for i in range(N-K+1):
+        A.append(max(P[i:i+K]))
+    A.sort()
+    for i in range(N-K+1):
+        print(A[i])
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K)
+    #print(P)
+    for i in range(K, N+1):
+        #print(i)
+        #print(P[0:i])
+        #print(sorted(P[0:i]))
+        print(sorted(P[0:i])[K-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+
+    #print(N, K)
+    #print(P)
+
+    P = [i-1 for i in P]
+    #print(P)
+
+    # 累積和
+    S = [0]
+    for i in P:
+        S.append(S[-1] + i)
+    #print(S)
+
+    # おなじ数字を含む累積和
+    # 例えば、[1, 2, 1, 1, 1] なら [1, 2, 3, 4, 5]
+    S2 = [0]
+    for i in P:
+        S2.append(S2[-1] + i + 1)
+    #print(S2)
+
+    # おなじ数字を含む累積和の差分
+    # 例えば、[1, 2, 1, 1, 1] なら [1, 1, 0, 0, 0]
+    S3 = [0]
+    for i in P:
+        S3.append(S3[-1] + i + 1 - S2[-1] + S2[-i-2])
+    #print(S3)
+
+    for i in range(K, N+1):
+        #print(i)
+        #print(S[i] - S[i-K])
+        #print(S2[i] - S2[i-K])
+        #print(S3[i] - S3[i-K])
+        print(S[i] - S[i-K] - S3[i] + S3[i-K])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K)
+    #print(P)
+    #print(P[K-1:N])
+    #print(sorted(P[K-1:N]))
+    ans = sorted(P[K-1:N])
+    for i in range(K):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    # print(N, K)
+    # print(P)
+
+    # 前処理
+    # Pの累積和を求める
+    # Pの累積和の累積和を求める
+    # この累積和の累積和を求める
+    # この累積和の累積和の累積和を求める
+    # この累積和の累積和の累積和の累積和を求める
+    # この累積和の累積和の累積和の累積和の累積和を求める
+    # この累積和の累積和の累積和の累積和の累積和の累積和を求める
+    # この累積和の累積和の累積和の累積和の累積和の累積和の累積和を求める
+    # この累積和の累積和の累積和の累積和の累積和の累積和の累積和の累積和��
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+
+    # Pの先頭K項の中で最大値を求める
+    # Pの先頭K項の中で最大値を求める
+    # Pの先頭K項の中で最大値を求める
+    # ...
+    # Pの先頭K項の中で最大値を求める
+    # Pの先頭N項の中で最大値を求める
+    # ということを繰り返す
+    # このとき、Pの先頭K項の中で最大値を求めるたびに
+    # Pの先頭K+1項の中で最大値を求めるたびに
+    # Pの先頭K+2項の中で最大値を求めるたびに
+    # ...
+    # Pの先頭N項の中で最大値を求める�

@@ -1,28 +1,21 @@
-#問題文
-#N が与えられます。2^N を出力してください。
-#
-#制約
-#0 ≦ N ≦ 30
-#N は整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#
-#出力例 1
-#8
-#2^3=8 です。
-#
-#入力例 2
-#30
-#
-#出力例 2
-#1073741824
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print(2**N)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print(2**n)
+
+=======
+Suggestion 3
+
+def main():
+    print(2**int(input()))

@@ -1,68 +1,156 @@
-#問題文
-#N 個のシュークリームがあります。
-#シュークリームを分割することなく平等に分けることができるような人数としてあり得るものを全て求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^{12}
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを改行区切りで昇順に出力せよ。
-#
-#入力例 1
-#6
-#
-#出力例 1
-#1
-#2
-#3
-#6
-#例えば、2 人で分けるには 1 人あたり 3 個とすればよいです。
-#
-#入力例 2
-#720
-#
-#出力例 2
-#1
-#2
-#3
-#4
-#5
-#6
-#8
-#9
-#10
-#12
-#15
-#16
-#18
-#20
-#24
-#30
-#36
-#40
-#45
-#48
-#60
-#72
-#80
-#90
-#120
-#144
-#180
-#240
-#360
-#720
-#
-#入力例 3
-#1000000007
-#
-#出力例 3
-#1
-#1000000007
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = set()
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            ans.add(i)
+            ans.add(N//i)
+    ans = sorted(list(ans))
+    print(*ans, sep="\n")
+
+=======
+Suggestion 2
+
+def solve(n):
+    ans = []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            ans.append(i)
+            if i != n // i:
+                ans.append(n // i)
+        i += 1
+    ans.sort()
+    return ans
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            print(i)
+            if i != n // i:
+                print(n // i)
+        i += 1
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    i = 1
+    ans = []
+    while i * i <= n:
+        if n % i == 0:
+            ans.append(i)
+            if i != n // i:
+                ans.append(n // i)
+        i += 1
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 5
+
+def divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+
+    return sorted(divisors)
+
+N = int(input())
+ans = divisors(N)
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    ans = []
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            ans.append(i)
+            if i != N // i:
+                ans.append(N // i)
+        i += 1
+    ans.sort()
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            ans.append(i)
+            if i != n // i:
+                ans.append(n // i)
+    ans.sort()
+    print(*ans, sep='\n')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = []
+    for i in range(1, int(N**0.5)+1):
+        if N % i == 0:
+            ans.append(i)
+            if i != N//i:
+                ans.append(N//i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            l.append(i)
+            if i != n // i:
+                l.append(n // i)
+    l.sort()
+    for i in l:
+        print(i)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    input = sys.stdin.readline
+
+    n = int(input())
+    i = 1
+    ans = []
+    while i * i <= n:
+        if n % i == 0:
+            ans.append(i)
+            ans.append(n // i)
+        i += 1
+    ans = sorted(list(set(ans)))
+    print(*ans, sep='\n')

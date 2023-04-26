@@ -1,49 +1,72 @@
-#問題文
-#長さ N の偶数からなる正の整数列 A= {a_1,a_2,...,a_N} と、整数 M が与えられます。
-#任意の k(1 ≦ k ≦ N) に対して以下の条件を満たす正の整数 X を A の「半公倍数」と定義します。
-#X= a_k × (p+0.5) を満たす負でない整数 p が存在する。
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#2 ≦ a_i ≦ 10^9
-#a_i は偶数である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#a_1 a_2 ... a_N
-#
-#出力
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を出力せよ。
-#
-#入力例 1
-#2 50
-#6 10
-#
-#出力例 1
-#2
-#15 = 6  × 2.5 
-#15 = 10 × 1.5 
-#45 = 6  × 7.5 
-#45 = 10 × 4.5 
-#より、15,45 は A の半公倍数です。1 以上 50 以下の整数に他に A の半公倍数はないので、答えは 2 となります。
-#
-#入力例 2
-#3 100
-#14 22 40
-#
-#出力例 2
-#0
-#答えが 0 の場合もあります。
-#
-#入力例 3
-#5 1000000000
-#6 6 2 6 2
-#
-#出力例 3
-#166666667
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+a.sort()
+a=list(set(a))
+n=len(a)
+
+l=a[0]//2
+for i in range(1,n):
+    l=l*a[i]//gcd(l,a[i])
+
+ans=0
+for i in range(1,m+1):
+    if i%l==0:
+        ans+=1
+
+print(ans)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+N,M = map(int,input().split())
+A = list(map(int,input().split()))
+A = [a//2 for a in A]
+lcm = 1
+for a in A:
+    lcm = lcm * a // gcd(lcm,a)
+for a in A:
+    if (lcm//a)%2==0:
+        print(0)
+        exit()
+print((M//lcm+1)//2)

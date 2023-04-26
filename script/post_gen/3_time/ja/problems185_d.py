@@ -1,62 +1,207 @@
-#問題文
-#左右方向一列に N 個のマスが並んでいます。左から i 番目のマスをマス i と呼ぶことにします。
-#この N 個のマスのうち、マス A_1, マス A_2, マス A_3, ..., マス A_M の M 個のマスは青色で、それ以外のマスは白色です。(M = 0 の可能性もあり、その場合青色のマスはありません。)
-#あなたは一回だけ、正整数 k を一つ選んで幅 k のハンコを作ります。幅 k のハンコを一回使用すると、N 個のマスのうち連続する k マスを選び、それらを赤色に塗り替えることができます。ただしその際、その k 個のマスの中に青色のマスが入っていてはなりません。
-#k とハンコの使用方法をうまく決めた時、最小で何回ハンコを使用すれば、白色のマスが存在しない状態にすることができるでしょうか。  
-#
-#制約
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i は互いに異なる
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#出力
-#最小で何回ハンコを使用すれば白色のマスが存在しない状態にすることができるかを表す整数を出力せよ。
-#
-#入力例 1
-#5 2
-#1 3
-#
-#出力例 1
-#3
-#k として 1 を選び、3 つある白色マスを一回に一つずつ赤色に塗り替えると 3 回で目的を達成でき、最適です。
-#k として 2 以上を選ぶと、ハンコの使用時に k 個のマスの中に青色のマスが入っていてはいけないという制約のためにマス 2 がどうやっても赤色に塗り替えられなくなってしまいます。  
-#
-#入力例 2
-#13 3
-#13 3 9
-#
-#出力例 2
-#6
-#例えば k = 2 とし、以下のようにハンコを使用すると最適です。  
-#マス 1, 2 を赤色に塗り替える
-#マス 4, 5 を赤色に塗り替える
-#マス 5, 6 を赤色に塗り替える
-#マス 7, 8 を赤色に塗り替える
-#マス 10, 11 を赤色に塗り替える
-#マス 11, 12 を赤色に塗り替える
-#ハンコの使用時に選ぶ連続する k 個のマスは青色のマスを含んではいけませんが、既に赤色のマスを含むのは問題ありません。  
-#
-#入力例 3
-#5 5
-#5 2 1 4 3
-#
-#出力例 3
-#0
-#最初から白色のマスが存在しない場合、ハンコは 1 回も使わなくてよいです。  
-#
-#入力例 4
-#1 0
-#
-#
-#出力例 4
-#1
-#M = 0 の可能性もあります。  
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(N+1)
+    A.sort()
+    B = []
+    for i in range(M+1):
+        B.append(A[i+1]-A[i]-1)
+    B.sort()
+    B.reverse()
+    ans = 0
+    for i in range(M+1):
+        ans += B[i]*(i+1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = []
+    for i in range(m):
+        if i == 0:
+            b.append(a[i]-1)
+        else:
+            b.append(a[i]-a[i-1]-1)
+    if m > 0:
+        b.append(n-a[m-1])
+    b.sort()
+    ans = 0
+    for i in range(m+1):
+        if b[i] > 0:
+            ans += b[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [0] + A + [N+1]
+    A.sort()
+    B = [A[i+1] - A[i] - 1 for i in range(M+1)]
+    B = [i for i in B if i != 0]
+    k = min(B)
+    print((sum(B) + k - 1) // k)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = [0] + a + [n + 1]
+    b = []
+    for i in range(m + 1):
+        b.append(a[i + 1] - a[i] - 1)
+    k = min(b)
+    ans = 0
+    for i in range(m + 1):
+        ans += (b[i] - 1) // k + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(n+1)
+    if m == 0:
+        print(1)
+        return
+    if m == n:
+        print(0)
+        return
+    d = []
+    for i in range(m):
+        d.append(a[i+1] - a[i] - 1)
+    d.sort()
+    k = d[0]
+    for i in range(m-1):
+        d[i+1] -= k
+        if d[i+1] < 0:
+            d[i+1] = 0
+    print(sum(d) // k + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    A = [0] + A + [N+1]
+    B = []
+    for i in range(M+1):
+        if A[i+1]-A[i]-1 != 0:
+            B.append(A[i+1]-A[i]-1)
+    if M == 0:
+        print(1)
+    elif M == N:
+        print(0)
+    else:
+        K = min(B)
+        print(sum((b-1)//K+1 for b in B))
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(N+1)
+    A.sort()
+    #print(A)
+    #print(N, M)
+    if M == 0:
+        print(1)
+        return
+    else:
+        L = []
+        for i in range(M+1):
+            L.append(A[i+1]-A[i]-1)
+        L.sort()
+        #print(L)
+        ans = 0
+        for i in range(M+1):
+            if L[i] == 0:
+                continue
+            else:
+                ans += L[i]
+        print(ans)
+        return
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = [0] + A + [N + 1]
+
+    dist = []
+    for i in range(M + 1):
+        dist.append(A[i + 1] - A[i] - 1)
+
+    max_dist = max(dist)
+    if max_dist == 0:
+        print(0)
+    else:
+        print(max_dist - dist.count(max_dist) + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 青色のマスの位置を取得
+    blue = [0] * (N + 1)
+    for i in range(M):
+        blue[A[i]] = 1
+
+    # 青色のマスの位置を取得
+    blue = [0] * (N + 1)
+    for i in range(M):
+        blue[A[i]] = 1
+
+    # 青色のマスの間隔を取得
+    interval = []
+    cnt = 0
+    for i in range(1, N + 1):
+        if blue[i] == 1:
+            if cnt != 0:
+                interval.append(cnt)
+            cnt = 0
+        else:
+            cnt += 1
+    if cnt != 0:
+        interval.append(cnt)
+
+    # 青色のマスの間隔が2以上の場合、間隔の最小値を取得
+    if len(interval) == 0:
+        print(0)
+    elif len(interval) == 1:
+        print(1)
+    else:
+        min_interval = min(interval)
+        if min_interval == 1:
+            print(2)
+        else:
+            print((min_interval + 1) // 2)

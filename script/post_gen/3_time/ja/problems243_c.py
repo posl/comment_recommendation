@@ -1,69 +1,252 @@
-#問題文
-#xy 座標平面上に N 人の人がいます。人 i は (X_i, Y_i) にいます。すべての人は異なる地点にいます。
-#L, R からなる長さ N の文字列 S があります。
-#人 i は S_i = R ならば右向きに、S_i = L ならば左向きに、一斉に同じ速度で歩き始めます。ここで、右は x 軸の正の向き、左は x 軸の負の向きです。
-#たとえば (X_1, Y_1) = (2, 3), (X_2, Y_2) = (1, 1), (X_3, Y_3) =(4, 1), S = RRL の場合は次の図のように動きます。
-#反対の向きに歩いている人同士が同じ地点に来ることを「衝突」と呼びます。すべての人が歩き続けたとき、衝突は発生しますか？
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ X_i ≦ 10^9
-#0 ≦ Y_i ≦ 10^9
-#i ≠ j ならば (X_i, Y_i) ≠ (X_j, Y_j) である。
-#X_i, Y_i はすべて整数である。
-#S は L および R からなる長さ N の文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#S
-#
-#出力
-#衝突が発生するならば Yes を、発生しないならば No を出力せよ。
-#
-#入力例 1
-#3
-#2 3
-#1 1
-#4 1
-#RRL
-#
-#出力例 1
-#Yes
-#この入力は問題文にある例と同じケースです。
-#すべての人が歩き続けると人 2 と人 3 が衝突します。よって Yes を出力します。
-#
-#入力例 2
-#2
-#1 1
-#2 1
-#RR
-#
-#出力例 2
-#No
-#人 1 と人 2 は同じ向きに歩いているので衝突することはありません。
-#
-#入力例 3
-#10
-#1 3
-#1 4
-#0 0
-#0 2
-#0 4
-#3 1
-#2 4
-#4 2
-#4 4
-#3 3
-#RLRRRLRLRR
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'R' and X[i] > Y[i]:
+            print('Yes')
+            return
+        if S[i] == 'L' and X[i] < Y[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    S = input()
+    # 人数が 2 人の場合
+    if N == 2:
+        # 2 人の人が同じ向きに歩いている場合
+        if S[0] == S[1]:
+            print("No")
+        # 2 人の人が異なる向きに歩いている場合
+        else:
+            # 2 人の人が同じ地点にいる場合
+            if X[0] == X[1] and Y[0] == Y[1]:
+                print("Yes")
+            # 2 人の人が異なる地点にいる場合
+            else:
+                print("No")
+    # 人数が 3 人以上の場合
+    else:
+        # 人数が 3 人の場合
+        if N == 3:
+            # 3 人の人が同じ向きに歩いている場合
+            if S[0] == S[1] and S[0] == S[2]:
+                print("No")
+            # 3 人の人が異なる向きに歩いている場合
+            else:
+                # 3 人の人が同じ地点にいる場合
+                if X[0] == X[1] and Y[0] == Y[1] or X[0] == X[2] and Y[0] == Y[2] or X[1] == X[2] and Y[1] == Y[2]:
+                    print("Yes")
+                # 3 人の人が異なる地点にいる場合
+                else:
+                    print("No")
+        # 人数が 4 人以上の場合
+        else:
+            # 4 人の人が同じ向きに歩いている場合
+            if S[0] == S[1] and S[
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    S = input()
+    for i in range(N):
+        if S[i] == 'R':
+            for j in range(i + 1, N):
+                if S[j] == 'L' and X[i] < X[j] and Y[i] == Y[j]:
+                    print('Yes')
+                    return
+        if S[i] == 'L':
+            for j in range(i + 1, N):
+                if S[j] == 'R' and X[j] < X[i] and Y[i] == Y[j]:
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'R':
+            X[i] = 10**9 - X[i]
+        else:
+            Y[i] = 10**9 - Y[i]
+    X.sort()
+    Y.sort()
+    for i in range(N-1):
+        if X[i] == X[i+1] or Y[i] == Y[i+1]:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    s = input()
+    l = []
+    r = []
+    for i in range(n):
+        if s[i] == 'L':
+            l.append(i)
+        else:
+            r.append(i)
+    l.sort(key = lambda x: x)
+    r.sort(key = lambda x: x)
+    for i in range(len(l)):
+        for j in range(len(r)):
+            if x[l[i]] > x[r[j]] and y[l[i]] == y[r[j]]:
+                print('Yes')
+                return
+    print('No')
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    s = input()
+    for i in range(n):
+        if s[i] == 'R':
+            for j in range(i+1, n):
+                if s[j] == 'L':
+                    if y[i] == y[j] and x[i] < x[j]:
+                        print('Yes')
+                        return
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    S = input()
+
+    #処理
+    count = 0
+    for i in range(N):
+        if S[i] == "R":
+            for j in range(i+1, N):
+                if S[j] == "L":
+                    if X[i] < X[j]:
+                        if Y[i] == Y[j]:
+                            count += 1
+
+    #出力
+    if count >= 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    S = input()
+    #print(N)
+    #print(X)
+    #print(Y)
+    #print(S)
+    #X[i]とY[i]の組が一致するときには、S[i]とS[i+1]が同じでなければならない
+    #X[i]とY[i]の組が一致しないときには、S[i]とS[i+1]が同じであればならない
+    #X[i]とY[i]の組が一致するときには、S[i]とS[i+1]が同じでなければならない
+    #X[i]とY[i]の組が一致しないときには、S[i]とS[i+1]が同じであればならない
+    #X[i]とY[i]の組が一致するときには、S[i]とS[i+1]が同じでなければならない
+    #X[i]とY[i]の組が一致しないときには、S[i]とS[i+1]が同じであればならない
+    #X[i]とY[i]の組が一致するときには、S[i]とS[i+1]が同じでなければならない
+    #X[i]とY[i]の組が一致しないときには、S[i]とS[i+1]が同じであればならない
+    #X[i]とY[i]の組が一致するときには、S[i]とS[i+1]が同じでなければならない
+    #X[i]とY[i]の組が一致しないときには、S[i]とS[i+1
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    S = input()
+    for i in range(N):
+        for j in range(i + 1, N):
+            if XY[i][1] == XY[j][1] and XY[i][0] < XY[j][0]:
+                if S[i] == "R" and S[j] == "L":
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    xyl = [list(map(int, input().split())) for _ in range(n)]
+    s = input()
+    ans = "No"
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j]:
+                continue
+            if xyl[i][0] == xyl[j][0] or xyl[i][1] == xyl[j][1]:
+                continue
+            if (xyl[i][0] < xyl[j][0] and xyl[i][1] < xyl[j][1]) or (xyl[i][0] > xyl[j][0] and xyl[i][1] > xyl[j][1]):
+                ans = "Yes"
+                break
+    print(ans)

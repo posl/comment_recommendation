@@ -1,42 +1,157 @@
-#問題文
-#1 から N の番号がついた N 個の重りがあり、番号 i の重りの重さは W_i です。
-#ある整数 1 ≦ T < N に対してこれらの重りを、番号が T 以下の重り と 番号が T より大きい重りの 2 グループに分けることを考え、それぞれのグループの重さの和を S_1, S_2 とします。
-#このような分け方全てを考えた時、S_1 と S_2 の差の絶対値の最小値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 100
-#1 ≦ W_i ≦ 100
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#W_1 W_2 ... W_{N-1} W_N
-#
-#出力
-#S_1 と S_2 の差の絶対値の最小値を出力せよ。
-#
-#入力例 1
-#3
-#1 2 3
-#
-#出力例 1
-#0
-#T = 2 としたとき、S_1 = 1 + 2 = 3, S_2 = 3 となり、差の絶対値は 0 となります。
-#
-#入力例 2
-#4
-#1 3 1 1
-#
-#出力例 2
-#2
-#T = 2 としたとき、S_1 = 1 + 3 = 4, S_2 = 1 + 1 = 2 となり、差の絶対値は 2 です。これより差の絶対値を小さくすることは出来ません。
-#
-#入力例 3
-#8
-#27 23 76 2 3 5 62 52
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    S1 = W[0]
+    S2 = sum(W[1:])
+    ans = abs(S1 - S2)
+    for i in range(1, N - 1):
+        S1 += W[i]
+        S2 -= W[i]
+        ans = min(ans, abs(S1 - S2))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    ans = 100
+    for i in range(1, N):
+        ans = min(ans, abs(sum(W[:i]) - sum(W[i:])))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+
+    ans = 1000000000
+    for i in range(1, N):
+        S1 = sum(W[:i])
+        S2 = sum(W[i:])
+        ans = min(abs(S1 - S2), ans)
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    S1 = 0
+    S2 = sum(W)
+    min_diff = 1000000
+    for T in range(1, N):
+        S1 += W[T-1]
+        S2 -= W[T-1]
+        diff = abs(S1 - S2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    s1 = 0
+    s2 = sum(w)
+    min_diff = 1000000000
+    for i in range(1, n):
+        s1 += w[i - 1]
+        s2 -= w[i - 1]
+        diff = abs(s1 - s2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    #print(N)
+    #print(W)
+    S = sum(W)
+    #print(S)
+    S1 = 0
+    S2 = S
+    min = S
+    for T in range(1, N):
+        S1 += W[T-1]
+        S2 -= W[T-1]
+        #print(T, S1, S2)
+        if abs(S1 - S2) < min:
+            min = abs(S1 - S2)
+    print(min)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1000000000
+    for i in range(N - 1):
+        S1 = sum(A[:i + 1])
+        S2 = sum(A[i + 1:])
+        ans = min(ans, abs(S1 - S2))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    #入力
+    N = int(input())
+    W = list(map(int, input().split()))
+    #初期化
+    S = [0]
+    for i in range(N):
+        S.append(S[i] + W[i])
+    #print(S)
+    #差の絶対値の最小値を求める
+    ans = float("inf")
+    for i in range(1,N):
+        ans = min(ans, abs(S[i] - (S[N] - S[i])))
+    #出力
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    W = list(map(int,input().split()))
+
+    # 全ての重りを左から右に移動させて、左側の重りの重さの和を計算していく
+    # その際に最小値を更新していく
+    sum = 0
+    min = 100000
+    for i in range(N):
+        sum += W[i]
+        if i < N-1:
+            if abs(sum - (sum - W[i])) < min:
+                min = abs(sum - (sum - W[i]))
+
+    print(min)

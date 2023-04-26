@@ -1,40 +1,79 @@
-#問題文
-#英大文字のみからなる長さ N の文字列 S があります。
-#S の連続する部分列 (入出力例をご覧ください) として ABC がいくつ含まれるかを求めてください。
-#
-#制約
-#3 ≦ N ≦ 50
-#S は英大文字のみからなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#S が連続する部分列として含む ABC の個数を出力せよ。
-#
-#入力例 1
-#10
-#ZABCDBABCQ
-#
-#出力例 1
-#2
-#S の 2 文字目から 4 文字目、および 7 文字目から 9 文字目の 2 箇所の連続する部分列が ABC に一致しています。
-#
-#入力例 2
-#19
-#THREEONEFOURONEFIVE
-#
-#出力例 2
-#0
-#S は ABC に一致する連続する部分列を含みません。
-#
-#入力例 3
-#33
-#ABCCABCBABCCABACBCBBABCBCBCBCABCB
-#
-#出力例 3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N-2):
+        if S[i:i+3] == "ABC":
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 0
+    for i in range(n-2):
+        if s[i:i+3] == 'ABC':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    cnt = 0
+    for i in range(N-2):
+        if S[i:i+3] == 'ABC':
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N-2):
+        if S[i:i+3] == 'ABC':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n-2):
+        if s[i:i+3] == "ABC":
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    print(S.count("ABC"))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    print(S.count("ABC"))

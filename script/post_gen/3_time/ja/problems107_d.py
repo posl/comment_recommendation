@@ -1,53 +1,144 @@
-#問題文
-#長さ M の数列 b の 中央値 を次のように定義します。
-#b を昇順にソートして得られる数列を b' とする。 このとき、b' の M / 2 + 1 番目の要素の値を、b の中央値とする。 ここで、/ は小数点以下を切り捨てる除算である。
-#例えば、(10, 30, 20) の中央値は 20 であり、(10, 30, 20, 40) の中央値は 30 であり、(10, 10, 10, 20, 30) の中央値は 10 です。
-#すぬけ君は次のような問題を思いつきました。
-#長さ N の数列 a があります。
-#各 (l, r) (1 ≦ l ≦ r ≦ N) について、a の連続部分列 (a_l, a_{l + 1}, ..., a_r) の中央値を m_{l, r} とします。
-#すべての (l, r) に対する m_{l, r} を並べ、新たに数列 m を作ります。
-#m の中央値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#a_i は整数である。
-#1 ≦ a_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#m の中央値を出力せよ。
-#
-#入力例 1
-#3
-#10 30 20
-#
-#出力例 1
-#30
-#a のそれぞれの連続部分列の中央値は次のようになります。
-#(10) の中央値は 10
-#(30) の中央値は 30
-#(20) の中央値は 20
-#(10, 30) の中央値は 30
-#(30, 20) の中央値は 30
-#(10, 30, 20) の中央値は 20
-#よって、m = (10, 30, 20, 30, 30, 20) となり、m の中央値は 30 です。
-#
-#入力例 2
-#1
-#10
-#
-#出力例 2
-#10
-#
-#入力例 3
-#10
-#5 9 5 9 8 9 3 5 4 3
-#
-#出力例 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def median(a):
+    a.sort()
+    if len(a) % 2 == 1:
+        return a[len(a) // 2]
+    else:
+        return (a[len(a) // 2 - 1] + a[len(a) // 2]) // 2
+
+n = int(input())
+a = list(map(int, input().split()))
+m = []
+for i in range(n):
+    for j in range(i, n):
+        m.append(median(a[i:j + 1]))
+print(median(m))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        for j in range(i, n):
+            b.append(a[j])
+            b.sort()
+            print(b)
+            print(b[len(b)//2])
+            b.clear()
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = A[i] - (i + 1)
+    B.sort()
+    if N % 2 == 0:
+        print(B[N // 2] + B[N // 2 - 1] + 1)
+    else:
+        print(B[N // 2] * 2 + 1)
+
+=======
+Suggestion 4
+
+def median(l):
+    l.sort()
+    if len(l) % 2 == 0:
+        return (l[len(l) // 2] + l[len(l) // 2 - 1]) // 2
+    else:
+        return l[len(l) // 2]
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        b.append(a[i] - i - 1)
+    b.sort()
+    m = b[n//2]
+    ans = 0
+    for i in range(n):
+        ans += abs(a[i] - (m + i + 1))
+    print(ans)
+
+=======
+Suggestion 6
+
+def median(a):
+    a.sort()
+    if len(a) % 2 == 0:
+        return (a[len(a)//2-1] + a[len(a)//2])//2
+    else:
+        return a[len(a)//2]
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(N):
+        for j in range(i,N):
+            b.append(a[i:j+1])
+    b.sort()
+    print(b[int((N*(N+1))/2)])
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = [0]*N
+    for i in range(N):
+        if i == 0:
+            B[i] = A[i]
+        else:
+            B[i] = A[i] + B[i-1]
+    B.sort()
+    if N % 2 == 0:
+        print((B[int(N/2)]+B[int(N/2)-1])//2)
+    else:
+        print(B[int(N/2)])
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    m = []
+    for i in range(n):
+        for j in range(i,n):
+            m.append(a[i:j+1])
+    m.sort()
+    print(m[len(m)//2])
+
+=======
+Suggestion 10
+
+def median(l):
+    l.sort()
+    return l[(len(l)+1)//2-1]
+
+n=int(input())
+a=list(map(int,input().split()))
+m=[]
+for i in range(n):
+    for j in range(i,n):
+        m.append(median(a[i:j+1]))
+print(median(m))

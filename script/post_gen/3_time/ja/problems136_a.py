@@ -1,39 +1,75 @@
-#問題文
-#水を入れる容器が 2 つあります。
-#容器 1 には水を A ミリリットルまで入れることができ、水が B ミリリットル入っています。
-#容器 2 には水が C ミリリットル入っています。
-#容器 2 から容器 1 に入るだけ水を移します。
-#容器 2 の中には何ミリリットルの水が残るでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ B ≦ A ≦ 20
-#1 ≦ C ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#ミリリットル単位で容器 2 の中に残る水の量を整数で出力せよ。
-#
-#入力例 1
-#6 4 3
-#
-#出力例 1
-#1
-#容器 2 から容器 1 に 2 ミリリットルの水を移すことになるので、容器 2 には 1 ミリリットルの水が残ります。
-#
-#入力例 2
-#8 3 9
-#
-#出力例 2
-#4
-#
-#入力例 3
-#12 3 7
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a >= b + c:
+        print(0)
+    else:
+        print(b + c - a)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(0, c - (a - b)))
+
+=======
+Suggestion 3
+
+def main():
+    A,B,C = map(int,input().split())
+    if A >= B + C:
+        print(0)
+    else:
+        print(C - (A - B))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C = map(int, input().split())
+    print(C if A >= B + C else B + C - A)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    print(c if a >= b + c else a + b - c)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int, input().split())
+    print(c - (a-b) if c - (a-b) > 0 else 0)
+
+=======
+Suggestion 7
+
+def func(a,b,c):
+    if b >= a:
+        return c - (b - a)
+    else:
+        return c
+
+a,b,c = map(int, input().split())
+print(func(a,b,c))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int, input().split())
+    print(c if a >= b+c else b+c-a)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    print(c if a >= c else a - (c - b))

@@ -1,27 +1,90 @@
-#問題文
-#1, 2, 3 の番号がついた 3 人の高橋くんがおり、赤・緑・青の色がついた 3 種類の帽子がそれぞれ 1 つずつあります。それぞれの高橋くんは帽子を 1 つかぶっており、高橋くん i がはじめにかぶっている帽子の色は文字 S_i で表されます。ここで、R は赤、G は緑、B は青に対応しています。これから、以下の操作をちょうど 10^{18} 回行います。
-#操作
-#3 人の高橋くんのうち 2 人を選ぶ。2 人はお互いのかぶっている帽子を交換する。
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできますか？
-#
-#制約
-#S_1, S_2, S_3 は R, G, B の並べ替えである
-#T_1, T_2, T_3 は R, G, B の並べ替えである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_1 S_2 S_3
-#T_1 T_2 T_3
-#
-#出力
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできる場合は Yes を、できない場合は No を出力せよ。
-#
-#入力例 1
-#R G B
-#R G B
-#
-#出力例 1
-#Yes
-#例えば、高橋くん 1 と高橋くん 2 の帽子を交換する操作を 10^{18} 回行うと目的を達成できます。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s1, s2, s3 = input().rstrip().split()
+    t1, t2, t3 = input().rstrip().split()
+    if s1 == t1 and s2 == t2 and s3 == t3:
+        print("Yes")
+    elif s1 == t1 and s2 == t3 and s3 == t2:
+        print("Yes")
+    elif s1 == t2 and s2 == t1 and s3 == t3:
+        print("Yes")
+    elif s1 == t2 and s2 == t3 and s3 == t1:
+        print("Yes")
+    elif s1 == t3 and s2 == t1 and s3 == t2:
+        print("Yes")
+    elif s1 == t3 and s2 == t2 and s3 == t1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    S = input()
+    T = input()
+
+    # compute
+
+    # output
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def get_input():
+    s = input().split()
+    t = input().split()
+    return s, t

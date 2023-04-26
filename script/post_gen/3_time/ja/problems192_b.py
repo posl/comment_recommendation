@@ -1,36 +1,82 @@
-#問題文
-#先頭から奇数番目の文字が全て英小文字であり、かつ、先頭から偶数番目の文字が全て英大文字であるような文字列を 読みにくい文字列 と呼びます。
-#文字列 S が読みにくい文字列かどうか判定してください。
-#
-#制約
-#S は英大文字及び英小文字のみからなる
-#S の長さは 1 以上 1000 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が読みにくい文字列なら Yes、読みにくい文字列でないなら No を出力せよ。
-#
-#入力例 1
-#dIfFiCuLt
-#
-#出力例 1
-#Yes
-#先頭から奇数番目の文字が全て英小文字であり、かつ、先頭から偶数番目の文字が全て英大文字であるので、読みにくい文字列です。
-#
-#入力例 2
-#eASY
-#
-#出力例 2
-#No
-#先頭から 3 番目の文字が英小文字ではないので、読みにくい文字列ではありません。
-#
-#入力例 3
-#a
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0::2].islower() and s[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0::2].islower() and S[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    odd = s[::2]
+    even = s[1::2]
+    if odd.islower() and even.isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def check(s):
+    odd = s[::2]
+    even = s[1::2]
+    if odd.islower() and even.isupper():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def judge(s):
+    if s[0::2].islower() and s[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+s = input()
+judge(s)
+
+=======
+Suggestion 6
+
+def check(s):
+    if s[0::2].islower() and s[1::2].isupper():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def isUpper(s):
+    if s.isupper():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def is_upper_or_lower(s):
+    return s.isupper() or s.islower()
+
+s = input()

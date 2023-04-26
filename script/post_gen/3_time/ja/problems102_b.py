@@ -1,40 +1,80 @@
-#問題文
-#長さ N の整数列 A が与えられます。
-#A の（添字の）異なる 2 要素の差の絶対値の最大値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#A の（添字の）異なる 2 要素の差の絶対値の最大値を出力せよ。
-#
-#入力例 1
-#4
-#1 4 6 3
-#
-#出力例 1
-#5
-#A_3-A_1=6-1=5 が、異なる 2 要素の差の最大値です。
-#
-#入力例 2
-#2
-#1000000000 1
-#
-#出力例 2
-#999999999
-#
-#入力例 3
-#5
-#1 1 1 1 1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[-1] - A[0])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1] - A[0])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[-1] - a[0])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1] - a[0])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(max(a) - min(a))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.sort()
+    print(a[n-1]-a[0])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1] - a[0])
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    #Aの最大値と最小値を求める
+    A_max = max(A)
+    A_min = min(A)
+
+    #Aの最大値と最小値の差を求める
+    A_diff = A_max - A_min
+
+    print(A_diff)

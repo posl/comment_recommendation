@@ -1,46 +1,208 @@
-#問題文
-#N 個の整数が並んでおり、順に A_1, A_2, ..., A_N です。
-#あなたはこの整数列に対して次の操作を好きなだけ行うことができます。
-#操作: 1 ≦ i ≦ N-1 を満たす整数 i を選ぶ。A_i と A_{i+1} に -1 を乗算する。
-#操作終了後の整数列を B_1, B_2, ..., B_N とします。
-#B_1 + B_2 + ... + B_N の最大値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10^5
-#-10^9 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#B_1 + B_2 + ... + B_N の最大値を出力せよ。
-#
-#入力例 1
-#3
-#-10 5 -4
-#
-#出力例 1
-#19
-#次のように操作を行うと、B_1 = 10, B_2 = 5, B_3 = 4 になり、このときの B_1 + B_2 + B_3 = 10 + 5 + 4 = 19 が最大です。
-#i として 1 を選ぶ。操作により、整数列は 10, -5, -4 に変化する。
-#i として 2 を選ぶ。操作により、整数列は 10, 5, 4 に変化する。
-#
-#入力例 2
-#5
-#10 -4 -8 -11 3
-#
-#出力例 2
-#30
-#
-#入力例 3
-#11
-#-1000000000 1000000000 -1000000000 1000000000 -1000000000 0 1000000000 -1000000000 1000000000 -1000000000 1000000000
-#
-#出力例 3
-#10000000000
-#出力が 32 ビット整数型に収まらない場合があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n):
+        if a[i-1] * a[i] < 0:
+            cnt += 1
+    if cnt == 0:
+        print(sum(map(abs, a)) - 2 * min(map(abs, a)))
+    else:
+        print(sum(map(abs, a)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if A[i-1] > 0:
+            ans += A[i-1]
+            A[i] += A[i-1]
+            A[i-1] = 0
+    if A[-1] > 0:
+        ans += A[-1]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        if a[i] < 0:
+            a[i] = -a[i]
+        if a[i+1] < 0:
+            a[i+1] = -a[i+1]
+        ans += a[i+1] - a[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n):
+        if a[i-1] + a[i] > 0:
+            a[i] += a[i-1]
+            ans += a[i-1]
+        else:
+            ans += a[i-1] + a[i]
+            a[i] = 0
+    print(ans + a[-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1,n):
+        if a[i-1] > 0:
+            ans += a[i-1]
+            a[i-1] = 0
+        if a[i] < 0:
+            ans += a[i]
+            a[i] = 0
+    if a[n-1] > 0:
+        ans += a[n-1]
+        a[n-1] = 0
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    if N == 2:
+        return max(A[0] + A[1], A[0] - A[1], -A[0] + A[1], -A[0] - A[1])
+
+    if N == 3:
+        return max(
+            A[0] + A[1] + A[2],
+            A[0] + A[1] - A[2],
+            A[0] - A[1] + A[2],
+            A[0] - A[1] - A[2],
+            A[0] - A[1] - A[2],
+            A[0] - A[1] - A[2],
+            - A[0] + A[1] + A[2],
+            - A[0] + A[1] - A[2],
+            - A[0] - A[1] + A[2],
+            - A[0] - A[1] - A[2],
+        )
+
+    if N % 2 == 0:
+        return sum(A) + max(
+            max(A),
+            min(A),
+            -max(A),
+            -min(A),
+            0
+        )
+    else:
+        return sum(A) + max(
+            max(A),
+            min(A),
+            -max(A),
+            -min(A),
+            0,
+            -2 * min(A),
+            -2 * max(A)
+        )
+
+print(solve())
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    neg = 0
+    min_abs = 10**9
+    for i in range(n):
+        if a[i] < 0:
+            neg += 1
+        ans += abs(a[i])
+        min_abs = min(min_abs, abs(a[i]))
+    if neg % 2 == 0:
+        print(ans)
+    else:
+        print(ans - min_abs*2)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    minus = 0
+    for i in range(N-1):
+        if A[i]+minus < 0:
+            if A[i]+A[i+1]+minus < 0:
+                ans += abs(A[i]+A[i+1]+minus)
+                minus = -1
+            else:
+                ans += abs(A[i]+minus)
+                minus = A[i+1]
+        else:
+            minus += A[i+1]
+    ans += abs(A[N-1]+minus)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    minus = 0
+    min_minus = 10000000000
+    for i in range(N):
+        if A[i] < 0:
+            minus += 1
+        if abs(A[i]) < min_minus:
+            min_minus = abs(A[i])
+        ans += abs(A[i])
+    if minus % 2 == 1:
+        ans -= min_minus * 2
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    sum = 0
+    count_minus = 0
+    min = 10**9
+    for i in range(n):
+        if a[i] < 0:
+            count_minus += 1
+            a[i] *= -1
+        sum += a[i]
+        if min > a[i]:
+            min = a[i]
+    if count_minus % 2 == 0:
+        print(sum)
+    else:
+        print(sum - min * 2)

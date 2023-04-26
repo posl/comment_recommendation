@@ -1,37 +1,89 @@
-#問題文
-#1 桁の数字が表示される画面と、ボタンからなる機械があります。  
-#画面に数字 k が表示されているとき、ボタンを 1 回押すと画面の数字が a_k に変わります。  
-#0 が表示されている状態からボタンを 3 回押すと、画面には何が表示されますか？
-#
-#制約
-#0≦ a_i ≦ 9
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a_0 a_1 ... a_9
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#9 0 1 2 3 4 5 6 7 8
-#
-#出力例 1
-#7
-#画面に表示される数字は、0 -> 9 -> 8 -> 7 と変化します。  
-#
-#入力例 2
-#4 8 8 8 0 8 8 8 8 8
-#
-#出力例 2
-#4
-#画面に表示される数字は、0 -> 4 -> 0 -> 4 と変化します。  
-#
-#入力例 3
-#0 0 0 0 0 0 0 0 0 0
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    num = 0
+    for i in range(3):
+        num = a[num]
+    print(num)
+
+=======
+Suggestion 3
+
+def main():
+    #入力
+    a = list(map(int, input().split()))
+    #処理
+    k = 0
+    for i in range(3):
+        k = a[k]
+    #出力
+    print(k)
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    for i in range(3):
+        a[0] = a[a[0]]
+    print(a[0])
+
+=======
+Suggestion 5
+
+def main():
+    #入力
+    a = list(map(int, input().split()))
+    #処理
+    ans = 0
+    for i in range(3):
+        ans = a[ans]
+    #出力
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    a = list(map(int, input().split()))
+    print(a[0])
+
+=======
+Suggestion 7
+
+def main():
+    # 1行目の入力
+    a = list(map(int,input().split()))
+    # 0が表示されている状態からボタンを3回押すと、画面には何が表示されるか
+    print(a[a[a[0]]])
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    print(a[a[0]])
+
+=======
+Suggestion 9
+
+def main():
+    a = input().split()
+    v = 0
+    for i in range(3):
+        v = a[v]
+    print(v)

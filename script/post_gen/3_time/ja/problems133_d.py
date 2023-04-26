@@ -1,49 +1,141 @@
-#問題文
-#円形に N 個の山が連なっており、時計回りに山 1, 山 2, …, 山 N と呼ばれます。N は奇数です。
-#これらの山の間に N 個のダムがあり、ダム 1, ダム 2, …, ダム N と呼ばれます。ダム i (1 ≦ i ≦ N) は山 i と山 i+1 の間にあります (山 N+1 は山 1 のことを指します)。
-#山 i (1 ≦ i ≦ N) に 2x リットルの雨が降ると、ダム i-1 とダム i にそれぞれ x リットルずつ水が溜まります (ダム 0 はダム N のことを指します)。
-#ある日、各山に非負の偶数リットルの雨が降りました。
-#その結果、ダム i (1 ≦ i ≦ N) には合計で A_i リットルの水が溜まりました。
-#各山に降った雨の量を求めてください。この問題の制約下では解が一意に定まることが証明できます。
-#
-#制約
-#入力は全て整数である。
-#3 ≦ N ≦ 10^5-1
-#N は奇数である。
-#0 ≦ A_i ≦ 10^9
-#入力が表す状況は、各山に非負の偶数リットルの雨が降った際に発生しうる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#山 1, 山 2, …, 山 N に降った雨の量を表す N 個の整数をこの順に出力せよ。
-#
-#入力例 1
-#3
-#2 2 4
-#
-#出力例 1
-#4 0 4
-#山 1, 2, 3 に降った雨の量をそれぞれ 4 リットル, 0 リットル, 4 リットルとすると以下のように辻褄が合います。
-#ダム 1 には (4/(2)) + (0/(2)) = 2 リットルの水が溜まります。
-#ダム 2 には (0/(2)) + (4/(2)) = 2 リットルの水が溜まります。
-#ダム 3 には (4/(2)) + (4/(2)) = 4 リットルの水が溜まります。
-#
-#入力例 2
-#5
-#3 8 7 5 5
-#
-#出力例 2
-#2 4 12 2 8
-#
-#入力例 3
-#3
-#1000000000 1000000000 0
-#
-#出力例 3
-#0 2000000000 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        if i % 2 == 0:
+            ans[0] += A[i]
+        else:
+            ans[0] -= A[i]
+    for i in range(1, N):
+        ans[i] = 2 * A[i-1] - ans[i-1]
+    print(" ".join(map(str, ans)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        if i % 2 == 0:
+            ans[0] += A[i]
+        else:
+            ans[0] -= A[i]
+    for i in range(1, N):
+        ans[i] = (A[i - 1] - ans[i - 1] // 2) * 2
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+    ans[0] = sum(a) - 2 * sum(a[1::2])
+    for i in range(1, n):
+        ans[i] = 2 * a[i-1] - ans[i-1]
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0]*n
+    for i in range(n):
+        if i%2 == 0:
+            ans[0] += a[i]
+        else:
+            ans[0] -= a[i]
+    for i in range(1,n):
+        ans[i] = 2*a[i-1] - ans[i-1]
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    b[0] = sum(a) - sum(a[1::2]) * 2
+    for i in range(1, n):
+        b[i] = a[i-1] * 2 - b[i-1]
+    print(" ".join(map(str, b)))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0 for i in range(n)]
+    ans[0] = sum(a) - 2 * sum(a[1::2])
+    for i in range(n-1):
+        ans[i+1] = 2 * a[i] - ans[i]
+    print(*ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * N
+    ans[0] = sum(a) - 2 * sum(a[1::2])
+    for i in range(1, N):
+        ans[i] = 2 * a[i - 1] - ans[i - 1]
+    print(*ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if i == 0:
+            print(A[1] + A[N-1], end=' ')
+        elif i == N-1:
+            print(A[N-2] + A[0], end=' ')
+        else:
+            print(A[i-1] + A[i+1], end=' ')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if i == 0:
+            ans.append(A[i] - (sum(A) - A[i]))
+        else:
+            ans.append(A[i] - (A[i - 1]))
+    print(*ans)
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    # compute
+    b = [0] * n
+    b[0] = a[0]
+    for i in range(1,n):
+        b[i] = a[i] - b[i-1] // 2
+    b[0] = a[0] - b[-1] // 2
+    # output
+    print(" ".join([str(i) for i in b]))

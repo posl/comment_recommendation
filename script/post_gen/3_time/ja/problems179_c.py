@@ -1,34 +1,118 @@
-#問題文
-#正整数 N が与えられます。A × B + C = N を満たす正整数の組 (A,B,C) はいくつありますか？
-#
-#制約
-# 2 ≦ N ≦ 10^6
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#
-#出力例 1
-#3
-#A × B + C = 3 を満たす正整数の組は、(A, B, C) = (1, 1, 2), (1, 2, 1), (2, 1, 1) の 3 つあります。
-#
-#入力例 2
-#100
-#
-#出力例 2
-#473
-#
-#入力例 3
-#1000000
-#
-#出力例 3
-#13969985
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N + 1):
+        for b in range(1, N + 1):
+            c = N - a * b
+            if c < 1:
+                break
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N):
+        ans += (N - 1) // i
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N):
+        ans += (N - 1) // a
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for A in range(1, N):
+        ans += (N - 1) // A
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    count = 0
+    for a in range(1, N):
+        for b in range(1, N):
+            c = N - a*b
+            if c > 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for A in range(1, N):
+        for B in range(1, N):
+            if A * B < N:
+                ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N):
+        ans += (N-1)//i
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if i*j + j <= N:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += N // i
+    print(ans)
+
+=======
+Suggestion 10
+
+def f(n):
+    ans = 0
+    for i in range(1, n):
+        ans += (n - 1) // i
+    return ans
+
+n = int(input())
+print(f(n))

@@ -1,94 +1,322 @@
-#問題文
-#とあるSNSに、人 1 、人 2、 ...、人 N が登録しています。
-#この N 人の間には、 M 組の「友達関係」と、 K 組の「ブロック関係」が存在します。
-#i = 1, 2, ..., M について、人 A_i と人 B_i は友達関係にあります。この関係は双方向的です。
-#i = 1, 2, ..., K について、人 C_i と人 D_i はブロック関係にあります。この関係は双方向的です。
-#以下の 4 つの条件が満たされるとき、人 a は人 b の「友達候補」であると定義します。
-#a ≠ b である。
-#人 a と人 b はブロック関係に無い。
-#人 a と人 b は友達関係に無い。
-#1 以上 N 以下の整数から成るある数列 c_0, c_1, c_2, ..., c_L が存在し、c_0 = a であり、 c_L = b であり、 i = 0, 1, ..., L - 1 について、人 c_i と人 c_{i+1} は友達関係にある。
-#人 i = 1, 2, ... N について、友達候補の数を答えてください。
-#
-#制約
-#入力は全て整数
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#出力
-#答えを空白区切りで順に出力せよ。
-#
-#入力例 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#出力例 1
-#0 1 0 1
-#人 2 と人 3 は友達関係にあり, 人 3 と人 4 は友達関係にあり, かつ人 2 と人 4 は友達関係にもブロック関係にもありませんから, 人 4 は人 2の友達候補です。
-#人 1 と人 3 は人 2 の友達候補ではありませんから, 人 2 の友達候補は 1 人です。
-#
-#入力例 2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#出力例 2
-#0 0 0 0 0
-#全ての人は他の全ての人と友達関係にありますが、友達候補は 0 人です。
-#
-#入力例 3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#出力例 3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    CD = [list(map(int, input().split())) for _ in range(K)]
+
+    #友達関係
+    friend = [[0 for _ in range(N)] for _ in range(N)]
+    for a, b in AB:
+        friend[a-1][b-1] = 1
+        friend[b-1][a-1] = 1
+
+    #ブロック関係
+    block = [[0 for _ in range(N)] for _ in range(N)]
+    for c, d in CD:
+        block[c-1][d-1] = 1
+        block[d-1][c-1] = 1
+
+    #友達候補
+    ans = [0 for _ in range(N)]
+    for i in range(N):
+        #自分自身と友達関係にある人数
+        ans[i] = sum(friend[i]) - 1
+        #ブロック関係にある人数
+        for j in range(N):
+            if block[i][j] == 1 and friend[i][j] == 1:
+                ans[i] -= 1
+
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    CD = [list(map(int, input().split())) for _ in range(K)]
+    #友達関係
+    friend = [[0] * (N+1) for _ in range(N+1)]
+    for a, b in AB:
+        friend[a][b] = 1
+        friend[b][a] = 1
+    #ブロック関係
+    block = [[0] * (N+1) for _ in range(N+1)]
+    for c, d in CD:
+        block[c][d] = 1
+        block[d][c] = 1
+    #友達候補
+    ans = [0] * (N+1)
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if friend[i][j] == 1 and block[i][j] == 0:
+                ans[i] += 1
+    for i in range(1, N+1):
+        ans[i] -= 1
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if friend[i][j] == 1:
+                ans[i] -= 1
+                ans[j] -= 1
+    for i in range(1, N+1):
+        print(ans[i], end=" ")
+
+=======
+Suggestion 3
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    blocks = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a - 1].append(b - 1)
+        friends[b - 1].append(a - 1)
+    for _ in range(K):
+        c, d = map(int, input().split())
+        blocks[c - 1].append(d - 1)
+        blocks[d - 1].append(c - 1)
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = N - 1 - len(friends[i]) - len(blocks[i])
+        for j in range(N):
+            if j in friends[i]:
+                ans[i] -= 1
+            elif j in blocks[i]:
+                ans[i] -= 1
+    print(*ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M, K = map(int, input().split())
+    F = [[] for _ in range(N)]
+    B = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        F[a-1].append(b-1)
+        F[b-1].append(a-1)
+    for _ in range(K):
+        c, d = map(int, input().split())
+        B[c-1].append(d-1)
+        B[d-1].append(c-1)
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = N - len(F[i]) - 1 - len(B[i])
+        for j in F[i]:
+            if i in B[j]:
+                ans[i] -= 1
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, K = map(int, input().split())
+    friend = [list(map(int, input().split())) for _ in range(M)]
+    block = [list(map(int, input().split())) for _ in range(K)]
+
+    #友達関係をリスト化
+    friend_list = [[] for _ in range(N+1)]
+    for f in friend:
+        friend_list[f[0]].append(f[1])
+        friend_list[f[1]].append(f[0])
+
+    #ブロック関係をリスト化
+    block_list = [[] for _ in range(N+1)]
+    for b in block:
+        block_list[b[0]].append(b[1])
+        block_list[b[1]].append(b[0])
+
+    #友達候補の数を計算
+    for i in range(1, N+1):
+        #友達候補の数 = 友達関係の数 - ブロック関係の数 - 自分自身
+        ans = len(friend_list[i]) - len(block_list[i]) - 1
+        print(ans, end=" ")
+
+=======
+Suggestion 6
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [set() for _ in range(N)]
+    block = [set() for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        A -= 1
+        B -= 1
+        friends[A].add(B)
+        friends[B].add(A)
+    for _ in range(K):
+        C, D = map(int, input().split())
+        C -= 1
+        D -= 1
+        block[C].add(D)
+        block[D].add(C)
+    for i in range(N):
+        friends[i].add(i)
+        block[i].add(i)
+    for i in range(N):
+        for f in friends[i]:
+            block[i] |= block[f]
+    for i in range(N):
+        print(len(friends[i] & block[i]) - 1, end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N, M, K = map(int, input().split())
+    relation = [[0] * N for _ in range(N)]
+    block = [[0] * N for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        relation[A - 1][B - 1] = 1
+        relation[B - 1][A - 1] = 1
+    for _ in range(K):
+        C, D = map(int, input().split())
+        block[C - 1][D - 1] = 1
+        block[D - 1][C - 1] = 1
+    ans = [0] * N
+    for i in range(N):
+        for j in range(N):
+            if relation[i][j] == 1:
+                ans[i] += 1
+                ans[j] += 1
+    for i in range(N):
+        for j in range(N):
+            if block[i][j] == 1:
+                ans[i] -= 1
+                ans[j] -= 1
+    for i in range(N):
+        ans[i] -= 1
+    print(*ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M, K = map(int, input().split())
+    #友達関係のリスト
+    friends = [[] for _ in range(N)]
+    #ブロック関係のリスト
+    blocks = [[] for _ in range(N)]
+    #友達候補のリスト
+    candidates = [0] * N
+    #友達関係の入力
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a-1].append(b-1)
+        friends[b-1].append(a-1)
+    #ブロック関係の入力
+    for _ in range(K):
+        c, d = map(int, input().split())
+        blocks[c-1].append(d-1)
+        blocks[d-1].append(c-1)
+    #友達候補の数をカウント
+    for i in range(N):
+        candidates[i] = N - len(friends[i]) - 1 #友達関係の数を引く
+        for j in friends[i]:
+            if i in blocks[j]: #ブロック関係にあるかどうか
+                candidates[i] -= 1
+    #友達候補の数を出力
+    print(' '.join(map(str, candidates)))
+
+=======
+Suggestion 9
+
+def main():
+    N, M, K = map(int, input().split())
+    #友達関係のリスト
+    friends = [[] for _ in range(N)]
+    #ブロック関係のリスト
+    blocks = [[] for _ in range(N)]
+
+    #友達関係のリストを作る
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a-1].append(b-1)
+        friends[b-1].append(a-1)
+    
+    #ブロック関係のリストを作る
+    for _ in range(K):
+        c, d = map(int, input().split())
+        blocks[c-1].append(d-1)
+        blocks[d-1].append(c-1)
+
+    #友達候補の数を数える
+    for i in range(N):
+        #友達候補の数
+        ans = 0
+        #友達候補の数を数える
+        for j in friends[i]:
+            #友達関係にある人の友達候補を数える
+            ans += len(friends[j])
+            #ブロック関係にある人の友達候補を引く
+            for k in blocks[j]:
+                if k in friends[i]:
+                    ans -= 1
+        #友達関係にある人の友達候補を引く
+        for j in friends[i]:
+            ans -= len(friends[j])
+        #ブロック関係にある人の友達候補を引く
+        for j in blocks[i]:
+            ans -= len(friends[j])
+        #友達候補の数を出力
+        print(ans, end=' ')
+    print()
+
+=======
+Suggestion 10
+
+def main():
+    N, M, K = map(int, input().split())
+    #友達関係
+    friend = {}
+    for i in range(M):
+        a, b = map(int, input().split())
+        if a in friend:
+            friend[a].append(b)
+        else:
+            friend[a] = [b]
+
+        if b in friend:
+            friend[b].append(a)
+        else:
+            friend[b] = [a]
+
+    #ブロック関係
+    block = {}
+    for i in range(K):
+        c, d = map(int, input().split())
+        if c in block:
+            block[c].append(d)
+        else:
+            block[c] = [d]
+
+        if d in block:
+            block[d].append(c)
+        else:
+            block[d] = [c]
+
+    #友達候補
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = N - 1
+
+        if i + 1 in friend:
+            ans[i] -= len(friend[i + 1])
+
+        if i + 1 in block:
+            for j in block[i + 1]:
+                if j in friend:
+                    if i + 1 in friend[j]:
+                        ans[i] -= 1
+
+    print(*ans)

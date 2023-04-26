@@ -1,55 +1,133 @@
-#問題文
-#数直線上に N 個の都市があり、i 番目の都市は座標 x_i にあります。
-#あなたの目的は、これら全ての都市を 1 度以上訪れることです。
-#あなたは、はじめに正整数 D を設定します。
-#その後、あなたは座標 X から出発し、以下の移動 1、移動 2 を好きなだけ行います。
-#移動 1: 座標 y から座標 y + D に移動する
-#移動 2: 座標 y から座標 y - D に移動する
-#全ての都市を 1 度以上訪れることのできる D の最大値を求めてください。
-#ここで、都市を訪れるとは、その都市のある座標に移動することです。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ x_i ≦ 10^9
-#x_i はすべて異なる
-#x_1, x_2, ..., x_N ≠ X
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#x_1 x_2 ... x_N
-#
-#出力
-#全ての都市を 1 度以上訪れることのできる D の最大値を出力せよ。
-#
-#入力例 1
-#3 3
-#1 7 11
-#
-#出力例 1
-#2
-#D = 2 と設定すれば次のように移動を行うことですべての都市を訪れることができ、これが最大です。
-#移動 2 を行い、座標 1 に移動する
-#移動 1 を行い、座標 3 に移動する
-#移動 1 を行い、座標 5 に移動する
-#移動 1 を行い、座標 7 に移動する
-#移動 1 を行い、座標 9 に移動する
-#移動 1 を行い、座標 11 に移動する
-#
-#入力例 2
-#3 81
-#33 105 57
-#
-#出力例 2
-#24
-#
-#入力例 3
-#1 1
-#1000000000
-#
-#出力例 3
-#999999999
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = []
+    for i in range(n):
+        d_list.append(abs(x_list[i + 1] - x_list[i]))
+    d = d_list[0]
+    for i in range(1, n):
+        d = gcd(d, d_list[i])
+    print(d)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(X)
+    x_list.sort()
+    D_list = []
+    for i in range(N):
+        D_list.append(x_list[i+1] - x_list[i])
+    D = D_list[0]
+    for i in range(1, N):
+        D = gcd(D, D_list[i])
+    print(D)
+
+=======
+Suggestion 4
+
+def main():
+    N,X = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.append(X)
+    x.sort()
+    d = []
+    for i in range(N):
+        d.append(x[i+1]-x[i])
+    ans = d[0]
+    for i in range(N-1):
+        ans = gcd(ans,d[i+1])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    xl = list(map(int, input().split()))
+
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    ans = abs(x - xl[0])
+    for i in range(1, n):
+        ans = gcd(ans, abs(x - xl[i]))
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.append(X)
+    x.sort()
+    y = []
+    for i in range(N):
+        y.append(x[i + 1] - x[i])
+    ans = y[0]
+    for i in range(N):
+        ans = gcd(ans, y[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = []
+    for i in range(n):
+        d_list.append(x_list[i+1]-x_list[i])
+    d = d_list[0]
+    for i in range(1,n):
+        d = gcd(d,d_list[i])
+    print(d)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = [x_list[i+1] - x_list[i] for i in range(n)]
+    if n == 1:
+        print(d_list[0])
+    else:
+        d = d_list[0]
+        for i in range(n-1):
+            d = min(d, d_list[i+1])
+        print(d)
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if a%b == 0:
+        return(b)
+    else:
+        return(gcd(b, a%b))

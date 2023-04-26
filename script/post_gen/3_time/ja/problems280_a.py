@@ -1,59 +1,131 @@
-#問題文
-#上下左右に広がる H 行 W 列のマス目があり、各マスにはコマが置かれているか、何も置かれていないかのどちらかです。
-#マス目の状態は H 個の長さ W の文字列 S_1, S_2, ..., S_H によって表され、
-#S_i の j 文字目が # のとき上から i 行目かつ左から j 列目のマスにはコマが置かれていることを、
-#S_i の j 文字目が . のとき上から i 行目かつ左から j 列目のマスには何も置かれていないことを表しています。
-#マス目上のマスのうち、コマが置かれているようなものの個数を求めてください。
-#
-#制約
-#1≦ H,W ≦ 10
-#H,W は整数
-#S_i は # と . のみからなる長さ W の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#出力
-#コマが置かれているマスの個数を整数で出力せよ。
-#
-#入力例 1
-#3 5
-##....
-#.....
-#.##..
-#
-#出力例 1
-#3
-#上から 1 行目かつ左から 1 列目のマス
-#上から 3 行目かつ左から 2 列目のマス
-#上から 3 行目かつ左から 3 列目のマス
-#の計 3 つのマスにコマが置かれているため、3 を出力します。
-#
-#入力例 2
-#1 10
-#..........
-#
-#出力例 2
-#0
-#どのマスにもコマは置かれていないため、0 を出力します。
-#
-#入力例 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#出力例 3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    cnt = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    h,w = map(int,input().split())
+    s = [list(input()) for _ in range(h)]
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def count_coma(h, w, s):
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                count += 1
+    return count
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = [list(input()) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] == "#":
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def solve():
+    # H, W = map(int, input().split())
+    # S = [input() for _ in range(H)]
+    # cnt = 0
+    # for i in range(H):
+    #     for j in range(W):
+    #         if S[i][j] == '#':
+    #             cnt += 1
+    # print(cnt)
+    print(sum(row.count('#') for row in [input() for _ in range(int(input().split()[0]))]))
+
+=======
+Suggestion 9
+
+def count_dot(S):
+    count = 0
+    for i in range(len(S)):
+        if S[i] == ".":
+            count += 1
+    return count
+
+H, W = map(int, input().split())
+A = []
+for i in range(H):
+    A.append(input())
+
+count = 0
+for i in range(H):
+    count += count_dot(A[i])
+
+print(count)
+
+=======
+Suggestion 10
+
+def is_even(n):
+    return n % 2 == 0

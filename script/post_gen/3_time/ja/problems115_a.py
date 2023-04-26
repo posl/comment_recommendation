@@ -1,29 +1,102 @@
-#問題文
-#とある世界では、今日は 12 月 D 日です。
-#D = 25 なら Christmas, D = 24 なら Christmas Eve, D = 23 なら Christmas Eve Eve, D = 22 なら Christmas Eve Eve Eve と出力するプログラムを作ってください。
-#
-#制約
-#22 ≦ D ≦ 25
-#D は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#D
-#
-#出力
-#指定された文字列を出力せよ (大文字と小文字は区別される)。
-#
-#入力例 1
-#25
-#
-#出力例 1
-#Christmas
-#
-#入力例 2
-#22
-#
-#出力例 2
-#Christmas Eve Eve Eve
-#単語と単語の間のスペースも出力してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("Christmas")
+    elif D == 24:
+        print("Christmas Eve")
+    elif D == 23:
+        print("Christmas Eve Eve")
+    elif D == 22:
+        print("Christmas Eve Eve Eve")
+
+=======
+Suggestion 2
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("Christmas")
+    elif D == 24:
+        print("Christmas Eve")
+    elif D == 23:
+        print("Christmas Eve Eve")
+    elif D == 22:
+        print("Christmas Eve Eve Eve")
+    else:
+        print("Error")
+
+=======
+Suggestion 3
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("Christmas")
+    elif D == 24:
+        print("Christmas Eve")
+    elif D == 23:
+        print("Christmas Eve Eve")
+    else:
+        print("Christmas Eve Eve Eve")
+
+=======
+Suggestion 4
+
+def main():
+    D = int(input())
+    if D == 25:
+        print('Christmas')
+    elif D == 24:
+        print('Christmas Eve')
+    elif D == 23:
+        print('Christmas Eve Eve')
+    elif D == 22:
+        print('Christmas Eve Eve Eve')
+
+=======
+Suggestion 5
+
+def main():
+    d = int(input())
+    if d == 25:
+        print("Christmas")
+    elif d == 24:
+        print("Christmas Eve")
+    elif d == 23:
+        print("Christmas Eve Eve")
+    else:
+        print("Christmas Eve Eve Eve")
+
+=======
+Suggestion 6
+
+def main():
+    d = int(input())
+    if d == 25:
+        print('Christmas')
+    elif d == 24:
+        print('Christmas Eve')
+    elif d == 23:
+        print('Christmas Eve Eve')
+    else:
+        print('Christmas Eve Eve Eve')
+
+=======
+Suggestion 7
+
+def main():
+    day = int(input())
+    if day == 25:
+        print("Christmas")
+    elif day == 24:
+        print("Christmas Eve")
+    elif day == 23:
+        print("Christmas Eve Eve")
+    elif day == 22:
+        print("Christmas Eve Eve Eve")
+    return

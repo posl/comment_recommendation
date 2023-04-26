@@ -1,63 +1,273 @@
-#問題文
-#空の数列 A があります。
-#クエリが Q 個与えられるので、与えられた順番に処理してください。
-#クエリは次の 3 種類のいずれかです。  
-#1 x ： A に x を追加する。  
-#2 x k ： A の x 以下の要素のうち、大きい方から k 番目の値を出力する。(k は 5 以下)
-#    ただし、A に x 以下の要素が k 個以上存在しないときは -1 と出力する。  
-#3 x k ： A の x 以上の要素のうち、小さい方から k 番目の値を出力する。(k は 5 以下)
-#    ただし、A に x 以上の要素が k 個以上存在しないときは -1 と出力する。  
-#
-#
-#制約
-#1≦ Q ≦ 2× 10^5
-#1≦ x≦ 10^{18}
-#1≦ k≦ 5
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#i 番目のクエリ query_i では、まずクエリの種類 c_i (1,2,3 のいずれか) が与えられる。
-#c_i=1 の場合は x が追加で与えられ、c_i=2,3 の場合は x,k が追加で与えられる。  
-#すなわち、各クエリは以下に示す 3 つの形式のいずれかである。  
-#1 x
-#2 x k
-#3 x k
-#
-#出力
-#c_i=2,3 を満たすクエリの個数を q として q 行出力せよ。
-#j(1≦ j≦ q) 行目では j 番目のそのようなクエリに対する答えを出力せよ。  
-#
-#入力例 1
-#11
-#1 20
-#1 10
-#1 30
-#1 20
-#3 15 1
-#3 15 2
-#3 15 3
-#3 15 4
-#2 100 5
-#1 1
-#2 100 5
-#
-#出力例 1
-#20
-#20
-#30
-#-1
-#-1
-#1
-#query_{1,2,3,4} が終了した段階で、A=(20,10,30,20) となっています。  
-#query_{5,6,7} について、A の 15 以上の要素は (20,30,20) です。
-#このうち小さい方から 1 番目の値は 20 、2 番目の値は 20 、3 番目の値は 30 です。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    Q = int(input())
+    A = []
+    for i in range(Q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        elif query[0] == 2:
+            A.sort()
+            B = [x for x in A if x <= query[1]]
+            B.sort(reverse=True)
+            if len(B) >= query[2]:
+                print(B[query[2]-1])
+            else:
+                print(-1)
+        elif query[0] == 3:
+            A.sort()
+            B = [x for x in A if x >= query[1]]
+            B.sort()
+            if len(B) >= query[2]:
+                print(B[query[2]-1])
+            else:
+                print(-1)
+        else:
+            print("error")
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        elif query[0] == 2:
+            A = sorted(A)
+            B = []
+            for j in range(len(A)):
+                if A[j] <= query[1]:
+                    B.append(A[j])
+            if len(B) < query[2]:
+                print(-1)
+            else:
+                print(B[-query[2]])
+        else:
+            A = sorted(A, reverse=True)
+            B = []
+            for j in range(len(A)):
+                if A[j] >= query[1]:
+                    B.append(A[j])
+            if len(B) < query[2]:
+                print(-1)
+            else:
+                print(B[-query[2]])
+
+=======
+Suggestion 3
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+        elif query[0] == 2:
+            a.sort()
+            a = list(reversed(a))
+            if len(a) >= query[2]:
+                print(a[query[2]-1])
+            else:
+                print(-1)
+        else:
+            a.sort()
+            if len(a) >= query[2]:
+                print(a[query[2]-1])
+            else:
+                print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        elif query[0] == 2:
+            A.sort()
+            A = list(reversed(A))
+            if len(A) >= query[2]:
+                print(A[query[2]-1])
+            else:
+                print("-1")
+        elif query[0] == 3:
+            A.sort()
+            if len(A) >= query[2]:
+                print(A[query[2]-1])
+            else:
+                print("-1")
+        else:
+            print("Error")
+            break
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        elif query[0] == 2:
+            B = sorted([a for a in A if a <= query[1]])
+            if len(B) < query[2]:
+                print(-1)
+            else:
+                print(B[-query[2]])
+        elif query[0] == 3:
+            B = sorted([a for a in A if a >= query[1]])
+            if len(B) < query[2]:
+                print(-1)
+            else:
+                print(B[query[2]-1])
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    Q = int(input())
+    A = []
+    ans = []
+    for i in range(Q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        else:
+            x = query[1]
+            k = query[2]
+            B = [a for a in A if a <= x]
+            B.sort(reverse=True)
+            if len(B) < k:
+                ans.append(-1)
+            else:
+                ans.append(B[k-1])
+    print(*ans, sep='
+
+')
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    read = sys.stdin.buffer.read
+    readline = sys.stdin.buffer.readline
+    readlines = sys.stdin.buffer.readlines
+    N, *A = map(int, rea
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    from bisect import bisect_left, bisect_right
+    Q = int(input())
+    A = []
+    ans = []
+    for i in range(Q):
+        c, *x = map(int, input().split())
+        if c == 1:
+            A.append(x[0])
+        elif c == 2:
+            a = bisect_left(A, x[0])
+            if len(A) - a < x[1]:
+                ans.append(-1)
+            else:
+                ans.append(A[a+x[1]-1])
+        else:
+            a = bisect_right(A, x[0])
+            if a < x[1]:
+                ans.append(-1)
+            else:
+                ans.append(A[a-x[1]])
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    from collections import defaultdict
+    input = sys.stdin.readline
+    Q = int(input())
+    A = []
+    D = defaultdict(int)
+    for i in range(Q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            A.append(query[1])
+            D[query[1]] += 1
+        elif query[0] == 2:
+            A.sort()
+            if len(A) < query[2]:
+                print(-1)
+            else:
+                print(A[query[2]-1])
+        else:
+            A.sort(reverse = True)
+            if len(A) < query[2]:
+                print(-1)
+            else:
+                print(A[query[2]-1])
+
+=======
+Suggestion 10
+
+def main():
+    # 入力
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int,input().split())))
+    # 処理
+    # A = []
+    A = [0] * Q
+    # A = [0] * 10**5
+    # A = [0] * 2*10**5
+    # A = [0] * 10**18
+    # A = [0] * 2*10**18
+    # A = [0] * 10**20
+    # A = [0] * 2*10**20
+    # A = [0] * 10**25
+    # A = [0] * 2*10**25
+    
+    # A = [0] * 10**18
+    # A = [0] * 10**20
+    # A = [0] * 10**30
+    # A = [0] * 10**50
+    # A = [0] * 10**100
+    # A = [0] * 10**1000
+    # A = [0] * 10**10000
+    # A = [0] * 10**100000
+    # A = [0] * 10**1000000
+    # A = [0] * 10**10000000
+    # A = [0] * 10**100000000
+    # A = [0] * 10**1000000000
+    # A = [0] * 10**10000000000
+    # A = [0] * 10**100000000000
+    # A = [0] * 10**1000000000000
+    # A = [0] * 10**10000000000000
+    # A = [0] * 10**100000000000000
+    # A = [0] * 10**1000000000000000
+    # A = [0] * 10**10000000000000000
+    # A = [0] * 10**100000000000000000
+    # A = [0] * 10**1000000000000000000
+    # A = [0] *

@@ -1,70 +1,204 @@
-#問題文
-#長さ N の数列 A=(A_1,A_2,...,A_N) が与えられます。この A に以下を施すことを「操作」と呼びます。
-#まず、 1 ≦ i ≦ N を満たす整数 i を選択する。
-#次に、以下の 2 つのうちどちらかを選択し、実行する。
-#A_i に 1 を加算する。
-#A_i から 1 を減算する。
-#
-#Q 個の質問に答えてください。
-#i 個目の質問は以下です。
-#「操作」を 0 回以上何度でも使って A の要素を全て X_i にする時、必要な「操作」の最小回数を求めてください。
-#
-#制約
-#入力は全て整数
-#1 ≦ N,Q ≦ 2 × 10^5
-#0 ≦ A_i ≦ 10^9
-#0 ≦ X_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#A_1 A_2 ... A_N
-#X_1
-#X_2
-#.
-#.
-#.
-#X_Q
-#
-#出力
-#Q 行にわたって出力せよ。
-#出力のうち i 行目には、 i 個目の質問に対する答えを整数として出力せよ。
-#
-#入力例 1
-#5 3
-#6 11 2 5 5
-#5
-#20
-#0
-#
-#出力例 1
-#10
-#71
-#29
-#A=(6,11,2,5,5) であり、この入力には 3 つの質問が含まれます。
-#1 つ目の質問について、 A に以下のように 10 回の「操作」を施すことで、 A の要素を全て 5 にすることができます。
-#A_1 から 1 減算する。
-#A_2 から 1 減算することを 6 度繰り返す。
-#A_3 に 1 加算することを 3 度繰り返す。
-#9 回以下の「操作」で A の要素を全て 5 にすることはできません。
-#2 つ目の質問について、 A に 71 回の「操作」を施すことで、 A の要素を全て 20 にすることができます。
-#3 つ目の質問について、 A に 29 回の「操作」を施すことで、 A の要素を全て 0 にすることができます。
-#
-#入力例 2
-#10 5
-#1000000000 314159265 271828182 141421356 161803398 0 777777777 255255255 536870912 998244353
-#555555555
-#321654987
-#1000000000
-#789456123
-#0
-#
-#出力例 2
-#3316905982
-#2811735560
-#5542639502
-#4275864946
-#4457360498
-#出力が 32bit 整数に収まらない場合もあります。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    #print(N, Q, A, X)
+    #print(N, Q)
+    #print(A)
+    #print(X)
+
+    # A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小回数を求める
+    # 0 回以上何度でも使って A の要素を全て X にする時、必要な「操作」の最小
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    for x in X:
+        print(sum(abs(a - x) for a in A))
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    ans = [0] * Q
+    for i in range(N):
+        for j in range(Q):
+            ans[j] += abs(A[i] - X[j])
+    print('
+
+'.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    # 累積和をとる
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+
+    # 各 X について、
+    # (1) X 以下の要素の和を S から取り出す
+    # (2) X 以上の要素の和を S から取り出す
+    # (3) 1 と 2 の差
+    # を計算し、それをすべて足したものが答え
+    for x in X:
+        ans = 0
+        for i in range(N + 1):
+            ans += min(S[i], x) * i - S[i]
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    # 0 から 10^9 までの数値の出現回数を数える
+    count = [0] * (10**9 + 1)
+    for a in A:
+        count[a] += 1
+
+    # 0 から 10^9 までの数値の、それまでの数値の出現回数の累積和を求める
+    cumsum = [0] * (10**9 + 1)
+    for i in range(1, 10**9 + 1):
+        cumsum[i] = cumsum[i-1] + count[i-1]
+
+    # 0 から 10^9 までの数値の、それまでの数値の出現回数の累積和を求める
+    cumsum2 = [0] * (10**9 + 1)
+    for i in range(1, 10**9 + 1):
+        cumsum2[i] = cumsum2[i-1] + cumsum[i]
+
+    for x in X:
+        # 0 から x までの数値の出現回数の累積和を求める
+        cumsum3 = [0] * (x + 1)
+        for i in range(1, x + 1):
+            cumsum3[i] = cumsum3[i-1] + count[i]
+
+        # 0 から x までの数値の、それまでの数値の出現回数の累積和を求める
+        cumsum4 = [0] * (x + 1)
+        for i in range(1, x + 1):
+            cumsum4[i] = cumsum4[i-1] + cumsum3[i]
+
+        # 0 から x までの数値の、それまでの数値の出現回数の累積和を求める
+        cumsum5 = [
+
+=======
+Suggestion 6
+
+def main():
+    N,Q = map(int,input().split())
+    A = list(map(int,input().split()))
+    X = [int(input()) for _ in range(Q)]
+    D = [0] * (N + 1)
+    for i in range(N):
+        D[i + 1] = D[i] + A[i]
+    #print(D)
+    for x in X:
+        ans = 0
+        for i in range(N):
+            ans += min(D[i + 1] - D[i],x - D[i])
+        print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    # A_i の値を X_i にするために必要な操作の最小回数を求める
+    # A_i から X_i までの距離を d とすると
+    # d が偶数のときは d // 2 回の操作で A_i を X_i にできる
+    # d が奇数のときは (d + 1) // 2 回の操作で A_i を X_i にできる
+    # d は A_i と X_i の偶奇が異なるときに 1 大きくなる
+    # 偶奇が同じときは 0 になる
+    # d は A_i と X_i の偶奇が異なるときに A_i と X_i の差の半分になる
+    # 偶奇が同じときは A_i と X_i の差になる
+    # d は A_i と X_i の偶奇が異なるときに A_i と X_i の差の半分になる
+    # 偶奇が同じときは A_i と X_i の差になる
+    # A_i と X_i の偶奇が異なるときに A_i と X_i の差の半分になる
+    # 偶奇が同じときは A_i と X_i の差になる
+    # A_i と X_i の偶奇が異なるときに A_i と X_i の差の半分になる
+    # 偶奇が
+
+=======
+Suggestion 8
+
+def main():
+    N,Q = map(int,input().split())
+    A = list(map(int,input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    A.append(10**10)
+    ans = []
+    for x in X:
+        cnt = 0
+        left = 0
+        right = N
+        while left < right:
+            mid = (left+right) // 2
+            if A[mid] <= x:
+                left = mid + 1
+            else:
+                right = mid
+        cnt += (N-left)*x
+        for i in range(left):
+            cnt += x-A[i]
+        ans.append(cnt)
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def main():
+    N,Q=map(int,input().split())
+    A=list(map(int,input().split()))
+    X=[int(input()) for _ in range(Q)]
+    S=sum(A)
+    Ss=[0 for _ in range(N+1)]
+    for i in range(N):
+        Ss[i+1]=Ss[i]+A[i]
+    for x in X:
+        if x>S:
+            print(N*(x-S)+sum([i*(Ss[i]-Ss[i-1]) for i in range(1,N+1)]))
+        else:
+            l,r=0,N
+            while l+1<r:
+                m=(l+r)//2
+                if Ss[m]<=x*m:
+                    l=m
+                else:
+                    r=m
+            print(sum([i*(Ss[i]-Ss[i-1]) for i in range(1,l+1)])+(l+1)*(x*l-Ss[l]))

@@ -1,63 +1,165 @@
-#問題文
-#10^{100}+1 個の村があり、それぞれ村 0, 村 1, ..., 村 10^{100} と番号がついています。
-#0 以上 10^{100}-1 以下の全ての整数 i について、村 i で 1 円を払う事で村 (i+1) に移動することができます。
-#それ以外の移動方法はありません。
-#太郎君は初め K 円を持った状態で村 0 におり、その後、可能な限り大きな番号の村まで進もうとします。
-#太郎君には N 人の友達がいます。i 人目の友達は村 A_i にいて、太郎君が村 A_i に着いたときに B_i 円を太郎君に渡します。
-#太郎君が最終的にたどり着く村の番号を求めてください。  
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i ≦ 10^{18}
-#1 ≦ B_i ≦ 10^9
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_1 B_1
-#:
-#A_N B_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 3
-#2 1
-#5 10
-#
-#出力例 1
-#4
-#太郎君は以下のように動きます:
-#村 0 から村 1 へ 1 円払って移動する。所持金は 2 円となる。
-#村 1 から村 2 へ 1 円払って移動する。所持金は 1 円となる。
-#村 2 で 1 人目の友達から 1 円受け取り、所持金は 2 円となる。
-#村 2 から村 3 へ 1 円払って移動する。所持金は 1 円となる。
-#村 3 から村 4 へ 1 円払って移動する。所持金は 0 円となり、この村には友達もいないため村 4 で止まる。
-#よって、 4 を出力します。
-#
-#入力例 2
-#5 1000000000
-#1 1000000000
-#2 1000000000
-#3 1000000000
-#4 1000000000
-#5 1000000000
-#
-#出力例 2
-#6000000000
-#答えが 32 bit 整数に収まらないことがある事に注意してください。
-#
-#入力例 3
-#3 2
-#5 5
-#2 1
-#2 2
-#
-#出力例 3
-#10
-#同じ村に複数の友達がいる可能性もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    A.sort()
+    B.sort()
+    A.append(10**100)
+    B.append(0)
+    p = 0
+    for i in range(N):
+        if K < A[i]:
+            break
+        p = B[i]
+    print(K + p)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    ab = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        ab.append((a, b))
+    ab.sort()
+    ans = k
+    for i in range(n):
+        a, b = ab[i]
+        if ans < a:
+            break
+        ans += b
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    AB = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        AB.append((A, B))
+    AB.sort()
+    ans = K
+    for i in range(N):
+        A, B = AB[i]
+        if ans < A:
+            break
+        ans += B
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    friend = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        friend.append([A, B])
+    friend.sort()
+    for i in range(N):
+        if K < friend[i][0]:
+            break
+        K += friend[i][1]
+    print(K)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    ans = k
+    for i in range(n):
+        if ans < ab[i][0]:
+            break
+        ans += ab[i][1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    ab = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        ab.append([a,b])
+    ab.sort()
+    for i in range(n):
+        a,b = ab[i]
+        if k < a:
+            break
+        else:
+            k += b
+    print(k)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    for i in range(N):
+        if K >= AB[i][0]:
+            K += AB[i][1]
+        else:
+            break
+    print(K)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort()
+    for a,b in ab:
+        if k < a:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 9
+
+def solve():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+    AB.append([10**100, 0])
+    current = 0
+    for a, b in AB:
+        if current + K < a:
+            break
+        K += b
+        current = a
+    print(current+K)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort(key=lambda x:x[0])
+    ab.append([10**100+1,0])
+    now = 0
+    for a,b in ab:
+        if a-now>k:
+            print(now+k)
+            exit()
+        else:
+            k+=b
+            now = a

@@ -1,54 +1,208 @@
-#問題文
-#栄養ドリンクにレーティング上昇効果があると聞いた高橋くんは、M 本の栄養ドリンクを買い集めることにしました。
-#栄養ドリンクが売られている店は N 軒あり、i 軒目の店では 1 本 A_i 円の栄養ドリンクを B_i 本まで買うことができます。
-#最小で何円あれば M 本の栄養ドリンクを買い集めることができるでしょうか。
-#なお、与えられる入力では、十分なお金があれば M 本の栄養ドリンクを買い集められることが保証されます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N, M ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^5
-#B_1 + ... + B_N ≧ M
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#M 本の栄養ドリンクを買い集めるのに必要な最小の金額を出力せよ。
-#
-#入力例 1
-#2 5
-#4 9
-#2 4
-#
-#出力例 1
-#12
-#12 円あれば 1 軒目の店で 1 本、2 軒目の店で 4 本の栄養ドリンクを購入し、合計 5 本の栄養ドリンクを買い集めることができます。一方、11 円以下では 5 本の栄養ドリンクを買い集めることができません。
-#
-#入力例 2
-#4 30
-#6 18
-#2 5
-#3 10
-#7 9
-#
-#出力例 2
-#130
-#
-#入力例 3
-#1 100000
-#1000000000 100000
-#
-#出力例 3
-#100000000000000
-#出力が 32 ビット整数型におさまらないことがあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    c = []
+    for i in range(n):
+        c.append((a[i], b[i]))
+    c.sort()
+    #print(c)
+    ans = 0
+    for i in range(n):
+        if m >= c[i][1]:
+            ans += c[i][0] * c[i][1]
+            m -= c[i][1]
+        else:
+            ans += c[i][0] * m
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    # AとBを結合して、Aの昇順、Bの昇順にソートする。
+    AB = sorted(zip(A, B))
+    # print(AB)
+    # 合計金額
+    total = 0
+    # 購入済みの本数
+    count = 0
+    for a, b in AB:
+        if count + b < M:
+            total += a * b
+            count += b
+        else:
+            total += a * (M - count)
+            break
+    print(total)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    ab = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        ab.append((a, b))
+    ab.sort()
+    ans = 0
+    for a, b in ab:
+        if m > b:
+            ans += a * b
+            m -= b
+        else:
+            ans += a * m
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    n, m = map(int, input().split())
+    drinks = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        drinks.append((a, b))
+    drinks.sort()
+    count = 0
+    price = 0
+    for drink in drinks:
+        if count + drink[1] <= m:
+            count += drink[1]
+            price += drink[0] * drink[1]
+        else:
+            price += drink[0] * (m - count)
+            break
+    print(price)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    drink = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        drink.append((a, b))
+    drink.sort()
+    ans = 0
+    for i in range(n):
+        if m >= drink[i][1]:
+            ans += drink[i][0] * drink[i][1]
+            m -= drink[i][1]
+        else:
+            ans += drink[i][0] * m
+            m -= m
+        if m == 0:
+            break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for a, b in AB:
+        if b >= M:
+            ans += a * M
+            break
+        else:
+            ans += a * b
+            M -= b
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    ans = 0
+    for i in range(n):
+        if m == 0:
+            break
+        if ab[i][1] >= m:
+            ans += ab[i][0] * m
+            m = 0
+        else:
+            ans += ab[i][0] * ab[i][1]
+            m -= ab[i][1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    shop = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        shop.append([a,b])
+    shop.sort()
+    ans = 0
+    for i in range(n):
+        if m <= 0:
+            break
+        if m >= shop[i][1]:
+            ans += shop[i][0] * shop[i][1]
+            m -= shop[i][1]
+        else:
+            ans += shop[i][0] * m
+            m = 0
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(N)]
+    AB.sort()
+    ans = 0
+    for i in range(N):
+        if AB[i][1] < M:
+            ans += AB[i][0] * AB[i][1]
+            M -= AB[i][1]
+        else:
+            ans += AB[i][0] * M
+            break
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort()
+    ans = 0
+    cnt = 0
+    for a,b in ab:
+        if cnt + b < m:
+            ans += a*b
+            cnt += b
+        else:
+            ans += a*(m-cnt)
+            break
+    print(ans)

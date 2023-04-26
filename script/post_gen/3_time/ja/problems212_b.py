@@ -1,42 +1,153 @@
-#問題文
-#4 桁の暗証番号 X_1X_2X_3X_4 が与えられます。
-#番号は先頭の桁が 0 であることもあり得ます。
-#暗証番号は以下のいずれかの条件をみたすとき弱い暗証番号と呼ばれます。
-#4 桁とも同じ数字である。
-#1≦ i≦ 3 をみたす任意の整数 i について、 X_{i+1} が、 X_i の次の数字である。
-#ただし、 0≦ j≦ 8 について j の次の数字は j+1 であり、 9 の次の数字は 0 である。 
-#与えられた暗証番号が弱い暗証番号ならば Weak を、そうでないならば Strong を出力してください。
-#
-#制約
-#0 ≦ X_1, X_2, X_3, X_4 ≦ 9
-#X_1, X_2, X_3, X_4 は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X_1X_2X_3X_4
-#
-#出力
-#与えられた暗証番号が弱い暗証番号ならば Weak を、そうでないならば Strong を出力せよ。
-#
-#入力例 1
-#7777
-#
-#出力例 1
-#Weak
-#4 桁ともすべて 7 であるため、 1 つめの条件をみたしており、弱い暗証番号です。
-#
-#入力例 2
-#0112
-#
-#出力例 2
-#Strong
-#1 桁目と 2 桁目が異なっており、 3 桁目は 2 桁目の次の数字ではないため、どちらの条件もみたしていません。
-#
-#入力例 3
-#9012
-#
-#出力例 3
-#Weak
-#9 の次の数字が 0 であることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = input()
+    if X[0] == X[1] and X[1] == X[2] and X[2] == X[3]:
+        print("Weak")
+    elif int(X[0]) + 1 == int(X[1]) and int(X[1]) + 1 == int(X[2]) and int(X[2]) + 1 == int(X[3]):
+        print("Weak")
+    elif int(X[0]) == 9 and int(X[1]) == 0 and int(X[2]) == 1 and int(X[3]) == 2:
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 2
+
+def main():
+    X = input()
+    if X[0] == X[1] and X[1] == X[2] and X[2] == X[3]:
+        print("Weak")
+    elif int(X[0]) + 1 == int(X[1]) and int(X[1]) + 1 == int(X[2]) and int(X[2]) + 1 == int(X[3]):
+        print("Weak")
+    elif X[0] == "9" and X[1] == "0" and X[2] == "1" and X[3] == "2":
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    if X[0] == X[1] == X[2] == X[3] or (int(X[0]) + 1) % 10 == int(X[1]) and (int(X[1]) + 1) % 10 == int(X[2]) and (int(X[2]) + 1) % 10 == int(X[3]):
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 4
+
+def main():
+    X = input()
+    if X[0] == X[1] == X[2] == X[3]:
+        print("Weak")
+    elif X[0] == X[1] and X[1] == X[2] and X[2] == str(int(X[3]) - 1):
+        print("Weak")
+    elif X[0] == X[1] and X[1] == str(int(X[2]) - 1) and X[2] == str(int(X[3]) - 1):
+        print("Weak")
+    elif X[0] == str(int(X[1]) - 1) and X[1] == str(int(X[2]) - 1) and X[2] == str(int(X[3]) - 1):
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2] == s[3]:
+        print('Weak')
+    elif int(s[0]) == (int(s[1]) - 1) % 10 and int(s[1]) == (int(s[2]) - 1) % 10 and int(s[2]) == (int(s[3]) - 1) % 10:
+        print('Weak')
+    else:
+        print('Strong')
+
+=======
+Suggestion 6
+
+def main():
+    X = input()
+    if X[0] == X[1] == X[2] == X[3]:
+        print('Weak')
+    elif int(X[0]) == (int(X[1]) + 1) % 10 and int(X[1]) == (int(X[2]) + 1) % 10 and int(X[2]) == (int(X[3]) + 1) % 10:
+        print('Weak')
+    else:
+        print('Strong')
+
+=======
+Suggestion 7
+
+def main():
+    num = input()
+    if num[0] == num[1] == num[2] == num[3]:
+        print("Weak")
+    elif num[0] == num[1] == num[2] or num[1] == num[2] == num[3]:
+        print("Weak")
+    elif num[0] == str(int(num[1]) - 1) == str(int(num[2]) - 2) == str(int(num[3]) - 3):
+        print("Weak")
+    elif num[0] == str(int(num[1]) - 1) == str(int(num[2]) - 2) == str(int(num[3]) + 7):
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 8
+
+def main():
+    X = input()
+    if X[0] == X[1] == X[2] == X[3]:
+        print('Weak')
+        exit()
+    if (int(X[0]) + 1) % 10 == int(X[1]) and (int(X[1]) + 1) % 10 == int(X[2]) and (int(X[2]) + 1) % 10 == int(X[3]):
+        print('Weak')
+        exit()
+    print('Strong')
+
+=======
+Suggestion 9
+
+def main():
+    X = input()
+    X = list(map(int, X))
+    if X[0] == X[1] == X[2] == X[3]:
+        print("Weak")
+        return
+    if X[0] == 9 and X[1] == 0:
+        if X[2] == 1 and X[3] == 2:
+            print("Weak")
+            return
+    if X[0]+1 == X[1] and X[1]+1 == X[2] and X[2]+1 == X[3]:
+        print("Weak")
+        return
+    print("Strong")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    # 標準入力から暗証番号を取得
+    passcode = input()
+
+    # 暗証番号の4桁がすべて同じ数字の場合、弱い暗証番号とする
+    if passcode[0] == passcode[1] and passcode[1] == passcode[2] and passcode[2] == passcode[3]:
+        print("Weak")
+        return
+
+    # 暗証番号の4桁が連続している場合、弱い暗証番号とする
+    if passcode[1] == str(int(passcode[0]) + 1) and passcode[2] == str(int(passcode[1]) + 1) and passcode[3] == str(int(passcode[2]) + 1):
+        print("Weak")
+        return
+
+    # 暗証番号の4桁が連続している場合、弱い暗証番号とする
+    if passcode[0] == "9" and passcode[1] == "0" and passcode[2] == "1" and passcode[3] == "2":
+        print("Weak")
+        return
+
+    # どちらにも該当しない場合、強い暗証番号とする
+    print("Strong")
+    return

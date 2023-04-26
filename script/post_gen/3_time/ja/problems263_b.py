@@ -1,36 +1,136 @@
-#問題文
-#N 人の人がいます。N 人の人には人 1, 人 2,..., 人 N と番号がついています。
-#人 i(2 ≦ i ≦ N) の親は人 P_i です。ここで、P_i < i が保証されます。
-#人 1 が人 N の何代前か求めてください。
-#
-#制約
-#2 ≦ N ≦ 50
-#1 ≦ P_i < i(2 ≦ i ≦ N)
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#P_2 P_3 ... P_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#3
-#1 2
-#
-#出力例 1
-#2
-#人 2 は人 3 の親であるため、人 3 の 1 代前です。
-#人 1 は人 2 の親であるため、人 3 の 2 代前です。
-#よって解は 2 です。
-#
-#入力例 2
-#10
-#1 2 3 4 5 6 7 8 9
-#
-#出力例 2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if p[i] == n:
+            ans += 1
+        else:
+            ans += 0
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    for i in range(n):
+        p[i] -= 1
+    ans = 0
+    for i in range(n):
+        c = 0
+        j = i
+        while j != -1:
+            j = p[j]
+            c += 1
+        ans = max(ans, c)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        ans += 1
+        if p[i] == n:
+            break
+        else:
+            n = p[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 1
+    for i in range(1, N):
+        if P[i] == N:
+            ans += 1
+            N = i + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        ans += 1
+        if p[i] > p[i+1]:
+            ans = 0
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        ans = max(ans, dfs(p, i))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(1,n):
+        if p[i-1] == n:
+            ans = i
+            break
+        else:
+            continue
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = 1
+        j = p[i]
+        while j > 0:
+            ans[i] += 1
+            j = p[j - 1]
+    print(max(ans))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        ans = max(ans, cnt(p, i + 1))
+
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_input_data():
+    n = int(input())
+    p = list(map(int, input().split()))
+    return n, p

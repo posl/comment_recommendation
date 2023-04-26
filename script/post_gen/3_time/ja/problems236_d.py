@@ -1,70 +1,160 @@
-#問題文
-#1, 2, ..., 2N と番号づけられた 2N 人の人が舞踏会に参加します。
-#彼らは N 個の 2 人組にわかれてダンスを踊ります。
-#2 人組を構成する人のうち、番号の小さい方の人が人 i 、番号の大きい方の人が人 j のとき、
-#その 2 人組の「相性」は A_{i, j} です。
-#N 個の 2 人組の相性がそれぞれ B_1, B_2, ..., B_N であるとき、
-#「舞踏会全体の楽しさ」はそれらのビットごとの排他的論理和である B_1 ⊕ B_2 ⊕ ... ⊕ B_N です。
-#「 2N 人の参加者が N 個の 2 人組に分かれる方法」を自由に選べるとき、「舞踏会全体の楽しさ」としてあり得る最大値を出力してください。
-#
-#制約
-#1 ≦ N ≦ 8
-#0 ≦ A_{i, j} < 2^{30}
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_{1, 2} A_{1, 3} A_{1, 4} ... A_{1, 2N}
-#A_{2, 3} A_{2, 4} ... A_{2, 2N}
-#A_{3, 4} ... A_{3, 2N}
-#.
-#.
-#.
-#A_{2N-1, 2N}
-#
-#出力
-#舞踏会全体の楽しさとしてあり得る最大値を出力せよ。
-#
-#入力例 1
-#2
-#4 0 1
-#5 3
-#2
-#
-#出力例 1
-#6
-#人 i と人 j からなる 2 人組を {i, j} で表します。
-#4 人が 2 個の 2 人組にわかれる方法は下記の 3 通りです。
-#{1, 2}, {3, 4} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 2} ⊕ A_{3, 4} = 4 ⊕ 2 = 6 です。
-#{1, 3}, {2, 4} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 3} ⊕ A_{2, 4} = 0 ⊕ 3 = 3 です。
-#{1, 4}, {2, 3} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 4} ⊕ A_{2, 3} = 1 ⊕ 5 = 4 です。
-#よって、舞踏会全体の楽しさとしてあり得る最大値は 6 です。
-#
-#入力例 2
-#1
-#5
-#
-#出力例 2
-#5
-#人 1 と人 2 からなる 2 人組のみが作られ、このときの舞踏会全体の楽しさは 5 です。
-#
-#入力例 3
-#5
-#900606388 317329110 665451442 1045743214 260775845 726039763 57365372 741277060 944347467
-#369646735 642395945 599952146 86221147 523579390 591944369 911198494 695097136
-#138172503 571268336 111747377 595746631 934427285 840101927 757856472
-#655483844 580613112 445614713 607825444 252585196 725229185
-#827291247 105489451 58628521 1032791417 152042357
-#919691140 703307785 100772330 370415195
-#666350287 691977663 987658020
-#1039679956 218233643
-#70938785
-#
-#出力例 3
-#1073289207
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N)]
+    dp[0][0] = A[0][0]
+    for i in range(1, N):
+        for j in range(1 << i):
+            for k in range(i):
+                if (j >> k) & 1:
+                    dp[i][j] = max(dp[i][j], dp[i - 1][j - (1 << k)] + A[i][k])
+            dp[i][j] += A[i][i]
+    print(dp[N - 1][(1 << N) - 1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [list(map(int,input().split())) for _ in range(N)]
+    B = []
+    for i in range(N):
+        for j in range(i+1,N):
+            B.append(A[i][j-i-1])
+    dp = [0]*(1<<N)
+    for i in range(1<<N):
+        for j in range(N):
+            if not i&(1<<j):
+                dp[i|(1<<j)] = max(dp[i|(1<<j)],dp[i]^B[j])
+    print(dp[-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(2*N-1)]
+    B = [0]*N
+    for i in range(N):
+        for j in range(2*N-1):
+            B[i] ^= A[j][i]
+    print(*B)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        ans ^= A[i][i + 1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    B = [0] * N
+    for i in range(N):
+        for j in range(i + 1, N):
+            B[i] ^= A[j][i]
+
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(1 << N):
+            if dp[i][j] == 1:
+                dp[i + 1][j] = 1
+                dp[i + 1][j ^ B[i]] = 1
+
+    print((1 << N) - dp[-1][-1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    b = [0] * (1 << n)
+    for i in range(1 << n):
+        for j in range(n):
+            if (i >> j) & 1:
+                for k in range(j + 1, n):
+                    if (i >> k) & 1:
+                        b[i] ^= a[j][k]
+    dp = [0] * (1 << n)
+    for i in range(1 << n):
+        for j in range(i):
+            dp[i] = max(dp[i], dp[i ^ j] + b[j])
+    print(dp[-1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # 2N人の参加者がN個の2人組に分かれる方法
+    # 人iと人jからなる2人組を{i, j}で表す
+    # 2人組を構成する人のうち、番号の小さい方の人が人i、番号の大きい方の人が人jのとき、
+    # その2人組の「相性」はA_{i, j}です。
+    # N個の2人組の相性がそれぞれB_1, B_2, ..., B_Nであるとき、
+    # 「舞踏会全体の楽しさ」はそれらのビットごとの排他的論理和であるB_1 ⊕ B_2 ⊕ ... ⊕ B_Nです。
+    # 「2N人の参加者がN個の2人組に分かれる方法」を自由に選べるとき、「舞踏会全体の楽しさ」としてあり得る最大値を出力してください。
+
+    # 2人組を構成する人のうち、番号の小さい方の人が人i、番号の大きい方の人が人jのとき、
+    # その2人組の「相性」はA_{i, j}です。
+    # A_{i, j} = A_{j, i} であるので、A[i][j] = A[j][i] である
+
+    # 2N人の参加者がN個の2人組に分かれる方法
+    # 2N人の参加者がN個の2人組に分かれる方法は、N個の2人組に分かれる方法を決めることで決まる
+    # 2人組を構成
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                ans ^= A[i][j]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    # A[i][j] = A[j][i]
+    for i in range(N):
+        for j in range(i):
+            A[i][j] = A[j][i]
+    # dp[i][j]: i番目までの人がj番目までの2人組を選んだときの最大値
+    # dp[i][j] = max(dp[i-1][j], dp[i-1][j-1] ^ A[i-1][j-1])
+    dp = [[0] * (N+1) for _ in range(N+1)]
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-1] ^ A[i-1][j-1])
+    print(dp[N][N])
+
+=======
+Suggestion 10
+
+def input_list():
+    return list(map(int, input().split()))

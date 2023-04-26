@@ -1,54 +1,201 @@
-#問題文
-#高橋君はゲームの中で洞窟を探索しています。
-#洞窟は N 個の部屋が一列に並んだ構造であり、入り口から順に部屋 1,2,...,N と番号がついています。  
-#最初、高橋君は部屋 1 におり、持ち時間 は T です。
-#各 1 ≦ i ≦ N-1 について、持ち時間を A_i 消費することで、部屋 i から部屋 i+1 へ移動することができます。これ以外に部屋を移動する方法はありません。
-#また、持ち時間が 0 以下になるような移動は行うことができません。
-#洞窟内には M 個のボーナス部屋があります。i 番目のボーナス部屋は部屋 X_i であり、この部屋に到達すると持ち時間が Y_i 増加します。
-#高橋君は部屋 N にたどりつくことができますか？
-#
-#制約
-#2 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-2
-#1 ≦ T ≦ 10^9
-#1 ≦ A_i ≦ 10^9 
-#1 < X_1 < ... < X_M < N
-#1 ≦ Y_i ≦ 10^9
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M T
-#A_1 A_2 ... A_{N-1}
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_M Y_M
-#
-#出力
-#高橋君が部屋 N にたどりつくことができるなら Yes を、できないなら No を出力せよ。
-#
-#入力例 1
-#4 1 10
-#5 7 5
-#2 10
-#
-#出力例 1
-#Yes
-#高橋君は最初、部屋 1 にいて持ち時間は 10 です。
-#持ち時間を 5 消費して部屋 2 に移動します。持ち時間は 5 になります。その後、持ち時間が 10 増え 15 になります。
-#持ち時間を 7 消費して部屋 3 に移動します。持ち時間は 8 になります。
-#持ち時間を 5 消費して部屋 4 に移動します。持ち時間は 3 になります。
-#
-#入力例 2
-#4 1 10
-#10 7 5
-#2 10
-#
-#出力例 2
-#No
-#部屋 1 から部屋 2 へ移動することができません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    
+    time = T
+    for i in range(N-1):
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            return
+        if (i+1) in X:
+            time += Y[X.index(i+1)]
+            if time > T:
+                time = T
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    
+    t = T
+    for i in range(N-1):
+        t -= A[i]
+        if t <= 0:
+            print("No")
+            exit()
+        if i+1 in X:
+            t += Y[X.index(i+1)]
+            if t > T:
+                t = T
+
+    print("Yes")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    t = T
+    for i in range(N-1):
+        t -= A[i]
+        if t <= 0:
+            print("No")
+            exit()
+        if i+1 in X:
+            t += Y[X.index(i+1)]
+            if t > T:
+                t = T
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(M)]
+    time = T
+    now = 0
+    for i in range(N-1):
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            return
+        for j in range(M):
+            if XY[j][0] == i+1:
+                time += XY[j][1]
+                break
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    n, m, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    xy = [0] * m
+    for i in range(m):
+        xy[i] = list(map(int, input().split()))
+    for i in range(m):
+        t = t - (xy[i][0] - xy[i-1][0]) - xy[i][1]
+    if t <= 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 6
+
+def solve():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(M)]
+    cur = T
+    for i in range(N-1):
+        cur -= A[i]
+        if cur <= 0:
+            print('No')
+            exit()
+        cur += A[i]
+        for x, y in XY:
+            if i+1 == x:
+                cur = min(cur + y, T)
+    print('Yes')
+
+=======
+Suggestion 7
+
+def solve():
+    N,M,T = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(M)]
+    now = 0
+    for x,y in XY:
+        now += A[x-1]
+        now = min(now+T-y,T)
+    now += A[N-2]
+    if now >= T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N,M,T = map(int,input().split())
+    A = list(map(int,input().split()))
+    XY = [list(map(int,input().split())) for i in range(M)]
+
+    time = T
+    for i in range(N-1):
+        time -= A[i]
+        if time <= 0:
+            print("No")
+            exit()
+        for j in range(M):
+            if XY[j][0] == i+1:
+                time += XY[j][1]
+                break
+        if time > T:
+            time = T
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n, m, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    xy = [list(map(int, input().split())) for _ in range(m)]
+    cur = t
+    for i in range(n-1):
+        cur -= a[i]
+        if cur <= 0:
+            print('No')
+            exit()
+        cur = min(cur + xy[i][1], t)
+    print('Yes')
+
+=======
+Suggestion 10
+
+def func(n, m, t, a, xy):
+    for i in range(n-1):
+        t -= a[i]
+        if t <= 0:
+            return False
+        for j in range(m):
+            if xy[j][0] == i+1:
+                t += xy[j][1]
+    return True

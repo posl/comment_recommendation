@@ -1,67 +1,155 @@
-#問題文
-#1 から N までの番号がついた N 個の数列が与えられます。
-#数列 i は、長さが L_i で j (1 ≦ j ≦ L_i) 番目の要素が a_{i,j} であるような数列です。
-#数列 i と 数列 j は、 L_i = L_j かつすべての k (1 ≦ k ≦ L_i) に対して a_{i,k} = a_{j,k} が成り立つ時に同じであるとみなします。
-#同じ数列は 1 種類として数えるとき、数列 1 から 数列 N の中に全部で何種類の数列がありますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9} (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#すべての数列の要素の個数の和、すなわち sum_{i=1}^N L_i は 2 × 10^5 を超えない。
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#数列の種類数を出力せよ。
-#
-#入力例 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#出力例 1
-#3
-#入力例 1で与えられている数列は以下の 4 個です。
-#数列 1 : (1, 2)
-#数列 2 : (1, 1)
-#数列 3 : (2, 1)
-#数列 4 : (1, 2) 
-#このうち数列 1 と数列 4 は同じ数列で、それ以外は互いに異なる数列なので全部で 3 種類の数列があります。
-#
-#入力例 2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#出力例 2
-#4
-#入力例 2で与えられている数列は以下の 5 個です。
-#数列 1 : (1)
-#数列 2 : (1)
-#数列 3 : (2)
-#数列 4 : (1, 1) 
-#数列 5 : (1, 1, 1) 
-#
-#入力例 3
-#1
-#1 1
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        l = list(map(int,input().split()))
+        l.pop(0)
+        d.setdefault(tuple(l),0)
+        d[tuple(l)] += 1
+    print(len(d))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort(key=lambda x: x[1:])
+    cnt = 1
+    for i in range(1, n):
+        if l[i] != l[i - 1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l = [tuple(x) for x in l]
+    print(len(set(l)))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    L.sort()
+    #print(L)
+    count = 1
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        L, *a = map(int, input().split())
+        A.append(a)
+    A.sort()
+    A.append([])
+    ans = 0
+    for i in range(N):
+        if A[i] != A[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    l = []
+    for _ in range(n):
+        l.append(list(map(int, input().split())))
+    l = sorted(l, key=lambda x: x[1:])
+    ans = 1
+    for i in range(n-1):
+        if l[i] != l[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    #print(A)
+    A.sort()
+    #print(A)
+    count = 1
+    for i in range(1, N):
+        if A[i] != A[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    data = []
+    for i in range(N):
+        data.append(list(map(int, input().split())))
+    data.sort()
+    #print(data)
+    count = 1
+    for i in range(N-1):
+        if data[i] == data[i+1]:
+            continue
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    L.sort()
+    L.insert(0, [0, 0])
+    ans = 1
+    for i in range(1, N+1):
+        if L[i] != L[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append([int(x) for x in input().split()])
+    L.sort()
+    L.append([0,0])
+    count = 1
+    for i in range(N):
+        if L[i] != L[i+1]:
+            count += 1
+    print(count)

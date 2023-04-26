@@ -1,41 +1,148 @@
-#問題文
-#数列 a={a_1,a_2,a_3,......} は、以下のようにして定まります。
-#初項 s は入力で与えられる。
-#関数 f(n) を以下のように定める: n が偶数なら f(n) = n/2、n が奇数なら f(n) = 3n+1。
-#i = 1 のとき a_i = s、i > 1 のとき a_i = f(a_{i-1}) である。
-#このとき、次の条件を満たす最小の整数 m を求めてください。
-#a_m = a_n (m > n) を満たす整数 n が存在する。
-#
-#制約
-#1 ≦ s ≦ 100
-#入力はすべて整数である。
-#a のすべての要素、および条件を満たす最小の m は 1000000 以下となることが保証される。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#s
-#
-#出力
-#条件を満たす最小の整数 m を出力してください。
-#
-#入力例 1
-#8
-#
-#出力例 1
-#5
-#a={8,4,2,1,4,2,1,4,2,1,......} です。a_5=a_2 なので、答えは 5 です。
-#
-#入力例 2
-#7
-#
-#出力例 2
-#18
-#a={7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1,4,2,1,......} です。
-#
-#入力例 3
-#54
-#
-#出力例 3
-#114
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+=======
+Suggestion 2
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    a.append(f(a[-1]))
+    if a[-1] in a[:-1]:
+        print(len(a))
+        break
+
+この問題、解いたことなかったので解いてみました。
+
+a = [s] で初項をリストに入れて、while True で無限ループさせています。
+
+while True: の中で、a.append(f(a[-1])) でリストの最後尾に a[-1] を f に入れた値を追加しています。
+
+そして、if a[-1] in a[:-1]: でリストの最後尾の値がリストの最後尾以外の値に含まれているかどうかを判定しています。
+
+含まれていれば、break で無限ループを抜けます。
+
+そして、print(len(a)) でリストの長さを出力しています。
+
+これで、条件を満たす最小の整数 m を求めるこ�
+
+=======
+Suggestion 3
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    a.append(f(a[-1]))
+    if a.count(a[-1]) > 1:
+        break
+print(len(a))
+
+=======
+Suggestion 4
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    a.append(f(a[-1]))
+    if a.count(a[-1]) > 1:
+        print(len(a) - 1)
+        break
+
+=======
+Suggestion 5
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    a.append(f(a[i - 1]))
+    if a[i] in a[:i]:
+        print(a.index(a[i]) + 1)
+        break
+    i += 1
+
+=======
+Suggestion 6
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    a.append(f(a[i - 1]))
+    if len(a) != len(set(a)):
+        break
+    i += 1
+print(len(a))
+
+=======
+Suggestion 7
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+
+while True:
+    a.append(f(a[-1]))
+    if a[-1] in a[:-1]:
+        print(len(a))
+        break
+
+=======
+Suggestion 8
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while a[i-1] not in a[0:i-1]:
+    a.append(f(a[i-1]))
+    i += 1
+print(i)

@@ -1,33 +1,50 @@
-#問題文
-#縦 A ヤード、横 B ヤードの畑がある. 農夫ジョンは, 畑の内部に, 畑の上端と下端を結ぶ縦方向の幅 1 ヤードの道, 畑の左端と畑の右端を結ぶ横方向の幅 1 ヤードの道を作った. 畑は下図のようになっている. (灰色の部分が道)
-#さて, 道を除いた畑の面積は, 何平方ヤードだろうか? 求めなさい.  
-#
-#注意
-#道の位置が変わっても, 道を除く畑の面積が変わらないことが証明できます.  
-#
-#制約
-#A は 2 以上 100 以下の整数
-#B は 2 以上 100 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#A B
-#
-#出力
-#道を除いた畑の面積 (平方ヤード) を出力しなさい.  
-#
-#入力例 1
-#2 2
-#
-#出力例 1
-#1
-#この場合, 面積は 1 平方ヤードになる.  
-#
-#入力例 2
-#5 7
-#
-#出力例 2
-#24
-#この場合, 面積は 24 平方ヤードになる.  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(a*b - a - b + 1)
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    print((a-1)*b+(b-1)*a)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(a*b-1)
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int,input().split())
+    print(A*B-1)
+
+=======
+Suggestion 5
+
+def area(a, b):
+    return a * b - (a + b) + 1
+
+=======
+Suggestion 6
+
+def area(a,b):
+    return a*b-1
+
+a,b=map(int,input().split())
+print(area(a,b))
+
+=======
+Suggestion 7
+
+def get_area(a, b):
+    return a * b - (a + b) + 1

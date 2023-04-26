@@ -1,34 +1,35 @@
-#問題文
-#高橋君はペーパークイズを解いています。高橋君はすらすらと解いていき、残すは最終問題のみとなりました。
-#この問題は、答えが 1,2,3 のいずれかである 3 択問題です。
-#高橋君は超能力によって、A と B が誤答であることがわかりました。
-#この問題の答えを出力してください。
-#
-#制約
-#A,B は 1,2,3 のいずれか
-#A と B は異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A
-#B
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1
-#
-#出力例 1
-#2
-#1,2,3 のうち、3 でも 1 でもないのは 2 です。
-#
-#入力例 2
-#1
-#2
-#
-#出力例 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A = int(input())
+    B = int(input())
+    print(6 - A - B)
+
+=======
+Suggestion 2
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = 6 - A - B
+    print(C)
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    b = int(input())
+    print(6 - a - b)
+
+=======
+Suggestion 4
+
+def main():
+    # A, B = map(int, input().split())
+    A = int(input())
+    B = int(input())
+    print(6 - A - B)

@@ -1,51 +1,117 @@
-#問題文
-#AtCoder 鉄道のとある路線には N 個の駅が存在し、始点から終点に向かって i  (1 ≦ i ≦ N) 番目の駅の名前は S_i です。
-#普通列車は全ての駅に止まりますが、急行列車は全ての駅に止まるとは限りません。具体的には、急行列車は M  (M ≦ N) 個の駅にのみ止まり、j  (1 ≦ j ≦ M) 番目に止まる駅の名前は T_j です。
-#ただし、T_1 = S_1 かつ T_M = S_N、すなわち急行列車は始点と終点の両方に止まることが保証されます。
-#N 個の駅それぞれについて、その駅に急行列車が止まるかどうか判定してください。
-#
-#制約
-#2 ≦ M ≦ N ≦ 10^5
-#N, M は整数
-#S_i  (1 ≦ i ≦ N) は英小文字のみからなる 1 文字以上 10 文字以下の文字列
-#S_i ≠ S_j  (i ≠ j)
-#T_1 = S_1 かつ T_M = S_N
-#(T_1, ..., T_M) は (S_1, ..., S_N) から 0 個以上の文字列を選んで取り除き、残った文字列を元の順序で並べることで得られる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1 ... S_N
-#T_1 ... T_M
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、始点から終点に向かって i 番目の駅に急行列車が止まるなら Yes、そうでないなら No と出力せよ。
-#
-#入力例 1
-#5 3
-#tokyo kanda akiba okachi ueno
-#tokyo akiba ueno
-#
-#出力例 1
-#Yes
-#No
-#Yes
-#No
-#Yes
-#
-#入力例 2
-#7 7
-#a t c o d e r
-#a t c o d e r
-#
-#出力例 2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#急行列車が全ての駅に止まることもあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    for i in range(N):
+        if S[i] in T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    for i in range(N):
+        if S[i] in T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    s = input().split()
+    t = input().split()
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    S = set(input().split())
+    T = set(input().split())
+    for i in range(1, N+1):
+        if S[i-1] in T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    set_T = set(T)
+    for s in S:
+        if s in set_T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    #print(N, M)
+    #print(S)
+    #print(T)
+    #急行列車が止まる駅のリストを作成
+    stop = []
+    for i in range(M):
+        stop.append(T[i])
+    #print(stop)
+    #急行列車が止まるかどうか判定
+    for i in range(N):
+        if S[i] in stop:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    # print(N, M)
+    # print(S)
+    # print(T)
+
+    # 急行列車が止まる駅を集める
+    stops = []
+    for i in range(M):
+        # print(T[i])
+        for j in range(N):
+            # print(S[j])
+            if T[i] == S[j]:
+                stops.append(j)
+    # print(stops)
+
+    # 駅の一覧を出力
+    for i in range(N):
+        if i in stops:
+            print('Yes')
+        else:
+            print('No')

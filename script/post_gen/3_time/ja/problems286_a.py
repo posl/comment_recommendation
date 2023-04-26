@@ -1,53 +1,110 @@
-#問題文
-#長さ N の数列 A=(A_1,A_2,...,A_N) および正整数 P,Q,R,S が与えられます。
-#ここで、P,Q,R,S は、1≦ P≦ Q<R≦ S ≦ N および Q-P=S-R をみたしています。
-#数列 A の P 番目から Q 番目の項までと R 番目から S 番目の項までを入れ替えた数列を B=(B_1, B_2,..., B_N) とします。
-#数列 B を出力してください。
-#
-#制約
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N P Q R S
-#A_1 A_2 ... A_N
-#
-#出力
-#B_1, B_2,..., B_N を空白区切りで出力せよ。
-#
-#入力例 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#出力例 1
-#5 6 7 4 1 2 3 8
-#数列 A=(1,2,3,4,5,6,7,8) の 1 番目から 3 番目の項 (1,2,3) と 5 番目から 7 番目までの項 (5,6,7) を
-#入れ替えると, B=(5,6,7,4,1,2,3,8) となります。 よってこれを空白区切りで出力します。
-#
-#入力例 2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#出力例 2
-#2 1 1 2 1
-#数列には同じ整数が複数回現れる事もあります。
-#
-#入力例 3
-#2 1 1 2 2
-#50 100
-#
-#出力例 3
-#100 50
-#
-#入力例 4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#出力例 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[R-1:S] + A[Q-1:R-1] + A[S:]
+    print(*B)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A[:P-1] + A[R-1:S] + A[Q-1:R-1] + A[P-1:Q-1] + A[S:]
+    print(*B)
+
+=======
+Suggestion 3
+
+def main():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = a[p-1:q] + a[r-1:s]
+    for i in range(n):
+        if i < p-1 or s <= i:
+            b.append(a[i])
+    print(*b)
+
+=======
+Suggestion 4
+
+def main():
+    N,P,Q,R,S = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = A[:P-1]+A[R-1:S]+A[Q:S-1]+A[P-1:Q-1]+A[S:]
+    print(*B)
+
+=======
+Suggestion 5
+
+def main():
+    n,p,q,r,s = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = a[p-1:q] + a[r-1:s]
+    c = a[:p-1] + a[q:r-1] + a[s:]
+    c = c[::-1]
+    c = c[:p-1] + b + c[p-1:]
+    for i in c:
+        print(i,end=" ")
+
+=======
+Suggestion 6
+
+def swap(a, p, q, r, s):
+    a[p-1:q], a[r-1:s] = a[r-1:s], a[p-1:q]
+    return a
+
+n, p, q, r, s = map(int, input().split())
+a = list(map(int, input().split()))
+b = swap(a, p, q, r, s)
+print(*b)
+
+=======
+Suggestion 7
+
+def main():
+    N,P,Q,R,S = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = A.copy()
+    for i in range(N):
+        if i+1 >= P and i+1 <= Q:
+            B[i] = A[i+(S-R)]
+        elif i+1 >= R and i+1 <= S:
+            B[i] = A[i-(S-R)]
+    print(*B)
+
+=======
+Suggestion 8
+
+def main():
+    n,p,q,r,s = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0]*n
+    for i in range(n):
+        if i+1 in range(p,q+1):
+            b[i] = a[i+r-q-1]
+        elif i+1 in range(r,s+1):
+            b[i] = a[i+q-p+1]
+        else:
+            b[i] = a[i]
+    print(*b)
+
+=======
+Suggestion 9
+
+def swap(a, b):
+    a, b = b, a
+    return a, b
+
+=======
+Suggestion 10
+
+def input_to_list():
+    return list(map(int, input().split()))

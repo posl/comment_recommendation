@@ -1,39 +1,185 @@
-#問題文
-#整数 N が与えられるので、N の -2 進数表現を求めてください。
-#ここで、S が N の -2 進数表現であるとは、以下を全て満たすことです。
-#S は 0 および 1 のみからなる文字列である
-#S = 0 でなければ S の先頭の文字は 1 である
-#S = S_k S_{k-1} ... S_0 とすると、S_0 × (-2)^0 + S_1 × (-2)^1 + ... + S_k × (-2)^k = N が成り立つ
-#なお、任意の整数 M に対して M の -2 進数表現が一意に定まることが証明できます。
-#
-#制約
-#入力はすべて整数である
-#-10^9 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#N の -2 進数表現を出力せよ。
-#
-#入力例 1
-#-9
-#
-#出力例 1
-#1011
-#(-2)^0 + (-2)^1 + (-2)^3 = 1 + (-2) + (-8) = -9 なので 1011 は -9 の -2 進数表現です。
-#
-#入力例 2
-#123456789
-#
-#出力例 2
-#11000101011001101110100010101
-#
-#入力例 3
-#0
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+    else:
+        ans = ""
+        while N != 0:
+            if N % 2 == 0:
+                ans += "0"
+                N //= -2
+            else:
+                ans += "1"
+                N = (N - 1) // -2
+        print(ans[::-1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            ans += "0"
+            N //= -2
+        else:
+            ans += "1"
+            N = (N - 1) // -2
+    print(ans[::-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % -2 == 0:
+            ans += "0"
+            N //= -2
+        else:
+            ans += "1"
+            N = (N - 1) // -2
+    print(ans[::-1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % (-2) == 0:
+            ans += "0"
+            N = N // (-2)
+        else:
+            ans += "1"
+            N = (N - 1) // (-2)
+    print(ans[::-1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = []
+    while N != 0:
+        if N % -2 == 0:
+            ans.append(0)
+            N = N // -2
+        else:
+            ans.append(1)
+            N = N // -2 + 1
+    ans.reverse()
+    print(''.join([str(a) for a in ans]))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    ans = []
+    while n != 0:
+        if n % (-2) == 0:
+            ans.append(0)
+            n = n // (-2)
+        else:
+            ans.append(1)
+            n = (n - 1) // (-2)
+    print(''.join(map(str, ans[::-1])))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            ans = "0" + ans
+            N //= -2
+        else:
+            ans = "1" + ans
+            N = (N - 1) // -2
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+    else:
+        S = []
+        while N != 0:
+            if N % (-2) == 0:
+                S.append(0)
+                N = N // (-2)
+            else:
+                S.append(1)
+                N = (N - 1) // (-2)
+        for i in range(len(S)-1, -1, -1):
+            print(S[i], end='')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    if n < 0:
+        n = -n
+        sign = -1
+    else:
+        sign = 1
+    ans = ''
+    while n > 0:
+        ans += str(n % 2)
+        n //= 2
+    if sign == -1:
+        ans = ans.replace('0', 'a')
+        ans = ans.replace('1', '0')
+        ans = ans.replace('a', '1')
+    print(ans[::-1])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+    else:
+        print(negative_binary(n))

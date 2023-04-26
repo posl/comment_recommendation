@@ -1,54 +1,33 @@
-#問題文
-#N 本の導火線を一直線に接着したものがあります。左から i 本目の導火線は長さが A_i cm で、 1 秒あたり B_i cm の一定の速さで燃えます。
-#この導火線の左端と右端から同時に火をつけるとき、 2 つの火がぶつかる場所が着火前の導火線の左端から何 cm の地点か求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i,B_i ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#2 つの火がぶつかる場所が着火前の導火線の左端から何 cm の地点か（単位を除いて）出力せよ。
-#想定解答との絶対誤差または相対誤差が 10^{-5} 以下であれば正解として扱われる。
-#
-#入力例 1
-#3
-#1 1
-#2 1
-#3 1
-#
-#出力例 1
-#3.000000000000000
-#着火前の導火線の左端から 3 cm の地点で 2 つの火がぶつかります。
-#
-#入力例 2
-#3
-#1 3
-#2 2
-#3 1
-#
-#出力例 2
-#3.833333333333333
-#
-#入力例 3
-#5
-#3 9
-#1 2
-#4 6
-#1 5
-#5 3
-#
-#出力例 3
-#8.916666666666668
+Synthesizing 1/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    import sys
+    from decimal import Decimal
+    input = sys.stdin.readline
+
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    def check(t):
+        X = []
+        for i in range(N):
+            X.append(Decimal(A[i]) - Decimal(B[i]) * Decimal(t))
+        X.sort(reverse=True)
+        return sum(X[:5]) >= 0
+
+    def binary_search(ok, ng):
+        while abs(ok - ng) > 0.000000000000001:
+            mid = (ok + ng) / 2
+            if check(mid):
+                ok = mid
+            else:
+                ng = mid
+        return ok

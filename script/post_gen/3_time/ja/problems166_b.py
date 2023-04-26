@@ -1,54 +1,151 @@
-#問題文
-#ある街に、N 人のすぬけ君(すぬけ君 1 、すぬけ君 2 、 ...、 すぬけ君 N )が住んでいます。
-#この街には、 K 種類のお菓子(お菓子 1 、 お菓子 2 、....、お菓子 K )が売られています。お菓子 i を持っているのは、すぬけ君 A_{i, 1}, A_{i, 2}, ..., A_{i, {d_i}} の計 d_i 人です。
-#高橋君は今からこの街を回り、お菓子を 1 つも持っていないすぬけ君にいたずらをします。このとき、何人のすぬけ君がいたずらを受けるでしょうか。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ d_i ≦ N
-#1 ≦ A_{i, 1} < ... < A_{i, d_i} ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#d_1
-#A_{1, 1} ... A_{1, d_1}
-#.
-#.
-#.
-#d_K
-#A_{K, 1} ... A_{K, d_K}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 2
-#2
-#1 3
-#1
-#3
-#
-#出力例 1
-#1
-#
-#すぬけ君 1 はお菓子 1 を持っています。
-#すぬけ君 2 はお菓子を持っていません。
-#すぬけ君 3 はお菓子 1, 2 を持っています。
-#以上より、いたずらを受けるのはすぬけ君 2 の一人です。
-#
-#入力例 2
-#3 3
-#1
-#3
-#1
-#3
-#1
-#3
-#
-#出力例 2
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    d = [0] * K
+    A = [0] * K
+    for i in range(K):
+        d[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    
+    #print(N, K)
+    #print(d)
+    #print(A)
+    
+    # いたずらを受ける人数
+    cnt = 0
+    
+    for i in range(N):
+        # すぬけ君 i がいたずらを受けるかどうかのフラグ
+        flag = 0
+        
+        for j in range(K):
+            if (i+1) in A[j]:
+                flag = 1
+                break
+        
+        if flag == 0:
+            cnt += 1
+    
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    d = [0] * K
+    A = [0] * K
+    for i in range(K):
+        d[i] = int(input())
+        A[i] = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(K):
+            if i in A[j]:
+                break
+            if j == K - 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    S = [0] * N
+    for i in range(K):
+        d = int(input())
+        A = list(map(int, input().split()))
+        for j in range(d):
+            S[A[j] - 1] += 1
+    print(S.count(0))
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    d = [0] * N
+    for i in range(K):
+        di = int(input())
+        for j in map(int, input().split()):
+            d[j-1] += 1
+    print(d.count(0))
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    d = [0] * n
+    for i in range(k):
+        di = int(input())
+        for j in map(int, input().split()):
+            d[j - 1] += 1
+    print(d.count(0))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    d = []
+    for i in range(K):
+        d.append(int(input()))
+        a = []
+        for j in range(d[i]):
+            a.append(int(input()))
+        print(a)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    sweets = [0] * N
+    for _ in range(K):
+        for a in map(int, input().split()[1:]):
+            sweets[a - 1] += 1
+    print(sweets.count(0))
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+
+    # お菓子を持っている人数をカウントする
+    # お菓子を持っていない場合は0
+    # お菓子を持っている場合は1
+    # すべての人が持っている場合はK
+    cnt = [0] * N
+
+    for _ in range(K):
+        d = int(input())
+        for a in map(int, input().split()):
+            cnt[a - 1] += 1
+
+    # 0の人数をカウント
+    print(cnt.count(0))
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    #A = []
+    A = [0]*N
+    for i in range(K):
+        d = int(input())
+        A_ = list(map(int,input().split()))
+        for j in range(d):
+            A[A_[j]-1] += 1
+    ans = 0
+    for i in range(N):
+        if A[i] == 0:
+            ans += 1
+    print(ans)

@@ -1,65 +1,212 @@
-#問題文
-#上下左右に広がる N× N のマス目があり、最初全てのマスは白く塗られています。このマス目の上から i 行目、左から j 列目のマスを (i,j) で表します。
-#高橋君は 1 以上 N 以下の整数 A, B を持っており、次のような操作を行います。
-#max(1-A,1-B)≦ k≦ min(N-A,N-B) をみたす全ての整数 k について、(A+k,B+k) を黒く塗る。
-#max(1-A,B-N)≦ k≦ min(N-A,B-1) をみたす全ての整数 k について、(A+k,B-k) を黒く塗る。
-#この操作を行った後のマス目について、P≦ i≦ Q かつ R≦ j≦ S をみたす各マス (i,j) がそれぞれ何色で塗られているか求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#P Q R S
-#
-#出力
-#Q-P+1 行出力せよ。
-#各行は # と . のみからなる長さ S-R+1 の文字列であり、
-#i 行目の文字列の j 番目の文字が
-# # であることは (P+i-1,R+j-1) が黒く塗られていることを、
-# . であることは (P+i-1,R+j-1) が白く塗られていることをさす。
-#
-#入力例 1
-#5 3 2
-#1 5 1 5
-#
-#出力例 1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#1 つめの操作で (2,1), (3,2), (4,3), (5,4) の 4 マスが、
-#2 つめの操作で (4,1), (3,2), (2,3), (1,4) の 4 マスが黒く塗られます。
-#よって、P=1, Q=5, R=1, S=5 より、上のように出力します。
-#
-#入力例 2
-#5 3 3
-#4 5 2 5
-#
-#出力例 2
-##.#.
-#...#
-#操作によって、
-#(1,1), (1,5), (2,2), (2,4), (3,3), (4,2), (4,4), (5,1), (5,5) の 9 マスが
-#黒く塗られます。
-#P=4, Q=5, R=2, S=5 より、上のように出力します。
-#
-#入力例 3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#出力例 3
-##.#
-#.#.
-##.#
-#入力が 32 bit 整数型に収まらないことがあることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i+j) % 2 == 0 and N-A >= i-A and N-B >= j-B:
+                print("#", end="")
+            elif (i+j) % 2 == 1 and N-A >= i-A and B-1 >= j-B:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i + j - A - B) % 2 == 0 and (i - A) * (i - A) + (j - B) * (j - B) <= N * N:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i <= A + B - j <= N) or (i >= A + B - j >= N+1):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (A <= i <= B) and (A <= j <= B):
+                print("#", end="")
+            elif (A <= i+j-N-1 <= B) and (A <= j-i+N-1 <= B):
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    #print(N, A, B)
+    #print(P, Q, R, S)
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            ans = 0
+            if i >= A and j >= B:
+                ans += min(N-i+1, N-j+1)
+            if i >= A and j <= B:
+                ans += min(N-i+1, j)
+            if i <= A and j >= B:
+                ans += min(i, N-j+1)
+            if i <= A and j <= B:
+                ans += min(i, j)
+            if ans % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    ans = [["." for _ in range(S - R + 1)] for _ in range(Q - P + 1)]
+    for i in range(P, Q + 1):
+        for j in range(R, S + 1):
+            if (i + j) % 2 == 0:
+                continue
+            if 1 - A <= i - A <= min(N - A, B - 1):
+                ans[i - P][j - R] = "#"
+            if 1 - A <= i - A <= min(N - A, N - B):
+                ans[i - P][j - R] = "#"
+    for i in range(Q - P + 1):
+        print("".join(ans[i]))
+
+=======
+Suggestion 7
+
+def main():
+    #入力
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    #黒マスの数を求める
+    #黒マスの数 = 黒マスの数A + 黒マスの数B - 重複する黒マスの数
+    #黒マスの数A = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) // 2
+    #黒マスの数B = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) // 2
+    #重複する黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) // 2
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) // 2 * 2
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) * (min(N-A,N-B)+3) // 6
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) * (min(N-A,N-B)+3) * (min(N-A,N-B)+4) // 24
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) * (min(N-A,N-B)+3) * (min(N-A,N-B)+4) * (min(N-A,N-B)+5) // 120
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) * (min(N-A,N-B)+3) * (min(N-A,N-B)+4) * (min(N-A,N-B)+5) * (min(N-A,N-B)+6) // 720
+    #黒マスの数 = (min(N-A,N-B)+1) * (min(N-A,N-B)+2) * (min(N-A,N-B)+3) * (min(N-A,N-B)+
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    # 1行目の出力
+    for j in range(R, S+1):
+        if A <= j <= B:
+            print('#', end='')
+        else:
+            print('.', end='')
+    print()
+
+    # 2行目以降の出力
+    for i in range(P+1, Q+1):
+        # 1列目の出力
+        if A <= i <= B:
+            print('#', end='')
+        else:
+            print('.', end='')
+
+        # 2列目以降の出力
+        for j in range(R+1, S+1):
+            if (A <= i <= B) and (A <= j <= B):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    # 1 つめの操作で塗る黒マスの数を求める
+    # 上下左右の端点から塗るマスの数を求める
+    # 端点の座標は (A, B) とする
+    # 上端点から塗るマスの数を求める
+    # max(1-A, 1-B) <= k <= min(N-A, N-B)
+    # 上端点から塗るマスの数
+    # (N-B) - max(1-A, 1-B) + 1
+    # 下端点から塗るマスの数
+    # (N-A) - max(1-B, 1-A) + 1
+    # 左端点から塗るマスの数
+    # (N-A) - max(1-B, 1-A) + 1
+    # 右端点から塗るマスの数
+    # (N-B) - max(1-A, 1-B) + 1
+
+    # 上端点から塗るマスの数
+    tate = min(N-B, N-A) - max(1-A, 1-B) + 1
+    # 下端点から塗るマスの数
+    yoko = min(N-A, N-B) - max(1-B, 1-A) + 1
+    # 1 つめの操作で塗るマスの数
+    cnt1 = tate * yoko
+
+    # 2 つめの操作で塗る黒マスの数を求める
+    # 上下左右の端点から塗るマスの数を求める
+    # 端点の座標は (A, B) とする
+    # 上端点から塗るマスの数を求める
+    # max(1-A, B-N) <= k <= min(N-A, B-1)
+    # 上端点から塗るマ
+
+=======
+Suggestion 10
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    # 1. (1,1)から(A,B)までの黒のマスの数を求める
+    # 2. (1,1)から(A,B)までの白のマスの数を求める
+    # 3. (1,1)から(P-1,Q-1)までの黒のマスの数を求める
+    # 4. (1,1)から(P-1,Q-1)までの白のマスの数を求める
+    # 5. (1,1)から(P-1,R-1)までの黒のマスの数を求める
+    # 6. (1,1)から(P-1,R-1)までの白のマスの数を求める
+    # 7. (1,1)から(R-1,S-1)までの黒のマスの数を求める
+    # 8. (1,1)から(R-1,S-1)までの白のマスの数を求める
+    # 9. (1,1)から(R-1,Q-1)までの黒のマスの数を求める
+    # 10. (1,1)から(R-1,Q-1)までの白のマスの数を求める
+    # 11. (1,1)から(P-1,S-1)までの黒のマスの数を求める
+    # 12. (1,1)から(P-1,S-1)までの白のマスの数を求める
+    # 13. (1,1)から(P-1,Q-1)までの黒のマスの数を求める
+    # 14. (1,1)から(P-1,Q-1)までの白のマスの数を求める
+    # 15. (1,1)から(P-1

@@ -1,60 +1,161 @@
-#問題文
-#D 次元空間上に N 個の点があります。
-#i 番目の点の座標は (X_{i1}, X_{i2}, ..., X_{iD}) です。
-#座標 (y_1, y_2, ..., y_D) の点と座標 (z_1, z_2, ..., z_D) の点の距離は ((y_1 - z_1)^2 + (y_2 - z_2)^2 + ... + (y_D - z_D)^2)^(1/2) です。
-#i 番目の点と j 番目の点の距離が整数となるような組 (i, j) (i < j) はいくつあるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10
-#1 ≦ D ≦ 10
-#-20 ≦ X_{ij} ≦ 20
-#同じ座標の点は与えられない。すなわち、i ≠ j ならば X_{ik} ≠ X_{jk} なる k が存在する。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#X_{11} X_{12} ... X_{1D}
-#X_{21} X_{22} ... X_{2D}
-#.
-#.
-#.
-#X_{N1} X_{N2} ... X_{ND}
-#
-#出力
-#i 番目の点と j 番目の点の距離が整数となるような組 (i, j) (i < j) の数を出力せよ。
-#
-#入力例 1
-#3 2
-#1 2
-#5 5
-#-2 8
-#
-#出力例 1
-#1
-#以下のように距離が整数となる点の組は 1 組です。
-#1 番目の点と 2 番目の点の距離は (|1-5|^2 + |2-5|^2)^(1/2) = 5 で、これは整数です。
-#2 番目の点と 3 番目の点の距離は (|5-(-2)|^2 + |5-8|^2)^(1/2) = (58)^(1/2) で、これは整数ではありません。
-#3 番目の点と 1 番目の点の距離は (|-2-1|^2+|8-2|^2)^(1/2) = 3(5)^(1/2) で、これは整数ではありません。
-#
-#入力例 2
-#3 4
-#-3 7 8 2
-#-12 1 10 2
-#-2 8 9 3
-#
-#出力例 2
-#2
-#
-#入力例 3
-#5 1
-#1
-#2
-#3
-#4
-#5
-#
-#出力例 3
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for d in range(D):
+                dist += (X[i][d] - X[j][d]) ** 2
+            dist = int(dist ** 0.5)
+            if dist ** 2 == dist:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dist = 0
+            for k in range(d):
+                dist += (x[i][k] - x[j][k])**2
+            if (dist**0.5).is_integer():
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum = 0
+            for k in range(d):
+                sum += (x[i][k] - x[j][k]) ** 2
+            if sum ** 0.5 % 1 == 0:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def solve():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for i in range(N)]
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k])**2
+            if int(dist**0.5)**2 == dist:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for _ in range(N)]
+
+    cnt = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            d = 0
+            for k in range(D):
+                d += (X[i][k] - X[j][k])**2
+            if int(d**0.5)**2 == d:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def solve():
+    N, D = map(int, input().split())
+    X = [list(map(int, input().split())) for i in range(N)]
+
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dist = 0
+            for k in range(D):
+                dist += (X[i][k] - X[j][k]) ** 2
+            if dist ** 0.5 == int(dist ** 0.5):
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def solve():
+    n,d = map(int,input().split())
+    x = [list(map(int,input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            dis = 0
+            for k in range(d):
+                dis += (x[i][k]-x[j][k])**2
+            if int(dis**0.5)**2 == dis:
+                cnt += 1
+    print(cnt)
+solve()
+
+=======
+Suggestion 8
+
+def distance(x,y):
+    d = 0
+    for i in range(len(x)):
+        d += (x[i]-y[i])**2
+    return d**0.5
+
+=======
+Suggestion 9
+
+def distance(x,y):
+    d = 0
+    for i in range(len(x)):
+        d += (x[i]-y[i])*(x[i]-y[i])
+    return int(d**0.5)
+
+n,d = map(int,input().split())
+x = [list(map(int,input().split())) for i in range(n)]
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        if distance(x[i],x[j])**2 == distance(x[i],x[j])*distance(x[i],x[j]):
+            ans += 1
+print(ans)
+
+=======
+Suggestion 10
+
+def calc_distance(x, y):
+    return sum([(x[i]-y[i])**2 for i in range(len(x))])**0.5
+
+n, d = map(int, input().split())
+x = [list(map(int, input().split())) for _ in range(n)]
+cnt = 0
+
+for i in range(n):
+    for j in range(i+1, n):
+        if calc_distance(x[i], x[j]).is_integer():
+            cnt += 1
+
+print(cnt)

@@ -1,79 +1,207 @@
-#問題文
-#あなたは、N 個の正整数 A_{1}, A_{2}, ..., A_{N} からなる数列 A を持っています。
-#あなたは、これから以下の操作を Q 回、続けて行います。
-#i 回目の操作では、値が B_{i} である要素すべてを C_{i} に置き換えます。
-#すべての i (1 ≦ i ≦ Q) に対して、i 回目の操作が行われた後の数列 A のすべての要素の和、S_{i} を求めてください。
-#
-#制約
-#入力は全て整数
-# 1 ≦ N, Q, A_{i}, B_{i}, C_{i} ≦ 10^{5} 
-# B_{i} ≠ C_{i} 
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_{1} A_{2} ... A_{N}
-#Q
-#B_{1} C_{1}
-#B_{2} C_{2}
-#.
-#.
-#.
-#B_{Q} C_{Q}
-#
-#出力
-#Q 個の整数 S_{i} を以下の形式で標準出力に出力せよ。
-#S_{1}
-#S_{2}
-#.
-#.
-#.
-#S_{Q}
-#S_{i} は 32 ビット整数に収まらない可能性があることに注意せよ。
-#
-#入力例 1
-#4
-#1 2 3 4
-#3
-#1 2
-#3 4
-#2 4
-#
-#出力例 1
-#11
-#12
-#16
-#はじめ、数列 A は 1,2,3,4 です。
-#各操作後、 数列 A は以下のようになります。
-#2, 2, 3, 4
-#2, 2, 4, 4
-#4, 4, 4, 4
-#
-#入力例 2
-#4
-#1 1 1 1
-#3
-#1 2
-#2 1
-#3 5
-#
-#出力例 2
-#8
-#4
-#4
-#数列 A に 要素の値が B_{i} であるものが 1 つも含まれていない可能性もあることに注意してください。
-#
-#入力例 3
-#2
-#1 2
-#3
-#1 100
-#2 100
-#100 1000
-#
-#出力例 3
-#102
-#200
-#2000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+
+    # Aの要素の値がB[i]であるものの個数をカウント
+    cnt = [0] * (10**5 + 1)
+    for i in range(N):
+        cnt[A[i]] += 1
+
+    # 答えを求める
+    ans = sum(A)
+    for i in range(Q):
+        ans += cnt[B[i]] * (C[i] - B[i])
+        cnt[C[i]] += cnt[B[i]]
+        cnt[B[i]] = 0
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    S = [0] * Q
+    S[0] = sum(A)
+    for i in range(1, Q):
+        S[i] = S[i-1] + (C[i] - B[i]) * A.count(B[i])
+    for i in range(Q):
+        print(S[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    ans = [0] * Q
+    ans[0] = sum(A)
+    for i in range(1, Q):
+        ans[i] = ans[i-1] + (C[i] - B[i]) * A.count(B[i])
+    for i in range(Q):
+        print(ans[i])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    sum_a = sum(A)
+    for i in range(Q):
+        count = A.count(B[i])
+        sum_a += count * (C[i] - B[i])
+        print(sum_a)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    S = sum(A)
+    for i in range(Q):
+        S += A.count(B[i])*(C[i]-B[i])
+        print(S)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for i in range(Q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    S = sum(A)
+    for i in range(Q):
+        S -= A.count(B[i]) * B[i]
+        S += A.count(B[i]) * C[i]
+        print(S)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    B = []
+    C = []
+    for _ in range(Q):
+        b, c = map(int, input().split())
+        B.append(b)
+        C.append(c)
+    ans = sum(A)
+    for i in range(Q):
+        ans += A.count(B[i]) * (C[i] - B[i])
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    Q = int(input())
+    B = [0] * Q
+    C = [0] * Q
+    for i in range(Q):
+        B[i], C[i] = [int(i) for i in input().split()]
+    S = sum(A)
+    for i in range(Q):
+        S += (C[i] - B[i]) * A.count(B[i])
+        print(S)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    BC = [list(map(int,input().split())) for _ in range(Q)]
+    B = [BC[i][0] for i in range(Q)]
+    C = [BC[i][1] for i in range(Q)]
+    S = [0 for _ in range(Q)]
+    #print(N,A,Q,B,C,S)
+    for i in range(Q):
+        S[i] = sum(A)
+        for j in range(N):
+            if A[j] == B[i]:
+                A[j] = C[i]
+                S[i] = S[i] - B[i] + C[i]
+        print(S[i])
+    return
+
+=======
+Suggestion 10
+
+def main():
+    #N
+    N = int(input())
+    #A
+    A = list(map(int, input().split()))
+    #Q
+    Q = int(input())
+    #B C
+    B = [0]*Q
+    C = [0]*Q
+    for i in range(Q):
+        B[i], C[i] = map(int, input().split())
+    #Aの合計値
+    Asum = sum(A)
+    #Bの合計値
+    Bsum = [0]*Q
+    #Cの合計値
+    Csum = [0]*Q
+    #Bsumを求める
+    for i in range(Q):
+        Bsum[i] = B[i]*(A.count(B[i]))
+    #Csumを求める
+    for i in range(Q):
+        Csum[i] = C[i]*(A.count(B[i]))
+    #出力
+    for i in range(Q):
+        Asum = Asum - Bsum[i] + Csum[i]
+        print(Asum)

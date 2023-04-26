@@ -1,51 +1,98 @@
-#問題文
-#英小文字のみからなる 2 つの文字列 S, T が与えられます。
-#S が T の接頭辞かどうかを判定してください。
-#接頭辞とは
-#長さ N の文字列 T_1T_2... T_N の接頭辞とは、
-#0 ≦ i ≦ N を満たすある整数 i によって、T の先頭 i 文字目までの文字列 T_1T_2... T_i として表される文字列です。例えば、T =  abc のとき、T の接頭辞は、空文字列、a 、ab 、abc の 4 つです。
-#
-#制約
-#S と T はそれぞれ英小文字のみからなる長さが 1 以上 100 以下の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#S が T の接頭辞である場合は Yes を、そうでない場合は No を出力せよ。
-#ジャッジは英小文字と英大文字を厳密に区別することに注意せよ。
-#
-#入力例 1
-#atco
-#atcoder
-#
-#出力例 1
-#Yes
-#atco は atcoder の接頭辞です。よって、Yes を出力します。
-#
-#入力例 2
-#code
-#atcoder
-#
-#出力例 2
-#No
-#code は atcoder の接頭辞ではありません。よって、No を出力します。
-#
-#入力例 3
-#abc
-#abc
-#
-#出力例 3
-#Yes
-#文字列全体もその文字列の接頭辞であることに注意してください。
-#
-#入力例 4
-#aaaa
-#aa
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    if S == T[:len(S)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    if S == T[0:len(S)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if S == T[:len(S)]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if T.startswith(S):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:len(s)]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if t.startswith(s):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        for i in range(len(s)):
+            if s[i] != t[i]:
+                print('No')
+                break
+        else:
+            print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    # 入力
+    s = input()
+    t = input()
+    # 処理
+    if t.startswith(s):
+        ans = "Yes"
+    else:
+        ans = "No"
+    # 出力
+    print(ans)

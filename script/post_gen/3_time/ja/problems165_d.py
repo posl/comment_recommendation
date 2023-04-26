@@ -1,32 +1,101 @@
-#問題文
-#整数 A, B, N が与えられます。
-#N 以下の非負整数 x に対する floor(Ax/B) - A × floor(x/B) の最大値を求めてください。
-#ただし、floor(t) とは、実数 t 以下の最大の整数のことを表します。
-#
-#制約
-#1 ≤ A ≤ 10^{6}
-#1 ≤ B ≤ 10^{12}
-#1 ≤ N ≤ 10^{12}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B N
-#
-#出力
-#N 以下の非負整数 x に対する floor(Ax/B) - A × floor(x/B) の最大値を整数として出力せよ。
-#
-#入力例 1
-#5 7 4
-#
-#出力例 1
-#2
-#x=3 のとき、floor(Ax/B)-A×floor(x/B) = floor(15/7) - 5×floor(3/7) = 2 となり、これが最大です。
-#
-#入力例 2
-#11 10 9
-#
-#出力例 2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, N = map(int, input().split())
+    if B <= N:
+        x = B - 1
+    else:
+        x = N
+    print((A * x) // B - A * (x // B))
+
+=======
+Suggestion 2
+
+def main():
+    A, B, N = map(int, input().split())
+    if B-1 <= N:
+        print((A*(B-1))//B - A*((B-1)//B))
+    else:
+        print((A*N)//B - A*(N//B))
+
+=======
+Suggestion 3
+
+def main():
+    A, B, N = map(int, input().split())
+    if B > N:
+        print((A * N) // B)
+    else:
+        print((A * (B - 1)) // B)
+
+=======
+Suggestion 4
+
+def main():
+    A,B,N = map(int,input().split())
+    if N<B-1:
+        print((A*N)//B - A*((N)//B))
+    else:
+        print((A*(B-1))//B - A*((B-1)//B))
+
+=======
+Suggestion 5
+
+def main():
+    A, B, N = map(int, input().split())
+    if N < B:
+        print(A*N//B)
+    else:
+        print(A*(B-1)//B)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,n = map(int,input().split())
+    if b-1 <= n:
+        print((a*(b-1)//b)-a*((b-1)//b))
+    else:
+        print((a*n//b)-a*(n//b))
+
+=======
+Suggestion 7
+
+def main():
+    A, B, N = map(int, input().split())
+    x = min(B-1, N)
+    print(A*x//B)
+
+=======
+Suggestion 8
+
+def main():
+    A, B, N = map(int, input().split())
+    # print(A, B, N)
+    if B <= N:
+        x = B - 1
+    else:
+        x = N
+    print(A * x // B - A * (x // B))
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    A, B, N = map(int, readline().split())
+    if N < B:
+        print((A*N)//B)
+    else:
+        print((A*(B-1))//B)
+
+=======
+Suggestion 10
+
+def main():
+    A,B,N = map(int,input().split())
+    print(A*min(B-1,N)//B)

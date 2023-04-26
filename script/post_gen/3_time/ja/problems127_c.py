@@ -1,54 +1,173 @@
-#問題文
-#N 枚の ID カードと M 個のゲートがあります。
-#i 番目のゲートは L_i, L_i+1, ..., R_i 番目の ID カードのうちどれか 1 枚を持っていれば通過できます。
-#1 枚だけで全てのゲートを通過できる ID カードは何枚あるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#出力
-#1 枚だけで全てのゲートを通過できる ID カードの枚数を出力せよ。
-#
-#入力例 1
-#4 2
-#1 3
-#2 4
-#
-#出力例 1
-#2
-#以下のように、1 枚だけで全てのゲートを通過できる ID カードは 2 枚です。
-#1 番目の ID カードでは 2 番目のゲートを通過できません。
-#2 番目の ID カードでは全てのゲートを通過できます。
-#3 番目の ID カードでは全てのゲートを通過できます。
-#4 番目の ID カードでは 1 番目のゲートを通過できません。
-#
-#入力例 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100000 1
-#1 100000
-#
-#出力例 3
-#100000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+
+    L.sort()
+    R.sort()
+
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] <= R[0]:
+        print(R[0] - L[-1] + 1)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    print(max(0, min(R) - max(L) + 1))
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+
+    L.sort()
+    R.sort()
+
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l_max = max(l)
+    r_min = min(r)
+    if l_max <= r_min:
+        print(r_min - l_max + 1)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    l = [0] * m
+    r = [0] * m
+    for i in range(m):
+        l[i],r[i] = map(int,input().split())
+    lmax = max(l)
+    rmin = min(r)
+    print(rmin-lmax+1 if rmin-lmax+1 > 0 else 0)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    l = 0
+    r = n
+    for i in range(m):
+        li, ri = map(int, input().split())
+        l = max(l, li)
+        r = min(r, ri)
+    print(max(r-l+1, 0))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    l = []
+    r = []
+    for i in range(m):
+        a,b = map(int,input().split())
+        l.append(a)
+        r.append(b)
+    l_max = max(l)
+    r_min = min(r)
+    if r_min-l_max+1 >= 0:
+        print(r_min-l_max+1)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    lrs = [list(map(int, input().split())) for _ in range(m)]
+    lrs.sort(key=lambda x: x[1])
+    ans = 0
+    r = 0
+    for l, r in lrs:
+        if r <= r:
+            continue
+        else:
+            r = r
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int, input().split())
+    l = [0]*(n+1)
+    r = [0]*(n+1)
+    for i in range(m):
+        a,b = map(int, input().split())
+        l[a] += 1
+        r[b] += 1
+    ans = 0
+    cnt = 0
+    for i in range(1,n+1):
+        cnt += l[i]
+        if cnt == m:
+            ans += 1
+        cnt -= r[i]
+    print(ans)

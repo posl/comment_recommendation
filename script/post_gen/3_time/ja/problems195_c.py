@@ -1,30 +1,115 @@
-#問題文
-#高橋君は整数を書くとき、下から 3 桁ごとにコンマで区切って書きます。例えば 1234567 であれば 1,234,567、777 であれば 777 と書きます。
-#高橋君が 1 以上 N 以下の整数を 1 度ずつ書くとき、コンマは合計で何回書かれますか？
-#
-#制約
-#1 ≦ N ≦ 10^{15}
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#コンマが書かれる回数の合計を出力せよ。
-#
-#入力例 1
-#1010
-#
-#出力例 1
-#11
-#999 以下の数を書くときにはコンマは書かれません。1000 以上 1010 以下の数を書くときには、それぞれ 1 回ずつコンマが書かれます。
-#よって、コンマは全部で 11 回書かれます。
-#
-#入力例 2
-#27182818284590
-#
-#出力例 2
-#107730272137364
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, len(str(N))):
+        ans += i * (10 ** i - 10 ** (i - 1))
+    ans += len(str(N)) * (N - (10 ** (len(str(N)) - 1)) + 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, len(str(N))):
+        ans += i * (10 ** i - 10 ** (i-1))
+    ans += len(str(N)) * (N - 10 ** (len(str(N)) - 1) + 1)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1, len(str(N))+1):
+        if N >= 10**(3*i):
+            cnt += (N - 10**(3*i) + 1) * i
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, len(str(N))):
+        ans += (N // (10 ** (3 * i))) * (3 * i)
+    ans += (N % (10 ** 3))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,15):
+        ans += (N - 10**i + 1) * i
+        N = 10**i - 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, 17):
+        ans += (N // (10 ** (3 * i))) * (i - 1) * (10 ** (3 * (i - 1)))
+        ans += max(0, N - (10 ** (3 * i) - 1)) // (10 ** (3 * (i - 1)))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N <= 999:
+        print(0)
+        return
+    N = N - 999
+    ans = 0
+    i = 0
+    while N > 0:
+        ans += N % 1000
+        N = N // 1000
+        i += 1
+        ans += i * 1
+    ans -= 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, len(str(N))+1):
+        ans += (N//(10**(3*i)))*3
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = input()
+    n = int(n)
+    ans = 0
+    for i in range(1,len(str(n))):
+        ans += i * (n // (10 ** i) - n // (10 ** (i + 1)) * 10)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    # 1000 ごとにコンマが入るので、1000 で割った商がコンマの数になる
+    print((len(str(N)) - 1) // 3)

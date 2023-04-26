@@ -1,37 +1,43 @@
-#問題文
-#林檎が A 個、林檎の欠片が P 個あります。
-#林檎 1 個は、砕くことで林檎の欠片 3 個になります。また、林檎の欠片 2 個を鍋で煮込むことで、アップルパイが 1 個作れます。
-#今ある材料で作れるアップルパイの最大数を求めてください。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A, P ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A P
-#
-#出力
-#今ある材料で作れるアップルパイの最大数を出力せよ。
-#
-#入力例 1
-#1 3
-#
-#出力例 1
-#3
-#3 つある林檎の欠片のうち 2 つを鍋で煮込むことで、まず 1 つのアップルパイを作ることができます。林檎の欠片が 1 つ残りますが、これと、1 つある林檎を砕いて新しく得た 3 つの林檎の欠片から、さらに 2 つのアップルパイを作れます。
-#
-#入力例 2
-#0 1
-#
-#出力例 2
-#0
-#残念ながら 1 つもアップルパイを作ることができません。
-#
-#入力例 3
-#32 21
-#
-#出力例 3
-#58
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, p = map(int, input().split())
+    print((a * 3 + p) // 2)
+
+=======
+Suggestion 2
+
+def main():
+    A, P = map(int, input().split())
+    print((A * 3 + P) // 2)
+
+=======
+Suggestion 3
+
+def solve():
+    a, p = map(int, input().split())
+    print((a * 3 + p) // 2)
+
+=======
+Suggestion 4
+
+def problem():
+    a, p = map(int, input().split())
+    return (a * 3 + p) // 2
+
+print(problem())
+
+=======
+Suggestion 5
+
+def apple_pie(a, p):
+    return (a*3 + p) // 2
+
+=======
+Suggestion 6
+
+def solve(A,P):
+    return (A*3+P)//2
