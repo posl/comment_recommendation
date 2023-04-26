@@ -61,22 +61,24 @@ class test_script:
 if __name__ == '__main__':
     # delete csv file and make new one with header
     times = '1_time'
-    language = 'en'
+    language_l = ['en', 'ja']
     if os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv'):
         os.remove('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv')
-    with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/{0}_{1}.csv'.format(language, times), 'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'result', 'output', 'test_case_text', 'message', 'accuracy'])
     
-    for each_problem in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language))):
-        for each_suggestion in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem))):
-            script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
-            input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-            output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-            result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/'
-            a = test_script(script_path, input_path, output_path, result_path)
-            a.write(times, a.pyexe())
-        break
+    for language in language_l:
+        with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/{0}_{1}.csv'.format(language, times), 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'result', 'output', 'test_case_text', 'message', 'accuracy'])
+    
+        for each_problem in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language))):
+            for each_suggestion in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem))):
+                script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
+                input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
+                output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
+                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/'
+                a = test_script(script_path, input_path, output_path, result_path)
+                a.write(times, a.pyexe())
+            break
     
     '''
     a = test_script('/Users/keikoyanagi/Desktop/comment_recommendation/test_close_app/script/mod_gen/en/problems101_a_1.py', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/in/1.txt', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/out/1.txt')
