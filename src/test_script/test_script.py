@@ -22,7 +22,7 @@ class test_script:
         accuracy = 0
         for i in range(len(self.input_path_l)):
             each_input_path = self.input_path + self.input_path_l[i]
-            print(each_input_path)
+            #print(each_input_path)
             each_output_path = self.output_path + self.output_path_l[i]
 
             cmd = f'exec python {self.script_path} < {each_input_path}'
@@ -47,9 +47,9 @@ class test_script:
 
             if i == len(self.input_path_l) - 1:
                 accuracy = accuracy / len(self.input_path_l)
-                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, result, output, expected_output, message, accuracy]
+                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message, accuracy]
             else:
-                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, result, output, expected_output, message]
+                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message]
             all_test_result.append(each_test_result)
         return all_test_result
     
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     for language in language_l:
         with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/{0}_{1}.csv'.format(language, times), 'w') as f:
             writer = csv.writer(f)
-            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'result', 'output', 'expected_output', 'message', 'accuracy'])
+            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
 
         base_problem_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language)))
         problem_l = []
@@ -91,6 +91,7 @@ if __name__ == '__main__':
                 result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/'
                 a = test_script(script_path, input_path, output_path, result_path)
                 a.write(times, a.pyexe())
+            print(each_problem, language)
             break
     
     '''
