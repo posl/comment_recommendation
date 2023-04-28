@@ -1,30 +1,80 @@
-#Problem Statement
-#Find the X-th character from the beginning of the string that is obtained by concatenating these characters: N copies of A's, N copies of B's, …, and N copies of Z's, in this order.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ N× 26
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#1 3
-#
-#Sample Output 1
-#C
-#We obtain the string ABCDEFGHIJKLMNOPQRSTUVWXYZ, whose 3-rd character from the beginning is C.
-#
-#Sample Input 2
-#2 12
-#
-#Sample Output 2
-#F
-#We obtain the string AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ, whose 12-th character from the beginning is F.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(ord('A') + x//n - 1))
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(x - 1 + ord('A')))
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    print(chr(X - 1 + ord('A')))
+
+=======
+Suggestion 4
+
+def get_char(n, x):
+    n = int(n)
+    x = int(x)
+    if x <= n:
+        return chr(ord('A') + x - 1)
+    else:
+        return get_char(n, x - n) 
+
+n, x = input().split()
+print(get_char(n, x))
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    print(chr(64 + (X-1) % 26))
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    print(chr(64+X//N))
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(x + 64))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    print(alpha[x % 26 - 1])
+
+=======
+Suggestion 9
+
+def readinput():
+    n,x=list(map(int,input().split()))
+    return n,x
+
+=======
+Suggestion 10
+
+def getNthCharOfConcatenatedString(N, X):
+    return chr(ord('A') + (X - 1) % 26)

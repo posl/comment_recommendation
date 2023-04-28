@@ -1,42 +1,92 @@
-#Problem Statement
-#There is an integer sequence A of length N whose values are unknown.
-#Given is an integer sequence B of length N-1 which is known to satisfy the following:
-# B_i ≧ max(A_i, A_{i+1}) 
-#Find the maximum possible sum of the elements of A.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 100
-#0 ≦ B_i ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#B_1 B_2 ... B_{N-1}
-#
-#Output
-#Print the maximum possible sum of the elements of A.
-#
-#Sample Input 1
-#3
-#2 5
-#
-#Sample Output 1
-#9
-#A can be, for example, ( 2 , 1 , 5 ), ( -1 , -2 , -3 ), or ( 2 , 2 , 5 ). Among those candidates, A = ( 2 , 2 , 5 ) has the maximum possible sum.
-#
-#Sample Input 2
-#2
-#3
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#6
-#0 153 10 10 23
-#
-#Sample Output 3
-#53
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[-1] = B[-1]
+    for i in range(N-2):
+        A[i+1] = min(B[i], B[i+1])
+    print(sum(A))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(N-2):
+        A[i+1] = min(B[i], B[i+1])
+    print(sum(A))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[n-1] = b[n-2]
+    for i in range(1, n-1):
+        a[i] = min(b[i-1], b[i])
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(1, n-1):
+        a[i] = min(b[i-1], b[i])
+    print(sum(a))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(n-2):
+        a[i+1] = min(b[i], b[i+1])
+    a[n-1] = b[n-2]
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    b = list(map(int,input().split()))
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(n-2):
+        a[i+1] = min(b[i],b[i+1])
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[1] = b[0]
+    for i in range(1, n - 1):
+        a[i + 1] = min(b[i], a[i])
+    print(sum(a))

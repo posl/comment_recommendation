@@ -1,56 +1,145 @@
-#Problem Statement
-#Takahashi had N glasses of liquor.
-#The amount and alcohol percentage of the i-th liquor were V_i milliliters and P_i percent by volume, respectively.
-#Takahashi gets drunk when his alcohol intake exceeds X milliliters.
-#Which of the N liquors was he drinking when he gets drunk? If he was not drunk even after drinking all the liquors, print -1 instead.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^3
-#0 ≦ X ≦ 10^6
-#1 ≦ V_i ≦ 10^3
-#0 ≦ P_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#V_1 P_1
-#.
-#.
-#.
-#V_N P_N
-#
-#Output
-#If Takahashi got drunk when drinking the i-th liquor, print i. If he was not drunk even after drinking all the liquors, print -1 instead.
-#
-#Sample Input 1
-#2 15
-#200 5
-#350 3
-#
-#Sample Output 1
-#2
-#The 1-st liquor contains 200× (5/(100))=10 milliliters of alcohol.
-#The 2-nd liquor contains 350× (3/(100))=10.5 milliliters of alcohol.
-#His alcohol intake exceeds 15 milliliters for the first time when drinking the 2-nd liquor.
-#
-#Sample Input 2
-#2 10
-#200 5
-#350 3
-#
-#Sample Output 2
-#2
-#When his alcohol intake is exactly X milliliters, he is still not drunk.
-#
-#Sample Input 3
-#3 1000000
-#1000 100
-#1000 100
-#1000 100
-#
-#Sample Output 3
-#-1
-#He seems to be immune to alcohol.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p / 100
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    for i in range(N):
+        V, P = map(int, input().split())
+        X -= V * P / 100
+        if X < 0:
+            print(i+1)
+            return
+    print(-1)
+
+main()
+
+I am a Japanese student.
+
+I am studying programming for the first time.
+
+I am studying Python.
+
+I am studying at the University of Tokyo.
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    for i in range(N):
+        V, P = map(int, input().split())
+        X -= V * P / 100
+        if X < 0:
+            print(i+1)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+
+    s = 0
+    for i in range(N):
+        s += V[i] * P[i] / 100
+        if s > X:
+            print(i + 1)
+            return
+
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    alcohol = 0
+    for i in range(N):
+        alcohol += (V[i] * P[i])
+        if alcohol > X * 100:
+            print(i+1)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+
+    sum = 0
+    for i in range(N):
+        sum += V[i] * P[i]
+        if sum > X * 100:
+            print(i + 1)
+            return
+
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    V, P = [], []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    total = 0
+    for i in range(N):
+        total += V[i] * P[i]
+        if total > X * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N, X = map(int, input().split())
+    VPs = [list(map(int, input().split())) for _ in range(N)]
+    #compute
+    ans = -1
+    for i in range(N):
+        if X < VPs[i][0]*VPs[i][1]/100:
+            ans = i+1
+            break
+    #output
+    print(ans)

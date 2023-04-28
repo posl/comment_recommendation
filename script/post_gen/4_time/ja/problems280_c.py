@@ -1,43 +1,77 @@
-#問題文
-#文字列 S,T が与えられます。S は英小文字からなり、T は S に英小文字を 1 つ挿入して作られたことがわかっています。
-#挿入された文字は T の先頭から何番目の文字であるか求めてください。
-#複数の候補が考えられる場合はいずれか 1 つを求めてください。
-#
-#制約
-#1 ≦ |S| ≦ 5× 10^5
-#S は英小文字からなる
-#T は S に英小文字を 1 つ挿入して作られた文字列である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#答えを出力せよ。なお、答えが複数考えられる場合はどれを出力しても正解となる。  
-#
-#入力例 1
-#atcoder
-#atcorder
-#
-#出力例 1
-#5
-#T の先頭から 5 番目の文字 r が挿入された文字です。
-#
-#入力例 2
-#million
-#milllion
-#
-#出力例 2
-#5
-#T の先頭から 3,4,5 番目の文字のいずれかが挿入された文字です。
-#よって、3,4,5 のいずれかを出力すると正解となります。
-#
-#入力例 3
-#vvwvw
-#vvvwvw
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            exit()
+    print(len(s)+1)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            break
+    else:
+        print(len(S)+1)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            return
+    print(len(s)+1)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(t_len):
+        if s[i] != t[i]:
+            print(i+1)
+            return
+    print(t_len+1)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            return
+    print(len(S)+1)
+main()

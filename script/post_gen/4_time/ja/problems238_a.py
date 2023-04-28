@@ -1,34 +1,166 @@
-#問題文
-#2^n > n^2 ですか？
-#
-#制約
-#n は 1 以上 10^9 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#n
-#
-#出力
-#2^n > n^2 なら Yes を、そうでないなら No を出力せよ。
-#
-#入力例 1
-#5
-#
-#出力例 1
-#Yes
-#2^5=32, 5^2=25 より 2^n > n^2 であるため、Yes を出力します。
-#
-#入力例 2
-#2
-#
-#出力例 2
-#No
-#n=2 の場合 2^n=n^2=2^2 となり、故に 2^n > n^2 ではありません。よって No を出力します。
-#
-#入力例 3
-#623947744
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if 2**n > n**2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if 2 ** n > n ** 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if 2**N > N**2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    n = int(sys.stdin.readline().strip())
+    if n < 2:
+        print('No')
+        return
+    if n == 2:
+        print('No')
+        return
+    if n == 3:
+        print('Yes')
+        return
+    if n == 4:
+        print('No')
+        return
+    if n == 5:
+        print('Yes')
+        return
+    if n == 6:
+        print('Yes')
+        return
+    if n == 7:
+        print('Yes')
+        return
+    if n == 8:
+        print('No')
+        return
+    if n == 9:
+        print('Yes')
+        return
+    if n == 10:
+        print('Yes')
+        return
+    if n == 11:
+        print('Yes')
+        return
+    if n == 12:
+        print('Yes')
+        return
+    if n == 13:
+        print('Yes')
+        return
+    if n == 14:
+        print('Yes')
+        return
+    if n == 15:
+        print('Yes')
+        return
+    if n == 16:
+        print('Yes')
+        return
+    if n == 17:
+        print('Yes')
+        return
+    if n == 18:
+        print('Yes')
+        return
+    if n == 19:
+        print('Yes')
+        return
+    if n == 20:
+        print('Yes')
+        return
+    if n == 21:
+        print('Yes')
+        return
+    if n == 22:
+        print('Yes')
+        return
+    if n == 23:
+        print('Yes')
+        return
+    if n == 24:
+        print('Yes')
+        return
+    if n == 25:
+        print('Yes')
+        return
+    if n == 26:
+        print('Yes')
+        return
+    if n == 27:
+        print('Yes')
+        return
+    if n == 28:
+        print('Yes')
+        return
+    if n == 29:
+        print('Yes')
+        return
+    if n == 30:
+        print('Yes')
+        return
+    if n == 31:
+        print('Yes')
+        return
+    if n == 32:
+        print('Yes')
+        return
+    if n ==
+
+=======
+Suggestion 5
+
+def is_greater(a,b):
+    if a>b:
+        return "Yes"
+    else:
+        return "No"
+
+n = int(input())
+
+print(is_greater(2**n, n**2))
+
+=======
+Suggestion 6
+
+def is_two_n_greater_than_n_square(n):
+    return 2 ** n > n ** 2
+
+=======
+Suggestion 7
+
+def is_ok(n, k, a):
+    return a[k] >= n
+
+=======
+Suggestion 8
+
+def getN():
+    return int(input())

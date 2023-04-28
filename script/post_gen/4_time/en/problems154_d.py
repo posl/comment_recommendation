@@ -1,42 +1,151 @@
-#Problem Statement
-#We have N dice arranged in a line from left to right. The i-th die from the left shows p_i numbers from 1 to p_i with equal probability when thrown.
-#We will choose K adjacent dice, throw each of them independently, and compute the sum of the numbers shown. Find the maximum possible value of the expected value of this sum.
-#
-#Constraints
-#1 ≤ K ≤ N ≤ 200000
-#1 ≤ p_i ≤ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#p_1 ... p_N
-#
-#Output
-#Print the maximum possible value of the expected value of the sum of the numbers shown.
-#Your output will be considered correct when its absolute or relative error from our answer is at most 10^{-6}.
-#
-#Sample Input 1
-#5 3
-#1 2 2 4 5
-#
-#Sample Output 1
-#7.000000000000
-#When we throw the third, fourth, and fifth dice from the left, the expected value of the sum of the numbers shown is 7. This is the maximum value we can achieve.
-#
-#Sample Input 2
-#4 1
-#6 6 6 6
-#
-#Sample Output 2
-#3.500000000000
-#Regardless of which die we choose, the expected value of the number shown is 3.5.
-#
-#Sample Input 3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#Sample Output 3
-#32.000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    for i in range(N):
+        p[i] = (p[i] + 1) / 2
+    s = sum(p[:K])
+    ans = s
+    for i in range(N - K):
+        s += p[i + K] - p[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += (p[i]+1)/2
+    tmp = ans
+    for i in range(N-K):
+        tmp = tmp - (p[i]+1)/2 + (p[i+K]+1)/2
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    e = [0] * N
+    for i in range(N):
+        e[i] = (p[i] + 1) / 2
+    sum = 0
+    for i in range(K):
+        sum += e[i]
+    max = sum
+    for i in range(K, N):
+        sum += e[i]
+        sum -= e[i - K]
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    for i in range(1, n + 1):
+        p[i] += p[i - 1]
+    ans = 0
+    for i in range(n - k + 1):
+        ans = max(ans, (p[i + k] - p[i]) / 2 + p[i])
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    s = sum(p[:k])
+    for i in range(k, n):
+        s = max(s, s - p[i-k] + p[i])
+    print((s + k) / 2)
+
+=======
+Suggestion 6
+
+def dice(N, K, p):
+    p = [0] + p
+    for i in range(1, N+1):
+        p[i] += p[i-1]
+    ans = 0
+    for i in range(N-K+1):
+        ans = max(ans, p[i+K]-p[i])
+    return (ans+K)/2
+
+N, K = map(int, input().split())
+p = list(map(int, input().split()))
+print(dice(N, K, p))
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    #print(N, K, p)
+    #print([sum(p[i:i+K]) for i in range(N-K+1)])
+    print(max([sum(p[i:i+K]) for i in range(N-K+1)]) / 2 + K / 2)
+
+=======
+Suggestion 8
+
+def dice():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    max_sum = 0
+    for i in range(N-K+1):
+        sum = 0
+        for j in range(K):
+            sum += p[i+j]
+        if sum > max_sum:
+            max_sum = sum
+    return max_sum/2
+
+print(dice())
+
+=======
+Suggestion 9
+
+def get_expected_value(n, k, p):
+    expected_value = 0
+    for i in range(n - k + 1):
+        expected_value += (k * (k + 1) / 2) / k * sum(p[i:i + k]) / k
+    return expected_value
+
+=======
+Suggestion 10
+
+def dice(n,k,p):
+    #n - number of dice
+    #k - number of dice to be chosen
+    #p - list of sides of each die
+    #return - max expected sum of k dice
+    #print("n=",n,"k=",k,"p=",p)
+    #print("p[0:k]=",p[0:k])
+    #print("sum(p[0:k])=",sum(p[0:k]))
+    max_expected_sum = sum(p[0:k])
+    for i in range(1,n-k+1):
+        #print("i=",i)
+        #print("p[i:i+k]=",p[i:i+k])
+        #print("sum(p[i:i+k])=",sum(p[i:i+k]))
+        if sum(p[i:i+k]) > max_expected_sum:
+            max_expected_sum = sum(p[i:i+k])
+    return max_expected_sum

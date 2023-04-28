@@ -1,61 +1,249 @@
-#Problem Statement
-#Given is a rooted tree with N vertices numbered 1 to N.
-#The root is Vertex 1, and the i-th edge (1 ≦ i ≦ N - 1) connects Vertex a_i and b_i.
-#Each of the vertices has a counter installed. Initially, the counters on all the vertices have the value 0.
-#Now, the following Q operations will be performed:
-#Operation j (1 ≦ j ≦ Q): Increment by x_j the counter on every vertex contained in the subtree rooted at Vertex p_j.
-#Find the value of the counter on each vertex after all operations.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ a_i < b_i ≦ N
-#1 ≦ p_j ≦ N
-#1 ≦ x_j ≦ 10^4
-#The given graph is a tree.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#a_1 b_1
-#:
-#a_{N-1} b_{N-1}
-#p_1 x_1
-#:
-#p_Q x_Q
-#
-#Output
-#Print the values of the counters on Vertex 1, 2, ..., N after all operations, in this order, with spaces in between.
-#
-#Sample Input 1
-#4 3
-#1 2
-#2 3
-#2 4
-#2 10
-#1 100
-#3 1
-#
-#Sample Output 1
-#100 110 111 110
-#The tree in this input is as follows:
-#Each operation changes the values of the counters on the vertices as follows:
-#Operation 1: Increment by 10 the counter on every vertex contained in the subtree rooted at Vertex 2, that is, Vertex 2, 3, 4. The values of the counters on Vertex 1, 2, 3, 4 are now 0, 10, 10, 10, respectively.
-#Operation 2: Increment by 100 the counter on every vertex contained in the subtree rooted at Vertex 1, that is, Vertex 1, 2, 3, 4. The values of the counters on Vertex 1, 2, 3, 4 are now 100, 110, 110, 110, respectively.
-#Operation 3: Increment by 1 the counter on every vertex contained in the subtree rooted at Vertex 3, that is, Vertex 3. The values of the counters on Vertex 1, 2, 3, 4 are now 100, 110, 111, 110, respectively.
-#
-#Sample Input 2
-#6 2
-#1 2
-#1 3
-#2 4
-#3 6
-#2 5
-#1 10
-#1 10
-#
-#Sample Output 2
-#20 20 20 20 20 20
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    tree = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        tree[a-1].append(b-1)
+    counter = [0] * N
+    for _ in range(Q):
+        p, x = map(int, input().split())
+        counter[p-1] += x
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in tree[v]:
+            counter[u] += counter[v]
+            stack.append(u)
+    print(*counter)
+
+=======
+Suggestion 2
+
+def dfs(v, p):
+    for u in edges[v]:
+        if u == p:
+            continue
+        counter[u] += counter[v]
+        dfs(u, v)
+
+N, Q = map(int, input().split())
+edges = [[] for _ in range(N)]
+counter = [0] * N
+for _ in range(N-1):
+    a, b = map(int, input().split())
+    edges[a-1].append(b-1)
+    edges[b-1].append(a-1)
+for _ in range(Q):
+    p, x = map(int, input().split())
+    counter[p-1] += x
+dfs(0, -1)
+print(*counter)
+
+=======
+Suggestion 3
+
+def dfs(v, p):
+  for u in g[v]:
+    if u == p:
+      continue
+    c[u] += c[v]
+    dfs(u, v)
+
+n, q = map(int, input().split())
+g = [[] for i in range(n)]
+for i in range(n - 1):
+  a, b = map(int, input().split())
+  g[a - 1].append(b - 1)
+  g[b - 1].append(a - 1)
+c = [0] * n
+for i in range(q):
+  p, x = map(int, input().split())
+  c[p - 1] += x
+dfs(0, -1)
+print(*c)
+
+=======
+Suggestion 4
+
+def dfs(v,p):
+    for u in g[v]:
+        if u==p:
+            continue
+        cnt[u]+=cnt[v]
+        dfs(u,v)
+
+n,q=map(int,input().split())
+g=[[] for _ in range(n)]
+cnt=[0]*n
+for _ in range(n-1):
+    a,b=map(int,input().split())
+    g[a-1].append(b-1)
+    g[b-1].append(a-1)
+for _ in range(q):
+    p,x=map(int,input().split())
+    cnt[p-1]+=x
+dfs(0,-1)
+print(*cnt)
+
+=======
+Suggestion 5
+
+def dfs(v, p):
+    for u in G[v]:
+        if u == p: continue
+        cnt[u] += cnt[v]
+        dfs(u, v)
+N, Q = map(int, input().split())
+G = [[] for _ in range(N)]
+for _ in range(N-1):
+    a, b = map(lambda x: int(x)-1, input().split())
+    G[a].append(b)
+    G[b].append(a)
+cnt = [0]*N
+for _ in range(Q):
+    p, x = map(int, input().split())
+    cnt[p-1] += x
+dfs(0, -1)
+print(*cnt)
+
+=======
+Suggestion 6
+
+def dfs(v,p):
+    for u in edges[v]:
+        if u == p:
+            continue
+        cnt[u] += cnt[v]
+        dfs(u,v)
+
+N,Q = map(int,input().split())
+edges = [[] for _ in range(N)]
+cnt = [0]*N
+for _ in range(N-1):
+    a,b = map(int,input().split())
+    edges[a-1].append(b-1)
+    edges[b-1].append(a-1)
+for _ in range(Q):
+    p,x = map(int,input().split())
+    cnt[p-1] += x
+dfs(0,-1)
+print(*cnt)
+
+=======
+Suggestion 7
+
+def dfs(v, p, d):
+  for u in G[v]:
+    if u == p: continue
+    d[u] += d[v]
+    dfs(u, v, d)
+
+N, Q = map(int, input().split())
+G = [[] for _ in range(N)]
+for _ in range(N-1):
+  a, b = map(int, input().split())
+  G[a-1].append(b-1)
+  G[b-1].append(a-1)
+
+d = [0] * N
+for _ in range(Q):
+  p, x = map(int, input().split())
+  d[p-1] += x
+
+dfs(0, -1, d)
+print(*d)
+
+=======
+Suggestion 8
+
+def dfs(v, p, d):
+    global D
+    D[v] = d
+    for nv in G[v]:
+        if nv == p:
+            continue
+        dfs(nv, v, d+1)
+
+N, Q = map(int, input().split())
+G = [[] for _ in range(N)]
+for _ in range(N-1):
+    a, b = map(int, input().split())
+    a, b = a-1, b-1
+    G[a].append(b)
+    G[b].append(a)
+
+D = [0] * N
+dfs(0, -1, 0)
+
+cnt = [0] * N
+for _ in range(Q):
+    p, x = map(int, input().split())
+    p = p-1
+    cnt[p] += x
+
+for i in range(N):
+    cnt[i] += D[i]
+
+print(*cnt)
+
+=======
+Suggestion 9
+
+def dfs(v, p, c):
+    global ans
+    ans[v-1] += c
+    for i in range(len(G[v])):
+        if G[v][i] == p:
+            continue
+        dfs(G[v][i], v, c)
+
+N, Q = map(int, input().split())
+G = [[] for i in range(N+1)]
+ans = [0] * N
+
+for i in range(N-1):
+    a,b = map(int, input().split())
+    G[a].append(b)
+    G[b].append(a)
+
+for i in range(Q):
+    p,x = map(int, input().split())
+    dfs(p, -1, x)
+
+print(*ans)
+
+=======
+Suggestion 10
+
+def dfs(v, p, d):
+    global depth
+    depth[v] = d
+    for i in graph[v]:
+        if i == p:
+            continue
+        dfs(i, v, d + 1)
+
+n, q = map(int, input().split())
+graph = [[] for i in range(n + 1)]
+depth = [0] * (n + 1)
+
+for i in range(n - 1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+dfs(1, 0, 0)
+
+ans = [0] * (n + 1)
+
+for i in range(q):
+    p, x = map(int, input().split())
+    ans[p] += x
+
+for i in range(1, n + 1):
+    print(ans[i])

@@ -1,45 +1,160 @@
-#問題文
-#長さ N かつ全ての要素が 1 以上 M 以下である整数列のうち、狭義単調増加であるものを全て辞書順に出力してください。
-#
-#注記
-#ある 2 個の異なる長さの等しい整数列 A_1,A_2,...,A_N と B_1,B_2,...,B_N が以下を満たすとき、またその時に限り辞書順で A が B より早いと定義されます。
-#ある整数 i(1 ≦ i ≦ N) が存在し、1 ≦ j < i である全ての整数 j に対し A_j=B_j が成り立ち、かつ A_i < B_i が成り立つ。
-#ある整数列 A_1,A_2,...,A_N は以下を満たすとき、またその時に限り狭義単調増加です。
-#全ての整数 i(1 ≦ i ≦ N-1) に対し A_i < A_{i+1} が成り立つ。
-#
-#制約
-#1 ≦ N ≦ M ≦ 10
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#
-#出力
-#条件を満たす整数列を一行に一つずつ、辞書順に出力せよ（出力例を参考にせよ）。
-#
-#入力例 1
-#2 3
-#
-#出力例 1
-#1 2 
-#1 3 
-#2 3 
-#条件を満たす数列は (1,2),(1,3),(2,3) の 3 個です。これらを辞書順で早い方から出力します。
-#
-#入力例 2
-#3 5
-#
-#出力例 2
-#1 2 3 
-#1 2 4 
-#1 2 5 
-#1 3 4 
-#1 3 5 
-#1 4 5 
-#2 3 4 
-#2 3 5 
-#2 4 5 
-#3 4 5 
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    for i in range(1,m-n+2):
+        print(i,end=" ")
+        for j in range(1,n):
+            print(i+j,end=" ")
+        print()
+
+=======
+Suggestion 2
+
+def f(n, m, a, i):
+    if i == n:
+        print(' '.join(map(str, a)))
+        return
+    for j in range(1, m+1):
+        a[i] = j
+        f(n, m, a, i+1)
+
+n, m = map(int, input().split())
+a = [0] * n
+f(n, m, a, 0)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = [1 for _ in range(n)]
+    while True:
+        print(*a)
+        for i in range(n-1, -1, -1):
+            if a[i] < m:
+                a[i] += 1
+                break
+            else:
+                a[i] = 1
+        else:
+            break
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    for i in range(1,m+1):
+        if i > n:
+            break
+        else:
+            for j in range(i+1,m+1):
+                if j > n:
+                    break
+                else:
+                    for k in range(j+1,m+1):
+                        if k > n:
+                            break
+                        else:
+                            print(i,j,k)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int, input().split())
+
+    for i in range(1, m+1):
+        for j in range(1, m+1):
+            if i >= j:
+                continue
+            for k in range(1, m+1):
+                if j >= k:
+                    continue
+                print(i, j, k)
+
+=======
+Suggestion 6
+
+def rec(i, m, n, a):
+  if i == n:
+    print(' '.join(map(str, a)))
+    return
+  for j in range(1, m+1):
+    a[i] = j
+    rec(i+1, m, n, a)
+
+=======
+Suggestion 7
+
+def dfs(i, n, m, a):
+    if i == n:
+        print(' '.join(map(str, a)))
+        return
+    for j in range(1, m+1):
+        if i == 0:
+            a[i] = j
+            dfs(i+1, n, m, a)
+        else:
+            if a[i-1] < j:
+                a[i] = j
+                dfs(i+1, n, m, a)
+
+=======
+Suggestion 8
+
+def main():
+    n,m=map(int,input().split())
+    a=[1]*n
+    while True:
+        print(*a)
+        if a[-1]==m:
+            for i in range(n-1,-1,-1):
+                if a[i]!=m:
+                    a[i]+=1
+                    for j in range(i+1,n):
+                        a[j]=a[i]
+                    break
+            else:
+                break
+        else:
+            a[-1]+=1
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(1,m+1):
+        a.append(i)
+    for i in range(1,n):
+        a.append(a[-1]+1)
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            print(a[j-1],end="")
+            if j==n:
+                print()
+            else:
+                print(" ",end="")
+        a[-j] += 1
+        for k in range(n-1):
+            if a[-j+k] == m+1:
+                a[-j+k] = 1
+                a[-j+k+1] += 1
+    return 0
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    for i in range(1, M+1):
+        if i > N:
+            print(i)
+        else:
+            print(i, end=' ')

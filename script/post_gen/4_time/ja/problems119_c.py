@@ -1,71 +1,200 @@
-#問題文
-#あなたは N 本の竹を持っています。これらの長さはそれぞれ l_1, l_2, ..., l_N です (単位: センチメートル)。
-#あなたの目的は、これらの竹のうち何本か (全部でもよい) を使い、長さが A, B, C であるような 3 本の竹を得ることです。そのために、以下の三種類の魔法を任意の順に何度でも使うことができます。
-#延長魔法: 1 MP (マジックポイント) を消費し、1 本の竹を選んでその長さを 1 増やす。
-#短縮魔法: 1 MP を消費し、1 本の長さ 2 以上の竹を選んでその長さを 1 減らす。
-#合成魔法: 10 MP を消費し、2 本の竹を選んで接続し 1 本の竹とする。この新たな竹の長さは接続した 2 本の竹の長さの合計に等しい。(以後、この竹に対してさらに魔法を使用することもできる。)
-#目的を達成するには、最小でいくつの MP が必要でしょうか？
-#
-#制約
-#3 ≦ N ≦ 8
-#1 ≦ C < B < A ≦ 1000
-#1 ≦ l_i ≦ 1000
-#入力される値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B C
-#l_1
-#l_2
-#:
-#l_N
-#
-#出力
-#目的の達成に必要な MP の最小量を出力せよ。
-#
-#入力例 1
-#5 100 90 80
-#98
-#40
-#30
-#21
-#80
-#
-#出力例 1
-#23
-#長さ 98, 40, 30, 21, 80 の 5 本の竹から長さ 100, 90, 80 の 3 本の竹を得ようとしています。長さ 80 の竹ははじめから持っており、長さ 100, 90 の竹は次のように魔法を使うと合計 23 MP を消費することで得られ、これが最適です。
-#長さ 98 の竹に延長魔法を 2 回使い、長さ 100 の竹を得る。(消費 MP: 2)
-#長さ 40, 30 の竹に合成魔法を使い、長さ 70 の竹を得る。(消費 MP: 10)
-#長さ 21 の竹に短縮魔法を 1 回使い、長さ 20 の竹を得る。(消費 MP: 1)
-#手順 2. で得た長さ 70 の竹と手順 3. で得た長さ 20 の竹に合成魔法を使い、長さ 90 の竹を得る。(消費 MP: 10)
-#
-#入力例 2
-#8 100 90 80
-#100
-#100
-#90
-#90
-#90
-#80
-#80
-#80
-#
-#出力例 2
-#0
-#欲しい長さの竹をすでにすべて持っている場合、必要な MP は 0 です。このように、必ずしもすべての竹を使う必要はありません。
-#
-#入力例 3
-#8 1000 800 100
-#300
-#333
-#400
-#444
-#500
-#555
-#600
-#666
-#
-#出力例 3
-#243
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    INF = 10 ** 9
+    def dfs(cur, a, b, c):
+        if cur == N:
+            if a == 0 or b == 0 or c == 0:
+                return INF
+            return abs(a - A) + abs(b - B) + abs(c - C) - 30
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b, c = map(int, input().split())
+    l = [int(input()) for _ in range(n)]
+    INF = 10 ** 9
+    def dfs(cur, a, b, c):
+        if cur == n:
+            if min(a, b, c) > 0:
+                return abs(a - A) + abs(b - B) + abs(c - C) - 30
+            else:
+                return INF
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    INF = 10 ** 9
+    ans = INF
+    for i in range(4 ** N):
+        A1 = 0
+        B1 = 0
+        C1 = 0
+        mp = 0
+        for j in range(N):
+            if (i >> 2 * j) & 3 == 1:
+                if A1 != 0:
+                    mp += 10
+                A1 += l[j]
+            elif (i >> 2 * j) & 3 == 2:
+                if B1 != 0:
+                    mp += 10
+                B1 += l[j]
+            elif (i >> 2 * j) & 3 == 3:
+                if C1 != 0:
+                    mp += 10
+                C1 += l[j]
+        if A1 != 0 and B1 != 0 and C1 != 0:
+            mp += abs(A1 - A) + abs(B1 - B) + abs(C1 - C)
+            ans = min(ans, mp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    input = sys.stdin.readline
+
+    N, A, B, C = map(int, input().split())
+    L = [int(input()) for _ in range(N)]
+
+    INF = 10 ** 9
+    ans = INF
+    for i in range(4 ** N):
+        a = []
+        b = []
+        c = []
+        for j in range(N):
+            if (i >> (2 * j)) & 3 == 0:
+                a.append(L[j])
+            elif (i >> (2 * j)) & 3 == 1:
+                b.append(L[j])
+            elif (i >> (2 * j)) & 3 == 2:
+                c.append(L[j])
+        if len(a) == 0 or len(b) == 0 or len(c) == 0:
+            continue
+
+        mp = 0
+        mp += (len(a) - 1) * 10
+        mp += (len(b) - 1) * 10
+        mp += (len(c) - 1) * 10
+
+        mp += abs(sum(a) - A)
+        mp += abs(sum(b) - B)
+        mp += abs(sum(c) - C)
+
+        ans = min(ans, mp)
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input():
+    n,a,b,c = map(int,input().split())
+    l = []
+    for i in range(n):
+        l.append(int(input()))
+    return n,a,b,c,l
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b, c = map(int, input().split())
+    ls = [int(input()) for _ in range(n)]
+    print(bfs(n, a, b, c, ls))
+
+=======
+Suggestion 7
+
+def main():
+    # 1行目の入力を取得
+    n, a, b, c = map(int, input().split())
+    # 2行目以降の入力を取得
+    l = [int(input()) for _ in range(
+
+=======
+Suggestion 8
+
+def main():
+    n,a,b,c=map(int,input().split())
+    l=[int(input()) for _ in range(n)]
+    ans=10**9
+    for i in range(4**n):
+        mp=0
+        s=[0,0,0,0]
+        for j in range(n):
+            s[i%(4**(j+1))//(4**j)]+=l[j]
+            if i%(4**(j+1))//(4**j)==1:
+                mp+=a
+            elif i%(4**(j+1))//(4**j)==2:
+                mp+=b
+            elif i%(4**(j+1))//(4**j)==3:
+                mp+=c
+        if s[0]==0 or s[1]==0 or s[2]==0:
+            continue
+        mp+=abs(a-s[0])+abs(b-s[1])+abs(c-s[2])
+        ans=min(ans,mp)
+    print(ans)
+
+=======
+Suggestion 9
+
+def concat(l1, l2):
+    if len(l1) == 0:
+        return l2
+    if len(l2) == 0:
+        return l1
+    if l1[-1] > l2[-1]:
+        return concat(l2, l1)
+    else:
+        return concat(l1[:-1], l2) + [l1[-1]]
+
+=======
+Suggestion 10
+
+def getMinMP(n, a, b, c, l):
+    minMP = 10 ** 9
+    for i in range(4 ** n):
+        tmp = i
+        mp = 0
+        a1, b1, c1 = 0, 0, 0
+        for j in range(n):
+            if tmp % 4 == 1:
+                a1 += l[j]
+                mp += 10
+            elif tmp % 4 == 2:
+                b1 += l[j]
+                mp += 10
+            elif tmp % 4 == 3:
+                c1 += l[j]
+                mp += 10
+            tmp //= 4
+        if a1 > 0 and b1 > 0 and c1 > 0:
+            mp += abs(a - a1) + abs(b - b1) + abs(c - c1)
+            minMP = min(mp, minMP)
+    return minMP

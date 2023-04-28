@@ -1,64 +1,97 @@
-#問題文
-#正整数 N,Q と、長さ N の英小文字からなる文字列 S が与えられます。
-#以下で説明されるクエリを Q 個処理してください。クエリは次の 2 種類のいずれかです。
-#1 x: 「S の末尾の文字を削除し、先頭に挿入する」という操作を x 回連続で行う。
-#2 x: S の x 番目の文字を出力する。
-#
-#制約
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ Q ≦ 5 × 10^5
-#1 ≦ x ≦ N
-#|S|=N
-#S は英小文字からなる。
-#2 x の形式のクエリが 1 個以上与えられる。
-#N,Q,x はすべて整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#S
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#それぞれのクエリは以下の形式で与えられる。ここで、t は 1 または 2 である。
-#t x
-#
-#出力
-#2 x の形式の各クエリについて、答えを一行に出力せよ。
-#
-#入力例 1
-#3 3
-#abc
-#2 2
-#1 1
-#2 2
-#
-#出力例 1
-#b
-#a
-#1 個目のクエリのとき、S は abc なので 2 文字目の b を出力します。
-#2 個目のクエリのとき、S は abc から cab に変わります。
-#3 個目のクエリのとき、S は cab なので 2 文字目の a を出力します。
-#
-#入力例 2
-#10 8
-#dsuccxulnl
-#2 4
-#2 7
-#1 2
-#2 7
-#1 1
-#1 2
-#1 3
-#2 5
-#
-#出力例 2
-#c
-#u
-#c
-#u
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    s = list(s)
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s.insert(0, s.pop())
+        else:
+            print(s[x - 1])
+
+=======
+Suggestion 5
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    for i in range(q):
+        t,x = map(int,input().split())
+        if t == 1:
+            s = s[-x:]+s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    #print(n, q)
+    #print(s)
+    for i in range(q):
+        t, x = map(int, input().split())
+        #print(t, x)
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    query = [input().split() for _ in range(q)]
+    s = list(s)
+    for i in range(q):
+        if query[i][0] == "1":
+            s[int(query[i][1])-1], s[int(query[i][1])] = s[int(query[i][1])], s[int(query[i][1])-1]
+        else:
+            print(s[int(query[i][1])-1])

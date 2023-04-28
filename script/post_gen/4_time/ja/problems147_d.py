@@ -1,46 +1,196 @@
-#問題文
-#N 個の整数があり、i 番目の整数は A_i です。
-#sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j) を 10^9+7 で割った余りを求めてください。
-# XOR  とは
-#整数 A, B のビットごとの排他的論理和 a  XOR  b は、以下のように定義されます。
-# a  XOR  b を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち一方のみが 1 であれば 1、そうでなければ 0 である。
-#例えば、3  XOR  5 = 6 となります (二進表記すると: 011  XOR  101 = 110)。
-#
-#
-#制約
-#2 ≦ N ≦ 3 × 10^5
-#0 ≦ A_i < 2^{60}
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j) を 10^9+7 で割った余りを出力せよ。
-#
-#入力例 1
-#3
-#1 2 3
-#
-#出力例 1
-#6
-#(1 XOR  2)+(1 XOR  3)+(2 XOR  3)=3+2+1=6 となります。
-#
-#入力例 2
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#出力例 2
-#237
-#
-#入力例 3
-#10
-#3 14 159 2653 58979 323846 2643383 27950288 419716939 9375105820
-#
-#出力例 3
-#103715602
-#和を 10^9+7 で割った余りを出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j]>>i&1:
+                cnt += 1
+        ans += (cnt*(n-cnt)%mod)*(1<<i)%mod
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] & 1:
+                cnt += 1
+            a[j] >>= 1
+        ans += cnt * (n - cnt) * (1 << i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if (A[j] >> i) & 1:
+                cnt += 1
+        ans += (cnt * (N-cnt) * (1<<i))
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(60):
+        count = 0
+        for j in range(N):
+            if A[j] & 1:
+                count += 1
+            A[j] >>= 1
+        ans += count*(N-count)*pow(2,i,MOD)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        ans += 2**(i+1) * cnt * (n-cnt)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for a in A:
+            if a & 1:
+                cnt += 1
+            a >>= 1
+        ans += cnt * (N - cnt) * (2 ** i)
+        ans %= mod
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    # n = int(input())
+    # a = list(map(int, input().split()))
+    n = 3
+    a = [1, 2, 3]
+    # n = 10
+    # a = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+    # n = 10
+    # a = [3, 14, 159, 2653, 58979, 323846, 2643383, 27950288, 419716939, 9375105820]
+    # n = 300000
+    # a = [1] * 300000
+    # print(a)
+    mod = 10 ** 9 + 7
+    ans = 0
+    for i in range(60):
+        one = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                one += 1
+        ans += (one * (n - one) * (1 << i))
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        bit = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                bit += 1
+        ans += bit * (n - bit) * pow(2, i, mod)
+        ans %= mod
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def xor_sum(n, a):
+    ans = 0
+    for i in range(60):
+        count = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                count += 1
+        ans += (count * (n - count) * (1 << i)) % (10**9+7)
+    return ans % (10**9+7)
+
+n = int(input())
+a = list(map(int, input().split()))
+print(xor_sum(n, a))
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+
+    #ビットごとに1が立っている数
+    bit_count = [0] * 60
+    for a in A:
+        for bit in range(60):
+            if a & (1<<bit):
+                bit_count[bit] += 1
+
+    #ビットごとに1が立っている数の組み合わせ
+    bit_comb = [0] * 60
+    for bit in range(60):
+        bit_comb[bit] = bit_count[bit] * (N - bit_count[bit])
+
+    #ビットごとに1が立っている数の組み合わせの和
+    bit_sum = 0
+    for bit in range(60):
+        bit_sum += bit_comb[bit] * (1<<bit)
+
+    print(bit_sum % mod)

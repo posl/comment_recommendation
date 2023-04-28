@@ -1,44 +1,183 @@
-#問題文
-#整数 X と、長さ N の整数列 p_1, ..., p_N が与えられます。
-#整数列 p_1, ..., p_N に含まれない整数 (正とは限らない) のうち X に最も近いもの、つまり X との差の絶対値が最小のものを求めてください。そのような整数が複数存在する場合は、そのうち最も小さいものを答えてください。
-#
-#制約
-#1 ≦ X ≦ 100
-#0 ≦ N ≦ 100
-#1 ≦ p_i ≦ 100
-#p_1, ..., p_N はすべて異なる。
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X N
-#p_1 ... p_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#6 5
-#4 7 10 6 5
-#
-#出力例 1
-#8
-#整数列 4, 7, 10, 6, 5 に含まれない整数のうち、最も 6 に近いものは 8 です。
-#
-#入力例 2
-#10 5
-#4 7 10 6 5
-#
-#出力例 2
-#9
-#整数列 4, 7, 10, 6, 5 に含まれない整数のうち、最も 10 に近いものは 9 と 11 です。このうち小さい方である 9 を出力します。
-#
-#入力例 3
-#100 0
-#
-#
-#出力例 3
-#100
-#N = 0 の場合、入力の 2 行目は空行となります。また、この場合のように、X 自身も答えとなりえます。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    if n == 0:
+        print(x)
+        return
+    if x not in p:
+        print(x)
+        return
+    p.sort()
+    for i in range(100):
+        if x-i not in p:
+            print(x-i)
+            return
+        elif x+i not in p:
+            print(x+i)
+            return
+
+=======
+Suggestion 2
+
+def main():
+    x,n = map(int,input().split())
+    if n == 0:
+        print(x)
+        return
+    p = list(map(int,input().split()))
+    p.sort()
+    if x not in p:
+        print(x)
+        return
+    for i in range(1,101):
+        if x-i not in p:
+            print(x-i)
+            return
+        if x+i not in p:
+            print(x+i)
+            return
+
+=======
+Suggestion 3
+
+def main():
+    x, n = map(int, input().split())
+    if n == 0:
+        print(x)
+        return
+    p = list(map(int, input().split()))
+    p.sort()
+    for i in range(100):
+        if x - i not in p:
+            print(x - i)
+            return
+        elif x + i not in p:
+            print(x + i)
+            return
+
+=======
+Suggestion 4
+
+def solve():
+    x, n = map(int, input().split())
+    if n == 0:
+        return x
+    p = list(map(int, input().split()))
+    p.sort()
+    if x not in p:
+        return x
+    for i in range(1, 100):
+        if x - i not in p:
+            return x - i
+        elif x + i not in p:
+            return x + i
+
+=======
+Suggestion 5
+
+def main():
+    x,n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        return
+    elif x not in p:
+        print(x)
+        return
+    else:
+        for i in range(1,101):
+            if x-i not in p:
+                print(x-i)
+                return
+            elif x+i not in p:
+                print(x+i)
+                return
+
+=======
+Suggestion 6
+
+def solve():
+    X, N = map(int, input().split())
+    if N == 0:
+        return X
+    p = list(map(int, input().split()))
+    if X not in p:
+        return X
+    else:
+        for i in range(1, 100):
+            if X - i not in p:
+                return X - i
+            elif X + i not in p:
+                return X + i
+
+=======
+Suggestion 7
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        return
+    p.sort()
+    for i in range(0, x + 1):
+        if i not in p:
+            print(i)
+            return
+        if x - i not in p:
+            print(x - i)
+            return
+
+=======
+Suggestion 8
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    if n == 0:
+        print(x)
+        return
+    p.sort()
+    for i in range(0,100):
+        if x-i not in p:
+            print(x-i)
+            return
+        elif x+i not in p:
+            print(x+i)
+            return
+
+=======
+Suggestion 9
+
+def main():
+    x,n = map(int,input().split())
+    p = set(map(int,input().split()))
+    if n == 0:
+        print(x)
+        return
+    ans = 0
+    for i in range(100):
+        if not x - i in p:
+            ans = x - i
+            break
+        if not x + i in p:
+            ans = x + i
+            break
+    print(ans)
+
+=======
+Suggestion 10
+
+def search_nearest_int(x, p_list):
+    min_diff = 100
+    for p in p_list:
+        diff = abs(x - p)
+        if diff < min_diff:
+            min_diff = diff
+            nearest_int = p
+    return nearest_int

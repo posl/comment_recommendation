@@ -1,29 +1,73 @@
-#Problem Statement
-#Print the circumference of a circle of radius R.
-#
-#Constraints
-#1 ≦ R ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#R
-#
-#Output
-#Print the circumference of the circle.
-#Your output is considered correct if and only if its absolute or relative error from our answer is at most 10^{-2}.
-#
-#Sample Input 1
-#1
-#
-#Sample Output 1
-#6.28318530717958623200
-#Since we accept an absolute or relative error of at most 10^{-2}, 6.28 is also an acceptable output, but 6 is not.
-#
-#Sample Input 2
-#73
-#
-#Sample Output 2
-#458.67252742410977361942
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(2*r*3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280)
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(2*r*3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253)
+
+=======
+Suggestion 3
+
+def circumference_of_circle(r):
+    return 2 * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 * r
+
+r = int(input())
+print(circumference_of_circle(r))
+
+=======
+Suggestion 4
+
+def main():
+    r = int(input())
+    print(2 * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 * r)
+
+=======
+Suggestion 5
+
+def circumference_of_a_circle_of_radius_R(R):
+    return 2 * 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899 * R
+
+=======
+Suggestion 6
+
+def circumference_of_circle(r):
+    return 2 * 3.141592653589793238462643383279 * r
+
+r = int(input())
+print(circumference_of_circle(r))
+
+=======
+Suggestion 7
+
+def main():
+    r = int(input())
+    print(2 * 3.14159265358979323846 * r)
+
+=======
+Suggestion 8
+
+def main():
+    R = int(input())
+    print(2 * 3.14159265358979323846 * R)
+
+=======
+Suggestion 9
+
+def circumference(r):
+    return 2 * 3.14159265358979323846 * r
+
+=======
+Suggestion 10
+
+def circumference_of_circle():
+    r = int(input())
+    print(2 * r * 3.14159265358979323846)

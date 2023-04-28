@@ -1,34 +1,170 @@
-#Problem Statement
-#We have a string S of length N consisting of R, G, and B.
-#Find the number of triples (i,j,k)(1 ≦ i < j < k ≦ N) that satisfy both of the following conditions:
-#S_i ≠ S_j, S_i ≠ S_k, and S_j ≠ S_k.
-#j - i ≠ k - j.
-#
-#Constraints
-#1 ≦ N ≦ 4000
-#S is a string of length N consisting of R, G, and B.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S
-#
-#Output
-#Print the number of triplets in question.
-#
-#Sample Input 1
-#4
-#RRGB
-#
-#Sample Output 1
-#1
-#Only the triplet (1,3,4) satisfies both conditions. The triplet (2,3,4) satisfies the first condition but not the second, so it does not count.
-#
-#Sample Input 2
-#39
-#RBRBGRBGGBBRRGBBRRRBGGBRBGBRBGBRBBBGBBB
-#
-#Sample Output 2
-#1800
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i + 1, n):
+            k = j + (j - i)
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = j + (j - i)
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    r = S.count('R')
+    g = S.count('G')
+    b = S.count('B')
+    ans = r * g * b
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2 * j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+    ans = R * G * B
+    for i in range(N):
+        for j in range(i+1, N):
+            k = j + (j - i)
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+    ans = R * G * B
+    for i in range(N):
+        for j in range(i+1, N):
+            k = j + (j - i)
+            if k < N:
+                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+    ans = R * G * B
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2 * j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+
+    cnt = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            k = j + (j - i)
+            if k < n and s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
+                cnt += 1
+
+    print(r * g * b - cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == S[j]:
+                continue
+            for k in range(j+1, N):
+                if S[i] == S[k] or S[j] == S[k]:
+                    continue
+                if j-i != k-j:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def solve():
+    N=int(input())
+    S=input()
+    r=S.count('R')
+    g=S.count('G')
+    b=S.count('B')
+    ans=r*g*b
+    for i in range(N):
+        for j in range(i+1,N):
+            k=2*j-i
+            if k>=N:
+                continue
+            if S[i]!=S[j] and S[j]!=S[k] and S[k]!=S[i]:
+                ans-=1
+    print(ans)

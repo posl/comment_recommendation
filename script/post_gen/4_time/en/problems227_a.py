@@ -1,37 +1,87 @@
-#Problem Statement
-#We will hand out a total of K cards to N people numbered 1, 2, ..., N.
-#Beginning with Person A, we will give the cards one by one to the people in this order: A, A+1, A+2, ..., N, 1, 2, .... Who will get the last card?
-#Formally, after Person x(1 ≦ x < N) gets a card, Person x+1 will get a card. After Person N gets a card, Person 1 gets a card.
-#
-#Constraints
-#1 ≦ N,K ≦ 1000
-#1 ≦ A ≦ N
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K A
-#
-#Output
-#Print a number representing the person who will get the last card.
-#
-#Sample Input 1
-#3 3 2
-#
-#Sample Output 1
-#1
-#The cards are given to Person 2, 3, 1 in this order.
-#
-#Sample Input 2
-#1 100 1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#3 14 2
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k, a = map(int, input().split())
+    if (k - a) % (n - 1) == 0:
+        print(n)
+    else:
+        print((k - a) % (n - 1) + a)
+
+=======
+Suggestion 2
+
+def main():
+    N, K, A = map(int, input().split())
+    print((K - N) // (N - 1) + 1 if (K - N) % (N - 1) else (K - N) // (N - 1))
+
+=======
+Suggestion 3
+
+def main():
+    N, K, A = map(int, input().split())
+    if K <= N:
+        print(K)
+    else:
+        print(N - (K - N) % (N - A + 1))
+
+=======
+Suggestion 4
+
+def main():
+    n, k, a = map(int, input().split())
+    if k <= n:
+        print(k)
+    else:
+        k = k - n
+        print(n - (k % n))
+
+=======
+Suggestion 5
+
+def main():
+    n, k, a = map(int, input().split())
+    if k < n:
+        print(k)
+    else:
+        print(k % n)
+
+=======
+Suggestion 6
+
+def main():
+    N, K, A = map(int, input().split())
+    print((K // N + (K % N >= A)) % N or N)
+
+=======
+Suggestion 7
+
+def main():
+    n,k,a = map(int, input().split())
+    print(1 + (k - a - 1) // (n - a))
+
+=======
+Suggestion 8
+
+def main():
+    N, K, A = map(int, input().split())
+    print(int((K - A - 1) / (N - 1)) + 1)
+
+=======
+Suggestion 9
+
+def problem227_a():
+    n, k, a = map(int, input().split())
+    print((k - a) % (n - a) + a)
+
+=======
+Suggestion 10
+
+def main():
+    n, k, a = map(int, input().split())
+    if (n-a) >= (k-n):
+        print(k-n+a)
+    else:
+        print(a+k-n)

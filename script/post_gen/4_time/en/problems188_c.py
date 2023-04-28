@@ -1,52 +1,123 @@
-#Problem Statement
-#2^N players, labeled 1 through 2^N, will compete against each other in a single-elimination programming tournament.
-#The rating of Player i is A_i. Any two players have different ratings, and a match between two players always results in the victory of the player with the higher rating.  
-#The tournament looks like a perfect binary tree.
-#Formally, the tournament will proceed as follows:  
-#For each integer i = 1, 2, 3, ..., N in this order, the following happens.
-#For each integer j (1 ≦ j ≦ 2^{N - i}), among the players who have never lost, the player with the (2j - 1)-th smallest label and the player with the 2j-th smallest label play a match against each other.
-#
-#Find the label of the player who will take second place, that is, lose in the final match.
-#
-#Constraints
-#1 ≦ N ≦ 16
-#1 ≦ A_i ≦ 10^9
-#A_i are pairwise different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_{2^N}
-#
-#Output
-#Print the label of the player who will take second place.
-#
-#Sample Input 1
-#2
-#1 4 2 5
-#
-#Sample Output 1
-#2
-#First, there will be two matches between Players 1 and 2 and between Players 3 and 4. According to the ratings, Players 2 and 4 will win.
-#Then, there will be a match between Players 2 and 4, and the tournament will end with Player 4 becoming champion.
-#The player who will lose in the final match is Player 2, so we should print 2.  
-#
-#Sample Input 2
-#2
-#3 1 5 4
-#
-#Sample Output 2
-#1
-#First, there will be two matches between Players 1 and 2 and between Players 3 and 4. According to the ratings, Players 1 and 3 will win.
-#Then, there will be a match between Players 1 and 3, and the tournament will end with Player 3 becoming champion.
-#The player who will lose in the final match is Player 1, so we should print 1.  
-#
-#Sample Input 3
-#4
-#6 13 12 5 3 7 10 11 16 9 8 15 2 1 14 4
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    for i in range(N):
+        A = [max(A[2*j], A[2*j+1]) for j in range(2**(N-i-1))]
+    print(A.index(min(A))+1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [[i, A[i]] for i in range(2**N)]
+    while len(A) > 2:
+        B = []
+        for i in range(0, len(A), 2):
+            if A[i][1] > A[i+1][1]:
+                B.append(A[i])
+            else:
+                B.append(A[i+1])
+        A = B
+    if A[0][1] > A[1][1]:
+        print(A[1][0] + 1)
+    else:
+        print(A[0][0] + 1)
+
+main()
+
+=======
+Suggestion 3
+
+def solve(n, a):
+    a = [0] + a
+    for i in range(1, n + 1):
+        a = [max(a[2 * j - 1], a[2 * j]) for j in range(1, 2 ** (n - i + 1) + 1)]
+    return a[1]
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [(a, i) for i, a in enumerate(A)]
+    A.sort(reverse=True)
+    B = A[:2**N]
+    B.sort(key=lambda x: x[1])
+    print(B[1][1]+1)
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n, a
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [[A[i],i+1] for i in range(len(A))]
+    A.sort()
+    A = [A[i][1] for i in range(len(A))]
+    print(A[-2])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = list(enumerate(A))
+    A = sorted(A, key=lambda x: x[1], reverse=True)
+    A = A[:(1 << N)]
+    A = sorted(A, key=lambda x: x[0])
+    print(A[1][0] + 1)
+
+=======
+Suggestion 8
+
+def get_input():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    return n, a
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A = [[A[i],i+1] for i in range(len(A))]
+    while(len(A)!=2):
+        A = [[max(A[2*i][0],A[2*i+1][0]),A[2*i][1]] if A[2*i][0]>A[2*i+1][0] else [max(A[2*i][0],A[2*i+1][0]),A[2*i+1][1]] for i in range(len(A)//2)]
+    A = [A[0],A[1]]
+    A.sort()
+    print(A[0][1])
+
+=======
+Suggestion 10
+
+def getSecondPlace(players):
+    #print(players)
+    if len(players) == 2:
+        return players[0] if players[0] < players[1] else players[1]
+    else:
+        players = [max(players[i], players[len(players)-1-i]) for i in range(int(len(players)/2))]
+        return getSecondPlace(players)
+
+N = int(input())
+A = list(map(int, input().split()))
+
+print(A.index(getSecondPlace(A))+1)

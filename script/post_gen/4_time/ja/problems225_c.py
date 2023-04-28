@@ -1,58 +1,198 @@
-#問題文
-#10^{100} 行 7 列の行列 A があり、任意の整数対 (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7) についてその (i,j) 成分は (i-1) × 7 + j です。
-#N 行 M 列の行列 B が与えられるので、B が A から一部の矩形領域を（向きを変えずに）切り出したものであるかを判定してください。
-#
-#制約
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#B_{1,1} B_{1,2} ... B_{1,M}
-#B_{2,1} B_{2,2} ... B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ... B_{N,M}
-#
-#出力
-#B が A から一部の矩形領域を切り出したものであれば Yes と、そうでないなら No と出力せよ。
-#
-#入力例 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#出力例 1
-#Yes
-#与えられる B は、A の左上 2 行 3 列を切り出したものとなっています。
-#
-#入力例 2
-#2 1
-#1
-#2
-#
-#出力例 2
-#No
-#与えられる B を 90 度回転させると A の左上 1 行 2 列と一致しますが、問題文中に「向きを変えずに」とある通り回転による一致は認められていないため、答えは No となります。
-#
-#入力例 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    for i in range(N):
+        for j in range(M):
+            B[i][j] -= i*7+j+1
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != B[0][0]:
+                return 'No'
+    return 'Yes'
+
+print(solve())
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i*7+j+1):
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def solve():
+    N,M = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(N)]
+
+    for i in range(N):
+        for j in range(M):
+            B[i][j] -= i*7+j+1
+
+    if all(all(b==0 for b in row) for row in B):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+
+    A = [[0 for _ in range(7)] for _ in range(10**2)]
+    for i in range(10**2):
+        for j in range(7):
+            A[i][j] = i*7 + j + 1
+
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != A[i][j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    b = [list(map(int, input().split())) for _ in range(n)]
+    a = [[i*7+j+1 for j in range(7)] for i in range(10**100)]
+    for i in range(n):
+        for j in range(m):
+            a[i][j] = b[i][j]
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] != b[i][j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    for i in range(N):
+        for j in range(M):
+            if (i+j)%2 == 0:
+                if B[i][j] != 1:
+                    print('No')
+                    return
+            else:
+                if B[i][j] != 2:
+                    print('No')
+                    return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(N)]
+    A = [[0 for _ in range(7)] for _ in range(10**2)]
+    for i in range(10**2):
+        for j in range(7):
+            A[i][j] = i*7 + j + 1
+    #print(A)
+    #print(B)
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != A[i][j]:
+                print('No')
+                return
+    print('Yes')
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for i in range(N)]
+    if N == 1 and M == 1:
+        if B[0][0] == 1:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if N == 1:
+        for i in range(M):
+            if B[0][i] != i+1:
+                print("No")
+                return
+        print("Yes")
+        return
+    if M == 1:
+        for i in range(N):
+            if B[i][0] != i+1:
+                print("No")
+                return
+        print("Yes")
+        return
+    if N > 10:
+        print("No")
+        return
+    if M > 10:
+        print("No")
+        return
+    A = [[0 for i in range(7)] for j in range(10**2)]
+    for i in range(10**2):
+        for j in range(7):
+            A[i][j] = i*7 + j + 1
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != A[i][j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    b = [list(map(int,input().split())) for _ in range(n)]
+    #print(b)
+    if m == 1:
+        if n == 1:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if n == 1:
+            print("Yes")
+        else:
+            if b[0][1] - b[0][0] == 1:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 10
+
+def main():
+    pass

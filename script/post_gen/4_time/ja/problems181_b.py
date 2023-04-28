@@ -1,51 +1,118 @@
-#問題文
-#何も書かれていない黒板があります。
-#高橋くんは N 回の操作を行い、黒板に整数を書きます。
-#i 回目の操作では、 A_i 以上 B_i 以下の整数すべてを 1 個ずつ、合計 B_i - A_i + 1 個の整数を書きます。
-#N 回の操作を終えたときの、黒板に書かれた整数の合計を求めてください。
-#
-#制約
-#入力はすべて整数
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ B_i ≦ 10^6
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#N 回の操作を終えたときの、黒板に書かれた整数の合計を出力せよ。
-#
-#入力例 1
-#2
-#1 3
-#3 5
-#
-#出力例 1
-#18
-#1 回目の操作では、黒板に 1, 2, 3 を書きます。
-#2 回目の操作では、黒板に 3, 4, 5 を書きます。
-#黒板に書かれた整数の合計は 1+2+3+3+4+5=18 です。
-#
-#入力例 2
-#3
-#11 13
-#17 47
-#359 44683
-#
-#出力例 2
-#998244353
-#
-#入力例 3
-#1
-#1 1000000
-#
-#出力例 3
-#500000500000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        ans += (a + b) * (b - a + 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        ans += (b - a + 1) * (a + b) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    for _ in range(n):
+        a, b = map(int, input().split())
+        ans += (b - a + 1) * (a + b) // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for _ in range(N):
+        A, B = map(int, input().split())
+        ans += (A + B) * (B - A + 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        ans += (B - A + 1) * (A + B) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        sum += (A + B) * (B - A + 1) // 2
+    print(sum)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(N):
+        a, b = map(int, input().split())
+        ans += (a+b)*(b-a+1)//2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        ans += (B-A+1)*(A+B)/2
+    print(int(ans))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    sum = 0
+    for i in range(n):
+        sum += (b[i] - a[i] + 1) * (a[i] + b[i]) / 2
+    print(int(sum))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    print(sum(b) - sum(a) + n)

@@ -1,38 +1,79 @@
-#問題文
-#高橋君は九九を覚えたので、1 以上 9 以下の 2 つの整数の積を計算することができます。それ以外の計算はできません。
-#2 つの整数 A, B が与えられます。
-#高橋君が A × B を計算できるならその結果を、できないなら代わりに -1 を出力してください。
-#
-#制約
-#1 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#高橋君が A × B を計算できるならその結果を、できないなら -1 を出力せよ。
-#
-#入力例 1
-#2 5
-#
-#出力例 1
-#10
-#2 × 5 は 10 です。
-#
-#入力例 2
-#5 10
-#
-#出力例 2
-#-1
-#5× 10 は 50 ですが、高橋君には計算できないので、かわりに -1 を出力します。
-#
-#入力例 3
-#9 9
-#
-#出力例 3
-#81
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a > 9 or b > 9:
+        print(-1)
+    else:
+        print(a*b)
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
+        print(a*b)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    if A > 9 or B > 9:
+        print(-1)
+    else:
+        print(A*B)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if a < 1 or a > 20 or b < 1 or b > 20:
+        return
+    print(a * b)
+
+=======
+Suggestion 5
+
+def mul(a,b):
+    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
+        return a * b
+    else:
+        return -1
+
+=======
+Suggestion 6
+
+def calc(a,b):
+    if a < 1 or a > 20 or b < 1 or b > 20:
+        return -1
+    else:
+        return a * b
+
+=======
+Suggestion 7
+
+def mult(a, b):
+    if a <= 0 or b <= 0:
+        return -1
+    elif a >= 10 or b >= 10:
+        return -1
+    else:
+        return a * b
+
+=======
+Suggestion 8
+
+def get_input_lines():
+    while True:
+        try:
+            yield raw_input()
+        except EOFError:
+            break

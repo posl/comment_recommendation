@@ -1,53 +1,173 @@
-#問題文
-#高橋君はタップダンスをすることにしました。タップダンスの動きは文字列 S で表され、S の各文字は L, R, U, D のいずれかです。各文字は足を置く位置を表しており、1 文字目から順番に踏んでいきます。
-#S が以下の 2 条件を満たすとき、またその時に限り、S を「踏みやすい」文字列といいます。
-#奇数文字目がすべて R, U, D のいずれか。
-#偶数文字目がすべて L, U, D のいずれか。
-#S が「踏みやすい」文字列なら Yes を、そうでなければ No を出力してください。
-#
-#制約
-#S は長さ 1 以上 100 以下の文字列
-#S の各文字は L, R, U, D のいずれか
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#S
-#
-#出力
-#S が「踏みやすい」文字列なら Yes を、そうでなければ No を出力してください。
-#
-#入力例 1
-#RUDLUDR
-#
-#出力例 1
-#Yes
-#1, 3, 5, 7 文字目は R, U, D のいずれかです。
-#2, 4, 6 文字目は L, U, D のいずれかです。
-#したがって、この S は「踏みやすい」文字列です。
-#
-#入力例 2
-#DULL
-#
-#出力例 2
-#No
-#3 文字目が R, U, D のいずれでもないので、この S は「踏みやすい」文字列ではありません。
-#
-#入力例 3
-#UUUUUUUUUUUUUUU
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#ULURU
-#
-#出力例 4
-#No
-#
-#入力例 5
-#RDULULDURURLRDULRLR
-#
-#出力例 5
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == "L":
+                print("No")
+                exit()
+        else:
+            if S[i] == "R":
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[::2].count("L") == 0 and s[1::2].count("R") == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0 and S[i] == "L":
+            print("No")
+            return
+        elif i % 2 == 1 and S[i] == "R":
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if (i+1)%2 == 1:
+            if s[i] == "R" or s[i] == "U" or s[i] == "D":
+                continue
+            else:
+                print("No")
+                return
+        else:
+            if s[i] == "L" or s[i] == "U" or s[i] == "D":
+                continue
+            else:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def solve():
+    # ===CODE===
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == "L":
+                return "No"
+        else:
+            if S[i] == "R":
+                return "No"
+    return "Yes"
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if len(s) % 2 == 0:
+        for i in range(len(s)):
+            if i % 2 == 0:
+                if s[i] == 'L':
+                    print('No')
+                    exit()
+            else:
+                if s[i] == 'R':
+                    print('No')
+                    exit()
+    else:
+        for i in range(len(s)):
+            if i % 2 == 0:
+                if s[i] == 'R':
+                    print('No')
+                    exit()
+            else:
+                if s[i] == 'L':
+                    print('No')
+                    exit()
+    print('Yes')
+
+=======
+Suggestion 7
+
+def solve():
+    # === 数値を取得 ===
+    # N = int(input())
+    S = input()
+
+    # === 文字列を取得 ===
+    # S = input()
+
+    # === 処理 ===
+    for i in range(0, len(S), 2):
+        if S[i] not in ['R', 'U', 'D']:
+            print('No')
+            return
+
+    for i in range(1, len(S), 2):
+        if S[i] not in ['L', 'U', 'D']:
+            print('No')
+            return
+
+    print('Yes')
+
+=======
+Suggestion 8
+
+def is_easy(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i] in ['L', 'U', 'D']:
+            continue
+        elif i % 2 == 1 and s[i] in ['R', 'U', 'D']:
+            continue
+        else:
+            return False
+    return True
+
+s = input()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    s1 = s[::2]
+    s2 = s[1::2]
+    if s1.count('L') + s2.count('R') + s1.count('U') + s2.count('D') == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    s = str(input())
+    s = list(s)
+    flag = True
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == "L":
+                flag = False
+        else:
+            if s[i] == "R":
+                flag = False
+    if flag:
+        print("Yes")
+    else:
+        print("No")

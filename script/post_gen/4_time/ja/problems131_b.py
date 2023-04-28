@@ -1,41 +1,128 @@
-#問題文
-#N 個のリンゴがあります。これらはそれぞれリンゴ 1、リンゴ 2、リンゴ 3、...、リンゴ N と呼ばれており、リンゴ i の「味」は L+i-1 です。「味」は負になることもありえます。
-#また、1 個以上のリンゴを材料として、アップルパイをつくることができます。その「味」は、材料となったリンゴの「味」の総和となります。
-#あなたはこれらのリンゴを全て材料として、アップルパイをつくる予定でしたが、おなかがすいたので 1 個だけ食べることにしました。勿論、食べてしまったリンゴはアップルパイの材料にはできません。
-#つくる予定だったアップルパイとできるだけ同じものをつくりたいので、N 個のリンゴ全てを材料としてできるアップルパイの「味」と、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」の差の絶対値ができるだけ小さくなるように、食べるリンゴを選ぶことにしました。
-#このようにして選ばれたリンゴを食べた時、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」を求めてください。
-#なお、この値は一意に定まることが証明できます。
-#
-#制約
-#2 ≦ N ≦ 200
-#-100 ≦ L ≦ 100
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N L
-#
-#出力
-#最適に食べるリンゴを選んだ時の、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」を出力してください。
-#
-#入力例 1
-#5 2
-#
-#出力例 1
-#18
-#リンゴ 1,2,3,4,5 の「味」は、それぞれ 2,3,4,5,6 です。リンゴ 1 を食べるのが最適で、答えは 3+4+5+6=18 となります。
-#
-#入力例 2
-#3 -1
-#
-#出力例 2
-#0
-#リンゴ 1,2,3 の「味」は、それぞれ -1,0,1 です。リンゴ 2 を食べるのが最適で、答えは (-1)+1=0 となります。
-#
-#入力例 3
-#30 -50
-#
-#出力例 3
-#-1044
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, L = map(int, input().split())
+    ans = 0
+    for i in range(1, N+1):
+        ans += L + i - 1
+    if L > 0:
+        ans -= L + N - 1
+    elif L+N-1 < 0:
+        ans -= L
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, L = map(int, input().split())
+    ans = 0
+    if L >= 0:
+        ans = (L + N - 1) * (L + N) // 2 - L
+    elif L + N - 1 < 0:
+        ans = (L + N - 1) * (L + N) // 2 - L
+    else:
+        ans = (L + N - 1) * (L + N) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N, L = map(int, input().split())
+    sum = 0
+    min = 1000
+    for i in range(N):
+        sum += L + i
+        if min > abs(L + i):
+            min = abs(L + i)
+    print(sum - min)
+
+=======
+Suggestion 4
+
+def main():
+    n, l = map(int, input().split())
+    apple = []
+    for i in range(1, n+1):
+        apple.append(l+i-1)
+    print(sum(apple)-min(apple, key=abs))
+
+=======
+Suggestion 5
+
+def solve():
+    N, L = map(int, input().split())
+    print(sum(range(L+1, L+N)) - min(range(L+1, L+N), key=abs))
+
+=======
+Suggestion 6
+
+def main():
+    n,l = map(int, input().split())
+    ans = 0
+    if l >= 0:
+        ans = sum(range(l+1, l+n))
+    elif l+n-1 < 0:
+        ans = sum(range(l, l+n-1))
+    else:
+        ans = sum(range(l, l+n))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, l = map(int, input().split())
+    sum = 0
+    min =
+
+=======
+Suggestion 8
+
+def apple_pie(n, l):
+    taste = []
+    for i in range(n):
+        taste.append(l+i)
+    taste.sort()
+    return sum(taste[1:])
+
+=======
+Suggestion 9
+
+def main():
+    N,L = map(int,input().split())
+    total = 0
+    min_
+
+=======
+Suggestion 10
+
+def main():
+    # 標準入力からNとLを取得する
+    N, L = map(int, input().split())
+
+    # リンゴの味のリスト
+    apples = []
+    # リンゴの味を計算する
+    for i in range(N):
+        apples.append(L + i)
+
+    # リンゴの味の総和
+    total = sum(apples)
+
+    # リンゴの味の絶対値の最小値
+    min_abs = 1000000
+    # リンゴの味の総和からリンゴの味を引いた絶対値の最小値を計算する
+    for i in range(N):
+        abs = total - apples[i]
+        if abs < 0:
+            abs = abs * -1
+        if abs < min_abs:
+            min_abs = abs
+
+    # 答えを出力する
+    print(min_abs)

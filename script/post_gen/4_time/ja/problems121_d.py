@@ -1,39 +1,107 @@
-#問題文
-#f(A, B) を A, A+1, ..., B の排他的論理和としたとき、f(A, B) を求めてください。
-#排他的論理和とは
-#整数 c_1, c_2, ..., c_n のビットごとの排他的論理和 y は、以下のように定義されます。
-#y を二進表記した際の 2^k (k ≧ 0) の位の数は、c_1, c_2, ..., c_n のうち、二進表記した際の 2^k の位の数が 1 となるものが奇数個ならば 1、偶数個ならば 0 である。
-#例えば、3 と 5 の排他的論理和は 6 です(二進数表記すると: 011 と 101 の排他的論理和は 110 です)。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A ≦ B ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#f(A, B) を計算し、出力せよ。
-#
-#入力例 1
-#2 4
-#
-#出力例 1
-#5
-#2, 3, 4 は 2 進数でそれぞれ 010, 011, 100 です。
-#これらの排他的論理和は 101 であり、これを 10 進数表記にすると 5 になります。
-#
-#入力例 2
-#123 456
-#
-#出力例 2
-#435
-#
-#入力例 3
-#123456789012 123456789012
-#
-#出力例 3
-#123456789012
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(a, b):
+    if a % 2 == 0 and b % 2 == 0:
+        return (b - a + 1) // 2 % 2
+    elif a % 2 == 0 and b % 2 != 0:
+        return (b - a + 2) // 2 % 2
+    elif a % 2 != 0 and b % 2 == 0:
+        return (b - a) // 2 % 2
+    else:
+        return (b - a + 1) // 2 % 2
+
+=======
+Suggestion 2
+
+def f(A, B):
+    if A == B:
+        return A
+    elif A == 0:
+        return f(1, B)
+    elif A % 2 == 0:
+        return f(A + 1, B) ^ A
+    else:
+        return f(A - 1, B) ^ A
+
+A, B = map(int, input().split())
+print(f(A, B))
+
+=======
+Suggestion 3
+
+def f(a, b):
+    if a == b:
+        return a
+    if a % 2 == 0:
+        if (b - a) % 2 == 0:
+            return (b - a) ^ b
+        else:
+            return (b - a) ^ b ^ 1
+    else:
+        if (b - a) % 2 == 0:
+            return (b - a) ^ b ^ a
+        else:
+            return (b - a) ^ b ^ a ^ 1
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(a)
+    else:
+        print(a ^ b)
+
+=======
+Suggestion 5
+
+def f(a,b):
+    if a == b:
+        return a
+    elif a == 0:
+        return f(b)
+    else:
+        return f(b) ^ f(a-1)
+
+a,b = map(int,input().split())
+print(f(a,b))
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(a^b)
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    print(f(a, b))
+
+=======
+Suggestion 8
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return 0
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    #print(A,B)
+    #print(bin(A),bin(B))
+    #print(bin(A^B))
+    print(A^B)

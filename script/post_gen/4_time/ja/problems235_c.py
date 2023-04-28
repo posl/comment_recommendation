@@ -1,62 +1,145 @@
-#問題文
-#長さ N の数列 A = (a_1, a_2, ..., a_N) があります。
-#以下で説明される Q 個のクエリに答えてください。
-#クエリ i : 整数の組 (x_i, k_i) が与えられます。A の要素を a_1, a_2, ... と前から順に見ていったときに、数 x_i が k_i 回目に登場するのは A の前から何番目の要素を見たときかを出力してください。
-#    ただし条件を満たす要素が存在しない場合は -1 を出力してください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#0 ≦ a_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ Q)
-#1 ≦ k_i ≦ N (1 ≦ i ≦ Q)
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#a_1 a_2 ... a_N
-#x_1 k_1
-#x_2 k_2
-#.
-#.
-#.
-#x_Q k_Q
-#
-#出力
-#Q 行出力せよ。i 行目ではクエリ i に対する答えを出力せよ。
-#
-#入力例 1
-#6 8
-#1 1 2 3 1 2
-#1 1
-#1 2
-#1 3
-#1 4
-#2 1
-#2 2
-#2 3
-#4 1
-#
-#出力例 1
-#1
-#2
-#5
-#-1
-#3
-#6
-#-1
-#-1
-#A の中で 1 は a_1, a_2, a_5 に登場します。よって、クエリ 1 からクエリ 4 の答えは順に 1, 2, 5, -1 となります。
-#
-#入力例 2
-#3 2
-#0 1000000000 999999999
-#1000000000 1
-#123456789 1
-#
-#出力例 2
-#2
-#-1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(n):
+            if a[j] == x:
+                cnt += 1
+            if cnt == k:
+                print(j + 1)
+                break
+        else:
+            print(-1)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(n):
+            if a[j] == x:
+                cnt += 1
+                if cnt == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(Q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(N):
+            if A[j] == x:
+                cnt += 1
+            if cnt == k:
+                print(j+1)
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+                if count == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for i, a in enumerate(A):
+            if a == x:
+                cnt += 1
+            if cnt == k:
+                print(i + 1)
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(Q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(N):
+            if A[j] == x:
+                count += 1
+                if count == k:
+                    print(j + 1)
+                    break
+        else:
+            print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    for i in range(Q):
+        X, K = map(int, input().split())
+        ans = 0
+        count = 0
+        for j in range(N):
+            if A[j] == X:
+                count += 1
+                if count == K:
+                    ans = j + 1
+                    break
+        if ans == 0:
+            ans = -1
+
+        print(ans)
+
+=======
+Suggestion 8
+
+def calc(x,k,a):
+    cnt = 0
+    for i in range(len(a)):
+        if a[i] == x:
+            cnt += 1
+            if cnt == k:
+                return i+1
+    return -1

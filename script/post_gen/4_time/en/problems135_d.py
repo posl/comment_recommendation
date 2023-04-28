@@ -1,44 +1,211 @@
-#Problem Statement
-#Given is a string S. Each character in S is either a digit (0, ..., 9) or ?.
-#Among the integers obtained by replacing each occurrence of ? with a digit, how many have a remainder of 5 when divided by 13? An integer may begin with 0.
-#Since the answer can be enormous, print the count modulo 10^9+7.
-#
-#Constraints
-#S is a string consisting of digits (0, ..., 9) and ?.
-#1 ≦ |S| ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the number of integers satisfying the condition, modulo 10^9+7.
-#
-#Sample Input 1
-#??2??5
-#
-#Sample Output 1
-#768
-#For example, 482305, 002865, and 972665 satisfy the condition.
-#
-#Sample Input 2
-#?44
-#
-#Sample Output 2
-#1
-#Only 044 satisfies the condition.
-#
-#Sample Input 3
-#7?4
-#
-#Sample Output 3
-#0
-#We may not be able to produce an integer satisfying the condition.
-#
-#Sample Input 4
-#?6?42???8??2??06243????9??3???7258??5??7???????774????4?1??17???9?5?70???76???
-#
-#Sample Output 4
-#153716888
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    N = len(S)
+    MOD = 10 ** 9 + 7
+    dp = [[0] * 13 for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        if S[i] == "?":
+            for j in range(10):
+                for k in range(13):
+                    dp[i + 1][(k * 10 + j) % 13] += dp[i][k]
+                    dp[i + 1][(k * 10 + j) % 13] %= MOD
+        else:
+            j = int(S[i])
+            for k in range(13):
+                dp[i + 1][(k * 10 + j) % 13] += dp[i][k]
+                dp[i + 1][(k * 10 + j) % 13] %= MOD
+    print(dp[N][5])
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    MOD = 10 ** 9 + 7
+    dp = [[0] * 13 for _ in range(N + 1)]
+    dp[0][0] = 1
+    for i in range(N):
+        if S[i] == "?":
+            for j in range(10):
+                for k in range(13):
+                    dp[i + 1][(k * 10 + j) % 13] += dp[i][k]
+                    dp[i + 1][(k * 10 + j) % 13] %= MOD
+        else:
+            for k in range(13):
+                dp[i + 1][(k * 10 + int(S[i])) % 13] += dp[i][k]
+                dp[i + 1][(k * 10 + int(S[i])) % 13] %= MOD
+    print(dp[N][5])
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    n = len(s)
+    dp = [[0] * 13 for _ in range(n + 1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(13):
+            if s[i] == "?":
+                for k in range(10):
+                    dp[i + 1][(j * 10 + k) % 13] += dp[i][j]
+            else:
+                dp[i + 1][(j * 10 + int(s[i])) % 13] += dp[i][j]
+    print(dp[n][5] % (10**9 + 7))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    dp = [[0]*13 for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        if s[i] == '?':
+            for j in range(10):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+                    dp[i+1][(k*10+j)%13] %= mod
+        else:
+            for k in range(13):
+                dp[i+1][(k*10+int(s[i]))%13] += dp[i][k]
+                dp[i+1][(k*10+int(s[i]))%13] %= mod
+    print(dp[n][5])
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    dp = [[0]*13 for _ in range(len(S)+1)]
+    dp[0][0] = 1
+    for i in range(len(S)):
+        for j in range(13):
+            if S[i] == '?':
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+            else:
+                dp[i+1][(j*10+int(S[i]))%13] += dp[i][j]
+            dp[i+1][(j*10+int(S[i]))%13] %= 10**9+7
+    print(dp[-1][5])
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    N = len(S)
+    MOD = 10**9 + 7
+    dp = [[0]*13 for i in range(N+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        c = S[i]
+        for j in range(13):
+            if c == "?":
+                for k in range(10):
+                    dp[i+1][(j*10+k)%13] += dp[i][j]
+            else:
+                k = int(c)
+                dp[i+1][(j*10+k)%13] += dp[i][j]
+            dp[i+1][(j*10+k)%13] %= MOD
+    print(dp[N][5])
+
+=======
+Suggestion 7
+
+def solve():
+    S = input()
+    mod = 10**9+7
+    dp = [[0]*13 for i in range(len(S)+1)]
+    dp[0][0] = 1
+    for i in range(len(S)):
+        if S[i] == '?':
+            for j in range(10):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+                    dp[i+1][(k*10+j)%13] %= mod
+        else:
+            for k in range(13):
+                dp[i+1][(k*10+int(S[i]))%13] += dp[i][k]
+                dp[i+1][(k*10+int(S[i]))%13] %= mod
+    print(dp[len(S)][5])
+
+=======
+Suggestion 8
+
+def main():
+    mod = 10**9 + 7
+    S = input()
+    N = len(S)
+    DP = [[0 for j in range(13)] for i in range(N+1)]
+    DP[0][0] = 1
+    for i in range(N):
+        if S[i] == '?':
+            for j in range(13):
+                for k in range(10):
+                    DP[i+1][(j*10+k)%13] += DP[i][j]
+                    DP[i+1][(j*10+k)%13] %= mod
+        else:
+            for j in range(13):
+                DP[i+1][(j*10+int(S[i]))%13] += DP[i][j]
+                DP[i+1][(j*10+int(S[i]))%13] %= mod
+    print(DP[N][5])
+
+=======
+Suggestion 9
+
+def main():
+    #input
+    S = input()
+    M = 10**9+7
+
+    #compute
+    dp = [[0]*13 for _ in range(len(S)+1)]
+    dp[0][0] = 1
+    for i in range(len(S)):
+        if S[i] == '?':
+            for j in range(10):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+                    dp[i+1][(k*10+j)%13] %= M
+        else:
+            for k in range(13):
+                dp[i+1][(k*10+int(S[i]))%13] += dp[i][k]
+                dp[i+1][(k*10+int(S[i]))%13] %= M
+
+    #output
+    print(dp[-1][5])
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    N = len(S)
+    MOD = 10**9+7
+
+    # dp[i][j] = i桁目まで決めて、13で割ったあまりがjである数
+    dp = [[0]*13 for _ in range(N+1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        if S[i] == '?':
+            for j in range(10):
+                for k in range(13):
+                    dp[i+1][(k*10+j)%13] += dp[i][k]
+                    dp[i+1][(k*10+j)%13] %= MOD
+        else:
+            for k in range(13):
+                dp[i+1][(k*10+int(S[i]))%13] += dp[i][k]
+                dp[i+1][(k*10+int(S[i]))%13] %= MOD
+
+    print(dp[N][5])

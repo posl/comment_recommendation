@@ -1,94 +1,229 @@
-#Problem Statement
-#An SNS has N users - User 1, User 2, ..., User N.
-#Between these N users, there are some relationships - M friendships and K blockships.
-#For each i = 1, 2, ..., M, there is a bidirectional friendship between User A_i and User B_i.
-#For each i = 1, 2, ..., K, there is a bidirectional blockship between User C_i and User D_i.
-#We define User a to be a friend candidate for User b when all of the following four conditions are satisfied:
-#a ≠ b.
-#There is not a friendship between User a and User b.
-#There is not a blockship between User a and User b.
-#There exists a sequence c_0, c_1, c_2, ..., c_L consisting of integers between 1 and N (inclusive) such that c_0 = a, c_L = b, and there is a friendship between User c_i and c_{i+1} for each i = 0, 1, ..., L - 1.
-#For each user i = 1, 2, ... N, how many friend candidates does it have?
-#
-#Constraints
-#All values in input are integers.
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#Output
-#Print the answers in order, with space in between.
-#
-#Sample Input 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#Sample Output 1
-#0 1 0 1
-#There is a friendship between User 2 and 3, and between 3 and 4. Also, there is no friendship or blockship between User 2 and 4. Thus, User 4 is a friend candidate for User 2.
-#However, neither User 1 or 3 is a friend candidate for User 2, so User 2 has one friend candidate.
-#
-#Sample Input 2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#Sample Output 2
-#0 0 0 0 0
-#Everyone is a friend of everyone else and has no friend candidate.
-#
-#Sample Input 3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#Sample Output 3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m,k=list(map(int,input().split()))
+    ab=[]
+    for _ in range(m):
+        a,b=list(map(int,input().split()))
+        ab.append((a,b))
+    cd=[]
+    for _ in range(k):
+        c,d=list(map(int,input().split()))
+        cd.append((c,d))
+    return n,m,k,ab,cd
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    blocks = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        friends[A-1].append(B-1)
+        friends[B-1].append(A-1)
+    for _ in range(K):
+        C, D = map(int, input().split())
+        blocks[C-1].append(D-1)
+        blocks[D-1].append(C-1)
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = len(set(friends[i]) - set(friends[i]) & set(blocks[i])) - 1
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 3
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = []
+    blocks = []
+    for _ in range(M):
+        friends.append(list(map(int, input().split())))
+    for _ in range(K):
+        blocks.append(list(map(int, input().split())))
+    answer = [0] * N
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            if i == j:
+                continue
+            if [i, j] in friends:
+                continue
+            if [j, i] in friends:
+                continue
+            if [i, j] in blocks:
+                continue
+            if [j, i] in blocks:
+                continue
+            answer[i - 1] += 1
+    print(*answer)
+
+=======
+Suggestion 4
+
+def find(parents, x):
+    if parents[x] == x:
+        return x
+    else:
+        parents[x] = find(parents, parents[x])
+        return parents[x]
+
+=======
+Suggestion 5
+
+def main():
+    N, M, K = map(int, input().split())
+    friend = [0] * N
+    block = [0] * N
+    for i in range(M):
+        A, B = map(int, input().split())
+        A -= 1
+        B -= 1
+        friend[A] += 1
+        friend[B] += 1
+    for i in range(K):
+        C, D = map(int, input().split())
+        C -= 1
+        D -= 1
+        block[C] += 1
+        block[D] += 1
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = friend[i] - block[i] - 1
+    print(*ans)
+
+=======
+Suggestion 6
+
+def find_root(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find_root(par[x])
+        return par[x]
+
+=======
+Suggestion 7
+
+def dfs(start, graph):
+    visited = set()
+    stack = [start]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            stack.extend(graph[vertex] - visited)
+    return visited
+
+N, M, K = map(int, input().split())
+friend = {i: set() for i in range(1, N+1)}
+block = {i: set() for i in range(1, N+1)}
+for _ in range(M):
+    A, B = map(int, input().split())
+    friend[A].add(B)
+    friend[B].add(A)
+for _ in range(K):
+    C, D = map(int, input().split())
+    block[C].add(D)
+    block[D].add(C)
+
+ans = [0] * N
+for i in range(1, N+1):
+    ans[i-1] = len(dfs(i, friend) - friend[i] - block[i] - {i}) - len(friend[i] & block[i])
+print(*ans)
+
+=======
+Suggestion 8
+
+def dfs(start, goal):
+    visited = [False] * (N+1)
+    stack = []
+    stack.append(start)
+    while stack:
+        node = stack.pop()
+        if node == goal:
+            return True
+        if not visited[node]:
+            visited[node] = True
+            for i in range(len(graph[node])):
+                if not visited[graph[node][i]]:
+                    stack.append(graph[node][i])
+    return False
+
+N, M, K = map(int, input().split())
+graph = [[] for i in range(N+1)]
+for i in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+for i in range(K):
+    c, d = map(int, input().split())
+    graph[c].append(d)
+    graph[d].append(c)
+for i in range(1, N+1):
+    ans = 0
+    for j in range(1, N+1):
+        if i == j:
+            continue
+        if dfs(i, j):
+            ans += 1
+    print(ans, end = ' ')
+
+=======
+Suggestion 9
+
+def dfs(x, y):
+    if x in visited:
+        return
+    visited.add(x)
+    if x in friend:
+        for z in friend[x]:
+            if z == y:
+                continue
+            dfs(z, y)
+    if x in block:
+        for z in block[x]:
+            if z == y:
+                continue
+            dfs(z, y)
+
+N, M, K = map(int, input().split())
+friend = {}
+block = {}
+for _ in range(M):
+    a, b = map(int, input().split())
+    if a not in friend:
+        friend[a] = set()
+    friend[a].add(b)
+    if b not in friend:
+        friend[b] = set()
+    friend[b].add(a)
+for _ in range(K):
+    c, d = map(int, input().split())
+    if c not in block:
+        block[c] = set()
+    block[c].add(d)
+    if d not in block:
+        block[d] = set()
+    block[d].add(c)
+
+ans = [0] * N
+for i in range(1, N + 1):
+    visited = set()
+    for j in range(1, N + 1):
+        if i == j:
+            continue
+        dfs(j, i)
+    ans[i - 1] = N - len(visited) - 1
+print(*ans)
+
+=======
+Suggestion 10
+
+def make_set(parent, rank, n):
+    parent[n] = n
+    rank[n] = 0

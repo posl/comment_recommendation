@@ -1,127 +1,152 @@
-#問題文
-#高橋君が運営する SNS「Twidai」にはユーザー 1 からユーザー N までの N 人のユーザーがいます。
-#Twidai では、ユーザーは別のユーザーをフォローすることや、フォローを解除することができます。
-#Twidai がサービスを開始してから、Q 回の操作が行われました。
-#i 回目 (1≦ i≦ Q) の操作は 3 つの整数 T _ i, A _ i, B _ i で表され、それぞれ次のような操作を表します。
-#T _ i=1 のとき：ユーザー A _ i がユーザー B _ i をフォローしたことを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしている場合、ユーザーのフォロー状況に変化はない。
-#T _ i=2 のとき：ユーザー A _ i がユーザー B _ i のフォローを解除したことを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしていない場合、ユーザーのフォロー状況に変化はない。
-#T _ i=3 のとき：ユーザー A _ i とユーザー B _ i が互いにフォローしているかをチェックすることを表す。この操作の時点でユーザー A _ i がユーザー B _ i をフォローしており、かつユーザー B _ i がユーザー A _ i をフォローしているとき、このチェックに対して Yes と答え、そうでないときこのチェックに対して No と答える必要がある。
-#サービス開始時には、どのユーザーも他のユーザーをフォローしていません。
-#すべての T _ i=3 であるような操作に対して、i が小さいほうから順番に正しい答えを出力してください。
-#
-#制約
-#2 ≦ N ≦ 10 ^ 9
-#1 ≦ Q ≦ 2×10 ^ 5
-#T _ i=1,2,3 (1≦ i≦ Q)
-#1 ≦ A _ i ≦ N (1≦ i≦ Q)
-#1 ≦ B _ i ≦ N (1≦ i≦ Q)
-#A _ i≠ B _ i (1≦ i≦ Q)
-#T _ i=3 となる i (1≦ i≦ Q) が存在する
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#T _ 1 A _ 1 B _ 1
-#T _ 2 A _ 2 B _ 2
-#.
-#.
-#.
-#T _ Q A _ Q B _ Q
-#
-#出力
-#T _ i=3 であるような i (1≦ i≦ Q) の個数を X として、X 行出力せよ。
-#j (1≦ j≦ X) 行目には j 番目の T _ i=3 であるような操作に対する答えを出力せよ。
-#
-#入力例 1
-#3 9
-#1 1 2
-#3 1 2
-#1 2 1
-#3 1 2
-#1 2 3
-#1 3 2
-#3 1 3
-#2 1 2
-#3 1 2
-#
-#出力例 1
-#No
-#Yes
-#No
-#No
-#Twidai には 3 人のユーザーがいます。
-#9 回の操作はそれぞれ次のようになっています。
-#ユーザー 1 がユーザー 2 をフォローします。そのほかにフォローしている/されているユーザーはいません。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 2 をフォローしていますが、ユーザー 2 はユーザー 1 をフォローしていません。この操作への正しい答えは No です。
-#ユーザー 2 がユーザー 1 をフォローします。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 2 をフォローしており、ユーザー 2 はユーザー 1 をフォローしています。この操作への正しい答えは Yes です。
-#ユーザー 2 がユーザー 3 をフォローします。
-#ユーザー 3 がユーザー 2 をフォローします。
-#ユーザー 1 とユーザー 3 が互いにフォローしているかチェックします。ユーザー 1 はユーザー 3 をフォローしておらず、ユーザー 3 もユーザー 1 をフォローしていません。この操作への正しい答えは No です。
-#ユーザー 1 がユーザー 2 のフォローを解除します。
-#ユーザー 1 とユーザー 2 が互いにフォローしているかチェックします。ユーザー 2 はユーザー 1 をフォローしていますが、ユーザー 1 はユーザー 2 をフォローしていません。この操作への正しい答えは No です。
-#
-#入力例 2
-#2 8
-#1 1 2
-#1 2 1
-#3 1 2
-#1 1 2
-#1 1 2
-#1 1 2
-#2 1 2
-#3 1 2
-#
-#出力例 2
-#Yes
-#No
-#同じユーザーに対して何度もフォロー操作をする場合があります。
-#
-#入力例 3
-#10 30
-#3 1 6
-#3 5 4
-#1 6 1
-#3 1 7
-#3 8 4
-#1 1 6
-#2 4 3
-#1 6 5
-#1 5 6
-#1 1 8
-#1 8 1
-#2 3 10
-#1 7 6
-#3 5 6
-#1 6 7
-#3 6 7
-#1 9 5
-#3 8 6
-#3 3 8
-#2 6 9
-#1 7 1
-#3 10 8
-#2 9 2
-#1 10 9
-#2 6 10
-#2 6 8
-#3 1 6
-#3 1 8
-#2 8 5
-#1 9 10
-#
-#出力例 3
-#No
-#No
-#No
-#No
-#Yes
-#Yes
-#No
-#No
-#No
-#Yes
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main
+  n, q = gets.chomp.split(' ').map(&:to_i)
+  follow = Array.new(n) { Array.new(n, false) }
+  q.times do
+    t, a, b = gets.chomp.split(' ').map(&:to_i)
+    case t
+    when 1
+      follow[a - 1][b - 1] = true
+    when 2
+      n.times do |i|
+        follow[a - 1][i] = follow[i][a - 1] if follow[b - 1][i]
+      end
+    when 3
+      n.times do |i|
+        n.times do |j|
+          follow[i][j] = follow[i][j] || (follow[i][a - 1] && follow[b - 1][j])
+        end
+      end
+    end
+  end
+  n.times do |i|
+    n.times do |j|
+      follow[i][j] = follow[i][j] || (follow[i][i] && follow[j][j])
+    end
+  end
+  n.times do |i|
+    puts follow[i].map { |v| v ? 'Yes' : 'No' }.join(' ')
+  end
+end
+
+=======
+Suggestion 2
+
+def follow_check(follow, a, b)
+  if follow[a] == nil
+    return false
+  else
+    if follow[a].include?(b)
+      return true
+    else
+      return false
+    end
+  end
+end
+
+=======
+Suggestion 3
+
+def check_follow(follows, a, b)
+  if follows[a].include?(b)
+    puts "Yes"
+  else
+    puts "No"
+  end
+end
+
+=======
+Suggestion 4
+
+def follow(x, y)
+  if @follow[x].include?(y) && @follow[y].include?(x)
+    puts 'Yes'
+  else
+    puts 'No'
+  end
+end
+
+=======
+Suggestion 5
+
+def follow(a, b)
+  if @follows[a].include?(b)
+    puts 'Yes'
+  else
+    puts 'No'
+  end
+end
+
+=======
+Suggestion 6
+
+def follow(x, y)
+  if $follow[x].include?(y)
+    puts "Yes"
+  else
+    puts "No"
+  end
+end
+
+=======
+Suggestion 7
+
+def check_follow(user, follow, followed)
+  if follow[user] && follow[user].include?(followed)
+    puts 'Yes'
+  else
+    puts 'No'
+  end
+end
+
+n, q = gets.split.map(&:to_i)
+follow = Hash.new { |h, k| h[k] = [] }
+followed = Hash.new { |h, k| h[k] = [] }
+
+q.times do
+  t, a, b = gets.split.map(&:to_i)
+  case t
+  when 1
+    follow[a] << b
+    followed[b] << a
+  when 2
+    followed[a].each do |f|
+      follow[f] << b
+      followed[b] << f
+    end
+    follow[a] = []
+  when 3
+    check_follow(a, follow, b)
+  end
+end
+
+=======
+Suggestion 8
+
+def follow?(a, b)
+  return false if @follows[a].nil? || @follows[a].empty?
+  return @follows[a].include?(b)
+end
+
+=======
+Suggestion 9
+
+def follow(user1, user2, follow_list):
+    if user1 in follow_list[user2]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 10
+
+def follow(x, y, user)
+  if user[x] == nil
+    user[x] = []
+  end
+  user[x] << y
+end

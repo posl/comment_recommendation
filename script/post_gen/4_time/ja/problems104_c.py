@@ -1,73 +1,270 @@
-#問題文
-#プログラミングコンペティションサイト AtCode は、アルゴリズムの問題集を提供しています。
-#それぞれの問題には、難易度に応じて点数が付けられています。
-#現在、1 以上 D 以下のそれぞれの整数 i に対して、100i 点を付けられた問題が p_i 問存在します。
-#これらの p_1 + … + p_D 問が AtCode に収録された問題のすべてです。
-#AtCode のユーザーは 総合スコア と呼ばれる値を持ちます。
-#ユーザーの総合スコアは、以下の 2 つの要素の和です。
-#基本スコア: ユーザーが解いた問題すべての配点の合計です。
-#コンプリートボーナス: 100i 点を付けられた p_i 問の問題すべてを解いたユーザーは、基本スコアと別にコンプリートボーナス c_i 点を獲得します (1 ≤ i ≤ D)。
-#AtCode の新たなユーザーとなった高橋くんは、まだ問題を 1 問も解いていません。
-#彼の目標は、総合スコアを G 点以上にすることです。
-#このためには、少なくとも何問の問題を解く必要があるでしょうか？
-#
-#制約
-#1 ≤ D ≤ 10
-#1 ≤ p_i ≤ 100
-#100 ≤ c_i ≤ 10^6
-#100 ≤ G
-#入力中のすべての値は整数である。
-#c_i, G はすべて 100 の倍数である。
-#総合スコアを G 点以上にすることは可能である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#D G
-#p_1 c_1
-#:
-#p_D c_D
-#
-#出力
-#総合スコアを G 点以上にするために解く必要のある最小の問題数を出力せよ。なお、この目標は必ず達成可能である（制約を参照のこと）。
-#
-#入力例 1
-#2 700
-#3 500
-#5 800
-#
-#出力例 1
-#3
-#この場合、AtCode には 100 点を付けられた問題が 3 問、200 点を付けられた問題が 5 問あります。100 点の 3 問をすべて解いた際のコンプリートボーナスは 500 点、200 点の 5 問をすべて解いた際のコンプリートボーナスは 800 点です。高橋くんの目標は総合スコアを 700 点以上にすることです。
-#目標を達成する方法の一つは、200 点問題を 4 問解いて 800 点の基本スコアを得ることです。しかし、100 点問題を 3 問すべて解くと、基本スコア 300 点に加えてコンプリートボーナスの 500 点が与えられて総合スコアが 800 点となり、より少ない問題数で目標を達成することができます。
-#
-#入力例 2
-#2 2000
-#3 500
-#5 800
-#
-#出力例 2
-#7
-#入力例 1と似たケースですが、今回の高橋くんの目標は 2000 点以上です。この場合、200 点の 5 問は必ずすべて解かなければならず、さらに 100 点問題を 2 問解くことで総合スコアが 2000 点となります。
-#
-#入力例 3
-#2 400
-#3 500
-#5 800
-#
-#出力例 3
-#2
-#ふたたび入力例 1と似たケースですが、今回の高橋くんの目標は 400 点以上です。この場合、200 点問題を 2 問解くだけで目標を達成できます。
-#
-#入力例 4
-#5 25000
-#20 1000
-#40 1000
-#50 1000
-#30 1000
-#1 1000
-#
-#出力例 4
-#66
-#500 点の問題が 1 問しか存在しませんが、このような場合でもその問題を解くことでコンプリートボーナスが与えられます。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    d, g = map(int, input().split())
+    p = [0] * d
+    c = [0] * d
+    for i in range(d):
+        p[i], c[i] = map(int, input().split())
+    ans = 1000000000000000
+    for i in range(2 ** d):
+        score = 0
+        cnt = 0
+        for j in range(d):
+            if (i >> j) & 1:
+                score += (j + 1) * 100 * p[j] + c[j]
+                cnt += p[j]
+        if score >= g:
+            ans = min(ans, cnt)
+        else:
+            for j in reversed(range(d)):
+                if (i >> j) & 1:
+                    continue
+                for k in range(p[j]):
+                    if score >= g:
+                        break
+                    score += (j + 1) * 100
+                    cnt += 1
+            ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    d, g = map(int, input().split())
+    p = []
+    c = []
+    for i in range(d):
+        pi, ci = map(int, input().split())
+        p.append(pi)
+        c.append(ci)
+
+    ans =
+
+=======
+Suggestion 3
+
+def solve():
+    D, G = map(int, input().split())
+    p = []
+    c = []
+    for i in range(D):
+        p_i, c_i = map(int, input().split())
+        p.append(p_i)
+        c.append(c_i)
+    ans = float('inf')
+    for i in range(2**D):
+        score = 0
+        cnt = 0
+        rest_max = -1
+        for j in range(D):
+            if ((i >> j) & 1):
+                score += 100 * (j + 1) * p[j] + c[j]
+                cnt += p[j]
+            else:
+                rest_max = j
+        if score < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - score + s1 - 1) // s1
+            if need >= p[rest_max]:
+                continue
+            cnt += need
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    d,g = map(int, input().split())
+    p = []
+    c = []
+    for i in range(d):
+        pi, ci = map(int, input().split())
+        p.append(pi)
+        c.append(ci)
+
+    result
+
+=======
+Suggestion 5
+
+def main():
+    d,g = map(int,input().split())
+    p = []
+    c = []
+    for i in range(d):
+        p_c = list(map(int,input().split()))
+        p.append(p_c[0])
+        c.append(p_c[1])
+    min_count = 100000000
+    for i in range(2**d):
+        count = 0
+        score = 0
+        for j in range(d):
+            if (i>>j) & 1 == 1:
+                count += p[j]
+                score += p[j]*(j+1)*100 + c[j]
+        if score >= g:
+            min_count = min(min_count,count)
+        else:
+            for j in range(d-1,-1,-1):
+                if (i>>j) & 1 == 0:
+                    for k in range(p[j]):
+                        if score >= g:
+                            break
+                        else:
+                            score += (j+1)*100
+                            count += 1
+            min_count = min(min_count,count)
+    print(min_count)
+
+=======
+Suggestion 6
+
+def main():
+    d,g = map(int,input().split())
+    p = []
+    c = []
+    for i in range(d):
+        a,b = map(int,input().split())
+        p.append(a)
+        c.append(b)
+    ans = []
+    for i in range(1<<d):
+        score = 0
+        count = 0
+        for j in range(d):
+            if i&(1<<j):
+                score += p[j]*(j+1)*100 + c[j]
+                count += p[j]
+        if score >= g:
+            ans.append(count)
+        else:
+            for j in range(d-1,-1,-1):
+                if i&(1<<j):
+                    continue
+                for k in range(p[j]):
+                    if score >= g:
+                        break
+                    score += (j+1)*100
+                    count += 1
+            ans.append(count)
+    print(min(ans))
+
+=======
+Suggestion 7
+
+def main():
+    d, g = map(int, input().split())
+    pc = [map(int, input().split()) for _ in range(d)]
+    p, c = [list(i) for i in zip(*pc)]
+
+    ans = 10**9
+    for i in range(2**d):
+        cnt = 0
+        score = 0
+        rest_max = -1
+        for j in range(d):
+            if ((i >> j) & 1):
+                score += 100*(j+1)*p[j] + c[j]
+                cnt += p[j]
+            else:
+                rest_max = j
+
+        if score < g:
+            s1 = 100*(rest_max+1)
+            need = (g - score + s1 - 1) // s1
+            if need >= p[rest_max]:
+                continue
+            cnt += need
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    D, G = map(int, input().split())
+    pc = [list(map(int, input().split())) for _ in range(D)]
+    ans = float('inf')
+    for i in range(2**D):
+        s = 0
+        cnt = 0
+        rest_max = -1
+        for j in range(D):
+            if (i >> j) & 1:
+                s += 100 * (j + 1) * pc[j][0] + pc[j][1]
+                cnt += pc[j][0]
+            else:
+                rest_max = j
+        if s < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - s + s1 - 1) // s1
+            if need >= pc[rest_max][0]:
+                continue
+            cnt += need
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    D, G = map(int, input().split())
+    PC = [list(map(int, input().split())) for _ in range(D)]
+
+    ans = float('inf')
+    for i in range(1 << D):
+        score = 0
+        count = 0
+        rest_max = -1
+        for j in range(D):
+            if (i >> j) & 1:
+                score += 100 * (j + 1) * PC[j][0] + PC[j][1]
+                count += PC[j][0]
+            else:
+                rest_max = j
+
+        if score < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - score + s1 - 1) // s1
+            if need >= PC[rest_max][0]:
+                continue
+            count += need
+        ans = min(ans, count)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    D, G = map(int, input().split())
+    problems = []
+    for i in range(D):
+        problems.append(list(map(int, input().split())))
+    min_num = 100000
+    for i in range(2 ** D):
+        score = 0
+        num = 0
+        for j in range(D):
+            if ((i >> j) & 1):
+                score += (j + 1) * 100 * problems[j][0] + problems[j][1]
+                num += problems[j][0]
+        if score >= G:
+            min_num = min(min_num, num)
+        else:
+            for j in range(D - 1, -1, -1):
+                if ((i >> j) & 1) == 0:
+                    for k in range(problems[j][0]):
+                        if score >= G:
+                            break
+                        score += (j + 1) * 100
+                        num += 1
+            if score >= G:
+                min_num = min(min_num, num)
+    print(min_num)

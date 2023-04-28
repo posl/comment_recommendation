@@ -1,36 +1,114 @@
-#Problem Statement
-#You are given a sequence of 26 integers P=(P_1,P_2, ... ,P_{26}) consisting of integers from 1 through 26. It is guaranteed that all elements in P are distinct.
-#Print a string S of length 26 that satisfies the following condition.
-#For every i (1 ≦ i ≦ 26), the i-th character of S is the lowercase English letter that comes P_i-th in alphabetical order.
-#
-#Constraints
-#1 ≦ P_i ≦ 26
-#P_i ≠ P_j (i ≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#P_1 P_2 ... P_{26}
-#
-#Output
-#Print the string S.
-#
-#Sample Input 1
-#1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 1
-#abcdefghijklmnopqrstuvwxyz
-#
-#Sample Input 2
-#2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 2
-#bacdefghijklmnopqrstuvwxyz
-#
-#Sample Input 3
-#5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21
-#
-#Sample Output 3
-#eklpyqragjdwtcbxzsnifvhmou
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    P = list(map(int, input().split()))
+    S = "abcdefghijklmnopqrstuvwxyz"
+    T = [0]*26
+    for i in range(26):
+        T[P[i]-1] = S[i]
+    print("".join(T))
+
+=======
+Suggestion 2
+
+def main():
+    p = list(map(int, input().split()))
+    s = ""
+    for i in range(26):
+        s += chr(p.index(i + 1) + 97)
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    P = input().split()
+    P = [int(i) for i in P]
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    S = ""
+    for i in range(26):
+        S += alphabet[P[i]-1]
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    P = [int(i) for i in input().split()]
+    S = [chr(97+i-1) for i in P]
+    print("".join(S))
+
+=======
+Suggestion 5
+
+def main():
+    P = input().split()
+    S = "abcdefghijklmnopqrstuvwxyz"
+    for i in range(26):
+        print(S[int(P[i])-1], end="")
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    p = [int(x) for x in input().split()]
+    s = [chr(97+i) for i in range(26)]
+    t = [0]*26
+    for i in range(26):
+        t[p[i]-1] = s[i]
+    print(''.join(t))
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    Ps = list(map(int, input().split()))
+    #compute
+    S = ''
+    for i in range(26):
+        S += chr(ord('a')+Ps[i]-1)
+    #output
+    print(S)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    P = list(map(int, input().split()))
+    #compute
+    ans = ['a']*26
+    for i in range(26):
+        ans[P[i]-1] = chr(97+i)
+    #output
+    print(''.join(ans))
+
+=======
+Suggestion 9
+
+def main():
+    P = input().split()
+    S = ""
+    for p in P:
+        S += chr(96 + int(p))
+    print(S)
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    P = list(map(int, input().split()))
+    
+    #compute
+    S = [chr(97+i) for i in range(26)]
+    for i in range(26):
+        S[i],S[P[i]-1] = S[P[i]-1],S[i]
+    
+    #output
+    print(''.join(S))

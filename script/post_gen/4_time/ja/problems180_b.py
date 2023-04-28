@@ -1,45 +1,76 @@
-#問題文
-#N 次元空間内の点 (x_1,...,x_N) が与えられます。
-#原点からこの点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれ求めてください。
-#ただし、それぞれの距離は次のように計算されます。
-#マンハッタン距離： |x_1|+...+|x_N|
-#ユークリッド距離： (|x_1|^2+...+|x_N|^2)^(1/2)
-#チェビシェフ距離： max(|x_1|,...,|x_N|)
-#
-#制約
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 ... x_N
-#
-#出力
-#原点から与えられた点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれこの順に改行区切りで出力せよ。
-#正しい値との絶対誤差または相対誤差が 10^{-9} 以下であれば正解とみなされる。
-#
-#入力例 1
-#2
-#2 -1
-#
-#出力例 1
-#3
-#2.236067977499790
-#2
-#それぞれ次のように計算されます。
-#マンハッタン距離： |2|+|-1|=3
-#ユークリッド距離： (|2|^2+|-1|^2)^(1/2)=2.236067977499789696...
-#チェビシェフ距離： max(|2|,|-1|)=2
-#
-#入力例 2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#出力例 2
-#39
-#14.387494569938159
-#9
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    print(sum(map(abs, x)))
+    print(sum(map(lambda x: x**2, x))**0.5)
+    print(max(map(abs, x)))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x = [abs(i) for i in x]
+    print(sum(x))
+    print(sum([i**2 for i in x])**0.5)
+    print(max(x))
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    N = int(input())
+    x = list(map(int, input().split()))
+    if (N != len(x)):
+        print("N != len(x)")
+        sys.exit()
+    if (N < 1 or N > 10**5):
+        print("N < 1 or N > 10**5")
+        sys.exit()
+    for i in range(N):
+        if (x[i] < -10**5 or x[i] > 10**5):
+            print("x[", i, "] < -10**5 or x[", i, "] > 10**5", sep="")
+            sys.exit()
+    print(sum(abs(x[i]) for i in range(N)))
+    print(sum(x[i]**2 for i in range(N))**(1/2))
+    print(max(abs(x[i]) for i in range(N)))
+
+=======
+Suggestion 4
+
+def manhattan(x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 5
+
+def cal_manhattan_distance(dimension, point_list):
+    distance = 0
+    for point in point_list:
+        distance += abs(point)
+    return distance
+
+=======
+Suggestion 6
+
+def manhattan_distance(x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 7
+
+def manhattan_distance(x):
+    return sum(map(abs, x))
+
+=======
+Suggestion 8
+
+def ManhattanDistance(x):
+    return sum(map(abs, x))

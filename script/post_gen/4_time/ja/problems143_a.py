@@ -1,39 +1,81 @@
-#問題文
-#高橋君の家の窓の横方向の長さは A であり、横方向の長さが B のカーテンが 2 枚取り付けられています。(カーテンは縦方向には窓を覆うのに十分な長さがあります。)
-#窓のうちカーテンで隠されていない部分の横方向の長さが最小になるようにカーテンを閉めます。
-#このとき、窓のカーテンで隠されていない部分の合計の横方向の長さを求めてください。
-#
-#制約
-#1 ≤ A ≤ 100
-#1 ≤ B ≤ 100
-#A, B は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#窓のうちカーテンで隠されていない部分の合計の横方向の長さを出力せよ。
-#
-#入力例 1
-#12 4
-#
-#出力例 1
-#4
-#横幅 12 の窓の、例えば両端からの距離が 4 以内の部分が隠されます。カーテンで隠されない部分の横方向の長さは 4 です。
-#
-#入力例 2
-#20 15
-#
-#出力例 2
-#0
-#窓がカーテンで完全に隠される場合は 0 と出力してください。
-#
-#入力例 3
-#20 30
-#
-#出力例 3
-#0
-#各カーテンが窓の横幅より長い場合があります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a <= b:
+        print(0)
+    else:
+        print(a - b * 2)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A <= B:
+        print(0)
+    else:
+        print(A-B*2)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int, input().split())
+    if a < b:
+        print(0)
+    else:
+        print(a-b*2)
+
+=======
+Suggestion 4
+
+def solve():
+    a, b = map(int, input().split())
+    if a > b:
+        print(a - b)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(max(0, A - 2*B))
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(max(0, a - (b * 2)))
+
+=======
+Suggestion 7
+
+def problems143_a():
+    a,b = map(int,input().split())
+    if a <= b:
+        print(0)
+    else:
+        print(a-b*2)
+
+=======
+Suggestion 8
+
+def solve(a,b):
+    if a < b * 2:
+        return 0
+    else:
+        return a - b * 2
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    print(max(0,a-b*2))

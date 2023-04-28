@@ -1,44 +1,174 @@
-#Problem Statement
-#Given are an integer X and an integer sequence of length N: p_1, ..., p_N.
-#Among the integers not contained in the sequence p_1, ..., p_N (not necessarily positive), find the integer nearest to X, that is, find the integer whose absolute difference with X is the minimum. If there are multiple such integers, report the smallest such integer.
-#
-#Constraints
-#1 ≦ X ≦ 100
-#0 ≦ N ≦ 100
-#1 ≦ p_i ≦ 100
-#p_1, ..., p_N are all distinct.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X N
-#p_1 ... p_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#6 5
-#4 7 10 6 5
-#
-#Sample Output 1
-#8
-#Among the integers not contained in the sequence 4, 7, 10, 6, 5, the one nearest to 6 is 8.
-#
-#Sample Input 2
-#10 5
-#4 7 10 6 5
-#
-#Sample Output 2
-#9
-#Among the integers not contained in the sequence 4, 7, 10, 6, 5, the ones nearest to 10 are 9 and 11. We should print the smaller one, 9.
-#
-#Sample Input 3
-#100 0
-#
-#
-#Sample Output 3
-#100
-#When N = 0, the second line in the input will be empty. Also, as seen here, X itself can be the answer.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+    else:
+        for i in range(100):
+            if x - i not in p:
+                print(x - i)
+                break
+            elif x + i not in p:
+                print(x + i)
+                break
+
+=======
+Suggestion 2
+
+def main():
+    x,n = map(int,input().split())
+    if n == 0:
+        print(x)
+        return
+    p = list(map(int,input().split()))
+    p.sort()
+    if x not in p:
+        print(x)
+        return
+    else:
+        for i in range(101):
+            if x - i not in p:
+                print(x - i)
+                return
+            elif x + i not in p:
+                print(x + i)
+                return
+
+=======
+Suggestion 3
+
+def main():
+    x,n = map(int, input().split())
+    if n == 0:
+        print(x)
+        return
+    p = list(map(int, input().split()))
+    p.sort()
+    if x not in p:
+        print(x)
+        return
+    for i in range(1,100):
+        if x-i not in p:
+            print(x-i)
+            return
+        if x+i not in p:
+            print(x+i)
+            return
+
+=======
+Suggestion 4
+
+def main():
+    X, N = map(int, input().split())
+    if N == 0:
+        print(X)
+    else:
+        p = list(map(int, input().split()))
+        p.sort()
+        for i in range(0, 101):
+            if X - i not in p:
+                print(X - i)
+                break
+            elif X + i not in p:
+                print(X + i)
+                break
+
+=======
+Suggestion 5
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        return
+    p.sort()
+    for i in range(0, 100):
+        if not x - i in p:
+            print(x - i)
+            return
+        if not x + i in p:
+            print(x + i)
+            return
+
+=======
+Suggestion 6
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        return
+    p.sort()
+    for i in range(100):
+        if x - i not in p:
+            print(x - i)
+            return
+        if x + i not in p:
+            print(x + i)
+            return
+
+=======
+Suggestion 7
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        exit()
+    for i in range(1, 100):
+        if x - i not in p:
+            print(x-i)
+            exit()
+        elif x + i not in p:
+            print(x+i)
+            exit()
+
+=======
+Suggestion 8
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = set(p)
+    for i in range(100):
+        if x - i not in p:
+            print(x - i)
+            break
+        if x + i not in p:
+            print(x + i)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    X, N = map(int, input().split())
+    p = list(map(int, input().split()))
+    # compute
+
+    # output
+    print(solve(X, N, p))
+
+=======
+Suggestion 10
+
+def solve(x, n, p):
+    if n == 0:
+        return x
+    if x not in p:
+        return x
+    else:
+        for i in range(1, 100):
+            if x - i not in p:
+                return x - i
+            elif x + i not in p:
+                return x + i

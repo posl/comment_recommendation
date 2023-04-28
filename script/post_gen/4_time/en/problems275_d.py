@@ -1,37 +1,139 @@
-#Problem Statement
-#A function f(x) defined for non-negative integers x satisfies the following conditions.
-#f(0) = 1.
-#f(k) = f(⌊ (k/(2))⌋) +  f(⌊ (k/(3))⌋) for any positive integer k.
-#Here, ⌊ A ⌋ denotes the value of A rounded down to an integer.
-#Find f(N).
-#
-#Constraints
-#N is an integer satisfying 0 ≦ N ≦ 10^{18}.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#3
-#We have f(2) =  f(⌊ (2/(2))⌋) +  f(⌊ (2/(3))⌋) = f(1) + f(0) =(f(⌊ (1/(2))⌋) +  f(⌊ (1/(3))⌋)) + f(0)  =(f(0)+f(0)) + f(0)= 3.
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#100
-#
-#Sample Output 3
-#55
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 2
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 3
+
+def f(x):
+    if x == 0:
+        return 1
+    elif x == 1:
+        return 2
+    elif x == 2:
+        return 4
+    elif x == 3:
+        return 5
+    elif x == 4:
+        return 7
+    elif x == 5:
+        return 8
+    elif x == 6:
+        return 10
+    elif x == 7:
+        return 11
+    elif x == 8:
+        return 13
+    elif x == 9:
+        return 14
+    elif x == 10:
+        return 16
+    elif x == 11:
+        return 17
+    elif x == 12:
+        return 19
+    elif x == 13:
+        return 20
+    elif x == 14:
+        return 22
+    elif x == 15:
+        return 23
+    elif x == 16:
+        return 25
+    elif x == 17:
+        return 26
+    elif x == 18:
+        return 28
+    elif x == 19:
+        return 29
+    elif x == 20:
+        return 31
+    elif x == 21:
+        return 32
+    elif x == 22:
+        return 34
+    elif x == 23:
+        return 35
+    elif x == 24:
+        return 37
+    elif x == 25:
+        return 38
+    elif x == 26:
+        return 40
+    elif x == 27:
+        return 41
+    elif x == 28:
+        return 43
+    elif x == 29:
+        return 44
+    elif x == 30:
+        return 46
+    elif x == 31:
+        return 47
+    elif x == 32:
+        return 49
+    elif x == 33:
+        return 50
+    elif x == 34:
+        return 52
+    elif x == 35:
+        return 53
+    elif x == 36:
+        return 55
+    elif x == 37:
+        return 56
+    elif x == 38:
+        return 58
+    elif x == 39:
+        return 59
+    elif x == 40:
+        return 61
+    elif x ==
+
+=======
+Suggestion 4
+
+def f(x):
+    if x == 0:
+        return 1
+    elif x == 1:
+        return 2
+    elif x == 2:
+        return 4
+    else:
+        return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 5
+
+def f(x):
+    if x<=0:
+        return 1
+    return f(x//2)+f(x//3)
+n=int(input())
+print(f(n))

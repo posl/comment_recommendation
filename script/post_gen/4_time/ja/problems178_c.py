@@ -1,38 +1,51 @@
-#問題文
-#長さ N の整数の列 A_1,A_2,...,A_N であって以下の条件をすべて満たすものはいくつありますか。
-#0 ≦ A_i ≦ 9
-#A_i=0 なる i が存在する。
-#A_i=9 なる i が存在する。
-#ただし、答えはとても大きくなる可能性があるので、10^9+7 で割った余りを出力してください。
-#
-#制約
-#1 ≦ N ≦ 10^6
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを10^9+7 で割った余りを出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#2
-#数列{0,9},{9,0}の 2 つが条件をすべて満たします。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#0
-#
-#入力例 3
-#869121
-#
-#出力例 3
-#2511445
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print((pow(10, n, 10**9+7) - pow(9, n, 10**9+7) - pow(9, n, 10**9+7) + pow(8, n, 10**9+7)) % (10**9+7))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    mod = 10**9 + 7
+    ans = pow(10,n,mod) - pow(9,n,mod) - pow(9,n,mod) + pow(8,n,mod)
+    ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print((10**N - 2*9**N + 8**N) % (10**9 + 7))
+
+=======
+Suggestion 4
+
+def p178_c():
+    n = int(input())
+    ans = pow(10, n, 10**9+7) - pow(9, n, 10**9+7) - pow(9, n, 10**9+7) + pow(8, n, 10**9+7)
+    print(ans % (10**9+7))
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    mod = 10 ** 9 + 7
+    N = int(readline())
+    ans = pow(10, N, mod) - 2 * pow(9, N, mod) + pow(8, N, mod)
+    print(ans % mod)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print((10**N - 2*(9**N) + 8**N) % (10**9 + 7))

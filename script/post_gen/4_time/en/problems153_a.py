@@ -1,43 +1,82 @@
-#Problem Statement
-#Serval is fighting with a monster.
-#The health of the monster is H.
-#In one attack, Serval can decrease the monster's health by A.
-#There is no other way to decrease the monster's health.
-#Serval wins when the monster's health becomes 0 or below.
-#Find the number of attacks Serval needs to make before winning.
-#
-#Constraints
-#1 ≦ H ≦ 10^4
-#1 ≦ A ≦ 10^4
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H A
-#
-#Output
-#Print the number of attacks Serval needs to make before winning.
-#
-#Sample Input 1
-#10 4
-#
-#Sample Output 1
-#3
-#After one attack, the monster's health will be 6.
-#After two attacks, the monster's health will be 2.
-#After three attacks, the monster's health will be -2.
-#Thus, Serval needs to make three attacks to win.
-#
-#Sample Input 2
-#1 10000
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#10000 1
-#
-#Sample Output 3
-#10000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(int(H / A))
+    else:
+        print(int(H / A) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    h,a = map(int,input().split())
+    if h%a == 0:
+        print(int(h/a))
+    else:
+        print(int(h/a)+1)
+
+=======
+Suggestion 3
+
+def main():
+    H, A = map(int, input().split())
+    print((H + A - 1) // A)
+
+=======
+Suggestion 4
+
+def main():
+    h, a = map(int, input().split())
+    print((h + a - 1) // a)
+
+=======
+Suggestion 5
+
+def main():
+    H, A = map(int, input().split())
+    print(H//A if H%A==0 else H//A+1)
+
+=======
+Suggestion 6
+
+def main():
+    H, A = map(int, input().split())
+    print((H-1)//A + 1)
+
+=======
+Suggestion 7
+
+def main():
+    H, A = map(int, input().split())
+    print(int((H + A - 1) / A))
+
+=======
+Suggestion 8
+
+def solve(H, A):
+    num = 0
+    while H > 0:
+        H -= A
+        num += 1
+    return num
+
+=======
+Suggestion 9
+
+def monster():
+    h, a = map(int, input().split())
+    return (h + a - 1) // a
+
+print(monster())
+
+=======
+Suggestion 10
+
+def solve():
+    H,A = map(int,input().split())
+    print((H+A-1)//A)

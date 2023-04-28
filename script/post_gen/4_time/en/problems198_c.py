@@ -1,42 +1,145 @@
-#Problem Statement
-#Takahashi is standing at the origin of a two-dimensional plane.
-#By taking one step, he can move to a point whose Euclidian distance from his current position is exactly R (the coordinates of the destination of a move do not have to be integers). There is no other way to move.
-#Find the minimum number of steps Takahashi has to take before reaching (X, Y).
-#We remind you that the Euclidian distance between points (x_1,y_1) and (x_2,y_2) is ((x_1-x_2)^2+(y_1-y_2)^2)^(1/2).
-#
-#Constraints
-#1 ≦ R ≦ 10^5
-#0 ≦ X,Y ≦ 10^5
-#(X,Y) ≠ (0,0)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#R X Y
-#
-#Output
-#Print the minimum number of steps Takahashi has to take before reaching (X, Y).
-#
-#Sample Input 1
-#5 15 0
-#
-#Sample Output 1
-#3
-#He can reach there in three steps: (0,0) -> (5,0) -> (10,0) -> (15,0).
-#This is the minimum number needed: he cannot reach there in two or fewer steps.
-#
-#Sample Input 2
-#5 11 0
-#
-#Sample Output 2
-#3
-#One optimal route is (0,0) -> (5,0) -> (8,4) -> (11,0).
-#
-#Sample Input 3
-#3 4 4
-#
-#Sample Output 3
-#2
-#One optimal route is (0,0) -> (2-(((2)^(1/2))/(2)), 2+(((2)^(1/2))/(2))) -> (4,4).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    R, X, Y = map(int, input().split())
+    d = (X**2 + Y**2)**(1/2)
+    if d < R:
+        print(2)
+    else:
+        print(int(d//R + 1) if d%R != 0 else int(d//R))
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    import math
+    R, X, Y = map(int, input().split())
+    distance = math.sqrt(X**2 + Y**2)
+    if distance % R == 0:
+        print(int(distance / R))
+    else:
+        print(math.ceil(distance / R))
+
+=======
+Suggestion 3
+
+def main():
+    r,x,y = map(int,input().split())
+    d = (x**2 + y**2)**(1/2)
+    if d == r:
+        print(1)
+    elif d <= 2*r:
+        print(2)
+    else:
+        print(int(d/r))
+
+=======
+Suggestion 4
+
+def solve():
+    R,X,Y = map(int,input().split())
+    if (X**2+Y**2)**0.5 == R:
+        print(1)
+    elif (X**2+Y**2)**0.5 < R:
+        print(2)
+    else:
+        print(int((X**2+Y**2)**0.5//R)+1)
+
+=======
+Suggestion 5
+
+def main():
+    R, X, Y = map(int, input().split())
+    import math
+    if (X**2 + Y**2) % R**2 == 0:
+        print(int(math.sqrt(X**2 + Y**2) // R))
+    else:
+        print(int(math.sqrt(X**2 + Y**2) // R + 1))
+
+=======
+Suggestion 6
+
+def solve():
+    #import sys
+    #input = sys.stdin.readline
+    R, X, Y = map(int, input().split())
+    import math
+    d = math.sqrt(X*X + Y*Y)
+    if d < R:
+        return 2
+    else:
+        return math.ceil(d/R)
+
+print(solve())
+
+=======
+Suggestion 7
+
+def solve():
+    R,X,Y = map(int,input().split())
+    import math
+    d = math.sqrt(X*X+Y*Y)
+    if d < R:
+        return 2
+    else:
+        return math.ceil(d/R)
+
+print(solve())
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    R, X, Y = map(int, input().split())
+
+    # compute
+
+    # output
+    if R*R > X*X + Y*Y:
+        print(2)
+    elif (R*R == X*X + Y*Y) or ((R*R - (X*X + Y*Y)) % (2*R) == 0):
+        print((R*R - (X*X + Y*Y)) // (2*R) + 1)
+    else:
+        print((R*R - (X*X + Y*Y)) // (2*R) + 2)
+
+=======
+Suggestion 9
+
+def solve(r, x, y):
+    from math import sqrt
+    d = sqrt(x**2 + y**2)
+    if d < r:
+        return 2
+    return int(d/r)+1
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    import math
+    import re
+
+    def get_list():
+        return list(map(int, sys.stdin.readline().strip().split()))
+
+    def get_int():
+        return int(sys.stdin.readline().strip())
+
+    def get_str():
+        return sys.stdin.readline().strip()
+
+    def get_list_str():
+        return list(sys.stdin.readline().strip())
+
+    R, X, Y = get_list()
+
+    if (X**2 + Y**2)**(1/2) < R:
+        print(2)
+    else:
+        print(math.ceil((X**2 + Y**2)**(1/2)/R))

@@ -1,54 +1,196 @@
-#Problem Statement
-#Your friend gave you a dequeue D as a birthday present.
-#D is a horizontal cylinder that contains a row of N jewels.
-#The values of the jewels are V_1, V_2, ..., V_N from left to right. There may be jewels with negative values.
-#In the beginning, you have no jewel in your hands.
-#You can perform at most K operations on D, chosen from the following, at most K times (possibly zero):
-#Operation A: Take out the leftmost jewel contained in D and have it in your hand. You cannot do this operation when D is empty.
-#Operation B: Take out the rightmost jewel contained in D and have it in your hand. You cannot do this operation when D is empty.
-#Operation C: Choose a jewel in your hands and insert it to the left end of D. You cannot do this operation when you have no jewel in your hand.
-#Operation D: Choose a jewel in your hands and insert it to the right end of D. You cannot do this operation when you have no jewel in your hand.
-#Find the maximum possible sum of the values of jewels in your hands after the operations.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 50
-#1 ≦ K ≦ 100
-#-10^7 ≦ V_i ≦ 10^7
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#V_1 V_2 ... V_N
-#
-#Output
-#Print the maximum possible sum of the values of jewels in your hands after the operations.
-#
-#Sample Input 1
-#6 4
-#-10 8 2 1 2 6
-#
-#Sample Output 1
-#14
-#After the following sequence of operations, you have two jewels of values 8 and 6 in your hands for a total of 14, which is the maximum result.
-#Do operation A. You take out the jewel of value -10 from the left end of D.
-#Do operation B. You take out the jewel of value 6 from the right end of D.
-#Do operation A. You take out the jewel of value 8 from the left end of D.
-#Do operation D. You insert the jewel of value -10 to the right end of D.
-#
-#Sample Input 2
-#6 4
-#-6 -100 50 -2 -5 -3
-#
-#Sample Output 2
-#44
-#
-#Sample Input 3
-#6 3
-#-6 -100 50 -2 -5 -3
-#
-#Sample Output 3
-#0
-#It is optimal to do no operation.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for l in range(min(N, K) + 1):
+        for r in range(min(N, K) - l + 1):
+            if l + r > N:
+                break
+            t = V[:l] + V[N - r:]
+            t.sort()
+            for i in range(min(K - l - r, l + r)):
+                if t[i] < 0:
+                    t[i] = 0
+            ans = max(ans, sum(t))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N, K) - i + 1):
+            l = V[:i] + V[N - j:]
+            l.sort()
+            ans = max(ans, sum(l[max(K - i - j, 0):]))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N, K) - i + 1):
+            l = V[:i]
+            r = V[N-j:]
+            l.sort()
+            r.sort()
+            for k in range(min(K - i - j, min(i, j))):
+                if l[k] < 0 and r[min(K - i - j - k - 1, len(r) - 1)] < 0:
+                    l[k], r[min(K - i - j - k - 1, len(r) - 1)] = r[min(K - i - j - k - 1, len(r) - 1)], l[k]
+            ans = max(ans, sum(l) + sum(r))
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for l in range(min(N, K) + 1):
+        for r in range(min(N, K) - l + 1):
+            if l + r > N:
+                continue
+            tmp = []
+            for i in range(l):
+                tmp.append(V[i])
+            for i in range(r):
+                tmp.append(V[N - 1 - i])
+            tmp.sort()
+            for i in range(min(K - l - r, l + r)):
+                if tmp[i] > 0:
+                    break
+                tmp[i] = 0
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    v = list(map(int, input().split()))
+    ans = 0
+    for a in range(min(n, k) + 1):
+        for b in range(min(n, k) + 1 - a):
+            c = k - a - b
+            d = v[:a] + v[n-b:]
+            d.sort()
+            ans = max(ans, sum(d[max(0, c - len(d)):]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(K, N) + 1):
+        for j in range(min(K, N) - i + 1):
+            left = V[:i]
+            right = V[N - j:]
+            new = left + right
+            new.sort()
+            new.reverse()
+            for k in range(min(K - i - j, len(new))):
+                if new[k] < 0:
+                    new[k] = 0
+            ans = max(ans, sum(new))
+    print(ans)
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(0, min(N, K) + 1):
+        for j in range(0, min(N, K) - i + 1):
+            tmp = []
+            for k in range(i):
+                tmp.append(V[k])
+            for k in range(j):
+                tmp.append(V[N - k - 1])
+            tmp.sort()
+            for k in range(min(K - i - j, len(tmp))):
+                if tmp[k] < 0:
+                    tmp[k] = 0
+            ans = max(ans, sum(tmp))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    max_value = 0
+    for left in range(min(N, K) + 1):
+        for right in range(min(N, K) + 1 - left):
+            values = V[:left] + V[N - right:]
+            values.sort()
+            for i in range(min(K - left - right, len(values))):
+                if values[i] < 0:
+                    values[i] = 0
+            max_value = max(max_value, sum(values))
+    print(max_value)
+
+=======
+Suggestion 9
+
+def get_max_sum(N, K, V):
+    max_sum = 0
+    for i in range(N+1):
+        for j in range(N+1):
+            if i+j > N:
+                continue
+            if i+j > K:
+                continue
+            sum = 0
+            l = []
+            for k in range(i):
+                l.append(V[k])
+            for k in range(N-j, N):
+                l.append(V[k])
+            l.sort()
+            for k in range(K-i-j):
+                if k < len(l) and l[k] < 0:
+                    l[k] = 0
+            for k in range(len(l)):
+                sum += l[k]
+            if sum > max_sum:
+                max_sum = sum
+    return max_sum
+
+N, K = map(int, input().split())
+V = list(map(int, input().split()))
+print(get_max_sum(N, K, V))
+
+=======
+Suggestion 10
+
+def max_jewels(N, K, V):
+    max_sum = 0
+    for i in range(1, min(N, K) + 1):
+        for j in range(i + 1):
+            s = sorted(V[:j] + V[N - (i - j):])
+            max_sum = max(max_sum, sum(s[i:]))
+    return max_sum

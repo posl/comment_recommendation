@@ -1,30 +1,30 @@
-#問題文
-#100 以上の整数 N が与えられます。N の下 2 桁を出力してください。
-#ただし、N の下 2 桁とは十の位と一の位をこの順に並べたものを言います。
-#
-#制約
-#100 ≦ N ≦ 999
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#254
-#
-#出力例 1
-#54
-#254 の下 2 桁は 54 であるため、54 を出力します。
-#
-#入力例 2
-#101
-#
-#出力例 2
-#01
-#101 の下 2 桁は 01 であるため、01 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(n%100)
+
+=======
+Suggestion 2
+
+def main():
+    n = input()
+    print(n[1:])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(N%100)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(n%100)
+main()

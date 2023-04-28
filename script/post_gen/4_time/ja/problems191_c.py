@@ -1,45 +1,208 @@
-#問題文
-#H 行 W 列のマス目があります。このマス目の、上から i 番目、左から j 番目のマスを、マス (i, j) と呼ぶことにします。
-#各マスは黒または白に塗られています。S_{i, j} が # ならばマス (i, j) は黒に塗られており、. ならば白に塗られています。
-#マス目の一番外側のマス、すなわち (1, j), (H, j), (i, 1), (i, W) のいずれかの形で表されるマスは白に塗られていることが保証されます。  
-#黒に塗られた部分を多角形として見たとき、これが (最小で) 何角形になるかを求めてください。  
-#ここで、黒に塗られた部分は一つの自己交叉のない多角形となることが保証されます。すなわち、以下のことが保証されます。  
-#黒に塗られたマスが少なくとも一つ存在する
-#黒に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、黒に塗られたマスのみを通って互いに到達可能である
-#白に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、白に塗られたマスのみを通って互いに到達可能である(マス目の一番外側のマスは全て白に塗られていることに注意してください)
-#
-#制約
-#3 ≦ H ≦ 10
-#3 ≦ W ≦ 10
-#S_{i, j} は # または .
-#S_{1, j}, S_{H, j} は .
-#S_{i, 1}, S_{i, W} は .
-#黒に塗られた部分は一つの自己交叉のない多角形となる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_{1, 1} S_{1, 2} S_{1, 3} ... S_{1, W}
-#S_{2, 1} S_{2, 2} S_{2, 3} ... S_{2, W}
-#S_{3, 1} S_{3, 2} S_{3, 3} ... S_{3, W}
-#.
-#.
-#.
-#S_{H, 1} S_{H, 2} S_{H, 3} ... S_{H, W}
-#
-#出力
-#黒に塗られた部分を n 角形として見ることができるような最小の n を出力せよ。  
-#
-#入力例 1
-#5 5
-#.....
-#.###.
-#.###.
-#.###.
-#.....
-#
-#出力例 1
-#4
-#マス目の左上、左下、右上、右下の隅をそれぞれ (0, 0), (H, 0), (0, W), (H, W) とする座標系で表すと、与えられる図形は (1, 1), (4, 1), (4, 4), (1, 4) を頂点とする 4 角形です。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h-1):
+        for j in range(w-1):
+            cnt = 0
+            for k in range(2):
+                for l in range(2):
+                    if s[i+k][j+l] == '#':
+                        cnt += 1
+            if cnt == 1 or cnt == 3:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1, H - 1):
+        for j in range(1, W - 1):
+            if S[i][j] == "#":
+                if S[i - 1][j] == "#" and S[i + 1][j] == "#" and S[i][j - 1] == "#" and S[i][j + 1] == "#":
+                    ans += 1
+    if ans == 0:
+        print(0)
+    else:
+        print(ans - 1)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                count += 1
+    if count == 0:
+        print(0)
+        exit()
+    elif count == 1:
+        print(1)
+        exit()
+    else:
+        pass
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                start = (i, j)
+                break
+        else:
+            continue
+        break
+    x, y = start
+    next = (x, y+1)
+    if next[1] >= W:
+        next = (x+1, 0)
+    else:
+        pass
+    count = 1
+    while next != start:
+        if S[next[0]][next[1]] == "#":
+            count += 1
+            x, y = next
+            next = (x, y+1)
+            if next[1] >= W:
+                next = (x+1, 0)
+            else:
+                pass
+        else:
+            x, y = next
+            next = (x, y+1)
+            if next[1] >= W:
+                next = (x+1, 0)
+            else:
+                pass
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    black = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                black += 1
+    if black == H + W - 1:
+        print(2)
+        return
+    if black == H + W - 2:
+        print(3)
+        return
+    if black == H + W - 3:
+        print(4)
+        return
+    print(1)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    S = [list(input()) for _ in range(H)]
+    ans = 0
+    for i in range(1,H-1):
+        for j in range(1,W-1):
+            if S[i][j] == "#":
+                if S[i-1][j] == "." and S[i+1][j] == "." and S[i][j-1] == "." and S[i][j+1] == ".":
+                    ans = 1
+                    break
+        if ans == 1:
+            break
+    if ans == 1:
+        print(2)
+    else:
+        print(4)
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    cnt = 0
+    for i in range(H - 1):
+        for j in range(W - 1):
+            if S[i][j] == '#':
+                cnt += 1
+                S[i][j] = '.'
+                S[i + 1][j] = '.' 
+                S[i][j + 1] = '.' 
+                S[i + 1][j + 1] = '.' 
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int,input().split())
+    s = [list(input()) for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                ans += 1
+    if ans == h+w-1:
+        print(1)
+    elif ans == h+w-2:
+        print(2)
+    else:
+        print(4)
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+    ans -= 4
+    ans += H + W - 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    h,w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h-1):
+        for j in range(w-1):
+            cnt = 0
+            for x in range(2):
+                for y in range(2):
+                    if s[i+x][j+y] == '#':
+                        cnt += 1
+            if cnt == 1 or cnt == 3:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_input():
+    h, w = map(int, input().split())
+    return h, w

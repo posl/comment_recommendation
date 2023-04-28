@@ -1,33 +1,109 @@
-#問題文
-#長さ N の数列 A が与えられます。
-#各要素同士の差の 2 乗の和、すなわち  sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2 を求めてください。  
-#
-#制約
-#2 ≦ N ≦ 3 × 10^5
-#|A_i| ≦ 200
-#入力に含まれる値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#2 8 4
-#
-#出力例 1
-#56
-#sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2 = (8 - 2)^2 + (4 - 2) ^ 2 + (4 - 8) ^ 2 = 56 です。  
-#
-#入力例 2
-#5
-#-5 8 9 -4 -3
-#
-#出力例 2
-#950
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        for j in range(i):
+            sum += (A[i]-A[j])**2
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    sumA = sum(A)
+    for i in range(N):
+        sumA -= A[i]
+        ans += A[i]**2 * (N-1) - 2 * A[i] * sumA
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+
+    sum = 0
+    for i in range(n):
+        for j in range(i):
+            sum += (a[i] - a[j])**2
+
+    print(sum)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    print(sum([sum([(a[i]-a[j])**2 for j in range(i)]) for i in range(1,n)]))
+
+=======
+Suggestion 9
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for i in range(n):
+        ans+=a[i]*a[i]*(n-1)
+        for j in range(i+1,n):
+            ans-=2*a[i]*a[j]
+    print(ans)

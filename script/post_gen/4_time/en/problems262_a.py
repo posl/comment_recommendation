@@ -1,35 +1,99 @@
-#Problem Statement
-#A sport event is held in June of every year whose remainder when divided by 4 is 2.
-#Suppose that it is now January of the year Y.  In what year will this sport event be held next time?
-#
-#Constraints
-#2000 ≦ Y ≦ 3000
-#Y is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#Y
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2022
-#
-#Sample Output 1
-#2022
-#The remainder when 2022 is divided by 4 is 2, so if it is now January of 2022, the next games will be held in June of the same year.
-#
-#Sample Input 2
-#2023
-#
-#Sample Output 2
-#2026
-#
-#Sample Input 3
-#3000
-#
-#Sample Output 3
-#3002
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    year = int(input())
+    while True:
+        year += 1
+        if year % 4 == 2:
+            print(year)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    Y = int(input())
+    while True:
+        if Y % 4 == 2:
+            print(Y)
+            break
+        else:
+            Y += 1
+
+=======
+Suggestion 3
+
+def main():
+    year = int(input())
+    while True:
+        if year % 4 == 2:
+            print(year)
+            break
+        else:
+            year += 1
+
+=======
+Suggestion 4
+
+def main():
+    Y = int(input())
+    Y += 2
+    if Y % 4 == 0:
+        print(Y)
+    else:
+        while Y % 4 != 0:
+            Y += 1
+        print(Y)
+
+=======
+Suggestion 5
+
+def main():
+    year = int(input())
+    while (year % 4) != 2:
+        year += 1
+    print(year)
+
+=======
+Suggestion 6
+
+def main():
+    Y = int(input())
+    while Y % 4 != 2:
+        Y += 1
+    print(Y)
+
+=======
+Suggestion 7
+
+def main():
+    Y = int(input())
+    while (Y % 4) != 2:
+        Y += 1
+    print(Y)
+
+=======
+Suggestion 8
+
+def main():
+    y = int(input())
+    print(y + 2 - y % 4)
+
+=======
+Suggestion 9
+
+def get_next_year(year):
+    while True:
+        if year % 4 == 2:
+            return year
+        year += 1
+
+=======
+Suggestion 10
+
+def main():
+    Y = int(input())
+    print(Y+2-Y%4)

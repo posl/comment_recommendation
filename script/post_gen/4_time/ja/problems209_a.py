@@ -1,36 +1,87 @@
-#問題文
-#A 以上かつ B 以下の整数はいくつありますか？
-#
-#制約
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A, B は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#A 以上かつ B 以下の整数の個数を出力せよ。
-#
-#入力例 1
-#2 4
-#
-#出力例 1
-#3
-#2 以上かつ 4 以下の整数は 2, 3, 4 の 3 つなので、 3 を出力してください。
-#
-#入力例 2
-#10 100
-#
-#出力例 2
-#91
-#
-#入力例 3
-#3 2
-#
-#出力例 3
-#0
-#3 以上かつ 2 以下の整数は存在しないので、 0 を出力してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b - a + 1)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a >= b:
+        print(0)
+    else:
+        print(b - a + 1)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    if A > B:
+        print(0)
+    else:
+        print(B - A + 1)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1 if b - a >= 0 else 0)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1 if b > a else 0)
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(b-a+1 if b >= a else 0)
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    print(b-a+1 if b-a+1 > 0 else 0)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    print(B - A + 1)
+
+=======
+Suggestion 9
+
+def main():
+    # n = int(input())
+    # s = input()
+    # n, k = map(int, input().split())
+    a, b = map(int, input().split())
+    # a = list(map(int, input().split()))
+    # s = input()
+    # n, m = map(int, input().split())
+    # a = list(map(int, input().split()))
+    # s = input()
+    # a = int(input())
+    if b < a:
+        print(0)
+    else:
+        print(b-a+1)

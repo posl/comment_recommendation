@@ -1,36 +1,111 @@
-#問題文
-#先頭から奇数番目の文字が全て英小文字であり、かつ、先頭から偶数番目の文字が全て英大文字であるような文字列を 読みにくい文字列 と呼びます。
-#文字列 S が読みにくい文字列かどうか判定してください。
-#
-#制約
-#S は英大文字及び英小文字のみからなる
-#S の長さは 1 以上 1000 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が読みにくい文字列なら Yes、読みにくい文字列でないなら No を出力せよ。
-#
-#入力例 1
-#dIfFiCuLt
-#
-#出力例 1
-#Yes
-#先頭から奇数番目の文字が全て英小文字であり、かつ、先頭から偶数番目の文字が全て英大文字であるので、読みにくい文字列です。
-#
-#入力例 2
-#eASY
-#
-#出力例 2
-#No
-#先頭から 3 番目の文字が英小文字ではないので、読みにくい文字列ではありません。
-#
-#入力例 3
-#a
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0::2].islower() and s[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0::2].islower() and S[1::2].isupper():
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    if s[0::2].islower() and s[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def check(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i].islower():
+            continue
+        elif i % 2 == 1 and s[i].isupper():
+            continue
+        else:
+            return False
+    return True
+
+s = input()
+
+=======
+Suggestion 5
+
+def check(s):
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i].isupper():
+                return False
+        else:
+            if s[i].islower():
+                return False
+    return True
+
+s = input()
+
+=======
+Suggestion 6
+
+def solve():
+    s = input()
+    if s[::2].islower() and s[1::2].isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def check(s):
+    if len(s) == 1:
+        return True
+
+    for i in range(1, len(s), 2):
+        if not s[i].islower():
+            return False
+
+    for i in range(0, len(s), 2):
+        if not s[i].isupper():
+            return False
+
+    return True
+
+s = input()
+
+=======
+Suggestion 8
+
+def isDifficultString(s):
+    if s[0::2].isupper() and s[1::2].islower():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def is_upper(s):
+    return s.isupper()
+
+=======
+Suggestion 10
+
+def is_upper(text):
+    return text.isupper()

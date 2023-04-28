@@ -1,34 +1,128 @@
-#Problem Statement
-#Given are N integers A_1,...,A_N.
-#Find the sum of |A_i-A_j| over all pairs i,j such that 1≦ i < j ≦ N.
-#In other words, find (sum_{i=1}^{N-1}sum_{j=i+1}^{N} |A_i-A_j|).
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#|A_i|≦ 10^8
-#A_i is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#5 1 2
-#
-#Sample Output 1
-#8
-#We have |5-1|+|5-2|+|1-2|=8.
-#
-#Sample Input 2
-#5
-#31 41 59 26 53
-#
-#Sample Output 2
-#176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(1, N):
+        ans += A[i] - A[i-1]
+    print(ans*2)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (n - i - 1) - a[i] * i
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (n - i - 1) - a[i] * i
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    #N = int(input())
+    #A = list(map(int, input().split()))
+    N = 5
+    A = [31, 41, 59, 26, 53]
+
+    A.sort()
+    sum = 0
+    for i in range(N):
+        sum += A[i] * i - A[i] * (N - 1 - i)
+    print(sum)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += (A[i] * (2 * i - N + 1))
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += (n-1-2*i)*a[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    s = sum(a)
+    t = 0
+    for i in range(n):
+        t += a[i]**2
+
+    print((n-1)*t - 2*s*(sum(a)))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(n):
+        sum += A[i] * (n - 1 - i) - A[i] * i
+    print(sum)

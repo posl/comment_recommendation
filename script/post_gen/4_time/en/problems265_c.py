@@ -1,67 +1,293 @@
-#Problem Statement
-#We have a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
-#(i,j) has a character G_{i,j} written on it.  G_{i,j} is U, D, L, or R.
-#You are initially at (1,1).  You repeat the following operation until you cannot make a move.
-#Let (i,j) be the square you are currently at.
-#If G_{i,j} is U and i ≠ 1, move to (i-1,j).
-#If G_{i,j} is D and i ≠ H, move to (i+1,j).
-#If G_{i,j} is L and j ≠ 1, move to (i,j-1).
-#If G_{i,j} is R and j ≠ W, move to (i,j+1).
-#Otherwise, you cannot make a move.  
-#Print the square you end up at when you cannot make a move.
-#If you indefinitely repeat moving, print -1 instead.
-#
-#Constraints
-#1 ≦ H, W ≦ 500
-#G_{i,j} is U, D, L, or R.
-#H and W are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#G_{1,1}G_{1,2}... G_{1,W}
-#G_{2,1}G_{2,2}... G_{2,W}
-#.
-#.
-#.
-#G_{H,1}G_{H,2}... G_{H,W}
-#
-#Output
-#If you end up at (i, j), print it in the following format:
-#i j
-#If you indefinitely repeat moving, print -1.
-#
-#Sample Input 1
-#2 3
-#RDU
-#LRU
-#
-#Sample Output 1
-#1 3
-#You will move as (1, 1) -> (1, 2) -> (2, 2) -> (2, 3) -> (1, 3), ending up here, so the answer is (1, 3).
-#
-#Sample Input 2
-#2 3
-#RRD
-#ULL
-#
-#Sample Output 2
-#-1
-#You will indefinitely repeat moving as (1, 1) -> (1, 2) -> (1, 3) -> (2, 3) -> (2, 2) -> (2, 1) -> (1, 1) -> (1, 2) -> ..., so -1 should be printed in this case.
-#
-#Sample Input 3
-#9 44
-#RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR
-#RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD
-#DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR
-#DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD
-#RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR
-#RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR
-#RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR
-#RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR
-#RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR
-#
-#Sample Output 3
-#9 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    i = 0
+    j = 0
+    while True:
+        if G[i][j] == 'U' and i != 0:
+            i -= 1
+        elif G[i][j] == 'D' and i != H-1:
+            i += 1
+        elif G[i][j] == 'L' and j != 0:
+            j -= 1
+        elif G[i][j] == 'R' and j != W-1:
+            j += 1
+        else:
+            break
+    print(i+1, j+1)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    i, j = 0, 0
+    while True:
+        if G[i][j] == 'U':
+            if i == 0:
+                break
+            i -= 1
+        elif G[i][j] == 'D':
+            if i == H - 1:
+                break
+            i += 1
+        elif G[i][j] == 'L':
+            if j == 0:
+                break
+            j -= 1
+        else:
+            if j == W - 1:
+                break
+            j += 1
+    print(i + 1, j + 1)
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    g = [list(input()) for _ in range(h)]
+    i = j = 0
+    while True:
+        if g[i][j] == 'U':
+            if i == 0:
+                break
+            i -= 1
+        elif g[i][j] == 'D':
+            if i == h - 1:
+                break
+            i += 1
+        elif g[i][j] == 'L':
+            if j == 0:
+                break
+            j -= 1
+        else:
+            if j == w - 1:
+                break
+            j += 1
+    print(i + 1, j + 1)
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    g = [list(input()) for _ in range(h)]
+    x, y = 0, 0
+    while True:
+        g[x][y] = '.'
+        if g[x][y] == 'U':
+            if x == 0:
+                print(x+1, y+1)
+                return
+            x -= 1
+        elif g[x][y] == 'D':
+            if x == h-1:
+                print(x+1, y+1)
+                return
+            x += 1
+        elif g[x][y] == 'L':
+            if y == 0:
+                print(x+1, y+1)
+                return
+            y -= 1
+        elif g[x][y] == 'R':
+            if y == w-1:
+                print(x+1, y+1)
+                return
+            y += 1
+        else:
+            print(x+1, y+1)
+            return
+        if g[x][y] == '.':
+            print(-1)
+            return
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    G = [list(input()) for i in range(H)]
+    i = 0
+    j = 0
+    while True:
+        if G[i][j] == 'U':
+            if i != 0:
+                i -= 1
+            else:
+                break
+        elif G[i][j] == 'D':
+            if i != H-1:
+                i += 1
+            else:
+                break
+        elif G[i][j] == 'L':
+            if j != 0:
+                j -= 1
+            else:
+                break
+        elif G[i][j] == 'R':
+            if j != W-1:
+                j += 1
+            else:
+                break
+        else:
+            break
+    if G[i][j] == '.':
+        print(i+1,j+1)
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    h,w = map(int, input().split())
+    g = []
+    for i in range(h):
+        g.append(input())
+    i = 0
+    j = 0
+    while True:
+        if g[i][j] == 'U':
+            if i != 0:
+                i = i - 1
+            else:
+                print(i+1, j+1)
+                break
+        elif g[i][j] == 'D':
+            if i != h-1:
+                i = i + 1
+            else:
+                print(i+1, j+1)
+                break
+        elif g[i][j] == 'L':
+            if j != 0:
+                j = j - 1
+            else:
+                print(i+1, j+1)
+                break
+        elif g[i][j] == 'R':
+            if j != w-1:
+                j = j + 1
+            else:
+                print(i+1, j+1)
+                break
+        else:
+            print(-1)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int, input().split())
+    g = []
+    for i in range(h):
+        g.append(input())
+    i,j = 0,0
+    while True:
+        if g[i][j] == 'U':
+            if i == 0:
+                break
+            else:
+                i-=1
+        elif g[i][j] == 'D':
+            if i == h-1:
+                break
+            else:
+                i+=1
+        elif g[i][j] == 'L':
+            if j == 0:
+                break
+            else:
+                j-=1
+        elif g[i][j] == 'R':
+            if j == w-1:
+                break
+            else:
+                j+=1
+        else:
+            break
+    print(i+1,j+1)
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+
+    # print(H, W)
+    # print(G)
+
+    i = 0
+    j = 0
+    while True:
+        if G[i][j] == 'U' and i != 0:
+            i -= 1
+        elif G[i][j] == 'D' and i != H-1:
+            i += 1
+        elif G[i][j] == 'L' and j != 0:
+            j -= 1
+        elif G[i][j] == 'R' and j != W-1:
+            j += 1
+        else:
+            break
+
+    print(i+1, j+1)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    H,W = map(int, input().split())
+    G = []
+    for i in range(H):
+        G.append(input())
+    visited = [[False for _ in range(W)] for _ in range(H)]
+    i,j = 0,0
+    while True:
+        if visited[i][j]:
+            print(-1)
+            break
+        visited[i][j] = True
+        if G[i][j] == 'U':
+            if i == 0:
+                print(i+1, j+1)
+                break
+            else:
+                i -= 1
+        elif G[i][j] == 'D':
+            if i == H-1:
+                print(i+1, j+1)
+                break
+            else:
+                i += 1
+        elif G[i][j] == 'L':
+            if j == 0:
+                print(i+1, j+1)
+                break
+            else:
+                j -= 1
+        elif G[i][j] == 'R':
+            if j == W-1:
+                print(i+1, j+1)
+                break
+            else:
+                j += 1
+
+=======
+Suggestion 10
+
+def get_input():
+    return input().split()

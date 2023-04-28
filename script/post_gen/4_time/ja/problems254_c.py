@@ -1,46 +1,159 @@
-#問題文
-#長さ N の数列 A=(a_1,...,a_N) があります。また、整数 K が与えられます。  
-#あなたは次の操作を 0 回以上何度でも行えます。
-#1 ≦ i ≦ N-K を満たす整数 i を選び、a_i と a_{i+K} の値を入れ替える。
-#A を昇順に並べ替えることが出来るかどうかを判定してください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#a_1 ... a_N
-#
-#出力
-#A を昇順に並び替えることが出来るならば Yes と、出来ないならば No と出力せよ。
-#
-#入力例 1
-#5 2
-#3 4 1 3 4
-#
-#出力例 1
-#Yes
-#次のように操作をすることで A を昇順に並び替えることが出来ます。
-#i=1 とし、a_1 と a_3 の値を入れ替える。数列は (1,4,3,3,4) となる。
-#i=2 とし、a_2 と a_4 の値を入れ替える。数列は (1,3,3,4,4) となる。
-#
-#入力例 2
-#5 3
-#3 4 1 3 4
-#
-#出力例 2
-#No
-#
-#入力例 3
-#7 5
-#1 2 3 4 5 5 10
-#
-#出力例 3
-#Yes
-#操作を行う必要が無い場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N - K):
+        if A[i] > A[i + K]:
+            print("Yes")
+            return
+    print("No")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n-k):
+        if a[i] > a[i+k]:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    if n == k:
+        if a == sorted(a):
+            print("Yes")
+        else:
+            print("No")
+        return
+    for i in range(0, n - k):
+        if a[i] > a[i + k]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def solve():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    ans = 'Yes'
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            ans = 'No'
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = list(map(int, input().split()))
+    B.sort()
+    B.reverse()
+    for i in range(K):
+        if A[i] < B[i]:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if (a[-1] - a[0] <= k):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = []
+    for i in range(n-k):
+        b.append(a[i+k-1]-a[i])
+    if min(b) <= 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    if N == K:
+        print('Yes')
+    else:
+        A.sort()
+        if A[-1] <= A[N-K-1]:
+            print('No')
+        else:
+            print('Yes')
+main()
+
+=======
+Suggestion 10
+
+def main():
+    # データ入力
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # ソート後の配列
+    A_sort = sorted(A)
+
+    # 交換回数
+    change_count = 0
+
+    # ソート後の配列の要素数分ループ
+    for i in range(N):
+        # ソート後の配列の要素と元の配列の要素が一致しない場合
+        if A_sort[i] != A[i]:
+            # 交換回数をカウントアップ
+            change_count += 1
+
+    # 交換回数がK以下の場合
+    if change_count <= K:
+        # Yesを出力
+        print("Yes")
+    else:
+        # Noを出力
+        print("No")

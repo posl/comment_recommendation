@@ -1,65 +1,203 @@
-#Problem Statement
-#You are given a sequence A = (A_1, A_2, ..., A_N) of length N.
-#For each K = 0, 1, 2, ..., N-1, solve the following problem.
-#Find the number of integers i between 1 and N (inclusive) such that:
-#A contains exactly K distinct integers greater than A_i.  
-#
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print N lines.
-#For i = 1, 2, ..., N, the i-th line should contain the answer for K = i-1.
-#
-#Sample Input 1
-#6
-#2 7 1 8 2 8
-#
-#Sample Output 1
-#2
-#1
-#2
-#1
-#0
-#0
-#For example, we will find the answer for K=2.
-#Regarding A_1 = 2, A contains 2 distinct integers greater than A_1: 7 and 8.
-#Regarding A_2 = 7, A contains 1 distinct integer  greater than A_2: 8.
-#Regarding A_3 = 1, A contains 3 distinct integers greater than A_3: 2, 7, and 8.
-#Regarding A_4 = 8, A contains 0 distinct integers greater than A_4 (there is no such integer).
-#Regarding A_5 = 2, A contains 2 distinct integers greater than A_5: 7 and 8.
-#Regarding A_6 = 8, A contains 0 distinct integers greater than A_6 (there is no such integer).
-#Thus, there are two i's, i = 1 and i = 5, such that A contains exactly K = 2 distinct integers greater than A_i.  Therefore, the answer for K = 2 is 2.
-#
-#Sample Input 2
-#1
-#1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#10
-#979861204 57882493 979861204 447672230 644706927 710511029 763027379 710511029 447672230 136397527
-#
-#Sample Output 3
-#2
-#1
-#2
-#1
-#2
-#1
-#1
-#0
-#0
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0]*n
+    for i in range(n-1):
+        if a[i] != a[i+1]:
+            ans[i] = 1
+    ans[n-1] = 1
+    for i in range(n-1, 0, -1):
+        if a[i-1] != a[i]:
+            ans[i] += ans[i-1]
+    for i in range(n):
+        print(n-ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(-1)
+    ans = [0] * n
+    cnt = 1
+    for i in range(n):
+        if a[i] == a[i+1]:
+            cnt += 1
+        else:
+            ans[cnt-1] += 1
+            cnt = 1
+    for i in range(n):
+        print(ans[i])
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    a.sort()
+    ans = [0] * n
+    ans[0] = 1
+    for i in range(1, n):
+        if a[i] != a[i - 1]:
+            ans[i] = ans[i - 1] + 1
+        else:
+            ans[i] = ans[i - 1]
+    for i in range(n):
+        print(ans[a.index(a[i])] - 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [0 for i in range(N)]
+    for i in range(N):
+        ans[i] = A.count(A[i]) - 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = list
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(0)
+    ans = [0 for i in range(N)]
+    count = 1
+    for i in range(N):
+        if A[i] != A[i+1]:
+            ans[count-1] += 1
+            count = 1
+        else:
+            count += 1
+    print('\n'.join(map(str, ans)))
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    prev = 0
+    ans = [0] * n
+    for i in range(n):
+        if i == 0 or a[i] != prev:
+            prev = a[i]
+            ans[i] = 1
+        else:
+            ans[i] = ans[i-1] + 1
+    for i in range(n):
+        print(n - ans[-1 - i])
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = sorted(a)
+    c = [0] * n
+    for i in range(n):
+        c[b[i]] = i
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = c[a[i]]
+    print(*ans, sep='\n')
+
+solve()
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(-1)
+
+    ret = [0] * N
+    cnt = 1
+    for i in range(N):
+        if A[i] != A[i+1]:
+            ret[cnt-1] += 1
+            cnt = 1
+        else:
+            cnt += 1
+
+    print('\n'.join(map(str, ret)))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    A.sort()
+    #print(A)
+    #print(len(A))
+    #print(len(set(A)))
+    #print(A)
+    #print(set(A))
+    #print(len(set(A))-1)
+    #print(len(A)-1)
+    #print(len(A)-len(set(A)))
+    #print(len(A)-len(set(A))-1)
+    #print(len(A)-len(set(A))+1)
+    #print(len(A)-len(set(A))+2)
+    #print(len(A)-len(set(A))+3)
+    #print(len(A)-len(set(A))+4)
+    #print(len(A)-len(set(A))+5)
+    #print(len(A)-len(set(A))+6)
+    #print(len(A)-len(set(A))+7)
+    #print(len(A)-len(set(A))+8)
+    #print(len(A)-len(set(A))+9)
+    #print(len(A)-len(set(A))+10)
+    #print(len(A)-len(set(A))+11)
+    #print(len(A)-len(set(A))+12)
+    #print(len(A)-len(set(A))+13)
+    #print(len(A)-len(set(A))+14)
+    #print(len(A)-len(set(A))+15)
+    #print(len(A)-len(set(A))+16)
+    #print(len(A)-len(set(A))+17)
+    #print(len(A)-len(set(A))+18)
+    #print(len(A)-len(set(A))+19)
+    #print(len(A)-len(set(A))+20)
+    #print(len(A)-len(set(A))+21)
+    #print(len(A)-len(set(A))+22)
+    #print(len(A)-len(set(A))+23)
+    #print(len(A)-len(set(A))+24)
+    #print(len(A)-len(set(A))+25)
+    #print(len(A)-len(set(A))+26)
+    #print(len(A)-len(set(A))+27)
+    #print(len(A)-len(set(A))+28)
+    #print(len(A)-len(set(A))+29)
+    #print(len(A)-len(set(A))+30)
+    #print(len(A)-len(set(A))+31)
+    #print(len(A)-len(set(A))+32)
+    #print(len(A)-len(set(A))+33)
+    #print

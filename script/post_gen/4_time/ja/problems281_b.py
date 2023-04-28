@@ -1,49 +1,95 @@
-#問題文
-#英大文字と数字からなる文字列 S が与えられるので、S が以下の条件を満たすか判定してください。
-#S は次の文字または文字列をこの順番で連結して得られる。
-#一文字の英大文字
-#100000 以上 999999 以下の整数を 10 進表記して得られる長さ 6 の文字列
-#一文字の英大文字
-#
-#
-#制約
-#S は英大文字と数字からなる
-#S の長さは 1 以上 10 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が問題文中の条件を満たすなら Yes と、満たさないなら No と出力せよ。
-#
-#入力例 1
-#Q142857Z
-#
-#出力例 1
-#Yes
-#S は Q、142857、Z をこの順に連結して得られます。
-#Q、Z は英大文字であり、142857 は 100000 以上 999999 以下の整数を 10 進表記して得られる長さ 6 の文字列なので、S は条件を満たします。
-#
-#入力例 2
-#AB912278C
-#
-#出力例 2
-#No
-#AB は一文字の英大文字ではないため、S は条件を満たしません。
-#
-#入力例 3
-#X900000
-#
-#出力例 3
-#No
-#S の末尾の一文字が英大文字ではないため、S は条件を満たしません。
-#
-#入力例 4
-#K012345K
-#
-#出力例 4
-#No
-#012345 は 100000 以上 999999 以下の整数を 10 進表記して得られる長さ 6 の文字列ではないため、S は条件を満たしません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def check(s):
+    if s[0].isupper() and s[-1].isupper():
+        if len(s) == 6:
+            if s[1:6].isdecimal():
+                return True
+    return False
+
+s = input()
+
+=======
+Suggestion 2
+
+def is_int(s):
+    try:
+        int(s)
+    except ValueError:
+        return False
+    else:
+        return True
+
+S = input()
+
+=======
+Suggestion 3
+
+def check(s):
+    if s[0].isupper():
+        if s[-1].isupper():
+            if len(s) == 6:
+                if s[1:5].isdecimal():
+                    return True
+    return False
+
+s = input()
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    #print(S)
+    if S[0].isupper():
+        if S[-1].isupper():
+            if S[1:-1].isdecimal():
+                if 100000 <= int(S[1:-1]) <= 999999:
+                    print("Yes")
+                else:
+                    print("No")
+            else:
+                print("No")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def isUpper(s):
+    if s.isupper():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def is_upper_alphabet(s):
+    if s.isupper():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def is_upper_alphabet(char):
+    return 'A' <= char <= 'Z'
+
+=======
+Suggestion 8
+
+def is_upper(s):
+    return s == s.upper()
+
+=======
+Suggestion 9
+
+def is_uppercase(char):
+    return char.isupper()

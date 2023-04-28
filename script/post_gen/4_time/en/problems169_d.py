@@ -1,62 +1,146 @@
-#Problem Statement
-#Given is a positive integer N. Consider repeatedly applying the operation below on N:
-#First, choose a positive integer z satisfying all of the conditions below:
-#z can be represented as z=p^e, where p is a prime number and e is a positive integer;
-#z divides N;
-#z is different from all integers chosen in previous operations.
-#Then, replace N with N/z.
-#Find the maximum number of times the operation can be applied.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^{12}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the maximum number of times the operation can be applied.
-#
-#Sample Input 1
-#24
-#
-#Sample Output 1
-#3
-#We can apply the operation three times by, for example, making the following choices:
-#Choose z=2 (=2^1). (Now we have N=12.)
-#Choose z=3 (=3^1). (Now we have N=4.)
-#Choose z=4 (=2^2). (Now we have N=1.)
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#0
-#We cannot apply the operation at all.
-#
-#Sample Input 3
-#64
-#
-#Sample Output 3
-#3
-#We can apply the operation three times by, for example, making the following choices:
-#Choose z=2 (=2^1). (Now we have N=32.)
-#Choose z=4 (=2^2). (Now we have N=8.)
-#Choose z=8 (=2^3). (Now we have N=1.)
-#
-#Sample Input 4
-#1000000007
-#
-#Sample Output 4
-#1
-#We can apply the operation once by, for example, making the following choice:
-#z=1000000007 (=1000000007^1). (Now we have N=1.)
-#
-#Sample Input 5
-#997764507000
-#
-#Sample Output 5
-#7
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+N = int(input())
+factors = prime_factorize(N)
+ans = 0
+for i in range(len(factors)):
+    if i == 0:
+        ans += factors[i] - 1
+    else:
+        ans += factors[i]
+print(ans)
+
+import math
+N = int(input())
+ans = 0
+for i in range(2, int(math.sqrt(N)) + 1):
+    while N % i == 0:
+        N = N // i
+        ans += 1
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(2, int(N**0.5)+1):
+        while N % i == 0:
+            N //= i
+            ans += 1
+    if N != 1:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    z = 2
+    while z*z <= N:
+        while N % z == 0:
+            N //= z
+            ans += 1
+        z += 1
+    if N > 1:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_primes(n):
+    is_prime = [False, False] + [True] * (n - 1)
+    for i in range(2, int(n ** 0.5) + 1):
+        if not is_prime[i]:
+            continue
+        for j in range(2 * i, n + 1, i):
+            is_prime[j] = False
+    return [i for i in range(n + 1) if is_prime[i]]
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(2, int(N**0.5)+1):
+        while N%i == 0:
+            ans += 1
+            N //= i
+    if N > 1:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+
+    # 素因数分解
+    def prime_factorization(n):
+        a = []
+        while n % 2 == 0:
+            a.append(2)
+            n //= 2
+        f = 3
+        while f * f <= n:
+            if n % f == 0:
+                a.append(f)
+                n //= f
+            else:
+                f += 2
+        if n != 1:
+            a.append(n)
+        return a
+
+    factors = prime_factorization(N)
+    print(len(set(factors)))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for p in range(2, 40):
+        for e in range(1, 40):
+            if N % (p**e) == 0:
+                ans = e
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_primes(max_num):
+    # get primes under max_num
+    primes = [2, 3]
+    for i in range(5, max_num, 2):
+        for j in range(3, int(i**0.5)+1, 2):
+            if i % j == 0:
+                break
+        else:
+            primes.append(i)
+    return primes

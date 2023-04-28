@@ -1,62 +1,200 @@
-#Problem Statement
-#You are given a sequence A = (A_1, A_2, ..., A_N) of length N consisting of positive integers, and integers x and y.
-#Determine whether it is possible to place N+1 points p_1, p_2, ..., p_N, p_{N+1} in the xy-coordinate plane to satisfy all of the following conditions. (It is allowed to place two or more points at the same coordinates.)
-#p_1 = (0, 0). 
-#p_2 = (A_1, 0).
-#p_{N+1} = (x, y).
-#The distance between the points p_i and p_{i+1} is A_i. (1 ≦ i ≦ N)
-#The segments p_i p_{i+1} and p_{i+1} p_{i+2} form a 90 degree angle. (1 ≦ i ≦ N - 1)
-#
-#Constraints
-#2 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ 10
-#|x|, |y| ≦ 10^4
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N x y
-#A_1 A_2 ... A_N
-#
-#Output
-#If it is possible to place p_1, p_2, ..., p_N, p_{N+1} to satisfy all of the conditions in the Problem Statement, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 -1 1
-#2 1 3
-#
-#Sample Output 1
-#Yes
-#The figure below shows a placement where p_1 = (0, 0), p_2 = (2, 0), p_3 = (2, 1), and p_4 = (-1, 1). All conditions in the Problem Statement
-# are satisfied.
-#
-#Sample Input 2
-#5 2 0
-#2 2 2 2 2
-#
-#Sample Output 2
-#Yes
-#Letting p_1 = (0, 0), p_2 = (2, 0), p_3 = (2, 2), p_4 = (0, 2), p_5 = (0, 0), and p_6 = (2, 0) satisfies all the conditions. Note that multiple points may be placed at the same coordinates.
-#
-#Sample Input 3
-#4 5 5
-#1 2 3 4
-#
-#Sample Output 3
-#No
-#
-#Sample Input 4
-#3 2 7
-#2 7 4
-#
-#Sample Output 4
-#No
-#
-#Sample Input 5
-#10 8 -7
-#6 10 4 1 5 9 8 6 5 1
-#
-#Sample Output 5
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.insert(0, 0)
+    for i in range(1, N+1):
+        for j in range(i+1, N+2):
+            if abs(A[i]-A[j]) == abs(i-j):
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.insert(0, 0)
+    for i in range(1, N+1):
+        for j in range(i+1, N+2):
+            if abs(A[j] - A[i]) == abs(j - i):
+                print('Yes')
+                exit()
+    print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    n, x, y = map(int, input().split())
+    a = list(map(int, input().s
+
+=======
+Suggestion 4
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(0)
+    A.append(0)
+    for i in range(N):
+        for j in range(i+1,N+2):
+            if i == j:
+                continue
+            for k in range(j+1,N+3):
+                if i == k or j == k:
+                    continue
+                if (A[i] + A[j])**2 + (A[j] + A[k])**2 == (A[i] + A[k])**2:
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 5
+
+def main():
+    # Take input Here and Call solution function
+    N, x, y = get_ints_in_variables()
+    A = get_ints_in_list()
+    solution(N, x, y, A)
+
+=======
+Suggestion 6
+
+def solve(n, x, y, a):
+    for i in range(n):
+        for j in range(i+1, n):
+            if a[i] + a[j] == abs(x - y):
+                return True
+    return False
+
+=======
+Suggestion 7
+
+def solve():
+    N,x,y = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.append(0)
+    A.insert(0,0)
+    ans = "No"
+    for i in range(1,N+1):
+        for j in range(i+1,N+2):
+            if A[i] > A[j]:
+                A[i],A[j] = A[j],A[i]
+        for j in range(1,N+1):
+            if A[j] > A[j+1]:
+                break
+            if j == N:
+                ans = "Yes"
+                break
+    if ans == "Yes":
+        if A[1] == 0 and A[2] == 0:
+            ans = "No"
+        if A[1] == 0 and A[2] == 1:
+            ans = "No"
+        if A[1] == 0 and A[2] == 2 and A[3] == 2:
+            ans = "No"
+        if A[1] == 0 and A[2] == 3 and A[3] == 3:
+            ans = "No"
+        if A[1] == 0 and A[2] == 4 and A[3] == 4:
+            ans = "No"
+        if A[1] == 0 and A[2] == 5 and A[3] == 5:
+            ans = "No"
+        if A[1] == 0 and A[2] == 6 and A[3] == 6:
+            ans = "No"
+        if A[1] == 0 and A[2] == 7 and A[3] == 7:
+            ans = "No"
+        if A[1] == 0 and A[2] == 8 and A[3] == 8:
+            ans = "No"
+        if A[1] == 0 and A[2] == 9 and A[3] == 9:
+            ans = "No"
+        if A[1] == 0 and A[2] == 10 and A[3] == 10:
+            ans = "No"
+        if A[1] == 0 and A[2] == 1 and A[3] == 1 and A[
+
+=======
+Suggestion 8
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, x, y)
+    #print(A)
+    A.append(0)
+    A.insert(0, 0)
+    #print(A)
+    for i in range(1, N+1):
+        for j in range(i+1, N+2):
+            #print(i, j)
+            if abs(A[i]-A[j]) + abs(i-j) == abs(x-y):
+                print("Yes")
+                exit()
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    # N = int(input())
+    # A = list(map(int, input().split()))
+    # x, y = map(int, input().split())
+    # N = 3
+    # A = [2, 1, 3]
+    # x, y = -1, 1
+    # N = 5
+    # A = [2, 2, 2, 2, 2]
+    # x, y = 2, 0
+    # N = 4
+    # A = [1, 2, 3, 4]
+    # x, y = 5, 5
+    N = 10
+    A = [6, 10, 4, 1, 5, 9, 8, 6, 5, 1]
+    x, y = 8, -7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+    # N = 3
+    # A = [2, 7, 4]
+    # x, y = 2, 7
+
+    # print(N)
+    # print(A)
+    # print(x, y)
+
+    # print(N)
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))

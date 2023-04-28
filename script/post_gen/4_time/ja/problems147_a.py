@@ -1,30 +1,31 @@
-#問題文
-#3 個の整数 A_1, A_2, A_3 が与えられます。
-#A_1+A_2+A_3 が 22 以上なら bust、21 以下なら win を出力してください。
-#
-#制約
-#1 ≦ A_i ≦ 13   (i=1,2,3)
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A_1 A_2 A_3
-#
-#出力
-#A_1+A_2+A_3 が 22 以上なら bust、21 以下なら win を出力せよ。
-#
-#入力例 1
-#5 7 9
-#
-#出力例 1
-#win
-#5+7+9=21 なので win を出力します。
-#
-#入力例 2
-#13 7 2
-#
-#出力例 2
-#bust
-#13+7+2=22 なので bust を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a + b + c >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a + b + c >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 3
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print("bust")
+    else:
+        print("win")

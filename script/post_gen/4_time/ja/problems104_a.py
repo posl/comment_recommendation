@@ -1,39 +1,49 @@
-#問題文
-#プログラミングコンペティションサイト AtCode は、プログラミングコンテストを定期的に開催しています。
-#AtCode で次に開催されるコンテストは ABC と呼ばれ、レーティングが 1200 未満の参加者のレーティングが変動します。
-#その次に開催されるコンテストは ARC と呼ばれ、レーティングが 2800 未満の参加者のレーティングが変動します。
-#そのさらに次に開催されるコンテストは AGC と呼ばれ、すべての参加者のレーティングが変動します。
-#高橋くんの AtCode でのレーティングは R です。彼のレーティングが変動する次のコンテストは何でしょうか？
-#
-#制約
-#0 ≤ R ≤ 4208
-#R は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#R
-#
-#出力
-#高橋くんのレーティングが変動する次のコンテストの名称（ABC, ARC, AGC のいずれか）を出力せよ。
-#
-#入力例 1
-#1199
-#
-#出力例 1
-#ABC
-#1199 は 1200 未満なので ABC でレーティングが変動します。
-#
-#入力例 2
-#1200
-#
-#出力例 2
-#ARC
-#1200 は 1200 未満ではないので ABC ではレーティングが変動しませんが、2800 未満ではあるので ARC でレーティングが変動します。
-#
-#入力例 3
-#4208
-#
-#出力例 3
-#AGC
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    if r < 1200:
+        print("ABC")
+    elif r < 2800:
+        print("ARC")
+    else:
+        print("AGC")
+
+=======
+Suggestion 2
+
+def main():
+    R = int(input())
+    if R < 1200:
+        print("ABC")
+    elif R < 2800:
+        print("ARC")
+    else:
+        print("AGC")
+
+=======
+Suggestion 3
+
+def main():
+    r = int(input())
+    if r < 1200:
+        print('ABC')
+    elif r < 2800:
+        print('ARC')
+    else:
+        print('AGC')
+
+=======
+Suggestion 4
+
+def main():
+    R = int(input())
+    if R < 1200:
+        print('ABC')
+    elif R < 2800:
+        print('ARC')
+    else:
+        print('AGC')

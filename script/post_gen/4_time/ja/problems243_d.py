@@ -1,51 +1,149 @@
-#問題文
-#頂点数 2^{10^{100}}-1 の完全二分木があり、頂点には 1,2,...,2^{10^{100}}-1 の番号がついています。
-#頂点 1 が根であり、各 1≦ i < 2^{10^{100}-1} について、頂点 i は 頂点 2i を左の子、頂点 2i+1 を右の子として持ちます。
-#高橋君は最初頂点 X におり、N 回移動を行います。移動は文字列 S により表され、i 回目の移動は次のように行います。
-#S の i 番目の文字が U のとき、今いる頂点の親に移動する
-#S の i 番目の文字が L のとき、今いる頂点の左の子に移動する
-#S の i 番目の文字が R のとき、今いる頂点の右の子に移動する
-#N 回の移動後に高橋君がいる頂点の番号を求めてください。なお、答えが 10^{18} 以下になるような入力のみが与えられます。
-#
-#制約
-#1 ≦ N ≦ 10^6
-#1 ≦ X ≦ 10^{18}
-#N,X は整数
-#S は長さ N であり、U,L,R のみからなる
-#高橋君が根にいるとき、親に移動しようとすることはない
-#高橋君が葉にいるとき、子に移動しようとすることはない
-#高橋君が N 回の移動後にいる頂点の番号は 10^{18} 以下である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#S
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3 2
-#URL
-#
-#出力例 1
-#6
-#完全二分木は次のような構造をしています。
-#各移動により、高橋君がいる頂点の番号は 2 -> 1 -> 3 -> 6 と変化します。
-#
-#入力例 2
-#4 500000000000000000
-#RRUU
-#
-#出力例 2
-#500000000000000000
-#移動の途中過程において、高橋君がいる頂点の番号が 10^{18} を超えることもあります。
-#
-#入力例 3
-#30 123456789
-#LRULURLURLULULRURRLRULRRRUURRU
-#
-#出力例 3
-#126419752371
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == "U":
+            x //= 2
+        elif s[i] == "L":
+            x = 2 * x - 1
+        else:
+            x = 2 * x + 1
+    print(x)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'U':
+            ans = ans // 2
+        elif s[i] == 'L':
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == "U":
+            ans //= 2
+        elif s[i] == "L":
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'L':
+            ans = ans * 2
+        elif s[i] == 'R':
+            ans = ans * 2 + 2
+        else:
+            ans = ans * 2 + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,X = map(int,input().split())
+    S = input()
+    ans = X
+    for i in range(N):
+        if S[i] == "U":
+            ans = ans//2
+        elif S[i] == "L":
+            ans = ans*2
+        elif S[i] == "R":
+            ans = ans*2+1
+    print(ans)
+
+=======
+Suggestion 6
+
+def readinput():
+    n,x=input().split()
+    s=input()
+    n=int(n)
+    x=int(x)
+    return n,x,s
+
+=======
+Suggestion 7
+
+def move(x, s):
+    if s == 'U':
+        return x // 2
+    elif s == 'L':
+        return x * 2
+    elif s == 'R':
+        return x * 2 + 1
+    else:
+        return x
+
+=======
+Suggestion 8
+
+def move(s, x):
+    if s == 'U':
+        return x // 2
+    elif s == 'L':
+        return x * 2
+    else:
+        return x * 2 + 1
+
+n, x = map(int, input().split())
+s = input()
+
+for i in range(n):
+    x = move(s[i], x)
+
+print(x)
+
+=======
+Suggestion 9
+
+def calc_next_pos(pos, move):
+    if move == "U":
+        return pos // 2
+    elif move == "L":
+        return pos * 2
+    elif move == "R":
+        return pos * 2 + 1
+    else:
+        assert False
+
+=======
+Suggestion 10
+
+def move(n, s, x):
+    if n == 0:
+        return x
+    if s[n-1] == 'U':
+        return move(n-1, s, x//2)
+    elif s[n-1] == 'L':
+        return move(n-1, s, x//2)
+    else:
+        return move(n-1, s, x//2+1)

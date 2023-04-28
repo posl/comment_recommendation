@@ -1,53 +1,201 @@
-#問題文
-#N 個のレンガが横一列に並んでいます。
-#左から i(1 ≦ i ≦ N) 番目のレンガには、整数 a_i が書かれています。
-#あなたはこのうち N - 1 個以下の任意のレンガを選んで砕くことができます。
-#その結果、K 個のレンガが残っているとします。このとき、任意の整数 i(1 ≦ i ≦ K) について、残っているレンガの中で左から i 番目のものに書かれた整数が i であるとき、すぬけさんは満足します。
-#すぬけさんが満足するために砕く必要のあるレンガの最小個数を出力してください。もし、どのように砕いてもそれが不可能な場合、代わりに -1 を出力してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 200000
-#1 ≦ a_i ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#すぬけさんが満足するために砕く必要のあるレンガの最小個数を出力せよ。もし、どのように砕いてもそれが不可能な場合、代わりに -1 を出力せよ。
-#
-#入力例 1
-#3
-#2 1 2
-#
-#出力例 1
-#1
-#一番左のレンガ 1 個を砕くと、残ったレンガに書かれた整数は左から 1, 2 となります。
-#このとき、すぬけさんは満足します。
-#
-#入力例 2
-#3
-#2 2 2
-#
-#出力例 2
-#-1
-#この場合、すぬけさんが満足するレンガの砕き方は存在しません。
-#
-#入力例 3
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#出力例 3
-#7
-#
-#入力例 4
-#1
-#1
-#
-#出力例 4
-#0
-#レンガを 1 つも砕かなくていい場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] != i + 1:
+            ans += 1
+    if ans == N:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        if A[0] == 1:
+            print(0)
+        else:
+            print(-1)
+        return
+    if max(A) == N:
+        print(-1)
+        return
+    ans = 0
+    for i in range(N-1):
+        if A[i] == i+1:
+            ans += 1
+        else:
+            break
+    print(N-ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if a[i] == i + 1:
+            ans += 1
+    if ans == N:
+        print(0)
+    elif ans == N - 1:
+        print(1)
+    else:
+        print(N - ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        a[i] -= 1
+    b = [0] * n
+    for i in range(n):
+        if a[i] >= 0:
+            b[a[i]] += 1
+    c = []
+    for i in range(n):
+        if b[i] == 0:
+            c.append(i)
+    if len(c) == 0:
+        print(-1)
+        return
+    ans = 0
+    for i in range(n):
+        if b[i] > 1:
+            for j in range(b[i] - 1):
+                if len(c) == 0:
+                    print(-1)
+                    return
+                k = c.pop()
+                a[k] = i
+                ans += 1
+    for i in range(n):
+        if a[i] < 0:
+            a[i] = c.pop()
+    print(ans)
+    return
+
+main()
+
+=======
+Suggestion 5
+
+def problems148_d():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        if a[i] == ans + 1:
+            ans += 1
+    if ans == 0:
+        print(-1)
+    else:
+        print(n - ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if a[i] > n - 1:
+            print(-1)
+            return
+        b[a[i]] += 1
+    ans = 0
+    for i in range(n):
+        if b[i] > i:
+            ans += b[i] - i
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    if A[0] != 1:
+        return -1
+
+    for i in range(1, N):
+        if A[i] != A[i - 1] + 1:
+            return -1
+
+    return N - 1
+
+print(solve())
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    ans = 0
+    for i in range(1, N + 1):
+        if A[i] != i:
+            ans += 1
+    if ans == N:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 9
+
+def problem148_d():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    if A[0] != 1:
+        return -1
+
+    for i in range(1, N):
+        if A[i] - A[i-1] > 1:
+            return -1
+
+    ans = 0
+    for i in range(N-1, 0, -1):
+        if A[i] == A[i-1] + 1:
+            ans += 1
+        else:
+            ans += A[i]
+    return ans
+
+print(problem148_d())
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    a_list = list(map(int, input().split()))
+    ans = -1
+    if a_list[0] == 1 and a_list[-1] == 1:
+        ans = 0
+        for i in range(1, N):
+            if a_list[i] - a_list[i-1] > 1:
+                ans = -1
+                break
+            elif a_list[i] - a_list[i-1] == 1:
+                ans += 1
+    print(ans)

@@ -1,24 +1,108 @@
-#Problem Statement
-#AtCoder Inc. holds a contest every Saturday.
-#There are two types of contests called ABC and ARC, and just one of them is held at a time.
-#The company holds these two types of contests alternately: an ARC follows an ABC and vice versa.
-#Given a string S representing the type of the contest held last week, print the string representing the type of the contest held this week.
-#
-#Constraints
-#S is ABC or ARC.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the string representing the type of the contest held this week.
-#
-#Sample Input 1
-#ABC
-#
-#Sample Output 1
-#ARC
-#They held an ABC last week, so they will hold an ARC this week.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == "ABC":
+        print("ARC")
+    else:
+        print("ABC")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 4
+
+def main():
+    contest_type = input()
+    if contest_type == "ABC":
+        print("ARC")
+    else:
+        print("ABC")
+
+=======
+Suggestion 5
+
+def main():
+    contest = input()
+    if contest == "ABC":
+        print("ARC")
+    else:
+        print("ABC")
+
+=======
+Suggestion 6
+
+def main():
+    contest = input()
+    if contest == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+    return
+
+=======
+Suggestion 8
+
+def contest_type(contest):
+    if contest == "ABC":
+        return "ARC"
+    else:
+        return "ABC"
+
+contest = input()
+print(contest_type(contest))
+
+=======
+Suggestion 9
+
+def f(s):
+    if s == 'ABC':
+        return 'ARC'
+    else:
+        return 'ABC'
+
+s = input()
+print(f(s))
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    S = input()
+
+    # compute
+
+    # output
+    print("ARC" if S=="ABC" else "ABC")

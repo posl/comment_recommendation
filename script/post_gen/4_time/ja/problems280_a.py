@@ -1,59 +1,132 @@
-#問題文
-#上下左右に広がる H 行 W 列のマス目があり、各マスにはコマが置かれているか、何も置かれていないかのどちらかです。
-#マス目の状態は H 個の長さ W の文字列 S_1, S_2, ..., S_H によって表され、
-#S_i の j 文字目が # のとき上から i 行目かつ左から j 列目のマスにはコマが置かれていることを、
-#S_i の j 文字目が . のとき上から i 行目かつ左から j 列目のマスには何も置かれていないことを表しています。
-#マス目上のマスのうち、コマが置かれているようなものの個数を求めてください。
-#
-#制約
-#1≦ H,W ≦ 10
-#H,W は整数
-#S_i は # と . のみからなる長さ W の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#出力
-#コマが置かれているマスの個数を整数で出力せよ。
-#
-#入力例 1
-#3 5
-##....
-#.....
-#.##..
-#
-#出力例 1
-#3
-#上から 1 行目かつ左から 1 列目のマス
-#上から 3 行目かつ左から 2 列目のマス
-#上から 3 行目かつ左から 3 列目のマス
-#の計 3 つのマスにコマが置かれているため、3 を出力します。
-#
-#入力例 2
-#1 10
-#..........
-#
-#出力例 2
-#0
-#どのマスにもコマは置かれていないため、0 を出力します。
-#
-#入力例 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#出力例 3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    h,w = map(int,input().split())
+    s = [input() for i in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def problems280_a():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    ans = 0
+    for h in range(H):
+        for w in range(W):
+            if S[h][w] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    H,W = map(int,input().split())
+    S = [input() for i in range(H)]
+    cnt = 0
+
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                cnt += 1
+
+    print(cnt)
+
+=======
+Suggestion 10
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    print(sum([si.count('#') for si in s]))

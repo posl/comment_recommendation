@@ -1,46 +1,193 @@
-#問題文
-#二次元平面上に N 個の点があります。i 個目の点の座標は (x_i,y_i) です。
-#この中から 2 個の点を選ぶとき、それらを結ぶ線分の長さの最大値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 100
-#-1000 ≦ x_i,y_i ≦ 1000
-#(x_i,y_i) ≠ (x_j,y_j) (i ≠ j)
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-#x_N y_N
-#
-#出力
-#2 点を結ぶ線分の長さの最大値を出力せよ。
-#想定解との絶対誤差または相対誤差が 10^{-6} 以下であれば正解とみなされる。
-#
-#入力例 1
-#3
-#0 0
-#0 1
-#1 1
-#
-#出力例 1
-#1.4142135624
-#1 個目の点と 3 個目の点を選んだときそれらを結ぶ線分の長さは sqrt 2 = 1.41421356237... となり、これが最大です。
-#
-#入力例 2
-#5
-#315 271
-#-2 -621
-#-205 -511
-#-952 482
-#165 463
-#
-#出力例 2
-#1455.7159750446
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            ans = max(ans, ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    import math
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    max = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            tmp = math.sqrt((x[i]-x[j])**2 + (y[i]-y[j])**2)
+            if tmp > max:
+                max = tmp
+    print(max)
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        x.append(a)
+        y.append(b)
+    max = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            tmp = ((x[i]-x[j])**2 + (y[i]-y[j])**2)**(1/2)
+            if max < tmp:
+                max = tmp
+    print(max)
+
+=======
+Suggestion 4
+
+def main():
+    import math
+    n = int(input())
+    x = []
+    y = []
+    for _ in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    max_len = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            max_len = max(max_len, math.sqrt((x[i] - x[j]) ** 2 + (y[i] - y[j]) ** 2))
+    print(max_len)
+main()
+
+=======
+Suggestion 5
+
+def get_distance(x1, y1, x2, y2):
+    return ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+
+n = int(input())
+points = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    points.append((x, y))
+
+ans = 0
+for i in range(n):
+    for j in range(i+1, n):
+        x1, y1 = points[i]
+        x2, y2 = points[j]
+        ans = max(ans, get_distance(x1, y1, x2, y2))
+
+print(ans)
+
+=======
+Suggestion 6
+
+def dist(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+n = int(input())
+l = []
+for i in range(n):
+    x,y = map(int,input().split())
+    l.append((x,y))
+
+ans = 0
+for i in range(n):
+    for j in range(n):
+        if i == j:
+            continue
+        ans = max(ans,dist(l[i][0],l[i][1],l[j][0],l[j][1]))
+
+print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    import math
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            ans = max(ans, math.sqrt((x[i]-x[j])**2+(y[i]-y[j])**2))
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+n = int(input())
+x = []
+y = []
+for _ in range(n):
+    x1,y1 = map(int,input().split())
+    x.append(x1)
+    y.append(y1)
+
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        d = get_distance(x[i],y[i],x[j],y[j])
+        if d > ans:
+            ans = d
+
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    #print(points)
+    max_len = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            #print(x1, y1, x2, y2)
+            len = ((x1 - x2)**2 + (y1 - y2)**2)**0.5
+            if max_len < len:
+                max_len = len
+    print(max_len)
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append(list(map(int, input().split())))
+    return n, points

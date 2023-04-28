@@ -1,63 +1,166 @@
-#Problem Statement
-#There are 10^{100}+1 villages, labeled with numbers 0, 1, ..., 10^{100}.
-#For every integer i between 0 and 10^{100}-1 (inclusive), you can pay 1 yen (the currency) in Village i to get to Village (i + 1).
-#There is no other way to travel between villages.
-#Taro has K yen and is in Village 0 now. He will try to get to a village labeled with as large a number as possible.
-#He has N friends. The i-th friend, who is in Village A_i, will give Taro B_i yen when he reaches Village A_i.
-#Find the number with which the last village he will reach is labeled.
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i ≦ 10^{18}
-#1 ≦ B_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 B_1
-#:
-#A_N B_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3
-#2 1
-#5 10
-#
-#Sample Output 1
-#4
-#Takahashi will travel as follows:
-#Go from Village 0 to Village 1, for 1 yen. Now he has 2 yen.
-#Go from Village 1 to Village 2, for 1 yen. Now he has 1 yen.
-#Get 1 yen from the 1-st friend in Village 2. Now he has 2 yen.
-#Go from Village 2 to Village 3, for 1 yen. Now he has 1 yen.
-#Go from Village 3 to Village 4, for 1 yen. Now he has 0 yen, and he has no friends in this village, so his journey ends here.
-#Thus, we should print 4.
-#
-#Sample Input 2
-#5 1000000000
-#1 1000000000
-#2 1000000000
-#3 1000000000
-#4 1000000000
-#5 1000000000
-#
-#Sample Output 2
-#6000000000
-#Note that the answer may not fit into a 32-bit integer.
-#
-#Sample Input 3
-#3 2
-#5 5
-#2 1
-#2 2
-#
-#Sample Output 3
-#10
-#He may have multiple friends in the same village.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    for i in range(N):
+        if K >= A[i]:
+            K += B[i]
+        else:
+            print(K)
+            return
+    print(K)
+
+=======
+Suggestion 2
+
+def problems203_c():
+    N, K = map(int, input().split())
+    friends = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        friends.append([A, B])
+    friends = sorted(friends, key=lambda x:x[0])
+    for i in range(N):
+        if friends[i][0] > K:
+            break
+        else:
+            K += friends[i][1]
+    print(K)
+problems203_c()
+
+=======
+Suggestion 3
+
+def solve():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    for a, b in ab:
+        if k < a:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[0])
+    for a, b in ab:
+        if a > k:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    v = [0] * (10 ** 5 + 1)
+    for i in range(n):
+        a, b = map(int, input().split())
+        v[a] += b
+    for i in range(10 ** 5):
+        if k <= v[i]:
+            print(i)
+            return
+        k -= v[i]
+        v[i + 1] += v[i]
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+
+    money = K
+    village = 0
+    for i in range(N):
+        if village < AB[i][0] and money >= AB[i][0] - village:
+            money -= AB[i][0] - village
+            money += AB[i][1]
+            village = AB[i][0]
+
+    village += money
+    print(village)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    for i in range(n):
+        if k >= ab[i][0]:
+            k += ab[i][1]
+        else:
+            break
+    print(k)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int, input().split())
+    ab = []
+    for i in range(n):
+        a,b = map(int, input().split())
+        ab.append((a,b))
+    ab.sort()
+    #print(ab)
+    i = 0
+    while k > 0:
+        if i >= n:
+            break
+        if ab[i][0] <= k:
+            k += ab[i][1]
+        i += 1
+    print(k)
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N, K = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(N)]
+
+    # compute
+    ab.sort()
+    for a, b in ab:
+        if a > K:
+            break
+        K += b
+
+    # output
+    print(K)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = [int(v) for v in input().split()]
+    AB = [[int(v) for v in input().split()] for _ in range(N)]
+    AB.sort(key=lambda ab: ab[0])
+    for ab in AB:
+        if K < ab[0]:
+            break
+        K += ab[1]
+    print(K)

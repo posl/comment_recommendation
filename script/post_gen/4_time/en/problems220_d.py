@@ -1,61 +1,215 @@
-#Problem Statement
-#We have a sequence of N integers between 0 and 9 (inclusive): A=(A_1, ..., A_N), arranged from left to right in this order.
-#Until the length of the sequence becomes 1, we will repeatedly do the operation F or G below.
-#Operation F: delete the leftmost two values (let us call them x and y) and then insert (x+y)%10 to the left end.
-#Operation G: delete the leftmost two values (let us call them x and y) and then insert (x× y)%10 to the left end.
-#Here, a%b denotes the remainder when a is divided by b.
-#For each K=0,1,...,9, answer the following question.
-#Among the 2^{N-1} possible ways in which we do the operations, how many end up with K being the final value of the sequence?
-#Since the answer can be enormous, find it modulo 998244353.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print ten lines.
-#The i-th line should contain the answer for the case K=i-1.
-#
-#Sample Input 1
-#3
-#2 7 6
-#
-#Sample Output 1
-#1
-#0
-#0
-#0
-#2
-#1
-#0
-#0
-#0
-#0
-#If we do Operation F first and Operation F second: the sequence becomes (2,7,6)→(9,6)→(5).
-#If we do Operation F first and Operation G second: the sequence becomes (2,7,6)→(9,6)→(4).
-#If we do Operation G first and Operation F second: the sequence becomes (2,7,6)→(4,6)→(0).
-#If we do Operation G first and Operation G second: the sequence becomes (2,7,6)→(4,6)→(4).
-#
-#Sample Input 2
-#5
-#0 1 2 3 4
-#
-#Sample Output 2
-#6
-#0
-#1
-#1
-#4
-#0
-#1
-#1
-#0
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for a in A:
+        ans[a] += 1
+    for i in range(10):
+        for j in range(10):
+            ans[(i+j)%10] += ans[i] * ans[j]
+    for i in range(10):
+        print(ans[i]%MOD)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        for j in range(N):
+            if A[j] == i:
+                ans[i] += 1
+    for i in range(10):
+        for j in range(1, N):
+            ans[i] = ans[i] * (N - j) % MOD
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        for j in range(N):
+            if A[j] == i:
+                ans[i] += 1
+    for i in range(10):
+        ans[i] %= MOD
+    for i in range(10):
+        for j in range(10):
+            if i + j < 10:
+                ans[i + j] += ans[i] * ans[j]
+                ans[i + j] %= MOD
+            else:
+                ans[i + j - 10] += ans[i] * ans[j]
+                ans[i + j - 10] %= MOD
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    ans[A[0]] = 1
+    for i in range(1, N):
+        nans = [0] * 10
+        for j in range(10):
+            nans[(j + A[i]) % 10] += ans[j]
+            nans[(j * A[i]) % 10] += ans[j]
+        ans = [x % mod for x in nans]
+    print(*ans, sep='\n')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        for j in range(N):
+            if A[j] == i:
+                ans[i] += 1
+    for i in range(1, N):
+        ans2 = [0] * 10
+        for j in range(10):
+            for k in range(10):
+                ans2[(j + k) % 10] += ans[j] * ans[k]
+                ans2[(j * k) % 10] += ans[j] * ans[k]
+        ans = ans2
+    for i in range(10):
+        print(ans[i] % mod)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    for a in A:
+        ans[a] += 1
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                for l in range(10):
+                    for m in range(10):
+                        if (i + j * k + l * m) % 10 == A[-1]:
+                            ans[i] = (ans[i] + ans[j] * ans[k] * ans[l] * ans[m]) % mod
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = [0] * 10
+    count[A[-1]] = 1
+    for i in range(N - 1):
+        c = [0] * 10
+        for j in range(10):
+            c[(j + A[-i - 2]) % 10] += count[j]
+            c[(j * A[-i - 2]) % 10] += count[j]
+        count = c
+    for i in range(10):
+        print(count[i] % 998244353)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        dp = [0] * 10
+        dp[i] = 1
+        for j in range(N):
+            next = [0] * 10
+            for k in range(10):
+                next[(k + A[j]) % 10] += dp[k]
+                next[(k * A[j]) % 10] += dp[k]
+            dp = next
+        ans[i] = dp[0]
+    print("\n".join(map(str, ans)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = a.count(i)
+
+    for i in range(n-1):
+        new_ans = [0] * 10
+        for j in range(10):
+            for k in range(10):
+                new_ans[(j+k)%10] += ans[j] * ans[k]
+                new_ans[(j*k)%10] += ans[j] * ans[k]
+        ans = new_ans
+
+    for i in range(10):
+        print(ans[i] % 998244353)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 998244353
+
+    ans = [0 for i in range(10)]
+
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                dp = [[[0 for l in range(10)] for m in range(10)] for o in range(10)]
+                dp[i][j][k] = 1
+                for l in range(n):
+                    dp2 = [[[0 for q in range(10)] for r in range(10)] for s in range(10)]
+                    for q in range(10):
+                        for r in range(10):
+                            for s in range(10):
+                                if dp[q][r][s] == 0:
+                                    continue
+                                if l == n-1:
+                                    dp2[(q+a[l])%10][r][s] += dp[q][r][s]
+                                    dp2[q][(r+a[l])%10][s] += dp[q][r][s]
+                                else:
+                                    dp2[(q+a[l])%10][r][s] += dp[q][r][s]
+                                    dp2[q][(r+a[l])%10][s] += dp[q][r][s]
+                                    dp2[q][r][(s+a[l])%10] += dp[q][r][s]
+                                    dp2[(q*a[l])%10][r][s] += dp[q][r][s]
+                                    dp2[q][(r*a[l])%10][s] += dp[q][r][s]
+                                    dp2[q][r][(s*a[l])%10] += dp[q][r][s]
+                    dp = dp2
+                ans[k] += dp2[0][0][k]
+    for i in range(10):
+        print(ans[i]%mod)

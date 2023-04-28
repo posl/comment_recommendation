@@ -1,40 +1,107 @@
-#問題文
-#英小文字のみからなる長さ N の文字列 S, T が与えられます。
-#S の 1 文字目、T の 1 文字目、S の 2 文字目、T の2 文字目、S の 3 文字目、...、S のN 文字目、T のN 文字目というように、
-#S の各文字と T の各文字を先頭から順に交互に文字を並べ、新しい文字列を作ります。この新しくできた文字列を出力してください。
-#
-#制約
-#1 ≤ N ≤ 100
-#|S| = |T| = N
-#S, T は英小文字のみからなる文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S T
-#
-#出力
-#新しくできた文字列を出力せよ。
-#
-#入力例 1
-#2
-#ip cc
-#
-#出力例 1
-#icpc
-#
-#入力例 2
-#8
-#hmhmnknk uuuuuuuu
-#
-#出力例 2
-#humuhumunukunuku
-#
-#入力例 3
-#5
-#aaaaa aaaaa
-#
-#出力例 3
-#aaaaaaaaaa
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ''
+    for i in range(n):
+        ans += s[i]
+        ans += t[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ""
+    for i in range(n):
+        ans += s[i]
+        ans += t[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ''
+    for i in range(n):
+        ans += s[i] + t[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ""
+    for i in range(N):
+        ans += S[i]
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ""
+    for i in range(n):
+        ans += s[i] + t[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ''
+    for i in range(N):
+        ans += S[i] + T[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    answer = ''
+    for i in range(n):
+        answer += s[i] + t[i]
+    print(answer)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s, t = input().split()
+
+    ans = ""
+    for i in range(n):
+        ans += s[i] + t[i]
+
+    print(ans)
+
+main()

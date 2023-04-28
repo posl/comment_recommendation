@@ -1,35 +1,102 @@
-#問題文
-#v と w のみからなる文字列 S が与えられます。
-#S の中に、下に尖っている部分が何箇所あるかを出力してください（入出力例にある図もご参照ください）。
-#
-#制約
-#S は v と w のみからなる文字列
-#S の長さは 1 以上 100 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#vvwvw
-#
-#出力例 1
-#7
-#上の画像のように、vvwvw という文字列には下に尖った部分が 7 箇所あります。
-#
-#入力例 2
-#v
-#
-#出力例 2
-#1
-#
-#入力例 3
-#wwwvvvvvv
-#
-#出力例 3
-#12
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    count = 0
+    for i in range(len(S)-1):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    n = len(s)
+    ans = 0
+    for i in range(n):
+        if s[i] == "v":
+            ans += (n-i-1)*(i+1)
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] == 'v' and i != len(S) - 1 and S[i+1] == 'w':
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == "v":
+            count += 1
+
+    print(count * (count - 1) // 2)
+
+=======
+Suggestion 5
+
+def solve():
+    S = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] == "v":
+            if i == 0:
+                continue
+            if S[i - 1] == "w":
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print(s.count('vv') + s.count('ww'))
+
+=======
+Suggestion 7
+
+def calc(s):
+    if len(s) == 1:
+        return 1
+    v = s.count("v")
+    w = s.count("w")
+    if v == 0 or w == 0:
+        return 0
+    return v * w
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    print(s.count("vw") + s.count("wv"))
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    print(s.count("vv") + s.count("ww"))
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    print(s.count('vv'))

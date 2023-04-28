@@ -1,37 +1,65 @@
-#Problem Statement
-#There are two buttons, one of size A and one of size B.
-#When you press a button of size X, you get X coins and the size of that button decreases by 1.
-#You will press a button twice. Here, you can press the same button twice, or press both buttons once.
-#At most how many coins can you get?
-#
-#Constraints
-#All values in input are integers.
-#3 ≦ A, B ≦ 20
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the maximum number of coins you can get.
-#
-#Sample Input 1
-#5 3
-#
-#Sample Output 1
-#9
-#You can get 5 + 4 = 9 coins by pressing the button of size 5 twice, and this is the maximum result.
-#
-#Sample Input 2
-#3 4
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#6 6
-#
-#Sample Output 3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A + A - 1, B + B - 1, A + B))
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + a - 1, a + b, b + b - 1))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + b, a + a - 1, b + b - 1))
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A*2-1, B*2-1, A+B))
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if A == B:
+        print(A + B)
+    else:
+        print(max(A, B) * 2 - 1)
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a+b, a+a-1, b+b-1))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(a*2)
+    else:
+        print(max(a, b)*2-1)
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    print(max(a+a-1,b+b-1,a+b))

@@ -1,30 +1,151 @@
-#問題文
-#整数 N が与えられます。以下の条件を満たす N 以下の正整数の組 (i,j) の個数を求めてください。
-#i × j は平方数である。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#
-#出力例 1
-#6
-#(1,1),(1,4),(2,2),(3,3),(4,1),(4,4) の 6 個が条件を満たします。
-#(2,3) は 2 × 3 =6 が平方数でないため条件を満たしません。
-#
-#入力例 2
-#254
-#
-#出力例 2
-#896
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, i+1):
+            if i * j > N:
+                break
+            if i == j:
+                ans += 1
+            elif (i * j) ** 0.5 == int((i * j) ** 0.5):
+                ans += 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i*j <= N:
+                if (i*j)**0.5 == int((i*j)**0.5):
+                    ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if i*j <= N and (i*j)**(1/2) % 1 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(i, n+1):
+            if i*j <= n and i == j:
+                ans += 1
+            elif i*j <= n and i != j:
+                ans += 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def is_square(n):
+    return n == int(n**.5)**2
+
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    for j in range(1, N+1):
+        if is_square(i*j):
+            ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i*j <= n and (i*j)**0.5 == int((i*j)**0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        for j in range(i,N+1):
+            if i*j <= N:
+                if (i*j)**0.5 == int((i*j)**0.5):
+                    count += 1
+            else:
+                break
+    print(count)
+
+=======
+Suggestion 8
+
+def is_square(n):
+    return n**.5 == int(n**.5)
+
+n = int(input())
+
+ans = 0
+for i in range(1,n+1):
+    for j in range(i,n+1):
+        if is_square(i*j):
+            if i == j:
+                ans += 1
+            else:
+                ans += 2
+
+print(ans)
+
+=======
+Suggestion 9
+
+def is_square(n):
+    if n < 0:
+        return False
+    if n == 0:
+        return True
+    if n % 2 == 1:
+        return False
+    x = n // 2
+    y = set([x])
+    while x * x != n:
+        x = (x + (n // x)) // 2
+        if x in y:
+            return False
+        y.add(x)
+    return True
+
+n = int(input())
+ans = 0
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        if is_square(i*j):
+            ans += 1
+print(ans)
+
+=======
+Suggestion 10
+
+def is_square(n):
+    return int(n**0.5)**2 == n

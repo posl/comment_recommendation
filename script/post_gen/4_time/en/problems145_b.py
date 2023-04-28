@@ -1,41 +1,134 @@
-#Problem Statement
-#Given are a positive integer N and a string S of length N consisting of lowercase English letters.
-#Determine whether the string is a concatenation of two copies of some string.
-#That is, determine whether there is a string T such that S = T + T.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#S consists of lowercase English letters.
-#|S| = N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S
-#
-#Output
-#If S is a concatenation of two copies of some string, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#6
-#abcabc
-#
-#Sample Output 1
-#Yes
-#Let T =  abc, and S = T + T.
-#
-#Sample Input 2
-#6
-#abcadc
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#1
-#z
-#
-#Sample Output 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 0:
+        if s[:n//2] == s[n//2:]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 0:
+        if s[:n//2] == s[n//2:]:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    if s[:n//2] == s[n//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 1:
+        print("No")
+    else:
+        if s[:n//2] == s[n//2:]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    if S[:N//2] == S[N//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    if n%2 == 0 and s[:n//2] == s[n//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[0:N//2] == S[N//2:N]:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    if n%2 == 0:
+        if s[:int(n/2)] == s[int(n/2):]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[0:int(N/2)] == S[int(N/2):]:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+main()

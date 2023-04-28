@@ -1,49 +1,144 @@
-#問題文
-#N 個の宝石があり、i 番目の宝石の価値は V_i です。
-#あなたはこれらの宝石の中からいくつかを選んで手に入れます。
-#このとき、1 つも選ばなくとも、全て選んでも構いません。
-#ただし、i 番目の宝石を手に入れる場合コスト C_i を支払わなければいけません。
-#手に入れた宝石の価値の合計を X、支払ったコストの合計を Y とします。
-#X-Y の最大値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 20
-#1 ≦ C_i, V_i ≦ 50
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#V_1 V_2 ... V_N
-#C_1 C_2 ... C_N
-#
-#出力
-#X-Y の最大値を出力せよ。
-#
-#入力例 1
-#3
-#10 2 5
-#6 3 4
-#
-#出力例 1
-#5
-#1 番目の宝石と 3 番目の宝石を選んだとき、X = 10 + 5 = 15, Y = 6 + 4 = 10 です。
-#このとき、X-Y = 5 となり、これが最大です。
-#
-#入力例 2
-#4
-#13 21 6 19
-#11 30 6 15
-#
-#出力例 2
-#6
-#
-#入力例 3
-#1
-#1
-#50
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    X = 0
+    Y = 0
+    for i in range(N):
+        if V[i] - C[i] > 0:
+            X += V[i]
+            Y += C[i]
+    print(X - Y)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    X = 0
+    Y = 0
+    for i in range(N):
+        if V[i] > C[i]:
+            X += V[i]
+            Y += C[i]
+    print(X-Y)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            ans += v[i] - c[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if V[i] - C[i] > 0:
+            ans += V[i] - C[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    x = 0
+    y = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            x += v[i]
+            y += c[i]
+
+    print(x-y)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = [int(x) for x in input().split()]
+    c = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            ans += v[i] - c[i]
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    max = 0
+    for i in range(N):
+        if V[i] - C[i] > 0:
+            max += V[i] - C[i]
+    print(max)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    v_list = list(map(int, input().split()))
+    c_list = list(map(int, input().split()))
+
+    x_y_list = [v_list[i] - c_list[i] for i in range(n)]
+    x_y_list.sort(reverse=True)
+
+    print(sum([x_y_list[i] for i in range(n) if x_y_list[i] > 0]))
+
+=======
+Suggestion 9
+
+def main():
+    # 標準入力受付
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # 価値の合計
+    X = 0
+    # 支払いコストの合計
+    Y = 0
+    # X-Yの最大値
+    max = 0
+
+    # 宝石の数だけループ
+    for i in range(N):
+        # 価値の合計に宝石の価値を加算
+        X += V[i]
+        # 支払いコストの合計に宝石の支払いコストを加算
+        Y += C[i]
+        # X-Yの最大値を更新
+        if max < X-Y:
+            max = X-Y
+
+    # X-Yの最大値を出力
+    print(max)

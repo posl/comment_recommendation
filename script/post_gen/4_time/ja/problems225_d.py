@@ -1,83 +1,146 @@
-#問題文
-#高橋君は電車のおもちゃを連結させたり分離させたりして遊んでいます。
-#電車は N 個あり、電車 1 、電車 2 、... 、電車 N と名前がついています。
-#はじめ電車どうしは連結しておらず全てバラバラです。  
-#クエリが Q 個与えられるので、与えられた順番に処理してください。
-#クエリは次の 3 種類のいずれかです。  
-#1 x y ：電車 x の後部と、電車 y の前部を連結させる。
-#    以下のことが保証されます。
-#x ≠ y
-#クエリを処理する直前に、電車 x の後部と連結している電車は存在しない 
-#クエリを処理する直前に、電車 y の前部と連結している電車は存在しない
-#クエリを処理する直前に、電車 x と電車 y は異なる連結成分に属する
-#
-#2 x y ：電車 x の後部と、電車 y の前部を分離させる。
-#    以下のことが保証されます。
-#x ≠ y
-#クエリを処理する直前に、電車 x の後部と電車 y の前部は直接連結している
-#
-#3 x ：電車 x が含まれる連結成分に属する電車の番号を、先頭から順番に全て出力する。
-#
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ x ≦ N
-#1 ≦ y ≦ N
-#入力は全て整数
-#クエリは全て問題文の条件を満たす
-#3 x の形式のクエリで出力する電車の番号の個数の合計は 10^6 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#i 番目のクエリ query_i では、まずクエリの種類 c_i（ 1, 2, 3 のいずれか）が与えられる。
-#c_i = 1,2 の場合は x,y が追加で与えられ、c_i =3 の場合は x が追加で与えられる。  
-#すなわち、各クエリは以下に示す 3 つの形式のいずれかである。
-#1 x y
-#2 x y
-#3 x
-#
-#出力
-#ある c_i = 3 のタイプのクエリにおいて、出力
-#すべき値が j_1, j_2, ... , j_M であるとする。
-#このとき以下の形式で 1 行に出力せよ。
-#M j_1 j_2 ... j_M
-#c_i = 3 のタイプのクエリの数を q として、q 行出力せよ。
-#k (1 ≦ k ≦ q) 行目では k 番目のそのようなクエリに対する答えを出力せよ。  
-#
-#入力例 1
-#7 14
-#1 6 3
-#1 4 1
-#1 5 2
-#1 2 7
-#1 3 5
-#3 2
-#3 4
-#3 6
-#2 3 5
-#2 4 1
-#1 1 5
-#3 2
-#3 4
-#3 6
-#
-#出力例 1
-#5 6 3 5 2 7
-#2 4 1
-#5 6 3 5 2 7
-#4 1 5 2 7
-#1 4
-#2 6 3
-#query_5 まで処理した時、電車は以下のようになっています。
-#この時、たとえば電車 2 は、電車 3,5,6,7 と同じ連結成分に属していますが、電車 1,4 とは同じ連結成分に属していません。  
-#query_{11} まで処理した時、電車は以下のようになっています。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def find(x):
+    if par[x] < 0:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 2
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    train = [i for i in range(N)]
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            train[query[1]-1], train[query[2]-1] = train[query[2]-1], train[query[1]-1]
+        elif query[0] == 2:
+            train[query[1]-1], train[query[2]-1] = train[query[2]-1], train[query[1]-1]
+        else:
+            target = train[query[1]-1]
+            for i in range(N):
+                if target == train[i]:
+                    print(i+1, end=' ')
+            print()
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    trains = [[i] for i in range(N)]
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            x, y = query[1] - 1, query[2] - 1
+            trains[x] += trains[y]
+            trains[y] = []
+        elif query[0] == 2:
+            x, y = query[1] - 1, query[2] - 1
+            trains[x] = [trains[x][0]] + trains[x][1:]
+            trains[y] = trains[y] + [trains[y][0]]
+        elif query[0] == 3:
+            x = query[1] - 1
+            print(*trains[x])
+
+=======
+Suggestion 5
+
+def main():
+    n,q = map(int,input().split())
+    trains = [i for i in range(n)]
+    for i in range(q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            x,y = query[1],query[2]
+            if x == y:
+                continue
+            if trains[x-1] == trains[y-1]:
+                continue
+            else:
+                trains = [trains[x-1] if i == trains[y-1] else i for i in trains]
+        elif query[0] == 2:
+            x,y = query[1],query[2]
+            if x == y:
+                continue
+            if trains[x-1] != trains[y-1]:
+                continue
+            else:
+                trains = [i if i != trains[x-1] else i+1 for i in trains]
+        elif query[0] == 3:
+            x = query[1]
+            ans = [i+1 for i in range(n) if trains[i] == trains[x-1]]
+            print(len(ans),*ans)
+
+=======
+Suggestion 6
+
+def getRoot(x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = getRoot(parent[x])
+        return parent[x]
+
+=======
+Suggestion 7
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        return find(par[x])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    train = [ i for i in range(N+1)]
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            train[query[1]] = train[query[2]]
+        elif query[0] == 2:
+            train[query[1]] = query[1]
+            train[query[2]] = query[2]
+        else:
+            print(' '.join(map(str, [i for i, x in enumerate(train) if x == train[query[1]]])))
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    ans = []
+    train = [i for i in range(N)]
+    for q in query:
+        if q[0] == 1:
+            train[q[2]-1], train[q[1]-1] = train[q[1]-1], train[q[2]-1]
+        elif q[0] == 2:
+            train[q[1]-1], train[q[2]-1] = train[q[2]-1], train[q[1]-1]
+        else:
+            tmp = []
+            for i in range(N):
+                if train[i] == train[q[1]-1]:
+                    tmp.append(i+1)
+            ans.append(tmp)
+    for a in ans:
+        print(len(a), *a)

@@ -1,52 +1,121 @@
-#Problem Statement
-#In an xy-coordinate plane whose x-axis is oriented to the right and whose y-axis is oriented upwards, rotate a point (a, b) around the origin d degrees counterclockwise and find the new coordinates of the point.
-#
-#Constraints
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b d
-#
-#Output
-#Let the new coordinates of the point be (a', b'). Print a' and b' in this order, with a space in between.
-#Your output will be considered correct when, for each value printed, the absolute or relative error from the answer is at most 10^{-6}.
-#
-#Sample Input 1
-#2 2 180
-#
-#Sample Output 1
-#-2 -2
-#When (2, 2) is rotated around the origin 180 degrees counterclockwise, it becomes the symmetric point of (2, 2) with respect to the origin, which is (-2, -2).
-#
-#Sample Input 2
-#5 0 120
-#
-#Sample Output 2
-#-2.49999999999999911182 4.33012701892219364908
-#When (5, 0) is rotated around the origin 120 degrees counterclockwise, it becomes (-(5/2) , ((5(3)^(1/2))/2)).
-#This sample output does not precisely match these values, but the errors are small enough to be considered correct.
-#
-#Sample Input 3
-#0 0 11
-#
-#Sample Output 3
-#0.00000000000000000000 0.00000000000000000000
-#Since (a, b) is the origin (the center of rotation), a rotation does not change its coordinates.
-#
-#Sample Input 4
-#15 5 360
-#
-#Sample Output 4
-#15.00000000000000177636 4.99999999999999555911
-#A 360-degree rotation does not change the coordinates of a point.
-#
-#Sample Input 5
-#-505 191 278
-#
-#Sample Output 5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, d = map(int, input().split())
+    print(a * math.cos(math.radians(d)) - b * math.sin(math.radians(d)), a * math.sin(math.radians(d)) + b * math.cos(math.radians(d)))
+
+=======
+Suggestion 2
+
+def rotate(a, b, d):
+    import math
+    theta = math.radians(d)
+    x = a * math.cos(theta) - b * math.sin(theta)
+    y = a * math.sin(theta) + b * math.cos(theta)
+    return x, y
+
+=======
+Suggestion 3
+
+def rotate(a, b, d):
+    import math
+    rad = math.radians(d)
+    a_dash = a * math.cos(rad) - b * math.sin(rad)
+    b_dash = a * math.sin(rad) + b * math.cos(rad)
+    return a_dash, b_dash
+
+=======
+Suggestion 4
+
+def rotate(x,y,deg):
+    import math
+    rad = math.radians(deg)
+    x1 = x*math.cos(rad) - y*math.sin(rad)
+    y1 = x*math.sin(rad) + y*math.cos(rad)
+    return x1,y1
+
+x,y,deg = map(int,input().split())
+ans = rotate(x,y,deg)
+print(ans[0],ans[1])
+
+=======
+Suggestion 5
+
+def main():
+    x, y, d = map(int, input().split())
+    d = d * math.pi / 180
+    print(x * math.cos(d) - y * math.sin(d), x * math.sin(d) + y * math.cos(d))
+
+=======
+Suggestion 6
+
+def rotate_point(a, b, d):
+    import math
+    rad = math.radians(d)
+    a_new = a*math.cos(rad)-b*math.sin(rad)
+    b_new = a*math.sin(rad)+b*math.cos(rad)
+    return a_new, b_new
+
+=======
+Suggestion 7
+
+def main():
+    import math
+    a,b,d = map(int, input().split())
+    d = math.radians(d)
+    print(a*math.cos(d)-b*math.sin(d),a*math.sin(d)+b*math.cos(d))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,d = map(int,input().split())
+    import math
+    d = math.radians(d)
+    import numpy as np
+    x = np.array([[math.cos(d),-math.sin(d)],[math.sin(d),math.cos(d)]])
+    y = np.array([[a],[b]])
+    ans = np.dot(x,y)
+    print(ans[0][0],ans[1][0])
+
+=======
+Suggestion 9
+
+def rotate(x,y,d):
+    return x*math.cos(math.radians(d)) - y*math.sin(math.radians(d)), x*math.sin(math.radians(d)) + y*math.cos(math.radians(d))
+
+import sys
+import math
+
+for line in sys.stdin:
+    x,y,d = map(float,line.split())
+    x,y = rotate(x,y,d)
+    print(x,y)
+
+=======
+Suggestion 10
+
+def rotate(a, b, d):
+    # 2d matrix
+    matrix = [[0 for i in range(2)] for j in range(2)]
+    matrix[0][0] = math.cos(math.radians(d))
+    matrix[0][1] = -1 * math.sin(math.radians(d))
+    matrix[1][0] = math.sin(math.radians(d))
+    matrix[1][1] = math.cos(math.radians(d))
+
+    # 2d vector
+    vector = [[0 for i in range(1)] for j in range(2)]
+    vector[0][0] = a
+    vector[1][0] = b
+
+    # multiply matrix and vector
+    result = [[0 for i in range(1)] for j in range(2)]
+    for i in range(len(matrix)):
+        for j in range(len(vector[0])):
+            for k in range(len(vector)):
+                result[i][j] += matrix[i][k] * vector[k][j]
+
+    return result[0][0], result[1][0]

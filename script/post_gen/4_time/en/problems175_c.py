@@ -1,55 +1,144 @@
-#Problem Statement
-#Takahashi, who lives on the number line, is now at coordinate X. He will make exactly K moves of distance D in the positive or negative direction.
-#More specifically, in one move, he can go from coordinate x to x + D or x - D.
-#He wants to make K moves so that the absolute value of the coordinate of the destination will be the smallest possible.
-#Find the minimum possible absolute value of the coordinate of the destination.
-#
-#Constraints
-#-10^{15} ≦ X ≦ 10^{15}
-#1 ≦ K ≦ 10^{15}
-#1 ≦ D ≦ 10^{15}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X K D
-#
-#Output
-#Print the minimum possible absolute value of the coordinate of the destination.
-#
-#Sample Input 1
-#6 2 4
-#
-#Sample Output 1
-#2
-#Takahashi is now at coordinate 6. It is optimal to make the following moves:
-#Move from coordinate 6 to (6 - 4 =) 2.
-#Move from coordinate 2 to (2 - 4 =) -2.
-#Here, the absolute value of the coordinate of the destination is 2, and we cannot make it smaller.
-#
-#Sample Input 2
-#7 4 3
-#
-#Sample Output 2
-#1
-#Takahashi is now at coordinate 7. It is optimal to make, for example, the following moves:
-#Move from coordinate 7 to 4.
-#Move from coordinate 4 to 7.
-#Move from coordinate 7 to 4.
-#Move from coordinate 4 to 1.
-#Here, the absolute value of the coordinate of the destination is 1, and we cannot make it smaller.
-#
-#Sample Input 3
-#10 1 2
-#
-#Sample Output 3
-#8
-#
-#Sample Input 4
-#1000000000000000 1000000000000000 1000000000000000
-#
-#Sample Output 4
-#1000000000000000
-#The answer can be enormous.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+    else:
+        m = x // d
+        if (k - m) % 2 == 0:
+            print(x - m * d)
+        else:
+            print(d - x + m * d)
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    X, K, D = map(int, input().split())
+
+    # compute
+
+    # output
+    print()
+
+=======
+Suggestion 3
+
+def problems175_c():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x - k * d > 0:
+        print(x - k * d)
+    else:
+        if (k - x // d) % 2 == 0:
+            print(x % d)
+        else:
+            print(d - x % d)
+
+=======
+Suggestion 4
+
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x - k*d)
+    else:
+        if (k*d - x) % (2*d) == 0:
+            print(0)
+        else:
+            print(abs((k*d - x) % (2*d) - d))
+
+=======
+Suggestion 5
+
+def problem175_c():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+    else:
+        if (k - x // d) % 2 == 0:
+            print(x % d)
+        else:
+            print(d - x % d)
+
+=======
+Suggestion 6
+
+def solve(x, k, d):
+    if x < 0:
+        x = -x
+    if x // d >= k:
+        return x - k * d
+    elif (k - x // d) % 2 == 0:
+        return x - (x // d) * d
+    else:
+        return d - x + (x // d) * d
+
+=======
+Suggestion 7
+
+def problems175_c():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x - k*d)
+    else:
+        if (k*d - x) % (2*d) == 0:
+            print(0)
+        else:
+            print(min(abs(x - (k*d - x) % (2*d)), abs(x - (k*d - x) % (2*d) - 2*d)))
+
+=======
+Suggestion 8
+
+def main():
+    X, K, D = map(int, input().split())
+    if X < 0:
+        X = -X
+    if X//D >= K:
+        print(X-K*D)
+        return
+    K -= X//D
+    X %= D
+    if K%2 == 0:
+        print(X)
+    else:
+        print(D-X)
+
+=======
+Suggestion 9
+
+def problems175_c():
+    x,k,d = map(int, input().split())
+    x = abs(x)
+    if x//d > k:
+        print(x-k*d)
+    else:
+        if (x//d)%2 == k%2:
+            print(x%d)
+        else:
+            print(d-x%d)
+
+=======
+Suggestion 10
+
+def problems175_c(x, k, d):
+    if x < 0:
+        x = -x
+    if x//d >= k:
+        return x - k*d
+    else:
+        x = x%d
+        k -= x//d
+        if k%2 == 0:
+            return x
+        else:
+            return d-x

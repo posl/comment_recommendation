@@ -1,73 +1,116 @@
-#Problem Statement
-#In 2028 and after a continuous growth, AtCoder Inc. finally built an empire with six cities (City 1, 2, 3, 4, 5, 6)!
-#There are five means of transport in this empire:
-#Train: travels from City 1 to 2 in one minute. A train can occupy at most A people.
-#Bus: travels from City 2 to 3 in one minute. A bus can occupy at most B people.
-#Taxi: travels from City 3 to 4 in one minute. A taxi can occupy at most C people.
-#Airplane: travels from City 4 to 5 in one minute. An airplane can occupy at most D people.
-#Ship: travels from City 5 to 6 in one minute. A ship can occupy at most E people.
-#For each of them, one vehicle leaves the city at each integer time (time 0, 1, 2, ...).
-#There is a group of N people at City 1, and they all want to go to City 6.
-#At least how long does it take for all of them to reach there? 
-#You can ignore the time needed to transfer.  
-#
-#Constraints
-#1 ≦ N, A, B, C, D, E ≦ 10^{15}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A
-#B
-#C
-#D
-#E
-#
-#Output
-#Print the minimum time required for all of the people to reach City 6, in minutes.
-#
-#Sample Input 1
-#5
-#3
-#2
-#4
-#3
-#5
-#
-#Sample Output 1
-#7
-#One possible way to travel is as follows.
-#First, there are N = 5 people at City 1, as shown in the following image:
-#In the first minute, three people travels from City 1 to City 2 by train. Note that a train can only occupy at most three people.
-#In the second minute, the remaining two people travels from City 1 to City 2 by train, and two of the three people who were already at City 2 travels to City 3 by bus. Note that a bus can only occupy at most two people.
-#In the third minute, two people travels from City 2 to City 3 by train, and another two people travels from City 3 to City 4 by taxi.
-#From then on, if they continue traveling without stopping until they reach City 6, all of them can reach there in seven minutes.
-#There is no way for them to reach City 6 in 6 minutes or less.
-#
-#Sample Input 2
-#10
-#123
-#123
-#123
-#123
-#123
-#
-#Sample Output 2
-#5
-#All kinds of vehicles can occupy N = 10 people at a time.
-#Thus, if they continue traveling without stopping until they reach City 6, all of them can reach there in five minutes.  
-#
-#Sample Input 3
-#10000000007
-#2
-#3
-#5
-#7
-#11
-#
-#Sample Output 3
-#5000000008
-#Note that the input or output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print((N-1)//min(A,B,C,D,E)+5)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print(5 + (N - 1) // min(A, B, C, D, E))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    min_people = min(A,B,C,D,E)
+    min_time = N // min_people
+    if N % min_people != 0:
+        min_time += 1
+    min_time += 4
+    print(min_time)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    #print(N, A, B, C, D, E)
+
+    #print(N//min(A,B,C,D,E) + 5)
+
+    print(int(5 + (N-1)//min(A,B,C,D,E)))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    print(5 + (n-1)//min(a,b,c,d,e))
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print(int((N-1)//min(A,B,C,D,E)) + 5)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    print(4 + (n-1)//min(a,b,c,d,e))
+
+=======
+Suggestion 8
+
+def main():
+    N,A,B,C,D,E = map(int, input().split())
+    print((N-1)//min(A,B,C,D,E)+5)
+
+=======
+Suggestion 9
+
+def calc_min_time(n, a, b, c, d, e):
+    # n people
+    # a train
+    # b bus
+    # c taxi
+    # d airplane
+    # e ship
+    return int(5 + (n-1)//min(a,b,c,d,e))

@@ -1,52 +1,101 @@
-#Problem Statement
-#Takahashi has N days of summer vacation.
-#His teacher gave him M summer assignments. It will take A_i days for him to do the i-th assignment.
-#He cannot do multiple assignments on the same day, or hang out on a day he does an assignment.
-#What is the maximum number of days Takahashi can hang out during the vacation if he finishes all the assignments during this vacation?
-#If Takahashi cannot finish all the assignments during the vacation, print -1 instead.
-#
-#Constraints
-#1 ≦ N ≦ 10^6
-#1 ≦ M ≦ 10^4
-#1 ≦ A_i ≦ 10^4
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 ... A_M
-#
-#Output
-#Print the maximum number of days Takahashi can hang out during the vacation, or -1.
-#
-#Sample Input 1
-#41 2
-#5 6
-#
-#Sample Output 1
-#30
-#For example, he can do the first assignment on the first 5 days, hang out on the next 30 days, and do the second assignment on the last 6 days of the vacation. In this way, he can safely spend 30 days hanging out.
-#
-#Sample Input 2
-#10 2
-#5 6
-#
-#Sample Output 2
-#-1
-#He cannot finish his assignments.
-#
-#Sample Input 3
-#11 2
-#5 6
-#
-#Sample Output 3
-#0
-#He can finish his assignments, but he will have no time to hang out.
-#
-#Sample Input 4
-#314 15
-#9 26 5 35 8 9 79 3 23 8 46 2 6 43 3
-#
-#Sample Output 4
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n - sum(a))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) <= N:
+        print(N - sum(A))
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n - sum(a) if n >= sum(a) else -1)
+
+=======
+Suggestion 4
+
+def problem163_b():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if n >= sum(a):
+        print(n - sum(a))
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if n < sum(a):
+        print(-1)
+    else:
+        print(n-sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    for i in range(M):
+        N -= A[i]
+        if N < 0:
+            print(-1)
+            break
+    else:
+        print(N)
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # compute
+
+    # output
+    print(max(n - sum(a), -1))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    N -= sum(A)
+    if N < 0:
+        N = -1
+    print(N)
+
+=======
+Suggestion 9
+
+def max_hang_out_days(n, m, a):
+    if n < sum(a):
+        return -1
+    else:
+        return n - sum(a)

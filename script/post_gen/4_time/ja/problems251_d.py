@@ -1,50 +1,254 @@
-#問題文
-#整数 W が与えられます。
-#あなたは以下の条件をすべて満たすようにいくつかのおもりを用意することにしました。
-#おもりの個数は 1 個以上 300 個以下である。
-#おもりの重さは 10^6 以下の正整数である。
-#1 以上 W 以下のすべての正整数は 良い整数 である。ここで、以下の条件を満たす正整数 n を良い整数と呼ぶ。
-#用意したおもりのうち 3 個以下 の異なるおもりを自由に選んで、選んだおもりの重さの和を n にすることができる。  　
-#
-#条件を満たすようなおもりの組を 1 つ出力してください。
-#
-#制約
-#1 ≦ W ≦ 10^6
-#W は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#W
-#
-#出力
-#N をおもりの個数、A_i を i 番目のおもりの重さとして、以下の形式で出力せよ。答えが複数存在する場合、どれを出力しても正解とみなされる。
-#N
-#A_1 A_2 ... A_N
-#ただし、N および A_1,A_2,...,A_N は以下の条件を満たす必要がある。
-#1 ≦ N ≦ 300
-#1 ≦ A_i ≦ 10^6
-#
-#入力例 1
-#6
-#
-#出力例 1
-#3
-#1 2 3
-#上の出力は重さ 1 のおもり、重さ 2 のおもり、重さ 3 のおもりの 3 個のおもりを用意しています。
-#この出力は条件を満たしています。特に 3 番目の条件について、以下のようにおもりを選ぶことで 1 以上 W 以下の整数すべてが良い整数であることが確認できます。
-#1 番目のおもりのみを選ぶと、重さの和は 1 になる。
-#2 番目のおもりのみを選ぶと、重さの和は 2 になる。
-#3 番目のおもりのみを選ぶと、重さの和は 3 になる。
-#1 番目と 3 番目のおもりを選ぶと、重さの和は 4 になる。
-#2 番目と 3 番目のおもりを選ぶと、重さの和は 5 になる。
-#1 番目、2 番目と 3 番目のおもりを選ぶと、重さの和は 6 になる。
-#
-#入力例 2
-#12
-#
-#出力例 2
-#6
-#2 5 1 2 5 1
-#同じ重さのおもりを 2 個以上用意しても良いです。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1, 2)
+    elif w == 2:
+        print(2)
+        print(1, 2)
+    elif w == 1:
+        print(1)
+        print(1)
+    elif w == 4:
+        print(3)
+        print(1, 2, 4)
+    elif w == 5:
+        print(3)
+        print(1, 2, 4)
+    elif w == 6:
+        print(3)
+        print(1, 2, 3)
+    elif w == 7:
+        print(3)
+        print(1, 2, 4)
+    elif w == 8:
+        print(3)
+        print(1, 2, 4)
+    elif w == 9:
+        print(3)
+        print(1, 2, 6)
+    elif w == 10:
+        print(3)
+        print(1, 2, 6)
+    elif w == 11:
+        print(3)
+        print(1, 2, 6)
+    elif w == 12:
+        print(3)
+        print(1, 2, 3)
+    elif w == 13:
+        print(3)
+        print(1, 2, 6)
+    elif w == 14:
+        print(3)
+        print(1, 2, 6)
+    elif w == 15:
+        print(3)
+        print(1, 2, 6)
+    elif w == 16:
+        print(3)
+        print(1, 2, 6)
+    elif w == 17:
+        print(3)
+        print(1, 2, 6)
+    elif w == 18:
+        print(3)
+        print(1, 2, 3)
+    elif w == 19:
+        print(3)
+        print(1, 2, 6)
+    elif w == 20:
+        print(3)
+        print(1, 2, 6)
+    elif w == 21:
+        print(3)
+        print(1, 2, 6)
+    elif w == 22:
+        print(3)
+        print(1, 2,
+
+=======
+Suggestion 2
+
+def main():
+    w = int(input())
+    if w <= 2:
+        print("NO")
+    elif w % 2 == 0:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 3
+
+def get_divisors(num):
+    divisors = []
+    for i in range(1, int(num**0.5)+1):
+        if num % i == 0:
+            divisors.append(i)
+            if i != num // i:
+                divisors.append(num//i)
+    return divisors
+
+W = int(input())
+
+=======
+Suggestion 4
+
+def main():
+    W = int(input())
+    if W == 3:
+        print(2)
+        print("1 2")
+    elif W == 2:
+        print(1)
+        print("2")
+    elif W == 1:
+        print(1)
+        print("1")
+    elif W == 4:
+        print(2)
+        print("1 3")
+    elif W == 5:
+        print(2)
+        print("2 3")
+    elif W == 6:
+        print(3)
+        print("1 2 3")
+    else:
+        print(6)
+        print("1 2 3 4 5 6")
+
+=======
+Suggestion 5
+
+def main():
+    W = int(input())
+    if W <= 2:
+        print(1)
+        print(W)
+    elif W <= 4:
+        print(2)
+        print(1, W-1)
+    elif W <= 300:
+        print(3)
+        print(1, 2, 3)
+    else:
+        print(4)
+        print(1, 2, 3, W-6)
+
+=======
+Suggestion 6
+
+def solve():
+    W = int(input())
+    if W == 1:
+        print(1)
+        print(1)
+    elif W == 2:
+        print(2)
+        print('1 2')
+    elif W == 3:
+        print(2)
+        print('1 2')
+    elif W == 4:
+        print(3)
+        print('1 2 4')
+    elif W == 5:
+        print(3)
+        print('1 2 4')
+    elif W == 6:
+        print(3)
+        print('1 2 4')
+    elif W == 7:
+        print(3)
+        print('1 2 6')
+    elif W == 8:
+        print(4)
+        print('1 2 6 8')
+    elif W == 9:
+        print(4)
+        print('1 2 6 8')
+    elif W == 10:
+        print(4)
+        print('1 2 6 8')
+    elif W == 11:
+        print(4)
+        print('1 2 6 8')
+    elif W == 12:
+        print(4)
+        print('1 2 6 8')
+    elif W == 13:
+        print(4)
+        print('1 2 6 8')
+    elif W == 14:
+        print(4)
+        print('1 2 6 8')
+    elif W == 15:
+        print(4)
+        print('1 2 6 8')
+    elif W == 16:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 17:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 18:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 19:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 20:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 21:
+        print(5)
+        print('1 2 6 8 16')
+    elif W == 22:
+        print(5)
+        print('1 2
+
+=======
+Suggestion 7
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1,2)
+    else:
+        print(3)
+        if w % 2 == 0:
+            print(w//2,w//2,1)
+        else:
+            print(w//2,w//2+1,1)
+
+=======
+Suggestion 8
+
+def get_weight(n):
+    if n == 1:
+        return [1]
+    if n == 2:
+        return [1, 2]
+    if n == 3:
+        return [1, 2, 3]
+    if n % 2 == 0:
+        return get_weight(n-1) + [n]
+    else:
+        return get_weight(n-2) + [n]
+
+=======
+Suggestion 9
+
+def main():
+    w = int(input())
+    print(2)
+    print(w//2, w//2 + w%2)

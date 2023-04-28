@@ -1,45 +1,115 @@
-#問題文
-#文字列 S, T が与えられます。次の操作を繰り返して S を T に変更するとき、操作回数の最小値を求めてください。
-#操作：S の 1 文字を選んで別の文字に書き換える
-#
-#制約
-#S, T は長さ 1 以上 2× 10^5 以下
-#S, T は英小文字のみからなる
-#S と T の長さは等しい
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#cupofcoffee
-#cupofhottea
-#
-#出力例 1
-#4
-#例えば、次のような 4 回の操作で達成できます。
-#1 回目：6 文字目の c を h に書き換える
-#2 回目：8 文字目の f を t に書き換える
-#3 回目：9 文字目の f を t に書き換える
-#4 回目：11 文字目の e を a に書き換える
-#
-#入力例 2
-#abcde
-#bcdea
-#
-#出力例 2
-#5
-#
-#入力例 3
-#apple
-#apple
-#
-#出力例 3
-#0
-#1 度も操作をしなくてもよいこともあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    t = input()
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    S = input()
+    T = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    ans = n
+    for i in range(n):
+        if s[i:] + s[:i] == t:
+            ans = min(ans, i)
+    print(ans)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+
+    if s == t:
+        print(0)
+        exit()
+    if len(s) != len(t):
+        print(-1)
+        exit()
+    if len(s) == 1:
+        print(1)
+        exit()
+
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans += 1
+    if ans == 2:
+        print(2)
+    else:
+        print(-1)
+main()

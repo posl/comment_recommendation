@@ -1,35 +1,110 @@
-#Problem Statement
-#There is a container with A cyan balls. Takahashi will do the following operation as many times as he likes (possibly zero times):
-#add B cyan balls and C red balls into the container.
-#Takahashi's objective is to reach a situation where the number of cyan balls in the container is at most D times the number of red balls in it.
-#Determine whether the objective is achievable. If it is achievable, find the minimum number of operations needed to achieve it.
-#
-#Constraints
-#1 ≦ A,B,C,D ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C D
-#
-#Output
-#If Takahashi's objective is achievable, print the minimum number of operations needed to achieve it. Otherwise, print -1.
-#
-#Sample Input 1
-#5 2 3 2
-#
-#Sample Output 1
-#2
-#Before the first operation, the container has 5 cyan balls and 0 red balls. Since 5 is greater than 0 multiplied by D=2, Takahashi's objective is not yet achieved.
-#Just after the first operation, the container has 7 cyan balls and 3 red balls. Since 7 is greater than 3 multiplied by 2, the objective is still not achieved.
-#Just after the second operation, the container has 9 cyan balls and 6 red balls. Since 9 is not greater than 6 multiplied by 2, the objective is achieved.
-#Thus, the answer is 2.
-#
-#Sample Input 2
-#6 9 2 3
-#
-#Sample Output 2
-#-1
-#No matter how many times Takahashi repeats the operation, his objective will never be achieved.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A <= B * D:
+        print(-1)
+    else:
+        print((A + B - C - 1) // (B - C))
+
+=======
+Suggestion 2
+
+def count_operations(A, B, C, D):
+    cyan = A
+    red = 0
+    operations = 0
+    while cyan > red * D:
+        cyan += B
+        red += C
+        operations += 1
+    return operations if cyan <= red * D else -1
+
+=======
+Suggestion 3
+
+def solve():
+    A, B, C, D = map(int, input().split())
+    if A <= B * D:
+        print(-1)
+    else:
+        print((A + B * D - 1) // (B * C - A))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if A <= B * D:
+        print(-1)
+    else:
+        print((A + B * D - B - 1) // (B * C - A))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c, d = map(int, input().split())
+    if a <= b * d:
+        print(-1)
+    else:
+        for i in range(1, 10 ** 5):
+            if a <= (b * i) * (c * i):
+                print(i)
+                break
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c,d = map(int, input().split())
+    if a <= b*d:
+        print(-1)
+    else:
+        print(-(-a//(b*d-c)))
+
+=======
+Suggestion 7
+
+def problem207_b():
+    A, B, C, D = map(int, input().split())
+    if A <= B * D:
+        print(-1)
+        return
+    if B * C >= A:
+        print(1)
+        return
+    print((A - B * C - 1) // (B * D - B * C) + 1)
+
+=======
+Suggestion 8
+
+def problems207_b():
+    A, B, C, D = map(int, input().split())
+    if A <= B * D:
+        print(-1)
+    else:
+        print(-(-A//(B*D-C)))
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c,d = map(int, input().split())
+    if a <= b*d:
+        print(-1)
+        return
+    else:
+        print((a+b-1)//b)
+
+=======
+Suggestion 10
+
+def solve(A,B,C,D):
+    if A<=B*D:
+        return -1
+    else:
+        return (A+B-1)//B

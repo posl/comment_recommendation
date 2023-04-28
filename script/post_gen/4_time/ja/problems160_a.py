@@ -1,34 +1,75 @@
-#問題文
-#ある長さ 6 の英小文字からなる文字列がcoffeeに似ているとは、3 文字目と 4 文字目が等しく、5 文字目と 6 文字目も等しいことを言います。
-#与えられる文字列 S がcoffeeに似ているか判定してください。
-#
-#制約
-#S は長さ 6 の英小文字からなる文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S がcoffeeに似ている場合 Yes を、そうでない場合 Noを出力せよ。
-#
-#入力例 1
-#sippuu
-#
-#出力例 1
-#Yes
-#sippuu は 3 文字目と 4 文字目が等しく、5 文字目と 6 文字目も等しいです。
-#
-#入力例 2
-#iphone
-#
-#出力例 2
-#No
-#
-#入力例 3
-#coffee
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def resolve():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    S = input()
+    # compute
+    if S[2] == S[3] and S[4] == S[5]:
+        print('Yes')
+    else:
+        print('No')
+    # output
+
+=======
+Suggestion 7
+
+def solve():
+    #coding:utf-8
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print("Yes")
+    else:
+        print("No")

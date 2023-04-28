@@ -1,39 +1,90 @@
-#問題文
-#高橋君は、毎日 S 時 0 分に部屋の電気をつけ、毎日 T 時 0 分に消します。
-#電気をつけている間に日付が変わることもあります。
-#X 時 30 分に部屋の電気がついているかどうか判定してください。
-#
-#制約
-#0 ≦ S, T, X ≦ 23
-#S ≠ T
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S T X
-#
-#出力
-#X 時 30 分に部屋の電気がついているならば Yes と、そうでなければ No と出力せよ。
-#
-#入力例 1
-#7 20 12
-#
-#出力例 1
-#Yes
-#部屋の電気がついているのは 7 時 0 分から 20 時 0 分までの間です。12 時 30 分には電気がついているので、Yes と出力します。
-#
-#入力例 2
-#20 7 12
-#
-#出力例 2
-#No
-#部屋の電気がついているのは 0 時 0 分から 7 時 0 分までの間と、20 時 0 分から（次の日の）0 時 0 分までの間です。
-#12 時 30 分には電気がついていないので、No と出力します。
-#
-#入力例 3
-#23 0 23
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s <= x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s <= x or x < t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s <= x and x < t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s <= x or x < t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    S, T, X = map(int, input().split())
+    if S < T:
+        if S <= X and X < T:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if S <= X or X < T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= x and x < t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def check_light_on(s, t, x):
+    if s < t:
+        if s <= x and x < t:
+            return True
+        else:
+            return False
+    else:
+        if s <= x or x < t:
+            return True
+        else:
+            return False
+
+=======
+Suggestion 6
+
+def check():
+    s,t,x = map(int,input().split())
+    if s < t:
+        if s <= x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s <= x or x < t:
+            print("Yes")
+        else:
+            print("No")

@@ -1,41 +1,108 @@
-#問題文
-#AtCoder 市には 3 つの駅があり、1, 2, 3 の番号がつけられています。
-#これらの駅は、それぞれ鉄道会社A, Bのいずれかが管理しています。管理状況は長さ 3 の文字列 S で表され、駅 i は S_i が A のとき鉄道会社 A が、B のとき鉄道会社 B が管理しています。
-#鉄道会社 A が管理している駅と、鉄道会社 B が管理している駅の間には、交通の便のためにバスを運行することになりました。
-#実際にバスが運行することになる駅の組み合わせが存在するかどうかを判定してください。
-#
-#制約
-#S は A または B から成る
-#|S| = 3
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#バスが運行することになる駅の組み合わせが存在する場合は Yes を、存在しない場合は No を出力せよ。
-#
-#入力例 1
-#ABA
-#
-#出力例 1
-#Yes
-#駅 1, 3 は鉄道会社 A が、駅 2 は鉄道会社 B が管理しています。
-#駅 1, 2 間と駅 2, 3 間でバスが運行するので、Yes を出力してください。
-#
-#入力例 2
-#BBA
-#
-#出力例 2
-#Yes
-#駅 1, 2 は鉄道会社 B が、駅 3 は鉄道会社 A が管理しています。
-#駅 1, 3 間と駅 2, 3 間でバスが運行するので、Yes を出力してください。
-#
-#入力例 3
-#BBB
-#
-#出力例 3
-#No
-#駅は全て鉄道会社 B が管理しているので、バスは運行しません。よって No を出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.count("A") == 1 and s.count("B") == 2:
+        print("Yes")
+    elif s.count("A") == 2 and s.count("B") == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.count('A') == 1 and s.count('B') == 2:
+        print('Yes')
+    elif s.count('B') == 1 and s.count('A') == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.count("A") == 1 and s.count("B") == 2:
+        print("Yes")
+    elif s.count("B") == 1 and s.count("A") == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S.count("A") == 1 and S.count("B") == 2:
+        print("Yes")
+    elif S.count("B") == 1 and S.count("A") == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = list(input())
+    if s.count("A") == 1 and s.count("B") == 2:
+        print("Yes")
+    elif s.count("A") == 2 and s.count("B") == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if S[0] != S[1] and S[0] != S[2] and S[1] != S[2]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s.count('A') == 1 or s.count('B') == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S == "AAA" or S == "BBB":
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    print("Yes") if s.count("A") == 1 or s.count("B") == 1 else print("No")

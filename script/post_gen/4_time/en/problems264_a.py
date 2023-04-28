@@ -1,34 +1,103 @@
-#Problem Statement
-#Print the L-th through R-th characters of the string atcoder.
-#
-#Constraints
-#L and R are integers.
-#1 ≦ L ≦ R ≦ 7
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L R
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 6
-#
-#Sample Output 1
-#code
-#The 3-rd through 6-th characters of atcoder are code.
-#
-#Sample Input 2
-#4 4
-#
-#Sample Output 2
-#o
-#
-#Sample Input 3
-#1 7
-#
-#Sample Output 3
-#atcoder
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    l, r = map(int, input().split())
+    s = 'atcoder'
+    print(s[l-1:r])
+
+=======
+Suggestion 2
+
+def main():
+    L, R = map(int, input().split())
+    s = 'atcoder'
+    print(s[L-1:R])
+
+=======
+Suggestion 3
+
+def main():
+    L, R = map(int, input().split())
+    S = "atcoder"
+    print(S[L-1:R])
+
+=======
+Suggestion 4
+
+def main():
+    L, R = map(int, input().split())
+    print("atcoder"[L-1:R])
+
+=======
+Suggestion 5
+
+def main():
+    l, r = map(int, input().split())
+    print('code'[l-1:r])
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    L, R = map(int, input().split())
+
+    # compute
+
+    # output
+    if R <= 3:
+        print('code'[L-1:R])
+    elif 3 < L:
+        print('atcoder'[L-1:R])
+    else:
+        print('code'[L-1:3] + 'atcoder'[0:R])
+
+=======
+Suggestion 7
+
+def main():
+    l,r = map(int, input().split())
+    print("atcoder"[l-1:r])
+
+=======
+Suggestion 8
+
+def problem():
+    l, r = map(int, input().split())
+    print("atcoder"[l-1:r])
+
+problem()
+
+=======
+Suggestion 9
+
+def problem():
+    # Get input
+    input = raw_input()
+    input = input.split()
+    # Check input
+    if len(input) != 2:
+        print "Error: Please provide two integers"
+        return
+    try:
+        l = int(input[0])
+        r = int(input[1])
+    except:
+        print "Error: Please provide two integers"
+        return
+    # Check input
+    if l > r:
+        print "Error: L should be smaller than R"
+        return
+    if l < 1 or r < 1 or l > 7 or r > 7:
+        print "Error: L and R should be between 1 and 7"
+        return
+    # Get string
+    s = "atcoder"
+    # Print result
+    print s[l-1:r]
+
+problem()

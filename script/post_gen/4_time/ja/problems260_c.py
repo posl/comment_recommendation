@@ -1,48 +1,138 @@
-#問題文
-#高橋君はレベル N の赤い宝石を 1 個持っています。(他に宝石は持っていません。) 
-#高橋君は次の操作を好きなだけ行うことができます。
-#レベル n の赤い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n の青い宝石 X 個」に変換する。
-#レベル n の青い宝石 (n は 2 以上) を「レベル n-1 の赤い宝石 1 個と、レベル n-1 の青い宝石 Y 個」に変換する。
-#高橋君はレベル 1 の青い宝石ができるだけたくさんほしいです。操作によって高橋君はレベル 1 の青い宝石を最大何個入手できますか？
-#
-#制約
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X Y
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 3 4
-#
-#出力例 1
-#12
-#次のような変換を行うことで、高橋君はレベル 1 の青い宝石を 12 個手に入れることができます。
-#まず、レベル 2 の赤い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個に変換します。  
-#操作後の高橋君は、レベル 1 の赤い宝石 1 個とレベル 2 の青い宝石 3 個を持っています。
-#次に、レベル 2 の青い宝石 1 個を、レベル 1 の赤い宝石 1 個とレベル 1 の青い宝石 4 個に変換します。この変換を 3 回繰り返します。
-#操作後の高橋君は、レベル 1 の赤い宝石 4 個とレベル 1 の青い宝石 12 個を持っています。
-#これ以上変換を行うことはできません。
-#12 個より多くレベル 1 の青い宝石を手に入れることはできないので、答えは 12 になります。
-#
-#入力例 2
-#1 5 5
-#
-#出力例 2
-#0
-#高橋君がレベル 1 の青い宝石を 1 個も手に入れられない場合もあります。
-#
-#入力例 3
-#10 5 5
-#
-#出力例 3
-#3942349900
-#答えが 32 bit 整数に収まらない場合があることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def calc(n, x, y):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return x + y
+    else:
+        return calc(n - 1, x, y) + calc(n - 2, x, y)
+
+n, x, y = map(int, input().split())
+print(calc(n, x, y))
+
+=======
+Suggestion 2
+
+def calc(n, x, y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x + y
+    return calc(n - 1, x, y) + calc(n - 2, x, y)
+
+=======
+Suggestion 3
+
+def solve():
+    #n, x, y = map(int, input().split())
+    n, x, y = 10, 5, 5
+    #n, x, y = 2, 3, 4
+
+    #dp = [0] * (n + 1)
+    #dp[1] = 1
+    #for i in range(2, n + 1):
+    #    dp[i] = min(dp[i - 1] + x, dp[i // 2] + y) if i % 2 == 0 else dp[i - 1] + x
+    #print(dp[n])
+
+    #dp = [0] * (n + 1)
+    #dp[1] = 1
+    #for i in range(2, n + 1):
+    #    dp[i] = dp[i - 1] + x
+    #    if i % 2 == 0:
+    #        dp[i] = min(dp[i], dp[i // 2] + y)
+    #print(dp[n])
+
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(1, n):
+        dp[i + 1] = min(dp[i + 1], dp[i] + x)
+        if i * 2 <= n:
+            dp[i * 2] = min(dp[i * 2], dp[i] + y)
+    print(dp[n])
+
+=======
+Suggestion 4
+
+def get_blue_gem_count(n, x, y):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return x
+    else:
+        return get_blue_gem_count(n-1, x, y) + get_blue_gem_count(n-2, x, y) + y
+
+=======
+Suggestion 5
+
+def solve():
+    n,x,y = map(int,input().split())
+    if x >= y:
+        print((n-1)*y)
+    else:
+        print((n-1)*x)
+
+=======
+Suggestion 6
+
+def getStoneNum(n, x, y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x + y
+    return getStoneNum(n-1, x, y) + getStoneNum(n-2, x, y)
+
+n, x, y = map(int, input().split())
+print(getStoneNum(n, x, y))
+
+=======
+Suggestion 7
+
+def rec(n):
+    if n==1:
+        return 0
+    if n in dp:
+        return dp[n]
+    dp[n]=rec(n-1)+X
+    if n%2==0:
+        dp[n]=min(dp[n],rec(n//2)+Y)
+    else:
+        dp[n]=min(dp[n],rec(n//2+1)+Y+X)
+        dp[n]=min(dp[n],rec(n//2)+Y+X)
+    return dp[n]
+
+N,X,Y=map(int,input().split())
+dp={}
+print(rec(N))
+
+=======
+Suggestion 8
+
+def calc_blue_gem(level, red, blue, x, y):
+    if level == 1:
+        return blue
+    elif level == 2:
+        return blue + red * x
+    else:
+        return calc_blue_gem(level-1, red, blue, x, y) * y + calc_blue_gem(level-2, red, blue, x, y) * x
+
+=======
+Suggestion 9
+
+def solve():
+    N,X,Y = map(int,input().split())
+    print((N-1)*min(X,Y)+1)
+
+=======
+Suggestion 10
+
+def solve():
+    N,X,Y = map(int,input().split())
+    print(N,X,Y)
+    print('N:',N)
+    print('X:',X)
+    print('Y:',Y)
+    print('solve()')

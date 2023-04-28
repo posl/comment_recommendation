@@ -1,46 +1,129 @@
-#Problem Statement
-#You are given six integers: h_1, h_2, h_3, w_1, w_2, and w_3.
-#Consider writing a positive integer on each square of a 3 × 3 grid so that all of the following conditions are satisfied:
-#For i=1,2,3, the sum of numbers written in the i-th row from the top is h_i.
-#For j=1,2,3, the sum of numbers written in the j-th column from the left is w_i.
-#For example, if (h_1, h_2, h_3) = (5, 13, 10) and (w_1, w_2, w_3) = (6, 13, 9), then all of the following three ways satisfy the conditions.  (There are other ways to satisfy the conditions.)
-#How many ways are there to write numbers to satisfy the conditions?
-#
-#Constraints
-#3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#h_1 h_2 h_3 w_1 w_2 w_3
-#
-#Output
-#Print the number of ways to write numbers to satisfy the conditions.
-#
-#Sample Input 1
-#3 4 6 3 3 7
-#
-#Sample Output 1
-#1
-#The following is the only way to satisfy the conditions.  Thus, 1 should be printed.
-#
-#Sample Input 2
-#3 4 5 6 7 8
-#
-#Sample Output 2
-#0
-#There may not be a way to satisfy the conditions.
-#
-#Sample Input 3
-#5 13 10 6 13 9
-#
-#Sample Output 3
-#120
-#
-#Sample Input 4
-#20 25 30 22 29 24
-#
-#Sample Output 4
-#30613
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    return h1, h2, h3, w1, w2, w3
+
+=======
+Suggestion 2
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+
+    if h1 + h2 + h3 == w1 + w2 + w3:
+        print('1')
+    else:
+        print('0')
+
+=======
+Suggestion 3
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    if (h1 + h2 + h3) != (w1 + w2 + w3):
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    # h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    h1, h2, h3, w1, w2, w3 = 3, 4, 6, 3, 3, 7
+    # h1, h2, h3, w1, w2, w3 = 3, 4, 5, 6, 7, 8
+    # h1, h2, h3, w1, w2, w3 = 5, 13, 10, 6, 13, 9
+    # h1, h2, h3, w1, w2, w3 = 20, 25, 30, 22, 29, 24
+    if h1 == w1 and h2 == w2 and h3 == w3:
+        print(1)
+        exit(0)
+
+    if h1 + h2 + h3 != w1 + w2 + w3:
+        print(0)
+        exit(0)
+
+    if h1 == w1 and h2 == w2:
+        print(1)
+        exit(0)
+
+    if h1 == w1 and h3 == w3:
+        print(1)
+        exit(0)
+
+    if h2 == w2 and h3 == w3:
+        print(1)
+        exit(0)
+
+    if h1 == w2 and h2 == w1:
+        print(1)
+        exit(0)
+
+    if h1 == w3 and h3 == w1:
+        print(1)
+        exit(0)
+
+    if h2 == w3 and h3 == w2:
+        print(1)
+        exit(0)
+
+    print(0)
+
+=======
+Suggestion 5
+
+def solve(h1, h2, h3, w1, w2, w3):
+    if h1 + h2 + h3 != w1 + w2 + w3:
+        return 0
+    if h1 > w1 or h2 > w2 or h3 > w3:
+        return 0
+    if h1 + h2 > w1 + w2:
+        return 0
+    if h2 + h3 > w2 + w3:
+        return 0
+    if h3 + h1 > w3 + w1:
+        return 0
+    if h1 + h2 + h3 == w1 + w2 + w3:
+        return 1
+
+=======
+Suggestion 6
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    if (h1+h2+h3) == (w1+w2+w3):
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print((h1*w1)+(h2*w2)+(h3*w3)-(h1*h2)-(h1*h3)-(h2*h3))
+
+=======
+Suggestion 8
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print((h1*h2*h3*w1*w2*w3)//(h1*h2*w3+h2*h3*w1+h3*h1*w2))
+
+=======
+Suggestion 9
+
+def main():
+    # Get input here
+    h1, h2, h3, w1, w2, w3 = map(int, input().strip().split())
+
+    # Calculate result here
+    result = 0
+    result = h1*h2*h3*w1*w2*w3
+
+    # Print output here
+    print(result)
+
+main()

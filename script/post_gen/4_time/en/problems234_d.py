@@ -1,42 +1,107 @@
-#Problem Statement
-#Given are a permutation P=(P_1,P_2,...,P_N) of (1,2,...,N) and a positive integer K.
-#For each i=K,K+1,...,N, find the following.
-#The K-th greatest value among the first i terms of P.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 5 × 10^5
-#(P_1,P_2,...,P_N) is a permutation of (1,2,...,N).
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#P_1 P_2 ... P_N
-#
-#Output
-#For each i=K, K+1, ..., N, in this order, print the specified value in Problem Statement, separated by newlines.
-#
-#Sample Input 1
-#3 2
-#1 2 3
-#
-#Sample Output 1
-#1
-#2
-#The (K=) 2-nd greatest value among the first 2 terms of P, (P_1,P_2)=(1,2), is 1.
-#The (K=) 2-nd greatest value among the first 3 terms of P, (P_1,P_2,P_3)=(1,2,3), is 2.
-#
-#Sample Input 2
-#11 5
-#3 7 2 5 11 6 1 9 8 10 4
-#
-#Sample Output 2
-#2
-#3
-#3
-#5
-#6
-#7
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    for i in range(N-K+1):
+        print(sorted(P[i:i+K])[-1])
+
+=======
+Suggestion 2
+
+def main():
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    ans = []
+    for i in range(N-K+1):
+        ans.append(sorted(P[i:i+K])[-1])
+    print(*ans, sep='\n')
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = []
+    for i in range(k-1, n):
+        ans.append(sorted(p[:i+1])[k-1])
+    print(*ans, sep='\n')
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(k,n):
+        if a[i-k] < a[i]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = []
+    ans.append(max(p[:k]))
+    for i in range(k, n):
+        if p[i] > ans[-1]:
+            ans.append(p[i])
+        else:
+            ans.append(ans[-1])
+    for i in range(len(ans)):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    for i in range(n-k):
+        if p[i] > p[i+k]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,k=map(int,input().split())
+    p=list(map(int,input().split()))
+    ans=[]
+    for i in range(k,n+1):
+        ans.append(sorted(p[0:i])[-k])
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 8
+
+def get_max(arr):
+    max = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] > max:
+            max = arr[i]
+    return max
+
+=======
+Suggestion 9
+
+def get_kth_greatest_value_of_first_i_terms_of_p(p, k, i):
+    return sorted(p[:i], reverse=True)[k-1]
+
+=======
+Suggestion 10
+
+def find_kth_greatest_value(P, K):
+    P = sorted(P)
+    return P[-K]

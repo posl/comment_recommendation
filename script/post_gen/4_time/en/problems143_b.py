@@ -1,39 +1,124 @@
-#Problem Statement
-#It's now the season of TAKOYAKI FESTIVAL!
-#This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is d_i.
-#As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x × y health points.
-#There are ((N × (N - 1))/(2)) ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these ((N × (N - 1))/(2)) values.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 50
-#0 ≦ d_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#d_1 d_2 ... d_N
-#
-#Output
-#Print the sum of the health points restored from eating two takoyaki over all possible choices of two takoyaki from the N takoyaki served.
-#
-#Sample Input 1
-#3
-#3 1 2
-#
-#Sample Output 1
-#11
-#There are three possible choices:
-#Eat the first and second takoyaki. You will restore 3 health points.
-#Eat the second and third takoyaki. You will restore 2 health points.
-#Eat the first and third takoyaki. You will restore 6 health points.
-#The sum of these values is 11.
-#
-#Sample Input 2
-#7
-#5 0 7 8 3 3 2
-#
-#Sample Output 2
-#312
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i] * d[j]
+    print(sum)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            ans += d[i] * d[j]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    s = 0
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            s += d[i] * d[j]
+    print(s)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    s = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            s += d[i]*d[j]
+    print(s)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    d = list(map(int, input().split()))
+    res = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            res += d[i] * d[j]
+    print(res)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    d = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i]*d[j]
+    print(sum)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    d = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            sum += d[i] * d[j]
+
+    print(sum)
+
+=======
+Suggestion 8
+
+def compute_health_points(n, d):
+    health_points = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            health_points += d[i] * d[j]
+    return health_points
+
+=======
+Suggestion 9
+
+def sum_of_pairs(n, d):
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i]*d[j]
+    return sum
+
+=======
+Suggestion 10
+
+def main():
+    # Get input
+    N = int(input()) # Number of Takoyaki
+    d = list(map(int, input().split())) # Deliciousness of Takoyaki
+
+    # Compute the sum of the health points restored from eating two takoyaki over all possible choices of two takoyaki from the N takoyaki served.
+    sum = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            sum += d[i] * d[j]
+
+    # Print the sum of the health points restored from eating two takoyaki over all possible choices of two takoyaki from the N takoyaki served.
+    print(sum)

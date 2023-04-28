@@ -1,32 +1,64 @@
-#Problem Statement
-#Takahashi loves takoyaki - a ball-shaped snack.
-#With a takoyaki machine, he can make at most X pieces of takoyaki at a time, taking T minutes regardless of the number of pieces to make.
-#How long does it take to make N takoyaki?
-#
-#Constraints
-#1 ≦ N,X,T ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X T
-#
-#Output
-#Print an integer representing the minimum number of minutes needed to make N pieces of takoyaki.
-#
-#Sample Input 1
-#20 12 6
-#
-#Sample Output 1
-#12
-#He can make 12 pieces of takoyaki in the first 6 minutes and 8 more in the next 6 minutes, so he can make 20 in a total of 12 minutes.
-#Note that being able to make 12 in 6 minutes does not mean he can make 2 in 1 minute.
-#
-#Sample Input 2
-#1000 1 1000
-#
-#Sample Output 2
-#1000000
-#It seems to take a long time to make this kind of takoyaki.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X, T = map(int, input().split())
+    if N % X == 0:
+        print(N // X * T)
+    else:
+        print((N // X + 1) * T)
+
+=======
+Suggestion 2
+
+def main():
+    N, X, T = map(int, input().split())
+    print((N + X - 1) // X * T)
+
+=======
+Suggestion 3
+
+def takoyaki(n,x,t):
+    if(n%x==0):
+        return (n//x)*t
+    else:
+        return (n//x+1)*t
+
+n,x,t = map(int,input().split())
+print(takoyaki(n,x,t))
+
+=======
+Suggestion 4
+
+def takoyaki(N,X,T):
+    if N%X==0:
+        return (N/X)*T
+    else:
+        return ((N//X)+1)*T
+
+=======
+Suggestion 5
+
+def main():
+    n,x,t = [int(i) for i in input().split()]
+    print((n+x-1)//x*t)
+
+=======
+Suggestion 6
+
+def takoyaki():
+    # read in input
+    n, x, t = map(int, input().split())
+    # print(n, x, t)
+    # find number of times x fits into n
+    # print(n // x)
+    # find remainder
+    # print(n % x)
+    # if remainder is 0, then we are done
+    # if remainder is not 0, then we need to add 1 to n // x
+    # return n // x * t
+    return ((n // x) + (1 if n % x else 0)) * t
+
+print(takoyaki())

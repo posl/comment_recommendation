@@ -1,42 +1,66 @@
-#問題文
-#整数 N が与えられるので、以下の問題を解いてください。
-#f(x)= ( x 以下の正整数で、 x と桁数が同じものの数) とします。
-#f(1)+f(2)+...+f(N) を 998244353 で割った余りを求めてください。
-#
-#制約
-#N は整数
-#1 ≦ N < 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#16
-#
-#出力例 1
-#73
-#1 以上 9 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 1,2,...,x です。
-#これより、 f(1)=1,f(2)=2,...,f(9)=9 となります。
-#10 以上 16 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 10,11,...,x です。
-#これより、 f(10)=1,f(11)=2,...,f(16)=7 となります。
-#
-#結局、求める答えは 73 です。
-#
-#入力例 2
-#238
-#
-#出力例 2
-#13870
-#
-#入力例 3
-#999999999999999999
-#
-#出力例 3
-#762062362
-#998244353 で割った余りを求めることに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_digit(n):
+    digit = 0
+    while n != 0:
+        n //= 10
+        digit += 1
+    return digit
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        ans += len(str(i))
+    print(ans % 998244353)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        ans += len(str(i))
+    print(ans % 998244353)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        ans += len(str(i)) * (n // i)
+        ans %= 998244353
+    print(ans)
+
+=======
+Suggestion 5
+
+def f(x):
+    return len(str(x))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    # 10^n 以下の整数で、桁数が n 桁のものの個数
+    # 1桁: 9
+    # 2桁: 90
+    # 3桁: 900
+    # 4桁: 9000
+    # ... とな�
+
+=======
+Suggestion 7
+
+def count_digits(num):
+    return len(str(num))

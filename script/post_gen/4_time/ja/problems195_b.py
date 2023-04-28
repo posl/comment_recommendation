@@ -1,46 +1,184 @@
-#問題文
-#みかんがたくさんあります。どのみかんの重さも A グラム以上 B グラム以下であることがわかっています。（みかんの重さは整数とは限りません。）
-#この中からいくつかのみかんを選んだところ、選んだみかんの重さの合計がちょうど W キログラムになりました。
-#選んだみかんの個数として考えられる最小値と最大値を求めてください。ただし、このようなことが起こり得ないなら、かわりにそのことを報告してください。
-#
-#制約
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ W ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B W
-#
-#出力
-#選んだみかんの個数としてありえる最小値と最大値を空白区切りでこの順に出力せよ。ただし、与えられた条件に合うような個数が存在しない場合、かわりに UNSATISFIABLE と出力せよ。
-#
-#入力例 1
-#100 200 2
-#
-#出力例 1
-#10 20
-#みかん 1 個の重さは 100 グラム以上 200 グラム以下です。
-#200 グラムのみかんを 10 個選んだとき、重さの合計はちょうど 2 キログラムになります
-#100 グラムのみかんを 20 個選んだとき、重さの合計はちょうど 2 キログラムになります
-#9 個以下または 21 個以上でちょうど 2 キログラムになることはないので、10 個と 20 個がそれぞれ最小値と最大値になります。
-#
-#入力例 2
-#120 150 2
-#
-#出力例 2
-#14 16
-#みかん 1 個の重さは 120 グラム以上 150 グラム以下です。
-#例えば 140 グラムのみかん 10 個と、150 グラムのみかん 4 個を選んだとき、重さの合計はちょうど 2 キログラムになります
-#例えば 120 グラムのみかん 8 個と、130 グラムのみかん 8 個を選んだとき、重さの合計はちょうど 2 キログラムになります
-#13 個以下または 17 個以上でちょうど 2 キログラムになることはないので、14 個と 16 個がそれぞれ最小値と最大値になります。
-#
-#入力例 3
-#300 333 1
-#
-#出力例 3
-#UNSATISFIABLE
-#みかん 1 個の重さは 300 グラム以上 333 グラム以下です。
-#このようなみかんいくつかの重さの合計がちょうど 1 キログラムになることはありえません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    max_num = 0
+    min_num = 0
+    for i in range(1, w + 1):
+        if a * i <= w and w <= b * i:
+            if max_num == 0:
+                max_num = i
+            min_num = i
+    if min_num == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min_num, max_num)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 1000000
+    max = 0
+    for i in range(1,w+1):
+        if a*i <= w and b*i >=w:
+            if i < min:
+                min = i
+            if i > max:
+                max = i
+    if min == 1000000:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 3
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    min = 0
+    max = 0
+
+    for i in range(1, w+1):
+        if a * i <= w and w <= b * i:
+            if min == 0:
+                min = i
+            max = i
+
+    if min == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min, max)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,w = map(int, input().split())
+    w *= 1000
+    min = 0
+    max = 0
+    for i in range(1,1001):
+        if a*i <= w <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    max = 0
+    min = 1000000000
+    for i in range(1, w + 1):
+        if a * i <= w and w <= b * i:
+            if i > max:
+                max = i
+            if i < min:
+                min = i
+    if max == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min, max)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,w = map(int, input().split())
+    w *= 1000
+    min = 10000000
+    max = 0
+    for i in range(1, 1000001):
+        if a * i <= w <= b * i:
+            if min > i:
+                min = i
+            if max < i:
+                max = i
+    if max == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min, max)
+
+=======
+Suggestion 7
+
+def main():
+    A, B, W = map(int, input().split())
+
+    max = int(W * 1000 / A)
+    min = int(W * 1000 / B)
+    if min == max:
+        print("UNSATISFIABLE")
+    else:
+        print(min, max)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,w = map(int,input().split())
+    w = w * 1000
+    if w%b == 0:
+        min = w//b
+    else:
+        min = w//b + 1
+    max = w//a
+    if min > max:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 9
+
+def solve():
+    a,b,w = map(int, input().split())
+    w *= 1000
+    min = 1000000000
+    max = 0
+    for i in range(1,1000001):
+        if a <= w / i and w / i <= b:
+            if min > i:
+                min = i
+            if max < i:
+                max = i
+    if max == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min, max)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 0
+    max = 0
+    for i in range(1,w//a+1):
+        if w == a*i:
+            if min == 0:
+                min = i
+            max = i
+        if a*i < w and w <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)

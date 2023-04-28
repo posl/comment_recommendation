@@ -1,82 +1,199 @@
-#問題文
-#高橋くんは、以下の方法で 10 個の文字列 S_1,S_2,...,S_{10} を生成しました。  
-#まず、 S_i (1 ≦ i ≦ 10)= .......... ( . が 10 個並んだ文字列) とする。
-#次に、以下の条件を全て満たす 4 つの整数 A,B,C,D を選ぶ。
-#1 ≦ A ≦ B ≦ 10
-#1 ≦ C ≦ D ≦ 10
-#その後、以下の条件を全て満たす全ての整数組 (i,j) について、 S_i の j 文字目を # に書き換える。
-#A ≦ i ≦ B
-#C ≦ j ≦ D
-#
-#以上の方法で生成された S_1,S_2,...,S_{10} が与えられるので、高橋くんが選んだ整数  A,B,C,D を求めてください。
-#なお、制約より A,B,C,D は一意に定まる (答えはただひとつ存在する) ことが証明できます。
-#
-#制約
-#S_1,S_2,...,S_{10} は問題文中の方法で生成されうるそれぞれ長さ 10 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_1
-#S_2
-#.
-#.
-#.
-#S_{10}
-#
-#出力
-#答えを以下の形式で出力せよ。
-#A B
-#C D
-#
-#入力例 1
-#..........
-#..........
-#..........
-#..........
-#...######.
-#...######.
-#...######.
-#...######.
-#..........
-#..........
-#
-#出力例 1
-#5 8
-#4 9
-#高橋くんが選んだ整数は A=5,B=8,C=4,D=9 です。
-#このように選ぶことにより、 S_5,S_6,S_7,S_8 の 4 文字目から 9 文字目が # であり他の文字が . である 10 個の長さ 10 の文字列 S_1,S_2,...,S_{10} が生成されます。
-#これは入力で与えられた 10 個の文字列と一致します。
-#
-#入力例 2
-#..........
-#..#.......
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#
-#出力例 2
-#2 2
-#3 3
-#
-#入力例 3
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-#
-#出力例 3
-#1 10
-#1 10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = [input() for i in range(10)]
+    A = 0
+    B = 0
+    C = 0
+    D = 0
+    for i in range(10):
+        for j in range(10):
+            if S[i][j] == '#':
+                if A == 0:
+                    A = i + 1
+                if B < i + 1:
+                    B = i + 1
+                if C == 0:
+                    C = j + 1
+                if D < j + 1:
+                    D = j + 1
+    print(A, B)
+    print(C, D)
+
+=======
+Suggestion 2
+
+def main():
+    s = []
+    for i in range(10):
+        s.append(input())
+    a = b = c = d = 0
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == "#":
+                if a == 0:
+                    a = i + 1
+                if c == 0:
+                    c = j + 1
+                if i + 1 > b:
+                    b = i + 1
+                if j + 1 > d:
+                    d = j + 1
+    print(a, b)
+    print(c, d)
+
+=======
+Suggestion 3
+
+def main():
+    s = [input() for _ in range(10)]
+    ans = []
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == "#":
+                ans.append([i,j])
+    print(ans[0][0]+1,ans[0][1]+1)
+    print(ans[-1][0]+1,ans[-1][1]+1)
+
+=======
+Suggestion 4
+
+def main():
+    S = []
+    for i in range(10):
+        S.append(input())
+    for i in range(10):
+        for j in range(10):
+            if S[i][j] == "#":
+                print(i+1,j+1)
+                exit()
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    S = [input() for _ in range(10)]
+    # compute
+    A, B, C, D = 0, 0, 0, 0
+    for i in range(10):
+        for j in range(10):
+            if S[i][j] == '#':
+                if A == 0:
+                    A = i + 1
+                if B == 0:
+                    B = i + 1
+                if C == 0:
+                    C = j + 1
+                if D == 0:
+                    D = j + 1
+                if i + 1 < A:
+                    A = i + 1
+                if B < i + 1:
+                    B = i + 1
+                if j + 1 < C:
+                    C = j + 1
+                if D < j + 1:
+                    D = j + 1
+    # output
+    print(A, B)
+    print(C, D)
+
+=======
+Suggestion 6
+
+def main():
+    S = [input() for i in range(10)]
+    ans = []
+    for i in range(10):
+        for j in range(10):
+            if S[i][j] == '#':
+                ans.append([i+1,j+1])
+    print(ans[0][0],ans[0][1])
+    print(ans[-1][0],ans[-1][1])
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    S = [input() for _ in range(10)]
+
+    # compute
+    A = B = C = D = 0
+    for i in range(10):
+        if '#' in S[i]:
+            if A == 0:
+                A = i+1
+            else:
+                B = i+1
+                break
+    for j in range(10):
+        if '#' in [S[i][j] for i in range(10)]:
+            if C == 0:
+                C = j+1
+            else:
+                D = j+1
+                break
+
+    # output
+    print(A, B)
+    print(C, D)
+
+=======
+Suggestion 8
+
+def get_input_data():
+    input_data = []
+    for i in range(10):
+        input_data.append(input())
+    return input_data
+
+=======
+Suggestion 9
+
+def get_input():
+    s = []
+    for i in range(10):
+        s.append(input())
+    return s
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    S = []
+    for _ in range(10):
+        S.append(input())
+    # compute
+    # まず、Sを10個のリストに分割する
+    S_list = []
+    for i in range(10):
+        S_list.append(list(S[i]))
+    # 1行目の#の位置を探す
+    for i in range(10):
+        if S_list[0][i] == '#':
+            A = i + 1
+            break
+    # 10行目の#の位置を探す
+    for i in range(10):
+        if S_list[9][i] == '#':
+            B = i + 1
+            break
+    # 1列目の#の位置を探す
+    for i in range(10):
+        if S_list[i][0] == '#':
+            C = i + 1
+            break
+    # 10列目の#の位置を探す
+    for i in range(10):
+        if S_list[i][9] == '#':
+            D = i + 1
+            break
+    # output
+    print(A, B)
+    print(C, D)

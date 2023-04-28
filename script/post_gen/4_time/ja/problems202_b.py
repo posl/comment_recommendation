@@ -1,38 +1,140 @@
-#問題文
-#0、1、6、8、9 からなる文字列 S が与えられます。
-#S を 180 度回転したものを出力してください。すなわち、S に次の操作を施してできる文字列を出力してください。
-#S を反転する。
-#0 を 0 に、1 を 1 に、6 を 9 に、8 を 8 に、9 を 6 に変換する。
-#
-#制約
-#1 ≦ |S| ≦ 10^5
-#S は 0、1、6、8、9 からなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S を 180 度回転した文字列を出力せよ。
-#
-#入力例 1
-#0601889
-#
-#出力例 1
-#6881090
-#0601889 を 180 度回転すると 6881090 になります。
-#
-#入力例 2
-#86910
-#
-#出力例 2
-#01698
-#
-#入力例 3
-#01010
-#
-#出力例 3
-#01010
-#S が変化しないこともあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('6', 'x')
+    s = s.replace('9', '6')
+    s = s.replace('x', '9')
+    s = s.replace('0', 'x')
+    s = s.replace('1', '0')
+    s = s.replace('x', '1')
+    print(s)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('6','x')
+    S = S.replace('9','6')
+    S = S.replace('x','9')
+    S = S.replace('0','x')
+    S = S.replace('1','0')
+    S = S.replace('x','1')
+    print(S)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    ans = ''
+    for i in range(len(s)):
+        if s[i] == '0':
+            ans = '0' + ans
+        elif s[i] == '1':
+            ans = '1' + ans
+        elif s[i] == '6':
+            ans = '9' + ans
+        elif s[i] == '8':
+            ans = '8' + ans
+        elif s[i] == '9':
+            ans = '6' + ans
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('6', 't')
+    s = s.replace('9', '6')
+    s = s.replace('t', '9')
+    s = s.replace('0', 't')
+    s = s.replace('1', '0')
+    s = s.replace('t', '1')
+    print(s)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = list(S)
+    for i in range(len(S)):
+        if S[i] == '0':
+            S[i] = '0'
+        elif S[i] == '1':
+            S[i] = '1'
+        elif S[i] == '6':
+            S[i] = '9'
+        elif S[i] == '8':
+            S[i] = '8'
+        elif S[i] == '9':
+            S[i] = '6'
+    S.reverse()
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace("6", "a")
+    S = S.replace("9", "6")
+    S = S.replace("a", "9")
+    S = S.replace("0", "a")
+    S = S.replace("1", "0")
+    S = S.replace("a", "1")
+    print(S)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    ans = ""
+    for i in range(len(s)):
+        if s[i] == '6':
+            ans = '9' + ans
+        elif s[i] == '9':
+            ans = '6' + ans
+        else:
+            ans = s[i] + ans
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    S = input()
+
+    # compute
+
+    # output
+    print(S[::-1].translate(str.maketrans('01689', '01986')))
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    ans = ''
+    for i in range(len(s)):
+        ans += s[len(s)-1-i]
+    ans = ans.replace('6', 'x')
+    ans = ans.replace('9', '6')
+    ans = ans.replace('x', '9')
+    ans = ans.replace('0', 'x')
+    ans = ans.replace('1', '0')
+    ans = ans.replace('x', '1')
+    print(ans)

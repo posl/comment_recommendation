@@ -1,39 +1,43 @@
-#問題文
-#直角三角形 ABC があります。∠ABC=90° です。
-#三角形 ABC の三辺の長さである |AB|,|BC|,|CA| が与えられるので、直角三角形 ABC の面積を求めて下さい。
-#ただし、三角形 ABC の面積は整数となることが保証されています。
-#
-#制約
-#1 ≦ |AB|,|BC|,|CA| ≦ 100
-#入力はすべて整数である。
-#三角形 ABC の面積は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#|AB| |BC| |CA|
-#
-#出力
-#三角形 ABC の面積を出力してください。
-#
-#入力例 1
-#3 4 5
-#
-#出力例 1
-#6
-#この三角形の面積は 6 です。
-#
-#入力例 2
-#5 12 13
-#
-#出力例 2
-#30
-#この三角形の面積は 30 です。
-#
-#入力例 3
-#45 28 53
-#
-#出力例 3
-#630
-#この三角形の面積は 630 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    AB, BC, CA = map(int, input().split())
+    print(int(AB * BC / 2))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print(int(a * b / 2))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    print(a * b // 2)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int, input().split())
+    s = a*b/2
+    print(int(s))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, raw_input().split())
+    print (a * b) / 2
+
+=======
+Suggestion 6
+
+def calc_area(a, b, c):
+    return (a * b) / 2

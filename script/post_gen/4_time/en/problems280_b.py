@@ -1,38 +1,111 @@
-#Problem Statement
-#You are given an integer N and a sequence S=(S_1,...,S_N) of length N.
-#Find a sequence A=(A_1,...,A_N) of length N that satisfies the following condition for all k=1,...,N:
-#A_1+A_2+...+A_k = S_k.
-#Such a sequence A always exists and is unique.
-#
-#Constraints
-#1 ≦ N ≦ 10
-#-10^9≦ S_i ≦ 10^9
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#S_1 ... S_N
-#
-#Output
-#Print the elements of a sequence A=(A_1,...,A_N) that satisfies all the conditions in order, separated by spaces.  
-#
-#Sample Input 1
-#3
-#3 4 8
-#
-#Sample Output 1
-#3 1 4
-#The sequence in the output actually satisfies all the conditions:
-#A_1=3=S_1;
-#A_1+A_2=3+1=4=S_2;
-#A_1+A_2+A_3=3+1+4=8=S_3.
-#
-#Sample Input 2
-#10
-#314159265 358979323 846264338 -327950288 419716939 -937510582 97494459 230781640 628620899 -862803482
-#
-#Sample Output 2
-#314159265 44820058 487285015 -1174214626 747667227 -1357227521 1035005041 133287181 397839259 -1491424381
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i-1]
+    print(*a)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i - 1]
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    A = [0]*N
+    A[0] = S[0]
+    for i in range(1,N):
+        A[i] = S[i] - S[i-1]
+    print(*A)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [int(x) for x in input().split()]
+    a = [0] * n
+    a[0] = s[0]
+    for i in range(1, n):
+        a[i] = s[i] - s[i - 1]
+    print(*a)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1,N):
+        A[i] = A[i-1] + S[i]
+    print(" ".join(map(str,A)))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = [int(x) for x in input().split()]
+    A = [0] * N
+    A[0] = S[0]
+    for i in range(1,N):
+        A[i] = S[i] - S[i-1]
+    print(*A)
+
+=======
+Suggestion 7
+
+def main():
+  N = int(input())
+  S = list(map(int, input().split()))
+  A = [0] * N
+  for i in range(N):
+    if i % 2 == 0:
+      A[0] += S[i]
+    else:
+      A[0] -= S[i]
+  for i in range(N - 1):
+    A[i + 1] = 2 * S[i] - A[i]
+  print(*A)
+
+=======
+Suggestion 8
+
+def solve(n, s):
+    a = [0] * n
+    for i in range(n - 1):
+        a[i] = s[i] + a[i - 1]
+    a[n - 1] = s[n - 1] + a[n - 2]
+    return a
+
+n = int(input())
+s = list(map(int, input().split()))
+print(*solve(n, s))
+
+=======
+Suggestion 9
+
+def get_input():
+    n = int(input())
+    s = list(map(int, input().split()))
+    return n, s

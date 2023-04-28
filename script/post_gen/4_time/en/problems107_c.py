@@ -1,63 +1,150 @@
-#Problem Statement
-#There are N candles placed on a number line.
-#The i-th candle from the left is placed on coordinate x_i.
-#Here, x_1 < x_2 < ... < x_N holds.
-#Initially, no candles are burning.
-#Snuke decides to light K of the N candles.
-#Now, he is at coordinate 0.
-#He can move left and right along the line with speed 1.
-#He can also light a candle when he is at the same position as the candle, in negligible time.
-#Find the minimum time required to light K candles.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ N
-#x_i is an integer.
-#|x_i| ≦ 10^8
-#x_1 < x_2 < ... < x_N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#x_1 x_2 ... x_N
-#
-#Output
-#Print the minimum time required to light K candles.
-#
-#Sample Input 1
-#5 3
-#-30 -10 10 20 50
-#
-#Sample Output 1
-#40
-#He should move and light candles as follows:
-#Move from coordinate 0 to -10.
-#Light the second candle from the left.
-#Move from coordinate -10 to 10.
-#Light the third candle from the left.
-#Move from coordinate 10 to 20.
-#Light the fourth candle from the left.
-#
-#Sample Input 2
-#3 2
-#10 20 30
-#
-#Sample Output 2
-#20
-#
-#Sample Input 3
-#1 1
-#0
-#
-#Sample Output 3
-#0
-#There may be a candle placed at coordinate 0.
-#
-#Sample Input 4
-#8 5
-#-9 -7 -4 -3 1 2 3 4
-#
-#Sample Output 4
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(n-k+1):
+        if x[i]*x[i+k-1] >= 0:
+            ans = min(ans, max(abs(x[i]), abs(x[i+k-1])))
+        else:
+            ans = min(ans, 2*min(abs(x[i]), abs(x[i+k-1])) + max(abs(x[i]), abs(x[i+k-1])))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        if x[i] * x[i + K - 1] < 0:
+            ans = min(ans, min(abs(x[i]), abs(x[i + K - 1])) + abs(x[i + K - 1]) - abs(x[i]))
+        else:
+            ans = min(ans, max(abs(x[i]), abs(x[i + K - 1])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, min(abs(X[i+K-1]-X[i])+abs(X[i]), abs(X[i+K-1]-X[i])+abs(X[i+K-1])))
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        l = X[i]
+        r = X[i + K - 1]
+        if l < 0 and r < 0:
+            ans = min(ans, -l)
+        elif l < 0 and r >= 0:
+            ans = min(ans, -l + r + min(-l, r))
+        else:
+            ans = min(ans, r)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(N-K+1):
+        r = X[i+K-1]
+        l = X[i]
+        ans = min(ans, r-l+min(abs(r), abs(l)))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    min_time = 10 ** 10
+    for i in range(N - K + 1):
+        if X[i] < 0 and X[i + K - 1] < 0:
+            time = -X[i]
+        elif X[i] > 0 and X[i + K - 1] > 0:
+            time = X[i + K - 1]
+        else:
+            time = min(-X[i] * 2 + X[i + K - 1], X[i + K - 1] * 2 - X[i])
+        if time < min_time:
+            min_time = time
+    print(min_time)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    x = list(map(int, input().split()))
+    x = sorted(x)
+    ans = 10 ** 9
+    for i in range(n - k + 1):
+        ans = min(ans, x[i + k - 1] - x[i] + min(abs(x[i]), abs(x[i + k - 1])))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10**10
+    for i in range(n-k+1):
+        ans = min(ans, abs(x[i])+abs(x[i]-x[i+k-1]))
+        ans = min(ans, abs(x[i+k-1])+abs(x[i]-x[i+k-1]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    min_time = 10 ** 9
+    for i in range(N - K + 1):
+        right = X[i + K - 1]
+        if X[i] < 0 and right < 0:
+            time = -X[i]
+        elif X[i] > 0 and right > 0:
+            time = right
+        else:
+            time = min(abs(X[i]), abs(right)) * 2 + max(abs(X[i]), abs(right))
+        min_time = min(min_time, time)
+    print(min_time)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    x = list(map(int, input().split()))
+    total = 10**9
+    for i in range(n - k + 1):
+        left = x[i]
+        right = x[i + k - 1]
+        if left < 0 and right < 0:
+            total = min(total, -left)
+        elif left < 0 and right >= 0:
+            total = min(total, -left + right + min(-left, right))
+        else:
+            total = min(total, right)
+    print(total)

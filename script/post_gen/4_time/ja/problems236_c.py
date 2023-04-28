@@ -1,51 +1,159 @@
-#問題文
-#AtCoder 鉄道のとある路線には N 個の駅が存在し、始点から終点に向かって i  (1 ≦ i ≦ N) 番目の駅の名前は S_i です。
-#普通列車は全ての駅に止まりますが、急行列車は全ての駅に止まるとは限りません。具体的には、急行列車は M  (M ≦ N) 個の駅にのみ止まり、j  (1 ≦ j ≦ M) 番目に止まる駅の名前は T_j です。
-#ただし、T_1 = S_1 かつ T_M = S_N、すなわち急行列車は始点と終点の両方に止まることが保証されます。
-#N 個の駅それぞれについて、その駅に急行列車が止まるかどうか判定してください。
-#
-#制約
-#2 ≦ M ≦ N ≦ 10^5
-#N, M は整数
-#S_i  (1 ≦ i ≦ N) は英小文字のみからなる 1 文字以上 10 文字以下の文字列
-#S_i ≠ S_j  (i ≠ j)
-#T_1 = S_1 かつ T_M = S_N
-#(T_1, ..., T_M) は (S_1, ..., S_N) から 0 個以上の文字列を選んで取り除き、残った文字列を元の順序で並べることで得られる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1 ... S_N
-#T_1 ... T_M
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、始点から終点に向かって i 番目の駅に急行列車が止まるなら Yes、そうでないなら No と出力せよ。
-#
-#入力例 1
-#5 3
-#tokyo kanda akiba okachi ueno
-#tokyo akiba ueno
-#
-#出力例 1
-#Yes
-#No
-#Yes
-#No
-#Yes
-#
-#入力例 2
-#7 7
-#a t c o d e r
-#a t c o d e r
-#
-#出力例 2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#急行列車が全ての駅に止まることもあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+    if S[0] == T[0] and S[N-1] == T[M-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    s = list(map(str,input().split()))
+    t = list(map(str,input().split()))
+    for i in range(n):
+        if s[i] in t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def solve():
+    N,M = map(int,input().split())
+    S = input().split()
+    T = input().split()
+    for i in range(N):
+        if S[i] in T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    s = input().split()
+    t = input().split()
+    i = 0
+    j = 0
+    while i < n:
+        if s[i] == t[j]:
+            j += 1
+            if j == m:
+                break
+        i += 1
+    if j == m:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    for i in range(n):
+        if s[i] in t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+
+    i = 0
+    j = 0
+    while i < N:
+        if S[i] == T[j]:
+            i += 1
+            j += 1
+        else:
+            i += 1
+    if j == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    S = input().split()
+    T = input().split()
+
+    s = 0
+    for i in range(N):
+        if S[i] == T[s]:
+            s += 1
+            if s == M:
+                break
+    for i in range(N):
+        if S[i] == T[s]:
+            print("Yes")
+            s += 1
+            if s == M:
+                break
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    n, m = map(int, input().split())
+    s_list = input().split()
+    t_list = input().split()
+
+    s_dict = {}
+    t_dict = {}
+    for i in range(n):
+        s_dict[s_list[i]] = i
+    for i in range(m):
+        t_dict[t_list[i]] = i
+
+    for i in range(n):
+        if s_dict[s_list[i]] == t_dict[s_list[i]]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    s = input().split()
+    t = input().split()
+    print("Yes" if t[0] in s and t[-1] in s and s.index(t[0]) < s.index(t[-1]) else "No")

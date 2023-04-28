@@ -1,53 +1,171 @@
-#問題文
-#高橋君は 2 以上の整数が書かれた N 個のボールを持っており、これらを細長い筒の中に落としていきます。i  (1 ≦ i ≦ N) 回目には、a_i が書かれたボールを落とします。
-#ボールは特殊な材質でできており、筒の中において k  (k ≧ 2) が書かれたボールが k 個連続すると、それら k 個のボールは全て消えてしまいます。
-#各 i  (1 ≦ i ≦ N) について、i 個目のボールを筒の中に落とした後、筒の中に何個のボールがあるか求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ a_i ≦ 2 × 10^5  (1 ≦ i ≦ N)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 ... a_N
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、i 個目のボールを筒の中に落とした後、筒の中にあるボールの個数を出力せよ。
-#
-#入力例 1
-#5
-#3 2 3 2 2
-#
-#出力例 1
-#1
-#2
-#3
-#4
-#3
-#筒の中は次のように変化します。
-#1 個目のボールを落とす。筒の中にあるボールに書かれた整数は 3 である。
-#2 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2 である。
-#3 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3 である。
-#4 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3, 2 である。
-#5 個目のボールを落とす。筒の中にあるボールに書かれた整数は下から順に 3, 2, 3, 2, 2 となるが、2 が書かれたボールが 2 個連続しているのでこれらは消え、下から順に 3, 2, 3 となる。
-#
-#
-#入力例 2
-#10
-#2 3 2 3 3 3 2 3 3 2
-#
-#出力例 2
-#1
-#2
-#3
-#4
-#5
-#3
-#2
-#3
-#1
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 * 10 ** 5 + 1)
+    for i in range(n):
+        b[a[i]] += 1
+    ans = 0
+    for i in range(2 * 10 ** 5):
+        ans = max(ans, b[i] + b[i + 1] + b[i + 2])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0]*(2*(10**5)+1)
+    for i in range(n):
+        b[a[i]] += 1
+    ans = 0
+    for i in range(2*(10**5)+1):
+        ans += b[i]%2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        ans.append(0)
+    for i in range(n):
+        ans[a[i]-1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        ans.append(0)
+    for i in range(n):
+        ans[a[i]-1] += 1
+    for i in range(n):
+        print(ans[i])
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ball = [0] * (2 * 10 ** 5 + 1)
+    ans = []
+    for i in range(n):
+        ball[a[i]] += 1
+        if ball[a[i]] == 2:
+            ball[a[i]] = 0
+        ans.append(sum(ball))
+    print(*ans, sep="\n")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = set()
+    for i in range(n):
+        s.add(a[i])
+        while True:
+            if a[i] in s:
+                a[i] += 1
+            else:
+                break
+        print(a[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = []
+    for i in range(N):
+        ans.append(0)
+    for i in range(N):
+        ans[A[i] - 1] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * N
+    cnt = [0] * (2 * 10 ** 5 + 1)
+    for i in range(N):
+        ans[i] = i + 1 - cnt[a[i]]
+        cnt[a[i]] += 1
+    print(*ans, sep='\n')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        ans.append(1)
+    ans.reverse()
+    ans[0] = a[0]
+    for i in range(1, n):
+        if ans[i-1] == a[i]:
+            ans[i] = 0
+        else:
+            ans[i] = a[i]
+    ans.reverse()
+    for i in range(n):
+        if ans[i] == 0:
+            ans[i] = ans[i-1]
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 連続しているボールの個数をカウントする
+    cnt = [0] * 200010
+
+    # 1個目のボールを落とす
+    cnt[a[0]] += 1
+
+    # 2個目以降のボールを落とす
+    for i in range(1, n):
+        # 2個目以降のボールを落とす前に、筒の中にあるボールに書かれた整数は下から順に何個あるかを求める
+        ans = 0
+        for j in range(200010):
+            if cnt[j] > 0:
+                ans += 1
+
+        # 2個目以降のボールを落とす
+        cnt[a[i]] += 1
+
+        # 2個目以降のボールを落とした後、筒の中にあるボールに書かれた整数は下から順に何個あるかを求める
+        ans2 = 0
+        for j in range(200010):
+            if cnt[j] > 0:
+                ans2 += 1
+
+        print(ans2 - ans)

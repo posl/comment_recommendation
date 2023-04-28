@@ -1,36 +1,104 @@
-#Problem Statement
-#Quickly after finishing the tutorial of the online game ATChat, you have decided to visit a particular place with N-1 players who happen to be there. These N players, including you, are numbered 1 through N, and the friendliness of Player i is A_i.
-#The N players will arrive at the place one by one in some order. To make sure nobody gets lost, you have set the following rule: players who have already arrived there should form a circle, and a player who has just arrived there should cut into the circle somewhere.
-#When each player, except the first one to arrive, arrives at the place, the player gets comfort equal to the smaller of the friendliness of the clockwise adjacent player and that of the counter-clockwise adjacent player. The first player to arrive there gets the comfort of 0.
-#What is the maximum total comfort the N players can get by optimally choosing the order of arrivals and the positions in the circle to cut into?
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum total comfort the N players can get.
-#
-#Sample Input 1
-#4
-#2 2 1 3
-#
-#Sample Output 1
-#7
-#By arriving at the place in the order Player 4, 2, 1, 3, and cutting into the circle as shown in the figure, they can get the total comfort of 7.
-#They cannot get the total comfort greater than 7, so the answer is 7.
-#
-#Sample Input 2
-#7
-#1 1 1 1 1 1 1
-#
-#Sample Output 2
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(N-1):
+        ans += A[(i+1)//2]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    if n == 2:
+        ans = a[0] + a[1]
+    else:
+        a.sort()
+        ans = a[-1] + a[-2]
+        for i in range(n - 3):
+            ans += a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 * (N - i) - 1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    total = 0
+    for i in range(N - 1):
+        total += A[i]
+    print(total)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    print(sum(A[1::2]))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    print(sum(a[1::2]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(sum(A[0:N-2]))
+
+main()
+
+=======
+Suggestion 9
+
+def get_max_comfort(n, a):
+    a = [0] + a + [0]
+    max_comfort = 0
+    for i in range(1, n + 1):
+        max_comfort += min(a[i], a[i + 1])
+    return max_comfort

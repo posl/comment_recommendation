@@ -1,34 +1,106 @@
-#問題文
-#数字のみからなる、長さがちょうど 9 の文字列 S が与えられます。
-#S には 0 から 9 までのうち、ちょうど 1 つの数字を除いた 9 種類の数字が一度ずつ登場します。
-#S に登場しない唯一の数字を出力してください。
-#
-#制約
-#S は数字のみからなる長さ 9 の文字列である。
-#S の文字はすべて相異なる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S に登場しない唯一の数字を出力せよ。
-#
-#入力例 1
-#023456789
-#
-#出力例 1
-#1
-#文字列 023456789 には 1 のみが登場していません。
-#よって、1 を出力します。
-#
-#入力例 2
-#459230781
-#
-#出力例 2
-#6
-#文字列 459230781 には 6 のみが登場していません。
-#よって、6 を出力します。
-#文字列に数字が現れる順番は昇順とは限らないので注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    for i in range(10):
+        if str(i) not in s:
+            print(i)
+            exit()
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    for i in range(1, 10):
+        if str(i) not in s:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    for i in range(10):
+        if str(i) not in S:
+            print(i)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = list(s)
+    s = [int(i) for i in s]
+    for i in range(1,10):
+        if i not in s:
+            print(i)
+            return
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s = set(s)
+    for i in range(10):
+        if not str(i) in s:
+            print(i)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S = list(map(int, S))
+    S.sort()
+    for i in range(1, 10):
+        if i != S[i-1]:
+            print(i)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = list(map(int, s))
+    s.sort()
+    for i in range(10):
+        if i in s:
+            continue
+        else:
+            print(i)
+            return
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    s = list(map(int, s))
+    s.sort()
+    ans = 0
+    for i in range(1, 10):
+        if i not in s:
+            ans = i
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    s = list(s)
+    s.sort()
+    s = list(map(int, s))
+    for i in range(1, 10):
+        if i not in s:
+            print(i)
+            return

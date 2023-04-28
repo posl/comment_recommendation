@@ -1,54 +1,198 @@
-#問題文
-#文字列 a に含まれる文字を何らかの順序で並べることで得られる文字列を a の アナグラム と呼びます。
-#例えば、greenbin は beginner のアナグラムです。このように、同じ文字が複数回現れるときはその文字をちょうどその回数だけ使わなければなりません。
-#N 個の文字列 s_1, s_2, ..., s_N が与えられます。それぞれの文字列は長さが 10 で英小文字からなり、またこれらの文字列はすべて異なります。二つの整数 i, j (1 ≦ i < j ≦ N) の組であって、s_i が s_j のアナグラムであるようなものの個数を求めてください。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#s_i は長さ 10 の文字列である。
-#s_i の各文字は英小文字である。
-#s_1, s_2, ..., s_N はすべて異なる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#s_1
-#s_2
-#:
-#s_N
-#
-#出力
-#二つの整数 i, j (1 ≦ i < j ≦ N) の組であって、s_i が s_j のアナグラムであるようなものの個数を出力せよ。
-#
-#入力例 1
-#3
-#acornistnt
-#peanutbomb
-#constraint
-#
-#出力例 1
-#1
-#s_1 = acornistnt は s_3 = constraint のアナグラムです。他に s_i が s_j のアナグラムであるような i, j の組はないため、答えは 1 です。
-#
-#入力例 2
-#2
-#oneplustwo
-#ninemodsix
-#
-#出力例 2
-#0
-#s_i が s_j のアナグラムであるような i, j の組がないときは 0 と出力してください。
-#
-#入力例 3
-#5
-#abaaaaaaaa
-#oneplustwo
-#aaaaaaaaba
-#twoplusone
-#aaaabaaaaa
-#
-#出力例 3
-#4
-#ここにそのようなケースを置くことはできませんが、答えは 32 bit 整数型に収まらない可能性があるので注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    d = {}
+    for i in range(N):
+        s = input()
+        l = list(s)
+        l.sort()
+        s = "".join(l)
+        if s in d:
+            d[s] += 1
+        else:
+            d[s] = 1
+    ans = 0
+    for v in d.values():
+        ans += v * (v - 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def count(s):
+    c = [0] * 26
+    for i in range(len(s)):
+        c[ord(s[i]) - ord('a')] += 1
+    return tuple(c)
+
+n = int(input())
+s = [input() for _ in range(n)]
+d = {}
+for i in range(n):
+    c = count(s[i])
+    if c in d:
+        d[c] += 1
+    else:
+        d[c] = 1
+ans = 0
+for v in d.values():
+    ans += v * (v - 1) // 2
+print(ans)
+
+=======
+Suggestion 3
+
+def count_chars(s):
+    chars = {}
+    for c in s:
+        if c in chars:
+            chars[c] += 1
+        else:
+            chars[c] = 1
+    return chars
+
+N = int(input())
+S = [input() for _ in range(N)]
+S = list(map(count_chars, S))
+S = list(map(lambda x: tuple(sorted(x.items())), S))
+S = list(map(lambda x: hash(x), S))
+S = list(map(lambda x: (x, S.count(x)), S))
+print(sum(map(lambda x: x[1] * (x[1] - 1) // 2, S)))
+
+=======
+Suggestion 4
+
+def count(s):
+    d = {}
+    for c in s:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+    return d
+
+N = int(input())
+s = [input() for _ in range(N)]
+d = [count(s[i]) for i in range(N)]
+print(d)
+ans = 0
+for i in range(N-1):
+    for j in range(i+1, N):
+        if d[i] == d[j]:
+            ans += 1
+print(ans)
+
+=======
+Suggestion 5
+
+def count(s):
+    d = {}
+    for c in s:
+        if c not in d:
+            d[c] = 1
+        else:
+            d[c] += 1
+
+    return d
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+
+d = {}
+for i in range(n):
+    d[i] = count(s[i])
+
+from itertools import combinations
+
+ans = 0
+for c in combinations(range(n), 2):
+    if d[c[0]] == d[c[1]]:
+        ans += 1
+
+print(ans)
+
+=======
+Suggestion 6
+
+def getAnagramCount(s):
+    count = {}
+    for c in s:
+        if c in count:
+            count[c] += 1
+        else:
+            count[c] = 1
+    return count
+
+=======
+Suggestion 7
+
+def anagram(s):
+    return ''.join(sorted(s))
+
+n = int(input())
+d = {}
+for _ in range(n):
+    s = input()
+    anagram_s = anagram(s)
+    if anagram_s not in d:
+        d[anagram_s] = 0
+    d[anagram_s] += 1
+print(sum(v * (v - 1) // 2 for v in d.values()))
+
+=======
+Suggestion 8
+
+def get_count(s):
+    count_list = [0] * 26
+    for c in s:
+        count_list[ord(c) - ord('a')] += 1
+    return tuple(count_list)
+
+N = int(input())
+count_dict = {}
+for _ in range(N):
+    s = input()
+    count = get_count(s)
+    if count not in count_dict:
+        count_dict[count] = 0
+    count_dict[count] += 1
+
+ans = 0
+for count in count_dict.values():
+    ans += count * (count - 1) // 2
+print(ans)
+
+=======
+Suggestion 9
+
+def count(s):
+    res = 0
+    for i in range(26):
+        res += s[i]*(s[i]-1)//2
+    return res
+
+n = int(input())
+ans = 0
+s = [0]*26
+for _ in range(n):
+    t = input()
+    s[ord(t[0])-ord('a')] += 1
+    ans += count(s)
+print(ans)
+
+=======
+Suggestion 10
+
+def getAnagramCount(word):
+    wordSet = set(word)
+    wordList = list(wordSet)
+    wordList.sort()
+    wordList.sort(key=len)
+    wordList.reverse()
+    return wordList

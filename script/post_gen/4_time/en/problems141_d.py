@@ -1,54 +1,177 @@
-#Problem Statement
-#Takahashi is going to buy N items one by one.
-#The price of the i-th item he buys is A_i yen (the currency of Japan).
-#He has M discount tickets, and he can use any number of them when buying an item.
-#If Y tickets are used when buying an item priced X yen, he can get the item for (X/(2^Y)) (rounded down to the nearest integer) yen.
-#What is the minimum amount of money required to buy all the items?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the minimum amount of money required to buy all the items.
-#
-#Sample Input 1
-#3 3
-#2 13 8
-#
-#Sample Output 1
-#9
-#We can buy all the items for 9 yen, as follows:
-#Buy the 1-st item for 2 yen without tickets.
-#Buy the 2-nd item for 3 yen with 2 tickets.
-#Buy the 3-rd item for 4 yen with 1 ticket.
-#
-#Sample Input 2
-#4 4
-#1 9 3 5
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#1 100000
-#1000000000
-#
-#Sample Output 3
-#0
-#We can buy the item priced 1000000000 yen for 0 yen with 100000 tickets.
-#
-#Sample Input 4
-#10 1
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#Sample Output 4
-#9500000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] // 2 ** min(m, i)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] // 2**m
+        if a[i] % 2**m != 0:
+            m -= 1
+        if m == -1:
+            break
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = A[::-1]
+    ans = 0
+    for i in range(N):
+        if M == 0:
+            ans += A[i]
+            continue
+        if A[i] <= 2**M:
+            ans += A[i]
+        else:
+            ans += A[i]//(2**M)
+            M = 0
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for a in A:
+        ans += a
+        if ans % (2 ** M) == 0:
+            ans //= 2 ** M
+            M -= 1
+        else:
+            ans //= 2 ** (M - 1)
+            M -= 2
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    tickets = [0] * 40
+    for i in range(M):
+        tickets[int(input())] += 1
+    for i in range(39):
+        tickets[i+1] += tickets[i] // 2
+    ans = 0
+    for i in range(N):
+        ans += A[i] // (2 ** tickets[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] < 2**m:
+            ans += a[i]
+        else:
+            ans += a[i] // 2**m
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    tickets = [0] * (m + 1)
+    for i in range(n):
+        tickets[0] += a[i]
+        for j in range(m):
+            if tickets[j] < tickets[j + 1]:
+                tickets[j + 1] = tickets[j]
+            tickets[j] //= 2
+    print(tickets[m])
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = sum(A)
+    for i in range(N - 1):
+        if A[i] >= M:
+            break
+        A[i + 1] = min(A[i + 1], A[i] * 2)
+    print(ans - sum(A))
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        a = A[i]
+        if a <= 2 ** M:
+            A[i] = 0
+            M -= 1
+        else:
+            A[i] = a % (2 ** M)
+    print(sum(A))
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    
+    # Aの最大値を求める
+    max_A = max(A)
+    
+    # 2進数表記で1の数のリストを作成
+    # 1の数が多い順に並べる
+    # 2^0, 2^1, 2^2, ... となる
+    # 1の数が多い順に並べることで、
+    # 2^iの値の大きい順に並べることができる
+    # 例えば、
+    # 1の数が多い順に並べると、
+    # 2^0, 2^1, 2^2, 2^3, 2^4, 2^5, 2^6, 2^7, 2^8, 2^9, 2^10, ...
+    # となり、
+    # 2^iの値の大きい順に並べることができる
+    # 例えば、
+    # 2^0, 2^2, 2^3, 2^1, 2^4, 2^5, 2^6, 2^7, 2^8, 2^9, 2^10, ...
+    # となり、
+    # 2^iの値の大きい順に並べることができる
+    # 例えば、
+    # 2^0, 2^2, 2^3, 2^1, 2^4, 2^5, 2^6, 2^7, 2^8, 2^9, 2^10, ...
+    # となり、
+    # 2^iの値の大きい順に並べることができる
+    # 例えば、
+    # 2^0,

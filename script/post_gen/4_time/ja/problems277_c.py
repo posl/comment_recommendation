@@ -1,58 +1,148 @@
-#問題文
-#10^9 階建てのビルがあり、N 本のはしごがかかっています。
-#ビルの 1 階にいる高橋君ははしごを繰り返し使って（0 回でもよい）できるだけ高い階へ上りたいと考えています。
-#はしごには 1 から N までの番号がついており、はしご i は A_i 階と B_i 階を結んでいます。はしご i を利用すると A_i 階から B_i 階へ、または B_i 階から A_i 階へ双方向に移動することができますが、それ以外の階の間の移動は行うことはできません。
-#また、高橋君は同じ階での移動は自由に行うことができますが、はしご以外の方法で他の階へ移動することはできません。
-#高橋君は最高で何階へ上ることができますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#A_i ≠ B_i
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#A_2 B_2
-#...
-#A_N B_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#1 4
-#4 3
-#4 10
-#8 3
-#
-#出力例 1
-#10
-#はしご 1 で 4 階に進み、はしご 3 で 10 階に進むことにより、10 階にたどり着くことができます。
-#
-#入力例 2
-#6
-#1 3
-#1 5
-#1 12
-#3 5
-#3 12
-#5 12
-#
-#出力例 2
-#12
-#
-#入力例 3
-#3
-#500000000 600000000
-#600000000 700000000
-#700000000 800000000
-#
-#出力例 3
-#1
-#他の階への移動ができない場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ladders = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        ladders.append((A, B))
+    ladders.sort(key=lambda x: x[1])
+    ans = 0
+    for A, B in ladders:
+        if ans < A:
+            ans = B
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    print(max(A) + max(B))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    stairs = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        stairs.append([A, B])
+    stairs.sort(key=lambda x: x[1])
+    #print(stairs)
+    max = 0
+    for i in range(N):
+        if stairs[i][0] > max:
+            max = stairs[i][0]
+    print(max)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x:x[1])
+    ans = 0
+    for i in range(n):
+        if ans < ab[i][0]:
+            ans = ab[i][1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ab = []
+    for _ in range(n):
+        a,b = map(int, input().split())
+        ab.append((a,b))
+    ab.sort(key=lambda x:x[1])
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            ans = ab[i][1]
+        else:
+            if ab[i][0] <= ans:
+                ans = ab[i][0]
+            else:
+                ans = ab[i][1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1])
+    cur = 0
+    ans = 0
+    for a, b in ab:
+        if cur < a:
+            cur = b
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    AB = [map(int, input().split()) for _ in range(N)]
+    A, B = [list(i) for i in zip(*AB)]
+
+    print(min(A) + min(B))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        AB.append([A, B])
+    AB.sort()
+    ans = 0
+    for i in range(N):
+        if ans < AB[i][1]:
+            ans = AB[i][1]
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1])
+    ans = 0
+    for a,b in ab:
+        if ans < a:
+            ans = b
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    # 解答アルゴリズム
+    # 1. はしごの一番下の階から一番上の階まで、はしごを使って移動する
+    # 2. 一番上の階にたどり着いたら、その階の階数を出力する
+    # 3. はしごを使って移動する際は、はしごを使った移動をした階の階数を記録する
+    # 4. はしごを使って移動する際は、はしごを使った移動をした階の階数が、はしごを使って移動する前の階の階数よりも大きくないことを確認する
+    # 5. はしごを使って移動する際は、はしごを使った移動をした階の階数が、はしごを使って移動する前の階の階数よりも大きければ、はしごを使った移動をした階の階数を記録する
+    # 6. はしごを使って移動する際は、はしごを使った移動をした階の階数が、はしごを使って移動する前の階の階数よりも小さければ、はしごを使った移動をした階の階数を記録しない
+    # 7. はしごを使って移動する際は、はしごを使った移動をした階の階数が、はしごを使って移動する前の階の階数よりも小さければ、はしごを使った移動をした階の階数を記録しない
+    # 8. はしごを使って移動する際は、はしごを使った移動をした階の階数

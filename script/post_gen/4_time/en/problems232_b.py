@@ -1,67 +1,127 @@
-#Problem Statement
-#Takahashi has a string S consisting of lowercase English letters.
-#On this string, he will do the operation below just once.
-#First, choose a non-negative integer K.
-#Then, shift each character of S to the right by K (see below).
-#Here,
-#a shifted to the right by 1 is b;
-#b shifted to the right by 1 is c;
-#c shifted to the right by 1 is d;
-#...
-#y shifted to the right by 1 is z;
-#z shifted to the right by 1 is a.
-#For example, b shifted to the right by 4 is f, and y shifted to the right by 3 is b.
-#You are given a string T.
-#Determine whether Takahashi can make S equal T by the operation above.
-#
-#Constraints
-#Each of S and T is a string of length between 1 and 10^5 (inclusive) consisting of lowercase English letters.
-#The lengths of S and T are equal.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If Takahashi can make S equal T, print Yes; if not, print No.
-#
-#Sample Input 1
-#abc
-#ijk
-#
-#Sample Output 1
-#Yes
-#When Takahashi chooses K=8,
-#a is shifted to the right by 8 and becomes i,
-#b is shifted to the right by 8 and becomes j,
-#c is shifted to the right by 8 and becomes k,
-#and now S and T are equal.
-#Therefore, he can make S equal T, so Yes should be printed.
-#
-#Sample Input 2
-#z
-#a
-#
-#Sample Output 2
-#Yes
-#Choosing K=1 makes S and T equal.
-#Note that the letter on the right of z is a.
-#
-#Sample Input 3
-#ppq
-#qqp
-#
-#Sample Output 3
-#No
-#There is no non-negative integer K that he can choose to make S equal T, so No should be printed.
-#
-#Sample Input 4
-#atcoder
-#atcoder
-#
-#Sample Output 4
-#Yes
-#Choosing K=0 makes S and T equal.  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i:] + S[:i] == T:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i:] + s[:i] == t:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    flag = False
+    for i in range(len(s)):
+        if s[i:] + s[:i] == t:
+            flag = True
+            break
+    if flag:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i:] + S[:i] == T:
+            return "Yes"
+    return "No"
+
+print(solve())
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    for i in range(0, len(s)):
+        if s == t:
+            print("Yes")
+            return
+        else:
+            s = s[-1] + s[:-1]
+    print("No")
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def solve():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            return "No"
+    return "Yes"
+
+print(solve())
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    s = s + s
+    if t in s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def solve(s, t):
+    if s == t:
+        return True
+    else:
+        return False

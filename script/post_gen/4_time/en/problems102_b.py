@@ -1,40 +1,74 @@
-#Problem Statement
-#You are given an integer sequence A of length N.
-#Find the maximum absolute difference of two elements (with different indices) in A.
-#
-#Constraints
-#2 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum absolute difference of two elements (with different indices) in A.
-#
-#Sample Input 1
-#4
-#1 4 6 3
-#
-#Sample Output 1
-#5
-#The maximum absolute difference of two elements is A_3-A_1=6-1=5.
-#
-#Sample Input 2
-#2
-#1000000000 1
-#
-#Sample Output 2
-#999999999
-#
-#Sample Input 3
-#5
-#1 1 1 1 1
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(max(a) - min(a))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1]-A[0])
+
+=======
+Suggestion 3
+
+def main():
+    # Get input here
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # Calculate result here
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans = max(ans, abs(A[i] - A[j]))
+
+    # Print result here
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    # Get input here
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # Calculate result here
+    max_num = max(a)
+    min_num = min(a)
+    result = max_num - min_num
+
+    # Print result here
+    print(result)
+
+main()
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n, a
+
+=======
+Suggestion 6
+
+def max_absolute_difference():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    return A[-1] - A[0]
+
+print(max_absolute_difference())

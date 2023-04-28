@@ -1,50 +1,138 @@
-#問題文
-#正の整数 N が与えられます。
-#N 以下の正の整数の組 (A,B) であって、次の条件を満たすものの個数を求めてください。  
-#A,B を先頭に 0 のつかない 10 進数表記で表したときに、 A の末尾の桁が B の先頭の桁に等しく、 A の先頭の桁が B の末尾の桁に等しい
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#25
-#
-#出力例 1
-#17
-#条件を満たす正の整数の組 (A,B) は、
-#(1,1), (1,11), (2,2), (2,22), (3,3), (4,4), (5,5), (6,6), (7,7), (8,8), (9,9), (11,1), (11,11), (12,21), (21,12), (22,2), (22,22)
-#の 17 個あります。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100
-#
-#出力例 3
-#108
-#
-#入力例 4
-#2020
-#
-#出力例 4
-#40812
-#
-#入力例 5
-#200000
-#
-#出力例 5
-#400000008
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        s = str(i)
+        if s[0] == s[-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1,N+1):
+        i_str = str(i)
+        if i_str[0] == i_str[-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n+1):
+        s = str(i)
+        a = s[0]
+        b = s[-1]
+        if a == b:
+            ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        i = str(i)
+        if i[0] == i[-1]:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        if i%10 == int(str(i)[0]) and int(str(i)[-1]) == int(str(i)[0]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        i_str = str(i)
+        for j in range(1, N + 1):
+            j_str = str(j)
+            if i_str[-1] == j_str[0] and i_str[0] == j_str[-1]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+
+    for i in range(1, n+1):
+        s = str(i)
+        ans += s.count(s[0]+s[-1]) * 2
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print(sum([n.count(str(i)+str(j))*n.count(str(j)+str(i)) for i in range(1,10) for j in range(1,10)]))
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    N_len = len(str(N))
+    ans = 0
+    for i in range(1,N+1):
+        if i % 10 == 0:
+            continue
+        i_str = str(i)
+        for j in range(1,N+1):
+            if j % 10 == 0:
+                continue
+            j_str = str(j)
+            if i_str[0] == j_str[-1] and i_str[-1] == j_str[0]:
+                ans += 1
+    print(ans)
+    return 0
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    # 1からNまでの整数のうち、先頭と末尾が同じものの個数を求める
+    ans = 0
+    for i in range(1, N + 1):
+        i = str(i)
+        if i[0] == i[-1]:
+            ans += 1
+    print(ans)

@@ -1,53 +1,159 @@
-#Problem Statement
-#There are N people. The family name and given name of the i-th person (1 ≦ i ≦ N) are S_i and T_i, respectively.
-#Determine whether there is a pair of people with the same family and given names. In other words, determine whether there is a pair of integers (i,j) such that 1 ≦ i < j ≦ N, S_i=S_j, and T_i=T_j.
-#
-#Constraints
-#2 ≦ N ≦ 1000
-#N is an integer.
-#Each of S_i and T_i is a string of length between 1 and 10 (inclusive) consisting of English lowercase letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#Output
-#If there is a pair of people with the same family and given names, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#Sample Output 1
-#Yes
-#The first and third persons have the same family and given names.
-#
-#Sample Input 2
-#3
-#saito ichiro
-#saito jiro
-#saito saburo
-#
-#Sample Output 2
-#No
-#No two persons have the same family and given names.
-#
-#Sample Input 3
-#4
-#sypdgidop bkseq
-#bajsqz hh
-#ozjekw mcybmtt
-#qfeysvw dbo
-#
-#Sample Output 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input())
+    if len(names) == len(set(names)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    names = []
+    for _ in range(n):
+        names.append(input())
+    if len(names) == len(set(names)):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    people = []
+    for i in range(n):
+        people.append(input())
+    if len(people) == len(set(people)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        name = input()
+        names.append(name)
+    if len(set(names)) == len(names):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    names = set()
+    for _ in range(n):
+        s, t = input().split()
+        if (s, t) in names:
+            print('Yes')
+            return
+        else:
+            names.add((s, t))
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input())
+    if len(set(names)) == N:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a = input().split()
+        s.append(a[0])
+        t.append(a[1])
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j] and t[i] == t[j]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    for i in range(N):
+        S, T = input().split()
+        for j in range(i):
+            if S == Ss[j] and T == Ts[j]:
+                print("Yes")
+                return
+        Ss.append(S)
+        Ts.append(T)
+    print("No")
+
+Ss = []
+Ts = []
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input())
+    names.sort()
+    # compute
+
+    # output
+    for i in range(1,N):
+        if names[i] == names[i-1]:
+            print('Yes')
+            break
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    # Get the number of people
+    n = int(input())
+    # Get the family and given names
+    names = [input().split() for _ in range(n)]
+    # Check if there are any duplicated names
+    for i in range(n):
+        for j in range(i+1, n):
+            if names[i] == names[j]:
+                print('Yes')
+                return
+    # If there are no duplicated names, print 'No'
+    print('No')
+    return

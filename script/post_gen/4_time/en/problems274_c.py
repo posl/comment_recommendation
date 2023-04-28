@@ -1,55 +1,147 @@
-#Problem Statement
-#You observed amoebae and kept some records.
-#Initially, there was one amoeba, numbered 1.
-#You made N records. According to the i-th record, the amoeba numbered A_i disappeared by dividing itself into two new amoebae, which were then numbered 2i and 2i+1.
-#Here, amoeba A_i is said to be the parent of amoebae 2i and 2i+1.
-#For each k=1,...,2N+1, how many generations away is amoeba k from amoeba 1?
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#The records are consistent. That is:
-#1≦ A_i ≦ 2i-1.
-#A_i are distinct integers.
-#
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print 2N+1 lines. The k-th line should contain the generation distance between amoeba 1 and amoeba k.
-#
-#Sample Input 1
-#2
-#1 2
-#
-#Sample Output 1
-#0
-#1
-#1
-#2
-#2
-#From amoeba 1, amoebae 2 and 3 were born. From amoeba 2, amoebae 4 and 5 were born.
-#Amoeba 1 is zero generations away from amoeba 1.
-#Amoeba 2 is one generation away from amoeba 1.
-#Amoeba 3 is one generation away from amoeba 1.
-#Amoeba 4 is one generation away from amoeba 2, and two generations away from amoeba 1.
-#Amoeba 5 is one generation away from amoeba 2, and two generations away from amoeba 1.
-#
-#Sample Input 2
-#4
-#1 3 5 2
-#
-#Sample Output 2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2 * N + 1)
+    for i in range(N):
+        ans[A[i]] = i + 1
+    for i in range(1, 2 * N + 1):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 ** (n + 1))
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2 ** (n + 1)):
+        if i % 2 == 0:
+            print(0)
+        else:
+            print(b[i // 2])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 ** (n + 1))
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2 ** (n + 1)):
+        if b[i] == 0:
+            b[i] = b[i // 2]
+    for i in range(1, 2 ** (n + 1)):
+        print(b[i] - 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * (2 ** (N + 1))
+    for i in range(N):
+        B[A[i]] = i + 1
+    for i in range(1, 2 ** (N + 1)):
+        if B[i] != 0:
+            print(0)
+        else:
+            j = i
+            while B[j] == 0:
+                j //= 2
+            print(B[j])
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2 * N + 1)
+    for i in range(N):
+        ans[A[i]] = i + 1
+    for i in range(1, N + 1):
+        print(0)
+        print(ans[i])
+        print(ans[i])
+        print(ans[2 * i])
+        print(ans[2 * i + 1])
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 ** n)
+    for i in range(n):
+        b[a[i]] = i + 1
+    c = [0] * (2 ** n)
+    for i in range(2 ** n - 1, 0, -1):
+        c[i // 2] = max(c[i // 2], c[i] + 1)
+    for i in range(1, 2 ** n + 1):
+        print(c[b[i]])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    generation = [0] * (2*N+1)
+    generation[1] = 0
+
+    for i in range(N):
+        generation[2*i+2] = generation[A[i]] + 1
+        generation[2*i+3] = generation[A[i]] + 1
+
+    for i in range(1, 2*N+1):
+        print(generation[i])
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2**N+1)
+    for i in range(1, N+1):
+        ans[2*i] = ans[A[i-1]] + 1
+        ans[2*i+1] = ans[A[i-1]] + 1
+    for i in range(1, 2**N+1):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def amoebas(n, a):
+    result = [0] * (2 ** (n + 1))
+    for i in range(n):
+        result[a[i]] = 1
+    for i in range(1, n + 1):
+        for j in range(2 ** (i - 1), 2 ** i):
+            result[j * 2] = result[j]
+            result[j * 2 + 1] = result[j]
+    return result
+
+=======
+Suggestion 10
+
+def make_tree(n, a):
+    tree = [[] for _ in range(n+1)]
+    for i in range(n):
+        tree[a[i]].append(i+2)
+    return tree

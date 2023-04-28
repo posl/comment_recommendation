@@ -1,59 +1,178 @@
-#問題文
-#xy 平面上に 1, 2, ..., N の番号が付けられた N 個の点があります。点 i は (x_i, y_i) にあり、N 個の点の x 座標は互いに異なります。  
-#以下の条件を満たす整数の組 (i, j) (i < j) の個数を求めてください。
-#点 i と点 j を通る直線の傾きが -1 以上 1 以下である。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 10^3
-#|x_i|, |y_i| ≦ 10^3
-#i ≠ j ならば x_i ≠ x_j
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 y_1
-#.
-#.
-#.
-#x_N y_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#0 0
-#1 2
-#2 1
-#
-#出力例 1
-#2
-#(0, 0) と (1, 2) を通る直線の傾きは 2、
-#(0, 0) と (2, 1) を通る直線の傾きは (1/(2))、
-#(1, 2) と (2, 1) を通る直線の傾きは -1 です。
-#
-#入力例 2
-#1
-#-691 273
-#
-#出力例 2
-#0
-#
-#入力例 3
-#10
-#-31 -35
-#8 -36
-#22 64
-#5 73
-#-14 8
-#18 -58
-#-41 -85
-#1 -88
-#-21 -85
-#-11 82
-#
-#出力例 3
-#11
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if -1 <= (y[i] - y[j]) / (x[i] - x[j]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    points = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if -1 <= (points[i][1] - points[j][1]) / (points[i][0] - points[j][0]) <= 1:
+                ans += 1
+    print(ans)
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (y[i] - y[j]) / (x[i] - x[j]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (Y[j] - Y[i]) / (X[j] - X[i]) <= 1:
+                cnt += 1
+
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(list(map(int, input().split())))
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if -1 <= (points[i][1] - points[j][1]) / (points[i][0] - points[j][0]) <= 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x_y = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if -1 <= (x_y[i][1] - x_y[j][1]) / (x_y[i][0] - x_y[j][0]) <= 1:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    point_list = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        point_list.append((x, y))
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if point_list[i][0] == point_list[j][0]:
+                continue
+            if -1 <= (point_list[i][1] - point_list[j][1]) / (point_list[i][0] - point_list[j][0]) <= 1:
+                ans += 1
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append(list(map(int, input().split())))
+    points.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if points[i][0] == points[j][0]:
+                continue
+            if -1 <= (points[i][1] - points[j][1]) / (points[i][0] - points[j][0]) <= 1:
+                count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    xy = []
+    for _ in range(n):
+        xy.append(list(map(int, input().split())))
+    xy.sort()
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if xy[i][0] == xy[j][0]:
+                continue
+            elif xy[i][1] <= xy[j][1] and xy[i][0] <= xy[j][0]:
+                if (xy[j][1] - xy[i][1]) / (xy[j][0] - xy[i][0]) <= 1:
+                    ans += 1
+            elif xy[i][1] >= xy[j][1] and xy[i][0] >= xy[j][0]:
+                if (xy[j][1] - xy[i][1]) / (xy[j][0] - xy[i][0]) >= 1:
+                    ans += 1
+            elif xy[i][1] >= xy[j][1] and xy[i][0] <= xy[j][0]:
+                if (xy[j][1] - xy[i][1]) / (xy[j][0] - xy[i][0]) >= -1:
+                    ans += 1
+            elif xy[i][1] <= xy[j][1] and xy[i][0] >= xy[j][0]:
+                if (xy[j][1] - xy[i][1]) / (xy[j][0] - xy[i][0]) <= -1:
+                    ans += 1
+    print(ans)

@@ -1,33 +1,64 @@
-#問題文
-#高橋君は、プログラミングコンテストを何回か開くことにしました。
-#コンテストを 1 回開くには、100 点問題、200 点問題、300 点問題、400 点問題が 1 問ずつ必要です。
-#100, 200, 300, 400 点問題の案がそれぞれ A_1, A_2, A_3, A_4 個あるとき、コンテストを最大で何回開けるでしょうか？
-#なお、同じ問題案は 1 度しか使えません。
-#
-#制約
-#1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A_1 A_2 A_3 A_4
-#
-#出力
-#コンテストを開催可能な最大回数を表す整数を出力せよ。  
-#
-#入力例 1
-#5 3 7 11
-#
-#出力例 1
-#3
-#100, 200, 300, 400 点問題の案を 3 つずつ使って、コンテストを 3 回開くことができます。
-#200 点問題の案が 3 つしかないため、4 回開くことはできません。  
-#
-#入力例 2
-#100 100 1 100
-#
-#出力例 2
-#1
-#問題案が 1 つでも足りないとコンテストは開催できません。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a1, a2, a3, a4 = map(int, input().split())
+    print(min(a1, a2, a3, a4))
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    A_1, A_2, A_3, A_4 = map(int, input().split())
+
+    # compute
+
+    # output
+    if A_1 + A_2 + A_3 + A_4 >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 3
+
+def main():
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(len(A)):
+        ans += A[i] // 100
+        ans += A[i] % 100
+    print(ans // 100)
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    print(min(a))
+
+=======
+Suggestion 5
+
+def main():
+    a = input().split()
+    for i in range(len(a)):
+        a[i] = int(a[i])
+    print(min(a))
+
+=======
+Suggestion 6
+
+def main():
+    A = list(map(int, input().split()))
+    print(min(A))
+
+=======
+Suggestion 7
+
+def main():
+    A = [int(i) for i in input().split()]
+    print(min(A))

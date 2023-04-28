@@ -1,42 +1,150 @@
-#Problem Statement
-#We have N weights indexed 1 to N. The mass of the weight indexed i is W_i.
-#We will divide these weights into two groups: the weights with indices not greater than T, and those with indices greater than T, for some integer 1 ≦ T < N. Let S_1 be the sum of the masses of the weights in the former group, and S_2 be the sum of the masses of the weights in the latter group.
-#Consider all possible such divisions and find the minimum possible absolute difference of S_1 and S_2.
-#
-#Constraints
-#2 ≦ N ≦ 100
-#1 ≦ W_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#W_1 W_2 ... W_{N-1} W_N
-#
-#Output
-#Print the minimum possible absolute difference of S_1 and S_2.
-#
-#Sample Input 1
-#3
-#1 2 3
-#
-#Sample Output 1
-#0
-#If T = 2, S_1 = 1 + 2 = 3 and S_2 = 3, with the absolute difference of 0.
-#
-#Sample Input 2
-#4
-#1 3 1 1
-#
-#Sample Output 2
-#2
-#If T = 2, S_1 = 1 + 3 = 4 and S_2 = 1 + 1 = 2, with the absolute difference of 2. We cannot have a smaller absolute difference.
-#
-#Sample Input 3
-#8
-#27 23 76 2 3 5 62 52
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = float('inf')
+    for t in range(1, n):
+        s1 = sum(w[:t])
+        s2 = sum(w[t:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    ans = 10000
+    for i in range(1, N):
+        ans = min(ans, abs(sum(W[:i]) - sum(W[i:])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    S = sum(W)
+    S1 = 0
+    S2 = S
+    for i in range(N):
+        S1 += W[i]
+        S2 -= W[i]
+        if abs(S1 - S2) > abs(S1 - S//2):
+            S1 -= W[i]
+            S2 += W[i]
+    print(abs(S1 - S2))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    min_diff = 1000
+    for i in range(n):
+        diff = abs(sum(w[:i+1]) - sum(w[i+1:]))
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 100000
+    for i in range(n):
+        ans = min(ans, abs(sum(w[:i]) - sum(w[i:])))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    S = sum(W)
+    S1 = 0
+    S2 = S
+    for t in range(N):
+        S1 += W[t]
+        S2 -= W[t]
+        if abs(S1-S2) > abs(S1-W[t]-S2+W[t]):
+            S1 -= W[t]
+            S2 += W[t]
+    print(abs(S1-S2))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    w_sum = sum(w)
+    min_diff = w_sum
+    for i in range(n):
+        s1 = sum(w[:i+1])
+        s2 = w_sum - s1
+        diff = abs(s1 - s2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    sumW = sum(W)
+    minDiff = sumW
+    for i in range(1, N):
+        sum1 = sum(W[:i])
+        sum2 = sumW - sum1
+        diff = abs(sum1 - sum2)
+        if diff < minDiff:
+            minDiff = diff
+    print(minDiff)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    W_sum = sum(W)
+    W_sum1 = 0
+    W_sum2 = 0
+    for i in range(N):
+        W_sum1 += W[i]
+        W_sum2 = W_sum - W_sum1
+        if i == 0:
+            min_diff = abs(W_sum1 - W_sum2)
+        elif abs(W_sum1 - W_sum2) < min_diff:
+            min_diff = abs(W_sum1 - W_sum2)
+    print(min_diff)
+
+=======
+Suggestion 10
+
+def solve(N,W):
+    S1 = sum(W)
+    S2 = 0
+    for i in range(N):
+        S2 += W[i]
+        S1 -= W[i]
+        if abs(S2-S1) < diff:
+            diff = abs(S2-S1)
+    return diff
+
+N = int(input())
+W = list(map(int,input().split()))
+print(solve(N,W))

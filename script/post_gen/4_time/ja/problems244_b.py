@@ -1,49 +1,249 @@
-#問題文
-#xy 平面を考えます。x 軸の正の向きを東向き、y 軸の正の向きを北向きとします。
-#高橋君ははじめ、点 (x, y) = (0, 0) にいて東（ x 軸の正の向き）を向いています。  
-#S と R のみからなる長さ N の文字列 T = t_1t_2... t_N が与えられます。
-#高橋君は i = 1, 2, ..., N の順番で下記を行います。
-#t_i = S ならば、高橋君はいま向いている方向に距離 1 だけ進む。
-#t_i = R ならば、高橋君はその場で右に 90 度回転する。その結果、高橋君の向いている方向が下記の通りに変わる。
-#回転前の向きが東向き（ x 軸の正の向き）ならば、回転後の向きは南向き（ y 軸の負の向き）になる。
-#回転前の向きが南向き（ y 軸の負の向き）ならば、回転後の向きは西向き（ x 軸の負の向き）になる。
-#回転前の向きが西向き（ x 軸の負の向き）ならば、回転後の向きは北向き（ y 軸の正の向き）になる。
-#回転前の向きが北向き（ y 軸の正の向き）ならば、回転後の向きは東向き（ x 軸の正の向き）になる。
-#
-#上記の手順を終えた後に高橋君がいる点の座標を出力してください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#N は整数
-#T は S と R のみからなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T
-#
-#出力
-#問題文中の手順を終えた後に高橋君がいる点の座標 (x, y) を、下記の形式にしたがって空白区切りで出力せよ。
-#x y
-#
-#入力例 1
-#4
-#SSRS
-#
-#出力例 1
-#2 -1
-#高橋君ははじめ (0, 0) にいて東を向いています。その後、高橋君は下記の通りに行動します。
-#t_1 = S であるので、高橋君は東に距離 1 だけ進んだ (1, 0) に移動します。
-#t_2 = S であるので、高橋君は東に距離 1 だけ進んだ (2, 0) に移動します。
-#t_3 = R であるので、高橋君は右に 90 度回転し、高橋君は南を向きます。
-#t_4 = S であるので、高橋君は南に距離 1 だけ進んだ (2, -1) に移動します。
-#よって、高橋君の最終的な位置である (x, y) = (2, -1) を出力します。
-#
-#入力例 2
-#20
-#SRSRSSRSSSRSRRRRRSRR
-#
-#出力例 2
-#0 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if t[i] == 'S':
+            y += 1
+        else:
+            x += 1
+    print(x, y)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    t = input()
+    x, y = 0, 0
+    for i in range(n):
+        if t[i] == 'S':
+            y += 1
+        else:
+            x += 1
+    print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if t[i] == "S":
+            if y == 0:
+                x += 1
+            elif y > 0:
+                y -= 1
+            else:
+                y += 1
+        else:
+            if y == 0:
+                y += 1
+            elif y > 0:
+                y -= 1
+            else:
+                y += 1
+    print(x,y)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if t[i] == 'S':
+            if x > 0:
+                x -= 1
+            elif x < 0:
+                x += 1
+            elif y > 0:
+                y -= 1
+            elif y < 0:
+                y += 1
+        else:
+            if x > 0:
+                y -= 1
+            elif x < 0:
+                y += 1
+            elif y > 0:
+                x += 1
+            elif y < 0:
+                x -= 1
+    print(x, y)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if y >= 0:
+                y += 1
+            else:
+                y -= 1
+        else:
+            if y >= 0:
+                y -= 1
+            else:
+                y += 1
+    print(x, y)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if x == 0:
+                if y > 0:
+                    y -= 1
+                else:
+                    y += 1
+            elif y == 0:
+                if x > 0:
+                    x -= 1
+                else:
+                    x += 1
+        else:
+            if x == 0:
+                if y > 0:
+                    x += 1
+                else:
+                    x -= 1
+            elif y == 0:
+                if x > 0:
+                    y += 1
+                else:
+                    y -= 1
+    print(x, y)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if x == 0:
+                y += 1
+            elif x == 1:
+                y -= 1
+            elif x == 2:
+                x -= 1
+            elif x == 3:
+                x += 1
+        elif T[i] == 'R':
+            if x == 0:
+                x += 1
+            elif x == 1:
+                x -= 1
+            elif x == 2:
+                y += 1
+            elif x == 3:
+                y -= 1
+    print(x, y)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = "E"
+    for i in range(N):
+        if T[i] == "S":
+            if direction == "E":
+                x += 1
+            elif direction == "S":
+                y -= 1
+            elif direction == "W":
+                x -= 1
+            elif direction == "N":
+                y += 1
+        else:
+            if direction == "E":
+                direction = "S"
+            elif direction == "S":
+                direction = "W"
+            elif direction == "W":
+                direction = "N"
+            elif direction == "N":
+                direction = "E"
+    print(x, y)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(0,n):
+        if t[i] == "S":
+            y = y + 1
+        else:
+            if x == 0:
+                x = 1
+            elif x == 1:
+                x = 0
+            elif x == 2:
+                x = 3
+            else:
+                x = 2
+    print(x,y)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    T = input()
+    x, y = 0, 0
+    for i in range(N):
+        if T[i] == 'S':
+            if x == 0:
+                if y > 0:
+                    y += 1
+                else:
+                    y -= 1
+            elif x > 0:
+                x += 1
+            else:
+                x -= 1
+        else:
+            if x == 0:
+                if y > 0:
+                    x -= 1
+                else:
+                    x += 1
+            elif x > 0:
+                x -= 1
+            else:
+                x += 1
+    print(x, y)

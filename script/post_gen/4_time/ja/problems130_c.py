@@ -1,33 +1,91 @@
-#問題文
-#平面上に長方形があり、4 つの頂点の座標は (0,0),(W,0),(W,H),(0,H) です。
-#この長方形の内部または周上の点 (x,y) が与えられます。(x,y) を通る直線で長方形を 2 つの部分に分割するとき、
-#面積の大きくない方の面積の最大値を求めてください。また、その最大値を達成する分割の方法が複数あるかも判定してください。
-#
-#制約
-#1 ≦ W,H ≦ 10^9
-#0≦ x≦ W
-#0≦ y≦ H
-#入力はすべて整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#W H x y
-#
-#出力
-#はじめに、面積の大きくない方の面積の最大値を出力せよ。つづいて、その最大値を達成する分割の方法が複数あるなら 1 を、そうでないなら 0 を出力せよ。
-#出力された面積は、絶対誤差あるいは相対誤差が 10^{-9} 以下の時正答と判定される。
-#
-#入力例 1
-#2 3 1 2
-#
-#出力例 1
-#3.000000 0
-#直線 x=1 で分割するのが最適です。また、最適な分割方法はこれ以外には存在しません。
-#
-#入力例 2
-#2 2 1 1
-#
-#出力例 2
-#2.000000 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    w, h, x, y = map(int, input().split())
+    if x == w/2 and y == h/2:
+        print(w*h/2, 1)
+    else:
+        print(w*h/2, 0)
+
+=======
+Suggestion 2
+
+def main():
+    W, H, x, y = map(int, input().split())
+    print(W * H / 2, 1 if x * 2 == W and y * 2 == H else 0)
+
+=======
+Suggestion 3
+
+def main():
+    W,H,x,y = map(int, input().split())
+    if x == W/2 and y == H/2:
+        print(W*H/2, 1)
+    else:
+        print(W*H/2, 0)
+
+=======
+Suggestion 4
+
+def main():
+    W, H, x, y = map(int, input().split())
+    print(W*H/2, 1 if W/2 == x and H/2 == y else 0)
+
+=======
+Suggestion 5
+
+def main():
+    w, h, x, y = map(int, input().split())
+    area = w * h / 2
+    print(area, 1 if x * 2 == w and y * 2 == h else 0)
+
+=======
+Suggestion 6
+
+def main():
+    W,H,x,y = map(int,input().split())
+    print(W*H/2,end=" ")
+    if x==W/2 and y==H/2:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    W, H, x, y = map(int, input().split())
+    ans = 0
+    if x == W/2 and y == H/2:
+        ans = 1
+    print(W*H/2, ans)
+
+=======
+Suggestion 8
+
+def main():
+    w, h, x, y = map(int, input().split())
+    area = w * h / 2
+    is_multiple = 0
+    if w == x * 2 and h == y * 2:
+        is_multiple = 1
+    print(area, is_multiple)
+
+=======
+Suggestion 9
+
+def main():
+    W, H, x, y = map(int, input().split())
+    ans1 = 0
+    ans2 = 0
+    ans3 = 0
+    ans4 = 0
+    ans1 = W * H / 2
+    if x == W / 2 and y == H / 2:
+        ans2 = 1
+    else:
+        ans2 = 0
+    print(ans1, ans2)

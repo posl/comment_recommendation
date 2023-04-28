@@ -1,38 +1,99 @@
-#問題文
-#2 個のボタンがあり、大きさはそれぞれ A, B です。
-#大きさ X のボタンを押すと、X 枚のコインを獲得し、そのボタンの大きさが 1 小さくなります。
-#あなたは、いずれかのボタンを押すことを 2 回行います。
-#同じボタンを 2 回押しても構いません。
-#最大で何枚のコインを獲得できるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#3 ≦ A, B ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#獲得できるコインの枚数の最大値を出力せよ。
-#
-#入力例 1
-#5 3
-#
-#出力例 1
-#9
-#大きさ 5 のボタンを 2 回押すと 5 + 4 = 9 枚のコインが獲得でき、これが最大です。
-#
-#入力例 2
-#3 4
-#
-#出力例 2
-#7
-#
-#入力例 3
-#6 6
-#
-#出力例 3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # input
+    A, B = map(int, input().split())
+
+    # compute
+
+    # output
+    print(max(A+A-1, A+B, B+B-1))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A == B:
+        print(A * 2)
+    else:
+        print(max(A, B) * 2 - 1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(2 * a)
+    else:
+        print(max(2 * a - 1, 2 * b - 1, a + b))
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if A == B:
+        print(A + B)
+    else:
+        print(max(A + A - 1, B + B - 1, A + B))
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + a - 1, b + b - 1, a + b))
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    a, b = map(int, input().split())
+
+    # compute
+    ans = max(a+a-1, a+b, b+b-1)
+
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+
+    if A >= B:
+        print(A + max(A - 1, B))
+    else:
+        print(B + max(A, B - 1))
+
+=======
+Suggestion 8
+
+def solve():
+    a, b = map(int, input().split())
+    if a == b:
+        return a + b
+    else:
+        return max(a + a - 1, b + b - 1, a + b)
+
+print(solve())
+
+=======
+Suggestion 9
+
+def main():
+    # 標準入力から A, B を取得する
+    A, B = map(int, input().split())
+    # ボタンを 2 回押す場合
+    ans = max(A + A - 1, B + B - 1)
+    # ボタンを 1 回ずつ押す場合
+    ans = max(ans, A + B)
+    # 結果を出力する
+    print(ans)

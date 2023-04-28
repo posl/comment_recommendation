@@ -1,40 +1,127 @@
-#Problem Statement
-#Iroha is into a game where you keep pets.
-#Iroha's pet is Takahashi. Initially, Takahashi's STR and EXP are X and 0, respectively.
-#These parameters increase in the following two kinds of training:
-#Go to Kakomon Gym: the STR gets multiplied by A, and the EXP increases by 1.
-#Go to AtCoder Gym: the STR increases by B, and the EXP increases by 1.
-#Takahashi evolves when his STR becomes Y or greater, but Iroha thinks that makes him less cute.
-#Find the maximum possible EXP of Takahashi when he is trained without letting him evolve.
-#
-#Constraints
-#1 ≦ X < Y ≦ 10^{18}
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y A B
-#
-#Output
-#Print the maximum possible EXP of Takahashi under the given situation.
-#
-#Sample Input 1
-#4 20 2 10
-#
-#Sample Output 1
-#2
-#Initially, Takahashi's STR is 4. We can make his EXP 2 in the following course of training:
-#First, go to Kakomon Gym, which makes his STR 8 and his EXP 1.
-#Then, go to AtCoder Gym, which makes his STR 18 and his EXP 2.
-#On the other hand, there is no way to train him so that his EXP becomes greater than 2.
-#
-#Sample Input 2
-#1 1000000000000000000 10 1000000000
-#
-#Sample Output 2
-#1000000007
-#Watch out for overflows.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x * a < x + b and x * a < y:
+        x *= a
+        exp += 1
+    exp += (y - 1 - x) // b
+    print(exp)
+
+=======
+Suggestion 2
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x * a <= x + b and x * a < y:
+        x *= a
+        exp += 1
+    exp += (y - 1 - x) // b
+    print(exp)
+
+=======
+Suggestion 3
+
+def solve(x, y, a, b):
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+            exp += 1
+        else:
+            x += b
+            exp += 1
+    return exp - 1
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while A*X <= X+B and A*X < Y:
+        X *= A
+        exp += 1
+    exp += (Y-X-1)//B
+    print(exp)
+
+=======
+Suggestion 5
+
+def solve(X, Y, A, B):
+    exp = 0
+    while X * A < X + B and X * A < Y:
+        X *= A
+        exp += 1
+    return exp + (Y - X - 1) // B
+
+=======
+Suggestion 6
+
+def solve(x, y, a, b):
+    exp = 0
+    while x*a <= x+b and x*a < y:
+        x *= a
+        exp += 1
+    exp += (y-x-1)//b
+    return exp
+
+=======
+Suggestion 7
+
+def solve(x,y,a,b):
+    exp = 0
+    while x*a < x+b and x*a < y:
+        x *= a
+        exp += 1
+    exp += (y-1-x)//b
+    return exp
+
+=======
+Suggestion 8
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    ans = 0
+    while A*X < Y and A*X < X+B:
+        X *= A
+        ans += 1
+    ans += (Y-X-1)//B
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(x,y,a,b):
+    exp = 0
+    while x*y > x+a and x*y < y+b:
+        if x*a < x+b:
+            x *= a
+            exp += 1
+        else:
+            x += b
+            exp += 1
+    return exp
+
+
+x,y,a,b = list(map(int,input().split()))
+print(solve(x,y,a,b))
+
+=======
+Suggestion 10
+
+def main():
+    x,y,a,b = map(int,input().split())
+    exp = 0
+    while(True):
+        if (a*x >= x+b) and (a*x < y):
+            x = a*x
+            exp += 1
+        else:
+            break
+    print(exp + (y-1-x)//b)

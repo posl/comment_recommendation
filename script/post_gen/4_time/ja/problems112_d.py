@@ -1,36 +1,115 @@
-#問題文
-#整数 N, M が与えられます。
-#a_1 + a_2 + ... + a_N = M となる正整数からなる長さ N の数列 a において、a_1, a_2, ..., a_N の最大公約数のとり得る最大値を求めてください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 10^5
-#N ≦ M ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#
-#出力
-#条件を満たす数列 a_1, a_2, ..., a_N の最大公約数のとり得る最大値を出力せよ。
-#
-#入力例 1
-#3 14
-#
-#出力例 1
-#2
-#(a_1, a_2, a_3) = (2, 4, 8) としたときこれらの最大公約数が 2 となり最大です。
-#
-#入力例 2
-#10 123
-#
-#出力例 2
-#3
-#
-#入力例 3
-#100000 1000000000
-#
-#出力例 3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+N, M = map(int, input().split())
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
+N, M = map(int, input().split())
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,m=map(int,input().split())
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, M = map(int, input().split())
+print(gcd(N, M))
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, M = map(int, input().split())
+ans = 1
+for i in range(2, min(M//N+1, M+1)):
+    if M % i == 0:
+        ans = max(ans, i)
+        while M % i == 0:
+            M //= i
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = [int(i) for i in input().split()]
+g = a[0]
+for i in range(n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,m = map(int,input().split())
+a = m//n
+while True:
+    if m%a == 0:
+        print(a)
+        break
+    a -= 1
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = [m // n] * n

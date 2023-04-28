@@ -1,32 +1,211 @@
-#問題文
-#長さ N の正整数列 A=(A_1,A_2,...,A_N) が与えられるので、以下の条件を満たす 1 以上 M 以下の整数 k を全て求めてください。
-#全ての 1 ≦ i ≦ N を満たす整数 i について、 gcd(A_i,k)=1 である。
-#
-#制約
-#入力は全て整数
-#1 ≦ N,M ≦ 10^5
-#1 ≦ A_i ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#1 行目に、出力する整数の数 x を出力せよ。
-#続く x 行に、答えとなる整数を小さい方から順に 1 行に 1 つずつ出力せよ。
-#
-#入力例 1
-#3 12
-#6 1 5
-#
-#出力例 1
-#3
-#1
-#7
-#11
-#例えば、 7 は gcd(6,7)=1,gcd(1,7)=1,gcd(5,7)=1 を満たすので答えとなる整数の集合に含まれます。
-#一方、 9 は gcd(6,9)=3 となるため、答えとなる整数の集合に含まれません。
-#条件を満たす 1 以上 12 以下の整数は 1,7,11 の 3 つです。これらを小さい方から出力することに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+l = [0] * (m + 1)
+for i in range(n):
+    for j in range(1, int(m ** 0.5) + 1):
+        if a[i] % j == 0:
+            l[j] = 1
+            l[a[i] // j] = 1
+
+l[1] = 1
+for i in range(2, m + 1):
+    if l[i] == 1:
+        for j in range(i * 2, m + 1, i):
+            l[j] = 0
+
+ans = []
+for i in range(1, m + 1):
+    if l[i] == 1:
+        ans.append(i)
+
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+t = [0] * (m + 1)
+for i in range(n):
+    for j in range(1, int(m ** 0.5) + 1):
+        if a[i] % j == 0:
+            t[j] = 1
+            t[a[i] // j] = 1
+
+ans = []
+for i in range(1, m + 1):
+    if t[i] == 0:
+        ans.append(i)
+
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    while b:
+        a,b=b,a%b
+    return a
+
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+l=[0]*(m+1)
+for i in a:
+    for j in range(i,m+1,i):
+        l[j]=1
+ans=[]
+for i in range(1,m+1):
+    if l[i]==0:
+        ans.append(i)
+print(len(ans))
+for i in ans:
+    print(i)
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n,m = map(int,input().split())
+a = list(map(int,input().split()))
+a.sort()
+a = list(set(a))
+# print(a)
+ans = []
+
+for i in range(1,m+1):
+    flag = True
+    for j in range(len(a)):
+        if gcd(a[j],i) != 1:
+            flag = False
+            break
+    if flag:
+        ans.append(i)
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n,m = map(int,input().split())
+a = list(map(int,input().split()))
+a.sort()
+b = [0] * (m + 1)
+for i in range(n):
+    if b[a[i]] == 0:
+        b[a[i]] = 1
+        for j in range(a[i] * 2, m + 1, a[i]):
+            b[j] = 2
+for i in range(1, m + 1):
+    if b[i] == 1:
+        for j in range(i * 2, m + 1, i):
+            b[j] = 2
+ans = []
+for i in range(1, m + 1):
+    if b[i] == 1:
+        ans.append(i)
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b != 0:
+        a,b = b, a%b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N,M = map(int,input().split())
+A = list(map(int,input().split()))
+
+A.sort()
+
+l = [0]*(M+1)
+
+for i in range(N):
+    a = A[i]
+    if a > M:
+        break
+    if l[a] != 0:
+        continue
+    for j in range(a,M+1,a):
+        l[j] = 1
+
+ans = []
+for i in range(1,M+1):
+    if l[i] == 0:
+        ans.append(i)
+
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i])

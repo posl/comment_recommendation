@@ -1,65 +1,268 @@
-#Problem Statement
-#At an arcade, Takahashi is playing a game called RPS Battle, which is played as follows:
-#The player plays N rounds of Rock Paper Scissors against the machine. (See Notes
-# for the description of Rock Paper Scissors. A draw also counts as a round.)
-#Each time the player wins a round, depending on which hand he/she uses, he/she earns the following score (no points for a draw or a loss):
-#R points for winning with Rock;
-#S points for winning with Scissors;
-#P points for winning with Paper.
-#However, in the i-th round, the player cannot use the hand he/she used in the (i-K)-th round. (In the first K rounds, the player can use any hand.)
-#Before the start of the game, the machine decides the hand it will play in each round. With supernatural power, Takahashi managed to read all of those hands.
-#The information Takahashi obtained is given as a string T. If the i-th character of T (1 ≦ i ≦ N) is r, the machine will play Rock in the i-th round. Similarly, p and s stand for Paper and Scissors, respectively.
-#What is the maximum total score earned in the game by adequately choosing the hand to play in each round?
-#
-#Notes
-#In this problem, Rock Paper Scissors can be thought of as a two-player game, in which each player simultaneously forms Rock, Paper, or Scissors with a hand.
-#If a player chooses Rock and the other chooses Scissors, the player choosing Rock wins;
-#if a player chooses Scissors and the other chooses Paper, the player choosing Scissors wins;
-#if a player chooses Paper and the other chooses Rock, the player choosing Paper wins;
-#if both players play the same hand, it is a draw.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ R,S,P ≦ 10^4
-#N,K,R,S, and P are all integers.
-#|T| = N
-#T consists of r, p, and s.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#R S P
-#T
-#
-#Output
-#Print the maximum total score earned in the game.
-#
-#Sample Input 1
-#5 2
-#8 7 6
-#rsrpr
-#
-#Sample Output 1
-#27
-#The machine will play {Rock, Scissors, Rock, Paper, Rock}.
-#We can, for example, play {Paper, Rock, Rock, Scissors, Paper} against it to earn 27 points.
-#We cannot earn more points, so the answer is 27.
-#
-#Sample Input 2
-#7 1
-#100 10 1
-#ssssppr
-#
-#Sample Output 2
-#211
-#
-#Sample Input 3
-#30 5
-#325 234 123
-#rspsspspsrpspsppprpsprpssprpsr
-#
-#Sample Output 3
-#4996
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    ans = 0
+    for i in range(N):
+        if i < K or T[i] != T[i-K]:
+            if T[i] == 'r':
+                ans += P
+            elif T[i] == 's':
+                ans += R
+            else:
+                ans += S
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    ans = 0
+    for i in range(N):
+        if i >= K and T[i] == T[i-K]:
+            T = T[:i] + 'x' + T[i+1:]
+        else:
+            if T[i] == 'r':
+                ans += P
+            elif T[i] == 's':
+                ans += R
+            elif T[i] == 'p':
+                ans += S
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    T = list(T)
+    score = 0
+    for i in range(N):
+        if T[i] == "r":
+            if i >= K:
+                if T[i-K] == "r":
+                    T[i] = "x"
+                else:
+                    score += P
+            else:
+                score += P
+        elif T[i] == "s":
+            if i >= K:
+                if T[i-K] == "s":
+                    T[i] = "x"
+                else:
+                    score += R
+            else:
+                score += R
+        else:
+            if i >= K:
+                if T[i-K] == "p":
+                    T[i] = "x"
+                else:
+                    score += S
+            else:
+                score += S
+    print(score)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+    T = list(T)
+    score = 0
+    for i in range(N):
+        if T[i] == "r":
+            if i - K >= 0:
+                if T[i - K] == "r":
+                    T[i] = "x"
+                else:
+                    score += P
+            else:
+                score += P
+        elif T[i] == "s":
+            if i - K >= 0:
+                if T[i - K] == "s":
+                    T[i] = "x"
+                else:
+                    score += R
+            else:
+                score += R
+        elif T[i] == "p":
+            if i - K >= 0:
+                if T[i - K] == "p":
+                    T[i] = "x"
+                else:
+                    score += S
+            else:
+                score += S
+    print(score)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    r, s, p = map(int, input().split())
+    t = input()
+    t = list(t)
+    score = 0
+    for i in range(n):
+        if t[i] == 'r':
+            if i >= k:
+                if t[i - k] == 'r':
+                    t[i] = 'x'
+                else:
+                    score += r
+            else:
+                score += r
+        elif t[i] == 's':
+            if i >= k:
+                if t[i - k] == 's':
+                    t[i] = 'x'
+                else:
+                    score += s
+            else:
+                score += s
+        elif t[i] == 'p':
+            if i >= k:
+                if t[i - k] == 'p':
+                    t[i] = 'x'
+                else:
+                    score += p
+            else:
+                score += p
+    print(score)
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    N, K = map(int, input().strip().split())
+    R, S, P = map(int, input().strip().split())
+    T = input().strip()
+    # Calculate result here
+    result = get_max_score(N, K, R, S, P, T)
+    # Print output here
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int, input().split())
+    r,s,p = map(int, input().split())
+    t = input()
+    point = 0
+    for i in range(n):
+        if t[i] == "r" and i < k:
+            point += p
+        elif t[i] == "r" and i >= k and t[i-k] != "r":
+            point += p
+        elif t[i] == "s" and i < k:
+            point += r
+        elif t[i] == "s" and i >= k and t[i-k] != "s":
+            point += r
+        elif t[i] == "p" and i < k:
+            point += s
+        elif t[i] == "p" and i >= k and t[i-k] != "p":
+            point += s
+    print(point)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    r, s, p = map(int, input().split())
+    t = input()
+    ans = 0
+    for i in range(k):
+        t2 = t[i::k]
+        t3 = t2.replace('r', 'p').replace('s', 'r').replace('p', 's')
+        t4 = t3.replace('p', 'r')
+        ans += t4.count('r') * r + t4.count('s') * s + t4.count('p') * p
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    R, S, P = map(int, input().split())
+    T = input()
+
+    def get_score(hand):
+        if hand == "r":
+            return P
+        elif hand == "s":
+            return R
+        elif hand == "p":
+            return S
+
+    def get_hand(opp_hand):
+        if opp_hand == "r":
+            return "p"
+        elif opp_hand == "s":
+            return "r"
+        elif opp_hand == "p":
+            return "s"
+
+    dp = [[0, 0, 0] for _ in range(N)]
+    dp[0][0] = get_score(get_hand(T[0]))
+    dp[0][1] = get_score(get_hand(T[0]))
+    dp[0][2] = get_score(get_hand(T[0]))
+
+    for i in range(1, N):
+        dp[i][0] = dp[i-1][0] + get_score(get_hand(T[i]))
+        dp[i][1] = dp[i-1][1] + get_score(get_hand(T[i]))
+        dp[i][2] = dp[i-1][2] + get_score(get_hand(T[i]))
+        if i >= K:
+            dp[i][0] = max(dp[i][0], dp[i-K][1] + get_score(get_hand(T[i])))
+            dp[i][1] = max(dp[i][1], dp[i-K][2] + get_score(get_hand(T[i])))
+            dp[i][2] = max(dp[i][2], dp[i-K][0] + get_score(get_hand(T[i])))
+
+    print(max(dp[N-1]))
+
+
+main()
+
+=======
+Suggestion 10
+
+def rpsbattle(n, k, r, s, p, t):
+    # print(n, k, r, s, p, t)
+    # print(r, s, p)
+    # print(t)
+    # print(t[0])
+    score = 0
+    for i in range(n):
+        if t[i] == 'r':
+            if i >= k and t[i-k] == 'r':
+                score += 0
+            else:
+                score += p
+        elif t[i] == 's':
+            if i >= k and t[i-k] == 's':
+                score += 0
+            else:
+                score += r
+        else:
+            if i >= k and t[i-k] == 'p':
+                score += 0
+            else:
+                score += s
+    return score

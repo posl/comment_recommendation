@@ -1,59 +1,206 @@
-#Problem Statement
-#There is a staircase with N steps. Takahashi is now standing at the foot of the stairs, that is, on the 0-th step.
-#He can climb up one or two steps at a time.
-#However, the treads of the a_1-th, a_2-th, a_3-th, ..., a_M-th steps are broken, so it is dangerous to set foot on those steps.
-#How many are there to climb up to the top step, that is, the N-th step, without setting foot on the broken steps?
-#Find the count modulo 1 000 000 007.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 <  ...  < a_M ≦ N-1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#Output
-#Print the number of ways to climb up the stairs under the condition, modulo 1 000 000 007.
-#
-#Sample Input 1
-#6 1
-#3
-#
-#Sample Output 1
-#4
-#There are four ways to climb up the stairs, as follows:
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#Sample Input 2
-#10 2
-#4
-#5
-#
-#Sample Output 2
-#0
-#There may be no way to climb up the stairs without setting foot on the broken steps.
-#
-#Sample Input 3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#Sample Output 3
-#608200469
-#Be sure to print the count modulo 1 000 000 007.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def modinv(a, m):
+    b = m
+    u = 1
+    v = 0
+    while b:
+        t = a // b
+        a -= t * b
+        a, b = b, a
+        u -= t * v
+        u, v = v, u
+    u %= m
+    if u < 0:
+        u += m
+    return u
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    broken = [False] * (n + 1)
+    for _ in range(m):
+        broken[int(input())] = True
+
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(n):
+        if broken[i + 1]:
+            continue
+        dp[i + 1] += dp[i]
+        dp[i + 1] %= 1000000007
+        if i + 2 <= n:
+            dp[i + 2] += dp[i]
+            dp[i + 2] %= 1000000007
+    print(dp[n])
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * (m + 2)
+    a[0] = 0
+    a[m + 1] = n + 1
+    for i in range(1, m + 1):
+        a[i] = int(input())
+    a.sort()
+    d = [0] * (m + 2)
+    d[0] = 1
+    d[1] = 1
+    for i in range(2, m + 2):
+        d[i] = d[i - 1] + d[i - 2]
+    ans = 1
+    for i in range(1, m + 2):
+        ans *= d[a[i] - a[i - 1] - 1]
+        ans %= 1000000007
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    broken = [0] * (N + 1)
+    for _ in range(M):
+        broken[int(input())] = 1
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if broken[i] == 1:
+            continue
+        if i - 1 >= 0:
+            dp[i] += dp[i - 1]
+        if i - 2 >= 0:
+            dp[i] += dp[i - 2]
+        dp[i] %= 10 ** 9 + 7
+    print(dp[N])
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    mod = 10**9 + 7
+
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    dp[1] = 1
+
+    for i in range(2, N + 1):
+        if i in A:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i - 1] + dp[i - 2]
+            dp[i] %= mod
+
+    print(dp[N])
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = [0]*m
+    for i in range(m):
+        a[i] = int(input())
+    a.append(n+1)
+    a.append(0)
+    a.sort()
+    dp = [0]*(n+1)
+    dp[0] = 1
+    mod = 10**9+7
+    for i in range(m+1):
+        for j in range(a[i+1]-a[i]):
+            dp[a[i]+j] = (dp[a[i]+j-1]+dp[a[i]+j-2])%mod
+    print(dp[n])
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    a = [0]*N
+    for i in range(M):
+        a[int(input())-1] = 1
+    dp = [0]*N
+    dp[0] = 1
+    for i in range(1,N):
+        if a[i] == 1:
+            dp[i] = 0
+        else:
+            if i == 1:
+                dp[i] = dp[i-1]
+            else:
+                dp[i] = dp[i-1] + dp[i-2]
+    print(dp[N-1]%(10**9+7))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(m):
+        a.append(int(input()))
+    a.append(n+1)
+    a.append(0)
+    a.sort()
+    b = []
+    for i in range(m+2):
+        b.append(a[i+1]-a[i]-1)
+    b.sort()
+    ans = 0
+    if b[0] == 0:
+        ans = 1
+    else:
+        ans = 1
+        for i in range(m+2):
+            if b[i] != 0:
+                ans *= fib(b[i])
+                ans %= 1000000007
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    a = [int(input()) for _ in range(M)]
+    a.append(N+1)
+    a.append(0)
+    a.sort()
+    dp = [0]*(N+1)
+    dp[0] = 1
+    for i in range(M+1):
+        if a[i+1] - a[i] > 1:
+            for j in range(a[i+1]-a[i]-1):
+                dp[a[i]+j+1] = (dp[a[i]+j] + dp[a[i]+j-1]) % 1000000007
+    print(dp[N])
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    broken_steps = [int(input()) for _ in range(M)]
+    broken_steps.append(N+1)
+    broken_steps.sort()
+    #print(broken_steps)
+    
+    dp = [0] * (N+1)
+    dp[0] = 1
+    for i in range(1, N+1):
+        if i in broken_steps:
+            continue
+        if i == 1:
+            dp[i] = dp[i-1]
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
+    print(dp[N])

@@ -1,67 +1,185 @@
-#問題文
-#1 から N までの番号がついた N 個の数列が与えられます。
-#数列 i は、長さが L_i で j (1 ≦ j ≦ L_i) 番目の要素が a_{i,j} であるような数列です。
-#数列 i と 数列 j は、 L_i = L_j かつすべての k (1 ≦ k ≦ L_i) に対して a_{i,k} = a_{j,k} が成り立つ時に同じであるとみなします。
-#同じ数列は 1 種類として数えるとき、数列 1 から 数列 N の中に全部で何種類の数列がありますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9} (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#すべての数列の要素の個数の和、すなわち sum_{i=1}^N L_i は 2 × 10^5 を超えない。
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#数列の種類数を出力せよ。
-#
-#入力例 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#出力例 1
-#3
-#入力例 1で与えられている数列は以下の 4 個です。
-#数列 1 : (1, 2)
-#数列 2 : (1, 1)
-#数列 3 : (2, 1)
-#数列 4 : (1, 2) 
-#このうち数列 1 と数列 4 は同じ数列で、それ以外は互いに異なる数列なので全部で 3 種類の数列があります。
-#
-#入力例 2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#出力例 2
-#4
-#入力例 2で与えられている数列は以下の 5 個です。
-#数列 1 : (1)
-#数列 2 : (1)
-#数列 3 : (2)
-#数列 4 : (1, 1) 
-#数列 5 : (1, 1, 1) 
-#
-#入力例 3
-#1
-#1 1
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split()))[1:])
+    a.sort()
+    ans = 1
+    for i in range(n - 1):
+        if a[i] != a[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int,input().split())))
+    L.sort()
+    cnt = 1
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    N = int(input())
+    LAs = [list(map(int, input().split())) for _ in range(N)]
+    # compute
+    Ls = [LAs[i][0] for i in range(N)]
+    As = [LAs[i][1:] for i in range(N)]
+    # output
+    print(len(set(tuple(As[i]) for i in range(N))))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split()))[1:])
+    a.sort()
+    a.append([])
+    ans = 0
+    for i in range(n):
+        if a[i] != a[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, input().split())))
+    a.sort()
+    a.append([0, 0])
+    ans = 1
+    for i in range(n):
+        if a[i] != a[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort()
+    l.append([0, 0])
+    count = 1
+    for i in range(1, n + 1):
+        if l[i - 1] != l[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    L.sort(key=lambda x: x[0])
+    #print(L)
+    ans = 0
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            ans += 1
+    print(ans+1)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    L = []
+    for _ in range(N):
+        L.append([int(x) for x in input().split()])
+    L.sort(key=lambda x: x[1:])
+    ans = 1
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    array = []
+    for i in range(n):
+        array.append(input().split())
+    #print(array)
+    array2 = []
+    for i in range(n):
+        array2.append(array[i][1:])
+    #print(array2)
+    array3 = []
+    for i in range(n):
+        array3.append(''.join(array2[i]))
+    #print(array3)
+    array4 = []
+    for i in range(n):
+        array4.append(int(array3[i]))
+    #print(array4)
+    array5 = []
+    for i in range(n):
+        array5.append(array4.count(array4[i]))
+    #print(array5)
+    array6 = []
+    for i in range(n):
+        if array5[i] == 1:
+            array6.append(1)
+        else:
+            array6.append(0)
+    #print(array6)
+    print(sum(array6))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(tuple(map(int, input().split())))
+
+    L.sort(key=lambda x: x[0])
+    #print(L)
+
+    c = 0
+    for i in range(N):
+        #print("i", i)
+        for j in range(i + 1, N):
+            #print("j", j)
+            if L[i][0] == L[j][0]:
+                if L[i][1:] == L[j][1:]:
+                    L[j] = ()
+                else:
+                    c += 1
+            else:
+                break
+
+    #print(L)
+    print(N - c)

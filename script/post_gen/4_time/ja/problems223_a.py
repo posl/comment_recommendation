@@ -1,36 +1,83 @@
-#問題文
-#高橋君の財布の中には 100 円硬貨が 1 枚以上入っており、それ以外には何も入っていません。
-#高橋君の財布の中の合計金額が X 円である可能性はありますか？
-#
-#制約
-#0 ≦ X ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#高橋君の財布の中の合計金額が X 円である可能性がある場合は Yes、そうでない場合は No と出力せよ。
-#
-#入力例 1
-#500
-#
-#出力例 1
-#Yes
-#財布に 100 円硬貨が 5 枚入っているとき、合計金額は 500 円になります。故に財布の中の合計金額は X=500 円になりうるため、Yes を出力します。
-#
-#入力例 2
-#40
-#
-#出力例 2
-#No
-#
-#入力例 3
-#0
-#
-#出力例 3
-#No
-#財布の中には 100 円硬貨が 1 枚以上入っていることに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x == 0:
+        print("No")
+    elif x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    X = int(input())
+    if X >= 100 and X % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    if 0 <= x and x <= 1000 and x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    X = int(input())
+    if X >= 100 and X%100 == 0:
+        print("Yes")
+    else:
+        print("No")

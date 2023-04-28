@@ -1,34 +1,152 @@
-#問題文
-#長さ N の整数からなる数列 A=(A_1,...,A_N) が与えられます。  
-#A_1,...,A_N に含まれない最小の非負整数を求めてください。  
-#
-#制約
-#1 ≦ N ≦ 2000
-#0 ≦ A_i ≦ 2000
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#8
-#0 3 2 6 2 1 0 0
-#
-#出力例 1
-#4
-#非負整数は 0,1,2,3,4,... と続きます。
-#0,1,2,3 は A に含まれ、4 は A に含まれないので、答えは 4 です。
-#
-#入力例 2
-#3
-#2000 2000 2000
-#
-#出力例 2
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[0] != 0:
+        print(0)
+        return
+    for i in range(1, n):
+        if a[i] - a[i-1] > 1:
+            print(a[i-1]+1)
+            return
+    print(a[-1]+1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    count = 0
+    for i in range(n):
+        if a[i] == count:
+            count += 1
+        elif a[i] > count:
+            break
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if A[i] > ans:
+            break
+        ans += A[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] > ans:
+            break
+        elif a[i] == ans:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[0] != 0:
+        print(0)
+    else:
+        for i in range(1,n):
+            if a[i] - a[i-1] > 1:
+                print(a[i-1]+1)
+                break
+        else:
+            print(a[-1]+1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    min_num = 0
+    for i in range(n):
+        if a[i] == min_num:
+            min_num += 1
+    print(min_num)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a_set = set(a)
+    for i in range(2000):
+        if i not in a_set:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    min = 0
+    for i in range(n):
+        if a[i] > min:
+            break
+        min += a[i]
+    print(min)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[0] != 0:
+        print(0)
+        return
+    if n == 1:
+        if a[0] == 0:
+            print(1)
+        else:
+            print(0)
+        return
+    for i in range(1,n):
+        if a[i] - a[i-1] > 1:
+            print(a[i-1]+1)
+            return
+    print(a[-1]+1)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
+    for i in range(n):
+        if a[i] != a[i+1]:
+            print(a[i]+1)
+            break

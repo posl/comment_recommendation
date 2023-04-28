@@ -1,59 +1,203 @@
-#問題文
-#高橋君は N 種類の硬貨をそれぞれ何枚か持っており、
-#具体的には、1≦ i≦ N について A_i 円硬貨を B_i 枚持っています。
-#高橋君が現在持っている硬貨を用いて、（お釣りが出ないように）ちょうど X 円を支払うことができるか判定してください。
-#
-#制約
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i はすべて異なる。
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#高橋君が現在持っている硬貨を用いてちょうど X 円を支払うことができる場合は Yes を、
-#できない場合は No を出力せよ。
-#
-#入力例 1
-#2 19
-#2 3
-#5 6
-#
-#出力例 1
-#Yes
-#高橋君は 2 円硬貨を 3 枚、5 円硬貨を 6 枚持っています。
-#このうち、2 円硬貨を 2 枚、5 円硬貨を 3 枚用いることでちょうど 2× 2+5× 3=19 円を支払うことができます。
-#よって、Yes を出力します。
-#
-#入力例 2
-#2 18
-#2 3
-#5 6
-#
-#出力例 2
-#No
-#持っている硬貨をどのように組み合わせてもちょうど 18 円を支払うことはできません。
-#よって、No を出力します。
-#
-#入力例 3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#出力例 3
-#Yes
-#1 枚も使用しない硬貨が存在しても構いません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    total = 0
+    for i in range(N):
+        total += A[i] * B[i]
+    #print(total)
+    if total <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+
+    if sum >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    ans = 0
+    for i in range(n):
+        ans += a[i] * b[i]
+    if ans <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    ans = 'No'
+    for i in range(n):
+        if x == a[i] * b[i]:
+            ans = 'Yes'
+            break
+        for j in range(n):
+            if x == a[i] * b[i] + a[j] * b[j]:
+                ans = 'Yes'
+                break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        aa, bb = map(int, input().split())
+        a.append(aa)
+        b.append(bb)
+
+    total = 0
+    for i in range(n):
+        total += a[i] * b[i]
+
+    if total <= x:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    # print(n, x)
+    # print(a)
+    # print(b)
+    # print(sum([a[i] * b[i] for i in range(n)]))
+    if sum([a[i] * b[i] for i in range(n)]) >= x:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N,X = map(int,input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        ans += A[i]*B[i]
+    if ans <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def pay(N, X, A, B):
+    for i in range(N):
+        X -= A[i] * B[i]
+    if X >= 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def check_payment(n, x, a, b):
+    if n == 1:
+        if x % a[0] == 0 and x / a[0] <= b[0]:
+            return True
+        else:
+            return False
+    else:
+        for i in range(b[0]+1):
+            if x - a[0] * i < 0:
+                break
+            elif x - a[0] * i == 0:
+                return True
+            else:
+                if check_payment(n-1, x - a[0] * i, a[1:], b[1:]):
+                    return True
+        return False
+
+n, x = map(int, input().split())
+a = []
+b = []
+for i in range(n):
+    ai, bi = map(int, input().split())
+    a.append(ai)
+    b.append(bi)

@@ -1,41 +1,135 @@
-#問題文
-#実数 X.Y が与えられます。ただし Y はちょうど 1 桁です。  
-#0 ≦ Y ≦ 2 ならば、X-
-#3 ≦ Y ≦ 6 ならば、X
-#7 ≦ Y ≦ 9 ならば、X+
-#と出力してください。
-#
-#制約
-#1 ≦ X ≦ 15
-#0 ≦ Y ≦ 9
-#X と Y は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X.Y
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#15.8
-#
-#出力例 1
-#15+
-#15 + のような出力は不正解とみなされます。
-#X と + の間や、X と - の間には空白を入れずに出力してください。
-#
-#入力例 2
-#1.0
-#
-#出力例 2
-#1-
-#1.00 や 1 などの値が入力として与えられることはありません。
-#
-#入力例 3
-#12.5
-#
-#出力例 3
-#12
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split("."))
+    if 0 <= y <= 2:
+        print("{0}-".format(x))
+    elif 3 <= y <= 6:
+        print("{0}".format(x))
+    else:
+        print("{0}+".format(x))
+
+=======
+Suggestion 2
+
+def main():
+    x,y = input().split(".")
+    y = int(y)
+    if y <= 2:
+        print(x+"-")
+    elif y <= 6:
+        print(x)
+    else:
+        print(x+"+")
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split('.'))
+    if y <= 2:
+        print(str(x) + '-')
+    elif y <= 6:
+        print(x)
+    else:
+        print(str(x) + '+')
+
+=======
+Suggestion 4
+
+def main():
+    x,y = input().split('.')
+    y = int(y)
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(x + '+')
+
+=======
+Suggestion 5
+
+def main():
+    x,y = input().split(".")
+    y = int(y)
+    if 0 <= y and y <= 2:
+        print(x+"-")
+    elif 3 <= y and y <= 6:
+        print(x)
+    elif 7 <= y and y <= 9:
+        print(x+"+")
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(str, input().split("."))
+    y = int(y)
+    if 0 <= y <= 2:
+        print(x + "-")
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(x + "+")
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split('.'))
+    if 0 <= y <= 2:
+        print(str(x)+'-')
+    elif 3 <= y <= 6:
+        print(str(x))
+    else:
+        print(str(x)+'+')
+
+=======
+Suggestion 8
+
+def main():
+    X, Y = input().split('.')
+    Y = int(Y)
+    if Y <= 2:
+        print(X + '-')
+    elif Y <= 6:
+        print(X)
+    else:
+        print(X + '+')
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    X,Y = input().split(".")
+    X = int(X)
+    Y = int(Y)
+
+    # compute
+
+    # output
+    if 0 <= Y and Y <= 2:
+        print(str(X) + "-")
+    elif 3 <= Y and Y <= 6:
+        print(X)
+    else:
+        print(str(X) + "+")
+
+=======
+Suggestion 10
+
+def main():
+    x = float(input())
+    y = int(x*10)%10
+
+    if y <= 2:
+        print(str(int(x))+'-')
+    elif y <= 6:
+        print(int(x))
+    else:
+        print(str(int(x))+'+')

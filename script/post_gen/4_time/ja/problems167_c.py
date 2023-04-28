@@ -1,63 +1,251 @@
-#問題文
-#競技プログラミングを始めた高橋くんは、学びたいアルゴリズムが M 個あります。
-#最初、各アルゴリズムの理解度は 0 です。
-#高橋くんが書店に行くと、N 冊の参考書が売っていました。i 番目の参考書 (1≦ i≦ N) は C_i 円で売られていて、購入して読むことで、各 j (1≦ j≦ M) について j 番目のアルゴリズムの理解度が A_{i,j} 上がります。
-#また、それ以外の方法で理解度を上げることはできません。
-#高橋くんの目標は M 個すべてのアルゴリズムの理解度を X 以上にすることです。高橋くんが目標を達成することが可能か判定し、可能な場合は目標を達成するのに必要な金額の最小値を計算してください。
-#
-#制約
-#入力はすべて整数
-#1≦ N, M≦ 12
-#1≦ X≦ 10^5
-#1≦ C_i ≦ 10^5
-#0≦ A_{i, j} ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M X
-#C_1 A_{1,1} A_{1,2} ... A_{1,M}
-#C_2 A_{2,1} A_{2,2} ... A_{2,M}
-#.
-#.
-#.
-#C_N A_{N,1} A_{N,2} ... A_{N,M}
-#
-#出力
-#高橋くんが目標を達成できないならば -1 を、
-#そうでなければ目標を達成するのに必要な金額の最小値を出力せよ。
-#
-#入力例 1
-#3 3 10
-#60 2 2 4
-#70 8 7 9
-#50 2 3 9
-#
-#出力例 1
-#120
-#2, 3 番目の参考書を購入すると 120 円ですべてのアルゴリズムの理解度を 10 以上にすることができ、これが最小値です。
-#
-#入力例 2
-#3 3 10
-#100 3 1 4
-#100 1 5 9
-#100 2 6 5
-#
-#出力例 2
-#-1
-#すべての参考書を購入しても 1 つ目のアルゴリズムの理解度が 10 に達しません。
-#
-#入力例 3
-#8 5 22
-#100 3 7 5 3 1
-#164 4 5 2 7 8
-#334 7 2 7 2 9
-#234 4 7 2 8 2
-#541 5 4 3 3 6
-#235 4 8 6 9 7
-#394 3 6 1 6 2
-#872 8 4 3 7 2
-#
-#出力例 3
-#1067
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, X = map(int, input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c, *a = map(int, input().split())
+        C.append(c)
+        A.append(a)
+
+    ans = float('inf')
+    for i in range(2**N):
+        cost = 0
+        alg = [0]*M
+        for j in range(N):
+            if i>>j & 1:
+                cost += C[j]
+                for k in range(M):
+                    alg[k] += A[j][k]
+        if all(a >= X for a in alg):
+            ans = min(ans, cost)
+    if ans == float('inf'):
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, X = map(int, input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c, *a = map(int, input().split())
+        C.append(c)
+        A.append(a)
+    ans = 10**9
+    for i in range(2**N):
+        cost = 0
+        alg = [0]*M
+        for j in range(N):
+            if (i >> j) & 1:
+                cost += C[j]
+                for k in range(M):
+                    alg[k] += A[j][k]
+        for k in range(M):
+            if alg[k] < X:
+                break
+        else:
+            ans = min(ans, cost)
+    print(ans if ans != 10**9 else -1)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, X = map(int, input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c, *a = map(int, input().split())
+        C.append(c)
+        A.append(a)
+    min_cost = 10**6
+    #bit全探索
+    for i in range(2**N):
+        #print(bin(i))
+        cost = 0
+        understand = [0]*M
+        for j in range(N):
+            if (i >> j) & 1:
+                cost += C[j]
+                for k in range(M):
+                    understand[k] += A[j][k]
+        #print("cost = ", cost)
+        #print("understand = ", understand)
+        #print("min_cost = ", min_cost)
+        if min_cost > cost and min(understand) >= X:
+            min_cost = cost
+    if min_cost == 10**6:
+        print(-1)
+    else:
+        print(min_cost)
+
+=======
+Suggestion 4
+
+def main():
+    N, M, X = map(int, input().split())
+    C = []
+    A = []
+    for i in range(N):
+        tmp = list(map(int, input().split()))
+        C.append(tmp[0])
+        A.append(tmp[1:])
+    ans = 10**9
+    for i in range(2**N):
+        tmp = [0] * M
+        cost = 0
+        for j in range(N):
+            if (i >> j) & 1:
+                cost += C[j]
+                for k in range(M):
+                    tmp[k] += A[j][k]
+        if min(tmp) >= X:
+            ans = min(ans, cost)
+    if ans == 10**9:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m,x = map(int, input().split())
+    c = []
+    a = []
+    for i in range(n):
+        tmp = list(map(int, input().split()))
+        c.append(tmp[0])
+        a.append(tmp[1:])
+    ans = -1
+    for i in range(1 << n):
+        cost = 0
+        skill = [0] * m
+        for j in range(n):
+            if i >> j & 1:
+                cost += c[j]
+                for k in range(m):
+                    skill[k] += a[j][k]
+        if min(skill) >= x:
+            if ans == -1:
+                ans = cost
+            else:
+                ans = min(ans, cost)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N,M,X = map(int,input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c,a = map(int,input().split())
+        C.append(c)
+        A.append(a)
+    #print(C)
+    #print(A)
+    #print(N,M,X)
+    min_cost = 1000000
+    for i in range(2**N):
+        #print(bin(i))
+        cost = 0
+        understand = [0]*M
+        for j in range(N):
+            if (i >> j) & 1 == 1:
+                #print(j)
+                cost += C[j]
+                for k in range(M):
+                    understand[k] += A[j][k]
+        #print(cost)
+        #print(understand)
+        if min(understand) >= X:
+            min_cost = min(min_cost,cost)
+    if min_cost == 1000000:
+        print(-1)
+    else:
+        print(min_cost)
+
+=======
+Suggestion 7
+
+def main():
+    N,M,X = map(int,input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c,a = map(int,input().split())
+        C.append(c)
+        A.append(a)
+    ans = 10**9
+    for i in range(2**N):
+        cost = 0
+        score = [0]*M
+        for j in range(N):
+            if (i>>j)%2 == 1:
+                cost += C[j]
+                for k in range(M):
+                    score[k] += A[j][k]
+        if min(score) >= X:
+            ans = min(ans,cost)
+    if ans == 10**9:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N,M,X = map(int,input().split())
+    C = []
+    A = []
+    for _ in range(N):
+        c,a = map(int,input().split())
+        C.append(c)
+        A.append(a)
+    #print(C)
+    #print(A)
+    ans = 10**10
+    for i in range(1,2**N):
+        cost = 0
+        level = [0]*M
+        for j in range(N):
+            if (i>>j)&1:
+                cost += C[j]
+                for k in range(M):
+                    level[k] += A[j][k]
+        #print(level)
+        if min(level) >= X:
+            ans = min(ans,cost)
+    if ans == 10**10:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 9
+
+def calc_cost(cost_list, book_list):
+    total_cost = 0
+    for i in range(len(book_list)):
+        total_cost += cost_list[i] * book_list[i]
+    return total_cost
+
+=======
+Suggestion 10
+
+def calcCost(costs, algos):
+    cost = 0
+    for i in range(len(costs)):
+        cost += costs[i] * algos[i]
+    return cost

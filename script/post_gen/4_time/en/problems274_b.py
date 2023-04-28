@@ -1,77 +1,163 @@
-#Problem Statement
-#There is a grid with H rows from top to bottom and W columns from left to right. Let (i, j) denote the square at the i-th row from the top and j-th column from the left.
-#The squares are described by characters C_{i,j}. If C_{i,j} is ., (i, j) is empty; if it is #, (i, j) contains a box.
-#For integers j satisfying 1 ≦ j ≦ W, let the integer X_j defined as follows.
-#X_j is the number of boxes in the j-th column. In other words, X_j is the number of integers i such that C_{i,j} is #.
-#Find all of X_1, X_2, ..., X_W.
-#
-#Constraints
-#1 ≦ H ≦ 1000
-#1 ≦ W ≦ 1000
-#H and W are integers.
-#C_{i, j} is . or #.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W
-#C_{1,1}C_{1,2}... C_{1,W}
-#C_{2,1}C_{2,2}... C_{2,W}
-#.
-#.
-#.
-#C_{H,1}C_{H,2}... C_{H,W}
-#
-#Output
-#Print X_1, X_2, ..., X_W in the following format:
-#X_1 X_2 ... X_W
-#
-#Sample Input 1
-#3 4
-##..#
-#.#.#
-#.#.#
-#
-#Sample Output 1
-#1 2 0 3
-#In the 1-st column, one square, (1, 1), contains a box. Thus, X_1 = 1.
-#In the 2-nd column, two squares, (2, 2) and (3, 2), contain a box. Thus, X_2 = 2.
-#In the 3-rd column, no squares contain a box. Thus, X_3 = 0.
-#In the 4-th column, three squares, (1, 4), (2, 4), and (3, 4), contain a box. Thus, X_4 = 3.
-#Therefore, the answer is (X_1, X_2, X_3, X_4) = (1, 2, 0, 3).
-#
-#Sample Input 2
-#3 7
-#.......
-#.......
-#.......
-#
-#Sample Output 2
-#0 0 0 0 0 0 0
-#There may be no square that contains a box.
-#
-#Sample Input 3
-#8 3
-#.#.
-####
-#.#.
-#.#.
-#.##
-#..#
-###.
-#.##
-#
-#Sample Output 3
-#2 7 4
-#
-#Sample Input 4
-#5 47
-#.#..#..#####..#...#..#####..#...#...###...#####
-#.#.#...#.......#.#...#......##..#..#...#..#....
-#.##....#####....#....#####..#.#.#..#......#####
-#.#.#...#........#....#......#..##..#...#..#....
-#.#..#..#####....#....#####..#...#...###...#####
-#
-#Sample Output 4
-#0 5 1 2 2 0 0 5 3 3 3 3 0 0 1 1 3 1 1 0 0 5 3 3 3 3 0 0 5 1 1 1 5 0 0 3 2 2 2 2 0 0 5 3 3 3 3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    c = [input() for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                break
+        else:
+            c[i] = ''
+    for j in range(w):
+        for i in range(h):
+            if c[i][j] == '#':
+                break
+        else:
+            for i in range(h):
+                c[i] = c[i][:j] + c[i][j+1:]
+    for i in range(h):
+        print(c[i])
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    l = []
+    for i in range(h):
+        l.append(input())
+    for j in range(w):
+        count = 0
+        for i in range(h):
+            if l[i][j] == '#':
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def solve(h, w, c):
+    res = []
+    for i in range(w):
+        count = 0
+        for j in range(h):
+            if c[j][i] == '#':
+                count += 1
+        res.append(count)
+    return res
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    C = [input() for i in range(H)]
+    for i in range(W):
+        print(sum([1 for j in range(H) if C[j][i] == '#']))
+
+=======
+Suggestion 5
+
+def problems274_b():
+    H, W = map(int, input().split())
+    C = [input() for _ in range(H)]
+    for i in range(W):
+        count = 0
+        for j in range(H):
+            if C[j][i] == '#':
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    c = [[0 for _ in range(w)] for _ in range(h)]
+    for i in range(h):
+        c[i] = input()
+    for i in range(w):
+        x = 0
+        for j in range(h):
+            if c[j][i] == '#':
+                x += 1
+        print(x)
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    grid = [input() for i in range(h)]
+    for i in range(w):
+        print(sum([1 if grid[j][i] == '#' else 0 for j in range(h)]))
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    c = []
+    for i in range(H):
+        c.append(list(map(str, input().split())))
+    for i in range(W):
+        count = 0
+        for j in range(H):
+            if c[j][i] == '#':
+                count += 1
+        print(count, end = ' ')
+
+=======
+Suggestion 9
+
+def get_input():
+    h, w = map(int, input().split())
+    grid = []
+    for i in range(h):
+        grid.append(input())
+
+    return h, w, grid
+
+=======
+Suggestion 10
+
+def main():
+    # Take input from stdin
+    input_str = input()
+    input_arr = input_str.split(" ")
+    H = int(input_arr[0])
+    W = int(input_arr[1])
+    #print("H = ", H, " W = ", W)
+    #print("input_str = ", input_str)
+    #print("input_arr = ", input_arr)
+    #print("input_arr[0] = ", input_arr[0])
+    #print("input_arr[1] = ", input_arr[1])
+    #print("input_arr[2] = ", input_arr[2])
+    #print("input_arr[3] = ", input_arr[3])
+    #print("input_arr[4] = ", input_arr[4])
+    #print("input_arr[5] = ", input_arr[5])
+    #print("input_arr[6] = ", input_arr[6])
+    #print("input_arr[7] = ", input_arr[7])
+    #print("input_arr[8] = ", input_arr[8])
+    #print("input_arr[9] = ", input_arr[9])
+    #print("input_arr[10] = ", input_arr[10])
+    #print("input_arr[11] = ", input_arr[11])
+    #print("input_arr[12] = ", input_arr[12])
+    #print("input_arr[13] = ", input_arr[13])
+    #print("input_arr[14] = ", input_arr[14])
+    #print("input_arr[15] = ", input_arr[15])
+    #print("input_arr[16] = ", input_arr[16])
+    #print("input_arr[17] = ", input_arr[17])
+    #print("input_arr[18] = ", input_arr[18])
+    #print("input_arr[19] = ", input_arr[19])
+    #print("input_arr[20] = ", input_arr[20])
+    #print("input_arr[21] = ", input_arr[21])
+    #print("input_arr[22] = ", input_arr[22])
+    #print("input_arr[23] = ", input_arr[23])
+    #print("input_arr[24] = ", input_arr[24])
+    #print("input_arr[25] = ", input_arr[25])
+    #print("input

@@ -1,37 +1,143 @@
-#問題文
-#高橋君と青木君がモンスターを闘わせます。
-#高橋君のモンスターは体力が A で攻撃力が B です。
-#青木君のモンスターは体力が C で攻撃力が D です。
-#高橋君→青木君→高橋君→青木君→... の順に攻撃を行います。
-#攻撃とは、相手のモンスターの体力の値を自分のモンスターの攻撃力のぶんだけ減らすことをいいます。
-#このことをどちらかのモンスターの体力が 0 以下になるまで続けたとき、
-#先に自分のモンスターの体力が 0 以下になった方の負け、そうでない方の勝ちです。
-#高橋君が勝つなら Yes、負けるなら No を出力してください。
-#
-#制約
-#1 ≦ A,B,C,D ≦ 100
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#高橋君が勝つなら Yes、負けるなら No を出力せよ。
-#
-#入力例 1
-#10 9 10 10
-#
-#出力例 1
-#No
-#はじめに、高橋君の攻撃で青木君のモンスターの体力が 10-9=1 になります。
-#次に、青木君の攻撃で高橋君のモンスターの体力が 10-10=0 になります。
-#高橋君のモンスターの体力が先に 0 以下になったため、高橋君の負けです。
-#
-#入力例 2
-#46 4 40 5
-#
-#出力例 2
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d = map(int, input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print('Yes')
+            break
+        a -= d
+        if a <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C, D = map(int, input().split())
+    while True:
+        C = C - B
+        if C <= 0:
+            print('Yes')
+            break
+        A = A - D
+        if A <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, D = map(int, input().split())
+
+    while True:
+        C -= B
+        if C <= 0:
+            print("Yes")
+            break
+        A -= D
+        if A <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            return
+        a -= d
+        if a <= 0:
+            print("No")
+            return
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C,D = map(int,input().split())
+    while True:
+        C -= B
+        if C <= 0:
+            print("Yes")
+            exit()
+        A -= D
+        if A <= 0:
+            print("No")
+            exit()
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    A, B, C, D = map(int, input().split())
+
+    # compute
+
+    # output
+    if (C-1)//B < (A-1)//D:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    A, B, C, D = map(int, input().split())
+
+    # compute
+
+    # output
+    if C <= 0:
+        print('No')
+    else:
+        if A % D == 0:
+            if C % B == 0:
+                if (A // D) >= (C // B):
+                    print('Yes')
+                else:
+                    print('No')
+            else:
+                if (A // D) >= (C // B + 1):
+                    print('Yes')
+                else:
+                    print('No')
+        else:
+            if C % B == 0:
+                if (A // D + 1) >= (C // B):
+                    print('Yes')
+                else:
+                    print('No')
+            else:
+                if (A // D + 1) >= (C // B + 1):
+                    print('Yes')
+                else:
+                    print('No')

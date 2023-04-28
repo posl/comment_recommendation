@@ -1,46 +1,137 @@
-#Problem Statement
-#We have a sequence of length N: A=(a_1,...,a_N). Additionally, you are given an integer K.
-#You can perform the following operation zero or more times.
-#Choose an integer i such that 1 ≦ i ≦ N-K, then swap the values of a_i and a_{i+K}.
-#Determine whether it is possible to sort A in ascending order.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#a_1 ... a_N
-#
-#Output
-#If it is possible to sort A in ascending order, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#5 2
-#3 4 1 3 4
-#
-#Sample Output 1
-#Yes
-#The following sequence of operations sorts A in ascending order.
-#Choose i=1 to swap the values of a_1 and a_3. A is now (1,4,3,3,4).
-#Choose i=2 to swap the values of a_2 and a_4. A is now (1,3,3,4,4).
-#
-#Sample Input 2
-#5 3
-#3 4 1 3 4
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#7 5
-#1 2 3 4 5 5 10
-#
-#Sample Output 3
-#Yes
-#No operations may be needed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n-k):
+        if a[i] >= a[i+k]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    if K == 1:
+        if A == sorted(A):
+            print("Yes")
+        else:
+            print("No")
+        exit()
+
+    A1 = A[0::K]
+    A2 = A[1::K]
+    if sorted(A1) == A1 and sorted(A2) == A2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n-k):
+        if a[i] < a[i+k]:
+            continue
+        else:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N-1):
+        if A[i] > A[i+1]:
+            if i+K < N:
+                if A[i] > A[i+K]:
+                    print("No")
+                    return
+            else:
+                if A[i] > A[-1]:
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n-k):
+        if a[i] < a[i+k]:
+            continue
+        else:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 7
+
+def solve(N, K, A):
+    # write your code here
+    return
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+ans = solve(N, K, A)
+print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a = sorted(a)
+    for i in range(n-k):
+        if a[i] >= a[i+k]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 1. 並び替え可能な数字は、k個毎に分割される
+    # 2. 並び替え可能な数字のグループは、1つのグループにまとめられる
+    # 3. 1つのグループ内で、並び替えが可能な数字は、グループの先頭の数字である
+    # 4. 並び替えが可能なグループの数は、n / k で判別できる
+    # 5. 並び替えが可能なグループの並び替えは、グループの先頭から行う
+    # 6. 並び替えが可能なグループの並び替えは、1つのグループ内で行う
+    # 7. 並び替えが可能なグループの並び替えは、グループの先頭の数字を昇順に並び替える
+    # 8. 並び替えが可能なグループの並び替えは、グループの先頭の数字を昇順に並び替えるのみで良い
+    # 9. 並び替えが可能なグループの並び替えは、グループの先頭の数字を昇順に並び替えるのみで良い
+    # 10. 並び替えが可能なグループの並び替えは、グループの先頭の数字を昇順に並び替えるのみで良い
+    # 11.

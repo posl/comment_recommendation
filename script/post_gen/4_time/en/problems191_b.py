@@ -1,34 +1,92 @@
-#Problem Statement
-#Given are an integer sequence A of length N, and an integer X.
-#Remove all elements that are equal to X from A, and arrange the remaining elements without changing the order to obtain the sequence A'. Print A'.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the elements of A' in order, with space in between.
-#
-#Sample Input 1
-#5 5
-#3 5 6 5 4
-#
-#Sample Output 1
-#3 6 4
-#Removing 5s from [3, 5, 6, 5, 4] results in [3, 6, 4].
-#
-#Sample Input 2
-#3 3
-#3 3 3
-#
-#Sample Output 2
-#A' can be a sequence with zero elements, in which case we should just print an empty line.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=" ")
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in a:
+        if i != x:
+            ans.append(i)
+    print(*ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i for i in a if i != x]
+    print(*a)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(*[i for i in a if i != x])
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(' '.join([str(i) for i in a if i != x]))
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    for i in range(N):
+        if A[i] != X:
+            print(A[i], end=' ')
+
+main()
+
+=======
+Suggestion 8
+
+def problems191_b():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i for i in a if i != x]
+    print(*a)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = [i for i in a if i != x]
+    for i in result:
+        print(i, end=" ")

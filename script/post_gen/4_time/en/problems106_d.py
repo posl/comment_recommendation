@@ -1,90 +1,153 @@
-#Problem Statement
-#In Takahashi Kingdom, there is a east-west railroad and N cities along it, numbered 1, 2, 3, ..., N from west to east.
-#A company called AtCoder Express possesses M trains, and the train i runs from City L_i to City R_i (it is possible that L_i = R_i).
-#Takahashi the king is interested in the following Q matters:
-#The number of the trains that runs strictly within the section from City p_i to City q_i, that is, the number of trains j such that p_i ≦ L_j and R_j ≦ q_i.
-#Although he is genius, this is too much data to process by himself. Find the answer for each of these Q queries to help him.
-#
-#Constraints
-#N is an integer between 1 and 500 (inclusive).
-#M is an integer between 1 and 200  000 (inclusive).
-#Q is an integer between 1 and 100  000 (inclusive).
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#Output
-#Print Q lines. The i-th line should contain the number of the trains that runs strictly within the section from City p_i to City q_i.
-#
-#Sample Input 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#Sample Output 1
-#3
-#As all the trains runs within the section from City 1 to City 2, the answer to the only query is 3.
-#
-#Sample Input 2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#Sample Output 2
-#1
-#1
-#The first query is on the section from City 1 to 7. There is only one train that runs strictly within that section: Train 1.
-#The second query is on the section from City 3 to 10. There is only one train that runs strictly within that section: Train 3.
-#
-#Sample Input 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#Sample Output 3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m,q=map(int,input().split())
+    lr=[]
+    for _ in range(m):
+        l,r=map(int,input().split())
+        lr.append((l,r))
+    pq=[]
+    for _ in range(q):
+        p,q=map(int,input().split())
+        pq.append((p,q))
+    return n,m,q,lr,pq
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    PQ = [list(map(int, input().split())) for _ in range(Q)]
+    LR.sort(key=lambda x: x[0])
+    for pq in PQ:
+        print(sum(1 for lr in LR if pq[0] <= lr[0] and lr[1] <= pq[1]))
+
+=======
+Suggestion 3
+
+def main():
+    n, m, q = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(m)]
+    pq = [list(map(int, input().split())) for _ in range(q)]
+    lr.sort(key=lambda x: x[1])
+    for i in range(q):
+        p, q = pq[i]
+        cnt = 0
+        for j in range(m):
+            if lr[j][0] >= p and lr[j][1] <= q:
+                cnt += 1
+        print(cnt)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    for i in range(Q):
+        train = 0
+        for j in range(M):
+            if (p[i] <= L[j] and R[j] <= q[i]):
+                train += 1
+        print(train)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = []
+    for i in range(M):
+        LR.append(list(map(int, input().split())))
+    PQ = []
+    for i in range(Q):
+        PQ.append(list(map(int, input().split())))
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if LR[j][0] >= PQ[i][0] and LR[j][1] <= PQ[i][1]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n, m, q = map(int, input().split())
+    trains = []
+    for i in range(m):
+        trains.append(list(map(int, input().split())))
+    queries = []
+    for i in range(q):
+        queries.append(list(map(int, input().split())))
+
+    for query in queries:
+        count = 0
+        for train in trains:
+            if query[0] <= train[0] and train[1] <= query[1]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, m, q = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(m)]
+    pq = [list(map(int, input().split())) for _ in range(q)]
+    return n, m, q, lr, pq
+
+=======
+Suggestion 8
+
+def get_input():
+    n, m, q = map(int, input().split())
+    lr = [list(map(int, input().split())) for i in range(m)]
+    pq = [list(map(int, input().split())) for i in range(q)]
+    return n, m, q, lr, pq
+
+=======
+Suggestion 9
+
+def main():
+    n,m,q = map(int,input().split())
+    train = [[0 for i in range(n)] for j in range(m)]
+    for i in range(m):
+        l,r = map(int,input().split())
+        train[i][l-1] += 1
+        if r < n:
+            train[i][r] -= 1
+    for i in range(m):
+        for j in range(n-1):
+            train[i][j+1] += train[i][j]
+    for i in range(m):
+        for j in range(n-1):
+            train[i][j+1] += train[i][j]
+    for i in range(q):
+        p,q = map(int,input().split())
+        print(train[i][q-1]-train[i][p-2])
+
+=======
+Suggestion 10
+
+def train_count(n, m, q, trains, queries):
+    trains_count = []
+    for query in queries:
+        count = 0
+        for train in trains:
+            if query[0] <= train[0] and train[1] <= query[1]:
+                count += 1
+        trains_count.append(count)
+    return trains_count

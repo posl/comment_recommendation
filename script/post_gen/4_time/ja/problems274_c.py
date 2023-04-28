@@ -1,55 +1,164 @@
-#問題文
-#あなたはアメーバの観察記録をつけました。
-#最初 1 匹のアメーバがおり、番号は 1 です。
-#観察記録は時系列順に N 個あり、i 番目の観察記録は「番号 A_i のアメーバが分裂して消滅し、新たに 2 匹のアメーバが生まれ、それらにそれぞれ 2i,2i+1 と番号をつけた」というものです。
-#このとき、アメーバ A_i を アメーバ 2i,2i+1 の親と呼びます。
-#各 k=1,...,2N+1 について、アメーバ k から何代親を遡るとアメーバ 1 になるか求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#観察記録は矛盾していない。すなわち
-#1≦ A_i ≦ 2i-1
-#A_i は相異なる整数
-#
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#2N+1 行出力せよ。k 行目にはアメーバ k から何代親を遡るとアメーバ 1 になるかを出力せよ。
-#
-#入力例 1
-#2
-#1 2
-#
-#出力例 1
-#0
-#1
-#1
-#2
-#2
-#アメーバ 1 からアメーバ 2,3 が生まれ、アメーバ 2 からアメーバ 4,5 が生まれました。
-#アメーバ 1 は 0 代遡るとアメーバ 1 になります。
-#アメーバ 2 は 1 代遡るとアメーバ 1 になります。
-#アメーバ 3 は 1 代遡るとアメーバ 1 になります。
-#アメーバ 4 は 1 代遡るとアメーバ 2 になり、2 代遡るとアメーバ 1 になります。
-#アメーバ 5 は 1 代遡るとアメーバ 2 になり、2 代遡るとアメーバ 1 になります。
-#
-#入力例 2
-#4
-#1 3 5 2
-#
-#出力例 2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2 * N + 1)
+    for i in range(N):
+        ans[A[i]] = i + 1
+    for i in range(N, 0, -1):
+        ans[i] = ans[2 * i] + ans[2 * i + 1]
+    for i in range(1, 2 * N + 1):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    ans[1] = 0
+    for i in range(n):
+        ans[2 * (i + 1)] = ans[a[i]] + 1
+        ans[2 * (i + 1) + 1] = ans[2 * (i + 1)]
+    for i in range(1, 2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0]*(2*n+1)
+    for i in range(n):
+        ans[a[i]] = i+1
+    for i in range(1,2*n+1):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[A[i]] = i+1
+    for i in range(1, 2*N+1):
+        j = ans[i]
+        k = 0
+        while j > 0:
+            j = j//2
+            k += 1
+        ans[i] = k-1
+    for i in range(1, 2*N+1):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * (2*N+1)
+    for i in range(N):
+        ans[A[i]] = i+1
+    for i in range(2*N, 0, -1):
+        if ans[i] != 0:
+            ans[i//2] = max(ans[i//2], ans[i]+1)
+    for i in range(1, 2*N+1):
+        print(ans[i]-1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2*n+1)
+    for i in range(n):
+        ans[a[i]] = i+1
+    for i in range(2*n, 0, -1):
+        if ans[i] == 0:
+            ans[i] = ans[i*2] + ans[i*2+1]
+    for i in range(1, 2*n+1):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = [0]*(2*n+1)
+    p[1] = 1
+    for i in range(n):
+        p[2*i+2] = p[i+1]
+        p[2*i+3] = p[i+1]
+    for i in range(2*n+1):
+        print(p[i+1])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    ans = [0]*(2*n+1)
+    for i in range(1, n+1):
+        ans[i] = ans[a[i]] + 1
+        ans[i*2] = ans[i]
+        ans[i*2+1] = ans[i]
+    for i in range(1, 2*n+1):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def dfs(i, g, v, d):
+    v[i] = True
+    for j in g[i]:
+        if v[j] == False:
+            d[j] = d[i] + 1
+            dfs(j, g, v, d)
+
+n = int(input())
+a = list(map(int, input().split()))
+g = [[] for i in range(2*n+1)]
+for i in range(n):
+    g[a[i]].append(i+1)
+    g[a[i]+1].append(i+1)
+v = [False]*(2*n+1)
+d = [0]*(2*n+1)
+dfs(1, g, v, d)
+for i in range(1, 2*n+1):
+    print(d[i])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 親の番号を格納する配列
+    parents = [0] * (2 * N + 1)
+
+    for i in range(N):
+        parents[A[i]] = i + 1
+
+    # 親を遡っていき、親がいなくなるまでの数を出力する
+    for i in range(1, 2 * N + 1):
+        p = parents[i]
+        cnt = 0
+        while p > 0:
+            p //= 2
+            cnt += 1
+
+        print(cnt)

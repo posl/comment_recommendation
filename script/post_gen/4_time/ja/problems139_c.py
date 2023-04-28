@@ -1,43 +1,167 @@
-#問題文
-#左右一列に N 個のマスが並んでいます。
-#左から i 番目のマスの高さは H_i です。
-#あなたは好きなマスに降り立ち、右隣のマスの高さが今居るマスの高さ以下である限り右隣のマスへ移動し続けます。
-#最大で何回移動できるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#H_1 H_2 ... H_N
-#
-#出力
-#移動できる回数の最大値を出力せよ。
-#
-#入力例 1
-#5
-#10 4 8 7 3
-#
-#出力例 1
-#2
-#左から 3 番目のマスに降り立つと、右に 2 回移動できます。
-#
-#入力例 2
-#7
-#4 4 5 6 6 5 5
-#
-#出力例 2
-#3
-#左から 4 番目のマスに降り立つと、右に 3 回移動できます。
-#
-#入力例 3
-#4
-#1 2 3 4
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for i in range(n-1):
+        if h[i] >= h[i+1]:
+            cnt += 1
+        else:
+            ans = max(ans, cnt)
+            cnt = 0
+    ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for i in range(N-1):
+        if H[i] >= H[i+1]:
+            cnt += 1
+        else:
+            ans = max(ans, cnt)
+            cnt = 0
+    ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    tmp = 0
+    for i in range(n-1):
+        if h[i] >= h[i+1]:
+            tmp += 1
+        else:
+            tmp = 0
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h_list = list(map(int, input().split()))
+    count = 0
+    max_count = 0
+    for i in range(n-1):
+        if h_list[i] >= h_list[i+1]:
+            count += 1
+        else:
+            count = 0
+        max_count = max(max_count, count)
+    print(max_count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    max_count = 0
+    for i in range(1, n):
+        if h[i-1] >= h[i]:
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 0
+    max_count = 0
+    for i in range(N - 1):
+        if H[i] >= H[i + 1]:
+            count += 1
+        else:
+            max_count = max(max_count, count)
+            count = 0
+    max_count = max(max_count, count)
+    print(max_count)
+
+=======
+Suggestion 7
+
+def resolve():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    cnt = 0
+    max_cnt = 0
+    for i in range(N - 1):
+        if H[i] >= H[i + 1]:
+            cnt += 1
+        else:
+            cnt = 0
+        max_cnt = max(cnt, max_cnt)
+
+    print(max_cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if i == 0:
+            count += 1
+            continue
+        if H[i-1] <= H[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 0
+    flag = 0
+    for i in range(N-1):
+        if H[i] >= H[i+1]:
+            count += 1
+            flag = 1
+        else:
+            count = 0
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    heights = [int(i) for i in input().split()]
+    max_count = 0
+    count = 0
+    for i in range(1, n):
+        if heights[i-1] >= heights[i]:
+            count += 1
+        else:
+            count = 0
+        if count > max_count:
+            max_count = count
+    print(max_count)

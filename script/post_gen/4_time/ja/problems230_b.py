@@ -1,39 +1,113 @@
-#問題文
-#文字列 S が文字列 T の部分文字列であるとは、次の条件を満たすような整数 i, j (1 ≦ i ≦ j ≦ |T|) が存在することを言います。
-#T の i 文字目から j 文字目までを順番を変えずに抜き出してできる文字列が S と一致する。
-#文字列 T を oxx を 10^5 個結合した文字列として定めます。
-#文字列 S が与えられるので、 S が T の部分文字列である場合は Yes を、そうでない場合は No を出力してください。
-#
-#制約
-#S は o と x のみからなる文字列である。
-#S の長さは 1 以上 10 以下である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が条件を満たす場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#xoxxoxxo
-#
-#出力例 1
-#Yes
-#T のはじめの方を抜き出すと oxxoxxoxxoxx... となっています。
-#T の 3 文字目から 10 文字目までを抜き出した文字列は S と一致するので、 S は T の部分文字列です。よって Yes を出力します。
-#
-#入力例 2
-#xxoxxoxo
-#
-#出力例 2
-#No
-#T から文字列をどのように抜き出しても S と一致しないので、S は T の部分文字列でありません。よって No を出力します。
-#
-#入力例 3
-#ox
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = "ox" * 10**5
+    if s in t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    T = 'ox' * 10 ** 5
+    if S in T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.count('o') + (15 - len(s)) >= 8:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    S = input()
+    # compute
+    T = 'ox'*100000
+    # output
+    if S in T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S.count("o") == 0:
+        print("No")
+        return
+    if S.count("x") == 0:
+        print("Yes")
+        return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = s * 100000
+    if s in t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s.count("o") == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S.find("o") != -1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    
+    if len(s) >= 1 and len(s) <= 10:
+        if s.count('o') == 0:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    s=input()
+    if s.count("o")>=8 or len(s)==0:
+        print("YES")
+    else:
+        print("NO")

@@ -1,60 +1,211 @@
-#問題文
-#N 個の袋があります。
-#袋 i には L_i 個のボールが入っていて、袋 i の j(1≦ j≦ L_i) 番目のボールには正の整数 a_{i,j} が書かれています。  
-#それぞれの袋から 1 つずつボールを取り出します。
-#取り出したボールに書かれた数の総積が X になるような取り出し方は何通りありますか？  
-#ただし、書かれた数が同じであっても全てのボールは区別します。
-#
-#制約
-#N ≧ 2
-#L_i ≧ 2
-#袋に入っているボールの個数の総積は 10^5 を超えない。すなわち、prod_{i=1}^{N}L_i ≦ 10^5
-#1 ≦ a_{i,j} ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#入力に含まれる値は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2 40
-#3 1 8 4
-#2 10 5
-#
-#出力例 1
-#2
-#袋 1 の 3 番目のボールと袋 2 の 1 番目のボールを選ぶと、a_{1,3} × a_{2,1} = 4 × 10 = 40 となります。
-#袋 1 の 2 番目のボールと袋 2 の 2 番目のボールを選ぶと、a_{1,2} × a_{2,2} = 8 × 5 = 40 となります。
-#これ以外に総積が 40 になる取り出し方は存在しないので、答えは 2 です。
-#
-#入力例 2
-#3 200
-#3 10 10 10
-#3 10 10 10
-#5 2 2 2 2 2
-#
-#出力例 2
-#45
-#書かれた数が同じであっても全てのボールは区別することに注意してください。  
-#
-#入力例 3
-#3 1000000000000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#
-#出力例 3
-#0
-#総積が X になる取り出し方が 1 つも存在しないこともあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    L = []
+    A = []
+    for i in range(N):
+        l, *a = map(int, input().split())
+        L.append(l)
+        A.append(a)
+    cnt = 0
+    for i in range(1, 2**N):
+        s = []
+        for j in range(N):
+            if i & (1<<j):
+                s.append(A[j])
+        if len(s) == 0:
+            continue
+        r = [1]
+        for k in range(len(s)):
+            r = [x*y for x in r for y in s[k]]
+        if sum(r) == X:
+            cnt += 1
+    print(cnt)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N,X = map(int,input().split())
+    L = []
+    A = []
+    for i in range(N):
+        l = list(map(int,input().split()))
+        L.append(l[0])
+        A.append(l[1:])
+    #print(L)
+    #print(A)
+    #print(N,X)
+    #print(len(L))
+    #print(len(A))
+    from itertools import product
+    #print(list(product(*A)))
+    #print(len(list(product(*A))))
+    counter = 0
+    for i in list(product(*A)):
+        #print(i)
+        if prod(i) == X:
+            counter += 1
+    print(counter)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    l = []
+    a = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+        a.append(l[i][1:])
+    #print(l)
+    #print(a)
+    count = 0
+    for i in range(2**n):
+        #print(i)
+        tmp = []
+        for j in range(n):
+            if i & (1<<j):
+                tmp.append(a[j])
+        #print(tmp)
+        if len(tmp) == 0:
+            continue
+        tmp2 = []
+        for j in range(len(tmp)):
+            tmp2.extend(tmp[j])
+        #print(tmp2)
+        if x == 1:
+            count += 1
+        else:
+            if x % prod(tmp2) == 0:
+                count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n,x = map(int, input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split()))[1:])
+    ans = 0
+    for i in range(1,2**n):
+        s = 1
+        for j in range(n):
+            if i & (1<<j):
+                s *= l[j][0]
+        if s == x:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    print(L)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+
+    bags = []
+    for i in range(n):
+        bags.append(list(map(int, input().split())))
+
+    count = 0
+    for i in range(n):
+        for j in range(bags[i][0]):
+            count += bags[i][j+1]
+
+    if count < x:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int, input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+
+    count = 0
+    for i in range(n):
+        for j in range(l[i][0]):
+            if x % l[i][j+1] == 0:
+                #print("i,j", i,j)
+                count += 1
+
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int, input().split())
+    l = []
+    a = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+        a.append(l[i][1:])
+    ans = 0
+    for i in range(1,2**n):
+        s = 1
+        for j in range(n):
+            if i&1<<j:
+                s*=l[j][0]
+        if x%s==0:
+            for k in range(n):
+                if i&1<<k:
+                    for j in range(l[k][0]):
+                        if x%s==0:
+                            x//=a[k][j]
+                        else:
+                            break
+            if x%s==0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int,input().split())))
+    #print(l)
+    count = 0
+    for i in range(n):
+        for j in range(l[i][0]):
+            if x % l[i][j+1] == 0:
+                count += 1
+    print(count)
+main()
+
+=======
+Suggestion 10
+
+def product(a):
+    p = 1
+    for i in a:
+        p *= i
+    return p

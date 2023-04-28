@@ -1,42 +1,162 @@
-#Problem Statement
-#We have 4 cards with an integer 1 written on it, 4 cards with 2, ..., 4 cards with N, for a total of 4N cards.
-#Takahashi shuffled these cards, removed one of them, and gave you a pile of the remaining 4N-1 cards. The i-th card (1 ≦ i ≦ 4N - 1) of the pile has an integer A_i written on it.
-#Find the integer written on the card removed by Takahashi.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N  (1 ≦ i ≦ 4N - 1)
-#For each k  (1 ≦ k ≦ N), there are at most 4 indices i such that A_i = k.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_{4N - 1}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#Sample Output 1
-#3
-#Takahashi removed a card with 3 written on it.
-#
-#Sample Input 2
-#1
-#1 1 1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = [0] * (N + 1)
+    for i in range(4 * N - 1):
+        cnt[A[i]] += 1
+    for i in range(1, N + 1):
+        if cnt[i] % 2 == 1:
+            return i
+
+print(solve())
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    for i in d:
+        if d[i] % 2 != 0:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1])
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if N % 2 == 0:
+        if A[0] != A[1]:
+            print(0)
+            return
+        if A[-1] != A[-2]:
+            print(0)
+            return
+        for i in range(2, N * 2, 2):
+            if A[i] != A[i + 1]:
+                print(0)
+                return
+    else:
+        if A[0] != A[1]:
+            print(0)
+            return
+        if A[-1] != A[-2]:
+            print(0)
+            return
+        for i in range(2, N * 2 - 1, 2):
+            if A[i] != A[i + 1]:
+                print(0)
+                return
+        if A[N * 2 - 1] != A[N * 2 - 2]:
+            print(0)
+            return
+    print(pow(2, N // 2, 10 ** 9 + 7))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    cards = list(map(int, input().split()))
+    cards.sort()
+    if n % 2 == 0:
+        if cards[0] != cards[1]:
+            print(0)
+            return
+        if cards[-1] != cards[-2]:
+            print(0)
+            return
+        for i in range(1, n):
+            if cards[2 * i - 1] != cards[2 * i]:
+                print(0)
+                return
+        print(pow(2, n // 2, 1000000007))
+        return
+    else:
+        if cards[0] != cards[1]:
+            print(0)
+            return
+        if cards[-1] != cards[-2]:
+            print(0)
+            return
+        for i in range(1, n):
+            if cards[2 * i - 1] != cards[2 * i]:
+                print(0)
+                return
+        print(pow(2, n // 2, 1000000007))
+        return
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    cards = input().split()
+    cards = [int(i) for i in cards]
+    for i in range(1,n+1):
+        if cards.count(i) == 4:
+            continue
+        else:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def print_answer(N, A):
+    #print(N)
+    #print(A)
+    d = {}
+    for a in A:
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+    #print(d)
+    for k in d:
+        if d[k] % 2 == 1:
+            print(k)
+            break
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+
+    print(A[n-1])

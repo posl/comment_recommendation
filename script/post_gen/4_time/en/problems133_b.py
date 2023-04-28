@@ -1,60 +1,156 @@
-#Problem Statement
-#There are N points in a D-dimensional space.
-#The coordinates of the i-th point are (X_{i1}, X_{i2}, ..., X_{iD}).
-#The distance between two points with coordinates (y_1, y_2, ..., y_D) and (z_1, z_2, ..., z_D) is ((y_1 - z_1)^2 + (y_2 - z_2)^2 + ... + (y_D - z_D)^2)^(1/2).
-#How many pairs (i, j) (i < j) are there such that the distance between the i-th point and the j-th point is an integer?
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10
-#1 ≦ D ≦ 10
-#-20 ≦ X_{ij} ≦ 20
-#No two given points have the same coordinates. That is, if i ≠ j, there exists k such that X_{ik} ≠ X_{jk}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#X_{11} X_{12} ... X_{1D}
-#X_{21} X_{22} ... X_{2D}
-#.
-#.
-#.
-#X_{N1} X_{N2} ... X_{ND}
-#
-#Output
-#Print the number of pairs (i, j) (i < j) such that the distance between the i-th point and the j-th point is an integer.
-#
-#Sample Input 1
-#3 2
-#1 2
-#5 5
-#-2 8
-#
-#Sample Output 1
-#1
-#The number of pairs with an integer distance is one, as follows:
-#The distance between the first point and the second point is (|1-5|^2 + |2-5|^2)^(1/2) = 5, which is an integer.
-#The distance between the second point and the third point is (|5-(-2)|^2 + |5-8|^2)^(1/2) = (58)^(1/2), which is not an integer.
-#The distance between the third point and the first point is (|-2-1|^2+|8-2|^2)^(1/2) = 3(5)^(1/2), which is not an integer.
-#
-#Sample Input 2
-#3 4
-#-3 7 8 2
-#-12 1 10 2
-#-2 8 9 3
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5 1
-#1
-#2
-#3
-#4
-#5
-#
-#Sample Output 3
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dist = 0
+            for k in range(d):
+                dist += (x[i][k] - x[j][k])**2
+            if dist**0.5 == int(dist**0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    X = []
+    for i in range(N):
+        X.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            distance = 0
+            for k in range(D):
+                distance += (X[i][k] - X[j][k])**2
+            if int(distance**0.5)**2 == distance:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    points = []
+    for i in range(n):
+        points.append(list(map(int, input().split())))
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            distance = 0
+            for k in range(d):
+                distance += (points[i][k] - points[j][k])**2
+            if (distance**0.5).is_integer():
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def get_input():
+    N, D = map(int, input().split())
+    X = []
+    for i in range(N):
+        X.append(list(map(int, input().split())))
+    return N, D, X
+
+=======
+Suggestion 5
+
+def distance(x, y):
+    sum = 0
+    for i in range(len(x)):
+        sum += (x[i] - y[i]) ** 2
+    return sum ** 0.5
+
+n, d = map(int, input().split())
+x = [list(map(int, input().split())) for _ in range(n)]
+ans = 0
+for i in range(n):
+    for j in range(i + 1, n):
+        if distance(x[i], x[j]).is_integer():
+            ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def get_input():
+    n, d = map(int, input().split())
+    xs = [list(map(int, input().split())) for _ in range(n)]
+    return n, d, xs
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    import math
+    n, d = map(int, sys.stdin.readline().split())
+    x = []
+    for i in range(n):
+        x.append(list(map(int, sys.stdin.readline().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dist = 0
+            for k in range(d):
+                dist += (x[i][k] - x[j][k]) ** 2
+            if math.sqrt(dist).is_integer():
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input():
+    n,d = map(int, input().split())
+    x = []
+    for i in range(n):
+        x.append(list(map(int, input().split())))
+    return n,d,x
+
+=======
+Suggestion 9
+
+def distance(p1, p2):
+    return sum([(a-b)**2 for a, b in zip(p1, p2)])**0.5
+
+N, D = [int(x) for x in input().split()]
+points = [[int(x) for x in input().split()] for _ in range(N)]
+count = 0
+for i in range(N):
+    for j in range(i+1, N):
+        if distance(points[i], points[j]).is_integer():
+            count += 1
+print(count)
+
+=======
+Suggestion 10
+
+def is_integer_distance(x, y):
+  distance = 0
+  for i in range(len(x)):
+    distance += (x[i] - y[i]) ** 2
+  if distance ** (1/2) % 1 == 0:
+    return True
+  else:
+    return False
+
+n, d = map(int, input().split())
+x = [list(map(int, input().split())) for i in range(n)]
+count = 0
+
+for i in range(n):
+  for j in range(i+1, n):
+    if is_integer_distance(x[i], x[j]):
+      count += 1
+print(count)

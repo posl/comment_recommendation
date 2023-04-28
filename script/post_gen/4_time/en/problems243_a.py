@@ -1,44 +1,171 @@
-#Problem Statement
-#Three people live in Takahashi's house: Takahashi, his father, and his mother. All of them wash their hair in the bathroom each night.
-#His father, his mother, and Takahashi take a bath in this order and use A, B, and C milliliters of shampoo, respectively.
-#This morning, the bottle contained V milliliters of shampoo. Without refilling, who will be the first to run short of shampoo to wash their hair?
-#
-#Constraints
-#1 ≦ V,A,B,C ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#V A B C
-#
-#Output
-#If the first person to run short of shampoo to wash their hair is Takahashi's father, print F; if it is Takahashi's mother, print M; if it is Takahashi, print T.
-#
-#Sample Input 1
-#25 10 11 12
-#
-#Sample Output 1
-#T
-#Now, they have 25 milliliters of shampoo.
-#First, Takahashi's father uses 10 milliliters, leaving 15.
-#Next, Takahashi's mother uses 11 milliliters, leaving 4.
-#Finally, Takahashi tries to use 12 milliliters and runs short of shampoo since only 4 is remaining.
-#
-#Sample Input 2
-#30 10 10 10
-#
-#Sample Output 2
-#F
-#Now, they have 30 milliliters of shampoo.
-#First, Takahashi's father uses 10 milliliters, leaving 20.
-#Next, Takahashi's mother uses 10 milliliters, leaving 10.
-#Then, Takahashi uses 10 milliliters, leaving 0.
-#Next day, Takahashi's father tries to use 10 milliliters and runs short of shampoo since only 0 is remaining.
-#
-#Sample Input 3
-#100000 1 1 1
-#
-#Sample Output 3
-#M
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if A > B:
+        A, B = B, A
+    if A > C:
+        A, C = C, A
+    if B > C:
+        B, C = C, B
+    if V < A:
+        print('F')
+    elif V < B:
+        print('M')
+    elif V < C:
+        print('T')
+    else:
+        print('T')
+
+=======
+Suggestion 2
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if V < A:
+        print("F")
+    elif V < B:
+        print("M")
+    elif V < C:
+        print("T")
+    else:
+        print("M")
+
+=======
+Suggestion 3
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if V % A == 0:
+        print("F")
+    elif V % B == 0:
+        print("M")
+    elif V % C == 0:
+        print("T")
+
+=======
+Suggestion 4
+
+def main():
+    v,a,b,c = map(int,input().split())
+    if a>b:
+        a,b = b,a
+    if a>c:
+        a,c = c,a
+    if b>c:
+        b,c = c,b
+    if v%a==0:
+        print("F")
+    elif v%b==0:
+        print("M")
+    elif v%c==0:
+        print("T")
+    else:
+        print("F")
+
+=======
+Suggestion 5
+
+def main():
+    v,a,b,c = map(int, input().split())
+    v -= a
+    if v <= 0:
+        print('F')
+        return
+    v -= b
+    if v <= 0:
+        print('M')
+        return
+    v -= c
+    if v <= 0:
+        print('T')
+        return
+
+=======
+Suggestion 6
+
+def main():
+    v,a,b,c = map(int,input().split())
+    if v <= a:
+        print("F")
+    elif v <= a+b:
+        print("M")
+    elif v <= a+b+c:
+        print("T")
+
+=======
+Suggestion 7
+
+def main():
+    v, a, b, c = map(int, input().split())
+    if v % a == 0:
+        if v % b == 0:
+            if v % c == 0:
+                print("M")
+            else:
+                print("F")
+        else:
+            print("T")
+    else:
+        print("F")
+
+=======
+Suggestion 8
+
+def main():
+    V,A,B,C = [int(i) for i in input().split()]
+    if A >= V:
+        print('F')
+    elif B >= V:
+        print('M')
+    elif C >= V:
+        print('T')
+    else:
+        print('M')
+
+=======
+Suggestion 9
+
+def main():
+    V,A,B,C = map(int,input().split())
+    if A + B + C <= V:
+        print("M")
+    elif A + B <= V:
+        print("T")
+    elif A <= V:
+        print("F")
+    else:
+        print("M")
+
+=======
+Suggestion 10
+
+def main():
+    V, A, B, C = map(int, input().split())
+    if A > B:
+        if B > C:
+            print("F")
+        elif C > B:
+            if V - A >= 0:
+                print("T")
+            else:
+                print("F")
+    elif B > A:
+        if A > C:
+            print("M")
+        elif C > A:
+            if V - B >= 0:
+                print("T")
+            else:
+                print("M")
+    elif A == B:
+        if A > C:
+            print("M")
+        elif C > A:
+            if V - A >= 0:
+                print("T")
+            else:
+                print("M")

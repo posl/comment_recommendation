@@ -1,34 +1,90 @@
-#Problem Statement
-#Takahashi is solving quizzes. He has easily solved all but the last one.
-#The last quiz has three choices: 1, 2, and 3.
-#With his supernatural power, Takahashi has found out that the choices A and B are both wrong.
-#Print the correct choice for this problem.
-#
-#Constraints
-#Each of the numbers A and B is 1, 2, or 3.
-#A and B are different.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A
-#B
-#
-#Output
-#Print the correct choice.
-#
-#Sample Input 1
-#3
-#1
-#
-#Sample Output 1
-#2
-#When we know 3 and 1 are both wrong, the correct choice is 2.
-#
-#Sample Input 2
-#1
-#2
-#
-#Sample Output 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1:
+        if b == 2:
+            print(3)
+        else:
+            print(2)
+    elif a == 2:
+        if b == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if b == 1:
+            print(2)
+        else:
+            print(1)
+
+=======
+Suggestion 2
+
+def main():
+    a = int(input())
+    b = int(input())
+
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 3 and b == 2:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    b = int(input())
+
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 2:
+        print(1)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 3 and b == 1:
+        print(2)
+
+=======
+Suggestion 4
+
+def main():
+    a = int(input())
+    b = int(input())
+    print(6 - a - b)
+
+=======
+Suggestion 5
+
+def main():
+    # a = int(input())
+    # b = int(input())
+    # print(6-a-b)
+    print(6-int(input())-int(input()))
+
+=======
+Suggestion 6
+
+def main():
+  a = int(input())
+  b = int(input())
+  print(6-a-b)
+
+main()

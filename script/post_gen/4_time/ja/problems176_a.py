@@ -1,32 +1,93 @@
-#問題文
-#高橋君はたこ焼きが好きです。
-#たこ焼き器を使うと、1 度に最大で X 個のたこ焼きを作ることができます。これにかかる時間は作る個数によらず T 分です。
-#N 個のたこ焼きを作るためには何分必要ですか？
-#
-#制約
-#1 ≦ N,X,T ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X T
-#
-#出力
-#N 個のたこ焼きを作るために必要な時間の最小値を整数で出力せよ。
-#
-#入力例 1
-#20 12 6
-#
-#出力例 1
-#12
-#最初の 6 分で 12 個のたこ焼きを作れ、次の 6 分でさらに 8 個のたこ焼きを作れるので、計 12 分で 20 個のたこ焼きを作ることができます。
-#6 分で 12 個作れるとは、1 分で 2 個作れるという意味ではないことに注意してください。
-#
-#入力例 2
-#1000 1 1000
-#
-#出力例 2
-#1000000
-#作るのにとても時間がかかるたこ焼きのようです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X, T = map(int, input().split())
+    if N % X == 0:
+        ans = int(N / X) * T
+    else:
+        ans = (int(N / X) + 1) * T
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, x, t = map(int, input().split())
+    ans = 0
+    while n > 0:
+        ans += t
+        n -= x
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,X,T = map(int,input().split())
+    if N % X == 0:
+        print(int(N/X)*T)
+    else:
+        print((int(N/X)+1)*T)
+
+=======
+Suggestion 4
+
+def solve():
+    N,X,T = map(int,input().split())
+    if N%X == 0:
+        print(N//X*T)
+    else:
+        print((N//X+1)*T)
+
+=======
+Suggestion 5
+
+def main():
+    N,X,T = map(int, input().split())
+    if N%X == 0:
+        print((N//X)*T)
+    else:
+        print((N//X+1)*T)
+main()
+
+=======
+Suggestion 6
+
+def solve():
+    n,x,t = map(int,input().split())
+    a = n // x
+    b = n % x
+    if b != 0:
+        a += 1
+    print(a * t)
+
+=======
+Suggestion 7
+
+def main():
+    N,X,T = map(int,input().split())
+    print((N+X-1)//X*T)
+
+=======
+Suggestion 8
+
+def main():
+    n,x,t = map(int, input().split())
+    print((n+x-1)//x*t)
+
+=======
+Suggestion 9
+
+def main():
+    n,x,t = map(int,input().split())
+    print(-(-n//x)*t)
+
+=======
+Suggestion 10
+
+def main():
+    N, X, T = map(int, input().split())
+    print( ((N+X-1)//X)*T )

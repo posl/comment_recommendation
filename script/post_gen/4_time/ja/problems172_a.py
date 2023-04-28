@@ -1,29 +1,26 @@
-#問題文
-#整数 a が入力されます。値 a + a^2 + a^3 を出力してください。
-#
-#制約
-#1 ≦ a ≦ 10
-#a は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a
-#
-#出力
-#値 a + a^2 + a^3 を整数として出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#14
-#a = 2 のとき、a + a^2 + a^3 = 2 + 2^2 + 2^3 = 2 + 4 + 8 = 14 となります。
-#解答は整数として出力してください。14.0 などの出力は不正解と判定されます。
-#
-#入力例 2
-#10
-#
-#出力例 2
-#1110
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    print(a + a**2 + a**3)
+
+=======
+Suggestion 2
+
+def solve():
+    # coding: utf-8
+    # Your code here!
+    a = int(input())
+    print(a + a**2 + a**3)
+
+=======
+Suggestion 3
+
+def cal(a):
+    return a + a**2 + a**3
+
+a = int(input())
+print(cal(a))

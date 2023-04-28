@@ -1,39 +1,86 @@
-#問題文
-#高橋くんの家には電源プラグの差込口が 1 口しかありません。
-#そこで、高橋くんは A 個口の電源タップをいくつか使って未使用の差込口を B 口以上に拡張したいと考えています。
-#A 個口の電源タップ 1 つと未使用の差込口 1 口を使って、新たに差込口を A 口増やすことができます。
-#最小でいくつの電源タップが必要でしょうか。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#必要な電源タップの個数の最小値を出力せよ。
-#
-#入力例 1
-#4 10
-#
-#出力例 1
-#3
-#4 個口の電源タップを 3 つ使うと、未使用の差込口は 10 口になります。
-#
-#入力例 2
-#8 9
-#
-#出力例 2
-#2
-#8 個口の電源タップを 2 つ使うと、未使用の差込口は 15 口になります。
-#
-#入力例 3
-#8 8
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(B // A)
+    else:
+        print(B // A + 1)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(b // a)
+    else:
+        print(b // a + 1)
+
+=======
+Suggestion 3
+
+def solve():
+    a, b = map(int, input().split())
+    ans = 0
+    while b > 0:
+        ans += 1
+        b -= a - 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 5
+
+def solve():
+    #n = int(input())
+    #a, b = map(int, input().split())
+    a, b = map(int, input().split())
+    #s = input()
+    #a = list(map(int, input().split()))
+    #b = [input() for _ in range(n)]
+
+    #print(a, b)
+    if b == 1:
+        print(0)
+        return
+    n = b - a
+    if n < 0:
+        print(0)
+        return
+    print(n + 1)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if b%a == 0:
+        print(b//a)
+    else:
+        print(b//a+1)
+main()
+
+=======
+Suggestion 7
+
+def calc(a,b):
+    cnt = 0
+    while True:
+        if b <= a:
+            break
+        b -= (a-1)
+        cnt += 1
+    return cnt

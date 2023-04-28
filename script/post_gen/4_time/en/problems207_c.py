@@ -1,70 +1,178 @@
-#Problem Statement
-#You are given N intervals numbered 1 through N, that are as follows:
-#if t_i=1, Interval i is [l_i,r_i];
-#if t_i=2, Interval i is [l_i,r_i);
-#if t_i=3, Interval i is (l_i,r_i];
-#if t_i=4, Interval i is (l_i,r_i).
-#How many pairs of integers (i,j) satisfying 1 ≦ i < j ≦ N are there such that Interval i and Interval j intersect?
-#What are [X,Y],[X,Y),(X,Y],(X,Y)?
-#A closed interval [X,Y] is an interval consisting of all real numbers x such that X ≦ x ≦ Y.
-#A half-open interval [X,Y) is an interval consisting of all real numbers x such that X ≦ x < Y.
-#A half-open interval (X,Y] is an interval consisting of all real numbers x such that X < x ≦ Y.
-#A open interval (X,Y) is an interval consisting of all real numbers x such that X < x < Y.
-#Roughly speaking, square brackets [] mean the endpoint is included, and curly brackets () mean the endpoint is excluded.
-#
-#Constraints
-#2 ≦ N ≦ 2000
-#1 ≦ t_i ≦ 4
-#1 ≦ l_i < r_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#t_1 l_1 r_1
-#t_2 l_2 r_2
-#.
-#.
-#.
-#t_N l_N r_N
-#
-#Output
-#Print the number of pairs of integers (i,j) such that Interval i and Interval j intersect.
-#
-#Sample Input 1
-#3
-#1 1 2
-#2 2 3
-#3 2 4
-#
-#Sample Output 1
-#2
-#As defined in the Problem Statement, Interval 1 is [1,2], Interval 2 is [2,3), and Interval 3 is (2,4].
-#There are two pairs of integers (i,j) such that Interval i and Interval j intersect: (1,2) and (2,3). For the first pair, the intersection is [2,2], and for the second pair, the intersection is (2,3).
-#
-#Sample Input 2
-#19
-#4 210068409 221208102
-#4 16698200 910945203
-#4 76268400 259148323
-#4 370943597 566244098
-#1 428897569 509621647
-#4 250946752 823720939
-#1 642505376 868415584
-#2 619091266 868230936
-#2 306543999 654038915
-#4 486033777 715789416
-#1 527225177 583184546
-#2 885292456 900938599
-#3 264004185 486613484
-#2 345310564 818091848
-#1 152544274 521564293
-#4 13819154 555218434
-#3 507364086 545932412
-#4 797872271 935850549
-#2 415488246 685203817
-#
-#Sample Output 2
-#102
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append([l, r])
+        elif t == 2:
+            intervals.append([l, r-1])
+        elif t == 3:
+            intervals.append([l+1, r])
+        elif t == 4:
+            intervals.append([l+1, r-1])
+    cnt = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if intervals[i][0] <= intervals[j][1] and intervals[j][0] <= intervals[i][1]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append([l, r])
+        elif t == 2:
+            intervals.append([l, r - 0.1])
+        elif t == 3:
+            intervals.append([l + 0.1, r])
+        elif t == 4:
+            intervals.append([l + 0.1, r - 0.1])
+    intervals.sort(key=lambda x: x[0])
+    #print(intervals)
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if intervals[i][1] >= intervals[j][0]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if intersect(intervals[i], intervals[j]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append((l, r))
+        elif t == 2:
+            intervals.append((l, r - 0.1))
+        elif t == 3:
+            intervals.append((l + 0.1, r))
+        elif t == 4:
+            intervals.append((l + 0.1, r - 0.1))
+    intervals.sort(key=lambda x: x[0])
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if intervals[i][1] >= intervals[j][0]:
+                ans += 1
+    print(ans)
+solve()
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    return intervals
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    tlr = [list(map(int, input().split())) for _ in range(n)]
+
+    ans = 0
+    for i in range(n):
+        li, ri = tlr[i][1], tlr[i][2]
+        for j in range(i+1, n):
+            lj, rj = tlr[j][1], tlr[j][2]
+            if (li <= lj and lj <= ri) or (li <= rj and rj <= ri) or (lj <= li and li <= rj) or (lj <= ri and ri <= rj):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    intervals = []
+    for _ in range(N):
+        t, l, r = map(int, input().split())
+        interval = [l, r]
+        if t == 2 or t == 4:
+            interval[1] -= 0.1
+        if t == 3 or t == 4:
+            interval[0] += 0.1
+        intervals.append(interval)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if intervals[i][0] <= intervals[j][0] <= intervals[i][1]:
+                ans += 1
+            elif intervals[i][0] <= intervals[j][1] <= intervals[i][1]:
+                ans += 1
+            elif intervals[j][0] <= intervals[i][0] <= intervals[j][1]:
+                ans += 1
+            elif intervals[j][0] <= intervals[i][1] <= intervals[j][1]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def func():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if intervals[i][1] <= intervals[j][1] <= intervals[i][2] or intervals[i][1] <= intervals[j][2] <= intervals[i][2] or intervals[j][1] <= intervals[i][1] <= intervals[j][2] or intervals[j][1] <= intervals[i][2] <= intervals[j][2]:
+                count += 1
+    print(count)
+
+func()
+
+=======
+Suggestion 9
+
+def get_intervals():
+    intervals = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    return intervals
+
+=======
+Suggestion 10
+
+def main():
+    pass

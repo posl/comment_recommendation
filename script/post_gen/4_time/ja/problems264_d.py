@@ -1,38 +1,166 @@
-#問題文
-#atcoder の並べ替えである文字列 S が与えられます。
-#この文字列 S に対して以下の操作を 0 回以上行います。
-#S 中の隣接する 2 文字を選び、入れ替える。
-#S を atcoder にするために必要な最小の操作回数を求めてください。
-#
-#制約
-#S は atcoder の並べ替えである文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#catredo
-#
-#出力例 1
-#8
-#catredo -> [ac]tredo -> actre[od] -> actr[oe]d -> actro[de] -> act[or]de -> acto[dr]e -> a[tc]odre -> atcod[er]
-#という流れで操作を行うと、 8 回で S を atcoder にすることができ、これが達成可能な最小の操作回数です。
-#
-#入力例 2
-#atcoder
-#
-#出力例 2
-#0
-#この場合、文字列 S は元から atcoder です。
-#
-#入力例 3
-#redocta
-#
-#出力例 3
-#21
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    atcoder = "atcoder"
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != atcoder[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    atcoder = "atcoder"
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != atcoder[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = "atcoder"
+    count = 0
+    for i in range(len(s)):
+        if s[i] == t[i]:
+            continue
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    cnt = 0
+    atcoder = "atcoder"
+    for i in range(len(s)):
+        if s[i] != atcoder[i]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    atcoder = "atcoder"
+    n = len(s)
+    m = len(atcoder)
+    dp = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        dp[i][0] = i
+    for j in range(1, m + 1):
+        dp[0][j] = j
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            if s[i - 1] == atcoder[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = min(dp[i][j - 1] + 1, dp[i - 1][j] + 1)
+    print(dp[n][m])
+
+=======
+Suggestion 6
+
+def solve():
+    S = input()
+    atcoder = "atcoder"
+    dp = [[0 for _ in range(len(atcoder)+1)] for _ in range(len(S)+1)]
+    for i in range(len(S)+1):
+        dp[i][0] = i
+    for i in range(len(atcoder)+1):
+        dp[0][i] = i
+    for i in range(1, len(S)+1):
+        for j in range(1, len(atcoder)+1):
+            if S[i-1] == atcoder[j-1]:
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = min(
+                    dp[i-1][j]+1, # delete
+                    dp[i][j-1]+1, # insert
+                    dp[i-1][j-1]+1 # replace
+                )
+    print(dp[len(S)][len(atcoder)])
+    return 0
+
+=======
+Suggestion 7
+
+def solve():
+    S = input()
+    t = 'atcoder'
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != t[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    atcoder = 'atcoder'
+    count = 0
+    for i in range(len(S)):
+        if S[i] == atcoder[i]:
+            continue
+        elif S[i] != atcoder[i]:
+            count += 1
+
+    print(count)
+
+=======
+Suggestion 9
+
+def calc(s):
+    if s == "atcoder":
+        return 0
+    if len(s) == 8:
+        return 21
+    if len(s) == 7:
+        return 8
+    if len(s) == 6:
+        return 6
+    if len(s) == 5:
+        return 5
+    if len(s) == 4:
+        return 4
+    if len(s) == 3:
+        return 3
+    if len(s) == 2:
+        return 2
+    if len(s) == 1:
+        return 1
+    return 0
+
+s = input()
+print(calc(s))
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    S = list(S)
+    atcoder = list("atcoder")
+    count = 0
+    for i in range(0,len(S)):
+        if i < len(atcoder):
+            if S[i] != atcoder[i]:
+                count += 1
+        else:
+            count += 1
+    print(count)

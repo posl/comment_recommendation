@@ -1,41 +1,190 @@
-#問題文
-#正整数 N が与えられます。N は、2 つの相異なる素数 p,q を用いて N=p^2q と表せることがわかっています。
-#p,q を求めてください。
-#T 個のテストケースが与えられるので、それぞれについて答えを求めてください。
-#
-#制約
-#入力は全て整数
-#1≦ T≦ 10
-#1≦ N ≦ 9× 10^{18}
-#N は、2 つの相異なる素数 p,q を用いて N=p^2q と表せる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。ここで test_i は i 番目のテストケースを意味する。
-#T
-#test_1
-#test_2
-#.
-#.
-#.
-#test_T
-#各テストケースは以下の形式で与えられる。
-#N
-#
-#出力
-#T 行出力せよ。
-#i (1≦ i ≦ T) 行目には、i 番目のテストケースにおける p,q を空白区切りで出力せよ。
-#なお、この問題の制約下では、N=p^2q を満たす素数 p,q の組は 1 通りしか存在しないことが証明できる。
-#
-#入力例 1
-#3
-#2023
-#63
-#1059872604593911
-#
-#出力例 1
-#17 7
-#3 7
-#104149 97711
-#1 番目のテストケースについて、N=2023=17^2× 7 です。よって、p=17,q=7 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+ 
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = prime_factorize(n)
+    p = a[0]
+    q = 1
+    for i in range(1,len(a)):
+        if a[i] == p:
+            q *= p
+            p = a[i+1]
+            break
+    q *= p
+    print(p,q)
+
+=======
+Suggestion 2
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+T = int(input())
+for i in range(T):
+    N = int(input())
+    p = prime_factorize(N)
+    if len(p) == 3:
+        print(p[0],p[1])
+    else:
+        print(p[0],p[0]**2)
+
+=======
+Suggestion 3
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=prime_factorize(n)
+    print(a[0],a[1])
+
+=======
+Suggestion 4
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+t = int(input())
+n = [0] * t
+for i in range(t):
+    n[i] = int(input())
+for i in range(t):
+    a = prime_factorize(n[i])
+    print(a[0], a[1])
+
+=======
+Suggestion 5
+
+def factorization(n):
+    arr = []
+    temp = n
+    for i in range(2, int(-(-n**0.5//1))+1):
+        if temp%i==0:
+            cnt=0
+            while temp%i==0:
+                cnt+=1
+                temp //= i
+            arr.append([i, cnt])
+    if temp!=1:
+        arr.append([temp, 1])
+    if arr==[]:
+        arr.append([n, 1])
+    return arr
+T = int(input())
+for i in range(T):
+    N = int(input())
+    arr = factorization(N)
+    print(arr[0][0],arr[1][0])
+
+=======
+Suggestion 6
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**0.5)+2):
+        if n%i == 0:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        for j in range(2, int(N**0.5)+1):
+            if N % j == 0:
+                if N % (j*j) == 0:
+                    print(j, int(N/j/j))
+                    break
+
+=======
+Suggestion 8
+
+def get_prime_list(N):
+    prime_list = [2]
+    for i in range(3, N+1, 2):
+        for j in range(3, i, 2):
+            if i % j == 0:
+                break
+        else:
+            prime_list.append(i)
+    return prime_list
+
+=======
+Suggestion 9
+
+def get_prime_numbers(n):
+    prime_numbers = []
+    # 2からnまでの整数を素数判定する
+    for i in range(2, n + 1):
+        # 2からi-1までの整数で割り切れるかどうかを判定
+        for j in range(2, i):
+            if i % j == 0:
+                break
+        else:
+            prime_numbers.append(i)
+    return prime_numbers

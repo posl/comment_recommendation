@@ -1,48 +1,140 @@
-#Problem Statement
-#Let us call a string consisting of uppercase and lowercase English alphabets a wonderful string if all of the following conditions are satisfied:
-#The string contains an uppercase English alphabet.
-#The string contains a lowercase English alphabet.
-#All characters in the string are pairwise distinct.
-#For example, AtCoder and Aa are wonderful strings, while atcoder and Perfect are not.
-#Given a string S, determine if S is a wonderful string.
-#
-#Constraints
-#1 ≦ |S| ≦ 100
-#S is a string consisting of uppercase and lowercase English alphabets.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S is a wonderful string, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#AtCoder
-#
-#Sample Output 1
-#Yes
-#AtCoder is a wonderful string because it contains an uppercase English alphabet, a lowercase English alphabet, and all characters in the string are pairwise distinct.
-#
-#Sample Input 2
-#Aa
-#
-#Sample Output 2
-#Yes
-#Note that A and a are different characters.  This string is a wonderful string.
-#
-#Sample Input 3
-#atcoder
-#
-#Sample Output 3
-#No
-#It is not a wonderful string because it does not contain an uppercase English alphabet.
-#
-#Sample Input 4
-#Perfect
-#
-#Sample Output 4
-#No
-#It is not a wonderful string because the 2-nd and the 5-th characters are the same.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print("No")
+    else:
+        if len(set(s)) == len(s):
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print('No')
+    elif len(set(s)) == len(s):
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if len(S) < 2:
+        print("No")
+    elif len(S) == 2:
+        if S[0] == S[1]:
+            print("No")
+        else:
+            print("Yes")
+    else:
+        if S[0].islower() or S[1].islower():
+            print("No")
+        else:
+            for i in range(2, len(S)):
+                if S[i].islower():
+                    print("No")
+                    exit(0)
+            print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print("No")
+    else:
+        for i in range(len(s)-1):
+            if s[i] == s[i+1]:
+                print("No")
+                break
+        else:
+            print("Yes")
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if len(s) < 2:
+        print("No")
+        return
+    if s.islower() or s.isupper():
+        print("No")
+        return
+    if len(set(s)) != len(s):
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def is_wonderful(s):
+    return len(s) == len(set(s)) and s.lower() != s and s.upper() != s
+
+s = input()
+print("Yes" if is_wonderful(s) else "No")
+
+=======
+Suggestion 7
+
+def is_wonderful_string(S):
+    if len(S) < 2:
+        return False
+    if S.islower() or S.isupper():
+        return False
+    if len(S) != len(set(S)):
+        return False
+    return True
+
+S = input()
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if s.lower() == s or s.upper() == s:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if len(s) >= 2:
+        if s.isupper():
+            print("No")
+        elif s.islower():
+            print("No")
+        elif s.isalpha():
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    print("Yes" if s.islower() or s.isupper() else "No")

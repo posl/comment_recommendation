@@ -1,34 +1,51 @@
-#問題文
-#A 駅と B 駅を結ぶ鉄道があり、運賃は X 円です。
-#また、B 駅と C 駅を結ぶバスがあり、運賃は Y 円です。
-#joisinoお姉ちゃんは、A 駅から B 駅まで鉄道で移動し、B 駅から C 駅までバスで移動すると、バスの運賃が半額になる特別券を手に入れました。
-#この特別券を用いたとき、A 駅から C 駅まで移動するのにいくらかかるか求めてください。
-#
-#制約
-#1 ≦ X,Y ≦ 100
-#Y は偶数
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y
-#
-#出力
-#A 駅から C 駅まで移動するのに x 円かかるとき、x を出力せよ。
-#
-#入力例 1
-#81 58
-#
-#出力例 1
-#110
-#鉄道の運賃は 81 円です。
-#バスの運賃は半額となるため、58 ⁄ 2=29 円です。
-#よって、A 駅から C 駅まで移動するのに 110 円かかります。
-#
-#入力例 2
-#4 54
-#
-#出力例 2
-#31
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    print(x + y // 2)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if y % 2 == 0:
+        print(int(x + y / 2))
+    else:
+        print('error')
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    print(x + (y / 2))
+
+=======
+Suggestion 4
+
+def solve():
+    X, Y = map(int, input().split())
+    print(X+Y//2)
+
+=======
+Suggestion 5
+
+def main():
+    x,y = map(int,input().split())
+    print(x+(y//2))
+
+=======
+Suggestion 6
+
+def solve(x,y):
+    return x + y // 2
+
+=======
+Suggestion 7
+
+def problem113_a(x,y):
+    return x + y // 2

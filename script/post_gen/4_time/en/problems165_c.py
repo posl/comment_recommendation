@@ -1,63 +1,192 @@
-#Problem Statement
-#Given are positive integers N, M, Q, and Q quadruples of integers ( a_i , b_i , c_i , d_i ).
-#Consider a sequence A satisfying the following conditions:
-#A is a sequence of N positive integers.
-#1 ≦ A_1 ≦ A_2 ≦ ... ≦ A_N ≦ M.
-#Let us define a score of this sequence as follows:
-#The score is the sum of d_i over all indices i such that A_{b_i} - A_{a_i} = c_i. (If there is no such i, the score is 0.)
-#Find the maximum possible score of A.
-#
-#Constraints
-#All values in input are integers.
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) (where i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#a_1 b_1 c_1 d_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#Output
-#Print the maximum possible score of A.
-#
-#Sample Input 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#Sample Output 1
-#110
-#When A = {1, 3, 4}, its score is 110. Under these conditions, no sequence has a score greater than 110, so the answer is 110.
-#
-#Sample Input 2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#Sample Output 2
-#357500
-#
-#Sample Input 3
-#10 10 1
-#1 10 9 1
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, Q = map(int, input().split())
+    a = [0] * Q
+    b = [0] * Q
+    c = [0] * Q
+    d = [0] * Q
+    for i in range(Q):
+        a[i], b[i], c[i], d[i] = map(int, input().split())
+    ans = 0
+    for i in range(1, M + 1):
+        A = [i]
+        ans = max(ans, dfs(N, M, Q, a, b, c, d, A))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    a, b, c, d = [], [], [], []
+    for _ in range(Q):
+        tmp = list(map(int, input().split()))
+        a.append(tmp[0])
+        b.append(tmp[1])
+        c.append(tmp[2])
+        d.append(tmp[3])
+    ans = 0
+    for i in range(1, M+1):
+        A = [i]
+        ans = max(ans, dfs(N, M, Q, A, a, b, c, d))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [0] * (N + 1)
+    for i in range(Q):
+        a, b, c, d = map(int, input().split())
+        A[a - 1] += 1
+        A[b] -= 1
+    for i in range(N):
+        A[i + 1] += A[i]
+    print(sum(sorted(A[:N])[:M]))
+
+=======
+Suggestion 4
+
+def main():
+    N, M, Q = map(int, input().split())
+    abcd = [list(map(int, input().split())) for _ in range(Q)]
+
+    ans = 0
+
+    def dfs(A):
+        nonlocal ans
+        if len(A) == N:
+            score = 0
+            for a, b, c, d in abcd:
+                if A[b - 1] - A[a - 1] == c:
+                    score += d
+            ans = max(ans, score)
+            return
+
+        A.append(A[-1])
+        while A[-1] <= M:
+            dfs(A)
+            A[-1] += 1
+        A.pop()
+
+    dfs([1])
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    L = [list(map(int, input().split())) for _ in range(Q)]
+    print(solve(N, M, Q, L))
+
+=======
+Suggestion 6
+
+def main():
+    N, M, Q = map(int, input().split())
+    ABCD = [list(map(int, input().split())) for i in range(Q)]
+    ans = 0
+    for A in itertools.combinations_with_replacement(range(1, M + 1), N):
+        score = 0
+        for a, b, c, d in ABCD:
+            if A[b - 1] - A[a - 1] == c:
+                score += d
+        ans = max(ans, score)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    A = [0] * (N+1)
+    A[0] = 1
+    A[N] = M
+    q = []
+    for i in range(Q):
+        q.append(list(map(int, input().split())))
+    print(calc(N, M, q, A))
+
+=======
+Suggestion 8
+
+def main():
+    # Read input
+    N, M, Q = map(int, input().split())
+    queries = [tuple(map(int, input().split())) for _ in range(Q)]
+
+    # Initialize
+    A = [1] * N
+    score = 0
+    max_score = 0
+
+    # Loop
+    while True:
+        # Update score
+        for a, b, c, d in queries:
+            if A[b-1] - A[a-1] == c:
+                score += d
+        max_score = max(max_score, score)
+        score = 0
+
+        # Increment
+        A[0] += 1
+        for i in range(N):
+            if A[i] > M:
+                if i == N-1:
+                    return max_score
+                A[i] = 1
+                A[i+1] += 1
+
+=======
+Suggestion 9
+
+def main():
+
+    # Read input
+    N, M, Q = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(Q)]
+
+    # Initialize
+    ans = 0
+    A = sorted(A, key=lambda x: x[3], reverse=True)
+    for a in A:
+        if a[0] == 1:
+            a.append([1, M])
+        elif a[1] == N:
+            a.append([1, M])
+        else:
+            a.append([a[0]-1, a[1]+1])
+
+    # Recursive function
+    def rec(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ans):
+        if len(A) == 0:
+            ans = max(ans, sum(B))
+            return ans
+        else:
+            a = A.pop()
+            for i in range(a[2]):
+                for j in range(a[2]-i):
+                    if i+j == a[2]:
+                        if a[0] <= a[3][0] <= a[1]:
+                            B[a[3][0]-1] += 1
+                        if a[0] <= a[3][1] <= a[1]:
+                            B[a[3][1]-1] += 1
+                        ans = rec(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ans)
+                        if a[0] <= a[3][0] <= a[1]:
+                            B[a[3][0]-1] -= 1
+                        if a[0] <= a[3][1] <= a[1]:
+
+=======
+Suggestion 10
+
+def solve(N,M,Q,ABCD):
+    # write your code
+    return 0

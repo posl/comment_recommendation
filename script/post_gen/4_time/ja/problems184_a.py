@@ -1,40 +1,31 @@
-#問題文
-#2 × 2 行列 A = [[a, b], [c, d]] が与えられます。
-#A の行列式は ad-bc で求められます。
-#A の行列式を求めてください。  
-#
-#制約
-#入力は全て整数
-#-100 ≦ a, b, c, d ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b
-#c d
-#
-#出力
-#答えを整数で出力せよ。
-#
-#入力例 1
-#1 2
-#3 4
-#
-#出力例 1
-#-2
-#[[1, 2], [3, 4]] の行列式は 1 × 4 - 2 × 3 = -2 です。
-#
-#入力例 2
-#0 -1
-#1 0
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100 100
-#100 100
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a * d - b * c)
+
+=======
+Suggestion 2
+
+def det(a,b,c,d):
+    return a*d-b*c
+
+a,b=map(int,input().split())
+c,d=map(int,input().split())
+print(det(a,b,c,d))
+
+=======
+Suggestion 3
+
+def calc_det(a, b, c, d):
+    return a * d - b * c
+
+=======
+Suggestion 4
+
+def det(a,b,c,d):
+    return a*d - b*c

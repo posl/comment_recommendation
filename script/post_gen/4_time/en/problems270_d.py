@@ -1,59 +1,157 @@
-#Problem Statement
-#Takahashi and Aoki will play a game of taking stones using a sequence (A_1, ..., A_K).
-#There is a pile that initially contains N stones. The two players will alternately perform the following operation, with Takahashi going first.
-#Choose an A_i that is at most the current number of stones in the pile. Remove A_i stones from the pile. 
-#The game ends when the pile has no stones.
-#If both players attempt to maximize the total number of stones they remove before the end of the game, how many stones will Takahashi remove?
-#
-#Constraints
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ... < A_K ≦ N
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#10 2
-#1 4
-#
-#Sample Output 1
-#5
-#Below is one possible progression of the game.
-#Takahashi removes 4 stones from the pile.
-#Aoki removes 4 stones from the pile.
-#Takahashi removes 1 stone from the pile.
-#Aoki removes 1 stone from the pile.
-#In this case, Takahashi removes 5 stones. There is no way for him to remove 6 or more stones, so this is the maximum.
-#Below is another possible progression of the game where Takahashi removes 5 stones.
-#Takahashi removes 1 stone from the pile.
-#Aoki removes 4 stones from the pile.
-#Takahashi removes 4 stones from the pile.
-#Aoki removes 1 stone from the pile.
-#
-#Sample Input 2
-#11 4
-#1 2 3 6
-#
-#Sample Output 2
-#8
-#Below is one possible progression of the game.
-#Takahashi removes 6 stones.
-#Aoki removes 3 stones.
-#Takahashi removes 2 stones.
-#In this case, Takahashi removes 8 stones. There is no way for him to remove 9 or more stones, so this is the maximum.
-#
-#Sample Input 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#Sample Output 3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        if i == 0:
+            ans += A[i]
+        else:
+            ans += A[i] * (N // A[i] - N // A[i-1])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+  N, K = map(int, input().split())
+  A = list(map(int, input().split()))
+  stones = [0] * (N + 1)
+  for i in range(1, N + 1):
+    for a in A:
+      if i >= a:
+        stones[i] = (stones[i] + stones[i - a]) % 1000000007
+      elif a > i:
+        break
+    if i in A:
+      stones[i] = (stones[i] + 1) % 1000000007
+  print(stones[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        if A[i] <= N:
+            ans += A[i]
+            N -= A[i]
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    takahashi = 0
+    aoki = 0
+    for i in range(K):
+        if i == 0:
+            takahashi = A[i] - 1
+        elif i == K-1:
+            takahashi = max(takahashi, N - A[i-1])
+        else:
+            takahashi = max(takahashi, A[i] - A[i-1])
+    print(takahashi)
+
+=======
+Suggestion 5
+
+def solve():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(K-1,-1,-1):
+        if N >= A[i]:
+            ans += N // A[i]
+            N = N % A[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(0,0)
+    ans = 0
+    for i in range(1,k+1):
+        if a[i] > n:
+            break
+        else:
+            ans += n // a[i]
+            n = n % a[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    print(sum(A[:A.index(N)]))
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    stone = [1] * (N+1)
+    for i in range(2, N+1):
+        for j in range(K):
+            if i - A[j] >= 0:
+                if stone[i-A[j]] == 1:
+                    stone[i] = 0
+                    break
+    for i in range(N, 0, -1):
+        if stone[i] == 0:
+            for j in range(K):
+                if i - A[j] >= 0:
+                    stone[i-A[j]] = 1
+    print(sum(stone))
+
+=======
+Suggestion 9
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    for i in range(K):
+        if A[i] >= N:
+            print(N)
+            exit()
+    ans = 0
+    while N > 0:
+        ans += N%A[0]
+        N = N//A[0]*A[0]
+        if N == 0:
+            break
+        while A[-1] > N:
+            A.pop()
+    print(ans)
+
+=======
+Suggestion 10
+
+def problem():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(N+1)
+    A = sorted(A)
+    #print(A)
+    result = 0
+    for i in range(K+1):
+        #print(A[i], A[i+1])
+        result += (A[i+1] - A[i] - 1) // (i+1)
+    print(result)

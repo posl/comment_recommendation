@@ -1,40 +1,229 @@
-#問題文
-#高橋君と青木君はジョギングをすることにしました。
-#高橋君は「A 秒間秒速 B メートルで歩き、C 秒間休む」ことを繰り返します。
-#青木君は「D 秒間秒速 E メートルで歩き、F 秒間休む」ことを繰り返します。
-#二人が同時にジョギングを始めてから X 秒後、高橋君と青木君のうちどちらが長い距離を進んでいますか？
-#
-#制約
-#1 ≦ A, B, C, D, E, F, X ≦ 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D E F X
-#
-#出力
-#二人が同時にジョギングを始めてから X 秒後時点で、高橋君の方が青木君よりも長い距離を進んでいるならば Takahashi、青木君の方が高橋君よりも長い距離を進んでいるならば Aoki、二人が同じ距離を進んでいるならば Draw と出力せよ。
-#
-#入力例 1
-#4 3 3 6 2 5 10
-#
-#出力例 1
-#Takahashi
-#二人はジョギングを始めてから 10 秒間の間、以下のように行動します。
-#高橋君は 4 秒間歩き、3 秒間休んだ後、再び 3 秒間歩く。合計 (4 + 3) × 3 = 21 メートル歩く。
-#青木君は 6 秒間歩き、4 秒間休む。合計 6 × 2 = 12 メートル歩く。
-#高橋君の方が長い距離を進んでいるので、Takahashi と出力します。
-#
-#入力例 2
-#3 1 4 1 5 9 2
-#
-#出力例 2
-#Aoki
-#
-#入力例 3
-#1 1 1 1 1 1 1
-#
-#出力例 3
-#Draw
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+    Takahashi = 0
+    Aoki = 0
+    for i in range(X):
+        if i % (A + B) < A:
+            Takahashi += C
+        if i % (D + E) < D:
+            Aoki += F
+    if Takahashi > Aoki:
+        print("Takahashi")
+    elif Takahashi < Aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+
+    takahashi = 0
+    aoki = 0
+
+    for i in range(1, X+1):
+        if i % (A+C) <= A:
+            takahashi += B
+        if i % (D+F) <= D:
+            aoki += E
+
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 3
+
+def solve():
+    A, B, C, D, E, F, X = map(int, input().split())
+    T = 0
+    Taka = 0
+    Aoki = 0
+    while True:
+        if T % (C + B) < C:
+            Taka += A
+        if T % (F + E) < F:
+            Aoki += D
+        T += 1
+        if Taka + A > X and Aoki + D > X:
+            print("Draw")
+            break
+        elif Taka + A > X:
+            print("Aoki")
+            break
+        elif Aoki + D > X:
+            print("Takahashi")
+            break
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+    takahashi = 0
+    aoki = 0
+
+    for i in range(1,x+1):
+        if i % (a+c) == 0:
+            takahashi += b
+        if i % (d+f) == 0:
+            aoki += e
+
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C,D,E,F,X = map(int,input().split())
+    takahashi = 0
+    aoki = 0
+    for i in range(1,X+1):
+        if i% (A+C) == 0:
+            takahashi += B
+        if i% (D+F) == 0:
+            aoki += E
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C, D, E, F, X = map(int, input().split())
+    T = 0
+    H = 0
+    while T <= X and H <= X:
+        if T <= H:
+            T += A
+            H += D
+        else:
+            T += C
+            H += E
+    if T > H:
+        print("Takahashi")
+    elif T < H:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+    #print(a,b,c,d,e,f,x)
+    taka = 0
+    aoki = 0
+    for i in range(x):
+        if i % (a+c) < a:
+            taka += b
+        if i % (d+e) < d:
+            aoki += e
+    if taka > aoki:
+        print("Takahashi")
+    elif taka < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+
+    t = 0
+    aoki = 0
+    takahashi = 0
+    while(t < x):
+        if(t%2 == 0):
+            takahashi += b
+            t += 1
+        else:
+            aoki += e
+            t += 1
+        if(t%2 == 0):
+            takahashi += c
+            t += 1
+        else:
+            aoki += f
+            t += 1
+    if(takahashi > aoki):
+        print("Takahashi")
+    elif(takahashi < aoki):
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 9
+
+def joging(a,b,c,d,e,f,x):
+    t = 0
+    aoki = 0
+    takahashi = 0
+    while t <= x:
+        takahashi += b
+        aoki += e
+        t += a
+        if t > x:
+            break
+        t += c
+        if t > x:
+            break
+        t += d
+        if t > x:
+            break
+        t += f
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi == aoki:
+        print("Draw")
+    else:
+        print("Aoki")
+
+a,b,c,d,e,f,x = map(int,input().split())
+joging(a,b,c,d,e,f,x)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+    taka = 0
+    aoki = 0
+    if a > d:
+        taka = x//a
+        if x%a > 0:
+            taka += 1
+    else:
+        aoki = x//d
+        if x%d > 0:
+            aoki += 1
+    #print(taka,aoki)
+    if taka*b > aoki*e:
+        print("Takahashi")
+    elif taka*b < aoki*e:
+        print("Aoki")
+    else:
+        print("Draw")

@@ -1,36 +1,125 @@
-#Problem Statement
-#You are given a sequence a = (a_1, ..., a_N) of length N consisting of integers between 1 and N.
-#Find the number of pairs of integers i, j that satisfy all of the following conditions:
-#1 ≦ i < j ≦ N
-#min(a_i, a_j) = i
-#max(a_i, a_j) = j
-#
-#Constraints
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ a_i ≦ N  (1 ≦ i ≦ N)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 ... a_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#1 3 2 4
-#
-#Sample Output 1
-#2
-#(i, j) = (1, 4), (2, 3) satisfy the conditions.
-#
-#Sample Input 2
-#10
-#5 8 2 2 1 6 7 2 9 10
-#
-#Sample Output 2
-#8
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N+1):
+        if a[i-1] == i:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        if a[i-1] == i:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] <= i+1:
+            continue
+        if a[a[i]-1] == i+1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N + 1):
+        if i == A[A[i - 1] - 1]:
+            ans += 1
+    print(ans // 2)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] == i+1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > i + 1:
+            continue
+        if A[A[i] - 1] == i + 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if A[i] == i + 1:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    N = int(input())
+    As = [*map(int, input().split())]
+
+    # compute
+    ans = 0
+    for i in range(N):
+        if i+1 == As[As[i]-1]:
+            ans += 1
+
+    # output
+    print(ans//2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    d = {}
+    for i in range(N):
+        l = i + a[i]
+        r = i - a[i]
+        if l in d:
+            d[l] += 1
+        else:
+            d[l] = 1
+        if r in d:
+            ans += d[r]
+    print(ans)

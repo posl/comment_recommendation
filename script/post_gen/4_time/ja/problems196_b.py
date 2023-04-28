@@ -1,36 +1,80 @@
-#問題文
-#整数または小数 X が与えられるので、小数点以下を切り捨てて整数で出力してください。  
-#
-#制約
-#0 ≦ X ≦ 10^{100}
-#X は整数、または小数点以下が 100 桁以下の小数であり、先頭に余計な 0 は付かない
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#X を、小数点以下を切り捨てて整数の形式で出力せよ。  
-#
-#入力例 1
-#5.90
-#
-#出力例 1
-#5
-#5.90 の小数点以下を切り捨てた 5 を整数で出力します。整数の形式でない 5.0 などは不正解になります。  
-#
-#入力例 2
-#0
-#
-#出力例 2
-#0
-#X は小数点を含まないかもしれません。  
-#
-#入力例 3
-#84939825309432908832902189.9092309409809091329
-#
-#出力例 3
-#84939825309432908832902189
-#大きい数の扱いに注意してください。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X = input()
+    X = X.split(".")
+    print(X[0])
+
+=======
+Suggestion 2
+
+def main():
+    x = input()
+    if '.' in x:
+        print(x[0:x.find('.')])
+    else:
+        print(x)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    if '.' in X:
+        X = X.split('.')[0]
+    print(X)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    # -*- coding: utf-8 -*-
+    import sys
+    import math
+
+    # input
+    X = input()
+
+    # solve
+    print(math.floor(float(X)))
+
+=======
+Suggestion 5
+
+def main():
+    x = input()
+    print(x.split(".")[0])
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    print(int(float(x)))
+
+=======
+Suggestion 7
+
+def main():
+    x = input()
+    print(int(float(x)))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x = input()
+    print(int(x.split('.')[0]))
+
+=======
+Suggestion 9
+
+def main():
+    print(int(input()))

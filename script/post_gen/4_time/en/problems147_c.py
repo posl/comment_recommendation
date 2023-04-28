@@ -1,77 +1,204 @@
-#Problem Statement
-#There are N people numbered 1 to N. Each of them is either an honest person whose testimonies are always correct or an unkind person whose testimonies may be correct or not.
-#Person i gives A_i testimonies. The j-th testimony by Person i is represented by two integers x_{ij} and y_{ij}. If y_{ij} = 1, the testimony says Person x_{ij} is honest; if y_{ij} = 0, it says Person x_{ij} is unkind.
-#How many honest persons can be among those N people at most?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 15
-#0 ≦ A_i ≦ N - 1
-#1 ≦ x_{ij} ≦ N
-#x_{ij} ≠ i
-#x_{ij_1} ≠ x_{ij_2} (j_1 ≠ j_2)
-#y_{ij} = 0, 1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1
-#x_{11} y_{11}
-#x_{12} y_{12}
-#:
-#x_{1A_1} y_{1A_1}
-#A_2
-#x_{21} y_{21}
-#x_{22} y_{22}
-#:
-#x_{2A_2} y_{2A_2}
-#:
-#A_N
-#x_{N1} y_{N1}
-#x_{N2} y_{N2}
-#:
-#x_{NA_N} y_{NA_N}
-#
-#Output
-#Print the maximum possible number of honest persons among the N people.
-#
-#Sample Input 1
-#3
-#1
-#2 1
-#1
-#1 1
-#1
-#2 0
-#
-#Sample Output 1
-#2
-#If Person 1 and Person 2 are honest and Person 3 is unkind, we have two honest persons without inconsistencies, which is the maximum possible number of honest persons.
-#
-#Sample Input 2
-#3
-#2
-#2 1
-#3 0
-#2
-#3 1
-#1 0
-#2
-#1 1
-#2 0
-#
-#Sample Output 2
-#0
-#Assuming that one or more of them are honest immediately leads to a contradiction.
-#
-#Sample Input 3
-#2
-#1
-#2 0
-#1
-#1 0
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = []
+    X = []
+    Y = []
+    for i in range(N):
+        A.append(int(input()))
+        X.append([])
+        Y.append([])
+        for j in range(A[i]):
+            x, y = map(int, input().split())
+            X[i].append(x)
+            Y[i].append(y)
+    ans = 0
+    for i in range(1 << N):
+        flag = True
+        for j in range(N):
+            if (i >> j) & 1:
+                for k in range(A[j]):
+                    if ((i >> (X[j][k] - 1)) & 1) ^ Y[j][k]:
+                        flag = False
+                        break
+                if not flag:
+                    break
+        if flag:
+            ans = max(ans, bin(i).count('1'))
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = []
+    X = []
+    Y = []
+    for i in range(N):
+        A.append(int(input()))
+        X.append([])
+        Y.append([])
+        for j in range(A[i]):
+            x, y = [int(_) for _ in input().split()]
+            X[i].append(x-1)
+            Y[i].append(y)
+    ans = 0
+    for i in range(1 << N):
+        ok = True
+        for j in range(N):
+            if i & (1 << j):
+                for k in range(A[j]):
+                    if Y[j][k] == 1 and i & (1 << X[j][k]):
+                        continue
+                    elif Y[j][k] == 0 and i & (1 << X[j][k]) == 0:
+                        continue
+                    else:
+                        ok = False
+                        break
+        if ok:
+            ans = max(ans, bin(i).count("1"))
+    print(ans)
+
+solve()
+
+=======
+Suggestion 3
+
+def get_input():
+    n = int(input())
+    a = []
+    x = []
+    y = []
+    for i in range(n):
+        a.append(int(input()))
+        x.append([])
+        y.append([])
+        for j in range(a[i]):
+            x[i].append(0)
+            y[i].append(0)
+            x[i][j], y[i][j] = map(int, input().split())
+    return n, a, x, y
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [0]*N
+    x = [[0]*N for i in range(N)]
+    y = [[0]*N for i in range(N)]
+    for i in range(N):
+        A[i] = int(input())
+        for j in range(A[i]):
+            x[i][j], y[i][j] = map(int, input().split())
+
+    ans = 0
+    for i in range(1<<N):
+        flag = True
+        for j in range(N):
+            if (i>>j)&1:
+                for k in range(A[j]):
+                    if (i>>(x[j][k]-1))&1 != y[j][k]:
+                        flag = False
+                        break
+        if flag:
+            ans = max(ans, bin(i).count("1"))
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input():
+    N = int(input())
+    A = []
+    xy = []
+    for i in range(N):
+        A.append(int(input()))
+        xy.append([])
+        for j in range(A[i]):
+            xy[i].append(list(map(int, input().split())))
+    return N, A, xy
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    for _ in range(N):
+        A.append(int(input()))
+    xy = []
+    for i in range(N):
+        xy.append([list(map(int, input().split())) for _ in range(A[i])])
+    ans = 0
+    for bit in range(1<<N):
+        honest = [0 for _ in range(N)]
+        for i in range(N):
+            if bit & (1<<i):
+                honest[i] = 1
+        flag = True
+        for i in range(N):
+            if honest[i] == 1:
+                for j in range(A[i]):
+                    if honest[xy[i][j][0]-1] != xy[i][j][1]:
+                        flag = False
+                        break
+        if flag:
+            ans = max(ans, sum(honest))
+    print(ans)
+    return
+
+=======
+Suggestion 7
+
+def check_honesty(honesty, people, testimonies):
+    for i in range(people):
+        if honesty[i] == 1:
+            for testimony in testimonies[i]:
+                if honesty[testimony[0]-1] != testimony[1]:
+                    return False
+    return True
+
+=======
+Suggestion 8
+
+def check_honesty(N, A, x, y):
+    honest = 0
+    for i in range(N):
+        if A[i] == 0:
+            honest += 1
+            continue
+        else:
+            honest_count = 0
+            for j in range(A[i]):
+                if y[i][j] == 1 and A[x[i][j]-1] > 0:
+                    honest_count += 1
+            if honest_count == A[i]:
+                honest += 1
+    return honest
+
+=======
+Suggestion 9
+
+def check_honesty(persons, a, x, y):
+    for i in range(a):
+        if (y[i] == 1):
+            persons[x[i] - 1] = 1
+        else:
+            if (persons[x[i] - 1] == 1):
+                return False
+    return True
+
+=======
+Suggestion 10
+
+def check_honest(i, honest_list, unkind_list):
+    for j in unkind_list:
+        if i == j:
+            return False
+    return True

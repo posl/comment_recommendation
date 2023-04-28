@@ -1,27 +1,118 @@
-#Problem Statement
-#On the Planet AtCoder, there are four types of bases: A, C, G and T. A bonds with T, and C bonds with G.
-#You are given a letter b as input, which is A, C, G or T. Write a program that prints the letter representing the base that bonds with the base b.
-#
-#Constraints
-#b is one of the letters A, C, G and T.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#b
-#
-#Output
-#Print the letter representing the base that bonds with the base b.
-#
-#Sample Input 1
-#A
-#
-#Sample Output 1
-#T
-#
-#Sample Input 2
-#G
-#
-#Sample Output 2
-#C
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+
+=======
+Suggestion 2
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+    else:
+        print('Wrong Input')
+
+=======
+Suggestion 3
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+
+=======
+Suggestion 4
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+    else:
+        pass
+
+=======
+Suggestion 5
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+    else:
+        print("Please input A, C, G or T")
+
+=======
+Suggestion 6
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    elif b == 'C':
+        print('G')
+
+=======
+Suggestion 7
+
+def main():
+    base = input()
+    if base == "A":
+        print("T")
+    elif base == "T":
+        print("A")
+    elif base == "C":
+        print("G")
+    elif base == "G":
+        print("C")
+
+=======
+Suggestion 8
+
+def get_complement(nucleotide):
+    if nucleotide == 'A':
+        return 'T'
+    elif nucleotide == 'T':
+        return 'A'
+    elif nucleotide == 'G':
+        return 'C'
+    elif nucleotide == 'C':
+        return 'G'

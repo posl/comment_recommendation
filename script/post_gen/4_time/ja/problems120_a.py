@@ -1,38 +1,70 @@
-#問題文
-#高橋くんは、自動販売機でジュースを買ったときの音が好きです。
-#その音は 1 回 A 円で聞くことができます。
-#高橋くんは B 円持っていますが、お気に入りの音を C 回聞くと満足するため、B 円で最大 C 回まで聞けるだけ聞きます。
-#高橋くんはお気に入りの音を何回聞くことになるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A, B, C ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#高橋くんはお気に入りの音を何回聞くことになるか出力せよ。
-#
-#入力例 1
-#2 11 4
-#
-#出力例 1
-#4
-#高橋くんは 8 円以上持っているのでお気に入りの音を 4 回聞いて満足します。
-#
-#入力例 2
-#3 9 5
-#
-#出力例 2
-#3
-#高橋くんが満足できないこともあります。
-#
-#入力例 3
-#100 1 10
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a * c <= b:
+        print(c)
+    else:
+        print(b // a)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if b >= c * a:
+        print(c)
+    else:
+        print(b // a)
+
+=======
+Suggestion 3
+
+def solve():
+    a,b,c = map(int,input().split())
+    if a*c <= b:
+        print(c)
+    else:
+        print(b//a)
+
+=======
+Suggestion 4
+
+def solve(a,b,c):
+    if a*c <= b:
+        return c
+    else:
+        return b//a
+
+a,b,c = map(int,input().split())
+print(solve(a,b,c))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int, input().split())
+    if c * a <= b:
+        print(c)
+    else:
+        print(b // a)
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C = list(map(int, input().split()))
+    if B // A > C:
+        print(C)
+    else:
+        print(B // A)
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C = map(int,input().split())
+    print(min(B//A,C))

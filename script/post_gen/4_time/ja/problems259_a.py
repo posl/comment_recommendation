@@ -1,44 +1,125 @@
-#問題文
-#高橋君は N 歳の誕生日を迎えました。この時の彼の身長は T cmです。
-#また、以下のことが分かっています。
-#高橋君は 0 歳の誕生日(生まれた当日)から X 歳の誕生日までの間、毎年身長が D cmずつ伸びた。より厳密に書くと、i=1,2,...,X それぞれに対し、i-1 歳の誕生日から i 歳の誕生日までの間に身長が D cm伸びた。
-#高橋君は X 歳の誕生日から N 歳の誕生日までの間、身長が変化していない。
-#高橋君の M 歳の誕生日の時の身長が何cmだったかを求めてください。
-#
-#制約
-#0 ≦ M < N ≦ 100
-#1 ≦ X ≦ N
-#1 ≦ T ≦ 200
-#1 ≦ D ≦ 100
-#高橋君の 0 歳の誕生日の時の身長は 1 cm以上である
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M X T D
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#38 20 17 168 3
-#
-#出力例 1
-#168
-#この例では、高橋君の 38 歳の誕生日の時の身長が 168 cmです。また、17 歳の誕生日から 38 歳の誕生日までの間、身長が変化していません。
-#このことから、20 歳の誕生日の時の身長は 168 cmだったと言え、これが答えになります。
-#
-#入力例 2
-#1 0 1 3 2
-#
-#出力例 2
-#1
-#この例において、高橋君は 0(=M) 歳の誕生日の時の身長が 1 cmで、1(=N) 歳の誕生日の時の身長が 3(=T) cmです。
-#
-#入力例 3
-#100 10 100 180 1
-#
-#出力例 3
-#90
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    for i in range(X, N):
+        T += D
+    for i in range(M, X):
+        T -= D
+    print(T)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    H = T
+    for i in range(1, X):
+        H -= D
+    for i in range(X, M):
+        H += D
+    print(H)
+
+=======
+Suggestion 3
+
+def main():
+    n, m, x, t, d = map(int, input().split())
+
+    height = t
+    for i in range(1, x):
+        height -= d
+
+    for i in range(x, n):
+        height += d
+
+    print(height)
+
+=======
+Suggestion 4
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    for i in range(X):
+        T += D
+    for i in range(N-X):
+        T -= D
+    print(T)
+
+=======
+Suggestion 5
+
+def calc_height(m, x, t, d):
+    height = t
+    for i in range(x, m):
+        height += d
+    return height
+
+n, m, x, t, d = map(int, input().split())
+print(calc_height(m, x, t, d))
+
+=======
+Suggestion 6
+
+def main():
+    n, m, x, t, d = map(int, input().split())
+    for i in range(x):
+        t -= d
+    for i in range(m - x):
+        t -= 1
+    print(t)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, m, x, t, d = map(int, input().split())
+    return n, m, x, t, d
+
+=======
+Suggestion 8
+
+def main():
+    N,M,X,T,D = map(int, input().split())
+    for i in range(M,X):
+        T += D
+    print(T)
+
+=======
+Suggestion 9
+
+def main():
+    n,m,x,t,d = map(int,input().split())
+    if m >= x:
+        for i in range(m-x):
+            t += d
+    else:
+        for i in range(x-m):
+            t -= d
+    print(t)
+
+=======
+Suggestion 10
+
+def calcHeight(n, m, x, t, d):
+    # 0歳からx歳までの伸びた身長
+    h = 0
+    for i in range(1, x + 1):
+        h = h + d
+
+    # x歳からn歳までの身長
+    for i in range(x + 1, n + 1):
+        h = h + t
+
+    # m歳の身長を求める
+    if m <= x:
+        for i in range(1, m):
+            h = h - d
+    else:
+        for i in range(x + 1, m):
+            h = h - t
+
+    return h

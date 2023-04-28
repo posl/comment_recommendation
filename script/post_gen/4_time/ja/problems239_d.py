@@ -1,40 +1,215 @@
-#問題文
-#高橋君と青木君が次のようなゲームをします。
-#まず、高橋君が A 以上 B 以下の好きな整数を選び、青木君に伝える
-#次に、青木君が C 以上 D 以下の好きな整数を選ぶ
-#二人の選んだ整数の和が素数なら青木君の勝ち、そうでなければ高橋君の勝ち
-#二人が最適な戦略を取るとき、どちらが勝ちますか？
-#
-#制約
-#1 ≦ A ≦ B ≦ 100
-#1 ≦ C ≦ D ≦ 100
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#二人が最適な戦略をとったとき、高橋君が勝つなら Takahashi、青木君が勝つなら Aoki を出力せよ。
-#
-#入力例 1
-#2 3 3 4
-#
-#出力例 1
-#Aoki
-#例えば高橋君が 2 を選んだときは、青木君は 3 を選ぶことで、和を素数である 5 にすることができます。
-#
-#入力例 2
-#1 100 50 60
-#
-#出力例 2
-#Takahashi
-#最適な戦略を取ると高橋君が必ず勝ちます。
-#
-#入力例 3
-#3 14 1 5
-#
-#出力例 3
-#Aoki
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for k in range(2, int(n**0.5)+1):
+        if n % k == 0:
+            return False
+    return True
+
+A, B, C, D = map(int, input().split())
+
+for i in range(B+1, 100):
+    if is_prime(i):
+        B = i
+        break
+
+for i in range(C-1, 0, -1):
+    if is_prime(i):
+        C = i
+        break
+
+=======
+Suggestion 2
+
+def is_prime(n):
+    if n == 1:
+        return False
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+a, b, c, d = map(int, input().split())
+for i in range(a, b+1):
+    if is_prime(i):
+        for j in range(c, d+1):
+            if is_prime(j):
+                if i+j == 1:
+                    print("Aoki")
+                    exit()
+print("Takahashi")
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 1: return False
+    if n == 2: return True
+    if n == 3: return True
+    if n % 2 == 0: return False
+    if n % 3 == 0: return False
+    i = 5
+    j = 2
+    while i * i <= n:
+        if n % i == 0: return False
+        i += j
+        j = 6 - j
+    return True
+
+=======
+Suggestion 4
+
+def is_prime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for i in range(2,n):
+            if n % i == 0:
+                return False
+        return True
+
+a,b,c,d = map(int,input().split())
+for i in range(100):
+    if is_prime(a+c+i):
+        print("Takahashi")
+        exit()
+    elif is_prime(b+d+i):
+        print("Aoki")
+        exit()
+
+=======
+Suggestion 5
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**(1/2)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+A, B, C, D = map(int, input().split())
+for i in range(100):
+    if is_prime(A + i):
+        print("Takahashi")
+        exit()
+    elif is_prime(C + i):
+        print("Aoki")
+        exit()
+
+=======
+Suggestion 6
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, n//2+1):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def is_prime(x):
+    if x < 2:
+        return False
+    elif x == 2:
+        return True
+    else:
+        for i in range(2, int(x**0.5) + 1):
+            if x % i == 0:
+                return False
+        return True
+
+A, B, C, D = map(int, input().split())
+for i in range(B + 1, D + 1):
+    if is_prime(i):
+        print("Aoki")
+        exit()
+print("Takahashi")
+
+=======
+Suggestion 8
+
+def isPrime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if (n % 2) == 0:
+        return False
+    i = 3
+    while i <= (n**0.5):
+        if (n % i) == 0:
+            return False
+        i += 2
+    return True
+
+a,b,c,d = map(int,input().split())
+
+for i in range(a,b+1):
+    if isPrime(i):
+        for j in range(c,d+1):
+            if isPrime(j):
+                if i+j == 0:
+                    print("Aoki")
+                    exit()
+print("Takahashi")
+
+=======
+Suggestion 9
+
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 ==0:
+        return False
+    i = 3
+    while i <= n**0.5:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+a,b,c,d = map(int,input().split())
+for i in range(a,b+1):
+    for j in range(c,d+1):
+        if is_prime(i+j):
+            print("Aoki")
+            exit()
+print("Takahashi")
+
+=======
+Suggestion 10
+
+def primecheck(n):
+    if n == 1:
+        return False
+    for i in range(2, int(n**(0.5))+1):
+        if n % i == 0:
+            return False
+    else:
+        return True
+
+a, b, c, d = map(int, input().split())
+
+for i in range(a, b+1):
+    if primecheck(i):
+        for j in range(c, d+1):
+            if primecheck(j):
+                if primecheck(i+j):
+                    print("Aoki")
+                    exit()
+print("Takahashi")

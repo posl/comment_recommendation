@@ -1,53 +1,98 @@
-#Problem Statement
-#You are given a sequence A=(A_1,A_2,...,A_N) of length N and positive integers P,Q,R, and S.
-#Here, P,Q,R, and S satisfy 1≦ P≦ Q<R≦ S ≦ N and Q-P=S-R.
-#Let B=(B_1, B_2,..., B_N) be the sequence obtained by swapping the P-th through Q-th terms and the R-th through S-th terms of A.
-#Print the sequence B.
-#
-#Constraints
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N P Q R S
-#A_1 A_2 ... A_N
-#
-#Output
-#Print B_1, B_2,..., B_N, with spaces in between.
-#
-#Sample Input 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#5 6 7 4 1 2 3 8
-#Swapping the 1-st through 3-rd terms (1,2,3) and the 5-th through 7-th terms (5,6,7) of the sequence A=(1,2,3,4,5,6,7,8)
-#results in B=(5,6,7,4,1,2,3,8), which should be printed with spaces in between.
-#
-#Sample Input 2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#Sample Output 2
-#2 1 1 2 1
-#The same integer may occur multiple times in the sequence.
-#
-#Sample Input 3
-#2 1 1 2 2
-#50 100
-#
-#Sample Output 3
-#100 50
-#
-#Sample Input 4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#Sample Output 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def swap(a, p, q, r, s):
+    b = []
+    b.extend(a[:p-1])
+    b.extend(a[r-1:s])
+    b.extend(a[q-1:r-1])
+    b.extend(a[p-1:q])
+    b.extend(a[s:])
+    return b
+
+=======
+Suggestion 2
+
+def swap(A, P, Q, R, S):
+    B = []
+    B.extend(A[0:P-1])
+    B.extend(A[R-1:S])
+    B.extend(A[Q:S-R+1])
+    B.extend(A[P-1:Q])
+    B.extend(A[S:len(A)])
+    return B
+
+=======
+Suggestion 3
+
+def swap(a, p, q, r, s):
+    b = a[0:p-1] + a[r-1:s] + a[q:s] + a[p-1:q-1] + a[s:]
+    return b
+
+=======
+Suggestion 4
+
+def swap(a, p, q, r, s):
+    b = a[0:p-1] + a[r-1:s] + a[q:s-1] + a[p-1:q-1] + a[s:]
+    return b
+
+=======
+Suggestion 5
+
+def swap(a, p, q, r, s):
+    b = []
+    for i in range(len(a)):
+        if i >= p-1 and i <= q-1:
+            b.append(a[i+r-q])
+        elif i >= r-1 and i <= s-1:
+            b.append(a[i+q-r])
+        else:
+            b.append(a[i])
+    return b
+
+=======
+Suggestion 6
+
+def swap(a, p, q, r, s):
+    b = a[:]
+    for i in range(p-1, q):
+        b[i] = a[r-1+i-q]
+    for i in range(r-1, s):
+        b[i] = a[p-1+i-r]
+    return b
+
+=======
+Suggestion 7
+
+def swap(p,q,r,s,a):
+    b = list(a)
+    for i in range(p-1,q):
+        b[i] = a[i+r-q]
+    for i in range(r-1,s):
+        b[i] = a[i+q-p]
+    return b
+
+n,p,q,r,s = map(int,input().split())
+a = list(map(int,input().split()))
+b = swap(p,q,r,s,a)
+print(' '.join([str(x) for x in b]))
+
+=======
+Suggestion 8
+
+def swapper(list, p, q, r, s):
+    p = p - 1
+    q = q - 1
+    r = r - 1
+    s = s - 1
+    for i in range(q - p + 1):
+        list[p + i], list[s - i] = list[s - i], list[p + i]
+    return list
+
+=======
+Suggestion 9
+
+def swap(a, b):
+    return b, a

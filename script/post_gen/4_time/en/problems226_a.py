@@ -1,36 +1,75 @@
-#Problem Statement
-#You are given a real number X, which is representable using at most three decimal digits, with three decimal digits.
-#Round X to the nearest integer and print the result.
-#
-#Constraints
-#0 ≦ X < 100
-#X is representable using at most three decimal digits.
-#X has three decimal digits in input.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Print the integer resulting from rounding X to the nearest integer.
-#
-#Sample Input 1
-#3.456
-#
-#Sample Output 1
-#3
-#The digit in the first decimal place of 3.456 is 4, so we should round it down to 3.
-#
-#Sample Input 2
-#99.500
-#
-#Sample Output 2
-#100
-#
-#Sample Input 3
-#0.000
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = float(input())
+    if x % 1 >= 0.5:
+        print(int(x) + 1)
+    else:
+        print(int(x))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    x = float(input())
+    if x % 1 >= 0.5:
+        print(int(x) + 1)
+    else:
+        print(int(x))
+
+=======
+Suggestion 3
+
+def main():
+    X = float(input())
+    if X % 1 >= 0.5:
+        print(int(X + 1))
+    else:
+        print(int(X))
+
+=======
+Suggestion 4
+
+def round_to_nearest_integer(x):
+    if x % 1 >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+=======
+Suggestion 5
+
+def main():
+    X = float(input())
+    print(int(X+0.5))
+
+=======
+Suggestion 6
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 7
+
+def main():
+    X = float(input())
+    print(int(round(X,0)))
+
+=======
+Suggestion 8
+
+def round_to_nearest_integer(x):
+    return round(x)
+
+=======
+Suggestion 9
+
+def roundUp(num):
+    return int(num) + 1

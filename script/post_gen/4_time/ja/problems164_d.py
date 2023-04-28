@@ -1,37 +1,148 @@
-#問題文
-#1 から 9 までの数字のみからなる文字列 S が与えられます。
-#次のような条件を満たす整数の組 (i,j) (1 ≤ i ≤ j ≤ |S|) の総数を求めてください。
-#条件: S の i 文字目から j 文字目までを 10 進法の整数としてみると、この整数は 2019 の倍数である。
-#
-#制約
-#1 ≤ |S| ≤ 200000
-#S は 1 から 9 までの数字のみからなる文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#条件を満たす整数の組 (i,j) (1 ≤ i ≤ j ≤ |S|) の総数を出力せよ。
-#
-#入力例 1
-#1817181712114
-#
-#出力例 1
-#3
-#条件を満たすのは (1,5), (5,9), (9,13) の 3 個です。
-#
-#入力例 2
-#14282668646
-#
-#出力例 2
-#2
-#
-#入力例 3
-#2119
-#
-#出力例 3
-#0
-#条件を満たす整数の組は存在しません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    n = len(s)
+    ans = 0
+    for i in range(n):
+        for j in range(i+4, n+1):
+            if int(s[i:j]) % 2019 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
+    for i in range(n-3):
+        for j in range(i+3,n):
+            if int(s[i:j+1]) % 2019 == 0:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    n = len(s)
+    ans = 0
+    cnt = [0] * 2019
+    cnt[0] = 1
+    t = 0
+    d = 1
+    for i in range(n):
+        t = (t + int(s[n - 1 - i]) * d) % 2019
+        d = (d * 10) % 2019
+        cnt[t] += 1
+    for i in range(2019):
+        ans += cnt[i] * (cnt[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    n = len(s)
+    t = [0] * n
+    t[n-1] = int(s[n-1])
+    for i in range(n-2, -1, -1):
+        t[i] = (t[i+1] + int(s[i]) * pow(10, n-i-1, 2019)) % 2019
+    t.sort()
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        if t[i] == 0:
+            cnt += 1
+        else:
+            ans += cnt * (cnt + 1) // 2
+            cnt = 0
+    ans += cnt * (cnt + 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        for j in range(i+3,N+1):
+            if int(S[i:j]) % 2019 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    ans = 0
+    for i in range(0, n):
+        for j in range(i, n):
+            if int(s[i:j+1]) % 2019 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    n = len(s)
+    m = [0] * 2019
+    m[0] = 1
+    t = 0
+    for i in range(n):
+        t = (t + int(s[n - 1 - i]) * pow(10, i, 2019)) % 2019
+        m[t] += 1
+
+    ans = 0
+    for i in m:
+        ans += i * (i - 1) // 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = len(s)
+    count = 0
+    for i in range(0,n):
+        for j in range(i,n):
+            if int(s[i:j+1])%2019 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    n = len(s)
+    ans = 0
+    mod = 2019
+    mod_list = [0] * mod
+    mod_list[0] = 1
+    num = 0
+    for i in range(n):
+        num = (num + int(s[n - 1 - i]) * pow(10, i, mod)) % mod
+        ans += mod_list[num]
+        mod_list[num] += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_num(s, i, j):
+    return int(s[i:j+1])

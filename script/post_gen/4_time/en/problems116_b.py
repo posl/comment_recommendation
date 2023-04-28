@@ -1,41 +1,184 @@
-#Problem Statement
-#A sequence a={a_1,a_2,a_3,......} is determined as follows:
-#The first term s is given as input.
-#Let f(n) be the following function: f(n) = n/2 if n is even, and f(n) = 3n+1 if n is odd.
-#a_i = s when i = 1, and a_i = f(a_{i-1}) when i > 1.
-#Find the minimum integer m that satisfies the following condition:
-#There exists an integer n such that a_m = a_n (m > n).
-#
-#Constraints
-#1 ≦ s ≦ 100
-#All values in input are integers.
-#It is guaranteed that all elements in a and the minimum m that satisfies the condition are at most 1000000.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#s
-#
-#Output
-#Print the minimum integer m that satisfies the condition.
-#
-#Sample Input 1
-#8
-#
-#Sample Output 1
-#5
-#a={8,4,2,1,4,2,1,4,2,1,......}. As a_5=a_2, the answer is 5.
-#
-#Sample Input 2
-#7
-#
-#Sample Output 2
-#18
-#a={7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1,4,2,1,......}.
-#
-#Sample Input 3
-#54
-#
-#Sample Output 3
-#114
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    i += 1
+    a.append(f(a[i-2]))
+    if a.count(a[i-1]) == 2:
+        break
+print(i)
+
+=======
+Suggestion 2
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+for i in range(1, 1000000):
+    a.append(f(a[i - 1]))
+    if a[i] in a[:i]:
+        print(i + 1)
+        break
+
+=======
+Suggestion 3
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+
+for i in range(2, 10**6 + 1):
+    a.append(f(a[i - 2]))
+    if a[i - 1] in a[:i - 1]:
+        print(i)
+        break
+
+=======
+Suggestion 4
+
+def f(n):
+    if n % 2 == 0:
+        return int(n / 2)
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    a.append(f(a[i-1]))
+    if a[i] in a[0:i]:
+        print(i+1)
+        break
+    i += 1
+
+=======
+Suggestion 5
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    a.append(f(a[-1]))
+    if a.count(a[-1]) > 1:
+        print(len(a))
+        break
+
+=======
+Suggestion 6
+
+def f(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return 3 * n + 1
+
+s = int(input())
+a = [s]
+while True:
+    if f(a[-1]) in a:
+        print(len(a) + 1)
+        exit()
+    else:
+        a.append(f(a[-1]))
+
+=======
+Suggestion 7
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s = int(input())
+a = [s]
+for i in range(1,1000001):
+    a.append(f(a[i-1]))
+    if a[i] in a[:i-1]:
+        print(i+1)
+        break
+
+=======
+Suggestion 8
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    a.append(f(a[i-1]))
+    if a[i] in a[:i]:
+        print(i+1)
+        break
+    else:
+        i += 1
+
+=======
+Suggestion 9
+
+def f(n):
+    if n % 2 == 0:
+        return n/2
+    else:
+        return 3*n+1
+
+s = int(input())
+a = [s]
+
+for i in range(2, 1000000):
+    a.append(f(a[i-2]))
+    if a[i-1] in a[0:i-1]:
+        print(i)
+        break
+
+=======
+Suggestion 10
+
+def f(n):
+    if n%2 == 0:
+        return n/2
+    else:
+        return 3*n + 1
+
+s = int(input())
+a = []
+a.append(s)
+i = 1
+while True:
+    i += 1
+    a.append(f(a[i-2]))
+    if a[i-1] in a[:i-1]:
+        print(i)
+        break

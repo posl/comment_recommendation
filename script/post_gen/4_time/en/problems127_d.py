@@ -1,68 +1,209 @@
-#Problem Statement
-#You have N cards. On the i-th card, an integer A_i is written.
-#For each j = 1, 2, ..., M in this order, you will perform the following operation once:
-#Operation: Choose at most B_j cards (possibly zero). Replace the integer written on each chosen card with C_j.
-#Find the maximum possible sum of the integers written on the N cards after the M operations.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i, C_i ≦ 10^9
-#1 ≦ B_i ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_N
-#B_1 C_1
-#B_2 C_2
-#.
-#.
-#.
-#B_M C_M
-#
-#Output
-#Print the maximum possible sum of the integers written on the N cards after the M operations.
-#
-#Sample Input 1
-#3 2
-#5 1 4
-#2 3
-#1 5
-#
-#Sample Output 1
-#14
-#By replacing the integer on the second card with 5, the sum of the integers written on the three cards becomes 5 + 5 + 4 = 14, which is the maximum result.
-#
-#Sample Input 2
-#10 3
-#1 8 5 7 100 4 52 33 13 5
-#3 10
-#4 30
-#1 4
-#
-#Sample Output 2
-#338
-#
-#Sample Input 3
-#3 2
-#100 100 100
-#3 99
-#3 99
-#
-#Sample Output 3
-#300
-#
-#Sample Input 4
-#11 3
-#1 1 1 1 1 1 1 1 1 1 1
-#3 1000000000
-#4 1000000000
-#3 1000000000
-#
-#Sample Output 4
-#10000000001
-#The output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    BC = [list(map(int, input().split())) for _ in range(M)]
+    BC.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in BC:
+        for _ in range(b):
+            if i >= N:
+                break
+            if A[i] < c:
+                A[i] = c
+            else:
+                break
+            i += 1
+    print(sum(A))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    a.sort()
+    bc.sort(key=lambda x: -x[1])
+    b = [0] * m
+    c = [0] * m
+    for i in range(m):
+        b[i] = bc[i][0]
+        c[i] = bc[i][1]
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < c[j]:
+            a[i] = c[j]
+            b[j] -= 1
+            if b[j] == 0:
+                j += 1
+        i += 1
+    print(sum(a))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in bc:
+        for _ in range(b):
+            if i >= n or c <= a[i]:
+                break
+            a[i] = c
+            i += 1
+        if i >= n:
+            break
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in bc:
+        for _ in range(b):
+            if i >= n or a[i] >= c:
+                break
+            a[i] = c
+            i += 1
+        else:
+            continue
+        break
+    print(sum(a))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    bc.sort(key=lambda x: x[1], reverse=True)
+    idx = 0
+    for b, c in bc:
+        for _ in range(b):
+            if idx >= n or c <= a[idx]:
+                break
+            a[idx] = c
+            idx += 1
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int, input().split())
+    A = list(map(int, input().split()))
+    BC = []
+    for _ in range(M):
+        BC.append(list(map(int, input().split())))
+    BC.sort(key=lambda x: x[1], reverse=True)
+    for i in range(M):
+        if BC[i][0] >= N:
+            for j in range(N):
+                A[j] = BC[i][1]
+            break
+        else:
+            for j in range(BC[i][0]):
+                A[j] = BC[i][1]
+            N -= BC[i][0]
+    print(sum(A))
+
+=======
+Suggestion 7
+
+def solve(n, m, a, b, c):
+    a.sort()
+    for i in range(m):
+        for j in range(b[i]):
+            if a[j] < c[i]:
+                a[j] = c[i]
+            else:
+                break
+        a.sort()
+    return sum(a)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+b = []
+c = []
+for i in range(m):
+    b_i, c_i = map(int, input().split())
+    b.append(b_i)
+    c.append(c_i)
+print(solve(n, m, a, b, c))
+
+=======
+Suggestion 8
+
+def main():
+    # get input
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = []
+    c = []
+    for i in range(m):
+        b_i, c_i = map(int, input().split())
+        b.append(b_i)
+        c.append(c_i)
+
+    # solve
+    a.sort(reverse=True)
+    b_c = list(zip(b, c))
+    b_c.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < b_c[j][1]:
+            a[i] = b_c[j][1]
+            b_c[j][0] -= 1
+            if b_c[j][0] == 0:
+                j += 1
+        else:
+            break
+        i += 1
+
+    # output
+    print(sum(a))
+
+=======
+Suggestion 9
+
+def maximum_sum_of_cards(N, M, A, B, C):
+    A.sort()
+    operations = sorted(zip(B, C), key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in operations:
+        if A[i] < c:
+            for j in range(b):
+                if A[i] >= c:
+                    break
+                A[i] = c
+                i += 1
+    return sum(A)
+
+=======
+Suggestion 10
+
+def checkSum(cards):
+    sum = 0
+    for card in cards:
+        sum += card
+    return sum

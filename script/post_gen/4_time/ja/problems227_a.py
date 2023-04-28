@@ -1,37 +1,96 @@
-#問題文
-#1,2,...,N の番号のついた N 人の人に合計 K 枚のカードを配ります。
-#人 A から始めて 人 A,A+1,A+2,...,N,1,2,... の順に 1 枚ずつカードを配るとき、最後のカードは誰に配られるでしょうか？
-#厳密には、人 x(1 ≦ x < N) の次には人 x+1 にカードを配り、人 N の次には人 1 にカードを配ります。
-#
-#制約
-#1 ≦ N,K ≦ 1000
-#1 ≦ A ≦ N
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K A
-#
-#出力
-#最後のカードが配られた人の番号を出力せよ。
-#
-#入力例 1
-#3 3 2
-#
-#出力例 1
-#1
-#人 2、人 3、人 1 の順にカードを配ります。
-#
-#入力例 2
-#1 100 1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#3 14 2
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, A = map(int, input().split())
+    print((K - 1 + A - 1) % N + 1)
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    n, k, a = map(int, input().split())
+
+    # compute
+
+    # output
+    if k % n == 0:
+        print(n)
+    else:
+        print(k % n)
+
+=======
+Suggestion 3
+
+def main():
+    n, k, a = map(int, input().split())
+    if k % n == 0:
+        print(a)
+    else:
+        print(a + (k % n) - 1 if a + (k % n) <= n else a + (k % n) - n)
+
+=======
+Suggestion 4
+
+def main():
+    n, k, a = map(int, input().split())
+    print((k + a - 1) % n + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n, k, a = map(int, input().split())
+    if k % n == 0:
+        print(a)
+    else:
+        print((k % n) + a)
+
+=======
+Suggestion 6
+
+def main():
+    N, K, A = map(int, input().split())
+    result = (K - (N - A + 1)) % N
+    print(N if result == 0 else result)
+
+=======
+Suggestion 7
+
+def main():
+    n, k, a = map(int, input().split())
+    if k % n == 0:
+        print(a)
+    else:
+        print(k % n)
+
+=======
+Suggestion 8
+
+def main():
+    n, k, a = map(int, input().split())
+    print((k-1+a-1)%n+1)
+
+=======
+Suggestion 9
+
+def problem227_a():
+    N, K, A = map(int, input().split())
+    print((K - 1 + A - 1) % N + 1)
+    return
+
+=======
+Suggestion 10
+
+def main():
+    n, k, a = map(int, input().split())
+    if k >= n:
+        k = k % n
+    if k < n:
+        if a + k > n:
+            print(a + k - n)
+        else:
+            print(a + k)

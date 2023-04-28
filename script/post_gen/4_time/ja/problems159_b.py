@@ -1,42 +1,93 @@
-#問題文
-#長さが奇数である文字列 S が以下の条件をすべて満たすとき、S は「強い回文」であるといいます。
-#S は回文である。
-#N を S の長さとするとき、S の 1 文字目から (N-1)/2 文字目まで(両端含む)からなる文字列は回文である。
-#S の (N+3)/2 文字目から N 文字目まで(両端含む)からなる文字列は回文である。
-#S が強い回文かどうかを判定してください。
-#
-#制約
-#S は英小文字のみからなる
-#S の長さは 3 以上 99 以下の奇数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が強い回文ならば Yes 、
-#強い回文でないならば No と出力せよ。
-#
-#入力例 1
-#akasaka
-#
-#出力例 1
-#Yes
-#S は akasaka
-#S の 1 文字目から 3 文字目までからなる文字列は aka
-#S の 5 文字目から 7 文字目までからなる文字列は aka
-#これらはすべて回文であるため、S は強い回文です。
-#
-#入力例 2
-#level
-#
-#出力例 2
-#No
-#
-#入力例 3
-#atcoder
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    n = len(s)
+    s1 = s[:int((n-1)/2)]
+    s2 = s[int((n+3)/2)-1:]
+    if s == s[::-1] and s1 == s1[::-1] and s2 == s2[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def isPalindrome(s):
+    n = len(s)
+    for i in range(n//2):
+        if s[i] != s[n-i-1]:
+            return False
+    return True
+
+s = input()
+n = len(s)
+
+=======
+Suggestion 3
+
+def is_strong_palindrome(s):
+    n = len(s)
+    if s != s[::-1]:
+        return False
+    if s[:(n-1)//2] != s[:(n-1)//2][::-1]:
+        return False
+    if s[(n+3)//2-1:] != s[(n+3)//2-1:][::-1]:
+        return False
+    return True
+
+s = input()
+print("Yes" if is_strong_palindrome(s) else "No")
+
+=======
+Suggestion 4
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)
+
+s1 = s[:int((n-1)/2)]
+s2 = s[int((n+3)/2)-1:]
+
+=======
+Suggestion 5
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)
+a = s[:(n-1)//2]
+b = s[(n+3)//2-1:n]
+print('Yes' if is_palindrome(s) and is_palindrome(a) and is_palindrome(b) else 'No')
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+n = len(s)
+
+=======
+Suggestion 7
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+S = input()
+N = len(S)
+
+=======
+Suggestion 8
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+s = input()

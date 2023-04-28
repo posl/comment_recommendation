@@ -1,67 +1,92 @@
-#問題文
-#縦 H 行、横 W 列のマス目があり、このうち上から i 個目、左から j 個目のマスを (i,j) と呼びます。
-#このとき、マス (R,C) に辺で隣接するマスの個数を求めてください。
-#ただし、ある 2 つのマス (a,b),(c,d) が辺で隣接するとは、 |a-c|+|b-d|=1 (|x| を x の絶対値とする) であることを言います。
-#
-#制約
-#入力は全て整数
-#1 ≦ R ≦ H ≦ 10
-#1 ≦ C ≦ W ≦ 10
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#R C
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#3 4
-#2 2
-#
-#出力例 1
-#4
-#入出力例 1,2,3 に対する説明は、出力例 3の下にまとめて示します。
-#
-#入力例 2
-#3 4
-#1 3
-#
-#出力例 2
-#3
-#
-#入力例 3
-#3 4
-#3 4
-#
-#出力例 3
-#2
-#H=3,W=4 のとき、マス目は以下のようになります。
-#入力例 1について、マス (2,2) に隣接するマスは 4 つです。
-#入力例 2について、マス (1,3) に隣接するマスは 3 つです。
-#入力例 3について、マス (3,4) に隣接するマスは 2 つです。
-#
-#
-#入力例 4
-#1 10
-#1 5
-#
-#出力例 4
-#2
-#
-#入力例 5
-#8 1
-#8 1
-#
-#出力例 5
-#1
-#
-#入力例 6
-#1 1
-#1 1
-#
-#出力例 6
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    ans = 0
+    if r > 1:
+        ans += 1
+    if r < h:
+        ans += 1
+    if c > 1:
+        ans += 1
+    if c < w:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(4 if (R == 1 or R == H) and (C == 1 or C == W) else 3 if (R == 1 or R == H) or (C == 1 or C == W) else 2)
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print(3)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(H * W - (R - 1) * W - (C - 1) * H + (R - 1) * (C - 1))
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(4 if R == 1 or R == H or C == 1 or C == W else 8)
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print(H*W - (H-R)*W - (W-C)*H + (H-R)*(W-C))
+
+=======
+Suggestion 7
+
+def solve():
+    H,W = map(int, input().split())
+    r,c = map(int, input().split())
+    print(2 if r in (1,H) and c in (1,W) else 3 if r in (1,H) or c in (1,W) else 4)
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    h,w = map(int, input().split())
+    r,c = map(int, input().split())
+    print(h*w-((h-r)*w+(w-c)*h-(h-r)*(w-c)))
+
+=======
+Suggestion 9
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+
+    print(h*w - (r*w + c*h - r*c))
+
+=======
+Suggestion 10
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print(H*W-(H*C+W*R-R*C))

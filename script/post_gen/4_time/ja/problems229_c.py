@@ -1,67 +1,198 @@
-#問題文
-#ピザ屋で働く高橋くんは、まかないとして美味しいチーズピザを作ることにしました。
-#今、高橋くんの目の前に N 種類のチーズがあります。
-#i 種類目のチーズは 1 [g] あたりのおいしさが A_i で、 B_i [g] あります。
-#ピザのおいしさは、ピザに乗せたチーズのおいしさの総和で決まります。
-#但し、チーズを使いすぎると怒られてしまうため、乗せたチーズの重さは合計で W [g] 以下である必要があります。
-#この条件のもとで、可能なピザのおいしさの最大値を求めてください。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 3 × 10^5
-#1 ≦ W ≦ 3 × 10^8
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 1000
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N W
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#3 5
-#3 1
-#4 2
-#2 3
-#
-#出力例 1
-#15
-#1 種類目のチーズを 1 [g] 、 2 種類目のチーズを 2 [g] 、 3 種類目のチーズを 2 [g] 乗せるのが最適です。
-#このとき、ピザのおいしさは 15 となります。
-#
-#入力例 2
-#4 100
-#6 2
-#1 5
-#3 9
-#8 7
-#
-#出力例 2
-#100
-#チーズの重量の総和が W [g] に満たないケースもあります。
-#
-#入力例 3
-#10 3141
-#314944731 649
-#140276783 228
-#578012421 809
-#878510647 519
-#925326537 943
-#337666726 611
-#879137070 306
-#87808915 39
-#756059990 244
-#228622672 291
-#
-#出力例 3
-#2357689932073
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, W = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # dp[i][w] := i 番目までの品物から重さが w を超えないように選んだときの、価値の総和の最大値
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for w in range(W + 1):
+            if w - A[i] >= 0:
+                dp[i + 1][w] = max(dp[i + 1][w], dp[i][w - A[i]] + B[i])
+            dp[i + 1][w] = max(dp[i + 1][w], dp[i][w])
+
+    print(dp[N][W])
+
+=======
+Suggestion 2
+
+def main():
+    N, W = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            if j - A[i] >= 0:
+                dp[i + 1][j] = max(dp[i][j - A[i]] + B[i], dp[i][j])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[N][W])
+
+=======
+Suggestion 3
+
+def main():
+    N, W = map(int, input().split())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    # dp[i][j] := i番目までのチーズから重さがjを超えないように選んだときのチーズの価値の最大値
+    # dp[i][j] = max(dp[i-1][j], dp[i-1][j-A[i]] + B[i])
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            if j >= A[i]:
+                dp[i + 1][j] = max(dp[i][j], dp[i][j - A[i]] + B[i])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[N][W])
+
+=======
+Suggestion 4
+
+def main():
+    n, w = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    # dp[i][j]: i 番目までのチーズを使って、重さが j 以下になるように選んだときの、チーズのおいしさの総和の最大値
+    dp = [[0] * (w + 1) for _ in range(n + 1)]
+    for i in range(n):
+        for j in range(w + 1):
+            if j >= a[i]:
+                dp[i + 1][j] = max(dp[i][j], dp[i][j - a[i]] + b[i])
+            else:
+                dp[i + 1][j] = dp[i][j]
+    print(dp[n][w])
+
+=======
+Suggestion 5
+
+def main():
+    n, w = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        tmp_a, tmp_b = map(int, input().split())
+        a.append(tmp_a)
+        b.append(tmp_b)
+    # dp[i][j] := i 番目までの品物の中から、重さが j 以下となるように選んだときの、価値の総和の最大値
+    dp = [[0] * (w + 1) for _ in range(n + 1)]
+    # dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - a[i - 1]] + b[i - 1])
+    # i 番目の品物を選ぶ場合、選ばない場合のどちらか
+    # i 番目の品物を選ばない場合、dp[i - 1][j] と同じ
+    # i 番目の品物を選ぶ場合、dp[i - 1][j - a[i - 1]] + b[i - 1]
+    # i 番目の品物を選ぶ場合の価値は、i 番目の品物を選ぶ前の価値に i 番目の品物の価値を足す
+    # i 番目の品物を選ぶ場合の重さは、i 番目の品物を選ぶ前の重さから i 番目の品物の重さを引く
+    for i in range(1, n + 1):
+        for j in range(1, w + 1):
+            if j - a[i - 1] >= 0:
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - a[i - 1]] + b[i - 1])
+            else:
+                dp[i][j] = dp[i - 1][j]
+    print(dp[n][w])
+
+=======
+Suggestion 6
+
+def main():
+    n, w = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[0]/x[1], reverse=True)
+    ans = 0
+    for i in range(n):
+        a, b = ab[i]
+        ans += a * min(b, w)
+        w -= min(b, w)
+        if w == 0:
+            print(ans)
+            exit()
+
+=======
+Suggestion 7
+
+def main():
+    N, W = map(int, input().split())
+    #dp[i][w] := i 番目までの品物から重さが w を超えないように選んだときの、価値の総和の最大値
+    dp = [[0]*(W+1) for _ in range(N+1)]
+    for i in range(N):
+        a, b = map(int, input().split())
+        for w in range(W+1):
+            if w-a >= 0:
+                dp[i+1][w] = max(dp[i][w-a]+b, dp[i][w])
+            else:
+                dp[i+1][w] = dp[i][w]
+    print(dp[N][W])
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+
+    #N, W = map(int, input().split())
+    N, W = map(int, readline().split())
+    #AB = [list(map(int, input().split())) for _ in range(N)]
+    AB = [list(map(int, readline().split())) for _ in range(N)]
+    #dp[i][w] := i 番目までの品物から重さが w を超えないように選んだときの、価値の総和の最大値
+    dp = [[0]*(W+1) for _ in range(N+1)]
+    for i in range(N):
+        for w in range(W+1):
+            if w >= AB[i][1]:
+                dp[i+1][w] = max(dp[i][w-AB[i][1]]+AB[i][0], dp[i][w])
+            else:
+                dp[i+1][w] = dp[i][w]
+    print(dp[N][W])
+
+=======
+Suggestion 9
+
+def solve():
+    # ナップサック問題
+    # dp[i][w] := i 番目までの品物から重さが w を超えないように選んだときの、価値の総和の最大値
+    # dp[i+1][w] = max(dp[i][w], dp[i][w-weight[i]] + value[i])
+
+    n, w = map(int, input().split())
+    dp = [[0]*(w+1) for _ in range(n+1)]
+
+    for i in range(n):
+        weight, value = map(int, input().split())
+        for j in range(w+1):
+            if j >= weight:
+                dp[i+1][j] = max(dp[i][j], dp[i][j-weight] + value)
+            else:
+                dp[i+1][j] = dp[i][j]
+    print(dp[n][w])
+
+solve()
+
+=======
+Suggestion 10
+
+def solve():
+    N, W = map(int, input().split())
+    # dp[i][j] := i番目までのチーズで重さがjになるようにしたときのおいしさの最大値
+    dp = [[0 for _ in range(W+1)] for _ in range(N+1)]
+    for i in range(N):
+        a, b = map(int, input().split())
+        for j in range(W+1):
+            if j - a >= 0:
+                dp[i+1][j] = max(dp[i][j], dp[i][j-a] + b)
+            else:
+                dp[i+1][j] = dp[i][j]
+    print(dp[N][W])

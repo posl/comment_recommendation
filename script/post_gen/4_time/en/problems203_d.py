@@ -1,44 +1,228 @@
-#Problem Statement
-#The land of a park AtCoder is an N× N grid with east-west rows and north-south columns. The height of the square at the i-th row from the north and j-th column from the west is given as A_{i,j}.
-#Takahashi, the manager, has decided to build a square pond occupying K × K squares in this park.
-#To do this, he wants to choose a square section of K × K squares completely within the park whose median of the heights of the squares is the lowest. Find the median of the heights of the squares in such a section.
-#Here, the median of the heights of the squares in a K × K section is the height of the (⌊((K^2)/(2))⌋ +1)-th highest square among the K^2 squares in the section, where ⌊ x⌋ is the greatest integer not exceeding x.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_{1,1} A_{1,2} ... A_{1,N}
-#A_{2,1} A_{2,2} ... A_{2,N}
-#:
-#A_{N,1} A_{N,2} ... A_{N,N}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#Sample Output 1
-#4
-#Let (i,j) denote the square at the i-th row from the north and j-th column from the west.
-#We have four candidates for the 2 × 2 section occupied by the pond: {(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)}.
-#When K=2, since ⌊((2^2)/(2))⌋+1=3, the median of the heights of the squares in a section is the height of the 3-rd highest square, which is 5, 7, 5, 4 for the candidates above, respectively. We should print the lowest of these: 4.
-#
-#Sample Input 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#Sample Output 2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        for j in range(N - K + 1):
+            B = []
+            for k in range(K):
+                for l in range(K):
+                    B.append(A[i + k][j + l])
+            B.sort()
+            ans = min(ans, B[(K * K) // 2])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    s = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            s[i+1][j+1] = s[i+1][j] + s[i][j+1] - s[i][j] + a[i][j]
+    def calc(m):
+        b = [[0]*(n+1) for _ in range(n+1)]
+        for i in range(n):
+            for j in range(n):
+                b[i+1][j+1] = b[i+1][j] + b[i][j+1] - b[i][j] + (a[i][j] >= m)
+        for i in range(n-k+1):
+            for j in range(n-k+1):
+                if b[i+k][j+k] - b[i][j+k] - b[i+k][j] + b[i][j] >= (k*k+1)//2:
+                    return True
+        return False
+    ok, ng = 10**9, -1
+    while ok - ng > 1:
+        m = (ok + ng) // 2
+        if calc(m):
+            ng = m
+        else:
+            ok = m
+    print(ok)
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            B = []
+            for k in range(K):
+                for l in range(K):
+                    B.append(A[i+k][j+l])
+            B.sort()
+            ans = min(ans, B[(K*K)//2])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+
+    def is_ok(x):
+        s = [[0] * (n + 1) for _ in range(n + 1)]
+        for i in range(n):
+            for j in range(n):
+                s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j]
+                if a[i][j] <= x:
+                    s[i + 1][j + 1] += 1
+        for i in range(n - k + 1):
+            for j in range(n - k + 1):
+                if s[i + k][j + k] - s[i][j + k] - s[i + k][j] + s[i][j] <= (k * k) // 2:
+                    return True
+        return False
+
+    ok = 0
+    ng = 10 ** 9 + 1
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if is_ok(mid):
+            ok = mid
+        else:
+            ng = mid
+    print(ok)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # 二次元累積和
+    S = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(N):
+            S[i + 1][j + 1] = S[i + 1][j] + S[i][j + 1] - S[i][j] + A[i][j]
+
+    # 二分探索
+    def is_ok(x):
+        for i in range(N - K + 1):
+            for j in range(N - K + 1):
+                if S[i + K][j + K] - S[i + K][j] - S[i][j + K] + S[i][j] >= x:
+                    return True
+        return False
+
+    ng = -1
+    ok = 10 ** 9 + 1
+    while abs(ok - ng) > 1:
+        mid = (ok + ng) // 2
+        if is_ok(mid):
+            ok = mid
+        else:
+            ng = mid
+    print(ok)
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    A.sort()
+    A = list(map(list, zip(*A)))
+    A.sort()
+    A = list(map(list, zip(*A)))
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            tmp = []
+            for k in range(i, i+K):
+                for l in range(j, j+K):
+                    tmp.append(A[k][l])
+            tmp.sort()
+            ans = min(ans, tmp[(K*K)//2])
+    print(ans)
+
+=======
+Suggestion 7
+
+def median(arr):
+    arr = sorted(arr)
+    if len(arr) % 2 == 0:
+        return (arr[len(arr)//2] + arr[len(arr)//2 - 1]) / 2
+    else:
+        return arr[len(arr)//2]
+
+N, K = map(int, input().split())
+A = [[0] * (N+1) for _ in range(N+1)]
+for i in range(1, N+1):
+    a = list(map(int, input().split()))
+    for j in range(1, N+1):
+        A[i][j] = A[i-1][j] + A[i][j-1] - A[i-1][j-1] + a[j-1]
+
+ans = float('inf')
+for i in range(1, N-K+2):
+    for j in range(1, N-K+2):
+        arr = []
+        for k in range(K):
+            for l in range(K):
+                arr.append(A[i+k][j+l] - A[i+k][j-1] - A[i-1][j+l] + A[i-1][j-1])
+        ans = min(ans, median(arr))
+print(int(ans))
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(N)]
+    A = sorted([sorted(a) for a in A])
+    A = [a[K-1:N] for a in A[K-1:N]]
+    A = [a[0:N-K+1] for a in A[0:N-K+1]]
+    print(min([a[0] for a in A]))
+
+=======
+Suggestion 9
+
+def main():
+    # Input
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    # Solve
+    ans = 10**9
+    for i in range(N-K+1):
+        for j in range(N-K+1):
+            #print(i,j)
+            B = []
+            for k in range(K):
+                for l in range(K):
+                    B.append(A[i+k][j+l])
+            B.sort()
+            #print(B)
+            ans = min(ans, B[(K*K)//2])
+    print(ans)
+
+=======
+Suggestion 10
+
+def median(a):
+    a.sort()
+    return a[len(a)//2]
+
+n,k=map(int,input().split())
+a=[list(map(int,input().split())) for _ in range(n)]
+
+ans=float('inf')
+for i in range(n-k+1):
+    for j in range(n-k+1):
+        temp=[]
+        for l in range(k):
+            for m in range(k):
+                temp.append(a[i+l][j+m])
+        ans=min(ans,median(temp))
+print(ans)

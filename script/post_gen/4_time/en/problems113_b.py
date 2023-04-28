@@ -1,45 +1,109 @@
-#Problem Statement
-#A country decides to build a palace.
-#In this country, the average temperature of a point at an elevation of x meters is T-x × 0.006 degrees Celsius.
-#There are N places proposed for the place. The elevation of Place i is H_i meters.
-#Among them, Princess Joisino orders you to select the place whose average temperature is the closest to A degrees Celsius, and build the palace there.
-#Print the index of the place where the palace should be built.
-#It is guaranteed that the solution is unique.
-#
-#Constraints
-#1 ≦ N ≦ 1000
-#0 ≦ T ≦ 50
-#-60 ≦ A ≦ T
-#0 ≦ H_i ≦ 10^5
-#All values in input are integers.
-#The solution is unique.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#T A
-#H_1 H_2 ... H_N
-#
-#Output
-#Print the index of the place where the palace should be built.
-#
-#Sample Input 1
-#2
-#12 5
-#1000 2000
-#
-#Sample Output 1
-#1
-#The average temperature of Place 1 is 12-1000 × 0.006=6 degrees Celsius.
-#The average temperature of Place 2 is 12-2000 × 0.006=0 degrees Celsius.
-#Thus, the palace should be built at Place 1.
-#
-#Sample Input 2
-#3
-#21 -11
-#81234 94124 52141
-#
-#Sample Output 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    return n, t, a, h
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    diff = [abs(A - (T - h * 0.006)) for h in H]
+    print(diff.index(min(diff)) + 1)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    h = [abs(t - i * 0.006 - a) for i in h]
+    print(h.index(min(h)) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    print(min(range(N), key=lambda i:abs(A-(T-H[i]*0.006)))+1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    H = [T - h * 0.006 for h in H]
+    diff = [abs(A - h) for h in H]
+    print(diff.index(min(diff)) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min = 100000
+    for i in range(N):
+        if abs(T - H[i] * 0.006 - A) < min:
+            min = abs(T - H[i] * 0.006 - A)
+            ans = i + 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    temp = 10**9
+    for i in range(N):
+        if abs(T - H[i] * 0.006 - A) < temp:
+            ans = i + 1
+            temp = abs(T - H[i] * 0.006 - A)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T,A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min = 1000000
+    for i in range(N):
+        if abs(A - (T - H[i] * 0.006)) < min:
+            min = abs(A - (T - H[i] * 0.006))
+            ans = i + 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def calc_temp(t, h):
+    return abs(t - h * 0.006)
+
+N = int(input())
+T, A = map(int, input().split())
+H = list(map(int, input().split()))
+
+temp_list = list(map(lambda x: calc_temp(T, x), H))
+
+print(temp_list.index(min(temp_list)) + 1)

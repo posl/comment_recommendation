@@ -1,39 +1,116 @@
-#Problem Statement
-#There are A slimes.
-#Each time Snuke shouts, the slimes multiply by K times.
-#In order to have B or more slimes, at least how many times does Snuke need to shout?
-#
-#Constraints
-#1 ≦ A ≦ B ≦ 10^9
-#2 ≦ K ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B K
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#1 4 2
-#
-#Sample Output 1
-#2
-#We start with one slime.
-#After Snuke's first shout, we have two slimes; after his second shout, we have four slimes. Thus, he needs to shout at least twice to have four or more slimes.
-#
-#Sample Input 2
-#7 7 10
-#
-#Sample Output 2
-#0
-#We have seven slimes already at the start.
-#
-#Sample Input 3
-#31 415926 5
-#
-#Sample Output 3
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    A, B, K = map(int, input().split())
+    count = 0
+    while A < B:
+        A *= K
+        count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, K = map(int, input().split())
+    cnt = 0
+    while A < B:
+        cnt += 1
+        A *= K
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    a, b, k = map(int, input().split())
+    if a >= b:
+        print(0)
+    else:
+        count = 0
+        while a < b:
+            a *= k
+            count += 1
+        print(count)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,k = map(int, input().split())
+    count = 0
+    while a < b:
+        a = a * k
+        count = count + 1
+    print(count)
+
+=======
+Suggestion 5
+
+def solve(a, b, k):
+    cnt = 0
+    while a < b:
+        a = a * k
+        cnt = cnt + 1
+    return cnt
+
+=======
+Suggestion 6
+
+def solve():
+    #import sys
+    #input = sys.stdin.readline
+    a,b,k = map(int, input().split())
+    ans = 0
+    while a < b:
+        a *= k
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def problems248_b(a,b,k):
+    count = 0
+    while a < b:
+        a *= k
+        count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    A,B,K = map(int,input().split())
+    cnt = 0
+    while A < B:
+        B = B - A
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    A,B,K = map(int,input().split())
+    x = A
+    for i in range(K):
+        if x >= B:
+            break
+        x = x * K
+    print(i)
+
+=======
+Suggestion 10
+
+def solve(a, b, k):
+    if b <= k:
+        return 0
+    if a >= k:
+        return 1
+    if a < k and b > k:
+        return 2
+    return 0

@@ -1,47 +1,159 @@
-#Problem Statement
-#There are N integers, A_1, A_2, ..., A_N, arranged in a row in this order.
-#You can perform the following operation on this integer sequence any number of times:
-#Operation: Choose an integer i satisfying 1 ≦ i ≦ N-1. Multiply both A_i and A_{i+1} by -1.
-#Let B_1, B_2, ..., B_N be the integer sequence after your operations.
-#Find the maximum possible value of B_1 + B_2 + ... + B_N.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^5
-#-10^9 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum possible value of B_1 + B_2 + ... + B_N.
-#
-#Sample Input 1
-#3
-#-10 5 -4
-#
-#Sample Output 1
-#19
-#If we perform the operation as follows:
-#Choose 1 as i, which changes the sequence to 10, -5, -4.
-#Choose 2 as i, which changes the sequence to 10, 5, 4.
-#we have B_1 = 10, B_2 = 5, B_3 = 4. The sum here, B_1 + B_2 + B_3 = 10 + 5 + 4 = 19, is the maximum possible result.
-#
-#Sample Input 2
-#5
-#10 -4 -8 -11 3
-#
-#Sample Output 2
-#30
-#
-#Sample Input 3
-#11
-#-1000000000 1000000000 -1000000000 1000000000 -1000000000 0 1000000000 -1000000000 1000000000 -1000000000 1000000000
-#
-#Sample Output 3
-#10000000000
-#The output may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[0] >= 0:
+        print(sum(A) - 2 * A[0])
+    elif A[-1] <= 0:
+        print(-sum(A) + 2 * A[-1])
+    else:
+        print(sum(map(abs, A)))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n % 2 == 0:
+        print(sum(map(abs, a)))
+    else:
+        print(sum(map(abs, a)) - 2 * min(abs(a[0]), abs(a[-1])))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[0] < 0:
+        if N % 2 == 0:
+            print(sum(map(abs, A)))
+        else:
+            print(sum(map(abs, A)) - 2 * min(map(abs, A)))
+    else:
+        print(sum(A))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[0] < 0 and A[-1] < 0:
+        if N % 2 == 0:
+            print(-sum(A))
+        else:
+            print(-sum(A) + 2 * A[0])
+    elif A[0] < 0 and A[-1] >= 0:
+        print(-sum(A))
+    else:
+        print(sum(A))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [abs(a[i]) for i in range(n)]
+    c = [a[i] for i in range(n) if a[i] < 0]
+    if len(c) % 2 == 0:
+        print(sum(b))
+    else:
+        print(sum(b) - 2 * min(b))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    m = 0
+    p = 0
+    for i in range(N):
+        if A[i] < 0:
+            m += 1
+            A[i] = -A[i]
+        p += A[i]
+    if m % 2 == 0:
+        print(p)
+    else:
+        print(p - 2 * min(A))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n % 2 == 0:
+        print(sum(a))
+    else:
+        print(sum(a) - 2 * a[0])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    s = sum(A)
+    if s < 0:
+        print(s + 2 * A[0])
+    elif s == 0:
+        print(2 * A[0])
+    else:
+        print(s - 2 * A[0])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    minus = 0
+    min_abs = 10**9
+    sum = 0
+    for i in range(N):
+        if A[i] < 0:
+            minus += 1
+        sum += abs(A[i])
+        min_abs = min(min_abs, abs(A[i]))
+    if minus % 2 == 0:
+        print(sum)
+    else:
+        print(sum - min_abs * 2)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    if A[0] < 0:
+        for i in range(N):
+            ans += -A[i]
+    else:
+        for i in range(N):
+            ans += A[i]
+        if A[0] == 0:
+            pass
+        elif A[0] > 0:
+            ans -= 2*A[0]
+        else:
+            ans += 2*A[0]
+    print(ans)
+main()

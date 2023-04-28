@@ -1,48 +1,113 @@
-#問題文
-#果物屋さんでりんごが売られています。
-#あなたは次の操作を好きな順で好きなだけ繰り返すことができます。
-#X 円を払ってりんごを 1 個手に入れる。
-#Y 円を払ってりんごを 3 個手に入れる。
-#りんごをちょうど N 個手に入れるには最低何円必要ですか？  
-#
-#制約
-#1 ≦ X ≦ Y ≦ 100
-#1 ≦ N ≦ 100
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#10 25 10
-#
-#出力例 1
-#85
-#25 円払って 3 個のりんごを手に入れる操作を 3 回繰り返した後、10 円払って 1 個のりんごを手に入れると丁度 10 個のりんごを手に入れられます。このときあなたは 85 円を消費します。
-#これより少ない金額でちょうど 10 個のりんごを手に入れることはできないので、答えは 85 円になります。
-#
-#入力例 2
-#10 40 10
-#
-#出力例 2
-#100
-#10 円払って 1 個のりんごを手に入れる操作を 10 回繰り返すのが最適です。
-#
-#入力例 3
-#100 100 2
-#
-#出力例 3
-#200
-#100 円を払って 1 個のりんごを手に入れる操作を 2 回繰り返す以外に ちょうど 2 個のりんごを手に入れる方法はありません。
-#
-#入力例 4
-#100 100 100
-#
-#出力例 4
-#3400
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print(n // 3 * y)
+    elif n % 3 == 1:
+        print(n // 3 * y + x)
+    else:
+        print(n // 3 * y + x * 2)
+
+=======
+Suggestion 2
+
+def main():
+    x, y, n = map(int, input().split())
+    ans = 0
+    if n % 3 == 0:
+        ans = (n // 3) * y
+    elif n % 3 == 1:
+        ans = (n // 3) * y + x
+    else:
+        ans = (n // 3) * y + x * 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    x, y, n = map(int, input().split())
+    ans = 10 ** 10
+    for i in range(n + 1):
+        for j in range(n + 1):
+            if i + j == n:
+                ans = min(ans, i * x + j * y)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    X, Y, N = map(int, input().split())
+    ans = 0
+    if N % 3 == 0:
+        ans = N // 3 * Y
+    else:
+        ans = N // 3 * Y + (N % 3) * X
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    x,y,n = map(int,input().split())
+    ans = 1000
+    for i in range(n+1):
+        for j in range(n+1):
+            if i + j == n:
+                ans = min(ans,(x*i)+(y*j))
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_input():
+    x, y, n = map(int, input().split())
+    return x, y, n
+
+=======
+Suggestion 7
+
+def solve(X,Y,N):
+    if N%3 == 0:
+        return min(X*N//3,Y*N)
+    elif N%3 == 1:
+        return min(X*(N-1)//3+Y,X+N//3*Y)
+    else:
+        return min(X*(N-2)//3+2*Y,X+(N-2)//3*Y)
+
+=======
+Suggestion 8
+
+def main():
+    x,y,n = map(int,input().split())
+    min = 1000000000
+    for i in range(n+1):
+        for j in range(n+1):
+            if i+j == n:
+                if x*i+y*j < min:
+                    min = x*i+y*j
+    print(min)
+
+=======
+Suggestion 9
+
+def solve():
+    x, y, n = map(int, input().split())
+    ans = 10000000000
+    for i in range(100):
+        for j in range(100):
+            if x*i + 3*j*y == n:
+                ans = min(ans, i*x+j*y)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    x, y, n = map(int, input().split())
+    print(int((n + 2) * x - (n - 2) * y))

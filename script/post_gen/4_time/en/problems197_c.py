@@ -1,62 +1,212 @@
-#Problem Statement
-#Given is a number sequence A of length N.
-#Let us divide this sequence into one or more non-empty contiguous intervals.
-#Then, for each of these intervals, let us compute the bitwise OR of the numbers in it.
-#Find the minimum possible value of the bitwise XOR of the values obtained in this way.
-#        What is bitwise OR?
-#    
-#        The bitwise OR of integers A and B, A OR B, is defined as follows:
-#        
-#When A OR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if at least one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 OR 5 = 7 (in base two: 011 OR 101 = 111).  
-#        Generally, the bitwise OR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 OR p_2) OR p_3) OR ... OR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#        What is bitwise XOR?
-#    
-#        The bitwise XOR of integers A and B, A XOR B, is defined as follows:
-#        
-#When A XOR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if exactly one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 XOR 5 = 6 (in base two: 011 XOR 101 = 110).  
-#        Generally, the bitwise XOR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 XOR p_2) XOR p_3) XOR ... XOR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#Constraints
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#1 5 7
-#
-#Sample Output 1
-#2
-#If we divide [1, 5, 7] into [1, 5] and [7], their bitwise ORs are 5 and 7, whose XOR is 2.
-#It is impossible to get a smaller result, so we print 2.
-#
-#Sample Input 2
-#3
-#10 10 10
-#
-#Sample Output 2
-#0
-#We should divide this sequence into [10] and [10, 10].
-#
-#Sample Input 3
-#4
-#1 3 3 1
-#
-#Sample Output 3
-#0
-#We should divide this sequence into [1, 3] and [3, 1].
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(A[0])
+        return
+    if N == 2:
+        print(A[0] ^ A[1])
+        return
+    if N == 3:
+        print(A[0] ^ A[1] ^ A[2])
+        return
+
+    # 4以上の場合は、A[0]とA[1]のXORを求める
+    # XORの結果の値を求める
+    # その値とA[2]とA[3]のXORを求める
+    # その値とA[4]とA[5]のXORを求める
+    # ・・・
+    # その値とA[N-2]とA[N-1]のXORを求める
+    # その値とA[N-1]とA[0]のXORを求める
+    # その値とA[1]とA[2]のXORを求める
+    # ・・・
+    # その値とA[N-3]とA[N-2]のXORを求める
+    # その値とA[N-2]とA[N-1]のXORを求める
+    # その値とA[N-1]とA[0]のXORを求める
+    # ・・・
+    # その値とA[N-4]とA[N-3]のXORを求める
+    # その値とA[N-3]とA[N-2]のXORを求める
+    # ・・・
+    # ・・・
+    # ・・・
+    # その値とA[1]とA[0]のXORを求める
+    # その値とA[0]とA[N-1]のXORを求める
+    # ・・・
+    # ・・・
+    # ・・・
+    # その値とA[3]とA[2]のXORを求める
+    # その値
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 1:
+        print(0)
+        return
+    if N == 2:
+        print(A[0] ^ A[1])
+        return
+    if N == 3:
+        print(min(A[0] ^ A[1] ^ A[2], A[0] ^ A[1] | A[2], A[0] ^ A[2] | A[1], A[1] ^ A[2] | A[0]))
+        return
+    if N == 4:
+        print(min(A[0] ^ A[1] ^ A[2] ^ A[3], A[0] ^ A[1] ^ A[2] | A[3], A[0] ^ A[1] ^ A[3] | A[2], A[0] ^ A[2] ^ A[3] | A[1], A[1] ^ A[2] ^ A[3] | A[0], A[0] ^ A[1] | A[2] | A[3], A[0] ^ A[2] | A[1] | A[3], A[0] ^ A[3] | A[1] | A[2], A[1] ^ A[2] | A[0] | A[3], A[1] ^ A[3] | A[0] | A[2], A[2] ^ A[3] | A[0] | A[1]))
+        return
+    if N == 5:
+        print(min(A[0] ^ A[1] ^ A[2] ^ A[3] ^ A[4], A[0] ^ A[1] ^ A[2] ^ A[3] | A[4], A[0] ^ A[1] ^ A[2] ^ A[4] | A[3], A[0] ^ A[1] ^ A[2] | A[3] | A[4], A[0] ^ A[1] ^ A[3] ^ A[4] | A[2], A[0] ^ A[1] ^ A[3] | A[2] | A[4],
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans |= A[i]
+    print(ans ^ A[-1])
+
+=======
+Suggestion 4
+
+def solve(n, a):
+    if n == 1:
+        return a[0]
+    elif n == 2:
+        return a[0] ^ a[1]
+    else:
+        return 0
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30):
+        b = [0] * n
+        for j in range(n):
+            b[j] = (a[j] >> i) & 1
+        if sum(b) % 2 == 1:
+            ans += 2 ** i
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30):
+        bit = 1 << i
+        cnt = 0
+        for j in range(n):
+            if a[j] & bit:
+                cnt += 1
+        ans |= bit * (cnt % 2)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(solve(N, A))
+
+=======
+Suggestion 8
+
+def solve(N, A):
+    from functools import lru_cache
+
+    @lru_cache(maxsize=None)
+    def f(i, j):
+        if i == j:
+            return 0
+        elif i == j - 1:
+            return A[i] ^ A[j]
+        else:
+            return min(f(i, k) ^ f(k + 1, j) for k in range(i, j))
+
+    return f(0, N - 1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    #print(len(A))
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    
+    #print(1 | 5)
+    #print(1 | 7)
+    #print(5 | 7)
+    
+    #print(1 ^ 5)
+    #print(1 ^ 7)
+    #print(5 ^ 7)
+    
+    #print(1 | 5 | 7)
+    
+    #print(1 ^ 5 ^ 7)
+    
+    #print(1 | 3)
+    #print(3 | 3)
+    #print(3 | 1)
+    
+    #print(1 ^ 3)
+    #print(3 ^ 3)
+    #print(3 ^ 1)
+    
+    #print(1 | 3 | 3 | 1)
+    
+    #print(1 ^ 3 ^ 3 ^ 1)
+    
+    #print(10 | 10)
+    #print(10 | 10)
+    
+    #print(10 ^ 10)
+    #print(10 ^ 10)
+    
+    #print(10 | 10 | 10)
+    
+    #print(10 ^ 10 ^ 10)
+    
+    #print(1 | 5 | 7)
+    #print(1 ^ 5 ^ 7)
+    
+    #print(1 | 3 | 3 | 1)
+    #print(1 ^ 3 ^ 3 ^ 1)
+    
+    #print(10 | 10 | 10)
+    #print(10 ^ 10 ^ 10)
+    
+    #print(1 | 5 | 7 ^ 1 | 3 | 3 | 1 ^ 10 | 10 | 10)
+    #print(1 ^ 5 ^ 7 ^ 1 ^ 3 ^ 3 ^ 1 ^ 10 ^ 10 ^ 10)
+    
+    #print(1 | 5 | 7 ^ 1 | 3 | 3 | 1 ^ 10 | 10 | 10 ^ 1 | 5 | 7 ^ 1 | 3 | 3 | 1 ^
+
+=======
+Suggestion 10
+
+def solve(N, A):
+    # write your code here
+    # return your answer
+    pass

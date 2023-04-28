@@ -1,27 +1,127 @@
-#問題文
-#文字列 S が入力されます。これは、西暦 2019 年の実在する日付を yyyy/mm/dd の形式で表したものです。(例えば、2019 年 4 月 30 日は 2019/04/30 と表されます。)
-#S が表す日付が 2019 年 4 月 30 日またはそれ以前なら Heisei、そうでなければ TBD と出力するプログラムを書いてください。
-#
-#制約
-#S は西暦 2019 年の実在する日付を yyyy/mm/dd の形式で表す文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が表す日付が 2019 年 4 月 30 日またはそれ以前なら Heisei、そうでなければ TBD と出力せよ。
-#
-#入力例 1
-#2019/04/30
-#
-#出力例 1
-#Heisei
-#
-#入力例 2
-#2019/11/01
-#
-#出力例 2
-#TBD
+Synthesizing 7/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    y = int(s[0:4])
+    m = int(s[5:7])
+    d = int(s[8:10])
+    if y < 2019:
+        print("Heisei")
+    elif y == 2019 and m <= 4 and d <= 30:
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    year = int(s[0:4])
+    month = int(s[5:7])
+    day = int(s[8:10])
+    if year < 2019:
+        print("Heisei")
+    elif year == 2019:
+        if month < 4:
+            print("Heisei")
+        elif month == 4:
+            if day <= 30:
+                print("Heisei")
+            else:
+                print("TBD")
+        else:
+            print("TBD")
+    else:
+        print("TBD")
+
+=======
+Suggestion 3
+
+def judge(year, month, day):
+    if year > 2019:
+        return "TBD"
+    elif year < 2019:
+        return "Heisei"
+    elif month > 4:
+        return "TBD"
+    elif month < 4:
+        return "Heisei"
+    elif day > 30:
+        return "TBD"
+    else:
+        return "Heisei"
+
+year, month, day = map(int, input().split("/"))
+print(judge(year, month, day))
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    y, m, d = S.split('/')
+    y = int(y)
+    m = int(m)
+    d = int(d)
+    if y < 2019:
+        print('Heisei')
+    elif y == 2019:
+        if m < 4:
+            print('Heisei')
+        elif m == 4:
+            if d <= 30:
+                print('Heisei')
+            else:
+                print('TBD')
+        else:
+            print('TBD')
+    else:
+        print('TBD')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    y, m, d = map(int, s.split("/"))
+    if y < 2019:
+        print("Heisei")
+    elif y == 2019 and m < 4:
+        print("Heisei")
+    elif y == 2019 and m == 4 and d <= 30:
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 6
+
+def judge():
+    s = input()
+    s = s.split('/')
+
+    if int(s[0]) > 2019:
+        print('TBD')
+    elif int(s[1]) > 4:
+        print('TBD')
+    elif int(s[2]) > 30:
+        print('TBD')
+    else:
+        print('Heisei')
+
+judge()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = s.replace('/','')
+    if int(s) >= 20190430:
+        print('TBD')
+    else:
+        print('Heisei')

@@ -1,36 +1,125 @@
-#問題文
-#整数 S が与えられます。
-#すべての項が 3 以上の整数で、その総和が S であるような数列がいくつあるか求めてください。ただし、答えは非常に大きくなる可能性があるので、 10^9+7 で割った余りを出力してください。
-#
-#制約
-#1 ≦ S ≦ 2000
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#7
-#
-#出力例 1
-#3
-#数列 {3,4},{4,3},{7} の 3 つが条件を満たします。
-#
-#入力例 2
-#2
-#
-#出力例 2
-#0
-#条件を満たす数列は存在しません。
-#
-#入力例 3
-#1729
-#
-#出力例 3
-#294867501
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = int(input())
+    mod = 10**9 + 7
+    dp = [0] * (s+1)
+    dp[0] = 1
+    for i in range(3, s+1):
+        for j in range(s-i+1):
+            dp[i+j] += dp[j]
+            dp[i+j] %= mod
+    print(dp[s])
+
+=======
+Suggestion 2
+
+def main():
+    S = int(input())
+    mod = 10**9 + 7
+    dp = [0] * (S+1)
+    dp[0] = 1
+    for i in range(3, S+1):
+        dp[i] = (dp[i-1] + dp[i-3]) % mod
+    print(dp[S])
+
+=======
+Suggestion 3
+
+def main():
+    S = int(input())
+    mod = 10**9+7
+    dp = [0] * (S+1)
+    dp[0] = 1
+    for i in range(3,S+1):
+        dp[i] = dp[i-1] + dp[i-3]
+        dp[i] %= mod
+    print(dp[S])
+
+=======
+Suggestion 4
+
+def solve():
+    S = int(input())
+    mod = 10**9 + 7
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    for i in range(3, S + 1):
+        dp[i] = dp[i - 1] + dp[i - 3]
+        dp[i] %= mod
+    print(dp[S])
+
+=======
+Suggestion 5
+
+def main():
+    S = int(input())
+    dp = [0] * (S+1)
+    dp[0] = 1
+    for i in range(3, S+1):
+        dp[i] = (dp[i-1] + dp[i-3]) % (10**9+7)
+    print(dp[S])
+
+=======
+Suggestion 6
+
+def main():
+    s = int(input())
+    dp = [0]*(s+1)
+    dp[0] = 1
+    for i in range(3,s+1):
+        for j in range(s-i+1):
+            dp[j+i] += dp[j]
+            dp[j+i] %= 10**9+7
+    print(dp[s])
+
+=======
+Suggestion 7
+
+def main():
+    S = int(input())
+    dp = [0]*(S+1)
+    dp[0] = 1
+    for i in range(S+1):
+        for j in range(3,i+1):
+            dp[i] += dp[i-j]
+            dp[i] %= 10**9+7
+    print(dp[S])
+
+=======
+Suggestion 8
+
+def main():
+    s = int(input())
+    if s == 1 or s == 2:
+        print(0)
+    else:
+        dp = [0] * (s+1)
+        dp[0] = 1
+        for i in range(3, s+1):
+            for j in range(0, i-2):
+                dp[i] += dp[j]
+                dp[i] %= 1000000007
+        print(dp[s])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            for k in range(1,n+1):
+                if i+j+k == n and i >= 3 and j >= 3 and k >= 3:
+                    ans += 1
+    print(ans % (10**9+7))
+
+=======
+Suggestion 10
+
+def main():
+    pass

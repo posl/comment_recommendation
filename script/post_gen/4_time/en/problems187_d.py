@@ -1,56 +1,208 @@
-#Problem Statement
-#AtCoder City will hold a mayoral election. The candidates are Aoki and Takahashi.
-#The city consists of N towns, the i-th of which has A_i pro-Aoki voters and B_i pro-Takahashi voters. There are no other voters.
-#Takahashi can make a speech in each town.
-#If he makes a speech in some town, all voters in that town, pro-Takahashi or pro-Aoki, will vote for Takahashi.
-#On the other hand, if he does not make a speech in some town, the pro-Aoki voters in that town will vote for Aoki, and the pro-Takahashi voters will not vote.
-#To get more votes than Aoki, in how many towns does Takahashi need to make speeches at least?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#2 1
-#2 2
-#5 1
-#1 3
-#
-#Sample Output 1
-#1
-#After making a speech in the third town, Aoki and Takahashi will get 5 and 6 votes, respectively.
-#
-#Sample Input 2
-#5
-#2 1
-#2 1
-#2 1
-#2 1
-#2 1
-#
-#Sample Output 2
-#3
-#After making speeches in three towns, Aoki and Takahashi will get 4 and 9 votes, respectively.
-#
-#Sample Input 3
-#1
-#273 691
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a1, b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    aoki = 0
+    takahashi = 0
+    for i in range(n):
+        a, t = map(int, input().split())
+        aoki += a
+        takahashi += t
+    if aoki > takahashi:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = A[::-1]
+    B = B[::-1]
+    count = 0
+    for i in range(N):
+        if (A[i] + count) % B[i] != 0:
+            count += B[i] - (A[i] + count) % B[i]
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    aoki = sum(a)
+    takahashi = 0
+    for i in range(n):
+        takahashi += a[i] + b[i]
+    takahashi /= 2
+    if aoki < takahashi:
+        print(0)
+    else:
+        a.sort(reverse=True)
+        b.sort(reverse=True)
+        count = 0
+        for i in range(n):
+            aoki -= a[i]
+            takahashi -= a[i] + b[i]
+            count += 1
+            if aoki < takahashi:
+                break
+        print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    max_a = max(A)
+    max_a_index = A.index(max_a)
+    max_b = max(B)
+    max_b_index = B.index(max_b)
+    if max_a_index == max_b_index:
+        if max_a >= max_b:
+            print(1)
+        else:
+            print(0)
+    else:
+        if max_a >= max_b:
+            print(1)
+        else:
+            print(0)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    votes = []
+    for i in range(N):
+        votes.append(2*A[i] + B[i])
+    #print(votes)
+    votes.sort(reverse=True)
+    #print(votes)
+    total = sum(votes)
+    #print(total)
+    count = 0
+    for i in range(N):
+        count += 1
+        total -= votes[i]
+        if total < 0:
+            break
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+
+    max_b = max(b)
+    idx = b.index(max_b)
+
+    print(a[idx] + b[idx])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    print(a)
+    print(b)
+    print(max(b) - min(a) + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[0]+x[1], reverse=True)
+    aoki = 0
+    takahashi = 0
+    for i in range(N):
+        if i % 2 == 0:
+            aoki += AB[i][0]
+        else:
+            takahashi += AB[i][1]
+    print(aoki - takahashi)
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        tmp = input().split(" ")
+        a.append(int(tmp[0]))
+        b.append(int(tmp[1]))
+    t = 0
+    for i in range(n):
+        t += a[i]
+    t = t/2
+    c = 0
+    for i in range(n):
+        if t < b[i]:
+            c += 1
+    print(c)

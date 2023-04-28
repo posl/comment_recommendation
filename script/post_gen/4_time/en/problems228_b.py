@@ -1,41 +1,137 @@
-#Problem Statement
-#Takahashi has N friends. They have nicknames: Friend 1, Friend 2, ..., Friend N.
-#One day, Takahashi accidentally let one of his friends, Friend X, learn his shameful secret.
-#For each i = 1, 2, ..., N, when Friend i learns the secret, he/she will share it with Friend A_i, if Friend A_i has not already learned it.
-#How many of Takahashi's friends will learn the secret in the end?
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4 2
-#3 1 1 2
-#
-#Sample Output 1
-#3
-#Takahashi's secret will be learned by Friend 1, Friend 2, and Friend 3, as follows.
-#One day, Takahashi let Friend 2 learn the secret.
-#Friend 2 shares it with Friend 1.
-#Friend 1 shares it with Friend 3.
-#In the end, three of his friends learn the secret, so we print 3.
-#
-#Sample Input 2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#Sample Output 2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if A[i] != X:
+            count += 1
+            X = A[i]
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i for i in a if i != x]
+    print(len(a))
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    count = 1
+    for i in range(n):
+        if a[i] == 0:
+            continue
+        else:
+            count += 1
+            a[a[i]-1] = 0
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    count = 1
+    while True:
+        if A[X-1] == X:
+            break
+        else:
+            X = A[X-1]
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A[X-1] = 0
+    print(len(set(A)))
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i - 1 for i in a]
+    b = [False] * n
+    b[x - 1] = True
+    for i in range(n):
+        if b[i]:
+            b[a[i]] = True
+    print(sum(b))
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(x-1, 0)
+    a = list(map(lambda x: x-1, a))
+    cnt = 1
+    i = x-1
+    while True:
+        i = a[i]
+        if i == 0:
+            break
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    print(a.count(1))
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    
+    ans = 0
+    for i in range(1, n+1):
+        if x == i:
+            continue
+        if a[i] == x:
+            ans += 1
+            continue
+        if a[a[i]] == x:
+            ans += 1
+            continue
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(X)
+    A.sort()
+    count = 1
+    for i in range(1, N):
+        if A[i-1] != A[i]:
+            count += 1
+    print(count)

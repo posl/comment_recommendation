@@ -1,54 +1,203 @@
-#Problem Statement
-#Given are N strings S_1,...,S_N, each of which is AND or OR.
-#Find the number of tuples of N+1 variables (x_0,...,x_N), where each element is True or False, such that the following computation results in y_N being True:
-#y_0=x_0;
-#for i≧ 1, y_i=y_{i-1} ∧ x_i if S_i is AND, and y_i=y_{i-1} ∨ x_i if S_i is OR.
-#Here, a ∧ b and a ∨ b are logical operators.
-#
-#Constraints
-#1 ≦ N ≦ 60
-#S_i is AND or OR.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#AND
-#OR
-#
-#Sample Output 1
-#5
-#For example, if (x_0,x_1,x_2)=(True,False,True), we have y_2 = True, as follows:
-#y_0=x_0=True
-#y_1=y_0 ∧ x_1 = True ∧ False=False
-#y_2=y_1 ∨ x_2 = False ∨ True=True
-#All of the five tuples (x_0,x_1,x_2) resulting in y_2 = True are shown below:
-#(True,True,True)
-#(True,True,False)
-#(True,False,True)
-#(False,True,True)
-#(False,False,True)
-#
-#Sample Input 2
-#5
-#OR
-#OR
-#OR
-#OR
-#OR
-#
-#Sample Output 2
-#63
-#All tuples except the one filled entirely with False result in y_5 = True.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    dp = [[0] * 2 for _ in range(N + 1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(N):
+        if S[i] == 'AND':
+            dp[i + 1][0] = dp[i][0]
+            dp[i + 1][1] = dp[i][0] + dp[i][1] * 2
+        else:
+            dp[i + 1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i + 1][1] = dp[i][1]
+    print(dp[N][1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    dp = [[0] * 2 for _ in range(N+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(N):
+        if S[i] == 'AND':
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0] + dp[i][1] * 2
+        else:
+            dp[i+1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+    print(dp[N][0])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    dp = [[0] * 2 for _ in range(n+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+
+    for i in range(n):
+        if s[i] == "AND":
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0] + dp[i][1] * 2
+        else:
+            dp[i+1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+
+    print(dp[n][1])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    dp = [[0, 0] for _ in range(n+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+
+    MOD = 10**9 + 7
+    for i in range(n):
+        if s[i] == "AND":
+            dp[i+1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+        else:
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0] + dp[i][1] * 2
+
+        dp[i+1][0] %= MOD
+        dp[i+1][1] %= MOD
+
+    print(dp[n][1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    dp = [[0, 0] for _ in range(N+1)]
+    dp[0][0] = dp[0][1] = 1
+    for i in range(N):
+        if S[i] == 'AND':
+            dp[i+1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+        else:
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0] + dp[i][1] * 2
+    print(dp[N][1])
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    dp = [[0 for _ in range(2)] for _ in range(n+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(1, n+1):
+        if s[i-1] == 'AND':
+            dp[i][0] = dp[i-1][0]
+            dp[i][1] = dp[i-1][0] + 2*dp[i-1][1]
+        else:
+            dp[i][0] = 2*dp[i-1][0] + dp[i-1][1]
+            dp[i][1] = dp[i-1][1]
+    print(dp[n][1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+
+    dp = [[0] * 2 for i in range(N+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+
+    for i in range(N):
+        if S[i] == 'AND':
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][1]*2 + dp[i][0]
+        else:
+            dp[i+1][0] = dp[i][0]*2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+
+    print(dp[N][1])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    Y = [0] * (N+1)
+    Y[0] = 1
+    for i in range(N):
+        if S[i] == 'AND':
+            Y[i+1] = Y[i]
+        else:
+            Y[i+1] = 2**i + Y[i]
+    print(Y[N])
+
+main()
+
+=======
+Suggestion 9
+
+def calc(N, S):
+    if N == 1:
+        if S == "AND":
+            return 2
+        else:
+            return 1
+    if S == "AND":
+        return 2**(N+1)-2**(N)
+    else:
+        return 2**(N+1)-1
+
+N = int(input())
+S = []
+for i in range(N):
+    S.append(input())
+
+print(calc(N, S))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+
+    # dp[i][j][k] = i番目までの式で、j番目の変数がkの場合の数
+    dp = [[[0 for _ in range(2)] for _ in range(N+1)] for _ in range(N+1)]
+    dp[0][0][0] = 1
+    dp[0][0][1] = 1
+
+    for i in range(N):
+        if S[i] == "AND":
+            dp[i+1][0][0] = dp[i][0][0]
+            dp[i+1][0][1] = dp[i][0][1]
+            for j in range(1, N+1):
+                dp[i+1][j][0] = dp[i][j][0] + dp[i][j-1][1]
+                dp[i+1][j][1] = dp[i][j][1]
+        else:
+            dp[i+1][0][0] = dp[i][0][0]
+            dp[i+1][0][1] = dp[i][0][1]
+            for j in range(1, N+1):
+                dp[i+1][j][0] = dp[i][j][0]
+                dp[i+1][j][1] = dp[i][j][0] + dp[i][j-1][1]
+
+    print(dp[N][N][1])

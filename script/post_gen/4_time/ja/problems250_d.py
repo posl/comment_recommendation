@@ -1,37 +1,187 @@
-#問題文
-#以下の条件を満たす整数 k を「 250 に似た数」と呼びます。
-#k が素数 p<q を使って k=p × q^3 と表される。
-#N 以下の「 250 に似た数」は全部でいくつありますか？
-#
-#制約
-#N は 1 以上 10^{18} 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#250
-#
-#出力例 1
-#2
-#54 = 2 × 3^3 なので、「 250 に似た数」です。
-#250 = 2 × 5^3 なので、「 250 に似た数」です。
-#250 以下の「 250 に似た数」は、以上の 2 つです。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#0
-#
-#入力例 3
-#123456789012345
-#
-#出力例 3
-#226863
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def prime_factorization(n):
+    i = 2
+    table = []
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table
+
+=======
+Suggestion 2
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for k in range(2, int(n**0.5)+1):
+        if n % k == 0:
+            return False
+    return True
+
+n = int(input())
+p = []
+for k in range(1, int(n**0.25)+1):
+    if n % k == 0:
+        p.append(k)
+        p.append(n//k)
+ans = 0
+for k in p:
+    if is_prime(k):
+        if n % k == 0:
+            if is_prime(n//k):
+                ans += 1
+print(ans)
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n%i == 0:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 4
+
+def isPrime(n):
+    if n == 2:
+        return True
+    elif n < 2 or n % 2 == 0:
+        return False
+    else:
+        for i in range(3, int(n**0.5)+1, 2):
+            if n % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 5
+
+def get_divisor(n):
+    i = 2
+    divisors = []
+    while i * i <= n:
+        if n % i == 0:
+            divisors.append(i)
+            n //= i
+        else:
+            i += 1
+    if n > 1:
+        divisors.append(n)
+    return divisors
+
+n = int(input())
+divisors = get_divisor(n)
+divisors_set = set(divisors)
+ans = 0
+for d in divisors_set:
+    if divisors.count(d) >= 4:
+        ans += 1
+    if divisors.count(d) >= 2:
+        for d2 in divisors_set:
+            if d == d2:
+                continue
+            if divisors.count(d2) >= 2:
+                ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def is_prime(n):
+    if n == 1: return False
+    if n == 2: return True
+    if n & 1 == 0: return False
+ 
+    i = 3
+    while i * i <= n:
+        if n % i == 0: return False
+        i += 2
+ 
+    return True
+
+n = int(input())
+
+ans = 0
+for i in range(1, int(n**(1/3)) + 1):
+    if is_prime(i):
+        tmp = n // i
+        if tmp**(1/3) == int(tmp**(1/3)):
+            ans += 1
+
+print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    ans = 0
+    for p in range(2, int(N ** 0.25) + 1):
+        if N % p == 0:
+            q = N // p
+            if q % p ** 3 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve(n):
+    ans = 0
+    for i in range(1, int(n**0.25)+1):
+        if n%i == 0:
+            m = n//i
+            for j in range(1, int(m**0.25)+1):
+                if m%j == 0:
+                    k = m//j
+                    if k%2 == 1 and k != 1:
+                        ans += 1
+    return ans
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, 100000):
+        if i >= n:
+            break
+        if i % 2 == 0:
+            continue
+        if n % i == 0:
+            tmp = n // i
+            if tmp % 2 == 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    res = 0
+    for i in range(2, 1000000):
+        if n % i == 0:
+            j = n // i
+            if j % 2 == 0:
+                res += 1
+    print(res)

@@ -1,76 +1,170 @@
-#Problem Statement
-#Takahashi is practicing shiritori alone again today.
-#Shiritori is a game as follows:
-#In the first turn, a player announces any one word.
-#In the subsequent turns, a player announces a word that satisfies the following conditions:
-#That word is not announced before.
-#The first character of that word is the same as the last character of the last word announced.
-#
-#In this game, he is practicing to announce as many words as possible in ten seconds.
-#You are given the number of words Takahashi announced, N, and the i-th word he announced, W_i, for each i. Determine if the rules of shiritori was observed, that is, every word announced by him satisfied the conditions.
-#
-#Constraints
-#N is an integer satisfying 2 ≦ N ≦ 100.
-#W_i is a string of length between 1 and 10 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#W_1
-#W_2
-#:
-#W_N
-#
-#Output
-#If every word announced by Takahashi satisfied the conditions, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#4
-#hoge
-#english
-#hoge
-#enigma
-#
-#Sample Output 1
-#No
-#As hoge is announced multiple times, the rules of shiritori was not observed.
-#
-#Sample Input 2
-#9
-#basic
-#c
-#cpp
-#php
-#python
-#nadesico
-#ocaml
-#lua
-#assembly
-#
-#Sample Output 2
-#Yes
-#
-#Sample Input 3
-#8
-#a
-#aa
-#aaa
-#aaaa
-#aaaaa
-#aaaaaa
-#aaa
-#aaaaaaa
-#
-#Sample Output 3
-#No
-#
-#Sample Input 4
-#3
-#abc
-#arc
-#agc
-#
-#Sample Output 4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+    for i in range(len(words)-1):
+        if words[i][-1] != words[i+1][0]:
+            print("No")
+            return
+    if len(words) != len(set(words)):
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(0,n):
+        words.append(input())
+    for i in range(0,n-1):
+        if words[i][-1] != words[i+1][0]:
+            print("No")
+            return
+    for i in range(0,n-1):
+        if words[i] in words[i+1:]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    w = []
+    for i in range(n):
+        w.append(input())
+    for i in range(1,n):
+        if w[i] in w[:i]:
+            print("No")
+            return
+        if w[i][0] != w[i-1][-1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+    if len(words) != len(set(words)):
+        print("No")
+        return
+    for i in range(1, n):
+        if words[i][0] != words[i - 1][-1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        word = input()
+        if word in words:
+            print('No')
+            return
+        if i > 0:
+            if words[-1][-1] != word[0]:
+                print('No')
+                return
+        words.append(word)
+    print('Yes')
+
+=======
+Suggestion 6
+
+def shiritori(n, words):
+    if len(set(words)) == n and all(words[i][-1] == words[i+1][0] for i in range(n-1)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+
+    flag = True
+    for i in range(n-1):
+        if words[i] == words[i+1]:
+            flag = False
+            break
+        if words[i][-1] != words[i+1][0]:
+            flag = False
+            break
+
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def shiritori():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+    if len(words) != len(set(words)):
+        print("No")
+    else:
+        for i in range(n-1):
+            if words[i][-1] != words[i+1][0]:
+                print("No")
+                break
+        else:
+            print("Yes")
+shiritori()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    words = []
+    for _ in range(n):
+        words.append(input())
+    if len(set(words)) == len(words):
+        if len(set([w[0] for w in words])) == len(words):
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def shiritori(N):
+    words = []
+    for i in range(N):
+        word = input()
+        if word in words:
+            return False
+        if i > 0 and words[-1][-1] != word[0]:
+            return False
+        words.append(word)
+    return True

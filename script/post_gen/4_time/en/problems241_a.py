@@ -1,37 +1,105 @@
-#Problem Statement
-#There is a device with a screen that shows a single-digit number, and a button.  
-#When the screen is showing a number k, pressing the button once changes the number on the screen to a_k.  
-#The device currently shows 0.  After pressing the button 3 times, what will be shown on the screen?
-#
-#Constraints
-#0≦ a_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a_0 a_1 ... a_9
-#
-#Output
-#Print the answer.  
-#
-#Sample Input 1
-#9 0 1 2 3 4 5 6 7 8
-#
-#Sample Output 1
-#7
-#The number on the screen transitions as 0 -> 9 -> 8 -> 7.  
-#
-#Sample Input 2
-#4 8 8 8 0 8 8 8 8 8
-#
-#Sample Output 2
-#4
-#The number on the screen transitions as 0 -> 4 -> 0 -> 4.  
-#
-#Sample Input 3
-#0 0 0 0 0 0 0 0 0 0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    b = a[0]
+    for i in range(3):
+        b = a[b]
+    print(b)
+
+=======
+Suggestion 2
+
+def main():
+    a = [int(i) for i in input().split()]
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    a = list(map(int, input().split()))
+    b = []
+    b.append(0)
+    b.append(a[0])
+    b.append(a[a[0]])
+    b.append(a[a[a[0]]])
+    b.append(a[a[a[a[0]]]])
+    b.append(a[a[a[a[a[0]]]]])
+    b.append(a[a[a[a[a[a[0]]]]]])
+    b.append(a[a[a[a[a[a[a[0]]]]]]])
+    b.append(a[a[a[a[a[a[a[a[0]]]]]]]])
+    b.append(a[a[a[a[a[a[a[a[a[0]]]]]]]]])
+    print(b[3])
+
+=======
+Suggestion 4
+
+def main():
+    a = input().split()
+    b = 0
+    for i in range(3):
+        b = int(a[b])
+    print(b)
+
+=======
+Suggestion 5
+
+def main():
+    #input
+    a = list(map(int, input().split()))
+    #compute
+    for i in range(3):
+        a = [a[a[i]] for i in range(10)]
+    #output
+    print(a[0])
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    a = list(map(int, input().split()))
+
+    # compute
+
+    # output
+    print(a[3])
+
+=======
+Suggestion 7
+
+def calc(a):
+    i = 0
+    while i < 3:
+        a = a[a[i]]
+        i += 1
+    return a
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    print(a[0])
+    return
+
+=======
+Suggestion 9
+
+def get_input():
+    input_line = input()
+    input_list = input_line.split()
+    return input_list
+
+=======
+Suggestion 10
+
+def get_input():
+    return list(map(int, input().split()))

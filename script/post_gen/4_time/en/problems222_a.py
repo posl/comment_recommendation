@@ -1,35 +1,49 @@
-#Problem Statement
-#You are given an integer N between 0 and 9999 (inclusive).
-#Print it as a four-digit string after appending to it the necessary number of leading zeros.
-#
-#Constraints
-#0 ≦ N ≦ 9999
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#321
-#
-#Sample Output 1
-#0321
-#321 has three digits, so we need to add one leading zero to it to make it have four digits.
-#
-#Sample Input 2
-#7777
-#
-#Sample Output 2
-#7777
-#
-#Sample Input 3
-#1
-#
-#Sample Output 3
-#0001
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # input
+    N = int(input())
+
+    # compute
+
+    # output
+    print('{0:04d}'.format(N))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print('{0:04d}'.format(n))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print("{:04d}".format(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = input()
+    print(n.zfill(4))
+
+=======
+Suggestion 5
+
+def main():
+    N = input()
+    print(N.zfill(4))
+
+=======
+Suggestion 6
+
+def main():
+    # your code goes here
+    N = int(input())
+    print('{0:04d}'.format(N))

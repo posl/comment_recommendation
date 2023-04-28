@@ -1,57 +1,163 @@
-#Problem Statement
-#A sequence of n numbers, S = (s_1, s_2, ..., s_n), is said to be non-decreasing if and only if s_i ≦ s_{i+1} holds for every i (1 ≦ i ≦ n - 1).
-#Given are non-decreasing sequences of N integers each: A = (a_1, a_2, ..., a_N) and B = (b_1, b_2, ..., b_N).
-#Consider a non-decreasing sequence of N integers, C = (c_1, c_2, ..., c_N), that satisfies the following condition:
-#a_i ≦ c_i ≦ b_i for every i (1 ≦ i ≦ N).
-#Find the number, modulo 998244353, of sequences that can be C.
-#
-#Constraints
-#1 ≦ N ≦ 3000
-#0 ≦ a_i ≦ b_i ≦ 3000 (1 ≦ i ≦ N)
-#The sequences A and B are non-decreasing.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 a_2 ... a_N
-#b_1 b_2 ... b_N
-#
-#Output
-#Print the number, modulo 998244353, of sequences that can be C.
-#
-#Sample Input 1
-#2
-#1 1
-#2 3
-#
-#Sample Output 1
-#5
-#There are five sequences that can be C, as follows.
-#(1, 1)
-#(1, 2)
-#(1, 3)
-#(2, 2)
-#(2, 3)
-#Note that (2, 1) does not satisfy the condition since it is not non-decreasing.
-#
-#Sample Input 2
-#3
-#2 2 2
-#2 2 2
-#
-#Sample Output 2
-#1
-#There is one sequence that can be C, as follows.
-#(2, 2, 2)
-#
-#Sample Input 3
-#10
-#1 2 3 4 5 6 7 8 9 10
-#1 4 9 16 25 36 49 64 81 100
-#
-#Sample Output 3
-#978222082
-#Be sure to find the count modulo 998244353.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 1
+    for i in range(N):
+        ans *= max(0, b[i] - a[i] + 1)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    MOD = 998244353
+
+    dp = [[0 for _ in range(3001)] for _ in range(3001)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(A[i], B[i]+1):
+            dp[i+1][j] = dp[i+1][j-1] + dp[i][j]
+            dp[i+1][j] %= MOD
+        for j in range(B[i]+1, 3001):
+            dp[i+1][j] = dp[i+1][j-1]
+    print(dp[N][3000])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    dp = [[0 for j in range(3001)] for i in range(N)]
+
+    for i in range(A[0], B[0]+1):
+        dp[0][i] = 1
+
+    for i in range(1, N):
+        for j in range(A[i], B[i]+1):
+            dp[i][j] = sum(dp[i-1][A[i-1]:j+1]) % 998244353
+
+    print(sum(dp[N-1]) % 998244353)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    mod = 998244353
+
+    dp = [0] * (b[0] + 1)
+    for i in range(a[0], b[0] + 1):
+        dp[i] = 1
+
+    for i in range(1, n):
+        dp_new = [0] * (b[i] + 1)
+        for j in range(a[i], b[i] + 1):
+            dp_new[j] = sum(dp[:j + 1]) % mod
+        dp = dp_new
+
+    print(sum(dp) % mod)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    dp = [[0] * 3001 for _ in range(n)]
+    for i in range(a[0], b[0] + 1):
+        dp[0][i] = 1
+    for i in range(1, n):
+        for j in range(a[i], b[i] + 1):
+            dp[i][j] = sum(dp[i - 1][a[i - 1]:j + 1]) % 998244353
+    print(sum(dp[-1]) % 998244353)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+    dp = [0]*(B[0]+1)
+    for i in range(A[0], B[0]+1):
+        dp[i] = 1
+    for i in range(1, N):
+        for j in range(B[i]+1):
+            dp[j] = dp[j] + dp[j-1]
+            dp[j] %= MOD
+        for j in range(A[i], B[i]+1):
+            dp[j] += dp[j-1]
+            dp[j] %= MOD
+    print(dp[B[-1]])
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+
+    dp = [[0] * (B[0]+1) for _ in range(N+1)]
+    dp[0][0] = 1
+
+    for i in range(N):
+        for j in range(B[i]+1):
+            dp[i+1][j] += dp[i][j]
+            dp[i+1][j] %= MOD
+        for j in range(A[i], B[i]+1):
+            dp[i+1][j] += dp[i+1][j-1]
+            dp[i+1][j] %= MOD
+
+    print(dp[N][B[N-1]])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    result = 0
+    for i in range(n):
+        result += (b[i] - a[i] + 1)
+        
+    print(result % 998244353)
+
+=======
+Suggestion 9
+
+def f(a,b):
+    if a>b:
+        return 0
+    else:
+        return b-a+1
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

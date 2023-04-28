@@ -1,41 +1,133 @@
-#Problem Statement
-#How many triples of non-negative integers (a, b, c) satisfy a+b+c ≦ S and a × b × c ≦ T?
-#
-#Constraints
-#0 ≦ S ≦ 100
-#0 ≦ T ≦ 10000
-#S and T are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S T
-#
-#Output
-#Print the number of triples of non-negative integers (a,b,c) satisfying the conditions.
-#
-#Sample Input 1
-#1 0
-#
-#Sample Output 1
-#4
-#The triples (a,b,c) satisfying the conditions are (0,0,0), (0,0,1), (0,1,0), and (1,0,0) ― there are four of them.
-#
-#Sample Input 2
-#2 5
-#
-#Sample Output 2
-#10
-#
-#Sample Input 3
-#10 10
-#
-#Sample Output 3
-#213
-#
-#Sample Input 4
-#30 100
-#
-#Sample Output 4
-#2471
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S, T = map(int, input().split())
+    count = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a+b+c <= S and a*b*c <= T:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def solve(s,t):
+    count = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    count += 1
+    return count
+
+s,t = map(int, input().split())
+print(solve(s,t))
+
+=======
+Suggestion 3
+
+def main():
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if (a+b+c <= S) and (a*b*c <= T):
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def f(S, T):
+    count = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a+b+c <= S and a*b*c <= T:
+                    count += 1
+    return count
+
+=======
+Suggestion 5
+
+def problem():
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S + 1):
+        for b in range(S - a + 1):
+            for c in range(S - a - b + 1):
+                if a * b * c <= T:
+                    ans += 1
+    print(ans)
+
+problem()
+
+=======
+Suggestion 6
+
+def count(a, b, c):
+    if (a+b+c <= S) and (a*b*c <= T):
+        return 1
+    else:
+        return 0
+
+S, T = map(int, input().split())
+
+count = 0
+for a in range(0, S+1):
+    for b in range(0, S+1):
+        for c in range(0, S+1):
+            count += count(a, b, c)
+
+print(count)
+
+=======
+Suggestion 7
+
+def main():
+    #S, T = map(int, input().split())
+    S = 30
+    T = 100
+    count = 0
+    for a in range(0, S+1):
+        for b in range(0, S+1):
+            for c in range(0, S+1):
+                if a+b+c <= S and a*b*c <= T:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    s = s.split(' ')
+    a = int(s[0])
+    b = int(s[1])
+    count = 0
+    for i in range(0, a+1):
+        for j in range(0, a+1):
+            for k in range(0, a+1):
+                if i+j+k <= a and i*j*k <= b:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def get_input():
+    S, T = map(int, input().split())
+    return S, T
+
+=======
+Suggestion 10
+
+def get_input():
+    s,t = map(int, input().split())
+    return s,t

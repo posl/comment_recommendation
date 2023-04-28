@@ -1,36 +1,75 @@
-#Problem Statement
-#For an integer n, let S(n) be the sum of digits in the decimal notation of n. For example, we have S(123) = 1 + 2 + 3 = 6.
-#Given two 3-digit integers A and B, find the greater of S(A) and S(B).
-#
-#Constraints
-#All values in input are integers.
-#100 ≦ A, B ≦ 999
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the value of the greater of S(A) and S(B).
-#If these are equal, print S(A).
-#
-#Sample Input 1
-#123 234
-#
-#Sample Output 1
-#9
-#We have S(123) = 1 + 2 + 3 = 6 and S(234) = 2 + 3 + 4 = 9, so we should print the greater of these: 9.
-#
-#Sample Input 2
-#593 953
-#
-#Sample Output 2
-#17
-#
-#Sample Input 3
-#100 999
-#
-#Sample Output 3
-#27
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+a, b = map(int, input().split())
+print(max(sum_digits(a), sum_digits(b)))
+
+=======
+Suggestion 2
+
+def sum_of_digits(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+a, b = map(int, input().split())
+print(max(sum_of_digits(a), sum_of_digits(b)))
+
+=======
+Suggestion 3
+
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+a, b = [int(x) for x in input().split()]
+print(max(sum_digits(a), sum_digits(b)))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(max(sum(map(int, str(a))), sum(map(int, str(b)))))
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(max(sum(map(int, str(A))), sum(map(int, str(B)))))
+
+=======
+Suggestion 6
+
+def sum_digits(integer):
+    sum = 0
+    while integer:
+        sum += integer % 10
+        integer //= 10
+    return sum
+
+a, b = map(int, input().split())
+
+=======
+Suggestion 7
+
+def main():
+    a,b = input().split()
+    sa = sum([int(i) for i in a])
+    sb = sum([int(i) for i in b])
+    print(max(sa,sb))

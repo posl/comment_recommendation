@@ -1,48 +1,208 @@
-#問題文
-#正整数列 A=(a_1,a_2,...,a_N) が与えられます。
-#あなたは以下の操作のうち 1 つを選んで行うことを 0 回以上何度でも繰り返せます。
-#1 ≦ i ≦ N かつ a_i が 2 の倍数であるような整数 i を選び、a_i を ((a_i)/(2)) に置き換える
-#1 ≦ i ≦ N かつ a_i が 3 の倍数であるような整数 i を選び、a_i を ((a_i)/(3)) に置き換える
-#あなたの目標は A が a_1=a_2=...=a_N を満たす状態にすることです。
-#目標を達成するために必要な操作の回数の最小値を求めてください。ただし、どのように操作を行っても目標を達成できない場合、代わりに -1 と出力してください。
-#
-#制約
-#2 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1 4 3
-#
-#出力例 1
-#3
-#次のように操作をすると 3 回で目標を達成でき、これが最小の回数です。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,2,3) となる。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,1,3) となる。
-#a_i が 3 の倍数であるような整数 i として 3 を選び、a_3 を ((a_3)/(3)) に置き換える。A は (1,1,1) となる。
-#
-#入力例 2
-#3
-#2 7 6
-#
-#出力例 2
-#-1
-#どのように操作を行っても目標を達成できません。
-#
-#入力例 3
-#6
-#1 1 1 1 1 1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        ok = True
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] //= 2
+                ans += 1
+                ok = False
+                break
+        if ok:
+            break
+    while True:
+        ok = True
+        for i in range(n):
+            if a[i] % 3 == 0:
+                a[i] //= 3
+                ans += 1
+                ok = False
+                break
+        if ok:
+            break
+    for i in range(n):
+        if a[i] != a[0]:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    while 1:
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+            elif a[i] % 3 == 0:
+                a[i] = a[i] / 3
+            else:
+                count = -1
+                break
+        if count == -1:
+            break
+        else:
+            count += 1
+        if a.count(a[0]) == n:
+            break
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all([a % 2 == 0 for a in A]):
+            ans += 1
+            A = [a // 2 for a in A]
+        elif any([a % 2 == 0 for a in A]):
+            print(ans)
+            exit()
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all(a % 2 == 0 for a in A):
+            A = [a // 2 for a in A]
+            ans += 1
+        elif all(a % 3 == 0 for a in A):
+            A = [a // 3 for a in A]
+            ans += 1
+        else:
+            break
+    if all(a == A[0] for a in A):
+        print(ans)
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all(a % 2 == 0 for a in A):
+            A = [a//2 for a in A]
+            ans += 1
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    while True:
+        b = [i for i in a if i % 2 == 0]
+        if len(b) == len(a):
+            a = [i // 2 for i in a]
+            ans += 1
+        else:
+            break
+    while True:
+        c = [i for i in a if i % 3 == 0]
+        if len(c) == len(a):
+            a = [i // 3 for i in a]
+            ans += 1
+        else:
+            break
+    if len(set(a)) == 1:
+        print(ans)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    
+    c = 0
+    while True:
+        if all(a % 2 == 0 for a in A):
+            A = [a / 2 for a in A]
+            c += 1
+        elif all(a % 3 == 0 for a in A):
+            A = [a / 3 for a in A]
+            c += 1
+        else:
+            break
+    if all(a == A[0] for a in A):
+        print(c)
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def func(a):
+    cnt = 0
+    while True:
+        for i in range(len(a)):
+            if a[i] % 2 == 1:
+                return cnt
+        a = [i / 2 for i in a]
+        cnt += 1
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    count = 0
+    while True:
+        if all( a[i]%2 == 0 for i in range(n) ):
+            a = [a[i]//2 for i in range(n)]
+            count += 1
+        else:
+            break
+
+    while True:
+        if all( a[i]%3 == 0 for i in range(n) ):
+            a = [a[i]//3 for i in range(n)]
+            count += 1
+        else:
+            break
+
+    if all( a[i] == a[0] for i in range(n) ):
+        print(count)
+    else:
+        print(-1)
+
+=======
+Suggestion 10
+
+def check_even(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False

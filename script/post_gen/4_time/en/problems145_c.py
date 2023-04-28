@@ -1,59 +1,219 @@
-#Problem Statement
-#There are N towns in a coordinate plane. Town i is located at coordinates (x_i, y_i). The distance between Town i and Town j is ((x_i-x_j)^2+(y_i-y_j)^2)^(1/2).
-#There are N! possible paths to visit all of these towns once. Let the length of a path be the distance covered when we start at the first town in the path, visit the second, third, ..., towns, and arrive at the last town (assume that we travel in a straight line from a town to another). Compute the average length of these N! paths.
-#
-#Constraints
-#2 ≦ N ≦ 8
-#-1000 ≦ x_i ≦ 1000
-#-1000 ≦ y_i ≦ 1000
-#(x_i, y_i) ≠ (x_j, y_j) (if i ≠ j)
-#(Added 21:12 JST) All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#Output
-#Print the average length of the paths.
-#Your output will be judges as correct when the absolute difference from the judge's output is at most 10^{-6}.
-#
-#Sample Input 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#Sample Output 1
-#2.2761423749
-#There are six paths to visit the towns: 1 → 2 → 3, 1 → 3 → 2, 2 → 1 → 3, 2 → 3 → 1, 3 → 1 → 2, and 3 → 2 → 1.
-#The length of the path 1 → 2 → 3 is ((0-1)^2+(0-0)^2)^(1/2) + ((1-0)^2+(0-1)^2)^(1/2) = 1+(2)^(1/2).
-#By calculating the lengths of the other paths in this way, we see that the average length of all routes is:
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#
-#Sample Input 2
-#2
-#-879 981
-#-866 890
-#
-#Sample Output 2
-#91.9238815543
-#There are two paths to visit the towns: 1 → 2 and 2 → 1. These paths have the same length.
-#
-#Sample Input 3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#Sample Output 3
-#7641.9817824387
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            ans += ((X[i] - X[j]) ** 2 + (Y[i] - Y[j]) ** 2) ** (1 / 2)
+    print(ans * 2 / N)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+
+    # 経路の順列を作成
+    import itertools
+    routes = list(itertools.permutations(range(n)))
+
+    # 経路の長さのリスト
+    route_length_list = []
+
+    # 経路の長さを計算
+    for route in routes:
+        length = 0
+        for i in range(n-1):
+            length += ((x[route[i]] - x[route[i+1]])**2 + (y[route[i]] - y[route[i+1]])**2)**(1/2)
+        route_length_list.append(length)
+
+    # 平均を求める
+    print(sum(route_length_list)/len(route_length_list))
+
+=======
+Suggestion 3
+
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    xy = []
+    for _ in range(N):
+        x, y = map(int, input().split())
+        xy.append((x, y))
+
+    fact = [1]
+    for i in range(1, N + 1):
+        fact.append(fact[-1] * i)
+
+    sum = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            sum += ((xy[i][0] - xy[j][0]) ** 2 + (xy[i][1] - xy[j][1]) ** 2) ** 0.5
+
+    print(sum * 2 / fact[N])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    perm = [i for i in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            ans += ((x[i] - x[j]) ** 2 + (y[i] - y[j]) ** 2) ** 0.5
+    ans *= (N - 1) / (N * math.factorial(N - 1))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    town = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        town.append([x, y])
+    path = [i for i in range(N)]
+    count = 0
+    for i in range(N):
+        count += path[i]
+    ans = 0
+    for i in range(count):
+        ans += ((town[path[0]][0] - town[path[1]][0]) ** 2 + (town[path[0]][1] - town[path[1]][1]) ** 2) ** 0.5
+        for j in range(N - 2):
+            ans += ((town[path[j + 1]][0] - town[path[j + 2]][0]) ** 2 + (town[path[j + 1]][1] - town[path[j + 2]][1]) ** 2) ** 0.5
+        path = path[1:] + path[:1]
+    ans = ans / (N * (N - 1) / 2)
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from itertools import permutations
+    from math import sqrt
+    input = sys.stdin.readline
+    N = int(input())
+    X = [0] * N
+    Y = [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    ans = 0
+    for p in permutations(range(N)):
+        for i in range(N - 1):
+            ans += sqrt((X[p[i]] - X[p[i + 1]]) ** 2 + (Y[p[i]] - Y[p[i + 1]]) ** 2)
+    print(ans / N)
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from itertools import permutations
+    import math
+
+    N = int(input())
+    towns = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        towns.append((x, y))
+
+    paths = permutations(towns)
+    total = 0
+    for path in paths:
+        for i in range(N - 1):
+            x1, y1 = path[i]
+            x2, y2 = path[i + 1]
+            total += math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    print(total / math.factorial(N))
+
+=======
+Suggestion 9
+
+def euclidean_distance(x1, y1, x2, y2):
+    return math.sqrt((x1-x2)**2 + (y1-y2)**2)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    xy = [list(map(int, input().split())) for _ in range(N)]
+
+    # パスの長さ
+    def path_len(path):
+        length = 0
+        for i in range(len(path) - 1):
+            x1, y1 = xy[path[i]]
+            x2, y2 = xy[path[i + 1]]
+            length += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return length
+
+    # パスの総和
+    def path_sum(path):
+        length = 0
+        for i in range(len(path) - 1):
+            x1, y1 = xy[path[i]]
+            x2, y2 = xy[path[i + 1]]
+            length += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return length
+
+    # パスの平均
+    def path_avg(path):
+        length = 0
+        for i in range(len(path) - 1):
+            x1, y1 = xy[path[i]]
+            x2, y2 = xy[path[i + 1]]
+            length += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return length / len(path)
+
+    # パスの総和
+    def path_sum(path):
+        length = 0
+        for i in range(len(path) - 1):
+            x1, y1 = xy[path[i]]
+            x2, y2 = xy[path[i + 1]]
+            length += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return length
+
+    # パスの平均
+    def path_avg(path):
+        length = 0
+        for i in range(len(path) - 1):
+            x1, y1 = xy[path[i]]
+            x2, y2 = xy[path[i + 1]]
+            length += ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return length

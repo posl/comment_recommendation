@@ -1,75 +1,225 @@
-#Problem Statement
-#There are N cities and M roads in the Kingdom of Takahashi.
-#The cities are numbered 1 through N, and the roads are numbered 1 through M. Road i is a one-way road that leads from City A_i to City B_i, and it takes C_i minutes to go through it.
-#Let us define f(s, t, k) as the answer to the following query.
-#Compute the minimum time needed to get from City s to City t. Here, other than the Cities s and t, it is only allowed to pass through Cities 1 through k. If City t is unreachable or s = t, the answer should be 0.
-#Compute f(s,t,k) for all triples s,t,k and print the sum of them. More formally, print  sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#Constraints
-#1 ≦ N ≦ 400
-#0 ≦ M ≦ N(N-1)
-#1 ≦ A_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#1 ≦ C_i ≦ 10^6 (1 ≦ i ≦ M)
-#A_i ≠ A_j or B_i ≠ B_j, if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 B_1 C_1
-#.
-#.
-#.
-#A_M B_M C_M
-#
-#Output
-#Print  sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#Sample Input 1
-#3 2
-#1 2 3
-#2 3 2
-#
-#Sample Output 1
-#25
-#The triples s,t,k such that f(s,t,k) ≠ 0 are as follows.
-#For k = 1: f(1,2,1) = 3, f(2,3,1) = 2.
-#For k = 2: f(1,2,2) = 3, f(2,3,2) = 2, f(1,3,2) = 5.
-#For k = 3: f(1,2,3) = 3, f(2,3,3) = 2, f(1,3,3) = 5.
-#
-#Sample Input 2
-#3 0
-#
-#Sample Output 2
-#0
-#We have f(s,t,k) = 0 for all s,t,k.
-#
-#Sample Input 3
-#5 20
-#1 2 6
-#1 3 10
-#1 4 4
-#1 5 1
-#2 1 5
-#2 3 9
-#2 4 8
-#2 5 6
-#3 1 5
-#3 2 1
-#3 4 7
-#3 5 9
-#4 1 4
-#4 2 6
-#4 3 4
-#4 5 8
-#5 1 2
-#5 2 5
-#5 3 6
-#5 4 5
-#
-#Sample Output 3
-#517
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * M
+    for i in range(M):
+        A[i], B[i], C[i] = map(int, input().split())
+    #print(N, M)
+    #print(A)
+    #print(B)
+    #print(C)
+    INF = 1000000000000000000
+    d = [[INF] * (N + 1) for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        d[i][i] = 0
+    for i in range(M):
+        d[A[i]][B[i]] = C[i]
+    for k in range(1, N + 1):
+        for i in range(1, N + 1):
+            for j in range(1, N + 1):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+    #print(d)
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            for k in range(1, N + 1):
+                if d[i][j] == d[i][k] + d[k][j]:
+                    ans += d[i][j]
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * M
+    for i in range(M):
+        A[i], B[i], C[i] = map(int, input().split())
+        A[i] -= 1
+        B[i] -= 1
+
+    INF = 10**18
+    dp = [[INF] * N for _ in range(N)]
+    for i in range(N):
+        dp[i][i] = 0
+
+    for i in range(M):
+        dp[A[i]][B[i]] = min(dp[A[i]][B[i]], C[i])
+
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                if dp[i][j] == dp[i][k] + dp[k][j]:
+                    ans += dp[i][j]
+                    break
+
+    print(ans)
+    return
+
+=======
+Suggestion 3
+
+def floyd_warshall(graph, n):
+    dist = graph
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    return dist
+
+=======
+Suggestion 4
+
+def floyd_warshall(n, edges):
+    dist = [[float('inf')] * n for _ in range(n)]
+    for i in range(n):
+        dist[i][i] = 0
+    for a, b, c in edges:
+        dist[a][b] = c
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    return dist
+
+n, m = map(int, input().split())
+edges = [list(map(int, input().split())) for _ in range(m)]
+for i in range(m):
+    edges[i][0] -= 1
+    edges[i][1] -= 1
+dist = floyd_warshall(n, edges)
+ans = 0
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if dist[i][k] + dist[k][j] == dist[i][j]:
+                ans += dist[i][j]
+print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    read = sys.stdin.buffer.read
+    readline = sys.stdin.buffer.readline
+    readlines = sys.stdin.buffer.readlines
+
+    N, M, *ABCL = map(int, read().split())
+    INF = 10**15
+    G = [[INF] * N for _ in range(N)]
+    for a, b, c in zip(*[iter(ABCL)] * 3):
+        a -= 1
+        b -= 1
+        G[a][b] = c
+
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                G[i][j] = min(G[i][j], G[i][k] + G[k][j])
+
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if G[i][j] < INF:
+                ans += G[i][j]
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def floyd_warshall(n, edges):
+    INF = 10**18
+    d = [[INF]*n for _ in range(n)]
+    for i in range(n):
+        d[i][i] = 0
+    for a, b, c in edges:
+        d[a][b] = c
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k]+d[k][j])
+    return d
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from collections import deque
+    N, M = map(int, sys.stdin.readline().split())
+    graph = [[] for _ in range(N + 1)]
+    for _ in range(M):
+        a, b, c = map(int, sys.stdin.readline().split())
+        graph[a].append((b, c))
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            dist = [float("inf")] * (N + 1)
+            dist[i] = 0
+            q = deque([i])
+            while q:
+                v = q.popleft()
+                for nv, c in graph[v]:
+                    if dist[nv] > dist[v] + c:
+                        dist[nv] = dist[v] + c
+                        q.append(nv)
+            ans += dist[j]
+    print(ans)
+
+=======
+Suggestion 8
+
+def  main():
+    n, m = map(int, input().split())
+    c = [list(map(int, input().split())) for _ in range(m)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            d = [10**9] * n
+            d[i] = 0
+            d[j] = 0
+            for _ in range(n):
+                for a, b, c in c:
+                    if d[a-1] + c < d[b-1]:
+                        d[b-1] = d[a-1] + c
+            ans += sum(d)
+    print(ans)
+
+=======
+Suggestion 9
+
+def  main():
+    import  sys
+    readline  =  sys.stdin.readline
+    N, M  =   map ( int , readline().split())
+    INF  =  10 **  6  *  400  +   1 
+    G  =  [ [ INF  for  _  in   range (N)]  for  _  in   range (N)]
+    for  _  in   range (M):
+        A, B, C  =   map ( int , readline().split())
+        G[A -  1 ][B -  1 ] = C
+     for  k  in   range (N):
+         for  i  in   range (N):
+             for  j  in   range (N):
+                G[i][j]  =   min (G[i][j], G[i][k] + G[k][j])
+    ans  =   0 
+     for  i  in   range (N):
+         for  j  in   range (N):
+             for  k  in   range (N):
+                ans  +=   min (G[i][j], G[i][k] + G[k][j])
+    print (ans)

@@ -1,54 +1,149 @@
-#Problem Statement
-#You are given a string S. Each character of S is uppercase or lowercase English letter.
-#Determine if S satisfies all of the following conditions:
-#The initial character of S is an uppercase A.
-#There is exactly one occurrence of C between the third character from the beginning and the second to last character (inclusive).
-#All letters except the A and C mentioned above are lowercase.
-#
-#Constraints
-#4 ≤ |S| ≤ 10 (|S| is the length of the string S.)
-#Each character of S is uppercase or lowercase English letter.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S satisfies all of the conditions in the problem statement, print AC; otherwise, print WA.
-#
-#Sample Input 1
-#AtCoder
-#
-#Sample Output 1
-#AC
-#The first letter is A, the third letter is C and the remaining letters are all lowercase, so all the conditions are satisfied.
-#
-#Sample Input 2
-#ACoder
-#
-#Sample Output 2
-#WA
-#The second letter should not be C.
-#
-#Sample Input 3
-#AcycliC
-#
-#Sample Output 3
-#WA
-#The last letter should not be C, either.
-#
-#Sample Input 4
-#AtCoCo
-#
-#Sample Output 4
-#WA
-#There should not be two or more occurrences of C.
-#
-#Sample Input 5
-#Atcoder
-#
-#Sample Output 5
-#WA
-#The number of C should not be zero, either.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    for c in s:
+        if c == 'A' or c == 'C':
+            continue
+        if c.isupper():
+            print('WA')
+            return
+    print('AC')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] == "A":
+        if s[2:-1].count("C") == 1:
+            if s[1:].replace("C","").islower():
+                print("AC")
+                return
+    print("WA")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1:
+        for i in range(len(s)):
+            if s[i] != 'A' and s[i] != 'C':
+                if s[i].isupper():
+                    print("WA")
+                    exit()
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 4
+
+def main():
+  s = input()
+  if s[0] == 'A' and s[2:-1].count('C') == 1 and s[1:].replace('C', '').islower():
+    print('AC')
+  else:
+    print('WA')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1:
+        for i in range(1, len(s)):
+            if s[i] == 'C':
+                continue
+            elif s[i].isupper():
+                print('WA')
+                return
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s[0] == "A" and s[2:-1].count("C") == 1:
+        for c in s:
+            if c == "A" or c == "C":
+                continue
+            elif c.isupper():
+                print("WA")
+                exit()
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S[0] == "A" and S[2:-1].count("C") == 1:
+        for c in S:
+            if c != "A" and c != "C":
+                if c.isupper():
+                    print("WA")
+                    return
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1 and s[1].islower() and s[-1].islower():
+        for i in range(2, len(s)):
+            if s[i] != 'C' and not s[i].islower():
+                print('WA')
+                return
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 9
+
+def solve(input_string):
+    if input_string[0] != 'A':
+        return 'WA'
+    if input_string[2:-1].count('C') != 1:
+        return 'WA'
+    if input_string[1] == 'C' or input_string[-1] == 'C':
+        return 'WA'
+    if input_string[1].isupper() or input_string[-1].isupper():
+        return 'WA'
+    return 'AC'
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1:
+        for i in range(len(s)):
+            if s[i].isupper():
+                if i == 0 or i == 2 or i == len(s) - 1:
+                    continue
+                else:
+                    print('WA')
+                    return
+        print('AC')
+    else:
+        print('WA')

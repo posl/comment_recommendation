@@ -1,54 +1,159 @@
-#問題文
-#N 曲からなるプレイリストがあり、曲には 1, ..., N の番号が付けられています。
-#曲 i の長さは A_i 秒です。
-#プレイリストを再生すると、曲 1、曲 2、...、曲 N の順に流れます。曲 N が流れ終わると、再び曲 1 から順に流れていきます。ある曲の途中で次の曲が流れることはなく、曲が流れ終わると、その瞬間に次の曲が流れ始めます。
-#プレイリストを再生してから T 秒後に流れているのはどの曲ですか？また、その曲が流れ始めてから何秒の時点ですか？
-#ただし、T 秒後ちょうどに曲が切り替わるような入力は与えられません。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ T ≦ 10^{18}
-#1 ≦ A_i ≦ 10^9
-#プレイリストを再生して T 秒後ちょうどに曲が切り替わることはない
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N T
-#A_1 ... A_N
-#
-#出力
-#プレイリストを再生してから T 秒後に流れている曲の番号と、その曲が流れ始めてから何秒たったかを表す整数を空白区切りで出力せよ。
-#
-#入力例 1
-#3 600
-#180 240 120
-#
-#出力例 1
-#1 60
-#プレイリストを再生してからの様子は次のようになります。
-#0 秒後から 180 秒後まで曲 1 が流れる。
-#180 秒後から 420 秒後まで曲 2 が流れる。
-#420 秒後から 540 秒後まで曲 3 が流れる。
-#540 秒後から 720 秒後まで曲 1 が流れる。
-#720 秒後から 960 秒後まで曲 2 が流れる。
-#.
-#.
-#.
-#600 秒後の時点で流れているのは曲 1 であり、流れ始めて 60 秒の時点です。
-#
-#入力例 2
-#3 281
-#94 94 94
-#
-#出力例 2
-#3 93
-#
-#入力例 3
-#10 5678912340
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#出力例 3
-#6 678912340
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    t = 0
+    for i in range(N):
+        t += A[i]
+        if t >= T:
+            print(i+1, T-(t-A[i]))
+            exit()
+    T %= t
+    t = 0
+    for i in range(N):
+        t += A[i]
+        if t >= T:
+            print(i+1, T-(t-A[i]))
+            exit()
+
+=======
+Suggestion 2
+
+def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = sum(A)
+    T = T % total
+    s = 0
+    for i in range(N):
+        if s <= T < s + A[i]:
+            print(i + 1, T - s)
+            break
+        s += A[i]
+
+=======
+Suggestion 3
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    a_sum = sum(a)
+    t = t % a_sum
+    a_sum = 0
+    for i in range(n):
+        a_sum += a[i]
+        if t < a_sum:
+            print(i + 1, t)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    n,t=map(int,input().split())
+    a=list(map(int,input().split()))
+    s=sum(a)
+    t%=s
+    for i in range(n):
+        if a[i]>t:
+            print(i+1,t)
+            return
+        t-=a[i]
+    return
+
+=======
+Suggestion 5
+
+def problem281_c():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    t -= 1
+    print(t // sum(a) + 1, t % sum(a) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    total = sum(a)
+    if t % total == 0:
+        print(n, total)
+        return
+    t %= total
+    for i, ai in enumerate(a):
+        if t > ai:
+            t -= ai
+        else:
+            print(i+1, t)
+            return
+
+=======
+Suggestion 7
+
+def solve():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    ans = 0
+    now = 0
+    for i in range(n):
+        if t < a[i]:
+            ans = i + 1
+            now = t
+            break
+        else:
+            t -= a[i]
+    else:
+        ans = (t // sum(a)) * n + 1
+        now = t % sum(a)
+
+    print(ans, now)
+
+=======
+Suggestion 8
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = A * 2
+
+    s = 0
+    for i in range(N):
+        s += A[i]
+
+    t = T % s
+    if t == 0:
+        t = s
+
+    s = 0
+    for i in range(N * 2):
+        s += A[i]
+        if s >= t:
+            print(i + 1, t)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a % T for a in A]
+    A.sort()
+    A.append(A[0] + T)
+
+    i = 0
+    while A[i] < T:
+        i += 1
+    print(i + 1, A[i] - T)
+
+=======
+Suggestion 10
+
+def main():
+    pass

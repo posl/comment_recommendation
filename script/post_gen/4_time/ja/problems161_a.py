@@ -1,39 +1,40 @@
-#問題文
-#3 つの箱 A,B,C があります。それぞれの箱には、整数が 1 つ入っています。
-#現在、箱 A,B,C に入っている整数はそれぞれ X,Y,Z です。
-#これらの箱に対して以下の操作を順に行った後の、それぞれの箱に入っている整数を求めてください。
-#箱 A と箱 B の中身を入れ替える
-#箱 A と箱 C の中身を入れ替える
-#
-#制約
-#1 ≦ X,Y,Z ≦ 100
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#X Y Z
-#
-#出力
-#箱 A,B,C に入っている整数を、順番に空白区切りで出力せよ。
-#
-#入力例 1
-#1 2 3
-#
-#出力例 1
-#3 1 2
-#箱 A と箱 B の中身を入れ替えた後、箱 A,B,C に入っている整数はそれぞれ 2,1,3 です。
-#箱 A と箱 C の中身を入れ替えた後、箱 A,B,C に入っている整数はそれぞれ 3,1,2 です。  
-#
-#入力例 2
-#100 100 100
-#
-#出力例 2
-#100 100 100
-#
-#入力例 3
-#41 59 31
-#
-#出力例 3
-#31 41 59
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, z = map(int, input().split())
+    print(z, x, y)
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    x, y, z = map(int, input().split())
+
+    # compute
+
+    # output
+    print(z, x, y)
+
+=======
+Suggestion 3
+
+def problem161_a():
+    x, y, z = map(int, input().split())
+    print(z, x, y)
+
+=======
+Suggestion 4
+
+def swap(a,b):
+    a,b = b,a
+    return a,b
+
+=======
+Suggestion 5
+
+def swap(a, b):
+    return b, a

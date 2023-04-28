@@ -1,35 +1,74 @@
-#問題文
-#高橋君はキャベツ屋さんにやってきました。
-#キャベツ屋さんでは、 キャベツを 1 個 X 円で買うことができます。
-#ただし、キャベツを A 個よりも多く買う場合、A+1 個目以降に買うキャベツについては 1 個 Y 円で買うことができます。（ここで、Y < X が保証されます。）
-#高橋君がキャベツを N 個買うために必要な金額を出力してください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A ≦ 10^5
-#1 ≦ Y < X ≦ 100
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A X Y
-#
-#出力
-#高橋君が N 個のキャベツを買うために必要な金額を出力せよ。
-#
-#入力例 1
-#5 3 20 15
-#
-#出力例 1
-#90
-#1 個目から 3 個目までのキャベツは、1 個 20 円で買うことができます。
-#4 個目と 5 個目のキャベツは、1 個 15 円で買うことができます。
-#よって、5 個のキャベツを買うために必要な金額は、20+20+20+15+15 = 90 円です。
-#
-#入力例 2
-#10 10 100 1
-#
-#出力例 2
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, x, y = map(int, input().split())
+    if n <= a:
+        print(n * x)
+    else:
+        print(a * x + (n - a) * y)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, x, y = map(int, input().split())
+    ans = 0
+    if n <= a:
+        ans = n * x
+    else:
+        ans = a * x + (n - a) * y
+    print(ans)
+
+=======
+Suggestion 4
+
+def problem210_a():
+    n, a, x, y = map(int, input().split())
+    if n <= a:
+        print(n * x)
+    else:
+        print(a * x + (n - a) * y)
+
+=======
+Suggestion 5
+
+def main():
+    n, a, x, y = map(int, input().split())
+    print(min(n, a) * x + max(0, n - a) * y)
+
+=======
+Suggestion 6
+
+def main():
+    N, A, X, Y = map(int, input().split())
+    print(min(N, A) * X + max(0, N - A) * Y)
+
+=======
+Suggestion 7
+
+def main():
+    N,A,X,Y = map(int,input().split())
+    if N > A:
+        print(A*X + (N-A)*Y)
+    else:
+        print(N*X)
+
+=======
+Suggestion 8
+
+def get_input():
+    n, a, x, y = map(int, input().split())
+    return n, a, x, y

@@ -12,7 +12,7 @@ class test_script:
         self.output_path = output_path
         self.output_path_l = sorted(os.listdir(output_path))
         self.result_path = result_path
-        self.problem_number = script_path.split('/')[-2]
+        self.problem_number = script_path.split('/')[-2].split('_')[0]
         self.difficulty = script_path.split('/')[-2].split('_')[1]
         self.suggestion = script_path.split('/')[-1].split('.')[0]
         self.language = script_path.split('/')[-3]
@@ -68,9 +68,22 @@ if __name__ == '__main__':
     for language in language_l:
         with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/{0}_{1}.csv'.format(language, times), 'w') as f:
             writer = csv.writer(f)
-            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'result', 'output', 'test_case_text', 'message', 'accuracy'])
-    
-        for each_problem in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language))):
+            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'result', 'output', 'expected_output', 'message', 'accuracy'])
+
+        base_problem_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language)))
+        problem_l = []
+        for problem in base_problem_l:
+            if os.path.isdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, problem)):
+                problem_l.append(problem)
+
+        for each_problem in problem_l:
+            base_each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
+            '''
+            each_suggestion_l = []
+            for each_suggestion in base_each_suggestion_l:
+                if os.path.isfile('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)):
+                    each_suggestion_l.append(each_suggestion)
+            '''
             for each_suggestion in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem))):
                 script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
                 input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])

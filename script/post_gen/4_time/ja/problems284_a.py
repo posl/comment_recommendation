@@ -1,51 +1,96 @@
-#問題文
-#N 個の文字列 S_1,S_2,...,S_N がこの順番で与えられます。
-#S_N,S_{N-1},...,S_1 の順番で出力してください。
-#
-#制約
-#1≦ N ≦ 10
-#N は整数
-#S_i は英小文字、英大文字、数字からなる長さ 1 以上 10 以下の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#N 行出力せよ。
-#i (1≦ i ≦ N) 行目には、S_{N+1-i} を出力せよ。
-#
-#入力例 1
-#3
-#Takahashi
-#Aoki
-#Snuke
-#
-#出力例 1
-#Snuke
-#Aoki
-#Takahashi
-#N=3、S_1= Takahashi、S_2= Aoki、S_3= Snuke です。
-#よって、Snuke、Aoki、Takahashi の順で出力します。
-#
-#入力例 2
-#4
-#2023
-#Year
-#New
-#Happy
-#
-#出力例 2
-#Happy
-#New
-#Year
-#2023
-#与えられる文字列が数字を含むこともあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.reverse()
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.reverse()
+    for i in range(N):
+        print(S[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-1-i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-i-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    for i in range(n):
+        print(s[n-i-1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        list.append(input())
+    for i in range(n):
+        print(list[n-i-1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    for i in range(N):
+        print(S[N - 1 - i])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s_list = []
+    for i in range(n):
+        s_list.append(input())
+    for i in range(n):
+        print(s_list[-1-i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    s.reverse()
+    print("\n".join(s))

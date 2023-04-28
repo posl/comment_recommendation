@@ -1,36 +1,155 @@
-#Problem Statement
-#Given are two strings S and T.
-#Let us change some of the characters in S so that T will be a substring of S.
-#At least how many characters do we need to change?
-#Here, a substring is a consecutive subsequence. For example, xxx is a substring of yxxxy, but not a substring of xxyxx.
-#
-#Constraints
-#The lengths of S and T are each at least 1 and at most 1000.
-#The length of T is at most that of S.
-#S and T consist of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#Print the minimum number of characters in S that need to be changed.
-#
-#Sample Input 1
-#cabacc
-#abc
-#
-#Sample Output 1
-#1
-#For example, changing the fourth character a in S to c will match the second through fourth characters in S to T.
-#Since S itself does not have T as its substring, this number of changes - one - is the minimum needed.
-#
-#Sample Input 2
-#codeforces
-#atcoder
-#
-#Sample Output 2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    s = input()
+    t = input()
+    ans = len(t)
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    min = len(t)
+    for i in range(len(s)-len(t)+1):
+        count = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                count += 1
+        if count < min:
+            min = count
+    print(min)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    ans = m
+    for i in range(n-m+1):
+        cnt = 0
+        for j in range(m):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(T)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def solve():
+    S = input()
+    T = input()
+    min = len(T)
+    for i in range(len(S) - len(T) + 1):
+        count = 0
+        for j in range(len(T)):
+            if S[i+j] != T[j]:
+                count += 1
+        if count < min:
+            min = count
+    print(min)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+
+    min_change = len(T)
+    for i in range(len(S) - len(T) + 1):
+        change = 0
+        for j in range(len(T)):
+            if S[i + j] != T[j]:
+                change += 1
+        if change < min_change:
+            min_change = change
+
+    print(min_change)
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    res = len(t)
+    for i in range(len(s) - len(t) + 1):
+        c = 0
+        for j in range(len(t)):
+            if s[i + j] != t[j]:
+                c += 1
+        res = min(res, c)
+    print(res)
+
+=======
+Suggestion 10
+
+def problem():
+    s = input()
+    t = input()
+    min = len(t)
+    for i in range(0, len(s)-len(t)+1):
+        count = 0
+        for j in range(0, len(t)):
+            if s[i+j] != t[j]:
+                count += 1
+        if count < min:
+            min = count
+    print(min)
+
+problem()

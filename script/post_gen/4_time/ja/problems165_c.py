@@ -1,63 +1,183 @@
-#問題文
-#正整数 N , M , Q と、4 つの整数の組 ( a_i , b_i , c_i , d_i ) Q 組が与えられます。
-#以下の条件を満たす数列 A を考えます。
-#A は、長さ N の正整数列である。
-#1 ≦ A_1 ≦ A_2 ≦ ... ≦ A_N ≦ M
-#この数列の得点を、以下のように定めます。
-#A_{b_i} - A_{a_i} = c_i を満たすような i についての、 d_i の総和 (そのような i が存在しないときは 0)
-#A の得点の最大値を求めてください。
-#
-#制約
-#入力は全て整数
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) ( i ≠ j のとき)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M Q
-#a_1 b_1 c_1 d_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#出力
-#A の得点の最大値を出力せよ。
-#
-#入力例 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#出力例 1
-#110
-#A = {1, 3, 4} のとき、この数列の得点は 110 となります。この条件の下では 110 より高い得点を持つ数列は存在しませんから、答えは 110 です。
-#
-#入力例 2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#出力例 2
-#357500
-#
-#入力例 3
-#10 10 1
-#1 10 9 1
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, q = map(int, input().split())
+    a = [0] * q
+    b = [0] * q
+    c = [0] * q
+    d = [0] * q
+    for i in range(q):
+        a[i], b[i], c[i], d[i] = map(int, input().split())
+        a[i] -= 1
+        b[i] -= 1
+
+    ans = 0
+    A = [0] * n
+    def dfs(i, A):
+        nonlocal ans
+        if i == n:
+            now = 0
+            for j in range(q):
+                if A[b[j]] - A[a[j]] == c[j]:
+                    now += d[j]
+            ans = max(ans, now)
+            return
+        A[i] = A[i-1]
+        while A[i] <= m:
+            dfs(i+1, A)
+            A[i] += 1
+    dfs(0, A)
+    print(ans)
+
+=======
+Suggestion 2
+
+def dfs(A):
+    if len(A) == N:
+        score = 0
+        for a, b, c, d in Q:
+            if A[b-1] - A[a-1] == c:
+                score += d
+        return score
+    else:
+        last = A[-1]
+        ans = 0
+        for i in range(last, M+1):
+            A.append(i)
+            ans = max(ans, dfs(A))
+            A.pop()
+        return ans
+
+N, M, Q = map(int, input().split())
+Q = [list(map(int, input().split())) for _ in range(Q)]
+ans = dfs([1])
+print(ans)
+
+=======
+Suggestion 3
+
+def calc_score(a, b, c, d, A):
+    score = 0
+    for i in range(len(a)):
+        if A[b[i]-1] - A[a[i]-1] == c[i]:
+            score += d[i]
+    return score
+
+=======
+Suggestion 4
+
+def score(a):
+    ans = 0
+    for i in range(Q):
+        if a[b[i]-1] - a[a[i]-1] == c[i]:
+            ans += d[i]
+    return ans
+
+=======
+Suggestion 5
+
+def dfs(A,N,M,Q):
+    global ans
+    if len(A) == N:
+        score = 0
+        for i in range(Q):
+            if A[b[i]-1]-A[a[i]-1] == c[i]:
+                score += d[i]
+        ans = max(ans,score)
+        return
+    A.append(A[-1])
+    while A[-1] <= M:
+        dfs(A,N,M,Q)
+        A[-1] += 1
+    A.pop()
+    return
+
+N,M,Q = map(int,input().split())
+a,b,c,d = [],[],[],[]
+for i in range(Q):
+    A,B,C,D = map(int,input().split())
+    a.append(A)
+    b.append(B)
+    c.append(C)
+    d.append(D)
+ans = 0
+dfs([1],N,M,Q)
+print(ans)
+
+=======
+Suggestion 6
+
+def calc_score(arr, N, Q):
+    score = 0
+    for i in range(Q):
+        a = arr[i][0]
+        b = arr[i][1]
+        c = arr[i][2]
+        d = arr[i][3]
+        if arr[b-1] - arr[a-1] == c:
+            score += d
+    return score
+
+=======
+Suggestion 7
+
+def dfs(A, N, M, Q, abcd, ans):
+    if len(A) == N:
+        sum = 0
+        for i in range(Q):
+            if A[abcd[i][1]-1] - A[abcd[i][0]-1] == abcd[i][2]:
+                sum += abcd[i][3]
+        ans[0] = max(ans[0], sum)
+        return
+
+    for i in range(A[-1], M+1):
+        A.append(i)
+        dfs(A, N, M, Q, abcd, ans)
+        A.pop()
+
+=======
+Suggestion 8
+
+def dfs(A, N, M, Q, a, b, c, d):
+    if len(A) == N:
+        #print(A)
+        return calc(A, Q, a, b, c, d)
+    else:
+        for i in range(A[-1], M+1):
+            dfs(A+[i], N, M, Q, a, b, c, d)
+
+=======
+Suggestion 9
+
+def main():
+    N, M, Q = map(int, input().split())
+
+    A = [1] * N
+    for i in range(N):
+        A[i] = 1
+
+    max = 0
+    for i in range(Q):
+        a, b, c, d = map(int, input().split())
+        if A[b-1] - A[a-1] == c:
+            A[b-1] = d
+            if max < sum(A):
+                max = sum(A)
+
+    print(max)
+
+=======
+Suggestion 10
+
+def dfs(A, N, M, Q, query, start, end, score):
+    if len(A) == N:
+        score = max(score, calc_score(A, query))
+        return score
+    for i in range(start, end + 1):
+        A.append(i)
+        score = dfs(A, N, M, Q, query, i, end, score)
+        A.pop()
+    return score

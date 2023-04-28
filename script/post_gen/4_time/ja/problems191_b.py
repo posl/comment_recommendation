@@ -1,34 +1,118 @@
-#問題文
-#長さ N の整数列 A と整数 X が与えられます。
-#A から X と等しい要素を全て取り除き、残った要素をそのままの順序で並べた数列 A' を出力してください。  
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#A' の要素を空白区切りで順に出力せよ。  
-#
-#入力例 1
-#5 5
-#3 5 6 5 4
-#
-#出力例 1
-#3 6 4
-#[3, 5, 6, 5, 4] から 5 を取り除くと、[3, 6, 4] になります。  
-#
-#入力例 2
-#3 3
-#3 3 3
-#
-#出力例 2
-#A' が要素数 0 の数列となる場合があります。この場合、空行を出力するだけで構いません。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N):
+        if A[i] != X:
+            B.append(A[i])
+    print(*B)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] == x:
+            continue
+        ans.append(str(a[i]))
+    print(' '.join(ans))
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a_ = []
+    for i in range(n):
+        if a[i] != x:
+            a_.append(a[i])
+    for i in range(len(a_)):
+        print(a_[i], end=" ")
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=" ")
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a_list = list(map(int, input().split()))
+    for a in a_list:
+        if a != x:
+            print(a, end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    for i in A:
+        if i == X:
+            continue
+        else:
+            print(i, end=" ")
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    print(*[i for i in A if i != X])
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(*[i for i in a if i != x])
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+    #print(*[i for i in a if i != x]) は print(*[i for i in a if i != x]) と同じ
+
+=======
+Suggestion 10
+
+def get_input():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, x, a

@@ -1,36 +1,115 @@
-#Problem Statement
-#You are given a positive integer N.
-#Find the number of triples of positive integers (A, B, C) such that A≦ B≦ C and ABC≦ N.
-#The Constraints guarantee that the answer is less than 2^{63}.
-#
-#Constraints
-#1 ≦ N ≦ 10^{11}
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#5
-#There are five such triples: (1,1,1),(1,1,2),(1,1,3),(1,1,4),(1,2,2).
-#
-#Sample Input 2
-#100
-#
-#Sample Output 2
-#323
-#
-#Sample Input 3
-#100000000000
-#
-#Sample Output 3
-#5745290566750
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, int(N ** 0.5) + 1):
+        for b in range(a, int(N ** 0.5) + 1):
+            for c in range(b, int(N ** 0.5) + 1):
+                if a * b * c <= N:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, int(N**0.5)+1):
+        for b in range(a, int(N**0.5)+1):
+            for c in range(b, int(N**0.5)+1):
+                if a*b*c <= N:
+                    ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            for c in range(b, N+1):
+                if a*b*c <= N:
+                    ans += 1
+                else:
+                    break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    count = 0
+    for a in range(1, int(N**0.5)+1):
+        for b in range(a, int(N**0.5)+1):
+            for c in range(b, int(N**0.5)+1):
+                if a*b*c > N:
+                    break
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N ** 0.5) + 1):
+        for j in range(i, N // i + 1):
+            ans += min(N // (i * j), j) - i + 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N+1):
+        for b in range(a, N+1):
+            if a*b > N:
+                break
+            for c in range(b, N+1):
+                if a*b*c > N:
+                    break
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N+1):
+        ans += N // a * (N // a + 1) // 2
+    print(ans)
+
+main()
+
+The first part of the answer is the sum of the number of triples with A=1, A=2, A=3, ..., A=N. The number of triples with A=a is the number of triples with A=a and B=1, A=a and B=2, A=a and B=3, ..., A=a and B=N. The number of triples with A=a and B=b is the number of triples with A=a and B=b and C=1, A=a and B=b and C=2, A=a and B=b and C=3, ..., A=a and B=b and C=N. The number of triples with A=a and B=b and C=c is the number of triples with A=a and B=b and C=c and a≦b≦c and abc≦N. The number of triples with A=a and B=b and C=c and a≦b≦c and abc≦N is the number of triples with A=a and B=b a
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for a in range(1, N+1):
+        ans += N//a
+    for b in range(1, N+1):
+        ans -= (N//b - 1)*N//b//2
+    for c in range(1, N+1):
+        ans += (N//c - 1)*N//c*(N//c + 1)//6
+    print(ans)
+
+main()

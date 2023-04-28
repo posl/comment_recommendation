@@ -1,59 +1,132 @@
-#Problem Statement
-#In AtCoder city, there are five antennas standing in a straight line. They are called Antenna A, B, C, D and E from west to east, and their coordinates are a, b, c, d and e, respectively.
-#Two antennas can communicate directly if the distance between them is k or less, and they cannot if the distance is greater than k.
-#Determine if there exists a pair of antennas that cannot communicate directly.
-#Here, assume that the distance between two antennas at coordinates p and q (p < q) is q - p.  
-#
-#Constraints
-#a, b, c, d, e and k are integers between 0 and 123 (inclusive).
-#a < b < c < d < e
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a
-#b
-#c
-#d
-#e
-#k
-#
-#Output
-#Print :( if there exists a pair of antennas that cannot communicate directly, and print Yay! if there is no such pair.
-#
-#Sample Input 1
-#1
-#2
-#4
-#8
-#9
-#15
-#
-#Sample Output 1
-#Yay!
-#In this case, there is no pair of antennas that cannot communicate directly, because:
-#the distance between A and B is 2 - 1 = 1
-#the distance between A and C is 4 - 1 = 3
-#the distance between A and D is 8 - 1 = 7
-#the distance between A and E is 9 - 1 = 8
-#the distance between B and C is 4 - 2 = 2
-#the distance between B and D is 8 - 2 = 6
-#the distance between B and E is 9 - 2 = 7
-#the distance between C and D is 8 - 4 = 4
-#the distance between C and E is 9 - 4 = 5
-#the distance between D and E is 9 - 8 = 1
-#and none of them is greater than 15. Thus, the correct output is Yay!.
-#
-#Sample Input 2
-#15
-#18
-#26
-#35
-#36
-#18
-#
-#Sample Output 2
-#:(
-#In this case, the distance between antennas A and D is 35 - 15 = 20 and exceeds 18, so they cannot communicate directly.
-#Thus, the correct output is :(.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+    if (e - a) > k:
+        print(":(")
+    else:
+        print("Yay!")
+
+=======
+Suggestion 2
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+    if e - a > k:
+        print(':(')
+    else:
+        print('Yay!')
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+    if e - a > k:
+        print(":(")
+    else:
+        print("Yay!")
+
+=======
+Suggestion 4
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+    if e - a <= k:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 5
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+    if (e - a) <= k:
+        print("Yay!")
+    else:
+        print(":(")
+
+main()
+
+Haskell
+
+{-# LANGUAGE OverloadedStrings #-} import qualified Data.ByteString.Char8 as BS import Data.Maybe (fromJust) main :: IO () main = do [a,b,c,d,e,k] <- map (fst . fromJust . BS.readInt) . BS.words <$> BS.getLine print $ if k >= e - a then "Yay!" else ":("
+
+Java
+
+import java.io.BufferedReader; import java.io.InputStreamReader; import java.io.IOException; public class Main { public static void main(String[] args) throws IOException { BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); int a = Integer.parseInt(br.readLine()); int b = Integer.parseInt(br.readLine()); int c = Integer.parseInt(br.readLine()); int d = Integer.parseInt(br.readLine()); int e = Integer.parseInt(br.readLine()); int k = Integer.parseInt(br.readLine()); if (e - a <= k) { System.out.println("Yay!"); } else { System.out.println(":("); } } }
+
+Python
+
+a = int(input()) b = int(input()) c = int(input()) d = int(input()) e = int(input()) k = int(input()) print(':(' if e-a>k else 'Yay!')
+
+Ruby
+
+a, b, c, d, e, k = 6.times.map { gets.to_i } puts e - a > k ? ':(' : 'Yay!'
+
+Scala
+
+object Main extends App { val a, b, c, d, e, k = scala.io.StdIn.readInt() println(if (e - a > k) ":(" else "Yay!") }
+
+TypeScript
+
+import * as fs from "fs"; const [a, b, c, d, e, k]: number[] = fs.readFileSync("/dev/stdin", "utf8").trim().split("
+
+").map(Number); if (e - a <= k) { console.log("Yay!"); } else { console.log(":("); }
+
+5 - 2 = 3
+
+5 - 4 = 1
+
+5 - 3 = 2
+
+5 - 1 = 4
+
+5 - 5 = 0
+
+5 - 0 = 5
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    k = int(input())
+
+    if (e - a) <= k:
+        print("Yay!")
+    else:
+        print(":(")

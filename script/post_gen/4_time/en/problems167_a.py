@@ -1,43 +1,129 @@
-#Problem Statement
-#Takahashi wants to be a member of some web service.
-#He tried to register himself with the ID S, which turned out to be already used by another user.
-#Thus, he decides to register using a string obtained by appending one character at the end of S as his ID.
-#He is now trying to register with the ID T. Determine whether this string satisfies the property above.
-#
-#Constraints
-#S and T are strings consisting of lowercase English letters.
-#1 ≦ |S| ≦ 10
-#|T| = |S| + 1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If T satisfies the property in Problem Statement, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#chokudai
-#chokudaiz
-#
-#Sample Output 1
-#Yes
-#chokudaiz can be obtained by appending z at the end of chokudai.
-#
-#Sample Input 2
-#snuke
-#snekee
-#
-#Sample Output 2
-#No
-#snekee cannot be obtained by appending one character at the end of snuke.
-#
-#Sample Input 3
-#a
-#aa
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    if S + 'a' == T:
+        print('Yes')
+    elif S + 'b' == T:
+        print('Yes')
+    elif S + 'c' == T:
+        print('Yes')
+    elif S + 'd' == T:
+        print('Yes')
+    elif S + 'e' == T:
+        print('Yes')
+    elif S + 'f' == T:
+        print('Yes')
+    elif S + 'g' == T:
+        print('Yes')
+    elif S + 'h' == T:
+        print('Yes')
+    elif S + 'i' == T:
+        print('Yes')
+    elif S + 'j' == T:
+        print('Yes')
+    elif S + 'k' == T:
+        print('Yes')
+    elif S + 'l' == T:
+        print('Yes')
+    elif S + 'm' == T:
+        print('Yes')
+    elif S + 'n' == T:
+        print('Yes')
+    elif S + 'o' == T:
+        print('Yes')
+    elif S + 'p' == T:
+        print('Yes')
+    elif S + 'q' == T:
+        print('Yes')
+    elif S + 'r' == T:
+        print('Yes')
+    elif S + 's' == T:
+        print('Yes')
+    elif S + 't' == T:
+        print('Yes')
+    elif S + 'u' == T:
+        print('Yes')
+    elif S + 'v' == T:
+        print('Yes')
+    elif S + 'w' == T:
+        print('Yes')
+    elif S + 'x' == T:
+        print('Yes')
+    elif S + 'y' == T:
+        print('Yes')
+    elif S + 'z' == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T[:-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if t == s + "z":
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    if len(S) == (len(T) - 1):
+        if S == T[0:len(S)]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def check(s, t):
+    if len(s) + 1 == len(t):
+        if s == t[:-1]:
+            return True
+    return False

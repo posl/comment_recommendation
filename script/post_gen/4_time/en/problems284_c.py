@@ -1,63 +1,242 @@
-#Problem Statement
-#You are given a simple undirected graph with N vertices numbered 1 to N and M edges numbered 1 to M. Edge i connects vertex u_i and vertex v_i.
-#Find the number of connected components in this graph.
-#
-#Notes
-#A simple undirected graph is a graph that is simple and has undirected edges.
-#A graph is simple if and only if it has no self-loop or multi-edge.
-#A subgraph of a graph is a graph formed from some of the vertices and edges of that graph.
-#A graph is connected if and only if one can travel between every pair of vertices via edges.
-#A connected component is a connected subgraph that is not part of any larger connected subgraph.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#0 ≦ M ≦ ((N(N - 1))/(2))
-#1 ≦ u_i, v_i ≦ N
-#The given graph is simple.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5 3
-#1 2
-#1 3
-#4 5
-#
-#Sample Output 1
-#2
-#The given graph contains the following two connected components:
-#a subgraph formed from vertices 1, 2, 3, and edges 1, 2;
-#a subgraph formed from vertices 4, 5, and edge 3.
-#
-#
-#Sample Input 2
-#5 0
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#4 6
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def dfs(v):
+    seen[v] = True
+    for next_v in graph[v]:
+        if seen[next_v]:
+            continue
+        dfs(next_v)
+
+N, M = map(int, input().split())
+graph = [[] for _ in range(N)]
+for _ in range(M):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u].append(v)
+    graph[v].append(u)
+
+seen = [False] * N
+count = 0
+for v in range(N):
+    if seen[v]:
+        continue
+    count += 1
+    dfs(v)
+print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        G[u-1].append(v-1)
+        G[v-1].append(u-1)
+    visited = [False] * N
+    def dfs(v):
+        visited[v] = True
+        for nv in G[v]:
+            if not visited[nv]:
+                dfs(nv)
+    count = 0
+    for v in range(N):
+        if not visited[v]:
+            dfs(v)
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def dfs(v):
+    seen[v] = True
+    for next_v in graph[v]:
+        if seen[next_v]:
+            continue
+        dfs(next_v)
+
+n, m = map(int, input().split())
+graph = [[] for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a - 1].append(b - 1)
+    graph[b - 1].append(a - 1)
+
+seen = [False] * n
+count = 0
+for v in range(n):
+    if seen[v]:
+        continue
+    dfs(v)
+    count += 1
+print(count)
+
+=======
+Suggestion 4
+
+def dfs(v):
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(i)
+
+N, M = map(int, input().split())
+graph = [[] for _ in range(N)]
+visited = [False] * N
+for _ in range(M):
+    u, v = map(int, input().split())
+    graph[u-1].append(v-1)
+    graph[v-1].append(u-1)
+
+ans = 0
+for i in range(N):
+    if not visited[i]:
+        dfs(i)
+        ans += 1
+print(ans)
+
+=======
+Suggestion 5
+
+def dfs(graph, start):
+    visited, stack = set(), [start]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            stack.extend(graph[vertex] - visited)
+    return visited
+
+=======
+Suggestion 6
+
+def dfs(v, visited, graph):
+    visited[v] = True
+    for i in range(len(graph[v])):
+        if not visited[graph[v][i]]:
+            dfs(graph[v][i], visited, graph)
+
+n, m = map(int, input().split())
+graph = [[] for _ in range(n + 1)]
+for i in range(m):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+visited = [False for _ in range(n + 1)]
+ans = 0
+for i in range(1, n + 1):
+    if not visited[i]:
+        dfs(i, visited, graph)
+        ans += 1
+
+print(ans)
+
+=======
+Suggestion 7
+
+def dfs(graph, start):
+    visited, stack = set(), [start]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            for neighbor in graph[vertex]:
+                stack.append(neighbor)
+    return visited
+
+N, M = map(int, input().split())
+graph = {i:[] for i in range(1, N+1)}
+for i in range(M):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+count = 0
+visited = set()
+for vertex in range(1, N+1):
+    if vertex not in visited:
+        count += 1
+        visited = visited | dfs(graph, vertex)
+print(count)
+
+=======
+Suggestion 8
+
+def dfs(v):
+    visited[v] = True
+    for i in range(n):
+        if not visited[i] and graph[v][i]:
+            dfs(i)
+
+n, m = map(int, input().split())
+graph = [[False] * n for _ in range(n)]
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a-1][b-1] = graph[b-1][a-1] = True
+
+visited = [False] * n
+ans = 0
+for i in range(n):
+    if not visited[i]:
+        dfs(i)
+        ans += 1
+print(ans)
+
+=======
+Suggestion 9
+
+def dfs(v):
+    visited[v] = True
+    for i in range(n):
+        if not visited[i] and graph[v][i]:
+            dfs(i)
+
+n,m = map(int, input().split())
+graph = [[False] * n for i in range(n)]
+for i in range(m):
+    u,v = map(int, input().split())
+    graph[u-1][v-1] = True
+    graph[v-1][u-1] = True
+
+visited = [False] * n
+count = 0
+for i in range(n):
+    if not visited[i]:
+        dfs(i)
+        count += 1
+
+print(count)
+
+=======
+Suggestion 10
+
+def dfs(node):
+    if node in visited:
+        return
+    else:
+        visited.add(node)
+        for child in graph[node]:
+            dfs(child)
+
+n, m = map(int, input().split())
+graph = {}
+for i in range(n):
+    graph[i+1] = []
+for i in range(m):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+visited = set()
+ans = 0
+for i in range(n):
+    if i+1 not in visited:
+        ans += 1
+        dfs(i+1)
+print(ans)

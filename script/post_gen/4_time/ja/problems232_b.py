@@ -1,69 +1,174 @@
-#問題文
-#高橋君は英小文字からなる文字列 S を持っています。
-#高橋君は文字列 S に対して、下記の操作をちょうど 1 回行います。
-#まず、非負整数 K を選ぶ。
-#その後、S の各文字を K 個後ろの英小文字に変更する。
-#ただし、
-#a の 1 個後ろの英小文字は b であり、
-#b の 1 個後ろの英小文字は c であり、
-#c の 1 個後ろの英小文字は d であり、
-#...
-#y の 1 個後ろの英小文字は z であり、
-#z の 1 個後ろの英小文字は a です。
-#例えば、b の 4 個後ろの英小文字は f であり、y の 3 個後ろの英小文字は b です。
-#文字列 T が与えられます。
-#高橋君が上記の操作によって S を T に一致させることができるかを判定してください。
-#
-#制約
-#S と T はそれぞれ英小文字からなる長さ 1 以上 10^5 以下の文字列
-#S の長さと T の長さは等しい
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#高橋君が S を T に一致させることができる場合は Yes と出力し、
-#できない場合は No と出力せよ。
-#
-#入力例 1
-#abc
-#ijk
-#
-#出力例 1
-#Yes
-#高橋君が K=8 を選ぶと、
-#a は 8 個後ろの i に
-#b は 8 個後ろの j に
-#c は 8 個後ろの k に
-#それぞれ変更され、S と T が一致します。
-#高橋君が S を T に一致させることができるため Yes と出力します。
-#
-#入力例 2
-#z
-#a
-#
-#出力例 2
-#Yes
-#高橋君が K=1 を選ぶと S と T が一致します。
-#z の 1 個後ろの英小文字は a であることに注意してください。
-#
-#入力例 3
-#ppq
-#qqp
-#
-#出力例 3
-#No
-#高橋君は非負整数 K をどのように選んでも S を T に一致させることができません。
-#よって、No と出力します。
-#
-#入力例 4
-#atcoder
-#atcoder
-#
-#出力例 4
-#Yes
-#高橋君が K=0 を選ぶと S と T が一致します。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    if s_len != t_len:
+        print("No")
+        return
+    for i in range(s_len):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)):
+        if s[i:] + s[:i] == t:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s == t:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(s_len):
+        if s == t:
+            print("Yes")
+            return
+        s = s[s_len-1] + s[0:s_len-1]
+    print("No")
+    return
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        if s[i] == t[i]:
+            continue
+        elif s[i] == t[i+1] and s[i+1] == t[i]:
+            print("Yes")
+            return
+        else:
+            print("No")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] == t[i]:
+            continue
+        else:
+            if s[i] == 'z':
+                if t[i] == 'a':
+                    continue
+                else:
+                    print('No')
+                    exit()
+            elif s[i] == 'a':
+                if t[i] == 'z':
+                    continue
+                else:
+                    print('No')
+                    exit()
+            else:
+                if s[i] < t[i]:
+                    print('Yes')
+                    exit()
+                else:
+                    print('No')
+                    exit()
+    print('Yes')
+    exit()
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print('Yes')
+        exit()
+    for i in range(1, len(S)):
+        S = S[-1] + S[0:-1]
+        if S == T:
+            print('Yes')
+            exit()
+    print('No')
+main()

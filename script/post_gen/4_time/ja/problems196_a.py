@@ -1,40 +1,33 @@
-#問題文
-#整数 a, b, c, d が与えられます。
-#a ≤ x ≤ b, c ≤ y ≤ d となるように整数 x, y を選ぶとき、 x - y の最大値を求めてください。
-#
-#制約
-#入力は全て整数
-#-100 ≤ a ≤ b ≤ 100
-#-100 ≤ c ≤ d ≤ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b
-#c d
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#0 10
-#0 10
-#
-#出力例 1
-#10
-#(x, y) = (10, 0) のとき最大値 x - y = 10 をとります。
-#
-#入力例 2
-#-100 -100
-#100 100
-#
-#出力例 2
-#-200
-#
-#入力例 3
-#-100 100
-#-100 100
-#
-#出力例 3
-#200
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a-c, a-d, b-c, b-d))
+
+=======
+Suggestion 2
+
+def solve():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a - c, a - d, b - c, b - d))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(max(a, c) - min(b, d), 0))
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    c,d = map(int, input().split())
+    print(b-d)

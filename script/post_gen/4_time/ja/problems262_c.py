@@ -1,36 +1,155 @@
-#問題文
-#1 以上 N 以下の整数からなる長さ N の数列 a = (a_1, ..., a_N) が与えられます。
-#以下の条件を全て満たす整数 i, j の組の総数を求めてください。
-#1 ≦ i < j ≦ N
-#min(a_i, a_j) = i
-#max(a_i, a_j) = j
-#
-#制約
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ a_i ≦ N  (1 ≦ i ≦ N)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 ... a_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#1 3 2 4
-#
-#出力例 1
-#2
-#(i, j) = (1, 4), (2, 3) が条件を満たします。
-#
-#入力例 2
-#10
-#5 8 2 2 1 6 7 2 9 10
-#
-#出力例 2
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [0] + list(map(int, input().split()))
+    B = [0] * (N + 1)
+    for i in range(1, N + 1):
+        B[A[i]] = i
+    ans = 0
+    for i in range(1, N + 1):
+        if B[i] == i:
+            if i + 1 <= N and B[i + 1] == i + 1:
+                ans += 1
+        else:
+            if i < B[i] and B[i] < B[i + 1]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N):
+        b[a[i] - 1] = i + 1
+    ans = 0
+    for i in range(N):
+        if b[i] == i + 1:
+            continue
+        else:
+            ans += 1
+            b[a[i] - 1] = b[i]
+            a[b[i] - 1] = a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if min(A[i],A[j]) == i+1 and max(A[i],A[j]) == j+1:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > i + 1:
+            continue
+        ans += a.count(i + 1)
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= i+1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N+1):
+        if i < A[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    ans = 0
+    for i in range(1, N+1):
+        if a[a[i]] == i:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        if a[i] > i+1:
+            continue
+        for j in range(i+1, N):
+            if a[i] == i+1 and a[j] == j+1:
+                ans += 1
+            elif a[i] == j+1 and a[j] == i+1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] >= i+1:
+            ans += A[i] - (i+1)
+        else:
+            ans += A[i]
+
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if A[i] < i+1:
+            continue
+        for j in range(A[i], n+1):
+            if j < A[j-1]:
+                continue
+            if A[i] == j and A[j-1] == i+1:
+                ans += 1
+            if j < A[i]:
+                ans += 1
+    print(ans)

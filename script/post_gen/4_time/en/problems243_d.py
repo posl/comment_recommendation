@@ -1,51 +1,159 @@
-#Problem Statement
-#There is a perfect binary tree with 2^{10^{100}}-1 vertices, numbered 1,2,...,2^{10^{100}}-1.
-#Vertex 1 is the root. For each 1≦ i < 2^{10^{100}-1}, Vertex i has two children: Vertex 2i to the left and Vertex 2i+1 to the right.
-#Takahashi starts at Vertex X and performs N moves, represented by a string S. The i-th move is as follows.
-#If the i-th character of S is U, go to the parent of the vertex he is on now.
-#If the i-th character of S is L, go to the left child of the vertex he is on now.
-#If the i-th character of S is R, go to the right child of the vertex he is on now.
-#Find the index of the vertex Takahashi will be on after N moves. In the given cases, it is guaranteed that the answer is at most 10^{18}.
-#
-#Constraints
-#1 ≦ N ≦ 10^6
-#1 ≦ X ≦ 10^{18}
-#N and X are integers.
-#S has a length of N and consists of U, L, and R.
-#When Takahashi is at the root, he never attempts to go to the parent.
-#When Takahashi is at a leaf, he never attempts to go to a child.
-#The index of the vertex Takahashi is on after N moves is at most 10^{18}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#S
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 2
-#URL
-#
-#Sample Output 1
-#6
-#The perfect binary tree has the following structure.
-#In the three moves, Takahashi goes 2 -> 1 -> 3 -> 6.
-#
-#Sample Input 2
-#4 500000000000000000
-#RRUU
-#
-#Sample Output 2
-#500000000000000000
-#During the process, Takahashi may be at a vertex whose index exceeds 10^{18}.
-#
-#Sample Input 3
-#30 123456789
-#LRULURLURLULULRURRLRULRRRUURRU
-#
-#Sample Output 3
-#126419752371
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            X = X // 2
+        elif S[i] == 'L':
+            X = 2 * X - 1
+        else:
+            X = 2 * X + 1
+    print(X)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+
+    ans = x
+    for i in range(n):
+        if s[i] == 'L':
+            ans -= 1
+        elif s[i] == 'R':
+            ans += 1
+        elif s[i] == 'U':
+            ans //= 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == "U":
+            x = x // 2
+        elif s[i] == "L":
+            x = x * 2 - 1
+        else:
+            x = x * 2 + 1
+    print(x)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == "L":
+            x = x*2 - 1
+        elif s[i] == "R":
+            x = x*2 + 1
+        else:
+            if x % 2 == 0:
+                x = (x-1)//2
+            else:
+                x = x//2
+    print(x)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+
+    ans = X
+    for s in S:
+        if s == 'L':
+            ans = ans*2-1
+        elif s == 'R':
+            ans = ans*2+1
+        else:
+            ans = ans//2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    n, x = map(int, input().split())
+    s = input()
+    # compute
+    ans = x
+    for i in range(n):
+        if s[i] == 'U':
+            ans //= 2
+        elif s[i] == 'L':
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    print(solve(n, x, s))
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    sys.setrecursionlimit(10 ** 6)
+    input = sys.stdin.readline
+
+    N, X = map(int, input().split())
+    S = input().rstrip()
+
+    def dfs(n, x):
+        if n == 0:
+            return x
+        elif S[n - 1] == 'U':
+            return dfs(n - 1, x)
+        elif S[n - 1] == 'L':
+            return dfs(n - 1, x * 2)
+        else:
+            return dfs(n - 1, x * 2 + 1)
+
+    print(dfs(N, X))
+
+=======
+Suggestion 9
+
+def find_vertex(n,x,s):
+    v=[x]
+    for i in range(n):
+        if s[i]=='U':
+            v.append(v[i]//2)
+        elif s[i]=='L':
+            v.append(v[i]*2)
+        else:
+            v.append(v[i]*2+1)
+    return v[n]
+
+n,x=map(int,input().split())
+s=input()
+print(find_vertex(n,x,s))
+
+=======
+Suggestion 10
+
+def get_input():
+    n,x = map(int,input().split())
+    s = input()
+    return n,x,s

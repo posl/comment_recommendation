@@ -1,52 +1,81 @@
-#問題文
-#アライグマはモンスターと戦っています。
-#モンスターの体力は H です。
-#アライグマは N 種類の必殺技を使うことができ、i 番目の必殺技を使うとモンスターの体力を A_i 減らすことができます。
-#必殺技を使う以外の方法でモンスターの体力を減らすことはできません。
-#モンスターの体力を 0 以下にすればアライグマの勝ちです。
-#アライグマが同じ必殺技を 2 度以上使うことなくモンスターに勝つことができるなら Yes を、できないなら No を出力してください。
-#
-#制約
-#1 ≦ H ≦ 10^9
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^4
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H N
-#A_1 A_2 ... A_N
-#
-#出力
-#アライグマが同じ必殺技を 2 度以上使うことなくモンスターに勝つことができるなら Yes を、できないなら No を出力せよ。
-#
-#入力例 1
-#10 3
-#4 5 6
-#
-#出力例 1
-#Yes
-#例えば 2 番目と 3 番目の必殺技を使うことで、モンスターの体力を 0 以下にできます。
-#
-#入力例 2
-#20 3
-#4 5 6
-#
-#出力例 2
-#No
-#
-#入力例 3
-#210 5
-#31 41 59 26 53
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#211 5
-#31 41 59 26 53
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) >= H:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= sum(A):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if H <= sum(A):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) >= h:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    if h <= sum(a):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    print('Yes' if H <= sum(A) else 'No')
+
+=======
+Suggestion 7
+
+def solve():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    print('Yes' if H <= sum(A) else 'No')
+
+=======
+Suggestion 8
+
+def solve():
+    h,n = map(int, input().split())
+    a = list(map(int, input().split()))
+    print('Yes' if h <= sum(a) else 'No')

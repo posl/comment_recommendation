@@ -1,49 +1,125 @@
-#Problem Statement
-#You are given a permutation P = (P_1, ..., P_N) of (1, ..., N), where (P_1, ..., P_N) ≠ (1, ..., N).
-#Assume that P is the K-th lexicographically smallest among all permutations of (1 ..., N). Find the (K-1)-th lexicographically smallest permutation.
-# What are permutations?
-#A permutation of (1, ..., N) is an arrangement of (1, ..., N) into a sequence.
-# What is lexicographical order?
-#For sequences of length N, A = (A_1, ..., A_N) and B = (B_1, ..., B_N), A is said to be strictly lexicographically smaller than B if and only if there is an integer 1 ≦ i ≦ N that satisfies both of the following.
-#(A_{1},...,A_{i-1}) = (B_1,...,B_{i-1}).
-#A_i < B_i.
-#
-#
-#Constraints
-#2 ≦ N ≦ 100
-#1 ≦ P_i ≦ N  (1 ≦ i ≦ N)
-#P_i ≠ P_j  (i ≠ j)
-#(P_1, ..., P_N) ≠ (1, ..., N) 
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#P_1 ... P_N
-#
-#Output
-#Let Q = (Q_1, ..., Q_N) be the sought permutation. Print Q_1, ..., Q_N in a single line in this order, separated by spaces.
-#
-#Sample Input 1
-#3
-#3 1 2
-#
-#Sample Output 1
-#2 3 1
-#Here are the permutations of (1, 2, 3) in ascending lexicographical order.
-#(1, 2, 3)
-#(1, 3, 2)
-#(2, 1, 3)
-#(2, 3, 1)
-#(3, 1, 2)
-#(3, 2, 1)
-#Therefore, P = (3, 1, 2) is the fifth smallest, so the sought permutation, which is the fourth smallest (5 - 1 = 4), is (2, 3, 1).
-#
-#Sample Input 2
-#10
-#9 8 6 5 10 3 1 2 4 7
-#
-#Sample Output 2
-#9 8 6 5 10 2 7 4 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(' '.join(map(str, Q)))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i, v in enumerate(p):
+        q[v - 1] = i + 1
+    print(*q)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+
+    for i in range(n):
+        q[p[i]-1] = i+1
+
+    print(" ".join(map(str, q)))
+
+=======
+Suggestion 5
+
+def main():
+    # Write code here
+    n = int(input())
+    p = list(map(int,input().split()))
+    q = [0]*n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    #print(N)
+    #print(P)
+
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+
+    print(*Q)
+
+=======
+Suggestion 7
+
+def solve():
+    # import sys
+    # import collections
+    # import math
+    # import bisect
+    # import heapq
+    # import time
+    # import itertools
+    # import copy
+    # import queue
+    # import decimal
+    # import functools
+    # import random
+    # import statistics
+    # import string
+    # import re
+    # import numpy as np
+    # sys.setrecursionlimit(10**6)
+    # INF = 10**9
+    # MOD = 10**9 + 7
+    # input = sys.stdin.readline
+    # input = lambda: sys.stdin.readline().rstrip()
+    # input = lambda: sys.stdin.readline().rstrip()
+    # input = lambda: int(sys.stdin.readline().rstrip())
+    # input = lambda: map(int, sys.stdin.readline().rstrip().split())
+    # input = lambda: list(map(int, sys.stdin.readline().rstrip().split()))
+    
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    print(*Q)
+
+=======
+Suggestion 8
+
+def get_lexicographically_smallest_permutation(N, P):
+    sorted_P = sorted(P)
+    sorted_P.reverse()
+    sorted_P.append(0)
+    sorted_P.reverse()
+    return sorted_P
+
+N = int(input())
+P = list(map(int, input().split()))
+print(" ".join(map(str, get_lexicographically_smallest_permutation(N, P))))

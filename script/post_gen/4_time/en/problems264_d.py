@@ -1,39 +1,109 @@
-#Problem Statement
-#You are given a string S that is a permutation of atcoder.
-#On this string S, you will perform the following operation 0 or more times:
-#Choose two adjacent characters of S and swap them.
-#Find the minimum number of operations required to make S equal atcoder.
-#
-#Constraints
-#S is a string that is a permutation of atcoder
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#catredo
-#
-#Sample Output 1
-#8
-#You can make S equal atcoder in 8 operations as follows:
-#catredo -> [ac]tredo -> actre[od] -> actr[oe]d -> actro[de] -> act[or]de -> acto[dr]e -> a[tc]odre -> atcod[er]
-#This is the minimum number of operations achievable.
-#
-#Sample Input 2
-#atcoder
-#
-#Sample Output 2
-#0
-#In this case, the string S is already atcoder.
-#
-#Sample Input 3
-#redocta
-#
-#Sample Output 3
-#21
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = 'atcoder'
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = "atcoder"
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    atcoder = "atcoder"
+    count = 0
+    for i in range(len(s)):
+        if s[i] != atcoder[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    atcoder = "atcoder"
+    count = 0
+    for i in range(len(S)):
+        if S[i] != atcoder[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    atcoder = 'atcoder'
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != atcoder[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    a = "atcoder"
+    count = 0
+    for i in range(len(s)):
+        if s[i] != a[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != "atcoder"[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def problem():
+    s = input()
+    t = 'atcoder'
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    s = list(s)
+    t = list("atcoder")
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)

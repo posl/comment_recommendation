@@ -1,42 +1,145 @@
-#問題文
-#2 次元平面上の原点に高橋君がいます。
-#高橋君が 1 歩歩くと、いまいる点からのユークリッド距離がちょうど R であるような点に移動することができます(移動先の座標が整数である必要はありません)。これ以外の方法で移動することはできません。
-#高橋君が点 (X,Y) に到達するまでに必要な歩数の最小値を求めてください。
-#なお、点 (x_1,y_1) と点 (x_2,y_2) のユークリッド距離は ((x_1-x_2)^2+(y_1-y_2)^2)^(1/2) で与えられます。
-#
-#制約
-#1 ≦ R ≦ 10^5
-#0 ≦ X,Y ≦ 10^5
-#(X,Y) ≠ (0,0)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#R X Y
-#
-#出力
-#高橋君が (X,Y) に到達するまでに必要な歩数の最小値を出力せよ。
-#
-#入力例 1
-#5 15 0
-#
-#出力例 1
-#3
-#(0,0) -> (5,0) -> (10,0) -> (15,0) と 3 歩で到達できます。
-#2 歩以下で到達することはできないのでこれが最小です。
-#
-#入力例 2
-#5 11 0
-#
-#出力例 2
-#3
-#例えば (0,0) -> (5,0) -> (8,4) -> (11,0) と移動すれば良いです。
-#
-#入力例 3
-#3 4 4
-#
-#出力例 3
-#2
-#例えば (0,0) -> (2-(((2)^(1/2))/(2)), 2+(((2)^(1/2))/(2))) -> (4,4) と移動すれば良いです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r, x, y = map(int, input().split())
+    if r * r == x * x + y * y:
+        print(1)
+    elif r * r > x * x + y * y:
+        print(2)
+    else:
+        print((x * x + y * y + r * r - 1) // (r * r))
+
+=======
+Suggestion 2
+
+def solve():
+    R, X, Y = map(int, input().split())
+
+    if R**2 == X**2 + Y**2:
+        print(1)
+    elif R**2 > X**2 + Y**2:
+        print(2)
+    else:
+        ans = 0
+        while R**2 < X**2 + Y**2:
+            ans += 1
+            X = X // 2
+            Y = Y // 2
+        print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    r, x, y = map(int, input().split())
+    d = (x ** 2 + y ** 2) ** 0.5
+    if d % r == 0:
+        print(int(d / r))
+    elif d < r:
+        print(2)
+    else:
+        print(int(d // r) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    r, x, y = map(int, input().split())
+    distance = (x**2 + y**2)**(1/2)
+    if distance == r:
+        print(1)
+    elif distance <= 2*r:
+        print(2)
+    else:
+        print(int(distance//r) + (distance%r != 0))
+
+=======
+Suggestion 5
+
+def solve():
+    R, X, Y = map(int, input().split())
+    D = (X**2 + Y**2)**0.5
+    if D < R:
+        print(2)
+    else:
+        print(int(D//R + (D%R != 0)))
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    R,X,Y = map(int,input().split())
+    if R**2 > X**2 + Y**2:
+        print(2)
+    else:
+        print(int((X**2 + Y**2)**0.5//R + 1))
+
+=======
+Suggestion 7
+
+def solve():
+    R, X, Y = map(int, input().split())
+
+    dist = (X**2 + Y**2)**0.5
+
+    if dist < R:
+        print(2)
+    else:
+        print(int(dist//R + (dist%R != 0)))
+
+=======
+Suggestion 8
+
+def solve():
+    import sys
+    R,X,Y = map(int, sys.stdin.readline().split())
+    import math
+    d = math.sqrt(X**2+Y**2)
+    if d < R:
+        print(2)
+    else:
+        print(math.ceil(d/R))
+
+=======
+Suggestion 9
+
+def solve():
+    # R X Y が与えられる
+    R, X, Y = map(int, input().split())
+    # 2点間の距離を求める
+    distance = (X**2 + Y**2)**(1/2)
+    # 距離がRより小さい場合
+    if distance < R:
+        # 原点から1歩進んだ時点で到達できる
+        print(2)
+    else:
+        # 原点から1歩進んだ時点で到達できない
+        # 原点からRずつ進んだ時点で到達できる
+        print(int(distance // R) + 1)
+
+=======
+Suggestion 10
+
+def cnt_step(r, x, y):
+    if r**2 == x**2 + y**2:
+        return int(r)
+    elif r**2 > x**2 + y**2:
+        return int(r+1)
+    else:
+        cnt = 0
+        while True:
+            if r**2 == x**2 + y**2:
+                return int(cnt)
+            elif r**2 > x**2 + y**2:
+                return int(cnt+2)
+            else:
+                cnt += 2
+                r += 1
+
+r, x, y = map(int, input().split())
+
+print(cnt_step(r, x, y))

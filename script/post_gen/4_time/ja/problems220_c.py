@@ -1,41 +1,164 @@
-#問題文
-#長さ N の正整数のみからなる数列 A=(A_1,...,A_N) があります。
-#A を 10^{100} 回連結した数列を数列 B とします。  
-#B の項を前から順に足したとき、和が初めて X を超えるのは何項目まで足したときですか？
-#すなわち、以下の式を満たす最小の整数 k を求めてください。  
-#(sum_{i=1}^{k} B_i > X) 
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#X
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#3 5 2
-#26
-#
-#出力例 1
-#8
-#B=(3,5,2,3,5,2,3,5,2,...) です。
-#(sum_{i=1}^{8} B_i = 28 > 26) であり、k が 7 以下のとき条件を満たさないので、8 が答えです。
-#
-#入力例 2
-#4
-#12 34 56 78
-#1000
-#
-#出力例 2
-#23
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+        if ans > X:
+            print(i+1)
+            break
+    else:
+        print((X//ans)*N + N)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 10 ** 100
+    sum = 0
+    for i in range(len(b)):
+        sum += b[i]
+        if sum > x:
+            print(i + 1)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    sum_a = sum(a)
+    k = x // sum_a
+    x -= sum_a * k
+    sum_a = sum(a[:k])
+    for i in range(n):
+        if sum_a > x:
+            break
+        sum_a += a[i]
+        k += 1
+    print(k)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * (10 ** 100)
+    sum = 0
+    for i in range(1, N * (10 ** 100) + 1):
+        sum += B[i - 1]
+        if sum > X:
+            print(i)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    sumA = sum(A)
+    k = X // sumA
+    X -= sumA * k
+    cnt = k * N
+    for a in A:
+        X -= a
+        cnt += 1
+        if X < 0:
+            break
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    a_sum = sum(a)
+    loop = x // a_sum
+    x -= a_sum * loop
+    ans = n * loop
+    for i in range(n):
+        if x < 0:
+            break
+        x -= a[i]
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    a_sum = sum(a)
+    a_len = len(a)
+    if x < a_sum:
+        print(1)
+        return
+    if x == a_sum:
+        print(a_len)
+        return
+    if x % a_sum == 0:
+        print(x // a_sum * a_len)
+        return
+    if x < a_sum * a_len:
+        print(x // a_sum * a_len + 1)
+        return
+    if x == a_sum * a_len:
+        print(x // a_sum * a_len)
+        return
+    if x % a_sum == 0:
+        print(x // a_sum * a_len)
+        return
+    print(x // a_sum * a_len + (x % a_sum == 0) + 1)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    # compute
+    # 1. 1回分の和を求める
+    sum_A = sum(A)
+    # 2. 1回分の和で割って何回繰り返せるか求める
+    count = X // sum_A
+    # 3. 何回繰り返せるか求める
+    result = count * N
+    # 4. 余りを求める
+    X = X % sum_A
+    # 5. 残りの和を求める
+    sum_A = 0
+    for i in range(N):
+        sum_A += A[i]
+        if sum_A > X:
+            result += i + 1
+            break
+    # output
+    print(result)
+    return

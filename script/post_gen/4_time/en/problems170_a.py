@@ -1,31 +1,97 @@
-#Problem Statement
-#We have five variables x_1, x_2, x_3, x_4, and x_5.
-#The variable x_i was initially assigned a value of i.
-#Snuke chose one of these variables and assigned it 0.
-#You are given the values of the five variables after this assignment.
-#Find out which variable Snuke assigned 0.
-#
-#Constraints
-#The values of x_1, x_2, x_3, x_4, and x_5 given as input are a possible outcome of the assignment by Snuke.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x_1 x_2 x_3 x_4 x_5
-#
-#Output
-#If the variable Snuke assigned 0 was x_i, print the integer i.
-#
-#Sample Input 1
-#0 2 3 4 5
-#
-#Sample Output 1
-#1
-#In this case, Snuke assigned 0 to x_1, so we should print 1.
-#
-#Sample Input 2
-#1 2 0 4 5
-#
-#Sample Output 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # input
+    x_1, x_2, x_3, x_4, x_5 = map(int, input().split())
+
+    # compute
+
+    # output
+    if x_1 == 0:
+        print(1)
+    elif x_2 == 0:
+        print(2)
+    elif x_3 == 0:
+        print(3)
+    elif x_4 == 0:
+        print(4)
+    else:
+        print(5)
+
+=======
+Suggestion 2
+
+def main():
+    x = list(map(int, input().split()))
+    for i in range(len(x)):
+        if x[i] == 0:
+            print(i+1)
+
+=======
+Suggestion 3
+
+def main():
+    x = list(map(int, input().split()))
+
+    for i in range(5):
+        if x[i] == 0:
+            print(i + 1)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    x = input().split()
+    for i in range(5):
+        if x[i] == '0':
+            print(i+1)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    x = input().split()
+    for i in range(0, len(x)):
+        if x[i] == '0':
+            print(i+1)
+
+=======
+Suggestion 6
+
+def main():
+    x = list(map(int, input().split()))
+    print(x.index(0)+1)
+
+=======
+Suggestion 7
+
+def main():
+    x = input().split()
+    for i in range(5):
+        if int(x[i]) == 0:
+            print(i+1)
+            break
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x = input()
+    print(x.split().index('0')+1)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+
+    #input
+    x = list(map(int, sys.stdin.readline().strip().split()))
+    print(x.index(0)+1)

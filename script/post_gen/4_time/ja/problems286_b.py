@@ -1,40 +1,51 @@
-#問題文
-#長さ N の文字列 S が与えられます。
-#S に連続して含まれる na を全て nya に置き換えて得られる文字列を答えてください。
-#
-#制約
-#N は 1 以上 1000 以下の整数
-#S は英小文字からなる長さ N の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#naan
-#
-#出力例 1
-#nyaan
-#naan に連続して含まれる na を全て nya に置き換えて得られる文字列は nyaan です。
-#
-#入力例 2
-#4
-#near
-#
-#出力例 2
-#near
-#S に na が連続して含まれないこともあります。
-#
-#入力例 3
-#8
-#national
-#
-#出力例 3
-#nyationyal
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    print(s.replace('na', 'nya'))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    print(s.replace("na", "nya"))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    print(S.replace('na', 'nya'))
+
+=======
+Suggestion 4
+
+def replace_str(s):
+    s = s.replace("na", "nya")
+    return s
+
+n = int(input())
+s = input()
+
+print(replace_str(s))
+
+=======
+Suggestion 5
+
+def replace_na(n, s):
+    if n < 2:
+        return s
+    else:
+        return replace_na(n-1, s.replace('na'*n, 'nya'*n))
+
+n = int(input())
+s = input()
+
+print(replace_na(n, s))

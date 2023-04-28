@@ -1,39 +1,79 @@
-#Problem Statement
-#Given are strings s and t of length N each, both consisting of lowercase English letters.
-#Let us form a new string by alternating the characters of S and the characters of T, as follows: the first character of S, the first character of T, the second character of S, the second character of T, ..., the N-th character of S, the N-th character of T. Print this new string.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#|S| = |T| = N
-#S and T are strings consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S T
-#
-#Output
-#Print the string formed.
-#
-#Sample Input 1
-#2
-#ip cc
-#
-#Sample Output 1
-#icpc
-#
-#Sample Input 2
-#8
-#hmhmnknk uuuuuuuu
-#
-#Sample Output 2
-#humuhumunukunuku
-#
-#Sample Input 3
-#5
-#aaaaa aaaaa
-#
-#Sample Output 3
-#aaaaaaaaaa
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ''
+    for i in range(N):
+        ans += S[i]
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ''
+    for i in range(N):
+        ans += S[i] + T[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    result = ''
+    for i in range(N):
+        result += S[i] + T[i]
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S, T = input().split()
+
+    ans = []
+    for i in range(N):
+        ans.append(S[i])
+        ans.append(T[i])
+
+    print(''.join(ans))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s, t = input().split(' ')
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    print("".join([s[i]+t[i] for i in range(n)]))

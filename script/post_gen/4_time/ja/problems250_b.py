@@ -1,81 +1,160 @@
-#問題文
-#縦 A 行、横 B 列のマスからなるタイルを縦 N 行、横 N 列に並べてできた、縦 (A× N) 行、横 (B× N) 列のマス目 X があります。
-#1≦ i,j ≦ N について、上から i 行目、左から j 列目のタイルをタイル (i,j) とします。
-#X の各マスは以下のように塗られています。  
-#各タイルは白いタイルまたは黒いタイルである。
-#白いタイルのすべてのマスは白で塗られ、黒いタイルのすべてのマスは黒で塗られている。
-#タイル (1,1) は白いタイルである。
-#辺で隣接する 2 つのタイルは異なる色のタイルである。ただし、タイル (a,b) とタイル (c,d) が辺で隣接するとは、|a-c|+|b-d|=1 ( |x| を x の絶対値とする)であることを言う。
-#マス目 X を出力の形式に従って出力してください。
-#
-#制約
-#1 ≦ N,A,B ≦ 10
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#
-#出力
-#次の条件をみたす (A× N) 個の文字列 S_1,...,S_{A× N} を改行区切りで出力せよ。  
-#S_1,...,S_{A× N} はそれぞれ長さ (B× N) の . または # からなる文字列である。  
-#各 i,j (1 ≦ i ≦ A× N,1 ≦ j ≦ B× N) に対し、マス目 X の上から i 行目かつ左から j 列目のマスが白で塗られているならば S_i の j 文字目は .であり、黒く塗られているならば # である。
-#
-#入力例 1
-#4 3 2
-#
-#出力例 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#入力例 2
-#5 1 5
-#
-#出力例 2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#入力例 3
-#4 4 1
-#
-#出力例 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#入力例 4
-#1 4 4
-#
-#出力例 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+        print('')
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print()
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + k) % 2 == 0:
+                        print(".", end="")
+                    else:
+                        print("#", end="")
+            print()
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + k) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print()
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    n,a,b = map(int,input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i+k)%2==0:
+                        print(".",end="")
+                    else:
+                        print("#",end="")
+                print("",end="")
+            print("")
+        print("",end="")
+    print("")
+
+=======
+Suggestion 6
+
+def main():
+    N,A,B = map(int,input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (j+k)%2==0:
+                        print('.',end='')
+                    else:
+                        print('#',end='')
+                print()
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    N,A,B = map(int,input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if i%2 == 0 and k%2 == 0:
+                        print(".",end="")
+                    elif i%2 == 0 and k%2 == 1:
+                        print("#",end="")
+                    elif i%2 == 1 and k%2 == 0:
+                        print("#",end="")
+                    elif i%2 == 1 and k%2 == 1:
+                        print(".",end="")
+                print("",end="")
+            print("")
+        print("")
+
+=======
+Suggestion 8
+
+def main():
+    n,a,b = map(int,input().split())
+    for i in range(a*n):
+        if i%2 == 0:
+            print("."*b + "#"*b)
+        else:
+            print("#"*b + "."*b)
+
+=======
+Suggestion 9
+
+def paint_tile(N, A, B):
+    tile = [["." for i in range(B*N)] for j in range(A*N)]
+    for i in range(A*N):
+        for j in range(B*N):
+            if i % 2 == 0 and j % 2 == 0:
+                tile[i][j] = "#"
+            elif i % 2 == 1 and j % 2 == 1:
+                tile[i][j] = "#"
+    return tile
+
+=======
+Suggestion 10
+
+def getTile(n,a,b):
+    tile = []
+    for i in range(n):
+        line = ""
+        for j in range(n):
+            if (i+j)%2 == 0:
+                line += "."*b
+            else:
+                line += "#"*b
+        tile.append(line)
+    return tile

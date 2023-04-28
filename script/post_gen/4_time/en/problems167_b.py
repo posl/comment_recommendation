@@ -1,37 +1,91 @@
-#Problem Statement
-#We have A cards, each of which has an integer 1 written on it. Similarly, we also have B cards with 0s and C cards with -1s.
-#We will pick up K among these cards. What is the maximum possible sum of the numbers written on the cards chosen?
-#
-#Constraints
-#All values in input are integers.
-#0 ≦ A, B, C
-#1 ≦ K ≦ A + B + C ≦ 2 × 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C K
-#
-#Output
-#Print the maximum possible sum of the numbers written on the cards chosen.
-#
-#Sample Input 1
-#2 1 1 3
-#
-#Sample Output 1
-#2
-#Consider picking up two cards with 1s and one card with a 0.
-#In this case, the sum of the numbers written on the cards is 2, which is the maximum possible value.
-#
-#Sample Input 2
-#1 2 3 4
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#2000000000 0 0 2000000000
-#
-#Sample Output 3
-#2000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, k = map(int, input().split())
+    if a >= k:
+        print(k)
+    elif a + b >= k:
+        print(a)
+    else:
+        print(a - (k - a - b))
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, K = map(int, input().split())
+    if A >= K:
+        print(K)
+    elif A + B >= K:
+        print(A)
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 3
+
+def solve(A, B, C, K):
+    if K <= A:
+        return K
+    elif K <= A + B:
+        return A
+    else:
+        return A - (K - A - B)
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c, k = map(int, input().split())
+    if k <= a:
+        print(k)
+        return
+    if k <= a + b:
+        print(a)
+        return
+    print(a - (k - a - b))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,k = map(int, input().split())
+    if k <= a:
+        print(k)
+    elif k <= a+b:
+        print(a)
+    else:
+        print(a-(k-a-b))
+
+=======
+Suggestion 6
+
+def solve(a, b, c, k):
+    if k <= a:
+        return k
+    if k <= a + b:
+        return a
+    return a - (k - a - b)
+
+=======
+Suggestion 7
+
+def solve():
+    A,B,C,K = map(int,input().split())
+    if K<=A:
+        print(K)
+    elif K<=A+B:
+        print(A)
+    else:
+        print(A-(K-A-B))
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C,K = map(int,input().split())
+    print(min(A,K)-min(max(0,K-A-B),C))

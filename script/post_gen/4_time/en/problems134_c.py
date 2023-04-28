@@ -1,44 +1,145 @@
-#Problem Statement
-#You are given a sequence of length N: A_1, A_2, ..., A_N.
-#For each integer i between 1 and N (inclusive), answer the following question:
-#Find the maximum value among the N-1 elements other than A_i in the sequence.
-#
-#Constraints
-#2 ≦ N ≦ 200000
-#1 ≦ A_i ≦ 200000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1
-#:
-#A_N
-#
-#Output
-#Print N lines. The i-th line (1 ≦ i ≦ N) should contain the maximum value among the N-1 elements other than A_i in the sequence.
-#
-#Sample Input 1
-#3
-#1
-#4
-#3
-#
-#Sample Output 1
-#4
-#3
-#4
-#The maximum value among the two elements other than A_1, that is, A_2 = 4 and A_3 = 3, is 4.
-#The maximum value among the two elements other than A_2, that is, A_1 = 1 and A_3 = 3, is 3.
-#The maximum value among the two elements other than A_3, that is, A_1 = 1 and A_2 = 4, is 4.
-#
-#Sample Input 2
-#2
-#5
-#5
-#
-#Sample Output 2
-#5
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max_a = max(a)
+    for i in range(n):
+        if a[i] == max_a:
+            print(sorted(a)[n-2])
+        else:
+            print(max_a)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    for i in range(n):
+        print(max(a[:i]+a[i+1:]))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max_a = max(a)
+    max_a_index = a.index(max_a)
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a[:max_a_index] + a[max_a_index+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    max_a = max(a)
+    max_a_index = a.index(max_a)
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a[0:i]+a[i+1:n]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+
+    max_a = max(a)
+    max_a_index = a.index(max_a)
+
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a[:i]+a[i+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(input()) for _ in range(N)]
+    maxA = max(A)
+    for i in range(N):
+        if A[i] == maxA:
+            print(max(A[:i] + A[i+1:]))
+        else:
+            print(maxA)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max_value = max(a)
+    for i in range(n):
+        if a[i] == max_value:
+            print(max(a[:i]+a[i+1:]))
+        else:
+            print(max_value)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    max_a = max(a_list)
+    max_a_index = a_list.index(max_a)
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a_list[:max_a_index] + a_list[max_a_index+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A_max = max(A)
+    A_max_idx = A.index(A_max)
+    for i in range(N):
+        if i == A_max_idx:
+            print(max(A[:i]+A[i+1:]))
+        else:
+            print(A_max)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    max_a = max(a)
+    max_index = a.index(max_a)
+    for i in range(n):
+        if i == max_index:
+            print(max(a[:i] + a[i + 1:]))
+        else:
+            print(max_a)

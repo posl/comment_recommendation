@@ -1,58 +1,190 @@
-#問題文
-#高橋王国には N 人の国民がいます。 全ての国民には国民番号が割り振られており、 i 人目の国民の国民番号は a_i です。ここで、a_i は互いに異なります。
-#高橋君は K 個のお菓子を持っています。高橋君は次のルールに従って、持っているお菓子が無くなるまで国民にお菓子を配ることにしました。
-#持っているお菓子が N 個以上ある場合、全員に 1 個ずつお菓子を配る。
-#そうでない場合、その時点で高橋くんが持っているお菓子の個数を K' として、国民番号が小さい方から K' 人に 1 個ずつ配る。より厳密には、a_i の値が小さい方から K' 人を選び、選んだ人に 1 個ずつお菓子を配る。
-#全てのお菓子を配り終えたとき、i 人目の国民は何個のお菓子を持っていますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ 10^{18}
-#1 ≦ a_i ≦ 10^9
-#a_i は互いに異なる。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#a_1 a_2 ... a_N
-#
-#出力
-#N 行出力せよ。i 行目には i 人目の国民がもらったお菓子の個数を出力せよ。
-#
-#入力例 1
-#2 7
-#1 8
-#
-#出力例 1
-#4
-#3
-#高橋君はお菓子を次の手順で配ります。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 5 個になる。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 3 個になる。
-#全員に 1 個ずつお菓子を配り、高橋君の持っているお菓子は 1 個になる。
-#1 人目の国民に 1 個お菓子を配り、高橋君の持っているお菓子は無くなる。
-#最終的に 1 人目の国民は 4 個、2 人目の国民は 3 個のお菓子を手に入れることができます。
-#
-#入力例 2
-#1 3
-#33
-#
-#出力例 2
-#3
-#国民が 1 人しかいないので、高橋君は全てのお菓子を 1 人目の国民に配ることになります。
-#
-#入力例 3
-#7 1000000000000
-#99 8 2 4 43 5 3
-#
-#出力例 3
-#142857142857
-#142857142857
-#142857142858
-#142857142857
-#142857142857
-#142857142857
-#142857142857
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = [A[i], i]
+    B.sort()
+    ans = [K // N] * N
+    K %= N
+    for i in range(K):
+        ans[B[i][1]] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = K // N
+        if i < K % N:
+            ans[i] += 1
+    for i in range(N):
+        if A[i] <= K % N:
+            ans[i] -= 1
+    print(*ans, sep="\n")
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    k = K // N
+    m = K % N
+    for i in range(N):
+        if i < m:
+            print(k + 1)
+        else:
+            print(k)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+    cnt = k // n
+    k %= n
+    for i in range(n):
+        ans[i] = cnt
+    b = sorted(a)
+    for i in range(k):
+        ans[b[i] - 1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
+    ans = [0] * n
+    for i in range(n):
+        ans[a[i] - 1] += k // n
+    for i in range(n):
+        ans[i] -= k // n
+    k %= n
+    for i in range(k):
+        ans[a[i] - 1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if k >= n:
+        for i in range(n):
+            print(k // n)
+    else:
+        b = [0 for i in range(n)]
+        for i in range(k):
+            b[i] = 1
+        for i in range(n):
+            print(b[a[i] - 1])
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0]*n
+    for i in range(n):
+        ans[i] = k//n
+    k %= n
+    for i in range(k):
+        ans[i] += 1
+    for i in range(n):
+        print(ans[a[i]-1])
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(0)
+
+    ans = [0] * N
+    cnt = 0
+    for i in range(N):
+        cnt += 1
+        ans[i] = K // cnt
+        if i == N - 1:
+            break
+        if K // cnt < K // (cnt + 1):
+            K -= (K // cnt) * cnt
+            for j in range(i + 1):
+                ans[j] += K // (i + 1)
+            K -= (K // (i + 1)) * (i + 1)
+
+    for i in range(N):
+        print(ans[A.index(A[i])])
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A_sorted = sorted(A)
+    A_sorted_set = set(A_sorted)
+    A_sorted_dict = {}
+    for i, a in enumerate(A_sorted_set):
+        A_sorted_dict[a] = i
+    A_sorted_dict_rev = {}
+    for k, v in A_sorted_dict.items():
+        A_sorted_dict_rev[v] = k
+    A_sorted_dict_rev_sorted = sorted(A_sorted_dict_rev.items(), key=lambda x:x[0])
+    A_sorted_dict_rev_sorted_dict = {}
+    for i, (k, v) in enumerate(A_sorted_dict_rev_sorted):
+        A_sorted_dict_rev_sorted_dict[k] = v
+    for i in range(N):
+        print(K//N, flush=True)
+        if K//N > 0:
+            K -= K//N
+        else:
+            K = 0
+        if K == 0:
+            break
+    if K == 0:
+        return
+    for i in range(K):
+        print(A_sorted_dict_rev_sorted_dict[i]+1, flush=True)
+
+=======
+Suggestion 10
+
+def calc(n, k, a):
+    if k >= n:
+        return [k//n]*n
+    else:
+        a.sort()
+        r = [0]*n
+        for i in range(k):
+            r[a[i]-1] += 1
+        return r

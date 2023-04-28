@@ -1,59 +1,165 @@
-#問題文
-#数列 (A_1,...,A_K) を使って、高橋君と青木君が石取りゲームをします。
-#最初、山には N 個の石があります。高橋君から順に、二人が交互に次の操作を行います。
-#現在山にある石の個数以下であるような A_i を 1 つ選ぶ。山から A_i 個の石を取り除く。
-#山から石がなくなったとき、ゲームは終了します。
-#二人がともに、ゲーム終了までに自分が取り除いた石の個数を最大化しようとするとき、高橋君は何個の石を取り除くことができますか？
-#
-#制約
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ... < A_K ≦ N
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#A_1 A_2 ... A_K
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#10 2
-#1 4
-#
-#出力例 1
-#5
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#この例では高橋君は 5 個の石を取り除くことができます。高橋君が 6 個以上の石を取り除くことはできないためこれが最大です。  
-#高橋君は 5 個の石を取り除くことができるゲームの進行の例には、他にも次のようなものがあります。
-#高橋君が山から 1 個の石を取り除く。
-#青木君が山から 4 個の石を取り除く。
-#高橋君が山から 4 個の石を取り除く。
-#青木君が山から 1 個の石を取り除く。
-#
-#入力例 2
-#11 4
-#1 2 3 6
-#
-#出力例 2
-#8
-#ゲームの進行の一例は以下の通りです。
-#高橋君が山から 6 個の石を取り除く。
-#青木君が山から 3 個の石を取り除く。
-#高橋君が山から 2 個の石を取り除く。
-#この例では高橋君は 8 個の石を取り除くことができます。高橋君が 9 個以上の石を取り除くことはできないためこれが最大です。  
-#
-#入力例 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#出力例 3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [False] * (n + 1)
+    for i in range(1, n + 1):
+        for j in range(k):
+            if i - a[j] >= 0:
+                dp[i] |= not dp[i - a[j]]
+
+    print(dp.count(False))
+
+=======
+Suggestion 2
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [False] * (n+1)
+    for i in range(1, n+1):
+        for j in range(k):
+            if i - a[j] >= 0 and dp[i-a[j]] == False:
+                dp[i] = True
+    for i in range(n, 0, -1):
+        if dp[i] == False:
+            print(i)
+            exit()
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    dp = [0]*(n+1)
+    for i in range(1,n+1):
+        for j in range(k):
+            if i-a[j] >= 0:
+                if dp[i-a[j]] == 0:
+                    dp[i] = 1
+    print(dp)
+    if dp[n] == 1:
+        print("First")
+    else:
+        print("Second")
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [False]*(n+1)
+    for i in range(n+1):
+        for j in range(k):
+            if i-a[j] >= 0 and dp[i-a[j]] == False:
+                dp[i] = True
+    ans = 0
+    for i in range(n+1):
+        if dp[i] == False:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [False] * (N+1)
+    for i in range(N+1):
+        for j in range(K):
+            if i >= A[j] and dp[i-A[j]] == False:
+                dp[i] = True
+                break
+    print(dp.count(False))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(K-1, -1, -1):
+        if A[i] <= N:
+            ans += (N//A[i]) * A[i]
+            N = N % A[i]
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    dp = [False]*(N+1)
+    for i in range(N+1):
+        for j in range(K):
+            if i-A[j]>=0 and dp[i-A[j]]==False:
+                dp[i]=True
+    print(dp.count(False))
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(k-1,-1,-1):
+        if a[i] <= n:
+            ans += n // a[i]
+            n %= a[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [0] * (n+1)
+    for i in range(n):
+        if dp[i] == 0:
+            for j in a:
+                if i+j <= n:
+                    dp[i+j] = 1
+    if dp[n] == 1:
+        print("First")
+    else:
+        print("Second")
+
+main()
+
+=======
+Suggestion 10
+
+def solve():
+    # N K
+    N, K = map(int, input().split())
+    # A_1 A_2 ... A_K
+    A = [int(i) for i in input().split()]
+
+    # DP
+    dp = [False] * (N+1)
+    for i in range(N+1):
+        for a in A:
+            if i - a >= 0 and dp[i-a] == False:
+                dp[i] = True
+                break
+    #print(dp)
+
+    # calc
+    ret = 0
+    for i in range(N+1):
+        if dp[i] == False:
+            ret += 1
+    print(ret)

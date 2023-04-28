@@ -1,30 +1,37 @@
-#問題文
-#高橋くんは今、白い服を着ています。
-#高橋くんは、白い服を着た次の日には黒い服を、黒い服を着た次の日には白い服を着ます。
-#N 日後には何色の服を着るでしょうか？
-#
-#制約
-#N は整数である
-#1 ≦ N ≦ 30
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#N 日後に白い服を着るなら White を、黒い服を着るなら Black を出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#White
-#高橋くんは 1 日後に黒い服を、 2 日後に白い服を着ます。
-#
-#入力例 2
-#5
-#
-#出力例 2
-#Black
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print("White")
+    else:
+        print("Black")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print('White')
+    else:
+        print('Black')
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print("White")
+    else:
+        print("Black")
+
+=======
+Suggestion 4
+
+def get_input_lines():
+    return [input() for _ in range(1)]

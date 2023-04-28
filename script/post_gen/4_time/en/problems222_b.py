@@ -1,42 +1,101 @@
-#Problem Statement
-#N students took an exam. The students are labeled as Student 1, Student 2, ..., Student N, and Student i scored a_i points.
-#A student who scored less than P points are considered to have failed the exam and cannot earn the credit. Find the number of students who failed the exam.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ P ≦ 100
-#0 ≦ a_i ≦ 100 (1 ≦ i ≦ N)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N P
-#a_1 a_2 ... a_N
-#
-#Output
-#Print the number of students who failed the exam.
-#
-#Sample Input 1
-#4 50
-#80 60 40 0
-#
-#Sample Output 1
-#2
-#Students 1 and 2, who scored 80 and 60 points, respectively, succeeded in scoring at least 50 points to earn the credit.
-#On the other hand, Students 3 and 4, who scored 40 and 0 points, respectively, fell below 50 points and failed the exam. Thus, the answer is 2.
-#
-#Sample Input 2
-#3 90
-#89 89 89
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#2 22
-#6 37
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if a[i] < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        if a[i] < P:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    n,p = map(int, input().split())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if a[i] < p:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def problems222_b():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if a[i] < P:
+            ans += 1
+    return ans
+
+print(problems222_b())
+
+=======
+Suggestion 5
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = 0
+    for i in range(n):
+        if a[i] < p:
+            b += 1
+    print(b)
+
+=======
+Suggestion 6
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(len([x for x in a if x < p]))
+
+=======
+Suggestion 7
+
+def main():
+    N, P = map(int, input().split())
+    A = list(map(int, input().split()))
+    print(len([i for i in A if i < P]))
+
+=======
+Suggestion 8
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(sum(1 for x in a if x < p))
+
+=======
+Suggestion 9
+
+def failed_students():
+    n, p = map(int, input().split())
+    score = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if score[i] < p:
+            count += 1
+    print(count)
+
+failed_students()

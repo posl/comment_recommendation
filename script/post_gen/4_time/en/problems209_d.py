@@ -1,91 +1,190 @@
-#Problem Statement
-#The Kingdom of Takahashi is made up of N towns and N-1 roads, where the towns are numbered 1 through N. The i-th road (1 ≦ i ≦ N-1) connects Town a_i and Town b_i, so that you can get from every town to every town by using some roads. All the roads have the same length.
-#You will be given Q queries. In the i-th query (1 ≦ i ≦ Q), given integers c_i and d_i, solve the following problem:
-#Takahashi is now at Town c_i and Aoki is now at Town d_i. They will leave the towns simultaneously and start traveling at the same speed, Takahashi heading to Town d_i and Aoki heading to Town c_i. Determine whether they will meet at a town or halfway along a road. Here, assume that both of them travel along the shortest paths, and the time it takes to pass towns is negligible.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#All values in input are integers.
-#It is possible to get from every town to every town by using some roads. 
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#Output
-#Print Q lines.
-#The i-th line (1 ≦ i ≦ Q) should contain Town if Takahashi and Aoki will meet at a town in the i-th query, and Road if they meet halfway along a road in that query.
-#
-#Sample Input 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#Sample Output 1
-#Road
-#In the first and only query, Takahashi and Aoki simultaneously leave Town 1 and Town 2, respectively, and they will meet halfway along the 1-st road, so we should print Road.
-#
-#Sample Input 2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#Sample Output 2
-#Town
-#Town
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 3, respectively, and they will meet at Town 2, so we should print Town.
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 5, respectively, and they will meet at Town 3, so we should print Town.
-#
-#Sample Input 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#Sample Output 3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    CD = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 隣接リストを作成
+    # 1-indexedなので、N+1
+    adj = [[] for _ in range(N+1)]
+    for a, b in AB:
+        adj[a].append(b)
+        adj[b].append(a)
+
+    # 根からの深さを記録する
+    # 1-indexedなので、N+1
+    depth = [0] * (N+1)
+    depth[1] = 1
+
+    # 根を1として、深さを記録する
+    # 1-indexedなので、N+1
+    def dfs(u, p):
+        for v in adj[u]:
+            if v == p:
+                continue
+            depth[v] = depth[u] + 1
+            dfs(v, u)
+
+    dfs(1, -1)
+
+    # 各クエリに対して、深さを比較して、同じならTown、異なるならRoad
+    for c, d in CD:
+        if (depth[c] + depth[d]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(N-1)]
+    cd = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 木構造にグラフを作成
+    graph = [[] for _ in range(N)]
+    for a, b in ab:
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+
+    # 根からの距離を求める
+    dist = [-1] * N
+    dist[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for i in graph[v]:
+            if dist[i] == -1:
+                dist[i] = dist[v] + 1
+                stack.append(i)
+
+    # 各クエリについて、距離の偶奇で判定
+    for c, d in cd:
+        if (dist[c-1] + dist[d-1]) % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    cd = [list(map(int, input().split())) for _ in range(q)]
+
+    # graph[i] = [j, k, ...] means Town i is connected to Town j, k, ...
+    graph = [[] for _ in range(n)]
+    for a, b in ab:
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+
+    # dist[i] = j means Town i is j-th from Town 1
+    dist = [-1] * n
+    dist[0] = 0
+    stack = [0]
+    while stack:
+        town = stack.pop()
+        for next_town in graph[town]:
+            if dist[next_town] == -1:
+                dist[next_town] = dist[town] + 1
+                stack.append(next_town)
+
+    for c, d in cd:
+        if (dist[c-1] + dist[d-1]) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 4
+
+def main():
+    n,q = map(int, input().split())
+    ab = [list(map(int, input().split())) for i in range(n-1)]
+    cd = [list(map(int, input().split())) for i in range(q)]
+    g = [[] for i in range(n+1)]
+    for a,b in ab:
+        g[a].append(b)
+        g[b].append(a)
+    d = [-1]*(n+1)
+    d[1] = 0
+    q = [1]
+    while q:
+        qq = []
+        for p in q:
+            for np in g[p]:
+                if d[np] == -1:
+                    d[np] = d[p] + 1
+                    qq.append(np)
+        q = qq
+    for c,d in cd:
+        if (d - c) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 5
+
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+        
+    return parent[x]
+
+=======
+Suggestion 6
+
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
+
+=======
+Suggestion 7
+
+def find_root(x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find_root(parent[x])
+        return parent[x]
+
+=======
+Suggestion 8
+
+def dfs(v,p,c):
+    color[v]=c
+    for i in g[v]:
+        if i==p:continue
+        if color[i]==c:return 1
+        if color[i]==0 and dfs(i,v,-c):return 1
+    return 0
+
+n,q=map(int,input().split())
+g=[[] for _ in range(n)]
+for _ in range(n-1):
+    a,b=map(int,input().split())
+    g[a-1].append(b-1)
+    g[b-1].append(a-1)
+color=[0]*n
+dfs(0,-1,1)
+for _ in range(q):
+    c,d=map(int,input().split())
+    if color[c-1]==color[d-1]:print("Town")
+    else:print("Road")
+
+=======
+Suggestion 9
+
+def solve():
+    # Implement solution here
+    return 0

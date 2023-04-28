@@ -1,41 +1,64 @@
-#Problem Statement
-#KEYENCE has N departments, where A_i employees belong to the i-th department (1 ≦ i ≦ N). No employee belongs to multiple departments.
-#The company is planning cross-departmental projects. Each project will be composed of exactly K employees chosen from K distinct departments.
-#At most how many projects can be made? No employee can participate in multiple projects.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^{12}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the maximum possible number of projects.
-#
-#Sample Input 1
-#3 3
-#2 3 4
-#
-#Sample Output 1
-#2
-#There can be two projects, each composed of three employees from distinct departments.
-#
-#Sample Input 2
-#4 2
-#1 1 3 4
-#
-#Sample Output 2
-#4
-#
-#Sample Input 3
-#4 3
-#1 1 3 4
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    print(sum(A[:K]))
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = sorted(map(int, input().split()))
+    print(sum(a[-k:]))
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    print(sum(A[:K]))
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if i < k:
+            ans += a[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = sorted(map(int, input().split()), reverse=True)
+    print(n - sum(a[:k]))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    #print(A)
+    ans = 0
+    for i in range(K):
+        ans += A[i]
+    print(ans)
+    return

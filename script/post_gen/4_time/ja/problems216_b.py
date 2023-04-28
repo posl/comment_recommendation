@@ -1,53 +1,177 @@
-#問題文
-#N 人の人がいます。i  (1 ≦ i ≦ N) 人目の人の姓は S_i、名は T_i です。
-#同姓同名であるような人の組が存在するか、すなわち 1 ≦ i < j ≦ N かつ S_i=S_j かつ T_i=T_j を満たすような整数対 (i,j) が存在するか判定してください。
-#
-#制約
-#2 ≦ N ≦ 1000
-#N は整数
-#S_i,T_i は英小文字のみからなる長さ 1 以上 10 以下の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#出力
-#同姓同名であるような人の組が存在するなら Yes を、存在しないなら No を出力せよ。
-#
-#入力例 1
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#出力例 1
-#Yes
-#1 人目の人と 3 人目の人が同姓同名です。
-#
-#入力例 2
-#3
-#saito ichiro
-#saito jiro
-#saito saburo
-#
-#出力例 2
-#No
-#同姓同名であるような人の組は存在しません。
-#
-#入力例 3
-#4
-#sypdgidop bkseq
-#bajsqz hh
-#ozjekw mcybmtt
-#qfeysvw dbo
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if S[i] == S[j] and T[i] == T[j]:
+                    print('Yes')
+                    return
+    print('No')
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    name = []
+    for i in range(n):
+        name.append(input().split())
+    for i in range(n):
+        for j in range(i+1,n):
+            if name[i][0] == name[j][0] and name[i][1] == name[j][1]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        name = input().split()
+        names.append(name)
+    for i in range(n):
+        for j in range(i+1, n):
+            if names[i][0] == names[j][0] and names[i][1] == names[j][1]:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    name = []
+    for i in range(n):
+        name.append(input())
+    if len(name) == len(set(name)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S_T = [input().split() for i in range(N)]
+    for i in range(N):
+        for j in range(i+1,N):
+            if S_T[i][0] == S_T[j][0] and S_T[i][1] == S_T[j][1]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+
+    for i in range(n):
+        temp = input().split()
+        s.append(temp[0])
+        t.append(temp[1])
+
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if s[i] == s[j]:
+                    if t[i] == t[j]:
+                        print("Yes")
+                        exit()
+
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    names = []
+    for i in range(N):
+        names.append(input().split())
+
+    for i in range(N):
+        for j in range(i+1,N):
+            if names[i] == names[j]:
+                print("Yes")
+                return
+
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input())
+    if len(set(names)) < n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def problem216b():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_tmp, t_tmp = input().split()
+        s.append(s_tmp)
+        t.append(t_tmp)
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j] and t[i] == t[j]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    # N = int(input())
+    # s = []
+    # t = []
+    # for i in range(N):
+    #     s.append(input().split()[0])
+    #     t.append(input().split()[1])
+    # # print(s)
+    # # print(t)
+    # for i in range(N):
+    #     for j in range(i+1, N):
+    #         if s[i] == s[j] and t[i] == t[j]:
+    #             print("Yes")
+    #             exit()
+    # print("No")
+
+    N = int(input())
+    s = set()
+    for i in range(N):
+        s.add(input())
+    if len(s) == N:
+        print("No")
+    else:
+        print("Yes")

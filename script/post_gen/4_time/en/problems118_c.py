@@ -1,45 +1,117 @@
-#Problem Statement
-#There are N monsters, numbered 1, 2, ..., N.
-#Initially, the health of Monster i is A_i.
-#Below, a monster with at least 1 health is called alive.
-#Until there is only one alive monster, the following is repeated:
-#A random alive monster attacks another random alive monster.
-#As a result, the health of the monster attacked is reduced by the amount equal to the current health of the monster attacking.
-#Find the minimum possible final health of the last monster alive.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the minimum possible final health of the last monster alive.
-#
-#Sample Input 1
-#4
-#2 10 8 40
-#
-#Sample Output 1
-#2
-#When only the first monster keeps on attacking, the final health of the last monster will be 2, which is minimum.
-#
-#Sample Input 2
-#4
-#5 13 8 1000000000
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#3
-#1000000000 1000000000 1000000000
-#
-#Sample Output 3
-#1000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        A[i+1] = A[i+1] % A[i]
+    print(A[N-1])
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    while len(A) > 1:
+        A.sort()
+        A[-1] %= A[0]
+        if A[-1] == 0:
+            A.pop()
+    print(A[0])
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for a in A:
+        ans = gcd(ans, a)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    gcd = a[0]
+    for i in range(1, n):
+        gcd = gcd(a[i], gcd)
+    print(gcd)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    while len(A) > 1:
+        A.sort()
+        A[0] %= A[-1]
+        if A[0] == 0:
+            A.pop(0)
+    print(A[0])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    while len(A) > 1:
+        A.sort()
+        A = [a - A[0] for a in A if a > A[0]]
+    print(A[0])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n == 2:
+        print(a[0])
+        exit()
+    for i in range(n-2):
+        a[i+1] = a[i+1] % a[0]
+        if a[i+1] == 0:
+            print(a[0])
+            exit()
+    print(a[0])
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N-1):
+        if A[i]*2 < A[i+1]:
+            ans = i+1
+    print(N-ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(gcd_list(A))

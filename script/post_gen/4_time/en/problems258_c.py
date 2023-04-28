@@ -1,64 +1,120 @@
-#Problem Statement
-#You are given positive integers N and Q, and a string S of length N consisting of lowercase English letters.
-#Process Q queries. Each query is of one of the following two types.
-#1 x: Perform the following x times in a row: delete the last character of S and append it to the beginning.
-#2 x: Print the x-th character of S.
-#
-#Constraints
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ Q ≦ 5 × 10^5
-#1 ≦ x ≦ N
-#|S|=N
-#S consists of lowercase English letters.
-#At least one query in the format 2 x.
-#N, Q, x are all integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#S
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#Each query is in the following format, where t is 1 or 2:
-#t x
-#
-#Output
-#For each query in the format 2 x, print the answer in a single line.
-#
-#Sample Input 1
-#3 3
-#abc
-#2 2
-#1 1
-#2 2
-#
-#Sample Output 1
-#b
-#a
-#In the 1-st query, S is abc, so the 2-nd character b should be printed.
-#In the 2-nd query, S is changed from abc to cab.
-#In the 3-rd query, S is cab, so the 2-nd character a should be printed.
-#
-#Sample Input 2
-#10 8
-#dsuccxulnl
-#2 4
-#2 7
-#1 2
-#2 7
-#1 1
-#1 2
-#1 3
-#2 5
-#
-#Sample Output 2
-#c
-#u
-#c
-#u
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x - 1])
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x - 1])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[N-x:] + S[:N-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        elif t == 2:
+            print(s[x-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 7
+
+def problem():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        q = list(map(int, input().split()))
+        if q[0] == 1:
+            S = S[-q[1]:] + S[:-q[1]]
+        elif q[0] == 2:
+            print(S[q[1]-1])
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    queries = [input().split() for _ in range(Q)]
+
+    for query in queries:
+        t, x = int(query[0]), int(query[1])
+        if t == 1:
+            S = S[-x:] + S[:N-x]
+        elif t == 2:
+            print(S[x-1])

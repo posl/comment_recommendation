@@ -1,65 +1,156 @@
-#Problem Statement
-#Takahashi is trying to create a game inspired by baseball, but he is having difficulty writing the code.
-#Write a program for Takahashi that solves the following problem.
-#There are 4 squares called Square 0, Square 1, Square 2, and Square 3.  Initially, all squares are empty.
-#There is also an integer P; initially, P = 0.
-#Given a sequence of positive integers A = (A_1, A_2, ..., A_N), perform the following operations for i = 1, 2, ..., N in this order:
-#Put a piece on Square 0.
-#Advance every piece on the squares A_i squares ahead.  In other words, if Square x has a piece, move the piece to Square (x + A_i).   
-#    If, however, the destination square does not exist (i.e. x + A_i is greater than or equal to 4) for a piece, remove it.  Add to P the number of pieces that have been removed.
-#Print the value of P after all the operations have been performed.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 4
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the value of P after all the operations have been performed.
-#
-#Sample Input 1
-#4
-#1 1 3 2
-#
-#Sample Output 1
-#3
-#The operations are described below.  After all the operations have been performed, P equals 3.
-#The operations for i=1:  
-#Put a piece on Square 0.  Now, Square 0 has a piece.
-#Advance every piece on the squares 1 square ahead.  After these moves, Square 1 has a piece.
-#The operations for i=2:  
-#Put a piece on Square 0.  Now, Squares 0 and 1 have a piece.
-#Advance every piece on the squares 1 square ahead.  After these moves, Squares 1 and 2 have a piece.
-#The operations for i=3:  
-#Put a piece on Square 0.  Now, Squares 0, 1, and 2 have a piece.
-#Advance every piece on the squares 3 squares ahead.
-#Here, for the pieces on Squares 1 and 2, the destination squares do not exist (since 1+3=4 and 2+3=5), so remove these pieces and add 2 to P.  P now equals 2.
-#After these moves, Square 3 has a piece.
-#The operations for i=4:  
-#Put a piece on Square 0.  Now, Squares 0 and 3 have a piece.
-#Advance every piece on the squares 2 squares ahead.
-#Here, for the piece on Square 3, the destination square does not exist (since 3+2=5), so remove this piece and add 1 to P.  P now equals 3.
-#After these moves, Square 2 has a piece.
-#
-#
-#Sample Input 2
-#3
-#1 1 1
-#
-#Sample Output 2
-#0
-#The value of P may not be updated by the operations.
-#
-#Sample Input 3
-#10
-#2 2 4 1 1 1 4 2 2 1
-#
-#Sample Output 3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        if a[i] == 1:
+            p += 1
+        elif a[i] == 2:
+            p += 0
+        elif a[i] == 3:
+            p += 1
+        elif a[i] == 4:
+            p += 0
+    print(p)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] == 1:
+            P += 1
+        elif A[i] == 2:
+            P += 0
+        elif A[i] == 3:
+            P += 1
+        elif A[i] == 4:
+            P += 0
+    print(P)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] == 1:
+            P += 1
+        elif A[i] == 2:
+            P += 2
+        elif A[i] == 3:
+            P += 3
+        elif A[i] == 4:
+            P += 4
+    print(P)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] == 1:
+            P += 1
+        elif A[i] == 2:
+            P += 2
+        elif A[i] == 3:
+            P += 3
+        else:
+            P += 4
+    print(P)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        if a[i] == 1:
+            p += 1
+    print(p)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    S = [0] * 4
+    for i in range(N):
+        S[A[i]-1] += 1
+    for i in range(4):
+        if S[i] > 0:
+            P += 1
+    print(P)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] == 1:
+            P += 1
+        elif A[i] == 2:
+            P += 0
+        elif A[i] == 3:
+            P += 1
+        elif A[i] == 4:
+            P += 0
+    print(P)
+
+=======
+Suggestion 8
+
+def problem256_b():
+    n = int(input())
+    a = list(map(int,input().split()))
+    p = 0
+    for i in range(n):
+        if a[i] == 1:
+            p += 1
+        elif a[i] == 2:
+            p += 2
+        elif a[i] == 3:
+            p += 3
+        elif a[i] == 4:
+            p += 4
+    print(p)
+
+problem256_b()
+
+=======
+Suggestion 9
+
+def main():
+    #n = int(input())
+    #a = input().split()
+    #a = list(map(int, input().split()))
+    n = 4
+    a = [1, 1, 3, 2]
+    #n = 3
+    #a = [1, 1, 1]
+    #n = 10
+    #a = [2, 2, 4, 1, 1, 1, 4, 2, 2, 1]
+    p = 0
+    for i in range(n):
+        p += a[i]
+    print(p - n)

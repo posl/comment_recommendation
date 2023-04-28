@@ -1,62 +1,176 @@
-#Problem Statement
-#You are given a simple undirected graph with N vertices and M edges.  The vertices are numbered 1, 2, ..., N, and the edges are numbered 1, 2, ..., M.
-#Edge i  (i = 1, 2, ..., M) connects vertices u_i and v_i.
-#Determine if this graph is a path graph.
-#What is a simple undirected graph?
-#A simple undirected graph is a graph without self-loops or multiple edges whose edges do not have a direction.
-#What is a path graph?
-#A graph with N vertices numbered 1, 2, ..., N is said to be a path graph if and only if there is a sequence (v_1, v_2, ..., v_N) that is a permutation of (1, 2, ..., N) and satisfies the following conditions:
-#For all i = 1, 2, ..., N-1, there is an edge connecting vertices v_i and v_{i+1}.
-#If integers i and j satisfies 1 ≦ i, j ≦ N and |i - j| ≧ 2, then there is no edge that connects vertices v_i and v_j.
-#
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ u_i, v_i ≦ N  (i = 1, 2, ..., M)
-#All values in the input are integers.
-#The graph given in the input is simple.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#Output
-#Print Yes if the given graph is a path graph; print No otherwise.
-#
-#Sample Input 1
-#4 3
-#1 3
-#4 2
-#3 2
-#
-#Sample Output 1
-#Yes
-#Illustrated below is the given graph, which is a path graph.
-#
-#Sample Input 2
-#2 0
-#
-#Sample Output 2
-#No
-#Illustrated below is the given graph, which is not a path graph.
-#
-#Sample Input 3
-#5 5
-#1 2
-#2 3
-#3 4
-#4 5
-#5 1
-#
-#Sample Output 3
-#No
-#Illustrated below is the given graph, which is not a path graph.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        G[u-1].append(v-1)
+        G[v-1].append(u-1)
+    for i in range(N):
+        if len(G[i]) > 2:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    for i in range(n):
+        if len(graph[i]) > 2:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    graph = [[] for _ in range(N+1)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+
+    if len(graph[1]) == 1 and len(graph[N]) == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    graph = [[] for _ in range(n)]
+    for i in range(m):
+        a, b = map(int, input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    for i in range(n):
+        if len(graph[i]) > 2:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    graph = [[] for i in range(n)]
+    for i in range(m):
+        u,v = map(int,input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+    for i in range(n):
+        if len(graph[i]) > 2:
+            print("No")
+            exit()
+    print("Yes")
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    e = [0 for i in range(n)]
+    for i in range(m):
+        a, b = map(int, input().split())
+        e[a-1] += 1
+        e[b-1] += 1
+    for i in range(n):
+        if e[i] % 2 == 1:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    if M != N - 1:
+        print('No')
+        return
+    G = [[] for _ in range(N)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        G[u].append(v)
+        G[v].append(u)
+    visited = [False] * N
+    def dfs(u, p):
+        visited[u] = True
+        for v in G[u]:
+            if v == p:
+                continue
+            if visited[v]:
+                return False
+            if not dfs(v, u):
+                return False
+        return True
+    if not dfs(0, -1):
+        print('No')
+        return
+    if not all(visited):
+        print('No')
+        return
+    print('Yes')
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(m)]
+    graph = [[] for _ in range(n+1)]
+    for u,v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    for i in range(1,n+1):
+        if len(graph[i]) > 2:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    if n == m+1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def path_graph():
+    n,m = map(int, input().split())
+    edge = []
+    for i in range(m):
+        edge.append(list(map(int, input().split())))
+    edge.sort()
+    for i in range(1, n):
+        if [i, i+1] not in edge:
+            return "No"
+    return "Yes"
+print(path_graph())

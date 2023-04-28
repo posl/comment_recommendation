@@ -1,53 +1,264 @@
-#Problem Statement
-#We have two desks: A and B. Desk A has a vertical stack of N books on it, and Desk B similarly has M books on it.
-#It takes us A_i minutes to read the i-th book from the top on Desk A (1 ≦ i ≦ N), and B_i minutes to read the i-th book from the top on Desk B (1 ≦ i ≦ M).
-#Consider the following action:
-#Choose a desk with a book remaining, read the topmost book on that desk, and remove it from the desk.
-#How many books can we read at most by repeating this action so that it takes us at most K minutes in total? We ignore the time it takes to do anything other than reading.
-#
-#Constraints
-#1 ≦ N, M ≦ 200000
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i, B_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M K
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_M
-#
-#Output
-#Print an integer representing the maximum number of books that can be read.
-#
-#Sample Input 1
-#3 4 240
-#60 90 120
-#80 150 80 150
-#
-#Sample Output 1
-#3
-#In this case, it takes us 60, 90, 120 minutes to read the 1-st, 2-nd, 3-rd books from the top on Desk A, and 80, 150, 80, 150 minutes to read the 1-st, 2-nd, 3-rd, 4-th books from the top on Desk B, respectively.
-#We can read three books in 230 minutes, as shown below, and this is the maximum number of books we can read within 240 minutes.
-#Read the topmost book on Desk A in 60 minutes, and remove that book from the desk.
-#Read the topmost book on Desk B in 80 minutes, and remove that book from the desk.
-#Read the topmost book on Desk A in 90 minutes, and remove that book from the desk.
-#
-#Sample Input 2
-#3 4 730
-#60 90 120
-#80 150 80 150
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#5 4 1
-#1000000000 1000000000 1000000000 1000000000 1000000000
-#1000000000 1000000000 1000000000 1000000000
-#
-#Sample Output 3
-#0
-#Watch out for integer overflows.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m,k=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    return n,m,k,a,b
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    for i in range(1, N):
+        A[i] += A[i-1]
+    for i in range(1, M):
+        B[i] += B[i-1]
+
+    ans, j = 0, M
+    for i in range(N):
+        if A[i] > K:
+            break
+        while j > 0 and A[i] + B[j-1] > K:
+            j -= 1
+        ans = max(ans, i + j + 1)
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a = [0] + a
+    b = [0] + b
+
+    for i in range(n):
+        a[i+1] += a[i]
+    for i in range(m):
+        b[i+1] += b[i]
+
+    ans = 0
+    j = m
+    for i in range(n+1):
+        if a[i] > k:
+            break
+        while b[j] > k - a[i]:
+            j -= 1
+        ans = max(ans, i+j)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a_sum = [0]
+    b_sum = [0]
+    for i in range(n):
+        a_sum.append(a_sum[i] + a[i])
+    for i in range(m):
+        b_sum.append(b_sum[i] + b[i])
+
+    ans = 0
+    j = m
+    for i in range(n + 1):
+        if a_sum[i] > k:
+            break
+        while b_sum[j] > k - a_sum[i]:
+            j -= 1
+        ans = max(ans, i + j)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, M, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A_sum = [0]
+    B_sum = [0]
+    for i in range(N):
+        A_sum.append(A_sum[i] + A[i])
+    for i in range(M):
+        B_sum.append(B_sum[i] + B[i])
+    ans = 0
+    j = M
+    for i in range(N+1):
+        if A_sum[i] > K:
+            break
+        while B_sum[j] > K - A_sum[i]:
+            j -= 1
+        ans = max(ans, i + j)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N,M,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    Asum = [0]
+    Bsum = [0]
+    for i in range(N):
+        Asum.append(Asum[i]+A[i])
+    for i in range(M):
+        Bsum.append(Bsum[i]+B[i])
+    ans = 0
+    j = M
+    for i in range(N+1):
+        if Asum[i] > K:
+            break
+        while Bsum[j] > K-Asum[i]:
+            j -= 1
+        ans = max(ans,i+j)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A_cumsum = [0] * (N + 1)
+    B_cumsum = [0] * (M + 1)
+
+    for i in range(N):
+        A_cumsum[i + 1] = A_cumsum[i] + A[i]
+
+    for i in range(M):
+        B_cumsum[i + 1] = B_cumsum[i] + B[i]
+
+    ans = 0
+    for i in range(N + 1):
+        if A_cumsum[i] > K:
+            break
+
+        ok = -1
+        ng = M + 1
+
+        while ng - ok > 1:
+            mid = (ok + ng) // 2
+            if A_cumsum[i] + B_cumsum[mid] <= K:
+                ok = mid
+            else:
+                ng = mid
+
+        ans = max(ans, i + ok)
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # 累積和をとる
+    for i in range(1, N):
+        A[i] += A[i-1]
+    for i in range(1, M):
+        B[i] += B[i-1]
+
+    # 二分探索
+    ans = 0
+    for i in range(N):
+        if A[i] > K:
+            break
+        l = 0
+        r = M
+        while l < r:
+            m = (l+r)//2
+            if A[i] + B[m] <= K:
+                l = m+1
+            else:
+                r = m
+        ans = max(ans, i+1+l)
+    for i in range(M):
+        if B[i] > K:
+            break
+        l = 0
+        r = N
+        while l < r:
+            m = (l+r)//2
+            if B[i] + A[m] <= K:
+                l = m+1
+            else:
+                r = m
+        ans = max(ans, i+1+l)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # 累積和を取得
+    a_sum = [0] * (n + 1)
+    b_sum = [0] * (m + 1)
+    for i in range(n):
+        a_sum[i + 1] = a_sum[i] + a[i]
+    for i in range(m):
+        b_sum[i + 1] = b_sum[i] + b[i]
+
+    ans = 0
+    j = m
+    for i in range(n + 1):
+        if a_sum[i] > k:
+            break
+        while b_sum[j] > k - a_sum[i]:
+            j -= 1
+        ans = max(ans, i + j)
+    print(ans)
+
+=======
+Suggestion 10
+
+def solution():
+    N, M, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    i = 0
+    j = 0
+    sum = 0
+    while sum <= K and (i < N or j < M):
+        if i < N and j < M:
+            if A[i] < B[j]:
+                i += 1
+                sum += A[i-1]
+            else:
+                j += 1
+                sum += B[j-1]
+        elif i < N:
+            i += 1
+            sum += A[i-1]
+        elif j < M:
+            j += 1
+            sum += B[j-1]
+        if sum <= K:
+            ans += 1
+    print(ans)
+solution()

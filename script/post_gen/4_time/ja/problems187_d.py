@@ -1,56 +1,191 @@
-#問題文
-#AtCoder 市で市長選挙が行われます。候補者は青木氏と高橋氏です。
-#市には N 個の町があり、i 番目の町には青木派の有権者が A_i 人、高橋派の有権者が B_i 人います。他に有権者はいません。
-#高橋氏は、それぞれの町で演説を行うことができます。
-#高橋氏がある町で演説を行った場合、その町の高橋派も青木派も全員高橋氏に投票します。
-#一方、高橋氏がある町で演説を行わなかった場合、その町の青木派は全員青木氏に投票し、高橋派は投票に行きません。
-#高橋氏が青木氏より多く票を獲得するためには、最小でいくつの町で演説をする必要があるでしょうか？
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#2 1
-#2 2
-#5 1
-#1 3
-#
-#出力例 1
-#1
-#3 番目の町で演説を行うと、青木氏が 5 票、高橋氏が 6 票を得ます。
-#
-#入力例 2
-#5
-#2 1
-#2 1
-#2 1
-#2 1
-#2 1
-#
-#出力例 2
-#3
-#3 つの町で演説を行うと、青木氏が 4 票、高橋氏が 9 票を得ます。
-#
-#入力例 3
-#1
-#273 691
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a_list = []
+    b_list = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        a_list.append(a)
+        b_list.append(b)
+    a_list.sort(reverse=True)
+    b_list.sort(reverse=True)
+    a_total = sum(a_list)
+    b_total = sum(b_list)
+    a_count = 0
+    b_count = 0
+    for a, b in zip(a_list, b_list):
+        a_count += a
+        b_count += b
+        if b_count > a_total - a_count:
+            print(n - a_list.index(a))
+            break
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    ans = ans - max(A) + 1
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    a.sort()
+    b.sort()
+    if n % 2 == 1:
+        print(b[n // 2] - a[n // 2] + 1)
+    else:
+        print((b[n // 2] + b[n // 2 - 1]) - (a[n // 2] + a[n // 2 - 1]) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    if n % 2 == 0:
+        a_med = (a[n // 2 - 1] + a[n // 2]) // 2
+        b_med = (b[n // 2 - 1] + b[n // 2]) // 2
+    else:
+        a_med = a[n // 2]
+        b_med = b[n // 2]
+    print(b_med - a_med + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    ans = 0
+    for i in range(n):
+        if a[i] > b[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    AB = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        AB.append((A, B))
+    AB.sort(key=lambda x: x[0]+x[1], reverse=True)
+    A_sum = sum([AB[i][0] for i in range(N)])
+    B_sum = sum([AB[i][1] for i in range(N)])
+    A_cnt = 0
+    B_cnt = 0
+    for i in range(N):
+        A_cnt += AB[i][0]
+        B_cnt += AB[i][1]
+        if A_cnt > B_sum - B_cnt:
+            print(i+1)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab = sorted(ab, key=lambda x: x[0]+x[1], reverse=True)
+    a = sum([x[0] for x in ab])
+    b = sum([x[1] for x in ab])
+    ans = 0
+    while a >= b:
+        ans += 1
+        a -= ab[ans-1][0]
+        b -= ab[ans-1][1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[0]+x[1], reverse=True)
+    a_sum = sum([x[0] for x in ab])
+    b_sum = 0
+    ans = 0
+    for x in ab:
+        a_sum -= x[0]
+        b_sum += x[0]+x[1]
+        ans += 1
+        if a_sum < b_sum:
+            break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0] + x[1], reverse=True)
+    aoki = sum([ab[0] for ab in AB])
+    takahashi = 0
+    ans = 0
+    for ab in AB:
+        ans += 1
+        aoki -= ab[0]
+        takahashi += sum(ab)
+        if takahashi > aoki:
+            break
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+    cnt = 0
+    for a, b in AB:
+        if a <= b:
+            b -= a
+            cnt += 1
+            if b <= 0:
+                break
+        else:
+            cnt += 1
+            break
+    print(cnt)

@@ -1,28 +1,46 @@
-#問題文
-#0 以上 1 以下の整数 x が与えられます。
-#x が 0 なら 1 を、1 なら 0 を出力してください。
-#
-#制約
-#0 ≦ x ≦ 1
-#x は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#x
-#
-#出力
-#x が 0 なら 1 を、1 なら 0 を出力してください。
-#
-#入力例 1
-#1
-#
-#出力例 1
-#0
-#
-#入力例 2
-#0
-#
-#出力例 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    num = int(input())
+    if num == 0:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    print(1-x)
+
+=======
+Suggestion 4
+
+def change(x):
+    if x == 0:
+        return 1
+    else:
+        return 0
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    print(1-x)
+
+main()

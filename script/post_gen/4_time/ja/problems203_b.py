@@ -1,35 +1,87 @@
-#問題文
-#AtCoder マンションは 1 階から N 階までの N 階建てのマンションです。
-#各階には K 室の部屋があり、1 号室から K 号室まで番号が振られています。
-#ここで N,K は 1 桁の整数であり、 i 階の j 号室の部屋番号は i0j で表されます。
-#例えば、1 階の 2 号室の部屋番号は 102 です。
-#マンションの管理人である高橋君は各部屋番号を 3 桁の整数とみなし、
-#AtCoder マンションに存在するすべての部屋について足しあわせたらいくつになるのか興味を持ちました。
-#その値を求めてください。
-#
-#制約
-#1 ≦ N,K ≦ 9
-#N,K は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#1 2
-#
-#出力例 1
-#203
-#AtCoder マンションは 101, 102 の 2 部屋からなります。
-#101+102=203 です。
-#
-#入力例 2
-#3 3
-#
-#出力例 2
-#1818
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, K + 1):
+            ans += i * 100 + j
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, k+1):
+            ans += int(str(i) + '0' + str(j))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            ans += i*100 + j
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        for j in range(1, k + 1):
+            ans += int(str(i) + str(0) + str(j))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int, input().split())
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(1,k+1):
+            ans += i*100 + j
+    print(ans)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        for j in range(k):
+            ans += (i+1)*100 + (j+1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    #print(n, k)
+    total = 0
+    for i in range(1, n+1):
+        for j in range(1, k+1):
+            total += i*100 + j
+    print(total)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    print((n * (n + 1) * k * 100 + (n * k * (k + 1)) // 2))

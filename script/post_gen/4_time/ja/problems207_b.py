@@ -1,35 +1,157 @@
-#問題文
-#水色のボールが A 個容器に入っています。高橋くんはこの容器に対し、以下の操作を 0 回以上好きなだけ繰り返します。
-#水色のボール B 個と赤色のボール C 個を容器に追加する。
-#高橋くんの目標は、容器に入っている水色のボールの個数が赤色のボールの個数の D 倍以下になるようにすることです。
-#目標が達成可能かを判定し、可能なら必要な操作回数の最小値を求めてください。
-#
-#制約
-#1 ≦ A,B,C,D ≦ 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#高橋くんの目標が達成可能なら、操作回数の最小値を出力せよ。そうでなければ、-1 を出力せよ。
-#
-#入力例 1
-#5 2 3 2
-#
-#出力例 1
-#2
-#0 回目の操作を行った直後の (= 1 度も操作をしていない状態での) 容器には、水色のボールが 5 個と赤色のボールが 0 個入っています。水色のボールの個数は赤色のボールの個数の D=2 倍よりも大きいので、この時点ではまだ高橋くんの目標は達成されていません。
-#1 回目の操作を行った直後の容器には、水色のボールが 7 個と赤色のボールが 3 個入っています。水色のボールの個数は赤色のボールの個数の 2 倍よりも大きいので、この時点でもまだ高橋くんの目標は達成されていません。
-#2 回目の操作を行った直後の容器には、水色のボールが 9 個と赤色のボールが 6 個入っています。水色のボールの個数は赤色のボールの個数の 2 倍以下であるため、高橋くんの目標は達成されています。
-#よって答えは 2 となります。
-#
-#入力例 2
-#6 9 2 3
-#
-#出力例 2
-#-1
-#高橋くんが何回操作を繰り返しても、彼の目標が達成されることはありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if B >= C * D:
+        print(-1)
+        return
+    ans = 0
+    while A > 0:
+        A -= B
+        ans += 1
+        A += C
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D = map(int, input().split())
+
+    if A <= B * D:
+        print(-1)
+        return
+
+    if B <= C * D:
+        print(0)
+        return
+
+    if B > C * D:
+        print((A - 1) // (B - C * D) + 1)
+        return
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    A, B, C, D = map(int, input().split())
+
+    # compute
+    ans = -1
+    for i in range(10**5):
+        if A <= C * i - B * i * D:
+            ans = i
+            break
+
+    # output
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, D = map(int, input().split())
+    if B >= C * D:
+        print(-1)
+        exit()
+    ans = 0
+    while A > 0:
+        if A <= C * D:
+            break
+        A -= B
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if b >= c*d:
+        print(-1)
+        return
+    ans = 0
+    while True:
+        if a <= 0:
+            break
+        a += b
+        a -= c
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c,d = map(int, input().split())
+    if b >= c*d:
+        print(-1)
+        return
+    ans = 0
+    while True:
+        if a <= c*d:
+            break
+        a -= b
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    A, B, C, D = map(int, input().split())
+    ans = -1
+
+    for i in range(10**5):
+        if (A + (B * i)) <= (C * D * i):
+            ans = i
+            break
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c,d = map(int,input().split())
+    ans = 0
+    if (a > b * c):
+        ans = -1
+    else:
+        ans = (a + (b * c) - 1) // (b * c)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    A,B,C,D = map(int, input().split())
+    if A <= B:
+        print(-1)
+        return
+    if C >= D*B:
+        print(0)
+        return
+    if C*B >= A:
+        print(-1)
+        return
+    if C*B < A:
+        if (A - C*B) % (B*(D-1)) == 0:
+            print((A - C*B) // (B*(D-1)))
+        else:
+            print((A - C*B) // (B*(D-1)) + 1)
+        return
+
+=======
+Suggestion 10
+
+def calc_operation_count(a, b, c, d):
+    if a < b:
+        return -1
+    if c >= d * b:
+        return 0
+    return ((d * b - a) + (c - b) - 1) // (c - b)

@@ -1,32 +1,93 @@
-#問題文
-#整数 A, B, N が与えられます。
-#N 以下の非負整数 x に対する floor(Ax/B) - A × floor(x/B) の最大値を求めてください。
-#ただし、floor(t) とは、実数 t 以下の最大の整数のことを表します。
-#
-#制約
-#1 ≤ A ≤ 10^{6}
-#1 ≤ B ≤ 10^{12}
-#1 ≤ N ≤ 10^{12}
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B N
-#
-#出力
-#N 以下の非負整数 x に対する floor(Ax/B) - A × floor(x/B) の最大値を整数として出力せよ。
-#
-#入力例 1
-#5 7 4
-#
-#出力例 1
-#2
-#x=3 のとき、floor(Ax/B)-A×floor(x/B) = floor(15/7) - 5×floor(3/7) = 2 となり、これが最大です。
-#
-#入力例 2
-#11 10 9
-#
-#出力例 2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, N = map(int, input().split())
+    x = min(B-1, N)
+    print((A*x)//B - A*(x//B))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, n = map(int, input().split())
+    if b-1 <= n:
+        x = b-1
+    else:
+        x = n
+    print((a*x)//b - a*(x//b))
+
+=======
+Suggestion 3
+
+def main():
+    A, B, N = map(int, input().split())
+    if N < B:
+        print(A*N//B)
+    else:
+        print(A*(B-1)//B)
+
+=======
+Suggestion 4
+
+def main():
+    A,B,N = map(int,input().split())
+    if N < B:
+        x = N
+    else:
+        x = B - 1
+    print((A*x)//B - A*(x//B))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,n = map(int,input().split())
+    x = min(b-1,n)
+    print((a*x)//b)
+
+=======
+Suggestion 6
+
+def main():
+    a, b, n = map(int, input().split())
+    x = min(n, b-1)
+    print(int(a*x/b)-a*int(x/b))
+
+=======
+Suggestion 7
+
+def main():
+    a,b,n = map(int,input().split())
+    x = min(n,b-1)
+    print(int((a*x)/b) - a*int(x/b))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,n = map(int,input().split())
+    x = min(b-1,n)
+    print(int(a*x/b)-a*int(x/b))
+
+main()
+
+=======
+Suggestion 9
+
+def floor(a,b):
+    return int(a/b)
+
+A,B,N = map(int,input().split())
+
+x = min(B-1,N)
+
+print(floor(A*x/B)-A*floor(x/B))
+
+=======
+Suggestion 10
+
+def floor(a, b):
+    return a // b
