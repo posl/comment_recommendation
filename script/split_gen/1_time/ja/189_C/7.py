@@ -1,0 +1,10 @@
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for l in range(n):
+        x = 10**5
+        for r in range(l,n):
+            x = min(x,a[r])
+            ans = max(ans,x*(r-l+1))
+    print(ans)

@@ -1,0 +1,2 @@
+def g1(n):
+    return int("".join(sorted(str(n), reverse=True)))

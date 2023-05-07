@@ -1,0 +1,3 @@
+def swap(a, p, q, r, s):
+    b = a[:p-1] + a[r-1:s] + a[q:s] + a[p-1:q-1] + a[s:]
+    return b

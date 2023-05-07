@@ -1,0 +1,15 @@
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    c = [0 for i in range(n)]
+    y = [0 for i in range(n)]
+    for i in range(m):
+        c[i],y[i] = map(int,input().split())
+    dp = [0 for i in range(n+1)]
+    dp[0] = 0
+    for i in range(n):
+        dp[i+1] = max(dp[i+1],dp[i]+x[i])
+        for j in range(m):
+            if i+1-c[j]>=0:
+                dp[i+1] = max(dp[i+1],dp[i+1-c[j]]+y[j])
+    print(dp[n])
