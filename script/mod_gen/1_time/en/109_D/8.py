@@ -1,0 +1,4 @@
+def even ( x ) : return x % 2 == 0 def odd ( x ) : return x % 2 == 1 def main ( ) : H , W = map ( int , input ( ) . split ( ) ) A = [ list ( map ( int , input ( ) . split ( ) ) ) for _ in range ( H ) ] N = 0 ans = [ ] for h in range ( H - 1 ) : for w in range ( W ) : if odd ( A [ h ] [ w ] ) : A [ h ] [ w ] -= 1 A [ h + 1 ] [ w ] += 1 N += 1 ans . append ( ( h + 1 , w + 1 , h + 2 , w + 1 ) ) for w in range ( W - 1 ) : if odd ( A [ H - 1 ] [ w ] ) : A [ H - 1 ] [ w ] -= 1 A [ H - 1 ] [ w + 1 ] += 1 N += 1 ans . append ( ( H , w + 1 , H , w + 2 ) ) print ( N ) for a in ans : print ( ' ' . join ( map ( str , a ) ) ) if __name__ == '__main__' : main ( )
+
+if __name__ == '__main__':
+    even()

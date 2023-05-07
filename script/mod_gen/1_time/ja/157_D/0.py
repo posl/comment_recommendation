@@ -1,0 +1,58 @@
+def main():
+    N, M, K = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for _ in range(K):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    #print(N, M, K)
+    #print(A)
+    #print(B)
+    #print(C)
+    #print(D)
+    #print(len(A))
+    #print(len(B))
+    #print(len(C))
+    #print(len(D))
+    #print(A[0])
+    #print(B[0])
+    #print(C[0])
+    #print(D[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(B[0] == D[0])
+    #print(A[0] == D[0])
+    #print(B[0] == C[0])
+    #print(A[0] == B[0])
+    #print(C[0] == D[0])
+    #print(A[0] == C[0])
+    #print(A[
+
+if __name__ == '__main__':
+    main()

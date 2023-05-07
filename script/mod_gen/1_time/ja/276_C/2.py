@@ -1,0 +1,29 @@
+def next_permutation(p):
+    n = len(p)
+    i = n - 1
+    while i > 0 and p[i - 1] >= p[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = n - 1
+    while p[j] <= p[i - 1]:
+        j -= 1
+    p[i - 1], p[j] = p[j], p[i - 1]
+    j = n - 1
+    while i < j:
+        p[i], p[j] = p[j], p[i]
+        i += 1
+        j -= 1
+    return True
+n = int(input())
+p = list(map(int, input().split()))
+q = [i + 1 for i in range(n)]
+k = 0
+while p != q:
+    next_permutation(q)
+    k += 1
+next_permutation(q)
+print(*q)
+
+if __name__ == '__main__':
+    next_permutation()

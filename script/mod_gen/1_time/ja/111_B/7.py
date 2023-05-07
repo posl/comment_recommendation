@@ -1,0 +1,6 @@
+def main():
+    n = int(input())
+    print(n + 111 - n % 111)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,17 @@
+def main():
+    N, W = map(int, input().split())
+    cheese = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        cheese.append((A, B))
+    cheese.sort()
+    dp = [0] * (W+1)
+    for i in range(N):
+        for j in range(W, -1, -1):
+            if j + cheese[i][1] <= W:
+                dp[j + cheese[i][1]] = max(dp[j + cheese[i][1]], dp[j] + cheese[i][0] * cheese[i][1])
+            dp[j] = max(dp[j], dp[j] + cheese[i][0] * min(W - j, cheese[i][1]))
+    print(max(dp))
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,10 @@
+def check_if_wonderful_string(string):
+    if string.islower() or string.isupper():
+        return False
+    for i in string:
+        if string.count(i) > 1:
+            return False
+    return True
+
+if __name__ == '__main__':
+    check_if_wonderful_string()

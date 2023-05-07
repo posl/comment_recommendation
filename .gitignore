@@ -2,4 +2,3 @@
 *.zip
 test_*/
 !test_script/
-script/mod_gen/

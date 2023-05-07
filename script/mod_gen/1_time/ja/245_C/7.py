@@ -1,0 +1,40 @@
+def main():
+    N, K = map(int, input().split())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    #X = [int(x) for x in input().split()]
+    #print(N, K)
+    #print(A)
+    #print(B)
+    #print(X)
+    #print(A[0] - B[0])
+    #print(K)
+    #print(abs(A[0] - B[0]) <= K)
+    #print(abs(A[1] - B[1]) <= K)
+    #print(abs(A[2] - B[2]) <= K)
+    #print(abs(A[3] - B[3]) <= K)
+    #print(abs(A[4] - B[4]) <= K)
+    #print(abs(A[5] - B[5]) <= K)
+    #print(abs(A[6] - B[6]) <= K)
+    #print(abs(A[7] - B[7]) <= K)
+    #print(abs(A[8] - B[8]) <= K)
+    #print(abs(A[9] - B[9]) <= K)
+    #print(abs(A[10] - B[10]) <= K)
+    #print(abs(A[11] - B[11]) <= K)
+    #print(abs(A[12] - B[12]) <= K)
+    #print(abs(A[13] - B[13]) <= K)
+    #print(abs(A[14] - B[14]) <= K)
+    #print(abs(A[15] - B[15]) <= K)
+    #print(abs(A[16] - B[16]) <= K)
+    #print(abs(A[17] - B[17]) <= K)
+    #print(abs(A[18] - B[18]) <= K)
+    #print(abs(A[19] - B[19]) <= K)
+    #print(abs(A[20] - B[20]) <= K)
+    #print(abs(A[21] - B[21]) <= K)
+    #print(abs(A[22] - B[22]) <= K)
+    #print(abs(A[23] - B[23]) <= K)
+    #print(abs(A[24] - B[24]) <= K)
+    #print(abs
+
+if __name__ == '__main__':
+    main()

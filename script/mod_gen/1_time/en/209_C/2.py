@@ -1,0 +1,19 @@
+def main():
+    N = int(input())
+    C = list(map(int,input().split()))
+    MOD = 10**9+7
+    ans = 1
+    for i in range(N):
+        if i == 0:
+            ans *= C[i]
+            continue
+        if C[i] == C[i-1]:
+            ans *= C[i]-1
+        else:
+            ans *= C[i]
+        ans %= MOD
+    print(ans)
+main()
+
+if __name__ == '__main__':
+    main()

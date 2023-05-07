@@ -1,0 +1,9 @@
+def lattice_points(x1, y1, x2, y2):
+    # This function takes in two points (x1, y1) and (x2, y2) on a 2D plane and returns the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (x1, y1) is equal to the distance between (x, y) and (x2, y2) is equal to the distance between (x1, y1) and (x2, y2).
+    # The number of lattice points (x, y) that satisfy the condition that the distance between (x, y) and (
+
+if __name__ == '__main__':
+    lattice_points()
