@@ -60,7 +60,7 @@ class test_script:
 
 if __name__ == '__main__':
     # delete csv file and make new one with header
-    times = '1_time'
+    times = input() + '_time'
     language_l = ['en', 'ja']
     if os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv'):
         os.remove('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv')

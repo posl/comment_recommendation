@@ -19,7 +19,7 @@ def split_script(base_l, l):
 
 if __name__ == '__main__':
     #which_close = 'test_close_app'
-    time = '1_time'
+    time = input() + '_time'
 
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/'.format(time)
     files_l = os.listdir(base_path + 'en')
