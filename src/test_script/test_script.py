@@ -60,6 +60,7 @@ class test_script:
 
 if __name__ == '__main__':
     # delete csv file and make new one with header
+    print('input times')
     times = input() + '_time'
     language_l = ['en', 'ja']
     

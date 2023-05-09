@@ -1,0 +1,10 @@
+12,7,143,1,15,"checkBingo@1-15@./8.py","./8.py","checkBingo","checkBingo( a )",1,15
+12,15,157,2,15,"bingo_check@1-15@./9.py","./9.py","bingo_check","bingo_check( bingo_card , bingo_num )",1,15
+27,20,290,0,27,"bingo@1-27@./6.py","./6.py","bingo","bingo( )",1,27
+18,11,217,0,18,"bingo@1-18@./2.py","./2.py","bingo","bingo( )",1,18
+22,15,334,0,22,"bingo@1-22@./3.py","./3.py","bingo","bingo( )",1,22
+29,14,350,0,29,"bingo@1-29@./7.py","./7.py","bingo","bingo( )",1,29
+23,12,236,0,23,"main@1-23@./0.py","./0.py","main","main( )",1,23
+30,30,371,0,30,"bingo@1-30@./4.py","./4.py","bingo","bingo( )",1,30
+26,18,243,0,26,"bingo@1-26@./5.py","./5.py","bingo","bingo( )",1,26
+25,18,237,0,25,"main@1-25@./1.py","./1.py","main","main( )",1,25

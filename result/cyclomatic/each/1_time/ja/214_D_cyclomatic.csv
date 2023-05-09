@@ -1,0 +1,20 @@
+3,1,22,2,3,"main.__init__@9-11@./8.py","./8.py","main.__init__","main.__init__( self , n )",9,11
+6,2,46,2,6,"main.find@12-17@./8.py","./8.py","main.find","main.find( self , x )",12,17
+9,3,74,3,9,"main.union@18-26@./8.py","./8.py","main.union","main.union( self , x , y )",18,26
+2,1,20,2,2,"main.size@27-28@./8.py","./8.py","main.size","main.size( self , x )",27,28
+2,1,23,3,2,"main.same@29-30@./8.py","./8.py","main.same","main.same( self , x , y )",29,30
+3,3,37,2,3,"main.members@31-33@./8.py","./8.py","main.members","main.members( self , x )",31,33
+2,3,24,1,2,"main.roots@34-35@./8.py","./8.py","main.roots","main.roots( self )",34,35
+2,1,14,1,2,"main.group_count@36-37@./8.py","./8.py","main.group_count","main.group_count( self )",36,37
+2,2,24,1,2,"main.all_group_members@38-39@./8.py","./8.py","main.all_group_members","main.all_group_members( self )",38,39
+2,2,32,1,2,"main.__str__@40-41@./8.py","./8.py","main.__str__","main.__str__( self )",40,41
+26,3,147,0,50,"main@1-50@./8.py","./8.py","main","main( )",1,50
+10,6,118,2,12,"calc_f@1-12@./9.py","./9.py","calc_f","calc_f( n , edges )",1,12
+5,3,44,3,5,"dfs@1-5@./6.py","./6.py","dfs","dfs( v , p , d )",1,5
+15,3,114,0,15,"main@1-15@./2.py","./2.py","main","main( )",1,15
+13,3,108,0,13,"main@1-13@./3.py","./3.py","main","main( )",1,13
+6,3,46,2,6,"get_max_weight@1-6@./7.py","./7.py","get_max_weight","get_max_weight( n , edges )",1,6
+12,4,116,0,12,"main@1-12@./0.py","./0.py","main","main( )",1,12
+6,3,40,2,6,"dfs@1-6@./4.py","./4.py","dfs","dfs( v , p )",1,6
+11,3,104,0,11,"main@1-11@./5.py","./5.py","main","main( )",1,11
+13,3,123,0,13,"main@1-13@./1.py","./1.py","main","main( )",1,13

@@ -1,0 +1,9 @@
+2,1,14,1,2,"is_palindrome@1-2@./8.py","./8.py","is_palindrome","is_palindrome( s )",1,2
+2,1,14,1,2,"is_palindrome@1-2@./6.py","./6.py","is_palindrome","is_palindrome( s )",1,2
+10,4,116,0,10,"main@1-10@./2.py","./2.py","main","main( )",1,10
+2,1,14,1,2,"is_palindrome@1-2@./3.py","./3.py","is_palindrome","is_palindrome( s )",1,2
+4,2,19,1,4,"is_palindrome@1-4@./7.py","./7.py","is_palindrome","is_palindrome( s )",1,4
+7,4,104,0,7,"main@1-7@./0.py","./0.py","main","main( )",1,7
+6,3,41,1,6,"check@1-6@./4.py","./4.py","check","check( s )",1,6
+9,4,107,0,9,"main@1-9@./5.py","./5.py","main","main( )",1,9
+7,3,44,0,7,"main@1-7@./1.py","./1.py","main","main( )",1,7

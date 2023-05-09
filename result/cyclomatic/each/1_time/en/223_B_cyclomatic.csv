@@ -1,0 +1,9 @@
+2,1,16,1,2,"shiftString@1-2@./8.py","./8.py","shiftString","shiftString( string )",1,2
+2,1,16,1,2,"left_shift@1-2@./6.py","./6.py","left_shift","left_shift( s )",1,2
+10,4,56,1,11,"solution@1-11@./2.py","./2.py","solution","solution( S )",1,11
+8,2,60,0,8,"main@1-8@./3.py","./3.py","main","main( )",1,8
+2,1,16,1,2,"shiftLeft@1-2@./7.py","./7.py","shiftLeft","shiftLeft( s )",1,2
+10,2,71,0,10,"main@1-10@./0.py","./0.py","main","main( )",1,10
+12,4,89,0,12,"main@1-12@./4.py","./4.py","main","main( )",1,12
+3,2,13,1,31,"lexicographical_order@1-31@./5.py","./5.py","lexicographical_order","lexicographical_order( S )",1,31
+12,4,88,0,12,"main@1-12@./1.py","./1.py","main","main( )",1,12

@@ -1,0 +1,10 @@
+11,6,60,1,11,"is_prime@1-11@./8.py","./8.py","is_prime","is_prime( n )",1,11
+9,7,89,1,9,"get_primes@1-9@./9.py","./9.py","get_primes","get_primes( n )",1,9
+12,6,62,1,12,"is_prime@1-12@./6.py","./6.py","is_prime","is_prime( n )",1,12
+10,6,60,1,10,"is_prime@1-10@./2.py","./2.py","is_prime","is_prime( n )",1,10
+10,6,60,1,10,"isPrime@1-10@./3.py","./3.py","isPrime","isPrime( n )",1,10
+9,6,57,1,9,"isprime@1-9@./7.py","./7.py","isprime","isprime( n )",1,9
+6,4,38,1,6,"is_prime@1-6@./0.py","./0.py","is_prime","is_prime( n )",1,6
+10,5,42,1,10,"is_prime@1-10@./4.py","./4.py","is_prime","is_prime( n )",1,10
+9,6,57,1,9,"isPrime@1-9@./5.py","./5.py","isPrime","isPrime( n )",1,9
+6,5,52,1,6,"is_prime@1-6@./1.py","./1.py","is_prime","is_prime( n )",1,6

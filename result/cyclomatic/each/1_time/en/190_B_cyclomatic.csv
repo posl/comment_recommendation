@@ -1,0 +1,7 @@
+5,4,35,4,5,"canDoDamage@1-5@./6.py","./6.py","canDoDamage","canDoDamage( N , S , D , spells )",1,5
+9,4,65,0,9,"main@1-9@./2.py","./2.py","main","main( )",1,9
+8,4,64,0,8,"main@1-8@./3.py","./3.py","main","main( )",1,8
+8,4,64,0,8,"main@1-8@./0.py","./0.py","main","main( )",1,8
+13,5,98,0,13,"main@1-13@./4.py","./4.py","main","main( )",1,13
+8,4,64,0,8,"solve@1-8@./5.py","./5.py","solve","solve( )",1,8
+9,4,66,0,9,"main@1-9@./1.py","./1.py","main","main( )",1,9

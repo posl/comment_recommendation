@@ -1,0 +1,10 @@
+7,5,39,1,7,"check_if_wonderful_string@1-7@./8.py","./8.py","check_if_wonderful_string","check_if_wonderful_string( string )",1,7
+6,3,34,0,6,"main@1-6@./9.py","./9.py","main","main( )",1,6
+10,6,60,1,10,"is_wonderful@1-10@./6.py","./6.py","is_wonderful","is_wonderful( s )",1,10
+10,7,67,1,10,"is_wonderful_string@1-10@./2.py","./2.py","is_wonderful_string","is_wonderful_string( s )",1,10
+8,4,54,0,8,"main@1-8@./3.py","./3.py","main","main( )",1,8
+6,4,38,1,6,"is_wonderful_string@1-6@./7.py","./7.py","is_wonderful_string","is_wonderful_string( s )",1,6
+13,7,80,0,13,"main@1-13@./0.py","./0.py","main","main( )",1,13
+8,5,48,1,8,"is_wonderful_string@1-8@./4.py","./4.py","is_wonderful_string","is_wonderful_string( s )",1,8
+7,5,39,1,7,"is_wonderful_string@1-7@./5.py","./5.py","is_wonderful_string","is_wonderful_string( s )",1,7
+16,5,70,0,16,"main@1-16@./1.py","./1.py","main","main( )",1,16

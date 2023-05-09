@@ -1,0 +1,8 @@
+7,3,23,1,7,"weather_prediction@1-7@./6.py","./6.py","weather_prediction","weather_prediction( weather_today )",1,7
+8,3,33,0,8,"main@1-8@./2.py","./2.py","main","main( )",1,8
+8,4,36,0,8,"main@1-8@./3.py","./3.py","main","main( )",1,8
+7,2,41,1,7,"weather_prediction@1-7@./7.py","./7.py","weather_prediction","weather_prediction( weather )",1,7
+8,4,36,0,8,"main@1-8@./0.py","./0.py","main","main( )",1,8
+7,4,26,1,7,"weather@1-7@./4.py","./4.py","weather","weather( S )",1,7
+7,3,23,1,7,"weather@1-7@./5.py","./5.py","weather","weather( s )",1,7
+8,3,33,0,8,"main@1-8@./1.py","./1.py","main","main( )",1,8

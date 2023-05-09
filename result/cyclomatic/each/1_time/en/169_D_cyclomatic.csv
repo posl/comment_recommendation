@@ -1,0 +1,10 @@
+14,5,73,1,14,"getPrimeFactors@1-14@./8.py","./8.py","getPrimeFactors","getPrimeFactors( n )",1,14
+17,7,91,0,17,"main@1-17@./9.py","./9.py","main","main( )",1,17
+15,6,95,1,15,"prime_factorization@1-15@./6.py","./6.py","prime_factorization","prime_factorization( n )",1,15
+15,5,67,1,15,"prime_factorize@1-15@./2.py","./2.py","prime_factorize","prime_factorize( n )",1,15
+15,5,67,1,15,"prime_factorize@1-15@./3.py","./3.py","prime_factorize","prime_factorize( n )",1,15
+10,4,58,0,10,"main@1-10@./7.py","./7.py","main","main( )",1,10
+15,5,67,1,15,"prime_factorize@1-15@./0.py","./0.py","prime_factorize","prime_factorize( n )",1,15
+13,5,80,1,13,"factorize@1-13@./4.py","./4.py","factorize","factorize( n )",1,13
+11,4,52,1,11,"factorize@1-11@./5.py","./5.py","factorize","factorize( n )",1,11
+15,5,67,1,15,"prime_factorize@1-15@./1.py","./1.py","prime_factorize","prime_factorize( n )",1,15

@@ -1,0 +1,17 @@
+2,3,50,1,2,"rotate@1-2@./8.py","./8.py","rotate","rotate( s )",1,2
+2,3,44,1,2,"rotate@1-2@./9.py","./9.py","rotate","rotate( S )",1,2
+15,18,367,0,22,"main@1-22@./6.py","./6.py","main","main( )",1,22
+6,4,44,2,6,"main.is_same@5-10@./2.py","./2.py","main.is_same","main.is_same( S , T )",5,10
+6,5,63,1,6,"main.rotate@11-16@./2.py","./2.py","main.rotate","main.rotate( S )",11,16
+6,3,33,2,6,"main.is_same_4@17-22@./2.py","./2.py","main.is_same_4","main.is_same_4( S , T )",17,22
+6,3,33,2,6,"main.is_same_2@23-28@./2.py","./2.py","main.is_same_2","main.is_same_2( S , T )",23,28
+5,2,30,2,5,"main.is_same_1@29-33@./2.py","./2.py","main.is_same_1","main.is_same_1( S , T )",29,33
+10,4,63,0,34,"main@1-34@./2.py","./2.py","main","main( )",1,34
+24,11,254,0,32,"main@1-32@./3.py","./3.py","main","main( )",1,32
+25,12,178,0,36,"main@1-36@./7.py","./7.py","main","main( )",1,36
+45,24,349,0,48,"main@1-48@./0.py","./0.py","main","main( )",1,48
+2,1,19,1,2,"main.rotate@5-6@./4.py","./4.py","main.rotate","main.rotate( S )",5,6
+6,5,48,2,6,"main.check@7-12@./4.py","./4.py","main.check","main.check( S , T )",7,12
+12,5,77,0,18,"main@1-18@./4.py","./4.py","main","main( )",1,18
+26,16,339,0,29,"main@1-29@./5.py","./5.py","main","main( )",1,29
+7,4,64,1,7,"rotate@1-7@./1.py","./1.py","rotate","rotate( S )",1,7

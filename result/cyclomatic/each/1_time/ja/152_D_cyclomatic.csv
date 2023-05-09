@@ -1,0 +1,17 @@
+2,1,12,0,2,"main@1-2@./8.py","./8.py","main","main( )",1,2
+11,3,76,0,14,"main@1-14@./6.py","./6.py","main","main( )",1,14
+2,1,12,0,2,"main@1-2@./2.py","./2.py","main","main( )",1,2
+8,4,53,0,11,"main@1-11@./3.py","./3.py","main","main( )",1,11
+5,2,22,1,5,"main.digit@4-8@./7.py","./7.py","main.digit","main.digit( n )",4,8
+2,1,16,1,2,"main.head@10-11@./7.py","./7.py","main.head","main.head( n )",10,11
+2,1,17,1,2,"main.tail@13-14@./7.py","./7.py","main.tail","main.tail( n )",13,14
+2,1,15,1,2,"main.head_tail@16-17@./7.py","./7.py","main.head_tail","main.head_tail( n )",16,17
+2,1,15,1,2,"main.tail_head@19-20@./7.py","./7.py","main.tail_head","main.tail_head( n )",19,20
+6,3,31,1,6,"main.head_tail_count@22-27@./7.py","./7.py","main.head_tail_count","main.head_tail_count( n )",22,27
+6,3,31,1,6,"main.tail_head_count@29-34@./7.py","./7.py","main.tail_head_count","main.tail_head_count( n )",29,34
+4,3,21,1,4,"main.head_tail_count2@36-39@./7.py","./7.py","main.head_tail_count2","main.head_tail_count2( n )",36,39
+10,1,28,0,39,"main@1-39@./7.py","./7.py","main","main( )",1,39
+12,4,90,0,12,"main@1-12@./0.py","./0.py","main","main( )",1,12
+11,4,71,0,11,"main@1-11@./4.py","./4.py","main","main( )",1,11
+21,7,131,0,28,"main@1-28@./5.py","./5.py","main","main( )",1,28
+10,4,62,0,10,"main@1-10@./1.py","./1.py","main","main( )",1,10

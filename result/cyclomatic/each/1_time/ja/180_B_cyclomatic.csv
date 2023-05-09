@@ -1,0 +1,8 @@
+16,5,118,0,21,"main@1-21@./6.py","./6.py","main","main( )",1,21
+6,4,82,0,6,"main@1-6@./2.py","./2.py","main","main( )",1,6
+14,3,104,0,14,"main@1-14@./3.py","./3.py","main","main( )",1,14
+2,2,17,1,2,"manhattan_distance@1-2@./7.py","./7.py","manhattan_distance","manhattan_distance( x )",1,2
+6,4,82,0,6,"main@1-6@./0.py","./0.py","main","main( )",1,6
+6,4,83,0,6,"main@1-6@./4.py","./4.py","main","main( )",1,6
+8,1,85,0,8,"main@1-8@./5.py","./5.py","main","main( )",1,8
+6,4,84,0,6,"main@1-6@./1.py","./1.py","main","main( )",1,6

@@ -1,0 +1,13 @@
+3,1,26,1,3,"get_median_index@1-3@./8.py","./8.py","get_median_index","get_median_index( arr )",1,3
+11,5,95,3,14,"calc_median@1-14@./9.py","./9.py","calc_median","calc_median( a , k , n )",1,14
+3,1,15,1,3,"get_median@1-3@./6.py","./6.py","get_median","get_median( list )",1,3
+6,4,76,1,6,"main.check@8-13@./2.py","./2.py","main.check","main.check( x )",8,13
+16,8,184,0,21,"main@1-21@./2.py","./2.py","main","main( )",1,21
+6,4,76,1,6,"main.check@10-15@./3.py","./3.py","main.check","main.check( x )",10,15
+17,7,176,0,24,"main@1-24@./3.py","./3.py","main","main( )",1,24
+7,3,66,4,7,"get_center_value@1-7@./7.py","./7.py","get_center_value","get_center_value( matrix , k , x , y )",1,7
+13,6,132,0,13,"main@1-13@./0.py","./0.py","main","main( )",1,13
+9,4,81,0,9,"main@1-9@./4.py","./4.py","main","main( )",1,9
+6,4,76,1,6,"main.check@11-16@./5.py","./5.py","main.check","main.check( x )",11,16
+17,7,176,0,26,"main@1-26@./5.py","./5.py","main","main( )",1,26
+13,6,130,0,13,"main@1-13@./1.py","./1.py","main","main( )",1,13

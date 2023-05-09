@@ -1,0 +1,8 @@
+10,3,111,0,10,"main@1-10@./6.py","./6.py","main","main( )",1,10
+18,5,165,0,18,"main@1-18@./2.py","./2.py","main","main( )",1,18
+11,3,90,0,11,"main@1-11@./3.py","./3.py","main","main( )",1,11
+5,1,40,0,5,"main@1-5@./7.py","./7.py","main","main( )",1,5
+7,2,36,1,7,"median@1-7@./0.py","./0.py","median","median( a )",1,7
+5,2,34,1,5,"median@1-5@./4.py","./4.py","median","median( l )",1,5
+5,2,41,3,5,"median@1-5@./5.py","./5.py","median","median( a , l , r )",1,5
+6,2,40,1,6,"median@1-6@./1.py","./1.py","median","median( l )",1,6

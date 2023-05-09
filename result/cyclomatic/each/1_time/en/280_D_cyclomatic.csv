@@ -1,0 +1,10 @@
+14,5,84,0,14,"main@1-14@./8.py","./8.py","main","main( )",1,14
+2,1,12,0,2,"main@1-2@./9.py","./9.py","main","main( )",1,2
+3,2,13,1,5,"prime_factorization@1-5@./6.py","./6.py","prime_factorization","prime_factorization( n )",1,5
+5,2,25,2,5,"gcd@1-5@./2.py","./2.py","gcd","gcd( a , b )",1,5
+19,7,91,0,19,"main@1-19@./3.py","./3.py","main","main( )",1,19
+10,4,51,0,10,"main@1-10@./7.py","./7.py","main","main( )",1,10
+13,5,63,0,13,"main@1-13@./0.py","./0.py","main","main( )",1,13
+11,4,45,0,11,"main@1-11@./4.py","./4.py","main","main( )",1,11
+11,5,62,1,11,"get_prime_factorization@1-11@./5.py","./5.py","get_prime_factorization","get_prime_factorization( n )",1,11
+9,4,74,1,9,"prime_factorization@1-9@./1.py","./1.py","prime_factorization","prime_factorization( n )",1,9

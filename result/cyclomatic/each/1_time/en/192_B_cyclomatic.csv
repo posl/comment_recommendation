@@ -1,0 +1,10 @@
+21,10,145,0,21,"main@1-21@./8.py","./8.py","main","main( )",1,21
+4,2,32,1,4,"is_hard_to_read@1-4@./9.py","./9.py","is_hard_to_read","is_hard_to_read( s )",1,4
+29,10,157,0,29,"main@1-29@./6.py","./6.py","main","main( )",1,29
+9,5,51,1,9,"is_hard_to_read@1-9@./2.py","./2.py","is_hard_to_read","is_hard_to_read( s )",1,9
+6,3,41,0,6,"main@1-6@./3.py","./3.py","main","main( )",1,6
+15,6,82,0,15,"main@1-15@./7.py","./7.py","main","main( )",1,15
+9,5,53,1,9,"is_hard_to_read@1-9@./0.py","./0.py","is_hard_to_read","is_hard_to_read( s )",1,9
+13,5,57,1,13,"isHardToRead@1-13@./4.py","./4.py","isHardToRead","isHardToRead( s )",1,13
+15,6,80,0,15,"main@1-15@./5.py","./5.py","main","main( )",1,15
+9,5,53,1,9,"is_hard_to_read@1-9@./1.py","./1.py","is_hard_to_read","is_hard_to_read( s )",1,9

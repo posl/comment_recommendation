@@ -1,0 +1,10 @@
+7,2,78,1,21,"replace_comma@1-21@./8.py","./8.py","replace_comma","replace_comma( string )",1,21
+5,1,35,1,5,"replaceCommas@1-5@./9.py","./9.py","replaceCommas","replaceCommas( s )",1,5
+13,6,86,0,13,"main@1-13@./6.py","./6.py","main","main( )",1,13
+8,4,61,0,8,"main@1-8@./2.py","./2.py","main","main( )",1,8
+16,5,80,0,16,"main@1-16@./3.py","./3.py","main","main( )",1,16
+13,5,59,0,13,"main@1-13@./7.py","./7.py","main","main( )",1,13
+8,4,63,0,8,"main@1-8@./0.py","./0.py","main","main( )",1,8
+16,7,91,0,16,"main@1-16@./4.py","./4.py","main","main( )",1,16
+11,5,79,0,11,"solve@1-11@./5.py","./5.py","solve","solve( )",1,11
+13,5,79,0,13,"main@1-13@./1.py","./1.py","main","main( )",1,13

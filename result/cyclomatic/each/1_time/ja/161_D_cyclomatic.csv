@@ -1,0 +1,14 @@
+3,1,19,0,3,"main@1-3@./8.py","./8.py","main","main( )",1,3
+17,10,190,0,46,"main@1-46@./6.py","./6.py","main","main( )",1,46
+8,3,58,1,8,"runrun@1-8@./2.py","./2.py","runrun","runrun( n )",1,8
+58,1,449,0,58,"main@1-58@./3.py","./3.py","main","main( )",1,58
+3,2,13,1,21,"runrun@1-21@./7.py","./7.py","runrun","runrun( k )",1,21
+20,9,107,0,20,"main@1-20@./0.py","./0.py","main","main( )",1,20
+16,7,100,0,30,"main@1-30@./4.py","./4.py","main","main( )",1,30
+5,3,50,1,5,"main.runrun@4-8@./5.py","./5.py","main.runrun","main.runrun( n )",4,8
+5,3,26,1,5,"main.runrun_list@10-14@./5.py","./5.py","main.runrun_list","main.runrun_list( n )",10,14
+5,2,35,1,5,"main.runrun_num@16-20@./5.py","./5.py","main.runrun_num","main.runrun_num( n )",16,20
+5,2,35,1,5,"main.runrun_ans@22-26@./5.py","./5.py","main.runrun_ans","main.runrun_ans( n )",22,26
+9,5,69,1,9,"main.runrun_k@28-36@./5.py","./5.py","main.runrun_k","main.runrun_k( k )",28,36
+8,1,29,0,38,"main@1-38@./5.py","./5.py","main","main( )",1,38
+57,23,557,0,57,"main@1-57@./1.py","./1.py","main","main( )",1,57

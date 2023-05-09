@@ -1,0 +1,10 @@
+5,3,28,1,5,"is_concatenation_of_two_copies_of_some_string@1-5@./8.py","./8.py","is_concatenation_of_two_copies_of_some_string","is_concatenation_of_two_copies_of_some_string( s )",1,5
+6,2,28,1,6,"check_string@1-6@./9.py","./9.py","check_string","check_string( s )",1,6
+8,3,47,0,8,"main@1-8@./6.py","./6.py","main","main( )",1,8
+7,2,33,0,7,"main@1-7@./2.py","./2.py","main","main( )",1,7
+10,3,46,0,10,"main@1-10@./3.py","./3.py","main","main( )",1,10
+8,3,30,2,8,"check_concatenation@1-8@./7.py","./7.py","check_concatenation","check_concatenation( N , S )",1,8
+10,3,46,0,10,"main@1-10@./0.py","./0.py","main","main( )",1,10
+7,2,34,0,7,"main@1-7@./4.py","./4.py","main","main( )",1,7
+8,3,47,0,8,"main@1-8@./5.py","./5.py","main","main( )",1,8
+10,3,46,0,10,"main@1-10@./1.py","./1.py","main","main( )",1,10

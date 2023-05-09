@@ -1,0 +1,7 @@
+3,1,33,0,3,"main@1-3@./6.py","./6.py","main","main( )",1,3
+8,2,70,2,8,"nCr@1-8@./2.py","./2.py","nCr","nCr( n , r )",1,8
+24,6,110,0,24,"main@1-24@./3.py","./3.py","main","main( )",1,24
+5,2,23,1,5,"factorial@1-5@./0.py","./0.py","factorial","factorial( n )",1,5
+4,2,21,1,4,"factorial@1-4@./4.py","./4.py","factorial","factorial( n )",1,4
+2,1,56,2,2,"nCr@1-2@./5.py","./5.py","nCr","nCr( n , r )",1,2
+5,2,23,1,5,"fact@1-5@./1.py","./1.py","fact","fact( n )",1,5

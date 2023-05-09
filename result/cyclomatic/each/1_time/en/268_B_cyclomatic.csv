@@ -1,0 +1,10 @@
+4,2,23,2,4,"prefix@1-4@./8.py","./8.py","prefix","prefix( S , T )",1,4
+4,2,19,2,4,"prefix@1-4@./9.py","./9.py","prefix","prefix( s , t )",1,4
+5,2,34,2,5,"is_prefix@1-5@./6.py","./6.py","is_prefix","is_prefix( str1 , str2 )",1,5
+7,2,32,0,7,"main@1-7@./2.py","./2.py","main","main( )",1,7
+7,2,32,0,7,"main@1-7@./3.py","./3.py","main","main( )",1,7
+7,2,32,0,9,"main@1-9@./7.py","./7.py","main","main( )",1,9
+7,2,36,0,7,"main@1-7@./0.py","./0.py","main","main( )",1,7
+4,2,27,0,4,"main@1-4@./4.py","./4.py","main","main( )",1,4
+5,2,25,2,5,"prefix@1-5@./5.py","./5.py","prefix","prefix( s , t )",1,5
+7,2,32,0,7,"main@1-7@./1.py","./1.py","main","main( )",1,7

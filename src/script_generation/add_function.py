@@ -16,6 +16,7 @@ def main(read_path, write_path):
             pass
 
 if __name__ == '__main__':
+    print('input times')
     time = input() + '_time'
     del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/'.format(time)
     if os.path.exists(del_dir_path):

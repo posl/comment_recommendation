@@ -1,0 +1,6 @@
+5,1,46,0,5,"main@1-5@./2.py","./2.py","main","main( )",1,5
+4,1,43,0,7,"main@1-7@./3.py","./3.py","main","main( )",1,7
+4,1,43,0,4,"main@1-4@./0.py","./0.py","main","main( )",1,4
+4,2,34,0,4,"get_input@1-4@./4.py","./4.py","get_input","get_input( )",1,4
+2,1,19,2,2,"solve@1-2@./5.py","./5.py","solve","solve( N , H )",1,2
+8,3,47,2,8,"highest_bridge@1-8@./1.py","./1.py","highest_bridge","highest_bridge( N , H )",1,8

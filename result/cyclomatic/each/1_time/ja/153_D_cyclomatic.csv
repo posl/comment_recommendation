@@ -1,0 +1,10 @@
+5,2,19,1,5,"get_min_attack_count@1-5@./8.py","./8.py","get_min_attack_count","get_min_attack_count( h )",1,5
+5,2,23,1,5,"count_attack@1-5@./9.py","./9.py","count_attack","count_attack( h )",1,5
+8,2,31,0,8,"solve@1-8@./6.py","./6.py","solve","solve( )",1,8
+5,2,28,1,5,"f@1-5@./2.py","./2.py","f","f( h )",1,5
+5,2,21,1,5,"calc_attack_count@1-5@./3.py","./3.py","calc_attack_count","calc_attack_count( hp )",1,5
+5,2,21,1,5,"count_attack@1-5@./7.py","./7.py","count_attack","count_attack( H )",1,5
+7,2,29,0,7,"main@1-7@./0.py","./0.py","main","main( )",1,7
+5,2,21,1,5,"f@1-5@./4.py","./4.py","f","f( H )",1,5
+5,2,23,1,5,"solve@1-5@./5.py","./5.py","solve","solve( h )",1,5
+7,2,29,0,7,"main@1-7@./1.py","./1.py","main","main( )",1,7

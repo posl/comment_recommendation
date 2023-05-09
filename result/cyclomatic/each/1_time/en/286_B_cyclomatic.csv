@@ -1,0 +1,9 @@
+2,1,14,1,2,"replace_na@1-2@./8.py","./8.py","replace_na","replace_na( string )",1,2
+2,1,14,1,2,"replace_na_with_nya@1-2@./6.py","./6.py","replace_na_with_nya","replace_na_with_nya( s )",1,2
+4,1,28,0,4,"main@1-4@./2.py","./2.py","main","main( )",1,4
+4,1,28,0,4,"main@1-4@./3.py","./3.py","main","main( )",1,4
+2,1,14,1,2,"replace_na@1-2@./7.py","./7.py","replace_na","replace_na( s )",1,2
+4,1,28,0,4,"main@1-4@./0.py","./0.py","main","main( )",1,4
+4,1,28,0,4,"problem@1-4@./4.py","./4.py","problem","problem( )",1,4
+2,1,21,3,2,"replace_all@1-2@./5.py","./5.py","replace_all","replace_all( S , a , b )",1,2
+4,1,28,0,4,"main@1-4@./1.py","./1.py","main","main( )",1,4

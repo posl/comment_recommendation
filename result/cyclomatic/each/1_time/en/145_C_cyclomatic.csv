@@ -1,0 +1,12 @@
+12,4,180,3,12,"dfs@1-12@./8.py","./8.py","dfs","dfs( town , visited , dis )",1,12
+2,1,41,2,2,"main.calc_dist@8-9@./9.py","./9.py","main.calc_dist","main.calc_dist( a , b )",8,9
+11,4,105,0,16,"main@1-16@./9.py","./9.py","main","main( )",1,16
+14,4,143,0,14,"main@1-14@./6.py","./6.py","main","main( )",1,14
+16,5,138,0,16,"main@1-16@./2.py","./2.py","main","main( )",1,16
+2,1,35,4,2,"distance@1-2@./3.py","./3.py","distance","distance( x1 , y1 , x2 , y2 )",1,2
+7,2,54,0,7,"main@1-7@./7.py","./7.py","main","main( )",1,7
+2,1,33,4,2,"dist@1-2@./0.py","./0.py","dist","dist( x1 , y1 , x2 , y2 )",1,2
+23,8,245,0,25,"main@1-25@./4.py","./4.py","main","main( )",1,25
+9,4,143,0,9,"solve@1-9@./5.py","./5.py","solve","solve( )",1,9
+11,4,64,2,11,"main.dfs@8-18@./1.py","./1.py","main.dfs","main.dfs( v , visited )",8,18
+9,5,143,0,19,"main@1-19@./1.py","./1.py","main","main( )",1,19

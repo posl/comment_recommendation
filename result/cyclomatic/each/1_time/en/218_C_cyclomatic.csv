@@ -1,0 +1,25 @@
+6,4,42,2,6,"find_s@1-6@./8.py","./8.py","find_s","find_s( s , n )",1,6
+5,4,44,1,5,"findStartPos@1-5@./9.py","./9.py","findStartPos","findStartPos( s )",1,5
+2,3,40,1,2,"main.rotate@6-7@./6.py","./6.py","main.rotate","main.rotate( S )",6,7
+2,3,40,1,2,"main.rotate_90@9-10@./6.py","./6.py","main.rotate_90","main.rotate_90( S )",9,10
+2,3,44,1,2,"main.rotate_180@12-13@./6.py","./6.py","main.rotate_180","main.rotate_180( S )",12,13
+2,3,40,1,2,"main.rotate_270@15-16@./6.py","./6.py","main.rotate_270","main.rotate_270( S )",15,16
+2,3,40,1,2,"main.flip@18-19@./6.py","./6.py","main.flip","main.flip( S )",18,19
+2,3,40,1,2,"main.flip_vertical@21-22@./6.py","./6.py","main.flip_vertical","main.flip_vertical( S )",21,22
+2,3,36,1,2,"main.flip_horizontal@24-25@./6.py","./6.py","main.flip_horizontal","main.flip_horizontal( S )",24,25
+2,3,40,1,2,"main.rotate@27-28@./6.py","./6.py","main.rotate","main.rotate( S )",27,28
+2,3,40,1,2,"main.rotate_90@30-31@./6.py","./6.py","main.rotate_90","main.rotate_90( S )",30,31
+2,3,44,1,2,"main.rotate_180@33-34@./6.py","./6.py","main.rotate_180","main.rotate_180( S )",33,34
+2,2,26,1,2,"main.rotate_270@36-37@./6.py","./6.py","main.rotate_270","main.rotate_270( S )",36,37
+15,3,62,0,37,"main@1-37@./6.py","./6.py","main","main( )",1,37
+5,4,55,0,5,"main@1-5@./2.py","./2.py","main","main( )",1,5
+7,4,50,2,7,"check@1-7@./3.py","./3.py","check","check( a , b )",1,7
+7,4,64,1,7,"rotate90@1-7@./7.py","./7.py","rotate90","rotate90( figure )",1,7
+20,13,167,0,20,"main@1-20@./0.py","./0.py","main","main( )",1,20
+6,4,44,2,6,"main.check@5-10@./4.py","./4.py","main.check","main.check( S , T )",5,10
+21,17,217,0,26,"main@1-26@./4.py","./4.py","main","main( )",1,26
+2,2,27,1,2,"main.rotate@5-6@./5.py","./5.py","main.rotate","main.rotate( S )",5,6
+2,2,25,3,2,"main.translate@7-8@./5.py","./5.py","main.translate","main.translate( S , dx , dy )",7,8
+6,4,39,2,6,"main.check@9-14@./5.py","./5.py","main.check","main.check( S , T )",9,14
+13,5,77,0,20,"main@1-20@./5.py","./5.py","main","main( )",1,20
+14,5,88,0,14,"main@1-14@./1.py","./1.py","main","main( )",1,14

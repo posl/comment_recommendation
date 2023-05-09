@@ -1,0 +1,10 @@
+4,2,52,0,4,"get_input@1-4@./8.py","./8.py","get_input","get_input( )",1,4
+14,5,122,0,14,"main@1-14@./9.py","./9.py","main","main( )",1,14
+7,2,64,0,7,"get_input@1-7@./6.py","./6.py","get_input","get_input( )",1,7
+16,5,109,0,16,"main@1-16@./2.py","./2.py","main","main( )",1,16
+11,4,87,0,11,"main@1-11@./3.py","./3.py","main","main( )",1,11
+12,4,102,0,12,"main@1-12@./7.py","./7.py","main","main( )",1,12
+16,6,111,0,16,"main@1-16@./0.py","./0.py","main","main( )",1,16
+11,4,75,0,11,"main@1-11@./4.py","./4.py","main","main( )",1,11
+9,5,49,3,9,"get_min_cost@1-9@./5.py","./5.py","get_min_cost","get_min_cost( N , T , routes )",1,9
+11,4,80,0,11,"main@1-11@./1.py","./1.py","main","main( )",1,11

@@ -1,0 +1,9 @@
+2,1,8,0,2,"get_input@1-2@./8.py","./8.py","get_input","get_input( )",1,2
+3,1,20,0,3,"main@1-3@./6.py","./6.py","main","main( )",1,3
+5,3,41,2,5,"find_last_occurrence@1-5@./2.py","./2.py","find_last_occurrence","find_last_occurrence( str , ch )",1,5
+7,2,39,0,7,"solve@1-7@./3.py","./3.py","solve","solve( )",1,7
+2,1,24,2,2,"last_index@1-2@./7.py","./7.py","last_index","last_index( s , c )",1,2
+6,2,38,0,6,"main@1-6@./0.py","./0.py","main","main( )",1,6
+3,1,20,0,3,"main@1-3@./4.py","./4.py","main","main( )",1,3
+4,1,23,0,4,"main@1-4@./5.py","./5.py","main","main( )",1,4
+6,3,37,2,6,"find_last_occurence@1-6@./1.py","./1.py","find_last_occurence","find_last_occurence( string , char )",1,6

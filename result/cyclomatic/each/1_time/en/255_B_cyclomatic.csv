@@ -1,0 +1,15 @@
+12,6,113,1,12,"solve.ok@2-13@./8.py","./8.py","solve.ok","solve.ok( r )",2,13
+11,3,62,5,22,"solve@1-22@./8.py","./8.py","solve","solve( n , k , a , x , y )",1,22
+2,1,30,4,2,"main.dist@5-6@./9.py","./9.py","main.dist","main.dist( x1 , y1 , x2 , y2 )",5,6
+9,5,82,8,9,"main.check@7-15@./9.py","./9.py","main.check","main.check( x , y , r , n , k , a , X , Y )",7,15
+18,6,390,5,18,"main.solve@16-33@./9.py","./9.py","main.solve","main.solve( n , k , a , X , Y )",16,33
+15,2,96,0,42,"main@1-42@./9.py","./9.py","main","main( )",1,42
+2,1,35,4,2,"dist@1-2@./6.py","./6.py","dist","dist( x1 , y1 , x2 , y2 )",1,2
+2,1,33,4,2,"dist@1-2@./2.py","./2.py","dist","dist( x1 , y1 , x2 , y2 )",1,2
+17,6,226,0,17,"main@1-17@./3.py","./3.py","main","main( )",1,17
+2,1,32,4,2,"get_distance@1-2@./7.py","./7.py","get_distance","get_distance( x1 , y1 , x2 , y2 )",1,2
+25,9,196,0,25,"main@1-25@./0.py","./0.py","main","main( )",1,25
+2,1,41,2,2,"distance@1-2@./4.py","./4.py","distance","distance( p1 , p2 )",1,2
+25,14,216,1,29,"main.is_ok@11-39@./5.py","./5.py","main.is_ok","main.is_ok( R )",11,39
+20,4,144,0,49,"main@1-49@./5.py","./5.py","main","main( )",1,49
+16,4,138,0,16,"main@1-16@./1.py","./1.py","main","main( )",1,16

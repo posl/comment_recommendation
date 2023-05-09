@@ -1,0 +1,10 @@
+11,3,64,1,11,"get_anagram_count@1-11@./8.py","./8.py","get_anagram_count","get_anagram_count( s )",1,11
+16,4,96,0,16,"main@1-16@./9.py","./9.py","main","main( )",1,16
+11,3,55,1,11,"count_anagram_pairs@1-11@./6.py","./6.py","count_anagram_pairs","count_anagram_pairs( strings )",1,11
+11,4,87,0,11,"main@1-11@./2.py","./2.py","main","main( )",1,11
+10,4,79,0,10,"main@1-10@./3.py","./3.py","main","main( )",1,10
+4,2,21,1,4,"factorial@1-4@./7.py","./7.py","factorial","factorial( n )",1,4
+5,2,23,1,5,"factorial@1-5@./0.py","./0.py","factorial","factorial( n )",1,5
+8,3,35,1,8,"count_anagrams@1-8@./4.py","./4.py","count_anagrams","count_anagrams( s )",1,8
+5,2,41,1,5,"count_anagrams@1-5@./5.py","./5.py","count_anagrams","count_anagrams( s )",1,5
+14,4,87,0,14,"solve@1-14@./1.py","./1.py","solve","solve( )",1,14

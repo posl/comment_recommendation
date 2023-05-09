@@ -1,0 +1,10 @@
+8,4,64,0,8,"main@1-8@./8.py","./8.py","main","main( )",1,8
+2,1,19,3,2,"is_legs_correct@1-2@./9.py","./9.py","is_legs_correct","is_legs_correct( crane_num , turtle_num , legs_num )",1,2
+10,4,66,0,10,"main@1-10@./6.py","./6.py","main","main( )",1,10
+8,3,56,0,8,"main@1-8@./2.py","./2.py","main","main( )",1,8
+6,2,41,0,6,"main@1-6@./3.py","./3.py","main","main( )",1,6
+9,3,54,0,11,"main@1-11@./7.py","./7.py","main","main( )",1,11
+8,3,55,0,8,"main@1-8@./0.py","./0.py","main","main( )",1,8
+6,3,43,0,6,"main@1-6@./4.py","./4.py","main","main( )",1,6
+9,4,56,0,9,"main@1-9@./5.py","./5.py","main","main( )",1,9
+5,3,36,2,5,"check@1-5@./1.py","./1.py","check","check( X , Y )",1,5
