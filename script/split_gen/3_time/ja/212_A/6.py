@@ -1,0 +1,8 @@
+def main():
+    A, B = [int(x) for x in input().split()]
+    if 0 < A and B == 0:
+        print("Gold")
+    elif A == 0 and 0 < B:
+        print("Silver")
+    elif 0 < A and 0 < B:
+        print("Alloy")

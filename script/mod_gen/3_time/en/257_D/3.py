@@ -1,0 +1,48 @@
+def main():
+    N = int(input())
+    x = [0] * N
+    y = [0] * N
+    p = [0] * N
+    for i in range(N):
+        x[i],y[i],p[i] = map(int, input().split())
+    #print(x)
+    #print(y)
+    #print(p)
+    #print(N)
+    #print("x[0]",x[0])
+    #print("y[0]",y[0])
+    #print("p[0]",p[0])
+    #print("x[1]",x[1])
+    #print("y[1]",y[1])
+    #print("p[1]",p[1])
+    #print("x[2]",x[2])
+    #print("y[2]",y[2])
+    #print("p[2]",p[2])
+    #print("x[3]",x[3])
+    #print("y[3]",y[3])
+    #print("p[3]",p[3])
+    #print("x[4]",x[4])
+    #print("y[4]",y[4])
+    #print("p[4]",p[4])
+    #print("x[5]",x[5])
+    #print("y[5]",y[5])
+    #print("p[5]",p[5])
+    #print("x[6]",x[6])
+    #print("y[6]",y[6])
+    #print("p[6]",p[6])
+    #print("x[0]=",x[0])
+    #print("y[0]=",y[0])
+    #print("p[0]=",p[0])
+    #print("x[1]=",x[1])
+    #print("y[1]=",y[1])
+    #print("p[1]=",p[1])
+    #print("x[2]=",x[2])
+    #print("y[2]=",y[2])
+    #print("p[2]=",p[2])
+    #print("x[3]=",x[3])
+    #print("y[3]=",y[3])
+    #print("p[3]=",p[3])
+    #print("x[4]=",x[4
+
+if __name__ == '__main__':
+    main()

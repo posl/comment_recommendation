@@ -1,0 +1,27 @@
+def main():
+    s = input()
+    s = s.replace('A', '1')
+    s = s.replace('C', '2')
+    s = s.replace('G', '3')
+    s = s.replace('T', '4')
+    s = s.replace('1', 'A')
+    s = s.replace('2', 'C')
+    s = s.replace('3', 'G')
+    s = s.replace('4', 'T')
+    s = s.split('A')
+    s = s.split('C')
+    s = s.split('G')
+    s = s.split('T')
+    s = s.split('AC')
+    s = s.split('AG')
+    s = s.split('AT')
+    s = s.split('CG')
+    s = s.split('CT')
+    s = s.split('GT')
+    s = s.split('ACG')
+    s = s.split('ACT')
+    s = s.split('AGT')
+    s = s.split('CGT'
+
+if __name__ == '__main__':
+    main()

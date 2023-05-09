@@ -1,0 +1,5 @@
+def main():
+    #input
+    X, Y = map(int, input().split())
+    #output
+    print('Yes' if X < Y else 'No')

@@ -1,0 +1,11 @@
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        if i * i > N:
+            break
+        ans = i
+    print(N - ans + ans - 1)
+
+if __name__ == '__main__':
+    main()

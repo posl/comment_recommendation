@@ -1,0 +1,11 @@
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for b in B:
+        print(b)
+
+if __name__ == '__main__':
+    main()

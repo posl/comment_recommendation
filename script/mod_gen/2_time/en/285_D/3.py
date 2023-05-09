@@ -1,0 +1,12 @@
+def get_input():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    return N, S, T
+
+if __name__ == '__main__':
+    get_input()

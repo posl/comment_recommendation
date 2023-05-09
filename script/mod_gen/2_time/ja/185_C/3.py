@@ -1,0 +1,11 @@
+def main():
+    L = int(input())
+    dp = [0 for _ in range(L+1)]
+    dp[0] = 1
+    for i in range(1, L+1):
+        for j in range(1, i+1):
+            dp[i] += dp[i-j]
+    print(dp[L])
+
+if __name__ == '__main__':
+    main()

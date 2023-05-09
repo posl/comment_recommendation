@@ -1,0 +1,4 @@
+def check ( k , a , mid ): #check if the median of the heights of the squares in a k*k section is lower than or equal to mid. n = len ( a ) for i in range ( n - k + 1 ): for j in range ( n - k + 1 ): cnt = 0 for x in range ( k ): for y in range ( k ): if a [ i + x ][ j + y ] <= mid : cnt += 1 if cnt > k * k // 2 : return True return False n , k = map ( int , input (). split ()) a = [ list ( map ( int , input (). split ())) for _ in range ( n )] ok = 0 #ok is the lower bound of the answer. ng = 10 ** 9 + 1 #ng is the upper bound of the answer. while ng - ok > 1 : mid = ( ok + ng ) // 2 if check ( k , a , mid ): ng = mid else : ok = mid print ( ng )
+
+if __name__ == '__main__':
+    check()

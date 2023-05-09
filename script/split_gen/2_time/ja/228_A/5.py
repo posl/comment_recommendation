@@ -1,0 +1,8 @@
+def main():
+    S, T, X = map(int, input().split())
+    if S <= X and X < T:
+        print("Yes")
+    elif S <= X + 24 and X + 24 < T:
+        print("Yes")
+    else:
+        print("No")

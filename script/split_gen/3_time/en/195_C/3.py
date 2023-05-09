@@ -1,0 +1,7 @@
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, len(str(N))):
+        ans += i * (10 ** i - 10 ** (i - 1))
+    ans += (len(str(N)) - 1) * (N - 10 ** (len(str(N)) - 1) + 1)
+    print(ans)

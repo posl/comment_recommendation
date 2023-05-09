@@ -1,0 +1,6 @@
+def main():
+    s = input()
+    if 'a' in s:
+        print(len(s) - s[::-1].index('a'))
+    else:
+        print(-1)

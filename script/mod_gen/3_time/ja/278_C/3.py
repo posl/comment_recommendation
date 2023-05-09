@@ -1,0 +1,9 @@
+def follow(user1, user2):
+    if user1 == user2:
+        return False
+    if user1 in users[user2]:
+        return True
+    return False
+
+if __name__ == '__main__':
+    follow()

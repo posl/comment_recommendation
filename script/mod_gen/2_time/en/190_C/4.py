@@ -1,0 +1,32 @@
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    k = int(input())
+    c = []
+    d = []
+    for i in range(k):
+        ci, di = map(int, input().split())
+        c.append(ci)
+        d.append(di)
+    ans = 0
+    for i in range(2**k):
+        dish = [0] * (n+1)
+        for j in range(k):
+            if (i >> j) & 1:
+                dish[c[j]] += 1
+            else:
+                dish[d[j]] += 1
+        cnt = 0
+        for j in range(m):
+            if dish[a[j]] >= 1 and dish[b[j]] >= 1:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+if __name__ == '__main__':
+    main()
