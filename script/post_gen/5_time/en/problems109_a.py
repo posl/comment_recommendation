@@ -1,35 +1,66 @@
-#Problem Statement
-#You are given integers A and B, each between 1 and 3 (inclusive).
-#Determine if there is an integer C between 1 and 3 (inclusive) such that A × B × C is an odd number.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A, B ≦ 3
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#If there is an integer C between 1 and 3 that satisfies the condition, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 1
-#
-#Sample Output 1
-#Yes
-#Let C = 3. Then, A × B × C = 3 × 1 × 3 = 9, which is an odd number.
-#
-#Sample Input 2
-#1 2
-#
-#Sample Output 2
-#No
-#
-#Sample Input 3
-#2 2
-#
-#Sample Output 3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if (a * b) % 2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if (a * b * 1) % 2 == 1:
+        print("Yes")
+    elif (a * b * 2) % 2 == 1:
+        print("Yes")
+    elif (a * b * 3) % 2 == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if (a*b)%2 == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if (a * b * 3) % 2 == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int, input().split())
+    if a*b%2 == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 6
+
+def solve():
+    a,b = map(int, input().split())
+    if a*b % 2 == 1:
+        print('Yes')
+    else:
+        print('No')
+solve()

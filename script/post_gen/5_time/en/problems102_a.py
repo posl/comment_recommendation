@@ -1,37 +1,83 @@
-#Problem Statement
-#You are given a positive integer N.
-#Find the minimum positive integer divisible by both 2 and N.
-#
-#Constraints
-#1 ≦ N ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the minimum positive integer divisible by both 2 and N.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#6
-#6 is divisible by both 2 and 3.
-#Also, there is no positive integer less than 6 that is divisible by both 2 and 3.
-#Thus, the answer is 6.
-#
-#Sample Input 2
-#10
-#
-#Sample Output 2
-#10
-#
-#Sample Input 3
-#999999999
-#
-#Sample Output 3
-#1999999998
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n=int(input())
+print(2*n//gcd(2,n))
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+
+print(int(2*N/gcd(2, N)))
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+N=int(input())
+print(2*N//gcd(2,N))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print(2*n)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print(n*2)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print(int(N*(N%2+1)/2))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print(2*n)
+    return

@@ -1,44 +1,173 @@
-#Problem Statement
-#Three people live in Takahashi's house: Takahashi, his father, and his mother. All of them wash their hair in the bathroom each night.
-#His father, his mother, and Takahashi take a bath in this order and use A, B, and C milliliters of shampoo, respectively.
-#This morning, the bottle contained V milliliters of shampoo. Without refilling, who will be the first to run short of shampoo to wash their hair?
-#
-#Constraints
-#1 ≦ V,A,B,C ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#V A B C
-#
-#Output
-#If the first person to run short of shampoo to wash their hair is Takahashi's father, print F; if it is Takahashi's mother, print M; if it is Takahashi, print T.
-#
-#Sample Input 1
-#25 10 11 12
-#
-#Sample Output 1
-#T
-#Now, they have 25 milliliters of shampoo.
-#First, Takahashi's father uses 10 milliliters, leaving 15.
-#Next, Takahashi's mother uses 11 milliliters, leaving 4.
-#Finally, Takahashi tries to use 12 milliliters and runs short of shampoo since only 4 is remaining.
-#
-#Sample Input 2
-#30 10 10 10
-#
-#Sample Output 2
-#F
-#Now, they have 30 milliliters of shampoo.
-#First, Takahashi's father uses 10 milliliters, leaving 20.
-#Next, Takahashi's mother uses 10 milliliters, leaving 10.
-#Then, Takahashi uses 10 milliliters, leaving 0.
-#Next day, Takahashi's father tries to use 10 milliliters and runs short of shampoo since only 0 is remaining.
-#
-#Sample Input 3
-#100000 1 1 1
-#
-#Sample Output 3
-#M
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    v, a, b, c = map(int, input().split())
+    while v > 0:
+        v -= a
+        if v <= 0:
+            print('F')
+            break
+        v -= b
+        if v <= 0:
+            print('M')
+            break
+        v -= c
+        if v <= 0:
+            print('T')
+            break
+
+=======
+Suggestion 2
+
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    while v >= 0:
+        v -= a
+        if v < 0:
+            print("F")
+            break
+        v -= b
+        if v < 0:
+            print("M")
+            break
+        v -= c
+        if v < 0:
+            print("T")
+            break
+
+=======
+Suggestion 3
+
+def main():
+    v, a, b, c = map(int, input().split())
+    shampoo = [a, b, c]
+    while v > 0:
+        for i in range(3):
+            v -= shampoo[i]
+            if v < 0:
+                if i == 0:
+                    print("F")
+                elif i == 1:
+                    print("M")
+                else:
+                    print("T")
+                return 0
+
+=======
+Suggestion 4
+
+def solve():
+    v,a,b,c = map(int,input().split())
+    while v >= 0:
+        v -= a
+        if v < 0:
+            print('F')
+            return
+        v -= b
+        if v < 0:
+            print('M')
+            return
+        v -= c
+        if v < 0:
+            print('T')
+            return
+
+=======
+Suggestion 5
+
+def main():
+    v,a,b,c = map(int, input().split())
+    if a >= v:
+        print("F")
+    elif a+b >= v:
+        print("M")
+    else:
+        print("T")
+
+=======
+Suggestion 6
+
+def problems243_a():
+    v, a, b, c = map(int, input().split())
+    if v >= c:
+        v -= c
+        if v >= b:
+            v -= b
+            if v >= a:
+                print('T')
+            else:
+                print('F')
+        else:
+            print('M')
+    else:
+        print('F')
+
+=======
+Suggestion 7
+
+def shampoo():
+    v,a,b,c = map(int,input().split())
+    while v > 0:
+        v -= a
+        if v <= 0:
+            print('F')
+            return
+        v -= b
+        if v <= 0:
+            print('M')
+            return
+        v -= c
+        if v <= 0:
+            print('T')
+            return
+
+=======
+Suggestion 8
+
+def func(v,a,b,c):
+    if v <= a:
+        return 'F'
+    elif v <= a+b:
+        return 'M'
+    elif v <= a+b+c:
+        return 'T'
+    else:
+        return None
+
+=======
+Suggestion 9
+
+def solve():
+    v, a, b, c = map(int, input().split())
+    if a >= v:
+        print("F")
+    elif a < v and b >= (v - a):
+        print("M")
+    elif a < v and b < (v - a) and c >= (v - a - b):
+        print("T")
+    else:
+        print("T")
+
+=======
+Suggestion 10
+
+def problems243_a():
+    v,a,b,c = map(int,input().split())
+    shampoo = [a,b,c]
+    shampoo.sort()
+    shampoo.reverse()
+    while v>0:
+        for i in range(3):
+            v -= shampoo[i]
+            if v<=0:
+                if i == 0:
+                    print('F')
+                elif i == 1:
+                    print('M')
+                else:
+                    print('T')
+                return
+    return

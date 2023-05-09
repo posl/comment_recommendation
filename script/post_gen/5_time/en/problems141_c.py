@@ -1,95 +1,136 @@
-#Problem Statement
-#Takahashi has decided to hold fastest-finger-fast quiz games. Kizahashi, who is in charge of making the scoreboard, is struggling to write the program that manages the players' scores in a game, which proceeds as follows.
-#A game is played by N players, numbered 1 to N. At the beginning of a game, each player has K points.
-#When a player correctly answers a question, each of the other N-1 players receives minus one (-1) point. There is no other factor that affects the players' scores.
-#At the end of a game, the players with 0 points or lower are eliminated, and the remaining players survive.
-#In the last game, the players gave a total of Q correct answers, the i-th of which was given by Player A_i.
-#For Kizahashi, write a program that determines whether each of the N players survived this game.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ Q ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ Q)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K Q
-#A_1
-#A_2
-#.
-#.
-#.
-#A_Q
-#
-#Output
-#Print N lines. The i-th line should contain Yes if Player i survived the game, and No otherwise.
-#
-#Sample Input 1
-#6 3 4
-#3
-#1
-#3
-#2
-#
-#Sample Output 1
-#No
-#No
-#Yes
-#No
-#No
-#No
-#In the beginning, the players' scores are (3, 3, 3, 3, 3, 3).
-#Player 3 correctly answers a question. The players' scores are now (2, 2, 3, 2, 2, 2).
-#Player 1 correctly answers a question. The players' scores are now (2, 1, 2, 1, 1, 1).
-#Player 3 correctly answers a question. The players' scores are now (1, 0, 2, 0, 0, 0).
-#Player 2 correctly answers a question. The players' scores are now (0, 0, 1, -1, -1, -1).
-#Players 1, 2, 4, 5 and 6, who have 0 points or lower, are eliminated, and Player 3 survives this game.
-#
-#Sample Input 2
-#6 5 4
-#3
-#1
-#3
-#2
-#
-#Sample Output 2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#Sample Input 3
-#10 13 15
-#3
-#1
-#4
-#1
-#5
-#9
-#2
-#6
-#5
-#3
-#5
-#8
-#9
-#7
-#9
-#
-#Sample Output 3
-#No
-#No
-#No
-#No
-#Yes
-#No
-#No
-#No
-#Yes
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    score = [0] * N
+    for a in A:
+        score[a-1] += 1
+    for i in range(N):
+        if K + score[i] - Q > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    scores = [K-Q] * N
+    for a in A:
+        scores[a-1] += 1
+    for score in scores:
+        if score > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    score = [K-Q for _ in range(N)]
+    for a in A:
+        score[a-1] += 1
+    for s in score:
+        if s > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    players = [K-Q] * N
+    for a in A:
+        players[a-1] += 1
+    for p in players:
+        if p > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    p = [k-q] * n
+    for i in a:
+        p[i-1] += 1
+    for i in p:
+        if i > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    players = [k - q for _ in range(n)]
+    for i in a:
+        players[i-1] += 1
+    for i in players:
+        if i > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    players = [k - q for _ in range(n)]
+    for i in a:
+        players[i - 1] += 1
+    for i in players:
+        if i > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    X = [0] * N
+    for a in A:
+        X[a - 1] += 1
+    for x in X:
+        if K - Q + x > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    n,k,q=map(int,input().split())
+    a=[0]*n
+    for i in range(q):
+        a[int(input())-1]+=1
+    for i in range(n):
+        if q-a[i]>=k:
+            print('No')
+        else:
+            print('Yes')
+solve()

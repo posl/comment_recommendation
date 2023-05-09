@@ -1,85 +1,131 @@
-#Problem Statement
-#We have N points in the two-dimensional plane. The coordinates of the i-th point are (X_i,Y_i).
-#Among them, we are looking for the points such that the distance from the origin is at most D. How many such points are there?
-#We remind you that the distance between the origin and the point (p, q) can be represented as (p^2+q^2)^(1/2).
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ D ≦ 2× 10^5
-#|X_i|,|Y_i| ≦ 2× 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#Output
-#Print an integer representing the number of points such that the distance from the origin is at most D.
-#
-#Sample Input 1
-#4 5
-#0 5
-#-2 4
-#3 4
-#4 -4
-#
-#Sample Output 1
-#3
-#The distance between the origin and each of the given points is as follows:
-#(0^2+5^2)^(1/2)=5
-#((-2)^2+4^2)^(1/2)=4.472...
-#(3^2+4^2)^(1/2)=5
-#(4^2+(-4)^2)^(1/2)=5.656...
-#Thus, we have three points such that the distance from the origin is at most 5.
-#
-#Sample Input 2
-#12 3
-#1 1
-#1 1
-#1 1
-#1 1
-#1 2
-#1 3
-#2 1
-#2 2
-#2 3
-#3 1
-#3 2
-#3 3
-#
-#Sample Output 2
-#7
-#Multiple points may exist at the same coordinates.
-#
-#Sample Input 3
-#20 100000
-#14309 -32939
-#-56855 100340
-#151364 25430
-#103789 -113141
-#147404 -136977
-#-37006 -30929
-#188810 -49557
-#13419 70401
-#-88280 165170
-#-196399 137941
-#-176527 -61904
-#46659 115261
-#-153551 114185
-#98784 -6820
-#94111 -86268
-#-30401 61477
-#-55056 7872
-#5901 -163796
-#138819 -185986
-#-69848 -96669
-#
-#Sample Output 3
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= D**2:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    n, d = map(int, input().split())
+    count = 0
+    for i in range(n):
+        x, y = map(int, input().split())
+        if x * x + y * y <= d * d:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        X, Y = map(int, input().split())
+        if (X**2 + Y**2)**(1/2) <= D:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N, D = map(int, input().split())
+    cnt = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x * x + y * y <= D * D:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    ans = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if (x**2 + y**2) <= D**2:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, d = map(int, input().split())
+    count = 0
+    for i in range(n):
+        x, y = map(int, input().split())
+        dist = (x**2+y**2)**(1/2)
+        if dist <= d:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n, d = map(int, input().split())
+    ans = 0
+    for _ in range(n):
+        x, y = map(int, input().split())
+        if (x*x + y*y) <= d*d:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N,D = map(int,input().split())
+    count = 0
+    for _ in range(N):
+        X,Y = map(int,input().split())
+        if X**2 + Y**2 <= D**2:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def distance(x1,y1):
+    return (x1**2 + y1**2)**0.5
+
+N,D = map(int,input().split())
+count = 0
+for i in range(N):
+    x,y = map(int,input().split())
+    if distance(x,y) <= D:
+        count += 1
+print(count)
+
+=======
+Suggestion 10
+
+def main():
+    # Get the number of points and the radius
+    n, d = map(int, input().split())
+    # Initialize the counter
+    c = 0
+    # Loop through the points
+    for i in range(n):
+        # Get the point
+        x, y = map(int, input().split())
+        # Check if the distance is less than or equal to the radius
+        if x**2 + y**2 <= d**2:
+            # Increment the counter
+            c += 1
+    # Print the number of points
+    print(c)

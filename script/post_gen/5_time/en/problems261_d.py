@@ -1,62 +1,214 @@
-#Problem Statement
-#Takahashi will toss a coin N times.
-#He also has a counter, which initially shows 0.
-#Depending on the result of the i-th coin toss, the following happens:
-#If it heads: Takahashi increases the counter's value by 1 and receives X_i yen (Japanese currency).
-#If it tails: he resets the counter's value to 0, without receiving money.
-#Additionally, there are M kinds of streak bonuses. The i-th kind of streak bonus awards Y_i yen each time the counter shows C_i.
-#Find the maximum amount of money that Takahashi can receive.
-#
-#Constraints
-#1≦ M≦ N≦ 5000
-#1≦ X_i≦ 10^9
-#1≦ C_i≦ N
-#1≦ Y_i≦ 10^9
-#C_1,C_2,...,C_M are all different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#X_1 X_2 ... X_N
-#C_1 Y_1
-#C_2 Y_2
-#.
-#.
-#.
-#C_M Y_M
-#
-#Output
-#Print the maximum amount of money that Takahashi can receive, as an integer.
-#
-#Sample Input 1
-#6 3
-#2 7 1 8 2 8
-#2 10
-#3 1
-#5 5
-#
-#Sample Output 1
-#48
-#If he gets head, head, tail, head, head, head, in this order, the following amounts of money are awarded.
-#In the 1-st coin toss, the coin heads. Change the counter's value from 0 to 1 and receive 2 yen.
-#In the 2-nd coin toss, the coin heads. Change the counter's value from 1 to 2 and receive 7 yen. Additionally, get 10 yen as a streak bonus.
-#In the 3-rd coin toss, the coin tails. Change the counter's value from 2 to 0.
-#In the 4-th coin toss, the coin heads. Change the counter's value from 0 to 1 and receive 8 yen.
-#In the 5-th coin toss, the coin heads. Change the counter's value from 1 to 2 and receive 2 yen. Additionally, get 10 yen as a streak bonus.
-#In the 6-th coin toss, the coin heads. Change the counter's value from 2 to 3 and receive 8 yen. Additionally, get 1 yen as a streak bonus.
-#In this case, Takahashi receives 2+(7+10)+0+8+(2+10)+(8+1)=48 yen in total, which is the maximum possible.
-#Note that streak bonuses are awarded any number of times each time the counter shows C_i.
-#As a side note, if he gets head in all 6 coin tosses, he only receives 2+(7+10)+(1+1)+8+(2+5)+8=44 yen, which is not the maximum.
-#
-#Sample Input 2
-#3 2
-#1000000000 1000000000 1000000000
-#1 1000000000
-#3 1000000000
-#
-#Sample Output 2
-#5000000000
-#Note that the answer may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m=list(map(int,input().split()))
+    x=list(map(int,input().split()))
+    cy=[]
+    for _ in range(m):
+        c,y=list(map(int,input().split()))
+        cy.append((c,y))
+    return n,m,x,cy
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = []
+    Y = []
+    for i in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(M):
+            if i >= C[j]:
+                ans = max(ans, X[i-1]+Y[j]*(i//C[j]))
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_,y_ = map(int,input().split())
+        c.append(c_)
+        y.append(y_)
+    #print(n,m,x,c,y)
+    dp = [[0]*(n+1) for i in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            if dp[i][j] == 0:
+                dp[i][j] = -1
+    #print(dp)
+    for i in range(n):
+        for j in range(n):
+            if dp[i][j] == -1:
+                continue
+            if i == j:
+                dp[i+1][j] = max(dp[i+1][j],dp[i][j])
+                dp[i+1][i+1] = max(dp[i+1][i+1],dp[i][j]+x[i])
+            else:
+                dp[i+1][j] = max(dp[i+1][j],dp[i][j])
+                dp[i+1][i+1] = max(dp[i+1][i+1],dp[i][j]+x[i])
+                if dp[i][j] >= c[j]:
+                    dp[i+1][j] = max(dp[i+1][j],dp[i][j]+y[j])
+    #print(dp)
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if dp[i][j] == -1:
+                continue
+            ans = max(ans,dp[i][j])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_, y_ = map(int, input().split())
+        c.append(c_)
+        y.append(y_)
+    c_y = sorted(zip(c, y), key=lambda x: x[0])
+    c = [x[0] for x in c_y]
+    y = [x[1] for x in c_y]
+    dp = [[-float("inf") for _ in range(n+1)] for _ in range(n+1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(n):
+            dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j]+x[i])
+            if j+1 in c:
+                dp[i+1][1] = max(dp[i+1][1], dp[i][j]+y[c.index(j+1)])
+    print(max(dp[n]))
+
+=======
+Suggestion 5
+
+def get_input():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        ci, yi = map(int, input().split())
+        c.append(ci)
+        y.append(yi)
+    return n, m, x, c, y
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = [list(map(int, input().split())) for _ in range(m)]
+    dp = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        dp[i+1][0] = dp[i][0] + x[i]
+    for i in range(n):
+        for j in range(1, i+2):
+            dp[i+1][j] = max(dp[i][j-1] + x[i], dp[i][j])
+    ans = 0
+    for i in range(m):
+        for j in range(n+1):
+            ans = max(ans, dp[j][j-y[i][0]] + y[i][1])
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(n, m, x, c, y):
+    dp = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j+1])
+            dp[i+1][min(j+c[i], n)] = max(dp[i+1][min(j+c[i], n)], dp[i][j+1] + y[i])
+        dp[i+1][0] = max(dp[i+1][0], dp[i][0] + x[i])
+    return max(dp[n])
+
+n, m = map(int, input().split())
+x = list(map(int, input().split()))
+c = []
+y = []
+for _ in range(m):
+    c_, y_ = map(int, input().split())
+    c.append(c_)
+    y.append(y_)
+print(solve(n, m, x, c, y))
+
+=======
+Suggestion 8
+
+def solve(N, M, X, C, Y):
+    result = 0
+    for i in range(0, N):
+        if X[i] == 1:
+            result += Y[0]
+        elif X[i] == 2:
+            result += Y[1]
+        elif X[i] == 3:
+            result += Y[2]
+        else:
+            result += Y[3]
+    return result
+
+=======
+Suggestion 9
+
+def resolve():
+    #n = int(input())
+    #a, b = map(int, input().split())
+    #s = input()
+    #s = input().rstrip().decode()
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = [list(map(int, input().split())) for i in range(m)]
+    #a = list(map(int, input().split()))
+    #b = list(map(int, input().split()))
+    #c = list(map(int, input().split()))
+
+    dp = [[0] * (n + 1) for i in range(n + 1)]
+
+    for i in range(n):
+        for j in range(n):
+            dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j + 1])
+            dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i + 1][j])
+
+            for k in range(m):
+                if i + 1 == y[k][0]:
+                    dp[i + 1][j + 1] = max(dp[i + 1][j + 1], dp[i][j] + y[k][1])
+
+            if i + 1 + j + 1 <= n:
+                dp[i + 1 + j + 1][0] = max(dp[i + 1 + j + 1][0], dp[i][j] + sum(x[i + 1:i + 1 + j + 1]))
+
+    print(max(dp[n]))
+
+=======
+Suggestion 10
+
+def get_max_coin(N, M, X, C, Y):
+    max_coin = 0
+    for i in range(N):
+        coin = X[i]
+        for j in range(M):
+            if i + 1 == C[j]:
+                coin += Y[j]
+        if max_coin < coin:
+            max_coin = coin
+    return max_coin

@@ -1,29 +1,63 @@
-#Problem Statement
-#Print the circumference of a circle of radius R.
-#
-#Constraints
-#1 ≦ R ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#R
-#
-#Output
-#Print the circumference of the circle.
-#Your output is considered correct if and only if its absolute or relative error from our answer is at most 10^{-2}.
-#
-#Sample Input 1
-#1
-#
-#Sample Output 1
-#6.28318530717958623200
-#Since we accept an absolute or relative error of at most 10^{-2}, 6.28 is also an acceptable output, but 6 is not.
-#
-#Sample Input 2
-#73
-#
-#Sample Output 2
-#458.67252742410977361942
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(2 * r * 3.141592653589793238462643383279502884197169399375105820974944592307816406286)
+
+=======
+Suggestion 2
+
+def circumference(r):
+    return 2 * r * 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+
+=======
+Suggestion 3
+
+def circumference(r):
+    return 2 * r * 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+
+r = int(input())
+print(circumference(r))
+
+=======
+Suggestion 4
+
+def circumference_of_circle(r):
+    pi = 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+    return 2 * pi * r
+
+r = int(input())
+print(circumference_of_circle(r))
+
+=======
+Suggestion 5
+
+def circumference_of_circle(R):
+    return 2 * R * 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+
+R = int(input())
+print(circumference_of_circle(R))
+
+=======
+Suggestion 6
+
+def main():
+    R = int(input())
+    print(2 * R * 3.14159265358979323846)
+
+=======
+Suggestion 7
+
+def main():
+    r = int(input())
+    print(2 * 3.14159265358979323846 * r)
+
+=======
+Suggestion 8
+
+def circumference_of_circle(radius):
+    circumference = 2 * 3.14159265358979323846 * radius
+    return circumference

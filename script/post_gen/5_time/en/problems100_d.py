@@ -1,87 +1,204 @@
-#Problem Statement
-#Takahashi became a pastry chef and opened a shop La Confiserie d'ABC to celebrate AtCoder Beginner Contest 100.
-#The shop sells N kinds of cakes.
-#Each kind of cake has three parameters "beauty", "tastiness" and "popularity". The i-th kind of cake has the beauty of x_i, the tastiness of y_i and the popularity of z_i.
-#These values may be zero or negative.
-#Ringo has decided to have M pieces of cakes here. He will choose the set of cakes as follows:
-#Do not have two or more pieces of the same kind of cake.
-#Under the condition above, choose the set of cakes to maximize (the absolute value of the total beauty) + (the absolute value of the total tastiness)  + (the absolute value of the total popularity).
-#Find the maximum possible value of (the absolute value of the total beauty) + (the absolute value of the total tastiness) + (the absolute value of the total popularity) for the set of cakes that Ringo chooses.
-#
-#Constraints
-#N is an integer between 1 and 1  000 (inclusive).
-#M is an integer between 0 and N (inclusive).
-#x_i, y_i, z_i  (1 ≦ i ≦ N) are integers between -10  000  000  000 and 10  000  000  000 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#x_1 y_1 z_1
-#x_2 y_2 z_2
-# :  :
-#x_N y_N z_N
-#
-#Output
-#Print the maximum possible value of (the absolute value of the total beauty) + (the absolute value of the total tastiness) + (the absolute value of the total popularity) for the set of cakes that Ringo chooses.
-#
-#Sample Input 1
-#5 3
-#3 1 4
-#1 5 9
-#2 6 5
-#3 5 8
-#9 7 9
-#
-#Sample Output 1
-#56
-#Consider having the 2-nd, 4-th and 5-th kinds of cakes. The total beauty, tastiness and popularity will be as follows:
-#Beauty: 1 + 3 + 9 = 13
-#Tastiness: 5 + 5 + 7 = 17
-#Popularity: 9 + 8 + 9 = 26
-#The value (the absolute value of the total beauty) + (the absolute value of the total tastiness) + (the absolute value of the total popularity) here is 13 + 17 + 26 = 56. This is the maximum value.
-#
-#Sample Input 2
-#5 3
-#1 -2 3
-#-4 5 -6
-#7 -8 -9
-#-10 11 -12
-#13 -14 15
-#
-#Sample Output 2
-#54
-#Consider having the 1-st, 3-rd and 5-th kinds of cakes. The total beauty, tastiness and popularity will be as follows:
-#Beauty: 1 + 7 + 13 = 21
-#Tastiness: (-2) + (-8) + (-14) = -24
-#Popularity: 3 + (-9) + 15 = 9
-#The value (the absolute value of the total beauty) + (the absolute value of the total tastiness) + (the absolute value of the total popularity) here is 21 + 24 + 9 = 54. This is the maximum value.
-#
-#Sample Input 3
-#10 5
-#10 -80 21
-#23 8 38
-#-94 28 11
-#-26 -2 18
-#-69 72 79
-#-26 -86 -54
-#-72 -50 59
-#21 65 -32
-#40 -94 87
-#-62 18 82
-#
-#Sample Output 3
-#638
-#If we have the 3-rd, 4-th, 5-th, 7-th and 10-th kinds of cakes, the total beauty, tastiness and popularity will be -323, 66 and 249, respectively.
-#The value (the absolute value of the total beauty) + (the absolute value of the total tastiness) + (the absolute value of the total popularity) here is 323 + 66 + 249 = 638. This is the maximum value.
-#
-#Sample Input 4
-#3 2
-#2000000000 -9000000000 4000000000
-#7000000000 -5000000000 3000000000
-#6000000000 -1000000000 8000000000
-#
-#Sample Output 4
-#30000000000
-#The values of the beauty, tastiness and popularity of the cakes and the value to be printed may not fit into 32-bit integers.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    x, y, z = [], [], []
+    for i in range(n):
+        a, b, c = map(int, input().split())
+        x.append(a)
+        y.append(b)
+        z.append(c)
+    ans = 0
+    for i in range(1 << 3):
+        x1, y1, z1 = [], [], []
+        for j in range(n):
+            if i & 1:
+                x1.append(x[j])
+            else:
+                x1.append(-x[j])
+            if i & 2:
+                y1.append(y[j])
+            else:
+                y1.append(-y[j])
+            if i & 4:
+                z1.append(z[j])
+            else:
+                z1.append(-z[j])
+        x1.sort(reverse=True)
+        y1.sort(reverse=True)
+        z1.sort(reverse=True)
+        ans = max(ans, sum(x1[:m]) + sum(y1[:m]) + sum(z1[:m]))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    cakes = []
+    for _ in range(n):
+        cakes.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(2**3):
+        cakes.sort(reverse=True, key=lambda x: (x[0]*((i>>0)&1)*2-1) + (x[1]*((i>>1)&1)*2-1) + (x[2]*((i>>2)&1)*2-1))
+        ans = max(ans, sum(map(lambda x: abs(x[0])+abs(x[1])+abs(x[2]), cakes[:m])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    cakes = []
+    for _ in range(N):
+        cakes.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(8):
+        sign = [-1, -1, -1]
+        if i & 1:
+            sign[0] = 1
+        if i & 2:
+            sign[1] = 1
+        if i & 4:
+            sign[2] = 1
+        cakes.sort(key=lambda x: sum([sign[j] * x[j] for j in range(3)]), reverse=True)
+        tmp = 0
+        for j in range(M):
+            tmp += sum([sign[k] * cakes[j][k] for k in range(3)])
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    XYZ = [list(map(int, input().split())) for _ in range(N)]
+
+    ans = 0
+    for i in range(2 ** 3):
+        XYZ.sort(key=lambda x: sum(x[j] * (-1 if (i >> j) & 1 else 1) for j in range(3)))
+        ans = max(ans, sum(sum(x[j] * (-1 if (i >> j) & 1 else 1) for j in range(3)) for x in XYZ[:M]))
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,M = list(map(int,input().split()))
+    X = []
+    Y = []
+    Z = []
+    for i in range(N):
+        x,y,z = list(map(int,input().split()))
+        X.append(x)
+        Y.append(y)
+        Z.append(z)
+    ans = 0
+    for i in range(2**3):
+        Xp = []
+        Yp = []
+        Zp = []
+        for j in range(3):
+            if ((i >> j) & 1):
+                Xp.append(X[j])
+                Yp.append(Y[j])
+                Zp.append(Z[j])
+            else:
+                Xp.append(-X[j])
+                Yp.append(-Y[j])
+                Zp.append(-Z[j])
+        Xp.sort(reverse=True)
+        Yp.sort(reverse=True)
+        Zp.sort(reverse=True)
+        ans = max(ans,sum(Xp[:M])+sum(Yp[:M])+sum(Zp[:M]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    xyz = [list(map(int, input().split())) for _ in range(n)]
+
+    ans = 0
+    for i in range(2**3):
+        xyz.sort(key=lambda x: sum([x[k] * (-1)**((i>>k)&1) for k in range(3)]), reverse=True)
+        ans = max(ans, sum([sum([x[k] * (-1)**((i>>k)&1) for k in range(3)]) for x in xyz[:m]]))
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    cakes = []
+    for _ in range(N):
+        cakes.append(list(map(int, input().split())))
+    cakes.sort(reverse=True, key=lambda x: abs(x[0]) + abs(x[1]) + abs(x[2]))
+    ans = 0
+    for i in range(M):
+        ans += abs(cakes[i][0]) + abs(cakes[i][1]) + abs(cakes[i][2])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int, input().split())
+    xyz = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(8):
+        xyz.sort(reverse=True, key=lambda x: (x[0]*(-1)**(i&1), x[1]*(-1)**((i>>1)&1), x[2]*(-1)**((i>>2)&1)))
+        tmp = [0,0,0]
+        for j in range(m):
+            tmp[0] += xyz[j][0]
+            tmp[1] += xyz[j][1]
+            tmp[2] += xyz[j][2]
+        ans = max(ans, abs(tmp[0]) + abs(tmp[1]) + abs(tmp[2]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    cakes = []
+    for i in range(N):
+        cakes.append(list(map(int, input().split())))
+    #print(cakes)
+    max = 0
+    for i in range(1 << 3):
+        #print(i)
+        tmp = []
+        for j in range(N):
+            tmp.append(cakes[j][0] * ((-1) ** ((i >> 0) & 1)) + cakes[j][1] * ((-1) ** ((i >> 1) & 1)) + cakes[j][2] * ((-1) ** ((i >> 2) & 1)))
+        tmp.sort(reverse=True)
+        #print(tmp)
+        sum = 0
+        for j in range(M):
+            sum += tmp[j]
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 10
+
+def max_value():
+    n, m = map(int, input().split())
+    cakes = []
+    for i in range(n):
+        cakes.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(8):
+        cakes.sort(key=lambda x: (x[0] * (-1) ** (i // 4 % 2), x[1] * (-1) ** (i // 2 % 2), x[2] * (-1) ** (i % 2)))
+        ans = max(ans, sum(sum(i) for i in zip(*cakes[:m])))
+    print(ans)
+
+max_value()

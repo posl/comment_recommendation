@@ -1,35 +1,46 @@
-#Problem Statement
-#The function ReLU is defined as follows:
-#Given an integer x, find ReLU(x).
-#
-#Constraints
-#x is an integer.
-# -10 ≦ x ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#1
-#
-#Sample Output 1
-#1
-#We have 1 ≧ 0, so ReLU(1) = 1.
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#-1
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def relu(x):
+    if x >= 0:
+        return x
+    else:
+        return 0
+
+=======
+Suggestion 2
+
+def relu(x):
+    if x >= 0:
+        return x
+    else:
+        return 0
+
+x = int(input())
+print(relu(x))
+
+=======
+Suggestion 3
+
+def relu(x):
+    if x < 0:
+        return 0
+    else:
+        return x
+
+x = int(input())
+print(relu(x))
+
+=======
+Suggestion 4
+
+def relu(x):
+    if x > 0:
+        return x
+    else:
+        return 0
+
+x = int(input())
+print(relu(x))

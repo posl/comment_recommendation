@@ -1,53 +1,139 @@
-#Problem Statement
-#We have sticks numbered 1, ..., N. The length of Stick i (1 ≦ i ≦ N) is L_i.
-#In how many ways can we choose three of the sticks with different lengths that can form a triangle?
-#That is, find the number of triples of integers (i, j, k) (1 ≦ i < j < k ≦ N) that satisfy both of the following conditions:
-#L_i, L_j, and L_k are all different.
-#There exists a triangle whose sides have lengths L_i, L_j, and L_k.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ L_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#L_1 L_2 ... L_N
-#
-#Output
-#Print the number of ways to choose three of the sticks with different lengths that can form a triangle.
-#
-#Sample Input 1
-#5
-#4 4 9 7 5
-#
-#Sample Output 1
-#5
-#The following five triples (i, j, k) satisfy the conditions: (1, 3, 4), (1, 4, 5), (2, 3, 4), (2, 4, 5), and (3, 4, 5).
-#
-#Sample Input 2
-#6
-#4 5 4 3 3 5
-#
-#Sample Output 2
-#8
-#We have two sticks for each of the lengths 3, 4, and 5. To satisfy the first condition, we have to choose one from each length.
-#There is a triangle whose sides have lengths 3, 4, and 5, so we have 2 ^ 3 = 8 triples (i, j, k) that satisfy the conditions.
-#
-#Sample Input 3
-#10
-#9 4 6 1 9 6 10 6 6 8
-#
-#Sample Output 3
-#39
-#
-#Sample Input 4
-#2
-#1 1
-#
-#Sample Output 4
-#0
-#No triple (i, j, k) satisfies 1 ≦ i < j < k ≦ N, so we should print 0.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[k] < L[i] + L[j]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[i] + L[j] > L[k]:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def is_triangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    else:
+        return False
+
+n = int(input())
+l = list(map(int, input().split()))
+
+l.sort()
+
+count = 0
+for i in range(n - 2):
+    for j in range(i + 1, n - 1):
+        for k in range(j + 1, n):
+            if is_triangle(l[i], l[j], l[k]):
+                count += 1
+
+print(count)
+
+=======
+Suggestion 4
+
+def triangle(N, L):
+    L.sort()
+    count = 0
+    for i in range(0, N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[k] < L[i] + L[j]:
+                    count += 1
+    return count
+
+=======
+Suggestion 5
+
+def triangles(N, L):
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] != L[j] and L[j] != L[k] and L[i] + L[j] > L[k]:
+                    ans += 1
+    return ans
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    L = [int(i) for i in input().split()]
+    L.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if L[i] != L[j] and L[j] != L[k] and L[k] < L[i] + L[j]:
+                    count += 1
+    return count
+
+=======
+Suggestion 7
+
+def triangle_count(n, lines):
+    lines.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if lines[i] + lines[j] > lines[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 8
+
+def check_triangle(a,b,c):
+    if a+b>c and a+c>b and b+c>a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def findTriangleCount(arr):
+    count = 0
+    n = len(arr)
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if arr[i] != arr[j] and arr[j] != arr[k] and arr[i] != arr[k]:
+                    if arr[i] + arr[j] > arr[k] and arr[j] + arr[k] > arr[i] and arr[i] + arr[k] > arr[j]:
+                        count += 1
+    return count
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    l = list(map(int, input().split()))
+    return n, l

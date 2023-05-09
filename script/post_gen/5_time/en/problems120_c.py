@@ -1,40 +1,65 @@
-#Problem Statement
-#There are N cubes stacked vertically on a desk.
-#You are given a string S of length N. The color of the i-th cube from the bottom is red if the i-th character in S is 0, and blue if that character is 1.
-#You can perform the following operation any number of times: choose a red cube and a blue cube that are adjacent, and remove them. Here, the cubes that were stacked on the removed cubes will fall down onto the object below them.
-#At most how many cubes can be removed?
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#|S| = N
-#Each character in S is 0 or 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the maximum number of cubes that can be removed.
-#
-#Sample Input 1
-#0011
-#
-#Sample Output 1
-#4
-#All four cubes can be removed, by performing the operation as follows:
-#Remove the second and third cubes from the bottom. Then, the fourth cube drops onto the first cube.
-#Remove the first and second cubes from the bottom.
-#
-#Sample Input 2
-#11011010001011
-#
-#Sample Output 2
-#12
-#
-#Sample Input 3
-#0
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(min(s.count('0'), s.count('1')) * 2)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    print(min(S.count('0'), S.count('1')) * 2)
+
+=======
+Suggestion 3
+
+def main():
+    #input
+    S = input()
+    #compute
+    cnt = 0
+    for i in range(len(S)-1):
+        if S[i] != S[i+1]:
+            cnt += 1
+    #output
+    print(cnt)
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(min(S.count("0"), S.count("1")) * 2)
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    S = input()
+    N = len(S)
+
+    # compute
+
+    # output
+    print(min(S.count('0'), S.count('1'))*2)
+
+=======
+Suggestion 6
+
+def main():
+    input = input()
+    print(input.count('0')*2 if input.count('0')*2 < len(input) else len(input))
+
+main()
+
+=======
+Suggestion 7
+
+def get_input():
+    return input()

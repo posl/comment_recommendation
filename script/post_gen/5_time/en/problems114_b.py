@@ -1,41 +1,91 @@
-#Problem Statement
-#There is a string S consisting of digits 1, 2, ..., 9.
-#Lunlun, the Dachshund, will take out three consecutive digits from S, treat them as a single integer X and bring it to her master. (She cannot rearrange the digits.)
-#The master's favorite number is 753. The closer to this number, the better.
-#What is the minimum possible (absolute) difference between X and 753?
-#
-#Constraints
-#S is a string of length between 4 and 10 (inclusive).
-#Each character in S is 1, 2, ..., or 9.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the minimum possible difference between X and 753.
-#
-#Sample Input 1
-#1234567876
-#
-#Sample Output 1
-#34
-#Taking out the seventh to ninth characters results in X = 787, and the difference between this and 753 is 787 - 753 = 34. The difference cannot be made smaller, no matter where X is taken from.
-#Note that the digits cannot be rearranged. For example, taking out 567 and rearranging it to 765 is not allowed.
-#We cannot take out three digits that are not consecutive from S, either. For example, taking out the seventh digit 7, the ninth digit 7 and the tenth digit 6 to obtain 776 is not allowed.
-#
-#Sample Input 2
-#35753
-#
-#Sample Output 2
-#0
-#If 753 itself can be taken out, the answer is 0.
-#
-#Sample Input 3
-#1111111111
-#
-#Sample Output 3
-#642
-#No matter where X is taken from, X = 111, with the difference 753 - 111 = 642.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    ans = 999
+    for i in range(len(s)-2):
+        ans = min(ans, abs(753 - int(s[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 753
+    for i in range(N-2):
+        ans = min(ans, abs(753 - int(S[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    ans = 10**9
+    for i in range(len(S)-2):
+        ans = min(ans,abs(753-int(S[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print(min(abs(int(s[i:i+3]) - 753) for i in range(len(s) - 2)))
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = list(map(int, S))
+    ans = 1000
+    for i in range(len(S)-2):
+        tmp = S[i]*100 + S[i+1]*10 + S[i+2]
+        ans = min(ans, abs(753-tmp))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    l = len(s)
+    min = 999
+    for i in range(l-2):
+        x = int(s[i:i+3])
+        if abs(x - 753) < min:
+            min = abs(x - 753)
+    print(min)
+
+=======
+Suggestion 7
+
+def main():
+    # Take input Here and Call solution function
+    S = input()
+    print(solution(S))
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    x = int(s)
+    min = 10**10
+    for i in range(0, len(s)-2):
+        t = int(s[i:i+3])
+        if abs(t-753) < min:
+            min = abs(t-753)
+    print(min)
+
+=======
+Suggestion 9
+
+def get_input():
+    return input()

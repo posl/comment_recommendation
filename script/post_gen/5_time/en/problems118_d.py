@@ -1,45 +1,173 @@
-#Problem Statement
-#Find the largest integer that can be formed with exactly N matchsticks, under the following conditions:
-#Every digit in the integer must be one of the digits A_1, A_2, ..., A_M (1 ≦ A_i ≦ 9).
-#The number of matchsticks used to form digits 1, 2, 3, 4, 5, 6, 7, 8, 9 should be 2, 5, 5, 4, 5, 6, 3, 7, 6, respectively.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 10^4
-#1 ≦ M ≦ 9
-#1 ≦ A_i ≦ 9
-#A_i are all different.
-#There exists an integer that can be formed by exactly N matchsticks under the conditions.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#A_1 A_2 ... A_M
-#
-#Output
-#Print the largest integer that can be formed with exactly N matchsticks under the conditions in the problem statement.
-#
-#Sample Input 1
-#20 4
-#3 7 8 4
-#
-#Sample Output 1
-#777773
-#The integer 777773 can be formed with 3 + 3 + 3 + 3 + 3 + 5 = 20 matchsticks, and this is the largest integer that can be formed by 20 matchsticks under the conditions.
-#
-#Sample Input 2
-#101 9
-#9 8 7 6 5 4 3 2 1
-#
-#Sample Output 2
-#71111111111111111111111111111111111111111111111111
-#The output may not fit into a 64-bit integer type.
-#
-#Sample Input 3
-#15 3
-#5 4 6
-#
-#Sample Output 3
-#654
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    dp = [-1] * (n + 1)
+    dp[0] = 0
+    for i in range(n + 1):
+        for j in range(m):
+            if i - a[j] >= 0 and dp[i - a[j]] >= 0:
+                dp[i] = max(dp[i], dp[i - a[j]] + 1)
+    ans = []
+    while n > 0:
+        for i in range(m):
+            if n - a[i] >= 0 and dp[n - a[i]] == dp[n] - 1:
+                ans.append(a[i])
+                n -= a[i]
+                break
+    print(''.join(map(str, ans)))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    dp = [-1] * (N + 1)
+    dp[0] = 0
+    for i in range(N + 1):
+        for a in A:
+            if i - a >= 0:
+                dp[i] = max(dp[i], dp[i - a] * 10 + a)
+    print(dp[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    dp = [-1] * (N + 1)
+    dp[0] = 0
+    for i in range(1, N + 1):
+        for a in A:
+            if i - a >= 0 and dp[i - a] != -1:
+                dp[i] = max(dp[i], dp[i - a] + 1)
+    ans = []
+    i = N
+    while i > 0:
+        for a in A:
+            if i - a >= 0 and dp[i - a] == dp[i] - 1:
+                ans.append(a)
+                i -= a
+                break
+    print(''.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def solve(n, m, a):
+    dp = [-float('inf')] * (n + 1)
+    dp[0] = 0
+    for i in range(1, n + 1):
+        for j in range(m):
+            if i - a[j][1] >= 0:
+                dp[i] = max(dp[i], dp[i - a[j][1]] + a[j][0])
+    return dp[-1]
+
+n, m = map(int, input().split())
+a = []
+for i, v in enumerate(map(int, input().split())):
+    a.append((v, i + 1))
+a.sort(reverse=True)
+print(solve(n, m, a))
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
+    dp = [-1]*(N+1)
+    dp[0] = 0
+    for i in range(1,N+1):
+        for j in range(M):
+            if i-A[j] >= 0:
+                dp[i] = max(dp[i],dp[i-A[j]]+1)
+    s = ''
+    i = N
+    while i > 0:
+        for j in range(M):
+            if i-A[j] >= 0 and dp[i-A[j]] == dp[i]-1:
+                s += str(A[j])
+                i -= A[j]
+                break
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+
+    dp = [-1] * (n+1)
+    dp[0] = 0
+    for i in range(1,n+1):
+        for j in range(m):
+            if i - a[j] >= 0:
+                dp[i] = max(dp[i], dp[i-a[j]]*10 + a[j])
+
+    print(dp[n])
+
+=======
+Suggestion 7
+
+def solve(N, M, A):
+    dp = [0] * (N + 1)
+    for i in range(1, N + 1):
+        for a in A:
+            if i >= a:
+                dp[i] = max(dp[i], dp[i - a] * 10 + a)
+    return dp[N]
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+print(solve(N, M, A))
+
+=======
+Suggestion 8
+
+def solve(n, m, a):
+    dp = [-1 for i in range(n+1)]
+    dp[0] = 0
+    for i in range(n+1):
+        if dp[i] < 0:
+            continue
+        for j in a:
+            dp[i + j] = max(dp[i] * 10 + j, dp[i + j])
+    return dp[n]
+
+=======
+Suggestion 9
+
+def largest_integer(n,m,a):
+    dp = [-1]*(n+1)
+    dp[0] = 0
+    for i in range(1,n+1):
+        for j in range(m):
+            if i >= a[j] and dp[i-a[j]] >= 0:
+                dp[i] = max(dp[i], dp[i-a[j]]*10+j+1)
+    return dp[n]
+
+=======
+Suggestion 10
+
+def solve(N, M, A):
+    # dp[i] := ちょうどi本のマッチを使って作れる最大の整数
+    dp = [-1] * (N + 1)
+    dp[0] = 0
+    for i in range(1, N + 1):
+        for a in A:
+            if i - a >= 0 and dp[i - a] != -1:
+                dp[i] = max(dp[i], dp[i - a] * 10 + a)
+    return dp[N]

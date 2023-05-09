@@ -1,46 +1,152 @@
-#Problem Statement
-#We have a bag containing A gold coins, B silver coins, and C bronze coins.
-#Until the bag contains 100 coins of the same color, we will repeat the following operation:
-#Operation: Randomly take out one coin from the bag. (Every coin has an equal probability of being chosen.) Then, put back into the bag two coins of the same kind as the removed coin.
-#Find the expected value of the number of times the operation is done.
-#
-#Constraints
-#0 ≦ A,B,C ≦ 99
-#A+B+C ≧ 1
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C
-#
-#Output
-#Print the expected value of the number of times the operation is done. Your output will be accepted if its absolute or relative error from the correct value is at most 10^{-6}.
-#
-#Sample Input 1
-#99 99 99
-#
-#Sample Output 1
-#1.000000000
-#No matter what coin we take out in the first operation, the bag will contain 100 coins of that kind.
-#
-#Sample Input 2
-#98 99 99
-#
-#Sample Output 2
-#1.331081081
-#We will do the second operation only if we take out a gold coin in the first operation.
-#Thus, the expected number of operations is 2× ((98)/(98+99+99))+1× ((99)/(98+99+99))+1× ((99)/(98+99+99))=1.331081081...
-#
-#Sample Input 3
-#0 0 1
-#
-#Sample Output 3
-#99.000000000
-#Each operation adds a bronze coin.
-#
-#Sample Input 4
-#31 41 59
-#
-#Sample Output 4
-#91.835008202
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    a, b, c = map(int, input().split())
+    print((a * (a + b + c - 1) + b * (b + c - 1) + c * (c - 1)) / (a + b + c - 1))
+
+=======
+Suggestion 2
+
+def expected_value(a, b, c):
+    return a / (a + b + c) + b / (a + b + c) * (1 + expected_value(a + 1, b - 1, c)) + c / (a + b + c) * (1 + expected_value(a, b + 1, c - 1))
+
+a, b, c = map(int, input().split())
+print(expected_value(a, b, c))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    print((a*b*c)/((a+b)*(b+c)*(c+a)-a*b*c))
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C = map(int,input().split())
+    print(100*(A/(A+B+C)+B/(A+B+C)+C/(A+B+C)-1))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b == c:
+        print(1)
+    else:
+        print((a / (a + b + c)) * (100 / (a + b + c - 99)) + (b / (a + b + c)) * (100 / (a + b + c - 99)) + (c / (a + b + c)) * (100 / (a + b + c - 99)))
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int,input().split())
+    # print(a,b,c)
+    # a=99
+    # b=99
+    # c=99
+    # a=98
+    # b=99
+    # c=99
+    # a=0
+    # b=0
+    # c=1
+    # a=31
+    # b=41
+    # c=59
+    # a=0
+    # b=0
+    # c=99
+    # a=99
+    # b=99
+    # c=0
+    # a=99
+    # b=0
+    # c=0
+    # a=0
+    # b=99
+    # c=0
+    # a=99
+    # b=0
+    # c=99
+    # a=0
+    # b=99
+    # c=99
+    # a=99
+    # b=99
+    # c=99
+    # a=98
+    # b=99
+    # c=99
+    # a=99
+    # b=98
+    # c=99
+    # a=99
+    # b=99
+    # c=98
+    # a=98
+    # b=98
+    # c=98
+    # a=0
+    # b=0
+    # c=0
+    # a=1
+    # b=1
+    # c=1
+    # a=1
+    # b=0
+    # c=0
+    # a=0
+    # b=1
+    # c=0
+    # a=0
+    # b=0
+    # c=1
+    # a=1
+    # b=1
+    # c=0
+    # a=1
+    # b=0
+    # c=1
+    # a=0
+    # b=1
+    # c=1
+    # a=1
+    # b=1
+    # c=1
+    # a=2
+    # b=2
+    # c=2
+    # a=2
+    # b=1
+    # c=1
+    # a=1
+    # b=2
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int, input().split())
+    print((a*b*c)/(a*b+b*c+c*a))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int, input().split())
+    print((a*b*c-1)*1.0/(a*b+b*c+c*a))
+
+=======
+Suggestion 9
+
+def main():
+    a, b, c = map(int, input().split())
+    print((a*100+b*100+c*100-300)/(a+b+c))
+
+main()
+# %%

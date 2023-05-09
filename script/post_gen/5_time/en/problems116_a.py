@@ -1,39 +1,53 @@
-#Problem Statement
-#There is a right triangle ABC with ∠ABC=90°.
-#Given the lengths of the three sides, |AB|,|BC| and |CA|, find the area of the right triangle ABC.
-#It is guaranteed that the area of the triangle ABC is an integer.
-#
-#Constraints
-#1 ≦ |AB|,|BC|,|CA| ≦ 100
-#All values in input are integers.
-#The area of the triangle ABC is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#|AB| |BC| |CA|
-#
-#Output
-#Print the area of the triangle ABC.
-#
-#Sample Input 1
-#3 4 5
-#
-#Sample Output 1
-#6
-#This triangle has an area of 6.
-#
-#Sample Input 2
-#5 12 13
-#
-#Sample Output 2
-#30
-#This triangle has an area of 30.
-#
-#Sample Input 3
-#45 28 53
-#
-#Sample Output 3
-#630
-#This triangle has an area of 630.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    AB, BC, CA = map(int, input().split())
+    print(int(AB * BC / 2))
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    AB, BC, CA = map(int, input().split())
+
+    # compute
+
+    # output
+    print(int(AB*BC/2))
+
+=======
+Suggestion 3
+
+def main():
+    ab, bc, ca = map(int, input().split())
+    print(int(ab * bc / 2))
+
+=======
+Suggestion 4
+
+def main():
+    a, b, c = map(int, input().split())
+    print(int(a*b/2))
+
+=======
+Suggestion 5
+
+def main():
+    x,y,z = map(int, input().split())
+    print(int(x*y/2))
+
+=======
+Suggestion 6
+
+def triangle_area(a, b):
+    return a * b / 2
+
+=======
+Suggestion 7
+
+def area_of_triangle(a,b):
+    return a*b/2

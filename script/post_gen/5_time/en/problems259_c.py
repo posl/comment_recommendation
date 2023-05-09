@@ -1,44 +1,137 @@
-#Problem Statement
-#You are given two strings S and T.
-#Determine whether it is possible to make S equal T by performing the following operation some number of times (possibly zero).
-#Between two consecutive equal characters in S, insert a character equal to these characters.
-#That is, take the following three steps.
-#Let N be the current length of S, and S = S_1S_2... S_N.
-#Choose an integer i between 1 and N-1 (inclusive) such that S_i = S_{i+1}. (If there is no such i, do nothing and terminate the operation now, skipping step 3.)
-#Insert a single copy of the character S_i(= S_{i+1}) between the i-th and (i+1)-th characters of S. Now, S is a string of length N+1: S_1S_2... S_i S_i S_{i+1} ... S_N.
-#
-#
-#Constraints
-#Each of S and T is a string of length between 2 and 2 × 10^5 (inclusive) consisting of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If it is possible to make S equal T, print Yes; otherwise, print No.
-#Note that the judge is case-sensitive.
-#
-#Sample Input 1
-#abbaac
-#abbbbaaac
-#
-#Sample Output 1
-#Yes
-#You can make S = abbaac equal T = abbbbaaac by the following three operations.
-#First, insert b between the 2-nd and 3-rd characters of S. Now, S = abbbaac.
-#Next, insert b again between the 2-nd and 3-rd characters of S. Now, S = abbbbaac.
-#Lastly, insert a between the 6-th and 7-th characters of S. Now, S = abbbbaaac.
-#Thus, Yes should be printed.
-#
-#Sample Input 2
-#xyzz
-#xyyzz
-#
-#Sample Output 2
-#No
-#No sequence of operations makes S = xyzz equal T = xyyzz.
-#Thus, No should be printed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    s_index = 0
+    t_index = 0
+    while s_index < s_len and t_index < t_len:
+        if s[s_index] == t[t_index]:
+            s_index += 1
+            t_index += 1
+        else:
+            t_index += 1
+    if s_index == s_len:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(0, len(s)-1):
+        if s[i] == s[i+1]:
+            s = s[:i+1] + s[i] + s[i+1:]
+            if s == t:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 == len(t):
+        if s == t[:-1]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    slen = len(s)
+    tlen = len(t)
+    if slen > tlen:
+        print("No")
+        return
+    for i in range(tlen-slen+1):
+        if s == t[i:i+slen]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    else:
+        print("No")
+        return
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    else:
+        print("No")
+        return
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    while True:
+        if s == t:
+            print("Yes")
+            break
+        if len(s) >= len(t):
+            print("No")
+            break
+        if t[-1] == "A":
+            t = t[:-1]
+        else:
+            t = t[:-1][::-1]

@@ -1,36 +1,92 @@
-#Problem Statement
-#You are given a sequence of 26 integers P=(P_1,P_2, ... ,P_{26}) consisting of integers from 1 through 26. It is guaranteed that all elements in P are distinct.
-#Print a string S of length 26 that satisfies the following condition.
-#For every i (1 ≦ i ≦ 26), the i-th character of S is the lowercase English letter that comes P_i-th in alphabetical order.
-#
-#Constraints
-#1 ≦ P_i ≦ 26
-#P_i ≠ P_j (i ≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#P_1 P_2 ... P_{26}
-#
-#Output
-#Print the string S.
-#
-#Sample Input 1
-#1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 1
-#abcdefghijklmnopqrstuvwxyz
-#
-#Sample Input 2
-#2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#Sample Output 2
-#bacdefghijklmnopqrstuvwxyz
-#
-#Sample Input 3
-#5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21
-#
-#Sample Output 3
-#eklpyqragjdwtcbxzsnifvhmou
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    p = list(map(int, input().split()))
+    s = [None] * 26
+    for i in range(26):
+        s[p[i]-1] = chr(97+i)
+    print("".join(s))
+
+=======
+Suggestion 2
+
+def main():
+    p = list(map(int, input().split()))
+    alphabets = [chr(ord('a') + i - 1) for i in p]
+    print(''.join(alphabets))
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    P = list(map(int, input().split()))
+
+    # compute
+
+    # output
+    print(''.join([chr(ord('a') + P[i] - 1) for i in range(26)]))
+
+=======
+Suggestion 4
+
+def main():
+    p = list(map(int,input().split()))
+    alpha = [chr(i) for i in range(ord('a'),ord('z')+1)]
+    for i in range(26):
+        print(alpha[p[i]-1],end='')
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    p = [int(x) for x in input().split()]
+    print(''.join([chr(ord('a') + x - 1) for x in p]))
+
+=======
+Suggestion 6
+
+def main():
+    p = list(map(int, input().split()))
+    s = [chr(p[i] + 96) for i in range(len(p))]
+    print(''.join(s))
+
+=======
+Suggestion 7
+
+def main():
+    p = list(map(int, input().split()))
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    for i in range(len(p)):
+        print(alphabet[p[i]-1], end='')
+
+=======
+Suggestion 8
+
+def get_alphabet():
+    p = input().split()
+    alphabet = [chr(i) for i in range(ord('a'), ord('z')+1)]
+    for i in range(26):
+        alphabet[int(p[i])-1] = chr(i+ord('a'))
+    print(''.join(alphabet))
+
+get_alphabet()
+
+=======
+Suggestion 9
+
+def main():
+    input_list = list(map(int, input().split()))
+    alpha_list = list('abcdefghijklmnopqrstuvwxyz')
+    for i in range(26):
+        print(alpha_list[input_list[i]-1], end='')
+
+=======
+Suggestion 10
+
+def main():
+    print("abcdefghijklmnopqrstuvwxyz")

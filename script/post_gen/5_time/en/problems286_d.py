@@ -1,59 +1,180 @@
-#Problem Statement
-#Takahashi has N kinds of coins;
-#specifically, for 1≦ i≦ N, he has B_i coins worth A_i yen (the currency in Japan) each.
-#Determine if Takahashi can pay exactly X yen (without change) with the coins he currently has.
-#
-#Constraints
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i are pairwise distinct.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print Yes if Takahashi can pay exactly X yen with the coins he currently has;
-#print No otherwise.
-#
-#Sample Input 1
-#2 19
-#2 3
-#5 6
-#
-#Sample Output 1
-#Yes
-#Takahashi has three 2-yen coins and six 5-yen coins.
-#He can use two 2-yen coins and three 5-yen coins to pay exactly 2× 2+5× 3=19 yen.
-#Thus, Yes should be printed.
-#
-#Sample Input 2
-#2 18
-#2 3
-#5 6
-#
-#Sample Output 2
-#No
-#There is no combination of the coins that he can use to pay exactly 18 yen.
-#Thus, No should be printed.
-#
-#Sample Input 3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#Sample Output 3
-#Yes
-#He need not use all kinds of coins.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+
+    if sum >= X:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 2
+
+def readinput():
+    n,x=list(map(int,input().split()))
+    ab=[]
+    for _ in range(n):
+        ab.append(list(map(int,input().split())))
+    return n,x,ab
+
+=======
+Suggestion 3
+
+def main():
+    N,X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i]*B[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    ans = "No"
+    for i in range(n):
+        if a[i] <= x and b[i] > 0:
+            ans = "Yes"
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    res = 0
+    for i in range(n):
+        res += a[i] * b[i]
+        if res > x * 100:
+            print('No')
+            return
+
+    if res < x:
+        print('No')
+    else:
+        print('Yes')
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    amount = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        amount += A * B
+        if amount > X * 100:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    coins = []
+    for i in range(n):
+        coins.append(list(map(int, input().split())))
+    total = 0
+    for i in range(n):
+        total += coins[i][0] * coins[i][1]
+    if total <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    coins = []
+    for _ in range(N):
+        A, B = map(int, input().split())
+        coins.append((A, B))
+    coins.sort()
+    ans = 0
+    for A, B in coins:
+        ans += A * B
+        if ans > X * 100:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def solve():
+    N, X = map(int, input().split())
+    coins = [list(map(int, input().split())) for _ in range(N)]
+    coins = sorted(coins, key=lambda x: x[0])
+    total = 0
+    for i in range(N):
+        total += coins[i][0] * coins[i][1]
+        if total > X:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def solve():
+    n, x = map(int, input().split())
+    coins = [list(map(int, input().split())) for _ in range(n)]
+    coins.sort(key=lambda x: x[0])
+    dp = [[False for _ in range(x+1)] for _ in range(n+1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(x+1):
+            if not dp[i][j]:
+                continue
+            for k in range(coins[i][1]+1):
+                if j + coins[i][0] * k > x:
+                    break
+                dp[i+1][j+coins[i][0]*k] = True
+    print("Yes" if dp[n][x] else "No")
+solve()

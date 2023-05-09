@@ -1,40 +1,58 @@
-#Problem Statement
-#Given are integers a, b, c, and d.
-#We will choose integers x and y such that a ≤ x ≤ b and c ≤ y ≤ d. Find the maximum possible value of x - y here.
-#
-#Constraints
-#All values in input are integers.
-#-100 ≤ a ≤ b ≤ 100
-#-100 ≤ c ≤ d ≤ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b
-#c d
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#0 10
-#0 10
-#
-#Sample Output 1
-#10
-#(x, y) = (10, 0) achieves the maximum value x - y = 10.
-#
-#Sample Input 2
-#-100 -100
-#100 100
-#
-#Sample Output 2
-#-200
-#
-#Sample Input 3
-#-100 100
-#-100 100
-#
-#Sample Output 3
-#200
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(b-c)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a-c, a-d, b-c, b-d))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a * c, a * d, b * c, b * d))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a-c, a-d, b-c, b-d))
+main()
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(b - c)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int, input().split())
+    c,d = map(int, input().split())
+
+    print(b-d)
+
+=======
+Suggestion 7
+
+def solve(a, b, c, d):
+    return max(a * c, a * d, b * c, b * d)

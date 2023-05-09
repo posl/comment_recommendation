@@ -1,53 +1,178 @@
-#Problem Statement
-#Takahashi bought a table clock.
-#The clock shows the time as shown in Figure 1 at AB:CD in the 24-hour system.
-#For example, the clock in Figure 2 shows 7:58.
-#The format of the time is formally described as follows.
-#Suppose that the current time is m minutes past h in the 24-hour system.  Here, the 24-hour system represents the hour by an integer between 0 and 23 (inclusive), and the minute by an integer between 0 and 59 (inclusive). 
-#Let A be the tens digit of h, B be the ones digit of h, C be the tens digit of m, and D be the ones digit of m.  (Here, if h has only one digit, we consider that it has a leading zero; the same applies to m.)
-#Then, the clock shows A in its top-left, B in its bottom-left, C in its top-right, and D in its bottom-right.
-#Takahashi has decided to call a time a confusing time if it satisfies the following condition:
-#after swapping the top-right and bottom-left digits on the clock, it still reads a valid time in the 24-hour system.
-#For example, the clock in Figure 3 shows 20:13.  After swapping its top-right and bottom-left digits, it reads 21:03.  Thus, 20:13 is a confusing time.
-#The clock now shows H:M.
-#Find the next confusing time (including now) in the 24-hour system.
-#
-#Constraints
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H and M are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H M
-#
-#Output
-#Let h:m be the answer, where h and m must satisfy 0 ≦ h ≦ 23 and 0 ≦ m ≦ 59.
-#Print h and m in the following format:  
-#h m
-#Your answer is considered correct even if h contains a leading zero to represent it as a 2-digit integer; the same applies to m.
-#
-#Sample Input 1
-#1 23
-#
-#Sample Output 1
-#1 23
-#1:23 is a confusing time because, after swapping its top-right and bottom-left digits on the clock, it reads 2:13.
-#Thus, the answer is 1:23.
-#Your answer is considered correct even if you print 01 23 with a leading zero.
-#
-#Sample Input 2
-#19 57
-#
-#Sample Output 2
-#20 0
-#The next confusing time after 19:57 is 20:00.
-#
-#Sample Input 3
-#20 40
-#
-#Sample Output 3
-#21 0
-#Note that 24:00 is an invalid notation in the 24-hour system.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h//10 == m%10 and h%10 == m//10:
+            print(h, m)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print(str(h) + ":" + str(m))
+            break
+
+=======
+Suggestion 3
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        if m == 59:
+            m = 0
+            if h == 23:
+                h = 0
+            else:
+                h += 1
+        else:
+            m += 1
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print('{0:02d}:{1:02d}'.format(h, m))
+            break
+
+=======
+Suggestion 4
+
+def confusing_time(H, M):
+    while True:
+        M += 1
+        if M == 60:
+            M = 0
+            H += 1
+        if H == 24:
+            H = 0
+        if H // 10 == M % 10 and H % 10 == M // 10:
+            return H, M
+
+H, M = map(int, input().split())
+h, m = confusing_time(H, M)
+print(h, m)
+
+=======
+Suggestion 5
+
+def confusingTime(h, m):
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h % 10 == m // 10 and h // 10 == m % 10:
+            break
+    return h, m
+
+=======
+Suggestion 6
+
+def confusing_time(h,m):
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h//10 == m%10 and h%10 == m//10:
+            break
+    return h,m
+
+h,m = map(int,input().split())
+h,m = confusing_time(h,m)
+print(h,m)
+
+=======
+Suggestion 7
+
+def confusing_time(h,m):
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+            if h == 24:
+                h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            return h, m
+
+h, m = map(int, input().split())
+print(*confusing_time(h, m))
+
+=======
+Suggestion 8
+
+def confusing_time(h, m):
+    while True:
+        if m == 59:
+            h += 1
+            m = 0
+        else:
+            m += 1
+        if h == 24:
+            h = 0
+        if int(str(m)[::-1]) == h:
+            return h, m
+
+h, m = map(int, input().split())
+h, m = confusing_time(h, m)
+print("{0:02d} {1:02d}".format(h, m))
+
+=======
+Suggestion 9
+
+def confusing_time(H,M):
+    if (H == 0 and M == 0):
+        return "00:00"
+    if (H == 23 and M == 59):
+        return "00:00"
+    while True:
+        M += 1
+        if M == 60:
+            M = 0
+            H += 1
+        if H == 24:
+            H = 0
+        if H//10 == M%10 and H%10 == M//10:
+            return str(H//10) + str(H%10) + ":" + str(M//10) + str(M%10)
+
+H, M = map(int, input().split())
+print(confusing_time(H, M))
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    h, m = map(int, input().split())
+    #compute
+    if m < 30:
+        m += 30
+        if h == 0:
+            h = 23
+        else:
+            h -= 1
+    else:
+        m -= 30
+    #output
+    print(h, m)

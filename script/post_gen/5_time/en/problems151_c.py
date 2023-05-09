@@ -1,57 +1,200 @@
-#Problem Statement
-#Takahashi participated in a contest on AtCoder.
-#The contest had N problems.
-#Takahashi made M submissions during the contest.
-#The i-th submission was made for the p_i-th problem and received the verdict S_i (AC or WA).
-#The number of Takahashi's correct answers is the number of problems on which he received an AC once or more.
-#The number of Takahashi's penalties is the sum of the following count for the problems on which he received an AC once or more: the number of WAs received before receiving an AC for the first time on that problem.
-#Find the numbers of Takahashi's correct answers and penalties.
-#
-#Constraints
-#N, M, and p_i are integers.
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ 10^5
-#1 ≦ p_i ≦ N
-#S_i is AC or WA.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#p_1 S_1
-#:
-#p_M S_M
-#
-#Output
-#Print the number of Takahashi's correct answers and the number of Takahashi's penalties.
-#
-#Sample Input 1
-#2 5
-#1 WA
-#1 AC
-#2 WA
-#2 AC
-#2 WA
-#
-#Sample Output 1
-#2 2
-#In his second submission, he received an AC on the first problem for the first time. Before this, he received one WA on this problem.
-#In his fourth submission, he received an AC on the second problem for the first time. Before this, he received one WA on this problem.
-#Thus, he has two correct answers and two penalties.
-#
-#Sample Input 2
-#100000 3
-#7777 AC
-#7777 AC
-#7777 AC
-#
-#Sample Output 2
-#1 0
-#Note that it is pointless to get an AC more than once on the same problem.
-#
-#Sample Input 3
-#6 0
-#
-#Sample Output 3
-#0 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    p = []
+    s = []
+    for i in range(m):
+        pi, si = input().split()
+        p.append(int(pi))
+        s.append(si)
+    pc = 0
+    wa = 0
+    for i in range(m):
+        if s[i] == 'AC':
+            pc += 1
+        else:
+            if p[i] in p[:i]:
+                continue
+            else:
+                wa += 1
+    print(pc, wa)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    p = []
+    s = []
+    for i in range(m):
+        a, b = input().split()
+        p.append(int(a))
+        s.append(b)
+    p = [0] + p
+    s = [0] + s
+    ac = 0
+    wa = 0
+    for i in range(1, m+1):
+        if p[i] == 0:
+            continue
+        if s[i] == 'AC':
+            ac += 1
+            wa += p[i]
+        else:
+            wa += 1
+    print(ac, wa)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    problems = [0] * n
+    wa = [0] * n
+    for i in range(m):
+        p, s = input().split()
+        p = int(p)
+        if problems[p-1] == 0 and s == 'WA':
+            wa[p-1] += 1
+        elif problems[p-1] == 0 and s == 'AC':
+            problems[p-1] = 1
+    print('{} {}'.format(sum(problems), sum([i*j for i,j in zip(problems, wa)])))
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    p = [0]*n
+    s = [0]*n
+    for i in range(m):
+        a, b = input().split()
+        a = int(a)
+        if s[a-1] == 0 and b == 'AC':
+            s[a-1] = 1
+        elif b == 'WA' and s[a-1] == 0:
+            p[a-1] += 1
+    print(sum(s), sum([s[i]*p[i] for i in range(n)]))
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    p = [0] * n
+    s = [0] * n
+    for i in range(m):
+        ip, is_ = input().split()
+        p[int(ip) - 1] += 1
+        if is_ == 'AC':
+            s[int(ip) - 1] = 1
+    print(sum(s), sum([p[i] * s[i] for i in range(n)]))
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    p = [0] * N
+    s = [''] * N
+    for i in range(M):
+        p[i], s[i] = input().split()
+        p[i] = int(p[i])
+    ac = [0] * N
+    wa = [0] * N
+    for i in range(M):
+        if s[i] == 'AC':
+            ac[p[i]-1] = 1
+        else:
+            if ac[p[i]-1] == 0:
+                wa[p[i]-1] += 1
+    ac_count = 0
+    wa_count = 0
+    for i in range(N):
+        if ac[i] == 1:
+            ac_count += 1
+            wa_count += wa[i]
+    print(ac_count, wa_count)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    problems = [0] * N
+    penalties = [0] * N
+    for _ in range(M):
+        p, s = input().split()
+        p = int(p)
+        if s == 'AC':
+            problems[p-1] = 1
+        else:
+            if problems[p-1] == 0:
+                penalties[p-1] += 1
+    print(sum(problems), sum([p * problems[i] for i, p in enumerate(penalties)]))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    p = [0] * n
+    s = [0] * n
+    for i in range(m):
+        pi,si = input().split()
+        p[int(pi)-1] += 1
+        s[int(pi)-1] = si
+    ac = 0
+    wa = 0
+    for i in range(n):
+        if s[i] == 'AC':
+            ac += 1
+            wa += p[i]
+    print(ac,wa)
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    p = [0]*n
+    s = [0]*n
+    for i in range(m):
+        p[i],s[i] = input().split()
+        p[i] = int(p[i]) - 1
+    ac = [0]*n
+    wa = [0]*n
+    for i in range(m):
+        if s[i] == 'AC':
+            ac[p[i]] = 1
+        if s[i] == 'WA' and ac[p[i]] == 0:
+            wa[p[i]] += 1
+    print(sum(ac),sum([ac[i]*wa[i] for i in range(n)]))
+
+=======
+Suggestion 10
+
+def main():
+    # get input
+    n, m = map(int, input().split())
+    p = [0] * m
+    s = [0] * m
+    for i in range(m):
+        p[i], s[i] = input().split()
+        p[i] = int(p[i])
+    # solve
+    ac = [0] * n
+    wa = [0] * n
+    for i in range(m):
+        if s[i] == "AC":
+            ac[p[i]-1] = 1
+        else:
+            if ac[p[i]-1] == 0:
+                wa[p[i]-1] += 1
+    # output
+    print(sum(ac), sum([ac[i] * wa[i] for i in range(n)]))

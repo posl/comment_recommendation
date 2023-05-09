@@ -1,54 +1,260 @@
-#Problem Statement
-#Takahashi is exploring a cave in a video game.
-#The cave consists of N rooms arranged in a row.  The rooms are numbered Room 1,2,...,N from the entrance.  
-#Takahashi is initially in Room 1, and the time limit is T.
-#For each 1 ≦ i ≦ N-1, he may consume a time of A_i to move from Room i to Room (i+1).  There is no other way to move between rooms.
-#He cannot make a move that makes the time limit 0 or less.
-#There are M bonus rooms in the cave.  The i-th bonus room is Room X_i; when he arrives at the room, the time limit increases by Y_i.
-#Can Takahashi reach Room N?
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-2
-#1 ≦ T ≦ 10^9
-#1 ≦ A_i ≦ 10^9 
-#1 < X_1 < ... < X_M < N
-#1 ≦ Y_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M T
-#A_1 A_2 ... A_{N-1}
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_M Y_M
-#
-#Output
-#If Takahashi can reach Room N, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#4 1 10
-#5 7 5
-#2 10
-#
-#Sample Output 1
-#Yes
-#Takahashi is initially in Room 1, and the time limit is 10.
-#He consumes a time of 5 to move to Room 2.  Now the time limit is 5.  Then, the time limit increases by 10; it is now 15.
-#He consumes a time of 7 to move to Room 3.  Now the time limit is 8.
-#He consumes a time of 5 to move to Room 4.  Now the time limit is 3.
-#
-#Sample Input 2
-#4 1 10
-#10 7 5
-#2 10
-#
-#Sample Output 2
-#No
-#He cannot move from Room 1 to Room 2.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    t = T
+    for i in range(N-1):
+        t -= A[i]
+        if t <= 0:
+            print("No")
+            return
+        if i+1 in X:
+            t += Y[X.index(i+1)]
+            if t > T:
+                t = T
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    time = T
+    room = 1
+    for i in range(N - 1):
+        time = time - A[i]
+        if time <= 0:
+            print("No")
+            return
+        if room in X:
+            time = time + Y[X.index(room)]
+        room = room + 1
+
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N,M,T = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    Y = []
+    for i in range(M):
+        x,y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    
+    for i in range(M):
+        if i == 0:
+            if T - A[X[i]-1] + Y[i] > 0:
+                T = T - A[X[i]-1] + Y[i]
+            else:
+                print("No")
+                return
+        else:
+            if T - A[X[i]-X[i-1]-1] + Y[i] - A[X[i-1]-1] > 0:
+                T = T - A[X[i]-X[i-1]-1] + Y[i] - A[X[i-1]-1]
+            else:
+                print("No")
+                return
+    
+    if T - A[N-1-X[M-1]-1] > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def problems265_b():
+    n, m, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [0] * m
+    y = [0] * m
+    for i in range(m):
+        x[i], y[i] = map(int, input().split())
+    for i in range(n-1):
+        t = t - a[i]
+        if t <= 0:
+            print("No")
+            return
+        for j in range(m):
+            if x[j] == i+1:
+                t = t + y[j]
+                if t > 0:
+                    break
+    t = t - a[n-1]
+    if t > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(M):
+        X, Y = map(int, input().split())
+        A[X-1] = Y
+    time = T
+    for i in range(N-1):
+        time = time - A[i]
+        if time <= 0:
+            print('No')
+            exit()
+        time = min(time+A[i+1]-A[i], T)
+    time = time - A[N-1]
+    if time <= 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N, M, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [list(map(int, input().split())) for i in range(M)]
+    flag = True
+    time = T
+    for i in range(0, N-1):
+        if time <= 0:
+            flag = False
+            break
+        time -= A[i]
+        if time > 0:
+            time += B[i][1]
+        else:
+            time = B[i][1]
+        if time > T:
+            time = T
+    if flag:
+        if time > 0:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,m,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    bonus = []
+    for _ in range(m):
+        bonus.append(list(map(int,input().split())))
+    now = 0
+    for i in range(n):
+        now += a[i]
+        if now > t:
+            print('No')
+            return
+        for j in range(m):
+            if i+1 == bonus[j][0]:
+                now += bonus[j][1]
+                if now > t:
+                    print('No')
+                    return
+    print('Yes')
+    return
+
+=======
+Suggestion 8
+
+def problem265_b():
+    n, m, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    xy = [list(map(int, input().split())) for _ in range(m)]
+    current_time = t
+    current_room = 1
+
+    for i in range(m):
+        current_time = current_time - (xy[i][0] - current_room)
+        current_room = xy[i][0]
+        if current_time <= 0:
+            print("No")
+            return
+
+        current_time = current_time + xy[i][1]
+        if current_time > t:
+            current_time = t
+
+    current_time = current_time - (n - current_room)
+    if current_time <= 0:
+        print("No")
+        return
+
+    print("Yes")
+
+=======
+Suggestion 9
+
+def read_ints():
+    return list(map(int, input().split()))
+
+N,M,T = read_ints()
+A = read_ints()
+XY = [read_ints() for _ in range(M)]
+
+time = T
+prev = 0
+for i in range(N-1):
+    time = time - (A[i] - prev)
+    prev = A[i]
+    if time <= 0:
+        print("No")
+        exit()
+    for j in range(M):
+        if i+1 == XY[j][0]:
+            time = time + XY[j][1]
+            break
+print("Yes")
+
+=======
+Suggestion 10
+
+def bonus_rooms(n,m,t,a,x,y):
+  time_limit = t
+  current_room = 1
+  for i in range(n-1):
+    time_limit -= a[i]
+    if time_limit <= 0:
+      return False
+    if current_room in x:
+      time_limit = min(t, time_limit + y[x.index(current_room)])
+    current_room += 1
+  return True
+
+n,m,t = map(int, input().split())
+a = list(map(int, input().split()))
+x = []
+y = []
+for i in range(m):
+  x_i, y_i = map(int, input().split())
+  x.append(x_i)
+  y.append(y_i)

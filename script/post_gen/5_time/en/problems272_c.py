@@ -1,36 +1,177 @@
-#Problem Statement
-#You are given a sequence A=(A_1,A_2,...,A_N) of length N consisting of non-negative integers.
-#Determine if there is an even number represented as the sum of two different elements of A.  If it exists, find the maximum such number.
-#
-#Constraints
-#2≦ N ≦ 2× 10^5
-#0≦ A_i≦ 10^9
-#The elements of A are distinct.
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print -1 if there is no even number represented as the sum of two different elements of A.
-#If such an even number exists, print the maximum such number.
-#
-#Sample Input 1
-#3
-#2 3 4
-#
-#Sample Output 1
-#6
-#The values represented as the sum of two distinct elements of A are 5, 6, and 7.  We have an even number here, and the maximum is 6.
-#
-#Sample Input 2
-#2
-#1 0
-#
-#Sample Output 2
-#-1
-#The value represented as the sum of two distinct elements of A is 1.  We have no even number here, so -1 should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = -1
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] + A[j]) % 2 == 0:
+                ans = max(ans, A[i] + A[j])
+                break
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] + A[j]) % 2 == 0:
+                return A[i] + A[j]
+    return -1
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    max_even = -1
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 2 == 0:
+                max_even = max(max_even, a[i] + a[j])
+    print(max_even)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse = True)
+    for i in range(N):
+        for j in range(i + 1, N):
+            if (A[i] + A[j]) % 2 == 0:
+                print(A[i] + A[j])
+                return
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    even = []
+    for i in range(N):
+        if A[i] % 2 == 0:
+            even.append(A[i])
+    if len(even) == 0:
+        print(-1)
+        exit()
+    else:
+        for i in range(1, len(even)):
+            even[i] += even[i - 1]
+    for i in range(N):
+        if A[i] % 2 == 1:
+            for j in range(len(even)):
+                if A[i] + even[j] % 2 == 0:
+                    print(A[i] + even[j])
+                    exit()
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    a.sort(reverse=True)
+
+    res = -1
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 2 == 0:
+                res = max(res, a[i] + a[j])
+                break
+
+    print(res)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in reversed(range(N)):
+        for j in reversed(range(i)):
+            if (A[i] + A[j]) % 2 == 0:
+                return A[i] + A[j]
+    return -1
+
+print(solve())
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    even = []
+    for i in range(n):
+        if a[i] % 2 == 0:
+            even.append(a[i])
+    if len(even) == 0:
+        print(-1)
+        return
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 2 == 0:
+                print(a[i] + a[j])
+                return
+
+main()
+
+=======
+Suggestion 9
+
+def solution():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    max = -1
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 2 == 0 and a[i] + a[j] > max:
+                max = a[i] + a[j]
+    print(max)
+
+solution()
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    from collections import Counter
+
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = Counter(A)
+    max_A = A.most_common()[0][0]
+    if max_A % 2 == 1:
+        max_A -= 1
+    for a in A:
+        if a == max_A:
+            continue
+        if max_A - a in A:
+            print(max_A)
+            exit()
+    print(-1)

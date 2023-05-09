@@ -1,45 +1,228 @@
-#Problem Statement
-#We have a grid with H rows and W columns. Let (i, j) be the square at the i-th row from the top and j-th column from the left.
-#Each square is painted black or white. If S_{i, j} is #, (i, j) is painted black; if S_{i, j} is ., (i, j) is painted white.
-#It is guaranteed that the outermost squares are white. That is, the squares that can be represented as (1, j), (H, j), (i, 1), or (i, W) are white.
-#Consider the part of the grid that is painted black as a polygon. How many sides does it have (at least)? 
-#Here, it is guaranteed that the part painted black forms a polygon without self-intersection, that is, the following holds:
-#at least one square is painted black;
-#we can travel between any two squares painted black by repeatedly moving up, down, left, or right while going through only black squares;
-#we can travel between any two squares painted white by repeatedly moving up, down, left, or right while going through only white squares. (Note that the outermost squares in the grid are all painted white.)
-#
-#Constraints
-#3 ≦ H ≦ 10
-#3 ≦ W ≦ 10
-#S_{i, j} is # or ..
-#S_{1, j} and S_{H, j} are ..
-#S_{i, 1} and S_{i, W} are ..
-#The part painted black forms a polygon without self-intersection.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#S_{1, 1} S_{1, 2} S_{1, 3} ... S_{1, W}
-#S_{2, 1} S_{2, 2} S_{2, 3} ... S_{2, W}
-#S_{3, 1} S_{3, 2} S_{3, 3} ... S_{3, W}
-#.
-#.
-#.
-#S_{H, 1} S_{H, 2} S_{H, 3} ... S_{H, W}
-#
-#Output
-#Print the minimum number n such that the part painted black can be seen as an n-gon.
-#
-#Sample Input 1
-#5 5
-#.....
-#.###.
-#.###.
-#.###.
-#.....
-#
-#Sample Output 1
-#4
-#If we use a coordinate system where the top-left, bottom-left, top-right, and bottom-right corners of the grid are (0, 0), (H, 0), (0, W), and (H, W), the given figure is a quadrilateral whose vertices are (1, 1), (4, 1), (4, 4), and (1, 4).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    ans = 0
+    for i in range(H-1):
+        for j in range(W-1):
+            if S[i][j] == '#':
+                if S[i+1][j] == '#' or S[i][j+1] == '#' or S[i+1][j+1] == '#':
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '.':
+                continue
+            if i == 0 or i == H-1 or j == 0 or j == W-1:
+                ans += 1
+                continue
+            if S[i-1][j] == '.' or S[i+1][j] == '.' or S[i][j-1] == '.' or S[i][j+1] == '.':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    h,w = map(int, input().split())
+    s = [input() for i in range(h)]
+    ans = 0
+    for i in range(h-1):
+        for j in range(w-1):
+            if s[i][j] == '#':
+                if s[i+1][j] == '#' or s[i][j+1] == '#' or s[i+1][j+1] == '#':
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H,W = map(int,input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1,H-1):
+        for j in range(1,W-1):
+            if S[i][j] == '#':
+                if S[i-1][j] == '.' and S[i+1][j] == '.' and S[i][j-1] == '.' and S[i][j+1] == '.':
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    cnt = 0
+    for i in range(1, H-1):
+        for j in range(1, W-1):
+            if S[i][j] == "#":
+                cnt += 1
+    if cnt == 0:
+        print(0)
+        return
+    ans = 0
+    for i in range(1, H-1):
+        for j in range(1, W-1):
+            if S[i][j] == "#":
+                if S[i-1][j] == "." or S[i+1][j] == "." or S[i][j-1] == "." or S[i][j+1] == ".":
+                    ans += 1
+    print(ans)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    res = 0
+    for i in range(1, H-1):
+        for j in range(1, W-1):
+            if S[i][j] == "#" and S[i-1][j] == S[i+1][j] == S[i][j-1] == S[i][j+1] == ".":
+                res += 1
+    print(res)
+
+=======
+Suggestion 7
+
+def main():
+    H,W = map(int,input().split())
+    S = []
+    for _ in range(H):
+        S.append(input())
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+    ans -= (H+W-1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    #print(s)
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                count += 1
+    #print(count)
+    if count == h + w - 1:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 9
+
+def read_ints():
+    return list(map(int, input().split()))
+
+H, W = read_ints()
+S = [input() for _ in range(H)]
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    # print(S)
+
+    # print(S[1][2])
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')
+
+    # print(S[1][2] == '#')
+
+    # print(S[1][2] == '.')

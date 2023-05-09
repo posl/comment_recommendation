@@ -1,69 +1,225 @@
-#Problem Statement
-#There are N cells arranged in a row, numbered 1, 2, ..., N from left to right.
-#Tak lives in these cells and is currently on Cell 1. He is trying to reach Cell N by using the procedure described below.
-#You are given an integer K that is less than or equal to 10, and K non-intersecting segments [L_1, R_1], [L_2, R_2], ..., [L_K, R_K].
-#Let S be the union of these K segments.
-#Here, the segment [l, r] denotes the set consisting of all integers i that satisfy l ≦ i ≦ r.
-#When you are on Cell i, pick an integer d from S and move to Cell i + d. You cannot move out of the cells.
-#To help Tak, find the number of ways to go to Cell N, modulo 998244353.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ min(N, 10)
-#1 ≦ L_i ≦ R_i ≦ N
-#[L_i, R_i] and [L_j, R_j] do not intersect (i ≠ j) 
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#L_1 R_1
-#L_2 R_2
-#:
-#L_K R_K
-#
-#Output
-#Print the number of ways for Tak to go from Cell 1 to Cell N, modulo 998244353.
-#
-#Sample Input 1
-#5 2
-#1 1
-#3 4
-#
-#Sample Output 1
-#4
-#The set S is the union of the segment [1, 1] and the segment [3, 4], therefore S = { 1, 3, 4 } holds.
-#There are 4 possible ways to get to Cell 5:
-#1 -> 2 -> 3 -> 4 -> 5,
-#1 -> 2 -> 5,
-#1 -> 4 -> 5 and
-#1 -> 5.
-#
-#Sample Input 2
-#5 2
-#3 3
-#5 5
-#
-#Sample Output 2
-#0
-#Because S = { 3, 5 } holds, you cannot reach to Cell 5.
-#Print 0.
-#
-#Sample Input 3
-#5 1
-#1 2
-#
-#Sample Output 3
-#5
-#
-#Sample Input 4
-#60 3
-#5 8
-#1 3
-#10 15
-#
-#Sample Output 4
-#221823067
-#Note that you have to print the answer modulo 998244353.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for i in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dpsum = [0] * (N + 1)
+    dpsum[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            l = max(1, i - R[j])
+            r = max(0, i - L[j])
+            if r < l:
+                continue
+            dp[i] += dpsum[r] - dpsum[l - 1]
+        dp[i] %= 998244353
+        dpsum[i] = dpsum[i - 1] + dp[i]
+    print(dp[N])
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for i in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    mod = 998244353
+    dp = [0]*(N+1)
+    dp[1] = 1
+    dpsum = [0]*(N+1)
+    dpsum[1] = 1
+    for i in range(2, N+1):
+        for j in range(K):
+            if i-L[j] < 1:
+                continue
+            dp[i] += dpsum[i-L[j]] - dpsum[max(i-R[j]-1, 0)]
+            dp[i] %= mod
+        dpsum[i] = dpsum[i-1] + dp[i]
+        dpsum[i] %= mod
+    print(dp[N])
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    MOD = 998244353
+    dp = [0] * (N+1)
+    dp[1] = 1
+    dpsum = [0] * (N+1)
+    dpsum[1] = 1
+    for i in range(2, N+1):
+        for j in range(K):
+            l = max(0, i-R[j])
+            r = max(0, i-L[j]+1)
+            dp[i] += (dpsum[r] - dpsum[l]) % MOD
+        dpsum[i] = dpsum[i-1] + dp[i]
+    print(dp[N] % MOD)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    L = [0] * K
+    R = [0] * K
+    for i in range(K):
+        L[i], R[i] = map(int, input().split())
+    dp = [0] * N
+    dp[0] = 1
+    dpsum = [0] * N
+    dpsum[0] = 1
+    for i in range(1, N):
+        for j in range(K):
+            if i - L[j] >= 0:
+                dp[i] += dpsum[i - L[j]]
+                dp[i] %= 998244353
+            if i - R[j] - 1 >= 0:
+                dp[i] -= dpsum[i - R[j] - 1]
+                dp[i] %= 998244353
+        dpsum[i] = dpsum[i - 1] + dp[i]
+        dpsum[i] %= 998244353
+    print(dp[N - 1])
+
+=======
+Suggestion 5
+
+def solve():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    MOD = 998244353
+    dp = [0] * N
+    dp[0] = 1
+    dpsum = [0] * (N + 1)
+    dpsum[1] = 1
+    for i in range(1, N):
+        for j in range(K):
+            dp[i] += dpsum[max(i - L[j], 0)] - dpsum[max(i - R[j] - 1, 0)]
+            dp[i] %= MOD
+        dpsum[i + 1] = dpsum[i] + dp[i]
+        dpsum[i + 1] %= MOD
+    print(dp[N - 1])
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    seg = []
+    for _ in range(K):
+        L, R = map(int, input().split())
+        seg.append((L, R))
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    sdp = [0] * (N + 1)
+    sdp[1] = 1
+    for i in range(2, N + 1):
+        for L, R in seg:
+            if i - L < 0:
+                continue
+            dp[i] += sdp[i - L] - sdp[max(0, i - R - 1)]
+        dp[i] %= 998244353
+        sdp[i] = (sdp[i - 1] + dp[i]) % 998244353
+    print(dp[N])
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    LRs = []
+    for _ in range(K):
+        LR = list(map(int, input().split()))
+        LRs.append(LR)
+    #print(N, K)
+    #print(LRs)
+
+    #dp[i]: i番目のセルにたどり着く方法の総数
+    dp = [0] * N
+    dp[0] = 1
+
+    #dp[i] = dp[i-1] + dp[i-2] + ... + dp[i-L] (i-L >= 0)
+    for i in range(1, N):
+        for LR in LRs:
+            L = LR[0]
+            R = LR[1]
+            if i - L >= 0:
+                dp[i] += dp[i-L]
+                dp[i] %= 998244353
+            if i - R - 1 >= 0:
+                dp[i] -= dp[i-R-1]
+                dp[i] %= 998244353
+
+    #print(dp)
+    ans = dp[N-1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input():
+    n, k = map(int, input().split())
+    lrs = [tuple(map(int, input().split())) for _ in range(k)]
+    return n, k, lrs
+
+=======
+Suggestion 9
+
+def main():
+    # Get input here
+    N, K = map(int, input().strip().split())
+    segments = []
+    for i in range(K):
+        segments.append(list(map(int, input().strip().split())))
+
+    # Solve problems
+    dp = [0] * N
+    dp[0] = 1
+    dpsum = [0] * (N+1)
+    dpsum[1] = 1
+    for i in range(1, N):
+        for segment in segments:
+            left = i - segment[1]
+            right = i - segment[0]
+            if left < 0:
+                left = 0
+            if right < 0:
+                right = 0
+            dp[i] += dpsum[right] - dpsum[left]
+        dp[i] %= 998244353
+        dpsum[i+1] = dpsum[i] + dp[i]
+
+    # Print output here
+    print(dp[N-1])
+
+=======
+Suggestion 10
+
+def main():
+    pass

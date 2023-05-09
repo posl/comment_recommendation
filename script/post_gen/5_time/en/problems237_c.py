@@ -1,38 +1,68 @@
-#Problem Statement
-#Given is a string S consisting of lowercase English letters.
-#Determine whether adding some number of a's (possibly zero) at the beginning of S can make it a palindrome.
-#Here, a string of length N, A=A_1A_2... A_N, is said to be a palindrome when A_i=A_{N+1-i} for every 1≦ i≦ N.
-#
-#Constraints
-#1 ≦ | S | ≦ 10^6
-#S consists of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If adding some number of a's (possibly zero) at the beginning of S can make it a palindrome, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#kasaka
-#
-#Sample Output 1
-#Yes
-#By adding one a at the beginning of kasaka, we have akasaka, which is a palindrome, so Yes should be printed.
-#
-#Sample Input 2
-#atcoder
-#
-#Sample Output 2
-#No
-#Adding any number of a's at the beginning of atcoder does not make it a palindrome.
-#
-#Sample Input 3
-#php
-#
-#Sample Output 3
-#Yes
-#php itself is a palindrome. Adding zero a's at the beginning of S is allowed, so Yes should be printed.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+for i in range(len(s)+1):
+    if is_palindrome('a'*i+s):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S == S[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S_rev = S[::-1]
+
+    for i in range(len(S)):
+        if S[i] != S_rev[i]:
+            print("No")
+            break
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def check_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+s = input()
+
+=======
+Suggestion 5
+
+def solve():
+    S = input()
+    #print(S)
+    #print(S[::-1])
+    if S == S[::-1]:
+        print("Yes")
+    else:
+        print("No")
+    return 0
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    return s == s[::-1]

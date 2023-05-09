@@ -1,39 +1,28 @@
-#Problem Statement
-#Given are integers a,b,c and d.
-#If x and y are integers and a ≦ x ≦ b and c≦ y ≦ d hold, what is the maximum possible value of x × y?
-#
-#Constraints
-#-10^9 ≦ a ≦ b ≦ 10^9
-#-10^9 ≦ c ≦ d ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b c d
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#1 2 1 1
-#
-#Sample Output 1
-#2
-#If x = 1 and y = 1 then x × y = 1.
-#If x = 2 and y = 1 then x × y = 2.
-#Therefore, the answer is 2.
-#
-#Sample Input 2
-#3 5 -4 -2
-#
-#Sample Output 2
-#-6
-#The answer can be negative.
-#
-#Sample Input 3
-#-1000000000 0 -1000000000 0
-#
-#Sample Output 3
-#1000000000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d = map(int, input().split())
+    print(max(a*c, a*d, b*c, b*d))
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d = map(int, input().split())
+    print(max(a*c,a*d,b*c,b*d))
+main()
+
+=======
+Suggestion 3
+
+def max_product(a, b, c, d):
+    return max(a*c, a*d, b*c, b*d)
+
+=======
+Suggestion 4
+
+def max_integer(a, b, c, d):
+    return max(a*c, a*d, b*c, b*d)

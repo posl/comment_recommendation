@@ -1,37 +1,79 @@
-#Problem Statement
-#There is an iron bar of length L lying east-west. We will cut this bar at 11 positions to divide it into 12 bars. Here, each of the 12 resulting bars must have a positive integer length.
-#Find the number of ways to do this division. Two ways to do the division are considered different if and only if there is a position cut in only one of those ways.
-#Under the constraints of this problem, it can be proved that the answer is less than 2^{63}.
-#
-#Constraints
-#12 ≦ L ≦ 200
-#L is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L
-#
-#Output
-#Print the number of ways to do the division.
-#
-#Sample Input 1
-#12
-#
-#Sample Output 1
-#1
-#There is only one way: to cut the bar into 12 bars of length 1 each.  
-#
-#Sample Input 2
-#13
-#
-#Sample Output 2
-#12
-#Just one of the resulting bars will be of length 2. We have 12 options: one where the westmost bar is of length 2, one where the second bar from the west is of length 2, and so on.
-#
-#Sample Input 3
-#17
-#
-#Sample Output 3
-#4368
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    l = int(input())
+    print(int((l-1)*(l-2)*(l-3)*(l-4)*(l-5)*(l-6)/(6*5*4*3*2*1)))
+
+=======
+Suggestion 2
+
+def main():
+    L = int(input())
+    
+    print((L-1)*(L-2)*(L-3)*(L-4)*(L-5)*(L-6)*(L-7)*(L-8)*(L-9)*(L-10)*(L-11)//(11*10*9*8*7*6*5*4*3*2*1))
+
+main()
+
+=======
+Suggestion 3
+
+def solve():
+    L = int(input())
+    ans = 1
+    for i in range(1, 12):
+        ans *= (L - i)
+        ans //= i + 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    print(int(L * (L-1) * (L-2) * (L-3) * (L-4) * (L-5) / (6 * 5 * 4 * 3 * 2 * 1)))
+
+=======
+Suggestion 5
+
+def main():
+    l = int(input())
+    print(int((l-1)*(l-2)*(l-3)*(l-4)*(l-5)*(l-6)/720))
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    print(int((L-1)*(L-2)*(L-3)*(L-4)*(L-5)*(L-6)/720))
+
+=======
+Suggestion 7
+
+def main():
+    L = int(input())
+    print(int(L*(L-1)*(L-2)*(L-3)*(L-4)*(L-5)/720))
+
+=======
+Suggestion 8
+
+def count_ways(L):
+    # base cases
+    if L < 12:
+        return 0
+    if L == 12:
+        return 1
+
+    # recursive case
+    return count_ways(L-1) + count_ways(L-4) + count_ways(L-7) + count_ways(L-10) + count_ways(L-13) + count_ways(L-16)
+
+=======
+Suggestion 9
+
+def main():
+    l = int(input())
+    print(combination(l-1, 11))

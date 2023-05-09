@@ -1,33 +1,145 @@
-#Problem Statement
-#Given are N integers A_1,...,A_N.
-#Find the sum of A_i × A_j over all pairs (i,j) such that 1≦ i < j ≦ N, modulo (10^9+7).
-#
-#Constraints
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ A_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print sum_{i=1}^{N-1}sum_{j=i+1}^{N} A_i A_j, modulo (10^9+7).
-#
-#Sample Input 1
-#3
-#1 2 3
-#
-#Sample Output 1
-#11
-#We have 1 × 2 + 1 × 3 + 2 × 3 = 11.
-#
-#Sample Input 2
-#4
-#141421356 17320508 22360679 244949
-#
-#Sample Output 2
-#437235829
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            ans += A[i] * A[j]
+    print(ans % (10**9+7))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1,n):
+            ans += a[i]*a[j]
+            ans %= 10**9+7
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    total = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            total += a[i]*a[j]
+    print(total % (10**9+7))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(N):
+        ans += A[i] * sum(A[i+1:])
+    print(ans % mod)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    S = sum(A)
+    ans = 0
+    for a in A:
+        S -= a
+        ans += a*S
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A_list = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A_list[i] * sum(A_list[i+1:])
+    print(ans % (10**9+7))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        ans += A[i] * sum(A[i+1:])
+    ans %= (10**9 + 7)
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    mod = 1000000007
+    for i in range(n):
+        ans += a[i] * (sum(a[i+1:]) % mod)
+    print(ans % mod)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    #print(n)
+    #print(a)
+
+    sum = 0
+    for i in range(n-1):
+        for j in range(i+1,n):
+            sum += a[i] * a[j]
+            sum %= (10**9+7)
+
+    print(sum)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+
+    sum_a = sum(a)
+    sum_a_square = sum([a_i**2 for a_i in a])
+
+    ans = 0
+
+    for a_i in a:
+        sum_a -= a_i
+        sum_a_square -= a_i**2
+        ans += a_i * sum_a
+        ans += a_i**2 * (n-1)
+        ans -= 2 * a_i * sum_a
+        ans %= mod
+
+    print(ans)

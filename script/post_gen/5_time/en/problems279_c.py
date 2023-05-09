@@ -1,95 +1,156 @@
-#Problem Statement
-#You are given patterns S and T consisting of # and ., each with H rows and W columns.
-#The pattern S is given as H strings, and the j-th character of S_i represents the element at the i-th row and j-th column. The same goes for T.
-#Determine whether S can be made equal to T by rearranging the columns of S.
-#Here, rearranging the columns of a pattern X is done as follows.
-#Choose a permutation P=(P_1,P_2,...,P_W) of (1,2,...,W).
-#Then, for every integer i such that 1 ≦ i ≦ H, simultaneously do the following. 
-#For every integer j such that 1 ≦ j ≦ W, simultaneously replace the element at the i-th row and j-th column of X with the element at the i-th row and P_j-th column.
-#
-#
-#Constraints
-#H and W are integers.
-#1 ≦ H,W
-#1 ≦ H × W ≦ 4 × 10^5
-#S_i and T_i are strings of length W consisting of # and ..
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#T_1
-#T_2
-#.
-#.
-#.
-#T_H
-#
-#Output
-#If S can be made equal to T, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 4
-###.#
-###..
-##...
-#.###
-#..##
-#...#
-#
-#Sample Output 1
-#Yes
-#If you, for instance, arrange the 3-rd, 4-th, 2-nd, and 1-st columns of S in this order from left to right, S will be equal to T.
-#
-#Sample Input 2
-#3 3
-##.#
-#.#.
-##.#
-###.
-###.
-#.#.
-#
-#Sample Output 2
-#No
-#In this input, S cannot be made equal to T.
-#
-#Sample Input 3
-#2 1
-##
-#.
-##
-#.
-#
-#Sample Output 3
-#Yes
-#It is possible that S=T.
-#
-#Sample Input 4
-#8 7
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-#....###
-#####...
-#....###
-#####...
-#....###
-#####...
-#....###
-#####...
-#
-#Sample Output 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    h, w = map(int, input().split())
+    s = []
+    t = []
+    for i in range(h):
+        s.append(input())
+    for i in range(h):
+        t.append(input())
+    return h, w, s, t
+
+=======
+Suggestion 2
+
+def solve():
+    h,w = map(int, input().split())
+    s = []
+    t = []
+    for i in range(h):
+        s.append(input())
+    for i in range(h):
+        t.append(input())
+    for i in range(h):
+        if s[i] != t[i]:
+            s[i] = ''.join(sorted(s[i]))
+            t[i] = ''.join(sorted(t[i]))
+    for i in range(h):
+        if s[i] != t[i]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 3
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    T = [input() for _ in range(H)]
+    s = [0]*H
+    t = [0]*H
+    for i in range(H):
+        s[i] = ''.join(sorted(S[i]))
+        t[i] = ''.join(sorted(T[i]))
+    s.sort()
+    t.sort()
+    for i in range(H):
+        if s[i] != t[i]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 4
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    T = [input() for _ in range(H)]
+    s = [[0]*W for _ in range(H)]
+    t = [[0]*W for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            s[i][j] = S[i][j]
+            t[i][j] = T[i][j]
+    s.sort()
+    t.sort()
+    for i in range(H):
+        for j in range(W):
+            if s[i][j] != t[i][j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    t = [input() for _ in range(h)]
+    s = [sorted(row) for row in s]
+    t = [sorted(row) for row in t]
+    s = sorted(s)
+    t = sorted(t)
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] != t[i][j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    t = [input() for _ in range(h)]
+
+    s = ["".join(sorted(x)) for x in s]
+    t = ["".join(sorted(x)) for x in t]
+
+    print("Yes" if s == t else "No")
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from collections import Counter
+    input = sys.stdin.buffer.readline
+    H, W = map(int, input().split())
+    S = [input().rstrip().decode('utf-8') for _ in range(H)]
+    T = [input().rstrip().decode('utf-8') for _ in range(H)]
+    S_c = Counter(S)
+    T_c = Counter(T)
+    if S_c == T_c:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    # Read from Standard Input
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    t = [input() for i in range(h)]
+    # Solve the problem
+    # ...
+    # Print the answer to Standard Output
+    print("Yes" if solve(h, w, s, t) else "No")
+
+=======
+Suggestion 9
+
+def check(s, t):
+    for i in range(len(s)):
+        if(s[i] != t[i]):
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def main():
+    pass

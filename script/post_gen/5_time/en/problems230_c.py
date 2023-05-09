@@ -1,60 +1,173 @@
-#Problem Statement
-#There is an N× N grid with horizontal rows and vertical columns, where all squares are initially painted white. Let (i,j) denote the square at the i-th row and j-th column.
-#Takahashi has integers A and B, which are between 1 and N (inclusive). He will do the following operations.
-#For every integer k such that max(1-A,1-B)≦ k≦ min(N-A,N-B), paint (A+k,B+k) black.
-#For every integer k such that max(1-A,B-N)≦ k≦ min(N-A,B-1), paint (A+k,B-k) black.
-#In the grid after these operations, find the color of each square (i,j) such that P≦ i≦ Q and R≦ j≦ S.
-#
-#Constraints
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#P Q R S
-#
-#Output
-#Print Q-P+1 lines.
-#Each line should contain a string of length S-R+1 consisting of # and ..
-#The j-th character of the string in the i-th line should be # to represent that (P+i-1, R+j-1) is painted black, and . to represent that (P+i-1, R+j-1) is white.  
-#
-#Sample Input 1
-#5 3 2
-#1 5 1 5
-#
-#Sample Output 1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#The first operation paints the four squares (2,1), (3,2), (4,3), (5,4) black, and the second paints the four squares (4,1), (3,2), (2,3), (1,4) black.
-#Thus, the above output should be printed, since P=1, Q=5, R=1, S=5.
-#
-#Sample Input 2
-#5 3 3
-#4 5 2 5
-#
-#Sample Output 2
-##.#.
-#...#
-#The operations paint the nine squares (1,1), (1,5), (2,2), (2,4), (3,3), (4,2), (4,4), (5,1), (5,5).
-#Thus, the above output should be printed, since P=4, Q=5, R=2, S=5.
-#
-#Sample Input 3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#Sample Output 3
-##.#
-#.#.
-##.#
-#Note that the input may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i-A) == (j-B):
+                print('#', end='')
+            elif (i-A) == -(j-B):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print('')
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q + 1):
+        for j in range(r, s + 1):
+            if (i - a) == (j - b):
+                print("#", end="")
+            elif (i - a) == -(j - b):
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    #print(N, A, B)
+    #print(P, Q, R, S)
+
+    #print(N, A, B)
+    #print(P, Q, R, S)
+
+    print("Hello World!")
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    #print(N, A, B)
+    #print(P, Q, R, S)
+
+    #print("")
+
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i+j) % 2 == 0:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print("")
+
+=======
+Suggestion 5
+
+def solve():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    print(N, A, B, P, Q, R, S)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    N,A,B = map(int,input().split())
+    P,Q,R,S = map(int,input().split())
+    for i in range(P,Q+1):
+        for j in range(R,S+1):
+            if (i+A+j+B)%2 == 0:
+                print('#',end='')
+            else:
+                print('.',end='')
+        print('')
+
+=======
+Suggestion 7
+
+def solve():
+    N,A,B = map(int,input().split())
+    P,Q,R,S = map(int,input().split())
+    for i in range(P,Q+1):
+        for j in range(R,S+1):
+            if (i+j) % 2 == (A+B) % 2:
+                print("#",end="")
+            else:
+                print(".",end="")
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    if (p + q - 1) % 2 == 0:
+        print("#" * (s - r + 1))
+        for i in range(q - p - 1):
+            print("#" + "." * (s - r - 1) + "#")
+        print("#" * (s - r + 1))
+    else:
+        for i in range(q - p + 1):
+            if i % 2 == 0:
+                print("#" + "." * (s - r) + "#")
+            else:
+                print("." * (s - r + 1))
+
+=======
+Suggestion 9
+
+def paint(N, A, B, P, Q, R, S):
+    result = ''
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i+j)%2 == 0:
+                result += '#'
+            else:
+                result += '.'
+        result += '\n'
+    return result
+
+=======
+Suggestion 10
+
+def paint(n, a, b, p, q, r, s):
+    #print(n, a, b, p, q, r, s)
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-1)])
+    
+    #print([max(1-a,1-b), min(n-a,n-b)])
+    #print([max(1-a,b-n), min(n-a,b-

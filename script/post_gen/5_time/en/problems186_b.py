@@ -1,48 +1,155 @@
-#Problem Statement
-#We have a grid with H horizontal rows and W vertical columns. The square at the i-th row from the top and j-th column from the left has A_{i, j} blocks stacked on it.
-#At least how many blocks must be removed to make all squares have the same number of blocks?
-#
-#Constraints
-#1 ≦ H,W ≦ 100
-#0≦ A_{i,j} ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#A_{1,1} A_{1,2} ... A_{1,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ... A_{H,W}
-#
-#Output
-#Print the minimum number of blocks that must be removed.
-#
-#Sample Input 1
-#2 3
-#2 2 3
-#3 2 2
-#
-#Sample Output 1
-#2
-#Removing 1 block from the top-right square and 1 from the bottom-left square makes all squares have 2 blocks.
-#
-#Sample Input 2
-#3 3
-#99 99 99
-#99 0 99
-#99 99 99
-#
-#Sample Output 2
-#792
-#
-#Sample Input 3
-#3 2
-#4 4
-#4 4
-#4 4
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    min = 100
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] < min:
+                min = A[i][j]
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            count += A[i][j] - min
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    min_a = min([min(x) for x in a])
+    print(sum([sum(x) for x in a]) - min_a * h * w)
+
+=======
+Suggestion 3
+
+def main():
+    H,W = map(int,input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int,input().split())))
+    min = 100
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] < min:
+                min = A[i][j]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            ans += A[i][j] - min
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    min_a = min([min(a) for a in A])
+    ans = 0
+    for a in A:
+        for aa in a:
+            ans += aa - min_a
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    min_a = min([min(a[i]) for i in range(h)])
+    print(sum([sum([a[i][j] - min_a for j in range(w)]) for i in range(h)]))
+
+=======
+Suggestion 6
+
+def problem():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    min = 100
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] < min:
+                min = A[i][j]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            ans += A[i][j] - min
+    print(ans)
+
+problem()
+
+=======
+Suggestion 7
+
+def main():
+    # input
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+
+    # compute
+    minA = 101
+    for i in range(H):
+        for j in range(W):
+            minA = min(minA, A[i][j])
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            ans += A[i][j] - minA
+
+    # output
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    min_a = min([min(a[i]) for i in range(h)])
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_a
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    h,w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    min_a = min(min(a))
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_a
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve(H, W, A):
+    min_num = min([min(a) for a in A])
+    return sum([sum([a - min_num for a in a]) for a in A])
+
+H, W = map(int, input().split())
+A = [list(map(int, input().split())) for i in range(H)]
+print(solve(H, W, A))

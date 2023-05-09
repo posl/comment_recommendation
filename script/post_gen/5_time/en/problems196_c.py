@@ -1,37 +1,123 @@
-#Problem Statement
-#Given is an integer N.
-#How many integers x between 1 and N (inclusive) satisfy the following condition?
-#The decimal representation (without leading zeros) of x has an even number of digits, and its first and second halves are equal as strings.
-#
-#Constraints
-#N is an integer.
-#1 ≤ N < 10^{12}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#33
-#
-#Sample Output 1
-#3
-#Three numbers 11, 22, and 33 satisfy the condition.
-#
-#Sample Input 2
-#1333
-#
-#Sample Output 2
-#13
-#For example, the decimal representation of 1313 has four digits, and its first and second halves are both 13, so 1313 satisfies the condition.
-#
-#Sample Input 3
-#10000000
-#
-#Sample Output 3
-#999
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                count += 1
+    print(count)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    N = int(input())
+    # compute
+    ans = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                ans += 1
+    # output
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    result = 0
+    for i in range(1, n+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:int(len(str(i))/2)] == str(i)[int(len(str(i))/2):]:
+                result += 1
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    N = input()
+    count = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))/2] == str(i)[len(str(i))/2:]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        a = str(i)
+        if len(a) % 2 == 0:
+            if a[:len(a)//2] == a[len(a)//2:]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    s = str(N)
+    l = len(s)
+    if l == 1:
+        print(0)
+    else:
+        if l % 2 == 0:
+            print(int(s[:l//2]) - 1)
+        else:
+            print(int(s[:l//2]))
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if i == j:
+                continue
+            p = 10 * i + j
+            q = 10 * j + i
+            if p <= n:
+                ans += 1
+            if q <= n:
+                ans += 1
+    print(ans)

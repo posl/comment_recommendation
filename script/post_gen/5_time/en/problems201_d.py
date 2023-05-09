@@ -1,60 +1,103 @@
-#Problem Statement
-#We have a grid with H rows and W columns of squares, where each square is blue or red. The square at the i-th row and j-th column is blue if A_{i, j} is +, and red if A_{i, j} is -.
-#There is a piece on this grid, which is initially placed on the top-left square. Takahashi and Aoki will play a game using this piece.
-#Each of the two players has 0 points in the beginning. They will alternately do the following operation, with Takahashi going first:
-#Move the piece one square right or one square down. It is not allowed to move the piece outside the grid. Then, the player (who moved the piece) gets one point if the piece is now on a blue square, and loses one point if the piece is now on a red square.
-#The game ends when one of the players is unable to do the operation. Then, the player with the greater number of points wins the game if they have different numbers of points. Otherwise, the game is drawn.
-#Find the result of the game when both players play the game to get the best outcome.
-#
-#Constraints
-#1 ≦ H, W ≦ 2000
-#A_{i, j} is + or -.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#A_{1, 1}A_{1, 2}A_{1, 3} ... A_{1, W}
-#A_{2, 1}A_{2, 2}A_{2, 3} ... A_{2, W}
-#A_{3, 1}A_{3, 2}A_{3, 3} ... A_{3, W}
-#.
-#.
-#.
-#A_{H, 1}A_{H, 2}A_{H, 3} ... A_{H, W}
-#
-#Output
-#If Takahashi will win, print Takahashi; if Aoki will win, print Aoki; if the game will be drawn, print Draw.
-#
-#Sample Input 1
-#3 3
-#---
-#+-+
-#+--
-#
-#Sample Output 1
-#Takahashi
-#Takahashi has a winning strategy described below.
-#First, Takahashi moves the piece right, which makes him lose one point because the piece goes to a red square. Now, Takahashi has -1 point and Aoki has 0 points. Then,
-#if Aoki moves the piece right, Takahashi moves it down;
-#if Aoki moves the piece down, Takahashi moves it right.
-#In either case, Aoki moves the piece to a red square losing one point, and Takahashi moves the piece to a blue square getting one point, which means now Takahashi has 0 points and Aoki has -1 point.
-#The piece is now on the square at the 2-nd row from the top and 3-rd column from the left, and Aoki can only choose to move it down, to a red square. Now, Takahashi has 0 points and Aoki has -2 points.
-#The piece cannot move right or down anymore, so the game ends. Since Takahashi has the greater number of points, he wins.
-#
-#Sample Input 2
-#2 4
-#+++-
-#-+-+
-#
-#Sample Output 2
-#Aoki
-#Aoki can win the game, regardless of what choices Takahashi makes.
-#
-#Sample Input 3
-#1 1
-#-
-#
-#Sample Output 3
-#Draw
-#In this case, the game immediately ends. Since both players have 0 points, the game is drawn.
+Synthesizing 3/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0] * w for _ in range(h)]
+    for i in range(h - 1, -1, -1):
+        for j in range(w - 1, -1, -1):
+            if i == h - 1 and j == w - 1:
+                continue
+            if (i + j) % 2 == 0:
+                if i == h - 1:
+                    dp[i][j] = dp[i][j + 1]
+                elif j == w - 1:
+                    dp[i][j] = dp[i + 1][j]
+                else:
+                    dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])
+            else:
+                if i == h - 1:
+                    dp[i][j] = dp[i][j + 1]
+                elif j == w - 1:
+                    dp[i][j] = dp[i + 1][j]
+                else:
+                    dp[i][j] = min(dp[i + 1][j], dp[i][j + 1])
+            if a[i][j] == "+":
+                dp[i][j] += 1
+            else:
+                dp[i][j] -= 1
+    if dp[0][0] == 0:
+        print("Draw")
+    elif dp[0][0] > 0:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 2
+
+def solve():
+    h, w = map(int, input().split())
+    a = [list(input()) for i in range(h)]
+    dp = [[0] * w for i in range(h)]
+    for i in range(h-1, -1, -1):
+        for j in range(w-1, -1, -1):
+            if (i + j) % 2 == 0:
+                if i == h-1 and j == w-1:
+                    continue
+                dp[i][j] = -10**18
+                if i < h-1:
+                    dp[i][j] = max(dp[i][j], dp[i+1][j] + (1 if a[i+1][j] == '+' else -1))
+                if j < w-1:
+                    dp[i][j] = max(dp[i][j], dp[i][j+1] + (1 if a[i][j+1] == '+' else -1))
+            else:
+                if i == h-1 and j == w-1:
+                    continue
+                dp[i][j] = 10**18
+                if i < h-1:
+                    dp[i][j] = min(dp[i][j], dp[i+1][j] - (1 if a[i+1][j] == '+' else -1))
+                if j < w-1:
+                    dp[i][j] = min(dp[i][j], dp[i][j+1] - (1 if a[i][j+1] == '+' else -1))
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] < 0:
+        print('Aoki')
+    else:
+        print('Draw')
+solve()
+
+=======
+Suggestion 3
+
+def solve():
+    h,w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0] * w for _ in range(h)]
+    for i in range(h - 1, -1, -1):
+        for j in range(w - 1, -1, -1):
+            if i == h - 1 and j == w - 1:
+                continue
+            if i == h - 1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i][j + 1] - 1
+                else:
+                    dp[i][j] = dp[i][j + 1] + 1
+            elif j == w - 1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i + 1][j] - 1
+                else:
+                    dp[i][j] = dp[i + 1][j] + 1
+            else:
+                if a[i][j] == '+':
+                    dp[i][j] = min(dp[i + 1][j] - 1, dp[i][j + 1] - 1)
+                else:
+                    dp[i][j] = max(dp[i + 1][j] + 1, dp[i][j + 1] + 1)
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] < 0:
+        print('Aoki')
+    else:
+        print('Draw')

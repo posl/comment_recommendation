@@ -1,68 +1,190 @@
-#Problem Statement
-#2N people numbered 1, 2, ..., 2N attend a ball.
-#They will group into N pairs and have a dance.
-#If Person i and Person j pair up, where i is smaller than j, the affinity of that pair is A_{i, j}.
-#If the N pairs have the affinity of B_1, B_2, ..., B_N, the total fun of the ball is the bitwise XOR of them: B_1 ⊕ B_2 ⊕ ... ⊕ B_N.
-#Print the maximum possible total fun of the ball when the 2N people can freely group into N pairs.
-#
-#Constraints
-#1 ≦ N ≦ 8
-#0 ≦ A_{i, j} < 2^{30}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_{1, 2} A_{1, 3} A_{1, 4} ... A_{1, 2N}
-#A_{2, 3} A_{2, 4} ... A_{2, 2N}
-#A_{3, 4} ... A_{3, 2N}
-#.
-#.
-#.
-#A_{2N-1, 2N}
-#
-#Output
-#Print the maximum possible total fun of the ball.
-#
-#Sample Input 1
-#2
-#4 0 1
-#5 3
-#2
-#
-#Sample Output 1
-#6
-#Let {i, j} denote a pair of Person i and Person j.
-#There are three ways for the four people to group into two pairs, as follows.
-#Group into {1, 2}, {3, 4}.
-#The total fun of the ball here is A_{1, 2} ⊕ A_{3, 4} = 4 ⊕ 2 = 6.
-#Group into {1, 3}, {2, 4}.
-#The total fun of the ball here is A_{1, 3} ⊕ A_{2, 4} = 0 ⊕ 3 = 3.
-#Group into {1, 4}, {2, 3}.
-#The total fun of the ball here is A_{1, 4} ⊕ A_{2, 3} = 1 ⊕ 5 = 4.
-#Therefore, the maximum possible total fun of the ball is 6.
-#
-#Sample Input 2
-#1
-#5
-#
-#Sample Output 2
-#5
-#There will be just a pair of Person 1 and Person 2, where the total fun of the ball is 5.
-#
-#Sample Input 3
-#5
-#900606388 317329110 665451442 1045743214 260775845 726039763 57365372 741277060 944347467
-#369646735 642395945 599952146 86221147 523579390 591944369 911198494 695097136
-#138172503 571268336 111747377 595746631 934427285 840101927 757856472
-#655483844 580613112 445614713 607825444 252585196 725229185
-#827291247 105489451 58628521 1032791417 152042357
-#919691140 703307785 100772330 370415195
-#666350287 691977663 987658020
-#1039679956 218233643
-#70938785
-#
-#Sample Output 3
-#1073289207
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (1 << N) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(i + 1, N):
+            dp[j + 1][1 << i | 1 << j] = A[i][j]
+    for i in range(1, N):
+        for j in range(1 << N):
+            if j >> i & 1:
+                for k in range(1 << N):
+                    if k >> i & 1:
+                        dp[i + 1][j | k] = max(dp[i + 1][j | k], dp[i][k] + dp[i + 1][j])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0 for _ in range(1 << N)] for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(N):
+            dp[i + 1][1 << j] = max(dp[i + 1][1 << j], dp[i][0] ^ A[i][j])
+        for j in range(1 << N):
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i + 1][j & -j], dp[i][j])
+            for k in range(N):
+                dp[i + 1][j | (1 << k)] = max(dp[i + 1][j | (1 << k)], dp[i + 1][j] ^ A[i][k])
+    print(dp[N][(1 << N) - 1])
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * (2**N) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(2**N):
+            for k in range(i + 1, N):
+                if j & (1 << k):
+                    dp[i + 1][j] = max(dp[i + 1][j], dp[i][j ^ (1 << k)] + A[i][k])
+    print(dp[N][2**N - 1])
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    dp = [[0 for _ in range(1 << n)] for _ in range(n)]
+    for i in range(n):
+        for j in range(i + 1, n):
+            dp[i][1 << i | 1 << j] = a[i][j]
+    for i in range(1 << n):
+        for j in range(n):
+            if not i & 1 << j:
+                continue
+            for k in range(j + 1, n):
+                if not i & 1 << k:
+                    continue
+                dp[k][i] = max(dp[k][i], dp[j][i ^ 1 << k] + a[j][k])
+    print(dp[n - 1][(1 << n) - 1])
+    return
+
+=======
+Suggestion 5
+
+def xor(l):
+    res = l[0]
+    for i in range(1, len(l)):
+        res = res ^ l[i]
+    return res
+
+n = int(input())
+a = []
+for i in range(n):
+    a.append(list(map(int, input().split())))
+
+ans = 0
+for i in range(2 ** (2 * n)):
+    tmp = []
+    for j in range(2 * n):
+        if ((i >> j) & 1):
+            tmp.append(j)
+    if (len(tmp) == n * 2):
+        tmp2 = []
+        for j in range(n):
+            tmp2.append(a[tmp[2 * j]][tmp[2 * j + 1]])
+        ans = max(ans, xor(tmp2))
+print(ans)
+
+=======
+Suggestion 6
+
+def f(n, a):
+    if n == 0:
+        return 0
+    if n == 1:
+        return a[0][1]
+    if n == 2:
+        return a[0][1] ^ a[0][2] ^ a[1][2]
+    if n == 3:
+        return a[0][1] ^ a[0][2] ^ a[0][3] ^ a[1][2] ^ a[1][3] ^ a[2][3]
+    res = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                res = max(res, a[i][j] ^ a[i][k] ^ a[j][k] ^ f(n - 3, a))
+    return res
+
+n = int(input())
+a = []
+for i in range(n):
+    a.append(list(map(int, input().split())))
+print(f(n, a))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int,input().split())))
+    B = []
+    for i in range(N):
+        tmp = []
+        for j in range(i+1,N):
+            tmp.append(A[i][j])
+        B.append(tmp)
+    #print(B)
+    #print(B[0][0]^B[1][0]^B[2][0]^B[3][0])
+    #print(B[0][1]^B[1][1]^B[2][1]^B[3][1])
+    #print(B[0][0]^B[1][0]^B[2][0]^B[3][0] ^ B[0][1]^B[1][1]^B[2][1]^B[3][1])
+    #print(B[0][0]^B[1][0]^B[2][0]^B[3][0] ^ B[0][1]^B[1][1]^B[2][1]^B[3][1] ^ B[0][2]^B[1][2]^B[2][2]^B[3][2])
+    #print(B[0][0]^B[1][0]^B[2][0]^B[3][0] ^ B[0][1]^B[1][1]^B[2][1]^B[3][1] ^ B[0][2]^B[1][2]^B[2][2]^B[3][2] ^ B[0][3]^B[1][3]^B[2][3]^B[3][3])
+    #print(B[0][0]^B[1][0]^B[2][0]^B[3][0] ^ B[0][1]^B[1][1]^B[2][1]^B[3][1] ^ B[0][2]^B[1][2]^B[2][2]^B[3][2] ^ B[0][3]^B[1][3]^B[2][3]^B[3][3] ^ B[0][4]^B[1][4]^B[2][4]^B[3][4])
+    #print(B[0][0]^B[1][0]^B
+
+=======
+Suggestion 8
+
+def calc_xor(list1):
+    xor = 0
+    for i in list1:
+        xor = xor ^ i
+    return xor
+
+N = int(input())
+A = []
+for i in range(N):
+    A.append(list(map(int, input().split())))
+
+max_xor = 0
+for i in range(2**N):
+    pair_list = []
+    for j in range(N):
+        if (i >> j) & 1 == 1:
+            pair_list.append(j)
+    if len(pair_list) == 2:
+        max_xor = max(max_xor, A[pair_list[0]][pair_list[1]])
+    elif len(pair_list) > 2:
+        xor_list = []
+        for k in range(len(pair_list)-1):
+            xor_list.append(A[pair_list[k]][pair_list[k+1]])
+        max_xor = max(max_xor, calc_xor(xor_list))
+
+print(max_xor)
+
+=======
+Suggestion 9
+
+def xor(a, b):
+    return a ^ b
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

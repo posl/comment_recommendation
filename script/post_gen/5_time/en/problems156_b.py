@@ -1,38 +1,91 @@
-#Problem Statement
-#Given is an integer N. Find the number of digits that N has in base K.
-#
-#Notes
-#For information on base-K representation, see Positional notation - Wikipedia.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^9
-#2 ≦ K ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#
-#Output
-#Print the number of digits that N has in base K.
-#
-#Sample Input 1
-#11 2
-#
-#Sample Output 1
-#4
-#In binary, 11 is represented as 1011.
-#
-#Sample Input 2
-#1010101 10
-#
-#Sample Output 2
-#7
-#
-#Sample Input 3
-#314159265 3
-#
-#Sample Output 3
-#18
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    while n > 0:
+        n //= k
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    count = 0
+    while N > 0:
+        N = N // K
+        count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    count = 0
+    while n > 0:
+        n = n // k
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    count = 0
+    while N > 0:
+        N //= K
+        count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    while n > 0:
+        ans += 1
+        n = n // k
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = input().split()
+    N = int(N)
+    K = int(K)
+    count = 0
+    while N > 0:
+        N = N // K
+        count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    while N != 0:
+        ans += 1
+        N //= K
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    digit = 0
+    while n >= k:
+        n = n // k
+        digit += 1
+    print(digit + 1)

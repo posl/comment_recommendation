@@ -1,46 +1,143 @@
-#Problem Statement
-#You are given six integers: h_1, h_2, h_3, w_1, w_2, and w_3.
-#Consider writing a positive integer on each square of a 3 × 3 grid so that all of the following conditions are satisfied:
-#For i=1,2,3, the sum of numbers written in the i-th row from the top is h_i.
-#For j=1,2,3, the sum of numbers written in the j-th column from the left is w_i.
-#For example, if (h_1, h_2, h_3) = (5, 13, 10) and (w_1, w_2, w_3) = (6, 13, 9), then all of the following three ways satisfy the conditions.  (There are other ways to satisfy the conditions.)
-#How many ways are there to write numbers to satisfy the conditions?
-#
-#Constraints
-#3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#h_1 h_2 h_3 w_1 w_2 w_3
-#
-#Output
-#Print the number of ways to write numbers to satisfy the conditions.
-#
-#Sample Input 1
-#3 4 6 3 3 7
-#
-#Sample Output 1
-#1
-#The following is the only way to satisfy the conditions.  Thus, 1 should be printed.
-#
-#Sample Input 2
-#3 4 5 6 7 8
-#
-#Sample Output 2
-#0
-#There may not be a way to satisfy the conditions.
-#
-#Sample Input 3
-#5 13 10 6 13 9
-#
-#Sample Output 3
-#120
-#
-#Sample Input 4
-#20 25 30 22 29 24
-#
-#Sample Output 4
-#30613
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h1,h2,h3,w1,w2,w3 = map(int,input().split())
+    if (h1+h2+h3) == (w1+w2+w3):
+        print("1")
+    else:
+        print("0")
+
+=======
+Suggestion 2
+
+def main():
+    h1,h2,h3,w1,w2,w3 = map(int,input().split())
+    if (h1+h2+h3) != (w1+w2+w3):
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print((h1*h2*h3)%(10**9+7))
+
+=======
+Suggestion 4
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    print((h1+h2+h3)*(w1+w2+w3)//(h1+h2+h3+w1+w2+w3))
+
+=======
+Suggestion 5
+
+def main():
+    h1,h2,h3,w1,w2,w3 = map(int,input().split())
+    if h1+w2==h2+w1 and h2+w3==h3+w2 and h1+w3==h3+w1:
+        print('1')
+    else:
+        print('0')
+
+=======
+Suggestion 6
+
+def main():
+    h1, h2, h3, w1, w2, w3 = map(int, input().split())
+    ans = 0
+    ans += (h1-1)*(w1-1)
+    ans += (h1-1)*(w2-1)
+    ans += (h1-1)*(w3-1)
+    ans += (h2-1)*(w1-1)
+    ans += (h2-1)*(w2-1)
+    ans += (h2-1)*(w3-1)
+    ans += (h3-1)*(w1-1)
+    ans += (h3-1)*(w2-1)
+    ans += (h3-1)*(w3-1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def f(x):
+    return 1 if x == 0 else x * f(x-1)
+
+h1, h2, h3, w1, w2, w3 = map(int, input().split())
+
+print(f(h1+h2+h3)//f(h1)//f(h2)//f(h3)//f(w1)//f(w2)//f(w3))
+
+=======
+Suggestion 8
+
+def solve():
+    h = [int(i) for i in input().split()]
+    w = [int(i) for i in input().split()]
+
+    def is_valid(h, w):
+        if sum(h) != sum(w):
+            return False
+        for i in range(3):
+            if h[i] + h[(i + 1) % 3] < w[i] + w[(i + 1) % 3]:
+                return False
+        return True
+
+    def f(n):
+        return 1 if n == 0 else n * f(n - 1)
+
+    if is_valid(h, w):
+        print(f(sum(h)) // f(h[0]) // f(h[1]) // f(h[2]))
+    else:
+        print(0)
+
+solve()
+
+=======
+Suggestion 9
+
+def solve(h1,h2,h3,w1,w2,w3):
+    grid = [0]*9
+    for i in range(3):
+        grid[i] = h1//3
+        if i < h1%3:
+            grid[i] += 1
+    for i in range(3):
+        grid[i+3] = h2//3
+        if i < h2%3:
+            grid[i+3] += 1
+    for i in range(3):
+        grid[i+6] = h3//3
+        if i < h3%3:
+            grid[i+6] += 1
+    for i in range(3):
+        grid[i*3] -= w1//3
+        if i < w1%3:
+            grid[i*3] -= 1
+    for i in range(3):
+        grid[i*3+1] -= w2//3
+        if i < w2%3:
+            grid[i*3+1] -= 1
+    for i in range(3):
+        grid[i*3+2] -= w3//3
+        if i < w3%3:
+            grid[i*3+2] -= 1
+    if grid[0] == grid[1] == grid[2] == grid[3] == grid[4] == grid[5] == grid[6] == grid[7] == grid[8]:
+        return 1
+    else:
+        return 0
+
+h1,h2,h3,w1,w2,w3 = map(int,input().split())
+print(solve(h1,h2,h3,w1,w2,w3))
+
+=======
+Suggestion 10
+
+def perm(n, r):
+    if n < r:
+        return 0
+    else:
+        return fact(n) // fact(n - r)

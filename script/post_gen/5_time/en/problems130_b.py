@@ -1,35 +1,137 @@
-#Problem Statement
-#A ball will bounce along a number line, making N + 1 bounces. It will make the first bounce at coordinate D_1 = 0, and the i-th bounce (2 ≦ i ≦ N+1) at coordinate D_i = D_{i-1} + L_{i-1}.
-#How many times will the ball make a bounce where the coordinate is at most X?
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ L_i ≦ 100
-#1 ≦ X ≦ 10000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#L_1 L_2 ... L_{N-1} L_N
-#
-#Output
-#Print the number of times the ball will make a bounce where the coordinate is at most X.
-#
-#Sample Input 1
-#3 6
-#3 4 5
-#
-#Sample Output 1
-#2
-#The ball will make a bounce at the coordinates 0, 3, 7 and 12, among which two are less than or equal to 6.
-#
-#Sample Input 2
-#4 9
-#3 3 3 3
-#
-#Sample Output 2
-#4
-#The ball will make a bounce at the coordinates 0, 3, 6, 9 and 12, among which four are less than or equal to 9.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    L = list(map(int, input().split()))
+    D = [0]
+    for i in range(N):
+        D.append(D[i] + L[i])
+    print(len([i for i in D if i <= X]))
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    l = list(map(int, input().split()))
+    d = [0]
+    for i in range(n):
+        d.append(d[i] + l[i])
+    print(len([i for i in d if i <= x]))
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    L = list(map(int, input().split()))
+    D = [0]
+    for i in range(N):
+        D.append(D[i] + L[i])
+    count = 0
+    for i in range(N+1):
+        if D[i] <= X:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    L = list(map(int, input().split()))
+
+    D = [0]
+    for i in range(N):
+        D.append(D[i] + L[i])
+
+    cnt = 0
+    for d in D:
+        if d <= X:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def solve():
+    N, X = map(int, input().split())
+    L = list(map(int, input().split()))
+
+    D = [0] * (N+1)
+    for i in range(1, N+1):
+        D[i] = D[i-1] + L[i-1]
+
+    count = 0
+    for i in range(N+1):
+        if D[i] <= X:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n,x = map(int, input().split())
+    l = list(map(int, input().split()))
+    d = 0
+    count = 1
+    for i in range(n):
+        d += l[i]
+        if d <= x:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def problems130_b():
+    n, x = map(int, input().split())
+    l = list(map(int, input().split()))
+    d = [0]
+    for i in range(1, n + 1):
+        d.append(d[i - 1] + l[i - 1])
+    print(sum([1 for i in d if i <= x]))
+
+=======
+Suggestion 8
+
+def main():
+    N,X = map(int,input().split())
+    L = list(map(int,input().split()))
+    D = 0
+    for i in range(N):
+        D += L[i]
+        if D > X:
+            print(i+1)
+            exit()
+    print(N+1)
+
+=======
+Suggestion 9
+
+def problems130_b():
+    n, x = map(int, input().split())
+    l = list(map(int, input().split()))
+    d = 0
+    count = 1
+    for i in range(len(l)):
+        d += l[i]
+        if d <= x:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    L = map(int, input().split())
+    D = [0]
+    for i in L:
+        D.append(D[-1] + i)
+    print(sum([1 for i in D if i <= X]))

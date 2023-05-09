@@ -1,30 +1,66 @@
-#Problem Statement
-#Serval, Fennec, and Raccoon played rock-paper-scissors and had a draw.
-#You are given characters x and y representing the hand thrown by Fennec and Raccoon, respectively. Here, 0 stands for rock, 1 stands for scissors, and 2 stands for paper.
-#Print the character corresponding to the hand thrown by Serval, which can be uniquely determined.
-#
-#Constraints
-#Each of x and y is 0, 1, or 2.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x y
-#
-#Output
-#Print the answer, which should be 0 for rock, 1 for scissors, or 2 for paper.
-#
-#Sample Input 1
-#0 1
-#
-#Sample Output 1
-#2
-#Fennec threw rock, and Raccoon threw scissors. To have a draw, Serval must have thrown paper.
-#
-#Sample Input 2
-#0 0
-#
-#Sample Output 2
-#0
-#Fennec threw rock, and Raccoon threw rock. To have a draw, Serval must have thrown rock.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    elif x == 0 and y == 1:
+        print(2)
+    elif x == 0 and y == 2:
+        print(1)
+    elif x == 1 and y == 0:
+        print(1)
+    elif x == 1 and y == 2:
+        print(2)
+    elif x == 2 and y == 0:
+        print(2)
+    elif x == 2 and y == 1:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3-(x+y))
+
+=======
+Suggestion 4
+
+def solve(x, y):
+    if (x == y):
+        return x
+    else:
+        return 3 - (x + y)
+
+=======
+Suggestion 5
+
+def solve(x,y):
+    if x == y:
+        return x
+    else:
+        return 3-x-y
+
+=======
+Suggestion 6
+
+def get_input():
+    x,y = input().split()
+    return x,y

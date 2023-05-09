@@ -1,52 +1,156 @@
-#Problem Statement
-#We have N bricks arranged in a row from left to right.
-#The i-th brick from the left (1 ≦ i ≦ N) has an integer a_i written on it.
-#Among them, you can break at most N-1 bricks of your choice.
-#Let us say there are K bricks remaining. Snuke will be satisfied if, for each integer i (1 ≦ i ≦ K), the i-th of those brick from the left has the integer i written on it.
-#Find the minimum number of bricks you need to break to satisfy Snuke's desire. If his desire is unsatisfiable, print -1 instead.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 200000
-#1 ≦ a_i ≦ N
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 a_2 ... a_N
-#
-#Output
-#Print the minimum number of bricks that need to be broken to satisfy Snuke's desire, or print -1 if his desire is unsatisfiable.
-#
-#Sample Input 1
-#3
-#2 1 2
-#
-#Sample Output 1
-#1
-#If we break the leftmost brick, the remaining bricks have integers 1 and 2 written on them from left to right, in which case Snuke will be satisfied.
-#
-#Sample Input 2
-#3
-#2 2 2
-#
-#Sample Output 2
-#-1
-#In this case, there is no way to break some of the bricks to satisfy Snuke's desire.
-#
-#Sample Input 3
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#Sample Output 3
-#7
-#
-#Sample Input 4
-#1
-#1
-#
-#Sample Output 4
-#0
-#There may be no need to break the bricks at all.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if n == 1:
+        if a[0] == 1:
+            print(0)
+        else:
+            print(-1)
+        return
+    if a[0] != 1:
+        print(-1)
+        return
+    ans = 0
+    for i in range(1, n):
+        if a[i] == 1:
+            ans += 1
+        elif a[i] - a[i - 1] == 1:
+            continue
+        else:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] == i+1:
+            ans += 1
+    if ans == n:
+        print(-1)
+    else:
+        print(n-ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if a[i] == i+1:
+            ans += 1
+    if ans == N:
+        print(-1)
+    else:
+        print(N-ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] == i+1:
+            ans += 1
+    if ans == N:
+        print(-1)
+    else:
+        print(N-ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    if N == 1:
+        if a[0] == 1:
+            print(0)
+        else:
+            print(-1)
+    else:
+        if a[0] == 1:
+            count = 0
+            for i in range(1, N):
+                if a[i] == a[i-1] + 1:
+                    count += 1
+                else:
+                    break
+            print(N - count - 1)
+        else:
+            print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    broken = 0
+    for i in range(n):
+        if a[i] == i+1:
+            broken += 1
+    if broken == n:
+        print(-1)
+    else:
+        print(n - broken)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    if 1 not in a:
+        print(-1)
+    else:
+        count = 0
+        for i in range(N):
+            if a[i] == count + 1:
+                count += 1
+        print(N - count)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1からNまでの整数がそれぞれ何個あるか数える
+    cnt = [0] * (N + 1)
+    for a in A:
+        cnt[a] += 1
+
+    # 1からNまでの整数がそれぞれ何個あるか数えた結果、
+    # 1からNまでの整数が1個ずつあるものを数える
+    ans = 0
+    for i in range(1, N + 1):
+        if cnt[i] == 1:
+            ans += 1
+
+    # 1からNまでの整数が1個ずつあるものの個数を答える
+    if ans == 0:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 9
+
+def get_int():
+    return int(input())

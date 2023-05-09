@@ -1,63 +1,145 @@
-#Problem Statement
-#There are N sequences of integers.
-#The i-th (1 ≦ i ≦ N) sequence has L_i terms; the j-th (1 ≦ j ≦ L_i) term of the i-th sequence is a_{i, j}.
-#You are given Q queries.  For the k-th (1 ≦ k ≦ Q) query, given integers s_k and t_k, find the t_k-th term of the s_k-th sequence.
-#
-#Constraints
-#1 ≦ N, Q ≦ 2 × 10^5
-#L_i ≧ 1  (1 ≦ i ≦ N)
-#sum_{i=1}^N L_i ≦ 2 × 10^5
-#1 ≦ a_{i, j} ≦ 10^9  (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k}  (1 ≦ k ≦ Q)
-#All values in the input are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N Q
-#L_1 a_{1, 1} ... a_{1, L_1}
-#.
-#.
-#.
-#L_N a_{N, 1} ... a_{N, L_N}
-#s_1 t_1
-#.
-#.
-#.
-# 
-#s_Q t_Q
-#
-#Output
-#Print Q lines.  The k-th (1 ≦ k ≦ Q) line should contain the answer to the k-th query.
-#
-#Sample Input 1
-#2 2
-#3 1 4 7
-#2 5 9
-#1 3
-#2 1
-#
-#Sample Output 1
-#7
-#5
-#The 1-st sequence is (1, 4, 7) and the 2-nd is (5, 9).
-#The answer to each query is as follows:
-#The 3-rd term of the 1-st sequence is 7.
-#The 1-st term of the 2-nd sequence is 5.
-#
-#Sample Input 2
-#3 4
-#4 128 741 239 901
-#2 1 1
-#3 314 159 26535
-#1 1
-#2 2
-#3 3
-#1 4
-#
-#Sample Output 2
-#128
-#1
-#26535
-#901
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    A = []
+    for i in range(N):
+        l, *a = map(int, input().split())
+        L.append(l)
+        A.append(a)
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t-1])
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    seq = []
+    for i in range(N):
+        seq.append(list(map(int, input().split())))
+    queries = []
+    for i in range(Q):
+        queries.append(list(map(int, input().split())))
+    for i in range(Q):
+        print(seq[queries[i][0]-1][queries[i][1]-1])
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    sequences = []
+    for _ in range(n):
+        sequences.append(list(map(int, input().split())))
+    queries = []
+    for _ in range(q):
+        queries.append(list(map(int, input().split())))
+    for query in queries:
+        print(sequences[query[0]-1][query[1]-1])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = []
+    for _ in range(N):
+        A.append(list(map(int, input().split())))
+
+    for _ in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t-1])
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s - 1][t - 1])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    S = []
+    T = []
+    for i in range(Q):
+        s, t = map(int, input().split())
+        S.append(s)
+        T.append(t)
+    for i in range(Q):
+        print(L[S[i] - 1][T[i] - 1])
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    seq = []
+    for i in range(n):
+        seq.append(list(map(int, input().split())))
+    query = []
+    for j in range(q):
+        query.append(list(map(int, input().split())))
+    for k in range(q):
+        print(seq[query[k][0]-1][query[k][1]-1])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    a = []
+    for i in range(N):
+        a.append(list(map(int, input().split()))[1:])
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    #print(N, Q)
+    L = []
+    a = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+        a.append(list(map(int, input().split())))
+    #print(L)
+    #print(a)
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t-1])
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+
+    # 2次元配列を作成
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    # クエリを処理
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t-1])

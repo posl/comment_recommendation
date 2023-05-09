@@ -1,37 +1,135 @@
-#Problem Statement
-#Takahashi threw three dice, and they showed three numbers a, b, and c.
-#If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
-#
-#Constraints
-#1 ≦ a,b,c ≦ 6
-#All of a, b, and c are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#a b c
-#
-#Output
-#If there are two same numbers among a, b, and c, print the remaining number. Otherwise, print 0.
-#
-#Sample Input 1
-#2 5 2
-#
-#Sample Output 1
-#5
-#The first and third dice both showed 2, so we should print the number on the remaining dice, which is 5.
-#
-#Sample Input 2
-#4 5 6
-#
-#Sample Output 2
-#0
-#Any two numbers are different, so we should print 0.
-#
-#Sample Input 3
-#1 1 1
-#
-#Sample Output 3
-#1
-#Any two numbers are the same. Whichever two dice we choose, the number on the remaining dice will be 1.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def solve():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    a = list(map(int, input().strip().split()))
+    if a[0] == a[1]:
+        print(a[2])
+    elif a[0] == a[2]:
+        print(a[1])
+    elif a[1] == a[2]:
+        print(a[0])
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def dice(a,b,c):
+    if a==b:
+        return c
+    elif b==c:
+        return a
+    elif c==a:
+        return b
+    else:
+        return 0
+
+a,b,c = map(int, input().split())
+print(dice(a,b,c))
+
+=======
+Suggestion 7
+
+def func(a,b,c):
+    if a==b:
+        return c
+    elif a==c:
+        return b
+    elif b==c:
+        return a
+    else:
+        return 0
+
+a,b,c = map(int,input().split())
+print(func(a,b,c))
+
+=======
+Suggestion 8
+
+def main():
+    input = sys.stdin.readline
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    a,b,c = map(int, input().split())
+
+    # compute
+
+    # output
+    if a==b:
+        print(c)
+    elif a==c:
+        print(b)
+    elif b==c:
+        print(a)
+    else:
+        print(0)

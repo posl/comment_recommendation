@@ -1,76 +1,182 @@
-#Problem Statement
-#N examinees took an entrance exam.
-#The examinee numbered i scored A_i points in math and B_i points in English.
-#The admissions are determined as follows.
-#X examinees with the highest math scores are admitted.
-#Then, among the examinees who are not admitted yet, Y examinees with the highest English scores are admitted.
-#Then, among the examinees who are not admitted yet, Z examinees with the highest total scores in math and English are admitted.
-#Those examinees who are not admitted yet are rejected.
-#Here, in each of the steps 1. to 3., ties are broken by examinees' numbers: an examinee with the smaller examinee's number is prioritized.  See also Sample Input and Outputs.
-#Print the examinees' numbers of the admitted examinees determined by the steps above in ascending order, separated by newlines.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 1000
-#0 ≦ X,Y,Z ≦ N
-#1 ≦ X+Y+Z ≦ N
-#0 ≦ A_i,B_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X Y Z
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_N
-#
-#Output
-#Print the examinees' number of the admitted examinees in ascending order, separated by newlines.
-#
-#Sample Input 1
-#6 1 0 2
-#80 60 80 60 70 70
-#40 20 50 90 90 80
-#
-#Sample Output 1
-#1
-#4
-#5
-#First, 1 examinee with the highest math score is admitted.
-#Examinee 1 is tied with Examinee 3, scoring the highest 80 points in math, and the tie is broken by the examinees' numbers, so Examinee 1 is admitted.
-#Then, among the examinees who are not admitted yet, 0 examinees with the highest English scores are admitted.
-#Obviously, it does not affect the admissions.
-#Then, among the examinees who are not admitted yet, 2 examinees with the highest total scores in math and English are admitted.
-#First, among the examinees who are not admitted yet, Examinee 5 is admitted, scoring the highest total score of 160 points.
-#Next, among the examinees who are not admitted yet, Examinee 4 is tied with Examinee 6, scoring a total score of 150 points.  The tie is broken by the examinees' numbers, and Examinee 4 is admitted.
-#
-#Therefore, the examinees' numbers of the admitted examinees are 1, 4, and 5.  Print them in ascending order.
-#
-#Sample Input 2
-#5 2 1 2
-#0 100 0 100 0
-#0 0 100 100 0
-#
-#Sample Output 2
-#1
-#2
-#3
-#4
-#5
-#All examinees may be admitted.
-#
-#Sample Input 3
-#15 4 3 2
-#30 65 20 95 100 45 70 85 20 35 95 50 40 15 85
-#0 25 45 35 65 70 80 90 40 55 20 20 45 75 100
-#
-#Sample Output 3
-#2
-#4
-#5
-#6
-#7
-#8
-#11
-#14
-#15
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = []
+    for i in range(N):
+        C.append([i+1, A[i], B[i], A[i] + B[i]])
+    C.sort(key=lambda x: x[3], reverse=True)
+    C.sort(key=lambda x: x[2], reverse=True)
+    C.sort(key=lambda x: x[1], reverse=True)
+    for i in range(X+Y+Z):
+        print(C[i][0])
+
+=======
+Suggestion 2
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    AB = []
+    for i in range(N):
+        AB.append([i+1, A[i], B[i], A[i]+B[i]])
+    AB.sort(key=lambda x: x[3], reverse=True)
+    AB.sort(key=lambda x: x[2], reverse=True)
+    AB.sort(key=lambda x: x[1], reverse=True)
+
+    AB = AB[:X+Y+Z]
+
+    AB.sort(key=lambda x: x[0])
+
+    for i in range(len(AB)):
+        print(AB[i][0])
+
+=======
+Suggestion 3
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    AB = [(A[i], B[i], i+1) for i in range(N)]
+    AB.sort(key = lambda x: x[2])
+    AB.sort(key = lambda x: x[1], reverse=True)
+    AB.sort(key = lambda x: x[0], reverse=True)
+    for i in range(X):
+        print(AB[i][2])
+    for i in range(Y):
+        print(AB[i+X][2])
+    for i in range(Z):
+        print(AB[i+X+Y][2])
+
+=======
+Suggestion 4
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = [i for i in range(1, N+1)]
+    D = list(zip(C, A, B))
+    D.sort(key=lambda x: x[2], reverse=True)
+    D.sort(key=lambda x: x[1], reverse=True)
+    D.sort(key=lambda x: x[1]+x[2], reverse=True)
+    for i in range(X+Y+Z):
+        print(D[i][0])
+
+=======
+Suggestion 5
+
+def main():
+    n, x, y, z = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = [i for i in range(1, n + 1)]
+    d = list(zip(a, b, c))
+    d.sort(key=lambda x: x[2], reverse=True)
+    d.sort(key=lambda x: x[1], reverse=True)
+    d.sort(key=lambda x: x[0], reverse=True)
+    print(*[i[2] for i in d[:x]], sep="\n")
+
+=======
+Suggestion 6
+
+def main():
+    n, x, y, z = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(zip(range(1, n+1), a, b))
+    c = sorted(c, key=lambda x: -x[1])
+    c = sorted(c[:x+y+z], key=lambda x: -x[2]-x[1])
+    for i in range(x+y+z):
+        print(c[i][0])
+
+=======
+Suggestion 7
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A_B = []
+    for i in range(N):
+        A_B.append([A[i], B[i], i+1])
+    A_B.sort(key=lambda x: x[2])
+    A_B.sort(key=lambda x: x[1], reverse=True)
+    A_B.sort(key=lambda x: x[0], reverse=True)
+    for i in range(X):
+        print(A_B[i][2])
+    for i in range(Y):
+        print(A_B[X+i][2])
+    for i in range(Z):
+        print(A_B[X+Y+i][2])
+
+=======
+Suggestion 8
+
+def main():
+    # Get input
+    n, x, y, z = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # Solve
+    c = []
+    for i in range(n):
+        c.append([i+1, a[i], b[i], a[i]+b[i]])
+
+    c.sort(key=lambda x: x[3], reverse=True)
+    c.sort(key=lambda x: x[2], reverse=True)
+    c.sort(key=lambda x: x[1], reverse=True)
+
+    output = []
+    for i in range(x):
+        output.append(c[i][0])
+
+    for i in range(y):
+        output.append(c[i+x][0])
+
+    for i in range(z):
+        output.append(c[i+x+y][0])
+
+    output.sort()
+
+    # Print result
+    for i in range(len(output)):
+        print(output[i])
+
+=======
+Suggestion 9
+
+def main():
+    # Get input
+    n, x, y, z = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # Sort by score
+    c = []
+    for i in range(n):
+        c.append([i + 1, a[i], b[i]])
+    c.sort(key=lambda x: x[1] + x[2], reverse=True)
+
+    # Admit
+    d = []
+    for i in range(x):
+        d.append(c[i][0])
+    for i in range(x, x + y):
+        d.append(c[i][0])
+    for i in range(x + y, x + y + z):
+        d.append(c[i][0])
+    d.sort()
+
+    # Print output
+    for i in range(len(d)):
+        print(d[i])

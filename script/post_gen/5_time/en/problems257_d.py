@@ -1,56 +1,202 @@
-#Problem Statement
-#There are N trampolines on a two-dimensional planar town where Takahashi lives.  The i-th trampoline is located at the point (x_i, y_i) and has a power of P_i.  Takahashi's jumping ability is denoted by S.  Initially, S=0.  Every time Takahashi trains, S increases by 1.
-#Takahashi can jump from the i-th to the j-th trampoline if and only if:
-#P_iS≧ |x_i - x_j| +|y_i - y_j|.
-#Takahashi's objective is to become able to choose a starting trampoline such that he can reach any trampoline from the chosen one with some jumps.
-#At least how many times does he need to train to achieve his objective?
-#
-#Constraints
-#2 ≦ N ≦ 200
-#-10^9 ≦ x_i,y_i ≦ 10^9
-#1 ≦ P_i ≦ 10^9
-#(x_i, y_i) ≠ (x_j,y_j) (i≠ j)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1 P_1
-#.
-#.
-#.
-#x_N y_N P_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4
-#-10 0 1
-#0 0 5
-#10 0 1
-#11 0 1
-#
-#Sample Output 1
-#2
-#If he trains twice, S=2,
-#in which case he can reach any trampoline from the 2-nd one.
-#For example, he can reach the 4-th trampoline as follows.
-#Jump from the 2-nd to the 3-rd trampoline.  (Since P_2 S = 10 and |x_2-x_3| + |y_2-y_3| = 10, it holds that P_2 S ≧ |x_2-x_3| + |y_2-y_3|.)
-#Jump from the 3-rd to the 4-th trampoline.  (Since P_3 S = 2 and |x_3-x_4| + |y_3-y_4| = 1, it holds that P_3 S ≧ |x_3-x_4| + |y_3-y_4|.)
-#
-#
-#Sample Input 2
-#7
-#20 31 1
-#13 4 3
-#-10 -15 2
-#34 26 5
-#-2 39 4
-#0 -50 1
-#5 -20 2
-#
-#Sample Output 2
-#18
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    trampolines = []
+    for _ in range(N):
+        x, y, p = map(int, input().split())
+        trampolines.append((x, y, p))
+    adj = [[False] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            xi, yi, pi = trampolines[i]
+            xj, yj, pj = trampolines[j]
+            if pi * 1 >= abs(xi - xj) + abs(yi - yj):
+                adj[i][j] = True
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                adj[i][j] |= adj[i][k] and adj[k][j]
+    ans = 1 << 30
+    for i in range(N):
+        ok = True
+        for j in range(N):
+            if not adj[i][j]:
+                ok = False
+                break
+        if not ok:
+            continue
+        cnt = 0
+        for j in range(N):
+            if adj[j][i]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    trampolines = []
+    for i in range(n):
+        x, y, p = map(int, input().split())
+        trampolines.append((x, y, p))
+    ans = 1e9
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            xi, yi, pi = trampolines[i]
+            xj, yj, pj = trampolines[j]
+            d = abs(xi - xj) + abs(yi - yj)
+            ans = min(ans, (d + pi - 1) // pi)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    p = []
+    for i in range(n):
+        x_i, y_i, p_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        p.append(p_i)
+    ans = 10**9
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            d = abs(x[i] - x[j]) + abs(y[i] - y[j])
+            ans = min(ans, (p[i] * d + 1) // 2)
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    x = []
+    y = []
+    p = []
+    for i in range(N):
+        xi, yi, pi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+        p.append(pi)
+    ans = 10**9
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            d = abs(x[i] - x[j]) + abs(y[i] - y[j])
+            ans = min(ans, d // p[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input():
+    N = int(input())
+    trampolines = []
+    for _ in range(N):
+        x, y, p = map(int, input().split())
+        trampolines.append((x, y, p))
+    return trampolines
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for _ in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    # print(N, x, y, P)
+    # print()
+
+    # ダイクストラ法
+    dist = [[float('inf')] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if P[i] * abs(x[i] - x[j]) + P[i] * abs(y[i] - y[j]) >= P[j]:
+                dist[i][j] = 1
+    # print(dist)
+
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    # print(dist)
+
+    # 1つのトランポリンから全てのトランポリンに行けるか
+    for i in range(N):
+        for j in range(N):
+            if dist[i][j] == float('inf'):
+                print(-1)
+                return
+
+    # トランポリンから全てのトランポリンに行ける場合の最小の訓練回数
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            ans = max(ans, dist[i][j])
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    #N = int(input())
+    #N, K = map(int, input().split())
+    #N, K, M = map(int, input().split())
+    N = int(input())
+    #A = list(map(int, input().split()))
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    #A = [list(map(int, input().split())) for _ in range(N)]
+    A = [list(map(int, input().split())) for _ in range(N)]
+    print(A)
+    #print(*ans, sep="\n")
+
+=======
+Suggestion 8
+
+def input():
+    return sys.stdin.readline()[:-1]
+
+=======
+Suggestion 9
+
+def main():
+    return 0
+
+=======
+Suggestion 10
+
+def solve():
+    return 0

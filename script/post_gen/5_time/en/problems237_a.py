@@ -1,37 +1,103 @@
-#Problem Statement
-#You are given an integer N.
-#If N is between -2^{31} and 2^{31}-1 (inclusive), print Yes; otherwise, print No.
-#
-#Constraints
-#-2^{63} ≦ N < 2^{63}
-#N is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#If N is between -2^{31} and 2^{31}-1 (inclusive), print Yes; otherwise, print No.
-#
-#Sample Input 1
-#10
-#
-#Sample Output 1
-#Yes
-#10 is between -2^{31} and 2^{31}-1, so Yes should be printed.
-#
-#Sample Input 2
-#-9876543210
-#
-#Sample Output 2
-#No
-#-9876543210 is less than -2^{31}, so No should be printed.
-#
-#Sample Input 3
-#483597848400000
-#
-#Sample Output 3
-#No
-#483597848400000 is greater than 2^{31}-1, so No should be printed.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n >= -2**31 and n <= 2**31-1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N >= -2**31 and N <= 2**31-1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if -2**31 <= N and N <= 2**31-1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if -2**31 <= N <= 2**31-1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n >= -2**31 and n <= 2**31 - 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    num = int(input())
+    if num >= -2**31 and num <= 2**31-1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = input()
+    if int(n) >= -2**31 and int(n) <= 2**31-1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    if N < -2**31 or N > 2**31 - 1:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    if -2**31 <= N <= 2**31 - 1:
+        print('Yes')
+    else:
+        print('No')
+solve()
+
+=======
+Suggestion 10
+
+def is_between(n):
+    if -2**31 <= n <= 2**31-1:
+        return True
+    else:
+        return False
+
+n = int(input())

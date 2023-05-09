@@ -1,36 +1,67 @@
-#Problem Statement
-#For an integer n, let S(n) be the sum of digits in the decimal notation of n. For example, we have S(123) = 1 + 2 + 3 = 6.
-#Given two 3-digit integers A and B, find the greater of S(A) and S(B).
-#
-#Constraints
-#All values in input are integers.
-#100 ≦ A, B ≦ 999
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the value of the greater of S(A) and S(B).
-#If these are equal, print S(A).
-#
-#Sample Input 1
-#123 234
-#
-#Sample Output 1
-#9
-#We have S(123) = 1 + 2 + 3 = 6 and S(234) = 2 + 3 + 4 = 9, so we should print the greater of these: 9.
-#
-#Sample Input 2
-#593 953
-#
-#Sample Output 2
-#17
-#
-#Sample Input 3
-#100 999
-#
-#Sample Output 3
-#27
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+a, b = map(int, input().split())
+print(max(sum_digits(a), sum_digits(b)))
+
+=======
+Suggestion 2
+
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+A, B = map(int, input().split())
+print(max(sum_digits(A), sum_digits(B)))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(max(sum([int(i) for i in str(a)]), sum([int(i) for i in str(b)])))
+
+=======
+Suggestion 4
+
+def sum_digits(num):
+    sum = 0
+    while num > 0:
+        sum = sum + num % 10
+        num = num // 10
+    return sum
+
+a, b = map(int, input().split())
+print(max(sum_digits(a), sum_digits(b)))
+
+=======
+Suggestion 5
+
+def sum_digits(num):
+    sum = 0
+    while num != 0:
+        sum += num % 10
+        num = num // 10
+    return sum
+
+A, B = map(int, input().split())
+
+=======
+Suggestion 6
+
+def sum_digits(number):
+    return sum(int(digit) for digit in str(number))
+
+a, b = map(int, input().split())

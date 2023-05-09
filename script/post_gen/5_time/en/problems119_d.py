@@ -1,69 +1,250 @@
-#Problem Statement
-#Along a road running in an east-west direction, there are A shrines and B temples.
-#The i-th shrine from the west is located at a distance of s_i meters from the west end of the road, and the i-th temple from the west is located at a distance of t_i meters from the west end of the road.
-#Answer the following Q queries:
-#Query i (1 ≦ i ≦ Q): If we start from a point at a distance of x_i meters from the west end of the road and freely travel along the road, what is the minimum distance that needs to be traveled in order to visit one shrine and one temple? (It is allowed to pass by more shrines and temples than required.)
-#
-#Constraints
-#1 ≦ A, B ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ s_1 < s_2 < ... < s_A ≦ 10^{10}
-#1 ≦ t_1 < t_2 < ... < t_B ≦ 10^{10}
-#1 ≦ x_i ≦ 10^{10}
-#s_1, ..., s_A, t_1, ..., t_B, x_1, ..., x_Q are all different.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B Q
-#s_1
-#:
-#s_A
-#t_1
-#:
-#t_B
-#x_1
-#:
-#x_Q
-#
-#Output
-#Print Q lines. The i-th line should contain the answer to the i-th query.
-#
-#Sample Input 1
-#2 3 4
-#100
-#600
-#400
-#900
-#1000
-#150
-#2000
-#899
-#799
-#
-#Sample Output 1
-#350
-#1400
-#301
-#399
-#There are two shrines and three temples. The shrines are located at distances of 100, 600 meters from the west end of the road, and the temples are located at distances of 400, 900, 1000 meters from the west end of the road.
-#Query 1: If we start from a point at a distance of 150 meters from the west end of the road, the optimal move is first to walk 50 meters west to visit a shrine, then to walk 300 meters east to visit a temple.
-#Query 2: If we start from a point at a distance of 2000 meters from the west end of the road, the optimal move is first to walk 1000 meters west to visit a temple, then to walk 400 meters west to visit a shrine. We will pass by another temple on the way, but it is fine.
-#Query 3: If we start from a point at a distance of 899 meters from the west end of the road, the optimal move is first to walk 1 meter east to visit a temple, then to walk 300 meters west to visit a shrine.
-#Query 4: If we start from a point at a distance of 799 meters from the west end of the road, the optimal move is first to walk 199 meters west to visit a shrine, then to walk 200 meters west to visit a temple.
-#
-#Sample Input 2
-#1 1 3
-#1
-#10000000000
-#2
-#9999999999
-#5000000000
-#
-#Sample Output 2
-#10000000000
-#10000000000
-#14999999998
-#The road is quite long, and we may need to travel a distance that does not fit into a 32-bit integer.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, Q = map(int, input().split())
+    s = [int(input()) for _ in range(A)]
+    t = [int(input()) for _ in range(B)]
+    x = [int(input()) for _ in range(Q)]
+    for i in range(Q):
+        l = 0
+        r = 0
+        while l < A and s[l] < x[i]:
+            l += 1
+        while r < B and t[r] < x[i]:
+            r += 1
+        if l == A and r == B:
+            print(min(abs(s[-1] - x[i]), abs(t[-1] - x[i])))
+        elif l == A:
+            print(min(abs(s[-1] - x[i]), abs(t[r] - x[i]), abs(t[r] - x[i]) + abs(t[r] - s[-1])))
+        elif r == B:
+            print(min(abs(t[-1] - x[i]), abs(s[l] - x[i]), abs(s[l] - x[i]) + abs(s[l] - t[-1])))
+        else:
+            print(min(abs(s[l] - x[i]), abs(t[r] - x[i]), abs(s[l] - x[i]) + abs(s[l] - t[r]), abs(t[r] - x[i]) + abs(s[l] - t[r])))
+
+=======
+Suggestion 2
+
+def main():
+    A, B, Q = map(int, input().split())
+    S = [int(input()) for _ in range(A)]
+    T = [int(input()) for _ in range(B)]
+    X = [int(input()) for _ in range(Q)]
+
+    for x in X:
+        s1 = s2 = t1 = t2 = 0
+        for i in range(A):
+            if S[i] <= x:
+                s1 = S[i]
+            else:
+                s2 = S[i]
+                break
+        for i in range(B):
+            if T[i] <= x:
+                t1 = T[i]
+            else:
+                t2 = T[i]
+                break
+
+        ans = []
+        ans.append(max(x - s1, x - t1))
+        ans.append(max(s2 - x, t2 - x))
+        ans.append(2 * (x - s1) + (t2 - x))
+        ans.append(2 * (t1 - x) + (x - s2))
+        ans.append((s2 - x) + (x - t1))
+        ans.append((t2 - x) + (x - s1))
+
+        print(min(ans))
+
+=======
+Suggestion 3
+
+def main():
+    A, B, Q = map(int, input().split())
+    S = [int(input()) for _ in range(A)]
+    T = [int(input()) for _ in range(B)]
+    X = [int(input()) for _ in range(Q)]
+    S = [-10**11] + S + [10**11]
+    T = [-10**11] + T + [10**11]
+    from bisect import bisect_left, bisect_right
+    def solve(x):
+        s = bisect_left(S, x)
+        t = bisect_left(T, x)
+        res = 10**11
+        for s0 in [S[s-1], S[s]]:
+            for t0 in [T[t-1], T[t]]:
+                d1 = abs(x-s0) + abs(s0-t0)
+                d2 = abs(x-t0) + abs(t0-s0)
+                res = min(res, d1, d2)
+        return res
+    for x in X:
+        print(solve(x))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, Q = map(int, input().split())
+    s = [0] * (A + 2)
+    t = [0] * (B + 2)
+    x = [0] * Q
+    for i in range(A):
+        s[i + 1] = int(input())
+    for i in range(B):
+        t[i + 1] = int(input())
+    s[A + 1] = 10 ** 11
+    t[B + 1] = 10 ** 11
+    for i in range(Q):
+        x[i] = int(input())
+    for i in range(Q):
+        j = 1
+        k = 1
+        while x[i] > s[j] and j <= A:
+            j += 1
+        while x[i] > t[k] and k <= B:
+            k += 1
+        ans = 10 ** 11
+        for l in range(2):
+            for m in range(2):
+                d1 = abs(x[i] - s[j - 1 + l]) + abs(s[j - 1 + l] - t[k - 1 + m])
+                d2 = abs(x[i] - t[k - 1 + m]) + abs(t[k - 1 + m] - s[j - 1 + l])
+                ans = min(ans, d1, d2)
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    A,B,Q = map(int,input().split())
+    s = [0]*A
+    t = [0]*B
+    x = [0]*Q
+    for i in range(A):
+        s[i] = int(input())
+    for i in range(B):
+        t[i] = int(input())
+    for i in range(Q):
+        x[i] = int(input())
+    s = [-float('inf')]+s+[float('inf')]
+    t = [-float('inf')]+t+[float('inf')]
+    for i in range(Q):
+        l = bisect.bisect_left(s,x[i])
+        r = bisect.bisect_left(t,x[i])
+        ans = float('inf')
+        for j in [s[l-1],s[l]]:
+            for k in [t[r-1],t[r]]:
+                d1 = abs(j-x[i])+abs(k-j)
+                d2 = abs(k-x[i])+abs(j-k)
+                ans = min(ans,d1,d2)
+        print(ans)
+
+=======
+Suggestion 6
+
+def solve(A, B, Q, s, t, x):
+    s = [-float('inf')] + s + [float('inf')]
+    t = [-float('inf')] + t + [float('inf')]
+    from bisect import bisect_left
+    for xi in x:
+        si = bisect_left(s, xi)
+        ti = bisect_left(t, xi)
+        res = float('inf')
+        for sj in [s[si - 1], s[si]]:
+            for tk in [t[ti - 1], t[ti]]:
+                d1 = abs(sj - xi) + abs(tk - sj)
+                d2 = abs(tk - xi) + abs(tk - sj)
+                res = min(res, d1, d2)
+        print(res)
+
+=======
+Suggestion 7
+
+def main():
+    [A, B, Q] = [int(x) for x in input().rstrip().split()]
+    S = [int(input()) for _ in range(A)]
+    T = [int(input()) for _ in range(B)]
+    X = [int(input()) for _ in range(Q)]
+
+    for x in X:
+        sl = 0
+        sr = 0
+        tl = 0
+        tr = 0
+
+        while sl < A and S[sl] < x:
+            sl += 1
+        if sl > 0:
+            sr = sl - 1
+        else:
+            sr = sl
+
+        while tl < B and T[tl] < x:
+            tl += 1
+        if tl > 0:
+            tr = tl - 1
+        else:
+            tr = tl
+
+        ans = 10 ** 10
+
+        for s in [S[sr], S[sl]]:
+            for t in [T[tr], T[tl]]:
+                ans = min(ans, abs(s - x) + abs(t - s))
+                ans = min(ans, abs(t - x) + abs(s - t))
+
+        print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    import bisect
+    INF = 10**18
+    A, B, Q = map(int, input().split())
+    S = [-INF] + [int(input()) for _ in range(A)] + [INF]
+    T = [-INF] + [int(input()) for _ in range(B)] + [INF]
+    X = [int(input()) for _ in range(Q)]
+
+    for x in X:
+        s, t = bisect.bisect_left(S, x), bisect.bisect_left(T, x)
+        ans = INF
+        for s0 in [S[s-1], S[s]]:
+            for t0 in [T[t-1], T[t]]:
+                ans = min(ans, abs(s0 - x) + abs(s0 - t0), abs(t0 - x) + abs(s0 - t0))
+        print(ans)
+
+=======
+Suggestion 9
+
+def get_min_distance(shrines, temples, x):
+    min_distance = float('inf')
+    for shrine in shrines:
+        for temple in temples:
+            distance = abs(shrine - x) + abs(temple - shrine)
+            if distance < min_distance:
+                min_distance = distance
+    return min_distance
+
+=======
+Suggestion 10
+
+def get_nearest(array, value):
+    if value <= array[0]:
+        return array[0]
+    if value >= array[-1]:
+        return array[-1]
+    low = 0
+    high = len(array) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if array[mid] == value:
+            return array[mid]
+        elif array[mid] < value:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return array[high] if abs(array[high] - value) < abs(array[low] - value) else array[low]

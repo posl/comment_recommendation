@@ -1,55 +1,164 @@
-#Problem Statement
-#You observed amoebae and kept some records.
-#Initially, there was one amoeba, numbered 1.
-#You made N records. According to the i-th record, the amoeba numbered A_i disappeared by dividing itself into two new amoebae, which were then numbered 2i and 2i+1.
-#Here, amoeba A_i is said to be the parent of amoebae 2i and 2i+1.
-#For each k=1,...,2N+1, how many generations away is amoeba k from amoeba 1?
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#The records are consistent. That is:
-#1≦ A_i ≦ 2i-1.
-#A_i are distinct integers.
-#
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print 2N+1 lines. The k-th line should contain the generation distance between amoeba 1 and amoeba k.
-#
-#Sample Input 1
-#2
-#1 2
-#
-#Sample Output 1
-#0
-#1
-#1
-#2
-#2
-#From amoeba 1, amoebae 2 and 3 were born. From amoeba 2, amoebae 4 and 5 were born.
-#Amoeba 1 is zero generations away from amoeba 1.
-#Amoeba 2 is one generation away from amoeba 1.
-#Amoeba 3 is one generation away from amoeba 1.
-#Amoeba 4 is one generation away from amoeba 2, and two generations away from amoeba 1.
-#Amoeba 5 is one generation away from amoeba 2, and two generations away from amoeba 1.
-#
-#Sample Input 2
-#4
-#1 3 5 2
-#
-#Sample Output 2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 ** (n + 1))
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2 ** (n + 1)):
+        if b[i] == 0:
+            b[i] = b[i // 2] + 1
+    for i in range(1, 2 ** (n + 1)):
+        print(b[i])
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0]*(2**n+1)
+    ans[1] = 0
+    for i in range(n):
+        ans[2**(i+1)] = 1
+    for i in range(n):
+        ans[2**(i+1)+1] = ans[2**(i+1)]+1
+    for i in range(n):
+        ans[2**(i+1)+2] = ans[2**(i+1)]+1
+    for i in range(1,2**n+1):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*(2*N+1)
+    for i in range(N):
+        B[A[i]] = i+1
+    for i in range(1, 2*N+1):
+        j = B[i]
+        print(0 if j==1 else 1+B[j//2])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = [0]*(2*N+1)
+    for i in range(N):
+        ans[A[i]] = i+1
+    for i in range(1,N+1):
+        x = ans[i]
+        print(0)
+        print(x)
+        print(x)
+        print(x+1)
+        print(x+1)
+        print(x+2)
+        print(x+2)
+        print(x+1)
+        print(x+1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0]*(2**n+1)
+    for i in range(n):
+        ans[a[i]] = 1
+    for i in range(1, 2**n+1):
+        if ans[i] == 1:
+            print(0)
+        else:
+            j = i
+            c = 0
+            while j%2 == 0:
+                j = j//2
+                c += 1
+            print(c)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    B = [0]*(2**N+1)
+    for i in range(len(A)):
+        B[A[i]] = i+1
+    #print(B)
+    for i in range(1, 2**N+1):
+        j = i
+        c = 0
+        while j > 0:
+            j = j//2
+            c += 1
+        print(c-1)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    result = [0] * (2**N)
+    #print(result)
+    for i in range(N):
+        #print(i)
+        result[A[i]-1] = i+1
+    #print(result)
+    for i in range(2**N):
+        #print(i)
+        if result[i] == 0:
+            result[i] = result[i-1]
+    #print(result)
+    for i in range(2**N):
+        print(result[i]-1)
+
+=======
+Suggestion 8
+
+def count_generation(amoebae, generation):
+    if generation == 0:
+        return 1
+    else:
+        return count_generation(amoebae, generation - 1) + count_generation(amoebae, generation - 1)
+
+=======
+Suggestion 9
+
+def find_distance(n, a):
+    distance = [0]*(2*n+1)
+    for i in range(n):
+        distance[a[i]] = 1
+    for i in range(2, 2*n+1):
+        distance[i] = distance[i//2] + 1
+    return distance
+
+=======
+Suggestion 10
+
+def calc_gen_dist(n, a):
+    ans = [0] * (2**n + 1)
+    for i in range(n):
+        ans[a[i]] = 1
+    for i in range(1, 2**n):
+        ans[i] += ans[i//2] + 1
+    return ans

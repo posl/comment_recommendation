@@ -1,62 +1,94 @@
-#Problem Statement
-#A company has N members, who are assigned ID numbers 1, ..., N.
-#Every member, except the member numbered 1, has exactly one immediate boss with a smaller ID number.
-#When a person X is the immediate boss of a person Y, the person Y is said to be an immediate subordinate of the person X.
-#You are given the information that the immediate boss of the member numbered i is the member numbered A_i. For each member, find how many immediate subordinates it has.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i < i
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_2 ... A_N
-#
-#Output
-#For each of the members numbered 1, 2, ..., N, print the number of immediate subordinates it has, in its own line.
-#
-#Sample Input 1
-#5
-#1 1 2 2
-#
-#Sample Output 1
-#2
-#2
-#0
-#0
-#0
-#The member numbered 1 has two immediate subordinates: the members numbered 2 and 3.
-#The member numbered 2 has two immediate subordinates: the members numbered 4 and 5.
-#The members numbered 3, 4, and 5 do not have immediate subordinates.
-#
-#Sample Input 2
-#10
-#1 1 1 1 1 1 1 1 1
-#
-#Sample Output 2
-#9
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#
-#Sample Input 3
-#7
-#1 2 3 4 5 6
-#
-#Sample Output 3
-#1
-#1
-#1
-#1
-#1
-#1
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n - 1):
+        b[a[i] - 1] += 1
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in A:
+        B[i-1] += 1
+    for i in B:
+        print(i)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i] - 1] += 1
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    B = [0] * N
+    for i in range(1, N):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(1, n+1):
+        print(a.count(i))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    ans = [0] * n
+    for i in range(1, n + 1):
+        ans[a[i] - 1] += 1
+    for i in ans:
+        print(i)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in map(int, input().split()):
+        a[i - 1] += 1
+    for x in a:
+        print(x)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    for i in range(1, n+1):
+        print(a.count(i))

@@ -1,52 +1,179 @@
-#Problem Statement
-#Takahashi is standing at the coordinate 0 on a number line.
-#He will now perform N jumps. In the i-th jump (1 ≦ i ≦ N), he moves a_i or b_i in the positive direction.
-#Is it possible for him to be at the coordinate X after N jumps?
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ a_i < b_i ≦ 100  (1 ≦ i ≦ N)
-#1 ≦ X ≦ 10000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#a_1 b_1
-#.
-#.
-#.
-#a_N b_N
-#
-#Output
-#If it is possible for Takahashi to be at the coordinate X after N jumps, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 10
-#3 6
-#4 5
-#
-#Sample Output 1
-#Yes
-#By moving b_1 (= 6) in the first jump and a_2 (= 4) in the second jump, he can be at the coordinate X (= 10).
-#
-#Sample Input 2
-#2 10
-#10 100
-#10 100
-#
-#Sample Output 2
-#No
-#He can be at the coordinate X (= 10) after the first jump, but not after all jumps.
-#
-#Sample Input 3
-#4 12
-#1 8
-#5 7
-#3 4
-#2 6
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    count = 0
+    for i in range(n):
+        count += a[i]
+        if count > x:
+            print("No")
+            exit()
+        count += b[i]
+    if count <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    a = [0] * N
+    b = [0] * N
+    for i in range(N):
+        a[i], b[i] = map(int, input().split())
+    sum = 0
+    for i in range(N):
+        if i % 2 == 0:
+            sum += b[i]
+        else:
+            sum += a[i]
+    if sum >= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    ans = "No"
+    for i in range(n):
+        if a[i] <= x and b[i] >= x:
+            ans = "Yes"
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        c, d = map(int, input().split())
+        a.append(c)
+        b.append(d)
+    s = 0
+    for i in range(n):
+        if i%2 == 0:
+            s += b[i]
+        else:
+            s += a[i]
+    if s >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    if sum(a) <= x and x <= sum(b):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = [0 for _ in range(n)]
+    b = [0 for _ in range(n)]
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    if a[0] > x or b[0] < x:
+        print("No")
+        return
+    for i in range(1, n):
+        if a[i] > b[i-1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    N,X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    print('Yes' if sum(a) <= X and X <= sum(b) else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    jumps = [list(map(int, input().split())) for _ in range(N)]
+    distance = 0
+    for i in range(N):
+        distance += jumps[i][0]
+        if distance > X:
+            print("No")
+            return
+        distance += jumps[i][1]
+    if distance > X:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(N)]
+
+    distance = 0
+    for i in range(N):
+        distance += AB[i][0] * AB[i][1]
+        if distance > X * 100:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 10
+
+def jump(n, x, ab):
+    pos = 0
+    for i in range(n):
+        pos += ab[i][0]
+        if pos > x:
+            return False
+        pos += ab[i][1]
+    if pos > x:
+        return False
+    else:
+        return True

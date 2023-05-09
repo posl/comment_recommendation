@@ -1,31 +1,50 @@
-#Problem Statement
-#Given is a positive integer L.
-#Find the maximum possible volume of a rectangular cuboid whose sum of the dimensions (not necessarily integers) is L.
-#
-#Constraints
-#1 ≤ L ≤ 1000
-#L is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L
-#
-#Output
-#Print the maximum possible volume of a rectangular cuboid whose sum of the dimensions (not necessarily integers) is L.
-#Your output is considered correct if its absolute or relative error from our answer is at most 10^{-6}.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#1.000000000000
-#For example, a rectangular cuboid whose dimensions are 0.8, 1, and 1.2 has a volume of 0.96.
-#On the other hand, if the dimensions are 1, 1, and 1, the volume of the rectangular cuboid is 1, which is greater.
-#
-#Sample Input 2
-#999
-#
-#Sample Output 2
-#36926037.000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L = int(input())
+    print((L/3)**3 if L % 3 == 0 else ((L-1)/3)**3 if L % 3 == 1 else ((L-2)/3)**3)
+
+=======
+Suggestion 2
+
+def main():
+    l = int(input())
+    print((l/3)**3 if l%3==0 else ((l-1)/3)**3 if l%3==1 else ((l-2)/3)**3)
+
+=======
+Suggestion 3
+
+def main():
+    l = int(input())
+    print((l/3)**3 if l%3==0 else (l//3+1)*(l//3)*(l//3))
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    print((L/3)**3 if L % 3 == 0 else (L/3)**3 if L % 3 == 1 else (L//3+1)**3)
+
+=======
+Suggestion 5
+
+def main():
+    L = int(input())
+    print((L/3)**3)
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    print(L**3/27)
+
+=======
+Suggestion 7
+
+def main():
+    L = int(input().strip())
+    print((L/3)**3)

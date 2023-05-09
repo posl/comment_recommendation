@@ -1,46 +1,172 @@
-#Problem Statement
-#We have N integers. The i-th integer is A_i.
-#Find sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j), modulo (10^9+7).
-#What is  XOR ?
-#The XOR of integers A and B, A  XOR  B, is defined as follows:
-#When A  XOR  B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if either A or B, but not both, has 1 in the 2^k's place, and 0 otherwise.
-#For example, 3  XOR  5 = 6. (In base two: 011  XOR  101 = 110.)
-#
-#
-#Constraints
-#2 ≦ N ≦ 3 × 10^5
-#0 ≦ A_i < 2^{60}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the value sum_{i=1}^{N-1}sum_{j=i+1}^{N} (A_i  XOR  A_j), modulo (10^9+7).
-#
-#Sample Input 1
-#3
-#1 2 3
-#
-#Sample Output 1
-#6
-#We have (1 XOR  2)+(1 XOR  3)+(2 XOR  3)=3+2+1=6.
-#
-#Sample Input 2
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#Sample Output 2
-#237
-#
-#Sample Input 3
-#10
-#3 14 159 2653 58979 323846 2643383 27950288 419716939 9375105820
-#
-#Sample Output 3
-#103715602
-#Print the sum modulo (10^9+7).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if A[j] & (1 << i):
+                cnt += 1
+        ans += cnt * (N - cnt) * (1 << i)
+        ans %= (10 ** 9 + 7)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if A[j] >> i & 1:
+                cnt += 1
+        ans += (cnt * (N-cnt) * pow(2, i, mod)) % mod
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                cnt += 1
+        ans += cnt * (n - cnt) * (1 << i)
+        ans %= 10**9+7
+    print(ans)
+solve()
+
+=======
+Suggestion 4
+
+def xor_sum(n, a):
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        ans += (cnt * (n - cnt) * (1 << i))
+        ans %= 1000000007
+    return ans
+
+n = int(input())
+a = list(map(int, input().split()))
+print(xor_sum(n, a))
+
+=======
+Suggestion 5
+
+def solve():
+    # write your code here
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        count = 0
+        for j in range(N):
+            if A[j] & (1 << i):
+                count += 1
+        ans += (count * (N - count) * (1 << i)) % MOD
+    print(ans % MOD)
+
+=======
+Suggestion 6
+
+def solve(N, A):
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(N):
+            if A[j] & (1 << i):
+                cnt += 1
+        ans += cnt * (N - cnt) * (1 << i)
+        ans %= mod
+    return ans
+
+N = int(input())
+A = list(map(int, input().split()))
+print(solve(N, A))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    result = 0
+    for i in range(60):
+        zero = 0
+        one = 0
+        for j in range(N):
+            if A[j] & 1:
+                one += 1
+            else:
+                zero += 1
+            A[j] >>= 1
+        result += (one * zero * (1 << i)) % MOD
+    print(result % MOD)
+
+=======
+Suggestion 8
+
+def xor_sum(a):
+    sum = 0
+    for i in range(len(a)-1):
+        for j in range(i+1,len(a)):
+            sum += a[i] ^ a[j]
+    return sum
+
+=======
+Suggestion 9
+
+def xor_sum(a):
+    res = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(len(a)):
+            if(a[j] >> i) & 1:
+                cnt += 1
+        res += (cnt*(len(a)-cnt)) * (1 << i)
+        res %= 10**9+7
+    return res
+
+N = int(input())
+A = list(map(int, input().split()))
+print(xor_sum(A))
+
+=======
+Suggestion 10
+
+def solve():
+    from collections import Counter
+    from itertools import accumulate
+    MOD = 10**9+7
+    N = int(input())
+    A = list(map(int, input().split()))
+    C = Counter(A)
+    C = [v*(N-v) for v in C.values()]
+    C = list(accumulate(C))
+    ans = 0
+    for c in C[:-1]:
+        ans += c
+        ans %= MOD
+    print(ans)

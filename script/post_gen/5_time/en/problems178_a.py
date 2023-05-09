@@ -1,28 +1,28 @@
-#Problem Statement
-#Given is an integer x that is greater than or equal to 0, and less than or equal to 1.
-#Output 1 if x is equal to 0, or 0 if x is equal to 1.
-#
-#Constraints
-#0 ≦ x ≦ 1
-#x is an integer
-#
-#Input
-#Input is given from Standard Input in the following format:
-#x
-#
-#Output
-#Print 1 if x is equal to 0, or 0 if x is equal to 1.
-#
-#Sample Input 1
-#1
-#
-#Sample Output 1
-#0
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x == 1:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    print(1-x)

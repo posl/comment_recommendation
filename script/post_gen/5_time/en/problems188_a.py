@@ -1,42 +1,91 @@
-#Problem Statement
-#A basketball game is being played, and the score is now X-Y. Here, it is guaranteed that X ≠ Y.
-#Can the team which is behind turn the tables with a successful three-point goal?
-#In other words, if the team which is behind earns three points, will its score become strictly greater than that of the other team?  
-#
-#Constraints
-#0 ≦ X ≦ 100
-#0 ≦ Y ≦ 100
-#X ≠ Y
-#X and Y are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y
-#
-#Output
-#If the team which is behind can turn the tables with a successful three-point goal, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 5
-#
-#Sample Output 1
-#Yes
-#The team with 3 points is behind.
-#After a successful 3-point goal, it will have 6 points, which is greater than that of the other team - 5.
-#Thus, we should print Yes.
-#
-#Sample Input 2
-#16 2
-#
-#Sample Output 2
-#No
-#The gap is too much. The team which is behind cannot overtake the other by getting 3 points.  
-#
-#Sample Input 3
-#12 15
-#
-#Sample Output 3
-#No
-#A 3-point goal will tie the score but not turn the tables.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        if x + 3 > y:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if y + 3 > x:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        if x + 3 > y:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        x, y = y, x
+    if x - y < 3:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        if x + 3 > y:
+            print('Yes')
+        else:
+            print('No')
+    elif x > y:
+        if x < y + 3:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    print('Yes' if x < y and x + 3 > y else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(int, raw_input().split())
+    print "Yes" if x + 3 > y else "No"
+
+=======
+Suggestion 7
+
+def main():
+    scores = input().split(' ')
+    if int(scores[0]) > int(scores[1]):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    X,Y = map(int,input().split())
+    print('Yes' if X < Y and X+3 > Y else 'No')

@@ -1,67 +1,80 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns. Let (i,j) denote the square at the i-th row from the top and the j-th column from the left.
-#Find the number of squares that share a side with Square (R, C).
-#Here, two squares (a,b) and (c,d) are said to share a side if and only if |a-c|+|b-d|=1 (where |x| denotes the absolute value of x).
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ R ≦ H ≦ 10
-#1 ≦ C ≦ W ≦ 10
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#R C
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#3 4
-#2 2
-#
-#Sample Output 1
-#4
-#We will describe Sample Inputs/Outputs 1,2, and 3 at once below Sample Output 3.
-#
-#Sample Input 2
-#3 4
-#1 3
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#3 4
-#3 4
-#
-#Sample Output 3
-#2
-#When H=3 and W=4, the grid looks as follows.
-#For Sample Input 1, there are 4 squares adjacent to Square (2,2).
-#For Sample Input 2, there are 3 squares adjacent to Square (1,3).
-#For Sample Input 3, there are 2 squares adjacent to Square (3,4).
-#
-#
-#Sample Input 4
-#1 10
-#1 5
-#
-#Sample Output 4
-#2
-#
-#Sample Input 5
-#8 1
-#8 1
-#
-#Sample Output 5
-#1
-#
-#Sample Input 6
-#1 1
-#1 1
-#
-#Sample Output 6
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H - R) * (W - C) + (H - R) * C + R * (W - C))
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H-R+1)*(W-C+1))
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print((h * w) - ((h - r) * w) - ((w - c) * r) + ((h - r) * (w - c)))
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    print((H-R)*(W-C))
+
+=======
+Suggestion 5
+
+def get_adjacent_count(h, w, r, c):
+    count = 0
+    if r > 1:
+        count += 1
+    if r < h:
+        count += 1
+    if c > 1:
+        count += 1
+    if c < w:
+        count += 1
+    return count
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    r, c = map(int, input().split())
+    print( (h - r) * (w - c) )
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int, input().split())
+    r,c = map(int, input().split())
+    print((h*w)-((h*c)+(w*r)-(r*c)))
+
+=======
+Suggestion 8
+
+def main():
+    h,w = map(int,input().split())
+    r,c = map(int,input().split())
+    print((h*w)-((r*w)+(c*h)-(r*c)))
+
+=======
+Suggestion 9
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print((H*W)-(H+W)+(R*C))

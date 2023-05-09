@@ -1,35 +1,130 @@
-#Problem Statement
-#The Kingdom of Takahashi has N towns, numbered 1 through N.
-#There is one teleporter in each town. The teleporter in Town i (1 ≦ i ≦ N) sends you to Town A_i.
-#Takahashi, the king, loves the positive integer K. The selfish king wonders what town he will be in if he starts at Town 1 and uses a teleporter exactly K times from there.
-#Help the king by writing a program that answers this question.
-#
-#Constraints
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ K ≦ 10^{18}
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the integer representing the town the king will be in if he starts at Town 1 and uses a teleporter exactly K times from there.
-#
-#Sample Input 1
-#4 5
-#3 2 4 1
-#
-#Sample Output 1
-#4
-#If we start at Town 1 and use the teleporter 5 times, our travel will be as follows: 1 -> 3 -> 4 -> 1 -> 3 -> 4.
-#
-#Sample Input 2
-#6 727202214173249351
-#6 5 2 5 3 2
-#
-#Sample Output 2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    town = 1
+    for i in range(K):
+        town = A[town-1]
+    print(town)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    town = 1
+    for i in range(k):
+        town = a[town-1]
+    print(town)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    now = 1
+    for i in range(K):
+        now = A[now - 1]
+    print(now)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    now = 0
+    for i in range(61):
+        if (K >> i) & 1:
+            now = A[now]
+        A = [A[A[j]] for j in range(N)]
+    print(now + 1)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    while True:
+        ans = A[ans] - 1
+        cnt += 1
+        if cnt == K:
+            print(ans + 1)
+            break
+        if ans == 0:
+            print(ans + 1)
+            break
+
+=======
+Suggestion 6
+
+def teleporter():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    town = 1
+    count = 0
+    while count < K:
+        town = A[town-1]
+        count += 1
+    print(town)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K, A)
+    current = 1
+    for i in range(K):
+        current = A[current - 1]
+    print(current)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    route = [1]
+    next = A[0]
+    while not next in route:
+        route.append(next)
+        next = A[next-1]
+    cycle_start = route.index(next)
+    cycle = route[cycle_start:]
+    if K < cycle_start:
+        print(route[K])
+    else:
+        print(cycle[(K-cycle_start)%len(cycle)])
+
+=======
+Suggestion 9
+
+def teleporter(a, k):
+    n = len(a)
+    b = [None] * n
+    b[0] = 0
+    for i in range(1, n):
+        b[i] = a[b[i - 1] - 1]
+        if b[i] == 0:
+            return a[k % i]
+    return b[-1]
+
+=======
+Suggestion 10
+
+def findPath(towns, start, k):
+    if k == 0:
+        return start
+    else:
+        return findPath(towns, towns[start-1], k-1)

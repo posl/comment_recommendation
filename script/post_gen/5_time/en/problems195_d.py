@@ -1,59 +1,216 @@
-#Problem Statement
-#We have N pieces of baggage called Baggage 1 through N, and M boxes called Box 1 through M.
-#Baggage i has a size of W_i and a value of V_i.
-#Box i can contain a piece of baggage whose size of at most X_i. It cannot contain two or more pieces of baggage.
-#You will be given Q queries. In each query, given two integers L and R, solve the following problem:
-#Problem: Out of the M boxes, R-L+1 boxes, Box L,L+1,...,R, have become unavailable. 
-#Find the maximum possible total value of a set of baggage that we can put into the remaining boxes simultaneously.
-#
-#Constraints
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 50
-#1 ≦ Q ≦ 50
-#1 ≦ W_i ≦ 10^6
-#1 ≦ V_i ≦ 10^6
-#1 ≦ X_i ≦ 10^6
-#1 ≦ L ≦ R ≦ M
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#W_1 V_1
-#.
-#.
-#.
-#W_N V_N
-#X_1 ... X_M
-#Query_1
-#.
-#.
-#.
-#Query_Q
-#Each Query is in the following format:
-#L R
-#
-#Output
-#Print Q lines.
-#The i-th line should contain the answer to the problem described by Query_i.
-#
-#Sample Input 1
-#3 4 3
-#1 9
-#5 3
-#7 8
-#1 8 6 9
-#4 4
-#1 4
-#1 3
-#
-#Sample Output 1
-#20
-#0
-#9
-#In the 1-st query, only Box 4 is unavailable.
-#By putting Baggage 1 into Box 1, Baggage 3 into Box 2, and Baggage 2 into Box 3, we can put all baggage into boxes, making the total value of baggage in boxes 20.
-#In the 2-nd query, all boxes are unavailable; the answer is 0.
-#In the 3-rd query, only Box 4 is available. By putting Baggage 1 into Box 4, we can make the total value of baggage in boxes 9, which is the maximum possible result.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M, Q = map(int, input().split())
+    W = []
+    V = []
+    for _ in range(N):
+        w, v = map(int, input().split())
+        W.append(w)
+        V.append(v)
+    X = list(map(int, input().split()))
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        X_ = X[:L-1] + X[R:]
+        X_.sort()
+        ans = 0
+        for i in range(N):
+            for j in range(len(X_)-1, -1, -1):
+                if W[i] <= X_[j]:
+                    ans += V[i]
+                    X_.pop(j)
+                    break
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = [0]*N
+    V = [0]*N
+    for i in range(N):
+        W[i], V[i] = map(int, input().split())
+    X = list(map(int, input().split()))
+    for i in range(Q):
+        L, R = map(int, input().split())
+        X_ = X[:L-1] + X[R:]
+        X_.sort()
+        ans = 0
+        for j in range(N):
+            for k in range(M-L-R+1):
+                if W[j] <= X_[k]:
+                    ans += V[j]
+                    X_.pop(k)
+                    break
+        print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N,M,Q=map(int,input().split())
+    W=[0]*N
+    V=[0]*N
+    for i in range(N):
+        W[i],V[i]=map(int,input().split())
+    X=list(map(int,input().split()))
+    for i in range(Q):
+        L,R=map(int,input().split())
+        X_=X[:L-1]+X[R:]
+        X_.sort()
+        ans=0
+        for j in range(N):
+            for k in range(len(X_)-1,-1,-1):
+                if X_[k]>=W[j]:
+                    ans+=V[j]
+                    X_.pop(k)
+                    break
+        print(ans)
+solve()
+
+=======
+Suggestion 4
+
+def solve():
+    n, m, q = map(int, input().split())
+    wv = [tuple(map(int, input().split())) for _ in range(n)]
+    x = list(map(int, input().split()))
+    query = [tuple(map(int, input().split())) for _ in range(q)]
+
+    wv.sort(key=lambda x: -x[1])
+    x = sorted([(i, j) for i, j in enumerate(x)], key=lambda x: x[1])
+    for l, r in query:
+        box = x[:l-1] + x[r:]
+        box.sort(key=lambda x: x[0])
+        ans = 0
+        for i, j in wv:
+            for k in range(len(box)):
+                if box[k][1] >= i:
+                    box.pop(k)
+                    break
+            else:
+                continue
+            ans += j
+        print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N,M,Q = map(int,input().split())
+    WV = [list(map(int,input().split())) for _ in range(N)]
+    WV.sort(key=lambda x:x[1],reverse=True)
+    X = list(map(int,input().split()))
+    for _ in range(Q):
+        L,R = map(int,input().split())
+        X_ = X[:L-1]+X[R:]
+        X_.sort()
+        ans = 0
+        for w,v in WV:
+            for i in range(len(X_)):
+                if X_[i]>=w:
+                    ans += v
+                    X_.pop(i)
+                    break
+        print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,m,q = map(int,input().split())
+    wv = [list(map(int,input().split())) for _ in range(n)]
+    x = list(map(int,input().split()))
+    queries = [list(map(int,input().split())) for _ in range(q)]
+
+    for i in range(q):
+        l,r = queries[i]
+        boxes = x[:l-1] + x[r:]
+        boxes.sort()
+        #print(boxes)
+        tmp = 0
+        for j in range(n):
+            for k in range(len(boxes)):
+                if wv[j][0] <= boxes[k]:
+                    tmp += wv[j][1]
+                    boxes.pop(k)
+                    break
+        print(tmp)
+
+=======
+Suggestion 7
+
+def get_input():
+    n, m, q = map(int, input().split())
+    wv = []
+    for _ in range(n):
+        wv.append(list(map(int, input().split())))
+    x = list(map(int, input().split()))
+    query = []
+    for _ in range(q):
+        query.append(list(map(int, input().split())))
+    return n, m, q, wv, x, query
+
+=======
+Suggestion 8
+
+def solve():
+    N,M,Q = map(int, input().split())
+    WV = [list(map(int, input().split())) for _ in range(N)]
+    W = [w for w,v in WV]
+    V = [v for w,v in WV]
+    X = list(map(int, input().split()))
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+    for query in queries:
+        L,R = query
+        boxes = X[:L-1] + X[R:]
+        boxes.sort()
+
+        ans = 0
+        for box in boxes:
+            for i in range(N):
+                if W[i] <= box:
+                    ans += V[i]
+                    W[i] = 10**9
+                    break
+        print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N,M,Q = map(int, input().split())
+    WV = [list(map(int, input().split())) for _ in range(N)]
+    WV = sorted(WV, key=lambda x: (x[1], x[0]), reverse=True)
+    X = list(map(int, input().split()))
+    Query = [list(map(int, input().split())) for _ in range(Q)]
+    for L,R in Query:
+        X_ = X[:L-1] + X[R:]
+        X_ = sorted(X_)
+        ans = 0
+        for w,v in WV:
+            for i in range(len(X_)):
+                if X_[i] >= w:
+                    ans += v
+                    X_.pop(i)
+                    break
+        print(ans)
+
+solve()
+
+=======
+Suggestion 10
+
+def max_value(baggage, boxes):
+    #print(baggage, boxes)
+    if len(baggage) == 0 or len(boxes) == 0:
+        return 0
+    if baggage[0][0] <= boxes[0][0]:
+        return max(baggage[0][1] + max_value(baggage[1:], boxes[1:]), max_value(baggage[1:], boxes))
+    else:
+        return max_value(baggage[1:], boxes)

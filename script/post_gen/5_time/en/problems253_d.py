@@ -1,28 +1,66 @@
-#Problem Statement
-#Find the sum of integers between 1 and N (inclusive) that are not multiples of A or B.
-#
-#Constraints
-#1 ≦ N, A,B ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#10 3 5
-#
-#Sample Output 1
-#22
-#The integers between 1 and 10 (inclusive) that are not multiples of 3 or 5 are 1,2,4,7, and 8, whose sum is 1+2+4+7+8 =22.
-#
-#Sample Input 2
-#1000000000 314 159
-#
-#Sample Output 2
-#495273003954006262
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    sum = 0
+    for i in range(1, n+1):
+        if (i % a != 0) and (i % b != 0):
+            sum += i
+    print(sum)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def getSum(n, a, b):
+    sum = 0
+    for i in range(1, n+1):
+        if i % a != 0 and i % b != 0:
+            sum += i
+    return sum
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    print(sum([i for i in range(1,N+1) if i%A != 0 and i%B != 0]))

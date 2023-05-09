@@ -1,48 +1,124 @@
-#Problem Statement
-#There are N gems. The value of the i-th gem is V_i.
-#You will choose some of these gems, possibly all or none, and get them.
-#However, you need to pay a cost of C_i to get the i-th gem.
-#Let X be the sum of the values of the gems obtained, and Y be the sum of the costs paid.
-#Find the maximum possible value of X-Y.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 20
-#1 ≦ C_i, V_i ≦ 50
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#V_1 V_2 ... V_N
-#C_1 C_2 ... C_N
-#
-#Output
-#Print the maximum possible value of X-Y.
-#
-#Sample Input 1
-#3
-#10 2 5
-#6 3 4
-#
-#Sample Output 1
-#5
-#If we choose the first and third gems, X = 10 + 5 = 15 and Y = 6 + 4 = 10.
-#We have X-Y = 5 here, which is the maximum possible value.
-#
-#Sample Input 2
-#4
-#13 21 6 19
-#11 30 6 15
-#
-#Sample Output 2
-#6
-#
-#Sample Input 3
-#1
-#1
-#50
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    X = 0
+    Y = 0
+    for i in range(N):
+        if V[i] > C[i]:
+            X += V[i]
+            Y += C[i]
+    print(X-Y)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            ans += v[i] - c[i]
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = [int(x) for x in input().split()]
+    c = [int(x) for x in input().split()]
+    x = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            x += v[i] - c[i]
+    print(x)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    print(sum([max(0, v[i] - c[i]) for i in range(n)]))
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        diff = v[i] - c[i]
+        if diff > 0:
+            ans += diff
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    x_y = [v[i] - c[i] for i in range(n)]
+    print(sum([x_y[i] for i in range(n) if x_y[i] > 0]))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    x_y = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            x_y += v[i] - c[i]
+    print(x_y)
+
+=======
+Suggestion 8
+
+def max_profit(N, V, C):
+    profit = 0
+    for i in range(N):
+        if V[i] > C[i]:
+            profit += V[i] - C[i]
+    return profit
+
+N = int(input())
+V = list(map(int, input().split()))
+C = list(map(int, input().split()))
+print(max_profit(N, V, C))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    print(sum([max(0, v-c) for v, c in zip(V, C)]))
+
+=======
+Suggestion 10
+
+def max_value(n,v,c):
+    v.sort(reverse=True)
+    c.sort(reverse=True)
+    return sum([v[i]-c[i] for i in range(n) if v[i]>c[i]])

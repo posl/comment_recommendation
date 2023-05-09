@@ -1,53 +1,141 @@
-#Problem Statement
-#Takahashi will do a tap dance. The dance is described by a string S where each character is L, R, U, or D. These characters indicate the positions on which Takahashi should step. He will follow these instructions one by one in order, starting with the first character.
-#S is said to be easily playable if and only if it satisfies both of the following conditions:
-#Every character in an odd position (1-st, 3-rd, 5-th, ...) is R, U, or D.
-#Every character in an even position (2-nd, 4-th, 6-th, ...) is L, U, or D.
-#Your task is to print Yes if S is easily playable, and No otherwise.
-#
-#Constraints
-#S is a string of length between 1 and 100 (inclusive).
-#Each character of S is L, R, U, or D.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print Yes if S is easily playable, and No otherwise.
-#
-#Sample Input 1
-#RUDLUDR
-#
-#Sample Output 1
-#Yes
-#Every character in an odd position (1-st, 3-rd, 5-th, 7-th) is R, U, or D.
-#Every character in an even position (2-nd, 4-th, 6-th) is L, U, or D.
-#Thus, S is easily playable.
-#
-#Sample Input 2
-#DULL
-#
-#Sample Output 2
-#No
-#The 3-rd character is not R, U, nor D, so S is not easily playable.
-#
-#Sample Input 3
-#UUUUUUUUUUUUUUU
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#ULURU
-#
-#Sample Output 4
-#No
-#
-#Sample Input 5
-#RDULULDURURLRDULRLR
-#
-#Sample Output 5
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == "L":
+                print("No")
+                return
+        else:
+            if s[i] == "R":
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    for i in range(0, len(s), 2):
+        if s[i] == 'L':
+            print('No')
+            return
+    for i in range(1, len(s), 2):
+        if s[i] == 'R':
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def solve():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == 'L':
+                return 'No'
+        else:
+            if S[i] == 'R':
+                return 'No'
+    return 'Yes'
+
+print(solve())
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == 'L':
+                print("No")
+                return
+        else:
+            if S[i] == 'R':
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[::2].count('L') == 0 and S[1::2].count('R') == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if (i+1) % 2 == 1:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print('Yes')
+        return
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def solve():
+    S = input().rstrip()
+    if all([S[i] in 'RUD' for i in range(0, len(S), 2)]) and all([S[i] in 'LUD' for i in range(1, len(S), 2)]):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    #print(S)
+    for i in range(len(S)):
+        if (i+1)%2 == 1:
+            if S[i] in ['R','U','D']:
+                pass
+            else:
+                print('No')
+                return
+        else:
+            if S[i] in ['L','U','D']:
+                pass
+            else:
+                print('No')
+                return
+    print('Yes')
+    return

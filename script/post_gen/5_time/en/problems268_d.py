@@ -1,89 +1,338 @@
-#Problem Statement
-#Takahashi is having trouble with deciding a username for a service.  Write a code to help him.
-#Find a string X that satisfies all of the following conditions:
-#X is obtained by the following procedure:
-#Let S_1', S_2', ...,S_N' be a permutation of S_1, S_2, ...,S_N.  Let X be the concatenation of S_1', (1 or more copies of _), S_2', (1 or more copies of _), ..., (1 or more copies of _), and S_N', in this order.
-#The length of X is between 3 and 16, inclusive.
-#X does not coincide with any of M strings T_1,T_2,...,T_M.
-#If there is no X that satisfies all of the conditions, print -1 instead.
-#
-#Constraints
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N and M are integers.
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16
-#S_i ≠ S_j if i ≠ j.
-#S_i is a string consisting of lowercase English letters.
-#3 ≦ |T_i| ≦ 16
-#T_i ≠ T_j if i ≠ j.
-#T_i is a string consisting of lowercase English letters and _.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#Output
-#Print a string X that satisfies all of the conditions.  If there is no X that satisfies all of the conditions, print -1 instead.
-#If there are multiple solutions, print any of them.
-#
-#Sample Input 1
-#1 1
-#chokudai
-#chokudai
-#
-#Sample Output 1
-#-1
-#The only string that satisfies the first and second conditions is X= chokudai, but it coincides with T_1.
-#Thus, there is no X that satisfies all of the conditions, so -1 should be printed.
-#
-#Sample Input 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#Sample Output 2
-#dai_choku
-#Strings like choku__dai (which has two _'s between choku and dai) also satisfy all of the conditions.
-#
-#Sample Input 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#Sample Output 3
-#-1
-#chokudai__atcoder and atcoder__chokudai (which have two _'s between chokudai and atcoder) have a length of 17, which violates the second condition.
-#
-#Sample Input 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#Sample Output 4
-#ab__ef___cd_gh
-#The given T_i may contain a string that cannot be obtained by the procedure described in the first condition.
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if S[i] == S[j]:
+                print(-1)
+                return
+
+    for i in range(M):
+        for j in range(M):
+            if i == j:
+                continue
+            if T[i] == T[j]:
+                print(-1)
+                return
+
+    for i in range(N):
+        for j in range(M):
+            if S[i] == T[j]:
+                print(-1)
+                return
+
+    for i in range(N):
+        for j in range(M):
+            if S[i] in T[j]:
+                print(-1)
+                return
+
+    for i in range(M):
+        for j in range(N):
+            if T[i] in S[j]:
+                print(-1)
+                return
+
+    for i in range(N):
+        for j in range(M):
+            if S[i] + '_' + T[j] not in T and T[j] + '_' + S[i] not in T:
+                print(S[i] + '_' + T[j])
+                return
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            for k in range(m):
+                if t[k] == s[i] + '_' + s[j]:
+                    print(t[k])
+                    return
+                if t[k] == s[j] + '_' + s[i]:
+                    print(t[k])
+                    return
+    print(-1)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] in t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(i+1,n):
+            if s[i] == s[j]:
+                print(-1)
+                return
+    for i in range(m):
+        for j in range(i+1,m):
+            if t[i] == t[j]:
+                print(-1)
+                return
+    ans = ''
+    for i in range(n):
+        ans += s[i]
+        if i < n-1:
+            ans += '_'
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j]:
+                print(-1)
+                return
+    for i in range(m):
+        for j in range(m):
+            if i == j:
+                continue
+            if t[i] == t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] == t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] in t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if t[j] in s[i]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if '_' in t[j]:
+                t[j] = t[j].replace('_', '')
+    for i in range(n):
+        for j in range(m):
+            if t[j] in s[i]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] in t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if '_' in t[j]:
+                t[j] = t[j].replace('_', '')
+    for i in range(n):
+        for j in range(m):
+            if t[j] in s[i]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] in t[j]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if '_' in t[j]:
+                t[j] = t[j].replace('_', '')
+    for i in range(n):
+        for j in range(m):
+            if t[j] in s[i]:
+                print(-1)
+                return
+    for i in range(n):
+        for j in range(m):
+            if s[i] in t[j]:
+                print(-1)
+                return
+    for i in range(n):
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    if N == 1:
+        if M == 0:
+            print(S[0])
+            return
+        else:
+            for t in T:
+                if t == S[0]:
+                    print(-1)
+                    return
+            print(S[0])
+            return
+    if M == 0:
+        print(S[0])
+        return
+    for t in T:
+        if t == S[0]:
+            print(-1)
+            return
+    for t in T:
+        if t == S[1]:
+            print(-1)
+            return
+    if N == 2:
+        print(S[0] + '_' + S[1])
+        return
+    if N == 3:
+        print(S[0] + '_' + S[1] + '_' + S[2])
+        return
+    if N == 4:
+        print(S[0] + '_' + S[2] + '_' + S[1] + '_' + S[3])
+        return
+    if N == 5:
+        print(S[0] + '_' + S[2] + '_' + S[4] + '_' + S[1] + '_' + S[3])
+        return
+    if N == 6:
+        print(S[0] + '_' + S[2] + '_' + S[4] + '_' + S[1] + '_' + S[3] + '_' + S[5])
+        return
+    if N == 7:
+        print(S[0] + '_' + S[2] + '_' + S[4] + '_' + S[6] + '_' + S[1] + '_' + S[3] + '_' + S[5])
+        return
+    if N == 8:
+        print(S[0] + '_' + S[2] + '_' + S[4] + '_' + S[6] + '_' + S[1] + '_' + S[3] + '_' + S[5] + '_' + S[7])
+        return
+solve()
+
+=======
+Suggestion 6
+
+def check(s, t):
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if s[i] != '_' and t[i] != '_' and s[i] != t[i]:
+            return False
+    return True
+
+n, m = map(int, input().split())
+s = [input() for _ in range(n)]
+t = [input() for _ in range(m)]
+
+for i in range(n):
+    for j in range(n):
+        if i == j:
+            continue
+        if check(s[i], s[j]):
+            print(-1)
+            exit()
+
+for i in range(m):
+    for j in range(m):
+        if i == j:
+            continue
+        if check(t[i], t[j]):
+            print(-1)
+            exit()
+
+for i in range(n):
+    for j in range(m):
+        if check(s[i], t[j]):
+            print(-1)
+            exit()
+
+for i in range(n):
+    for j in range(m):
+        if check(t[j], s[i]):
+            print(-1)
+            exit()
+
+for i in range(n):
+    for j in range(m):
+        if len(s[i]) + len(t[j]) > 16:
+            continue
+        for k in range(len(s[i])):
+            if s[i][k:] + t[j] == t[j] + s[i][:k]:
+                print(s[i][k:] + '_'*(16-len(s[i])-len(t[j])) + t[j])
+                exit()
+            if t[j][k:] + s[i] == s[i] + t[j][:k]:
+                print(t[j][k:] + '_'*(16-len(s[i])-len(t[j])) + s[i])
+                exit()
+
+print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+
+    def check(x):
+        for i in range(m):
+            if t[i] in x:
+                return False
+        return True
+
+    def dfs(x):
+        if len(x) == n:
+            if check(x):
+                print(x)
+                exit()
+            return
+
+        for i in range(n):
+            dfs(x + s[i])
+
+    dfs("")
+
+=======
+Suggestion 8
+
+def check(s1, s2, t):
+    if len(s1) + len(s2) + len(t) - 2 < 3 or len(s1) + len(s2) + len(t) - 2 > 16:
+        return False
+    if t in s1 + s2:
+        return False
+    return True
+
+=======
+Suggestion 9
+
+def main():
+    pass

@@ -1,76 +1,140 @@
-#Problem Statement
-#You are given N strings of length six each, consisting of digits.  Let S_i be the i-th (i = 1, 2, ..., N) of them.
-#You are also given M strings of length three each, consisting of digits.  Let T_j be the j-th (j = 1, 2, ..., M) of them.
-#Find the number of strings among S_1, S_2, ..., S_N whose last three characters coincide with one or more of T_1, T_2, ..., T_M.
-#
-#Constraints
-#1 ≦ N, M ≦ 1000
-#N and M are integers.
-#S_i is a string of length 6 consisting of digits, for all i = 1, 2, ..., N.
-#T_j is a string of length 3 consisting of digits, for all j = 1, 2, ..., M.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3 3
-#142857
-#004159
-#071028
-#159
-#287
-#857
-#
-#Sample Output 1
-#2
-#The last three characters of S_1 are 857, which coincide with T_3.
-#The last three characters of S_2 are 159, which coincide with T_1.
-#The last three characters of S_3 are 028, which do not coincide with T_1, T_2, or T_3.  
-#Thus, the answer is 2.
-#
-#Sample Input 2
-#5 4
-#235983
-#109467
-#823476
-#592801
-#000333
-#333
-#108
-#467
-#983
-#
-#Sample Output 2
-#3
-#
-#Sample Input 3
-#4 4
-#000000
-#123456
-#987111
-#000000
-#000
-#111
-#999
-#111
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    cnt = 0
+    for s in S:
+        for t in T:
+            if s[-3:] == t:
+                cnt += 1
+                break
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:] == t[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:6] == t[j]:
+                ans += 1
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:6] == t[j]:
+                ans += 1
+                break
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def problem287_b():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+
+    count = 0
+    for si in s:
+        for ti in t:
+            if si[-3:] == ti:
+                count += 1
+                break
+
+    print(count)
+
+=======
+Suggestion 7
+
+def get_input():
+    n,m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    return n,m,s,t
+
+=======
+Suggestion 8
+
+def problem():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    print(len(set(s) & set(t)))
+
+problem()
+
+=======
+Suggestion 9
+
+def main():
+	n, m = map(int, input().split())
+	s = [input() for i in range(n)]
+	t = [input() for i in range(m)]
+	
+	s = set(s)
+	t = set(t)
+	
+	# print(s)
+	# print(t)
+	
+	ans = len(s & t)
+	
+	print(ans)
+
+=======
+Suggestion 10
+
+def check_if_substring(s, t):
+    if t in s:
+        return True
+    else:
+        return False

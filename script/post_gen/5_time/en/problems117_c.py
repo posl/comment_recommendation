@@ -1,53 +1,144 @@
-#Problem Statement
-#We will play a one-player game using a number line and N pieces.
-#First, we place each of these pieces at some integer coordinate.
-#Here, multiple pieces can be placed at the same coordinate.
-#Our objective is to visit all of the M coordinates X_1, X_2, ..., X_M with these pieces, by repeating the following move:
-#Move: Choose a piece and let x be its coordinate. Put that piece at coordinate x+1 or x-1.
-#Note that the coordinates where we initially place the pieces are already regarded as visited.
-#Find the minimum number of moves required to achieve the objective.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#-10^5 ≦ X_i ≦ 10^5
-#X_1, X_2, ..., X_M are all different.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#X_1 X_2 ... X_M
-#
-#Output
-#Find the minimum number of moves required to achieve the objective.
-#
-#Sample Input 1
-#2 5
-#10 12 1 2 14
-#
-#Sample Output 1
-#5
-#The objective can be achieved in five moves as follows, and this is the minimum number of moves required.
-#Initially, put the two pieces at coordinates 1 and 10.
-#Move the piece at coordinate 1 to 2.
-#Move the piece at coordinate 10 to 11.
-#Move the piece at coordinate 11 to 12.
-#Move the piece at coordinate 12 to 13.
-#Move the piece at coordinate 13 to 14.
-#
-#Sample Input 2
-#3 7
-#-10 -3 0 9 -100 2 17
-#
-#Sample Output 2
-#19
-#
-#Sample Input 3
-#100 1
-#-100000
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    diff = []
+    for i in range(M-1):
+        diff.append(X[i+1] - X[i])
+    diff.sort()
+    print(sum(diff[:M-N]))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    diff = []
+    for i in range(m-1):
+        diff.append(x[i+1] - x[i])
+    diff.sort()
+    if n >= m:
+        print(0)
+    else:
+        print(sum(diff[:(m-n)]))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    diff = [0] * (m - 1)
+    for i in range(m - 1):
+        diff[i] = x[i + 1] - x[i]
+    diff.sort()
+    print(sum(diff[:max(0, m - n)]))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    dist = [0]*(M-1)
+    for i in range(M-1):
+        dist[i] = X[i+1]-X[i]
+    dist.sort()
+    print(sum(dist[:max(M-N, 0)]))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    x = sorted(map(int, input().split()))
+    diff = []
+    for i in range(m-1):
+        diff.append(x[i+1]-x[i])
+    diff = sorted(diff, reverse=True)
+    print(sum(diff[n-1:]))
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    l = []
+    for i in range(m-1):
+        l.append(x[i+1]-x[i])
+    l.sort(reverse=True)
+    print(sum(l[n-1:]))
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    d = [0] * (M-1)
+    for i in range(M-1):
+        d[i] = X[i+1] - X[i]
+    d.sort()
+    print(sum(d[:max(0, M-N)]))
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    X = sorted(map(int, input().split()))
+    if N >= M:
+        print(0)
+        return
+    diff = []
+    for i in range(M-1):
+        diff.append(X[i+1]-X[i])
+    diff.sort()
+    print(sum(diff[:M-N]))
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        return
+    else:
+        d = []
+        for i in range(m-1):
+            d.append(x[i+1] - x[i])
+        d.sort()
+        print(sum(d[:m-n]))
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    X = sorted(list(map(int, input().split())))
+    if N >= M:
+        print(0)
+    else:
+        diff = [0] * (M-1)
+        for i in range(M-1):
+            diff[i] = X[i+1] - X[i]
+        diff.sort()
+        print(sum(diff[:M-N]))

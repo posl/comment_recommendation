@@ -1,45 +1,131 @@
-#Problem Statement
-#You are given string S and T consisting of lowercase English letters.
-#Determine if S equals T after rotation.
-#That is, determine if S equals T after the following operation is performed some number of times:
-#Operation: Let S = S_1 S_2 ... S_{|S|}. Change S to S_{|S|} S_1 S_2 ... S_{|S|-1}.
-#Here, |X| denotes the length of the string X.
-#
-#Constraints
-#2 ≦ |S| ≦ 100
-#|S| = |T|
-#S and T consist of lowercase English letters.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#T
-#
-#Output
-#If S equals T after rotation, print Yes; if it does not, print No.
-#
-#Sample Input 1
-#kyoto
-#tokyo
-#
-#Sample Output 1
-#Yes
-#In the first operation, kyoto becomes okyot.
-#In the second operation, okyot becomes tokyo.
-#
-#Sample Input 2
-#abc
-#arc
-#
-#Sample Output 2
-#No
-#abc does not equal arc after any number of operations.
-#
-#Sample Input 3
-#aaaaaaaaaaaaaaab
-#aaaaaaaaaaaaaaab
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s == t:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s == t:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s == t:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+
+    if S == T:
+        print("Yes")
+    else:
+        for i in range(len(S)):
+            S = S[len(S)-1] + S[:len(S)-1]
+            if S == T:
+                print("Yes")
+                break
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    if S in T*2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    if s in t * 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    T = input()
+    T2 = T + T
+    if S in T2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def rotateString(s,t):
+    for i in range(len(s)):
+        if s == t:
+            return True
+        else:
+            s = s[-1] + s[:-1]
+    return False

@@ -1,39 +1,69 @@
-#Problem Statement
-#From the point (0,0) in a two-dimensional plane, let us move the distance of 1 toward the point (A, B). Find our coordinates after the move.
-#Here, after moving the distance of d from a point X to a point Y (d ≦ length of the segment XY), we are at the point on the segment XY whose distance from X is d.
-#The Constraints guarantee that the distance between the points (0, 0) and (A, B) is at least 1.
-#
-#Constraints
-#All values in input are integers.
-#0 ≦ A,B ≦ 1000
-#(A,B) ≠ (0,0)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Let (x, y) be our coordinates after the move. Print x and y in this order, separated by a space.
-#Your output is considered correct when, for each printed value, the absolute or relative error from the judge's answer is at most 10^{−6}.
-#
-#Sample Input 1
-#3 4
-#
-#Sample Output 1
-#0.600000000000 0.800000000000
-#Printing 0.5999999999 0.8000000001, for example, would also be accepted.
-#
-#Sample Input 2
-#1 0
-#
-#Sample Output 2
-#1.000000000000 0.000000000000
-#We may arrive at (A, B).
-#
-#Sample Input 3
-#246 402
-#
-#Sample Output 3
-#0.521964870245 0.852966983083
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def calc_distance(x1, y1, x2, y2):
+    return ((x2-x1)**2 + (y2-y1)**2)**0.5
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print("{0:.10f} {1:.10f}".format((A-1)/(A+B-1), (B-1)/(A+B-1)))
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(a/(a+b))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    x = b/a
+    print(x)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(A/(A+B))
+
+=======
+Suggestion 6
+
+def solve():
+    A, B = map(int, input().split())
+    print(A / (A + B))
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    #print(a, b)
+    print(a / (a + b))
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    import math
+
+    input = sys.stdin.readline
+    a, b = map(int, input().split())
+    print(b/a)
+
+=======
+Suggestion 9
+
+def get_input():
+    a, b = input().split()
+    return int(a), int(b)

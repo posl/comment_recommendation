@@ -1,61 +1,158 @@
-#Problem Statement
-#We have a sequence of N integers between 0 and 9 (inclusive): A=(A_1, ..., A_N), arranged from left to right in this order.
-#Until the length of the sequence becomes 1, we will repeatedly do the operation F or G below.
-#Operation F: delete the leftmost two values (let us call them x and y) and then insert (x+y)%10 to the left end.
-#Operation G: delete the leftmost two values (let us call them x and y) and then insert (x× y)%10 to the left end.
-#Here, a%b denotes the remainder when a is divided by b.
-#For each K=0,1,...,9, answer the following question.
-#Among the 2^{N-1} possible ways in which we do the operations, how many end up with K being the final value of the sequence?
-#Since the answer can be enormous, find it modulo 998244353.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print ten lines.
-#The i-th line should contain the answer for the case K=i-1.
-#
-#Sample Input 1
-#3
-#2 7 6
-#
-#Sample Output 1
-#1
-#0
-#0
-#0
-#2
-#1
-#0
-#0
-#0
-#0
-#If we do Operation F first and Operation F second: the sequence becomes (2,7,6)→(9,6)→(5).
-#If we do Operation F first and Operation G second: the sequence becomes (2,7,6)→(9,6)→(4).
-#If we do Operation G first and Operation F second: the sequence becomes (2,7,6)→(4,6)→(0).
-#If we do Operation G first and Operation G second: the sequence becomes (2,7,6)→(4,6)→(4).
-#
-#Sample Input 2
-#5
-#0 1 2 3 4
-#
-#Sample Output 2
-#6
-#0
-#1
-#1
-#4
-#0
-#1
-#1
-#0
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = 1 if i == A[-1] else 0
+    for i in range(N-2, -1, -1):
+        tmp = [0] * 10
+        for j in range(10):
+            tmp[(j + A[i]) % 10] = (tmp[(j + A[i]) % 10] + ans[j]) % MOD
+            tmp[(j * A[i]) % 10] = (tmp[(j * A[i]) % 10] + ans[j]) % MOD
+        ans = tmp
+    print(*ans, sep="\n")
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        for j in range(N - 1):
+            a = A[j]
+            b = A[j + 1]
+            if (a + b) % 10 == i:
+                A[j + 1] = (a + b) % 10
+            else:
+                A[j + 1] = (a * b) % 10
+        ans[i] = A[N - 1]
+        A = list(map(int, input().split()))
+    print(*ans, sep="\n")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0 for _ in range(10)]
+    ans[A[0]] = 1
+    for a in A[1:]:
+        tmp = [0 for _ in range(10)]
+        for j in range(10):
+            tmp[(j + a) % 10] += ans[j]
+            tmp[(j * a) % 10] += ans[j]
+            tmp[(j + a) % 10] %= 998244353
+            tmp[(j * a) % 10] %= 998244353
+        ans = tmp
+    for a in ans:
+        print(a % 998244353)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = A.count(i)
+    for i in range(N - 1):
+        ans2 = [0] * 10
+        for j in range(10):
+            ans2[(j + A[i + 1]) % 10] += ans[j]
+            ans2[(j + A[i + 1]) % 10] %= mod
+            ans2[(j * A[i + 1]) % 10] += ans[j]
+            ans2[(j * A[i + 1]) % 10] %= mod
+        ans = ans2
+    for i in range(10):
+        print(ans[i])
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = [0]*10
+    ans[A[0]] = 1
+    for i in range(1,N):
+        tmp = [0]*10
+        for j in range(10):
+            tmp[(j+A[i])%10] += ans[j]
+            tmp[(j*A[i])%10] += ans[j]
+        ans = tmp
+    for i in ans:
+        print(i%998244353)
+
+=======
+Suggestion 6
+
+def solve(N, A):
+    mod = 998244353
+    ans = [0] * 10
+    ans[A[0]] = 1
+    for i in range(1, N):
+        new_ans = [0] * 10
+        for j in range(10):
+            new_ans[(j + A[i]) % 10] += ans[j]
+            new_ans[(j * A[i]) % 10] += ans[j]
+        for j in range(10):
+            new_ans[j] %= mod
+        ans = new_ans
+    return ans
+
+N = int(input())
+A = list(map(int, input().split()))
+ans = solve(N, A)
+print("\n".join(map(str, ans)))
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    N = int(input())
+    A = list(map(int, input().split()))
+    #compute
+    MOD = 998244353
+    dp = [0]*10
+    dp[A[0]] = 1
+    for i in range(1, N):
+        dp2 = [0]*10
+        for j in range(10):
+            dp2[(j+A[i])%10] += dp[j]
+            dp2[(j*A[i])%10] += dp[j]
+        for j in range(10):
+            dp[j] = dp2[j] % MOD
+    #output
+    print(*dp, sep='\n')
+
+=======
+Suggestion 8
+
+def f(x,y):
+    return (x+y)%10
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def get_int():
+    return int(input())

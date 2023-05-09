@@ -1,47 +1,119 @@
-#Problem Statement
-#Takahashi made N problems for competitive programming.
-#The problems are numbered 1 to N, and the difficulty of Problem i is represented as an integer d_i (the higher, the harder).
-#He is dividing the problems into two categories by choosing an integer K, as follows:
-#A problem with difficulty K or higher will be for ARCs.
-#A problem with difficulty lower than K will be for ABCs.
-#How many choices of the integer K make the number of problems for ARCs and the number of problems for ABCs the same?
-#
-#Problem Statement
-#2 ≦ N ≦ 10^5
-#N is an even number.
-#1 ≦ d_i ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#d_1 d_2 ... d_N
-#
-#Output
-#Print the number of choices of the integer K that make the number of problems for ARCs and the number of problems for ABCs the same.
-#
-#Sample Input 1
-#6
-#9 1 4 4 6 7
-#
-#Sample Output 1
-#2
-#If we choose K=5 or 6, Problem 1, 5, and 6 will be for ARCs, Problem 2, 3, and 4 will be for ABCs, and the objective is achieved.
-#Thus, the answer is 2.
-#
-#Sample Input 2
-#8
-#9 1 14 5 5 4 4 14
-#
-#Sample Output 2
-#0
-#There may be no choice of the integer K that make the number of problems for ARCs and the number of problems for ABCs the same.
-#
-#Sample Input 3
-#14
-#99592 10342 29105 78532 83018 11639 92015 77204 30914 21912 34519 80835 100000 1
-#
-#Sample Output 3
-#42685
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[n//2] - d[n//2 - 1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[N//2]-d[N//2-1])
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[n//2] - d[n//2-1])
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[N//2]-d[N//2-1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[N//2]-d[N//2-1])
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    #print(d)
+    #print(d[N//2])
+    print(d[N//2]-d[N//2-1])
+
+=======
+Suggestion 7
+
+def count_difficulty(d, K):
+    count = 0
+    for i in range(len(d)):
+        if d[i] >= K:
+            count += 1
+    return count
+
+N = int(input())
+d = list(map(int, input().split()))
+d.sort()
+K = d[N//2]
+print(K)
+print(count_difficulty(d, K))
+print(count_difficulty(d, K+1))
+print(count_difficulty(d, K-1))
+print(count_difficulty(d, K+2))
+print(count_difficulty(d, K-2))
+print(count_difficulty(d, K+3))
+print(count_difficulty(d, K-3))
+print(count_difficulty(d, K+4))
+print(count_difficulty(d, K-4))
+print(count_difficulty(d, K+5))
+print(count_difficulty(d, K-5))
+print(count_difficulty(d, K+6))
+print(count_difficulty(d, K-6))
+print(count_difficulty(d, K+7))
+print(count_difficulty(d, K-7))
+print(count_difficulty(d, K+8))
+print(count_difficulty(d, K-8))
+print(count_difficulty(d, K+9))
+print(count_difficulty(d, K-9))
+print(count_difficulty(d, K+10))
+print(count_difficulty(d, K-10))
+print(count_difficulty(d, K+11))
+print(count_difficulty(d, K-11))
+print(count_difficulty(d, K+12))
+print(count_difficulty(d, K-12))
+print(count_difficulty(d, K+13))
+print(count_difficulty(d, K-13))
+print(count_difficulty(d, K+14))
+print(count_difficulty(d, K-14))
+print(count_difficulty(d, K+15))
+print(count_difficulty(d, K-15))
+print(count_difficulty(d, K+16))
+print(count_difficulty(d, K-16))
+print(count_difficulty(d, K+17))
+print(count_difficulty(d, K-17))
+print(count_difficulty(d, K+18))
+print(count_difficulty(d, K-18))
+print(count_difficulty(d, K+19))
+print(count_difficulty(d, K-19))
+print(count_difficulty(d, K+20))
+print(count_difficulty(d, K-20))
+print(count_difficulty(d, K+21))
+print(count_difficulty(d, K-21))
+print(count_difficulty(d

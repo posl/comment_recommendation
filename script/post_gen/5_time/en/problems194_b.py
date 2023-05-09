@@ -1,53 +1,197 @@
-#Problem Statement
-#Your company has N employees, called Employee 1 through N.
-#You have received two work orders, called Work A and B, which must be completed.
-#Employee i can complete Work A in A_i minutes and Work B in B_i minutes.
-#You will assign each work to one employee.
-#You can assign both works to the same employee, in which case the time it takes for him/her to complete them is the sum of the times it takes for him/her to do them individually.
-#If you assign the works to different employees, the time it takes for them to complete them is the longer of the times it takes for them to do their respective works.
-#Find the shortest possible time needed to complete the works.
-#
-#Constraints
-#2 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^5
-#1 ≦ B_i ≦ 10^5
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_N B_N
-#
-#Output
-#Print the shortest possible time needed to complete the works, in minutes.
-#
-#Sample Input 1
-#3
-#8 5
-#4 4
-#7 9
-#
-#Sample Output 1
-#5
-#If you assign Work A to Employee 2 and Work B to Employee 1, they will complete them in 4 and 5 minutes, respectively.
-#Since you assigned the works to different employees, it will take max(4, 5) = 5 minutes for the two works to be finished.
-#It is impossible to finish them earlier.
-#
-#Sample Input 2
-#3
-#11 7
-#3 2
-#6 7
-#
-#Sample Output 2
-#5
-#It is optimal to assign both works to Employee 2.
-#Note that if you assign both works to the same employee, the time it takes for him/her to complete them is the sum of the times it takes for him/her to do them individually.  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    total = []
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                total.append(a[i] + b[j])
+            else:
+                total.append(max(a[i], b[j]))
+    print(min(total))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = 10 ** 10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                time = A[i] + B[j]
+            else:
+                time = max(A[i], B[j])
+            if time < min_time:
+                min_time = time
+    print(min_time)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                ans = min(ans, A[i] + B[j])
+            else:
+                ans = min(ans, max(A[i], B[j]))
+    print(ans)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = [int(x) for x in input().split()]
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    print(max(a[-1], b[-1]))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    print(max(a[-1], b[-1]))
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    ans = 10 ** 18
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                ans = min(ans, a[i] + b[j])
+            else:
+                ans = min(ans, max(a[i], b[j]))
+    print(ans)
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    max_a = max(A)
+    max_b = max(B)
+    if max_a < max_b:
+        print(max_a)
+    else:
+        print(max_b)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    #process
+    min_time = 10**10
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                time = a[i] + b[i]
+            else:
+                time = max(a[i], b[j])
+            if time < min_time:
+                min_time = time
+    #output
+    print(min_time)
+
+=======
+Suggestion 9
+
+def min_time():
+    n = int(input())
+    a = []
+    b = []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    return min(max(min(a), max(b)), max(min(b), max(a)))
+
+print(min_time())
+
+=======
+Suggestion 10
+
+def main():
+    # Get the number of employees
+    n = int(input())
+
+    # Get the time taken by each employee to finish the two tasks
+    times = []
+    for i in range(n):
+        times.append(list(map(int, input().split())))
+
+    # Get the minimum time taken to finish the two tasks
+    min_time = float('inf')
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                min_time = min(min_time, times[i][0] + times[j][1])
+            else:
+                min_time = min(min_time, max(times[i][0], times[j][1]))
+
+    # Print the minimum time taken to finish the two tasks
+    print(min_time)

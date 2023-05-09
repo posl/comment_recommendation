@@ -1,32 +1,42 @@
-#Problem Statement
-#You are given a string S of length N consisting of A, B and C, and an integer K which is between 1 and N (inclusive).
-#Print the string S after lowercasing the K-th character in it.
-#
-#Constraints
-#1 ≤ N ≤ 50
-#1 ≤ K ≤ N
-#S is a string of length N consisting of A, B and C.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#S
-#
-#Output
-#Print the string S after lowercasing the K-th character in it.
-#
-#Sample Input 1
-#3 1
-#ABC
-#
-#Sample Output 1
-#aBC
-#
-#Sample Input 2
-#4 3
-#CABA
-#
-#Sample Output 2
-#CAbA
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    print(S[:K-1] + S[K-1].lower() + S[K:])
+
+=======
+Suggestion 2
+
+def problems126_a():
+    n, k = map(int, input().split())
+    s = input()
+    print(s[:k-1] + s[k-1].lower() + s[k:])
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    S = input()
+    print(S[:K-1] + S[K-1].lower() + S[K:])
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    s = input()
+    s = s[:k-1] + s[k-1].lower() + s[k:]
+    print(s)
+
+=======
+Suggestion 5
+
+def lower_case_kth_character_in_string():
+    n, k = map(int, input().split())
+    s = input()
+    print(s[:k-1] + s[k-1].lower() + s[k:])

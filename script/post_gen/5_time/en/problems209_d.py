@@ -1,91 +1,219 @@
-#Problem Statement
-#The Kingdom of Takahashi is made up of N towns and N-1 roads, where the towns are numbered 1 through N. The i-th road (1 ≦ i ≦ N-1) connects Town a_i and Town b_i, so that you can get from every town to every town by using some roads. All the roads have the same length.
-#You will be given Q queries. In the i-th query (1 ≦ i ≦ Q), given integers c_i and d_i, solve the following problem:
-#Takahashi is now at Town c_i and Aoki is now at Town d_i. They will leave the towns simultaneously and start traveling at the same speed, Takahashi heading to Town d_i and Aoki heading to Town c_i. Determine whether they will meet at a town or halfway along a road. Here, assume that both of them travel along the shortest paths, and the time it takes to pass towns is negligible.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#All values in input are integers.
-#It is possible to get from every town to every town by using some roads. 
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#Output
-#Print Q lines.
-#The i-th line (1 ≦ i ≦ Q) should contain Town if Takahashi and Aoki will meet at a town in the i-th query, and Road if they meet halfway along a road in that query.
-#
-#Sample Input 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#Sample Output 1
-#Road
-#In the first and only query, Takahashi and Aoki simultaneously leave Town 1 and Town 2, respectively, and they will meet halfway along the 1-st road, so we should print Road.
-#
-#Sample Input 2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#Sample Output 2
-#Town
-#Town
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 3, respectively, and they will meet at Town 2, so we should print Town.
-#In the first query, Takahashi and Aoki simultaneously leave Town 1 and Town 5, respectively, and they will meet at Town 3, so we should print Town.
-#
-#Sample Input 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#Sample Output 3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, Q = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    CD = [list(map(int, input().split())) for _ in range(Q)]
+
+    graph = [[] for _ in range(N+1)]
+    for a, b in AB:
+        graph[a].append(b)
+        graph[b].append(a)
+
+    dist = [-1] * (N+1)
+    dist[1] = 0
+    stack = [1]
+    while stack:
+        now = stack.pop()
+        for next in graph[now]:
+            if dist[next] == -1:
+                dist[next] = dist[now] + 1
+                stack.append(next)
+
+    for c, d in CD:
+        if abs(dist[c] - dist[d]) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        a -= 1
+        b -= 1
+        G[a].append(b)
+        G[b].append(a)
+    dist = [-1] * N
+    dist[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in G[v]:
+            if dist[u] == -1:
+                dist[u] = dist[v] + 1
+                stack.append(u)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        if (dist[c] + dist[d]) % 2 == 0:
+            print('Town')
+        else:
+            print('Road')
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    roads = [list(map(int, input().split())) for _ in range(n - 1)]
+    queries = [list(map(int, input().split())) for _ in range(q)]
+
+    #print(roads)
+    #print(queries)
+
+    # make graph
+    graph = [[] for _ in range(n + 1)]
+    for road in roads:
+        graph[road[0]].append(road[1])
+        graph[road[1]].append(road[0])
+
+    #print(graph)
+
+    # make parent list
+    parents = [0 for _ in range(n + 1)]
+    #print(parents)
+
+    # make depth list
+    depths = [0 for _ in range(n + 1)]
+    #print(depths)
+
+    # make visited list
+    visited = [False for _ in range(n + 1)]
+    #print(visited)
+
+    # make depth first search
+    def dfs(graph, parents, depths, visited, v, p, d):
+        #print("v: {}, p: {}, d: {}".format(v, p, d))
+        visited[v] = True
+        depths[v] = d
+        parents[v] = p
+        for i in graph[v]:
+            if not visited[i]:
+                dfs(graph, parents, depths, visited, i, v, d + 1)
+
+    # start depth first search
+    dfs(graph, parents, depths, visited, 1, 0, 0)
+
+    #print(parents)
+    #print(depths)
+
+    # make lca
+    def lca(parents, depths, u, v):
+        #print("u: {}, v: {}".format(u, v))
+        #print("depths[u]: {}, depths[v]: {}".format(depths[u], depths[v]))
+        if depths[u] > depths[v]:
+            u, v = v, u
+        #print("u: {}, v: {}".format(u, v))
+        while depths[u] != depths[v]:
+            #print("u: {}, v: {}".format(u, v))
+            v = parents[v]
+        #print("u: {}, v: {}".format(u, v))
+        while u != v:
+            #print("u: {}, v: {}".format(u, v))
+            u = parents[u]
+            v = parents[v]
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    tree = [set() for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        tree[a-1].add(b-1)
+        tree[b-1].add(a-1)
+    for _ in range(Q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        from collections import deque
+        que = deque()
+        que.append((c, 0))
+        dist = [-1] * N
+        while que:
+            v, d = que.popleft()
+            dist[v] = d
+            for u in tree[v]:
+                if dist[u] == -1:
+                    que.append((u, d+1))
+        if dist[d] % 2 == 0:
+            print("Town")
+        else:
+            print("Road")
+
+=======
+Suggestion 5
+
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
+
+=======
+Suggestion 6
+
+def find_root(x, parent):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find_root(parent[x], parent)
+        return parent[x]
+
+=======
+Suggestion 7
+
+def find_root(tree, x):
+    if tree[x] == x:
+        return x
+    else:
+        tree[x] = find_root(tree, tree[x])
+        return tree[x]
+
+=======
+Suggestion 8
+
+def find_root(x):
+    global root
+    if root[x] == x:
+        return x
+    else:
+        root[x] = find_root(root[x])
+        return root[x]
+
+=======
+Suggestion 9
+
+def find_root(node, root):
+    if node == root[node]:
+        return node
+    else:
+        root[node] = find_root(root[node], root)
+        return root[node]
+
+=======
+Suggestion 10
+
+def bfs(start, goal, graph):
+    queue = [(start, 0)]
+    done = set()
+    while queue:
+        node, depth = queue.pop(0)
+        if node == goal:
+            return depth
+        if node in done:
+            continue
+        done.add(node)
+        for neighbor in graph[node]:
+            queue.append((neighbor, depth + 1))
+    return None

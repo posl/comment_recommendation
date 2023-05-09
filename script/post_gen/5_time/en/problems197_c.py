@@ -1,62 +1,238 @@
-#Problem Statement
-#Given is a number sequence A of length N.
-#Let us divide this sequence into one or more non-empty contiguous intervals.
-#Then, for each of these intervals, let us compute the bitwise OR of the numbers in it.
-#Find the minimum possible value of the bitwise XOR of the values obtained in this way.
-#        What is bitwise OR?
-#    
-#        The bitwise OR of integers A and B, A OR B, is defined as follows:
-#        
-#When A OR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if at least one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 OR 5 = 7 (in base two: 011 OR 101 = 111).  
-#        Generally, the bitwise OR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 OR p_2) OR p_3) OR ... OR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#        What is bitwise XOR?
-#    
-#        The bitwise XOR of integers A and B, A XOR B, is defined as follows:
-#        
-#When A XOR B is written in base two, the digit in the 2^k's place (k ≧ 0) is 1 if exactly one of A and B is 1, and 0 otherwise.
-#        For example, we have 3 XOR 5 = 6 (in base two: 011 XOR 101 = 110).  
-#        Generally, the bitwise XOR of k integers p_1, p_2, p_3, ..., p_k is defined as (... ((p_1 XOR p_2) XOR p_3) XOR ... XOR p_k). We can prove that this value does not depend on the order of p_1, p_2, p_3, ... p_k.
-#    
-#
-#Constraints
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#1 5 7
-#
-#Sample Output 1
-#2
-#If we divide [1, 5, 7] into [1, 5] and [7], their bitwise ORs are 5 and 7, whose XOR is 2.
-#It is impossible to get a smaller result, so we print 2.
-#
-#Sample Input 2
-#3
-#10 10 10
-#
-#Sample Output 2
-#0
-#We should divide this sequence into [10] and [10, 10].
-#
-#Sample Input 3
-#4
-#1 3 3 1
-#
-#Sample Output 3
-#0
-#We should divide this sequence into [1, 3] and [3, 1].
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30, -1, -1):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        if cnt >= 2:
+            ans += 2 ** i
+            for j in range(n):
+                if (a[j] >> i) & 1:
+                    a[j] -= 2 ** i
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30, -1, -1):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        if cnt >= 2:
+            ans += 1 << i
+            for j in range(n):
+                if a[j] >> i & 1:
+                    a[j] -= 1 << i
+    print(ans)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30, -1, -1):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        if cnt >= 2:
+            ans += 1 << i
+            for j in range(n):
+                if a[j] >> i & 1:
+                    a[j] -= 1 << i
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(30):
+        cnt = 0
+        for j in range(n):
+            if a[j] >> i & 1:
+                cnt += 1
+        ans |= (cnt % 2) << i
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(n):
+        x = 0
+        for j in range(i, n):
+            x |= a[j]
+            ans = min(ans, x)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(1 << (n - 1)):
+        x = 0
+        y = 0
+        for j in range(n):
+            y |= a[j]
+            if (i >> j) & 1 or j == n - 1:
+                x ^= y
+                y = 0
+        ans = min(ans, x)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(30):
+        count = 0
+        for j in range(N):
+            if A[j] & (1 << i):
+                count += 1
+        ans += (1 << i) * (N - count) * count
+    print(ans)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 2 ** 30
+    for i in range(1, 2 ** (n - 1)):
+        ors = 0
+        xors = 0
+        for j in range(n):
+            ors |= a[j]
+            if (i >> j) & 1:
+                xors ^= ors
+                ors = 0
+        xors ^= ors
+        ans = min(ans, xors)
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(2**(N-1)):
+        tmp = 0
+        tmp2 = 0
+        for j in range(N):
+            tmp = tmp | A[j]
+            if i >> j & 1:
+                tmp2 = tmp2 ^ tmp
+                tmp = 0
+        tmp2 = tmp2 ^ tmp
+        ans = min(ans, tmp2)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    #print(N)
+    #print(A)
+    #print(len(A))
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print(A[52])
+    #print(A[53])
+    #print(A[54])
+    #print(A[55])
+    #print(A[56])
+    #print(A[57])
+    #print(A[58])
+    #print(A[59])
+    #print(A[60])
+    #print(A[61])
+    #print(A[62])
+    #print(A[63])
+    #print(A[64])
+    #print(A[65])
+    #print(A

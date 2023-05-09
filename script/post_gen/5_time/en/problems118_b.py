@@ -1,55 +1,139 @@
-#Problem Statement
-#Katsusando loves omelette rice.
-#Besides, he loves crème brûlée, tenderloin steak and so on, and believes that these foods are all loved by everyone.
-#To prove that hypothesis, he conducted a survey on M kinds of foods and asked N people whether they like these foods or not.
-#The i-th person answered that he/she only likes the A_{i1}-th, A_{i2}-th, ..., A_{iK_i}-th food.
-#Find the number of the foods liked by all the N people.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N, M ≦ 30
-#1 ≦ K_i ≦ M
-#1 ≦ A_{ij} ≦ M
-#For each i (1 ≦ i ≦ N), A_{i1}, A_{i2}, ..., A_{iK_i} are distinct.
-#
-#Constraints
-#Input is given from Standard Input in the following format:
-#N M
-#K_1 A_{11} A_{12} ... A_{1K_1}
-#K_2 A_{21} A_{22} ... A_{2K_2}
-#:
-#K_N A_{N1} A_{N2} ... A_{NK_N}
-#
-#Output
-#Print the number of the foods liked by all the N people.
-#
-#Sample Input 1
-#3 4
-#2 1 3
-#3 1 2 3
-#2 3 2
-#
-#Sample Output 1
-#1
-#As only the third food is liked by all the three people, 1 should be printed.
-#
-#Sample Input 2
-#5 5
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
-#
-#Sample Output 2
-#0
-#Katsusando's hypothesis turned out to be wrong.
-#
-#Sample Input 3
-#1 30
-#3 5 10 30
-#
-#Sample Output 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for i in range(n):
+        ki, ai = map(int, input().split())
+        k.append(ki)
+        a.append(ai)
+    #print(n, m)
+    #print(k)
+    #print(a)
+    food = [0] * m
+    for i in range(n):
+        for j in range(k[i]):
+            food[a[i][j] - 1] += 1
+    #print(food)
+    print(food.count(n))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = [list(map(int, input().split()))[1:] for _ in range(N)]
+    print(len(set.intersection(*map(set, A))))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+
+    count = 0
+    for i in range(1, m+1):
+        for j in range(n):
+            if i in a[j][1:]:
+                if j == n-1:
+                    count += 1
+                    break
+                else:
+                    continue
+            else:
+                break
+
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split()))[1:])
+    count = 0
+    for i in range(1,m+1):
+        flg = True
+        for j in range(n):
+            if i not in a[j]:
+                flg = False
+        if flg:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    ans = [0] * M
+    for _ in range(N):
+        *A, = map(int, input().split())
+        for a in A:
+            ans[a-1] += 1
+    print(ans.count(N))
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int,input().split()))[1:])
+    ans = 0
+    for i in range(m):
+        for j in range(n):
+            if not i+1 in a[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    count = 0
+    for i in range(N):
+        K, *A = map(int, input().split())
+        if len(set(A)) == len(A):
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    A = [list(map(int,input().split())) for i in range(N)]
+    A = [a[1:] for a in A]
+    A = set(A[0]).intersection(*A)
+    print(len(A))
+
+=======
+Suggestion 9
+
+def getints(): return list(map(int, input().split()))
+n,m=getints()
+a=[]
+for i in range(n):
+    a.append(set(getints()[1:]))
+print(len(set.intersection(*a)))
+
+=======
+Suggestion 10
+
+def get_list_from_line():
+    return list(map(int, input().split()))

@@ -1,54 +1,168 @@
-#Problem Statement
-#You are given three strings S_1, S_2, S_3 consisting of lowercase English letters, and a string T consisting of 1, 2, 3.
-#Concatenate the three strings according to the characters in T and print the resulting string. Formally, conform to the following instructions.
-#For each integer i such that 1 ≦ i ≦ |T|, let the string s_i be defined as follows:
-#S_1, if the i-th character of T is 1;
-#S_2, if the i-th character of T is 2;
-#S_3, if the i-th character of T is 3.
-#Concatenate the strings s_1, s_2, ..., s_{|T|} in this order and print the resulting string.
-#
-#Constraints
-#1 ≦ |S_1|, |S_2|, |S_3| ≦ 10
-#1 ≦ |T| ≦ 1000
-#S_1, S_2, and S_3 consist of lowercase English letters.
-#T consists of 1, 2, and 3.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S_1
-#S_2
-#S_3
-#T
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#mari
-#to
-#zzo
-#1321
-#
-#Sample Output 1
-#marizzotomari
-#We have s_1 =  mari, s_2 =  zzo, s_3 =  to, s_4 =  mari. Concatenate these and print the resulting string: marizzotomari.
-#
-#Sample Input 2
-#abra
-#cad
-#abra
-#123
-#
-#Sample Output 2
-#abracadabra
-#
-#Sample Input 3
-#a
-#b
-#c
-#1
-#
-#Sample Output 3
-#a
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    print(s1[int(t[0])-1] + s2[int(t[1])-1] + s3[int(t[2])-1] + s1[int(t[3])-1])
+
+=======
+Suggestion 2
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    T = input()
+    print(S1[int(T[0])-1] + S2[int(T[1])-1] + S3[int(T[2])-1])
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ''
+    for i in t:
+        if i == '1':
+            result += s1
+        elif i == '2':
+            result += s2
+        else:
+            result += s3
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            result += s1
+        elif t[i] == "2":
+            result += s2
+        elif t[i] == "3":
+            result += s3
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    S_1 = input()
+    S_2 = input()
+    S_3 = input()
+    T = input()
+    result = ''
+    for i in range(len(T)):
+        if T[i] == '1':
+            result += S_1
+        elif T[i] == '2':
+            result += S_2
+        elif T[i] == '3':
+            result += S_3
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    s = ""
+    for i in t:
+        if i == "1":
+            s += s1
+        elif i == "2":
+            s += s2
+        else:
+            s += s3
+    print(s)
+
+=======
+Suggestion 7
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    output = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            output += s1
+        elif t[i] == '2':
+            output += s2
+        elif t[i] == '3':
+            output += s3
+    print(output)
+
+=======
+Suggestion 8
+
+def solve():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    ans = ''
+    for i in t:
+        if i == '1':
+            ans += s1
+        elif i == '2':
+            ans += s2
+        else:
+            ans += s3
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    out = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            out += s1
+        elif t[i] == "2":
+            out += s2
+        else:
+            out += s3
+    print(out)
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    S_1 = input()
+    S_2 = input()
+    S_3 = input()
+    T = input()
+    # solve
+    ans = ""
+    for i in range(len(T)):
+        if T[i] == "1":
+            ans += S_1
+        elif T[i] == "2":
+            ans += S_2
+        else:
+            ans += S_3
+    # output
+    print(ans)

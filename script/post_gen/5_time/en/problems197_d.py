@@ -1,45 +1,140 @@
-#Problem Statement
-#On a two-dimensional coordinate plane where the x axis points to the right and the y axis points up, we have a regular N-gon with N vertices p_0, p_1, p_2, ..., p_{N - 1}.
-#Here, N is guaranteed to be even, and the vertices p_0, p_1, p_2, ..., p_{N - 1} are in counter-clockwise order.
-#Let (x_i, y_i) denotes the coordinates of p_i.
-#Given x_0, y_0, x_{(N/(2))}, and y_{(N/(2))}, find x_1 and y_1.
-#
-#Constraints
-#4 ≦ N ≦ 100
-#N is even.
-#0 ≦ x_0, y_0 ≦ 100
-#0 ≦ x_{(N/(2))}, y_{(N/(2))} ≦ 100
-#(x_0, y_0) ≠ (x_{(N/(2))}, y_{(N/(2))})
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_0 y_0
-#x_{(N/(2))} y_{(N/(2))}
-#
-#Output
-#Print x_1 and y_1 in this order, with a space in between.
-#Your output is considered correct when, for each value printed, the absolute or relative error from our answer is at most 10^{-5}.
-#
-#Sample Input 1
-#4
-#1 1
-#2 2
-#
-#Sample Output 1
-#2.00000000000 1.00000000000
-#We are given p_0 = (1, 1) and p_2 = (2, 2).
-#The fact that p_0, p_1, p_2, and p_3 form a square and they are in counter-clockwise order uniquely determines the coordinates of the other vertices, as follows:
-#p_1 = (2, 1)
-#p_3 = (1, 2)
-#
-#Sample Input 2
-#6
-#5 3
-#7 4
-#
-#Sample Output 2
-#5.93301270189 2.38397459622
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+
+    x1 = (x0 + xN2) / 2
+    y1 = (y0 + yN2) / 2
+
+    x2 = (x0 - xN2) / 2
+    y2 = (y0 - yN2) / 2
+
+    import math
+    x3 = x2 * math.cos(2 * math.pi / N) - y2 * math.sin(2 * math.pi / N)
+    y3 = x2 * math.sin(2 * math.pi / N) + y2 * math.cos(2 * math.pi / N)
+
+    print(x3 + x1, y3 + y1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    xn2, yn2 = map(int, input().split())
+
+    x1 = (x0 + xn2) / 2
+    y1 = (y0 + yn2) / 2
+
+    radian = 2 * math.pi / n
+    x2 = (x0 - x1) * math.cos(radian) - (y0 - y1) * math.sin(radian) + x1
+    y2 = (x0 - x1) * math.sin(radian) + (y0 - y1) * math.cos(radian) + y1
+
+    print("{:.11f} {:.11f}".format(x2, y2))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2 + (y2 - y0) * (2 ** 0.5)) / 2
+    y1 = (y0 + y2 + (x0 - x2) * (2 ** 0.5)) / 2
+    print(x1, y1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+
+    x2 = (x0 + x1) / 2
+    y2 = (y0 + y1) / 2
+
+    # rotate
+    x3 = x0 - x2
+    y3 = y0 - y2
+
+    x4 = -y3
+    y4 = x3
+
+    # translate
+    x5 = x4 + x2
+    y5 = y4 + y2
+
+    print(x5, y5)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2) / 2 + (y0 - y2) * (3 ** 0.5) / 2
+    y1 = (y0 + y2) / 2 + (x2 - x0) * (3 ** 0.5) / 2
+    print(x1, y1)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+    x1 = (x0 + xN2 + (y0 - yN2) * (3 ** 0.5)) / 2
+    y1 = (y0 + yN2 + (xN2 - x0) * (3 ** 0.5)) / 2
+    print(x1, y1)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0 + x2 + (y2 - y0) * (2 ** 0.5)) / 2
+    y1 = (y0 + y2 + (x0 - x2) * (2 ** 0.5)) / 2
+    print(x1, y1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+
+    x1 = (x0 + x2 + ((y2 - y0) * 3**0.5)) / 2
+    y1 = (y0 + y2 + ((x0 - x2) * 3**0.5)) / 2
+    print(x1, y1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    N2 = int(N/2)
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+
+    x1 = (x0 + xN2 + (yN2 - y0) * (2 ** 0.5)) / 2
+    y1 = (y0 + yN2 + (x0 - xN2) * (2 ** 0.5)) / 2
+
+    print(x1, y1)
+
+=======
+Suggestion 10
+
+def solve(n, x0, y0, x1, y1):
+    x2 = (x0 + x1 + (y0 - y1) * (3 ** 0.5)) / 2
+    y2 = (y0 + y1 + (x1 - x0) * (3 ** 0.5)) / 2
+    return x2, y2

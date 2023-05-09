@@ -1,42 +1,149 @@
-#Problem Statement
-#You are given an integer sequence A = (A_1, ..., A_N) of length N.
-#Find the number of triplets of integers (i, j, k) satisfying all of the conditions below.
-#1 ≦ i, j, k ≦ N
-#((A_i)/(A_j)) = A_k
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5  (1 ≦ i ≦ N)
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#6 2 3
-#
-#Sample Output 1
-#2
-#(i, j, k) = (1, 2, 3), (1, 3, 2) satisfy the conditions.
-#
-#Sample Input 2
-#1
-#2
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#10
-#1 3 2 4 6 8 2 2 3 7
-#
-#Sample Output 3
-#62
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+    ans = 0
+    for i in range(n):
+        d[a[i]] -= 1
+        for j in range(1, 200001):
+            if a[i] % j == 0 and (a[i] // j) in d:
+                ans += d[a[i] // j]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if A[i]*A[k] == A[j]*A[j]:
+                    cnt += 1
+                    if A[i]*A[j] == A[k]*A[k]:
+                        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    d = {}
+    for a in A:
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            k = A[i] * A[j]
+            if k in d:
+                ans += d[k]
+    print(ans // 2)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if A[i]*A[k] == A[j]**2:
+                    cnt += 1
+                if A[j]*A[k] == A[i]**2:
+                    cnt += 1
+    print(cnt)
+    return 0
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                if A[i] * A[j] == A[k]:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if A[i] * A[j] == A[k]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # A = [6, 2, 3]
+    # N = 3
+    D = {}
+    for i in range(N):
+        if A[i] in D:
+            D[A[i]] += 1
+        else:
+            D[A[i]] = 1
+    # print(D)
+    # D = {6: 1, 2: 1, 3: 1}
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if A[i] % A[j] == 0 and A[i] // A[j] in D:
+                ans += D[A[i] // A[j]]
+    print(ans)

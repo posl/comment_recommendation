@@ -1,51 +1,111 @@
-#Problem Statement
-#Given a non-negative integer X, perform the following operation for i=1,2,...,K in this order and find the resulting X.
-#Round X off to the nearest 10^i.
-#Formally, replace X with Y that is "the largest multiple of 10^i that minimizes |Y-X|."
-#Here are some examples:
-#Rounding 273 off to the nearest 10^2 yields 300.
-#Rounding 999 off to the nearest 10^3 yields 1000.
-#Rounding 100 off to the nearest 10^{10} yields 0.
-#Rounding 1015 off to the nearest 10^1 yields 1020.
-#
-#
-#
-#Constraints
-#X and K are integers.
-#0 ≦ X < 10^{15}
-#1 ≦ K ≦ 15
-#
-#Input
-#The input is given from Standard Input in the following format:
-#X K
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#2048 2
-#
-#Sample Output 1
-#2100
-#X changes as 2048 -> 2050 -> 2100 by the operations.
-#
-#Sample Input 2
-#1 15
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#999 3
-#
-#Sample Output 3
-#1000
-#
-#Sample Input 4
-#314159265358979 12
-#
-#Sample Output 4
-#314000000000000
-#X may not fit into a 32-bit integer type.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, k = map(int, input().split())
+    for i in range(k):
+        if x % 10 == 0:
+            x //= 10
+        else:
+            x -= 1
+    print(x)
+
+=======
+Suggestion 2
+
+def problems273_b():
+    x, k = map(int, input().split())
+    for i in range(k):
+        if x % 10 == 0:
+            x = x // 10
+        else:
+            x -= 1
+    print(x)
+
+=======
+Suggestion 3
+
+def main():
+    X, K = map(int, input().split())
+    for i in range(K):
+        X = (X + 5) // 10 * 10
+    print(X)
+
+=======
+Suggestion 4
+
+def problem273_b():
+    x,k = map(int,input().split())
+    for i in range(k):
+        if x % 200 == 0:
+            x = x // 200
+        else:
+            x = x * 1000 + 200
+    print(x)
+
+=======
+Suggestion 5
+
+def main():
+    X,K = map(int,input().split())
+    for i in range(K):
+        X = (X // 10) * 10 if X % 10 < 5 else (X // 10 + 1) * 10
+    print(X)
+
+=======
+Suggestion 6
+
+def round_up(x, y):
+    if x % y == 0:
+        return x
+    else:
+        return x + y - x % y
+
+x, k = map(int, input().split())
+
+for i in range(k):
+    x = round_up(x, 10**(k-i))
+
+print(x)
+
+=======
+Suggestion 7
+
+def round_x(x, k):
+    for i in range(k):
+        if x % 10 != 0:
+            x += 10 - (x % 10)
+        else:
+            x //= 10
+    return x
+
+=======
+Suggestion 8
+
+def roundoff(x, k):
+    for i in range(k):
+        if x%10 == 0:
+            x = x/10
+        else:
+            x = x - x%10 + 10
+    return int(x)
+
+x, k = map(int, input().split())
+print(roundoff(x, k))
+
+=======
+Suggestion 9
+
+def my_round(x, y):
+    if x % y == 0:
+        return x
+    else:
+        return int(x/y) * y + y
+
+=======
+Suggestion 10
+
+def round_up(x, y):
+    return x + y - x % y

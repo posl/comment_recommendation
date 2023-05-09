@@ -1,41 +1,101 @@
-#Problem Statement
-#We define sequences S_n as follows.
-#S_1 is a sequence of length 1 containing a single 1.
-#S_n (n is an integer greater than or equal to 2) is a sequence obtained by concatenating S_{n-1}, n, S_{n-1} in this order.
-#For example, S_2 and S_3 is defined as follows.
-#S_2 is a concatenation of S_1, 2, and S_1, in this order, so it is 1,2,1.
-#S_3 is a concatenation of S_2, 3, and S_2, in this order, so it is 1,2,1,3,1,2,1.
-#Given N, print the entire sequence S_N.
-#
-#Constraints
-#N is an integer.
-#1 ≦ N ≦ 16
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print S_N, with spaces in between.
-#
-#Sample Input 1
-#2
-#
-#Sample Output 1
-#1 2 1
-#As described in the Problem Statement, S_2 is 1,2,1.
-#
-#Sample Input 2
-#1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#4
-#
-#Sample Output 3
-#1 2 1 3 1 2 1 4 1 2 1 3 1 2 1
-#S_4 is a concatenation of S_3, 4, and S_3, in this order.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        return s(n-1) + [n] + s(n-1)
+
+n = int(input())
+print(*s(n))
+
+=======
+Suggestion 2
+
+def S(n):
+    if n == 1:
+        return [1]
+    else:
+        return S(n-1) + [n] + S(n-1)
+
+n = int(input())
+print(*S(n))
+
+=======
+Suggestion 3
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        return s(n-1) + [n] + s(n-1)
+
+n = int(input())
+print(' '.join(map(str, s(n))))
+
+=======
+Suggestion 4
+
+def seq(n):
+    if n == 1:
+        return [1]
+    else:
+        s = seq(n-1)
+        return s + [n] + s
+
+n = int(input())
+print(*seq(n))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [1]
+    for i in range(1, n):
+        s = s + [i + 1] + s
+    print(*s)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [1]
+    for i in range(1, n):
+        s = s + [i + 1] + s
+    print(*s, sep=' ')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [1]
+    for i in range(1,N):
+        S = S + [i+1] + S
+    print(*S)
+
+=======
+Suggestion 8
+
+def get_sequence(n):
+    if n == 1:
+        return [1]
+    else:
+        seq = get_sequence(n-1)
+        return seq + [n] + seq
+
+n = int(input())
+for i in get_sequence(n):
+    print(i, end=" ")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print(*sequence(N))

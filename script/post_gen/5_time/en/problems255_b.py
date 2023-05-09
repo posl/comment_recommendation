@@ -1,66 +1,155 @@
-#Problem Statement
-#There are N people numbered 1, 2, ..., N in the xy-plane. Person i is at the coordinates (X_i, Y_i).
-#K of these people, Persons A_1, A_2, ..., A_K, will receive lights of the same strength.
-#When a person at coordinates (x, y) has a light of strength R, it lights up the interior of a circle of radius R centered at (x, y) (including the boundary).
-#Find the minimum strength of the lights needed for every person to be lit by at least one light.  
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ K < N ≦ 1000
-#1 ≦ A_1 < A_2 < ... < A_K ≦ N
-#|X_i|,|Y_i| ≦ 10^5
-#(X_i,Y_i) ≠ (X_j,Y_j), if i ≠ j.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#A_1 A_2 ... A_K
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#
-#Output
-#Print the answer as a real number.
-#Your output will be considered correct if its absolute or relative error from the judge's output is at most 10^{-5}.
-#
-#Sample Input 1
-#4 2
-#2 3
-#0 0
-#0 1
-#1 2
-#2 0
-#
-#Sample Output 1
-#2.23606797749978969
-#This input contains four people. Among them, Persons 2 and 3 will have lights.
-#Every person will be lit by at least one light if R ≧ (5)^(1/2) ≈ 2.236068.
-#
-#Sample Input 2
-#2 1
-#2
-#-100000 -100000
-#100000 100000
-#
-#Sample Output 2
-#282842.712474619009
-#
-#Sample Input 3
-#8 3
-#2 6 8
-#-17683 17993
-#93038 47074
-#58079 -57520
-#-41515 -89802
-#-72739 68805
-#24324 -73073
-#71049 72103
-#47863 19268
-#
-#Sample Output 3
-#130379.280458974768
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_distance(x1, y1, x2, y2):
+    return ((x1 - x2)**2 + (y1 - y2)**2)**(1/2)
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+xy = [list(map(int, input().split())) for _ in range(n)]
+
+distances = []
+for i in range(n):
+    for j in range(i + 1, n):
+        distances.append(get_distance(xy[i][0], xy[i][1], xy[j][0], xy[j][1]))
+
+distances.sort()
+distances.reverse()
+answer = 0
+for i in range(k - 1):
+    answer += distances[i]
+print(answer)
+
+=======
+Suggestion 2
+
+def get_distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [tuple(map(int, input().split())) for _ in range(N)]
+    #print(N, K, A, XY)
+    print(solve(N, K, A, XY))
+
+=======
+Suggestion 4
+
+def distance(x1,y1,x2,y2):
+    return (((x1-x2)**2)+((y1-y2)**2))**0.5
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+X = []
+Y = []
+for i in range(N):
+    x, y = map(int, input().split())
+    X.append(x)
+    Y.append(y)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    
+    #print(N, K)
+    #print(A
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    XY = [list(map(int,input().split())) for _ in range(N)]
+    print(solve(N,K,A,XY))
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(N)]
+
+    def check(r):
+        for i in range(N):
+            x, y = XY[i]
+            for j in range(i+1, N):
+                x2, y2 = XY[j]
+                if (x2-x)**2 + (y2-y)**2 <= r**2:
+                    break
+            else:
+                return False
+        return True
+
+    l = 0
+    r = 10**9
+    while r - l > 1e-5:
+        m = (l+r)/2
+        if check(m):
+            r = m
+        else:
+            l = m
+    print(r)
+
+=======
+Suggestion 8
+
+def distance(x1,y1,x2,y2):
+    return (abs(x1-x2)**2+abs(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 9
+
+def main():
+    N,K = map(int,input().split())
+    A = sorted(map(int,input().split()))
+    XY = [list(map(int,input().split())) for _ in range(N)]
+    X = [x for x,y in XY]
+    Y = [y for x,y in XY]
+    ans = 10**10
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                a = A.index(i+1)
+                b = A.index(j+1)
+                c = A.index(k+1)
+                x1 = max(X[a],X[b],X[c])
+                x2 = min(X[a],X[b],X[c])
+                y1 = max(Y[a],Y[b],Y[c])
+                y2 = min(Y[a],Y[b],Y[c])
+                ans = min(ans,(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
+    print(ans**0.5)
+
+=======
+Suggestion 10
+
+def solve():
+    N,K = map(int, input().split())
+    A = list(map(int, input().split()))
+    XY = [list(map(int, input().split())) for _ in range(N)]
+
+    ans = 10**20
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if i+1 in A and j+1 in A and k+1 in A:
+                    x1,y1 = XY[i]
+                    x2,y2 = XY[j]
+                    x3,y3 = XY[k]
+                    a = (x1-x2)**2 + (y1-y2)**2
+                    b = (x2-x3)**2 + (y2-y3)**2
+                    c = (x3-x1)**2 + (y3-y1)**2
+                    ans = min(ans, max(a,b,c)**0.5)
+
+    print(ans)

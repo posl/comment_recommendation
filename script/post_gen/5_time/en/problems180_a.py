@@ -1,35 +1,34 @@
-#Problem Statement
-#We have removed A balls from a box that contained N balls and then put B new balls into that box. How many balls does the box contain now?
-#
-#Constraints
-#All values in input are integers.
-# 100 ≦ N ≦ 200
-# 1 ≦ A,B ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N A B
-#
-#Output
-#Print the answer as an integer.
-#
-#Sample Input 1
-#100 1 2
-#
-#Sample Output 1
-#101
-#The box contained 100 balls. After removing 1 ball and putting 2 new balls, it now contains 101 balls.
-#
-#Sample Input 2
-#100 2 1
-#
-#Sample Output 2
-#99
-#
-#Sample Input 3
-#100 1 1
-#
-#Sample Output 3
-#100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N - A + B)
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n - a + b)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n + b - a)
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    n, a, b = map(int, input().split())
+
+    # compute
+
+    # output
+    print(n-a+b)

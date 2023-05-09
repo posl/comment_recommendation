@@ -1,59 +1,96 @@
-#Problem Statement
-#There are N towns in a coordinate plane. Town i is located at coordinates (x_i, y_i). The distance between Town i and Town j is ((x_i-x_j)^2+(y_i-y_j)^2)^(1/2).
-#There are N! possible paths to visit all of these towns once. Let the length of a path be the distance covered when we start at the first town in the path, visit the second, third, ..., towns, and arrive at the last town (assume that we travel in a straight line from a town to another). Compute the average length of these N! paths.
-#
-#Constraints
-#2 ≦ N ≦ 8
-#-1000 ≦ x_i ≦ 1000
-#-1000 ≦ y_i ≦ 1000
-#(x_i, y_i) ≠ (x_j, y_j) (if i ≠ j)
-#(Added 21:12 JST) All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#Output
-#Print the average length of the paths.
-#Your output will be judges as correct when the absolute difference from the judge's output is at most 10^{-6}.
-#
-#Sample Input 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#Sample Output 1
-#2.2761423749
-#There are six paths to visit the towns: 1 → 2 → 3, 1 → 3 → 2, 2 → 1 → 3, 2 → 3 → 1, 3 → 1 → 2, and 3 → 2 → 1.
-#The length of the path 1 → 2 → 3 is ((0-1)^2+(0-0)^2)^(1/2) + ((1-0)^2+(0-1)^2)^(1/2) = 1+(2)^(1/2).
-#By calculating the lengths of the other paths in this way, we see that the average length of all routes is:
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#
-#Sample Input 2
-#2
-#-879 981
-#-866 890
-#
-#Sample Output 2
-#91.9238815543
-#There are two paths to visit the towns: 1 → 2 and 2 → 1. These paths have the same length.
-#
-#Sample Input 3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#Sample Output 3
-#7641.9817824387
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def distance(x1, y1, x2, y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 2
+
+def dist(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 3
+
+def dist(a,b):
+    return ((a[0]-b[0])**2+(a[1]-b[1])**2)**(1/2)
+
+N=int(input())
+towns=[]
+for i in range(N):
+    towns.append(list(map(int,input().split())))
+    
+total=0
+for i in range(N):
+    for j in range(N):
+        total+=dist(towns[i],towns[j])
+        
+print(total/math.factorial(N))
+
+=======
+Suggestion 4
+
+def distance(x1, y1, x2, y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+n = int(input())
+xy = [list(map(int, input().split())) for _ in range(n)]
+total = 0
+for i in range(n):
+    for j in range(n):
+        if i == j:
+            continue
+        total += distance(xy[i][0], xy[i][1], xy[j][0], xy[j][1])
+print(total/math.factorial(n))
+
+=======
+Suggestion 5
+
+def path_length(path):
+    total = 0
+    for i in range(len(path)-1):
+        total += ((path[i][0]-path[i+1][0])**2 + (path[i][1]-path[i+1][1])**2)**(1/2)
+    return total
+
+=======
+Suggestion 6
+
+def getDistance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 7
+
+def distance(x1,x2,y1,y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**(1/2)
+
+n = int(input())
+coordinates = []
+for _ in range(n):
+    coordinates.append(list(map(int, input().split())))
+
+=======
+Suggestion 8
+
+def main():
+    import math
+    N = int(input())
+    xy = [list(map(int, input().split())) for _ in range(N)]
+    #print(xy)
+    total = 0
+    for i in range(N):
+        for j in range(N):
+            total += math.sqrt((xy[i][0] - xy[j][0])**2 + (xy[i][1] - xy[j][1])**2)
+    print(total / math.factorial(N))
+    return
+
+=======
+Suggestion 9
+
+def f(x):
+    if x <= 1:
+        return 1
+    return x * f(x-1)

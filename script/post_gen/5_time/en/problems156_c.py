@@ -1,37 +1,135 @@
-#Problem Statement
-#There are N people living on a number line.
-#The i-th person lives at coordinate X_i.
-#You are going to hold a meeting that all N people have to attend.
-#The meeting can be held at any integer coordinate. If you choose to hold the meeting at coordinate P, the i-th person will spend (X_i - P)^2 points of stamina to attend the meeting.
-#Find the minimum total points of stamina the N people have to spend.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 100
-#1 ≦ X_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#X_1 X_2 ... X_N
-#
-#Output
-#Print the minimum total stamina the N people have to spend.
-#
-#Sample Input 1
-#2
-#1 4
-#
-#Sample Output 1
-#5
-#Assume the meeting is held at coordinate 2. In this case, the first person will spend (1 - 2)^2 points of stamina, and the second person will spend (4 - 2)^2 = 4 points of stamina, for a total of 5 points of stamina. This is the minimum total stamina that the 2 people have to spend.
-#Note that you can hold the meeting only at an integer coordinate.
-#
-#Sample Input 2
-#7
-#14 14 2 13 56 2 37
-#
-#Sample Output 2
-#2354
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    min = 10000000
+    for i in range(1, 101):
+        sum = 0
+        for j in range(n):
+            sum += (x[j] - i)**2
+        if sum < min:
+            min = sum
+    print(min)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += x[i]
+    avg = round(sum/n)
+    ans = 0
+    for i in range(n):
+        ans += (x[i] - avg)**2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = list(map(int, input().split()))
+
+    min_st
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    X = [int(x) for x in input().split()]
+    X.sort()
+    min_co
+
+=======
+Suggestion 6
+
+def min_stamina(n, x):
+    min_stamina = 1000000000
+    for i in range(1, 101):
+        stamina = 0
+        for j in range(n):
+            stamina += (x[j] - i) ** 2
+        if stamina < min_stamina:
+            min_stamina = stamina
+    return min_stamina
+
+n = int(input())
+x = list(map(int, input().split()))
+print(min_stamina(n, x))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x.sort()
+    min_stamina = 10000000
+    for i in range(x[0], x[n-1]+1):
+        stamina = 0
+        for j in range(n):
+            stamina += (x[j] - i) ** 2
+        if stamina < min_stamina:
+            min_stamina = stamina
+    print(min_stamina)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x.sort()
+    min = 100000000000000
+    for i in range(x[0], x[n-1]+1):
+        sum = 0
+        for j in range(n):
+            sum += (x[j] - i)**2
+        if min > sum:
+            min = sum
+    print(min)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    x = [int(i) for i in input().split()]
+    minx = min(x)
+    maxx = max(x)
+    minsum = 1000000000000000
+    for i in range(minx, maxx+1):
+        sumpow = 0
+        for j in x:
+            sumpow += (j-i)**2
+        if minsum > sumpow:
+            minsum = sumpow
+    print(minsum)
+
+=======
+Suggestion 10
+
+def calculate_stamina(n, x):
+    min_stamina = 100000000000
+    for i in range(1, 101):
+        stamina = 0
+        for j in x:
+            stamina += (j - i)**2
+        if stamina < min_stamina:
+            min_stamina = stamina
+    return min_stamina

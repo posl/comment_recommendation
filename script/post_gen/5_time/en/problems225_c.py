@@ -1,59 +1,188 @@
-#Problem Statement
-#There is a 10^{100} × 7 matrix A, where the (i,j)-th entry is (i-1) × 7 + j for every pair of integers (i,j) (1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7).
-#Given an N × M matrix B, determine whether B is some (unrotated) rectangular part of A.
-#
-#Constraints
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#B_{1,1} B_{1,2} ... B_{1,M}
-#B_{2,1} B_{2,2} ... B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ... B_{N,M}
-#
-#Output
-#If B is some rectangular part of A, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#Sample Output 1
-#Yes
-#The given matrix B is the top-left 2 × 3 submatrix of A.
-#
-#Sample Input 2
-#2 1
-#1
-#2
-#
-#Sample Output 2
-#No
-#Although the given matrix B would match the top-left 1 × 2 submatrix of A after rotating 90 degrees, the Problem Statement
-# asks whether B is an unrotated part of A, so the answer is No.
-#
-#Sample Input 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+    for i in range(N):
+        for j in range(M):
+            B[i][j] -= i*7 + j + 1
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] < 0:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for i in range(N)]
+    for i in range(N):
+        for j in range(M):
+            B[i][j] -= i * 7
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] <= 0 or B[i][j] > 7:
+                print("No")
+                return
+            if i > 0 and B[i][j] <= B[i - 1][j]:
+                print("No")
+                return
+            if j > 0 and B[i][j] <= B[i][j - 1]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[(i-1)*7 + j for j in range(1, 8)] for i in range(1, 10**2+1)]
+    for i in range(10**2-N+1):
+        for j in range(7-M+1):
+            if [A[i+k][j:j+M] for k in range(N)] == B:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            B[i][j] -= i * 7
+    for i in range(n):
+        for j in range(m):
+            if B[i][j] < 1 or B[i][j] > 7:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[(i-1)*7+j for j in range(1,8)] for i in range(1,10**100+1)]
+    for i in range(10**100-N+1):
+        for j in range(7-M+1):
+            if A[i][j:j+M]==B[0]:
+                if A[i+1][j:j+M]==B[1]:
+                    print("Yes")
+                    return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int,input().split())))
+    for i in range(n):
+        for j in range(m):
+            b[i][j] -= 1
+    for i in range(n):
+        for j in range(m):
+            if b[i][j] % 7 != j:
+                print("No")
+                return
+    for i in range(n):
+        for j in range(m):
+            b[i][j] //= 7
+    for i in range(n):
+        for j in range(m):
+            if b[i][j] != i:
+                print("No")
+                return
+    print("Yes")
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    b = [list(map(int, input().split())) for i in range(n)]
+    a = [[(i-1)*7 + j for j in range(1, 8)] for i in range(1, 10**100+1)]
+    for i in range(10**100 - n + 1):
+        for j in range(7 - m + 1):
+            if a[i][j:j+m] == b[0] and a[i+1][j:j+m] == b[1]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    b = []
+    for _ in range(n):
+        b.append(list(map(int, input().split())))
+    
+    for i in range(1, n):
+        for j in range(m):
+            if b[i][j] - b[i-1][j] != 1:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int, input().split())))
+    c = []
+    for i in range(10**100):
+        c.append([i*7+1, i*7+2, i*7+3, i*7+4, i*7+5, i*7+6, i*7+7])
+    for i in range(10**100):
+        if b[0] == c[i]:
+            for j in range(n):
+                if b[j] != c[i+j]:
+                    print("No")
+                    exit()
+            print("Yes")
+            exit()
+    print("No")
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int, input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int, input().split())))
+    for i in range(10**100):
+        a = []
+        for j in range(1,8):
+            a.append(i*7+j)
+        if a == b[0]:
+            break
+    for i in range(n):
+        if a != b[i]:
+            print('No')
+            exit()
+    print('Yes')

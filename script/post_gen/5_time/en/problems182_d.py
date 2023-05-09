@@ -1,54 +1,143 @@
-#Problem Statement
-#Given is a number sequence A_1, A_2, A_3, ..., A_N, which may contain negative elements.
-#On a number line, there is a robot at coordinate 0. It will do the following actions in order:  
-#Move A_1 in the positive direction.
-#Move A_1 in the positive direction, and then move A_2 in the positive direction.
-#Move A_1 in the positive direction, then move A_2 in the positive direction, and then move A_3 in the positive direction.
-#.
-#.
-#.
-# 
-#Move A_1 in the positive direction, then move A_2 in the positive direction, then move A_3 in the positive direction, ..., ..., and then move A_N in the positive direction.
-#Find the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Constraints
-#1 ≦ N ≦ 200000
-#-10^8 ≦ A_i ≦ 10^8
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#Output
-#Print the greatest coordinate occupied by the robot from the beginning to the end of the process.
-#
-#Sample Input 1
-#3
-#2 -1 -2
-#
-#Sample Output 1
-#5
-#The robot moves as follows:
-#Move 2 in the positive direction, to coordinate 2.
-#Move 2 in the positive direction, to coordinate 4. Then move -1 in the positive direction, to coordinate 3.
-#Move 2 in the positive direction, to coordinate 5. Then move -1 in the positive direction, to coordinate 4. Then move -2 in the positive direction, to coordinate 2.
-#The greatest coordinate occupied during the process is 5, so we should print 5.
-#
-#Sample Input 2
-#5
-#-2 1 3 -1 -1
-#
-#Sample Output 2
-#2
-#
-#Sample Input 3
-#5
-#-1000 -1000 -1000 -1000 -1000
-#
-#Sample Output 3
-#0
-#In this case, the initial coordinate 0 is the greatest coordinate occupied.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    s.sort()
+    ans = 0
+    for i in range(n):
+        ans += s[i + 1] - s[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    x = 0
+    for a in A:
+        x += a
+        ans = max(ans, x)
+    print(ans)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    x = 0
+    max_x = 0
+    for i in range(N):
+        x += A[i]
+        max_x = max(max_x, x)
+    print(max_x)
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0]*(n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    s.sort()
+    ans = 0
+    for i in range(n):
+        ans = max(ans, s[i+1] - s[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    pos = 0
+    for i in range(N):
+        pos += A[i]
+        ans = max(ans, pos)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[i] + a[i])
+    s.sort()
+    ans = 0
+    for i in range(n):
+        ans = max(ans, s[i+1] - s[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1. 累積和を求める
+    # 2. 累積和の最大値を求める
+    # 3. 1 + 2 の最大値を求める
+    # 4. 3 の最大値を求める
+    # 5. 4 の最大値を出力する
+    B = []
+    tmp = 0
+    for i in range(N):
+        tmp += A[i]
+        B.append(tmp)
+
+    print(max(B))
+
+=======
+Suggestion 10
+
+def robot(a):
+    s = 0
+    l = [0]
+    for i in range(len(a)):
+        s += a[i]
+        l.append(s)
+    return max(l)

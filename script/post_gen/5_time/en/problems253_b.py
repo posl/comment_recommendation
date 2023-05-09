@@ -1,44 +1,264 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns, in which two distinct squares have a piece.
-#The state of the squares is represented by H strings S_1, ..., S_H of length W.  S_{i, j} =  o means that there is a piece in the square at the i-th row from the top and j-th column from the left; S_{i, j} =  - means that the square does not have a piece.  Here, S_{i, j} denotes the j-th character of the string S_i.
-#Consider repeatedly moving one of the pieces to one of the four adjacent squares.  It is not allowed to move the piece outside the grid.  How many moves are required at minimum for the piece to reach the square with the other piece?
-#
-#Constraints
-#2 ≦ H, W ≦ 100
-#H and W are integers.
-#S_i  (1 ≦ i ≦ H) is a string of length W consisting of o and -.
-#There exist exactly two pairs of integers 1 ≦ i ≦ H, 1 ≦ j ≦ W such that S_{i, j} =  o.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#H W
-#S_1
-#.
-#.
-#.
-#S_H
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2 3
-#--o
-#o--
-#
-#Sample Output 1
-#3
-#The piece at the 1-st row from the top and 3-rd column from the left can reach the square with the other piece in 3 moves: down, left, left.  Since it is impossible to do so in two or less moves, 3 should be printed.
-#
-#Sample Input 2
-#5 4
-#-o--
-#----
-#----
-#----
-#-o--
-#
-#Sample Output 2
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                count += 1
+    if count == 1:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                ans += 1
+    if ans == 1:
+        ans = 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(H-1):
+        for j in range(W-1):
+            cnt = 0
+            for k in range(i, i+2):
+                for l in range(j, j+2):
+                    if S[k][l] == '#':
+                        cnt += 1
+            if cnt == 1 or cnt == 3:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    c = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                c += 1
+    if c == 1:
+        print(1)
+    elif c == 2:
+        print(0)
+    else:
+        print(c)
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    S = [input() for i in range(H)]
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                count += 1
+    if count == 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    grid = []
+    for i in range(h):
+        grid.append(list(input()))
+    # print(grid)
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if grid[i][j] == 'o':
+                count += 1
+    if count == 1:
+        print(1)
+    elif count == 2:
+        print(0)
+    else:
+        print(3)
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    print(S)
+    print(H, W)
+    print(S[0][2])
+    print(S[1][0])
+    print(S[1][1])
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    print(s)
+    print(h, w)
+    print(s[0][0])
+    print(s[0][1])
+    print(s[1][0])
+    print(s[1][1])
+    print(s[0][2])
+    print(s[1][2])
+    print(s[0][3])
+    print(s[1][3])
+    print(s[0][4])
+    print(s[1][4])
+    print(s[0][5])
+    print(s[1][5])
+    print(s[0][6])
+    print(s[1][6])
+    print(s[0][7])
+    print(s[1][7])
+    print(s[0][8])
+    print(s[1][8])
+    print(s[0][9])
+    print(s[1][9])
+    print(s[0][10])
+    print(s[1][10])
+    print(s[0][11])
+    print(s[1][11])
+    print(s[0][12])
+    print(s[1][12])
+    print(s[0][13])
+    print(s[1][13])
+    print(s[0][14])
+    print(s[1][14])
+    print(s[0][15])
+    print(s[1][15])
+    print(s[0][16])
+    print(s[1][16])
+    print(s[0][17])
+    print(s[1][17])
+    print(s[0][18])
+    print(s[1][18])
+    print(s[0][19])
+    print(s[1][19])
+    print(s[0][20])
+    print(s[1][20])
+    print(s[0][21])
+    print(s[1][21])
+    print(s[0][22])
+    print(s[1][22])
+    print(s[0][23])
+    print(s[1][23])
+    print(s[0][24])
+    print(s[1][24])
+    print(s[0][25])
+    print(s[1][25])
+    print(s[0][26])
+    print(s[1][26])
+    print(s[0][27])
+    print(s[1][27])
+    print(s[0][28])
+    print(s[1][28])
+
+=======
+Suggestion 9
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+
+    #print(h, w)
+    #print(s)
+
+    #print(s[0][2])
+
+    #print(s[0][0])
+    #print(s[0][1])
+    #print(s[0][2])
+    #print(s[0][3])
+    #print(s[0][4])
+
+    #print(s[1][0])
+    #print(s[1][1])
+    #print(s[1][2])
+    #print(s[1][3])
+    #print(s[1][4])
+
+    #print(s[2][0])
+    #print(s[2][1])
+    #print(s[2][2])
+    #print(s[2][3])
+    #print(s[2][4])
+
+    #print(s[3][0])
+    #print(s[3][1])
+    #print(s[3][2])
+    #print(s[3][3])
+    #print(s[3][4])
+
+    #print(s[4][0])
+    #print(s[4][1])
+    #print(s[4][2])
+    #print(s[4][3])
+    #print(s[4][4])
+
+    #print(s[0][2])
+    #print(s[1][2])
+    #print(s[2][2])
+    #print(s[3][2])
+    #print(s[4][2])
+
+    #print(s[0][0])
+    #print(s[1][0])
+    #print(s[2][0])
+    #print(s[3][0])
+    #print(s[4][0])
+
+    #print(s[0][1])
+    #print(s[1][1])
+    #print(s[2][1])
+    #print(s[3][1])
+    #print(s[4][1])
+
+    #print(s[0][2])
+    #print(s[1][2])
+    #print(s[2][2])
+    #print(s[3][2])
+    #print(s[4][2])
+
+    #print(s[0][3])
+    #print(s[1][3])
+    #print(s[2][3])
+    #print(s[3][3])
+    #print(s[4][3])
+
+    #print
+
+=======
+Suggestion 10
+
+def solve():
+    pass

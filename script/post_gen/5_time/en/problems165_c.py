@@ -1,63 +1,142 @@
-#Problem Statement
-#Given are positive integers N, M, Q, and Q quadruples of integers ( a_i , b_i , c_i , d_i ).
-#Consider a sequence A satisfying the following conditions:
-#A is a sequence of N positive integers.
-#1 ≦ A_1 ≦ A_2 ≦ ... ≦ A_N ≦ M.
-#Let us define a score of this sequence as follows:
-#The score is the sum of d_i over all indices i such that A_{b_i} - A_{a_i} = c_i. (If there is no such i, the score is 0.)
-#Find the maximum possible score of A.
-#
-#Constraints
-#All values in input are integers.
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) (where i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M Q
-#a_1 b_1 c_1 d_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#Output
-#Print the maximum possible score of A.
-#
-#Sample Input 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#Sample Output 1
-#110
-#When A = {1, 3, 4}, its score is 110. Under these conditions, no sequence has a score greater than 110, so the answer is 110.
-#
-#Sample Input 2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#Sample Output 2
-#357500
-#
-#Sample Input 3
-#10 10 1
-#1 10 9 1
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, q = map(int, input().split())
+    a = [0]*q
+    b = [0]*q
+    c = [0]*q
+    d = [0]*q
+    for i in range(q):
+        a[i], b[i], c[i], d[i] = map(int, input().split())
+    ans = 0
+    for i1 in range(1, m+1):
+        for i2 in range(i1, m+1):
+            for i3 in range(i2, m+1):
+                for i4 in range(i3, m+1):
+                    for i5 in range(i4, m+1):
+                        for i6 in range(i5, m+1):
+                            for i7 in range(i6, m+1):
+                                for i8 in range(i7, m+1):
+                                    for i9 in range(i8, m+1):
+                                        for i10 in range(i9, m+1):
+                                            tmp = 0
+                                            for i in range(q):
+                                                if i10 - i9 == c[i] and i9 - i8 == c[i] and i8 - i7 == c[i] and i7 - i6 == c[i] and i6 - i5 == c[i] and i5 - i4 == c[i] and i4 - i3 == c[i] and i3 - i2 == c[i] and i2 - i1 == c[i] and i1 - 1 == c[i]:
+                                                    tmp += d[i]
+                                            ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 2
+
+def readinput():
+    n,m,q=map(int,input().split())
+    abcd=[]
+    for _ in range(q):
+        abcd.append(list(map(int,input().split())))
+    return n,m,q,abcd
+
+=======
+Suggestion 3
+
+def score(A):
+    s = 0
+    for i in range(Q):
+        if A[b[i]-1] - A[a[i]-1] == c[i]:
+            s += d[i]
+    return s
+
+=======
+Suggestion 4
+
+def get_input():
+    n, m, q = map(int, input().split())
+    abcd = []
+    for i in range(q):
+        abcd.append(list(map(int, input().split())))
+    return n, m, q, abcd
+
+=======
+Suggestion 5
+
+def main():
+    n, m, q = map(int, input().split())
+    abcd = [list(map(int, input().split())) for _ in range(q)]
+    ans = 0
+    for a in range(1, m+1):
+        for b in range(a, m+1):
+            for c in range(b, m+1):
+                for d in range(c, m+1):
+                    for e in range(d, m+1):
+                        for f in range(e, m+1):
+                            for g in range(f, m+1):
+                                for h in range(g, m+1):
+                                    for i in range(h, m+1):
+                                        for j in range(i, m+1):
+                                            l = [a, b, c, d, e, f, g, h, i, j]
+                                            tmp = 0
+                                            for k in range(q):
+                                                if l[abcd[k][1]-1] - l[abcd[k][0]-1] == abcd[k][2]:
+                                                    tmp += abcd[k][3]
+                                            if tmp > ans:
+                                                ans = tmp
+    print(ans)
+
+=======
+Suggestion 6
+
+def score(a,b,c,d,seq):
+    score = 0
+    for i in range(len(a)):
+        if seq[b[i]-1] - seq[a[i]-1] == c[i]:
+            score += d[i]
+    return score
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    abcd = []
+    for i in range(Q):
+        abcd.append(list(map(int, input().split())))
+    ans = 0
+    for A in list(combinations_with_replacement(range(1, M+1), N)):
+        tmp = 0
+        for a, b, c, d in abcd:
+            if A[b-1] - A[a-1] == c:
+                tmp += d
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 8
+
+def cal_score(A, Q, q):
+    score = 0
+    for i in range(Q):
+        a = q[i][0]
+        b = q[i][1]
+        c = q[i][2]
+        d = q[i][3]
+        if A[b-1] - A[a-1] == c:
+            score += d
+    return score
+
+=======
+Suggestion 9
+
+def get_input():
+    return map(int, input().split())
+
+n, m, q = get_input()
+abcd = [list(get_input()) for _ in range(q)]
+
+=======
+Suggestion 10
+
+def get_input():
+    return map(int, input().split())

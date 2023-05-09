@@ -1,41 +1,32 @@
-#Problem Statement
-#You are given integers a, b, c, and d. Print two lines as follows.
-#The first line should contain the result of calculating (a + b) × (c - d) as an integer.
-#The second line should contain Takahashi, regardless of the input.
-#
-#Constraints
-#-100 ≦ a, b, c, d ≦ 100
-#a, b, c, and d are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#a b c d 
-#
-#Output
-#Print two lines according to the Problem Statement.
-#
-#Sample Input 1
-#1 2 5 3
-#
-#Sample Output 1
-#6
-#Takahashi
-#We have (1 + 2) ×(5 - 3) = 3 × 2 = 6, so the first line should contain 6.
-#The second line should contain Takahashi. Lowercasing the first character or incorrect spelling will not be accepted, so be careful.
-#
-#Sample Input 2
-#10 -20 30 -40
-#
-#Sample Output 2
-#-700
-#Takahashi
-#The input or output may contain negative numbers.
-#
-#Sample Input 3
-#100 100 100 -100
-#
-#Sample Output 3
-#40000
-#Takahashi
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d = map(int, input().split())
+    print((a + b) * (c - d))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c, d = map(int, input().split())
+    print((a + b) * (c - d))
+    print('Takahashi')
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c, d = map(int, input().split())
+    print((a+b)*(c-d))
+    print("Takahashi")
+
+=======
+Suggestion 4
+
+def problem269_a():
+    a, b, c, d = map(int, input().split())
+    print((a + b) * (c - d))
+    print("Takahashi")

@@ -1,48 +1,124 @@
-#Problem Statement
-#On a non-empty string, a left shift moves the first character to the end of the string, and a right shift moves the last character to the beginning of the string.
-#For example, a left shift on abcde results in bcdea, and two right shifts on abcde result in deabc.
-#You are given a non-empty S consisting of lowercase English letters. Among the strings that can be obtained by performing zero or more left shifts and zero or more right shifts on S, find the lexicographically smallest string and the lexicographically largest string.
-#What is the lexicographical order?
-#Simply speaking, the lexicographical order is the order in which words are listed in a dictionary. As a more formal definition, here is the algorithm to determine the lexicographical order between different strings S and T.
-#Below, let S_i denote the i-th character of S. Also, if S is lexicographically smaller than T, we will denote that fact as S < T; if S is lexicographically larger than T, we will denote that fact as S > T.
-# Let L be the smaller of the lengths of S and T. For each i=1,2,...,L, we check whether S_i and T_i are the same. 
-# If there is an i such that S_i ≠ T_i, let j be the smallest such i. Then, we compare S_j and T_j. If S_j comes earlier than T_j in alphabetical order, we determine that S < T and quit; if S_j comes later than T_j, we determine that S > T and quit.
-#  
-# If there is no i such that S_i ≠ T_i, we compare the lengths of S and T. If S is shorter than T, we determine that S < T and quit; if S is longer than T, we determine that S > T and quit. 
-#
-#
-#Constraints
-#S consists of lowercase English letters.
-#The length of S is between 1 and 1000 (inclusive).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print two lines. The first line should contain S_{min}, and the second line should contain S_{max}. Here, S_{min} and S_{max} are respectively the lexicographically smallest and largest strings obtained by performing zero or more left shifts and zero or more right shifts on S.
-#
-#Sample Input 1
-#aaba
-#
-#Sample Output 1
-#aaab
-#baaa
-#By performing shifts, we can obtain four strings: aaab, aaba, abaa, baaa. The lexicographically smallest and largest among them are aaab and baaa, respectively.
-#
-#Sample Input 2
-#z
-#
-#Sample Output 2
-#z
-#z
-#Any sequence of operations results in z.
-#
-#Sample Input 3
-#abracadabra
-#
-#Sample Output 3
-#aabracadabr
-#racadabraab
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    S_min = S
+    S_max = S
+    for i in range(len(S)):
+        S = S[1:] + S[0]
+        if S < S_min:
+            S_min = S
+        if S > S_max:
+            S_max = S
+    print(S_min)
+    print(S_max)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    Smin = S
+    Smax = S
+    for i in range(len(S)):
+        S = S[1:] + S[0]
+        if S < Smin:
+            Smin = S
+        if S > Smax:
+            Smax = S
+    print(Smin)
+    print(Smax)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    min_str = S
+    max_str = S
+    for i in range(len(S)):
+        S = S[-1] + S[:-1]
+        if min_str > S:
+            min_str = S
+        if max_str < S:
+            max_str = S
+    print(min_str)
+    print(max_str)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    n = len(s)
+    s1 = s
+    s2 = s
+    for i in range(n):
+        s1 = s1[1:] + s1[0]
+        s2 = s2[-1] + s2[:-1]
+        if s1 < s2:
+            print(s1)
+            print(s2)
+            break
+    else:
+        print(s1)
+        print(s2)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    s = s+s
+    print(min([s[i:i+n] for i in range(n)]))
+    print(max([s[i:i+n] for i in range(n)]))
+
+=======
+Suggestion 7
+
+def solve(S):
+    # Complete this function
+    l = len(S)
+    min = S
+    max = S
+    for i in range(l):
+        str = S[i:l] + S[0:i]
+        if str < min:
+            min = str
+        if str > max:
+            max = str
+    return min, max
+
+=======
+Suggestion 8
+
+def shift_left(s):
+    return s[1:]+s[0]
+
+=======
+Suggestion 9
+
+def shiftLeft(s):
+    return s[1:] + s[0]

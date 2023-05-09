@@ -1,54 +1,201 @@
-#Problem Statement
-#There is a slot machine with N reels.
-#The placement of symbols on the i-th reel is represented by a string S_i of length 10 containing each of 0, 1, ..., 9 exactly once.
-#Each reel has a corresponding button. For each non-negative integer t, Takahashi can press one of the buttons of his choice (or do nothing) t seconds after the reels start spinning.
-#If the button for the i-th reel is pressed t seconds after the start of the spin, the i-th reel will stop to display the ((t mod 10)+1)-th character of S_i.
-#Here, t mod 10 denotes the remainder when t is divided by 10.
-#Takahashi wants to stop all reels to make them display the same character.
-#Find the minimum number of seconds needed to achieve his objective after the start of the spin.
-#
-#Constraints
-#2≦ N≦ 100
-#N is an integer.
-#S_i is a string of length 10 containing each of 0, 1, ..., 9 exactly once.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#Output
-#Print the minimum number of seconds needed to achieve Takahashi's objective after the start of the spin.
-#
-#Sample Input 1
-#3
-#1937458062
-#8124690357
-#2385760149
-#
-#Sample Output 1
-#6
-#Takahashi can make all reels display 8 in 6 seconds after the start of the spin by stopping them as follows.
-#0 seconds after the start of the spin, press the button for the 2-nd reel, making it stop to display the ((0 mod 10)+1=1)-st character of S_2, 8.
-#2 seconds after the start of the spin, press the button for the 3-rd reel, making it stop to display the ((2 mod 10)+1=3)-rd character of S_3, 8.
-#6 seconds after the start of the spin, press the button for the 1-st reel, making it stop to display the ((6 mod 10)+1=7)-th character of S_1, 8.
-#There is no way to make all reels display the same character in five seconds or less, so the answer is 6.
-#
-#Sample Input 2
-#5
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#
-#Sample Output 2
-#40
-#Note that he must stop all reels to make them display the same character.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = 0
+    for i in range(10):
+        cnt = 0
+        for j in range(N):
+            if S[j][i] == str(i):
+                cnt += 1
+        if cnt > ans:
+            ans = cnt
+
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = 0
+    for i in range(10):
+        min = 100
+        for j in range(N):
+            count = 0
+            for k in range(10):
+                if S[j][k] == str(i):
+                    count += 1
+            if count < min:
+                min = count
+        if min > ans:
+            ans = min
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    s = [input() for i in range(n)]
+    ans = 0
+    for i in range(10):
+        t = 0
+        for j in range(n):
+            t = max(t, s[j].index(str(i)))
+        ans = max(ans, t)
+    print(ans)
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    l = 0
+    for i in range(n):
+        l = max(l, len(set(s[i])))
+    print(l)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    ans = 10**10
+    for i in range(n):
+        dp = [[10**10] * 10 for _ in range(n)]
+        dp[0][i] = 0
+        for j in range(1, n):
+            for k in range(10):
+                for l in range(10):
+                    if s[j][l] == str(k):
+                        dp[j][k] = min(dp[j][k], dp[j-1][l] + abs(l-k))
+        ans = min(ans, min(dp[n-1]))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    s = [input() for _ in range(N)]
+
+    a = []
+    for i in range(N):
+        a.append(sorted([int(s[i][j]) for j in range(10)]))
+
+    ans = 0
+    for i in range(N):
+        ans += sum(a[i][:3])
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    #print(n, s)
+    #print(s[0][0], s[1][0])
+    #print(s[0][1], s[1][1])
+    #print(s[0][2], s[1][2])
+    #print(s[0][3], s[1][3])
+    #print(s[0][4], s[1][4])
+    #print(s[0][5], s[1][5])
+    #print(s[0][6], s[1][6])
+    #print(s[0][7], s[1][7])
+    #print(s[0][8], s[1][8])
+    #print(s[0][9], s[1][9])
+    #print(s[0][0], s[2][0])
+    #print(s[0][1], s[2][1])
+    #print(s[0][2], s[2][2])
+    #print(s[0][3], s[2][3])
+    #print(s[0][4], s[2][4])
+    #print(s[0][5], s[2][5])
+    #print(s[0][6], s[2][6])
+    #print(s[0][7], s[2][7])
+    #print(s[0][8], s[2][8])
+    #print(s[0][9], s[2][9])
+    #print(s[1][0], s[2][0])
+    #print(s[1][1], s[2][1])
+    #print(s[1][2], s[2][2])
+    #print(s[1][3], s[2][3])
+    #print(s[1][4], s[2][4])
+    #print(s[1][5], s[2][5])
+    #print(s[1][6], s[2][6])
+    #print(s[1][7], s[2][7])
+    #print(s[1][8], s[2][8])
+    #print(s[1][9], s[2][9])
+    #print(s[0][0], s[3][0])
+    #print(s[0][1
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = [list(input()) for _ in range(N)]
+    S = [list(map(int, s)) for s in S]
+
+    # print(S)
+
+    # S = [[1, 9, 3, 7, 4, 5, 8, 0, 6, 2], [8, 1, 2, 4, 6, 9, 0, 3, 5, 7], [2, 3, 8, 5, 7, 6, 0, 1, 4, 9]]
+    # N = 3
+
+    # S = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+    # N = 2
+
+    # S = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+    # N = 1
+
+    # print(S)
+
+    # print(S[0][0])
+
+    # print(S[0][0] + 10)
+    # print(S[0][1] + 10 - S[0][0])
+    # print(S[0][2] + 10 - S[0][1])
+    # print(S[0][3] + 10 - S[0][2])
+    # print(S[0][4] + 10 - S[0][3])
+    # print(S[0][5] + 10 - S[0][4])
+    # print(S[0][6] + 10 - S[0][5])
+    # print(S[0][7] + 10 - S[0][6])
+    # print(S[0][8] + 10 - S[0][7])
+    # print(S[0][9] + 10 - S[0][8])
+
+    # print(S[0][0] + 10)
+    # print(S[0][1] + 10 - S[0][0])
+    # print(S[0][2] + 10 - S[0
+
+=======
+Suggestion 10
+
+def problem252_c():
+    pass

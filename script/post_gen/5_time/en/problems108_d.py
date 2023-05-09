@@ -1,57 +1,193 @@
-#Problem Statement
-#You are given an integer L. Construct a directed graph that satisfies the conditions below. The graph may contain multiple edges between the same pair of vertices. It can be proved that such a graph always exists.
-#The number of vertices, N, is at most 20. The vertices are given ID numbers from 1 to N.
-#The number of edges, M, is at most 60. Each edge has an integer length between 0 and 10^6 (inclusive).
-#Every edge is directed from the vertex with the smaller ID to the vertex with the larger ID. That is, 1,2,...,N is one possible topological order of the vertices.
-#There are exactly L different paths from Vertex 1 to Vertex N. The lengths of these paths are all different, and they are integers between 0 and L-1.
-#Here, the length of a path is the sum of the lengths of the edges contained in that path, and two paths are considered different when the sets of the edges contained in those paths are different.
-#
-#Constraints
-#2 ≦ L ≦ 10^6
-#L is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#L
-#
-#Output
-#In the first line, print N and M, the number of the vertices and edges in your graph.
-#In the i-th of the following M lines, print three integers u_i,v_i and w_i, representing the starting vertex, the ending vertex and the length of the i-th edge.
-#If there are multiple solutions, any of them will be accepted.
-#
-#Sample Input 1
-#4
-#
-#Sample Output 1
-#8 10
-#1 2 0
-#2 3 0
-#3 4 0
-#1 5 0
-#2 6 0
-#3 7 0
-#4 8 0
-#5 6 1
-#6 7 1
-#7 8 1
-#In the graph represented by the sample output, there are four paths from Vertex 1 to N=8:
-#1 → 2 → 3 → 4 → 8 with length 0
-#1 → 2 → 3 → 7 → 8 with length 1
-#1 → 2 → 6 → 7 → 8 with length 2
-#1 → 5 → 6 → 7 → 8 with length 3
-#There are other possible solutions.
-#
-#Sample Input 2
-#5
-#
-#Sample Output 2
-#5 7
-#1 2 0
-#2 3 1
-#3 4 0
-#4 5 0
-#2 4 0
-#1 3 3
-#3 5 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L = int(input())
+    if L == 2:
+        print("2 1")
+        print("1 2 0")
+        return
+    if L == 3:
+        print("3 3")
+        print("1 2 0")
+        print("2 3 1")
+        print("1 3 2")
+        return
+    if L == 4:
+        print("4 5")
+        print("1 2 0")
+        print("2 3 1")
+        print("3 4 0")
+        print("2 4 2")
+        print("1 3 3")
+        return
+    if L == 5:
+        print("5 7")
+        print("1 2 0")
+        print("2 3 1")
+        print("3 4 0")
+        print("4 5 0")
+        print("2 4 2")
+        print("1 3 3")
+        print("3 5 4")
+        return
+    if L == 6:
+        print("6 9")
+        print("1 2 0")
+        print("2 3 1")
+        print("3 4 0")
+        print("4 5 0")
+        print("5 6 0")
+        print("2 4 2")
+        print("1 3 3")
+        print("3 5 4")
+        print("4 6 5")
+        return
+    if L == 7:
+        print("7 11")
+        print("1 2 0")
+        print("2 3 1")
+        print("3 4 0")
+        print("4 5 0")
+        print("5 6 0")
+        print("6 7 0")
+        print("2 4 2")
+        print("1 3 3")
+        print("3 5 4")
+        print("4 6 5")
+        print("5 7 6")
+        return
+    if L == 8:
+        print("8 13")
+        print("1 2 0")
+        print("2 3 1")
+        print("3 4 0")
+        print("4 5 0")
+        print("5 6 0")
+        print("6 7
+
+=======
+Suggestion 2
+
+def solve():
+    L = int(input())
+    N = 1
+    while 2 ** N <= L:
+        N += 1
+    M = N * (N - 1) // 2
+    print(N, M)
+    for i in range(1, N):
+        print(i, i + 1, 0)
+    for i in range(1, N):
+        for j in range(i + 2, N + 1):
+            print(i, j, 2 ** (i - 1))
+
+
+solve()
+
+=======
+Suggestion 3
+
+def solve():
+    L = int(input())
+    N = 20
+    M = 60
+    print(N, M)
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, N-2):
+        if (L >> i) & 1:
+            print(i, i+2, 1 << i)
+    if L == 3:
+        print(1, 3, 2)
+
+=======
+Suggestion 4
+
+def main():
+    L = int(input())
+    print(2, 3)
+    print(1, 2, 0)
+    print(2, 3, 0)
+    print(1, 3, 2 ** L - 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    M = 2*N - 2
+    print(N, M)
+    for i in range(1, N):
+        print(i, i+1, 0)
+    for i in range(1, N-1):
+        print(i, i+2, (1<<i-1))
+
+=======
+Suggestion 6
+
+def main():
+    l = int(input())
+    n = 0
+    m = 0
+    for i in range(20):
+        if (l>>i)&1:
+            n = i+1
+            m = i
+    print(n,m)
+    for i in range(1,n):
+        print(i,i+1,0)
+        print(i,i+1,2**(i-1))
+    for i in range(m-n+1):
+        print(i+1,n,2**(m-i-1))
+
+=======
+Suggestion 7
+
+def main():
+    L = int(input())
+    N = 0
+    M = 0
+    print(N, M)
+
+=======
+Suggestion 8
+
+def main():
+    l = int(input())
+    n = 0
+    m = 0
+    edges = []
+    for i in range(20):
+        if l & (1 << i):
+            edges.append((i+1, i+2, 0))
+            edges.append((i+1, i+2, 1 << i))
+            n = i+2
+            m += 2
+    for i in range(19):
+        if l & (1 << i):
+            edges.append((i+1, i+2, (1 << i) - 1))
+            n = i+2
+            m += 1
+    print(n, m)
+    for u, v, w in edges:
+        print(u, v, w)
+
+=======
+Suggestion 9
+
+def main():
+    L = int(input())
+    # 1からLまでのパスを作る
+    # 1 2 3 4 5 ... L
+    # 1 2 3 4 5 ... L-1
+    # 1 2 3 4 5 ... L-2
+    # 1 2 3 4 5 ... L-3
+    # ...
+    # 1 2 3 4 5 ... 1
+    # 1 2 3 4 1 ... 0
+    # 1 2 3 1 0 ... 0
+    # 1 2 1 0 0 ... 0
+    # 1 1 0

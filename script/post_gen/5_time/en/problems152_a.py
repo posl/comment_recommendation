@@ -1,39 +1,69 @@
-#Problem Statement
-#Takahashi is participating in a programming contest, AXC001. He has just submitted his code to Problem A.
-#The problem has N test cases, all of which must be passed to get an AC verdict.
-#Takahashi's submission has passed M cases out of the N test cases.
-#Determine whether Takahashi's submission gets an AC.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#0 ≦ M ≦ N
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M
-#
-#Output
-#If Takahashi's submission gets an AC, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3 3
-#
-#Sample Output 1
-#Yes
-#All three test cases have been passed, so his submission gets an AC.
-#
-#Sample Input 2
-#3 2
-#
-#Sample Output 2
-#No
-#Only two out of the three test cases have been passed, so his submission does not get an AC.
-#
-#Sample Input 3
-#1 1
-#
-#Sample Output 3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    if N == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    if n == m:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    print('Yes' if n == m else 'No')
+
+=======
+Suggestion 5
+
+def problem152_a():
+    n, m = map(int, input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    print('Yes' if N == M else 'No')
+
+=======
+Suggestion 7
+
+def solve():
+    n, m = map(int, input().split())
+    print('Yes' if n == m else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    print("Yes" if n == m else "No")

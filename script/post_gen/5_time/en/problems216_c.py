@@ -1,40 +1,209 @@
-#Problem Statement
-#We have an empty box.
-#Takahashi can cast the following two spells any number of times in any order.
-#Spell A: puts one new ball into the box.
-#Spell B: doubles the number of balls in the box.
-#Tell us a way to have exactly N balls in the box with at most 120 casts of spells.
-#It can be proved that there always exists such a way under the Constraints
-# given.
-#There is no way other than spells to alter the number of balls in the box.
-#
-#Constraints
-#1 ≦ N ≦ 10^{18}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print a string S consisting of A and B.
-#The i-th character of S should represent the spell for the i-th cast.
-#S must have at most 120 characters.
-#
-#Sample Input 1
-#5
-#
-#Sample Output 1
-#AABA
-#This changes the number of balls as follows: 0 -{A}-> 1-{A}-> 2 -{B}->4-{A}-> 5.
-#There are also other acceptable outputs, such as AAAAA.
-#
-#Sample Input 2
-#14
-#
-#Sample Output 2
-#BBABBAAAB
-#This changes the number of balls as follows: 0 -{B}-> 0 -{B}-> 0  -{A}->1 -{B}-> 2 -{B}-> 4  -{A}->5  -{A}->6 -{A}-> 7  -{B}->14.
-#It is not required to minimize the length of S.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = ''
+    while n > 0:
+        if n % 2 == 1:
+            s = 'A' + s
+            n -= 1
+        else:
+            s = 'B' + s
+            n //= 2
+    print(s)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = ''
+    while N > 0:
+        if N % 2 == 0:
+            N = N // 2
+            S = 'B' + S
+        else:
+            N = N - 1
+            S = 'A' + S
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = ""
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            s = "B" + s
+        else:
+            n -= 1
+            s = "A" + s
+    print(s)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = ""
+    while n > 0:
+        if n % 2 == 0:
+            s += "B"
+            n //= 2
+        else:
+            s += "A"
+            n -= 1
+    print(s[::-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = ''
+    while n > 0:
+        if n % 2 == 1:
+            ans = 'A' + ans
+            n -= 1
+        else:
+            ans = 'B' + ans
+            n //= 2
+    print(ans)
+    return None
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    while n > 0:
+        if n % 2 == 0:
+            s.append('B')
+            n = n // 2
+        else:
+            s.append('A')
+            n -= 1
+    print(''.join(s[::-1]))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        if n % 2 == 0:
+            ans = "B" + ans
+            n = n // 2
+        else:
+            ans = "A" + ans
+            n -= 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve(N):
+    if N == 1:
+        return "A"
+    elif N == 2:
+        return "AA"
+    elif N == 3:
+        return "AAA"
+    elif N == 4:
+        return "AAB"
+    elif N == 5:
+        return "AABA"
+    elif N == 6:
+        return "AAAB"
+    elif N == 7:
+        return "AAABA"
+    elif N == 8:
+        return "AAABB"
+    elif N == 9:
+        return "AAABAB"
+    elif N == 10:
+        return "AAABBB"
+    elif N == 11:
+        return "AAABABA"
+    elif N == 12:
+        return "AAABABB"
+    elif N == 13:
+        return "AAABABBA"
+    elif N == 14:
+        return "AAABABBB"
+    elif N == 15:
+        return "AAABABABA"
+    elif N == 16:
+        return "AAABABABB"
+    elif N == 17:
+        return "AAABABABBA"
+    elif N == 18:
+        return "AAABABABBB"
+    elif N == 19:
+        return "AAABABABABA"
+    elif N == 20:
+        return "AAABABABABB"
+    elif N == 21:
+        return "AAABABABABBA"
+    elif N == 22:
+        return "AAABABABABBB"
+    elif N == 23:
+        return "AAABABABABABA"
+    elif N == 24:
+        return "AAABABABABABB"
+    elif N == 25:
+        return "AAABABABABABBA"
+    elif N == 26:
+        return "AAABABABABABBB"
+    elif N == 27:
+        return "AAABABABABABABA"
+    elif N == 28:
+        return "AAABABABABABABB"
+    elif N == 29:
+        return "AAABABABABABABBA"
+    elif N == 30:
+        return "AAABABABABABABBB"
+    elif N == 31:
+        return "AAABABABABABABABA"
+    elif N == 32:
+        return "AAABABABABABABABB"
+
+=======
+Suggestion 9
+
+def main():
+    # N = int(input())
+    N = 5
+
+    # 2^0 + 2^2 + 2^4 + ... + 2^x <= N
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x <= N
+    # 2^(x+1) - 1 <= N
+    # x = log2(N+1) - 1
+    x = int(math.log2(N+1) - 1)
+    print(x)
+
+    # 2^0 + 2^2 + 2^4 + ... + 2^x = N
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x = N
+    # 2^(x+1) - 1 = N
+    # x = log2(N+1) - 1
+
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x + 2^(x+1) - 1 = N
+    # 2^(x+2) - 1 = N
+    # x = log2(N+1) - 2
+
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x + 2^(x+1) + 2^(x+2) - 1 = N
+    # 2^(x+3) - 1 = N
+    # x = log2(N+1) - 3
+
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x + 2^(x+1) + 2^(x+2) + 2^(x+3) - 1 = N
+    # 2^(x+4) - 1 = N
+    # x = log2(N+1) - 4
+
+    # 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^x + 2^(x+1) + 2^(x+2) + 2^(x+3) + 2^(x

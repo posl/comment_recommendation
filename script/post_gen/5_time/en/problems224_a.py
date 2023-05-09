@@ -1,36 +1,87 @@
-#Problem Statement
-#You are given a string S ending with er or ist.
-#If S ends with er, print er; if it ends with ist, print ist.
-#
-#Constraints
-#2 ≦ |S| ≦ 20
-#S consists of lowercase English letters.
-#S ends with er or ist.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#atcoder
-#
-#Sample Output 1
-#er
-#S="atcoder" ends with er.
-#
-#Sample Input 2
-#tourist
-#
-#Sample Output 2
-#ist
-#
-#Sample Input 3
-#er
-#
-#Sample Output 3
-#er
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[-2:] == "er":
+        print("er")
+    else:
+        print("ist")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[-2:] == 'er':
+        print('er')
+    else:
+        print('ist')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[-1] == 'r':
+        print('er')
+    else:
+        print('ist')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[-2:] == "er":
+        print("er")
+    else:
+        print("ist")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S.endswith("er"):
+        print("er")
+    elif S.endswith("ist"):
+        print("ist")
+    else:
+        print("No er or ist")
+
+=======
+Suggestion 6
+
+def print_er_ist(s):
+    if s.endswith('er'):
+        print('er')
+    elif s.endswith('ist'):
+        print('ist')
+
+=======
+Suggestion 7
+
+def solve(s):
+    if s[-1:] == "r":
+        print("er")
+    else:
+        print("ist")
+
+=======
+Suggestion 8
+
+def check_ending(S):
+    if S.endswith('er'):
+        print('er')
+    else:
+        print('ist')
+
+=======
+Suggestion 9
+
+def get_input():
+    return input()

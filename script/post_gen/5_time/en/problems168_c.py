@@ -1,33 +1,123 @@
-#Problem Statement
-#Consider an analog clock whose hour and minute hands are A and B centimeters long, respectively.
-#An endpoint of the hour hand and an endpoint of the minute hand are fixed at the same point, around which each hand rotates clockwise at constant angular velocity. It takes the hour and minute hands 12 hours and 1 hour to make one full rotation, respectively.
-#At 0 o'clock, the two hands overlap each other. H hours and M minutes later, what is the distance in centimeters between the unfixed endpoints of the hands?
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ A, B ≦ 1000
-#0 ≦ H ≦ 11
-#0 ≦ M ≦ 59
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B H M
-#
-#Output
-#Print the answer without units. Your output will be accepted when its absolute or relative error from the correct value is at most 10^{-9}.
-#
-#Sample Input 1
-#3 4 9 0
-#
-#Sample Output 1
-#5.00000000000000000000
-#The two hands will be in the positions shown in the figure below, so the answer is 5 centimeters.
-#
-#Sample Input 2
-#3 4 10 40
-#
-#Sample Output 2
-#4.56425719433005567605
-#The two hands will be in the positions shown in the figure below. Note that each hand always rotates at constant angular velocity.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    import math
+    a, b, h, m = map(int, input().split())
+    h_angle = (h * 60 + m) * 0.5
+    m_angle = m * 6
+    angle = abs(h_angle - m_angle)
+    angle = min(angle, 360 - angle)
+    angle = math.radians(angle)
+    ans = math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(angle))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    import math
+    a, b, h, m = map(int, input().split())
+    h_angle = (h * 60 + m) / 720 * 360
+    m_angle = m / 60 * 360
+    angle = abs(h_angle - m_angle)
+    if angle > 180:
+        angle = 360 - angle
+    ans = math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(math.radians(angle)))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    import math
+    A, B, H, M = map(int, input().split())
+    angle = abs(30*H - 5.5*M)
+    if angle > 180:
+        angle = 360 - angle
+    ans = (A**2 + B**2 - 2*A*B*math.cos(math.radians(angle)))**0.5
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    import math
+    A, B, H, M = map(int, input().split())
+    a = 2 * math.pi * (H / 12 + M / 720)
+    b = 2 * math.pi * (M / 60)
+    c = a - b
+    print(math.sqrt(A ** 2 + B ** 2 - 2 * A * B * math.cos(c)))
+
+=======
+Suggestion 5
+
+def main():
+    import math
+    a,b,h,m = map(int,input().split())
+    h_angle = h*30 + m*0.5
+    m_angle = m*6
+    angle = abs(h_angle-m_angle)
+    x = a**2 + b**2 - 2*a*b*math.cos(math.radians(angle))
+    print(math.sqrt(x))
+
+=======
+Suggestion 6
+
+def main():
+    import math
+    A, B, H, M = map(int, input().split())
+    ans = math.sqrt(A**2 + B**2 - 2*A*B*math.cos(math.radians(30*H+M/2)))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    import math
+    a,b,h,m = map(int,input().split())
+    print(math.sqrt(a*a+b*b-2*a*b*math.cos(math.radians(30*(h+m/60)-6*m))))
+
+=======
+Suggestion 8
+
+def main():
+    # Get input here
+    A, B, H, M = map(int, input().strip().split())
+
+    # Calculate result here
+    hour_angle = 0.5 * (H * 60 + M)
+    minute_angle = 6 * M
+    angle = abs(hour_angle - minute_angle)
+    if angle > 180:
+        angle = 360 - angle
+    import math
+    ans = math.sqrt(A ** 2 + B ** 2 - 2 * A * B * math.cos(math.radians(angle)))
+
+    # Print result here
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    a, b, h, m = map(int, input().split())
+    import math
+    theta = abs((h*60+m)/720*360 - m/60*360)
+    print(math.sqrt(a**2 + b**2 - 2*a*b*math.cos(math.radians(theta))))
+
+=======
+Suggestion 10
+
+def get_distance_between_hands(A,B,H,M):
+    #calculate angle of hour hand
+    angle_of_hour_hand = (H*60+M)/720*360
+    #calculate angle of minute hand
+    angle_of_minute_hand = M/60*360
+    #calculate angle between hands
+    angle_between_hands = abs(angle_of_hour_hand-angle_of_minute_hand)
+    #calculate distance between hands
+    distance_between_hands = (A**2+B**2-2*A*B*math.cos(math.radians(angle_between_hands)))**0.5
+    return distance_between_hands

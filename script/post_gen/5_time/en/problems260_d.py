@@ -1,78 +1,159 @@
-#Problem Statement
-#There is a deck consisting of N face-down cards with an integer from 1 through N written on them.  The integer on the i-th card from the top is P_i.
-#Using this deck, you will perform N moves, each consisting of the following steps:
-#Draw the topmost card from the deck.  Let X be the integer written on it.
-#Stack the drawn card, face up, onto the card with the smallest integer among the face-up topmost cards on the table with an integer greater than or equal to X written on them.  If there is no such card on the table, put the drawn card on the table, face up, without stacking it onto any card.
-#Then, if there is a pile consisting of K face-up cards on the table, eat all those cards.  The eaten cards all disappear from the table.
-#For each card, find which of the N moves eats it.  If the card is not eaten until the end, report that fact.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ K ≦ N ≦ 2 × 10^5
-#P is a permutation of (1,2,...,N) (i.e. a sequence obtained by rearranging (1,2,...,N)).
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#P_1 P_2 ... P_N
-#
-#Output
-#Print N lines.
-#The i-th line (1 ≦ i ≦ N) should describe the card with the integer i written on it.  Specifically,
-#if the card with i written on it is eaten in the x-th move, print x;
-#if that card is not eaten in any move, print -1.
-#
-#Sample Input 1
-#5 2
-#3 5 2 1 4
-#
-#Sample Output 1
-#4
-#3
-#3
-#-1
-#4
-#In this input, P=(3,5,2,1,4) and K=2.
-#In the 1-st move, the card with 3 written on it is put on the table, face up, without stacked onto any card.
-#In the 2-nd move, the card with 5 written on it is put on the table, face up, without stacked onto any card.
-#In the 3-rd move, the card with 2 written on it is stacked, face up, onto the card with 3 written on it.
-#Now there is a pile consisting of K=2 face-up cards, on which 2 and 3 from the top are written, so these cards are eaten.
-#In the 4-th move, the card with 1 written on it is stacked, face up, onto the card with 5 written on it.
-#Now there is a pile consisting of K=2 face-up cards, on which 1 and 5 from the top are written, so these cards are eaten.
-#In the 5-th move, the card with 4 written on it is put on the table, face up, without stacked onto any card.
-#The card with 4 written on it was not eaten until the end.
-#
-#Sample Input 2
-#5 1
-#1 2 3 4 5
-#
-#Sample Output 2
-#1
-#2
-#3
-#4
-#5
-#If K=1, every card is eaten immediately after put on the table within a single move.
-#
-#Sample Input 3
-#15 3
-#3 14 15 9 2 6 5 13 1 7 10 11 8 12 4
-#
-#Sample Output 3
-#9
-#9
-#9
-#15
-#15
-#6
-#-1
-#-1
-#6
-#-1
-#-1
-#-1
-#-1
-#6
-#15
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    ans = [-1] * N
+    stack = []
+    for i in range(N):
+        p = P[i]
+        while stack and stack[-1][0] < p:
+            _, j = stack.pop()
+            ans[j] = i + 1
+        stack.append((p, i))
+        if len(stack) == K:
+            _, j = stack.pop(0)
+            ans[j] = i + 1
+    print('\n'.join(map(str, ans)))
+
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    result = [-1] * N
+    stack = []
+    for i in range(N):
+        if len(stack) == 0:
+            stack.append(P[i])
+        else:
+            if P[i] > stack[-1]:
+                stack.append(P[i])
+            else:
+                while len(stack) > 0 and stack[-1] >= P[i]:
+                    stack.pop()
+                stack.append(P[i])
+        if len(stack) == K:
+            for j in range(K):
+                result[stack[-1] - 1] = i + 1
+                stack.pop()
+    for i in range(N):
+        print(result[i])
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = [-1] * n
+    stack = []
+    for i in range(n):
+        while len(stack) > 0 and stack[-1][0] >= p[i]:
+            stack.pop()
+        if len(stack) > 0:
+            ans[i] = stack[-1][1] + 1
+        stack.append((p[i], i))
+        if len(stack) == k:
+            stack = []
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def solve():
+    (n, k) = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = [-1] * n
+    stack = []
+    for i in range(n):
+        while stack and stack[-1][0] >= p[i]:
+            stack.pop()
+        if stack:
+            ans[i] = stack[-1][1]
+        stack.append((p[i], i + 1))
+        if len(stack) == k:
+            stack = []
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def solve(n, k, p):
+    ans = [-1]*n
+    stack = []
+    for i in range(n):
+        while stack and stack[-1][0] > p[i]:
+            stack.pop()
+        if stack:
+            ans[i] = stack[-1][1]
+        stack.append((p[i], i+1))
+        if len(stack) == k:
+            stack = []
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    #print(N, K, P)
+    stack = []
+    for i in range(N):
+        #print(i)
+        while stack and P[stack[-1]] >= P[i]:
+            stack.pop()
+        if stack:
+            print(stack[-1] + 1)
+        else:
+            print(-1)
+        stack.append(i)
+
+=======
+Suggestion 7
+
+def find_smallest_greater_than_or_equal_to_x(a, x):
+    l = 0
+    r = len(a) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if a[mid] >= x:
+            r = mid - 1
+        else:
+            l = mid + 1
+    return l
+
+=======
+Suggestion 8
+
+def solve(N, K, P):
+    #print(N, K, P)
+    #print("P: ", P)
+    table = [0] * (N+1)
+    for i in range(N):
+        table[P[i]] = i+1
+    #print("table: ", table)
+    for i in range(1, N+1):
+        if table[i] > 0:
+            table[i] = table[i-1]
+    #print("table: ", table)
+    for i in range(N):
+        if i+1 < K:
+            print(-1)
+        else:
+            print(table[i+1])
+
+=======
+Suggestion 9
+
+def read_int():
+    return int(input())

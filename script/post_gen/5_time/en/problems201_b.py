@@ -1,58 +1,127 @@
-#Problem Statement
-#The Republic of AtCoder has N mountains. The i-th mountain has a name S_i and a height of T_i.
-#Return the name of the second highest mountain there. It is guaranteed that all the mountains have different names and different heights.
-#
-#Constraints
-#2 ≦ N ≦ 1000
-#1 ≦ ({}the length of S_i) ≦ 15
-#1 ≦ T_i ≦ 10^5
-#S_i ≠ S_j  (i ≠ j)
-#T_i ≠ T_j  (i ≠ j)
-#S_i consists of uppercase English letters, lowercase English letters, and digits.
-#N and T_i are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#Output
-#Print the name of the second highest mountain.
-#
-#Sample Input 1
-#3
-#Everest 8849
-#K2 8611
-#Kangchenjunga 8586
-#
-#Sample Output 1
-#K2
-#The second highest mountain in the world is K2.
-#
-#Sample Input 2
-#4
-#Kita 3193
-#Aino 3189
-#Fuji 3776
-#Okuhotaka 3190
-#
-#Sample Output 2
-#Kita
-#The second highest mountain in Japan is Kita-dake.
-#
-#Sample Input 3
-#4
-#QCFium 2846
-#chokudai 2992
-#kyoprofriends 2432
-#penguinman 2390
-#
-#Sample Output 3
-#QCFium
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        mountains.append(input().split())
+    mountains = sorted(mountains, key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    mountains = []
+    for _ in range(n):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        S, T = input().split()
+        T = int(T)
+        mountains.append((S, T))
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        mountains.append(input().split(" "))
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountain = input().split()
+        mountains.append(mountain)
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    mountains = {}
+    for i in range(n):
+        s, t = input().split()
+        mountains[s] = int(t)
+    mountains = sorted(mountains.items(), key=lambda x:x[1], reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountains.append(input().split())
+
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+
+    print(mountains[1][0])
+
+=======
+Suggestion 8
+
+def problem201_b():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        name, height = input().split()
+        mountains.append((name, int(height)))
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountains.append(input().split())
+
+    mountains = sorted(mountains, key=lambda mountain: mountain[1], reverse=True)
+
+    print(mountains[1][0])
+
+=======
+Suggestion 10
+
+def main():
+    # Read from stdin
+    n = int(input())
+    # Initialize variables
+    mountains = {}
+    for i in range(n):
+        # Read from stdin
+        name, height = input().split()
+        # Add to dictionary
+        mountains[name] = int(height)
+    # Find the second highest mountain
+    second_highest = sorted(mountains.items(), key=lambda x: x[1], reverse=True)[1][0]
+    # Print to stdout
+    print(second_highest)

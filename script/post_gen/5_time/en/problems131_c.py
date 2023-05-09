@@ -1,35 +1,85 @@
-#Problem Statement
-#You are given four integers A, B, C, and D. Find the number of integers between A and B (inclusive) that can be evenly divided by neither C nor D.
-#
-#Constraints
-#1≦ A≦ B≦ 10^{18}
-#1≦ C,D≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B C D
-#
-#Output
-#Print the number of integers between A and B (inclusive) that can be evenly divided by neither C nor D.
-#
-#Sample Input 1
-#4 9 2 3
-#
-#Sample Output 1
-#2
-#5 and 7 satisfy the condition.
-#
-#Sample Input 2
-#10 40 6 8
-#
-#Sample Output 2
-#23
-#
-#Sample Input 3
-#314159265358979323 846264338327950288 419716939 937510582
-#
-#Sample Output 3
-#532105071133627368
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, D = map(int, input().split())
+    count = 0
+    for i in range(A, B + 1):
+        if i % C != 0 and i % D != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C,D = map(int, input().split())
+    x = B//C - (A-1)//C
+    y = B//D - (A-1)//D
+    z = B//(C*D) - (A-1)//(C*D)
+    print(B-A+1-x-y+z)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    def gcd(a,b):
+        while b:
+            a,b = b,a%b
+        return a
+    def lcm(a,b):
+        return a*b//gcd(a,b)
+    def f(x):
+        return x - x//c - x//d + x//lcm(c,d)
+    print(f(b)-f(a-1))
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C, D = map(int, input().split())
+    import math
+    def lcm(x, y):
+        return (x * y) // math.gcd(x, y)
+    def f(x):
+        return x - (x // C + x // D - x // lcm(C, D))
+    print(f(B) - f(A - 1))
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 8
+
+def solve(A,B,C,D):
+    # write your code here
+    return 0

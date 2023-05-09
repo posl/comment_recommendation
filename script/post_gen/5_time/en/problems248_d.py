@@ -1,49 +1,116 @@
-#Problem Statement
-#You are given a sequence of length N: A=(A_1,...,A_N).
-#Answer Q queries given in the following format.
-#You are given integers L, R, and X.
-#Find the number of elements among A_L, ..., A_R whose values are equal to X.
-#
-#Constraints
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ Q ≦ 2× 10^5
-#1≦ L ≦ R ≦ N, 1 ≦ X ≦ N, for each query.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N 
-#A_1 A_2 ... A_N
-#Q
-#Query_1
-#Query_2
-#.
-#.
-#.
-#Query_Q
-#Here, Query_i represents the i-th query.
-#Each query is in the following format:
-#L R X
-#
-#Output
-#Print Q lines, the i-th of which contains the answer to the i-th query.
-#
-#Sample Input 1
-#5
-#3 1 4 1 5
-#4
-#1 5 1
-#2 4 3
-#1 5 2
-#1 3 3
-#
-#Sample Output 1
-#2
-#0
-#0
-#1
-#In the first query, two of (A_1,A_2,A_3,A_4,A_5) =(3,1,4,1,5) have values equal to 1.
-#In the second query, zero of (A_2,A_3,A_4) =(1,4,1) have values equal to 3.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for _ in range(q):
+        l, r, x = map(int, input().split())
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for _ in range(Q):
+        L, R, X = map(int, input().split())
+        print(A[L-1:R].count(X))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        l, r, x = map(int, input().split())
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        l, r, x = map(int, input().split())
+        count = 0
+        for j in range(l-1, r):
+            if a[j] == x:
+                count += 1
+        print(count)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for _ in range(q):
+        l, r, x = map(int, input().split())
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for _ in range(Q):
+        L, R, X = map(int, input().split())
+        print(A[L-1:R].count(X))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    lr = [list(map(int, input().split())) for _ in range(q)]
+    for i in range(q):
+        l = lr[i][0]
+        r = lr[i][1]
+        x = lr[i][2]
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(_) for _ in input().split()]
+    q = int(input())
+    queries = []
+    for _ in range(q):
+        queries.append([int(_) for _ in input().split()])
+
+    for query in queries:
+        l, r, x = query
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 9
+
+def solve(N, A, Q, queries):
+    ans = []
+    for q in queries:
+        L, R, X = q
+        ans.append(A[L-1:R].count(X))
+    return ans
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))

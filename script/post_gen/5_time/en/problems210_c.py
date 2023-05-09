@@ -1,46 +1,181 @@
-#Problem Statement
-#There are N candies arranged in a row from left to right.
-#Each of these candies has one color that is one of the 10^9 colors called Color 1, Color 2, ..., and Color 10^9.
-#For each i = 1, 2, ..., N, the color of the i-th candy from the left is Color c_i.
-#From this row, Takahashi can choose K consecutive candies and get them.
-#That is, he can choose an integer i such that 1 ≦ i ≦ N-K+1 and get the i-th, (i+1)-th, (i+2)-th, ..., (i+K-1)-th candy from the left.
-#Takahashi likes to eat colorful candies, so the more variety of colors his candies have, the happier he will be.
-#Print the maximum possible number of distinct colors in candies he gets.
-#
-#Constraints
-#1 ≦ K ≦ N ≦ 3 × 10^5
-#1 ≦ c_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N K
-#c_1 c_2 ... c_N
-#
-#Output
-#Print the maximum possible number of distinct colors in candies Takahashi gets.
-#
-#Sample Input 1
-#7 3
-#1 2 1 2 3 3 1
-#
-#Sample Output 1
-#3
-#If Takahashi gets the 3-rd through 5-th candies, they will have 3 distinct colors, which is the maximum possible number.
-#
-#Sample Input 2
-#5 5
-#4 4 4 4 4
-#
-#Sample Output 2
-#1
-#Takahashi can get all of these candies, but they are in a single color.
-#
-#Sample Input 3
-#10 6
-#304621362 506696497 304621362 506696497 834022578 304621362 414720753 304621362 304621362 414720753
-#
-#Sample Output 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    c = list(map(int, input(
+
+=======
+Suggestion 2
+
+def solve():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+
+    d = {}
+    for i in range(k):
+        d[c[i]] = d.get(c[i], 0) + 1
+    ans = len(d)
+
+    for i in range(n - k):
+        d[c[i]] -= 1
+        if d[c[i]] == 0:
+            del d[c[i]]
+        d[c[i + k]] = d.get(c[i + k], 0) + 1
+        ans = max(ans, len(d))
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    d = {}
+    for i in range(k):
+        d[c[i]] = 1
+    ans = len(d)
+    for i in range(k, n):
+        d[c[i]] = 1
+        if d[c[i-k]] == 1:
+            del d[c[i-k]]
+        ans = max(ans, len(d))
+    return ans
+
+print(solve())
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    c = list(map(int,input().split()))
+    ans = 0
+    d = {}
+    for i in range(K):
+        if c[i] not in d:
+            d[c[i]] = 0
+        d[c[i]] += 1
+        ans = max(ans,len(d))
+    for i in range(K,N):
+        d[c[i-K]] -= 1
+        if d[c[i-K]] == 0:
+            del d[c[i-K]]
+        if c[i] not in d:
+            d[c[i]] = 0
+        d[c[i]] += 1
+        ans = max(ans,len(d))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    ans = 0
+    colors = {}
+    for i in range(n):
+        if i >= k:
+            colors[c[i-k]] -= 1
+            if colors[c[i-k]] == 0:
+                del colors[c[i-k]]
+        if c[i] not in colors:
+            colors[c[i]] = 1
+        else:
+            colors[c[i]] += 1
+        ans = max(ans, len(colors))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    C = list(map(int, input().split()))
+    result = 0
+    color = {}
+    for i in range(K):
+        if C[i] not in color:
+            color[C[i]] = 0
+        color[C[i]] += 1
+    result = len(color)
+    for i in range(K, N):
+        if C[i - K] in color:
+            color[C[i - K]] -= 1
+            if color[C[i - K]] == 0:
+                del color[C[i - K]]
+        if C[i] not in color:
+            color[C[i]] = 0
+        color[C[i]] += 1
+        result = max(result, len(color))
+    print(result)
+
+=======
+Suggestion 7
+
+def get_max_colors(N, K, c):
+    max_colors = 0
+    for i in range(N-K+1):
+        max_colors = max(max_colors, len(set(c[i:i+K])))
+    return max_colors
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+
+    from collections import Counter
+    counter = Counter(c[:k])
+    max_count = len(counter)
+    for i in range(k, n):
+        counter[c[i]] += 1
+        counter[c[i-k]] -= 1
+        if counter[c[i-k]] == 0:
+            del counter[c[i-k]]
+        max_count = max(max_count, len(counter))
+
+    print(max_count)
+
+=======
+Suggestion 9
+
+def main():
+    num_candies, num_consecutive = map(int, input().split())
+    candies = list(map(int, input().split()))
+    max_colors = 0
+    for i in range(num_candies-num_consecutive+1):
+        max_colors = max(max_colors, len(set(candies[i:i+num_consecutive])))
+    print(max_colors)
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+
+    # print(n, k)
+    # print(c)
+
+    candies = c[:k]
+    # print(candies)
+    colors = set(candies)
+    # print(colors)
+    max_colors = len(colors)
+    # print(max_colors)
+
+    for i in range(k, n):
+        candies.pop(0)
+        candies.append(c[i])
+        colors = set(candies)
+        # print(colors)
+        max_colors = max(max_colors, len(colors))
+        # print(max_colors)
+
+    print(max_colors)

@@ -1,32 +1,84 @@
-#Problem Statement
-#Given are integers A, B, and N.
-#Find the maximum possible value of floor(Ax/B) - A × floor(x/B) for a non-negative integer x not greater than N.
-#Here floor(t) denotes the greatest integer not greater than the real number t.
-#
-#Constraints
-#1 ≤ A ≤ 10^{6}
-#1 ≤ B ≤ 10^{12}
-#1 ≤ N ≤ 10^{12}
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B N
-#
-#Output
-#Print the maximum possible value of floor(Ax/B) - A × floor(x/B) for a non-negative integer x not greater than N, as an integer.
-#
-#Sample Input 1
-#5 7 4
-#
-#Sample Output 1
-#2
-#When x=3, floor(Ax/B)-A×floor(x/B) = floor(15/7) - 5×floor(3/7) = 2. This is the maximum value possible.
-#
-#Sample Input 2
-#11 10 9
-#
-#Sample Output 2
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, N = map(int, input().split())
+    x = min(B-1, N)
+    ans = (A*x)//B - A*(x//B)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    a, b, n = map(int, input().split())
+    x = min(b-1, n)
+    print((a*x)//b - a*(x//b))
+
+=======
+Suggestion 3
+
+def main():
+    A, B, N = map(int, input().split())
+    x = min(B-1, N)
+    print((A*x)//B - A*(x//B))
+
+=======
+Suggestion 4
+
+def main():
+    a, b, n = map(int, input().split())
+    x = min(n, b-1)
+    print((a*x)//b - a*(x//b))
+
+=======
+Suggestion 5
+
+def main():
+    A, B, N = map(int, input().split())
+    x = min(N, B-1)
+    print((A*x)//B - A*(x//B))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, n = map(int, input().split())
+    if n < b:
+        x = n
+    else:
+        x = b - 1
+    print(int(a*x/b) - a*int(x/b))
+
+=======
+Suggestion 7
+
+def main():
+    a,b,n = map(int,input().split())
+    x = min(n,b-1)
+    print(int(a*x/b)-a*int(x/b))
+
+=======
+Suggestion 8
+
+def main():
+    A, B, N = map(int, input().split())
+    max = 0
+    for i in range(0, N + 1):
+        if (A * i // B) - A * (i // B) > max:
+            max = (A * i // B) - A * (i // B)
+    print(max)
+main()
+
+=======
+Suggestion 9
+
+def floor(a,b):
+    if a%b==0:
+        return a//b
+    else:
+        return (a-a%b)//b
+
+a,b,n=map(int,input().split())

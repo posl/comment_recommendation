@@ -1,39 +1,108 @@
-#Problem Statement
-#Takahashi, who is A years old, is riding a Ferris wheel.
-#It costs B yen (B is an even number) to ride the Ferris wheel if you are 13 years old or older, but children between 6 and 12 years old (inclusive) can ride it for half the cost, and children who are 5 years old or younger are free of charge. (Yen is the currency of Japan.)
-#Find the cost of the Ferris wheel for Takahashi.
-#
-#Constraints
-#0 ≤ A ≤ 100
-#2 ≤ B ≤ 1000
-#B is an even number.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the cost of the Ferris wheel for Takahashi.
-#
-#Sample Input 1
-#30 100
-#
-#Sample Output 1
-#100
-#Takahashi is 30 years old now, and the cost of the Ferris wheel is 100 yen.
-#
-#Sample Input 2
-#12 100
-#
-#Sample Output 2
-#50
-#Takahashi is 12 years old, and the cost of the Ferris wheel is the half of 100 yen, that is, 50 yen.
-#
-#Sample Input 3
-#0 100
-#
-#Sample Output 3
-#0
-#Takahashi is 0 years old, and he can ride the Ferris wheel for free.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(B//2)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int, input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(int(b/2))
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6 and A <= 12:
+        print(int(B/2))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    if a < 6:
+        print(0)
+    elif a < 13:
+        print(b//2)
+    else:
+        print(b)
+
+=======
+Suggestion 5
+
+def cost(age, price):
+    if age >= 13:
+        return price
+    elif age >= 6:
+        return price//2
+    else:
+        return 0
+
+=======
+Suggestion 6
+
+def function():
+    A, B = map(int, input().split())
+
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(int(B/2))
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def ferris_wheel():
+    age, cost = map(int, input().split())
+    if age <= 5:
+        print(0)
+    elif age in range(6, 13):
+        print(cost//2)
+    else:
+        print(cost)
+
+=======
+Suggestion 8
+
+def main():
+    # get input
+    a, b = map(int, input().split())
+
+    # your code
+    if a >= 13:
+        print(b)
+    elif 6 <= a <= 12:
+        print(int(b/2))
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    # Take input Here and Call solution function
+    a,b = get_ints_in_variables()
+    print(solution(a,b))

@@ -1,45 +1,139 @@
-#Problem Statement
-#In a flower bed, there are N flowers, numbered 1,2,......,N. Initially, the heights of all flowers are 0.
-#You are given a sequence h={h_1,h_2,h_3,......} as input. You would like to change the height of Flower k to h_k for all k (1 ≦  k ≦ N), by repeating the following "watering" operation:
-#Specify integers l and r. Increase the height of Flower x by 1 for all x such that l ≦ x ≦ r.
-#Find the minimum number of watering operations required to satisfy the condition.
-#
-#Constraints
-#1 ≦ N  ≦ 100
-#0 ≦ h_i ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#h_1 h_2 h_3 ...... h_N
-#
-#Output
-#Print the minimum number of watering operations required to satisfy the condition.
-#
-#Sample Input 1
-#4
-#1 2 2 1
-#
-#Sample Output 1
-#2
-#The minimum number of watering operations required is 2.
-#One way to achieve it is:
-#Perform the operation with (l,r)=(1,3).
-#Perform the operation with (l,r)=(2,4).
-#
-#Sample Input 2
-#5
-#3 1 2 3 1
-#
-#Sample Output 2
-#5
-#
-#Sample Input 3
-#8
-#4 23 75 0 23 96 50 100
-#
-#Sample Output 3
-#221
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n=int(input())
+    h=list(map(int,input().split()))
+    return n,h
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    while max(h) > 0:
+        for i in range(n):
+            if h[i] > 0:
+                h[i] -= 1
+                if i == n-1 or h[i+1] == 0:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    h.insert(0, 0)
+    ans = 0
+    for i in range(1, N+1):
+        if h[i] > h[i-1]:
+            ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    h.append(0)
+    count = 0
+    for i in range(n):
+        if h[i] < h[i+1]:
+            count += h[i+1] - h[i]
+    print(count)
+
+=======
+Suggestion 5
+
+def watering(h):
+    n = len(h)
+    count = 0
+    for i in range(n-1):
+        if h[i] < h[i+1]:
+            count += h[i+1] - h[i]
+    return count
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    h.append(0)
+
+    count = 0
+    for i in range(N):
+        if h[i] < h[i+1]:
+            count += h[i+1] - h[i]
+
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if max(h) == 0:
+            break
+        else:
+            start = h.index(max(h))
+            end = len(h) - h[::-1].index(max(h)) - 1
+            ans += max(h)
+            for i in range(start, end + 1):
+                h[i] -= max(h)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    h.insert(0, 0)
+    h.append(0)
+
+    #print(N)
+    #print(h)
+
+    count = 0
+    for i in range(1, N+1):
+        if h[i] > h[i-1]:
+            count += (h[i] - h[i-1])
+        elif h[i] < h[i-1]:
+            count += (h[i-1] - h[i])
+        else:
+            pass
+
+    print(count)
+
+=======
+Suggestion 9
+
+def find_min_watering_ops(N, heights):
+    count = 0
+    for i in range(1, N):
+        if heights[i] > heights[i-1]:
+            count += heights[i] - heights[i-1]
+    return count
+
+=======
+Suggestion 10
+
+def get_min_operations(N, h):
+    count = 0
+    for i in range(N):
+        if i == 0:
+            count += h[i]
+        else:
+            count += max(h[i] - h[i-1], 0)
+    return count

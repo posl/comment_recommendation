@@ -1,40 +1,105 @@
-#Problem Statement
-#Find the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive). The order does not matter.
-#
-#Constraints
-#2≦ K≦ 100
-#K is an integer.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive).
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#2
-#Two pairs can be chosen: (2,1) and (2,3).
-#
-#Sample Input 2
-#6
-#
-#Sample Output 2
-#9
-#
-#Sample Input 3
-#11
-#
-#Sample Output 3
-#30
-#
-#Sample Input 4
-#50
-#
-#Sample Output 4
-#625
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int(k/2)**2)
+    else:
+        print(int(k/2)*(int(k/2)+1))
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int((k/2))**2)
+    else:
+        print(int((k/2)) * (int((k/2)) + 1))
+
+=======
+Suggestion 3
+
+def solve(K):
+    ans = 0
+    for i in range(1, K+1):
+        for j in range(i+1, K+1):
+            if i%2 != j%2:
+                ans += 1
+    return ans
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print((k//2)**2)
+    else:
+        print(((k+1)//2)**2)
+
+=======
+Suggestion 5
+
+def count_pairs(number):
+    count = 0
+    for i in range(1, number+1):
+        if i % 2 == 0:
+            continue
+        for j in range(1, number+1):
+            if j % 2 == 1:
+                continue
+            count += 1
+    return count
+
+print(count_pairs(int(input())))
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    if k%2 == 0:
+        print((k/2)**2)
+    else:
+        print(int((k/2)*(k/2+1)))
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    #print(k)
+    if k%2 == 0:
+        print((k//2)**2)
+    else:
+        print((k//2)*(k//2+1))
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    print(int((K/2)*(K/2 + K%2)))
+
+main()
+
+=======
+Suggestion 9
+
+def find_ways_to_choose_pair(k):
+    return int(k/2) * int(k/2 + k%2)
+
+k = int(input())
+
+print(find_ways_to_choose_pair(k))
+
+=======
+Suggestion 10
+
+def get_input():
+    import sys
+    return int(sys.stdin.readline().rstrip())

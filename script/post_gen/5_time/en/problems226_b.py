@@ -1,69 +1,140 @@
-#Problem Statement
-#You are given N sequences numbered 1 to N.
-#Sequence i has a length of L_i and its j-th element (1 ≦ j ≦ L_i) is a_{i,j}.
-#Sequence i and Sequence j are considered the same when L_i = L_j and a_{i,k} = a_{j,k} for every k (1 ≦ k ≦ L_i).
-#How many different sequences are there among Sequence 1 through Sequence N?
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9} (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#The total number of elements in the sequences, sum_{i=1}^N L_i, does not exceed 2 × 10^5.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#Output
-#Print the number of different sequences.
-#
-#Sample Input 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#Sample Output 1
-#3
-#Sample Input 1
-# contains four sequences:
-#Sequence 1 : (1, 2)
-#Sequence 2 : (1, 1)
-#Sequence 3 : (2, 1)
-#Sequence 4 : (1, 2) 
-#Except that Sequence 1 and Sequence 4 are the same, these sequences are pairwise different, so we have three different sequences.
-#
-#Sample Input 2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#Sample Output 2
-#4
-#Sample Input 2
-# contains five sequences:
-#Sequence 1 : (1)
-#Sequence 2 : (1)
-#Sequence 3 : (2)
-#Sequence 4 : (1, 1) 
-#Sequence 5 : (1, 1, 1) 
-#
-#Sample Input 3
-#1
-#1 1
-#
-#Sample Output 3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        l = list(map(int, input().split()))
+        l.pop(0)
+        s.add(tuple(l))
+    print(len(s))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        l = list(map(int, input().split()))
+        s.add(tuple(l[1:]))
+    print(len(s))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    a.sort()
+    ans = 1
+    for i in range(n-1):
+        if a[i] != a[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int,input().split())))
+    L.sort()
+    count = 1
+    for i in range(N-1):
+        if L[i] != L[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    seq = {}
+    for i in range(n):
+        l, *a = map(int, input().split())
+        seq[tuple(a)] = 1
+    print(len(seq))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    seq = []
+    for i in range(N):
+        seq.append(list(map(int, input().split())))
+    seq.sort()
+    prev = seq[0]
+    count = 1
+    for i in range(1, N):
+        if seq[i] != prev:
+            count += 1
+            prev = seq[i]
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    L.sort()
+    ans = 1
+    for i in range(N - 1):
+        if L[i] != L[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    l.sort(key=lambda x: x[0])
+    count = 1
+    for i in range(1, n):
+        if l[i] != l[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    seqs = []
+    for _ in range(n):
+        seqs.append(input().split())
+    seqs.sort()
+    prev = seqs[0]
+    cnt = 1
+    for seq in seqs[1:]:
+        if seq != prev:
+            cnt += 1
+        prev = seq
+    print(cnt)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    seq = []
+    for i in range(N):
+        seq.append(input().split())
+    seq.sort()
+    print(len(list(k for k, _ in itertools.groupby(seq))))

@@ -1,43 +1,81 @@
-#Problem Statement
-#There are 2000001 stones placed on a number line. The coordinates of these stones are -1000000, -999999, -999998, ..., 999999, 1000000.
-#Among them, some K consecutive stones are painted black, and the others are painted white.
-#Additionally, we know that the stone at coordinate X is painted black.
-#Print all coordinates that potentially contain a stone painted black, in ascending order.
-#
-#Constraints
-#1 ≦ K ≦ 100
-#0 ≦ X ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K X
-#
-#Output
-#Print all coordinates that potentially contain a stone painted black, in ascending order, with spaces in between.
-#
-#Sample Input 1
-#3 7
-#
-#Sample Output 1
-#5 6 7 8 9
-#We know that there are three stones painted black, and the stone at coordinate 7 is painted black. There are three possible cases:
-#The three stones painted black are placed at coordinates 5, 6, and 7.
-#The three stones painted black are placed at coordinates 6, 7, and 8.
-#The three stones painted black are placed at coordinates 7, 8, and 9.
-#Thus, five coordinates potentially contain a stone painted black: 5, 6, 7, 8, and 9.
-#
-#Sample Input 2
-#4 0
-#
-#Sample Output 2
-#-3 -2 -1 0 1 2 3
-#Negative coordinates can also contain a stone painted black.
-#
-#Sample Input 3
-#1 100
-#
-#Sample Output 3
-#100
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, x = map(int, input().split())
+    print(*[i for i in range(x - k + 1, x + k)])
+
+=======
+Suggestion 2
+
+def main():
+    K, X = map(int, input().split())
+    result = []
+    for i in range(X-K+1, X+K):
+        result.append(i)
+    print(*result)
+
+=======
+Suggestion 3
+
+def main():
+    K, X = map(int, input().split())
+    print(*[i for i in range(X-K+1, X+K)])
+
+=======
+Suggestion 4
+
+def problem137_b():
+    k, x = map(int, input().split())
+    print(*[i for i in range(x-k+1, x+k)])
+
+=======
+Suggestion 5
+
+def main():
+    K, X = map(int, input().split())
+    print(*range(X - K + 1, X + K))
+
+=======
+Suggestion 6
+
+def main():
+    k, x = map(int, input().split())
+    print(*range(x-k+1, x+k))
+
+=======
+Suggestion 7
+
+def main():
+    k, x = map(int, input().split())
+    print(*[x+i for i in range(-k+1, k)])
+
+=======
+Suggestion 8
+
+def main():
+    k, x = map(int, input().split())
+    print(*list(range(x-(k-1), x+k)))
+
+=======
+Suggestion 9
+
+def f(K,X):
+    result = []
+    for i in range(X-K+1,X+K):
+        result.append(str(i))
+    return " ".join(result)
+
+K,X = map(int,input().split())
+print(f(K,X))
+
+=======
+Suggestion 10
+
+def stones(K,X):
+    result = []
+    for i in range(X - K + 1, X + K):
+        result.append(i)
+    return result

@@ -1,36 +1,93 @@
-#Problem Statement
-#There are N trees. The i-th tree bears A_i nuts.
-#Chipmunk will harvest nuts from the trees in the following manner:
-#From a tree with 10 or fewer nuts, she does not take nuts.
-#From a tree with more than 10 nuts, she takes all but 10 nuts.
-#Find the total number of nuts Chipmunk will take from the trees.
-#
-#Constraints
-#1 ≦ N ≦ 1000
-#0 ≦ A_i ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#6 17 28
-#
-#Sample Output 1
-#25
-#From the three trees, Chipmunk will take 0, 7, and 18 nuts, for a total of 25 nuts.
-#
-#Sample Input 2
-#4
-#8 9 10 11
-#
-#Sample Output 2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        if A[i] > 10:
+            total += A[i] - 10
+    print(total)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] > 10:
+            count += a[i] - 10
+    print(count)
+
+=======
+Suggestion 4
+
+def harvest_nuts(nuts):
+    total_nuts = 0
+    for nut in nuts:
+        if nut > 10:
+            total_nuts += nut - 10
+    return total_nuts
+
+=======
+Suggestion 5
+
+def problem204_b():
+    n = int(input())
+    a = list(map(int, input().split()))
+    total = 0
+    for i in range(n):
+        if a[i] > 10:
+            total += a[i] - 10
+    print(total)
+
+=======
+Suggestion 6
+
+def harvest_nuts(trees):
+    nuts = 0
+    for tree in trees:
+        if tree > 10:
+            nuts += tree - 10
+    return nuts
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    total = 0
+    for i in range(n):
+        if a[i] > 10:
+            total += a[i] - 10
+    print(total)
+
+=======
+Suggestion 8
+
+def main():
+    num = int(input())
+    nuts = list(map(int, input().split()))
+    total = 0
+    for n in nuts:
+        if n > 10:
+            total += n - 10
+    print(total)

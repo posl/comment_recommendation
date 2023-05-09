@@ -1,46 +1,104 @@
-#Problem Statement
-#We have two permutations P and Q of size N (that is, P and Q are both rearrangements of (1,2,...,N)).
-#There are N! possible permutations of size N. Among them, let P and Q be the a-th and b-th lexicographically smallest permutations, respectively. Find |a - b|.
-#
-#Notes
-#For two sequences X and Y, X is said to be lexicographically smaller than Y if and only if there exists an integer k such that X_i = Y_i(1 ≦ i < k) and X_k < Y_k.
-#
-#Constraints
-#2 ≦ N ≦ 8
-#P and Q are permutations of size N.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#P_1 P_2 ... P_N
-#Q_1 Q_2 ... Q_N
-#
-#Output
-#Print |a - b|.
-#
-#Sample Input 1
-#3
-#1 3 2
-#3 1 2
-#
-#Sample Output 1
-#3
-#There are 6 permutations of size 3: (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), and (3,2,1). Among them, (1,3,2) and (3,1,2) come 2-nd and 5-th in lexicographical order, so the answer is |2 - 5| = 3.
-#
-#Sample Input 2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#Sample Output 2
-#17517
-#
-#Sample Input 3
-#3
-#1 2 3
-#1 2 3
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def next_permutation(a):
+    i = len(a) - 2
+    while not (i < 0 or a[i] < a[i+1]):
+        i -= 1
+    if i < 0:
+        return False
+    j = len(a) - 1
+    while not (a[i] < a[j]):
+        j -= 1
+    a[i], a[j] = a[j], a[i]
+    a[i+1:] = reversed(a[i+1:])
+    return True
+
+n = int(input())
+p = list(map(int, input().split()))
+q = list(map(int, input().split()))
+
+a = 0
+b = 0
+i = 0
+while i < n:
+    a += p[i] * (n ** i)
+    b += q[i] * (n ** i)
+    i += 1
+print(abs(a - b))
+
+=======
+Suggestion 2
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+N = int(input())
+P = list(map(int,input().split()))
+Q = list(map(int,input().split()))
+
+=======
+Suggestion 3
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = list(map(int, input().split()))
+    a, b = 0, 0
+    for i in range(N):
+        a += P[i] * (N - i) * ((N - i) - 1) // 2
+        b += Q[i] * (N - i) * ((N - i) - 1) // 2
+    print(abs(a - b))
+
+=======
+Suggestion 5
+
+def fact(n):
+    if n == 0:
+        return 1
+    else:
+        return n * fact(n-1)
+
+=======
+Suggestion 6
+
+def permutations(n):
+    if n == 1:
+        yield [1]
+    else:
+        for p in permutations(n - 1):
+            for i in range(n):
+                yield p[:i] + [n] + p[i:]
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+
+    print(abs(get_index(p, n) - get_index(q, n)))
+
+=======
+Suggestion 8
+
+def permutation(n):
+    if n == 0:
+        return [[]]
+    else:
+        return [[x] + y for x in range(n) for y in permutation(n - 1) if x not in y]

@@ -1,136 +1,318 @@
-#Problem Statement
-#There is a grid with H horizontal rows and W vertical columns.  (i, j) denotes the square at the i-th row from the top and j-th column from the left.
-#N squares, (r_1, c_1), (r_2, c_2), ..., (r_N, c_N), have walls.
-#Takahashi is initially at square (r_s, c_s).
-#Q instructions are given to Takahashi.
-#For i = 1, 2, ..., Q, the i-th instruction is represented by a pair of a character d_i and a positive integer l_i.  d_i is one of L, R, U, and D, representing the directions of left, right, up, and down, respectively.
-#Given the i-th direction, Takahashi repeats the following action l_i times:
-#If a square without a wall is adjacent to the current square in the direction represented by d_i, move to that square;
-#otherwise, do nothing.
-#For i = 1, 2, ..., Q, print the square where Takahashi will be after he follows the first i instructions.
-#
-#Constraints
-#2 ≦ H, W ≦ 10^9
-#1 ≦ r_s ≦ H
-#1 ≦ c_s ≦ W
-#0 ≦ N ≦ 2 × 10^5
-#1 ≦ r_i ≦ H
-#1 ≦ c_i ≦ W
-#i ≠ j -> (r_i, c_i) ≠ (r_j, c_j)
-#(r_s, c_s) ≠ (r_i, c_i) for all i = 1, 2, ..., N.
-#1 ≦ Q ≦ 2 × 10^5
-#d_i is one of the characters L, R, U, and D.
-#1 ≦ l_i ≦ 10^9
-#All values in the input other than d_i are integers.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#H W r_s c_s
-#N
-#r_1 c_1
-#r_2 c_2
-#.
-#.
-#.
-#r_N c_N
-#Q
-#d_1 l_1
-#d_2 l_2
-#.
-#.
-#.
-#d_Q l_Q
-#
-#Output
-#Print Q lines.
-#For i = 1, 2, ..., Q, the i-th line should contain the square (R_i, C_i) where Takahashi will be after he follows the first i instructions, in the following format:
-#R_1 C_1
-#R_2 C_2
-#.
-#.
-#.
-#R_Q C_Q
-#
-#Sample Input 1
-#5 5 4 4
-#3
-#5 3
-#2 2
-#1 4
-#4
-#L 2
-#U 3
-#L 2
-#R 4
-#
-#Sample Output 1
-#4 2
-#3 2
-#3 1
-#3 5
-#The given grid and the initial position of Takahashi are as follows, where # denotes a square with a wall, T a square where Takahashi is, and . the other squares:
-#...#.
-#.#...
-#.....
-#...T.
-#..#..
-#Given the 1-st instruction, Takahashi moves 2 squares to the left, ending up in square (4, 2) as follows:
-#...#.
-#.#...
-#.....
-#.T...
-#..#..
-#Given the 2-nd instruction, Takahashi first moves 1 square upward, then he "does nothing" twice because the adjacent square in his direction has a wall.  As a result, he ends up in square (3, 2) as follows:
-#...#.
-#.#...
-#.T...
-#.....
-#..#..
-#Given the 3-rd instruction, Takahashi first moves 1 square to the left, then he "does nothing" once because there is no square in his direction.  As a result, he ends up in square (3, 1) as follows:
-#...#.
-#.#...
-#T....
-#.....
-#..#..
-#Given the 4-th instruction, Takahashi moves 4 squares to the right, ending up in square (3, 5) as follows:
-#...#.
-#.#...
-#....T
-#.....
-#..#..
-#
-#Sample Input 2
-#6 6 6 3
-#7
-#3 1
-#4 3
-#2 6
-#3 4
-#5 5
-#1 1
-#3 2
-#10
-#D 3
-#U 3
-#L 2
-#D 2
-#U 3
-#D 3
-#U 3
-#R 3
-#L 3
-#D 1
-#
-#Sample Output 2
-#6 3
-#5 3
-#5 1
-#6 1
-#4 1
-#6 1
-#4 1
-#4 2
-#4 1
-#5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r = []
+    c = []
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        r.append(r_i)
+        c.append(c_i)
+    Q = int(input())
+    d = []
+    l = []
+    for i in range(Q):
+        d_i, l_i = input().split()
+        d.append(d_i)
+        l.append(int(l_i))
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    #print("")
+
+    #print(H
+
+=======
+Suggestion 2
+
+def main():
+    H, W, rs, cs = map(int, input().split())
+    N = int(input())
+    rcs = [list(map(int, input().split())) for _ in range(N)]
+    Q = int(input())
+    dl = [list(map(str, input().split())) for _ in range(Q)]
+    rcs.sort(key=lambda x: x[0])
+    rcs.sort(key=lambda x: x[1])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[0] - x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[0] - x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    rcs.sort(key=lambda x: x[0] + x[1])
+    rcs.sort(key=lambda x: x[1] - x[0])
+    print(H, W, rs, cs)
+    print(N)
+    print(rcs)
+    print(Q)
+    print(dl)
+    return
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    h, w, rs, cs = map(int, input().split())
+    n = int(input())
+    walls = set()
+    for i in range(n):
+        r, c = map(int, input().split())
+        walls.add((r, c))
+    q = int(input())
+    moves = []
+    for i in range(q):
+        d, l = input().split()
+        l = int(l)
+        moves.append((d, l))
+
+    #print(h, w, rs, cs)
+    #print(n)
+    #print(walls)
+    #print(q)
+    #print(moves)
+
+    #print("-----"
+
+=======
+Suggestion 4
+
+def main():
+    h, w, rs, cs = map(int, input().split())
+    n = int(input())
+    walls = []
+    for i in range(n):
+        walls.append(list(map(int, input().split())))
+    q = int(input())
+    instructions = []
+    for i in range(q):
+        instructions.append(list(input().split()))
+
+    #print(h, w, rs, cs)
+    #print(walls)
+    #print(q)
+    #print(instructions)
+
+    #print()
+    #print('initial')
+    #print('h: ', h)
+    #print('w: ', w)
+    #print('rs: ', rs)
+    #print('cs: ', cs)
+    #print('walls: ', walls)
+    #print('q: ', q)
+    #print('instructions: ', instructions)
+
+    for i in range(len(instructions)):
+        #print()
+        #print('i: ', i)
+        #print('h: ', h)
+        #print('w: ', w)
+        #print('rs: ', rs)
+        #print('cs: ', cs)
+        #print('walls: ', walls)
+        #print('q: ', q)
+        #print('instructions: ', instructions)
+        #print('instructions[i]: ', instructions[i])
+        #print('instructions[i][0]: ', instructions[i][0])
+        #print('instructions[i][1]: ', instructions[i][1])
+        #print('instructions[i][0] == "L": ', instructions[i][0] == "L")
+        #print('instructions[i][0] == "R": ', instructions[i][0] == "R")
+        #print('instructions[i][0] == "U": ', instructions[i][0] == "U")
+        #print('instructions[i][0] == "D": ', instructions[i][0] == "D")
+        #print('instructions[i][0] == "L" and cs > 1: ', instructions[i][0] == "L" and cs > 1)
+        #print('instructions[i][0] == "R" and cs < w: ', instructions[i][0] == "R" and cs < w)
+        #print('instructions[i][0] == "U" and rs > 1: ', instructions[i][0] == "U" and rs > 1)
+        #print('instructions[i][
+
+=======
+Suggestion 5
+
+def main():
+    h, w, r, c = map(int, input().split())
+    n = int(input())
+    rs = [0] * n
+    cs = [0] * n
+    for i in range(n):
+        rs[i], cs[i] = map(int, input().split())
+    q = int(input())
+    ds = [0] * q
+    ls = [0] * q
+    for i in range(q):
+        ds[i], ls[i] = input().split()
+        ls[i] = int(ls[i])
+    for i in range(q):
+        if ds[i] == "L":
+            c -= ls[i]
+            for j in range(n):
+                if rs[j] == r and cs[j] <= c:
+                    c = cs[j] - 1
+        elif ds[i] == "R":
+            c += ls[i]
+            for j in range(n):
+                if rs[j] == r and cs[j] >= c:
+                    c = cs[j] + 1
+        elif ds[i] == "U":
+            r -= ls[i]
+            for j in range(n):
+                if cs[j] == c and rs[j] <= r:
+                    r = rs[j] - 1
+        elif ds[i] == "D":
+            r += ls[i]
+            for j in range(n):
+                if cs[j] == c and rs[j] >= r:
+                    r = rs[j] + 1
+        print(r, c)
+
+=======
+Suggestion 6
+
+def get_input():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    walls = []
+    for i in range(N):
+        r, c = map(int, input().split())
+        walls.append((r, c))
+    Q = int(input())
+    instructions = []
+    for i in range(Q):
+        d, l = input().split()
+        instructions.append((d, int(l)))
+    return H, W, r_s, c_s, walls, Q, instructions
+
+=======
+Suggestion 7
+
+def get_input():
+    h, w, rs, cs = map(int, input().split())
+    n = int(input())
+    walls = []
+    for _ in range(n):
+        walls.append(list(map(int, input().split())))
+    q = int(input())
+    instructions = []
+    for _ in range(q):
+        instructions.append(list(map(str, input().split())))
+    return h, w, rs, cs, n, walls, q, instructions
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    rcs = [[int(x) for x in input().split()] for _ in range(N)]
+    Q = int(input())
+    dls = [[x for x in input().split()] for _ in range(Q)]
+
+    # compute
+
+    # output
+    print()
+
+=======
+Suggestion 9
+
+def problems273_d():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    pass

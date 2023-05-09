@@ -1,39 +1,105 @@
-#Problem Statement
-#We have a grid with 2 horizontal rows and 2 vertical columns.
-#Each of the squares is black or white, and there are at least 2 black squares.
-#The colors of the squares are given to you as strings S_1 and S_2, as follows.
-#If the j-th character of S_i is #, the square at the i-th row from the top and j-th column from the left is black.
-#If the j-th character of S_i is ., the square at the i-th row from the top and j-th column from the left is white.
-#You can travel between two different black squares if and only if they share a side.
-#Determine whether it is possible to travel from every black square to every black square (directly or indirectly) by only passing black squares.
-#
-#Constraints
-#Each of S_1 and S_2 is a string with two characters consisting of # and ..
-#S_1 and S_2 have two or more #s in total.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S_1
-#S_2
-#
-#Output
-#If it is possible to travel from every black square to every black square, print Yes; otherwise, print No.
-#
-#Sample Input 1
-###
-#.#
-#
-#Sample Output 1
-#Yes
-#It is possible to directly travel between the top-left and top-right black squares and between top-right and bottom-right squares.
-#These two moves enable us to travel from every black square to every black square, so the answer is Yes.
-#
-#Sample Input 2
-#.#
-##.
-#
-#Sample Output 2
-#No
-#It is impossible to travel between the top-right and bottom-left black squares, so the answer is No.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s1 = input()
+    s2 = input()
+    if '#' in s1[0] and '#' in s1[1] and '#' in s2[0] and '#' in s2[1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    S1 = input()
+    S2 = input()
+    if S1[0] == '#' and S1[1] == '#' and S2[0] == '#' and S2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' or s2[0] == '#' and s2[1] == '#' or s1[0] == '#' and s2[0] == '#' or s1[1] == '#' and s2[1] == '#':
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' or s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S1 = input()
+    S2 = input()
+    if (S1[0] == "#" and S1[1] == "#") or (S2[0] == "#" and S2[1] == "#"):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s1 = input()
+    s2 = input()
+    print('Yes' if '#' in (s1[0], s1[1], s2[0], s2[1]) else 'No')
+
+=======
+Suggestion 7
+
+def main():
+    S1 = input()
+    S2 = input()
+    if S1[1] == '#' and S2[1] == '#' or S1[1] == '.' and S2[1] == '.':
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+  s1 = input()
+  s2 = input()
+  if s1.count('#') >= 2 or s2.count('#') >= 2:
+    print('Yes')
+  else:
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s1 = input()
+    s2 = input()
+    if "#" not in s1 or "#" not in s2:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 10
+
+def solve():
+    s1 = input()
+    s2 = input()
+    print("Yes" if s1.count("#") >= 2 or s2.count("#") >= 2 else "No")

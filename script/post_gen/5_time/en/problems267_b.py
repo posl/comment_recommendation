@@ -1,56 +1,292 @@
-#Problem Statement
-#Bowling pins are numbered 1 through 10.  The following figure is a top view of the arrangement of the pins:
-#Let us call each part between two dotted lines in the figure a column.
-#For example, Pins 1 and 5 belong to the same column, and so do Pin 3 and 9.
-#When some of the pins are knocked down, a special situation called split may occur.
-#A placement of the pins is a split if both of the following conditions are satisfied:
-#Pin 1 is knocked down.
-#There are two different columns that satisfy both of the following conditions:
-#Each of the columns has one or more standing pins.
-#There exists a column between these columns such that all pins in the column are knocked down.
-#
-#See also Sample Inputs and Outputs for examples.
-#Now, you are given a placement of the pins as a string S of length 10.
-#For i = 1, ..., 10, the i-th character of S is 0 if Pin i is knocked down, and is 1 if it is standing.
-#Determine if the placement of the pins represented by S is a split.
-#
-#Constraints
-#S is a string of length 10 consisting of 0 and 1.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If the placement of the pins represented by S is a split, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#0101110101
-#
-#Sample Output 1
-#Yes
-#In the figure below, the knocked-down pins are painted gray, and the standing pins are painted white:
-#Between the column containing a standing pin 5 and the column containing a standing pin 6 is a column containing Pins 3 and 9.  Since Pins 3 and 9 are both knocked down, the placement is a split.
-#
-#Sample Input 2
-#0100101001
-#
-#Sample Output 2
-#Yes
-#
-#
-#Sample Input 3
-#0000100110
-#
-#Sample Output 3
-#No
-#This placement is not a split.
-#
-#Sample Input 4
-#1101110101
-#
-#Sample Output 4
-#No
-#This is not a split because Pin 1 is not knocked down.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+    elif s[1] == '0':
+        print('No')
+    elif s[2] == '0':
+        print('No')
+    elif s[3] == '0':
+        print('No')
+    elif s[4] == '0':
+        print('No')
+    elif s[5] == '0':
+        print('No')
+    elif s[6] == '0':
+        print('No')
+    elif s[7] == '0':
+        print('No')
+    elif s[8] == '0':
+        print('No')
+    elif s[9] == '0':
+        print('No')
+    elif s[0] == '1' and s[1] == '1' and s[2] == '1' and s[3] == '1' and s[4] == '1' and s[5] == '1' and s[6] == '1' and s[7] == '1' and s[8] == '1' and s[9] == '1':
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == '0':
+        print('No')
+    elif S[1] == '0':
+        print('No')
+    elif S[2] == '0':
+        print('No')
+    elif S[3] == '0':
+        print('No')
+    elif S[4] == '0':
+        print('No')
+    elif S[5] == '0':
+        print('No')
+    elif S[6] == '0':
+        print('No')
+    elif S[7] == '0':
+        print('No')
+    elif S[8] == '0':
+        print('No')
+    elif S[9] == '0':
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == '0':
+        if s[1] == '1' and s[2] == '1' and s[3] == '1':
+            if s[4] == '1' and s[5] == '1' and s[6] == '1':
+                if s[7] == '1' and s[8] == '1' and s[9] == '1':
+                    print('Yes')
+                    return
+    if s[0] == '1':
+        if s[1] == '0' and s[2] == '1' and s[3] == '1':
+            if s[4] == '1' and s[5] == '1' and s[6] == '1':
+                if s[7] == '1' and s[8] == '1' and s[9] == '1':
+                    print('Yes')
+                    return
+    if s[0] == '1':
+        if s[1] == '1' and s[2] == '0' and s[3] == '1':
+            if s[4] == '1' and s[5] == '1' and s[6] == '1':
+                if s[7] == '1' and s[8] == '1' and s[9] == '1':
+                    print('Yes')
+                    return
+    if s[0] == '1':
+        if s[1] == '1' and s[2] == '1' and s[3] == '0':
+            if s[4] == '1' and s[5] == '1' and s[6] == '1':
+                if s[7] == '1' and s[8] == '1' and s[9] == '1':
+                    print('Yes')
+                    return
+    if s[0] == '1':
+        if s[1] == '1' and s[2] == '1' and s[3] == '1':
+            if s[4] == '0' and s[5] == '1' and s[6] == '1':
+                if s[7] == '1' and s[8] == '1'
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[0] == '0':
+        if s[1] == '1' and s[2] == '1':
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s[1] == '0':
+            if s[2] == '1' and s[3] == '1':
+                print('Yes')
+            else:
+                print('No')
+        else:
+            if s[2] == '0':
+                if s[3] == '1' and s[4] == '1':
+                    print('Yes')
+                else:
+                    print('No')
+            else:
+                if s[3] == '0':
+                    if s[4] == '1' and s[5] == '1':
+                        print('Yes')
+                    else:
+                        print('No')
+                else:
+                    if s[4] == '0':
+                        if s[5] == '1' and s[6] == '1':
+                            print('Yes')
+                        else:
+                            print('No')
+                    else:
+                        if s[5] == '0':
+                            if s[6] == '1' and s[7] == '1':
+                                print('Yes')
+                            else:
+                                print('No')
+                        else:
+                            if s[6] == '0':
+                                if s[7] == '1' and s[8] == '1':
+                                    print('Yes')
+                                else:
+                                    print('No')
+                            else:
+                                if s[7] == '0':
+                                    if s[8] == '1' and s[9] == '1':
+                                        print('Yes')
+                                    else:
+                                        print('No')
+                                else:
+                                    if s[8] == '0':
+                                        if s[9] == '1':
+                                            print('Yes')
+                                        else:
+                                            print('No')
+                                    else:
+                                        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] == '0':
+        print("No")
+    else:
+        if S[1] == '0' or S[2] == '0' or S[3] == '0' or S[4] == '0':
+            print("No")
+        else:
+            if S[5] == '0' or S[6] == '0' or S[7] == '0' or S[8] == '0':
+                print("No")
+            else:
+                print("Yes")
+main()
+
+=======
+Suggestion 6
+
+def split_pins(pins):
+    if pins[0] == '0':
+        if pins[1] == '1' and pins[2] == '1' and pins[3] == '1' and pins[4] == '1':
+            return True
+        elif pins[5] == '1' and pins[6] == '1' and pins[7] == '1' and pins[8] == '1' and pins[9] == '1':
+            return True
+        else:
+            return False
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def is_split(s):
+    # Pin 1 is knocked down.
+    if s[0] != '0':
+        return False
+
+    # There are two different columns that satisfy both of the following conditions:
+    # Each of the columns has one or more standing pins.
+    # There exists a column between these columns such that all pins in the column are knocked down.
+    standing_columns = []
+    last_column = None
+    for i in range(len(s)):
+        if s[i] == '1':
+            if last_column is None:
+                last_column = i
+            elif last_column + 1 != i:
+                if len(standing_columns) == 2:
+                    return False
+                standing_columns.append((last_column, i))
+                last_column = i
+
+    if len(standing_columns) != 2:
+        return False
+
+    # There exists a column between these columns such that all pins in the column are knocked down.
+    for i in range(standing_columns[0][1] + 1, standing_columns[1][0]):
+        if s[i] == '1':
+            return False
+
+    return True
+
+=======
+Suggestion 8
+
+def check_split(s):
+    if s[0] == '0' and s[1] == '1':
+        if s[2] == '0' and s[3] == '1':
+            return True
+        elif s[3] == '0' and s[4] == '1':
+            return True
+        elif s[4] == '0' and s[5] == '1':
+            return True
+        elif s[5] == '0' and s[6] == '1':
+            return True
+        elif s[6] == '0' and s[7] == '1':
+            return True
+        elif s[7] == '0' and s[8] == '1':
+            return True
+        elif s[8] == '0' and s[9] == '1':
+            return True
+        else:
+            return False
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def main():
+    pins = input()
+    if pins[0] == '0':
+        if pins[1] == '0' and pins[2] == '0':
+            print('No')
+            return
+        if pins[3] == '0' and pins[4] == '0':
+            print('No')
+            return
+        if pins[5] == '0' and pins[6] == '0':
+            print('No')
+            return
+        if pins[7] == '0' and pins[8] == '0':
+            print('No')
+            return
+        if pins[9] == '0':
+            print('No')
+            return
+        print('Yes')
+    else:
+        if pins[1] == '0' and pins[2] == '0':
+            print('No')
+            return
+        if pins[3] == '0' and pins[4] == '0':
+            print('No')
+            return
+        if pins[5] == '0' and pins[6] == '0':
+            print('No')
+            return
+        if pins[7] == '0' and pins[8] == '0':
+            print('No')
+            return
+        if pins[9] == '0':
+            print('No')
+            return
+        print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    s = input().strip()
+    if s[0] == "0":
+        print("Yes")
+    else:
+        print("No")

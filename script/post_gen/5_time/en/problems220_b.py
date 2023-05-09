@@ -1,41 +1,76 @@
-#Problem Statement
-#You are given integers A and B, in base K.
-#Print A × B in decimal.
-#
-#Notes
-#For base-K representation, see Wikipedia's article on Positional notation.
-#
-#Constraints
-#2 ≦ K ≦ 10
-#1 ≦ A,B ≦ 10^5
-#A and B are in base-K representation.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#K
-#A B
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#1011 10100
-#
-#Sample Output 1
-#220
-#1011 in base 2 corresponds to 11 in base 10.
-#10100 in base 2 corresponds to 20 in base 10.
-#We have 11 × 20 = 220, so print 220.
-#
-#Sample Input 2
-#7
-#123 456
-#
-#Sample Output 2
-#15642
-#123 in base 7 corresponds to 66 in base 10.
-#456 in base 7 corresponds to 237 in base 10.
-#We have 66 × 237 = 15642, so print 15642.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    A, B = input().split()
+    A = int(A, K)
+    B = int(B, K)
+    print(A*B)
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    a = int(a, k)
+    b = int(b, k)
+    print(a*b)
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    a, b = input().split()
+    a = int(a, k)
+    b = int(b, k)
+    print(a * b)
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    print(int(a, k) * int(b, k))
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    a, b = input().split()
+    print(int(a, k) * int(b, k))
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    A, B = map(str, input().split())
+    print(int(A, K) * int(B, K))
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    print(a * b)
+
+=======
+Suggestion 8
+
+def base_k_to_10(n, k):
+    res = 0
+    for i in range(len(n)):
+        res += int(n[i]) * (k ** (len(n)-1-i))
+    return res
+
+k = int(input())
+a, b = input().split()
+print(base_k_to_10(a, k) * base_k_to_10(b, k))

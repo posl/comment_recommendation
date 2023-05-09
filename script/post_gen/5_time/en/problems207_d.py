@@ -1,95 +1,178 @@
-#Problem Statement
-#You are given two sets S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)} and T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)} of N points each on a two-dimensional plane.
-#Determine whether it is possible to do the following operations on S any number of times (possibly zero) in any order so that S matches T.
-#Choose a real number p (0 < p < 360) and rotate every point in S p degrees clockwise about the origin.
-#Choose real numbers q and r and move every point in S by q in the x-direction and by r in the y-direction. Here, q and r can be any real numbers, be it positive, negative, or zero.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) if i ≠ j.
-#(c_i,d_i) ≠ (c_j,d_j) if i ≠ j.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#Output
-#If we can match S with T, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#Sample Output 1
-#Yes
-#The figure below shows the given sets of points, where the points in S and T are painted red and green, respectively:
-#In this case, we can match S with T as follows:
-#Rotate every point in S 270 degrees clockwise about the origin.
-#Move every point in S by 3 in the x-direction and by 0 in the y-direction.
-#
-#Sample Input 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#Sample Output 2
-#No
-#The figure below shows the given sets of points:
-#Although S and T are symmetric about the y-axis, we cannot match S with T by rotations and translations as stated in Problem Statement.
-#
-#Sample Input 3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#Sample Output 3
-#Yes
-#
-#Sample Input 4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#Sample Output 4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for _ in range(n):
+        s.append(list(map(int,input().split())))
+    for _ in range(n):
+        t.append(list(map(int,input().split())))
+    s.sort()
+    t.sort()
+    sx = s[0][0]
+    sy = s[0][1]
+    tx = t[0][0]
+    ty = t[0][1]
+    for i in range(n):
+        s[i][0] -= sx
+        s[i][1] -= sy
+        t[i][0] -= tx
+        t[i][1] -= ty
+    s.sort()
+    t.sort()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = [list(map(int, input().split())) for _ in range(n)]
+    t = [list(map(int, input().split())) for _ in range(n)]
+    s.sort()
+    t.sort()
+    s = list(map(list, zip(*s)))
+    t = list(map(list, zip(*t)))
+    if s[0] == t[0]:
+        for i in range(n):
+            for j in range(n):
+                if s[0][i] + s[1][j] == t[0][0] + t[1][0] and s[1][i] + s[0][j] == t[1][0] + t[0][0]:
+                    print("Yes")
+                    return
+        print("No")
+    else:
+        print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for _ in range(n):
+        a,b = map(int, input().split())
+        s.append((a,b))
+    t = []
+    for _ in range(n):
+        a,b = map(int, input().split())
+        t.append((a,b))
+    if s == t:
+        print('Yes')
+        return
+    for i in range(n):
+        s = [(s[i][0]-s[0][0], s[i][1]-s[0][1]) for i in range(n)]
+        t = [(t[i][0]-t[0][0], t[i][1]-t[0][1]) for i in range(n)]
+        if s == t:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def rotate(x, y, deg):
+    rad = deg * math.pi / 180
+    return x * math.cos(rad) - y * math.sin(rad), x * math.sin(rad) + y * math.cos(rad)
+
+=======
+Suggestion 5
+
+def check(s, t):
+    for i in range(len(s)):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def check(s,t):
+    for i in range(len(s)):
+        if(s[i][0]!=t[i][0] or s[i][1]!=t[i][1]):
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def check(s, t):
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if (s[i][0] - s[j][0]) * (t[i][1] - t[j][1]) == (s[i][1] - s[j][1]) * (t[i][0] - t[j][0]):
+                return True
+    return False
+
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    a, b = map(int, input().split())
+    s.append((a, b))
+for i in range(n):
+    a, b = map(int, input().split())
+    t.append((a, b))
+
+=======
+Suggestion 8
+
+def check(a,b,c,d):
+    a.sort()
+    b.sort()
+    c.sort()
+    d.sort()
+    if a == c and b == d:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10**9+7
+    import math
+    import itertools
+    import heapq
+    from collections import deque
+    from collections import defaultdict
+    from collections import Counter
+
+    N = int(readline())
+    S = [list(map(int, readline().split())) for _ in range(N)]
+    T = [list(map(int, readline().split())) for _ in range(N)]
+
+    def rotate(s, p):
+        x, y = s
+        rad = math.radians(p)
+        return [x*math.cos(rad) - y*math.sin(rad), x*math.sin(rad) + y*math.cos(rad)]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i] == T[j]:
+                for p in range(360):
+                    for q in range(-100, 101):
+                        for r in range(-100, 101):
+                            tmp = [rotate(s, p) for s in S]
+                            tmp = [[s[0]+q, s[1]+r] for s in tmp]
+                            if tmp == T:
+                                print("Yes")
+                                exit()
+    print("No")
+
+=======
+Suggestion 10
+
+def rotate(x, y, p):
+    # rotate (x, y) by p degrees
+    p = p * math.pi / 180
+    return x * math.cos(p) - y * math.sin(p), x * math.sin(p) + y * math.cos(p)

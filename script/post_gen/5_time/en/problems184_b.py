@@ -1,48 +1,121 @@
-#Problem Statement
-#Takahashi will answer N quiz questions.
-#Initially, he has X points. Each time he answers a question, he gains 1 point if his answer is correct and loses 1 point if it is incorrect.
-#However, there is an exception: when he has 0 points, he loses nothing for answering a question incorrectly.
-#You will be given a string S representing whether Takahashi's answers are correct.
-#If the i-th character of S from the left is o, it means his answer for the i-th question is correct; if that character is x, it means his answer for the i-th question is incorrect.
-#How many points will he have in the end?
-#
-#Constraints
-#1 ≦ N ≦ 2 × 10^5
-#0 ≦ X ≦ 2 × 10^5
-#S is a string of length N consisting of o and x.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#S
-#
-#Output
-#Print the number of points Takahashi will have in the end.
-#
-#Sample Input 1
-#3 0
-#xox
-#
-#Sample Output 1
-#0
-#Initially, he has 0 points.
-#He answers the first question incorrectly but loses nothing because he has no point.
-#Then, he answers the second question correctly, gains 1 point, and now has 1 point.
-#Finally, he answers the third question incorrectly, loses 1 point, and now has 0 points.
-#Thus, he has 0 points in the end. We should print 0.  
-#
-#Sample Input 2
-#20 199999
-#oooooooooxoooooooooo
-#
-#Sample Output 2
-#200017
-#
-#Sample Input 3
-#20 10
-#xxxxxxxxxxxxxxxxxxxx
-#
-#Sample Output 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'o':
+            ans += 1
+        else:
+            if ans > 0:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == 'o':
+            x += 1
+        else:
+            if x > 0:
+                x -= 1
+    print(x)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == 'o':
+            x += 1
+        elif x > 0:
+            x -= 1
+    print(x)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(n):
+        if s[i] == "o":
+            ans += 1
+        else:
+            if ans > 0:
+                ans -= 1
+    print(x+ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    ans = X
+    for s in S:
+        if s == 'o':
+            ans += 1
+        else:
+            ans = max(0, ans - 1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, X = map(int, input().split())
+    S = input()
+
+    ans = X
+    for s in S:
+        if s == 'o':
+            ans += 1
+        else:
+            ans = max(0, ans - 1)
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == "o":
+            ans += 1
+        else:
+            if ans > 0:
+                ans -= 1
+    print(X+ans)
+
+=======
+Suggestion 8
+
+def main():
+    # Get input here
+    n, x = map(int, input().strip().split())
+    s = list(input().strip())
+    # Calculate result here
+    result = x
+    for i in s:
+        if i == 'o':
+            result += 1
+        else:
+            if result > 0:
+                result -= 1
+    # Print output here
+    print(result)

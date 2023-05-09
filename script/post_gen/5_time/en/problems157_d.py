@@ -1,94 +1,178 @@
-#Problem Statement
-#An SNS has N users - User 1, User 2, ..., User N.
-#Between these N users, there are some relationships - M friendships and K blockships.
-#For each i = 1, 2, ..., M, there is a bidirectional friendship between User A_i and User B_i.
-#For each i = 1, 2, ..., K, there is a bidirectional blockship between User C_i and User D_i.
-#We define User a to be a friend candidate for User b when all of the following four conditions are satisfied:
-#a ≠ b.
-#There is not a friendship between User a and User b.
-#There is not a blockship between User a and User b.
-#There exists a sequence c_0, c_1, c_2, ..., c_L consisting of integers between 1 and N (inclusive) such that c_0 = a, c_L = b, and there is a friendship between User c_i and c_{i+1} for each i = 0, 1, ..., L - 1.
-#For each user i = 1, 2, ... N, how many friend candidates does it have?
-#
-#Constraints
-#All values in input are integers.
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#Output
-#Print the answers in order, with space in between.
-#
-#Sample Input 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#Sample Output 1
-#0 1 0 1
-#There is a friendship between User 2 and 3, and between 3 and 4. Also, there is no friendship or blockship between User 2 and 4. Thus, User 4 is a friend candidate for User 2.
-#However, neither User 1 or 3 is a friend candidate for User 2, so User 2 has one friend candidate.
-#
-#Sample Input 2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#Sample Output 2
-#0 0 0 0 0
-#Everyone is a friend of everyone else and has no friend candidate.
-#
-#Sample Input 3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#Sample Output 3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * K
+    D = [0] * K
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    for i in range(K):
+        C[i], D[i] = map(int, input().split())
+    friend = [0] * N
+    for i in range(M):
+        friend[A[i] - 1] += 1
+        friend[B[i] - 1] += 1
+    block = [0] * N
+    for i in range(K):
+        block[C[i] - 1] += 1
+        block[D[i] - 1] += 1
+    for i in range(N):
+        print(friend[i] - block[i] - 1, end=' ')
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    blocks = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        A, B = A-1, B-1
+        friends[A].append(B)
+        friends[B].append(A)
+    for _ in range(K):
+        C, D = map(int, input().split())
+        C, D = C-1, D-1
+        blocks[C].append(D)
+        blocks[D].append(C)
+    ans = [0]*N
+    for i in range(N):
+        ans[i] = len(set(friends[i]) - set(friends[i]) & set(blocks[i]))
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m, k = map(int, input().split())
+    friends = [set() for _ in range(n)]
+    blocks = [set() for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        friends[a-1].add(b-1)
+        friends[b-1].add(a-1)
+    for _ in range(k):
+        c, d = map(int, input().split())
+        blocks[c-1].add(d-1)
+        blocks[d-1].add(c-1)
+
+    for i in range(n):
+        print(len(friends[i] - blocks[i] - {i}) - 1, end=' ')
+
+=======
+Suggestion 4
+
+def main():
+    n, m, k = map(int, input().split())
+    friends = [0] * n
+    for _ in range(m):
+        a, b = map(int, input().split())
+        friends[a-1] += 1
+        friends[b-1] += 1
+    blocks = [0] * n
+    for _ in range(k):
+        c, d = map(int, input().split())
+        blocks[c-1] += 1
+        blocks[d-1] += 1
+    for i in range(n):
+        print(friends[i] - blocks[i] - 1)
+
+=======
+Suggestion 5
+
+def main():
+    # Get input
+    N, M, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    CD = [list(map(int, input().split())) for _ in range(K)]
+
+    # Make graph
+    graph = [[] for _ in range(N)]
+    for a, b in AB:
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+
+    # Make block graph
+    block_graph = [[] for _ in range(N)]
+    for c, d in CD:
+        block_graph[c-1].append(d-1)
+        block_graph[d-1].append(c-1)
+
+    # Make friend candidates
+    friend_candidates = [N-1 - len(graph[i]) - len(block_graph[i]) for i in range(N)]
+    for i in range(N):
+        for j in graph[i]:
+            if i < j:
+                for k in graph[j]:
+                    if k in graph[i]:
+                        friend_candidates[i] -= 1
+                        friend_candidates[j] -= 1
+
+    # Print
+    print(*friend_candidates)
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    N, M, K = map(int, input().strip().split())
+    AB = [tuple(map(int, input().strip().split())) for _ in range(M)]
+    CD = [tuple(map(int, input().strip().split())) for _ in range(K)]
+
+    # Get output here
+    print(*solve(N, M, K, AB, CD))
+
+=======
+Suggestion 7
+
+def get_input():
+    N,M,K = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    C = []
+    D = []
+    for i in range(K):
+        c,d = map(int,input().split())
+        C.append(c)
+        D.append(d)
+    return N,M,K,A,B,C,D
+
+=======
+Suggestion 8
+
+def find_parent(parents, x):
+    if parents[x] != x:
+        parents[x] = find_parent(parents, parents[x])
+    return parents[x]
+
+=======
+Suggestion 9
+
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
+
+=======
+Suggestion 10
+
+def dfs(G, s, a, b):
+    if s == b:
+        return True
+    for t in G[s]:
+        if t == a or t == b:
+            continue
+        if dfs(G, t, a, b):
+            return True
+    return False

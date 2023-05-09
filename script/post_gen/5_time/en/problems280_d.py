@@ -1,42 +1,149 @@
-#Problem Statement
-#You are given an integer K greater than or equal to 2.
-#Find the minimum positive integer N such that N! is a multiple of K.
-#Here, N! denotes the factorial of N.  Under the Constraints of this problem, we can prove that such an N always exists.
-#
-#Constraints
-#2≦ K≦ 10^{12}
-#K is an integer.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#K
-#
-#Output
-#Print the minimum positive integer N such that N! is a multiple of K.
-#
-#Sample Input 1
-#30
-#
-#Sample Output 1
-#5
-#1!=1
-#2!=2× 1=2
-#3!=3× 2× 1=6
-#4!=4× 3× 2× 1=24
-#5!=5× 4× 3× 2× 1=120
-#Therefore, 5 is the minimum positive integer N such that N! is a multiple of 30.
-#Thus, 5 should be printed.
-#
-#Sample Input 2
-#123456789011
-#
-#Sample Output 2
-#123456789011
-#
-#Sample Input 3
-#280
-#
-#Sample Output 3
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+k = int(input())
+
+=======
+Suggestion 2
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+k = int(input())
+n = 1
+while True:
+    if factorial(n) % k == 0:
+        print(n)
+        break
+    else:
+        n += 1
+
+=======
+Suggestion 3
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+k = int(input())
+n = 1
+while factorial(n) % k != 0:
+    n += 1
+print(n)
+
+=======
+Suggestion 4
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            divisors.append(i)
+            if i != n//i:
+                divisors.append(n//i)
+    divisors.sort()
+    return divisors
+
+=======
+Suggestion 5
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+K = int(input())
+N = 2
+while True:
+    if factorial(N) % K == 0:
+        print(N)
+        break
+    N += 1
+
+=======
+Suggestion 6
+
+def getPrimeFactors(n):
+    factors = []
+    i = 2
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    if K % 2 == 0 or K % 5 == 0:
+        print(-1)
+        return
+    else:
+        for i in range(1, K+1):
+            if (10**i - 1) % K == 0:
+                print(i)
+                return
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(-1)
+        return
+    for i in range(1, k + 1):
+        if i % k == 0:
+            print(i)
+            return
+
+=======
+Suggestion 9
+
+def solve(k):
+    if k%2==0 or k%5==0:
+        return -1
+    else:
+        i=1
+        while True:
+            if (10**i)%k==1:
+                return i
+            else:
+                i+=1
+
+k=int(input())
+print(solve(k))
+
+=======
+Suggestion 10
+
+def main():
+    K = int(input())
+    ans = 0
+    for i in range(1, K + 1):
+        if (K % i == 0):
+            ans = i
+    print(ans)
+    return

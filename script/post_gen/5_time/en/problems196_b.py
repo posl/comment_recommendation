@@ -1,36 +1,71 @@
-#Problem Statement
-#Given an integer or a decimal X, round it down to an integer and print the result. 
-#
-#Constraints
-#0 ≦ X ≦ 10^{100}
-#X is an integer or a decimal with at most 100 digits after the decimal point, without unnecessary leading zeros.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X
-#
-#Output
-#Round X down to an integer and print the result (as an integer).
-#
-#Sample Input 1
-#5.90
-#
-#Sample Output 1
-#5
-#We round down 5.90 to an integer, 5, and print it as an integer. Non-integer outputs such as 5.0 will be judged as incorrect.
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#0
-#There may be no decimal point in X.
-#
-#Sample Input 3
-#84939825309432908832902189.9092309409809091329
-#
-#Sample Output 3
-#84939825309432908832902189
-#Take care when handling large numbers.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = input()
+    if '.' in x:
+        print(int(x[:x.index('.')]))
+    else:
+        print(x)
+
+=======
+Suggestion 2
+
+def main():
+    x = float(input())
+    print(int(x))
+
+=======
+Suggestion 3
+
+def main():
+    x = float(input())
+    x = int(x)
+    print(x)
+
+=======
+Suggestion 4
+
+def main():
+    # Take input Here and Call solution function
+    X = input()
+    solution(X)
+
+=======
+Suggestion 5
+
+def main():
+    X = float(input())
+    print(int(X))
+
+=======
+Suggestion 6
+
+def main():
+    x = float(input())
+    print(int(x))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    # Take input Here and Call solution function
+    x = input()
+    print(round_down(x))
+
+=======
+Suggestion 8
+
+def main():
+    n = float(input())
+    print(int(n))
+
+=======
+Suggestion 9
+
+def get_input():
+    return input()

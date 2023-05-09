@@ -1,44 +1,88 @@
-#Problem Statement
-#In some other world, today is the day before Christmas Eve.
-#Mr. Takaha is buying N items at a department store. The regular price of the i-th item (1 ≦ i ≦ N) is p_i yen (the currency of Japan).
-#He has a discount coupon, and can buy one item with the highest price for half the regular price. The remaining N-1 items cost their regular prices. What is the total amount he will pay?
-#
-#Constraints
-#2 ≦ N ≦ 10
-#100 ≦ p_i ≦ 10000
-#p_i is an even number.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#p_1
-#p_2
-#:
-#p_N
-#
-#Output
-#Print the total amount Mr. Takaha will pay.
-#
-#Sample Input 1
-#3
-#4980
-#7980
-#6980
-#
-#Sample Output 1
-#15950
-#The 7980-yen item gets the discount and the total is 4980 + 7980 / 2 + 6980 = 15950 yen.
-#Note that outputs such as 15950.0 will be judged as Wrong Answer.
-#
-#Sample Input 2
-#4
-#4320
-#4320
-#4320
-#4320
-#
-#Sample Output 2
-#15120
-#Only one of the four items gets the discount and the total is 4320 / 2 + 4320 + 4320 + 4320 = 15120 yen.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    prices = []
+    for i in range(n):
+        prices.append(int(input()))
+    prices.sort(reverse=True)
+    prices[0] = int(prices[0] / 2)
+    print(sum(prices))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    p[-1] = p[-1] // 2
+    print(sum(p))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    print(sum(p) - max(p) // 2)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = [int(input()) for i in range(n)]
+    p.sort()
+    print(int(sum(p[:-1]) + p[-1] / 2))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = [int(input()) for i in range(n)]
+    print(sum(p) - max(p) + max(p) // 2)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    items = [int(input()) for i in range(N)]
+    items.sort()
+    items[-1] = items[-1] // 2
+    print(sum(items))
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    p.sort(reverse=True)
+    return sum(p) - p[0]//2
+
+print(solve())
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    print(int(sum(p) - p[N - 1] / 2))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    max_p = max(p)
+    total = sum(p)
+    print((total - max_p) + (max_p // 2))

@@ -1,62 +1,170 @@
-#Problem Statement
-#You are given a non-negative integer N. Print all non-negative integers x that satisfy the following condition in ascending order.
-#The set of the digit positions containing 1 in the binary representation of x is a subset of the set of the digit positions containing 1 in the binary representation of N.
-#That is, the following holds for every non-negative integer k: if the digit in the "2^ks" place of x is 1, the digit in the 2^ks place of N is 1.
-#
-#
-#Constraints
-#N is an integer.
-#0 ≦ N < 2^{60}
-#In the binary representation of N, at most 15 digit positions contain 1.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print the answer as decimal integers in ascending order, each in its own line.
-#
-#Sample Input 1
-#11
-#
-#Sample Output 1
-#0
-#1
-#2
-#3
-#8
-#9
-#10
-#11
-#The binary representation of N = 11_{(10)} is 1011_{(2)}.
-#The non-negative integers x that satisfy the condition are:
-#0000_{(2)}=0_{(10)}
-#0001_{(2)}=1_{(10)}
-#0010_{(2)}=2_{(10)}
-#0011_{(2)}=3_{(10)}
-#1000_{(2)}=8_{(10)}
-#1001_{(2)}=9_{(10)}
-#1010_{(2)}=10_{(10)}
-#1011_{(2)}=11_{(10)}
-#
-#Sample Input 2
-#0
-#
-#Sample Output 2
-#0
-#
-#Sample Input 3
-#576461302059761664
-#
-#Sample Output 3
-#0
-#524288
-#549755813888
-#549756338176
-#576460752303423488
-#576460752303947776
-#576461302059237376
-#576461302059761664
-#The input may not fit into a 32-bit signed integer.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(n, x):
+    while n > 0:
+        if n % 2 == 1 and x % 2 == 0:
+            return False
+        n //= 2
+        x //= 2
+    return True
+
+n = int(input())
+ans = []
+for i in range(n+1):
+    if check(n, i):
+        ans.append(i)
+print(*ans, sep='\n')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = []
+    for i in range(1<<15):
+        x = 0
+        for j in range(15):
+            if i & (1<<j):
+                x |= 1<<(2*j)
+        if x <= n and x > 0:
+            ans.append(x)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 3
+
+def check(x, n):
+    while x > 0:
+        if x & 1:
+            if n & 1 == 0:
+                return False
+        x >>= 1
+        n >>= 1
+    return True
+
+n = int(input())
+for i in range(1 << 15):
+    x = 0
+    for j in range(15):
+        if i & (1 << j):
+            x += 1 << j
+    if x <= n and check(x, n):
+        print(x)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(60):
+        if n & (1 << i):
+            l.append(i)
+    #print(l)
+    ans = []
+    for i in range(1 << len(l)):
+        tmp = 0
+        for j in range(len(l)):
+            if i & (1 << j):
+                tmp += 1 << l[j]
+        if tmp <= n:
+            ans.append(tmp)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    n = bin(n)
+    n = n[2:]
+    n = n[::-1]
+    ans = [0]
+    for i in range(len(n)):
+        if n[i] == "1":
+            for j in range(len(ans)):
+                ans[j] += 2**i
+        else:
+            ans += ans
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    n_bin = bin(n)[2:]
+    n_bin_len = len(n_bin)
+    n_bin_1 = [i for i, x in enumerate(n_bin) if x == '1']
+    ans = []
+    for i in range(2**n_bin_len):
+        i_bin = bin(i)[2:]
+        i_bin_1 = [i for i, x in enumerate(i_bin) if x == '1']
+        if all(x in n_bin_1 for x in i_bin_1):
+            ans.append(i)
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 7
+
+def get_binary(x):
+    binary = []
+    while x > 0:
+        binary.append(x % 2)
+        x = x // 2
+    return binary
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    #print(n)
+    #n = 11
+    #n = 0
+    #n = 576461302059761664
+    #n = 576461302
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    k = len(bin(n))-2
+    l = [i for i in range(k) if n&(1<<i)]
+    if not l:
+        print(0)
+        return
+    ans = []
+    for i in range(1<<len(l)):
+        x = 0
+        for j in range(len(l)):
+            if i&(1<<j):
+                x += 1<<l[j]
+        if x<=n:
+            ans.append(x)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+main()
+
+=======
+Suggestion 10
+
+def solve(n):
+    ret = []
+    for i in range(1, 2**15):
+        if n & i == i:
+            ret.append(i)
+    return ret

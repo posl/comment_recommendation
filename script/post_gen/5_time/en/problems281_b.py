@@ -1,49 +1,115 @@
-#Problem Statement
-#You are given a string S consisting of uppercase English letters and digits. Determine whether S satisfies the following condition.
-#S is a concatenation of the following characters and string in the order listed.
-#An uppercase English letter
-#A string of length 6 that is a decimal representation of an integer between 100000 and 999999, inclusive
-#An uppercase English letter
-#
-#
-#Constraints
-#S consists of uppercase English letters and digits.
-#The length of S is between 1 and 10, inclusive.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#S
-#
-#Output
-#If S satisfies the condition in the problem statement, print Yes; otherwise, print No.
-#
-#Sample Input 1
-#Q142857Z
-#
-#Sample Output 1
-#Yes
-#S is a concatenation of Q, 142857, and Z in this order.
-#Q and Z are uppercase English letters, and 142857 is a string of length 6 that is a decimal representation of an integer between 100000 and 999999, so S satisfies the condition.
-#
-#Sample Input 2
-#AB912278C
-#
-#Sample Output 2
-#No
-#AB is not an uppercase English letter, so S does not satisfy the condition.
-#
-#Sample Input 3
-#X900000
-#
-#Sample Output 3
-#No
-#The last character of S is not an uppercase English letter, so S does not satisfy the condition.
-#
-#Sample Input 4
-#K012345K
-#
-#Sample Output 4
-#No
-#012345 is not a string of length 6 that is a decimal representation of an integer between 100000 and 999999, so S does not satisfy the condition.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0].isupper() and s[7].isupper() and s[1:7].isdigit() and 100000 <= int(s[1:7]) <= 999999:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0].isupper() and s[7].isupper() and s[1:7].isdigit() and 100000 <= int(s[1:7]) <= 999999:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0].isupper() and s[-1].isupper() and len(s) == 8 and s[1:7].isdigit() and int(s[1:7]) >= 100000 and int(s[1:7]) <= 999999:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0].isupper() and S[7].isupper() and S[1:7].isdecimal():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0].isupper() and s[-1].isupper() and s[1:-1].isdigit() and len(s) == 8 and 100000 <= int(s[1:-1]) <= 999999:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if S[0].isupper() and S[-1].isupper() and len(S) == 8 and S[1:7].isdigit() and int(S[1:7]) >= 100000 and int(S[1:7]) <= 999999:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def check(s):
+    if len(s) != 8:
+        return False
+    if not s[0].isupper():
+        return False
+    if not s[7].isupper():
+        return False
+    if not s[1:7].isdigit():
+        return False
+    if not 100000 <= int(s[1:7]) <= 999999:
+        return False
+    return True
+
+print('Yes' if check(input()) else 'No')
+
+=======
+Suggestion 8
+
+def check(s):
+    if s[0].isupper() == False:
+        return False
+    elif s[-1].isupper() == False:
+        return False
+    elif len(s) != 8:
+        return False
+    elif s[1:7].isdecimal() == False:
+        return False
+    elif int(s[1:7]) < 100000 or int(s[1:7]) > 999999:
+        return False
+    else:
+        return True
+
+s = input()
+
+=======
+Suggestion 9
+
+def check(s):
+    if len(s) != 8:
+        return False
+    if s[0] < "A" or s[0] > "Z":
+        return False
+    if s[2:7] < "100000" or s[2:7] > "999999":
+        return False
+    if s[7] < "A" or s[7] > "Z":
+        return False
+    return True
+
+s = input()
+print("Yes" if check(s) else "No")

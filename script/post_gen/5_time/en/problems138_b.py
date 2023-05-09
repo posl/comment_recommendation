@@ -1,45 +1,98 @@
-#Problem Statement
-#Given is a sequence of N integers A_1, ..., A_N.
-#Find the (multiplicative) inverse of the sum of the inverses of these numbers, (1/((1/(A_1)) + ... + (1/(A_N)))).
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_N
-#
-#Output
-#Print a decimal number (or an integer) representing the value of (1/((1/(A_1)) + ... + (1/(A_N)))).
-#Your output will be judged correct when its absolute or relative error from the judge's output is at most 10^{-5}.
-#
-#Sample Input 1
-#2
-#10 30
-#
-#Sample Output 1
-#7.5
-#(1/((1/(10)) + (1/(30)))) = (1/((4/(30)))) = ((30)/(4)) = 7.5.
-#Printing 7.50001, 7.49999, and so on will also be accepted.
-#
-#Sample Input 2
-#3
-#200 200 200
-#
-#Sample Output 2
-#66.66666666666667
-#(1/((1/(200)) + (1/(200)) + (1/(200)))) = (1/((3/(200)))) = ((200)/(3)) = 66.6666....
-#Printing 6.66666e+1 and so on will also be accepted.
-#
-#Sample Input 3
-#1
-#1000
-#
-#Sample Output 3
-#1000
-#(1/((1/(1000)))) = 1000.
-#Printing +1000.0 and so on will also be accepted.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += 1/a[i]
+    print(1/sum)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += 1 / A[i]
+    print(1 / sum)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1/sum(map(lambda x: 1/x, a)))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = 0
+
+    for i in range(n):
+        result += 1 / a[i]
+
+    print(1 / result)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum_inv_a = 0
+    for i in range(n):
+        sum_inv_a += 1/a[i]
+    print(1/sum_inv_a)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1/sum(list(map(lambda x: 1/x, a))))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    print(1/sum([1/i for i in A]))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if 0 in A:
+        print(0)
+    else:
+        print(1 / sum([1 / a for a in A]))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = map(int, input().split())
+    print(1 / sum(map(lambda x: 1 / x, a)))
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1 / sum([1 / x for x in a]))

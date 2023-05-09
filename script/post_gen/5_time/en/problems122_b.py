@@ -1,41 +1,115 @@
-#Problem Statement
-#You are given a string S consisting of uppercase English letters. Find the length of the longest ACGT string that is a substring (see Notes) of S.
-#Here, a ACGT string is a string that contains no characters other than A, C, G and T.
-#
-#Notes
-#A substring of a string T is a string obtained by removing zero or more characters from the beginning and the end of T.
-#For example, the substrings of ATCODER include TCO, AT, CODER, ATCODER and  (the empty string), but not AC.
-#
-#Constraints
-#S is a string of length between 1 and 10 (inclusive).
-#Each character in S is an uppercase English letter.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S
-#
-#Output
-#Print the length of the longest ACGT string that is a substring of S.
-#
-#Sample Input 1
-#ATCODER
-#
-#Sample Output 1
-#3
-#Among the ACGT strings that are substrings of ATCODER, the longest one is ATC.
-#
-#Sample Input 2
-#HATAGAYA
-#
-#Sample Output 2
-#5
-#Among the ACGT strings that are substrings of HATAGAYA, the longest one is ATAGA.
-#
-#Sample Input 3
-#SHINJUKU
-#
-#Sample Output 3
-#0
-#Among the ACGT strings that are substrings of SHINJUKU, the longest one is  (the empty string).
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+
+=======
+Suggestion 2
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+    elif b == 'T':
+        print('A')
+
+=======
+Suggestion 3
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+
+=======
+Suggestion 4
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    elif b == 'C':
+        print('G')
+
+=======
+Suggestion 5
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    else:
+        print('G')
+
+=======
+Suggestion 6
+
+def base(b):
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+
+b = input()
+base(b)
+
+=======
+Suggestion 7
+
+def main():
+    # Write code here
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    else:
+        print('C')
+
+=======
+Suggestion 8
+
+def func(s):
+    if s == "A":
+        print("T")
+    elif s == "C":
+        print("G")
+    elif s == "G":
+        print("C")
+    elif s == "T":
+        print("A")

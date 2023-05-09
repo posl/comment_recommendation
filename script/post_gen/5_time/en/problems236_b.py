@@ -1,42 +1,94 @@
-#Problem Statement
-#We have 4 cards with an integer 1 written on it, 4 cards with 2, ..., 4 cards with N, for a total of 4N cards.
-#Takahashi shuffled these cards, removed one of them, and gave you a pile of the remaining 4N-1 cards. The i-th card (1 ≦ i ≦ 4N - 1) of the pile has an integer A_i written on it.
-#Find the integer written on the card removed by Takahashi.
-#
-#Constraints
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N  (1 ≦ i ≦ 4N - 1)
-#For each k  (1 ≦ k ≦ N), there are at most 4 indices i such that A_i = k.
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 ... A_{4N - 1}
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#Sample Output 1
-#3
-#Takahashi removed a card with 3 written on it.
-#
-#Sample Input 2
-#1
-#1 1 1
-#
-#Sample Output 2
-#1
-#
-#Sample Input 3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #n = 3
+    #a = [1, 3, 2, 3, 3, 2, 2, 1, 1, 1, 2]
+    #n = 1
+    #a = [1, 1, 1]
+    #n = 4
+    #a = [3, 2, 1, 1, 2, 4, 4, 4, 4, 3, 1, 3, 2, 1, 3]
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    #print(a)
+    #print(len(a))
+    #print(a[n-2])
+    print(a[n-1])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = [0] * (n + 1)
+    for i in a:
+        cnt[i] += 1
+    for i in range(1, n + 1):
+        if cnt[i] % 2 == 1:
+            print(i)
+            return
+
+=======
+Suggestion 3
+
+def solve(n, a):
+    b = [0] * (n + 1)
+    for i in range(4 * n - 1):
+        b[a[i]] += 1
+    for i in range(1, n + 1):
+        if b[i] % 2 == 1:
+            return i
+
+n = int(input())
+a = list(map(int, input().split()))
+print(solve(n, a))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[(N * 2) - 1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[int(2*N-1)])
+
+=======
+Suggestion 8
+
+def f():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1])
+f()

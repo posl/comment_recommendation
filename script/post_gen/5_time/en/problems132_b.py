@@ -1,34 +1,114 @@
-#Problem Statement
-#We have a permutation p = {p_1, p_2, ..., p_n} of {1, 2, ..., n}.
-#Print the number of elements p_i (1 < i < n) that satisfy the following condition:
-#p_i is the second smallest number among the three numbers p_{i - 1}, p_i, and p_{i + 1}.
-#
-#Constraints
-#All values in input are integers.
-#3 ≦ n ≦ 20
-#p is a permutation of {1, 2, ..., n}.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#n
-#p_1 p_2 ... p_n
-#
-#Output
-#Print the number of elements p_i (1 < i < n) that satisfy the condition.
-#
-#Sample Input 1
-#5
-#1 3 5 4 2
-#
-#Sample Output 1
-#2
-#p_2 = 3 is the second smallest number among p_1 = 1, p_2 = 3, and p_3 = 5. Also, p_4 = 4 is the second smallest number among p_3 = 5, p_4 = 4, and p_5 = 2. These two elements satisfy the condition.
-#
-#Sample Input 2
-#9
-#9 6 3 2 5 8 7 4 1
-#
-#Sample Output 2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[2] == S[3] and S[0] != S[2]:
+        print("Yes")
+    elif S[0] == S[2] and S[1] == S[3] and S[0] != S[1]:
+        print("Yes")
+    elif S[0] == S[3] and S[1] == S[2] and S[0] != S[1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[2] == S[3] and S[0] != S[2]:
+        print('Yes')
+    elif S[0] == S[2] and S[1] == S[3] and S[0] != S[1]:
+        print('Yes')
+    elif S[0] == S[3] and S[1] == S[2] and S[0] != S[1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if len(set(s)) == 2:
+        if s.count(s[0]) == 2:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if len(set(s)) == 2 and s.count(s[0]) == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    #print(S)
+    if S[0] == S[1] and S[2] == S[3]:
+        print("Yes")
+    elif S[0] == S[2] and S[1] == S[3]:
+        print("Yes")
+    elif S[0] == S[3] and S[1] == S[2]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if len(set(s)) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    input_string = input()
+    if len(set(input_string)) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def check(s):
+    if len(s) != 4:
+        return False
+    for i in range(0, 4):
+        if s.count(s[i]) != 2:
+            return False
+    return True
+
+
+s = input()
+
+=======
+Suggestion 9
+
+def check_if_two_chars_appear_twice_in_str(str):
+    if len(str) != 4:
+        return False
+    if len(set(str)) != 2:
+        return False
+    for char in set(str):
+        if str.count(char) != 2:
+            return False
+    return True

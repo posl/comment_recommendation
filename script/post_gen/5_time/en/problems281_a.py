@@ -1,55 +1,50 @@
-#Problem Statement
-#Print all non-negative integers less than or equal to N in descending order.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#N is an integer.
-#
-#Input
-#The input is given from Standard Input in the following format:
-#N
-#
-#Output
-#Print X lines, where X is the number of non-negative integers less than or equal to N.
-#For each i=1, 2, ..., X, the i-th line should contain the i-th greatest non-negative integer less than or equal to N.
-#
-#Sample Input 1
-#3
-#
-#Sample Output 1
-#3
-#2
-#1
-#0
-#We have four non-negative integers less than or equal to 3, which are 0, 1, 2, and 3.
-#To print them in descending order, print 3 in the first line, 2 in the second, 1 in the third, and 0 in the fourth.
-#
-#Sample Input 2
-#22
-#
-#Sample Output 2
-#22
-#21
-#20
-#19
-#18
-#17
-#16
-#15
-#14
-#13
-#12
-#11
-#10
-#9
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    for i in range(N, -1, -1):
+        print(i)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    for i in range(n+1):
+        print(n-i)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    for i in range(n+1):
+        print(n-i)
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    num = int(input())
+    for i in range(num,-1,-1):
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    input_num = int(input())
+    for i in range(input_num+1):
+        print(input_num-i)
+
+=======
+Suggestion 6
+
+def print_numbers(n):
+    for i in range(n, -1, -1):
+        print(i)
+    return

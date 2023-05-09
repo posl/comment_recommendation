@@ -1,39 +1,89 @@
-#Problem Statement
-#We have three boxes A, B, and C, each of which contains an integer.
-#Currently, the boxes A, B, and C contain the integers X, Y, and Z, respectively.
-#We will now do the operations below in order. Find the content of each box afterward.  
-#Swap the contents of the boxes A and B
-#Swap the contents of the boxes A and C
-#
-#Constraints
-#1 ≦ X,Y,Z ≦ 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#X Y Z
-#
-#Output
-#Print the integers contained in the boxes A, B, and C, in this order, with space in between.
-#
-#Sample Input 1
-#1 2 3
-#
-#Sample Output 1
-#3 1 2
-#After the contents of the boxes A and B are swapped, A, B, and C contain 2, 1, and 3, respectively.
-#Then, after the contents of A and C are swapped, A, B, and C contain 3, 1, and 2, respectively.  
-#
-#Sample Input 2
-#100 100 100
-#
-#Sample Output 2
-#100 100 100
-#
-#Sample Input 3
-#41 59 31
-#
-#Sample Output 3
-#31 41 59
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def swap(a, b):
+    return b, a
+
+a, b, c = map(int, input().split())
+a, b = swap(a, b)
+a, c = swap(a, c)
+print(a, b, c)
+
+=======
+Suggestion 2
+
+def swap(a, b):
+    return b, a
+
+a, b, c = input().split()
+a, b = swap(a, b)
+a, c = swap(a, c)
+print(a, b, c)
+
+=======
+Suggestion 3
+
+def swap(a,b):
+    temp = a
+    a = b
+    b = temp
+    return a,b
+
+=======
+Suggestion 4
+
+def main():
+    input_str = input()
+    input_list = input_str.split(" ")
+    x = input_list[0]
+    y = input_list[1]
+    z = input_list[2]
+    print(z + " " + x + " " + y)
+
+=======
+Suggestion 5
+
+def main():
+    a = input().split()
+    print(a[2] + " " + a[0] + " " + a[1])
+
+=======
+Suggestion 6
+
+def main():
+    # Get input here
+    X, Y, Z = map(int, input().split())
+    # Calculate result here
+    print(Z, X, Y)
+    # Print output here
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int,input().split())
+    print(c,a,b)
+
+=======
+Suggestion 8
+
+def main():
+    X,Y,Z = map(int, input().split())
+    print(Z,X,Y)
+
+=======
+Suggestion 9
+
+def main():
+    # Take input
+    x,y,z = map(int, input().split())
+    # Print output
+    print(z,x,y)
+
+=======
+Suggestion 10
+
+def swap(a,b):
+    return b,a

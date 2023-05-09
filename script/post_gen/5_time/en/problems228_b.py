@@ -1,41 +1,169 @@
-#Problem Statement
-#Takahashi has N friends. They have nicknames: Friend 1, Friend 2, ..., Friend N.
-#One day, Takahashi accidentally let one of his friends, Friend X, learn his shameful secret.
-#For each i = 1, 2, ..., N, when Friend i learns the secret, he/she will share it with Friend A_i, if Friend A_i has not already learned it.
-#How many of Takahashi's friends will learn the secret in the end?
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#A_1 A_2 ... A_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#4 2
-#3 1 1 2
-#
-#Sample Output 1
-#3
-#Takahashi's secret will be learned by Friend 1, Friend 2, and Friend 3, as follows.
-#One day, Takahashi let Friend 2 learn the secret.
-#Friend 2 shares it with Friend 1.
-#Friend 1 shares it with Friend 3.
-#In the end, three of his friends learn the secret, so we print 3.
-#
-#Sample Input 2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#Sample Output 2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    count = 0
+    for i in range(1, N+1):
+        if i == X:
+            break
+        else:
+            count += 1
+            X = A[X]
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    print(len(set(a)))
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    print(len([i for i in a if i > 0]))
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    friends = [0] * (n + 1)
+    friends[x] = 1
+    for i in range(1, n + 1):
+        if friends[i] == 1:
+            friends[a[i]] = 1
+    print(sum(friends))
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 1
+    for i in range(n):
+        if i+1 == x:
+            continue
+        if a[i] == x:
+            count += 1
+            continue
+        if a[a[i]-1] == x:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    friends = list(map(int, input().split()))
+    friends[x-1] = 0
+    for i in range(n):
+        if friends[i] == x:
+            friends[i] = 0
+    print(len([i for i in friends if i != 0]))
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0,0)
+    B = [0] * (N + 1)
+    for i in range(1, N + 1):
+        B[i] = A[A[i]]
+    C = [0] * (N + 1)
+    for i in range(1, N + 1):
+        C[i] = B[B[i]]
+    D = [0] * (N + 1)
+    for i in range(1, N + 1):
+        D[i] = C[C[i]]
+    E = [0] * (N + 1)
+    for i in range(1, N + 1):
+        E[i] = D[D[i]]
+    F = [0] * (N + 1)
+    for i in range(1, N + 1):
+        F[i] = E[E[i]]
+    G = [0] * (N + 1)
+    for i in range(1, N + 1):
+        G[i] = F[F[i]]
+    H = [0] * (N + 1)
+    for i in range(1, N + 1):
+        H[i] = G[G[i]]
+    I = [0] * (N + 1)
+    for i in range(1, N + 1):
+        I[i] = H[H[i]]
+    J = [0] * (N + 1)
+    for i in range(1, N + 1):
+        J[i] = I[I[i]]
+    K = [0] * (N + 1)
+    for i in range(1, N + 1):
+        K[i] = J[J[i]]
+    L = [0] * (N + 1)
+    for i in range(1, N + 1):
+        L[i] = K[K[i]]
+    M = [0] * (N + 1)
+    for i in range(1, N + 1):
+        M[i] = L[L[i]]
+    N = [0] * (N + 1)
+    for i in range(1, N + 1):
+        N[i] = M[M[i]]
+    O = [0] * (N + 1
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(X-1, 0)
+    friends = [0] * N
+    for i in range(N):
+        friends[A[i]-1] += 1
+    print(friends)
+    print(max(friends))
+
+=======
+Suggestion 9
+
+def main():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    A = list(map(lambda x:x-1,A))
+    A[X-1] = -1
+    counter = 1
+    for i in range(N):
+        if A[i] == -1:
+            continue
+        else:
+            counter += 1
+            A[A[i]] = -1
+    print(counter)
+
+=======
+Suggestion 10
+
+def find_friends_with_secret(N, X, A):
+    friends_with_secret = 1
+    friend = X
+    while True:
+        friend = A[friend - 1]
+        if friend == X:
+            break
+        friends_with_secret += 1
+    return friends_with_secret

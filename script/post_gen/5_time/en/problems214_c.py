@@ -1,78 +1,198 @@
-#Problem Statement
-#There are N creatures standing in a circle, called Snuke 1, 2, ..., N in counter-clockwise order.
-#When Snuke i (1 ≦ i ≦ N) receives a gem at time t, S_i units of time later, it will hand that gem to Snuke i+1 at time t+S_i. Here, Snuke N+1 is Snuke 1.
-#Additionally, Takahashi will hand a gem to Snuke i at time T_i.
-#For each i (1 ≦ i ≦ N), find the time when Snuke i receives a gem for the first time. Assume that it takes a negligible time to hand a gem.
-#
-#Constraints
-#1 ≦ N ≦ 200000
-#1 ≦ S_i,T_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#S_1 S_2 ... S_N
-#T_1 T_2 ... T_N
-#
-#Output
-#Print N lines. The i-th line (1 ≦ i ≦ N) should contain the time when Snuke i receives a gem for the first time.
-#
-#Sample Input 1
-#3
-#4 1 5
-#3 10 100
-#
-#Sample Output 1
-#3
-#7
-#8
-#We will list the three Snuke's and Takahashi's actions up to time 13 in chronological order.
-#Time 3: Takahashi hands a gem to Snuke 1.
-#Time 7: Snuke 1 hands a gem to Snuke 2.
-#Time 8: Snuke 2 hands a gem to Snuke 3.
-#Time 10: Takahashi hands a gem to Snuke 2.
-#Time 11: Snuke 2 hands a gem to Snuke 3.
-#Time 13: Snuke 3 hands a gem to Snuke 1.
-#After that, they will continue handing gems, though it will be irrelevant to the answer.
-#
-#Sample Input 2
-#4
-#100 100 100 100
-#1 1 1 1
-#
-#Sample Output 2
-#1
-#1
-#1
-#1
-#Note that the values S_i and T_i may not be distinct.
-#
-#Sample Input 3
-#4
-#1 2 3 4
-#1 2 4 7
-#
-#Sample Output 3
-#1
-#2
-#4
-#7
-#Note that a Snuke may perform multiple transactions simultaneously. Particularly, a Snuke may receive gems simultaneously from Takahashi and another Snuke.
-#
-#Sample Input 4
-#8
-#84 87 78 16 94 36 87 93
-#50 22 63 28 91 60 64 27
-#
-#Sample Output 4
-#50
-#22
-#63
-#28
-#44
-#60
-#64
-#27
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    ans = [0] * n
+    ans[0] = t[0]
+    for i in range(1, n):
+        ans[i] = min(t[i], ans[i-1] + s[i-1])
+    for i in range(n):
+        print(ans[i])
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = list(map(int,input().split()))
+    t = list(map(int,input().split()))
+    ans = [0]*n
+    ans[0] = t[0]
+    for i in range(1,n):
+        ans[i] = min(ans[i-1]+s[i-1],t[i])
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+    for i in range(N):
+        if i == N - 1:
+            if ans[i] + S[i] < ans[0]:
+                ans[0] = ans[i] + S[i]
+        else:
+            if ans[i] + S[i] < ans[i + 1]:
+                ans[i + 1] = ans[i] + S[i]
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+
+    for i in range(N):
+        if i == N-1:
+            if ans[0] > ans[i] + S[i]:
+                ans[0] = ans[i] + S[i]
+        else:
+            if ans[i+1] > ans[i] + S[i]:
+                ans[i+1] = ans[i] + S[i]
+
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+
+    ans = []
+    for i in range(n):
+        ans.append(t[i])
+
+    for i in range(n):
+        if i == 0:
+            continue
+        if ans[i] > ans[i-1] + s[i-1]:
+            ans[i] = ans[i-1] + s[i-1]
+
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    result = [0 for _ in range(n)]
+    for i in range(n):
+        result[i] = t[i]
+    for i in range(1, n):
+        result[i] = min(result[i-1]+s[i-1], result[i])
+    for i in range(n):
+        print(result[i])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    ans = [10**9+1]*n
+    for i in range(n):
+        ans[i] = min(ans[i], t[i])
+        ans[(i+1)%n] = min(ans[(i+1)%n], ans[i]+s[i])
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    #print(N)
+    #print(S)
+    #print(T)
+
+    #S_1 S_2 ... S_N
+    #T_1 T_2 ... T_N
+
+    for i in range(N):
+        if i == 0:
+            continue
+        if T[i] <= T[i-1]:
+            T[i] = T[i-1] + S[i-1]
+
+    print(*T, sep='\n')
+
+=======
+Suggestion 9
+
+def problem214_c():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    T = [0] + T + [0]
+    for i in range(1, N+1):
+        T[i] = max(T[i], T[i-1]+S[i-1])
+    for i in range(1, N+1):
+        print(T[i])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s_list = list(map(int, input().split()))
+    t_list = list(map(int, input().split()))
+    #print(n, s_list, t_list)
+    s_list2 = s_list.copy()
+    t_list2 = t_list.copy()
+    for i in range(n):
+        s_list2[i] = [s_list[i], i]
+        t_list2[i] = [t_list[i], i]
+    #print(s_list2, t_list2)
+    s_list2.sort()
+    t_list2.sort()
+    #print(s_list2, t_list2)
+    s_list3 = s_list2.copy()
+    t_list3 = t_list2.copy()
+    for i in range(n):
+        if i == 0:
+            s_list3[i][0] = 0
+        else:
+            s_list3[i][0] = s_list2[i][0] - s_list2[i-1][0]
+        if i == 0:
+            t_list3[i][0] = 0
+        else:
+            t_list3[i][0] = t_list2[i][0] - t_list2[i-1][0]
+    #print(s_list3, t_list3)
+    s_list3.sort(key=lambda x: x[1])
+    t_list3.sort(key=lambda x: x[1])
+    #print(s_list3, t_list3)
+    ans_list = [0]*n
+    for i in range(n):
+        ans_list[t_list3[i][1]] = ans_list[s_list3[i][1]] + s_list3[i][0]
+    #print(ans_list)
+    for i in range(n):
+        print(ans_list[i])

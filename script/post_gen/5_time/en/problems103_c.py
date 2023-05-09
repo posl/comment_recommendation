@@ -1,42 +1,128 @@
-#Problem Statement
-#You are given N positive integers a_1, a_2, ..., a_N.
-#For a non-negative integer m, let f(m) = (m mod a_1) + (m mod a_2) + ... + (m mod a_N).
-#Here, X mod Y denotes the remainder of the division of X by Y.
-#Find the maximum value of f.
-#
-#Constraints
-#All values in input are integers.
-#2 ≦ N ≦ 3000
-#2 ≦ a_i ≦ 10^5
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#a_1 a_2 ... a_N
-#
-#Output
-#Print the maximum value of f.
-#
-#Sample Input 1
-#3
-#3 4 6
-#
-#Sample Output 1
-#10
-#f(11) = (11 mod 3) + (11 mod 4) + (11 mod 6) = 10 is the maximum value of f.
-#
-#Sample Input 2
-#5
-#7 46 11 20 11
-#
-#Sample Output 2
-#90
-#
-#Sample Input 3
-#7
-#994 518 941 851 647 2 581
-#
-#Sample Output 3
-#4527
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(m, a):
+    sum = 0
+    for i in range(len(a)):
+        sum += m % a[i]
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(max([sum([a % A[i] for a in A]) for i in range(N)]))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(max([sum([x % i for x in a]) for i in range(1, 1001)]))
+
+=======
+Suggestion 4
+
+def f(m):
+    return sum(m % a for a in A)
+
+N = int(input())
+A = list(map(int, input().split()))
+
+l = 0
+r = 10**9+1
+while r - l > 1:
+    m = (r + l) // 2
+    if f(m) < f(m+1):
+        r = m
+    else:
+        l = m
+
+print(f(r))
+
+=======
+Suggestion 5
+
+def f(m):
+    return sum([m % a for a in A])
+
+N = int(input())
+A = list(map(int, input().split()))
+A.sort(reverse=True)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    #print(a)
+    for i in range(N):
+        a[i] = a[i] % a[0]
+    #print(a)
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def f(m, a):
+    return sum([m % i for i in a])
+
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+max_a = a[-1]
+min_a = a[0]
+max_f = 0
+
+for i in range(min_a, max_a + 1):
+    max_f = max(max_f, f(i, a))
+
+print(max_f)
+
+=======
+Suggestion 8
+
+def f(m, a):
+    return sum(m % i for i in a)
+
+N = int(input())
+a = list(map(int, input().split()))
+a.sort(reverse=True)
+
+l = 0
+r = 10**18
+
+while r - l > 1:
+    m = (l + r) // 2
+    if f(m, a) >= f(m + 1, a):
+        r = m
+    else:
+        l = m
+
+print(f(r, a))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    print(sum(a)-n)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    #print(a)
+    #print(sum(a[:-1]))
+    print(sum(a[:-1]) + a[-1] - 1)

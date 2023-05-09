@@ -1,47 +1,111 @@
-#Problem Statement
-#You are given sequences of length N each: A = (A_1, A_2, A_3, ..., A_N) and B = (B_1, B_2, B_3, ..., B_N).
-#Find the number of integers x satisfying the following condition:
-#A_i ≦ x ≦ B_i holds for every integer i such that 1 ≦ i ≦ N.
-#
-#Constraints
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ B_i ≦ 1000
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#A_1 A_2 A_3 ... A_N
-#B_1 B_2 B_3 ... B_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#2
-#3 2
-#7 5
-#
-#Sample Output 1
-#3
-#x must satisfy both 3 ≦ x ≦ 7 and 2 ≦ x ≦ 5.
-#There are three such integers: 3, 4, and 5.
-#
-#Sample Input 2
-#3
-#1 5 3
-#10 7 3
-#
-#Sample Output 2
-#0
-#There may be no integer x satisfying the condition.
-#
-#Sample Input 3
-#3
-#3 2 5
-#6 9 8
-#
-#Sample Output 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    print(max(0, min(b) - max(a) + 1))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print(max(0, min(B) - max(A) + 1))
+
+main()
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    print(max(min(b) - max(a) + 1, 0))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    x = 0
+    for i in range(n):
+        x = max(x, a[i])
+    for i in range(n):
+        x = min(x, b[i])
+
+    print(x)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        count += B[i] - A[i] + 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    count = 0
+    for i in range(1, 1001):
+        if all([a[j] <= i <= b[j] for j in range(n)]):
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N):
+        cnt += B[i] - A[i] + 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    min_a = max(a)
+    max_b = min(b)
+    if min_a > max_b:
+        print(0)
+    else:
+        print(max_b - min_a + 1)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    max = min(b) - max(a) + 1
+    if max > 0:
+        print(max)
+    else:
+        print(0)

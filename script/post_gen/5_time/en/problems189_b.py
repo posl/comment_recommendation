@@ -1,56 +1,177 @@
-#Problem Statement
-#Takahashi had N glasses of liquor.
-#The amount and alcohol percentage of the i-th liquor were V_i milliliters and P_i percent by volume, respectively.
-#Takahashi gets drunk when his alcohol intake exceeds X milliliters.
-#Which of the N liquors was he drinking when he gets drunk? If he was not drunk even after drinking all the liquors, print -1 instead.
-#
-#Constraints
-#All values in input are integers.
-#1 ≦ N ≦ 10^3
-#0 ≦ X ≦ 10^6
-#1 ≦ V_i ≦ 10^3
-#0 ≦ P_i ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N X
-#V_1 P_1
-#.
-#.
-#.
-#V_N P_N
-#
-#Output
-#If Takahashi got drunk when drinking the i-th liquor, print i. If he was not drunk even after drinking all the liquors, print -1 instead.
-#
-#Sample Input 1
-#2 15
-#200 5
-#350 3
-#
-#Sample Output 1
-#2
-#The 1-st liquor contains 200× (5/(100))=10 milliliters of alcohol.
-#The 2-nd liquor contains 350× (3/(100))=10.5 milliliters of alcohol.
-#His alcohol intake exceeds 15 milliliters for the first time when drinking the 2-nd liquor.
-#
-#Sample Input 2
-#2 10
-#200 5
-#350 3
-#
-#Sample Output 2
-#2
-#When his alcohol intake is exactly X milliliters, he is still not drunk.
-#
-#Sample Input 3
-#3 1000000
-#1000 100
-#1000 100
-#1000 100
-#
-#Sample Output 3
-#-1
-#He seems to be immune to alcohol.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    # print(N, X, V, P)
+    sum = 0
+    for i in range(N):
+        sum += V[i] * P[i]
+        if sum > X * 100:
+            print(i+1)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    V_total = 0
+    for i in range(N):
+        V_total += V[i] * P[i]
+        if V_total > X * 100:
+            print(i + 1)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+
+    alc = 0
+    for i in range(N):
+        alc += V[i] * P[i] / 100
+        if alc > X:
+            print(i + 1)
+            exit()
+
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+
+    x = 0
+    for i in range(N):
+        x += V[i] * (P[i] / 100)
+        if x > X:
+            print(i+1)
+            return
+
+    print(-1)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+
+    sum = 0
+    for i in range(N):
+        sum = sum + V[i] * P[i]
+        if sum > X * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+
+    alc = 0
+    for i in range(N):
+        alc += V[i] * P[i]
+        if alc > X * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        v.append(a)
+        p.append(b)
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i]
+        if sum > x * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 8
+
+def solve(n, x, v, p):
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i]
+        if sum > x * 100:
+            return i + 1
+    return -1
+
+=======
+Suggestion 9
+
+def main():
+    n, x = [int(i) for i in input().split()]
+    v = []
+    p = []
+    for i in range(n):
+        a, b = [int(i) for i in input().split()]
+        v.append(a)
+        p.append(b)
+    total = 0
+    for i in range(n):
+        total += v[i] * p[i]
+        if total > x * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 10
+
+def get_ints(): return map(int, input().strip().split())

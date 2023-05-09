@@ -1,37 +1,89 @@
-#Problem Statement
-#There are S sheep and W wolves.
-#If the number of wolves is greater than or equal to that of sheep, the wolves will attack the sheep.
-#If the wolves will attack the sheep, print unsafe; otherwise, print safe.
-#
-#Constraints
-#1 ≦ S ≦ 100
-#1 ≦ W ≦ 100
-#
-#Input
-#Input is given from Standard Input in the following format:
-#S W
-#
-#Output
-#If the wolves will attack the sheep, print unsafe; otherwise, print safe.
-#
-#Sample Input 1
-#4 5
-#
-#Sample Output 1
-#unsafe
-#There are four sheep and five wolves. The number of wolves is not less than that of sheep, so they will attack them.
-#
-#Sample Input 2
-#100 2
-#
-#Sample Output 2
-#safe
-#Many a sheep drive away two wolves.
-#
-#Sample Input 3
-#10 10
-#
-#Sample Output 3
-#unsafe
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, w = map(int, input().split())
+    if w >= s:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 2
+
+def main():
+    S, W = map(int, input().split())
+    if W >= S:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 3
+
+def main():
+    s, w = map(int, input().split())
+    if s <= w:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 4
+
+def main():
+    S, W = map(int, input().split())
+    if S > W:
+        print('safe')
+    else:
+        print('unsafe')
+
+=======
+Suggestion 5
+
+def main():
+    s, w = map(int, input().split())
+    if s <= w:
+        print('unsafe')
+    else:
+        print('safe')
+
+=======
+Suggestion 6
+
+def main():
+    s, w = map(int, input().split())
+    if s > w:
+        print('safe')
+    else:
+        print('unsafe')
+
+=======
+Suggestion 7
+
+def main():
+    S, W = map(int, input().split())
+    if W >= S:
+        print("unsafe")
+    else:
+        print("safe")
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    S, W = map(int, input().split())
+    print("safe" if S > W else "unsafe")
+
+=======
+Suggestion 9
+
+def safe_or_unsafe(s,w):
+    if w>=s:
+        return "unsafe"
+    else:
+        return "safe"

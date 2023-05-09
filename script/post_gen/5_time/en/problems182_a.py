@@ -1,32 +1,41 @@
-#Problem Statement
-#You are on a social networking site called twiblr.
-#In twiblr, you can follow at most 2×( the number of users following you )+100 users.
-#You are currently following B users, and A users are following you.
-#At most, how many extra users can you follow now?  
-#
-#Constraints
-#0 ≦ A, B ≦ 10000
-#B ≦ 2 × A + 100
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#A B
-#
-#Output
-#Print the maximum number of extra users you can follow now.
-#
-#Sample Input 1
-#200 300
-#
-#Sample Output 1
-#200
-#You can follow at most 2 × 200 + 100 = 500 users, that is, 200 more users than you are following now.
-#
-#Sample Input 2
-#10000 0
-#
-#Sample Output 2
-#20100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if b < 2 * a + 100:
+        print(2 * a + 100 - b)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(2 * a + 100 - b)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print(2*A+100-B)
+
+=======
+Suggestion 4
+
+def max_follow(a,b):
+    if a <= 2*b + 100:
+        return 2*b + 100 - a
+    else:
+        return 0
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,raw_input().split())
+    print (2*a+100)-b

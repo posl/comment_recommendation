@@ -1,46 +1,125 @@
-#Problem Statement
-#There are N platforms arranged in a row. The height of the i-th platform from the left is H_i.
-#Takahashi is initially standing on the leftmost platform.
-#Since he likes heights, he will repeat the following move as long as possible.
-#If the platform he is standing on is not the rightmost one, and the next platform to the right has a height greater than that of the current platform, step onto the next platform.
-#Find the height of the final platform he will stand on.
-#
-#Constraints
-#2 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#All values in input are integers.
-#
-#Input
-#Input is given from Standard Input in the following format:
-#N
-#H_1 ... H_N
-#
-#Output
-#Print the answer.
-#
-#Sample Input 1
-#5
-#1 5 10 4 2
-#
-#Sample Output 1
-#10
-#Takahashi is initially standing on the leftmost platform, whose height is 1. The next platform to the right has a height of 5 and is higher than the current platform, so he steps onto it.
-#He is now standing on the 2-nd platform from the left, whose height is 5. The next platform to the right has a height of 10 and is higher than the current platform, so he steps onto it.
-#He is now standing on the 3-rd platform from the left, whose height is 10. The next platform to the right has a height of 4 and is lower than the current platform, so he stops moving.
-#Thus, the height of the final platform Takahashi will stand on is 10.
-#
-#Sample Input 2
-#3
-#100 1000 100000
-#
-#Sample Output 2
-#100000
-#
-#Sample Input 3
-#4
-#27 1828 1828 9242
-#
-#Sample Output 3
-#1828
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    maxH = 0
+    for i in range(N):
+        if H[i] >= maxH:
+            maxH = H[i]
+    print(maxH)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    heights = list(map(int, input().split()))
+
+    max_height = heights[0]
+    for i in range(1, n):
+        if heights[i] > max_height:
+            max_height = heights[i]
+
+    print(max_height)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    current_height = H[0]
+    for i in range(1, N):
+        if current_height < H[i]:
+            current_height = H[i]
+    print(current_height)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    i = 0
+    while i < n - 1:
+        if h[i] < h[i + 1]:
+            h[i + 1] -= 1
+            i = 0
+        else:
+            i += 1
+    print(h[n - 1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    max_h = 0
+    count = 0
+    for i in range(n - 1):
+        if h[i] >= h[i + 1]:
+            count += 1
+            if count > max_h:
+                max_h = count
+        else:
+            count = 0
+    print(max_h)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    h = [int(x) for x in input().split()]
+    max_h = 0
+    for i in range(n):
+        if h[i] >= max_h:
+            max_h = h[i]
+    print(max_h)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    H = list(map(int, input().split()))
+    max = H[0]
+    for i in range(1, N):
+        if H[i] >= max:
+            max = H[i]
+    print(max)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            ans += h[i]
+        elif h[i] > h[i-1]:
+            ans += h[i] - h[i-1]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int,input().split()))
+
+    maxH = 0
+    for i in range(1,N):
+        if H[i-1] < H[i]:
+            H[i] = H[i-1]
+        else:
+            maxH = max(maxH,H[i-1])
+
+    print(H[N-1] if maxH < H[N-1] else maxH)
