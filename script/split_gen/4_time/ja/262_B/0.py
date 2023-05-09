@@ -1,0 +1,15 @@
+def main():
+    N, M = map(int, input().split())
+    graph = [[] for _ in range(N)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+    ans = 0
+    for i in range(N):
+        for j in graph[i]:
+            if i < j:
+                for k in graph[j]:
+                    if k in graph[i]:
+                        ans += 1
+    print(ans)

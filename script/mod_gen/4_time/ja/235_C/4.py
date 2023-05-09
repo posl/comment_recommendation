@@ -1,0 +1,17 @@
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for _ in range(Q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for i, a in enumerate(A):
+            if a == x:
+                cnt += 1
+            if cnt == k:
+                print(i + 1)
+                break
+        else:
+            print(-1)
+
+if __name__ == '__main__':
+    main()

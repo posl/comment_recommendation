@@ -1,0 +1,35 @@
+def main():
+    n = int(input())
+    xy = []
+    for i in range(n):
+        xy.append(list(map(int, input().split())))
+    #print(xy)
+    #print(xy[0][0])
+    #print(xy[0][1])
+    #print(xy[0][0] - 1)
+    #print(xy[0][1] - 1)
+    #print(xy[0][0] + 1)
+    #print(xy[0][1] + 1)
+    #print(xy[0][0] - 1, xy[0][1] - 1)
+    #print(xy[0][0] - 1, xy[0][1])
+    #print(xy[0][0], xy[0][1] - 1)
+    #print(xy[0][0], xy[0][1] + 1)
+    #print(xy[0][0] + 1, xy[0][1])
+    #print(xy[0][0] + 1, xy[0][1] + 1)
+    #print(xy[0][0] - 1, xy[0][1] - 1)
+    #print(xy[0][0] - 1, xy[0][1])
+    #print(xy[0][0], xy[0][1] - 1)
+    #print(xy[0][0], xy[0][1] + 1)
+    #print(xy[0][0] + 1, xy[0][1])
+    #print(xy[0][0] + 1, xy[0][1] + 1)
+    #print(xy[0][0] - 1, xy[0][1] - 1)
+    #print(xy[0][0] - 1, xy[0][1])
+    #print(xy[0][0], xy[0][1] - 1)
+    #print(xy[0][0], xy[0][1] + 1)
+    #print(xy[0][0] + 1, xy[0][1])
+    #print(xy[0][0] + 1, xy[0][1] + 1)
+    #print(xy[0][0] - 1, xy[0][1] - 1)
+    #print(xy[0
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,6 @@
+def main():
+  N, M, X, T, D = map(int, input().split())
+  print((N-M)*D+T)
+
+if __name__ == '__main__':
+    main()

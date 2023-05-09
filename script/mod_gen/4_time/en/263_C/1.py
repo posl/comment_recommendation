@@ -1,0 +1,8 @@
+def increasing_sequence(n, m):
+    if n == 1:
+        return [[i] for i in range(1, m+1)]
+    else:
+        return [[i]+s for i in range(1, m+1) for s in increasing_sequence(n-1, m) if i < s[0]]
+
+if __name__ == '__main__':
+    increasing_sequence()

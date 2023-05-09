@@ -1,0 +1,6 @@
+def main():
+    N, M = [int(x) for x in input().split()]
+    if M == N:
+        print("Yes")
+    else:
+        print("No")

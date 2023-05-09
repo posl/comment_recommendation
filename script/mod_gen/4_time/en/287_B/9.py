@@ -1,0 +1,41 @@
+def main():
+    #print("Hello World!")
+    N,M = input().split()
+    N = int(N)
+    M = int(M)
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(M):
+        T.append(input())
+    #print(N,M,S,T)
+    #print(type(N),type(M),type(S),type(T))
+    #print(N,M,S,T)
+    #print(type(N),type(M),type(S),type(T))
+    #print(S[0])
+    #print(T[0])
+    #print(S[0][3:6])
+    #print(T[0][0:3])
+    #print(S[0][3:6]==T[0][0:3])
+    #print(S[0][3:6]==T[1][0:3])
+    #print(S[0][3:6]==T[2][0:3])
+    #print(S[0][3:6]==T[3][0:3])
+    #print(S[1][3:6]==T[0][0:3])
+    #print(S[1][3:6]==T[1][0:3])
+    #print(S[1][3:6]==T[2][0:3])
+    #print(S[1][3:6]==T[3][0:3])
+    #print(S[2][3:6]==T[0][0:3])
+    #print(S[2][3:6]==T[1][0:3])
+    #print(S[2][3:6]==T[2][0:3])
+    #print(S[2][3:6]==T[3][0:3])
+    #print(S[3][3:6]==T[0][0:3])
+    #print(S[3][3:6]==T[1][0:3])
+    #print(S[3][3:6]==T[2][0:3])
+    #print(S[3][3:6]==T[3][0:3])
+    #print(S[4][3:6]==T[0][0:3])
+    #print(S[4][3:6]==T[1][0:3])
+    #print(S[4][3:6]==T[2][
+
+if __name__ == '__main__':
+    main()

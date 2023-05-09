@@ -1,0 +1,13 @@
+def main():
+    q = int(input())
+    bag = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            bag.append(int(query[1]))
+        elif query[0] == '2':
+            for j in range(len(bag)):
+                bag[j] += int(query[1])
+        else:
+            print(min(bag))
+            bag.remove(min(bag))

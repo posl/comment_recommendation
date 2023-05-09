@@ -1,0 +1,6 @@
+def main():
+    X, Y, Z = map(int, input().split())
+    if X > Y:
+        print(X - Y + Z)
+    else:
+        print(-1)

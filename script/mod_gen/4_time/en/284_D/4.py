@@ -1,0 +1,23 @@
+def primefactors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+T = int(input())
+for i in range(T):
+    N = int(input())
+    factors = primefactors(N)
+    if len(factors) == 2:
+        print(factors[0], factors[1])
+    else:
+        print(factors[0], factors[1]*factors[2])
+
+if __name__ == '__main__':
+    primefactors()

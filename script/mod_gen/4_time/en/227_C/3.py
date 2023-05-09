@@ -1,0 +1,13 @@
+def main():
+    N = int(input())
+    count = 0
+    for a in range(1, int(N**0.5)+1):
+        for b in range(a, int(N**0.5)+1):
+            for c in range(b, int(N**0.5)+1):
+                if a*b*c > N:
+                    break
+                count += 1
+    print(count)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,16 @@
+def main():
+    # n = int(input())
+    r = int(input())
+    # s = input()
+    # n, k = map(int, input().split())
+    # a = list(map(int, input().split()))
+    # print(n)
+    # print(r)
+    # print(s)
+    # print(a)
+    # print(n, k)
+    # print(a)
+    print(3 * r ** 2)
+
+if __name__ == '__main__':
+    main()

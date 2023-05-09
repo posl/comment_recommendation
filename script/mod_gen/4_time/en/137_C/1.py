@@ -1,0 +1,18 @@
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    d = {}
+    for i in range(n):
+        s[i] = ''.join(sorted(s[i]))
+        if s[i] in d:
+            d[s[i]] += 1
+        else:
+            d[s[i]] = 1
+    ans = 0
+    for key in d:
+        ans += d[key] * (d[key] - 1) // 2
+    print(ans)
+solve()
+
+if __name__ == '__main__':
+    solve()

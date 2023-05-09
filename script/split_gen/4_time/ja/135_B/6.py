@@ -1,0 +1,12 @@
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p_sort = sorted(p)
+    count = 0
+    for i in range(N):
+        if p[i] == p_sort[i]:
+            count += 1
+    if count == N - 2 or count == N:
+        print("YES")
+    else:
+        print("NO")

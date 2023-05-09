@@ -1,0 +1,7 @@
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        sum += (A + B) * (B - A + 1) // 2
+    print(sum)
