@@ -2,3 +2,4 @@
 *.zip
 test_*/
 !test_script/
+.DS_Store

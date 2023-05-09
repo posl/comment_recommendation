@@ -54,7 +54,7 @@ class test_script:
         return all_test_result
     
     def write(self, times, l):
-        with open('{0}{1}_{2}.csv'.format(self.result_path, language, times), 'a') as f:
+        with open('{0}/{1}/{2}.csv'.format(self.result_path, self.language, times), 'a') as f:
             writer = csv.writer(f)
             writer.writerows(l)
 
@@ -62,11 +62,12 @@ if __name__ == '__main__':
     # delete csv file and make new one with header
     times = input() + '_time'
     language_l = ['en', 'ja']
-    if os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv'):
-        os.remove('/Users/keikoyanagi/Desktop/comment_recommendation/result/' + times + '.csv')
     
     for language in language_l:
-        with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/{0}_{1}.csv'.format(language, times), 'w') as f:
+        if os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}'.format(language, times) + '.csv'):
+            os.remove('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}'.format(language, times) + '.csv')
+
+        with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}.csv'.format(language, times), 'w') as f:
             writer = csv.writer(f)
             writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
 
@@ -88,7 +89,7 @@ if __name__ == '__main__':
                 script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
                 input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
                 output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/'
+                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy'
                 a = test_script(script_path, input_path, output_path, result_path)
                 a.write(times, a.pyexe())
             print(each_problem, language)
