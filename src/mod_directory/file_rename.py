@@ -35,5 +35,5 @@ def check(path):
 
 if __name__ == '__main__':
     path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/'
-    #rename(path)
-    check(path)
+    rename(path)
+    #check(path)
