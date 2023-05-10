@@ -125,7 +125,7 @@ if __name__ == '__main__':
                 a = test_script(script_path, input_path, output_path, result_path)
                 a.write(a.pyexe())
             print(each_problem, language)
-            break
+            #break
     
     '''
     a = test_script('/Users/keikoyanagi/Desktop/comment_recommendation/test_close_app/script/mod_gen/en/problems101_a_1.py', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/in/1.txt', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/out/1.txt')
