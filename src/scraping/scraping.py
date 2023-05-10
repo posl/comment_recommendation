@@ -179,7 +179,7 @@ class Scraping():
             for i in ['s']:
                 problem_list = list(map(lambda x: x.replace('Output\n' + i, 'Output' + i + '\n'), problem_list))
 
-            for i in ['s', 'and', 'below', 'for', '1 if', '1,2']:
+            for i in ['s', 'and', 'below', 'for', '1 if', '1,2', '1.)']:
                 problem_list = list(map(lambda x: x.replace('Outputs\n ' + i, 'Outputs ' + i), problem_list))
                 problem_list = list(map(lambda x: x.replace('Output\n ' + i, 'Output ' + i), problem_list))
 
@@ -187,7 +187,7 @@ class Scraping():
                 problem_list = list(map(lambda x: x.replace('Constraints\n' + i, 'Constraints' + i), problem_list))
                 problem_list = list(map(lambda x: x.replace('Notes\n' + i, 'Notes' + i), problem_list))
                 problem_list = list(map(lambda x: x.replace('Outputs\n' + i, 'Outputs' + i), problem_list))
-                problem_list = list(map(lambda x: x.replace('Output\n' + i, 'Outputs' + i), problem_list))
+                problem_list = list(map(lambda x: x.replace('Output\n' + i, 'Output' + i), problem_list))
             
             for i in ['guarantee', 'of']:
                 problem_list = list(map(lambda x: x.replace('Constraints\n ' + i, 'Constraints ' + i), problem_list))
