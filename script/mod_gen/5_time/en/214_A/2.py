@@ -1,0 +1,11 @@
+def problems214_a():
+    N = int(input())
+    if N <= 125:
+        print(4)
+    elif N <= 211:
+        print(6)
+    else:
+        print(8)
+
+if __name__ == '__main__':
+    problems214_a()

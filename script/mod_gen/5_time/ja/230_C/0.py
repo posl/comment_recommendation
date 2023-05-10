@@ -1,0 +1,30 @@
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            #print(i, j)
+            #print("i, j")
+            #print(i, j)
+
+if __name__ == '__main__':
+    main()

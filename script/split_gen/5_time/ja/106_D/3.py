@@ -1,0 +1,22 @@
+def main():
+    n,m,q = map(int,input().split())
+    lr = [list(map(int,input().split())) for _ in range(m)]
+    pq = [list(map(int,input().split())) for _ in range(q)]
+    #print(n,m,q,lr,pq)
+    #print(lr[0][1])
+    #print(pq[0][1])
+    #print(lr[0][0] <= pq[0][0])
+    #print(lr[0][1] >= pq[0][1])
+    #print(lr[0][0] <= pq[0][0] and lr[0][1] >= pq[0][1])
+    #print(lr[0][0] <= pq[0][0] and lr[0][1] >= pq[0][1])
+    #print(lr[1][0] <= pq[0][0] and lr[1][1] >= pq[0][1])
+    #print(lr[2][0] <= pq[0][0] and lr[2][1] >= pq[0][1])
+    #print(lr[0][0] <= pq[1][0] and lr[0][1] >= pq[1][1])
+    #print(lr[1][0] <= pq[1][0] and lr[1][1] >= pq[1][1])
+    #print(lr[2][0] <= pq[1][0] and lr[2][1] >= pq[1][1])
+    #print(lr[0][0] <= pq[2][0] and lr[0][1] >= pq[2][1])
+    #print(lr[1][0] <= pq[2][0] and lr[1][1] >= pq[2][1])
+    #print(lr[2][0] <= pq[2][0] and lr[2][1] >= pq[2][1])
+    #print(lr[0][0] <= pq[3][0] and lr[0][1] >= pq[3][1])
+    #print(lr[1][0] <= pq[3][0] and lr[1][1] >= pq[3][1])
+    #print(lr[2][0] <= pq[3][0] and lr[2][1] >= pq[3][1])

@@ -1,0 +1,33 @@
+def main():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for i in range(m):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    #print(n, m)
+    #print(k)
+    #print(a)
+    #print(k[0])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][0] in a[1])
+    #print(a[0][0] in a[1])
+    #print(a[0][1] in a[1])
+    #print(a[0][0] in a[1] and a[0][1] in a[1])
+    #print(a[0][0] in a[1] and a[0][1] in a[1] and a[0][0] in a[2])
+    #print(a[0][0] in a[1] and a[0][1] in a[1] and a[0][0] in a[2] and a[0][1] in a[2])
+    #print(len(a[0]))
+    #print(len(a[1]))
+    #print(len(a[0]) + len(a[1]))
+    #print(len(a[0]) + len(a[1]) + len(a[2]))
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n)
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n)
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n and len(a[0]) == len(a[1]))
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n)
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n and len(a[0]) == len(a[1]) and len(a[1]) == len(a[2]))
+    #print(len(a[0]) + len(a[1]) + len(a[2]) == 2*n)
+    #print(len(a[0]) + len(a[1]) + len(a[2]) ==
+
+if __name__ == '__main__':
+    main()

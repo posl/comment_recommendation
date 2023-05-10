@@ -1,0 +1,45 @@
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # N = 3
+    # A = [5, 1, 2]
+    # N = 5
+    # A = [31, 41, 59, 26, 53]
+    A.sort()
+    # print(A)
+    # print(A[N-1] - A[0])
+    # print(A[N-2] - A[0])
+    # print(A[N-1] - A[1])
+    # print(A[N-2] - A[1])
+    # print(A[N-1] - A[2])
+    # print(A[N-2] - A[2])
+    # print(A[N-3] - A[0])
+    # print(A[N-3] - A[1])
+    # print(A[N-3] - A[2])
+    # print(A[N-3] - A[3])
+    # print(A[N-4] - A[0])
+    # print(A[N-4] - A[1])
+    # print(A[N-4] - A[2])
+    # print(A[N-4] - A[3])
+    # print(A[N-4] - A[4])
+    # print(A[N-1] - A[0])
+    # print(A[N-2] - A[0])
+    # print(A[N-3] - A[0])
+    # print(A[N-4] - A[0])
+    # print(A[N-5] - A[0])
+    # print(A[N-1] - A[1])
+    # print(A[N-2] - A[1])
+    # print(A[N-3] - A[1])
+    # print(A[N-4] - A[1])
+    # print(A[N-5] - A[1])
+    # print(A[N-1] - A[2])
+    # print(A[N-2] - A[2])
+    # print(A[N-3] - A[2])
+    # print(A[N-4] - A[2])
+    # print(A[N-5] - A[2])
+    # print(A[N-1] - A[3])
+    # print(A[N-2] - A[3])
+    # print(A[N-3] - A
+
+if __name__ == '__main__':
+    solve()

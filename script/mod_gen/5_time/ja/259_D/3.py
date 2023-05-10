@@ -1,0 +1,30 @@
+def main():
+    # N = int(input())
+    # sx, sy, tx, ty = map(int, input().split())
+    # circles = [list(map(int, input().split())) for _ in range(N)]
+    N = 4
+    sx, sy, tx, ty = 0, -2, 3, 3
+    circles = [[0, 0, 2], [2, 0, 2], [2, 3, 1], [-3, 3, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+    # circles = [[0, 0, 1], [0, 0, 2], [0, 0, 3]]
+    # N = 3
+    # sx, sy, tx, ty = 0, 1, 0, 3
+
+if __name__ == '__main__':
+    main()

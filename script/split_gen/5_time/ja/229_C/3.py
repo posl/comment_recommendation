@@ -1,0 +1,16 @@
+def main():
+    n, w = map(int, input().split())
+    a, b = [], []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    # dp[i][j]: i番目までのチーズで重さj以下になるときの最大のおいしさ
+    dp = [[0]*(w+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(w+1):
+            if j >= b[i]:
+                dp[i+1][j] = max(dp[i][j], dp[i][j-b[i]] + a[i])
+            else:
+                dp[i+1][j] = dp[i][j]
+    print(dp[n][w])

@@ -1,0 +1,52 @@
+def solve():
+    #n = int(input())
+    n = 5
+    #s = []
+    #t = []
+    #for i in range(n):
+    #    s.append(input())
+    #    t.append(input())
+    s = ['aaa', 'yyy', 'ccc', 'xxx', 'bbb']
+    t = ['bbb', 'zzz', 'ddd', 'yyy', 'ccc']
+    #print(n)
+    #print(s)
+    #print(t)
+    #print(len(s))
+    #print(len(t))
+    #print(s[0])
+    #print(t[0])
+    #print(s[0] == t[0])
+    #print(s[0] == t[1])
+    #print(s[0] == t[2])
+    #print(s[0] == t[3])
+    #print(s[0] == t[4])
+    #print(s[1] == t[0])
+    #print(s[1] == t[1])
+    #print(s[1] == t[2])
+    #print(s[1] == t[3])
+    #print(s[1] == t[4])
+    #print(s[2] == t[0])
+    #print(s[2] == t[1])
+    #print(s[2] == t[2])
+    #print(s[2] == t[3])
+    #print(s[2] == t[4])
+    #print(s[3] == t[0])
+    #print(s[3] == t[1])
+    #print(s[3] == t[2])
+    #print(s[3] == t[3])
+    #print(s[3] == t[4])
+    #print(s[4] == t[0])
+    #print(s[4] == t[1])
+    #print(s[4] == t[2])
+    #print(s[4] == t[3])
+    #print(s[4] == t[4])
+    #print(s[0] == s[1])
+    #print(s[0] == s[2])
+    #print(s[0] == s[3])
+    #print(s[0] == s[4])
+    #print(s[1] == s[2])
+    #print(s[1] == s[3])
+    #print
+
+if __name__ == '__main__':
+    solve()

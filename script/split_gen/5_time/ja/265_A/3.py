@@ -1,0 +1,8 @@
+def main():
+    x, y, n = map(int, input().split())
+    ans = 100000
+    for i in range(n+1):
+        for j in range(n+1):
+            if i + j == n:
+                ans = min(ans, x*i + y*j)
+    print(ans)

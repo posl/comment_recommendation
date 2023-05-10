@@ -1,0 +1,35 @@
+def main():
+    N = int(input())
+    XYP = []
+    for i in range(N):
+        XYP.append([int(i) for i in input().split()])
+    #print("XYP:",XYP)
+    #print("XYP[0]:",XYP[0])
+    #print("XYP[0][0]:",XYP[0][0])
+    #print("XYP[0][1]:",XYP[0][1])
+    #print("XYP[0][2]:",XYP[0][2])
+    #print("XYP[1]:",XYP[1])
+    #print("XYP[1][0]:",XYP[1][0])
+    #print("XYP[1][1]:",XYP[1][1])
+    #print("XYP[1][2]:",XYP[1][2])
+    #print("XYP[2]:",XYP[2])
+    #print("XYP[2][0]:",XYP[2][0])
+    #print("XYP[2][1]:",XYP[2][1])
+    #print("XYP[2][2]:",XYP[2][2])
+    #print("XYP[3]:",XYP[3])
+    #print("XYP[3][0]:",XYP[3][0])
+    #print("XYP[3][1]:",XYP[3][1])
+    #print("XYP[3][2]:",XYP[3][2])
+    #print("XYP[4]:",XYP[4])
+    #print("XYP[4][0]:",XYP[4][0])
+    #print("XYP[4][1]:",XYP[4][1])
+    #print("XYP[4][2]:",XYP[4][2])
+    #print("XYP[5]:",XYP[5])
+    #print("XYP[5][0]:",XYP[5][0])
+    #print("XYP[5][1]:",XYP[5][1])
+    #print("XYP[5][2]:",XYP[5][2])
+    #print("XYP[6]:",XYP[6])
+    #print("XYP[6
+
+if __name__ == '__main__':
+    main()

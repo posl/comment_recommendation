@@ -1,0 +1,21 @@
+def main():
+    s = input()
+    k = int(input())
+    #print(s)
+    #print(k)
+    s_list = []
+    s_list.append(s)
+    for i in range(1, k + 1):
+        #print(i)
+        s_list.append(s_list[i - 1])
+        #print(s_list)
+        s_list[i] = s_list[i].replace('2', '22')
+        s_list[i] = s_list[i].replace('3', '333')
+        s_list[i] = s_list[i].replace('4', '4444')
+        s_list[i] = s_list[i].replace('5', '55555')
+        s_list[i] = s_list[i].replace('6', '666666')
+        s_list[i] = s_list[i].replace('7', '7777777')
+        s_list[i] = s_list[i].replace('8', '88888888')
+        s_list[i] = s_list[i].replace('9', '999999999')
+        #print(s_list[i])
+    print(s_list[k - 1][k - 1])

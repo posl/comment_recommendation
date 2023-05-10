@@ -1,0 +1,6 @@
+def main():
+    N = int(input())
+    if N%4 == 0 or N%7 == 0 or N%11 == 0 or N%15 == 0 or N%18 == 0 or N%22 == 0 or N%26 == 0 or N%30 == 0 or N%34 == 0 or N%38 == 0 or N%42 == 0 or N%46 == 0 or N%50 == 0 or N%54 == 0 or N%58 == 0 or N%62 == 0 or N%66 == 0 or N%70 == 0 or N%74 == 0 or N%78 == 0 or N%82 == 0 or N%86 == 0 or N%90 == 0 or N%94 == 0 or N%98 == 0 or N%102 == 0 or N%106 == 0 or N%110 == 0 or N%114 == 0 or N%118 == 0 or N%122 == 0 or N%126 == 0 or N%130 == 0 or N%134 == 0 or N%138 == 0 or N%142 == 0 or N%146 == 0 or N%150 == 0 or N%154 == 0 or N%158 == 0 or N%162 == 0 or N%166 == 0 or N%170 == 0 or N%174 == 0 or N%178 == 0 or N%182 == 0 or N%186 == 0 or N%190 == 0 or N%194 == 0 or N%198 == 0 or N%202 == 0 or N%206 == 0 or N%210 == 0 or N%214 == 0 or N%218 == 0 or N%222 == 0 or N%226 == 0 or N%230 == 0 or N%234 == 0 or N%238 == 0 or N%242 == 0 or N%246 == 0 or N%250 == 0 or N%254 == 0 or N%258 == 0 or N%262 == 0 or N%266 == 0 or N%270 == 0 or N%274 == 0 or N%278 == 0 or
+
+if __name__ == '__main__':
+    main()

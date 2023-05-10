@@ -1,0 +1,51 @@
+def problems270_a(a,b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 1 and b == 0:
+        return 1
+    elif a == 0 and b == 1:
+        return 1
+    elif a == 1 and b == 1:
+        return 2
+    elif a == 2 and b == 0:
+        return 2
+    elif a == 0 and b == 2:
+        return 2
+    elif a == 2 and b == 1:
+        return 3
+    elif a == 1 and b == 2:
+        return 3
+    elif a == 2 and b == 2:
+        return 4
+    elif a == 3 and b == 0:
+        return 3
+    elif a == 0 and b == 3:
+        return 3
+    elif a == 3 and b == 1:
+        return 4
+    elif a == 1 and b == 3:
+        return 4
+    elif a == 3 and b == 2:
+        return 5
+    elif a == 2 and b == 3:
+        return 5
+    elif a == 3 and b == 3:
+        return 6
+    elif a == 4 and b == 0:
+        return 4
+    elif a == 0 and b == 4:
+        return 4
+    elif a == 4 and b == 1:
+        return 5
+    elif a == 1 and b == 4:
+        return 5
+    elif a == 4 and b == 2:
+        return 6
+    elif a == 2 and b == 4:
+        return 6
+    elif a == 4 and b == 3:
+        return 7
+    elif a == 3 and b == 4:
+        return 7
+    elif a == 4 and b == 4:
+        return 8

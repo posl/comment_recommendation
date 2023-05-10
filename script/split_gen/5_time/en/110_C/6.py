@@ -1,0 +1,18 @@
+def main():
+    S = input()
+    T = input()
+    if len(S) != len(T):
+        print("No")
+        return
+    if S == T:
+        print("Yes")
+        return
+    S = list(S)
+    T = list(T)
+    S.sort()
+    T.sort()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print("No")
+            return
+    print("Yes")

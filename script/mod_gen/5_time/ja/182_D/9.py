@@ -1,0 +1,12 @@
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = 0
+    max_x = 0
+    for i in range(n):
+        x += a[i]
+        max_x = max(max_x, x)
+    print(max_x)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,25 @@
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    ab.sort(key=lambda x: x[1])
+    ab.sort(key=lambda x: x[0])
+    print(ab)
+
+if __name__ == '__main__':
+    main()

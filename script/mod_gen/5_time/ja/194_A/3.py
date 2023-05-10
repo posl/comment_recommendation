@@ -1,0 +1,13 @@
+def main():
+    a,b = map(int,input().split())
+    if a+b >= 100:
+        print(4)
+    elif a+b >= 80:
+        print(3)
+    elif a+b >= 60:
+        print(2)
+    else:
+        print(1)
+
+if __name__ == '__main__':
+    main()

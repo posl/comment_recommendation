@@ -3,6 +3,7 @@ import os
 import openpyxl
 import glob
 import csv
+import shutil
 
 class test_script:
     def __init__(self, script_path, input_path, output_path, result_path):
@@ -53,8 +54,28 @@ class test_script:
             all_test_result.append(each_test_result)
         return all_test_result
     
-    def write(self, times, l):
-        with open('{0}/{1}/{2}.csv'.format(self.result_path, self.language, times), 'a') as f:
+    def write(self, l):
+        if int(self.problem_number) < 119:
+            file_number = '99_118'
+        elif int(self.problem_number) < 139:
+            file_number = '119_138'
+        elif int(self.problem_number) < 159:
+            file_number = '139_158'
+        elif int(self.problem_number) < 179:
+            file_number = '159_178'
+        elif int(self.problem_number) < 199:
+            file_number = '179_198'
+        elif int(self.problem_number) < 219:
+            file_number = '199_218'
+        elif int(self.problem_number) < 239:
+            file_number = '219_238'
+        elif int(self.problem_number) < 259:
+            file_number = '239_258'
+        elif int(self.problem_number) < 279:
+            file_number = '259_278'
+        else:
+            file_number = '279_287'
+        with open('{0}/{1}.csv'.format(self.result_path, file_number), 'a') as f:
             writer = csv.writer(f)
             writer.writerows(l)
 
@@ -63,14 +84,25 @@ if __name__ == '__main__':
     print('input times')
     times = input() + '_time'
     language_l = ['en', 'ja']
+    del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/'.format(times)
+    if os.path.exists(del_dir_path):
+        shutil.rmtree(del_dir_path)
+    os.mkdir(del_dir_path)
     
     for language in language_l:
-        if os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}'.format(language, times) + '.csv'):
-            os.remove('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}'.format(language, times) + '.csv')
+        os.mkdir(del_dir_path + language + '/')
 
-        with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/{0}/{1}.csv'.format(language, times), 'w') as f:
-            writer = csv.writer(f)
-            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
+        start = 99
+        for i in range(10):
+            if i == 9:
+                end = 287
+            else:
+                end = start + 19
+
+            with open('{0}/{1}/{2}_{3}.csv'.format(del_dir_path, language, str(start), str(end)), 'w') as f:
+                writer = csv.writer(f)
+                writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
+            start = end + 1
 
         base_problem_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language)))
         problem_l = []
@@ -90,9 +122,9 @@ if __name__ == '__main__':
                 script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
                 input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
                 output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy'
+                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
                 a = test_script(script_path, input_path, output_path, result_path)
-                a.write(times, a.pyexe())
+                a.write(a.pyexe())
             print(each_problem, language)
             #break
     

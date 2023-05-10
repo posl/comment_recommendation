@@ -1,0 +1,28 @@
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K)
+    #print(A)
+    #print(A[0:1])
+    #print(A[1:])
+    #print(A[0:1] + A[2:])
+    #print(A[0:1] + A[1:])
+    #print(A[1:] + A[0:1])
+    #print(A[1:] + A[0:1] + A[2:])
+    #print(A[1:] + A[0:1] + A[1:])
+    #print(A[2:] + A[0:1])
+    #print(A[2:] + A[0:1] + A[1:])
+    #print(A[2:] + A[0:1] + A[1:] + A[3:])
+    #print(A[2:] + A[0:1] + A[1:] + A[2:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[3:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[2:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[1:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[0:1])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[0:1] + A[3:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[0:1] + A[2:])
+    #print(A[2:] + A[0:1] + A[1:] + A[0:1] + A[0:1] + A[1:])
+    #print(A[2:] + A[0:1] + A[1:] +
+
+if __name__ == '__main__':
+    main()

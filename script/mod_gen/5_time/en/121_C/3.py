@@ -1,0 +1,19 @@
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = 0
+    for i in range(N):
+        if M > 0:
+            if M >= AB[i][1]:
+                ans += AB[i][0] * AB[i][1]
+                M -= AB[i][1]
+            else:
+                ans += AB[i][0] * M
+                M -= M
+        else:
+            break
+    print(ans)
+
+if __name__ == '__main__':
+    main()

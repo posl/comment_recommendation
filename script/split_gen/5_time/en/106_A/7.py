@@ -1,0 +1,21 @@
+def main():
+    # Take input
+    input_line = input()
+    input_line = input_line.split()
+    #print(input_line)
+    #print(type(input_line))
+    #print(len(input_line))
+    #print(input_line[0])
+    #print(input_line[1])
+    #print(type(input_line[0]))
+    #print(type(input_line[1]))
+    #print(int(input_line[0]))
+    #print(int(input_line[1]))
+    #print(type(int(input_line[0])))
+    #print(type(int(input_line[1])))
+    #print(int(input_line[0]) * int(input_line[1]))
+    #print(type(int(input_line[0]) * int(input_line[1])))
+    #print(int(input_line[0]) * int(input_line[1]) - (int(input_line[0]) + int(input_line[1]) - 1))
+    #print(type(int(input_line[0]) * int(input_line[1]) - (int(input_line[0]) + int(input_line[1]) - 1)))
+    # Print output
+    print(int(input_line[0]) * int(input_line[1]) - (int(input_line[0]) + int(input_line[1]) - 1))

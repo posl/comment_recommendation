@@ -1,0 +1,33 @@
+def main():
+    # N, M = map(int, input().split())
+    # cakes = [list(map(int, input().split())) for _ in range(N)]
+    # print(N, M)
+    # print(cakes)
+    # print(cakes[0][0])
+    # print(cakes[1][0])
+    # print(cakes[2][0])
+    # print(cakes[3][0])
+    # print(cakes[4][0])
+    # print(cakes[0][1])
+    # print(cakes[1][1])
+    # print(cakes[2][1])
+    # print(cakes[3][1])
+    # print(cakes[4][1])
+    # print(cakes[0][2])
+    # print(cakes[1][2])
+    # print(cakes[2][2])
+    # print(cakes[3][2])
+    # print(cakes[4][2])
+    # print(cakes[0][0] + cakes[1][0] + cakes[2][0])
+    # print(cakes[0][1] + cakes[1][1] + cakes[2][1])
+    # print(cakes[0][2] + cakes[1][2] + cakes[2][2])
+    # print(cakes[0][0] + cakes[1][0] + cakes[2][0] + cakes[3][0])
+    # print(cakes[0][1] + cakes[1][1] + cakes[2][1] + cakes[3][1])
+    # print(cakes[0][2] + cakes[1][2] + cakes[2][2] + cakes[3][2])
+    # print(cakes[0][0] + cakes[1][0] + cakes[2][0] + cakes[3][0] + cakes[4][0])
+    # print(cakes[0][1] + cakes[1][1] + cakes[2][1] + cakes[3][1] + cakes[4][1])
+    # print(cakes[0][2] + cakes[1][2] + cakes[2][2] + cakes[3][2] + cakes[4][2])
+    # print(cakes[0][0] + cakes[1][0] + cakes[2][0]
+
+if __name__ == '__main__':
+    main()

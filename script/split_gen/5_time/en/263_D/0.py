@@ -1,0 +1,9 @@
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] < L:
+            A[i] = L
+        elif R < A[i]:
+            A[i] = R
+    print(sum(A))

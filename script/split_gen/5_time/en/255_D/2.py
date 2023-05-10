@@ -1,0 +1,10 @@
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    A.sort()
+    X.sort()
+    ans = 0
+    for i in range(Q):
+        ans += abs(A[0] - X[i])
+    print(ans)

@@ -1,0 +1,6 @@
+def check_honesty(persons, testimony):
+    for i in range(len(persons)):
+        if persons[i] == 1:
+            if testimony[i] != 1:
+                return False
+    return True

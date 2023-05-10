@@ -1,0 +1,13 @@
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    x = 0
+    for a in A:
+        x += a
+        ans = max(ans, x)
+    print(ans)
+solve()
+
+if __name__ == '__main__':
+    solve()
