@@ -33,7 +33,9 @@ if __name__ == '__main__':
 
         if os.path.exists(result_path + language + '_errors.txt'):
             os.remove(result_path + language + '_errors.txt')
-        shutil.rmtree(result_path)
+
+        if os.path.exists(result_path):
+            shutil.rmtree(result_path)
         
         os.mkdir(result_path)
         for file in files_l:

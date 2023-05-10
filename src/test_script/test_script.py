@@ -84,13 +84,12 @@ if __name__ == '__main__':
     print('input times')
     times = input() + '_time'
     language_l = ['en', 'ja']
-    del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/'.format(times)
-    if os.path.exists(del_dir_path):
-        shutil.rmtree(del_dir_path)
-    os.mkdir(del_dir_path)
     
     for language in language_l:
-        os.mkdir(del_dir_path + language + '/')
+        del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
+        if os.path.exists(del_dir_path):
+            shutil.rmtree(del_dir_path)
+        os.mkdir(del_dir_path)
 
         start = 99
         for i in range(10):
@@ -99,7 +98,7 @@ if __name__ == '__main__':
             else:
                 end = start + 19
 
-            with open('{0}/{1}/{2}_{3}.csv'.format(del_dir_path, language, str(start), str(end)), 'w') as f:
+            with open('{0}/{1}_{2}.csv'.format(del_dir_path, str(start), str(end)), 'w') as f:
                 writer = csv.writer(f)
                 writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
             start = end + 1
@@ -126,7 +125,7 @@ if __name__ == '__main__':
                 a = test_script(script_path, input_path, output_path, result_path)
                 a.write(a.pyexe())
             print(each_problem, language)
-            #break
+            break
     
     '''
     a = test_script('/Users/keikoyanagi/Desktop/comment_recommendation/test_close_app/script/mod_gen/en/problems101_a_1.py', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/in/1.txt', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/out/1.txt')

@@ -18,15 +18,14 @@ def main(read_path, write_path):
 if __name__ == '__main__':
     print('input times')
     time = input() + '_time'
-    del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/'.format(time)
-    if os.path.exists(del_dir_path):
-        shutil.rmtree(del_dir_path)
-    os.mkdir(del_dir_path)
 
     for language in ['en', 'ja']:
     #for language in ['zh']:
         base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)
         result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/'.format(time, language)
+
+        if os.path.exists(result_path):
+            shutil.rmtree(result_path)
         
         os.mkdir(result_path)
 
