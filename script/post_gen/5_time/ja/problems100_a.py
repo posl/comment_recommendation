@@ -1,40 +1,63 @@
-#問題文
-#もうすぐ E869120 君と square1001 君の 16 才の誕生日が来る.
-#そこで, AtCoder 王国の高橋君は, 円形のケーキ 1 個に放射状に切れ目を入れ 16 等分したものを, 彼らにプレゼントした.  
-#E869120 君はそのうち A 切れ、square1001 君は B 切れを食べようとした.
-#しかし, ケーキと一緒についていた紙を見ると, 「同じ人が隣り合う 2 切れのケーキを両方取ってはならない」と書かれていた.  
-#さて、彼らは紙に書かれたことを守って、2 人とも食べたい数のケーキを取ることができるだろうか？  
-#
-#制約
-#A, B は 1 以上 16 以下の整数
-#A+B は 16 以下である.
-#
-#入力
-#入力は以下の形式で標準入力から与えられる.  
-#A B
-#
-#出力
-#紙に書かれたことを守って, E869120 君と square1001 君両方が, 食べたい数のケーキを取ることができるならば Yay!, そうでなければ :( と出力しなさい.
-#
-#入力例 1
-#5 4
-#
-#出力例 1
-#Yay!
-#下の図のようにケーキを取れば、2 人とも目標を達成することができる.
-#
-#入力例 2
-#8 8
-#
-#出力例 2
-#Yay!
-#下の図のようにケーキを取れば、2 人とも目標を達成することができる.
-#
-#入力例 3
-#11 4
-#
-#出力例 3
-#:(
-#この場合, 残念ながら目標を達成する方法は 1 つもない.  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a <= 8 and b <= 8:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 2
+
+def main():
+    #1行目の入力を取得
+    a,b = map(int,input().split())
+    #A+Bが16以下かどうか
+    if a+b <= 16:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    if A <= 8 and B <= 8:
+        print('Yay!')
+    else:
+        print(':(')
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if (a>8 or b>8):
+        print(":(")
+    else:
+        print("Yay!")
+
+=======
+Suggestion 5
+
+def main():
+    A,B = map(int,input().split())
+    if A > 8 or B > 8:
+        print(":(")
+    else:
+        print("Yay!")
+
+=======
+Suggestion 6
+
+def problem100_a():
+    a,b = map(int,input().split())
+    if a > 8 or b > 8:
+        print(":(")
+    else:
+        print("Yay!")

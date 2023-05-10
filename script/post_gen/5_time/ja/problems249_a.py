@@ -1,40 +1,185 @@
-#問題文
-#高橋君と青木君はジョギングをすることにしました。
-#高橋君は「A 秒間秒速 B メートルで歩き、C 秒間休む」ことを繰り返します。
-#青木君は「D 秒間秒速 E メートルで歩き、F 秒間休む」ことを繰り返します。
-#二人が同時にジョギングを始めてから X 秒後、高橋君と青木君のうちどちらが長い距離を進んでいますか？
-#
-#制約
-#1 ≦ A, B, C, D, E, F, X ≦ 100
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D E F X
-#
-#出力
-#二人が同時にジョギングを始めてから X 秒後時点で、高橋君の方が青木君よりも長い距離を進んでいるならば Takahashi、青木君の方が高橋君よりも長い距離を進んでいるならば Aoki、二人が同じ距離を進んでいるならば Draw と出力せよ。
-#
-#入力例 1
-#4 3 3 6 2 5 10
-#
-#出力例 1
-#Takahashi
-#二人はジョギングを始めてから 10 秒間の間、以下のように行動します。
-#高橋君は 4 秒間歩き、3 秒間休んだ後、再び 3 秒間歩く。合計 (4 + 3) × 3 = 21 メートル歩く。
-#青木君は 6 秒間歩き、4 秒間休む。合計 6 × 2 = 12 メートル歩く。
-#高橋君の方が長い距離を進んでいるので、Takahashi と出力します。
-#
-#入力例 2
-#3 1 4 1 5 9 2
-#
-#出力例 2
-#Aoki
-#
-#入力例 3
-#1 1 1 1 1 1 1
-#
-#出力例 3
-#Draw
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def input_to_list():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d,e,f,x = map(int, input().split())
+    t = 0
+    while True:
+        if t >= x:
+            break
+        else:
+            t += a
+            if t >= x:
+                break
+            else:
+                t += d
+    print("Takahashi" if t >= x else "Aoki")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d,e,f,x = map(int, input().split())
+    t = 0
+    h = 0
+    while True:
+        if t >= x:
+            break
+        t += 1
+        if t % (a + b) <= a and t % (d + e) <= d:
+            h += 1
+        elif t % (a + b) <= a:
+            h += 1
+        elif t % (d + e) <= d:
+            continue
+        else:
+            continue
+    if h == 0:
+        print("Draw")
+    elif h == t:
+        print("Draw")
+    elif h > t / 2:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 4
+
+def get_input():
+    A,B,C,D,E,F,X = map(int, input().split())
+    return A,B,C,D,E,F,X
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+    #print(a,b,c,d,e,f,x)
+
+    t = 0
+    aoki = 0
+    takahashi = 0
+    while True:
+        if t % 2 == 0:
+            takahashi += a
+        else:
+            aoki += d
+
+        if t % 2 == 0:
+            if takahashi >= x:
+                break
+        else:
+            if aoki >= x:
+                break
+
+        t += 1
+
+        if t % 2 == 0:
+            aoki += e
+        else:
+            takahashi += b
+
+        if t % 2 == 0:
+            if aoki >= x:
+                break
+        else:
+            if takahashi >= x:
+                break
+
+        t += 1
+
+    if takahashi > aoki:
+        print("Takahashi")
+    elif takahashi < aoki:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c,d,e,f,x = map(int,input().split())
+    t = 0
+    while True:
+        if t >= x:
+            print('Draw')
+            return
+        t += 1
+        if t % (a+c) <= a and t % (d+f) <= d:
+            print('Draw')
+            return
+        elif t % (a+c) <= a:
+            print('Takahashi')
+            return
+        elif t % (d+f) <= d:
+            print('Aoki')
+            return
+main()
+
+=======
+Suggestion 7
+
+def solve():
+    a,b,c,d,e,f,x = map(int,input().split())
+    t = 0
+    while True:
+        if t % (c+d) < c:
+            x -= a
+        else:
+            x += b
+        if x <= 0:
+            print("Aoki")
+            break
+        if t % (e+f) < e:
+            x -= c
+        else:
+            x += d
+        if x <= 0:
+            print("Takahashi")
+            break
+        t += 1
+
+=======
+Suggestion 8
+
+def calc_distance(v, t):
+    return v * t
+
+=======
+Suggestion 9
+
+def main():
+    A,B,C,D,E,F,X = map(int, input().split())
+    Aoki = Takahashi = 0
+    if A > 0:
+        Takahashi += B
+    if D > 0:
+        Aoki += E
+    for i in range(1, X):
+        if i % (A + C) < A:
+            Takahashi += B
+        if i % (D + F) < D:
+            Aoki += E
+    if Takahashi > Aoki:
+        print('Takahashi')
+    elif Takahashi < Aoki:
+        print('Aoki')
+    else:
+        print('Draw')
+
+=======
+Suggestion 10
+
+def get_input_data():
+    a, b, c, d, e, f, x = map(int, input().split())
+    return a, b, c, d, e, f, x

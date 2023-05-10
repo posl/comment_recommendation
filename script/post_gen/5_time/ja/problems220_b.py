@@ -1,41 +1,85 @@
-#問題文
-#整数 A,B が K 進法表記で与えられます。
-#A × B を 10 進法表記で出力してください。
-#
-#注記
-#K 進法表記については、Wikipedia「位取り記数法」 を参照してください。
-#
-#制約
-#2 ≦ K ≦ 10
-#1 ≦ A,B ≦ 10^5
-#A,B は K 進法表記で与えられる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#A B
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#2
-#1011 10100
-#
-#出力例 1
-#220
-#2 進法表記の 1011 を 、10 進法表記すると 11 です。
-#2 進法表記の 10100 を、 10 進法表記すると 20 です。
-#11 × 20 = 220 なので 220 を出力します。
-#
-#入力例 2
-#7
-#123 456
-#
-#出力例 2
-#15642
-#7 進法表記の 123 を 、10 進法表記すると 66 です。
-#7 進法表記の 456 を、 10 進法表記すると 237 です。
-#66 × 237 = 15642 なので 15642 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    print(int(a, k) * int(b, k))
+
+=======
+Suggestion 2
+
+def k_to_10(k, num):
+    return int(str(num), k)
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    a, b = input().split()
+    print(int(a, k) * int(b, k))
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    A, B = input().split()
+
+    A_10 = 0
+    B_10 = 0
+    for i in range(len(A)):
+        A_10 += int(A[i]) * K ** (len(A) - 1 - i)
+    for i in range(len(B)):
+        B_10 += int(B[i]) * K ** (len(B) - 1 - i)
+    print(A_10 * B_10)
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    a, b = map(str, input().split())
+    a = int(a, k)
+    b = int(b, k)
+    print(a * b)
+
+=======
+Suggestion 6
+
+def base_10_to_n(X, n):
+    if (int(X/n)):
+        return base_10_to_n(int(X/n), n)+str(X%n)
+    return str(X%n)
+
+K = int(input())
+A, B = map(int, input().split())
+
+A = base_10_to_n(A, 10)
+B = base_10_to_n(B, 10)
+
+A = int(A, K)
+B = int(B, K)
+
+print(A*B)
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    A,B = map(str,input().split())
+    A = int(A,K)
+    B = int(B,K)
+    print(A*B)
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    A, B = map(str, input().split())
+    print(int(A, K) * int(B, K))

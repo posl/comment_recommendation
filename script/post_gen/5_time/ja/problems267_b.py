@@ -1,56 +1,263 @@
-#問題文
-#ボウリングのピンは 1 から 10 の番号が付けられており、上から見ると下図のように配置されます。
-#この図の二つの点線に挟まれた部分を列と呼ぶことにします。
-#例えば、ピン 1, 5 とピン 3, 9 はそれぞれ同じ列に存在します。
-#いくつかのピンが倒れた状態のうち、特殊なものはスプリットと呼ばれます。
-#ピンの配置がスプリットであるとは、以下の条件が全て成り立つことを言います。
-#ピン 1 が倒れている。
-#ある二つの異なる列であって、次の条件を満たすものが存在する。
-#それぞれの列には、立っているピンが 1 本以上存在する。
-#それらの列の間に、ピンが全て倒れている列が存在する。
-#
-#具体例は入出力例を参考にしてください。
-#さて、あるピンの配置が長さ 10 の文字列 S として与えられます。
-#i = 1, ..., 10 について、ピン i が倒れているとき S の i 文字目は 0 であり、ピン i が立っているとき S の i 文字目は 1 です。
-#S で表されるピンの配置がスプリットかどうか判定してください。
-#
-#制約
-#S は 0 と 1 からなる長さ 10 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S で表されるピンの配置がスプリットなら Yes を、そうでないなら No を出力せよ。
-#
-#入力例 1
-#0101110101
-#
-#出力例 1
-#Yes
-#倒れているピンを灰色で、立っているピンを白色で示すと下図のようになります。
-#ピン 5 が立っている列とピン 6 が立っている列の間にはピン 3, 9 が置かれている列が存在しますが、ピン 3, 9 はいずれも倒れているので、この配置はスプリットです。
-#
-#入力例 2
-#0100101001
-#
-#出力例 2
-#Yes
-#
-#
-#入力例 3
-#0000100110
-#
-#出力例 3
-#No
-#この配置はスプリットではありません。
-#
-#入力例 4
-#1101110101
-#
-#出力例 4
-#No
-#ピン 1 が倒れていないので、スプリットではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == "0":
+        print("No")
+        return
+    if S[4] == "0" and S[5] == "0":
+        print("No")
+        return
+    if S[6] == "0" and S[7] == "0":
+        print("No")
+        return
+    if S[8] == "0" and S[9] == "0":
+        print("No")
+        return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if S[0] == "0":
+        print("No")
+    elif S[1:5] == "0" or S[6:] == "0":
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def solve():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[9] == '0':
+        print('No')
+        return
+    if S[1] == '0' and S[2] == '0':
+        print('No')
+        return
+    if S[8] == '0' and S[7] == '0':
+        print('No')
+        return
+    if S[1] == '0' and S[8] == '0':
+        print('No')
+        return
+    print('Yes')
+    return
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    if S[0] == "0":
+        print("No")
+        return
+    if S[4] == "0":
+        print("No")
+        return
+    if S[6] == "0":
+        print("No")
+        return
+    if S[8] == "0":
+        print("No")
+        return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+    else:
+        if s[1] == '1':
+            print('No')
+        else:
+            if s[3] == '1':
+                print('No')
+            else:
+                if s[4] == '1':
+                    print('No')
+                else:
+                    if s[5] == '1':
+                        print('No')
+                    else:
+                        if s[6] == '1':
+                            print('No')
+                        else:
+                            if s[7] == '1':
+                                print('No')
+                            else:
+                                if s[8] == '1':
+                                    print('No')
+                                else:
+                                    if s[9] == '1':
+                                        print('No')
+                                    else:
+                                        print('Yes')
+
+=======
+Suggestion 6
+
+def solve():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[4] == '1':
+        print('No')
+        return
+    if S[5] == '1':
+        print('No')
+        return
+    if S[6] == '1':
+        print('No')
+        return
+    if S[7] == '1':
+        print('No')
+        return
+    if S[8] == '1':
+        print('No')
+        return
+    if S[9] == '1':
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+    else:
+        if s[1] == '0' and s[2] == '0':
+            print('No')
+        else:
+            if s[3] == '0' and s[4] == '0':
+                print('No')
+            else:
+                if s[5] == '0' and s[6] == '0':
+                    print('No')
+                else:
+                    if s[7] == '0' and s[8] == '0':
+                        print('No')
+                    else:
+                        if s[9] == '0':
+                            print('No')
+                        else:
+                            print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[4] == '0':
+        print('No')
+        return
+    if S[5] == '1':
+        print('No')
+        return
+    if S[9] == '0':
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s[0] == "0":
+        print("No")
+        return
+    if s[1] == "0" and s[2] == "0":
+        print("No")
+        return
+    if s[3] == "0" and s[4] == "0":
+        print("No")
+        return
+    if s[5] == "0" and s[6] == "0":
+        print("No")
+        return
+    if s[7] == "0" and s[8] == "0":
+        print("No")
+        return
+    if s[9] == "0":
+        print("No")
+        return
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    if s[9] == '0':
+        print('No')
+        return
+    if s[1:3] == '00' and s[6:9] == '000':
+        print('Yes')
+        return
+    if s[1:3] == '00' and s[6:9] == '000':
+        print('Yes')
+        return
+    if s[1:4] == '000' and s[7:9] == '00':
+        print('Yes')
+        return
+    if s[1:5] == '0000' and s[8:9] == '0':
+        print('Yes')
+        return
+    if s[1:6] == '00000' and s[9:9] == '':
+        print('Yes')
+        return
+    if s[2:4] == '00' and s[5:8] == '000':
+        print('Yes')
+        return
+    if s[2:5] == '000' and s[6:8] == '00':
+        print('Yes')
+        return
+    if s[2:6] == '0000' and s[7:8] == '0':
+        print('Yes')
+        return
+    if s[2:7] == '00000' and s[8:8] == '':
+        print('Yes')
+        return
+    if s[3:5] == '00' and s[4:7] == '000':
+        print('Yes')
+        return
+    if s[3:6] == '000' and s[5:7] == '00':
+        print('Yes')
+        return
+    if s[3:7] == '0000' and s[6:7] == '0':
+        print('Yes')
+        return
+    if s[3:8] == '00000' and s[7:7] == '':
+        print('Yes')
+        return
+    if s[4:6] == '00' and s[3:6] == '000':
+        print('Yes')
+        return
+    if s[4:7] == '000' and s[4:6] == '00':

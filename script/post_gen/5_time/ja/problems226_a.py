@@ -1,36 +1,64 @@
-#問題文
-#小数第三位までで表すことのできる実数 X が、小数第三位まで入力されます。
-#X を小数第一位で四捨五入した結果として得られる整数を出力してください。
-#
-#制約
-#0 ≦ X < 100
-#X は小数第三位までで表現可能である。
-#X は小数第三位まで与えられる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#X を小数第一位で四捨五入して得られる整数を出力せよ。
-#
-#入力例 1
-#3.456
-#
-#出力例 1
-#3
-#3.456 の小数第一位は 4 であるので、3.456 を小数第一位で四捨五入した値は 3 となります。
-#
-#入力例 2
-#99.500
-#
-#出力例 2
-#100
-#
-#入力例 3
-#0.000
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 2
+
+def main():
+    X = float(input())
+    print(int(X*10+0.5)//10)
+
+=======
+Suggestion 3
+
+def solve():
+    # n = int(input())
+    # a,b,c = map(int,input().split())
+    # s = input()
+    X = float(input())
+
+    print(int(X*10+0.5)//10)
+    # print(n)
+
+=======
+Suggestion 4
+
+def main():
+    x = float(input())
+    print(int(x*10+0.5)//10)
+
+=======
+Suggestion 5
+
+def round_down(num, digit):
+    p = 10 ** digit
+    return (num * p // 1) / p
+
+x = float(input())
+print(round_down(x, 0))
+
+=======
+Suggestion 6
+
+def main():
+    x = float(input())
+    print(round(x, 0))
+
+=======
+Suggestion 7
+
+def round_float(number, decimal):
+    return round(number, decimal)
+
+=======
+Suggestion 8
+
+def main():
+    x = float(input())
+    print(int(x+0.5))

@@ -1,33 +1,80 @@
-#問題文
-#次の図に示す、各マスが黒または白に塗られた縦 15 行 × 横 15 列のグリッドにおいて、
-#上から R 行目、左から C 列目のマスが何色かを出力して下さい。
-#
-#制約
-#1 ≦ R, C ≦ 15
-#R, C は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#R C
-#
-#出力
-#図のグリッドにおいて上から R 行目、左から C 列目のマスが黒色の場合は black と、白色の場合は white と出力せよ。
-#ジャッジは英小文字と英大文字を厳密に区別することに注意せよ。
-#
-#入力例 1
-#3 5
-#
-#出力例 1
-#black
-#図のグリッドにおいて上から 3 行目、左から 5 列目のマスは黒色です。
-#よって、black と出力します。
-#
-#入力例 2
-#4 5
-#
-#出力例 2
-#white
-#図のグリッドにおいて上から 4 行目、左から 5 列目のマスは白色です。
-#よって、white と出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r,c = map(int, input().split())
+    if r%2 == 0:
+        if c%2 == 0:
+            print("white")
+        else:
+            print("black")
+    else:
+        if c%2 == 0:
+            print("black")
+        else:
+            print("white")
+
+=======
+Suggestion 2
+
+def main():
+    r,c = map(int,input().split())
+    if r > 0 and r <= 15 and c > 0 and c <= 15:
+        if r % 2 == 0:
+            if c % 2 == 0:
+                print("white")
+            else:
+                print("black")
+        else:
+            if c % 2 == 0:
+                print("black")
+            else:
+                print("white")
+
+=======
+Suggestion 3
+
+def main():
+    r, c = map(int, input().split())
+    if r % 2 == 0:
+        if c % 2 == 0:
+            print('white')
+        else:
+            print('black')
+    else:
+        if c % 2 == 0:
+            print('black')
+        else:
+            print('white')
+
+=======
+Suggestion 4
+
+def main():
+    R, C = map(int, input().split())
+    if R%2 == 0:
+        if C%2 == 0:
+            print("white")
+        else:
+            print("black")
+    else:
+        if C%2 == 0:
+            print("black")
+        else:
+            print("white")
+
+=======
+Suggestion 5
+
+def main():
+    R, C = map(int, input().split())
+    if R % 2 == 0 and C % 2 == 0:
+        print("white")
+    elif R % 2 == 0 and C % 2 != 0:
+        print("black")
+    elif R % 2 != 0 and C % 2 == 0:
+        print("black")
+    else:
+        print("white")

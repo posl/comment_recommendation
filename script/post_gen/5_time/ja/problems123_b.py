@@ -1,74 +1,246 @@
-#問題文
-#AtCoder 料理店では、以下の 5 つの料理が提供されています。ここで、「調理時間」は料理を注文してから客に届くまでの時間とします。  
-#ABC 丼： 調理時間 A 分
-#ARC カレー： 調理時間 B 分
-#AGC パスタ： 調理時間 C 分
-#APC ラーメン： 調理時間 D 分
-#ATC ハンバーグ： 調理時間 E 分
-#また、この店には以下のような「注文のルール」があります。  
-#注文は、10 の倍数の時刻 (時刻 0, 10, 20, 30, ...) にしかできない。
-#一回の注文につき一つの料理しか注文できない。
-#ある料理を注文したら、それが届くまで別の注文ができない。ただし、料理が届いたちょうどの時刻には注文ができる。
-#E869120 君は時刻 0 に料理店に着きました。彼は 5 つの料理全てを注文します。最後の料理が届く最も早い時刻を求めてください。
-#ただし、料理を注文する順番は自由であり、時刻 0 に注文することも可能とであるとします。  
-#
-#制約
-#A, B, C, D, E は 1 以上 123 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#A
-#B
-#C
-#D
-#E
-#
-#出力
-#最後の料理が届く最も早い時刻を整数で出力せよ。  
-#
-#入力例 1
-#29
-#20
-#7
-#35
-#120
-#
-#出力例 1
-#215
-#ABC 丼→ARC カレー→AGC パスタ→ATC ハンバーグ→APC ラーメン の順に注文することにすると、各料理の最も早い注文時刻・届く時刻は以下の通りになります。  
-#時刻 0 に ABC 丼を注文する。時刻 29 に ABC 丼が届く。
-#時刻 30 に ARC カレーを注文する。時刻 50 に ARC カレーが届く。
-#時刻 50 に AGC パスタを注文する。57 に AGC パスタが届く。
-#時刻 60 に ATC ハンバーグを注文する。時刻 180 に ATC ハンバーグが届く。
-#時刻 180 に APC ラーメンを注文する。時刻 215 に APC ラーメンが届く。
-#これより早く最後の料理が届くような方法は存在しません。  
-#
-#入力例 2
-#101
-#86
-#119
-#108
-#57
-#
-#出力例 2
-#481
-#AGC パスタ→ARC カレー→ATC ハンバーグ→APC ラーメン→ABC 丼の順に注文することにすると、各料理の最も早い注文時刻・届く時刻は以下の通りになります。  
-#時刻 0 に AGC パスタを注文する。時刻 119 に AGC パスタが届く。
-#時刻 120 に ARC カレーを注文する。時刻 206 に ARC カレーが届く。
-#時刻 210 に ATC ハンバーグを注文する。時刻 267 に ATC ハンバーグが届く。
-#時刻 270 に APC ラーメンを注文する。時刻 378 に APC ラーメンが届く。
-#時刻 380 に ABC 丼を注文する。時刻 481 に ABC 丼が届く。
-#これより早く最後の料理が届くような方法は存在しません。  
-#
-#入力例 3
-#123
-#123
-#123
-#123
-#123
-#
-#出力例 3
-#643
-#これが入力される最大のケースです。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    
+    time = 0
+    
+    if a % 10 != 0:
+        time += a - (a % 10) + 10
+    else:
+        time += a
+    time += b - (b % 10) + 10
+    time += c - (c % 10) + 10
+    time += d - (d % 10) + 10
+    time += e - (e % 10) + 10
+    
+    print(time)
+
+=======
+Suggestion 2
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    time = [a,b,c,d,e]
+    time.sort()
+    time.reverse()
+    print(time[0])
+
+=======
+Suggestion 3
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    
+    array = [A, B, C, D, E]
+    max_time = max(array)
+    if max_time % 10 == 0:
+        print(max_time)
+    else:
+        print(max_time + (10 - max_time % 10))
+
+=======
+Suggestion 4
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    min = A
+    if B < min:
+        min = B
+    if C < min:
+        min = C
+    if D < min:
+        min = D
+    if E < min:
+        min = E
+
+    if A % 10 == 0:
+        A = A
+    else:
+        A = (A // 10 + 1) * 10
+    if B % 10 == 0:
+        B = B
+    else:
+        B = (B // 10 + 1) * 10
+    if C % 10 == 0:
+        C = C
+    else:
+        C = (C // 10 + 1) * 10
+    if D % 10 == 0:
+        D = D
+    else:
+        D = (D // 10 + 1) * 10
+    if E % 10 == 0:
+        E = E
+    else:
+        E = (E // 10 + 1) * 10
+
+    print(A + B + C + D + E - 10 + min)
+
+=======
+Suggestion 5
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    result = 0
+    if A % 10 != 0:
+        A = (A // 10 + 1) * 10
+    if B % 10 != 0:
+        B = (B // 10 + 1) * 10
+    if C % 10 != 0:
+        C = (C // 10 + 1) * 10
+    if D % 10 != 0:
+        D = (D // 10 + 1) * 10
+    if E % 10 != 0:
+        E = (E // 10 + 1) * 10
+    result = A + B + C + D + E
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    list = [a,b,c,d,e]
+    list.sort()
+    print(list[4] + (10 - list[4]%10) + list[3] + (10 - list[3]%10) + list[2] + (10 - list[2]%10) + list[1] + (10 - list[1]%10) + list[0] + (10 - list[0]%10))
+
+=======
+Suggestion 7
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    ans = 0
+    ans += (a // 10) * 10
+    if a % 10 != 0:
+        ans += 10
+    ans += (b // 10) * 10
+    if b % 10 != 0:
+        ans += 10
+    ans += (c // 10) * 10
+    if c % 10 != 0:
+        ans += 10
+    ans += (d // 10) * 10
+    if d % 10 != 0:
+        ans += 10
+    ans += (e // 10) * 10
+    if e % 10 != 0:
+        ans += 10
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+
+    a = (a+9)//10*10
+    b = (b+9)//10*10
+    c = (c+9)//10*10
+    d = (d+9)//10*10
+    e = (e+9)//10*10
+
+    print(a+b+c+d+e)
+
+=======
+Suggestion 9
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    if a%10 == 0:
+        pass
+    else:
+        a = (a//10+1)*10
+    if b%10 == 0:
+        pass
+    else:
+        b = (b//10+1)*10
+    if c%10 == 0:
+        pass
+    else:
+        c = (c//10+1)*10
+    if d%10 == 0:
+        pass
+    else:
+        d = (d//10+1)*10
+    if e%10 == 0:
+        pass
+    else:
+        e = (e//10+1)*10
+    print(a+b+c+d+e)
+
+=======
+Suggestion 10
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    # 10の倍数の時刻で注文する
+    # 10の倍数の時刻で届く
+    dish = [a, b, c, d, e]
+    dish.sort()
+    dish[0] = dish[0] + 10 - dish[0] % 10
+    dish[1] = dish[1] + 10 - dish[1] % 10
+    dish[2] = dish[2] + 10 - dish[2] % 10
+    dish[3] = dish[3] + 10 - dish[3] % 10
+    dish[4] = dish[4] + 10 - dish[4] % 10
+    print(dish[0] + dish[1] + dish[2] + dish[3] + dish[4])

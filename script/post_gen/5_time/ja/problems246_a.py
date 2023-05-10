@@ -1,37 +1,186 @@
-#問題文
-#xy 平面上に長方形があります。この長方形の各辺は x 軸または y 軸に平行であり、面積は 0 ではありません。
-#この長方形の 4 つの頂点のうち異なる 3 つの頂点の座標 (x_1, y_1), (x_2, y_2), (x_3, y_3) が与えられるので、残る 1 つの頂点の座標を求めてください。
-#
-#制約
-#-100 ≦ x_i, y_i ≦ 100
-#(x_1, y_1), (x_2, y_2), (x_3, y_3) のすべてを頂点に持つ長方形がただ一つ存在し、その各辺は x 軸または y 軸に平行であり、面積は 0 ではない。
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#x_1 y_1
-#x_2 y_2
-#x_3 y_3
-#
-#出力
-#答えとなる頂点の座標 (x, y) を下記の形式にしたがい空白区切りで出力せよ。
-#x y
-#
-#入力例 1
-#-1 -1
-#-1 2
-#3 2
-#
-#出力例 1
-#3 -1
-#(-1, -1), (-1, 2), (3, 2) を頂点とする長方形の残る 1 つの頂点は (3, -1) です。
-#
-#入力例 2
-#-60 -40
-#-60 -80
-#-20 -80
-#
-#出力例 2
-#-20 -40
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    if x1 == x2:
+        x = x3
+    elif x2 == x3:
+        x = x1
+    else:
+        x = x2
+
+    if y1 == y2:
+        y = y3
+    elif y2 == y3:
+        y = y1
+    else:
+        y = y2
+
+    print(x, y)
+
+=======
+Suggestion 2
+
+def main():
+    x1,y1 = list(map(int,input().split()))
+    x2,y2 = list(map(int,input().split()))
+    x3,y3 = list(map(int,input().split()))
+    x4 = 0
+    y4 = 0
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+    print(str(x4) + " " + str(y4))
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    # compute
+    if x1 == x2:
+        x = x3
+    elif x2 == x3:
+        x = x1
+    else:
+        x = x2
+
+    if y1 == y2:
+        y = y3
+    elif y2 == y3:
+        y = y1
+    else:
+        y = y2
+
+    # output
+    print(x, y)
+
+=======
+Suggestion 4
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    if x1 == x2:
+        x = x3
+    elif x1 == x3:
+        x = x2
+    elif x2 == x3:
+        x = x1
+
+    if y1 == y2:
+        y = y3
+    elif y1 == y3:
+        y = y2
+    elif y2 == y3:
+        y = y1
+
+    print(x, y)
+
+=======
+Suggestion 5
+
+def main():
+    x1,y1 = map(int,input().split())
+    x2,y2 = map(int,input().split())
+    x3,y3 = map(int,input().split())
+    if x1 == x2:
+        x = x3
+    elif x1 == x3:
+        x = x2
+    else:
+        x = x1
+    if y1 == y2:
+        y = y3
+    elif y1 == y3:
+        y = y2
+    else:
+        y = y1
+    print(x,y)
+
+=======
+Suggestion 6
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+
+    print(x4, y4)
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+    if x1 == x2:
+        x4 = x3
+    elif x2 == x3:
+        x4 = x1
+    else:
+        x4 = x2
+    if y1 == y2:
+        y4 = y3
+    elif y2 == y3:
+        y4 = y1
+    else:
+        y4 = y2
+    print(x4, y4)
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    elif x2 == x3:
+        x4 = x1
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    elif y2 == y3:
+        y4 = y1
+    print(x4, y4)

@@ -1,43 +1,109 @@
-#問題文
-#N 枚のカードからなる山札があります。
-#それぞれのカードは、「良いカード」か「悪いカード」かのどちらかです。
-#高橋君と青木君は、この山札を使って対戦ゲームをします。
-#このゲームでは、2 人は交互に山札の一番上のカードを引いて、そのカードを食べます。
-#先に悪いカードを食べたプレイヤーの負けです。（ここで、山札には少なくとも 1 枚の悪いカードが含まれていることが保証されます。）
-#0 と 1 からなる文字列 S が与えられます。i = 1, 2, ..., N について、
-#S の i 文字目が 0 のとき、山札の上から i 番目のカードが良いカードであることを表します。
-#S の i 文字目が 1 のとき、山札の上から i 番目のカードが悪いカードであることを表します。
-#高橋君が先手でゲームを始めるとき、高橋君と青木君のどちらが負けるかを答えてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#N は整数
-#S は 0 と 1 からなる長さ N の文字列
-#S は少なくとも 1 個の 1 を含む。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#高橋君が先手でゲームを始めるとき、高橋君と青木君のどちらが負けるかを答えよ。
-#高橋君が負けるならば Takahashi 、青木君が負けるならば Aoki と出力せよ。
-#
-#入力例 1
-#5
-#00101
-#
-#出力例 1
-#Takahashi
-#まず、高橋君が良いカードを食べ、次に青木君が良いカードを食べ、その後に高橋君が悪いカードを食べます。
-#高橋君が先に悪いカードを食べるので高橋君が負けます。よって、Takahashi と出力します。
-#
-#入力例 2
-#3
-#010
-#
-#出力例 2
-#Aoki
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(N):
+        if S[i] == '1':
+            if i%2 == 0:
+                print("Takahashi")
+                break
+            else:
+                print("Aoki")
+                break
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] == '1':
+            if i % 2 == 0:
+                print('Takahashi')
+            else:
+                print('Aoki')
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    print('Takahashi' if S.find('1') % 2 == 0 else 'Aoki')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    if s.count('1') % 2 == 0:
+        print('Takahashi')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    if S.count('1') % 2 == 1:
+        print('Takahashi')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    print("Takahashi" if S.find("1") % 2 == 0 else "Aoki")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] == '1':
+            if i % 2 == 0:
+                print('Takahashi')
+                break
+            else:
+                print('Aoki')
+                break
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(N):
+        if S[i] == "1":
+            if i % 2 == 0:
+                print("Takahashi")
+                break
+            else:
+                print("Aoki")
+                break
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    if s.find('1') % 2 == 0:
+        print("Takahashi")
+    else:
+        print("Aoki")

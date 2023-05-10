@@ -1,38 +1,227 @@
-#問題文
-#長さ N の整数列 A=(A_1,A_2,...,A_N) が与えられます。
-#長さ M の A の連続部分列 B=(B_1,B_2,...,B_M) に対する、 sum_{i=1}^{M} i × B_i の最大値を求めてください。
-#
-#注記
-#数列の連続部分列とは、数列の先頭から 0 個以上、末尾から 0 個以上の要素を削除して得られる列のことをいいます。  
-#例えば (2, 3) や (1, 2, 3) は (1, 2, 3, 4) の連続部分列ですが、(1, 3) や (3,2,1) は (1, 2, 3, 4) の連続部分列ではありません。  
-#
-#制約
-#1 ≦ M ≦ N ≦ 2 × 10^5
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#5 4 -1 8
-#
-#出力例 1
-#15
-#B=(A_3,A_4) とした場合、 sum_{i=1}^{M} i × B_i = 1 × (-1) + 2 × 8 = 15 となります。16 以上の値を達成することはできないため、解は 15 です。
-#B=(A_1,A_4) などを選ぶことができないことに注意してください。
-#
-#入力例 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#出力例 2
-#31
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n - m + 1):
+        tmp = 0
+        for j in range(m):
+            tmp += (j + 1) * a[i + j]
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    sum_A = sum(A)
+    max_A = max(A)
+    min_A = min(A)
+    if M == 1:
+        print(sum_A)
+    elif max_A <= 0:
+        print(max_A * M)
+    elif min_A >= 0:
+        print(sum_A + (M - 2) * min_A)
+    else:
+        A.sort(reverse=True)
+        sum_A = 0
+        for i in range(M):
+            sum_A += A[i]
+        print(sum_A + (M - 1) * min_A)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-m+1):
+        tmp = 0
+        for j in range(m):
+            tmp += a[i+j]*(j+1)
+        ans = max(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def problem267_c():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    s = [0]*(n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    ans = -float("inf")
+    for i in range(m,n+1):
+        ans = max(ans,s[i]-s[i-m])
+    print(ans)
+problem267_c()
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i + 1]
+    ans = 0
+    for i in range(m):
+        ans += a[i + 1] * (m - i)
+    for i in range(n - m + 1):
+        ans = max(ans, s[i + m] - s[i])
+        for j in range(m):
+            ans = max(ans, s[i + j] - s[i] + s[i + m] - s[i + j])
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(1, N+1):
+        if i == M:
+            ans = max(ans, sum(A[:i]))
+        elif i > M:
+            ans = max(ans, sum(A[:i]) + sum(A[-(i-M):]))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    #print(A)
+    #print(N,M)
+    #print(A)
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print(A[52])
+    #print(A[53])
+    #print(A[54])
+    #print(A[55])
+    #print(A[56])
+    #print(A[57])
+    #print(A[58])
+    #print(A[59])
+    #print(A[60])
+    #print(A[61])
+    #print(A[62])
+    #print(A[63])
+    #print(A[64])
+    #print(A[65])
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = [0 for _ in range(N+1)]
+    for i in range(N):
+        B[i+1] = B[i] + A[i]
+    import collections
+    C = collections.deque()
+    ans = 0
+    for i in range(N+1):
+        while C and B[C[-1]] >= B[i]:
+            C.pop()
+        C.append(i)
+        if i >= M:
+            if C[0] == i - M:
+                C.popleft()
+            ans = max(ans, B[i] - B[C[0]])
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    a.reverse()
+    num = 0
+    for i in range(m):
+        num += a[i]
+    for i in range(m,n):
+        num += a[i] * (i+1)
+    return num
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    t = [0] * (n + 1)
+    for i in range(n):
+        t[i + 1] = s[i + 1] - min(t[i], s[i + 1])
+    print(max(t))

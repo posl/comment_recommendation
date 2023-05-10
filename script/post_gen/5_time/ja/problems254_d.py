@@ -1,30 +1,133 @@
-#問題文
-#整数 N が与えられます。以下の条件を満たす N 以下の正整数の組 (i,j) の個数を求めてください。
-#i × j は平方数である。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#
-#出力例 1
-#6
-#(1,1),(1,4),(2,2),(3,3),(4,1),(4,4) の 6 個が条件を満たします。
-#(2,3) は 2 × 3 =6 が平方数でないため条件を満たしません。
-#
-#入力例 2
-#254
-#
-#出力例 2
-#896
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i * j > n:
+                break
+            if (i * j) ** 0.5 == int((i * j) ** 0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            if i * j > N:
+                break
+            if (i * j) ** 0.5 == int((i * j) ** 0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n ** 0.5) + 1):
+        for j in range(1, int(n ** 0.5) + 1):
+            if i * j <= n:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i * j > N:
+                break
+            if (i * j) ** 0.5 == int((i * j) ** 0.5):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if i*j <= N:
+                if (i*j)**0.5 == int((i*j)**0.5):
+                    ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+    divisors.sort()
+    return divisors
+
+n = int(input())
+ans = 0
+for i in range(1, n+1):
+    divs = get_divisors(i)
+    for div in divs:
+        if div**2 <= i:
+            ans += 1
+print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i * j <= n:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    sq = []
+    for i in range(1, int(n ** 0.5) + 1):
+        sq.append(i ** 2)
+    ans = 0
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            if i * j in sq:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if i * j <= n and i == j and i * j == int((i * j)**0.5)**2:
+                ans += 1
+            elif i * j <= n and i * j == int((i * j)**0.5)**2:
+                ans += 2
+    print(ans)

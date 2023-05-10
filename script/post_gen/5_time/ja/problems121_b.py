@@ -1,63 +1,142 @@
-#問題文
-#N 個のソースコードがあり、i 個目のソースコードの特徴は A_{i1}, A_{i2}, ..., A_{iM} の M 個の整数で表されます。
-#また、整数 B_1, B_2, ..., B_M と 整数 C が与えられます。
-#A_{i1} B_1 + A_{i2} B_2 + ... + A_{iM} B_M + C > 0 のときに限り、i 個目のソースコードはこの問題に正答するソースコードです。
-#N 個のソースコードのうち、この問題に正答するソースコードの個数を求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N, M ≦ 20
-#-100 ≦ A_{ij} ≦ 100
-#-100 ≦ B_i ≦ 100
-#-100 ≦ C ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M C
-#B_1 B_2 ... B_M
-#A_{11} A_{12} ... A_{1M}
-#A_{21} A_{22} ... A_{2M}
-#.
-#.
-#.
-#A_{N1} A_{N2} ... A_{NM}
-#
-#出力
-#N 個のソースコードのうち、この問題に正答するソースコードの個数を出力せよ。
-#
-#入力例 1
-#2 3 -10
-#1 2 3
-#3 2 1
-#1 2 2
-#
-#出力例 1
-#1
-#以下のように 2 個目のソースコードのみがこの問題に正答します。
-#3 × 1 + 2 × 2 + 1 × 3 + (-10) = 0 ≦ 0 なので 1 個目のソースコードはこの問題に正答しません。
-#1 × 1 + 2 × 2 + 2 × 3 + (-10) = 1 > 0 なので 2 個目のソースコードはこの問題に正答します。
-#
-#入力例 2
-#5 2 -4
-#-2 5
-#100 41
-#100 40
-#-3 0
-#-6 -2
-#18 -13
-#
-#出力例 2
-#2
-#
-#入力例 3
-#3 3 0
-#100 -100 0
-#0 100 100
-#100 100 100
-#-100 100 100
-#
-#出力例 3
-#0
-#全て Wrong Answer です。あなたのソースコードは含めません。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        sum = c
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        if sum > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = [list(map(int, input().split())) for i in range(n)]
+    ans = 0
+    for i in range(n):
+        tmp = 0
+        for j in range(m):
+            tmp += a[i][j] * b[j]
+        if tmp + c > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [list(map(int, input().split())) for _ in range(N)]
+    answer = 0
+    for i in range(N):
+        sum = 0
+        for j in range(M):
+            sum += A[i][j] * B[j]
+        if sum + C > 0:
+            answer += 1
+    print(answer)
+
+=======
+Suggestion 4
+
+def main():
+    # 標準入力の取得
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    # 処理
+    ans = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        sum += c
+        if sum > 0:
+            ans += 1
+    # 標準出力
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m,c = map(int,input().split())
+    b = list(map(int,input().split()))
+    a = [list(map(int,input().split())) for i in range(n)]
+
+    ans = 0
+    for i in range(n):
+        tmp = 0
+        for j in range(m):
+            tmp += a[i][j] * b[j]
+        tmp += c
+        if tmp > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        sum += c
+        if sum > 0:
+            ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N,M,C = map(int,input().split())
+    B = list(map(int,input().split()))
+    A = [list(map(int,input().split())) for i in range(N)]
+    cnt = 0
+    for i in range(N):
+        sum = 0
+        for j in range(M):
+            sum += A[i][j] * B[j]
+        sum += C
+        if sum > 0:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n,m,c = map(int,input().split())
+    b = list(map(int,input().split()))
+    a = [list(map(int,input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        if sum + c > 0:
+            cnt += 1
+    print(cnt)

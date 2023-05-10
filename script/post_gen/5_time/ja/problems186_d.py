@@ -1,34 +1,163 @@
-#問題文
-#N 個の整数 A_1,...,A_N が与えられます。
-#1≦ i < j ≦ N を満たす全ての i,j の組についての |A_i-A_j| の和を求めてください。
-#すなわち、(sum_{i=1}^{N-1}sum_{j=i+1}^{N} |A_i-A_j|) を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#|A_i|≦ 10^8
-#A_i は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#5 1 2
-#
-#出力例 1
-#8
-#|5-1|+|5-2|+|1-2|=8 です。
-#
-#入力例 2
-#5
-#31 41 59 26 53
-#
-#出力例 2
-#176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2*i - N + 1)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    a_list.sort()
+    ans = 0
+    for i in range(n):
+        ans += a_list[i] * (n - i - 1) - a_list[i] * i
+    print(ans * 2)
+
+=======
+Suggestion 4
+
+def solver():
+    N = int(input())
+    A = sorted(list(map(int,input().split())))
+    #print(A)
+    ans = 0
+    for i in range(1,N):
+        ans += A[i] - A[i-1]
+        #print(ans)
+    ans *= 2
+    ans += A[N-1] - A[0]
+    print(ans)
+    return 0
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (i) - A[i] * (N - i - 1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2*i-N+1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # N = 3
+    # A = [5, 1, 2]
+    # N = 5
+    # A = [31, 41, 59, 26, 53]
+
+    A.sort()
+    # print(A)
+    # print(A[N-1] - A[0])
+    # print(A[N-2] - A[0])
+    # print(A[N-1] - A[1])
+    # print(A[N-2] - A[1])
+    # print(A[N-1] - A[2])
+    # print(A[N-2] - A[2])
+    # print(A[N-3] - A[0])
+    # print(A[N-3] - A[1])
+    # print(A[N-3] - A[2])
+    # print(A[N-3] - A[3])
+    # print(A[N-4] - A[0])
+    # print(A[N-4] - A[1])
+    # print(A[N-4] - A[2])
+    # print(A[N-4] - A[3])
+    # print(A[N-4] - A[4])
+
+    # print(A[N-1] - A[0])
+    # print(A[N-2] - A[0])
+    # print(A[N-3] - A[0])
+    # print(A[N-4] - A[0])
+    # print(A[N-5] - A[0])
+    # print(A[N-1] - A[1])
+    # print(A[N-2] - A[1])
+    # print(A[N-3] - A[1])
+    # print(A[N-4] - A[1])
+    # print(A[N-5] - A[1])
+    # print(A[N-1] - A[2])
+    # print(A[N-2] - A[2])
+    # print(A[N-3] - A[2])
+    # print(A[N-4] - A[2])
+    # print(A[N-5] - A[2])
+    # print(A[N-1] - A[3])
+    # print(A[N-2] - A[3])
+    # print(A[N-3] - A
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(1, N):
+        sum += A[i] * i - A[i-1] * (N - i)
+    print(sum)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(1, N):
+        sum += A[i] - A[i-1]
+    print(sum * 2)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    a_list.sort()
+    ans = 0
+    for i in range(n):
+        ans += a_list[i] * (i + 1)
+    ans -= sum(a_list)
+    ans *= 2
+    print(ans)

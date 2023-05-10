@@ -1,54 +1,210 @@
-#問題文
-#N 本の導火線を一直線に接着したものがあります。左から i 本目の導火線は長さが A_i cm で、 1 秒あたり B_i cm の一定の速さで燃えます。
-#この導火線の左端と右端から同時に火をつけるとき、 2 つの火がぶつかる場所が着火前の導火線の左端から何 cm の地点か求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i,B_i ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#2 つの火がぶつかる場所が着火前の導火線の左端から何 cm の地点か（単位を除いて）出力せよ。
-#想定解答との絶対誤差または相対誤差が 10^{-5} 以下であれば正解として扱われる。
-#
-#入力例 1
-#3
-#1 1
-#2 1
-#3 1
-#
-#出力例 1
-#3.000000000000000
-#着火前の導火線の左端から 3 cm の地点で 2 つの火がぶつかります。
-#
-#入力例 2
-#3
-#1 3
-#2 2
-#3 1
-#
-#出力例 2
-#3.833333333333333
-#
-#入力例 3
-#5
-#3 9
-#1 2
-#4 6
-#1 5
-#5 3
-#
-#出力例 3
-#8.916666666666668
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = list(map(int, input().split()))
+        a.append(ai)
+        b.append(bi)
+    ans = 0
+    for i in range(n):
+        ans += a[i]/b[i]
+    ans /= 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    left = 0
+    right = 10**18
+    while right - left > 10**(-6):
+        mid = (left + right) / 2
+        t = 0
+        for i in range(N):
+            t += (mid - A[i]) / B[i]
+        if t < mid:
+            left = mid
+        else:
+            right = mid
+    print(left)
+
+=======
+Suggestion 3
+
+def get_input_int():
+    return int(input())
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # 着火前の導火線の長さ
+    L = sum(A)
+
+    # 着火前の導火線の左端からの距離
+    # 火がぶつかる場所の左側の距離を求める
+    # この距離を求めるために、火がぶつかる場所の右側の距離を求める
+    # 火がぶつかる場所の右側の距離を求めるために、火がぶつかる場所の右側の時間を求める
+    # 火がぶつかる場所の右側の時間を求めるために、火がぶつかる時間を求める
+    # 火がぶつかる時間を求めるために、火がぶつかる場所を求める
+    # 火がぶつかる場所を求めるために、火がぶつかる場所の左側の距離を求める
+    # 火がぶつかる場所の左側の距離を求めるために、火がぶつかる場所の左側の時間を求める
+    # 火がぶつかる場所の左側の時間を求めるために、火がぶつかる時間を求める
+    # 火がぶつかる時間を求めるために、火がぶつかる場所を求める
+    # 火がぶつかる場所を求めるために、火がぶつかる場所の左側の距離を求める
+    #
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    #print(AB)
+    #print(N)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+
+    A = 0
+    B = 0
+    for i in range(N):
+        A += AB[i][0]/AB[i][1]
+        B += 1/AB[i][1]
+
+    print(A/B)
+
+=======
+Suggestion 7
+
+def calc(n, a, b):
+    s = 0
+    for i in range(n):
+        s += a[i] / b[i]
+    s /= 2
+    t = 0
+    for i in range(n):
+        t += a[i] / b[i]
+        if t >= s:
+            return t
+    return s
+
+n = int(input())
+a = [0] * n
+b = [0] * n
+for i in range(n):
+    a[i], b[i] = map(int, input().split())
+
+print(calc(n, a, b))
+
+=======
+Suggestion 8
+
+def get_input_data():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    return N,A,B
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #print(N)
+    ans = 0
+    for i in range(N):
+        ans += A[i]/B[i]
+    ans /= 2
+    print(ans)
+
+=======
+Suggestion 10
+
+def calc_time(a, b):
+    return a / b

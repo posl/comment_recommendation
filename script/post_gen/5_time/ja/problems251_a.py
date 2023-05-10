@@ -1,31 +1,29 @@
-#問題文
-#英小文字からなる文字列 S が与えられます。
-#S の長さは 1 以上かつ 3 以下です。
-#S を繰り返して得られる文字列であって、長さが 6 のものを出力してください。
-#本問題の制約下で、そのような文字列はただ一つ存在することが示せます。
-#
-#制約
-#S は英小文字からなる長さ 1 以上 3 以下の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えとなる長さ 6 の文字列を出力せよ。
-#
-#入力例 1
-#abc
-#
-#出力例 1
-#abcabc
-#S =  abc を繰り返してできる文字列として、abc 、abcabc 、abcabcabc 、abcabcabcabc などがあります。
-#そのうち、長さが 6 のものは abcabc です。よって、abcabc と出力します。
-#
-#入力例 2
-#zz
-#
-#出力例 2
-#zzzzzz
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s*2)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    print(S*3)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S*2)
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    print(s*2)

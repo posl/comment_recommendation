@@ -1,72 +1,219 @@
-#問題文
-#N 行 N 列のマス目があり、それぞれのマスは白または黒で塗られています。
-#マス目の状態は N 個の文字列 S_i で表され、
-#S_i の j 文字目が # であることはマス目の上から i 行目、左から j 列目のマスが黒く塗られていることを、
-#. であることは白く塗られていることをさします。
-#高橋君はこのマス目のうち高々 2 つの白く塗られているマスを選び、黒く塗ることができます。
-#マス目の中に、黒く塗られたマスが縦、横、ななめのいずれかの向きに 6 つ以上連続するようにできるか判定してください。
-#ただし、黒く塗られたマスがななめに 6 つ以上連続するとは、N 行 N 列のマス目に完全に含まれる 6 行 6 列のマス目であって、その少なくとも一方の対角線上のマスがすべて黒く塗られているようなものが存在する事をさします。
-#
-#制約
-#6 ≦ N ≦ 1000
-#| S_i| =N
-#S_i は # と . のみからなる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#高々 2 つのマス目を黒く塗ることで条件をみたすようにできるなら Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#8
-#........
-#........
-#.#.##.#.
-#........
-#........
-#........
-#........
-#........
-#
-#出力例 1
-#Yes
-#上から 3 行目の左から 3, 6 番目のマスを塗ることで横方向に 6 つの黒く塗られたマスを連続させることができます。
-#
-#入力例 2
-#6
-#######
-#######
-#######
-#######
-#######
-#######
-#
-#出力例 2
-#Yes
-#高橋君はマス目を新たに黒く塗ることはできませんが、すでにこのマス目は条件をみたしています。
-#
-#入力例 3
-#10
-#..........
-##..##.....
-#..........
-#..........
-#....#.....
-#....#.....
-#.#...#..#.
-#..........
-#..........
-#..........
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    return
+
+=======
+Suggestion 2
+
+def check(i, j):
+    if i < 0 or i >= n or j < 0 or j >= n:
+        return False
+    if s[i][j] == '#':
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    #print(s)
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                continue
+            else:
+                s[i] = s[i][:j] + 'X' + s[i][j+1:]
+    #print(s)
+    for i in range(n):
+        for j in range(n):
+            if s[j][i] == '#':
+                continue
+            else:
+                s[j] = s[j][:i] + 'X' + s[j][i+1:]
+    #print(s)
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 'X':
+                continue
+            else:
+                s[i] = s[i][:j] + '.' + s[i][j+1:]
+    #print(s)
+    for i in range(n):
+        for j in range(n):
+            if s[j][i] == 'X':
+                continue
+            else:
+                s[j] = s[j][:i] + '.' + s[j][i+1:]
+    #print(s)
+    for i in range(n):
+        if 'X' in s[i]:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 4
+
+def check(N, S):
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == "#":
+                if i <= N - 6:
+                    if S[i + 1][j] == "#" and S[i + 2][j] == "#" and S[i + 3][j] == "#" and S[i + 4][j] == "#" and S[i + 5][j] == "#":
+                        return True
+                if j <= N - 6:
+                    if S[i][j + 1] == "#" and S[i][j + 2] == "#" and S[i][j + 3] == "#" and S[i][j + 4] == "#" and S[i][j + 5] == "#":
+                        return True
+                if i <= N - 6 and j <= N - 6:
+                    if S[i + 1][j + 1] == "#" and S[i + 2][j + 2] == "#" and S[i + 3][j + 3] == "#" and S[i + 4][j + 4] == "#" and S[i + 5][j + 5] == "#":
+                        return True
+                if i <= N - 6 and j >= 5:
+                    if S[i + 1][j - 1] == "#" and S[i + 2][j - 2] == "#" and S[i + 3][j - 3] == "#" and S[i + 4][j - 4] == "#" and S[i + 5][j - 5] == "#":
+                        return True
+    return False
+
+N = int(input())
+S = [input() for _ in range(N)]
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    for _ in range(N):
+        S.append(input())
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == "#":
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == "#":
+                S[i] = S[i][:j] + "." + S[i][j+1:]
+
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == ".":
+                S[i] = S[i][:j] + "#" + S[i][j+1:]
+
+    ans = "No"
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == "#":
+                if i + 5 < N and j + 5 < N:
+                    if S[i+1][j+1] == "#" and S[i+2][j+2] == "#" and S[i+3][j+3] == "#" and S[i+4][j+4] == "#" and S[i+5][j+5] == "#":
+                        ans = "Yes"
+                        break
+                if i + 5 < N:
+                    if S[i+1][j] == "#" and S[i+2][j] == "#" and S[i+3][j] == "#" and S[i+4][j] == "#" and S[i+5][j] == "#":
+                        ans = "Yes"
+                        break
+                if j + 5 < N:
+                    if S[i][j+1] == "#" and S[i][j+2] == "#" and S[i][j+3] == "#" and S[i][j+4] == "#" and S[i][j+5] == "#":
+                        ans = "Yes"
+                        break
+    print(ans)
+
+=======
+Suggestion 6
+
+def check_6x6(m, i, j):
+    # check horizontal
+    if j <= len(m[i]) - 6:
+        for k in range(j, j + 6):
+            if m[i][k] != '#':
+                break
+        else:
+            return True
+    # check vertical
+    if i <= len(m) - 6:
+        for k in range(i, i + 6):
+            if m[k][j] != '#':
+                break
+        else:
+            return True
+    # check diagonal
+    if i <= len(m) - 6 and j <= len(m[i]) - 6:
+        for k in range(6):
+            if m[i + k][j + k] != '#':
+                break
+        else:
+            return True
+    if i <= len(m) - 6 and j >= 5:
+        for k in range(6):
+            if m[i + k][j - k] != '#':
+                break
+        else:
+            return True
+    return False
+
+=======
+Suggestion 7
+
+def get_input_data():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    return N, S
+
+=======
+Suggestion 8
+
+def check(s, i, j):
+    if s[i][j]=='#':
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        for j in range(N):
+            if S[i][j] == '.':
+                S[i] = S[i][:j] + '#' + S[i][j+1:]
+                if check(S):
+                    print('Yes')
+                    return
+                S[i] = S[i][:j] + '.' + S[i][j+1:]
+    print('No')
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                if i + 5 < n and s[i+1][j] == '#' and s[i+2][j] == '#' and s[i+3][j] == '#' and s[i+4][j] == '#' and s[i+5][j] == '#':
+                    return 'Yes'
+                if j + 5 < n and s[i][j+1] == '#' and s[i][j+2] == '#' and s[i][j+3] == '#' and s[i][j+4] == '#' and s[i][j+5] == '#':
+                    return 'Yes'
+                if i + 5 < n and j + 5 < n and s[i+1][j+1] == '#' and s[i+2][j+2] == '#' and s[i+3][j+3] == '#' and s[i+4][j+4] == '#' and s[i+5][j+5] == '#':
+                    return 'Yes'
+                if i + 5 < n and j - 5 >= 0 and s[i+1][j-1] == '#' and s[i+2][j-2] == '#' and s[i+3][j-3] == '#' and s[i+4][j-4] == '#' and s[i+5][j-5] == '#':
+                    return 'Yes'
+    return 'No'

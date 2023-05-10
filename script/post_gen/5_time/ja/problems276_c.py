@@ -1,49 +1,134 @@
-#問題文
-#(1, ..., N) の順列 P = (P_1, ..., P_N) が与えられます。ただし、(P_1, ..., P_N) ≠ (1, ..., N) です。
-#(1 ..., N) の順列を全て辞書順で小さい順に並べたとき、P が K 番目であるとします。辞書順で小さい方から K-1 番目の順列を求めてください。
-# 順列とは？
-#(1, ..., N) の順列とは、(1, ..., N) を並べ替えて得られる数列のことをいいます。
-# 辞書順とは？
-#長さ N の数列 A = (A_1, ..., A_N), B = (B_1, ..., B_N) に対し、A が B より辞書順で真に小さいとは、ある整数 1 ≦ i ≦ N が存在して、下記の 2 つがともに成り立つことをいいます。
-#(A_{1},...,A_{i-1}) = (B_1,...,B_{i-1})
-#A_i < B_i
-#
-#
-#制約
-#2 ≦ N ≦ 100
-#1 ≦ P_i ≦ N  (1 ≦ i ≦ N)
-#P_i ≠ P_j  (i ≠ j)
-#(P_1, ..., P_N) ≠ (1, ..., N) 
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#P_1 ... P_N
-#
-#出力
-#求める順列を Q = (Q_1, ..., Q_N) として、Q_1, ..., Q_N をこの順に空白区切りで一行に出力せよ。
-#
-#入力例 1
-#3
-#3 1 2
-#
-#出力例 1
-#2 3 1
-#(1, 2, 3) の順列を辞書順で小さい順に並べると次のようになります。
-#(1, 2, 3)
-#(1, 3, 2)
-#(2, 1, 3)
-#(2, 3, 1)
-#(3, 1, 2)
-#(3, 2, 1)
-#よって P = (3, 1, 2) は小さい方から 5 番目であり、求める順列、すなわち小さい方から 5 - 1 = 4 番目の順列は (2, 3, 1) です。
-#
-#入力例 2
-#10
-#9 8 6 5 10 3 1 2 4 7
-#
-#出力例 2
-#9 8 6 5 10 2 7 4 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    print(*Q)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i] - 1] = i + 1
+    print(*q)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    n = 1
+    for i in range(2,N+1):
+        n *= i
+    for i in range(n):
+        if P != list(range(1,N+1)):
+            P = P[1:] + [P[0]]
+        else:
+            break
+    print(*P)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.sort()
+    print(*p)
+
+=======
+Suggestion 5
+
+def get_permutation(N, K, P):
+    # 順列を数値に変換
+    P = list(map(lambda x: int(x) - 1, P))
+    # 順列を数値に変換
+    Q = list(range(N))
+    # 順列を数値に変換
+    R = list(range(N))
+    # 順列を数値に変換
+    for i in range(N):
+        Q[P[i]] = i
+    # 順列を数値に変換
+    for i in range(N):
+        R[Q[i]] = i
+    # 順列を数値に変換
+    for i in range(K - 1):
+        # 順列を数値に変換
+        for j in range(N - 1):
+            # 順列を数値に変換
+            if R[j] < R[j + 1]:
+                # 順列を数値に変換
+                R[j], R[j + 1] = R[j + 1], R[j]
+                # 順列を数値に変換
+                Q[R[j]], Q[R[j + 1]] = Q[R[j + 1]], Q[R[j]]
+    return Q
+
+=======
+Suggestion 6
+
+def getPermutation(n, k, p):
+    ans = [0] * n
+    used = [False] * n
+    for i in range(n):
+        for j in range(n):
+            if used[j]:
+                continue
+            if p[i] == j + 1:
+                used[j] = True
+                ans[i] = j + 1
+                break
+    return ans
+
+n = int(input())
+p = list(map(int, input().split()))
+k = 1
+for i in range(n):
+    k += math.factorial(n - i - 1) * (p[i] - sum([1 if p[i] > p[j] else 0 for j in range(i)]))
+ans = getPermutation(n, k, p)
+print(' '.join(map(str, ans)))
+
+=======
+Suggestion 7
+
+def get_permutation(n, k):
+    if n == 1:
+        return [1]
+    elif n == 2:
+        if k == 1:
+            return [1, 2]
+        else:
+            return [2, 1]
+    else:
+        if k == 1:
+            return [1] + get_permutation(n - 1, 1)
+        elif k == 2:
+            return [2] + get_permutation(n - 1, 1)
+        elif k == 3:
+            return [2] + get_permutation(n - 1, 2)
+        else:
+            return [k - 1] + get_permutation(n - 1, k - 2)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int,input().split()))
+    p.insert(0,0)
+    q = [0]*n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)

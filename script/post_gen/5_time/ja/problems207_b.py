@@ -1,35 +1,180 @@
-#問題文
-#水色のボールが A 個容器に入っています。高橋くんはこの容器に対し、以下の操作を 0 回以上好きなだけ繰り返します。
-#水色のボール B 個と赤色のボール C 個を容器に追加する。
-#高橋くんの目標は、容器に入っている水色のボールの個数が赤色のボールの個数の D 倍以下になるようにすることです。
-#目標が達成可能かを判定し、可能なら必要な操作回数の最小値を求めてください。
-#
-#制約
-#1 ≦ A,B,C,D ≦ 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C D
-#
-#出力
-#高橋くんの目標が達成可能なら、操作回数の最小値を出力せよ。そうでなければ、-1 を出力せよ。
-#
-#入力例 1
-#5 2 3 2
-#
-#出力例 1
-#2
-#0 回目の操作を行った直後の (= 1 度も操作をしていない状態での) 容器には、水色のボールが 5 個と赤色のボールが 0 個入っています。水色のボールの個数は赤色のボールの個数の D=2 倍よりも大きいので、この時点ではまだ高橋くんの目標は達成されていません。
-#1 回目の操作を行った直後の容器には、水色のボールが 7 個と赤色のボールが 3 個入っています。水色のボールの個数は赤色のボールの個数の 2 倍よりも大きいので、この時点でもまだ高橋くんの目標は達成されていません。
-#2 回目の操作を行った直後の容器には、水色のボールが 9 個と赤色のボールが 6 個入っています。水色のボールの個数は赤色のボールの個数の 2 倍以下であるため、高橋くんの目標は達成されています。
-#よって答えは 2 となります。
-#
-#入力例 2
-#6 9 2 3
-#
-#出力例 2
-#-1
-#高橋くんが何回操作を繰り返しても、彼の目標が達成されることはありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D = map(int, input().split())
+    #print(A, B, C, D)
+    if A <= B * D:
+        print(-1)
+        return
+    if B * C >= D * A:
+        print(0)
+        return
+    ans = 0
+    while A > B * D:
+        ans += 1
+        A += C
+        B += D
+    print(ans)
+
+=======
+Suggestion 2
+
+def count_operation(a,b,c,d):
+    if a <= b:
+        return -1
+    if b > c*d:
+        return 0
+    count = 0
+    while True:
+        if a <= b:
+            break
+        a += c
+        b += d
+        count += 1
+    return count
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if d*c-b <= 0:
+        print(-1)
+        return
+    if a <= b:
+        print(0)
+        return
+    else:
+        print((a-b-1)//(d*c-b)+1)
+
+=======
+Suggestion 4
+
+def solve():
+    a, b, c, d = map(int, input().split())
+    if b >= c * d:
+        print(-1)
+        return
+    ans = 0
+    while a > 0:
+        ans += 1
+        a -= b
+        a += c
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    # データ入力
+    a, b, c, d = map(int, input().split())
+    # 判定
+    if a < b * c:
+        print(-1)
+    else:
+        # 操作回数の計算
+        count = 0
+        while a > b * d:
+            a += c
+            count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def solve():
+    A, B, C, D = map(int, input().split())
+
+    # 操作回数
+    n = 0
+    # 水色のボールの個数
+    s = A
+    # 赤色のボールの個数
+    r = 0
+
+    while s > r * D:
+        if s <= r * D:
+            break
+        s += B
+        r += C
+        n += 1
+
+    if s <= r * D:
+        print(n)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C,D = map(int,input().split())
+    if B >= C*D:
+        print(-1)
+    else:
+        count = 0
+        while A > 0:
+            A -= B
+            count += 1
+            A += C
+        print(count)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a <= b:
+        print(-1)
+        return
+    if b <= c*d:
+        print(-1)
+        return
+    count = 0
+    while True:
+        if a <= b:
+            break
+        if b <= c*d:
+            break
+        a += b
+        count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def solve():
+    A,B,C,D = map(int,input().split())
+    if A <= B:
+        print(-1)
+        return
+    if D*C <= B:
+        print(-1)
+        return
+    cnt = 0
+    while A > C*D:
+        A += B
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def solve():
+    A, B, C, D = map(int, input().split())
+    if B >= C * D:
+        print(-1)
+        return
+    else:
+        count = 0
+        while A > 0:
+            A -= B
+            count += 1
+            if A <= 0:
+                break
+            else:
+                A += C
+        print(count)

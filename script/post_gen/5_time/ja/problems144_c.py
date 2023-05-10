@@ -1,39 +1,149 @@
-#問題文
-#高橋君は無限に広い掛け算表の上にいます。
-#掛け算表のマス (i,j) には整数 i × j が書かれており、高橋君は最初 (1,1) にいます。
-#高橋君は 1 回の移動で (i,j) から (i+1,j) か (i,j+1) のどちらかにのみ移ることができます。
-#整数 N が与えられるので、N が書かれているマスに到達するまでに必要な移動回数の最小値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 10^{12}
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#整数 N が書かれているマスに到達するまでに必要な移動回数の最小値を出力せよ。
-#
-#入力例 1
-#10
-#
-#出力例 1
-#5
-#5 回の移動で (2,5) に到達することができます。5 回未満の移動では 10 が書かれたマスに到達することは出来ません。
-#
-#入力例 2
-#50
-#
-#出力例 2
-#13
-#13 回の移動で (5,10) に到達できます。
-#
-#入力例 3
-#10000000019
-#
-#出力例 3
-#10000000018
-#入出力とも非常に大きな値になる可能性があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    ans = 0
+    while n > 0:
+        ans += 1
+        n //= 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(2, n+1):
+        if i*i <= n:
+            ans += n//i - 1
+        else:
+            ans += n//i
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    while True:
+        if n == 1:
+            break
+        if n % 2 == 0:
+            n = n // 2
+            ans += 1
+        else:
+            n -= 1
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    while True:
+        if n == 1:
+            break
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = n - 1
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = 0
+    while n > 1:
+        ans += 1
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 0
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            ans = i
+        i += 1
+    ans += N // ans - 2
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x = 1
+    y = 1
+    ans = 0
+    while x * y < n:
+        if x == y:
+            x += 1
+        elif x < y:
+            x += 1
+        else:
+            y += 1
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N):
+        if i * i > N:
+            break
+        if N % i == 0:
+            ans = i
+    print(ans + N // ans - 2)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1, 1000000):
+        if i * i > N:
+            break
+        ans = i
+    print(ans * 2 - 1)
+    return 0
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    i = 1
+    j = 1
+    count = 0
+    while True:
+        if N <= i*j:
+            break
+        if i == j:
+            j += 1
+            count += 1
+        else:
+            i += 1
+            count += 1
+    print(count)

@@ -1,70 +1,258 @@
-#問題文
-#長さ N の数列 A=(A_1,A_2,...,A_N) が与えられます。この A に以下を施すことを「操作」と呼びます。
-#まず、 1 ≦ i ≦ N を満たす整数 i を選択する。
-#次に、以下の 2 つのうちどちらかを選択し、実行する。
-#A_i に 1 を加算する。
-#A_i から 1 を減算する。
-#
-#Q 個の質問に答えてください。
-#i 個目の質問は以下です。
-#「操作」を 0 回以上何度でも使って A の要素を全て X_i にする時、必要な「操作」の最小回数を求めてください。
-#
-#制約
-#入力は全て整数
-#1 ≦ N,Q ≦ 2 × 10^5
-#0 ≦ A_i ≦ 10^9
-#0 ≦ X_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#A_1 A_2 ... A_N
-#X_1
-#X_2
-#.
-#.
-#.
-#X_Q
-#
-#出力
-#Q 行にわたって出力せよ。
-#出力のうち i 行目には、 i 個目の質問に対する答えを整数として出力せよ。
-#
-#入力例 1
-#5 3
-#6 11 2 5 5
-#5
-#20
-#0
-#
-#出力例 1
-#10
-#71
-#29
-#A=(6,11,2,5,5) であり、この入力には 3 つの質問が含まれます。
-#1 つ目の質問について、 A に以下のように 10 回の「操作」を施すことで、 A の要素を全て 5 にすることができます。
-#A_1 から 1 減算する。
-#A_2 から 1 減算することを 6 度繰り返す。
-#A_3 に 1 加算することを 3 度繰り返す。
-#9 回以下の「操作」で A の要素を全て 5 にすることはできません。
-#2 つ目の質問について、 A に 71 回の「操作」を施すことで、 A の要素を全て 20 にすることができます。
-#3 つ目の質問について、 A に 29 回の「操作」を施すことで、 A の要素を全て 0 にすることができます。
-#
-#入力例 2
-#10 5
-#1000000000 314159265 271828182 141421356 161803398 0 777777777 255255255 536870912 998244353
-#555555555
-#321654987
-#1000000000
-#789456123
-#0
-#
-#出力例 2
-#3316905982
-#2811735560
-#5542639502
-#4275864946
-#4457360498
-#出力が 32bit 整数に収まらない場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def calc(x, y):
+    if x >= y:
+        return x - y
+    else:
+        return y - x
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    for i in range(Q):
+        count = 0
+        for j in range(N):
+            count += abs(A[j] - X[i])
+        print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+
+    a.sort()
+    a.append(0)
+    a.append(0)
+    x.sort()
+    x.append(0)
+    x.append(0)
+
+    ans = 0
+    for i in range(q):
+        ans += abs(a[i] - a[i+1]) * (i + 1)
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,Q = map(int,input().split())
+    A = list(map(int,input().split()))
+    X = []
+    for _ in range(Q):
+        X.append(int(input()))
+
+    # print(N,Q,A,X)
+
+    # N,Q,A,X = 10,5,[1000000000, 314159265, 271828182, 141421356, 161803398, 0, 777777777, 255255255, 536870912, 998244353],[555555555,321654987,1000000000,789456123,0]
+
+    # print(N,Q,A,X)
+
+    A.sort()
+    # print(A)
+    # print(X)
+
+    for x in X:
+        # print("x",x)
+        # print("A",A)
+        # print("A[-1]",A[-1])
+        # print("A[0]",A[0])
+        if x >= A[-1]:
+            # print("x >= A[-1]",x,A[-1])
+            print(x - A[-1] + N)
+        elif x <= A[0]:
+            # print("x <= A[0]",x,A[0])
+            print(A[0] - x + N)
+        else:
+            # print("x in A",x,A)
+            # print("A[0]",A[0])
+            # print("A[-1]",A[-1])
+            # print("A[0] + N - A[-1]",A[0] + N - A[-1])
+            print(A[0] + N - A[-1])
+
+=======
+Suggestion 5
+
+def solve():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    ans = 0
+    for i in range(1, N):
+        ans += abs(A[i] - A[i - 1])
+    for i in range(Q):
+        if i > 0:
+            ans -= abs(A[X[i]] - A[X[i] - 1])
+        if i < Q - 1:
+            ans -= abs(A[X[i + 1]] - A[X[i]])
+        ans += abs(A[X[i + 1] - 1] - A[X[i] - 1])
+        print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    # ここに、問題を解くためのコードを記述する
+    # 1 ≦ i ≦ N を満たす整数 i を選択する。
+    # 次に、以下の 2 つのうちどちらかを選択し、実行する。
+    # A_i に 1 を加算する。
+    # A_i から 1 を減算する。
+    A.sort()
+    A.append(0)
+    X.sort()
+    ans = 0
+    for i in range(N):
+        ans += abs(A[i] - A[i+1]) * (i+1)
+    ans += A[N] * N
+    # print(ans)
+
+    for q in X:
+        ans += abs(A[0] - q)
+        print(ans)
+    # 出力
+    # print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    for i in range(Q):
+        X.append(int(input()))
+
+    A.sort()
+    A.insert(0,0)
+    A.append(10**9+1)
+    ans = 0
+    for i in range(1, N+2):
+        ans += (A[i]-A[i-1])*i
+    print(ans)
+    for i in range(Q):
+        if X[i] >= A[-1]:
+            ans += (X[i]-A[-1])*(N+1)
+            A[-1] = X[i]
+        else:
+            for j in range(1, N+2):
+                if X[i] >= A[j-1] and X[i] <= A[j]:
+                    ans += (X[i]-A[j-1])*j
+                    ans += (A[j]-X[i])*(N+1-j)
+                    A[j] = X[i]
+                    break
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # n: 数列の長さ
+    # q: 質問の数
+    n, q = map(int, input().split())
+    # a: 数列
+    a = list(map(int, input().split()))
+    # x: 質問の数列
+    x = [int(input()) for _ in range(q)]
+    # count: 質問の数列の要素ごとの最小操作回数
+    count = [0] * q
+    # 質問の数列の要素ごとに操作回数を求める
+    for i in range(q):
+        # 質問の数列の要素
+        xi = x[i]
+        # 操作回数
+        cnt = 0
+        # 数列の要素ごとに操作回数を求める
+        for j in range(n):
+            # 数列の要素
+            aj = a[j]
+            # 操作回数を求める
+            cnt += abs(xi - aj)
+        # 質問の数列の要素ごとの最小操作回数を求める
+        count[i] = cnt
+    # 質問の数列の要素ごとの最小操作回数を出力する
+    for i in range(q):
+        print(count[i])
+
+=======
+Suggestion 9
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
+    #print(n,q,a,x)
+    s = sum(a)
+    for i in range(q):
+        print(s+x[i])
+
+=======
+Suggestion 10
+
+def solve():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    # print(A)
+    # print(X)
+
+    # Aの最大値を求める
+    maxA = max(A)
+
+    # Aの最大値を2進数で表したときの桁数を求める
+    maxA_bin = bin(maxA)
+    maxA_bin_len = len(maxA_bin) - 2
+
+    # print(maxA)
+    # print(maxA_bin)
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数を求める
+    A_bin = [bin(a) for a in A]
+    A_bin_len = [len(a) - 2 for a in A_bin]
+
+    # print(A_bin)
+    # print(A_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値を求める
+    maxA_bin_len = max(A_bin_len)
+
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値を求める
+    maxA_bin_len = max(A_bin_len)
+
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値を求める
+    maxA_bin_len = max(A_bin_len)
+
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値を求める
+    maxA_bin_len = max(A_bin_len)
+
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値を求める
+    maxA_bin_len = max(A_bin_len)
+
+    # print(maxA_bin_len)
+
+    # Aの全ての要素を2進数で表したときの桁数の最大値

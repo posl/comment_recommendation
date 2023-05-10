@@ -1,61 +1,208 @@
-#問題文
-#xy 平面上に 1 から N までの番号が付いた N 個の点があります。
-#点 i は座標 (X_i,Y_i) にあり、相異なる 2 点は異なる位置に存在します。
-#この N 点から 3 点を選ぶとき、選ばれた 3 点を線分で結んだ図形が正の面積を持つ三角形になるような点の選び方の総数を求めてください。  
-#
-#制約
-#入力は全て整数である
-#3 ≦ N ≦ 300
-#-10^9 ≦ X_i,Y_i ≦ 10^9
-#i ≠ j ならば (X_i,Y_i) ≠ (X_j,Y_j)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#X_1 Y_1
-#X_2 Y_2
-#...
-#X_N Y_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#4
-#0 1
-#1 3
-#1 1
-#-1 -1
-#
-#出力例 1
-#3
-#点を図示すると、以下のようになります。
-#三角形をなすような点の選び方は、 {1,2,3},{1,3,4},{2,3,4} の 3 つです。
-#
-#入力例 2
-#20
-#224 433
-#987654321 987654321
-#2 0
-#6 4
-#314159265 358979323
-#0 0
-#-123456789 123456789
-#-1000000000 1000000000
-#124 233
-#9 -6
-#-4 0
-#9 5
-#-7 3
-#333333333 -333333333
-#-9 -1
-#7 -10
-#-1 5
-#324 633
-#1000000000 -1000000000
-#20 0
-#
-#出力例 2
-#1124
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    ans = 0
+    for i in range(n):
+        xi, yi = points[i]
+        for j in range(i + 1, n):
+            xj, yj = points[j]
+            for k in range(j + 1, n):
+                xk, yk = points[k]
+                s = abs((xj - xi) * (yk - yi) - (xk - xi) * (yj - yi))
+                if s > 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    xy = [[int(i) for i in input().split()] for _ in range(N)]
+    xy.sort()
+    #print(xy)
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                x1 = xy[j][0] - xy[i][0]
+                y1 = xy[j][1] - xy[i][1]
+                x2 = xy[k][0] - xy[i][0]
+                y2 = xy[k][1] - xy[i][1]
+                if x1*y2 - x2*y1 != 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def area(x1,y1,x2,y2,x3,y3):
+    return abs((x2-x1)*(y3-y1)-(x3-x1)*(y2-y1))/2
+
+N = int(input())
+X = []
+Y = []
+for i in range(N):
+    x,y = map(int,input().split())
+    X.append(x)
+    Y.append(y)
+
+count = 0
+for i in range(N-2):
+    for j in range(i+1,N-1):
+        for k in range(j+1,N):
+            if area(X[i],Y[i],X[j],Y[j],X[k],Y[k]) > 0:
+                count += 1
+
+print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+
+    X.sort()
+    Y.sort()
+
+    ans = N*(N-1)*(N-2)//6
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if (X[j]-X[i])*(Y[k]-Y[i]) == (X[k]-X[i])*(Y[j]-Y[i]):
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs((x2-x1)*(y3-y1)-(x3-x1)*(y2-y1))/2
+
+N = int(input())
+xy = []
+for i in range(N):
+    xy.append(list(map(int,input().split())))
+
+ans = 0
+for i in range(N):
+    for j in range(i+1,N):
+        for k in range(j+1,N):
+            if get_area(xy[i][0],xy[i][1],xy[j][0],xy[j][1],xy[k][0],xy[k][1]) != 0:
+                ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    points = []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                x1, y1 = points[i]
+                x2, y2 = points[j]
+                x3, y3 = points[k]
+                area = abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3))
+                if area > 0:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def calc_area(x1, y1, x2, y2, x3, y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+
+=======
+Suggestion 8
+
+def get_area(x1, y1, x2, y2, x3, y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+
+n = int(input())
+x = []
+y = []
+for i in range(n):
+    a, b = map(int, input().split())
+    x.append(a)
+    y.append(b)
+
+count = 0
+for i in range(n):
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            area = get_area(x[i], y[i], x[j], y[j], x[k], y[k])
+            if area > 0:
+                count += 1
+
+print(count)
+
+=======
+Suggestion 9
+
+def calc_area(a, b, c):
+    return abs((a[0] - c[0]) * (b[1] - c[1]) - (a[1] - c[1]) * (b[0] - c[0]))
+
+n = int(input())
+points = [list(map(int, input().split())) for _ in range(n)]
+ans = 0
+for i in range(n):
+    for j in range(i + 1, n):
+        for k in range(j + 1, n):
+            area = calc_area(points[i], points[j], points[k])
+            if area > 0:
+                ans += 1
+print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    from collections import defaultdict
+    input = sys.stdin.readline
+
+    N=int(input())
+    points=[]
+    for i in range(N):
+        x,y=map(int,input().split())
+        points.append((x,y))
+
+    #print(points)
+    #print(N)
+    #print(points[0][0])
+    #print(points[0][1])
+
+    #print(points[0][0]*points[1][1]-points[1][0]*points[0][1])
+    #print(points[1][0]*points[2][1]-points[2][0]*points[1][1])
+    #print(points[2][0]*points[0][1]-points[0][0]*points[2][1])
+
+    #print((points[0][0]*points[1][1]-points[1][0]*points[0][1])+(points[1][0]*points[2][1]-points[2][0]*points[1][1])+(points[2][0]*points[0][1]-points[0][0]*points[2][1]))
+
+    #print((points[0][0]*points[1][1]-points[1][0]*points[0][1])+(points[1][0]*points[2][1]-points[2][0]*points[1][1])+(points[2][0]*points[0][1]-points[0][0]*points[2][1]))
+
+    #print((points[0][0]*points[1][1]-points[1][0]*points[0][1])+(points[1][0]*points[2][1]-points[2][0]*points[1][1])+(points[2][0]*points[0][1]-points[0][0]*points[2][1]))
+
+    #print((points[0][0]*points[1][1]-points[1][0]*points[0][1])+(points[1][0]*points[2][1]-points[2][0]*points[1][1])+(points[2][0]*points[0][1]-points[0][0]*points[2][1]))
+
+    #print((points[0][0]*points[1][1]-points[1][0]*points[0][1])

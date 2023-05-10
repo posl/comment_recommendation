@@ -1,45 +1,82 @@
-#問題文
-#N 次元空間内の点 (x_1,...,x_N) が与えられます。
-#原点からこの点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれ求めてください。
-#ただし、それぞれの距離は次のように計算されます。
-#マンハッタン距離： |x_1|+...+|x_N|
-#ユークリッド距離： (|x_1|^2+...+|x_N|^2)^(1/2)
-#チェビシェフ距離： max(|x_1|,...,|x_N|)
-#
-#制約
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 ... x_N
-#
-#出力
-#原点から与えられた点までの、マンハッタン距離、ユークリッド距離、チェビシェフ距離をそれぞれこの順に改行区切りで出力せよ。
-#正しい値との絶対誤差または相対誤差が 10^{-9} 以下であれば正解とみなされる。
-#
-#入力例 1
-#2
-#2 -1
-#
-#出力例 1
-#3
-#2.236067977499790
-#2
-#それぞれ次のように計算されます。
-#マンハッタン距離： |2|+|-1|=3
-#ユークリッド距離： (|2|^2+|-1|^2)^(1/2)=2.236067977499789696...
-#チェビシェフ距離： max(|2|,|-1|)=2
-#
-#入力例 2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#出力例 2
-#39
-#14.387494569938159
-#9
+Synthesizing 8/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def manhattan_distance(x):
+    sum = 0
+    for i in range(len(x)):
+        sum += abs(x[i])
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = list(map(int,input().split()))
+    x_abs = list(map(abs,x))
+    print(sum(x_abs))
+    print(sum([x**2 for x in x_abs])**0.5)
+    print(max(x_abs))
+
+=======
+Suggestion 3
+
+def distance(p, q):
+    return abs(p-q)
+
+=======
+Suggestion 4
+
+def ManhattanDistance(n, x):
+    d = 0
+    for i in range(n):
+        d += abs(x[i])
+    return d
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x = list(map(int,input().split()))
+    x_abs = [abs(x_i) for x_i in x]
+    print(sum(x_abs))
+    print(sum([x_i**2 for x_i in x_abs])**(1/2))
+    print(max(x_abs))
+
+=======
+Suggestion 6
+
+def manhattan_distance(n, x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    x = list(map(int,input().split()))
+    x = [abs(x[i]) for i in range(N)]
+    print(sum(x))
+    print(sum([x[i]**2 for i in range(N)])**0.5)
+    print(max(x))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    x = list(map(int, input().split()))
+    ans1 = 0
+    ans2 = 0
+    ans3 = 0
+    for i in range(N):
+        ans1 += abs(x[i])
+        ans2 += abs(x[i])**2
+        ans3 = max(ans3, abs(x[i]))
+    ans2 = ans2**0.5
+    print(ans1)
+    print(ans2)
+    print(ans3)

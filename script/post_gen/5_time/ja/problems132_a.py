@@ -1,41 +1,90 @@
-#問題文
-#長さ 4 の英大文字からなる文字列 S が与えられます。
-#S がちょうど 2 種類の文字からなり、かつ現れる各文字はちょうど 2 回ずつ現れているかどうかを判定してください。
-#
-#制約
-#S の長さは 4 である
-#S は英大文字からなる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S がちょうど 2 種類の文字からなり、かつ現れる各文字はちょうど 2 回ずつ現れているなら Yes を、そうでないなら No を出力せよ。
-#
-#入力例 1
-#ASSA
-#
-#出力例 1
-#Yes
-#S は A と S からなり、A と S はそれぞれ 2 回ずつ現れます。
-#
-#入力例 2
-#STOP
-#
-#出力例 2
-#No
-#
-#入力例 3
-#FFEE
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#FREE
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #input
+    S = input()
+    #S =
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    if len(set(S)) == 2:
+        if S.count(S[0]) == 2 and S.count(S[1]) == 2:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if len(set(s)) == 2 and s.count(s[0]) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def check(s):
+    if len(set(s)) == 2:
+        for i in set(s):
+            if s.count(i) != 2:
+                return False
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if len(s) == 4:
+        if len(set(s)) == 2:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if len(set(S)) == 2:
+        if S.count(S[0]) == 2:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if len(set(S)) == 2 and S.count(S[0]) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if len(set(s)) == 2 and s.count(s[0]) == 2:
+        print('Yes')
+    else:
+        print('No')

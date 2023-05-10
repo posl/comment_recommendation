@@ -1,35 +1,64 @@
-#問題文
-#N 個の互いに区別できないお菓子を、A君とB君で分け合います。
-#両者とも 1 個以上の整数個のお菓子を得るような分け方は何通りありますか？
-#
-#制約
-#N は整数
-# 1 ≦ N ≦ 15
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#1
-#A君が 1 個、B君が 1 個取る方法のみ存在します。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#0
-#
-#入力例 3
-#3
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print(N-1)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    return int(n/2)
+
+print(solve())
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print(n-1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N%2 == 1:
+        print(0)
+    else:
+        print(2**(N//2))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print((N-1) if N > 1 else 0)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print(int(N/2))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print((n-1) if n > 1 else 0)
+
+=======
+Suggestion 8
+
+def solve(n):
+    if n % 2 == 0:
+        return n // 2 - 1
+    else:
+        return n // 2

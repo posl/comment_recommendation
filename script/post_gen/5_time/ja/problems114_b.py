@@ -1,42 +1,120 @@
-#問題文
-#数字 1, 2, ..., 9 からなる文字列 S があります。
-#ダックスフンドのルンルンは、S から連続する 3 個の数字を取り出し、
-#1 つの整数 X としてご主人様の元に持っていきます。（数字の順番を変えることはできません。）
-#ご主人様が大好きな数は 753 で、これに近い数ほど好きです。
-#X と 753 の差（の絶対値）は最小でいくつになるでしょうか？
-#
-#制約
-#S は長さ 4 以上 10 以下の文字列である。
-#S の各文字は 1, 2, ..., 9 のいずれかである。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#X と 753 の差としてありうる最小値を出力せよ。
-#
-#入力例 1
-#1234567876
-#
-#出力例 1
-#34
-#7 文字目から 9 文字目までを取り出すと X = 787 となり、これと 753 との差は 787 - 753 = 34 です。X をどこから取り出しても、差をより小さくすることはできません。
-#なお、数字の順番を変えることはできません。例えば、567 を取り出して 765 に並び変えてはいけません。
-#また、S から連続していない 3 文字を取り出すこともできません。例えば、7 文字目の 7、9 文字目の 7 と 10 文字目の 6 を取り出して 776 としてはいけません。
-#
-#入力例 2
-#35753
-#
-#出力例 2
-#0
-#753 そのものを取り出すことができる場合、答えは 0 です。
-#
-#入力例 3
-#1111111111
-#
-#出力例 3
-#642
-#どこから 3 文字を取り出しても X = 111 となり、差は 753 - 111 = 642 です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    ans = 753
+    for i in range(len(S)-2):
+        ans = min(ans, abs(753-int(S[i:i+3])))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    min_dif = 753
+    for i in range(len(s) - 2):
+        dif = abs(int(s[i:i+3]) - 753)
+        if dif < min_dif:
+            min_dif = dif
+    print(min_dif)
+
+=======
+Suggestion 3
+
+def main():
+    s = input().rstrip()
+    min = 1000
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        if abs(x-753) < min:
+            min = abs(x-753)
+    print(min)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    min_diff = 999
+    for i in range(0,len(S)-2):
+        X = int(S[i:i+3])
+        diff = abs(X-753)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S_len = len(S)
+    min_diff = 1000
+    for i in range(S_len-2):
+        diff = abs(753 - int(S[i:i+3]))
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    ans = 1000
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        if abs(x-753) < ans:
+            ans = abs(x-753)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    ans = 999
+    for i in range(len(s)-2):
+        ans = min(ans, abs(int(s[i:i+3])-753))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 999
+    for i in range(N-2):
+        X = int(S[i:i+3])
+        diff = abs(X-753)
+        if diff < ans:
+            ans = diff
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    min = 1000
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        if abs(x-753) < min:
+            min = abs(x-753)
+    print(min)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    x = 753
+    for i in range(len(s) - 2):
+        if abs(int(s[i:i+3]) - 753) < x:
+            x = abs(int(s[i:i+3]) - 753)
+    print(x)

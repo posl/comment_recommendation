@@ -1,43 +1,83 @@
-#問題文
-#サーバルはモンスターと戦っています。
-#モンスターの体力は H です。
-#サーバルが攻撃を 1 回行うとモンスターの体力を A 減らすことができます。
-#攻撃以外の方法でモンスターの体力を減らすことはできません。
-#モンスターの体力を 0 以下にすればサーバルの勝ちです。
-#サーバルがモンスターに勝つために必要な攻撃の回数を求めてください。
-#
-#制約
-#1 ≦ H ≦ 10^4
-#1 ≦ A ≦ 10^4
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H A
-#
-#出力
-#サーバルがモンスターに勝つために必要な攻撃の回数を出力せよ。
-#
-#入力例 1
-#10 4
-#
-#出力例 1
-#3
-#1 回目の攻撃の後のモンスターの体力は 6 です。
-#2 回目の攻撃の後のモンスターの体力は 2 です。
-#3 回目の攻撃の後のモンスターの体力は -2 です。
-#よって 3 回の攻撃でモンスターに勝つことができます。
-#
-#入力例 2
-#1 10000
-#
-#出力例 2
-#1
-#
-#入力例 3
-#10000 1
-#
-#出力例 3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(H//A)
+    else:
+        print(H//A + 1)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    H, A = map(int, input().split())
+    print((H+A-1)//A)
+
+=======
+Suggestion 3
+
+def main():
+    h, a = map(int, input().split())
+    print((h + a - 1) // a)
+
+=======
+Suggestion 4
+
+def main():
+    h,a = map(int,input().split())
+    cnt = 0
+    while h > 0:
+        h -= a
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    H, A = map(int, input().split())
+    print(H//A if H%A==0 else H//A+1)
+
+=======
+Suggestion 6
+
+def main():
+    h, a = map(int, input().split())
+    print((h-1)//a+1)
+
+=======
+Suggestion 7
+
+def main():
+    H, A = map(int, input().split())
+    count = 0
+    while H > 0:
+        H -= A
+        count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(int(H / A))
+    else:
+        print(int(H / A) + 1)
+
+=======
+Suggestion 9
+
+def main():
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(H // A)
+    else:
+        print(H // A + 1)

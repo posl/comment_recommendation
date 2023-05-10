@@ -1,49 +1,152 @@
-#問題文
-#xy 座標平面上の 2 つの格子点 (x_1, y_1), (x_2, y_2) からの距離がともに (5)^(1/2) である格子点は存在しますか？
-#
-#注記
-#xy 座標平面上にある点のうち、x 座標と y 座標がともに整数である点を格子点と呼びます。
-#また、xy 平面上の 2 点 (a, b), (c, d) の距離をユークリッド距離 ((a - c)^2 + (b-d)^2)^(1/2) として定義します。
-#参考として、xy 平面の (0, 0) の上に黒丸を、(0, 0) からの距離が (5)^(1/2) となる格子点の上に白丸を書いた図は以下のようになります。(x,y いずれかが整数となる部分に目盛り線を引いています。)
-#
-#制約
-#-10^9 ≦ x_1 ≦ 10^9
-#-10^9 ≦ y_1 ≦ 10^9
-#-10^9 ≦ x_2 ≦ 10^9
-#-10^9 ≦ y_2 ≦ 10^9
-#(x_1, y_1) ≠ (x_2, y_2)
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#x_1 y_1 x_2 y_2
-#
-#出力
-#条件を満たす格子点が存在する場合は Yes を、存在しない場合は No を出力せよ。
-#
-#入力例 1
-#0 0 3 3
-#
-#出力例 1
-#Yes
-#点 (2,1) と (x_1, y_1) の距離は ((0-2)^2 + (0-1)^2)^(1/2) = (5)^(1/2)
-#点 (2,1) と (x_2, y_2) の距離は ((3-2)^2 + (3-1)^2)^(1/2) = (5)^(1/2)
-#点 (2, 1) は格子点
-#なので点 (2, 1) は条件を満たします。よって Yes を出力します。
-#なお、点 (1, 2) も条件を満たすことが同様にして確認できます。
-#
-#入力例 2
-#0 1 2 3
-#
-#出力例 2
-#No
-#条件を満たす格子点は存在しません。よって No を出力します。
-#
-#入力例 3
-#1000000000 1000000000 999999999 999999999
-#
-#出力例 3
-#Yes
-#点 (10^9 + 1, 10^9 - 2) および点 (10^9 - 2, 10^9 + 1)が条件を満たします。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(x1, y1, x2, y2):
+    if x1 == x2 and y1 == y2:
+        return False
+    elif x1 == x2 and y1 != y2:
+        return True
+    elif x1 != x2 and y1 == y2:
+        return True
+    else:
+        return abs(x1 - x2) == abs(y1 - y2)
+
+=======
+Suggestion 2
+
+def solve():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 + y1) == (x2 + y2) or (x1 - y1) == (x2 - y2) or abs(x1 - x2) + abs(y1 - y2) <= 3:
+        print("Yes")
+    else:
+        print("No")
+    return 0
+
+=======
+Suggestion 3
+
+def solve():
+    x1, y1, x2, y2 = map(int, input().split())
+    if abs(x1-x2)**2 + abs(y1-y2)**2 == 5:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def solve(x1,y1,x2,y2):
+    if abs(x1-x2) == 5**0.5 and abs(y1-y2) == 5**0.5:
+        return 'Yes'
+    elif abs(x1-y2) == 5**0.5 and abs(y1-x2) == 5**0.5:
+        return 'Yes'
+    elif abs(x1-x2) == 5**0.5 and abs(y1-y2) == 5**0.5:
+        return 'Yes'
+    elif abs(x1-y2) == 5**0.5 and abs(y1-x2) == 5**0.5:
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 5
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if x1 == x2 and y1 == y2:
+        print("No")
+    elif x1 == x2:
+        print("Yes")
+    elif y1 == y2:
+        print("Yes")
+    elif abs(x1-x2) == abs(y1-y2):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+        return
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 8:
+        print('Yes')
+        return
+    print('No')
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+
+    if (x1, y1) == (x2, y2):
+        print('No')
+        return
+
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+        return
+
+    if (x1 + y1) == (x2 + y2) or (x1 - y1) == (x2 - y2):
+        print('Yes')
+        return
+
+    print('No')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1-x2)**2 + (y1-y2)**2 == 5:
+        print("Yes")
+        return
+    if (x1-x2)**2 + (y1-y2)**2 == 50:
+        print("Yes")
+        return
+    if (x1-x2)**2 + (y1-y2)**2 == 25:
+        print("Yes")
+        return
+    print("No")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    x1,y1,x2,y2 = map(int, input().split())
+
+    # compute
+    if (x1+x2+y1+y2)%2 == 0:
+        if abs(x1-x2) == abs(y1-y2):
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+        return
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 10:
+        print('Yes')
+        return
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 25:
+        print('Yes')
+        return
+    print('No')
+    return

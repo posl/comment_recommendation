@@ -1,41 +1,123 @@
-#問題文
-#机の上に N 個のキューブが縦に積まれています。長さ N の文字列 S が与えられます。
-#下から i 番目のキューブの色は、S の i 文字目が 0 のとき赤色、1 のとき青色です。
-#あなたは、赤色のキューブと青色のキューブが隣り合っているような部分を選んで、それら 2 個のキューブを取り除く操作を何度でも行えます。
-#このとき、取り除いたキューブの上にあったキューブは真下の物体の上に落下します。
-#最大で何個のキューブを取り除けるでしょうか。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S の各文字は 0 または 1 である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#最大で何個のキューブを取り除けるかを出力せよ。
-#
-#入力例 1
-#0011
-#
-#出力例 1
-#4
-#以下の順に操作を行うと 4 個全てのキューブを取り除けます。
-#下から 2 番目のキューブと 3 番目のキューブを取り除きます。その結果、下から 4 番目のキューブが下から 1 番目のキューブの上に落下します。
-#下から 1 番目のキューブと 2 番目のキューブを取り除きます。
-#
-#入力例 2
-#11011010001011
-#
-#出力例 2
-#12
-#
-#入力例 3
-#0
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    r = s.count('0')
+    b = s.count('1')
+    print(min(r,b)*2)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    #print(N)
+    #print(S)
+    count = 0
+    #print(S[1])
+    for i in range(0,N-1):
+        #print(S[i])
+        #print(S[i+1])
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    s = s[::-1]
+    r = 0
+    b = 0
+    for i in range(len(s)):
+        if s[i] == '0':
+            r += 1
+        else:
+            b += 1
+        if r == b:
+            print(r+b)
+            return
+    print(0)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        if i == 0:
+            continue
+        if s[i] != s[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    ans = 0
+    for i in range(len(S)-1):
+        if S[i] != S[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0':
+            count += 1
+    print(min(count, len(s) - count) * 2)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    print(min(s.count('0'), s.count('1')) * 2)
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    S = input()
+
+    # compute
+    cnt = 0
+    for i in range(len(S)-1):
+        if S[i] != S[i+1]:
+            cnt += 1
+
+    # output
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    #print(S)
+    count = 0
+    while True:
+        if S.find("01") == -1 and S.find("10") == -1:
+            break
+        if S.find("01") != -1:
+            S = S.replace("01","",1)
+            count += 1
+        if S.find("10") != -1:
+            S = S.replace("10","",1)
+            count += 1
+    print(count)
+main()

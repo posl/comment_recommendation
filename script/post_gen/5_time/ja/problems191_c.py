@@ -1,45 +1,243 @@
-#問題文
-#H 行 W 列のマス目があります。このマス目の、上から i 番目、左から j 番目のマスを、マス (i, j) と呼ぶことにします。
-#各マスは黒または白に塗られています。S_{i, j} が # ならばマス (i, j) は黒に塗られており、. ならば白に塗られています。
-#マス目の一番外側のマス、すなわち (1, j), (H, j), (i, 1), (i, W) のいずれかの形で表されるマスは白に塗られていることが保証されます。  
-#黒に塗られた部分を多角形として見たとき、これが (最小で) 何角形になるかを求めてください。  
-#ここで、黒に塗られた部分は一つの自己交叉のない多角形となることが保証されます。すなわち、以下のことが保証されます。  
-#黒に塗られたマスが少なくとも一つ存在する
-#黒に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、黒に塗られたマスのみを通って互いに到達可能である
-#白に塗られた任意の 2 マスは、辺を共有するマスへの移動を繰り返し、白に塗られたマスのみを通って互いに到達可能である(マス目の一番外側のマスは全て白に塗られていることに注意してください)
-#
-#制約
-#3 ≦ H ≦ 10
-#3 ≦ W ≦ 10
-#S_{i, j} は # または .
-#S_{1, j}, S_{H, j} は .
-#S_{i, 1}, S_{i, W} は .
-#黒に塗られた部分は一つの自己交叉のない多角形となる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W
-#S_{1, 1} S_{1, 2} S_{1, 3} ... S_{1, W}
-#S_{2, 1} S_{2, 2} S_{2, 3} ... S_{2, W}
-#S_{3, 1} S_{3, 2} S_{3, 3} ... S_{3, W}
-#.
-#.
-#.
-#S_{H, 1} S_{H, 2} S_{H, 3} ... S_{H, W}
-#
-#出力
-#黒に塗られた部分を n 角形として見ることができるような最小の n を出力せよ。  
-#
-#入力例 1
-#5 5
-#.....
-#.###.
-#.###.
-#.###.
-#.....
-#
-#出力例 1
-#4
-#マス目の左上、左下、右上、右下の隅をそれぞれ (0, 0), (H, 0), (0, W), (H, W) とする座標系で表すと、与えられる図形は (1, 1), (4, 1), (4, 4), (1, 4) を頂点とする 4 角形です。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(i, j, S):
+    if S[i][j] == '.':
+        return False
+    if S[i+1][j] == '.':
+        return False
+    if S[i][j+1] == '.':
+        return False
+    if S[i+1][j+1] == '.':
+        return False
+    return True
+
+=======
+Suggestion 2
+
+def main():
+    H,W = map(int,input().split())
+    S = [list(input()) for _ in range(H)]
+    cnt = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                cnt += 1
+    if cnt == 0:
+        print(0)
+        return
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                ans += 1
+                stack = [(i,j)]
+                while stack:
+                    x,y = stack.pop()
+                    if 0 <= x-1 and S[x-1][y] == "#":
+                        stack.append((x-1,y))
+                        S[x-1][y] = "."
+                    if x+1 < H and S[x+1][y] == "#":
+                        stack.append((x+1,y))
+                        S[x+1][y] = "."
+                    if 0 <= y-1 and S[x][y-1] == "#":
+                        stack.append((x,y-1))
+                        S[x][y-1] = "."
+                    if y+1 < W and S[x][y+1] == "#":
+                        stack.append((x,y+1))
+                        S[x][y+1] = "."
+    print(ans)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1, H-1):
+        for j in range(1, W-1):
+            if S[i][j] == "#":
+                if S[i-1][j] == "." and S[i+1][j] == "." and S[i][j-1] == "." and S[i][j+1] == ".":
+                    ans = 1
+                    break
+        if ans == 1:
+            break
+    if ans == 1:
+        print(4)
+    else:
+        print(2)
+
+=======
+Suggestion 4
+
+def main():
+    h,w = map(int,input().split())
+    s = [list(input()) for _ in range(h)]
+    cnt = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                cnt += 1
+    if cnt == 0:
+        print(0)
+        exit()
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                if i-1 < 0 or s[i-1][j] == ".":
+                    ans += 1
+                if j-1 < 0 or s[i][j-1] == ".":
+                    ans += 1
+                if i+1 >= h or s[i+1][j] == ".":
+                    ans += 1
+                if j+1 >= w or s[i][j+1] == ".":
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int, input().split())
+    S = [input() for i in range(H)]
+    ans = 0
+    for i in range(1,H-1):
+        for j in range(1,W-1):
+            if S[i][j] == "#" and S[i-1][j] == "." and S[i+1][j] == "." and S[i][j-1] == "." and S[i][j+1] == ".":
+                ans = 1
+    if ans == 1:
+        print(2)
+    else:
+        print(4)
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        s = input()
+        S.append(s)
+    #print(S)
+
+    #print(S[0][0])
+    #print(S[0][4])
+    #print(S[4][0])
+    #print(S[4][4])
+
+    #print(S[1][1])
+    #print(S[1][3])
+    #print(S[3][1])
+    #print(S[3][3])
+
+    #print(S[2][2])
+
+    #print(S[1][2])
+    #print(S[2][1])
+    #print(S[2][3])
+    #print(S[3][2])
+
+    #print(S[0][1])
+    #print(S[1][0])
+    #print(S[1][4])
+    #print(S[2][0])
+    #print(S[2][4])
+    #print(S[3][0])
+    #print(S[3][4])
+    #print(S[4][1])
+    #print(S[4][2])
+    #print(S[4][3])
+
+    #print(S[0][2])
+    #print(S[2][4])
+    #print(S[4][2])
+    #print(S[2][0])
+
+    #print(S[0][3])
+    #print(S[1][4])
+    #print(S[3][4])
+    #print(S[4][3])
+
+    #print(S[0][4])
+    #print(S[1][3])
+    #print(S[3][3])
+    #print(S[4][4])
+
+    #print(S[0][0])
+    #print(S[1][1])
+    #print(S[3][3])
+    #print(S[4][4])
+
+    #print(S[0][1])
+    #print(S[1][0])
+    #print(S[3][4])
+    #print(S[4][3])
+
+    #print(S[0][2])
+    #print(S[2][0])
+    #print(S[4][4])
+    #print(S[2][2])
+
+    #print(S[0][3])
+    #print(S[3][0])
+    #print(S[4][4])
+    #print(S[3][3])
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1, H - 1):
+        for j in range(1, W - 1):
+            if S[i][j] == '#' and S[i - 1][j] == '.' and S[i][j - 1] == '.' and S[i + 1][j] == '.' and S[i][j + 1] == '.':
+                ans += 1
+    if ans == 0:
+        print(1)
+    else:
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 0
+    for i in range(1, H-1):
+        for j in range(1, W-1):
+            if S[i][j] == '#' and S[i-1][j] == '.' and S[i+1][j] == '.' and S[i][j-1] == '.' and S[i][j+1] == '.':
+                ans += 1
+    if ans == 0:
+        ans = 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def check(a,b,c,d):
+    if a == c and b == d:
+        return True
+    return False
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    cnt = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                cnt += 1
+    ans = 'Possible' if cnt == H + W - 1 else 'Impossible'
+    print(ans)

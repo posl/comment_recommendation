@@ -1,59 +1,104 @@
-#問題文
-#高橋君は武術家です。
-#武術家の覚えられる技は N 個あり、技 1, 2, ..., N と名前がついています。
-#1 ≦ i ≦ N について、技 i を習得するには時間 T_i の修練が必要で、
-#さらに、修練の開始時点で技 A_{i,1}, A_{i,2}, ..., A_{i,K_i} をすでに習得している必要があります。
-#ここで、1 ≦ j ≦ K_i について、A_{i,j} < i であることが保証されます。
-#高橋君は時刻 0 の時点で技を 1 つも覚えていません。
-#高橋君は同時に 1 つの技に対する修練しかできず、また、一度始めた修練を途中でやめることもできません。
-#高橋君が技 N を習得するのに必要な時間の最小値を求めてください。 
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ T_i ≦ 10^9
-#0 ≦ K_i < i
-#1 ≦ A_{i,j} < i
-#sum_{i=1}^N K_i ≦ 2× 10^5
-#A_{i,1}, A_{i,2}, ..., A_{i,K_i} はすべて異なる。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#T_1 K_1 A_{1,1} A_{1,2} ... A_{1,K_1}
-#T_2 K_2 A_{2,1} A_{2,2} ... A_{2,K_2}
-#.
-#.
-#.
-#T_N K_N A_{N,1} A_{N,2} ... A_{N,K_N}
-#
-#出力
-#技 N を習得するのに必要な時間の最小値を出力せよ。
-#
-#入力例 1
-#3
-#3 0
-#5 1 1
-#7 1 1
-#
-#出力例 1
-#10
-#例えば高橋君は次のように行動することができます。
-#高橋君は時刻 0 に技 1 の修練を開始し、時刻 3 に技 1 を習得します。
-#その後、時刻 3 に技 3 の修練を開始し、時刻 10 に技 3 を習得します。
-#このときが最短で、高橋君が技 3 を習得するのに必要な時間は 3+7=10 となります。
-#技 3 の習得のためには、技 2 を習得する必要はありません。
-#
-#入力例 2
-#5
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 4 1 2 3 4
-#
-#出力例 2
-#5000000000
-#答えが 32 bit 整数に収まらないことがある事に注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = [0] * N
+    K = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], K[i], *A[i] = map(int, input().split())
+
+    ans = 0
+    for i in range(N-1, -1, -1):
+        if K[i] == 0:
+            ans = max(ans, T[i])
+        else:
+            K[i] -= 1
+            T[i] += T[A[i][0]-1]
+            for j in range(1, len(A[i])):
+                K[A[i][j]-1] -= 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    T = [0]*(N+1)
+    K = [0]*(N+1)
+    A = [0]*(N+1)
+    for i in range(1,N+1):
+        T[i],K[i] = map(int,input().split())
+        A[i] = list(map(int,input().split()))
+    dp = [0]*(N+1)
+    for i in range(1,N+1):
+        for j in range(K[i]):
+            dp[i] = max(dp[i],dp[A[i][j]]+T[i])
+    print(max(dp))
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = []
+    A = []
+    for i in range(N):
+        t, k, *a = map(int, input().split())
+        T.append(t)
+        A.append(a)
+    print(T)
+    print(A)
+
+=======
+Suggestion 5
+
+def get_ints(): return map(int, input().split())
+
+=======
+Suggestion 6
+
+def readinput():
+    n=int(input())
+    t=[]
+    a=[]
+    for _ in range(n):
+        line=input().split()
+        t.append(int(line[0]))
+        a.append([int(line[2+i])-1 for i in range(int(line[1]))])
+    return n,t,a
+
+=======
+Suggestion 7
+
+def get_input():
+    n = int(input())
+    t = [0] * n
+    k = [0] * n
+    a = [0] * n
+    for i in range(n):
+        t[i], k[i] = map(int, input().split())
+        a[i] = list(map(int, input().split()))
+    return n, t, k, a
+
+=======
+Suggestion 8
+
+def main():
+    return 0
+
+=======
+Suggestion 9
+
+def solve():
+    pass

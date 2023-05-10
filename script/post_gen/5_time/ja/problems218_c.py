@@ -1,93 +1,146 @@
-#問題文
-#2 次元グリッド上に 2 つの図形 S と T があります。グリッドは正方形のマスからなります。
-#S は N 行 N 列のグリッド内にあり、S_{i,j} が # であるようなマス全体からなります。
-#T も N 行 N 列のグリッド内にあり、T_{i,j} が # であるようなマス全体からなります。
-#S と T を 90 度回転及び平行移動の繰り返しによって一致させることができるか判定してください。
-#
-#制約
-#1 ≦ N ≦ 200
-#S,T は # と . のみからなる
-#S,T は 1 つ以上 # を含む
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_{1,1}S_{1,2}... S_{1,N}
-#.
-#.
-#.
-#S_{N,1}S_{N,2}... S_{N,N}
-#T_{1,1}T_{1,2}... T_{1,N}
-#.
-#.
-#.
-#T_{N,1}T_{N,2}... T_{N,N}
-#
-#出力
-#S と T を90 度回転及び平行移動の繰り返しによって一致させることができるとき Yes を、そうでないとき No を出力せよ。
-#
-#入力例 1
-#5
-#.....
-#..#..
-#.###.
-#.....
-#.....
-#.....
-#.....
-#....#
-#...##
-#....#
-#
-#出力例 1
-#Yes
-#S を左回りに 90 度回転させ、平行移動することで T に一致させることができます。
-#
-#入力例 2
-#5
-######
-###..#
-##..##
-######
-#.....
-######
-##..##
-###..#
-######
-#.....
-#
-#出力例 2
-#No
-#90 度回転と平行移動の繰り返しによって一致させることはできません。
-#
-#入力例 3
-#4
-##...
-#..#.
-#..#.
-#....
-##...
-##...
-#..#.
-#....
-#
-#出力例 3
-#Yes
-#S 及び T は連結とは限りません。
-#
-#入力例 4
-#4
-##...
-#.##.
-#..#.
-#....
-###..
-##...
-#..#.
-#....
-#
-#出力例 4
-#No
-#回転や移動の操作は連結成分ごとにできるわけではなく、S,T 全体に対して行うことに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate(l):
+    return list(zip(*l[::-1]))
+
+=======
+Suggestion 2
+
+def rotate90(l):
+    # 90度回転
+    return list(zip(*l[::-1]))
+
+=======
+Suggestion 3
+
+def rotate_90(ary):
+    return list(map(list, zip(*ary[::-1])))
+
+=======
+Suggestion 4
+
+def check(s,t):
+    for i in range(0,N):
+        for j in range(0,N):
+            if s[i][j] != t[i][j]:
+                return False
+    return True
+
+N = int(input())
+s = [input() for i in range(0,N)]
+t = [input() for i in range(0,N)]
+
+for i in range(0,N):
+    s[i] = list(s[i])
+    t[i] = list(t[i])
+
+for i in range(0,4):
+    for j in range(0,N):
+        t[j] = t[j][::-1]
+    t = list(map(list,zip(*t)))
+    if check(s,t):
+        print("Yes")
+        exit()
+
+print("No")
+
+=======
+Suggestion 5
+
+def rotate(s):
+    return list(zip(*s[::-1]))
+
+=======
+Suggestion 6
+
+def rotate(s):
+    n = len(s)
+    t = [[0 for i in range(n)] for j in range(n)]
+    for i in range(n):
+        for j in range(n):
+            t[j][n-i-1] = s[i][j]
+    return t
+
+=======
+Suggestion 7
+
+def rotate_90(s):
+    return list(zip(*s[::-1]))
+
+=======
+Suggestion 8
+
+def rotate_90(matrix):
+    return list(zip(*matrix[::-1]))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(n)]
+    # print(s)
+    # print(t)
+    # print(s[0])
+    # print(s[0][0])
+    # print(s[0][1])
+    # print(s[0][2])
+    # print(s[0][3])
+    # print(s[0][4])
+    # print(s[1])
+    # print(s[1][0])
+    # print(s[1][1])
+    # print(s[1][2])
+    # print(s[1][3])
+    # print(s[1][4])
+    # print(s[2])
+    # print(s[2][0])
+    # print(s[2][1])
+    # print(s[2][2])
+    # print(s[2][3])
+    # print(s[2][4])
+    # print(s[3])
+    # print(s[3][0])
+    # print(s[3][1])
+    # print(s[3][2])
+    # print(s[3][3])
+    # print(s[3][4])
+    # print(s[4])
+    # print(s[4][0])
+    # print(s[4][1])
+    # print(s[4][2])
+    # print(s[4][3])
+    # print(s[4][4])
+    # print(t[0])
+    # print(t[0][0])
+    # print(t[0][1])
+    # print(t[0][2])
+    # print(t[0][3])
+    # print(t[0][4])
+    # print(t[1])
+    # print(t[1][0])
+    # print(t[1][1])
+    # print(t[1][2])
+    # print(t[1][3])
+    # print(t[1][4])
+    # print(t[2])
+    # print(t[2][0])
+    # print(t[2][1])
+    # print(t[2][2])
+    # print(t[2][3])
+    # print(t[2][4])
+    # print(t[3])
+    # print(t[3][0])
+    # print(t[3][1])
+    # print(t[3][2])
+    # print(t[3][3
+
+=======
+Suggestion 10
+
+def rotate90(s):
+    return list(zip(*s[::-1]))

@@ -1,37 +1,63 @@
-#問題文
-#羊が S 匹、狼が W 匹います。
-#狼の数が羊の数以上のとき、羊は狼に襲われてしまいます。
-#羊が狼に襲われるなら unsafe、襲われないなら safe を出力してください。
-#
-#制約
-#1 ≦ S ≦ 100
-#1 ≦ W ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S W
-#
-#出力
-#羊が狼に襲われるなら unsafe、襲われないなら safe を出力せよ。
-#
-#入力例 1
-#4 5
-#
-#出力例 1
-#unsafe
-#羊が 4 匹、狼が 5 匹います。狼の数が羊の数以上なので、羊は狼に襲われてしまいます。
-#
-#入力例 2
-#100 2
-#
-#出力例 2
-#safe
-#多勢に無勢です。
-#
-#入力例 3
-#10 10
-#
-#出力例 3
-#unsafe
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s,w = map(int, input().split())
+    if s > w:
+        print("safe")
+    else:
+        print("unsafe")
+
+=======
+Suggestion 2
+
+def main():
+    s, w = map(int, input().split())
+    if s <= w:
+        print('unsafe')
+    else:
+        print('safe')
+
+=======
+Suggestion 3
+
+def main():
+    s, w = map(int, input().split())
+    if s <= w:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 4
+
+def main():
+    S, W = map(int, input().split())
+    if S <= W:
+        print('unsafe')
+    else:
+        print('safe')
+
+=======
+Suggestion 5
+
+def main():
+    s, w = map(int, input().split())
+    if s <= w:
+        print('unsafe')
+    else:
+        print('safe')
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    S, W = map(int, input().split())
+    if S <= W:
+        print("unsafe")
+    else:
+        print("safe")

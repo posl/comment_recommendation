@@ -1,37 +1,72 @@
-#問題文
-#正整数 N が与えられるので、 2^k ≦ N となる最大の整数 k を求めてください。
-#
-#制約
-#N は 1 ≦ N ≦ 10^{18} を満たす整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#6
-#
-#出力例 1
-#2
-#k=2 は 2^2=4 ≦ 6 を満たします。
-#k ≧ 3 である全ての整数 k について 2^k > 6 となります。
-#以上より、答えは k=2 となります。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#0
-#2^0=1 であることに注意してください。
-#
-#入力例 3
-#1000000000000000000
-#
-#出力例 3
-#59
-#入力が 32 bit 整数に収まらない場合があります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    k = 0
+    while 2**k <= n:
+        k += 1
+    print(k-1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    k = 0
+    while 2**k <= N:
+        k += 1
+    print(k-1)
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    n = int(sys.stdin.readline().strip())
+    print((n-1).bit_length())
+main()
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    n = int(sys.stdin.readline().strip())
+    k = 0
+    while True:
+        if 2 ** k > n:
+            break
+        k += 1
+    print(k - 1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(int(math.log2(n)))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    k = 0
+    res = 1
+    while True:
+        if res > n:
+            break
+        res *= 2
+        k += 1
+    print(k-1)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    print(len(bin(n))-3)
+solve()

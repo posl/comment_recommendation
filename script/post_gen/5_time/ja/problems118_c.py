@@ -1,45 +1,118 @@
-#問題文
-#N 体のモンスターが居て、それぞれ 1, 2, ..., N と番号付けられています。
-#はじめ、モンスター i の体力は A_i です。
-#以降、体力が 1 以上のモンスターを生きているモンスターと呼びます。
-#生きているモンスターが 1 体になるまで以下を繰り返します。
-#ランダムに 1 体の生きているモンスターがランダムに別の生きているモンスターに攻撃します。
-#その結果、攻撃されたモンスターの体力を攻撃したモンスターの体力と同じ値だけ減らします。
-#最後に生き残ったモンスターの最終的な体力の最小値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#最後に生き残ったモンスターの最終的な体力の最小値を出力せよ。
-#
-#入力例 1
-#4
-#2 10 8 40
-#
-#出力例 1
-#2
-#1 番目のモンスターだけが攻撃し続けた場合、最後に生き残ったモンスターの体力は 2 となり、このときが最小です。
-#
-#入力例 2
-#4
-#5 13 8 1000000000
-#
-#出力例 2
-#1
-#
-#入力例 3
-#3
-#1000000000 1000000000 1000000000
-#
-#出力例 3
-#1000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    while len(a) > 1:
+        m = a[0]
+        for i in range(1, len(a)):
+            m %= a[i]
+            if m == 0:
+                break
+        if m == 0:
+            a.pop(0)
+        else:
+            break
+    print(a[0])
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 3
+
+def attack(a,b):
+    return a-b
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    while len(A) != 1:
+        A.sort()
+        x = A[0]
+        y = A[1]
+        if x == y:
+            A = A[2:]
+        else:
+            A = A[2:] + [y-x]
+    print(A[0])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    while len(a) > 1:
+        a.sort()
+        a[0] = a[0] % a[1]
+        if a[0] == 0:
+            a.pop(0)
+    print(a[0])
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b,a%b)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    while len(a) > 1:
+        a.sort()
+        a[-1] %= a[0]
+        if a[-1] == 0:
+            a.pop()
+    print(a[0])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if N == 2:
+        print(min(A))
+    else:
+        print(1)
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a

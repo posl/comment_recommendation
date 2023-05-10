@@ -1,36 +1,330 @@
-#問題文
-#高橋君と青木君は 2 人で次の対戦ゲームをします。
-#高橋君が先手でゲームを始め、ゲームが終了するまでの間、 2 人は交互に 1 以上 2N+1 以下の整数を 1 つずつ宣言します。
-#どちらかが一度でも宣言した整数は、それ以降どちらも二度と宣言することが出来ません。
-#先に整数を宣言することが出来なくなった方のプレイヤーの負けとなり、負けなかった方のプレイヤーの勝ちとなります。
-#このゲームでは必ず高橋君が勝ちます。
-#高橋君の立場で実際にゲームを行い、ゲームに勝ってください。
-#
-#制約
-#1 ≦ N ≦ 1000
-#N は整数
-#
-#入出力
-#この問題はインタラクティブな問題（あなたの作成したプログラムとジャッジプログラムが入出力を介して対話を行う形式の問題）です。
-#あなたのプログラムが高橋君の立場で、ジャッジプログラムが青木君の立場でゲームを行います。
-#まず、あなたのプログラムに標準入力から正の整数 N が与えられます。
-#その後、ゲームが終了するまで下記の手順を繰り返します。
-#あなたのプログラムが、高橋君が宣言する整数として、1 以上 2N+1 以下の整数を標準出力に出力します。（どちらかのプレイヤーによってすでに宣言されている整数を出力することは出来ません。）
-#ジャッジプログラムによって、青木君が宣言する整数があなたのプログラムに標準入力から与えられます。（どちらかのプレイヤーによってすでに宣言されている整数が入力されることはありません。）
-#ただし、青木君が宣言できる整数が残っていない場合は、代わりに 0 が与えられ高橋君の勝ちでゲームが終了します。
-#
-#注意点
-#出力を行うたびに標準出力をflushしてください。そうしなかった場合、ジャッジ結果が TLE となる可能性があります。
-#高橋君の勝ちでゲームが終了したあと、あなたのプログラムは直ちに終了しなければなりません。そうしなかった場合、ジャッジ結果が AC とならない可能性があります。
-#ゲームの途中で不正な出力を行った場合（例えば、すでにどちらかのプレイヤーによって宣言されている整数を出力した場合）は不正解となりますが、そのときのジャッジ結果は不定です。WA になるとは限りません。
-#
-#入出力例
-#入力 出力 説明
-#2   まず整数 N が与えられます。
-#  1 高橋君が 1 を宣言します。
-#3   青木君が 3 を宣言します。
-#  2 高橋君が 2 を宣言します。
-#4   青木君が 4 を宣言します。
-#  5 高橋君が 5 を宣言します。
-#0   青木君が宣言できる整数が残っていないため、高橋君の勝ちでゲームが終了します。
-def 
+Synthesizing 10/10 solutions
+
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    #N = 1000
+    N2 = N*2+1
+    #N2 = 2001
+    min = 1
+    max = N2
+    #print(N)
+    while True:
+        #print("min:{0} max:{1}".format(min,max))
+        #print("min:{0} max:{1}".format(min,max))
+        if min == max:
+            print(min)
+            break
+        else:
+            print(min)
+            #print("min:{0} max:{1}".format(min,max)
+
+=======
+Suggestion 2
+
+def main():
+    #n = int(input())
+    n = 2
+    #n = 3
+    #n = 4
+    #n = 5
+    #n = 6
+    #n = 7
+    #n = 8
+    #n = 9
+    #n = 10
+    #n = 1000
+    #n = int(input())
+    #n = 2
+    #n = 3
+    #n = 4
+    #n = 5
+    #n = 6
+    #n = 7
+    #n = 8
+    #n = 9
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [0]*(2*n+2)
+    a[1] = 1
+    a[2*n+1] = 1
+    print(1)
+    x = int(input())
+    if x == 0:
+        return
+    if x == 2*n+1:
+        print(2*n)
+        return
+    a[x] = 1
+    print(2*n+1)
+    y = int(input())
+    if y == 0:
+        return
+    if a[y] == 0:
+        print(y)
+        return
+    else:
+        print(2*n)
+        return
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    L = 1
+    R = 2*N+1
+    while True:
+        M = (L+R)//2
+        print(M)
+        S = int(input())
+        if S == 0:
+            break
+        elif S == 1:
+            L = M+1
+        else:
+            R = M-1
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = 1
+    b = 2*n+1
+    while True:
+        print(a)
+        a = int(input())
+        if a == 0:
+            exit()
+        if a > b:
+            print(0)
+            exit()
+        print(b)
+        b = int(input())
+        if b == 0:
+            exit()
+        if b < a:
+            print(0)
+            exit()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = 1
+    B = 2*N + 1
+    while True:
+        print(A)
+        A = int(input())
+        if A == 0:
+            break
+        print(B)
+        B = int(input())
+        if B == 0:
+            break
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = [0]*(2*N+1)
+    for i in range(1,2*N+2):
+        a[i-1] = i
+    a.sort()
+    for i in range(1,2*N+1,2):
+        print(a[i],flush=True)
+        b = int(input())
+        if b == 0:
+            break
+        else:
+            a.remove(b)
+            a.remove(i+1)
+    else:
+        print(a[2*N],flush=True)
+        b = int(input())
+        if b == 0:
+            pass
+        else:
+            print(a[2*N+1],flush=True)
+            b = int(input())
+            if b == 0:
+                pass
+            else:
+                print(a[2*N+2],flush=True)
+                b = int(input())
+                if b == 0:
+                    pass
+                else:
+                    print(a[2*N+3],flush=True)
+                    b = int(input())
+                    if b == 0:
+                        pass
+                    else:
+                        print(a[2*N+4],flush=True)
+                        b = int(input())
+                        if b == 0:
+                            pass
+                        else:
+                            print(a[2*N+5],flush=True)
+                            b = int(input())
+                            if b == 0:
+                                pass
+                            else:
+                                print(a[2*N+6],flush=True)
+                                b = int(input())
+                                if b == 0:
+                                    pass
+                                else:
+                                    print(a[2*N+7],flush=True)
+                                    b = int(input())
+                                    if b == 0:
+                                        pass
+                                    else:
+                                        print(a[2*N+8],flush=True)
+                                        b = int(input())
+                                        if b == 0:
+                                            pass
+                                        else:
+                                            print(a[2*N+9],flush=True)
+                                            b = int(input())
+                                            if b == 0:
+                                                pass
+                                            else:
+                                                print(a[2*N+10],flush=True)
+                                                b = int(input())
+                                                if b == 0:
+                                                    pass
+                                                else:
+                                                    print(a[2*N+11],flush=True)
+                                                    b = int(input())
+                                                    if b == 0:
+                                                        pass
+                                                    else:
+                                                        print(a[2*N+12],flush=True)
+                                                        b = int(input())
+                                                        if b == 0:
+                                                            pass
+
+=======
+Suggestion 8
+
+def input_to_int():
+    return int(input())
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = 1
+    b = 2*n
+    while True:
+        print(a)
+        a += 1
+        c = int(input())
+        if c == 0:
+            break
+        if c == b:
+            a = b
+            b -= 1
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    print(1)
+    flush()
+    aoki = int(input())
+    if aoki == 2:
+        print(3)
+        flush()
+        aoki = int(input())
+        if aoki == 4:
+            print(5)
+            flush()
+            aoki = int(input())
+            if aoki == 6:
+                print(7)
+                flush()
+                aoki = int(input())
+                if aoki == 8:
+                    print(9)
+                    flush()
+                    aoki = int(input())
+                    if aoki == 10:
+                        print(11)
+                        flush()
+                        aoki = int(input())
+                        if aoki == 12:
+                            print(13)
+                            flush()
+                            aoki = int(input())
+                            if aoki == 14:
+                                print(15)
+                                flush()
+                                aoki = int(input())
+                                if aoki == 16:
+                                    print(17)
+                                    flush()
+                                    aoki = int(input())
+                                    if aoki == 18:
+                                        print(19)
+                                        flush()
+                                        aoki = int(input())
+                                        if aoki == 20:
+                                            print(21)
+                                            flush()
+                                            aoki = int(input())
+                                            if aoki == 22:
+                                                print(23)
+                                                flush()
+                                                aoki = int(input())
+                                                if aoki == 24:
+                                                    print(25)
+                                                    flush()
+                                                    aoki = int(input())
+                                                    if aoki == 26:
+                                                        print(27)
+                                                        flush()
+                                                        aoki = int(input())
+                                                        if aoki == 28:
+                                                            print(29)
+                                                            flush()
+                                                            aoki = int(input())
+                                                            if aoki == 30:
+                                                                print(31)
+                                                                flush()
+                                                                aoki = int(input())
+                                                                if aoki == 32:
+                                                                    print(33)
+                                                                    flush()
+                                                                    aoki = int(input())
+                                                                    if aoki == 34:
+                                                                        print(35)
+                                                                        flush()
+                                                                        aoki = int(input())
+                                                                        if aoki == 36:
+                                                                            print(37)
+                                                                            flush()
+                                                                            aoki = int(input())
+                                                                            if aoki == 38:
+                                                                                print(39)
+                                                                                flush()
+                                                                                aoki = int(input())
+                                                                                if aoki == 40:
+                                                                                    print(41)
+                                                                                    flush()
+                                                                                    aoki = int(input())
+                                                                                    if aoki == 42:
+                                                                                        print(43)
+                                                                                        flush()

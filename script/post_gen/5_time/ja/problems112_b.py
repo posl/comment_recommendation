@@ -1,62 +1,184 @@
-#問題文
-#外出している X さんは、ABC に参加するためにスマートウォッチで最適な帰宅経路を調べることにしました。
-#スマートウォッチであるあなたは、N 個の帰宅経路を見つけました。
-#X さんが i 番目の経路を使う場合、コスト c_i かけて時間 t_i で帰宅できます。
-#時間 T 以内に帰宅できる経路のうち、コストが最小となる経路のコストを求めてください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 100
-#1 ≦ T ≦ 1000
-#1 ≦ c_i ≦ 1000
-#1 ≦ t_i ≦ 1000
-#各 (c_i, t_i) の組は異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N T
-#c_1 t_1
-#c_2 t_2
-#:
-#c_N t_N
-#
-#出力
-#時間 T 以内に帰宅できる経路のうち、コストが最小となる経路のコストを出力せよ。
-#ただし、どの経路を使っても時間 T 以内に帰宅できない場合、TLE と出力せよ。
-#
-#入力例 1
-#3 70
-#7 60
-#1 80
-#4 50
-#
-#出力例 1
-#4
-#1 番目の経路を使うと、コスト 7 で帰宅できます
-#2 番目の経路では時間 T = 70 以内に帰宅できません
-#3 番目の経路を使うと、コスト 4 で帰宅できます
-#従って、3 番目の経路を使ったときのコスト 4 が最小です。
-#
-#入力例 2
-#4 3
-#1 1000
-#2 4
-#3 1000
-#4 500
-#
-#出力例 2
-#TLE
-#どの経路を使っても時間 T = 3 以内に帰宅できません。
-#
-#入力例 3
-#5 9
-#25 8
-#5 9
-#4 10
-#1000 1000
-#6 1
-#
-#出力例 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        ci, ti = map(int, input().split())
+        c.append(ci)
+        t.append(ti)
+    min_cost = 1001
+    for i in range(N):
+        if t[i] <= T:
+            if c[i] < min_cost:
+                min_cost = c[i]
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 2
+
+def main():
+    n,t = map(int,input().split())
+    c = []
+    c = [0]*n
+    t = [0]*n
+    for i in range(n):
+        c[i],t[i] = map(int,input().split())
+    min_cost = 1001
+    for i in range(n):
+        if t[i] <= t:
+            min_cost = min(min_cost,c[i])
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 3
+
+def main():
+    n, t = map(int, input().split())
+    min_cost = 1001
+    for i in range(n):
+        c, tt = map(int, input().split())
+        if tt <= t:
+            if min_cost > c:
+                min_cost = c
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 4
+
+def main():
+    n, t = map(int, input().split())
+    c = []
+    for i in range(n):
+        c.append(list(map(int, input().split())))
+    c = sorted(c, key=lambda x: x[0])
+    for i in range(n):
+        if c[i][1] <= t:
+            print(c[i][0])
+            return
+    print("TLE")
+
+=======
+Suggestion 5
+
+def main():
+    N, T = map(int, input().split())
+    c = []
+    t = []
+    for i in range(N):
+        c_i, t_i = map(int, input().split())
+        c.append(c_i)
+        t.append(t_i)
+    min_cost = 1001
+    for i in range(N):
+        if t[i] <= T and c[i] < min_cost:
+            min_cost = c[i]
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 6
+
+def main():
+    n, t = map(int, input().split())
+    cost_time = []
+    for i in range(n):
+        cost, time = map(int, input().split())
+        cost_time.append((cost, time))
+
+    cost_time.sort(key=lambda x: x[1])
+    for cost, time in cost_time:
+        if time <= t:
+            print(cost)
+            return
+    print("TLE")
+
+=======
+Suggestion 7
+
+def solve():
+    # 入力
+    N, T = map(int, input().split())
+    routes = []
+    for _ in range(N):
+        c, t = map(int, input().split())
+        routes.append((c, t))
+
+    # 時間 T 以内に帰宅できる経路のうち、コストが最小となる経路のコストを求める
+    min_cost = float('inf')
+    for c, t in routes:
+        if t <= T:
+            min_cost = min(min_cost, c)
+
+    # 出力
+    if min_cost == float('inf'):
+        print('TLE')
+    else:
+        print(min_cost)
+
+=======
+Suggestion 8
+
+def main():
+    n,t = map(int,input().split())
+    c = []
+    for i in range(n):
+        c.append(list(map(int,input().split())))
+    c.sort(key=lambda x:x[0])
+    for i in range(n):
+        if c[i][1] <= t:
+            print(c[i][0])
+            break
+        elif i == n-1:
+            print('TLE')
+
+=======
+Suggestion 9
+
+def main():
+    n, t = map(int, input().split())
+    c = []
+    for i in range(n):
+        c_i, t_i = map(int, input().split())
+        c.append([c_i, t_i])
+    
+    c.sort(key=lambda x: x[0])
+    for i in range(n):
+        if c[i][1] <= t:
+            print(c[i][0])
+            return
+    print("TLE")
+
+=======
+Suggestion 10
+
+def solve():
+    n, t = map(int, input().split())
+    cost_list = []
+    time_list = []
+    for i in range(n):
+        cost, time = map(int, input().split())
+        cost_list.append(cost)
+        time_list.append(time)
+    cost_list = [cost for (time, cost) in sorted(zip(time_list, cost_list))]
+    time_list.sort()
+    for i in range(n):
+        if time_list[i] <= t:
+            print(cost_list[i])
+            return
+    print("TLE")

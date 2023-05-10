@@ -1,31 +1,96 @@
-#問題文
-#A 以上 B 以下であるような C の倍数を、1 つ出力してください。  
-#条件を満たす数が存在しない場合は -1 を出力してください。
-#
-#制約
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ C ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C
-#
-#出力
-#答えを出力せよ。
-#条件を満たす数が存在しない場合は -1 を出力せよ。
-#
-#入力例 1
-#123 456 100
-#
-#出力例 1
-#200
-#300 や 400 も正解です。
-#
-#入力例 2
-#630 940 314
-#
-#出力例 2
-#-1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B,C = map(int,input().split())
+    for i in range(A,B+1):
+        if i % C == 0:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    #data = input()
+    data = "630 940 314"
+    #data = "123 456 100"
+    #data = "1 1000 1"
+    #data = "1 1000 2"
+    #data = "1 1000 3"
+    #data = "1 1000 4"
+    #data = "1 1000 5"
+    #data = "1 1000 6"
+    #data = "1 1000 7"
+    #data = "1 1000 8"
+    #data = "1 1000 9"
+    #data = "1 1000 10"
+    #data = "1 1000 11"
+    #data = "1 1000 12"
+    #data = "1 1000 13"
+    #data = "1 1000 14"
+    #data = "1 1000 15"
+    #data = "1 1000 16"
+    #data = "1 1000 17"
+    #data = "1 1000 18"
+    #data = "1 1000 19"
+    #data = "1 1000 20"
+    #data = "1 1000 21"
+    #data = "1 1000 22"
+    #data = "1 1000 23"
+    #data = "1 1000 24"
+    #data = "1 1000 25"
+    #data = "1 1000 26"
+    #data = "1 1000 27"
+    #data = "1 1000 28"
+    #data = "1 1000 29"
+    #data = "1 1000 30"
+    #data = "1 1000 31"
+    #data = "1 1000 32"
+    #data = "1 1000 33"
+    #data = "1 1000 34"
+    #data = "1 1000 35"
+    #data = "1 1000 36"
+    #data = "1 1000 37"
+    #data = "1 1000 38"
+    #data = "1 1000 39"
+    #data
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    for i in range(a, b + 1):
+        if i % c == 0:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def problem220_a():
+    a,b,c = map(int,input().split())
+    for i in range(a,b+1):
+        if i % c == 0:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    #A, B, C = map(int, input().split())
+    A, B, C = map(int, sys.stdin.readline().split())
+    for i in range(A, B+1):
+        if i % C == 0:
+            print(i)
+            return
+    print(-1)
+    return

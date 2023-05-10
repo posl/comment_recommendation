@@ -1,70 +1,293 @@
-#問題文
-#1, 2, ..., 2N と番号づけられた 2N 人の人が舞踏会に参加します。
-#彼らは N 個の 2 人組にわかれてダンスを踊ります。
-#2 人組を構成する人のうち、番号の小さい方の人が人 i 、番号の大きい方の人が人 j のとき、
-#その 2 人組の「相性」は A_{i, j} です。
-#N 個の 2 人組の相性がそれぞれ B_1, B_2, ..., B_N であるとき、
-#「舞踏会全体の楽しさ」はそれらのビットごとの排他的論理和である B_1 ⊕ B_2 ⊕ ... ⊕ B_N です。
-#「 2N 人の参加者が N 個の 2 人組に分かれる方法」を自由に選べるとき、「舞踏会全体の楽しさ」としてあり得る最大値を出力してください。
-#
-#制約
-#1 ≦ N ≦ 8
-#0 ≦ A_{i, j} < 2^{30}
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_{1, 2} A_{1, 3} A_{1, 4} ... A_{1, 2N}
-#A_{2, 3} A_{2, 4} ... A_{2, 2N}
-#A_{3, 4} ... A_{3, 2N}
-#.
-#.
-#.
-#A_{2N-1, 2N}
-#
-#出力
-#舞踏会全体の楽しさとしてあり得る最大値を出力せよ。
-#
-#入力例 1
-#2
-#4 0 1
-#5 3
-#2
-#
-#出力例 1
-#6
-#人 i と人 j からなる 2 人組を {i, j} で表します。
-#4 人が 2 個の 2 人組にわかれる方法は下記の 3 通りです。
-#{1, 2}, {3, 4} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 2} ⊕ A_{3, 4} = 4 ⊕ 2 = 6 です。
-#{1, 3}, {2, 4} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 3} ⊕ A_{2, 4} = 0 ⊕ 3 = 3 です。
-#{1, 4}, {2, 3} という 2 組にわかれる。
-#このとき、舞踏会全体の楽しさは A_{1, 4} ⊕ A_{2, 3} = 1 ⊕ 5 = 4 です。
-#よって、舞踏会全体の楽しさとしてあり得る最大値は 6 です。
-#
-#入力例 2
-#1
-#5
-#
-#出力例 2
-#5
-#人 1 と人 2 からなる 2 人組のみが作られ、このときの舞踏会全体の楽しさは 5 です。
-#
-#入力例 3
-#5
-#900606388 317329110 665451442 1045743214 260775845 726039763 57365372 741277060 944347467
-#369646735 642395945 599952146 86221147 523579390 591944369 911198494 695097136
-#138172503 571268336 111747377 595746631 934427285 840101927 757856472
-#655483844 580613112 445614713 607825444 252585196 725229185
-#827291247 105489451 58628521 1032791417 152042357
-#919691140 703307785 100772330 370415195
-#666350287 691977663 987658020
-#1039679956 218233643
-#70938785
-#
-#出力例 3
-#1073289207
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N)
+    #print(A)
+
+    #print(1 << 30)
+    #print(2**30)
+    #print(1 << 30 - 1)
+    #print(2**30 - 1)
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+    #print(2**30 - 1)
+    #print(bin(2**30 - 1))
+
+    #print(2**30 - 1
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    #print(N)
+    #print(A)
+    #print(len(A))
+    #print(A[0][0])
+    #print(A[0][1])
+    #print(A[0][2])
+    #print(A[1][0])
+    #print(A[1][1])
+    #print(A[1][2])
+    #print(A[2][0])
+    #print(A[2][1])
+    #print(A[2][2])
+    #print(A[3][0])
+    #print(A[3][1])
+    #print(A[3][2])
+    #print(A[4][0])
+    #print(A[4][1])
+    #print(A[4][2])
+    #print(A[5][0])
+    #print(A[5][1])
+    #print(A[5][2])
+    #print(A[6][0])
+    #print(A[6][1])
+    #print(A[6][2])
+    #print(A[7][0])
+    #print(A[7][1])
+    #print(A[7][2])
+    #print(A[8][0])
+    #print(A[8][1])
+    #print(A[8][2])
+    #print(A[9][0])
+    #print(A[9][1])
+    #print(A[9][2])
+    #print(A[10][0])
+    #print(A[10][1])
+    #print(A[10][2])
+    #print(A[11][0])
+    #print(A[11][1])
+    #print(A[11][2])
+    #print(A[12][0])
+    #print(A[12][1])
+    #print(A[12][2])
+    #print(A[13][0])
+    #print(A[13][1])
+    #print(A[13][2])
+    #print(A[14][0])
+    #print(A[14][1])
+    #print(A[14][2])
+    #print(A[15][0])
+    #print(A[15][1])
+    #print(A[15][2])
+    #print(A[16][0])
+    #print(A[16][1])
+    #print(A
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    #print(N)
+    #print(A)
+    #print(len(A))
+    #print(len(A[0]))
+    #print(A[0][1])
+    #print(A[0][2])
+    #print(A[0][3])
+    #print(A[0][4])
+    #print(A[1][2])
+    #print(A[1][3])
+    #print(A[1][4])
+    #print(A[2][3])
+    #print(A[2][4])
+    #print(A[3][4])
+    #print(A[0][1] ^ A[1][2])
+    #print(A[0][1] ^ A[1][3])
+    #print(A[0][1] ^ A[1][4])
+    #print(A[0][1] ^ A[2][3])
+    #print(A[0][1] ^ A[2][4])
+    #print(A[0][1] ^ A[3][4])
+    #print(A[0][2] ^ A[1][3])
+    #print(A[0][2] ^ A[1][4])
+    #print(A[0][2] ^ A[2][4])
+    #print(A[0][2] ^ A[3][4])
+    #print(A[0][3] ^ A[1][4])
+    #print(A[0][3] ^ A[2][4])
+    #print(A[0][4] ^ A[1][4])
+    #print(A[0][1] ^ A[1][2] ^ A[2][3])
+    #print(A[0][1] ^ A[1][2] ^ A[2][4])
+    #print(A[0][1] ^ A[1][2] ^ A[3][4])
+    #print(A[0][1] ^ A[1][3] ^ A[2][4])
+    #print(A[0][1] ^ A[1][4] ^ A[2][4])
+    #print(A[0][1] ^ A[2][3] ^ A[3][4])
+    #print(A[0][1] ^ A[2][
+
+=======
+Suggestion 4
+
+def xor(x, y):
+    return x ^ y
+
+=======
+Suggestion 5
+
+def xor_sum(a):
+    result = 0
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            result += a[i]^a[j]
+    return result
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    #print(A)
+
+    # 2人組の組み合わせをbit全探索
+    ans = 0
+    for i in range(1, 2**N):
+        # iを2進数に変換
+        bit = bin(i)[2:]
+        #print(bit)
+
+        # 2人組の相性の合計値を計算
+        tmp = 0
+        for j in range(N):
+            for k in range(j+1, N):
+                #print(j, k)
+                if bit[j] == "1" and bit[k] == "1":
+                    tmp += A[j][k]
+        #print(tmp)
+        ans = max(ans, tmp)
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    #n = int(input())
+    #a = list(map(int, input().split()))
+    #b = list(map(int, input().split()))
+    #c = list(map(int, input().split()))
+    #s = input()
+    n=int(input())
+    a=[]
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    ans=0
+    for i in range(2**n):
+        flag=True
+        for j in range(n):
+            for k in range(j+1,n):
+                if i>>j&i>>k&1 and a[j][k]==1:
+                    flag=False
+        if flag:
+            cnt=0
+            for j in range(n):
+                if i>>j&1:
+                    cnt+=1
+            ans=max(ans,cnt)
+    print(ans)
+    #print(*ans,sep='\n')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    #print(a)
+    max = 0
+    for i in range(2**n):
+        #print(i)
+        tmp = 0
+        for j in range(n):
+            for k in range(j+1, n):
+                #print(j, k)
+                if ((i >> j) & 1) == ((i >> k) & 1):
+                    tmp += a[j][k]
+        if tmp > max:
+            max = tmp
+    print(max)
+
+=======
+Suggestion 9
+
+def main():
+    n=int(input())
+    A=[list(map(int, input().split())) for _ in range(n)]
+    ans=0
+    for i in range(1<<n):
+        t=0
+        for j in range(n):
+            for k in range(j+1,n):
+                if (i>>j&1)==(i>>k&1)==1:
+                    t+=A[j][k]
+        ans=max(ans,t)
+    print(ans)
+
+=======
+Suggestion 10
+
+def xor(a, b):
+    return a ^ b
+
+n = int(input())
+a = []
+for i in range(n):
+    a.append(list(map(int, input().split())))
+
+ans = 0
+for i in range(n):
+    for j in range(i + 1, n):
+        ans = max(ans, xor(a[i][j], a[j][i]))
+print(ans)

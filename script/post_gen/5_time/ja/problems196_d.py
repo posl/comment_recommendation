@@ -1,43 +1,133 @@
-#問題文
-#縦 H メートル、横 W メートルの長方形の部屋があります。
-#この部屋に 2 メートル × 1 メートルの区別できない畳 (長方形のタイル) A 枚と、1 メートル × 1 メートルの区別できない半畳 (正方形のタイル) B 枚を敷き詰めます。
-#2 メートル × 1 メートルの畳は縦長にも横長にも使うことができます。
-#敷き詰める方法は何通りあるでしょうか？
-#なお、2A + B = HW であることが保証されます。
-#また、回転や反転を行うことで初めて一致するような敷き詰め方は区別します。
-#
-#制約
-#入力は全て整数
-#1 ≤ H, W
-#HW ≤ 16
-#0 ≤ A, B
-#2A + B = HW
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W A B
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 2 1 2
-#
-#出力例 1
-#4
-#以下の 4 つです。
-#
-#入力例 2
-#3 3 4 1
-#
-#出力例 2
-#18
-#以下の 6 つと、これらを回転させたものが含まれます。
-#
-#入力例 3
-#4 4 8 0
-#
-#出力例 3
-#36
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, A, B = map(int, input().split())
+
+    print(H, W, A, B)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H, W, A, B)
+    print(H, W, A, B)
+
+=======
+Suggestion 3
+
+def solve():
+    h,w,a,b = map(int,input().split())
+    ans = 0
+    for i in range(2**h):
+        for j in range(2**w):
+            cnt = 0
+            for k in range(h):
+                if i>>k&1:
+                    cnt += w
+                else:
+                    if j>>k&1:
+                        cnt += 1
+            if cnt == a:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    h, w, a, b = map(int, input().split())
+    ans = 0
+    for i in range(h-a):
+        for j in range(b, w):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H, W, A, B)
+    print("Hello World")
+
+=======
+Suggestion 6
+
+def main():
+    H, W, A, B = map(int, input().split())
+    print(H, W, A, B)
+    print('Hello World!')
+
+=======
+Suggestion 7
+
+def calc(h, w, a, b):
+    if h == 0 or w == 0:
+        return 1
+    if (h, w) in memo:
+        return memo[(h, w)]
+    ret = 0
+    if a >= 2 and w >= 2:
+        ret += calc(h, w-2, a-2, b)
+    if a >= 1 and b >= 1 and w >= 1:
+        ret += calc(h-1, w-1, a-1, b-1)
+    if b >= 2 and h >= 2:
+        ret += calc(h-2, w, a, b-2)
+    memo[(h, w)] = ret
+    return ret
+
+H, W, A, B = map(int, input().split())
+memo = {}
+print(calc(H, W, A, B))
+
+=======
+Suggestion 8
+
+def dfs(i, j, a, b):
+    if i == h:
+        return 1
+    if j == w:
+        return dfs(i+1, 0, a, b)
+    if a:
+        # 2x1の畳を敷く
+        res = dfs(i, j+1, a-1, b)
+        # 2x1の畳を縦に敷く
+        if i+1 < h and a:
+            res += dfs(i, j+1, a-1, b)
+    if b:
+        # 1x1の畳を敷く
+        res += dfs(i, j+1, a, b-1)
+    return res
+
+h, w, a, b = map(int, input().split())
+print(dfs(0, 0, a, b))
+
+=======
+Suggestion 9
+
+def dfs(i, j, a, b):
+    if i == h - 1 and j == w:
+        return 1
+    if j == w:
+        j = 0
+        i += 1
+    if t[i][j]:
+        return dfs(i, j + 1, a, b)
+    res = 0
+    if b:
+        t[i][j] = 1
+        res += dfs(i, j + 1, a, b - 1)
+        t[i][j] = 0
+    if a and i < h - 1 and t[i + 1][j] == 0:
+        t[i][j] = t[i + 1][j] = 1
+        res += dfs(i, j + 1, a - 1, b)
+        t[i][j] = t[i + 1][j] = 0
+    return res
+
+h, w, a, b = map(int, input().split())
+t = [[0] * w for i in range(h)]
+print(dfs(0, 0, a, b))

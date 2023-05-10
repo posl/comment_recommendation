@@ -1,48 +1,194 @@
-#問題文
-#長さ N の整数列 A=(A_1,A_2,...,A_N) が与えられます。
-#あなたは以下の連続する操作をちょうど一度だけ行います。
-#整数 x (0≦ x ≦ N) を選ぶ。x として 0 を選んだ場合何もしない。 x として 1 以上の整数を選んだ場合、A_1,A_2,...,A_x をそれぞれ L で置き換える。
-#整数 y (0≦ y ≦ N) を選ぶ。y として 0 を選んだ場合何もしない。 y として 1 以上の整数を選んだ場合、A_{N},A_{N-1},...,A_{N-y+1} をそれぞれ R で置き換える。
-#操作後の A の要素の総和として考えられる最小値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#-10^9 ≦ L, R≦ 10^9
-#-10^9 ≦ A_i≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N L R
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#5 4 3
-#5 5 0 6 3
-#
-#出力例 1
-#14
-#x=2,y=2 として操作をすると、数列 A = (4,4,0,3,3) となり、要素の総和は 14 になります。
-#これが達成可能な最小値です。
-#
-#入力例 2
-#4 10 10
-#1 2 3 4
-#
-#出力例 2
-#10
-#x=0,y=0 として操作をすると、数列 A = (1,2,3,4) となり、要素の総和は 10 になります。
-#これが達成可能な最小値です。
-#
-#入力例 3
-#10 -5 -3
-#9 -6 10 -1 2 10 -1 7 -15 5
-#
-#出力例 3
-#-58
-#L,R,A_i は負であることがあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] < 0:
+            A[i] = -A[i]
+            ans += 2 * A[i] * L
+        else:
+            ans += 2 * A[i] * R
+    ans -= (L + R) * (max(A) - min(A))
+    print(ans)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n, l, r = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        if a[i] > a[i+1]:
+            ans += (a[i] - a[i+1]) * l
+            a[i+1] = a[i]
+    for i in range(n-1, 0, -1):
+        if a[i] > a[i-1]:
+            ans += (a[i] - a[i-1]) * r
+            a[i-1] = a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,L,R = map(int,input().split())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(N-1):
+        if A[i] > A[i+1]:
+            ans += (A[i]-A[i+1])*L
+        elif A[i] < A[i+1]:
+            ans += (A[i+1]-A[i])*R
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    
+    for i in range(N):
+        A[i] += A[i-1]
+    
+    dp = [[float("inf")]*2 for _ in range(N+1)]
+    dp[0][0] = 0
+
+    for i in range(N):
+        dp[i+1][0] = min(dp[i+1][0], dp[i][0]+A[i]*R+A[i-1]*(L-R))
+        dp[i+1][0] = min(dp[i+1][0], dp[i][1]+A[i]*R+A[i-1]*(L-R))
+        dp[i+1][1] = min(dp[i+1][1], dp[i][0]+A[i]*L+A[i-1]*(R-L))
+        dp[i+1][1] = min(dp[i+1][1], dp[i][1]+A[i]*L+A[i-1]*(R-L))
+    
+    print(dp[N][0])
+
+=======
+Suggestion 5
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    for i in range(N):
+        if A[i] < L:
+            A[i] = L
+        elif A[i] > R:
+            A[i] = R
+
+    print(sum(A))
+
+=======
+Suggestion 6
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        A[i] -= R
+    #print(A)
+    dp = [[0,0] for _ in range(N+1)]
+    for i in range(N):
+        dp[i+1][0] = min(dp[i][0], dp[i][1])
+        dp[i+1][1] = min(dp[i][0], dp[i][1]) + A[i]
+    #print(dp)
+    print(min(dp[N][0], dp[N][1]) + L * N)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, l, r = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n-1):
+        if a[i] > a[i+1]:
+            ans += (a[i] - a[i+1]) * l
+            a[i+1] = a[i]
+    for i in range(n-1,0,-1):
+        if a[i] < a[i-1]:
+            ans += (a[i-1] - a[i]) * r
+            a[i-1] = a[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,l,r = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-1):
+        if a[i] > a[i+1]:
+            ans += (a[i]-a[i+1])*l
+    for i in range(n-1,0,-1):
+        if a[i] > a[i-1]:
+            ans += (a[i]-a[i-1])*r
+    print(ans)
+    return
+
+=======
+Suggestion 9
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    if L < 0 and R > 0:
+        for i in range(N):
+            if A[i] < 0:
+                if abs(A[i]) - abs(L) < 0:
+                    ans += abs(A[i]) - abs(L)
+                    A[i] = L
+                else:
+                    ans += abs(A[i]) - abs(R)
+                    A[i] = R
+    elif L < 0 and R <= 0:
+        for i in range(N):
+            if A[i] < 0:
+                ans += abs(A[i]) - abs(L)
+                A[i] = L
+    elif L >= 0 and R > 0:
+        for i in range(N):
+            if A[i] > 0:
+                ans += abs(A[i]) - abs(R)
+                A[i] = R
+    print(ans)
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    # dp[i][0]: i番目までの要素を操作したときの最小値
+    # dp[i][1]: i番目までの要素を操作したときの最大値
+    dp = [[0, 0] for _ in range(N + 1)]
+
+    for i in range(1, N + 1):
+        # dp[i][0]を求める
+        # dp[i - 1][0] + A[i] + L
+        # dp[i - 1][1] + A[i] + L
+        # dp[i - 1][0] + A[i] + R
+        # dp[i - 1][1] + A[i] + R
+        dp[i][0] = min(dp[i - 1][0] + A[i] + L, dp[i - 1][1] + A[i] + L, dp[i - 1][0] + A[i] + R, dp[i - 1][1] + A[i] + R)
+        # dp[i][1]を求める
+        # dp[i - 1][0] + A[i] + L
+        # dp[i - 1][1] + A[i] + L
+        # dp[i - 1][0] + A[i] + R
+        # dp[i - 1][1] + A[i] + R
+        dp[i][1] = max(dp[i - 1][0] + A[i] + L, dp[i - 1][1] + A[i] + L, dp[i - 1][0] + A[i] + R, dp[i - 1][1] + A[i] + R)
+
+    print(dp[N][0])

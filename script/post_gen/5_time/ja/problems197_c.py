@@ -1,62 +1,169 @@
-#問題文
-#長さ N の数列 A が与えられます。
-#この数列を、1 つ以上の空でない連続した区間に分けます。
-#その後、分けた各区間で、区間内の数のビット単位 OR を計算します。
-#こうして得られた全ての値のビット単位 XOR として考えられる最小値を求めてください。  
-#        ビット単位 OR 演算とは
-#    
-#        整数 A, B のビット単位 OR、A OR B は以下のように定義されます。
-#        
-#A OR B を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち少なくとも片方が 1 であれば 1、そうでなければ 0 である。
-#        例えば、3 OR 5 = 7 となります (二進表記すると: 011 OR 101 = 111)。  
-#        一般に k 個の整数 p_1, p_2, p_3, ..., p_k のビット単位 OR は (... ((p_1 OR p_2) OR p_3) OR ... OR p_k) と定義され、これは p_1, p_2, p_3, ... p_k の順番によらないことが証明できます。  
-#    
-#
-#        ビット単位 XOR 演算とは
-#    
-#        整数 A, B のビット単位 XOR 、A XOR B は、以下のように定義されます。
-#        
-#A XOR B を二進表記した際の 2^k (k ≧ 0) の位の数は、A, B を二進表記した際の 2^k の位の数のうち一方のみが 1 であれば 1、そうでなければ 0 である。
-#        例えば、3 XOR 5 = 6 となります (二進表記すると: 011 XOR 101 = 110)。  
-#        一般に k 個以上の整数 p_1, p_2, p_3, ..., p_k のビット単位 XOR は (... ((p_1 XOR p_2) XOR p_3) XOR ... XOR p_k) と定義され、これは p_1, p_2, p_3, ... p_k の順番によらないことが証明できます。  
-#    
-#
-#制約
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}
-#入力に含まれる値は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#3
-#1 5 7
-#
-#出力例 1
-#2
-#[1, 5, 7] を [1, 5] と [7] の 2 つの区間に分けると、それぞれの区間内の数のビット単位 OR は 5, 7 となり、その XOR は 2 です。
-#これより小さくすることはできないので、2 を出力します。  
-#
-#入力例 2
-#3
-#10 10 10
-#
-#出力例 2
-#0
-#[10] と [10, 10] に分けるとよいです。  
-#
-#入力例 3
-#4
-#1 3 3 1
-#
-#出力例 3
-#0
-#[1, 3] と [3, 1] に分けるとよいです。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #a = [1,5,7]
+    #a = [10,10,10]
+    #a = [1,3,3,1]
+    #n = 3
+    #a =
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ret = 2**30
+    for i in range(2**(N-1)):
+        tmp = 0
+        xor = 0
+        for j in range(N):
+            tmp |= A[j]
+            if i & (1 << j):
+                xor ^= tmp
+                tmp = 0
+        xor ^= tmp
+        ret = min(ret, xor)
+    print(ret)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(N):
+        for j in range(i, N):
+            tmp = A[i]
+            for k in range(i+1, j+1):
+                tmp |= A[k]
+            ans = min(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 2**31-1
+    for i in range(n):
+        for j in range(i, n):
+            x = 0
+            for k in range(i, j+1):
+                x = x | a[k]
+            ans = min(ans, x)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2 ** 30
+    for i in range(N):
+        or_value = 0
+        xor_value = 0
+        for j in range(i, N):
+            or_value |= A[j]
+            xor_value ^= A[j]
+            if or_value == xor_value:
+                ans = min(ans, or_value)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for i in range(n):
+        for j in range(i,n):
+            tmp=0
+            for k in range(i,j+1):
+                tmp|=a[k]
+            ans^=tmp
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(2**(N-1)):
+        ors = 0
+        xors = 0
+        for j in range(N):
+            ors |= A[j]
+            if (i >> j) & 1 == 1:
+                xors ^= ors
+                ors = 0
+        xors ^= ors
+        ans = min(ans, xors)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1e9
+    for i in range(n):
+        x = 0
+        for j in range(i, n):
+            x |= a[j]
+            y = 0
+            for k in range(j + 1, n):
+                y ^= a[k]
+            ans = min(ans, x + y)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(2**n):
+        ors = 0
+        xors = 0
+        for j in range(n):
+            ors |= a[j]
+            if i & 1<<j:
+                xors ^= ors
+                ors = 0
+        xors ^= ors
+        ans = min(ans, xors)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 10 ** 9
+    for i in range(2 ** (n - 1)):
+        tmp = 0
+        xor = 0
+        for j in range(n):
+            tmp |= a[j]
+            if i >> j & 1:
+                xor ^= tmp
+                tmp = 0
+        xor ^= tmp
+        ans = min(ans, xor)
+    print(ans)

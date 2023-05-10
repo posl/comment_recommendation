@@ -1,36 +1,49 @@
-#問題文
-#A × B の小数点以下を切り捨て、結果を整数として出力してください。
-#
-#制約
-#0 ≦ A ≦ 10^{15}
-#0 ≦ B < 10
-#A は整数
-#B は小数第 2 位まで与えられる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#198 1.10
-#
-#出力例 1
-#217
-#198 × 1.10 = 217.8 なので、小数点以下を切り捨てて答えは 217 となります。
-#
-#入力例 2
-#1 0.01
-#
-#出力例 2
-#0
-#
-#入力例 3
-#1000000000000000 9.99
-#
-#出力例 3
-#9990000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(float, input().split())
+    print(int(a * b))
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(float,input().split())
+    print(int(a*b//1))
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(float,input().split())
+    ans = int(a*b)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = input().split()
+    a = int(a)
+    b = int(b.replace('.', ''))
+    print(a * b // 100)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(float,input().split())
+    print(int(a*b))
+main()
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(str, input().split())
+    a = int(a)
+    b = int(float(b)*100)
+    print(a*b//100)

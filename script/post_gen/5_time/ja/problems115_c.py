@@ -1,48 +1,116 @@
-#問題文
-#とある世界では、今日はクリスマスイブです。
-#高羽氏の庭には N 本の木が植えられています。i 本目の木 (1 ≦ i ≦ N) の高さは h_i メートルです。
-#彼は、これらの木のうち K 本を選んで電飾を施すことにしました。より美しい光景をつくるために、できるだけ近い高さの木を飾り付けたいです。
-#より具体的には、飾り付ける木のうち最も高いものの高さを h_{max} メートル、最も低いものの高さを h_{min} メートルとすると、h_{max} - h_{min} が小さいほど好ましいです。h_{max} - h_{min} は最小でいくつにすることができるでしょうか？
-#
-#制約
-#2 ≦ K < N ≦ 10^5
-#1 ≦ h_i ≦ 10^9
-#h_i は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#h_1
-#h_2
-#:
-#h_N
-#
-#出力
-#h_{max} - h_{min} としてありうる最小の値を出力せよ。
-#
-#入力例 1
-#5 3
-#10
-#15
-#11
-#14
-#12
-#
-#出力例 1
-#2
-#1, 3, 5 本目の木を飾り付けると h_{max} = 12, h_{min} = 10 となり h_{max} - h_{min} = 2 で、これが最適です。
-#
-#入力例 2
-#5 3
-#5
-#7
-#5
-#7
-#7
-#
-#出力例 2
-#0
-#2, 4, 5 本目の木を飾り付けると h_{max} = 7, h_{min} = 7 となり h_{max} - h_{min} = 0 で、これが最適です。
-#これらの入力例では木の数がそれほど多くありませんが、最大で 10 万本の木がある可能性に注意してください (ここに 10 万行の入力例を貼るわけにはいかないのです)。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    h = [int(input()) for i in range(n)]
+    h = sorted(h)
+    ans = h[-1] - h[0]
+    for i in range(n-k+1):
+        ans = min(ans,h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    h = [int(input()) for _ in range(N)]
+    h.sort()
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, h[i+K-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans,h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    h = [int(input()) for _ in range(N)]
+    h.sort()
+    ans = 10**9
+    for i in range(N - K + 1):
+        ans = min(ans, h[i + K - 1] - h[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    h = []
+    for i in range(n):
+        h.append(int(input()))
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans, h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    h = [int(input()) for i in range(n)]
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans,h[i+k-1]-h[i])
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    min_diff = float('inf')
+    for i in range(n-k+1):
+        diff = h[i+k-1] - h[i]
+        min_diff = min(min_diff, diff)
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    H = [int(input()) for _ in range(N)]
+    H.sort()
+    ans = 10**9
+    for i in range(N-K+1):
+        ans = min(ans, H[i+K-1] - H[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    h = [0] * N
+    for i in range(N):
+        h[i] = int(input())
+    h.sort()
+    min = h[K-1] - h[0]
+    for i in range(N-K+1):
+        if min > h[i+K-1] - h[i]:
+            min = h[i+K-1] - h[i]
+    print(min)

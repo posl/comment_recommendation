@@ -1,35 +1,98 @@
-#問題文
-#整数 N が与えられます。
-#N を十進法で表した文字列の先頭に 0 個以上の 0 をつけることで、回文にすることはできますか？
-#
-#制約
-#0 ≦ N ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#回文にできるなら Yes、できないなら No を出力せよ。
-#
-#入力例 1
-#1210
-#
-#出力例 1
-#Yes
-#1210 の先頭に 1 個の 0 をつけると 01210 となり回文になります。
-#
-#入力例 2
-#777
-#
-#出力例 2
-#Yes
-#777 はもともと回文です。
-#
-#入力例 3
-#123456789
-#
-#出力例 3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check_palindrome(s):
+    for i in range(len(s)):
+        if s[i] != s[-1 - i]:
+            return False
+    return True
+
+N = input()
+
+=======
+Suggestion 2
+
+def is_palindrome(string):
+    return string == string[::-1]
+
+N = input()
+print("Yes" if is_palindrome(N) else "No")
+
+=======
+Suggestion 3
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+n = input()
+print("Yes" if isPalindrome(n) else "No")
+
+=======
+Suggestion 4
+
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+n = int(input())
+
+=======
+Suggestion 5
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 6
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+N = input()
+for i in range(0, 10):
+    if isPalindrome('0'*i + N):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 7
+
+def is_palindrome(n):
+    if n == n[::-1]:
+        return True
+    else:
+        return False
+
+n = input()
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    if n == n[::-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def is_palindrome(s):
+    for i in range(len(s)//2):
+        if s[i] != s[-1-i]:
+            return False
+    return True
+
+N = input()
+
+=======
+Suggestion 10
+
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+N = int(input())

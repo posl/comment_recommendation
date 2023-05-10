@@ -1,49 +1,154 @@
-#問題文
-#長さ N の偶数からなる正の整数列 A= {a_1,a_2,...,a_N} と、整数 M が与えられます。
-#任意の k(1 ≦ k ≦ N) に対して以下の条件を満たす正の整数 X を A の「半公倍数」と定義します。
-#X= a_k × (p+0.5) を満たす負でない整数 p が存在する。
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#2 ≦ a_i ≦ 10^9
-#a_i は偶数である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#a_1 a_2 ... a_N
-#
-#出力
-#1 以上 M 以下の整数のうちの A の半公倍数の個数を出力せよ。
-#
-#入力例 1
-#2 50
-#6 10
-#
-#出力例 1
-#2
-#15 = 6  × 2.5 
-#15 = 10 × 1.5 
-#45 = 6  × 7.5 
-#45 = 10 × 4.5 
-#より、15,45 は A の半公倍数です。1 以上 50 以下の整数に他に A の半公倍数はないので、答えは 2 となります。
-#
-#入力例 2
-#3 100
-#14 22 40
-#
-#出力例 2
-#0
-#答えが 0 の場合もあります。
-#
-#入力例 3
-#5 1000000000
-#6 6 2 6 2
-#
-#出力例 3
-#166666667
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    #print(N,M,A)
+    X = []
+    for a in A:
+        #print(a)
+        X.append(a//2)
+    #print(X)
+    #print(max(X))
+    #max_X = max(X)
+    #
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 3
+
+def lcm(a,b):
+    return a*b//gcd(a,b)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = list(set(a))
+    a.sort()
+    a = a[::-1]
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 2 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 4 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 8 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 16 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 32 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 64 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 128 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 256 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 512 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] % 1024 == 0:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] == 2:
+            a2.append(a[i])
+    a = a2
+    a2 = []
+    for i in range(len(a)):
+        if a[i] == 4:
+            a2.append(a[i])
+    a = a2
+    a
+
+=======
+Suggestion 7
+
+def lcm(x, y):
+    return (x * y) // math.gcd(x, y)
+
+import math
+import collections
+
+n, m = list(map(int, input().split()))
+a = list(map(int, input().split()))
+
+a = list(map(lambda x: x // 2, a))
+a = list(map(lambda x: lcm(x, 1), a))
+a = list(map(lambda x: x // 1, a))
+a = list(map(lambda x: x // 2, a))
+a = list(map(lambda x: x // 1, a))
+
+c = collections.Counter(a)
+c = sorted(c.items(), key=lambda x:x[0])
+c = list(map(lambda x: x[1], c))
+
+ans = 0
+for i in range(1, m + 1):
+    d = 0
+    for j in c:
+        if i % j == 0:
+            d += 1
+    if d == len(c):
+        ans += 1
+
+print(ans)

@@ -1,36 +1,42 @@
-#問題文
-#英小文字のみからなる長さ 3 の文字列 S が与えられます。
-#S の各文字を並び替えて得られる文字列は、何種類ありますか？
-#
-#制約
-#S は英小文字のみからなる長さ 3 の文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S の各文字を並び替えて得られる文字列の種類数を出力せよ。
-#
-#入力例 1
-#aba
-#
-#出力例 1
-#3
-#S= aba の各文字を並び替えて得られる文字列は、aab, aba, baa の 3 通りです。
-#
-#入力例 2
-#ccc
-#
-#出力例 2
-#1
-#S= ccc の各文字を並び替えて得られる文字列は、ccc の 1 通りのみです。
-#
-#入力例 3
-#xyz
-#
-#出力例 3
-#6
-#S= xyz の各文字を並び替えて得られる文字列は、xyz, xzy, yxz, yzx, zxy, zyx の 6 通りです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(len(set(S)))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    s_list = []
+    for i in s:
+        s_list.append(i)
+    s_set = set(s_list)
+    print(len(s_set))
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    S = "".join(S)
+    S = S.replace(" ", "")
+    S = S.replace("\n", "")
+    print(S)
+    if S == "abc":
+        print("Yes")
+    else:
+        print("No")

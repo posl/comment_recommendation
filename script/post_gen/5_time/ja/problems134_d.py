@@ -1,47 +1,224 @@
-#問題文
-#N 個の空の箱が横一列に並んでいます。
-#左から i  (1 ≦ i ≦ N) 番目の箱には整数 i が書かれています。
-#すぬけさんは、それぞれの箱に対してボールを 1 個入れるか何も入れないかを選ぶことができます。
-#ここで、以下の条件を満たすようなボールの入れ方を、いいボールの入れ方と定めます。
-#1 以上 N 以下の任意の整数 i について、i の倍数が書かれた箱に入っているボールの個数の和を 2 で割った余りが a_i である。
-#いいボールの入れ方は存在するでしょうか。存在するならば 1 つ求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 2 × 10^5
-#a_i は 0 または 1 である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#いいボールの入れ方が存在しないなら -1 を出力せよ。
-#存在するならば、そのような入れ方のうちの 1 つを以下の形式で出力せよ。
-#M
-#b_1 b_2 ... b_M
-#ここで M はボールを入れる箱の個数を表し、b_1, b_2, ..., b_M はボールを入れる箱に書かれた整数を任意の順番に並べたものである。
-#
-#入力例 1
-#3
-#1 0 0
-#
-#出力例 1
-#1
-#1
-#1 が書かれた箱だけにボールを入れることを考えます。
-#1 の倍数が書かれた箱は、1 が書かれた箱、2 が書かれた箱、3 が書かれた箱の 3 個です。これらの箱に入っているボールの個数の和は 1 です。
-#2 の倍数が書かれた箱は、2 が書かれた箱の 1 個だけです。これらの箱に入っているボールの個数の和は 0 です。
-#3 の倍数が書かれた箱は、3 が書かれた箱の 1 個だけです。これらの箱に入っているボールの個数の和は 0 です。
-#以上より、1 が書かれた箱だけにボールを入れるのは、与えられた条件を満たすいいボールの入れ方です。
-#
-#入力例 2
-#5
-#0 0 0 0 0
-#
-#出力例 2
-#0
-#ボールを 1 つも入れない入れ方が、いい入れ方になる場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * N
+    for i in range(N, 0, -1):
+        sum = 0
+        for j in range(i, N+1, i):
+            sum += b[j-1]
+        if sum % 2 != a[i-1]:
+            b[i-1] = 1
+    M = sum(b)
+    print(M)
+    if M > 0:
+        for i in range(N):
+            if b[i] == 1:
+                print(i+1, end=" ")
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n - 1, -1, -1):
+        if sum(b[i::i+1]) % 2 != a[i]:
+            b[i] = 1
+    print(sum(b))
+    if sum(b) > 0:
+        print(*[i+1 for i in range(n) if b[i] == 1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    b = [0] * n
+    for i in reversed(range(1, n + 1)):
+        s = sum(b[i - 1::i]) % 2
+        if s != a[i - 1]:
+            b[i - 1] = 1
+    m = sum(b)
+    if m == 0:
+        print(0)
+    else:
+        print(m)
+        print(*[i + 1 for i, j in enumerate(b) if j == 1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    if N == 1:
+        if a[0] == 0:
+            print(1)
+            print(1)
+        else:
+            print(-1)
+        return
+    if N == 2:
+        if a[0] == 0 and a[1] == 0:
+            print(2)
+            print("1 2")
+        elif a[0] == 1 and a[1] == 1:
+            print(2)
+            print("1 2")
+        elif a[0] == 0 and a[1] == 1:
+            print(2)
+            print("1 2")
+        elif a[0] == 1 and a[1] == 0:
+            print(2)
+            print("1 2")
+        else:
+            print(-1)
+        return
+    if a[0] == 1:
+        print(-1)
+        return
+    if a[1] == 1:
+        print(-1)
+        return
+    if a[0] == 0 and a[1] == 0:
+        print(2)
+        print("1 2")
+        return
+    if a[0] == 0 and a[1] == 1:
+        print(-1)
+        return
+    if a[0] == 1 and a[1] == 0:
+        print(-1)
+        return
+    if a[0] == 1 and a[1] == 1:
+        print(-1)
+        return
+    print(N)
+    for i in range(1, N+1):
+        print(i)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n, 0, -1):
+        c = 0
+        for j in range(i, n + 1, i):
+            c += b[j - 1]
+        if c % 2 != a[i - 1]:
+            b.append(1)
+        else:
+            b.append(0)
+    print(sum(b))
+    for k in range(len(b)):
+        if b[k] == 1:
+            print(k + 1, end=' ')
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    a = [int(i) for i in input().split()]
+    b = [0] * (N+1)
+    for i in range(N, 0, -1):
+        if a[i-1] != sum(b[i::i]) % 2:
+            b[i] = 1
+    print(sum(b))
+    if sum(b) > 0:
+        print(*[i for i, x in enumerate(b) if x == 1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*N
+    for i in range(N-1, -1, -1):
+        #print(i)
+        #print(B)
+        cnt = 0
+        for j in range(i+1, N+1, i+1):
+            #print(j)
+            cnt += B[j-1]
+        #print(cnt)
+        if cnt % 2 != A[i]:
+            B[i] = 1
+    ans = []
+    for i in range(N):
+        if B[i] == 1:
+            ans.append(i+1)
+    print(len(ans))
+    if len(ans) > 0:
+        print(*ans)
+
+=======
+Suggestion 8
+
+def main():
+    # データ入力
+    N = int(input())
+    a = list(map(int, input().split()))
+
+    # 処理
+    # 一番後ろから処理していく
+    # 1が書かれた箱にボールを入れるか入れないかを決める
+    # 1が書かれた箱にボールを入れた場合、その箱の倍数にあたる箱にはボールを入れない
+    # 1が書かれた箱にボールを入れなかった場合、その箱の倍数にあたる箱にはボールを入れる
+    # 1が書かれた箱にボールを入れるか入れないかは、その箱の倍数にあたる箱に入れるボールの個数の和の偶奇で決まる
+    # 1が書かれた箱にボールを入れる場合、その箱の倍数にあたる箱にはボールを入れない
+    # 1が書かれた箱にボールを入れない場合、その箱の倍数にあたる箱にはボールを入れる
+    # 1が書かれた箱にボールを入れるか入れないかは、その箱の倍数にあたる箱に入れるボールの個数の和の偶奇で決まる
+    # 1が書かれた箱にボールを入れる場合、その箱の倍数にあたる箱にはボールを入れない
+    # 1が書かれた箱にボールを入れない場合、その箱の倍数にあたる箱にはボールを入れる
+    # 1が書かれた箱にボールを入れるか入れないかは、その箱の倍数にあたる箱に
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] == 1:
+            for j in range(i+1, N):
+                if (j+1) % (i+1) == 0:
+                    A[j] = (A[j] + 1) % 2
+    print(sum(A))
+    for i in range(N):
+        if A[i] == 1:
+            print(i+1)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n, 0, -1):
+        if a[i-1] == 1:
+            ans.append(i)
+            for j in range(i-1, 0, -1):
+                if j % i == 0:
+                    if a[j-1] == 1:
+                        a[j-1] = 0
+                    else:
+                        a[j-1] = 1
+    print(len(ans))
+    if len(ans) != 0:
+        print(*ans)

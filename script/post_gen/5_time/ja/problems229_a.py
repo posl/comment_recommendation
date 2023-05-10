@@ -1,39 +1,108 @@
-#問題文
-#縦 2 行、横 2 列のグリッド(各マスが正方形のマス目)があります。
-#このグリッドは、各マスが黒か白であり、少なくとも 2 つの黒マスを含みます。
-#各マスの色の情報は文字列 S_1,S_2 として、以下の形式で与えられます。
-#文字列 S_i の j 文字目が # であれば上から i マス目、左から j マス目は黒
-#文字列 S_i の j 文字目が . であれば上から i マス目、左から j マス目は白
-#2 つの異なる黒マス同士が辺で接している時、またその時に限りそれら 2 つの黒マスは直接行き来できます。
-#黒マスのみをいくつか通ることによって、どの 2 つの黒マス同士も(直接または間接的に)行き来できるかどうか判定してください。  
-#
-#制約
-#S_1,S_2 は # または . からなる 2 文字の文字列
-#S_1,S_2 に # が合計で 2 つ以上含まれる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_1
-#S_2
-#
-#出力
-#どの 2 つの黒マス同士も行き来できるなら Yes 、そうでないなら No と出力せよ。
-#
-#入力例 1
-###
-#.#
-#
-#出力例 1
-#Yes
-#左上の黒マスと右上の黒マス、右上の黒マスと右下の黒マスを直接行き来することができます。
-#これらの移動を用いてどの黒マスからどの黒マスへも行き来できるので、答えは Yes となります。
-#
-#入力例 2
-#.#
-##.
-#
-#出力例 2
-#No
-#右上の黒マスと左下の黒マスを行き来することはできません。答えは No となります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' or s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' or s2[0] == '#' and s2[1] == '#' or s1[0] == '#' and s2[0] == '#' or s1[1] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S1 = input()
+    S2 = input()
+    if S1[0] == '#' and S1[1] == '#' or S2[0] == '#' and S2[1] == '#':
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    S1 = input()
+    S2 = input()
+    if S1[0] == "#" and S1[1] == "#" and S2[0] == "#" and S2[1] == "#":
+        print("No")
+    else:
+        print("Yes")
+main()
+
+=======
+Suggestion 6
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#':
+        print('Yes')
+    elif s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    elif s1[0] == '#' and s2[0] == '#':
+        print('Yes')
+    elif s1[1] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    s1 = input()
+    s2 = input()
+    if (s1[0] == '#' and s1[1] == '#') or (s2[0] == '#' and s2[1] == '#'):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    S1 = input()
+    S2 = input()
+    if S1[0] == "#" and S1[1] == "#" or S2[0] == "#" and S2[1] == "#" or S1[0] == "#" and S2[0] == "#" or S1[1] == "#" and S2[1] == "#":
+        print("Yes")
+    else:
+        print("No")

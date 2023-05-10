@@ -1,36 +1,139 @@
-#問題文
-#整数 S が与えられます。
-#すべての項が 3 以上の整数で、その総和が S であるような数列がいくつあるか求めてください。ただし、答えは非常に大きくなる可能性があるので、 10^9+7 で割った余りを出力してください。
-#
-#制約
-#1 ≦ S ≦ 2000
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#7
-#
-#出力例 1
-#3
-#数列 {3,4},{4,3},{7} の 3 つが条件を満たします。
-#
-#入力例 2
-#2
-#
-#出力例 2
-#0
-#条件を満たす数列は存在しません。
-#
-#入力例 3
-#1729
-#
-#出力例 3
-#294867501
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = int(input())
+    mod = 10**9 + 7
+    dp = [0]*(S+1)
+    dp[0] = 1
+    for i in range(S+1):
+        for j in range(i-2):
+            dp[i] += dp[j]
+            dp[i] %= mod
+    print(dp[S])
+
+=======
+Suggestion 2
+
+def calc_combination_mod(n, r, mod=10**9+7):
+    if r > n:
+        return 0
+    return calc_factorial_mod(n, mod) * pow(calc_factorial_mod(r, mod), mod-2, mod) * pow(calc_factorial_mod(n-r, mod), mod-2, mod) % mod
+
+=======
+Suggestion 3
+
+def main():
+    S = int(input())
+    mod = 10**9+7
+    dp = [0]*(S+1)
+    dp[0] = 1
+    for i in range(3,S+1):
+        for j in range(S-i+1):
+            dp[i+j] += dp[j]
+            dp[i+j] %= mod
+    print(dp[S])
+
+=======
+Suggestion 4
+
+def main():
+    s = int(input())
+    dp = [0]*(s+1)
+    dp[0] = 1
+
+    for i in range(3,s+1):
+        dp[i] = dp[i-1] + dp[i-3]
+        dp[i] %= 10**9+7
+
+    print(dp[s])
+
+=======
+Suggestion 5
+
+def solve():
+    S = int(input())
+
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    for i in range(3, S + 1):
+        for j in range(S - i + 1):
+            dp[i + j] += dp[j]
+            dp[i + j] %= 10 ** 9 + 7
+
+    print(dp[-1])
+
+=======
+Suggestion 6
+
+def solve(s):
+    dp = [0] * (s + 1)
+    dp[0] = 1
+    for i in range(3, s + 1):
+        for j in range(0, i - 2 + 1):
+            dp[i] += dp[j]
+            dp[i] %= 1000000007
+    return dp[s]
+
+s = int(input())
+print(solve(s))
+
+=======
+Suggestion 7
+
+def main():
+    S = int(input())
+    dp = [0] * (S + 1)
+    dp[0] = 1
+    mod = 10**9 + 7
+    for i in range(3, S + 1):
+        dp[i] = (dp[i - 1] + dp[i - 3]) % mod
+    print(dp[S])
+
+=======
+Suggestion 8
+
+def comb(n, r):
+    if n < r:
+        return 0
+    if n == r:
+        return 1
+    if r == 1:
+        return n
+    if r == 0:
+        return 1
+    return comb(n - 1, r) + comb(n - 1, r - 1)
+
+s = int(input())
+ans = 0
+for i in range(1,s//3+1):
+    ans += comb(s-3*i+i-1,i-1)
+    ans %= 10**9+7
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = int(input())
+    ans = 0
+    for i in range(1, s//3 + 1):
+        ans += (s - 3*i) // 2
+    print(ans%1000000007)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    mod = 10**9 + 7
+    dp = [0] * (n+1)
+    dp[0] = 1
+    for i in range(n+1):
+        for j in range(3, n+1):
+            if i + j <= n:
+                dp[i+j] += dp[i]
+                dp[i+j] %= mod
+    print(dp[n])

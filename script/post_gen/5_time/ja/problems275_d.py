@@ -1,37 +1,88 @@
-#問題文
-#非負整数 x に対し定義される関数 f(x) は以下の条件を満たします。
-#f(0) = 1
-#任意の正整数 k に対し f(k) = f(⌊ (k/(2))⌋) +  f(⌊ (k/(3))⌋)
-#ここで、⌊ A ⌋ は A の小数点以下を切り捨てた値を指します。  
-#このとき、 f(N) を求めてください。
-#
-#制約
-#N は 0 ≦ N ≦ 10^{18} を満たす整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#3
-#f(2) =  f(⌊ (2/(2))⌋) +  f(⌊ (2/(3))⌋) = f(1) + f(0) =(f(⌊ (1/(2))⌋) +  f(⌊ (1/(3))⌋)) + f(0)  =(f(0)+f(0)) + f(0)= 3 です。
-#
-#入力例 2
-#0
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100
-#
-#出力例 3
-#55
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return 2
+    return f(n//2) + f(n//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 2
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 3
+
+def f(x):
+    if x == 0:
+        return 1
+    return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 4
+
+def f(x):
+    if x == 0:
+        return 1
+    elif x == 1:
+        return 2
+    elif x == 2:
+        return 3
+    else:
+        return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 5
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 6
+
+def f(n):
+    if n == 0:
+        return 1
+    else:
+        return f(n//2)+f(n//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 7
+
+def f(n):
+    if n == 0:
+        return 1
+    return f(n//2) + f(n//3)
+
+n = int(input())
+print(f(n))

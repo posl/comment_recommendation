@@ -1,76 +1,183 @@
-#問題文
-#高橋くんは今日も 1 人でしりとりの練習をしています。
-#しりとりとは以下のルールで遊ばれるゲームです。
-#はじめ、好きな単語を発言する
-#以降、次の条件を満たす単語を発言することを繰り返す
-#その単語はまだ発言していない単語である
-#その単語の先頭の文字は直前に発言した単語の末尾の文字と一致する
-#
-#高橋くんは、10 秒間にできるだけ多くの単語を発言する練習をしています。
-#高橋くんが発言した単語の個数 N と i 番目に発言した単語 W_i が与えられるので、どの発言もしりとりのルールを守っていたかを判定してください。
-#
-#制約
-#N は 2 ≦ N ≦ 100 を満たす整数である
-#W_i は英小文字からなる長さ 1 以上 10 以下の文字列である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#W_1
-#W_2
-#:
-#W_N
-#
-#出力
-#高橋くんのどの発言もしりとりのルールを守っていたなら Yes、そうでなければ No を出力せよ。
-#
-#入力例 1
-#4
-#hoge
-#english
-#hoge
-#enigma
-#
-#出力例 1
-#No
-#hoge が複数回発言されているのでしりとりのルールを守っていません。
-#
-#入力例 2
-#9
-#basic
-#c
-#cpp
-#php
-#python
-#nadesico
-#ocaml
-#lua
-#assembly
-#
-#出力例 2
-#Yes
-#
-#入力例 3
-#8
-#a
-#aa
-#aaa
-#aaaa
-#aaaaa
-#aaaaaa
-#aaa
-#aaaaaaa
-#
-#出力例 3
-#No
-#
-#入力例 4
-#3
-#abc
-#arc
-#agc
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(w, words):
+    if w in words:
+        return False
+    if len(words) == 0:
+        return True
+    if w[0] != words[-1][-1]:
+        return False
+    return True
+
+n = int(input())
+words = []
+for i in range(n):
+    w = input()
+    if not check(w, words):
+        print('No')
+        exit()
+    words.append(w)
+print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+    for i in range(n):
+        if i != 0:
+            if words[i] in words[:i]:
+                print('No')
+                exit()
+            if words[i][0] != words[i-1][-1]:
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    w = [input() for i in range(n)]
+    for i in range(n-1):
+        if w[i][-1] != w[i+1][0]:
+            print('No')
+            return
+        for j in range(i+1,n):
+            if w[i] == w[j]:
+                print('No')
+                return
+    print('Yes')
+    return
+
+=======
+Suggestion 4
+
+def check_shiritori(words):
+    for i in range(len(words)):
+        for j in range(i+1,len(words)):
+            if words[i] == words[j]:
+                return False
+    return True
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    w = [input() for _ in range(n)]
+    for i in range(n - 1):
+        if w[i][-1] != w[i + 1][0]:
+            print('No')
+            exit()
+        if w.count(w[i]) > 1:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    w_list = []
+    for i in range(n):
+        w_list.append(input())
+    for i in range(n):
+        if i != 0:
+            if w_list[i] in w_list[0:i]:
+                print('No')
+                exit()
+        if i != n-1:
+            if w_list[i][-1] != w_list[i+1][0]:
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        word = input()
+        if word in words:
+            print('No')
+            return
+        else:
+            words.append(word)
+        if i > 0:
+            if word[0] != words[i-1][-1]:
+                print('No')
+                return
+    print('Yes')
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    W_list = []
+    for i in range(N):
+        W_list.append(input())
+
+    flag = True
+    for i in range(N-1):
+        if W_list[i] in W_list[i+1:]:
+            flag = False
+            break
+        if W_list[i][-1] != W_list[i+1][0]:
+            flag = False
+            break
+
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    words = []
+    for i in range(n):
+        words.append(input())
+
+    for i in range(n):
+        for j in range(i+1, n):
+            if words[i] == words[j]:
+                print("No")
+                return
+    for i in range(n-1):
+        if words[i][-1] != words[i+1][0]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    w = []
+    for i in range(n):
+        w.append(input())
+    for i in range(n-1):
+        if w[i][-1] != w[i+1][0]:
+            print("No")
+            exit()
+        if w.count(w[i]) > 1:
+            print("No")
+            exit()
+    print("Yes")

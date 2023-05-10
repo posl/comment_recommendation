@@ -1,39 +1,114 @@
-#問題文
-#二次元平面上の点 (0,0) から点 (A,B) に向かって距離 1 だけ移動します。移動後の座標を求めてください。
-#ただし、点 X から点 Y に向かって距離 d (≦ 線分 XY の長さ) だけ移動すると、線分 XY 上で点 X からの距離が d であるような点に辿りつくものとします。
-#なお、制約より点 (0,0) と点 (A,B) の距離は 1 以上であることが保証されます。
-#
-#制約
-#入力は全て整数
-#0 ≦ A,B ≦ 1000
-#(A,B) ≠ (0,0)
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#移動後の点を (x,y) とするとき、 x と y をこの順に空白区切りで出力せよ。
-#なお、各出力について、想定解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#3 4
-#
-#出力例 1
-#0.600000000000 0.800000000000
-#他にも、例えば 0.5999999999 0.8000000001 という出力も許容されます。
-#
-#入力例 2
-#1 0
-#
-#出力例 2
-#1.000000000000 0.000000000000
-#点 (A,B) に到着する場合もあります。
-#
-#入力例 3
-#246 402
-#
-#出力例 3
-#0.521964870245 0.852966983083
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = map(int, input().split()
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int, input().split())
+    x = a / pow(a*a+b*b, 0.5)
+    y = b / pow(a*a+b*b, 0.5)
+    print(x, y)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int, input().split())
+    tmp = b/a
+    #print(tmp)
+    if a > b:
+        tmp2 = (1-tmp**2)**0.5
+        print(tmp2)
+        print(1-tmp**2)
+        print(tmp2)
+        print(tmp)
+    else:
+        tmp2 = (1-tmp**2)**0.5
+        print(tmp2)
+        print(1-tmp**2)
+        print(tmp2)
+        print(tmp)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    #print(a, b)
+    #print(a / (a + b), b / (a + b))
+    print("{:.12f} {:.12f}".format(a / (a + b), b / (a + b)))
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    x = a/(a**2 + b**2)**0.5
+    y = b/(a**2 + b**2)**0.5
+    print(x,y)
+
+=======
+Suggestion 6
+
+def solve():
+    A,B = map(int,input().split())
+    print(B/A)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    c = (a**2+b**2)**0.5
+    x = a/c
+    y = b/c
+    print(x,y)
+
+=======
+Suggestion 8
+
+def solve():
+    a, b = map(int, input().split())
+    if a == 0:
+        print(0, 1)
+    elif b == 0:
+        print(1, 0)
+    else:
+        c = (b**2 / a**2 + 1) ** 0.5
+        print(1 / (1 + c), c / (1 + c))
+
+=======
+Suggestion 9
+
+def main():
+    a, b = map(int, input().split())
+    if a == 0:
+        print(0, 1)
+        return
+    if b == 0:
+        print(1, 0)
+        return
+    if a == b:
+        print(0.5, 0.5)
+        return
+    if a > b:
+        print((a - b) / (2 * a), 0.5 + (a - b) / (2 * b))
+        return
+    if b > a:
+        print(0.5 + (b - a) / (2 * a), (b - a) / (2 * b))
+        return
+
+=======
+Suggestion 10
+
+def main():
+    A, B = map(int, input().split())
+    print(A / (A + B), B / (A + B))

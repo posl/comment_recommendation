@@ -1,53 +1,151 @@
-#問題文
-#数直線と N 個のコマを用いて 1 人でゲームを行います。
-#はじめ、これらのコマをそれぞれ好きな整数座標に置きます。
-#このとき、同じ座標に複数のコマを置いても構いません。
-#以下の移動を繰り返して、座標 X_1, X_2, ..., X_M の M 個の地点全てをいずれかのコマで訪れることが目的です。
-#移動: コマを 1 つ選び、そのコマの座標を x とする。そのコマを座標 x+1 もしくは座標 x-1 に移動する。
-#ただし、最初にコマを置いた座標はその時点で訪れたとみなします。
-#目的を達成するまでに移動を行う回数の最小値を求めてください。
-#
-#制約
-#入力はすべて整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#-10^5 ≦ X_i ≦ 10^5
-#X_1, X_2, ..., X_M は全て異なる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#X_1 X_2 ... X_M
-#
-#出力
-#目的を達成するまでに移動を行う回数の最小値を出力せよ。
-#
-#入力例 1
-#2 5
-#10 12 1 2 14
-#
-#出力例 1
-#5
-#以下の手順で 5 回移動を行うと目的を達成でき、このときが最小です。
-#はじめに 2 個のコマをそれぞれ座標 1, 座標 10 に置きます。
-#座標 1 のコマを座標 2 に移動します。
-#座標 10 のコマを座標 11 に移動します。
-#座標 11 のコマを座標 12 に移動します。
-#座標 12 のコマを座標 13 に移動します。
-#座標 13 のコマを座標 14 に移動します。
-#
-#入力例 2
-#3 7
-#-10 -3 0 9 -100 2 17
-#
-#出力例 2
-#19
-#
-#入力例 3
-#100 1
-#-100000
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.sort()
+    if n >= m:
+        print(0)
+        exit()
+    diff_list = []
+    for i in range(m-1):
+        diff_list.append(x_list[i+1] - x_list[i])
+    diff_list.sort()
+    print(sum(diff_list[:m-n]))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x = sorted(x)
+    if n >= m:
+        print(0)
+        exit()
+    x_diff = []
+    for i in range(m-1):
+        x_diff.append(x[i+1]-x[i])
+    x_diff = sorted(x_diff)
+    ans = 0
+    for i in range(m-n):
+        ans += x_diff[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        exit()
+    ans = 0
+    d = []
+    for i in range(m-1):
+        d.append(x[i+1]-x[i])
+    d.sort(reverse=True)
+    for i in range(n-1):
+        ans += d[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    X = list(map(int,input().split()))
+    X.sort()
+    if N>=M:
+        print(0)
+        exit()
+    X_dif = []
+    for i in range(M-1):
+        X_dif.append(X[i+1]-X[i])
+    X_dif.sort()
+    print(sum(X_dif[:M-N]))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    diff = []
+    for i in range(m-1):
+        diff.append(x[i+1]-x[i])
+    diff.sort()
+    ans = 0
+    for i in range(m-n):
+        ans += diff[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+    else:
+        diff = []
+        for i in range(m-1):
+            diff.append(x[i+1]-x[i])
+        diff.sort()
+        print(sum(diff[:m-n]))
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        return
+    dist = []
+    for i in range(m - 1):
+        dist.append(x[i + 1] - x[i])
+    dist.sort()
+    print(sum(dist[:m - n]))
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+    else:
+        d = []
+        for i in range(m-1):
+            d.append(x[i+1] - x[i])
+        d.sort()
+        print(sum(d[:m-n]))
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        return
+    d = []
+    for i in range(m-1):
+        d.append(x[i+1]-x[i])
+    d.sort()
+    print(sum(d[:m-n]))

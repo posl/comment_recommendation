@@ -1,45 +1,161 @@
-#問題文
-#長さ N かつ全ての要素が 1 以上 M 以下である整数列のうち、狭義単調増加であるものを全て辞書順に出力してください。
-#
-#注記
-#ある 2 個の異なる長さの等しい整数列 A_1,A_2,...,A_N と B_1,B_2,...,B_N が以下を満たすとき、またその時に限り辞書順で A が B より早いと定義されます。
-#ある整数 i(1 ≦ i ≦ N) が存在し、1 ≦ j < i である全ての整数 j に対し A_j=B_j が成り立ち、かつ A_i < B_i が成り立つ。
-#ある整数列 A_1,A_2,...,A_N は以下を満たすとき、またその時に限り狭義単調増加です。
-#全ての整数 i(1 ≦ i ≦ N-1) に対し A_i < A_{i+1} が成り立つ。
-#
-#制約
-#1 ≦ N ≦ M ≦ 10
-#入力は全て整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#
-#出力
-#条件を満たす整数列を一行に一つずつ、辞書順に出力せよ（出力例を参考にせよ）。
-#
-#入力例 1
-#2 3
-#
-#出力例 1
-#1 2 
-#1 3 
-#2 3 
-#条件を満たす数列は (1,2),(1,3),(2,3) の 3 個です。これらを辞書順で早い方から出力します。
-#
-#入力例 2
-#3 5
-#
-#出力例 2
-#1 2 3 
-#1 2 4 
-#1 2 5 
-#1 3 4 
-#1 3 5 
-#1 4 5 
-#2 3 4 
-#2 3 5 
-#2 4 5 
-#3 4 5 
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    for i in range(n,m+1):
+        for j in range(i+1,m+1):
+            print(i,j)
+
+=======
+Suggestion 2
+
+def list_search(n, m, l):
+    if n == 1:
+        for i in range(1, m + 1):
+            l.append(str(i))
+        print(' '.join(l))
+    else:
+        for i in range(1, m + 1):
+            l.append(str(i))
+            list_search(n - 1, m, l)
+            l.pop()
+
+n, m = map(int, input().split())
+l = []
+list_search(n, m, l)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    for i in range(1,m+2-n):
+        print(i,end=" ")
+        for j in range(i+1,m+1):
+            print(j,end=" ")
+        print()
+
+=======
+Suggestion 4
+
+def mk_list(n, m):
+    if n == 1:
+        return [[i] for i in range(1, m+1)]
+    else:
+        ret = []
+        for i in range(1, m+1):
+            for j in mk_list(n-1, m):
+                if j[-1] < i:
+                    ret.append(j + [i])
+        return ret
+
+n, m = map(int, input().split())
+for i in mk_list(n, m):
+    print(*i)
+
+=======
+Suggestion 5
+
+def f(n, m, a, i):
+    if i == n:
+        print(" ".join(map(str, a)))
+        return
+    for j in range(1, m+1):
+        a[i] = j
+        f(n, m, a, i+1)
+
+n, m = map(int, input().split())
+a = [0]*n
+f(n, m, a, 0)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    ans = []
+    def dfs(a):
+        if len(a) == n:
+            ans.append(a)
+            return
+        for i in range(1, m+1):
+            if len(a) > 0 and i <= a[-1]:
+                continue
+            dfs(a + [i])
+    dfs([])
+    for a in ans:
+        print(*a)
+
+=======
+Suggestion 7
+
+def dfs(n, m, a):
+    if len(a) == n:
+        print(" ".join(map(str, a)))
+        return
+    s = a[-1] if a else 1
+    for i in range(s, m + 1):
+        dfs(n, m, a + [i])
+
+n, m = map(int, input().split())
+dfs(n, m, [])
+
+=======
+Suggestion 8
+
+def solve():
+    from itertools import combinations
+    N,M = map(int,input().split())
+    for i in combinations(range(1,M+1),N):
+        print(*i)
+solve()
+
+=======
+Suggestion 9
+
+def prob_c():
+    N,M = map(int, input().split())
+    array = [1]*N
+    array[0] = 1
+    current = 0
+    while True:
+        if current == N-1:
+            print(*array)
+            array[current] += 1
+            if array[current] > M:
+                array[current] = 1
+                current -= 1
+            continue
+        if array[current] > M:
+            array[current] = 1
+            current -= 1
+            continue
+        if array[current] >= array[current+1]:
+            array[current] += 1
+            continue
+        if array[current] < array[current+1]:
+            current += 1
+            continue
+        if current == 0:
+            break
+    return
+
+prob_c()
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * n
+    def rec(i):
+        if i == n:
+            print(' '.join(map(str, a)))
+            return
+        for j in range(1, m + 1):
+            a[i] = j
+            rec(i + 1)
+    rec(0)

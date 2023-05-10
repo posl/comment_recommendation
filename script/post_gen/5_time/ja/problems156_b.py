@@ -1,38 +1,71 @@
-#問題文
-#整数 N を K 進数で表したとき、何桁になるかを求めてください。
-#
-#注記
-#K 進表記については、Wikipedia「位取り記数法」を参照してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^9
-#2 ≦ K ≦ 10
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#
-#出力
-#整数 N を K 進数で表したとき、何桁になるかを出力せよ。
-#
-#入力例 1
-#11 2
-#
-#出力例 1
-#4
-#11 を 2 進数で表記すると 1011 です。
-#
-#入力例 2
-#1010101 10
-#
-#出力例 2
-#7
-#
-#入力例 3
-#314159265 3
-#
-#出力例 3
-#18
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    while N >= K:
+        ans += 1
+        N = N // K
+    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    #print(n,k)
+    count = 0
+    while n>=k:
+        n = n//k
+        count += 1
+    print(count+1)
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    ans = 0
+    while N > 0:
+        N //= K
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    while n > 0:
+        n //= k
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    count = 0
+    while True:
+        n //= k
+        count += 1
+        if n == 0:
+            break
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    i = 0
+    while n >= k:
+        n = n // k
+        i += 1
+    print(i+1)

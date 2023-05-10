@@ -1,63 +1,133 @@
-#問題文
-#整数からなる数列が N 個あります。
-#i  (1 ≦ i ≦ N) 番目の数列は L_i 項からなり、i 番目の数列の第 j  (1 ≦ j ≦ L_i) 項 は a_{i, j} です。
-#Q 個のクエリが与えられます。k  (1 ≦ k ≦ Q) 番目のクエリでは、整数 s_k, t_k が与えられるので、s_k 番目の数列の第 t_k 項を求めてください。
-#
-#制約
-#1 ≦ N, Q ≦ 2 × 10^5
-#L_i ≧ 1  (1 ≦ i ≦ N)
-#sum_{i=1}^N L_i ≦ 2 × 10^5
-#1 ≦ a_{i, j} ≦ 10^9  (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k}  (1 ≦ k ≦ Q)
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#L_1 a_{1, 1} ... a_{1, L_1}
-#.
-#.
-#.
-#L_N a_{N, 1} ... a_{N, L_N}
-#s_1 t_1
-#.
-#.
-#.
-# 
-#s_Q t_Q
-#
-#出力
-#Q 行出力せよ。k  (1 ≦ k ≦ Q) 行目には、k 番目のクエリに対する答えを出力せよ。
-#
-#入力例 1
-#2 2
-#3 1 4 7
-#2 5 9
-#1 3
-#2 1
-#
-#出力例 1
-#7
-#5
-#1 番目の数列は (1, 4, 7)、2 番目の数列は (5, 9) です。
-#それぞれのクエリに対する答えは次のようになります。
-#1 番目の数列の第 3 項は 7 です。
-#2 番目の数列の第 1 項は 5 です。
-#
-#入力例 2
-#3 4
-#4 128 741 239 901
-#2 1 1
-#3 314 159 26535
-#1 1
-#2 2
-#3 3
-#1 4
-#
-#出力例 2
-#128
-#1
-#26535
-#901
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10**9+7
+    n,q = map(int,readline().split())
+    a = []
+    for _ in range(n):
+        a.append(list(map(int,readline().split())))
+    for _ in range(q):
+        s,t = map(int,readline().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 2
+
+def main():
+    n_q = list(map(int, input().split()))
+    n = n_q[0]
+    q = n_q[1]
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    s_t = []
+    for j in range(q):
+        s_t.append(list(map(int, input().split())))
+    for k in range(q):
+        print(a[s_t[k][0]-1][s_t[k][1]-1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t-1])
+
+=======
+Suggestion 4
+
+def solve():
+    N, Q = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 累積和を作る
+    for i in range(N):
+        for j in range(1, len(A[i])):
+            A[i][j] += A[i][j - 1]
+
+    # クエリ処理
+    for query in queries:
+        s, t = query
+        print(A[s - 1][t - 1])
+
+=======
+Suggestion 5
+
+def solve():
+    N, Q = map(int, input().split())
+    A = []
+    for _ in range(N):
+        A.append(list(map(int, input().split())))
+
+    for _ in range(Q):
+        s, t = map(int, input().split())
+        print(A[s-1][t-1])
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+
+    for i in range(q):
+        s,t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10 ** 9 + 7
+    n,q = map(int,readline().split())
+    L = []
+    A = []
+    for i in range(n):
+        l,*a = map(int,readline().split())
+        L.append(l)
+        A.append(a)
+    for i in range(q):
+        s,t = map(int,readline().split())
+        print(A[s-1][t-1])
+
+=======
+Suggestion 8
+
+def main():
+    n, q = map(int, input().split())
+    nums = []
+    for i in range(n):
+        nums.append(list(map(int, input().split())))
+
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(nums[s - 1][t - 1])
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+
+    for i in range(Q):
+        s, t = map(int, input().split())
+        print(L[s-1][t-1])

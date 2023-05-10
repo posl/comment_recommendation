@@ -1,63 +1,203 @@
-#問題文
-#東西一列に並んだ N 個の島と N-1 本の橋があります。
-#i 番目の橋は、西から i 番目の島と西から i+1 番目の島を接続しています。
-#ある日、いくつかの島同士で争いが起こり、島の住人たちから M 個の要望がありました。
-#要望 i: 西から a_i 番目の島と西から b_i 番目の島の間で争いが起こったために、これらの島をいくつかの橋を渡って行き来できないようにしてほしい
-#あなたは橋をいくつか取り除くことでこれら M 個の要望全てを叶えることにしました。
-#取り除く必要のある橋の本数の最小値を求めてください。
-#
-#制約
-#入力は全て整数である
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#組 (a_i, b_i) は全て異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#a_1 b_1
-#a_2 b_2
-#:
-#a_M b_M
-#
-#出力
-#取り除く必要のある橋の本数の最小値を出力せよ。
-#
-#入力例 1
-#5 2
-#1 4
-#2 5
-#
-#出力例 1
-#1
-#西から 2 番目の島と 3 番目の島を接続する橋を取り除くことで達成できます。
-#
-#入力例 2
-#9 5
-#1 8
-#2 7
-#3 5
-#4 6
-#7 9
-#
-#出力例 2
-#2
-#
-#入力例 3
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#出力例 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    a.sort()
+    b.sort()
+    ans = 0
+    for i in range(m):
+        if a[i] == a[i+1]:
+            ans += 1
+        if b[i] == b[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    AB.sort(key=lambda x: x[1])
+
+    ans = 1
+    b = AB[0][1]
+    for i in range(1, M):
+        if AB[i][0] >= b:
+            ans += 1
+            b = AB[i][1]
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    # 入力
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(M)]
+
+    # 各島について、西から何番目の島かを求める
+    # 各島について、西から何番目の島かを求める
+    west_island = [0] * (N + 1)
+    for i, (a, b) in enumerate(AB):
+        west_island[a] = i + 1
+        west_island[b] = i + 1
+
+    # 西から何番目の島かを求める
+    west_island = [0] * (N + 1)
+    for i, (a, b) in enumerate(AB):
+        west_island[a] = i + 1
+        west_island[b] = i + 1
+
+    # 区間を求める
+    # 区間を求める
+    intervals = []
+    start = -1
+    for i, island in enumerate(west_island):
+        if island == 0:
+            continue
+        if start == -1:
+            start = i
+            continue
+        if west_island[i - 1] != island:
+            intervals.append((start, i - 1))
+            start = i
+    if start != -1:
+        intervals.append((start, N))
+
+    # 区間の個数を求める
+    # 区間の個数を求める
+    ans = 0
+    for i in intervals:
+        ans += 1
+    print(ans - 1)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    AB.sort(key=lambda x: x[1])
+
+    ans = 0
+    now = 0
+
+    for a, b in AB:
+        if a > now:
+            ans += 1
+            now = b - 1
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    ab = []
+    for i in range(m):
+        a, b = map(int, input().split())
+        ab.append([a, b])
+    ab.sort()
+
+    ans = 0
+    for i in range(m):
+        if ab[i][1] in ab[i + 1:]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    bridge = [0] * (N + 1)
+    for a, b in AB:
+        if bridge[a] == 0:
+            bridge[b] = 1
+        else:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    bridge = 0
+    for i in range(M):
+        if bridge < AB[i][0]:
+            bridge = AB[i][1] - 1
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    AB.sort(key=lambda x:x[1])
+
+    ans = 0
+    bridge = [0]*(N+1)
+    for i in range(M):
+        if bridge[AB[i][0]] == 0:
+            bridge[AB[i][1]] = 1
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    ab.sort(key=lambda x: x[1])
+    ans = 1
+    bridge = ab[0][1]
+    for i in range(m):
+        if ab[i][0] > bridge:
+            ans += 1
+            bridge = ab[i][1]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(m):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a = sorted(a)
+    b = sorted(b)
+    ans = 0
+    for i in range(m):
+        if a[i] != a[i-1] and b[i] != b[i-1]:
+            ans += 1
+    print(ans)
+main()

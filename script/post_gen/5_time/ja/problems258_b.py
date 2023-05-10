@@ -1,57 +1,296 @@
-#問題文
-#正整数 N が与えられます。
-#N 行 N 列のマス目があり、上から i 行目、左から j 列目のマスには数字 A_{i,j} が書かれています。
-#このマス目は上下および左右がつながっているものとします。つまり以下が全て成り立ちます。
-#(1,i) の上のマスは (N,i) であり、(N,i) の下のマスは (1,i) である。(1≦ i≦ N)
-#(i,1) の左のマスは (i,N) であり、(i,N) の右のマスは (i,1) である。(1≦ i≦ N)
-#高橋君は、上下左右および斜めの 8 方向のうちいずれかを初めに選びます。そして、好きなマスから決めた方向に 1 マス移動することを N-1 回繰り返します。
-#高橋君は N 個のマス上を移動することになりますが、高橋君が通ったマスに書かれている数字を左から通った順番に並べた整数としてあり得る最大のものを求めてください。
-#
-#制約
-#1 ≦ N ≦ 10
-#1 ≦ A_{i,j} ≦ 9
-#入力はすべて整数。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_{1,1}A_{1,2}... A_{1,N}
-#A_{2,1}A_{2,2}... A_{2,N}
-#.
-#.
-#.
-#A_{N,1}A_{N,2}... A_{N,N}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#1161
-#1119
-#7111
-#1811
-#
-#出力例 1
-#9786
-#高橋君が上から 2 行目、左から 4 列目のマスから出発し、右下に進むことで、通ったマスに書かれた数字を並べ 9786 を作ることができます。
-#9786 より大きい値を作ることはできないため、9786 が解です。
-#
-#入力例 2
-#10
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#
-#出力例 2
-#1111111111
-#32bit整数型に答えが収まるとは限らないことに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(a, b):
+    if a == b:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if i == 0 and j == 0:
+                continue
+            if i == 0:
+                a[i][j] += a[i][j-1]
+            elif j == 0:
+                a[i][j] += a[i-1][j]
+            else:
+                a[i][j] += max(a[i][j-1], a[i-1][j])
+    print(a[n-1][n-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [list(map(int, input())) for i in range(N)]
+    ans = -1
+    for i in range(N):
+        for j in range(N):
+            if A[i][j] == 1:
+                continue
+            tmp = 0
+            for k in range(N):
+                for l in range(N):
+                    tmp += min(abs(i-k), abs(j-l)) * A[k][l]
+            ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [list(map(int, input())) for _ in range(N)]
+    ans = -1
+    for i in range(N):
+        for j in range(N):
+            if A[i][j] == 1:
+                continue
+            ans = max(ans, A[i][j] * A[(i + 1) % N][j] * A[(i + 2) % N][j] * A[(i + 3) % N][j])
+            ans = max(ans, A[i][j] * A[i][(j + 1) % N] * A[i][(j + 2) % N] * A[i][(j + 3) % N])
+            ans = max(ans, A[i][j] * A[(i + 1) % N][(j + 1) % N] * A[(i + 2) % N][(j + 2) % N] * A[(i + 3) % N][(j + 3) % N])
+            ans = max(ans, A[i][j] * A[(i + 1) % N][(j - 1) % N] * A[(i + 2) % N][(j - 2) % N] * A[(i + 3) % N][(j - 3) % N])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input())))
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == 0 and j == 0:
+                continue
+            if i == 0:
+                A[i][j] += A[i][j-1]
+            elif j == 0:
+                A[i][j] += A[i-1][j]
+            else:
+                A[i][j] += max(A[i-1][j], A[i][j-1])
+    print(A[N-1][N-1])
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input())))
+
+    #print(a)
+
+    #print(a[0][0])
+    #print(a[n-1][n-1])
+
+    max = 0
+    for i in range(n):
+        for j in range(n):
+            #print(i, j)
+            #print(a[i][j])
+            #print(a[n-1-i][n-1-j])
+
+            if i == 0 and j == 0:
+                continue
+            elif i == n-1 and j == n-1:
+                continue
+            else:
+                #print(a[i][j] + a[n-1-i][n-1-j])
+                if max < (a[i][j] + a[n-1-i][n-1-j]):
+                    max = a[i][j] + a[n-1-i][n-1-j]
+
+    if n % 2 == 0:
+        print(max)
+    else:
+        print(max + a[int(n/2)][int(n/2)])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = []
+    for i in range(N):
+        a.append(list(map(int, input().split())))
+    #print(a)
+    #print(N)
+    #print(a[0][0])
+
+    #print(a[0][0])
+    #print(a[1][0])
+    #print(a[2][0])
+    #print(a[3][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[0][3])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[3][3])
+    #print(a[1][2])
+    #print(a[2][3])
+    #print(a[1][3])
+    #print(a[2][1])
+    #print(a[3][2])
+    #print(a[3][1])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[3][3])
+    #print(a[1][2])
+    #print(a[2][3])
+    #print(a[1][3])
+    #print(a[2][1])
+    #print(a[3][2])
+    #print(a[3][1])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[3][3])
+    #print(a[1][2])
+    #print(a[2][3])
+    #print(a[1][3])
+    #print(a[2][1])
+    #print(a[3][2])
+    #print(a[3][1])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[3][3])
+    #print(a[1][2])
+    #print(a[2][3])
+    #print(a[1][3])
+    #print(a[2][1])
+    #print(a[3][2])
+    #print(a[3][1])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[3][3])
+    #print(a[1][2])
+    #print(a[2][3])
+    #print(a[1][3])
+    #print(a[2][1])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+
+    # 1行目を固定する
+    for i in range(n):
+        if a[0][i] == 9:
+            a[0][i] = 1
+        else:
+            break
+
+    # 1行目を固定した時の最大値を求める
+    for i in range(1, n):
+        if a[0][i] == 9:
+            a[0][i] = 1
+        elif a[0][i] == 1:
+            a[0][i] = 9
+
+    # 2行目以降を固定する
+    for i in range(1, n):
+        for j in range(n):
+            if a[i][j] == 1:
+                a[i][j] = 9
+            elif a[i][j] == 9:
+                a[i][j] = 1
+
+    # 答えを出力する
+    for i in range(n):
+        for j in range(n):
+            print(a[i][j], end="")
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+    ans = -1
+    for i in range(n):
+        for j in range(n):
+            if i == 0 and j == 0:
+                continue
+            elif i == 0:
+                a[i][j] += a[i][j-1]
+            elif j == 0:
+                a[i][j] += a[i-1][j]
+            else:
+                a[i][j] += max(a[i-1][j], a[i][j-1])
+            ans = max(ans, a[i][j])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input())))
+
+    #print(A)
+
+    #一番左上のマスからスタート
+    x = 0
+    y = 0
+    ans = []
+    ans.append(A[x][y])
+
+    for i in range(N - 1):
+        #print("i = " + str(i))
+        #print("x = " + str(x))
+        #print("y = " + str(y))
+        #print("ans = " + str(ans))
+        if x == 0:
+            if y == 0:
+                if A[x + 1][y] >= A[x][y + 1]:
+                    x += 1
+                else:
+                    y += 1
+            elif y == N - 1:
+                if A[x + 1][y] >= A[x][y - 1]:
+                    x += 1
+                else:
+                    y -= 1
+            else:
+                if A[x + 1][y] >= A[x][y - 1] and A[x + 1][y] >= A[x][y + 1]:
+                    x += 1
+                elif A[x][y - 1] >= A[x + 1][y] and A[x][y - 1] >= A[x][y + 1]:
+                    y -= 1
+                else:
+                    y += 1
+        elif x == N - 1:
+            if y == 0:
+                if A[x - 1][y] >= A[x][y + 1]:
+                    x -= 1
+                else:
+                    y += 1
+            elif y == N - 1:
+                if A[x - 1][y] >= A[x][y - 1]:
+                    x -= 1
+                else:
+                    y -= 1
+            else:
+                if A[x - 1][y] >= A[x][y - 1] and A[x - 1][y] >= A[x][y + 1]:
+                    x -= 1
+                elif A[x][y - 1] >= A[x - 1][y] and A[x][y - 1] >= A[x][y + 1]:
+                    y -= 1
+                else:

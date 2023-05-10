@@ -1,54 +1,176 @@
-#問題文
-#ある街に、N 人のすぬけ君(すぬけ君 1 、すぬけ君 2 、 ...、 すぬけ君 N )が住んでいます。
-#この街には、 K 種類のお菓子(お菓子 1 、 お菓子 2 、....、お菓子 K )が売られています。お菓子 i を持っているのは、すぬけ君 A_{i, 1}, A_{i, 2}, ..., A_{i, {d_i}} の計 d_i 人です。
-#高橋君は今からこの街を回り、お菓子を 1 つも持っていないすぬけ君にいたずらをします。このとき、何人のすぬけ君がいたずらを受けるでしょうか。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ d_i ≦ N
-#1 ≦ A_{i, 1} < ... < A_{i, d_i} ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#d_1
-#A_{1, 1} ... A_{1, d_1}
-#.
-#.
-#.
-#d_K
-#A_{K, 1} ... A_{K, d_K}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 2
-#2
-#1 3
-#1
-#3
-#
-#出力例 1
-#1
-#
-#すぬけ君 1 はお菓子 1 を持っています。
-#すぬけ君 2 はお菓子を持っていません。
-#すぬけ君 3 はお菓子 1, 2 を持っています。
-#以上より、いたずらを受けるのはすぬけ君 2 の一人です。
-#
-#入力例 2
-#3 3
-#1
-#3
-#1
-#3
-#1
-#3
-#
-#出力例 2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    d = [0] * k
+    a = [0] * k
+    for i in range(k):
+        d[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n+1):
+        flag = True
+        for j in range(k):
+            if i in a[j]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    d = []
+    a = []
+    for i in range(k):
+        d.append(int(input()))
+        a.append(list(map(int, input().split())))
+    cnt = 0
+    for i in range(1, n + 1):
+        for j in range(k):
+            if i in a[j]:
+                break
+        else:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    d = []
+    A = []
+    for i in range(K):
+        d.append(int(input()))
+        A.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(K):
+            if i+1 in A[j]:
+                break
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    d = []
+    a = []
+    for i in range(k):
+        d.append(int(input()))
+        a.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(k):
+            if i+1 in a[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N, K = map(int, input().split())
+    A = []
+    for i in range(K):
+        A.append(list(map(int, input().split())))
+    B = [0] * N
+    for i in range(K):
+        for j in range(A[i][0]):
+            B[A[i][j+1]-1] += 1
+    ans = 0
+    for i in range(N):
+        if B[i] == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    cnt = 0
+    for i in range(k):
+        d = int(input())
+        A = list(map(int, input().split()))
+        for j in range(d):
+            if A[j] == i+1:
+                cnt += 1
+    print(n - cnt)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    d = []
+    a = []
+    for i in range(k):
+        d.append(int(input()))
+        a.append(list(map(int, input().split())))
+    #print(d)
+    #print(a)
+    ans = 0
+    for i in range(n):
+        if i+1 not in a[0]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N,K = map(int,input().split())
+    d = [0]*K
+    A = [0]*K
+    for i in range(K):
+        d[i] = int(input())
+        A[i] = list(map(int,input().split()))
+
+    cnt = 0
+    for i in range(N):
+        for j in range(K):
+            if i+1 in A[j]:
+                break
+        else:
+            cnt += 1
+
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    D = []
+    A = []
+    for i in range(K):
+        D.append(int(input()))
+        A.append(list(map(int, input().split())))
+    S = set()
+    for i in range(K):
+        S |= set(A[i])
+    print(N - len(S))
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    d = []
+    a = []
+    for i in range(k):
+        d.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(n - len(set([a[j][i] for j in range(k) for i in range(d[j])])))

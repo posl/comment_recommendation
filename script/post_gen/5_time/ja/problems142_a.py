@@ -1,36 +1,50 @@
-#問題文
-#整数 N が与えられます。
-#高橋君は、N 以下の正整数の中から等確率で 1 つを選んで a とします。
-#このとき、a が奇数である確率を答えてください。
-#
-#制約
-#1 ≤ N ≤ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#a が奇数である確率を出力せよ。
-#出力は、ジャッジの出力との絶対誤差または相対誤差が 10^{-6} 以下のとき正解と判定される。
-#
-#入力例 1
-#4
-#
-#出力例 1
-#0.5000000000
-#4 以下の正整数は 1 , 2 , 3 , 4 の 4 つであり、そのうち奇数は 1 , 3 の 2 つです。以上より、答えは (2/(4)) = 0.5 です。
-#
-#入力例 2
-#5
-#
-#出力例 2
-#0.6000000000
-#
-#入力例 3
-#1
-#
-#出力例 3
-#1.0000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(0.5)
+    else:
+        print((n+1)/(2*n))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print((n + 1) // 2 / n)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print((n//2)/n)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+
+    print((N+1)//2/N)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    print((N - N // 2) / N)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    if N % 2 == 0:
+        print(0.5)
+    else:
+        print((N + 1) / (2 * N))

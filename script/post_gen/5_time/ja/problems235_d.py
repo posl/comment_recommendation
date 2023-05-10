@@ -1,56 +1,192 @@
-#問題文
-#正の整数 a があります。また、黒板に 1 個の数が 10 進表記で書かれています。
-#黒板に現在書かれている数を x としたとき、高橋君は次のいずれかの操作を行い、黒板に書かれている数を変化させることができます。
-#x を消し、 x を a 倍した数を 10 進表記で新たに書きこむ。
-#x を文字列とみなして、列の末尾の数字を文字列の先頭に移動させる。
-#    ただし、この操作は x ≧ 10 かつ x が 10 で割り切れないときにしか行えない。
-#たとえば a = 2, x = 123 であるとき、高橋君は次のいずれかの操作を行うことができます。
-#x を消して、 x × a = 123 × 2 = 246 を新たに書きこむ。
-#x を文字列とみなして、123 の末尾の数字である 3 を先頭に移動させる。黒板に書かれている数は 123 から 312 に変化する。
-#はじめ、黒板には 1 が書かれています。書かれている数を N に変化させるには最小で何回の操作が必要ですか？ただし、どのように操作しても書かれている数を N に変化させられない場合は -1 を出力してください。
-#
-#制約
-#2 ≦ a < 10^6
-#2 ≦ N < 10^6
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3 72
-#
-#出力例 1
-#4
-#以下に説明する操作を行うことで、 黒板に書かれている数を 4 回で 1 から 72 に変化させることができます。
-#1 つ目の操作を行う。黒板に書かれている数は 1 -> 3 に変わる。
-#1 つ目の操作を行う。黒板に書かれている数は 3 -> 9 に変わる。
-#1 つ目の操作を行う。黒板に書かれている数は 9 -> 27 に変わる。
-#2 つ目の操作を行う。黒板に書かれている数は 27 -> 72 に変わる。
-#3 回以下の操作で 72 に変化させることはできないため、答えは 4 になります。
-#
-#入力例 2
-#2 5
-#
-#出力例 2
-#-1
-#どのように操作しても黒板に書かれている数を 5 に変化させることはできません。
-#
-#入力例 3
-#2 611
-#
-#出力例 3
-#12
-#適切に操作を選ぶことで、 1 -> 2 -> 4 -> 8 -> 16 -> 32 -> 64 -> 46 -> 92 -> 29 -> 58 -> 116 -> 611 と 12 回の操作で黒板に書かれている数を 611 に変化させることができ、これが最小です。
-#
-#入力例 4
-#2 767090
-#
-#出力例 4
-#111
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, n = map(int, input().split())
+    if a % 2 == 0:
+        if n % 2 == 0:
+            print(1)
+        else:
+            print(-1)
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def solve():
+    #a, n = map(int, input().split())
+    a, n = 3, 72
+    ans = 0
+    while n > 1:
+        if n % a == 0:
+            n //= a
+        else:
+            n -= 1
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    a, n = map(int, input().split())
+    ans = 0
+    while n > 0:
+        if n % a == 0:
+            n //= a
+            ans += 1
+        elif n % a == 1:
+            n -= 1
+            ans += 1
+        else:
+            ans = -1
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 標準入力から a と N を取得する
+    a, N = map(int, input().split())
+    # 1 から N までの数について、操作を繰り返す回数を格納する配列を作成する
+    dp = [-1] * (N + 1)
+    # 1 から N までの数について、操作を繰り返す回数を求める
+    for i in range(1, N + 1):
+        # 操作を繰り返す回数を求める
+        cnt = 0
+        # 操作を繰り返す
+        while i > 0:
+            # 操作を繰り返す回数を増やす
+            cnt += 1
+            # i を a で割った余りを i に代入する
+            i %= a
+        # 操作を繰り返す回数を配列に格納する
+        dp[i] = cnt
+    # N について、操作を繰り返す回数を出力する
+    print(dp[N])
+
+=======
+Suggestion 5
+
+def main():
+    a, n = map(int, input().split())
+    cnt = 0
+    while n > 1:
+        if n % a == 0:
+            n /= a
+            cnt += 1
+        elif n % 10 == 1:
+            n -= 1
+            n /= 10
+            cnt += 1
+        else:
+            cnt = -1
+            break
+    print(cnt)
+
+=======
+Suggestion 6
+
+def solve(a, n):
+    if a == 1:
+        return n - 1
+    if a == n:
+        return 1
+
+    ans = 0
+    while n > 0:
+        if n % a == 0:
+            n //= a
+            ans += 1
+        elif n % a != 1:
+            return -1
+        else:
+            n -= 1
+            ans += 1
+    return ans
+
+=======
+Suggestion 7
+
+def main():
+    a, n = map(int, input().split())
+    if n == 1:
+        print(0)
+        return
+    if a == 1:
+        print(1)
+        return
+    if n % a == 0:
+        count = 0
+        while n > 1:
+            n //= a
+            count += 1
+        print(count)
+        return
+    else:
+        count = 0
+        while n > 1:
+            if n % a == 0:
+                n //= a
+                count += 1
+            else:
+                n = int(str(n)[-1] + str(n)[:-1])
+                count += 1
+        print(count)
+        return
+
+=======
+Suggestion 8
+
+def main():
+    a, n = map(int, input().split())
+    ans = 0
+    while n > 1:
+        if n % a == 0:
+            n = n // a
+            ans += 1
+        elif n % 10 == 1:
+            n = n // 10
+            ans += 1
+        else:
+            ans = -1
+            break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    a, n = map(int, input().split())
+    if a == 1:
+        print(n - 1)
+        return
+    x = 1
+    for i in range(n):
+        x *= a
+        if x > n:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 10
+
+def main():
+    a, n = map(int, input().split())
+    ans = 0
+    while n != 1:
+        if n % a != 0:
+            n -= 1
+            ans += 1
+        elif n % a == 0:
+            n /= a
+            ans += 1
+        if n == 0:
+            print(-1)
+            exit()
+    print(ans)

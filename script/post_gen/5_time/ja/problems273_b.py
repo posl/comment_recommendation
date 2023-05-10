@@ -1,51 +1,119 @@
-#問題文
-#非負整数 X に対し、 i=0,1,...,K-1 の順に次の操作を行ったとき、操作を全て終えた時点での X を求めてください。
-#X の 10^i の位以下を四捨五入する。
-#厳密には、 X を「 |Y-X| が最小となる 10^{i+1} の倍数のうち最大のもの」である Y に置き換える。
-#具体例を挙げる。
-#273 の 10^1 の位以下を四捨五入すれば 300 となる。
-#999 の 10^2 の位以下を四捨五入すれば 1000 となる。
-#100 の 10^9 の位以下を四捨五入すれば 0 となる。
-#1015 の 10^0 の位以下を四捨五入すれば 1020 となる。
-#
-#
-#
-#制約
-#X,K は整数
-#0 ≦ X < 10^{15}
-#1 ≦ K ≦ 15
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X K
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#2048 2
-#
-#出力例 1
-#2100
-#操作の過程で、 X は 2048 -> 2050 -> 2100 と変化します。
-#
-#入力例 2
-#1 15
-#
-#出力例 2
-#0
-#
-#入力例 3
-#999 3
-#
-#出力例 3
-#1000
-#
-#入力例 4
-#314159265358979 12
-#
-#出力例 4
-#314000000000000
-#X は 32bit 整数型に収まらない可能性があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X,K = map(int,input().split())
+    for i in range(K):
+        X = (X + 5) // 10 * 10
+    print(X)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    x,k = map(int, input().split())
+    for i in range(k):
+        if x % 10 == 0:
+            x = x // 10
+        else:
+            x += 10 - (x % 10)
+    print(x)
+
+=======
+Suggestion 3
+
+def main():
+    x,k = map(int,input().split())
+    for i in range(k):
+        x = ((x+5)//10)*10
+    print(x)
+
+=======
+Suggestion 4
+
+def get_digit(n):
+    digit = 0
+    while n > 0:
+        n //= 10
+        digit += 1
+    return digit
+
+X,K = map(int,input().split())
+for _ in range(K):
+    if X % 10 == 0:
+        X //= 10
+    else:
+        X += 10 - X % 10
+print(X)
+
+=======
+Suggestion 5
+
+def problems273_b():
+    x,k = map(int,input().split())
+    for _ in range(k):
+        if x%10 == 0:
+            x //= 10
+        else:
+            x -= 1
+    print(x)
+
+=======
+Suggestion 6
+
+def rounding(x, k):
+    for i in range(k):
+        if x % 10 == 0:
+            x //= 10
+        else:
+            x += 10 - (x % 10)
+    return x
+
+x, k = map(int, input().split())
+print(rounding(x, k))
+
+=======
+Suggestion 7
+
+def main():
+    x, k = map(int, input().split())
+    for i in range(k):
+        x = (x + 5) // 10 * 10
+    print(x)
+
+=======
+Suggestion 8
+
+def main():
+    x, k = map(int, input().split())
+    for i in range(k):
+        if x % 10 == 0:
+            x //= 10
+        else:
+            x += 10 - x % 10
+    print(x)
+
+=======
+Suggestion 9
+
+def main():
+    X,K = map(int,input().split())
+    for i in range(K):
+        X = (X+5)//10*10
+    print(X)
+
+=======
+Suggestion 10
+
+def main():
+    X,K = map(int, input().split())
+    for i in range(K):
+        if X%10 == 0:
+            X = X//10
+        else:
+            X += 10 - X%10
+    print(X)

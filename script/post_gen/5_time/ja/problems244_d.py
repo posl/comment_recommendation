@@ -1,27 +1,147 @@
-#問題文
-#1, 2, 3 の番号がついた 3 人の高橋くんがおり、赤・緑・青の色がついた 3 種類の帽子がそれぞれ 1 つずつあります。それぞれの高橋くんは帽子を 1 つかぶっており、高橋くん i がはじめにかぶっている帽子の色は文字 S_i で表されます。ここで、R は赤、G は緑、B は青に対応しています。これから、以下の操作をちょうど 10^{18} 回行います。
-#操作
-#3 人の高橋くんのうち 2 人を選ぶ。2 人はお互いのかぶっている帽子を交換する。
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできますか？
-#
-#制約
-#S_1, S_2, S_3 は R, G, B の並べ替えである
-#T_1, T_2, T_3 は R, G, B の並べ替えである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S_1 S_2 S_3
-#T_1 T_2 T_3
-#
-#出力
-#10^{18} 回の操作の後、高橋くん i が文字 T_i に対応する色の帽子をかぶっているようにすることはできる場合は Yes を、できない場合は No を出力せよ。
-#
-#入力例 1
-#R G B
-#R G B
-#
-#出力例 1
-#Yes
-#例えば、高橋くん 1 と高橋くん 2 の帽子を交換する操作を 10^{18} 回行うと目的を達成できます。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = list(input().split())
+    t = list(input().split())
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S1, S2, S3 = input().split()
+    T1, T2, T3 = input().split()
+    if S1 == T1 and S2 == T2 and S3 == T3:
+        print("Yes")
+    elif S1 == T1 and S2 == T3 and S3 == T2:
+        print("Yes")
+    elif S1 == T2 and S2 == T1 and S3 == T3:
+        print("Yes")
+    elif S1 == T2 and S2 == T3 and S3 == T1:
+        print("Yes")
+    elif S1 == T3 and S2 == T1 and S3 == T2:
+        print("Yes")
+    elif S1 == T3 and S2 == T2 and S3 == T1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    #data load
+    S = input()
+    T = input()
+    #print(S)
+    #print(T)
+    #main
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    S = input().rstrip()
+    T = input().rstrip()
+    if S == T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    print("Yes" if s == t else "No")
+
+=======
+Suggestion 9
+
+def main():
+    # data load
+    input_data = input()
+    input_data = input_data.split()
+    S1 = input_data[0]
+    S2 = input_data[1]
+    S3 = input_data[2]
+    input_data = input()
+    input_data = input_data.split()
+    T1 = input_data[0]
+    T2 = input_data[1]
+    T3 = input_data[2]
+
+    # data check
+    #print(S1)
+    #print(S2)
+    #print(S3)
+    #print(T1)
+    #print(T2)
+    #print(T3)
+
+    # count check
+    cnt_r = 0
+    cnt_g = 0
+    cnt_b = 0
+    cnt_r += S1.count("R")
+    cnt_r += S2.count("R")
+    cnt_r += S3.count("R")
+    cnt_g += S1.count("G")
+    cnt_g += S2.count("G")
+    cnt_g += S3.count("G")
+    cnt_b += S1.count("B")
+    cnt_b += S2.count("B")
+    cnt_b += S3.count("B")
+    #print(cnt_r)
+    #print(cnt_g)
+    #print(cnt_b)
+
+    # result
+    if cnt_r == 1 and cnt_g == 1 and cnt_b == 1:
+        print("Yes")
+    else:
+        print("No")

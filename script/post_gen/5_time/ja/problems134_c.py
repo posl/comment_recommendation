@@ -1,44 +1,141 @@
-#問題文
-#長さ N の数列 A_1, A_2, ..., A_N が与えられます。
-#1 以上 N 以下の各整数 i に対し、次の問いに答えてください。
-#数列中の A_i を除く N - 1 個の要素のうちの最大の値を求めよ。
-#
-#制約
-#2 ≦ N ≦ 200000
-#1 ≦ A_i ≦ 200000
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1
-#:
-#A_N
-#
-#出力
-#N 行出力せよ。i 行目 (1 ≦ i ≦ N) に、数列中の A_i を除く N - 1 個の要素のうちの最大の値を出力すること。
-#
-#入力例 1
-#3
-#1
-#4
-#3
-#
-#出力例 1
-#4
-#3
-#4
-#数列中の A_1 を除く 2 個の要素、A_2 = 4 と A_3 = 3 のうちの最大の値は 4 です。
-#数列中の A_2 を除く 2 個の要素、A_1 = 1 と A_3 = 3 のうちの最大の値は 3 です。
-#数列中の A_3 を除く 2 個の要素、A_1 = 1 と A_2 = 4 のうちの最大の値は 4 です。
-#
-#入力例 2
-#2
-#5
-#5
-#
-#出力例 2
-#5
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        a[i] = int(input())
+    a_max = max(a)
+    a_max_index = a.index(a_max)
+    for i in range(n):
+        if i == a_max_index:
+            print(max(a[:i] + a[i + 1:]))
+        else:
+            print(a_max)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    for i in range(n):
+        print(max(a[:i] + a[i+1:]))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [int(input()) for _ in range(N)]
+    B = sorted(A)
+    for i in range(N):
+        if A[i] == B[-1]:
+            print(B[-2])
+        else:
+            print(B[-1])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+
+    max_a = max(a)
+    max_a_index = a.index(max_a)
+
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a[:i] + a[i+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    for i in range(N):
+        if A[i] == max(A):
+            print(max(A[:i]+A[i+1:]))
+        else:
+            print(max(A))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    a.sort()
+    a_max = a[-1]
+    for i in range(n):
+        if a_max == a[i]:
+            print(a[-2])
+        else:
+            print(a_max)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    a_max = max(a)
+    a_max_index = a.index(a_max)
+    for i in range(n):
+        if i == a_max_index:
+            print(sorted(a[:a_max_index]+a[a_max_index+1:])[-1])
+        else:
+            print(a_max)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a_list = []
+    for _ in range(n):
+        a = int(input())
+        a_list.append(a)
+
+    for i in range(n):
+        b_list = a_list.copy()
+        b_list.pop(i)
+        print(max(b_list))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [int(input()) for _ in range(N)]
+    for i in range(N):
+        print(max(A[:i]+A[i+1:]))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        a[i] = int(input())
+
+    max1 = max(a)
+    a.remove(max1)
+    max2 = max(a)
+    a.append(max1)
+
+    for i in range(n):
+        if a[i] == max1:
+            print(max2)
+        else:
+            print(max1)

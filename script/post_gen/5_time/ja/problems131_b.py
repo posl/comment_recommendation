@@ -1,41 +1,119 @@
-#問題文
-#N 個のリンゴがあります。これらはそれぞれリンゴ 1、リンゴ 2、リンゴ 3、...、リンゴ N と呼ばれており、リンゴ i の「味」は L+i-1 です。「味」は負になることもありえます。
-#また、1 個以上のリンゴを材料として、アップルパイをつくることができます。その「味」は、材料となったリンゴの「味」の総和となります。
-#あなたはこれらのリンゴを全て材料として、アップルパイをつくる予定でしたが、おなかがすいたので 1 個だけ食べることにしました。勿論、食べてしまったリンゴはアップルパイの材料にはできません。
-#つくる予定だったアップルパイとできるだけ同じものをつくりたいので、N 個のリンゴ全てを材料としてできるアップルパイの「味」と、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」の差の絶対値ができるだけ小さくなるように、食べるリンゴを選ぶことにしました。
-#このようにして選ばれたリンゴを食べた時、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」を求めてください。
-#なお、この値は一意に定まることが証明できます。
-#
-#制約
-#2 ≦ N ≦ 200
-#-100 ≦ L ≦ 100
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N L
-#
-#出力
-#最適に食べるリンゴを選んだ時の、食べていない N-1 個のリンゴを材料としてできるアップルパイの「味」を出力してください。
-#
-#入力例 1
-#5 2
-#
-#出力例 1
-#18
-#リンゴ 1,2,3,4,5 の「味」は、それぞれ 2,3,4,5,6 です。リンゴ 1 を食べるのが最適で、答えは 3+4+5+6=18 となります。
-#
-#入力例 2
-#3 -1
-#
-#出力例 2
-#0
-#リンゴ 1,2,3 の「味」は、それぞれ -1,0,1 です。リンゴ 2 を食べるのが最適で、答えは (-1)+1=0 となります。
-#
-#入力例 3
-#30 -50
-#
-#出力例 3
-#-1044
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, L = map(int, input().split())
+    min
+
+=======
+Suggestion 2
+
+def main():
+    n, l = map(int, input().split())
+    li = [l+i for i in range(n)]
+    print(sum(li[1:]) - li[0])
+
+=======
+Suggestion 3
+
+def solve(n, l):
+    return sum(l) - min(l, key=abs)*2
+
+=======
+Suggestion 4
+
+def main():
+    N, L = map(int, input().split())
+    ans = 0
+    minv = 10000
+    for i in range(0, N):
+        tmp = L + i
+        if(abs(tmp) < minv):
+            minv = abs(tmp)
+            ans = tmp
+    print((N-1)*N//2 + ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, l = map(int, input().split())
+    sum = 0
+    min = 10000000
+    for i in range(n):
+        sum += l + i
+        if min > abs(l + i):
+            min = abs(l + i)
+    print(sum - min)
+
+=======
+Suggestion 6
+
+def main():
+    N, L = map(int, input().split())
+    total = 0
+    min_diff = 10**10
+    for i in range(N):
+        total += L + i
+        if abs(L + i) < abs(min_diff):
+            min_diff = L + i
+    print(total - min_diff)
+
+=======
+Suggestion 7
+
+def solve():
+    N, L = map(int, input().split())
+    total = 0
+    for i in range(N):
+        total += L + i
+    if L >= 0:
+        print(total - L - N)
+    elif L + N - 1 <= 0:
+        print(total - L)
+    else:
+        print(total)
+
+=======
+Suggestion 8
+
+def main():
+    N, L = map(int, input().split())
+    if L >= 0:
+        print((L + N - 1) * (L + N) // 2 - L)
+    elif L < 0 and L + N - 1 >= 0:
+        print((L + N - 1) * (L + N) // 2)
+    else:
+        print((L + N - 1) * (L + N) // 2 - (L + N - 1))
+
+=======
+Suggestion 9
+
+def solve():
+    # -*- coding: utf-8 -*-
+    # 整数の入力
+    n,l = map(int, input().split())
+    sum = 0
+    min = 1000
+    for i in range(n):
+        sum += l + i
+        if abs(l+i) < min:
+            min = abs(l+i)
+    if l >= 0:
+        sum -= min
+    elif l < 0 and l+n-1 > 0:
+        sum += min
+    else:
+        sum -= min
+    print(sum)
+
+=======
+Suggestion 10
+
+def main():
+    n, l = map(int, input().split())
+    taste = [l+i for i in range(n)]
+    min_index = taste.index(min(taste, key=abs))
+    print(sum(taste[:min_index]+taste[min_index+1:]))

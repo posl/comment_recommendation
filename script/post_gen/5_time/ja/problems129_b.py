@@ -1,42 +1,134 @@
-#問題文
-#1 から N の番号がついた N 個の重りがあり、番号 i の重りの重さは W_i です。
-#ある整数 1 ≦ T < N に対してこれらの重りを、番号が T 以下の重り と 番号が T より大きい重りの 2 グループに分けることを考え、それぞれのグループの重さの和を S_1, S_2 とします。
-#このような分け方全てを考えた時、S_1 と S_2 の差の絶対値の最小値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 100
-#1 ≦ W_i ≦ 100
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#W_1 W_2 ... W_{N-1} W_N
-#
-#出力
-#S_1 と S_2 の差の絶対値の最小値を出力せよ。
-#
-#入力例 1
-#3
-#1 2 3
-#
-#出力例 1
-#0
-#T = 2 としたとき、S_1 = 1 + 2 = 3, S_2 = 3 となり、差の絶対値は 0 となります。
-#
-#入力例 2
-#4
-#1 3 1 1
-#
-#出力例 2
-#2
-#T = 2 としたとき、S_1 = 1 + 3 = 4, S_2 = 1 + 1 = 2 となり、差の絶対値は 2 です。これより差の絶対値を小さくすることは出来ません。
-#
-#入力例 3
-#8
-#27 23 76 2 3 5 62 52
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(1, n):
+        s1 = sum(w[:i])
+        s2 = sum(w[i:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    W = list(map(int, input().split()))
+    ans = 10000
+    for i in range(1, N):
+        s1 = sum(W[:i])
+        s2 = sum(W[i:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    s = sum(w)
+    ans = s
+    s1 = 0
+    s2 = 0
+    for t in range(1, n):
+        s1 += w[t-1]
+        s2 = s - s1
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    #print(N)
+    #print(W)
+    ans = 1000000000
+    for i in range(1, N):
+        s1 = sum(W[:i])
+        s2 = sum(W[i:])
+        #print(s1, s2)
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    ws = list(map(int, input().split()))
+    result = 100000000000000
+    for i in range(1, n):
+        s1 = sum(ws[:i])
+        s2 = sum(ws[i:])
+        result = min(result, abs(s1 - s2))
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    #n = int(input())
+    #a = [int(x) for x in input().split()]
+    n = 8
+    a = [27,23,76,2,3,5,62,52]
+    print(min([abs(sum(a[:t]) - sum(a[t:])) for t in range(1,n)]))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    result = 100000
+    for i in range(1, n):
+        s1 = sum(w[:i])
+        s2 = sum(w[i:])
+        result = min(result, abs(s1 - s2))
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    ans = 10000
+    for i in range(1, N):
+        ans = min(ans, abs(sum(W[:i]) - sum(W[i:])))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    s1 = 0
+    s2 = sum(w)
+    ans = s2
+    for i in range(n):
+        s1 += w[i]
+        s2 -= w[i]
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 1000000000
+    for t in range(1, n):
+        s1 = sum(w[:t])
+        s2 = sum(w[t:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)

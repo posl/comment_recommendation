@@ -1,51 +1,215 @@
-#問題文
-#整数 X が与えられます。この X に以下を施すことを「操作」と呼びます。  
-#以下の 2 つのうちどちらかを選択し、実行する。
-#X に 1 を加算する。
-#X から 1 を減算する。
-#
-#初項 A 、公差 D 、項数 N の等差数列 S に含まれる数を「良い数」と呼びます。
-#「操作」を 0 回以上何度でも使って X を「良い数」にする時、必要な「操作」の最小回数を求めてください。
-#
-#制約
-#入力は全て整数
-#-10^{18} ≦ X,A ≦ 10^{18}
-#-10^6 ≦ D ≦ 10^6
-#1 ≦ N ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X A D N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#6 2 3 3
-#
-#出力例 1
-#1
-#A=2,D=3,N=3 であるため、 S=(2,5,8) です。
-#X=6 を「良い数」にするためには、 X から 1 を減算することを 1 度行えば良いです。
-#0 回の操作で X を「良い数」にすることはできません。
-#
-#入力例 2
-#0 0 0 1
-#
-#出力例 2
-#0
-#D=0 である場合もあります。また、操作を 1 回も必要としない場合もあります。
-#
-#入力例 3
-#998244353 -10 -20 30
-#
-#出力例 3
-#998244363
-#
-#入力例 4
-#-555555555555555555 -1000000000000000000 1000000 1000000000000
-#
-#出力例 4
-#444445
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(x,a,d,n):
+    if d==0:
+        if x==a:
+            return 0
+        else:
+            return -1
+    else:
+        if (x-a)%d==0:
+            k=(x-a)//d
+            if k>=0 and k<=n-1:
+                return k
+            else:
+                return -1
+        else:
+            return -1
+
+=======
+Suggestion 2
+
+def solve(x, a, d, n):
+    if d == 0:
+        if x == a:
+            return 0
+        else:
+            return -1
+    if (x - a) % d != 0:
+        return -1
+    ans = 0
+    if (x - a) // d > 0:
+        ans += (x - a) // d
+        x -= (x - a) // d * d
+    else:
+        ans += -((x - a) // d)
+        x -= -((x - a) // d) * d
+    if x != a:
+        ans += 1
+        x -= d
+    if x != a:
+        ans += 1
+    return ans
+
+x, a, d, n = map(int, input().split())
+print(solve(x, a, d, n))
+
+=======
+Suggestion 3
+
+def solve():
+    X,A,D,N = map(int,input().split())
+    if D == 0:
+        if X == A:
+            print(0)
+        else:
+            print(-1)
+        return
+    if N == 1:
+        if X == A:
+            print(0)
+        else:
+            print(-1)
+        return
+    if (X-A)%D != 0:
+        print(-1)
+        return
+    n = (X-A)//D + 1
+    if n < 1:
+        print(-1)
+        return
+    if n > N:
+        print(-1)
+        return
+    print(N-n)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    x, a, d, n = map(int, input().split())
+    if d == 0:
+        if x == a:
+            print(0)
+        else:
+            print(1)
+        return
+    if d > 0:
+        if x < a:
+            print(1)
+        else:
+            print((x - a) // d + 1)
+        return
+    if d < 0:
+        if x > a:
+            print(1)
+        else:
+            print((a - x) // (-d) + 1)
+        return
+    print(0)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    X, A, D, N = map(int, input().split())
+    if D == 0:
+        if X == A:
+            print(0)
+        else:
+            print(1)
+    else:
+        if (X - A) % D == 0 and (X - A) // D >= 0:
+            print((X - A) // D)
+        else:
+            print(1 + (X - A) // D + 1)
+
+=======
+Suggestion 6
+
+def main():
+    x,a,d,n = map(int,input().split())
+    if d == 0:
+        if x == a:
+            print(0)
+        else:
+            print("inf")
+    else:
+        if (x-a)%d == 0:
+            if (x-a)//d >= 0:
+                print((x-a)//d+1)
+            else:
+                print("inf")
+        else:
+            print("inf")
+
+=======
+Suggestion 7
+
+def main():
+    x,a,d,n = map(int, input().split())
+    if d == 0:
+        if x < a:
+            print(a-x)
+        else:
+            print(x-a)
+    else:
+        if n % 2 == 0:
+            if x < a:
+                print(a-x)
+            else:
+                print(x-a)
+        else:
+            if x < a:
+                if (a-x) % d == 0:
+                    print((a-x)//d)
+                else:
+                    print((a-x)//d + 1)
+            else:
+                if (x-a) % d == 0:
+                    print((x-a)//d)
+                else:
+                    print((x-a)//d + 1)
+
+=======
+Suggestion 8
+
+def main():
+    X,A,D,N = map(int,input().split())
+    if D == 0:
+        if X == A:
+            print(0)
+        else:
+            print(1)
+    else:
+        if (X-A) % D == 0 and (X-A) / D >= 0:
+            print(int((X-A)/D))
+        else:
+            print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    X, A, D, N = map(int, input().split())
+    if D == 0:
+        if A == X:
+            print(0)
+        else:
+            print(-1)
+    elif N == 1:
+        if (X - A) % D == 0:
+            print((X - A) // D)
+        else:
+            print(-1)
+    else:
+        if (X - A) % D == 0 and (X - A) // D >= 0:
+            print((X - A) // D)
+        else:
+            print(-1)
+
+=======
+Suggestion 10
+
+def get_input():
+    x,a,d,n = input().split()
+    x = int(x)
+    a = int(a)
+    d = int(d)
+    n = int(n)
+    return x,a,d,n

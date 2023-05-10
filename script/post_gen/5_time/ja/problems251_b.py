@@ -1,57 +1,210 @@
-#問題文
-#おもり 1, おもり 2, ..., おもり N の N 個のおもりがあります。おもり i の重さは A_i です。
-#以下の条件を満たす正整数 n を 良い整数 と呼びます。
-#3 個以下 の異なるおもりを自由に選んで、選んだおもりの重さの和を n にすることができる。
-#W 以下の正整数のうち、良い整数は何個ありますか？
-#
-#制約
-#1 ≦ N ≦ 300
-#1 ≦ W ≦ 10^6
-#1 ≦ A_i ≦ 10^6
-#入力される値はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N W
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2 10
-#1 3
-#
-#出力例 1
-#3
-#おもり 1 のみを選ぶと重さの和は 1 になります。よって 1 は良い整数です。
-#おもり 2 のみを選ぶと重さの和は 3 になります。よって 3 は良い整数です。
-#おもり 1 とおもり 2 を選ぶと重さの和は 4 になります。よって 4 は良い整数です。
-#これら以外に良い整数は存在しません。また、1,3,4 のいずれも W 以下の整数です。よって答えは 3 個になります。
-#
-#入力例 2
-#2 1
-#2 3
-#
-#出力例 2
-#0
-#W 以下の良い整数は存在しません。
-#
-#入力例 3
-#4 12
-#3 3 3 3
-#
-#出力例 3
-#3
-#良い整数は 3,6,9 の 3 個です。
-#たとえばおもり 1, おもり 2, おもり 3 を選ぶと重さの和は 9 になるので、9 は良い整数です。
-#12 は良い整数 ではない ことに注意してください。
-#
-#入力例 4
-#7 251
-#202 20 5 1 4 2 100
-#
-#出力例 4
-#48
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    count = 0
+    for i in range(n):
+        if a[i] <= w:
+            count += 1
+            w -= a[i]
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 重さの和の最大値
+    max_sum = 0
+    # 重さの和の最小値
+    min_sum = 0
+    # 重さの和の最大値と最小値を計算する
+    for i in range(n):
+        max_sum += a[i]
+        min_sum += a[i]
+    # 重さの和の最大値と最小値がwより大きい場合は0を返す
+    if max_sum < w or min_sum > w:
+        print(0)
+        return
+    # 重さの和の最大値と最小値の間の数値の個数を返す
+    print(max_sum - min_sum + 1)
+
+=======
+Suggestion 3
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    dp = [[False for _ in range(w+1)] for _ in range(n+1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(w+1):
+            if dp[i][j]:
+                dp[i+1][j] = True
+                if j+a[i] <= w:
+                    dp[i+1][j+a[i]] = True
+    ans = 0
+    for i in range(w+1):
+        if dp[n][i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            for k in range(j, n):
+                if a[i] + a[j] + a[k] <= w:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input_data():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, w, a
+
+=======
+Suggestion 6
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    for i in range(N):
+        for j in range(W + 1):
+            dp[i + 1][j] = dp[i][j]
+            if j >= A[i]:
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - A[i]] + A[i])
+    print(dp[N][W])
+
+=======
+Suggestion 7
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, w + 1):
+        flag = True
+        for j in range(n):
+            if a[j] <= i and flag:
+                if i % a[j] == 0:
+                    ans += 1
+                    flag = False
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    print(solve(N, W, A))
+
+=======
+Suggestion 10
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if W < A[0]:
+        print(0)
+        return
+    if W < A[0] * 2:
+        print(1)
+        return
+    if W < A[0] * 3:
+        print(2)
+        return
+    if W < A[0] * 4:
+        print(3)
+        return
+    if W < A[0] * 5:
+        print(4)
+        return
+    if W < A[0] * 6:
+        print(5)
+        return
+    if W < A[0] * 7:
+        print(6)
+        return
+    if W < A[0] * 8:
+        print(7)
+        return
+    if W < A[0] * 9:
+        print(8)
+        return
+    if W < A[0] * 10:
+        print(9)
+        return
+    if W < A[0] * 11:
+        print(10)
+        return
+    if W < A[0] * 12:
+        print(11)
+        return
+    if W < A[0] * 13:
+        print(12)
+        return
+    if W < A[0] * 14:
+        print(13)
+        return
+    if W < A[0] * 15:
+        print(14)
+        return
+    if W < A[0] * 16:
+        print(15)
+        return
+    if W < A[0] * 17:
+        print(16)
+        return
+    if W < A[0] * 18:
+        print(17)
+        return
+    if W < A[0] * 19:
+        print(18)
+        return
+    if W < A[0] * 20:
+        print(19)
+        return
+    if W < A[0] * 21:
+        print(20)
+        return
+    if W < A[0] * 22:
+        print(21)
+        return
+    if W < A[0] * 23:
+        print(22)
+        return
+    if W < A[0] * 24:
+        print(

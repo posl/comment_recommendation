@@ -1,68 +1,281 @@
-#問題文
-#整数の多重集合 S があります。はじめ S は空です。
-#Q 個のクエリが与えられるので順に処理してください。
-#クエリは次の 3 種類のいずれかです。
-#1 x : S に x を 1 個追加する。
-#2 x c : S から x を min(c, (S に含まれる x の個数 )) 個削除する。
-#3 : (S の最大値  )- (S の最小値 ) を出力する。このクエリを処理するとき、 S が空でないことが保証される。
-#
-#
-#制約
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ Q
-#3 のクエリを処理するとき、S は空でない。
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#i 番目のクエリを表す query_i は以下の 3 種類のいずれかである。
-#1 x
-#2 x c
-#3 
-#
-#出力
-#3 のクエリに対する答えを順に改行区切りで出力せよ。
-#
-#入力例 1
-#8
-#1 3
-#1 2
-#3
-#1 2
-#1 7
-#3
-#2 2 3
-#3
-#
-#出力例 1
-#1
-#5
-#4
-#多重集合 S は以下のように変化します。
-#1 番目のクエリ : S に 3 を追加する。S は {3 } となる。
-#2 番目のクエリ : S に 2 を追加する。S は {2, 3} となる。
-#3 番目のクエリ : S = {2, 3} の最大値は 3 、最小値は 2 なので、 3-2=1 を出力する。
-#4 番目のクエリ : S に 2 を追加する。S は {2,2,3 } となる。
-#5 番目のクエリ : S に 7 を追加する。S は {2, 2,3, 7} となる。
-#6 番目のクエリ : S = {2,2,3, 7} の最大値は 7 、最小値は 2 なので、 7-2=5 を出力する。
-#7 番目のクエリ : S に含まれる 2 の個数は 2 個なので、 [min(2,3)] = 2 個の 2 を S から削除する。S は {3, 7} となる。
-#8 番目のクエリ : S = {3, 7} の最大値は 7 、最小値は 3 なので、 7-3=4 を出力する。
-#
-#入力例 2
-#4
-#1 10000
-#1 1000
-#2 100 3
-#1 10
-#
-#出力例 2
-#クエリ 3 が含まれない場合、何も出力してはいけません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    q = int(input())
+    s = []
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            s.append(query[1])
+        elif query[0] == 2:
+            for i in range(query[1]):
+                if query[1] == 0:
+                    break
+                if s.count(query[1]) >= query[2]:
+                    s.remove(query[1])
+        else:
+            print(max(s) - min(s))
+
+=======
+Suggestion 2
+
+def main():
+    from sys import stdin
+    from collections import Counter
+    readline = stdin.readline
+
+    q = int(readline())
+    A = []
+    for _ in range(q):
+        query = list(map(int,readline().split()))
+        if query[0] == 1:
+            A.append(query[1])
+        elif query[0] == 2:
+            if len(A) > 0:
+                cnt = Counter(A)
+                for i in range(min(query[2],cnt[query[1]])):
+                    A.remove(query[1])
+        else:
+            A.sort()
+            print(A[-1] - A[0])
+
+=======
+Suggestion 3
+
+def main():
+    from sys import stdin
+    input = stdin.readline
+    
+    from heapq import heappush, heappop
+    
+    Q = int(input())
+    s = []
+    h = []
+    for _ in range(Q):
+        query = input().split()
+        if query[0] == "1":
+            x = int(query[1])
+            s.append(x)
+            heappush(h, x)
+        elif query[0] == "2":
+            x = int(query[1])
+            c = int(query[2])
+            for i in range(min(c, s.count(x))):
+                s.remove(x)
+        else:
+            while True:
+                if s[0] == h[0]:
+                    heappop(h)
+                    heappop(s)
+                else:
+                    break
+            print(h[0]-s[0])
+
+=======
+Suggestion 4
+
+def main():
+    #n = int(input())
+    #a, b = list(map(int, input().split()))
+    #s = input()
+    #s = input().split()
+    q = int(input())
+    #query = [list(map(int, input().split())) for i in range(q)]
+    query = [input().split() for i in range(q)]
+    #print(query)
+    #print(query[0][0])
+    s = []
+    for i in range(q):
+        if query[i][0] == "1":
+            s.append(int(query[i][1]))
+        elif query[i][0] == "2":
+            num = int(query[i][1])
+            count = int(query[i][2])
+            for j in range(count):
+                if num in s:
+                    s.remove(num)
+                else:
+                    break
+        else:
+            s.sort()
+            print(s[-1] - s[0])
+    #print(s)
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    from collections import Counter
+    input = sys.stdin.readline
+    Q = int(input())
+    S = Counter()
+    S_max = 0
+    S_min = 0
+    for _ in range(Q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            S[query[1]] += 1
+            if S_max == 0:
+                S_max = query[1]
+                S_min = query[1]
+            else:
+                if S_max < query[1]:
+                    S_max = query[1]
+                if S_min > query[1]:
+                    S_min = query[1]
+        elif query[0] == 2:
+            if S[query[1]] > 0:
+                if S[query[1]] - query[2] > 0:
+                    S[query[1]] -= query[2]
+                else:
+                    S[query[1]] = 0
+        elif query[0] == 3:
+            print(S_max - S_min)
+        else:
+            pass
+
+=======
+Suggestion 6
+
+def main():
+    from sys import stdin
+    from collections import Counter
+    read=stdin.readline
+    N=int(read())
+    S=Counter()
+    S_max=0
+    S_min=10**9
+    for i in range(N):
+        query=read().split()
+        if query[0]=='1':
+            S[int(query[1])]+=1
+            S_max=max(S_max,int(query[1]))
+            S_min=min(S_min,int(query[1]))
+        elif query[0]=='2':
+            if S[int(query[1])]>0:
+                if S[int(query[1])]<int(query[2]):
+                    S_min=max(S_min,int(query[1]))
+                    S[int(query[1])]-=S[int(query[1])]
+                else:
+                    S[int(query[1])]-=int(query[2])
+        else:
+            print(S_max-S_min)
+
+=======
+Suggestion 7
+
+def main():
+  import sys
+  def input(): return sys.stdin.readline().rstrip()
+  from collections import defaultdict
+  from heapq import heappush, heappop
+
+  q = int(input())
+  s = []
+  d = defaultdict(int)
+  for _ in range(q):
+    query = input().split()
+    if query[0] == '1':
+      heappush(s, int(query[1]))
+      d[int(query[1])] += 1
+    elif query[0] == '2':
+      while s and d[s[0]] == 0:
+        heappop(s)
+      if s:
+        d[heappop(s)] -= 1
+    else:
+      while s and d[s[0]] == 0:
+        heappop(s)
+      print(s[-1] - s[0])
+  return
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    input = sys.stdin.readline
+    from collections import Counter
+    from heapq import heapify, heappop, heappush
+    Q = int(input())
+    query = [input().split() for _ in range(Q)]
+    S = []
+    S_cnt = Counter()
+    S_min = 10**9+1
+    S_max = -1
+    for q in query:
+        if q[0] == "1":
+            x = int(q[1])
+            S.append(x)
+            S_cnt[x] += 1
+            S_min = min(S_min, x)
+            S_max = max(S_max, x)
+        elif q[0] == "2":
+            x = int(q[1])
+            c = int(q[2])
+            while c > 0:
+                if S_cnt[x] > 0:
+                    S_cnt[x] -= 1
+                    S.remove(x)
+                    c -= 1
+                else:
+                    break
+            if S_cnt[x] == 0:
+                S_min = min(S)
+                S_max = max(S)
+        else:
+            print(S_max - S_min)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    from collections import Counter
+    from heapq import heappush, heappop
+    import sys
+    input = sys.stdin.buffer.readline
+    q = int(input())
+    add = []
+    dels = []
+    c = Counter()
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            add.append(query[1])
+        elif query[0] == 2:
+            dels.append(query[1])
+            c[query[1]] += 1
+        else:
+            while add:
+                if c[add[-1]] > 0:
+                    c[add[-1]] -= 1
+                    add.pop()
+                else:
+                    break
+            while dels:
+                if c[dels[-1]] == 0:
+                    dels.pop()
+                else:
+                    break
+            print(add[-1] - dels[-1])
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    S = []
+    for i in range(Q):
+        if query[i][0] == 1:
+            S.append(query[i][1])
+        elif query[i][0] == 2:
+            for j in range(min(query[i][2], S.count(query[i][1]))):
+                S.remove(query[i][1])
+        elif query[i][0] == 3:
+            print(max(S) - min(S))

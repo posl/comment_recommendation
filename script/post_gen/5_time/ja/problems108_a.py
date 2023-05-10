@@ -1,40 +1,97 @@
-#問題文
-#1 以上 K 以下の正の整数から、偶数と奇数ひとつずつの組を選ぶ方法の個数を求めてください。なお、選ぶ順番は考慮しません。
-#
-#制約
-#2≦ K≦ 100
-#K は整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#
-#出力
-#1 以上 K 以下の正の整数から、偶数と奇数ひとつずつの組を選ぶ方法の個数を出力せよ。
-#
-#入力例 1
-#3
-#
-#出力例 1
-#2
-#(2,1) と (2,3) が条件を満たします。
-#
-#入力例 2
-#6
-#
-#出力例 2
-#9
-#
-#入力例 3
-#11
-#
-#出力例 3
-#30
-#
-#入力例 4
-#50
-#
-#出力例 4
-#625
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    K = int(input())
+    print((K // 2) * (K // 2 + K % 2))
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    if K % 2 == 0:
+        print((K // 2) ** 2)
+    else:
+        print((K // 2) * (K // 2 + 1))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int((k/2))**2)
+    else:
+        print(int((k/2)) * (int((k/2))+1))
+
+=======
+Suggestion 4
+
+def calc(k):
+    # 偶数の個数
+    even = k // 2
+    # 奇数の個数
+    odd = k - even
+    return even * odd
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int((k / 2) ** 2))
+    else:
+        print(int(((k - 1) / 2) * ((k + 1) / 2)))
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int((k/2)**2))
+    else:
+        print(int((k/2)*(k/2+1)))
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    if K % 2 == 0:
+        print(int((K/2)**2))
+    else:
+        print(int((K//2)*(K//2 + 1)))
+
+=======
+Suggestion 8
+
+def solve():
+    k = int(input())
+    if k % 2 == 0:
+        print(int(k/2)**2)
+    else:
+        print(int((k+1)/2)*int((k-1)/2))
+
+=======
+Suggestion 9
+
+def calc_even_odd_pairs(n):
+    if n % 2 == 0:
+        return int(n/2) * int(n/2)
+    else:
+        return int(n/2) * (int(n/2) + 1)
+
+=======
+Suggestion 10
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(int((k/2)**2))
+    else:
+        print(int((k//2)*(k//2+1)))

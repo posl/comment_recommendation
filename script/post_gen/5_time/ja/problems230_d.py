@@ -1,71 +1,193 @@
-#問題文
-#N 行 10^9 列の格子状の区画に区切られた街に N 枚の壁があり、1 から N までの番号が割り振られています。
-#壁 i は上から i 行目、左から L_i 列目から R_i 列目の範囲にあります。(入出力例 1
-# の図も参考にしてください。)
-#高橋君は N 枚の壁をすべて破壊することにしました。
-#超人的な腕力を持つ高橋君は、1 回のパンチで連続する D 列にまとめてダメージを与えることができます。  
-#より厳密に言い換えると、1 以上 10^9 - D + 1 以下の 整数 x を選んで、x 列目から x + D - 1 列目に (一部でも) 存在するすべての破壊されていない壁にパンチによるダメージを与えることができます。  
-#壁は一部分でもダメージを受けると、パンチの衝撃波により全体が木っ端みじんに破壊されてしまいます。
-#(入出力例 1
-# の説明も参考にしてください。)
-#高橋君がすべての壁を破壊するには、少なくとも何回のパンチを放つ必要がありますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#出力
-#すべての壁を破壊するのに必要なパンチの最少回数を出力せよ。
-#
-#入力例 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#出力例 1
-#2
-#入力例 1に対応する壁の配置を図示したものが下図です。
-#たとえば次のようにパンチを放つことで、 2 回のパンチですべての壁を破壊することができます。(以下の説明では、a 列目から b 列目までの範囲を lbrack a, b rbrack と表記します。)
-#まず、 lbrack 2, 4 rbrack にパンチを放つ。 lbrack 2, 4 rbrack に存在する壁である壁 1 と壁 2 はダメージを受け、破壊される。
-#次に lbrack 5, 7rbrack にパンチを放つ。lbrack 5, 7rbrack に存在する壁 3 はダメージを受け、破壊される。
-#また、次の方法でもすべての壁を 2 回のパンチで破壊することができます。
-#まず、lbrack 7, 9 rbrack にパンチを放ち、壁 2 と壁 3 を破壊する。
-#次に、lbrack 1, 3 rbrack にパンチを放ち、壁 1 を破壊する。
-#
-#入力例 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#出力例 2
-#1
-#入出力例 1
-# と比べると、壁 3 の範囲が lbrack 5, 9 rbrack から lbrack 4, 9 rbrack に変わりました。
-#この場合は lbrack 2, 4 rbrack にパンチを放つことで 1 回ですべての壁を破壊できます。
-#
-#入力例 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#出力例 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.so
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    Ls = []
+    Rs = []
+    for i in range(N):
+        L, R = map(int, input().split())
+        Ls.append(L)
+        Rs.append(R)
+    Ls.sort()
+    Rs.sort()
+    ans = 0
+    for i in range(N):
+        ans += 1
+        if Rs[i] - Ls[i] >= D:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    count = 0
+    for i in range(N):
+        if L[i] - R[i] > 0:
+            count += 1
+        else:
+            count -= 1
+        if count > ans:
+            ans = count
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        Li, Ri = map(int, input().split())
+        L.append(Li)
+        R.append(Ri)
+    L.sort()
+    R.sort()
+    ans = 0
+    i = 0
+    j = 0
+    while i < N:
+        if L[i] <= R[j]:
+            i += 1
+        else:
+            j += 1
+        if j - i > ans:
+            ans = j - i
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    for i in range(N):
+        ans += 1
+        if i == 0:
+            ans += 1
+        if i == N-1:
+            ans += 1
+        ans += (L[i] - R[i-1] - 1) // D
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    L = L[::-1]
+    R = R[::-1]
+    ans = 0
+    l = 0
+    r = 0
+    while l < N and r < N:
+        if L[l] <= R[r]:
+            ans += 1
+            l += 1
+        else:
+            ans -= 1
+            r += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,d = map(int,input().split())
+    l = []
+    r = []
+    for i in range(n):
+        l_i,r_i = map(int,input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l.sort()
+    r.sort()
+    ans = 1
+    tmp = 0
+    for i in range(n):
+        tmp += 1
+        if i == n-1:
+            break
+        if l[i+1] - r[i] > d:
+            ans += 1
+            tmp = 0
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve(N, D, LRs):
+    LRs.sort()
+    ans = 1
+    for i in range(N-1):
+        if LRs[i+1][0] - LRs[i][1] >= D:
+            ans += 1
+    return ans
+
+N, D = map(int, input().split())
+LRs = [list(map(int, input().split())) for _ in range(N)]
+print(solve(N, D, LRs))
+
+=======
+Suggestion 9
+
+def solve():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    n, d = map(int, input().split())
+    lrs = [list(map(int, input().split())) for _ in range(n)]
+    lrs.sort(key=lambda x: x[0])
+    r = 0
+    ans = 0
+    for l, r in lrs:
+        if r - l + 1 > d:
+            ans += (r - l) // d
+    print(ans)

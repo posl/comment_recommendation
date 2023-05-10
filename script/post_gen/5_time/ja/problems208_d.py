@@ -1,75 +1,252 @@
-#問題文
-#高橋王国には N 個の都市と M 本の道路があります。
-#都市には 1 から N の番号が、道路には 1 から M の番号が割り振られています。道路 i は都市 A_i から B_i へ向かう一方通行の道で、移動するのに C_i 分かかります。
-#f(s, t, k) を次のクエリへの答えとして定めます。
-#都市 s を出発して都市 t に到着するまでの最短時間を計算してください。ただし、通ってよい都市は s, t および番号が k 以下の都市のみとします。また、都市 t に到着できない場合や s = t である場合におけるクエリの答えは 0 とします。
-#全ての s,t,k に対して f(s,t,k) を計算して総和を出力してください。より厳密には、 sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k) を出力してください。
-#
-#制約
-#1 ≦ N ≦ 400
-#0 ≦ M ≦ N(N-1)
-#1 ≦ A_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#1 ≦ C_i ≦ 10^6 (1 ≦ i ≦ M)
-#i ≠ j ならば A_i ≠ A_j または B_i ≠ B_j である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1 C_1
-#.
-#.
-#.
-#A_M B_M C_M
-#
-#出力
-# sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k) を出力せよ。
-#
-#入力例 1
-#3 2
-#1 2 3
-#2 3 2
-#
-#出力例 1
-#25
-#f(s,t,k) ≠ 0 であるような s,t,k を以下に挙げます。
-#k = 1 のとき：f(1,2,1) = 3, f(2,3,1) = 2
-#k = 2 のとき：f(1,2,2) = 3, f(2,3,2) = 2, f(1,3,2) = 5
-#k = 3 のとき：f(1,2,3) = 3, f(2,3,3) = 2, f(1,3,3) = 5
-#
-#入力例 2
-#3 0
-#
-#出力例 2
-#0
-#全ての s,t,k に対して f(s,t,k) = 0 です。
-#
-#入力例 3
-#5 20
-#1 2 6
-#1 3 10
-#1 4 4
-#1 5 1
-#2 1 5
-#2 3 9
-#2 4 8
-#2 5 6
-#3 1 5
-#3 2 1
-#3 4 7
-#3 5 9
-#4 1 4
-#4 2 6
-#4 3 4
-#4 5 8
-#5 1 2
-#5 2 5
-#5 3 6
-#5 4 5
-#
-#出力例 3
-#517
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int,input().split())
+    #A = []
+    #B = []
+    #C = []
+    #for i in range(M):
+    #    a,b,c = map(int,input().split())
+    #    A.
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    INF = 10**9
+    # dp[i][j]は都市iから都市jへの最短距離
+    dp = [[INF for i in range(N+1)] for j in range(N+1)]
+    # 道路の情報をdpに格納
+    for i in range(M):
+        A, B, C = map(int, input().split())
+        dp[A][B] = C
+
+    # dpの初期化
+    for i in range(N+1):
+        dp[i][i] = 0
+
+    # dpの更新
+    # dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+    for k in range(1, N+1):
+        for i in range(1, N+1):
+            for j in range(1, N+1):
+                dp[i][j] = min(dp[i][j], dp[i][k]+dp[k][j])
+
+    # 答えの計算
+    ans = 0
+    for s in range(1, N+1):
+        for t in range(1, N+1):
+            for k in range(1, N+1):
+                if s == t or s == k or t == k:
+                    continue
+                ans += dp[s][t]
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    edges = []
+    for _ in range(M):
+        A, B, C = map(int, input().split())
+        edges.append((A, B, C))
+    edges.sort(key=lambda x: x[2])
+
+    # ワーシャルフロイド法
+    # dp[i][j][k] := iからjにk以下の都市を通って行く最短経路
+    INF = 10**10
+    dp = [[[INF for _ in range(N+1)] for _ in range(N+1)] for _ in range(N+1)]
+    for i in range(N+1):
+        for j in range(N+1):
+            if i == j:
+                dp[i][j][i] = 0
+    for i in range(N+1):
+        for j in range(N+1):
+            for k in range(N+1):
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+
+    for i in range(N+1):
+        for j in range(N+1):
+            for k in range(N+1):
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+
+    for i in range(N+1):
+        for j in range(N+1):
+            for k in range(N+1):
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+
+    for i in range(N+1):
+        for j in range(N+1):
+            for k in range(N+1):
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+                dp[i][j][k] = min(dp[i][j][k], dp[i][j][k])
+
+    for i in range(N+1):
+        for j in range(N+1):
+            for k
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    G = [[float('inf')]*N for _ in range(N)]
+    for i in range(N):
+        G[i][i] = 0
+    for _ in range(M):
+        a, b, c = map(int, input().split())
+        G[a-1][b-1] = c
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                G[i][j] = min(G[i][j], G[i][k]+G[k][j])
+    ans = 0
+    for s in range(N):
+        for t in range(N):
+            for k in range(N):
+                if s == t or s == k or t == k:
+                    continue
+                if G[s][t] == G[s][k]+G[k][t]:
+                    ans += G[s][t]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    ABC = [list(map(int, input().split())) for _ in range(M)]
+    INF = 10**18
+    cost = [[INF for _ in range(N + 1)] for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        cost[i][i] = 0
+    for A, B, C in ABC:
+        cost[A][B] = C
+    for k in range(1, N + 1):
+        for i in range(1, N + 1):
+            for j in range(1, N + 1):
+                cost[i][j] = min(cost[i][j], cost[i][k] + cost[k][j])
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            for k in range(1, N + 1):
+                if i == j or j == k or k == i:
+                    continue
+                ans += cost[i][j] + cost[j][k] + cost[k][i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    ABC = [list(map(int, input().split())) for _ in range(M)]
+    INF = 10 ** 9
+    D = [[INF] * N for _ in range(N)]
+    for i in range(N):
+        D[i][i] = 0
+    for a, b, c in ABC:
+        D[a - 1][b - 1] = c
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                D[i][j] = min(D[i][j], D[i][k] + D[k][j])
+    ans = 0
+    for s in range(N):
+        for t in range(N):
+            for k in range(N):
+                if D[s][t] == D[s][k] + D[k][t]:
+                    ans += D[s][t]
+                    break
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    for i in range(M):
+        a, b, c = map(int, input().split())
+        A.append(a-1)
+        B.append(b-1)
+        C.append(c)
+
+    ans = 0
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                if i == j:
+                    continue
+                if i > k or j > k:
+                    continue
+                ans += min(C[i]+C[j], C[k])
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def dijkstra(s, N, G):
+    color = [0] * N
+    d = [float('inf')] * N
+    d[s] = 0
+    color[s] = 1
+    while(1):
+        minv = float('inf')
+        for i in range(N):
+            if color[i] != 2 and d[i] < minv:
+                minv = d[i]
+                u = i
+        if minv == float('inf'):
+            break
+        color[u] = 2
+        for v in range(N):
+            if color[v] != 2 and G[u][v] != float('inf'):
+                if d[u] + G[u][v] < d[v]:
+                    d[v] = d[u] + G[u][v]
+                    color[v] = 1
+    return d
+
+N,M = map(int,input().split())
+G = [[float('inf') for i in range(N)] for j in range(N)]
+for i in range(M):
+    A,B,C = map(int,input().split())
+    G[A-1][B-1] = C
+
+ans = 0
+for i in range(N):
+    d = dijkstra(i,N,G)
+    for j in range(N):
+        for k in range(N):
+            if d[j] + G[j][k] == d[k]:
+                ans += d[j]
+print(ans)
+
+=======
+Suggestion 10
+
+def warshall_floyd(d):
+    #d[i][j]: iからjへの最短距離
+    n = len(d)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k]+d[k][j])
+    return d

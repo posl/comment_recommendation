@@ -1,38 +1,138 @@
-#問題文
-#高橋王国では 1! 円硬貨 , 2! 円硬貨 , ..., 10! 円硬貨が流通しています。ここで、N! = 1 × 2 × ... × N です。
-#高橋君は全ての種類の硬貨を 100 枚ずつ持っており、P 円の商品をお釣りが出ないようにちょうどの金額を支払って買おうとしています。
-#問題の制約下で条件を満たす支払い方は必ず存在することが証明できます。
-#最小で何枚の硬貨を使えば支払うことができますか？
-#
-#制約
-#1 ≦ P ≦ 10^7
-#P は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#P
-#
-#出力
-#必要となる硬貨の最小枚数を出力せよ。
-#
-#入力例 1
-#9
-#
-#出力例 1
-#3
-#1! = 1 円硬貨、2! = 2 円硬貨、3! = 6 円硬貨を 1 枚ずつ使うと 3 枚の硬貨で 9 円の商品をちょうどの金額で支払うことができます。これより少ない枚数で支払う方法は存在しません。
-#
-#入力例 2
-#119
-#
-#出力例 2
-#10
-#1! 円硬貨を 1 枚、2! 円硬貨を 2 枚、3! 円硬貨を 3 枚、4! 円硬貨を 4 枚使えばよいです。
-#
-#入力例 3
-#10000000
-#
-#出力例 3
-#24
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+p = int(input())
+ans = 0
+for i in range(10, 0, -1):
+    if p >= factorial(i):
+        ans += p // factorial(i)
+        p %= factorial(i)
+print(ans)
+
+=======
+Suggestion 2
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+p = int(input())
+
+coins = []
+for i in range(1,11):
+    coins.append(factorial(i))
+
+coins.reverse()
+
+count = 0
+for coin in coins:
+    while p >= coin:
+        p -= coin
+        count += 1
+
+print(count)
+
+=======
+Suggestion 3
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    #n!のリストを作成
+    n_list = [1]
+    for i in range(1,11):
+        n_list.append(n_list[i-1]*i)
+    #print(n_list)
+
+    #n!のリストから引いていく
+    ans = 0
+    for i in range(10,0,-1):
+        #print(n_list[i])
+        while n >= n_list[i]:
+            n -= n_list[i]
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+p = int(input())
+ans = 0
+for i in range(10, 0, -1):
+    if p >= factorial(i):
+        ans += p // factorial(i)
+        p %= factorial(i)
+print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    P = int(input())
+    ans = 0
+    for i in range(10, 0, -1):
+        ans += P // i
+        P %= i
+    print(ans)
+
+=======
+Suggestion 7
+
+def calc(n):
+    if n == 0:
+        return 0
+    else:
+        for i in range(10, 0, -1):
+            if n >= i * factorial(i):
+                return i + calc(n - i * factorial(i))
+        return 0
+
+=======
+Suggestion 8
+
+def factorial(n):
+    return n * factorial(n - 1) if n > 1 else 1
+
+p = int(input())
+coins = [factorial(i) for i in range(1, 11)][::-1]
+i = 0
+count = 0
+while p > 0:
+    count += p // coins[i]
+    p %= coins[i]
+    i += 1
+print(count)
+
+=======
+Suggestion 9
+
+def main():
+    p = int(input())
+    k = 0
+    for i in range(10,0,-1):
+        k += p//math.factorial(i)
+        p %= math.factorial(i)
+    print(k)

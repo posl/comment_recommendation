@@ -1,48 +1,183 @@
-#問題文
-#正整数列 A=(a_1,a_2,...,a_N) が与えられます。
-#あなたは以下の操作のうち 1 つを選んで行うことを 0 回以上何度でも繰り返せます。
-#1 ≦ i ≦ N かつ a_i が 2 の倍数であるような整数 i を選び、a_i を ((a_i)/(2)) に置き換える
-#1 ≦ i ≦ N かつ a_i が 3 の倍数であるような整数 i を選び、a_i を ((a_i)/(3)) に置き換える
-#あなたの目標は A が a_1=a_2=...=a_N を満たす状態にすることです。
-#目標を達成するために必要な操作の回数の最小値を求めてください。ただし、どのように操作を行っても目標を達成できない場合、代わりに -1 と出力してください。
-#
-#制約
-#2 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#a_1 a_2 ... a_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1 4 3
-#
-#出力例 1
-#3
-#次のように操作をすると 3 回で目標を達成でき、これが最小の回数です。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,2,3) となる。
-#a_i が 2 の倍数であるような整数 i として 2 を選び、a_2 を ((a_2)/(2)) に置き換える。A は (1,1,3) となる。
-#a_i が 3 の倍数であるような整数 i として 3 を選び、a_3 を ((a_3)/(3)) に置き換える。A は (1,1,1) となる。
-#
-#入力例 2
-#3
-#2 7 6
-#
-#出力例 2
-#-1
-#どのように操作を行っても目標を達成できません。
-#
-#入力例 3
-#6
-#1 1 1 1 1 1
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        if all(a%2==0 for a in A):
+            A = [a//2 for a in A]
+            ans += 1
+        elif any(a%2==0 for a in A):
+            print(ans)
+            return
+        else:
+            print(ans)
+            return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    cnt = 0
+    while True:
+        flag = True
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+                cnt += 1
+                flag = False
+        if flag:
+            break
+    print(cnt)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] //= 2
+            elif A[i] % 3 == 0:
+                A[i] //= 3
+            else:
+                print(count)
+                exit()
+        count += 1
+
+    print(-1)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        for i in range(N):
+            if A[i] % 2 == 0:
+                A[i] = A[i] // 2
+            elif A[i] % 3 == 0:
+                A[i] = A[i] // 3
+            else:
+                break
+        else:
+            ans += 1
+            continue
+        break
+    if A.count(A[0]) == len(A):
+        print(ans)
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def func(n, a):
+    cnt = 0
+    while True:
+        if len(set(a)) == 1 and 1 in set(a):
+            return cnt
+        if 1 in set(a):
+            return -1
+        a = [i//2 if i % 2 == 0 else i//3 for i in a]
+        cnt += 1
+
+=======
+Suggestion 6
+
+def func(n, a):
+    cnt = 0
+    while True:
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+            elif a[i] % 3 == 0:
+                a[i] = a[i] / 3
+            else:
+                break
+        else:
+            cnt += 1
+            continue
+        break
+    if a.count(a[0]) == n:
+        return cnt
+    else:
+        return -1
+
+n = int(input())
+a = list(map(int, input().split()))
+print(func(n, a))
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    res = 0
+    while all(a % 2 == 0 for a in A):
+        A = [a // 2 for a in A]
+        res += 1
+    print(res)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    while True:
+        if all([a % 2 == 0 for a in A]):
+            A = [a / 2 for a in A]
+            count += 1
+        elif all([a % 3 == 0 for a in A]):
+            A = [a / 3 for a in A]
+            count += 1
+        else:
+            break
+    if all([a == A[0] for a in A]):
+        print(count)
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def func(a):
+    count = 0
+    for i in range(len(a)):
+        while a[i] % 2 == 0:
+            count += 1
+            a[i] = a[i] / 2
+        while a[i] % 3 == 0:
+            count += 1
+            a[i] = a[i] / 3
+    return count
+
+n = int(input())
+a = list(map(int, input().split()))
+count = func(a)
+
+=======
+Suggestion 10
+
+def cal(a):
+    if a % 2 == 0:
+        return a / 2
+    elif a % 3 == 0:
+        return a / 3
+    else:
+        return -1

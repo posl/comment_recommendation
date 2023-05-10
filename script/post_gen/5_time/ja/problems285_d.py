@@ -1,67 +1,247 @@
-#問題文
-#あなたの運営する Web サービスには N 人のユーザがいます。
-#i 番目のユーザの現在のユーザ名は S_i ですが、T_i への変更を希望しています。
-#ここで、S_1,...,S_N は相異なり、T_1,...,T_N も相異なります。
-#ユーザ名を変更する順序を適切に定めることで、以下の条件を全て満たすように、全てのユーザのユーザ名を希望通り変更することができるか判定してください。
-#ユーザ名の変更は 1 人ずつ行う
-#どのユーザもユーザ名の変更は一度だけ行う
-#ユーザ名の変更を試みる時点で他のユーザが使っているユーザ名に変更することはできない
-#
-#制約
-#1 ≦ N ≦ 10^5
-#S_i,T_i は英小文字からなる 1 文字以上 8 文字以下の文字列
-#S_i ≠ T_i
-#S_i は相異なる
-#T_i は相異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#出力
-#条件を全て満たすように全てのユーザのユーザ名を希望通り変更することができるとき Yes、できないとき No と出力せよ。
-#
-#入力例 1
-#2
-#b m
-#m d
-#
-#出力例 1
-#Yes
-#1 番目のユーザの現在のユーザ名は b であり、m への変更を希望しています。
-#2 番目のユーザの現在のユーザ名は m であり、d への変更を希望しています。
-#まず、2 番目のユーザのユーザ名を m から d に変更し、
-#その後 1 番目のユーザのユーザ名を b から m に変更することで、条件を満たしながら変更することができます。
-#最初の時点では 2 番目のユーザのユーザ名が m なので、1 番目のユーザのユーザ名を同じ m に変更することはできません。
-#
-#入力例 2
-#3
-#a b
-#b c
-#c a
-#
-#出力例 2
-#No
-#1 番目のユーザの現在のユーザ名は a であり、b への変更を希望しています。
-#2 番目のユーザの現在のユーザ名は b であり、c への変更を希望しています。
-#3 番目のユーザの現在のユーザ名は c であり、a への変更を希望しています。  
-#条件を満たしながらユーザ名の変更を行うことはできません。
-#
-#入力例 3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        st = input().split()
+        s.append(st[0])
+        t.append(st[1])
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j]:
+                print("No")
+                return
+            if t[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s_t_list = [input().split() for _ in range(n)]
+    for i in range(n):
+        s_t_list[i].append(i)
+    s_t_list = sorted(s_t_list, key=lambda x: x[0])
+    s_list = [i[0] for i in s_t_list]
+    t_list = [i[1] for i in s_t_list]
+    index_list = [i[2] for i in s_t_list]
+    for i in range(n-1):
+        if t_list[i] == s_list[i+1]:
+            continue
+        else:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(b)
+
+    #print(s)
+    #print(t)
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a,b = input().split()
+        s.append(a)
+        t.append(b)
+    for i in range(n):
+        if s[i] == t[i]:
+            print('No')
+            exit()
+    for i in range(n):
+        for j in range(i+1,n):
+            if s[i] == t[j]:
+                print('No')
+                exit()
+    print('Yes')
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == T[j] and S[j] == T[i]:
+                print('Yes')
+                exit()
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        if S[i] == T[i]:
+            print('No')
+            exit()
+    for i in range(N):
+        if S[i] in T[i+1:]:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        si,ti = input().split()
+        s.append(si)
+        t.append(ti)
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j]:
+                print('No')
+                return
+            if t[i] == t[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j] or t[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    #n = int(input())
+    n = 5
+    #s = []
+    #t = []
+    #for i in range(n):
+    #    s.append(input())
+    #    t.append(input())
+    s = ['aaa', 'yyy', 'ccc', 'xxx', 'bbb']
+    t = ['bbb', 'zzz', 'ddd', 'yyy', 'ccc']
+    #print(n)
+    #print(s)
+    #print(t)
+    #print(len(s))
+    #print(len(t))
+    #print(s[0])
+    #print(t[0])
+    #print(s[0] == t[0])
+    #print(s[0] == t[1])
+    #print(s[0] == t[2])
+    #print(s[0] == t[3])
+    #print(s[0] == t[4])
+    #print(s[1] == t[0])
+    #print(s[1] == t[1])
+    #print(s[1] == t[2])
+    #print(s[1] == t[3])
+    #print(s[1] == t[4])
+    #print(s[2] == t[0])
+    #print(s[2] == t[1])
+    #print(s[2] == t[2])
+    #print(s[2] == t[3])
+    #print(s[2] == t[4])
+    #print(s[3] == t[0])
+    #print(s[3] == t[1])
+    #print(s[3] == t[2])
+    #print(s[3] == t[3])
+    #print(s[3] == t[4])
+    #print(s[4] == t[0])
+    #print(s[4] == t[1])
+    #print(s[4] == t[2])
+    #print(s[4] == t[3])
+    #print(s[4] == t[4])
+    #print(s[0] == s[1])
+    #print(s[0] == s[2])
+    #print(s[0] == s[3])
+    #print(s[0] == s[4])
+    #print(s[1] == s[2])
+    #print(s[1] == s[3])
+    #print
+
+=======
+Suggestion 10
+
+def check(n, s, t):
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j] or t[i] == t[j]:
+                return False
+    return True
+
+n = int(input())
+
+s = []
+t = []
+
+for i in range(n):
+    a, b = input().split()
+    s.append(a)
+    t.append(b)

@@ -1,39 +1,106 @@
-#問題文
-#1 が書かれたカードが A 枚、0 が書かれたカードが B 枚、
-#-1 が書かれたカードが C 枚あります。
-#これらのカードから、ちょうど K 枚を選んで取るとき、取ったカードに書かれた数の和として、
-#ありうる値の最大値はいくつですか。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A, B, C
-#1 ≦ K ≦ A + B + C ≦ 2 × 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B C K
-#
-#出力
-#和としてありうる値の最大値を出力せよ。
-#
-#入力例 1
-#2 1 1 3
-#
-#出力例 1
-#2
-#1 が書かれたカードを 2 枚、0 が書かれたカードを 1 枚取ることを考えます。
-#このときカードに書かれた数の和は 2 になり、和としてありうる値の最大値になります。
-#
-#入力例 2
-#1 2 3 4
-#
-#出力例 2
-#0
-#
-#入力例 3
-#2000000000 0 0 2000000000
-#
-#出力例 3
-#2000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    A, B, C, K = map(int, input().split())
+    if K <= A:
+        print(K)
+    elif K <= A + B:
+        print(A)
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 2
+
+def main():
+    A, B, C, K = map(int, input().split())
+    ans = 0
+    if A >= K:
+        ans = K
+    else:
+        ans = A
+        K -= A
+        if B >= K:
+            pass
+        else:
+            K -= B
+            ans -= K
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c, k = map(int, input().split())
+    if k <= a:
+        print(k)
+    elif k <= a + b:
+        print(a)
+    else:
+        print(a - (k - a - b))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, K = map(int, input().split())
+    if (A >= K):
+        print(K)
+        return
+    elif (A + B >= K):
+        print(A)
+        return
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C,K = map(int,input().split())
+    if K <= A:
+        print(K)
+    elif K <= A+B:
+        print(A)
+    else:
+        print(A-(K-A-B))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C, K = map(int, input().split())
+    if K <= A:
+        print(K)
+    elif K <= A + B:
+        print(A)
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 7
+
+def max_sum(a, b, c, k):
+    if a >= k:
+        return k
+    elif a + b >= k:
+        return a
+    else:
+        return a - (k - a - b)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c,k = map(int,input().split())
+    if a >= k:
+        print(k)
+    elif a+b >= k:
+        print(a)
+    else:
+        print(a-(k-a-b))

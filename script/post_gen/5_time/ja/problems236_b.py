@@ -1,42 +1,72 @@
-#問題文
-#整数 1, 2, ..., N が書かれたカードが 4 枚ずつ、合計 4N 枚あります。
-#高橋君は、これらのカードをシャッフルしたのち 1 枚のカードを選んで抜き取り、残りの 4N - 1 枚を束にしてあなたに渡しました。渡された束の i  (1 ≦ i ≦ 4N - 1) 枚目のカードには、整数 A_i が書かれています。
-#高橋君が抜き取ったカードに書かれていた整数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N  (1 ≦ i ≦ 4N - 1)
-#各 k  (1 ≦ k ≦ N) に対し、A_i = k となる i は 4 個以下である。
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_{4N - 1}
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#出力例 1
-#3
-#高橋君が抜き取ったカードには 3 が書かれています。
-#
-#入力例 2
-#1
-#1 1 1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#出力例 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[n-1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1])
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[N-1])
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    a = set()
+    for i in range(4*N-1):
+        if A[i] in a:
+            a.remove(A[i])
+        else:
+            a.add(A[i])
+    print(a.pop())
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[(2*N)-1])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, len(A), 2):
+        if A[i] != A[i+1]:
+            print(A[i])
+            break
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[int(len(A)/2)])

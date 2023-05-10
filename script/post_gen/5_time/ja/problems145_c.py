@@ -1,60 +1,176 @@
-#問題文
-#座標平面上に N 個の町があります。町 i は、座標 ( x_i , y_i ) に位置しています。町 i と町 j の間の距離は ((x_i-x_j)^2+(y_i-y_j)^2)^(1/2) です。
-#これらの町を全て 1 回ずつ訪れるとき、町を訪れる経路は全部で N! 通りあります。1 番目に訪れる町から出発し、2 番目に訪れる町、3 番目に訪れる町、...、を経由し、N 番目に訪れる町に到着するまでの移動距離 (町から町への移動は直線移動とします) を、その経路の長さとします。これらの N! 通りの経路の長さの平均値を計算してください。
-#
-#制約
-#2 ≤ N ≤ 8
-#-1000 ≤ x_i ≤ 1000
-#-1000 ≤ y_i ≤ 1000
-#(x_i, y_i) ≠ (x_j, y_j) ( i ≠ j のとき)
-#(21:12 追記) 入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#出力
-#経路の長さの平均値を出力せよ。
-#出力は、ジャッジの出力との絶対誤差または相対誤差が 10^{-6} 以下のとき正解と判定される。
-#
-#入力例 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#出力例 1
-#2.2761423749
-#町を訪れる経路は 1 → 2 → 3 , 1 → 3 → 2 , 2 → 1 → 3 , 2 → 3 → 1 , 3 → 1 → 2 , 3 → 2 → 1 の 6 通りです。
-#このうち、経路 1 → 2 → 3 の長さは、((0-1)^2+(0-0)^2)^(1/2) + ((1-0)^2+(0-1)^2)^(1/2) = 1+(2)^(1/2) となります。
-#同様に他の経路についても長さを計算すると、経路の長さの平均値は、
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#であると分かります。
-#
-#入力例 2
-#2
-#-879 981
-#-866 890
-#
-#出力例 2
-#91.9238815543
-#町を訪れる経路は 1 → 2 , 2 → 1 の 2 通りありますが、これらの経路の長さは一致します。
-#
-#入力例 3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#出力例 3
-#7641.9817824387
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def fact(n):
+    if n == 0:
+        return 1
+    else:
+        return n * fact(n-1)
+
+=======
+Suggestion 2
+
+def main():
+    #n = int(input())
+    #a = list(map(int, input().split()))
+    n = 3
+    a = [[0,0],[1,0],[0,1]]
+    print(a)
+
+    #print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    towns = [list(map(int, input().split())) for _ in range(N)]
+    #print(towns)
+
+    def calc_distance(a, b):
+        return ((a[0]-b[0])**2 + (a[1]-b[1])**2)**(1/2)
+
+    def calc_path_distance(towns, path):
+        distance = 0
+        for i in range(N-1):
+            distance += calc_distance(towns[path[i]], towns[path[i+1]])
+        return distance
+
+    def calc_average_distance(towns):
+        path = list(range(N))
+        total_distance = 0
+        for i in range(N):
+            for j in range(N):
+                path[i], path[j] = path[j], path[i]
+                total_distance += calc_path_distance(towns, path)
+                path[i], path[j] = path[j], path[i]
+        return total_distance / (N * (N-1))
+
+    print(calc_average_distance(towns))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    cities = []
+    for i in range(N):
+        cities.append(list(map(int, input().split())))
+    #print(cities)
+    import itertools
+    import math
+    sum = 0
+    count = 0
+    for i in itertools.permutations(cities, N):
+        #print(i)
+        for j in range(N-1):
+            sum += math.sqrt((i[j][0]-i[j+1][0])**2+(i[j][1]-i[j+1][1])**2)
+        count += 1
+    print(sum/count)
+main()
+
+=======
+Suggestion 5
+
+def dist(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+n = int(input())
+x = [0]*n
+y = [0]*n
+for i in range(n):
+    x[i], y[i] = map(int, input().split())
+
+import itertools
+
+l = list(itertools.permutations(range(n)))
+ans = 0
+for i in range(len(l)):
+    for j in range(n-1):
+        ans += dist(x[l[i][j]],y[l[i][j]],x[l[i][j+1]],y[l[i][j+1]])
+print(ans/len(l))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    import itertools
+    import math
+    l = list(itertools.permutations(range(n)))
+    total = 0
+    for i in range(len(l)):
+        for j in range(n-1):
+            total += math.sqrt((x[l[i][j]]-x[l[i][j+1]])**2 + (y[l[i][j]]-y[l[i][j+1]])**2)
+    print(total/len(l))
+main()
+
+=======
+Suggestion 7
+
+def dist(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 8
+
+def getDistances(start, points, distance):
+    if len(points) == 0:
+        return distance
+    else:
+        distances = []
+        for i in range(len(points)):
+            distances.append(getDistances(points[i], points[:i] + points[i+1:], distance + ((start[0] - points[i][0]) ** 2 + (start[1] - points[i][1]) ** 2) ** 0.5))
+        return distances
+
+N = int(input())
+points = []
+for i in range(N):
+    points.append(list(map(int, input().split())))
+
+distances = []
+for i in range(N):
+    distances.append(getDistances(points[i], points[:i] + points[i+1:], 0))
+
+sum = 0
+for i in range(N):
+    for j in range(len(distances[i])):
+        sum += distances[i][j]
+
+print(sum / (N * (N - 1)))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    towns = [list(map(int, input().split())) for _ in range(N)]
+    sum = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            sum += ((towns[i][0] - towns[j][0])**2 + (towns[i][1] - towns[j][1])**2)**0.5
+    print(sum * 2 * math.factorial(N-1) / math.factorial(N))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    xy = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        xy.append([x,y])
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            ans += ((xy[i][0]-xy[j][0])**2+(xy[i][1]-xy[j][1])**2)**(1/2)
+    ans /= N
+    print(ans)

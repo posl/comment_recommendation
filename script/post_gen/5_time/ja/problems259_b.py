@@ -1,52 +1,117 @@
-#問題文
-#x 軸の正の向きが右、y 軸の正の向きが上であるような xy 座標平面において、点 (a,b) を原点を中心として反時計回りに d 度回転させた点を求めてください。
-#
-#制約
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a b d
-#
-#出力
-#求めるべき点を (a',b') とするとき、 a' と b' をこの順に空白区切りで出力せよ。
-#なお、各出力について、解との絶対誤差または相対誤差が 10^{−6} 以下であれば正解として扱われる。  
-#
-#入力例 1
-#2 2 180
-#
-#出力例 1
-#-2 -2
-#(2,2) を原点を中心として反時計回りに 180 度回転させた点は、(2,2) を原点について対称な位置に移動させた点であり、(-2,-2) となります。
-#
-#入力例 2
-#5 0 120
-#
-#出力例 2
-#-2.49999999999999911182 4.33012701892219364908
-#(5,0) を原点を中心として反時計回りに 120 度回転させた点は (-(5/2) , ((5(3)^(1/2))/2)) です。
-#この例での出力はこれらの値と厳密には一致しませんが、誤差が十分に小さいため正解として扱われます。
-#
-#入力例 3
-#0 0 11
-#
-#出力例 3
-#0.00000000000000000000 0.00000000000000000000
-#(a,b) が原点(回転の中心)なので回転させても座標が変わりません。
-#
-#入力例 4
-#15 5 360
-#
-#出力例 4
-#15.00000000000000177636 4.99999999999999555911
-#360 度回転させたので座標が変わりません。
-#
-#入力例 5
-#-505 191 278
-#
-#出力例 5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def input_to_int():
+    return [int(i) for i in input().split()]
+
+=======
+Suggestion 2
+
+def main():
+    a,b,d = input().split()
+    a = float(a)
+    b = float(b)
+    d = float(d)
+    import math
+    d = math.radians(d)
+    x = a*math.cos(d) - b*math.sin(d)
+    y = a*math.sin(d) + b*math.cos(d)
+    print(x,y)
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    import math
+    a, b, d = map(int, sys.stdin.readline().split())
+    rad = math.radians(d)
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    print(x, y)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    a,b,d = map(int, input().split())
+    import math
+    rad = d * math.pi / 180.0
+    x = a * math.cos(rad) - b * math.sin(rad)
+    y = a * math.sin(rad) + b * math.cos(rad)
+    print(x,y)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    a,b,d = map(int,input().split())
+    rad = d * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 / 180
+    print(a * math.cos(rad) - b * math.sin(rad), a * math.sin(rad) + b * math.cos(rad))
+
+=======
+Suggestion 6
+
+def rotation(x,y,d):
+    import math
+    rad = d * math.pi / 180
+    return (x*math.cos(rad) - y*math.sin(rad), x*math.sin(rad) + y*math.cos(rad))
+
+a,b,d = map(int,input().split())
+x,y = rotation(a,b,d)
+print(x,y)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,d = map(int,input().split())
+    import math
+    d = math.radians(d)
+    x = a*math.cos(d)-b*math.sin(d)
+    y = a*math.sin(d)+b*math.cos(d)
+    print(x,y)
+
+main()
+
+=======
+Suggestion 8
+
+def solve(a,b,d):
+    import math
+    rad = math.radians(d)
+    x = a*math.cos(rad) - b*math.sin(rad)
+    y = a*math.sin(rad) + b*math.cos(rad)
+    return x,y
+
+=======
+Suggestion 9
+
+def main():
+    a,b,d = map(int, input().split())
+    if d == 0 or d == 360:
+        print(a,b)
+    elif d == 180:
+        print(-a,-b)
+    else:
+        import math
+        x = a*math.cos(math.radians(d)) - b*math.sin(math.radians(d))
+        y = a*math.sin(math.radians(d)) + b*math.cos(math.radians(d))
+        print(x,y)
+
+=======
+Suggestion 10
+
+def main():
+    a, b, d = map(int, input().split())
+    import math
+    d = math.radians(d)
+    x = a * math.cos(d) - b * math.sin(d)
+    y = a * math.sin(d) + b * math.cos(d)
+    print(x, y)

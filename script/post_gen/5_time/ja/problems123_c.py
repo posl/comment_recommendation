@@ -1,72 +1,179 @@
-#問題文
-#AtCoder 社は成長し、2028 年になってついに 6 つの都市 (都市 1, 2, 3, 4, 5, 6) からなる AtCoder 帝国を作りました！  
-#AtCoder 帝国には 5 つの交通機関があります。
-#電車：都市 1 から 2 まで 1 分で移動する。1 つの電車には A 人まで乗ることができる。
-#バス：都市 2 から 3 まで 1 分で移動する。1 つのバスには B 人まで乗ることができる。
-#タクシー：都市 3 から 4 まで 1 分で移動する。1 つのタクシーには C 人まで乗ることができる。
-#飛行機：都市 4 から 5 まで 1 分で移動する。1 つの飛行機には D 人まで乗ることができる。
-#船：都市 5 から 6 までを 1 分で移動する。1 つの船には E 人まで乗ることができる。
-#それぞれの交通機関は、各整数時刻 (0, 1, 2, 3, ...) に、都市から出発します。
-#いま、N 人のグループが都市 1 におり、全員都市 6 まで移動したいです。全員が都市 6 に到着するまでに最短で何分かかるでしょうか？
-#なお、乗り継ぎにかかる時間を考える必要はありません。  
-#
-#制約
-#1 ≦ N, A, B, C, D, E ≦ 10^{15}
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#N
-#A
-#B
-#C
-#D
-#E
-#
-#出力
-#全員が都市 6 に移動するのに必要な最小の時間を分単位で出力せよ。  
-#
-#入力例 1
-#5
-#3
-#2
-#4
-#3
-#5
-#
-#出力例 1
-#7
-#例えば、次のような移動方法が考えられます。
-#はじめ、次の画像のように、N = 5 人が都市 1 にいます。  
-#1 分後までに、3 人が都市 1 から都市 2 に電車で移動します。ここで、電車は一度に 3 人までしか運べないことに注意してください。  
-#2 分後までに、残り 2 人が都市 1 から都市 2 に電車で移動し、都市 2 にいた 3 人のうち 2 人がバスで都市 3 に移動します。ここで、バスは一度に 2 人までしか運べないことに注意してください。  
-#3 分後までに、2 人が都市 2 から都市 3 にバスで移動し、2 人が都市 3 から都市 4 にタクシーで移動します。    
-#それ以降は、まだ都市 6 に到着していない人が止まらずに移動し続けると、全員が 7 分で都市 6 に着くことができます。
-#また、6 分以内で全員が都市 6 に着く方法はありません。  
-#
-#入力例 2
-#10
-#123
-#123
-#123
-#123
-#123
-#
-#出力例 2
-#5
-#どの交通機関も N = 10 人を 1 回で運ぶことができます。
-#したがって、全員が止まらずに移動し続ければ 5 分で都市 6 に着くことができます。  
-#
-#入力例 3
-#10000000007
-#2
-#3
-#5
-#7
-#11
-#
-#出力例 3
-#5000000008
-#入力・出力が 32 ビット整数型に収まらない可能性があることに注意してください。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(N,A,B,C,D,E)
+    #print(type(N),typ
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+
+    print(5 + (N - 1) // min(A, B, C, D, E))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    min_num = min(A,B,C,D,E)
+    if N % min_num == 0:
+        time = N // min_num
+    else:
+        time = N // min_num + 1
+    print(time + 4)
+
+=======
+Suggestion 5
+
+def main():
+    # ここに書く
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    # 1. 都市1にN人がいる
+    # 2. 都市1から2へは電車で1分で移動する。1つの電車にはA人まで乗ることができる。
+    # 3. 都市2から3へはバスで1分で移動する。1つのバスにはB人まで乗ることができる。
+    # 4. 都市3から4へはタクシーで1分で移動する。1つのタクシーにはC人まで乗ることができる。
+    # 5. 都市4から5へは飛行機で1分で移動する。1つの飛行機にはD人まで乗ることができる。
+    # 6. 都市5から6へは船で1分で移動する。1つの船にはE人まで乗ることができる。
+    # 7. 全員が都市6に到着するまでに最短で何分かかるでしょうか？
+    # 8. 乗り継ぎにかかる時間を考える必要はありません。
+    # 9. 全員が都市6に移動するのに必要な最小の時間を分単位で出力せよ。
+    # 10. 入力は以下の形式で標準入力から与えられる。
+    # 11. N
+    # 12. A
+    # 13. B
+    # 14. C
+    # 15. D
+    # 16. E
+    # 17. 1 ≦ N, A, B, C,
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    ans = (N-1)//min(A,B,C,D,E)+1 + 4
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    print((N-1)//min(A,B,C,D,E)+5)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    ans = N // min(A, B, C, D, E)
+    if N % min(A, B, C, D, E) != 0:
+        ans += 1
+    ans += 4
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    ans = 0
+    ans += (N + A - 1) // A
+    ans += (N + B - 1) // B
+    ans += (N + C - 1) // C
+    ans += (N + D - 1) // D
+    ans += (N + E - 1) // E
+    ans += 4
+    print(ans)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    # 標準入力の取得
+    n = int(input())
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+
+    # 処理
+    # 最小公倍数を求める
+    # 最小公倍数を求める関数
+    def lcm(x, y):
+        return (x * y) // gcd(x, y)
+    # 最大公約数を求める関数
+    def gcd(x, y):
+        if x < y:
+            x, y = y, x
+        while y > 0:
+            x, y = y, x % y
+        return x
+
+    # 最小公倍数を求める
+    lcm_ab = lcm(a, b)
+    lcm_cd = lcm(c, d)
+    lcm_abcde = lcm(lcm_ab, lcm_cd)
+    lcm_abcde = lcm(lcm_abcde, e)
+
+    # 答え
+    ans = (n + lcm_abcde - 1) // lcm_abcde
+
+    # 結果の出力
+    print(ans)

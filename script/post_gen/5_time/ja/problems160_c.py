@@ -1,37 +1,132 @@
-#問題文
-#1 周 K メートルの円形の湖があり、その周りに N 軒の家があります。
-#i 番目の家は、湖の北端から時計回りに A_i メートルの位置にあります。
-#家の間の移動は、湖の周りに沿ってのみ行えます。
-#いずれかの家から出発して N 軒すべての家を訪ねるための最短移動距離を求めてください。
-#
-#制約
-#2 ≦ K ≦ 10^6
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ A_1 < ... < A_N < K
-#入力中のすべての値は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K N
-#A_1 A_2 ... A_N
-#
-#出力
-#いずれかの家から出発して N 軒すべての家を訪ねるための最短移動距離を出力せよ。
-#
-#入力例 1
-#20 3
-#5 10 15
-#
-#出力例 1
-#10
-#1 番目の家から出発し、2 番目、3 番目の家へ順に移動すると移動距離が 10 になります。
-#
-#入力例 2
-#20 3
-#0 5 15
-#
-#出力例 2
-#10
-#2 番目の家から出発し、1 番目、3 番目の家へ順に移動すると移動距離が 10 になります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    max_d = 0
+    for i in range(N):
+        if i == 0:
+            max_d = K - A[N-1] + A[0]
+        else:
+            max_d = max(max_d, A[i]-A[i-1])
+    print(K-max_d)
+
+=======
+Suggestion 2
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    max_distance = 0
+    for i in range(n):
+        if i == n - 1:
+            distance = k - a[i] + a[0]
+        else:
+            distance = a[i + 1] - a[i]
+
+        if distance > max_distance:
+            max_distance = distance
+
+    print(k - max_distance)
+
+=======
+Suggestion 3
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(K + A[0])
+    d = [A[i + 1] - A[i] for i in range(N)]
+    print(K - max(d))
+
+=======
+Suggestion 4
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = K + min(A[0] + K - A[-1], *[A[i] - A[i-1] for i in range(1, N)])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0]+k)
+    max_d = 0
+    for i in range(n):
+        d = a[i+1]-a[i]
+        if d > max_d:
+            max_d = d
+    print(k-max_d)
+
+=======
+Suggestion 6
+
+def solve():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(A[0] + K)
+    print(K - max(A[i + 1] - A[i] for i in range(N)))
+
+=======
+Suggestion 7
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N):
+        if i == 0:
+            B.append(K - A[i] + A[i + 1])
+        elif i == N - 1:
+            B.append(K - A[i] + A[0])
+        else:
+            B.append(A[i + 1] - A[i])
+    print(K - max(B))
+main()
+
+=======
+Suggestion 8
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(k)
+    a.append(a[0] + k)
+    a.sort()
+    max = 0
+    for i in range(n):
+        if a[i+1] - a[i] > max:
+            max = a[i+1] - a[i]
+    print(k - max)
+
+=======
+Suggestion 9
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(A[0] + K)
+    max_distance = 0
+    for i in range(N):
+        max_distance = max(max_distance, A[i+1] - A[i])
+    print(K - max_distance)
+
+=======
+Suggestion 10
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0]+k)
+    max_dist = 0
+    for i in range(n):
+        max_dist = max(max_dist, a[i+1]-a[i])
+    print(k-max_dist)

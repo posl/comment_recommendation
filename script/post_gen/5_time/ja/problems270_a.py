@@ -1,48 +1,188 @@
-#問題文
-#3 問の問題からなる試験があり、それぞれの問題の配点は 1 点、2 点、4 点でした。
-#高橋君、青木君、すぬけ君の 3 人がこの試験を受け、
-#高橋君は A 点、青木君は B 点を取りました。
-#すぬけ君は、高橋君と青木君のうち少なくとも一方が解けた問題は解け、
-#2 人とも解けなかった問題は解けませんでした。
-#すぬけ君の点数を求めてください。
-#ただし、この問題の制約下で、すぬけ君の点数は一意に定まる事が証明できます。
-#
-#制約
-#0≦ A,B ≦ 7
-#A,B は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#すぬけ君の点数を整数で出力せよ。
-#
-#入力例 1
-#1 2
-#
-#出力例 1
-#3
-#高橋君は 1 点を取った事から、 1 点の問題のみを正解し、それ以外の 2 問は解けなかったことがわかります。
-#同様に、青木君は 2 点を取った事から、 2 点の問題のみを正解し、それ以外の 2 問は解けなかったことがわかります。
-#よって、すぬけ君は 1 点の問題と 2 点の問題を正解し、高橋君と青木君がともに解けなかった 4 点の問題はすぬけ君も解けなかったことになるので、3 点を取ったことがわかります。よって、3 を出力します。
-#
-#入力例 2
-#5 3
-#
-#出力例 2
-#7
-#高橋君は 5 点を取った事から、 1 点の問題と 4 点の問題を正解し、 2 点の問題は解けなかったことがわかります。
-#同様に、青木君は 3 点を取った事から、 1 点の問題と 2 点の問題を正解し、 4 点の問題は解けなかったことがわかります。  
-#よって、3 問すべてについて、高橋君と青木君の少なくとも一方が正解しているため、すぬけ君はすベての問題に正解し、7 点を取ったことがわかります。
-#よって、7 を出力します。
-#
-#入力例 3
-#0 0
-#
-#出力例 3
-#0
-#高橋君と青木君は 2 人ともいずれの問題も解けていません。
-#よって、すぬけ君もいずれの問題も解けておらず、 0 を出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    print(7-a-b)
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if a == 0 and b == 0:
+        print(0)
+    elif a == 1 and b == 2:
+        print(3)
+    elif a == 5 and b == 3:
+        print(7)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a != 0 and b != 0:
+        print(3)
+    elif a != 1 and b != 1:
+        print(1)
+    elif a != 2 and b != 2:
+        print(2)
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a == 0 and b == 0:
+        print(0)
+    elif a == 0 or b == 0:
+        print(3)
+    elif a == 1 and b == 1:
+        print(2)
+    elif a == 1 or b == 1:
+        print(1)
+    elif a == 2 and b == 2:
+        print(0)
+    elif a == 2 or b == 2:
+        print(1)
+    elif a == 3 and b == 3:
+        print(0)
+    elif a == 3 or b == 3:
+        print(1)
+    elif a == 4 and b == 4:
+        print(0)
+    elif a == 4 or b == 4:
+        print(1)
+    elif a == 5 and b == 5:
+        print(0)
+    elif a == 5 or b == 5:
+        print(1)
+    elif a == 6 and b == 6:
+        print(0)
+    elif a == 6 or b == 6:
+        print(1)
+    elif a == 7 and b == 7:
+        print(0)
+    elif a == 7 or b == 7:
+        print(1)
+
+=======
+Suggestion 5
+
+def problems270_a(a,b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 1 and b == 0:
+        return 1
+    elif a == 0 and b == 1:
+        return 1
+    elif a == 1 and b == 1:
+        return 2
+    elif a == 2 and b == 0:
+        return 2
+    elif a == 0 and b == 2:
+        return 2
+    elif a == 2 and b == 1:
+        return 3
+    elif a == 1 and b == 2:
+        return 3
+    elif a == 2 and b == 2:
+        return 4
+    elif a == 3 and b == 0:
+        return 3
+    elif a == 0 and b == 3:
+        return 3
+    elif a == 3 and b == 1:
+        return 4
+    elif a == 1 and b == 3:
+        return 4
+    elif a == 3 and b == 2:
+        return 5
+    elif a == 2 and b == 3:
+        return 5
+    elif a == 3 and b == 3:
+        return 6
+    elif a == 4 and b == 0:
+        return 4
+    elif a == 0 and b == 4:
+        return 4
+    elif a == 4 and b == 1:
+        return 5
+    elif a == 1 and b == 4:
+        return 5
+    elif a == 4 and b == 2:
+        return 6
+    elif a == 2 and b == 4:
+        return 6
+    elif a == 4 and b == 3:
+        return 7
+    elif a == 3 and b == 4:
+        return 7
+    elif a == 4 and b == 4:
+        return 8
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    if A == 0 and B == 0:
+        print(0)
+    elif A == 1 and B == 0:
+        print(2)
+    elif A == 0 and B == 1:
+        print(2)
+    elif A == 2 and B == 0:
+        print(4)
+    elif A == 0 and B == 2:
+        print(4)
+    elif A == 1 and B == 1:
+        print(3)
+    elif A == 2 and B == 1:
+        print(5)
+    elif A == 1 and B == 2:
+        print(5)
+    elif A == 2 and B == 2:
+        print(6)
+    elif A == 3 and B == 0:
+        print(6)
+    elif A == 0 and B == 3:
+        print(6)
+    elif A == 3 and B == 1:
+        print(7)
+    elif A == 1 and B == 3:
+        print(7)
+    elif A == 3 and B == 2:
+        print(8)
+    elif A == 2 and B == 3:
+        print(8)
+    elif A == 3 and B == 3:
+        print(9)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a == 0 and b == 0:
+        print(0)
+    elif a == 0:
+        print(b)
+    elif b == 0:
+        print(a)
+    else:
+        print(3 - a - b)
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    print(3 - a - b)

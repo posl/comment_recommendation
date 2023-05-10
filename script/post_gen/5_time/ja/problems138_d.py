@@ -1,61 +1,250 @@
-#問題文
-#1 から N までの番号がついた N 個の頂点を持つ根付き木が与えられます。
-#この木の根は頂点 1 で、i 番目の辺 (1 ≦ i ≦ N - 1) は頂点 a_i と頂点 b_i を結びます。
-#各頂点にはカウンターが設置されており、はじめすべての頂点のカウンターの値は 0 です。
-#これから、以下のような Q 回の操作が行われます。
-#操作 j (1 ≦ j ≦ Q): 頂点 p_j を根とする部分木に含まれるすべての頂点のカウンターの値に x_j を足す。
-#すべての操作のあとの各頂点のカウンターの値を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ a_i < b_i ≦ N
-#1 ≦ p_j ≦ N
-#1 ≦ x_j ≦ 10^4
-#与えられるグラフは木である。
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#a_1 b_1
-#:
-#a_{N-1} b_{N-1}
-#p_1 x_1
-#:
-#p_Q x_Q
-#
-#出力
-#すべての操作のあとの各頂点のカウンターの値を、頂点 1, 2, ..., N の順に空白区切りで出力せよ。
-#
-#入力例 1
-#4 3
-#1 2
-#2 3
-#2 4
-#2 10
-#1 100
-#3 1
-#
-#出力例 1
-#100 110 111 110
-#この入力中の木は次のようなものです。
-#各操作で、頂点のカウンターの値は次のように変化します。
-#操作 1: 頂点 2 を根とする部分木に含まれるすべての頂点、すなわち頂点 2, 3, 4 のカウンターの値に 10 を足す。頂点 1, 2, 3, 4 のカウンターの値はそれぞれ 0, 10, 10, 10 となる。
-#操作 2: 頂点 1 を根とする部分木に含まれるすべての頂点、すなわち頂点 1, 2, 3, 4 のカウンターの値に 100 を足す。頂点 1, 2, 3, 4 のカウンターの値はそれぞれ 100, 110, 110, 110 となる。
-#操作 3: 頂点 3 を根とする部分木に含まれるすべての頂点、すなわち頂点 3 のカウンターの値に 1 を足す。頂点 1, 2, 3, 4 のカウンターの値はそれぞれ 100, 110, 111, 110 となる。
-#
-#入力例 2
-#6 2
-#1 2
-#1 3
-#2 4
-#3 6
-#2 5
-#1 10
-#1 10
-#
-#出力例 2
-#20 20 20 20 20 20
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    graph = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        graph[a - 1].append(b - 1)
+    counter = [0] * N
+    for _ in range(Q):
+        p, x = map(int, input().split())
+        counter[p - 1] += x
+    stack = [0]
+    while stack:
+        node = stack.pop()
+        for child in graph[node]:
+            counter[child] += counter[node]
+            stack.append(child)
+    print(*counter)
+
+=======
+Suggestion 2
+
+def dfs(v, p, d):
+    for i in G[v]:
+        if i != p:
+            d[i] += d[v]
+            dfs(i, v, d)
+
+N, Q = map(int, input().split())
+G = [[] for _ in range(N)]
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
+
+d = [0] * N
+for _ in range(Q):
+    p, x = map(int, input().split())
+    d[p - 1] += x
+
+dfs(0, -1, d)
+print(*d)
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    #print(N, Q)
+    #N = 4
+    #Q = 3
+    #N = 6
+    #Q = 2
+    edges = []
+    for i in range(N-1):
+        a, b = map(int, input().split())
+        #a, b = map(int, input().split())
+        #a, b = i+1, i+2
+        edges.append((a, b))
+    #print(edges)
+    #edges = [(1, 2), (2, 3), (2, 4)]
+    #edges = [(1, 2), (1, 3), (2, 4), (3, 6), (2, 5)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5)]
+    #edges = [(1, 2), (2, 3), (3, 4)]
+    #edges = [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6)]
+    #edges = [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6)]
+    #edges = [(1, 2), (1, 3), (1, 4), (1, 5)]
+    #edges = [(1, 2), (2, 3), (3, 4)]
+    #edges = [(1, 2), (1, 3), (2, 4), (3, 5), (3, 6)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5)]
+    #edges = [(1, 2), (1, 3), (2, 4), (3, 5), (4, 6)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5,
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    edges = []
+    for i in range(n-1):
+        edges.append(list(map(int, input().split())))
+    px = []
+    for i in range(q):
+        px.append(list(map(int, input().split())))
+
+    counter = [0] * n
+    for p, x in px:
+        counter[p-1] += x
+
+    counter2 = [0] * (n+1)
+    for i in range(n-1):
+        a, b = edges[i]
+        counter2[a] += counter[b-1]
+        counter2[b] += counter[a-1]
+
+    counter2 = counter2[1:]
+    counter = [counter[i] + counter2[i] for i in range(n)]
+    print(*counter)
+
+=======
+Suggestion 5
+
+def dfs(v, p, d):
+    for nv in g[v]:
+        if nv == p:
+            continue
+        depth[nv] = d + 1
+        dfs(nv, v, d + 1)
+
+N, Q = map(int, input().split())
+g = [[] for _ in range(N)]
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    g[a - 1].append(b - 1)
+    g[b - 1].append(a - 1)
+depth = [0] * N
+dfs(0, -1, 0)
+for _ in range(Q):
+    p, x = map(int, input().split())
+    p -= 1
+    print(depth[p] + x)
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int,input().split())
+    a = [0 for i in range(n+1)]
+    for i in range(n-1):
+        x,y = map(int,input().split())
+        a[x] += 1
+        a[y] += 1
+    b = [0 for i in range(n+1)]
+    for i in range(q):
+        x,y = map(int,input().split())
+        b[x] += y
+    for i in range(1,n+1):
+        print(a[i]+b[i],end=" ")
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(N-1)]
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 一つの頂点に対して、その頂点の値と、その頂点の子頂点の値を管理する
+    values = [0] * N
+    childs = [[] for _ in range(N)]
+
+    for i in range(N-1):
+        a, b = edges[i]
+        childs[a-1].append(b-1)
+
+    for i in range(Q):
+        p, x = queries[i]
+        values[p-1] += x
+
+    # 親から子に値を伝播させる
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for c in childs[v]:
+            values[c] += values[v]
+            stack.append(c)
+
+    print(*values)
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    tree = [[] for _ in range(N+1)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        tree[a].append(b)
+    tree[1].append(1)
+    point = [0] * (N+1)
+    for _ in range(Q):
+        p, x = map(int, input().split())
+        point[p] += x
+    ans = [0] * (N+1)
+    ans[1] = point[1]
+    for i in range(2, N+1):
+        ans[i] = ans[i-1] + point[i]
+    for i in range(1, N+1):
+        print(ans[i], end=" ")
+
+=======
+Suggestion 9
+
+def main():
+    N, Q = map(int, input().split())
+    edge = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        edge[a-1].append(b-1)
+        edge[b-1].append(a-1)
+    counter = [0] * N
+    for _ in range(Q):
+        p, x = map(int, input().split())
+        counter[p-1] += x
+    stack = [0]
+    visited = [False] * N
+    visited[0] = True
+    while stack:
+        v = stack.pop()
+        for e in edge[v]:
+            if visited[e]:
+                continue
+            counter[e] += counter[v]
+            visited[e] = True
+            stack.append(e)
+    print(*counter)
+
+=======
+Suggestion 10
+
+def dfs(now, prev):
+    for i in edge[now]:
+        if i == prev:
+            continue
+        counter[i] += counter[now]
+        dfs(i, now)
+
+N, Q = map(int, input().split())
+edge = [[] for _ in range(N)]
+counter = [0 for _ in range(N)]
+
+for i in range(N-1):
+    a, b = map(int, input().split())
+    edge[a-1].append(b-1)
+    edge[b-1].append(a-1)
+
+for i in range(Q):
+    p, x = map(int, input().split())
+    counter[p-1] += x
+
+dfs(0, -1)
+
+for i in counter:
+    print(i, end=" ")

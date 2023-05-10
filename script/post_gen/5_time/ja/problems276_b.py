@@ -1,66 +1,201 @@
-#問題文
-#1, ..., N と番号付けられた N 個の都市と、都市間を結ぶ M 本の道路があります。
-#i  (1 ≦ i ≦ M) 番目の道路は都市 A_i と都市 B_i を結んでいます。
-#以下の指示に従い、N 行にわたって出力してください。
-#都市 i  (1 ≦ i ≦ N) と道路で直接結ばれた都市が d_i 個あるとし、それらを昇順に都市 a_{i, 1}, ..., a_{i, d_i} とおく。
-#i  (1 ≦ i ≦ N) 行目には、d_i + 1 個の整数 d_i, a_{i, 1}, ..., a_{i, d_i} を、この順番で空白区切りで出力せよ。
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i < B_i ≦ N  (1 ≦ i ≦ M)
-#(i ≠ j) ならば (A_i, B_i) ≠ (A_j, B_j)
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#出力
-#問題文の指示に従い、N 行にわたって出力せよ。
-#
-#入力例 1
-#6 6
-#3 6
-#1 3
-#5 6
-#2 5
-#1 2
-#1 6
-#
-#出力例 1
-#3 2 3 6
-#2 1 5
-#2 1 6
-#0
-#2 2 6
-#3 1 3 5
-#都市 1 と道路で直接結ばれているのは都市 2, 3, 6 です。よって、d_1 = 3, a_{1, 1} = 2, a_{1, 2} = 3, a_{1, 3} = 6 であるので、1 行目には 3, 2, 3, 6 をこの順番で空白区切りで出力します。
-#a_{i, 1}, ..., a_{i, d_i} は昇順に並んでいなければならないことに注意してください。例えば、1 行目に 3, 3, 2, 6 をこの順番で出力した場合、不正解となります。
-#
-#入力例 2
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#出力例 2
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    #print(N, M)
+    #print(A)
+    #print(B)
+    #print("")
+
+    city = [0] * N
+    for i in range(M):
+        city[A[i]-1] += 1
+        city[B[i]-1] += 1
+    #print(city)
+    #print("")
+
+    for i in range(N):
+        print(city[i])
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    for i in range(n):
+        c = 0
+        d = []
+        for j in range(m):
+            if i+1 == a[j]:
+                c += 1
+                d.append(b[j])
+            elif i+1 == b[j]:
+                c += 1
+                d.append(a[j])
+        d.sort()
+        print(c,end=" ")
+        for j in range(len(d)):
+            print(d[j],end=" ")
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    #print(N, M, A, B)
+
+    # 都市と道路の接続情報を管理する配列
+    # 1-indexedで管理するため、N+1個の配列を用意
+    # 都市iと道路で直接結ばれている都市はd[i]個ある
+    d = [0] * (N+1)
+    # 都市iと道路で直接結ばれている都市を昇順に管理する
+    a = [[] for _ in range(N+1)]
+    #print(d, a)
+
+    # 都市iと道路で直接結ばれている都市を配列に格納
+    for i in range(M):
+        d[A[i]] += 1
+        d[B[i]] += 1
+        a[A[i]].append(B[i])
+        a[B[i]].append(A[i])
+    #print(d, a)
+
+    # 出力
+    for i in range(1, N+1):
+        print(d[i], end = " ")
+        for j in range(d[i]):
+            print(a[i][j], end = " ")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    for i in range(N):
+        print(A.count(i+1) + B.count(i+1))
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(1, N+1):
+        l = []
+        for j in range(M):
+            if i == A[j]:
+                l.append(B[j])
+            elif i == B[j]:
+                l.append(A[j])
+        l.sort()
+        print(len(l), *l)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = [[0] * (N + 1) for i in range(N + 1)]
+    for i in range(M):
+        ans[A[i]][0] += 1
+        ans[B[i]][0] += 1
+        ans[A[i]][ans[A[i]][0]] = B[i]
+        ans[B[i]][ans[B[i]][0]] = A[i]
+    for i in range(1, N + 1):
+        print(ans[i][0], end = "")
+        for j in range(1, ans[i][0] + 1):
+            print(" " + str(ans[i][j]), end = "")
+        print("")
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    ab.sort(key=lambda x:(x[0], x[1]))
+
+    cnt = 0
+    for i in range(1, n+1):
+        for j in range(m):
+            if ab[j][0] == i:
+                cnt += 1
+            else:
+                break
+        print(cnt, end=' ')
+        for j in range(m):
+            if ab[j][0] == i:
+                print(ab[j][1], end=' ')
+            else:
+                break
+        print()
+        ab = ab[cnt:]
+        cnt = 0
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * n
+    b = [0] * n
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(n):
+        print(a.count(i+1) + b.count(i+1))
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * (m + 1)
+    b = [0] * (m + 1)
+    for i in range(1, m + 1):
+        a[i], b[i] = map(int, input().split())
+    c = [0] * (n + 1)
+    for i in range(1, m + 1):
+        c[a[i]] += 1
+        c[b[i]] += 1
+    for i in range(1, n + 1):
+        print(c[i])

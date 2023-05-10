@@ -1,38 +1,93 @@
-#問題文
-#A 匹のスライムがいます。
-#すぬけくんが 1 回叫ぶたびに、スライムは K 倍に増殖します。
-#スライムが B 匹以上になるには、すぬけくんは最小で何回叫ぶ必要があるでしょうか？
-#
-#制約
-#1 ≦ A ≦ B ≦ 10^9
-#2 ≦ K ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B K
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#1 4 2
-#
-#出力例 1
-#2
-#はじめ、スライムが 1 匹います。すぬけくんが 1 回叫ぶとスライムは 2 匹になり、 2 回叫ぶとスライムは 4 匹になります。4 匹以上になるためには、最小で 2 回叫ぶ必要があります。
-#
-#入力例 2
-#7 7 10
-#
-#出力例 2
-#0
-#はじめからスライムは 7 匹います。
-#
-#入力例 3
-#31 415926 5
-#
-#出力例 3
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def func(a, b, k):
+    cnt = 0
+    while a < b:
+        a *= k
+        cnt += 1
+    return cnt
+
+a, b, k = map(int, input().strip().split())
+print(func(a, b, k))
+
+=======
+Suggestion 2
+
+def count_scream(a, b, k):
+    count = 0
+    while a < b:
+        a *= k
+        count += 1
+    return count
+
+a, b, k = map(int, input().split())
+print(count_scream(a, b, k))
+
+=======
+Suggestion 3
+
+def solve(A, B, K):
+    cnt = 0
+    while A < B:
+        A *= K
+        cnt += 1
+    return cnt
+
+=======
+Suggestion 4
+
+def main():
+    # A,B,K = map(int, input().split())
+    A,B,K = 31,415926,5
+    count = 0
+    while A < B:
+        A *= K
+        count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def solve():
+    a,b,k = map(int,input().split())
+    count = 0
+    while a < b:
+        a *= k
+        count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,k = map(int,input().split())
+    count = 0
+    while a <= b:
+        a *= k
+        count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,k = map(int, input().split())
+    cnt = 0
+    while a < b:
+        a *= k
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    A, B, K = map(int, input().split())
+    count = 0
+    while A < B:
+        A *= K
+        count += 1
+    print(count)

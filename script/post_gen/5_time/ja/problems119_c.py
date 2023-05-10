@@ -1,71 +1,198 @@
-#問題文
-#あなたは N 本の竹を持っています。これらの長さはそれぞれ l_1, l_2, ..., l_N です (単位: センチメートル)。
-#あなたの目的は、これらの竹のうち何本か (全部でもよい) を使い、長さが A, B, C であるような 3 本の竹を得ることです。そのために、以下の三種類の魔法を任意の順に何度でも使うことができます。
-#延長魔法: 1 MP (マジックポイント) を消費し、1 本の竹を選んでその長さを 1 増やす。
-#短縮魔法: 1 MP を消費し、1 本の長さ 2 以上の竹を選んでその長さを 1 減らす。
-#合成魔法: 10 MP を消費し、2 本の竹を選んで接続し 1 本の竹とする。この新たな竹の長さは接続した 2 本の竹の長さの合計に等しい。(以後、この竹に対してさらに魔法を使用することもできる。)
-#目的を達成するには、最小でいくつの MP が必要でしょうか？
-#
-#制約
-#3 ≦ N ≦ 8
-#1 ≦ C < B < A ≦ 1000
-#1 ≦ l_i ≦ 1000
-#入力される値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B C
-#l_1
-#l_2
-#:
-#l_N
-#
-#出力
-#目的の達成に必要な MP の最小量を出力せよ。
-#
-#入力例 1
-#5 100 90 80
-#98
-#40
-#30
-#21
-#80
-#
-#出力例 1
-#23
-#長さ 98, 40, 30, 21, 80 の 5 本の竹から長さ 100, 90, 80 の 3 本の竹を得ようとしています。長さ 80 の竹ははじめから持っており、長さ 100, 90 の竹は次のように魔法を使うと合計 23 MP を消費することで得られ、これが最適です。
-#長さ 98 の竹に延長魔法を 2 回使い、長さ 100 の竹を得る。(消費 MP: 2)
-#長さ 40, 30 の竹に合成魔法を使い、長さ 70 の竹を得る。(消費 MP: 10)
-#長さ 21 の竹に短縮魔法を 1 回使い、長さ 20 の竹を得る。(消費 MP: 1)
-#手順 2. で得た長さ 70 の竹と手順 3. で得た長さ 20 の竹に合成魔法を使い、長さ 90 の竹を得る。(消費 MP: 10)
-#
-#入力例 2
-#8 100 90 80
-#100
-#100
-#90
-#90
-#90
-#80
-#80
-#80
-#
-#出力例 2
-#0
-#欲しい長さの竹をすでにすべて持っている場合、必要な MP は 0 です。このように、必ずしもすべての竹を使う必要はありません。
-#
-#入力例 3
-#8 1000 800 100
-#300
-#333
-#400
-#444
-#500
-#555
-#600
-#666
-#
-#出力例 3
-#243
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = []
+    for i in range(N):
+        l.append(int(input()))
+    print(l)
+    print(N, A, B, C)
+    print(l[0])
+    print(l[1])
+    print(l[2])
+    print(l[3])
+    print(l[4])
+    print(l[5])
+    print(l[6])
+    print(l[7])
+    return
+
+=======
+Suggestion 3
+
+def solve():
+    N, A, B, C = map(int, input().split())
+    L = [int(input()) for _ in range(N)]
+    INF = 10**9
+    def dfs(cur, a, b, c):
+        if cur == N:
+            if min(a, b, c) > 0:
+                return abs(a - A) + abs(b - B) + abs(c - C) - 30
+            else:
+                return INF
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + L[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + L[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + L[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n,a,b,c = map(int,input().split())
+    l = [int(input()) for i in range(n)]
+    ans = 10**9
+    for i in range(4**n):
+        tmp = [0 for j in range(3)]
+        mp = 0
+        for j in range(n):
+            if i%4 == 0 and tmp[0] > 0:
+                mp += 10
+            elif i%4 == 1 and tmp[1] > 0:
+                mp += 10
+            elif i%4 == 2 and tmp[2] > 0:
+                mp += 10
+            if i%4 == 0:
+                tmp[0] += l[j]
+            elif i%4 == 1:
+                tmp[1] += l[j]
+            elif i%4 == 2:
+                tmp[2] += l[j]
+            i //= 4
+        if tmp[0] == 0 or tmp[1] == 0 or tmp[2] == 0:
+            continue
+        mp += abs(tmp[0]-a) + abs(tmp[1]-b) + abs(tmp[2]-c) - 30
+        ans = min(ans,mp)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b, c = map(int, input().split())
+    l = [int(input()) for _ in range(n)]
+    inf = 10 ** 9
+    def dfs(cur, a, b, c):
+        if cur == n:
+            if min(a, b, c) > 0:
+                return abs(a - A) + abs(b - B) + abs(c - C) - 30
+            else:
+                return inf
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 6
+
+def main():
+    N, A, B, C = map(int, input().split())
+    ls = [int(input()) for _ in range(N)]
+    INF = 10 ** 9
+    def dfs(cur, a, b, c):
+        if cur == N:
+            return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else INF
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + ls[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + ls[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + ls[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 7
+
+def main():
+    n, a, b, c = map(int, input().split())
+    l = [int(input()) for _ in range(n)]
+    INF = 10 ** 9
+    def dfs(cur, A, B, C):
+        if cur == n:
+            return abs(A - a) + abs(B - b) + abs(C - c) - 30 if min(A, B, C) > 0 else INF
+        ret0 = dfs(cur + 1, A, B, C)
+        ret1 = dfs(cur + 1, A + l[cur], B, C) + 10
+        ret2 = dfs(cur + 1, A, B + l[cur], C) + 10
+        ret3 = dfs(cur + 1, A, B, C + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    INF = 10**9
+    # DFS
+    def dfs(cur, a, b, c):
+        if cur == N:
+            if min(a, b, c) > 0:
+                return abs(a - A) + abs(b - B) + abs(c - C) - 30
+            else:
+                return INF
+        # 使わない場合
+        ret0 = dfs(cur + 1, a, b, c)
+        # Aに使う場合
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        # Bに使う場合
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        # Cに使う場合
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    INF = 10 ** 9
+    def dfs(cur, a, b, c):
+        if cur == N:
+            if min(a, b, c) > 0:
+                return abs(A - a) + abs(B - b) + abs(C - c) - 30
+            else:
+                return INF
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 10
+
+def solve():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    INF = 1 << 60
+    def dfs(cur, a, b, c):
+        if cur == N:
+            if min(a, b, c) > 0:
+                return abs(a - A) + abs(b - B) + abs(c - C) - 30
+            else:
+                return INF
+        ret0 = dfs(cur + 1, a, b, c)
+        ret1 = dfs(cur + 1, a + l[cur], b, c) + 10
+        ret2 = dfs(cur + 1, a, b + l[cur], c) + 10
+        ret3 = dfs(cur + 1, a, b, c + l[cur]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+solve()

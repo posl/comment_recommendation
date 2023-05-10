@@ -1,36 +1,155 @@
-#問題文
-#2 つの文字列 S, T が与えられます。
-#T が S の部分文字列となるように、S のいくつかの文字を書き換えます。
-#少なくとも何文字書き換える必要がありますか？
-#ただし、部分文字列とは連続する部分列のことを指します。例えば、xxx は yxxxy の部分文字列ですが、xxyxx の部分文字列ではありません。
-#
-#制約
-#S,T は 1 文字以上 1000 文字以下
-#T の長さは S の長さ以下
-#S,T は 英小文字のみを含む
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#T
-#
-#出力
-#S を書き換える文字数の最小値を出力せよ。
-#
-#入力例 1
-#cabacc
-#abc
-#
-#出力例 1
-#1
-#例えば S の 4 文字目の a を c に書き換えることで、S の 2～4 文字目が T と一致します。
-#S 自身は T を部分文字列に持たないので、この 1 文字を書き換えるのが最小です。
-#
-#入力例 2
-#codeforces
-#atcoder
-#
-#出力例 2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s) - len(t) + 1):
+        count = 0
+        for j in range(len(t)):
+            if s[i + j] != t[j]:
+                count += 1
+        ans = min(ans, count)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if t[j] != s[i+j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    count = 1000
+    for i in range(len(s)-len(t)+1):
+        tmp = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                tmp += 1
+        count = min(tmp, count)
+    print(count)
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    t = input()
+    ans = len(t)
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    slen = len(s)
+    tlen = len(t)
+    ans = tlen
+    for i in range(slen-tlen+1):
+        cnt = 0
+        for j in range(tlen):
+            if s[i+j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+main()  # 出力結果 0.0sec
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    ans = len(t)
+    for i in range(len(s) - len(t) + 1):
+        count = 0
+        for j in range(len(t)):
+            if s[i + j] != t[j]:
+                count += 1
+        ans = min(ans, count)
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(s,t):
+    min = len(t)
+    for i in range(len(s)-len(t)+1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                cnt += 1
+        if cnt < min:
+            min = cnt
+    return min
+
+=======
+Suggestion 8
+
+def solve():
+    S = input()
+    T = input()
+    min = len(T)
+    for i in range(len(S)-len(T)+1):
+        tmp = 0
+        for j in range(len(T)):
+            if S[i+j] != T[j]:
+                tmp += 1
+        if min > tmp:
+            min = tmp
+    print(min)
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s) - len(t) + 1):
+        cnt = 0
+        for j in range(len(t)):
+            if s[i + j] != t[j]:
+                cnt += 1
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    ans = 1000
+    for i in range(len(s) - len(t) + 1):
+        count = 0
+        for j in range(len(t)):
+            if s[i+j] != t[j]:
+                count += 1
+        ans = min(ans, count)
+    print(ans)

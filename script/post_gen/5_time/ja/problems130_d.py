@@ -1,45 +1,199 @@
-#問題文
-#長さ N の正整数列 A=a_1,a_2,…,a_{N} と整数 K が与えられます。A の連続する部分列であって、以下の条件を満たすようなものは何個あるでしょうか。
-#(条件) 連続部分列に含まれる全ての要素の値の和は、K 以上である。
-#ただし、ある二つの連続部分列が列として同じでも、取り出された位置が異なるならそれらは別々に数えるものとします。
-#出力が 32bit 整数型に収まらない場合があることに注意してください。
-#
-#制約
-#1 ≦ a_i ≦ 10^5
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^{10}
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N K
-#a_1 a_2 ... a_N
-#
-#出力
-#条件を満たすような連続部分列の個数を出力してください。
-#
-#入力例 1
-#4 10
-#6 1 2 7
-#
-#出力例 1
-#2
-#A[1..4]=a_1,a_2,a_3,a_4 (要素の値の和は 16)
-#A[2..4]=a_2,a_3,a_4 (要素の値の和は 10)
-#の二通りです。
-#
-#入力例 2
-#3 5
-#3 3 3
-#
-#出力例 2
-#3
-#ある二つの連続部分列が列として同じでも、取り出された位置が異なるならそれらは別々に数えることに注意してください。
-#
-#入力例 3
-#10 53462
-#103 35322 232 342 21099 90000 18843 9010 35221 19352
-#
-#出力例 3
-#36
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    t = 0
+    r = 0
+    for l in range(N):
+        while r < N and t < K:
+            t += A[r]
+            r += 1
+        if t < K:
+            break
+        ans += N - r + 1
+        t -= A[l]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(N):
+        while right < N and total < K:
+            total += A[right]
+            right += 1
+        if total < K:
+            break
+        ans += N - right + 1
+        if left == right:
+            right += 1
+        else:
+            total -= A[left]
+    print(ans)
+
+=======
+Suggestion 3
+
+def count_subarray(arr, n, k):
+    start = 0
+    end = 0
+    count = 0
+    while end < n:
+        while end < n and arr[end] <= k:
+            end += 1
+        count += (end - start) * (end - start + 1) // 2
+        start = end + 1
+        end += 1
+    return count
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+ans = count_subarray(a, n, k)
+print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    #print(N)
+    #print(K)
+    #print(A)
+    #print(len(A))
+    for i in range(N):
+        #print("i:" + str(i))
+        for j in range(i, N):
+            #print("j:" + str(j))
+            #print(A[i:j+1])
+            if sum(A[i:j+1]) >= K:
+                #print("sum:" + str(sum(A[i:j+1])))
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    total = 0
+    right = 0
+    for left in range(N):
+        while right < N and total < K:
+            total += A[right]
+            right += 1
+        if total < K:
+            break
+        ans += N - right + 1
+        if left == right:
+            right += 1
+        else:
+            total -= A[left]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    ans = 0
+    sum = 0
+    r = 0
+    for l in range(N):
+        while r < N and sum < K:
+            sum += A[r]
+            r += 1
+        if sum < K:
+            break
+        ans += N-r+1
+        if l == r:
+            r += 1
+        else:
+            sum -= A[l]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    right = 0
+    total = 0
+
+    for left in range(N):
+        while right < N and total < K:
+            total += A[right]
+            right += 1
+
+        if total < K:
+            break
+
+        ans += N - right + 1
+
+        if right == left:
+            right += 1
+        else:
+            total -= A[left]
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = 0
+    r = 0
+    for l in range(n):
+        while r < n and s + a[r] < k:
+            s += a[r]
+            r += 1
+        ans += r - l
+        if r == l:
+            r += 1
+        else:
+            s -= a[l]
+    print(ans)
+
+=======
+Suggestion 9
+
+def problem130_d():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    r = 0
+    s = 0
+    for l in range(n):
+        while r < n and s + a[r] < k:
+            s += a[r]
+            r += 1
+        ans += r - l
+        if r == l:
+            r += 1
+        else:
+            s -= a[l]
+    print(ans)

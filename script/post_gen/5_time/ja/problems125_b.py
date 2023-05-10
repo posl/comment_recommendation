@@ -1,49 +1,127 @@
-#問題文
-#N 個の宝石があり、i 番目の宝石の価値は V_i です。
-#あなたはこれらの宝石の中からいくつかを選んで手に入れます。
-#このとき、1 つも選ばなくとも、全て選んでも構いません。
-#ただし、i 番目の宝石を手に入れる場合コスト C_i を支払わなければいけません。
-#手に入れた宝石の価値の合計を X、支払ったコストの合計を Y とします。
-#X-Y の最大値を求めてください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 20
-#1 ≦ C_i, V_i ≦ 50
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#V_1 V_2 ... V_N
-#C_1 C_2 ... C_N
-#
-#出力
-#X-Y の最大値を出力せよ。
-#
-#入力例 1
-#3
-#10 2 5
-#6 3 4
-#
-#出力例 1
-#5
-#1 番目の宝石と 3 番目の宝石を選んだとき、X = 10 + 5 = 15, Y = 6 + 4 = 10 です。
-#このとき、X-Y = 5 となり、これが最大です。
-#
-#入力例 2
-#4
-#13 21 6 19
-#11 30 6 15
-#
-#出力例 2
-#6
-#
-#入力例 3
-#1
-#1
-#50
-#
-#出力例 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if V[i] > C[i]:
+            ans += V[i] - C[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    s = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            s += v[i] - c[i]
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        if v[i] - c[i] > 0:
+            ans += v[i] - c[i]
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        tmp = v[i] - c[i]
+        if tmp > 0:
+            ans += tmp
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        if v[i] - c[i] > 0:
+            result += v[i] - c[i]
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    x = 0
+    y = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            x += v[i]
+            y += c[i]
+    print(x-y)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            ans += v[i]-c[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if v[i] - c[i] > 0:
+            ans += v[i] - c[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            ans += v[i] - c[i]
+
+    print(ans)
+
+main()

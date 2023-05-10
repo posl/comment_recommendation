@@ -1,48 +1,113 @@
-#問題文
-#英大文字と英小文字からなる文字列のうち、以下の条件を全て満たすものを素晴らしい文字列ということとします。
-#英大文字が文字列の中に現れる。
-#英小文字が文字列の中に現れる。
-#全ての文字が相異なる。
-#例えば、AtCoder や Aa は素晴らしい文字列ですが、atcoder や Perfect は素晴らしい文字列ではありません。
-#文字列 S が与えられるので、S が素晴らしい文字列か判定してください。
-#
-#制約
-#1 ≦ |S| ≦ 100
-#S は英大文字と英小文字からなる文字列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S が素晴らしい文字列ならば Yes を、そうでないならば No を出力せよ。
-#
-#入力例 1
-#AtCoder
-#
-#出力例 1
-#Yes
-#AtCoder は、英大文字が含まれ、英小文字も含まれ、かつ全ての文字が相異なるため素晴らしい文字列です。
-#
-#入力例 2
-#Aa
-#
-#出力例 2
-#Yes
-#A と a は違う文字であることに注意してください。この文字列は素晴らしい文字列です。
-#
-#入力例 3
-#atcoder
-#
-#出力例 3
-#No
-#英大文字が含まれていないため、素晴らしい文字列ではありません。
-#
-#入力例 4
-#Perfect
-#
-#出力例 4
-#No
-#2 文字目と 5 文字目が等しいため、素晴らしい文字列ではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower() == False and s.isupper() == False and len(s) == len(set(s)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def check(s):
+    if s.islower():
+        return False
+    if s.isupper():
+        return False
+    if s.isalpha():
+        return True
+
+s = input()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.islower() or s.isupper() or len(set(s)) != len(s):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if len(s) == len(set(s)) and s.islower() == False:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s1 = sorted(s)
+    s2 = sorted(set(s))
+    if s1 == s2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def is_upper(c):
+    return 'A' <= c <= 'Z'
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = sorted(s)
+    for i in range(len(s)-1):
+        if s[i] == s[i+1]:
+            print('No')
+            exit()
+    if ord(s[0]) >= ord('a') and ord(s[-1]) <= ord('z'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S_ = list(S)
+    S_.sort()
+    S_ = ''.join(S_)
+    if S_ == 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtU
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print("No")
+    else:
+        if len(set(s)) == len(s):
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def solve():
+    s = input()
+    if len(s) != len(set(s)):
+        print('No')
+        return
+    if not s.islower() and not s.isupper():
+        print('Yes')
+        return
+    print('No')

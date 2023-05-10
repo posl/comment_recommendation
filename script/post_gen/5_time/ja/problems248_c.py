@@ -1,39 +1,167 @@
-#問題文
-#長さ N の整数からなる数列 A=(A_1,...,A_N) であって、以下の条件を全て満たすものは何通りありますか？
-#1≦ A_i ≦ M (1 ≦ i ≦ N)
-#sum _{i=1}^N A_i ≦ K 
-#ただし、答えは非常に大きくなることがあるので、答えを 998244353 で割った余りを求めてください。
-#
-#制約
-#1 ≦ N, M ≦ 50
-#N ≦ K ≦ NM
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M K
-#
-#出力
-#答えを 998244353 で割った余りを出力せよ。
-#
-#入力例 1
-#2 3 4
-#
-#出力例 1
-#6
-#条件を満たす数列は以下の 6 つです。
-#(1,1)
-#(1,2)
-#(1,3)
-#(2,1)
-#(2,2)
-#(3,1)
-#
-#入力例 2
-#31 41 592
-#
-#出力例 2
-#798416518
-#答えを 998244353 で割った余りを出力してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, K = map(int, input().split())
+    print(N, M, K)
+
+=======
+Suggestion 2
+
+def main():
+    n,m,k = map(int,input().split())
+    mod = 998244353
+    dp = [[[0 for _ in range(k+1)] for _ in range(m+1)] for _ in range(n+1)]
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            if i == 1:
+                if j <= k:
+                    dp[i][j][j] = 1
+            else:
+                for l in range(1,k+1):
+                    dp[i][j][l] = dp[i][j-1][l]
+                    if l-j >= 0:
+                        dp[i][j][l] += dp[i-1][j][l-j]
+                    dp[i][j][l] %= mod
+    print(dp[n][m][k])
+
+=======
+Suggestion 3
+
+def main():
+    n,m,k = map(int,input().split())
+    mod = 998244353
+    dp = [[[0 for i in range(k+1)] for j in range(m+1)] for l in range(n+1)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(m+1):
+            for l in range(k+1):
+                if dp[i][j][l] == 0:
+                    continue
+                dp[i+1][j][l] += dp[i][j][l]
+                dp[i+1][j][l] %= mod
+                if l+j <= k:
+                    dp[i+1][j][l+j] += dp[i][j][l]
+                    dp[i+1][j][l+j] %= mod
+                if j+1 <= m:
+                    dp[i+1][j+1][l] += dp[i][j][l]
+                    dp[i+1][j+1][l] %= mod
+    print(dp[n][m][k])
+
+=======
+Suggestion 4
+
+def main():
+    n, m, k = map(int, input().split())
+    dp = [[[0] * (k+1) for _ in range(m+1)] for _ in range(n+1)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(m+1):
+            for l in range(k+1):
+                dp[i+1][j][l] += dp[i][j][l]
+                dp[i+1][j][l] %= 998244353
+                if l+j <= k:
+                    dp[i+1][j][l+j] += dp[i][j][l]
+                    dp[i+1][j][l+j] %= 998244353
+    print(dp[n][m][k])
+
+=======
+Suggestion 5
+
+def main():
+    n,m,k = map(int, input().split())
+    mod = 998244353
+    dp = [[[0]*(k+1) for _ in range(m+1)] for _ in range(n+1)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(m+1):
+            for l in range(k+1):
+                dp[i+1][j][l] += dp[i][j][l]
+                dp[i+1][j][l] %= mod
+                if j < m and l+i+1 <= k:
+                    dp[i+1][j+1][l+i+1] += dp[i][j][l]
+                    dp[i+1][j+1][l+i+1] %= mod
+    print(dp[n][m][k])
+
+=======
+Suggestion 6
+
+def main():
+    n,m,k=map(int,input().split())
+    mod=998244353
+    dp=[[[0 for i in range(k+1)] for j in range(m+1)] for k in range(n+1)]
+    dp[0][0][0]=1
+    for i in range(n):
+        for j in range(m+1):
+            for l in range(k+1):
+                dp[i+1][j][l]+=dp[i][j][l]*(m-j)
+                dp[i+1][j][l]%=mod
+                if l+j+1<=k:
+                    dp[i+1][j+1][l+j+1]+=dp[i][j][l]
+                    dp[i+1][j+1][l+j+1]%=mod
+    print(dp[n][m][k])
+
+=======
+Suggestion 7
+
+def main():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+
+    dp = [[[0 for _ in range(K+1)] for _ in range(M+1)] for _ in range(N+1)]
+    dp[0][0][0] = 1
+    for i in range(N):
+        for j in range(M):
+            for k in range(K+1):
+                dp[i+1][j][k] += dp[i][j][k]
+                dp[i+1][j][k] %= mod
+                if k + j + 1 <= K:
+                    dp[i+1][j+1][k+j+1] += dp[i][j][k]
+                    dp[i+1][j+1][k+j+1] %= mod
+
+    print(dp[N][M][K])
+
+=======
+Suggestion 8
+
+def main():
+    N, M, K = map(int, input().split())
+    mod = 998244353
+    dp = [[0]*(K+1) for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(1, N+1):
+        for j in range(K+1):
+            for k in range(1, M+1):
+                if j-k >= 0:
+                    dp[i][j] += dp[i-1][j-k]
+                    dp[i][j] %= mod
+    print(dp[N][K])
+
+=======
+Suggestion 9
+
+def main():
+    N, M, K = map(int, input().split())
+    print(N, M, K)
+    print("Hello World!")
+
+=======
+Suggestion 10
+
+def main():
+    N, M, K = map(int, input().split())
+    #dp[i][j][k] := i番目までの数列でj個の数を使って和がkになる場合の数
+    dp = [[[0 for _ in range(K+1)] for _ in range(M+1)] for _ in range(N+1)]
+    dp[0][0][0] = 1
+    for i in range(N):
+        for j in range(M+1):
+            for k in range(K+1):
+                if j+1 <= M and k+i+1 <= K:
+                    dp[i+1][j+1][k+i+1] += dp[i][j][k]
+                    dp[i+1][j+1][k+i+1] %= 998244353
+                if k+i+1 <= K:
+                    dp[i+1][j][k+i+1] += dp[i][j][k]*(j+1)
+                    dp[i+1][j][k+i+1] %= 998244353
+    print(dp[N][M][K])

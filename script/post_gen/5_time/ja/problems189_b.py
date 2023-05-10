@@ -1,56 +1,182 @@
-#問題文
-#高橋君はお酒を N 杯飲みました。
-#i 番目に飲んだお酒は、量が V_i ml、アルコール度数が P_i % です。
-#高橋君はアルコールの摂取量が X ml を超えると酔っ払います。
-#高橋君が酔っ払ったのは何杯目のお酒を飲んでいるときですか。ただし、N 杯全てのお酒を飲んだあとでも酔っ払っていない場合は、かわりに -1 を出力してください。
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 10^3
-#0 ≦ X ≦ 10^6
-#1 ≦ V_i ≦ 10^3
-#0 ≦ P_i ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#V_1 P_1
-#.
-#.
-#.
-#V_N P_N
-#
-#出力
-#高橋君が酔っ払ったのが何杯目のお酒を飲んでいるときか出力せよ。ただし、N 杯全てのお酒を飲んだあとでも酔っ払っていない場合は、かわりに -1 を出力せよ。
-#
-#入力例 1
-#2 15
-#200 5
-#350 3
-#
-#出力例 1
-#2
-#1 杯目のお酒には、200× (5/(100))=10 ml のアルコールが含まれています。
-#2 杯目のお酒には、350× (3/(100))=10.5 ml のアルコールが含まれています。
-#2 杯目のお酒を飲んでいるときに、初めてアルコールの摂取量が 15 ml を超えます。
-#
-#入力例 2
-#2 10
-#200 5
-#350 3
-#
-#出力例 2
-#2
-#アルコールの摂取量がちょうど X ml のとき、高橋君はまだ酔っ払っていません。
-#
-#入力例 3
-#3 1000000
-#1000 100
-#1000 100
-#1000 100
-#
-#出力例 3
-#-1
-#高橋くんはお酒にとても強いようです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        v.append(a)
+        p.append(b)
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i]
+        if sum > x * 100:
+            print(i + 1)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        v_p = list(map(int, input().split()))
+        v.append(v_p[0])
+        p.append(v_p[1])
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i] / 100
+        if sum > x:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    alc = 0
+    for i in range(n):
+        v, p = map(int, input().split())
+        alc += v * p
+        if alc > x * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for _ in range(n):
+        vi, pi = map(int, input().split())
+        v.append(vi)
+        p.append(pi)
+
+    ans = -1
+    alc = 0
+    for i in range(n):
+        alc += v[i] * p[i]
+        if alc > x * 100:
+            ans = i+1
+            break
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    v = [0] * n
+    p = [0] * n
+
+    for i in range(n):
+        v[i], p[i] = map(int, input().split())
+
+    a = 0
+    for i in range(n):
+        a += v[i] * p[i]
+        if a > x * 100:
+            print(i + 1)
+            return
+
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    V, P = [], []
+    for _ in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    a = 0
+    for i in range(N):
+        a += V[i] * P[i]
+        if a > X * 100:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def calculate():
+    N,X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v,p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    alc = 0
+    for i in range(N):
+        alc += V[i]*P[i]/100
+        if alc > X:
+            print(i+1)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    v_p = [list(map(int, input().split())) for i in range(n)]
+    alcohol = 0
+    for i in range(n):
+        alcohol += v_p[i][0] * v_p[i][1] / 100
+        if alcohol > x:
+            print(i+1)
+            exit()
+    print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    v = []
+    p = []
+    for i in range(n):
+        v_i,p_i = map(int,input().split())
+        v.append(v_i)
+        p.append(p_i)
+    sum = 0
+    for i in range(n):
+        sum += v[i]*p[i]
+        if sum > x*100:
+            print(i+1)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    v_p = [list(map(int, input().split())) for _ in range(n)]
+    alc = 0
+    for i in range(n):
+        alc += v_p[i][0] * v_p[i][1] / 100
+        if alc > x:
+            print(i + 1)
+            exit()
+    print(-1)

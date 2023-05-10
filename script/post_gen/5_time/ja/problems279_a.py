@@ -1,35 +1,111 @@
-#問題文
-#v と w のみからなる文字列 S が与えられます。
-#S の中に、下に尖っている部分が何箇所あるかを出力してください（入出力例にある図もご参照ください）。
-#
-#制約
-#S は v と w のみからなる文字列
-#S の長さは 1 以上 100 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#vvwvw
-#
-#出力例 1
-#7
-#上の画像のように、vvwvw という文字列には下に尖った部分が 7 箇所あります。
-#
-#入力例 2
-#v
-#
-#出力例 2
-#1
-#
-#入力例 3
-#wwwvvvvvv
-#
-#出力例 3
-#12
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s.count('vw') + s.count('wv'))
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] == "v":
+            count += S[i+1:].count("w")
+    print(count)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)-1):
+        if s[i] == "v" and s[i+1] == "w":
+            count += 1
+    print(count*2)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    num = 0
+    for i in range(len(s)):
+        if s[i] == "w" and i != 0:
+            if s[i-1] == "v":
+                num += 1
+    print(num)
+
+=======
+Suggestion 5
+
+def solve():
+    S = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] == "w":
+            ans += i
+    print(ans)
+
+=======
+Suggestion 6
+
+def problem279_a():
+    s = input()
+    v = 0
+    w = 0
+    for i in range(len(s)):
+        if s[i] == "v":
+            v += 1
+        else:
+            w += 1
+    print(v*w)
+
+=======
+Suggestion 7
+
+def solve():
+    s = input()
+    ans = 0
+    for i in range(len(s)-1):
+        if s[i] == 'v' and s[i+1] == 'w':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    l = len(s)
+    v = 0
+    w = 0
+    for i in range(l):
+        if s[i] == 'v':
+            v += 1
+        else:
+            w += 1
+    print(v*w)
+
+=======
+Suggestion 9
+
+def countSharp(s):
+    c = 0
+    for i in range(len(s)):
+        if s[i] == 'v' and i < len(s) - 1 and s[i+1] == 'w':
+            c += 1
+    return c
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    print(s.count("vv") + s.count("ww"))

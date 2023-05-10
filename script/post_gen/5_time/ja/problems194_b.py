@@ -1,53 +1,178 @@
-#問題文
-#あなたの会社には従業員 1 から従業員 N までの N 人の従業員がいます。
-#今あなたは仕事 A と仕事 B の 2 つの仕事を受注したので、これらを完了しなければなりません。
-#従業員 i は仕事 A を A_i 分、仕事 B を B_i 分でこなすことができます。  
-#あなたは仕事 A と仕事 B にそれぞれ従業員を 1 人割り当てます。
-#同じ従業員を両方の仕事に割り当てても構いませんが、その場合 2 つの仕事が終わるのにかかる時間は、それぞれの仕事が終わるのにかかる時間の和となります。
-#仕事 A と仕事 B に異なる従業員を割り当てた場合、2 つの仕事が終わるのにかかる時間は、各仕事が終わるのにかかる時間の長い方となります。
-#2 つの仕事が終わるのにかかる時間として考えられる最小の値を求めてください。  
-#
-#制約
-#2 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^5
-#1 ≦ B_i ≦ 10^5
-#入力に含まれる値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_N B_N
-#
-#出力
-#2 つの仕事が終わるのにかかる時間として考えられる最小の値 [分] を出力せよ。  
-#
-#入力例 1
-#3
-#8 5
-#4 4
-#7 9
-#
-#出力例 1
-#5
-#仕事 A には従業員 2 を、仕事 B には従業員 1 を割り当てると、仕事 A, B はそれぞれ 4, 5 分で完了します。
-#2 つの仕事に異なる従業員を割り当てたので、2 つの仕事が終わるのにかかる時間は max(4, 5) = 5 [分] となります。
-#これより短い時間で 2 つの仕事が終わることはありません。  
-#
-#入力例 2
-#3
-#11 7
-#3 2
-#6 7
-#
-#出力例 2
-#5
-#両方の仕事に従業員 2 を割り当てるのが最適です。
-#同じ従業員を両方の仕事に割り当てた場合 2 つの仕事が終わるのにかかる時間は、それぞれの仕事が終わるのにかかる時間の和となることに注意してください。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        line = input().split(" ")
+        A.append(int(line[0]))
+        B.append(int(line[1]))
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                ans = max(ans, A[i] + B[j])
+            else:
+                ans = max(ans, max(A[i], B[j]))
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                min_time = min(min_time, A[i] + B[j])
+            else:
+                min_time = min(min_time, max(A[i], B[j]))
+    print(min_time)
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    ans = 10**9
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                ans = min(ans, a[i] + b[j])
+            else:
+                ans = min(ans, max(a[i], b[j]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        c, d = map(int, input().split())
+        a.append(c)
+        b.append(d)
+    print(min(max(a), max(b)))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        ans = max(ans, A[i] + B[i])
+    print(ans)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    ans = 1000000
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                ans = min(ans, a[i]+b[j])
+            else:
+                ans = min(ans, max(a[i], b[j]))
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    print(min(max(a), max(b)))
+    return 0
+
+=======
+Suggestion 8
+
+def solve(n, a, b):
+    ans = 10**10
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                ans = min(ans, a[i] + b[j])
+            else:
+                ans = min(ans, max(a[i], b[j]))
+    return ans
+
+n = int(input())
+a = []
+b = []
+for i in range(n):
+    ai, bi = map(int, input().split())
+    a.append(ai)
+    b.append(bi)
+print(solve(n, a, b))
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    a = [x[0] for x in ab]
+    b = [x[1] for x in ab]
+    a.sort()
+    b.sort()
+    print(max(a[-1], b[-1]))
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 10**9
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                ans = min(ans, A[i] + B[j])
+            else:
+                ans = min(ans, max(A[i], B[j]))
+    print(ans)

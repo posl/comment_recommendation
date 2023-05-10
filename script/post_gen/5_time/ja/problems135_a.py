@@ -1,39 +1,110 @@
-#問題文
-#相違なる整数 A, B があります。
-#|A - K| = |B - K| となるような整数 K を出力してください。
-#そのような整数が存在しなければ、代わりに IMPOSSIBLE を出力してください。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A, B ≦ 10^9
-#A と B は相違なる。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#条件を満たす整数 K を出力せよ。
-#そのような整数が存在しなければ、代わりに IMPOSSIBLE を出力せよ。
-#
-#入力例 1
-#2 16
-#
-#出力例 1
-#9
-#|2 - 9| = 7, |16 - 9| = 7 であるため、9 は条件を満たす整数です。
-#
-#入力例 2
-#0 3
-#
-#出力例 2
-#IMPOSSIBLE
-#条件を満たす整数は存在しません。
-#
-#入力例 3
-#998244353 99824435
-#
-#出力例 3
-#549034394
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    if a > b:
+        print(a - ((a - b) // 2))
+    else:
+        print(b - ((b - a) // 2))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    A, B = map(int, input().split())
+
+    # compute
+
+    # output
+    if (A+B)%2 == 0:
+        print((A+B)//2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print((a + b) // 2 if (a + b) % 2 == 0 else 'IMPOSSIBLE')
+
+=======
+Suggestion 5
+
+def main():
+    # -*- coding: utf-8 -*-
+    # 整数の入力
+    a, b = map(int, input().split())
+    # スペース区切りの整数の入力
+    #a, b = map(int, input().split())
+    # 文字列の入力
+    #s = input()
+    # 出力
+    #print("{} {}".format(a+b+c, s))
+    #print("{0} {1}".format(a+b+c, s))
+    #print(f"{a+b+c} {s}")
+    #print(f"{a+b+c=}, {s=}")
+    #print(f"{a=}, {b=}")
+    #print(f"{a=}")
+    #print(f"{b=}")
+    if (a - b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 != 0:
+        print('IMPOSSIBLE')
+    else:
+        print(int((a + b) / 2))
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a < b:
+        print(b - (b - a) // 2)
+    else:
+        print(a - (a - b) // 2)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if (a+b)%2 == 0:
+        print((a+b)//2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int, input().split())
+    k = (a+b)/2
+    if k.is_integer():
+        print(int(k))
+    else:
+        print("IMPOSSIBLE")

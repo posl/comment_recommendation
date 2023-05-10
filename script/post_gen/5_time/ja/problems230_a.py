@@ -1,48 +1,85 @@
-#問題文
-#AtCoder で定期的に開催されている、国際的な権威があるコンテストである AtCoder Grand Contest (以下、AGC) は今までに 54 回開催されてきました。
-#みなさんがちょうど参加している 230 回目の ABC である ABC230 と同様に、 当初は N 回目の AGC のコンテスト名には N を 3 桁になるようにゼロ埋めした数が割り振られていました。( 1 回目の AGC は AGC001, 2 回目の AGC は AGC002, ...)
-#ところが、最新の 54 回目の AGC のコンテスト名は AGC055 で、回数より 1 大きい数が割り振られています。これは、AGC042 が社会情勢の影響で中止されて欠番となったため、42 回目以降に開催されたコンテストでは開催された回数より 1 大きい数が割り振られているからです。(入出力例にある説明も参考にしてください。)
-#さて、ここで問題です。整数 N が与えられるので、N 回目に開催された AGC のコンテスト名を AGCXXX の形式で出力してください。ここで、XXX にはゼロ埋めがなされた 3 桁の数が入ります。
-#
-#制約
-#1 ≦ N ≦ 54
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#N 回目に開催された AGC のコンテスト名を所定の形式で出力せよ。
-#
-#入力例 1
-#42
-#
-#出力例 1
-#AGC043
-#問題文にある通り、 42 回目以降の AGC には回数より 1 大きい数が割り振られています。
-#よって 42 回目の AGC のコンテスト名は AGC043 になります。
-#
-#入力例 2
-#19
-#
-#出力例 2
-#AGC019
-#41 回目以前の AGC は回数と同じ数が割り振られています。
-#よって AGC019 が答えとなります。
-#
-#入力例 3
-#1
-#
-#出力例 3
-#AGC001
-#問題文にある通り、 1 回目の AGC のコンテスト名は AGC001 です。
-#数が 3 桁になるようにゼロ埋めを行う必要があるのに注意してください。
-#
-#入力例 4
-#50
-#
-#出力例 4
-#AGC051
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N < 42:
+        print("AGC{:0=3}".format(N))
+    else:
+        print("AGC{:0=3}".format(N+1))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n < 42:
+        print("AGC" + str(n).zfill(3))
+    else:
+        print("AGC" + str(n+1).zfill(3))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n < 42:
+        print('AGC{:0=3}'.format(n))
+    else:
+        print('AGC{:0=3}'.format(n+1))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N < 42:
+        print("AGC{:03d}".format(N))
+    else:
+        print("AGC{:03d}".format(N+1))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n < 10:
+        print("AGC00" + str(n))
+    elif n < 100:
+        print("AGC0" + str(n))
+    else:
+        print("AGC" + str(n))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n < 10:
+        print("AGC00" + str(n))
+    elif n >= 10 and n < 100:
+        print("AGC0" + str(n))
+    else:
+        print("AGC" + str(n))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N < 42:
+        print("AGC%03d" % N)
+    else:
+        print("AGC%03d" % (N+1))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n < 42:
+        print("AGC{:03d}".format(n))
+    else:
+        print("AGC{:03d}".format(n+1))

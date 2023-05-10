@@ -1,34 +1,36 @@
-#問題文
-#文字列 S が与えられます。S のすべての文字を x で置き換えて出力してください。
-#
-#制約
-#S は英小文字のみからなる文字列
-#S の長さは 1 以上 100 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#S のすべての文字を x で置き換えて出力せよ。
-#
-#入力例 1
-#sardine
-#
-#出力例 1
-#xxxxxxx
-#sardine のすべての文字を x で置き換えると xxxxxxx となります。
-#
-#入力例 2
-#xxxx
-#
-#出力例 2
-#xxxx
-#
-#入力例 3
-#gone
-#
-#出力例 3
-#xxxx
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def replace_char(s):
+    return 'x' * len(s)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print('x'*len(s))
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(len(S)*"x")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print("x" * len(S))
+
+=======
+Suggestion 5
+
+def replace_all(s, f, t):
+    return s.replace(f, t)
+
+print(replace_all(input(), input(), "x"))

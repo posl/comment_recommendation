@@ -1,54 +1,154 @@
-#問題文
-#N 枚の ID カードと M 個のゲートがあります。
-#i 番目のゲートは L_i, L_i+1, ..., R_i 番目の ID カードのうちどれか 1 枚を持っていれば通過できます。
-#1 枚だけで全てのゲートを通過できる ID カードは何枚あるでしょうか。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#出力
-#1 枚だけで全てのゲートを通過できる ID カードの枚数を出力せよ。
-#
-#入力例 1
-#4 2
-#1 3
-#2 4
-#
-#出力例 1
-#2
-#以下のように、1 枚だけで全てのゲートを通過できる ID カードは 2 枚です。
-#1 番目の ID カードでは 2 番目のゲートを通過できません。
-#2 番目の ID カードでは全てのゲートを通過できます。
-#3 番目の ID カードでは全てのゲートを通過できます。
-#4 番目の ID カードでは 1 番目のゲートを通過できません。
-#
-#入力例 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#出力例 2
-#1
-#
-#入力例 3
-#100000 1
-#1 100000
-#
-#出力例 3
-#100000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    ans = min(R) - max(L) + 1
+    if ans < 0:
+        ans = 0
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    min_left = 0
+    max_right = N + 1
+    for i in range(M):
+        left, right = map(int, input().split())
+        min_left = max(min_left, left)
+        max_right = min(max_right, right)
+    print(max(max_right - min_left + 1, 0))
+
+=======
+Suggestion 4
+
+def get_inputs():
+    n, m = map(int, input().split())
+    gates = []
+    for i in range(m):
+        gates.append(list(map(int, input().split())))
+    return n, m, gates
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+
+    # 1枚だけで全てのゲートを通過できるIDカードの枚数
+    ans = 0
+
+    # 1枚だけで全てのゲートを通過できるIDカードのリスト
+    id_list = [False] * (n + 1)
+
+    for _ in range(m):
+        l, r = map(int, input().split())
+
+        # l番目からr番目までのIDカードは1枚だけで全てのゲートを通過できる
+        for i in range(l, r + 1):
+            if not id_list[i]:
+                ans += 1
+                id_list[i] = True
+
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    l = [0] * (n + 1)
+    r = [0] * (n + 1)
+    for i in range(m):
+        a, b = map(int, input().split())
+        l[a] += 1
+        r[b] += 1
+    ans = 0
+    cnt = 0
+    for i in range(1, n + 1):
+        cnt += l[i]
+        if cnt == m:
+            ans += 1
+        cnt -= r[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[M-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[M-1] + 1)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    print(max(0, min(R) - max(L) + 1))
+
+=======
+Suggestion 9
+
+def solve():
+    N, M = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+
+    L.sort()
+    R.sort()
+
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)

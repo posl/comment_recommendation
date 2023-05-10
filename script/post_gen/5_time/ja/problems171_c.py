@@ -1,43 +1,135 @@
-#問題文
-#ロジャーは、彼のもとに突如現れた 1000000000000001 匹の犬をすべて飼うことを決意しました。犬たちにはもともと 1 から 1000000000000001 までの番号がふられていましたが、ロジャーは彼らに以下のルールで名前を授けました。
-#1,2,...,26 番の番号がついた犬はその順に a,b,...,z と命名されます。
-#27,28,29,...,701,702  番の番号がついた犬はその順に aa,ab,ac,...,zy,zz と命名されます。
-#703,704,705,...,18277,18278  番の番号がついた犬はその順に aaa,aab,aac,...,zzy,zzz と命名されます。
-#18279,18280,18281,...,475253,475254  番の番号がついた犬はその順に aaaa,aaab,aaac,...,zzzy,zzzz と命名されます。
-#475255,475256,...  番の番号がついた犬はその順に aaaaa,aaaab,... と命名されます。
-#(以下省略)
-#つまり、ロジャーが授けた名前を番号順に並べると:
-#a,b,...,z,aa,ab,...,az,ba,bb,...,bz,...,za,zb,...,zz,aaa,aab,...,aaz,aba,abb,...,abz,...,zzz,aaaa,... のようになります。
-#ロジャーはあなたに問題を出しました。
-#「番号 N の犬の名前を答えよ。」
-#
-#制約
-#N は整数
-# 1 ≦ N ≦ 1000000000000001
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#ロジャーの問題に対する答えを、英小文字のみからなる文字列として出力せよ。
-#
-#入力例 1
-#2
-#
-#出力例 1
-#b
-#
-#入力例 2
-#27
-#
-#出力例 2
-#aa
-#
-#入力例 3
-#123456789
-#
-#出力例 3
-#jjddja
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = ""
+    while N > 0:
+        if N % 26 == 0:
+            ans = "z" + ans
+            N -= 26
+        else:
+            ans = chr(96 + N % 26) + ans
+        N = int(N / 26)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    if n <= 26:
+        print(chr(n + 96))
+        return
+    n -= 26
+    n -= 1
+    c = 1
+    while True:
+        if n - 26 ** c <= 0:
+            break
+        n -= 26 ** c
+        c += 1
+    s = ""
+    for i in range(c):
+        s += chr(n % 26 + 97)
+        n //= 26
+    print(s[::-1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        n -= 1
+        ans += chr(ord('a') + n % 26)
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 4
+
+def convert(n):
+    if n <= 26:
+        return chr(96 + n)
+    else:
+        return convert((n - 1) // 26) + convert((n - 1) % 26 + 1)
+
+n = int(input())
+print(convert(n))
+
+=======
+Suggestion 5
+
+def base10to36(n):
+    if (int(n/36)):
+        return base10to36(int(n/36)) + str(n%36)
+    else:
+        return str(n%36)
+
+n = int(input())
+print(base10to36(n).replace("0", "a").replace("1", "b").replace("2", "c").replace("3", "d").replace("4", "e").replace("5", "f").replace("6", "g").replace("7", "h").replace("8", "i").replace("9", "j").replace("10", "k").replace("11", "l").replace("12", "m").replace("13", "n").replace("14", "o").replace("15", "p").replace("16", "q").replace("17", "r").replace("18", "s").replace("19", "t").replace("20", "u").replace("21", "v").replace("22", "w").replace("23", "x").replace("24", "y").replace("25", "z"))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    ans = ''
+    while N > 0:
+        N -= 1
+        ans = alpha[N % 26] + ans
+        N //= 26
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    N -= 1
+    ans = ""
+    while N >= 0:
+        ans += chr(ord('a') + (N % 26))
+        N = N // 26 - 1
+    print(ans[::-1])
+
+=======
+Suggestion 8
+
+def num2alpha(num):
+    if num <= 26:
+        return chr(num + 96)
+    else:
+        return num2alpha((num - 1) // 26) + num2alpha(num % 26)
+
+N = int(input())
+print(num2alpha(N))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ans = ''
+    while n > 0:
+        n -= 1
+        ans += chr(ord('a') + n % 26)
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    ans = []
+    while n > 0:
+        n -= 1
+        ans.append(chr(ord('a') + n % 26))
+        n //= 26
+    print(''.join(reversed(ans)))

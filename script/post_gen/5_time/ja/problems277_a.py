@@ -1,42 +1,42 @@
-#問題文
-#(1,2,…,N) を並び替えた数列 P と整数 X が与えられます。
-#数列 P の i 番目の項の値は P_i です。
-#P_k = X を満たす k を出力してください。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ N
-#P は (1,2,…,N) を並び替えてできる数列
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#P_1 P_2 ... P_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 3
-#2 3 1 4
-#
-#出力例 1
-#2
-#P = (2,3,1,4) なので、P_2 = 3 です。したがって、2 を出力します。
-#
-#入力例 2
-#5 2
-#3 5 1 4 2
-#
-#出力例 2
-#5
-#
-#入力例 3
-#6 6
-#1 2 3 4 5 6
-#
-#出力例 3
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    p = list(map(int, input().split()))
+    for i in range(n):
+        if p[i] == x:
+            print(i+1)
+            exit()
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int, input().split())
+    p = list(map(int, input().split()))
+    print(p.index(x)+1)
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    p = list(map(int,input().split()))
+    for i in range(n):
+        if p[i] == x:
+            print(i+1)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    N,X = map(int, input().split())
+    P = list(map(int, input().split()))
+    for i in range(N):
+        if P[i] == X:
+            print(i+1)
+            break

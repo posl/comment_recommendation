@@ -1,30 +1,139 @@
-#問題文
-#今日の曜日を表す文字列 S が与えられます。
-#S は SUN,MON,TUE,WED,THU,FRI,SAT のいずれかであり、それぞれ日曜日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日を表します。
-#次の日曜日 (あす以降) が何日後か求めてください。
-#
-#制約
-#S は SUN,MON,TUE,WED,THU,FRI,SAT のいずれか
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#次の日曜日が何日後か出力せよ。
-#
-#入力例 1
-#SAT
-#
-#出力例 1
-#1
-#今日は土曜日です。よって、次の日曜日は 1 日後です。
-#
-#入力例 2
-#SUN
-#
-#出力例 2
-#7
-#今日は日曜日です。よって、次の日曜日は 7 日後です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    ans = 0
+    if s == "SUN":
+        ans = 7
+    elif s == "MON":
+        ans = 6
+    elif s == "TUE":
+        ans = 5
+    elif s == "WED":
+        ans = 4
+    elif s == "THU":
+        ans = 3
+    elif s == "FRI":
+        ans = 2
+    elif s == "SAT":
+        ans = 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == "SUN":
+        print(7)
+    elif s == "MON":
+        print(6)
+    elif s == "TUE":
+        print(5)
+    elif s == "WED":
+        print(4)
+    elif s == "THU":
+        print(3)
+    elif s == "FRI":
+        print(2)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    week = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+    print(7 - week.index(S))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+
+    week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    print(7 - week.index(s))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s == "SUN":
+        print(7)
+    elif s == "MON":
+        print(6)
+    elif s == "TUE":
+        print(5)
+    elif s == "WED":
+        print(4)
+    elif s == "THU":
+        print(3)
+    elif s == "FRI":
+        print(2)
+    elif s == "SAT":
+        print(1)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s == 'SUN':
+        print(7)
+    elif s == 'MON':
+        print(6)
+    elif s == 'TUE':
+        print(5)
+    elif s == 'WED':
+        print(4)
+    elif s == 'THU':
+        print(3)
+    elif s == 'FRI':
+        print(2)
+    elif s == 'SAT':
+        print(1)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S == "SUN":
+        print(7)
+    elif S == "MON":
+        print(6)
+    elif S == "TUE":
+        print(5)
+    elif S == "WED":
+        print(4)
+    elif S == "THU":
+        print(3)
+    elif S == "FRI":
+        print(2)
+    elif S == "SAT":
+        print(1)
+
+=======
+Suggestion 8
+
+def get_next_sunday(s):
+    if s == "SUN":
+        return 7
+    elif s == "MON":
+        return 6
+    elif s == "TUE":
+        return 5
+    elif s == "WED":
+        return 4
+    elif s == "THU":
+        return 3
+    elif s == "FRI":
+        return 2
+    elif s == "SAT":
+        return 1

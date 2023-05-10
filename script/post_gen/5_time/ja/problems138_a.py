@@ -1,42 +1,84 @@
-#問題文
-#整数 a と、英小文字からなる文字列 s が入力されます。
-#a が 3200 以上なら s と出力し、a が 3200 未満なら red と出力するプログラムを書いてください。
-#
-#制約
-#2800 ≦ a < 5000
-#s は長さ 1 以上 10 以下の文字列である。
-#s の各文字は英小文字である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#a
-#s
-#
-#出力
-#a が 3200 以上なら s と出力し、a が 3200 未満なら red と出力せよ。
-#
-#入力例 1
-#3200
-#pink
-#
-#出力例 1
-#pink
-#a = 3200 は 3200 以上であるため s = pink と出力します。
-#
-#入力例 2
-#3199
-#pink
-#
-#出力例 2
-#red
-#a = 3199 は 3200 未満であるため red と出力します。
-#
-#入力例 3
-#4049
-#red
-#
-#出力例 3
-#red
-#a = 4049 は 3200 以上であるため s = red と出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')
+
+=======
+Suggestion 2
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 3
+
+def main():
+    # a = int(input())
+    # s = input()
+    a = 3200
+    s = "pink"
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 4
+
+def myCode():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 5
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+main()
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')
+
+=======
+Suggestion 7
+
+def main():
+    #data load
+    a = int(input())
+    s = input()
+
+    #logic
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')

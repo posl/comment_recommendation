@@ -1,137 +1,380 @@
-#問題文
-#H 行 W 列のグリッドがあります。上から i 行目、左から j 列目にあるマスをマス (i, j) で表します。
-#N 個のマス (r_1, c_1), (r_2, c_2), ..., (r_N, c_N) は壁になっています。
-#はじめ、高橋君はマス (r_s, c_s) にいます。
-#高橋君に Q 個の指示が与えられます。
-#i = 1, 2, ..., Q について、i 番目の指示は文字 d_i と正整数 l_i の組で表されます。d_i は L 、R 、U 、D のいずれかの文字であり、それぞれ左、右、上、下の方向を表します。
-#i 番目の指示に対して高橋君は下記の行動を l_i 回繰り返します。
-#現在いるマスに対して、d_i が表す向きに壁のないマスが隣接しているなら、そのマスに移動する。
-#そのようなマスが存在しない場合は、何もしない。
-#i = 1, 2, ..., Q について、i 番目までの指示を実行した直後に高橋君がいるマスを出力してください。
-#
-#制約
-#2 ≦ H, W ≦ 10^9
-#1 ≦ r_s ≦ H
-#1 ≦ c_s ≦ W
-#0 ≦ N ≦ 2 × 10^5
-#1 ≦ r_i ≦ H
-#1 ≦ c_i ≦ W
-#i ≠ j -> (r_i, c_i) ≠ (r_j, c_j)
-#すべての i = 1, 2, ..., Nについて、(r_s, c_s) ≠ (r_i, c_i)
-#1 ≦ Q ≦ 2 × 10^5
-#d_i は L 、R 、U 、D のいずれかの文字
-#1 ≦ l_i ≦ 10^9
-#d_i 以外の入力値は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W r_s c_s
-#N
-#r_1 c_1
-#r_2 c_2
-#.
-#.
-#.
-#r_N c_N
-#Q
-#d_1 l_1
-#d_2 l_2
-#.
-#.
-#.
-#d_Q l_Q
-#
-#出力
-#Q 行出力せよ。
-#下記の形式にしたがい、i = 1, 2, ..., Q について、i 番目までの指示を実行した直後に高橋君がいるマス (R_i, C_i) を i 行目に出力せよ。
-#R_1 C_1
-#R_2 C_2
-#.
-#.
-#.
-#R_Q C_Q
-#
-#入力例 1
-#5 5 4 4
-#3
-#5 3
-#2 2
-#1 4
-#4
-#L 2
-#U 3
-#L 2
-#R 4
-#
-#出力例 1
-#4 2
-#3 2
-#3 1
-#3 5
-#与えられるグリッドと高橋君の初期位置は下記の通りです。
-#ここで、# は壁のマスを、T は高橋君がいるマスを表し、. がその他のマスを表します。
-#...#.
-#.#...
-#.....
-#...T.
-#..#..
-#1 つ目の指示に対して高橋君は、左に 2 マス移動し、高橋君の位置は下記の通り、マス (4, 2) になります。
-#...#.
-#.#...
-#.....
-#.T...
-#..#..
-#2 つ目の指示に対して高橋君は、上に 1 マスに移動した後、次の移動先が壁であるために「何もしない」を 2 回行います。その結果、高橋君の位置は下記の通り、マス (3, 2) になります。
-#...#.
-#.#...
-#.T...
-#.....
-#..#..
-#3 つ目の指示に対して高橋君は、左に 1 マス移動した後、次の移動先となるマスが存在しないために「何もしない」を 1 回行います。その結果、高橋君の位置は下記の通り、マス (3, 1) になります。
-#...#.
-#.#...
-#T....
-#.....
-#..#..
-#4 つ目の指示に対して高橋君は、右に 4 マス移動し、高橋君の位置は下記の通り、マス (3, 5) になります。
-#...#.
-#.#...
-#....T
-#.....
-#..#..
-#
-#入力例 2
-#6 6 6 3
-#7
-#3 1
-#4 3
-#2 6
-#3 4
-#5 5
-#1 1
-#3 2
-#10
-#D 3
-#U 3
-#L 2
-#D 2
-#U 3
-#D 3
-#U 3
-#R 3
-#L 3
-#D 1
-#
-#出力例 2
-#6 3
-#5 3
-#5 1
-#6 1
-#4 1
-#6 1
-#4 1
-#4 2
-#4 1
-#5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, rs, cs = map(int, input().split())
+    N = int(input())
+    wall = [[0 for col in range(W)] for row in range(H)]
+    for i in range(N):
+        r, c = map(int, input().split())
+        wall[r-1][c-1] = 1
+    Q = int(input())
+    for i in range(Q):
+        d, l = input().split()
+        l = int(l)
+        if d == 'L':
+            for j in range(l):
+                if cs - 1 >= 0 and wall[rs-1][cs-1] == 0:
+                    cs -= 1
+        elif d == 'R':
+            for j in range(l):
+                if cs + 1 < W and wall[rs-1][cs] == 0:
+                    cs += 1
+        elif d == 'U':
+            for j in range(l):
+                if rs - 1 >= 0 and wall[rs-2][cs-1] == 0:
+                    rs -= 1
+        elif d == 'D':
+            for j in range(l):
+                if rs + 1 < H and wall[rs][cs-1] == 0:
+                    rs += 1
+        print(rs, cs)
+
+=======
+Suggestion 2
+
+def main():
+    H, W, r, c = map(int, input().split())
+    N = int(input())
+    wall = set()
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        wall.add((r_i, c_i))
+    Q = int(input())
+    d_l = [list(input().split()) for _ in range(Q)]
+    d_l = [[d_l[i][0], int(d_l[i][1])] for i in range(Q)]
+    r_c = [r, c]
+    d = {'L': [-1, 0], 'R': [1, 0], 'U': [0, -1], 'D': [0, 1]}
+    for i in range(Q):
+        for _ in range(d_l[i][1]):
+            r_c[0] += d[d_l[i][0]][0]
+            r_c[1] += d[d_l[i][0]][1]
+            if (r_c[0], r_c[1]) in wall:
+                r_c[0] -= d[d_l[i][0]][0]
+                r_c[1] -= d[d_l[i][0]][1]
+                break
+    print(r_c[0], r_c[1])
+
+=======
+Suggestion 3
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r_c = [list(map(int, input().split())) for _ in range(N)]
+    Q = int(input())
+    d_l = [list(input().split()) for _ in range(Q)]
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r_c)
+    #print(Q)
+    #print(d_l)
+
+    # 1つ目の指示に対して高橋君は、左に 2 マス移動し、高橋君の位置は下記の通り、マス (4, 2) になります。
+    # ...#.
+    # .#...
+    # .....
+    # .T...
+    # ..#..
+
+    # 2 つ目の指示に対して高橋君は、上に 1 マスに移動した後、次の移動先が壁であるために「何もしない」を 2 回行います。その結果、高橋君の位置は下記の通り、マス (3, 2) になります。
+    # ...#.
+    # .#...
+    # .T...
+    # .....
+    # ..#..
+
+    # 3 つ目の指示に対して高橋君は、左に 1 マス移動した後、次の移動先となるマスが存在しないために「何もしない」を 1 回行います。その結果、高橋君の位置は下記の通り、マス (3, 1) になります。
+    # ...#.
+    # .#...
+    # T....
+    # .....
+    # ..#..
+
+    # 4 つ目の指示に対して高橋君は、右に 4 マス移動し、高橋君の位置は下記の通り、マス (3, 5) になります。
+    # ...#.
+
+=======
+Suggestion 4
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r = []
+    c = []
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        r.append(r_i)
+        c.append(c_i)
+    Q = int(input())
+    d = []
+    l = []
+    for i in range(Q):
+        d_i, l_i = map(str, input().split())
+        d.append(d_i)
+        l.append(int(l_i))
+
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+
+    # 1つ目の指示に対する処理
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+    #print("")
+
+    # 2つ目以降の指示に対する処理
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r)
+    #print(c)
+    #print(Q)
+    #print(d)
+    #print(l)
+    #print("")
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    H, W, rs, cs = map(int, input().split())
+    N = int(input())
+    rc = []
+    for i in range(N):
+        rc.append(list(map(int, input().split())))
+    Q = int(input())
+    dl = []
+    for i in range(Q):
+        dl.append(list(input().split())))
+    print(H, W, rs, cs)
+    print(N)
+    print(rc)
+    print(Q)
+    print(dl)
+
+=======
+Suggestion 7
+
+def main():
+    H, W, rs, cs = map(int, input().split())
+    N = int(input())
+    walls = []
+    for i in range(N):
+        r, c = map(int, input().split())
+        walls.append((r, c))
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        d, l = input().split()
+        query.append((d, int(l)))
+
+    wall_row = [0] * (H + 2)
+    wall_col = [0] * (W + 2)
+    for r, c in walls:
+        wall_row[r] += 1
+        wall_col[c] += 1
+
+    row = rs
+    col = cs
+    for d, l in query:
+        if d == 'L':
+            for _ in range(l):
+                col -= 1
+                if wall_col[col] > 0:
+                    col += 1
+                    break
+        elif d == 'R':
+            for _ in range(l):
+                col += 1
+                if wall_col[col] > 0:
+                    col -= 1
+                    break
+        elif d == 'U':
+            for _ in range(l):
+                row -= 1
+                if wall_row[row] > 0:
+                    row += 1
+                    break
+        elif d == 'D':
+            for _ in range(l):
+                row += 1
+                if wall_row[row] > 0:
+                    row -= 1
+                    break
+        else:
+            assert False
+
+    print(row, col)
+
+=======
+Suggestion 8
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r_c = []
+    for i in range(N):
+        r_c.append(list(map(int, input().split())))
+    Q = int(input())
+    d_l = []
+    for i in range(Q):
+        d_l.append(list(input().split()))
+    #print(H, W, r_s, c_s)
+    #print(N)
+    #print(r_c)
+    #print(Q)
+    #print(d_l)
+    for i in range(Q):
+        now_r = r_s
+        now_c = c_s
+        for j in range(int(d_l[i][1])):
+            if d_l[i][0] == "L":
+                now_c -= 1
+                if [now_r, now_c] in r_c:
+                    now_c += 1
+            elif d_l[i][0] == "R":
+                now_c += 1
+                if [now_r, now_c] in r_c:
+                    now_c -= 1
+            elif d_l[i][0] == "U":
+                now_r -= 1
+                if [now_r, now_c] in r_c:
+                    now_r += 1
+            elif d_l[i][0] == "D":
+                now_r += 1
+                if [now_r, now_c] in r_c:
+                    now_r -= 1
+        print(now_r, now_c)
+
+=======
+Suggestion 9
+
+def main():
+    H, W, rs, cs = map(int, input().split())
+    N = int(input())
+    rcs = []
+    for i in range(N):
+        rcs.append(list(map(int, input().split())))
+    Q = int(input())
+    dls = []
+    for i in range(Q):
+        dls.append(list(input().split())))
+    for i in range(Q):
+        d = dls[i][0]
+        l = int(dls[i][1])
+        if d == "L":
+            for j in range(l):
+                if cs - 1 in [rcs[k][1] for k in range(N)]:
+                    break
+                cs -= 1
+        elif d == "R":
+            for j in range(l):
+                if cs + 1 in [rcs[k][1] for k in range(N)]:
+                    break
+                cs += 1
+        elif d == "U":
+            for j in range(l):
+                if rs - 1 in [rcs[k][0] for k in range(N)]:
+                    break
+                rs -= 1
+        elif d == "D":
+            for j in range(l):
+                if rs + 1 in [rcs[k][0] for k in range(N)]:
+                    break
+                rs += 1
+        else:
+            print("error")
+        print(rs, cs)
+    return
+
+=======
+Suggestion 10
+
+def main():
+    H, W, r_s, c_s = map(int, input().split())
+    N = int(input())
+    r = []
+    c = []
+    for i in range(N):
+        r_i, c_i = map(int, input().split())
+        r.append(r_i)
+        c.append(c_i)
+    Q = int(input())
+    d = []
+    l = []
+    for i in range(Q):
+        d_i, l_i = map(str, input().split())
+        d.append(d_i)
+        l.append(int(l_i))
+    
+    #print(H, W, r_s, c_s, N, r, c, Q, d, l)
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W, r_s, c_s, N, r, c, Q, d, l)
+
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W, r_s, c_s, N, Q)
+    #print(r)
+    #print(c)
+    #print(d)
+    #print(l)
+    #print(r_s, c_s)
+    
+    #print(H, W

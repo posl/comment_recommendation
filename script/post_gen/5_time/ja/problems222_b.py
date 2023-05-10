@@ -1,42 +1,73 @@
-#問題文
-#N 人の学生が試験を受けました。学生には学生 1, 学生 2, ..., 学生 N と番号がついていて、学生 i は a_i 点を取りました。
-#P 点未満の点数を取った学生は "不可" となり単位を取得できません。 "不可" となった学生の人数を答えてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ P ≦ 100
-#0 ≦ a_i ≦ 100 (1 ≦ i ≦ N)
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N P
-#a_1 a_2 ... a_N
-#
-#出力
-#"不可" となった学生の人数を出力せよ。
-#
-#入力例 1
-#4 50
-#80 60 40 0
-#
-#出力例 1
-#2
-#学生 1 は 80 点、学生 2 は 60 点と、 50 点以上の点数を取っているので "不可" とならず単位を取得できています。
-#一方、学生 3 は 40 点、学生 4 は 0 点で、 50 点を下回る点数を取っているので "不可" となります。よって答えは 2 人です。
-#
-#入力例 2
-#3 90
-#89 89 89
-#
-#出力例 2
-#3
-#
-#入力例 3
-#2 22
-#6 37
-#
-#出力例 3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(sum([1 for x in a if x < P]))
+
+=======
+Suggestion 2
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(len(list(filter(lambda x: x < p, a))))
+
+=======
+Suggestion 4
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(len([x for x in a if x < p]))
+
+=======
+Suggestion 5
+
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if a[i] < P:
+            count = count + 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N,P=map(int,input().split())
+    a=list(map(int,input().split()))
+    ans=0
+    for i in range(N):
+        if a[i]<P:
+            ans+=1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if a[i] < p:
+            cnt += 1
+    print(cnt)

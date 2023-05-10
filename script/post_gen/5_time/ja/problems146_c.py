@@ -1,50 +1,165 @@
-#問題文
-#高橋くんは整数を 1 つ買いに整数屋さんに行きました。
-#整数屋さんには 1 以上 10^9 以下の整数が売られていて、整数 N を買うためには A × N + B × d(N) 円が必要です。ここで、d(N) は N の十進表記での桁数です。
-#高橋くんの所持金が X 円のとき、高橋くんの買うことのできる最も大きい整数を求めてください。ただし、買うことのできる整数が 1 つもない場合は 0 を出力してください。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B X
-#
-#出力
-#高橋くんの買うことのできる最も大きい整数を出力せよ。ただし、買うことのできる整数が 1 つもない場合は 0 を出力せよ。
-#
-#入力例 1
-#10 7 100
-#
-#出力例 1
-#9
-#9 の値段は 10 × 9 + 7 × 1 = 97 円で、これが買うことのできる最大の整数です。
-#他の整数の値段の例をいくつかあげると
-#10: 10 × 10 + 7 × 2 = 114 円
-#100: 10 × 100 + 7 × 3 = 1021 円
-#12345: 10 × 12345 + 7 × 5 = 123485 円
-#です。
-#
-#入力例 2
-#2 1 100000000000
-#
-#出力例 2
-#1000000000
-#お店に売られている最大の整数を買うことができます。入力が 32 bit整数型に収まらないことがあることに注意してください。
-#
-#入力例 3
-#1000000000 1000000000 100
-#
-#出力例 3
-#0
-#
-#入力例 4
-#1234 56789 314159265
-#
-#出力例 4
-#254309
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def calc_price(a, b, n):
+    return a * n + b * len(str(n))
+
+a, b, x = map(int, input().split())
+
+=======
+Suggestion 2
+
+def get_digit(n):
+    digit = 0
+    while n > 0:
+        n = n // 10
+        digit += 1
+    return digit
+
+=======
+Suggestion 3
+
+def main():
+    # A, B, X = map(int, input().split())
+    # N = (X - B) // A
+    # print(N if N <= 10**9 else 10**9)
+
+    # 二分探索で解く
+    A, B, X = map(int, input().split())
+    l = 0
+    r = 10**9 + 1
+    while r - l > 1:
+        m = (l + r) // 2
+        if A * m + B * len(str(m)) <= X:
+            l = m
+        else:
+            r = m
+    print(l)
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    A, B, X = map(int, input().split())
+
+    # compute
+    N = 0
+    for i in range(1, 10):
+        if X >= A*i + B*(len(str(i))):
+            N = i
+        else:
+            break
+
+    # output
+    print(N)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, x = map(int, input().split())
+    l = 0
+    r = 1000000001
+    while(r - l > 1):
+        m = (l + r) // 2
+        if(a * m + b * len(str(m)) > x):
+            r = m
+        else:
+            l = m
+    print(l)
+
+=======
+Suggestion 6
+
+def main():
+    A, B, X = map(int, input().split())
+    def f(N):
+        return A * N + B * len(str(N))
+    l = 0
+    r = 10 ** 9 + 1
+    while r - l > 1:
+        m = (l + r) // 2
+        if f(m) <= X:
+            l = m
+        else:
+            r = m
+    print(l)
+
+=======
+Suggestion 7
+
+def func(a,b,x):
+    if a+b > x:
+        return 0
+    if a*10+b*10 <= x:
+        return 10**9
+    if a*9+b*9 <= x:
+        return 10**8
+    if a*8+b*8 <= x:
+        return 10**7
+    if a*7+b*7 <= x:
+        return 10**6
+    if a*6+b*6 <= x:
+        return 10**5
+    if a*5+b*5 <= x:
+        return 10**4
+    if a*4+b*4 <= x:
+        return 10**3
+    if a*3+b*3 <= x:
+        return 10**2
+    if a*2+b*2 <= x:
+        return 10**1
+    if a+b <= x:
+        return 10**0
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    a,b,x = map(int,input().split())
+    max = 0
+    for i in range(1,10):
+        if x >= a * i + b * len(str(i)):
+            max = i
+    print(max)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,x = map(int,input().split())
+    if a*10 + b*1 > x:
+        print(0)
+        return
+    # 二分探索
+    # 1以上10^9以下の整数
+    ok = 10**9
+    ng = 0
+    while abs(ok-ng) > 1:
+        mid = (ok+ng)//2
+        if a*mid + b*len(str(mid)) <= x:
+            ng = mid
+        else:
+            ok = mid
+    print(ng)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,x = map(int,input().split())
+    if a * 10 + b * 1 > x:
+        print(0)
+        exit()
+    elif a * 10 ** 9 + b * 10 > x:
+        print(10 ** 9)
+        exit()
+    else:
+        for i in range(10,0,-1):
+            if a * i * 10 ** (i - 1) + b * i <= x:
+                print(i * 10 ** (i - 1))
+                exit()

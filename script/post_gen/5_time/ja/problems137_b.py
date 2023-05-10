@@ -1,43 +1,77 @@
-#問題文
-#数直線上に 2000001 個の石が置かれています。これらの石の座標は -1000000, -999999, -999998, ..., 999999, 1000000 です。
-#これらの石のうち、ある連続する K 個の石が黒で塗られており、それ以外の石は白で塗られています。
-#また、座標 X にある石は黒で塗られていることが分かっています。
-#黒で塗られている石が置かれている可能性のある座標をすべて、小さい順に出力してください。
-#
-#制約
-#1 ≦ K ≦ 100
-#0 ≦ X ≦ 100
-#入力中の値はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K X
-#
-#出力
-#黒で塗られている石が置かれている可能性のある座標をすべて、空白で区切って小さい順に出力せよ。
-#
-#入力例 1
-#3 7
-#
-#出力例 1
-#5 6 7 8 9
-#黒で塗られた石の数が 3 個であることと、座標 7 の石が黒で塗られていることが分かっています。このとき、次の 3 通りの可能性が考えられます。
-#黒で塗られた 3 個の石は座標 5,6,7 に置かれている。
-#黒で塗られた 3 個の石は座標 6,7,8 に置かれている。
-#黒で塗られた 3 個の石は座標 7,8,9 に置かれている。
-#よって、黒で塗られている石が置かれている可能性のある座標は 5,6,7,8,9 の 5 つです。
-#
-#入力例 2
-#4 0
-#
-#出力例 2
-#-3 -2 -1 0 1 2 3
-#負の座標に黒で塗られている石が置かれている可能性もあります。
-#
-#入力例 3
-#1 100
-#
-#出力例 3
-#100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, x = map(int, input().split())
+    print(*[i for i in range(x - k + 1, x + k)])
+
+=======
+Suggestion 2
+
+def main():
+    k, x = map(int, input().split())
+    result = []
+    for i in range(x-k+1, x+k):
+        result.append(i)
+    print(*result)
+
+=======
+Suggestion 3
+
+def main():
+    k, x = map(int, input().split())
+    print(*range(x-k+1, x+k))
+
+=======
+Suggestion 4
+
+def main():
+    k,x = map(int,input().split())
+    s = x - k + 1
+    e = x + k - 1
+    for i in range(s,e+1):
+        print(i,end=" ")
+    print()
+main()
+
+=======
+Suggestion 5
+
+def main():
+    K, X = map(int, input().split())
+    # K, X = 3, 7
+    # K, X = 4, 0
+    # K, X = 1, 100
+
+    start = X - K + 1
+    end = X + K
+    for i in range(start, end):
+        print(i, end=' ')
+    print(end)
+
+=======
+Suggestion 6
+
+def main():
+    K, X = map(int, input().split())
+    print(' '.join([str(i) for i in range(X-K+1, X+K)]))
+
+=======
+Suggestion 7
+
+def main():
+    k,x = map(int,input().split())
+    min = x - k + 1
+    max = x + k - 1
+    for i in range(min,max+1):
+        print(i,end=" ")
+
+=======
+Suggestion 8
+
+def main():
+    k, x = map(int, input().split())
+    for i in range(x-k+1, x+k):
+        print(i, end=' ')

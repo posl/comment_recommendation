@@ -1,67 +1,155 @@
-#問題文
-#N 個のボールが左右一列に並んでいます。初め、左から i  (1 ≦ i ≦ N) 番目のボールには整数 i が書かれています。  
-#高橋君は Q 回の操作を行いました。 i  (1 ≦ i ≦ Q) 回目に行われた操作は次のようなものです。
-#整数 x_i が書かれているボールをその右隣のボールと入れ替える。ただし、整数 x_i が書かれているボールが元々右端にあった場合、代わりに左隣のボールと入れ替える。
-#操作後において左から i  (1 ≦ i ≦ N) 番目のボールに書かれている整数を a_i とします。 a_1,...,a_N を求めてください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#出力
-#a_1,...,a_N を空白区切りで出力せよ。
-#
-#入力例 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#出力例 1
-#1 2 3 5 4
-#操作は以下のように行われます。  
-#1 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 2,1,3,4,5 となる。
-#2 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#3 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,4,3,5 となる。
-#4 と書かれたボールを右隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,4,5 となる。
-#5 と書かれたボールは右端にあるので左隣のボールと入れ替える。ボールに書かれた整数は左から 1,2,3,5,4 となる。
-#
-#入力例 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#出力例 2
-#1 2 3 4 5 7 6
-#
-#入力例 3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#出力例 3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    X = [int(input()) for _ in range(Q)]
+    Y = list(range(1,N+1))
+
+    for x in X:
+        idx = Y.index(x)
+        Y[idx], Y[idx+1] = Y[idx+1], Y[idx]
+
+    print(*Y)
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    balls = [i for i in range(1, N+1)]
+    for _ in range(Q):
+        x = int(input())
+        balls[x-1], balls[x] = balls[x], balls[x-1]
+    print(*balls)
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(range(1, N + 1))
+    for _ in range(Q):
+        x = int(input()) - 1
+        A[x], A[x + 1] = A[x + 1], A[x]
+    print(*A)
+
+=======
+Suggestion 4
+
+def main():
+    n,q = map(int,input().split())
+    x = [i for i in range(n)]
+    for i in range(q):
+        a = int(input())
+        x[a-1],x[a] = x[a],x[a-1]
+    for i in range(n):
+        print(x[i]+1,end=" ")
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    x = [int(input()) for _ in range(q)]
+    a = [i for i in range(1, n+1)]
+    for i in range(q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(*a)
+
+=======
+Suggestion 6
+
+def main():
+    N,Q = map(int,input().split())
+    x = [int(input()) for _ in range(Q)]
+    L = list(range(1,N+1))
+    for i in range(Q):
+        L[x[i]-1],L[x[i]] = L[x[i]],L[x[i]-1]
+    print(*L)
+
+=======
+Suggestion 7
+
+def swap(a, b):
+    a = a ^ b
+    b = a ^ b
+    a = a ^ b
+    return a, b
+
+N, Q = map(int, input().split())
+balls = [i for i in range(1, N + 1)]
+for _ in range(Q):
+    x = int(input())
+    if balls[x - 1] == x:
+        continue
+    if x == 1 or balls[x - 2] != x:
+        balls[x - 1], balls[x] = swap(balls[x - 1], balls[x])
+    else:
+        balls[x - 2], balls[x - 1] = swap(balls[x - 2], balls[x - 1])
+print(*balls)
+
+=======
+Suggestion 8
+
+def main():
+    n, q = map(int, input().split())
+    x = [int(input()) for i in range(q)]
+    a = [i for i in range(1, n+1)]
+    for i in range(q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 9
+
+def main():
+    # 標準入力から N, Q を取得する
+    N, Q = map(int, input().split())
+    # 標準入力から x を取得する
+    x = [int(input()) for _ in range(Q)]
+
+    # 1 から N までの数値を配列に格納する
+    a = list(range(1, N + 1))
+
+    # x の値が a の中で何番目にあるかを取得する
+    for i in range(Q):
+        index = a.index(x[i])
+        # x の値が a の最後の要素だった場合
+        if index == N - 1:
+            # a の最後の要素と a の最後から 2 番目の要素を入れ替える
+            a[index], a[index - 1] = a[index - 1], a[index]
+        # x の値が a の最後の要素以外だった場合
+        else:
+            # a の x の値がある場所と a の x の値の次の要素を入れ替える
+            a[index], a[index + 1] = a[index + 1], a[index]
+
+    # 結果を出力する
+    print(*a)
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    N, Q = map(int, input().split())
+    x = []
+    for _ in range(Q):
+        x.append(int(input()))
+
+    # compute
+    a = list(range(1, N+1))
+    for i in range(Q):
+        if i == 0:
+            a[0], a[1] = a[1], a[0]
+        else:
+            if a.index(x[i]) == 0:
+                a[0], a[1] = a[1], a[0]
+            else:
+                a[a.index(x[i])], a[a.index(x[i])-1] = a[a.index(x[i])-1], a[a.index(x[i])]
+
+    # output
+    print(*a)

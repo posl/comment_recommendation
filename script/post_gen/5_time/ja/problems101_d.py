@@ -1,34 +1,135 @@
-#問題文
-#整数 n に対して，n を十進法で表したときの各桁の和を S(n) で表すことにします．
-#たとえば，S(123) = 1 + 2 + 3 = 6 です．
-#正の整数 n であって，m > n であるような任意の正の整数 m に対して (n/(S(n))) ≦ (m/(S(m))) が成り立つようなものを，
-#すぬけ数 と呼ぶことにします．
-#整数 K が与えられたとき，すぬけ数を小さいほうから K 個列挙してください．
-#
-#制約
-#1 ≦ K
-#K 番目のすぬけ数は 10^{15} 以下
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#K
-#
-#出力
-#K 行出力せよ．i 行目には，i 番目に小さいすぬけ数を出力せよ．
-#
-#入力例 1
-#10
-#
-#出力例 1
-#1
-#2
-#3
-#4
-#5
-#6
-#7
-#8
-#9
-#19
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def S(n):
+    return sum([int(i) for i in str(n)])
+
+K = int(input())
+
+=======
+Suggestion 2
+
+def S(n):
+    return sum(map(int, list(str(n))))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    i = 1
+    while k > 0:
+        if i % sum(map(int, str(i))) == 0:
+            print(i)
+            k -= 1
+        i += 1
+
+main()
+
+=======
+Suggestion 4
+
+def S(n):
+    sum = 0
+    for i in str(n):
+        sum += int(i)
+    return sum
+
+=======
+Suggestion 5
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+K = int(input())
+n = 1
+ans = []
+while True:
+    if S(n) * (n // S(n)) <= 10 ** 15:
+        ans.append(S(n) * (n // S(n)))
+    else:
+        break
+    n += 1
+print(*sorted(ans)[:K], sep="\n")
+
+=======
+Suggestion 6
+
+def s(n):
+    return sum([int(i) for i in str(n)])
+
+k = int(input())
+n = 1
+while k > 0:
+    if n % s(n) == 0:
+        print(n)
+        k -= 1
+    n += 1
+
+=======
+Suggestion 7
+
+def s(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n = n // 10
+    return s
+
+K = int(input())
+n = 1
+while K > 0:
+    if n % s(n) == 0:
+        print(n)
+        K -= 1
+    n += 1
+
+=======
+Suggestion 8
+
+def S(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+K = int(input())
+
+ans = []
+n = 1
+while len(ans) < K:
+    if n // S(n) > 1:
+        ans.append(n)
+    n += 1
+
+for a in ans:
+    print(a)
+
+=======
+Suggestion 9
+
+def snuke_number(k):
+    i = 1
+    while True:
+        if i % sum(map(int, str(i))) == 0:
+            k -= 1
+            if k == 0:
+                return i
+        i += 1
+
+=======
+Suggestion 10
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum

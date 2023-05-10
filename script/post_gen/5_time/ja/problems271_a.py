@@ -1,47 +1,48 @@
-#問題文
-#0123456789 に加えて 10,11,12,13,14,15 に対応する数字として ABCDEF を使う 16 進表記では、0 以上 255 以下の整数は 1 桁または 2 桁になります。
-#例えば、0 や 12 は 16 進表記では 0 や C と 1 桁になり、99 や 255 は 16 進表記では 63 や FF と 2 桁になります。  
-#0 以上 255 以下の整数 N を、必要に応じて先頭に 0 を加えることでちょうど 2 桁の 16 進表記に変換してください。
-#
-#注記
-#英大文字と英小文字は区別されます。特に、16 進表記の数字として ABCDEF の代わりに abcdef を使うことは出来ません。
-#
-#制約
-#0 ≦ N ≦ 255
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#99
-#
-#出力例 1
-#63
-#99 は 16 進表記で 63 です。
-#
-#入力例 2
-#12
-#
-#出力例 2
-#0C
-#12 は 16 進表記で C です。
-#要求されているのはちょうど 2 桁の 16 進表記に変換することなので、C の先頭に 0 を加えた 0C が答えです。
-#
-#入力例 3
-#0
-#
-#出力例 3
-#00
-#
-#入力例 4
-#255
-#
-#出力例 4
-#FF
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print("{0:02X}".format(n))
+
+=======
+Suggestion 2
+
+def main():
+    # input
+    N = int(input())
+    # compute
+    # output
+    print(format(N, '02x'))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print('{:02X}'.format(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(format(n, '02X'))
+
+=======
+Suggestion 5
+
+def main():
+    print('{:02X}'.format(int(input())))
+
+=======
+Suggestion 6
+
+def main():
+    a = input()
+    if int(a) < 10:
+        print("0"+a)
+    else:
+        print(a)

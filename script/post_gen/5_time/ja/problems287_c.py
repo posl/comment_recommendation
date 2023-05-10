@@ -1,62 +1,219 @@
-#問題文
-#N 頂点 M 辺の単純無向グラフが与えられます。頂点には 1, 2, ..., N の番号が、辺には 1, 2, ..., M の番号が付けられています。
-#辺 i  (i = 1, 2, ..., M) は頂点 u_i, v_i を結んでいます。
-#このグラフがパスグラフであるか判定してください。
-#単純無向グラフとは
-#単純無向グラフとは、自己ループや多重辺を含まず、辺に向きの無いグラフのことをいいます。
-#パスグラフとは
-#頂点に 1, 2, ..., N の番号が付けられたN 頂点のグラフがパスグラフであるとは、(1, 2, ..., N) を並べ変えて得られる数列 (v_1, v_2, ..., v_N) であって、以下の条件を満たすものが存在することをいいます。
-#全ての i = 1, 2, ..., N-1 に対して、頂点 v_i, v_{i+1} を結ぶ辺が存在する
-#整数 i, j が 1 ≦ i, j ≦ N, |i - j| ≧ 2 を満たすならば、頂点 v_i, v_j を結ぶ辺は存在しない
-#
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ u_i, v_i ≦ N  (i = 1, 2, ..., M)
-#入力される値は全て整数
-#入力で与えられるグラフは単純
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#出力
-#与えられたグラフがパスグラフなら Yes、そうでないなら No と出力せよ。
-#
-#入力例 1
-#4 3
-#1 3
-#4 2
-#3 2
-#
-#出力例 1
-#Yes
-#与えらえたグラフは下図のようであり、これはパスグラフです。
-#
-#入力例 2
-#2 0
-#
-#出力例 2
-#No
-#与えらえたグラフは下図のようであり、これはパスグラフではありません。
-#
-#入力例 3
-#5 5
-#1 2
-#2 3
-#3 4
-#4 5
-#5 1
-#
-#出力例 3
-#No
-#与えらえたグラフは下図のようであり、これはパスグラフではありません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        a,b = map(int,input().split())
+        a -= 1
+        b -= 1
+        g[a].append(b)
+        g[b].append(a)
+    for i in range(n):
+        if len(g[i]) > 2:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def dfs(v, p=-1):
+    global is_tree
+    seen[v] = True
+    for nv in G[v]:
+        if nv == p:
+            continue
+        if seen[nv]:
+            is_tree = False
+        else:
+            dfs(nv, v)
+
+N, M = map(int, input().split())
+G = [[] for _ in range(N)]
+
+for _ in range(M):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    G[u].append(v)
+    G[v].append(u)
+
+seen = [False] * N
+is_tree = True
+dfs(0)
+for v in range(N):
+    if not seen[v]:
+        is_tree = False
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(M)]
+    edge = [0] * (N + 1)
+    for i in range(M):
+        u, v = A[i]
+        edge[u] += 1
+        edge[v] += 1
+    print("Yes" if all([edge[i] % 2 == 0 for i in range(1, N + 1)]) else "No")
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        u, v = map(int, input().split())
+        g[u - 1].append(v - 1)
+        g[v - 1].append(u - 1)
+
+    for i in range(n):
+        if len(g[i]) == 2:
+            continue
+        else:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 5
+
+def path():
+    n,m = map(int, input().split())
+    if m == 0:
+        print("No")
+        return
+    #グラフ作成
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        u,v = map(int, input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+    #パス判定
+    for i in range(n):
+        if len(graph[i]) > 2:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        u, v = map(int, input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+
+    for i in range(n):
+        if len(graph[i]) != 2:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 7
+
+def dfs(v):
+    visited[v] = True
+    for next_v in graph[v]:
+        if visited[next_v]:
+            continue
+        dfs(next_v)
+    return
+
+N, M = map(int, input().split())
+graph = [[] for _ in range(N+1)]
+for _ in range(M):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+visited = [False] * (N+1)
+dfs(1)
+print("Yes" if all(visited) else "No")
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    path = [0] * n
+    for i in range(m):
+        u, v = map(int, input().split())
+        path[u-1] += 1
+        path[v-1] += 1
+    print("Yes" if max(path) <= 2 else "No")
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    if m == 0:
+        print("No")
+        exit()
+    graph = [[] for _ in range(n + 1)]
+    for _ in range(m):
+        u, v = map(int, input().split())
+        graph[u].append(v)
+        graph[v].append(u)
+    
+    for i in range(1, n + 1):
+        if len(graph[i]) == 2:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 10
+
+def solve():
+    N,M = map(int,input().split())
+    edges = [list(map(int,input().split())) for _ in range(M)]
+    edges.sort(key=lambda x:x[0])
+    if len(edges) == 0:
+        print("No")
+        return
+    if len(edges) == 1:
+        print("Yes")
+        return
+    if len(edges) == 2:
+        if edges[0][1] == edges[1][0]:
+            print("Yes")
+            return
+        else:
+            print("No")
+            return
+    if len(edges) == 3:
+        if edges[0][1] == edges[1][0] and edges[1][1] == edges[2][0]:
+            print("Yes")
+            return
+        else:
+            print("No")
+            return
+    if len(edges) == 4:
+        if edges[0][1] == edges[1][0] and edges[1][1] == edges[2][0] and edges[2][1] == edges[3][0]:
+            print("Yes")
+            return
+        else:
+            print("No")
+            return
+    if len(edges) == 5:
+        if edges[0][1] == edges[1][0] and edges[1][1] == edges[2][0] and edges[2][1] == edges[3][0] and edges[3][1] == edges[4][0]:
+            print("Yes")
+            return
+        else:
+            print("No")
+            return
+    print("No")
+    return

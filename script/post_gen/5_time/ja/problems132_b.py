@@ -1,34 +1,124 @@
-#問題文
-#{1, 2, ..., n} の順列 p = {p_1, p_2, ..., p_n} があります。
-#以下の条件を満たすような p_i (1 < i < n) がいくつあるかを出力してください。
-#p_{i - 1}, p_i, p_{i + 1} の 3 つの数の中で、p_i が 2 番目に小さい。
-#
-#制約
-#入力は全て整数である。
-#3 ≦ n ≦ 20
-#p は {1, 2, ..., n} の順列である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#n
-#p_1 p_2 ... p_n
-#
-#出力
-#条件を満たす p_i の個数を出力せよ。
-#
-#入力例 1
-#5
-#1 3 5 4 2
-#
-#出力例 1
-#2
-#p_1 = 1, p_2 = 3, p_3 = 5 の中で、p_2 = 3 は 2 番目に小さい数です。また、p_3 = 5, p_4 = 4, p_5 = 2 の中で、p_4 = 4 は 2 番目に小さい数です。条件を満たす要素はこの 2 つです。
-#
-#入力例 2
-#9
-#9 6 3 2 5 8 7 4 1
-#
-#出力例 2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n-1):
+        if (p[i-1] < p[i] and p[i] < p[i+1]) or (p[i+1] < p[i] and p[i] < p[i-1]):
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p_list = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n-1):
+        if p_list[i-1] < p_list[i] < p_list[i+1] or p_list[i-1] > p_list[i] > p_list[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n-1):
+        if (p[i-1] < p[i] < p[i+1]) or (p[i+1] < p[i] < p[i-1]):
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i+1] < p[i] < p[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+
+    count = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i-1] > p[i] > p[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-2):
+        if p[i] < p[i+1] and p[i+1] < p[i+2]:
+            ans += 1
+        elif p[i+2] < p[i+1] and p[i+1] < p[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i+1] < p[i] < p[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i - 1] > p[i] > p[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i+1] < p[i] < p[i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n-1):
+        if (p[i-1] < p[i] < p[i+1]) or (p[i-1] > p[i] > p[i+1]):
+            cnt += 1
+    print(cnt)

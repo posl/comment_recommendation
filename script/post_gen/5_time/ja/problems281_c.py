@@ -1,54 +1,169 @@
-#問題文
-#N 曲からなるプレイリストがあり、曲には 1, ..., N の番号が付けられています。
-#曲 i の長さは A_i 秒です。
-#プレイリストを再生すると、曲 1、曲 2、...、曲 N の順に流れます。曲 N が流れ終わると、再び曲 1 から順に流れていきます。ある曲の途中で次の曲が流れることはなく、曲が流れ終わると、その瞬間に次の曲が流れ始めます。
-#プレイリストを再生してから T 秒後に流れているのはどの曲ですか？また、その曲が流れ始めてから何秒の時点ですか？
-#ただし、T 秒後ちょうどに曲が切り替わるような入力は与えられません。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ T ≦ 10^{18}
-#1 ≦ A_i ≦ 10^9
-#プレイリストを再生して T 秒後ちょうどに曲が切り替わることはない
-#入力される値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N T
-#A_1 ... A_N
-#
-#出力
-#プレイリストを再生してから T 秒後に流れている曲の番号と、その曲が流れ始めてから何秒たったかを表す整数を空白区切りで出力せよ。
-#
-#入力例 1
-#3 600
-#180 240 120
-#
-#出力例 1
-#1 60
-#プレイリストを再生してからの様子は次のようになります。
-#0 秒後から 180 秒後まで曲 1 が流れる。
-#180 秒後から 420 秒後まで曲 2 が流れる。
-#420 秒後から 540 秒後まで曲 3 が流れる。
-#540 秒後から 720 秒後まで曲 1 が流れる。
-#720 秒後から 960 秒後まで曲 2 が流れる。
-#.
-#.
-#.
-#600 秒後の時点で流れているのは曲 1 であり、流れ始めて 60 秒の時点です。
-#
-#入力例 2
-#3 281
-#94 94 94
-#
-#出力例 2
-#3 93
-#
-#入力例 3
-#10 5678912340
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#出力例 3
-#6 678912340
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    time = 0
+    for i in range(n):
+        if t < time + a[i]:
+            print(i+1,t-time)
+            break
+        time += a[i]
+    else:
+        print(n,t-time)
+
+=======
+Suggestion 2
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = a * 2
+    sum = 0
+    for i in range(len(a)):
+        sum += a[i]
+        if sum >= t:
+            print(i + 1, t - (sum - a[i]))
+            break
+
+=======
+Suggestion 3
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    time = 0
+    for i in a:
+        time += i
+    time = t % time
+    if time == 0:
+        time = a[n - 1]
+    else:
+        for i in range(n):
+            if time > a[i]:
+                time -= a[i]
+            else:
+                print(i + 1, time)
+                break
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T -= 1
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    cnt = T // sum
+    T -= cnt * sum
+    for i in range(N):
+        T -= A[i]
+        if T < 0:
+            print(i+1, -T)
+            return
+
+=======
+Suggestion 5
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    time = 0
+    for i in range(n):
+        time += a[i]
+        if time > t:
+            print(i+1, t - time + a[i])
+            break
+    else:
+        print(n, t - time + a[n-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    total = sum(A)
+    x = T % total
+    for i in range(N):
+        if x <= A[i]:
+            print(i + 1, x)
+            break
+        x -= A[i]
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10**9+7
+    N,T = map(int,readline().split())
+    A = list(map(int,readline().split()))
+    sumA = sum(A)
+    cnt = T//sumA
+    T -= cnt*sumA
+    cumsum = [0]*(N+1)
+    for i in range(N):
+        cumsum[i+1] = cumsum[i]+A[i]
+    for i in range(N):
+        if T > cumsum[i] and T <= cumsum[i+1]:
+            print(i+1,T-cumsum[i])
+            break
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans1 = T // sum(A)
+    ans2 = T % sum(A)
+    ans3 = 0
+    for i in range(N):
+        ans2 -= A[i]
+        if ans2 >= 0:
+            ans3 += A[i]
+        else:
+            break
+    print(ans1 * N + i + 1, ans3 + A[i] - ans2)
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N, T = map(int, input().split())
+    As = list(map(int, input().split()))
+
+    # compute
+    time = 0
+    for i in range(N):
+        time += As[i]
+        if time >= T:
+            ans1 = i+1
+            ans2 = T - (time - As[i])
+            break
+
+    # output
+    print(ans1, ans2)
+
+=======
+Suggestion 10
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    a_sum = sum(a)
+    t = t % a_sum
+    for i in range(n):
+        if t < a[i]:
+            print(i+1, t)
+            break
+        t -= a[i]

@@ -1,61 +1,144 @@
-#問題文
-#1, ..., N の順列 P_1, ..., P_N が与えられます。
-#次の条件を満たす整数 i(1 ≦ i ≦ N) の個数を数えてください。  
-#任意の整数 j(1 ≦ j ≦ i) に対して、 P_i ≦ P_j
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#P_1, ..., P_N は 1, ..., N の順列である。  
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#N
-#P_1 ... P_N
-#
-#出力
-#条件を満たす整数 i の個数を出力せよ。
-#
-#入力例 1
-#5
-#4 2 5 1 3
-#
-#出力例 1
-#3
-#i=1,2,4 が条件を満たします。
-#i=3 は条件を満たしません。
-#例えば、 j=1 とすると、 P_i > P_j となります。
-#同様に、 i=5 も条件を満たしません。
-#したがって、条件を満たす整数 i の個数は 3 となります。  
-#
-#入力例 2
-#4
-#4 3 2 1
-#
-#出力例 2
-#4
-#すべての整数 i(1 ≦ i ≦ N) が条件を満たします。  
-#
-#入力例 3
-#6
-#1 2 3 4 5 6
-#
-#出力例 3
-#1
-#i=1 のみが条件を満たします。  
-#
-#入力例 4
-#8
-#5 7 4 2 6 8 1 3
-#
-#出力例 4
-#4
-#
-#入力例 5
-#1
-#1
-#
-#出力例 5
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min = N + 1
+    count = 0
+    for i in range(N):
+        if min > P[i]:
+            count += 1
+            min = P[i]
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    min = n+1
+    count = 0
+    for i in range(n):
+        if min > p[i]:
+            min = p[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min = 0
+    cnt = 0
+    for i in range(N):
+        if P[i] >= min:
+            cnt += 1
+            min = P[i]
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    count = 0
+    min = N + 1
+    for i in P:
+        if min > i:
+            min = i
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    #print(N)
+    #print(P)
+    count = 0
+    min = N + 1
+    for i in range(N):
+        if min >= P[i]:
+            min = P[i]
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    p = [int(x) for x in input().split()]
+    min = p[0]
+    count = 1
+    for i in range(1, int(n)):
+        if p[i] <= min:
+            count += 1
+            min = p[i]
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min = p[0]
+    for i in range(0, n):
+        if p[i] <= min:
+            count += 1
+            min = p[i]
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = [int(i) for i in input().split()]
+    min = N
+    count = 0
+    for i in range(N):
+        if min > P[i]:
+            min = P[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p_min = n+1
+    count = 0
+    for i in range(n):
+        if p[i] <= p_min:
+            count += 1
+            p_min = p[i]
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    min = 10**6
+    for i in range(N):
+        if P[i] < min:
+            ans += 1
+            min = P[i]
+    print(ans)

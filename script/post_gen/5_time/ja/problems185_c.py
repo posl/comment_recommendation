@@ -1,37 +1,95 @@
-#問題文
-#長さ L の鉄の棒が東西方向に横たわっています。この棒を 11 箇所で切断して、12 本に分割します。このとき分割後の各棒の長さが全て正整数になるように分割しなければなりません。
-#分割のしかたが何通りあるかを求めてください。二つの分割の方法は、一方で分割されているが他方で分割されていない位置が存在する場合に、そしてその場合に限って区別されます。
-#なお、この問題の制約下で答えは 2^{63} 未満であることが証明できます。  
-#
-#制約
-#12 ≦ L ≦ 200
-#L は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#L
-#
-#出力
-#分割のしかたが何通りあるかを表す整数を出力せよ。  
-#
-#入力例 1
-#12
-#
-#出力例 1
-#1
-#全て長さ 1 の棒になるように切断する 1 通りです。  
-#
-#入力例 2
-#13
-#
-#出力例 2
-#12
-#ちょうど一つだけ長さ 2 の棒ができますが、切断後の 12 本のうち西から何番目の棒が長さ 2 になるように切断するかで 12 通りの切断方法があります。  
-#
-#入力例 3
-#17
-#
-#出力例 3
-#4368
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    l = int(input())
+    print(f(l))
+
+=======
+Suggestion 2
+
+def main():
+    l = int(input())
+    print(calc(l))
+
+=======
+Suggestion 3
+
+def calc(n):
+    if n < 12:
+        return 0
+    elif n == 12:
+        return 1
+    else:
+        return calc(n-1) + calc(n-2) + calc(n-3) + calc(n-4) + calc(n-5) + calc(n-6) + calc(n-7) + calc(n-8) + calc(n-9) + calc(n-10) + calc(n-11) + calc(n-12)
+
+n = int(input())
+print(calc(n))
+
+=======
+Suggestion 4
+
+def main():
+    l = int(input())
+    ans = 0
+    for i in range(1, l-11):
+        for j in range(i+1, l-i-10):
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    L = int(input())
+    print((L - 1) * (L - 2) * (L - 3) * (L - 4) * (L - 5) * (L - 6) * (L - 7) * (L - 8) * (L - 9) * (L - 10) * (L - 11) // (1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 * 11))
+
+=======
+Suggestion 6
+
+def main():
+    L = int(input())
+    L = L-12
+    if L < 0:
+        print(0)
+        return
+    ans = 1
+    for i in range(1, 12+L):
+        ans *= i
+    for i in range(1, L+1):
+        ans //= i
+    for i in range(1, 12):
+        ans //= i
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    dp = [0]*(n+1)
+    dp[0] = 1
+    for i in range(1,n+1):
+        dp[i] = sum(dp[:i-2])+1
+    print(dp[n])
+
+=======
+Suggestion 8
+
+def main():
+    L = int(input())
+    print(solve(L))
+
+=======
+Suggestion 9
+
+def main():
+    l = int(input())
+    ans = 0
+    for i in range(1, l - 10):
+        ans += comb(l - i - 11, i)
+    print(ans)

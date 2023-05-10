@@ -1,40 +1,158 @@
-#問題文
-#いろはちゃんはペットを育てるゲームにはまっています。
-#いろはちゃんはペットとして高橋君を飼っており、はじめ高橋君の 強さ は X 、経験値 は 0 です。
-#これらの値は次の 2 種類の特訓によって増加します。
-#カコモンジムに通う：強さが A 倍になり、経験値は 1 増える。
-#AtCoderジムに通う：強さが B 増え、経験値は 1 増える。
-#高橋君は強さが Y 以上になると進化しますが、進化しない方がかわいいといろはちゃんは思っています。
-#そこで、強さが Y 以上にならないように高橋君に特訓を課すとき、経験値の最大値を求めてください。
-#
-#制約
-#1 ≦ X < Y ≦ 10^{18}
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X Y A B
-#
-#出力
-#与えられた条件の下での経験値の最大値を出力せよ。
-#
-#入力例 1
-#4 20 2 10
-#
-#出力例 1
-#2
-#最初、高橋君の強さは 4 です。次のような特訓方法によって、経験値を 2 にすることができます。
-#まず カコモンジムに通うことで、高橋君の強さは 8、経験値は 1 になります。
-#次に、AtCoderジムに通うことで、高橋君の強さは 18、経験値は 2 になります。
-#どのような特訓方法によっても、経験値を 2 より大きくすることはできません。
-#
-#入力例 2
-#1 1000000000000000000 10 1000000000
-#
-#出力例 2
-#1000000007
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while X < Y:
+        if X * A < X + B:
+            X *= A
+            exp += 1
+        else:
+            exp += (Y - X - 1) // B
+            break
+    print(exp)
+
+=======
+Suggestion 2
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+            exp += 1
+        else:
+            exp += (y - x - 1) // b
+            break
+    print(exp)
+
+=======
+Suggestion 3
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+            exp += 1
+        else:
+            x += b
+            exp += 1
+    print(exp - 1)
+
+=======
+Suggestion 4
+
+def main():
+    x, y, a, b = map(int, input().split())
+    cnt = 0
+    while a*x < x+b and a*x < y:
+        x *= a
+        cnt += 1
+    cnt += (y-1-x)//b
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    x, y, a, b = map(int, input().split())
+
+    # compute
+    exp = 0
+    while x*a < x+b and x*a < y:
+        x *= a
+        exp += 1
+    exp += (y-x-1)//b
+
+    # output
+    print(exp)
+
+=======
+Suggestion 6
+
+def solve(x, y, a, b):
+    exp = 0
+    while True:
+        if x*a >= y:
+            break
+        if x*a < x+b:
+            exp += 1
+            x *= a
+        else:
+            exp += (y-x)//b
+            break
+    return exp
+
+=======
+Suggestion 7
+
+def main():
+    x, y, a, b = map(int, input().split())
+    ans = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+        else:
+            x += b
+        ans += 1
+    print(ans - 1)
+
+=======
+Suggestion 8
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+            exp += 1
+        else:
+            if (y - x) % b == 0:
+                exp += (y - x) // b - 1
+                break
+            else:
+                exp += (y - x) // b
+                break
+    print(exp)
+
+=======
+Suggestion 9
+
+def main():
+    X, Y, A, B = map(int, input().split())
+    exp = 0
+    while X < Y:
+        if X*A < X+B:
+            X *= A
+            exp += 1
+        else:
+            X += B
+            exp += 1
+    print(exp-1)
+
+=======
+Suggestion 10
+
+def train(x,y,a,b):
+    exp=0
+    while True:
+        if x*a>=y:
+            break
+        else:
+            exp+=1
+            x*=a
+    exp+=(y-x)//b
+    if (y-x)%b!=0:
+        exp+=1
+    return exp
+
+x,y,a,b=map(int,input().split())
+print(train(x,y,a,b))

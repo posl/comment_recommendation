@@ -1,66 +1,278 @@
-#問題文
-#高橋君は 1, 2, ..., N の番号のついた N マスから成るマス目の上で、コマを使ってゲームを行おうとしています。マス i には整数 C_i が書かれています。また、1, 2 …, N の順列 P_1, P_2, ..., P_N が与えられています。
-#これから高橋君は好きなマスを 1 つ選んでコマを 1 つ置き、1 回以上 K 回以下の好きな回数だけ、次のような方法でコマを移動させます。
-#1 回の移動では、現在コマがマス i (1 ≦ i ≦ N) にあるなら、コマをマス P_i に移動させる。このとき、スコアに C_{P_i} が加算される。
-#高橋君のために、ゲーム終了時のスコアとしてあり得る値の最大値を求めてください。(ゲーム開始時のスコアは 0 です。)
-#
-#制約
-#2 ≦ N ≦ 5000
-#1 ≦ K ≦ 10^9
-#1 ≦ P_i ≦ N
-#P_i ≠ i
-#P_1, P_2, ..., P_N は全て異なる
-#-10^9 ≦ C_i ≦ 10^9
-#入力は全て整数である
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#P_1 P_2 ... P_N
-#C_1 C_2 ... C_N
-#
-#出力
-#ゲーム終了時のスコアとしてあり得る値の最大値を出力せよ。
-#
-#入力例 1
-#5 2
-#2 4 5 1 3
-#3 4 -10 -8 8
-#
-#出力例 1
-#8
-#好きなマスから始めて 2 回以下コマを移動させる方法は以下の通りです。
-#初めマス 1 にコマを置く場合。1 回移動するとマス 2 に動き、スコアが 4 になる。2 回移動するとマス 4 に動き、スコアが 4 + (-8) = -4 になる。
-#初めマス 2 にコマを置く場合。1 回移動するとマス 4 に動き、スコアが -8 になる。2 回移動するとマス 1 に動き、スコアが -8 + 3 = -5 になる。
-#初めマス 3 にコマを置く場合。1 回移動するとマス 5 に動き、スコアが 8 になる。2 回移動するとマス 3 に動き、スコアが 8 + (-10) = -2 になる。
-#初めマス 4 にコマを置く場合。1 回移動するとマス 1 に動き、スコアが 3 になる。2 回移動するとマス 2 に動き、スコアが 3 + 4 = 7 になる。
-#初めマス 5 にコマを置く場合。1 回移動するとマス 3 に動き、スコアが -10 になる。2 回移動するとマス 5 に動き、スコアが -10 + 8 = -2 になる。
-#これらの最大値は 8 です。
-#
-#入力例 2
-#2 3
-#2 1
-#10 -7
-#
-#出力例 2
-#13
-#
-#入力例 3
-#3 3
-#3 1 2
-#-1000 -2000 -3000
-#
-#出力例 3
-#-1000
-#最低 1 回はコマを移動させる必要があります。
-#
-#入力例 4
-#10 58
-#9 1 6 7 8 4 3 2 10 5
-#695279662 988782657 -119067776 382975538 -151885171 -177220596 -169777795 37619092 389386780 980092719
-#
-#出力例 4
-#29507023469
-#答えの絶対値は非常に大きくなる場合があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C
+
+=======
+Suggestion 2
+
+def main():
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    P = [x-1 for x in P]
+    ans = -10**18
+    for i in range(N):
+        score = 0
+        cnt = 0
+        now = i
+        while True:
+            now = P[now]
+            score += C[now]
+            cnt += 1
+            if now == i:
+                break
+            if cnt == K:
+                break
+        if score > 0:
+            m = (K-cnt)//cnt
+            score += score*m
+        ans = max(ans,score)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+
+    ans = -float('inf')
+    for i in range(N):
+        #print(i)
+        tmp = 0
+        t = 0
+        j = i
+        while True:
+            #print(j)
+            tmp += C[j]
+            j = P[j]-1
+            t += 1
+            if j == i:
+                break
+            if t == K:
+                break
+        #print(tmp)
+        if t == K:
+            ans = max(ans,tmp)
+        else:
+            if tmp > 0:
+                if K % t == 0:
+                    ans = max(ans,tmp*(K//t))
+                else:
+                    ans = max(ans,tmp*(K//t)+max(0,tmp))
+            else:
+                ans = max(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = -10**18
+    for i in range(n):
+        x = i
+        s = 0
+        t = 0
+        while True:
+            x = p[x] - 1
+            s += c[x]
+            t += 1
+            if x == i:
+                break
+            if t >= k:
+                break
+        if c[x] > 0:
+            u = (k - t) // t
+            s += s * u
+            t += t * u
+            v = 0
+            while v < k - t:
+                x = p[x] - 1
+                s += c[x]
+                v += 1
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = -10**18
+    for i in range(n):
+        score = 0
+        cnt = 0
+        now = i
+        while True:
+            now = p[now] - 1
+            score += c[now]
+            cnt += 1
+            if now == i:
+                break
+        #print(score, cnt)
+        if score > 0:
+            ans = max(ans, score * (k // cnt))
+            if k % cnt != 0:
+                ans = max(ans, score * (k // cnt - 1) + max(0, score))
+        else:
+            ans = max(ans, score)
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # 1回移動した時の最大値を求める
+    max_score = -10**18
+    for i in range(N):
+        score = 0
+        next = i
+        for j in range(K):
+            next = P[next] - 1
+            score += C[next]
+            max_score = max(max_score, score)
+
+    # 1回移動した時の最大値が正の場合、
+    # K回移動した時の最大値は、
+    # K回移動した時の最大値 = (K // N) * (1回移動した時の最大値) + (K % N)回移動した時の最大値
+    if max_score > 0:
+        # K回移動した時の最大値 = (K // N) * (1回移動した時の最大値) + (K % N)回移動した時の最大値
+        # (K // N) * (1回移動した時の最大値) は、K回移動した時の最大値の候補の一つ
+        # (K % N)回移動した時の最大値は、
+        # 1回移動した時の最大値から、(K % N)回移動した時の最大値を求める
+        # (K % N)回移動した時の最大値は、
+        # 1回移動した時の最大値から、(K % N)回移動した時の最大値を求める
+        # 1回移動した時の最大値は、
+        # 1回移動した時の最大値から、(K % N)回移動した時の最大値を求める
+        # 1回移動した時の最大値は、
+        # 1回移動した時の最大値
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    max = -float('inf')
+    for i in range(N):
+        score = 0
+        next = i
+        for j in range(K):
+            score += C[next]
+            next = P[next] - 1
+            if score > max:
+                max = score
+        if score > max:
+            max = score
+
+    print(max)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = -float('inf')
+    for i in range(n):
+        next = p[i] - 1
+        score = 0
+        cnt = 0
+        while cnt < k:
+            cnt += 1
+            score += c[next]
+            next = p[next] - 1
+            ans = max(ans, score)
+            if next == i:
+                break
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    N, K = map(int, input().split())
+    P = [int(x) for x in input().split()]
+    C = [int(x) for x in input().split()]
+    P = [x - 1 for x in P]
+    P = [P[x] for x in P]
+    C = [C[x] for x in P]
+    #print(P)
+    #print(C)
+    ans = -10**18
+    for i in range(N):
+        now = i
+        score = 0
+        cnt = 0
+        while True:
+            now = P[now]
+            score += C[now]
+            cnt += 1
+            if cnt >= K:
+                break
+            if now == i:
+                break
+        #print(i, now, score, cnt)
+        if cnt < K:
+            if score > 0:
+                max_score = score * (K // cnt - 1)
+                if cnt == 1:
+                    max_score += score
+                else:
+                    max_score += score + max(0, score * (K % cnt - 1))
+            else:
+                max_score = score + max(0, score * (K % cnt - 1))
+            ans = max(ans, max_score)
+        else:
+            ans = max(ans, score)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    ans = -10**18
+    for i in range(N):
+        score = 0
+        j = i
+        cnt = 0
+        while True:
+            score += C[j]
+            j = P[j] - 1
+            cnt += 1
+            if j == i:
+                break
+            if cnt == K:
+                break
+        if score > ans:
+            ans = score
+
+    print(ans)
+
+main()

@@ -1,65 +1,252 @@
-#問題文
-#英小文字、(、) からなる文字列のうち、以下の手順によって空文字列になるものを良い文字列と呼びます:
-#まず、英小文字をすべて削除する。
-#次に、連続する () が存在する限り、それを削除する。
-#例えば、((a)ba) は英小文字をすべて削除すると (()) となり、2 文字目と 3 文字目に連続する () を削除すると () となり、最終的に空文字列にすることができるので良い文字列です。  
-#良い文字列 S が与えられます。
-#S の i 文字目を S_i で表します。
-#各英小文字 a , b , ... , z に対して、その文字が書かれたボールが 1 つあります。
-#また、空の箱があります。
-#高橋君は i = 1,2, ... ,|S| に対してこの順に気を失わない限り操作を行います。
-#S_i が英小文字ならば、その英小文字が書かれたボールを箱に入れる。ただし、そのボールがすでに箱に入っている場合、高橋君は気を失う。
-#S_i が ( ならば、何もしない。  
-#S_i が ) ならば、i 未満の整数 j であって、S の j 番目から i 番目までの文字からなる文字列が良い文字列となる最大の整数 j を取る。（このような整数 j は必ず存在することが証明できる。）j 番目から i 番目までの操作で箱に入れたボールをすべて、箱から取り出す。
-#高橋君が気を失わずに一連の操作を完了させられるか判定してください。
-#
-#制約
-#1 ≦ |S| ≦ 3 × 10^5
-#S は良い文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#
-#出力
-#高橋君が気を失わずに一連の操作を完了させられる場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#((a)ba)
-#
-#出力例 1
-#Yes
-#i = 1 のとき、高橋君は何もしません。
-#i = 2 のとき、高橋君は何もしません。
-#i = 3 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 4 のとき、4 未満の整数 j であって、S の j 番目から 4 番目までの文字からなる文字列が良い文字列となる最大の整数は 2 であるため、高橋君は a の書かれたボールを箱から取り出します。
-#i = 5 のとき、高橋君は b の書かれたボールを箱の中に入れます。
-#i = 6 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 7 のとき、7 未満の整数 j であって、S の j 番目から 7 番目までの文字からなる文字列が良い文字列となる最大の整数は 1 であるため、高橋君は a の書かれたボールと b の書かれたボールを箱から取り出します。
-#したがってこの場合の答えは Yes となります。
-#
-#入力例 2
-#(a(ba))
-#
-#出力例 2
-#No
-#i = 1 のとき、高橋君は何もしません。
-#i = 2 のとき、高橋君は a の書かれたボールを箱の中に入れます。
-#i = 3 のとき、高橋君は何もしません。
-#i = 4 のとき、高橋君は b の書かれたボールを箱の中に入れます。
-#i = 5 のとき、a の書かれたボールはすでに箱に入っているため、高橋君は気を失い、これ以降の操作は行われません。
-#したがってこの場合の答えは No となります。
-#
-#入力例 3
-#(((())))
-#
-#出力例 3
-#Yes
-#
-#入力例 4
-#abca
-#
-#出力例 4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    stack = []
+    for i in range(len(s)):
+        c = s[i]
+        if c == '(':
+            stack.append(c)
+        elif c == ')':
+            if len(stack) == 0:
+                print("No")
+                return
+            else:
+                stack.pop()
+    if len(stack) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = S.replace('()', '')
+    while '()' in S:
+        S = S.replace('()', '')
+
+    if len(S) == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    #print(s)
+    #print(len(s))
+    #print(s[0])
+    #print(s[1])
+    #print(s[2])
+    #print(s[3])
+    #print(s[4])
+    #print(s[5])
+    #print(s[6])
+    #print(s[7])
+    #print(s[8])
+    #print(s[9])
+    #print(s[10])
+    #print(s[11])
+    #print(s[12])
+    #print(s[13])
+    #print(s[14])
+    #print(s[15])
+    #print(s[16])
+    #print(s[17])
+    #print(s[18])
+    #print(s[19])
+    #print(s[20])
+    #print(s[21])
+    #print(s[22])
+    #print(s[23])
+    #print(s[24])
+    #print(s[25])
+    #print(s[26])
+    #print(s[27])
+    #print(s[28])
+    #print(s[29])
+    #print(s[30])
+    #print(s[31])
+    #print(s[32])
+    #print(s[33])
+    #print(s[34])
+    #print(s[35])
+    #print(s[36])
+    #print(s[37])
+    #print(s[38])
+    #print(s[39])
+    #print(s[40])
+    #print(s[41])
+    #print(s[42])
+    #print(s[43])
+    #print(s[44])
+    #print(s[45])
+    #print(s[46])
+    #print(s[47])
+    #print(s[48])
+    #print(s[49])
+    #print(s[50])
+    #print(s[51])
+    #print(s[52])
+    #print(s[53])
+    #print(s[54])
+    #print(s[55])
+    #print(s[56])
+    #print(s[57])
+    #print(s[58])
+    #print(s[59])
+    #print(s[60])
+    #print(s[61])
+    #print(s[62])
+    #print(s[63])
+    #print(s[64])
+    #print(s[65])
+    #print(s[66])
+    #print(s[67])
+    #print(s[68
+
+=======
+Suggestion 4
+
+def solve():
+    pass
+
+=======
+Suggestion 5
+
+def judge(str):
+    while True:
+        str = str.replace('()', '')
+        if str == '':
+            return True
+        elif str == str.replace('()', ''):
+            return False
+
+
+s = input()
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    stack = []
+    for i in range(n):
+        if s[i] == '(':
+            stack.append(i)
+        elif s[i] == ')':
+            if len(stack) == 0:
+                print('No')
+                return
+            stack.pop()
+    if len(stack) > 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if len(S) % 2 == 1:
+        print('No')
+        exit()
+    for i in range(len(S)):
+        if S[i] == '(':
+            continue
+        if S[i] == ')':
+            if S[:i].count('(') == S[:i].count(')'):
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S = S.replace('()', '')
+    while '()' in S:
+        S = S.replace('()', '')
+    if len(S) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def check(s):
+    if len(s) == 0:
+        return True
+    if len(s) == 1:
+        return False
+    if s[0] == ")":
+        return False
+    if s[-1] == "(":
+        return False
+    if s[0] == "(" and s[-1] == ")":
+        return check(s[1:-1])
+    return False
+
+s = input()
+ans = True
+stack = []
+for i in range(len(s)):
+    if s[i] == "(":
+        stack.append("(")
+    elif s[i] == ")":
+        if len(stack) == 0:
+            ans = False
+            break
+        else:
+            stack.pop()
+    else:
+        if len(stack) == 0:
+            ans = False
+            break
+        else:
+            stack.pop()
+
+=======
+Suggestion 10
+
+def isGood(s):
+    if len(s) == 0:
+        return True
+    if s[0] == '(':
+        return False
+    if s[-1] == ')':
+        return False
+    if len(s) == 1:
+        return True
+    if len(s) == 2:
+        if s[0] != s[1]:
+            return True
+        else:
+            return False
+    if s[0] == s[-1]:
+        return False
+    return isGood(s[1:-1])
+
+S = input()
+T = ''
+for i in range(len(S)):
+    if S[i] == '(':
+        T += '('
+    elif S[i] == ')':
+        T = T[:-1]
+    else:
+        T += S[i]
+    if not isGood(T):
+        print('No')
+        exit()

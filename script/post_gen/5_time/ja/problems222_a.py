@@ -1,35 +1,39 @@
-#問題文
-#0 以上 9999 以下の整数 N が与えられます。
-#N の先頭に必要なだけ 0 をつけ、4 桁の文字列にしたものを出力してください。
-#
-#制約
-#0 ≦ N ≦ 9999
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#321
-#
-#出力例 1
-#0321
-#321 は 3 桁なので、先頭に 1 つ 0 をつけると 4 桁になります。
-#
-#入力例 2
-#7777
-#
-#出力例 2
-#7777
-#
-#入力例 3
-#1
-#
-#出力例 3
-#0001
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    print(n.zfill(4))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    n = str(n)
+    while len(n) < 4:
+        n = "0" + n
+    print(n)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print("%04d" % n)
+
+=======
+Suggestion 4
+
+def main():
+    N = input()
+    print(N.zfill(4))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print("{:04}".format(N))

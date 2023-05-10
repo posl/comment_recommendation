@@ -1,51 +1,176 @@
-#問題文
-#T 個のテストケースについて、以下の問題を解いてください。
-#非負整数 a,s が与えられます。以下の条件を両方とも満たす非負整数の組 (x,y) は存在しますか？
-#x AND y=a
-#x+y=s
-#
-#AND とは
-#非負整数 n, m の bit ごとの論理積 n AND m は、以下のように定義されます。
-# n AND m を二進表記した際の 2^k  (k ≧ 0) の位の数は、n, m を二進表記した際の 2^k の位の数のうち両方が 1 であれば 1、そうでなければ 0 である。
-#例えば、4 AND 6 = 4 となります（二進表記すると: 100 AND 110 = 100）。
-#
-#
-#制約
-#1 ≦ T ≦ 10^5
-#0 ≦ a,s < 2^{60}
-#入力はすべて整数
-#
-#入力
-#入力は標準入力から与えられる。入力の 1 行目は以下の形式である。
-#T
-#その後、 T 個のテストケースが続く。各テストケースは以下の形式で与えられる。
-#a s
-#
-#出力
-#T 行出力せよ。i (1 ≦ i ≦ T) 行目には、i 番目に与えられるテストケースについて問題文中の条件を両方とも満たす非負整数の組 (x,y) が存在するなら Yes を、存在しないなら No を出力せよ。
-#
-#入力例 1
-#2
-#1 8
-#4 2
-#
-#出力例 1
-#Yes
-#No
-#1 番目のテストケースにおいては、(x,y)=(3,5) などが条件を満たします。
-#2 番目のテストケースにおいては、条件を満たす非負整数の組 (x,y) は存在しません。
-#
-#入力例 2
-#4
-#201408139683277485 381410962404666524
-#360288799186493714 788806911317182736
-#18999951915747344 451273909320288229
-#962424162689761932 1097438793187620758
-#
-#出力例 2
-#No
-#Yes
-#Yes
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # T = int(input())
+    T = 1
+    for i in range(T):
+        # a, s = map(int, input().split())
+        a, s = 1, 8
+        print("Yes" if s >= a and (s - a) % 2 == 0 else "No")
+
+=======
+Suggestion 2
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if s % 2 == 0:
+            if a % 2 == 0:
+                print("Yes")
+            else:
+                print("No")
+        else:
+            if a % 2 == 1:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 3
+
+def main():
+    T = int(input())
+    for i in range(T):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if (s - a) & (2 * a - s) == 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    t = int(input())
+    for i in range(t):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if s - a < a:
+            print("No")
+            continue
+        if s % 2 == 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        x = s - a
+        if a & x:
+            print("No")
+        else:
+            print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        a, s = map(int, input().split())
+        if a > s:
+            print('No')
+        else:
+            if s % 2 == 1:
+                if a % 2 == 1:
+                    print('Yes')
+                else:
+                    print('No')
+            else:
+                if a % 2 == 0:
+                    print('Yes')
+                else:
+                    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    t = int(input())
+    for i in range(t):
+        a, s = map(int, input().split())
+        if s < a:
+            print('No')
+        elif (s-a) % 2 == 1:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if a == 0 and s == 0:
+            print("Yes")
+            continue
+        if a == 0:
+            print("No")
+            continue
+        if a & 1 == 1 and s & 1 == 0:
+            print("No")
+            continue
+        if a & 1 == 0 and s & 1 == 1:
+            print("No")
+            continue
+        if a & 1 == 1 and s & 1 == 1:
+            print("Yes")
+            continue
+        if a & 1 == 0 and s & 1 == 0:
+            print("Yes")
+            continue
+
+=======
+Suggestion 9
+
+def main():
+    T = int(input())
+    for i in range(T):
+        a, s = map(int, input().split())
+        if a > s:
+            print("No")
+            continue
+        if (s - a) & 1 == 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def main():
+    T = int(input())
+    for i in range(T):
+        a,s = map(int,input().split())
+        if s < a:
+            print('No')
+        else:
+            if (s-a)%2 == 0:
+                print('Yes')
+            else:
+                print('No')

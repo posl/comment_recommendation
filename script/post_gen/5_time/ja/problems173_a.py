@@ -1,31 +1,56 @@
-#問題文
-#お店で N 円の商品を買います。
-#1000 円札のみを使って支払いを行う時、お釣りはいくらになりますか？
-#ただし、必要最小限の枚数の 1000 円札で支払いを行うものとします。
-#
-#制約
-#1 ≦ N ≦ 10000
-#N は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#お釣りの金額を整数で出力せよ。
-#
-#入力例 1
-#1900
-#
-#出力例 1
-#100
-#1000 円札 2 枚で支払いを行い、お釣りは 100 円になります。
-#
-#入力例 2
-#3000
-#
-#出力例 2
-#0
-#ちょうど支払えます。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(1000 - (n % 1000) if n % 1000 != 0 else 0)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print(1000 - n % 1000 if n % 1000 != 0 else 0)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(1000 - (N % 1000) if N % 1000 != 0 else 0)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N % 1000 == 0:
+        print(0)
+    else:
+        print(1000 - (N % 1000))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(1000-(n%1000) if n%1000 else 0)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    ans = 1000 - N % 1000
+    if ans == 1000:
+        ans = 0
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(1000 - N % 1000 if N % 1000 != 0 else 0)

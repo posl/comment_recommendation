@@ -1,46 +1,167 @@
-#問題文
-#長さ N の数列 A=(a_1,...,a_N) があります。また、整数 K が与えられます。  
-#あなたは次の操作を 0 回以上何度でも行えます。
-#1 ≦ i ≦ N-K を満たす整数 i を選び、a_i と a_{i+K} の値を入れ替える。
-#A を昇順に並べ替えることが出来るかどうかを判定してください。
-#
-#制約
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#a_1 ... a_N
-#
-#出力
-#A を昇順に並び替えることが出来るならば Yes と、出来ないならば No と出力せよ。
-#
-#入力例 1
-#5 2
-#3 4 1 3 4
-#
-#出力例 1
-#Yes
-#次のように操作をすることで A を昇順に並び替えることが出来ます。
-#i=1 とし、a_1 と a_3 の値を入れ替える。数列は (1,4,3,3,4) となる。
-#i=2 とし、a_2 と a_4 の値を入れ替える。数列は (1,3,3,4,4) となる。
-#
-#入力例 2
-#5 3
-#3 4 1 3 4
-#
-#出力例 2
-#No
-#
-#入力例 3
-#7 5
-#1 2 3 4 5 5 10
-#
-#出力例 3
-#Yes
-#操作を行う必要が無い場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+
+    B = []
+    for i in range(N-1):
+        B.append(A[i+1] - A[i])
+
+    B.sort()
+
+    ans = 0
+    for i in range(N-K):
+        ans += B[i]
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    if N == K:
+        print("Yes")
+        return
+
+    if K == 1:
+        if A == sorted(A):
+            print("Yes")
+        else:
+            print("No")
+        return
+
+    if K % 2 == 0:
+        if A == sorted(A):
+            print("Yes")
+        else:
+            print("No")
+        return
+
+    if N % 2 == 0:
+        if A == sorted(A):
+            print("Yes")
+        else:
+            print("No")
+        return
+
+    if A == sorted(A):
+        print("Yes")
+    else:
+        print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = A[K-1::]
+    if A[K-1] == A[-1]:
+        print("No")
+        return
+    if K == 1:
+        print("Yes")
+        return
+    if len(B) == len(set(B)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(N-K):
+        if a[i] > a[i+K]:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n-k):
+        if a[i] < a[i+k]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A_sorted = sorted(A)
+    for i in range(N-K):
+        if A_sorted[i] != A_sorted[i+K]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    # データ入力
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    # データ整理
+    A.sort()
+    # 並び替え可能かどうかの判定
+    for i in range(N-K):
+        if A[i] == A[i+K]:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N - K):
+        if A[i] == A[i + K]:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 9
+
+def check(a, k):
+    for i in range(len(a) - k):
+        if a[i] > a[i + k]:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = A[::-1]
+    for i in range(N-K):
+        if A[i] == B[i]:
+            print("Yes")
+            exit()
+    print("No")

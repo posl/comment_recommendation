@@ -1,49 +1,123 @@
-#問題文
-#AtCoder 王国では、競技プログラミングの実力を測る検定試験が実施されています。
-#試験は 100 点満点であり、点数が高ければ高いほど、高いランクが認定されます。
-#ランクは以下のように定められています。
-#0 点以上 40 点未満のとき、初級
-#40 点以上 70 点未満のとき、中級
-#70 点以上 90 点未満のとき、上級
-#90 点以上のとき、エキスパート
-#高橋君は、この検定試験を受験し、X 点を取りました。  
-#高橋君が認定されたランクより一つ高いランクとなるためには最低であと何点必要か求めてください。ただし、高橋君がエキスパートと認定された場合、それより高いランクは存在しないため expert と出力してください。  
-#
-#制約
-#0 ≦ X ≦ 100
-#X は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#X
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#56
-#
-#出力例 1
-#14
-#高橋君は 56 点を取り、中級と認定されました。一つ高いランクである上級となるためには、最低であと 14 点必要です。
-#
-#入力例 2
-#32
-#
-#出力例 2
-#8
-#
-#入力例 3
-#0
-#
-#出力例 3
-#40
-#
-#入力例 4
-#100
-#
-#出力例 4
-#expert
-#高橋君は満点を取り、エキスパートと認定されました。これより高いランクは存在しないため、expert と出力します。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x >= 0 and x < 40:
+        print(40 - x)
+    elif x >= 40 and x < 70:
+        print(70 - x)
+    elif x >= 70 and x < 90:
+        print(90 - x)
+    elif x >= 90 and x <= 100:
+        print('expert')
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print("expert")
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x >= 0 and x < 40:
+        print(40 - x)
+    elif x >= 40 and x < 70:
+        print(70 - x)
+    elif x >= 70 and x < 90:
+        print(90 - x)
+    else:
+        print('expert')
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    if x >= 90:
+        print("expert")
+    elif x >= 70:
+        print(90 - x)
+    elif x >= 40:
+        print(70 - x)
+    else:
+        print(40 - x)
+
+=======
+Suggestion 5
+
+def Rank(x):
+    if x >= 0 and x < 40:
+        return 40 - x
+    elif x >= 40 and x < 70:
+        return 70 - x
+    elif x >= 70 and x < 90:
+        return 90 - x
+    elif x >= 90 and x <= 100:
+        return "expert"
+    else:
+        return "error"
+
+=======
+Suggestion 6
+
+def problem219_a():
+    #入力
+    X = int(input())
+    #処理
+    if X >= 0 and X < 40:
+        print(40 - X)
+    elif X >= 40 and X < 70:
+        print(70 - X)
+    elif X >= 70 and X < 90:
+        print(90 - X)
+    elif X >= 90 and X <= 100:
+        print('expert')
+    else:
+        print('入力された値が不正です。')
+
+problem219_a()
+
+=======
+Suggestion 7
+
+def main():
+    x = int(input())
+    if 0 <= x < 40:
+        print(40 - x)
+    elif 40 <= x < 70:
+        print(70 - x)
+    elif 70 <= x < 90:
+        print(90 - x)
+    else:
+        print("expert")
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    x = int(input())
+    # compute
+    if x < 40:
+        print(40-x)
+    elif x < 70:
+        print(70-x)
+    elif x < 90:
+        print(90-x)
+    else:
+        print('expert')
+    # output

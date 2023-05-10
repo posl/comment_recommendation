@@ -1,49 +1,89 @@
-#問題文
-#高橋くんは A グラムの純金と B グラムの純銀 (0 ≦ A,B, 0 < A+B) をよく溶かした上で混ぜ合わせ、新たな金属を生成しました。
-#生成された金属は「純金」「純銀」「合金」のいずれでしょうか？
-#なお、生成された金属は
-#0 < A かつ B=0 なら「純金」
-#A=0 かつ 0 < B なら「純銀」
-#0 < A かつ 0 < B なら「合金」
-#であるとみなします。
-#
-#制約
-#0 ≦ A,B ≦ 100
-#0 < A+B
-#A,B は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#生成された金属が「純金」なら Gold と、「純銀」なら Silver と、「合金」なら Alloy と出力せよ。
-#
-#入力例 1
-#50 50
-#
-#出力例 1
-#Alloy
-#0 < A かつ 0 < B であるため、生成された金属は「合金」です。
-#
-#入力例 2
-#100 0
-#
-#出力例 2
-#Gold
-#0 < A かつ B=0 であるため、生成された金属は「純金」です。
-#
-#入力例 3
-#0 100
-#
-#出力例 3
-#Silver
-#A=0 かつ 0 < B であるため、生成された金属は「純銀」です。
-#
-#入力例 4
-#100 2
-#
-#出力例 4
-#Alloy
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    if a > 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b > 0:
+        print("Silver")
+    else:
+        print("Alloy")
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if 0 < a and b == 0:
+        print("Gold")
+    elif a == 0 and 0 < b:
+        print("Silver")
+    elif 0 < a and 0 < b:
+        print("Alloy")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a > 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b > 0:
+        print("Silver")
+    elif a > 0 and b > 0:
+        print("Alloy")
+    else:
+        print("Error")
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a == 0:
+        print('Silver')
+    elif b == 0:
+        print('Gold')
+    else:
+        print('Alloy')
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int, input().split())
+    if a > 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b > 0:
+        print("Silver")
+    elif a > 0 and b > 0:
+        print("Alloy")
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    if a > 0 and b > 0:
+        print('Alloy')
+    elif a > 0 and b == 0:
+        print('Gold')
+    else:
+        print('Silver')
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a > 0 and b > 0:
+        print("Alloy")
+    elif a > 0 and b == 0:
+        print("Gold")
+    elif a == 0 and b > 0:
+        print("Silver")

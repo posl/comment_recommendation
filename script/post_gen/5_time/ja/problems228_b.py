@@ -1,41 +1,181 @@
-#問題文
-#高橋君には N 人の友達がいます。N 人の友達はそれぞれ、友達 1 、友達 2 、... 、友達 N というあだ名で呼ばれています。
-#ある日、高橋君はある恥ずかしい秘密を、友達の一人である友達 X に知られてしまいました。
-#i = 1, 2, ..., N について、友達 i が高橋君の秘密を知ったとき、友達 A_i がまだ高橋君の秘密を知らなければ、友達 i は高橋君の秘密を友達 A_i にも教えてしまいます。
-#高橋君の秘密は最終的に何人の友達に知られることになるでしょうか？
-#
-#制約
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4 2
-#3 1 1 2
-#
-#出力例 1
-#3
-#高橋君の秘密は以下の流れで友達 1 、友達 2 、友達 3 の 3 人に知れ渡ります。
-#ある日、高橋君は秘密を友達 2 に知られてしまいました。
-#秘密を知った友達 2 は、その秘密を友達 1 に教えます。
-#秘密を知った友達 1 は、その秘密を友達 3 に教えます。
-#高橋君の秘密は最終的に 3 人の友達に知られることになるため、3 を出力します。
-#
-#入力例 2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#出力例 2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a = [i-1 for i in a]
+    #print(a)
+    #print(x)
+    #print(n)
+    #ans = 0
+    #for i in range(n):
+    #    if x == i+1:
+    #        continue
+    #    if a[i] == x:
+    #        ans += 1
+    #        continue
+    #    if a[a[i]] == x:
+    #        ans += 1
+    #print(ans)
+    #print(a)
+    #print(x)
+    #print(n)
+    #print(a[x-1])
+    #print(a[a[x-1]])
+    #print(a[a[a[x-1]]])
+    #print(a[a[a[a[x-1]]]])
+    #print(a[a[a[a[a[x-1]]]]])
+    #print(a[a[a[a[a[a[x-1]]]]]])
+    #print(a[a[a[a[a[a[a[x-1]]]]]]])
+    #print(a[a[a[a[a[a[a[a[x-1]]]]]]]])
+    #print(a[a[a[a[a[a[a[a[a[x-1]]]]]]]]])
+    #print(a[a[a[a[a[a[a[a[a[a[x-1]]]]]
+
+=======
+Suggestion 2
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = -1
+    count = 1
+    for i in range(n):
+        if a[i] == -1:
+            continue
+        else:
+            while True:
+                if a[i] == -1:
+                    break
+                else:
+                    i = a[i] - 1
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    ans = 1
+    for i in range(n):
+        if a[i] == 0:
+            continue
+        else:
+            ans += 1
+            a[a[i]-1] = 0
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 標準入力の取得
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 処理
+    # 入力値のうち、x番目の値を取得
+    target = a[x-1]
+    # 結果の初期化
+    result = 1
+    # 取得した値がx番目の値と同じでない限り処理を繰り返す
+    while target != x:
+        # 結果に+1する
+        result += 1
+        # 取得した値を更新する
+        target = a[target-1]
+    # 結果の出力
+    print(result)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i-1 for i in a]
+
+    known = [False] * n
+    known[x-1] = True
+    cnt = 1
+    for i in range(n):
+        if known[a[i]]:
+            cnt += 1
+            known[i] = True
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    a.insert(0, 0)
+    count = 0
+    for i in range(1, n+1):
+        if a[i] == x:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    ans = 1
+    for i in range(n):
+        if a[i] != 0:
+            ans += 1
+            a[a[i]-1] = 0
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    count = 0
+    for i in range(1, n + 1):
+        if a[i] == x:
+            count += 1
+            x = i
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0, 0)
+    ans = 1
+    tmp = X
+    while True:
+        if tmp == A[tmp]:
+            break
+        tmp = A[tmp]
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    ans = 1
+    for i in a:
+        if i != 0:
+            ans += 1
+    print(ans)

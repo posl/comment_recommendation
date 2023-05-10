@@ -1,34 +1,102 @@
-#問題文
-#整数 N が与えられます。N 以下の正の整数のうち、(先頭に 0 をつけずに十進法で表記したときの) 桁数が奇数であるようなものの個数を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#N 以下の正の整数のうち、桁数が奇数であるようなものの個数を出力せよ。
-#
-#入力例 1
-#11
-#
-#出力例 1
-#9
-#11 以下の正の整数のうち、桁数が奇数であるようなものは 1, 2, ..., 9 の 9 個です。
-#
-#入力例 2
-#136
-#
-#出力例 2
-#46
-#1, 2, ..., 9 に加えて、100, 101, ..., 136 の 37 個の数も桁数が奇数です。
-#
-#入力例 3
-#100000
-#
-#出力例 3
-#90909
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        if len(str(i)) % 2 == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+	n = int(input())
+	count = 0
+	for i in range(1,n+1):
+		if len(str(i)) % 2 == 1:
+			count += 1
+	print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        if len(str(i)) % 2 == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        if len(str(i)) % 2 == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(1, n + 1):
+        if len(str(i)) % 2 != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    c = 0
+    for i in range(1,N+1):
+        if len(str(i)) % 2 == 1:
+            c += 1
+    print(c)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N + 1):
+        if len(str(i)) % 2 != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    cnt = 0
+    for i in range(1, n+1):
+        if len(str(i)) % 2 == 1:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def oddDigits(n):
+    count = 0
+    for i in range(1,n+1):
+        if len(str(i))%2 == 1:
+            count += 1
+    return count
+
+n = int(input())
+print(oddDigits(n))

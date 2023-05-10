@@ -1,35 +1,148 @@
-#問題文
-# FizzBuzz列  a_1,a_2,... を次のように定めます。
-#i が 3 でも 5 でも割り切れるなら、a_i=FizzBuzz
-#そうではなく i が 3 で割り切れるなら、a_i=Fizz
-#そうではなく i が 5 で割り切れるなら、a_i=Buzz
-#そうではないなら、a_i=i
-#FizzBuzz列の N 項目までに含まれる数の和を求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^6
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#FizzBuzz列の N 項目までに含まれる数の和を出力せよ。
-#
-#入力例 1
-#15
-#
-#出力例 1
-#60
-#FizzBuzz列の 15 項目までは次の通りです。
-#1,2,Fizz,4,Buzz,Fizz,7,8,Fizz,Buzz,11,Fizz,13,14,FizzBuzz
-#15 項目までには 1,2,4,7,8,11,13,14 が含まれ、これらの和は 60 です。
-#
-#入力例 2
-#1000000
-#
-#出力例 2
-#266666333332
-#オーバーフローに注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # input
+    N = int(input())
+
+    # compute
+    ans = 0
+    for i in range(1, N+1):
+        if i%3==0 or i%5==0:
+            continue
+        else:
+            ans += i
+
+    # output
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        if i % 3 == 0 and i % 5 == 0:
+            continue
+        elif i % 3 == 0:
+            continue
+        elif i % 5 == 0:
+            continue
+        else:
+            sum += i
+    print(sum)
+
+=======
+Suggestion 3
+
+def fizzbuzz(n):
+    if n % 15 == 0:
+        return "FizzBuzz"
+    elif n % 5 == 0:
+        return "Buzz"
+    elif n % 3 == 0:
+        return "Fizz"
+    else:
+        return n
+
+n = int(input())
+sum = 0
+for i in range(1, n+1):
+    sum += fizzbuzz(i)
+print(sum)
+
+=======
+Suggestion 4
+
+def fizzbuzz(n):
+    if n%15==0:
+        return "FizzBuzz"
+    elif n%5==0:
+        return "Buzz"
+    elif n%3==0:
+        return "Fizz"
+    else:
+        return str(n)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n+1):
+        if i%3 == 0 or i%5 == 0:
+            continue
+        else:
+            ans += i
+    print(ans)
+
+=======
+Suggestion 6
+
+def fizzbuzz(n):
+    ans = 0
+    for i in range(1, n+1):
+        if i % 3 == 0 or i % 5 == 0:
+            continue
+        ans += i
+    return ans
+
+=======
+Suggestion 7
+
+def fizzbuzz(x):
+    if x % 15 == 0:
+        return "FizzBuzz"
+    elif x % 3 == 0:
+        return "Fizz"
+    elif x % 5 == 0:
+        return "Buzz"
+    else:
+        return x
+
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    ans += fizzbuzz(i)
+print(ans)
+
+=======
+Suggestion 8
+
+def fizzbuzz(n):
+    if n%15 == 0:
+        return "FizzBuzz"
+    if n%3 == 0:
+        return "Fizz"
+    if n%5 == 0:
+        return "Buzz"
+    return str(n)
+
+n = int(input())
+ans = 0
+for i in range(1,n+1):
+    ans += i if fizzbuzz(i) == str(i) else 0
+print(ans)
+
+=======
+Suggestion 9
+
+def FizzBuzz(x):
+    if x%3==0 and x%5==0:
+        return "FizzBuzz"
+    elif x%3==0:
+        return "Fizz"
+    elif x%5==0:
+        return "Buzz"
+    else:
+        return str(x)
+
+n=int(input())
+s=0
+for i in range(1,n+1):
+    s+=int(FizzBuzz(i))
+print(s)

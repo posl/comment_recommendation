@@ -1,37 +1,155 @@
-#問題文
-#N 人が 1 列に並んでおり、前から i 番目の人の身長は A_i です。
-#それぞれの人の足元に、高さが 0 以上の踏み台を設置し、全ての人が次の条件を満たすようにしたいです。
-#条件：踏み台を込めて身長を比較したとき、自分より前に、自分より背の高い人が存在しない
-#この条件を満たす時の、踏み台の高さの合計の最小値を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 ... A_N
-#
-#出力
-#踏み台の高さの合計の最小値を出力せよ。
-#
-#入力例 1
-#5
-#2 1 5 4 3
-#
-#出力例 1
-#4
-#それぞれ、高さ 0,1,0,1,2 の踏み台を与えると、踏み台を込めた身長は 2,2,5,5,5 となり、条件を満たします。
-#踏み台の高さの合計をこれより小さくすることはできません。
-#
-#入力例 2
-#5
-#3 3 3 3 3
-#
-#出力例 2
-#0
-#全員に高さ 0 の踏み台を与えればよいです。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > A[i-1]:
+            ans += A[i] - A[i-1]
+    print(ans)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > i + 1:
+            print(-1)
+            return
+        elif A[i] < i + 1:
+            ans += i + 1 - A[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = []
+    for i in range(N):
+        B.append(A[i] - i)
+    B.sort()
+    #print(B)
+    min = B[0]
+    for i in range(1, N):
+        if B[i] - B[i-1] < min:
+            min = B[i] - B[i-1]
+    #print(min)
+    ans = 0
+    for i in range(N):
+        ans += A[i] - (B[i] - min)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(N):
+        ans += max(0,A[i]-A[i-1])
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1,n):
+        if a[i] > a[i-1]:
+            continue
+        ans += a[i-1] - a[i]
+        a[i] = a[i-1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    a.reverse()
+    for i in range(1, n):
+        if a[i] > a[i-1]:
+            ans += a[i] - a[i-1]
+            a[i] = a[i-1]
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(n, a):
+    # ここに処理を追加してください
+    #print(a)
+    max = 0
+    sum = 0
+    for i in range(n-1):
+        if a[i] > max:
+            max = a[i]
+        if a[i+1] < max:
+            sum += max - a[i+1]
+    return sum
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] < ans:
+            print(-1)
+            return
+        ans = max(ans, a[i])
+        ans -= 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i]-1] = i
+    ans = 0
+    tmp = 0
+    for i in range(N):
+        if i == 0:
+            tmp = B[i]
+        else:
+            if tmp > B[i]:
+                ans += 1
+            else:
+                tmp = B[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+  N = int(input())
+  A = list(map(int, input().split()))
+  ans = 0
+  for i in range(N-1, -1, -1):
+    if A[i] <= ans:
+      ans = A[i]
+    else:
+      ans = A[i] - 1
+  print(ans)

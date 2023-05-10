@@ -1,46 +1,153 @@
-#問題文
-#N 項からなる正整数列 A=(A_1,A_2, ... A_N) が与えられます。
-#以下の操作を 0 回以上何度でも行える時、操作を最小何回行えば、A を回文にすることができますか？  
-#ある正整数の組 (x,y) を選ぶ。その後、現在 A に含まれる x をすべて y に置き換える。
-#なお、この問題では、全ての整数 i (1 ≦ i ≦ N) について、A_i=A_{N+1-i} が成り立つとき、またその時に限って、A が回文であると言います。  
-#
-#制約
-#入力は全て整数
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#出力例 1
-#2
-#はじめ、A=(1,5,3,2,5,2,3,1) です。
-#A に含まれる 3 を全て 2 に置き換えると、A=(1,5,2,2,5,2,2,1) となります。
-#A に含まれる 2 を全て 5 に置き換えると、A=(1,5,5,5,5,5,5,1) となります。
-#以上の操作を行うと、A を 2 回の操作で回文にすることができ、これが最小です。
-#
-#入力例 2
-#7
-#1 2 3 4 1 2 3
-#
-#出力例 2
-#1
-#
-#入力例 3
-#1
-#200000
-#
-#出力例 3
-#0
-#A がはじめから回文である可能性もあります。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N//2):
+        if A[i] != A[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    a_set = set(a)
+    if len(a_set) == 1:
+        print(0)
+        exit()
+    
+    a.sort()
+    ans = 0
+    for i in range(n//2):
+        if a[i] != a[n-1-i]:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n//2):
+        if a[i] != a[n-1-i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n//2):
+        if a[i] != a[-(i+1)]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    i = 0
+    j = n - 1
+    while i < j:
+        if a[i] == a[i + 1]:
+            i += 2
+        else:
+            i += 1
+        if a[j] == a[j - 1]:
+            j -= 2
+        else:
+            j -= 1
+        ans += 1
+    if i == j:
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N//2):
+        if A[i] != A[N-1-i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    #print(N, A)
+    A.sort()
+    #print(N, A)
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            #print(A[i], A[j])
+            if A[i] != A[j]:
+                cnt += 1
+            else:
+                break
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0]*(2*10**5+1)
+    ans = 0
+    for i in range(n):
+        b[a[i]] += 1
+    for i in range(2*10**5):
+        if b[i] > 1:
+            ans += b[i] - 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A = sorted(A)
+    ans = 0
+    i = 0
+    j = N-1
+    while i < j:
+        if A[i] == A[j]:
+            i += 1
+            j -= 1
+        else:
+            ans += 1
+            if A[i] < A[j]:
+                i += 1
+                A[i] += A[i-1]
+            else:
+                j -= 1
+                A[j] += A[j+1]
+    print(ans)

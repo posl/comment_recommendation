@@ -1,99 +1,325 @@
-#問題文
-#すぬけ君の工場では，次のような特徴を持つ ロボットアーム を導入することになりました：
-#ロボットアームは，m 個の 腕 と m+1 個の 関節 からなる．腕には 1, 2, ..., m で，関節には 0, 1, ..., m で番号が付けられている．腕 i は関節 i-1 と関節 i をつなぐ．腕 i の長さは d_i である．
-#各腕には，それぞれ独立に モード を指定することができる．モードは L, R, D, U のいずれかであり，腕のモードはその腕の向きを指定する．工場を座標平面とみなすと，関節 i の座標 (x_i, y_i) は次のように定まる：
-#(x_0, y_0) = (0, 0)．
-#腕 i のモードが L のとき，(x_i, y_i) = (x_{i-1} - d_{i}, y_{i-1})．
-#腕 i のモードが R のとき，(x_i, y_i) = (x_{i-1} + d_{i}, y_{i-1})．
-#腕 i のモードが D のとき，(x_i, y_i) = (x_{i-1}, y_{i-1} - d_{i})．
-#腕 i のモードが U のとき，(x_i, y_i) = (x_{i-1}, y_{i-1} + d_{i})．
-#
-#すぬけ君は，腕のモードをうまく指定することにより，N 個の点 (X_1, Y_1), (X_2, Y_2), ..., (X_N, Y_N) のいずれにもロボットアームの関節 m をちょうど一致させられるようなロボットアームを導入したいです．
-#このようなことは可能でしょうか？
-#可能ならば，条件を満たすロボットアームおよび，各点 (X_j, Y_j) にそのロボットアームの関節 m を到達させるためのモードの指定方法を求めてください．
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分点
-#300 点分のテストケースでは，-10 ≦ X_i ≦ 10 および -10 ≦ Y_i ≦ 10 が成り立つ．
-#
-#入力
-#入力は以下の形式で標準入力から与えられる．
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#出力
-#条件を満たすことが可能なら，次の形式で出力せよ．不可能な場合は -1 を出力せよ．
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m および d_i はロボットアームの情報を表す．それぞれの変数の意味は問題文
-#を参照せよ．
-#ここで，1 ≦ m ≦ 40, 1 ≦ d_i ≦ 10^{12} かつ m, d_i はすべて整数でなければならない．
-#w_j は m 文字からなる文字列であり，点 (X_j, Y_j) にロボットアームの関節 m を到達させる方法を表す．
-#w_j の i 文字目は L, R, D, U のいずれかの文字であり，腕 i のモードを表す．
-#
-#入力例 1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#出力例 1
-#2
-#1 2
-#RL
-#UU
-#DR
-#それぞれの (X_j, Y_j) にロボットアームの関節 m を到達させる方法において，各関節の位置は次のようになります．
-#(X_1, Y_1) = (-1, 0) に到達させる方法では，まず関節 0 の位置は (x_0, y_0) = (0, 0) です．腕 1 のモードが R なので，関節 1 の位置は (x_1, y_1) = (1, 0) です．腕 2 のモードが L なので，関節 m=2 の位置は (x_2, y_2) = (-1, 0) です．
-#(X_2, Y_2) = (0, 3) に到達させる方法では，(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3) です．
-#(X_3, Y_3) = (2, -1) に到達させる方法では，(x_0, y_0) = (0, 0), (x_1, y_1) = (0, -1), (x_2, y_2) = (2, -1) です．
-#
-#入力例 2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#出力例 2
-#-1
-#
-#入力例 3
-#2
-#1 1
-#1 1
-#
-#出力例 3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j) の中に同じ点が含まれることもあります．
-#
-#入力例 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#出力例 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    X, Y = zip(*XY)
+    if sum([X[i] == X[i + 1] and Y[i] == Y[i + 1] for i in range(N - 1)]) == N - 1:
+        print(-1)
+        return
+    for m in range(1, 41):
+        for d in range(1, 10 ** 12 + 1):
+            if m * d < max(abs(max(X)), abs(max(Y))):
+                continue
+            if m * d < max(abs(min(X)), abs(min(Y))):
+                continue
+            if m * d > max(abs(max(X)), abs(max(Y))):
+                continue
+            if m * d > max(abs(min(X)), abs(min(Y))):
+                continue
+            if m * d > max(abs(max(X)), abs(max(Y))):
+                continue
+            if m * d > max(abs(min(X)), abs(min(Y))):
+                continue
+            break
+        else:
+            continue
+        break
+    else:
+        print(-1)
+        return
+    print(m)
+    print(*[d] * m)
+    for x, y in XY:
+        ans = []
+        for i in range(m):
+            if x < 0:
+                ans.append('L')
+                x += d
+            else:
+                ans.append('R')
+                x -= d
+        for i in range(m):
+            if y < 0:
+                ans.append('D')
+                y += d
+            else:
+                ans.append('U')
+                y -= d
+        print(*ans, sep='')
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+
+    # 入力
+    N = int(readline())
+    XY = [list(map(int, readline().split())) for _ in range(N)]
+
+    # 処理
+    # すべての点について、x座標とy座標が同じであるか
+    x_same = True
+    y_same = True
+    for x, y in XY:
+        if x != XY[0][0]:
+            x_same = False
+        if y != XY[0][1]:
+            y_same = False
+
+    if x_same == False and y_same == False:
+        print(-1)
+        return
+
+    # x座標が同じ
+    if x_same:
+        # x座標が同じなら、y座標の差が奇数である
+        y_diff = [abs(y - XY[0][1]) for x, y in XY]
+        y_diff_odd = [y for y in y_diff if y % 2 == 1]
+        if len(y_diff_odd) > 0 and len(y_diff_odd) < len(y_diff):
+            print(-1)
+            return
+
+        # 差が奇数である場合、y座標が同じになるようにする
+        if len(y_diff_odd) > 0:
+            for i in range(N):
+                if y_diff[i] % 2 == 0:
+                    XY[i][1] += 1
+                    y_diff[i] += 1
+                    break
+
+        # y座標の差を2で割ったものが、ロボットアームの本数
+        m = max(y_diff) // 2
+        d = [2 * m - y for y in y_diff]
+        w = []
+        for x, y in XY:
+            w_j = ''
+            for i in range(m):
+                if y > 0:
+                    w_j += 'D'
+                    y -= 1
+                else:
+                    w_j += 'U'
+                    y += 1
+            w.append(w_j)
+
+    # y座標が同じ
+    if y
+
+=======
+Suggestion 4
+
+def check(x,y):
+    return x+y
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    x = [xy[i][0] for i in range(n)]
+    y = [xy[i][1] for i in range(n)]
+    m = 40
+    d = [0] * m
+    w = [[''] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            dx = x[j] - x[i]
+            dy = y[j] - y[i]
+            if dx >= 0 and dy >= 0:
+                w[i][j] = 'R' * dx + 'U' * dy
+            elif dx >= 0 and dy < 0:
+                w[i][j] = 'R' * dx + 'D' * (-dy)
+            elif dx < 0 and dy >= 0:
+                w[i][j] = 'L' * (-dx) + 'U' * dy
+            else:
+                w[i][j] = 'L' * (-dx) + 'D' * (-dy)
+    for i in range(m):
+        d[i] = 10 ** 12
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            d[i] = min(d[i], len(w[i][j]))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if len(w[i][j]) == d[i]:
+                w[i][j] = w[i][j][:-1]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if len(w[i][j]) < d[i]:
+                w[i][j] += w[j][i]
+                w[i][j] += w[i][j][0] * (d[i] - len(w[i][j]))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if len(w[i][j]) > d[i]:
+                w[i][j] = w[i][j][:d[i]]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+
+=======
+Suggestion 6
+
+def main():
+    return
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    XY = [list(map(int,input().split())) for _ in range(N)]
+    #print(N,XY)
+    #print(XY[0][0])
+    #print(XY[0][1])
+    #print(XY[1][0])
+    #print(XY[1][1])
+    #print(XY[2][0])
+    #print(XY[2][1])
+    #print(XY[3][0])
+    #print(XY[3][1])
+    #print(XY[4][0])
+    #print(XY[4][1])
+
+
+    #print(XY[0][0])
+    #print(XY[0][1])
+    #print(XY[1][0])
+    #print(XY[1][1])
+    #print(XY[2][0])
+    #print(XY[2][1])
+    #print(XY[3][0])
+    #print(XY[3][1])
+    #print(XY[4][0])
+    #print(XY[4][1])
+    #print(XY[5][0])
+    #print(XY[5][1])
+    #print(XY[6][0])
+    #print(XY[6][1])
+    #print(XY[7][0])
+    #print(XY[7][1])
+
+    #print(XY[0][0])
+    #print(XY[0][1])
+    #print(XY[1][0])
+    #print(XY[1][1])
+    #print(XY[2][0])
+    #print(XY[2][1])
+    #print(XY[3][0])
+    #print(XY[3][1])
+    #print(XY[4][0])
+    #print(XY[4][1])
+    #print(XY[5][0])
+    #print(XY[5][1])
+    #print(XY[6][0])
+    #print(XY[6][1])
+    #print(XY[7][0])
+    #print(XY[7][1])
+    #print(XY[8][0])
+    #print(XY[8][1])
+    #print(XY[9][0])
+    #print(XY[9][1])
+    #print(XY[10][
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+
+    if n == 1:
+        print(1)
+        print(1)
+        print("L")
+        exit()
+    if n == 2:
+        if x[0] == x[1] and y[0] == y[1]:
+            print(1)
+            print(1)
+            print("L")
+        else:
+            print(2)
+            print(1, 1)
+            print("RL")
+            print("LR")
+        exit()
+
+    for i in range(n):
+        for j in range(i+1, n):
+            if x[i] == x[j] and y[i] == y[j]:
+                print(2)
+                print(1, 1)
+                print("RL")
+                print("LR")
+                exit()
+
+    print(3)
+    print(1, 1, 1)
+    print("RLD")
+    print("LDR")
+    print("DRU")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    #print(xy)
+    #print("-----")
+
+    # 1. mを決める
+    # 2. dを決める
+    # 3. wを決める
+
+    # 1. mを決める
+    # mは、全てのxy座標の中で最大の座標の値を取る
+    # ただし、最小値は1とする
+    # つまり、最大値が10^9なら、mは10^9となる
+    # また、最小値が-10^9なら、mは10^9となる
+    # なお、mの最大値は40となる
+
+    # 2. dを決める
+    # dは、全てのxy座標の中で最大の座標の値を取る
+    # ただし、最小値は1とする
+    # つまり、最大値が10^9なら、dは10^9となる
+    # また、最小値が-10^9なら、dは10^9となる
+    # なお、dの最大値は10^12となる
+
+    # 3. wを決める
+    # wは、mの数だけ必要となる
+    # wは、全てのxy座標の中で最大の座標の値を取る
+    # ただし、最小値は1とする
+    # つまり、最大値が10^9なら、wは10^9となる
+    # また、最小値が-10^9なら、wは10^9となる
+    # なお、wの最大値は40となる
+
+    # 4. 1,2,3を満たすか確

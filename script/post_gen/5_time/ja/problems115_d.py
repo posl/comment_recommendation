@@ -1,42 +1,135 @@
-#問題文
-#とある世界では、今日はクリスマスです。
-#高羽氏のパーティで、彼は多次元バーガーを作ることにしました。レベル L バーガー (L は 0 以上の整数) とは次のようなものです。
-#レベル 0 バーガーとは、パティ 1 枚である。
-#レベル L バーガー (L ≧ 1) とは、バン 1 枚、レベル L-1 バーガー、パティ 1 枚、レベル L-1 バーガー、バン 1 枚、をこの順に下から積み重ねたものである。
-#例えば、パティを P、バンを B で表すと、レベル 1 バーガーは BPPPB (を 90 度回転したもの)、レベル 2 バーガーは BBPPPBPBPPPBB といった見た目になります。
-#高羽氏が作るのはレベル N バーガーです。ダックスフンドのルンルンは、このバーガーの下から X 層を食べます (パティまたはバン 1 枚を 1 層とします)。ルンルンはパティを何枚食べるでしょうか？
-#
-#制約
-#1 ≦ N ≦ 50
-#1 ≦ X ≦ ( レベル N バーガーの層の総数 )
-#N, X は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#
-#出力
-#レベル N バーガーの下から X 層に含まれるパティの枚数を出力せよ。
-#
-#入力例 1
-#2 7
-#
-#出力例 1
-#4
-#レベル 2 バーガー (BBPPPBPBPPPBB) の下から 7 層にはパティが 4 枚含まれます。
-#
-#入力例 2
-#1 1
-#
-#出力例 2
-#0
-#レベル 1 バーガーの一番下の層はバンです。
-#
-#入力例 3
-#50 4321098765432109
-#
-#出力例 3
-#2160549382716056
-#レベル 50 バーガーは層の数が 32 ビット整数に収まらない程度に分厚いです。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def burger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + a[n-1]:
+        return burger(n-1, x-1)
+    else:
+        return p[n-1] + 1 + burger(n-1, x-2-a[n-1])
+
+n, x = map(int, input().split())
+a = [1]
+p = [1]
+for i in range(n):
+    a.append(2 * a[i] + 3)
+    p.append(2 * p[i] + 1)
+print(burger(n, x))
+
+=======
+Suggestion 2
+
+def burger(n):
+    if n == 0:
+        return 'P'
+    return burger(n-1) + 'B' + burger(n-1) + 'P' + burger(n-1) + 'B'
+
+=======
+Suggestion 3
+
+def burger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + burger(n-1, x-2):
+        return burger(n-1, x-2)
+    else:
+        return 1 + burger(n-1, x-2) + 1
+
+n, x = map(int, input().split())
+print(burger(n, x))
+
+=======
+Suggestion 4
+
+def burger(n, x):
+    if n == 0:
+        return 1
+    p = 2**(n+2)-3
+    if x == 1:
+        return 0
+    elif x <= p:
+        return burger(n-1, x-1)
+    elif x == p+1:
+        return 1+burger(n-1, x-1)
+    elif x <= p*2:
+        return 1+burger(n-1, x-1-p)+1
+    else:
+        return 1+burger(n-1, x-1-p*2)+1+burger(n-1, x-1-p*2)
+
+n, x = map(int, input().split())
+print(burger(n, x))
+
+=======
+Suggestion 5
+
+def burger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + burger(n - 1, x - 2):
+        return burger(n - 1, x - 2)
+    else:
+        return 1 + burger(n - 1, x - 2 - burger(n - 1, x - 2))
+
+n, x = map(int, input().split())
+print(burger(n, x))
+
+=======
+Suggestion 6
+
+def burger(l,x):
+    if l == 0:
+        return 1
+    elif x == 1:
+        return 0
+    elif x <= 1 + burger(l-1,x-1):
+        return burger(l-1,x-1)
+    elif x == 2 + burger(l-1,x-2):
+        return 1 + burger(l-1,x-2)
+    elif x <= 2 + 2*burger(l-1,x-2):
+        return 1 + burger(l-1,x-2)
+    else:
+        return 2 + 2*burger(l-1,x-2)
+
+l,x = map(int,input().split())
+print(burger(l,x))
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    patty = [1]
+    bread = [1]
+    for i in range(50):
+        patty.append(patty[i] * 2 + 1)
+        bread.append(bread[i] * 2 + 3)
+    def f(N, X):
+        if N == 0:
+            return 0 if X <= 0 else 1
+        elif X <= 1 + bread[N - 1]:
+            return f(N - 1, X - 1)
+        else:
+            return patty[N - 1] + 1 + f(N - 1, X - 2 - bread[N - 1])
+    print(f(N, X))
+
+=======
+Suggestion 8
+
+def burger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + a[n - 1]:
+        return burger(n - 1, x - 1)
+    else:
+        return p[n - 1] + 1 + burger(n - 1, x - 2 - a[n - 1])
+
+n, x = map(int, input().split())
+p = [1]
+a = [1]
+for i in range(n):
+    p.append(p[i] * 2 + 1)
+    a.append(a[i] * 2 + 3)
+print(burger(n, x))

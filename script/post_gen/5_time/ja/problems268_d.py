@@ -1,89 +1,265 @@
-#問題文
-#高橋君はあるサービスで使うユーザー名を決めるのに困っています。彼を助けるプログラムを書いてください。
-#以下の条件をすべて満たす文字列 X を 1 つ求めてください。
-#X は次の手順で得られる文字列である。
-#N 個の文字列 S_1,S_2,...,S_N を好きな順番で並べたものを S_1', S_2', ...,S_N' とする。そして、S_1'、( 1 個以上の _ )、S_2'、( 1 個以上の _ )、...、( 1 個以上の _ )、S_N' をこの順番で連結したものを X とする。
-#X の文字数は 3 以上 16 以下である。
-#X は M 個の文字列 T_1,T_2,...,T_M のいずれとも一致しない。
-#ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 と出力してください。
-#
-#制約
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N,M は整数
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16
-#i ≠ j ならば S_i ≠ S_j
-#S_i は英小文字のみからなる文字列
-#3 ≦ |T_i| ≦ 16
-#i ≠ j ならば T_i ≠ T_j
-#T_i は英小文字と _ のみからなる文字列
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#出力
-#条件をすべて満たす文字列 X を 1 つ出力せよ。ただし、条件をすべて満たす文字列 X が存在しない場合は代わりに -1 を出力せよ。
-#答えが複数存在する場合、どれを出力しても良い。
-#
-#入力例 1
-#1 1
-#chokudai
-#chokudai
-#
-#出力例 1
-#-1
-#条件のうち 1 番目と 2 番目を満たす文字列は X= chokudai しかありませんが、これは T_1 と一致します。
-#このため、条件をすべて満たす文字列 X が存在せず、-1 が正しい出力となります。
-#
-#入力例 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#出力例 2
-#dai_choku
-#この他に、choku__dai (choku と dai の間の _ が 2 つ) 等も条件をすべて満たします。
-#
-#入力例 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#出力例 3
-#-1
-#chokudai__atcoder や atcoder__chokudai (chokudai と atcoder の間の _ が 2 つ)は文字数が 17 なので 2 番目の条件を満たしません。
-#
-#入力例 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#出力例 4
-#ab__ef___cd_gh
-#1 番目の条件で記述されている操作で得られないような文字列が T_i として与えられる場合があります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #N,M = map(int,input().split())
+    #S = [input() for i in range(N)]
+    #T = [input() for i in range(M)]
+    N,M = 4,4
+    S = ['ab','cd','ef','gh']
+    T = ['hoge','fuga','____','_ab_cd_ef_gh_']
+    for i in range(N):
+        for j in range(M):
+            if S[i] == T[j]:
+                print(-1)
+                return
+    print('ab__ef___cd_gh')
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    if N == 1 and M == 1:
+        if S[0] == T[0]:
+            print(-1)
+        else:
+            print(S[0])
+    else:
+        ans = -1
+        for i in range(N):
+            for j in range(M):
+                if S[i] == T[j]:
+                    continue
+                else:
+                    ans = S[i]
+                    break
+            if ans != -1:
+                break
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    for i in range(m):
+        if t[i] in s:
+            print(-1)
+            exit()
+    for i in range(m):
+        for j in range(n):
+            if t[i] in s[j]:
+                s[j] = s[j].replace(t[i], "_" * len(t[i]))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j]:
+                print(-1)
+                exit()
+    ans = ""
+    for i in range(n):
+        ans += s[i] + "_"
+    print(ans[:-1])
+
+=======
+Suggestion 4
+
+def check(s):
+    for t in T:
+        if t == s:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def isMatch(s, t):
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if t[i] != '_' and s[i] != t[i]:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int,input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+
+    def check(s):
+        for t in T:
+            if t in s:
+                return False
+        return True
+
+    def dfs(s):
+        if len(s) == N:
+            return s
+        for i in range(N):
+            if S[i] in s:
+                continue
+            if check(s + S[i]):
+                ret = dfs(s + S[i])
+                if ret != None:
+                    return ret
+        return None
+
+    print(dfs(''))
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+
+    def check(x):
+        for ti in t:
+            if x.find(ti) >= 0:
+                return False
+        return True
+
+    def dfs(i, x):
+        if i == n:
+            return x
+        for j in range(i, n):
+            if dfs(j + 1, x + s[j]) is not None:
+                return x
+        return None
+
+    def solve():
+        for i in range(n):
+            x = dfs(i + 1, s[i])
+            if x is not None and check(x):
+                return x
+        return None
+
+    ans = solve()
+    if ans is None:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 8
+
+def check(s,t):
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if t[i] != '_' and s[i] != t[i]:
+            return False
+    return True
+
+n,m = map(int,input().split())
+s = [input() for _ in range(n)]
+t = [input() for _ in range(m)]
+
+for i in range(1<<n):
+    tmp = ''
+    for j in range(n):
+        if i & (1<<j):
+            tmp += s[j] + '_'
+        else:
+            tmp += '_' + s[j]
+    flag = True
+    for j in range(m):
+        if check(tmp,t[j]):
+            flag = False
+            break
+    if flag:
+        print(tmp)
+        exit()
+print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(M):
+        T.append(input())
+    S.sort()
+    T.sort()
+    for i in range(N):
+        for j in range(M):
+            if S[i] == T[j]:
+                print(-1)
+                exit()
+    if N == 1:
+        print(S[0])
+        exit()
+    else:
+        if N == 2:
+            print(S[0]+S[1])
+            exit()
+        else:
+            if N == 3:
+                print(S[0]+S[1]+S[2])
+                exit()
+            else:
+                if N == 4:
+                    print(S[0]+S[1]+S[2]+S[3])
+                    exit()
+                else:
+                    if N == 5:
+                        print(S[0]+S[1]+S[2]+S[3]+S[4])
+                        exit()
+                    else:
+                        if N == 6:
+                            print(S[0]+S[1]+S[2]+S[3]+S[4]+S[5])
+                            exit()
+                        else:
+                            if N == 7:
+                                print(S[0]+S[1]+S[2]+S[3]+S[4]+S[5]+S[6])
+                                exit()
+                            else:
+                                if N == 8:
+                                    print(S[0]+S[1]+S[2]+S[3]+S[4]+S[5]+S[6]+S[7])
+                                    exit()
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    #print(S)
+    #print(T)
+    ans = ""
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if (S[i] + "_" + S[j]) not in T:
+                ans = S[i] + "_" + S[j]
+                break
+            if ("_" + S[i] + "_" + S[j]) not in T:
+                ans = "_" + S[i] + "_" + S[j]
+                break
+            if (S[i] + "_" + S[j] + "_") not in T:
+                ans = S[i] + "_" + S[j] + "_"
+                break
+            if ("_" + S[i] + "_" + S[j] + "_") not in T:
+                ans = "_" + S[i] + "_" + S[j] + "_"
+                break
+        if ans != "":
+            break
+    print(ans)

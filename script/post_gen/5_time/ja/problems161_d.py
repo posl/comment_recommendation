@@ -1,60 +1,169 @@
-#問題文
-#正の整数 X が以下の条件を満たすとき、 X はルンルン数であると言います。  
-#X を(leading zeroなしで)十進数表記した際に、隣り合うどの 2 つの桁の値についても、差の絶対値が 1 以下
-#例えば、 1234 , 1 , 334 などはルンルン数ですが、 31415 , 119 , 13579 などはルンルン数ではありません。  
-#正の整数 K が与えられます。小さい方から K 番目のルンルン数を求めてください。
-#
-#制約
-#1 ≦ K ≦ 10^5
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。  
-#K
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#15
-#
-#出力例 1
-#23
-#小さい方から 15 番目までのルンルン数を順に並べると、
-#1,
-#2,
-#3,
-#4,
-#5,
-#6,
-#7,
-#8,
-#9,
-#10,
-#11,
-#12,
-#21,
-#22,
-#23
-#ですので、答えは 23 です。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#13
-#
-#出力例 3
-#21
-#
-#入力例 4
-#100000
-#
-#出力例 4
-#3234566667
-#答えが 32 ビット符号付き整数の範囲に収まらない可能性があるので注意してください。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def check(n):
+    if n < 10:
+        return True
+    else:
+        s = str(n)
+        for i in range(1, len(s)):
+            if abs(int(s[i]) - int(s[i-1])) > 1:
+                return False
+    return True
+
+k = int(input())
+cnt = 0
+n = 1
+while True:
+    if check(n):
+        cnt += 1
+        if cnt == k:
+            print(n)
+            break
+    n += 1
+
+=======
+Suggestion 2
+
+def isLunlun(n):
+    s = str(n)
+    for i in range(len(s)-1):
+        if abs(int(s[i])-int(s[i+1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def is_lunlun(n):
+    s = str(n)
+    for i in range(len(s)-1):
+        if abs(int(s[i]) - int(s[i+1])) > 1:
+            return False
+    return True
+
+K = int(input())
+cnt = 0
+i = 0
+while True:
+    i += 1
+    if is_lunlun(i):
+        cnt += 1
+    if cnt == K:
+        print(i)
+        break
+
+=======
+Suggestion 4
+
+def l(x):
+    if x == 0:
+        return 0
+    elif x < 10:
+        return 1
+    else:
+        return 1 + l(x // 10)
+
+=======
+Suggestion 5
+
+def check(x):
+    s = str(x)
+    for i in range(len(s)-1):
+        if abs(int(s[i])-int(s[i+1])) > 1:
+            return False
+    return True
+
+K = int(input())
+cnt = 0
+i = 0
+while True:
+    i += 1
+    if check(i):
+        cnt += 1
+        if cnt == K:
+            print(i)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    lunlun = [1,2,3,4,5,6,7,8,9]
+    for i in range(1, k):
+        x = lunlun[i]
+        if x % 10 == 0:
+            lunlun.append(x * 10)
+            lunlun.append(x * 10 + 1)
+        elif x % 10 == 9:
+            lunlun.append(x * 10 + 8)
+            lunlun.append(x * 10 + 9)
+        else:
+            lunlun.append(x * 10 + x % 10 - 1)
+            lunlun.append(x * 10 + x % 10)
+            lunlun.append(x * 10 + x % 10 + 1)
+    print(lunlun[k - 1])
+
+=======
+Suggestion 7
+
+def is_lunlun(n):
+    s = str(n)
+    for i in range(len(s)-1):
+        if abs(int(s[i]) - int(s[i+1])) > 1:
+            return False
+    return True
+
+K = int(input())
+cnt = 0
+for i in range(10**20):
+    if is_lunlun(i):
+        cnt += 1
+        if cnt == K:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    if k <= 9:
+        print(k)
+        return
+    k -= 9
+    cnt = 9
+    for i in range(10, 10**9):
+        if k <= cnt * 2:
+            k -= 1
+            s = str(i)
+            print(s[k])
+            return
+        else:
+            k -= cnt * 2
+            cnt *= 10
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    count = 0
+    i = 0
+    while count < k:
+        i += 1
+        if i < 10:
+            count += 1
+        else:
+            s = str(i)
+            flag = True
+            for j in range(len(s) - 1):
+                if abs(int(s[j]) - int(s[j + 1])) > 1:
+                    flag = False
+                    break
+            if flag:
+                count += 1
+    print(i)

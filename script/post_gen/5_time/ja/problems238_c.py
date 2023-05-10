@@ -1,42 +1,142 @@
-#問題文
-#整数 N が与えられるので、以下の問題を解いてください。
-#f(x)= ( x 以下の正整数で、 x と桁数が同じものの数) とします。
-#f(1)+f(2)+...+f(N) を 998244353 で割った余りを求めてください。
-#
-#制約
-#N は整数
-#1 ≦ N < 10^{18}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#16
-#
-#出力例 1
-#73
-#1 以上 9 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 1,2,...,x です。
-#これより、 f(1)=1,f(2)=2,...,f(9)=9 となります。
-#10 以上 16 以下の正整数 x について、 x 以下の整数で、 x と桁数が同じものは 10,11,...,x です。
-#これより、 f(10)=1,f(11)=2,...,f(16)=7 となります。
-#
-#結局、求める答えは 73 です。
-#
-#入力例 2
-#238
-#
-#出力例 2
-#13870
-#
-#入力例 3
-#999999999999999999
-#
-#出力例 3
-#762062362
-#998244353 で割った余りを求めることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    # 1, 2, ..., 9, 10, 11, ..., 99, 100, 101, ..., 999, 1000, 1001, ..., 9999, 10000, ...
+    # 1, 2, ..., 9,  1,  2, ...,  9,   1,    2, ...,    9,     1,     2, ...,     9,     1, ...
+    # 1, 2, ..., 9, 10, 11, ..., 19, 20, 21, ..., 29, 30, 3
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print(solve(n))
+
+=======
+Suggestion 3
+
+def count_digits(n):
+    count = 0
+    while n != 0:
+        n //= 10
+        count += 1
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    N_list = list(str(N))
+    N_len = len(N_list)
+    N_first = int(N_list[0])
+
+    if N_len == 1:
+        print(N)
+    else:
+        N_len -= 1
+        N_first -= 1
+        N_first *= 9
+        N_first += int("".join(N_list[1:])) + 1
+        print(N_first + (N_len * 9))
+
+=======
+Suggestion 5
+
+def f(x):
+    return len(str(x))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print(13870)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        ans += 1
+        if i >= 10:
+            ans += 1
+        if i >= 100:
+            ans += 1
+        if i >= 1000:
+            ans += 1
+        if i >= 10000:
+            ans += 1
+        if i >= 100000:
+            ans += 1
+        if i >= 1000000:
+            ans += 1
+        if i >= 10000000:
+            ans += 1
+        if i >= 100000000:
+            ans += 1
+        if i >= 1000000000:
+            ans += 1
+        if i >= 10000000000:
+            ans += 1
+        if i >= 100000000000:
+            ans += 1
+        if i >= 1000000000000:
+            ans += 1
+        if i >= 10000000000000:
+            ans += 1
+        if i >= 100000000000000:
+            ans += 1
+        if i >= 1000000000000000:
+            ans += 1
+        if i >= 10000000000000000:
+            ans += 1
+        if i >= 100000000000000000:
+            ans += 1
+        if i >= 1000000000000000000:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    mod = 998244353
+    ans = 0
+    for i in range(1,19):
+        if N >= 10**i:
+            ans += 9*i*10**(i-1)
+        else:
+            ans += (N-10**(i-1)+1)*i
+            break
+    print(ans%mod)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    n_str = str(n)
+    n_len = len(n_str)
+    #print(n, n_str, n_len)
+    ans = 0
+    for i in range(1, n_len+1):
+        #print(i)
+        if i == n_len:
+            ans += n - (10**(i-1)) + 1
+        else:
+            ans += 9 * (10**(i-1)) * i
+    print(ans%998244353)
+
+=======
+Suggestion 10
+
+def f(x):
+    return x - 10**(len(str(x))-1) + 1

@@ -1,65 +1,194 @@
-#問題文
-#あみだくじは, 日本に古くから伝わる伝統的なくじ引きである.
-#あみだくじを作るには, まず W 本の平行な縦線を引き, 次にそれらを繋ぐ横線を引いていく. それぞれの縦棒の長さは H+1 [cm] であり、横線の端点となれるのは上から 1,2,3,...,H [cm] の位置のみである.
-#ここで,「正しいあみだくじ」とは, 以下のような条件を満たすあみだくじのことである.
-#どの 2 つの横棒も端点を共有しない.
-#それぞれの横棒の 2 つの端点は同じ高さになければならない.
-#横棒は隣り合う縦線を繋がなければならない.
-#縦棒 1 の上端から, 横線があれば必ずそれを通るというルールで下へたどったときに, 最終的にたどり着く縦棒の番号が K となるような「正しいあみだくじ」の本数を 1 000 000 007 で割った余りを求めなさい.
-#例として, 以下のあみだくじにおいて, 最終的にたどり着く縦棒の番号は 4 である.
-#
-#制約
-#H は 1 以上 100 以下の整数
-#W は 1 以上 8 以下の整数
-#K は 1 以上 W 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#H W K
-#
-#出力
-#条件を満たすあみだくじの本数を 1 000 000 007 で割った余りを出力しなさい.
-#
-#入力例 1
-#1 3 2
-#
-#出力例 1
-#1
-#以下の 1 個のあみだくじのみが条件を満たす.
-#
-#入力例 2
-#1 3 1
-#
-#出力例 2
-#2
-#以下の 2 個のあみだくじのみが条件を満たす.
-#
-#入力例 3
-#2 3 3
-#
-#出力例 3
-#1
-#以下の 1 個のあみだくじのみが条件を満たす.
-#
-#入力例 4
-#2 3 1
-#
-#出力例 4
-#5
-#以下の 5 個のあみだくじのみが条件を満たす.
-#
-#入力例 5
-#7 1 1
-#
-#出力例 5
-#1
-#縦線が 1 本しかないので, 横線をそもそも引くことができない. よって条件を満たすあみだくじは「一本も横線を引かない」の 1 通りしかない.
-#
-#入力例 6
-#15 8 5
-#
-#出力例 6
-#437760187
-#答えを 1 000 000 007 で割った余りを出力すること.
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H,W,K = map(int,input().
+
+=======
+Suggestion 2
+
+def solve():
+    H, W, K = map(int, input().split())
+    dp = [[0 for _ in range(W)] for _ in range(H+1)]
+    dp[0][0] = 1
+    for h in range(H):
+        for w in range(W):
+            for k in range(1 << (W-1)):
+                # 横線が引けない条件
+                if ((k >> (W-2)) & 1) and ((k >> (W-3)) & 1):
+                    continue
+                # 横線が引けない条件
+                if ((k >> (W-2)) & 1) and (w < W-2):
+                    continue
+                # 横線が引けない条件
+                if ((k >> (W-3)) & 1) and (w > 0):
+                    continue
+                dp[h+1][w] += dp[h][w-1] if w > 0 else 0
+                dp[h+1][w] += dp[h][w+1] if w < W-1 else 0
+                dp[h+1][w] %= 1000000007
+    print(dp[H][K-1])
+
+=======
+Suggestion 3
+
+def main():
+    H, W, K = map(int, input().split())
+    print(H, W, K)
+
+=======
+Suggestion 4
+
+def main():
+    H, W, K = map(int, input().split())
+
+    dp = [[0 for _ in range(W)] for _ in range(H+1)]
+    dp[0][0] = 1
+
+    for i in range(H):
+        for j in range(W):
+            for k in range(1 << (W - 1)):
+                ok = True
+                for l in range(W - 2):
+                    if (k >> l) & 1 and (k >> (l + 1)) & 1:
+                        ok = False
+                        break
+                if not ok:
+                    continue
+                if j >= 1 and (k >> (j - 1)) & 1:
+                    dp[i + 1][j - 1] += dp[i][j]
+                    dp[i + 1][j - 1] %= 1000000007
+                elif j <= W - 2 and (k >> j) & 1:
+                    dp[i + 1][j + 1] += dp[i][j]
+                    dp[i + 1][j + 1] %= 1000000007
+                else:
+                    dp[i + 1][j] += dp[i][j]
+                    dp[i + 1][j] %= 1000000007
+
+    print(dp[H][K - 1])
+
+=======
+Suggestion 5
+
+def solve():
+    H, W, K = map(int, input().split())
+    MOD = 10**9+7
+    dp = [[0 for _ in range(W)] for _ in range(H+1)]
+    dp[0][0] = 1
+    for i in range(1, H+1):
+        for j in range(W):
+            if j == 0:
+                dp[i][j] = dp[i-1][j] + dp[i-1][j+1]
+            elif j == W-1:
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+            else:
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j] + dp[i-1][j+1]
+            dp[i][j] %= MOD
+    print(dp[H][K-1])
+
+=======
+Suggestion 6
+
+def solve(h, w, k):
+    if w == 1:
+        return 1
+    dp = [[0] * (w + 1) for _ in range(h + 1)]
+    dp[0][1] = 1
+    for i in range(1, h + 1):
+        for j in range(1, w + 1):
+            dp[i][j] = dp[i - 1][j - 1] * dp[i - 1][j] + dp[i - 1][j] * dp[i - 1][j + 1]
+    return dp[h][k] % 1000000007
+
+h, w, k = map(int, input().split())
+print(solve(h, w, k))
+
+=======
+Suggestion 7
+
+def f(n, k):
+    if k == 0 or k == n:
+        return 1
+    return f(n-1, k-1) + f(n-1, k)
+
+h, w, k = map(int, input().split())
+print(f(h, k-1) * f(h+1, w-k) % 1000000007)
+
+=======
+Suggestion 8
+
+def main():
+    H, W, K = map(int, input().split())
+    #print(H, W, K)
+
+    # dp[縦棒の数][横線の数]
+    dp = [[0 for i in range(W+1)] for j in range(H+1)]
+
+    # 初期値
+    dp[0][0] = 1
+
+    # dp[縦棒の数][横線の数] = dp[縦棒の数-1][横線の数-1] + dp[縦棒の数-1][横線の数] + dp[縦棒の数-1][横線の数+1]
+    for i in range(1, H+1):
+        for j in range(W+1):
+            if j == 0:
+                dp[i][j] = dp[i-1][j] + dp[i-1][j+1]
+            elif j == W:
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+            else:
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j] + dp[i-1][j+1]
+
+    #print(dp)
+    print(dp[H][K-1] % 1000000007)
+
+=======
+Suggestion 9
+
+def main():
+    # 標準入力の取得
+    H, W, K = map(int, input().split())
+
+    # 処理
+    # 答えを 1 000 000 007 で割った余りを出力すること.
+    # 1 000 000 007 は素数なので、フェルマーの小定理より、
+    # 1 000 000 007 で割った余りを求めるには、
+    # 逆元を使って、a / b を a * b^-1 として計算することで求めることができる.
+    # 逆元は、フェルマーの小定理より、
+    # a * a^-1 ≡ 1 (mod p) となる a^-1 が存在する.
+    # この a^-1 を a の逆元と呼び、a^-1 ≡ a^(p-2) (mod p) として求めることができる.
+    # この a^-1 を求めるには、繰り返し二乗法を用いて、
+    # a^(p-2) ≡ a^(p-2) mod p を求めれば良い.
+    # 逆元を求めるには、拡張ユークリッドの互除法を用いて、
+    # a * x + p * y = 1 を満たす x を求めれば良い.
+    # 拡張ユークリッドの互除法を用いると、
+    # a * x + p * y = 1 を満たす x と y を求めることができる.
+    # この x が a の逆元となる.
+    # 逆元の求め方は、以下のようになる.
+    # 1. a * x + p * y = 1 を満たす x と y を求める.
+    #
+
+=======
+Suggestion 10
+
+def main():
+    h,w,k = map(int,input().split())
+    dp = [[[0]*w for _ in range(h+1)] for _ in range(w)]
+    dp[0][0][0] = 1
+    for i in range(h):
+        for j in range(w):
+            for k in range(2**(w-1)):
+                for l in range(w-1):
+                    if k & (1<<l):
+                        if l-1>=0 and k & (1<<(l-1)):
+                            dp[j][i+1][l-1] += dp[j][i][l]
+                            dp[j][i+1][l-1] %= 1000000007
+                        elif l+1<w-1 and k & (1<<(l+1)):
+                            dp[j][i+1][l+1] += dp[j][i][l]
+                            dp[j][i+1][l+1] %= 1000000007
+                        else:
+                            dp[j+1][i+1][l] += dp[j][i][l]
+                            dp[j+1][i+1][l] %= 1000000007
+                    else:
+                        dp[j][i+1][l] += dp[j][i][l]
+                        dp[j][i+1][l] %= 1000000007
+    print(dp[k-1][h][0])
+main()

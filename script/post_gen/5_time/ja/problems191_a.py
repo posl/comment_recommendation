@@ -1,36 +1,102 @@
-#問題文
-#高橋君と青木君が野球をしています。高橋君はピッチャー、青木君はバッターです。
-#高橋君は消える魔球を投げることができます。高橋君が投げる消える魔球は、速さ V  [m / s] で等速直線運動をし、投げた瞬間から T 秒後から S 秒後まで (両端を含む) 消えています。消えている間もボールは移動を続けます。
-#ボールが高橋君のもとからちょうど D  m 離れたときにボールが消えていないならば、青木君はボールを打つことができます。消えているなら打つことはできません。
-#青木君は高橋君のボールを打つことができますか ?
-#
-#制約
-#1 ≦ V ≦ 1000
-#1 ≦ T < S ≦ 1000
-#1 ≦ D ≦ 1000
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#V T S D
-#
-#出力
-#青木君がボールを打つことができるなら Yes を、できないなら No を出力せよ。  
-#
-#入力例 1
-#10 3 5 20
-#
-#出力例 1
-#Yes
-#ボールが高橋君からちょうど 20  m 離れるのは、高橋君がボールを投げてから 2 秒後です。
-#一方でボールが消えるのは、高橋君がボールを投げてから 3 秒後から 5 秒後まで (両端含む) なので、青木君はボールを打つことができます。  
-#
-#入力例 2
-#10 3 5 30
-#
-#出力例 2
-#No
-#投げてからちょうど T 秒後やちょうど S 秒後もボールは消えていることに注意してください。
-#この場合、ボールが D  m 離れるのは高橋君が投げてからちょうど T 秒後なので、ボールは消えており、青木君はボールを打つことができません。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    v,t,s,d = map(int,input().split())
+    print("Yes" if d < v*t or d > v*s else "No")
+
+=======
+Suggestion 2
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if d < v*t or v*s < d:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if (d/v >= t and d/v <= s):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    V, T, S, D = map(int, input().split())
+    print("Yes" if D < V*T or V*S < D else "No")
+
+=======
+Suggestion 5
+
+def hit_ball(v, t, s, d):
+    # ボールが高橋君からちょうど D  m 離れたときにボールが消えていないならば、青木君はボールを打つことができます。
+    # 消えているなら打つことはできません。
+    # ボールの移動距離は、ボールの速さと移動時間から求められる
+    # ボールの移動時間は、ボールが投げられてから、ボールが消える時間の間
+    # ボールの移動時間が、ボールの移動距離の単位時間あたりの移動距離になる
+    # ボールの移動距離が、高橋君からちょうど D  m 離れたときにボールが消えていないならば、青木君はボールを打つことができます。
+    # ボールの移動距離が、高橋君からちょうど D  m 離れたときにボールが消えるならば、青木君はボールを打つことができません。
+    # ボールの移動距離が、高橋君からちょうど D  m 離れるのは、高橋君がボールを投げてから T 秒後です。
+    # 一方でボールが消えるのは、高橋君がボールを投げてから T 秒後から S 秒後まで (両端含む) なので、青木君はボールを打つことができます。
+    # ボールの移動距離が、高橋君からちょうど D  m
+
+=======
+Suggestion 6
+
+def main():
+    v,t,s,d = map(int, input().split())
+    if t*v <= d <= s*v:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    v,t,s,d = map(int, input().split())
+    if d/v >= t and d/v <= s:
+        print('No')
+    else:
+        print('Yes')
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    V, T, S, D = list(map(int, input().split()))
+    if (T*V <= D) and (D <= S*V):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    v, t, s, d = map(int, input().split())
+    if d < v*t or d > v*s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    v,t,s,d = map(int, input().split())
+    if d/v < t or s < d/v:
+        print("Yes")
+    else:
+        print("No")

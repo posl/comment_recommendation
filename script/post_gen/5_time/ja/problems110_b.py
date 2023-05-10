@@ -1,58 +1,190 @@
-#問題文
-#この世界は 1 次元世界であり、世界を治める 2 つの帝国はそれぞれ A 帝国、B 帝国と呼ばれています。
-#A 帝国の首都は座標 X、B 帝国の首都は座標 Y に位置しています。
-#ある日、A 帝国は座標 x_1, x_2, ..., x_N、B 帝国は座標 y_1, y_2, ..., y_M の都市を支配下に置きたくなりました。
-#このとき、以下の 3 つの条件をすべて満たす整数 Z が存在すれば、合意が成立して戦争は起きませんが、存在しない場合には戦争が起こります。
-#X < Z ≦ Y
-#x_1, x_2, ..., x_N < Z
-#y_1, y_2, ..., y_M ≧ Z
-#戦争が起こるかどうか判定してください。
-#
-#制約
-#入力はすべて整数である
-#1 ≦ N, M ≦ 100
-#-100 ≦ X < Y ≦ 100
-#-100 ≦ x_i, y_i ≦ 100
-#x_1, x_2, ..., x_N ≠ X
-#x_i はすべて異なる
-#y_1, y_2, ..., y_M ≠ Y
-#y_i はすべて異なる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M X Y
-#x_1 x_2 ... x_N
-#y_1 y_2 ... y_M
-#
-#出力
-#戦争が起こるなら War、そうでないなら No War を出力せよ。
-#
-#入力例 1
-#3 2 10 20
-#8 15 13
-#16 22
-#
-#出力例 1
-#No War
-#Z = 16 とすれば、次のように 3 つの条件をすべて満たすので合意が成立し、戦争は起きません。
-#X = 10 < 16 ≦ 20 = Y
-#8, 15, 13 < 16
-#16, 22 ≧ 16
-#
-#入力例 2
-#4 2 -48 -1
-#-20 -35 -91 -23
-#-22 66
-#
-#出力例 2
-#War
-#
-#入力例 3
-#5 3 6 8
-#-10 3 1 5 -100
-#100 6 14
-#
-#出力例 3
-#War
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+
+    x_max = max(x)
+    y_min = min(y)
+
+    if x_max < y_min and X < x_max < Y and X < y_min <= Y:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 2
+
+def main():
+    # 標準入力からN, M, X, Yを取得する
+    N, M, X, Y = map(int, input().split())
+    # 標準入力からA帝国の都市の座標を取得する
+    x_list = list(map(int, input().split()))
+    # 標準入力からB帝国の都市の座標を取得する
+    y_list = list(map(int, input().split()))
+
+    # A帝国の都市の座標の最大値を取得する
+    x_max = max(x_list)
+    # B帝国の都市の座標の最小値を取得する
+    y_min = min(y_list)
+
+    # X < Z ≦ Y かつ x_1, x_2, ..., x_N < Z かつ y_1, y_2, ..., y_M ≧ Z を満たす整数Zが存在するかどうかを判定する
+    if X < y_min and y_min <= Y and x_max < y_min:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 3
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+
+    x_list.append(x)
+    y_list.append(y)
+
+    x_list.sort()
+    y_list.sort()
+
+    if x_list[-1] >= y_list[0]:
+        print('War')
+    else:
+        print('No War')
+
+=======
+Suggestion 4
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+
+    x_list.append(x)
+    y_list.append(y)
+
+    x_list.sort()
+    y_list.sort()
+
+    if x_list[-1] < y_list[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 5
+
+def main():
+    n,m,x,y = map(int,input().split())
+    xlist = list(map(int,input().split()))
+    ylist = list(map(int,input().split()))
+    xlist.append(x)
+    ylist.append(y)
+    xlist.sort()
+    ylist.sort()
+    if xlist[-1] < ylist[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 6
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_max = max(list(map(int, input().split())))
+    y_min = min(list(map(int, input().split())))
+    if x_max < y_min and x < y_min and y_min <= y:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 7
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+
+    x_list.append(X)
+    y_list.append(Y)
+
+    x_max = max(x_list)
+    y_min = min(y_list)
+
+    if x_max < y_min:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 8
+
+def main():
+    # 標準入力から値を取得してinput_lineに入れる
+    input_line = input().rstrip()
+    # input_lineを空白で分割して、input_lineに上書き
+    N, M, X, Y = input_line.split()
+    N = int(N)
+    M = int(M)
+    X = int(X)
+    Y = int(Y)
+
+    # 標準入力から値を取得してinput_lineに入れる
+    input_line = input().rstrip()
+    # input_lineを空白で分割して、input_lineに上書き
+    x = input_line.split()
+    x = list(map(int, x))
+
+    # 標準入力から値を取得してinput_lineに入れる
+    input_line = input().rstrip()
+    # input_lineを空白で分割して、input_lineに上書き
+    y = input_line.split()
+    y = list(map(int, y))
+
+    x.append(X)
+    y.append(Y)
+
+    x.sort()
+    y.sort()
+
+    if x[N] >= y[0]:
+        print("War")
+    else:
+        print("No War")
+
+=======
+Suggestion 9
+
+def main():
+    n,m,x,y = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    y_list = list(map(int,input().split()))
+
+    x_list.sort()
+    y_list.sort()
+
+    if x_list[-1] < y_list[0] and x < y_list[0] and y > x_list[-1]:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 10
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    if max(x_list) >= min(y_list):
+        print('War')
+    else:
+        print('No War')

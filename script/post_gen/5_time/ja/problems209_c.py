@@ -1,52 +1,132 @@
-#問題文
-#長さ N の整数列 C が与えられます。以下の条件を全て満たす長さ N の整数列 A の個数を求めてください。
-#1 ≦ A_i ≦ C_i (1 ≦ i ≦ N)
-#A_i ≠ A_j (1 ≦ i < j ≦ N)
-#ただし、答えは非常に大きくなる可能性があるので、(10^9+7) で割った余りを出力してください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#C_1 C_2 ... C_N
-#
-#出力
-#条件を全て満たす整数列 A の個数を (10^9+7) で割った余りを出力せよ。
-#
-#入力例 1
-#2
-#1 3
-#
-#出力例 1
-#2
-#条件を全て満たす A は (1,2) と (1,3) の 2 つです。
-#例えば A=(1,1) は 2 つ目の条件を満たしません。
-#
-#入力例 2
-#4
-#3 3 4 4
-#
-#出力例 2
-#12
-#
-#入力例 3
-#2
-#1 1
-#
-#出力例 3
-#0
-#条件を全て満たす整数列は 1 つも存在しないので、0 と出力してください。
-#
-#入力例 4
-#10
-#999999917 999999914 999999923 999999985 999999907 999999965 999999914 999999908 999999951 999999979
-#
-#出力例 4
-#405924645
-#(10^9+7) で割った余りを出力することに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    ans = 1
+    for i in range(n):
+        ans = ans * max(0, c[i] - i) % (10**9 + 7)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= max(C[i] - i, 0)
+        ans %= 10 ** 9 + 7
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    MOD = 10 ** 9 + 7
+
+    C.sort()
+    ans = 1
+
+    for i in range(N):
+        ans *= (C[i] - i)
+        ans %= MOD
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= C[i] - i
+        ans %= (10**9 + 7)
+    print(ans)
+
+=======
+Suggestion 5
+
+def modinv(a, mod=10**9+7):
+    return pow(a, mod-2, mod)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= (C[i] - i)
+        ans %= (10**9 + 7)
+    print(ans)
+
+=======
+Suggestion 7
+
+def resolve():
+    MOD = 10**9+7
+    N = int(input())
+    C = list(map(int, input().split()))
+
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= C[i] - i
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n=int(input())
+    c=list(map(int,input().split()))
+    mod=10**9+7
+    c.sort()
+    ans=1
+    for i in range(n):
+        ans*=(c[i]-i)
+        ans%=mod
+    print(ans)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    C = list(map(int, input().split()))
+    C.sort()
+    ans = 1
+    for i in range(N):
+        ans *= C[i] - i
+        ans %= 1000000007
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    c = list(map(int, input().split()))
+    c.sort()
+    ans = 1
+    for i in range(n):
+        ans *= c[i] - i
+        ans %= 1000000007
+    print(ans)

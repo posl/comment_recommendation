@@ -1,65 +1,210 @@
-#問題文
-#長さ N の数列 A = (A_1, A_2, ..., A_N) が与えられます。
-#K = 0, 1, 2, ..., N-1 のそれぞれについて、下記の問題を解いてください。
-#1 以上 N 以下の整数 i であって、次の条件を満たすものの個数を求めよ。
-#A に含まれる整数のうち A_i より大きいものはちょうど K 種類である。  
-#
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 A_2 ... A_N
-#
-#出力
-#N 行出力せよ。
-#i = 1, 2, ..., N について、i 行目には K = i-1 の場合の問題の答えを出力せよ。
-#
-#入力例 1
-#6
-#2 7 1 8 2 8
-#
-#出力例 1
-#2
-#1
-#2
-#1
-#0
-#0
-#例として、K = 2 の場合の問題の答えを以下で求めます。
-#A_1 = 2 に関して、A に含まれる整数のうち A_1 より大きいものは、7, 8 の 2 種類です。
-#A_2 = 7 に関して、A に含まれる整数のうち A_2 より大きいものは、8 の 1 種類です。
-#A_3 = 1 に関して、A に含まれる整数のうち A_3 より大きいものは、2, 7, 8 の 3 種類です。
-#A_4 = 8 に関して、A に含まれる整数のうち A_4 より大きいものは、0 種類です（存在しません）。
-#A_5 = 2 に関して、A に含まれる整数のうち A_5 より大きいものは、7, 8 の 2 種類です。
-#A_6 = 8 に関して、A に含まれる整数のうち A_6 より大きいものは、0 種類です（存在しません）。
-#よって、A に含まれる整数のうちA_i より大きいものがちょうど K = 2 種類であるような i は、i = 1 と i = 5 の 2 つです。よって、K = 2 の場合の答えは 2 です。
-#
-#入力例 2
-#1
-#1
-#
-#出力例 2
-#1
-#
-#入力例 3
-#10
-#979861204 57882493 979861204 447672230 644706927 710511029 763027379 710511029 447672230 136397527
-#
-#出力例 3
-#2
-#1
-#2
-#1
-#2
-#1
-#1
-#0
-#0
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    ans = [0] * N
+    ans[0] = 1
+    ans[1] = 1
+    for i in range(2,N):
+        if A[i] == A[i-1]:
+            ans[i] = ans[i-1]
+        else:
+            ans[i] = ans[i-1] + 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+    count = 1
+    ans = 0
+    for i in range(N-1):
+        if A[i] != A[i+1]:
+            ans += count*(count-1)//2
+            count = 1
+        else:
+            count += 1
+    ans += count*(count-1)//2
+
+    for i in range(N):
+        if i == 0:
+            print(ans)
+        elif A[i-1] != A[i]:
+            ans -= count*(count-1)//2
+            print(ans)
+        else:
+            print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    K = [0] * N
+    for i in range(N):
+        K[i] = A.count(A[i])
+    total = sum(K)
+    for i in range(N):
+        if i == 0:
+            print(total - K[i])
+        else:
+            print(total - K[i] - sum(K[:i]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    K = 0
+    ans = [0] * N
+    for i in range(N):
+        if i == 0:
+            ans[i] = 1
+        elif A[i] != A[i-1]:
+            K += 1
+            ans[i] = 1
+        else:
+            ans[i] = ans[i-1] + 1
+    for i in range(N):
+        print(ans[i])
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    A.sort()
+    #print(A)
+    K = 0
+    for i in range(N):
+        if i == 0:
+            cnt = 1
+        elif A[i] != A[i-1]:
+            K += 1
+            cnt = 1
+        else:
+            cnt += 1
+        if i == N - 1:
+            print(cnt)
+        elif A[i] != A[i+1]:
+            print(cnt)
+    #print(K)
+    #for i in range(N):
+    #    print(K)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    cnt = 0
+    ans = [0] * N
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            cnt += 1
+        else:
+            ans[cnt] += 1
+            cnt = 0
+    ans[cnt] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * N
+    C = [0] * N
+    for i in range(N):
+        if i == 0:
+            B[i] = 1
+        else:
+            if A[i] != A[i-1]:
+                B[i] = 1
+    for i in range(N):
+        if i == 0:
+            C[i] = 1
+        else:
+            if A[N-i] != A[N-i-1]:
+                C[i] = 1
+    for i in range(N):
+        if i != 0:
+            B[i] = B[i] + B[i-1]
+            C[i] = C[i] + C[i-1]
+    for i in range(N):
+        if i == 0:
+            print(B[N-1])
+        else:
+            print(B[N-1]-B[i-1]-C[N-i-1])
+main()
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    readline = sys.stdin.buffer.readline
+    mod = 10**9+7
+    from collections import Counter
+
+    N = int(readline())
+    A = list(map(int,readline().split()))
+    c = Counter(A)
+    c = sorted(c.items(),key=lambda x:x[0])
+    ans = [0]*N
+    for i in range(N):
+        if c[i][0] > i:
+            ans[i] = c[i][1]
+    print(*ans,sep='\n')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = [0]*(n+1)
+    ans = 0
+    for i in range(n):
+        if a[i] != a[i-1]:
+            ans += b.count(i)
+            b = [0]*(n+1)
+        b[a[i]] += 1
+    ans += b.count(n)
+    b = [0]*(n+1)
+    for i in range(n):
+        if a[i] != a[i-1]:
+            print(ans - b.count(i))
+            b = [0]*(n+1)
+        b[a[i]] += 1
+    print(ans - b.count(n))

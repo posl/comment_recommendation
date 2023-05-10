@@ -1,85 +1,136 @@
-#問題文
-#2 次元平面上に N 個の点があります。 i 個目の点の座標は (X_i,Y_i) です。
-#これらのうち、原点からの距離が D 以下であるような点は何個ありますか？
-#なお、座標 (p,q) にある点と原点の距離は (p^2+q^2)^(1/2) で表されます。
-#
-#制約
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ D ≦ 2× 10^5
-#|X_i|,|Y_i| ≦ 2× 10^5
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#出力
-#原点からの距離が D 以下であるような点の個数を整数で出力せよ。
-#
-#入力例 1
-#4 5
-#0 5
-#-2 4
-#3 4
-#4 -4
-#
-#出力例 1
-#3
-#それぞれの点の原点からの距離は
-#(0^2+5^2)^(1/2)=5
-#((-2)^2+4^2)^(1/2)=4.472...
-#(3^2+4^2)^(1/2)=5
-#(4^2+(-4)^2)^(1/2)=5.656...
-#となります。したがって、原点からの距離が 5 以下であるような点は 3 個です。
-#
-#入力例 2
-#12 3
-#1 1
-#1 1
-#1 1
-#1 1
-#1 2
-#1 3
-#2 1
-#2 2
-#2 3
-#3 1
-#3 2
-#3 3
-#
-#出力例 2
-#7
-#同じ座標に複数の点があることがあります。
-#
-#入力例 3
-#20 100000
-#14309 -32939
-#-56855 100340
-#151364 25430
-#103789 -113141
-#147404 -136977
-#-37006 -30929
-#188810 -49557
-#13419 70401
-#-88280 165170
-#-196399 137941
-#-176527 -61904
-#46659 115261
-#-153551 114185
-#98784 -6820
-#94111 -86268
-#-30401 61477
-#-55056 7872
-#5901 -163796
-#138819 -185986
-#-69848 -96669
-#
-#出力例 3
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, d = map(int, input().split())
+    x = [0] * n
+    y = [0] * n
+    for i in range(n):
+        x[i], y[i] = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        if x[i] ** 2 + y[i] ** 2 <= d ** 2:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_distance(x,y):
+    return (x**2 + y**2)**(1/2)
+
+N,D = map(int, input().split())
+
+count = 0
+for i in range(N):
+    x,y = map(int, input().split())
+    distance = get_distance(x,y)
+    if distance <= D:
+        count += 1
+
+print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    cnt = 0
+    for i in range(N):
+        if pow(pow(X[i],2) + pow(Y[i],2), 1/2) <= D:
+            cnt += 1
+
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n, d = map(int, input().split())
+    print(len([1 for _ in range(n) if sum(map(lambda x: x**2, map(int, input().split()))) <= d**2]))
+
+=======
+Suggestion 5
+
+def main():
+    n,d = map(int,input().split())
+    x = []
+    y = []
+    for i in range(0,n):
+        a,b = map(int,input().split())
+        x.append(a)
+        y.append(b)
+    cnt = 0
+    for i in range(0,n):
+        if x[i]**2 + y[i]**2 <= d**2:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n, d = map(int, input().split())
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        if xy[i][0]**2 + xy[i][1]**2 <= d**2:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    n, d = map(int, input().split())
+    cnt = 0
+    for i in range(n):
+        x, y = map(int, input().split())
+        if (x**2+y**2)**(1/2) <= d:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N, D = map(int, input().split())
+    count = 0
+    for i in range(N):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= D**2:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N, D = map(int, input().split())
+    count = 0
+    for i in range(N):
+        X, Y = map(int, input().split())
+        if (X**2 + Y**2)**(1/2) <= D:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solve():
+    n, d = map(int, input().split())
+    count = 0
+    for i in range(n):
+        x, y = map(int, input().split())
+        if x**2 + y**2 <= d**2:
+            count += 1
+    print(count)

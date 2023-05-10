@@ -1,65 +1,184 @@
-#問題文
-#上下左右に広がる N× N のマス目があり、最初全てのマスは白く塗られています。このマス目の上から i 行目、左から j 列目のマスを (i,j) で表します。
-#高橋君は 1 以上 N 以下の整数 A, B を持っており、次のような操作を行います。
-#max(1-A,1-B)≦ k≦ min(N-A,N-B) をみたす全ての整数 k について、(A+k,B+k) を黒く塗る。
-#max(1-A,B-N)≦ k≦ min(N-A,B-1) をみたす全ての整数 k について、(A+k,B-k) を黒く塗る。
-#この操作を行った後のマス目について、P≦ i≦ Q かつ R≦ j≦ S をみたす各マス (i,j) がそれぞれ何色で塗られているか求めてください。
-#
-#制約
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N A B
-#P Q R S
-#
-#出力
-#Q-P+1 行出力せよ。
-#各行は # と . のみからなる長さ S-R+1 の文字列であり、
-#i 行目の文字列の j 番目の文字が
-# # であることは (P+i-1,R+j-1) が黒く塗られていることを、
-# . であることは (P+i-1,R+j-1) が白く塗られていることをさす。
-#
-#入力例 1
-#5 3 2
-#1 5 1 5
-#
-#出力例 1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#1 つめの操作で (2,1), (3,2), (4,3), (5,4) の 4 マスが、
-#2 つめの操作で (4,1), (3,2), (2,3), (1,4) の 4 マスが黒く塗られます。
-#よって、P=1, Q=5, R=1, S=5 より、上のように出力します。
-#
-#入力例 2
-#5 3 3
-#4 5 2 5
-#
-#出力例 2
-##.#.
-#...#
-#操作によって、
-#(1,1), (1,5), (2,2), (2,4), (3,3), (4,2), (4,4), (5,1), (5,5) の 9 マスが
-#黒く塗られます。
-#P=4, Q=5, R=2, S=5 より、上のように出力します。
-#
-#入力例 3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#出力例 3
-##.#
-#.#.
-##.#
-#入力が 32 bit 整数型に収まらないことがあることに注意してください。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+
+    #print("N, A, B, P, Q, R, S")
+    #print(N, A, B, P, Q, R, S)
+    #print("N, A, B, P, Q, R, S")
+
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            #print(i, j)
+            #print("i, j")
+            #print(i, j)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    #print(N, A, B)
+    #print(P, Q, R, S)
+
+    #print("max(1-A,1-B)≦ k≦ min(N-A,N-B)")
+    #print("max(1-A,B-N)≦ k≦ min(N-A,B-1)")
+
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i >= A and j >= B) or (i >= B and j >= A):
+                print("#", end="")
+            else:
+                print(".", end="")
+        print("")
+
+=======
+Suggestion 3
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+
+    # 1つ目の操作
+    k = min(N-A, N-B)
+    for i in range(max(1-A, 1-B), k+1):
+        if P <= A+i <= Q and R <= B+i <= S:
+            print("#", end="")
+        else:
+            print(".", end="")
+    print()
+
+    # 2つ目の操作
+    k = min(N-A, B-1)
+    for i in range(max(1-A, B-N), k+1):
+        if P <= A+i <= Q and R <= B-i <= S:
+            print("#", end="")
+        else:
+            print(".", end="")
+    print()
+
+=======
+Suggestion 4
+
+def main():
+    n,a,b = map(int,input().split())
+    p,q,r,s = map(int,input().split())
+    n = n + 1
+    a = a + 1
+    b = b + 1
+    p = p + 1
+    q = q + 1
+    r = r + 1
+    s = s + 1
+    for i in range(p,q):
+        for j in range(r,s):
+            if (i-a) == (j-b) or (i-a) == (b-j) or (a-i) == (j-b) or (a-i) == (b-j):
+                print("#",end="")
+            else:
+                print(".",end="")
+        print("")
+
+=======
+Suggestion 5
+
+def main():
+    n,a,b = map(int,input().split())
+    p,q,r,s = map(int,input().split())
+    a,b = a-1,b-1
+    for i in range(p,q+1):
+        for j in range(r,s+1):
+            if (i-a) == (j-b):
+                print("#",end="")
+            elif (i-a) == -(j-b):
+                print("#",end="")
+            else:
+                print(".",end="")
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    return
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    #print(n, a, b)
+    #print(p, q, r, s)
+    for i in range(p, q+1):
+        for j in range(r, s+1):
+            if (i+j) % 2 == (a+b) % 2:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (abs(i-A) + abs(j-B)) % 2 == 0:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print("")
+
+=======
+Suggestion 10
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    if A > B:
+        A, B = B, A
+    if P > R:
+        P, R = R, P
+    if Q > S:
+        Q, S = S, Q
+    if (P > A and P > B) or (Q < A and Q < B) or (R > A and R > B) or (S < A and S < B):
+        for i in range(Q - P + 1):
+            print("." * (S - R + 1))
+    else:
+        for i in range(Q - P + 1):
+            for j in range(S - R + 1):
+                if (P + i + R + j) % 2 == 0:
+                    print("#", end="")
+                else:
+                    print(".", end="")
+            print()

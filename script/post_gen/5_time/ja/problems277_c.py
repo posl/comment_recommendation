@@ -1,58 +1,155 @@
-#問題文
-#10^9 階建てのビルがあり、N 本のはしごがかかっています。
-#ビルの 1 階にいる高橋君ははしごを繰り返し使って（0 回でもよい）できるだけ高い階へ上りたいと考えています。
-#はしごには 1 から N までの番号がついており、はしご i は A_i 階と B_i 階を結んでいます。はしご i を利用すると A_i 階から B_i 階へ、または B_i 階から A_i 階へ双方向に移動することができますが、それ以外の階の間の移動は行うことはできません。
-#また、高橋君は同じ階での移動は自由に行うことができますが、はしご以外の方法で他の階へ移動することはできません。
-#高橋君は最高で何階へ上ることができますか？
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#A_i ≠ B_i
-#入力はすべて整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#A_1 B_1
-#A_2 B_2
-#...
-#A_N B_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#4
-#1 4
-#4 3
-#4 10
-#8 3
-#
-#出力例 1
-#10
-#はしご 1 で 4 階に進み、はしご 3 で 10 階に進むことにより、10 階にたどり着くことができます。
-#
-#入力例 2
-#6
-#1 3
-#1 5
-#1 12
-#3 5
-#3 12
-#5 12
-#
-#出力例 2
-#12
-#
-#入力例 3
-#3
-#500000000 600000000
-#600000000 700000000
-#700000000 800000000
-#
-#出力例 3
-#1
-#他の階への移動ができない場合もあります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x:x[1])
+    #print(AB)
+    ans = 0
+    for ab in AB:
+        if ab[0] >= ans:
+            ans = ab[1]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+    ans = 1
+    for i in range(N):
+        if ans < AB[i][0]:
+            ans = AB[i][1]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    AB = []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        AB.append((a, b))
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    for a, b in AB:
+        if ans < a:
+            ans = b
+    print(ans)
+    return
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    AB = [ tuple(map(int, input().split())) for _ in range(N) ]
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    for a, b in AB:
+        if a > ans:
+            ans = b
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for i in range(n)]
+    ab.sort(key=lambda x: x[1])
+    ans = 0
+    for i in range(n):
+        if ab[i][0] < ans:
+            continue
+        else:
+            ans = ab[i][1]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+    ans = 0
+    for i in range(N):
+        if AB[i][0] < ans:
+            continue
+        ans = AB[i][1] - 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    print(min(a) + min(b))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A.sort()
+    B.sort()
+    if N % 2 == 1:
+        print(B[N // 2] - A[N // 2] + 1)
+    else:
+        print((B[N // 2 - 1] + B[N // 2]) - (A[N // 2 - 1] + A[N // 2]) + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = []
+    for _ in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[1], reverse=True)
+    ans = 0
+    for i in range(N):
+        if ans < AB[i][0]:
+            ans = AB[i][0]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    ladders = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        ladders.append([A, B])
+    ladders.sort(key=lambda x:x[1])
+    current = -1
+    count = 0
+    for ladder in ladders:
+        if current < ladder[0]:
+            current = ladder[1]
+            count += 1
+    print(count)

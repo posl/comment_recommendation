@@ -1,42 +1,76 @@
-#問題文
-#英小文字からなる文字列 S が与えられます。
-#S の先頭から a 文字目と b 文字目を入れ替えて得られる文字列を出力してください。
-#
-#制約
-#S は英小文字からなる文字列
-#S の長さ |S| は、 2 ≦ |S| ≦ 10 を満たす
-#1 ≦ a < b ≦ |S|
-#a, b は整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#a b
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#chokudai
-#3 5
-#
-#出力例 1
-#chukodai
-#chokudai の 3 文字目 o と 5 文字目 u を入れ替えると chukodai となります。
-#
-#入力例 2
-#aa
-#1 2
-#
-#出力例 2
-#aa
-#この入力例では、S の 1 文字目と 2 文字目を入れ替えて得られる文字列は、元の S と同じになります。
-#
-#入力例 3
-#aaaabbbb
-#1 8
-#
-#出力例 3
-#baaabbba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    s = list(s)
+    s[a], s[b] = s[b], s[a]
+    s = ''.join(s)
+    print(s)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    s = s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+    print(s)
+
+=======
+Suggestion 3
+
+def swap(s, a, b):
+    tmp = s[a-1]
+    s[a-1] = s[b-1]
+    s[b-1] = tmp
+    return s
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    print(s[:a-1]+s[b-1]+s[a:b-1]+s[a-1]+s[b:])
+
+=======
+Suggestion 5
+
+def problem236a(s, a, b):
+    a -= 1
+    b -= 1
+    s = list(s)
+    s[a], s[b] = s[b], s[a]
+    return "".join(s)
+
+=======
+Suggestion 6
+
+def swap(s, a, b):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+s = input()
+a, b = map(int, input().split())
+print(swap(s, a, b))
+
+=======
+Suggestion 7
+
+def replace_char(str, i, j):
+    str_list = list(str)
+    tmp = str_list[i-1]
+    str_list[i-1] = str_list[j-1]
+    str_list[j-1] = tmp
+    return ''.join(str_list)
+
+=======
+Suggestion 8
+
+def swap(s, a, b):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]

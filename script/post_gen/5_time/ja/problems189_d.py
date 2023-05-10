@@ -1,57 +1,206 @@
-#問題文
-#N 個の文字列 S_1,...,S_N が与えられます。各文字列は AND または OR です。
-#値が True または False であるような N+1 個の変数の組 (x_0,...,x_N) であって、
-#以下のような計算を行った際に、y_N が True となるようなものの個数を求めてください。
-#y_0=x_0
-#i≧ 1 のとき、S_i が AND なら y_i=y_{i-1} ∧ x_i、S_i が OR なら y_i=y_{i-1} ∨ x_i
-#a ∧ b は a と b の論理積を表し、a ∨ b は a と b の論理和を表します。  
-#
-#制約
-#1 ≦ N ≦ 60
-#S_i は AND または OR
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#2
-#AND
-#OR
-#
-#出力例 1
-#5
-#例えば (x_0,x_1,x_2)=(True,False,True) のとき
-#y_0=x_0=True
-#y_1=y_0 ∧ x_1 = True ∧ False=False
-#y_2=y_1 ∨ x_2 = False ∨ True=True
-#となり、y_2 は True になります。
-#y_2 が True となるような (x_0,x_1,x_2) の組み合わせは、
-#(True,True,True)
-#(True,True,False)
-#(True,False,True)
-#(False,True,True)
-#(False,False,True)
-#の 5 通りで全てです。
-#
-#入力例 2
-#5
-#OR
-#OR
-#OR
-#OR
-#OR
-#
-#出力例 2
-#63
-#全てが False のときを除く 2^6-1 通りで y_5 は True になります。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, s):
+    ans = 1
+    for c in s:
+        if c == 'OR':
+            ans += pow(2, n)
+        n -= 1
+    return ans
+
+n = int(input())
+s = [input() for _ in range(n)]
+print(solve(n, s))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    ans = 1
+    for i in range(n):
+        if s[i] == 'OR':
+            ans += 2**(i+1)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    
+    ans = 1
+    for s in S:
+        if s == 'OR':
+            ans += 2**(S.count('OR'))
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    ans = 1
+    for i in range(N):
+        if S[i] == 'OR':
+            ans += 2 ** (i + 1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    dp = [[0] * 2 for _ in range(N + 1)]
+    dp[0][0] = dp[0][1] = 1
+    for i in range(N):
+        if S[i] == 'AND':
+            dp[i + 1][0] = dp[i][0] * 2 + dp[i][1]
+            dp[i + 1][1] = dp[i][1]
+        else:
+            dp[i + 1][0] = dp[i][0]
+            dp[i + 1][1] = dp[i][0] + dp[i][1] * 2
+    print(dp[N][1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    dp = [[0 for _ in range(2)] for _ in range(n+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(1,n+1):
+        if s[i-1] == 'AND':
+            dp[i][0] = dp[i-1][0]
+            dp[i][1] = dp[i-1][0] + 2*dp[i-1][1]
+        else:
+            dp[i][0] = 2*dp[i-1][0] + dp[i-1][1]
+            dp[i][1] = dp[i-1][1]
+    print(dp[n][1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    #print(n,s)
+    #print(s[0])
+    #print(s[0] == "AND")
+    #print(s[0] == "OR")
+    #print(s[1] == "AND")
+    #print(s[1] == "OR")
+    #print(s[2] == "AND")
+    #print(s[2] == "OR")
+    #print(s[3] == "AND")
+    #print(s[3] == "OR")
+    #print(s[4] == "AND")
+    #print(s[4] == "OR")
+    #print(s[5] == "AND")
+    #print(s[5] == "OR")
+    #print(s[6] == "AND")
+    #print(s[6] == "OR")
+    #print(s[7] == "AND")
+    #print(s[7] == "OR")
+    #print(s[8] == "AND")
+    #print(s[8] == "OR")
+    #print(s[9] == "AND")
+    #print(s[9] == "OR")
+    #print(s[10] == "AND")
+    #print(s[10] == "OR")
+    #print(s[11] == "AND")
+    #print(s[11] == "OR")
+    #print(s[12] == "AND")
+    #print(s[12] == "OR")
+    #print(s[13] == "AND")
+    #print(s[13] == "OR")
+    #print(s[14] == "AND")
+    #print(s[14] == "OR")
+    #print(s[15] == "AND")
+    #print(s[15] == "OR")
+    #print(s[16] == "AND")
+    #print(s[16] == "OR")
+    #print(s[17] == "AND")
+    #print(s[17] == "OR")
+    #print(s[18] == "AND")
+    #print(s[18] == "OR")
+    #print(s[19] == "AND")
+    #print(s[19] == "OR")
+    #print(s[20] == "AND")
+    #print(s[20] == "OR")
+    #print(s[
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    #print(s)
+    dp = [[0]*2 for _ in range(n+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(n):
+        if s[i] == "AND":
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0]+2**(i+1)
+        else:
+            dp[i+1][0] = dp[i][0]*2+dp[i][1]
+            dp[i+1][1] = dp[i][1]
+    #print(dp)
+    print(dp[n][1])
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    dp = [[0 for _ in range(2)] for _ in range(N+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+    for i in range(N):
+        if S[i] == "AND":
+            dp[i+1][0] = dp[i][0]
+            dp[i+1][1] = dp[i][0] + dp[i][1]*2
+        else:
+            dp[i+1][0] = dp[i][0]*2 + dp[i][1]
+            dp[i+1][1] = dp[i][1]
+    print(dp[N][1])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    #print(N)
+    #print(S)
+
+    # dp[i][j] := i番目の演算子まででjがTrueとなるパターン数
+    dp = [[0 for i in range(2)] for j in range(N+1)]
+    dp[0][0] = 1
+    dp[0][1] = 1
+
+    for i in range(1,N+1):
+        if S[i-1] == "AND":
+            dp[i][0] = dp[i-1][0] * 2 + dp[i-1][1]
+            dp[i][1] = dp[i-1][1]
+        else:
+            dp[i][0] = dp[i-1][0]
+            dp[i][1] = dp[i-1][0] + dp[i-1][1] * 2
+
+    #print(dp)
+    print(dp[N][1])

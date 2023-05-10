@@ -1,95 +1,165 @@
-#問題文
-#高橋君は早押しクイズの大会を開くことにしました。スコアボードの作成を任されたキザハシ君は、次のルールを持つラウンドのポイントを管理するプログラムを書くのに苦戦しています。
-#このラウンドの参加者は N 人であり、1 から N までの番号がついています。ラウンド開始時点では全員が K ポイントを持っています。
-#誰かが問題に正解すると、その人以外の N-1 人のポイントが 1 減ります。これ以外によるポイントの変動はありません。
-#ラウンド終了時にポイントが 0 以下の参加者は敗退し、残りの参加者が勝ち抜けます。
-#このラウンドでは Q 回の正解が出て、i 番目に正解したのは参加者 A_i でした。
-#キザハシ君の代わりに、N 人の参加者のそれぞれが勝ち抜けたか敗退したかを求めるプログラムを作成してください。
-#
-#制約
-#入力はすべて整数
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ Q ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ Q)
-#
-#入力
-#入力は以下の形式で標準入力から与えられます。
-#N K Q
-#A_1
-#A_2
-#.
-#.
-#.
-#A_Q
-#
-#出力
-#N 行出力してください。i 行目には、参加者 i が勝ち抜けたなら Yes を、敗退したなら No を出力してください。
-#
-#入力例 1
-#6 3 4
-#3
-#1
-#3
-#2
-#
-#出力例 1
-#No
-#No
-#Yes
-#No
-#No
-#No
-#はじめ、各参加者の持つポイントは (3, 3, 3, 3, 3, 3) です。
-#参加者 3 が正解し、各参加者のポイントは (2, 2, 3, 2, 2, 2) になります。
-#参加者 1 が正解し、各参加者のポイントは (2, 1, 2, 1, 1, 1) になります。
-#参加者 3 が正解し、各参加者のポイントは (1, 0, 2, 0, 0, 0) になります。
-#参加者 2 が正解し、各参加者のポイントは (0, 0, 1, -1, -1, -1) になります。
-#得点が 0 以下になった参加者 1, 2, 4, 5, 6 は敗退し、残った参加者 3 が勝ち抜けます。
-#
-#入力例 2
-#6 5 4
-#3
-#1
-#3
-#2
-#
-#出力例 2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#入力例 3
-#10 13 15
-#3
-#1
-#4
-#1
-#5
-#9
-#2
-#6
-#5
-#3
-#5
-#8
-#9
-#7
-#9
-#
-#出力例 3
-#No
-#No
-#No
-#No
-#Yes
-#No
-#No
-#No
-#Yes
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    scores = [K-Q] * N
+    for a in A:
+        scores[a-1] += 1
+    for score in scores:
+        if score > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    P = [K - Q] * N
+    for a in A:
+        P[a - 1] += 1
+    for p in P:
+        if p > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    #print(n, k, q)
+    #print(a)
+    score = [0] * n
+    for i in range(q):
+        score[a[i]-1] += 1
+    
+    for i in range(n):
+        if k - q + score[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n, k, q = map(int, input().split())
+    ans = [0] * n
+    for _ in range(q):
+        a = int(input())
+        ans[a-1] += 1
+    for i in range(n):
+        if k - q + ans[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    ans = [k - q] * n
+    for i in a:
+        ans[i-1] += 1
+    for i in ans:
+        if i > 0:
+            print('Yes')
+        else:
+            print('No')
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, k, q = map(int, input().split())
+    score = [k] * n
+    for _ in range(q):
+        a = int(input())
+        score[a-1] += 1
+    for i in range(n):
+        if score[i] > q:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    # データ入力
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+
+    # 各参加者のポイント
+    points = [K - Q] * N
+
+    # 正解者のポイントを増やす
+    for a in A:
+        points[a-1] += 1
+
+    # 各参加者のポイントが 0 以下なら敗退
+    for point in points:
+        if point <= 0:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    ans = [K-Q for _ in range(N)]
+    for a in A:
+        ans[a-1] += 1
+    for i in range(N):
+        if ans[i] > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    ans = [0] * N
+    for i in range(Q):
+        ans[A[i] - 1] += 1
+    for i in range(N):
+        if K - Q + ans[i] > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for i in range(q)]
+    p = [0] * n
+
+    for i in range(q):
+        p[a[i]-1] += 1
+
+    for i in range(n):
+        if k - (q - p[i]) > 0:
+            print('Yes')
+        else:
+            print('No')

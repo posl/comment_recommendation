@@ -1,36 +1,118 @@
-#問題文
-#高橋君は九九を覚えたので、1 以上 9 以下の 2 つの整数の積を計算することができます。
-#整数 N が与えられるので、N を 1 以上 9 以下の 2 つの整数の積として表すことができるか判定し、できるなら Yes を、できないなら No を出力して下さい。
-#
-#制約
-#1 ≦ N ≦ 100
-#N は整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#N を 1 以上 9 以下の 2 つの整数の積として表すことができるなら Yes を、できないなら No を出力せよ。
-#
-#入力例 1
-#10
-#
-#出力例 1
-#Yes
-#例えば 2 × 5 と表すことができます。
-#
-#入力例 2
-#50
-#
-#出力例 2
-#No
-#50 を 1 以上 9 以下の 2 つの整数の積として表すことはできません。
-#
-#入力例 3
-#81
-#
-#出力例 3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0 and n / i < 10:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        if n % i == 0 and n / i < 10:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 3
+
+def problem144_b():
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0 and n / i <= 9:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    for i in range(1,10):
+        for j in range(1,10):
+            if N == i*j:
+                print("Yes")
+                return
+    print("No")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def check(n):
+    for i in range(1, 10):
+        if n % i == 0 and n / i in range(1, 10):
+            return True
+    return False
+
+n = int(input())
+print('Yes' if check(n) else 'No')
+
+=======
+Suggestion 7
+
+def Main():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and N / i < 10:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    for i in range(1,10):
+        if N % i == 0 and N / i <= 9:
+            print("Yes")
+            break
+        elif i == 9:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and N / i <= 9:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    flag = False
+    for i in range(1,10):
+        if n % i == 0 and n//i < 10:
+            flag = True
+            break
+    if flag:
+        print('Yes')
+    else:
+        print('No')

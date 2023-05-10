@@ -1,54 +1,262 @@
-#問題文
-#東西一列に N 人の人が並んでいます。
-#各人の状態を表す長さ N の文字列 S が与えられます。
-#西から i 番目の人は、文字列 S の i 文字目が L ならば西を、R ならば東を向いています。
-#どの人も、目の前の人が自分と同じ方向を向いていれば幸福です。
-#ただし、目の前に人が居ない場合、幸福ではありません。
-#あなたは、以下の操作を 0 回以上 K 回以下の好きな回数だけ行います。
-#操作: 1 ≦ l ≦ r ≦ N を満たす整数 l, r を選ぶ。西から l, l+1, ..., r 番目の人の列を 180 度回転する。すなわち、i = 0, 1, ..., r-l について、西から l + i 番目の人は操作後には西から r - i 番目に移動し、元々西を向いていれば東を、東を向いていれば西を向く。
-#幸福である人は最大で何人にできるでしょうか。
-#
-#制約
-#N は 1 ≦ N ≦ 10^5 を満たす整数である。
-#K は 1 ≦ K ≦ 10^5 を満たす整数である。
-#|S| = N
-#S の各文字は L または R である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#S
-#
-#出力
-#K 回以下の操作後に幸福である人数の最大値を出力せよ。
-#
-#入力例 1
-#6 1
-#LRLRRL
-#
-#出力例 1
-#3
-#(l, r) = (2, 5) と選べば LLLRLL となり、西から 2, 3, 6 番目の人が幸福です。
-#
-#入力例 2
-#13 3
-#LRRLRLRRLRLLR
-#
-#出力例 2
-#9
-#
-#入力例 3
-#10 1
-#LLLLLRRRRR
-#
-#出力例 3
-#9
-#
-#入力例 4
-#9 2
-#RRRLRLRLL
-#
-#出力例 4
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(1, N):
+        if S[i-1] == S[i]:
+            ans += 1
+    print(min(N-1, ans+2*K))
+
+=======
+Suggestion 2
+
+def solve(n, k, s):
+    # 0回転のときの幸福数を計算
+    cnt = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt += 1
+
+    # 1回転のときの幸福数を計算
+    cnt2 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt2 += 1
+    cnt2 += 2
+
+    # 2回転のときの幸福数を計算
+    cnt3 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt3 += 1
+    cnt3 += 4
+
+    # 3回転のときの幸福数を計算
+    cnt4 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt4 += 1
+    cnt4 += 6
+
+    # 4回転のときの幸福数を計算
+    cnt5 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt5 += 1
+    cnt5 += 8
+
+    # 5回転のときの幸福数を計算
+    cnt6 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt6 += 1
+    cnt6 += 10
+
+    # 6回転のときの幸福数を計算
+    cnt7 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt7 += 1
+    cnt7 += 12
+
+    # 7回転のときの幸福数を計算
+    cnt8 = 0
+    for i in range(1, n):
+        if s[i-1] == s[i]:
+            cnt8 += 1
+    cnt8 +=
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    S = input()
+    #print(N, K, S)
+    #print(S[0])
+    #print(S[-1])
+    #print(S[0] == S[-1])
+    #print(S[0] == S[-1] == 'L')
+    #print(S[0] == S[-1] == 'R')
+    #print(S[0] == S[-1] == 'R' or S[0] == S[-1] == 'L')
+    #print(S[0] == S[-1] == 'L' or S[0] == S[-1] == 'R')
+    #print(S[0] == S[-1] == 'L' or S[0] == S[-1] == 'R' or (S[0] == 'R' and S[-1] == 'L'))
+    #print(S[0] == S[-1] == 'L' or S[0] == S[-1] == 'R' or (S[0] == 'R' and S[-1] == 'L') or (S[0] == 'L' and S[-1] == 'R'))
+    #print(S[0] == S[-1] == 'L' or S[0] == S[-1] == 'R' or (S[0] == 'R' and S[-1] == 'L') or (S[0] == 'L' and S[-1] == 'R') or (S[0] == S[-1] == 'R' and S[0] == S[-1] == 'L'))
+    #print(S[0] == S[-1] == 'L' or S[0] == S[-1] == 'R' or (S[0] == 'R' and S[-1] == 'L') or (S[0] == 'L' and S[-1] == 'R') or (S[0] == S[-1] == 'R' and S[0] == S[-1] == 'L') or (S[0] == S[-1] == 'R' and S[0] == S[-1] == 'R'))
+    #print(S[0] == S[-1] == '
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    #print(N, K, S)
+    cnt = 0
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            cnt += 1
+    print(min(N-1, cnt+2*K))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            ans += 1
+    ans = min(N-1, ans+2*K)
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    cnt = 0
+    for i in range(N-1):
+        if S[i] == S[i+1]:
+            cnt += 1
+    ans = min(cnt + 2*K, N-1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    cnt = 0
+    for i in range(N - 1):
+        if S[i] == S[i + 1]:
+            cnt += 1
+    print(min(N - 1, cnt + 2 * K))
+main()
+
+=======
+Suggestion 8
+
+def solve(n,k,s):
+    ans = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            ans += 1
+    ans += min(2*k, ans+2)
+    return ans
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    L = []
+    R = []
+    for i in range(N):
+        if S[i] == "L":
+            L.append(i)
+        else:
+            R.append(i)
+    ans = 0
+    for i in range(len(L)):
+        if i == 0:
+            ans += L[i]
+        else:
+            ans += L[i] - L[i - 1] - 1
+    for i in range(len(R)):
+        if i == 0:
+            ans += R[i]
+        else:
+            ans += R[i] - R[i - 1] - 1
+    ans += len(L) + len(R)
+    ans -= 1
+    ans = min(ans, N - 1)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    #print(N, K, S)
+    #print(S[0])
+    #print(S[1])
+    #print(S[2])
+    #print(S[3])
+    #print(S[4])
+    #print(S[5])
+    #print(S[6])
+    #print(S[7])
+    #print(S[8])
+    #print(S[9])
+    #print(S[10])
+    #print(S[11])
+    #print(S[12])
+    #print(S[13])
+    #print(S[14])
+    #print(S[15])
+    #print(S[16])
+    #print(S[17])
+    #print(S[18])
+    #print(S[19])
+    #print(S[20])
+    #print(S[21])
+    #print(S[22])
+    #print(S[23])
+    #print(S[24])
+    #print(S[25])
+    #print(S[26])
+    #print(S[27])
+    #print(S[28])
+    #print(S[29])
+    #print(S[30])
+    #print(S[31])
+    #print(S[32])
+    #print(S[33])
+    #print(S[34])
+    #print(S[35])
+    #print(S[36])
+    #print(S[37])
+    #print(S[38])
+    #print(S[39])
+    #print(S[40])
+    #print(S[41])
+    #print(S[42])
+    #print(S[43])
+    #print(S[44])
+    #print(S[45])
+    #print(S[46])
+    #print(S[47])
+    #print(S[48])
+    #print(S[49])
+    #print(S[50])
+    #print(S[51])
+    #print(S[52])
+    #print(S[53])
+    #print(S[54])
+    #print(S[55])
+    #print(S[56])
+    #print(S[57])
+    #print(S[58])
+    #print(S[59])
+    #print(S[60])
+    #print(S[61])
+    #print(S[62])
+    #print(S[63])
+    #print(S[64])
+    #print(S[65])
+    #print(S[66])
+    #print

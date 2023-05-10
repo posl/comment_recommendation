@@ -1,82 +1,275 @@
-#問題文
-#高橋君のスマートフォンのバッテリー容量は N [mAh] であり、時刻 0.5, 1.5, 2.5, ... に、つまり時刻 n + 0.5(n は整数) を迎える度にバッテリー残量が 1 [mAh] ずつ減少します。
-#高橋君はスマートフォンを満充電した状態で時刻 0 に外出し、途中で M 回カフェを訪れ、時刻 T に帰宅します。
-#i 回目に訪れるカフェには時刻 A_i から時刻 B_i まで滞在します。カフェに滞在している間はスマートフォンを充電するため、バッテリー残量は減少せず、代わりに時刻 n + 0.5(n は整数) を迎える度に 1 [mAh] ずつ増加します。ただし既にバッテリー残量がバッテリー容量と等しい場合、バッテリー残量は増えも減りもしません。
-#高橋君が途中でスマートフォンのバッテリー残量が 0 になることなく帰宅することができるかを判定してください。  
-#
-#制約
-#1 ≦ N ≦ 10^9
-#1 ≦ M ≦ 1000
-#1 ≦ T ≦ 10^9
-#0 < A_1 < B_1 < A_2 < B_2 < A_3 < B_3 < ... < A_M < B_M < T
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M T
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_M B_M
-#
-#出力
-#高橋君が途中でスマートフォンのバッテリー残量が 0 になることなく帰宅することができるなら Yes を、できないなら No を出力せよ。  
-#
-#入力例 1
-#10 2 20
-#9 11
-#13 17
-#
-#出力例 1
-#Yes
-#バッテリー残量は以下のように変化します。
-#時刻 0 (出発時): 10 [mAh]
-#時刻 9 (1 番目のカフェへの滞在開始時): 1 [mAh]
-#時刻 11 (1 番目のカフェへの滞在終了時): 3 [mAh] (カフェでは充電を行います)
-#時刻 13 (2 番目のカフェへの滞在開始時): 1 [mAh]
-#時刻 17 (2 番目のカフェへの滞在終了時): 5 [mAh]
-#時刻 20 (帰宅時): 2 [mAh]
-#この過程で一度もバッテリー残量が 0 になっていないので、Yes を出力します。  
-#
-#入力例 2
-#10 2 20
-#9 11
-#13 16
-#
-#出力例 2
-#No
-#2 番目のカフェへの滞在をバッテリー残量 1 [mAh] の状態で開始するところまでは入出力例 1
-# と同じです。
-#時刻 16 に 2 番目のカフェの滞在を終了したときのバッテリー残量は 4 [mAh] になります。
-#そして時刻 19.5 にバッテリー残量が 0 になってしまうので、No を出力します。  
-#
-#入力例 3
-#15 3 30
-#5 8
-#15 17
-#24 27
-#
-#出力例 3
-#Yes
-#帰宅するときにはバッテリー残量が 1 [mAh] になっていますが、 1 度も 0 にはなっていません。  
-#
-#入力例 4
-#20 1 30
-#20 29
-#
-#出力例 4
-#No
-#時刻 19.5 でバッテリー残量が 0 になります。  
-#
-#入力例 5
-#20 1 30
-#1 10
-#
-#出力例 5
-#No
-#バッテリー残量がバッテリー容量と等しい場合は、カフェにいてもバッテリー残量が増えないことに注意して下さい。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M, T = map(int, input().split())
+    A = []
+    B = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    now = N
+    for i in range(M):
+        if i == 0:
+            now -= A[i]
+        else:
+            now -= A[i] - B[i-1]
+        if now <= 0:
+            print('No')
+            exit()
+        now += B[i] - A[i]
+        if now > N:
+            now = N
+    now -= T - B[-1]
+    if now <= 0:
+        print('No')
+        exit()
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    N,M,T = map(int,input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    flag = True
+    battery = N
+    for i in range(M):
+        if flag == False:
+            break
+        battery -= (A[i] - B[i-1])
+        if battery <= 0:
+            flag = False
+            break
+        battery += (B[i] - A[i])
+        if battery > N:
+            battery = N
+    battery -= (T - B[M-1])
+    if battery <= 0:
+        flag = False
+    if flag:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n,m,t = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    battery = n
+    for i in range(m):
+        if i == 0:
+            battery -= ab[i][0]
+        else:
+            battery -= ab[i][0] - ab[i-1][1]
+        if battery <= 0:
+            print('No')
+            exit()
+        battery += ab[i][1] - ab[i][0]
+        if battery > n:
+            battery = n
+    if battery - (t - ab[m-1][1]) <= 0:
+        print('No')
+    else:
+        print('Yes')
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    N, M, T = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    now = N
+    for i in range(M):
+        now -= A[i] - B[i-1] if i > 0 else A[i]
+        if now <= 0:
+            print("No")
+            return
+        now += B[i] - A[i]
+
+    now -= T - B[-1]
+    if now <= 0:
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def solve():
+    N, M, T = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    battery = N
+    time = 0
+    for a, b in AB:
+        battery -= a - time
+        if battery <= 0:
+            print("No")
+            return
+        battery += b - a
+        battery = min(battery, N)
+        time = b
+    battery -= T - time
+    if battery <= 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    n,m,t = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    battery = n
+    flag = True
+    for i in range(m):
+        if i == 0:
+            battery = battery - (a[i] - 0.5)
+        else:
+            battery = battery - (a[i] - b[i-1] - 1)
+        if battery <= 0:
+            flag = False
+            break
+        battery = battery + (b[i] - a[i] + 1)
+        if battery >= n:
+            battery = n
+    battery = battery - (t - b[m-1] - 0.5)
+    if battery <= 0:
+        flag = False
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, M, T = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    A = [AB[i][0] for i in range(M)]
+    B = [AB[i][1] for i in range(M)]
+    battery = N
+    for i in range(M):
+        battery -= A[i]
+        if battery <= 0:
+            print('No')
+            exit()
+        battery += B[i] - A[i]
+        if battery > N:
+            battery = N
+    battery -= T - B[M - 1]
+    if battery <= 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    N,M,T = map(int,input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int,input().split())))
+    AB = sorted(AB, key=lambda x:x[0])
+    AB = sorted(AB, key=lambda x:x[1])
+    #print(AB)
+    if AB[0][0] > 0.5:
+        print('No')
+        exit()
+    else:
+        N = N - AB[0][1] + AB[0][0]
+    #print(N)
+    for i in range(1,M):
+        #print(N)
+        if N <= 0:
+            print('No')
+            exit()
+        else:
+            N = N - (AB[i][1] - AB[i][0])
+            if N + 0.5 < AB[i][0]:
+                print('No')
+                exit()
+            else:
+                N = N + 0.5
+    if N <= 0:
+        print('No')
+        exit()
+    else:
+        N = N - (T - AB[M-1][1])
+        if N <= 0:
+            print('No')
+            exit()
+        else:
+            print('Yes')
+            exit()
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N, M, T = map(int, input().split())
+    ABs = [list(map(int, input().split())) for _ in range(M)]
+
+    # compute
+    battery = N
+    time = 0
+    for i in range(M):
+        battery -= ABs[i][0] - time
+        if battery <= 0:
+            print('No')
+            exit()
+        battery += ABs[i][1] - ABs[i][0]
+        battery = min(battery, N)
+        time = ABs[i][1]
+    battery -= T - time
+    if battery <= 0:
+        print('No')
+        exit()
+
+    # output
+    print('Yes')
+
+=======
+Suggestion 10
+
+def calc_battery_capacity(N, M, T, cafe):
+    battery_capacity = N
+    battery = N
+    for cafe_time in cafe:
+        battery -= (cafe_time[0] - cafe_time[1])
+        if battery <= 0:
+            return False
+        battery += (cafe_time[1] - cafe_time[0])
+        if battery > battery_capacity:
+            battery = battery_capacity
+    battery -= (T - cafe[-1][1])
+    if battery <= 0:
+        return False
+    return True

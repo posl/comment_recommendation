@@ -1,61 +1,156 @@
-#問題文
-#N 人の生徒が 4 日間にわたる試験を受けています。
-#それぞれの日に行われる試験は 300 点満点です。すなわち、4 日間を通した試験の満点は 1200 点です。
-#現在 3 日目までの試験が終わり、これから 4 日目の試験が行われようとしています。i  (1 ≦ i ≦ N) 番目の生徒は j  (1 ≦ j ≦ 3) 日目の試験で P_{i, j} 点獲得しました。
-#それぞれの生徒について、4 日目の試験後に上位 K 位以内に入っていることがあり得るかどうか判定してください。
-#ただし、4 日目の試験後の生徒の順位は、その生徒よりも 4 日間の合計点が高い生徒の人数に 1 を加えた値として定めます。
-#
-#制約
-#1 ≦ K ≦ N ≦ 10^5
-#0 ≦ P_{i, j} ≦ 300  (1 ≦ i ≦ N, 1 ≦ j ≦ 3)
-#入力は全て整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N K
-#P_{1,1} P_{1,2} P_{1,3}
-#.
-#.
-#.
-#P_{N,1} P_{N,2} P_{N,3}
-#
-#出力
-#N 行出力せよ。i  (1 ≦ i ≦ N) 行目には、i 番目の生徒が 4 日目の試験後に上位 K 位以内に入っていることがあり得るならば Yes と、そうでないならば No と出力せよ。
-#
-#入力例 1
-#3 1
-#178 205 132
-#112 220 96
-#36 64 20
-#
-#出力例 1
-#Yes
-#Yes
-#No
-#4 日目に全員が 100 点を取ると、1 番目の生徒が 1 位になります。
-#4 日目に 2 番目の生徒が 100 点を取り、それ以外の生徒が 0 点を取ると、2 番目の生徒が 1 位になります。
-#3 番目の生徒が 1 位になることはあり得ません。
-#
-#入力例 2
-#2 1
-#300 300 300
-#200 200 200
-#
-#出力例 2
-#Yes
-#Yes
-#
-#入力例 3
-#4 2
-#127 235 78
-#192 134 298
-#28 56 42
-#96 120 250
-#
-#出力例 3
-#Yes
-#Yes
-#No
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for i in range(N)]
+    # print(N, K, P)
+    for i in range(N):
+        # print(i)
+        if sum(P[i]) >= K:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = []
+    for i in range(n):
+        p.append(list(map(int, input().split())))
+    for i in range(n):
+        p[i].sort(reverse=True)
+    for i in range(n):
+        p[i] = sum(p[i][:k])
+    for i in range(n):
+        if p[i] >= sum(p[:k]):
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    P = []
+    for i in range(N):
+        P.append(sum(map(int, input().split())))
+    P.sort(reverse=True)
+    print('Yes' if P[K-1] > 0 else 'No')
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    score = [list(map(int, input().split())) for _ in range(N)]
+
+    rank = [0] * N
+    for i in range(N):
+        rank[i] = score[i][0] + score[i][1] + score[i][2]
+
+    for i in range(N):
+        if rank[i] >= rank[K-1]:
+            if rank[i] == rank[K-1]:
+                if score[i][0] + score[i][1] + score[i][2] > score[K-1][0] + score[K-1][1] + score[K-1][2]:
+                    print("Yes")
+                else:
+                    print("No")
+            else:
+                print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+
+    for i in range(N):
+        P = list(map(int, input().split()))
+        if sum(P) >= K:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    n, k = map(int, input().split())
+    p = []
+    for i in range(n):
+        p.append(list(map(int, input().split())))
+    p.sort(key=lambda x: sum(x), reverse=True)
+    for i in range(n):
+        if i < k:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for i in range(N)]
+    P_sum = []
+    for i in range(N):
+        P_sum.append(sum(P[i]))
+    P_sum.sort(reverse=True)
+    for i in range(N):
+        if P_sum[i] >= P_sum[K-1]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    for _ in range(N):
+        P = list(map(int, input().split()))
+        if sum(P) >= 3 * K:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    p = []
+    for i in range(n):
+        p.append(list(map(int, input().split())))
+    for i in range(n):
+        p[i].append(sum(p[i]))
+    p.sort(key=lambda x: x[3], reverse=True)
+    for i in range(n):
+        if i < k:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    p_sum = [0] * n
+    for i in range(n):
+        p_sum[i] = sum(p[i])
+    p_sum.sort(reverse=True)
+    for i in range(n):
+        if p_sum[i] > p_sum[k-1]:
+            print("No")
+        else:
+            print("Yes")

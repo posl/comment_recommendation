@@ -1,55 +1,124 @@
-#問題文
-#選挙が行われています。  
-#N 人が投票を行い、i(1 ≦ i ≦ N) 番目の人は S_i という名前の候補者に投票しました。
-#得票数が最大の候補者の名前を答えてください。なお、与えられる入力では得票数が最大の候補者は一意に定まります。
-#
-#制約
-#1 ≦ N ≦ 100
-#S_i は英小文字からなる長さ 1 以上 10 以下の文字列
-#N は整数
-#得票数が最大の候補者は一意に定まる
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#出力
-#得票数が最大の候補者の名前を出力せよ。
-#
-#入力例 1
-#5
-#snuke
-#snuke
-#takahashi
-#takahashi
-#takahashi
-#
-#出力例 1
-#takahashi
-#takahashi は 3 票、snuke は 2 票獲得しました。よって takahashi を出力します。
-#
-#入力例 2
-#5
-#takahashi
-#takahashi
-#aoki
-#takahashi
-#snuke
-#
-#出力例 2
-#takahashi
-#
-#入力例 3
-#1
-#a
-#
-#出力例 3
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    votes = []
+    for i in range(n):
+        votes.append(input())
+    print(max(votes, key=votes.count))
+
+=======
+Suggestion 2
+
+def solve():
+    # +++ input +++
+    n = int(input())
+    s = [input() for _ in range(n)]
+
+    # +++ solve +++
+    # 1. dict
+    d = {}
+    for i in range(n):
+        if s[i] in d:
+            d[s[i]] += 1
+        else:
+            d[s[i]] = 1
+    # 2. list
+    # d = []
+    # for i in range(n):
+    #     d.append(s[i])
+    # 3. Counter
+    # d = Counter(s)
+    # 4. defaultdict
+    # d = defaultdict(int)
+    # for i in range(n):
+    #     d[s[i]] += 1
+    # 5. Counter + max
+    # d = Counter(s)
+    # d = max(d, key=d.get)
+    # 6. Counter + most_common
+    # d = Counter(s)
+    # d = d.most_common(1)[0][0]
+
+    # +++ output +++
+    print(max(d, key=d.get))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort()
+    #print(S)
+    import itertools
+    max = 0
+    ans = ""
+    for i in itertools.groupby(S):
+        #print(i)
+        #print(list(i[1]))
+        if max < len(list(i[1])):
+            max = len(list(i[1]))
+            ans = i[0]
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print(max(s, key=s.count))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print(max(s,key=s.count))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    S.append("")
+    max = 0
+    max_name = ""
+    now = 0
+    for i in range(N):
+        if S[i] == S[i+1]:
+            now += 1
+        else:
+            if now > max:
+                max = now
+                max_name = S[i]
+            now = 0
+    print(max_name)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    print(max(S, key=S.count))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(max(s, key=s.count))

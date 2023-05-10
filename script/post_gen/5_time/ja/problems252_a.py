@@ -1,28 +1,22 @@
-#問題文
-#英小文字 a, b, ..., z の ASCII 文字コードはこの順に 97,98,...,122 です。
-#97 以上 122 以下の整数 N が与えられるので、ASCII 文字コードが N であるような英小文字を出力してください。
-#
-#制約
-#N は 97 以上 122 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#
-#出力
-#答えを出力せよ。  
-#
-#入力例 1
-#97
-#
-#出力例 1
-#a
-#ASCII 文字コードが 97 である英小文字は a です。
-#
-#入力例 2
-#122
-#
-#出力例 2
-#z
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+
+    print(chr(n))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(chr(N))
+
+=======
+Suggestion 3
+
+def problem252_a(n):
+    print(chr(n))

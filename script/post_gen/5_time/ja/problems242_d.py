@@ -1,60 +1,170 @@
-#問題文
-#A, B, C のみからなる文字列 S が与えられます。
-#S^{(0)}:=S とし、i=1,2,3,... について S^{(i)} を S^{(i-1)} の各文字を A → BC, B → CA, C → AB と同時に置き換えたものと定義します。
-#以下の Q 個のクエリに答えてください。i 個目のクエリの内容は以下の通りです。
-#S^{(t_i)} の先頭から k_i 文字目を出力せよ。
-#
-#制約
-#S は A, B, C のみからなる長さ 1 以上 10^5 以下の文字列
-#1 ≦ Q ≦ 10^5
-#0 ≦ t_i ≦ 10^{18}
-#1 ≦ k_i ≦ min(10^{18}, S^{(t_i)} の長さ)
-#Q, t_i, k_i は整数 
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#S
-#Q
-#t_1 k_1
-#t_2 k_2
-#.
-#.
-#.
-#t_Q k_Q
-#
-#出力
-#Q 個のクエリを添字の昇順に、すなわち与えられる順に処理し、出力ごとに改行せよ。
-#
-#入力例 1
-#ABC
-#4
-#0 1
-#1 1
-#1 3
-#1 6
-#
-#出力例 1
-#A
-#B
-#C
-#B
-#S^{(0)}=ABC, S^{(1)}=BCCAAB です。
-#よって各クエリへの答えは順に A, B, C, B となります。
-#
-#入力例 2
-#CBBAACCCCC
-#5
-#57530144230160008 659279164847814847
-#29622990657296329 861239705300265164
-#509705228051901259 994708708957785197
-#176678501072691541 655134104344481648
-#827291290937314275 407121144297426665
-#
-#出力例 2
-#A
-#A
-#C
-#A
-#A
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def replaceABC(s):
+    s = s.replace("A","BC")
+    s = s.replace("B","CA")
+    s = s.replace("C","AB")
+    return s
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    Q = int(input())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    for t, k in query:
+        t %= 3
+        if t == 0:
+            print(S[k-1])
+        elif t == 1:
+            print(S[k-1].translate(str.maketrans('ABC', 'BCA')))
+        else:
+            print(S[k-1].translate(str.maketrans('ABC', 'CAB')))
+
+=======
+Suggestion 3
+
+def f(s):
+    return s.replace('A','BC').replace('B','CA').replace('C','AB')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    Q = int(input())
+    lst = []
+    for i in range(Q):
+        t, k = map(int, input().split())
+        lst.append((t, k))
+    #print(lst)
+    for i in range(Q):
+        t, k = lst[i]
+        t = t % 3
+        #print(t, k)
+        if t == 0:
+            print(S[k-1])
+        elif t == 1:
+            if k <= len(S):
+                print(S[k-1])
+            else:
+                print(S[k-1 - len(S)])
+        else:
+            if k <= len(S):
+                print(S[k-1])
+            else:
+                print(S[k-1 - len(S) * 2])
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    Q = int(input())
+    for _ in range(Q):
+        t, k = map(int, input().split())
+        t = t % 3
+        k = k - 1
+        for _ in range(t):
+            S = S.replace("A", "BC")
+            S = S.replace("B", "CA")
+            S = S.replace("C", "AB")
+        print(S[k])
+
+=======
+Suggestion 6
+
+def replace(s):
+    i = 0
+    r = ''
+    while i < len(s):
+        if s[i] == 'A':
+            r = r + 'BC'
+        elif s[i] == 'B':
+            r = r + 'CA'
+        else:
+            r = r + 'AB'
+        i = i + 1
+    return r
+
+s = input()
+q = int(input())
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    Q = int(input())
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+    for t, k in queries:
+        t -= 1
+        while t > 0:
+            if k <= len(S):
+                if S[k - 1] == 'A':
+                    S = 'BC' + S[k:]
+                elif S[k - 1] == 'B':
+                    S = 'CA' + S[k:]
+                else:
+                    S = 'AB' + S[k:]
+                break
+            else:
+                t -= 1
+                k -= len(S)
+        print(S[k - 1])
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t, k = map(int, input().split())
+        t = t % 3
+        for j in range(t):
+            s = s.replace('A', 'BC')
+            s = s.replace('B', 'CA')
+            s = s.replace('C', 'AB')
+        print(s[k-1])
+
+=======
+Suggestion 9
+
+def replace(S):
+    S = S.replace('A', 'BC')
+    S = S.replace('B', 'CA')
+    S = S.replace('C', 'AB')
+    return S
+
+S = input()
+Q = int(input())
+query = []
+for _ in range(Q):
+    t, k = map(int, input().split())
+    query.append((t, k))
+
+for t, k in query:
+    if t == 0:
+        print(S[k-1])
+    else:
+        S = replace(S)
+        print(S[k-1])
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t, k = map(int,input().split())
+        for j in range(t):
+            s = s.replace('A','BC')
+            s = s.replace('B','CA')
+            s = s.replace('C','AB')
+        print(s[k-1])

@@ -1,51 +1,215 @@
-#問題文
-#高橋君の家には N 本の麺からなるパスタがあり、i 本目の麺の長さは A_i です。
-#高橋君はこれから M 日間の食事計画を立てており、
-#i 日目にはパスタの麺のうち長さがちょうど B_i であるようなものを 1 本選び、食べようと考えています。
-#もし、1 日目から M 日目の間に 1 日でもそのような麺が無い日があれば、食事計画は失敗となります。
-#また、同じ麺を複数の日に食べることはできません。
-#高橋君が食事計画を最後まで実行することは可能ですか？
-#
-#制約
-#1 ≦ M ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#入力はすべて整数である。
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 ... A_N
-#B_1 B_2 ... B_M
-#
-#出力
-#高橋君が食事計画を最後まで実行できる場合は Yes を、そうでない場合は No を出力せよ。
-#
-#入力例 1
-#3 2
-#1 1 3
-#3 1
-#
-#出力例 1
-#Yes
-#1 日目に 3 本目の麺を、2 日目に 1 本目の麺を食べれば良いので、高橋君の食事計画は実行可能です。
-#
-#入力例 2
-#1 1
-#1000000000
-#1
-#
-#出力例 2
-#No
-#長さがちょうど 1 の麺が存在する必要があります。
-#
-#入力例 3
-#5 2
-#1 2 3 4 5
-#5 5
-#
-#出力例 3
-#No
-#長さが 5 の麺は 1 本しか存在しないため、2 日目に食事をとる事が出来ません。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    if M > N:
+        print("No")
+        return
+
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+
+    for i in range(M):
+        if A[i] < B[i]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    for i in range(n):
+        for j in range(m):
+            if a[i] == b[j]:
+                b[j] = 0
+                break
+        else:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    if M > N:
+        print('No')
+        return
+
+    A.sort()
+    B.sort()
+
+    for i in range(M):
+        if A[i] >= B[i]:
+            print('No')
+            return
+
+    print('Yes')
+
+main()
+
+=======
+Suggestion 4
+
+def check_pasta(pasta, pasta_len):
+    for i in range(len(pasta)):
+        if pasta[i] == pasta_len:
+            return True
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    if M > N:
+        print("No")
+        return
+
+    A.sort()
+    B.sort()
+
+    for i in range(M):
+        if A[i] >= B[i]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    if N < M:
+        print("No")
+        exit()
+
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+
+    for i in range(M):
+        if A[i] < B[i]:
+            print("No")
+            exit()
+
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # N, M = 5, 2
+    # A = [1,2,3,4,5]
+    # B = [5,5]
+
+    A.sort()
+    B.sort()
+
+    if M > N:
+        print('No')
+        exit()
+
+    if min(A) < min(B):
+        print('No')
+        exit()
+
+    if max(A) > max(B):
+        print('No')
+        exit()
+
+    for i in range(M):
+        if A[i] >= B[i]:
+            print('No')
+            exit()
+
+    print('Yes')
+    exit()
+
+=======
+Suggestion 8
+
+def check(n, m, a, b):
+    if n < m:
+        return False
+    for i in range(m):
+        if b[i] not in a:
+            return False
+    return True
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # aをソートしておく
+    a.sort()
+
+    # bをソートしておく
+    b.sort()
+
+    # aの最小値とbの最小値を比較
+    if a[0] < b[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if m > n:
+        print("No")
+    else:
+        i = 0
+        j = 0
+        while i < n and j < m:
+            if a[i] <= b[j]:
+                i = i + 1
+                j = j + 1
+            else:
+                i = i + 1
+        if j == m:
+            print("Yes")
+        else:
+            print("No")

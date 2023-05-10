@@ -1,29 +1,70 @@
-#問題文
-#整数 K が与えられます。
-#英大文字を A から昇順に K 個繋げて得られる文字列を答えてください。
-#
-#制約
-#K は 1 以上 26 以下の整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#K
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#3
-#
-#出力例 1
-#ABC
-#英大文字は A から昇順に A, B, C, ... です。
-#A から昇順に 3 個繋げて得られる文字列は ABC です。
-#
-#入力例 2
-#1
-#
-#出力例 2
-#A
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    print('ABC'[:k])
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    print("".join([chr(i) for i in range(65, 65+K)]))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    a = ord('A')
+    for i in range(k):
+        print(chr(a+i), end="")
+    print()
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    print(''.join([chr(i) for i in range(65, 65+k)]))
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    ans = ''
+    for i in range(k):
+        ans += chr(65+i)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    print("".join([chr(i) for i in range(65, 65+k)]))
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    print('ABC'*K)
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    print(''.join([chr(ord('A') + i) for i in range(K)]))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    print("ABC"[:k])

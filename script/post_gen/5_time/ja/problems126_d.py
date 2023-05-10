@@ -1,53 +1,231 @@
-#問題文
-#N 頂点の木があります。
-#この木の i 番目の辺は頂点 u_i と頂点 v_i を結んでおり、その長さは w_i です。
-#あなたは以下の条件を満たすように、この木の頂点を白と黒の 2 色で塗り分けたいです (すべての頂点を同じ色で塗っても構いません)。
-#同じ色に塗られた任意の 2 頂点について、その距離が偶数である。
-#条件を満たす塗り分け方を 1 つ見つけて出力してください。この問題の制約下では、そのような塗り分け方が必ず 1 つは存在することが証明できます。
-#
-#制約
-#入力は全て整数である。
-#1 ≦ N ≦ 10^5
-#1 ≦ u_i < v_i ≦ N
-#1 ≦ w_i ≦ 10^9
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#u_1 v_1 w_1
-#u_2 v_2 w_2
-#.
-#.
-#.
-#u_{N - 1} v_{N - 1} w_{N - 1}
-#
-#出力
-#題意の条件を満たすような頂点の塗り分け方を N 行に分けて出力せよ。
-#i 行目には、頂点 i を白く塗る場合は 0 を、黒く塗る場合は 1 を出力せよ。
-#条件を満たす塗り分け方が複数存在する場合、どれを出力してもよい。
-#
-#入力例 1
-#3
-#1 2 2
-#2 3 1
-#
-#出力例 1
-#0
-#0
-#1
-#
-#入力例 2
-#5
-#2 5 2
-#2 3 10
-#1 3 8
-#3 4 2
-#
-#出力例 2
-#1
-#0
-#1
-#0
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def dfs(v, c):
+    color[v] = c
+    for next_v, w in graph[v]:
+        if color[next_v] != -1:
+            continue
+        if w % 2 == 0:
+            dfs(next_v, c)
+        else:
+            dfs(next_v, 1 - c)
+
+N = int(input())
+graph = [[] for _ in range(N)]
+for _ in range(N - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u].append((v, w))
+    graph[v].append((u, w))
+
+color = [-1] * N
+dfs(0, 0)
+for c in color:
+    print(c)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    v = [[] for _ in range(N)]
+    for _ in range(N - 1):
+        u, w, c = map(int, input().split())
+        v[u - 1].append((w - 1, c))
+        v[w - 1].append((u - 1, c))
+
+    q = [0]
+    color = [-1] * N
+    color[0] = 0
+    while q:
+        p = q.pop()
+        for w, c in v[p]:
+            if color[w] == -1:
+                color[w] = color[p] ^ c
+                q.append(w)
+    print(*color, sep="\n")
+
+=======
+Suggestion 3
+
+def dfs(s, c):
+    color[s] = c
+    for i in range(len(G[s])):
+        if color[G[s][i]] == 0:
+            dfs(G[s][i], -c)
+
+N = int(input())
+G = [[] for i in range(N)]
+color = [0] * N
+
+for i in range(N - 1):
+    u, v, w = map(int, input().split())
+    G[u - 1].append(v - 1)
+    G[v - 1].append(u - 1)
+
+dfs(0, 1)
+for i in range(N):
+    if color[i] == 1:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    edges = [list(map(int, input().split())) for _ in range(n-1)]
+    ans = [0] * n
+    graph = [[] for _ in range(n)]
+    for u, v, w in edges:
+        graph[u-1].append((v-1, w))
+        graph[v-1].append((u-1, w))
+    def dfs(v, p, d):
+        ans[v] = d % 2
+        for u, w in graph[v]:
+            if u == p:
+                continue
+            dfs(u, v, d+w)
+    dfs(0, -1, 0)
+    print(*ans, sep="\n")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    tree = [[] for _ in range(N)]
+    for _ in range(N-1):
+        u, v, w = map(int, input().split())
+        tree[u-1].append((v-1, w))
+        tree[v-1].append((u-1, w))
+    color = [-1] * N
+    color[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u, w in tree[v]:
+            if color[u] != -1:
+                continue
+            color[u] = color[v] ^ (w % 2)
+            stack.append(u)
+    print(*color, sep='\n')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    edges = []
+    for i in range(n-1):
+        edges.append(list(map(int, input().split())))
+
+    colors = [-1 for _ in range(n)]
+    colors[0] = 0
+    q = [0]
+    while len(q) > 0:
+        v = q.pop()
+        for edge in edges:
+            if edge[0] == v and colors[edge[1]-1] == -1:
+                colors[edge[1]-1] = (colors[v]+edge[2])%2
+                q.append(edge[1]-1)
+            elif edge[1] == v and colors[edge[0]-1] == -1:
+                colors[edge[0]-1] = (colors[v]+edge[2])%2
+                q.append(edge[0]-1)
+    for color in colors:
+        print(color)
+
+=======
+Suggestion 7
+
+def dfs(u, c):
+    color[u] = c
+    for v, w in adj[u]:
+        if color[v] == -1:
+            dfs(v, c ^ w)
+
+n = int(input())
+adj = [[] for _ in range(n)]
+for _ in range(n - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    adj[u].append((v, w % 2))
+    adj[v].append((u, w % 2))
+
+color = [-1] * n
+dfs(0, 0)
+for c in color:
+    print(c)
+
+=======
+Suggestion 8
+
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(edge[v])):
+        if color[edge[v][i]] == -1:
+            dfs(edge[v][i], c ^ 1)
+
+n = int(input())
+edge = [[] for i in range(n)]
+color = [-1 for i in range(n)]
+for i in range(n - 1):
+    a, b, w = map(int, input().split())
+    edge[a - 1].append(b - 1)
+    edge[b - 1].append(a - 1)
+dfs(0, 0)
+for i in range(n):
+    print(color[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    u = []
+    v = []
+    w = []
+    for i in range(n-1):
+        u_i, v_i, w_i = map(int, input().split())
+        u.append(u_i)
+        v.append(v_i)
+        w.append(w_i)
+    ans = [0] * n
+    for i in range(n-1):
+        if w[i] % 2 == 0:
+            ans[v[i]-1] = ans[u[i]-1]
+        else:
+            ans[v[i]-1] = 1 - ans[u[i]-1]
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    edges = []
+    for i in range(n-1):
+        u, v, w = map(int, input().split())
+        edges.append((u-1, v-1, w))
+    adj = [[] for _ in range(n)]
+    for u, v, w in edges:
+        adj[u].append((v, w))
+        adj[v].append((u, w))
+    color = [-1]*n
+    color[0] = 0
+    stack = [0]
+    while stack:
+        u = stack.pop()
+        for v, w in adj[u]:
+            if color[v] != -1:
+                continue
+            color[v] = 1-color[u] if w%2 else color[u]
+            stack.append(v)
+    print(*color, sep='\n')

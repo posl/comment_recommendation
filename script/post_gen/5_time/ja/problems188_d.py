@@ -1,64 +1,254 @@
-#問題文
-#株式会社すぬけは様々なサービスを提供しています。
-#この会社は、すぬけプライムという支払いプランを用意しています。
-#すぬけプライムへの加入中は、1 日あたり C 円を支払うことで、提供される全てのサービスを追加料金の支払いなしに利用することができます。
-#すぬけプライムへの加入および脱退は、それぞれ 1 日の始めおよび終わりに自由に行うことができます。  
-#高橋くんは、この会社のサービスのうち N 個を利用しようとしています。
-#そのうち i 個目のサービスは、今日を 1 日目として、a_i 日目の始めから b_i 日目の終わりまで利用する予定です。
-#すぬけプライムに加入していない期間中は、i 個目のサービスを利用する際に 1 日あたり c_i 円を支払う必要があります。  
-#サービスを利用するために高橋くんが支払う必要のある最小の合計金額を求めてください。
-#
-#制約
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C ≦ 10^9
-#1 ≦ a_i ≦ b_i ≦ 10^9
-#1 ≦ c_i ≦ 10^9
-#入力に含まれる値は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N C
-#a_1 b_1 c_1
-#.
-#.
-#.
-#a_N b_N c_N
-#
-#出力
-#高橋くんが支払う必要のある最小の合計金額を出力せよ。
-#
-#入力例 1
-#2 6
-#1 2 4
-#2 2 4
-#
-#出力例 1
-#10
-#1 番目のサービスは 1 日目と 2 日目に、 2 番目のサービスは 2 日目に利用します。
-#2 日目のみすぬけプライムに加入すると、 1 日目に 4 円、 2 日目に 6 円がかかるため、高橋くんが支払う合計金額は 10 円です。
-#高橋くんが支払う金額を 10 円より少なくすることはできないため、 10 を出力します。
-#
-#入力例 2
-#5 1000000000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#出力例 2
-#163089627821228
-#すぬけプライムに全く加入しないのが最適です。
-#
-#入力例 3
-#5 100000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#出力例 3
-#88206004785464
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, C = map(int, input().split())
+    #print(N, C)
+    #print(type(N), type(C))
+    #print(N, C)
+    #print
+
+=======
+Suggestion 2
+
+def main():
+    n, c = map(int, input().split())
+    #print(n, c)
+    abcs = []
+    for i in range(n):
+        abcs.append(list(map(int, input().split())))
+    #print(abcs)
+    abcs.sort()
+    #print(abcs)
+    #print('------')
+    #print(n, c)
+    #print(abcs)
+    #print('-----
+
+=======
+Suggestion 3
+
+def calc_cost(services, c):
+    cost = 0
+    for service in services:
+        cost += service[2]
+    cost += c
+    return cost
+
+=======
+Suggestion 4
+
+def solve():
+    N, C = map(int, input().split())
+    #print(N, C)
+    abc = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        #print(a, b, c)
+        abc.append((a, b, c))
+    #print(abc)
+
+    # 1日ごとに支払う金額を計算する
+    day = [0] * (10 ** 9 + 2)
+    for a, b, c in abc:
+        day[a] += c
+        day[b + 1] -= c
+    #print(day)
+
+    # 累積和を計算する
+    for i in range(1, len(day)):
+        day[i] += day[i - 1]
+    #print(day)
+
+    # すぬけプライムに加入する日を探す
+    prime = [0] * (10 ** 9 + 2)
+    for i in range(1, len(day)):
+        if day[i] > C:
+            prime[i] = 1
+    #print(prime)
+
+    # 累積和を計算する
+    for i in range(1, len(prime)):
+        prime[i] += prime[i - 1]
+    #print(prime)
+
+    # 各サービスを利用する日を探す
+    ans = 0
+    for a, b, c in abc:
+        if prime[b] - prime[a - 1] == 0:
+            ans += c
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, C = map(int, input().split())
+    events = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        events.append([a-1, c])
+        events.append([b, -c])
+    events.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x, y in events:
+        if x != t:
+            ans += min(C, fee) * (x - t)
+            t = x
+        fee += y
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N,C = map(int,input().split())
+    events = []
+    for i in range(N):
+        a,b,c = map(int,input().split())
+        events.append((a-1,c))
+        events.append((b,-c))
+    events.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x,y in events:
+        if x != t:
+            ans += min(C,fee) * (x-t)
+            t = x
+        fee += y
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, c = map(int, input().split())
+    l = []
+    for i in range(n):
+        a, b, d = map(int, input().split())
+        l.append([a, d])
+        l.append([b+1, -d])
+    l.sort()
+    s = 0
+    ans = 0
+    t = 0
+    for i in range(len(l)):
+        if l[i][0] != t:
+            ans += min(c, s) * (l[i][0] - t)
+            t = l[i][0]
+        s += l[i][1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input_data():
+    n,c = map(int,input().split())
+    service = []
+    for i in range(n):
+        a,b,c = map(int,input().split())
+        service.append([a,b,c])
+    return n,c,service
+
+=======
+Suggestion 9
+
+def main():
+    n, c = map(int, input().split())
+    #print(n, c)
+    #a = []
+    #b = []
+    #c = []
+    #for i in range(n):
+    #    a[i], b[i], c[i] = map(int, input().split())
+    #    print(a[i], b[i], c[i])
+    #print(a)
+    #print(b)
+    #print(c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    #for i in range(n):
+    #    a, b, c = map(int, input().split())
+    #    print(a, b, c)
+    #print(n, c)
+    a = []
+    b = []
+    c = []
+    for i in range(n):
+        a_i, b_i, c_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+        c.append(c_i)
+    #print(a)
+    #print(b)
+    #print(c)
+    #print(n
+
+=======
+Suggestion 10
+
+def solve():
+    N,C = map(int,input().split())
+    A = []
+    B = []
+    C = []
+    for i in range(N):
+        a,b,c = map(int,input().split())
+        A.append(a)
+        B.append(b)
+        C.append(c)
+
+    #各日の支払い金額を計算する
+    #日付ごとに、何日間すぬけプライムを利用するかを調べる
+    #各日の支払い金額を計算する
+    #各日の支払い金額を合計する
+    #最小の支払い金額を出力する
+    #各日の支払い金額を計算する
+    #日付ごとに、何日間すぬけプライムを利用するかを調べる
+    #各日の支払い金額を計算する
+    #各日の支払い金額を合計する
+    #最小の支払い金額を出力する
+    #各日の支払い金額を計算する
+    #日付ごとに、何日間すぬけプライムを利用するかを調べる
+    #各日の支払い金額を計算する
+    #各日の支払い金額を合計する
+    #最小の支払い金額を出力する
+    #各日の支払い金額を計算する
+    #日付ごとに、何日間すぬけプライムを利用するかを調べる
+    #各日の支払い金額を計算する
+    #各日の支払い金額を合計する
+    #最小の支払い金額を出力する
+    #各日の支払い金額を計算する
+    #日付ごとに、何日間すぬけプラ

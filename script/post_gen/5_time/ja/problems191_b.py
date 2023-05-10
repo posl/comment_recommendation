@@ -1,34 +1,121 @@
-#問題文
-#長さ N の整数列 A と整数 X が与えられます。
-#A から X と等しい要素を全て取り除き、残った要素をそのままの順序で並べた数列 A' を出力してください。  
-#
-#制約
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#出力
-#A' の要素を空白区切りで順に出力せよ。  
-#
-#入力例 1
-#5 5
-#3 5 6 5 4
-#
-#出力例 1
-#3 6 4
-#[3, 5, 6, 5, 4] から 5 を取り除くと、[3, 6, 4] になります。  
-#
-#入力例 2
-#3 3
-#3 3 3
-#
-#出力例 2
-#A' が要素数 0 の数列となる場合があります。この場合、空行を出力するだけで構いません。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem191_b():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = []
+    for a in A:
+        if a != X:
+            ans.append(a)
+
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] == x:
+            pass
+        else:
+            ans.append(a[i])
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=' ')
+
+=======
+Suggestion 4
+
+def removeElement(nums, val):
+    i = 0
+    while i < len(nums):
+        if nums[i] == val:
+            nums.pop(i)
+            i -= 1
+        i += 1
+    return nums
+
+=======
+Suggestion 5
+
+def main():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    A = [i for i in A if i != X]
+    print(*A)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+
+    for i in range(len(ans)):
+        print(ans[i], end=" ")
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = []
+    for i in range(n):
+        if a[i] != x:
+            result.append(a[i])
+    print(*result)
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i],end=" ")
+
+=======
+Suggestion 9
+
+def main():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    for i in range(N):
+        if A[i] != X:
+            print(A[i],end=" ")
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = []
+    for i in range(N):
+        if A[i] != X:
+            ans.append(A[i])
+    print(*ans)

@@ -1,39 +1,170 @@
-#問題文
-#f(A, B) を A, A+1, ..., B の排他的論理和としたとき、f(A, B) を求めてください。
-#排他的論理和とは
-#整数 c_1, c_2, ..., c_n のビットごとの排他的論理和 y は、以下のように定義されます。
-#y を二進表記した際の 2^k (k ≧ 0) の位の数は、c_1, c_2, ..., c_n のうち、二進表記した際の 2^k の位の数が 1 となるものが奇数個ならば 1、偶数個ならば 0 である。
-#例えば、3 と 5 の排他的論理和は 6 です(二進数表記すると: 011 と 101 の排他的論理和は 110 です)。
-#
-#制約
-#入力は全て整数である。
-#0 ≦ A ≦ B ≦ 10^{12}
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#A B
-#
-#出力
-#f(A, B) を計算し、出力せよ。
-#
-#入力例 1
-#2 4
-#
-#出力例 1
-#5
-#2, 3, 4 は 2 進数でそれぞれ 010, 011, 100 です。
-#これらの排他的論理和は 101 であり、これを 10 進数表記にすると 5 になります。
-#
-#入力例 2
-#123 456
-#
-#出力例 2
-#435
-#
-#入力例 3
-#123456789012 123456789012
-#
-#出力例 3
-#123456789012
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    #print(a,b)
+    #print(bin(a),bin(b))
+    #print(bin(a^b))
+    print(a^b)
+
+=======
+Suggestion 2
+
+def xor(a,b):
+    if a == 0:
+        return b
+    elif a == 1:
+        if b == 0:
+            return 1
+        elif b == 1:
+            return 0
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(a)
+        return
+    if a % 2 == 0:
+        if (b - a) % 4 == 1:
+            print(1)
+        elif (b - a) % 4 == 2:
+            print(b)
+        elif (b - a) % 4 == 3:
+            print(0)
+        else:
+            print(b)
+    else:
+        if (b - a) % 4 == 0:
+            print(a)
+        elif (b - a) % 4 == 1:
+            print(1)
+        elif (b - a) % 4 == 2:
+            print(a ^ b)
+        else:
+            print(0)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    print(A^B)
+
+=======
+Suggestion 5
+
+def solve():
+    a, b = map(int, input().split())
+    if a == b:
+        return a
+    if a % 2 == 0:
+        if (b - a) % 4 == 0:
+            return b
+        else:
+            return b ^ 1
+    else:
+        if (b - a) % 4 == 0:
+            return b ^ a ^ 1
+        else:
+            return b ^ a
+
+print(solve())
+
+=======
+Suggestion 6
+
+def f(a, b):
+    if a == b:
+        return a
+    if a == 0:
+        return f(a+1, b)
+    if a % 2 == 0:
+        return f(a+1, b) ^ a
+    if b % 2 == 1:
+        return f(a, b-1) ^ b
+    return f(a+1, b) ^ a ^ f(1, b)
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(a)
+    else:
+        if a % 2 == 0:
+            if (b - a) % 4 == 0:
+                print(b)
+            elif (b - a) % 4 == 1:
+                print(1)
+            elif (b - a) % 4 == 2:
+                print(b + 1)
+            elif (b - a) % 4 == 3:
+                print(0)
+        else:
+            if (b - a) % 4 == 0:
+                print(a ^ b)
+            elif (b - a) % 4 == 1:
+                print(a ^ 1)
+            elif (b - a) % 4 == 2:
+                print(a ^ (b + 1))
+            elif (b - a) % 4 == 3:
+                print(a ^ 0)
+
+=======
+Suggestion 8
+
+def func(a, b):
+    if a == b:
+        return a
+    elif a == 0:
+        return func(a+1, b)
+    elif a % 2 == 0:
+        return func(a+1, b) ^ a
+    else:
+        return func(a-1, b) ^ a
+
+a, b = map(int, input().split())
+print(func(a, b))
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    A, B = map(int, input().split())
+    # compute
+    ans = 0
+    for i in range(A, B+1):
+        ans ^= i
+    # output
+    print(ans)
+
+=======
+Suggestion 10
+
+def f(A, B):
+    if A == B:
+        return A
+    if A == 0:
+        if B % 4 == 0:
+            return B
+        if B % 4 == 1:
+            return 1
+        if B % 4 == 2:
+            return B + 1
+        if B % 4 == 3:
+            return 0
+    return f(0, A - 1) ^ f(0, B)
+
+A, B = map(int, input().split())
+print(f(A, B))

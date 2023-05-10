@@ -1,62 +1,297 @@
-#問題文
-#左右方向一列に N 個のマスが並んでいます。左から i 番目のマスをマス i と呼ぶことにします。
-#この N 個のマスのうち、マス A_1, マス A_2, マス A_3, ..., マス A_M の M 個のマスは青色で、それ以外のマスは白色です。(M = 0 の可能性もあり、その場合青色のマスはありません。)
-#あなたは一回だけ、正整数 k を一つ選んで幅 k のハンコを作ります。幅 k のハンコを一回使用すると、N 個のマスのうち連続する k マスを選び、それらを赤色に塗り替えることができます。ただしその際、その k 個のマスの中に青色のマスが入っていてはなりません。
-#k とハンコの使用方法をうまく決めた時、最小で何回ハンコを使用すれば、白色のマスが存在しない状態にすることができるでしょうか。  
-#
-#制約
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i は互いに異なる
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#出力
-#最小で何回ハンコを使用すれば白色のマスが存在しない状態にすることができるかを表す整数を出力せよ。
-#
-#入力例 1
-#5 2
-#1 3
-#
-#出力例 1
-#3
-#k として 1 を選び、3 つある白色マスを一回に一つずつ赤色に塗り替えると 3 回で目的を達成でき、最適です。
-#k として 2 以上を選ぶと、ハンコの使用時に k 個のマスの中に青色のマスが入っていてはいけないという制約のためにマス 2 がどうやっても赤色に塗り替えられなくなってしまいます。  
-#
-#入力例 2
-#13 3
-#13 3 9
-#
-#出力例 2
-#6
-#例えば k = 2 とし、以下のようにハンコを使用すると最適です。  
-#マス 1, 2 を赤色に塗り替える
-#マス 4, 5 を赤色に塗り替える
-#マス 5, 6 を赤色に塗り替える
-#マス 7, 8 を赤色に塗り替える
-#マス 10, 11 を赤色に塗り替える
-#マス 11, 12 を赤色に塗り替える
-#ハンコの使用時に選ぶ連続する k 個のマスは青色のマスを含んではいけませんが、既に赤色のマスを含むのは問題ありません。  
-#
-#入力例 3
-#5 5
-#5 2 1 4 3
-#
-#出力例 3
-#0
-#最初から白色のマスが存在しない場合、ハンコは 1 回も使わなくてよいです。  
-#
-#入力例 4
-#1 0
-#
-#
-#出力例 4
-#1
-#M = 0 の可能性もあります。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    if M == 0:
+        print(1)
+        return
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(N+1)
+
+    B = []
+    for i in range(1,M+1):
+        if A[i] - A[i-1] -1 != 0:
+            B.append(A[i] - A[i-1] -1)
+    if len(B) == 0:
+        print(0)
+        return
+    K = min(B)
+    ans = 0
+    for b in B:
+        ans += (b + K - 1) // K
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if m == 0:
+        print(1)
+        return
+    if n == m:
+        print(0)
+        return
+    b = [0] * (m + 1)
+    for i in range(m):
+        b[i + 1] = a[i] - a[i - 1] - 1
+    b.sort()
+    ans = 0
+    for i in range(m - n + 1):
+        ans += b[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    if M == 0:
+        print(1)
+        return
+
+    A.sort()
+
+    if A[0] != 1:
+        A.insert(0, 0)
+    if A[M - 1] != N:
+        A.append(N + 1)
+
+    if M == 1:
+        print(A[1] - A[0] - 1)
+        return
+
+    if M == 2:
+        print(min(A[1] - A[0] - 1, A[2] - A[1] - 1))
+        return
+
+    ans = 0
+    for i in range(1, M + 1):
+        ans = max(ans, A[i] - A[i - 1] - 1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(1)
+        return
+    a = list(map(int,input().split()))
+    a.sort()
+    a.append(n+1)
+    l = []
+    s = a[0]-1
+    for i in range(1,m+1):
+        if a[i]-a[i-1]-1 > 0:
+            l.append(a[i]-a[i-1]-1)
+    if len(l) == 0:
+        print(0)
+        return
+    k = min(l)
+    ans = 0
+    for i in l:
+        ans += (i+k-1)//k
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(n,m,as_):
+    if m == 0:
+        return 1
+    if n == m:
+        return 0
+    as_.sort()
+    diffs = []
+    for i in range(m-1):
+        diff = as_[i+1] - as_[i] - 1
+        if diff > 0:
+            diffs.append(diff)
+    diff = as_[0] - 1
+    if diff > 0:
+        diffs.append(diff)
+    diff = n - as_[-1]
+    if diff > 0:
+        diffs.append(diff)
+    diffs.sort()
+    k = diffs[0]
+    ans = 0
+    for diff in diffs:
+        ans += (diff + k - 1) // k
+    return ans
+
+n,m = map(int, input().split())
+as_ = list(map(int, input().split()))
+print(solve(n,m,as_))
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        exit()
+    if N == M:
+        print(0)
+        exit()
+    if N == 1:
+        print(0)
+        exit()
+    if A[0] != 1:
+        A = [0] + A
+    if A[-1] != N:
+        A = A + [N+1]
+    if N == 2:
+        if M == 1:
+            print(1)
+        else:
+            print(0)
+        exit()
+    max_d = 0
+    d = []
+    for i in range(M):
+        d.append(A[i+1] - A[i] - 1)
+        if d[-1] > max_d:
+            max_d = d[-1]
+    if max_d == 0:
+        print(0)
+        exit()
+    if max_d == 1:
+        print(1)
+        exit()
+    if max_d % 2 == 0:
+        print(max_d//2)
+    else:
+        print(max_d//2 + 1)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(1)
+        return
+    if n == m:
+        print(0)
+        return
+    a = list(map(int,input().split()))
+    a.sort()
+    if m == 1:
+        print(n-1)
+        return
+    d = []
+    for i in range(1,m):
+        d.append(a[i]-a[i-1]-1)
+    d.sort()
+    k = a[0]-1
+    k += n-a[m-1]
+    for i in range(m-1):
+        k += d[i]
+    print(k)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if m == 0:
+        print(1)
+        exit()
+    if n == m:
+        print(0)
+        exit()
+    b = []
+    for i in range(m):
+        if i == 0:
+            b.append(a[i]-1)
+        else:
+            b.append(a[i]-a[i-1]-1)
+    b.append(n-a[m-1])
+    b.sort()
+    k = b[0]
+    ans = 0
+    for i in range(m+1):
+        if b[i] % k == 0:
+            ans += b[i] // k
+        else:
+            ans += b[i] // k + 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    if M == 0:
+        print(1)
+        return
+    A = list(map(int,input().split()))
+    A.sort()
+    if A[0] != 1:
+        A.insert(0,0)
+    if A[-1] != N:
+        A.append(N+1)
+    k = N
+    for i in range(len(A)-1):
+        if A[i+1] - A[i] - 1 != 0:
+            k = min(k,A[i+1] - A[i] - 1)
+    ans = 0
+    for i in range(len(A)-1):
+        if A[i+1] - A[i] - 1 != 0:
+            ans += (A[i+1] - A[i] - 1 + k - 1) // k
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(1)
+        return
+
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[0] != 1:
+        a.insert(0,0)
+    if a[-1] != n:
+        a.append(n+1)
+    
+    if len(a) == 2:
+        print(1)
+        return
+    
+    if len(a) == 3:
+        print(2)
+        return
+    
+    k = []
+    for i in range(1,len(a)):
+        k.append(a[i]-a[i-1]-1)
+    
+    k = list(filter(lambda a: a != 0, k))
+    k.sort()
+    min_k = k[0]
+    ans = 0
+    for i in range(len(k)):
+        ans += k[i]//min_k
+        if k[i]%min_k != 0:
+            ans += 1
+    print(ans)

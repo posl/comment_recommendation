@@ -1,30 +1,78 @@
-#問題文
-#A を N 個、B を N 個、…、Z を N 個この順に繋げて得られる文字列の先頭から X 番目の文字を求めてください。
-#
-#制約
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ N× 26
-#入力は全て整数
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N X
-#
-#出力
-#答えを出力せよ。
-#
-#入力例 1
-#1 3
-#
-#出力例 1
-#C
-#得られる文字列は ABCDEFGHIJKLMNOPQRSTUVWXYZ です。先頭から 3 番目の文字は C です。
-#
-#入力例 2
-#2 12
-#
-#出力例 2
-#F
-#得られる文字列は AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ です。先頭から 12 番目の文字は F です。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_char(n, x):
+    # n: 何文字目までの文字列を作るか
+    # x: 何文字目の文字を取得するか
+    # 1
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    print(chr(x%26+64))
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(65 + (x - 1) % 26) * n)
+
+=======
+Suggestion 4
+
+def main():
+    n,x = map(int,input().split())
+    print(chr(ord('A') + (x-1) % 26) * n)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    ans = ""
+    for i in range(n):
+        ans += chr(65 + i) * n
+    print(ans[x - 1])
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(x + 64))
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    print(chr(64 + X // N))
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    print(chr(ord('A') + (x-1)%26))
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    print(chr(64+x//n))
+
+=======
+Suggestion 10
+
+def main():
+    n,x = map(int,input().split())
+    ans = ''
+    for i in range(n):
+        ans += chr(i+65)*n
+    print(ans[x-1])

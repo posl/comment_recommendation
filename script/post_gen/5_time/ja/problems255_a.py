@@ -1,45 +1,58 @@
-#問題文
-#整数 R,C と 2 行 2 列からなる行列 A が与えられるので、 A_{R,C} を出力してください。
-#
-#制約
-#入力は全て整数
-#1 ≦ R,C ≦ 2
-#0 ≦ A_{i,j} ≦ 100
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#R C
-#A_{1,1} A_{1,2}
-#A_{2,1} A_{2,2}
-#
-#出力
-#答えを整数として出力せよ。
-#
-#入力例 1
-#1 2
-#1 0
-#0 1
-#
-#出力例 1
-#0
-#A_{1,2}=0 です。
-#
-#入力例 2
-#2 2
-#1 2
-#3 4
-#
-#出力例 2
-#4
-#A_{2,2}=4 です。
-#
-#入力例 3
-#2 1
-#90 80
-#70 60
-#
-#出力例 3
-#70
-#A_{2,1}=70 です。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r, c = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(2)]
+    print(a[r-1][c-1])
+
+=======
+Suggestion 2
+
+def main():
+    r, c = map(int, input().split())
+    a = []
+    for _ in range(2):
+        a.append(list(map(int, input().split())))
+
+    print(a[r-1][c-1])
+
+=======
+Suggestion 3
+
+def main():
+    r,c = map(int,input().split())
+    a = []
+    for i in range(2):
+        a.append(list(map(int,input().split())))
+    print(a[r-1][c-1])
+
+=======
+Suggestion 4
+
+def solve():
+    r, c = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(2)]
+    print(a[r-1][c-1])
+
+=======
+Suggestion 5
+
+def main():
+    R,C = map(int, input().split())
+    A = []
+    for i in range(R):
+        A.append(list(map(int, input().split())))
+    print(A[R-1][C-1])
+
+=======
+Suggestion 6
+
+def main():
+    r, c = map(int, input().split())
+    a = []
+    for i in range(r):
+        a.append(list(map(int, input().split())))
+    print(a[r-1][c-1])

@@ -1,43 +1,130 @@
-#問題文
-#1 個の 0 のみからなる数列 A=(0) があります。
-#また、L と R のみからなる長さ N の文字列 S=s_1s_2... s_N が与えられます。  
-#i=1,2,... ,N の順番で、次の操作を行います。  
-#s_i が L のとき、A 内にある i-1 のすぐ左に i を挿入する
-#s_i が R のとき、A 内にある i-1 のすぐ右に i を挿入する
-#最終的な A を求めてください。
-#
-#制約
-#1≦ N ≦ 5× 10^5
-#N は整数である
-#|S| = N
-#s_i は L か R のいずれかである
-#
-#入力
-#入力は以下の形式で標準入力から与えられる。
-#N
-#S
-#
-#出力
-#最終的な A を空白区切りで出力せよ。
-#
-#入力例 1
-#5
-#LRRLR
-#
-#出力例 1
-#1 2 4 5 3 0
-#はじめ、A=(0) です。
-#s_1 が L なので、A=(1,0) となります。
-#s_2 が R なので、A=(1,2,0) となります。
-#s_3 が R なので、A=(1,2,3,0) となります。
-#s_4 が L なので、A=(1,2,4,3,0) となります。
-#s_5 が R なので、A=(1,2,4,5,3,0) となります。  
-#
-#入力例 2
-#7
-#LLLLLLL
-#
-#出力例 2
-#7 6 5 4 3 2 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0, i+1)
+        else:
+            a.append(i+1)
+    print(*a)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(1,N):
+        if S[i-1] == 'L' and S[i] == 'R':
+            A.append(i)
+        elif S[i-1] == 'R' and S[i] == 'L':
+            A.append(i)
+    A.append(N)
+    for i in range(N):
+        print(A[i+1]-A[i],end=' ')
+    print()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    ans = [0]*(n+1)
+    l = 0
+    r = n
+    for i in range(n):
+        if s[i] == "L":
+            ans[r] = i+1
+            r -= 1
+        else:
+            ans[l] = i+1
+            l += 1
+    print(*ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(1,N+1):
+        if S[i-1] == 'L':
+            A.insert(0,i)
+        else:
+            A.append(i)
+    print(*A)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(1,n+1):
+        if s[i-1] == "L":
+            a.insert(0,i)
+        else:
+            a.append(i)
+    print(*a)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = input()
+    ans = [0] * (n + 1)
+    cnt = 0
+    for i in range(n):
+        if s[i] == 'L':
+            ans[i + 1] = i + 1
+            ans[i] = i + 2
+            cnt = i + 2
+        else:
+            ans[i + 1] = cnt
+            cnt += 1
+    print(*ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    ans = []
+    ans.append(0)
+    for i in range(n-1):
+        if s[i] == "L":
+            ans.insert(0,i+1)
+        else:
+            ans.append(i+1)
+    print(*ans)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    ans = []
+    l = 0
+    r = 0
+    for i in range(n):
+        if s[i] == 'L':
+            l = l + 1
+            ans.append(l)
+        else:
+            r = r + 1
+            ans.insert(0, r)
+    print(' '.join(map(str, ans)))
