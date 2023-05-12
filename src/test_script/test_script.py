@@ -55,6 +55,7 @@ class test_script:
         return all_test_result
     
     def write(self, l):
+        '''
         if int(self.problem_number) < 119:
             file_number = '99_118'
         elif int(self.problem_number) < 139:
@@ -75,8 +76,10 @@ class test_script:
             file_number = '259_278'
         else:
             file_number = '279_287'
-        with open('{0}/{1}.csv'.format(self.result_path, file_number), 'a') as f:
+        '''
+        with open('{0}/{1}.csv'.format(self.result_path, self.problem_number), 'w') as f:
             writer = csv.writer(f)
+            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
             writer.writerows(l)
 
 if __name__ == '__main__':
@@ -91,6 +94,7 @@ if __name__ == '__main__':
             shutil.rmtree(del_dir_path)
         os.mkdir(del_dir_path)
 
+        '''
         start = 99
         for i in range(10):
             if i == 9:
@@ -102,6 +106,7 @@ if __name__ == '__main__':
                 writer = csv.writer(f)
                 writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
             start = end + 1
+        '''
 
         base_problem_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language)))
         problem_l = []
@@ -125,7 +130,7 @@ if __name__ == '__main__':
                 a = test_script(script_path, input_path, output_path, result_path)
                 a.write(a.pyexe())
             print(each_problem, language)
-            #break
+            break
     
     '''
     a = test_script('/Users/keikoyanagi/Desktop/comment_recommendation/test_close_app/script/mod_gen/en/problems101_a_1.py', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/in/1.txt', '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC101/A/out/1.txt')
