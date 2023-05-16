@@ -15,7 +15,9 @@ def rename(path):
                 if '.DS_Store' in each_test_case_l:
                     each_test_case_l.remove('.DS_Store')
                 for each_test_case in each_test_case_l:
+                #for each_test_case, i in enumerate(each_test_case_l):
                     os.rename(path + problem + '/' + difficulty + '/' + f + '/' + each_test_case, path + problem + '/' + difficulty + '/' + f + '/' + each_test_case.split('.')[0] + '.txt')
+                    #os.rename(path + problem + '/' + difficulty + '/' + f + '/' + each_test_case, path + problem + '/' + difficulty + '/' + f + '/' + str(i) + '.txt')
         print(problem)
     
 def check(path):

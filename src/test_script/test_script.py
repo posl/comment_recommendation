@@ -115,8 +115,10 @@ if __name__ == '__main__':
                 problem_l.append(problem)
 
         problem_l = sorted(problem_l)
-        problem_l = problem_l[680:]
+        if times == '2_time':
+            problem_l.remove('111_D')
         for each_problem in problem_l:
+            print(each_problem)
             base_each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
             '''
             each_suggestion_l = []
