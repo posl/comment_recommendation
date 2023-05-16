@@ -1,9 +1,0 @@
-3,2,19,4,4,"isConvex@1-4@./8.py","./8.py","isConvex","isConvex( A , B , C , D )",1,4
-17,5,367,8,22,"is_convex@1-22@./6.py","./6.py","is_convex","is_convex( A_x , A_y , B_x , B_y , C_x , C_y , D_x , D_y )",1,22
-5,4,214,4,5,"isConvex@1-5@./2.py","./2.py","isConvex","isConvex( A , B , C , D )",1,5
-13,5,203,0,15,"main@1-15@./3.py","./3.py","main","main( )",1,15
-3,1,26,0,4,"main@1-4@./7.py","./7.py","main","main( )",1,4
-13,5,139,0,16,"main@1-16@./0.py","./0.py","main","main( )",1,16
-3,2,19,4,19,"is_convex@1-19@./4.py","./4.py","is_convex","is_convex( A , B , C , D )",1,19
-2,1,27,2,2,"dot_product@1-2@./5.py","./5.py","dot_product","dot_product( a , b )",1,2
-15,9,216,0,22,"main@1-22@./1.py","./1.py","main","main( )",1,22

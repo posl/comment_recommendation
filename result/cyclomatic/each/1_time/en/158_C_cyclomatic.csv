@@ -1,9 +1,0 @@
-7,4,50,2,7,"get_price@1-7@./8.py","./8.py","get_price","get_price( a , b )",1,7
-7,3,46,0,7,"main@1-7@./6.py","./6.py","main","main( )",1,7
-7,4,63,0,7,"main@1-7@./2.py","./2.py","main","main( )",1,7
-7,4,68,0,7,"main@1-7@./3.py","./3.py","main","main( )",1,7
-7,4,63,0,7,"main@1-7@./7.py","./7.py","main","main( )",1,7
-7,4,63,0,7,"main@1-7@./0.py","./0.py","main","main( )",1,7
-5,4,45,2,5,"solve@1-5@./4.py","./4.py","solve","solve( a , b )",1,5
-5,4,45,2,5,"get_price@1-5@./5.py","./5.py","get_price","get_price( A , B )",1,5
-7,4,65,0,7,"main@1-7@./1.py","./1.py","main","main( )",1,7

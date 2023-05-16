@@ -1,9 +1,0 @@
-2,1,21,3,2,"last_person@1-2@./8.py","./8.py","last_person","last_person( n , k , a )",1,2
-5,2,30,3,5,"getPerson@1-5@./6.py","./6.py","getPerson","getPerson( N , K , A )",1,5
-3,1,34,0,3,"main@1-3@./2.py","./2.py","main","main( )",1,3
-3,2,38,0,3,"main@1-3@./3.py","./3.py","main","main( )",1,3
-3,1,36,0,3,"main@1-3@./7.py","./7.py","main","main( )",1,3
-3,1,36,0,3,"main@1-3@./0.py","./0.py","main","main( )",1,3
-4,1,37,0,4,"main@1-4@./4.py","./4.py","main","main( )",1,4
-5,2,26,3,5,"get_last_person@1-5@./5.py","./5.py","get_last_person","get_last_person( N , K , A )",1,5
-3,1,36,0,3,"main@1-3@./1.py","./1.py","main","main( )",1,3

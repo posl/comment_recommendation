@@ -1,7 +1,0 @@
-2,2,20,1,2,"factorial@1-2@./6.py","./6.py","factorial","factorial( n )",1,2
-8,2,67,0,8,"main@1-8@./2.py","./2.py","main","main( )",1,8
-5,2,23,1,5,"factorial@1-5@./3.py","./3.py","factorial","factorial( n )",1,5
-5,2,23,1,5,"factorial@1-5@./0.py","./0.py","factorial","factorial( n )",1,5
-10,2,56,0,10,"main@1-10@./4.py","./4.py","main","main( )",1,10
-5,2,23,1,5,"factorial@1-5@./5.py","./5.py","factorial","factorial( n )",1,5
-8,2,61,0,8,"solve@1-8@./1.py","./1.py","solve","solve( )",1,8

@@ -1,9 +1,0 @@
-3,2,29,0,4,"get_ints@1-4@./8.py","./8.py","get_ints","get_ints( )",1,4
-8,2,76,0,9,"main@1-9@./6.py","./6.py","main","main( )",1,9
-8,2,70,0,8,"main@1-8@./2.py","./2.py","main","main( )",1,8
-8,2,70,0,8,"solve@1-8@./3.py","./3.py","solve","solve( )",1,8
-7,2,45,1,7,"sum_abs_diffs@1-7@./7.py","./7.py","sum_abs_diffs","sum_abs_diffs( arr )",1,7
-8,2,65,0,8,"main@1-8@./0.py","./0.py","main","main( )",1,8
-9,2,91,0,9,"main@1-9@./4.py","./4.py","main","main( )",1,9
-8,2,74,0,8,"solve@1-8@./5.py","./5.py","solve","solve( )",1,8
-8,2,70,0,8,"solve@1-8@./1.py","./1.py","solve","solve( )",1,8

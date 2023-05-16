@@ -1,7 +1,0 @@
-2,1,15,2,2,"earthquake@1-2@./6.py","./6.py","earthquake","earthquake( A , B )",1,2
-3,1,30,0,3,"main@1-3@./2.py","./2.py","main","main( )",1,3
-3,1,28,0,3,"earthquake@1-3@./3.py","./3.py","earthquake","earthquake( )",1,3
-3,1,30,0,3,"main@1-3@./0.py","./0.py","main","main( )",1,3
-3,1,30,0,3,"magnitude@1-3@./4.py","./4.py","magnitude","magnitude( )",1,3
-6,1,56,0,8,"main@1-8@./5.py","./5.py","main","main( )",1,8
-3,1,30,0,3,"main@1-3@./1.py","./1.py","main","main( )",1,3

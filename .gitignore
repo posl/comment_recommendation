@@ -3,3 +3,5 @@
 test_*/
 !test_script/
 .DS_Store
+result/cyclomatic/each/*
+result/accuracy/each/*

@@ -1,8 +1,0 @@
-6,2,43,2,6,"convertToDecimal@1-6@./6.py","./6.py","convertToDecimal","convertToDecimal( num , base )",1,6
-4,1,39,0,4,"main@1-4@./2.py","./2.py","main","main( )",1,4
-5,2,47,2,5,"toDecimal@1-5@./3.py","./3.py","toDecimal","toDecimal( base , number )",1,5
-5,2,39,2,9,"convert_to_decimal@1-9@./7.py","./7.py","convert_to_decimal","convert_to_decimal( base , number )",1,9
-6,1,45,0,6,"main@1-6@./0.py","./0.py","main","main( )",1,6
-6,2,52,2,6,"base_to_decimal@1-6@./4.py","./4.py","base_to_decimal","base_to_decimal( base , num )",1,6
-5,2,46,2,5,"baseToDec@1-5@./5.py","./5.py","baseToDec","baseToDec( base , num )",1,5
-6,1,45,0,6,"main@1-6@./1.py","./1.py","main","main( )",1,6

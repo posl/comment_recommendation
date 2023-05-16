@@ -1,7 +1,0 @@
-4,3,45,0,4,"main@1-4@./6.py","./6.py","main","main( )",1,4
-10,4,73,0,10,"main@1-10@./2.py","./2.py","main","main( )",1,10
-6,4,64,0,6,"main@1-6@./3.py","./3.py","main","main( )",1,6
-10,4,73,0,10,"main@1-10@./0.py","./0.py","main","main( )",1,10
-10,4,73,0,10,"odd_number@1-10@./4.py","./4.py","odd_number","odd_number( )",1,10
-6,3,25,1,6,"get_odd_num@1-6@./5.py","./5.py","get_odd_num","get_odd_num( num_list )",1,6
-10,4,67,0,10,"main@1-10@./1.py","./1.py","main","main( )",1,10

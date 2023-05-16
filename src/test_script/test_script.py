@@ -114,6 +114,8 @@ if __name__ == '__main__':
             if os.path.isdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, problem)):
                 problem_l.append(problem)
 
+        problem_l = sorted(problem_l)
+        problem_l = problem_l[680:]
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
             '''
