@@ -4,4 +4,5 @@ test_*/
 !test_script/
 .DS_Store
 result/cyclomatic/each/*
+result/cognitive/each/*
 result/accuracy/each/*
