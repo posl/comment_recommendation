@@ -91,15 +91,17 @@ if __name__ == '__main__':
         os.mkdir(del_dir_path)
 
         base_problem_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}'.format(base_path, times, language)))
+        #print(base_problem_l)
         problem_l = []
         for problem in base_problem_l:
-            if os.path.isdir('{0}/script/mod_gen/{0}/{1}/{2}'.format(base_path, times, language, problem)):
+            if os.path.isdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, problem)):
                 problem_l.append(problem)
 
         problem_l = sorted(problem_l)
         if times == '2_time':
             problem_l.remove('111_D')
-        #problem_l = ['099_A', '099_B', '100_A', '100_B']
+        #print(problem_l)
+        #problem_l = ['099_A']
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
          
