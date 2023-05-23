@@ -90,7 +90,7 @@ if __name__ == '__main__':
             shutil.rmtree(del_dir_path)
         os.mkdir(del_dir_path)
 
-        base_problem_l = sorted(os.listdir('{0}/script/mod_gen/{0}/{1}'.format(base_path, times, language)))
+        base_problem_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}'.format(base_path, times, language)))
         problem_l = []
         for problem in base_problem_l:
             if os.path.isdir('{0}/script/mod_gen/{0}/{1}/{2}'.format(base_path, times, language, problem)):
