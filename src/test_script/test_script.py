@@ -84,11 +84,11 @@ if __name__ == '__main__':
         if os.path.exists('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language)):
             shutil.rmtree('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language))
         os.mkdir('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language))
-        for i in ['each', 'all']:
-            del_dir_path = '{0}/result/accuracy/{1}/{2}/{3}/'.format(base_path, i, times, language)
-            if os.path.exists(del_dir_path):
-                shutil.rmtree(del_dir_path)
-            os.mkdir(del_dir_path)
+        
+        del_dir_path = '{0}/result/accuracy/each/{1}/{2}/'.format(base_path, times, language)
+        if os.path.exists(del_dir_path):
+            shutil.rmtree(del_dir_path)
+        os.mkdir(del_dir_path)
 
         base_problem_l = sorted(os.listdir('{0}/script/mod_gen/{0}/{1}'.format(base_path, times, language)))
         problem_l = []
