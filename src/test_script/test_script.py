@@ -6,13 +6,14 @@ import csv
 import shutil
 
 class test_script:
-    def __init__(self, script_path, input_path, output_path, result_path):
+    def __init__(self, script_path, input_path, output_path, all_result_path, accu_result_path):
         self.script_path = script_path
         self.input_path = input_path
         self.input_path_l = sorted(os.listdir(input_path))
         self.output_path = output_path
         self.output_path_l = sorted(os.listdir(output_path))
-        self.result_path = result_path
+        self.all_result_path = all_result_path
+        self.accu_result_path = accu_result_path
         self.problem_number = script_path.split('/')[-2].split('_')[0]
         self.difficulty = script_path.split('/')[-2].split('_')[1]
         self.suggestion = script_path.split('/')[-1].split('.')[0]
@@ -20,6 +21,7 @@ class test_script:
 
     def pyexe(self):
         all_test_result = []
+        accuracy_l = [self.language, self.problem_number, self.difficulty, self.suggestion]
         accuracy = 0
         for i in range(len(self.input_path_l)):
             each_input_path = self.input_path + self.input_path_l[i]
@@ -47,91 +49,68 @@ class test_script:
             accuracy += result
 
             if i == len(self.input_path_l) - 1:
-                accuracy = accuracy / len(self.input_path_l)
-                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message, accuracy]
+                per_accuracy = accuracy / len(self.input_path_l)
+                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message, per_accuracy]
+                accuracy_l.append(accuracy)
+                accuracy_l.append(len(self.input_path_l))
+                accuracy_l.append(per_accuracy)
             else:
                 each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message]
             all_test_result.append(each_test_result)
-        return all_test_result
+
+        return all_test_result, accuracy_l
     
-    def write(self, l):
-        '''
-        if int(self.problem_number) < 119:
-            file_number = '99_118'
-        elif int(self.problem_number) < 139:
-            file_number = '119_138'
-        elif int(self.problem_number) < 159:
-            file_number = '139_158'
-        elif int(self.problem_number) < 179:
-            file_number = '159_178'
-        elif int(self.problem_number) < 199:
-            file_number = '179_198'
-        elif int(self.problem_number) < 219:
-            file_number = '199_218'
-        elif int(self.problem_number) < 239:
-            file_number = '219_238'
-        elif int(self.problem_number) < 259:
-            file_number = '239_258'
-        elif int(self.problem_number) < 279:
-            file_number = '259_278'
-        else:
-            file_number = '279_287'
-        '''
-        with open('{0}/{1}.csv'.format(self.result_path, self.problem_number), 'w') as f:
+    def write(self, all_result, accuracy_l):
+        with open('{0}/{1}_{2}.csv'.format(self.all_result_path, self.problem_number, self.difficulty), 'a') as f:
             writer = csv.writer(f)
-            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
-            writer.writerows(l)
+            if self.suggestion == '0':
+                writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
+            writer.writerows(all_result)
+        
+        with open('{0}/{1}_accuracy.csv'.format(self.accu_result_path, self.problem_number), 'a') as f:
+            writer = csv.writer(f)
+            if (self.suggestion == '0') and (self.difficulty == 'A'):
+                writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion_number' ,'test_case_number', 'all_test_case_number', 'accuracy'])
+            writer.writerow(accuracy_l)
 
 if __name__ == '__main__':
     # delete csv file and make new one with header
     print('input times')
     times = input() + '_time'
     language_l = ['en', 'ja']
+    base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     
     for language in language_l:
-        del_dir_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
-        if os.path.exists(del_dir_path):
-            shutil.rmtree(del_dir_path)
-        os.mkdir(del_dir_path)
+        if os.path.exists('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language)):
+            shutil.rmtree('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language))
+        os.mkdir('{0}/result/ALL/{1}/{2}/'.format(base_path, times, language))
+        for i in ['each', 'all']:
+            del_dir_path = '{0}/result/accuracy/{1}/{2}/{3}/'.format(base_path, i, times, language)
+            if os.path.exists(del_dir_path):
+                shutil.rmtree(del_dir_path)
+            os.mkdir(del_dir_path)
 
-        '''
-        start = 99
-        for i in range(10):
-            if i == 9:
-                end = 287
-            else:
-                end = start + 19
-
-            with open('{0}/{1}_{2}.csv'.format(del_dir_path, str(start), str(end)), 'w') as f:
-                writer = csv.writer(f)
-                writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
-            start = end + 1
-        '''
-
-        base_problem_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}'.format(times, language)))
+        base_problem_l = sorted(os.listdir('{0}/script/mod_gen/{0}/{1}'.format(base_path, times, language)))
         problem_l = []
         for problem in base_problem_l:
-            if os.path.isdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, problem)):
+            if os.path.isdir('{0}/script/mod_gen/{0}/{1}/{2}'.format(base_path, times, language, problem)):
                 problem_l.append(problem)
 
         problem_l = sorted(problem_l)
         if times == '2_time':
             problem_l.remove('111_D')
+        #problem_l = ['099_A', '099_B', '100_A', '100_B']
         for each_problem in problem_l:
-            base_each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
-            '''
-            each_suggestion_l = []
-            for each_suggestion in base_each_suggestion_l:
-                if os.path.isfile('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)):
-                    each_suggestion_l.append(each_suggestion)
-            '''
-            for each_suggestion in sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem))):
-                script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
-                input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-                output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-                result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
-                a = test_script(script_path, input_path, output_path, result_path)
-                a.write(a.pyexe())
+            base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
+         
+            for each_suggestion in sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem))):
+                script_path = '{0}/script/mod_gen/{1}/{2}/{3}/{4}'.format(base_path, times, language, each_problem, each_suggestion)
+                input_path = '{0}/test_case/ABC{1}/{2}/in/'.format(base_path, each_problem.split('_')[0], each_problem.split('_')[1])
+                output_path = '{0}/test_case/ABC{1}/{2}/out/'.format(base_path, each_problem.split('_')[0], each_problem.split('_')[1])
+                all_result_path = '{0}/result/ALL/{1}/{2}/'.format(base_path, times, language)
+                accu_result_path = '{0}/result/accuracy/each/{1}/{2}/'.format(base_path, times, language)
+                a = test_script(script_path, input_path, output_path, all_result_path, accu_result_path)
+                a.write(a.pyexe()[0], a.pyexe()[1])
             print(each_problem, language)
             #break
     

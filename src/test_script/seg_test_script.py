@@ -6,13 +6,14 @@ import csv
 import shutil
 
 class test_script:
-    def __init__(self, script_path, input_path, output_path, result_path):
+    def __init__(self, script_path, input_path, output_path, all_result_path, accu_result_path):
         self.script_path = script_path
         self.input_path = input_path
         self.input_path_l = sorted(os.listdir(input_path))
         self.output_path = output_path
         self.output_path_l = sorted(os.listdir(output_path))
-        self.result_path = result_path
+        self.all_result_path = all_result_path
+        self.accu_result_path = accu_result_path
         self.problem_number = script_path.split('/')[-2].split('_')[0]
         self.difficulty = script_path.split('/')[-2].split('_')[1]
         self.suggestion = script_path.split('/')[-1].split('.')[0]
@@ -21,6 +22,7 @@ class test_script:
     def pyexe(self):
         #all_test_result = []
         accuracy = 0
+        accuracy_l = [self.language, self.problem_number, self.difficulty, self.suggestion]
         for i in range(len(self.input_path_l)):
             each_input_path = self.input_path + self.input_path_l[i]
             #print(each_input_path)
@@ -47,20 +49,31 @@ class test_script:
             accuracy += result
 
             if i == len(self.input_path_l) - 1:
-                accuracy = accuracy / len(self.input_path_l)
-                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message, accuracy]
+                per_accuracy = accuracy / len(self.input_path_l)
+                each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message, per_accuracy]
+                accuracy_l.append(accuracy)
+                accuracy_l.append(len(self.input_path_l))
+                accuracy_l.append(per_accuracy)
             else:
                 each_test_result = [self.language, self.problem_number, self.difficulty, self.suggestion, self.input_path_l[i].split('.')[0], result, output, expected_output, message]
 
-            with open('{0}/{1}.csv'.format(self.result_path, self.problem_number), 'a') as f:
+            with open('{0}/{1}_{2}.csv'.format(self.all_result_path, self.problem_number, self.difficulty), 'a') as f:
                 writer = csv.writer(f)
                 writer.writerow(each_test_result)
+
+        with open('{0}/{1}_seg_accuracy.csv'.format(self.accu_result_path, self.problem_number), 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow(accuracy_l)        
     
     def write(self):
-        with open('{0}/{1}.csv'.format(self.result_path, self.problem_number), 'w') as f:
+        with open('{0}/{1}_{2}.csv'.format(self.all_result_path, self.problem_number, self.difficulty), 'w') as f:
             writer = csv.writer(f)
             writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion', 'test_case', 'result', 'output', 'expected_output', 'message', 'accuracy'])
             #writer.writerows(l)
+        
+        with open('{0}/{1}_seg_accuracy.csv'.format(self.accu_result_path, self.problem_number), 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(['language', 'problem_number', 'difficulty', 'suggestion_number' ,'test_case_number', 'all_test_case_number', 'accuracy'])
 
 if __name__ == '__main__':
     # delete csv file and make new one with header
@@ -68,25 +81,70 @@ if __name__ == '__main__':
     times = input() + '_time'
     print('choose language (en, ja, or zh)')
     language = input()
+    print('input check or exec')
+    flag = input()
+    if flag == 'check':
+        pass
+    else:
+        print('input fault number')
+        fault_number = int(input())
 
     if not os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}'.format(times, language)):
         os.makedirs('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}'.format(times, language))
+    if not os.path.exists('/Users/keikoyanagi/Desktop/comment_recommendation/result/ALL/{0}/{1}'.format(times, language)):
+        os.makedirs('/Users/keikoyanagi/Desktop/comment_recommendation/result/ALL/{0}/{1}'.format(times, language))
     # 2_time 111_D
-    problem_l = []
+    problem_l = ['111_D']
 
-    for each_problem in problem_l:
-        # modify list in this loop in order to exclude segmentation fault
-        each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
-        #each_suggestion_l.remove('seg_test.py')
-        for each_suggestion in each_suggestion_l:
-            script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
+    if flag == 'check':
+        for each_problem in problem_l:
+            # modify list in this loop in order to exclude segmentation fault
+            each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
+            print(each_suggestion_l)
+            #each_suggestion_l.remove('seg_test.py')
+            for count ,each_suggestion in enumerate(each_suggestion_l):
+                script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
+                input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
+                output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
+                all_result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/ALL/{0}/{1}/'.format(times, language)
+                accu_result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
+                a = test_script(script_path, input_path, output_path, all_result_path, accu_result_path)
+                if count == 0:
+                    a.write()
+                a.pyexe()
+                print(each_suggestion, language)
+            print(each_problem, language)
+            #break
+    
+    else:
+        for each_problem in problem_l:
+            # modify list in this loop in order to exclude segmentation fault
+            each_suggestion_l = sorted(os.listdir('/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}'.format(times, language, each_problem)))
+            before_l = each_suggestion_l[:fault_number]
+            after_l = each_suggestion_l[fault_number + 1:]
             input_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/in/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
             output_path = '/Users/keikoyanagi/Desktop/comment_recommendation/test_case/ABC{0}/{1}/out/'.format(each_problem.split('_')[0], each_problem.split('_')[1])
-            result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
-            a = test_script(script_path, input_path, output_path, result_path)
-            a.write()
-            a.pyexe()
-            print(each_suggestion, language)
-        print(each_problem, language)
-        #break
-    
+            all_result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/ALL/{0}/{1}/'.format(times, language)
+            accu_result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/'.format(times, language)
+            for count, each_suggestion in enumerate(before_l):
+                script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
+                a = test_script(script_path, input_path, output_path, all_result_path, accu_result_path)
+                if count == 0:
+                    a.write()
+                a.pyexe()
+                print(each_suggestion, language)
+            
+            with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/ALL/{0}/{1}/{2}.csv'.format(times, language, each_problem), 'a') as f:
+                writer = csv.writer(f)
+                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, '', 0, '', '', 'segmentation fault', 0])
+            
+            with open('/Users/keikoyanagi/Desktop/comment_recommendation/result/accuracy/each/{0}/{1}/{2}_seg_accuracy.csv'.format(times, language, each_problem.split('_')[0]), 'a') as f:
+                writer = csv.writer(f)
+                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, '', '', 0])
+            
+            for each_suggestion in after_l:
+                script_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/mod_gen/{0}/{1}/{2}/{3}'.format(times, language, each_problem, each_suggestion)
+                a = test_script(script_path, input_path, output_path, all_result_path, accu_result_path)
+                a.pyexe()
+                print(each_suggestion, language)
+            print(each_problem, language)

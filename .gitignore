@@ -6,3 +6,4 @@ test_*/
 result/cyclomatic/each/*
 result/cognitive/each/*
 result/accuracy/each/*
+result/ALL/*
