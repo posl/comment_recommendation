@@ -101,7 +101,7 @@ if __name__ == '__main__':
         if times == '2_time':
             problem_l.remove('111_D')
         #print(problem_l)
-        #problem_l = ['099_A']
+        #problem_l = ['099_A', '099_B', '099_C', '099_D', '100_A', '100_B']
         for each_problem in problem_l:
             base_each_suggestion_l = sorted(os.listdir('{0}/script/mod_gen/{1}/{2}/{3}'.format(base_path, times, language, each_problem)))
          

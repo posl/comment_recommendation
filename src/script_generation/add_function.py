@@ -8,7 +8,13 @@ def main(read_path, write_path):
         try:
             if script_l[0].split(' ')[0] == 'def':
                 function_name = script_l[0].split(' ')[1].split('(')[0]
-                script_l.append('\nif __name__ == \'__main__\':\n' + '    ' + function_name + '()')
+                
+                if (function_name in script_l[-1]) and not('return' in script_l[-1]) and not('append' in script_l[-1]): #and not('print' in script_l[-1])
+                    pass
+                else:
+                    script_l.append('\nif __name__ == \'__main__\':\n' + '    ' + function_name + '()')
+                
+                #script_l.append('\nif __name__ == \'__main__\':\n' + '    ' + function_name + '()')
             with open(write_path, 'w') as f:
                 for line in script_l:
                     f.write(line)
