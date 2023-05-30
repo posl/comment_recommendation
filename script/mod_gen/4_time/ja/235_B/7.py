@@ -10,6 +10,3 @@ def main():
                 ans += h[i] - h[i-1]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

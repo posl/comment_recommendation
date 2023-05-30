@@ -9,6 +9,3 @@ def main():
     T2 = sorted(T, reverse=True)
     print(S[T.index(T2[1])])
 main()
-
-if __name__ == '__main__':
-    main()

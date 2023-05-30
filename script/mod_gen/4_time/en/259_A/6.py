@@ -7,6 +7,3 @@ def problems259_a():
         h += D
     print(h)
 problems259_a()
-
-if __name__ == '__main__':
-    problems259_a()

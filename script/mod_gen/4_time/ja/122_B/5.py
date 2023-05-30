@@ -11,6 +11,3 @@ def count_acgt(s):
     return max_count
 s = input()
 print(count_acgt(s))
-
-if __name__ == '__main__':
-    count_acgt()

@@ -16,6 +16,3 @@ def main():
         n += 1
     print(n - d - 1)
 main()
-
-if __name__ == '__main__':
-    main()

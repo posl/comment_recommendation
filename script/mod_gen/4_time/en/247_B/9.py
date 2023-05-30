@@ -16,6 +16,3 @@ def problem():
     print("No")
     return
 problem()
-
-if __name__ == '__main__':
-    problem()

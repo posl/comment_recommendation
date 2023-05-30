@@ -10,6 +10,3 @@ def rank(N, K, P):
 N, K = map(int, input().split())
 P = [list(map(int, input().split())) for i in range(N)]
 print(rank(N, K, P))
-
-if __name__ == '__main__':
-    rank()

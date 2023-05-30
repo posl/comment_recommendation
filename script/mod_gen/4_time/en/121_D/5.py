@@ -8,6 +8,3 @@ def f(a,b):
     return f(a-1,b) ^ b
 a,b = map(int,input().split())
 print(f(a,b))
-
-if __name__ == '__main__':
-    f()

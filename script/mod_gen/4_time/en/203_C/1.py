@@ -12,6 +12,3 @@ def problems203_c():
             K += friends[i][1]
     print(K)
 problems203_c()
-
-if __name__ == '__main__':
-    problems203_c()

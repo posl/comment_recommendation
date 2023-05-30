@@ -13,6 +13,3 @@ def main():
                     print(tree[i])
                     break
 main()
-
-if __name__ == '__main__':
-    main()

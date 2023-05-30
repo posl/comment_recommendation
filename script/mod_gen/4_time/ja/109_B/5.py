@@ -8,6 +8,3 @@ def is_shiritori(N, W):
 N = int(input())
 W = [input() for _ in range(N)]
 print('Yes' if is_shiritori(N, W) else 'No')
-
-if __name__ == '__main__':
-    is_shiritori()

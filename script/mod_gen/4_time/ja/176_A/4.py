@@ -5,6 +5,3 @@ def main():
     else:
         print((N//X+1)*T)
 main()
-
-if __name__ == '__main__':
-    main()

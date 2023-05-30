@@ -14,6 +14,3 @@ def func():
     print(count1)
     print(count2)
 func()
-
-if __name__ == '__main__':
-    func()

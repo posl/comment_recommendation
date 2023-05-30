@@ -7,6 +7,3 @@ def exam(n, k, p):
 n, k = map(int, input().split())
 p = [list(map(int, input().split())) for _ in range(n)]
 print(exam(n, k, p))
-
-if __name__ == '__main__':
-    exam()

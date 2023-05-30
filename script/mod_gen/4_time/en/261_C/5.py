@@ -12,6 +12,3 @@ def main():
       d[s[i]] = 0
       print(s[i])
 main()
-
-if __name__ == '__main__':
-    main()

@@ -3,6 +3,3 @@ def main():
     x = min(b-1,n)
     print(int(a*x/b)-a*int(x/b))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def solve(N, A, B):
     return q * A + min(r, A)
 N, A, B = map(int, input().split())
 print(solve(N, A, B))
-
-if __name__ == '__main__':
-    solve()

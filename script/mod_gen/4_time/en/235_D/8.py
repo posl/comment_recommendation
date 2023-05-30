@@ -21,6 +21,3 @@ def solve(a, n):
                     return -1
 a, n = [int(x) for x in input().split()]
 print(solve(a, n))
-
-if __name__ == '__main__':
-    solve()

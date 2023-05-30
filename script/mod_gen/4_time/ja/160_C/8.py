@@ -4,6 +4,3 @@ def solve():
     A.append(K + A[0])
     print(K - max([A[i + 1] - A[i] for i in range(N)]))
 solve()
-
-if __name__ == '__main__':
-    solve()

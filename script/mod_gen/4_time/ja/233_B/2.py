@@ -3,6 +3,3 @@ def reverse_string(s, l, r):
 l, r = map(int, input().split())
 s = input()
 print(reverse_string(s, l, r))
-
-if __name__ == '__main__':
-    reverse_string()

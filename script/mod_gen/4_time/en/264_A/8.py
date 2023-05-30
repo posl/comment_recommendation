@@ -24,6 +24,3 @@ def problem():
     # Print result
     print s[l-1:r]
 problem()
-
-if __name__ == '__main__':
-    problem()

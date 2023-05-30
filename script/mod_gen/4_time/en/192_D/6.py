@@ -19,6 +19,3 @@ def solve(X, M):
 X = input()
 M = int(input())
 print(solve(X, M))
-
-if __name__ == '__main__':
-    solve()

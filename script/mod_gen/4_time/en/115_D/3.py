@@ -11,6 +11,3 @@ for i in range(50):
     a.append(a[i] * 2 + 3)
     p.append(p[i] * 2 + 1)
 print(solve(N, X))
-
-if __name__ == '__main__':
-    solve()

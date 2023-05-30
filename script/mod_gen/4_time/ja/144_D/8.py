@@ -5,6 +5,3 @@ def solve():
     else:
         return 90 - x*2/a/b/b
 print(solve())
-
-if __name__ == '__main__':
-    solve()

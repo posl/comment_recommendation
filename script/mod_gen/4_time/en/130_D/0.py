@@ -18,6 +18,3 @@ def problems130_d():
                 l += 1
     print(ans)
 problems130_d()
-
-if __name__ == '__main__':
-    problems130_d()

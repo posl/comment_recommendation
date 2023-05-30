@@ -5,6 +5,3 @@ def solve():
     print('X:',X)
     print('Y:',Y)
     print('solve()')
-
-if __name__ == '__main__':
-    solve()

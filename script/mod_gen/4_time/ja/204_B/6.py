@@ -10,6 +10,3 @@ end
 n = gets.chomp.to_i
 a = gets.chomp.split(" ").map(&:to_i)
 puts solve(n, a)
-
-if __name__ == '__main__':
-    solve()

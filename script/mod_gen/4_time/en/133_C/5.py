@@ -9,6 +9,3 @@ def   main () :
          if   ans   ==   0 : 
              break 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

@@ -14,6 +14,3 @@ for i in range(q):
         else:
             tail += query[2]
 print(reverse(head) + s + tail)
-
-if __name__ == '__main__':
-    reverse()

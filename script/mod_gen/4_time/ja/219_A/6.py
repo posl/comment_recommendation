@@ -9,6 +9,3 @@ def rank(n):
         return 40 - n
 n = int(input())
 print(rank(n))
-
-if __name__ == '__main__':
-    rank()

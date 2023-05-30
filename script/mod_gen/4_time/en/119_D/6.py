@@ -13,6 +13,3 @@ def main():
         print(ans)
 import bisect
 main()
-
-if __name__ == '__main__':
-    main()

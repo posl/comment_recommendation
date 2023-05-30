@@ -11,6 +11,3 @@ def find_vertex(n,x,s):
 n,x=map(int,input().split())
 s=input()
 print(find_vertex(n,x,s))
-
-if __name__ == '__main__':
-    find_vertex()

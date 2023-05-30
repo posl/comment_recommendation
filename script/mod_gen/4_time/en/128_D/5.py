@@ -15,6 +15,3 @@ def solve():
             ans = max(ans, sum(new))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -5,6 +5,3 @@ def main():
     A_inv_sum = sum(A_inv)
     print(1/A_inv_sum)
 main()  # コード提出時にはコメントアウト
-
-if __name__ == '__main__':
-    main()

@@ -9,6 +9,3 @@ def f(i, a, b, c):
 N, A, B, C = map(int, input().split())
 l = [int(input()) for _ in range(N)]
 print(f(0, 0, 0, 0))
-
-if __name__ == '__main__':
-    f()

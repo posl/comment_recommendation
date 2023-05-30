@@ -6,6 +6,3 @@ def solve(a, b, x):
 import math
 a, b, x = map(int, input().split())
 print(solve(a, b, x))
-
-if __name__ == '__main__':
-    solve()

@@ -9,6 +9,3 @@ def solve():
         ans = (ans + (A[i-1] * (2**(i-1)) * (2**(N-i))))%mod
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -13,6 +13,3 @@ def main():
         min_time = min(min_time, time)
     print(min_time)
 main()
-
-if __name__ == '__main__':
-    main()

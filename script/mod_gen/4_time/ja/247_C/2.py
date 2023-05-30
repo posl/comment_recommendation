@@ -6,6 +6,3 @@ def func(n):
         return a + [n] + a
 n = int(input())
 print(*func(n))
-
-if __name__ == '__main__':
-    func()

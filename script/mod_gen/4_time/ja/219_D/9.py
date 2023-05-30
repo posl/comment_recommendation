@@ -17,6 +17,3 @@ def solve():
     else:
         print(dp[N][X][Y])
 solve()
-
-if __name__ == '__main__':
-    solve()

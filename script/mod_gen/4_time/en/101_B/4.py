@@ -3,6 +3,3 @@ def main():
     S = sum(int(c) for c in str(N))
     print("Yes" if N % S == 0 else "No")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def check(s, t):
 s = input()
 t = input()
 print("Yes" if check(s, t) else "No")
-
-if __name__ == '__main__':
-    check()

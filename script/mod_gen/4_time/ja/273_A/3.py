@@ -5,6 +5,3 @@ def f(x):
         return x * f(x-1)
 x = int(input())
 print(f(x))
-
-if __name__ == '__main__':
-    f()

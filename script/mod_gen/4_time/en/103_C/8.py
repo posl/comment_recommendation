@@ -11,6 +11,3 @@ while abs(ok - ng) > 1:
     else:
         ok = mid
 print(f(ok + 1, a))
-
-if __name__ == '__main__':
-    f()

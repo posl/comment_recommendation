@@ -14,6 +14,3 @@ def main():
             ans = max(ans, sum(l) + sum(r))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

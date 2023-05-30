@@ -10,6 +10,3 @@ def main():
             good[b-1] = 0
     print(sum(good))
 main()
-
-if __name__ == '__main__':
-    main()

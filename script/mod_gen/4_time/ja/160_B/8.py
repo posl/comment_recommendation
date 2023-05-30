@@ -14,6 +14,3 @@ def exchange(x):
     return fivehundred * 1000 + onehundred * 100 + fifty * 10 + five * 2
 x = int(input())
 print(exchange(x))
-
-if __name__ == '__main__':
-    exchange()

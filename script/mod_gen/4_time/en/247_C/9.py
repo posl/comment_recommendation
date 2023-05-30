@@ -5,6 +5,3 @@ def solution():
         S = S + [i+1] + S
     print(*S)
 solution()
-
-if __name__ == '__main__':
-    solution()

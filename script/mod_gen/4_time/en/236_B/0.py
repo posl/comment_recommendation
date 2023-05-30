@@ -8,6 +8,3 @@ def solve():
         if cnt[i] % 2 == 1:
             return i
 print(solve())
-
-if __name__ == '__main__':
-    solve()

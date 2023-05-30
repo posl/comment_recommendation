@@ -19,6 +19,3 @@ def  main():
             d[c[i+k-1]] = 1
         ans = max(ans, len(d))
     print(ans)
-
-if __name__ == '__main__':
-    ()

@@ -5,6 +5,3 @@ def solve():
     else:
         return T
 print(solve())
-
-if __name__ == '__main__':
-    solve()

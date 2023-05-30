@@ -6,6 +6,3 @@ def main():
         print(blue_balls + A)
     else:
         print(blue_balls + remain_balls)
-
-if __name__ == '__main__':
-    main()

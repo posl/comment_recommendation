@@ -1,5 +1,2 @@
 def dfs ( i , a , b , c ): if i == N : # すべての竹を調べ終わったら、最小値を更新する if min ( a , b , c ) > 0 : return abs ( a - A ) + abs ( b - B ) + abs ( c - C ) - 30 # すべての竹を調べ終わったが、a, b, c のどれかが0の場合は、不可能なので、無限大を返す return INF res = INF # 竹iを使わない場合 res = min ( res , dfs ( i + 1 , a , b , c )) # 竹iをAに使う場合 res = min ( res , dfs ( i + 1 , a + L [ i ], b , c ) + 10 ) # 竹iをBに使う場合 res = min ( res , dfs ( i + 1 , a , b + L [ i ], c ) + 10 ) # 竹iをCに使う場合 res = min ( res , dfs ( i + 1 , a , b , c + L [ i ]) + 10 ) return res
 N , A , B , C = map ( int , input (). split ()) L = [ int ( input ()) for _ in range ( N )] INF = float ( "inf" ) print ( dfs ( 0 , 0 , 0 , 0 ))
-
-if __name__ == '__main__':
-    dfs()

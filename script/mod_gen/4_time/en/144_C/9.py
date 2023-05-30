@@ -18,6 +18,3 @@ def solution(n):
 print(solution(10))
 print(solution(50))
 print(solution(10000000019))
-
-if __name__ == '__main__':
-    solution()

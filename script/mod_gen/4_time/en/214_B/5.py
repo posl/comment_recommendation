@@ -10,6 +10,3 @@ for a in range(0, S+1):
         for c in range(0, S+1):
             count += count(a, b, c)
 print(count)
-
-if __name__ == '__main__':
-    count()

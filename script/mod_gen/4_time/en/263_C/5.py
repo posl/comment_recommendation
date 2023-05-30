@@ -8,6 +8,3 @@ def printSequences(n, m, sequence):
     return
 n, m = map(int, input().split())
 printSequences(n, m, "")
-
-if __name__ == '__main__':
-    printSequences()

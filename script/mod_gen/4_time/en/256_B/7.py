@@ -13,6 +13,3 @@ def problem256_b():
             p += 4
     print(p)
 problem256_b()
-
-if __name__ == '__main__':
-    problem256_b()

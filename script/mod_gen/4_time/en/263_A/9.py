@@ -9,6 +9,3 @@ def checkFullHouse(input):
         print("No")
 input = input()
 checkFullHouse(input)
-
-if __name__ == '__main__':
-    checkFullHouse()

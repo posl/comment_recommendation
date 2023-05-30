@@ -7,6 +7,3 @@ def problem():
             return
     print(-1)
 problem()
-
-if __name__ == '__main__':
-    problem()

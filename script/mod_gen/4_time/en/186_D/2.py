@@ -7,6 +7,3 @@ def main():
         ans += a[i] * (n - i - 1) - a[i] * i
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

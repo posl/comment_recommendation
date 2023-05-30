@@ -11,6 +11,3 @@ def   main ():
                  print ( 0 )
                  return 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

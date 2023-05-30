@@ -9,6 +9,3 @@ def solve():
             max_pos = total
     return max_pos
 print(solve())
-
-if __name__ == '__main__':
-    solve()

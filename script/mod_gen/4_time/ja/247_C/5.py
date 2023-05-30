@@ -5,6 +5,3 @@ def a(n):
         return a(n-1) + [n] + a(n-1)
 N = int(input())
 print(*a(N))
-
-if __name__ == '__main__':
-    a()

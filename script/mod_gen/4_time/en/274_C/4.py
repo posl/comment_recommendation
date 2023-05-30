@@ -11,6 +11,3 @@ def solve():
         print(ans[2 * i])
         print(ans[2 * i + 1])
 solve()
-
-if __name__ == '__main__':
-    solve()

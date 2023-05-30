@@ -26,6 +26,3 @@ def main():
     # Print the total time
     print(total_time)
 main()
-
-if __name__ == '__main__':
-    main()

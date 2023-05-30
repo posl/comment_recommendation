@@ -11,6 +11,3 @@ def solve():
             h += 1
     print(sum(A))
 solve()
-
-if __name__ == '__main__':
-    solve()

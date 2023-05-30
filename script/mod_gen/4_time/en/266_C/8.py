@@ -11,6 +11,3 @@ b.append(list(map(int,input().split())))
 c.append(list(map(int,input().split())))
 d.append(list(map(int,input().split())))
 print(convex(a[0],b[0],c[0],d[0]))
-
-if __name__ == '__main__':
-    convex()

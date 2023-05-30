@@ -11,6 +11,3 @@ for i in range(len(a)):
     for j in range(i, len(a)):
         m.append(median(a[i:j+1]))
 print(median(m))
-
-if __name__ == '__main__':
-    median()

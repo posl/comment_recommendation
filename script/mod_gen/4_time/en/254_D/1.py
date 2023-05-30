@@ -6,6 +6,3 @@ def solve(n):
                 count+=1
     return count
 print(solve(int(input())))
-
-if __name__ == '__main__':
-    solve()

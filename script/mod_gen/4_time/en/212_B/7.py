@@ -18,6 +18,3 @@ def problem():
     else:
         print('Strong')
 problem()
-
-if __name__ == '__main__':
-    problem()

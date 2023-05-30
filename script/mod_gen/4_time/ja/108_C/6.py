@@ -12,6 +12,3 @@ def calc(n, k):
         return a ** 3 + b ** 3 + c ** 3 + d ** 3
 n, k = map(int, input().split())
 print(calc(n, k))
-
-if __name__ == '__main__':
-    calc()

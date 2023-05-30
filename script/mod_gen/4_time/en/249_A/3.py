@@ -9,6 +9,3 @@ def solve():
     else:
         print("Draw")
 solve()
-
-if __name__ == '__main__':
-    solve()

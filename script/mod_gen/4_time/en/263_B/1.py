@@ -6,6 +6,3 @@ def generations(n, p):
 n = int(input())
 p = [int(i) for i in input().split()]
 print(generations(n, p))
-
-if __name__ == '__main__':
-    generations()

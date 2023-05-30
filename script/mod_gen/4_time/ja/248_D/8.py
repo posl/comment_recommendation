@@ -15,6 +15,3 @@ def main():
         #print(A[L-1:R].count(X))
         print(A[L-1:R].count(X))
 main()
-
-if __name__ == '__main__':
-    main()

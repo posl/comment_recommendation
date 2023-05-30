@@ -11,6 +11,3 @@ def triangle(n, l):
 n = int(input())
 l = list(map(int, input().split()))
 print(triangle(n, l))
-
-if __name__ == '__main__':
-    triangle()

@@ -10,6 +10,3 @@ def main():
     for i in range(N):
         print(ans[i])
 main()
-
-if __name__ == '__main__':
-    main()

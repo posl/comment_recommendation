@@ -5,6 +5,3 @@ def main():
         if A[i] != X:
             print(A[i], end=' ')
 main()
-
-if __name__ == '__main__':
-    main()

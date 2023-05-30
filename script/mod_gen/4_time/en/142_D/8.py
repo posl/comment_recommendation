@@ -11,6 +11,3 @@ for i in range(2, int(gcd_ab**0.5)+1):
         ans += 1
         while gcd_ab % i == 0:
             gcd_ab //= i
-
-if __name__ == '__main__':
-    gcd()

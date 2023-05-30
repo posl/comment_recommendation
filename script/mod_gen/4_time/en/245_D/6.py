@@ -9,6 +9,3 @@ def main():
         print(B[i], end=' ')
     print()
 main()
-
-if __name__ == '__main__':
-    main()

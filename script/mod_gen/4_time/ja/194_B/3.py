@@ -15,6 +15,3 @@ def main():
                 ans = min(ans, max(a[i], b[j]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

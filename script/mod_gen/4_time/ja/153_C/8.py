@@ -5,6 +5,3 @@ def main():
     H = H[K:]
     print(sum(H))
 main()
-
-if __name__ == '__main__':
-    main()

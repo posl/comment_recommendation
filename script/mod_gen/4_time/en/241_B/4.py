@@ -14,6 +14,3 @@ def solve():
         j += 1
     print('Yes')
 solve()
-
-if __name__ == '__main__':
-    solve()

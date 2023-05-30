@@ -7,6 +7,3 @@ def main():
     for i in B:
         print(i)
 main()
-
-if __name__ == '__main__':
-    main()

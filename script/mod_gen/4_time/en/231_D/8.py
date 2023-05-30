@@ -13,6 +13,3 @@ def solve():
     else:
         print("IMPOSSIBLE")
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -8,6 +8,3 @@ def getSecondPlace(players):
 N = int(input())
 A = list(map(int, input().split()))
 print(A.index(getSecondPlace(A))+1)
-
-if __name__ == '__main__':
-    getSecondPlace()

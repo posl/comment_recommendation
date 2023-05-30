@@ -7,6 +7,3 @@ def shichi_go_san(num):
         else:
             return shichi_go_san(num-1)
 print(shichi_go_san(int(input())))
-
-if __name__ == '__main__':
-    shichi_go_san()

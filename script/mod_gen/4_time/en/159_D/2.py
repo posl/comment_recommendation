@@ -13,6 +13,3 @@ def main():
     for i in range(n):
         print(ans - d[a[i]] + 1)
 main()
-
-if __name__ == '__main__':
-    main()

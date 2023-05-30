@@ -10,6 +10,3 @@ def arithmetic_progression(n):
             elif n < i * (i + 1) // 2:
                 return i
 print(arithmetic_progression(int(input())))
-
-if __name__ == '__main__':
-    arithmetic_progression()

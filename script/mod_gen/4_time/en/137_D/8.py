@@ -13,6 +13,3 @@ def solve():
             ans += -heapq.heappop(heap)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

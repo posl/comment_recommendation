@@ -10,6 +10,3 @@ def solve():
         ans[i] = c[a[i]]
     print(*ans, sep='\n')
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -13,6 +13,3 @@ def solve():
             dp[i] = max(dp[i], dp[i - C] + Y)
     return dp[N]
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -7,6 +7,3 @@ def main():
             dp[i] += dp[j] * dp[i-j-1]
     print(dp[L])
 main()
-
-if __name__ == '__main__':
-    main()

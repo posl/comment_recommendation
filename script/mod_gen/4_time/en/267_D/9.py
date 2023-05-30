@@ -14,6 +14,3 @@ def calc_sum(a, m):
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 print(calc_sum(a, m))
-
-if __name__ == '__main__':
-    calc_sum()

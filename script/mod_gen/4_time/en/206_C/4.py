@@ -6,6 +6,3 @@ def main():
         ans += N - i - 1 - A[i:].count(A[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

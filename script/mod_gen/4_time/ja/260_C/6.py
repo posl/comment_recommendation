@@ -13,6 +13,3 @@ def rec(n):
 N,X,Y=map(int,input().split())
 dp={}
 print(rec(N))
-
-if __name__ == '__main__':
-    rec()

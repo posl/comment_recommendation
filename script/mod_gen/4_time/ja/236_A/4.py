@@ -7,6 +7,3 @@ def exchange_char(str, a, b):
 str = input()
 a, b = map(int, input().split())
 print(exchange_char(str, a, b))
-
-if __name__ == '__main__':
-    exchange_char()

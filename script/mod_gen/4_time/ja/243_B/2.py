@@ -14,6 +14,3 @@ def main():
     print(c)
     print(d)
 main()
-
-if __name__ == '__main__':
-    main()

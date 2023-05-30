@@ -26,6 +26,3 @@ def solve():
         else:
             return A[0] * A[-1] // A[K-N*(N-1)//2-1]
 print(solve())
-
-if __name__ == '__main__':
-    solve()

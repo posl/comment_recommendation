@@ -6,6 +6,3 @@ def count_hug(s):
     return cnt
 s = input()
 print(count_hug(s) // 2)
-
-if __name__ == '__main__':
-    count_hug()

@@ -14,6 +14,3 @@ ab = []
 for i in range(n):
     ab.append(list(map(int,input().split())))
 ret = solve(n,s,ab)
-
-if __name__ == '__main__':
-    solve()

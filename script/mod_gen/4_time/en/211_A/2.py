@@ -3,6 +3,3 @@ def meanArterialPressure(a, b):
     return c
 a, b = map(int, input().split())
 print(meanArterialPressure(a, b))
-
-if __name__ == '__main__':
-    meanArterialPressure()

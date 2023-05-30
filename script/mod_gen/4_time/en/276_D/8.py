@@ -14,6 +14,3 @@ def f():
         if len(set(A)) == 1:
             return count
 print(f())
-
-if __name__ == '__main__':
-    f()

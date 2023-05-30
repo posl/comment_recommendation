@@ -15,6 +15,3 @@ def main():
         ans[i] = len(friend[i] - block[i] - {i})
     print(*ans)
 main()
-
-if __name__ == '__main__':
-    main()

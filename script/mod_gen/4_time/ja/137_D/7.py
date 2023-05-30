@@ -18,6 +18,3 @@ def calc():
         i += 1
     print(ans)
 calc()
-
-if __name__ == '__main__':
-    calc()

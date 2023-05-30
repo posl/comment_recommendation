@@ -5,6 +5,3 @@ def round(num, n):
         return round(num + 10 ** n - num % (10 ** n), n)
 x, k = map(int, input().split())
 print(round(x, k))
-
-if __name__ == '__main__':
-    round()

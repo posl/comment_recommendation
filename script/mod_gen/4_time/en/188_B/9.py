@@ -7,6 +7,3 @@ n = int(input())
 a = [int(x) for x in input().split()]
 b = [int(x) for x in input().split()]
 print("Yes" if inner_product(a, b) == 0 else "No")
-
-if __name__ == '__main__':
-    inner_product()

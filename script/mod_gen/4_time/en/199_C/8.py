@@ -14,6 +14,3 @@ for _ in range(Q):
         S = S[:A-1] + S[B-1] + S[A:B-1] + S[A-1] + S[B:]
     else:
         flipped = not flipped
-
-if __name__ == '__main__':
-    flip()

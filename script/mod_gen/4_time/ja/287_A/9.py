@@ -11,6 +11,3 @@ def judge():
     else:
         print('No')
 judge()
-
-if __name__ == '__main__':
-    judge()

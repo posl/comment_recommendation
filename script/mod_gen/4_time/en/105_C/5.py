@@ -8,6 +8,3 @@ def baseNeg2(N):
     return ans
 N = int(input())
 print(baseNeg2(N))
-
-if __name__ == '__main__':
-    baseNeg2()

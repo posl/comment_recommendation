@@ -11,6 +11,3 @@ def problem():
             min = count
     print(min)
 problem()
-
-if __name__ == '__main__':
-    problem()

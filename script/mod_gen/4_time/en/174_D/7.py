@@ -5,6 +5,3 @@ def main():
     R = N - W
     print(min(W, R))
 main()
-
-if __name__ == '__main__':
-    main()

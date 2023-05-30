@@ -24,6 +24,3 @@ def solution():
             ans += 1
     print(ans)
 solution()
-
-if __name__ == '__main__':
-    solution()

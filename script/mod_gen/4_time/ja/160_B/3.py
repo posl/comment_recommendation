@@ -6,6 +6,3 @@ def exchange(x):
         x %= coin
     return count
 print(exchange(int(input())) * 1000)
-
-if __name__ == '__main__':
-    exchange()

@@ -9,6 +9,3 @@ def main():
         ans += (N//c - 1)*N//c*(N//c + 1)//6
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def next_contest():
     else:
         print("AGC")
 next_contest()
-
-if __name__ == '__main__':
-    next_contest()

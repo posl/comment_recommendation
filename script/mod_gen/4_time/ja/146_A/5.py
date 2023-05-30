@@ -17,6 +17,3 @@ def get_next_day(day):
         return 0
 s = input()
 print(get_next_day(s))
-
-if __name__ == '__main__':
-    get_next_day()

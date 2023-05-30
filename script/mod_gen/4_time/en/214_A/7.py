@@ -9,6 +9,3 @@ def get_problem_count():
         problem_count = 8
     return problem_count
 print(get_problem_count())
-
-if __name__ == '__main__':
-    get_problem_count()

@@ -5,6 +5,3 @@ def main():
     else:
         print('AGC' + str(n).zfill(3))
 main()
-
-if __name__ == '__main__':
-    main()

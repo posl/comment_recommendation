@@ -6,6 +6,3 @@ def main():
         a[b[i]-1] = 0
     print("Yes" if max(a) > 0 else "No")
 main()
-
-if __name__ == '__main__':
-    main()

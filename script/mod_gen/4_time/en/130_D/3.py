@@ -13,6 +13,3 @@ def problem():
         s -= a[l]
     print(ans)
 problem()
-
-if __name__ == '__main__':
-    problem()

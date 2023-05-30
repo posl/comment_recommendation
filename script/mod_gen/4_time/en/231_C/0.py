@@ -16,6 +16,3 @@ def main():
                 l = m+1
         print(n-l)
 main()
-
-if __name__ == '__main__':
-    main()

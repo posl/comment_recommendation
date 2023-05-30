@@ -5,6 +5,3 @@ def solve():
     else:
         return N // 2 + 1
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -7,6 +7,3 @@ def century(n):
         return q+1
 n = int(input())
 print(century(n))
-
-if __name__ == '__main__':
-    century()

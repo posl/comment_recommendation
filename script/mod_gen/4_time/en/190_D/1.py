@@ -11,6 +11,3 @@ def solve(n):
     return ans
 n = int(input())
 print(solve(n))
-
-if __name__ == '__main__':
-    solve()

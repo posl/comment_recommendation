@@ -18,6 +18,3 @@ def solve():
         room += 1
     return True if time - A[N-2] > 0 else False
 print('Yes' if solve() else 'No')
-
-if __name__ == '__main__':
-    solve()

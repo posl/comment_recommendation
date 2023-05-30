@@ -6,6 +6,3 @@ def bottom_count(s):
     return count
 s = input()
 print(bottom_count(s))
-
-if __name__ == '__main__':
-    bottom_count()

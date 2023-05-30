@@ -14,6 +14,3 @@ def  main():
             if count == K:
                 ans += 1
     print(ans)
-
-if __name__ == '__main__':
-    ()

@@ -23,6 +23,3 @@ def joging(a,b,c,d,e,f,x):
         print("Aoki")
 a,b,c,d,e,f,x = map(int,input().split())
 joging(a,b,c,d,e,f,x)
-
-if __name__ == '__main__':
-    joging()

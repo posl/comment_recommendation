@@ -12,6 +12,3 @@ def solve(n, s, cards):
 n, s = map(int, input().split())
 cards = [list(map(int, input().split())) for i in range(n)]
 result = solve(n, s, cards)
-
-if __name__ == '__main__':
-    solve()

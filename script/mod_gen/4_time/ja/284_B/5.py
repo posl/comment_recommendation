@@ -9,6 +9,3 @@ def count_odd():
 t = int(input())
 for i in range(t):
     count_odd()
-
-if __name__ == '__main__':
-    count_odd()

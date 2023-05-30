@@ -10,6 +10,3 @@ end
 n = gets.to_i
 a = gets.split.map(&:to_i)
 puts harvest(n, a)
-
-if __name__ == '__main__':
-    harvest()

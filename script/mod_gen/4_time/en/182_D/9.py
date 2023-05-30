@@ -6,6 +6,3 @@ def sum(list):
 n=int(input())
 a=list(map(int,input().split()))
 print(max([sum(a[:i+1]) for i in range(n)]))
-
-if __name__ == '__main__':
-    sum()

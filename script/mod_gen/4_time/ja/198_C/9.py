@@ -15,6 +15,3 @@ def cnt_step(r, x, y):
                 r += 1
 r, x, y = map(int, input().split())
 print(cnt_step(r, x, y))
-
-if __name__ == '__main__':
-    cnt_step()

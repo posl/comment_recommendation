@@ -6,6 +6,3 @@ def reverse_str(s, l, r):
 l, r = map(int, input().split())
 s = input()
 print(reverse_str(s, l, r))
-
-if __name__ == '__main__':
-    reverse_str()

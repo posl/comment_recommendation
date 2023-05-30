@@ -5,6 +5,3 @@ def harvest():
     a_list = [a for a in a_list if a > 10]
     return sum(a_list) - len(a_list) * 10
 print(harvest())
-
-if __name__ == '__main__':
-    harvest()

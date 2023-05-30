@@ -17,6 +17,3 @@ def solve():
         ans = max(ans,C[i+M]-C[i]-B[i]*M+D[i])
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

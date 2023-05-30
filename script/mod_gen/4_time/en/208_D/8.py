@@ -17,6 +17,3 @@ def  main():
              for  k  in   range (N):
                 ans  +=   min (G[i][j], G[i][k] + G[k][j])
     print (ans)
-
-if __name__ == '__main__':
-    ()

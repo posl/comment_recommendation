@@ -9,6 +9,3 @@ def path_graph():
             return "No"
     return "Yes"
 print(path_graph())
-
-if __name__ == '__main__':
-    path_graph()

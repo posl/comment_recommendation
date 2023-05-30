@@ -14,6 +14,3 @@ def main():
             d[i+1] %= 1000000007
     print(d[N])
 main()
-
-if __name__ == '__main__':
-    main()

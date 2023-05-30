@@ -8,6 +8,3 @@ def count_seq(n, m, k):
     return c[n][k]
 n, m, k = map(int, input().split())
 print(count_seq(n, m, k) % 998244353)
-
-if __name__ == '__main__':
-    count_seq()

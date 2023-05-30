@@ -3,6 +3,3 @@ def main():
     b = list(set(a))
     print(len(b))
 main()
-
-if __name__ == '__main__':
-    main()

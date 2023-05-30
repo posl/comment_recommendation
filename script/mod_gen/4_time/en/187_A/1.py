@@ -6,6 +6,3 @@ def sum_of_digits(n):
     return s
 a, b = map(int, input().split())
 print(max(sum_of_digits(a), sum_of_digits(b)))
-
-if __name__ == '__main__':
-    sum_of_digits()

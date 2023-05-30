@@ -13,6 +13,3 @@ def main():
             max_len = max(max_len, math.sqrt((x[i] - x[j]) ** 2 + (y[i] - y[j]) ** 2))
     print(max_len)
 main()
-
-if __name__ == '__main__':
-    main()

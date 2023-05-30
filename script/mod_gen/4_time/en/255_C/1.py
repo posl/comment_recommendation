@@ -22,6 +22,3 @@ def solve():
             return 0
         return (A - X) % (-D)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

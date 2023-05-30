@@ -18,6 +18,3 @@ def print_tiles(N, A, B):
     return
 N, A, B = map(int, input().split())
 print_tiles(N, A, B)
-
-if __name__ == '__main__':
-    print_tiles()

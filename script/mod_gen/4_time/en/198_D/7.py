@@ -18,6 +18,3 @@ s1 = input()
 s2 = input()
 s3 = input()
 ans = solve(s1, s2, s3)
-
-if __name__ == '__main__':
-    solve()

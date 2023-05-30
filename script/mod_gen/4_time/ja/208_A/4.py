@@ -10,6 +10,3 @@ def dice():
     else:
         print('No')
 dice()
-
-if __name__ == '__main__':
-    dice()

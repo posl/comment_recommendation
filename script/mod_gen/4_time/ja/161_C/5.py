@@ -3,6 +3,3 @@ def main():
     ans = N % K
     print(min(ans, abs(ans - K)))
 main()
-
-if __name__ == '__main__':
-    main()

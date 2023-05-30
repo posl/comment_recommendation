@@ -15,6 +15,3 @@ def main():
                 exit()
     print('satisfiable')
 main()
-
-if __name__ == '__main__':
-    main()

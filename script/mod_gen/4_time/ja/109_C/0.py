@@ -12,6 +12,3 @@ gcd_value = diff[0]
 for i in range(1, n):
     gcd_value = gcd(gcd_value, diff[i])
 print(gcd_value)
-
-if __name__ == '__main__':
-    gcd()

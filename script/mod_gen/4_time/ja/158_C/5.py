@@ -5,6 +5,3 @@ def get_price():
             return i
     return -1
 print(get_price())
-
-if __name__ == '__main__':
-    get_price()

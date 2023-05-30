@@ -13,6 +13,3 @@ def solve():
             Takahashi += 1
     return Takahashi - 1
 print(solve())
-
-if __name__ == '__main__':
-    solve()

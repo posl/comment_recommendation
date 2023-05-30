@@ -13,6 +13,3 @@ def exclusive_or(a, b):
         return exclusive_or((a - 1) // 2, (b - 1) // 2) * 2 + 2
 a, b = map(int, input().split())
 print(exclusive_or(a, b))
-
-if __name__ == '__main__':
-    exclusive_or()

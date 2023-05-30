@@ -11,6 +11,3 @@ def rank(x):
         return 'error'
 x = int(input())
 print(rank(x))
-
-if __name__ == '__main__':
-    rank()

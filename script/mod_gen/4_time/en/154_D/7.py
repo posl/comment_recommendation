@@ -11,6 +11,3 @@ def dice():
             max_sum = sum
     return max_sum/2
 print(dice())
-
-if __name__ == '__main__':
-    dice()

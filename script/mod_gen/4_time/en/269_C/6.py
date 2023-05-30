@@ -9,6 +9,3 @@ def solve(n):
     print(n)
 n = int(input())
 solve(n)
-
-if __name__ == '__main__':
-    solve()

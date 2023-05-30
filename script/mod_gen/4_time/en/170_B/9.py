@@ -5,6 +5,3 @@ def problem():
     else:
         print("No")
 problem()
-
-if __name__ == '__main__':
-    problem()

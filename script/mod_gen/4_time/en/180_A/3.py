@@ -6,6 +6,3 @@ def main():
     b = int(a[2])
     print(n-a+b)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -6,6 +6,3 @@ def main():
         P += A[i] - 1
     print(P)
 main()
-
-if __name__ == '__main__':
-    main()

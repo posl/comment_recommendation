@@ -6,6 +6,3 @@ def main():
         sum += 1 / a[i]
     print(1 / sum)
 main()
-
-if __name__ == '__main__':
-    main()

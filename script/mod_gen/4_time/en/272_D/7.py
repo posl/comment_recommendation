@@ -12,6 +12,3 @@ def getMinSteps(n, m):
     return 4 + (n - 4) * 2
 n, m = map(int, input().split())
 print(getMinSteps(n, m))
-
-if __name__ == '__main__':
-    getMinSteps()

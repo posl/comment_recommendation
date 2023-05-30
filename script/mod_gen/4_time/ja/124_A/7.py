@@ -5,6 +5,3 @@ def solve():
     else:
         return max(a + a - 1, b + b - 1, a + b)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

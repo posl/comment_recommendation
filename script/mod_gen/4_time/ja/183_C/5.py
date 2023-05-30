@@ -12,6 +12,3 @@ n, k = map(int, input().split())
 t = [list(map(int, input().split())) for _ in range(n)]
 visited = [False] * n
 print(dfs(0, visited, 0, n, k, t))
-
-if __name__ == '__main__':
-    dfs()

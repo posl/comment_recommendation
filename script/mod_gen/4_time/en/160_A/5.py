@@ -4,6 +4,3 @@ def is_coffee_like(s):
     return "No"
 s = input()
 print(is_coffee_like(s))
-
-if __name__ == '__main__':
-    is_coffee_like()

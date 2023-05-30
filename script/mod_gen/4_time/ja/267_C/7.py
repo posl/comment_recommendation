@@ -26,6 +26,3 @@ import bisect
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 print(solve(n, m, a))
-
-if __name__ == '__main__':
-    solve()

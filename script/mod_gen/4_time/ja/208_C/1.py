@@ -12,6 +12,3 @@ def solve():
             ans[i] -= 1
     print(*ans, sep="\n")
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -12,6 +12,3 @@ def main():
             ans += A[i][j] - min_A
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

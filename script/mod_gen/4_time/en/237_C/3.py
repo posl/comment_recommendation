@@ -12,6 +12,3 @@ def main():
             exit()
     print("Yes")
 main()
-
-if __name__ == '__main__':
-    main()

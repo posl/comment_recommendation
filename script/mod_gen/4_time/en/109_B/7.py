@@ -13,6 +13,3 @@ def shiritori():
         else:
             print("Yes")
 shiritori()
-
-if __name__ == '__main__':
-    shiritori()

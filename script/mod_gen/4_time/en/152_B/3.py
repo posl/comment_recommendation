@@ -8,6 +8,3 @@ def main():
         print(str(b)*a)
     return
 main()
-
-if __name__ == '__main__':
-    main()

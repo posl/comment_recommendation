@@ -9,6 +9,3 @@ def is_strong_palindrome(s):
     return True
 s = input()
 print("Yes" if is_strong_palindrome(s) else "No")
-
-if __name__ == '__main__':
-    is_strong_palindrome()

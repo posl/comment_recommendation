@@ -9,6 +9,3 @@ for i in range(t):
     n = int(input())
     a = list(map(int, input().split()))
     print(count_odd(n, a))
-
-if __name__ == '__main__':
-    count_odd()

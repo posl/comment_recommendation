@@ -4,6 +4,3 @@ def relu(x):
     else:
         return 0
 print(relu(int(input())))
-
-if __name__ == '__main__':
-    relu()

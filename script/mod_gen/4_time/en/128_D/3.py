@@ -19,6 +19,3 @@ def solve():
             ans = max(ans, sum(tmp))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

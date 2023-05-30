@@ -7,6 +7,3 @@ def solve():
     else:
         print(A-(K-A-B))
 solve()
-
-if __name__ == '__main__':
-    solve()

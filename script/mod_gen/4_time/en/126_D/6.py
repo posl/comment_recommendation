@@ -19,6 +19,3 @@ def main():
     print('
 '.join(ans))
 main()
-
-if __name__ == '__main__':
-    main()

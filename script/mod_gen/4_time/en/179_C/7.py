@@ -5,6 +5,3 @@ def count(n):
     return ans
 n = int(input())
 print(count(n))
-
-if __name__ == '__main__':
-    count()

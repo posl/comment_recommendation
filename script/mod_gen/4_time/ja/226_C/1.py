@@ -22,6 +22,3 @@ def solve():
             dp[i] = min(dp[i], dp[A[i][j]] + T[i])
     print(dp[N-1])
 solve()
-
-if __name__ == '__main__':
-    solve()

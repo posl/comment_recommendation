@@ -7,6 +7,3 @@ def problems222_b():
             ans += 1
     return ans
 print(problems222_b())
-
-if __name__ == '__main__':
-    problems222_b()

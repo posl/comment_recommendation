@@ -11,6 +11,3 @@ def  main():
                          if  S[i][j]  ==  '#':
                             cnt  +=  1
             ans  +=  cnt  ==  K
-
-if __name__ == '__main__':
-    ()

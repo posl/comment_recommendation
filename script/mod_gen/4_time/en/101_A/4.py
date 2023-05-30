@@ -8,6 +8,3 @@ def solve(S):
     return ans
 S = input()
 print(solve(S))
-
-if __name__ == '__main__':
-    solve()

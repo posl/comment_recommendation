@@ -4,6 +4,3 @@ def main():
     T.sort()
     print(sum(T) - T[-1] + T[-1] // 2)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -13,6 +13,3 @@ def solve():
             ans = (y - x) // 10 + 1
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

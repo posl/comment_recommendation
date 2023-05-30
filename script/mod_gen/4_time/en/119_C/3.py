@@ -9,6 +9,3 @@ def dfs(cur, a, b, c):
 N, A, B, C = map(int, input().split())
 L = [int(input()) for _ in range(N)]
 print(dfs(0, 0, 0, 0))
-
-if __name__ == '__main__':
-    dfs()

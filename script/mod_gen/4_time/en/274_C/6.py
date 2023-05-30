@@ -9,6 +9,3 @@ def main():
     for i in range(1, 2*N+1):
         print(generation[i])
 main()
-
-if __name__ == '__main__':
-    main()

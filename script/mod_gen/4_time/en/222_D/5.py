@@ -15,6 +15,3 @@ def solve():
             dp[j] %= MOD
     print(dp[B[-1]])
 solve()
-
-if __name__ == '__main__':
-    solve()

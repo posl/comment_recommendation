@@ -10,6 +10,3 @@ def main():
     print("satisfiable")
     return
 main()
-
-if __name__ == '__main__':
-    main()

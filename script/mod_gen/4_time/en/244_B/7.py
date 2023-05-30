@@ -25,6 +25,3 @@ def main():
                 d = 'E'
     print(x, y)
 main()
-
-if __name__ == '__main__':
-    main()

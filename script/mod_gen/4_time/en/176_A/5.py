@@ -11,6 +11,3 @@ def takoyaki():
     # return n // x * t
     return ((n // x) + (1 if n % x else 0)) * t
 print(takoyaki())
-
-if __name__ == '__main__':
-    takoyaki()

@@ -6,6 +6,3 @@ for i in range(n):
     a,b = map(int, input().split())
     sum += sum(b) - sum(a - 1)
 print(sum)
-
-if __name__ == '__main__':
-    sum()

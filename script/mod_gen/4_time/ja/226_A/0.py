@@ -5,6 +5,3 @@ def round(x):
         return int(x)
 x = float(input())
 print(round(x))
-
-if __name__ == '__main__':
-    round()

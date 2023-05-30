@@ -23,6 +23,3 @@ def solve():
             break
     return left
 print(solve())
-
-if __name__ == '__main__':
-    solve()

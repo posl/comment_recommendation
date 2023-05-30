@@ -12,6 +12,3 @@ def triangles():
                     break
     print(count)
 triangles()
-
-if __name__ == '__main__':
-    triangles()

@@ -11,6 +11,3 @@ def func():
                 count += 1
     print(count)
 func()
-
-if __name__ == '__main__':
-    func()

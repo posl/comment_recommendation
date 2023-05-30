@@ -8,6 +8,3 @@ def max_sum(n, b):
 n = int(input())
 b = list(map(int, input().split()))
 print(max_sum(n, b))
-
-if __name__ == '__main__':
-    max_sum()

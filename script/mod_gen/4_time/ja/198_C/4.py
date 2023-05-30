@@ -6,6 +6,3 @@ def solve():
     else:
         print(int(D//R + (D%R != 0)))
 solve()
-
-if __name__ == '__main__':
-    solve()

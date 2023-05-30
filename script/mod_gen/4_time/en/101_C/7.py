@@ -9,6 +9,3 @@ def problems101_c():
         cnt += 1
     print(cnt)
 problems101_c()
-
-if __name__ == '__main__':
-    problems101_c()

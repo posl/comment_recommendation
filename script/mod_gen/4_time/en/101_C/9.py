@@ -10,6 +10,3 @@ def problem101_c():
                 min_num = A[i]
     print((N-1) // (K-1))
 problem101_c()
-
-if __name__ == '__main__':
-    problem101_c()

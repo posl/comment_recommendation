@@ -14,6 +14,3 @@ def main():
         elif i == n-1:
             print(n)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -5,6 +5,3 @@ def tax(a, b):
     return -1
 a, b = map(int, input().split())
 print(tax(a, b))
-
-if __name__ == '__main__':
-    tax()

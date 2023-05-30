@@ -15,6 +15,3 @@ def prob248_c():
                     dp[i + 1][j + 1][k] %= 998244353
     print(dp[N][M][K])
 prob248_c()
-
-if __name__ == '__main__':
-    prob248_c()

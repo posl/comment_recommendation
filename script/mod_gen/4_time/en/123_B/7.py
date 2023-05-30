@@ -8,6 +8,3 @@ def get_min_time():
             min_time += dish
     return min_time - max([dish for dish in dishes if dish % 10 != 0])
 print(get_min_time())
-
-if __name__ == '__main__':
-    get_min_time()

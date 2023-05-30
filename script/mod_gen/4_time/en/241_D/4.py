@@ -23,6 +23,3 @@ def main():
                 print(b[k-1])
     return
 main()
-
-if __name__ == '__main__':
-    main()

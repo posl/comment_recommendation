@@ -9,6 +9,3 @@ def main():
         b = b * 10 + N[i]
     print(a * b)
 main()
-
-if __name__ == '__main__':
-    main()

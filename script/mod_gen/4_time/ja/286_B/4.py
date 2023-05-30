@@ -6,6 +6,3 @@ def replace_na(n, s):
 n = int(input())
 s = input()
 print(replace_na(n, s))
-
-if __name__ == '__main__':
-    replace_na()

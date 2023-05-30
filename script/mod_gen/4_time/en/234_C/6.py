@@ -7,6 +7,3 @@ def findKthInteger(k):
     return ans[::-1].replace("0", "2")
 k = int(input())
 print(findKthInteger(k))
-
-if __name__ == '__main__':
-    findKthInteger()

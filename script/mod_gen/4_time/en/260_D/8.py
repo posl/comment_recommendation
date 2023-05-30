@@ -17,6 +17,3 @@ def main():
         #print("stack",stack)
     print(*ans,sep="\n")
 main()
-
-if __name__ == '__main__':
-    main()

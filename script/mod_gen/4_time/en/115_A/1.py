@@ -9,6 +9,3 @@ def main():
     elif D == 22:
         print("Christmas Eve Eve Eve")
 main()
-
-if __name__ == '__main__':
-    main()

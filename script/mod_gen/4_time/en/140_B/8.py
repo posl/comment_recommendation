@@ -12,6 +12,3 @@ def   main ():
              ans   +=   c [ a [ i   -   1 ]   -   1 ] 
      # Output 
      print ( ans )
-
-if __name__ == '__main__':
-    ()

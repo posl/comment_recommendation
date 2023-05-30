@@ -6,6 +6,3 @@ def checkFullHouse():
     else:
         print "No"
 checkFullHouse()
-
-if __name__ == '__main__':
-    checkFullHouse()

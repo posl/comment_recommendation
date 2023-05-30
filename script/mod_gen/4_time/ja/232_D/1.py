@@ -17,6 +17,3 @@ def solve():
                 dp[i][j] = dp[i][j-1] + dp[i-1][j]
     return dp[H-1][W-1]
 print(solve())
-
-if __name__ == '__main__':
-    solve()

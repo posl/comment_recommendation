@@ -7,6 +7,3 @@ def harvest_nuts(n,a):
 n = int(input())
 a = list(map(int, input().split()))
 print(harvest_nuts(n,a))
-
-if __name__ == '__main__':
-    harvest_nuts()

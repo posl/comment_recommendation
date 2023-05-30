@@ -24,6 +24,3 @@ def get_max_sum(N, K, V):
 N, K = map(int, input().split())
 V = list(map(int, input().split()))
 print(get_max_sum(N, K, V))
-
-if __name__ == '__main__':
-    get_max_sum()

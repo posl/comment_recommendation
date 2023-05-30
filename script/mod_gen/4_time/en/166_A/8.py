@@ -5,6 +5,3 @@ def f(s):
         return 'ABC'
 s = input()
 print(f(s))
-
-if __name__ == '__main__':
-    f()

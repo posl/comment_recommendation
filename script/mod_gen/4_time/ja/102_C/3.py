@@ -8,6 +8,3 @@ def get_ans(n, a):
 n = int(input())
 a = list(map(int, input().split()))
 print(get_ans(n, a))
-
-if __name__ == '__main__':
-    get_ans()

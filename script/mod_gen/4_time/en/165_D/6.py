@@ -7,6 +7,3 @@ def solve(A, B, N):
   return max
 A, B, N = map(int, input().split())
 print(solve(A, B, N))
-
-if __name__ == '__main__':
-    solve()

@@ -10,6 +10,3 @@ def main():
             Y[i+1] = 2**i + Y[i]
     print(Y[N])
 main()
-
-if __name__ == '__main__':
-    main()

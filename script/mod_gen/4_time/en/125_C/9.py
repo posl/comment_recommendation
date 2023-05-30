@@ -18,6 +18,3 @@ gcd_max = max(gcd_max, gcd_list[1])
 for i in range(1, N - 1):
     gcd_max = max(gcd_max, gcd(gcd_list[i - 1], gcd_list[i + 1]))
 print(gcd_max)
-
-if __name__ == '__main__':
-    gcd()

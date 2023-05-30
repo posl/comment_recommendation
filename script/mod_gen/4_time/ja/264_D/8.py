@@ -20,6 +20,3 @@ def calc(s):
     return 0
 s = input()
 print(calc(s))
-
-if __name__ == '__main__':
-    calc()

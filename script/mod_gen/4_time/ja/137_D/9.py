@@ -19,6 +19,3 @@ for i in range(n):
     a.append(ai)
     b.append(bi)
 solve(n, m, a, b)
-
-if __name__ == '__main__':
-    solve()

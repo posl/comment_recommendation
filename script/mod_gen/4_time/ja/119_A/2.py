@@ -13,6 +13,3 @@ def judge(year, month, day):
         return "Heisei"
 year, month, day = map(int, input().split("/"))
 print(judge(year, month, day))
-
-if __name__ == '__main__':
-    judge()

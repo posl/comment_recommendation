@@ -48,6 +48,3 @@ def main():
             b = i+1
     print(abs(a-b))
 main()
-
-if __name__ == '__main__':
-    main()

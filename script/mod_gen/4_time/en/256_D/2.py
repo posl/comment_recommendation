@@ -16,6 +16,3 @@ def main():
             r = a[i][1]
     print(l,r)
 main()
-
-if __name__ == '__main__':
-    main()

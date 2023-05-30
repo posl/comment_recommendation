@@ -7,6 +7,3 @@ def weather_prediction():
     else:
         print("Sunny")
 weather_prediction()
-
-if __name__ == '__main__':
-    weather_prediction()

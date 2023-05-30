@@ -14,6 +14,3 @@ def solve():
     print("NO")
     return
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -14,6 +14,3 @@ def main():
             ans += x[i] * 380000
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

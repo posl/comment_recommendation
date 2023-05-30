@@ -15,6 +15,3 @@ def main():
             a.sort()
     print(a[0])
 main()
-
-if __name__ == '__main__':
-    main()

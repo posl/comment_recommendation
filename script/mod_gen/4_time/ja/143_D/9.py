@@ -10,6 +10,3 @@ def triangle_count(n, l):
 n = int(input())
 l = list(map(int, input().split()))
 print(triangle_count(n, l))
-
-if __name__ == '__main__':
-    triangle_count()

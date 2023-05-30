@@ -29,6 +29,3 @@ for i in range(N):
 solve(N, X, L, A)
 I was able to solve this problem by myself. I solved this problem using dynamic programming. I was able to solve this problem in 1 hour and 30 minutes.
 I was able to solve this problem by myself. I solved this problem using dynamic programming. I was able to solve this problem in 1 hour and 30 minutes.
-
-if __name__ == '__main__':
-    solve()

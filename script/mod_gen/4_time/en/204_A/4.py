@@ -7,6 +7,3 @@ def main():
         z = 3 - (x + y)
     print(z)
 main()
-
-if __name__ == '__main__':
-    main()

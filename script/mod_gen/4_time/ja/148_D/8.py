@@ -14,6 +14,3 @@ def problem148_d():
             ans += A[i]
     return ans
 print(problem148_d())
-
-if __name__ == '__main__':
-    problem148_d()

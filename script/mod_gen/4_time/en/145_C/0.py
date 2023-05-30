@@ -12,6 +12,3 @@ def main():
             ans += ((X[i] - X[j]) ** 2 + (Y[i] - Y[j]) ** 2) ** (1 / 2)
     print(ans * 2 / N)
 main()
-
-if __name__ == '__main__':
-    main()

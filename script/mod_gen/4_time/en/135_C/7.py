@@ -20,6 +20,3 @@ def solve():
     print(ans)
 solve()
 I solved this problem on 2019/05/25.
-
-if __name__ == '__main__':
-    solve()

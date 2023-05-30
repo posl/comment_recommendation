@@ -7,6 +7,3 @@ def solve():
     else:
         return math.ceil(d/R)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

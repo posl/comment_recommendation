@@ -11,6 +11,3 @@ def time_after_21(k):
 print(time_after_21(63))
 print(time_after_21(45))
 print(time_after_21(100))
-
-if __name__ == '__main__':
-    time_after_21()

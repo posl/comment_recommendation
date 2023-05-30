@@ -10,6 +10,3 @@ def main():
             good[B - 1] = False
     print(good.count(True))
 main()
-
-if __name__ == '__main__':
-    main()

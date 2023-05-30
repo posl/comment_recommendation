@@ -30,6 +30,3 @@ def main():
             dp[i][2] = max(dp[i][2], dp[i-K][0] + get_score(get_hand(T[i])))
     print(max(dp[N-1]))
 main()
-
-if __name__ == '__main__':
-    main()

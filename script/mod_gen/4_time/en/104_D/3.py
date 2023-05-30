@@ -20,6 +20,3 @@ def main():
                     dp[i + 1][int(S[i])][j] %= MOD
     print(dp[N][3][3])
 main()
-
-if __name__ == '__main__':
-    main()

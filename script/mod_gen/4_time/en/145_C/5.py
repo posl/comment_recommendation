@@ -17,6 +17,3 @@ def main():
     ans = ans / (N * (N - 1) / 2)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

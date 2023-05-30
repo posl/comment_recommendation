@@ -7,6 +7,3 @@ def good(x, a, d, n):
         return min(good(x, a, d, n - 1) + 1, good(x, a, d, (n + 1) // 2) + 2)
 x, a, d, n = map(int, input().split())
 print(good(x, a, d, n))
-
-if __name__ == '__main__':
-    good()

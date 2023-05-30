@@ -8,6 +8,3 @@ def problems129_b():
             min_diff = diff
     return min_diff
 print(problems129_b())
-
-if __name__ == '__main__':
-    problems129_b()

@@ -6,6 +6,3 @@ def check(L):
 N = int(input())
 L = list(map(int, input().split()))
 print(check(L))
-
-if __name__ == '__main__':
-    check()

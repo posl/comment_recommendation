@@ -8,6 +8,3 @@ def func():
     else:
         print(int(x))
 func()
-
-if __name__ == '__main__':
-    func()

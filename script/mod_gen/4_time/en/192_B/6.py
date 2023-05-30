@@ -8,6 +8,3 @@ def is_hard_to_read(s):
     return 'Yes'
 s = input()
 print(is_hard_to_read(s))
-
-if __name__ == '__main__':
-    is_hard_to_read()

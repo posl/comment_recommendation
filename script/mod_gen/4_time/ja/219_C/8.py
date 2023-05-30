@@ -32,6 +32,3 @@ def main():
     for s in S_dic_sorted:
         print(s[0])
 main()
-
-if __name__ == '__main__':
-    main()

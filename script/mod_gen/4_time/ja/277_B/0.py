@@ -11,6 +11,3 @@ def main():
         elif i == N-2:
             print('Yes')
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def solve():
         A[i] = ans
     print(max(A))
 solve()
-
-if __name__ == '__main__':
-    solve()

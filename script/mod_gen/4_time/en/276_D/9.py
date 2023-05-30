@@ -10,6 +10,3 @@ def d():
             break
     print(ans)
 d()
-
-if __name__ == '__main__':
-    d()

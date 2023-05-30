@@ -20,6 +20,3 @@ def solve():
             break
     print(dist)
 solve()
-
-if __name__ == '__main__':
-    solve()

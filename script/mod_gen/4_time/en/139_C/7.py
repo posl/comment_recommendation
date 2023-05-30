@@ -12,6 +12,3 @@ def max_move(n, h):
 n = int(input())
 h = list(map(int, input().split()))
 print(max_move(n, h))
-
-if __name__ == '__main__':
-    max_move()

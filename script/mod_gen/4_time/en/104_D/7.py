@@ -17,6 +17,3 @@ def abcnum(s):
     return (abc % (10**9 + 7))
 s = input()
 print(abcnum(s))
-
-if __name__ == '__main__':
-    abcnum()

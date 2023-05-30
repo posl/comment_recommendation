@@ -10,6 +10,3 @@ def divisors(n):
  
 N = int(input())
 print(*divisors(N), sep='\n')
-
-if __name__ == '__main__':
-    divisors()

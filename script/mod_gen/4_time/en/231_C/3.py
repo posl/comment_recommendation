@@ -18,6 +18,3 @@ arr.sort()
 for i in range(q):
     k = int(input())
     print(countGreater(arr, n, k))
-
-if __name__ == '__main__':
-    countGreater()

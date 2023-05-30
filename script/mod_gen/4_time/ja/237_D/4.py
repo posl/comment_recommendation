@@ -9,6 +9,3 @@ def main():
             a.insert(i+1,a[i]+1)
     print(" ".join(map(str,a)))
 main()
-
-if __name__ == '__main__':
-    main()

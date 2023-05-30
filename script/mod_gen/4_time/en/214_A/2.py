@@ -6,6 +6,3 @@ def abc(n):
     else:
         return 8
 print(abc(int(input())))
-
-if __name__ == '__main__':
-    abc()

@@ -9,6 +9,3 @@ def main():
             s = s[-1] + s[:-1]
     print("No")
 main()
-
-if __name__ == '__main__':
-    main()

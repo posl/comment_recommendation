@@ -5,6 +5,3 @@ def pluralize(word):
         return word + 's'
 word = input()
 print(pluralize(word))
-
-if __name__ == '__main__':
-    pluralize()

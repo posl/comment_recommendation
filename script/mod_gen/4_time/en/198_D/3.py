@@ -20,6 +20,3 @@ def main():
             return
     print("UNSOLVABLE")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -82,6 +82,3 @@ def f(x):
     elif x == 40:
         return 61
     elif x ==
-
-if __name__ == '__main__':
-    f()

@@ -10,6 +10,3 @@ def solve(x,y,a,b):
     return exp
 x,y,a,b = list(map(int,input().split()))
 print(solve(x,y,a,b))
-
-if __name__ == '__main__':
-    solve()

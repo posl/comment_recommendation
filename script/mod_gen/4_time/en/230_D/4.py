@@ -16,6 +16,3 @@ def main():
         i = i + j + D
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

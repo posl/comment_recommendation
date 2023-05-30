@@ -17,6 +17,3 @@ n = int(input())
 first_digit = n // 16
 second_digit = n % 16
 print(convert_to_hex(first_digit) + convert_to_hex(second_digit))
-
-if __name__ == '__main__':
-    convert_to_hex()

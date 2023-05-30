@@ -6,6 +6,3 @@ def count_parent(n,p):
 n = int(input())
 p = list(map(int,input().split()))
 print(count_parent(n,p[-1]))
-
-if __name__ == '__main__':
-    count_parent()

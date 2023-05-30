@@ -11,6 +11,3 @@ n = int(input())
 a = [int(x) for x in input().split()]
 b = [int(x) for x in input().split()]
 print(solve(n, a, b))
-
-if __name__ == '__main__':
-    solve()

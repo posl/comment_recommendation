@@ -17,6 +17,3 @@ def solve():
     for i in range(N):
         print(*ans[i])
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -15,6 +15,3 @@ def hand(x, y):
         return y
 x, y = input().split()
 print(hand(x, y))
-
-if __name__ == '__main__':
-    hand()

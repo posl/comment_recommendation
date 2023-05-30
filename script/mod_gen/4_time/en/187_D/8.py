@@ -13,6 +13,3 @@ def main():
             takahashi += AB[i][1]
     print(aoki - takahashi)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -15,6 +15,3 @@ def main():
                 dp[i+1][1] = max(dp[i+1][1], dp[i][j]+Y[C.index(j+1)])
     print(max(dp[N]))
 main()
-
-if __name__ == '__main__':
-    main()

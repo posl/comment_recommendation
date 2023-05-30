@@ -13,6 +13,3 @@ def solve():
             left += 1
     print(*ans[::-1])
 solve()
-
-if __name__ == '__main__':
-    solve()

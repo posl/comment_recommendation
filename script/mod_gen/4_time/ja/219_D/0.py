@@ -17,6 +17,3 @@ def main():
                     ans = min(ans, i + j + 2)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

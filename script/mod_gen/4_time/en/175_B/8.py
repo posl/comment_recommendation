@@ -13,6 +13,3 @@ def triangle():
                     ans += 1
     print(ans)
 triangle()
-
-if __name__ == '__main__':
-    triangle()

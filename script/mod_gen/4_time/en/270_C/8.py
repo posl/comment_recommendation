@@ -14,6 +14,3 @@ for _ in range(N - 1):
     g[u].append(v)
     g[v].append(u)
 print(len(list(dfs(X, Y, g))[0]) - 1)
-
-if __name__ == '__main__':
-    dfs()

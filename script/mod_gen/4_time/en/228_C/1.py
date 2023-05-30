@@ -5,6 +5,3 @@ def solve():
     P.sort(reverse=True)
     print("Yes" if P[K - 1] > 0 else "No")
 solve()
-
-if __name__ == '__main__':
-    solve()

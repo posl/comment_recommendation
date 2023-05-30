@@ -5,6 +5,3 @@ def takoyaki(n,x,t):
         return (n//x+1)*t
 n,x,t = map(int,input().split())
 print(takoyaki(n,x,t))
-
-if __name__ == '__main__':
-    takoyaki()

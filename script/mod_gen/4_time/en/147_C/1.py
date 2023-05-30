@@ -28,6 +28,3 @@ def solve():
             ans = max(ans, bin(i).count("1"))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

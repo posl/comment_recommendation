@@ -19,6 +19,3 @@ def solve():
                 ans += 1
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

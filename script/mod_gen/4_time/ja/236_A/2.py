@@ -3,6 +3,3 @@ def swap_at(s, a, b):
 s = input()
 a, b = map(int, input().split())
 print(swap_at(s, a, b))
-
-if __name__ == '__main__':
-    swap_at()

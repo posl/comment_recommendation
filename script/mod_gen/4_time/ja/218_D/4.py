@@ -17,6 +17,3 @@ def main():
     y_.sort()
     print(x_.count(x_[0]) * y_.count(y_[0]))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -7,6 +7,3 @@ def main():
             ans += (n-i-1)*(i+1)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

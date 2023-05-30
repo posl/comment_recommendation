@@ -5,6 +5,3 @@ def main():
     else:
         print(min(N % K, abs(N % K - K)))
 main()
-
-if __name__ == '__main__':
-    main()

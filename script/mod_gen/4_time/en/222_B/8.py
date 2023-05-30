@@ -7,6 +7,3 @@ def failed_students():
             count += 1
     print(count)
 failed_students()
-
-if __name__ == '__main__':
-    failed_students()

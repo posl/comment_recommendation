@@ -13,6 +13,3 @@ def solve():
             stack = []
     print('\n'.join(map(str, ans)))
 solve()
-
-if __name__ == '__main__':
-    solve()

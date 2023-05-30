@@ -13,6 +13,3 @@ def main():
     ans = max(ans, tmp)
     print(min(ans + k, n))
 main()
-
-if __name__ == '__main__':
-    main()

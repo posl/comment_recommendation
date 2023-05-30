@@ -7,6 +7,3 @@ def f(n):
         return f(n//2)
 n = int(input())
 print(f(n))
-
-if __name__ == '__main__':
-    f()

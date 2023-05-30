@@ -13,6 +13,3 @@ S = []
 for i in range(N):
     S.append(input())
 print(calc(N, S))
-
-if __name__ == '__main__':
-    calc()

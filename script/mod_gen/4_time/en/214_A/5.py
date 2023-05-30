@@ -7,6 +7,3 @@ def problem214_a():
     else:
         print(8)
 problem214_a()
-
-if __name__ == '__main__':
-    problem214_a()

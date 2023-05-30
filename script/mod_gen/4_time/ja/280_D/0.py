@@ -15,6 +15,3 @@ while True:
         break
     else:
         n *= func(n)
-
-if __name__ == '__main__':
-    func()

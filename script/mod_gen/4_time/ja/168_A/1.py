@@ -7,6 +7,3 @@ def main():
     elif N % 10 == 3:
         print("bon")
 main()
-
-if __name__ == '__main__':
-    main()

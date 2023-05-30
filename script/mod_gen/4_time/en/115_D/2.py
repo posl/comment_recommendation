@@ -11,6 +11,3 @@ def burger(level, layer):
         return (2**level - 1) + burger(level-1, layer - (2**level))
 level, layer = map(int, input().split())
 print(burger(level, layer))
-
-if __name__ == '__main__':
-    burger()

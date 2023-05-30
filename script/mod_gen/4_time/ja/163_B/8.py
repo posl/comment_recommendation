@@ -10,6 +10,3 @@ def solve():
             return i + 1
     return m
 print(solve())
-
-if __name__ == '__main__':
-    solve()

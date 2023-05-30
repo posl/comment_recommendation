@@ -14,6 +14,3 @@ for i in range(N):
         if dist > max_distance:
             max_distance = dist
 print(max_distance)
-
-if __name__ == '__main__':
-    distance()

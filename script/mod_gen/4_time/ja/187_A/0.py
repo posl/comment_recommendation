@@ -6,6 +6,3 @@ def S(n):
     return ans
 A, B = map(int, input().split())
 print(max(S(A), S(B)))
-
-if __name__ == '__main__':
-    S()

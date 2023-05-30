@@ -10,6 +10,3 @@ def solve():
             res.append('A')
     print(''.join(reversed(res)))
 solve()
-
-if __name__ == '__main__':
-    solve()

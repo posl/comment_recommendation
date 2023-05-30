@@ -5,6 +5,3 @@ def main():
     ans = math.sqrt(a*a + b*b - 2*a*b*math.cos(math.radians(angle)))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

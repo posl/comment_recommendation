@@ -9,6 +9,3 @@ def main():
         ans = max(ans, (p[i + k] - p[i]) / 2 + p[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

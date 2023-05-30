@@ -10,6 +10,3 @@ def count753(n):
         return count753(a) + count753(b)
 N = int(input())
 print(count753(N))
-
-if __name__ == '__main__':
-    count753()

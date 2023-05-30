@@ -5,6 +5,3 @@ def main():
     min_apple = min(apple, key=abs)
     print(sum_apple - min_apple)
 main()
-
-if __name__ == '__main__':
-    main()

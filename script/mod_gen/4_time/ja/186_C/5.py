@@ -6,6 +6,3 @@ def main():
             ans += 1
     print(n - ans)
 main()
-
-if __name__ == '__main__':
-    main()

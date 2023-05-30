@@ -9,6 +9,3 @@ def main():
             friends[A[i]] = 1
     print(sum(friends))
 main()
-
-if __name__ == '__main__':
-    main()

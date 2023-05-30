@@ -3,6 +3,3 @@ def det(a,b,c,d):
 a,b=map(int,input().split())
 c,d=map(int,input().split())
 print(det(a,b,c,d))
-
-if __name__ == '__main__':
-    det()

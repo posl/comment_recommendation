@@ -5,6 +5,3 @@ def calc_price(A, B):
     return -1
 A, B = map(int, input().split())
 print(calc_price(A, B))
-
-if __name__ == '__main__':
-    calc_price()

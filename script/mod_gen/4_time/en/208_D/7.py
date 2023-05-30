@@ -13,6 +13,3 @@ def  main():
                         d[b-1] = d[a-1] + c
             ans += sum(d)
     print(ans)
-
-if __name__ == '__main__':
-    ()

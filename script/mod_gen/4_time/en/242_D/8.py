@@ -12,6 +12,3 @@ k = [0] * q
 for i in range(q):
     t[i], k[i] = map(int, input().split())
     print(f(s, t[i])[k[i] - 1])
-
-if __name__ == '__main__':
-    f()

@@ -12,6 +12,3 @@ def main():
         print(q[i], end=' ')
     print()
 main()
-
-if __name__ == '__main__':
-    main()

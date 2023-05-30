@@ -14,6 +14,3 @@ for i in range(M):
     graph[a][b] = 1
     graph[b][a] = 1
 print(countTriangles(graph, N))
-
-if __name__ == '__main__':
-    countTriangles()

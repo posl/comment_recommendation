@@ -5,6 +5,3 @@ def solve():
     T -= 1
     print((T // S + 1) % N + 1, T % S + 1)
 solve()
-
-if __name__ == '__main__':
-    solve()

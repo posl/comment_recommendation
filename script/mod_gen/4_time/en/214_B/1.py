@@ -8,6 +8,3 @@ def solve(s,t):
     return count
 s,t = map(int, input().split())
 print(solve(s,t))
-
-if __name__ == '__main__':
-    solve()

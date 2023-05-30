@@ -19,6 +19,3 @@ def main():
         ans = max(ans, c[i] - c[q[0]])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

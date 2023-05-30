@@ -15,6 +15,3 @@ def main():
         # Print the number of odd integers
         print(num_odd)
 main()
-
-if __name__ == '__main__':
-    main()

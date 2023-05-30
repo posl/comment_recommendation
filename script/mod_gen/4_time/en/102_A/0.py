@@ -5,6 +5,3 @@ def gcd(a, b):
         return gcd(b, a%b)
 n = int(input())
 print(int(2*n/gcd(2, n)))
-
-if __name__ == '__main__':
-    gcd()

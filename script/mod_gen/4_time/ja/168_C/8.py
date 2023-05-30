@@ -10,6 +10,3 @@ def main():
     ans = math.sqrt(A**2 + B**2 - 2 * A * B * math.cos(math.radians(angle)))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

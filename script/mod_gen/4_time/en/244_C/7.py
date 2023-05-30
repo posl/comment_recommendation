@@ -10,6 +10,3 @@ def main():
         a.remove(b)
     return
 main()
-
-if __name__ == '__main__':
-    main()

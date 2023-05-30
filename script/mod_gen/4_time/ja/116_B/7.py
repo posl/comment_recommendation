@@ -12,6 +12,3 @@ def solve():
                 print(i+1)
                 return
 solve()
-
-if __name__ == '__main__':
-    solve()

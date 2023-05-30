@@ -30,6 +30,3 @@ def main():
         unite(u, v)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

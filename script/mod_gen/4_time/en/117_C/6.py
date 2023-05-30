@@ -9,6 +9,3 @@ def solve():
     ans = sum(diff[0:M-N])
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

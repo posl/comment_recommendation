@@ -12,6 +12,3 @@ def main():
                 h = (a[i] // h + 1) * h
     print(h)
 main()
-
-if __name__ == '__main__':
-    main()

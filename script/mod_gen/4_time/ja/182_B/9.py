@@ -13,6 +13,3 @@ for i in range(N):
         tmp_gcd = gcd(tmp_gcd, A[j])
     max_gcd = max(max_gcd, tmp_gcd)
 print(max_gcd)
-
-if __name__ == '__main__':
-    gcd()

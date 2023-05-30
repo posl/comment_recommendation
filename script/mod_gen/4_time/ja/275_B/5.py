@@ -6,6 +6,3 @@ def main():
         result = (D*E*F) - (A*B*C)
     print(result%998244353)
 main()
-
-if __name__ == '__main__':
-    main()

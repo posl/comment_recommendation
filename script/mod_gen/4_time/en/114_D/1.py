@@ -6,6 +6,3 @@ def main():
             D[j] += 1
     print(D.count(75))
 main()
-
-if __name__ == '__main__':
-    main()

@@ -13,6 +13,3 @@ def main():
                     dp[i+1][j][k+j]%=mod
     print(dp[n][m][k])
 main()
-
-if __name__ == '__main__':
-    main()

@@ -12,6 +12,3 @@ def count_comma(n):
     else:
         return 5 * (n - 999999999999999) + 4 * 999000000000000 + 3 * 999000000000 + 2 * 999000000 + 999000
 print(count_comma(int(input())))
-
-if __name__ == '__main__':
-    count_comma()

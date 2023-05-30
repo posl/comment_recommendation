@@ -10,6 +10,3 @@ def solve(N,W):
 N = int(input())
 W = list(map(int,input().split()))
 print(solve(N,W))
-
-if __name__ == '__main__':
-    solve()

@@ -17,6 +17,3 @@ def solve():
                     ans = min(ans, abs(i-j) + abs(j-k), abs(i-k) + abs(k-j))
         print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

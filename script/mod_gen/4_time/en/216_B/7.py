@@ -12,6 +12,3 @@ def solve():
 Ss = []
 Ts = []
 solve()
-
-if __name__ == '__main__':
-    solve()

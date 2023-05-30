@@ -34,6 +34,3 @@ def solve(x, a, d, n):
     return -1
 x, a, d, n = map(int, input().split())
 print(solve(x, a, d, n))
-
-if __name__ == '__main__':
-    solve()

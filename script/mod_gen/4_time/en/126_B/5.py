@@ -11,6 +11,3 @@ def check_YYMM(S):
         return 'NA'
 S = input()
 print(check_YYMM(S))
-
-if __name__ == '__main__':
-    check_YYMM()

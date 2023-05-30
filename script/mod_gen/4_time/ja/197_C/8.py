@@ -8,6 +8,3 @@ def find_min_xor(n, a):
 n = int(input())
 a = list(map(int, input().split()))
 print(find_min_xor(n, a))
-
-if __name__ == '__main__':
-    find_min_xor()

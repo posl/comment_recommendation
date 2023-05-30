@@ -8,6 +8,3 @@ def main():
         B[i] = (C[i] - sum([B[j] * A[i - j] for j in range(i)])) // A[0]
     print(*B)
 main()
-
-if __name__ == '__main__':
-    main()

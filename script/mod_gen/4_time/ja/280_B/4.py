@@ -7,6 +7,3 @@ def main():
         A[i] = S[i]-S[i-1]
     print(*A)
 main()
-
-if __name__ == '__main__':
-    main()

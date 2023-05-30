@@ -12,6 +12,3 @@ def lunlun(n):
         return result
 k = int(input())
 print(sorted(lunlun(10))[k-1])
-
-if __name__ == '__main__':
-    lunlun()

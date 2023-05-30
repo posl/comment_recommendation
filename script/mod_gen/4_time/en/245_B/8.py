@@ -7,6 +7,3 @@ def getSmallestNonNegativeIntegerNotInSequence(sequence):
     return smallestNonNegativeIntegerNotInSequence
 sequence = list(map(int, input().split()))
 print(getSmallestNonNegativeIntegerNotInSequence(sequence))
-
-if __name__ == '__main__':
-    getSmallestNonNegativeIntegerNotInSequence()

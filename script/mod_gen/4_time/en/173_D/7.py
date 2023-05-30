@@ -4,6 +4,3 @@ def main():
     A.sort()
     print(sum(A[0:N-2]))
 main()
-
-if __name__ == '__main__':
-    main()

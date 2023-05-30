@@ -10,6 +10,3 @@ def solve(n):
     return s
 n = int(input())
 print(solve(n))
-
-if __name__ == '__main__':
-    solve()

@@ -5,6 +5,3 @@ def solution():
         order = order * 26 + (ord(s[i]) - ord('A') + 1)
     print(order)
 solution()
-
-if __name__ == '__main__':
-    solution()

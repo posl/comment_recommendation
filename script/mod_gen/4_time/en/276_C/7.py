@@ -7,6 +7,3 @@ def get_lexicographically_smallest_permutation(N, P):
 N = int(input())
 P = list(map(int, input().split()))
 print(" ".join(map(str, get_lexicographically_smallest_permutation(N, P))))
-
-if __name__ == '__main__':
-    get_lexicographically_smallest_permutation()

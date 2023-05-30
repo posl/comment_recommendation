@@ -7,6 +7,3 @@ def solve():
     else:
         return max(0, X)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

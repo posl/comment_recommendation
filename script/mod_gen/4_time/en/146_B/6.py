@@ -3,6 +3,3 @@ def shift(s, shift):
 n = int(input())
 s = input()
 print(shift(s, n))
-
-if __name__ == '__main__':
-    shift()

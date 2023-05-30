@@ -9,6 +9,3 @@ def main():
             max = abs(sum)
     print(max)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -10,6 +10,3 @@ for i in range(n):
     for j in range(i+1, n):
         max_distance = max(max_distance, distance(points[i], points[j]))
 print(max_distance)
-
-if __name__ == '__main__':
-    distance()

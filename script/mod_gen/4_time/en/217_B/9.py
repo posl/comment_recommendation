@@ -14,6 +14,3 @@ def find_missing_element():
         if contest_series[i] != '':
             print(contest_series[i])
 find_missing_element()
-
-if __name__ == '__main__':
-    find_missing_element()

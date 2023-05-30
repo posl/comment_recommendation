@@ -6,6 +6,3 @@ def main():
             count += N - (10 ** i - 1) + 1
     print(count)
 main()
-
-if __name__ == '__main__':
-    main()

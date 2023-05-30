@@ -9,6 +9,3 @@ def main():
     S = S.replace('x','1')
     print(S)
 main()
-
-if __name__ == '__main__':
-    main()

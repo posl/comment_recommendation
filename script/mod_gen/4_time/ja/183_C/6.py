@@ -9,6 +9,3 @@ def dfs(city, time, visited, n):
 n, k = map(int, input().split())
 t = [list(map(int, input().split())) for _ in range(n)]
 print(dfs(0, 0, [0], n))
-
-if __name__ == '__main__':
-    dfs()

@@ -5,6 +5,3 @@ def solution(H):
         return 2*solution(H//2)+1
 H = int(input())
 print(solution(H))
-
-if __name__ == '__main__':
-    solution()
