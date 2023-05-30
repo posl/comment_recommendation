@@ -6,6 +6,3 @@ def s(n):
         return a + [n] + a
 n = int(input())
 print(*s(n))
-
-if __name__ == '__main__':
-    s()

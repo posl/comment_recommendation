@@ -17,6 +17,3 @@ def main():
         c += (a[i] + k - 1)//k
     print(c)
 main()
-
-if __name__ == '__main__':
-    main()

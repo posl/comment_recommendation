@@ -27,6 +27,3 @@ def main():
                 ans = min(ans, abs(t - x) + abs(s - t))
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

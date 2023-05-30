@@ -21,6 +21,3 @@ def main():
         return fact[n] * fact_inv[r] * fact_inv[n - r] % MOD
     print((pow(2, n, MOD) - comb(n, a) - comb(n, b) - 1) % MOD)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -11,6 +11,3 @@ def main():
     S = [''.join(s) for s in S]
     print(S[K-1])
 main()
-
-if __name__ == '__main__':
-    main()

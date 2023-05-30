@@ -9,6 +9,3 @@ def problem267_c():
         ans = max(ans,s[i]-s[i-m])
     print(ans)
 problem267_c()
-
-if __name__ == '__main__':
-    problem267_c()

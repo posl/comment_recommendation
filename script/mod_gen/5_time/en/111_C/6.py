@@ -15,6 +15,3 @@ def main():
         m2 = max(c2[0:c2.index(m2)]+[0]+c2[c2.index(m2)+1:])
     print(n - m1 - m2)
 main()
-
-if __name__ == '__main__':
-    main()

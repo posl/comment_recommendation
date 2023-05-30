@@ -17,6 +17,3 @@ for _ in range(n):
     t.append(list(map(int, input().split())))
 visited = [0]*n
 print(dfs(0, visited, n, k, t))
-
-if __name__ == '__main__':
-    dfs()

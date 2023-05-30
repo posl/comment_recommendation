@@ -11,6 +11,3 @@ def solve():
     else:
         return math.ceil(dist/R)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

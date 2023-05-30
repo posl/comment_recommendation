@@ -26,6 +26,3 @@ def main():
         ans = max(ans, cnt)
     print(N - ans)
 main()
-
-if __name__ == '__main__':
-    main()

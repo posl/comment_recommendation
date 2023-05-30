@@ -15,6 +15,3 @@ def count_comma(n):
         return 2999997 + 9000000 * (int(s[0]) - 2)
 n = int(input())
 print(count_comma(n))
-
-if __name__ == '__main__':
-    count_comma()

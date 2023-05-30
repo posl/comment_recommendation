@@ -7,6 +7,3 @@ def harvest_fruits(fruits):
 N = int(input())
 A = list(map(int, input().split()))
 print(harvest_fruits(A))
-
-if __name__ == '__main__':
-    harvest_fruits()

@@ -13,6 +13,3 @@ def main():
     for i in range(N):
         print(S_[i])
 main()
-
-if __name__ == '__main__':
-    main()

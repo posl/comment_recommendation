@@ -10,6 +10,3 @@ def min_stamina(n, x):
 n = int(input())
 x = list(map(int, input().split()))
 print(min_stamina(n, x))
-
-if __name__ == '__main__':
-    min_stamina()

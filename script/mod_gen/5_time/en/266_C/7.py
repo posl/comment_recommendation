@@ -9,6 +9,3 @@ b = list(map(int, input().split()))
 c = list(map(int, input().split()))
 d = list(map(int, input().split()))
 print('Yes' if is_convex(a, b, c, d) else 'No')
-
-if __name__ == '__main__':
-    is_convex()

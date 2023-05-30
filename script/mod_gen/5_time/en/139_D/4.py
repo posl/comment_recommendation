@@ -4,6 +4,3 @@ def calc(n):
     return a * (a + 1) + b
 n = int(input())
 print(calc(n))
-
-if __name__ == '__main__':
-    calc()

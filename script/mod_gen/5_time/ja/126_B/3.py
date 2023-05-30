@@ -9,6 +9,3 @@ def judge(s):
         return "NA"
 s = input()
 print(judge(s))
-
-if __name__ == '__main__':
-    judge()

@@ -16,6 +16,3 @@ def solve(n,m):
 mod = 10**9 + 7
 n,m = map(int,input().split())
 print(solve(n,m))
-
-if __name__ == '__main__':
-    solve()

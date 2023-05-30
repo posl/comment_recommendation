@@ -16,6 +16,3 @@ def solve():
     for i in range(10):
         print(ans[i])
 solve()
-
-if __name__ == '__main__':
-    solve()

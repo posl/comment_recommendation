@@ -15,6 +15,3 @@ for _ in range(m):
     c.append(c_)
     y.append(y_)
 print(solve(n, m, x, c, y))
-
-if __name__ == '__main__':
-    solve()

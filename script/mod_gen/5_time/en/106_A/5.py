@@ -4,6 +4,3 @@ def area():
     B = int(B)
     print(A*B-1)
 area()
-
-if __name__ == '__main__':
-    area()

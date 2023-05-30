@@ -17,6 +17,3 @@ def max_value(n, k, v):
 n, k = map(int, input().split())
 v = list(map(int, input().split()))
 print(max_value(n, k, v))
-
-if __name__ == '__main__':
-    max_value()

@@ -7,6 +7,3 @@ def count(x, y, r):
     return cnt
 x, y, r = map(float, input().split())
 print(count(x, y, r))
-
-if __name__ == '__main__':
-    count()

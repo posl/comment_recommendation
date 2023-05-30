@@ -8,6 +8,3 @@ def main():
             ans += v[i] - c[i]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

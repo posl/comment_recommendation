@@ -5,6 +5,3 @@ def get_next_prize():
     else:
         return 100 - (x % 100)
 print(get_next_prize())
-
-if __name__ == '__main__':
-    get_next_prize()

@@ -13,6 +13,3 @@ def find_min_use(N, M, A):
 N, M = map(int, input().split())
 A = list(map(int, input().split()))
 print(find_min_use(N, M, A))
-
-if __name__ == '__main__':
-    find_min_use()

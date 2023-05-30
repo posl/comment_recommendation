@@ -7,6 +7,3 @@ def main():
     elif 0 < a and 0 < b:
         print("Alloy")
 main()
-
-if __name__ == '__main__':
-    main()

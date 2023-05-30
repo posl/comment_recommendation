@@ -11,6 +11,3 @@ def solve():
         else:
             return d-x
 print(solve())
-
-if __name__ == '__main__':
-    solve()

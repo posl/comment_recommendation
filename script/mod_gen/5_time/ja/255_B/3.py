@@ -8,6 +8,3 @@ def main():
         ans=max(ans,xy[a[i]-1][0]**2+xy[a[i]-1][1]**2)
     print(ans**0.5)
 main()
-
-if __name__ == '__main__':
-    main()

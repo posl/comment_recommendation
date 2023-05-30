@@ -16,6 +16,3 @@ def solve():
         m_sum += ab_sum
     return m_sum
 print(solve())
-
-if __name__ == '__main__':
-    solve()

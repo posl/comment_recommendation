@@ -16,6 +16,3 @@ for i in range(1, 51):
     totalLayers[i] = 2 * totalLayers[i-1] + 3
 n, x = map(int, input().split())
 print(countPatty(n, x))
-
-if __name__ == '__main__':
-    countPatty()

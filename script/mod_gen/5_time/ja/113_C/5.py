@@ -15,6 +15,3 @@ def main():
     for i in range(m):
         print(ans[i])
 main()
-
-if __name__ == '__main__':
-    main()

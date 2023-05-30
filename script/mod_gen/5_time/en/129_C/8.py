@@ -17,6 +17,3 @@ a = []
 for i in range(m):
     a.append(int(input()))
 print(climbStairs(n, m, a) % (10**9+7))
-
-if __name__ == '__main__':
-    climbStairs()

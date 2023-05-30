@@ -16,6 +16,3 @@ def main():
             j += 1
     print(min)
 main()
-
-if __name__ == '__main__':
-    main()

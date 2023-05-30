@@ -8,6 +8,3 @@ def main():
     sushi.sort(key=lambda x: x[1], reverse=True)
     print(sushi)
 main()
-
-if __name__ == '__main__':
-    main()

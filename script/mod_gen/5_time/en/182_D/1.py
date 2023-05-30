@@ -8,6 +8,3 @@ def solve():
         ans = max(ans, x)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

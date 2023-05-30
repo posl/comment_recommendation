@@ -16,6 +16,3 @@ p = [1]
 for i in range(1, n + 1):
     p.append(2 * p[i - 1] + 1)
 print(f(n, x))
-
-if __name__ == '__main__':
-    f()

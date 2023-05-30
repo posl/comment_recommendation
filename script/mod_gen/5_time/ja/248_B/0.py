@@ -6,6 +6,3 @@ def func(a, b, k):
     return cnt
 a, b, k = map(int, input().strip().split())
 print(func(a, b, k))
-
-if __name__ == '__main__':
-    func()

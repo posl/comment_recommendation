@@ -5,6 +5,3 @@ def main():
     B.sort()
     print(A.index(B[-2]) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

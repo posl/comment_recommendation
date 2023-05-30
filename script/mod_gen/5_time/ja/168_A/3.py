@@ -9,6 +9,3 @@ def get_honponbon(n):
     return honponbon
 n = int(input())
 print(get_honponbon(n))
-
-if __name__ == '__main__':
-    get_honponbon()

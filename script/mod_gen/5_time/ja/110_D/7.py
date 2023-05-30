@@ -74,6 +74,3 @@ def f(n, m):
     elif n == 37:
         return 719476260
     elif n == 38:
-
-if __name__ == '__main__':
-    f()

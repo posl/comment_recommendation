@@ -23,6 +23,3 @@ MOD = 10 ** 9 + 7
 n = int(input())
 dp = [[[[-1] * 4 for _ in range(4)] for _ in range(4)] for _ in range(n + 1)]
 print(dfs(0, 0, 0, 0))
-
-if __name__ == '__main__':
-    dfs()

@@ -12,6 +12,3 @@ while r - l > 1:
     else:
         l = m
 print(f(r, a))
-
-if __name__ == '__main__':
-    f()

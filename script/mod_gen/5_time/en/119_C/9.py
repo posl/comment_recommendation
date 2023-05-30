@@ -18,6 +18,3 @@ for i in range(numBamboos):
     lengths.append(int(input()))
 targetLengths = [targetA, targetB, targetC]
 print(getMinMP(numBamboos, lengths, targetLengths))
-
-if __name__ == '__main__':
-    getMinMP()

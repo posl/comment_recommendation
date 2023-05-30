@@ -16,6 +16,3 @@ def solve():
     return ans
 MOD = 10 ** 9 + 7
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -8,6 +8,3 @@ def problem():
             N = N%A[i]
     return ans
 print(problem())
-
-if __name__ == '__main__':
-    problem()

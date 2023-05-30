@@ -5,6 +5,3 @@ def solve():
     else:
         print((A - 1) / (B - 1))
 solve()
-
-if __name__ == '__main__':
-    solve()

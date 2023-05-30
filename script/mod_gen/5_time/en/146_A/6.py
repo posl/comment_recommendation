@@ -3,6 +3,3 @@ def main():
     S = input()
     print(7 - week.index(S))
 main()
-
-if __name__ == '__main__':
-    main()

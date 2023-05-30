@@ -13,6 +13,3 @@ def solve():
         ans += (a[i] + min_k - 1) // min_k
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -5,6 +5,3 @@ def swap_char(s, a, b):
 s = input()
 a, b = map(int, input().split())
 print(swap_char(s, a, b))
-
-if __name__ == '__main__':
-    swap_char()

@@ -6,6 +6,3 @@ def countFlowers(n, a, b):
     return count
 n, a, b = map(int, input().split())
 print(countFlowers(n, a, b))
-
-if __name__ == '__main__':
-    countFlowers()

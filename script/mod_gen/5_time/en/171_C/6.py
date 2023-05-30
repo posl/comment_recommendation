@@ -9,6 +9,3 @@ def get_dog_name(n):
         return name
 n = int(input())
 print(get_dog_name(n))
-
-if __name__ == '__main__':
-    get_dog_name()

@@ -11,6 +11,3 @@ def main():
         sum += (B[i] - A[i] + 1)*(A[i] + B[i])/2
     print(int(sum))
 main()
-
-if __name__ == '__main__':
-    main()

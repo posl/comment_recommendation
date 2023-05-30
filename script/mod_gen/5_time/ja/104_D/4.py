@@ -17,6 +17,3 @@ def calcABCNum(s):
 s = input()
 s = s.replace('?', 'A')
 print(calcABCNum(s))
-
-if __name__ == '__main__':
-    calcABCNum()

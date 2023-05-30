@@ -11,6 +11,3 @@ def get_min_abs(x, k, d):
             return d - x
 x, k, d = map(int, input().split())
 print(get_min_abs(x, k, d))
-
-if __name__ == '__main__':
-    get_min_abs()

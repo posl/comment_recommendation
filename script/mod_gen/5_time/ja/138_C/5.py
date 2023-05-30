@@ -7,6 +7,3 @@ def solve():
         ans = (ans + V[i]) / 2
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

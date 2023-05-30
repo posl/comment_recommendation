@@ -8,6 +8,3 @@ end
 n,p,q,r,s = gets.chomp.split.map(&:to_i)
 array = gets.chomp.split.map(&:to_i)
 puts swap_array(p,q,r,s,array).join(" ")
-
-if __name__ == '__main__':
-    swap_array()

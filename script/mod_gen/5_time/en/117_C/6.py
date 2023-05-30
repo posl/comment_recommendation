@@ -8,6 +8,3 @@ def solve():
     d.sort()
     print(sum(d[:max(0, M-N)]))
 solve()
-
-if __name__ == '__main__':
-    solve()

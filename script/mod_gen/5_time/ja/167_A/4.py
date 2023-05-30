@@ -8,6 +8,3 @@ def is_ok(S, T):
 S = input()
 T = input()
 print("Yes" if is_ok(S, T) else "No")
-
-if __name__ == '__main__':
-    is_ok()

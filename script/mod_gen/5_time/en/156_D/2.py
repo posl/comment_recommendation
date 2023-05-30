@@ -10,6 +10,3 @@ def main():
         return
     print((n - a - 1) * (n - b - 1) % 1000000007)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -8,6 +8,3 @@ def main():
         p %= 4
     print(p)
 main()
-
-if __name__ == '__main__':
-    main()

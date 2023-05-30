@@ -20,6 +20,3 @@ def main():
             break
     print(t)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -9,6 +9,3 @@ def permutations(string, step = 0):
         string_copy[step], string_copy[i] = string_copy[i], string_copy[step]
         # recurse on the portion of the stringthat has not been swapped yet (now it's index will begin with step + 1)
         permutations(string_copy, step + 1)
-
-if __name__ == '__main__':
-    permutations()

@@ -19,6 +19,3 @@ def solve():
                 ans = max(ans, max([max(d) for d in dist]))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

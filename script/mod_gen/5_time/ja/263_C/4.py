@@ -8,6 +8,3 @@ def f(n, m, a, i):
 n, m = map(int, input().split())
 a = [0]*n
 f(n, m, a, 0)
-
-if __name__ == '__main__':
-    f()

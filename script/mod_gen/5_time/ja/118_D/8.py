@@ -11,6 +11,3 @@ def solve():
                 dp[i + a] = max(dp[i + a], dp[i] * 10 + a)
     print(dp[N])
 solve()
-
-if __name__ == '__main__':
-    solve()

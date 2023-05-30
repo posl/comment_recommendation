@@ -41,6 +41,3 @@ def main():
                 ans = max(ans, cnt-3)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

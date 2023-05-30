@@ -12,6 +12,3 @@ def solve():
             return p[n - 1] + 1 + f(n - 1, x - 2 - p[n - 1])
     return f(n, x)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

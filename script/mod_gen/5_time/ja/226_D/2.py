@@ -23,6 +23,3 @@ def solve():
             ans = min(ans, n - cnt)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

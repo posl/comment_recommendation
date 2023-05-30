@@ -23,6 +23,3 @@ def main():
             cnt = 0
     print(ans % MOD)
 main()
-
-if __name__ == '__main__':
-    main()

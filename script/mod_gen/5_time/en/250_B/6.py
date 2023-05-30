@@ -15,6 +15,3 @@ def print_pattern(a,b):
 n,a,b=map(int,input().split())
 for i in range(n):
     print_pattern(a,b)
-
-if __name__ == '__main__':
-    print_pattern()

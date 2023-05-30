@@ -7,6 +7,3 @@ def knight(x,y):
         return 2
 x,y = map(int, input().split())
 print(knight(x,y))
-
-if __name__ == '__main__':
-    knight()

@@ -5,6 +5,3 @@ def judge(X):
         return "No"
 X = int(input())
 print(judge(X))
-
-if __name__ == '__main__':
-    judge()

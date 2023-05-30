@@ -6,6 +6,3 @@ def pascal_triangle(n):
         trow=[l+r for l,r in zip(trow+y, y+trow)]
     return n>=1
 pascal_triangle(10)
-
-if __name__ == '__main__':
-    pascal_triangle()

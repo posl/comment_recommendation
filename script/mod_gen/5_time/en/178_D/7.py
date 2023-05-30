@@ -10,6 +10,3 @@ def solve():
                 dp[i][j] = dp[i-1][j]
     print(dp[s][s])
 solve()
-
-if __name__ == '__main__':
-    solve()

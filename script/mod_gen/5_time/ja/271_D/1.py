@@ -17,6 +17,3 @@ def card_sum():
             exit()
     print("No")
 card_sum()
-
-if __name__ == '__main__':
-    card_sum()

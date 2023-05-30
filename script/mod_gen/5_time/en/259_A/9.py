@@ -9,6 +9,3 @@ def problem():
         height += 0
     return height
 print(problem())
-
-if __name__ == '__main__':
-    problem()

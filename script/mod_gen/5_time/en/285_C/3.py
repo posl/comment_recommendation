@@ -5,6 +5,3 @@ def base26_to_int(s):
     return n
 s = input()
 print(base26_to_int(s))
-
-if __name__ == '__main__':
-    base26_to_int()

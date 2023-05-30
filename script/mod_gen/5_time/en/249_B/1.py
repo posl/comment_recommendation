@@ -8,6 +8,3 @@ def is_wonderful_string(s):
     return True
 s = input()
 print('Yes' if is_wonderful_string(s) else 'No')
-
-if __name__ == '__main__':
-    is_wonderful_string()

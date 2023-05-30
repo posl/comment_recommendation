@@ -7,6 +7,3 @@ def main():
                 exit()
     print("WA")
 main()
-
-if __name__ == '__main__':
-    main()

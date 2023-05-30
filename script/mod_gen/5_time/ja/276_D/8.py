@@ -11,6 +11,3 @@ def func(a):
 n = int(input())
 a = list(map(int, input().split()))
 count = func(a)
-
-if __name__ == '__main__':
-    func()

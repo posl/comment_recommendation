@@ -7,6 +7,3 @@ def diceRoll():
     else:
         print("Invalid number")
 diceRoll()
-
-if __name__ == '__main__':
-    diceRoll()

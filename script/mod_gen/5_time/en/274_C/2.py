@@ -8,6 +8,3 @@ def main():
         j = B[i]
         print(0 if j==1 else 1+B[j//2])
 main()
-
-if __name__ == '__main__':
-    main()

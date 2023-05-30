@@ -7,6 +7,3 @@ def roundoff(x, k):
     return int(x)
 x, k = map(int, input().split())
 print(roundoff(x, k))
-
-if __name__ == '__main__':
-    roundoff()

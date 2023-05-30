@@ -18,6 +18,3 @@ def main():
             DP[i][k] %= MOD
     print(DP[N][5])
 main()
-
-if __name__ == '__main__':
-    main()

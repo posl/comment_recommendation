@@ -13,6 +13,3 @@ def solve(N):
             i += 1
 N = int(input())
 print(solve(N))
-
-if __name__ == '__main__':
-    solve()

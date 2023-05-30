@@ -19,6 +19,3 @@ def main():
     print(ans)
     return
 main()
-
-if __name__ == '__main__':
-    main()

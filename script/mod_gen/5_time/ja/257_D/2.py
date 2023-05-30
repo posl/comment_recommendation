@@ -29,6 +29,3 @@ def solve():
         return r
     print(binary_search())
 solve()
-
-if __name__ == '__main__':
-    solve()

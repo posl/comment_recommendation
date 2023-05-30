@@ -8,6 +8,3 @@ def main():
     count = min(count+2*K,len(S)-1)
     print(count)
 main()
-
-if __name__ == '__main__':
-    main()

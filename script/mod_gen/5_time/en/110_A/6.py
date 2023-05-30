@@ -13,6 +13,3 @@ def allowance():
         allowance = int(a) + int(b) + int(c)
     print(allowance)
 allowance()
-
-if __name__ == '__main__':
-    allowance()

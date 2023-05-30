@@ -14,6 +14,3 @@ def oranges(a,b,w):
         print("UNSATISFIABLE")
     else:
         print(min_oranges,max_oranges)
-
-if __name__ == '__main__':
-    oranges()

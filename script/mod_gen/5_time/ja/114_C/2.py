@@ -7,6 +7,3 @@ def f(n, s):
     return ret
 N = int(input())
 print(f(0, ''))
-
-if __name__ == '__main__':
-    f()

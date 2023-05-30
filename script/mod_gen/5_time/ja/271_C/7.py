@@ -9,6 +9,3 @@ def calc():
             break
     print(ans)
 calc()
-
-if __name__ == '__main__':
-    calc()

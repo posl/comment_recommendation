@@ -3,6 +3,3 @@ def problems196_d():
     ans = 0
     return ans
 print(problems196_d())
-
-if __name__ == '__main__':
-    problems196_d()

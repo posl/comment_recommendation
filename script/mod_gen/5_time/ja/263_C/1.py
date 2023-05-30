@@ -11,6 +11,3 @@ def list_search(n, m, l):
 n, m = map(int, input().split())
 l = []
 list_search(n, m, l)
-
-if __name__ == '__main__':
-    list_search()

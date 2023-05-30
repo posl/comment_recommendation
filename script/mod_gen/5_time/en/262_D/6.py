@@ -11,6 +11,3 @@ def count_average(n, a):
 n = int(input())
 a = list(map(int, input().split()))
 print(count_average(n, a))
-
-if __name__ == '__main__':
-    count_average()

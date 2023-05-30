@@ -14,6 +14,3 @@ def solve():
                 dp[i+1][j+coins[i][0]*k] = True
     print("Yes" if dp[n][x] else "No")
 solve()
-
-if __name__ == '__main__':
-    solve()

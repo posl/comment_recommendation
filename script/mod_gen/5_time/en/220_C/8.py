@@ -10,6 +10,3 @@ def calc():
             print(i+1)
             break
 calc()
-
-if __name__ == '__main__':
-    calc()

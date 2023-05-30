@@ -8,6 +8,3 @@ def sol():
             ans+=1
     print(ans//2)
 sol()
-
-if __name__ == '__main__':
-    sol()

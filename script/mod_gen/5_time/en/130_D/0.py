@@ -14,6 +14,3 @@ def solve():
         s -= a[l]
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

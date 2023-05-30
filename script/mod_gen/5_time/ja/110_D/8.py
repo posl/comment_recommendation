@@ -21,6 +21,3 @@ for i in range(2, int(M**0.5)+1):
         ans *= pow(i, factorization(M).count([i, 1]))
         ans %= MOD
         M //= i**factorization(M).count([i, 1])
-
-if __name__ == '__main__':
-    factorization()

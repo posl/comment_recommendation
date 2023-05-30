@@ -7,6 +7,3 @@ def weather_today():
     else:
         print('Sunny')
 weather_today()
-
-if __name__ == '__main__':
-    weather_today()

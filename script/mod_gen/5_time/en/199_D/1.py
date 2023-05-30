@@ -17,6 +17,3 @@ def solve():
                     dp[v][s] += dp[u][s^(1<<v)]
     print(sum(dp[i][(1<<n)-1] for i in range(n)))
 solve()
-
-if __name__ == '__main__':
-    solve()

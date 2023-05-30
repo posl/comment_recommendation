@@ -24,6 +24,3 @@ for i in range(1, k+1):
         print(0)
     else:
         print(comb(n-k+1, i)*comb(k-1, i-1)%mod)
-
-if __name__ == '__main__':
-    comb()

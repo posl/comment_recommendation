@@ -14,6 +14,3 @@ def is_correct(n, a):
 n = int(input())
 a = [input() for _ in range(n)]
 print("correct" if is_correct(n, a) else "incorrect")
-
-if __name__ == '__main__':
-    is_correct()

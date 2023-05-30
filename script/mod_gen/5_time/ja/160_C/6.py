@@ -11,6 +11,3 @@ def main():
             B.append(A[i + 1] - A[i])
     print(K - max(B))
 main()
-
-if __name__ == '__main__':
-    main()

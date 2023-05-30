@@ -18,6 +18,3 @@ def main():
                         result = 'incorrect'
     print(result)
 main()
-
-if __name__ == '__main__':
-    main()

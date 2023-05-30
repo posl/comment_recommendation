@@ -7,6 +7,3 @@ def solve():
         dot += a[i]*b[i]
     print('Yes' if dot == 0 else 'No')
 solve()
-
-if __name__ == '__main__':
-    solve()

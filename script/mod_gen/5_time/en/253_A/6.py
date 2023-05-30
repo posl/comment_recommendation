@@ -5,6 +5,3 @@ def median(a, b, c):
         return True
     return False
 print("Yes" if median(*map(int, input().split())) else "No")
-
-if __name__ == '__main__':
-    median()

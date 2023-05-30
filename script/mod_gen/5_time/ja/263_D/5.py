@@ -11,6 +11,3 @@ def main():
     #print(dp)
     print(min(dp[N][0], dp[N][1]) + L * N)
 main()
-
-if __name__ == '__main__':
-    main()

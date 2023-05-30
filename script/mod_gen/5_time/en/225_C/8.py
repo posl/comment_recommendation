@@ -16,6 +16,3 @@ def main():
             exit()
     print("No")
 main()
-
-if __name__ == '__main__':
-    main()

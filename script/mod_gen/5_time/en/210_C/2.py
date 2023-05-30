@@ -12,6 +12,3 @@ def solve():
         ans = max(ans, len(d))
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -8,6 +8,3 @@ def main():
     a.reverse()
     print((n-1 + k - 2) // (k - 1))
 main()
-
-if __name__ == '__main__':
-    main()

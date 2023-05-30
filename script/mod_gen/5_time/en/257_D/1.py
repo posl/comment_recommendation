@@ -15,6 +15,3 @@ def solve():
             ans = min(ans, (d + pi - 1) // pi)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

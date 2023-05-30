@@ -38,6 +38,3 @@ K = int(input())
 S = input()
 T = input()
 print(solve(K, S, T))
-
-if __name__ == '__main__':
-    solve()

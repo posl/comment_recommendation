@@ -28,6 +28,3 @@ def solve():
                 max_score = cycle_score
     return max_score
 print(solve())
-
-if __name__ == '__main__':
-    solve()

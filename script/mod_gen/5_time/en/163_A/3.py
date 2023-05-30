@@ -3,6 +3,3 @@ def circumference_of_circle(r):
     return 2 * pi * r
 r = int(input())
 print(circumference_of_circle(r))
-
-if __name__ == '__main__':
-    circumference_of_circle()

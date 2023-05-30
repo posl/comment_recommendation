@@ -10,6 +10,3 @@ def game(N,K,A):
 N,K = map(int,input().split())
 A = list(map(int,input().split()))
 print(game(N,K,A))
-
-if __name__ == '__main__':
-    game()

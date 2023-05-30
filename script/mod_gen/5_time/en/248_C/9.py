@@ -9,6 +9,3 @@ def count_sequences(N, M, K):
         return count
 N, M, K = map(int, input().split())
 print(count_sequences(N, M, K) % 998244353)
-
-if __name__ == '__main__':
-    count_sequences()

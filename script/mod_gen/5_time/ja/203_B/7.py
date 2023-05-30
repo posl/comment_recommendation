@@ -6,6 +6,3 @@ def main():
             ans += i*100 + j
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

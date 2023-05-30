@@ -6,6 +6,3 @@ def solve():
         return "M"
     return "T"
 print(solve())
-
-if __name__ == '__main__':
-    solve()

@@ -7,6 +7,3 @@ def main():
         count = max(len(set(c[i:i+k])), count)
     print(count)
 main()
-
-if __name__ == '__main__':
-    main()

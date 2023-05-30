@@ -13,6 +13,3 @@ def main():
             else:
                 print(a[i][j], end=' ')
 main()
-
-if __name__ == '__main__':
-    main()

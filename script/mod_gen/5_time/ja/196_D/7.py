@@ -15,6 +15,3 @@ def dfs(i, j, a, b):
     return res
 h, w, a, b = map(int, input().split())
 print(dfs(0, 0, a, b))
-
-if __name__ == '__main__':
-    dfs()

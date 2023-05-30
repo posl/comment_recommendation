@@ -20,6 +20,3 @@ for i in range(K):
         print(cmb(N-K+1,K,mod))
     else:
         print((cmb(N-K+1,K-i,mod)*cmb(K+i-1,i,mod))%mod)
-
-if __name__ == '__main__':
-    cmb()

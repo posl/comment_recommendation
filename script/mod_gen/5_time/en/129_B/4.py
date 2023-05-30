@@ -10,6 +10,3 @@ def solve():
         ans = min(ans, abs(s1 - s2))
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

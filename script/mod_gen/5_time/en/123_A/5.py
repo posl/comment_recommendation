@@ -41,6 +41,3 @@ def main():
         print("Yay!")
         return
 main()
-
-if __name__ == '__main__':
-    main()

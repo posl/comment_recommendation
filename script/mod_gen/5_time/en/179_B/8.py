@@ -9,6 +9,3 @@ def check_doublets():
         print('No')
         
 check_doublets()
-
-if __name__ == '__main__':
-    check_doublets()

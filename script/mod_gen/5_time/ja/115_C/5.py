@@ -7,6 +7,3 @@ def main():
         ans = min(ans,h[i+k-1]-h[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

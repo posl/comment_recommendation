@@ -12,6 +12,3 @@ def solve():
         S[i] = "".join([X[ord(x)-97] for x in S[i]])
     print("\n".join(S))
 solve()
-
-if __name__ == '__main__':
-    solve()

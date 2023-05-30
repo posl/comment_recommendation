@@ -13,6 +13,3 @@ def problems243_a():
         v -= c
     return "F"
 print(problems243_a())
-
-if __name__ == '__main__':
-    problems243_a()

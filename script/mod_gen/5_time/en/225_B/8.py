@@ -13,6 +13,3 @@ def star():
     else:
         print("No")
 star()
-
-if __name__ == '__main__':
-    star()

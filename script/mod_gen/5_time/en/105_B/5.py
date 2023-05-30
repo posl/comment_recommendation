@@ -6,6 +6,3 @@ def answer():
                 return 'Yes'
     return 'No'
 print(answer())
-
-if __name__ == '__main__':
-    answer()

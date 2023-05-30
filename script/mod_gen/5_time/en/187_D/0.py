@@ -17,6 +17,3 @@ def solve():
             return i + 1
     return N
 print(solve())
-
-if __name__ == '__main__':
-    solve()

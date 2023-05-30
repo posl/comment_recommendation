@@ -10,6 +10,3 @@ def func():
     else:
         print ("Yay!")
 func()
-
-if __name__ == '__main__':
-    func()

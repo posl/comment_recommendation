@@ -23,6 +23,3 @@ def main():
             ans = max(ans, max([max(l) for l in d]))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

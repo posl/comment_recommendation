@@ -4,6 +4,3 @@ def main():
     l.sort()
     print("".join(l))
 main()
-
-if __name__ == '__main__':
-    main()

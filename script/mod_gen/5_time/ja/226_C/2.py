@@ -12,6 +12,3 @@ def main():
             dp[i] = max(dp[i],dp[A[i][j]]+T[i])
     print(max(dp))
 main()
-
-if __name__ == '__main__':
-    main()

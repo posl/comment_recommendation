@@ -11,6 +11,3 @@ def solve():
         return d[k]
     for k in range(1, N):
         print(solve_(k))
-
-if __name__ == '__main__':
-    solve()

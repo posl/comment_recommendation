@@ -6,6 +6,3 @@ def gcd(a, b):
   return gcd(b, a % b)
 A, B = map(int, input().split())
 g = gcd(A, B)
-
-if __name__ == '__main__':
-    gcd()

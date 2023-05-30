@@ -4,6 +4,3 @@ def problem():
     t = [input() for _ in range(m)]
     print(len(set(s) & set(t)))
 problem()
-
-if __name__ == '__main__':
-    problem()

@@ -12,6 +12,3 @@ def solve(n, s, a):
 n, s = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(n)]
 result, ans = solve(n, s, a)
-
-if __name__ == '__main__':
-    solve()

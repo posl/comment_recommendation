@@ -8,6 +8,3 @@ def solve():
             x = x * 2
             h = h // 2
 print(solve())
-
-if __name__ == '__main__':
-    solve()

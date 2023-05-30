@@ -5,6 +5,3 @@ def solve(a,b,n):
         return int(a*(b-1)/b)
 a,b,n = map(int,input().split())
 print(solve(a,b,n))
-
-if __name__ == '__main__':
-    solve()

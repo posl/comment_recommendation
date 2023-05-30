@@ -14,6 +14,3 @@ def main():
     else:
         print(N - c1.most_common()[0][1] - c2.most_common()[0][1])
 main()
-
-if __name__ == '__main__':
-    main()

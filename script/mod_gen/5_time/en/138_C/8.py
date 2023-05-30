@@ -6,6 +6,3 @@ def solve(N, v):
 N = int(input())
 v = list(map(int, input().split()))
 print(solve(N, v))
-
-if __name__ == '__main__':
-    solve()

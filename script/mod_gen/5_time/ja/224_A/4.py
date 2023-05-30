@@ -5,6 +5,3 @@ def main():
     else:
         print("ist")
 main()  #関数呼び出し
-
-if __name__ == '__main__':
-    main()

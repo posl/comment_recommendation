@@ -5,6 +5,3 @@ def main():
         ans += n/(n-i)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

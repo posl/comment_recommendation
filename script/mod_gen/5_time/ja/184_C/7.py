@@ -12,6 +12,3 @@ def main():
         return
     print(3)
 main()
-
-if __name__ == '__main__':
-    main()

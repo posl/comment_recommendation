@@ -14,6 +14,3 @@ def problem():
             ans += A[i][j] - min
     print(ans)
 problem()
-
-if __name__ == '__main__':
-    problem()

@@ -8,6 +8,3 @@ for i in range(n):
     for j in range(i, n):
         b.append(median(a[i:j+1]))
 print(median(b))
-
-if __name__ == '__main__':
-    median()

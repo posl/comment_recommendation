@@ -21,6 +21,3 @@ def main():
     # Print the time
     print(time)
 main()
-
-if __name__ == '__main__':
-    main()

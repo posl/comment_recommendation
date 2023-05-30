@@ -24,6 +24,3 @@ def solve(n,m,as_):
 n,m = map(int, input().split())
 as_ = list(map(int, input().split()))
 print(solve(n,m,as_))
-
-if __name__ == '__main__':
-    solve()

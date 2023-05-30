@@ -8,6 +8,3 @@ def solve(X,Y):
         return "No"
 X,Y = map(int,input().split())
 print(solve(X,Y))
-
-if __name__ == '__main__':
-    solve()

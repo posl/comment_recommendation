@@ -20,6 +20,3 @@ def solve():
             r = m
     print(l)
 solve()
-
-if __name__ == '__main__':
-    solve()

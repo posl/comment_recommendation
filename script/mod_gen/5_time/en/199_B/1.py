@@ -4,6 +4,3 @@ def main():
     B = list(map(int, input().split()))
     print(max(0, min(B) - max(A) + 1))
 main()
-
-if __name__ == '__main__':
-    main()

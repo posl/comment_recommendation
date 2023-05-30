@@ -9,6 +9,3 @@ def solve():
                     dp[i + 1][j] = max(dp[i + 1][j], dp[i][j ^ (1 << k)] + A[i][k])
     print(dp[N][2**N - 1])
 solve()
-
-if __name__ == '__main__':
-    solve()

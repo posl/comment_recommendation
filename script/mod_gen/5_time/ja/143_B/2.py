@@ -7,6 +7,3 @@ def sum_of_combination(num):
 n = int(input())
 d = list(map(int,input().split()))
 print(sum_of_combination(n))
-
-if __name__ == '__main__':
-    sum_of_combination()

@@ -8,6 +8,3 @@ N = int(input())
 V = list(map(int, input().split()))
 C = list(map(int, input().split()))
 print(max_profit(N, V, C))
-
-if __name__ == '__main__':
-    max_profit()

@@ -7,6 +7,3 @@ def inner_product():
     else:
         print("No")
 inner_product()
-
-if __name__ == '__main__':
-    inner_product()

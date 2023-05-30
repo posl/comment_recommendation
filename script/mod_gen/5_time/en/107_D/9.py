@@ -7,6 +7,3 @@ b = []
 for i in range(n):
     b.append(median(a[i:]))
 print(median(b))
-
-if __name__ == '__main__':
-    median()

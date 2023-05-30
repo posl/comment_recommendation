@@ -6,6 +6,3 @@ def check_sum(a,b):
     return 'No'
 a,b = map(int,input().split())
 print(check_sum(a,b))
-
-if __name__ == '__main__':
-    check_sum()

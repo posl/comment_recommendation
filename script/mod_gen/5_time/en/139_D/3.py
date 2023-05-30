@@ -5,6 +5,3 @@ def solve():
     else:
         print(sum(range(1, n)))
 solve()
-
-if __name__ == '__main__':
-    solve()

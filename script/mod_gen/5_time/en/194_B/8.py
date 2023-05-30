@@ -8,6 +8,3 @@ def min_time():
         b.append(y)
     return min(max(min(a), max(b)), max(min(b), max(a)))
 print(min_time())
-
-if __name__ == '__main__':
-    min_time()

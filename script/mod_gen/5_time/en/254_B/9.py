@@ -7,6 +7,3 @@ def f(n):
 n = int(input())
 for i in range(n):
     print(*f(i))
-
-if __name__ == '__main__':
-    f()

@@ -13,6 +13,3 @@ def f(A, B):
     return f(0, A - 1) ^ f(0, B)
 A, B = map(int, input().split())
 print(f(A, B))
-
-if __name__ == '__main__':
-    f()

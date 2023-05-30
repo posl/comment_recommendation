@@ -13,6 +13,3 @@ def solve(n,m,al):
 n,m = map(int,input().split())
 al = list(map(int,input().split()))
 print(solve(n,m,al))
-
-if __name__ == '__main__':
-    solve()

@@ -6,6 +6,3 @@ def make_s(n):
         return s + [n] + s
 N = int(input())
 print(*make_s(N))
-
-if __name__ == '__main__':
-    make_s()

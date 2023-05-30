@@ -11,6 +11,3 @@ s, k = input().strip().split()
 k = int(k)
 s = ''.join(sorted(s))
 print(permute(s, k))
-
-if __name__ == '__main__':
-    permute()

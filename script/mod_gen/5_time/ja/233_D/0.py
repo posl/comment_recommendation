@@ -16,6 +16,3 @@ def main():
             now -= a[left]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

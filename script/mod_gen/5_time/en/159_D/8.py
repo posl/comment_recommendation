@@ -16,6 +16,3 @@ def solve():
     for i in range(N):
         print(ans - (A.index(A[i]) - i) + (N - A.index(A[i]) - 1))
 solve()
-
-if __name__ == '__main__':
-    solve()

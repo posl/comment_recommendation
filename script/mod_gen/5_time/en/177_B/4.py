@@ -11,6 +11,3 @@ def solve():
             min = c
     print(min)
 solve()
-
-if __name__ == '__main__':
-    solve()

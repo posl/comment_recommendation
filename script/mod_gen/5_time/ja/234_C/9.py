@@ -8,6 +8,3 @@ def calc(n):
     return calc(n-1)*10 + 2
 K = int(input())
 print(calc(K))
-
-if __name__ == '__main__':
-    calc()

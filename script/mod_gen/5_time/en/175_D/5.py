@@ -29,6 +29,3 @@ def solve():
         cycle_max = max(cycle_max, cycle_max + max(0, cycle_sum) * ((K - cycle_length) % cycle_length))
         return cycle_max
 print(solve())
-
-if __name__ == '__main__':
-    solve()

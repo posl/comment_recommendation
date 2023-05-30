@@ -4,6 +4,3 @@ def main():
         print(1)
     else:
         print(n*main())
-
-if __name__ == '__main__':
-    main()

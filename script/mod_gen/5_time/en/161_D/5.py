@@ -7,6 +7,3 @@ def lunlun(k):
     print(lunlun_list[k-1])
 k = int(input())
 lunlun(k)
-
-if __name__ == '__main__':
-    lunlun()

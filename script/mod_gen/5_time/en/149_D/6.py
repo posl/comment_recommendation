@@ -21,6 +21,3 @@ def rps():
                 score += s
     return score
 print(rps())
-
-if __name__ == '__main__':
-    rps()

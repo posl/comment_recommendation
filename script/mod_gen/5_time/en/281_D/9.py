@@ -22,6 +22,3 @@ def solve():
             break
     print(ans * D)
 solve()
-
-if __name__ == '__main__':
-    solve()

@@ -12,6 +12,3 @@ def main():
             balls.remove(min(balls))
     return
 main()
-
-if __name__ == '__main__':
-    main()

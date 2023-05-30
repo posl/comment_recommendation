@@ -24,6 +24,3 @@ def main():
         ans %= 10**9 + 7
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

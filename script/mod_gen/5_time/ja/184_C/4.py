@@ -14,6 +14,3 @@ def solve(r1, c1, r2, c2):
 r1, c1 = map(int, input().split())
 r2, c2 = map(int, input().split())
 print(solve(r1, c1, r2, c2))
-
-if __name__ == '__main__':
-    solve()

@@ -9,6 +9,3 @@ def solve(h, w, k):
     return dp[h][k] % 1000000007
 h, w, k = map(int, input().split())
 print(solve(h, w, k))
-
-if __name__ == '__main__':
-    solve()

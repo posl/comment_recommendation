@@ -15,6 +15,3 @@ b = [0] * n
 for i in range(n):
     a[i], b[i] = map(int, input().split())
 print(calc(n, a, b))
-
-if __name__ == '__main__':
-    calc()

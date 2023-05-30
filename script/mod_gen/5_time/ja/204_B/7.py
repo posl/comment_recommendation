@@ -7,6 +7,3 @@ def harvest(n, a_list):
 n = int(input())
 a_list = list(map(int, input().split()))
 print(harvest(n, a_list))
-
-if __name__ == '__main__':
-    harvest()

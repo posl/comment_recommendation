@@ -4,6 +4,3 @@ def main():
     A = [i for i in A if i != X]
     print(*A)
 main()
-
-if __name__ == '__main__':
-    main()

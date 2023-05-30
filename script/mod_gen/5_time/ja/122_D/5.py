@@ -14,6 +14,3 @@ def count_case(N):
     return dp[N]
 N = int(input())
 print(count_case(N))
-
-if __name__ == '__main__':
-    count_case()

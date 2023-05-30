@@ -7,6 +7,3 @@ def solve():
     s.sort(key=lambda s: ''.join(map(lambda c: chr(x.index(c) + 97), s)))
     print('\n'.join(s))
 solve()
-
-if __name__ == '__main__':
-    solve()

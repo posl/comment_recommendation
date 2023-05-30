@@ -15,6 +15,3 @@ def main():
             total += math.sqrt((x[l[i][j]]-x[l[i][j+1]])**2 + (y[l[i][j]]-y[l[i][j+1]])**2)
     print(total/len(l))
 main()
-
-if __name__ == '__main__':
-    main()

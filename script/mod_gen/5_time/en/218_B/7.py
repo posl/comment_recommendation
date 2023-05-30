@@ -5,6 +5,3 @@ def get_alphabet():
         alphabet[int(p[i])-1] = chr(i+ord('a'))
     print(''.join(alphabet))
 get_alphabet()
-
-if __name__ == '__main__':
-    get_alphabet()

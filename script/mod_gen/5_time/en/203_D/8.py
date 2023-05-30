@@ -17,6 +17,3 @@ for i in range(N-K+1):
         B.append(l)
 B.sort(key=lambda x: median(x))
 print(median(B[0]))
-
-if __name__ == '__main__':
-    median()

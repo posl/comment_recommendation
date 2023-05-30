@@ -19,6 +19,3 @@ def main():
             ans = score
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

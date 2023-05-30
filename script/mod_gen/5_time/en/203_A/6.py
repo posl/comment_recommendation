@@ -9,6 +9,3 @@ def func(a,b,c):
         return 0
 a,b,c = map(int,input().split())
 print(func(a,b,c))
-
-if __name__ == '__main__':
-    func()

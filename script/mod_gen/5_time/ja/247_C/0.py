@@ -5,6 +5,3 @@ def makeS(n):
         return makeS(n-1) + [n] + makeS(n-1)
 N = int(input())
 print(*makeS(N))
-
-if __name__ == '__main__':
-    makeS()

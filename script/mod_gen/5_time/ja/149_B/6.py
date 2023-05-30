@@ -14,6 +14,3 @@ def main():
         k=0
     print(a,b)
 main()
-
-if __name__ == '__main__':
-    main()

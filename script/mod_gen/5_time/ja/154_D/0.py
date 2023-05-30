@@ -9,6 +9,3 @@ def main():
             max_total = total
     print((max_total + K)/2)
 main()
-
-if __name__ == '__main__':
-    main()

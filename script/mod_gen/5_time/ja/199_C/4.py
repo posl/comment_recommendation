@@ -23,6 +23,3 @@ def main():
         #print(S1, S2)
     print(S1+S2)
 main()
-
-if __name__ == '__main__':
-    main()

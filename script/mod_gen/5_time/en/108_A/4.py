@@ -9,6 +9,3 @@ def count_pairs(number):
             count += 1
     return count
 print(count_pairs(int(input())))
-
-if __name__ == '__main__':
-    count_pairs()

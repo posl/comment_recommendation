@@ -14,6 +14,3 @@ def solve():
         ans += R[i] - L[i] + 1
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

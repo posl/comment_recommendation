@@ -15,6 +15,3 @@ def solve():
         return min(ret0, ret1, ret2, ret3)
     print(dfs(0, 0, 0, 0))
 solve()
-
-if __name__ == '__main__':
-    solve()

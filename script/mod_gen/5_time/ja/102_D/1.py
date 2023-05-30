@@ -9,6 +9,3 @@ def main():
         ans = min(ans, abs(s - 2 * t))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

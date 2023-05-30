@@ -18,6 +18,3 @@ def permute(s, k):
 s, k = input().split()
 k = int(k)
 print(permute(s, k))
-
-if __name__ == '__main__':
-    permute()

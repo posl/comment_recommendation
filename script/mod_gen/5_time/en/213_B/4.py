@@ -6,6 +6,3 @@ def booby_prize():
         if A[i] == B[1]:
             return i + 1
 print(booby_prize())
-
-if __name__ == '__main__':
-    booby_prize()

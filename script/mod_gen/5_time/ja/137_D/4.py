@@ -13,6 +13,3 @@ def solve():
     print(ans)
 h = []
 solve()
-
-if __name__ == '__main__':
-    solve()

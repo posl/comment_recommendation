@@ -24,6 +24,3 @@ def main():
     # Print result here
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

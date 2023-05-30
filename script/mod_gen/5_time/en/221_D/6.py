@@ -16,6 +16,3 @@ def main():
         day_count[i+1] += day_count[i]
     print(*day_count[:-1])
 main()
-
-if __name__ == '__main__':
-    main()

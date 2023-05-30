@@ -10,6 +10,3 @@ def solution():
     for i in range(1, M + 1):
         dfs([i])
 solution()
-
-if __name__ == '__main__':
-    solution()

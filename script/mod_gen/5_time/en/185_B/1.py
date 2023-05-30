@@ -17,6 +17,3 @@ def solve():
     battery -= T - last
     return battery > 0
 print('Yes' if solve() else 'No')
-
-if __name__ == '__main__':
-    solve()

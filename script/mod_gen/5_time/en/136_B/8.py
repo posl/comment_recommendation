@@ -6,6 +6,3 @@ def find_odd_digits(N):
     return odd_digits
 N = int(input())
 print(find_odd_digits(N))
-
-if __name__ == '__main__':
-    find_odd_digits()

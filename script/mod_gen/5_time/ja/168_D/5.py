@@ -14,6 +14,3 @@ for i in range(M):
     graph[b].append(a)
 seen = [False] * N
 dfs(0)
-
-if __name__ == '__main__':
-    dfs()

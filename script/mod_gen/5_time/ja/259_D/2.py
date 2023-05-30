@@ -14,6 +14,3 @@ def main():
         return False
     print("Yes" if is_reachable(xyr) else "No")
 main()
-
-if __name__ == '__main__':
-    main()

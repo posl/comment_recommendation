@@ -7,6 +7,3 @@ def count_substring(string, sub_string):
 N = int(input())
 S = input()
 print(count_substring(S, 'ABC'))
-
-if __name__ == '__main__':
-    count_substring()

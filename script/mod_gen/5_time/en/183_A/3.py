@@ -5,6 +5,3 @@ def relu(x):
         return 0
 x = int(input())
 print(relu(x))
-
-if __name__ == '__main__':
-    relu()

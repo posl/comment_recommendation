@@ -8,6 +8,3 @@ def shiritori(words):
 n = int(input())
 words = [input() for i in range(n)]
 print(shiritori(words))
-
-if __name__ == '__main__':
-    shiritori()

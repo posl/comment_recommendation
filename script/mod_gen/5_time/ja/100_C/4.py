@@ -6,6 +6,3 @@ def count_2(n):
 n = int(input())
 a = list(map(int, input().split()))
 print(sum([count_2(i) for i in a]))
-
-if __name__ == '__main__':
-    count_2()

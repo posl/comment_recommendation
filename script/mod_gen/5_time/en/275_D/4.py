@@ -3,6 +3,3 @@ def f(x):
         return 1
     return f(x//2) + f(x//3)
 print(f(int(input())))
-
-if __name__ == '__main__':
-    f()

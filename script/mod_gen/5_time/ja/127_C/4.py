@@ -13,6 +13,3 @@ def main():
                 id_list[i] = True
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

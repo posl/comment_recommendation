@@ -8,6 +8,3 @@ def main():
     A.append(B[N-2])
     print(sum(A))
 main()
-
-if __name__ == '__main__':
-    main()

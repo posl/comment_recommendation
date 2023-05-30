@@ -10,6 +10,3 @@ for i in range(n):
     for j in range(i+1,n):
         distances.append(distance(points[i][0],points[i][1],points[j][0],points[j][1]))
 print(max(distances))
-
-if __name__ == '__main__':
-    distance()

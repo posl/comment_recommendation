@@ -8,6 +8,3 @@ def icecream():
         return 3
     return 4
 print(icecream())
-
-if __name__ == '__main__':
-    icecream()

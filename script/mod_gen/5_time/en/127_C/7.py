@@ -8,6 +8,3 @@ def solve():
         r = min(r,y)
     print(max(r-l+1, 0))
 solve()
-
-if __name__ == '__main__':
-    solve()

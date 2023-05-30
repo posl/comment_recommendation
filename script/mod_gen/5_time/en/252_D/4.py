@@ -11,6 +11,3 @@ def main():
         ans += cnt[i] * (cnt[i] - 1) // 2 * (N - cnt[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

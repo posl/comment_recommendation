@@ -10,6 +10,3 @@ def main():
     for i in range(1, 2 ** (n + 1)):
         print(b[i])
 main()
-
-if __name__ == '__main__':
-    main()

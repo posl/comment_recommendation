@@ -21,6 +21,3 @@ def solve():
         else:
             return 1 + (A - X) // (-D)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

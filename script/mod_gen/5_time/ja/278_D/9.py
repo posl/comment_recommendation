@@ -16,6 +16,3 @@ def main():
             print(A[q[1]-1])
         #print(A)
 main()
-
-if __name__ == '__main__':
-    main()

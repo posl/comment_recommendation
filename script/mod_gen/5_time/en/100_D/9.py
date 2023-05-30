@@ -9,6 +9,3 @@ def max_value():
         ans = max(ans, sum(sum(i) for i in zip(*cakes[:m])))
     print(ans)
 max_value()
-
-if __name__ == '__main__':
-    max_value()

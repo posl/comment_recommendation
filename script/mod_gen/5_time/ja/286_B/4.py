@@ -3,6 +3,3 @@ def main():
     S = input()
     print(S.replace('na', 'nya'))
 main()
-
-if __name__ == '__main__':
-    main()

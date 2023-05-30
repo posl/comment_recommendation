@@ -9,6 +9,3 @@ def solution():
                 max = a[i] + a[j]
     print(max)
 solution()
-
-if __name__ == '__main__':
-    solution()

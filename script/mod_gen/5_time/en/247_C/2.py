@@ -5,6 +5,3 @@ def s(n):
         return s(n-1) + [n] + s(n-1)
 n = int(input())
 print(' '.join(map(str, s(n))))
-
-if __name__ == '__main__':
-    s()

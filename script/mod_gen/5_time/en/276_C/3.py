@@ -7,6 +7,3 @@ def solve():
         q[p[i]]=i
     print(*q[1:])
 solve()
-
-if __name__ == '__main__':
-    solve()

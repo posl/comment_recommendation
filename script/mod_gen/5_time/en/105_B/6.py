@@ -5,6 +5,3 @@ def solve(N):
     return "No"
 N = int(input())
 print(solve(N))
-
-if __name__ == '__main__':
-    solve()

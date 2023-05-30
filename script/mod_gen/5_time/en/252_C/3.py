@@ -9,6 +9,3 @@ def solve():
         ans = max(ans, t)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

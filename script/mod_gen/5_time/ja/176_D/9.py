@@ -32,6 +32,3 @@ c_h, c_w = map(int, input().split())
 d_h, d_w = map(int, input().split())
 s = [input() for _ in range(h)]
 print(solve(h, w, c_h, c_w, d_h, d_w, s))
-
-if __name__ == '__main__':
-    solve()

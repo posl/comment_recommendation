@@ -10,6 +10,3 @@ def dfs(v, p):
             continue
         cnt += 1
         dfs(next_v, v)
-
-if __name__ == '__main__':
-    dfs()

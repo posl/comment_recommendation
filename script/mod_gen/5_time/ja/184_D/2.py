@@ -13,6 +13,3 @@ def solve():
                 )
     return dp[A][B][C]
 print(solve())
-
-if __name__ == '__main__':
-    solve()

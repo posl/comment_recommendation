@@ -16,6 +16,3 @@ def solve(N, K, V):
 N, K = map(int, input().split())
 V = list(map(int, input().split()))
 print(solve(N, K, V))
-
-if __name__ == '__main__':
-    solve()

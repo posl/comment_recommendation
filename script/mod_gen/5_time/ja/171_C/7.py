@@ -5,6 +5,3 @@ def num2alpha(num):
         return num2alpha((num - 1) // 26) + num2alpha(num % 26)
 N = int(input())
 print(num2alpha(N))
-
-if __name__ == '__main__':
-    num2alpha()

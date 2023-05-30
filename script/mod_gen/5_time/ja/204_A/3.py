@@ -9,6 +9,3 @@ def f(x,y):
         return 2
 x,y=map(int,input().split())
 print(f(x,y))
-
-if __name__ == '__main__':
-    f()

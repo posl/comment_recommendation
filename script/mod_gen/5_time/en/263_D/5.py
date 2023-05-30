@@ -11,6 +11,3 @@ def main():
         dp[i][1] = min(dp[i-1][0]+max(-a[i]+1, 0)+r, dp[i-1][1]+max(abs(a[i-1]-a[i])+max(-a[i]+1, 0)+r, abs(a[i-1]-a[i])+max(a[i]-1, 0)+l))
     print(dp[n+1][0])
 main()
-
-if __name__ == '__main__':
-    main()

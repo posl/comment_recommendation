@@ -13,6 +13,3 @@ def solution():
             print(x + i)
             return
 solution()
-
-if __name__ == '__main__':
-    solution()

@@ -9,6 +9,3 @@ def get_permutation(string, k):
 s, k = input().split()
 k = int(k)
 print(get_permutation(sorted(s), k - 1))
-
-if __name__ == '__main__':
-    get_permutation()

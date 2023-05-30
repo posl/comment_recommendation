@@ -11,6 +11,3 @@ def solve(N, M, K):
     return sum(dp[N][j][K] for j in range(M+1)) % 998244353
 N, M, K = map(int, input().split())
 print(solve(N, M, K))
-
-if __name__ == '__main__':
-    solve()

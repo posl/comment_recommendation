@@ -20,6 +20,3 @@ a = list(map(int,input().split()))
 for _ in range(q):
     x, k = map(int,input().split())
     print(binary_search(a, x, k) + 1)
-
-if __name__ == '__main__':
-    binary_search()

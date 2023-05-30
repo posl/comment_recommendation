@@ -7,6 +7,3 @@ def sum_takoyaki(N, d):
 N = int(input())
 d = list(map(int, input().split()))
 print(sum_takoyaki(N, d))
-
-if __name__ == '__main__':
-    sum_takoyaki()

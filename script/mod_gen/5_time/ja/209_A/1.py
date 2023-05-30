@@ -5,6 +5,3 @@ def count(a,b):
     return n
 a,b = map(int,input().split())
 print(count(a,b))
-
-if __name__ == '__main__':
-    count()

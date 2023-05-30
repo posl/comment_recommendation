@@ -5,6 +5,3 @@ def judge(s):
         print("TBD")
 s = input()
 judge(s)
-
-if __name__ == '__main__':
-    judge()

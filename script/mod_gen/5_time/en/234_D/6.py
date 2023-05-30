@@ -11,6 +11,3 @@ def problems234_d():
     for i in range(len(ans)):
         print(ans[i] + 1)
 problems234_d()
-
-if __name__ == '__main__':
-    problems234_d()

@@ -6,6 +6,3 @@ def count_shouts(a, b, k):
     return count
 a, b, k = map(int, input().split())
 print(count_shouts(a, b, k))
-
-if __name__ == '__main__':
-    count_shouts()

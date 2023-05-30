@@ -4,6 +4,3 @@ def main():
     # Compute desired result here
     print(n%k)
 main()
-
-if __name__ == '__main__':
-    main()

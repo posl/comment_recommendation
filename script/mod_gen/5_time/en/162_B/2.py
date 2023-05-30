@@ -7,6 +7,3 @@ def main():
         sum += i
     print(sum)
 main()
-
-if __name__ == '__main__':
-    main()

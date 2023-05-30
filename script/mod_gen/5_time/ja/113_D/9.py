@@ -21,6 +21,3 @@ def main():
                         dp[j][i+1][l] %= 1000000007
     print(dp[k-1][h][0])
 main()
-
-if __name__ == '__main__':
-    main()

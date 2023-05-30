@@ -9,6 +9,3 @@ def weather(s):
         return "Error"
 s = input()
 print(weather(s))
-
-if __name__ == '__main__':
-    weather()

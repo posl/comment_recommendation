@@ -11,6 +11,3 @@ def main():
         mod = (mod * 10 + 7) % k
     print(-1)
 main()
-
-if __name__ == '__main__':
-    main()

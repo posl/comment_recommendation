@@ -7,6 +7,3 @@ def problems214_a(n):
         return 8
 n = int(input())
 print(problems214_a(n))
-
-if __name__ == '__main__':
-    problems214_a()

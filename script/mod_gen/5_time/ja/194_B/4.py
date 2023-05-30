@@ -11,6 +11,3 @@ def main():
         ans = max(ans, A[i] + B[i])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

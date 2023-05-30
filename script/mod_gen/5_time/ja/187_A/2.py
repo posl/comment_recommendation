@@ -6,6 +6,3 @@ def getSumOfDigits(num):
     return sum
 a, b = map(int, input().split())
 print(getSumOfDigits(a) if getSumOfDigits(a) > getSumOfDigits(b) else getSumOfDigits(b))
-
-if __name__ == '__main__':
-    getSumOfDigits()

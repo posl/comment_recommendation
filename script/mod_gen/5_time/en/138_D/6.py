@@ -4,6 +4,3 @@ def dfs(node, parent, counters, edges):
         if child == parent:
             continue
         dfs(child, node, counters, edges)
-
-if __name__ == '__main__':
-    dfs()

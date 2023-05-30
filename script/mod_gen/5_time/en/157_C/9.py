@@ -21,6 +21,3 @@ def main():
             ans[i] = 0
     print(*ans,sep="")
 main()
-
-if __name__ == '__main__':
-    main()

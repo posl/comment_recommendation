@@ -6,6 +6,3 @@ def solve():
             return True
     return False
 print('Yes' if solve() else 'No')
-
-if __name__ == '__main__':
-    solve()

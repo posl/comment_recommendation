@@ -7,6 +7,3 @@ def main():
     else:
         print("Good")
 main()
-
-if __name__ == '__main__':
-    main()

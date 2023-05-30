@@ -24,6 +24,3 @@ def count_progressions(n):
     return count_progressions(n-1) + count_progressions(n-2) + count_progressions(n-3) + count_progressions(n-4) - count_progressions(n-5) - count_progressions(n-6) - count_progressions(n-7) - count_progressions(n-8) + count_progressions(n-9) + count_progressions(n-10) + count_progressions(n-11) - count_progressions(n-12)
 n = int(input())
 print(count_progressions(n))
-
-if __name__ == '__main__':
-    count_progressions()

@@ -13,6 +13,3 @@ def main():
         sum -= A[l]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

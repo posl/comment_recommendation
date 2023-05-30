@@ -10,6 +10,3 @@ def solve():
             return
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

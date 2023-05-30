@@ -9,6 +9,3 @@ def main():
         M = M - 30
     print("{0:02d} {1:02d}".format(H, M))
 main()
-
-if __name__ == '__main__':
-    main()

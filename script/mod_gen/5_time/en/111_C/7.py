@@ -15,6 +15,3 @@ def main():
         else:
             print(n - v_even.count(v_even_max) - v_odd.count(v_odd_max) + 1)
 main()
-
-if __name__ == '__main__':
-    main()

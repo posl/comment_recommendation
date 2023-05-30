@@ -19,6 +19,3 @@ def dfs(i, j, a, b):
 h, w, a, b = map(int, input().split())
 t = [[0] * w for i in range(h)]
 print(dfs(0, 0, a, b))
-
-if __name__ == '__main__':
-    dfs()

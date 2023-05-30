@@ -16,6 +16,3 @@ def problems273_c():
         else:
             print(count)
 problems273_c()
-
-if __name__ == '__main__':
-    problems273_c()

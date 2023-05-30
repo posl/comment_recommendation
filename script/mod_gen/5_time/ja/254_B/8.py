@@ -10,6 +10,3 @@ n = int(input())
 pascal_triangle = pascal_triangle(n)
 for i in range(n):
     print(*pascal_triangle[i])
-
-if __name__ == '__main__':
-    pascal_triangle()

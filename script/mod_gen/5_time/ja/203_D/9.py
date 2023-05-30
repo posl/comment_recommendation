@@ -17,6 +17,3 @@ for i in range(n-k+1):
                 mas.append(a[i+p][j+q])
         min_median = min(min_median, median(mas))
 print(int(min_median))
-
-if __name__ == '__main__':
-    median()

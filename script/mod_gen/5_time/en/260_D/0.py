@@ -14,6 +14,3 @@ def solve():
             ans[j] = i + 1
     print('\n'.join(map(str, ans)))
 solve()
-
-if __name__ == '__main__':
-    solve()

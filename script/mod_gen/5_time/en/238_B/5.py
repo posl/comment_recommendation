@@ -9,6 +9,3 @@ def main():
     # Print output here
     print(360 - ans)
 main()
-
-if __name__ == '__main__':
-    main()

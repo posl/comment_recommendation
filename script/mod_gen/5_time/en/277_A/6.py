@@ -5,6 +5,3 @@ def solution():
         if P[i] == X:
             print(i+1)
 solution()
-
-if __name__ == '__main__':
-    solution()

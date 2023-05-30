@@ -6,6 +6,3 @@ def seq(n):
         return s + [n] + s
 n = int(input())
 print(*seq(n))
-
-if __name__ == '__main__':
-    seq()

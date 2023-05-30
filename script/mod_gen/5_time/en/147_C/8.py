@@ -25,6 +25,3 @@ for i in range(N):
         X[i].append(x)
         Y[i].append(y)
 print(get_honest_count(N, A, X, Y))
-
-if __name__ == '__main__':
-    get_honest_count()

@@ -8,6 +8,3 @@ def check():
     else:
         print("No")
 check()
-
-if __name__ == '__main__':
-    check()

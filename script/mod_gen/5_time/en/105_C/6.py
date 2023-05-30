@@ -12,6 +12,3 @@ def base_minus2(n):
     return s[::-1]
 n = int(input())
 print(base_minus2(n))
-
-if __name__ == '__main__':
-    base_minus2()

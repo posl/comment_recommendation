@@ -22,6 +22,3 @@ def main():
             else:
                 print(sorted(tmp)[k-1])
 main()
-
-if __name__ == '__main__':
-    main()

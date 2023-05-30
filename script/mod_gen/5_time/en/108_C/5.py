@@ -5,6 +5,3 @@ def f(n,k):
         return (n//k)**3
 n,k=map(int,input().split())
 print(f(n,k))
-
-if __name__ == '__main__':
-    f()

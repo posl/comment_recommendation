@@ -11,6 +11,3 @@ def main():
         dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
     print(dp[N])
 main()
-
-if __name__ == '__main__':
-    main()

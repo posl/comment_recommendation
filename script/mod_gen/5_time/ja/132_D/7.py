@@ -16,6 +16,3 @@ for i in range(1, K + 1):
         print(0)
     else:
         print(comb(N - K + 1, i) * comb(K - 1, i - 1) % (10 ** 9 + 7))
-
-if __name__ == '__main__':
-    comb()

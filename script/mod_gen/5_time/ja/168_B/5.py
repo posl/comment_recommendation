@@ -6,6 +6,3 @@ def main():
     else:
         print(s[:k] + "...")
 main()
-
-if __name__ == '__main__':
-    main()

@@ -26,6 +26,3 @@ def main():
         ans += 1
     print(ans * (n - ans) - m)
 main()
-
-if __name__ == '__main__':
-    main()

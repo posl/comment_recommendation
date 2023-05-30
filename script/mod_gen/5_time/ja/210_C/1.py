@@ -20,6 +20,3 @@ def main():
         ans = max(ans,len(d))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

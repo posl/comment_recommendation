@@ -22,6 +22,3 @@ def main():
         return ans
     print(solve())
 main()
-
-if __name__ == '__main__':
-    main()

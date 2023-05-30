@@ -21,6 +21,3 @@ def calc(x,y):
         return calc(x//2,y-1) + calc(x//2+1,y-1)
 x,y = map(int,input().split())
 print(calc(x,y) % (10**9+7))
-
-if __name__ == '__main__':
-    calc()

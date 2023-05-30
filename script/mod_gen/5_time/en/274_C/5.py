@@ -15,6 +15,3 @@ def main():
             c += 1
         print(c-1)
 main()
-
-if __name__ == '__main__':
-    main()

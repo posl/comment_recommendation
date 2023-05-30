@@ -15,6 +15,3 @@ for i in range(q):
     p, x = map(int, input().split())
     c[p - 1] += x
 dfs(0, -1, c[0])
-
-if __name__ == '__main__':
-    dfs()

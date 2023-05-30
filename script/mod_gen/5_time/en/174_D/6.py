@@ -24,6 +24,3 @@ def solve(N, C):
 N = int(input())
 C = input()
 print(solve(N, C))
-
-if __name__ == '__main__':
-    solve()

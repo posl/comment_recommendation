@@ -16,6 +16,3 @@ def main():
                 ans = ans * (m + i) * pow(i, mod - 2, mod) % mod
             print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

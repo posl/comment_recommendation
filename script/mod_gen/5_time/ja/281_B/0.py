@@ -6,6 +6,3 @@ def check(s):
     return False
 s = input()
 print("Yes" if check(s) else "No")
-
-if __name__ == '__main__':
-    check()

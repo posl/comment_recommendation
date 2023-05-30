@@ -15,6 +15,3 @@ def prime_factorize(n):
     return res
 n = int(input())
 pf = prime_factorize(n)
-
-if __name__ == '__main__':
-    prime_factorize()

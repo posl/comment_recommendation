@@ -16,6 +16,3 @@ def main():
             ans += (b + min_B - 1) // min_B
         print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

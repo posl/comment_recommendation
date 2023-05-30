@@ -6,6 +6,3 @@ def problems167_a():
     else:
         print('No')
 problems167_a()
-
-if __name__ == '__main__':
-    problems167_a()

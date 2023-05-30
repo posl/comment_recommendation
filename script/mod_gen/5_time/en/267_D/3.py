@@ -9,6 +9,3 @@ def solve():
             dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + A[i - 1] * j)
     return dp[N][M]
 print(solve())
-
-if __name__ == '__main__':
-    solve()

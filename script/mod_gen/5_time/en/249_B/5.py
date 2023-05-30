@@ -11,6 +11,3 @@ def is_wonderful_string(s):
         return "No"
     return "Yes"
 print(is_wonderful_string(input()))
-
-if __name__ == '__main__':
-    is_wonderful_string()

@@ -13,6 +13,3 @@ def pascal(n):
 N = int(input())
 for i in range(N):
     print(*pascal(N)[i])
-
-if __name__ == '__main__':
-    pascal()

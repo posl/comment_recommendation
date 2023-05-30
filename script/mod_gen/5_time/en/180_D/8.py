@@ -10,6 +10,3 @@ def training(X, Y, A, B):
     return exp - 1
 X, Y, A, B = map(int, input().split())
 print(training(X, Y, A, B))
-
-if __name__ == '__main__':
-    training()

@@ -10,6 +10,3 @@ N, M = map(int, input().split())
 X = list(map(int, input().split()))
 CY = [list(map(int, input().split())) for i in range(M)]
 print(solve(N, M, X, CY))
-
-if __name__ == '__main__':
-    solve()

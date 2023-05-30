@@ -9,6 +9,3 @@ def check_permutation(n, a):
 n = int(input())
 a = list(map(int, input().split()))
 print(check_permutation(n, a))
-
-if __name__ == '__main__':
-    check_permutation()

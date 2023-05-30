@@ -24,6 +24,3 @@ def main():
                     queue.append((i, j, d+1))
     print(-1)
 main()
-
-if __name__ == '__main__':
-    main()

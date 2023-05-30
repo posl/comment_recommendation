@@ -53,6 +53,3 @@ def main():
     print('ULRDU')
     return
 main()
-
-if __name__ == '__main__':
-    main()

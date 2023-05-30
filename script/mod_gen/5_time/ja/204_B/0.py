@@ -7,6 +7,3 @@ def harvest():
             harvest += a - 10
     return harvest
 print(harvest())
-
-if __name__ == '__main__':
-    harvest()

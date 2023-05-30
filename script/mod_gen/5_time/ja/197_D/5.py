@@ -50,6 +50,3 @@ def main():
             y1 = y4
     print(x1,y1)
 main()
-
-if __name__ == '__main__':
-    main()

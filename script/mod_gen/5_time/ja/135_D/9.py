@@ -15,6 +15,3 @@ def solve():
             dp[i+1][j] %= 10**9+7
     print(dp[n][5])
 solve()
-
-if __name__ == '__main__':
-    solve()

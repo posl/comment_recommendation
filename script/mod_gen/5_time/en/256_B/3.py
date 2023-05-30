@@ -13,6 +13,3 @@ def main():
             P += 4
     print(P)
 main()
-
-if __name__ == '__main__':
-    main()

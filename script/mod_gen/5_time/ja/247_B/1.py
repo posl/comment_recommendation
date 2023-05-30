@@ -14,6 +14,3 @@ for i in range(n):
     s.append(s_i)
     t.append(t_i)
 print(judge(n, s, t))
-
-if __name__ == '__main__':
-    judge()

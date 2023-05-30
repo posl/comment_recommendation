@@ -9,6 +9,3 @@ def solver(x, y):
         return solver(x, y - 1) + solver(x - 1, y - 2)
 x, y = map(int, input().split())
 print(solver(x, y))
-
-if __name__ == '__main__':
-    solver()

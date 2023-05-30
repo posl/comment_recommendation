@@ -10,6 +10,3 @@ def solve(k):
                 i+=1
 k=int(input())
 print(solve(k))
-
-if __name__ == '__main__':
-    solve()

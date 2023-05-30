@@ -15,6 +15,3 @@ def solve():
     else:
         print(0)
 solve()
-
-if __name__ == '__main__':
-    solve()

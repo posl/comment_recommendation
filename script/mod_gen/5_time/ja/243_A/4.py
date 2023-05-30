@@ -25,6 +25,3 @@ def problems243_a():
         if v < 0:
             return "T"
 print(problems243_a())
-
-if __name__ == '__main__':
-    problems243_a()

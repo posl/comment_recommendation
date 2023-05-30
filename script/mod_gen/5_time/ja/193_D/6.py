@@ -21,6 +21,3 @@ def main():
     #print(K, S, T)
     #print(type(K), type(S), type(T))
 main()
-
-if __name__ == '__main__':
-    main()

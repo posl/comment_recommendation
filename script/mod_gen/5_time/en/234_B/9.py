@@ -22,6 +22,3 @@ def main():
     # Print the maximum distance
     print(max(distances))
 main()
-
-if __name__ == '__main__':
-    main()

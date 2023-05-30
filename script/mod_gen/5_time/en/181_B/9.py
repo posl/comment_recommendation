@@ -11,6 +11,3 @@ for i in range(n):
     a.append(a_i)
     b.append(b_i)
 print(int(sum_of_integers(n, a, b)))
-
-if __name__ == '__main__':
-    sum_of_integers()

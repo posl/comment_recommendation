@@ -3,6 +3,3 @@ def ascii_value_to_letter():
     letter = chr(ascii_value)
     print(letter)
 ascii_value_to_letter()
-
-if __name__ == '__main__':
-    ascii_value_to_letter()

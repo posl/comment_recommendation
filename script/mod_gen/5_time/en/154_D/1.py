@@ -10,6 +10,3 @@ def main():
             max = sum_p[i+k] - sum_p[i]
     print((max + k) / 2)
 main()
-
-if __name__ == '__main__':
-    main()

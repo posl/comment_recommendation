@@ -13,6 +13,3 @@ def main():
     for i in range(X+Y,X+Y+Z):
         print(C[i][0])
 main()
-
-if __name__ == '__main__':
-    main()

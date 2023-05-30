@@ -3,6 +3,3 @@ def main():
     S = input()
     print('Yes' if S[N-1] == 'o' else 'No')
 main()
-
-if __name__ == '__main__':
-    main()

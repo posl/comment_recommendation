@@ -32,6 +32,3 @@ def main():
         else:
             print(S_max - S_min)
 main()
-
-if __name__ == '__main__':
-    main()

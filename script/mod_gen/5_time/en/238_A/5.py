@@ -5,6 +5,3 @@ def check(n):
         print("No")
 n = int(input())
 check(n)
-
-if __name__ == '__main__':
-    check()

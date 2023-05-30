@@ -5,6 +5,3 @@ def inner_rating(n, r):
         return r
 n, r = map(int, input().split())
 print(inner_rating(n, r))
-
-if __name__ == '__main__':
-    inner_rating()

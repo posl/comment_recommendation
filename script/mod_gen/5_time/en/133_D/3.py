@@ -11,6 +11,3 @@ def compute():
         ans[i] = 2 * A[i - 1] - ans[i - 1]
     return " ".join(map(str, ans))
 print(compute())
-
-if __name__ == '__main__':
-    compute()

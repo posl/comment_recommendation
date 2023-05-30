@@ -16,6 +16,3 @@ def cal():
         else:
             return 10000*N
 print(cal())
-
-if __name__ == '__main__':
-    cal()

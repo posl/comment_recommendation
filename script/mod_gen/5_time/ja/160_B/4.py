@@ -10,6 +10,3 @@ x = int(input())
 coins = [1, 5, 10, 50, 100, 500]
 amount = 1000 - x
 print(coin_change(coins, amount))
-
-if __name__ == '__main__':
-    coin_change()

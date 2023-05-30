@@ -25,6 +25,3 @@ def solve():
             ans = max(ans, i)
     print(ans + cnt)
 solve()
-
-if __name__ == '__main__':
-    solve()

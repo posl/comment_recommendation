@@ -14,6 +14,3 @@ def solve():
                     dp[i][j] = min(dp[i][j], dp[i][j-1]+C, A[i][j])
     return ans
 print(solve())
-
-if __name__ == '__main__':
-    solve()

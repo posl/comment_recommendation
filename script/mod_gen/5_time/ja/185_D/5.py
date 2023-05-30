@@ -38,6 +38,3 @@ def main():
     else:
         print(max_d//2 + 1)
 main()
-
-if __name__ == '__main__':
-    main()

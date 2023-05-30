@@ -13,6 +13,3 @@ def problem219_a():
     else:
         print('入力された値が不正です。')
 problem219_a()
-
-if __name__ == '__main__':
-    problem219_a()

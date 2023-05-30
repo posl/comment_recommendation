@@ -8,6 +8,3 @@ def swap_string():
     string = ''.join(string)
     print(string)
 swap_string()
-
-if __name__ == '__main__':
-    swap_string()

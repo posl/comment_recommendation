@@ -7,6 +7,3 @@ def problems200_b():
             N = int(str(N) + '200')
     return N
 print(problems200_b())
-
-if __name__ == '__main__':
-    problems200_b()

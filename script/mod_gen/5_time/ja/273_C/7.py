@@ -26,6 +26,3 @@ def main():
         else:
             print(B[N-1]-B[i-1]-C[N-i-1])
 main()
-
-if __name__ == '__main__':
-    main()

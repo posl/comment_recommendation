@@ -5,6 +5,3 @@ def janken(x,y):
         return 3 - (x + y)
 x,y = map(int,input().split())
 print(janken(x,y))
-
-if __name__ == '__main__':
-    janken()

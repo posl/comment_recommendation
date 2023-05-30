@@ -21,6 +21,3 @@ def lunchbox():
                 ans = i+j
     return ans
 print(lunchbox())
-
-if __name__ == '__main__':
-    lunchbox()

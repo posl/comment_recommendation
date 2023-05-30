@@ -14,6 +14,3 @@ def main():
         ans = min(ans, xors)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -4,6 +4,3 @@ def paint_tree(tree, color, node, parent, dist):
         if child == parent:
             continue
         paint_tree(tree, color, child, node, dist)
-
-if __name__ == '__main__':
-    paint_tree()

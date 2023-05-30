@@ -11,6 +11,3 @@ def main():
     ans -= (L + R) * (max(A) - min(A))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

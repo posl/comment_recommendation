@@ -7,6 +7,3 @@ def convertToBase26(n):
     return result
 N = int(input())
 print(convertToBase26(N))
-
-if __name__ == '__main__':
-    convertToBase26()

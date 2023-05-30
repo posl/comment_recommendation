@@ -6,6 +6,3 @@ def comma_count(n):
     return ans
 n = input()
 print(comma_count(n))
-
-if __name__ == '__main__':
-    comma_count()

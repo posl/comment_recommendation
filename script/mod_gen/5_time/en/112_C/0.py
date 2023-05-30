@@ -18,6 +18,3 @@ def main():
                 print(C_X, C_Y, H)
                 return
 main()
-
-if __name__ == '__main__':
-    main()

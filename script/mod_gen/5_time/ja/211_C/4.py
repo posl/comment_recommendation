@@ -12,6 +12,3 @@ def solve():
                 dp[i][j] = dp[i][j - 1]
     print(dp[len(chokudai)][len(S)] % (10 ** 9 + 7))
 solve()
-
-if __name__ == '__main__':
-    solve()

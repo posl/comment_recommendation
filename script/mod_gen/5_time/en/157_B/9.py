@@ -23,6 +23,3 @@ def bingo():
         return "Yes"
     return "No"
 print(bingo())
-
-if __name__ == '__main__':
-    bingo()

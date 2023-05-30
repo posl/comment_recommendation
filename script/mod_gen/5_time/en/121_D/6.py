@@ -11,6 +11,3 @@ def xor(a, b):
             return ((b - a + 1) // 2) % 2
 a, b = map(int, input().split())
 print(xor(a, b))
-
-if __name__ == '__main__':
-    xor()

@@ -13,6 +13,3 @@ def solve():
                 return s
     return 'satisfiable'
 print(solve())
-
-if __name__ == '__main__':
-    solve()

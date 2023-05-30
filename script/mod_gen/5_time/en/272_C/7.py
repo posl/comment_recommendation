@@ -16,6 +16,3 @@ def main():
                 print(a[i] + a[j])
                 return
 main()
-
-if __name__ == '__main__':
-    main()

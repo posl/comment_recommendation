@@ -7,6 +7,3 @@ def main():
     y = a * math.sin(rad) + b * math.cos(rad)
     print(x, y)
 main()
-
-if __name__ == '__main__':
-    main()

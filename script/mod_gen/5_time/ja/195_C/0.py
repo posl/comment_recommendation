@@ -13,6 +13,3 @@ def comma_count(n):
         return 999000000000000 + 5 * (n - 999999999999999)
 n = int(input())
 print(comma_count(n))
-
-if __name__ == '__main__':
-    comma_count()

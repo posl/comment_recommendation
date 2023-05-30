@@ -12,6 +12,3 @@ def main():
         ans = min(ans, cnt)
     print(ans)
 main()  # 出力結果 0.0sec
-
-if __name__ == '__main__':
-    main()

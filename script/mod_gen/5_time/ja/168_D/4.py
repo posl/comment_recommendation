@@ -4,6 +4,3 @@ def dfs(v, g, seen):
         if seen[next_v]:
             continue
         dfs(next_v, g, seen)
-
-if __name__ == '__main__':
-    dfs()

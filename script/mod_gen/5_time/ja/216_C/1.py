@@ -10,6 +10,3 @@ def solve(n):
     return ans[::-1]
 n = int(input())
 print(''.join(solve(n)))
-
-if __name__ == '__main__':
-    solve()

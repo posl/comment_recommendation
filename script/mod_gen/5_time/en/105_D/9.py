@@ -29,6 +29,3 @@ def findPairs(arr, n, m):
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
 print(findPairs(arr, n, m))
-
-if __name__ == '__main__':
-    findPairs()

@@ -15,6 +15,3 @@ def solve():
             ans = min(ans, m - mi)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

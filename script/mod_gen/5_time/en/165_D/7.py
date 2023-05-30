@@ -6,6 +6,3 @@ def main():
             max = (A * i // B) - A * (i // B)
     print(max)
 main()
-
-if __name__ == '__main__':
-    main()

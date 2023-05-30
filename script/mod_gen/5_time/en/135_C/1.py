@@ -9,6 +9,3 @@ def main():
     ans += min(A[N], B[N-1])
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

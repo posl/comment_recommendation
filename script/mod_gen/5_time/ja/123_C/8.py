@@ -14,6 +14,3 @@ def main():
     ans += 4
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

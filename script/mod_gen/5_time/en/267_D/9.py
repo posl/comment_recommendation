@@ -13,6 +13,3 @@ def max_sum():
         count += A[i]
     return count
 print(max_sum())
-
-if __name__ == '__main__':
-    max_sum()

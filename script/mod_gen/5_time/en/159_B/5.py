@@ -14,6 +14,3 @@ n = len(s)
 s1 = s[0:(n-1)//2]
 s2 = s[(n+1)//2:]
 print('Yes' if isPalindrome(s) and isPalindrome(s1) and isPalindrome(s2) else 'No')
-
-if __name__ == '__main__':
-    isPalindrome()

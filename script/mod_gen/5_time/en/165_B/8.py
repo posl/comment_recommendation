@@ -7,6 +7,3 @@ def interest():
         year += 1
     print(year)
 interest()
-
-if __name__ == '__main__':
-    interest()

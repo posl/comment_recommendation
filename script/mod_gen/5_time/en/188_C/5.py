@@ -7,6 +7,3 @@ def main():
     E = A.index(D)
     print(E+1)
 main()
-
-if __name__ == '__main__':
-    main()

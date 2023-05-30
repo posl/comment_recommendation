@@ -12,6 +12,3 @@ def main():
     # Print the product
     print(product)
 main()
-
-if __name__ == '__main__':
-    main()

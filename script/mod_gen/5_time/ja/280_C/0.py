@@ -7,6 +7,3 @@ def main():
             exit()
     print(len(s)+1)
 main()
-
-if __name__ == '__main__':
-    main()

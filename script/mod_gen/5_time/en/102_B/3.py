@@ -5,6 +5,3 @@ def diff():
     min_a = min(a)
     print(max_a - min_a)
 diff()
-
-if __name__ == '__main__':
-    diff()

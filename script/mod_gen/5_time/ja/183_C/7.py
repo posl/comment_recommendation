@@ -21,6 +21,3 @@ for _ in range(N):
 visited = set()
 visited.add(0)
 print(dfs(0, visited, 0))
-
-if __name__ == '__main__':
-    dfs()

@@ -20,6 +20,3 @@ def main():
             ans = num1 * num2
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

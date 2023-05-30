@@ -5,6 +5,3 @@ def dfs(v, p, d):
         if nv == p:
             continue
         dfs(nv, v, d+1)
-
-if __name__ == '__main__':
-    dfs()

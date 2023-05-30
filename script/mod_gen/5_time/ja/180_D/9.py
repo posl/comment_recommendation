@@ -12,6 +12,3 @@ def train(x,y,a,b):
     return exp
 x,y,a,b=map(int,input().split())
 print(train(x,y,a,b))
-
-if __name__ == '__main__':
-    train()

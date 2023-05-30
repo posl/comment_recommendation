@@ -21,6 +21,3 @@ def solve():
     print(a, b)
     print(c, d)
 solve()
-
-if __name__ == '__main__':
-    solve()

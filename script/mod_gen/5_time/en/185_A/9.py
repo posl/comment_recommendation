@@ -3,6 +3,3 @@ def main():
     print(min(A))
     
 main()
-
-if __name__ == '__main__':
-    main()

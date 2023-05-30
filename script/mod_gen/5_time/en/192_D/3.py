@@ -25,6 +25,3 @@ def main():
             r = m
     print(l - d)
 main()
-
-if __name__ == '__main__':
-    main()

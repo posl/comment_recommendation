@@ -18,6 +18,3 @@ def main():
             d = (d + 1) % 4
     print(x, y)
 main()
-
-if __name__ == '__main__':
-    main()

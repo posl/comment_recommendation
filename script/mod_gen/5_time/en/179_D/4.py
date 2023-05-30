@@ -19,6 +19,3 @@ def solve():
         dpsum[i + 1] %= MOD
     print(dp[N - 1])
 solve()
-
-if __name__ == '__main__':
-    solve()

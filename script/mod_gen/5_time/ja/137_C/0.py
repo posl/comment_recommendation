@@ -15,6 +15,3 @@ def main():
     ans += tmp*(tmp-1)//2
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

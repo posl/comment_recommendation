@@ -8,6 +8,3 @@ def main():
     ans = min(N-1, ans+2*K)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

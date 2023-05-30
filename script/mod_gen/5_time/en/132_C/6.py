@@ -53,6 +53,3 @@ print(count_difficulty(d, K-20))
 print(count_difficulty(d, K+21))
 print(count_difficulty(d, K-21))
 print(count_difficulty(d
-
-if __name__ == '__main__':
-    count_difficulty()

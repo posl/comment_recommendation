@@ -5,6 +5,3 @@ def solve():
     else:
         return -(-(X**2+Y**2)**(1/2)//R)
 print(solve())
-
-if __name__ == '__main__':
-    solve()

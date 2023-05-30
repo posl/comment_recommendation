@@ -20,6 +20,3 @@ for i in range(Q):
     c.append(ci)
     d.append(di)
 print(dfs([1]))
-
-if __name__ == '__main__':
-    dfs()

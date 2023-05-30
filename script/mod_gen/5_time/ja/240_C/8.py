@@ -11,6 +11,3 @@ def check(N,X,ab):
 N,X = map(int,input().split())
 ab = [list(map(int,input().split())) for _ in range(N)]
 print('Yes' if check(N,X,ab) else 'No')
-
-if __name__ == '__main__':
-    check()

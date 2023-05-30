@@ -8,6 +8,3 @@ def solve():
     ans[i] = 2 * (a[i-1] - ans[i-1] // 2)
   print(*ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

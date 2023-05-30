@@ -26,6 +26,3 @@ def solve():
     print("L" * 3 + "U" * 3 + "R" * 3 + "D" * 3 + "L" * 3)
     return
 solve()
-
-if __name__ == '__main__':
-    solve()

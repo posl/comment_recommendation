@@ -12,6 +12,3 @@ def solve(N,M,K):
     return dp[N][M][K]
 N,M,K = map(int, input().split())
 print(solve(N,M,K))
-
-if __name__ == '__main__':
-    solve()

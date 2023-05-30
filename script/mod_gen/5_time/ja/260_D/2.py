@@ -13,6 +13,3 @@ def solve(n, k, p):
 n, k = map(int, input().split())
 p = list(map(int, input().split()))
 print(*solve(n, k, p), sep='\n')
-
-if __name__ == '__main__':
-    solve()

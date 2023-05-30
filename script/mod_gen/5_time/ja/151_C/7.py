@@ -14,6 +14,3 @@ def main():
             p[a-1]+=1
     print(sum(p),s.count('AC'))
 main()
-
-if __name__ == '__main__':
-    main()

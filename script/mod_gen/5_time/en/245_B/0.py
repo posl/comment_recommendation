@@ -9,6 +9,3 @@ def solve():
             return a[i-1] + 1
     return a[n-1] + 1
 print(solve())
-
-if __name__ == '__main__':
-    solve()

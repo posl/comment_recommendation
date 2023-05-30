@@ -11,6 +11,3 @@ def main():
     for i in range(Q):
         print(ans[i])
 main()
-
-if __name__ == '__main__':
-    main()

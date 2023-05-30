@@ -9,6 +9,3 @@ max_f = 0
 for i in range(min_a, max_a + 1):
     max_f = max(max_f, f(i, a))
 print(max_f)
-
-if __name__ == '__main__':
-    f()

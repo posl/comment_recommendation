@@ -8,6 +8,3 @@ def calc(n, k, a, b):
 n, k = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(n)]
 print(calc(n, k, a, 0))
-
-if __name__ == '__main__':
-    calc()

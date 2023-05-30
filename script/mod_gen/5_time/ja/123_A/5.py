@@ -28,6 +28,3 @@ def main():
     else:
         print('Yay!')
 main()
-
-if __name__ == '__main__':
-    main()

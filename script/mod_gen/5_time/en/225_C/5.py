@@ -21,6 +21,3 @@ def main():
                 return
     print("Yes")
 main()
-
-if __name__ == '__main__':
-    main()

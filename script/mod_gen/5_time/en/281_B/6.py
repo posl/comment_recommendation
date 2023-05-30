@@ -11,6 +11,3 @@ def check(s):
         return False
     return True
 print('Yes' if check(input()) else 'No')
-
-if __name__ == '__main__':
-    check()

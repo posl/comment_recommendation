@@ -10,6 +10,3 @@ def main():
         ans += (1 << i) * (N - count) * count
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

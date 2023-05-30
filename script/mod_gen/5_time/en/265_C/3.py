@@ -18,6 +18,3 @@ def main():
             print(i + 1, j + 1)
             return
 main()
-
-if __name__ == '__main__':
-    main()

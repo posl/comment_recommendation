@@ -6,6 +6,3 @@ def calc():
         ans += (b - a + 1) * (a + b) // 2
     print(ans)
 calc()
-
-if __name__ == '__main__':
-    calc()

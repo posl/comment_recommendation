@@ -14,6 +14,3 @@ def confusing_time(H,M):
             return str(H//10) + str(H%10) + ":" + str(M//10) + str(M%10)
 H, M = map(int, input().split())
 print(confusing_time(H, M))
-
-if __name__ == '__main__':
-    confusing_time()

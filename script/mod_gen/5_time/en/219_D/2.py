@@ -43,6 +43,3 @@ def main():
                 Y -= max
         print(count)
 main()
-
-if __name__ == '__main__':
-    main()

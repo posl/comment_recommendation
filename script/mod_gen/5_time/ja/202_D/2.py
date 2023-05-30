@@ -17,6 +17,3 @@ for i in range(a + 1):
         if j > 0:
             dp[i][j] += dp[i][j - 1]
 print(dfs(a, b, k))
-
-if __name__ == '__main__':
-    dfs()

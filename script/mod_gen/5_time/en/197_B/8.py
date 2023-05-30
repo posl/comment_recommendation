@@ -33,6 +33,3 @@ s = []
 for i in range(h):
     s.append(input())
 print(visible_squares(h,w,x,y))
-
-if __name__ == '__main__':
-    visible_squares()

@@ -18,6 +18,3 @@ def main():
     #print(good)
     print(good.count(True))
 main()
-
-if __name__ == '__main__':
-    main()

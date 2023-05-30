@@ -13,6 +13,3 @@ def dfs(now, visited, dist, K, N):
 N, K = map(int, input().split())
 T = [list(map(int, input().split())) for _ in range(N)]
 print(dfs(0, [0], 0, K, N))
-
-if __name__ == '__main__':
-    dfs()

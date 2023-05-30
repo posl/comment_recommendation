@@ -20,6 +20,3 @@ for i in range(N):
             if card[j][k] == b:
                 card[j][k] = 0
 print("Yes" if is_bingo(card) else "No")
-
-if __name__ == '__main__':
-    is_bingo()

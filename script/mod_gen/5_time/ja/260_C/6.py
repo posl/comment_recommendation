@@ -9,6 +9,3 @@ def calc(N, X, Y):
         return calc(N-1, X, Y) + calc(N-2, X, Y)
 N, X, Y = map(int, input().split())
 print(calc(N, X, Y))
-
-if __name__ == '__main__':
-    calc()

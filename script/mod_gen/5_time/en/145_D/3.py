@@ -7,6 +7,3 @@ def ways(x, y):
         return ways(x-1, y-2) + ways(x-2, y-1)
 x, y = map(int, input().split())
 print(ways(x, y) % (10**9 + 7))
-
-if __name__ == '__main__':
-    ways()

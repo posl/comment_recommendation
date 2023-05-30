@@ -11,6 +11,3 @@ def check(s):
 n = int(input())
 s = input()
 print(check(s))
-
-if __name__ == '__main__':
-    check()

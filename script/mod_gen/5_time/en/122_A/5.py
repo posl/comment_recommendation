@@ -9,6 +9,3 @@ def base(b):
         print("C")
 b = input()
 base(b)
-
-if __name__ == '__main__':
-    base()

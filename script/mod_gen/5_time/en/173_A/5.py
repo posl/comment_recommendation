@@ -4,6 +4,3 @@ def change(n):
     else:
         return 1000 - (n%1000)
 print(change(int(input())))
-
-if __name__ == '__main__':
-    change()

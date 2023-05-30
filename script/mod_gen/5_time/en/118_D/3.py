@@ -12,6 +12,3 @@ for i, v in enumerate(map(int, input().split())):
     a.append((v, i + 1))
 a.sort(reverse=True)
 print(solve(n, m, a))
-
-if __name__ == '__main__':
-    solve()

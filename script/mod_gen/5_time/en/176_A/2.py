@@ -5,6 +5,3 @@ def takoyaki():
     else:
         return (int(N / X) + 1) * T
 print(takoyaki())
-
-if __name__ == '__main__':
-    takoyaki()

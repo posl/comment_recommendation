@@ -42,6 +42,3 @@ def solve():
             r = m
     print(r)
 solve()
-
-if __name__ == '__main__':
-    solve()

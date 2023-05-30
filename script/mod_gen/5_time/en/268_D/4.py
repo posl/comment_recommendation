@@ -46,6 +46,3 @@ def solve():
         print(S[0] + '_' + S[2] + '_' + S[4] + '_' + S[6] + '_' + S[1] + '_' + S[3] + '_' + S[5] + '_' + S[7])
         return
 solve()
-
-if __name__ == '__main__':
-    solve()

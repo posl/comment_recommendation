@@ -26,6 +26,3 @@ def main():
         ans = min(ans, count)
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

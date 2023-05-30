@@ -15,6 +15,3 @@ def solve():
         d[s[r] % m] += 1
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

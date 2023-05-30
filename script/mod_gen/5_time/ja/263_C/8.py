@@ -25,6 +25,3 @@ def prob_c():
             break
     return
 prob_c()
-
-if __name__ == '__main__':
-    prob_c()

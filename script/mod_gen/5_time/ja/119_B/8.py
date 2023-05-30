@@ -9,6 +9,3 @@ def main():
             y += float(x) * 380000.0
     print(y)
 main()
-
-if __name__ == '__main__':
-    main()

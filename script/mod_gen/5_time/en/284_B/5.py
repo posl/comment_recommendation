@@ -9,6 +9,3 @@ for i in range(T):
     N = int(input())
     A = list(map(int, input().split()))
     print(count_odd_number(N, A))
-
-if __name__ == '__main__':
-    count_odd_number()

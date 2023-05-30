@@ -5,6 +5,3 @@ def attack(h):
         return 2 * attack(h // 2) + 1
 H = int(input())
 print(attack(H))
-
-if __name__ == '__main__':
-    attack()

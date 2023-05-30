@@ -13,6 +13,3 @@ def main():
         ans += y1-y2+1
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

@@ -34,6 +34,3 @@ def solve():
     return
 from itertools import permutations
 solve()
-
-if __name__ == '__main__':
-    solve()

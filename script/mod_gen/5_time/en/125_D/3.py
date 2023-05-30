@@ -9,6 +9,3 @@ def solve():
     else:
         return sum(map(abs, a))
 print(solve())
-
-if __name__ == '__main__':
-    solve()

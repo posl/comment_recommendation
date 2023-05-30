@@ -9,6 +9,3 @@ def replace_1_9(n):
     return result
 n = input()
 print(replace_1_9(n))
-
-if __name__ == '__main__':
-    replace_1_9()

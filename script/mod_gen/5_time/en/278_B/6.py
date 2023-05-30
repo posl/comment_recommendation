@@ -10,6 +10,3 @@ def confusing_time(h,m):
             return h, m
 h, m = map(int, input().split())
 print(*confusing_time(h, m))
-
-if __name__ == '__main__':
-    confusing_time()

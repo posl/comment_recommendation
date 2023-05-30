@@ -39,6 +39,3 @@ def main():
     elif s2 == "AGC" and s3 == "ARC":
         print("ABC")
 main()
-
-if __name__ == '__main__':
-    main()

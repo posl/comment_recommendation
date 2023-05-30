@@ -7,6 +7,3 @@ def count_patty(n, x):
         return 2**n + count_patty(n-1, x - 2**(n+1) + 2)
 n, x = map(int, input().split())
 print(count_patty(n, x))
-
-if __name__ == '__main__':
-    count_patty()

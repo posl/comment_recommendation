@@ -10,6 +10,3 @@ def solve(a,b,c):
     return ans
 a,b,c=map(int,input().split())
 print(solve(a,b,c))
-
-if __name__ == '__main__':
-    solve()

@@ -8,6 +8,3 @@ def solve(n, s):
 n = int(input())
 s = [input() for _ in range(n)]
 print(solve(n, s))
-
-if __name__ == '__main__':
-    solve()

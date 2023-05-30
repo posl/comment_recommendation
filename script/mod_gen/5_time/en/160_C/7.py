@@ -11,6 +11,3 @@ def main():
                 max = a[i+1] - a[i]
     print(k-max)
 main()
-
-if __name__ == '__main__':
-    main()

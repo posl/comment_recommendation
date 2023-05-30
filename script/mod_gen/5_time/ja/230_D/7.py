@@ -8,6 +8,3 @@ def solve(N, D, LRs):
 N, D = map(int, input().split())
 LRs = [list(map(int, input().split())) for _ in range(N)]
 print(solve(N, D, LRs))
-
-if __name__ == '__main__':
-    solve()

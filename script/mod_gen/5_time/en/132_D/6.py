@@ -11,6 +11,3 @@ def comb(n, k, mod=10**9+7):
 N, K = map(int, input().split())
 for i in range(1, K + 1):
     print(comb(K - 1, i - 1) * comb(N - K + 1, i) % (10**9 + 7))
-
-if __name__ == '__main__':
-    comb()

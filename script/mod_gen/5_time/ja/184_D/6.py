@@ -14,6 +14,3 @@ def calc_expectation(a, b, c):
 memo = {}
 a, b, c = map(int, input().split())
 print(calc_expectation(a, b, c))
-
-if __name__ == '__main__':
-    calc_expectation()

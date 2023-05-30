@@ -6,6 +6,3 @@ def oddDigits(n):
     return count
 n = int(input())
 print(oddDigits(n))
-
-if __name__ == '__main__':
-    oddDigits()

@@ -8,6 +8,3 @@ def burger(n, x):
     else:
         return 2 ** n + burger(n - 1, x - 2 ** (n + 1) + 2)
 print(burger(*map(int, input().split())))
-
-if __name__ == '__main__':
-    burger()

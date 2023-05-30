@@ -11,6 +11,3 @@ def solve():
         for j in range(i + 2, N + 1):
             print(i, j, 2 ** (i - 1))
 solve()
-
-if __name__ == '__main__':
-    solve()

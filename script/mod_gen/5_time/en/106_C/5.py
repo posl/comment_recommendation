@@ -9,6 +9,3 @@ def main():
             print(1)
             break
 main()
-
-if __name__ == '__main__':
-    main()

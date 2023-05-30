@@ -18,6 +18,3 @@ a = []
 for i in range(n):
     a.append(list(map(int, input().split())))
 print(f(n, a))
-
-if __name__ == '__main__':
-    f()

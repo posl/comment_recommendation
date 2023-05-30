@@ -37,6 +37,3 @@ def main():
                 print(S[i] + '_' + T[j])
                 return
 main()
-
-if __name__ == '__main__':
-    main()

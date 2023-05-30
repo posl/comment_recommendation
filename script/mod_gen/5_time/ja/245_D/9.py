@@ -7,6 +7,3 @@ def main():
         B[i] = C[i] // A[N]
     print(*B)
 main()
-
-if __name__ == '__main__':
-    main()

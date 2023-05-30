@@ -11,6 +11,3 @@ def main():
                 P[i+1],P[i] = P[i],P[i+1]
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

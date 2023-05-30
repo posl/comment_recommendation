@@ -7,6 +7,3 @@ def main():
     cnt += (Y - X - 1) // B
     print(cnt)
 main()
-
-if __name__ == '__main__':
-    main()

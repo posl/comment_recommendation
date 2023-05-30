@@ -15,6 +15,3 @@ def solve():
                 ans = min(ans, max(a[i], b[j]))
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

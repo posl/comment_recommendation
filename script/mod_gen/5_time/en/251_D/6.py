@@ -13,6 +13,3 @@ def solve():
                 print(2, end=' ')
             print(3)
 solve()
-
-if __name__ == '__main__':
-    solve()

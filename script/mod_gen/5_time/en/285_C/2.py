@@ -6,6 +6,3 @@ def main():
         ans += (ord(s[i])-64) * (26 ** (n-i-1))
     print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

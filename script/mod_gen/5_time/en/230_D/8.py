@@ -20,6 +20,3 @@ def solve(N,D,LR):
 N,D = map(int,input().split())
 LR = [list(map(int,input().split())) for _ in range(N)]
 print(solve(N,D,LR))
-
-if __name__ == '__main__':
-    solve()

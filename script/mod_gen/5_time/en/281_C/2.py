@@ -16,6 +16,3 @@ def main():
     else:
         print(ans, A[ans - 1] - (count - T))
 main()
-
-if __name__ == '__main__':
-    main()

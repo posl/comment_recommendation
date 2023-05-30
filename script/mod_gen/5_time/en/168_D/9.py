@@ -19,6 +19,3 @@ for i in range(M):
 visit = [0]*N
 flag = 1
 dfs(0, -1)
-
-if __name__ == '__main__':
-    dfs()

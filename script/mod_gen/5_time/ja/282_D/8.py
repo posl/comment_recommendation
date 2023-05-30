@@ -21,6 +21,3 @@ def main():
                 ans += 1
     print(ans*(ans-1)//2-m+ans)
 main()
-
-if __name__ == '__main__':
-    main()

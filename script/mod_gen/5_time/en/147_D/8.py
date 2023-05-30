@@ -11,6 +11,3 @@ def xor_sum(a):
 N = int(input())
 A = list(map(int, input().split()))
 print(xor_sum(A))
-
-if __name__ == '__main__':
-    xor_sum()

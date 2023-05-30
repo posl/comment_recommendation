@@ -16,6 +16,3 @@ def getABCNumber(s):
     return abc
 s = input()
 print(getABCNumber(s))
-
-if __name__ == '__main__':
-    getABCNumber()

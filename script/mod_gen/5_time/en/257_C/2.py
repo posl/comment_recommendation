@@ -16,6 +16,3 @@ def solve():
             ans = max(ans, ans2)
     print(ans)
 solve()
-
-if __name__ == '__main__':
-    solve()

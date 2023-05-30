@@ -6,6 +6,3 @@ def main():
         q[p[i]-1] = i+1
     print(*q)
 main()
-
-if __name__ == '__main__':
-    main()

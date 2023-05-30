@@ -10,6 +10,3 @@ n = int(input())
 s = input()
 for i in range(1, n):
     print(count(s, i))
-
-if __name__ == '__main__':
-    count()

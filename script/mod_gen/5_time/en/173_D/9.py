@@ -11,6 +11,3 @@ def main():
         dp[i] = max(dp[i-1], dp[i-2] + abs(A[i] - A[i-2]))
     print(dp[N+1])
 main()
-
-if __name__ == '__main__':
-    main()

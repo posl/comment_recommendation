@@ -6,6 +6,3 @@ def solution():
         a.pop(0)
     print(*a)
 solution()
-
-if __name__ == '__main__':
-    solution()

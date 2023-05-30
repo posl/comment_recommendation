@@ -15,6 +15,3 @@ for i in range(2, N+1):
     inv[i] = pow(fac[i], MOD-2, MOD)
 for i in range(1, K+1):
     print(C(N-K+1, i) * C(K-1, i-1) % MOD)
-
-if __name__ == '__main__':
-    C()

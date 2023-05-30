@@ -5,6 +5,3 @@ def calc():
     else:
         return c
 print(calc())
-
-if __name__ == '__main__':
-    calc()

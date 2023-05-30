@@ -7,6 +7,3 @@ def main():
             cnt += 1
     print(min(N - 1, cnt + 2 * K))
 main()
-
-if __name__ == '__main__':
-    main()

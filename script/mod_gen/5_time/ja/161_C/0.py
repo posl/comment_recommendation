@@ -6,6 +6,3 @@ def main():
         N = abs(N-K)
     print(N)
 main()
-
-if __name__ == '__main__':
-    main()

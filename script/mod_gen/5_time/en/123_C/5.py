@@ -9,6 +9,3 @@ def main():
     print(5+((n-1)//min(a,b,c,d,e))+1)
     
 main()
-
-if __name__ == '__main__':
-    main()

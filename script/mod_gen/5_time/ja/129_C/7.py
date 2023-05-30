@@ -14,6 +14,3 @@ def count_ways(n, m, broken):
 n, m = map(int, input().split())
 broken = set([int(input()) for _ in range(m)])
 print(count_ways(n, m, broken))
-
-if __name__ == '__main__':
-    count_ways()

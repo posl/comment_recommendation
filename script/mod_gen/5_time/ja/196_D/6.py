@@ -15,6 +15,3 @@ def calc(h, w, a, b):
 H, W, A, B = map(int, input().split())
 memo = {}
 print(calc(H, W, A, B))
-
-if __name__ == '__main__':
-    calc()

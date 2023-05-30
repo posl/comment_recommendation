@@ -9,6 +9,3 @@ def f(k):
         return f(k//2) * 10
 k = int(input())
 print(f(k))
-
-if __name__ == '__main__':
-    f()

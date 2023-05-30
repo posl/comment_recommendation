@@ -9,6 +9,3 @@ def solve():
             print(a**3 + a**2*b + a*b**2 + b**3)
             return
 solve()
-
-if __name__ == '__main__':
-    solve()

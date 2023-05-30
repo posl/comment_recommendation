@@ -5,6 +5,3 @@ def f(K,X):
     return " ".join(result)
 K,X = map(int,input().split())
 print(f(K,X))
-
-if __name__ == '__main__':
-    f()

@@ -9,6 +9,3 @@ def main():
             dp[i][j] %= MOD
     print(dp[H][K])
 main()
-
-if __name__ == '__main__':
-    main()

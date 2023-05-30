@@ -11,6 +11,3 @@ def main():
             print(sorted(a)[int(q[2])-1])
     return
 main()
-
-if __name__ == '__main__':
-    main()

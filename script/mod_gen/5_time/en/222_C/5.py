@@ -22,6 +22,3 @@ def rock_scissors_paper():
     for i in range(2*N):
         print(players[i][0])
 rock_scissors_paper()
-
-if __name__ == '__main__':
-    rock_scissors_paper()

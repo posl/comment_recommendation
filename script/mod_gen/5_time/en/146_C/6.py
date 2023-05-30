@@ -12,6 +12,3 @@ def solve():
         return ok
     print(bisect(0, 10 ** 9 + 1, price))
 solve()
-
-if __name__ == '__main__':
-    solve()

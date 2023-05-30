@@ -15,6 +15,3 @@ def solve():
         c[i] += c[i-1]
     print(*c[:n])
 solve()
-
-if __name__ == '__main__':
-    solve()

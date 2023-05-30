@@ -11,6 +11,3 @@ def func(n, a):
 n = int(input())
 a = list(map(int, input().split()))
 func(n, a)
-
-if __name__ == '__main__':
-    func()

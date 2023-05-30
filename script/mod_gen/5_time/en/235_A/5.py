@@ -6,6 +6,3 @@ def abc():
     c = abc%10
     print(a+b+c)
 abc()
-
-if __name__ == '__main__':
-    abc()

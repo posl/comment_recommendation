@@ -15,6 +15,3 @@ def bingo():
     else:
         print("No")
 bingo()
-
-if __name__ == '__main__':
-    bingo()

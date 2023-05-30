@@ -17,6 +17,3 @@ for i in range(m):
     c, d = map(int, input().split())
     list_cd.append([c, d])
 print(chk_same_shape(n, m, list_ab, list_cd))
-
-if __name__ == '__main__':
-    chk_same_shape()

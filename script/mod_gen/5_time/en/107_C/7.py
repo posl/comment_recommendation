@@ -13,6 +13,3 @@ def main():
       ans = min(ans,abs(r))
   print(ans)
 main()
-
-if __name__ == '__main__':
-    main()

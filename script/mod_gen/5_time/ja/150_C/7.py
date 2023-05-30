@@ -13,6 +13,3 @@ def main():
                 return i
     print(abs(index(permutation(n), p) - index(permutation(n), q)))
 main()
-
-if __name__ == '__main__':
-    main()

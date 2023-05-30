@@ -10,6 +10,3 @@ def solve():
     else:
         return B[N // 2 - 1] + N // 2
 print(solve())
-
-if __name__ == '__main__':
-    solve()

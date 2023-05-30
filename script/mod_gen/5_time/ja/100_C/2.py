@@ -8,6 +8,3 @@ def cal(a):
 n = int(input())
 a = list(map(int, input().split()))
 print(cal(a))
-
-if __name__ == '__main__':
-    cal()
