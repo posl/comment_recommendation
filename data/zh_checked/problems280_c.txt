@@ -25,8 +25,8 @@ atcorder
 从T开头的第5个字符，r，被插入。
 
 样本输入2
-百万
-百万
+million
+milllion
 
 样本产出 2
 5

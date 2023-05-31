@@ -38,10 +38,10 @@ beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸
 水牛
 水牛
 水牛
-水牛城
-水牛城
-水牛城
-水牛城
+水牛
+水牛
+水牛
+水牛
 
 样本输出2
 水牛
@@ -50,8 +50,8 @@ beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸
 7
 低音
 低音
-踢
-踢
+踢球
+踢球
 低音
 踢球
 踢球
@@ -62,12 +62,12 @@ beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸
 采样输入4
 4
 ushi
-踢
-ñi
-坤
+tapu
+nichia
+kun
 
 样本输出4
-kun
+ushi
+tapu
 nichia
-タップ
-我们
+kun

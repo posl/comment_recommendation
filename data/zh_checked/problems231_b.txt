@@ -24,26 +24,26 @@ S_N
 
 输入样本1
 5
-狙击手
+snuke
 snuke
 takahashi
-高桥
-高桥
+takahashi
+takahashi
 
 样本输出1
-高桥
+takahashi
 takahashi有3票，snuke有2票，所以我们打印takahashi。
 
 输入样本2
 5
-高桥
-高桥
-青木
-高桥
-斯诺克
+takahashi
+takahashi
+aoki
+takahashi
+snuke
 
 样本输出2
-高桥
+takahashi
 
 样本输入3
 1

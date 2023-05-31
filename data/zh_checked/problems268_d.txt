@@ -65,7 +65,7 @@ dai_choku
 chokudai
 atcoder
 chokudai_atcoder
-编码机_初学台
+atcoder_chokudai
 
 样本输出3
 -1

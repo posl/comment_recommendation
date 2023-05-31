@@ -27,28 +27,28 @@ W_N
 输入样本 1
 4
 hoge
-英语
+english
 hoge
-谜团
+Enigma
 
 样本输出1
-不
-由于hoge被多次宣布，shiritori的规则没有被遵守。
+No
+由于hoge被多次宣布，白鸟的规则没有被遵守。
 
 输入样本2
 9
-基本的
+basic
 c
 cpp
 php
-蟒蛇
+python
 nadesico
 ocaml
 lua
-装配
+assembly
 
 输出样本2
-有
+Yes
 
 样品输入3
 8
@@ -62,13 +62,13 @@ aaa
 aaaaaaa
 
 样本输出3
-没有
+No
 
 样本输入4
 3
 abc
-弧形
+arc
 agc
 
 样本输出4
-没有
+No

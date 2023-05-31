@@ -19,10 +19,10 @@ T
 
 输入样本1
 chokudai
-丘克达伊兹
+chokudaiz
 
 样本输出1
-是
+Yes
 chokudaiz可以通过在chokudai的末尾加上z来获得。
 
 输入样本2
@@ -30,7 +30,7 @@ snuke
 snekee
 
 样本输出2
-没有
+No
 snekee不能通过在snuke的末尾添加一个字符来获得。
 
 输入样本3
@@ -38,4 +38,4 @@ a
 aa
 
 样品输出3
-是
+Yes

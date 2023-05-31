@@ -27,8 +27,8 @@ nikoandsolstice的长度为15，超过了K=7。
 
 输入样本2
 40
-呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心： 呼叫中心：
+ferelibenterhominesidquodvoluntcredunt
 
 样本输出2
-读取的信息是："我是谁"。
+ferelibenterhominesidquodvoluntcredunt
 Gaius Julius Caesar的名言。

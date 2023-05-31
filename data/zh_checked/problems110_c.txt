@@ -19,20 +19,20 @@ T
 
 输入样本1
 azzel
-苹果
+apple
 
 样本输出1
-是
+Yes
 azzel可以改成apple，方法如下：
 选择e为c_1，l为c_2，azzel变成azzle。
 选择z为c_1，p为c_2，azzle变为apple。
 
 输入样本2
 chokudai
-红色代码
+Redder
 
 样本输出2
-没有
+No
 没有操作序列可以将chokudai改为redcoder。
 
 输入样本3
@@ -40,4 +40,4 @@ abcdefghijklmnopqrstuvwxyz
 ibyhqfrekavclxjstdwgpzmonu
 
 样本输出3
-是
+Yes

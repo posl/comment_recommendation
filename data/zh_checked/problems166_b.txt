@@ -35,7 +35,7 @@ A_{K, 1} ...A_{K, d_K}
 1
 Snuke 1有零食1。
 Snuke 2没有零食。
-Snuke 3有Snack 1和2。
+Snuke 3有零食1和2。
 因此，将有一个受害者：Snuke 2。
 
 输入样本 2

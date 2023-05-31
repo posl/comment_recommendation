@@ -32,7 +32,7 @@ HATAGAYA
 在作为HATAGAYA子串的ACGT字符串中，最长的一个是ATAGA。
 
 输入样本3
-新宿
+SHINJUKU
 
 样本输出3
 0

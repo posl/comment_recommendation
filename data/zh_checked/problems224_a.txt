@@ -15,14 +15,14 @@ S
 打印答案。
 
 输入样本1
-编码器
+atcoder
 
 样本输出1
 er
 S="atcoder "以er结束。
 
 样本输入2
-游客
+tourist
 
 样本输出2
 ist

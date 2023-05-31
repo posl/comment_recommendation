@@ -42,5 +42,5 @@ ooooooooxooooooooo
 20 10
 xxxxxxxxxxxxxxxxxxxx
 
-采样输出3
+样本输出3
 0

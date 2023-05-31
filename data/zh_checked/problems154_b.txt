@@ -13,7 +13,7 @@ S
 用x替换S中的每个字符并打印结果。
 
 输入样本1
-沙丁鱼
+sardine
 
 样本输出1
 xxxxxxx
@@ -26,7 +26,7 @@ xxxx
 xxxx
 
 样本输入3
-走了
+gone
 
 样本输出3
 xxxx

@@ -26,9 +26,9 @@ S_N T_N
 
 样本输入1
 3
-珠穆朗玛峰 8849
+Everest 8849
 K2 8611
-康干宗加峰 8586
+Kangchenjunga 8586
 
 样本产出1
 K2
@@ -36,21 +36,21 @@ K2
 
 样本输入2
 4
-基塔 3193
-爱野 3189
-富士 3776
-奥霍塔卡 3190
+Kita 3193
+Aino 3189
+Fuji 3776
+Okuhotaka 3190
 
 样本输出2
-北岳
-日本第二高的山是北岳。
+Kita
+日本第二高的山是Kita。
 
 样本输入3
 4
 QCFium 2846
 chokudai 2992
 kyoprofriends 2432
-企鹅人 2390
+penguinman 2390
 
 样本输出3
 QCFium

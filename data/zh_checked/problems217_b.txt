@@ -29,5 +29,5 @@ AGC
 ABC
 ARC
 
-采样输出2
+样本输出2
 AHC

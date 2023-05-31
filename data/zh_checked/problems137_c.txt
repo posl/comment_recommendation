@@ -23,8 +23,8 @@ s_N
 输入样本 1
 3
 acornistnt
-花生弹
-约束
+peanutbomb
+constraint
 
 样本输出1
 1
@@ -44,7 +44,7 @@ ninemodsix
 abaaaaaaaa
 oneplustwo
 aaaaaaaaba
-双胞胎
+twoplusone
 aaaabaaaaa
 
 样本输出3

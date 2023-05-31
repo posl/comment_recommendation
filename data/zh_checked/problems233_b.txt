@@ -26,7 +26,7 @@ abgfedch
 
 输入样本2
 1 7
-逆转
+reviver
 
 样本输出2
 Reviver
@@ -34,7 +34,7 @@ Reviver
 
 输入样本3
 4 13
-圣诞快乐
+merrychristmas
 
 样本输出3
-梦之城_梦之城娱乐_梦之城国际娱乐_梦之城国际娱乐平台
+merrychristmas

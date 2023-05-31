@@ -28,7 +28,7 @@ CDEZAB
 0
 ABCXYZ
 
-采样输出2
+样本输出2
 ABCXYZ
 
 样本输入3

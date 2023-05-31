@@ -20,11 +20,11 @@ T
 如果T是S的一个（连续的）子串，打印Yes；否则，打印No。
 
 样本输入1
-电压
-标签
+voltage
+tag
 
-采样输出1
-是
+样本输出1
+Yes
 tag是voltage的一个（连续的）子串。
 
 输入样本2
@@ -32,20 +32,20 @@ atcoder
 ace
 
 样品输出2
-没有
+No
 ace不是atcoder的（连续的）子串。
 
 输入样本3
-大猩猩
+gorilla
 gorillagorillagorilla
 
 样本输出3
-没有
+No
 
 样本输入4
-玩具商系统
-玩具商系统
+toyotasystems
+toyotasystems
 
 样本输出4
-是
+Yes
 有可能，S=T。

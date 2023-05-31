@@ -25,18 +25,18 @@ abbaac
 abbbbaaac
 
 样本输出1
-是
+Yes
 你可以通过以下三个操作使S=abbaac等于T=abbbbaaac。
 首先，在S的第2和第3个字符之间插入b，现在，S=abbbaac。
 接下来，在S的第2和第3个字符之间再次插入b，现在，S=abbbbaac。
 最后，在S的第6和第7个字符之间插入a，现在，S=abbbbaaac。
-因此，"是 "应该被打印出来。
+因此，Yes应该被打印出来。
 
 输入样本2
 xyzz
 xyyzz
 
 样本输出2
-没有
+No
 没有任何操作序列能使S = xyzz等于T = xyyzz。
 因此，应该打印No。

@@ -24,17 +24,17 @@ S T
 abc atcoder
 
 样本输出1
-是
+Yes
 abc和atcoder以相同的字符开始，但它们的第二个字符是不同的。由于在字母顺序上b比t早，我们可以看到abc在词法上比atcoder小。
 
 输入样本2
-弧 agc
+arc agc
 
 样本输出2
-没有
+No
 
 样本输入3
 a aa
 
 样品输出3
-是
+Yes

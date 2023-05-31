@@ -31,7 +31,7 @@ atcoder
 在这种情况下，字符串S已经是atcoder。
 
 样本输入3
-重发a
+redocta
 
 样本输出3
 21

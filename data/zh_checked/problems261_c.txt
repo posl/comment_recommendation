@@ -23,14 +23,14 @@ S_N
 
 输入样本1
 5
-新文件
-新文件
+newfile
+newfile
 newfolder
-新文件
-新文件夹
+newfile
+newfolder
 
 输出样本1
-新文件
+newfile
 newfile(1)
 newfolder
 newfile(2)

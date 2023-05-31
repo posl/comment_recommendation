@@ -21,15 +21,15 @@ atco
 atcoder
 
 样品输出1
-是的。
+Yes
 atco是atcoder的前缀。  因此，Yes应该被打印出来。
 
 输入样本2
-代码
+code
 atcoder
 
 样本输出2
-没有
+No
 code不是atcoder的前缀。  因此，No应该被打印出来。
 
 输入样本3
@@ -37,7 +37,7 @@ abc
 abc
 
 样本输出3
-是
+Yes
 请注意，一个字符串也是其自身的前缀。
 
 输入样本4
@@ -45,4 +45,4 @@ aaaa
 aa
 
 样本输出4
-没有
+No

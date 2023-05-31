@@ -28,7 +28,7 @@ RE x C_3
 6
 AC
 TLE
-交流
+AC
 AC
 WA
 TLE

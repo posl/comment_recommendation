@@ -23,15 +23,15 @@ T_1 ...T_M
 
 输入示例 1
 5 3
-东京 神田 木场 OKACHI 上野
-东京 阿基巴 上野
+tokyo kanda akiba okachi ueno
+tokyo akiba ueno
 
 样本输出1
-有
-没有
-是的
-不
-是
+Yes
+No
+Yes
+No
+Yes
 
 样本输入2
 7 7
@@ -39,11 +39,11 @@ a t c o d e r
 a t c o d e r
 
 样本输出2
-是
-是
-是
-是
-是
-是
-有
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
 特快列车可在所有车站停靠。

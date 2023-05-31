@@ -26,7 +26,7 @@ S
 
 输入样本 1
 3 2
-网址
+URL
 
 样本输出1
 6
@@ -43,7 +43,7 @@ RRUUU
 
 输入样本3
 30 123456789
-lrulurlurlululrlrrruurru
+LRULURLURLULULRURRLRULRRRUURRU
 
 样本输出3
 126419752371

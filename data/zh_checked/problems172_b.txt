@@ -16,8 +16,8 @@ T
 打印答案。
 
 输入样本1
-一杯咖啡
-一杯咖啡
+cupofcoffee
+cupofhottea
 
 样本输出1
 4
@@ -35,8 +35,8 @@ bcdea
 5
 
 样本输入3
-苹果
-苹果
+apple
+apple
 
 样本输出3
 0

@@ -25,12 +25,12 @@ s_N t_N
 
 输入样本 1
 3
-田中太郎
-Tanaka Jiro
-铃木花子
+tanaka taro
+tanaka jiro
+suzuki hanako
 
 样本输出1
-是
+Yes
 下面的分配符合问题陈述中描述的昵称条件：a_1 = taro，a_2 = jiro，a_3 = hanako。  (a_3也可以是suzuki)。
 然而，请注意，我们不能让a_1=tanaka，这违反了昵称的第二个条件，因为第2个人的姓氏s_2也是tanaka。
 
@@ -41,24 +41,24 @@ xxx aaa
 bbb yyy
 
 样本输出2
-没有
+No
 没有办法给出满足问题陈述中条件的昵称。
 
 输入样本3
 2
-田中太郎
-田中太郎
+tanaka taro
+tanaka taro
 
 样本输出3
-没有
+No
 可能有一对具有相同姓氏和相同名字的人。
 
 样本输入4
 3
-高桥忠大
-青木健生
-斯诺克
+takahashi chokudai
+aoki kensho
+snu ke
 
 样本输出4
-是的
+Yes
 我们可以让a_1 = chokudai, a_2 = kensho, and a_3 = ke。
