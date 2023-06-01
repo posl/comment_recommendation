@@ -1,60 +1,82 @@
-#问题陈述
-#当且仅当以下条件得到满足时，一个正整数X被认为是一个朗朗上口的数字：
-#在X的十进制表示中（不含前导零），对于每一对相邻的数字，这些数字的绝对差值最多为1。
-#例如，1234、1和334都是仑数，而31415、119和13579都不是。
-#给你一个正整数K，找出第K个最小的伦常数。
-#
-#限制条件
-#1 ≦ K ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#15
-#
-#样本输出1
-#23
-#我们将按升序列出15个最小的朗朗上口数字：
-#1,
-#2,
-#3,
-#4,
-#5,
-#6,
-#7,
-#8,
-#9,
-#10,
-#11,
-#12,
-#21,
-#22,
-#23.
-#因此，答案是23。
-#
-#输入样本2
-#1
-#
-#样本输出2
-#1
-#
-#样品输入3
-#13
-#
-#样品输出3
-#21
-#
-#样本输入4
-#100000
-#
-#样本输出4
-#3234566667
-#注意，答案可能不适合32位有符号整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(n, k):
+    return min(n % k, k - (n % k))
+
+=======
+Suggestion 2
+
+def solve(n,k):
+    ans = n
+    while True:
+        if ans > abs(ans-k):
+            ans = abs(ans-k)
+        else:
+            break
+    return ans
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    print(min(n % k, k - n % k))
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    if n==0:
+        print(0)
+    else:
+        print(min(n%k,k-n%k))
+
+=======
+Suggestion 5
+
+def main():
+    n,k = list(map(int, input().split()))
+    if n < k:
+        print(n)
+    else:
+        print(min(n % k, k - n % k))
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    while n >= k:
+        n = n % k
+        if n == 0:
+            print(0)
+            return
+    print(min(n, abs(k - n)))
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+
+    # 计算答案
+    print(min(n % k, k - n % k))
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    print(min(n%k, k-(n%k)))
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    print(min(N%K, K-N%K))

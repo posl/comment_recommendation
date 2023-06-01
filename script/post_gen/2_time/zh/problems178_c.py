@@ -1,38 +1,91 @@
-#问题说明
-#有多少个长度为N的整数序列A_1,A_2,...,A_N满足以下所有条件？
-#0 ≦ A_i ≦ 9
-#存在一些i，使得A_i=0成立。
-#存在某个i，使得A_i=9成立。
-#答案可能非常大，所以请输出10^9+7的模数。
-#
-#限制条件
-#1 ≦ N ≦ 10^6
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案的模数10^9 + 7。
-#
-#输入样本 1
-#2
-#
-#输出样本 1
-#2
-#两个序列{0,9}和{9,0}满足所有条件。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#
-#样本输入3
-#869121
-#
-#样本输出3
-#2511445
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(a, b, c, d):
+    return max(a*c, a*d, b*c, b*d)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d = map(int, input().split())
+    print(max(a*c,a*d,b*c,b*d))
+
+=======
+Suggestion 3
+
+def solution(a, b, c, d):
+    result = 0
+    for x in range(a, b + 1):
+        for y in range(c, d + 1):
+            result = max(result, x * y)
+    return result
+
+=======
+Suggestion 4
+
+def max_product(a,b,c,d):
+    if a == 0 and b == 0 and c == 0 and d == 0:
+        return 0
+    elif a == 0 and b == 0:
+        return c * d
+    elif c == 0 and d == 0:
+        return a * b
+    elif a == 0:
+        if c > 0:
+            return c * b
+        else:
+            return d * b
+    elif b == 0:
+        if c > 0:
+            return c * a
+        else:
+            return d * a
+    elif c == 0:
+        if a > 0:
+            return a * d
+        else:
+            return b * d
+    elif d == 0:
+        if a > 0:
+            return a * c
+        else:
+            return b * c
+    else:
+        if a > 0 and c > 0:
+            return a * c
+        elif a > 0 and d > 0:
+            return a * d
+        elif b > 0 and c > 0:
+            return b * c
+        elif b > 0 and d > 0:
+            return b * d
+        elif a < 0 and c < 0:
+            return a * c
+        elif a < 0 and d < 0:
+            return a * d
+        elif b < 0 and c < 0:
+            return b * c
+        elif b < 0 and d < 0:
+            return b * d
+        else:
+            return a * d
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    print(max(a*c,a*d,b*c,b*d))
+main()
+
+=======
+Suggestion 6
+
+def max(a,b):
+    if a>b:
+        return a
+    else:
+        return b

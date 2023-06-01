@@ -1,53 +1,108 @@
-#问题陈述
-#高桥将做一个踢踏舞。舞蹈由一个字符串S描述，其中每个字符是L、R、U或D，这些字符表示高桥应该踩的位置。他将从第一个字符开始，按顺序一个接一个地遵循这些指示。
-#当且仅当它满足以下两个条件时，我们说S是容易下的：
-#奇数位置（第1个、第3个、第5个......）上的每个字符都是R、U或D。
-#偶数位置（第2，4，6，...）的每个字符是L，U或D。
-#你的任务是，如果S很容易玩，就打印出Yes，否则就打印出No。
-#
-#限制条件
-#S是一个长度在1到100之间（包括100）的字符串。
-#S的每个字符都是L、R、U或D。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#如果S很容易玩，则打印Yes，否则打印No。
-#
-#输入样本1
-#RUDLUDR
-#
-#样本输出1
-#Yes
-#在奇数位置（第1、3、5、7）的每个字符是R、U或D。
-#在偶数位置（第2、4、6）的每个字符都是L、U或D。
-#因此，S是很容易玩的。
-#
-#输入样本2
-#DULL
-#
-#样本输出2
-#No
-#第3个字符不是R，U，也不是D，所以S不容易玩。
-#
-#样本输入3
-#uuuuuuuuuuuuu
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#ULURU
-#
-#样本输出4
-#No
-#
-#样本输入5
-#rdululdururlrdulrlr
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def weather(S):
+    if S == "晴天":
+        return "阴天"
+    elif S == "阴天":
+        return "雨天"
+    elif S == "雨天":
+        return "晴天"
+    else:
+        return "输入错误"
+
+=======
+Suggestion 2
+
+def weather():
+    weather = input()
+    if weather == '晴天':
+        print('阴天')
+    elif weather == '阴天':
+        print('雨天')
+    elif weather == '雨天':
+        print('晴天')
+
+=======
+Suggestion 3
+
+def weather(s):
+    if s == "晴天":
+        print("阴天")
+    elif s == "阴天":
+        print("雨天")
+    else:
+        print("晴天")
+
+=======
+Suggestion 4
+
+def get_weather():
+    # weather = input("请输入今天的天气：")
+    weather = input()
+    return weather
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    if s == "晴天":
+        print("阴天")
+    elif s == "阴天":
+        print("雨天")
+    else:
+        print("晴天")
+
+=======
+Suggestion 6
+
+def main():
+    weather = input()
+    if weather == "晴天":
+        print("阴天")
+    elif weather == "阴天":
+        print("雨天")
+    elif weather == "雨天":
+        print("晴天")
+
+=======
+Suggestion 7
+
+def weather():
+    weather = input()
+    if weather == "晴天":
+        print("阴天")
+    elif weather == "阴天":
+        print("雨天")
+    else:
+        print("晴天")
+
+weather()
+
+=======
+Suggestion 8
+
+def main():
+    weather = input()
+    if weather == '晴天':
+        print('阴天')
+    elif weather == '阴天':
+        print('雨天')
+    else:
+        print('晴天')
+
+=======
+Suggestion 9
+
+def weather(s):
+    if s == "晴天":
+        return "阴天"
+    elif s == "阴天":
+        return "雨天"
+    elif s == "雨天":
+        return "晴天"
+    else:
+        return "输入格式错误"

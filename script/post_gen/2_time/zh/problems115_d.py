@@ -1,42 +1,113 @@
-#问题陈述
-#在另一个世界，今天是圣诞节。
-#塔卡哈先生决定在他的派对上做一个多维汉堡。一个L级汉堡（L是一个大于或等于0的整数）是以下东西：
-#一个0级的汉堡是一个肉饼。
-#一个L级汉堡（L≧1）是一个面包，一个（L-1）级汉堡，一个肉饼，另一个（L-1）级汉堡和另一个面包，按这个顺序从下往上垂直堆放。
-#例如，一级汉堡和二级汉堡看起来像BPPPB和BBPPPBPBPPPBB（旋转90度），其中B和P代表一个面包和一个馅饼。
-#塔卡哈先生要做的汉堡是一个N级汉堡。腊肠犬Lunlun将从这个汉堡的底部吃X层（一层是一个肉饼或一个面包）。她会吃多少个肉饼？
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ X ≦ ( 一个N层汉堡的总层数 )
-#N和X是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#
-#输出
-#打印N层汉堡最底层的X层中的肉饼数量。
-#
-#输入样本 1
-#2 7
-#
-#样本输出 1
-#4
-#在一个二级汉堡的最下面7层有4个饼（BBPPPBPBPPPBB）。
-#
-#输入样本2
-#1 1
-#
-#样本输出2
-#0
-#第一层汉堡的最底层是一个面包。
-#
-#样本输入3
-#50 4321098765432109
-#
-#样本输出3
-#2160549382716056
-#一个50级的汉堡是相当厚的，以至于它的层数不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    ans = h[-1] - h[0]
+    for i in range(n-k+1):
+        ans = min(ans, h[i+k-1] - h[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    ans = h[k-1] - h[0]
+    for i in range(n-k+1):
+        ans = min(ans,h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    H = [int(input()) for _ in range(N)]
+    H.sort()
+    ans = 10 ** 9
+    for i in range(N - K + 1):
+        ans = min(ans, H[i + K - 1] - H[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans, h[i+k-1] - h[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    h_list = []
+    for i in range(n):
+        h_list.append(int(input()))
+    h_list.sort()
+    min = h_list[0]
+    max = h_list[k-1]
+    for i in range(n-k):
+        if h_list[i+k-1] - h_list[i] < max - min:
+            min = h_list[i]
+            max = h_list[i+k-1]
+    print(max-min)
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    h = [int(input()) for _ in range(N)]
+    h.sort()
+    ans = h[K-1] - h[0]
+    for i in range(1, N-K+1):
+        ans = min(ans, h[i+K-1] - h[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int, input().split())
+    h = []
+    for _ in range(n):
+        h.append(int(input()))
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans, h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    h = [int(input()) for i in range(n)]
+    h.sort()
+    ans = 10**9
+    for i in range(n-k+1):
+        ans = min(ans,h[i+k-1]-h[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    h = [int(input()) for _ in range(n)]
+    h.sort()
+    print(min(h[i+k-1]-h[i] for i in range(n-k+1)))

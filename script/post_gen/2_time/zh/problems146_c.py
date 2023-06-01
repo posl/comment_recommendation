@@ -1,49 +1,152 @@
-#问题陈述
-#高桥来到一家整数商店，想买一个整数。
-#该商店出售从1到10^9的整数。整数N的售价是A×N+B×d(N)日元（日本的货币），其中d(N)是N的小数点符号中的数字。
-#求高桥有X日元时能买到的最大整数。如果没有整数可以买到，打印0。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B X
-#
-#輸出
-#打印高桥能买到的最大整数。如果没有整数可以买到，则打印0。
-#
-#输入样本 1
-#10 7 100
-#
-#样本输出1
-#9
-#整数9的售价是10×9+7×1=97日元，这是可以买到的最大的整数。
-#其他一些整数的售价如下：
-#10：10×10+7×2=114日元
-#100：10 × 100 + 7 × 3 = 1021日元
-#12345：10 × 12345 + 7 × 5 = 123485日元
-#
-#样本输入2
-#2 1 100000000000
-#
-#样本输出2
-#1000000000
-#他可以买到卖出的最大整数。注意，输入可能不适合32位整数类型。
-#
-#样本输入3
-#1000000000 1000000000 100
-#
-#样本输出3
-#0
-#
-#样本输入4
-#1234 56789 314159265
-#
-#样本输出4
-#254309
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def moveN(s, n):
+    l = len(s)
+    if n == 0:
+        return s
+    elif n > 0:
+        n = n % 26
+        s1 = ''
+        for i in range(l):
+            if ord(s[i]) + n > 90:
+                s1 += chr(ord(s[i]) + n - 26)
+            else:
+                s1 += chr(ord(s[i]) + n)
+        return s1
+    else:
+        n = n % 26
+        s1 = ''
+        for i in range(l):
+            if ord(s[i]) + n < 65:
+                s1 += chr(ord(s[i]) + n + 26)
+            else:
+                s1 += chr(ord(s[i]) + n)
+        return s1
+
+n = int(input())
+s = input()
+print(moveN(s, n))
+
+=======
+Suggestion 2
+
+def main():
+    n=int(input())
+    s=input()
+    s=s.upper()
+    for i in range(len(s)):
+        if ord(s[i])+n>90:
+            print(chr(ord(s[i])+n-26),end='')
+        else:
+            print(chr(ord(s[i])+n),end='')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    s = list(s)
+    for i in range(len(s)):
+        if ord(s[i]) + n > 90:
+            s[i] = chr(ord(s[i]) + n - 26)
+        else:
+            s[i] = chr(ord(s[i]) + n)
+    print(''.join(s))
+
+=======
+Suggestion 4
+
+def problems146_b():
+    n = int(input())
+    s = input()
+    for i in range(len(s)):
+        if ord(s[i]) + n > 90:
+            print(chr(ord(s[i]) + n - 26), end='')
+        else:
+            print(chr(ord(s[i]) + n), end='')
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    for i in s:
+        if ord(i)+n > ord('Z'):
+            print(chr(ord(i)+n-26),end='')
+        else:
+            print(chr(ord(i)+n),end='')
+    print()
+
+=======
+Suggestion 6
+
+def problem146_b():
+    N = int(input())
+    S = input()
+    S = list(S)
+    for i in range(len(S)):
+        S[i] = chr(ord(S[i]) + N)
+        if S[i] > 'Z':
+            S[i] = chr(ord(S[i]) - 26)
+    print(''.join(S))
+
+=======
+Suggestion 7
+
+def rotate(string, n):
+    if n == 0:
+        return string
+    if n > 0:
+        n = n % 26
+        for i in range(n):
+            string = string[1:] + string[0]
+        return string
+    if n < 0:
+        n = abs(n) % 26
+        for i in range(n):
+            string = string[-1] + string[:-1]
+        return string
+
+print(rotate('ABCXYZ', 2))
+print(rotate('ABCXYZ', 0))
+print(rotate('abcdefghijklmnopqrstuvwxyz', 13))
+
+=======
+Suggestion 8
+
+def move_letter(letter, n):
+    letter = ord(letter) + n
+    if letter > ord('Z'):
+        letter = letter - ord('Z') + ord('A') - 1
+    return chr(letter)
+
+=======
+Suggestion 9
+
+def move(s,n):
+    result = ''
+    for i in s:
+        if ord(i)+n > 90:
+            result += chr(ord(i)+n-26)
+        else:
+            result += chr(ord(i)+n)
+    return result
+
+=======
+Suggestion 10
+
+def problem146_b():
+    N = int(input())
+    S = input()
+
+    for i in range(len(S)):
+        tmp = ord(S[i]) + N
+        if tmp > ord('Z'):
+            tmp = tmp - ord('Z') + ord('A') - 1
+        print(chr(tmp),end='')

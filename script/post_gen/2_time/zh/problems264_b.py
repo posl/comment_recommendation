@@ -1,30 +1,82 @@
-#问题说明
-#在以下有15个垂直行和15个水平列的网格中，打印从上往下第R行和从左往下第C列的单元格的颜色。
-#在以下有15个垂直行和15个水平列的网格中。
-#
-#限制条件
-#1 ≦ R, C ≦ 15
-#R和C是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#R C
-#
-#输出
-#在上面的网格中，如果从顶部开始第R行和从左边开始第C列的单元格的颜色是黑色，则打印黑色；如果该单元格是白色，则打印白色。  请注意，是区分大小写的。
-#
-#输入样本 1
-#3 5
-#
-#样本输出1
-#黑色
-#在上面的网格中，从顶部起第3行和从左边起第5列的单元格是黑色的。  因此，黑色应该被打印出来。
-#
-#输入样本 2
-#4 5
-#
-#样本输出2
-#白色
-#在上面的网格中，从顶部第4行和从左边第5列的单元格是白色的。  因此，白色应该被打印出来。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    l, r = map(int, input().split())
+    print("atcoder"[l - 1 : r])
+
+=======
+Suggestion 2
+
+def main():
+    str = "atcoder"
+    l, r = map(int, input().split())
+    print(str[l-1:r])
+
+=======
+Suggestion 3
+
+def main():
+    L, R = map(int, input().split())
+    atcoder = 'atcoder'
+    print(atcoder[L-1:R])
+
+=======
+Suggestion 4
+
+def problem264_a():
+    l,r = map(int,input().split())
+    s = 'atcoder'
+    print(s[l-1:r])
+
+=======
+Suggestion 5
+
+def main():
+    l, r = map(int, input().split())
+    s = "atcoder"
+    print(s[l-1:r])
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    l = int(s.split(' ')[0])
+    r = int(s.split(' ')[1])
+    print('atcoder'[l-1:r])
+
+=======
+Suggestion 7
+
+def main():
+    string = "atcoder"
+    l, r = map(int, input().split())
+    print(string[l-1:r])
+
+=======
+Suggestion 8
+
+def main():
+    l, r = map(int, input().split())
+    s = 'atcoder'
+    print(s[l-1:r])
+
+=======
+Suggestion 9
+
+def print_atcoder(L,R):
+    atcoder = 'atcoder'
+    print(atcoder[L-1:R])
+
+=======
+Suggestion 10
+
+def print_str():
+    str = "atcoder"
+    l, r = input().split()
+    l = int(l)
+    r = int(r)
+    print(str[l-1:r])

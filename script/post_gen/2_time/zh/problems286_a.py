@@ -1,53 +1,187 @@
-#问题陈述
-#给你一个长度为N的序列A=(A_1,A_2,...,A_N)和正整数P,Q,R,和S。
-#这里，P,Q,R,和S满足1≦ P≦ Q<R≦ S ≦ N和Q-P=S-R。
-#让B=(B_1, B_2,..., B_N)是通过交换A的P项到Q项和R项到S项得到的序列。
-#打印序列B。
-#
-#限制条件
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N P Q R S
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1，B_2，...，B_N，中间有空格。
-#
-#输入样本 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#样本输出 1
-#5 6 7 4 1 2 3 8
-#将序列A=(1,2,3,4,5,6,7,8)的第1项到第3项(1,2,3)和第5项到第7项(5,6,7)进行交换
-#结果是B=(5,6,7,4,1,2,3,8)，应在中间加空格打印。
-#
-#输入样本2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#样本输出 2
-#2 1 1 2 1
-#同一整数可能在序列中出现多次。
-#
-#输入样本 3
-#2 1 1 2 2
-#50 100
-#
-#样本输出3
-#100 50
-#
-#样本输入4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#样本输出 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_ok():
+    for i in range(N):
+        if S[i] == T[i]:
+            return False
+        for j in range(i+1, N):
+            if S[i] == T[j] or T[i] == S[j]:
+                return False
+    return True
+
+N = int(input())
+S, T = [], []
+for i in range(N):
+    s, t = input().split()
+    S.append(s)
+    T.append(t)
+
+=======
+Suggestion 2
+
+def check(s,t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return False
+    if s[0] == t[0]:
+        return False
+    return True
+
+=======
+Suggestion 3
+
+def is_okay():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(b)
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if s[i] == s[j] or s[i] == t[j] or t[i] == s[j] or t[i] == t[j]:
+                return "No"
+    return "Yes"
+
+print(is_okay())
+
+=======
+Suggestion 4
+
+def check(s, t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return True
+    if s[0] == t[0]:
+        return check(s[1:], t[1:])
+    if s[-1] == t[-1]:
+        return check(s[:-1], t[:-1])
+    return False
+
+=======
+Suggestion 5
+
+def judge(n, s, t):
+    if n == 1:
+        return 'Yes'
+    else:
+        for i in range(n):
+            if s[i] == t[i]:
+                return 'No'
+        for i in range(n):
+            for j in range(i+1, n):
+                if s[i] == t[j] and s[j] == t[i]:
+                    return 'Yes'
+        return 'No'
+
+=======
+Suggestion 6
+
+def dfs(i):
+    global flag
+    if i == n:
+        flag = True
+        return
+    if not flag:
+        if used[s[i]] == 0 and used[t[i]] == 0:
+            used[s[i]] = 1
+            used[t[i]] = 1
+            dfs(i+1)
+            used[s[i]] = 0
+            used[t[i]] = 0
+        if used[s[i]] == 1 and used[t[i]] == 0:
+            used[t[i]] = 1
+            dfs(i+1)
+            used[t[i]] = 0
+        if used[s[i]] == 0 and used[t[i]] == 1:
+            used[s[i]] = 1
+            dfs(i+1)
+            used[s[i]] = 0
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        si, ti = input().split()
+        s.append(si)
+        t.append(ti)
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if s[i] == t[j]:
+                    s[i], s[j] = s[j], s[i]
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        temp = input().split()
+        s.append(temp[0])
+        t.append(temp[1])
+    for i in range(n):
+        if s[i] in t:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+        t.append(input())
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and s[i] == t[j]:
+                print('No')
+                return
+
+    print('Yes')
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    ss = []
+    ts = []
+    for i in range(n):
+        s, t = input().split()
+        ss.append(s)
+        ts.append(t)
+    #print(ss, ts)
+    for i in range(n):
+        if ss[i] == ts[i]:
+            print('No')
+            return
+    for i in range(n):
+        for j in range(i+1, n):
+            if ss[i] == ts[j] and ss[j] == ts[i]:
+                print('Yes')
+                return
+    print('No')

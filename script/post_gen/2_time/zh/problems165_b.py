@@ -1,39 +1,117 @@
-#问题陈述
-#高桥在AtCoder银行有一笔100日元（日本的货币）的存款。
-#该银行的年利率为1%，每年复利。(小于1日元的部分被舍弃）。
-#假设除利息外没有其他因素影响高桥的余额，那么在多少年后，余额首次达到X日元或以上？
-#
-#限制条件
-# 101 ≦ X ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#X
-#
-#輸出
-#打印高桥的余额首次达到X日元或以上所需的年数。
-#
-#样本输入1
-#103
-#
-#样本输出1
-#3
-#一年后的余额为101日元。
-#两年后的余额是102日元。
-#三年后的余额是103日元。
-#因此，余额需要三年才能达到103日元或以上。
-#
-#样本输入2
-#1000000000000000000
-#
-#样本输出2
-#3760
-#
-#样本输入3
-#1333333333
-#
-#样本输出3
-#1706
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0 or a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a,b = map(int,input().split())
+    if (a%k == 0) or (b%k == 0):
+        print("OK")
+    elif (a//k < b//k):
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    if A % K == 0 or B % K == 0 or (A // K < B // K):
+        print("OK")
+    else:
+        print("NG")
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a%k == 0 or b%k == 0:
+        print('OK')
+    elif a//k != b//k:
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 5
+
+def a165(k,a,b):
+    if a%k==0 or b%k==0:
+        print('OK')
+    elif a//k==b//k:
+        print('NG')
+    else:
+        print('OK')
+
+k=int(input())
+a,b=map(int,input().split())
+a165(k,a,b)
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0 or (a // k) != (b // k):
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+    elif a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+        return
+    if a // k != b // k:
+        print("OK")
+        return
+    print("NG")
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0:
+        print('OK')
+    elif b // k > a // k:
+        print('OK')
+    else:
+        print('NG')

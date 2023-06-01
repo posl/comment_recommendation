@@ -1,57 +1,211 @@
-#问题陈述
-#我们有2N个球。每个球都有一个颜色，由1到N（包括）之间的一个整数表示。对于N种颜色中的每一种，正好有两个该颜色的球。
-#这些球被装在垂直于地面的M个圆柱体中。最初，第i个圆柱体（1 ≦ i ≦ M）包含k_i个球，其中从上往下第j个（1 ≦ j ≦ k_i）的颜色是a_{i, j}。
-#你的目标是通过重复以下操作清空所有M个圆柱体。
-#选择两个不同的非空圆柱体，从每个圆柱体中取出最上面的球。这里，被移走的两个球必须是同一颜色的。
-#判断该目标是否可以实现。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 2 × 10^5
-#1 ≦ k_i (1 ≦ i ≦ M)
-#1 ≦ a_{i,j} ≦ N (1 ≦ i ≦ M,1 ≦ j ≦ k_i)
-#sum_{i=1}^{M} k_i = 2N
-#对于每个x (1 ≦ x ≦ N)，存在正好两对整数(i,j)，使得1 ≦ i ≦ M, 1 ≦ j ≦ k_i, and a_{i,j}=x。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#k_1
-#a_{1,1} a_{1,2} ... a_{1,k_1}
-#k_2
-#a_{2,1} a_{2,2} ... a_{2,k_2}
-#.
-#.
-#.
-#k_M
-#a_{M,1} a_{M,2} ... a_{M,k_M}
-#
-#输出
-#如果目标可以实现，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 2
-#2
-#1 2
-#2
-#1 2
-#
-#样品输出1
-#Yes
-#目标可以通过以下方式实现。
-#选择第一个和第二个圆柱体，从每个圆柱体中取出最上面的球，这是允许的，因为取出的球有相同的颜色：1.
-#选择第一个和第二个圆柱体，从每个圆柱体中取出最上面的球，这是允许的，因为取出的球有相同的颜色：2。
-#
-#输入样本 2
-#2 2
-#2
-#1 2
-#2
-#2 1
-#
-#样本输出2
-#No
-#完全不能进行任何操作，这意味着不可能实现清空M缸的目标。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n == 1:
+        return "A"
+    elif n == 2:
+        return "B"
+    elif n % 2 == 0:
+        return f(n // 2) + "B"
+    else:
+        return f(n - 1) + "A"
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 2
+
+def solve(n):
+    if n == 1:
+        return 'A'
+    if n % 2 == 0:
+        return solve(n // 2) + 'B'
+    else:
+        return solve(n - 1) + 'A'
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("A")
+        return
+    if n == 2:
+        print("AA")
+        return
+    if n == 3:
+        print("AAA")
+        return
+    if n == 4:
+        print("AABA")
+        return
+
+    # 2, 4, 8, 16, 32, 64
+    # 3, 6, 12, 24, 48, 96
+    # 5, 10, 20, 40, 80
+    # 7, 14, 28, 56
+    # 9, 18, 36, 72
+    # 11, 22, 44, 88
+    # 13, 26, 52
+    # 15, 30, 60
+    # 17, 34, 68
+    # 19, 38, 76
+    # 21, 42, 84
+    # 23, 46, 92
+    # 25, 50
+    # 27, 54
+    # 29, 58
+    # 31, 62
+    # 33, 66
+    # 35, 70
+    # 37, 74
+    # 39, 78
+    # 41, 82
+    # 43, 86
+    # 45, 90
+    # 47, 94
+    # 49
+    # 51
+    # 53
+    # 55
+    # 57
+    # 59
+    # 61
+    # 63
+    # 65
+    # 67
+    # 69
+    # 71
+    # 73
+    # 75
+    # 77
+    # 79
+    # 81
+    # 83
+    # 85
+    # 87
+    # 89
+    # 91
+    # 93
+    # 95
+    # 97
+    # 99
+    # 101
+    # 103
+    # 105
+    # 107
+    # 109
+    # 111
+    # 113
+    # 115
+
+=======
+Suggestion 4
+
+def f(n):
+    if n==0:
+        return ''
+    if n%2==0:
+        return f(n//2)+'B'
+    else:
+        return f(n-1)+'A'
+
+print(f(int(input())))
+
+=======
+Suggestion 5
+
+def solve(n):
+    if n == 0:
+        return ''
+    elif n == 1:
+        return 'A'
+    elif n % 2 == 0:
+        return solve(n // 2) + 'B'
+    else:
+        return solve(n - 1) + 'A'
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def f(n):
+    if n == 0:
+        return ''
+    if n % 2 == 0:
+        return f((n - 2) // 2) + 'b'
+    else:
+        return f((n - 1) // 2) + 'a'
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    while n > 0:
+        if n % 2 == 0:
+            s.append('B')
+            n = n // 2
+        else:
+            s.append('A')
+            n -= 1
+    print(''.join(reversed(s)))
+
+=======
+Suggestion 8
+
+def solve(n):
+    res = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            res.append('B')
+        else:
+            n = n - 1
+            res.append('A')
+    return ''.join(res[::-1])
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 9
+
+def solve(n):
+    ans = ''
+    while n > 0:
+        if n % 2 == 0:
+            n //= 2
+            ans += 'B'
+        else:
+            n -= 1
+            ans += 'A'
+    return ans[::-1]
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 10
+
+def getMinSteps(n):
+    steps = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n / 2
+            steps.append('B')
+        else:
+            n = n - 1
+            steps.append('A')
+    return steps[::-1]

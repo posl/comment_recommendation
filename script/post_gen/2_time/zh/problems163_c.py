@@ -1,62 +1,107 @@
-#问题陈述
-#一家公司有N个成员，他们的ID号是1，...，N。
-#除了编号为1的成员外，每个成员都有一个ID号较小的直接上司。
-#当一个人X是一个人Y的直接上司时，这个人Y被称为X的直接下属。
-#你得到的信息是，编号为i的成员的直接上司是编号为A_i的成员。对于每个成员，找出它有多少个直接下属。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i < i
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_2 ...A_N
-#
-#输出
-#对于每一个编号为1，2，...，N的成员，打印它的直属下级的数量，在它自己的行中。
-#
-#输入样本 1
-#5
-#1 1 2 2
-#
-#样本输出 1
-#2
-#2
-#0
-#0
-#0
-#编号为1的成员有两个直接下属：编号为2和3的成员。
-#编号为2的成员有两个直接下属：编号为4和5的成员。
-#编号为3、4、5的成员没有直接下属。
-#
-#样本输入2
-#10
-#1 1 1 1 1 1 1 1 1
-#
-#样本输出2
-#9
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#
-#样本输入3
-#7
-#1 2 3 4 5 6
-#
-#样本输出3
-#1
-#1
-#1
-#1
-#1
-#1
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if sum(A) <= N:
+        print(N - sum(A))
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n - sum(a))
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n - sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) > N:
+        print(-1)
+    else:
+        print(N - sum(A))
+
+=======
+Suggestion 5
+
+def solve(n, m, a):
+    if n < sum(a):
+        return -1
+    else:
+        return n - sum(a)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    print(n - sum(a) if n >= sum(a) else -1)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    total = sum(a)
+    if total > n:
+        print(-1)
+    else:
+        print(n - total)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    sum = 0
+    for i in range(M):
+        sum += A[i]
+    if sum == N:
+        print(0)
+    elif sum > N:
+        print(-1)
+    else:
+        print(N - sum)
+
+=======
+Suggestion 9
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) > n:
+        print(-1)
+        return
+    print(n - sum(a))

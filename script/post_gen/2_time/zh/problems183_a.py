@@ -1,35 +1,140 @@
-#问题陈述
-#函数ReLU的定义如下：
-#给定一个整数x，求ReLU(x)。
-#
-#约束条件
-#x是一个整数。
-# -10 ≦ x ≦ 10
-#
-#输入
-#输入由标准输入提供，格式如下：
-#x
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#1
-#
-#样本输出 1
-#1
-#我们有1≧0，所以ReLU(1)=1。
-#
-#样本输入2
-#0
-#
-#采样输出2
-#0
-#
-#采样输入3
-#-1
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = 0
+    s = 0
+    for i in range(n):
+        x += a[i]
+        s = max(s, x)
+    print(s)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        if i % 2 == 1:
+            ans -= 2 * a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    minx = 0
+    ans = 0
+    for i in range(1, n+1):
+        ans = max(ans, s[i] - minx)
+        minx = min(minx, s[i])
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    pos = 0
+    max_pos = 0
+    for a in A:
+        pos += a
+        if pos > max_pos:
+            max_pos = pos
+    print(max_pos)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    maxa = 0
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum > maxa:
+            maxa = sum
+    print(maxa)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    ans = 0
+    for i in range(n):
+        ans = max(ans, s[i + 1])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    s[0] = a[0]
+    for i in range(1, n):
+        s[i] = s[i-1] + a[i]
+    print(max(s))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = 0
+    ans = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans
+    print(max(a))
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+solve()

@@ -1,47 +1,155 @@
-#问题陈述
-#高桥是一名收银员。
-#有一个收银机，有11个键：00，0，1，2，3，4，5，6，7，8，和9。
-#收银机最初显示0。
-#每当他输入00键时，显示的数字就会乘以100；
-#每当他输入一个其他的键，显示的数字就会乘以10，然后再加上写在键上的数字。
-#高桥希望收银机显示一个整数S。
-#至少需要敲多少次键盘才能使它显示S？
-#
-#限制条件
-#1≦ S≦ 10^{100000}
-#S是一个整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#S
-#
-#輸出
-#在一行中打印出答案。
-#
-#输入样本1
-#40004
-#
-#样本输出1
-#4
-#例如，下面的四个按键使收银机显示40004。
-#初始时，收银机显示0。
-#输入键4。  现在显示4。
-#键入00。  现在显示400。
-#键入0。  现在显示4000。
-#键入键4。  现在显示40004。
-#他不能用三个或更少的键来使它显示40004，所以4应该被打印出来。
-#
-#输入样本2
-#1355506027
-#
-#输出样本2
-#10
-#
-#样本输入3
-#10888869450418352160768000001
-#
-#样本输出3
-#27
-#注意，S可能不适合64位的整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1]-1] = query[2]
+        elif query[0] == 2:
+            print(a[query[1]-1])
+
+=======
+Suggestion 2
+
+def processQuery(q):
+    if q[0] == 1:
+        A[q[1]] = q[2]
+    elif q[0] == 2:
+        print(A[q[1]])
+
+N = int(input())
+A = [0] + list(map(int, input().split()))
+Q = int(input())
+query = [list(map(int, input().split())) for _ in range(Q)]
+
+for q in query:
+    processQuery(q)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int,input().split())))
+
+    for i in range(Q):
+        if query[i][0] == 1:
+            A[query[i][1]-1] = query[i][2]
+        else:
+            print(A[query[i][1]-1])
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    q = int(input())
+    for i in range(q):
+        cmd = list(map(int,input().split()))
+        if cmd[0] == 1:
+            a[cmd[1]-1] = cmd[2]
+        elif cmd[0] == 2:
+            print(a[cmd[1]-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A[query[1]-1] = query[2]
+        elif query[0] == 2:
+            print(A[query[1]-1])
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    # 依次处理查询
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        # 查询类型1
+        if query[0] == 1:
+            a[query[1] - 1] = query[2]
+        # 查询类型2
+        else:
+            print(a[query[1] - 1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        s = input().split()
+        if s[0] == '1':
+            a[int(s[1]) - 1] = int(s[2])
+        else:
+            print(a[int(s[1]) - 1])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1] - 1] = query[2]
+        else:
+            print(a[query[1] - 1])
+
+=======
+Suggestion 9
+
+def main():
+    #输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    #处理
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a[query[1]-1] = query[2]
+        elif query[0] == 2:
+            print(a[query[1]-1])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            A[query[1] - 1] = query[2]
+        else:
+            print(A[query[1] - 1])

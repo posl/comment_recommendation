@@ -1,44 +1,110 @@
-#问题陈述
-#给你两个字符串S和T。
-#判断是否有可能通过执行以下操作使S等于T，操作次数可能为零。
-#在S的两个连续相等的字符之间，插入一个与这些字符相等的字符。
-#也就是说，采取以下三个步骤。
-#设N为S的当前长度，S=S_1S_2......。S_N。
-#在1和N-1（包括）之间选择一个整数i，使得S_i = S_{i+1}。(如果没有这样的i，什么都不做，现在就终止操作，跳过第3步)。
-#在S的第i个和第(i+1)个字符之间插入一个字符S_i(=S_{i+1})的副本。S_i S_i S_{i+1} ...S_N。
-#
-#
-#约束条件
-#每个S和T都是一个长度在2到2×10^5（包括）之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#輸出
-#如果有可能使S等于T，打印Yes；否则，打印No。
-#请注意，法官是区分大小写的。
-#
-#输入样本1
-#abbaac
-#abbbbaaac
-#
-#样本输出1
-#Yes
-#你可以通过以下三个操作使S=abbaac等于T=abbbbaaac。
-#首先，在S的第2和第3个字符之间插入b，现在，S=abbbaac。
-#接下来，在S的第2和第3个字符之间再次插入b，现在，S=abbbbaac。
-#最后，在S的第6和第7个字符之间插入a，现在，S=abbbbaaac。
-#因此，Yes应该被打印出来。
-#
-#输入样本2
-#xyzz
-#xyyzz
-#
-#样本输出2
-#No
-#没有任何操作序列能使S = xyzz等于T = xyyzz。
-#因此，应该打印No。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate_point(x,y,d):
+    import math
+    rad = math.radians(d)
+    new_x = x*math.cos(rad) - y*math.sin(rad)
+    new_y = x*math.sin(rad) + y*math.cos(rad)
+    return new_x,new_y
+
+=======
+Suggestion 2
+
+def rotate(x, y, d):
+    import math
+    x1 = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d))
+    y1 = x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))
+    return (x1, y1)
+
+=======
+Suggestion 3
+
+def rotate(x, y, d):
+    import math
+    rad = math.radians(d)
+    sin = math.sin(rad)
+    cos = math.cos(rad)
+    return x * cos - y * sin, x * sin + y * cos
+
+=======
+Suggestion 4
+
+def rotate(a, b, d):
+    import math
+    rad = (d/180.0)*math.pi
+    x = a*math.cos(rad) - b*math.sin(rad)
+    y = a*math.sin(rad) + b*math.cos(rad)
+    return (x,y)
+
+=======
+Suggestion 5
+
+def rotate(x,y,d):
+    import math
+    rad=math.radians(d)
+    x1=x*math.cos(rad)-y*math.sin(rad)
+    y1=x*math.sin(rad)+y*math.cos(rad)
+    return x1,y1
+
+=======
+Suggestion 6
+
+def rotate(x, y, d):
+    import math
+    d = math.radians(d)
+    x1 = x * math.cos(d) - y * math.sin(d)
+    y1 = x * math.sin(d) + y * math.cos(d)
+    return x1, y1
+
+x, y, d = map(int, input().split())
+x1, y1 = rotate(x, y, d)
+print(x1, y1)
+
+=======
+Suggestion 7
+
+def rotate(a,b,d):
+    import math
+    d = math.radians(d)
+    a_ = a * math.cos(d) - b * math.sin(d)
+    b_ = a * math.sin(d) + b * math.cos(d)
+    return a_,b_
+
+a,b,d = map(float,input().split())
+a_,b_ = rotate(a,b,d)
+print(a_,b_)
+
+=======
+Suggestion 8
+
+def rotate(a,b,d):
+    import math
+    x = a*math.cos(math.radians(d)) - b*math.sin(math.radians(d))
+    y = a*math.sin(math.radians(d)) + b*math.cos(math.radians(d))
+    return x,y
+
+a,b,d = map(int,input().split())
+print(rotate(a,b,d))
+
+=======
+Suggestion 9
+
+def rotate(a, b, d):
+    import math
+    d = math.radians(d)
+    x = a * math.cos(d) - b * math.sin(d)
+    y = a * math.sin(d) + b * math.cos(d)
+    return x, y
+
+=======
+Suggestion 10
+
+def rotate(x,y,d):
+    import math
+    d = math.radians(d)
+    x_ = x*math.cos(d) - y*math.sin(d)
+    y_ = x*math.sin(d) + y*math.cos(d)
+    return x_,y_

@@ -1,49 +1,88 @@
-#问题陈述
-#一家商店里有N种商品。对于每个i=1，2，...，N，第i种商品的价格是A_i日元（日本的货币）。
-#高桥有K张优惠券。
-#每张优惠券可用于一件商品。你可以在同一件商品上使用任何数量的优惠券，可能是零。在一件价格为a日元的商品上使用k张优惠券，可以用最大{a-kX，0}日元的价格购买。
-#打印出高桥购买所有物品所需的最低金额。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ k, x ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K X
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4 7
-#8 3 10 5 13
-#
-#样本输出1
-#12
-#通过在第1件商品上使用1张优惠券，在第3件商品上使用1张优惠券，在第5件商品上使用2张优惠券，高桥可以：
-#以最大{A_1-X, 0 } = 1日元的价格购买第1件商品、
-#以最大{A_2, 0 }=3日元的价格购买第2件商品、
-#购买第3件物品，最大价格{A_3-X, 0 } = 3日元、
-#买入第4件商品，最大{A_4, 0 } = 5日元、
-#以最大{A_5-2X, 0 }=0日元的价格购买第5件物品、
-#总共1+3+3+5+0=12日元，这是最小的可能。
-#
-#输入样本 2
-#5 100 7
-#8 3 10 5 13
-#
-#样本输出2
-#0
-#
-#样本输入3
-#20 815 60
-#2066 3193 2325 4030 3725 1669 1969 763 1653 159 5311 5341 4671 2374 4513 285 810 742 2981 202
-#
-#样本输出3
-#112
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def move(x,y):
+    x = x - 0.5
+    y = y - 0.5
+    return x,y
+
+=======
+Suggestion 2
+
+def getPoint(A,B):
+    # x = A / (A + B)
+    # y = B / (A + B)
+    x = 1 / (1 + B / A)
+    y = 1 / (1 + A / B)
+    return x,y
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    if A == 0 and B == 0:
+        print(0,0)
+    else:
+        x = A/(A**2 + B**2)**0.5
+        y = B/(A**2 + B**2)**0.5
+        print(x,y)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    print(a/b, b/a)
+
+=======
+Suggestion 5
+
+def get_pos(a, b):
+    if a == 0:
+        return 0, 1
+    elif b == 0:
+        return 1, 0
+    else:
+        c = (a**2 + b**2)**0.5
+        return a/c, b/c
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    print(A/(A**2+B**2)**0.5,B/(A**2+B**2)**0.5)
+
+=======
+Suggestion 7
+
+def get_distance(a, b):
+    return (a*a + b*b)**0.5
+
+=======
+Suggestion 8
+
+def problems246_b():
+    a,b = [int(i) for i in input().split()]
+    x = a * 1.0 / (a * a + b * b) ** 0.5
+    y = b * 1.0 / (a * a + b * b) ** 0.5
+    print(x,y)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    print(a/(a**2+b**2)**0.5,b/(a**2+b**2)**0.5)
+
+=======
+Suggestion 10
+
+def main():
+    a,b = map(int, input().split())
+    x = a/(a**2+b**2)**0.5
+    y = b/(a**2+b**2)**0.5
+    print('{:.12f} {:.12f}'.format(x,y))

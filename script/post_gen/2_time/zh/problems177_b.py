@@ -1,36 +1,102 @@
-#问题陈述
-#给出两个字符串S和T。
-#让我们改变S中的一些字符，使T成为S的一个子串。
-#我们至少需要改变多少个字符？
-#这里，子串是一个连续的子序列。例如，xxx是yxxxy的一个子串，但不是xyxx的一个子串。
-#
-#限制条件
-#S和T的长度至少是1，最多是1000。
-#T的长度最多就是S的长度。
-#S和T由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#输出
-#打印S中需要改变的最小字符数。
-#
-#输入样本1
-#cabacc
-#abc
-#
-#样本输出1
-#1
-#例如，将S中的第四个字符a改为c，就可以将S中的第二至第四个字符匹配到T。
-#由于S本身没有T作为它的子串，这个变化的数量--1--是最小的需要。
-#
-#输入样本2
-#codeforces
-#atcoder
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_on_time(D,T,S):
+    if D/S <= T:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 2
+
+def problem177_a():
+    d,t,s = map(int, raw_input().split())
+    if d <= s*t:
+        print "Yes"
+    else:
+        print "No"
+problem177_a()
+
+=======
+Suggestion 3
+
+def problem177_a():
+    d,t,s = map(int,input().split())
+    if d <= t*s:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def problem177_a():
+    D, T, S = map(int, input().split())
+    if D / S <= T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    d, t, s = map(int, input().split())
+    print("Yes" if d <= t * s else "No")
+
+=======
+Suggestion 6
+
+def problem177_a():
+    # 输入
+    D, T, S = map(int, input().split())
+
+    # 处理
+    if D / S <= T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    D, T, S = map(int, input().split())
+
+    if D <= T * S:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    d,t,s = map(int, input().split())
+    if d <= t*s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    d, t, s = (int(i) for i in input().split())
+    if d <= t * s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    D,T,S = map(int,input().split())
+    if D <= T*S:
+        print("Yes")
+    else:
+        print("No")

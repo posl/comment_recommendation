@@ -1,42 +1,43 @@
-#问题陈述
-#给你两个字符串S和T，判断是否有可能通过最多一次以下操作使S和T相等：
-#在S中选择两个相邻的字符并将它们交换。
-#请注意，可以选择不做这个操作。
-#
-#限制条件
-#S和T中的每一个都是长度在2到100（包括）之间的字符串，由小写英文字母组成。
-#S和T有相同的长度。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#輸出
-#如果有可能通过最多一次问题陈述中的操作使S和T相等，则打印Yes；否则，打印No。
-#
-#输入样本1
-#abc
-#acb
-#
-#样品输出1
-#Yes
-#你可以调换S的第2和第3个字符，使S和T相等。
-#
-#输入样本2
-#aabb
-#bbaa
-#
-#样本输出2
-#No
-#没有办法进行使S和T相等的操作。
-#
-#输入样本3
-#abcde
-#abcde
-#
-#样本输出3
-#Yes
-#S和T已经相等。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = map(int,input().split())
+    print(32**(A-B))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = input().split()
+    A = int(A)
+    B = int(B)
+    if A < 3 or A > 9 or B < 3 or B > 9:
+        print("输入错误")
+    else:
+        print(32 ** (A - B))
+
+=======
+Suggestion 3
+
+def problems221_a():
+    a,b = map(int,input().split())
+    print(32**(a-b))
+
+=======
+Suggestion 4
+
+def main():
+    #print("请输入两个整数，中间用空格隔开")
+    a,b = map(int,input().split())
+    #print("a=",a,"b=",b)
+    print(32**(a-b))
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    print(32**(a-b))

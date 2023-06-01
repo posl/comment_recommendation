@@ -1,59 +1,180 @@
-#问题陈述
-#高桥有N种硬币；
-#具体来说，对于1≦i≦N，他有B_i个硬币，每个硬币价值A_i日元（日本的货币）。
-#请确定高桥是否能用他目前拥有的硬币准确支付X日元（不找零）。
-#
-#限制条件
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥能用他目前拥有的硬币正好支付X日元，则打印Yes；
-#否则打印No。
-#
-#输入样本 1
-#2 19
-#2 3
-#5 6
-#
-#样本输出1
-#Yes
-#高桥有三个2日元的硬币和六个5日元的硬币。
-#他可以用两个2元硬币和三个5元硬币来支付2×2+5×3=19日元。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#2 18
-#2 3
-#5 6
-#
-#样本输出2
-#No
-#没有一个硬币的组合可以让他正好支付18日元。
-#因此，应该打印No。
-#
-#输入样本3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#样本输出3
-#Yes
-#他不需要使用所有种类的硬币。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N//2):
+        if S[i] != S[-i-1]:
+            ans += 1
+    if ans == 0:
+        print(0)
+    elif ans == 1:
+        print(A)
+    else:
+        print(ans * B + A)
+
+=======
+Suggestion 2
+
+def isPalindromic(s):
+    for i in range(0, int(len(s)/2)):
+        if s[i] != s[-(i+1)]:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == 'a':
+            if A > 0:
+                ans += 1
+                A -= 1
+        elif S[i] == 'b':
+            if B > 0:
+                ans += 1
+                B -= 1
+                if A > 0:
+                    ans += 1
+                    A -= 1
+        else:
+            if B > 0:
+                ans += 1
+                B -= 1
+                if A > 0:
+                    ans += 1
+                    A -= 1
+            elif A > 0:
+                ans += 1
+                A -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def getMinCost(s, a, b):
+    if len(s) == 0:
+        return 0
+    if len(s) == 1:
+        return a
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 0
+        else:
+            return min(a, b)
+    if s[0] == s[-1]:
+        return getMinCost(s[1:-1], a, b)
+    else:
+        return min(getMinCost(s[1:], a, b) + a, getMinCost(s[:-1], a, b) + a, getMinCost(s[1:-1], a, b) + b)
+
+=======
+Suggestion 6
+
+def palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def solve():
+    n,a,b=input().split()
+    s=input()
+    n=int(n)
+    a=int(a)
+    b=int(b)
+    #print(n,a,b,s)
+    if n%2==0:
+        #print("n为偶数")
+        if a>b:
+            #print("a>b")
+            #print("b*(n//2)+a")
+            print(b*(n//2)+a)
+        else:
+            #print("a<=b")
+            #print("a*n")
+            print(a*n)
+    else:
+        #print("n为奇数")
+        if a>b:
+            #print("a>b")
+            #print("b*(n//2)+a")
+            print(b*(n//2)+a)
+        else:
+            #print("a<=b")
+            #print("a*(n-1)+b")
+            print(a*(n-1)+b)
+
+=======
+Suggestion 8
+
+def main():
+    N,A,B = map(int,input().split())
+    S = input()
+    #print(N,A,B)
+    #print(S)
+    cnt = 0
+    for i in range(N):
+        if S[i] == S[N-1-i]:
+            cnt += 1
+    if cnt == N:
+        print(A*N+B*(N-1))
+    elif cnt == N-1:
+        print(A*N+B)
+    elif cnt < N-1:
+        print(A*N)
+
+=======
+Suggestion 9
+
+def main():
+    N,A,B = map(int,input().split())
+    S = input()
+    S_r = S[::-1]
+    count = 0
+    for i in range(N//2):
+        if S[i] != S_r[i]:
+            if S[i] == 'a':
+                count += A
+                S = S[:i] + 'a' + S[i+1:]
+            elif S_r[i] == 'a':
+                count += A
+                S = S[:N-i-1] + 'a' + S[N-i:]
+            else:
+                count += B
+                S = S[:i] + 'a' + S[i+1:]
+                S = S[:N-i-1] + 'a' + S[N-i:]
+    if N % 2 == 1:
+        if S[N//2] == 'a':
+            count += A
+        else:
+            count += B
+    print(count)
+
+=======
+Suggestion 10
+
+def isPalindromic(s):
+    if len(s) == 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return isPalindromic(s[1:-1])
+        else:
+            return False

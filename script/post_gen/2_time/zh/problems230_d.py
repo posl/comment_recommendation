@@ -1,72 +1,123 @@
-#问题陈述
-#在一个被划分为N行10^9列的网格中，有N面墙，编号为1到N。
-#墙的范围从L_i-th列到R_i-th列，从顶部开始的第i行的左边。
-# 1.)
-#高桥决定要摧毁所有N面墙。
-#以他超人的力量，他的一拳可以同时破坏连续的D列。
-#更正式地说，他可以在1和10^9-D+1（包括）之间选择一个整数x，来破坏所有存在于（或部分存在于）第x列到（x+D-1）列的、尚未被破坏的墙。
-#当墙的一部分被破坏时，整个墙将被冲撞破坏。
-#(也见样本输入和输出的图
-# 1.)
-#高桥至少需要打多少次拳才能摧毁所有的墙？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#输出
-#打印摧毁所有墙体所需的最小打孔数。
-#
-#输入样本 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#输出样本1
-#2
-#下图描述了样本输入1中墙体的排列情况
-#.
-#他可以用两拳摧毁所有的墙，比如下面的方法。(下面，lbrack a, b rbrack表示从第a列到第b列的范围)。
-#首先，打出lbrack 2, 4 rbrack。在lbrack 2, 4 rbrack中存在的墙--墙1和墙2--被损坏和摧毁。
-#第二，打通lbrack 5, 7 rbrack。在lbrack 5, 7 rbrack中存在的墙--墙3--被损坏和摧毁。
-#也可以通过这种方式，用两个拳头破坏所有的墙：
-#首先，击打lbrack 7, 9 rbrack来摧毁墙体2和3。
-#第二，打lbrack 1, 3 rbrack来摧毁墙1。
-#
-#输入样本 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#样本输出2
-#1
-#与样本输入/输出的区别
-# 1的区别是，墙3现在覆盖了lbrack 4, 9 rbrack，而不是lbrack 5, 9 rbrack。
-#在这种情况下，他可以打lbrack 2, 4 rbrack，一拳摧毁所有的墙。
-#
-#输入样本 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f1():
+    N,A,B = map(int, input().split())
+    P,Q,R,S = map(int, input().split())
+    #print(N,A,B,P,Q,R,S)
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q + 1):
+        for j in range(r, s + 1):
+            if (i + j) % 2 == (a + b) % 2:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def paint(a,b,n):
+    #a,b表示起始点的坐标，n表示方块的大小
+    for i in range(a,a+n):
+        for j in range(b,b+n):
+            if i+j == a+b+n-1:
+                print('#',end='')
+            else:
+                print('.',end='')
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    #读取数据
+    n,a,b = map(int,input().split())
+    p,q,r,s = map(int,input().split())
+    #初始化
+    #矩阵
+    matrix = [['.' for i in range(n)] for j in range(n)]
+    #计算最大最小值
+    min1 = min(1-a,1-b)
+    max1 = max(n-a,n-b)
+    min2 = min(1-a,b-n)
+    max2 = max(n-a,b-1)
+    #对矩阵进行填充
+    for i in range(min1,max1+1):
+        matrix[a+i-1][b+i-1] = '#'
+    for i in range(min2,max2+1):
+        matrix[a+i-1][b-i-1] = '#'
+    #输出结果
+    for i in range(p-1,q):
+        print(''.join(matrix[i][r-1:s]))
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q+1):
+        for j in range(r, s+1):
+            if (max(1-a, 1-b) <= i-j <= min(n-a, n-b)) or (max(1-a, b-n) <= i+j <= min(n-a, b-1)):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 7
+
+def solve(n, a, b, p, q, r, s):
+    #print("n=%d, a=%d, b=%d, p=%d, q=%d, r=%d, s=%d" % (n, a, b, p, q, r, s))
+    ret = []
+    for i in range(p, q+1):
+        ret.append([])
+        for j in range(r, s+1):
+            ret[i-p].append('.')
+    for k in range(max(1-a, 1-b), min(n-a, n-b)+1):
+        ret[a+k-p][b+k-r] = '#'
+    for k in range(max(1-a, b-n), min(n-a, b-1)+1):
+        ret[a+k-p][b-k-r] = '#'
+    for k in range(max(a-n, 1-b), min(a-1, n-b)+1):
+        ret[a-k-p][b+k-r] = '#'
+    for k in range(max(a-n, b-n), min(a-1, b-1)+1):
+        ret[a-k-p][b-k-r] = '#'
+    for i in range(q-p+1):
+        print(''.join(ret[i]))
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i+j)%2 == (A+B)%2:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()

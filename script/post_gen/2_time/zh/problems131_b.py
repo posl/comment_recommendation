@@ -1,41 +1,128 @@
-#问题陈述
-#你有N个苹果，分别称为苹果1、苹果2、苹果3、...、苹果N。苹果i的味道是L+i-1，可以是负数。
-#你可以用其中一个或多个苹果做一个苹果派。苹果派的味道将是所用苹果的味道之和。
-#你打算用所有的苹果做一个苹果派，但由于饥饿，你吃了其中一个苹果，这就不能再用来做苹果派了。
-#你想做一个与你计划做的苹果派尽可能相似的苹果派。因此，你要选择一个苹果来吃，使剩下的N-1个苹果做成的苹果派的味道与所有N个苹果做成的苹果派的味道有尽可能小的绝对差异。
-#当你按上述方法选择苹果吃时，请找出由剩余的N-1个苹果做成的苹果派的味道。
-#我们可以证明，这个值是唯一确定的。
-#
-#约束条件
-#2 ≦ N ≦ 200
-#-100 ≦ L ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N L
-#
-#输出
-#当你以最佳方式选择吃的苹果时，找出由剩余的N-1个苹果做成的苹果派的味道。
-#
-#输入样本 1
-#5 2
-#
-#样本输出 1
-#18
-#苹果1、2、3、4、5的口味分别为2、3、4、5、6。最佳选择是吃苹果1，所以答案是3+4+5+6=18。
-#
-#输入样本 2
-#3 -1
-#
-#样本输出2
-#0
-#苹果1、2、3的口味分别为-1、0、1。最佳选择是吃苹果2，所以答案是（-1）+1=0。
-#
-#样本输入3
-#30 -50
-#
-#样本输出3
-#-1044
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == s[1] or s[1] == s[2] or s[2] == s[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] == s[2] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[1] == s[2] and s[2] != s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[1] != s[2] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] != s[1] and s[1] == s[2] and s[2] == s[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[2] and S[1] == S[3]:
+        print("Bad")
+    elif S[0] == S[3] and S[1] == S[2]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[2]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 6
+
+def isDifficultToInput(password):
+    if password[0] == password[1] and password[1] == password[2] and password[2] == password[3]:
+        return True
+    elif password[0] != password[1] and password[1] != password[2] and password[2] != password[3]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S[0]==S[1] or S[1]==S[2] or S[2]==S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[2] and S[1] == S[3]:
+        print("Bad")
+    elif S[0] == S[3] and S[1] == S[2]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print('Bad')
+    else:
+        print('Good')
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    S = input()
+    # 判断是否有两个连续的数字是相同的
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")

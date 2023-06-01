@@ -1,94 +1,235 @@
-#问题陈述
-#一个SNS有N个用户--用户1，用户2，...，用户N。
-#在这N个用户之间，有一些关系--M条友谊和K条阻隔。
-#对于每个i = 1, 2, ..., M，用户A_i和用户B_i之间有一个双向的友谊。
-#对于每个i = 1, 2, ..., K，在用户C_i和用户D_i之间有一个双向的阻隔关系。
-#当以下四个条件都满足时，我们定义用户a为用户b的候选好友：
-#a ≠ b。
-#用户a和用户b之间不存在友谊。
-#用户a和用户b之间不存在blockhip。
-#存在一个由1到N（包括）之间的整数组成的序列c_0, c_1, c_2, ..., c_L，使得c_0 = a, c_L = b，并且对于每个i = 0, 1, ..., L - 1的用户c_i和c_{i+1}之间存在友谊。
-#对于每个用户i = 1, 2, ...N，它有多少个朋友候选人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#按顺序打印答案，中间有空格。
-#
-#输入样本 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#样本输出1
-#0 1 0 1
-#用户2和3之间有友谊，3和4之间也有友谊。同时，用户2和4之间没有友谊或阻隔关系。因此，用户4是用户2的候选好友。
-#然而，用户1或3都不是用户2的候选朋友，所以用户2有一个候选朋友。
-#
-#样本输入2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#样本输出2
-#0 0 0 0 0
-#每个人都是其他人的朋友，没有朋友候选人。
-#
-#样本输入3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#输出样本3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s_i, c_i = map(int, input().split())
+        s.append(s_i)
+        c.append(c_i)
+    num = -1
+    for i in range(10**(N-1), 10**N):
+        flag = True
+        for j in range(M):
+            if str(i)[s[j]-1] != str(c[j]):
+                flag = False
+        if flag:
+            num = i
+            break
+    print(num)
+
+=======
+Suggestion 2
+
+def solve(n, m, sc):
+    if n == 1:
+        if m == 1:
+            return sc[0][1]
+        else:
+            return -1
+    elif n == 2:
+        if m == 1:
+            return sc[0][1] * 10 + sc[1][1]
+        elif m == 2:
+            if sc[0][0] == 1:
+                return sc[0][1] * 10 + sc[1][1]
+            else:
+                return sc[1][1] * 10 + sc[0][1]
+        else:
+            return -1
+    else:
+        if m == 1:
+            return sc[0][1] * 100 + sc[0][1] * 10 + sc[0][1]
+        elif m == 2:
+            if sc[0][0] == 1:
+                return sc[0][1] * 100 + sc[1][1] * 10 + sc[1][1]
+            elif sc[1][0] == 1:
+                return sc[1][1] * 100 + sc[0][1] * 10 + sc[0][1]
+            else:
+                return -1
+        elif m == 3:
+            if sc[0][0] == 1:
+                if sc[1][0] == 2:
+                    return sc[0][1] * 100 + sc[1][1] * 10 + sc[2][1]
+                else:
+                    return sc[0][1] * 100 + sc[2][1] * 10 + sc[1][1]
+            elif sc[1][0] == 1:
+                if sc[0][0] == 2:
+                    return sc[1][1] * 100 + sc[0][1] * 10 + sc[2][1]
+                else:
+                    return sc[1][1] * 100 + sc[2][1] * 10 + sc[0][1]
+            else:
+                if sc[0][0] == 2:
+                    return sc[2][1] * 100 + sc[0][1] * 10 + sc[1][1]
+                else:
+                    return sc[2][1] * 100 + sc
+
+=======
+Suggestion 3
+
+def solve():
+    n,m = map(int, input().split())
+    sc = [list(map(int, input().split())) for _ in range(m)]
+    ans = -1
+    for i in range(10**(n-1), 10**n):
+        i = str(i)
+        for s,c in sc:
+            if i[s-1] != str(c): break
+        else:
+            ans = i
+            break
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    # 输入
+    n, m = map(int, input().split())
+    s = []
+    c = []
+    for i in range(m):
+        s_i, c_i = map(int, input().split())
+        s.append(s_i)
+        c.append(c_i)
+
+    # 求解
+    # 1. 生成所有满足条件的数字
+    # 2. 从小到大排序
+    # 3. 输出第一个数字
+    # 4. 如果没有满足条件的数字，输出-1
+    if n == 1:
+        print(c[0])
+    elif n == 2:
+        num = []
+        for i in range(10):
+            for j in range(10):
+                if i == c[0] and j == c[1]:
+                    num.append(i * 10 + j)
+        if len(num) > 0:
+            num.sort()
+            print(num[0])
+        else:
+            print(-1)
+    elif n == 3:
+        num = []
+        for i in range(10):
+            for j in range(10):
+                for k in range(10):
+                    if i == c[0] and j == c[1] and k == c[2]:
+                        num.append(i * 100 + j * 10 + k)
+        if len(num) > 0:
+            num.sort()
+            print(num[0])
+        else:
+            print(-1)
+
+=======
+Suggestion 5
+
+def get_num(n, m, s_c):
+    if n == 1:
+        if s_c[0][0] == 1:
+            return s_c[0][1]
+        else:
+            return -1
+    elif n == 2:
+        if s_c[0][0] == 1 and s_c[1][0] == 2:
+            return s_c[0][1]*10 + s_c[1][1]
+        else:
+            return -1
+    else:
+        if s_c[0][0] == 1 and s_c[1][0] == 2 and s_c[2][0] == 3:
+            return s_c[0][1]*100 + s_c[1][1]*10 + s_c[2][1]
+        else:
+            return -1
+
+=======
+Suggestion 6
+
+def problems157_c():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    s = [0 for _ in range(M)]
+    c = [0 for _ in range(M)]
+    for i in range(M):
+        s[i],c[i] = map(int,input().split())
+    for i in range(10**(N-1),10**N):
+        flag = True
+        for j in range(M):
+            if str(i)[s[j]-1] != str(c[j]):
+                flag = False
+                break
+        if flag:
+            print(i)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def get_input():
+    N, M = map(int, raw_input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s_i, c_i = map(int, raw_input().split())
+        s.append(s_i)
+        c.append(c_i)
+    return N, M, s, c
+
+=======
+Suggestion 9
+
+def sol():
+    n,m = map(int,input().split())
+    s = []
+    c = []
+    for i in range(m):
+        s_i,c_i = map(int,input().split())
+        s.append(s_i)
+        c.append(c_i)
+    for i in range(10**(n-1),10**n):
+        flag = True
+        for j in range(m):
+            if int(str(i)[s[j]-1]) != c[j]:
+                flag = False
+                break
+        if flag:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 10
+
+def problem157_c():
+    N, M = map(int, input().split())
+    s = []
+    c = []
+    for i in range(M):
+        s_i, c_i = map(int, input().split())
+        s.append(s_i)
+        c.append(c_i)
+    for i in range(10 ** (N-1), 10 ** N):
+        i_str = str(i)
+        for j in range(M):
+            if i_str[s[j] - 1] != str(c[j]):
+                break
+        else:
+            print(i)
+            break
+    else:
+        print(-1)

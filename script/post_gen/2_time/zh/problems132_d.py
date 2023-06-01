@@ -1,37 +1,154 @@
-#问题陈述
-#有K个蓝球和N-K个红球。相同颜色的球是无法区分的。Snuke和Takahashi正在玩这些球。
-#首先，Snuke将N个球从左到右排列成一排。
-#然后，Takahashi将只收集K个蓝球。在一次行动中，他可以收集任何数量的连续蓝球。他将以尽可能少的动作收集所有的蓝球。
-#Snuke有多少种方法可以将N个球排成一排，使Takahashi恰好需要i步来收集所有的蓝球？计算这个数字的模数为10^9+7，每一个i都是1≦i≦K。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 2000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#
-#输出
-#打印K行。第i行（1 ≦ i ≦ K）应该包含安排N个球的方法的数量，以便Takahashi正好需要i步来收集所有蓝球，模数为10^9+7。
-#
-#输入样本 1
-#5 3
-#
-#输出样本 1
-#3
-#6
-#1
-#有三种方法可以安排球，使Takahashi正好需要一步棋：（B，B，B，R，R），（R，B，B，B，R），以及（R，R，B，B，B）。(R和B分别代表红色和蓝色）。
-#有六种方法可以安排球，使Takahashi正好需要两步棋：（B，B，R，B，R），（B，B，R，R，B），（R，B，B，R，B），（R，B，R，B，B），（B，R，B，B，R），和（B，R，R，B，B）。
-#有一种方法可以安排这些球，使Takahashi正好需要三步棋：（B，R，B，R，B）。
-#
-#输入样本 2
-#2000 3
-#
-#样本输出2
-#1998
-#3990006
-#327341989
-#一定要打印出10^9+7的模数的排列数字。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    n = int(input())
+    d = list(map(int, input().split()))
+    # 排序
+    d.sort()
+    # 找到中位数
+    if n%2 == 0:
+        k = (d[int(n/2)-1] + d[int(n/2)])/2
+    else:
+        k = d[int((n-1)/2)]
+    # 找到中位数后面第一个不等于中位数的数字
+    i = 0
+    while d[int(n/2)+i] == k:
+        i += 1
+    # 计算答案
+    print(i)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    print(d[n//2] - d[n//2-1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    d = sorted(d)
+    print(d[n//2] - d[n//2-1])
+
+=======
+Suggestion 4
+
+def f(k):
+    arc = 0
+    abc = 0
+    for i in range(n):
+        if a[i] >= k:
+            arc += 1
+        else:
+            abc += 1
+    if arc == abc:
+        return True
+    else:
+        return False
+
+n = int(input())
+a = list(map(int, input().split()))
+
+l = 0
+r = max(a)+1
+while r - l > 1:
+    m = (l + r) // 2
+    if f(m):
+        l = m
+    else:
+        r = m
+print(l)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d_list = [int(i) for i in input().split()]
+    d_list.sort()
+    #print(d_list)
+    #print(d_list[n//2])
+    print(d_list[n//2]-d_list[n//2-1])
+
+=======
+Suggestion 6
+
+def get_input():
+    n = int(input())
+    ds = list(map(int, input().split()))
+    return n, ds
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    d = [int(x) for x in input().split()]
+    d.sort()
+    if n % 2 == 0:
+        print(d[n//2] - d[n//2-1])
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    d.sort()
+    if N%2 == 0:
+        print(d[int(N/2)] - d[int(N/2)-1])
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    ds = list(map(int, input().split()))
+    ds.sort()
+    #print(ds)
+    left = ds[n//2-1]
+    right = ds[n//2]
+    print(right-left)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    N = int(input())
+    d = list(map(int, input().split()))
+
+    # 求和
+    s = sum(d)
+
+    # 累积和
+    a = [0] * (N + 1)
+    for i in range(N):
+        a[i + 1] = a[i] + d[i]
+
+    # 确定最小值
+    m = 10**9
+    for i in range(1, N + 1):
+        m = min(m, abs(s - 2 * a[i]))
+
+    # 计数
+    ans = 0
+    for i in range(1, N + 1):
+        if abs(s - 2 * a[i]) == m:
+            ans += 1
+
+    # 输出
+    print(ans)

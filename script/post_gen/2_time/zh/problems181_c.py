@@ -1,70 +1,112 @@
-#问题陈述
-#我们在一个二维的无限坐标平面上有N个点。
-#第i个点在（x_i,y_i）。
-#在这N个点中，是否有三重不同的点位于同一直线上？
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 10^2
-#|x_i|, |y_i| ≦ 10^3
-#如果i≠j，（x_i, y_i）≠（x_j, y_j）。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#.
-#.
-#.
-#x_N y_N
-#
-#输出
-#如果有三个不同的点位于同一条线上，打印Yes；否则，打印No。
-#
-#输入样本 1
-#4
-#0 1
-#0 2
-#0 3
-#1 1
-#
-#样本输出1
-#Yes
-#三点（0，1），（0，2），（0，3）位于直线x=0上。
-#
-#样本输入2
-#14
-#5 5
-#0 1
-#2 5
-#8 0
-#2 1
-#0 0
-#3 6
-#8 6
-#5 9
-#7 9
-#3 4
-#9 2
-#9 8
-#7 2
-#
-#样本输出2
-#No
-#
-#样本输入3
-#9
-#8 2
-#2 3
-#1 3
-#3 7
-#1 0
-#8 8
-#5 6
-#9 7
-#0 1
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sum_of_arithmetic_sequence(a1,an,n):
+    return (a1+an)*n/2
+
+n = int(input())
+sum = 0
+for i in range(n):
+    ai, bi = map(int, input().split())
+    sum += sum_of_arithmetic_sequence(ai,bi,bi-ai+1)
+print(int(sum))
+
+=======
+Suggestion 2
+
+def getSum(a, b):
+    return (a + b) * (b - a + 1) // 2
+
+n = int(input())
+sum = 0
+for i in range(n):
+    a, b = map(int, input().split())
+    sum += getSum(a, b)
+print(sum)
+
+=======
+Suggestion 3
+
+def sumOfIntervals(intervals):
+    sum = 0
+    for interval in intervals:
+        sum += interval[1] - interval[0] + 1
+    return sum
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += (b - a + 1) * (a + b) / 2
+    print(int(sum))
+
+=======
+Suggestion 5
+
+def sum_list(l):
+    return sum(l)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += (b - a + 1) * (a + b) // 2
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A, B = map(int, input().split())
+        sum += (B - A + 1) * (A + B) / 2
+    print(int(sum))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += (a + b) * (b - a + 1) / 2
+    print(int(sum))
+
+=======
+Suggestion 9
+
+def sum_natural_numbers(n):
+    return n * (n + 1) // 2
+
+n = int(input())
+ans = 0
+for i in range(n):
+    a, b = map(int, input().split())
+    ans += sum_natural_numbers(b) - sum_natural_numbers(a - 1)
+print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n):
+        a[i], b[i] = map(int, input().split())
+    max_a = max(a)
+    min_b = min(b)
+    print(max(0, min_b - max_a + 1))

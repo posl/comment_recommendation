@@ -1,69 +1,123 @@
-#问题陈述
-#高桥正试图抓住许多Snuke。
-#在坐标为0、1、2、3、4的数线上有五个坑，与Snuke的巢穴相连。
-#现在，N个Snuke将从坑中出现。已知第i个Snuke将在时间T_i时从坐标X_i的坑里出现，其大小为A_i。
-#高桥在时间0时位于坐标0，并能以最多1的速度在线上移动。
-#当且仅当Snuke出现时，他正好在该坑的坐标上，他才能抓住它。
-#捕捉Snuke的时间是可以忽略不计的。
-#求高桥通过最佳移动所能捕捉到的Snuke的最大尺寸之和。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 < t_1 < t_2 < ...< T_N ≦ 10^5
-#0 ≦ X_i ≦ 4
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#T_1 X_1 A_1
-#T_2 X_2 A_2
-#.
-#.
-#.
-#T_N X_N A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#3
-#1 0 100
-#3 3 10
-#5 4 1
-#
-#样本输出1
-#101
-#最佳策略如下。
-#在坐标0处等待，在时间1处捕捉第一个Snuke。
-#在坐标4处，在时间5处抓到第三只Snuke。
-#不可能同时抓住第一条和第二条Snuke，所以这是他能做到的最好的办法。
-#
-#输入样本 2
-#3
-#1 4 1
-#2 4 1
-#3 4 1
-#
-#样本输出2
-#0
-#高桥无法抓到任何Snuke。
-#
-#输入样本3
-#10
-#1 4 602436426
-#2 1 623690081
-#3 3 262703497
-#4 4 628894325
-#5 3 450968417
-#6 1 161735902
-#7 1 707723857
-#8 2 802329211
-#9 0 317063340
-#10 2 125660016
-#
-#样本输出3
-#2978279323
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def cross_product(a,b):
+	return a[0]*b[1]-a[1]*b[0]
+
+=======
+Suggestion 2
+
+def is_convex_polygon(A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y):
+    if (A_x * B_y + B_x * C_y + C_x * D_y + D_x * A_y - A_y * B_x - B_y * C_x - C_y * D_x - D_y * A_x) > 0:
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 3
+
+def main():
+    x = []
+    y = []
+    for i in range(4):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+
+    if (x[1]-x[0])*(y[2]-y[1]) - (y[1]-y[0])*(x[2]-x[1]) > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def is_convex_polygon(A_x,A_y,B_x,B_y,C_x,C_y,D_x,D_y):
+    angle_A = (B_x-A_x)*(D_y-A_y)-(B_y-A_y)*(D_x-A_x)
+    angle_B = (C_x-B_x)*(A_y-B_y)-(C_y-B_y)*(A_x-B_x)
+    angle_C = (D_x-C_x)*(B_y-C_y)-(D_y-C_y)*(B_x-C_x)
+    angle_D = (A_x-D_x)*(C_y-D_y)-(A_y-D_y)*(C_x-D_x)
+    if angle_A>0 and angle_B>0 and angle_C>0 and angle_D>0:
+        return 'Yes'
+    elif angle_A<0 and angle_B<0 and angle_C<0 and angle_D<0:
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 5
+
+def cross_product(x1, y1, x2, y2):
+    return x1 * y2 - x2 * y1
+
+=======
+Suggestion 6
+
+def is_convex(a, b, c, d):
+    return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]) > 0 and \
+           (c[0] - b[0]) * (d[1] - c[1]) - (c[1] - b[1]) * (d[0] - c[0]) > 0 and \
+           (d[0] - c[0]) * (a[1] - d[1]) - (d[1] - c[1]) * (a[0] - d[0]) > 0 and \
+           (a[0] - d[0]) * (b[1] - a[1]) - (a[1] - d[1]) * (b[0] - a[0]) > 0 or \
+           (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]) < 0 and \
+           (c[0] - b[0]) * (d[1] - c[1]) - (c[1] - b[1]) * (d[0] - c[0]) < 0 and \
+           (d[0] - c[0]) * (a[1] - d[1]) - (d[1] - c[1]) * (a[0] - d[0]) < 0 and \
+           (a[0] - d[0]) * (b[1] - a[1]) - (a[1] - d[1]) * (b[0] - a[0]) < 0
+
+=======
+Suggestion 7
+
+def main():
+    Ax,Ay = map(int,input().split())
+    Bx,By = map(int,input().split())
+    Cx,Cy = map(int,input().split())
+    Dx,Dy = map(int,input().split())
+    if ((Bx-Ax)*(Cy-By)-(By-Ay)*(Cx-Bx))*((Cx-Bx)*(Dy-Cy)-(Cy-By)*(Dx-Cx))<0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def cross_product(ax, ay, bx, by):
+    return ax*by - ay*bx
+
+=======
+Suggestion 9
+
+def is_convex(A, B, C, D):
+    # 通过向量叉积判断两个向量的方向
+    # A->B, B->C, C->D, D->A
+    AB = [B[0] - A[0], B[1] - A[1]]
+    BC = [C[0] - B[0], C[1] - B[1]]
+    CD = [D[0] - C[0], D[1] - C[1]]
+    DA = [A[0] - D[0], A[1] - D[1]]
+    # 判断AB与BC的叉积方向是否相同
+    if AB[0] * BC[1] - AB[1] * BC[0] < 0:
+        return False
+    # 判断BC与CD的叉积方向是否相同
+    if BC[0] * CD[1] - BC[1] * CD[0] < 0:
+        return False
+    # 判断CD与DA的叉积方向是否相同
+    if CD[0] * DA[1] - CD[1] * DA[0] < 0:
+        return False
+    # 判断DA与AB的叉积方向是否相同
+    if DA[0] * AB[1] - DA[1] * AB[0] < 0:
+        return False
+    return True
+
+=======
+Suggestion 10
+
+def is_convex_polygon(A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y):
+    # write your code here
+    angle_A = get_angle(A_x, A_y, B_x, B_y, C_x, C_y)
+    angle_B = get_angle(B_x, B_y, C_x, C_y, D_x, D_y)
+    angle_C = get_angle(C_x, C_y, D_x, D_y, A_x, A_y)
+    angle_D = get_angle(D_x, D_y, A_x, A_y, B_x, B_y)
+    if angle_A + angle_B + angle_C + angle_D == 360:
+        return 'Yes'
+    else:
+        return 'No'

@@ -1,34 +1,129 @@
-#问题陈述
-#我们有一个长度为N的字符串S，由R、G和B组成。
-#求满足以下两个条件的三联体(i,j,k)(1 ≦ i < j < k ≦ N)的数量：
-#S_i ≠ S_j, S_i ≠ S_k, and S_j ≠ S_k.
-#j - i ≠ k - j。
-#
-#限制条件
-#1 ≦ N ≦ 4000
-#S是一个长度为N的字符串，由R、G和B组成。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#S
-#
-#输出
-#打印有关三联体的数量。
-#
-#输入样本1
-#4
-#RRGB
-#
-#采样输出1
-#1
-#只有三联体（1,3,4）满足两个条件。三联体（2,3,4）满足第一个条件，但不满足第二个条件，所以不算数。
-#
-#样本输入2
-#39
-#rbrbgrbggbbrrgbbrrrbggbrbgbrbgbrbbbgbbb
-#
-#样本输出2
-#1800
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+k=int(input())
+ans=0
+for a in range(1,k+1):
+    for b in range(1,k+1):
+        for c in range(1,k+1):
+            ans+=gcd(gcd(a,b),c)
+print(ans)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+k = int(input())
+sum = 0
+for i in range(1,k+1):
+    for j in range(1,k+1):
+        for l in range(1,k+1):
+            sum += gcd(gcd(i,j),l)
+print(sum)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if a > b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+K = int(input())
+ans = 0
+for a in range(1, K+1):
+    for b in range(1, K+1):
+        for c in range(1, K+1):
+            ans += gcd(a, gcd(b, c))
+print(ans)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+k = int(input())
+ans = 0
+for a in range(1, k + 1):
+    for b in range(1, k + 1):
+        for c in range(1, k + 1):
+            g = gcd(a, b)
+            ans += gcd(g, c)
+print(ans)
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+K=int(input())
+ans=0
+for i in range(1,K+1):
+    for j in range(1,K+1):
+        for k in range(1,K+1):
+            ans+=gcd(gcd(i,j),k)
+print(ans)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a == 0 or b == 0:
+        return 0
+    while b != 0:
+        a,b = b,a%b
+    return a

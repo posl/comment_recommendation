@@ -1,60 +1,116 @@
-#问题陈述
-#有一个网格，从上到下有H行，从左到右有W列。  每个方格上都有一个棋子，或者是空的。
-#网格的状态由H个字符串S_1, S_2, ..., S_H表示，每个字符串的长度为W。
-#如果S_i的第j个字符是#，那么从顶部开始的第i行和从左边开始的第j列的方格上有一个棋子；
-#如果S_i的第j个字符是.，那么从上面第i行和从左边第j列的方格是空的。
-#该网格中有多少个方格有棋子？
-#
-#限制条件
-#1≦ H,W ≦ 10
-#H和W是整数。
-#S_i是一个长度为W的字符串，由#和...组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#输出
-#以整数形式打印有棋子的方格数。
-#
-#输入样本 1
-#3 5
-##....
-#.....
-#.##..
-#
-#样本输出1
-#3
-#以下三个方块上有棋子：
-#从上往下第1行，从左往下第1列的方格；
-#从上往下第3行，从左往右第2列的方格；
-#从上往下第3行和从左往下第3列的方格。
-#因此，3应该被打印出来。
-#
-#输入样本 2
-#1 10
-#..........
-#
-#样本输出2
-#0
-#由于没有一个方块上有棋子，所以应该打印0。
-#
-#输入样本 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#样本输出3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print((a + b) ** 0.5)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    ans = 10**18
+    for i in range(1,10000):
+        tmp = i*b
+        if tmp >= ans:
+            break
+        tmp += a/(i**0.5)
+        if tmp < ans:
+            ans = tmp
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    A,B = map(int,input().split())
+    print((A/B)**(1/2))
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    a, b = map(int, input().split())
+    # 二分查找
+    # 1. 左边界：不进行操作时所需时间
+    # 2. 右边界：进行操作无限次时所需时间
+    # 3. 判断中间值所需时间
+    # 4. 判断中间值的下一个值所需时间
+    # 5. 重复 3、4
+    # 6. 返回左边界
+    left = 0
+    right = 1e18
+    while right - left > 1e-7:
+        mid = (left + right) / 2
+        if mid + a / (b * mid ** 0.5) < mid + 1e-7 + a / (b * (mid + 1e-7) ** 0.5):
+            right = mid
+        else:
+            left = mid
+    print(left)
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    print((A+B)/B)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    l = 0
+    r = 10**18
+    while r - l > 1e-6:
+        mid = (l+r)/2
+        if mid + a/(mid**0.5) < b:
+            l = mid
+        else:
+            r = mid
+    print(l)
+
+=======
+Suggestion 8
+
+def solve():
+    A,B = map(int,input().split())
+    if B >= 1000000000:
+        print(A)
+    else:
+        print(A/((B**2+1)**0.5))
+
+=======
+Suggestion 9
+
+def f(x):
+    return x + a / (x ** 0.5)
+
+a, b = map(int, input().split())
+l = 0
+r = a
+for _ in range(1000):
+    c1 = (l * 2 + r) / 3
+    c2 = (l + r * 2) / 3
+    if f(c1) < f(c2):
+        r = c2
+    else:
+        l = c1
+print(f(l))
+
+=======
+Suggestion 10
+
+def main():
+    A, B = map(int, input().split())
+    print(1 + (A - 1) * B / (A ** 2 + 1) ** 0.5)

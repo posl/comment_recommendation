@@ -1,55 +1,109 @@
-#问题陈述
-#AtCoder共和国有N个城市，编号为1到N，M条道路，编号为1到M。
-#道路i从城市A_i通向城市B_i，但你不能用它从城市B_i到城市A_i。
-#Puma正在计划她的旅程，她从某个城市开始，沿着0条或更多的道路旅行，然后在某个城市结束。
-#有多少对城市可以作为Puma旅程的起点和终点？我们要区分不同顺序的同一组城市。
-#
-#限制条件
-#2 ≦ N ≦ 2000
-#0 ≦ M ≦ min(2000,N(N-1))
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#(A_i,B_i)是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 3
-#1 2
-#2 3
-#3 2
-#
-#样本输出1
-#7
-#我们有七对城市可以作为起点和终点：(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)。
-#
-#样本输入 2
-#3 0
-#
-#样本输出2
-#3
-#我们有三对城市可以作为起点和终点：(1,1), (2,2), (3,3)。
-#
-#输入样本 3
-#4 4
-#1 2
-#2 3
-#3 4
-#4 1
-#
-#样本输出3
-#16
-#每一对城市都可以是起点和终点。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if A[i] > 10:
+            count += A[i] - 10
+    print(count)
+
+=======
+Suggestion 4
+
+def calc(x):
+    if x < 10:
+        return 0
+    else:
+        return x - 10
+
+n = int(input())
+a = list(map(int,input().split()))
+
+print(sum(map(calc,a)))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in a:
+        if i > 10:
+            ans += i - 10
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    answer = 0
+    for a in A:
+        if a > 10:
+            answer += a - 10
+    print(answer)
+
+=======
+Suggestion 8
+
+def f(n):
+    if n < 10:
+        return 0
+    else:
+        return n - 10
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    print(ans)

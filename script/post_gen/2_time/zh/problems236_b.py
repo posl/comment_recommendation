@@ -1,42 +1,84 @@
-#问题陈述
-#我们有4张写着整数1的牌，4张写着2，...，4张写着N的牌，总共有4N张。
-#高桥洗了这些牌，去掉了其中一张，然后给你一堆剩下的4N-1张牌。这堆牌的第i张（1 ≦ i ≦ 4N - 1）上写有一个整数A_i。
-#求被高桥拿走的那张牌上的整数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ 4N - 1)
-#对于每个k（1 ≦ k ≦ N），最多只有4个指数i，使A_i = k。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_{4N - 1}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#样本输出 1
-#3
-#高桥取出一张写有3的卡片。
-#
-#样本输入2
-#1
-#1 1 1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    s = list(s)
+    s[a], s[b] = s[b], s[a]
+    print(''.join(s))
+
+=======
+Suggestion 2
+
+def swap(s, a, b):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 3
+
+def my_swap(s, a, b):
+    if a > b:
+        a, b = b, a
+    if a == b:
+        return s
+    if a == 1:
+        return s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 4
+
+def swap(a, b, s):
+    s = list(s)
+    s[a-1], s[b-1] = s[b-1], s[a-1]
+    return ''.join(s)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    S = list(S)
+    S[a], S[b] = S[b], S[a]
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = raw_input()
+    a, b = map(int, raw_input().split())
+    s = s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+    print s
+
+=======
+Suggestion 7
+
+def swap(a, b, s):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 8
+
+def swap_char(s, a, b):
+    a = a - 1
+    b = b - 1
+    s[a], s[b] = s[b], s[a]
+    return s
+
+=======
+Suggestion 9
+
+def swap(s, a, b):
+    a = a - 1
+    b = b - 1
+    s[a], s[b] = s[b], s[a]
+    return s

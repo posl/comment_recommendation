@@ -1,46 +1,134 @@
-#问题陈述
-#有一个N度的多项式，A(x)=A_Nx^N+A_{N-1}x^{N-1}+...。+A_1x+A_0、
-#和另一个M度的B(x)=B_Mx^M+B_{M-1}x^{M-1}+...。+B_1x+B_0。
-#这里，A(x)和B(x)的每个系数都是一个绝对值最多为100的整数，并且前导系数不为0。
-#同时，让它们的乘积为C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+...+C_1x+C_0。
-#给出A_0,A_1,..., A_N和C_0,C_1,..., C_{N+M}，找到B_0,B_1,..., B_M。
-#这里，给定的输入保证有一个唯一的序列B_0,B_1,...,B_M满足给定条件。
-#
-#限制条件
-#1 ≦ N < 100
-#1 ≦ M < 100
-#|A_i| ≦ 100
-#|C_i| ≦ 10^6
-#A_N ≠ 0
-#C_{N+M}≠ 0
-#有一个唯一的序列B_0, B_1, ..., B_M满足声明中给出的条件。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_0 A_1 ...A_{N-1} A_N
-#C_0 C_1 ...C_{N+M-1} C_{N+M}
-#
-#输出
-#在一行中打印M+1个整数B_0,B_1,..., B_M，中间有空格。
-#
-#输入示例 1
-#1 2
-#2 1
-#12 14 8 2
-#
-#样本输出 1
-#6 4 2
-#对于A(x)=x+2和B(x)=2x^2+4x+6，我们有C(x)=A(x)B(x)=(x+2)(2x^2+4x+6)=2x^3+8x^2+14x+12，所以B(x)=2x^2+4x+6满足所给条件。因此，B_0=6，B_1=4，B_2=2应该按照这个顺序打印，中间有空格。
-#
-#输入样本 2
-#1 1
-#100 1
-#10000 0 -1
-#
-#样本输出2
-#100 -1
-#我们有A(x)=x+100，C(x)=-x^2+10000，其中B(x)=-x+100满足给定条件。
-#因此，100，-1应该按照这个顺序打印，中间有空格。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,k = [int(i) for i in input().split()]
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    for i in range(n):
+        if abs(a[i]-b[i])>k:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A_max = max(A)
+    B_max = max(B)
+    if abs(A_max - B_max) > K:
+        print('No')
+        return
+    if A_max > B_max:
+        A, B = B, A
+    A.sort()
+    B.sort(reverse=True)
+    for i in range(N):
+        if A[i] + B[i] > K:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A_min = min(A)
+    A_max = max(A)
+    B_min = min(B)
+    B_max = max(B)
+
+    if abs(A_max - B_max) > K or abs(A_min - B_min) > K:
+        print("No")
+        return
+
+    for i in range(N - 1):
+        if abs(A[i] - A[i + 1]) > K and abs(B[i] - B[i + 1]) > K:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 5
+
+def solve(n, k, a, b):
+    res = True
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            res = False
+            break
+    return "Yes" if res else "No"
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+print(solve(n, k, a, b))
+
+=======
+Suggestion 6
+
+def check(a,b,k):
+    for i in range(len(a)):
+        if abs(a[i]-b[i])>k:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # 0: A, 1: B
+    dp = [[False for _ in range(2)] for _ in range(N)]
+    dp[0][0] = dp[0][1] = True
+    for i in range(1, N):
+        for j in range(2):
+            for k in range(2):
+                if abs(A[i] - B[i]) <= K:
+                    dp[i][j] = True
+                    break
+    if dp[N-1][0] or dp[N-1][1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve(n, k, a, b):
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            return 'No'
+    return 'Yes'
+
+=======
+Suggestion 9
+
+def get_max_diff(A, B):
+    max_diff = 0
+    for i in range(len(A)):
+        diff = abs(A[i] - B[i])
+        if diff > max_diff:
+            max_diff = diff
+    return max_diff

@@ -1,62 +1,102 @@
-#问题陈述
-#当X先生离家时，他决定用他的智能手表来搜索回家的最佳路线，以参加ABC。
-#你，智能手表，已经找到了N条通往他家的路线。
-#如果X先生使用这些路线中的第i条，他将在时间t_i内到家，成本为c_i。
-#请找出花费不超过时间T的路线的最小成本。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ T ≦ 1000
-#1 ≦ c_i ≦ 1000
-#1 ≦ T_i ≦ 1000
-#成对的（c_i, t_i）是不同的。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N T
-#c_1 t_1
-#c_2 t_2
-#:
-#c_N t_N
-#
-#输出
-#打印花费不超过时间T的路线的最小成本。
-#如果没有花费不超过时间T的路线，则打印TLE。
-#
-#输入样本 1
-#3 70
-#7 60
-#1 80
-#4 50
-#
-#样本输出1
-#4
-#第一条路线让他以7的成本回家。
-#第二条路线需要的时间比T=70长。
-#第三条路线让他以4的成本回家。
-#因此，第三条路线的成本4是最小的。
-#
-#输入样本 2
-#4 3
-#1 1000
-#2 4
-#3 1000
-#4 500
-#
-#样本输出2
-#TLE
-#没有一条路线的时间不超过T=3。
-#
-#样本输入3
-#5 9
-#25 8
-#5 9
-#4 10
-#1000 1000
-#6 1
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("Hello World")
+    elif n == 2:
+        a = int(input())
+        b = int(input())
+        print(a+b)
+
+=======
+Suggestion 2
+
+def main():
+    # 输入
+    N = int(input())
+    # 输出
+    if N == 1:
+        print("Hello World")
+    elif N == 2:
+        A = int(input())
+        B = int(input())
+        print(A+B)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("Hello World")
+    else:
+        a = int(input())
+        b = int(input())
+        print(a+b)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N == 1:
+        print("Hello World")
+    if N == 2:
+        A = int(input())
+        B = int(input())
+        print(A + B)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("Hello World")
+    else:
+        a = int(input())
+        b = int(input())
+        print(a+b)
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N == 1:
+        print("Hello World")
+    elif N == 2:
+        A = int(input())
+        B = int(input())
+        print(A + B)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("Hello World")
+    elif n == 2:
+        a = int(input())
+        b = int(input())
+        print(a + b)
+    else:
+        pass
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n == 1:
+        print('Hello World')
+    else:
+        a = int(input())
+        b = int(input())
+        print(a+b)

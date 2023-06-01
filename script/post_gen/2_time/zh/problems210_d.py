@@ -1,48 +1,203 @@
-#问题陈述
-#高桥王国可以被表示为一个有H行和W列的网格。让（i，j）表示从北边第i行和从西边第j列的方格。
-#最近，王国公民要求修建铁路的呼声越来越高，现在国王高桥别无选择，只能修建一条铁路。
-#铁路的建设将有以下两个阶段。
-#首先，选择两个不同的广场，在每个广场上建一个车站。在广场（i，j）上建站需要花费A_{i，j}日元。
-#然后，建造一条连接这两个车站的铁轨。当两个车站分别位于(i, j)和(i', j')广场时，这需要花费C×(|i-i'|+|j-j'|)日元。(|x|表示x的绝对值)。
-#高桥的首要任务是在这个建筑上花尽可能少的钱，而不是为市民提高便利性。
-#请打印出建造铁路的最小总成本。
-#
-#限制条件
-#2 ≦ h, w ≦ 1000
-#1 ≦ C ≦ 10^9
-#1 ≦ A_{ij} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W C
-#A_{1,1} A_{1,2} ...A_{1,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ...A_{H,W}
-#
-#输出
-#打印铁路建设的最小可能总成本。
-#
-#输入样本 1
-#3 4 2
-#1 7 7 9
-#9 6 3 7
-#7 8 6 4
-#
-#样本输出1
-#10
-#如果我们在(1, 1)和(2, 3)这两个方格上建站，建站的费用为1+3=4日元，建轨道的费用为2×(|1-2|+|1-3|)=6日元，总共为4+6=10日元。
-#这是可能的最低总建设成本。
-#
-#输入样本 2
-#3 3 1000000000
-#1000000 1000000 1
-#1000000 1000000 1000000
-#1 1000000 1000000
-#
-#样本输出2
-#1001000001
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    c = list(map(int,input().split()))
+    s = set()
+    for i in range(k):
+        s.add(c[i])
+    ans = len(s)
+    for i in range(k,n):
+        s.add(c[i])
+        s.remove(c[i-k])
+        ans = max(ans,len(s))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int, input().split())
+    c = list(map(int, input().split()))
+    max = 0
+    for i in range(n-k+1):
+        if len(set(c[i:i+k])) > max:
+            max = len(set(c[i:i+k]))
+    print(max)
+
+=======
+Suggestion 3
+
+def get_max_color_count(candies, k):
+    max_color_count = 0
+    for i in range(0, len(candies) - k + 1):
+        color_count = len(set(candies[i:i+k]))
+        if color_count > max_color_count:
+            max_color_count = color_count
+    return max_color_count
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    s = set()
+    for i in range(n-k+1):
+        for j in range(i,i+k):
+            s.add(a[j])
+        ans = max(ans,len(s))
+        s.clear()
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    c = list(map(int, input().split()))
+    c_set = set(c[:K])
+    c_max = len(c_set)
+    for i in range(N-K):
+        c_set.remove(c[i])
+        c_set.add(c[i+K])
+        if len(c_set) > c_max:
+            c_max = len(c_set)
+    print(c_max)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    candies = list(map(int, input().split()))
+    colors = {}
+    for i in range(k):
+        if candies[i] in colors.keys():
+            colors[candies[i]] += 1
+        else:
+            colors[candies[i]] = 1
+    max_colors = len(colors.keys())
+    for i in range(k, n):
+        if candies[i] in colors.keys():
+            colors[candies[i]] += 1
+        else:
+            colors[candies[i]] = 1
+        if colors[candies[i-k]] == 1:
+            del colors[candies[i-k]]
+        else:
+            colors[candies[i-k]] -= 1
+        max_colors = max(max_colors, len(colors.keys()))
+    print(max_colors)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    # print(n, k)
+    # print(c)
+    # print(len(c))
+    # print(len(set(c)))
+    # print(set(c))
+    # print(list(set(c)))
+    # print(c[0:0 + k])
+    # print(c[0:0 + k - 1])
+    # print(c[0:0 + k - 2])
+    # print(c[0:0 + k - 3])
+    # print(c[0:0 + k - 4])
+    # print(c[0:0 + k - 5])
+    # print(c[0:0 + k - 6])
+    # print(c[0:0 + k - 7])
+    # print(c[0:0 + k - 8])
+    # print(c[0:0 + k - 9])
+    # print(c[0:0 + k - 10])
+    # print(c[0:0 + k - 11])
+    # print(c[0:0 + k - 12])
+    # print(c[0:0 + k - 13])
+    # print(c[0:0 + k - 14])
+    # print(c[0:0 + k - 15])
+    # print(c[0:0 + k - 16])
+    # print(c[0:0 + k - 17])
+    # print(c[0:0 + k - 18])
+    # print(c[0:0 + k - 19])
+    # print(c[0:0 + k - 20])
+    # print(c[0:0 + k - 21])
+    # print(c[0:0 + k - 22])
+    # print(c[0:0 + k - 23])
+    # print(c[0:0 + k - 24])
+    # print(c[0:0 + k - 25])
+    # print(c[0:0 + k - 26])
+    # print(c[0:0 + k - 27])
+    # print(c[0:0 + k - 28])
+    # print(c[0:0 + k - 29])
+    # print(c[0:0 + k - 30])
+    # print(c[0
+
+=======
+Suggestion 8
+
+def solve():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    s = set(c[:k])
+    ans = len(s)
+    for i in range(k, n):
+        s.add(c[i])
+        s.discard(c[i - k])
+        ans = max(ans, len(s))
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+    candies = list(map(int, input().split()))
+
+    # 用字典记录每个糖果的数目
+    candy_dict = {}
+    for candy in candies:
+        if candy not in candy_dict:
+            candy_dict[candy] = 1
+        else:
+            candy_dict[candy] += 1
+
+    # 用集合记录每个糖果的数目
+    candy_set = set(candy_dict.values())
+
+    # 如果有k个糖果，那么输出k
+    if len(candy_set) == k:
+        print(k)
+        return
+
+    # 如果有k个糖果以上，那么输出k
+    if len(candy_set) > k:
+        print(k)
+        return
+
+    # 如果有k个糖果以下，那么输出糖果的种类数
+    print(len(candy_set))
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    candy = list(map(int, input().split()))
+    candy_set = set(candy[:k])
+    max_candy = len(candy_set)
+    for i in range(n - k):
+        candy_set.add(candy[i + k])
+        if len(candy_set) > max_candy:
+            max_candy = len(candy_set)
+        candy_set.remove(candy[i])
+    print(max_candy)

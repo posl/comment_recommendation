@@ -1,43 +1,78 @@
-#问题陈述
-#高桥的商店销售N种产品。第i种产品的通常价格是A_i日元（日本货币）。
-#今天有一个特价销售，第2个、第4个和随后的偶数个产品的通常价格打1日元的折扣。第1个、第3个和随后的奇数指数产品以平常价格出售。
-#你有X日元。你能用这些钱买到所有的N种产品吗？
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ 10000
-#1 ≦ A_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#A_1 A_2 ...A_N
-#
-#输出
-#如果你能买到所有的N种产品，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 3
-#1 3
-#
-#样品输出1
-#Yes
-#你可以用1日元购买第1种产品，用2日元购买第2种产品，比通常的价格低1日元。你有足够的钱，3日元，可以买到这两种产品。
-#
-#输入样本2
-#4 10
-#3 3 4 4
-#
-#样本输出2
-#No
-#你可以用3日元、2日元、4日元和3日元购买这四种产品。你需要12日元来购买所有这些产品，由于你只有10日元，所以你不能购买所有的产品。
-#
-#输入样本3
-#8 30
-#3 1 4 1 5 9 2 6
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1 if b > a else 0)
+
+=======
+Suggestion 2
+
+def main():
+    A,B = map(int,input().split())
+    if A > B:
+        print(0)
+    else:
+        print(B-A+1)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    count = 0
+    for i in range(a, b + 1):
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def func():
+    a,b = map(int,input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b-a+1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1 if b - a >= 0 else 0)
+
+=======
+Suggestion 6
+
+def count_integer(a,b):
+    if a <= b and a >= 1 and b <= 100:
+        return b - a + 1
+    else:
+        return 0
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    print(B-A+1 if B-A>=0 else 0)
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b-a+1)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    print(b-a+1 if b-a+1 > 0 else 0)

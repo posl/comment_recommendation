@@ -1,40 +1,116 @@
-#问题陈述
-#高桥和青木在玩一个游戏。
-#首先，高桥在A和B（包括）之间选择一个整数并告诉青木。
-#接下来，青木在C和D（包括）之间选择一个整数。
-#如果这两个整数之和是一个素数，那么青木就赢了；否则，高桥就赢了。
-#当这两个玩家以最佳方式游戏时，哪个玩家会赢？
-#
-#限制条件
-#1 ≦ a ≦ b ≦ 100
-#1 ≦ c ≦ d ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#輸出
-#如果高桥在两个棋手的最佳发挥中获胜，打印高桥；如果青木获胜，打印青木。
-#
-#输入样本 1
-#2 3 3 4
-#
-#输出示例 1
-#青木
-#例如，如果高桥选择2，青木可以选择3，使和为5，这是一个素数。
-#
-#输入样本2
-#1 100 50 60
-#
-#样本输出2
-#高桥
-#如果他们以最佳方式下棋，高桥总是赢。
-#
-#输入样本3
-#3 14 1 5
-#
-#样本输出 3
-#青木
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
+=======
+Suggestion 2
+
+def main():
+    x1,y1,x2,y2=map(int,input().split())
+    if ((x1-x2)**2+(y1-y2)**2)**(1/2)==(5)**(1/2):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    x_1, y_1, x_2, y_2 = map(int, input().split())
+    if (x_1 - x_2) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2) ** 2 + (y_1 - y_2 + 1) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2) ** 2 + (y_1 - y_2 - 1) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2 + 1) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2 - 1) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 5
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if x1 == x2 and y1 == y2:
+        print("No")
+        return
+    elif (x1-x2)**2 + (y1-y2)**2 == 5:
+        print("Yes")
+        return
+    elif (x1-x2)**2 + (y1-y2)**2 == 50:
+        print("Yes")
+        return
+    else:
+        print("No")
+        return
+
+=======
+Suggestion 6
+
+def problems239_c(x_1, y_1, x_2, y_2):
+    if x_1 == x_2 and y_1 == y_2:
+        return "No"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 10:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 50:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 90:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 130:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 170:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 210:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 250:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 290:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 330:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 370:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 410:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 450:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 490:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 530:
+        return "Yes"
+    if (x_1 - x_2
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 + y1) % 2 == (x2 + y2) % 2:
+        if abs(x1 - x2) + abs(y1 - y2) <= 6:
+            print('Yes')
+            return
+    print('No')

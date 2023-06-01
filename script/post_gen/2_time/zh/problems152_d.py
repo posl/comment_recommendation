@@ -1,48 +1,129 @@
-#问题陈述
-#给出的是一个正整数N。
-#求满足下列条件的不大于N的正整数对（A，B）的数目：
-#当A和B以不带前导零的十进制写成时，A的最后一位数字等于B的第一位数字，A的第一位数字等于B的最后一位数字。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#25
-#
-#样本输出1
-#17
-#以下17个配对满足条件：（1,1），（1,11），（2,2），（2,22），（3,3），（4,4），（5,5），（6,6），（7,7），（8,8），（9,9），（11,1），（11,11），（12，21），（21，12），（22，2）和（22，22）。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100
-#
-#样品输出3
-#108
-#
-#样本输入4
-#2020
-#
-#样本输出4
-#40812
-#
-#样本输入5
-#200000
-#
-#样品输出5
-#400000008
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min_P = N+1
+    count = 0
+    for i in range(N):
+        if P[i] <= min_P:
+            min_P = P[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = list(map(int,input().split()))
+    count = 1
+    min = P[0]
+    for i in range(1,N):
+        if P[i] <= min:
+            count += 1
+            min = P[i]
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    count = 0
+    min = N
+    for i in range(N):
+        if P[i] <= min:
+            count += 1
+            min = P[i]
+    print(count)
+
+=======
+Suggestion 4
+
+def get_input():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    return n, p
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    P = [int(x) for x in input().split()]
+    count = 0
+    min = N + 1
+    for i in range(N):
+        if P[i] <= min:
+            count += 1
+            min = P[i]
+    print(count)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min_val = N + 1
+    ans = 0
+    for i in range(N):
+        if P[i] <= min_val:
+            ans += 1
+            min_val = P[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    print(solve(N, P))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    m = p[0]
+    for i in range(n):
+        if p[i] <= m:
+            ans += 1
+            m = p[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 1
+    min = p[0]
+    for i in range(1, n):
+        if min >= p[i]:
+            ans += 1
+            min = p[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+    min_p = N + 1
+    ans = 0
+    for p in P:
+        if p <= min_p:
+            ans += 1
+            min_p = p
+    print(ans)

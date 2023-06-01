@@ -1,88 +1,133 @@
-#问题陈述
-#我们有N个编号为1，2，...，N的盘子和M个编号为1，2，...，M的条件。
-#当盘子A_i和盘子B_i上都有（一个或多个）球时，条件i得到满足。
-#有K个编号为1，2，...，K的人，第i人将在碟子C_i或碟子D_i上放一个球。
-#最多可以满足多少个条件？
-#
-#限制条件
-#所有的输入值都是整数。
-#2 ≤ N ≤ 100
-#1 ≤ M ≤ 100
-#1 ≤ A_i < B_i ≤ N
-#1 ≤ K ≤ 16
-#1 ≤ C_i < D_i ≤ N
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#K
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 4
-#1 2
-#1 3
-#2 4
-#3 4
-#3
-#1 2
-#1 3
-#2 3
-#
-#样本输出 1
-#2
-#例如，如果人们1，2，3把他们的球分别放在盘子1，3，2上，条件1和2将被满足。
-#
-#输入样本 2
-#4 4
-#1 2
-#1 3
-#2 4
-#3 4
-#4
-#3 4
-#1 2
-#2 4
-#2 4
-#
-#样本输出 2
-#4
-#例如，如果人们1，2，3，4把他们的球分别放在盘子3，1，2，4上，所有的条件都会得到满足。
-#
-#输入样本 3
-#6 12
-#2 3
-#4 6
-#1 2
-#4 5
-#2 6
-#1 5
-#4 5
-#1 3
-#1 2
-#2 6
-#2 3
-#2 5
-#5
-#3 5
-#1 4
-#2 6
-#4 6
-#5 6
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, S, D = [int(x) for x in input().split()]
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = [int(x) for x in input().split()]
+        X.append(x)
+        Y.append(y)
+    for i in range(N):
+        if X[i] < S and Y[i] > D:
+            print('Yes')
+            return
+    print('No')
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n,s,d = map(int, input().split())
+    for i in range(n):
+        x,y = map(int, input().split())
+        if x < s and y > d:
+            print("Yes")
+            return
+    print("No")
+main()
+
+=======
+Suggestion 3
+
+def read_data():
+    #读取数据
+    #输入格式
+    #N S D
+    #X_1 Y_1
+    #.
+    #.
+    #.
+    #X_N Y_N
+    #输出格式
+    #如果高桥能对怪物造成伤害，打印Yes；否则，打印No。
+    #返回值
+    #N:法术数量
+    #S:伤害时间
+    #D:伤害力度
+    #X:法术施展时间列表
+    #Y:法术伤害力度列表
+    N,S,D = map(int,input().split())
+    X = []
+    Y = []
+    for i in range(N):
+        x,y = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+    return N,S,D,X,Y
+
+=======
+Suggestion 4
+
+def solution():
+    N, S, D = map(int, input().split())
+    for i in range(N):
+        X, Y = map(int, input().split())
+        if X < S and Y > D:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n, s, d = map(int, input().split())
+    for i in range(n):
+        x, y = map(int, input().split())
+        if x < s and y > d:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 6
+
+def solve():
+    N, S, D = map(int, input().split())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+
+    for i in range(N):
+        if X[i] < S and Y[i] > D:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 7
+
+def read_ints():
+    return list(map(int,input().split()))
+
+=======
+Suggestion 8
+
+def judge():
+    n, s, d = map(int, input().split())
+    for i in range(n):
+        x, y = map(int, input().split())
+        if x < s and y > d:
+            print('Yes')
+            return
+    print('No')
+    return
+
+judge()
+
+=======
+Suggestion 9
+
+def isdamage(x,y,s,d):
+    if x < s and y > d:
+        return True
+    else:
+        return False

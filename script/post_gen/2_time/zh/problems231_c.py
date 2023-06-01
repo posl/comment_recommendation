@@ -1,68 +1,141 @@
-#问题陈述
-#有一个有N个学生的班级。第i个学生（1 ≦ i ≦ N）的身高是A_i。
-#对于每个j=1,2,...,Q，请回答以下问题。
-#在N个学生中，有多少人的身高至少是x_j？
-#
-#限制条件
-#1 ≦ n,q ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ x_j ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#A_1 A_2 ...A_N
-#x_1
-#x_2
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印Q行。
-#第j行（1 ≦ j ≦ Q）应该包含高度至少为x_j的学生数量。
-#
-#输入样本 1
-#3 1
-#100 160 130
-#120
-#
-#样品输出1
-#2
-#身高至少为120的学生是第2和第3名。
-#
-#样本输入2
-#5 5
-#1 2 3 4 5
-#6
-#5
-#4
-#3
-#2
-#
-#样本输出2
-#0
-#1
-#2
-#3
-#4
-#
-#样本输入3
-#5 5
-#804289384 846930887 681692778 714636916 957747794
-#424238336
-#719885387
-#649760493
-#596516650
-#189641422
-#
-#样本输出3
-#5
-#3
-#5
-#5
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print(max(set(s), key=s.count))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(max(s,key=s.count))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    d = {}
+    for name in S:
+        if name in d:
+            d[name] += 1
+        else:
+            d[name] = 1
+
+    max = 0
+    max_name = ''
+    for name in d:
+        if d[name] > max:
+            max = d[name]
+            max_name = name
+
+    print(max_name)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        l.append(input())
+    print(max(l,key=l.count))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    print(max(s, key=s.count))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    S = []
+    for i in range(n):
+        S.append(input())
+    S.sort()
+    #print(S)
+    dic = {}
+    for i in S:
+        dic[i] = S.count(i)
+    #print(dic)
+    max_v = max(dic.values())
+    for k, v in dic.items():
+        if v == max_v:
+            print(k)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    name = []
+    for i in range(n):
+        name.append(input())
+    print(max(set(name), key=name.count))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    max = 0
+    for i in range(n):
+        if s.count(s[i]) > max:
+            max = s.count(s[i])
+            name = s[i]
+    print(name)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    S.append('')
+    max = 0
+    max_name = ''
+    count = 0
+    for i in range(N):
+        if S[i] == S[i+1]:
+            count += 1
+        else:
+            if max < count:
+                max = count
+                max_name = S[i]
+            count = 0
+    print(max_name)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(max(s,key=s.count))
+main()

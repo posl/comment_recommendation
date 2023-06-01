@@ -1,36 +1,96 @@
-#问题陈述
-#在完成了网络游戏ATChat的教程之后，你很快就决定去一个特定的地方，那里正好有N-1个玩家。这N个玩家，包括你，编号为1到N，玩家i的友好度为A_i。
-#这N个玩家将按照一定的顺序逐一到达该地。为了确保没有人迷路，你制定了以下规则：已经到达那里的玩家应该形成一个圆圈，而刚刚到达那里的玩家应该在某个地方切入这个圆圈。
-#当每个玩家，除了第一个到达的玩家，到达该处时，该玩家得到的安慰等于顺时针方向相邻玩家的友好度和逆时针方向相邻玩家的友好度中较小的那个。第一个到达那里的玩家得到的舒适度为0。
-#通过优化选择到达的顺序和在圆圈中切入的位置，N个玩家能得到的最大总舒适度是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个玩家能得到的最大总舒适度。
-#
-#样本输入1
-#4
-#2 2 1 3
-#
-#样本输出1
-#7
-#按玩家4、2、1、3的顺序到达该处，并按图中所示切入圆圈，他们可以得到总的舒适度为7。
-#他们不能得到大于7的总舒适度，所以答案是7。
-#
-#输入样本2
-#7
-#1 1 1 1 1 1 1
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve(h, w, k, c):
+    ans = 0
+    for i in range(1 << h):
+        for j in range(1 << w):
+            cnt = 0
+            for x in range(h):
+                for y in range(w):
+                    if (i >> x) & 1 == 0 and (j >> y) & 1 == 0 and c[x][y] == '#':
+                        cnt += 1
+            if cnt == k:
+                ans += 1
+    return ans
+
+
+h, w, k = map(int, input().split())
+c = [input() for i in range(h)]
+print(solve(h, w, k, c))
+
+=======
+Suggestion 3
+
+def main():
+    h, w, k = map(int, input().split())
+    c = []
+    for _ in range(h):
+        c.append(list(input()))
+    ans = 0
+    for i in range(2 ** h):
+        for j in range(2 ** w):
+            cnt = 0
+            for l in range(h):
+                for m in range(w):
+                    if (i >> l) & 1 == 0 and (j >> m) & 1 == 0 and c[l][m] == '#':
+                        cnt += 1
+            if cnt == k:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_input():
+    h, w, k = map(int, input().split(" "))
+    c = []
+    for i in range(h):
+        c.append(list(input()))
+    return h, w, k, c
+
+=======
+Suggestion 5
+
+def main():
+    H, W, K = map(int, input().split())
+    c = []
+    for _ in range(H):
+        c.append(input())
+    ans = 0
+    for i in range(2**H):
+        for j in range(2**W):
+            black = 0
+            for k in range(H):
+                for l in range(W):
+                    if (i>>k)&1 and (j>>l)&1 and c[k][l] == '#':
+                        black += 1
+            if black == K:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    h, w, k = map(int, input().split())
+    c = [list(input()) for _ in range(h)]
+    ans = 0
+    for i in range(2 ** h):
+        for j in range(2 ** w):
+            black = 0
+            for k in range(h):
+                for l in range(w):
+                    if i >> k & 1 and j >> l & 1 and c[k][l] == '#':
+                        black += 1
+            if black == k:
+                ans += 1
+    print(ans)

@@ -1,44 +1,117 @@
-#问题陈述
-#林戈喜欢整数200。请为他解决下面的问题。
-#给出一个N个正整数的序列A，找出一对满足下列所有条件的整数(i, j)：
-#1 ≦ i < j ≦ N；
-#A_i - A_j是200的倍数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#123 223 123 523 200 2000
-#
-#样本输出1
-#4
-#例如，对于（i，j）=（1，3），A_1-A_3=0是200的倍数。
-#我们有四对满足条件：(i,j)=(1,3), (1,4), (3,4), (5,6)。
-#
-#样本输入2
-#5
-#1 2 3 4 5
-#
-#样本输出2
-#0
-#可能没有满足条件的配对。
-#
-#样本输入3
-#8
-#199 100 200 400 300 500 600 200
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem200_b(n,k):
+    for i in range(k):
+        if n%200 == 0:
+            n = int(n/200)
+        else:
+            n = int(str(n) + "200")
+    return n
+
+=======
+Suggestion 2
+
+def solve(n,k):
+    for i in range(k):
+        if n%200==0:
+            n=n//200
+        else:
+            n=int(str(n)+'200')
+    return n
+
+n,k=map(int,input().split())
+print(solve(n,k))
+
+=======
+Suggestion 3
+
+def solve(n,k):
+    for _ in range(k):
+        if n%200==0:
+            n=n//200
+        else:
+            n=int(str(n)+'200')
+    return n
+
+=======
+Suggestion 4
+
+def main():
+    #输入
+    N,K = map(int,input().split())
+    for i in range(K):
+        if N%200 == 0:
+            N = N//200
+        else:
+            N = int(str(N)+'200')
+    print(N)
+
+=======
+Suggestion 5
+
+def problems200_b():
+    n,k = map(int,input().split())
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + "200")
+    print(n)
+
+=======
+Suggestion 6
+
+def problem200_b(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + "200")
+    return n
+
+=======
+Suggestion 7
+
+def func(N,K):
+    for i in range(K):
+        if N%200 == 0:
+            N = N//200
+        else:
+            N = int(str(N)+"200")
+    return N
+
+=======
+Suggestion 8
+
+def func(n,k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + '200')
+    return n
+
+=======
+Suggestion 9
+
+def solve(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + "200")
+    return n
+
+=======
+Suggestion 10
+
+def problem_200_b(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + '200')
+    return n

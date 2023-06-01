@@ -1,52 +1,136 @@
-#问题陈述
-#在一个x轴向右，y轴向上的xy坐标平面内，将一个点（a，b）绕原点逆时针旋转d度，求该点的新坐标。
-#
-#约束条件
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b d
-#
-#輸出
-#让点的新坐标为（a', b'）。按这个顺序打印a'和b'，中间有一个空格。
-#你的输出将被认为是正确的，对于每一个打印的值，与答案的绝对或相对误差最多为10^{-6}。
-#
-#输入样本 1
-#2 2 180
-#
-#输出样本 1
-#-2 -2
-#当(2, 2)围绕原点逆时针旋转180度时，它成为(2, 2)相对于原点的对称点，即(-2, -2)。
-#
-#输入样本 2
-#5 0 120
-#
-#样本输出 2
-#-2.49999999999999911182 4.33012701892219364908
-#当(5, 0)围绕原点逆时针旋转120度时，它变成(-(5/2) , ((5(3)^(1/2))/2))。
-#这个样本输出与这些值并不精确匹配，但误差很小，可以认为是正确的。
-#
-#样本输入 3
-#0 0 11
-#
-#样本输出3
-#0.00000000000000000000 0.00000000000000000000
-#由于（a，b）是原点（旋转的中心），旋转不会改变其坐标。
-#
-#样本输入4
-#15 5 360
-#
-#输出样本 4
-#15.00000000000000177636 4.99999999999999555911
-#360度的旋转并不改变一个点的坐标。
-#
-#输入样本5
-#-505 191 278
-#
-#样本输出5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_height(N, M, X, T, D):
+    height = T
+    for i in range(X, N):
+        height += D
+    return height
+
+=======
+Suggestion 2
+
+def solve():
+    N, M, X, T, D = map(int, input().split())
+    height = T
+    for i in range(X, M):
+        height += D
+    for i in range(M, N):
+        height += D
+    print(height)
+
+=======
+Suggestion 3
+
+def main():
+    N,M,X,T,D = map(int,input().split())
+    if M == 0:
+        print(T)
+    else:
+        for i in range(M):
+            if i < X-1:
+                T += D
+            elif i == X-1:
+                T += 0
+            elif i >= X:
+                T += D
+        print(T)
+
+=======
+Suggestion 4
+
+def solve():
+    # 读取输入
+    n, m, x, t, d = map(int, input().split())
+    # 计算
+    h = t
+    for i in range(x, m):
+        h += d
+    for i in range(m, n):
+        h += d
+    # 输出
+    print(h)
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    #输入
+    n,m,x,t,d = map(int,input().split())
+    #计算
+    for i in range(m,n):
+        if i == x:
+            t += d
+        else:
+            t += d
+    #输出
+    print(t)
+
+=======
+Suggestion 6
+
+def main():
+    n,m,x,t,d = map(int,input().split())
+    height = t
+    for i in range(1,n):
+        if i < x:
+            height += d
+        elif i == x:
+            height += d
+        else:
+            height += d
+    print(height)
+
+=======
+Suggestion 7
+
+def get_height(n, m, x, t, d):
+    height = t
+    for i in range(1, n):
+        if i == x:
+            continue
+        height += d
+    return height
+
+=======
+Suggestion 8
+
+def main():
+    N,M,X,T,D = map(int,input().split())
+    height = T
+    for i in range(1,M):
+        height += D
+    for i in range(M,N):
+        height += D
+        if i == X:
+            height -= D
+    print(height)
+
+=======
+Suggestion 9
+
+def get_height(n, m, x, t, d):
+    height = t
+    if m <= x:
+        for i in range(m, x):
+            height += d
+    else:
+        for i in range(x, m):
+            height -= d
+    return height
+
+=======
+Suggestion 10
+
+def get_height(n,m,x,t,d):
+    height = t
+    for i in range(1, n):
+        if x == i:
+            height += d
+        else:
+            height += d
+    return height

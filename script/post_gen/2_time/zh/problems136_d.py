@@ -1,43 +1,156 @@
-#问题陈述
-#给出一个由L和R组成的字符串S。
-#有N个从左到右排列的方格，S的第i个字符被写在从左边开始的第i个方格上。
-#写在最左边的方格上的字符总是R，而写在最右边的方格上的字符总是L。
-#最初，每个方格上站着一个孩子。
-#每个孩子将进行下面的移动10^{100}次：
-#在孩子所站的方格上所写的字符所指定的方向上移动一个方格。L表示左边，R表示右边。
-#在孩子们做完这些动作后，找出站在每个方格上的孩子人数。
-#
-#限制条件
-#S是一个长度在2到10^5（包括）之间的字符串。
-#S的每个字符都是L或R。
-#S的第一个和最后一个字符分别是R和L。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#输出
-#按从左到右的顺序，打印出孩子们做完动作后，站在每个方格上的孩子数量。
-#
-#输入样本1
-#RRLRL
-#
-#样本输出1
-#0 1 2 1 1
-#每个孩子走完一步后，站在每个方格上的孩子数量从左到右依次为0、2、1、1、1。
-#每个孩子走了两步后，站在每个方格上的孩子数量从左到右分别是0、1、2、1、1。
-#在每个孩子进行了10^{100}次移动后，站在每个方格上的孩子的数量从左到右分别是0、1、2、1、1。
-#
-#输入样本2
-#RRLLLLRLRRLL
-#
-#样本输出2
-#0 3 3 0 0 0 1 1 0 2 2 0
-#
-#样本输入3
-#rrrllrllrlllll
-#
-#样本输出3
-#0 0 3 2 0 2 1 0 0 0 4 4 0 0 0 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            H[i] -= 1
+    for i in range(N-1):
+        if H[i] > H[i+1]:
+            print("No")
+            break
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def check(heights):
+    heights.sort()
+    for i in range(len(heights)-1):
+        if heights[i+1] - heights[i] > 1:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+    #n = 5
+    #h = [1, 2, 1, 1, 3]
+    #n = 4
+    #h = [1, 3, 2, 1]
+    #n = 5
+    #h = [1, 2, 3, 4, 5]
+    #n = 1
+    #h = [1000000000]
+    n = int(input())
+    h = list(map(int, input().split()))
+    h.reverse()
+    for i in range(n - 1):
+        if h[i] < h[i + 1]:
+            h[i + 1] = h[i + 1] - 1
+        if h[i] < h[i + 1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    for i in range(n-1):
+        if h[i] > h[i+1]:
+            h[i] -= 1
+    for i in range(n-1):
+        if h[i] > h[i+1]:
+            print("No")
+            return
+    print("Yes")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n-1):
+        if a[i] < a[i+1]:
+            a[i+1] -= 1
+        elif a[i] > a[i+1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    heights = [int(i) for i in input().split()]
+    for i in range(n-1):
+        if heights[i] > heights[i+1]:
+            heights[i] -= 1
+    for i in range(n-1):
+        if heights[i] > heights[i+1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def solve(n, h):
+    for i in range(n-1):
+        if h[i+1] > h[i]:
+            h[i+1] -= 1
+        elif h[i+1] < h[i]:
+            return False
+    return True
+
+n = int(input())
+h = list(map(int, input().split()))
+print('Yes' if solve(n, h) else 'No')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    heights = input().split()
+    heights = [int(height) for height in heights]
+    for i in range(1,n):
+        if heights[i] - heights[i-1] > 1:
+            print("No")
+            exit()
+        elif heights[i] - heights[i-1] == 1:
+            heights[i] -= 1
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    for i in range(1, n):
+        if h[i] - h[i - 1] >= 2:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+
+    for i in range(n - 1):
+        if h[i] > h[i + 1]:
+            h[i] -= 1
+        elif h[i] == h[i + 1]:
+            pass
+        else:
+            print('No')
+            break
+    else:
+        print('Yes')

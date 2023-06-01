@@ -1,30 +1,135 @@
-#问题陈述
-#Serval、Fennec和Raccoon玩石头剪刀布，结果打成平手。
-#你得到的字符x和y分别代表Fennec和Raccoon投掷的手。这里，0代表石头，1代表剪刀，2代表纸。
-#打印与薮猫扔出的手相对应的字符，这可以唯一地确定。
-#
-#限制条件
-#x和y各为0、1或2。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#x y
-#
-#输出
-#打印答案，石头为0，剪刀为1，纸为2。
-#
-#输入样本 1
-#0 1
-#
-#输出样本 1
-#2
-#Fennec扔了石头，Raccoon扔了剪刀。薮猫必须投掷纸张，才能抽中。
-#
-#输入样本2
-#0 0
-#
-#样本输出2
-#0
-#Fennec扔了石头，Raccoon也扔了石头。要想平局，薮猫必须扔出石头。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getMedian(arr):
+    arr.sort()
+    l = len(arr)
+    if l%2 == 0:
+        return arr[l/2-1]
+    else:
+        return arr[(l+1)/2-1]
+
+=======
+Suggestion 2
+
+def main():
+    N,K = map(int,input().split())
+    A = []
+    for i in range(N):
+        A.append(list(map(int,input().split())))
+    print(A)
+
+=======
+Suggestion 3
+
+def get_median(a):
+    a.sort()
+    return a[len(a) // 2]
+
+=======
+Suggestion 4
+
+def get_median(a):
+    a.sort()
+    l = len(a)
+    if l%2 == 1:
+        return a[(l-1)//2]
+    else:
+        return a[l//2-1]
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    ans = 10**9
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            b = []
+            for p in range(k):
+                for q in range(k):
+                    b.append(a[i+p][j+q])
+            b.sort()
+            ans = min(ans,b[k*k//2])
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_median(a, k):
+    a.sort()
+    return a[k*k//2]
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def getMedian(a, k):
+    n = len(a)
+    b = []
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            c = []
+            for x in range(k):
+                for y in range(k):
+                    c.append(a[i+x][j+y])
+            c.sort()
+            b.append(c[(k*k)//2])
+    b.sort()
+    return b[0]
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int,input().split())
+    a = [list(map(int,input().split())) for _ in range(n)]
+    #a = [[1,7,0],[5,8,11],[10,4,2]]
+    #a = [[1,2,3],[4,5,6],[7,8,9]]
+    #print(a)
+    ans = 10**9
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            #print(i,j)
+            b = []
+            for x in range(i,i+k):
+                for y in range(j,j+k):
+                    b.append(a[x][y])
+            b.sort()
+            #print(b)
+            ans = min(ans,b[(k**2)//2])
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_median(arr):
+    arr.sort()
+    if len(arr)%2==0:
+        return (arr[len(arr)//2]+arr[len(arr)//2-1])/2
+    else:
+        return arr[len(arr)//2]
+
+n,k=map(int,input().split())
+a=[]
+for i in range(n):
+    a.append(list(map(int,input().split())))
+ans=10**9
+for i in range(n-k+1):
+    for j in range(n-k+1):
+        arr=[]
+        for x in range(k):
+            for y in range(k):
+                arr.append(a[i+x][j+y])
+        ans=min(ans,get_median(arr))
+print(int(ans))

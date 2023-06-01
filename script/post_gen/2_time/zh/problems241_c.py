@@ -1,72 +1,190 @@
-#问题陈述
-#有一个有N个水平行和N个垂直列的网格，每个方格都被涂成白色或黑色。
-#网格的状态由N个字符串S_i表示。
-#如果S_i的第j个字符是#，那么从上面第i行和左边第j列的方格就被涂成黑色。
-#如果该字符是.，则该广场被涂成白色。
-#高桥可以从这些被涂成白色的方格中最多选择两个，并将其涂成黑色。
-#确定是否有可能使该网格包含6个或更多连续的涂成黑色的方格，这些方格可以是垂直、水平或斜向排列的。
-#这里，如果具有N行N列的网格完全包含一个具有6行6列的子网格，并且至少在其对角线上的所有方格都被涂成了黑色，则称该网格包含6个或更多的连续涂黑的方格。
-#
-#限制条件
-#6 ≦ N ≦ 1000
-#| S_i| =N
-#S_i由#和.
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果有可能通过最多两个方格的绘画来满足条件，那么打印Yes；否则，打印No。
-#
-#输入样本 1
-#8
-#........
-#........
-#.#.##.#.
-#........
-#........
-#........
-#........
-#........
-#
-#样本输出1
-#Yes
-#通过涂抹从上往下第3行左边的第3个和第6个方块，将有6个方块被涂成黑色，并在水平方向上排列。
-#
-#输入样本2
-#6
-#######
-#######
-#######
-#######
-#######
-#######
-#
-#样本输出2
-#Yes
-#虽然高桥不能选择一个正方形涂成黑色，但这个网格已经满足了条件。
-#
-#样本输入3
-#10
-#..........
-##..##.....
-#..........
-#..........
-#....#.....
-#....#.....
-#.#...#..#.
-#..........
-#..........
-#..........
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if m > n:
+        print("No")
+        return
+
+    for i in range(m):
+        if a[i] < b[i]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 2
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if n < m:
+        print("No")
+        return
+    for i in range(m):
+        if b[i] < a[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    if n < m:
+        print("No")
+        return
+
+    for i in range(m):
+        if a[i] > b[i]:
+            print("No")
+            return
+    print("Yes")
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    if n < m:
+        print('No')
+        return
+
+    a.sort()
+    b.sort()
+
+    for i in range(m):
+        if a[i] >= b[i]:
+            print('No')
+            return
+
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+
+    a.sort()
+    b.sort()
+
+    if n < m:
+        print("No")
+        return
+
+    for i in range(m):
+        if a[i] > b[i]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort()
+    B.sort()
+    if n < m:
+        print('No')
+    else:
+        for i in range(n):
+            if A[i] < B[i]:
+                print('No')
+                return
+        print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    if n < m:
+        print("No")
+        return
+    A.sort()
+    B.sort()
+    for i in range(m):
+        if A[i] >= B[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 8
+
+def solve(N,M,A,B):
+    if M>N:
+        return False
+    A.sort()
+    B.sort()
+    for i in range(M):
+        if B[i]<A[N-M+i]:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def solve(n, m, a, b):
+    if m > n:
+        return False
+    a.sort()
+    b.sort()
+    for i in range(m):
+        if a[-1-i] < b[-1-i]:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if n < m:
+        print("No")
+    else:
+        for i in range(m):
+            if a[i] >= b[i]:
+                print("No")
+                break
+            elif i == m-1:
+                print("Yes")

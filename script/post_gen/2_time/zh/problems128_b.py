@@ -1,70 +1,69 @@
-#问题陈述
-#你决定写一本介绍好餐馆的书。
-#你想介绍的餐馆有N家：餐馆1，餐馆2，......，餐馆N。餐馆i位于城市S_i，你对该餐馆的评估分数在100分制下为P_i。
-#没有两家餐厅有相同的分数。
-#你想按以下顺序介绍这些餐馆：
-#餐馆按其城市名称的词法顺序排列。
-#如果在同一城市有多家餐馆，则按分数的降序排列。
-#按照书中介绍餐厅的顺序，打印出餐厅的识别号。
-#
-#限制条件
-#1 ≤ N ≤ 100
-#S是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#0 ≤ P_i ≤ 100
-#P_i是一个整数。
-#P_i ≠ P_j (1 ≤ i < j ≤ N)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_1 P_1
-#:
-#S_N P_N
-#
-#输出
-#打印N行。第i行（1≤i≤N）应包含书中第i个介绍的餐厅的识别号。
-#
-#输入示例 1
-#6
-#khabarovsk 20
-#moscow 10
-#kazan 50
-#kazan 35
-#moscow 60
-#khabarovsk 40
-#
-#样本输出1
-#3
-#4
-#6
-#1
-#5
-#2
-#这三个城市的名字的词法顺序是kazan < khabarovsk < moscow。对于这些城市中的每一个，它的餐馆都是按照分数的降序来介绍的。因此，这些餐厅是按照3,4,6,1,5,2的顺序介绍的。
-#
-#样本输入2
-#10
-#yakutsk 10
-#yakutsk 20
-#yakutsk 30
-#yakutsk 40
-#yakutsk 50
-#yakutsk 60
-#yakutsk 70
-#yakutsk 80
-#yakutsk 90
-#yakutsk 100
-#
-#样本输出2
-#10
-#9
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem128_a():
+    a, p = map(int, input().split())
+    print((a*3+p)//2)
+problem128_a()
+
+=======
+Suggestion 2
+
+def max_pie(a, p):
+    if a == 0:
+        return 0
+    else:
+        return int((a * 3 + p) / 2)
+
+=======
+Suggestion 3
+
+def solve():
+    A, P = map(int, input().split())
+    print((A * 3 + P) // 2)
+
+=======
+Suggestion 4
+
+def get_max_pie(a, p):
+    return int((a * 3 + p) / 2)
+
+=======
+Suggestion 5
+
+def main():
+    A,P = map(int,input().split())
+    print((A*3+P)//2)
+
+=======
+Suggestion 6
+
+def problems128_a():
+    pass
+
+=======
+Suggestion 7
+
+def problems128_a():
+    A,P = map(int,input().split())
+    print((A*3+P)//2)
+
+=======
+Suggestion 8
+
+def solve(a, p):
+    return (a * 3 + p) // 2
+
+=======
+Suggestion 9
+
+def max_pie(apple, piece):
+    return min(apple * 3 + piece, (apple + piece) // 2)
+
+=======
+Suggestion 10
+
+def solve(A, P):
+    return (A * 3 + P) // 2

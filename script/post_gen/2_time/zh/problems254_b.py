@@ -1,43 +1,74 @@
-#问题说明
-#求N个整数序列A_0,...,A_{N-1}，定义如下。
-#对于每个i (0≦i ≦N-1)，A_i的长度为i+1。
-#对于每个i和j（0≦i≦N-1，0≦j≦i），A_i的（j+1）项，用a_{i,j}表示，定义如下。
-#a_{i,j}=1，如果j=0或j=i。
-#a_{i,j} = a_{i-1,j-1} + a_{i-1,j}，否则。
-#
-#
-#约束条件
-#1 ≦ N ≦ 30
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印N行。第i行应包含A_{i-1}的条款，以空格分隔。
-#
-#输入样本 1
-#3
-#
-#样本输出 1
-#1
-#1 1
-#1 2 1
-#
-#样本输入2
-#10
-#
-#样本输出2
-#1
-#1 1
-#1 2 1
-#1 3 3 1
-#1 4 6 4 1
-#1 5 10 10 5 1
-#1 6 15 20 15 6 1
-#1 7 21 35 35 21 7 1
-#1 8 28 56 70 56 28 8 1
-#1 9 36 84 126 126 84 36 9 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(n%100)
+
+=======
+Suggestion 2
+
+def main():
+    # 读入N
+    N = int(input())
+
+    # 请在此处写下您的代码
+    # 请使用print()输出答案
+    print(N%100)
+
+=======
+Suggestion 3
+
+def last_two_digits(n):
+    if n < 100 or n > 999:
+        return None
+    return n % 100
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print(str(N)[-2:])
+
+=======
+Suggestion 5
+
+def last_two_digits(N):
+    if N < 100 or N > 999:
+        print("N is not in the range of 100 to 999.")
+    else:
+        print(N%100)
+
+N = int(input())
+last_two_digits(N)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print("{:02d}".format(n % 100))
+
+=======
+Suggestion 7
+
+def main():
+    num = int(input())
+    print(str(num)[-2:])
+
+=======
+Suggestion 8
+
+def last_two_digits():
+    n = int(input())
+    print(n%100)
+
+=======
+Suggestion 9
+
+def main():
+    number = input()
+    print(number[-2:])

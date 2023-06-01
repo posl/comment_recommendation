@@ -1,62 +1,132 @@
-#问题陈述
-#有N个人，从Person 1到Person N。
-#给你M个事实："人A_i和人B_i是朋友"。同一事实可以被多次给出。
-#如果X和Y是朋友，而Y和Z是朋友，那么X和Z也是朋友。没有什么友谊是不能从M个给定的事实中得出的。
-#邪恶的高桥想把N个人分成若干组，使每个人在他/她的组中没有朋友。
-#他至少需要做多少个小组？
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1 ≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#样本输出1
-#3
-#将它们分为三组，如{1,3}，{2,4}和{5}，就达到了目的。
-#
-#样本输入2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#样本输出2
-#4
-#
-#样本输入3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#输出样本3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # N = int(input())
+    # A = list(map(int, input().split()))
+    N = 4
+    A = [141421356, 17320508, 22360679, 244949]
+    # A = [1,2,3]
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            ans += A[i] * A[j]
+            ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += a[i] * sum(a[i + 1:])
+    print(ans % (10 ** 9 + 7))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 10 ** 9 + 7
+    sum = 0
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            sum += A[i] * A[j]
+            sum %= mod
+    print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(N):
+        ans += A[i] * sum(A[i+1:])
+    print(ans % (10**9 + 7))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    s = sum(a) % mod
+    ans = 0
+    for i in range(n):
+        s -= a[i]
+        ans += a[i] * s
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def sum_of_products(a):
+    a.sort()
+    n = len(a)
+    s = 0
+    for i in range(n):
+        s += a[i] * (n - i - 1) * (i + 1)
+    return s
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    sum = 0
+    for i in range(n):
+        sum += a[i] * (sum(a) - a[i])
+    print(sum % mod)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum_a = sum(a)
+    sum_a_square = sum([i**2 for i in a])
+    ans = (sum_a**2 - sum_a_square) // 2 % (10**9 + 7)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    sum_a = sum(a)
+    for i in range(n-1):
+        sum_a -= a[i]
+        ans += a[i]*sum_a
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    MOD = 10**9+7
+    ans = 0
+    for i in range(N):
+        ans += A[i]*(sum(A[i+1:])%MOD)
+    print(ans%MOD)

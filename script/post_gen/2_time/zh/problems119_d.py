@@ -1,69 +1,194 @@
-#问题陈述
-#沿着一条东西走向的道路，有A座神社和B座寺庙。
-#从西边开始的第i座神社距离道路西端有s_i米，从西边开始的第i座寺庙距离道路西端有t_i米。
-#回答下面的Q查询：
-#查询i（1 ≦ i ≦ Q）：如果我们从距离道路西端x_i米的某一点出发，沿着道路自由行进，为了参观一个神社和一个寺庙，需要走的最小距离是多少？(允许经过的神社和寺庙比要求的多)。
-#
-#限制条件
-#1 ≦ a, b ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ s_1 < s_2 < ...< s_A ≦ 10^{10}
-#1 ≦ t_1 < t_2 < ...< t_B ≦ 10^{10}
-#1 ≦ x_i ≦ 10^{10}
-#s_1, ..., s_A, t_1, ..., t_B, x_1, ..., x_Q都是不同。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#A B Q
-#s_1
-#:
-#s_A
-#t_1
-#:
-#t_B
-#x_1
-#:
-#x_Q
-#
-#输出
-#打印Q行。第i行应该包含第i个查询的答案。
-#
-#输入样本 1
-#2 3 4
-#100
-#600
-#400
-#900
-#1000
-#150
-#2000
-#899
-#799
-#
-#样本输出1
-#350
-#1400
-#301
-#399
-#有两个神社和三个寺庙。神社位于距离道路西端100、600米的地方，而寺庙位于距离道路西端400、900、1000米的地方。
-#问题1：如果我们从距离道路西端150米的一个点出发，最佳的行动是先向西走50米去参观一个神社，然后向东走300米去参观一个寺庙。
-#问题2：如果我们从距离道路西端2000米的一个点出发，最佳行动是先向西走1000米去拜访一座寺庙，然后再向西走400米去拜访一座神社。途中我们会路过另一座寺庙，但这也没什么。
-#问题3：如果我们从距离道路西端899米的地方开始，最佳的行动是先向东走1米去拜访一座寺庙，然后再向西走300米去拜访一座神社。
-#第4题：如果我们从距离道路西端799米的地方开始，最优化的行动是先向西走199米去参观一个神社，然后再向西走200米去参观一个寺庙。
-#
-#输入样本 2
-#1 1 3
-#1
-#10000000000
-#2
-#9999999999
-#5000000000
-#
-#样本输出2
-#10000000000
-#10000000000
-#14999999998
-#这条路相当长，我们可能需要走一段不适合32位整数的距离。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else float('inf')
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + l[i], b, c) + 10
+    ret2 = dfs(i + 1, a, b + l[i], c) + 10
+    ret3 = dfs(i + 1, a, b, c + l[i]) + 10
+    return min(ret0, ret1, ret2, ret3)
+ 
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b, c = map(int, input().split())
+    l = [int(input()) for _ in range(n)]
+    ans = 10 ** 9
+    for i in range(4 ** n):
+        mp = 0
+        la, lb, lc = 0, 0, 0
+        for j in range(n):
+            if (i >> (2 * j)) % 4 == 1:
+                mp += 10
+                if la > 0:
+                    mp += abs(l[j] - la)
+                la += l[j]
+            elif (i >> (2 * j)) % 4 == 2:
+                mp += 10
+                if lb > 0:
+                    mp += abs(l[j] - lb)
+                lb += l[j]
+            elif (i >> (2 * j)) % 4 == 3:
+                mp += 10
+                if lc > 0:
+                    mp += abs(l[j] - lc)
+                lc += l[j]
+        if la > 0 and lb > 0 and lc > 0:
+            mp += abs(la - a) + abs(lb - b) + abs(lc - c)
+            ans = min(ans, mp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def dfs(a, b, c, mp, l, n):
+    if n == N:
+        if a == 0 or b == 0 or c == 0:
+            return 10**9
+        else:
+            return mp + abs(a - A) + abs(b - B) + abs(c - C) - 30
+    ret0 = dfs(a, b, c, mp, l, n + 1)
+    ret1 = dfs(a + l[n], b, c, mp + 10, l, n + 1)
+    ret2 = dfs(a, b + l[n], c, mp + 10, l, n + 1)
+    ret3 = dfs(a, b, c + l[n], mp + 10, l, n + 1)
+    return min(ret0, ret1, ret2, ret3)
+
+N, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(N)]
+print(dfs(0, 0, 0, 0, l, 0))
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B, C = map(int, input().split())
+    l = [int(input()) for _ in range(N)]
+    ans = 10**9
+    for i in range(4**N):
+        tmp = i
+        mp = 0
+        a = A
+        b = B
+        c = C
+        for j in range(N):
+            if tmp % 4 == 1:
+                mp += 10
+                a -= l[j]
+            elif tmp % 4 == 2:
+                mp += 10
+                b -= l[j]
+            elif tmp % 4 == 3:
+                mp += 10
+                c -= l[j]
+            tmp //= 4
+        if a <= 0 and b <= 0 and c <= 0:
+            ans = min(ans, mp)
+    print(ans)
+
+=======
+Suggestion 5
+
+def getMinMP(n, a, b, c, ls):
+    ls.sort(reverse=True)
+    dp = [[[float('inf') for i in range(3001)] for j in range(3001)] for k in range(3001)]
+    dp[0][0][0] = 0
+    for i in range(n):
+        for j in range(3001):
+            for k in range(3001):
+                for l in range(3001):
+                    if j >= ls[i]:
+                        dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j-ls[i]][k]+l)
+                    if k >= ls[i]:
+                        dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j][k-ls[i]]+l)
+                    dp[i+1][min(j+ls[i], 3000)][k] = min(dp[i+1][min(j+ls[i], 3000)][k], dp[i][j][k]+l)
+                    dp[i+1][j][min(k+ls[i], 3000)] = min(dp[i+1][j][min(k+ls[i], 3000)], dp[i][j][k]+l)
+                    dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j][k])
+    res = float('inf')
+    for i in range(3001):
+        for j in range(3001):
+            if i >= a and j >= b and i+j <= 3000:
+                res = min(res, dp[n][i][j]+abs(i-a)+abs(j-b)+abs(i+j-c))
+    return res
+
+=======
+Suggestion 6
+
+def solve():
+    N, A, B, C = map(int, input().split())
+    l = sorted([int(input()) for _ in range(N)], reverse=True)
+    INF = float('inf')
+    def dfs(i, a, b, c):
+        if i == N:
+            return abs(A-a) + abs(B-b) + abs(C-c) - 30 if min(a, b, c) > 0 else INF
+        ret0 = dfs(i+1, a, b, c)
+        ret1 = dfs(i+1, a+l[i], b, c) + 10
+        ret2 = dfs(i+1, a, b+l[i], c) + 10
+        ret3 = dfs(i+1, a, b, c+l[i]) + 10
+        return min(ret0, ret1, ret2, ret3)
+    print(dfs(0, 0, 0, 0))
+
+solve()
+
+=======
+Suggestion 7
+
+def dfs(i, a, b, c, mp):
+    if i == n:
+        if a > 0 and b > 0 and c > 0:
+            return abs(a - a_) + abs(b - b_) + abs(c - c_) + mp - 30
+        else:
+            return 10 ** 18
+    ret0 = dfs(i + 1, a, b, c, mp)
+    ret1 = dfs(i + 1, a + l[i], b, c, mp + 10)
+    ret2 = dfs(i + 1, a, b + l[i], c, mp + 10)
+    ret3 = dfs(i + 1, a, b, c + l[i], mp + 10)
+    return min(ret0, ret1, ret2, ret3)
+
+
+n, a_, b_, c_ = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0, 0))
+
+=======
+Suggestion 8
+
+def getMinMP(N,A,B,C,l):
+    #print("N,A,B,C,l:",N,A,B,C,l)
+    if N==0:
+        if A==0 and B==0 and C==0:
+            return 0
+        else:
+            return 1000000
+    if A==0 and B==0 and C==0:
+        return 0
+    if A<0 or B<0 or C<0:
+        return 1000000
+    if A==0 and B==0 and C==0:
+        return 0
+    if l[0]==A or l[0]==B or l[0]==C:
+        return getMinMP(N-1,A-l[0],B,C,l[1:])
+    else:
+        return min(getMinMP(N-1,A,B,C,l[1:]),1+getMinMP(N-1,A-l[0],B,C,l[1:]),1+getMinMP(N-1,A,B-l[0],C,l[1:]),1+getMinMP(N-1,A,B,C-l[0],l[1:]))
+
+
+N,A,B,C=map(int,input().split())
+l=[]
+for i in range(N):
+    l.append(int(input()))
+
+print(getMinMP(N,A,B,C,l))
+
+=======
+Suggestion 9
+
+def main():
+    pass

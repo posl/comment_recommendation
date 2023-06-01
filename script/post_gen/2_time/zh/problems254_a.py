@@ -1,30 +1,84 @@
-#问题陈述
-#给你一个至少为100的整数N。打印N的最后两位数字。
-#严格地说，要按这个顺序打印N的十位和一位数字。
-#
-#限制条件
-#100 ≦ N ≦ 999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#254
-#
-#样本输出1
-#54
-#254的最后两位数字是54，应该被打印出来。
-#
-#输入样本2
-#101
-#
-#样本输出2
-#01
-#101的最后两位数字是01，应该被打印出来。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 2
+
+def f(n,a,b):
+    count = 0
+    for i in range(1,n+1):
+        if i%a != 0 and i%b != 0:
+            count += i
+    return count
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    print(sum([i for i in range(1, n+1) if (i%a)*(i%b)!=0]))
+
+=======
+Suggestion 4
+
+def getSum(n, a, b):
+    sum = 0
+    for i in range(1, n+1):
+        if i % a != 0 and i % b != 0:
+            sum += i
+    return sum
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 7
+
+def main():
+    n, a, b = map(int, input().split())
+    print(sum([i for i in range(1, n+1) if i % a and i % b]))
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    sum = 0
+    for i in range(N + 1):
+        if i % A != 0 and i % B != 0:
+            sum += i
+    print(sum)

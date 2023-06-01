@@ -1,53 +1,158 @@
-#问题陈述
-#有一个无限的二维网格，我们在(r_1, c_1)方格有一个叫超级龙马的棋子。(龙的意思是龙，马的意思是马）。
-#在一步棋中，该棋子可以走到如下所示的一个方格中：
-#更正式地说，当超级龙马在(a, b)方格时，它可以走到(c, d)方格，这样至少有一个下列条件成立：
-#a + b = c + d
-#a - b = c - d
-#|a - c| + |b - d| ≦ 3
-#求该棋子从(r_1, c_1)到达(r_2, c_2)所需的最少步数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ r_1, c_1, r_2, c_2 ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#r_1 c_1
-#r_2 c_2
-#
-#输出
-#打印超级龙马从(r_1, c_1)到达(r_2, c_2)所需的最少动作数。
-#
-#输入样本 1
-#1 1
-#5 6
-#
-#样本输出1
-#2
-#我们需要两步棋--例如，（1，1）->（5，5）->（5，6）。
-#
-#输入样本 2
-#1 1
-#1 200001
-#
-#样本输出2
-#2
-#我们需要两个动作--例如，（1，1）->（100001，100001）->（1，200001）。
-#
-#输入样本 3
-#2 3
-#998244353 998244853
-#
-#样本输出 3
-#3
-#我们需要三步棋--例如，（2，3）->（3，3）->（-247，253）->（998244353，998244853）。
-#
-#输入样本 4
-#1 1
-#1 1
-#
-#样本输出4
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'o':
+            ans += 1
+        else:
+            ans = max(ans - 1, 0)
+    print(ans)
+
+=======
+Suggestion 2
+
+def calc_score(n,x,s):
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        elif s[i] == 'x' and score > 0:
+            score -= 1
+    return score
+
+n,x = map(int, input().split())
+s = input()
+print(calc_score(n,x,s))
+
+=======
+Suggestion 3
+
+def problem184_b():
+    n,x = map(int,input().split())
+    s = input()
+    result = x
+    for i in range(n):
+        if s[i] == 'o':
+            result += 1
+        elif s[i] == 'x':
+            if result > 0:
+                result -= 1
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    S = list(input())
+    ans = X
+    for i in range(N):
+        if S[i] == 'o':
+            ans += 1
+        elif S[i] == 'x':
+            if ans > 0:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    score = x
+
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+
+    print(score)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for s in S:
+        if s == 'o':
+            X += 1
+        else:
+            if X > 0:
+                X -= 1
+    print(X)
+
+=======
+Suggestion 7
+
+def main():
+    n,x=map(int,input().split())
+    s=input()
+    sum=x
+    for i in range(n):
+        if s[i]=="o":
+            sum+=1
+        else:
+            if sum>0:
+                sum-=1
+    print(sum)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    N, X = map(int, input().split())
+    S = input()
+    # 初始化
+    score = X
+    # 计算
+    for i in range(N):
+        if S[i] == 'o':
+            score += 1
+        else:
+            score = max(0, score - 1)
+    # 输出结果
+    print(score)
+
+=======
+Suggestion 9
+
+def func():
+    #N, X = map(int, input().split())
+    #S = input()
+    N, X = 3, 0
+    S = 'xox'
+
+    score = X
+    for s in S:
+        if s == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+
+    print(score)
+
+=======
+Suggestion 10
+
+def answer(n, x, s):
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+    return score

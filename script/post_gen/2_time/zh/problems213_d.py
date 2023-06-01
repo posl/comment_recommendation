@@ -1,57 +1,165 @@
-#问题陈述
-#AtCoder共和国有N个编号为1到N的城市和N-1条编号为1到N-1的道路。
-#道路i双向连接城市A_i和城市B_i。可以保证人们可以利用道路在每一对城市之间旅行。
-#高桥将从城市1出发，通过重复以下方式进行旅行。
-#如果有未访问过的城市与高桥现在所在的城市直接相连，他就去这些城市中数字最小的城市。
-#否则、
-#如果他在城市1，他就结束旅程；
-#否则，他就去他在第一次访问当前城市之前所在的城市。
-#
-#按照高桥访问城市的顺序，找出他访问城市的顺序。
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i,B_i ≦ N
-#有可能在每一对城市之间使用公路旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_{N-1} B_{N-1}
-#
-#输出
-#按照高桥访问城市的顺序，打印出高桥访问的城市序列，包括城市1在旅程开始和结束时，中间有空格。
-#
-#输入样本 1
-#4
-#1 2
-#4 2
-#3 1
-#
-#样本输出1
-#1 2 4 2 1 3 1
-#他的旅程将是这样的。
-#从城市1开始。
-#与城市1直接相连的未访问的城市是城市2和3。前往数字较小的城市，即城市2。
-#与城市2直接相连的未被访问的城市是城市4。去那里吧。
-#没有与城市4直接相连的未访问的城市。回到城市2。
-#没有未访问过的城市与城市2直接相连。去城市1，他在第一次访问城市2之前就在那里。
-#与城市1直接相连的未访问过的城市是城市3。去那里吧。
-#没有与城市3直接相连的未访问过的城市。回到城市1。
-#没有与城市1直接相连的未访问过的城市。结束旅程。
-#
-#样本输入2
-#5
-#1 2
-#1 3
-#1 4
-#1 5
-#
-#样本输出2
-#1 2 1 3 1 4 1 5 1
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    h,w,n = map(int,input().split())
+    cards = []
+    for i in range(n):
+        cards.append(list(map(int,input().split())))
+    for i in range(n):
+        cards[i].append(i+1)
+    cards.sort(key=lambda x:x[1])
+    cards.sort(key=lambda x:x[0])
+    for i in range(n):
+        print(cards[i][2],cards[i][0],cards[i][1])
+
+=======
+Suggestion 3
+
+def main():
+    h,w,n = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_,b_ = map(int,input().split())
+        a.append(a_)
+        b.append(b_)
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a_index = {}
+    b_index = {}
+    for i in range(len(a)):
+        a_index[a[i]] = i+1
+    for i in range(len(b)):
+        b_index[b[i]] = i+1
+    for i in range(n):
+        print(a_index[a[i]],b_index[b[i]])
+
+=======
+Suggestion 4
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    a_sorted = sorted(a)
+    b_sorted = sorted(b)
+    a_dict = {}
+    b_dict = {}
+    for i in range(n):
+        a_dict[a_sorted[i]] = i + 1
+        b_dict[b_sorted[i]] = i + 1
+    for i in range(n):
+        print(a_dict[a[i]], b_dict[b[i]])
+
+=======
+Suggestion 5
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a)):
+        a_dict[a[i]] = i + 1
+    for i in range(len(b)):
+        b_dict[b[i]] = i + 1
+
+    for i in range(n):
+        print(a_dict[a[i]], b_dict[b[i]])
+
+=======
+Suggestion 6
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = sorted(A)
+    B = sorted(B)
+    C = []
+    D = []
+    for i in range(N):
+        if i == 0:
+            C.append(A[i])
+            D.append(B[i])
+        else:
+            if A[i] != A[i-1]:
+                C.append(A[i])
+            if B[i] != B[i-1]:
+                D.append(B[i])
+    for i in range(N):
+        print(C.index(A[i])+1, D.index(B[i])+1)
+
+=======
+Suggestion 7
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a = {a[i]:i+1 for i in range(len(a))}
+    b = {b[i]:i+1 for i in range(len(b))}
+    for i in range(n):
+        print(a[a[i+1]], b[b[i+1]])
+
+=======
+Suggestion 8
+
+def solve(h, w, n, ab):
+    a = []
+    b = []
+    for i in range(n):
+        a.append(ab[i][0])
+        b.append(ab[i][1])
+    a.sort()
+    b.sort()
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a)):
+        a_dict[a[i]] = i+1
+    for i in range(len(b)):
+        b_dict[b[i]] = i+1
+    for i in range(n):
+        print(a_dict[ab[i][0]], b_dict[ab[i][1]])

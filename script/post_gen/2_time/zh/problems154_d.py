@@ -1,42 +1,113 @@
-#问题陈述
-#我们有N个骰子，从左到右排成一行。从左边开始的第i个骰子在投掷时显示出从1到p_i的p_i个数字，概率相同。
-#我们将选择相邻的K个骰子，独立投掷每个骰子，并计算出所显示的数字之和。找出这个和的预期值的最大可能值。
-#
-#限制条件
-#1 ≤ k ≤ n ≤ 200000
-#1 ≤ p_i ≤ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#p_1 ... p_N
-#
-#输出
-#打印所示数字之和的预期值的最大可能值。
-#当你的输出与我们的答案的绝对或相对误差最多为10^{-6}时，你的输出将被视为正确。
-#
-#输入样本 1
-#5 3
-#1 2 2 4 5
-#
-#样本输出1
-#7.000000000000
-#当我们从左边开始投掷第三个、第四个和第五个骰子时，所显示的数字之和的期望值是7，这是我们能够达到的最大值。
-#
-#样本输入2
-#4 1
-#6 6 6 6
-#
-#样本输出2
-#3.500000000000
-#无论我们选择哪种骰子，所示数字的期望值都是3.5。
-#
-#样本输入3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#样本输出3
-#32.000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print("NO")
+            return
+    print("YES")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(set(a)) == n:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n - 1):
+        if a[i] == a[i + 1]:
+            print('NO')
+            return
+    print('YES')
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N - 1):
+        if A[i] == A[i + 1]:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n):
+        if a[i-1] == a[i]:
+            print('NO')
+            break
+    else:
+        print('YES')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n - 1):
+        if a[i] == a[i + 1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            print('NO')
+            exit()
+    print('YES')
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = input().split()
+    if len(set(a)) == n:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    print("Yes" if len(set(a)) == n else "No")

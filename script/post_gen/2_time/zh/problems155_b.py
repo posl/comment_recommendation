@@ -1,41 +1,144 @@
-#问题陈述
-#你是AtCoder王国的一名移民官员。一个移民携带的文件上写有一些整数，你需要检查它们是否符合某些标准。
-#根据规定，当且仅当满足以下条件时，该移民应被允许进入王国：
-#所有写在文件上的偶数都能被3或5整除。
-#如果按照规定应该允许该移民入境，则输出APPROVED；否则，打印DENIED。
-#
-#注意事项
-#语句中的条件可以改写为 "如果x是写在文件上的偶数，x能被3或5整除"。
-#这里的 "如果 "和 "或 "是逻辑术语。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果根据规定，该移民应被允许进入，打印APPROVED；否则，打印DENIED。
-#
-#输入样本1
-#5
-#6 7 9 10 31
-#
-#样本输出1
-#APPROVED
-#文件上写的偶数是6和10。
-#所有这些数字都能被3或5整除，所以移民应该被允许进入。
-#
-#输入样本2
-#3
-#28 27 24
-#
-#样本输出2
-#DENIED
-#28违反了条件，所以不应该允许该移民入境。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b and b != c:
+        print("Yes")
+    elif a == c and b != c:
+        print("Yes")
+    elif b == c and a != c:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c=map(int,input().split())
+    if a==b and b!=c:
+        print("是")
+    elif b==c and c!=a:
+        print("是")
+    elif c==a and a!=b:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b and a != c:
+        print("Yes")
+    elif a == c and a != b:
+        print("Yes")
+    elif b == c and b != a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def answer(A,B,C):
+    if A == B and B != C:
+        return "是"
+    elif A == C and B != C:
+        return "是"
+    elif B == C and A != B:
+        return "是"
+    else:
+        return "否"
+
+=======
+Suggestion 5
+
+def is_diff(a, b, c):
+    if a == b and a != c:
+        return True
+    elif a == c and a != b:
+        return True
+    elif b == c and b != a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def problem155_a():
+    a,b,c = map(int,input().split())
+    if a==b and b!=c:
+        print('是')
+    elif a==c and b!=c:
+        print('是')
+    elif b==c and a!=b:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 判断
+    if a == b:
+        if a == c:
+            print("否")
+        else:
+            print("是")
+    elif b == c:
+        print("是")
+    elif a == c:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int,input().split())
+    if a==b and a!=c:
+        print("是")
+    elif a==c and a!=b:
+        print("是")
+    elif b==c and b!=a:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 9
+
+def problem155_a():
+    a,b,c = map(int,input().split())
+    if a == b and a != c:
+        print("Yes")
+    elif a == c and a != b:
+        print("Yes")
+    elif b == c and b != a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b and b != c:
+        print("是")
+    elif b == c and a != c:
+        print("是")
+    elif a == c and b != c:
+        print("是")
+    else:
+        print("否")

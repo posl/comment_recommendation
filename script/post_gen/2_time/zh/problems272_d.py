@@ -1,47 +1,172 @@
-#问题陈述
-#有一个有N×N个方格的网格。  我们用(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#最初，一个棋子被放在（1，1）上。  你可以重复以下的操作，次数不限：
-#设(i, j)为棋子目前所处的方格。  将棋子移到与(i, j)的距离正好是(M)^(1/2)的那个方格。
-#在这里，我们将方格（i，j）和方格（k，l）之间的距离定义为（（i-k）^2+（j-l）^2）^（1/2）。
-#对于所有的方格（i，j），确定棋子是否可以到达（i，j）。  如果可以，请找出这样做所需的最小操作数。
-#
-#限制条件
-#1 ≦ N ≦ 400
-#1 ≦ M ≦ 10^6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#
-#输出
-#打印N行。  第i行应该包含N个整数。  如果这块能达到(i, j)，第i行中的第j个整数应该是所需的最小操作数；否则，它应该是-1。
-#
-#输入样本 1
-#3 1
-#
-#样本输出 1
-#0 1 2
-#1 2 3
-#2 3 4
-#你可以将棋子移动到四个相邻的位置。
-#例如，我们可以通过以下两个操作将棋子移动到（2,2）。
-#棋子现在在(1,1)上。(1,1)和(1,2)之间的距离正好是(1)^(1/2)，所以将棋子移到(1,2)。
-#棋子现在在(1,2)上。(1,2)和(2,2)之间的距离正好是(1)^(1/2)，所以把棋子移到(2,2)。
-#
-#输入样本 2
-#10 5
-#
-#输出样本 2
-#0 3 2 3 2 3 4 5 4 5
-#3 4 1 2 3 4 3 4 5 6
-#2 1 4 3 2 3 4 5 4 5
-#3 2 3 2 3 4 3 4 5 6
-#2 3 2 3 4 3 4 5 4 5
-#3 4 3 4 3 4 5 4 5 6
-#4 3 4 3 4 5 4 5 6 5
-#5 4 5 4 5 4 5 6 5 6
-#4 5 4 5 4 5 6 5 6 7
-#5 6 5 6 5 6 5 6 7 6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[0] == 0:
+        print(-1)
+        exit()
+    if n == 1:
+        print(-1)
+        exit()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            print(a[i] * 2)
+            exit()
+    print(-1)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[0] == 0:
+        print(-1)
+    else:
+        print(A[-1] + A[-2])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    max_even = -1
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i]+a[j])%2 == 0:
+                if max_even < a[i]+a[j]:
+                    max_even = a[i]+a[j]
+    print(max_even)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j])%2 == 0:
+                print(a[i]+a[j])
+                return
+    print(-1)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[N-1] % 2 == 0:
+        print(A[N-1])
+        return
+    else:
+        for i in range(N-1):
+            if A[i] % 2 == 0:
+                print(A[N-1] + A[i])
+                return
+    print(-1)
+    return
+
+main()
+
+=======
+Suggestion 6
+
+def evenSum(n, a):
+    a.sort()
+    if a[0] == 0 and a[1] == 0:
+        return 0
+    elif a[0] == 0 and a[1] == 1:
+        return -1
+    elif a[0] == 0 and a[1] > 1:
+        return a[1] - 1
+    elif a[0] == 1:
+        return -1
+    else:
+        return a[0] + a[1]
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[-1] % 2 == 0:
+        print(a[-1])
+    else:
+        for i in range(n-1, -1, -1):
+            for j in range(i-1, -1, -1):
+                if (a[i] + a[j]) % 2 == 0:
+                    print(a[i] + a[j])
+                    break
+                if j == 0:
+                    print(-1)
+                    break
+            if a[i] % 2 == 0:
+                break
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[0] % 2 == 0:
+        print(a[0])
+    elif a[1] % 2 == 0:
+        print(a[1])
+    elif a[0] + a[1] % 2 == 0:
+        print(a[0] + a[1])
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    for i in range(n):
+        for j in range(i+1,n):
+            if (a[i]+a[j])%2 == 0:
+                print(a[i]+a[j])
+                return
+    print(-1)
+main()
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[-1] % 2 == 0:
+        print(A[-1])
+        return
+    for i in range(N-1):
+        if A[i] % 2 == 0:
+            print(A[i])
+            return
+        for j in range(i+1, N):
+            if (A[i] + A[j]) % 2 == 0:
+                print(A[i]+A[j])
+                return
+    print(-1)
+    return

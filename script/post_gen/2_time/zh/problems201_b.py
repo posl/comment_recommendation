@@ -1,58 +1,129 @@
-#问题陈述
-#AtCoder共和国有N座山。第i座山的名字是S_i，高度是T_i。
-#返回第二高的山的名字。可以保证所有的山都有不同的名字和不同的高度。
-#
-#约束条件
-#2 ≦ N ≦ 1000
-#1 ≦ ({}S_i的长度) ≦ 15
-#1 ≦ T_i ≦ 10^5
-#S_i ≠ S_j (i ≠ j)
-#T_i ≠ T_j (i ≠ j)
-#S_i由大写英文字母、小写英文字母和数字组成。
-#N和T_i是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#打印第二高的山的名称。
-#
-#样本输入1
-#3
-#Everest 8849
-#K2 8611
-#Kangchenjunga 8586
-#
-#样本产出1
-#K2
-#世界上第二高的山是K2。
-#
-#样本输入2
-#4
-#Kita 3193
-#Aino 3189
-#Fuji 3776
-#Okuhotaka 3190
-#
-#样本输出2
-#Kita
-#日本第二高的山是Kita。
-#
-#样本输入3
-#4
-#QCFium 2846
-#chokudai 2992
-#kyoprofriends 2432
-#penguinman 2390
-#
-#样本输出3
-#QCFium
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem201_a():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[2] - a[1] == a[1] - a[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c=map(int,input().split())
+    if b-a==c-b:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[1] - A[0] == A[2] - A[1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[2]-a[1] == a[1]-a[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    #读取输入
+    line = input()
+    #将输入的字符串分割成3个数字
+    A = line.split()
+    #将字符串转换成数字
+    #map(function, iterable, ...)
+    #map() 会根据提供的函数对指定序列做映射。
+    #第一个参数 function 以参数序列中的每一个元素调用 function 函数，
+    #返回包含每次 function 函数返回值的新列表。
+    #map() 函数语法：
+    #map(function, iterable, ...)
+    #参数
+    #function -- 函数
+    #iterable -- 一个或多个序列
+    #返回值
+    #Python 2.x 返回列表。
+    #Python 3.x 返回迭代器。
+    A = list(map(int, A))
+    #判断A的元素能否重新排列成算术序列
+    if A[2] - A[1] == A[1] - A[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[2]-A[1] == A[1]-A[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    a = input()
+    a = a.split()
+    a = [int(i) for i in a]
+    a.sort()
+    if (a[1]-a[0])==(a[2]-a[1]):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    if a[1] - a[0] == a[2] - a[1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    a1,a2,a3 = map(int,input().split())
+    if a3-a2 == a2-a1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    A = input().split()
+    A.sort()
+    if int(A[2])-int(A[1])==int(A[1])-int(A[0]):
+        print("Yes")
+    else:
+        print("No")

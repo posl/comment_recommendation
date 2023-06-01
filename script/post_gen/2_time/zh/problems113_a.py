@@ -1,34 +1,103 @@
-#问题陈述
-#有一列火车从A站开往B站，票价为X日元（日本的货币）。
-#另外，有一辆从B站到C站的公共汽车，票价为Y日元。
-#Joisino买了一张特殊的票。有了这张票，如果她从A站到B站坐火车，然后从B站到C站坐公共汽车，她可以用一半的票价乘坐公共汽车。
-#如果她使用这张票，从A站到C站的费用是多少？
-#
-#限制条件
-#1 ≦ X,Y ≦ 100
-#Y是一个偶数。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y
-#
-#输出
-#如果从A站到C站需要花费x日元，打印x。
-#
-#输入样本1
-#81 58
-#
-#样本输出1
-#110
-#火车票价是81日元。
-#火车票价是58⁄2=29日元，有50%的折扣。
-#因此，从A站到C站需要110日元。
-#
-#输入样本2
-#4 54
-#
-#样本输出2
-#31
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+    
+n,m = map(int, input().split())
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+c = gcd(n, m)
+print(m // c)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if a%b == 0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+n,m = map(int,input().split())
+a = gcd(n,m)
+print(int(m/a))
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        r=a%b
+        a=b
+        b=r
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, M = map(int, input().split())
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+	while b:
+		a,b = b,a%b
+	return a
+
+n,m = map(int,input().split())
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n, m = map(int, input().split())
+a = gcd(n, m)
+print(m // a)

@@ -1,54 +1,207 @@
-#问题陈述
-#有一个H×W的方格，有H个水平行和W个垂直列。让(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#每个方格由一个字符C_{i, j}描述，其中C_{i, j} = . 表示（i, j）是一个空方格，C_{i, j} = # 表示（i, j）是一面墙。
-#高桥即将开始在这个网格中行走。当他在（i，j）上时，他可以去（i，j+1）或（i+1，j）。然而，他不能退出网格，也不能进入一个墙的方格。当没有更多的方格可以去的时候，他就会停下来。
-#当从（1，1）开始时，高桥在停止前最多可以访问多少个方格？
-#
-#限制条件
-#1 ≦ H, W ≦ 100
-#H和W是整数。
-#C_{i, j} = . 或 C_{i, j} = #. (1 ≦ i ≦ H, 1 ≦ j ≦ W)
-#C_{1, 1} = .
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#C_{1, 1} ...C_{1, W}
-#.
-#.
-#.
-#C_{H, 1} ...C_{H, W}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 4
-#.#..
-#..#.
-#..##
-#
-#样本输出1
-#4
-#例如，通过走（1，1）->（2，1）->（2，2）->（3，2），他可以访问4个方格。
-#他不能访问5个或更多的方格，所以我们应该打印4。
-#
-#输入样本 2
-#1 1
-#.
-#
-#样本输出2
-#1
-#
-#样本输入3
-#5 5
-#.....
-#.....
-#.....
-#.....
-#.....
-#
-#输出样本3
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        a.append(list(map(int,input().split())))
+    for i in range(m):
+        b.append(list(map(int,input().split())))
+
+    a.sort()
+    b.sort()
+
+    if a == b:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(m)]
+    c = [list(map(int, input().split())) for _ in range(m)]
+    for i in range(m):
+        a[i][0] -= 1
+        a[i][1] -= 1
+        c[i][0] -= 1
+        c[i][1] -= 1
+    ans = 0
+    for i in range(1 << n):
+        ok = True
+        for j in range(m):
+            if ((i >> a[j][0]) & 1) ^ ((i >> a[j][1]) & 1):
+                ok = False
+        if not ok:
+            continue
+        now = 0
+        for j in range(n):
+            if (i >> j) & 1:
+                now += 1 << j
+        for j in range(m):
+            if ((now >> c[j][0]) & 1) ^ ((now >> c[j][1]) & 1):
+                ok = False
+        if ok:
+            ans += 1
+    if ans == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * M
+    D = [0] * M
+
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+
+    for i in range(M):
+        C[i], D[i] = map(int, input().split())
+
+    for i in range(M):
+        A[i] -= 1
+        B[i] -= 1
+        C[i] -= 1
+        D[i] -= 1
+
+    def calc(state):
+        res = 0
+        for i in range(M):
+            if (state >> A[i]) & 1 and (state >> B[i]) & 1:
+                res |= 1 << i
+            if (state >> C[i]) & 1 and (state >> D[i]) & 1:
+                res |= 1 << i
+        return res
+
+    ok = True
+    for state in range(1 << N):
+        if bin(state).count('1') != N // 2:
+            continue
+        if calc(state) == (1 << M) - 1:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def check(n, m, a, b, c, d, p):
+    for i in range(m):
+        if ((p[a[i]-1] < p[b[i]-1]) != (c[i]-1 < d[i]-1)):
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def check(perm, a, b):
+    for i in range(len(a)):
+        if perm[a[i]-1] > perm[b[i]-1]:
+            return False
+    return True
+
+n, m = map(int, input().split())
+a = []
+b = []
+for i in range(m):
+    x, y = map(int, input().split())
+    a.append(x)
+    b.append(y)
+c = []
+d = []
+for i in range(m):
+    x, y = map(int, input().split())
+    c.append(x)
+    d.append(y)
+
+p = [i for i in range(1, n+1)]
+ans = 0
+for i in range(1, n):
+    for j in range(i+1, n+1):
+        p[i-1], p[j-1] = p[j-1], p[i-1]
+        if check(p, a, b) and check(p, c, d):
+            ans += 1
+        p[i-1], p[j-1] = p[j-1], p[i-1]
+
+=======
+Suggestion 7
+
+def permutation(n, m, a, b, c, d):
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            for k in range(1,n+1):
+                for l in range(1,n+1):
+                    if i==j or i==k or i==l or j==k or j==l or k==l:
+                        continue
+                    if (a[i] < a[j] and b[i] < b[j]) == (c[k] < c[l] and d[k] < d[l]):
+                        continue
+                    if (a[i] < a[j] and b[i] < b[j]) != (c[k] < c[l] and d[k] < d[l]):
+                        return False
+    return True
+
+=======
+Suggestion 8
+
+def dfs(i, v, g, visited):
+    visited[i] = v
+    for j in g[i]:
+        if visited[j] == -1:
+            dfs(j, v, g, visited)
+
+n, m = map(int, input().split())
+g = [[] for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    g[a - 1].append(b - 1)
+    g[b - 1].append(a - 1)
+visited1 = [-1] * n
+visited2 = [-1] * n
+dfs(0, 0, g, visited1)
+dfs(0, 1, g, visited2)
+print("Yes" if visited1 == visited2 else "No")
+
+=======
+Suggestion 9
+
+def main():
+    n,m=map(int,input().split())
+    a=[]
+    b=[]
+    c=[]
+    d=[]
+    for i in range(m):
+        x,y=map(int,input().split())
+        a.append(x)
+        b.append(y)
+    for i in range(m):
+        x,y=map(int,input().split())
+        c.append(x)
+        d.append(y)
+    for i in range(m):
+        if a[i] in c and b[i] in d:
+            continue
+        elif a[i] in d and b[i] in c:
+            continue
+        else:
+            print("No")
+            break
+    else:
+        print("Yes")

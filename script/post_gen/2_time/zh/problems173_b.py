@@ -1,62 +1,59 @@
-#问题陈述
-#高桥正在参加一个名为AXC002的编程比赛，他刚刚提交了问题A的代码。
-#该问题有N个测试用例。
-#对于每个测试用例i（1≦i≦N），你会得到一个字符串S_i，代表该测试用例的判决。找出裁决为AC、WA、TLE和RE的测试用例的数量。
-#关于输出格式，请参见输出部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i是AC, WA, TLE, 或RE。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#让C_0, C_1, C_2, 和C_3分别为判决为AC, WA, TLE, 和RE的测试案例的数量。打印以下内容：
-#AC x C_0
-#WA x C_1
-#TLE x C_2
-#RE x C_3
-#
-#样本输入1
-#6
-#AC
-#TLE
-#AC
-#AC
-#WA
-#TLE
-#
-#样本输出1
-#AC x 3
-#WA x 1
-#TLE x 2
-#RE x 0
-#我们有3个、1个、2个和0个测试案例，其判决结果分别为AC、WA、TLE和RE。
-#
-#样本输入2
-#10
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#
-#样品输出2
-#AC x 10
-#WA x 0
-#TLE x 0
-#RE x 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 1000 == 0:
+        print(0)
+    else:
+        print(1000 - n % 1000)
+
+=======
+Suggestion 2
+
+def solution():
+    N = int(input())
+    print(1000 - N % 1000)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print(1000 - n % 1000)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print(1000 - N % 1000)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(1000 - n % 1000 if n % 1000 != 0 else 0)
+
+=======
+Suggestion 6
+
+def change(n):
+    if n <= 1000:
+        return 1000-n
+    else:
+        return change(n-1000)
+
+print(change(int(input())))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print(1000 - n%1000)
+
+main()

@@ -1,42 +1,221 @@
-#问题陈述
-#给你两个不同的字符串S和T。
-#如果S在词典上比T小，则打印Yes；否则，打印No。
-#什么是词表顺序？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j按字母顺序早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度，如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#注意，许多主要的编程语言都将字符串的词法比较作为操作符或标准库中的函数来实现。更多的细节，请参见你的语言的参考资料。
-#
-#限制条件
-#S和T是不同的字符串，每个字符串都由小写英文字母组成，长度在1到10之间（包括10）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S T
-#
-#輸出
-#如果S比T小，打印Yes；否则，打印No。
-#
-#输入样本1
-#abc atcoder
-#
-#样本输出1
-#Yes
-#abc和atcoder以相同的字符开始，但它们的第二个字符是不同的。由于在字母顺序上b比t早，我们可以看到abc在词法上比atcoder小。
-#
-#输入样本2
-#arc agc
-#
-#样本输出2
-#No
-#
-#样本输入3
-#a aa
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(k)
+    print(a)
+    print(N, M)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    k = [int(input()) for _ in range(m)]
+    a = [list(map(int, input().split())) for _ in range(m)]
+    cnt = [0] * (n + 1)
+    for i in range(m):
+        cnt[a[i][0]] += 1
+    for i in range(1, n + 1):
+        if cnt[i] == 2:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    k = [0] * M
+    a = [[0] * M for i in range(N)]
+    for i in range(M):
+        k[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    # print(N, M, k, a)
+    # print('---')
+    # print(a[0][0])
+    # print(a[0][1])
+    # print(a[1][0])
+    # print(a[1][1])
+    # print('---')
+    # print(a[0][0])
+    # print(a[1][0])
+    # print(a[0][1])
+    # print(a[1][1])
+    # print('---')
+    # print(a[0][0])
+    # print(a[1][1])
+    # print(a[0][1])
+    # print(a[1][0])
+    # print('---')
+    # print(a[0][1])
+    # print(a[1][0])
+    # print(a[0][0])
+    # print(a[1][1])
+    # print('---')
+    # print(a[0][1])
+    # print(a[1][1])
+    # print(a[0][0])
+    # print(a[1][0])
+    # print('---')
+    # print(a[1][0])
+    # print(a[1][1])
+    # print(a[0][0])
+    # print(a[0][1])
+    # print('---')
+    # print(a[1][1])
+    # print(a[1][0])
+    # print(a[0][1])
+    # print(a[0][0])
+    # print('---')
+    # print(a[1][1])
+    # print(a[0][0])
+    # print(a[0][1])
+    # print(a[1][0])
+    # print('---')
+    # print(a[1][1])
+    # print(a[0][1])
+    # print(a[0][0])
+    # print(a[1][1])
+    # print('---')
+    # print(a[1][1])
+    # print(a[0][1])
+    # print(a[1][0])
+    # print(a[0][0])
+    # print('
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(M)]
+    # print(A)
+    # print(A[0])
+    # print(A[1])
+    # print(A[0][0])
+    # print(A[0][1])
+    # print(A[0][2])
+    # print(A[1][0])
+    # print(A[1][1])
+    # print(A[1][2])
+    # print(A[1][3])
+    # print(A[1][4])
+    # print(A[1][5])
+    # print(A[1][6])
+    # print(A[1][7])
+    # print(A[1][8])
+    # print(A[1][9])
+    # print(A[1][10])
+    # print(A[1][11])
+    # print(A[1][12])
+    # print(A[1][13])
+    # print(A[1][14])
+    # print(A[1][15])
+    # print(A[1][16])
+    # print(A[1][17])
+    # print(A[1][18])
+    # print(A[1][19])
+    # print(A[1][20])
+    # print(A[1][21])
+    # print(A[1][22])
+    # print(A[1][23])
+    # print(A[1][24])
+    # print(A[1][25])
+    # print(A[1][26])
+    # print(A[1][27])
+    # print(A[1][28])
+    # print(A[1][29])
+    # print(A[1][30])
+    # print(A[1][31])
+    # print(A[1][32])
+    # print(A[1][33])
+    # print(A[1][34])
+    # print(A[1][35])
+    # print(A[1][36])
+    # print(A[1][37])
+    # print(A[1][38])
+    # print(A[1][39])
+    # print(A[1][40])
+    # print(A[1][41])
+    # print(A[1][42])
+    # print(A[1][43])
+    # print(A[1][44])
+    # print(A[1][45])
+    # print(A[1][46
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int,input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int,input().split())))
+    print(N,M)
+    print(k)
+    print(a)
+    print("Yes")
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    k = [0] * m
+    a = [0] * m
+    for i in range(m):
+        k[i] = int(input())
+        a[i] = list(map(int, input().split()))
+    print(k)
+    print(a)
+    # if (n % 2 == 1):
+    #     print("No")
+    #     exit()
+    for i in range(m):
+        if (k[i] % 2 == 1):
+            print("No")
+            exit()
+    print("Yes")
+    exit()
+
+=======
+Suggestion 8
+
+def solve():
+    N, M = map(int, input().split())
+    k = [int(input()) for _ in range(M)]
+    a = [list(map(int, input().split())) for _ in range(M)]
+    print('Yes' if check(N, M, k, a) else 'No')
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for i in range(m):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(n, m)
+    print(k)
+    print(a)

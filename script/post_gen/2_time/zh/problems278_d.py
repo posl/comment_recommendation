@@ -1,110 +1,147 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N）。
-#给出Q个查询，按顺序处理所有的查询。
-#第q个(1≦q≦Q)查询是以下三种格式中的一种，它代表以下查询：
-#1 x _ q：将x_q分配给A的每个元素。
-#2 i _ q x _ q: 将x_q添加到A _ {i _ q}。
-#3 i _ q: 打印A _ {i _ q}的值。
-#
-#限制条件
-#1 ≦ N ≦ 2×10^5
-#1 ≦ Q ≦ 2×10^5
-#0 ≦ A _ i ≦ 10^9 (1≦ i≦ N)
-#如果第q个(1≦ q≦ Q)查询是第二或第三格式，1 ≦ i _ q ≦ N。
-#如果第q个(1≦ q≦ Q)查询是在第一或第二格式，0 ≦ x _ q ≦ 10^9。
-#存在一个第三种格式的查询。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#这里，query_q表示第q个查询，它是以下格式中的一种：1 x, 2 i x, 和 3 i。
-#
-#输出
-#打印X行，其中X是q的数量（1≦ q≦ Q），以便query_q是第三种格式。
-#第j个（1≦ j≦ X）行应该包含第j个这样的查询的答案。
-#
-#输入样本1
-#5
-#3 1 4 1 5
-#6
-#3 2
-#2 3 4
-#3 3
-#1 1
-#2 3 4
-#3 3
-#
-#样本输出1
-#1
-#8
-#5
-#最初，A=（3，1，4，1，5）。
-#查询的处理方式如下：
-#A_2=1，所以打印1。
-#在A_3上加4，使A=(3,1,8,1,5)。
-#A_3=8，所以打印8。
-#给A的每个元素分配1，使A=(1,1,1,1,1)。
-#在A_3上加4，使A=(1,1,5,1,1)。
-#A_3=5，所以打印5。
-#
-#输入样本2
-#1
-#1000000000
-#8
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#3 1
-#
-#样本输出2
-#8000000000
-#注意，A的元素可能不适合32位整数类型。
-#
-#样本输入3
-#10
-#1 8 4 15 7 5 7 5 8 0
-#20
-#2 7 0
-#3 7
-#3 8
-#1 7
-#3 3
-#2 4 4
-#2 4 9
-#2 10 5
-#1 10
-#2 4 2
-#1 10
-#2 3 1
-#2 8 11
-#2 3 14
-#2 1 9
-#3 8
-#3 8
-#3 1
-#2 6 5
-#3 7
-#
-#样本输出3
-#7
-#5
-#7
-#21
-#21
-#19
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    users = {i: set() for i in range(1, N+1)}
+    for i in range(Q):
+        T, A, B = map(int, input().split())
+        if T == 1:
+            users[A].add(B)
+        elif T == 2:
+            users[A].discard(B)
+        else:
+            print("Yes" if A in users[B] and B in users[A] else "No")
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    follow = []
+    for _ in range(Q):
+        T, A, B = map(int, input().split())
+        if T == 1:
+            follow.append((A, B))
+        elif T == 2:
+            follow.remove((A, B))
+        else:
+            if (A, B) in follow and (B, A) in follow:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n,q = map(int,input().split())
+    follow = {}
+    for i in range(1,n+1):
+        follow[i] = set()
+    for i in range(q):
+        t,a,b = map(int,input().split())
+        if t == 1:
+            follow[a].add(b)
+        elif t == 2:
+            follow[a].discard(b)
+        elif t == 3:
+            if b in follow[a] and a in follow[b]:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 4
+
+def main():
+    # 读取标准输入
+    N, Q = map(int, input().split())
+    # print(N, Q)
+    # print(type(N), type(Q))
+    # 生成一个N*N的二维列表
+    matrix = [[0 for i in range(N)] for j in range(N)]
+    # print(matrix)
+    # print(type(matrix))
+    # 读取操作
+    for i in range(Q):
+        T, A, B = map(int, input().split())
+        # print(T, A, B)
+        # print(type(T), type(A), type(B))
+        if T == 1:
+            # A关注B
+            matrix[A - 1][B - 1] = 1
+        elif T == 2:
+            # A取消关注B
+            matrix[A - 1][B - 1] = 0
+        elif T == 3:
+            # 判断A和B是否互相关注
+            if matrix[A - 1][B - 1] == 1 and matrix[B - 1][A - 1] == 1:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def follow(followers, followings, a, b):
+    if a == b:
+        return False
+    if b in followings[a]:
+        return True
+    return False
+
+=======
+Suggestion 7
+
+def find_father(fathers, x):
+    if fathers[x] == x:
+        return x
+    else:
+        fathers[x] = find_father(fathers, fathers[x])
+        return fathers[x]
+
+=======
+Suggestion 8
+
+def follow(a,b):
+    if a in follow_dict.keys():
+        follow_dict[a].append(b)
+    else:
+        follow_dict[a] = [b]
+    if b in followed_dict.keys():
+        followed_dict[b].append(a)
+    else:
+        followed_dict[b] = [a]
+
+=======
+Suggestion 9
+
+def main():
+    n,q = map(int,input().split())
+    t = []
+    a = []
+    b = []
+    for i in range(q):
+        t1,a1,b1 = map(int,input().split())
+        t.append(t1)
+        a.append(a1)
+        b.append(b1)
+    for i in range(q):
+        if t[i] == 1:
+            print("No")
+        elif t[i] == 2:
+            print("No")
+        else:
+            if a[i] == b[i]:
+                print("Yes")
+            else:
+                print("No")

@@ -1,46 +1,160 @@
-#问题陈述
-#我们有一个长度为N的序列：A=（a_1，...，a_N）。此外，给你一个整数K。
-#你可以进行以下操作0次或多次。
-#选择一个整数i，使得1≦i≦N-K，然后交换a_i和a_{i+K}的值。
-#判断是否有可能对A进行升序排序。
-#
-#约束条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#a_1 ... a_N
-#
-#输出
-#如果有可能对A进行升序排序，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 2
-#3 4 1 3 4
-#
-#样品输出1
-#Yes
-#下面的操作序列将A按升序排序。
-#选择i=1来交换a_1和a_3的值。现在A是（1,4,3,3,4）。
-#选择i=2来交换a_2和a_4的值。现在A是（1,3,3,4,4）。
-#
-#输入样本 2
-#5 3
-#3 4 1 3 4
-#
-#样本输出2
-#No
-#
-#样本输入3
-#7 5
-#1 2 3 4 5 5 10
-#
-#样本输出3
-#Yes
-#可能不需要操作。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def pascal_triangle(n):
+    """打印帕斯卡三角形"""
+    row = [1]
+    yh = []
+    for i in range(n):
+        yh.append(row)
+        row = [1] + [row[j] + row[j+1] for j in range(len(row)-1)] + [1]
+    return yh
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [[0 for i in range(n)] for i in range(n)]
+    a[0][0] = 1
+    for i in range(1,n):
+        for j in range(i+1):
+            if j == 0 or j == i:
+                a[i][j] = 1
+            else:
+                a[i][j] = a[i-1][j-1] + a[i-1][j]
+    for i in range(n):
+        for j in range(i+1):
+            print(a[i][j],end=' ')
+        print()
+
+=======
+Suggestion 3
+
+def pascal_triangle(n):
+    if n == 1:
+        return [[1]]
+    else:
+        new_row = [1]
+        result = pascal_triangle(n-1)
+        last_row = result[-1]
+        for i in range(len(last_row)-1):
+            new_row.append(last_row[i]+last_row[i+1])
+        new_row += [1]
+        result.append(new_row)
+        return result
+
+=======
+Suggestion 4
+
+def solve(n):
+    a = [[0 for i in range(n)] for i in range(n)]
+    for i in range(n):
+        a[i][0] = 1
+        a[i][i] = 1
+    for i in range(2, n):
+        for j in range(1, i):
+            a[i][j] = a[i - 1][j - 1] + a[i - 1][j]
+    return a
+
+=======
+Suggestion 5
+
+def func254_b(n):
+    a = []
+    for i in range(n):
+        if i == 0:
+            a.append([1])
+        elif i == 1:
+            a.append([1, 1])
+        else:
+            b = [1]
+            for j in range(1, i):
+                b.append(a[i-1][j-1] + a[i-1][j])
+            b.append(1)
+            a.append(b)
+    return a
+
+=======
+Suggestion 6
+
+def pascal_triangle(n):
+    if n == 0:
+        return []
+    elif n == 1:
+        return [[1]]
+    else:
+        new_row = [1]
+        result = pascal_triangle(n-1)
+        last_row = result[-1]
+        for i in range(len(last_row)-1):
+            new_row.append(last_row[i] + last_row[i+1])
+        new_row += [1]
+        result.append(new_row)
+    return result
+
+=======
+Suggestion 7
+
+def pascal_triangle(n):
+    l = []
+    for i in range(n):
+        l.append([])
+        for j in range(i+1):
+            if j == 0 or j == i:
+                l[i].append(1)
+            else:
+                l[i].append(l[i-1][j-1] + l[i-1][j])
+    return l
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        list.append([])
+        for j in range(i + 1):
+            if j == 0 or j == i:
+                list[i].append(1)
+            else:
+                list[i].append(list[i - 1][j - 1] + list[i - 1][j])
+    for i in range(n):
+        for j in range(i + 1):
+            print(list[i][j], end=" ")
+        print()
+
+=======
+Suggestion 9
+
+def problems254_b():
+    n = int(input())
+    a = []
+    for i in range(n):
+        for j in range(i+1):
+            if j == 0 or j == i:
+                a.append(1)
+            else:
+                a.append(a[-i]+a[-i-1])
+        print(' '.join([str(a[i]) for i in range(len(a))]))
+        a = []
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [[0 for i in range(n)] for j in range(n)]
+    a[0][0] = 1
+    for i in range(1, n):
+        a[i][0] = 1
+        a[i][i] = 1
+        for j in range(1, i):
+            a[i][j] = a[i-1][j-1] + a[i-1][j]
+    for i in range(n):
+        for j in range(i+1):
+            print(a[i][j], end=' ')
+        print()

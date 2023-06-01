@@ -1,56 +1,172 @@
-#问题陈述
-#给你在xy坐标平面上的N个圆。
-#对于每个i = 1, 2, ..., N，第i个圆的中心是(x_i, y_i)，半径为r_i。
-#判断从（s_x，s_y）到（t_x，t_y）是否有可能只通过位于N个圆周上的至少一个圆的点来实现。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#-10^9 ≦ x_i, y_i ≦ 10^9
-#1 ≦ r_i ≦ 10^9
-#(s_x, s_y)位于N个圆中至少一个圆的周长上。
-#(t_x, t_y)位于N个圆中至少一个圆的圆周上。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_X S_Y T_X T_Y
-#x_1 y_1 r_1
-#x_2 y_2 r_2
-#.
-#.
-#.
-#x_N y_N r_N
-#
-#输出
-#如果有可能从(s_x, s_y)到(t_x, t_y)，打印Yes；否则，打印No。
-#注意，判断是区分大小写的。
-#
-#输入样本 1
-#4
-#0 -2 3 3
-#0 0 2
-#2 0 2
-#2 3 1
-#-3 3 3
-#
-#样本输出1
-#Yes
-#下面是一种从（0，-2）到（3，3）的方法。
-#从(0, -2)开始，逆时针穿过第一圆的圆周，到达(1, -(3)^(1/2))。
-#从(1, -(3)^(1/2))，顺时针通过第2个圆的周长，到达(2, 2)。
-#从（2，2）开始，逆时针穿过第3个圆的圆周，到达（3，3）。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#3
-#0 1 0 3
-#0 0 1
-#0 0 2
-#0 0 3
-#
-#样本输出2
-#No
-#从(0, 1)到(0, 3)不可能只经过至少一个圆的圆周上的点，所以应该打印No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    while len(s) < len(t):
+        if s[-1] == t[len(s)-1]:
+            s = s + s[-1]
+        else:
+            break
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def diff(a,b):
+    if len(a) != len(b):
+        return False
+    else:
+        for i in range(len(a)):
+            if a[i] != b[i]:
+                return False
+        return True
+
+s = input()
+t = input()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if len(s) < 2 or len(s) > 2*10**5 or len(t) < 2 or len(t) > 2*10**5:
+        return
+    if s == t:
+        print("Yes")
+        return
+    i = 0
+    while i < len(s):
+        if i == len(s)-1:
+            print("No")
+            return
+        if s[i] == s[i+1]:
+            s = s[:i+1] + s[i] + s[i+1:]
+            i += 2
+        else:
+            i += 1
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    if s_len >= t_len:
+        print("No")
+        return
+    else:
+        t_index = 0
+        for s_index in range(s_len):
+            if s[s_index] == t[t_index]:
+                t_index += 1
+            else:
+                if s_index == 0:
+                    print("No")
+                    return
+        print("Yes")
+        return
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 == len(t):
+        for i in range(len(s)):
+            if s[i] == t[i]:
+                continue
+            else:
+                if s[i] == t[i+1]:
+                    continue
+                else:
+                    print("No")
+                    exit()
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    # s = input()
+    # t = input()
+    s = 'abbaac'
+    t = 'abbbbaaac'
+    if len(s) < 2 or len(s) > 2*10**5 or len(t) < 2 or len(t) > 2*10**5:
+        print('No')
+        return
+    if s == t:
+        print('Yes')
+        return
+    if s[0] != t[0]:
+        print('No')
+        return
+    if s[-1] != t[-1]:
+        print('No')
+        return
+    if s[-2] != t[-2]:
+        print('No')
+        return
+    if s[-3] != t[-3]:
+        print('No')
+        return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    if s_len >= t_len:
+        print('No')
+        return
+    if s == t[:s_len]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')

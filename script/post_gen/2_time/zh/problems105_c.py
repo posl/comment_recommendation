@@ -1,39 +1,178 @@
-#问题陈述
-#给定一个整数N，找出N的基数-2表示法。
-#在这里，当下列条件都满足时，S就是N的基数-2表示法：
-#S是一个由0和1组成的字符串。
-#除非S=0，否则S的初始字符是1。
-#让S = S_k S_{k-1} ...S_0，那么S_0 × (-2)^0 + S_1 × (-2)^1 + ...+ S_k × (-2)^k = N。
-#可以证明，对于任何整数M，M的基数-2表示是唯一确定的。
-#
-#约束条件
-#输入的每个值都是整数。
-#-10^9 ≦ N ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印N的基数-2表示法。
-#
-#输入样本 1
-#-9
-#
-#样本输出 1
-#1011
-#由于(-2)^0 + (-2)^1 + (-2)^3 = 1 + (-2) + (-8) = -9，1011是-9的基数-2表示。
-#
-#输入样本2
-#123456789
-#
-#样本输出2
-#11000101011001101110100010101
-#
-#样本输入3
-#0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def base2_m2(n):
+    if n == 0:
+        return '0'
+    else:
+        ans = ''
+        while n != 0:
+            if n % (-2) == 0:
+                ans = '0' + ans
+                n = n // (-2)
+            else:
+                ans = '1' + ans
+                n = (n - 1) // (-2)
+        return ans
+
+=======
+Suggestion 2
+
+def convert_to_base2(num):
+    if num == 0:
+        return 0
+    elif num == 1:
+        return 1
+    elif num % 2 == 0:
+        return convert_to_base2(num / (-2)) * 10
+    else:
+        return convert_to_base2((num - 1) / (-2)) * 10 + 1
+
+=======
+Suggestion 3
+
+def base2(num):
+    if num == 0:
+        return '0'
+    ans = ''
+    while num != 0:
+        if num % 2 == 0:
+            ans = '0' + ans
+        else:
+            ans = '1' + ans
+            num -= 1
+        num = num // (-2)
+    return ans
+
+=======
+Suggestion 4
+
+def base2(num):
+    if num == 0:
+        return '0'
+    result = ''
+    while num != 0:
+        if num % 2 == 0:
+            result = '0' + result
+        else:
+            result = '1' + result
+            num -= 1
+        num //= -2
+    return result
+
+num = int(input())
+print(base2(num))
+
+=======
+Suggestion 5
+
+def solve(n):
+    if n == 0:
+        return 0
+    ans = ""
+    while n != 0:
+        if n % 2 == 0:
+            ans = "0" + ans
+            n = n // (-2)
+        else:
+            ans = "1" + ans
+            n = (n-1) // (-2)
+    return ans
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    s = ''
+    while n != 0:
+        if n % 2 == 0:
+            s = '0' + s
+            n = n // 2
+        else:
+            s = '1' + s
+            n = (n - 1) // (-2)
+    print(s)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return 0
+    else:
+        s = ''
+        while n != 0:
+            if n % -2 == 0:
+                s = '0' + s
+                n = n // -2
+            else:
+                s = '1' + s
+                n = (n - 1) // -2
+        print(s)
+        return 0
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    s = []
+    while n != 0:
+        if n % 2 == 0:
+            s.append(0)
+            n = n // (-2)
+        else:
+            s.append(1)
+            n = (n - 1) // (-2)
+    s.reverse()
+    print(''.join(map(str, s)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = ""
+    if n == 0:
+        print(0)
+        return
+    while n != 0:
+        if n % 2 == 0:
+            s = "0" + s
+            n = n // (-2)
+        else:
+            s = "1" + s
+            n = (n - 1) // (-2)
+    print(s)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ''
+    while N != 0:
+        if N % 2 == 0:
+            ans = '0' + ans
+            N = N // (-2)
+        else:
+            ans = '1' + ans
+            N = (N - 1) // (-2)
+    print(ans)

@@ -1,59 +1,134 @@
-#问题陈述
-#有一个有N个台阶的楼梯。高桥现在站在楼梯的脚下，也就是第0个台阶上。
-#他可以一次爬上一个或两个台阶。
-#但是，第a_1，a_2，a_3，...，a_M级台阶的踏板都坏了，所以踏上这些台阶是很危险的。
-#有多少人可以爬到最上面的台阶，也就是第N个台阶，而不踏上那些破损的台阶？
-#求1 000 000 007的模数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 < ...  < a_M ≦ N-1
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#输出
-#打印在条件下爬上楼梯的方法的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#6 1
-#3
-#
-#样本输出1
-#4
-#有四种方法可以爬上楼梯，如下所示：
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#样本输入2
-#10 2
-#4
-#5
-#
-#样本输出2
-#0
-#如果不踏上破碎的台阶，可能就没有办法爬上楼梯。
-#
-#样本输入3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#样本输出3
-#608200469
-#一定要打印出1 000 000 007的模数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 10000000000
+    for i in range(1, n):
+        S1 = sum(W[:i])
+        S2 = sum(W[i:])
+        diff = abs(S1 - S2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 3
+
+def get_min_diff(N, W):
+    min_diff = 10000
+    for i in range(1, N):
+        sum1 = sum(W[:i])
+        sum2 = sum(W[i:])
+        if abs(sum1 - sum2) < min_diff:
+            min_diff = abs(sum1 - sum2)
+    return min_diff
+
+=======
+Suggestion 4
+
+def problem129_b():
+    N = int(input())
+    W = list(map(int,input().split()))
+    min = 100000
+    for i in range(1,N):
+        s1 = sum(W[:i])
+        s2 = sum(W[i:])
+        if abs(s1-s2) < min:
+            min = abs(s1-s2)
+    print(min)
+
+problem129_b()
+
+=======
+Suggestion 5
+
+def get_min_diff():
+    N = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 10000
+    for t in range(1, N):
+        S1 = sum(W[:t])
+        S2 = sum(W[t:])
+        min_diff = min(min_diff, abs(S1 - S2))
+    return min_diff
+
+=======
+Suggestion 6
+
+def problems129_b():
+    N = int(input())
+    W = [int(i) for i in input().split()]
+    min_diff = sum(W)
+    for i in range(N):
+        S1 = sum(W[0:i+1])
+        S2 = sum(W[i+1:N])
+        diff = abs(S1 - S2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 100 * 100
+    for i in range(1, n):
+        diff = abs(sum(W[:i]) - sum(W[i:]))
+        min_diff = min(min_diff, diff)
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 100
+    for i in range(1, n):
+        s1 = sum(w[:i])
+        s2 = sum(w[i:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 1000
+    for t in range(1, n):
+        s1 = sum(W[0:t])
+        s2 = sum(W[t:])
+        diff = abs(s1 - s2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 10
+
+def get_min_diff(l):
+    l.sort()
+    T = sum(l)/2
+    S1 = 0
+    S2 = 0
+    for i in range(len(l)):
+        if S1 + l[i] <= T:
+            S1 += l[i]
+        else:
+            S2 += l[i]
+    return abs(S1 - S2)

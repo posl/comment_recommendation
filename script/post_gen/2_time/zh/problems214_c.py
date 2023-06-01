@@ -1,78 +1,93 @@
-#问题陈述
-#有N个生物站在一个圆圈里，按逆时针顺序称为Snuke 1, 2, ..., N。
-#当Snuke i（1 ≦ i ≦ N）在时间t收到一颗宝石，S_i单位的时间后，它将在时间t+S_i将该宝石交给Snuke i+1。这里，Snuke N+1就是Snuke 1。
-#此外，高桥将在时间T_i递给Snuke i一颗宝石。
-#对于每个i（1 ≦ i ≦ N），找出Snuke i第一次收到宝石的时间。假设递送宝石需要的时间可以忽略不计。
-#
-#限制条件
-#1 ≦ N ≦ 200000
-#1 ≦ S_i,T_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1 S_2 ...S_N
-#T_1 T_2 ...T_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应包含Snuke i第一次收到宝石的时间。
-#
-#输入样本 1
-#3
-#4 1 5
-#3 10 100
-#
-#样本输出1
-#3
-#7
-#8
-#我们将按时间顺序列出Snuke三人和Takahashi到时间13为止的行动。
-#时间3：高桥将一颗宝石交给Snuke 1。
-#时间7：斯诺克1把宝石交给斯诺克2。
-#时间8：Snuke 2将一颗宝石交给Snuke 3。
-#时间10：高桥将一颗宝石交给Snuke 2。
-#时间11：Snuke 2递给Snuke 3一颗宝石。
-#时间13：Snuke 3将一颗宝石交给Snuke 1。
-#此后，他们将继续递送宝石，尽管这与答案无关。
-#
-#输入样本2
-#4
-#100 100 100 100
-#1 1 1 1
-#
-#样本输出2
-#1
-#1
-#1
-#1
-#请注意，S_i和T_i的值可能不是不同的。
-#
-#样本输入 3
-#4
-#1 2 3 4
-#1 2 4 7
-#
-#样本输出 3
-#1
-#2
-#4
-#7
-#请注意，一个Snuke可以同时进行多个交易。特别是，一个Snuke可以同时从高桥和另一个Snuke那里接收宝石。
-#
-#输入样本4
-#8
-#84 87 78 16 94 36 87 93
-#50 22 63 28 91 60 64 27
-#
-#样本输出4
-#50
-#22
-#63
-#28
-#44
-#60
-#64
-#27
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t = map(int, input().split())
+    ans = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a + b + c <= s and a * b * c <= t:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def getNums(s, t):
+    count = 0
+    for i in range(s+1):
+        for j in range(s+1):
+            for k in range(s+1):
+                if i+j+k <= s and i*j*k <= t:
+                    count += 1
+    return count
+
+=======
+Suggestion 3
+
+def main():
+    S, T = map(int, input().split())
+    count = 0
+    for a in range(S + 1):
+        for b in range(S + 1):
+            for c in range(S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def solve(s, t):
+    count = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    count += 1
+    return count
+
+=======
+Suggestion 5
+
+def main():
+    s, t = map(int, input().split())
+    count = 0
+    for a in range(s + 1):
+        for b in range(s + 1):
+            for c in range(s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def solve():
+    S, T = map(int, input().split())
+    ans = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a + b + c <= S and a * b * c <= T:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def problem214_b():
+    s,t = map(int,input().split())
+    print(s,t)
+    ans = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    ans += 1
+    print(ans)
+
+problem214_b()

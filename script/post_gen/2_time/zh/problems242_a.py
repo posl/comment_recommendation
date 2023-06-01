@@ -1,45 +1,191 @@
-#问题陈述
-#在某次编程比赛中，根据以下规则向参赛者颁发T恤衫。
-#所有排名在A级或以上的参赛者都可以得到一件T恤衫。
-#此外，从排名在(A+1)-th和B-th(包括)之间的参赛者中，均匀地随机选择C个参赛者获得一件T恤衫。
-#这次比赛有1000名参与者，他们都得到了不同的排名。
-#Iroha-chan参加了这次比赛，排名第X位。
-#求她得到一件T恤衫的概率。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A < B ≦ 1000
-#1 ≦ C ≦ B-A
-#1 ≦ X ≦ 1000
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B C X
-#
-#输出
-#打印答案。
-#如果与法官答案的绝对或相对误差最多为10^{-6}，你的输出将被视为正确。
-#
-#输入样本 1
-#30 500 20 103
-#
-#样本输出1
-#0.042553191489
-#Iroha-chan排名第103位。
-#如果她是在排名在第31名和第500名之间的470名参与者中均匀随机选择的20名参与者之一，她将得到一件T恤，这发生的概率是((20)/(470))=0.04255319....。
-#
-#样本输入 2
-#50 500 100 1
-#
-#样本输出2
-#1.000000000000
-#Iroha-chan排名第1。这一次，她保证会得到一件T恤衫。
-#
-#样本输入3
-#1 2 1 1000
-#
-#样本输出3
-#0.000000000000
-#Iroha-chan排名第1000位。这一次，她将永远不会得到一件T恤衫。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def insert(x, A):
+    A.append(x)
+    A.sort()
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        a[i] = int(input())
+    print(a)
+    q = int(input())
+    for i in range(q):
+        query = input().split()
+        if query[0] == "1":
+            a.append(int(query[1]))
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            if query[0] == "2":
+                cnt = 0
+                for j in range(len(a)):
+                    if a[j] <= x:
+                        cnt += 1
+                        if cnt == k:
+                            print(a[j])
+                            break
+                else:
+                    print(-1)
+            else:
+                cnt = 0
+                for j in range(len(a)):
+                    if a[j] >= x:
+                        cnt += 1
+                        if cnt == k:
+                            print(a[j])
+                            break
+                else:
+                    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i <= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort(reverse=True)
+                print(b[k-1])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i >= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort()
+                print(b[k-1])
+    return 0
+
+=======
+Suggestion 5
+
+def insert(x, A):
+    A.append(x)
+    return A
+
+=======
+Suggestion 6
+
+def main():
+    print("Hello World!")
+    return
+
+=======
+Suggestion 7
+
+def insert(A, x):
+    A.append(x)
+    return A
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        query = input().strip().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x, k = int(query[1]), int(query[2])
+            tmp = [i for i in a if i <= x]
+            if len(tmp) < k:
+                print(-1)
+            else:
+                print(sorted(tmp)[-k])
+        else:
+            x, k = int(query[1]), int(query[2])
+            tmp = [i for i in a if i >= x]
+            if len(tmp) < k:
+                print(-1)
+            else:
+                print(sorted(tmp)[k-1])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    for _ in range(n):
+        query = input().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = sorted(a)
+            if x > b[-1]:
+                print(-1)
+            else:
+                c = b.index(x) + k - 1
+                if c >= len(b):
+                    print(-1)
+                else:
+                    print(b[c])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            b = sorted(a)
+            if x < b[0]:
+                print(-1)
+            else:
+                c = b.index(x) - k + 1
+                if c < 0:
+                    print(-1)
+                else:
+                    print(b[c])
+
+=======
+Suggestion 10
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+        elif query[0] == 2:
+            a.sort()
+            if query[1] in a:
+                print(a[-query[2]])
+            else:
+                print(-1)
+        elif query[0] == 3:
+            a.sort()
+            if query[1] in a:
+                print(a[query[2]-1])
+            else:
+                print(-1)
+        else:
+            print("error")
+    return 0

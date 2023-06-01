@@ -1,52 +1,70 @@
-#问题陈述
-#浣熊正在与一只怪物战斗。
-#怪物的健康状况是H。
-#浣熊可以使用N种特殊动作。使用第i种招数会使怪物的生命值减少A_i。
-#没有其他方法可以减少怪物的健康。
-#当怪物的健康状况变成0或更低时，Raccoon就赢了。
-#如果Raccoon可以在不使用同一招数两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#限制条件
-#1 ≦ H ≦ 10^9
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果Raccoon能在不使用相同棋步两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 3
-#4 5 6
-#
-#样本输出1
-#Yes
-#例如，在使用第二和第三招后，怪物的健康状况将变成0或更低。
-#
-#输入样本2
-#20 3
-#4 5 6
-#
-#样本输出2
-#No
-#
-#样本输入3
-#210 5
-#31 41 59 26 53
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#211 5
-#31 41 59 26 53
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    return map(int, input().split())
+
+=======
+Suggestion 2
+
+def main():
+    H,A=map(int,input().split())
+    ans=H//A
+    if H%A!=0:
+        ans+=1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    H,A = map(int,input().split())
+    count = 0
+    while H > 0:
+        H -= A
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    H, A = map(int, input().split())
+    if H % A == 0:
+        print(H // A)
+    else:
+        print(H // A + 1)
+
+=======
+Suggestion 5
+
+def main():
+    h, a = map(int, input().split())
+    print((h+a-1)//a)
+
+=======
+Suggestion 6
+
+def main():
+    H, A = map(int, input().split())
+    print((H + A - 1) // A)
+
+=======
+Suggestion 7
+
+def main():
+    h,a = map(int,input().split())
+    i = 0
+    while h > 0:
+        h -= a
+        i += 1
+    print(i)
+
+=======
+Suggestion 8
+
+def main():
+    H, A = map(int, input().split())
+    print(H // A + (1 if H % A else 0))

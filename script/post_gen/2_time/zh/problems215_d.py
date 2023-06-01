@@ -1,32 +1,162 @@
-#问题说明
-#给定一个N个正整数的序列A=(A_1,A_2,...,A_N),找出满足以下条件的1到M(包括)之间的每一个整数k：
-#gcd(A_i,k)=1，对每一个整数i来说，1 ≦ i ≦ N。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N,M ≦ 10^5
-#1 ≦ A_i ≦ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#在第一行，打印x：满足要求的整数的数量。
-#在接下来的x行中，打印满足要求的整数，按升序排列，每行都有一个。
-#
-#输入示例 1
-#3 12
-#6 1 5
-#
-#样本输出1
-#3
-#1
-#7
-#11
-#例如，7具有gcd(6,7)=1,gcd(1,7)=1,gcd(5,7)=1的属性，所以它被包含在满足要求的整数集合中。
-#另一方面，9的属性是gcd(6,9)=3，所以它不包括在这个集合中。
-#我们有三个介于1和12之间的整数满足这个条件：1，7，和11。请务必按升序打印。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def permutation(string):
+    if len(string) <= 1:
+        return [string]
+    else:
+        result = []
+        for i in range(len(string)):
+            for j in permutation(string[:i] + string[i+1:]):
+                result.append(string[i] + j)
+    return result
+
+=======
+Suggestion 2
+
+def getPermutation(s, k):
+    if len(s) == 1:
+        return s
+    else:
+        s = sorted(s)
+        for i in range(len(s)):
+            if k <= factorial(len(s) - 1):
+                return s[i] + getPermutation(s[:i] + s[i+1:], k)
+            else:
+                k -= factorial(len(s) - 1)
+        return s[0] + getPermutation(s[1:], k)
+
+=======
+Suggestion 3
+
+def permutate(s):
+    if len(s) == 1:
+        return [s]
+    elif len(s) == 2:
+        return [s, s[1] + s[0]]
+    else:
+        result = []
+        for i in range(len(s)):
+            for j in permutate(s[:i] + s[i + 1:]):
+                result.append(s[i] + j)
+        return result
+
+=======
+Suggestion 4
+
+def next_permutation(a):
+    """Generate the lexicographically next permutation inplace.
+    https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order
+    https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/nextperm.py
+    Return false if there is no next permutation.
+    """
+    # Find non-increasing suffix
+    i = len(a) - 1
+    while i > 0 and a[i - 1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    # Find successor to pivot
+    j = len(a) - 1
+    while a[j] <= a[i - 1]:
+        j -= 1
+    a[i - 1], a[j] = a[j], a[i - 1]
+    # Reverse suffix
+    a[i : ] = a[len(a) - 1 : i - 1 : -1]
+    return True
+
+=======
+Suggestion 5
+
+def next_permutation(a):
+    n = len(a)
+    i = n - 1
+    while i > 0 and a[i - 1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = n - 1
+    while a[j] <= a[i - 1]:
+        j -= 1
+    a[i - 1], a[j] = a[j], a[i - 1]
+    a[i : ] = a[n - 1 : i - 1 : -1]
+    return True
+
+=======
+Suggestion 6
+
+def findKthPermutation(s, k):
+    if k == 1:
+        return s
+    length = len(s)
+    if length == 1:
+        return s
+    #计算阶乘
+    factorial = 1
+    for i in range(1, length):
+        factorial *= i
+    #计算当前位
+    quotient = k / factorial
+    remainder = k % factorial
+    if remainder == 0:
+        quotient -= 1
+        remainder = factorial
+    #取当前位
+    current_char = s[quotient]
+    #取剩余字符串
+    rest = s[:quotient] + s[quotient + 1:]
+    #递归
+    return current_char + findKthPermutation(rest, remainder)
+
+=======
+Suggestion 7
+
+def getPermutation(s, k):
+    s = list(s)
+    s.sort()
+    return dfs(s, k, 0, len(s))
+
+=======
+Suggestion 8
+
+def getPermutation(s, k):
+    if len(s) == 1:
+        return s
+    else:
+        n = len(s)
+        a = 1
+        for i in range(n):
+            a *= (i + 1)
+        b = a / n
+        c = k / b
+        d = k % b
+        if d == 0:
+            c -= 1
+            d = b
+        return s[c] + getPermutation(s[0:c] + s[c + 1:n], d)
+
+=======
+Suggestion 9
+
+def swap(s, i, j):
+    if i == j:
+        return s
+    if i > j:
+        i, j = j, i
+    return s[:i] + s[j] + s[i+1:j] + s[i] + s[j+1:]
+
+=======
+Suggestion 10
+
+def permutation(string, s, e):
+    if s == e:
+        return [string]
+    else:
+        res = []
+        for i in range(s, e):
+            string[s], string[i] = string[i], string[s]
+            res += permutation(string, s+1, e)
+            string[s], string[i] = string[i], string[s]
+        return res

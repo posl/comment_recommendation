@@ -1,41 +1,101 @@
-#问题陈述
-#一个序列a={a_1,a_2,a_3,......}被确定如下：
-#给出第一个项s作为输入。
-#设f(n)为以下函数：如果n是偶数，f(n)=n/2；如果n是奇数，f(n)=3n+1。
-#当i=1时，a_i=s，当i>1时，a_i=f(a_{i-1})。
-#求满足以下条件的最小整数m：
-#存在一个整数n，使得a_m=a_n（m>n）。
-#
-#限制条件
-#1 ≦ s ≦ 100
-#输入的所有数值都是整数。
-#保证a中的所有元素和满足条件的最小m最多为1000000。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#s
-#
-#輸出
-#打印满足条件的最小整数m。
-#
-#输入样本 1
-#8
-#
-#输出示例 1
-#5
-#a={8,4,2,1,4,2,1,4,2,1,......}.由于a_5=a_2，答案是5。
-#
-#样本输入2
-#7
-#
-#样本输出2
-#18
-#a={7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1,4,2,1,......}.
-#
-#样本输入3
-#54
-#
-#样本输出3
-#114
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    line = input()
+    # 分割输入，得到三条边的长度
+    values = line.split()
+    # 将三条边的长度转换为整数
+    a = int(values[0])
+    b = int(values[1])
+    c = int(values[2])
+    # 计算面积
+    area = a * b // 2
+    # 输出面积
+    print(area)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a,b,c = map(int,input().split())
+    # 计算面积
+    s = (a*b)/2
+    # 打印输出
+    print(int(s))
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    sides = input().split()
+    # 计算面积
+    area = (int(sides[0]) * int(sides[1])) / 2
+    # 打印输出
+    print(int(area))
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int, input().split())
+    print(int(a*b/2))
+    return
+
+=======
+Suggestion 5
+
+def triangle_area(a, b, c):
+    return a * b / 2
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int,input().split())
+    print(int(a*b/2))
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    a,b,c = map(int, input().split())
+    #compute
+    area = a*b/2
+    #output
+    print(int(area))
+
+=======
+Suggestion 8
+
+def main():
+    import math
+    a,b,c = map(int, input().split())
+    s = (a * b) / 2
+    print(int(s))
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    line = sys.stdin.readline()
+    line = line.split()
+    a = int(line[0])
+    b = int(line[1])
+    c = int(line[2])
+    s = (a * b) / 2
+    print(int(s))
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c = map(int,input().split())
+    print(int((a*b)/2))

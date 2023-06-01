@@ -1,40 +1,142 @@
-#问题说明
-#Iroha进入了一个饲养宠物的游戏。
-#Iroha的宠物是Takahashi。最初，高桥的STR和EXP分别为X和0。
-#这些参数在以下两种训练中增加：
-#去Kakomon健身房：STR会被乘以A，EXP会增加1。
-#去AtCoder体育馆：STR增加B，EXP增加1。
-#当高桥的STR变成Y或更大时，他就会进化，但Iroha认为这使他不那么可爱。
-#当高桥被训练而不让他进化时，找出他的最大可能EXP。
-#
-#限制条件
-#1 ≦ x < y ≦ 10^{18}。
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y A B
-#
-#输出
-#打印给定情况下高桥的最大可能EXP。
-#
-#输入样本 1
-#4 20 2 10
-#
-#样本输出 1
-#2
-#最初，高桥的STR是4。我们可以在下面的训练过程中使他的EXP变成2：
-#首先，去Kakomon体育馆，这使他的STR为8，EXP为1。
-#然后，去AtCoder健身房，使他的STR为18，EXP为2。
-#另一方面，没有办法训练他，使他的EXP大于2。
-#
-#输入样本 2
-#1 1000000000000000000 10 1000000000
-#
-#样本输出2
-#1000000007
-#注意溢出。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            print(i)
+            if i != n // i:
+                print(n // i)
+        i += 1
+
+=======
+Suggestion 2
+
+def get_divisors(n):
+    # 約数のリストを返す
+    # O(√n)
+    divisors = []
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+    divisors.sort()
+    return divisors
+
+n = int(input())
+divisors = get_divisors(n)
+for d in divisors:
+    print(d)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = []
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            ans.append(i)
+            if i != N // i:
+                ans.append(N // i)
+        i += 1
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    from math import sqrt
+    N = int(sys.stdin.readline())
+    ans = []
+    for i in range(1, int(sqrt(N))+1):
+        if N % i == 0:
+            ans.append(i)
+            if i != N // i:
+                ans.append(N // i)
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 5
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+
+    divisors.sort()
+    return divisors
+
+N = int(input())
+divisors = get_divisors(N)
+for d in divisors:
+    print(d)
+
+=======
+Suggestion 6
+
+def find_divisor(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if n // i != i:
+                divisors.append(n//i)
+    divisors.sort()
+    return divisors
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            print(i)
+            if i != n//i:
+                print(n//i)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            print(i)
+            if i != N // i:
+                print(N // i)
+        i += 1
+
+=======
+Suggestion 9
+
+def divisors(n):
+    i = 1
+    table = []
+    while i * i <= n:
+        if n % i == 0:
+            table.append(i)
+            if i != n // i:
+                table.append(n // i)
+        i += 1
+    return table
+
+n = int(input())
+print(*sorted(divisors(n)), sep='\n')

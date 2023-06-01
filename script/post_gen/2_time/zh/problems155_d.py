@@ -1,42 +1,231 @@
-#问题陈述
-#我们有N个整数A_1, A_2, ..., A_N。
-#有((N(N-1))/(2))种方法可以选择其中两个并形成一对。如果我们计算其中每一对的乘积，并将结果按升序排序，那么列表中的第K个数字是什么？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ k ≦ ((n(n-1))/(2))
-#-10^9 ≦ A_i ≦ 10^9 (1 ≦ i ≦ N)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#3 3 -4 -2
-#
-#样本输出1
-#-6
-#有六种方法可以组成一对。这些配对的产物是9，-12，-6，-12，-6，8。
-#将这些数字按升序排列，我们有-12、-12、-6、-6、8、9。这个列表中的第三个数字是-6。
-#
-#输入样本 2
-#10 40
-#5 4 3 2 -1 0 0 0 0 0
-#
-#样本输出2
-#6
-#
-#样本输入3
-#30 413
-#-170202098 -268409015 537203564 983211703 21608710 -443999067 -937727165 -97596546 -372334013 398994917 -972141167 798607104 -949068442 -959948616 37909651 0 886627544 -20098238 0 -948955241 0 -214720580 277222296 -18897162 834475626 0 -425610555 110117526 663621752 0
-#
-#样本输出3
-#448283280358331064
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    d = {}
+    for _ in range(n):
+        s = input()
+        if s not in d:
+            d[s] = 1
+        else:
+            d[s] += 1
+    
+    max_v = max(d.values())
+    for k, v in d.items():
+        if v == max_v:
+            print(k)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        list.append(input())
+    list.sort()
+    d = {}
+    for i in list:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    max = 0
+    for i in d:
+        if d[i] > max:
+            max = d[i]
+    for i in d:
+        if d[i] == max:
+            print(i)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    max_count = 0
+    max_word = ''
+    count = 0
+    for i in range(N):
+        if i == 0:
+            count = 1
+        else:
+            if S[i] == S[i-1]:
+                count += 1
+            else:
+                count = 1
+        if count > max_count:
+            max_count = count
+            max_word = S[i]
+    print(max_word)
+
+=======
+Suggestion 4
+
+def get_input():
+    n = int(input())
+    arr = []
+    for i in range(n):
+        arr.append(input())
+    return arr
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    s.sort()
+    res = []
+    max_cnt = 0
+    cnt = 0
+    for i in range(n):
+        if s[i] != s[i-1]:
+            if cnt > max_cnt:
+                max_cnt = cnt
+                res = [s[i-1]]
+            elif cnt == max_cnt:
+                res.append(s[i-1])
+            cnt = 1
+        else:
+            cnt += 1
+    if cnt > max_cnt:
+        res = [s[-1]]
+    elif cnt == max_cnt:
+        res.append(s[-1])
+    for r in res:
+        print(r)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    count = 1
+    max = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            count += 1
+        else:
+            if count > max:
+                max = count
+            count = 1
+    if count > max:
+        max = count
+    count = 1
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            count += 1
+        else:
+            if count == max:
+                print(s[i])
+            count = 1
+    if count == max:
+        print(s[n-1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    dic = {}
+    for i in range(n):
+        s = input()
+        if s in dic:
+            dic[s] += 1
+        else:
+            dic[s] = 1
+    max = 0
+    for key in dic:
+        if dic[key] > max:
+            max = dic[key]
+    for key in sorted(dic):
+        if dic[key] == max:
+            print(key)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    S.sort()
+    max_count = 0
+    count = 0
+    for i in range(1, N):
+        if S[i] == S[i - 1]:
+            count += 1
+        else:
+            if count > max_count:
+                max_count = count
+            count = 0
+    if count > max_count:
+        max_count = count
+    count = 0
+    for i in range(1, N):
+        if S[i] == S[i - 1]:
+            count += 1
+        else:
+            if count == max_count:
+                print(S[i - 1])
+            count = 0
+    if count == max_count:
+        print(S[i - 1])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    max = 0
+    count = 0
+    for i in range(N):
+        if S[i] == S[i-1]:
+            count += 1
+        else:
+            count = 1
+        if count > max:
+            max = count
+    count = 0
+    for i in range(N):
+        if S[i] == S[i-1]:
+            count += 1
+        else:
+            count = 1
+        if count == max:
+            print(S[i])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s = input()
+        if s in d:
+            d[s] += 1
+        else:
+            d[s] = 1
+    max = 0
+    for s in d:
+        if d[s] > max:
+            max = d[s]
+    for s in sorted(d):
+        if d[s] == max:
+            print(s)

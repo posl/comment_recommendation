@@ -1,60 +1,180 @@
-#问题陈述
-#我们有一个有H行W列的方格，每个方格都是蓝色或红色。如果A_{i, j}为+，位于第i行和第j列的方格为蓝色，如果A_{i, j}为-，则为红色。
-#这个网格上有一个棋子，最初被放在左上角的方格上。高桥和青木将使用这个棋子进行游戏。
-#两位棋手一开始都有0分。他们将交替进行以下操作，由高桥先下：
-#将棋子向右移动一格或向下移动一格。不允许将棋子移到格子之外。然后，如果棋子现在在蓝色方格上，该棋手（移动棋子的人）得一分；如果棋子现在在红色方格上，则失去一分。
-#当其中一个玩家无法进行操作时，游戏结束。然后，如果双方的点数不同，则点数多的一方赢得游戏。否则，游戏将被抽出。
-#当两个玩家都进行游戏以获得最佳结果时，请找出游戏的结果。
-#
-#限制条件
-#1 ≦ h, w ≦ 2000
-#A_{i, j}为+或-。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#A_{1, 1}A_{1, 2}A_{1, 3} ...A_{1, W}
-#A_{2, 1}A_{2, 2}A_{2, 3} ...A_{2, W}
-#A_{3, 1}A_{3, 2}A_{3, 3} ...A_{3, W}
-#.
-#.
-#.
-#A_{H, 1}A_{H, 2}A_{H, 3} ...A_{H, W}
-#
-#输出
-#如果高桥会赢，则打印高桥；如果青木会赢，则打印青木；如果游戏将被平局，则打印平局。
-#
-#输入样本 1
-#3 3
-#---
-#+-+
-#+--
-#
-#样本输出1
-#高桥
-#高桥有一个获胜的策略，描述如下。
-#首先，高桥将棋子向右移动，这使他失去了一分，因为棋子走到了红方。现在，高桥有-1分，青木有0分。然后、
-#如果青木将棋子向右移动，高桥将棋子向下移动；
-#如果青木把棋子往下移，高桥就把它往右移。
-#在任何一种情况下，青木将棋子移到红色方格，失去1分，而高桥将棋子移到蓝色方格，得到1分，这意味着现在高桥有0分，青木有-1分。
-#棋子现在在从上往下第2行、从左往下第3列的方格上，青木只能选择把它往下移，移到一个红色方格。现在，高桥有0分，青木有-2分。
-#这颗棋子不能再向右或向下移动，所以游戏结束。由于高桥有更多的分数，他赢了。
-#
-#输入样本 2
-#2 4
-#+++-
-#-+-+
-#
-#样本输出2
-#青木
-#无论高桥做出什么选择，青木都能赢得比赛。
-#
-#样本输入3
-#1 1
-#-
-#
-#样本输出3
-#平局
-#在这种情况下，游戏立即结束。由于双方都是0分，所以游戏是平局。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        pin = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in pin:
+                flag = False
+            if s[j] == 'x' and str(j) in pin:
+                flag = False
+        if flag:
+            count += 1
+    print(count)
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        if all([i[int(j)] == s[int(j)] for j in range(len(s)) if s[int(j)] in '0123456789']):
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def f(S):
+    S = S.replace('o','1')
+    S = S.replace('x','0')
+    S = S.replace('?','2')
+    S = S.replace('2','?')
+    return int(S,3)
+
+S = input()
+print(f(S))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = list(s)
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    cnt = 0
+
+    for i in range(10000):
+        pin = "{:0>4}".format(i)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in pin:
+                flag = False
+                break
+            if s[j] == 'x' and str(j) in pin:
+                flag = False
+                break
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    cnt = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def count_passwords(s):
+    count = 0
+    for i in range(10000):
+        password = str(i).zfill(4)
+        if all([password[int(c)] == s[int(c)] for c in range(10) if s[int(c)] != '?']):
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    #print(S)
+    #print(S[0:10])
+    #print(S[0:10].count("o"))
+    #print(S[0:10].count("x"))
+    #print(S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") +
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        if i < 1000:
+            i = '0' * (4 - len(str(i))) + str(i)
+        else:
+            i = str(i)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o':
+                if str(j) not in i:
+                    flag = False
+                    break
+            elif s[j] == 'x':
+                if str(j) in i:
+                    flag = False
+                    break
+        if flag:
+            count += 1
+    print(count)

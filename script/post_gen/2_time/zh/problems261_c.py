@@ -1,66 +1,207 @@
-#问题陈述
-#对于两个字符串A和B，让A+B表示A和B按这个顺序的串联。
-#给你N个字符串S_1,...,S_N。按照i=1, ..., N的顺序，对它们进行修改并打印如下：
-#如果S_1,...,S_{i-1}中没有一个等于S_i，打印S_i；
-#如果S_1,...,S_{i-1}中的X（X>0）等于S_i，则打印S_i+ ( +X+ )，将X作为一个字符串处理。
-#
-#约束条件
-#1 ≦ N ≦ 2× 10^5
-#S_i是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#按照问题陈述中的规定打印N行。
-#
-#输入样本1
-#5
-#newfile
-#newfile
-#newfolder
-#newfile
-#newfolder
-#
-#输出样本1
-#newfile
-#newfile(1)
-#newfolder
-#newfile(2)
-#newfolder(1)
-#
-#输入样本2
-#11
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#
-#样本输出2
-#a
-#a(1)
-#a(2)
-#a(3)
-#a(4)
-#a(5)
-#a(6)
-#a(7)
-#a(8)
-#a(9)
-#a(10)
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(table):
+    for i in range(len(table)):
+        for j in range(len(table)):
+            if table[i][j] == 'W':
+                if table[j][i] != 'L':
+                    return False
+            elif table[i][j] == 'L':
+                if table[j][i] != 'W':
+                    return False
+            elif table[i][j] == 'D':
+                if table[j][i] != 'D':
+                    return False
+    return True
+
+=======
+Suggestion 2
+
+def check(a):
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if a[i][j] == "W":
+                if a[j][i] != "L":
+                    return False
+            elif a[i][j] == "L":
+                if a[j][i] != "W":
+                    return False
+            elif a[i][j] == "D":
+                if a[j][i] != "D":
+                    return False
+    return True
+
+=======
+Suggestion 3
+
+def check_table(table):
+    for i in range(len(table)):
+        for j in range(len(table)):
+            if table[i][j] == 'W':
+                if table[j][i] != 'L':
+                    return False
+            elif table[i][j] == 'L':
+                if table[j][i] != 'W':
+                    return False
+            elif table[i][j] == 'D':
+                if table[j][i] != 'D':
+                    return False
+    return True
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(input()))
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if A[i][j] == 'W':
+                if A[j][i] != 'L':
+                    print("不正确")
+                    return
+            elif A[i][j] == 'L':
+                if A[j][i] != 'W':
+                    print("不正确")
+                    return
+            elif A[i][j] == 'D':
+                if A[j][i] != 'D':
+                    print("不正确")
+                    return
+    print("正确")
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [input() for i in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A[i][j] == "W" and A[j][i] != "L":
+                    print("不正确")
+                    return
+                elif A[i][j] == "L" and A[j][i] != "W":
+                    print("不正确")
+                    return
+                elif A[i][j] == "D" and A[j][i] != "D":
+                    print("不正确")
+                    return
+    print("正确")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if a[i][j] == 'W' and a[j][i] != 'L':
+                    print('不正确')
+                    return
+                elif a[i][j] == 'L' and a[j][i] != 'W':
+                    print('不正确')
+                    return
+                elif a[i][j] == 'D' and a[j][i] != 'D':
+                    print('不正确')
+                    return
+    print('正确')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    A = []
+    for i in range(n):
+        A.append(list(input()))
+    for i in range(n):
+        for j in range(n):
+            if i != j and A[i][j] == "W":
+                if A[j][i] != "L":
+                    print("不正确")
+                    return
+            elif i != j and A[i][j] == "L":
+                if A[j][i] != "W":
+                    print("不正确")
+                    return
+            elif i != j and A[i][j] == "D":
+                if A[j][i] != "D":
+                    print("不正确")
+                    return
+    print("正确")
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if a[i][j] == 'W':
+                if a[j][i] != 'L':
+                    return False
+            elif a[i][j] == 'L':
+                if a[j][i] != 'W':
+                    return False
+            elif a[i][j] == 'D':
+                if a[j][i] != 'D':
+                    return False
+    return True
+
+=======
+Suggestion 9
+
+def check(A):
+    for i in range(len(A)):
+        for j in range(len(A)):
+            if A[i][j] == 'W' and A[j][i] != 'L':
+                return False
+            if A[i][j] == 'L' and A[j][i] != 'W':
+                return False
+            if A[i][j] == 'D' and A[j][i] != 'D':
+                return False
+    return True
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    A = []
+    for i in range(n):
+        A.append(list(input()))
+    for i in range(n):
+        for j in range(n):
+            if A[i][j] == 'W':
+                if A[j][i] != 'L':
+                    print("不正确")
+                    return
+            elif A[i][j] == 'L':
+                if A[j][i] != 'W':
+                    print("不正确")
+                    return
+            elif A[i][j] == 'D':
+                if A[j][i] != 'D':
+                    print("不正确")
+                    return
+    print("正确")

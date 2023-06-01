@@ -1,35 +1,149 @@
-#问题陈述
-#给出的是一个正整数N。
-#有多少个正整数的图组（A,B,C）满足A×B+C=N？
-#
-#限制条件
-# 2 ≦ N ≦ 10^6
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#3
-#
-#样本输出1
-#3
-#有3个满足A×B+C=3的整数组：（A，B，C）=（1，1，2），（1，2，1），（2，1，1）。
-#
-#样本输入2
-#100
-#
-#样本输出2
-#473
-#
-#样本输入3
-#1000000
-#
-#样本输出3
-#13969985
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    return n, d
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print('Yes')
+            break
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    #print(d)
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    flag = False
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            flag = True
+            break
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d = [list(map(int, input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            cnt += 1
+    if cnt >= 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    dice = []
+    for i in range(n):
+        dice.append(list(map(int, input().split())))
+    #print(dice)
+    #print(dice[0][0])
+    #print(dice[0][1])
+    for i in range(n-2):
+        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    for i in range(N):
+        d1, d2 = input().split()
+        if i >= 2 and d1 == d2 and d0 == d1:
+            print("Yes")
+            return
+        d0 = d1
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    dice = [list(map(int, input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n-2):
+        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
+            cnt += 1
+    if cnt > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+
+    for i in range(n - 2):
+        if d[i][0] == d[i][1] and d[i + 1][0] == d[i + 1][1] and d[i + 2][0] == d[i + 2][1]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    for i in range(0, n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print("Yes")
+            return
+    print("No")

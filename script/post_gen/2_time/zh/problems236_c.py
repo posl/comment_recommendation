@@ -1,51 +1,157 @@
-#问题陈述
-#由AtCoder铁路公司运营的某条线路上有N个车站。从起点站开始的第i个车站（1≦i≦N）被命名为S_i。
-#本地列车在所有车站停靠，而特快列车不一定。具体来说，特快列车只停在M（M ≦ N）个车站，第j个车站（1 ≦ j ≦ M）被命名为T_j。
-#在这里，保证T_1=S_1，T_M=S_N，也就是说，特快列车在起点站和终点站都停靠。
-#对于N个车站中的每一个，确定特快列车是否在该站停靠。
-#
-#限制条件
-#2 ≦ m ≦ n ≦ 10^5
-#N和M是整数。
-#S_i (1 ≦ i ≦ N)是一个长度在1到10之间（包括10）的字符串，由小写英文字母组成。
-#S_i ≠ S_j (i ≠ j)
-#T_1 = S_1，T_M = S_N。
-#(T_1, ..., T_M)是通过从(S_1, ..., S_N)中删除0个或更多的字符串，并在不改变顺序的情况下将剩余的字符串排成一排而得到的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#S_1 ...S_N
-#T_1 ...T_M
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含Yes，如果快车停在从起点站开始的第i个车站，否则就是No。
-#
-#输入示例 1
-#5 3
-#tokyo kanda akiba okachi ueno
-#tokyo akiba ueno
-#
-#样本输出1
-#Yes
-#No
-#Yes
-#No
-#Yes
-#
-#样本输入2
-#7 7
-#a t c o d e r
-#a t c o d e r
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#特快列车可在所有车站停靠。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[0] == A[1]:
+        return A[-1]
+    else:
+        return A[0]
+
+print(solve())
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = dict()
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    for i in d.keys():
+        if d[i] % 2 == 1:
+            print(i)
+            break
+
+=======
+Suggestion 3
+
+def find_lost_card(N, cards):
+    card_dict = {}
+    for i in range(1, N + 1):
+        card_dict[i] = 4
+    for card in cards:
+        card_dict[card] -= 1
+    for card in card_dict:
+        if card_dict[card] == 1:
+            return card
+
+N = int(input())
+cards = list(map(int, input().split()))
+print(find_lost_card(N, cards))
+
+=======
+Suggestion 4
+
+def find_lost_card(n, cards):
+    card_count = {}
+    for card in cards:
+        if card in card_count:
+            card_count[card] += 1
+        else:
+            card_count[card] = 1
+    for i in range(1, n+1):
+        if i not in card_count or card_count[i] != 4:
+            return i
+
+=======
+Suggestion 5
+
+def get_missing_card(n, cards):
+    card_dict = {}
+    for card in cards:
+        if card in card_dict:
+            card_dict[card] += 1
+        else:
+            card_dict[card] = 1
+
+    for i in range(1, n + 1):
+        if i not in card_dict or card_dict[i] != 4:
+            return i
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n == 1:
+        print(a[0])
+    else:
+        for i in range(0, 4*n, 4):
+            if a[i] != a[i+1]:
+                print(a[i])
+                break
+            if a[i+2] != a[i+3]:
+                print(a[i+2])
+                break
+
+=======
+Suggestion 7
+
+def find_lost_card(N, A):
+    cards = {}
+    for a in A:
+        if a in cards:
+            cards[a] += 1
+        else:
+            cards[a] = 1
+    for i in range(1, N+1):
+        if i not in cards or cards[i] < 4:
+            return i
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    cards = list(map(int, input().split()))
+    cards.sort()
+    for i in range(0, len(cards), 4):
+        if len(set(cards[i:i+4])) != 1:
+            print(cards[i])
+            break
+
+=======
+Suggestion 9
+
+def findMissingNumber(n, nums):
+    numDict = {}
+    for i in range(len(nums)):
+        if nums[i] not in numDict:
+            numDict[nums[i]] = 1
+        else:
+            numDict[nums[i]] += 1
+    for i in range(1, n+1):
+        if i not in numDict:
+            return i
+        elif numDict[i] < 4:
+            return i
+    return 0
+
+n = int(input())
+nums = list(map(int, input().split()))
+print(findMissingNumber(n, nums))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, len(A), 2):
+        if i == len(A) - 1:
+            print(A[i])
+        elif A[i] != A[i + 1]:
+            print(A[i])
+            break

@@ -1,41 +1,81 @@
-#问题陈述
-#给出的是一个整数序列A_1, A_2, ..., A_N。
-#如果它的元素是成对不同的，打印YES；否则，打印NO。
-#
-#限制条件
-#2 ≤ N ≤ 200000
-#1 ≤ A_i ≤ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#輸出
-#如果序列中的元素是成对不同的，打印YES；否则，打印NO。
-#
-#输入样本 1
-#5
-#2 6 1 4 5
-#
-#样本输出1
-#Yes
-#这些元素是成对不同的。
-#
-#样本输入2
-#6
-#4 1 3 1 6 2
-#
-#样本输出2
-#NO
-#第二和第四元素是相同的。
-#
-#样本输入3
-#2
-#10000000 10000000
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def replace_char(S):
+    return "x"*len(S)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print('x'*len(s))
+
+=======
+Suggestion 3
+
+def replace_by_x(s):
+    """
+    用x替换字符串s中的每个字符
+    :param s: 字符串
+    :return: 替换后的字符串
+    """
+    result = ''
+    for i in range(len(s)):
+        result += 'x'
+    return result
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print("x"*len(S))
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print('x'*len(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print("x" * len(s))
+
+=======
+Suggestion 7
+
+def main():
+    str = input()
+    for i in range(len(str)):
+        print("x",end="")
+
+=======
+Suggestion 8
+
+def main():
+    string = input()
+    for i in range(len(string)):
+        print('x', end='')
+    print()
+
+=======
+Suggestion 9
+
+def replace_char(s):
+    return "x"*len(s)
+
+=======
+Suggestion 10
+
+def main():
+    s=input()
+    for i in range(len(s)):
+        print('x',end='')
+    print()

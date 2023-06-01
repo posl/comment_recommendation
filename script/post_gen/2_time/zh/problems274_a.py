@@ -1,57 +1,179 @@
-#问题陈述
-#高桥正在制作一个电脑棒球游戏。
-#他要写一个程序来显示打者的平均击球数，并有指定的数字。
-#有整数A和B，它们满足1≦A≦10和0≦B≦A。
-#让S是按以下方法得到的字符串。
-#将(B/(A))四舍五入到小数点后三位，然后按照这个顺序写出整数部分(1位)、.(小数点)和小数部分(3位)，后面加0。
-#例如，如果A=7，B=4，那么(B/(A))=(4/(7))=0.571428...四舍五入到小数点后3位就是0.571。因此，S是0.571。
-#给你A和B作为输入，要求你打印S。
-#
-#限制条件
-#1 ≦ A ≦ 10
-#0 ≦ B ≦ A
-#A和B是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#A B
-#
-#输出
-#按照问题陈述中指定的格式打印S。请注意，不同格式的答案将被视为错误。
-#
-#输入样本 1
-#7 4
-#
-#样本输出1
-#0.571
-#正如问题陈述中所解释的，(B/(A))=(4/(7))=0.571428...四舍五入到小数点后三位数就是0.571。因此，S是0.571。
-#
-#输入样本 2
-#7 3
-#
-#样本输出2
-#0.429
-#(B/(A))=(3/(7))=0.428571......四舍五入到小数点后三位是0.429（注意它被四舍五入了）。
-#因此，S是0.429。
-#
-#输入样本 3
-#2 1
-#
-#样本输出3
-#0.500
-#(B/(A)) = (1/(2)) = 0.5 四舍五入到小数点后三位数又是0.5。
-#因此，S是0.500。注意，它必须有三个小数位。
-#
-#输入样本 4
-#10 10
-#
-#样本输出4
-#1.000
-#
-#样本输入5
-#1 0
-#
-#样本输出5
-#0.000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def get_input():
+    h, w, r_s, c_s = map(int, input().split())
+    n = int(input())
+    r_c_list = []
+    for i in range(n):
+        r, c = map(int, input().split())
+        r_c_list.append((r, c))
+    q = int(input())
+    d_l_list = []
+    for i in range(q):
+        d, l = input().split()
+        d_l_list.append((d, int(l)))
+    return h, w, r_s, c_s, n, r_c_list, q, d_l_list
+
+=======
+Suggestion 3
+
+def main():
+    h,w,r_s,c_s = map(int,input().split())
+    n = int(input())
+    r_c = []
+    for i in range(n):
+        r_c.append(list(map(int,input().split())))
+    q = int(input())
+    d_l = []
+    for i in range(q):
+        d_l.append(list(input().split()))
+    print(h,w,r_s,c_s)
+    print(n)
+    print(r_c)
+    print(q)
+    print(d_l)
+    return
+
+=======
+Suggestion 4
+
+def get_next_position(x,y,direction):
+    if direction == 'L':
+        y -= 1
+    elif direction == 'R':
+        y += 1
+    elif direction == 'U':
+        x -= 1
+    elif direction == 'D':
+        x += 1
+    return x,y
+
+=======
+Suggestion 5
+
+def main():
+    h, w, rs, cs = [int(x) for x in input().split()]
+    n = int(input())
+    rcs = [[int(x) for x in input().split()] for _ in range(n)]
+    q = int(input())
+    dls = [[x for x in input().split()] for _ in range(q)]
+    walls = set()
+    for rc in rcs:
+        walls.add((rc[0], rc[1]))
+    r, c = rs, cs
+    for dl in dls:
+        d, l = dl[0], int(dl[1])
+        if d == 'L':
+            for i in range(l):
+                if (r, c - 1) not in walls:
+                    c -= 1
+        if d == 'R':
+            for i in range(l):
+                if (r, c + 1) not in walls:
+                    c += 1
+        if d == 'U':
+            for i in range(l):
+                if (r - 1, c) not in walls:
+                    r -= 1
+        if d == 'D':
+            for i in range(l):
+                if (r + 1, c) not in walls:
+                    r += 1
+        print(r, c)
+
+=======
+Suggestion 6
+
+def main():
+    h, w, r_s, c_s = map(int, input().split())
+    n = int(input())
+    r_c = [list(map(int, input().split())) for _ in range(n)]
+    q = int(input())
+    q_d = [list(input().split()) for _ in range(q)]
+    d = {"L": [-1, 0], "R": [1, 0], "U": [0, -1], "D": [0, 1]}
+    r_s, c_s = r_s - 1, c_s - 1
+    r_c = [[r - 1, c - 1] for r, c in r_c]
+    r_c.sort(key=lambda x: (x[0], x[1]))
+    r_c.append([h, w])
+    r_c.insert(0, [-1, -1])
+    s = 0
+    for i in range(1, len(r_c)):
+        s += (r_c[i][0] - r_c[i - 1][0] - 1) * (r_c[i][1] - r_c[i - 1][1] - 1)
+    print(s)
+    for d_i, l_i in q_d:
+        d_i = d[d_i]
+        l_i = int(l_i)
+        r, c = r_s, c_s
+        while l_i > 0:
+            if d_i[0] == 0:
+                if r + d_i[1] == -1 or r + d_i[1] == h:
+                    break
+                elif [r + d_i[1], c] in r_c:
+                    break
+                else:
+                    r += d_i[1]
+            else:
+                if c + d_i[0] == -1 or c + d_i[0] == w:
+                    break
+                elif [r, c + d_i[0]] in r_c:
+                    break
+                else:
+                    c += d_i[0]
+            l_i -= 1
+        print(r + 1, c + 1)
+
+=======
+Suggestion 7
+
+def main():
+    H,W,r_s,c_s = map(int,input().split())
+    N = int(input())
+    r = []
+    c = []
+    for i in range(N):
+        r_i,c_i = map(int,input().split())
+        r.append(r_i)
+        c.append(c_i)
+    Q = int(input())
+    d = []
+    l = []
+    for i in range(Q):
+        d_i,l_i = map(str,input().split())
+        d.append(d_i)
+        l.append(l_i)
+    for i in range(Q):
+        if d[i] == 'L':
+            if c_s - int(l[i]) >= 1:
+                c_s = c_s - int(l[i])
+                print(r_s,c_s)
+            else:
+                print(r_s,c_s)
+        elif d[i] == 'R':
+            if c_s + int(l[i]) <= W:
+                c_s = c_s + int(l[i])
+                print(r_s,c_s)
+            else:
+                print(r_s,c_s)
+        elif d[i] == 'U':
+            if r_s - int(l[i]) >= 1:
+                r_s = r_s - int(l[i])
+                print(r_s,c_s)
+            else:
+                print(r_s,c_s)
+        elif d[i] == 'D':
+            if r_s + int(l[i]) <= H:
+                r_s = r_s + int(l[i])
+                print(r_s,c_s)
+            else:
+                print(r_s,c_s)
+        else:
+            print(r_s,c_s)

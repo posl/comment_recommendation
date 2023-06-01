@@ -1,52 +1,130 @@
-#问题陈述
-#对于一个不小于0的整数x，我们定义g_1(x), g_2(x), f(x)如下：
-#g_1(x)=将x的十进制数字按降序重新排列而得到的整数
-#g_2(x)=将x的十进制数字按升序重新排列而得到的整数
-#f(x)=g_1(x)-g_2(x)
-#例如，我们有g_1（314）=431，g_2（3021）=123，f（271）=721-127=594。注意，前导零被忽略。
-#给出整数N, K, 在a_0=N, a_{i+1}=f(a_i) (i≧0)定义的序列中找出a_K。
-#
-#限制条件
-#0 ≦ N ≦ 10^9
-#0 ≦ K ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#输出
-#打印a_K。
-#
-#样本输入1
-#314 2
-#
-#样本输出1
-#693
-#我们有
-#a_0=314
-#a_1=f(314)=431-134=297
-#a_2=f(297)=972-279=693
-#
-#样本输入2
-#1000000000 100
-#
-#样本输出2
-#0
-#我们有
-#a_0=1000000000
-#a_1=f(1000000000)=1000000000-1=999999999
-#a_2=f(999999999)=999999999-999999999=0
-#a_3=f(0)=0-0=0
-#.
-#.
-#.
-#
-#
-#样本输入3
-#6174 100000
-#
-#样本输出3
-#6174
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_hard_to_read(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i].islower():
+            return False
+        if i % 2 == 1 and s[i].isupper():
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def check(s):
+    for i in range(len(s)):
+        if i%2 == 0:
+            if s[i].islower():
+                return False
+        else:
+            if s[i].isupper():
+                return False
+    return True
+
+s = input()
+print("Yes" if check(s) else "No")
+
+=======
+Suggestion 3
+
+def isDifficult(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i].islower():
+            return False
+        if i % 2 == 1 and s[i].isupper():
+            return False
+    return True
+
+=======
+Suggestion 4
+
+def main():
+    str = input()
+    odd = str[0::2]
+    even = str[1::2]
+    if odd.islower() and even.isupper():
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def isDifficult(s):
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if ord(s[i]) < 97:
+                return False
+        else:
+            if ord(s[i]) > 96:
+                return False
+    return True
+
+s = input()
+
+=======
+Suggestion 6
+
+def isDifficult(s):
+    for i in range(len(s)):
+        if i%2 == 0 and s[i].islower():
+            return False
+        if i%2 == 1 and s[i].isupper():
+            return False
+    return True
+
+s = input()
+
+=======
+Suggestion 7
+
+def check(s):
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i].islower():
+                continue
+            else:
+                return False
+        else:
+            if s[i].isupper():
+                continue
+            else:
+                return False
+    return True
+
+=======
+Suggestion 8
+
+def isHardRead(s):
+    odd = s[0::2]
+    even = s[1::2]
+    if odd.islower() and even.isupper():
+        return "Yes"
+    else:
+        return "No"
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S[0::2].islower() and S[1::2].isupper():
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def isHardToRead(s):
+    for i in range(0,len(s)):
+        if i % 2 == 0:
+            if s[i].islower():
+                return False
+        else:
+            if s[i].isupper():
+                return False
+    return True

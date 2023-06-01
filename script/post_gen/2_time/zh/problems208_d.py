@@ -1,75 +1,181 @@
-#问题陈述
-#在高桥王国有N个城市和M条道路。
-#道路i是一条单行道，从城市A_i通向城市B_i，通过它需要C_i分钟。
-#让我们把f(s, t, k)定义为以下查询的答案。
-#计算从城市s到城市t所需的最小时间。这里，除了城市s和t，只允许通过城市1到k。如果城市t无法到达或s=t，答案应该是0。
-#计算所有三元组s,t,k的f(s,t,k)并打印它们的总和。更正式地说，打印sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k)。
-#
-#约束条件
-#1 ≦ N ≦ 400
-#0 ≦ M ≦ N(N-1)
-#1 ≦ A_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#1 ≦ C_i ≦ 10^6 (1 ≦ i ≦ M)
-#A_i ≠ A_j 或 B_i ≠ B_j，如果 i ≠ j。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 B_1 C_1
-#.
-#.
-#.
-#A_M B_M C_M
-#
-#输出
-#打印 sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#输入样本 1
-#3 2
-#1 2 3
-#2 3 2
-#
-#样本输出1
-#25
-#使f(s,t,k)≠0的三元组如下。
-#对于k = 1: f(1,2,1) = 3, f(2,3,1) = 2.
-#对于k = 2: f(1,2,2) = 3, f(2,3,2) = 2, f(1,3,2) = 5.
-#对于k=3：f（1,2,3）=3，f（2,3,3）=2，f（1,3,3）=5。
-#
-#样本输入 2
-#3 0
-#
-#样本输出 2
-#0
-#我们有f(s,t,k)=0，对于所有的s,t,k。
-#
-#样本输入3
-#5 20
-#1 2 6
-#1 3 10
-#1 4 4
-#1 5 1
-#2 1 5
-#2 3 9
-#2 4 8
-#2 5 6
-#3 1 5
-#3 2 1
-#3 4 7
-#3 5 9
-#4 1 4
-#4 2 6
-#4 3 4
-#4 5 8
-#5 1 2
-#5 2 5
-#5 3 6
-#5 4 5
-#
-#样本输出3
-#517
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # print(n, k)
+    # print(a)
+
+    a.sort()
+    # print(a)
+
+    ans = k // n
+    b = k % n
+    # print(ans)
+    # print(b)
+
+    for i in range(n):
+        if a[i] <= b:
+            print(ans+1)
+        else:
+            print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = k // n
+    B = sorted(A)
+    for i in range(k % n):
+        ans[B[i] - 1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [k//n]*n
+    k %= n
+    for i in range(k):
+        ans[a[i]-1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def prob208_c():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if k>=n:
+        if k%n==0:
+            print(k//n)
+        else:
+            print(k//n+1)
+        return
+    else:
+        b = k
+        for i in range(n):
+            if a[i]<b:
+                b = a[i]
+        print(b)
+        return
+
+prob208_c()
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    k = K
+    for i in range(N):
+        if k >= N:
+            A[i] += k // N
+        else:
+            A[i] += 0
+        k = k - 1
+    for i in range(N):
+        print(A[i])
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0] + K)
+    #print(a)
+    ans = [K//N for i in range(N)]
+    #print(ans)
+    tmp = K%N
+    for i in range(tmp):
+        ans[a[i]-1] += 1
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a_sorted = sorted(a)
+    a_sorted.append(a_sorted[0]+k)
+    for i in range(n):
+        if a_sorted[i+1] == a_sorted[i]:
+            print(k//n)
+        else:
+            print(k//n+1)
+
+=======
+Suggestion 9
+
+def solve(n,k,a):
+    # 二分探索
+    def is_ok(arg):
+        # 条件を満たすかどうか？問題ごとに定義
+        # ngとokの中点midをargとして受け取る
+        # ここで条件式を書く
+        # return mid >= 0
+        # ここで条件式を書く
+        return sum(max(0, a_i - arg) for a_i in a) <= k
+
+    # 二分探索
+    def meguru_bisect(ng, ok):
+        # okとngのどちらが大きいかわからないことを考慮
+        while (abs(ok - ng) > 1):
+            mid = (ok + ng) // 2
+            if is_ok(mid):
+                ok = mid
+            else:
+                ng = mid
+        return ok
+
+    # 解の存在範囲を初期化
+    ok = max(a)
+    ng = 0
+    # 二分探索
+    ans = meguru_bisect(ng, ok)
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0] + K)
+    b = [0] * N
+    for i in range(N):
+        b[i] = a[i + 1] - a[i]
+    m = min(b)
+    min_index = b.index(m)
+    for i in range(N):
+        if i == min_index:
+            print(a[i] + K // N + 1)
+        else:
+            print(a[i] + K // N)

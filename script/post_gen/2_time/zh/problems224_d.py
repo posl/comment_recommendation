@@ -1,112 +1,151 @@
-#问题陈述
-#高桥在某条路上发现了一个拼图。
-#它是由一个有九个顶点和M条边的无向图和八个碎片组成的。
-#图中的九个顶点被称为顶点1，顶点2，...，顶点9。对于每个i=1，2，...，M，第i条边连接着顶点u_i和顶点v_i。
-#这八个片断被称为片断1，片断2，...，片断8。
-#对于每个j=1，2，...，8，件j都在顶点p_j上。
-#在这里，我们保证所有的棋子都在不同的顶点上。
-#请注意，正好有一个没有棋子的空顶点。
-#高桥可以对这个拼图进行任意次数的操作（可能是零）。
-#在与空顶点相邻的顶点上选择一个棋子，并将其移动到空顶点上。
-#通过重复这个操作，他的目的是完成这个拼图。
-#当以下情况成立时，该拼图被认为是完整的。
-#对于每个j = 1, 2, ..., 8, 棋子j都在顶点j上。
-#确定高桥是否有可能完成这个拼图。如果有可能，请找出完成该拼图所需的最少操作数。
-#
-#限制条件
-#0 ≦ M ≦ 36
-#1 ≦ u_i, v_i ≦ 9
-#给定的图形没有多线或自循环。
-#1 ≦ p_j ≦ 9
-#j ≠ j' -> p_j ≠ p_{j'}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#p_1 p_2 ... p_8
-#
-#输出
-#如果高桥有可能完成这个拼图，请找出完成这个拼图所需的最少操作数。
-#否则，打印-1。
-#
-#输入样本 1
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#3 9 2 4 5 6 7 8
-#
-#样本输出1
-#5
-#下面的程序通过五次操作完成了这个谜题。
-#将棋子2从顶点9移到顶点1。
-#将棋子3从顶点2移到顶点9。
-#将棋子2从顶点1移到顶点2。
-#将棋子1从顶点3移到顶点1。
-#将棋子3从顶点9移到顶点3。
-#另一方面，我们不可能在少于五次的操作中完成这个拼图。因此，我们应该打印5。
-#请注意，给定的图形可能是不相连的。
-#
-#输入样本 2
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#1 2 3 4 5 6 7 8
-#
-#样本输出2
-#0
-#这个拼图从一开始就已经完成了。
-#因此，完成该拼图所需的最少操作数为0。
-#
-#输入样本3
-#12
-#8 5
-#9 6
-#4 5
-#4 1
-#2 5
-#8 9
-#2 1
-#3 6
-#8 7
-#6 5
-#7 4
-#2 3
-#1 2 3 4 5 6 8 7
-#
-#样本输出3
-#-1
-#没有任何操作序列可以完成这个拼图，所以我们应该打印-1。
-#
-#输入样本4
-#12
-#6 5
-#5 4
-#4 1
-#4 7
-#8 5
-#2 1
-#2 5
-#6 9
-#3 6
-#9 8
-#8 7
-#3 2
-#2 3 4 6 1 9 7 8
-#
-#样本输出4
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2
+
+=======
+Suggestion 2
+
+def cal_area(ax,ay,bx,by,cx,cy):
+    return abs((ax*(by-cy)+bx*(cy-ay)+cx*(ay-by))/2.0)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append((x, y))
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                x1, y1 = a[i]
+                x2, y2 = a[j]
+                x3, y3 = a[k]
+                x1 -= x3
+                x2 -= x3
+                y1 -= y3
+                y2 -= y3
+                s = abs(x1 * y2 - x2 * y1)
+                if s > 0 and s % 2 == 0:
+                    ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def calc_area(x1, y1, x2, y2, x3, y3):
+    return abs(x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2))/2
+
+n = int(input())
+points = []
+for i in range(n):
+    x, y = map(int, input().split())
+    points.append((x, y))
+
+ans = 0
+for i in range(n):
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            x3, y3 = points[k]
+            area = calc_area(x1, y1, x2, y2, x3, y3)
+            if area != 0:
+                ans += 1
+print(ans)
+
+=======
+Suggestion 5
+
+def area2(p1,p2,p3):
+    return (p2[0]-p1[0])*(p3[1]-p1[1])-(p3[0]-p1[0])*(p2[1]-p1[1])
+
+n = int(input())
+points = []
+for i in range(n):
+    points.append(tuple(map(int,input().split())))
+
+ans = 0
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            if area2(points[i],points[j],points[k]) != 0:
+                ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_, y_ = map(int, input().split())
+        x.append(x_)
+        y.append(y_)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if (x[i]-x[k])*(y[j]-y[k]) != (x[j]-x[k])*(y[i]-y[k]):
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(list(map(int, input().split())))
+    # print(points)
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                x1 = points[i][0]
+                y1 = points[i][1]
+                x2 = points[j][0]
+                y2 = points[j][1]
+                x3 = points[k][0]
+                y3 = points[k][1]
+                if (x1-x2)*(y1-y3) != (x1-x3)*(y1-y2):
+                    count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def get_area(x1,y1,x2,y2,x3,y3):
+    return abs(0.5*((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3)))
+
+=======
+Suggestion 9
+
+def get_area(x1, y1, x2, y2, x3, y3):
+    return abs((x1 * y2 + x2 * y3 + x3 * y1) - (y1 * x2 + y2 * x3 + y3 * x1)) / 2
+
+=======
+Suggestion 10
+
+def get_triangle_number(points):
+    if len(points) < 3:
+        return 0
+    count = 0
+    for i in range(len(points)):
+        for j in range(i+1, len(points)):
+            for k in range(j+1, len(points)):
+                if get_area(points[i], points[j], points[k]) > 0:
+                    count += 1
+    return count

@@ -1,41 +1,83 @@
-#问题陈述
-#给定整数 N 和 K，请找出不大于 N 的正整数三元组 (a,b,c) 的数量，使得 a+b、b+c 和 c+a 均为 K 的倍数。
-#a,b,c的顺序并不重要，其中一些可以是相同的。
-#
-#限制条件
-#1 ≦ N,K ≦ 2× 10^5
-#N和K是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#輸出
-#打印不大于N的正整数的三倍数（a,b,c），使a+b,b+c和c+a都是K的倍数。
-#
-#输入样本 1
-#3 2
-#
-#输出示例 1
-#9
-#(1,1,1), (1,1,3), (1,3,1), (1,3,3), (2,2,2), (3,1,1), (3,3,1) 和 (3,3,3)满足条件。
-#
-#样本输入 2
-#5 3
-#
-#样本输出 2
-#1
-#
-#样本输入3
-#31415 9265
-#
-#样本输出3
-#27
-#
-#样本输入4
-#35897 932
-#
-#样本输出4
-#114191
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems108_b():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x1 - (y2 - y1)
+    y4 = y1 + (x2 - x1)
+    print(x3,y3,x4,y4)
+
+=======
+Suggestion 3
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    x3 = x2 + y1 - y2
+    y3 = y2 + x2 - x1
+    x4 = x1 + y1 - y2
+    y4 = y1 + x2 - x1
+    print(x3, y3, x4, y4)
+
+=======
+Suggestion 4
+
+def main():
+    x1,y1,x2,y2 = input().split()
+    x1 = int(x1)
+    y1 = int(y1)
+    x2 = int(x2)
+    y2 = int(y2)
+    x3 = x1 - (y2 - y1)
+    y3 = y1 - (x1 - x2)
+    x4 = x2 - (y2 - y1)
+    y4 = y2 - (x1 - x2)
+    print(x3,y3,x4,y4)
+    return
+
+=======
+Suggestion 5
+
+def problems108_b(x1,y1,x2,y2):
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x1 - (y2 - y1)
+    y4 = y1 + (x2 - x1)
+    print(x3,y3,x4,y4)
+
+=======
+Suggestion 6
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    x3, y3, x4, y4 = x2 - (y2 - y1), y2 + (x2 - x1), x1 - (y2 - y1), y1 + (x2 - x1)
+    print(x3, y3, x4, y4)
+
+=======
+Suggestion 7
+
+def problems108_b():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3,y3 = x2-(y2-y1),y2+(x2-x1)
+    x4,y4 = x1-(y2-y1),y1+(x2-x1)
+    print(x3,y3,x4,y4)
+
+=======
+Suggestion 8
+
+def problems108_b():
+    x1,y1,x2,y2 = map(int, input().split())
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x1 - (y2 - y1)
+    y4 = y1 + (x2 - x1)
+    print(x3,y3,x4,y4)

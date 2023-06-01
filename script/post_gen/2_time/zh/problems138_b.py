@@ -1,45 +1,111 @@
-#问题陈述
-#给出的是一串N个整数A_1, ..., A_N。
-#求这些数的逆数之和的（乘法）逆数，（1/（（1/（A_1））+...+ (1/(A_N)))).
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印一个十进制数字（或一个整数），代表（1/((1/(A_1))+...）的值。+ (1/(A_N))))。
-#当你的输出与法官的输出的绝对或相对误差最多为10^{-5}时，你的输出将被判断为正确。
-#
-#输入样本 1
-#2
-#10 30
-#
-#样本输出1
-#7.5
-#(1/((1/(10)) + (1/(30)))) = (1/((4/(30)))) = ((30)/(4)) = 7.5.
-#打印7.50001、7.49999等也将被接受。
-#
-#输入样本 2
-#3
-#200 200 200
-#
-#样本输出2
-#66.66666666666667
-#(1/((1/(200)) + (1/(200)) + (1/(200)))) = (1/((3/(200)))) = ((200)/(3)) = 66.6666....
-#打印6.66666e+1，以此类推，也将被接受。
-#
-#输入样本 3
-#1
-#1000
-#
-#样本输出3
-#1000
-#(1/((1/(1000)))) = 1000.
-#打印+1000.0等也将被接受。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 2
+
+def main():
+    # 你的代码
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    s = input()
+    if a < 3200:
+        print("red")
+    else:
+        print(s)
+
+=======
+Suggestion 4
+
+def get_input():
+    a = int(input())
+    s = input()
+    return a, s
+
+=======
+Suggestion 5
+
+def problems138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 6
+
+def problem138_a():
+    a = int(input())
+    s = str(input())
+    if a < 3200:
+        print("red")
+    else:
+        print(s)
+
+=======
+Suggestion 7
+
+def problems138_a(a,s):
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+problems138_a(3200,"pink")
+problems138_a(3199,"pink")
+problems138_a(4049,"red")
+
+=======
+Suggestion 8
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')
+
+=======
+Suggestion 9
+
+def problem138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 10
+
+def problem138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')

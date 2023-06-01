@@ -1,45 +1,152 @@
-#问题陈述
-#打印所有长度为N的严格递增的整数序列，其中所有元素都在1到M之间（包括），按词典上的升序排列。
-#
-#注意事项
-#对于两个长度相同的整数序列A_1,A_2,...,A_N和B_1,B_2,...,B_N，当且仅当，A被认为比B早：
-#有一个整数i (1 ≦ i ≦ N)，使A_j=B_j，对于所有整数j，满足1 ≦ j < i，并且A_i < B_i。
-#一个整数序列A_1,A_2,...,A_N被称为严格增加，当且仅当：
-#A_i < A_{i+1}对于所有整数i（1 ≦ i ≦ N-1）。
-#
-#限制条件
-#1 ≦ N ≦ M ≦ 10
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N M
-#
-#输出
-#按从大到小的顺序打印所寻求的序列，每个序列在自己的行中（见输出样本）。
-#
-#输入样本 1
-#2 3
-#
-#输出样本 1
-#1 2
-#1 3
-#2 3
-#所寻求的序列是(1,2),(1,3),(2,3)，应按词典上的升序打印。
-#
-#输入样本 2
-#3 5
-#
-#输出样本 2
-#1 2 3
-#1 2 4
-#1 2 5
-#1 3 4
-#1 3 5
-#1 4 5
-#2 3 4
-#2 3 5
-#2 4 5
-#3 4 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_depth(p, depth):
+    if p == 1:
+        return depth
+    else:
+        return get_depth(parents[p], depth+1)
+
+N = int(input())
+parents = list(map(int, input().split()))
+depth = 0
+for i in range(N):
+    depth = max(depth, get_depth(i+1, 1))
+print(depth)
+
+=======
+Suggestion 2
+
+def dfs(start, depth, max_depth, parents):
+    if depth > max_depth:
+        max_depth = depth
+    if start in parents:
+        max_depth = dfs(parents[start], depth+1, max_depth, parents)
+    return max_depth
+
+=======
+Suggestion 3
+
+def getGeneration(n, p):
+    maxGeneration = 0
+    for i in range(1, n + 1):
+        generation = 1
+        parent = p[i - 1]
+        while parent != -1:
+            generation += 1
+            parent = p[parent - 1]
+        if generation > maxGeneration:
+            maxGeneration = generation
+    return maxGeneration
+
+=======
+Suggestion 4
+
+def generation(n, p):
+    if n == 1:
+        return 0
+    else:
+        return generation(p[n-2], p) + 1
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    # 从第i个人开始，向上追溯到第1个人，计算代数
+    ans = 0
+    for i in range(N):
+        p = i + 1
+        while p != -1:
+            ans += 1
+            p = P[p - 1]
+            # print(p)
+        # print('---')
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        cnt = 0
+        j = i
+        while j != -1:
+            j = p[j] - 1
+            cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 7
+
+def func():
+    n=int(input())
+    p=list(map(int,input().split()))
+    p.insert(0,0)
+    ans=0
+    for i in range(1,n+1):
+        cnt=0
+        j=i
+        while j!=1:
+            j=p[j]
+            cnt+=1
+        ans=max(ans,cnt)
+    print(ans+1)
+func()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(N - 1):
+        count = 0
+        j = i
+        while True:
+            if P[j] - 1 == i:
+                break
+            count += 1
+            j = P[j] - 1
+        if count > ans:
+            ans = count
+    print(ans + 1)
+
+=======
+Suggestion 9
+
+def problem263_b():
+    n = int(input())
+    p = [0] + list(map(int, input().split()))
+    d = [0] * (n + 1)
+    for i in range(n, 0, -1):
+        d[i] = d[p[i]] + 1
+    print(max(d))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    max = 0
+    for i in range(1, n+1):
+        count = 0
+        j = i
+        while p[j] != -1:
+            j = p[j]
+            count += 1
+        if count > max:
+            max = count
+    print(max+1)

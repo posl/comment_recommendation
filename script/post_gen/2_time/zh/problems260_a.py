@@ -1,37 +1,28 @@
-#问题陈述
-#给你一个长度为3的字符串S。
-#打印一个在S中只出现一次的字符。
-#如果没有这样的字符，则打印-1。
-#
-#限制条件
-#S是一个长度为3的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。  如果存在多个解决方案，你可以打印其中任何一个。
-#
-#输入样本1
-#流行
-#
-#样本输出1
-#o
-#o在pop中只出现一次。
-#
-#样本输入2
-#abc
-#
-#样本输出2
-#a
-#a、b、c在abc中各出现一次，所以你可以打印它们中的任何一个。
-#
-#输入示例3
-#xxx
-#
-#输出样本3
-#-1
-#没有字符在xxx中只出现一次。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def is_in_circle(x, y, circles):
+    for circle in circles:
+        if ((x - circle[0])**2 + (y - circle[1])**2) <= circle[2]**2:
+            return True
+    return False
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def getDistance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5

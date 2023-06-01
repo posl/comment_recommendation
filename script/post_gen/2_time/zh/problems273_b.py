@@ -1,51 +1,64 @@
-#问题说明
-#给定一个非负整数X，按照这个顺序对i=1,2,...,K进行以下操作，并找出结果X。
-#将X四舍五入到最近的10^i。
-#形式上，用Y代替X，即 "10^i的最大倍数，使|Y-X|最小化"。
-#这里有一些例子：
-#将273舍入到最接近的10^2，得到300。
-#将999舍入到最接近的10^3，得到1000。
-#将100舍入到最接近的10^{10}，得到0。
-#将1015舍入到最接近的10^1，得到1020。
-#
-#
-#
-#限制条件
-#X和K是整数。
-#0 ≦ X < 10^{15}
-#1 ≦ K ≦ 15
-#
-#输入
-#输入来自标准输入，其格式如下：
-#X K
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2048 2
-#
-#样本输出1
-#2100
-#通过操作，X变化为2048 -> 2050 -> 2100。
-#
-#输入样本2
-#1 15
-#
-#样本输出2
-#0
-#
-#样本输入3
-#999 3
-#
-#样品输出3
-#1000
-#
-#样本输入4
-#314159265358979 12
-#
-#样本输出4
-#314000000000000
-#X可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return x * f(x-1)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 2
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return x * f(x - 1)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 3
+
+def func(n):
+    if n==0:
+        return 1
+    else:
+        return n*func(n-1)
+n=int(input())
+print(func(n))
+
+=======
+Suggestion 4
+
+def f(x):
+    if x == 0:
+        return 1
+    return x * f(x-1)
+
+=======
+Suggestion 5
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return x * f(x - 1)
+
+=======
+Suggestion 6
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return x * f(x - 1)
+
+print(f(int(input())))

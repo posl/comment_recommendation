@@ -1,38 +1,50 @@
-#问题陈述
-#给出一个整数N，求N在基数K中的位数。
-#
-#注意事项
-#关于基数K表示法的信息，见位置符号 - 维基百科。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^9
-#2 ≦ K ≦ 10
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#输出
-#打印N在基数K中的位数。
-#
-#输入样本 1
-#11 2
-#
-#输出示例 1
-#4
-#在二进制中，11被表示为1011。
-#
-#样本输入2
-#1010101 10
-#
-#样本输出2
-#7
-#
-#样本输入3
-#314159265 3
-#
-#样本输出3
-#18
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_intrinsic_evaluation(n,r):
+    if n >= 10:
+        return r
+    else:
+        return r + 100 * (10 - n)
+
+=======
+Suggestion 2
+
+def get_inner_grade(n, r):
+    if n < 10:
+        return r + 100 * (10 - n)
+    else:
+        return r
+
+=======
+Suggestion 3
+
+def main():
+    n,r = map(int,input().split())
+    if n >= 10:
+        print(r)
+    else:
+        print(r+100*(10-n))
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def get_inner_score(n, r):
+    return r + 100 * max(10 - n, 0)
+
+=======
+Suggestion 6
+
+def getInnerScore(n,r):
+    if n >= 10:
+        return r
+    else:
+        return r + (10-n)*100

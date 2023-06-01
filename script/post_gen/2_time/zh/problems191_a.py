@@ -1,36 +1,139 @@
-#问题陈述
-#高桥和青木正在打棒球。高桥是投手，而青木是击球手。
-#高桥可以投出一个无形的球。当他投出时，球以恒定的速度V[m/s]线性移动，在投出后的T秒和投出后的S秒（含）之间，球变得看不见了。球在看不见的时候一直在移动。
-#如果在球离高桥正好D米的时候，球没有隐形，那么青木就可以击球。否则，他不能击球。
-#青木能打到球吗？
-#
-#限制条件
-#1 ≦ V ≦ 1000
-#1 ≦ t < s ≦ 1000
-#1 ≦ D ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#V T S D
-#
-#輸出
-#如果青木能击球，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 3 5 20
-#
-#样本输出 1
-#Yes
-#在投掷后2秒，球正好离高桥20米。
-#另一方面，球在投掷后3到5秒（包括5秒）之间变得不可见，所以青木可以击中球。
-#
-#输入样本 2
-#10 3 5 30
-#
-#样本输出2
-#No
-#请注意，球在投掷后的T秒和S秒也是看不见的。
-#这里，球在投掷后T秒时离高桥正好有D米，所以球是看不见的，不能被青木击中。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            if i%2 != n//i%2:
+                ans += 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int((2 * n) ** 0.5) + 1):
+        if 2 * n % i == 0:
+            m = 2 * n // i
+            if (i - m + 1) % 2 == 0:
+                if (i - m + 1) // 2 > 0:
+                    ans += 1
+            if (m - i + 1) % 2 == 0:
+                if (m - i + 1) // 2 > 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if N % i == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            if i%2 == N//i%2:
+                ans += 1
+    print(ans*2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            if i % 2 == 1:
+                ans += 1
+            if i != N // i and N // i % 2 == 1:
+                ans += 1
+    print(ans * 2)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            if i % 2 == 1:
+                ans += 2
+            if i*i == n:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # N = int(input())
+    N = 963761198400
+    # N = 12
+    count = 0
+    for i in range(1, N+1):
+        sum = 0
+        for j in range(i, N+1):
+            sum += j
+            if sum == N:
+                count += 1
+                break
+            elif sum > N:
+                break
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        if i * (i + 1) // 2 >= N:
+            break
+        if (N - i * (i + 1) // 2) % i == 0:
+            ans += 1
+    print(ans * 2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    count = 0
+    i = 1
+    while i * (i + 1) // 2 <= N:
+        if (N - i * (i + 1) // 2) % i == 0:
+            count += 1
+        i += 1
+    print(count * 2)
+
+=======
+Suggestion 10
+
+def get_arithmetic_series_num(n):
+    count = 0
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            if i % 2 == 1:
+                count += 1
+            if i != n // i and (n // i) % 2 == 1:
+                count += 1
+    return count

@@ -1,45 +1,115 @@
-#问题说明
-#在下列条件下，找出正好可以用N根火柴棒组成的最大的整数：
-#整数中的每个数字必须是数字A_1, A_2, ..., A_M（1 ≦ A_i ≦ 9）中的一个。
-#用来组成数字1，2，3，4，5，6，7，8，9的火柴棒数量应该分别为2，5，5，4，5，6，3，7，6。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^4
-#1 ≦ M ≦ 9
-#1 ≦ A_i ≦ 9
-#A_i都是不同的。
-#存在一个整数，在条件下正好可以由N个火柴棒组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 A_2 ...A_M
-#
-#输出
-#打印在问题陈述的条件下，用N根火柴棍所能形成的最大整数。
-#
-#输入样本 1
-#20 4
-#3 7 8 4
-#
-#样本输出1
-#777773
-#整数77773可以用3+3+3+3+3+5=20根火柴棒组成，这是在条件下20根火柴棒可以组成的最大整数。
-#
-#输入样本2
-#101 9
-#9 8 7 6 5 4 3 2 1
-#
-#样本输出2
-#71111111111111111111111111111111111111111111111111
-#该输出可能不适合64位的整数类型。
-#
-#样本输入3
-#15 3
-#5 4 6
-#
-#样本输出3
-#654
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    while len(A) > 1:
+        A = [a % min(A) for a in A if a % min(A) > 0]
+    print(min(A))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = a[0]
+    for i in range(1, n):
+        ans = gcd(ans, a[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i+1] % A[i] != 0:
+            A[i+1] %= A[i]
+    print(A[N-1])
+solve()
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        r = a % b
+        a, b = b, r
+    return a
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    import fractions
+    ans = A[0]
+    for i in range(1, N):
+        ans = fractions.gcd(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    import fractions
+    def gcd_list(numbers):
+        return functools.reduce(fractions.gcd, numbers)
+    print(gcd_list(A))
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)

@@ -1,48 +1,196 @@
-#问题陈述
-#给你一个正整数的序列：A=（a_1,a_2,...,a_N）。
-#你可以选择并执行下列操作中的任何一次，可能为零。
-#选择一个整数i，使得1≦i≦N，并且a_i是2的倍数，然后用((a_i)/(2))替换a_i。
-#选择一个整数i，使得1 ≦ i ≦ N并且a_i是3的倍数，用((a_i)/(3))替换a_i。
-#你的目标是使A满足a_1=a_2=...=a_N。
-#找出你为实现目标而需要进行的操作的最小总次数。如果没有办法实现这个目标，就打印-1代替。
-#
-#限制条件
-#2 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 4 3
-#
-#样本输出1
-#3
-#这里有一个方法可以在三次操作中实现目标，这是最小的需要。
-#选择一个整数i=2，使a_i是2的倍数，用（（a_2）/（2））替换a_2。A就变成了（1,2,3）。
-#选择一个整数i=2，使得a_i是2的倍数，用((a_2)/(2))替换a_2。A就变成了(1,1,3)。
-#选择一个整数i=3，使得a_i是3的倍数，用((a_3)/(3))替换a_3。A变成了(1,1,1)。
-#
-#输入样本 2
-#3
-#2 7 6
-#
-#样本输出2
-#-1
-#没有办法实现这个目标。
-#
-#样本输入3
-#6
-#1 1 1 1 1 1
-#
-#样本输出 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getPerm(num, k):
+    num.sort()
+    k -= 1
+    while k > 0:
+        for i in range(len(num) - 2, -1, -1):
+            if num[i] < num[i + 1]:
+                break
+        for j in range(len(num) - 1, -1, -1):
+            if num[j] > num[i]:
+                break
+        num[i], num[j] = num[j], num[i]
+        num[i + 1:] = num[len(num) - 1:i:-1]
+        k -= 1
+    return num
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 3
+
+def find_permutation(n, p):
+    # find the largest i such that p[i] < p[i+1]
+    for i in range(n-2, -1, -1):
+        if p[i] < p[i+1]:
+            break
+    else:
+        # p is the largest permutation
+        return p[::-1]
+    # find the largest j such that p[j] > p[i]
+    for j in range(n-1, i, -1):
+        if p[j] > p[i]:
+            break
+    # swap p[i] and p[j]
+    p[i], p[j] = p[j], p[i]
+    # reverse p[i+1:]
+    return p[:i+1] + p[i+1:][::-1]
+
+n = int(input())
+p = list(map(int, input().split()))
+q = find_permutation(n, p)
+print(' '.join(map(str, q)))
+
+=======
+Suggestion 4
+
+def find_kth_permutation(n, k, permutation):
+    if n == 0:
+        return permutation
+    index, fac = 0, factorial(n - 1)
+    while k > fac:
+        index += 1
+        k -= fac
+    permutation.append(index + 1)
+    return find_kth_permutation(n - 1, k, permutation)
+
+=======
+Suggestion 5
+
+def f(n,p):
+    q = [0]*n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    return q
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    q = [0] * n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(' '.join(map(str, q)))
+
+=======
+Suggestion 7
+
+def get_min_permutation(n, p):
+    q = []
+    for i in range(n):
+        q.append(p[i])
+    for i in range(n):
+        for j in range(n-1-i):
+            if q[j] > q[j+1]:
+                tmp = q[j]
+                q[j] = q[j+1]
+                q[j+1] = tmp
+    return q
+
+n = int(input())
+p = list(map(int, input().split()))
+q = get_min_permutation(n, p)
+for i in range(n):
+    if i == n-1:
+        print(q[i])
+    else:
+        print(q[i], end=' ')
+
+=======
+Suggestion 8
+
+def get_next_permutation(perm):
+    n = len(perm)
+    # 从后向前寻找第一个顺序对(i, i+1)，满足perm[i] < perm[i+1]
+    i = n - 2
+    while i >= 0 and perm[i] >= perm[i + 1]:
+        i -= 1
+    if i == -1:
+        return None
+    # 从后向前寻找第一个满足perm[i] < perm[j]的j
+    j = n - 1
+    while perm[i] >= perm[j]:
+        j -= 1
+    # 交换perm[i]和perm[j]
+    perm[i], perm[j] = perm[j], perm[i]
+    # 将perm[i+1:]翻转
+    perm[i + 1:] = perm[i + 1:][::-1]
+    return perm
+
+=======
+Suggestion 9
+
+def get_next_permutation(a):
+    n = len(a)
+    i = n - 1
+    while i > 0 and a[i - 1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+
+    j = n - 1
+    while a[j] <= a[i - 1]:
+        j -= 1
+
+    a[i - 1], a[j] = a[j], a[i - 1]
+
+    j = n - 1
+    while i < j:
+        a[i], a[j] = a[j], a[i]
+        i += 1
+        j -= 1
+
+    return True
+
+
+n = int(input())
+p = list(map(int, input().split()))
+
+p1 = p[:]
+p2 = p[:]
+get_next_permutation(p1)
+get_next_permutation(p2)
+
+for i in range(n):
+    if p1[i] != p2[i]:
+        print(*p1)
+        exit()
+
+print(-1)
+
+=======
+Suggestion 10
+
+def change(A):
+    for i in range(len(A)-1,0,-1):
+        if A[i-1]<A[i]:
+            for j in range(len(A)-1,0,-1):
+                if A[i-1]<A[j]:
+                    A[i-1],A[j]=A[j],A[i-1]
+                    A[i:]=A[len(A)-1:i-1:-1]
+                    return A
+    return A
+
+N=int(input())
+P=list(map(int,input().split()))
+K=0
+for i in range(1,N+1):
+    K+=i*(N-1)**(i-1)
+for i in range(K-1):
+    P=change(P)
+print(" ".join(map(str,P)))

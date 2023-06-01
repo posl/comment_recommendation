@@ -1,57 +1,193 @@
-#问题陈述
-#当且仅当s_i ≦ s_{i+1}对每个i(1 ≦ i ≦ n - 1)成立时，n个数的序列S = (s_1, s_2, ..., s_n)，被称为非递减。
-#给出的是各为N个整数的非递减序列：A = (a_1, a_2, ..., a_N) 和 B = (b_1, b_2, ..., b_N)。
-#考虑一个非递减的N个整数序列，C = (c_1, c_2, ..., c_N)，它满足以下条件：
-#a_i ≦ c_i ≦ b_i，对于每一个i（1 ≦ i ≦ N）。
-#找出能成为C的序列的数量，模数为998244353。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#0 ≦ a_i ≦ b_i ≦ 3000 (1 ≦ i ≦ N)
-#序列A和B是不递减的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#b_1 b_2 ... b_N
-#
-#输出
-#打印可以是C的序列的数量，模数为998244353。
-#
-#输入样本 1
-#2
-#1 1
-#2 3
-#
-#样本输出 1
-#5
-#有五个序列可以是C，如下所示。
-#(1, 1)
-#(1, 2)
-#(1, 3)
-#(2, 2)
-#(2, 3)
-#请注意，（2，1）不满足条件，因为它不是非递减的。
-#
-#样本输入 2
-#3
-#2 2 2
-#2 2 2
-#
-#样本输出 2
-#1
-#有一个序列可以是C，如下所示。
-#(2, 2, 2)
-#
-#样本输入3
-#10
-#1 2 3 4 5 6 7 8 9 10
-#1 4 9 16 25 36 49 64 81 100
-#
-#样本输出3
-#978222082
-#一定要找到998244353的模数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def compare(a,b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 2
+
+def get_input():
+    N, M = map(int, input().split())
+    A = [list(input()) for i in range(2*N)]
+    return N, M, A
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = [input() for _ in range(2*n)]
+    rank = [[i+1,0] for i in range(2*n)]
+    #print(rank)
+    for i in range(m):
+        for j in range(n):
+            p1,p2 = rank[2*j][0]-1,rank[2*j+1][0]-1
+            if a[p1][i] == a[p2][i]:
+                continue
+            elif a[p1][i] == 'G' and a[p2][i] == 'C':
+                rank[2*j][1] -= 1
+            elif a[p1][i] == 'G' and a[p2][i] == 'P':
+                rank[2*j+1][1] -= 1
+            elif a[p1][i] == 'C' and a[p2][i] == 'G':
+                rank[2*j+1][1] -= 1
+            elif a[p1][i] == 'C' and a[p2][i] == 'P':
+                rank[2*j][1] -= 1
+            elif a[p1][i] == 'P' and a[p2][i] == 'G':
+                rank[2*j][1] -= 1
+            elif a[p1][i] == 'P' and a[p2][i] == 'C':
+                rank[2*j+1][1] -= 1
+        rank.sort(key=lambda x:(x[1],-x[0]))
+        #print(rank)
+    for i in range(2*n):
+        print(rank[i][0])
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    A = [input() for _ in range(2 * N)]
+    rank = [[i + 1, 0] for i in range(2 * N)]
+    for i in range(M):
+        for j in range(N):
+            id1 = rank[2 * j][0] - 1
+            id2 = rank[2 * j + 1][0] - 1
+            if A[id1][i] == A[id2][i]:
+                continue
+            elif A[id1][i] == 'G' and A[id2][i] == 'C':
+                rank[2 * j][1] -= 1
+            elif A[id1][i] == 'C' and A[id2][i] == 'P':
+                rank[2 * j][1] -= 1
+            elif A[id1][i] == 'P' and A[id2][i] == 'G':
+                rank[2 * j][1] -= 1
+            else:
+                rank[2 * j + 1][1] -= 1
+        rank.sort(key=lambda x: (x[1], x[0]))
+    for i in range(2 * N):
+        print(rank[i][0])
+
+
+solve()
+
+=======
+Suggestion 5
+
+def get_winner(a, b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 6
+
+def solve():
+    N, M = map(int, input().split())
+    A = [input() for _ in range(2*N)]
+    rank = [[i+1, 0, 0] for i in range(2*N)]
+    for m in range(M):
+        for i in range(N):
+            a1 = A[rank[2*i][0]-1][m]
+            a2 = A[rank[2*i+1][0]-1][m]
+            if a1 == a2:
+                continue
+            if a1 == 'G':
+                if a2 == 'C':
+                    rank[2*i][1] += 1
+                else:
+                    rank[2*i+1][1] += 1
+            elif a1 == 'C':
+                if a2 == 'G':
+                    rank[2*i+1][1] += 1
+                else:
+                    rank[2*i][1] += 1
+            else:
+                if a2 == 'G':
+                    rank[2*i][1] += 1
+                else:
+                    rank[2*i+1][1] += 1
+        rank.sort(key=lambda x: (-x[1], x[2], x[0]))
+        for i in range(2*N):
+            rank[i][2] = i
+    for i in range(2*N):
+        print(rank[i][0])
+
+=======
+Suggestion 7
+
+def get_input():
+    n,m = map(int,input().split())
+    a = [list(input()) for _ in range(2*n)]
+    return n,m,a
+
+=======
+Suggestion 8
+
+def f(i):
+    if i == 'G':
+        return 0
+    elif i == 'C':
+        return 1
+    elif i == 'P':
+        return 2
+    else:
+        print("error")
+
+n, m = map(int, input().split())
+a = [0] * (2 * n)
+for i in range(2 * n):
+    a[i] = list(map(f, input()))
+rank = [0] * (2 * n)
+for i in range(2 * n):
+    rank[i] = [0, i]
+for i in range(m):
+    for j in range(n):
+        if a[rank[2 * j][1]][i] == a[rank[2 * j + 1][1]][i]:
+            continue
+        elif (a[rank[2 * j][1]][i] + 1) % 3 == a[rank[2 * j + 1][1]][i]:
+            rank[2 * j][0] -= 1
+        else:
+            rank[2 * j + 1][0] -= 1
+    rank.sort()
+for i in range(2 * n):
+    print(rank[i][1] + 1)
+
+=======
+Suggestion 9
+
+def isWin(player1, player2):
+    if player1 == 'G' and player2 == 'C':
+        return True
+    elif player1 == 'C' and player2 == 'P':
+        return True
+    elif player1 == 'P' and player2 == 'G':
+        return True
+    else:
+        return False
+
+=======
+Suggestion 10
+
+def get_ranking(n, m, a):
+    ranking = [i for i in range(1, 2 * n + 1)]
+    for i in range(m):
+        ranking = get_ranking_once(n, ranking, a[i])
+    return ranking

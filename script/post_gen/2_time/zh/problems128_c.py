@@ -1,60 +1,148 @@
-#问题陈述
-#我们有N个具有 "开 "和 "关 "状态的开关，以及M个灯泡。开关的编号是1到N，灯泡的编号是1到M。
-#灯泡i与k_i个开关相连：开关s_{i1}，s_{i2}，...，和s_{ik_i}。当这些开关中 "开 "的开关数与p_i的模数一致时，它就被点亮。
-#有多少种开关的 "开 "和 "关 "状态的组合可以点亮所有的灯泡？
-#
-#限制条件
-#1 ≦ N, M ≦ 10
-#1 ≦ k_i ≦ N
-#1 ≦ s_{ij} ≦ N
-#s_{ia}≠ s_{ib} (a ≠ b)
-#p_i为0或1。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#k_1 s_{11} s_{12}...s_{1k_1}
-#:
-#k_M s_{M1} s_{M2} ... s_{Mk_M} 。
-#p_1 p_2 ... p_M
-#
-#输出
-#打印能点亮所有灯泡的开关的 "开 "和 "关 "状态的组合数。
-#
-#输入样本 1
-#2 2
-#2 1 2
-#1 2
-#0 1
-#
-#样本输出1
-#1
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有奇数个 "打开 "时，灯泡2被点亮：开关2。
-#开关1、开关2）的状态有四种可能的组合：(开，开），（开，关），（关，开）和（关，关）。其中，只有（开，开）能点亮所有的灯泡，所以我们应该打印1。
-#
-#输入样本 2
-#2 3
-#2 1 2
-#1 1
-#1 2
-#0 0 1
-#
-#样本输出2
-#0
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有偶数个 "打开 "时，灯泡2被点亮：开关1。
-#当下列开关中有奇数个 "打开 "时，灯泡3会被点亮：开关2。
-#开关1必须 "关闭 "才能点亮灯泡2，开关2必须 "打开 "才能点亮灯泡3，但这样灯泡1就不会被点亮。因此，不存在能点亮所有灯泡的开关状态组合，所以我们应该打印0。
-#
-#输入样本 3
-#5 2
-#3 1 2 5
-#2 2 3
-#1 0
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    data = []
+    for i in range(n):
+        data.append(input().split(' '))
+    return n, data
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s, p = input().split()
+        p = int(p)
+        if s in d:
+            d[s].append(p)
+        else:
+            d[s] = [p]
+    for k in sorted(d):
+        for v in sorted(d[k], reverse=True):
+            print(d[k].index(v)+1)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    rest = []
+    for i in range(n):
+        s, p = input().split()
+        rest.append((s, 100 - int(p), i + 1))
+    rest.sort()
+    rest.sort(key=lambda x: x[1])
+    for i in rest:
+        print(i[2])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    #city = []
+    #score = []
+    #for i in range(n):
+    #    c,s = input().split()
+    #    city.append(c)
+    #    score.append(s)
+    #city_score = zip(city,score)
+    #city_score = sorted(city_score, key=lambda x: x[0])
+    #city_score = sorted(city_score, key=lambda x: x[1], reverse=True)
+    #for i in range(n):
+    #    print(city_score[i][0])
+    city_score = []
+    for i in range(n):
+        c,s = input().split()
+        city_score.append((c,s))
+    city_score.sort(key=lambda x: x[0])
+    city_score.sort(key=lambda x: x[1], reverse=True)
+    for i in range(n):
+        print(city_score[i][0])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    list1 = []
+    for i in range(n):
+        s, p = input().split()
+        list1.append((s, int(p)))
+    list1.sort(key=lambda x: x[1], reverse=True)
+    list1.sort(key=lambda x: x[0])
+    for i in list1:
+        print(list1.index(i) + 1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        city, score = input().split()
+        restaurants.append((city, int(score), i + 1))
+    restaurants.sort(key=lambda x: x[1], reverse=True)
+    restaurants.sort(key=lambda x: x[0])
+    for restaurant in restaurants:
+        print(restaurant[2])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    restaurants = []
+    for i in range(N):
+        s, p = input().split()
+        restaurants.append((s, int(p), i+1))
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurant[2])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    lst = []
+    for i in range(n):
+        s, p = input().split()
+        lst.append((s, int(p), i + 1))
+    lst.sort(key=lambda x: (x[0], -x[1]))
+    for item in lst:
+        print(item[2])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    res = []
+    for i in range(n):
+        s, p = input().split()
+        res.append([s, int(p), i+1])
+    res.sort(key=lambda x: (x[0], -x[1]))
+    for i in res:
+        print(i[2])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        s, p = input().split()
+        restaurants.append((s, int(p), i))
+    restaurants.sort(key=lambda x: x[1], reverse=True)
+    restaurants.sort(key=lambda x: x[0])
+    for i in range(n):
+        print(restaurants[i][2] + 1)

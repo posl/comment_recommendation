@@ -1,34 +1,141 @@
-#问题陈述
-#2^n > n^2是否成立？
-#
-#限制条件
-#n是1到10^9（包括）之间的整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n
-#
-#輸出
-#如果 2^n > n^2，打印 "是"；否则，打印 "否"。
-#
-#输入样本 1
-#5
-#
-#样本输出1
-#是
-#因为2^5=32，5^2=25，我们有2^n>n^2，所以应该打印是。
-#
-#输入样本 2
-#2
-#
-#样本输出 2
-#否
-#对于 n=2，我们有 2^n=n^2=2^2，所以 2^n > n^2 不成立。因此，应该打印否。
-#
-#输入样本 3
-#623947744
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem237_d():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == "L":
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(" ".join(map(str, A)))
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = input()
+    ans = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            ans.insert(0, i+1)
+        else:
+            ans.append(i+1)
+    print(*ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(' '.join(map(str, A)))
+
+=======
+Suggestion 4
+
+def insert_left(target, index):
+    target.insert(index-1, index)
+    return target
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(i, i+1)
+        else:
+            A.insert(i+1, i+1)
+    for i in range(N):
+        print(A[i], end=' ')
+    print('')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n-1):
+        if s[i] == 'L':
+            a.insert(0, i+2)
+        else:
+            a.append(i+2)
+    print(" ".join(map(str, a)))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0,i+1)
+        else:
+            a.append(i+1)
+    for i in range(n+1):
+        print(a[i],end=' ')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(1,N+1):
+        if S[i-1] == 'L':
+            A.insert(0,i)
+        else:
+            A.append(i)
+    for i in A:
+        print(i,end=' ')
+    print()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    ans = [0]
+    for i in range(n):
+        if s[i] == "R":
+            ans.append(i+1)
+        else:
+            ans.insert(0,i+1)
+    print(" ".join(map(str,ans)))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    L = []
+    R = []
+    for i in range(N):
+        if S[i] == 'L':
+            L.append(i+1)
+        else:
+            R.append(i+1)
+    L.reverse()
+    print(' '.join(map(str, R+L)))

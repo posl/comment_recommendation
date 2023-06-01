@@ -1,36 +1,57 @@
-#问题陈述
-#当一个字符串的奇数位置（从头开始的第1个、第3个、第5个...）的字符都是小写英文字母，而其偶数位置（从头开始的第2个、第4个、第6个...）的字符都是大写英文字母，我们称之为难读。
-#判断一个字符串S是否难读。
-#
-#约束条件
-#S由大写和小写的英文字母组成。
-#S的长度在1到1000之间（包括1000）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S是难读的，打印Yes；否则，打印No。
-#
-#样本输入1
-#dIfFiCuLt
-#
-#样本输出1
-#Yes
-#奇数位置的字符都是小写的，偶数位置的字符都是大写的，所以很难阅读。
-#
-#输入样本2
-#eASY
-#
-#样本输出2
-#No
-#第3个字符不是小写，所以不难读。
-#
-#输入样本3
-#a
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    x = int(input())
+    print(100 - x % 100)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    print(100 - x % 100)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    print(100 - x%100)
+    return
+
+=======
+Suggestion 4
+
+def get_next_prize_coin_num(coin_num):
+    if coin_num % 100 == 0:
+        return 100
+    else:
+        return 100 - (coin_num % 100)
+
+=======
+Suggestion 5
+
+def get_next_reward_coin_num(current_coin_num):
+    return (100 - current_coin_num % 100) % 100
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - x % 100)
+
+=======
+Suggestion 7
+
+def problem192_a():
+    x = int(input())
+    print(100 - x % 100)
+
+problem192_a()

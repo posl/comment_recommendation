@@ -1,44 +1,178 @@
-#问题陈述
-#一个公园AtCoder的土地是一个N×N的网格，东西向的行和南北向的列。从北面第i行和西面第j列的方格的高度给定为A_{i,j}。
-#经理Takahashi决定在这个公园里建造一个占K×K方格的方形池塘。
-#为此，他想在公园内选择一个完全由K×K个方块组成的方块，其方块高度的中位数是最低的。找出这个区域内方格高度的中位数。
-#这里，K×K区的方格高度的中位数是该区K^2个方格中最高的(⌊((K^2)/(2))⌋+1)个方格的高度，其中⌊x⌋为不超过x的最大整数。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#A_{1,1} A_{1,2} ...A_{1,N}
-#A_{2,1} A_{2,2} ...A_{2,N}
-#:
-#A_{N,1} A_{N,2} ...A_{N,N}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#样本输出1
-#4
-#让(i,j)表示从北边第i行和从西边第j列的方块。
-#对于池塘所占的2×2区域，我们有四个候选人：{(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)}.
-#当K=2时，由于⌊((2^2)/(2))⌋+1=3，一个部分的方格高度的中位数是最高的第3个方格的高度，对于上面的候选者，分别是5、7、5、4。我们应该打印其中最低的那个：4.
-#
-#输入样本 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#样本输出2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solution():
+    n, k = map(int, input().split())
+    ab = [tuple(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[0])
+
+    for a, b in ab:
+        if a > k:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 2
+
+def main():
+    N,K = map(int,input().split())
+    AB = [map(int,input().split()) for _ in range(N)]
+    A,B = [list(i) for i in zip(*AB)]
+    A.append(10**100)
+    B.append(0)
+    from bisect import bisect_left
+    index = bisect_left(A,K)
+    print(B[index-1])
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    # 按照村庄的位置排序
+    ab.sort(key=lambda x: x[0])
+    # 遍历村庄
+    i = 0
+    while k > 0 and i < n:
+        # k - ab[i][0]是从当前村庄到下一个村庄所需的日元数
+        # k - ab[i][0] < 0意味着无法到达下一个村庄
+        if k - ab[i][0] < 0:
+            break
+        # 否则可以到达下一个村庄
+        k += ab[i][1] - ab[i][0]
+        i += 1
+    # 输出结果
+    print(k + ab[i - 1][0] if i > 0 else k)
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    ab = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        ab.append([a,b])
+    ab.sort(key=lambda x:x[0])
+    now = 0
+    for i in range(n):
+        if ab[i][0] > now + k:
+            break
+        k += ab[i][1]
+        now = ab[i][0]
+    print(now+k)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        friends.append((a, b))
+    friends.sort()
+    friends.append((10**100, 0))
+    money = k
+    pos = 0
+    for i in range(n):
+        money += friends[i][1]
+        if money >= friends[i+1][0]:
+            money -= friends[i+1][0]
+            pos = friends[i+1][0]
+        else:
+            pos += money
+            break
+    print(pos)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        friends.append(list(map(int, input().split())))
+
+    friends = sorted(friends, key=lambda x: x[0])
+    # print(friends)
+    money = k
+    village = 0
+    for i in range(n):
+        if money >= friends[i][0] - village:
+            money += friends[i][1]
+            village = friends[i][0]
+        else:
+            break
+    print(village + money)
+
+=======
+Suggestion 7
+
+def solve():
+    n, k = map(int, input().split())
+    AB = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        AB.append((a, b))
+    AB.sort()
+    now = 0
+    for a, b in AB:
+        if a - now > k:
+            break
+        k += b - (a - now)
+        now = a
+    print(now + k)
+
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    for a, b in ab:
+        if k < a:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+
+    money = K
+    for a, b in AB:
+        if a <= money:
+            money += b
+        else:
+            break
+    print(money)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    money = 0
+    for i in range(n):
+        a,b = map(int,input().split())
+        if k >= a - money:
+            k = k - (a - money) + b
+            money = a
+        else:
+            print(money + k)
+            exit()
+    print(money + k)

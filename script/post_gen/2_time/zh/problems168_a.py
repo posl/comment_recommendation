@@ -1,38 +1,181 @@
-#问题陈述
-#猫咪Snuke想玩一种叫做ÅtCoder的日本流行游戏，所以Iroha决定教它日语。
-#在日语中数铅笔时，计数词 "本 "跟在数字后面。这个词的发音根据数字的不同而不同。具体来说，对于不超过999的正整数N，"本 "在 "N本 "这句话中的读音如下：
-#当N的1位数字是2、4、5、7或9时，读作hon；
-#当N的首位数字为0、1、6或8时，pon；
-#当N的首位数字为3时，为bon。
-#给出N，打印 "N本 "中 "本 "的发音。
-#
-#限制条件
-#N是一个不超过999的正整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#16
-#
-#样本输出1
-#pon
-#16的1位数字是6，所以 "16本 "的 "本 "读作pon。
-#
-#输入样本2
-#2
-#
-#输出样本2
-#hon
-#
-#样本输入3
-#183
-#
-#样本输出3
-#Bon
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K, A)
+    #print(A)
+    #print(A[0], A[A[0]-1])
+    i = 0
+    k = 0
+    while True:
+        i = A[i] - 1
+        k += 1
+        if i == 0:
+            break
+        if k == K:
+            break
+    print(i+1)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    visited = [False] * N
+    visited[0] = True
+    i = 0
+    for k in range(K):
+        i = A[i] - 1
+        if visited[i]:
+            break
+        visited[i] = True
+    if k == K - 1:
+        print(i + 1)
+    else:
+        K -= k
+        K %= k
+        for i in range(N):
+            if visited[i]:
+                K -= 1
+                if K == 0:
+                    print(i + 1)
+                    break
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    i = 0
+    count = 0
+    while True:
+        i = A[i]-1
+        count += 1
+        if i == 0:
+            break
+    K = K % count
+    i = 0
+    for j in range(K):
+        i = A[i]-1
+    print(i+1)
+
+=======
+Suggestion 5
+
+def problem167_d():
+    n, k = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [0] * n
+    B[0] = 1
+    for i in range(n):
+        if B[A[i]-1] == 0:
+            B[A[i]-1] = 1
+        else:
+            break
+    k = k % i
+    for j in range(k):
+        A = [A[a]-1 for a in range(n)]
+    print(A[0]+1)
+
+=======
+Suggestion 6
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    visited = [False] * n
+    visited[0] = True
+    current = 0
+    for i in range(k):
+        current = a[current] - 1
+        if visited[current]:
+            break
+        visited[current] = True
+    if i == k - 1:
+        print(current + 1)
+    else:
+        print(a[current])
+
+=======
+Suggestion 7
+
+def f(n, k, a):
+    if k <= n:
+        return a[k-1]
+    else:
+        k = k % n
+        if k == 0:
+            return a[n-1]
+        else:
+            return a[k-1]
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    d = [0] * n
+    d[0] = 1
+    i = 0
+    while True:
+        i = a[i] - 1
+        d[i] += 1
+        if d[i] == 2:
+            break
+    for i in range(n):
+        if d[i] == 2:
+            break
+    k %= d[i] - 1
+    for _ in range(k):
+        i = a[i] - 1
+    print(i + 1)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    i = 0
+    while (K > 0):
+        K -= 1
+        i = A[i] - 1
+        if (i == 0):
+            print(1)
+            return
+    print(i + 1)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    visited = [False]*n
+    visited[0] = True
+    count = 1
+    next = a[0]-1
+    while not visited[next]:
+        visited[next] = True
+        next = a[next]-1
+        count += 1
+    k = k%count
+    next = 0
+    while k>0:
+        next = a[next]-1
+        k -= 1
+    print(next+1)

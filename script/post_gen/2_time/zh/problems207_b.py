@@ -1,35 +1,74 @@
-#问题陈述
-#有一个装有A个青色球的容器。高桥将做以下操作，只要他愿意，次数不限（可能是零次）：
-#在容器中加入B个青色球和C个红色球。
-#高桥的目标是达到容器中青色球的数量最多为容器中红色球数量的D倍。
-#判断该目标是否可以实现。如果可以实现，找出实现该目标所需的最少操作数。
-#
-#限制条件
-#1 ≦ a,b,c,d ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#輸出
-#如果高桥的目标是可以实现的，则打印实现该目标所需的最少操作数。否则，打印-1。
-#
-#输入样本 1
-#5 2 3 2
-#
-#输出样本 1
-#2
-#在第一次操作之前，容器里有5个青色的球和0个红色的球。由于5大于0乘以D=2，高桥的目标还没有实现。
-#就在第一次操作之后，容器里有7个青色的球和3个红色的球。由于7大于3乘以2，目标仍未实现。
-#就在第二次操作之后，容器里有9个青色的球和6个红色的球。由于9不大于6乘以2，所以目标实现了。
-#因此，答案是2。
-#
-#输入样本 2
-#6 9 2 3
-#
-#样本输出 2
-#-1
-#无论高桥重复操作多少次，他的目标都无法实现。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def max_card_sum(a, b, c):
+    return max(a+b, a+c, b+c)
+
+print(max_card_sum(3, 4, 5))
+print(max_card_sum(6, 6, 6))
+print(max_card_sum(99, 99, 98))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a,b,c = map(int,input().split())
+    # 判断
+    if a>b and a>c:
+        print(a+b)
+    elif b>a and b>c:
+        print(b+c)
+    else:
+        print(c+a)
+
+=======
+Suggestion 3
+
+def main():
+    # a,b,c = map(int,input().split())
+    # print(a+b+c-max(a,b,c))
+    a = list(map(int,input().split()))
+    print(sum(a)-max(a))
+
+=======
+Suggestion 4
+
+def max_two_num(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int, input().split())
+    print(a+b+c-max(a,b,c))
+
+=======
+Suggestion 6
+
+def main():
+    try:
+        a, b, c = map(int, input().split())
+        if a < 1 or a > 100:
+            raise Exception('a is not in the range of 1 to 100')
+        if b < 1 or b > 100:
+            raise Exception('b is not in the range of 1 to 100')
+        if c < 1 or c > 100:
+            raise Exception('c is not in the range of 1 to 100')
+    except Exception as e:
+        print(e)
+    else:
+        print(max(a+b, b+c, a+c))
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b, b+c, c+a))

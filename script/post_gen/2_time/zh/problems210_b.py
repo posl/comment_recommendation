@@ -1,42 +1,62 @@
-#问题陈述
-#我们有一副N张牌。
-#每张牌都有好坏之分。
-#高桥和青木将用这副牌进行对弈。
-#在游戏中，玩家轮流抽出最上面的牌并吃掉它。
-#谁先吃到一张坏牌，谁就输了游戏。(这里，保证牌组中至少有一张坏牌）。
-#给你一个由0和1组成的字符串S，对于每个i=1，2，...，N、
-#如果S的第i个字符是0，这意味着牌组顶部的第i张牌是好牌；
-#如果S的第i个字符是1，就意味着这副牌上面的第i张牌是坏的。
-#当高桥在游戏中先出牌时，哪一方会输？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#N是一个整数。
-#S是一个长度为N的字符串，由0和1组成。
-#S至少包含一个1的出现。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S
-#
-#輸出
-#打印当高桥在游戏中先走时将输掉的棋手的名字：高桥或青木。
-#
-#输入样本1
-#5
-#00101
-#
-#样本输出1
-#高桥
-#首先，高桥将吃一张好牌。接下来，青木会吃一张好牌。然后，高桥将吃一张坏牌。
-#因此，高桥将是第一个吃坏牌的人，所以我们应该打印高桥。
-#
-#输入样本 2
-#3
-#010
-#
-#样本输出2
-#青木
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def buy_cabbage(n,a,x,y):
+    if n<=a:
+        return n*x
+    else:
+        return a*x+(n-a)*y
+
+=======
+Suggestion 2
+
+def problems210_a():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)
+
+=======
+Suggestion 3
+
+def main():
+    N, A, X, Y = map(int, input().split())
+    if N <= A:
+        print(N * X)
+    else:
+        print(A * X + (N - A) * Y)
+
+=======
+Suggestion 4
+
+def main():
+    n, a, x, y = map(int, input().split())
+    if n > a:
+        print(a*x+(n-a)*y)
+    else:
+        print(n*x)
+
+=======
+Suggestion 5
+
+def main():
+    n, a, x, y = map(int, input().split())
+    if n <= a:
+        print(n*x)
+    else:
+        print(a*x + (n-a)*y)
+
+=======
+Suggestion 6
+
+def main():
+    n, a, x, y = map(int, input().split())
+    ans = 0
+    if n > a:
+        ans = a * x + (n - a) * y
+    else:
+        ans = n * x
+    print(ans)

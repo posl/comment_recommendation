@@ -1,42 +1,128 @@
-#问题陈述
-#给定一个整数N，解决以下问题。
-#设f(x)=(最多x的正整数，其位数与x相同)。
-#求f(1)+f(2)+...+f(N)的modulo 998244353。
-#
-#限制条件
-#N是一个整数。
-#1 ≦ N < 10^{18}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#16
-#
-#样本输出1
-#73
-#对于1到9之间的正整数x，最多只有1,2,...,x的正整数与x的位数相同。
-#因此，我们有f(1)=1,f(2)=2,...,f(9)=9。
-#对于10到16之间的正整数x，与x位数相同的正整数最多只有10,11,...,x。
-#因此，我们有f(10)=1,f(11)=2,...,f(16)=7。
-#
-#最后的答案是73。
-#
-#输入样本2
-#238
-#
-#样本输出2
-#13870
-#
-#样本输入3
-#999999999999999999
-#
-#样本输出3
-#762062362
-#一定要找到998244353的模数之和。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        a[i] = a[i] % 360
+    a.sort()
+    for i in range(n):
+        a.append(a[i] + 360)
+    for i in range(n):
+        ans = max(ans, a[i+n-1] - a[i])
+    print(360 - ans)
+
+=======
+Suggestion 2
+
+def problem238b():
+    pass
+
+=======
+Suggestion 3
+
+def max_angle(N, A):
+    max_angle = 0
+    for i in range(N):
+        angle = 0
+        for j in range(N):
+            angle += A[(i+j)%N]
+            if max_angle < angle:
+                max_angle = angle
+    return max_angle
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(A[0]+360)
+    max = 0
+    for i in range(N):
+        if max < A[i+1] - A[i]:
+            max = A[i+1] - A[i]
+    print(360 - max)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        now = 0
+        for j in range(n):
+            now += a[(i + j) % n]
+            result = max(result, now)
+    print(360 - result)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0]+360)
+    ans = 0
+    for i in range(n):
+        ans = max(ans, a[i+1]-a[i])
+    print(360-ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    A.append(A[0]+360)
+    max = 0
+    for i in range(N):
+        if max < A[i+1]-A[i]:
+            max = A[i+1]-A[i]
+    print(360-max)
+
+=======
+Suggestion 8
+
+def main():
+    #读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    #计算最大值
+    max = 0
+    for i in range(n):
+        #计算角度
+        angle = 360.0 / 2.0 - a[i]
+        #如果角度大于180，就用360减去角度
+        if(angle > 180):
+            angle = 360 - angle
+        #如果角度大于max，就更新max
+        if(angle > max):
+            max = angle
+    #打印结果
+    print(int(max))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    max_angle = 0
+    for i in range(N):
+        angle = 0
+        for j in range(N):
+            angle += A[(j + i) % N]
+            max_angle = max(max_angle, min(angle, 360 - angle))
+
+    print(360 - max_angle)

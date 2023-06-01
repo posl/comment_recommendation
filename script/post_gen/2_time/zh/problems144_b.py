@@ -1,36 +1,88 @@
-#问题陈述
-#在学习了乘法表之后，高桥可以将1到9（包括9）之间的两个整数相乘。
-#给出一个整数N，判断N是否可以表示为1到9之间两个整数的乘积。如果可以，打印 "Yes"；如果不能，打印 "No"。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果N可以表示为1到9（包括9）之间的两个整数的乘积，打印Yes；如果不能，打印No。
-#
-#输入样本 1
-#10
-#
-#输出示例 1
-#Yes
-#10可以表示为，例如，2×5。
-#
-#样本输入2
-#50
-#
-#样本输出2
-#No
-#50不能被表示为1和9之间的两个整数的乘积。
-#
-#样本输入3
-#81
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
+        print(a*b)
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if a > 9 or b > 9:
+        print(-1)
+    else:
+        print(a*b)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if a < 1 or a > 20 or b < 1 or b > 20:
+        print("输入的所有数值都是整数，而且1 ≦ A ≦ 20, 1 ≦ B ≦ 20")
+        return
+    print(a * b)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+
+    # 判断A, B是否在1到20之间
+    if 1 <= A <= 20 and 1 <= B <= 20:
+        # 计算A*B
+        print(A * B)
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a > 9 or b > 9:
+        print(-1)
+    else:
+        print(a * b)
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    a, b = map(int, sys.stdin.readline().split())
+    if a >= 1 and a <= 20 and b >= 1 and b <= 20:
+        print(a * b)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    A, B = map(int, input().split())
+    if 1 <= A <= 20 and 1 <= B <= 20:
+        print(A * B)
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if 1 <= a <= 20 and 1 <= b <= 20:
+        print(a * b)
+    else:
+        print(-1)

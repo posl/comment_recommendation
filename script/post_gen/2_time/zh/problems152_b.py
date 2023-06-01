@@ -1,29 +1,76 @@
-#问题陈述
-#给出的是1位正整数a和b。考虑这两个字符串：数字a的b副本的连接，以及数字b的a副本的连接。
-#
-#限制条件
-#1 ≦ a ≦ 9
-#1 ≦ b ≦ 9
-#a和b是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b
-#
-#输出
-#打印两个字符串中按字母顺序排列的较小的字符串。(如果这两个字符串相等，则打印其中一个）。
-#
-#输入样本 1
-#4 3
-#
-#输出样本 1
-#3333
-#我们有两个字符串444和3333。在它们之间，3333是词汇学上较小的一个。
-#
-#输入样本2
-#7 7
-#
-#样本输出2
-#7777777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int, input().split())
+    if N == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    if n == m:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve():
+    n,m = map(int,input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    if n == m:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    if N == M:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    print("Yes" if n == m else "No")
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def get_input():
+    n, m = map(int, input().split())
+    return n, m

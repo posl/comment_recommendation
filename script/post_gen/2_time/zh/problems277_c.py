@@ -1,58 +1,166 @@
-#问题陈述
-#有一座10^9层的大楼，有N个梯子。
-#在第1层（最低层）的高桥想通过梯子（可能没有）到达最高层。
-#梯子的编号从1到N，梯子i连接着A_i-th和B_i-th楼层。人们可以使用梯子i从第A_i层移动到第B_i层，或者反过来，但不能在其他楼层之间移动。
-#高桥可以在同一楼层内自由移动，但不使用梯子就不能在楼层之间移动。
-#高桥能到达的最高楼层是什么？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#A_i ≠ B_i
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#...
-#A_N B_N
-#
-#输出
-#打印一个代表答案的整数。
-#
-#输入样本 1
-#4
-#1 4
-#4 3
-#4 10
-#8 3
-#
-#样本输出1
-#10
-#他可以通过梯子1到达4楼，再通过梯子3到达10楼。
-#
-#样本输入2
-#6
-#1 3
-#1 5
-#1 12
-#3 5
-#3 12
-#5 12
-#
-#样本输出2
-#12
-#
-#样本输入3
-#3
-#500000000 600000000
-#600000000 700000000
-#700000000 800000000
-#
-#样本输出3
-#1
-#他可能无法在楼层之间移动。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    cards.sort()
+    for i in range(n-1):
+        if cards[i] == cards[i+1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def check_card(s):
+    if len(s) != 2:
+        return False
+    if s[0] not in "HDCS":
+        return False
+    if s[1] not in "A23456789TJQK":
+        return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+
+    n = int(input())
+    card = []
+    for i in range(n):
+        card.append(input())
+
+    if len(set(card)) != n:
+        print("No")
+        return
+
+    for i in range(n):
+        if card[i][0] not in "HDCS":
+            print("No")
+            return
+
+    for i in range(n):
+        if card[i][1] not in "A23456789TJQK":
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if len(set(cards)) == n:
+        for card in cards:
+            if card[0] not in ['H','D','C','S']:
+                print('No')
+                return
+            if card[1] not in ['A','2','3','4','5','6','7','8','9','T','J','Q','K']:
+                print('No')
+                return
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if n == len(set(cards)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if len(s) == len(set(s)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def check_card(card):
+    if len(card) != 2:
+        return False
+    if card[0] not in ['H', 'D', 'C', 'S']:
+        return False
+    if card[1] not in ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T','J', 'Q', 'K']:
+        return False
+    return True
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    card = set()
+    for i in range(n):
+        s = input()
+        card.add(s)
+    if len(card) == n:
+        print('Yes')
+    else:
+        print('No')
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    # N = int(input())
+    # S = [input() for _ in range(N)]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "D3", "SK"]
+    # S = ["3H", "AD", "3D", "KS"]
+    S = ["00", "AA", "XX", "YY", "ZZ"]
+    # S = ["H3", "DA", "D3", "SK"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA
+
+=======
+Suggestion 10
+
+def main():
+    pass

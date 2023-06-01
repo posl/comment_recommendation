@@ -1,67 +1,131 @@
-#问题陈述
-#有一个山洞。
-#洞里有N个房间和M条通道。房间编号为1到N，通道编号为1到M。通道i双向连接A_i室和B_i室。人们可以通过穿越通道在任何两个房间之间旅行。房间1是一个特殊的房间，有一个来自外部的入口。
-#洞里很黑，所以我们决定在除1号房间外的每个房间都放置一个路标。 每个房间的路标都会指向与该房间直接相连的一个房间的通道。
-#由于山洞里很危险，我们的目标是满足除1号房间外的每个房间的以下条件。
-#如果你从该房间开始，反复移动到你所在房间的路标所指示的房间，你将在穿越尽可能少的通道后到达1号房间。
-#确定是否有一种方法可以放置满足我们目标的路标，如果存在，就打印一个这样的方法。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#人们可以通过穿越通道在任何两个房间之间旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 B_1
-#:
-#A_M B_M
-#
-#输出
-#如果没有办法放置满足目标的路标，则打印No。
-#否则，打印N行。第一行应该包含Yes，第i行（2 ≦ i ≦ N）应该包含整数，代表i号房间的路标所指示的房间。
-#
-#输入样本 1
-#4 4
-#1 2
-#2 3
-#3 4
-#4 2
-#
-#样本输出1
-#Yes
-#1
-#2
-#2
-#如果我们按照样本输出中的描述放置路标，就会发生以下情况：
-#从2号房间开始，穿越一条通道后，你将到达1号房间：(2) -> 1。这是可能的最小通道数。
-#从3号房间开始，你将在穿越两条通道后到达1号房间：(3) -> 2 -> 1，这是可能的最小通道数。
-#从4号房间开始，你将在穿越两个通道后到达1号房间：(4) -> 2 -> 1，这是可能的最小通道数。
-#因此，目标得到了满足。
-#
-#输入样本 2
-#6 9
-#3 4
-#6 1
-#2 4
-#5 3
-#4 6
-#1 5
-#6 2
-#4 5
-#5 6
-#
-#样本输出2
-#Yes
-#6
-#5
-#5
-#1
-#1
-#如果有多个解决方案，任何一个都会被接受。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem168_c():
+    # 读入数据
+    a, b, h, m = map(int, input().split())
+
+    # 时针和分针的角度
+    theta_h = h * 30 + m / 2
+    theta_m = m * 6
+
+    # 时针和分针的坐标
+    x_h = a * math.cos(math.radians(theta_h))
+    y_h = a * math.sin(math.radians(theta_h))
+    x_m = b * math.cos(math.radians(theta_m))
+    y_m = b * math.sin(math.radians(theta_m))
+
+    # 时针和分针的距离
+    ans = math.sqrt((x_h - x_m) ** 2 + (y_h - y_m) ** 2)
+    print(ans)
+
+=======
+Suggestion 2
+
+def clock():
+    import math
+    import sys
+
+    # 读取输入
+    a, b, h, m = map(int, sys.stdin.readline().strip().split())
+
+    # 计算角度
+    angle = abs(30 * h + 0.5 * m - 6 * m)
+
+    # 计算距离
+    ans = math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(math.radians(angle)))
+
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 3
+
+def get_angle(H, M):
+    return 30*H + 0.5*M
+
+=======
+Suggestion 4
+
+def main():
+    a, b, h, m = map(int, input().split())
+    import math
+    pi = math.pi
+    h_angle = (h * 60 + m) / 720 * 2 * pi
+    m_angle = m / 60 * 2 * pi
+    h_x = a * math.cos(h_angle)
+    h_y = a * math.sin(h_angle)
+    m_x = b * math.cos(m_angle)
+    m_y = b * math.sin(m_angle)
+    print(math.sqrt((h_x - m_x) ** 2 + (h_y - m_y) ** 2))
+
+=======
+Suggestion 5
+
+def get_distance(a, b, h, m):
+    h_angle = (h + m / 60) * 30
+    m_angle = m * 6
+    angle = abs(h_angle - m_angle)
+    angle = min(angle, 360 - angle)
+    return (a ** 2 + b ** 2 - 2 * a * b * cos(angle * pi / 180)) ** 0.5
+
+
+a, b, h, m = map(int, input().split())
+print(get_distance(a, b, h, m))
+
+=======
+Suggestion 6
+
+def main():
+    import math
+    a, b, h, m = map(int, input().split())
+    h_angle = 30 * h + 0.5 * m
+    m_angle = 6 * m
+    angle = abs(h_angle - m_angle)
+    angle = min(angle, 360 - angle)
+    angle = angle * math.pi / 180
+    print(math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(angle)))
+
+=======
+Suggestion 7
+
+def main():
+    import math
+    a,b,h,m = map(int, input().split())
+    h_angle = (h*60 + m) * 0.5
+    m_angle = m * 6
+    angle = abs(h_angle - m_angle)
+    if angle > 180:
+        angle = 360 - angle
+    c = math.sqrt(a**2 + b**2 - 2*a*b*math.cos(math.radians(angle)))
+    print(c)
+
+=======
+Suggestion 8
+
+def clock_angle(hour, minute):
+    hour_angle = (hour % 12 + minute / 60.0) * 30.0
+    minute_angle = minute * 6.0
+    angle = abs(hour_angle - minute_angle)
+    if angle > 180:
+        angle = 360 - angle
+    return angle
+
+=======
+Suggestion 9
+
+def main():
+    a, b, h, m = map(int, input().split())
+    import math
+    c = math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(abs(h * 30 + m * 0.5 - m * 6) * math.pi / 180))
+    print(c)
+
+=======
+Suggestion 10
+
+def main():
+    a, b, h, m = map(int, input().split())
+    import math
+    print(math.sqrt(a**2+b**2-2*a*b*math.cos(math.radians(abs(30*h-5.5*m)))))

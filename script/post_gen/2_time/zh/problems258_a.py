@@ -1,37 +1,116 @@
-#问题说明
-#AtCoder初学者竞赛通常在日本时间21:00开始，持续100分钟。
-#给你一个介于0和100之间的整数K（包括在内）。以HH:MM格式打印21:00后的K分钟，其中HH表示24小时制时钟上的小时，MM表示分钟。如果小时或分钟只有一位数，在开头加上一个0，表示它是一个2位数的整数。
-#
-#限制条件
-#K是0到100（包括）之间的整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#输出
-#按照问题陈述中指定的格式打印21:00后的K分钟。
-#
-#输入样本1
-#63
-#
-#样本输出1
-#22:03
-#21:00之后的63分钟，将是22:03，所以应该打印22:03。
-#以下输出将被判断为不正确：
-#10:03
-#22:3
-#
-#样本输入2
-#45
-#
-#样本输出2
-#21:45
-#
-#样本输入3
-#100
-#
-#样本输出3
-#22:40
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for _ in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if P[i] * ans >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    x = []
+    y = []
+    p = []
+    for i in range(n):
+        a, b, c = map(int, input().split())
+        x.append(a)
+        y.append(b)
+        p.append(c)
+    INF = 10 ** 9
+    # dp[i][j]表示第i个蹦床训练j次能访问的蹦床
+    dp = [[0] * (n + 1) for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                dp[i][j] = INF
+            else:
+                if p[i] * j >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                    dp[i][j] = 1
+    # floyd
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+    res = INF
+    for i in range(n):
+        res = min(res, max(dp[i]))
+    print(res + 1)
+solve()
+
+=======
+Suggestion 4
+
+def get_distance(x1,y1,x2,y2):
+    return abs(x1-x2)+abs(y1-y2)
+
+=======
+Suggestion 5
+
+def getPower(s, x, y, xi, yi, pi):
+    return pi * s >= abs(x - xi) + abs(y - yi)
+
+=======
+Suggestion 6
+
+def main():
+    n=int(input())
+    x=[]
+    y=[]
+    p=[]
+    for i in range(n):
+        x1,y1,p1=map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+        p.append(p1)
+    ans=0
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                continue
+            if p[i]*ans>=abs(x[i]-x[j])+abs(y[i]-y[j]):
+                ans+=1
+                break
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for i in range(N):
+        x1, y1, P1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+        P.append(P1)
+    print(N)

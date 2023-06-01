@@ -1,50 +1,86 @@
-#问题陈述
-#你抽了N次彩票。在第i次抽奖中，你得到了一个由字符串S_i代表的物品。
-#你得到了多少种物品？
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#S_i由小写英文字母组成，长度在1到10之间（包括10）。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S_1
-#:
-#S_N
-#
-#输出
-#打印你得到的物品种类的数量。
-#
-#输入样本 1
-#3
-#苹果
-#橙子
-#苹果
-#
-#样本输出1
-#2
-#你有两种物品：苹果和橙子。
-#
-#样本输入2
-#5
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#
-#样本输出2
-#1
-#
-#样品输入3
-#4
-#aaaa
-#a
-#aaa
-#aa
-#
-#样本输出3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d = map(int, input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print('Yes')
+            break
+        a -= d
+        if a <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if (c-1)//b > (a-1)//d:
+        print("否")
+    else:
+        print("是")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 4
+
+def problem164_b():
+    A, B, C, D = map(int, input().split())
+    while True:
+        C = C - B
+        if C <= 0:
+            print('Yes')
+            break
+        A = A - D
+        if A <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while a > 0 and c > 0:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c, d = map(int, input().strip().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break

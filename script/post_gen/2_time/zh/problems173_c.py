@@ -1,66 +1,175 @@
-#问题陈述
-#我们有一个由H行和W列的方格。位于从上往下第i行和从左往下第j列（1 ≦ i ≦ H, 1 ≦ j ≦ W）的正方形的颜色以字符c_{i,j}的形式给出：如果c_{i,j}是.，则该正方形为白色；如果c_{i,j}是#，则为黑色。
-#考虑做以下操作：
-#选择一定数量的行（可能是零），和一定数量的列（可能是零）。然后，将所选行中的所有方块和所选列中的所有方块涂成红色。
-#给你一个正整数K。有多少个行和列的选择会导致在操作后正好剩下K个黑色的方块？这里，我们考虑的是，当有一个行或列只在其中一个选择中被选中时，两个选择是不同的。
-#
-#限制条件
-#1 ≦ H, W ≦ 6
-#1 ≦ K ≦ HW
-#c_{i,j}是.或#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H W K
-#c_{1,1}c_{1,2}...c_{1,W}
-#c_{2,1}c_{2,2}...c_{2,W}
-#:
-#c_{H,1}c_{H,2}...c_{H,W}
-#
-#输出
-#打印一个整数，代表满足条件的行和列的选择数量。
-#
-#输入样本 1
-#2 3 2
-#..#
-####
-#
-#样本输出1
-#5
-#下面五个选项满足条件。
-#第1行和第1列
-#第1行和第2列
-#第1行和第3列
-#第1行和第2列
-#第3列
-#
-#输入样本 2
-#2 3 4
-#..#
-####
-#
-#样本输出2
-#1
-#一个选择，即什么都不选，满足条件。
-#
-#输入样本 3
-#2 2 3
-###
-###
-#
-#样本输出3
-#0
-#
-#样本输入4
-#6 6 8
-#..##..
-#.#..#.
-##....#
-#######
-##....#
-##....#
-#
-#样本输出4
-#208
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(num):
+        s = input()
+        if s == "AC":
+            a += 1
+        elif s == "WA":
+            b += 1
+        elif s == "TLE":
+            c += 1
+        elif s == "RE":
+            d += 1
+    print("AC x " + str(a))
+    print("WA x " + str(b))
+    print("TLE x " + str(c))
+    print("RE x " + str(d))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(N):
+        S = input()
+        if S == "AC":
+            ac += 1
+        elif S == "WA":
+            wa += 1
+        elif S == "TLE":
+            tle += 1
+        else:
+            re += 1
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+
+    ac = wa = tle = re = 0
+    for i in range(N):
+        if S[i] == "AC":
+            ac += 1
+        elif S[i] == "WA":
+            wa += 1
+        elif S[i] == "TLE":
+            tle += 1
+        elif S[i] == "RE":
+            re += 1
+
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+
+=======
+Suggestion 8
+
+def count(s):
+    count = [0,0,0,0]
+    for i in s:
+        if i == "AC":
+            count[0] += 1
+        elif i == "WA":
+            count[1] += 1
+        elif i == "TLE":
+            count[2] += 1
+        elif i == "RE":
+            count[3] += 1
+    return count
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+count = count(s)
+print("AC x",count[0])
+print("WA x",count[1])
+print("TLE x",count[2])
+print("RE x",count[3])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x {}".format(s.count("AC")))
+    print("WA x {}".format(s.count("WA")))
+    print("TLE x {}".format(s.count("TLE")))
+    print("RE x {}".format(s.count("RE")))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("AC x", s.count("AC"))
+    print("WA x", s.count("WA"))
+    print("TLE x", s.count("TLE"))
+    print("RE x", s.count("RE"))

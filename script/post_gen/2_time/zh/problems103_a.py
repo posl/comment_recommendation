@@ -1,41 +1,66 @@
-#问题陈述
-#你有三个任务，都需要完成。
-#首先，你可以以0的成本完成任何一项任务。
-#然后，在完成第i项任务后，你可以以|A_j-A_i|的成本完成第j项任务。
-#这里，|x|表示x的绝对值。
-#找到完成所有任务所需的最小总成本。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a_1, a_2, a_3 ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#A_1 A_2 A_3
-#
-#輸出
-#打印完成所有任务所需的最小总成本。
-#
-#输入样本 1
-#1 6 3
-#
-#样本输出 1
-#5
-#当任务按以下顺序完成时，总成本将是5，这是最小的：
-#以0的成本完成第一个任务。
-#完成第三项任务，成本为2。
-#完成第二项任务，成本为3。
-#
-#样本输入2
-#11 5 5
-#
-#样本输出2
-#6
-#
-#样本输入3
-#100 100 100
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[2]-a[0])
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a1, a2, a3 = map(int, input().split())
+
+    # 请在此处编写您的代码
+    # 请注意，您可以添加其他函数，而不仅仅是main（）。
+
+    # 请不要修改以下内容。
+    print(0)
+
+=======
+Suggestion 3
+
+def main():
+    a1, a2, a3 = map(int, input().split())
+    print(min(abs(a2-a1)+abs(a3-a2), abs(a3-a1)+abs(a2-a3), abs(a1-a2)+abs(a3-a1)))
+    return
+
+=======
+Suggestion 4
+
+def get_min_cost(a1, a2, a3):
+    a = [a1, a2, a3]
+    a.sort()
+    return a[2] - a[0]
+
+=======
+Suggestion 5
+
+def solve(a):
+    a.sort()
+    return a[2]-a[0]
+
+=======
+Suggestion 6
+
+def main():
+    a = input().split()
+    a = list(map(int, a))
+    a.sort()
+    print(a[2]-a[0])
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    a1, a2, a3 = map(int, input().split())
+    # 请在此处编写您的代码（可选）
+    # 输出结果
+    print(min(abs(a1-a2)+abs(a2-a3),abs(a1-a3)+abs(a2-a3),abs(a1-a2)+abs(a1-a3)))

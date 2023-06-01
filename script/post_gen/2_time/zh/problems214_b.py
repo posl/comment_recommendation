@@ -1,41 +1,86 @@
-#问题陈述
-#有多少个非负整数(a, b, c)的三联体满足a+b+c ≦ S且a×b×c ≦ T?
-#
-#限制条件
-#0 ≦ S ≦ 100
-#0 ≦ T ≦ 10000
-#S和T是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S T
-#
-#輸出
-#打印满足条件的非负整数（a,b,c）的三倍数。
-#
-#输入样本 1
-#1 0
-#
-#输出示例 1
-#4
-#满足条件的三联体（a,b,c）是（0,0,0），（0,0,1），（0,1,0）和（1,0,0）--共有四个。
-#
-#样本输入 2
-#2 5
-#
-#样本输出 2
-#10
-#
-#样本输入3
-#10 10
-#
-#样品输出3
-#213
-#
-#样本输入4
-#30 100
-#
-#样本输出4
-#2471
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+
+    if N <= 125:
+        print(4)
+    elif N <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n <= 125:
+        print(4)
+    elif n <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 3
+
+def main():
+    # 读入一个整数
+    n = int(input())
+    # 判断
+    if n <= 125:
+        print(4)
+    elif n <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N < 126:
+        print(4)
+    elif N < 212:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 5
+
+def problems214_a(n):
+    if n <= 125:
+        return 4
+    elif n <= 211:
+        return 6
+    else:
+        return 8
+
+=======
+Suggestion 6
+
+def problem214_a():
+    n = int(input())
+    if n < 126:
+        print(4)
+    elif n < 212:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 7
+
+def get_problem_num(n):
+    if n <= 125:
+        return 4
+    elif n <= 211:
+        return 6
+    else:
+        return 8

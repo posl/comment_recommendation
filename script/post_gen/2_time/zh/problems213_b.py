@@ -1,34 +1,51 @@
-#问题陈述
-#N个玩家，编号为1，...，N，进行了一场游戏。玩家i的得分是A_i，得分较少的玩家排名较高。
-#排名第二低的玩家将得到一个诱杀奖。这个玩家是谁？用一个代表该玩家的整数回答。
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#A_i是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#6
-#1 123 12345 12 1234 123456
-#
-#样本输出1
-#3
-#是玩家3在六个玩家中排名第五。
-#
-#样本输入2
-#5
-#3 1 4 15 9
-#
-#样本输出2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = map(int,input().split())
+    C = A ^ B
+    print(C)
+
+=======
+Suggestion 2
+
+def xor(a, b):
+    return a ^ b
+
+=======
+Suggestion 3
+
+def xor(a,b):
+    return int(bin(a^b)[2:])
+
+=======
+Suggestion 4
+
+def xor(a,b):
+    return a^b
+a,b = map(int,input().split())
+print(xor(a,b))
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(a^b)
+
+=======
+Suggestion 6
+
+def xor(A,B):
+    return A^B
+
+=======
+Suggestion 7
+
+def problem213_a():
+    # 输入
+    A,B = map(int,input().split())
+    # 输出
+    print(A^B)

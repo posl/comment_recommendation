@@ -1,76 +1,80 @@
-#问题陈述
-#高桥今天又在独自练习 "白鸟"。
-#白鸟是一种游戏，内容如下：
-#在第一轮中，一个玩家宣布任何一个词。
-#在随后的回合中，玩家宣布一个满足以下条件的词：
-#该词之前没有宣布过。
-#该词的第一个字符与上一个宣布的词的最后一个字符相同。
-#
-#在这个游戏中，他正在练习在10秒内宣布尽可能多的单词。
-#给你高桥宣布的字数，N，和他宣布的第i个字，W_i，对于每个i，确定是否遵守了shiritori的规则，即他宣布的每个字都满足条件。
-#
-#限制条件
-#N是一个整数，满足2 ≦ N ≦ 100。
-#W_i是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#W_1
-#W_2
-#:
-#W_N
-#
-#输出
-#如果高桥宣布的每个词都满足条件，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4
-#hoge
-#english
-#hoge
-#Enigma
-#
-#样本输出1
-#No
-#由于hoge被多次宣布，白鸟的规则没有被遵守。
-#
-#输入样本2
-#9
-#basic
-#c
-#cpp
-#php
-#python
-#nadesico
-#ocaml
-#lua
-#assembly
-#
-#输出样本2
-#Yes
-#
-#样品输入3
-#8
-#a
-#aa
-#aaa
-#aaaa
-#aaaaa
-#aaaaaa
-#aaa
-#aaaaaaa
-#
-#样本输出3
-#No
-#
-#样本输入4
-#3
-#abc
-#arc
-#agc
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if (a * b) % 2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if a*b%2==1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve(A, B):
+    if A % 2 == 0 or B % 2 == 0:
+        return 'No'
+    else:
+        return 'Yes'
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int,input().split())
+    if A*B*3%2 != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    A,B = map(int, input().split())
+    if A*B%2 == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a*b%2 == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if (A*B)%2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int, input().split())
+    if a==1 or b==1 or a==3 or b==3:
+        print("Yes")
+    else:
+        print("No")

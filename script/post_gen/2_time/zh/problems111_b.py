@@ -1,39 +1,84 @@
-#问题陈述
-#Kurohashi从未参加过AtCoder初级竞赛（ABC）。
-#下一个ABC是ABC N（有史以来的第N个ABC）。
-#黑桥想在某个ABC x中首次亮相，使x的所有数字都是以10为底数的。
-#黑桥能首次亮相的最早的ABC是什么？
-#
-#限制条件
-#100 ≦ N ≦ 999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果黑石能首次亮相的最早的ABC是ABC n，打印n。
-#
-#输入样本 1
-#111
-#
-#样本输出1
-#111
-#下一个举行的ABC是ABC111，黑桥可以在那里首次亮相。
-#
-#样本输入2
-#112
-#
-#样本输出2
-#222
-#下一个ABC是ABC 112，这意味着黑桥不能再参加ABC 111了。
-#在黑桥可以登场的ABC中，最早的一个是ABC 222。
-#
-#样本输入3
-#750
-#
-#样本输出3
-#777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def replace1with9(n):
+    return int(str(n).replace('1','x').replace('9','1').replace('x','9'))
+
+=======
+Suggestion 2
+
+def replace_1_9(n):
+    return int(str(n).replace('1', 'a').replace('9', '1').replace('a', '9'))
+
+=======
+Suggestion 3
+
+def swap(num):
+    num = str(num)
+    num = num.replace('1','x')
+    num = num.replace('9','1')
+    num = num.replace('x','9')
+    return num
+
+=======
+Suggestion 4
+
+def problems111_a():
+    n = input("请输入一个三位数：")
+    if 111 <= int(n) <= 999:
+        result = ''
+        for i in n:
+            if i == '1':
+                result += '9'
+            else:
+                result += '1'
+        print(result)
+    else:
+        print("输入的数字不符合要求，请重新输入！")
+        problems111_a()
+
+problems111_a()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(1110-n)
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    for i in range(len(n)):
+        if n[i] == '1':
+            print('9', end='')
+        else:
+            print('1', end='')
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = input()
+    n = n.replace('1','x')
+    n = n.replace('9','1')
+    n = n.replace('x','9')
+    print(n)
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    for i in range(len(n)):
+        if n[i] == '1':
+            print('9', end='')
+        elif n[i] == '9':
+            print('1', end='')
+        else:
+            print(n[i], end='')

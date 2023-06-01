@@ -1,47 +1,70 @@
-#问题陈述
-#有N个编号为1,2,...,N的人。
-#k_i人参加了第i个（1≦i≦M）聚会，他们是人x_{i,1},x_{i,2},...,x_{i,k_i}。
-#确定每两个人是否至少参加过一次相同的聚会。
-#
-#约束条件
-#2≦ N ≦ 100
-#1≦ M ≦ 100
-#2≦ k_i ≦ N
-#1≦ x_{i,1}<x_{i,2}<...< x_{i,k_i}≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#k_1 x_{1,1} x_{1,2} ... x_{1,k_1} 。
-#.
-#.
-#.
-#k_M x_{M,1} x_{M,2} ... x_{M,k_M}
-#
-#输出
-#如果每两个人都至少参加过一次同一个聚会，则打印Yes；否则打印No。
-#
-#输入样本 1
-#3 3
-#2 1 2
-#2 2 3
-#2 1 3
-#
-#样本输出1
-#Yes
-#人1和人2都参加了第1次聚会。
-#人2和人3都参加了第2次聚会。
-#人1和人3都参加了第3次聚会。
-#因此，每两个人都至少参加过一次同一个聚会，所以答案是Yes。
-#
-#输入样本 2
-#4 2
-#3 1 2 4
-#3 2 3 4
-#
-#样品输出2
-#No
-#人1和人3没有参加同一个聚会，所以答案是No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(sum(a))
+
+=======
+Suggestion 2
+
+def main():
+    a = int(input())
+    b = list(map(int, input().split()))
+    print(sum(b))
+
+=======
+Suggestion 3
+
+def sum_integers():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = input().split()
+    sum = 0
+    for i in range(N):
+        sum += int(A[i])
+    print(sum)
+
+=======
+Suggestion 5
+
+def sum_of_integers():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return sum(a)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    print(sum(A))
+
+=======
+Suggestion 8
+
+def sum_of_integers():
+    n = int(input())
+    a = list(map(int,input().split()))
+    print(sum(a))
+
+sum_of_integers()

@@ -1,47 +1,84 @@
-#问题陈述
-#高桥正在参加N个科目的考试。每个科目的分数将是0到K（包括）之间的整数。
-#他已经参加了N-1个科目的考试，在第i个科目上得了A_i分。
-#他的目标是在N个科目上达到M分或以上的平均分数。
-#请打印出高桥在最后一科上所需的最低分数，以实现他的目标。
-#如果该目标无法实现，则打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ M ≦ K
-#0 ≦ A_i ≦ K
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K M
-#A_1 A_2 ...A_{N-1}
-#
-#输出
-#打印最终主题所需的最小点数，或-1。
-#
-#输入样本 1
-#5 10 7
-#8 10 3 6
-#
-#样本输出1
-#8
-#如果他在最后一科得了8分，他的平均分数将是（8+10+3+6+8）/5=7分，达到目标。
-#
-#样本输入2
-#4 100 60
-#100 100 100
-#
-#样品输出2
-#0
-#在最后的科目上得0分，仍然符合目标。
-#
-#样本输入3
-#4 100 60
-#0 0 0
-#
-#样本输出3
-#-1
-#他无法再达到目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x%y)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        while A[i] % 2 == 0:
+            A[i] //= 2
+    LCM = 1
+    for i in range(N):
+        LCM = LCM * A[i] // gcd(LCM, A[i])
+    LCM *= 2
+    ans = M // LCM
+    return ans
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 6
+
+def gcd(x,y):
+    if x < y:
+        x,y = y,x
+    if y == 0:
+        return x
+    else:
+        return gcd(y,x % y)
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if a<b:
+        a,b = b,a
+    while b!=0:
+        a,b = b,a%b
+    return a

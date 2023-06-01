@@ -1,46 +1,169 @@
-#问题陈述
-#给你六个整数：h_1, h_2, h_3, w_1, w_2, 和 w_3。
-#考虑在3×3网格的每个方格上写一个正整数，以便满足以下所有条件：
-#对于i=1,2,3，写在从头开始的第i行的数字之和为h_i。
-#对于j=1,2,3，从左起第j列写的数字之和为w_i。
-#例如，如果（h_1，h_2，h_3）=（5，13，10），（w_1，w_2，w_3）=（6，13，9），那么以下三种方式都满足条件。  (还有其他满足条件的方法)。
-#有多少种方法可以写出满足条件的数字？
-#
-#限制条件
-#3 ≦ h_1, h_2, h_3, w_1, w_2, w_3 ≦ 30
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#h_1 h_2 h_3 w_1 w_2 w_3
-#
-#输出
-#打印满足条件的数字写法的数量。
-#
-#输入样本 1
-#3 4 6 3 3 7
-#
-#输出样本 1
-#1
-#以下是满足条件的唯一方法。  因此，应该打印1。
-#
-#输入样本 2
-#3 4 5 6 7 8
-#
-#样本输出2
-#0
-#可能没有办法满足这些条件。
-#
-#样本输入3
-#5 13 10 6 13 9
-#
-#样本输出3
-#120
-#
-#样本输入4
-#20 25 30 22 29 24
-#
-#样本输出4
-#30613
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    P = 0
+    for i in range(N):
+        P += A[i] - 1
+    print(P)
+
+=======
+Suggestion 2
+
+def run():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    P = 0
+    blocks = [0] * 4
+
+    for a in A:
+        blocks[0] += 1
+        blocks[a] += 1
+        P += blocks[a - 1]
+        blocks[a - 1] = 0
+
+    print(P)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        p += 1
+        if a[i] == 1:
+            p += 1
+        elif a[i] == 2:
+            p += 2
+        elif a[i] == 3:
+            p += 3
+        else:
+            p += 4
+    print(p)
+
+=======
+Suggestion 4
+
+def main():
+    # n = int(input())
+    # a = list(map(int, input().split()))
+    n = 10
+    a = [2, 2, 4, 1, 1, 1, 4, 2, 2, 1]
+    p = 0
+    for i in range(n):
+        p += a[i] - 1
+        p %= 4
+    print(p)
+
+=======
+Suggestion 5
+
+def baseball_game(N, A):
+    P = 0
+    for i in range(N):
+        #print('i=', i)
+        #print('P=', P)
+        #print('A[i]=', A[i])
+        #print('A=', A)
+        if i == 0:
+            A[0] += 1
+        else:
+            A[0] += 1
+            for j in range(i):
+                if A[j] + A[i] > 4:
+                    P += 1
+                    A[j] = 0
+                else:
+                    A[j] += A[i]
+        #print('A=', A)
+        #print('P=', P)
+        #print('------------------')
+    print(P)
+    return P
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        P += A[i] - 1
+    print(P)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 初始化
+    P = 0
+    # 4个方块
+    squares = [0] * 4
+
+    # 模拟
+    for i in range(N):
+        # 在0号方块放置一个棋子
+        squares[0] += 1
+        # 移动棋子
+        for j in range(4):
+            # 移动
+            squares[j] += A[i]
+            # 如果目标方块不存在
+            if squares[j] >= 4:
+                # 移除棋子
+                squares[j] = 0
+                # P加1
+                P += 1
+    # 输出
+    print(P)
+
+=======
+Suggestion 8
+
+def problems256_b():
+    return None
+
+=======
+Suggestion 9
+
+def problem256_b():
+    n = int(input())
+    a = list(map(int,input().split()))
+    p = 0
+    for i in range(n):
+        if a[i] == 1:
+            p += 1
+        elif a[i] == 2:
+            p += 0
+        elif a[i] == 3:
+            p += 2
+        elif a[i] == 4:
+            p += 1
+    print(p)
+
+=======
+Suggestion 10
+
+def main():
+    # N = 4
+    # A = [1,1,3,2]
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        P += A[i] - 1
+    print(P)

@@ -1,39 +1,238 @@
-#问题陈述
-#2020年，年销售额超过10亿日元（日本的货币）的AtCoder公司开始了编程教育的业务。
-#有一天，有一场考试，一个一岁的孩子必须写一个打印Hello World的程序，一个两岁的孩子必须写一个接收整数A、B并打印A+B的程序。
-#参加这次考试的高桥，突然忘记了自己的年龄。
-#他决定写一个程序，首先接收他的年龄N（1或2）作为输入，如果N=1，则打印 "你好世界"，如果N=2，则接收整数A、B并打印A+B。
-#请为他写这个程序。  
-#
-#限制条件
-#N是1或2。
-#A是1到9之间的一个整数（包括）。
-#B是1至9（包括）之间的整数。
-#
-#输入
-#输入是以下列格式之一从标准输入中给出的：  
-#1
-#2
-#A
-#B
-#
-#输出
-#如果N=1，打印Hello World；如果N=2，打印A+B。  
-#
-#输入样本 1
-#1
-#
-#输出样本1
-#你好世界
-#由于N=1，高桥是一岁。因此，我们应该打印Hello World。
-#
-#输入样本2
-#2
-#3
-#5
-#
-#样本输出2
-#8
-#由于N=2，高桥是两岁的孩子。因此，我们应该打印A+B，也就是8，因为A=3，B=5。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    return
+
+=======
+Suggestion 2
+
+def find_path(x, y):
+    if x == 0 and y == 0:
+        return ""
+    if x > 0:
+        return find_path(x-1, y) + "R"
+    if x < 0:
+        return find_path(x+1, y) + "L"
+    if y > 0:
+        return find_path(x, y-1) + "U"
+    if y < 0:
+        return find_path(x, y+1) + "D"
+
+=======
+Suggestion 3
+
+def problem111_d():
+    return None
+
+=======
+Suggestion 4
+
+def problem111_d():
+    pass
+
+=======
+Suggestion 5
+
+def solve(n, xy):
+    for m in range(1, 41):
+        for d in range(1, 10**12+1):
+            pass
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append([int(x) for x in input().split()])
+    points = sorted(points, key=lambda x: x[0] + x[1])
+    ans = []
+    for i in range(n):
+        if i == 0:
+            x = points[i][0]
+            y = points[i][1]
+            if x < 0:
+                ans.append('R')
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            elif x == 0:
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            else:
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+                ans.append('R')
+                ans.append('D')
+                ans.append('R')
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+        else:
+            x = points[i][0] - points[i - 1][0]
+            y = points[i][1] - points[i - 1][1]
+            if x < 0:
+                ans.append('R')
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            elif x == 0:
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            else:
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+                ans.append('R')
+                ans.append('D')
+                ans.append('R')
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+    print(len(ans))
+    print(''.join(ans))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def get_pattern(x,y):
+    if x < 0:
+        return 'L',-x
+    elif x == 0:
+        if y > 0:
+            return 'U',y
+        else:
+            return 'D',-y
+    else:
+        return 'R',x
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(1)
+        print(1)
+        print('R')
+        return
+    if n == 2:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 3:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 4:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 5:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 6:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 7:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 8:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 9:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 10:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 11:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 12:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 13:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 14:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 15:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 16:
+        print(2)
+        print('1 1')

@@ -1,81 +1,90 @@
-#问题说明
-#瓷砖被排列成N个水平行和N个垂直列。  每块瓷砖的网格有A个水平行和B个垂直列。  总的来说，瓷砖形成了一个具有(A×N)水平行和(B×N)垂直列的网格X。
-#对于1≦ i,j ≦ N，瓦片（i,j）表示位于从上往下第i行和从左往下第j列的瓦片。
-#X的每一个方块都被画成以下样子。  
-#每块瓷砖要么是白色瓷砖，要么是黑色瓷砖。
-#白色瓷砖中的每个方块都被涂成白色；黑色瓷砖中的每个方块都被涂成黑色。
-#瓷砖（1,1）是白色瓷砖。
-#两个共用一面的瓦片有不同的颜色。  这里，当且仅当|a-c|+|b-d|=1（其中|x|表示x的绝对值）时，瓷砖（a,b）和瓷砖（c,d）被认为是共用一个边。
-#按照输出部分指定的格式打印网格X。
-#
-#限制条件
-#1 ≦ N,A,B ≦ 10
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N A B
-#
-#输出
-#打印满足以下条件的(A×N)字符串S_1,...,S_{A×N}，中间有换行。
-#S_1,...,S_{A×N}中的每一个都是一个长度为(B×N)的字符串，由.和#组成。
-#对于每个i和j（1 ≦ i ≦ A× N,1 ≦ j ≦ B× N），如果网格X中从上往下第i行和从左往下第j列的方块被涂成白色，那么S_i的第j个字符就是.；如果该方块被涂成黑色，则该字符就是#。
-#
-#输入样本 1
-#4 3 2
-#
-#输出样本 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#样本输入2
-#5 1 5
-#
-#样本输出2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#样本输入 3
-#4 4 1
-#
-#输出样本 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#样本输入 4
-#1 4 4
-#
-#输出样本 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print((H-R+1)*(W-C+1))
+
+=======
+Suggestion 2
+
+def get_same_edge_num(h,w,r,c):
+    return 2*(h-1)*(w-1)-2*(h-1)-2*(w-1)+4
+
+=======
+Suggestion 3
+
+def get_number_of_squares(h, w, r, c):
+    if h == 1 and w == 1:
+        return 0
+    elif h == 1:
+        return 1
+    elif w == 1:
+        return 1
+    elif r == 1 and c == 1:
+        return 0
+    elif r == 1:
+        return 1
+    elif c == 1:
+        return 1
+    elif r == h and c == w:
+        return 0
+    elif r == h:
+        return 1
+    elif c == w:
+        return 1
+    else:
+        return 2
+
+=======
+Suggestion 4
+
+def solve(h,w,r,c):
+    return 2*(r-1)*(c-1)+(h-r+1)*(c-1)+(w-c+1)*(r-1)+(h-r+1)*(w-c+1)
+
+h,w=map(int,input().split())
+r,c=map(int,input().split())
+print(solve(h,w,r,c))
+
+=======
+Suggestion 5
+
+def main():
+    h,w = map(int,input().split())
+    r,c = map(int,input().split())
+    print((h-r+1)*(w-c+1))
+
+=======
+Suggestion 6
+
+def get_num(H, W, R, C):
+    if R == 1 and C == 1:
+        return 0
+    elif R == 1 and C == W:
+        return 0
+    elif R == H and C == 1:
+        return 0
+    elif R == H and C == W:
+        return 0
+    elif R == 1 or R == H:
+        return 1
+    elif C == 1 or C == W:
+        return 1
+    else:
+        return 2
+
+H, W = map(int, input().split())
+R, C = map(int, input().split())
+
+print(get_num(H, W, R, C))
+
+=======
+Suggestion 7
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print(H*W-((H-R)*W+(W-C)*R))

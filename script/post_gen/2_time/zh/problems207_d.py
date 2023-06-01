@@ -1,95 +1,189 @@
-#问题陈述
-#给你两个集合S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)}和T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)}，在一个二维平面上各有N个点。
-#确定是否有可能以任何顺序对S做以下操作（可能是零），使S与T相匹配。
-#选择一个实数p(0 < p < 360)，将S中的每个点围绕原点顺时针旋转p度。
-#选择实数q和r，将S中的每个点在x方向移动q，在y方向移动r。这里，q和r可以是任何实数，无论是正数、负数还是零。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) 如果i ≠ j。
-#(c_i,d_i) ≠ (c_j,d_j) 如果 i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#输出
-#如果我们能将S与T匹配，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#样本输出1
-#Yes
-#下图显示了给定的点集，其中S和T中的点分别被涂成红色和绿色：
-#在这种情况下，我们可以按以下方法将S与T匹配：
-#将S中的每个点围绕原点顺时针旋转270度。
-#将S中的每个点在X方向上移动3，在Y方向上移动0。
-#
-#输入样本 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#样本输出2
-#No
-#下图是给定的几组点：
-#虽然S和T是围绕Y轴对称的，但我们不能像问题陈述中所说的那样通过旋转和平移来匹配S和T。
-#
-#输入样本3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#样本输出3
-#Yes
-#
-#采样输入4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#样本输出4
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if tlr[i][1] <= tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if tlr[i][1] <= tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    tlr = [list(map(int,input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if tlr[i][1]<=tlr[j][1]<=tlr[i][2] or tlr[i][1]<=tlr[j][2]<=tlr[i][2] or tlr[j][1]<=tlr[i][1]<=tlr[j][2] or tlr[j][1]<=tlr[i][2]<=tlr[j][2]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    N = int(input())
+    data = []
+    for i in range(N):
+        data.append(list(map(int, input().split())))
+    
+    # 计算相交的区间
+    count = 0
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            if (data[i][1] <= data[j][1] and data[j][1] <= data[i][2]) or \
+                (data[j][1] <= data[i][1] and data[i][1] <= data[j][2]):
+                count += 1
+    
+    # 输出结果
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if (tlr[i][1] <= tlr[j][1] and tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] and tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] and tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] and tlr[i][2] <= tlr[j][2]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def func(l,r):
+    if l[0]==1:
+        if r[0]==1:
+            return 1
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 0
+        else:
+            return 0
+    elif l[0]==2:
+        if r[0]==1:
+            return 1
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 1
+        else:
+            return 0
+    elif l[0]==3:
+        if r[0]==1:
+            return 0
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 1
+        else:
+            return 0
+    else:
+        if r[0]==1:
+            return 0
+        elif r[0]==2:
+            return 0
+        elif r[0]==3:
+            return 0
+        else:
+            return 0
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    cnt = 0
+    for i in range(n-1):
+        for j in range(i+1,n):
+            if tlr[i][2] < tlr[j][1]:
+                continue
+            if tlr[j][2] < tlr[i][1]:
+                continue
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    #读取数据
+    n = int(input())
+    data = []
+    for i in range(n):
+        data.append(list(map(int,input().split())))
+    #遍历所有的组合
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if data[i][1] <= data[j][2] and data[i][2] >= data[j][1]:#判断是否相交
+                count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T = []
+    for i in range(N):
+        T.append(list(map(int,input().split())))
+    
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if T[i][1] <= T[j][1] and T[j][1] <= T[i][2]:
+                cnt += 1
+            elif T[i][1] <= T[j][2] and T[j][2] <= T[i][2]:
+                cnt += 1
+            elif T[j][1] <= T[i][1] and T[i][1] <= T[j][2]:
+                cnt += 1
+            elif T[j][1] <= T[i][2] and T[i][2] <= T[j][2]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    return n, intervals

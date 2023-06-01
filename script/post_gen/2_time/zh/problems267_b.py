@@ -1,56 +1,110 @@
-#问题陈述
-#保龄球瓶的编号是1到10。  下图是球杆排列的俯视图：
-#让我们把图中两条虚线之间的每个部分称为一列。
-#例如，1号和5号球瓶属于同一列，3号和9号球瓶也属于同一列。
-#当一些针脚被打倒时，可能会出现一种特殊的情况，叫做分裂。
-#如果以下两个条件都满足，那么针脚的摆放就是分裂：
-#引脚1被撞倒了。
-#有两个不同的列，满足以下两个条件：
-#每一列都有一个或多个站立的棋子。
-#在这两列之间存在一列，使得该列中的所有棋子都被击倒。
-#
-#例子也见输入和输出的样本。
-#现在，你得到的是一个长度为10的字符串S的针脚位置。
-#对于i=1，...，10，如果针脚i被击倒，S的第i个字符为0，如果它是站立的，则为1。
-#确定S所代表的大头针的位置是否是一个分裂。
-#
-#约束条件
-#S是一个长度为10的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#如果S所代表的引脚的位置是分裂的，打印Yes；否则，打印No。
-#
-#样本输入1
-#0101110101
-#
-#样本输出1
-#Yes
-#在下图中，被击倒的引脚被涂成灰色，站立的引脚被涂成白色：
-#在含有立针5的那一列和含有立针6的那一列之间是含有立针3和9的那一列。  由于3号和9号都被打掉了，所以这个位置是一个分割。
-#
-#样本输入2
-#0100101001
-#
-#样本输出2
-#Yes
-#
-#
-#样品输入3
-#0000100110
-#
-#样品输出3
-#No
-#这个位置不是一个分割。
-#
-#样本输入4
-#1101110101
-#
-#样本输出4
-#No
-#这不是一个分割，因为引脚1没有被敲下。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_weekday(weekday):
+    weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+    return weekdays.index(weekday)
+
+=======
+Suggestion 2
+
+def main():
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day = input()
+    index = days.index(day)
+    if index < 5:
+        print(5 - index)
+    else:
+        print(7 - index + 5)
+
+=======
+Suggestion 3
+
+def main():
+    day = input()
+    week = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    count = 0
+    for i in range(7):
+        if day == week[i]:
+            count = i
+            break
+    if count < 5:
+        print(5-count)
+    else:
+        print(7-count+5)
+
+=======
+Suggestion 4
+
+def problem267_a():
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    s = input()
+    print(6 - week.index(s))
+
+=======
+Suggestion 5
+
+def main():
+    weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    day = input()
+    print(5 - weekdays.index(day) if weekdays.index(day) < 5 else 7 - weekdays.index(day))
+
+=======
+Suggestion 6
+
+def main():
+    week = input()
+    if week == "星期一":
+        print(5)
+    elif week == "星期二":
+        print(4)
+    elif week == "星期三":
+        print(3)
+    elif week == "星期四":
+        print(2)
+    elif week == "星期五":
+        print(1)
+
+=======
+Suggestion 7
+
+def main():
+    week = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+    s = input()
+    print(6 - week.index(s))
+
+=======
+Suggestion 8
+
+def dayToSat(s):
+    if s == '星期一':
+        return 5
+    elif s == '星期二':
+        return 4
+    elif s == '星期三':
+        return 3
+    elif s == '星期四':
+        return 2
+    elif s == '星期五':
+        return 1
+    else:
+        return 0
+
+=======
+Suggestion 9
+
+def solve():
+    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    s = input()
+    print(7 - days.index(s))
+
+=======
+Suggestion 10
+
+def main():
+    weeks = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+    week = input()
+    week_index = weeks.index(week)
+    print(6 - week_index)

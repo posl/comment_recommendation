@@ -1,69 +1,158 @@
-#问题陈述
-#在一个XY平面上有N个人。第i个人在（X_i，Y_i）。所有的人的位置都不同。
-#我们有一个长度为N的字符串S，由L和R组成。
-#如果S_i=R，则第i人面向右；如果S_i=L，则第i人面向左。所有的人同时开始朝他们所面对的方向行走。这里，右和左分别对应于正和负的X方向。
-#例如，下图显示了当（X_1，Y_1）=（2，3），（X_2，Y_2）=（1，1），（X_3，Y_3）=（4，1），S=RRL时人们的运动。
-#我们说，当两个走在相反方向的人走到同一个位置时，就会发生碰撞。如果所有的人都无限期地走下去，是否会发生碰撞？
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ X_i ≦ 10^9
-#0 ≦ Y_i ≦ 10^9
-#(X_i, Y_i) ≠ (X_j, Y_j) if i ≠ j.
-#所有的X_i和Y_i都是整数。
-#S是一个长度为N的字符串，由L和R组成。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#S
-#
-#输出
-#如果会有碰撞，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#2 3
-#1 1
-#4 1
-#RRL
-#
-#样品输出1
-#Yes
-#这个输入与问题陈述中的例子相对应。
-#如果所有的人都继续走，那么人2和人3会发生碰撞。因此，应该打印Yes。
-#
-#样本输入2
-#2
-#1 1
-#2 1
-#RR
-#
-#样本输出2
-#No
-#由于人1和人2在同一方向行走，他们永远不会发生碰撞。
-#
-#样本输入3
-#10
-#1 3
-#1 4
-#0 0
-#0 2
-#0 4
-#3 1
-#2 4
-#4 2
-#4 4
-#3 3
-#RLRRRLRLRR
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    cnt1 = 0
+    cnt2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            cnt1 += 1
+        for j in range(n):
+            if a[i] == b[j]:
+                cnt2 += 1
+
+    print(cnt1)
+    print(cnt2 - cnt1)
+
+=======
+Suggestion 2
+
+def get_same_num(a, b):
+    return len(set(a) & set(b))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    cnt1 = 0
+    cnt2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            cnt1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                cnt2 += 1
+    print(cnt1)
+    print(cnt2)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                count2 += 1
+    print(count1)
+    print(count2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    count1 = 0
+    count2 = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            count1 += 1
+    for i in range(N):
+        for j in range(N):
+            if i != j and A[i] == B[j]:
+                count2 += 1
+    print(count1)
+    print(count2)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if a[i] == b[j]:
+                    count2 += 1
+    print(count1)
+    print(count2//2)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    c = 0
+    d = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            c += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if a[i] == b[j]:
+                    d += 1
+    print(c)
+    print(d // 2)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                count2 += 1
+    print(count1)
+    print(count2)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = input().split()
+    b = input().split()
+    a = [int(i) for i in a]
+    b = [int(i) for i in b]
+    c = [i for i in a if i in b]
+    print(len(c))
+    d = [i for i in a if i not in b]
+    e = [i for i in b if i not in a]
+    print(len(d)+len(e))

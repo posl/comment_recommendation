@@ -1,35 +1,72 @@
-#问题陈述
-#给出的是一个整数N。
-#是否有可能在代表N的十进制字符串的开头加上0或更多的0，从而得到一个回文？
-#
-#限制条件
-#0 ≦ N ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果可以做出一个回文，打印Yes；否则，打印No。
-#
-#输入样本1
-#1210
-#
-#样本输出1
-#Yes
-#在1210的开头加上一个0，结果是01210，一个回文。
-#
-#输入样本2
-#777
-#
-#输出样本2
-#Yes
-#777已经是一个回文。
-#
-#输入样本3
-#123456789
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(n-1)
+
+=======
+Suggestion 2
+
+def solve(n):
+    if n<3:
+        return 0
+    if n%2==1:
+        return int((n-1)/2)
+    else:
+        return int((n-2)/2)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(int(N/2-1))
+    else:
+        print(int(N/2))
+
+=======
+Suggestion 4
+
+def main():
+    print("请输入糖果的数目：")
+    N = int(input())
+    print("共有",count(N),"种方法可以使每个男孩得到正整数的糖果。")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print(int(N/2))
+
+=======
+Suggestion 6
+
+def get_input():
+    n = int(input())
+    return n
+
+=======
+Suggestion 7
+
+def problems198_a(n):
+    if n%2 == 0:
+        return n//2 - 1
+    else:
+        return n//2
+
+=======
+Suggestion 8
+
+def get_candy():
+    n = int(input())
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return n-1

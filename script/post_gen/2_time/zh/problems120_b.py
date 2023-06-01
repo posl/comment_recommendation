@@ -1,39 +1,97 @@
-#问题陈述
-#给你正整数A和B。
-#请找出能同时除以A和B的第K个最大的正整数。
-#输入保证存在这样一个数字。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B ≦ 100
-#同时除以A和B的第K个最大正整数存在。
-#K ≧ 1
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B K
-#
-#输出
-#打印同时除以A和B的第K个最大正整数。
-#
-#输入样本 1
-#8 12 2
-#
-#输出示例 1
-#2
-#三个正整数同时除以8和12：1，2和4。
-#其中，第二大的是2。
-#
-#输入样本2
-#100 50 4
-#
-#样本输出2
-#5
-#
-#样本输入3
-#1 1 1
-#
-#样品输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems120_a():
+    A, B, C = map(int, input().split())
+    print(min(B // A, C))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 计算结果
+    result = min(b // a, c)
+
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    A,B,C = map(int,input().split())
+    if A > C:
+        print(0)
+    else:
+        print(B//A)
+
+=======
+Suggestion 4
+
+def solve():
+    a,b,c = map(int,input().split())
+    print(min(b//a,c))
+
+=======
+Suggestion 5
+
+def problem120_a():
+    a, b, c = map(int, input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b // a if c > b // a else c)
+
+problem120_a()
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = map(int, input().split())
+    print(min(b//a, c))
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+
+    # 解决问题
+    if a * c <= b:
+        ans = c
+    else:
+        ans = b // a
+
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int,input().split())
+    print(min(b//a,c))
+main()
+
+=======
+Suggestion 9
+
+def solve(a, b, c):
+    if a * c <= b:
+        return c
+    else:
+        return b // a
+
+=======
+Suggestion 10
+
+def main():
+    a, b, c = map(int, input().split())
+    print(min(c, b // a))

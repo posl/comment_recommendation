@@ -1,53 +1,131 @@
-#问题陈述
-#一共有N个人。第i个人（1 ≦ i ≦ N）的姓氏和名字分别是S_i和T_i。
-#确定是否存在一对具有相同姓氏和名字的人。换句话说，确定是否有一对整数（i,j），使得1 ≦ i < j ≦ N，S_i=S_j，和T_i=T_j。
-#
-#限制条件
-#2 ≦ N ≦ 1000
-#N是一个整数。
-#S_i和T_i中的每一个都是由英文小写字母组成的长度在1到10之间（包括10）的字符串。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#如果有一对人的姓氏和名字相同，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#样本产出1
-#Yes
-#第一和第三人有相同的姓氏和名字。
-#
-#样本输入2
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#样本输出2
-#No
-#没有两个人有相同的姓氏和名字。
-#
-#样本输入3
-#4
-#sypdgidop bkseq
-#bajsqz hh
-#ozjekw mcybmtt
-#qfeysvw dbo
-#
-#输出样本3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(float,input().split("."))
+    if 0 <= y <= 2:
+        print(int(x) - 1,end="")
+        print("-")
+    elif 3 <= y <= 6:
+        print(int(x))
+    else:
+        print(int(x) + 1,end="")
+        print("+")
+
+=======
+Suggestion 2
+
+def main():
+    x,y = map(float, input().split("."))
+    if 0 <= y <= 2:
+        print(int(x), end="")
+        print("-")
+    elif 3 <= y <= 6:
+        print(int(x), end="")
+    else:
+        print(int(x), end="")
+        print("+")
+
+=======
+Suggestion 3
+
+def problem216_a():
+    x, y = map(int, input().split('.'))
+    if 0 <= y <= 2:
+        print(x, '-')
+    elif 3 <= y <= 6:
+        print(x)
+    elif 7 <= y <= 9:
+        print(x, '+')
+
+=======
+Suggestion 4
+
+def main():
+    x, y = input().split('.')
+    y = int(y)
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(x + '+')
+
+=======
+Suggestion 5
+
+def main():
+    x,y=input().split(".")
+    y=int(y)
+    x=int(x)
+    if 0<=y<=2:
+        print(x,end="")
+        print("-")
+    elif 3<=y<=6:
+        print(x,end="")
+    elif 7<=y<=9:
+        print(x,end="")
+        print("+")
+
+=======
+Suggestion 6
+
+def print_sign(num):
+    if num <= 2:
+        print('X-')
+    elif num <= 6:
+        print('X')
+    else:
+        print('X+')
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split('.'))
+    if 0 <= y <= 2:
+        print(str(x) + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(str(x) + '+')
+
+=======
+Suggestion 8
+
+def main():
+    x,y = input().split(".")
+    y = int(y)
+    if y <= 2:
+        print(x+"-")
+    elif y <= 6:
+        print(x)
+    else:
+        print(x+"+")
+
+main()
+
+=======
+Suggestion 9
+
+def print_result(x, y):
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    elif 7 <= y <= 9:
+        print(x + '+')
+
+=======
+Suggestion 10
+
+def main():
+    x,y = map(float,input().split('.'))
+    if 0<=y<=2:
+        print(str(int(x))+'-')
+    elif 3<=y<=6:
+        print(str(int(x)))
+    else:
+        print(str(int(x))+'+')

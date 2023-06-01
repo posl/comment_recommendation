@@ -1,62 +1,75 @@
-#问题陈述
-#给定的是一个正整数N，考虑在N上重复应用下面的操作：
-#首先，选择一个满足以下所有条件的正整数z：
-#z可以表示为z=p^e，其中p是一个素数，e是一个正整数；
-#z除以N；
-#z与之前操作中选择的所有整数不同。
-#然后，用N/z替换N。
-#找出该操作可应用的最大次数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印该操作可应用的最大次数。
-#
-#样本输入1
-#24
-#
-#样本输出1
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=12)。
-#选择z=3 (=3^1)。(现在我们有N=4)。
-#选择z=4 (=2^2).(现在我们有N=1)。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#我们根本就不能应用这个操作。
-#
-#样本输入3
-#64
-#
-#样本输出3
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=32)。
-#选择z=4（=2^2）。(现在我们有N=8)。
-#选择z=8 (=2^3).(现在我们有N=1)。
-#
-#样本输入4
-#1000000007
-#
-#样本输出4
-#1
-#我们可以应用一次操作，例如，做出以下选择：
-#z=1000000007 (=1000000007^1).(现在我们有N=1)。
-#
-#输入样本5
-#997764507000
-#
-#样本输出5
-#7
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = input().split()
+    print(int(int(A)*float(B)))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(float, input().split())
+    print(int(A * B))
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(float, input().split())
+    C = A * B
+    print(int(C))
+
+=======
+Suggestion 4
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = float(b)
+    print(int(a*b))
+
+=======
+Suggestion 5
+
+def mul(a, b):
+    a = int(a)
+    b = float(b)
+    c = a * b
+    return int(c)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = float(b)
+    b = int(b * 100)
+    print(a*b//100)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(float,input().split())
+    print(int(a*b))
+
+=======
+Suggestion 8
+
+def calc(A,B):
+    #print(A,B)
+    A = int(A)
+    B = int(B*100)
+    #print(A,B)
+    return A*B//100
+
+=======
+Suggestion 9
+
+def solve():
+    A, B = map(float, input().split())
+    print(int(A * B))

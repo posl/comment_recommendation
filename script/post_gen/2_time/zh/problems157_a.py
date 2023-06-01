@@ -1,35 +1,121 @@
-#问题陈述
-#高桥想打印一份有N页的双面文件，其中两页的数据可以打印在一张纸上。
-#他至少需要多少张纸？
-#
-#约束条件
-#N是一个整数。
-#1 ≦ N ≦ 100
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#5
-#
-#样本输出1
-#3
-#通过在第1页上打印第1、2页，在第2页上打印第3、4页，在第3页上打印第5页，我们可以在3张纸上打印所有数据。
-#
-#输入样本2
-#2
-#
-#样本输出2
-#1
-#
-#输入样本3
-#100
-#
-#样品输出3
-#50
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+n,a,b = map(int,input().split())
+g = gcd(a,b)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, a, b = map(int, input().split())
+g = gcd(a, b)
+a //= g
+b //= g
+p = 10 ** 9 + 7
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a > b:
+        a, b = b, a
+    while a > 0:
+        a, b = b % a, a
+    return b
+
+=======
+Suggestion 6
+
+def main():
+    # 读入
+    n, a, b = map(int, input().split())
+    # 两个数的最大公约数
+    def gcd(x, y):
+        if y == 0:
+            return x
+        else:
+            return gcd(y, x % y)
+    # 两个数的最小公倍数
+    def lcm(x, y):
+        return x * y // gcd(x, y)
+    # 两个数的最小公倍数的倍数
+    l = lcm(a, b)
+    # 两个数的最小公倍数的倍数的个数
+    m = n // l
+    # 两个数的最小公倍数的倍数的最大个数
+    max = 2 * m
+    # 两个数的最小公倍数的倍数的最小个数
+    min = 2 * m - 1
+    # 两个数的最小公倍数的倍数的个数的差
+    d = max - min
+    # 两个数的最小公倍数的倍数的最小个数的最大值
+    max_min = max + d * (n % l == 0)
+    # 两个数的最小公倍数的倍数的最大个数的最小值
+    min_max = min - d * (n % l == 0)
+    # 两个数的最小公倍数的倍数的个数的和
+    sum = (max_min + min_max) * (n // l) // 2
+    # 两个数的最小公倍数的倍数的个数的和的差
+    diff = max_min - min_max
+    # 两个数的最小公倍数的倍数的个数的和的差的最小值
+    min_sum = sum - diff * (n % l == 0)
+    # 两个数的最小公倍数的倍数的个数的和的差的最大值
+    max_sum = sum + diff * (n % l == 0)
+    # 两个数的最小公倍数的倍数的个数的和
+
+=======
+Suggestion 7
+
+def gcd(a: int, b: int) -> int:
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 9
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x%y)

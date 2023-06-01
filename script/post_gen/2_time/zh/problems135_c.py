@@ -1,48 +1,175 @@
-#问题陈述
-#有N+1个城镇。第i个城镇正被A_i个怪物攻击。
-#我们有N个英雄。第i个英雄可以打败攻击第i个或（i+1）个城镇的怪物，总共最多可以打败B_i个怪物。
-#英雄们合作最多可以打败多少个怪物？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#A_1 A_2 ...A_{N+1}
-#B_1 B_2 ...B_N
-#
-#输出
-#打印英雄们能打败的最大怪物总数。
-#
-#输入样本 1
-#2
-#3 5 2
-#4 5
-#
-#样本输出1
-#9
-#如果英雄们按以下方式选择要击败的怪物，他们总共可以击败9个怪物，这是最大的结果。
-#第一位英雄击败了攻击第一个城镇的两个怪物和攻击第二个城镇的两个怪物。
-#第二位英雄击败了攻击第二座城镇的三只怪物和攻击第三座城镇的两只怪物。
-#
-#输入样本2
-#3
-#5 6 3 8
-#5 100 8
-#
-#样本输出2
-#22
-#
-#样本输入3
-#2
-#100 1 1
-#1 100
-#
-#样本输出 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if p[i] != i+1:
+            count += 1
+    if count > 2:
+        print('NO')
+    else:
+        print('YES')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if p[i] == i + 1:
+            count += 1
+    if count == n:
+        print("YES")
+    elif count == n - 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 'YES'
+    for i in range(n):
+        if p[i] != i+1:
+            ans = 'NO'
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    cnt = 0
+    for i in range(n):
+        if p[i] != i + 1:
+            cnt += 1
+    if cnt <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if p[i] != i + 1:
+            cnt += 1
+    if cnt <= 2:
+        print('YES')
+    else:
+        print('NO')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N, p)
+    #print(p.index(1))
+    #print(p.index(N))
+    if p.index(1) < p.index(N):
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = sorted(p)
+    if p == q:
+        print("YES")
+    else:
+        for i in range(n):
+            for j in range(i + 1, n):
+                if p[i] > p[j]:
+                    p[i], p[j] = p[j], p[i]
+                    if p == q:
+                        print("YES")
+                        return
+                    else:
+                        p[i], p[j] = p[j], p[i]
+        print("NO")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    p = list(map(int,input().split()))
+    #print(N)
+    #print(p)
+    count = 0
+    for i in range(N):
+        if p[i] != i + 1:
+            count += 1
+    if count <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int,input().split()))
+    count = 0
+    for i in range(n-1):
+        if p[i] != i+1:
+            count += 1
+    if count <= 2:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 10
+
+def is_sortable(p):
+    # p = [5,2,3,4,1]
+    # p = [2,4,3,5,1]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,4,3,2,1]
+    # p = [1,2,3,4,5,7,6]
+    # p = [5,2,3,4,1]
+    # p = [1,2,3,4,6,5,7]
+    # p = [1,2,3,4,6,5,7]
+    # p = [1,2,3,4,5,7,6]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,2,3,4,1]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,2,3,4,1]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,2,3,4,1]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,2,3,4,1]
+    # p = [1,2,3,4,5,6,7]
+    # p = [5,2,3,4,1

@@ -1,46 +1,146 @@
-#问题陈述
-#给你一个N个正整数的序列：a=（a_1,a_2,...a_n）。
-#你可以做下面的操作，次数为零或更多。至少需要多少次操作才能使A成为一个宫格？
-#选择一对正整数(x,y)，用y替换A中出现的所有x。
-#在这里，我们说A是一个调色板，当且仅当A_i=A_{N+1-i}对每一个i（1 ≦ i ≦ N）都成立。
-#
-#约束条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#样本输出 1
-#2
-#最初，我们有A=（1,5,3,2,5,2,3,1）。
-#将A中的3替换成2后，我们有A=(1,5,2,2,5,2,2,1)。
-#在用5替换A中的2的每一次出现后，我们有A=(1,5,5,5,5,5,1)。
-#这样一来，我们可以通过两次操作使A成为一个回文，这是最小的需要。
-#
-#输入样本2
-#7
-#1 2 3 4 1 2 3
-#
-#样本输出2
-#1
-#
-#样本输入3
-#1
-#200000
-#
-#样品输出3
-#0
-#A在开始时可能已经是一个回文。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    ans = 0
+    for k in d:
+        ans += d[k] * (d[k] - 1) // 2
+    print(n * (n - 1) // 2 - ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n < 2 or n > 3 * 10 ** 5:
+        return
+    a = list(map(int, input().split()))
+    if len(a) != n:
+        return
+    # print(a)
+    count = 0
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            if a[i] != a[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    # print(A)
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] != A[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] != A[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = [0] * (10**9 + 1)
+    for i in a:
+        count[i] += 1
+    ans = 0
+    for i in range(10**9 + 1):
+        ans += count[i] * (count[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve(n, a):
+    ans = 0
+    cnt = [0] * (10 ** 6 + 1)
+    for i in range(n):
+        ans += i - cnt[a[i]]
+        cnt[a[i]] += 1
+    return ans
+
+=======
+Suggestion 7
+
+def problem206_c():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(n * (n - 1) // 2 - ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = [0 for _ in range(10 ** 9 + 1)]
+    for i in range(n):
+        c[a[i]] += 1
+    ans = 0
+    for i in range(10 ** 9 + 1):
+        ans += c[i] * (c[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if a[i] != a[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def count_pairs(N, A):
+    from collections import Counter
+    counter = Counter(A)
+    total = 0
+    for v in counter.values():
+        total += v * (v - 1) // 2
+    return total

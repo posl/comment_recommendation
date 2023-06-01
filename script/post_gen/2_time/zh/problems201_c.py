@@ -1,39 +1,92 @@
-#问题陈述
-#高桥忘记了他的密码。密码是一个四位数的字符串，由0，1，...，9组成，可以以0开头。
-#对于0到9的每个数字，高桥记得以下事实，用一个10个字符的字符串S_0S_1 ...S_9:
-#如果S_i是o：他确定PIN码包含数字i；
-#如果S_i是x：他确定密码不包含数字i；
-#如果S_i是？：他不确定密码是否包含数字i。
-#有多少个字符串可以成为高桥的密码？
-#
-#限制条件
-#S是一个由o，x，和?组成的10个字符的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#ooo??? xxxx
-#
-#样本输出1
-#108
-#一些可能的密码是0123和0021。
-#
-#样本输入2
-#o?oo?oxoxo
-#
-#采样输出2
-#0
-#可能没有可能的PIN，在这种情况下，答案是0。
-#
-#输入样本3
-#xxxxx?xxxo
-#
-#样本输出3
-#15
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    mountain = []
+    for i in range(N):
+        mountain.append(input().split())
+    mountain.sort(key=lambda x: int(x[1]), reverse=True)
+    print(mountain[1][0])
+
+=======
+Suggestion 3
+
+def get_input():
+    N = int(input())
+    mountain = []
+    for i in range(N):
+        mountain.append(input().split())
+    return N, mountain
+
+=======
+Suggestion 4
+
+def second_height():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input().split()[0])
+        T.append(int(input().split()[1]))
+    T_sort = sorted(T)
+    for i in range(N):
+        if T[i] == T_sort[-2]:
+            print(S[i])
+            break
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        name, height = input().split()
+        mountains.append((name, int(height)))
+    mountains.sort(key=lambda x: x[1], reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    mountains = []
+    for i in range(n):
+        mountains.append(input().split())
+    mountains = sorted(mountains, key=lambda x:int(x[1]), reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 7
+
+def second_highest_mountain():
+    N = int(input())
+    mountains = []
+    for i in range(N):
+        mountains.append(input().split())
+    mountains.sort(key=lambda x:int(x[1]),reverse=True)
+    print(mountains[1][0])
+
+=======
+Suggestion 8
+
+def problems201_b():
+    n = int(input())
+    data = [input().split() for _ in range(n)]
+    data = sorted(data, key=lambda x: int(x[1]), reverse=True)
+    print(data[1][0])

@@ -1,62 +1,197 @@
-#问题陈述
-#给你一个非负整数N，按升序打印所有满足下列条件的非负整数x。
-#x的二进制表示中包含1的数字位置集是N的二进制表示中包含1的数字位置集的一个子集。
-#也就是说，对于每一个非负整数k，以下情况都成立：如果x的 "2^ks "位上的数字是1，N的2^ks位上的数字也是1。
-#
-#
-#约束条件
-#N是一个整数。
-#0 ≦ N < 2^{60}
-#在N的二进制表示中，最多只有15个数字位置包含1。
-#
-#输入
-#输入是由标准输入的，格式如下：
-#N
-#
-#输出
-#以升序排列的十进制整数打印答案，每个答案都在自己的行中。
-#
-#输入样本1
-#11
-#
-#输出样本1
-#0
-#1
-#2
-#3
-#8
-#9
-#10
-#11
-#N=11_{(10)}的二进制表示是1011_{(2)}。
-#满足条件的非负整数x是：
-#0000_{(2)}=0_{(10)}
-#0001_{(2)}=1_{(10)}
-#0010_{(2)}=2_{(10)}
-#0011_{(2)}=3_{(10)}
-#1000_{(2)}=8_{(10)}
-#1001_{(2)}=9_{(10)}
-#1010_{(2)}=10_{(10)}
-#1011_{(2)}=11_{(10)}
-#
-#样本输入2
-#0
-#
-#样本输出2
-#0
-#
-#样本输入3
-#576461302059761664
-#
-#样本输出3
-#0
-#524288
-#549755813888
-#549756338176
-#576460752303423488
-#576460752303947776
-#576461302059237376
-#576461302059761664
-#输入可能不适合32位有符号整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    s = []
+    for i in range(10):
+        s.append(input())
+    return s
+
+=======
+Suggestion 2
+
+def main():
+    for i in range(10):
+        print(input())
+    for i in range(10):
+        print(input())
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    data = []
+    for i in range(10):
+        data.append(input())
+
+    # 找出最左边的#和最右边的#
+    left = 10
+    right = 0
+    for i in range(10):
+        for j in range(10):
+            if data[i][j] == '#':
+                if j < left:
+                    left = j
+                if j > right:
+                    right = j
+
+    # 找出最上面的#和最下面的#
+    top = 10
+    bottom = 0
+    for i in range(10):
+        for j in range(10):
+            if data[i][j] == '#':
+                if i < top:
+                    top = i
+                if i > bottom:
+                    bottom = i
+
+    # 输出结果
+    print(top+1, right+1)
+    print(bottom+1, left+1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    s = []
+    for i in range(10):
+        s.append(list(input()))
+
+    # 从上往下找
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                print(i+1, j+1, end=' ')
+                break
+        if s[i][j] == '#':
+            break
+
+    # 从下往上找
+    for i in range(9, -1, -1):
+        for j in range(9, -1, -1):
+            if s[i][j] == '#':
+                print(i+1, j+1)
+                break
+        if s[i][j] == '#':
+            break
+
+=======
+Suggestion 5
+
+def solve():
+    s = []
+    for i in range(10):
+        s.append(input())
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                return i+1, j+1
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    s = []
+    for i in range(10):
+        s.append(input())
+    # 检查数据
+    for i in range(10):
+        if len(s[i]) != 10:
+            print('输入数据有误')
+            return
+    # 找到A,B
+    A = 10
+    B = 1
+    for i in range(10):
+        if '#' in s[i]:
+            if A > i:
+                A = i
+            if B < i:
+                B = i
+    # 找到C,D
+    C = 10
+    D = 1
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                if C > j:
+                    C = j
+                if D < j:
+                    D = j
+    # 输出结果
+    print(A+1, B+1)
+    print(C+1, D+1)
+    return
+
+=======
+Suggestion 7
+
+def get_input():
+    input = []
+    for i in range(10):
+        input.append(raw_input())
+    return input
+
+=======
+Suggestion 8
+
+def main():
+    s = []
+    for i in range(10):
+        s.append(input())
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(10):
+        if s[i].find('#') != -1:
+            a = i + 1
+            b = i + 1
+            c = s[i].find('#') + 1
+            d = s[i].rfind('#') + 1
+            break
+    for i in range(a, 10):
+        if s[i].find('#') != -1:
+            b = i + 1
+            break
+    print(a, b)
+    print(c, d)
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    for i in range(10):
+        s = input()
+        if s.find('#') >= 0:
+            break
+    for j in range(10):
+        if s[j] == '#':
+            break
+    print(i+1,j+1)
+    for k in range(10):
+        if s[k] != '#':
+            break
+    print(k+1,j+1)
+
+=======
+Suggestion 10
+
+def main():
+    # 从标准输入读取数据
+    s = []
+    for i in range(10):
+        s.append(input())
+    # 求解
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                print(i+1,j+1)
+                exit()

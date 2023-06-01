@@ -1,39 +1,79 @@
-#问题陈述
-#现在是章鱼烧节的季节!
-#今年，将有N个章鱼烧（一种球状食物，里面有一块章鱼）被供应。第i个章鱼烧的美味是d_i。
-#众所周知，当你同时吃了两个美味度为x和y的章鱼烧，你会恢复x×y的健康点数。
-#有((N×(N-1))/(2))种方法可以从节日里提供的N个章鱼烧中选择两个。对于每一种选择，找出吃了这两个章鱼烧后恢复的健康点数，然后计算这些（（N×（N-1））/（2））数值的总和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 50
-#0 ≦ d_i ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#d_1 d_2 ... d_N
-#
-#输出
-#打印在N个章鱼烧中所有可能选择的两个章鱼烧中，吃两个章鱼烧所恢复的健康点数之和。
-#
-#输入样本 1
-#3
-#3 1 2
-#
-#样本输出1
-#11
-#有三种可能的选择：
-#吃第一个和第二个章鱼烧。你将恢复3点健康点。
-#吃第二个和第三个章鱼烧。你将恢复2点健康点。
-#吃第一个和第三个章鱼烧。你将恢复6点健康点。
-#这些数值的总和是11。
-#
-#样本输入2
-#7
-#5 0 7 8 3 3 2
-#
-#样本输出2
-#312
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    print(max(0,a-2*b))
+
+=======
+Suggestion 2
+
+def main():
+    A,B = map(int,input().split())
+    if A<=B:
+        print(0)
+    else:
+        print(A-B*2)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int, input().split())
+    print(max(a-2*b, 0))
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+    # 计算并打印答案
+    print(max(0, A - 2 * B))
+
+=======
+Suggestion 5
+
+def solution(a, b):
+    if a <= b:
+        return 0
+    else:
+        return a - b * 2
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    if a <= b:
+        print(0)
+    else:
+        print(a-b*2)
+
+=======
+Suggestion 7
+
+def solve(a, b):
+    if a <= b:
+        return 0
+    else:
+        return a - b
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if a > b:
+        print(a-b)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    print(max(0,A-2*B))

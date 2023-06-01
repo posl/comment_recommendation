@@ -1,68 +1,165 @@
-#问题陈述
-#有一个由H个水平行和W个垂直列组成的方形单元格。位于第i行和第j列的单元格将被称为单元格（i，j）。
-#在单元格（i，j）中，放置了a_{ij}枚硬币。
-#你可以进行以下任意次数的操作：
-#操作：选择一个之前没有选择的、含有一个或多个硬币的单元格，然后将其中一个硬币移到垂直或水平相邻的单元格。
-#最大限度地增加含有偶数硬币的单元格的数量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ H, W ≦ 500
-#0 ≦ a_{ij} ≦ 9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#a_{11} a_{12}... a_{1W}
-#a_{21} a_{22} ... a_{2W}
-#:
-#a_{H1} a_{H2} ... a_{HW} 。
-#
-#输出
-#打印一个操作序列，使含有偶数硬币的单元格数量达到最大，格式如下：
-#N
-#y_1 x_1 y_1' x_1')
-#y_2 x_2 y_2' x_2')
-#:
-#y_N x_N y_N' x_N'。
-#也就是说，在第一行，打印一个介于0和H×W（包括）之间的整数N，代表操作的数量。
-#在第（i+1）行（1 ≦ i ≦ N），打印四个整数y_i, x_i, y_i' 和 x_i' （1 ≦ y_i, y_i' ≦ H 和 1 ≦ x_i, x_i' ≦ W），代表第i次操作。这四个整数代表将放置在单元格（y_i, x_i）中的一枚硬币移动到垂直或水平相邻的单元格（y_i', x_i'）的操作。
-#请注意，如果指定的操作违反了问题陈述中的规范或输出格式无效，将导致错误的答案。
-#
-#输入样本 1
-#2 3
-#1 2 3
-#0 1 1
-#
-#样本输出 1
-#3
-#2 2 2 3
-#1 1 1 2
-#1 3 1 2
-#经过以下一连串的操作后，每个单元格都含有偶数的硬币：
-#将单元格（2，2）中的硬币移至单元格（2，3）。
-#将单元格（1，1）中的硬币移到单元格（1，2）。
-#将单元格（1，3）中的一枚硬币移到单元格（1，2）。
-#
-#样本输入 2
-#3 2
-#1 0
-#2 1
-#1 0
-#
-#样本输出2
-#3
-#1 1 1 2
-#1 2 2 2
-#3 1 3 2
-#
-#样本输入 3
-#1 5
-#9 9 9 9 9
-#
-#样本输出3
-#2
-#1 1 1 2
-#1 3 1 4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,x=map(int,raw_input().split())
+a=map(int,raw_input().split())
+a.sort()
+ans=abs(x-a[0])
+for i in range(1,n):
+    ans=gcd(ans,abs(x-a[i]))
+print ans
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,x=map(int,input().split())
+a=list(map(int,input().split()))
+a.append(x)
+a.sort()
+b=[a[i+1]-a[i] for i in range(n)]
+ans=b[0]
+for i in range(1,n):
+    ans=gcd(ans,b[i])
+print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    x_list.append(x)
+    x_list.sort()
+    x_list = [x_list[i+1]-x_list[i] for i in range(n)]
+    import math
+    def gcd(a,b):
+        if b == 0:
+            return a
+        else:
+            return gcd(b,a%b)
+    answer = x_list[0]
+    for i in range(1,n):
+        answer = gcd(answer,x_list[i])
+    print(answer)
+
+=======
+Suggestion 4
+
+def solve(n, x, xs):
+    xs.sort()
+    ds = []
+    for i in range(n-1):
+        ds.append(xs[i+1] - xs[i])
+    ds.sort()
+    if n == 1:
+        return ds[0]
+    else:
+        return gcd(ds[0], ds[1])
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    if n == 1:
+        print(x_list[1] - x_list[0])
+    else:
+        x_list_diff = [x_list[i+1] - x_list[i] for i in range(n)]
+        x_list_diff.sort()
+        print(x_list_diff[0])
+
+=======
+Suggestion 6
+
+def main():
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = []
+    for i in range(n):
+        d_list.append(x_list[i+1] - x_list[i])
+    d = d_list[0]
+    for i in range(1,n):
+        d = gcd(d,d_list[i])
+    print(d)
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = []
+    for i in range(n):
+        d_list.append(x_list[i+1] - x_list[i])
+    d_list.sort()
+    d = d_list[0]
+    for i in range(n):
+        d = gcd(d, d_list[i])
+    print(d)
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.append(X)
+    x.sort()
+    d = [x[i + 1] - x[i] for i in range(N)]
+    import math
+    ans = math.gcd(*d)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    x_list.sort()
+    if n == 1:
+        print(abs(x_list[0]-x))
+    else:
+        x_list.append(x)
+        x_list.sort()
+        x_list2 = []
+        for i in range(n+1):
+            x_list2.append(abs(x_list[i+1]-x_list[i]))
+        print(gcd_list(x_list2))
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(X)
+    x_list.sort()
+    d_list = []
+    for i in range(N):
+        d_list.append(x_list[i + 1] - x_list[i])
+    gcd = d_list[0]
+    for i in range(N - 1):
+        gcd = calc_gcd(gcd, d_list[i + 1])
+    print(gcd)

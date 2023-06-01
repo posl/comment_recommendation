@@ -1,36 +1,77 @@
-#问题陈述
-#给你一个由小写英文字母组成的长度为3的字符串S。
-#通过对S中的字符进行排列组合，可以得到多少个不同的字符串？
-#
-#限制条件
-#S是一个由小写英文字母组成的长度为3的字符串S。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印通过交换S中的字符可以得到的不同字符串的数量。
-#
-#输入样本1
-#aba
-#
-#样本输出1
-#3
-#通过对S= aba中的字符进行排列组合，可以得到三个不同的字符串：aab, aba, baa。
-#
-#输入样本2
-#ccc
-#
-#样本输出2
-#1
-#通过对S=ccc中的字符进行排列组合，可以得到一个字符串：ccc。
-#
-#输入样本3
-#xyz
-#
-#样本输出 3
-#6
-#通过对S= xyz中的字符进行替换，可以得到六个不同的字符串：xyz, xzy, yxz, yzx, zxy, zyx。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    print("hello")
+
+=======
+Suggestion 3
+
+def main():
+    return 0
+
+=======
+Suggestion 4
+
+def dfs(now,pre,step):
+    global ans
+    if step > ans:
+        return
+    if now == 123456789:
+        ans = step
+        return
+    for i in range(4):
+        if 0 <= now + dx[i] < 9 and pre != dx[i] and pre != -dx[i]:
+            dfs(now + dx[i], -dx[i], step + 1)
+
+dx = [-3,3,-1,1]
+ans = 100
+start = 0
+for i in range(3):
+    for j in range(3):
+        start += (int(input()) - 1) * 10 ** (8 - (i * 3 + j))
+dfs(start,0,0)
+print(ans if ans != 100 else -1)
+
+=======
+Suggestion 5
+
+def dfs(v, p):
+    if v == 9:
+        return 1
+    if dp[v][p] != -1:
+        return dp[v][p]
+    res = INF
+    for i in range(9):
+        if i != p:
+            res = min(res, dfs(v + 1, i) + (1 if not (v in G[i]) else 0))
+    dp[v][p] = res
+    return res
+
+INF = 10 ** 9
+M = int(input())
+G = [[] for _ in range(9)]
+for _ in range(M):
+    u, v = map(int, input().split())
+    G[u - 1].append(v - 1)
+    G[v - 1].append(u - 1)
+P = list(map(lambda x: int(x) - 1, input().split()))
+dp = [[-1] * 9 for _ in range(9)]
+ans = INF
+for i in range(9):
+    ans = min(ans, dfs(1, i) + (1 if not (1 in G[P[i]]) else 0))
+print(ans if ans < INF else -1)
+
+=======
+Suggestion 6
+
+def getMinStep():
+    return 0

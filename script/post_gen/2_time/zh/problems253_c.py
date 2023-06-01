@@ -1,68 +1,190 @@
-#问题陈述
-#我们有一个整数多集S，最初是空的。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下类型之一。
-#1 x:在S中插入一个x。
-#2 x c：从S中删除一个x m次，其中m = min(c,( S中包含的x的数量))。
-#3 : 打印（S的最大值）-（S的最小值）。  当这个查询被给出时，保证S不是空的。
-#
-#
-#约束条件
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ Q
-#当给定一个类型3的查询时，S不是空的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#query_i，表示第i个查询，是以下格式之一：
-#1 x
-#2 x c
-#3
-#
-#输出
-#按给定的顺序打印3类查询的答案，用换行符分隔。
-#
-#输入样本1
-#8
-#1 3
-#1 2
-#3
-#1 2
-#1 7
-#3
-#2 2 3
-#3
-#
-#样本输出1
-#1
-#5
-#4
-#多集S的转换过程如下。
-#第1次查询：在S中插入3，现在S是{3 }。
-#第2次查询：在S中插入2，现在S是{2, 3 }。
-#第3次查询：S = { 2, 3}的最大值是3，最小值是2，所以打印3-2=1。
-#第4次查询：在S中插入2，现在S是{2，2，3 }。
-#第5次查询：在S中插入7，现在S是{2，2，3，7}。
-#第6次查询：S={2,2,3,7}的最大值为7，最小值为2，所以打印7-2=5。
-#第7次查询：由于S中有两个2，并且[min(2,3)]=2，所以从S中删除2两次。  现在S是{3，7}。
-#第8次查询：S={3，7}的最大值是7，最小值是3，所以打印7-3=4。
-#
-#输入样本 2
-#4
-#1 10000
-#1 1000
-#2 100 3
-#1 10
-#
-#输出样本2
-#如果给定的查询不包含类型3的查询，就不应该打印任何东西。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    print(s)
+    print(h, w)
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                if i > 0 and s[i-1][j] == '-':
+                    ans += 1
+                if i < h-1 and s[i+1][j] == '-':
+                    ans += 1
+                if j > 0 and s[i][j-1] == '-':
+                    ans += 1
+                if j < w-1 and s[i][j+1] == '-':
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def read_input():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    return H, W, S
+
+=======
+Suggestion 4
+
+def find_o(s):
+    for i in range(len(s)):
+        if s[i] == 'o':
+            return i
+    return -1
+
+h, w = [int(x) for x in input().split()]
+s = []
+for i in range(h):
+    s.append(input())
+
+=======
+Suggestion 5
+
+def solve(h, w, s):
+    # 两个棋子的位置
+    p = []
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                p.append([i, j])
+    # 棋子间的距离
+    d = abs(p[0][0]-p[1][0]) + abs(p[0][1]-p[1][1])
+    # 棋子间的位置
+    p1 = p[0][0] + p[0][1]
+    p2 = p[1][0] + p[1][1]
+    if d == 1:
+        return 1
+    elif d == 2:
+        if p1 % 2 == 0 or p2 % 2 == 0:
+            return 1
+        else:
+            return 2
+    elif d == 3:
+        if p1 % 2 == 0 or p2 % 2 == 0:
+            return 2
+        else:
+            return 3
+    elif d == 4:
+        if p1 % 2 == 0 or p2 % 2 == 0:
+            return 2
+        else:
+            return 3
+    else:
+        return 3
+
+=======
+Suggestion 6
+
+def get_input():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    return h, w, s
+
+=======
+Suggestion 7
+
+def solve(h,w,s):
+    # 找到两个棋子
+    x1,y1,x2,y2 = 0,0,0,0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == 'o':
+                if x1 == 0:
+                    x1 = i
+                    y1 = j
+                else:
+                    x2 = i
+                    y2 = j
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+    # 从第一个棋子开始，找到第二个棋子
+    # 从第二个棋子开始，找到第一个棋子
+
+    return 0
+
+=======
+Suggestion 8
+
+def get_input():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    return H, W, S
+
+=======
+Suggestion 9
+
+def solve():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # 计算棋子之间的最短距离
+    dist = [[float('inf')] * W for _ in range(H)]
+
+    # 棋子的坐标
+    q = []
+
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                dist[i][j] = 0
+                q.append((i, j))
+    
+    while q:
+        i, j = q.pop(0)
+        for i2, j2 in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
+            if not (0 <= i2 < H and 0 <= j2 < W):
+                continue
+            if dist[i2][j2] != float('inf'):
+                continue
+            dist[i2][j2] = dist[i][j] + 1
+            q.append((i2, j2))
+    
+    res = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == 'o':
+                continue
+            res = max(res, dist[i][j])
+    
+    print(res)
+
+=======
+Suggestion 10
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    print(s)
+    # 从上往下第1行和从左往下第3列的棋子可以通过3步棋到达另一个棋子所在的位置：下、左、左。  由于不可能在两步或更短的时间内做到这一点，所以应该打印3。

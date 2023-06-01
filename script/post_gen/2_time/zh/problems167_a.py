@@ -1,43 +1,104 @@
-#问题陈述
-#高桥想成为某个网络服务的成员。
-#他试图用ID S来注册，结果发现这个ID已经被另一个用户使用了。
-#因此，他决定用一个字符串作为他的ID，这个字符串是在S的末尾加上一个字符得到的。
-#他现在试图用ID T进行注册。请判断这个字符串是否满足上述属性。
-#
-#限制条件
-#S和T是由小写英文字母组成的字符串。
-#1 ≦ |S| ≦ 10
-#|T| = |S| + 1
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#輸出
-#如果T满足问题陈述中的属性，打印Yes；否则，打印No。
-#
-#输入样本1
-#chokudai
-#chokudaiz
-#
-#样本输出1
-#Yes
-#chokudaiz可以通过在chokudai的末尾加上z来获得。
-#
-#输入样本2
-#snuke
-#snekee
-#
-#样本输出2
-#No
-#snekee不能通过在snuke的末尾添加一个字符来获得。
-#
-#输入样本3
-#a
-#aa
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    for a in range(-1000,1001):
+        for b in range(-1000,1001):
+            if a**5 - b**5 == x:
+                print(a,b)
+                return
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    for a in range(-1000,1000):
+        for b in range(-1000,1000):
+            if a**5 - b**5 == x:
+                print("{} {}".format(a,b))
+                return
+
+=======
+Suggestion 3
+
+def getAB(x):
+    if x == 1:
+        return 0,-1
+    else:
+        for a in range(1,1000):
+            for b in range(1,1000):
+                if a**5-b**5 == x:
+                    return a,b
+
+=======
+Suggestion 4
+
+def solve(x):
+    for a in range(-118, 120):
+        for b in range(-119, 119):
+            if a**5 - b**5 == x:
+                return a, b
+
+x = int(input())
+a, b = solve(x)
+print(a, b)
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    for a in range(-120, 120):
+        for b in range(-120, 120):
+            if a ** 5 - b ** 5 == x:
+                print(a, b)
+                return
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    for a in range(-118, 120):
+        for b in range(-119, 119):
+            if a**5 - b**5 == x:
+                print(a, b)
+                return
+
+=======
+Suggestion 7
+
+def solve(x):
+    for a in range(-118,119):
+        for b in range(-119,118):
+            if a**5-b**5==x:
+                return a,b
+x=int(input())
+a,b=solve(x)
+print(a,b)
+
+=======
+Suggestion 8
+
+def main():
+    X = int(input())
+    for A in range(-118, 120):
+        for B in range(-119, 119):
+            if A**5 - B**5 == X:
+                print(A, B)
+                return
+
+=======
+Suggestion 9
+
+def problem166():
+    x = int(input())
+    for a in range(1, 1001):
+        for b in range(-1000, 0):
+            if a**5 - b**5 == x:
+                print(a, b)
+                return

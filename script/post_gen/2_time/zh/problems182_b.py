@@ -1,44 +1,69 @@
-#问题陈述
-#给出一个整数序列A：A_1, A_2, A_3, ..., A_N。
-#设正整数k的GCD-ness是指A_1, A_2, A_3, ..., A_N中能被k整除的元素数目。
-#在大于或等于2的整数中，找出具有最大GCD-ness的整数。如果有多个这样的整数，你可以打印其中任何一个。  
-#
-#限制条件
-#1 ≦ N ≦ 100
-#2 ≦ A_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#输出
-#打印一个大于或等于2的整数中GCD-ness值最大的整数，如果有多个这样的整数，任何一个都可以接受。
-#
-#输入示例 1
-#3
-#3 12 7
-#
-#样本输出1
-#3
-#在3、12和7中，有两个--3和12--可以被3整除，所以3的GCD-ness是2。
-#没有大于或等于2的整数具有更大的GCD-ness，所以3是一个正确的答案。  
-#
-#输入样本 2
-#5
-#8 9 18 90 72
-#
-#样本输出2
-#9
-#在这种情况下，9的GCD-ness是4。
-#2和3的GCD-ness也是4，所以你也可以打印2或3。  
-#
-#输入样本 3
-#5
-#1000 1000 1000 1000 1000
-#
-#样本输出3
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+
+    if a >= b:
+        print(2*a+100-b)
+    else:
+        print(2*a+100)
+
+=======
+Suggestion 2
+
+def main():
+    a,b=map(int,input().split())
+    if b<=2*a+100:
+        print(2*a+100-b)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    print(2*A+100-B)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(2 * a + 100 - b)
+
+=======
+Suggestion 5
+
+def main():
+    # Read from stdin
+    a, b = map(int, input().split())
+    print(2*a+100-b)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int, input().split())
+    if b > 2*a+100:
+        print(0)
+    else:
+        print(2*a+100-b)
+
+=======
+Suggestion 7
+
+def problem182_a(a,b):
+    print(2*a+100-b)
+
+=======
+Suggestion 8
+
+def main():
+    a,b=map(int,input().split())
+    print(2*a+100-b)
+
+main()

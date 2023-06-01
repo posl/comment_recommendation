@@ -1,48 +1,269 @@
-#问题陈述
-#我们把一个长度为N的序列，其中1,2,...,N各出现一次，称为长度为N的排列组合。
-#给出一个长度为N的排列组合，P = (p_1, p_2,...,p_N)，打印一个长度为N的排列组合，Q = (q_1,...,q_N)，该排列组合满足以下条件。
-#对于每个i（1 ≦ i ≦ N），Q的第p_i个元素是i。
-#可以证明，存在一个唯一的满足条件的Q。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#(p_1,p_2,...,p_N)是一个长度为N的置换（定义见问题陈述
-#).
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#p_1 p_2 ... p_N
-#
-#输出
-#在一行中打印序列Q，中间有空格。
-#q_1 q_2 ... q_N
-#
-#样本输入1
-#3
-#2 3 1
-#
-#样本输出 1
-#3 1 2
-#排列组合Q=(3,1,2)满足条件，如下所示。
-#对于i = 1，我们有p_i = 2，q_2 = 1。
-#对于i = 2，我们有p_i = 3，q_3 = 2。
-#对于i = 3，我们有p_i = 1，q_1 = 3。
-#
-#样本输入2
-#3
-#1 2 3
-#
-#样本输出 2
-#1 2 3
-#如果p_i = i对每个i（1 ≦ i ≦ N），我们将有P = Q。
-#
-#样本输入3
-#5
-#5 3 2 4 1
-#
-#样本输出 3
-#5 3 2 4 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    if S1 == 'ABC':
+        if S2 == 'ARC':
+            print('AGC')
+        else:
+            print('ARC')
+    elif S1 == 'AGC':
+        if S2 == 'ABC':
+            print('ARC')
+        else:
+            print('ABC')
+    else:
+        if S2 == 'ABC':
+            print('AGC')
+        else:
+            print('ABC')
+
+=======
+Suggestion 2
+
+def main():
+    S_1 = input()
+    S_2 = input()
+    S_3 = input()
+    S = [S_1, S_2, S_3]
+    if "ABC" not in S:
+        print("ABC")
+    elif "ARC" not in S:
+        print("ARC")
+    elif "AGC" not in S:
+        print("AGC")
+    elif "AHC" not in S:
+        print("AHC")
+
+=======
+Suggestion 3
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    S = [S1, S2, S3]
+    S.sort()
+    if S[0] == 'ABC' and S[1] == 'AGC' and S[2] == 'AHC':
+        print('ARC')
+        print('AGC')
+        print('AHC')
+    elif S[0] == 'ABC' and S[1] == 'AGC' and S[2] == 'ARC':
+        print('AHC')
+        print('ARC')
+        print('AGC')
+    elif S[0] == 'ABC' and S[1] == 'ARC' and S[2] == 'AHC':
+        print('AGC')
+        print('ARC')
+        print('AHC')
+    elif S[0] == 'ABC' and S[1] == 'ARC' and S[2] == 'AGC':
+        print('AHC')
+        print('AGC')
+        print('ARC')
+    elif S[0] == 'ABC' and S[1] == 'AHC' and S[2] == 'AGC':
+        print('ARC')
+        print('AGC')
+        print('AHC')
+    elif S[0] == 'ABC' and S[1] == 'AHC' and S[2] == 'ARC':
+        print('AGC')
+        print('ARC')
+        print('AHC')
+    elif S[0] == 'AGC' and S[1] == 'ABC' and S[2] == 'AHC':
+        print('ARC')
+        print('AGC')
+        print('AHC')
+    elif S[0] == 'AGC' and S[1] == 'ABC' and S[2] == 'ARC':
+        print('AHC')
+        print('ARC')
+        print('AGC')
+    elif S[0] == 'AGC' and S[1] == 'AHC' and S[2] == 'ABC':
+        print('ARC')
+        print('AGC')
+        print('AHC')
+    elif S[0] == 'AGC' and S[1] == 'AHC' and S[2] == 'ARC':
+        print('ABC')
+        print('ARC')
+        print('AGC
+
+=======
+Suggestion 4
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC':
+        if s2 == 'ARC':
+            print('AGC')
+        else:
+            print('ARC')
+    elif s1 == 'ARC':
+        if s2 == 'ABC':
+            print('AGC')
+        else:
+            print('ABC')
+    else:
+        if s2 == 'ABC':
+            print('ARC')
+        else:
+            print('ABC')
+
+=======
+Suggestion 5
+
+def main():
+    S = []
+    for i in range(3):
+        S.append(input())
+    
+    if "ABC" not in S:
+        print("ABC")
+    elif "ARC" not in S:
+        print("ARC")
+    elif "AGC" not in S:
+        print("AGC")
+    elif "AHC" not in S:
+        print("AHC")
+
+=======
+Suggestion 6
+
+def main():
+    S_1 = input()
+    S_2 = input()
+    S_3 = input()
+    S = [S_1, S_2, S_3]
+    S.sort()
+    if S[0] == 'ABC':
+        print('AGC')
+    elif S[0] == 'ARC':
+        print('AHC')
+    elif S[0] == 'AGC':
+        print('ABC')
+    else:
+        print('ARC')
+
+=======
+Suggestion 7
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    s = [s1, s2, s3]
+    S = ['ABC', 'ARC', 'AGC', 'AHC']
+    for i in range(4):
+        if S[i] not in s:
+            print(S[i])
+            break
+
+=======
+Suggestion 8
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC':
+        if s2 == 'ARC':
+            print('AGC')
+        else:
+            print('ARC')
+    elif s1 == 'AGC':
+        if s2 == 'ABC':
+            print('ARC')
+        else:
+            print('ABC')
+    else:
+        if s2 == 'ABC':
+            print('AGC')
+        else:
+            print('ABC')
+
+=======
+Suggestion 9
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    if S1 == "ABC":
+        if S2 == "ARC":
+            if S3 == "AGC":
+                print("AHC")
+            else:
+                print("AGC")
+        else:
+            print("ARC")
+    elif S1 == "ARC":
+        if S2 == "ABC":
+            if S3 == "AGC":
+                print("AHC")
+            else:
+                print("AGC")
+        else:
+            print("ABC")
+    else:
+        if S2 == "ABC":
+            if S3 == "ARC":
+                print("AGC")
+            else:
+                print("ARC")
+        else:
+            print("ABC")
+
+=======
+Suggestion 10
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ARC':
+        if s2 == 'AGC':
+            print('ABC')
+        elif s3 == 'AGC':
+            print('ABC')
+        elif s2 == 'AHC':
+            print('ABC')
+        elif s3 == 'AHC':
+            print('ABC')
+    elif s1 == 'AGC':
+        if s2 == 'ARC':
+            print('ABC')
+        elif s3 == 'ARC':
+            print('ABC')
+        elif s2 == 'AHC':
+            print('ABC')
+        elif s3 == 'AHC':
+            print('ABC')
+    elif s1 == 'AHC':
+        if s2 == 'ARC':
+            print('ABC')
+        elif s3 == 'ARC':
+            print('ABC')
+        elif s2 == 'AGC':
+            print('ABC')
+        elif s3 == 'AGC':
+            print('ABC')
+    elif s1 == 'ABC':
+        if s2 == 'ARC':
+            print('AGC')
+        elif s3 == 'ARC':
+            print('AGC')
+        elif s2 == 'AGC':
+            print('ARC')
+        elif s3 == 'AGC':
+            print('ARC')
+        elif s2 == 'AHC':
+            print('AGC')
+        elif s3 == 'AHC':
+            print('AGC')
+    else:
+        print('ARC')
+main()

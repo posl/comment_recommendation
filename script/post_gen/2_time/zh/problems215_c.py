@@ -1,36 +1,80 @@
-#问题描述
-#在一个字符串S的排列组合中找出第K个最小的字符串。
-#什么是字符串的排列组合？当任何字符在A和B中出现的次数相同时，就说A字符串是B字符串的排列组合。
-#
-#限制条件
-#1 ≦ |S| ≦ 8
-#S由小写英文字母组成。
-#至少有K个不同的字符串是S的排列组合。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#aab 2
-#
-#样本输出1
-#aba
-#一个字符串aab有三种排列组合：{ aab, aba, baa }。其中第2个最小的词汇表是aba。
-#
-#输入样本 2
-#baba 4
-#
-#输出样本2
-#baab
-#
-#样本输入3
-#ydxwacbz 40320
-#
-#样本输出3
-#zyxwdcba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    k = 0
+    while 2 ** k <= n:
+        k += 1
+    print(k - 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    k = 0
+    while 2**k <= N:
+        k += 1
+    print(k-1)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    k = 0
+    while N >= 2:
+        N = int(N / 2)
+        k += 1
+    print(k)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    k = 0
+    while 2 ** k <= N:
+        k += 1
+    print(k - 1)
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    n = int(input())
+    # 计算结果
+    k = 0
+    while 2 ** k <= n:
+        k += 1
+    # 输出结果
+    print(k - 1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    k = 0
+    while True:
+        if 2**k <= n:
+            k += 1
+        else:
+            break
+    print(k-1)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    k = 0
+    while n >= 2**k:
+        k += 1
+    print(k-1)
+main()

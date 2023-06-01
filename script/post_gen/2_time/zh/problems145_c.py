@@ -1,59 +1,126 @@
-#问题陈述
-#在一个坐标平面内有N个城镇。镇i位于坐标(x_i, y_i)处。镇i和镇j之间的距离是（（x_i-x_j）^2+（y_i-y_j）^2）^(1/2)。
-#有N条可能的路径可以访问所有这些城镇一次。让路径的长度为我们从路径中的第一个城镇开始，访问第二个，第三个，......，城镇，并到达最后一个城镇时的距离（假设我们从一个城镇到另一个城镇是直线行驶）。计算这N条路径的平均长度。
-#
-#限制条件
-#2 ≦ N ≦ 8
-#-1000 ≦ x_i ≦ 1000
-#-1000 ≦ y_i ≦ 1000
-#(x_i, y_i) ≠ (x_j, y_j) (如果 i ≠ j)
-#(日本时间21:12添加) 输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#输出
-#打印路径的平均长度。
-#当你的输出与判断的输出的绝对值最多相差10^{-6}时，你的输出将被判定为正确。
-#
-#输入样本 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#样本输出1
-#2.2761423749
-#有六条访问城镇的路径：1→2→3，1→3→2，2→1→3，2→3→1，3→1→2，以及3→2→1。
-#路径1→2→3的长度是（（0-1）^2+（0-0）^2）^（1/2）+（（1-0）^2+（0-1）^2）^（1/2）=1+（2）^（1/2）。
-#通过这样计算其他路径的长度，我们看到所有路线的平均长度是：
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#
-#样本输入2
-#2
-#-879 981
-#-866 890
-#
-#样本输出2
-#91.9238815543
-#有两条访问城镇的路径：1→2和2→1。这些路径的长度相同。
-#
-#样本输入3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#样本输出3
-#7641.9817824387
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[0:N//2] == S[N//2:N]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 1:
+        print("No")
+    else:
+        if s[:n//2] == s[n//2:]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 1:
+        print("No")
+    else:
+        T = S[:N//2]
+        if T + T == S:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def is_double_copy(s):
+    if len(s)%2!=0:
+        return False
+    else:
+        l=len(s)//2
+        return s[:l]==s[l:]
+
+n=int(input())
+s=input()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 0 and s[:n//2] == s[n//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def find_substring(s):
+    s_len = len(s)
+    for i in range(1, s_len//2+1):
+        if s_len%i != 0:
+            continue
+        else:
+            if s[:i]*(s_len//i) == s:
+                return True
+    return False
+
+=======
+Suggestion 8
+
+def is_double_copy(N,S):
+    if N%2 != 0:
+        return "No"
+    else:
+        if S[0:N/2] == S[N/2:N]:
+            return "Yes"
+        else:
+            return "No"
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    print("Yes" if s[0:n//2] == s[n//2:] else "No")
+
+=======
+Suggestion 10
+
+def main():
+    n = input()
+    s = raw_input()
+    if s[0:n/2] == s[n/2:n]:
+        print "Yes"
+    else:
+        print "No"

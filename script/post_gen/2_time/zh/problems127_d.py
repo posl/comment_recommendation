@@ -1,68 +1,146 @@
-#问题陈述
-#你有N张卡片。在第i张卡片上，写着一个整数A_i。
-#对于每个j=1，2，...，M的顺序，你将执行一次以下操作：
-#操作：最多选择B_j张牌（可能是零）。用C_j代替写在每张所选卡片上的整数。
-#找到M次操作后写在N张卡片上的整数的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i, C_i ≦ 10^9
-#1 ≦ B_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 A_2 ...A_N
-#B_1 C_1
-#B_2 C_2
-#.
-#.
-#.
-#B_M C_M
-#
-#输出
-#打印M次操作后写在N个卡片上的最大可能的整数之和。
-#
-#输入样本 1
-#3 2
-#5 1 4
-#2 3
-#1 5
-#
-#样本输出1
-#14
-#把第二张卡片上的整数换成5，三张卡片上的整数之和就变成了5+5+4=14，这就是最大的结果。
-#
-#输入样本2
-#10 3
-#1 8 5 7 100 4 52 33 13 5
-#3 10
-#4 30
-#1 4
-#
-#样本输出2
-#338
-#
-#样本输入3
-#3 2
-#100 100 100
-#3 99
-#3 99
-#
-#样本输出3
-#300
-#
-#样本输入4
-#11 3
-#1 1 1 1 1 1 1 1 1 1 1
-#3 1000000000
-#4 1000000000
-#3 1000000000
-#
-#样本输出4
-#10000000001
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    L = []
+    R = []
+    for i in range(m):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[m-1] > R[0]:
+        print(0)
+    else:
+        print(R[0]-L[m-1]+1)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    l = 0
+    r = n
+    for i in range(m):
+        ll, rr = map(int, input().split())
+        l = max(l, ll)
+        r = min(r, rr)
+    print(max(0, r - l + 1))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l_max = max(l)
+    r_min = min(r)
+    if r_min - l_max >= 0:
+        print(r_min - l_max + 1)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    l = [0] * m
+    r = [0] * m
+    for i in range(m):
+        l[i], r[i] = map(int, input().split())
+    lmax = max(l)
+    rmin = min(r)
+    print(max(0, rmin - lmax + 1))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    print(min(r) - max(l) + 1 if min(r) - max(l) >= 0 else 0)
+
+=======
+Suggestion 9
+
+def solve():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_, r_ = map(int, input().split())
+        l.append(l_)
+        r.append(r_)
+    print(max(0, min(r) - max(l) + 1))
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l_max = max(l)
+    r_min = min(r)
+    print(max(r_min - l_max + 1, 0))

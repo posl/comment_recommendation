@@ -1,53 +1,144 @@
-#问题陈述
-#我们有一棵树，有N个顶点，编号为1到N。
-#树上的第i条边连接着顶点u_i和顶点v_i，其长度为w_i。
-#你的目标是将树上的每个顶点涂成白色或黑色（将所有顶点涂成相同的颜色也可以），以便满足以下条件：
-#对于任何两个涂成相同颜色的顶点，它们之间的距离是一个偶数。
-#找到一个满足条件的顶点的着色，并打印出来。可以证明，在这个问题的约束下，至少有一个这样的着色存在。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ u_i < v_i ≦ N
-#1 ≦ w_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#u_1 v_1 w_1
-#u_2 v_2 w_2
-#.
-#.
-#.
-#u_{N - 1} v_{N - 1} w_{N - 1}
-#
-#输出
-#打印符合条件的顶点的着色，共N行。
-#如果顶点i被涂成白色，第i行应该包含0，如果被涂成黑色，则包含1。
-#如果有多个满足条件的着色，其中任何一个都会被接受。
-#
-#输入样本 1
-#3
-#1 2 2
-#2 3 1
-#
-#样本输出 1
-#0
-#0
-#1
-#
-#采样输入2
-#5
-#2 5 2
-#2 3 10
-#1 3 8
-#3 4 2
-#
-#样本输出2
-#1
-#0
-#1
-#0
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem126_c(n,k):
+    if n>k:
+        return 1/(2**(n-k))
+    else:
+        return 0.5
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    p = 0
+    for i in range(1,n+1):
+        if i >= k:
+            p += 1/n
+        elif i < k:
+            x = i
+            while x < k:
+                x *= 2
+            p += 1/n * (0.5 ** (x/i))
+    print(p)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        cnt = 0
+        while i < k:
+            i *= 2
+            cnt += 1
+        ans += (1 / n) * (1 / (2 ** cnt))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N+1):
+        score = i
+        p = 1 / N
+        while score < K:
+            score *= 2
+            p /= 2
+        ans += p
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(n, k):
+    ans = 0
+    for i in range(1, n + 1):
+        p = 1
+        while i < k:
+            i *= 2
+            p /= 2
+        ans += p
+    return ans / n
+
+n, k = map(int, input().split())
+print(solve(n, k))
+
+=======
+Suggestion 6
+
+def solve(n,k):
+    ans = 0
+    for i in range(1,n+1):
+        if i >= k:
+            ans += 1/n
+        else:
+            cnt = 0
+            while i < k:
+                i *= 2
+                cnt += 1
+            ans += (1/n) * (0.5 ** cnt)
+    return ans
+
+=======
+Suggestion 7
+
+def solve():
+    n,k = map(int,input().split())
+    ans = 0
+    for i in range(1,n+1):
+        if i >= k:
+            ans += 1/n
+        else:
+            ans += 1/n*(1/2)**(len(bin(k-i))-3)
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N,K = map(int,input().split())
+    ans = 0
+    for i in range(1,N+1):
+        p = 1
+        while i<K:
+            i *= 2
+            p /= 2
+        ans += p
+    print(ans/N)
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int,input().split())
+    p = 0
+    for i in range(1,n+1):
+        if i >= k:
+            p += 1/n
+        else:
+            j = 1
+            while i * 2 ** j < k:
+                j += 1
+            p += (1/2) ** j / n
+    print(p)
+
+=======
+Suggestion 10
+
+def solve():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        cnt = 0
+        while i < k:
+            i *= 2
+            cnt += 1
+        ans += (1 / n) * (0.5 ** cnt)
+    print(ans)

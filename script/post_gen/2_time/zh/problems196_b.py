@@ -1,36 +1,79 @@
-#问题陈述
-#给出一个整数或小数X，将其四舍五入为整数并打印结果。
-#
-#限制条件
-#0 ≦ X ≦ 10^{100}
-#X是一个整数或小数，小数点后最多有100位，没有多余的前导零。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#将X四舍五入为整数，并打印结果（为整数）。
-#
-#输入样本 1
-#5.90
-#
-#样本输出1
-#5
-#我们将5.90四舍五入为一个整数，即5，并将其打印为一个整数。非整数输出，如5.0，将被判定为不正确。
-#
-#输入样本2
-#0
-#
-#样本输出2
-#0
-#X中可能没有小数点。
-#
-#输入样本3
-#84939825309432908832902189.9092309409809091329
-#
-#输出样本3
-#84939825309432908832902189
-#处理大数字时要注意。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(b - c)
+
+=======
+Suggestion 2
+
+def get_max_value(a, b, c, d):
+    max_value = -10000000000
+    for x in range(a, b + 1):
+        for y in range(c, d + 1):
+            if max_value < x - y:
+                max_value = x - y
+    return max_value
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a-c, a-d, b-c, b-d))
+
+=======
+Suggestion 4
+
+def problem196_a():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(a - c, a - d, b - c, b - d))
+
+problem196_a()
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(max(b-c, b-d, a-c, a-d))
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+
+    # 求解并输出
+    print(max(a-c, a-d, b-c, b-d))
+
+=======
+Suggestion 7
+
+def max_x_y(a, b, c, d):
+    x = a
+    y = c
+    if (a + c) < (a + d):
+        y = d
+    if (a + c) < (b + c):
+        x = b
+    return x - y
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    # 写入输出
+    print(max(a - c, a - d, b - c, b - d))

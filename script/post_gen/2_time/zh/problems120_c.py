@@ -1,40 +1,126 @@
-#问题陈述
-#在一张桌子上有N个垂直堆放的立方体。
-#如果S中的第i个字符是0，则从底部开始的第i个立方体的颜色是红色，如果该字符是1，则是蓝色。
-#你可以进行以下任意次数的操作：选择一个相邻的红色立方体和一个蓝色立方体，然后把它们移走。在这里，堆积在被移走的立方体上的立方体将落到它们下面的物体上。
-#最多可以移走多少个立方体？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S中的每个字符都是0或1。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印可移除的最大立方体数量。
-#
-#样本输入1
-#0011
-#
-#样本输出1
-#4
-#所有的四个立方体都可以被移走，操作方法如下：
-#从底部取出第二个和第三个立方体。然后，第四个立方体落到第一个立方体上。
-#从底部移走第一个和第二个立方体。
-#
-#样本输入2
-#11011010001011
-#
-#样本输出2
-#12
-#
-#采样输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 3
+
+def main():
+    a, b, k = map(int, input().split())
+    count = 0
+    for i in range(1, max(a, b) + 1):
+        if a % i == 0 and b % i == 0:
+            count += 1
+            if count == k:
+                print(i)
+                exit()
+
+=======
+Suggestion 4
+
+def get_common_multiple(A,B,K):
+    #A,B,K = map(int,input().split())
+    #print(A,B,K)
+    #print(A,B,K)
+    #print(type(A))
+    #print(type(B))
+    #print(type(K))
+    #print(type(A*B))
+    #print(type(A*B/K))
+    #print(type(A*B//K))
+    #print(type(int(A*B/K)))
+    #print(type(int(A*B//K)))
+    #print(A*B/K)
+    #print(A*B//K)
+    #print(int(A*B/K))
+    #print(int(A*B//K))
+    #print(A*B%K)
+    #print(A*B//K+1)
+    if A*B%K == 0:
+        return int(A*B//K)
+    else:
+        return int(A*B//K+1)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,k = map(int,input().split())
+    array = []
+    for i in range(1,101):
+        if a % i == 0 and b % i == 0:
+            array.append(i)
+    print(array[-k])
+
+=======
+Suggestion 6
+
+def problem120_b():
+    a,b,k = map(int,input().split())
+    res = []
+    for i in range(1,101):
+        if a%i==0 and b%i==0:
+            res.append(i)
+    print(res[-k])
+
+=======
+Suggestion 7
+
+def main():
+    a, b, k = map(int, input().split())
+    count = 0
+    for i in range(100, 0, -1):
+        if a % i == 0 and b % i == 0:
+            count += 1
+            if count == k:
+                print(i)
+                break
+
+=======
+Suggestion 8
+
+def main():
+    a,b,k = map(int,input().split())
+    count = 0
+    for i in range(1,101):
+        if a%i == 0 and b%i == 0:
+            count += 1
+            if count == k:
+                print(i)
+                break
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b, k = map(int, input().split())
+g = gcd(a, b)
+cnt = 0
+for i in range(g, 0, -1):
+    if g % i == 0:
+        cnt += 1
+        if cnt == k:
+            print(i)
+            break

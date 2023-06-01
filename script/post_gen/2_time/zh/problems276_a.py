@@ -1,35 +1,81 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S。
-#如果a出现在S中，请打印它出现的最后一个索引；否则，请打印-1（索引从1开始）。
-#
-#限制条件
-#S是一个长度在1到100之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#abcdaxayz
-#
-#样本输出1
-#7
-#a在S中出现了三次，最后一次出现在索引7处，所以你应该打印7。
-#
-#输入样本2
-#bcbbbz
-#
-#样本输出2
-#-1
-#a没有出现在S中，所以你应该打印-1。
-#
-#输入样本3
-#aaaaa
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n==0:
+        return 1
+    elif n==1:
+        return 2
+    else:
+        return f(n//2)+f(n//3)
+
+n=int(input())
+print(f(n))
+
+=======
+Suggestion 2
+
+def f(x):
+    if x == 0:
+        return 1
+    return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 3
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 4
+
+def f(x):
+    if x==0:
+        return 1
+    return f(x//2) + f(x//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 5
+
+def f(n):
+    if n == 0:
+        return 1
+    else:
+        return f(n//2)+f(n//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 6
+
+def f(n):
+    if n == 0:
+        return 1
+    return f(n//2) + f(n//3)
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 7
+
+def f(x):
+    if x <= 0:
+        return 1
+    else:
+        return f(x//2) + f(x//3)

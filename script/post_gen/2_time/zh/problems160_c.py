@@ -1,37 +1,75 @@
-#问题陈述
-#有一个周长为K米的圆形池塘，周围有N个房子。
-#第i间房子建在离池塘最北端A_i米的地方，按顺时针方向围绕池塘测量。
-#在这些房子之间行驶时，只能绕着池塘走。
-#当你从其中一所房子开始，并访问所有N所房子时，请找出需要走的最小距离。
-#
-#限制条件
-#2 ≦ K ≦ 10^6
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ A_1 < ...< A_N < K
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印当你从其中一个房子开始并访问所有N个房子时需要走的最小距离。
-#
-#输入样本 1
-#20 3
-#5 10 15
-#
-#样本输出1
-#10
-#如果你从第1个房子开始，按这个顺序去第2个和第3个房子，总的路程是10。
-#
-#样本输入2
-#20 3
-#0 5 15
-#
-#样本输出2
-#10
-#如果你从第2间房子开始，按这个顺序去第1间和第3间房子，总的路程是10。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    print(1000 * (x // 500) + 5 * ((x % 500) // 5))
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    coin500 = x // 500
+    coin5 = (x % 500) // 5
+    print(coin500 * 1000 + coin5 * 5)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    print(x//500*1000+(x%500)//5*5)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    print((x//500)*1000 + ((x%500)//5)*5)
+
+=======
+Suggestion 5
+
+def problem160_b(x):
+    #x = int(input())
+    if x >= 500:
+        a = x // 500
+        b = x % 500
+        if b >= 5:
+            c = b // 5
+            d = b % 5
+            return a * 1000 + c * 5
+        else:
+            return a * 1000
+    else:
+        if x >= 5:
+            c = x // 5
+            d = x % 5
+            return c * 5
+        else:
+            return 0
+print(problem160_b(1024))
+print(problem160_b(0))
+print(problem160_b(1000000000))
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    y500 = x // 500
+    y5 = (x % 500) // 5
+    print(y500 * 1000 + y5 * 5)
+
+=======
+Suggestion 7
+
+def main():
+    x = int(input())
+    ans = (x//500)*1000
+    x = x%500
+    ans += (x//5)*5
+    print(ans)

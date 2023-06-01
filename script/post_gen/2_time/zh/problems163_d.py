@@ -1,47 +1,132 @@
-#问题陈述
-#我们有N+1个整数：10^{100}，10^{100}+1，...，10^{100}+N。
-#我们将从这些整数中选择K个或更多。找出所选数字之和的可能数值的数量，以(10^9+7)为模数。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ N+1
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#
-#输出
-#打印和的可能值的数量，模数（10^9+7）。
-#
-#输入样本 1
-#3 2
-#
-#输出样本 1
-#10
-#和可以取10个值，如下所示：
-#(10^{100})+(10^{100}+1)=2× 10^{100}+1
-#(10^{100})+(10^{100}+2)=2× 10^{100}+2
-#(10^{100})+(10^{100}+3)=(10^{100}+1)+(10^{100}+2)=2× 10^{100}+3
-#(10^{100}+1)+(10^{100}+3)=2× 10^{100}+4
-#(10^{100}+2)+(10^{100}+3)=2× 10^{100}+5
-#(10^{100})+(10^{100}+1)+(10^{100}+2)=3× 10^{100}+3
-#(10^{100})+(10^{100}+1)+(10^{100}+3)=3× 10^{100}+4
-#(10^{100})+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+5
-#(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=3× 10^{100}+6
-#(10^{100})+(10^{100}+1)+(10^{100}+2)+(10^{100}+3)=4× 10^{100}+6
-#
-#样本输入2
-#200000 200001
-#
-#样本输出2
-#1
-#我们必须选择所有的整数，所以总和可以只取一个值。
-#
-#输入样本3
-#141421 35623
-#
-#输出样本3
-#220280457
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i - 1] - 1] += 1
+    for i in b:
+        print(i)
+
+=======
+Suggestion 2
+
+def solve(n, a):
+    ans = [0] * n
+    for i in range(1, n):
+        ans[a[i - 1] - 1] += 1
+    return ans
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    b = [0] * (n + 1)
+    for i in range(1, n + 1):
+        b[a[i]] += 1
+    for i in range(1, n + 1):
+        print(b[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N - 1):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(1, N):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 6
+
+def problem163_c():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n-1):
+        b[a[i]-1] += 1
+    for i in range(n):
+        print(b[i])
+
+problem163_c()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = [0 for i in range(N)]
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = [0] * n
+    for i in range(1, n):
+        c[a[i] - 1] += 1
+    for i in range(n):
+        print(c[i])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i] - 1] += 1
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # print(N, A)
+
+    # 计算直属下级的数量
+    B = [0] * N
+    for i in range(1, N):
+        B[A[i] - 1] += 1
+
+    # print(B)
+
+    # 输出结果
+    for i in range(N):
+        print(B[i])

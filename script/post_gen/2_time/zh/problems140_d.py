@@ -1,54 +1,140 @@
-#问题陈述
-#有N个人从西向东排队等候。
-#给出的是一个长度为N的字符串S，代表人们的方向。
-#如果S的第i个字符是L，那么从西边来的第i个人就朝向西边，如果S的这个字符是R，就朝向东边。
-#如果在他/她前面的人朝向相同的方向，那么一个人是快乐的。
-#然而，如果没有人站在一个人的前面，他/她就不快乐。
-#你可以在0和K（包括）之间的任何次数进行以下操作：
-#操作：选择整数l和r，使1 ≦ l ≦ r ≦ N，并将队列中的部分旋转180度：第l人，(l+1)-第，...，第r人。也就是说，对于每个i = 0, 1, ..., r-l，从西边来的第(l + i)-人在操作后将站在从西边来的第(r - i)-人，如果他/她现在面向西边，则面向东边，反之亦然。
-#你能拥有的最大可能的快乐人数是多少？
-#
-#限制条件
-#N是一个整数，满足1 ≦ N ≦ 10^5。
-#K是一个整数，满足1 ≦ K ≦ 10^5。
-#|S| = N
-#S的每个字符都是L或R。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#S
-#
-#輸出
-#打印最多经过K次操作后可能出现的最大快乐人数。
-#
-#输入样本 1
-#6 1
-#LRLRRL
-#
-#样本输出1
-#3
-#如果我们选择（l，r）=（2，5），我们有LLLRLL，其中来自西方的第2，3，6个人都很快乐。
-#
-#样本输入2
-#13 3
-#LRRLRLRRLLR
-#
-#样本输出2
-#9
-#
-#样本输入3
-#10 1
-#LLLLLRRRRRR
-#
-#样本输出3
-#9
-#
-#样本输入4
-#9 2
-#RRRLRLL
-#
-#样本输出4
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems140_c():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+
+    for i in range(N - 1):
+        A[i] = max(B[i], B[i + 1])
+
+    A[N - 1] = B[N - 2]
+
+    print(sum(A))
+
+=======
+Suggestion 3
+
+def maxSum(a):
+    n = len(a)
+    if n == 1:
+        return a[0]
+    elif n == 2:
+        return max(a[0], a[1])
+    else:
+        if a[0] > a[1]:
+            a[1] = a[0]
+        for i in range(2, n):
+            if a[i-1] > a[i]:
+                a[i] = a[i-1]
+        return a[n-1]
+
+n = int(input())
+b = list(map(int, input().split()))
+a = [0] * n
+for i in range(n-1):
+    a[i] = b[i]
+a[n-1] = b[n-2]
+
+print(maxSum(a))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(1, N-1):
+        A[i] = min(B[i-1], B[i])
+    print(sum(A))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = []
+    a.append(b[0])
+    for i in range(n-2):
+        a.append(min(b[i], b[i+1]))
+    a.append(b[-1])
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    B = list(map(int,input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(1,N-1):
+        A[i] = min(B[i-1],B[i])
+    print(sum(A))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    B = [int(i) for i in input().split()]
+    A = [0 for i in range(N)]
+    A[0] = B[0]
+    A[-1] = B[-1]
+    for i in range(1, N-1):
+        A[i] = min(B[i-1], B[i])
+    print(sum(A))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[-1] = B[-1]
+    for i in range(1, N - 1):
+        A[i] = min(B[i - 1], B[i])
+    print(sum(A))
+
+=======
+Suggestion 9
+
+def main():
+    N = input()
+    B = map(int, raw_input().split())
+    A = [0] * N
+    A[0] = B[0]
+    A[N - 1] = B[N - 2]
+    for i in xrange(1, N - 1):
+        A[i] = min(B[i - 1], B[i])
+    print sum(A)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(n - 2):
+        a[i + 1] = min(b[i], b[i + 1])
+    print(sum(a))
+main()

@@ -1,41 +1,143 @@
-#问题陈述
-#当其中两个数字相等而另一个数字与这两个数字不同时，就说一个三倍的数字是差的。
-#你将得到三个整数A、B和C，如果这个三数是差数，就打印 "是"，否则就打印 "否"。
-#
-#限制条件
-#A、B、C都是1到9之间的整数（包括在内）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#如果给定的三元组是差的，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 7 5
-#
-#输出样本 1
-#是
-#A和C是相等的，但B与这两个数字不同，所以这个三倍数是差的。
-#
-#样本输入2
-#4 4 4
-#
-#样本输出 2
-#否
-#A、B、C都是相等的，所以这个三联体不差。
-#
-#输入样本3
-#4 9 6
-#
-#样本输出3
-#否
-#
-#样本输入 4
-#3 3 4
-#
-#样品输出4
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    sum = 0
+    for i in range(k):
+        sum += p[i]
+    max = sum
+    for i in range(k, n):
+        sum = sum - p[i-k] + p[i]
+        if sum > max:
+            max = sum
+    print((max + k)/2)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    for i in range(1, n + 1):
+        p[i] += p[i - 1]
+    ans = 0
+    for i in range(k, n + 1):
+        ans = max(ans, p[i] - p[i - k])
+    print((ans + k) / 2)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    #print(n,k,p)
+    psum = [0] * (n+1)
+    for i in range(n):
+        psum[i+1] = psum[i] + p[i]
+    #print(psum)
+    ans = 0
+    for i in range(n-k+1):
+        ans = max(ans,(psum[i+k]-psum[i]+k)/2)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    p = list(map(int,input().split()))
+    sum_p = [0]*(N+1)
+    for i in range(N):
+        sum_p[i+1] = sum_p[i] + p[i]
+    ans = 0
+    for i in range(N-K+1):
+        ans = max(ans, (sum_p[i+K]-sum_p[i])/2 + sum_p[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    sum_p = sum(p[:k])
+    max_sum_p = sum_p
+    for i in range(k,n):
+        sum_p = sum_p - p[i-k] + p[i]
+        if sum_p > max_sum_p:
+            max_sum_p = sum_p
+    print((max_sum_p+k)/2)
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+
+    # 计算答案
+    s = sum(p[:k])
+    ans = s
+    for i in range(k, n):
+        s += p[i] - p[i-k]
+        ans = max(ans, s)
+
+    # 打印答案
+    print((ans + k) / 2)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    max_sum = 0
+    for i in range(n-k+1):
+        sum = 0
+        for j in range(i,i+k):
+            sum += p[j]
+        if max_sum < sum:
+            max_sum = sum
+    print((max_sum+k)/2)
+
+=======
+Suggestion 9
+
+def solve():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += (p[i] + 1) / 2
+    cur = ans
+    for i in range(K, N):
+        cur += (p[i] + 1) / 2
+        cur -= (p[i - K] + 1) / 2
+        ans = max(ans, cur)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    s = sum(p[:k])
+    ans = s
+    for i in range(n-k):
+        s = s - p[i] + p[i+k]
+        ans = max(ans,s)
+    print((ans+k)/2)

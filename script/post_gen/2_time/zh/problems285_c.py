@@ -1,43 +1,101 @@
-#问题说明
-#在一个平行宇宙中，AtCoder举办了AtCoder大竞赛，在这个竞赛中一次给出10^{16}个问题。
-#这些问题的ID如下，从第1个问题开始依次排列：a, b, ..., z, aa, ab, ..., zz, aaa, ...
-#换句话说，ID是按以下顺序给出的：
-#由大写英文字母组成的长度为1的字符串，按词法顺序排列；
-#长度为2的字符串，由大写英文字母组成，按词法顺序排列；
-#长度为3的字符串，由大写英文字母组成，按词汇表顺序排列；
-#...
-#给出一个字符串S，它是本次竞赛中给出的一个问题的ID，找出该问题的索引。  (另见样本)。
-#
-#限制条件
-#S是AtCoder Big Contest中给出的一个问题的有效ID。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本1
-#AB
-#
-#样本输出1
-#28
-#ID为AB的问题是AtCoder大竞赛的第28个问题，所以应该打印28。
-#
-#输入样本2
-#C
-#
-#输出样本2
-#3
-#ID为C的问题是AtCoder大竞赛的第3个问题，所以应该打印3。
-#
-#输入样本3
-#BRUTMHYHIIZP
-#
-#输出样本3
-#10000000000000000
-#ID为BRUTMHYHIIZP的问题是
-#10^{16}的问题（最后一个），所以10^{16}应该被打印成一个整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        l = 0
+        while l + i < N:
+            if S[l] != S[l + i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1,n):
+        l = 0
+        while i+l < n:
+            if s[l] != s[i+l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 3
+
+def problem285_b():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    S = input()
+    ans = [0] * (N - 1)
+    for i in range(1, N):
+        for j in range(N - i):
+            if S[j] != S[i + j]:
+                ans[i - 1] = i
+                break
+    print(*ans, sep='\n')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        l = 0
+        while i + l < N:
+            if S[l] == S[i + l]:
+                break
+            l += 1
+        print(l)
+
+=======
+Suggestion 6
+
+def get_max_l(s, i):
+    l = 0
+    while (i + l < len(s)):
+        if (s[l] != s[i + l]):
+            l = l + 1
+        else:
+            break
+    return l
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        ans = 0
+        while i + ans < n and s[ans] != s[i + ans]:
+            ans += 1
+        print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1,n):
+        l = 0
+        while i + l < n and s[l] != s[i+l]:
+            l += 1
+        print(l)

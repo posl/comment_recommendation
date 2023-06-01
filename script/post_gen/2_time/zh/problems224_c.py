@@ -1,61 +1,149 @@
-#问题陈述
-#在xy平面上，我们有N个编号为1到N的点。
-#点i的坐标为(X_i,Y_i)。任何两个不同的点都在不同的位置上。
-#请找出在这N个点中选择三个点的方法，以便用线段连接所选的点，形成一个正面积的三角形。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 300
-#-10^9 ≦ X_i,Y_i ≦ 10^9
-#(X_i,Y_i) ≠ (X_j,Y_j) if i ≠ j.
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#...
-#X_N Y_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4
-#0 1
-#1 3
-#1 1
-#-1 -1
-#
-#样本输出1
-#3
-#下图说明了这些点。
-#有三种方法可以选择形成三角形的点：{1,2,3},{1,3,4},{2,3,4}.
-#
-#样本输入2
-#20
-#224 433
-#987654321 987654321
-#2 0
-#6 4
-#314159265 358979323
-#0 0
-#-123456789 123456789
-#-1000000000 1000000000
-#124 233
-#9 -6
-#-4 0
-#9 5
-#-7 3
-#333333333 -333333333
-#-9 -1
-#7 -10
-#-1 5
-#324 633
-#1000000000 -1000000000
-#20 0
-#
-#样本输出2
-#1124
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i1 in range(H):
+        for i2 in range(i1 + 1, H):
+            for j1 in range(W):
+                for j2 in range(j1 + 1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    h,w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    for i1 in range(h):
+        for i2 in range(i1+1, h):
+            for j1 in range(w):
+                for j2 in range(j1+1, w):
+                    if a[i1][j1] + a[i2][j2] > a[i2][j1] + a[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    ans = 'Yes'
+    for i1 in range(h):
+        for i2 in range(i1+1, h):
+            for j1 in range(w):
+                for j2 in range(j1+1, w):
+                    if a[i1][j1]+a[i2][j2] > a[i2][j1]+a[i1][j2]:
+                        ans = 'No'
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    print('Yes' if all(A[i1][j1] + A[i2][j2] <= A[i2][j1] + A[i1][j2] for i1 in range(H) for i2 in range(i1 + 1, H) for j1 in range(W) for j2 in range(j1 + 1, W)) else 'No')
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    # 判断
+    for i1 in range(H):
+        for i2 in range(i1+1, H):
+            for j1 in range(W):
+                for j2 in range(j1+1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+    return
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    print('Yes')
+    return
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int,input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    for i in range(h):
+        for j in range(w):
+            for k in range(i+1,h):
+                for l in range(j+1,w):
+                    if a[i][j]+a[k][l]>a[i][l]+a[k][j]:
+                        print("No")
+                        exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    h,w = map(int,input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    for i1 in range(h-1):
+        for i2 in range(i1+1,h):
+            for j1 in range(w-1):
+                for j2 in range(j1+1,w):
+                    if a[i1][j1]+a[i2][j2]>a[i2][j1]+a[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(i + 1, H):
+                for l in range(j + 1, W):
+                    if A[i][j] + A[k][l] > A[i][l] + A[k][j]:
+                        print('No')
+                        return
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    for i1 in range(H):
+        for i2 in range(i1+1, H):
+            for j1 in range(W):
+                for j2 in range(j1+1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')

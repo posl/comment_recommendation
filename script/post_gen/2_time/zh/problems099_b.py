@@ -1,33 +1,90 @@
-#问题陈述
-#在某个村子里，有999座塔，从西到东都是1,(1+2),(1+2+3),...,(1+2+3+...+999)米高，每座塔间隔1米。
-#雪下了好一阵子才终于停了。对于相隔1米的一些相邻的塔，我们测量了这些塔没有被雪覆盖的部分的长度，结果是西边的塔有a米，东边的塔有b米。
-#假设村里各处的积雪深度和海拔高度相同，求积雪的数量。
-#还假设雪覆盖的深度总是至少1米。
-#
-#限制条件
-#1 ≦ a < b < 499500(=1+2+3+...+999)
-#输入的所有数值都是整数。
-#没有与假设相矛盾的输入。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#a b
-#
-#输出
-#如果雪覆盖的深度是x米，打印x为整数。
-#
-#输入样本 1
-#8 13
-#
-#输出样本 1
-#2
-#两座塔的高度分别为10米和15米。
-#因此，我们可以看到，雪覆盖的深度是2米。
-#
-#样本输入2
-#54 65
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    print((b - a) * (b - a - 1) // 2 - a)
+
+=======
+Suggestion 2
+
+def get_sum(n):
+    return int((1 + n) * n / 2)
+
+=======
+Suggestion 3
+
+def snow_covering(a, b):
+    return b - a - 1
+
+=======
+Suggestion 4
+
+def p099_b():
+    a,b = map(int,input().split())
+    print((b-a)*(b-a+1)//2-b)
+
+p099_b()
+
+=======
+Suggestion 5
+
+def snow(a,b):
+    return b-a-1
+
+=======
+Suggestion 6
+
+def snow(a, b):
+    total = 0
+    for i in range(1, a):
+        total += i
+    for i in range(b+1):
+        total += i
+    return total - a - b
+
+=======
+Suggestion 7
+
+def snow(a, b):
+    # 雪覆盖的深度
+    x = 0
+    # 求和
+    sum = 0
+    for i in range(1, 1000):
+        sum += i
+        if sum >= a:
+            # 雪覆盖的深度
+            x = i
+            break
+    return x
+
+=======
+Suggestion 8
+
+def solve(a, b):
+    return b - a - 1
+
+print(solve(8, 13))
+print(solve(54, 65))
+
+=======
+Suggestion 9
+
+def get_hight(a, b):
+    hight = 0
+    for i in range(1, 1000):
+        hight += i
+        if hight == a:
+            hight = i
+            break
+    return hight
+
+=======
+Suggestion 10
+
+def main():
+    a,b = map(int,input().split())
+    print((b-a-1)*b//2 - a)

@@ -1,34 +1,89 @@
-#问题陈述
-#我们有一个有N个顶点的图形，称为顶点1到N。
-#该图现在没有边。
-#高桥将重复进行以下操作：
-#在N个顶点中选择一个（包括高桥现在所站的那个）。每个顶点都是以概率（1/(N)）选择的，与之前的操作无关。
-#在高桥现在所站的顶点和所选择的顶点之间添加一条边，然后去选择的顶点。
-#找出他做这个操作的次数的期望值，直到该图成为连接的。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#当你的答案与我们的答案的绝对或相对误差最多为10^{-6}时，你的答案将被视为正确。
-#
-#输入样本 1
-#2
-#
-#样本输出1
-#2.00000000000
-#当操作第一次选择顶点2时，图就成为连接的。
-#通过考虑每个i的第i次操作中首次选择顶点2的情况，答案是sum_{i = 1}^{infty} (i × ((1/(2))^i)=2。
-#
-#样本输入2
-#3
-#
-#样本输出2
-#4.50000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j])**2
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(N, A):
+    ans = 0
+    for i in range(1, N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += (n - 1) * a[i] ** 2
+    for i in range(n - 1):
+        ans -= 2 * a[i] * sum(a[i + 1:])
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)

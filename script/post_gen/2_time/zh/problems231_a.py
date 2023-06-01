@@ -1,35 +1,166 @@
-#问题说明
-#我们假设水压只取决于深度，在x米深处的水压为（x/（100））兆帕。
-#在D米深处的水压是多少，单位是兆帕？
-#
-#限制条件
-#1 ≦ D ≦ 10000
-#D是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#D
-#
-#输出
-#打印答案。当你的输出与我们的答案的绝对或相对误差最多为10^{-3}时，你的输出将被视为正确。
-#
-#输入样本1
-#1000
-#
-#样本输出1
-#10
-#在1000米深处的水压是10兆帕。诸如10.0和9.999999这样的输出也可以接受。
-#
-#样本输入2
-#50
-#
-#样本输出2
-#0.5
-#
-#样品输入3
-#3141
-#
-#样本输出3
-#31.41
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,d = map(int,input().split())
+    l = []
+    r = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        l.append(a)
+        r.append(b)
+    l.sort()
+    r.sort()
+    ans = 0
+    for i in range(n):
+        ans += 1
+        if i == n-1:
+            break
+        if l[i+1] - r[i] >= d:
+            continue
+        if l[i+1] - l[i] >= d:
+            continue
+        if r[i+1] - l[i] >= d:
+            continue
+        ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    l = []
+    r = []
+    for i in range(n):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l.sort()
+    r.sort()
+    i = 0
+    j = 0
+    ans = 0
+    while i < n:
+        if l[i] <= r[j]:
+            i += 1
+            ans += 1
+        else:
+            j += 1
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, D = map(int, input().split())
+    LRs = [list(map(int, input().split())) for _ in range(N)]
+    LRs.sort()
+    LRs.append([10**9+1, 10**9+1])
+    ans = 0
+    p = 0
+    for i in range(N):
+        L, R = LRs[i]
+        while p < N and LRs[p][0] <= R:
+            p += 1
+        ans += max(0, p-i-1)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    N,D=map(int,input().split())
+    L=[]
+    R=[]
+    for i in range(N):
+        l,r=map(int,input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans=0
+    i=0
+    j=0
+    while i<N:
+        if L[i]<=R[j]:
+            ans+=1
+            i+=1
+        else:
+            ans-=1
+            j+=1
+        if ans>D:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 6
+
+def solve():
+    #解题算法
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    ans = 0
+    i = 0
+    j = 0
+    now = 0
+    while i < N:
+        if L[i] <= R[j]:
+            now += 1
+            i += 1
+        else:
+            now -= 1
+            j += 1
+        ans = max(ans, now)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,d = map(int,input().split())
+    l = []
+    r = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        l.append(a)
+        r.append(b)
+    l.sort()
+    r.sort()
+    ans = 0
+    i = 0
+    j = 0
+    while i < n:
+        if l[i] <= r[j]:
+            ans += 1
+            i += 1
+        else:
+            ans -= 1
+            j += 1
+    print(ans)

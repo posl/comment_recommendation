@@ -1,37 +1,146 @@
-#问题说明
-#N块瓷砖从左到右排列成一排。每块瓷砖的初始颜色由一个长度为N的字符串S表示。
-#如果S的第i个字符是0，从左边开始的第i个瓷砖被涂成黑色，如果该字符是1，则涂成白色。
-#你想把一些瓷砖重新涂成黑色或白色，这样任何相邻的两块瓷砖都有不同的颜色。
-#至少有多少块瓷砖需要重新涂抹才能满足条件？
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S_i为0或1。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印为满足条件需要重新涂抹的最小瓷砖数量。
-#
-#输入样本 1
-#000
-#
-#样本输出 1
-#1
-#这个条件可以通过把中间的瓦片重新涂成白色来满足。
-#
-#输入样本2
-#10010010
-#
-#样本输出2
-#3
-#
-#样本输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = input()
+    h = input()
+    return n, h
+
+=======
+Suggestion 2
+
+def problems124_b():
+    n = int(input())
+    h = list(map(int,input().split()))
+    max_h = 0
+    count = 0
+    for i in range(n):
+        if max_h <= h[i]:
+            max_h = h[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def get_see_count():
+    N = int(input())
+    H = list(map(int, input().split()))
+    see_count = 0
+    for i in range(N):
+        see = True
+        for j in range(i):
+            if H[i] < H[j]:
+                see = False
+                break
+        if see:
+            see_count += 1
+    print(see_count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    H_list = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if i == 0:
+            count += 1
+        else:
+            if max(H_list[:i]) <= H_list[i]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def find_sea(h):
+    cnt = 1
+    max_h = h[0]
+    for i in range(1, len(h)):
+        if h[i] > max_h:
+            cnt += 1
+            max_h = h[i]
+    return cnt
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    nums = list(map(int, input().split()))
+    cnt = 1
+    for i in range(1, n):
+        if nums[i-1] <= nums[i]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(i):
+            if H[i] < H[j]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    H = [int(i) for i in input().split()]
+    count = 0
+    for i in range(N):
+        flag = True
+        for j in range(i):
+            if H[j] >= H[i]:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    count = 1
+    for i in range(1, N):
+        flag = True
+        for j in range(0, i):
+            if H[j] >= H[i]:
+                flag = False
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    # print(n, h)
+    count = 0
+    for i in range(n):
+        flag = True
+        for j in range(i):
+            if h[i] < h[j]:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)

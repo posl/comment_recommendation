@@ -1,63 +1,77 @@
-#问题陈述
-#给你一棵有N个顶点和N-1条边的树。
-#顶点的编号为1,2,...,N。第i条边连接着顶点a_i和顶点b_i。
-#判断这棵树是否是星形。
-#这里，星形是指有一个顶点直接连接到所有其他顶点的树。
-#
-#注释
-#关于树的定义，见树（图论）--维基百科。
-#
-#限制条件
-#3 ≦ N ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#给定的图是一棵树。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#a_1 b_1
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#
-#输出
-#如果给定的图形是一个星形，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5
-#1 4
-#2 4
-#3 4
-#4 5
-#
-#样本输出1
-#Yes
-#给定的图形是一个星形。
-#
-#输入样本2
-#4
-#2 4
-#1 4
-#2 3
-#
-#样本输出2
-#No
-#给定的图形不是一个星形。
-#
-#输入样本3
-#10
-#9 10
-#3 10
-#4 10
-#8 10
-#1 10
-#2 10
-#7 10
-#6 10
-#5 10
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 请在此添加代码，实现问题解决方案
+    s = input()
+    # print(s)
+    # print(len(s))
+    # print(s[0])
+    # print(s[1])
+    # print(s[2])
+    if len(s) == 3:
+        if s[0] == s[1] and s[1] == s[2]:
+            print(1)
+        elif s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+            print(3)
+        else:
+            print(6)
+    else:
+        print("字符串长度不为3")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 3
+
+def f(s):
+    if len(s) == 1:
+        return 1
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 1
+        else:
+            return 2
+    if len(s) == 3:
+        if s[0] == s[1] and s[0] == s[2]:
+            return 1
+        elif s[0] == s[1] or s[0] == s[2] or s[1] == s[2]:
+            return 3
+        else:
+            return 6
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    count = 1
+    for i in range(2):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print(len(set(S)))
+main()
+
+=======
+Suggestion 6
+
+def swap(s, i, j):
+    t = s[i]
+    s[i] = s[j]
+    s[j] = t

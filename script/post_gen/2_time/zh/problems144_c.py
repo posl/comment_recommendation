@@ -1,39 +1,125 @@
-#问题陈述
-#高桥站在一个有无限多行和列的乘法表上。
-#正方形(i,j)包含整数i×j，最初，高桥站在(1,1)处。
-#在一次移动中，他可以从（i,j）移动到（i+1,j）或（i,j+1）。
-#给定一个整数N，找出到达一个包含N的方格所需的最小移动次数。
-#
-#限制条件
-#2 ≦ N ≦ 10^{12}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印到达包含整数N的方格所需的最小移动次数。
-#
-#输入样本 1
-#10
-#
-#输出示例 1
-#5
-#(2,5)可以在五步之内到达。我们不可能在少于五步的情况下到达一个包含10的方块。
-#
-#输入样本2
-#50
-#
-#样本输出2
-#13
-#(5, 10)可以在13步内到达。
-#
-#样本输入3
-#10000000019
-#
-#样本输出3
-#10000000018
-#输入和输出都可能是巨大的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    flag = False
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if n == i * j:
+                flag = True
+                break
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if i * j == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def solution():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and N / i < 10:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if i * j == n:
+                print("Yes")
+                exit()
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    flag = False
+    for i in range(1,10):
+        if N % i == 0 and 1 <= N // i <= 9:
+            flag = True
+            break
+    if flag:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if n == i * j:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 7
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, n):
+        if n%i == 0:
+            return False
+    return True
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0 and 1 <= n / i < 10:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if n == i * j:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        if n % i == 0 and n / i < 10:
+            print("Yes")
+            return
+    print("No")

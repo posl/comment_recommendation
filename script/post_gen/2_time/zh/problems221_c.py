@@ -1,54 +1,158 @@
-#问题陈述
-#给你一个整数N，考虑将N中的数字进行互换，并将它们分成两个正整数。
-#例如，对于整数123，有六种方法可以分开，如下所示：
-#12和3
-#21和3
-#13和2、
-#31和2、
-#23和1、
-#32和1。
-#这里，分离后的两个整数不能包含前导零。例如，不允许将整数101分成1和01。此外，由于所得的整数必须是正数，所以也不允许将101分成11和0。
-#通过最佳分离方式得到的两个整数的最大可能积是多少？
-#
-#限制条件
-#N是1到10^9（包括）之间的整数。
-#N包含两个或多个不为0的数字。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印两个整数分离后的最大可能积。
-#
-#输入样本 1
-#123
-#
-#样本输出1
-#63
-#如问题陈述中所述，有六种方法可以分开：
-#12和3、
-#21和3
-#13和2
-#31和2、
-#23和1、
-#32和1。
-#这些对子的乘积，按照这个顺序，是36、63、26、62、23、32，其中63为最大。
-#
-#样本输入2
-#1010
-#
-#样本输出2
-#100
-#有两种方法可以分开：
-#100和1、
-#10和10。
-#无论哪种情况，乘积都是100。
-#
-#样本输入3
-#998244353
-#
-#样本输出3
-#939337176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+
+    if len(S) != len(T):
+        print("No")
+        return
+
+    for i in range(len(S)):
+        for j in range(i + 1, len(S)):
+            if S[i] == T[j] and S[j] == T[i]:
+                print("Yes")
+                return
+
+    print("No")
+
+=======
+Suggestion 2
+
+def swap(s):
+    return s[1]+s[0]
+
+s = input()
+t = input()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if len(s) == len(t):
+        s_list = list(s)
+        t_list = list(t)
+        if s_list == t_list:
+            print('Yes')
+        else:
+            for i in range(len(s_list)):
+                for j in range(len(s_list)):
+                    if i == j:
+                        continue
+                    else:
+                        s_list[i],s_list[j] = s_list[j],s_list[i]
+                        if s_list == t_list:
+                            print('Yes')
+                            break
+                        else:
+                            s_list[i],s_list[j] = s_list[j],s_list[i]
+                else:
+                    continue
+                break
+            else:
+                print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print('Yes')
+        return
+    for i in range(len(S)-1):
+        if S[i] == T[i+1] and S[i+1] == T[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 5
+
+def func(s,t):
+    if s==t:
+        return True
+    else:
+        for i in range(len(s)-1):
+            if s[i+1]+s[i]==t[i+1]+t[i]:
+                return True
+    return False
+
+=======
+Suggestion 6
+
+def swap(s, i, j):
+    s[i], s[j] = s[j], s[i]
+    return s
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        if s[i+1] == t[i] and s[i] == t[i+1]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 8
+
+def swap(S, T):
+    for i in range(len(S)-1):
+        if S[i] != T[i]:
+            if S[i+1] != T[i+1]:
+                return False
+    return True
+
+S = input()
+T = input()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        s = s[:i] + s[i+1] + s[i] + s[i+2:]
+        if s == t:
+            print("Yes")
+            return
+        s = s[:i] + s[i+1] + s[i] + s[i+2:]
+    print("No")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    for i in range(len(S)):
+        for j in range(i + 1, len(S)):
+            tmp = list(S)
+            tmp[i], tmp[j] = tmp[j], tmp[i]
+            if "".join(tmp) == T:
+                print("Yes")
+                return
+    print("No")

@@ -1,41 +1,16 @@
-#问题陈述
-#给出一个正整数N和一个由小写英文字母组成的长度为N的字符串S。
-#判断该字符串是否是某个字符串的两个副本的串联。
-#也就是说，确定是否有一个字符串T，使S = T + T。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#S由小写英文字母组成。
-#|S| = N
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S
-#
-#输出
-#如果S是某个字符串的两个副本的串联，打印Yes；否则，打印No。
-#
-#输入样本 1
-#6
-#abcabc
-#
-#样本输出1
-#Yes
-#设T=abc，S=T+T。
-#
-#样本输入2
-#6
-#abcadc
-#
-#样本输出2
-#No
-#
-#样本输入3
-#1
-#z
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(r*r)
+
+=======
+Suggestion 2
+
+def area(r):
+    return r*r
+r = int(input())
+print(area(r))

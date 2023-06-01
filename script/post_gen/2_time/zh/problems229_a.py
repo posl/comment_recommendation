@@ -1,39 +1,184 @@
-#问题陈述
-#我们有一个有2个水平行和2个垂直列的网格。
-#每个方格都是黑色或白色的，并且至少有2个黑色方格。
-#这些方格的颜色以字符串S_1和S_2的形式提供给你，如下所示。
-#如果S_i的第j个字符是#，那么从顶部第i行和从左边第j列的方格是黑色的。
-#如果S_i的第j个字符是.，那么从上面第i行和左边第j列的方格是白色的。
-#当且仅当两个不同的黑色方块共用一个边时，你可以在它们之间旅行。
-#判断是否有可能只通过黑色方格就能从每个黑色方格到每个黑色方格（直接或间接）旅行。
-#
-#限制条件
-#S_1和S_2中的每一个都是一个由#和.组成的两个字符的字符串。
-#S_1和S_2总共有两个或两个以上的#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_1
-#S_2
-#
-#輸出
-#如果有可能从每个黑色方格到每个黑色方格，则打印Yes；否则，打印No。
-#
-#输入样本1
-###
-#.#
-#
-#样本输出1
-#Yes
-#我们可以直接在左上角和右上角的黑色方格之间以及右上角和右下角的方格之间移动。
-#这两步棋可以让我们从每个黑色方格走到每个黑色方格，所以答案是肯定的。
-#
-#输入样本2
-#.#
-##.
-#
-#样本输出2
-#No
-#不可能在右上角和左下角的黑方块之间移动，所以答案是No。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def process():
+    N = 1048576
+    A = [-1] * (N + 1)
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+process()
+
+=======
+Suggestion 2
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(readline())
+    for _ in range(Q):
+        t, x = map(int, readline().split())
+        if t == 1:
+            while A[x % N] != -1:
+                x += 1
+            A[x % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 3
+
+def main():
+    N = 2**20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 4
+
+def main():
+    n = 2**20
+    q = int(input())
+    a = [-1]*n
+    for _ in range(q):
+        t, x = map(int, input().split())
+        x = x % n
+        if t == 1:
+            while a[x] != -1:
+                x += 1
+                x = x % n
+            a[x] = x
+        else:
+            print(a[x])
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    # 获取输入内容
+    q = int(input())
+    # 定义列表
+    a = [-1 for i in range(2 ** 20)]
+    # 循环处理输入内容
+    for i in range(q):
+        # 获取输入内容
+        t, x = map(int, input().split())
+        # 判断输入内容
+        if t == 1:
+            # 定义变量
+            h = x
+            # 循环处理
+            while a[h % (2 ** 20)] != -1:
+                h += 1
+            # 定义变量
+            a[h % (2 ** 20)] = x
+        else:
+            # 输出结果
+            print(a[x % (2 ** 20)])
+
+=======
+Suggestion 7
+
+def solve():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+    N = 2 ** 20
+    Q = int(input())
+    A = [-1] * N
+    q = deque()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+            q.append(h % N)
+        else:
+            if x <= q[0]:
+                print(A[x])
+            else:
+                print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    Q = int(input())
+    # 用字典存储数据
+    A = {}
+    # 用列表存储查询
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    # 处理查询
+    for i in range(Q):
+        if query[i][0] == 1:
+            h = query[i][1]
+            while A.get(h % 1048576) != None:
+                h += 1
+            A[h % 1048576] = query[i][1]
+        else:
+            print(A.get(query[i][1] % 1048576))
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    A = [-1] * (2 ** 20)
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % (2 ** 20)] != -1:
+                h += 1
+            A[h % (2 ** 20)] = x
+        else:
+            print(A[x % (2 ** 20)])

@@ -1,54 +1,169 @@
-#问题陈述
-#有一台有N个卷轴的老虎机。
-#第i个卷轴上的符号的位置由一个长度为10的字符串S_i表示，其中包含0，1，...，9中的每一个符号，正好一次。
-#每个轮盘都有一个相应的按钮。对于每个非负整数t，高桥可以在卷轴开始旋转后的t秒内按下他选择的一个按钮（或什么都不做）。
-#如果第i个卷轴的按钮在旋转开始后t秒被按下，第i个卷轴将停止显示S_i的（（t mod 10）+1）-个字符。
-#这里，t mod 10表示t除以10时的余数。
-#高桥想让所有的卷轴停下来，使它们显示相同的字符。
-#请找出在旋转开始后实现他的目标所需的最小秒数。
-#
-#限制条件
-#2≦ N≦ 100
-#N是一个整数。
-#S_i是一个长度为10的字符串，其中包含0, 1, ..., 9中的每一个，正好一次。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印旋转开始后实现高桥目标所需的最小秒数。
-#
-#样本输入1
-#3
-#1937458062
-#8124690357
-#2385760149
-#
-#样本输出1
-#6
-#高桥可以在旋转开始后的6秒内，通过以下方式使所有卷轴停止显示8。
-#在旋转开始0秒后，按下第2个卷轴的按钮，使其停止显示S_2的((0 mod 10)+1=1)-个字符，即8。
-#旋转开始2秒后，按下第3个卷轴的按钮，使其停止显示S_3的((2 mod 10)+1=3)-个字符，8。
-#旋转开始6秒后，按下第1个卷轴的按钮，使其停止显示((6 mod 10)+1=7)个S_1的字符，8。
-#没有办法在5秒或更短的时间内使所有卷轴显示相同的字符，所以答案是6。
-#
-#输入样本2
-#5
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#
-#样本输出2
-#40
-#请注意，他必须停止所有的卷轴，使其显示相同的字符。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    max_A = max(A)
+    max_B = max(B)
+
+    if max_A > max_B:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n,k = input().split()
+    n = int(n)
+    k = int(k)
+    a = input().split()
+    b = input().split()
+    a = [int(i) for i in a]
+    b = [int(i) for i in b]
+    max_a = max(a)
+    max_b = max(b)
+    if max_a > max_b:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+
+    maxA = max(A)
+
+    for i in range(K):
+        if B[i] == A.index(maxA)+1:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    #输入数据
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #解决问题
+    maxA = max(A)
+    maxB = max(B)
+    if maxA > maxB:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    for i in range(K):
+        A[B[i]-1] = 0
+    if max(A) != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort()
+    B.sort()
+    for i in range(K):
+        if A[-1] == B[i]:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    foods = list(map(int, input().split()))
+    hate_foods = list(map(int, input().split()))
+    foods.sort()
+    hate_foods.sort()
+    for i in range(k):
+        if foods[n-1] == hate_foods[i]:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    c = [0] * n
+    for i in b:
+        c[i - 1] = 1
+
+    d = []
+    for i in range(n):
+        if c[i] == 0:
+            d.append(a[i])
+
+    if len(d) == 0:
+        print('No')
+    else:
+        d.sort()
+        if d[-1] > a[-1]:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    i = 0
+    j = 0
+    while i < N:
+        if j < K and A[i] == B[j]:
+            j += 1
+        else:
+            print("Yes")
+            return
+        i += 1
+    print("No")
+
+=======
+Suggestion 10
+
+def problems252_b():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    for i in range(k):
+        a[b[i]-1] = 0
+    print("Yes" if max(a)>0 else "No")

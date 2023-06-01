@@ -1,53 +1,217 @@
-#问题陈述
-#高桥市有N个球。每个球上都写有一个不小于2的整数。他将这些球一个一个地插入一个圆柱体中。写在第i个球上的整数是a_i。
-#这些球是由特殊材料制成的。当写有k（k≧2）的球排成一排时，所有这些k球都会消失。
-#对于每一个i（1 ≦ i ≦ N），找出插入第i个球后的球的数量。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ a_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 ... a_N
-#
-#輸出
-#打印N行。第i行（1 ≦ i ≦ N）应包含插入第i个球后的球数。
-#
-#输入样本 1
-#5
-#3 2 3 2 2
-#
-#样本输出 1
-#1
-#2
-#3
-#4
-#3
-#圆筒的内容变化如下。
-#插入第1个球后，圆柱体中含有3的球。
-#插入第2个球后，圆柱体从下到上包含3、2。
-#插入第3个球后，圆柱体从下到上包含3、2、3。
-#插入第4个球后，圆柱体从下到上包含3、2、3、2。
-#插入第5个球后，圆柱体从下到上暂时有3、2、3、2、2。连续的两个带2的球消失了，圆柱体最终从下到上包含3，2，3。
-#
-#
-#输入样本2
-#10
-#2 3 2 3 3 3 2 3 3 2
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#3
-#2
-#3
-#1
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N,X = map(int,input().split())
+    a = []
+    b = []
+    for i in range(N):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    now = 0
+    for i in range(N):
+        if now + a[i] <= X and now + b[i] >= X:
+            print('Yes')
+            return
+        now += b[i]
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    sum = 0
+    for i in range(N):
+        sum += a[i]
+        if sum > X:
+            print("No")
+            return
+        sum += b[i]
+    if sum == X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N,X = map(int,input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    #print(a)
+    #print(b)
+    sum = 0
+    for i in range(N):
+        sum += a[i]
+        if sum > X:
+            print("No")
+            exit()
+        sum += (b[i] - a[i])
+    if sum > X:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def solve():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    for i in range(n):
+        if a[i] > x:
+            print('No')
+            return
+        x += b[i] - a[i]
+    print('Yes')
+
+=======
+Suggestion 5
+
+def solve():
+    # N X
+    N, X = map(int, input().split())
+    # a_1 b_1
+    # .
+    # .
+    # .
+    # a_N b_N
+    a = []
+    b = []
+    for i in range(N):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    # print(N, X)
+    # print(a)
+    # print(b)
+
+    # 求和
+    sum = 0
+    for i in range(N):
+        sum += a[i]
+        sum += b[i]
+
+    # print(sum)
+
+    # 判断
+    if sum >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def check(x):
+    if x == 0:
+        return True
+    if x < 0:
+        return False
+    for i in range(N):
+        if check(x - A[i]) or check(x - B[i]):
+            return True
+    return False
+
+N, X = map(int, input().split())
+A = []
+B = []
+for i in range(N):
+    a, b = map(int, input().split())
+    A.append(a)
+    B.append(b)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    result = "No"
+    for i in range(N):
+        if a[i] <= X <= b[i]:
+            result = "Yes"
+            break
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    a_b = []
+    for _ in range(n):
+        a_b.append(list(map(int, input().split())))
+    a_b.sort(key=lambda x: x[1])
+    for i in range(n):
+        if x < a_b[i][0]:
+            print('No')
+            return
+        x += a_b[i][1] - a_b[i][0]
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    for j in range(n):
+        if x == a[j] or x == b[j]:
+            print("Yes")
+            break
+        else:
+            print("No")
+            break
+
+=======
+Suggestion 10
+
+def solve():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = "No"
+    for i in range(N):
+        if A[i] <= X and X <= B[i]:
+            ans = "Yes"
+            break
+    print(ans)

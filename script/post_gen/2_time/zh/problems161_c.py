@@ -1,40 +1,115 @@
-#问题陈述
-#给定任何整数x，Aoki可以做以下操作。
-#操作：用x和K的绝对差值替换x。
-#给你一个整数N的初始值，找出Aoki做了零次或多次操作后N的最小可能值。
-#
-#限制条件
-#0 ≤ N ≤ 10^{18}
-#1 ≤ K ≤ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#輸出
-#打印Aoki做了零次或多次操作后，N的最小可能值。
-#
-#输入样本 1
-#7 4
-#
-#样本输出1
-#1
-#最初，N=7。
-#经过一次操作，N变成了 |7-4| = 3。
-#经过两次操作，N变成|3-4|=1，这是N的最小值。
-#
-#样本输入 2
-#2 6
-#
-#样本输出 2
-#2
-#零操作后的N=2是最小值。
-#
-#样本输入3
-#1000000000000000000 1
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem161_b():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    for i in range(m):
+        if a[i] < (total/(4*m)):
+            print('否')
+            return
+    print('是')
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    if a[m-1] >= sum/(4*m):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    for i in range(m):
+        if a[i] < total/(4*m):
+            print("否")
+            return
+    print("是")
+
+=======
+Suggestion 4
+
+def readinput():
+    n,m=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    return n,m,a
+
+=======
+Suggestion 5
+
+def problems161_b():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    sum_a = sum(a)
+    if a[m-1] >= sum_a / (4*m):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def problems161_b():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    s = sum(a)
+    if a[m-1] >= s/(4*m):
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 7
+
+def main():
+    N,M=map(int,input().split())
+    A=list(map(int,input().split()))
+    A.sort(reverse=True)
+    total=sum(A)
+    if A[M-1]*4*M>=total:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def get_input():
+    n,m = input().split()
+    n = int(n)
+    m = int(m)
+    A = input().split()
+    A = [int(i) for i in A]
+    return n,m,A
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1]*4*m >= total:
+        print("是")
+    else:
+        print("否")

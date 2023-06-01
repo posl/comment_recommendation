@@ -1,48 +1,40 @@
-#问题陈述
-#给你一个1到N（包括）之间的N个整数序列：A=（A_1, A_2, ..., A_N）。
-#请判断A是否是（1，2，...，N）的一个置换。
-#
-#约束条件
-#1 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#輸出
-#如果A是(1, 2, ..., N)的排列组合，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#5
-#3 1 2 4 5
-#
-#样本输出1
-#Yes
-#(3, 1, 2, 4, 5)是(1, 2, 3, 4, 5)的排列组合，所以我们应该打印是。
-#
-#输入样本2
-#6
-#3 1 4 1 5 2
-#
-#样本输出2
-#No
-#(3, 1, 4, 1, 5, 2)不是(1, 2, 3, 4, 5, 6)的排列组合，所以我们应该打印No。
-#
-#输入样本3
-#3
-#1 2 3
-#
-#样品输出3
-#Yes
-#
-#样品输入4
-#1
-#1
-#
-#采样输出4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if 0 <= a and b <= 1000:
+        print((a * b) / 100)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(a*b/100)
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    print(A * B / 100)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = input().split()
+    A = int(A)
+    B = int(B)
+    print(A * B / 100)
+
+=======
+Suggestion 5
+
+def calculate_energy(a, b):
+    return a * b / 100

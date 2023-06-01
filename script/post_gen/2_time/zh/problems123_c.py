@@ -1,73 +1,230 @@
-#问题陈述
-#在2028年，经过不断的发展，AtCoder公司终于建立了一个拥有六个城市（城市1、2、3、4、5、6）的帝国！在这个帝国中，有五种交通工具！
-#在这个帝国里有五种交通工具：
-#火车：在一分钟内从城市1到2行驶。一列火车最多可以乘坐A人。
-#公共汽车：一分钟内从城市2到城市3。一辆公共汽车最多可以容纳B人。
-#出租车：在一分钟内从城市3到4行驶。一辆出租车最多可以容纳C人。
-#飞机：在一分钟内从城市4到5。一架飞机最多可以容纳D人。
-#船：在一分钟内从城市5到6。一艘船最多可容纳E人。
-#对于其中的每一种交通工具，在每个整数时间（时间0，1，2，......）有一种交通工具离开城市。
-#在城市1有一群N人，他们都想去城市6。
-#所有的人至少需要多长时间才能到达那里？
-#你可以忽略转移所需的时间。  
-#
-#约束条件
-#1 ≦ n, a, b, c, d, e ≦ 10^{15}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A
-#B
-#C
-#D
-#E
-#
-#输出
-#打印所有的人到达6号城市所需的最少时间，单位是分钟。
-#
-#输入样本1
-#5
-#3
-#2
-#4
-#3
-#5
-#
-#样本输出1
-#7
-#一种可能的旅行方式是如下的。
-#首先，在城市1有N=5人，如下图所示：
-#在第一分钟内，三个人乘坐火车从城市1到城市2。注意，一列火车最多只能乘坐三个人。
-#在第二分钟，剩下的两个人从城市1坐火车到城市2，而已经在城市2的三个人中的两个人坐公共汽车到城市3。请注意，一辆公共汽车最多只能容纳两个人。
-#在第三分钟，两个人从城市2乘火车到城市3，另外两个人从城市3乘出租车到城市4。
-#从那时起，如果他们继续不停地旅行，直到他们到达城市6，所有这些人都可以在7分钟内到达那里。
-#他们没有办法在6分钟或更短时间内到达城市。
-#
-#输入样本2
-#10
-#123
-#123
-#123
-#123
-#123
-#
-#样本输出2
-#5
-#所有种类的车辆每次都能占用N=10人。
-#因此，如果他们不停地继续行驶，直到到达城市6，所有的人都可以在5分钟内到达那里。  
-#
-#样本输入3
-#10000000007
-#2
-#3
-#5
-#7
-#11
-#
-#样本输出3
-#5000000008
-#注意，输入或输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem123_b():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    M = min(A,B,C,D,E)
+    if A%M==0:
+        A = A
+    else:
+        A = A + M - A%M
+    if B%M==0:
+        B = B
+    else:
+        B = B + M - B%M
+    if C%M==0:
+        C = C
+    else:
+        C = C + M - C%M
+    if D%M==0:
+        D = D
+    else:
+        D = D + M - D%M
+    if E%M==0:
+        E = E
+    else:
+        E = E + M - E%M
+    print(A+B+C+D+E)
+
+problem123_b()
+
+=======
+Suggestion 2
+
+def main():
+    #读取输入
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #计算答案
+    ans = 0
+    if A % 10 != 0:
+        ans += (A // 10 + 1) * 10
+    else:
+        ans += A
+    if B % 10 != 0:
+        ans += (B // 10 + 1) * 10
+    else:
+        ans += B
+    if C % 10 != 0:
+        ans += (C // 10 + 1) * 10
+    else:
+        ans += C
+    if D % 10 != 0:
+        ans += (D // 10 + 1) * 10
+    else:
+        ans += D
+    if E % 10 != 0:
+        ans += (E // 10 + 1) * 10
+    else:
+        ans += E
+    #输出结果
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C, D, E = map(int, open(0).read().split())
+    print((A - 1) // 10 * 10 + A + (B - 1) // 10 * 10 + B + (C - 1) // 10 * 10 + C + (D - 1) // 10 * 10 + D + (E - 1) // 10 * 10 + E)
+
+=======
+Suggestion 4
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    min_time = 10**9
+    for i in [A,B,C,D,E]:
+        if i%10 != 0:
+            min_time = min(min_time,i%10)
+    print(10*(A//10+B//10+C//10+D//10+E//10)+min_time-10)
+
+=======
+Suggestion 5
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    # print(A)
+    # print(B)
+    # print(C)
+    # print(D)
+    # print(E)
+    time = 0
+    time += (A % 10) * 10
+    time += (B % 10) * 10
+    time += (C % 10) * 10
+    time += (D % 10) * 10
+    time += (E % 10) * 10
+    print(time)
+
+=======
+Suggestion 6
+
+def problem123_b():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    ans = 0
+    if a % 10 != 0:
+        a = a + (10 - a % 10)
+    if b % 10 != 0:
+        b = b + (10 - b % 10)
+    if c % 10 != 0:
+        c = c + (10 - c % 10)
+    if d % 10 != 0:
+        d = d + (10 - d % 10)
+    if e % 10 != 0:
+        e = e + (10 - e % 10)
+    if a >= b and a >= c and a >= d and a >= e:
+        ans = ans + a
+    elif b >= a and b >= c and b >= d and b >= e:
+        ans = ans + b
+    elif c >= a and c >= b and c >= d and c >= e:
+        ans = ans + c
+    elif d >= a and d >= b and d >= c and d >= e:
+        ans = ans + d
+    elif e >= a and e >= b and e >= c and e >= d:
+        ans = ans + e
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    a = A
+    b = B
+    c = C
+    d = D
+    e = E
+    if A % 10 != 0:
+        A = A + (10 - (A % 10))
+    if B % 10 != 0:
+        B = B + (10 - (B % 10))
+    if C % 10 != 0:
+        C = C + (10 - (C % 10))
+    if D % 10 != 0:
+        D = D + (10 - (D % 10))
+    if E % 10 != 0:
+        E = E + (10 - (E % 10))
+    print(A + B + C + D + E - 10 - max(A, B, C, D, E))
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    if a % 10 == 0:
+        a = a
+    else:
+        a = a + (10 - a % 10)
+    if b % 10 == 0:
+        b = b
+    else:
+        b = b + (10 - b % 10)
+    if c % 10 == 0:
+        c = c
+    else:
+        c = c + (10 - c % 10)
+    if d % 10 == 0:
+        d = d
+    else:
+        d = d + (10 - d % 10)
+    if e % 10 == 0:
+        e = e
+    else:
+        e = e + (10 - e % 10)
+    print(a + b + c + d + e)
+
+=======
+Suggestion 9
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(A, B, C, D, E)
+    #print(type(A), type(B), type(C), type(D), type(E))
+    #print(10*round(A/10), 10*round(B/10), 10*round(C/10), 10*round(D/10), 10*round(E/10))
+    print(10*round(A/10)+10*round(B/10)+10*round(C/10)+10*round(D/10)+10*round(E/10)-50)
+
+=======
+Suggestion 10
+
+def get_min_time(a, b, c, d, e):
+    time = [a, b, c, d, e]
+    min_time = 0
+    for i in range(5):
+        if time[i] % 10 != 0:
+            time[i] = time[i] + 10 - time[i] % 10
+    min_time = max(time)
+    return min_time

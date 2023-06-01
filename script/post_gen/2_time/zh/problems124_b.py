@@ -1,44 +1,72 @@
-#问题陈述
-#从东到西有N座山，西边有一片海。
-#每座山的山顶都有一个旅馆。你决定从这些旅店中选择住的地方。
-#从西边看第i座山的高度是H_i。
-#从最西边的山顶上的客栈，你肯定能看到大海。
-#对于从西面第i座山顶的旅馆（i=2，3，...，N），当且仅当H_1≦H_i，H_2≦H_i，...，以及H_{i-1}≦H_i时，你可以看到大海。
-#你能从这N个旅馆中的多少个旅馆看到大海？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 20
-#1 ≦ H_i ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#H_1 H_2 ...H_N
-#
-#输出
-#打印可以看到大海的旅馆的数量。
-#
-#输入样本 1
-#4
-#6 5 6 8
-#
-#样本输出1
-#3
-#你可以从西边的第一、第三和第四家旅馆看到大海。
-#
-#样本输入2
-#5
-#4 5 3 5 4
-#
-#样本输出 2
-#3
-#
-#样本输入3
-#5
-#9 5 6 8 4
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def coins(a,b):
+    if a>b:
+        return a+a-1
+    elif a<b:
+        return b+b-1
+    else:
+        return a+b
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + a - 1, a + b, b + b - 1))
+
+=======
+Suggestion 3
+
+def problems124_a():
+    A, B = map(int, input().split())
+    print(max(A + A - 1, B + B - 1, A + B))
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a == b:
+        print(a*2)
+    else:
+        print(max(a,b)*2-1)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if A > B:
+        print(A + A - 1)
+    elif A < B:
+        print(B + B - 1)
+    else:
+        print(A + B)
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    if A == B:
+        print(A+B)
+    elif A > B:
+        print(2*A-1)
+    else:
+        print(2*B-1)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a == b:
+        print(a+b)
+    elif a > b:
+        print(a+a-1)
+    else:
+        print(b+b-1)

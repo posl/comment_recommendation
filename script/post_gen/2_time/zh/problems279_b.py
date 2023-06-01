@@ -1,53 +1,115 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S和T。请判断T是否是S的（连续的）子串。
-#当且仅当Y可以通过对X进行零次或多次的操作而得到时，就可以说Y是X的一个（连续）子串。
-#执行以下操作之一。
-#删除X中的第一个字符。
-#删除X中的最后一个字符。
-#
-#例如，tag是voltage的一个（连续的）子串，而ace不是atcoder的（连续的）子串。
-#
-#限制条件
-#S和T由小写英文字母组成。
-#1 ≦ |S|,|T| ≦ 100 (|X|表示一个字符串X的长度。)
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#T
-#
-#输出
-#如果T是S的一个（连续的）子串，打印Yes；否则，打印No。
-#
-#样本输入1
-#voltage
-#tag
-#
-#样本输出1
-#Yes
-#tag是voltage的一个（连续的）子串。
-#
-#输入样本2
-#atcoder
-#ace
-#
-#样品输出2
-#No
-#ace不是atcoder的（连续的）子串。
-#
-#输入样本3
-#gorilla
-#gorillagorillagorilla
-#
-#样本输出3
-#No
-#
-#样本输入4
-#toyotasystems
-#toyotasystems
-#
-#样本输出4
-#Yes
-#有可能，S=T。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S.count('wv'))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.count('vw') + s.count('wv'))
+
+=======
+Suggestion 3
+
+def count_bottoms(s):
+    if s == 'v':
+        return 1
+    elif s == 'w':
+        return 2
+    else:
+        return 0
+
+s = input()
+bottoms = 0
+for i in range(len(s)):
+    bottoms += count_bottoms(s[i])
+print(bottoms)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S.count("wv"))
+
+=======
+Suggestion 5
+
+def count_bottoms(s):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'w':
+            count += s[i+1:].count('v')
+    return count
+
+=======
+Suggestion 6
+
+def print_count_of_bottoms(s):
+    # 记录连续的v的个数
+    count_of_v = 0
+    # 记录底的个数
+    count_of_bottoms = 0
+    for c in s:
+        if c == 'v':
+            count_of_v += 1
+        else:
+            count_of_bottoms += count_of_v
+    print(count_of_bottoms)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == "w":
+            count += 1
+            for j in range(i+1,len(s)):
+                if s[j] == "v":
+                    count += 1
+                else:
+                    break
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'v':
+            for j in range(i+1, len(s)):
+                if s[j] == 'v':
+                    count += 1
+    print(count)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    s = input().strip()
+    print(s.count('vv') + s.count('wv') * 2 + s.count('vw') * 2 + s.count('ww') * 3)
+
+=======
+Suggestion 10
+
+def count_bottoms(s):
+    """
+    计算字符串s中的底的数量
+    :param s: 一个由v和w组成的字符串
+    :return: 底的数量
+    """
+    if len(s) == 1:
+        return 1 if s == 'v' else 0
+    else:
+        return count_bottoms(s[0]) + count_bottoms(s[1:])

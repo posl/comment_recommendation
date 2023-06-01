@@ -1,48 +1,76 @@
-#问题陈述
-#给出两个N维向量A=（A_1, A_2, A_3, ..., A_N）和B=（B_1, B_2, B_3, ..., B_N）。
-#确定A和B的内积是否为0。
-#换言之，确定A_1B_1 + A_2B_2 + A_3B_3 + ...+ A_NB_N = 0。
-#
-#限制条件
-#1 ≦ N ≦ 100000
-#-100 ≦ A_i ≦ 100
-#-100 ≦ B_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#b_1 b_2 b_3 ... b_n
-#
-#输出
-#如果A和B的内积为0，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2
-#-3 6
-#4 2
-#
-#样本输出1
-#Yes
-#A和B的内积是（-3）×4+6×2=0。
-#
-#样本输入2
-#2
-#4 5
-#-1 -3
-#
-#样本输出2
-#No
-#A和B的内积是4×（-1）+5×（-3）=-19。
-#
-#样本输入3
-#3
-#1 3 5
-#3 -6 3
-#
-#样本输出 3
-#Yes
-#A和B的内积是1×3+3×（-6）+5×3=0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(int,input().split())
+    if x > y :
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x > y:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    print("Yes" if x < y else "No")
+
+=======
+Suggestion 4
+
+def main():
+    #input
+    x, y = input().split()
+    x = int(x)
+    y = int(y)
+    #process
+    if x < y:
+        print("Yes")
+    else:
+        print("No")
+    #output
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    X, Y = map(int, input().split())
+    if X < Y:
+        X, Y = Y, X
+    if X - Y < 3:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split())
+
+    if x < y:
+        print("Yes")
+    else:
+        print("No")

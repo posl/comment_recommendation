@@ -1,40 +1,71 @@
-#问题陈述
-#我们有一个长度为N的字符串S，由大写的英文字母组成。
-#ABC作为连续的子序列在S中出现了多少次（见输入和输出样本）？
-#
-#限制条件
-#3 ≦ N ≦ 50
-#S由大写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S
-#
-#輸出
-#打印S中ABC出现的次数，作为连续的子序列。
-#
-#输入样本 1
-#10
-#ZABCDBABCQ
-#
-#样本输出1
-#2
-#S的两个连续的子序列等于ABC：第2至第4个字符，以及第7至第9个字符。
-#
-#输入样本2
-#19
-#3-4-5
-#
-#样本输出2
-#0
-#S的连续子序列都不等于ABC。
-#
-#样本输入3
-#33
-#abccabcbabccabacbcbbabcbcbcabcb
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 3
+
+def problem150_a():
+    k,x = map(int,input().split())
+    if k*500 >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    K,X = map(int,input().split())
+    if K*500 >= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    k,x = map(int,input().split())
+    if k * 500 >= x:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 6
+
+def problem150_a():
+    k,x = map(int,input().split())
+    if k*500 >= x:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    k,x = map(int, input().split())
+    if k*500 >= x:
+        print('Yes')
+    else:
+        print('No')

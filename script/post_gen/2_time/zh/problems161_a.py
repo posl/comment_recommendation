@@ -1,39 +1,156 @@
-#问题陈述
-#我们有三个盒子A、B、C，每个盒子都包含一个整数。
-#目前，盒子A、B、C中分别含有整数X、Y、Z。
-#现在我们将按顺序进行下面的操作。之后找到每个盒子的内容。  
-#调换盒子A和B的内容
-#调换盒子A和C的内容
-#
-#限制条件
-#1 ≦ x,y,z ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y Z
-#
-#输出
-#打印A、B、C三个方框中的整数，按这个顺序，中间有空格。
-#
-#输入示例 1
-#1 2 3
-#
-#输出示例 1
-#3 1 2
-#盒子A和B的内容互换后，A、B、C分别含有2、1、3。
-#然后，在A和C的内容被调换后，A、B和C分别包含3、1和2。  
-#
-#样本输入2
-#100 100 100
-#
-#样品输出2
-#100 100 100
-#
-#样本输入3
-#41 59 31
-#
-#样本输出3
-#31 41 59
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x,y = map(int, input().split())
+    x -= 1
+    y -= 1
+    ans = [0]*(n-1)
+    for i in range(n):
+        for j in range(i+1, n):
+            d = min(j-i, abs(x-i)+abs(y-j)+1)
+            ans[d-1] += 1
+    for i in range(n-1):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n, x, y = map(int, input().split())
+    x, y = x - 1, y - 1
+    ans = [0] * n
+    for i in range(n):
+        for j in range(i + 1, n):
+            ans[min(j - i, abs(x - i) + 1 + abs(j - y), abs(y - i) + 1 + abs(j - x))] += 1
+    for i in range(1, n):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n,x,y = map(int,input().split())
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+    #print(n,x,y)
+    #print(type(n),type(x),type(y))
+    #print(type(n))
+    #print(type(x))
+    #print(type(y))
+
+=======
+Suggestion 5
+
+def main():
+    n, x, y = map(int, input().split())
+    for k in range(1, n):
+        ans = 0
+        for i in range(1, n):
+            for j in range(i+1, n+1):
+                if i <= x and j >= y:
+                    d = min(j-i, abs(i-x)+1+abs(j-y))
+                elif i <= x:
+                    d = min(j-i, abs(i-x)+1+abs(j-y))
+                elif j >= y:
+                    d = min(j-i, abs(i-x)+1+abs(j-y))
+                else:
+                    d = j-i
+                if d == k:
+                    ans += 1
+        print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N,X,Y = map(int,input().split())
+    ans = [0 for i in range(N)]
+    for i in range(1,N):
+        for j in range(i+1,N+1):
+            ans[min(j-i,abs(X-i)+abs(Y-j)+1)] += 1
+    for i in range(1,N):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    n,x,y = map(int, input().split())
+    ans = [0] * n
+    for i in range(1,n):
+        for j in range(i+1,n+1):
+            ans[min(j-i,abs(x-i)+1+abs(y-j))] += 1
+    for i in range(1,n):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    n,x,y = map(int, input().split())
+    n -= 1
+    x -= 1
+    y -= 1
+    ans = [0 for _ in range(n)]
+    for i in range(n):
+        for j in range(i+1,n):
+            ans[min(j-i,abs(x-i)+1+abs(y-j))] += 1
+    for i in range(1,n):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def main():
+    n, x, y = map(int, input().split())
+    x -= 1
+    y -= 1
+    ans = [0] * (n - 1)
+    for i in range(n):
+        for j in range(i + 1, n):
+            d = min(j - i, abs(x - i) + 1 + abs(y - j))
+            ans[d - 1] += 1
+    for i in range(n - 1):
+        print(ans[i])

@@ -1,46 +1,68 @@
-#问题说明
-#有N个平台排成一排。从左边开始第i个平台的高度是H_i。
-#高桥最初站在最左边的平台上。
-#因为他喜欢高度，所以只要有可能，他就会重复下面的动作。
-#如果他所站的平台不是最右边的平台，而右边的下一个平台的高度大于当前平台的高度，则踏上下一个平台。
-#找到他将站在的最后一个平台的高度。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#H_1 ...H_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#5
-#1 5 10 4 2
-#
-#样本输出1
-#10
-#高桥最初站在最左边的平台上，平台的高度是1，右边的下一个平台的高度是5，比现在的平台高，所以他踏上了这个平台。
-#他现在站在左边第2个平台上，这个平台的高度是5，右边下一个平台的高度是10，比现在的平台高，所以他踏上了这个平台。
-#他现在站在左边第3个平台上，其高度为10。右边的下一个平台的高度是4，比现在的平台低，所以他停止移动。
-#因此，高桥将站在的最后一个平台的高度是10。
-#
-#输入样本 2
-#3
-#100 1000 100000
-#
-#样本输出2
-#100000
-#
-#样品输入3
-#4
-#27 1828 1828 9242
-#
-#样本输出3
-#1828
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    abc = int(input())
+    bca = abc % 100 * 10 + abc // 100
+    cab = abc % 10 * 100 + abc // 10
+    print(abc + bca + cab)
+
+=======
+Suggestion 2
+
+def main():
+    abc = input()
+    abc = int(abc)
+    a = abc // 100
+    b = (abc - a * 100) // 10
+    c = abc - a * 100 - b * 10
+    print(a * 100 + b * 10 + c + b * 100 + c * 10 + a + c * 100 + a * 10 + b)
+
+=======
+Suggestion 3
+
+def main():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    print(a*100+b*10+c+b*100+c*10+a+c*100+a*10+b)
+
+=======
+Suggestion 4
+
+def main():
+    abc = input()
+    a = int(abc[0])
+    b = int(abc[1])
+    c = int(abc[2])
+    print(a*111+b*111+c*111)
+
+=======
+Suggestion 5
+
+def get_num(num):
+    a = num // 100
+    b = num // 10 % 10
+    c = num % 10
+    return a, b, c
+
+=======
+Suggestion 6
+
+def main():
+    abc = int(input())
+    bca = abc * 10 % 1000 + abc // 100
+    cab = abc * 100 % 1000 + abc // 10
+    print(abc + bca + cab)
+
+=======
+Suggestion 7
+
+def main():
+    abc = int(input())
+    bca = 100 * (abc % 10) + 10 * (abc // 10 % 10) + abc // 100
+    cab = 100 * (abc // 100) + 10 * (abc % 10) + abc // 10 % 10
+    print(abc + bca + cab)

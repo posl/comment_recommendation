@@ -1,71 +1,289 @@
-#问题说明
-#诗歌在线评委（POJ）是一个在线评委，给提交的字符串打分。
-#有N次提交给POJ。  在最早的第i次提交中，提交了字符串S_i，并得到了T_i的分数。  (同一字符串可能被多次提交）。
-#请注意，POJ不一定给相同字符串的提交物打相同的分数。
-#如果提交的字符串从未在任何早期提交的作品中出现过，则该作品被认为是原创作品。
-#如果一个提交物是原始提交物，且得分最高，则称其为最佳提交物。  如果有多个这样的提交，只有最早的一个被认为是最佳提交。
-#找到最佳提交的索引。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i是一个由小写英文字符组成的字符串。
-#S_i的长度在1到10之间，包括在内。
-#0 ≦ T_i ≦ 10^9
-#N和T_i是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#aaa 10
-#bbb 20
-#aaa 30
-#
-#样本输出 1
-#2
-#我们将第i个最早的提交物称为提交物i。
-#原始的提交物是提交物1和2。  提交的文件3不是原创的，因为它的字符串与提交的文件1相同。
-#在原始提交的材料中，提交的材料2的分数最高。  因此，这是最好的作品。
-#
-#样本输入2
-#5
-#aaa 9
-#bbb 10
-#ccc 10
-#ddd 10
-#bbb 11
-#
-#样本输出2
-#2
-#原始提交的材料是提交的1，2，3，和4。
-#其中，Submission 2, 3, 和4的分数最高。  在这种情况下，最早提交的材料，即提交材料2，是最好的。
-#在这个例子中，请注意，如果多个原始提交物都有最高分，只有其中最早的一个被认为是最佳提交物。
-#
-#样本输入3
-#10
-#bb 3
-#ba 1
-#aa 4
-#bb 1
-#ba 5
-#aa 9
-#aa 2
-#ab 6
-#bb 5
-#ab 3
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(N, W, A):
+    A.sort()
+    if A[0] > W:
+        return 0
+    if A[0] + A[1] > W:
+        return 1
+    if A[0] + A[1] + A[2] > W:
+        return 2
+    return 3
+
+=======
+Suggestion 2
+
+def get_weights(n,w):
+    # n: the number of weights
+    # w: the weight limit
+    weights = []
+    for i in range(n):
+        weights.append(int(input()))
+    return weights
+
+=======
+Suggestion 3
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for n in range(1, W+1):
+        if n < A[0]:
+            continue
+        elif n == A[0]:
+            ans += 1
+        elif n < A[1]:
+            ans += 2
+        elif n == A[1]:
+            ans += 3
+        elif n < A[2]:
+            ans += 4
+        elif n == A[2]:
+            ans += 5
+        elif n < A[3]:
+            ans += 6
+        elif n == A[3]:
+            ans += 7
+        elif n < A[4]:
+            ans += 8
+        elif n == A[4]:
+            ans += 9
+        elif n < A[5]:
+            ans += 10
+        elif n == A[5]:
+            ans += 11
+        elif n < A[6]:
+            ans += 12
+        elif n == A[6]:
+            ans += 13
+        else:
+            pass
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    if W <= 10**6:
+        ans = 0
+        for i in range(1, W+1):
+            for j in range(1, W+1):
+                for k in range(1, W+1):
+                    if i*A[0] + j*A[1] + k*A[2] == W:
+                        ans += 1
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if a[i] + a[j] + a[k] <= w:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,w = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    #print(a)
+    #print(n,w)
+    #print(a[0],a[1],a[2])
+    #print(a[0]+a[1]+a[2])
+    #print(a[0]+a[1])
+    #print(a[0]+a[2])
+    #print(a[1]+a[2])
+    #print(a[0])
+    #print(a[1])
+    #print(a[2])
+    ans = 0
+    for i in range(n):
+        for j in range(i,n):
+            for k in range(j,n):
+                if a[i]+a[j]+a[k] <= w:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = list(set(a))
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            for k in range(j, n):
+                if a[i] + a[j] + a[k] <= w:
+                    ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, w = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            for k in range(j, n):
+                if a[i] + a[j] + a[k] <= w:
+                    ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    N, W = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    max_A = max(A)
+    #print(A)
+    #print(max_A)
+    #print(W)
+    #print(N)
+    #print(A)
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print(A[52])
+    #print(A[53])
+    #print(A[54])
+    #print(A[55])
+    #print(A[56])
+    #print(A[57])
+    #print(A[58])
+    #print(A[59])
+    #print(A[60])
+    #print(A[61])
+    #print(A
+
+=======
+Suggestion 10
+
+def get_good_ints(N, W, A):
+    A.sort()
+    #print(A)
+    #print(N, W, A)
+    if A[0] > W:
+        return 0
+    if A[0] == 1:
+        return W
+    if A[0] == 2:
+        return W//2 + W%2
+    if A[0] == 3:
+        return W//3 + W%3
+    if A[0] == 4:
+        return W//4 + W%4
+    if A[0] == 5:
+        return W//5 + W%5
+    if A[0] == 6:
+        return W//6 + W%6
+    if A[0] == 7:
+        return W//7 + W%7
+    if A[0] == 8:
+        return W//8 + W%8
+    if A[0] == 9:
+        return W//9 + W%9
+    if A[0] == 10:
+        return W//10 + W%10
+    if A[0] == 11:
+        return W//11 + W%11
+    if A[0] == 12:
+        return W//12 + W%12
+    if A[0] == 13:
+        return W//13 + W%13
+    if A[0] == 14:
+        return W//14 + W%14
+    if A[0] == 15:
+        return W//15 + W%15
+    if A[0] == 16:
+        return W//16 + W%16
+    if A[0] == 17:
+        return W//17 + W%17
+    if A[0] == 18:
+        return W//18 + W%18
+    if A[0] == 19:
+        return W//19 + W%19
+    if A[0] == 20:
+        return W//20 + W%20
+    if A[0] == 21:
+        return W//21 + W%21
+    if A[0] == 22:
+        return W//22 + W%22
+    if A[0] == 23:
+        return W//23 + W%23
+    if A[

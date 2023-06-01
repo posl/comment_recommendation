@@ -1,39 +1,163 @@
-#问题陈述
-#在N个正整数的序列a=（a_1，a_2，...，a_N）中，有多少个不同的整数？
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9 (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#6
-#1 4 1 2 2 1
-#
-#样本输出 1
-#3
-#有三个不同的整数：1，2，4。
-#
-#输入样本2
-#1
-#1
-#
-#采样输出2
-#1
-#
-#样品输入3
-#11
-#3 1 4 1 5 9 2 6 5 3 5
-#
-#样本输出 3
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    if a < b:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a + 1 == b:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    if b-a == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def judge(a,b):
+    if (a==1 and b==3) or (a==2 and b==4) or (a==3 and b==5) or (a==4 and b==6) or (a==5 and b==7) or (a==6 and b==8) or (a==7 and b==9) or (a==8 and b==10):
+        return True
+    else:
+        return False
+
+a,b = map(int,input().split())
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if b - a == 1 or b - a == 9:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a == 1 and b == 3:
+        print("Yes")
+    elif a == 1 and b == 2:
+        print("No")
+    elif a == 1 and b == 4:
+        print("No")
+    elif a == 1 and b == 5:
+        print("No")
+    elif a == 1 and b == 6:
+        print("Yes")
+    elif a == 1 and b == 7:
+        print("Yes")
+    elif a == 1 and b == 8:
+        print("Yes")
+    elif a == 1 and b == 9:
+        print("Yes")
+    elif a == 1 and b == 10:
+        print("Yes")
+    elif a == 2 and b == 3:
+        print("Yes")
+    elif a == 2 and b == 4:
+        print("No")
+    elif a == 2 and b == 5:
+        print("No")
+    elif a == 2 and b == 6:
+        print("Yes")
+    elif a == 2 and b == 7:
+        print("Yes")
+    elif a == 2 and b == 8:
+        print("Yes")
+    elif a == 2 and b == 9:
+        print("Yes")
+    elif a == 2 and b == 10:
+        print("Yes")
+    elif a == 3 and b == 4:
+        print("Yes")
+    elif a == 3 and b == 5:
+        print("No")
+    elif a == 3 and b == 6:
+        print("Yes")
+    elif a == 3 and b == 7:
+        print("Yes")
+    elif a == 3 and b == 8:
+        print("Yes")
+    elif a == 3 and b == 9:
+        print("Yes")
+    elif a == 3 and b == 10:
+        print("Yes")
+    elif a == 4 and b == 5:
+        print("Yes")
+    elif a == 4 and b == 6:
+        print("Yes")
+    elif a == 4 and b == 7:
+        print("Yes")
+    elif a == 4 and b == 8:
+        print("Yes")
+    elif a == 4 and b == 9:
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if b-a == 1 or b-a == 9:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if (a == 1 and b == 3) or (a == 1 and b == 2) or (a == 3 and b == 4) or (a == 2 and b == 4) or (a == 2 and b == 5) or (a == 4 and b == 5) or (a == 5 and b == 6) or (a == 5 and b == 7) or (a == 6 and b == 8) or (a == 7 and b == 8) or (a == 7 and b == 9) or (a == 8 and b == 10) or (a == 9 and b == 10):
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 9
+
+def is_connect(a, b):
+    if (a == 1 and b == 2) or (a == 2 and b == 3) or (a == 3 and b == 4) or (a == 4 and b == 5) or (a == 5 and b == 6) or (a == 6 and b == 7) or (a == 7 and b == 8) or (a == 8 and b == 9) or (a == 9 and b == 10):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 10
+
+def main():
+    a, b = map(int, input().split())
+    if a == 1 and b == 10:
+        print('Yes')
+    elif a == 2 and b == 9:
+        print('Yes')
+    elif a == 3 and b == 8:
+        print('Yes')
+    elif a == 4 and b == 7:
+        print('Yes')
+    elif a == 5 and b == 6:
+        print('Yes')
+    else:
+        print('No')

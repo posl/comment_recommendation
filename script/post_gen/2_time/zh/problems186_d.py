@@ -1,34 +1,124 @@
-#问题陈述
-#给出N个整数A_1,...,A_N。
-#求所有i,j对的|A_i-A_j|之和，且1≦i<j≦N。
-#换句话说，求（sum_{i=1}^{N-1}sum_{j=i+1}^{N}|A_i-A_j|）。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#|A_i|≦ 10^8
-#A_i是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#5 1 2
-#
-#样本输出1
-#8
-#我们有|5-1|+|5-2|+|1-2|=8。
-#
-#样本输入2
-#5
-#31 41 59 26 53
-#
-#样本输出2
-#176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(1,n+1):
+        if '7' not in str(i) and '7' not in oct(i):
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def is_contain_seven(num, base):
+    while num > 0:
+        if num % base == 7:
+            return True
+        num = num // base
+    return False
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    result = 0
+    for i in range(1, N + 1):
+        if str(i).find('7') >= 0:
+            continue
+        if str(oct(i)).find('7') >= 0:
+            continue
+        result += 1
+    print(result)
+
+main()
+
+=======
+Suggestion 4
+
+def check_seven(n):
+    if '7' in str(n):
+        return True
+    else:
+        return False
+
+N = int(input())
+count = 0
+for i in range(1,N+1):
+    if check_seven(i):
+        continue
+    else:
+        if check_seven(oct(i)):
+            continue
+        else:
+            count += 1
+print(count)
+
+=======
+Suggestion 5
+
+def is_contain_seven(n):
+    if '7' in str(n):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def check_seven(num):
+    while num > 0:
+        if num % 10 == 7:
+            return True
+        num = num // 10
+    return False
+
+=======
+Suggestion 7
+
+def is_contain_seven(n):
+    if n%10 == 7:
+        return True
+    elif n//10 == 0:
+        return False
+    else:
+        return is_contain_seven(n//10)
+
+=======
+Suggestion 8
+
+def count_dec(num):
+    count = 0
+    for i in range(1, num+1):
+        if '7' in str(i):
+            count += 1
+    return count
+
+=======
+Suggestion 9
+
+def f(n):
+    s = 0
+    for i in range(1,n+1):
+        if '7' in str(i) or '7' in oct(i):
+            s += 1
+    return n-s
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 10
+
+def count(n):
+    count=0
+    for i in range(1,n+1):
+        if not '7' in str(i) and not '7' in oct(i):
+            count+=1
+    return count
+
+print(count(100000))

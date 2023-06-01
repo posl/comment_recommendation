@@ -1,72 +1,124 @@
-#问题陈述
-#我们有一个无限的六边形网格，如下图所示。最初，所有的方格都是白色的。
-#一个六边形单元表示为（i,j），有两个整数i和j。
-#单元（i,j）与以下六个单元相邻：
-#(i-1,j-1)
-#(i-1,j)
-#(i,j-1)
-#(i,j+1)
-#(i+1,j)
-#(i+1,j+1)
-#高桥将N个单元格(X_1,Y_1),(X_2,Y_2),...,(X_N,Y_N)涂黑。
-#求黑色单元格所形成的连接部件的数量。
-#当人们可以通过反复移动到相邻的黑色单元而在这两个黑色单元之间旅行时，两个黑色单元属于同一个连接组件。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#|X_i|,|Y_i| ≦ 1000
-#成对的(X_i,Y_i)是不同的。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#-1 -1
-#0 1
-#0 2
-#1 0
-#1 2
-#2 0
-#
-#样本输出1
-#3
-#高桥将单元格涂成黑色后，网格看起来如下所示。
-#黑色的方格形成了以下三个相连的部分：
-#(-1,-1)
-#(1,0),(2,0)
-#(0,1),(0,2),(1,2)
-#
-#样本输入2
-#4
-#5 0
-#4 1
-#-3 -4
-#-2 -5
-#
-#样本输出 2
-#4
-#
-#样本输入3
-#5
-#2 1
-#2 -1
-#1 0
-#3 1
-#1 -1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    #n = 576461302059761664
+    #n = 11
+    #n
+
+=======
+Suggestion 2
+
+def binary(n):
+    if n == 0:
+        return 0
+    else:
+        return (n % 2 + 10 * binary(int(n / 2)))
+
+=======
+Suggestion 3
+
+def get_binary_position_set(num):
+    binary_position_set = []
+    i = 0
+    while num != 0:
+        if num & 1 == 1:
+            binary_position_set.append(i)
+        num = num >> 1
+        i += 1
+    return binary_position_set
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def isSubset(arr1, arr2, m, n): 
+	i = 0; 
+	j = 0; 
+	for i in range(n): 
+		for j in range(m): 
+			if(arr2[i] == arr1[j]): 
+				break; 
+		if (j == m): 
+			return 0; 
+	return 1;
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    nbin = bin(n)[2:]
+    nlen = len(nbin)
+    ans = []
+    for i in range(1 << nlen):
+        x = bin(i)[2:]
+        xlen = len(x)
+        if xlen > nlen:
+            break
+        ok = True
+        for j in range(xlen):
+            if x[j] == '1' and nbin[nlen - xlen + j] == '0':
+                ok = False
+                break
+        if ok:
+            ans.append(i)
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 7
+
+def problem269_c():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    n = bin(N).count("1")
+    for i in range(2 ** n):
+        if bin(i).count("1") == n:
+            print(i)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    # 1. n的二进制表示中，最多只有15个数字位置包含1
+    # 2. 2^60 < 2^61
+    # 3. 2^60 < 2^30 * 2^30
+    # 4. 2^30 < 2^15 * 2^15
+    # 5. 2^15 < 2^7 * 2^7
+    # 6. 2^7 < 2^3 * 2^3
+    # 7. 2^3 < 2^1 * 2^1
+    # 8. 2^1 < 2^0 * 2^0
+    # 9. 2^0 < 2^0 * 2^0
+    # 10. 2^0 < 2^0 * 2^0
+    # 11. 2^0 < 2^0 * 2^0
+    # 12. 2^0 < 2^0 * 2^0
+    # 13. 2^0 < 2^0 * 2^0
+    # 14. 2^0 < 2^0 * 2^0
+    # 15. 2^0 < 2^0 * 2^0
+    # 16. 2^0 < 2^0 * 2^0
+    # 17. 2^0 < 2^0 * 2^0
+    # 18. 2^0 < 2^0 * 2^0
+    # 19. 2^0 < 2^0 * 2^0
+    # 20. 2^0 < 2^0 * 2^0
+    # 21. 2^0 < 2^0 * 2^0
+    # 22. 2^0 < 2^0 * 2^0
+    # 23. 2^0 < 2^0 * 2^0
+    # 24. 2^0 < 2^0 * 2

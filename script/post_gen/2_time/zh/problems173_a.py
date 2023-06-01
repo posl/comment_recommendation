@@ -1,31 +1,136 @@
-#问题陈述
-#我们将在一家商店以N日元（日本的货币）购买一种产品。
-#如果我们只用1000日元的纸币来支付价格，我们会收到多少零钱？
-#假设我们使用所需的最低数量的钞票。
-#
-#限制条件
-#1 ≦ N ≦ 10000
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#以整数形式打印变化的数量。
-#
-#输入样本1
-#1900
-#
-#样本输出1
-#100
-#我们将用两张1000日元的钞票来支付价格，并收到100日元的零钱。
-#
-#样本输入2
-#3000
-#
-#样本输出2
-#0
-#我们可以支付确切的价格。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    if x == 1:
+        return 1
+    res = 2
+    for i in range(2, int(x**0.5)+1):
+        if x%i == 0:
+            res += i
+            if x//i != i:
+                res += x//i
+    return res
+
+N = int(input())
+ans = 0
+for i in range(1, N+1):
+    ans += i*f(i)
+print(ans)
+
+=======
+Suggestion 2
+
+def f(x):
+    result = 0
+    for i in range(1, int(x**0.5) + 1):
+        if x % i == 0:
+            result += i
+            if i != x // i:
+                result += x // i
+    return result
+
+n = int(input())
+result = 0
+for i in range(1, n + 1):
+    result += i * f(i)
+print(result)
+
+=======
+Suggestion 3
+
+def f(x):
+    sum = 0
+    for i in range(1, x+1):
+        if x % i == 0:
+            sum += 1
+    return sum
+
+n = int(input())
+sum = 0
+for i in range(1, n+1):
+    sum += i * f(i)
+
+print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        ans += i * f(i)
+    print(ans)
+
+=======
+Suggestion 5
+
+def f(x):
+    count = 0
+    for i in range(1,x+1):
+        if x%i == 0:
+            count+=1
+    return count
+
+=======
+Suggestion 6
+
+def f(n):
+    result = 0
+    for i in range(1, n+1):
+        if n%i == 0:
+            result += i
+    return result
+
+n = int(input())
+result = 0
+for i in range(1, n+1):
+    result += i*f(i)
+print(result)
+
+=======
+Suggestion 7
+
+def f(x):
+    s = 0
+    for i in range(1,x+1):
+        if x%i == 0:
+            s += 1
+    return s
+
+=======
+Suggestion 8
+
+def sum(N):
+    sum = 0
+    for i in range(1, N+1):
+        sum += i * f(i)
+    return sum
+
+=======
+Suggestion 9
+
+def f(x):
+    res = 0
+    for i in range(1, x+1):
+        if x % i == 0:
+            res += 1
+    return res
+
+n = int(input())
+ans = 0
+for i in range(1, n+1):
+    ans += i * f(i)
+print(ans)
+
+=======
+Suggestion 10
+
+def solve(n):
+    ans = 0
+    for i in range(1, n+1):
+        ans += i * f(i)
+    return ans

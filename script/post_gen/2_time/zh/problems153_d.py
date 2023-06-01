@@ -1,42 +1,115 @@
-#问题陈述
-#狞猫正在与一只怪物战斗。
-#怪物的健康状况是H。
-#狞猫可以通过选择一个怪物进行攻击。当一个怪物被攻击时，根据该怪物的健康状况，会发生以下情况：
-#如果该怪物的健康状况是1，它就会降到0。
-#如果怪物的健康状况，X，大于1，则该怪物消失。然后，出现两个新的怪物，每个怪物的健康状况为⌊ X/2 ⌋。
-#(⌊ r ⌋表示不超过r的最大整数)。
-#当所有现有怪物的健康状况变成0或低于0时，卡拉卡尔就赢了。
-#找出卡拉卡尔在获胜前需要进行的最小攻击次数。
-#
-#限制条件
-#1 ≦ H ≦ 10^{12}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H
-#
-#输出
-#找到Caracal在获胜前需要的最小攻击次数。
-#
-#输入样本 1
-#2
-#
-#样本输出 1
-#3
-#当卡拉卡尔攻击最初的怪物时，它就会消失，然后出现两个怪物，每个怪物的生命值都是1。
-#然后，狞猫可以对这些新怪物各攻击一次，总共攻击三次就能获胜。
-#
-#样本输入2
-#4
-#
-#样本输出2
-#7
-#
-#样本输入3
-#1000000000000
-#
-#样本输出3
-#1099511627775
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    print(sum(H[:N - K]))
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    ans = 0
+    if k >= n:
+        print(ans)
+    else:
+        for i in range(k,n):
+            ans += h[i]
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort()
+    if K >= N:
+        print(0)
+    else:
+        print(sum(H[:N-K]))
+
+=======
+Suggestion 4
+
+def attack_num(h, k):
+    h.sort(reverse=True)
+    return sum(h[k:])
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort()
+    total = sum(h)
+    if k >= n:
+        print(0)
+    else:
+        print(total - sum(h[-k-1:]))
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    print(sum(H[K:]))
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+
+    H.sort(reverse=True)
+    H = H[K:]
+    print(sum(H))
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort()
+    print(sum(h[:n-k]))
+
+=======
+Suggestion 9
+
+def main():
+    N,K=map(int,input().split())
+    H=list(map(int,input().split()))
+
+    H.sort(reverse=True)
+    #print(H)
+
+    if K>=N:
+        print(0)
+    else:
+        print(sum(H[K:]))
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    ans = 0
+    for i in range(K, N):
+        ans += H[i]
+    print(ans)

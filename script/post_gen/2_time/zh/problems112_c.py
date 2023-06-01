@@ -1,59 +1,142 @@
-#问题陈述
-#在古代的斯努克王国，有一座金字塔，用来加强AtCoder公司总裁高桥的权威。
-#金字塔的中心坐标为（C_X，C_Y），高度为H。坐标（X，Y）的高度为max（H-|X-C_X|-|Y-C_Y|，0）。  
-#探险家Aoki进行了一次调查，以确定这个金字塔的中心坐标和高度。结果，他得到了以下信息：
-#C_X，C_Y是0到100（含）之间的整数，H是一个不小于1的整数。
-#此外，他还获得了N条信息。其中第i条是："点（x_i，y_i）的高度是h_i。"  
-#这足以确定金字塔的中心坐标和高度。用上面的线索找到这些值。  
-#
-#限制条件
-#N是1到100之间的整数（包括在内）。
-#x_i和y_i是0到100之间的整数（包括在内）。
-#h_i是0到10^9（包括）之间的整数。
-#N个坐标（x_1，y_1），（x_2，y_2），（x_3，y_3），...，（x_N，y_N）都不同。
-#中心坐标和金字塔的高度可以被唯一地确定。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：  
-#N
-#x_1 y_1 h_1
-#x_2 y_2 h_2
-#x_3 y_3 h_3
-#:
-#x_N y_N h_N
-#
-#输出
-#在一行中打印代表中心坐标和金字塔高度的C_X、C_Y和H的值，中间有空格。  
-#
-#输入样本1
-#4
-#2 3 5
-#2 1 5
-#1 2 5
-#3 2 5
-#
-#样本输出 1
-#2 2 6
-#在这种情况下，中心坐标和高度可以被确定为（2，2）和6。  
-#
-#样本输入2
-#2
-#0 0 100
-#1 1 98
-#
-#样本输出2
-#0 0 100
-#在这种情况下，中心坐标和高度可以被确定为（0，0）和100。
-#注意，C_X和C_Y是已知的0和100之间的整数。
-#
-#样本输入3
-#3
-#99 1 191
-#100 1 192
-#99 0 192
-#
-#样本输出3
-#100 0 193
-#在这种情况下，中心坐标和高度可以被确定为（100，0）和193。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def search(cost, time, i, t):
+    if i == 0:
+        return 0
+    elif time[i] > t:
+        return search(cost, time, i-1, t)
+    else:
+        return max(search(cost, time, i-1, t), search(cost, time, i-1, t-time[i])+cost[i])
+
+=======
+Suggestion 2
+
+def main():
+    n, t = map(int, input().split())
+    c = []
+    for _ in range(n):
+        c_i, t_i = map(int, input().split())
+        if t_i <= t:
+            c.append(c_i)
+    if c:
+        print(min(c))
+    else:
+        print("TLE")
+
+=======
+Suggestion 3
+
+def find_best_route(N, T, c_list, t_list):
+    best_cost = 1001
+    for i in range(N):
+        if t_list[i] <= T and c_list[i] < best_cost:
+            best_cost = c_list[i]
+    if best_cost == 1001:
+        print("TLE")
+    else:
+        print(best_cost)
+
+=======
+Suggestion 4
+
+def get_input():
+    N, T = map(int, input().split())
+    c_t = []
+    for i in range(N):
+        c_t.append(list(map(int, input().split())))
+    return N, T, c_t
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    n, t = map(int, input().split())
+    # 读取输入
+    lines = []
+    for i in range(n):
+        c, t = map(int, input().split())
+        lines.append((c, t))
+    # 找出花费不超过时间T的路线的最小成本
+    lines = sorted(lines, key=lambda x: x[0])
+    for line in lines:
+        if line[1] <= t:
+            print(line[0])
+            break
+    else:
+        print('TLE')
+
+=======
+Suggestion 6
+
+def getMinCost(n,t,route):
+    minCost = 100000
+    for i in range(n):
+        if route[i][1] <= t:
+            if route[i][0] < minCost:
+                minCost = route[i][0]
+    if minCost == 100000:
+        print('TLE')
+    else:
+        print(minCost)
+
+=======
+Suggestion 7
+
+def get_input():
+    N, T = map(int, input().split())
+
+    c_list = []
+    t_list = []
+
+    for i in range(N):
+        c, t = map(int, input().split())
+        c_list.append(c)
+        t_list.append(t)
+
+    return N, T, c_list, t_list
+
+=======
+Suggestion 8
+
+def get_input():
+    N,T = map(int,input().split())
+    c_t = []
+    for _ in range(N):
+        c_t.append(list(map(int,input().split())))
+    return N,T,c_t
+
+=======
+Suggestion 9
+
+def func():
+    N, T = map(int, input().split())
+    cost_time = []
+    for i in range(N):
+        cost, time = map(int, input().split())
+        if time <= T:
+            cost_time.append([cost, time])
+    if len(cost_time) == 0:
+        print("TLE")
+    else:
+        cost_time.sort(key=lambda x: x[0])
+        print(cost_time[0][0])
+
+=======
+Suggestion 10
+
+def main():
+    N,T = map(int,input().split())
+    c = []
+    t = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        c.append(a)
+        t.append(b)
+    if max(t) > T:
+        print('TLE')
+    else:
+        print(min(c))

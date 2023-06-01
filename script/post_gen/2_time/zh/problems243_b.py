@@ -1,55 +1,177 @@
-#问题陈述
-#给你一个长度为N的整数序列：A=（A_1, A_2, ..., A_N）和B=（B_1, B_2, ..., B_N）。
-#A的所有元素都是不同的。B的所有元素也是不同的。
-#打印以下两个数值。
-#包含在A和B中的整数的数量，出现在两个序列的相同位置。换句话说，有多少个整数i使A_i = B_i。
-#包含在A和B中的整数的数量，出现在两个序列的不同位置。换句话说，有多少对整数（i，j）使A_i = B_j，且i≠j。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#A_1, A_2, ..., A_N都是不同的。
-#B_1, B_2, ..., B_N都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#
-#输出
-#分两行打印答案：第一行是1.的答案，第二行是2.的答案。
-#
-#输入样本1
-#4
-#1 3 5 2
-#2 3 1 4
-#
-#样本输出 1
-#1
-#2
-#有一个整数同时包含在A和B中，出现在两个序列的相同位置：A_2 = B_2 = 3。
-#有两个整数同时包含在A和B中，出现在这两个序列的不同位置：A_1 = B_3 = 1 和 A_4 = B_1 = 2。
-#
-#样本输入2
-#3
-#1 2 3
-#4 5 6
-#
-#样本输出2
-#0
-#0
-#在1.和2.中，没有整数满足条件。
-#
-#输入样本 3
-#7
-#4 8 1 7 9 5 6
-#3 5 1 7 8 2 6
-#
-#样本输出 3
-#3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def judge(v,a,b,c):
+    if v>a:
+        if v>b:
+            if v>c:
+                return True
+    return False
+
+=======
+Suggestion 2
+
+def main():
+    v, a, b, c = map(int, input().split())
+    v1 = v - a
+    v2 = v - a - b
+    v3 = v - a - b - c
+    if v1 <= 0:
+        print('F')
+    elif v2 <= 0:
+        print('M')
+    else:
+        print('T')
+
+=======
+Suggestion 3
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while v >= 0:
+        v -= a
+        if v < 0:
+            print('F')
+            return
+        v -= b
+        if v < 0:
+            print('M')
+            return
+        v -= c
+        if v < 0:
+            print('T')
+            return
+
+=======
+Suggestion 4
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while v >= 0:
+        if v >= c:
+            v -= c
+        else:
+            print('T')
+            break
+        if v >= b:
+            v -= b
+        else:
+            print('F')
+            break
+        if v >= a:
+            v -= a
+        else:
+            print('M')
+            break
+
+=======
+Suggestion 5
+
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    if v % a == 0 or v % b == 0 or v % c == 0:
+        print("T")
+    else:
+        print("F")
+
+=======
+Suggestion 6
+
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    while v > 0:
+        if v >= a:
+            v -= a
+        else:
+            print('F')
+            return
+        if v >= b:
+            v -= b
+        else:
+            print('M')
+            return
+        if v >= c:
+            v -= c
+        else:
+            print('T')
+            return
+    print('T')
+
+=======
+Suggestion 7
+
+def solve():
+    v,a,b,c = map(int,input().split())
+    while v >= 0:
+        if v >= a:
+            v -= a
+        else:
+            print("F")
+            break
+        if v >= b:
+            v -= b
+        else:
+            print("M")
+            break
+        if v >= c:
+            v -= c
+        else:
+            print("T")
+            break
+    return 0
+
+=======
+Suggestion 8
+
+def problems243_a():
+    v, a, b, c = map(int, input().split())
+    while True:
+        if v >= a:
+            v -= a
+        else:
+            print("F")
+            break
+        if v >= b:
+            v -= b
+        else:
+            print("M")
+            break
+        if v >= c:
+            v -= c
+        else:
+            print("T")
+            break
+
+=======
+Suggestion 9
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while True:
+        if v < a:
+            print('F')
+            break
+        else:
+            v -= a
+        if v < b:
+            print('M')
+            break
+        else:
+            v -= b
+        if v < c:
+            print('T')
+            break
+        else:
+            v -= c
+
+=======
+Suggestion 10
+
+def main():
+    v,a,b,c = map(int, input().split())
+    if (v % a == 0) or (v % b == 0) or (v % c == 0):
+        print("T")
+    else:
+        print("F")

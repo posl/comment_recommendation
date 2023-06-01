@@ -1,62 +1,249 @@
-#问题陈述
-#给出的是一个长度为N的数列A。
-#让我们把这个序列划分为一个或多个非空的连续区间。
-#然后，对于每一个区间，让我们计算其中的数字的位法OR。
-#找出以这种方式得到的数值的最小可能的位数XOR值。
-#        什么是位数OR？
-#    
-#        整数A和B的位数OR，A OR B，定义如下：
-#        
-#当A OR B以二进制书写时，如果A和B中至少有一个是1，那么2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 OR 5 = 7（在二进制中：011 OR 101 = 111）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位数OR被定义为（...（（p_1 OR p_2） OR p_3） OR ...或p_k）。我们可以证明这个值不取决于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#        什么是位数XOR？
-#    
-#        整数A和B的位数XOR，A XOR B，定义如下：
-#        
-#当A XOR B写在基数2中时，如果A和B中正好有一个是1，2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 XOR 5 = 6（在二进制中：011 XOR 101 = 110）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位XOR定义为（...（（p_1 XOR p_2）XOR p_3）XOR ...XOR p_k）。我们可以证明，这个值不依赖于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#限制条件
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 5 7
-#
-#样本输出1
-#2
-#如果我们把[1，5，7]分成[1，5]和[7]，它们的比特OR是5和7，其XOR是2。
-#不可能得到一个更小的结果，所以我们打印2。
-#
-#输入样本 2
-#3
-#10 10 10
-#
-#样本输出2
-#0
-#我们应该把这个序列分为[10]和[10，10]。
-#
-#样本输入3
-#4
-#1 3 3 1
-#
-#样本输出3
-#0
-#我们应该把这个序列分为[1，3]和[3，1]。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+    ans = 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for i in range(X + 1, H):
+        if S[i][Y] == '#':
+            break
+        ans += 1
+    for j in range(Y - 1, -1, -1):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    for j in range(Y + 1, W):
+        if S[X][j] == '#':
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    h, w, x, y = map(int, input().split())
+    s = [input() for _ in range(h)]
+    x -= 1
+    y -= 1
+
+    ans = 1
+    for i in range(x - 1, -1, -1):
+        if s[i][y] == '#':
+            break
+        ans += 1
+
+    for i in range(x + 1, h):
+        if s[i][y] == '#':
+            break
+        ans += 1
+
+    for j in range(y - 1, -1, -1):
+        if s[x][j] == '#':
+            break
+        ans += 1
+
+    for j in range(y + 1, w):
+        if s[x][j] == '#':
+            break
+        ans += 1
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def get_grid():
+    grid = []
+    while True:
+        try:
+            row = input()
+            grid.append(row)
+        except EOFError:
+            break
+    return grid
+
+=======
+Suggestion 4
+
+def solve():
+    H, W, X, Y = map(int, input().split())
+    S = [list(input()) for i in range(H)]
+    X -= 1
+    Y -= 1
+
+    ans = 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(X + 1, H):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(Y - 1, -1, -1):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    for i in range(Y + 1, W):
+        if S[X][i] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for i in range(H)]
+    ans = 1
+    for i in range(X - 2, -1, -1):
+        if S[i][Y - 1] == "#":
+            break
+        ans += 1
+    for i in range(X, H):
+        if S[i][Y - 1] == "#":
+            break
+        ans += 1
+    for i in range(Y - 2, -1, -1):
+        if S[X - 1][i] == "#":
+            break
+        ans += 1
+    for i in range(Y, W):
+        if S[X - 1][i] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_result():
+    H, W, X, Y = input().split()
+    H = int(H)
+    W = int(W)
+    X = int(X)
+    Y = int(Y)
+    S = []
+    for i in range(H):
+        S.append(input())
+    result = 1
+    for i in range(X-2, -1, -1):
+        if S[i][Y-1] == "#":
+            break
+        else:
+            result += 1
+    for i in range(X, H):
+        if S[i][Y-1] == "#":
+            break
+        else:
+            result += 1
+    for i in range(Y-2, -1, -1):
+        if S[X-1][i] == "#":
+            break
+        else:
+            result += 1
+    for i in range(Y, W):
+        if S[X-1][i] == "#":
+            break
+        else:
+            result += 1
+    return result
+
+=======
+Suggestion 7
+
+def get_visible_number(H, W, X, Y, S):
+    count = 1
+    for i in range(X-1, -1, -1):
+        if S[i][Y-1] == '#':
+            break
+        count += 1
+    for i in range(X, H):
+        if S[i][Y-1] == '#':
+            break
+        count += 1
+    for i in range(Y-2, -1, -1):
+        if S[X-1][i] == '#':
+            break
+        count += 1
+    for i in range(Y, W):
+        if S[X-1][i] == '#':
+            break
+        count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    ans = 1
+    for i in range(X - 2, -1, -1):
+        if S[i][Y - 1] == "#":
+            break
+        ans += 1
+    for i in range(X, H):
+        if S[i][Y - 1] == "#":
+            break
+        ans += 1
+    for j in range(Y - 2, -1, -1):
+        if S[X - 1][j] == "#":
+            break
+        ans += 1
+    for j in range(Y, W):
+        if S[X - 1][j] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_input():
+    H, W, X, Y = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    return H, W, X, Y, S
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+
+    # 计算可见方块的数量
+    count = 1
+    for i in range(X - 2, -1, -1):
+        if S[i][Y - 1] == '#':
+            break
+        count += 1
+    for i in range(X, H):
+        if S[i][Y - 1] == '#':
+            break
+        count += 1
+    for j in range(Y - 2, -1, -1):
+        if S[X - 1][j] == '#':
+            break
+        count += 1
+    for j in range(Y, W):
+        if S[X - 1][j] == '#':
+            break
+        count += 1
+
+    # 输出答案
+    print(count)

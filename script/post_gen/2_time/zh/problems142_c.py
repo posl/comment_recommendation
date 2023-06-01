@@ -1,46 +1,104 @@
-#问题陈述
-#高桥是一名教师，负责一个有N个学生的班级。
-#学生们被赋予了从1到N的不同学生编号。
-#今天，所有的学生在不同的时间进入教室。
-#根据高桥的记录，当学生号i进入教室时，教室里有A_i名学生（包括学生号i）。
-#根据这些记录，重建学生进入教室的顺序。
-#
-#限制条件
-# 1 ≦ N ≦ 10^5
-# 1 ≦ A_i ≦ N
-# A_i ≠ A_j (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#按照学生进入教室的顺序，打印学生的学号。
-#
-#输入样本 1
-#3
-#2 3 1
-#
-#样本输出 1
-#3 1 2
-#首先，3号学生进入教室。
-#然后，1号学生进入教室。
-#最后，2号学生进入教室。
-#
-#样本输入 2
-#5
-#1 2 3 4 5
-#
-#样本输出 2
-#1 2 3 4 5
-#
-#样本输入3
-#8
-#8 2 7 3 4 5 6 1
-#
-#样本输出 3
-#8 2 4 5 6 7 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if h[i] >= k:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def get_input():
+    # input
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    return n,k,h
+
+=======
+Suggestion 3
+
+def fun1():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    count = 0
+    for i in h:
+        if i >= k:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def count_roller_coaster(N, K, h):
+    count = 0
+    for i in range(N):
+        if h[i] >= K:
+            count += 1
+    return count
+
+=======
+Suggestion 5
+
+def check_ride_roller_coaster(n,k,h):
+    count=0
+    for i in h:
+        if i>=k:
+            count+=1
+    return count
+
+=======
+Suggestion 6
+
+def solve(n,k,h):
+    ans = 0
+    for i in range(n):
+        if h[i] >= k:
+            ans += 1
+    return ans
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in h:
+        if i >= k:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    n,k = map(int, input().split())
+    h = list(map(int, input().split()))
+    # 初始化
+    ans = 0
+    # 遍历
+    for i in h:
+        if i >= k:
+            ans += 1
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in h:
+        if i >= K:
+            count += 1
+    print(count)

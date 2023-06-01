@@ -1,39 +1,206 @@
-#问题陈述
-#A岁的高桥正在坐摩天轮。
-#如果你是13岁或以上，乘坐摩天轮需要花费B日元（B是偶数），但6至12岁（包括）的儿童可以用一半的费用乘坐，5岁或以下的儿童则免费。(日元是日本的货币）。
-#找出高桥摩天轮的费用。
-#
-#限制条件
-#0 ≤ A ≤ 100
-#2 ≤ B ≤ 1000
-#B是一个偶数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#输出
-#打印高桥的摩天轮的费用。
-#
-#样本输入1
-#30 100
-#
-#样本输出1
-#100
-#高桥现在30岁了，摩天轮的费用是100日元。
-#
-#样本输入2
-#12 100
-#
-#样本输出2
-#50
-#高桥是12岁，摩天轮的费用是100日元的一半，也就是50日元。
-#
-#样本输入3
-#0 100
-#
-#样本输出3
-#0
-#高桥是0岁，他可以免费乘坐摩天轮。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def dfs(node, color, color_id):
+    color[node] = color_id
+    for edge in graph[node]:
+        if color[edge[0]] == -1:
+            dfs(edge[0], color, color_id ^ edge[1])
+
+N = int(input())
+graph = [[] for _ in range(N)]
+for _ in range(N - 1):
+    u, v, w = map(int, input().split())
+    graph[u - 1].append((v - 1, w % 2))
+    graph[v - 1].append((u - 1, w % 2))
+
+color = [-1] * N
+dfs(0, color, 0)
+print(*color, sep="\n")
+
+=======
+Suggestion 2
+
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(edge[v])):
+        if color[edge[v][i]] == -1:
+            dfs(edge[v][i], c ^ w[v][i])
+
+n = int(input())
+edge = [[] for i in range(n)]
+w = [[] for i in range(n)]
+color = [-1 for i in range(n)]
+
+for i in range(n - 1):
+    u, v, weight = map(int, input().split())
+    edge[u - 1].append(v - 1)
+    edge[v - 1].append(u - 1)
+    w[u - 1].append(weight % 2)
+    w[v - 1].append(weight % 2)
+
+dfs(0, 0)
+for i in range(n):
+    print(color[i])
+
+=======
+Suggestion 3
+
+def dfs(v, p, c):
+    color[v] = c
+    for i in range(len(G[v])):
+        if G[v][i] == p:
+            continue
+        if L[i] % 2 == 0:
+            dfs(G[v][i], v, c)
+        else:
+            dfs(G[v][i], v, 1 - c)
+
+n = int(input())
+G = [[] for _ in range(n)]
+L = [0] * (n - 1)
+color = [0] * n
+for i in range(n - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    G[u].append(v)
+    G[v].append(u)
+    L[i] = w
+
+dfs(0, -1, 0)
+for i in range(n):
+    print(color[i])
+
+=======
+Suggestion 4
+
+def dfs(u, c, color):
+    color[u] = c
+    for v, w in edge[u]:
+        if color[v] == -1:
+            dfs(v, c ^ w % 2, color)
+
+n = int(input())
+edge = [[] for _ in range(n)]
+for _ in range(n - 1):
+    u, v, w = map(int, input().split())
+    edge[u - 1].append((v - 1, w))
+    edge[v - 1].append((u - 1, w))
+color = [-1] * n
+dfs(0, 0, color)
+for c in color:
+    print(c)
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def dfs(u, c):
+    color[u] = c
+    for v, w in g[u]:
+        if color[v] == -1:
+            dfs(v, c ^ w)
+
+N = int(input())
+g = [[] for _ in range(N)]
+color = [-1] * N
+for _ in range(N - 1):
+    x, y, w = map(int, input().split())
+    g[x - 1].append((y - 1, w % 2))
+    g[y - 1].append((x - 1, w % 2))
+
+dfs(0, 0)
+for c in color:
+    print(c)
+
+=======
+Suggestion 7
+
+def dfs(node, color):
+    global ans
+    ans[node] = color
+    for i in range(len(graph[node])):
+        if ans[graph[node][i]] == -1:
+            dfs(graph[node][i], color ^ cost[node][i])
+
+n = int(input())
+graph = [[] for _ in range(n)]
+cost = [[] for _ in range(n)]
+ans = [-1] * n
+for _ in range(n - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u].append(v)
+    graph[v].append(u)
+    cost[u].append(w % 2)
+    cost[v].append(w % 2)
+dfs(0, 0)
+for i in range(n):
+    print(ans[i])
+
+=======
+Suggestion 8
+
+def dfs(node, color):
+    global colors, nodes, edges
+    colors[node] = color
+    for edge in edges[node]:
+        if colors[edge[0]] == -1:
+            dfs(edge[0], color ^ edge[1])
+
+n = int(input())
+nodes = []
+for i in range(n):
+    nodes.append([])
+edges = {}
+for i in range(n - 1):
+    u, v, w = map(int, input().split())
+    nodes[u - 1].append([v - 1, w % 2])
+    nodes[v - 1].append([u - 1, w % 2])
+    edges[i] = [u - 1, v - 1, w % 2]
+colors = [-1 for i in range(n)]
+dfs(0, 0)
+for color in colors:
+    print(color)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    edges = []
+    for i in range(n - 1):
+        edges.append(list(map(int, input().split())))
+
+    tree = [[] for i in range(n + 1)]
+    for edge in edges:
+        tree[edge[0]].append(edge[1])
+        tree[edge[1]].append(edge[0])
+
+    color = [-1] * (n + 1)
+    color[1] = 0
+    stack = [1]
+    while stack:
+        v = stack.pop()
+        for u in tree[v]:
+            if color[u] == -1:
+                color[u] = color[v] ^ 1
+                stack.append(u)
+
+    for v in range(1, n + 1):
+        print(color[v])
+
+=======
+Suggestion 10
+
+def main():
+    print('hello world')

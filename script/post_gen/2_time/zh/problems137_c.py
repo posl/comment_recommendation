@@ -1,54 +1,133 @@
-#问题陈述
-#我们将把一个字符串a中包含的字符按某种顺序排列而得到的字符串称为a的变形。
-#例如，greenbin是初学者的变形。从这里可以看出，当同一个字符出现多次时，该字符必须被使用该次数。
-#有N个字符串s_1, s_2, ..., s_N。每个字符串的长度为10，由小写英文字符组成。此外，所有这些字符串都是不同的。请找出有多少对整数i, j (1 ≦ i < j ≦ N)，使得s_i是s_j的变形。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#s_i是一个长度为10的字符串。
-#s_i中的每个字符都是一个小写的英文字母。
-#s_1, s_2, ..., s_N都是独立的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#s_1
-#s_2
-#:
-#s_N
-#
-#输出
-#打印整数i, j (1 ≦ i < j ≦ N)的对数，以便s_i是s_j的变形。
-#
-#输入样本 1
-#3
-#acornistnt
-#peanutbomb
-#constraint
-#
-#样本输出1
-#1
-#s_1 = acornistnt是s_3 = constraint的变形词。没有其他一对i，j，使s_i是s_j的变位，所以答案是1。
-#
-#输入样本2
-#2
-#1-2-2
-#ninemodsix
-#
-#样本输出2
-#0
-#如果没有一对i，j，使得s_i是s_j的变形，则打印0。
-#
-#输入样本3
-#5
-#abaaaaaaaa
-#oneplustwo
-#aaaaaaaaba
-#twoplusone
-#aaaabaaaaa
-#
-#样本输出3
-#4
-#注意，答案可能不适合32位的整数类型，尽管我们不能把这样的情况放在这里。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    # 读取输入
+    k, x = map(int, input().split())
+    return k, x
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    k, x = map(int, input().split())
+
+    # 生成升序列表
+    # 1. 生成升序列表
+    # 2. 从中间截断
+    # 3. 生成右半部分
+    # 4. 生成左半部分
+    # 5. 合并两个列表
+    # 6. 输出列表
+    # 7. 退出程序
+    # 8. 测试程序
+    # 9. 优化程序
+    # 10. 优化测试
+    # 11. 优化输出
+    # 12. 优化输入
+    # 13. 优化程序
+    # 14. 优化测试
+    # 15. 优化输出
+    # 16. 优化输入
+    # 17. 优化程序
+    # 18. 优化测试
+    # 19. 优化输出
+    # 20. 优化输入
+    # 21. 优化程序
+    # 22. 优化测试
+    # 23. 优化输出
+    # 24. 优化输入
+    # 25. 优化程序
+    # 26. 优化测试
+    # 27. 优化输出
+    # 28. 优化输入
+    # 29. 优化程序
+    # 30. 优化测试
+    # 31. 优化输出
+    # 32. 优化输入
+    # 33. 优化程序
+    # 34. 优化测试
+    # 35. 优化输出
+    # 36. 优化输入
+    # 37. 优化程序
+    # 38. 优化测试
+    # 39. 优化输出
+    # 40. 优化输入
+    # 41. 优化程序
+    # 42. 优化测试
+    # 43. 优化输出
+    # 44. 优化输入
+    # 45. 优化程序
+    # 46. 优化测试
+
+=======
+Suggestion 3
+
+def main():
+    K, X = map(int, input().split())
+    for i in range(X-K+1, X+K):
+        print(i, end=" ")
+
+=======
+Suggestion 4
+
+def main():
+    k, x = map(int, input().split())
+    for i in range(x-k+1, x+k):
+        print(i, end=' ')
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    K, X = map(int,input().split())
+    start = X - K + 1
+    end = X + K
+    for i in range(start,end):
+        print(i,end=' ')
+
+=======
+Suggestion 6
+
+def main():
+    K, X = [int(x) for x in input().split()]
+    print(' '.join([str(x) for x in range(X-K+1, X+K)]))
+
+=======
+Suggestion 7
+
+def main():
+    k, x = map(int, input().split())
+    for i in range(x-k+1, x+k):
+        print(i, end=' ')
+
+=======
+Suggestion 8
+
+def main():
+    K, X = map(int, input().split())
+    print(*[X - K + 1 + i for i in range(2 * K - 1)])
+
+=======
+Suggestion 9
+
+def main():
+    k, x = map(int, input().split())
+    list = []
+    for i in range(x-k+1,x+k):
+        list.append(i)
+    print(*list)
+
+=======
+Suggestion 10
+
+def main():
+    k, x = map(int, input().split())
+    start = x - k + 1
+    end = x + k
+    for i in range(start, end):
+        print(i, end=" ")

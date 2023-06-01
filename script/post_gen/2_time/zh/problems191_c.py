@@ -1,45 +1,77 @@
-#问题陈述
-#我们有一个有H行和W列的网格。设(i, j)是位于从上往下第i行和从左往下第j列的方格。
-#每个方格都被涂成黑色或白色。如果S_{i, j}是#，（i, j）被涂成黑色；如果S_{i, j}是.，（i, j）被涂成白色。
-#可以保证最外层的方格是白色的。也就是说，可以表示为（1，j）、（H，j）、（i，1）或（i，W）的方格是白色的。
-#将网格中被涂成黑色的部分视为一个多边形。它有多少条边（至少）？
-#在这里，可以保证被涂成黑色的部分形成一个没有自我交叉的多边形，也就是说，以下情况成立：
-#至少有一个正方形被涂成了黑色；
-#我们可以在任何两个被涂成黑色的方块之间穿梭，方法是反复向上、向下、向左或向右移动，同时只穿过黑色方块；
-#我们可以在任何两个被涂成白色的方格之间通过反复的上下左右移动，并且只通过白色方格。(请注意，网格中最外层的方格都是白色的）。
-#
-#限制条件
-#3 ≦ H ≦ 10
-#3 ≦ W ≦ 10
-#S_{i, j}是#或.
-#S_{1, j}和S_{H, j}是.
-#S_{i, 1}和S_{i, W}为.
-#涂黑的部分形成一个没有自交的多边形。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#S_{1, 1} S_{1, 2} S_{1, 3} ...S_{1, W}
-#S_{2, 1} S_{2, 2} S_{2, 3} ...S_{2, W}
-#S_{3, 1} S_{3, 2} S_{3, 3} ...S_{3, W}
-#.
-#.
-#.
-#S_{H, 1} S_{H, 2} S_{H, 3} ...S_{H, W}
-#
-#输出
-#打印最小数字n，使涂成黑色的部分可以被看作是一个n-gon。
-#
-#输入样本 1
-#5 5
-#.....
-#.###.
-#.###.
-#.###.
-#.....
-#
-#输出样本1
-#4
-#如果我们使用一个坐标系，网格的左上角、左下角、右上角和右下角分别为（0，0）、（H，0）、（0，W）和（H，W），给定的图形是一个四边形，其顶点为（1，1）、（4，1）、（4，4）和（1，4）。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+
+    for i in range(N):
+        if A[i] != X:
+            print(A[i],end=" ")
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i],end=" ")
+    print()
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=' ')
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] != X:
+            print(A[i], end=' ')
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i for i in a if i != x]
+    print(*a)
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        if a[i] != x:
+            b.append(a[i])
+    print(*b)

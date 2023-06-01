@@ -1,45 +1,158 @@
-#问题陈述
-#给你两个序列：A=(A_1,A_2,...,A_N)由N个正整数组成，B=(B_1,...,B_M)由M个正整数组成。
-#求A的一个元素和B的一个元素的最小差值，即min_{ 1≦ i≦ N}min_{1≦ j≦ M}。| A_i-B_j|。
-#
-#约束条件
-#1 ≦ n,m ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 2
-#1 6
-#4 9
-#
-#样本输出1
-#2
-#下面是A的一个元素和B的一个元素这四对元素的区别：| 1-4|=3, 1-9|=8, 6-4|=2, 和6-9|=3。我们应该打印出这些数值的最小值，即2。
-#
-#输入样本 2
-#1 1
-#10
-#10
-#
-#样本输出2
-#0
-#
-#样本输入3
-#6 8
-#82 76 82 82 71 70
-#17 39 67 2 45 35 22 24
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] == pin[2] == pin[3]:
+        print("Weak")
+        return
+    if (int(pin[1])+1)%10 == int(pin[0]) and (int(pin[2])+1)%10 == int(pin[1]) and (int(pin[3])+1)%10 == int(pin[2]):
+        print("Weak")
+        return
+    print("Strong")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] == pin[2] == pin[3]:
+        print("Weak")
+    elif (int(pin[0])+1)%10 == int(pin[1]) and (int(pin[1])+1)%10 == int(pin[2]) and (int(pin[2])+1)%10 == int(pin[3]):
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 3
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print("Weak")
+    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
+        print("Weak")
+    else:
+        print("Strong")
+
+=======
+Suggestion 4
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print("Weak")
+    else:
+        if (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
+            print("Weak")
+        else:
+            print("Strong")
+
+=======
+Suggestion 5
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print('Weak')
+    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
+        print('Weak')
+    else:
+        print('Strong')
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    pin = input()
+    # 处理数据
+    # 判断是否满足第一个条件
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print("Weak")
+        return
+    # 判断是否满足第二个条件
+    for i in range(3):
+        if pin[i] == '9':
+            if pin[i + 1] != '0':
+                print("Strong")
+                return
+        elif pin[i + 1] != chr(ord(pin[i]) + 1):
+            print("Strong")
+            return
+    # 输出结果
+    print("Weak")
+
+=======
+Suggestion 7
+
+def main():
+    # 输入
+    pin = input()
+    # 计算
+    # 1. 四个数字都是一样的
+    if pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print("Weak")
+        return
+    # 2. 对于每个整数i，如1≦i≦3，X_{i+1}跟随X_i。这里，对于每一个0≦ j≦ 8的j+1跟随j，而0跟随9。
+    # 2.1 第一位数字跟随第四位数字
+    if pin[0] == str((int(pin[3]) + 1) % 10):
+        print("Weak")
+        return
+    # 2.2 第二位数字跟随第一位数字
+    if pin[1] == str((int(pin[0]) + 1) % 10):
+        print("Weak")
+        return
+    # 2.3 第三位数字跟随第二位数字
+    if pin[2] == str((int(pin[1]) + 1) % 10):
+        print("Weak")
+        return
+    # 2.4 第四位数字跟随第三位数字
+    if pin[3] == str((int(pin[2]) + 1) % 10):
+        print("Weak")
+        return
+    # 输出
+    print("Strong")
+
+=======
+Suggestion 8
+
+def main():
+    pin = input()
+    if pin == '0000' or pin == '1111' or pin == '2222' or pin == '3333' or pin == '4444' or pin == '5555' or pin == '6666' or pin == '7777' or pin == '8888' or pin == '9999':
+        print('Weak')
+    elif pin[0] == pin[1] and pin[1] == pin[2] and pin[2] == pin[3]:
+        print('Weak')
+    elif (int(pin[0]) + 1) % 10 == int(pin[1]) and (int(pin[1]) + 1) % 10 == int(pin[2]) and (int(pin[2]) + 1) % 10 == int(pin[3]):
+        print('Weak')
+    else:
+        print('Strong')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2] == s[3]:
+        print('Weak')
+        return
+    for i in range(3):
+        if (int(s[i]) + 1) % 10 != int(s[i+1]):
+            print('Strong')
+            return
+    print('Weak')
+
+=======
+Suggestion 10
+
+def main():
+    pin = input()
+    if pin[0] == pin[1] == pin[2] == pin[3]:
+        print('Weak')
+    elif pin[0] == str((int(pin[1]) + 1) % 10) and pin[1] == str((int(pin[2]) + 1) % 10) and pin[2] == str((int(pin[3]) + 1) % 10):
+        print('Weak')
+    else:
+        print('Strong')

@@ -1,45 +1,158 @@
-#问题陈述
-#一个祭坛上供奉着N块石头，从左到右排成一排。左边第i块石头的颜色（1 ≦ i ≦ N）以字符c_i的形式给你；R代表红色，W代表白色。
-#你可以按任何顺序做以下两种操作，次数不限：
-#选择两个石头（不一定是相邻的），然后交换它们。
-#选择一块石头并改变其颜色（从红色到白色，反之亦然）。
-#根据一个算命先生的说法，白色石头放在红色石头的左边会带来灾难。至少需要多少次操作才能达到没有这种白石头的情况？
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#c_i为R或W。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#c_{1}c_{2}...c_{N}
-#
-#输出
-#打印一个代表所需最小操作数的整数。
-#
-#输入样本 1
-#4
-#WWRR
-#
-#采样输出1
-#2
-#例如，下面的两个操作可以达到目的。
-#从左边开始交换第1个和第3个石头，结果是RWWR。
-#从左边开始改变第4个石头的颜色，结果是RWWW。
-#
-#输入样本2
-#2
-#RR
-#
-#采样输出2
-#0
-#可以是不需要操作的情况。
-#
-#样本输入3
-#8
-#WRWWRWRR
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    if k % 2 == 0:
+        print(-1)
+        return
+    else:
+        x = 7
+        for i in range(1, k + 1):
+            if x % k == 0:
+                print(i)
+                return
+            else:
+                x = 10 * x + 7
+        print(-1)
+        return
+
+=======
+Suggestion 2
+
+def f(k):
+    if k % 2 == 0 or k % 5 == 0:
+        return -1
+    a = 7
+    for i in range(1, k + 1):
+        if a % k == 0:
+            return i
+        a = a * 10 + 7
+    return -1
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    k = int(input())
+    # 初始值
+    s = 0
+    # 循环
+    for i in range(1, k+1):
+        s = s * 10 + 7
+        s %= k
+        # 如果余数为0
+        if s == 0:
+            print(i)
+            exit()
+    # 如果没有余数为0的情况
+    print(-1)
+
+=======
+Suggestion 4
+
+def problem174_c():
+    k = int(input())
+    if k % 2 == 0:
+        print(-1)
+    else:
+        num = 7
+        count = 1
+        while True:
+            if num % k == 0:
+                print(count)
+                break
+            else:
+                num = num * 10 + 7
+                count += 1
+
+=======
+Suggestion 5
+
+def find_multiple_of_K(K):
+    if K % 5 == 0:
+        return -1
+    
+    x = 7 % K
+    for i in range(1, K):
+        if x == 0:
+            return i
+        x = (x * 10 + 7) % K
+    return -1
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    if k % 2 == 0 or k % 5 == 0:
+        print(-1)
+        return
+    num = 7
+    for i in range(1, k + 1):
+        if num % k == 0:
+            print(i)
+            return
+        num = num * 10 + 7
+        num %= k
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    K = int(input())
+    n = 0
+    for i in range(1, K+1):
+        n = n*10 + 7
+        if n%K == 0:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    n = 7
+    for i in range(1, k+1):
+        if n % k == 0:
+            print(i)
+            return
+        n = n * 10 + 7
+    print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    cnt = 0
+    for i in range(1, k + 1):
+        cnt = cnt * 10 + 7
+        cnt %= k
+        if cnt == 0:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 10
+
+def f(k):
+    if k%2==0 or k%5==0:
+        return -1
+    else:
+        a=7
+        for i in range(1,k+1):
+            if a%k==0:
+                return i
+            else:
+                a=a*10+7
+
+k=int(input())
+print(f(k))

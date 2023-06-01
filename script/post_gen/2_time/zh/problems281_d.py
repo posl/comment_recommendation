@@ -1,43 +1,128 @@
-#问题陈述
-#给你一个非负整数序列A=（a_1,a_2,...,a_N）。
-#设S是能成为A中K项之和的非负整数的集合（有不同的索引）。
-#如果在S中没有D的倍数，则打印-1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 100
-#1 ≦ D ≦ 100
-#0 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N K D
-#a_1 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#4 2 2
-#1 2 3 4
-#
-#样本输出 1
-#6
-#下面是选择A中两个项的所有方法。
-#选择a_1和a_2，其和为1+2=3。
-#选择a_1和a_3，其和为1+3=4。
-#选择a_1和a_4，它们的总和是1+4=5。
-#选择a_2和a_3，两者之和为2+3=5。
-#选择a_2和a_4，它们的总和是2+4=6。
-#选择a_3和a_4，它们的总和是3+4=7。
-#因此，我们有S={3，4，5，6，7}。S中2的最大倍数是6，所以你应该打印6。
-#
-#输入样本 2
-#3 1 2
-#1 3 5
-#
-#样本输出2
-#-1
-#在这个例子中，我们有S={1，3，5}。S中没有任何东西是2的倍数，所以你应该打印-1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    #print(n,t,a)
+    #print(n,t)
+
+=======
+Suggestion 2
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+    while t > 0:
+        for i in range(n):
+            if t >= a[i]:
+                t -= a[i]
+            else:
+                print(i+1, t)
+                exit()
+    print(1, 0)
+
+=======
+Suggestion 3
+
+def getSong(T, A, N):
+    total = sum(A)
+    T = T % total
+    i = 0
+    while T > 0:
+        T = T - A[i]
+        i += 1
+    return i, T + A[i - 1]
+
+=======
+Suggestion 4
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T = T - 1
+
+    T = T % sum(A)
+    for i in range(N):
+        T = T - A[i]
+        if T < 0:
+            print(i + 1, -T)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    t = t % sum(a)
+    sum_a = 0
+    for i in range(n):
+        sum_a += a[i]
+        if sum_a > t:
+            print(i+1,t)
+            break
+
+=======
+Suggestion 6
+
+def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    sumA = sum(A)
+    T = T % sumA
+    for i in range(N):
+        if A[i] > T:
+            print(i+1, T)
+            break
+        T -= A[i]
+
+solve()
+
+=======
+Suggestion 7
+
+def solve():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    t %= sum(a)
+    for i in range(n):
+        if t<a[i]:
+            print(i+1,t)
+            break
+        t -= a[i]
+solve()
+
+=======
+Suggestion 8
+
+def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T -= 1
+    T %= sum(A)
+    for i in range(N):
+        if T < A[i]:
+            print(i+1, T+1)
+            break
+        T -= A[i]
+
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def solve(n, t, a):
+    t %= sum(a)
+    for i in range(n):
+        if t < a[i]:
+            return i + 1, t
+        t -= a[i]

@@ -1,46 +1,194 @@
-#问题陈述
-#我们有一个袋子，里面有A金币，B银币，C铜币。
-#直到袋子里有100个相同颜色的硬币，我们将重复以下操作：
-#操作：随机从袋子里拿出一枚硬币。(每枚硬币被选中的概率相同。)然后，将两枚与取出的硬币相同的硬币放回袋中。
-#求该操作次数的期望值。
-#
-#限制条件
-#0 ≦ A,B,C ≦ 99
-#A+B+C ≧ 1
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B C
-#
-#輸出
-#打印该操作次数的预期值。如果你的输出与正确值的绝对或相对误差最多为10^{-6}，你的输出将被接受。
-#
-#输入样本 1
-#99 99 99
-#
-#样本输出1
-#1.000000000
-#无论我们在第一次操作中拿出什么硬币，袋子里都会有100个该种硬币。
-#
-#样本输入2
-#98 99 99
-#
-#样本输出2
-#1.331081081
-#只有在第一次操作中拿出一枚金币，我们才会进行第二次操作。
-#因此，预期的操作次数是2×（（98）/（98+99+99））+1×（（99）/（98+99+99））+1×（（99）/（98+99+99））=1.331081081...
-#
-#样本输入3
-#0 0 1
-#
-#样本输出3
-#99.000000000
-#每次操作都会增加一枚铜币。
-#
-#样本输入4
-#31 41 59
-#
-#输出样本4
-#91.835008202
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) <= 3:
+                if (r1 + i + c1 + j) % 2 == (r2 + c2) % 2:
+                    print(2)
+                    return
+    print(3)
+
+=======
+Suggestion 3
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2:
+        print(1)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1 + r2 + c2) % 2 == 0:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) == 3:
+                if r1 + i + c1 + j == r2 + c2 or r1 + i - c1 - j == r2 - c2 or r1 - i + c1 - j == r2 + c2 or r1 - i - c1 + j == r2 - c2:
+                    print(2)
+                    return
+    print(3)
+    return
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+
+    if (r1 + c1 == r2 + c2) or (r1 - c1 == r2 - c2) or (abs(r1 - r2) + abs(c1 - c2) <= 3):
+        print(1)
+        return
+
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) <= 3:
+                if (r1 + i + c1 + j) % 2 == (r2 + c2) % 2:
+                    print(2)
+                    return
+
+    print(3)
+
+=======
+Suggestion 5
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2:
+        print(1)
+        return
+    if r1 - c1 == r2 - c2:
+        print(1)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 6:
+        print(2)
+        return
+    if abs((r1 + c1) - (r2 + c2)) <= 3:
+        print(2)
+        return
+    if abs((r1 - c1) - (r2 - c2)) <= 3:
+        print(2)
+        return
+    print(3)
+    return
+
+=======
+Suggestion 6
+
+def get_min_step(r1, c1, r2, c2):
+    if r1 == r2 and c1 == c2:
+        return 0
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        return 1
+    if (r1 - r2 + c1 - c2) % 2 == 0:
+        return 2
+    return 3
+
+=======
+Suggestion 7
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+    elif abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+    elif (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+    elif abs(r1 - r2) + abs(c1 - c2) <= 6:
+        print(2)
+    elif abs((r1 + c1) - (r2 + c2)) <= 3 or abs((r1 - c1) - (r2 - c2)) <= 3:
+        print(2)
+    else:
+        print(3)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) <= 3:
+                if (r1 + i + c1 + j) % 2 == (r2 + c2) % 2:
+                    print(2)
+                    return
+    print(3)
+    return
+
+=======
+Suggestion 9
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2 or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2 or abs(r1 - r2) + abs(c1 - c2) <= 6 or abs((r1 + c1) - (r2 + c2)) <= 3 or abs((r1 - c1) - (r2 - c2)) <= 3:
+        print(2)
+        return
+    print(3)

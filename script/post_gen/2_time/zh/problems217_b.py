@@ -1,35 +1,84 @@
-#问题说明
-#AtCoder目前有四个系列的定期比赛：ABC, ARC, AGC, 和AHC。
-#除了S_1，S_2和S_3之外，AtCoder目前举办的定期比赛系列是什么？
-#
-#限制条件
-#S_1, S_2, 和 S_3中的每一个都是ABC, ARC, AGC, 或AHC。
-#S_1, S_2, 和 S_3 是成对的不同。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_1
-#S_2
-#S_3
-#
-#输出
-#打印答案。
-#
-#样本输入1
-#ARC
-#AGC
-#AHC
-#
-#样本输出1
-#ABC
-#输入的是ARC, AGC, 和AHC。剩下的是ABC。
-#
-#样本输入2
-#AGC
-#ABC
-#ARC
-#
-#样本输出2
-#AHC
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t = input().split()
+    if s < t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s,t = input().split()
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S, T = input().split()
+    if S < T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def compare_str(a,b):
+    if len(a) < len(b):
+        return True
+    elif len(a) > len(b):
+        return False
+    else:
+        for i in range(len(a)):
+            if a[i] < b[i]:
+                return True
+            elif a[i] > b[i]:
+                return False
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    a,b = input().split()
+    if a < b:
+        print('Yes')
+    else:
+        print('No')
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    s, t = input().split()
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+    return 0
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    s, t = input().split()
+    # 在这里编写处理
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+    # 输出结果
+    #print(s, t)
+    pass

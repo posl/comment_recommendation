@@ -1,63 +1,123 @@
-#问题陈述
-#给出的是正整数N，M，Q和Q的四分法（a_i，b_i，c_i，d_i）。
-#考虑一个满足下列条件的序列A：
-#A是一个N个正整数的序列。
-#1 ≦ a_1 ≦ a_2 ≦ ... ≦ a_n ≦ m。
-#让我们把这个序列的得分定义如下：
-#分数是所有指数i的d_i之和，使A_{b_i}-A_{a_i}=c_i。(如果没有这样的i，则分数为0）。
-#找到A的最大可能得分。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) ( 其中 i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M Q
-#A_1 B_1 C_1 D_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#输出
-#打印A的最大可能得分。
-#
-#输入样本 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#样本输出1
-#110
-#当A={1，3，4}时，其得分是110。在这些条件下，没有一个序列的分数大于110，所以答案是110。
-#
-#输入样本2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#样本输出2
-#357500
-#
-#样本输入3
-#10 10 1
-#1 10 9 1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem165_b(x):
+    balance = 100
+    year = 0
+    while balance < x:
+        balance = int(balance * 1.01)
+        year += 1
+    return year
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    i = 0
+    a = 100
+    while a < x:
+        a = int(a * 1.01)
+        i += 1
+    print(i)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    y = 100
+    count = 0
+    while y < x:
+        y += y//100
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    balance = 100
+    year = 0
+    while True:
+        year += 1
+        balance = int(balance * 1.01)
+        if balance >= x:
+            break
+    print(year)
+
+=======
+Suggestion 5
+
+def main():
+    X = int(input())
+    balance = 100
+    year = 0
+    while balance < X:
+        balance = int(balance * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    year = 0
+    money = 100
+    while money < x:
+        money = int(money * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 7
+
+def main():
+    X = int(input())
+    deposit = 100
+    year = 0
+    while deposit < X:
+        deposit = int(deposit * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 8
+
+def main():
+    x = int(input())
+    balance = 100
+    year = 0
+    while balance < x:
+        balance = int(balance * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 9
+
+def main():
+    x = int(input())
+    money = 100
+    year = 0
+
+    while money < x:
+        year += 1
+        money += money // 100
+    print(year)
+
+=======
+Suggestion 10
+
+def main():
+    x = int(input())
+    m = 100
+    year = 0
+    while m < x:
+        m = int(m * 1.01)
+        year += 1
+    print(year)

@@ -1,71 +1,121 @@
-#问题陈述
-#给你一个有N个顶点和M条边的简单无向图G（一个简单的图不包含自循环或多条边）。
-#对于i=1，2，...，M，第i条边连接着顶点u_i和顶点v_i。
-#打印满足1 ≦ u < v ≦ N和以下两个条件的整数对（u, v）的数量。
-#图G没有一条连接顶点u和顶点v的边。
-#在图G中增加一条连接顶点u和顶点v的边，就形成了一个双线图。
-# 什么是双线图？
-#当且仅当人们可以将每个顶点涂成黑色或白色以满足以下条件时，一个无向图就被称为是双线图。
-# 没有一条边连接到涂成相同颜色的顶点。
-#
-#
-#约束条件
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ min {2 × 10^5, N(N-1)/2 }
-#1 ≦ u_i, v_i ≦ N
-#图G很简单。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4
-#4 2
-#3 1
-#5 2
-#3 2
-#
-#样本输出 1
-#2
-#我们有两对整数（u，v）满足问题陈述中的条件：（1，4）和（1，5）。因此，你应该打印2。
-#其他的对不满足条件。例如，对于（1，3），图G有一条连接顶点1和顶点3的边；对于（4，5），在图G中增加一条连接顶点4和顶点5的边并不能形成一个双线图。
-#
-#输入样本 2
-#4 3
-#3 1
-#3 2
-#1 2
-#
-#样本输出2
-#0
-#请注意，给定的图可能不是双线的或连接的。
-#
-#输入样本 3
-#9 11
-#4 9
-#9 1
-#8 2
-#8 3
-#9 2
-#8 4
-#6 7
-#4 6
-#7 5
-#4 5
-#7 8
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def replace(s):
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == '"':
+            if i % 2 == 0:
+                s[i] = '.'
+    return "".join(s)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    s = s.replace(",",".")
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] == '"' and i % 2 == 0:
+            s = s[:i] + '.' + s[i + 1:]
+    print(s)
+
+=======
+Suggestion 4
+
+def replace_string(string, replace_char, start, end):
+    if start >= end:
+        return string
+    else:
+        return string[0:start] + replace_char * (end - start) + string[end:]
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if s[i] == "," and i % 2 == 0:
+            print(".", end="")
+        else:
+            print(s[i], end="")
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(0,n):
+        if i % 2 == 0:
+            print(s[i],end='')
+        else:
+            if s[i] == '"':
+                print('"',end='')
+            else:
+                print('.',end='')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(0, N, 2):
+        if S[i] != '"' or S[i+1] != '"':
+            S = S[:i] + '.' + S[i+1:]
+    print(S)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = input()
+    ans = ""
+    for i in range(n):
+        if i % 2 == 0:
+            ans += s[i]
+        else:
+            if s[i] == '"':
+                ans += '"'
+            else:
+                ans += '.'
+    print(ans)
+
+=======
+Suggestion 9
+
+def replace_str(s):
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == '"':
+            if i % 2 == 0:
+                s[i] = '"'
+            else:
+                s[i] = '.'
+    return "".join(s)
+
+=======
+Suggestion 10
+
+def replace_dot(s):
+    # 1. replace the first " with dot
+    # 2. replace the second " with dot
+    s = s.replace('"', '.', 1)
+    s = s.replace('"', '.', 1)
+    return s

@@ -1,55 +1,81 @@
-#问题陈述
-#有N个城市。从城市i到城市j所需的时间为T_{i, j}。
-#在那些从城市1开始，正好到过所有其他城市一次，然后回到城市1的路径中，有多少条路径的总时间正好为K？
-#
-#限制条件
-#2≦ N ≦ 8
-#如果i≠j，1≦ T_{i,j} ≦ 10^8。
-#T_{i,i}=0
-#T_{i,j}=T_{j,i}
-#1≦ K ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#T_{1,1} ...T_{1,N}
-#.
-#.
-#.
-#T_{N,1} ...T_{N,N}
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4 330
-#0 1 10 100
-#1 0 20 200
-#10 20 0 300
-#100 200 300 0
-#
-#样本输出1
-#2
-#有六条路径从城市1开始，正好访问所有其他城市一次，然后再回到城市1：
-#1-> 2-> 3-> 4-> 1
-#1-> 2-> 4-> 3-> 1
-#1-> 3-> 2-> 4-> 1
-#1-> 3-> 4-> 2-> 1
-#1-> 4-> 2-> 3-> 1
-#1-> 4-> 3-> 2-> 1
-#沿着这些路径行驶的时间分别为421、511、330、511、330和421，其中有两个正好是330。
-#
-#输入样本 2
-#5 5
-#0 1 1 1 1
-#1 0 1 1 1
-#1 1 0 1 1
-#1 1 1 0 1
-#1 1 1 1 0
-#
-#样本输出2
-#24
-#无论我们按什么顺序访问这些城市，都需要5的总时间来旅行。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((G_x * S_y + G_y * S_x) / (G_y + S_y))
+
+=======
+Suggestion 2
+
+def main():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((S_x * G_y + G_x * S_y) / (S_y + G_y))
+
+=======
+Suggestion 3
+
+def f(x):
+    return ((x-sx)*(gy-sy)/(gx-sx)+sy)
+sx,sy,gx,gy=map(int,input().split())
+print(f(gx))
+
+=======
+Suggestion 4
+
+def solve(S_x,S_y,G_x,G_y):
+    return (S_x*G_y+S_y*G_x)/(G_y+S_y)
+
+=======
+Suggestion 5
+
+def solve():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((S_x * G_y + S_y * G_x) / (S_y + G_y))
+
+=======
+Suggestion 6
+
+def ball():
+    s_x,s_y,g_x,g_y = map(int,input().split())
+    #print(s_x,s_y,g_x,g_y)
+    x = (s_y*g_x + s_x*g_y)/(g_y+s_y)
+    print(x)
+
+ball()
+
+=======
+Suggestion 7
+
+def main():
+    S_x,S_y,G_x,G_y = map(int,input().split())
+    print((G_x*S_y-S_x*G_y)/(G_y-S_y))
+
+=======
+Suggestion 8
+
+def solve():
+    line = input().split()
+    S_x = int(line[0])
+    S_y = int(line[1])
+    G_x = int(line[2])
+    G_y = int(line[3])
+    x = (G_x*S_y + G_y*S_x)/(S_y + G_y)
+    print(x)
+
+=======
+Suggestion 9
+
+def main():
+    sx,sy,gx,gy = map(int,input().split())
+    x = sx + (gx-sx)*sy/(sy+gy)
+    print(x)
+
+=======
+Suggestion 10
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    print((x1*y2-x2*y1)/(y2-y1))

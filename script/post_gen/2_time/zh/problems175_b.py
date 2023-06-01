@@ -1,53 +1,115 @@
-#问题陈述
-#我们有编号为1, ..., N的木棍。木棍i(1 ≦ i ≦ N)的长度是L_i。
-#我们可以用多少种方法来选择不同长度的棍子中的三根可以组成一个三角形？
-#也就是说，找出满足以下两个条件的整数(i, j, k)(1 ≦ i < j < k ≦ N)的三倍数量：
-#L_i、L_j和L_k都是不同的。
-#存在一个边长为L_i、L_j和L_k的三角形。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ L_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#输出
-#打印在不同长度的棍子中选择三个可以形成三角形的方法的数量。
-#
-#输入样本 1
-#5
-#4 4 9 7 5
-#
-#样本输出1
-#5
-#以下五个三联体（i，j，k）满足条件：（1，3，4），（1，4，5），（2，3，4），（2，4，5）和（3，4，5）。
-#
-#样本输入2
-#6
-#4 5 4 3 3 5
-#
-#样本输出2
-#8
-#我们有两根长度为3、4、5的棍子。为了满足第一个条件，我们必须从每个长度中选择一个。
-#有一个边长为3、4、5的三角形，所以我们有2 ^ 3 = 8个满足条件的三角形（i, j, k）。
-#
-#输入样本 3
-#10
-#9 4 6 1 9 6 10 6 6 8
-#
-#样本输出3
-#39
-#
-#样本输入4
-#2
-#1 1
-#
-#采样输出4
-#0
-#没有一个三联体（i, j, k）满足1 ≦ i < j < k ≦ N，所以我们应该打印0。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    # print(s)
+    if 'R' in s:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.count("R"))
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    R = S.count('R')
+    print(R)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S.count("R"))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s == 'RRR':
+        print(3)
+    elif s == 'RRS' or s == 'SRR':
+        print(2)
+    elif s == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    count = 0
+    max_count = 0
+    for i in range(len(s)):
+        if s[i] == 'R':
+            count += 1
+            if max_count < count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    a = s.count("R")
+    print(a)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    #print(S)
+    rain = 0
+    max_rain = 0
+    for i in range(len(S)):
+        #print(S[i])
+        if S[i] == 'S':
+            rain = 0
+        elif S[i] == 'R':
+            rain += 1
+        if max_rain < rain:
+            max_rain = rain
+    print(max_rain)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    S = S.replace("S","0")
+    S = S.replace("R","1")
+    print(S.count("1"))
+
+=======
+Suggestion 10
+
+def main():
+    weather = input()
+    count = 0
+    max = 0
+    for i in range(len(weather)):
+        if weather[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if count > max:
+            max = count
+    print(max)

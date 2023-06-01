@@ -1,54 +1,124 @@
-#问题陈述
-#在阿特卡德共和国，有N个县，以及属于这些县的总共M个城市。
-#城市i是在Y_i年建立的，属于P_i县。
-#你可以假设没有多个城市是在同一年建立的。
-#决定为每个城市分配一个12位数的ID号码。
-#如果i市是属于i县的城市中第x个成立的城市，i市的ID号的前六位是P_i，后六位是x。
-#在这里，如果P_i或x（或两者）的数字少于六位，则在左边加零，直到它有六位数字。
-#找到所有城市的身份证号码。
-#请注意，可以有一个没有城市的县。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ P_i ≦ N
-#1 ≦ Y_i ≦ 10^9
-#Y_i都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#P_1 Y_1
-#:
-#P_M Y_M
-#
-#输出
-#打印所有城市的ID号码，按照指数的升序排列（城市1，城市2，...）。
-#
-#输入样本 1
-#2 3
-#1 32
-#2 63
-#1 12
-#
-#样本输出1
-#000001000002
-#000002000001
-#000001000001
-#由于城市1是属于县1的城市中第二个建立的城市，它的ID号是000001000002。
-#由于城市2是属于县2的城市中第一个建立的城市，它的ID号是000002000001。
-#由于城市3是属于县1的城市中第一个建立的城市，其ID号为000001000001。
-#
-#输入样本 2
-#2 3
-#2 55
-#2 77
-#2 99
-#
-#样本输出2
-#000002000001
-#000002000002
-#000002000003
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    print(min(range(n), key=lambda i: abs(a - (t - h[i] * 0.006))) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def judge_temperature(n,t,a,h):
+    """
+    n:地点个数
+    t:海拔高度
+    a:温度
+    h:地点海拔高度列表
+    """
+    #计算平均温度
+    temperature = t - a * 0.006
+    #计算每个地点的平均温度
+    temperature_list = []
+    for i in range(n):
+        temperature_list.append(temperature - h[i] * 0.006)
+    #找到最接近的温度
+    min_temperature = temperature_list[0]
+    min_index = 0
+    for i in range(n):
+        if abs(temperature_list[i] - temperature) < abs(min_temperature - temperature):
+            min_index = i
+            min_temperature = temperature_list[i]
+    return min_index + 1
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    ans = 0
+    min_diff = 100000000000
+    for i in range(N):
+        diff = abs(A - (T - H[i] * 0.006))
+        if diff < min_diff:
+            ans = i + 1
+            min_diff = diff
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    min = 100000
+    res = 0
+    for i in range(len(h)):
+        if abs(t - h[i] * 0.006 - a) < min:
+            min = abs(t - h[i] * 0.006 - a)
+            res = i + 1
+    print(res)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    ans = 0
+    min = 100000
+    for i in range(n):
+        if abs(min - a) > abs(t - h[i] * 0.006 - a):
+            min = t - h[i] * 0.006
+            ans = i + 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    T,A = map(int,input().split())
+    H = list(map(int,input().split()))
+    h = []
+    for i in range(N):
+        h.append(abs(A - (T - H[i]*0.006)))
+    print(h.index(min(h)) + 1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    t, a = map(int, input().split())
+    h = list(map(int, input().split()))
+    temp = [t - x * 0.006 for x in h]
+    print(temp.index(min(temp))+1)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T, A = map(int, input().split())
+    H = list(map(int, input().split()))
+    min = 100000
+    index = 0
+    for i in range(N):
+        if abs(A - (T - H[i] * 0.006)) < min:
+            min = abs(A - (T - H[i] * 0.006))
+            index = i + 1
+    print(index)

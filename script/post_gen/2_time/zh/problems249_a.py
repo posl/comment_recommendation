@@ -1,40 +1,133 @@
-#问题陈述
-#高桥和青木决定慢跑。
-#高桥重复了以下内容："以每秒B米的速度行走A秒，休息C秒。"
-#青木重复以下内容："以每秒E米的速度行走D秒，休息F秒"。
-#当他们同时开始慢跑X秒后，高桥和青木谁走在前面？
-#
-#限制条件
-#1 ≦ A, B, C, D, E, F, X ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D E F X
-#
-#输出
-#当他们同时开始慢跑后的X秒过去了，如果高桥走在青木前面，打印高桥；如果青木走在高桥前面，打印青木；如果他们前进了相同的距离，打印画。
-#
-#输入样本 1
-#4 3 3 6 2 5 10
-#
-#输出示例 1
-#高桥
-#在他们开始慢跑后的前10秒，他们的动作如下。
-#高桥走了4秒，休息了3秒，又走了3秒。  结果，他总共前进了（4+3）×3=21米。
-#青木走了6秒，休息了4秒。  结果，他总共前进了6×2=12米。
-#由于高桥走在前面，高桥应该被打印出来。
-#
-#输入样本 2
-#3 1 4 1 5 9 2
-#
-#样本输出2
-#青木
-#
-#样本输入3
-#1 1 1 1 1 1 1
-#
-#样本输出3
-#画
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    query = []
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+    return n, a, q, query
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for _ in range(q):
+        l, r, x = map(int, input().split())
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for _ in range(Q):
+        L, R, X = map(int, input().split())
+        count = 0
+        for i in range(L-1, R):
+            if A[i] == X:
+                count += 1
+        print(count)
+
+=======
+Suggestion 4
+
+def getinput():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    query = []
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+    return n, a, q, query
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        l, r, x = map(int, input().split())
+        print(a[l-1:r].count(x))
+
+=======
+Suggestion 6
+
+def count_element(start, end, x):
+    count = 0
+    for i in range(start, end+1):
+        if a[i] == x:
+            count += 1
+    return count
+
+n = int(input())
+a = list(map(int, input().split()))
+q = int(input())
+
+for i in range(q):
+    l, r, x = map(int, input().split())
+    print(count_element(l-1, r-1, x))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    queries = []
+    for i in range(q):
+        queries.append(list(map(int, input().split())))
+    for query in queries:
+        l = query[0] - 1
+        r = query[1]
+        x = query[2]
+        print(a[l:r].count(x))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        L, R, X = map(int, input().split())
+        count = 0
+        for j in range(L-1, R):
+            if A[j] == X:
+                count += 1
+        print(count)
+
+=======
+Suggestion 9
+
+def binary_search(arr, l, r, x):
+    if r >= l:
+        mid = l + (r - l) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] > x:
+            return binary_search(arr, l, mid - 1, x)
+        else:
+            return binary_search(arr, mid + 1, r, x)
+    else:
+        return -1
+
+N = int(input())
+A = list(map(int, input().split()))
+Q = int(input())
+for i in range(Q):
+    L, R, X = map(int, input().split())
+    print(binary_search(A, L - 1, R - 1, X))

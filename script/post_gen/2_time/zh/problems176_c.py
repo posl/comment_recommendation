@@ -1,37 +1,116 @@
-#问题陈述
-#N个人站成一排。第i个人从前面开始的高度是A_i。
-#我们想让每个人都站在某个高度的凳子上--至少是0--这样每个人都能满足以下条件：
-#条件：在该人前面的人都不比该人高。这里，人的高度包括凳子的高度。
-#找到满足这一目标所需的最小的凳子总高度。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印达到目标所需的凳子的最小总高度。
-#
-#输入样本1
-#5
-#2 1 5 4 3
-#
-#样本输出 1
-#4
-#如果这些人分别站在高度为0、1、0、1和2的凳子上，他们的高度将是2、2、5、5和5，满足了条件。
-#如果凳子的总高度较小，我们就不能满足目标。
-#
-#输入样本 2
-#5
-#3 3 3 3 3
-#
-#样本输出2
-#0
-#给每个人提供一个高度为0的凳子就可以了。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    #n = int(input())
+    n = input()
+    #print(n)
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N%9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = input()
+    sum = 0
+    for i in N:
+        sum += int(i)
+    if sum % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = input()
+    total = 0
+    for i in n:
+        total += int(i)
+    if total % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 6
+
+def solve():
+    n = input()
+    if int(n)%9==0:
+        print("Yes")
+    else:
+        print("No")
+
+solve()
+
+=======
+Suggestion 7
+
+def isMultipleOf9(n):
+    if (n == 0 or n == 9):
+        return True
+    if (n < 9):
+        return False
+    return isMultipleOf9(int(n/9) - int(n%9))
+
+n = input()
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def is_9_multiple(n):
+    sum = 0
+    for i in n:
+        sum += int(i)
+    if sum % 9 == 0:
+        return True
+    else:
+        return False

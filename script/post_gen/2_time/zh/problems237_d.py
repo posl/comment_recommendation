@@ -1,43 +1,134 @@
-#问题陈述
-#有一个包含一个0的序列，A=(0)。
-#另外，给你一个长度为N的字符串，S=s_1s_2...s_N，由L和R组成。
-#对于每个i=1，2，...，N的这个顺序，将进行以下操作。
-#如果s_i是L，则在A中i-1的左近插入i。
-#如果s_i是R，在A中i-1的右边插入i。
-#找到A的最终内容。
-#
-#限制条件
-#1≦ N ≦ 5× 10^5
-#N是一个整数。
-#|S| = N
-#s_i是L或R。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S
-#
-#输出
-#打印A的最终内容，用空格分隔。
-#
-#输入样本1
-#5
-#LRRLR
-#
-#样本输出1
-#1 2 4 5 3 0
-#最初，A=(0)。
-#S_1是L，这使它成为A=(1,0)。
-#S_2是R，这使它成为A=(1,2,0)。
-#S_3是R，这使得A=(1,2,3,0)。
-#S_4是L，这使它成为A=(1,2,4,3,0)。
-#S_5是R，这使它成为A=(1,2,4,5,3,0)。  
-#
-#样本输入2
-#7
-#LLLLLLLLL
-#
-#样本输出2
-#7 6 5 4 3 2 1 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_palindrom(s):
+    return s == s[::-1]
+
+s = input()
+l = len(s)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    l = len(S)
+    for i in range(l//2):
+        if S[i] != S[l-1-i]:
+            print("No")
+            return
+    print("Yes")
+main()
+
+=======
+Suggestion 3
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+S = input()
+for i in range(len(S) + 1):
+    if is_palindrome("a" * i + S):
+        print("Yes")
+        exit()
+print("No")
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    n = len(s)
+    for i in range(n):
+        if s[i] != s[n-i-1]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 5
+
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+s = input()
+for i in range(len(s)+1):
+    s1 = s[:i] + 'a' + s[i:]
+    if is_palindrome(s1):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+s = input()
+count = 0
+for i in range(len(s)):
+    if is_palindrome(s[i:]):
+        print("Yes")
+        exit()
+print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s == s[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 9
+
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+S = input()
+for i in range(len(S)+1):
+    s = 'a' * i + S
+    if is_palindrome(s):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)//2):
+        if s[i] != s[len(s)-1-i]:
+            count += 1
+    if count == 0:
+        if len(s) % 2 == 0:
+            print("YES")
+        else:
+            print("NO")
+    elif count == 1:
+        print("YES")
+    else:
+        print("NO")

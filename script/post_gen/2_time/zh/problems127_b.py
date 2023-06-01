@@ -1,51 +1,96 @@
-#问题说明
-#一个池塘中藻类的发展情况如下。
-#设第i年年初藻类的总重量为x_i克。对于i≥2000，以下公式成立：
-#x_{i+1} = rx_i - D
-#你得到了r、D和x_{2000}。计算x_{2001}, ..., x_{2010}并按顺序打印出来。
-#
-#限制条件
-#2 ≤ r ≤ 5
-#1 ≤ D ≤ 100
-#D < x_{2000} ≤ 200
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#r D x_{2000}
-#
-#输出
-#打印10行。第i行（1≤i≤10）应包含x_{2000+i}的整数。
-#
-#输入样本 1
-#2 10 20
-#
-#样本输出 1
-#30
-#50
-#90
-#170
-#330
-#650
-#1290
-#2570
-#5130
-#10250
-#例如，x_{2001} = rx_{2000} - D = 2 × 20 - 10 = 30，x_{2002} = rx_{2001} - D = 2 × 30 - 10 = 50。
-#
-#样本输入2
-#4 40 60
-#
-#样本输出2
-#200
-#760
-#3000
-#11960
-#47800
-#191160
-#764600
-#3058360
-#12233400
-#48933560
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(int(b/2))
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(B // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def problems127_a():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(int(b/2))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def solve():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(b//2)
+    else:
+        print(0)
+solve()
+
+=======
+Suggestion 5
+
+def get_fee(age):
+    if age >= 13:
+        return 100
+    elif age >= 6:
+        return 50
+    else:
+        return 0
+
+=======
+Suggestion 6
+
+def problem127_a():
+    age, price = map(int, input().split())
+    if age >= 13:
+        print(price)
+    elif age >= 6 and age <= 12:
+        print(price // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def calcPrice(age, price):
+    if age >= 13:
+        return price
+    elif age >= 6 and age <= 12:
+        return price / 2
+    else:
+        return 0
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif 6 <= A <= 12:
+        print(B // 2)
+    else:
+        print(0)

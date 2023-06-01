@@ -1,43 +1,136 @@
-#问题陈述
-#薮猫正在与一只怪物战斗。
-#该怪物的健康状况是H。
-#在一次攻击中，Serval可以使怪物的生命值减少A。
-#没有其他方法可以减少怪物的生命值。
-#当怪物的生命值变为0或低于0时，Serval就会获胜。
-#找出Serval在获胜前需要进行的攻击次数。
-#
-#限制条件
-#1 ≦ H ≦ 10^4
-#1 ≦ A ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H A
-#
-#输出
-#打印Serval在获胜前需要进行的攻击次数。
-#
-#输入样本 1
-#10 4
-#
-#输出样本 1
-#3
-#在一次攻击后，怪物的健康状况将是6。
-#两次攻击后，怪物的健康状况将是2。
-#三次攻击后，怪物的生命值将为-2。
-#因此，薮猫需要进行三次攻击才能获胜。
-#
-#输入样本2
-#1 10000
-#
-#样本输出2
-#1
-#
-#样本输入3
-#10000 1
-#
-#样本输出3
-#10000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i % 10 == int(j / 10) and i / 10 == j % 10:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if i % 10 == 0:
+            continue
+        for j in range(1, N+1):
+            if j % 10 == 0:
+                continue
+            if str(i)[0] == str(j)[-1] and str(i)[-1] == str(j)[0]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        for j in range(i, N+1):
+            if i%10 == j//100 and j%10 == i//100:
+                cnt += 2
+                if i == j:
+                    cnt -= 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    cnt = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if str(i)[-1] == str(j)[0] and str(i)[0] == str(j)[-1]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def get_num(n):
+    num = 0
+    for i in range(1,n+1):
+        if i < 10:
+            num += 1
+        else:
+            if i % 10 == i // (10 ** (len(str(i)) - 1)):
+                num += 1
+    return num
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        s = str(i)
+        if s[0] == s[-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_num(n):
+    count = 0
+    for i in range(1,n+1):
+        if i < 10:
+            count += 1
+            continue
+        if i % 10 == int(str(i)[0]):
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print(solve(n))
+
+=======
+Suggestion 9
+
+def f(n):
+    ans = 0
+    for i in range(1, n+1):
+        s = str(i)
+        if s[0] == s[-1]:
+            ans += 1
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        if i%10 == 0:
+            continue
+        else:
+            str_i = str(i)
+            len_i = len(str_i)
+            if str_i[-1] == str_i[0]:
+                count += 1
+            else:
+                if len_i == 1:
+                    continue
+                else:
+                    for j in range(1,len_i):
+                        if str_i[j] == str_i[j-1]:
+                            count += 1
+                            break
+    print(count)
+main()

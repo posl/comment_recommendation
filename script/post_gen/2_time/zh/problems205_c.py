@@ -1,39 +1,124 @@
-#问题说明
-#对于一个基数X，它乘以Y次方的乘积被称为X到Y次方，表示为pow(X, Y)。
-#例如，我们有pow(2,3)=2×2×2=8。
-#给出三个整数A、B和C，比较pow(A,C)和pow(B,C)以确定哪个更大。
-#
-#限制条件
-#-10^9 ≦ A,B ≦ 10^9
-#1 ≦ C ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#如果pow(A,C)<pow(B,C)，打印<；如果pow(A,C)>pow(B,C)，打印>；如果pow(A,C)=pow(B,C)，打印=。
-#
-#输入样本 1
-#3 2 4
-#
-#输出示例 1
-#>
-#我们有 pow(3,4)=81 和 pow(2,4)=16。
-#
-#样本输入2
-#-7 7 2
-#
-#样本输出2
-#=
-#我们有 pow(-7,2)=49 和 pow(7,2)=49。
-#
-#样本输入3
-#-8 6 3
-#
-#样本输出3
-#<
-#我们有 pow(-8,3)=-512 和 pow(6,3)=216。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_permutation(array):
+    # 从小到大排序
+    array.sort()
+    # 检查是否为1到N的连续数列
+    for i in range(len(array)):
+        if array[i] != i + 1:
+            return False
+    return True
+
+n = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def is_permutation(n, a):
+    a.sort()
+    for i in range(n):
+        if a[i] != i+1:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(set(a)) == n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a == [i for i in range(1, n+1)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n):
+        if a[i] != i + 1:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def is_permutation(n, a):
+    if len(a) != n:
+        return False
+    a.sort()
+    for i in range(n):
+        if a[i] != i + 1:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    if(A == list(range(1,N+1))):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def check_permutation(N, A):
+    if N != len(A):
+        return False
+    else:
+        for i in range(N):
+            if i+1 not in A:
+                return False
+        return True
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    if set(A) == set(range(1, N+1)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 逻辑处理
+    A.sort()
+    if A == list(range(1, N + 1)):
+        print('Yes')
+    else:
+        print('No')

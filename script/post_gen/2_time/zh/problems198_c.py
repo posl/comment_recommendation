@@ -1,42 +1,99 @@
-#问题陈述
-#高桥站在一个二维平面的原点上。
-#只要迈出一步，他就可以移动到一个与他当前位置的欧几里得距离正好是R的点（移动的目的地的坐标不一定是整数）。没有其他的移动方式。
-#求高桥在到达（X，Y）之前要走的最小步数。
-#我们提醒你，点（x_1,y_1）和（x_2,y_2）之间的欧几里得距离是（（x_1-x_2）^2+（y_1-y_2）^2）^（1/2）。
-#
-#约束条件
-#1 ≦ R ≦ 10^5
-#0 ≦ X,Y ≦ 10^5
-#(X,Y) ≠ (0,0)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#R X Y
-#
-#輸出
-#打印高桥在到达(X, Y)之前所要走的最小步数。
-#
-#输入样本 1
-#5 15 0
-#
-#样本输出 1
-#3
-#他可以通过三个步骤到达那里：(0,0) -> (5,0) -> (10,0) -> (15,0).
-#这是需要的最小数量：他不能用两步或更少的步骤到达那里。
-#
-#输入样本 2
-#5 11 0
-#
-#样本输出 2
-#3
-#一条最佳路线是(0,0) -> (5,0) -> (8,4) -> (11,0)。
-#
-#输入样本 3
-#3 4 4
-#
-#输出样本 3
-#2
-#一条最优路线是(0,0)->(2-((2)^(1/2))/(2))，2+((2)^(1/2))/(2))-> (4,4).
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_palindrome(n):
+    n = str(n)
+    if n == n[::-1]:
+        return True
+    else:
+        return False
+
+n = int(input())
+for i in range(1, n):
+    if is_palindrome(str(i) + str(i)[::-1]):
+        print("Yes")
+        exit()
+print("No")
+
+=======
+Suggestion 2
+
+def isPalindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def is_palindrome(n):
+    n = str(n)
+    #print(n)
+    if n == n[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def check(n):
+    n_str = str(n)
+    n_str_rev = n_str[::-1]
+    if n_str == n_str_rev:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+n = int(input())
+print('Yes' if is_palindrome(n) else 'No')
+
+=======
+Suggestion 6
+
+def reverse(s):
+    return s[::-1]
+
+=======
+Suggestion 7
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    if n == n[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def is_palindrome(n):
+    n = str(n)
+    return n == n[::-1]
+
+print('Yes' if is_palindrome(input()) else 'No')
+
+=======
+Suggestion 10
+
+def is_palindrome(string):
+    if string == string[::-1]:
+        return True
+    else:
+        return False

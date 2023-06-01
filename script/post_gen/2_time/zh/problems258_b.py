@@ -1,57 +1,160 @@
-#问题陈述
-#给你一个正整数N。
-#我们有一个有N行N列的网格，其中从上往下第i行、从左往下第j列的方格上写有一个数字A_{i,j}。
-#假设这个网格的上边和下边以及左边和右边是相连的。换句话说，以下所有情况都成立。
-#(N,i)正好在(1,i)上面，而(1,i)正好在(N,i)下面。(1≦i≦N)。
-#(i,N)正好在(i,1)的左边，而(i,1)正好在(i,N)的右边。(1≦ i≦ N)。
-#高桥将首先从以下八个方向中选择一个：上、下、左、右，以及四个对角线方向。然后，他将从自己选择的一个方格开始，在所选方向上重复移动一个方格N-1次。
-#在这个过程中，高桥访问了N个方格。将高桥访问过的方格上的数字按其访问的顺序从左到右排列，求其可能的最大整数值。
-#
-#限制条件
-#1 ≦ N ≦ 10
-#1 ≦ A_{i,j} ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_{1,1}A_{1,2}...A_{1,N}
-#A_{2,1}A_{2,2}...A_{2,N}
-#.
-#.
-#.
-#A_{N,1}A_{N,2}...A_{N,N}
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#1161
-#1119
-#7111
-#1811
-#
-#样本输出1
-#9786
-#如果高桥从顶部第2行和左侧第4列的方格开始，向下和向右走，通过排列被访问方格上的数字得到的整数将是9786。
-#不可能有大于9786的数值，所以答案是9786。
-#
-#输入样本2
-#10
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#
-#样本输出2
-#1111111111
-#注意，答案可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    K = int(input())
+    H = K//60
+    M = K%60
+    print("{:02}:{:02}".format(H+21,M))
+
+=======
+Suggestion 2
+
+def time(k):
+    h = k//60
+    m = k%60
+    if h<10:
+        h = '0'+str(h)
+    else:
+        h = str(h)
+    if m<10:
+        m = '0'+str(m)
+    else:
+        m = str(m)
+    return h+':'+m
+k = int(input())
+print(time(k))
+
+=======
+Suggestion 3
+
+def print_time(k):
+    start_time = 21 * 60
+    end_time = start_time + 100
+    k_time = start_time + k
+    if k_time < end_time:
+        hour = k_time // 60
+        minute = k_time % 60
+        print("%02d:%02d" % (hour, minute))
+    else:
+        print("00:00")
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    k = int(input())
+
+    # 计算结果
+    h = k // 60
+    m = k % 60
+
+    # 输出
+    print("{:02d}:{:02d}".format(h+21, m))
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    K = int(input())
+
+    # solve
+    hour = 21
+    minute = 0
+    for i in range(K):
+        minute += 1
+        if minute == 60:
+            minute = 0
+            hour += 1
+        if hour == 24:
+            hour = 0
+
+    # output
+    print("{:02d}:{:02d}".format(hour, minute))
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    H = 21
+    M = 0
+    if K >= 60:
+        H += K // 60
+        M = K % 60
+    else:
+        M = K
+    if H >= 24:
+        H = H % 24
+    if H < 10:
+        if M < 10:
+            print("0%d:0%d" % (H, M))
+        else:
+            print("0%d:%d" % (H, M))
+    else:
+        if M < 10:
+            print("%d:0%d" % (H, M))
+        else:
+            print("%d:%d" % (H, M))
+
+=======
+Suggestion 7
+
+def problem258_a():
+    k = int(input())
+    h = k//60
+    m = k%60
+    print("{:02d}:{:02d}".format(21+h,m))
+
+=======
+Suggestion 8
+
+def print_time(k):
+    hour = 21 + int(k / 60)
+    minute = k % 60
+    if hour > 23:
+        hour = hour - 24
+    if hour < 10:
+        hour = "0" + str(hour)
+    if minute < 10:
+        minute = "0" + str(minute)
+    print(str(hour) + ":" + str(minute))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    h = k // 60
+    m = k % 60
+    print("{:02d}:{:02d}".format(h + 21, m))
+
+=======
+Suggestion 10
+
+def time_calculator(k):
+    if k == 0:
+        return "21:00"
+    else:
+        hour = 21
+        minute = 0
+        for i in range(k):
+            minute += 1
+            if minute == 60:
+                hour += 1
+                minute = 0
+            if hour == 24:
+                hour = 0
+        if hour < 10:
+            hour = "0" + str(hour)
+        else:
+            hour = str(hour)
+        if minute < 10:
+            minute = "0" + str(minute)
+        else:
+            minute = str(minute)
+        return hour + ":" + minute

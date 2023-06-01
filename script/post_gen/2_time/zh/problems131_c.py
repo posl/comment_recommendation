@@ -1,35 +1,95 @@
-#问题陈述
-#给你四个整数A、B、C和D，求A和B之间（含）能被C和D平分的整数数量。
-#
-#限制条件
-#1≦ A≦ B≦ 10^{18}
-#1≦ C,D≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#輸出
-#打印A和B之间（包括）能被C和D平分的整数的数量。
-#
-#输入示例 1
-#4 9 2 3
-#
-#输出示例 1
-#2
-#5和7满足条件。
-#
-#样本输入2
-#10 40 6 8
-#
-#样本输出2
-#23
-#
-#样本输入3
-#314159265358979323 846264338327950288 419716939 937510582
-#
-#样本输出3
-#532105071133627368
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, l = map(int, input().split())
+    print(sum(range(l + 1, l + n)) - l if l >= 0 else sum(range(l + 1, l + n)) - l + 1)
+
+=======
+Suggestion 2
+
+def solve(n,l):
+    return sum(range(l+1,l+n))
+
+=======
+Suggestion 3
+
+def main():
+    N,L = map(int,input().split())
+    sum = 0
+    min = 1000
+    for i in range(1,N+1):
+        sum += L+i-1
+        if abs(L+i-1) < abs(min):
+            min = L+i-1
+    print(sum-min)
+
+=======
+Suggestion 4
+
+def main():
+    n, l = map(int, input().split())
+    if l >= 0:
+        print(sum(range(l+1, l+n)))
+    elif l+n <= 0:
+        print(sum(range(l, l+n)))
+    else:
+        print(sum(range(l, 0)) + sum(range(1, l+n)))
+
+=======
+Suggestion 5
+
+def main():
+    n, l = map(int, input().split())
+    print(sum(range(l+1, l+n)) if l >= 0 else sum(range(l+1, l+n)) + n - 1)
+
+=======
+Suggestion 6
+
+def main():
+    N, L = map(int, input().split())
+    print((2 * L + N - 1) * N // 2 - L * N)
+
+=======
+Suggestion 7
+
+def cal_apple_pie(n,l):
+    min_value = 1000000
+    for i in range(n):
+        temp = 0
+        for j in range(n):
+            if i != j:
+                temp += l + j
+        if abs(temp) < min_value:
+            min_value = abs(temp)
+    return min_value
+
+=======
+Suggestion 8
+
+def main():
+    n, l = map(int, input().split())
+    print(sum(range(l+1, l+n)) if l >= 0 else sum(range(l+n, l+1)))
+
+=======
+Suggestion 9
+
+def main():
+    N, L = map(int, input().split())
+    print(N * L + N * (N - 1) // 2)
+
+=======
+Suggestion 10
+
+def main():
+    n,l = map(int, input().split())
+    res = 0
+    if l >= 0:
+        res = sum(range(l+1, l+n))
+    elif l+n <= 0:
+        res = sum(range(l, l+n))
+    else:
+        res = sum(range(l+1, 0)) + sum(range(1, l+n))
+    print(res)

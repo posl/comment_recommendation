@@ -1,65 +1,135 @@
-#问题陈述
-#魔术师Takahashi正在与一个怪物战斗。
-#他可以使用N个法术。
-#第i个法术需要X_i秒来施展，其威力为Y_i。
-#然而，怪物足够强大，可以避免受到需要S或更多时间才能施展的法术和具有D或更少力量的法术的伤害。
-#另外，除了法术之外，没有其他东西可以对怪物造成伤害。
-#高桥能对该怪物造成伤害吗？  
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≤ N ≤ 100
-#1 ≤ X_i ≤ 10^9
-#1 ≤ Y_i ≤ 10^9
-#1 ≤ S ≤ 10^9
-#1 ≤ D ≤ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N S D
-#X_1 Y_1
-#.
-#.
-#.
-#X_N Y_N
-#
-#输出
-#如果高桥能对怪物造成伤害，打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 9 9
-#5 5
-#15 5
-#5 15
-#15 15
-#
-#样本输出1
-#Yes
-#第二个和第四个法术需要太多的时间来造成伤害。
-#另外，第一和第二条咒语没有足够的力量来造成伤害。
-#因此，只有第三个法术可以造成伤害。
-#
-#样本输入2
-#3 691 273
-#691 997
-#593 273
-#691 273
-#
-#样本输出2
-#No
-#
-#样本输入3
-#7 100 100
-#10 11
-#12 67
-#192 79
-#154 197
-#142 158
-#20 25
-#17 108
-#
-#样本输出3
-#Yes
-#只有第七个法术可以造成伤害。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if c == 0:
+        if a > b:
+            print('Takahashi')
+        else:
+            print('Aoki')
+    else:
+        if a < b:
+            print('Aoki')
+        else:
+            print('Takahashi')
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int,input().split())
+    if c == 0:
+        if a > b:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        if b > a:
+            print("Aoki")
+        else:
+            print("Takahashi")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int,input().split())
+    if c == 0:
+        if a > b:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        if a >= b:
+            print("Takahashi")
+        else:
+            print("Aoki")
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+    # 处理数据
+    if c == 0:
+        if a > b:
+            print('Takahashi')
+        else:
+            print('Aoki')
+    else:
+        if a >= b:
+            print('Takahashi')
+        else:
+            print('Aoki')
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int, input().split())
+    if c == 0:
+        if a > b:
+            print("Takahashi")
+        elif a < b:
+            print("Aoki")
+        else:
+            print("Aoki")
+    else:
+        if a > b:
+            print("Takahashi")
+        elif a < b:
+            print("Aoki")
+        else:
+            print("Takahashi")
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int,input().split())
+    if c == 0:
+        if a > b:
+            print('Takahashi')
+        else:
+            print('Aoki')
+    else:
+        if b > a:
+            print('Aoki')
+        else:
+            print('Takahashi')
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C = map(int,input().split())
+
+    if C == 0:
+        if A > B:
+            print("Takahashi")
+        else:
+            print("Aoki")
+    else:
+        if A >= B:
+            print("Takahashi")
+        else:
+            print("Aoki")
+
+=======
+Suggestion 8
+
+def solve(A, B, C):
+    if C == 0:
+        if A > B:
+            return 'Takahashi'
+        else:
+            return 'Aoki'
+    else:
+        if B > A:
+            return 'Aoki'
+        else:
+            return 'Takahashi'

@@ -1,45 +1,141 @@
-#问题陈述
-#在一个x轴指向右，y轴指向上的二维坐标平面上，我们有一个有N个顶点p_0, p_1, p_2, ..., p_{N - 1}的规则N-gon。
-#这里，保证N是偶数，顶点p_0, p_1, p_2, ..., p_{N - 1}是按逆时针顺序排列。
-#让（x_i，y_i）表示p_i的坐标。
-#给出x_0, y_0, x_{(N/(2))}, and y_{(N/(2))}，求x_1和y_1。
-#
-#限制条件
-#4 ≦ N ≦ 100
-#N是偶数。
-#0 ≦ x_0, y_0 ≦ 100
-#0 ≦ x_{（N/(2)）}, y_{（N/(2)）} ≦ 100
-#(x_0, y_0) ≠ (x_{(N/(2))}, y_{(N/(2))})
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_0 y_0
-#x_{（N/（2））} y_{（N/（2））}
-#
-#输出
-#按照这个顺序打印x_1和y_1，中间有一个空格。
-#你的输出被认为是正确的，当对于打印的每个值，与我们的答案的绝对或相对误差最多为10^{-5}。
-#
-#输入样本1
-#4
-#1 1
-#2 2
-#
-#样本输出 1
-#2.00000000000 1.00000000000
-#我们得到p_0 = (1, 1)和p_2 = (2, 2)。
-#p_0、p_1、p_2和p_3构成一个正方形，并且它们按逆时针顺序排列，这一事实唯一地决定了其他顶点的坐标，如下所示：
-#p_1 = (2, 1)
-#p_3 = (1, 2)
-#
-#样本输入2
-#6
-#5 3
-#7 4
-#
-#样本输出2
-#5.93301270189 2.38397459622
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_min_xor(n, a):
+    min_xor = 2**30
+    for i in range(n-1):
+        for j in range(i+1, n):
+            xor = a[i]^a[j]
+            if xor < min_xor:
+                min_xor = xor
+    return min_xor
+
+=======
+Suggestion 2
+
+def get_min_xor_sum(nums):
+    min_xor_sum = nums[0]
+    for i in range(1, len(nums)):
+        min_xor_sum ^= nums[i]
+    return min_xor_sum
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        ans ^= a[i]
+    print(ans)
+main()
+
+=======
+Suggestion 4
+
+def get_min_xor(a, n):
+    min_xor = 2**30
+    for i in range(0, n-1):
+        for j in range(i+1, n):
+            xor = a[i] ^ a[j]
+            if xor < min_xor:
+                min_xor = xor
+    return min_xor
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(n):
+        x = 0
+        for j in range(i, n):
+            x |= a[j]
+            y = 0
+            for k in range(j+1, n):
+                y ^= a[k]
+            ans = min(ans, x+y)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(N):
+        x = 0
+        for j in range(i, N):
+            x |= A[j]
+            y = 0
+            for k in range(j + 1, N):
+                y ^= A[k]
+                ans = min(ans, x | y)
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def solve(N,A):
+    ans = 2**31
+    for i in range(N):
+        for j in range(i,N):
+            x = 0
+            for k in range(i,j+1):
+                x = x | A[k]
+            ans = min(ans,x)
+    print(ans)
+
+=======
+Suggestion 8
+
+def bit_or(*args):
+    res = 0
+    for i in args:
+        res |= i
+    return res
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2 ** 30
+    for i in range(N):
+        x = 0
+        for j in range(i, N):
+            x = x | A[j]
+            y = 0
+            for k in range(j + 1, N):
+                y = y ^ A[k]
+            ans = min(ans, x + y)
+    print(ans)
+main()
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1<<31
+    for i in range(1<<N-1):
+        x = 0
+        y = 0
+        for j in range(N):
+            y |= A[j]
+            if i>>j & 1:
+                x ^= y
+                y = 0
+        x ^= y
+        ans = min(ans, x)
+    print(ans)
+solve()

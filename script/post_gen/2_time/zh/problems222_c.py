@@ -1,73 +1,160 @@
-#问题陈述
-#2N个ID号为1到2N的选手将参加一个石头剪刀布比赛。
-#比赛有M轮。每轮有N场一对一的比赛，每个选手都参加其中的一场。
-#对于每个i=0，1，...，M，选手在第i轮结束时的排名确定如下。
-#在前i轮比赛中获胜较多的选手排名较高。
-#平局是由ID号码打破的：ID号码较小的玩家排名较高。
-#此外，对于每个i=1，...，M，第i轮的比赛安排如下。
-#对于每个k=1，2，...，N，在第（i-1）轮结束时排名（2k-1）-第和2k-第的玩家之间进行一场比赛。
-#在每场比赛中，两个玩家只打一手牌，结果是一个玩家赢，另一个玩家输，或者平局。
-#可以预见未来的高桥知道，玩家i将在第j轮的比赛中玩A_{i, j}，其中A_{i,j}是G、C或P。
-#这里，G代表石头，C代表剪刀，而P代表布。(这些都来自于日语）。
-#在第M轮结束时，找出玩家的等级。
-#石头-剪子-布的规则
-#石头剪子纸比赛的结果是根据两位选手的手牌决定的。
-# 如果一个玩家玩石头（G），另一个玩家玩剪刀（C），玩石头（G）的玩家获胜。
-# 如果一方出剪刀（C），另一方出布（P），出剪刀（C）的一方获胜。
-# 如果一个玩家玩布（P），另一个玩家玩石头（G），玩布（P）的玩家获胜。
-# 如果双方玩的是同一把牌，则比赛结束。
-#
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 100
-#A_{i,j}是G, C, 或P。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_{1,1}A_{1,2}...A_{1,M}
-#A_{2,1}A_{2,2}...A_{2,M}
-#.
-#.
-#.
-#A_{2N,1}A_{2N,2}...A_{2N,M}
-#
-#输出
-#打印2N行。
-#第i行应包含在第M轮结束时排名第i的棋手的ID号。
-#
-#输入样本 1
-#2 3
-#GCP
-#PPP
-#CCC
-#PPC
-#
-#样本输出1
-#3
-#1
-#2
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。棋手3赢得前者，棋手1赢得后者。
-#在第三轮，比赛在球员3和1之间，以及球员2和4之间进行。玩家3赢得了前者，而玩家4赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：3、1、2、4，从高到低。
-#
-#输入样本 2
-#2 2
-#GC
-#PG
-#CG
-#PP
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。前者是平局，而玩家1赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：1、2、3、4，从高到低。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,P = map(int,input().split())
+    A = list(map(int,input().split()))
+    print(sum([1 if P > a else 0 for a in A]))
+
+=======
+Suggestion 2
+
+def main():
+    #输入
+    N,P = map(int,input().split())
+    A = list(map(int,input().split()))
+    #判断
+    count = 0
+    for i in range(N):
+        if A[i] < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N,P = map(int,input().split())
+    a = list(map(int,input().split()))
+    count = 0
+    for i in a:
+        if i < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] < p:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # N:学生人数
+    # P:通过考试的分数
+    N, P = map(int, input().split())
+    # 学生成绩
+    scores = list(map(int, input().split()))
+    # 通过考试的学生人数
+    pass_num = 0
+    for score in scores:
+        if score >= P:
+            pass_num += 1
+    # 不通过考试的学生人数
+    fail_num = N - pass_num
+    print(fail_num)
+
+=======
+Suggestion 8
+
+def main():
+    # N, P = input().split()
+    # grades = input().split()
+    # print(grades)
+    # print(grades[0])
+    # print(grades[1])
+    # print(grades[2])
+    # print(grades[3])
+    # print(N)
+    # print(P)
+    # print(grades)
+    # print(grades[0])
+    # print(grades[1])
+    # print(grades[2])
+    # print(grades[3])
+    # print(grades[4])
+    # print(grades[5])
+    # print(grades[6])
+    # print(grades[7])
+    # print(grades[8])
+    # print(grades[9])
+    # print(grades[10])
+    # print(grades[11])
+    # print(grades[12])
+    # print(grades[13])
+    # print(grades[14])
+    # print(grades[15])
+    # print(grades[16])
+    # print(grades[17])
+    # print(grades[18])
+    # print(grades[19])
+    # print(grades[20])
+    # print(grades[21])
+    # print(grades[22])
+    # print(grades[23])
+    # print(grades[24])
+    # print(grades[25])
+    # print(grades[26])
+    # print(grades[27])
+    # print(grades[28])
+    # print(grades[29])
+    # print(grades[30])
+    # print(grades[31])
+    # print(grades[32])
+    # print(grades[33])
+    # print(grades[34])
+    # print(grades[35])
+    # print(grades[36])
+    # print(grades[37])
+    # print(grades[38])
+    # print(grades[39])
+    # print(grades[40])
+    # print(grades[41])
+    # print(grades[42])
+    # print(grades[43])
+    # print(grades[44])
+    # print(grades[45])
+    # print(grades[46])
+    # print(grades[47])
+    # print(grades[48])
+    # print(grades[49])
+    # print(grades[50])
+    # print(grades[51])
+    # print(grades[52])
+    #

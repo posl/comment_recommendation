@@ -1,95 +1,162 @@
-#问题陈述
-#高桥决定举办最快手指速度的问答游戏。负责制作记分牌的Kizahashi正在努力编写管理游戏中玩家分数的程序，游戏的过程如下。
-#一场游戏由N个玩家进行，编号为1至N。在游戏开始时，每个玩家有K分。
-#当一个玩家正确回答一个问题时，其他N-1个玩家中的每一个都会得到减去1分。没有其他因素会影响玩家的分数。
-#在游戏结束时，0分或更低的玩家被淘汰，剩下的玩家生存。
-#在最后一局中，玩家总共给出了Q个正确答案，其中第i个是由玩家A_i给出的。
-#对于Kizahashi，写一个程序来确定N个玩家中的每个人是否在这个游戏中幸存下来。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ Q ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ Q)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K Q
-#A_1
-#A_2
-#.
-#.
-#.
-#A_Q
-#
-#输出
-#打印N行。第i行应该包含Yes，如果玩家i在游戏中幸存下来，否则就是No。
-#
-#输入样本 1
-#6 3 4
-#3
-#1
-#3
-#2
-#
-#样本输出1
-#No
-#No
-#Yes
-#No
-#No
-#No
-#开始时，玩家的分数是（3，3，3，3，3，3）。
-#玩家3正确地回答了一个问题。现在玩家的分数是（2, 2, 3, 2, 2, 2）。
-#玩家1正确地回答了一个问题。现在选手们的分数是（2, 1, 2, 1, 1, 1）。
-#玩家3正确地回答了一个问题。现在选手们的分数是（1, 0, 2, 0, 0, 0）。
-#玩家2正确地回答了一个问题。现在玩家的分数是（0, 0, 1, -1, -1, -1）。
-#玩家1、2、4、5、6的分数为0或更低，被淘汰，玩家3在这场比赛中幸存。
-#
-#输入样本 2
-#6 5 4
-#3
-#1
-#3
-#2
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#样本输入3
-#10 13 15
-#3
-#1
-#4
-#1
-#5
-#9
-#2
-#6
-#5
-#3
-#5
-#8
-#9
-#7
-#9
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#Yes
-#No
-#No
-#No
-#Yes
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == 'L':
+                print('No')
+                exit()
+        else:
+            if S[i] == 'R':
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    for i in range(len(S)):
+        if i & 1 and S[i] in 'RL':
+            print('No')
+            return
+        if not i & 1 and S[i] in 'UD':
+            print('No')
+            return
+    print('Yes')
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[::2] == s[::2].replace('L', '').replace('U', '').replace('D', '') and s[1::2] == s[1::2].replace('R', '').replace('U', '').replace('D', ''):
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    odd = S[0::2]
+    even = S[1::2]
+    if odd.find('L') == -1 and odd.find('R') == -1 and even.find('U') == -1 and even.find('D') == -1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if len(S) % 2 == 0:
+        print("Yes" if S[0::2].count("L") == 0 and S[1::2].count("R") == 0 else "No")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if len(S) % 2 == 0:
+        for i in range(0, len(S), 2):
+            if S[i] == "L":
+                print("No")
+                exit()
+        for i in range(1, len(S), 2):
+            if S[i] == "R":
+                print("No")
+                exit()
+    else:
+        for i in range(0, len(S), 2):
+            if S[i] == "R":
+                print("No")
+                exit()
+        for i in range(1, len(S), 2):
+            if S[i] == "L":
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                exit()
+        else:
+            if s[i] == 'R':
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    # 读入输入
+    s = input()
+    # 计算奇数位置的字符是否是R、U或D
+    for i in range(0, len(s), 2):
+        if s[i] not in ['R', 'U', 'D']:
+            print('No')
+            return
+    # 计算偶数位置的字符是否是L、U或D
+    for i in range(1, len(s), 2):
+        if s[i] not in ['L', 'U', 'D']:
+            print('No')
+            return
+    # 输出结果
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    s=input()
+    flag=True
+    for i in range(len(s)):
+        if i%2==0:
+            if s[i] not in ['R','U','D']:
+                flag=False
+                break
+        else:
+            if s[i] not in ['L','U','D']:
+                flag=False
+                break
+    if flag:
+        print('Yes')
+    else:
+        print('No')

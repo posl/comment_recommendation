@@ -1,37 +1,87 @@
-#问题陈述
-#有N个人住在一条数线上。
-#第i个人住在坐标X_i处。
-#你要召开一个会议，所有N个人都必须参加。
-#这个会议可以在任何一个整数坐标上举行。如果你选择在坐标P举行会议，第i个人将花费(X_i-P)^2点体力来参加会议。
-#求N个人必须花费的最小总体力点数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ X_i ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#X_1 X_2 ...X_N
-#
-#输出
-#打印N个人需要花费的最小总体力。
-#
-#输入样本 1
-#2
-#1 4
-#
-#样本输出1
-#5
-#假设会议是在坐标2举行。在这种情况下，第一个人将花费(1-2)^2点体力，第二个人将花费(4-2)^2=4点体力，总共5点体力。这就是2个人要花费的最低总体力。
-#注意，你只能在一个整数的坐标上举行会议。
-#
-#输入样本2
-#7
-#14 14 2 13 56 2 37
-#
-#样本输出2
-#2354
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    count = 0
+    while n > 0:
+        n = n // k
+        count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    cnt = 0
+    while n >= k:
+        n = n // k
+        cnt += 1
+    print(cnt+1)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    i = 0
+    while n >= k:
+        n //= k
+        i += 1
+    print(i+1)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    print(len(str(N)))
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    count = 0
+    while n > 0:
+        n = n // k
+        count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    digits = 0
+    while N > 0:
+        N //= K
+        digits += 1
+    print(digits)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    while n > 0:
+        ans += 1
+        n //= k
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    count = 0
+    while N > 0:
+        N = N // K
+        count += 1
+    print(count)

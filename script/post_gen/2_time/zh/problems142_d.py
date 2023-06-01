@@ -1,45 +1,88 @@
-#问题陈述
-#给出的是正整数A和B。
-#让我们选择一些A和B的正公约数。
-#这里，所选的任何两个除数必须是互质的。
-#我们最多可以选择多少个除数？
-#公约数的定义
-#当一个整数d同时除以x和y时，就被称为整数x和y的公约数。
-#互质的定义
-#当x和y没有除1以外的正公约数时，整数x和y被称为互质。
-#除法的定义
-#当存在一个整数α，使y=αx时，就说一个整数x能除掉另一个整数y。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a, b ≦ 10^{12}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印为满足条件可选择的最大除数。
-#
-#输入样本 1
-#12 18
-#
-#输出示例 1
-#3
-#12和18有以下正共除数：1，2，3，和6。
-#1和2是互质数，2和3是互质数，3和1是互质数，所以我们可以选择1、2和3，这样可以得到最大的结果。
-#
-#样本输入2
-#420 660
-#
-#样本输出2
-#4
-#
-#样本输入3
-#1 2019
-#
-#样本输出3
-#1
-#1和2019没有除1以外的正公约数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(*b)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i]-1] = i + 1
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    r = []
+    for i in range(n):
+        r.insert(a[i] - 1, i + 1)
+    print(' '.join(map(str, r)))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(' '.join([str(x) for x in b]))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    order = [0 for _ in range(n)]
+    for i in range(n):
+        order[a_list[i] - 1] = i + 1
+    print(' '.join(map(str, order)))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    for i in range(n):
+        print(b[i], end=" ")
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[A[i]-1] = i+1
+    print(*B)
+
+=======
+Suggestion 8
+
+def order(n, a):
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    return b

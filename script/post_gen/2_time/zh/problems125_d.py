@@ -1,47 +1,174 @@
-#问题陈述
-#有N个整数，A_1, A_2, ..., A_N，按这个顺序排列成一行。
-#你可以对这个整数序列进行任意次数的以下操作：
-#操作：选择一个整数i，满足1≦i≦N-1。将A_i和A_{i+1}都乘以-1。
-#让B_1, B_2, ..., B_N为你操作后的整数序列。
-#找出B_1+B_2+...+ B_N的最大可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#-10^9 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1+B_2+...的最大可能值。+ B_N。
-#
-#样本输入1
-#3
-#-10 5 -4
-#
-#样本输出1
-#19
-#如果我们进行如下的操作：
-#选择1作为i，使序列变为10, -5, -4。
-#选择2作为i，使序列变为10, 5, 4。
-#我们有B_1=10，B_2=5，B_3=4。这里的和，B_1+B_2+B_3=10+5+4=19，是可能的最大结果。
-#
-#样本输入2
-#5
-#10 -4 -8 -11 3
-#
-#样本输出2
-#30
-#
-#样本输入3
-#11
-#-1000000000 1000000000 -1000000000 1000000000 -1000000000 0 1000000000 -1000000000 1000000000 -1000000000 1000000000
-#
-#样本输出3
-#10000000000
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+n=int(input())
+a=list(map(int,input().split()))
+b=[0]*n
+b[0]=a[0]
+for i in range(1,n):
+    b[i]=gcd(b[i-1],a[i])
+print(b[n-1])
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n = int(input())
+a = [int(i) for i in input().split()]
+l = [0]*(n+1)
+r = [0]*(n+1)
+l[0] = a[0]
+r[n-1] = a[n-1]
+for i in range(1,n):
+    l[i] = gcd(l[i-1],a[i])
+    r[n-i-1] = gcd(r[n-i],a[n-i-1])
+ans = max(l[n-2],r[1])
+for i in range(1,n-1):
+    ans = max(ans,gcd(l[i-1],r[i+1]))
+print(ans)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    while r != 0:
+        a = b
+        b = r
+        r = a % b
+    return b
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+n = int(input())
+a = list(map(int, input().split()))
+l = [0] * n
+r = [0] * n
+l[0] = a[0]
+r[n-1] = a[n-1]
+for i in range(1, n):
+    l[i] = gcd(l[i-1], a[i])
+for i in range(n-2, -1, -1):
+    r[i] = gcd(r[i+1], a[i])
+ans = 0
+for i in range(n):
+    if i == 0:
+        ans = max(ans, r[i+1])
+    elif i == n-1:
+        ans = max(ans, l[i-1])
+    else:
+        ans = max(ans, gcd(l[i-1], r[i+1]))
+print(ans)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n = int(input())
+a = list(map(int,input().split()))
+left = [0]*n
+right = [0]*n
+left[0] = a[0]
+right[-1] = a[-1]
+for i in range(1,n):
+    left[i] = gcd(left[i-1],a[i])
+for i in range(n-2,-1,-1):
+    right[i] = gcd(right[i+1],a[i])
+ans = 0
+for i in range(n):
+    if i == 0:
+        ans = max(ans,right[1])
+    elif i == n-1:
+        ans = max(ans,left[n-2])
+    else:
+        ans = max(ans,gcd(left[i-1],right[i+1]))
+print(ans)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n=int(input())
+a=list(map(int,input().split()))
+l=[0]*n
+r=[0]*n
+l[0]=a[0]
+r[n-1]=a[n-1]
+for i in range(1,n):
+    l[i]=gcd(l[i-1],a[i])
+for i in range(n-2,-1,-1):
+    r[i]=gcd(r[i+1],a[i])
+ans=0
+for i in range(n):
+    if i==0:
+        ans=max(ans,r[1])
+    elif i==n-1:
+        ans=max(ans,l[n-2])
+    else:
+        ans=max(ans,gcd(l[i-1],r[i+1]))
+print(ans)

@@ -1,36 +1,90 @@
-#问题陈述
-#有N棵树。第i棵树结了A_i个坚果。
-#花栗鼠将以下列方式从树上收获坚果：
-#在有10个或更少坚果的树上，她不采摘坚果。
-#在有10个以上坚果的树上，除了10个以外，她会拿走所有的坚果。
-#求花栗鼠将从树上摘取的坚果总数。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#0 ≦ A_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#6 17 28
-#
-#样本输出1
-#25
-#从这三棵树上，花栗鼠将取走0、7和18个坚果，总共25个坚果。
-#
-#样本输入2
-#4
-#8 9 10 11
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(int,input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3-x-y)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    print((x + 1) % 3 if x == y else 3 - x - y)
+
+=======
+Suggestion 3
+
+def janken(x, y):
+    if x == 0 and y == 1:
+        return 2
+    if x == 0 and y == 2:
+        return 0
+    if x == 1 and y == 0:
+        return 0
+    if x == 1 and y == 2:
+        return 1
+    if x == 2 and y == 0:
+        return 2
+    if x == 2 and y == 1:
+        return 1
+
+x, y = map(int, input().split())
+print(janken(x, y))
+
+=======
+Suggestion 4
+
+def f(x,y):
+    if x==0 and y==1:
+        print(2)
+    elif x==0 and y==2:
+        print(0)
+    elif x==1 and y==0:
+        print(0)
+    elif x==1 and y==2:
+        print(1)
+    elif x==2 and y==0:
+        print(1)
+    elif x==2 and y==1:
+        print(2)
+    else:
+        print(x)
+x,y=map(int,input().split())
+f(x,y)
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x + 3) % 3)
+
+=======
+Suggestion 6
+
+def main():
+    x,y = map(int, input().split())
+    print(3-x-y)
+
+=======
+Suggestion 7
+
+def main():
+    x,y = map(int, input().split())
+    print((x-y)%3)
+
+=======
+Suggestion 8
+
+def solve():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)

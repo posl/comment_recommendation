@@ -1,59 +1,130 @@
-#问题陈述
-#高桥是一个武术家。
-#一个武术家可以学习N个动作，称为动作1，2，...，N。
-#对于每一个1 ≦ i ≦ N，学习动作i需要T_i分钟的练习。
-#此外，在练习开始时，所有的动作A_{i,1}, A_{i,2}, ..., A_{i,K_i}必须已经学会。
-#在此，保证A_{i,j}在每一个1≦j的情况下，A_{i,j}<i。< i，对于每个1 ≦ j ≦ K_i。
-#高桥在时间0时还没有学会任何棋动作。
-#他不能同时练习一个以上的动作步，也不能停止他已经开始的练习。
-#求高桥学会第N步动作所需的最少分钟数。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ T_i ≦ 10^9
-#0 ≦ K_i < i
-#1 ≦ A_{i,j}< i
-#sum_{i=1}^N K_i ≦ 2× 10^5
-#A_{i,1}, A_{i,2}, ..., A_{i,K_i}都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#T_1 K_1 A_{1,1} A_{1,2} ...A_{1,K_1}
-#T_2 K_2 A_{2,1} A_{2,2} ...A_{2,K_2}
-#.
-#.
-#.
-#T_N K_N A_{N,1} A_{N,2} ...A_{N,K_N}
-#
-#输出
-#打印高桥学习动作 N所需的最少分钟数。
-#
-#样本输入1
-#3
-#3 0
-#5 1 1
-#7 1 1
-#
-#样本输出1
-#10
-#下面是高桥的一个可能的计划。
-#在时间0，开始练习动作1，以便在时间3学习动作1。
-#然后，在时间3，开始练习动作3，以便在时间10学习动作3。
-#这里，高桥花了3+7=10分钟来学习第3步，这是最快的速度。
-#请注意，他不需要学习第2步来学习第3步。
-#
-#样本输入2
-#5
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 4 1 2 3 4
-#
-#样本输出2
-#5000000000
-#注意，答案可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    #序列长度为key,序列为value
+    seq_dict = {}
+    #序列长度为key,序列数量为value
+    seq_len_dict = {}
+    for i in range(n):
+        seq = list(map(int, input().split()))[1:]
+        seq_len = len(seq)
+        if seq_len in seq_dict:
+            if seq not in seq_dict[seq_len]:
+                seq_dict[seq_len].append(seq)
+                seq_len_dict[seq_len] += 1
+        else:
+            seq_dict[seq_len] = []
+            seq_dict[seq_len].append(seq)
+            seq_len_dict[seq_len] = 1
+    result = 0
+    for value in seq_len_dict.values():
+        result += value
+    print(result)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        l = input().split()
+        s.add(tuple(l[1:]))
+    print(len(s))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    l = []
+    for i in range(N):
+        l.append(list(map(int, input().split()))[1:])
+    print(len(set([tuple(i) for i in l])))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    S = set()
+    for i in range(n):
+        L = list(map(int, input().split()))
+        S.add(tuple(L[1:]))
+    print(len(S))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split()))[1:])
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if i == 0 or a[i] != a[i - 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split()[1:])))
+    A.sort()
+    ans = 1
+    for i in range(N - 1):
+        if A[i] != A[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    d = {}
+    for _ in range(n):
+        l = int(input())
+        a = tuple(map(int, input().split()))
+        if a not in d:
+            d[a] = 0
+        d[a] += 1
+    print(len(d))
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    seq = []
+    for _ in range(N):
+        seq.append(list(map(int, input().split()))[1:])
+    print(len(set(map(tuple, seq))))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        l = input().split()
+        l = l[1:]
+        s.add(tuple(l))
+    print(len(s))

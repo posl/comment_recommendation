@@ -1,54 +1,164 @@
-#问题说明
-#我们有N个串联的保险丝。从左边开始的第i条保险丝的长度为A_i厘米，以每秒B_i厘米的速度匀速燃烧。
-#考虑从左、右两端同时点燃这个物体。求两个火焰相遇的位置与物体的左端之间的距离。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i,B_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印两个火焰相遇的位置与物体左端之间的距离，单位是厘米（只打印数字）。
-#当你的输出与我们的答案的绝对或相对误差不超过10^{-5}时，将被认为是正确的。
-#
-#输入样本1
-#3
-#1 1
-#2 1
-#3 1
-#
-#样本输出1
-#3.000000000000000
-#两团火焰将在距离物体左端3厘米处相遇。
-#
-#样本输入2
-#3
-#1 3
-#2 2
-#3 1
-#
-#样本输出2
-#3.833333333333333
-#
-#样本输入3
-#5
-#3 9
-#1 2
-#4 6
-#1 5
-#5 3
-#
-#样本输出3
-#8.916666666666668
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print(s)
+        print(s)
+        return
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 2
+
+def min_max_string(s):
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    return min_s, max_s
+
+=======
+Suggestion 3
+
+def problem223_b():
+    s = input()
+    if len(s) == 1:
+        print(s)
+        print(s)
+        return
+    min_s = s
+    max_s = s
+    for i in range(0,len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    Smin = S
+    Smax = S
+    for i in range(len(S)):
+        S = S[1:] + S[0]
+        if S < Smin:
+            Smin = S
+        if S > Smax:
+            Smax = S
+    print(Smin)
+    print(Smax)
+
+=======
+Suggestion 5
+
+def get_min_max(s):
+    min_str = s
+    max_str = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_str:
+            min_str = s
+        if s > max_str:
+            max_str = s
+    return min_str, max_str
+
+=======
+Suggestion 6
+
+def main():
+    print("请输入字符串：")
+    s = input()
+    s_min = s
+    s_max = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < s_min:
+            s_min = s
+        if s > s_max:
+            s_max = s
+    print(s_min)
+    print(s_max)
+
+=======
+Suggestion 7
+
+def get_min_max_str(s):
+    l = len(s)
+    min_str = s
+    max_str = s
+    for i in range(l):
+        tmp_str = s[i:] + s[:i]
+        if tmp_str < min_str:
+            min_str = tmp_str
+        if tmp_str > max_str:
+            max_str = tmp_str
+    return min_str, max_str
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 9
+
+def get_min_max(s):
+    min = s
+    max = s
+    for i in range(0, len(s)):
+        s = s[1:] + s[0]
+        if s < min:
+            min = s
+        elif s > max:
+            max = s
+    return min, max
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    s_len = len(s)
+    s_min = s
+    s_max = s
+    for i in range(s_len):
+        s = s[1:] + s[0]
+        if s < s_min:
+            s_min = s
+        if s > s_max:
+            s_max = s
+    print(s_min)
+    print(s_max)

@@ -1,77 +1,86 @@
-#问题陈述
-#有N个编号为1到N的人。他们中的每一个人要么是诚实的人，其证词总是正确的，要么是不善良的人，其证词可能正确，也可能不正确。
-#第i个人提供A_i份证词。第i个人的第j份证词由两个整数x_{ij}和y_{ij}表示。如果y_{ij}=1，该证词说x_{ij}是诚实的；如果y_{ij}=0，它说x_{ij}是不善良的。
-#这N个人中最多可以有多少个诚实的人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 15
-#0 ≦ A_i ≦ N - 1
-#1 ≦ x_{ij} ≦ N
-#x_{ij} ≠ i
-#x_{ij_1}≠ x_{ij_2} (j_1 ≠ j_2)
-#y_{ij} = 0, 1
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1
-#x_{11} y_{11}
-#x_{12} y_{12}
-#:
-#x_{1A_1} y_{1A_1}
-#A_2
-#x_{21} y_{21}
-#x_{22} y_{22}
-#:
-#x_{2A_2} y_{2A_2}
-#:
-#A_N
-#x_{N1} y_{N1}
-#x_{N2} y_{N2}
-#:
-#x_{NA_N} y_{NA_N}
-#
-#输出
-#打印N个人中可能存在的最大诚实人数。
-#
-#样本输入1
-#3
-#1
-#2 1
-#1
-#1 1
-#1
-#2 0
-#
-#样本输出1
-#2
-#如果人1和人2是诚实的，人3是不善良的，我们有两个诚实的人，没有不一致的地方，这是可能的最大诚实人数。
-#
-#样本输入2
-#3
-#2
-#2 1
-#3 0
-#2
-#3 1
-#1 0
-#2
-#1 1
-#2 0
-#
-#样本输出2
-#0
-#假设其中一个或多个是诚实的，立即会导致矛盾。
-#
-#输入样本 3
-#2
-#1
-#2 0
-#1
-#1 0
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    str = input()
+    length = len(str)
+    count = 0
+    for i in range(int(length/2)):
+        if str[i] != str[length - i - 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def get_min_count(s):
+    if s == s[::-1]: return 0
+    if len(s) == 1: return 1
+
+    count = 0
+    for i in range(len(s)//2):
+        if s[i] != s[len(s)-i-1]:
+            count += 1
+    return count
+
+=======
+Suggestion 3
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 4
+
+def solve(s):
+    n = len(s)
+    ans = 0
+    for i in range(n // 2):
+        if s[i] != s[n - 1 - i]:
+            ans += 1
+    return ans
+
+=======
+Suggestion 5
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)//2):
+        if s[i] != s[len(s)-1-i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+s = input()
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
+    for i in range(n//2):
+        if s[i] != s[n-i-1]:
+            cnt += 1
+    print(cnt)

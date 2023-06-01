@@ -1,39 +1,103 @@
-#问题陈述
-#在xy平面上有一个正方形。它的四个顶点的坐标是(x_1,y_1), (x_2,y_2), (x_3,y_3)和(x_4,y_4)，按逆时针顺序排列。
-#(假设正的x轴指向右，正的y轴指向上）。
-#高桥记得（x_1,y_1）和（x_2,y_2），但他忘记了（x_3,y_3）和（x_4,y_4）。
-#给出x_1,x_2,y_1,y_2，恢复x_3,y_3,x_4,y_4。可以证明x_3,y_3,x_4和y_4唯一存在且有整数值。
-#
-#约束条件
-#|x_1|,|y_1|,|x_2|,|y_2| ≦ 100
-#(x_1,y_1) ≠ (x_2,y_2)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1 x_2 y_2
-#
-#输出
-#打印x_3,y_3,x_4和y_4的整数，按照这个顺序。
-#
-#输入样本 1
-#0 0 0 1
-#
-#样本输出 1
-#-1 1 -1 0
-#(0,0),(0,1),(-1,1),(-1,0)是一个正方形的四个顶点，按逆时针顺序排列。
-#注意(x_3,y_3)=(1,1),(x_4,y_4)=(1,0)不被接受，因为这些顶点是按顺时针顺序排列的。
-#
-#输入样本 2
-#2 3 6 6
-#
-#输出样本 2
-#3 10 -1 7
-#
-#样本输入3
-#31 -41 -59 26
-#
-#样本输出 3
-#-126 -64 -36 -131
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    count = 0
+    for i in range(1,k+1):
+        if i%2==0:
+            for j in range(1,k+1):
+                if j%2==1:
+                    count += 1
+    print(count)
+main()
+
+=======
+Suggestion 2
+
+def problem108_a():
+    k = int(input())
+    print(int(k/2 * (k - k/2)))
+
+problem108_a()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print((n//2)*(n-n//2))
+
+=======
+Suggestion 4
+
+def problems108_a():
+    k = int(input())
+    if k < 2 or k > 100:
+        print("输入的k不符合要求")
+        return
+    count = 0
+    for i in range(1, k + 1):
+        for j in range(i+1, k + 1):
+            if i % 2 == 0 and j % 2 == 1:
+                count += 1
+    print(count * 2)
+
+=======
+Suggestion 5
+
+def solution():
+    k = int(input())
+    even = k // 2
+    odd = k - even
+    print(even * odd)
+
+solution()
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    print(int(k/2)*int(k/2+1))
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    print(int(k/2*(k-k/2)))
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    print(int(k / 2) * int(k / 2 + k % 2))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    count = 0
+    for i in range(1,k+1):
+        if i % 2 == 0:
+            count += (k//2)
+        else:
+            count += (k//2 + 1)
+    print(count)
+
+=======
+Suggestion 10
+
+def get_even_odd_method(k):
+    # 偶数的个数
+    even_num = k // 2
+    # 奇数的个数
+    odd_num = k - even_num
+    # 选择偶数的方法
+    even_method = even_num * odd_num
+    return even_method

@@ -1,53 +1,139 @@
-#问题陈述
-#我们将对长度为M的序列b的中位数作如下定义：
-#设b'是按非递减顺序对b进行排序得到的序列。那么，b'的第(M/2+1)个元素的值就是b的中位数。这里，/是整数除法，向下取整。
-#例如，（10，30，20）的中值是20；（10，30，20，40）的中值是30；（10，10，10，20，30）的中值是10。
-#Snuke想出了以下问题。
-#给你一个长度为N的序列a。
-#对于每一对（l, r）（1 ≦ l ≦ r ≦ N），让m_{l, r}是a的连续子序列（a_l, a_{l + 1}, ..., a_r）的中位数。
-#我们将列出所有对（l，r）的m_{l，r}，以建立一个新的序列m。
-#找到m的中位数。
-#
-#约束条件
-#1 ≦ N ≦ 10^5
-#a_i是一个整数。
-#1 ≦ a_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印m的中位数。
-#
-#样本输入1
-#3
-#10 30 20
-#
-#样本输出1
-#30
-#a的每个连续子序列的中位数如下：
-#(10)的中位数是10。
-#(30)的中位数是30。
-#(20)的中位数是20。
-#(10, 30)的中位数是30。
-#(30, 20)的中位数是30。
-#(10, 30, 20)的中位数是20。
-#因此，m=（10，30，20，30，30，20），m的中位数是30。
-#
-#样本输入2
-#1
-#10
-#
-#样本输出2
-#10
-#
-#样品输入3
-#10
-#5 9 5 9 8 9 3 5 4 3
-#
-#样本输出 3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    # 保存中位数
+    m = []
+    for i in range(n):
+        temp = a[i]
+        for j in range(i+1, n):
+            temp = temp + a[j]
+            m.append(temp)
+    
+    # 排序
+    m.sort()
+    
+    # 输出
+    print(m[int(len(m)/2)])
+
+=======
+Suggestion 2
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return (n+1)/2
+    
+N=int(raw_input())
+a=map(int,raw_input().split())
+b=[]
+for i in range(N):
+    for j in range(i,N):
+        b.append(sorted(a[i:j+1])[f(j-i)])
+print sorted(b)[f(N*(N+1)/2)]
+
+=======
+Suggestion 3
+
+def median(a):
+    a.sort()
+    return a[len(a)//2]
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        for j in range(i, n):
+            b.append(a[i:j + 1])
+    for i in range(len(b)):
+        b[i].sort()
+    c = []
+    for i in range(len(b)):
+        if len(b[i]) % 2 == 0:
+            c.append(b[i][len(b[i]) // 2 - 1])
+        else:
+            c.append(b[i][len(b[i]) // 2])
+    c.sort()
+    if len(c) % 2 == 0:
+        print(c[len(c) // 2 - 1])
+    else:
+        print(c[len(c) // 2])
+
+=======
+Suggestion 5
+
+def median(a):
+    a.sort()
+    return a[(len(a)-1)/2]
+
+=======
+Suggestion 6
+
+def get_median(b):
+    b.sort()
+    return b[int(len(b)/2)]
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int,input().split()))
+    b = []
+    for i in range(N):
+        for j in range(i,N):
+            b.append(a[i:j+1])
+    c = []
+    for i in range(len(b)):
+        b[i].sort()
+        c.append(b[i][len(b[i])//2])
+    c.sort()
+    print(c[len(c)//2])
+
+main()
+
+=======
+Suggestion 8
+
+def get_median(arr):
+    arr.sort()
+    len_arr = len(arr)
+    if len_arr % 2 == 0:
+        return arr[len_arr//2-1]
+    else:
+        return arr[len_arr//2]
+
+=======
+Suggestion 9
+
+def find_median(a):
+    a.sort()
+    n = len(a)
+    if n % 2 == 1:
+        return a[n//2]
+    else:
+        return a[n//2-1]
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(N):
+        for j in range(i,N):
+            b.append(a[i:j+1])
+    b = sorted(b)
+    print(b[len(b)//2][len(b[len(b)//2])//2])

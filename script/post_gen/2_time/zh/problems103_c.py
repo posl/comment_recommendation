@@ -1,42 +1,96 @@
-#问题陈述
-#给你N个正整数a_1, a_2, ..., a_N。
-#对于一个非负整数m，让f(m)=(m mod a_1)+(m mod a_2)+...+ (m mod a_N)。
-#这里，X mod Y表示X除以Y的余数。
-#找出f的最大值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 3000
-#2 ≦ a_i ≦ 10^5
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印f的最大值。
-#
-#样本输入1
-#3
-#3 4 6
-#
-#样本输出1
-#10
-#f(11) = (11 mod 3) + (11 mod 4) + (11 mod 6) = 10是f的最大值。
-#
-#样本输入2
-#5
-#7 46 11 20 11
-#
-#样本输出2
-#90
-#
-#样本输入3
-#7
-#994 518 941 851 647 2 581
-#
-#样本输出3
-#4527
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(m, a):
+    sum = 0
+    for i in range(len(a)):
+        sum += m % a[i]
+    return sum
+
+=======
+Suggestion 2
+
+def f(m):
+    result = 0
+    for i in range(N):
+        result += m % a[i]
+    return result
+
+N = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 3
+
+def max_f(m, a):
+    f = 0
+    for i in range(len(a)):
+        f += m % a[i]
+    return f
+
+N = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(N):
+        ans += a[i] * (N - i - 1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def f(m, a):
+    return sum([m % i for i in a])
+
+=======
+Suggestion 6
+
+def solve(n, a):
+    max_a = max(a)
+    m = max_a - 1
+    while True:
+        m += 1
+        s = 0
+        for i in range(n):
+            s += m % a[i]
+        if s > max_a:
+            break
+    return m
+
+=======
+Suggestion 7
+
+def f(m, a):
+    res = 0
+    for i in a:
+        res += m % i
+    return res
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if a % b:
+        return gcd(b, a % b)
+    else:
+        return b
+
+=======
+Suggestion 9
+
+def f(m, a):
+    result = 0
+    for i in a:
+        result += m % i
+    return result

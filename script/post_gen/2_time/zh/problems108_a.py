@@ -1,40 +1,129 @@
-#问题说明
-#从1到K（包括）之间的正整数中选择一对偶数和奇数的方法有多少？顺序并不重要。
-#
-#限制条件
-#2≦ K≦ 100
-#K是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#輸出
-#打印从1到K（包括）之间的正整数中选择一对偶数和奇数的方法的数量。
-#
-#输入样本 1
-#3
-#
-#输出示例 1
-#2
-#可以选择两对：（2，1）和（2，3）。
-#
-#样本输入2
-#6
-#
-#样本输出2
-#9
-#
-#样本输入3
-#11
-#
-#样品输出3
-#30
-#
-#样本输入4
-#50
-#
-#样本输出4
-#625
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_median(x):
+    x.sort()
+    l = len(x)
+    if l % 2 == 1:
+        return x[l//2]
+    else:
+        return (x[l//2-1] + x[l//2]) // 2
+
+n = int(input())
+a = list(map(int, input().split()))
+m = []
+for i in range(n):
+    for j in range(i, n):
+        m.append(get_median(a[i:j+1]))
+print(get_median(m))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = []
+    for i in range(n):
+        for j in range(i, n):
+            b.append(a[i:j+1])
+    c = []
+    for i in range(len(b)):
+        b[i].sort()
+        c.append(b[i][int((len(b[i])-1)/2)])
+    c.sort()
+    print(c[int((len(c)-1)/2)])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        for j in range(i, n):
+            b.append(sorted(a[i:j+1])[(j+1-i)//2])
+    print(sorted(b)[len(b)//2])
+main()
+
+=======
+Suggestion 4
+
+def median(a):
+    a = sorted(a)
+    if len(a) % 2 == 0:
+        return (a[len(a)//2] + a[len(a)//2-1]) / 2
+    else:
+        return a[len(a)//2]
+
+=======
+Suggestion 5
+
+def median(arr):
+    arr.sort()
+    mid = len(arr) // 2
+    return arr[mid] if len(arr) % 2 != 0 else (arr[mid] + arr[mid - 1]) / 2
+
+=======
+Suggestion 6
+
+def median(a):
+    a.sort()
+    n = len(a)
+    if n % 2 == 1:
+        return a[n//2]
+    else:
+        return a[n//2-1]
+
+=======
+Suggestion 7
+
+def get_median(a):
+    a.sort()
+    return a[len(a)//2]
+
+n = int(input())
+a = list(map(int, input().split()))
+m = []
+for i in range(n):
+    for j in range(i, n):
+        m.append(get_median(a[i:j+1]))
+print(get_median(m))
+
+=======
+Suggestion 8
+
+def get_median(ary):
+    ary.sort()
+    if len(ary)%2 == 0:
+        return ary[len(ary)//2]
+    else:
+        return ary[len(ary)//2+1]
+
+=======
+Suggestion 9
+
+def median(a):
+    a.sort()
+    if len(a)%2 == 1:
+        return a[len(a)/2]
+    else:
+        return a[len(a)/2-1]
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(N):
+        b.append(a[i])
+        b.sort()
+        if len(b) % 2 == 0:
+            print(b[len(b) // 2 - 1])
+        else:
+            print(b[len(b) // 2])

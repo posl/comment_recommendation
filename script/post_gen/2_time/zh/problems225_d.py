@@ -1,80 +1,180 @@
-#问题陈述
-#高桥在玩玩具火车，把它们连接和断开。
-#有N个玩具火车车厢，车厢的编号：1号车，2号车，...，N号车。
-#最初，所有车厢都是分开的。
-#你将会得到Q个查询。按照给定的顺序处理它们。
-#有三种查询，如下所示。
-#1 x y：把车y的前面和车x的后面连接起来。
-#可以保证：
-#x ≠ y
-#就在这个查询之前，没有火车连接到x号车的后面；
-#就在这个查询之前，没有火车连接到y车的前面；
-#就在这次查询之前，车x和车y属于不同的连接部件。
-#
-#2 x y：将车y的车头与车x的车尾断开连接。
-#可以保证：
-#x ≠ y；
-#就在这个查询之前，车y的前面与车x的后面直接相连。
-#
-#3 x:打印属于包含车x的连接部件的车的车号，从前到后。
-#
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ x ≦ N
-#1 ≦ y ≦ N
-#输入的所有数值都是整数。
-#所有的查询都满足问题陈述中的条件。
-#格式为3 x的查询要求总共打印出最多10^6个汽车号码。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#第i个查询query_i以一个代表查询种类的整数c_i（1，2或3）开始，如果c_i=1或2，后面是x和y，如果c_i=3，后面是x。
-#简而言之，每个查询都是以下三种格式中的一种：
-#1 x y
-#2 x y
-#3 x
-#
-#输出
-#如果一个c_i=3的查询要求打印j_1, j_2, ..., j_M的值，则输出以下一行：
-#M j_1 j_2 ... j_M
-#你的输出应该由q行组成，其中q是c_i = 3的查询的数量。
-#第k行（1 ≦ k ≦ q）应该包含对第k个此类查询的响应。
-#
-#输入样本 1
-#7 14
-#1 6 3
-#1 4 1
-#1 5 2
-#1 2 7
-#1 3 5
-#3 2
-#3 4
-#3 6
-#2 3 5
-#2 4 1
-#1 1 5
-#3 2
-#3 4
-#3 6
-#
-#样本输出1
-#5 6 3 5 2 7
-#2 4 1
-#5 6 3 5 2 7
-#4 1 5 2 7
-#1 4
-#2 6 3
-#下图显示了处理前5个查询时的汽车。
-#例如，汽车2与汽车3、5、6、7属于同一个连接部件，与包含汽车1、4的连接部件不同。
-#下图显示了在处理前11个查询时的汽车。  
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def problem225_c():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+    B = sorted(B)
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i * 7 + j + 1):
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    b = [list(map(int,input().split())) for _ in range(n)]
+    #print(b)
+    for i in range(10**7):
+        a = [[(i*7+j) for j in range(1,8)] for i in range(10**2)]
+        for k in range(10**2):
+            for l in range(7):
+                if a[k][l] in b:
+                    a[k][l] = 0
+        if sum(map(sum,a)) == 0:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+    if N == 1 and M == 1:
+        if B[0][0] == 1:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if N == 1:
+        for i in range(1, M):
+            if B[0][i] - B[0][i-1] != 1:
+                print("No")
+                return
+        print("Yes")
+        return
+    if M == 1:
+        for i in range(1, N):
+            if B[i][0] - B[i-1][0] != 7:
+                print("No")
+                return
+        print("Yes")
+        return
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] == 1:
+                if i == 0 or j == 0:
+                    print("No")
+                    return
+                if B[i][j-1] != 7*(i+1)+j-1:
+                    print("No")
+                    return
+                if B[i-1][j] != 7*i+j-6:
+                    print("No")
+                    return
+                for k in range(i+1, N):
+                    if B[k][j] - B[k-1][j] != 7:
+                        print("No")
+                        return
+                for k in range(j+1, M):
+                    if B[i][k] - B[i][k-1] != 1:
+                        print("No")
+                        return
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 6
+
+def isMatched(A,B,N):
+    for i in range(1,100):
+        for j in range(1,8):
+            if A[i][j]==B[1][1]:
+                if i+N-1>100:
+                    return False
+                for k in range(1,N+1):
+                    for l in range(1,8):
+                        if A[i+k-1][l]!=B[k][l]:
+                            return False
+                return True
+    return False
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int,input().split())))
+    a = []
+    for i in range(1,10**100+1):
+        temp = []
+        for j in range(1,8):
+            temp.append((i-1)*7+j)
+        a.append(temp)
+    for i in range(0,10**100-n+1):
+        for j in range(0,7-m+1):
+            if a[i][j:j+m] == b[0]:
+                for k in range(1,n):
+                    if a[i+k][j:j+m] != b[k]:
+                        break
+                    if k == n-1:
+                        print('Yes')
+                        return
+    print('No')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(N)]
+    if N > 10:
+        print("No")
+        return
+    if M > 7:
+        print("No")
+        return
+    for i in range(1,100):
+        for j in range(1,8):
+            if B[0][0] == (i-1)*7+j:
+                if B[0][1] == (i-1)*7+j+1:
+                    if B[0][2] == (i-1)*7+j+2:
+                        if B[1][0] == (i)*7+j:
+                            if B[1][1] == (i)*7+j+1:
+                                if B[1][2] == (i)*7+j+2:
+                                    print("Yes")
+                                    return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int,input().split())))
+    for i in range(10**100):
+        for j in range(7):
+            if b == [[(i*7+j+1)+k*7 for k in range(m)] for i in range(n)]:
+                print("Yes")
+                return
+    print("No")

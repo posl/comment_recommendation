@@ -1,33 +1,90 @@
-#问题陈述
-#考虑一个模拟时钟，其时针和分针分别为A和B厘米长。
-#时针的端点和分针的端点固定在同一点上，每根指针都以恒定的角速度围绕该点顺时针旋转。时针和分针分别需要12小时和1小时才能旋转一圈。
-#在0点钟方向，两根指针相互重叠。H小时和M分钟后，两根指针的非固定端点之间的距离是多少厘米？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a, b ≦ 1000
-#0 ≦ H ≦ 11
-#0 ≦ M ≦ 59
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#A B H M
-#
-#輸出
-#打印没有单位的答案。当你的输出与正确值的绝对或相对误差最多为10^{-9}时，你的输出将被接受。
-#
-#输入样本 1
-#3 4 9 0
-#
-#输出样本1
-#5.00000000000000000000
-#两只手将处于下图所示的位置，所以答案是5厘米。
-#
-#样本输入2
-#3 4 10 40
-#
-#样本输出2
-#4.56425719433005567605
-#两只手将处于下图所示的位置。请注意，每只手总是以恒定的角速度旋转。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        s = s[0:k] + "..."
+    print(s)
+
+=======
+Suggestion 2
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) > K:
+        print(S[:K] + "...")
+    else:
+        print(S)
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    S = input()
+
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[0:K] + '...')
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[:K] + '...')
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s)>k:
+        print(s[:k]+"...")
+    else:
+        print(s)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[0:k] + "...")
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[:k] + '...')
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[0:k] + "...")
+    else:
+        print(s)

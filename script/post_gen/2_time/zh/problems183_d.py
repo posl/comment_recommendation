@@ -1,58 +1,101 @@
-#问题陈述
-#我们有一个热水器，每分钟提供W升的热水。
-#有N个人。第i个人计划从时间S_i到T_i（不包括时间T_i）每分钟使用热水器烧的P_i升热水。由于热水很快变冷，所以不能储存。
-#是否可以按照人们的计划向他们供应热水？
-#
-#限制条件
-#1≦ N ≦ 2× 10^5
-#0≦ S_i < T_i ≦ 2× 10^5
-#1≦ W, P_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N W
-#S_1 T_1 P_1
-#.
-#.
-#.
-#S_N T_N P_N
-#
-#输出
-#如果可以按照人们的计划向他们供应热水，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 10
-#1 3 5
-#2 4 4
-#3 10 6
-#2 4 1
-#
-#样本输出1
-#No
-#在时间3和4之间，第2、3和4个人计划每分钟使用4、6和1升热水，总共每分钟11升。
-#热水器每分钟只能提供10升的热水，这是不足够的。
-#
-#样本输入2
-#4 10
-#1 3 5
-#2 4 4
-#3 10 6
-#2 3 1
-#
-#样本输出2
-#Yes
-#
-#样本输入3
-#6 1000000000
-#0 200000 999999999
-#2 20 1
-#20 200 1
-#200 2000 1
-#2000 20000 1
-#20000 200000 1
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def search(start, visited, time):
+    if time == k:
+        return 1
+    else:
+        total = 0
+        for i in range(n):
+            if i != start and visited[i] == False:
+                visited[i] = True
+                total += search(i, visited, time + t[start][i])
+                visited[i] = False
+    return total
+
+n, k = map(int, input().split())
+t = [list(map(int, input().split())) for i in range(n)]
+visited = [False for i in range(n)]
+visited[0] = True
+print(search(0, visited, 0))
+
+=======
+Suggestion 3
+
+def dfs(now, cost, visit):
+    global ans
+    if cost > K:
+        return
+    if visit == (1 << N) - 1:
+        if cost == K:
+            ans += 1
+        return
+    for i in range(N):
+        if visit & (1 << i) == 0:
+            dfs(i, cost + T[now][i], visit | (1 << i))
+
+
+N, K = map(int, input().split())
+T = [list(map(int, input().split())) for _ in range(N)]
+ans = 0
+dfs(0, 0, 1)
+print(ans)
+
+=======
+Suggestion 4
+
+def get_input():
+    n, k = map(int, input().split())
+    t = []
+    for i in range(n):
+        t.append(list(map(int, input().split())))
+    return n, k, t
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    T = []
+    for i in range(N):
+        T.append(list(map(int, input().split())))
+    #print(T)
+    #print(N, K)
+    #print(T[0][1])
+    #print(T[1][0])
+    #print(T[1][2])
+    #print(T[2][1])
+    #print(T[0][2])
+    #print(T[2][0])
+    #print(T[0][3])
+    #print(T[3][0])
+    #print(T[1][3])
+    #print(T[3][1])
+    #print(T[2][3])
+    #print(T[3][2])
+    #print(T[0][4])
+    #print(T[4][0])
+    #print(T[1][4])
+    #print(T[4][1])
+    #print(T[2][4])
+    #print(T[4][2])
+    #print(T[3][4])
+    #print(T[4][3])
+    #print(T[0][1]+T[1][2]+T[2][3]+T[3][0])
+    #print(T[0][1]+T[1][3]+T[3][2]+T[2][0])
+    #print(T[0][2]+T[2][1]+T[1][3]+T[3][0])
+    #print(T[0][2]+T[2][3]+T[3][1]+T[1][0])
+    #print(T[0][3]+T[3][1]+T[1][2]+T[2][0])
+    #print(T[0][3]+T[3][2]+T[2][1]+T[1][0])
+    #print(T[0][1]+T[1][4]+T[4][2]+T[2][3]+T[3][0])
+    #print(T[0][1]+T[1][4]+T[4][3]+T[3][2]+T[2][0])
+    #print(T[0][2]+T[2][4]+T[4][1]+T[1][3]+T[3][0])
+    #print(T[0][2]+T[

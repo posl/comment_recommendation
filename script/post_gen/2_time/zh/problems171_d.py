@@ -1,80 +1,133 @@
-#问题陈述
-#你有一个由N个正整数组成的序列A：a_{1}, a_{2}, ..., a_{n}。
-#现在你将陆续进行以下Q操作：
-#在第i次操作中，你用C_{i}替换每一个值为B_{i}的元素。
-#对于每一个i（1 ≦ i ≦ Q），找到S_{i}：第i次操作后A中所有元素的总和。
-#
-#限制条件
-#输入的所有数值都是整数。
-# 1 ≦ N, Q, A_{i}, B_{i}, C_{i} ≦ 10^{5}
-# B_{i} ≠ C_{i}
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_{1}A_{2} ...A_{N}
-#Q
-#B_{1}C_{1}
-#B_{2}C_{2}
-#.
-#.
-#.
-#B_{Q}C_{Q}
-#
-#输出
-#打印Q整数S_{i}到标准输出
-# 以下列格式输出：
-#S_{1}
-#S_{2}
-#.
-#.
-#.
-#S_{Q}
-#请注意，S_{i}可能不适合32位整数。
-#
-#样本输入1
-#4
-#1 2 3 4
-#3
-#1 2
-#3 4
-#2 4
-#
-#样本输出1
-#11
-#12
-#16
-#最初，序列A是1，2，3，4。
-#在每次操作之后，它变成了以下内容：
-#2, 2, 3, 4
-#2, 2, 4, 4
-#4, 4, 4, 4
-#
-#样本输入2
-#4
-#1 1 1 1
-#3
-#1 2
-#2 1
-#3 5
-#
-#样本输出2
-#8
-#4
-#4
-#请注意，序列A可能不包含值为B_{i}的元素。
-#
-#输入样本 3
-#2
-#1 2
-#3
-#1 100
-#2 100
-#100 1000
-#
-#样本输出3
-#102
-#200
-#2000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    res = ""
+    while num > 0:
+        num -= 1
+        res = chr(ord('a') + num % 26) + res
+        num //= 26
+    print(res)
+
+=======
+Suggestion 2
+
+def dogName(N):
+    dogName = ""
+    while N > 0:
+        N -= 1
+        dogName = chr(ord('a') + N % 26) + dogName
+        N /= 26
+    return dogName
+
+=======
+Suggestion 3
+
+def dogname(n):
+    if n<=26:
+        return chr(n+96)
+    elif n<=702:
+        return chr(n//26+96)+chr(n%26+96)
+    elif n<=18278:
+        return chr(n//702+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=475254:
+        return chr(n//18278+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=12356630:
+        return chr(n//475254+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=321272406:
+        return chr(n//12356630+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=8451004008:
+        return chr(n//321272406+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=222651511842:
+        return chr(n//8451004008+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=5843183014110:
+        return chr(n//222651511842+96)+chr(n//8451004008%26+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=153
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        n -= 1
+        ans += chr(ord('a') + n % 26)
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = ''
+    while n > 0:
+        n -= 1
+        a = chr(ord('a') + n % 26) + a
+        n //= 26
+    print(a)
+
+=======
+Suggestion 6
+
+def get_name(n):
+    name = ""
+    while n > 0:
+        n -= 1
+        name = chr(n%26+97) + name
+        n //= 26
+    return name
+
+=======
+Suggestion 7
+
+def get_new_name(n):
+    name = ''
+    while n > 0:
+        n -= 1
+        name = chr(ord('a') + n % 26) + name
+        n //= 26
+    return name
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    name = ''
+    while n > 0:
+        n -= 1
+        name = chr(n%26 + ord('a')) + name
+        n //= 26
+    print(name)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    res = ""
+    while N > 0:
+        N -= 1
+        res = chr(ord('a') + N % 26) + res
+        N //= 26
+    print(res)
+solve()
+
+=======
+Suggestion 10
+
+def get_s(n):
+    s = ""
+    while n > 0:
+        n -= 1
+        s = chr(ord('a') + n % 26) + s
+        n //= 26
+    return s
+
+n = int(input())
+print(get_s(n))

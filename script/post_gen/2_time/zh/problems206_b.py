@@ -1,36 +1,143 @@
-#问题陈述
-#AtCoDeer有一个空的储蓄罐。
-#在第i天的早晨，他将把i日元（日本货币）放入其中：第1天早上放1日元，第2天早上放2日元，以此类推。
-#每天晚上，他将检查里面的钱的数量。
-#在哪一天，他将发现他的储蓄罐里第一次有N日元或更多？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印一个整数x，使AtCoDeer在第x天第一次发现他的储蓄罐里有N日元或更多。
-#
-#输入样本 1
-#12
-#
-#样本输出 1
-#5
-#在第1天，储蓄罐在早上得到1日元，晚上有1日元。
-#在第2天，储蓄罐在早上得到2日元，晚上有3日元。
-#第3天，储蓄罐早上有3日元，晚上有6日元。
-#第4天，储蓄罐早上有4日元，晚上有10日元。
-#第5天，储蓄罐早上有5日元，晚上有15日元。
-#因此，在第5天晚上，AtCoDeer将发现他的储蓄罐第一次有12日元或更多。
-#
-#样本输入2
-#100128
-#
-#样本输出2
-#447
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    n = int(input())
+
+    # 处理数据
+    price = int(1.08 * n)
+
+    # 输出结果
+    if price < 206:
+        print('Yay!')
+    elif price == 206:
+        print('so-so')
+    else:
+        print(':(')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N < 206:
+        print("Yay!")
+    elif N == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 3
+
+def main():
+    #input
+    N = int(input())
+    #calculation
+    #output
+    if N * 1.08 < 206:
+        print("Yay!")
+    elif N * 1.08 > 206:
+        print(":(")
+    else:
+        print("so-so")
+
+=======
+Suggestion 4
+
+def printAnswer(N):
+    price = int(N * 1.08)
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    import math
+
+    N = int(input())
+    if N < 1 or N > 300:
+        sys.exit()
+    else:
+        result = math.floor(1.08 * N)
+        if result < 206:
+            print("Yay!")
+        elif result == 206:
+            print("so-so")
+        else:
+            print(":(")
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    N = int(input())
+    # process
+    price = int(1.08 * N)
+    # output
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    price = int(1.08 * n)
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 8
+
+def problem206_a():
+    n = int(input())
+    if n * 1.08 < 206:
+        print("Yay!")
+    elif n * 1.08 > 206:
+        print(":(")
+    else:
+        print("so-so")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n * 1.08 < 206:
+        print('Yay!')
+    elif n * 1.08 == 206:
+        print('so-so')
+    else:
+        print(':(')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    price = int(n * 1.08)
+    if price < 206:
+        print("Yay!")
+    elif price > 206:
+        print(":(")
+    else:
+        print("so-so")

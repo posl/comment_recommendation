@@ -1,84 +1,236 @@
-#问题陈述
-#一个迷宫是由H×W个方格组成的--H是垂直的，W是水平的。
-#从上往下第i行，从左往下第j列的方格--(i,j)--如果S_{ij}是#，则是墙，如果S_{ij}是.，则是路。
-#在（C_h,C_w）有一个魔术师。他可以做以下两种动作：
-#移动A：走到与他当前所在的方格垂直或水平相邻的道路方格。
-#移动B：使用魔法将自己扭曲到以他当前所在的方格为中心的5×5区域的一个道路方格。
-#在这两种情况下，他都不能走出迷宫。
-#他至少需要使用多少次魔法才能到达（D_h，D_w）？
-#
-#限制条件
-#1 ≦ H,W ≦ 10^3
-#1 ≦ C_h,D_h ≦ H
-#1 ≦ C_w,D_w ≦ W
-#S_{ij}是#或.
-#S_{C_h C_w}和S_{D_h D_w}是.
-#(C_h,C_w) ≠ (D_h,D_w)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#C_h C_w
-#D_h D_w
-#S_{11}...S_{1W}
-#.
-#.
-#.
-#S_{H1}...S_{HW}
-#
-#输出
-#打印魔术师需要使用魔术的最少次数。如果他不能达到（D_h,D_w），则打印-1。
-#
-#输入样本 1
-#4 4
-#1 1
-#4 4
-#..#.
-#..#.
-#.#..
-#.#..
-#
-#样本输出1
-#1
-#例如，通过走到(2,2)，然后用魔法走到(4,4)，只要使用一次魔法就够了。
-#注意，他不能斜着走。
-#
-#样本输入2
-#4 4
-#1 4
-#4 1
-#.##.
-#####
-#####
-#.##.
-#
-#输出样本2
-#-1
-#他不能从那里移动。
-#
-#样本输入3
-#4 4
-#2 2
-#3 3
-#....
-#....
-#....
-#....
-#
-#样本输出3
-#0
-#不需要使用魔法。
-#
-#输入样本 4
-#4 5
-#1 2
-#2 5
-##.###
-#####.
-##..##
-##..##
-#
-#样本输出4
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    b = []
+    for i in range(n):
+        b.append(a[i] - i)
+    b = sorted(b)
+    print(b[n // 2])
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    N = int(input())
+    A = [int(x) for x in input().split()]
+
+    # 从后向前遍历
+    ans = 0
+    for i in range(N-1, -1, -1):
+        # 判断是否满足条件
+        if A[i] > ans:
+            # 更新答案
+            ans = A[i]
+        else:
+            # 凳子的高度为ans+1
+            ans += 1
+    
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    b[0] = 0
+    for i in range(n - 1):
+        if a[i] < a[i + 1]:
+            b[i + 1] = b[i] + 1
+        else:
+            b[i + 1] = b[i]
+    print(b[n - 1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    max = A[0]
+    sum = 0
+    for i in range(1, N):
+        if A[i] > max:
+            max = A[i]
+        else:
+            sum += max - A[i]
+    print(sum)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    max_height = 0
+    for i in range(N):
+        if A[i] > max_height+1:
+            print(-1)
+            return
+        elif A[i] == max_height+1:
+            max_height += 1
+    print(N-max_height)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = [0 for i in range(n)]
+    for i in range(n):
+        b[i] = a[i] - i
+    b.sort()
+    b = b[n//2]
+    ans = 0
+    for i in range(n):
+        ans += abs(a[i] - (b + i))
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(n, a):
+    # 从左到右遍历，记录目前为止最高的人的高度
+    # 只有当当前人的高度小于目前为止最高的人的高度时，才需要站在目前为止最高的人的头上
+    # 因为如果当前人的高度大于目前为止最高的人的高度，那么当前人就可以站在地上了
+    # 这样就不需要站在目前为止最高的人的头上了
+    # 这样就可以保证站在目前为止最高的人的头上的人的高度是非递减的
+    # 这样就可以保证每个人的高度都不小于前面的人的高度
+    max_height = 0
+    ans = 0
+    for i in range(n):
+        if a[i] < max_height:
+            ans += max_height - a[i]
+        else:
+            max_height = a[i]
+    return ans
+
+n = int(input())
+a = list(map(int, input().split()))
+print(solve(n, a))
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #A = list(map(int, "2 1 5 4 3".split()))
+    #N = 5
+    #A = [2, 1, 5, 4, 3]
+    #A = [3, 3, 3, 3, 3]
+    #N = 5
+    #A = [1, 2, 3, 4, 5]
+    #N = 5
+    #A = [4, 3, 2, 1, 0]
+    #N = 5
+    #A = [0, 1, 2, 3, 4]
+    #N = 5
+    #A = [5, 4, 3, 2, 1]
+    #N = 5
+    #A = [1, 1, 1, 1, 1]
+    #N = 5
+    #A = [1, 2, 1, 2, 1]
+    #N = 5
+    #A = [2, 1, 2, 1, 2]
+    #N = 5
+    #A = [1, 2, 2, 2, 1]
+    #N = 5
+    #A = [2, 1, 1, 1, 2]
+    #N = 5
+    #A = [1, 3, 2, 3, 1]
+    #N = 5
+    #A = [3, 1, 2, 1, 3]
+    #N = 5
+    #A = [1, 1, 2, 1, 1]
+    #N = 5
+    #A = [1, 1, 2, 2, 1]
+    #N = 5
+    #A = [1, 2, 1, 1, 1]
+    #N = 5
+    #A = [1, 2, 2, 2, 2]
+    #N = 5
+    #A = [2, 2, 2, 2, 1
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.reverse()
+    h = 0
+    for i in range(n):
+        if a[i] > h:
+            h = a[i]
+        elif a[i] < h:
+            a[i] = h
+    a.reverse()
+    print(sum(a))
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(N)
+    # print(A)
+    # print(len(A))
+    # print(max(A))
+    # print(min(A))
+    # print(sum(A))
+    # print(sum(A)/N)
+    # print(round(sum(A)/N))
+    # print(int(sum(A)/N))
+    # print(round(sum(A)/N)-1)
+    # print(int(sum(A)/N)-1)
+    # print(round(sum(A)/N)-2)
+    # print(int(sum(A)/N)-2)
+    # print(round(sum(A)/N)-3)
+    # print(int(sum(A)/N)-3)
+    # print(round(sum(A)/N)-4)
+    # print(int(sum(A)/N)-4)
+    # print(round(sum(A)/N)-5)
+    # print(int(sum(A)/N)-5)
+    # print(round(sum(A)/N)-6)
+    # print(int(sum(A)/N)-6)
+    # print(round(sum(A)/N)-7)
+    # print(int(sum(A)/N)-7)
+    # print(round(sum(A)/N)-8)
+    # print(int(sum(A)/N)-8)
+    # print(round(sum(A)/N)-9)
+    # print(int(sum(A)/N)-9)
+    # print(round(sum(A)/N)-10)
+    # print(int(sum(A)/N)-10)
+    # print(round(sum(A)/N)-11)
+    # print(int(sum(A)/N)-11)
+    # print(round(sum(A)/N)-12)
+    # print(int(sum(A)/N)-12)
+    # print(round(sum(A)/N)-13)
+    # print(int(sum(A)/N)-13)
+    # print(round(sum(A)/N)-14)
+    # print(int(sum(A)/N)-14)
+    # print(round(sum(A)/N)-15)
+    # print(int(sum(A)/N)-15)
+    # print(round(sum(A)/N)-16)
+    # print(int(sum(A)/N)-16)
+    # print(round(sum(A)/N)-17)
+    # print(int(sum(A)/N)-17)
+    # print(round(sum(A)/N)-18)
+    # print(int(sum(A)/N)-18)
+    # print(round(sum(A)/N)-19)
+    # print(int(sum(A)/N)-19)
+    # print

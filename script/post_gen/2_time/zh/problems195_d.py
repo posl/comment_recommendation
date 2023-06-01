@@ -1,59 +1,142 @@
-#问题陈述
-#我们有N件行李，称为行李1到N，有M个箱子，称为箱子1到M。
-#行李i的大小为W_i，价值为V_i。
-#箱子i可以包含一件行李，其大小最多为X_i。它不能包含两件或多件行李。
-#你将会得到Q个查询。在每个查询中，给定两个整数L和R，解决以下问题：
-#问题：在M个箱子中，R-L+1个箱子，箱子L,L+1,...,R，已经无法使用。
-#找出我们可以同时放入剩余箱子的一组行李的最大可能总价值。
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 50
-#1 ≦ Q ≦ 50
-#1 ≦ W_i ≦ 10^6
-#1 ≦ V_i ≦ 10^6
-#1 ≦ X_i ≦ 10^6
-#1 ≦ L ≦ R ≦ M
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M Q
-#W_1 V_1
-#.
-#.
-#.
-#W_N V_N
-#X_1 ... X_M
-#Query_1
-#.
-#.
-#.
-#Query_Q
-#每个查询的格式如下：
-#L R
-#
-#输出
-#打印Q行。
-#第i行应该包含Query_i所描述的问题的答案。
-#
-#输入样本 1
-#3 4 3
-#1 9
-#5 3
-#7 8
-#1 8 6 9
-#4 4
-#1 4
-#1 3
-#
-#样本输出1
-#20
-#0
-#9
-#在第1个查询中，只有箱子4是不可用的。
-#通过将行李1放入盒子1，行李3放入盒子2，行李2放入盒子3，我们可以将所有的行李放入盒子，使得盒子里的行李总价值为20。
-#在第2个查询中，所有箱子都不可用；答案是0。
-#在第3次查询中，只有盒子4是可用的。通过将行李1放入盒子4，我们可以使盒子里的行李总价值为9，这是可能的最大结果。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def add_comma(num):
+    if num < 1000:
+        return str(num)
+    else:
+        return add_comma(num//1000) + ',' + '{:03d}'.format(num%1000)
+
+n = int(input())
+print(len(add_comma(n).split(','))-1)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    N = int(input().strip())
+
+    # 初始化
+    ans = 0
+    # 逐位判断
+    while N > 0:
+        # 逢三进一
+        ans += (N + 2) // 3
+        # 去掉最后三位
+        N //= 10
+
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 3
+
+def get_comma_count(n):
+    comma_count = 0
+    for i in range(1, len(str(n))):
+        if i % 3 == 0:
+            comma_count += 1
+    return comma_count
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    N_str = str(N)
+    N_len = len(N_str)
+    if N_len <= 3:
+        print(0)
+        return
+    if N_len % 3 == 0:
+        print((N_len//3-1)*2)
+    else:
+        print((N_len//3)*2)
+
+=======
+Suggestion 5
+
+def count_comma(n):
+    if n <= 999:
+        return 0
+    else:
+        s = str(n)
+        l = len(s)
+        if l % 3 == 0:
+            return (l // 3 - 1) * 2 + count_comma(int(s[3:]))
+        else:
+            return (l // 3) * 2 + count_comma(int(s[l % 3:]))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N < 1000:
+        print(0)
+    elif N < 1000000:
+        print(N-999)
+    elif N < 1000000000:
+        print(2*(N-999999)+999000)
+    elif N < 1000000000000:
+        print(3*(N-999999999)+1998000000)
+    elif N < 1000000000000000:
+        print(4*(N-999999999999)+2999700000000)
+    else:
+        print(5*(N-999999999999999)+3999960000000000)
+
+=======
+Suggestion 7
+
+def count_comma(n):
+    if n < 1000:
+        return 0
+    else:
+        count = 0
+        while n > 1000:
+            count += 1
+            n = n / 1000
+        return count
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(1, len(str(n))+1):
+        if i % 3 == 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def get_comma_num(num):
+    result = 0
+    num_list = [int(i) for i in str(num)]
+    num_len = len(num_list)
+    for i in range(1, num_len):
+        if i % 3 == 0:
+            result += 1
+    return result
+
+=======
+Suggestion 10
+
+def count_comma(n):
+    result = 0
+    if n >= 1000:
+        result += 1
+    if n >= 1000000:
+        result += 1
+    if n >= 1000000000:
+        result += 1
+    if n >= 1000000000000:
+        result += 1
+    if n >= 1000000000000000:
+        result += 1
+    return result

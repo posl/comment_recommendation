@@ -1,36 +1,88 @@
-#问题陈述
-#我们有一个由小写英文字母组成的字符串S。
-#如果S的长度最多为K，则打印S，不做任何改动。
-#如果S的长度超过K，则提取S中的前K个字符，将...附加到它们的末尾，然后打印结果。
-#
-#限制条件
-#K是1到100（包括）之间的整数。
-#S是一个由小写英文字母组成的字符串。
-#S的长度在1到100之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#K
-#S
-#
-#输出
-#打印一个问题陈述中所述的字符串。
-#
-#输入样本1
-#7
-#nikoandsolstice
-#
-#样本输出1
-#nikoand...
-#nikoandsolstice的长度为15，超过了K=7。
-#我们应该提取这个字符串中的前7个字符，将...附加到它们的末尾，然后打印结果nikoand....
-#
-#输入样本2
-#40
-#ferelibenterhominesidquodvoluntcredunt
-#
-#样本输出2
-#ferelibenterhominesidquodvoluntcredunt
-#Gaius Julius Caesar的名言。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    if N % 10 in [2, 4, 5, 7, 9]:
+        print("hon")
+    elif N % 10 in [0, 1, 6, 8]:
+        print("pon")
+    else:
+        print("bon")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 10 == 3:
+        print("bon")
+    elif n % 10 in [0, 1, 6, 8]:
+        print("pon")
+    else:
+        print("hon")
+
+=======
+Suggestion 3
+
+def pronun(n):
+    if n%10==2 or n%10==4 or n%10==5 or n%10==7 or n%10==9:
+        return 'hon'
+    elif n%10==0 or n%10==1 or n%10==6 or n%10==8:
+        return 'pon'
+    elif n%10==3:
+        return 'bon'
+
+n=int(input())
+print(pronun(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if n%10 in [2, 4, 5, 7, 9]:
+        print("hon")
+    elif n%10 in [0, 1, 6, 8]:
+        print("pon")
+    else:
+        print("bon")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n%10 == 2 or n%10 == 4 or n%10 == 5 or n%10 == 7 or n%10 == 9:
+        print("hon")
+    elif n%10 == 0 or n%10 == 1 or n%10 == 6 or n%10 == 8:
+        print("pon")
+    elif n%10 == 3:
+        print("bon")
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    n = int(n)
+    if n%10 == 2 or n%10 == 4 or n%10 == 5 or n%10 == 7 or n%10 == 9:
+        print("hon")
+    elif n%10 == 0 or n%10 == 1 or n%10 == 6 or n%10 == 8:
+        print("pon")
+    elif n%10 == 3:
+        print("bon")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    if n % 10 == 2 or n % 10 == 4 or n % 10 == 5 or n % 10 == 7 or n % 10 == 9:
+        print("hon")
+    elif n % 10 == 0 or n % 10 == 1 or n % 10 == 6 or n % 10 == 8:
+        print("pon")
+    else:
+        print("bon")

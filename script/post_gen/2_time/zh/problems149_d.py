@@ -1,65 +1,181 @@
-#问题陈述
-#在一家电玩城，高桥正在玩一种叫RPS大战的游戏，其玩法如下：
-#玩家与机器进行N轮 "剪刀石头布 "游戏。(关于 "剪刀石头布 "的描述，见注释
-# 关于 "剪刀石头布 "的说明。平局也算作一轮）。
-#每当玩家赢得一局，根据他/她使用的手，他/她会获得以下的分数（平局或输掉没有分数）：
-#用石头赢，得R分；
-#用剪刀赢，得S分；
-#用布赢，得P分。
-#然而，在第i轮中，玩家不能使用他/她在第（i-K）轮中使用的手。(在前K轮中，玩家可以使用任何一只手。)
-#在游戏开始之前，机器决定了它在每一轮中要玩的手。凭借超自然的力量，高桥成功地读取了所有这些手牌。
-#如果T的第i个字符（1 ≦ i ≦ N）是r，机器将在第i轮玩Rock。类似地，p和s分别代表布和剪刀。
-#在游戏中，通过充分选择每一轮的出牌，获得的最大总分是多少？
-#
-#注意事项
-#在这个问题中，"石头剪刀布 "可以被认为是一个双人游戏，每个玩家同时用一只手做 "石头"、"剪刀"或 "布"。
-#如果一方选择石头，另一方选择剪刀，选择石头的一方获胜；
-#如果一方选择剪刀，另一方选择布，选择剪刀的一方获胜；
-#如果一方选择布，另一方选择石头，选择纸的一方获胜；
-#如果双方都出同样的牌，则为平局。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ R,S,P ≦ 10^4
-#N,K,R,S,和P都是整数。
-#|T| = N
-#T由r、p和s组成。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#R S P
-#T
-#
-#输出
-#打印游戏中获得的最大总分。
-#
-#输入样本 1
-#5 2
-#8 7 6
-#rsrpr
-#
-#样本输出1
-#27
-#机器会玩{石头、剪刀、石头、布、石头}。
-#例如，我们可以和它玩{布、石头、石头、剪刀、布}，以获得27分。
-#我们不能获得更多的分数，所以答案是27。
-#
-#输入样本 2
-#7 1
-#100 10 1
-#ssssppr
-#
-#样本输出2
-#211
-#
-#样本输入3
-#30 5
-#325 234 123
-#rspsspspsrpspsppprpsprpspsppprpr
-#
-#样本输出3
-#4996
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_prime(num):
+    if num == 2:
+        return True
+    elif num % 2 == 0:
+        return False
+    else:
+        i = 3
+        while i <= int(num ** 0.5) + 1:
+            if num % i == 0:
+                return False
+            i += 2
+        return True
+
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    x += 1
+
+=======
+Suggestion 2
+
+def isPrime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for i in range(2,n):
+            if n % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 1:
+        return False
+    else:
+        for i in range(2,int(n**0.5)+1):
+            if n % i == 0:
+                return False
+        return True
+
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    x += 1
+
+=======
+Suggestion 4
+
+def is_prime(n):
+    if n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
+    else:
+        for i in range(3, int(n**0.5)+2, 2):
+            if n % i == 0:
+                return False
+        return True
+
+x = int(input())
+
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    x += 1
+
+=======
+Suggestion 5
+
+def IsPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i * i <= n:
+        if n % i==0:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 6
+
+def isPrime(n):
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n%i == 0:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 7
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0 or n == 1:
+        return False
+    for i in range(3, int(n**0.5)+1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+x = int(input())
+while True:
+    if is_prime(x):
+        print(x)
+        break
+    x += 1
+
+=======
+Suggestion 8
+
+def isPrime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    i = 2
+    while i*i <= n:
+        if n%i == 0:
+            return False
+        i += 1
+    return True
+
+x = int(input())
+while not isPrime(x):
+    x += 1
+print(x)
+
+=======
+Suggestion 9
+
+def is_prime(x):
+    for i in range(2, x):
+        if (x % i == 0):
+            return False
+    return True
+
+x = int(input())
+while (not is_prime(x)):
+    x += 1
+print(x)
+
+=======
+Suggestion 10
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n<2 or n%2 == 0:
+        return False
+    for i in range(3, int(n**0.5)+1, 2):
+        if n%i == 0:
+            return False
+    return True
+
+x = int(input())
+while not is_prime(x):
+    x += 1
+print(x)

@@ -1,31 +1,136 @@
-#问题陈述
-#给你一个由小写英文字符组成的字符串S。
-#S的长度在1到3之间，包括在内。
-#请打印出长度为6的字符串，它是S的重复。
-#可以证明，在本问题的约束条件下，唯一存在这样一个字符串。
-#
-#限制条件
-#S是一个由小写英文字符组成的字符串，长度在1到3之间，包括在内。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印答案字符串，长度为6。
-#
-#输入样本1
-#abc
-#
-#样本输出1
-#abcabc
-#这些是S=abc的重复字符串：abc、abcabc、abcabcabc、abcabcabc，等等。
-#其中，abcabc的长度为6，所以abcabc应该被打印出来。
-#
-#输入样本2
-#zz
-#
-#输出样本2
-#zzzzzz
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for k in range(2, int(n**0.5)+1):
+        if n % k == 0:
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def is_prime(n):
+    if n == 2: return True
+    if n == 1 or n % 2 == 0: return False
+    for i in range(3, int(n**0.5)+1, 2):
+        if n % i == 0: return False
+    return True
+
+=======
+Suggestion 3
+
+def is_prime(n):
+    if n == 1:
+        return False
+    for i in range(2, n // 2 + 1):
+        if n % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 4
+
+def is_prime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0 or n < 2:
+        return False
+    for m in range(3, int(n**0.5)+1, 2):
+        if n%m == 0:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def prime_list(n):
+    prime = [2]
+    limit = int(n ** 0.5)
+    data = [i + 1 for i in range(2, n, 2)]
+    while True:
+        p = data[0]
+        if limit <= p:
+            return prime + data
+        prime.append(p)
+        data = [e for e in data if e % p != 0]
+
+=======
+Suggestion 6
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n%i == 0:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 7
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    elif n == 2:
+        return True
+    elif not n & 1:
+        return False
+    i = 3
+    while i * i <= n:
+        if not n % i:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 8
+
+def is_prime(n):
+    if n < 2: return False
+    if n == 2: return True
+    if n & 1 == 0: return False
+
+    i = 3
+    while i * i <= n:
+        if n % i == 0: return False
+        i += 2
+
+    return True
+
+=======
+Suggestion 9
+
+def getPrimeFactors(n):
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            n //= i
+            yield i
+        else:
+            i += 1
+    if n > 1:
+        yield n
+
+=======
+Suggestion 10
+
+def get_prime_number(n):
+    prime_number = []
+    for i in range(2, n+1):
+        for j in prime_number:
+            if i % j == 0:
+                break
+        else:
+            prime_number.append(i)
+    return prime_number

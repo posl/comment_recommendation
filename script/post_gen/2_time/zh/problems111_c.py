@@ -1,47 +1,72 @@
-#问题陈述
-#一个序列a_1,a_2,...,a_n被认为是/\/\/\/当满足以下条件时：
-#对于每个i = 1,2,..., n-2, a_i = a_{i+2}。
-#序列中正好有两个不同的数字出现。
-#给你一个长度为偶数的序列v_1,v_2,...,v_n。
-#我们想通过替换其中的一些元素使这个序列成为/\/\/\/。
-#请找出需要替换的最小元素数。
-#
-#限制条件
-#2 ≦ n ≦ 10^5
-#n是偶数。
-#1 ≦ v_i ≦ 10^5
-#v_i是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n
-#v_1 v_2 ... v_n
-#
-#输出
-#打印需要被替换的最小元素数。
-#
-#输入样本 1
-#4
-#3 1 3 2
-#
-#样本输出 1
-#1
-#序列3,1,3,2不是/\/\/\/，但我们可以通过替换其中一个元素使其成为/\/\/\/：例如，替换第四个元素，使其成为3,1,3,1。
-#
-#输入样本2
-#6
-#105 119 105 119 105 119
-#
-#样本输出2
-#0
-#序列105,119,105,119,105,119是/\/\/\/。
-#
-#样本输入3
-#4
-#1 1 1 1
-#
-#样本输出 3
-#2
-#序列1,1,1,1的元素都是相同的，所以它不是/\/\/\/。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print((n-1)//111*111+111)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N%111 == 0:
+        print(N)
+    else:
+        print(N//111*111+111)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n % 111 != 0:
+        print((n // 111 + 1) * 111)
+    else:
+        print(n)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    for i in range(N, 1000):
+        if i % 111 == 0:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print((N-1)//111*111+111)

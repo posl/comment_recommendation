@@ -1,40 +1,115 @@
-#问题陈述
-#给你一个4位数的PIN码：X_1X_2X_3X_4，可以以0开头。
-#当该密码满足下列条件之一时，可以说它是弱的：
-#所有的四个数字都是一样的。
-#对于每个整数i，如1≦i≦3，X_{i+1}跟随X_i。这里，对于每一个0≦ j≦ 8的j+1跟随j，而0跟随9。
-#如果给定的PIN码是弱的，打印Weak；否则，打印Strong。
-#
-#限制条件
-#0 ≦ X_1, X_2, X_3, X_4 ≦ 9
-#X_1, X_2, X_3, 和 X_4是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#X_1X_2X_3X_4
-#
-#输出
-#如果给定的PIN码是弱的，打印弱；否则，打印强。
-#
-#输入样本1
-#7777
-#
-#输出样本1
-#Weak
-#四个数字都是7，满足了第一个条件，所以这个PIN是弱的。
-#
-#输入样本2
-#0112
-#
-#样本输出2
-#Strong
-#第一和第二位数字不同，第三位数字不在第二位数字之后，所以两个条件都不满足。
-#
-#输入样本3
-#9012
-#
-#样本输出3
-#Weak
-#请注意，0跟随9。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    if A != 0 and B == 0:
+        print("黄金")
+    elif A == 0 and B != 0:
+        print("银")
+    else:
+        print("合金")
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+
+    # 处理
+    if A > 0 and B == 0:
+        print("黄金")
+    elif A == 0 and B > 0:
+        print("银")
+    else:
+        print("合金")
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    if A == 0:
+        print("银")
+    elif B == 0:
+        print("黄金")
+    else:
+        print("合金")
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a > 0 and b == 0:
+        print("黄金")
+    elif a == 0 and b > 0:
+        print("银")
+    else:
+        print("合金")
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a > 0 and b == 0:
+        print('黄金')
+    elif a == 0 and b > 0:
+        print('银')
+    else:
+        print('合金')
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int, input().split())
+    if a != 0 and b == 0:
+        print("黄金")
+    elif a == 0 and b != 0:
+        print("银")
+    else:
+        print("合金")
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if A>0 and B==0:
+        print("黄金")
+    elif A==0 and B>0:
+        print("银")
+    else:
+        print("合金")
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x,y = map(int,input().split())
+    if x>0 and y>0:
+        print('合金')
+    elif x==0 and y>0:
+        print('银')
+    elif x>0 and y==0:
+        print('黄金')
+
+=======
+Suggestion 9
+
+def main():
+    a, b = map(int, input().split())
+    if a == 0:
+        print('银')
+    elif b == 0:
+        print('黄金')
+    else:
+        print('合金')

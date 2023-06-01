@@ -1,38 +1,141 @@
-#问题陈述
-#给出一个由小写英文字母组成的字符串S。
-#请判断在S的开头加上一定数量的a（可能是0）是否能使其成为一个宫格。
-#这里，一个长度为N的字符串，A=A_1A_2......A_N，当A_i=A_{N+1-i}，每1≦i≦N时，就可以说是一个宫格。
-#
-#约束条件
-#1 ≦ | S | ≦ 10^6
-#S由小写英文字母组成。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S
-#
-#输出
-#如果在S的开头添加一些a的数量（可能是0）可以使它成为一个回文，打印Yes；否则，打印Yes。
-#
-#输入样本1
-#kasaka
-#
-#输出样本1
-#Yes
-#在kasaka的开头加上一个a，我们就有了akasaka，这是一个回文，所以应该打印Yes。
-#
-#输入样本2
-#atcoder
-#
-#样本输出2
-#Yes
-#在atcoder的开头添加任何数量的a，都不会使其成为回文。
-#
-#输入样本3
-#php
-#
-#输出示例 3
-#Yes
-#php本身是一个回文。在S的开头添加0个a是允许的，所以Yes应该被打印出来。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    for i in range(W):
+        for j in range(H):
+            print(A[j][i], end=' ')
+        print()
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for _ in range(H):
+        A.append(list(map(int, input().split())))
+    B = []
+    for i in range(W):
+        B.append([])
+        for j in range(H):
+            B[i].append(A[j][i])
+    for i in range(W):
+        for j in range(H):
+            if j == H-1:
+                print(B[i][j])
+            else:
+                print(B[i][j], end=' ')
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H)]
+    B = [[0] * H for i in range(W)]
+    for i in range(H):
+        for j in range(W):
+            B[j][i] = A[i][j]
+    for i in range(W):
+        print(*B[i])
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for i in range(H)]
+    B = [[0 for i in range(H)] for j in range(W)]
+    for i in range(H):
+        for j in range(W):
+            B[j][i] = A[i][j]
+    for i in range(W):
+        for j in range(H):
+            print(B[i][j], end=" ")
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+
+    for i in range(w):
+        for j in range(h):
+            if j == h - 1:
+                print(a[j][i])
+            else:
+                print(a[j][i], end=' ')
+
+=======
+Suggestion 6
+
+def main():
+    H,W = map(int,input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int,input().split())))
+    for i in range(W):
+        for j in range(H):
+            if j == H-1:
+                print(A[j][i])
+            else:
+                print(A[j][i],end=' ')
+
+=======
+Suggestion 7
+
+def main():
+    #输入矩阵的行数和列数
+    n, m = map(int, input().split())
+    #输入矩阵
+    A = [list(map(int, input().split())) for i in range(n)]
+    #转置矩阵
+    B = [[0]*n for i in range(m)]
+    for i in range(n):
+        for j in range(m):
+            B[j][i] = A[i][j]
+    #输出矩阵
+    for i in range(m):
+        for j in range(n):
+            print(B[i][j], end=" ")
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    for i in range(w):
+        for j in range(h):
+            print(a[j][i], end=" ")
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    B = []
+    for i in range(W):
+        B.append([])
+        for j in range(H):
+            B[i].append(A[j][i])
+    for i in range(W):
+        for j in range(H):
+            print(B[i][j], end=' ')
+        print('')

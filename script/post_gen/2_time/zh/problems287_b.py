@@ -1,76 +1,124 @@
-#问题陈述
-#给你N个长度为6的字符串，每个字符串由数字组成。  设S_i是其中第i个（i=1，2，...，N）。
-#还给你M个字符串，每个字符串的长度为3，由数字组成。  让T_j成为其中的第j个（j=1，2，...，M）。
-#在S_1, S_2, ..., S_N中找出最后三个字符与T_1, T_2, ..., T_M中一个或多个字符重合的字符串的数量。
-#
-#限制条件
-#1 ≦ N, M ≦ 1000
-#N和M是整数。
-#S_i是一个长度为6的字符串，由数字组成，对于所有i = 1, 2, ..., N。
-#T_j是一个长度为3的字符串，由数字组成，对于所有j = 1, 2, ..., M。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 3
-#142857
-#004159
-#071028
-#159
-#287
-#857
-#
-#样本输出1
-#2
-#S_1的最后三个字符是857，与T_3相吻合。
-#S_2的最后三个字符是159，与T_1相吻合。
-#S_3的最后三个字符是028，与T_1、T_2或T_3不一致。  
-#因此，答案是2。
-#
-#输入样本 2
-#5 4
-#235983
-#109467
-#823476
-#592801
-#000333
-#333
-#108
-#467
-#983
-#
-#样本输出2
-#3
-#
-#样本输入3
-#4 4
-#000000
-#123456
-#987111
-#000000
-#000
-#111
-#999
-#111
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [input() for i in range(n)]
+    print("Yes" if a.count("For") > n//2 else "No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > s.count('Against'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def get_input():
+    # N = int(input())
+    # S = [input() for _ in range(N)]
+    N = 5
+    S = ['Against', 'Against', 'For', 'Against', 'For']
+    return N, S
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count("For") > s.count("Against"):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > n//2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    flag = 0
+    for i in range(n):
+        s = input()
+        if s == "For":
+            flag += 1
+        else:
+            flag -= 1
+    if flag > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s[i] == 'For':
+            s[i] = 1
+        else:
+            s[i] = 0
+    if sum(s) > n//2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    if S.count("For") > S.count("Against"):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    for_count = 0
+    against_count = 0
+    for i in range(n):
+        s = input()
+        if s == "For":
+            for_count += 1
+        else:
+            against_count += 1
+    if for_count > against_count:
+        print("Yes")
+    else:
+        print("No")

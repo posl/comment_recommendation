@@ -1,44 +1,251 @@
-#问题陈述
-#S中的每个字符都是一个数字（0，...，9）或?
-#在用一个数字代替每一次出现的"？"的整数中，有多少个在除以13时有5的余数？一个整数可能以0开头。
-#由于答案可能是巨大的，请打印10^9+7的模数。
-#
-#限制条件
-#S是一个由数字(0, ..., 9)和?组成的字符串。
-#1 ≦ |S| ≦ 10^5
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#输出
-#打印满足条件的整数的数量，模数为 10^9+7。
-#
-#输入样本 1
-#??2??5
-#
-#样本输出1
-#768
-#例如，482305、002865和972665满足条件。
-#
-#样本输入2
-#?44
-#
-#样本输出2
-#1
-#只有044满足这个条件。
-#
-#样本输入3
-#7?4
-#
-#样本输出3
-#0
-#我们可能无法产生一个满足条件的整数。
-#
-#输入样本4
-#?6?42???8??2??06243????9??3???7258??5??7???????774????4?1??17???9?5?70???76???
-#
-#样本输出4
-#153716888
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > B[i]:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        else:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        if A[i+1] > B[i]:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+        else:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        ans += min(A[i], B[i])
+        B[i] -= min(A[i], B[i])
+        ans += min(A[i+1], B[i])
+        A[i+1] -= min(A[i+1], B[i])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        if A[i+1] <= B[i]:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+        else:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] >= b[i]:
+            ans += b[i]
+            a[i] -= b[i]
+            b[i] = 0
+        else:
+            ans += a[i]
+            b[i] -= a[i]
+            a[i] = 0
+        if a[i+1] >= b[i]:
+            ans += b[i]
+            a[i+1] -= b[i]
+            b[i] = 0
+        else:
+            ans += a[i+1]
+            b[i] -= a[i+1]
+            a[i+1] = 0
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    B = [int(i) for i in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] > B[i]:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        else:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        if A[i+1] > B[i]:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+        else:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(N):
+        if A[i] >= B[i]:
+            sum += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        else:
+            sum += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        if A[i+1] >= B[i]:
+            sum += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+        else:
+            sum += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+
+    ans = 0
+    for i in range(n):
+        if a[i] <= b[i]:
+            ans += a[i]
+            b[i] -= a[i]
+            if a[i + 1] <= b[i]:
+                ans += a[i + 1]
+                a[i + 1] = 0
+            else:
+                ans += b[i]
+                a[i + 1] -= b[i]
+        else:
+            ans += b[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def fight_monsters(N, A, B):
+    if N == 1:
+        return min(A[0], B[0])
+    else:
+        res = 0
+        for i in range(N):
+            if A[i] <= B[i]:
+                res += A[i]
+                A[i] = 0
+                B[i] -= A[i]
+            else:
+                res += B[i]
+                A[i] -= B[i]
+                B[i] = 0
+            if A[i+1] <= B[i]:
+                res += A[i+1]
+                A[i+1] = 0
+                B[i] -= A[i+1]
+            else:
+                res += B[i]
+                A[i+1] -= B[i]
+                B[i] = 0
+        return res
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+print(fight_monsters(N, A, B))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] >= b[i]:
+            ans += b[i]
+        else:
+            ans += a[i]
+            if a[i + 1] >= b[i] - a[i]:
+                ans += b[i] - a[i]
+                a[i + 1] -= b[i] - a[i]
+            else:
+                ans += a[i + 1]
+                a[i + 1] = 0
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)

@@ -1,39 +1,80 @@
-#问题陈述
-#高桥的房子只有一个插座。
-#高桥想用一定数量的电源条把它扩展到B个或更多的空插座上，每个电源条有A个插座。
-#一个有A个插座的电源条可以将一个空插座扩展到A个空插座。
-#求所需的最小电源条数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印所需的最小电源条数。
-#
-#输入样本 1
-#4 10
-#
-#输出样本1
-#3
-#3个电源条，每个有4个插座，将插座延伸到10个空插座。
-#
-#样本输入2
-#8 9
-#
-#样本输出2
-#2
-#2个电源条，每个有8个插座，将插座扩展到15个空插座。
-#
-#样本输入3
-#8 8
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(3):
+        if S[i] == T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    count = 0
+    for i in range(3):
+        if s[i] == t[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    cnt = 0
+    for i in range(3):
+        if s[i] == t[i]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] == T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    S = input()
+    T = input()
+    # 初始化计数器
+    count = 0
+    # 逐个比较S和T的字符
+    for i in range(len(S)):
+        if S[i] == T[i]:
+            count += 1
+    # 输出结果
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    # 天气预报
+    S = input()
+    # 实际天气
+    T = input()
+    # 预测正确的天数
+    correct_days = 0
+    for i in range(3):
+        if S[i] == T[i]:
+            correct_days += 1
+    print(correct_days)

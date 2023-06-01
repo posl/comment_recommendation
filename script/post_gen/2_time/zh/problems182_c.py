@@ -1,46 +1,171 @@
-#问题陈述
-#给出一个正整数N，其中没有一个数字是0。
-#我们想把N中至少0和最多k-1个数字擦掉，然后在不改变顺序的情况下把剩下的数字连接起来，这样就可以得到3的倍数。
-#请确定是否有可能用这种方法制造3的倍数。如果有可能，请找出必须擦除的最小数字，以得到这样一个数字。
-#
-#限制条件
-#1 ≦ N < 10^{18}
-#N中没有一个数字是0。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果不可能是3的倍数，则打印-1；否则，打印必须擦除的最小位数，以形成这样的数字。
-#
-#输入示例 1
-#35
-#
-#输出示例 1
-#1
-#通过擦除5，我们得到数字3，这是3的倍数。
-#
-#输入样本2
-#369
-#
-#样本输出2
-#0
-#请注意，我们可以选择不擦除任何数字。
-#
-#样本输入3
-#6227384
-#
-#样本输出3
-#1
-#例如，通过擦除8，我们得到数字622734，它是3的倍数。
-#
-#输入样本4
-#11
-#
-#样本输出 4
-#-1
-#请注意，我们必须至少擦除0和最多k-1个数字，其中k是N的数字数，所以我们不能擦除所有的数字。
-#在这种情况下，不可能用问题陈述中描述的方法来做3的倍数，所以我们应该打印-1。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a<b:
+        a, b = b, a
+    while b:
+        a, b = b, a%b
+    return a
+
+n = int(input())
+a = [int(i) for i in input().split()]
+ans = 0
+for i in range(2, 1001):
+    cnt = 0
+    for j in a:
+        if j%i==0:
+            cnt += 1
+    if cnt > ans:
+        ans = cnt
+        res = i
+print(res)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = list(map(int, input().split()))
+
+ans = 0
+ans_num = 0
+for k in range(2, 1001):
+    cnt = 0
+    for i in range(N):
+        if A[i] % k == 0:
+            cnt += 1
+    if cnt > ans:
+        ans = cnt
+        ans_num = k
+
+print(ans_num)
+
+=======
+Suggestion 4
+
+def gcd(x,y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y,x%y)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a<b:
+        a,b=b,a
+    while b:
+        a,b=b,a%b
+    return a
+
+n=int(input())
+a=list(map(int, input().split()))
+max_gcd=0
+ans=0
+for i in range(2, 1001):
+    cnt=0
+    for j in range(n):
+        if gcd(a[j], i)==i:
+            cnt+=1
+    if cnt>=max_gcd:
+        max_gcd=cnt
+        ans=i
+print(ans)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n = int(input())
+a = list(map(int, input().split()))
+a.sort(reverse=True)
+gcdness = 0
+ans = 0
+for i in range(2, a[0]+1):
+    cnt = 0
+    for j in range(n):
+        if a[j] % i == 0:
+            cnt += 1
+    if cnt > gcdness:
+        gcdness = cnt
+        ans = i
+print(ans)
+
+=======
+Suggestion 7
+
+def gcd(x,y):
+    if x<y:
+        x,y=y,x
+    while y!=0:
+        x,y=y,x%y
+    return x
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+n = int(input())
+a = [int(i) for i in input().split()]
+ans = 0
+for i in range(2, 1001):
+    cnt = 0
+    for j in a:
+        if j % i == 0:
+            cnt += 1
+    if cnt > ans:
+        ans = cnt
+        ans_num = i
+print(ans_num)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a%b == 0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+n = int(input())
+a = list(map(int,input().split()))
+
+max_gcd = 0
+for i in range(2,1001):
+    gcdness = 0
+    for j in range(n):
+        if a[j]%i == 0:
+            gcdness += 1
+    if gcdness > max_gcd:
+        max_gcd = gcdness
+        ans = i
+
+print(ans)

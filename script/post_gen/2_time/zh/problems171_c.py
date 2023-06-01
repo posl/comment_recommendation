@@ -1,43 +1,64 @@
-#问题陈述
-#罗杰家的屋顶下突然出现了1000000000000001只狗，他决定把这些狗都留下来。这些狗被编号为1到1000000000000001，但他给它们起了新的名字，如下：
-#编号为1,2,...,26的狗分别被命名为a,b,...,z；
-#编号为27,28,29,...,701,702的狗分别被命名为aa, ab, ac, ..., zy, zz；
-#编号为703,704,705,...,18277,18278的狗分别被命名为aa, aab, aac, ..., zzy, zzz；
-#编号为18279,18280,18281,...,475253,475254的狗分别被命名为aaa,aaab,aaac,...,zzzy,zzz；
-#编号为475255,475256,...的狗分别被命名为aaaa, aaaab, ...；
-#以此类推。
-#总而言之，编号为1，2，......的狗分别被赋予以下名字：
-#a, b, ..., z, aa, ab, ..., az, ba, bb, ..., bz, ..., za, zb, ..., zz, aaa, aab, ..., aaz, aba, abb, ..., abz, ..., Zzz, aaaa, ...
-#现在，罗杰问你
-#"编号为N的狗的名字是什么？"
-#
-#约束条件
-#N是一个整数。
-# 1 ≦ N ≦ 1000000000000001
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#将罗杰问题的答案打印成一个由小写英文字母组成的字符串。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#b
-#
-#样本输入2
-#27
-#
-#样本输出2
-#aa
-#
-#样本输入3
-#123456789
-#
-#样本输出3
-#jjddja
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems171_b():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    p.sort()
+    print(sum(p[:k]))
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    print(sum(p[:k]))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    p_list = list(map(int, input().split()))
+    p_list.sort()
+    print(sum(p_list[:K]))
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+
+    # 排序
+    p.sort()
+
+    # 计算结果
+    ans = 0
+    for i in range(k):
+        ans += p[i]
+
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    p = sorted(map(int, input().split()))
+    print(sum(p[:k]))
+
+=======
+Suggestion 6
+
+def main():
+    N,K=map(int,input().split())
+    p=list(map(int,input().split()))
+    p.sort()
+    print(sum(p[0:K]))

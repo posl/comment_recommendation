@@ -1,44 +1,126 @@
-#问题说明
-#有一个具有H个横行和W个纵列的网格，其中两个不同的方格都有棋子。
-#方格的状态由长度为W的H个字符串S_1, ..., S_H表示。S_{i, j} = o表示方格中从上往下第i行和从左往下第j列有一个棋子；S_{i, j} = -表示方格中没有棋子。  这里，S_{i, j}表示字符串S_i的第j个字符。
-#考虑重复移动一个棋子到四个相邻的方格中的一个。  不允许将棋子移到格外。  该棋子至少需要走多少步才能到达与另一棋子相邻的位置？
-#
-#限制条件
-#2 ≦ H, W ≦ 100
-#H和W是整数。
-#S_i (1 ≦ i ≦ H) 是一个长度为W的字符串，由o和-组成。
-#存在正好两对整数1 ≦ i ≦ H, 1 ≦ j ≦ W，使得S_{i, j} = o。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#S_1
-#.
-#.
-#.
-#S_H
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 3
-#--o
-#o--
-#
-#样本输出1
-#3
-#位于从上往下第1行和从左往下第3列的棋子可以通过3步棋到达另一个棋子所在的位置：下、左、左。  由于不可能在两步或更短的时间内做到这一点，所以应该打印3。
-#
-#输入样本 2
-#5 4
-#-o--
-#----
-#----
-#----
-#-o--
-#
-#样本输出2
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def median(a,b,c):
+    if a < b:
+        if b < c:
+            return b
+        elif a < c:
+            return c
+        else:
+            return a
+    else:
+        if a < c:
+            return a
+        elif b < c:
+            return c
+        else:
+            return b
+
+=======
+Suggestion 2
+
+def median(a,b,c):
+    if ((a>b and a<c) or (a>c and a<b)):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def sort(a, b, c):
+    if a > b:
+        a, b = b, a
+    if a > c:
+        a, c = c, a
+    if b > c:
+        b, c = c, b
+
+    return a, b, c
+
+=======
+Suggestion 4
+
+def is_middle(a,b,c):
+    if a<b<c or c<b<a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if a <= b <= c or c <= b <= a:
+        print('是')
+    else:
+        print('没有')
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int, input().split())
+    if b == a or b == c:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    if b > a and b < c or b < a and b > c:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 8
+
+def median(a, b, c):
+    if a < b:
+        if b < c:
+            return b
+        else:
+            if a < c:
+                return c
+            else:
+                return a
+    else:
+        if a < c:
+            return a
+        else:
+            if b < c:
+                return c
+            else:
+                return b
+
+a, b, c = map(int, input().split())
+
+print('是' if b == median(a, b, c) else '否')
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    if b>a and b<c or b<a and b>c:
+        print('是')
+    else:
+        print('没有')
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c = map(int,input().split())
+    if b == sorted([a,b,c])[1]:
+        print("是")
+    else:
+        print("没有")

@@ -1,35 +1,111 @@
-#问题陈述
-#让我们定义FizzBuzz序列a_1,a_2,...如下：
-#如果3和5都除以i，a_i=FizzBuzz。
-#如果上述情况不成立但3除以i，a_i=Fizz。
-#如果上述情况都不成立，但5除以i，a_i=Buzz。
-#如果以上都不成立，则a_i=i。
-#求FizzBuzz序列前N项中所有数字的总和。
-#
-#限制条件
-#1 ≦ N ≦ 10^6
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印FizzBuzz序列前N项中所有数字的总和。
-#
-#输入样本 1
-#15
-#
-#样本输出1
-#60
-#FizzBuzz序列的前15个项是：
-#1,2,Fizz,4,Buzz,Fizz, 7,8,Fizz,Buzz, 11,Fizz,13,14,FizzBuzz
-#其中，数字是1,2,4,7,8,11,13,14，它们的总和是60。
-#
-#样本输入2
-#1000000
-#
-#样本输出2
-#266666333332
-#注意溢出。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    if num % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def is_include_7(num):
+    if num % 10 == 7:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def is_contain_seven(n):
+    if n % 10 == 7:
+        return True
+    elif n // 10 % 10 == 7:
+        return True
+    elif n // 100 % 10 == 7:
+        return True
+    else:
+        return False
+
+n = int(input())
+
+=======
+Suggestion 5
+
+def is_contain_seven(num):
+    return num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7
+
+num = int(input())
+print("是" if is_contain_seven(num) else "否")
+
+=======
+Suggestion 6
+
+def problem162_a():
+    n = input()
+    if '7' in n:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 7
+
+def solution():
+    n = int(input())
+    if n%10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 9
+
+def isSevenInNum(num):
+    if num%10==7:
+        return True
+    elif num/10%10==7:
+        return True
+    elif num/100%10==7:
+        return True
+    else:
+        return False
+
+num = int(raw_input())
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    n = int(input())
+    # 计算
+    if n % 10 == 7:
+        print("是")
+    else:
+        print("否")

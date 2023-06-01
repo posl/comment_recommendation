@@ -1,52 +1,135 @@
-#问题陈述
-#2^N个玩家，标记为1到2^N，将在一个单淘汰的编程比赛中相互竞争。
-#玩家i的评分是A_i。任何两位选手都有不同的评分，两位选手之间的比赛结果总是评分高的选手获胜。  
-#锦标赛看起来像一棵完美的二叉树。
-#从形式上看，锦标赛将按以下方式进行：  
-#对于每个整数i=1，2，3，...，N的这个顺序，会发生以下情况。
-#对于每个整数j（1 ≦ j ≦ 2^{N - i}），在从未输过的玩家中，拥有（2j - 1）-第1个最小标签的玩家和拥有第2j个最小标签的玩家互相进行比赛。
-#
-#找出将获得第二名的选手的标签，即在最后的比赛中输掉。
-#
-#限制条件
-#1 ≦ N ≦ 16
-#1 ≦ A_i ≦ 10^9
-#A_i是成对的不同。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 a_3 ... a_{2^n}
-#
-#输出
-#打印将获得第二名的选手的标签。
-#
-#输入样本 1
-#2
-#1 4 2 5
-#
-#样本输出 1
-#2
-#首先，玩家1和2以及玩家3和4之间将有两场比赛。根据评分，选手2和4将获胜。
-#然后，玩家2和4之间将进行一场比赛，比赛结束时玩家4将成为冠军。
-#在最后一场比赛中输掉的球员是球员2，所以我们应该打印2。  
-#
-#输入样本 2
-#2
-#3 1 5 4
-#
-#样本输出2
-#1
-#首先，玩家1和2以及玩家3和4之间将有两场比赛。根据评分，球员1和3将获胜。
-#然后，球员1和3之间将进行一场比赛，比赛结束时球员3将成为冠军。
-#在最后一场比赛中输掉的球员是球员1，所以我们应该打印1。  
-#
-#输入样本 3
-#4
-#6 13 12 5 3 7 10 11 16 9 8 15 2 1 14 4
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # get input
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    # calculate
+    sum = 0
+    for i in range(n):
+        sum += a[i]*b[i]
+    # output
+    if sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def dot_product(a, b):
+    if len(a) != len(b):
+        raise ValueError("length of a and b must be equal")
+    product = 0
+    for i in range(len(a)):
+        product += a[i] * b[i]
+    return product
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += a[i] * b[i]
+
+    if sum == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = 0
+    for i in range(n):
+        c += a[i]*b[i]
+    if c == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    result = 0
+    for i in range(n):
+        result += a[i] * b[i]
+
+    if result == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        result += a[i] * b[i]
+    if result == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')

@@ -1,38 +1,132 @@
-#问题陈述
-#给你一个整数N和一个长度为N的序列S=（S_1,...,S_N）。
-#找到一个长度为N的序列A=(A_1,...,A_N)，它在所有k=1,...,N的情况下满足以下条件：
-#A_1+A_2+...+A_k=S_k。
-#这样的序列A总是存在并且是唯一的。
-#
-#限制条件
-#1 ≦ N ≦ 10
-#-10^9 ≦ S_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#S_1 ...S_N
-#
-#输出
-#打印满足所有条件的序列A=(A_1,...,A_N)的元素，依次用空格分隔。  
-#
-#输入样本 1
-#3
-#3 4 8
-#
-#样本输出1
-#3 1 4
-#输出中的序列实际上满足了所有的条件：
-#A_1=3=S_1；
-#A_1+A_2=3+1=4=S_2；
-#A_1+A_2+A_3=3+1+4=8=S_3.
-#
-#样本输入2
-#10
-#314159265 358979323 846264338 -327950288 419716939 -937510582 97494459 230781640 628620899 -862803482
-#
-#样本输出2
-#314159265 44820058 487285015 -1174214626 747667227 -1357227521 1035005041 133287181 397839259 -1491424381
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H,W = map(int,input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def get_input():
+    # 获取输入
+    print("请输入H,W")
+    h, w = map(int, input().split())
+    print("请输入S_1, S_2, ..., S_H")
+    s = []
+    for i in range(h):
+        s.append(input())
+    return h, w, s
+
+=======
+Suggestion 3
+
+def problems280_a():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    print(sum([s.count("#") for s in S]))
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int,input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    cnt = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == "#":
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    cnt = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def problems280_a():
+    H, W = map(int, input().split())
+    S = [input() for i in range(H)]
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                count +=1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    count = 0
+    for i in range(H):
+        count += S[i].count('#')
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    h, w = map(int, input().split())
+    count = 0
+    for i in range(h):
+        s = input()
+        for j in range(w):
+            if s[j] == '#':
+                count += 1
+    print(count)

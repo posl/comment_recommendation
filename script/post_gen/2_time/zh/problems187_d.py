@@ -1,56 +1,176 @@
-#问题声明
-#AtCoder市将举行一次市长选举。候选人是青木和高桥。
-#该市由N个镇组成，其中第i个镇有A_i支持青木的选民和B_i支持高桥的选民。没有其他选民。
-#高桥可以在每个城镇发表演讲。
-#如果他在某个镇上发表演讲，该镇的所有选民，不管是亲高桥的还是青木的，都会投票给高桥。
-#另一方面，如果他不在某个镇上发表演讲，该镇上支持青木的选民将投票给青木，而支持高桥的选民将不投票。
-#为了获得比青木更多的选票，高桥至少需要在多少个城镇发表演讲？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#2 1
-#2 2
-#5 1
-#1 3
-#
-#样本输出1
-#1
-#在第三镇发表演讲后，青木和高桥将分别获得5票和6票。
-#
-#样本输入2
-#5
-#2 1
-#2 1
-#2 1
-#2 1
-#2 1
-#
-#样本输出 2
-#3
-#在三个城镇发表演讲后，青木和高桥将分别获得4票和9票。
-#
-#样本输入3
-#1
-#273 691
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print("存在")
+            return
+    print("不存在")
+    return
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print(s[i])
+            exit()
+    print("satisfiable")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s[i][0] == '!':
+            s[i] = s[i][1:]
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print(s[i])
+            exit()
+    print('satisfiable')
+
+=======
+Suggestion 4
+
+def solve(n, s):
+    s1 = set()
+    s2 = set()
+    for i in range(n):
+        if s[i][0] == '!':
+            s1.add(s[i][1:])
+        else:
+            s2.add(s[i])
+    for i in s2:
+        if i in s1:
+            return i
+    return 'satisfiable'
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+print(solve(n, s))
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S = [s.lstrip('!') for s in S]
+    S = set(S)
+
+    for s in S:
+        if '!' + s in S:
+            return s
+    return 'satisfiable'
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ss = [input() for _ in range(n)]
+    s1 = set()
+    s2 = set()
+    for s in ss:
+        if s[0] == '!':
+            s1.add(s[1:])
+        else:
+            s2.add(s)
+    for s in s1:
+        if s in s2:
+            print(s)
+            return
+    print('satisfiable')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    for _ in range(n):
+        s.append(input())
+    s = set(s)
+    for i in s:
+        if '!' + i in s:
+            print(i)
+            break
+    else:
+        print('satisfiable')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s_set = set(s)
+    for i in s_set:
+        if i[0] == '!':
+            if i[1:] in s_set:
+                print(i[1:])
+                return
+        else:
+            if '!' + i in s_set:
+                print(i)
+                return
+    print('satisfiable')
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    S = [input() for i in range(N)]
+    S = [s[1:] if s[0] == '!' else s for s in S]
+    S.sort()
+    for i in range(N - 1):
+        if S[i] == S[i + 1]:
+            print(S[i])
+            return
+    print('satisfiable')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s = list(set(s))
+    for i in range(len(s)):
+        if s[i][0] == '!':
+            if s[i][1:] in s:
+                print(s[i][1:])
+                exit()
+        else:
+            if '!' + s[i] in s:
+                print(s[i])
+                exit()
+    print('satisfiable')
+main()

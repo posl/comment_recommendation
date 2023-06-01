@@ -1,37 +1,71 @@
-#问题陈述
-#给出的是一个整数N。
-#有多少个介于1和N（包括）之间的整数x满足以下条件？
-#x的十进制表示法（不含前导零）有偶数位，并且它的前半部分和后半部分作为字符串是相等的。
-#
-#限制条件
-#N是一个整数。
-#1 ≤ N < 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#33
-#
-#样本输出1
-#3
-#有三个数字11、22和33满足条件。
-#
-#样本输入2
-#1333
-#
-#样本输出2
-#13
-#例如，1313的十进制表示法有四个数字，它的前半部分和后半部分都是13，所以1313满足这个条件。
-#
-#输入样本3
-#10000000
-#
-#样本输出3
-#999
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 2
+
+def solve():
+    x = input()
+    if '.' in x:
+        x = x.split('.')[0]
+    print(x)
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    print(round(float(X)))
+
+=======
+Suggestion 4
+
+def solve():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    input = raw_input()
+    # 处理输入
+    # 输出结果
+    print int(round(float(input)))
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    if x.find('.') != -1:
+        x = x[:x.find('.')]
+    print(x)
+
+=======
+Suggestion 7
+
+def round_up(x):
+    if x - int(x) >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+x = float(input())
+print(round_up(x))
+
+=======
+Suggestion 8
+
+def round(x):
+    if x == int(x):
+        print(int(x))
+    else:
+        print(round(x))

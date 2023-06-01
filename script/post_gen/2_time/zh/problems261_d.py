@@ -1,62 +1,161 @@
-#问题陈述
-#高桥将抛出一枚硬币N次。
-#他也有一个计数器，最初显示为0。
-#根据第i次投掷硬币的结果，会发生以下情况：
-#如果是正面：高桥将计数器的值增加1，并获得X_i日元（日本货币）。
-#如果是反面，他就把计数器的值重设为0，不收钱。
-#此外，有M种连胜奖金。第i种连胜奖金在计数器显示C_i时奖励Y_i日元。
-#求高桥能得到的最大金额。
-#
-#限制条件
-#1≦ M≦ N≦ 5000
-#1≦ X_i≦ 10^9
-#1≦ C_i≦ N
-#1≦ Y_i≦ 10^9
-#C_1,C_2,...,C_M都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#X_1 X_2 ...X_N
-#C_1 Y_1
-#C_2 Y_2
-#.
-#.
-#.
-#C_M Y_M
-#
-#输出
-#打印高桥能收到的最大金额，为整数。
-#
-#输入样本 1
-#6 3
-#2 7 1 8 2 8
-#2 10
-#3 1
-#5 5
-#
-#样本输出1
-#48
-#如果他按这个顺序得到头，头，尾，头，头，头，头，就会得到以下金额的奖励。
-#在第1次抛硬币时，硬币是头。将计数器的值从0改为1，获得2日元。
-#在第2次投掷硬币时，硬币正面。将计数器的值从1改为2，获得7日元。此外，获得10日元作为连胜奖金。
-#在第3次投掷硬币时，硬币为反面。将计数器的值从2改为0。
-#在第4次抛硬币时，硬币是正面。将计数器的值从0改为1，获得8日元。
-#在第5次抛硬币时，硬币是正面。将计数器的值从1改为2，获得2日元。此外，获得10日元作为连胜奖金。
-#在第6次抛硬币时，硬币正面。将计数器的值从2改为3，获得8日元。此外，获得1日元的连胜奖金。
-#在这种情况下，高桥得到2+(7+10)+0+8+(2+10)+(8+1)=48日元，这是可能的最大值。
-#请注意，每次计数器显示C_i时，连胜奖金可以获得任意次数。
-#顺便提一下，如果他在6次抛硬币中都得到头像，他只得到2+(7+10)+(1+1)+8+(2+5)+8=44日元，这不是最大值。
-#
-#输入样本 2
-#3 2
-#1000000000 1000000000 1000000000
-#1 1000000000
-#3 1000000000
-#
-#样本输出2
-#5000000000
-#注意，答案可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    d = {}
+    for i in range(n):
+        if s[i] in d:
+            d[s[i]] += 1
+            print(s[i] + '(' + str(d[s[i]]) + ')')
+        else:
+            d[s[i]] = 0
+            print(s[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    files = []
+    for i in range(n):
+        files.append(input())
+    for i in range(n):
+        if files.count(files[i]) == 1:
+            print(files[i])
+        else:
+            print(files[i] + "(" + str(files[0:i].count(files[i])) + ")")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    files = {}
+    for i in range(n):
+        file = input()
+        if file in files:
+            files[file] += 1
+            print(file + "(" + str(files[file]) + ")")
+        else:
+            files[file] = 0
+            print(file)
+
+=======
+Suggestion 4
+
+def print_new_name(n, names):
+    name_dict = {}
+    for name in names:
+        if name in name_dict:
+            name_dict[name] += 1
+            print(name + '(' + str(name_dict[name]) + ')')
+        else:
+            name_dict[name] = 0
+            print(name)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s = input()
+        if s in d:
+            d[s] += 1
+            print(s + '(' + str(d[s]) + ')')
+        else:
+            d[s] = 0
+            print(s)
+
+=======
+Suggestion 6
+
+def problem261_c():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input())
+    for i in range(n):
+        if names.count(names[i]) == 1:
+            print(names[i])
+        else:
+            print(names[i]+"("+str(names[0:i].count(names[i]))+")")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    file = []
+    for i in range(n):
+        file.append(input())
+    file_set = set(file)
+    file_dict = {}
+    for i in file_set:
+        file_dict[i] = 0
+    for i in range(n):
+        if file[i] in file_set:
+            file_set.remove(file[i])
+            file_dict[file[i]] += 1
+        if file_dict[file[i]] == 0:
+            print(file[i])
+        else:
+            print(file[i] + "(" + str(file_dict[file[i]]) + ")")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if i == 0:
+            print(s[i])
+        elif s[i] in s[:i]:
+            print(s[i] + "(" + str(s[:i].count(s[i])) + ")")
+        else:
+            print(s[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    dic = {}
+    for i in range(n):
+        if s[i] not in dic:
+            dic[s[i]] = 1
+            print(s[i])
+        else:
+            dic[s[i]] += 1
+            print(s[i] + '(' + str(dic[s[i]]-1) + ')')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    for i in range(n):
+        if s[i] in s[0:i]:
+            j = 1
+            while s[i] + '(' + str(j) + ')' in s[0:i]:
+                j += 1
+            print(s[i] + '(' + str(j) + ')')
+        else:
+            print(s[i])

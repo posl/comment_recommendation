@@ -1,42 +1,91 @@
-#问题陈述
-#给你一个大于或等于2的整数K。
-#请找出最小的正整数N，使N！是K的倍数。
-#这里，N！表示N的阶乘。在这个问题的约束条件下，我们可以证明这样的N总是存在的。
-#
-#限制条件
-#2≦ K≦ 10^{12}
-#K是一个整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#K
-#
-#输出
-#打印最小的正整数N，使N！是K的倍数。
-#
-#输入样本 1
-#30
-#
-#样本输出1
-#5
-#1!=1
-#2!=2× 1=2
-#3!=3× 2× 1=6
-#4!=4× 3× 2× 1=24
-#5!=5× 4× 3× 2× 1=120
-#因此，5是最小的正整数N，使N！是30的倍数。
-#因此，5应该被打印出来。
-#
-#输入样本2
-#123456789011
-#
-#样本输出2
-#123456789011
-#
-#样品输入3
-#280
-#
-#样本输出3
-#7
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem280_c():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 2
+
+def problem280_c():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            return
+    print(len(s)+1)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(t_len):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+        if i == t_len-1:
+            print(t_len)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+        elif i == len(s) - 1:
+            print(i+2)
+            break
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            return
+    print(len(s)+1)

@@ -1,39 +1,134 @@
-#问题陈述
-#给出长度为N的字符串s和t，都由小写英文字母组成。
-#让我们通过交替使用S和T的字符形成一个新的字符串，如下所示：S的第一个字符，T的第一个字符，S的第二个字符，T的第二个字符，...，S的第N个字符，T的第N个字符，打印这个新字符串。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#|S| = |T| = N
-#S和T是由小写英文字母组成的字符串。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S T
-#
-#輸出
-#打印形成的字符串。
-#
-#输入样本 1
-#2
-#ip cc
-#
-#样本输出1
-#icpc
-#
-#样本输入2
-#8
-#hmhmnknk uuuuuuuu
-#
-#样本输出2
-#humuhumunukunuku
-#
-#样本输入3
-#5
-#aaaaa aaaaa
-#
-#样本输出3
-#aaaaaaaaaa
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1:
+        if b == 2:
+            print(3)
+        else:
+            print(2)
+    elif a == 2:
+        if b == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if b == 1:
+            print(2)
+        else:
+            print(1)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    y = int(input())
+    if x == 1:
+        if y == 2:
+            print(3)
+        else:
+            print(2)
+    elif x == 2:
+        if y == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if y == 1:
+            print(2)
+        else:
+            print(1)
+
+=======
+Suggestion 3
+
+def solve():
+    A = int(input())
+    B = int(input())
+    if A == 1 and B == 2:
+        print(3)
+    elif A == 1 and B == 3:
+        print(2)
+    elif A == 2 and B == 1:
+        print(3)
+    elif A == 2 and B == 3:
+        print(1)
+    elif A == 3 and B == 1:
+        print(2)
+    elif A == 3 and B == 2:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    A = int(input())
+    B = int(input())
+    if A == 1 and B == 2:
+        print(3)
+    elif A == 1 and B == 3:
+        print(2)
+    elif A == 2 and B == 1:
+        print(3)
+    elif A == 2 and B == 3:
+        print(1)
+    elif A == 3 and B == 1:
+        print(2)
+    elif A == 3 and B == 2:
+        print(1)
+
+=======
+Suggestion 5
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 2:
+        print(1)
+    else:
+        pass
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    print(6-a-b)
+
+=======
+Suggestion 7
+
+def main():
+    A = int(input())
+    B = int(input())
+    if A == 1:
+        if B == 2:
+            print(3)
+        else:
+            print(2)
+    elif A == 2:
+        if B == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if B == 1:
+            print(2)
+        else:
+            print(1)

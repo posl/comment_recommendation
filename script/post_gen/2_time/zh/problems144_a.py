@@ -1,38 +1,150 @@
-#问题陈述
-#在学习了乘法表之后，高桥可以将1到9（包括）之间的两个整数相乘。他不能做任何其他计算。
-#给出的是两个整数A和B。
-#如果高桥能计算出A×B，请打印结果；如果他不能，请打印-1。
-#
-#限制条件
-#1 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#如果高桥能计算出A×B，打印结果；如果不能，打印-1。
-#
-#输入样本 1
-#2 5
-#
-#输出样本 1
-#10
-#2 × 5 = 10.
-#
-#样本输入2
-#5 10
-#
-#样本输出2
-#-1
-#5×10=50，但高桥不能做这个计算，所以打印-1代替。
-#
-#输入样本3
-#9 9
-#
-#样本输出 3
-#81
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def isTriangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    return False
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ok = j
+            ng = N
+            while abs(ok-ng) > 1:
+                mid = (ok+ng)//2
+                if L[mid] < L[i]+L[j]:
+                    ok = mid
+                else:
+                    ng = mid
+            ans += ok-j
+    print(ans)
+
+=======
+Suggestion 3
+
+def is_triangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    return False
+
+n = int(input())
+l = list(map(int, input().split()))
+l.sort()
+
+ans = 0
+for i in range(n):
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            if is_triangle(l[i], l[j], l[k]):
+                ans += 1
+print(ans)
+
+=======
+Suggestion 4
+
+def triangle():
+    n = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    count = 0
+    for i in range(n-2):
+        for j in range(i+1,n-1):
+            for k in range(j+1,n):
+                if L[i] + L[j] > L[k]:
+                    count += 1
+    print(count)
+triangle()
+
+=======
+Suggestion 5
+
+def triangle(n,l):
+    l.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 6
+
+def triagle(a,b,c):
+    if a<b+c and b<a+c and c<a+b:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def get_result(l):
+    n = len(l)
+    l.sort()
+    count = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    cnt = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k]:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def solution():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k]:
+                    count += 1
+    print(count)
+solution()
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+                else:
+                    break
+    print(count)

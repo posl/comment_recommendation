@@ -1,43 +1,108 @@
-#问题陈述
-#我们有一个序列p = {p_1, p_2, ..., p_N}，它是{1, 2, ..., N}的一个置换。
-#你最多可以进行一次以下操作：选择整数i和j（1 ≦ i < j ≦ N），然后交换p_i和p_j。请注意，你也可以选择不执行该操作。
-#如果你能以这种方式对p进行升序排序，则打印YES，否则打印NO。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 50
-#p是{1, 2, ..., N}的一个排列组合。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#p_1 p_2 ... p_N
-#
-#輸出
-#如果你能按照问题陈述中的方式对p进行升序排序，则打印YES，否则打印NO。
-#
-#输入样本 1
-#5
-#5 2 3 4 1
-#
-#样本输出1
-#YES
-#你可以通过交换p_1和p_5来对p进行升序排序。
-#
-#样本输入2
-#5
-#2 4 3 5 1
-#
-#样本输出2
-#NO
-#在这种情况下，交换任何两个元素都不会将p按升序排序。
-#
-#输入样本3
-#7
-#1 2 3 4 5 6 7
-#
-#样本输出3
-#YES
-#p已经按升序排序，所以不需要操作。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(a, b):
+    if (a+b)%2==0:
+        return (a+b)//2
+    else:
+        return "IMPOSSIBLE"
+
+a, b = map(int, input().split())
+print(solve(a, b))
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if (a+b)%2 == 0:
+        print((a+b)//2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSIBLE")
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 判断输出
+    if (a+b)%2 != 0:
+        print("IMPOSSIBLE")
+    else:
+        print((a+b)//2)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if (a+b)%2 == 0:
+        print(int((a+b)/2))
+    else:
+        print("IMPOSIBLE")
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a < b:
+        print(a)
+    elif a > b:
+        print(b)
+    else:
+        print("IMPOSSIBLE")
+main()
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int, input().split())
+    if a == b:
+        print("IMPOSSIBLE")
+    else:
+        print((a+b)//2)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    if (a+b)%2==0:
+        print(int((a+b)/2))
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 10
+
+def solution():
+    a,b = map(int, input().split())
+    if (a+b)%2 != 0:
+        print("IMPOSSIBLE")
+    else:
+        print((a+b)//2)

@@ -1,45 +1,222 @@
-#问题陈述
-#在作为(1,2,...,N)的排列组合且满足下列条件的序列P中，找出在词法上最小的序列。
-#对于每个i = 1, ..., M，A_i在P中比B_i早出现。
-#如果没有这样的P，打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#2 1
-#3 4
-#2 4
-#
-#输出样本 1
-#2 1 3 4
-#以下五个排列组合P满足条件：（2，1，3，4），（2，3，1，4），（2，3，4，1），（3，2，1，4），（3，2，4，1）。其中词汇学上最小的是（2，1，3，4）。
-#
-#输入样本 2
-#2 3
-#1 2
-#1 2
-#2 1
-#
-#样本输出2
-#-1
-#没有满足条件的排列组合P。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getDistance(a, b, n):
+    # a: length of wire
+    # b: burning speed
+    # n: number of wires
+    # return: distance between two fires
+    # the distance between two fires is determin
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    left = 0
+    right = 0
+    for i in range(N):
+        left += A[i]/B[i]
+        right += A[N-1-i]/B[N-1-i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]*(left-right)/2
+        left -= A[i]/B[i]
+        right += A[N-1-i]/B[N-1-i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    #print(a)
+    #print(b)
+    if n == 1:
+        print(a[0])
+        return
+    if n == 2:
+        print(a[0] + a[1])
+        return
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+    #print(total)
+    half = total / 2
+    #print(half)
+    for i in range(n):
+        if half < a[i] / b[i]:
+            print(half * b[i])
+            return
+        half -= a[i] / b[i]
+    print(total - half)
+
+=======
+Suggestion 4
+
+def solve(n, ab):
+    s = 0
+    for a, b in ab:
+        s += a / b
+    t = s / 2
+    s = 0
+    for a, b in ab:
+        if a / b < t:
+            s += a
+        else:
+            s += t * b
+            break
+    return s
+
+=======
+Suggestion 5
+
+def calc_distance(a, b):
+    return float(a) / (a + b)
+
+=======
+Suggestion 6
+
+def cal_distance(AB):
+    N = len(AB)
+    if N == 1:
+        return AB[0][0]
+    else:
+        left = AB[0][0]
+        right = AB[N-1][0]
+        while left < right:
+            mid = (left + right) / 2
+            sum = 0
+            for i in range(N):
+                if mid < AB[i][0]:
+                    sum += AB[i][0] - mid
+            if sum == mid:
+                return mid
+            elif sum > mid:
+                left = mid
+            else:
+                right = mid
+
+N = int(raw_input())
+AB = []
+for i in range(N):
+    AB.append(map(int, raw_input().split()))
+AB.sort()
+print cal_distance(AB)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = input().split()
+        a.append(int(ai))
+        b.append(int(bi))
+
+    # print(a)
+    # print(b)
+
+    # 从左到右
+    left = 0
+    for i in range(n):
+        left += a[i]
+    # print(left)
+
+    # 从右到左
+    right = 0
+    for i in range(n):
+        right += a[n - 1 - i]
+    # print(right)
+
+    # 从左到右
+    left_speed = 0
+    for i in range(n):
+        left_speed += b[i]
+    # print(left_speed)
+
+    # 从右到左
+    right_speed = 0
+    for i in range(n):
+        right_speed += b[n - 1 - i]
+    # print(right_speed)
+
+    # 两团火焰将在距离物体左端3厘米处相遇。
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+
+    # 两个火焰相遇的时间
+    t = left / (left_speed + right_speed)
+    # print(t)
+
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇
+
+=======
+Suggestion 8
+
+def get_distance(a, b, n):
+    """
+    二分法
+    :param a: a
+    :param b: b
+    :param n: n
+    :return: distance
+    """
+    left = 0
+    right = 1000
+    while left < right:
+        mid = (left + right) / 2
+        sum = 0
+        for i in range(n):
+            sum += a[i] / (mid - b[i])
+        if sum < 1:
+            right = mid
+        else:
+            left = mid
+    return left
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    total = sum(A)
+    half = total / 2
+    time = 0
+    for i in range(N):
+        time += A[i] / B[i]
+        if time >= half:
+            print(half * 2 - total)
+            break

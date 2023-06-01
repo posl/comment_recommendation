@@ -1,34 +1,93 @@
-#问题陈述
-#一个公寓AtCoder有N个楼层，从第1层到第N层。
-#每层楼有K个房间，从第1个房间到第K个房间。
-#这里，N和K都是一位数的整数，第i层的第j个房间的房间号为i0j。
-#例如，1楼的第2个房间的房间号为102。
-#经理高桥对公寓里所有房间的房号之和感兴趣，每个房间的房号都被看作是一个三位数的整数。
-#找到这个总和。
-#
-#限制条件
-#1 ≦ N,K ≦ 9
-#N和K是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#1 2
-#
-#样本输出 1
-#203
-#该公寓有两个房间101和102。
-#我们有101+102=203。
-#
-#样本输入2
-#3 3
-#
-#样本输出2
-#1818
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif a == c:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def get_input():
+    a, b, c = map(int, input().split())
+    return a, b, c
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = input().split()
+    if a==b:
+        print(c)
+    elif a==c:
+        print(b)
+    elif b==c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def dice_game(a,b,c):
+    if a == b:
+        return c
+    elif a == c:
+        return b
+    elif b == c:
+        return a
+    else:
+        return 0
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 逻辑处理
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int,input().split())
+    if a==b:
+        print(c)
+    elif b==c:
+        print(a)
+    elif c==a:
+        print(b)
+    else:
+        print(0)

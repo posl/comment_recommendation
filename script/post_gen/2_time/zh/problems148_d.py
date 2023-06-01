@@ -1,52 +1,112 @@
-#问题陈述
-#我们有N块砖，从左到右排列成一排。
-#从左边开始的第i块砖（1 ≦ i ≦ N）上写有一个整数a_i。
-#在这些砖块中，你最多可以打碎N-1块你选择的砖块。
-#让我们说还有K块砖头。如果对于每个整数i（1 ≦ i ≦ K），从左边开始的第i块砖上写有整数i，那么Snuke将得到满足。
-#找出你需要打碎的砖块的最小数量，以满足Snuke的愿望。如果他的愿望不能满足，就打印-1来代替。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 200000
-#1 ≦ a_i ≦ N
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#输出
-#打印为满足Snuke的愿望所需打碎的最小砖块数，如果他的愿望无法满足，则打印-1。
-#
-#输入样本 1
-#3
-#2 1 2
-#
-#样本输出1
-#1
-#如果我们打碎最左边的砖头，剩下的砖头上从左到右都写着整数1和2，在这种情况下，Snuke将得到满足。
-#
-#输入样本2
-#3
-#2 2 2
-#
-#样本输出 2
-#-1
-#在这种情况下，没有办法打破一些砖块来满足Snuke的愿望。
-#
-#样本输入3
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#样本输出 3
-#7
-#
-#样本输入4
-#1
-#1
-#
-#采样输出4
-#0
-#可能根本就不需要打碎砖块。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b,a%b)
+
+a,b = map(int,input().split())
+g = gcd(a,b)
+l = a*b//g
+print(l)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+a,b=map(int,input().split())
+g=gcd(a,b)
+print(a*b//g)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+c = gcd(a, b)
+print(a * b // c)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+A,B=map(int,input().split())
+g=gcd(A,B)
+lcm=A*B//g
+print(lcm)
+
+=======
+Suggestion 5
+
+def lcm(x, y):
+    return (x * y) // gcd(x, y)
+
+=======
+Suggestion 6
+
+def lcm(x, y):
+    if x > y:
+        greater = x
+    else:
+        greater = y
+    while True:
+        if greater % x == 0 and greater % y == 0:
+            lcm = greater
+            break
+        greater += 1
+    return lcm
+
+a, b = map(int, input().split())
+print(lcm(a, b))
+
+=======
+Suggestion 7
+
+def lcm(a,b):
+    return a*b//gcd(a,b)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    while b:
+        a, b = b, a%b
+    return a
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+print(a * b // g)
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(b,a%b)

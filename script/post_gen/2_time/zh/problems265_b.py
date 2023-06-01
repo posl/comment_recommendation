@@ -1,54 +1,128 @@
-#问题陈述
-#高桥在一个视频游戏中探索一个洞穴。
-#这个洞穴由N个房间组成，排成一排。  这些房间从入口处开始被编号为1,2,...,N。  
-#高桥最初在1号房间，时间限制为T。
-#对于每个1 ≦ i ≦ N-1，他可以消耗A_i的时间从房间i移动到房间（i+1）。  在房间之间没有其他的移动方式。
-#他不能做一个使时间限制为0或更少的移动。
-#山洞里有M个奖励房间。  第i个奖励房间是X_i室；当他到达该房间时，时间限制增加了Y_i。
-#高桥能到达N房间吗？
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-2
-#1 ≦ T ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#1 < X_1 < ...< X_M < N
-#1 ≦ Y_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M T
-#A_1 A_2 ...A_{N-1}
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_M Y_M
-#
-#输出
-#如果高桥能到达N房间，打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 1 10
-#5 7 5
-#2 10
-#
-#样本输出1
-#Yes
-#高桥最初在1号房间，时间限制是10。
-#他花了5分钟移到2号房间，现在的时限是5分钟。
-#他耗费了7的时间移动到3号房间，现在的时限是8。
-#他耗费了5分钟的时间移动到4号房间，现在的时限是3分钟。
-#
-#输入样本 2
-#4 1 10
-#10 7 5
-#2 10
-#
-#样本输出2
-#No
-#他不能从1号房间移动到2号房间。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y,n = map(int,input().split())
+    if n%3 == 0:
+        print(int(n/3*y))
+    elif n%3 == 1:
+        print(int((n-1)/3*y+x))
+    else:
+        print(int((n-2)/3*y+2*x))
+
+=======
+Suggestion 2
+
+def problem265_a():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print(int(y * n / 3))
+    elif n % 3 == 1:
+        print(int(y * (n - 1) / 3 + x))
+    else:
+        print(int(y * (n - 2) / 3 + 2 * x))
+
+problem265_a()
+
+=======
+Suggestion 3
+
+def solve():
+    X, Y, N = map(int, input().split())
+    ans = 0
+    for i in range(1, N + 1):
+        if i % 3 == 0:
+            ans += Y
+        else:
+            ans += X
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    X,Y,N = map(int, input().split())
+    print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+    #print(X*(N//Y) + (N%Y)*X//Y)
+
+=======
+Suggestion 5
+
+def main():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print(n // 3 * y)
+    else:
+        if n % 3 == 1:
+            print((n // 3 * y) + x)
+        else:
+            print((n // 3 * y) + y)
+
+=======
+Suggestion 6
+
+def buy_apple(x, y, n):
+    if n % 3 == 0:
+        return y * (n // 3)
+    else:
+        return y * (n // 3) + x * (n % 3)
+
+=======
+Suggestion 7
+
+def main():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print(x * n // 3)
+    elif n % 3 == 1:
+        print(min(x * (n - 1) // 3 + y, y * (n + 2) // 3))
+    else:
+        print(min(x * (n + 2) // 3, y * (n - 1) // 3 + x))
+
+=======
+Suggestion 8
+
+def get_minimum_cost(x, y, n):
+    if x == y:
+        return x * n
+    if n % 3 == 0:
+        return n / 3 * y
+    elif n % 3 == 1:
+        return (n / 3 + 1) * y
+    else:
+        return (n / 3 + 1) * y
+
+=======
+Suggestion 9
+
+def problem265_a(x, y, n):
+    if x == y:
+        return x * n
+    elif x > y:
+        return y * n
+    else:
+        return x * n + (n // 3) * (y - x)
+
+=======
+Suggestion 10
+
+def main():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print((n // 3) * y)
+    elif n % 3 == 1:
+        print((n // 3) * y + x)
+    else:
+        print((n // 3) * y + 2 * x)

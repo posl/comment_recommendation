@@ -1,42 +1,87 @@
-#问题陈述
-#高桥有许多红球和蓝球。现在，他要把它们摆成一排。
-#最初，没有放置任何球。
-#高桥很有耐心，他要做10^{100}次以下操作：
-#在已经放置的一排球的末端放置A蓝球。然后，在这一排球的末尾放置B红球。
-#这样做出来的一排球中，前N个球中会有多少个蓝球？
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < a + b ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N A B
-#
-#輸出
-#打印这一排球中前N个球中的蓝球数量。
-#
-#输入样本 1
-#8 3 4
-#
-#输出示例 1
-#4
-#让b表示一个蓝球，r表示一个红球。行中的前八个球将是bbbrrrrb，其中有四个蓝球。
-#
-#输入样本2
-#8 0 4
-#
-#样本输出2
-#0
-#他从一开始就只放红球。
-#
-#输入样本 3
-#6 2 4
-#
-#输出样本 3
-#2
-#在bbrrrrr中，有两个蓝球。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.count('A') == 1 or s.count('B') == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    # 读入
+    S = input()
+    # 处理
+    # 输出
+    if S[0] == S[1] == S[2]:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s.count('A') == 1 and s.count('B') == 2:
+        print('Yes')
+    elif s.count('A') == 2 and s.count('B') == 1:
+        print('Yes')
+    else:
+        print('No')
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    if S.count("A") == 1 or S.count("B") == 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if s.count('A') == 1 and s.count('B') == 1:
+        print('Yes')
+    else:
+        print('No')

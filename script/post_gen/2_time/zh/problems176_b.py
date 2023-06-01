@@ -1,35 +1,69 @@
-#问题陈述
-#一个整数N是9的倍数，当且仅当N的小数表示法中的数字之和是9的倍数。
-#确定N是否是9的倍数。
-#
-#约束条件
-#0 ≦ N < 10^{200000}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果N是9的倍数，打印Yes；否则，打印No。
-#
-#输入样本 1
-#123456789
-#
-#样本输出1
-#Yes
-#这些数字的总和是1+2+3+4+5+6+7+8+9=45，是9的倍数，所以123456789是9的倍数。
-#
-#输入样本2
-#0
-#
-#样本输出2
-#Yes
-#
-#样本输入3
-#31415926535897932384626433832795028841971693993751058209749445923078164062862089986280
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x,t = map(int, input().split())
+    print(int((n+x-1)/x*t))
+
+=======
+Suggestion 2
+
+def problem176_a():
+    n,x,t = map(int,input().split())
+    if n % x == 0:
+        print(n//x*t)
+    else:
+        print((n//x+1)*t)
+
+=======
+Suggestion 3
+
+def main():
+    n, x, t = map(int, input().split())
+    print((n + x - 1) // x * t)
+
+=======
+Suggestion 4
+
+def solve():
+    n,x,t = map(int,input().split())
+    if n%x == 0:
+        print(n//x*t)
+    else:
+        print((n//x+1)*t)
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    n, x, t = map(int, input().split())
+    # 计算结果
+    if n % x == 0:
+        result = int(n / x) * t
+    else:
+        result = (int(n / x) + 1) * t
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    n,x,t=map(int,input().split())
+    if n%x==0:
+        print(n//x*t)
+    else:
+        print((n//x+1)*t)
+
+=======
+Suggestion 7
+
+def main():
+    N, X, T = map(int, input().split())
+    num = N // X
+    if N % X != 0:
+        num += 1
+    print(num * T)

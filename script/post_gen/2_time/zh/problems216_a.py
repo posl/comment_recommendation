@@ -1,40 +1,129 @@
-#问题陈述
-#给你一个实数X.Y，其中Y是一个数字。
-#请打印以下内容：(为清楚起见引号)
-#X-, 如果0 ≦ Y ≦ 2；
-#X, 如果3 ≦ Y ≦ 6；
-#X+，如果7 ≦ Y ≦ 9。
-#
-#限制条件
-#1 ≦ X ≦ 15
-#0 ≦ Y ≦ 9
-#X和Y是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X.Y
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#15.8
-#
-#样本输出1
-#15+
-#这里不接受打印15+：不要在X和+之间，或X和-之间打印空格。
-#
-#输入样本2
-#1.0
-#
-#样本输出2
-#1-
-#你将不会得到诸如1.00和1的输入。
-#
-#样本输入3
-#12.5
-#
-#样本输出3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+ans=[]
+ans.append(1)
+for i in range(2,m+1):
+    flag=0
+    for j in range(n):
+        if gcd(a[j],i)!=1:
+            flag=1
+            break
+    if flag==0:
+        ans.append(i)
+print(len(ans))
+for i in ans:
+    print(i)
+
+=======
+Suggestion 2
+
+def gcd(x, y):
+    if x < y:
+        x, y = y, x
+    while y != 0:
+        r = x % y
+        x = y
+        y = r
+    return x
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+
+max_A = max(A)
+max_M = max(M, max_A)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+
+A.sort()
+A = list(set(A))
+
+ans = 0
+for i in range(1, M + 1):
+    flag = True
+    for j in range(len(A)):
+        if gcd(A[j], i) != 1:
+            flag = False
+            break
+    if flag:
+        ans += 1
+        print(i)
+
+print(ans)
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 8
+
+def gcd(x,y):
+    if x % y == 0:
+        return y
+    else:
+        return gcd(y,x%y)
+
+=======
+Suggestion 9
+
+def gcd(m,n):
+    if m<n:
+        m,n=n,m
+    if n==0:
+        return m
+    else:
+        return gcd(n,m%n)

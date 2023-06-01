@@ -1,82 +1,117 @@
-#问题陈述
-#给你一个有H_1行和W_1列的矩阵A，以及一个有H_2行和W_2列的矩阵B。
-#对于所有整数对(i, j)，如1 ≦ i ≦ H_1和1 ≦ j ≦ W_1，矩阵A的第i行和第j列的元素是A_{i, j}。
-#对于所有整数对（i, j），使得1 ≦ i ≦ H_2和1 ≦ j ≦ W_2，矩阵B的第i行和第j列的元素是B_{i, j}。
-#你可以对矩阵A按任意顺序进行以下操作（可能是0次）：
-#选择A的任意一行并将其删除。
-#选择A的任意一列并将其删除。
-#判断是否有可能使矩阵A等于矩阵B。
-#
-#限制条件
-#1 ≦ h_2 ≦ h_1 ≦ 10
-#1 ≦ w_2 ≦ w_1 ≦ 10
-#1 ≦ A_{i, j} ≦ 10^9
-#1 ≦ B_{i, j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H_1 W_1
-#A_{1, 1} A_{1, 2} ...A_{1, W_1}
-#A_{2, 1} A_{2, 2} ...A_{2, W_1}
-#.
-#.
-#.
-#A_{H_1, 1} A_{H_1, 2} ...A_{H_1, W_1}.
-#H_2 W_2
-#B_{1, 1} B_{1, 2} ...B_{1, W_2}
-#B_{2, 1} B_{2, 2} ...B_{2, W_2}
-#.
-#.
-#.
-#B_{H_2, 1} B_{H_2, 2} ...B_{H_2, W_2}
-#
-#输出
-#如果有可能使矩阵A等于矩阵B，则打印Yes；
-#否则打印No。
-#注意，法官是区分大小写的。
-#
-#输入样本 1
-#4 5
-#1 2 3 4 5
-#6 7 8 9 10
-#11 12 13 14 15
-#16 17 18 19 20
-#2 3
-#6 8 9
-#16 18 19
-#
-#样本输出1
-#Yes
-#从最初的A中去掉第2列，结果是：
-#1 3 4 5
-#6 8 9 10
-#11 13 14 15
-#16 18 19 20
-#然后，从A中去掉第3行的结果是：
-#1 3 4 5
-#6 8 9 10
-#16 18 19 20
-#然后，从A中去掉第1行的结果是：
-#6 8 9 10
-#16 18 19 20
-#然后，从A中去掉第4列的结果是：
-#6 8 9
-#16 18 19
-#现在该矩阵等于矩阵B。
-#因此，我们可以通过重复操作使矩阵A等于矩阵B，所以应该打印出是。
-#
-#输入样本 2
-#3 3
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1
-#2
-#
-#样本输出2
-#No
-#无论我们如何进行操作，我们都不能使矩阵A等于矩阵B、
-#所以应该打印No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    R,C=map(int,input().split())
+    if R%2==0:
+        if C%2==0:
+            print("白色")
+        else:
+            print("黑色")
+    else:
+        if C%2==0:
+            print("黑色")
+        else:
+            print("白色")
+main()
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    r, c = map(int, input().split())
+
+    # 判断
+    if r % 2 == 0:
+        if c % 2 == 0:
+            print('白色')
+        else:
+            print('黑色')
+    else:
+        if c % 2 == 0:
+            print('黑色')
+        else:
+            print('白色')
+
+=======
+Suggestion 3
+
+def main():
+    R, C = map(int, input().split())
+    if (R + C) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")
+
+=======
+Suggestion 4
+
+def main():
+    R, C = input().split()
+    R = int(R)
+    C = int(C)
+    if (R + C) % 2 == 0:
+        print('黑色')
+    else:
+        print('白色')
+
+=======
+Suggestion 5
+
+def main():
+    r,c = map(int,input().split())
+    if (r + c) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")
+
+=======
+Suggestion 6
+
+def main():
+    R, C = input().split()
+    R = int(R)
+    C = int(C)
+    if (R + C) % 2 == 0:
+        print("黑色")
+    else:
+        print("白色")
+
+=======
+Suggestion 7
+
+def get_color(r,c):
+    return "黑色" if (r+c)%2 == 0 else "白色"
+
+=======
+Suggestion 8
+
+def main():
+    r,c = map(int,input().split())
+    if r%2==0:
+        if c%2==0:
+            print("白色")
+        else:
+            print("黑色")
+    else:
+        if c%2==0:
+            print("黑色")
+        else:
+            print("白色")
+
+=======
+Suggestion 9
+
+def main():
+    R,C = map(int,input().split())
+    if R%2 == 0 and C%2 == 0:
+        print("白色")
+    elif R%2 == 0 and C%2 != 0:
+        print("黑色")
+    elif R%2 != 0 and C%2 == 0:
+        print("黑色")
+    elif R%2 != 0 and C%2 != 0:
+        print("白色")

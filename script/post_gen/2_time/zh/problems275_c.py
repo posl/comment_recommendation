@@ -1,51 +1,99 @@
-#问题陈述
-#有一个二维平面。对于1到9之间的整数r和c，如果S_{r}的第c个字符是#，则在坐标(r,c)处有一个卒，如果S_{r}的第c个字符是...，则没有卒。
-#求该平面内四个顶点都有棋子的方格数。
-#
-#限制条件
-#S_1,...,S_9中的每一个都是一个长度为9的字符串，由#和...组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S_1
-#S_2
-#.
-#.
-#.
-#S_9
-#
-#输出
-#打印答案。
-#
-#输入样本1
-###.......
-###.......
-#.........
-#.......#.
-#.....#...
-#........#
-#......#..
-#.........
-#.........
-#
-#样本输出1
-#2
-#顶点为(1,1)、(1,2)、(2,2)和(2,1)的正方形在所有四个顶点上都有棋子。
-#顶点为(4,8)、(5,6)、(7,7)和(6,9)的广场也在所有四个顶点上都有棋子。
-#因此，答案是2。
-#
-#输入样本2
-#.#.......
-##.#......
-#.#.......
-#.........
-#....#.#.#
-#.........
-#....#.#.#
-#........#
-#.........
-#
-#样本输出2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c,d,e,f = map(int, input().split())
+    if a*b*c >= d*e*f:
+        print((a*b*c-d*e*f) % 998244353)
+    else:
+        print((d*e*f-a*b*c) % 998244353)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    line = input()
+    # 用空格分隔输入
+    A, B, C, D, E, F = map(int, line.split())
+    # 计算结果
+    result = A * B * C - D * E * F
+    # 打印结果
+    print(result % 998244353)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, C, D, E, F = map(int, input().split())
+    print((A*B*C-D*E*F)%998244353)
+
+=======
+Suggestion 4
+
+def problems275_b():
+    #读取输入
+    line = input()
+    #分割输入
+    line = line.split()
+    #将输入的字符串转换为整数
+    line = list(map(int, line))
+    #将输入的整数赋值给变量
+    A = line[0]
+    B = line[1]
+    C = line[2]
+    D = line[3]
+    E = line[4]
+    F = line[5]
+    #计算（A×B×C）-（D×E×F）除以998244353时的余数
+    result = (A*B*C - D*E*F) % 998244353
+    #输出结果
+    print(result)
+
+=======
+Suggestion 5
+
+def problems275_b():
+    pass
+
+=======
+Suggestion 6
+
+def problem275_b():
+    a,b,c,d,e,f = map(int,input().split())
+    if a*b*c >= d*e*f:
+        print((a*b*c-d*e*f)%998244353)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    A, B, C, D, E, F = map(int, input().split())
+    #print(A, B, C, D, E, F)
+    #print(A*B*C, D*E*F)
+    if A*B*C >= D*E*F:
+        print((A*B*C - D*E*F) % 998244353)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    # 输入
+    A, B, C, D, E, F = map(int, input().split())
+
+    # 乘法的结果
+    ABC = A * B * C
+    DEF = D * E * F
+
+    # 乘法的结果对998244353取模
+    ABC = ABC % 998244353
+    DEF = DEF % 998244353
+
+    # 输出
+    print((ABC - DEF) % 998244353)

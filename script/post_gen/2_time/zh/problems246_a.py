@@ -1,37 +1,109 @@
-#问题陈述
-#在xy平面上有一个矩形。这个矩形的每条边都平行于x轴或y轴，其面积不为零。
-#给出这个矩形的四个顶点中的三个顶点（x_1, y_1）、（x_2, y_2）和（x_3, y_3）的坐标，求另一个顶点的坐标。
-#
-#限制条件
-#-100 ≦ x_i, y_i ≦ 100
-#唯一存在一个以(x_1, y_1), (x_2, y_2), (x_3, y_3)为顶点的矩形，边与x轴或y轴平行，面积不为零。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1
-#x_2 y_2
-#x_3 y_3
-#
-#输出
-#以下列格式打印所寻求的坐标（x，y），并以空格分隔：
-#x y
-#
-#输入样本 1
-#-1 -1
-#-1 2
-#3 2
-#
-#样本输出 1
-#3 -1
-#顶点为（-1，-1），（-1，2），（3，2）的矩形的另一个顶点是（3，-1）。
-#
-#输入样本 2
-#-60 -40
-#-60 -80
-#-20 -80
-#
-#样本输出2
-#-20 -40
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    b = []
+    for i in range(m+1):
+        b.append(0)
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j] += a[i] * c[i+j]
+    for i in range(m+1):
+        print(b[i], end=' ')
+    print()
+
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0]*(m+1)
+    b[m] = c[-1]//a[-1]
+    for i in range(m-1,-1,-1):
+        b[i] = (c[i]-sum([b[i+j+1]*a[j+1] for j in range(m-i)]))//a[0]
+    print(*b)
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    B = [0]*(m+1)
+    for i in range(n+1):
+        B[m] += C[n+m-i]*A[i]
+    for i in range(m+1):
+        B[i] = (C[i]-B[m])//A[0]
+    print(' '.join(map(str,B)))
+
+=======
+Suggestion 5
+
+def main():
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    b=[0]*(m+1)
+    for i in range(m+1):
+        b[i]=c[i]-sum([a[j]*b[i-j] for j in range(i)])
+    print(*b)
+
+=======
+Suggestion 6
+
+def getB(n, m, A, C):
+    B = [0 for i in range(m + 1)]
+    B[0] = C[0] // A[0]
+    for i in range(1, m + 1):
+        B[i] = (C[i] - sum([B[j] * A[i - j] for j in range(i)])) // A[0]
+    return B
+
+=======
+Suggestion 7
+
+def main():
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    b=[0]*(m+1)
+    b[0]=c[0]/a[0]
+    for i in range(1,m+1):
+        b[i]=(c[i]-sum([b[j]*a[i-j] for j in range(1,i+1)]))/a[0]
+    for i in range(m+1):
+        print(int(b[i]),end=' ')
+
+=======
+Suggestion 8
+
+def f(x):
+    return sum([a[i] * x ** i for i in range(n + 1)])
+
+=======
+Suggestion 9
+
+def solve(n,m,a,c):
+    b=[0]*(m+1)
+    for i in range(m+1):
+        b[i]=c[i]
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j]-=a[i]
+        for j in range(m,0,-1):
+            b[j-1]+=b[j]
+    return b

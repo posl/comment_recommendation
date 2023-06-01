@@ -1,68 +1,74 @@
-#问题陈述
-#我们有N个奶油泡芙。
-#请找出所有可能的人数，以便在不切割奶油泡芙的情况下将其均匀地分配给这些人。
-#
-#限制条件
-#1 ≦ N ≦ 10^{12}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#按升序打印人的数量，每个人都在自己的行中。
-#
-#输入样本 1
-#6
-#
-#样本输出 1
-#1
-#2
-#3
-#6
-#例如，我们可以把奶油泡芙均匀地分给两个人，每人给三个。
-#
-#样本输入2
-#720
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#6
-#8
-#9
-#10
-#12
-#15
-#16
-#18
-#20
-#24
-#30
-#36
-#40
-#45
-#48
-#60
-#72
-#80
-#90
-#120
-#144
-#180
-#240
-#360
-#720
-#
-#样本输入3
-#1000000007
-#
-#样品输出3
-#1
-#1000000007
+Synthesizing 8/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = list(map(int,input().split()))
+    x = [abs(i) for i in x]
+    print(sum(x))
+    print(sum([i**2 for i in x])**0.5)
+    print(max(x))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    X = list(map(int,input().split()))
+    manhattan_distance = 0
+    euclidean_distance = 0
+    chebyshev_distance = 0
+    for i in range(N):
+        manhattan_distance += abs(X[i])
+        euclidean_distance += X[i]**2
+        chebyshev_distance = max(chebyshev_distance,abs(X[i]))
+    euclidean_distance = euclidean_distance**0.5
+    print(manhattan_distance)
+    print(euclidean_distance)
+    print(chebyshev_distance)
+
+=======
+Suggestion 3
+
+def manhattan_distance(x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 4
+
+def manhattan_distance(x):
+    return sum(map(abs, x))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    for i in range(n):
+        x[i] = abs(x[i])
+    print(sum(x))
+    print(sum([i ** 2 for i in x]) ** 0.5)
+    print(max(x))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x_abs = list(map(abs, x))
+    print(sum(x_abs))
+    print(sum(map(lambda x: x * x, x_abs)) ** 0.5)
+    print(max(x_abs))
+
+=======
+Suggestion 7
+
+def manhattan_distance(x):
+    sum = 0
+    for i in x:
+        sum += abs(i)
+    return sum

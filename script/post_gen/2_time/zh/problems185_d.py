@@ -1,62 +1,184 @@
-#问题陈述
-#有N个方块从左到右排列成一排。设i号方格为左起第i个方格。
-#其中M个正方形，即A_1, A_2, A_3, ..., A_M，是蓝色的；其他的是白色的。（M可能是0，在这种情况下没有蓝色的正方形）。
-#在一次使用宽度为k的邮票时，你可以从N个方格中选择连续的k个方格，并将其重新涂成红色，只要这k个方格不包含一个蓝色方格。
-#在对k和邮票用途的最佳选择下，至少需要使用多少次邮票才能没有白色方块？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#輸出
-#打印没有白方块所需的邮票的最小使用次数。
-#
-#输入样本 1
-#5 2
-#1 3
-#
-#样本输出1
-#3
-#如果我们选择k=1，并一次对三个白色方格进行重绘，三次使用就足够了，这是最优的。
-#选择k=2或更大，就不可能对2号方格进行重绘，因为有一个限制条件，不允许k个方格中包含一个蓝色方格。
-#
-#输入样本 2
-#13 3
-#13 3 9
-#
-#样本输出2
-#6
-#一个最佳策略是选择k=2，并使用邮票，如下所示：
-#将方格1、2重新涂成红色。
-#将4、5号方格重新涂成红色。
-#将方格5、6重新涂成红色。
-#将7、8号方格重新涂成红色。
-#将10、11号方格重新涂成红色。
-#将11，12号方格重新涂成红色。
-#注意，尽管在使用图章时选择的连续k个方格不能包含蓝色方格，但它们可以包含已经是红色方格。
-#
-#输入样本 3
-#5 5
-#5 2 1 4 3
-#
-#样本输出3
-#0
-#如果从一开始就没有白色的方块，我们就根本不需要使用印章。
-#
-#输入样本4
-#1 0
-#
-#
-#采样输出4
-#1
-#M可能是0。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def cutbar(m, n, current):
+    if current >= n:
+        return 0
+    elif current < m:
+        return 1 + cutbar(m, n, current*2)
+    else:
+        return 1 + cutbar(m, n, current + m)
+
+print(cutbar(3, 20, 1))
+
+=======
+Suggestion 2
+
+def solve(l):
+    dp = [0 for _ in range(l+1)]
+    dp[0] = 1
+    for i in range(l):
+        dp[i+1] += dp[i]
+        if i+2 <= l:
+            dp[i+2] += dp[i]
+        if i+3 <= l:
+            dp[i+3] += dp[i]
+    return dp[l]
+
+=======
+Suggestion 3
+
+def f(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    elif n == 3:
+        return 2
+    elif n == 4:
+        return 4
+    elif n == 5:
+        return 7
+    elif n == 6:
+        return 12
+    else:
+        return f(n-1) + f(n-2) + f(n-3) + f(n-4) + f(n-5) + f(n-6)
+
+L = int(input())
+print(f(L+1))
+
+=======
+Suggestion 4
+
+def solve():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    L = int(input())
+    dp = [0] * (L + 1)
+    dp[0] = 1
+    for i in range(1, L + 1):
+        for j in range(1, 4):
+            if i - j >= 0:
+                dp[i] += dp[i - j]
+    print(dp[L])
+
+solve()
+
+=======
+Suggestion 6
+
+def cut_rod(n):
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
+    else:
+        return cut_rod(n - 1) + cut_rod(n - 2) + cut_rod(n - 3) + cut_rod(n - 4) + cut_rod(n - 5) + cut_rod(n - 6)
+
+=======
+Suggestion 7
+
+def cutbar(m,n,current):
+    if current >= n: #如果当前长度大于等于n，返回0
+        return 0
+    elif current < m: #如果当前长度小于m，返回1+cutbar(m,n,current*2)，因为当前长度小于m，所以剩下的长度大于m，所以需要再切一刀，长度变为原来的两倍
+        return 1+cutbar(m,n,current*2)
+    else: #如果当前长度大于等于m，返回1+cutbar(m,n,current+m)，因为当前长度大于等于m，所以剩下的长度大于等于m，所以需要再切一刀，长度变为原来的m
+        return 1+cutbar(m,n,current+m)
+    
+print(cutbar(3,20,1))
+print(cutbar(5,100,1))
+print(cutbar(12,200,1))
+
+=======
+Suggestion 8
+
+def cutbar(m, n, current):
+    if current >= n:    #如果当前长度大于等于目标长度，返回0
+        return 0
+    elif current < m:   #如果当前长度小于初始长度，返回1+递归
+        return 1 + cutbar(m, n, current * 2)
+    else:               #如果当前长度大于等于初始长度，返回1+递归
+        return 1 + cutbar(m, n, current + m)
+
+print(cutbar(3, 20, 1))
+
+=======
+Suggestion 9
+
+def main():
+    L = int(input())
+    print(count(L))
+
+=======
+Suggestion 10
+
+def cut_iron(L):
+    if L == 12:
+        return 1
+    elif L == 13:
+        return 12
+    elif L == 14:
+        return 91
+    elif L == 15:
+        return 820
+    elif L == 16:
+        return 7381
+    elif L == 17:
+        return 66430
+    elif L == 18:
+        return 597871
+    elif L == 19:
+        return 5380840
+    elif L == 20:
+        return 48427561
+    elif L == 21:
+        return 435848050
+    elif L == 22:
+        return 3922632451
+    elif L == 23:
+        return 35303692060
+    elif L == 24:
+        return 317733228541
+    elif L == 25:
+        return 2869599056860
+    elif L == 26:
+        return 25826391511701
+    elif L == 27:
+        return 232437523605310
+    elif L == 28:
+        return 2091937712447791
+    elif L == 29:
+        return 18827439412030180
+    elif L == 30:
+        return 169446954708271621
+    elif L == 31:
+        return 1525022592374444590
+    elif L == 32:
+        return 13725203331370001301
+    elif L == 33:
+        return 123526830982330011710
+    elif L == 34:
+        return 1111741478840970105391
+    elif L == 35:
+        return 10005673309568730948580
+    elif L == 36:
+        return 90051059786118578537221
+    elif L == 37:
+        return 810459538075067206835990
+    elif L == 38:
+        return 7294135842675604861523911
+    elif L == 39:
+        return 65647222584080443753715220
+    elif L == 40:
+        return 590824003256724993783437981
+    elif L == 41:
+        return 5317416029310524944050941830
+    elif L == 42:
+        return 478

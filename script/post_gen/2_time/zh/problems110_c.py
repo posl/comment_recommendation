@@ -1,45 +1,151 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S和T。
-#你可以对S进行如下操作，次数不限：
-#操作：选择两个不同的小写英文字母c_1和c_2，然后用c_2替换c_1的每次出现，用c_1替换c_2的每次出现。
-#判断S和T是否可以通过执行零次或多次的操作而变得相等。
-#
-#约束条件
-#1 ≦ |S| ≦ 2 × 10^5
-#|S| = |T|
-#S和T由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#輸出
-#如果S和T可以相等，打印Yes；否则，打印No。
-#
-#输入样本1
-#azzel
-#apple
-#
-#样本输出1
-#Yes
-#azzel可以改成apple，方法如下：
-#选择e为c_1，l为c_2，azzel变成azzle。
-#选择z为c_1，p为c_2，azzle变为apple。
-#
-#输入样本2
-#chokudai
-#Redder
-#
-#样本输出2
-#No
-#没有操作序列可以将chokudai改为redcoder。
-#
-#输入样本3
-#abcdefghijklmnopqrstuvwxyz
-#ibyhqfrekavclxjstdwgpzmonu
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] < y_list[0] and x < y:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 2
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    if max(x_list) < min(y_list) and x < min(y_list) and max(x_list) < y:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 3
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x = x + 1
+    y = y - 1
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] > y_list[0]:
+        print('War')
+    else:
+        print('No War')
+
+=======
+Suggestion 4
+
+def main():
+    n,m,x,y = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    y_list = list(map(int,input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] < y_list[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 5
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    for z in range(x + 1, y + 1):
+        if max(x_list) < z and min(y_list) >= z:
+            print("No War")
+            return
+    print("War")
+
+=======
+Suggestion 6
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+
+    for z in range(x+1, y+1):
+        if max(x_list) < z and min(y_list) >= z:
+            print("No War")
+            return
+
+    print("War")
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N,M,X,Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x.append(X)
+    y.append(Y)
+    x.sort()
+    y.sort()
+    if x[-1] < y[0]:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 8
+
+def main():
+    n,m,x,y = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    y_list = list(map(int,input().split()))
+    for i in range(x+1,y+1):
+        if i in x_list and i in y_list:
+            print("No War")
+            break
+    else:
+        print("War")
+
+=======
+Suggestion 9
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x.sort()
+    y.sort()
+    x_max = x[N-1]
+    y_min = y[0]
+    if x_max >= y_min:
+        print("War")
+    else:
+        if X < x_max < Y and X < y_min < Y:
+            print("No War")
+        else:
+            print("War")
+
+=======
+Suggestion 10
+
+def readinput():
+    n,m,x,y=map(int,input().split())
+    xlist=list(map(int,input().split()))
+    ylist=list(map(int,input().split()))
+    return n,m,x,y,xlist,ylist

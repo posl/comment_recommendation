@@ -1,38 +1,43 @@
-#问题陈述
-#给你一个由0、1、6、8、9组成的字符串S。
-#将S旋转180度并打印结果。换句话说，对S进行以下操作并打印出结果的字符串：
-#反转S。
-#用0代替每个0，用1代替每个1，用9代替每个6，用8代替每个8，用6代替每个9。
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S由0, 1, 6, 8, 和9组成。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印S旋转180度的结果。
-#
-#输入样本1
-#0601889
-#
-#样本输出1
-#6881090
-#将0601889旋转180度的结果是6881090。
-#
-#样本输入2
-#86910
-#
-#样本输出2
-#01698
-#
-#样品输入3
-#01010
-#
-#样品输出3
-#01010
-#S可以保持不变。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    print(21-a-b-c)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = input().split()
+    print(int(a)+int(b)+int(c))
+
+=======
+Suggestion 3
+
+def dice_sum(a, b, c):
+    return 7 - a + 7 - b + 7 - c
+
+=======
+Suggestion 4
+
+def main():
+    dice = input().split()
+    print(21 - int(dice[0]) - int(dice[1]) - int(dice[2]))
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    print(21 - a - b - c)
+
+main()
+
+=======
+Suggestion 6
+
+def dice_sum(a, b, c):
+    return 21 - a - b - c

@@ -1,31 +1,139 @@
-#问题陈述
-#我们有五个变量x_1, x_2, x_3, x_4, 和x_5。
-#变量x_i最初被赋值为i。
-#Snuke从这些变量中选择了一个，并将其赋值为0。
-#在这次分配之后，你得到了五个变量的值。
-#找出Snuke分配给哪个变量的0。
-#
-#限制条件
-#输入的x_1、x_2、x_3、x_4和x_5的值是Snuke分配的可能结果。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 x_2 x_3 x_4 x_5
-#
-#输出
-#如果变量Snuke分配的0是x_i，则打印整数i。
-#
-#输入样本 1
-#0 2 3 4 5
-#
-#输出样本 1
-#1
-#在这种情况下，Snuke给x_1分配了0，所以我们应该打印1。
-#
-#输入样本2
-#1 2 0 4 5
-#
-#输出样本 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def prime_factorization(N):
+    prime_factor = []
+    i = 2
+    while i * i <= N:
+        while N % i == 0:
+            prime_factor.append(i)
+            N //= i
+        i += 1
+    if N > 1:
+        prime_factor.append(N)
+    return prime_factor
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    count = 0
+    while True:
+        flag = False
+        for i in range(2, n):
+            if n % i == 0:
+                flag = True
+                n = n // i
+                count += 1
+                break
+        if not flag:
+            break
+    print(count)
+
+=======
+Suggestion 4
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            if i not in factors:
+                factors.append(i)
+    if n > 1:
+        if n not in factors:
+            factors.append(n)
+    return factors
+
+=======
+Suggestion 5
+
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+
+    return True
+
+=======
+Suggestion 6
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+=======
+Suggestion 7
+
+def prime_factors(n):
+    i = 2
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            yield i
+    if n > 1:
+        yield n
+
+=======
+Suggestion 8
+
+def get_prime_factor(n):
+    factor = []
+    if n < 2:
+        return factor
+    for i in range(2, n + 1):
+        if i * i > n:
+            break
+        while n % i == 0:
+            n //= i
+            factor.append(i)
+    if n > 1:
+        factor.append(n)
+    return factor
+
+=======
+Suggestion 9
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+
+import sys
+N = int(sys.stdin.readline())

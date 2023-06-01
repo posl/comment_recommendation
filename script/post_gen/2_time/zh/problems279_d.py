@@ -1,48 +1,73 @@
-#问题陈述
-#一个叫高桥的超人要从一栋大楼的屋顶上跳下，去帮助一个在地面上有困难的人。
-#高桥的星球上有一个代表重力强度的恒定值g，他开始下落后到达地面的时间是（A/((g)^(1/2))。
-#现在是时间0，而g=1。
-#高桥将进行以下操作，想做多少次就做多少次（可能是0）。
-#使用超能力将g的值增加1，这需要一个B的时间。
-#然后，他将跳下大楼。此外，我们只考虑执行操作和下降所需的时间。
-#找到高桥能到达地面的最早时间。
-#
-#限制条件
-#1 ≦ A ≦ 10^{18}
-#1 ≦ B ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#A B
-#
-#輸出
-#打印高桥能到达地面的最早时间。
-#当你的输出与真实值的绝对或相对误差最多为10^{-6}时，你的输出将被接受。
-#
-#输入样本 1
-#10 1
-#
-#样本输出1
-#7.7735026919
-#如果他执行了零次操作，他将在1×0+((10)/((1)^(1/2))=10的时间到达地面。
-#如果他进行一次操作，他将在1×1+((10)/((2)^(1/2))≒8.07时间到达地面。
-#如果他进行两次操作，他将在1×2+((10)/((3)^(1/2))≒7.77的时间到达地面。
-#如果他做了三次手术，他将在1×3+((10)/((4)^(1/2))≒8时到达地面。
-#进行四次或更多次的操作只会推迟到达地面的时间。
-#因此，最好在跳下之前进行两次操作，答案是2+((10)/((3)^(1/2))。
-#
-#输入样本 2
-#5 10
-#
-#样本输出2
-#5.0000000000
-#最佳的做法是完全不进行操作。
-#
-#样本输入3
-#1000000000000000000 100
-#
-#样本输出3
-#8772053214538.5976562500
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    T = [input() for _ in range(H)]
+    print('Yes' if S == T else 'No')
+
+=======
+Suggestion 4
+
+def main():
+    h,w = map(int,input().split())
+    s = [input() for i in range(h)]
+    t = [input() for i in range(h)]
+    s = ["".join(s[i]) for i in range(h)]
+    t = ["".join(t[i]) for i in range(h)]
+    s.sort()
+    t.sort()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def solve():
+    h, w = map(int, input().split())
+    s = []
+    t = []
+    for i in range(h):
+        s.append(list(input()))
+    for i in range(h):
+        t.append(list(input()))
+    s.sort()
+    t.sort()
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] != t[i][j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def myfunc():
+    pass
+
+=======
+Suggestion 7
+
+def check(s,t):
+    for i in range(len(s)):
+        if s[i]!=t[i]:
+            return False
+    return True

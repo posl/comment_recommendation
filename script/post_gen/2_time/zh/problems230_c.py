@@ -1,60 +1,106 @@
-#问题说明
-#有一个N×N的横行竖列的网格，所有的方块最初都是白色的。让(i,j)表示位于第i行和第j列的方格。
-#高桥有整数A和B，它们在1和N之间（包括在内）。他将进行以下操作。
-#对于每一个整数k，使得max(1-A,1-B)≦ k≦ min(N-A,N-B)，将(A+k,B+k)涂黑。
-#对于每个整数k，如max(1-A,B-N)≦ k≦ min(N-A,B-1)，将(A+k,B-k)涂成黑色。
-#在这些操作之后的网格中，找出每个方格（i,j）的颜色，使得P≦ i≦ Q和R≦ j≦ S。
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#P Q R S
-#
-#输出
-#打印Q-P+1行。
-#每一行应该包含一个长度为S-R+1的字符串，由#和.组成。
-#第i行中字符串的第j个字符应该是#，表示(P+i-1, R+j-1)被涂成黑色，而.表示(P+i-1, R+j-1)是白色。  
-#
-#输入样本 1
-#5 3 2
-#1 5 1 5
-#
-#输出样本1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#第一个操作将(2,1), (3,2), (4,3), (5,4)四个方块涂成黑色，第二个操作将(4,1), (3,2), (2,3), (1,4)四个方块涂成黑色。
-#因此，上述输出应该被打印出来，因为P=1，Q=5，R=1，S=5。
-#
-#输入样本 2
-#5 3 3
-#4 5 2 5
-#
-#输出样本2
-##.#.
-#...#
-#操作画出九个方块（1,1）、（1,5）、（2,2）、（2,4）、（3,3）、（4,2）、（4,4）、（5,1）、（5,5）。
-#因此，上述输出应该被打印出来，因为P=4，Q=5，R=2，S=5。
-#
-#输入样本3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#输出样本3
-##.#
-#.#.
-##.#
-#注意，输入可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if 'o' in s and 'x' in s:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.count('o') == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if 'o' in s:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def isSubString(T, S):
+    index = 0
+    for t in T:
+        if t == S[index]:
+            index += 1
+        if index == len(S):
+            return True
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s == "ox" or s == "xo":
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s == 'ox' or s == 'xo':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def solve():
+    S = input()
+    T = 'x' * 10**5
+    if S in T:
+        print('Yes')
+    else:
+        print('No')
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if len(s) == 2:
+        if s[0] == 'o' or s[1] == 'o':
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    if S.find("oo") != -1:
+        print("Yes")
+    elif S.find("xx") != -1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def get_input():
+    return input()

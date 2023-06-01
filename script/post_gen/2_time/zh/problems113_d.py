@@ -1,65 +1,250 @@
-#问题陈述
-#Amidakuji是日本的一种传统抽奖方法。
-#为了做一个Amidakuji，我们首先画W条平行的垂直线，然后画连接它们的水平线。每条垂直线的长度为H+1[cm]，水平线的端点必须在距离垂直线顶端的1，2，3，...，或H[cm]处。
-#一个有效的羊皮纸是满足以下条件的羊皮纸：
-#没有两条水平线共享一个端点。
-#每条水平线的两个端点必须在同一高度。
-#一条水平线必须连接相邻的垂直线。
-#找出满足以下条件的有效羊皮纸的数量，模数为1 000 000 007：如果我们从最左边的垂直线的顶部追踪到底部，当我们遇到水平线时，我们会从左边到达第K条垂直线的底部。
-#例如，在下面的amidakuji中，我们将到达左起第四条垂直线的底部。
-#
-#限制条件
-#H是1到100（包括）之间的整数。
-#W是1到8之间的整数（包括在内）。
-#K是1和W之间的整数（包括在内）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W K
-#
-#輸出
-#打印满足条件的Amidakuji的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#1 3 2
-#
-#输出样本 1
-#1
-#只有下面的一个Amidakuji满足条件：
-#
-#样本输入 2
-#1 3 1
-#
-#样本输出 2
-#2
-#只有以下两个Amidakuji满足这个条件：
-#
-#输入样本 3
-#2 3 3
-#
-#样本输出 3
-#1
-#只有下面的一个Amidakuji满足条件：
-#
-#样本输入 4
-#2 3 1
-#
-#样本输出 4
-#5
-#只有以下五个Amidakuji满足条件：
-#
-#输入样本 5
-#7 1 1
-#
-#样本输出 5
-#1
-#由于只有一条垂直线，我们不能画任何水平线。因此，只有一个羊皮卷满足条件：没有横线的羊皮卷。
-#
-#输入样本 6
-#15 8 5
-#
-#输出样本 6
-#437760187
-#请务必打印出答案的模数1 000 000 007。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    data = [tuple(map(int, input().split())) for _ in range(m)]
+    data.sort(key=lambda x: x[1])
+
+    cnt = [0] * (n + 1)
+    for p, y in data:
+        cnt[p] += 1
+
+    ans = {}
+    for p, y in data:
+        ans[y] = (str(p).zfill(6) + str(cnt[p]).zfill(6))
+        cnt[p] -= 1
+
+    for p, y in data:
+        print(ans[y])
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    data = []
+    for i in range(m):
+        p,y = map(int,input().split())
+        data.append([p,y,i])
+    data.sort(key=lambda x:x[1])
+    ans = []
+    cnt = [0]*n
+    for i in range(m):
+        p,y,i = data[i]
+        cnt[p-1] += 1
+        ans.append([i,cnt[p-1]])
+    ans.sort(key=lambda x:x[0])
+    for i in range(m):
+        p,x = ans[i]
+        print(str(p+1).zfill(6)+str(x).zfill(6))
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    py = [list(map(int, input().split())) for _ in range(M)]
+    py.sort()
+    city = [0] * N
+    for i, (p, y) in enumerate(py):
+        city[p - 1] += 1
+        py[i].append(city[p - 1])
+    for p, y, c in py:
+        print(str(p).zfill(6) + str(c).zfill(6))
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    p_y = [list(map(int,input().split())) for _ in range(m)]
+    p_y.sort(key=lambda x:x[1])
+    # print(p_y)
+    ans = [0]*m
+    cnt = [0]*n
+    for i in range(m):
+        cnt[p_y[i][0]-1] += 1
+        ans[i] = str(p_y[i][0]).zfill(6) + str(cnt[p_y[i][0]-1]).zfill(6)
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    P_Y = [list(map(int, input().split())) for _ in range(M)]
+    P_Y.sort(key=lambda x: x[1])
+
+    P = [0] * N
+    Y = [0] * N
+    for i in range(M):
+        P[i] = P_Y[i][0]
+        Y[i] = P_Y[i][1]
+
+    cnt = [0] * N
+    for i in range(M):
+        cnt[P[i] - 1] += 1
+
+    ans = [0] * M
+    for i in range(M):
+        ans[i] = str(P[i]).zfill(6) + str(cnt[P[i] - 1]).zfill(6)
+        cnt[P[i] - 1] -= 1
+
+    for i in range(M):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    P = [0] * M
+    Y = [0] * M
+    for i in range(M):
+        P[i], Y[i] = map(int, input().split())
+
+    #print(N, M, P, Y)
+
+    #P = [1, 2, 1]
+    #Y = [32, 63, 12]
+    #N = 2
+    #M = 3
+
+    #P = [2, 2, 2]
+    #Y = [55, 77, 99]
+    #N = 2
+    #M = 3
+
+    #print(N, M, P, Y)
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+    #    print("%06d%06d" % (P[i], Y[i]))
+
+    #print("")
+
+    #print(N, M, P, Y)
+
+    #print("")
+
+    #for i in range(M):
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    P_Y = [tuple(map(int, input().split())) for _ in range(M)]
+    P_Y.sort(key=lambda x: x[1])
+    P = [0] * N
+    P[P_Y[0][0] - 1] = 1
+    c = 1
+    for i in range(1, M):
+        if P_Y[i - 1][0] != P_Y[i][0]:
+            c = 1
+        else:
+            c += 1
+        P[P_Y[i][0] - 1] = c
+    for i in range(M):
+        print(str(P_Y[i][0]).zfill(6) + str(P[i]).zfill(6))
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    PY = [list(map(int, input().split())) for i in range(M)]
+    PY = sorted(PY, key=lambda x: x[1])
+    # print(PY)
+    # print(N, M)
+    # print(PY)
+    city = [0] * N
+    for i in range(M):
+        city[PY[i][0] - 1] += 1
+        PY[i].append(city[PY[i][0] - 1])
+    # print(PY)
+    for i in range(M):
+        print(str(PY[i][0]).zfill(6) + str(PY[i][3]).zfill(6))
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    p_y = [list(map(int, input().split())) for _ in range(m)]
+    p_y.sort(key=lambda x: x[1])
+    p_y_dict = {}
+    for p, y in p_y:
+        if p not in p_y_dict:
+            p_y_dict[p] = 1
+        else:
+            p_y_dict[p] += 1
+    ans = []
+    for p, y in p_y:
+        ans.append(str(p).zfill(6) + str(p_y_dict[p]).zfill(6))
+        p_y_dict[p] -= 1
+    for a in ans:
+        print(a)

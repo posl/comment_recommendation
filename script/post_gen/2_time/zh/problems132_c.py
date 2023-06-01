@@ -1,47 +1,93 @@
-#问题陈述
-#高桥做了N个竞争性编程的问题。
-#这些问题被编号为1到N，问题i的难度用一个整数d_i表示（越大越难）。
-#他通过选择一个整数K将问题分为两类，如下所示：
-#难度为K或更高的问题将用于ARCs。
-#难度低于K的问题将属于ABC类。
-#有多少个整数K的选择使ARC的问题数和ABC的问题数相同？
-#
-#问题说明
-#2 ≦ N ≦ 10^5
-#N是一个偶数。
-#1 ≦ d_i ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#d_1 d_2 ... d_N
-#
-#输出
-#打印整数K的选择数量，使ARC的问题数量和ABC的问题数量相同。
-#
-#输入样本 1
-#6
-#9 1 4 4 6 7
-#
-#样本输出 1
-#2
-#如果我们选择K=5或6，问题1、5和6将是ARC，问题2、3和4将是ABC，目标就实现了。
-#因此，答案是2。
-#
-#样本输入2
-#8
-#9 1 14 5 5 4 4 14
-#
-#样本输出2
-#0
-#可能没有整数K的选择能使ARC的问题数和ABC的问题数相同。
-#
-#输入样本3
-#14
-#99592 10342 29105 78532 83018 11639 92015 77204 30914 21912 34519 80835 100000 1
-#
-#样本输出3
-#42685
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n-1):
+        if p[i-1]<p[i]<p[i+1] or p[i+1]<p[i]<p[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i - 1] > p[i] > p[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i + 1] < p[i] < p[i - 1]:
+            ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def problems132_b():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, N - 1):
+        if (P[i - 1] < P[i] < P[i + 1]) or (P[i + 1] < P[i] < P[i - 1]):
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    cnt = 0
+    for i in range(1, n - 1):
+        if p[i - 1] < p[i] < p[i + 1] or p[i - 1] > p[i] > p[i + 1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def problem132_b():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    count = 0
+    for i in range(1, n-1):
+        if p[i-1] < p[i] < p[i+1] or p[i+1] < p[i] < p[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    for i in range(1, n - 1):
+        if (p[i - 1] < p[i] < p[i + 1]) or (p[i + 1] < p[i] < p[i - 1]):
+            count += 1
+    print(count)

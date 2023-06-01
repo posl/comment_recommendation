@@ -1,75 +1,130 @@
-#问题陈述
-#我们有N张投票纸。第i张票（1 ≦ i ≦ N）上写有字符串S_i。
-#打印所有写在最多票数上的字符串，按词序排列。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#S_i（1 ≦ i ≦ N）是由小写英文字母组成的字符串。
-#S_i (1 ≦ i ≦ N)的长度在1和10之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#:
-#S_N
-#
-#输出
-#按词典顺序打印问题中的所有字符串。
-#
-#输入样本1
-#7
-#打
-#兽医
-#甜菜
-#床
-#兽医
-#赌注
-#甜菜
-#
-#样本输出1
-#甜菜
-#兽医
-#beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸上。因此，我们应该打印beet和vet这两个字符串。
-#
-#输入样本2
-#8
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#
-#样本输出2
-#水牛
-#
-#样本输入3
-#7
-#低音
-#低音
-#踢球
-#踢球
-#低音
-#踢球
-#踢球
-#
-#样本输出3
-#踢球
-#
-#采样输入4
-#4
-#ushi
-#tapu
-#nichia
-#kun
-#
-#样本输出4
-#ushi
-#tapu
-#nichia
-#kun
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 判断是否存在不符合条件的数字
+    for i in range(n):
+        if a[i] % 2 == 0 and a[i] % 3 != 0 and a[i] % 5 != 0:
+            print("DENIED")
+            return
+    print("APPROVED")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for i in range(N):
+        if A[i] % 2 == 0 and A[i] % 3 != 0 and A[i] % 5 != 0:
+            print('DENIED')
+            return
+    print('APPROVED')
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    flag = True
+    for i in a:
+        if i % 2 == 0 and (i % 3 != 0 and i % 5 != 0):
+            flag = False
+            break
+    if flag:
+        print("APPROVED")
+    else:
+        print("DENIED")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0 and i % 3 != 0 and i % 5 != 0:
+            print("DENIED")
+            exit()
+    print("APPROVED")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 == 0 or a[i] % 5 == 0:
+                pass
+            else:
+                print("DENIED")
+                exit(0)
+    print("APPROVED")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0 and (a[i] % 3 != 0 and a[i] % 5 != 0):
+            print("DENIED")
+            exit()
+    print("APPROVED")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0:
+            if i % 3 != 0 and i % 5 != 0:
+                print('DENIED')
+                exit()
+    print('APPROVED')
+
+=======
+Suggestion 8
+
+def isEven(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if i % 2 == 0:
+            if i % 3 != 0 and i % 5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")
+solve()
+
+=======
+Suggestion 10
+
+def check_evenly_divisible(number):
+    if number % 3 == 0 or number % 5 == 0:
+        return True
+    else:
+        return False

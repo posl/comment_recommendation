@@ -1,55 +1,109 @@
-#问题陈述
-#有一棵有N个顶点的树T。第i条边（1≦i≦N-1）连接顶点U_i和顶点V_i。
-#给你T中两个不同的顶点X和Y。
-#按顺序列出从顶点X到顶点Y的简单路径上的所有顶点，包括端点。
-#可以证明，对于树中任何两个不同的顶点a和b，从a到b都有一条唯一的简单路径。
-# 什么是简单路径？
-#对于图G中的顶点X和Y，从顶点X到顶点Y的路径是一个顶点v_1,v_2,...,v_k的序列，使得v_1=X，v_k=Y，并且v_i和v_{i+1}在每个1≦i≦k-1中都有一条边相连。  
-#此外，如果所有的v_1,v_2,...,v_k都是不同的，那么这条路被称为从顶点X到顶点Y的简单路径。
-#
-#限制条件
-#1≦ N≦ 2× 10^5
-#1≦ X,Y≦ N
-#X≠Y
-#1≦ U_i,V_i≦ N
-#输入的所有数值都是整数。
-#给定的图是一棵树。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N X Y
-#U_1 V_1
-#U_2 V_2
-#.
-#.
-#.
-#U_{n-1} V_{n-1}
-#
-#输出
-#按顺序打印从顶点X到顶点Y的简单路径上的所有顶点的索引，中间有空格。
-#
-#输入示例 1
-#5 2 5
-#1 2
-#1 3
-#3 4
-#3 5
-#
-#输出样本 1
-#2 1 3 5
-#树T如下所示。从顶点2到顶点5的简单路径是2->1->3->5。
-#因此，2,1,3,5应该按照这个顺序打印，中间有空格。
-#
-#输入样本 2
-#6 1 2
-#3 1
-#2 5
-#1 2
-#4 1
-#2 6
-#
-#样本输出2
-#1 2
-#树形T显示如下。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y,z = map(int,input().split())
+    if y > 0:
+        print(-1)
+    else:
+        print(abs(x)+abs(z))
+
+=======
+Suggestion 2
+
+def solve(x,y,z):
+    if y > z:
+        return -1
+    else:
+        return abs(x-y)+abs(y-z)
+
+=======
+Suggestion 3
+
+def problems270_b():
+    x,y,z = map(int,input().split())
+    if x>y:
+        print(x-z+y)
+    else:
+        print(-1)
+problems270_b()
+
+=======
+Suggestion 4
+
+def main():
+    input_list = input().split()
+    x = int(input_list[0])
+    y = int(input_list[1])
+    z = int(input_list[2])
+    if (x > 0 and x > y) or (x < 0 and x < y):
+        print(abs(x - y) + abs(y - z))
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    x, y, z = map(int, input().split())
+    if x > y:
+        print(z + x - y)
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    x, y, z = map(int, input().split())
+    if y > x:
+        print(-1)
+    else:
+        print((x+y)//(y-z))
+
+=======
+Suggestion 7
+
+def solve():
+    x,y,z = map(int, input().split())
+    if x > y:
+        print(z + x - y)
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    x,y,z = map(int,input().split())
+    if y*z > 0:
+        if abs(x) > abs(y):
+            print(abs(x-y))
+        else:
+            print(abs(y-x))
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def solution(x,y,z):
+    if y>z:
+        return -1
+    else:
+        return abs(z-x)
+
+x,y,z=map(int,input().split())
+print(solution(x,y,z))
+
+=======
+Suggestion 10
+
+def main():
+    x,y,z = map(int, input().split())
+    if y > z:
+        print(-1)
+    else:
+        print(int((y/x)*z))

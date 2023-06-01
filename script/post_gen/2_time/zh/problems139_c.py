@@ -1,43 +1,82 @@
-#问题陈述
-#有N个方块从左到右排列成一排。
-#从左边开始的第i个方格的高度是H_i。
-#你将降落在你选择的一个方格上，然后重复移动到右边相邻的方格上，只要下一个方格的高度不大于当前方格的高度。
-#找出你可以移动的最大次数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#H_1 H_2 ...H_N
-#
-#输出
-#打印你可以移动的最大次数。
-#
-#样本输入1
-#5
-#10 4 8 7 3
-#
-#样本输出1
-#2
-#通过落在左起第三格，你可以向右移动两次。
-#
-#输入样本2
-#7
-#4 4 5 6 6 5 5
-#
-#样本输出2
-#3
-#通过落在左起第四个方格，你可以向右移动三次。
-#
-#输入样本3
-#4
-#1 2 3 4
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def calc(a, b):
+    if a >= b:
+        return 1
+    else:
+        if b % a == 0:
+            return b / a
+        else:
+            return b / a + 1
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int, input().split())
+    if b%a == 0:
+        print(0)
+    else:
+        print(a-b%a)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(b // a)
+    else:
+        print(b // a + 1)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(b // a - 1)
+    else:
+        print(b // a)
+
+=======
+Suggestion 5
+
+def solve(a,b):
+    if b % a == 0:
+        return 0
+    else:
+        return 1
+
+=======
+Suggestion 6
+
+def solve():
+    a,b = map(int,input().split())
+    if b % a == 0:
+        print(b//a)
+    else:
+        print(b//a+1)
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if B%A == 0:
+        print(int(B/A))
+    else:
+        print(int(B/A)+1)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    if B % A == 0:
+        print(B // A)
+    else:
+        print(B // A + 1)

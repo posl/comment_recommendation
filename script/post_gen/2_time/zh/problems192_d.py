@@ -1,51 +1,75 @@
-#问题陈述
-#给出一个由0到9组成的字符串X和一个整数M。
-#设d是X中最大的数字。
-#选择一个不小于d+1的整数n并将X看作一个基数，可以得到多少个不大于M的不同整数？
-#
-#限制条件
-#X由0到9组成。
-#X的长度在1到60之间（包括60）。
-#X不以0开头。
-#1 ≦ M ≦ 10^{18}
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#M
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#22
-#10
-#
-#采样输出1
-#2
-#X中最大的数字是2。
-#把X看作是一个基数，我们得到8。
-#把X看成一个基数-4的数字，我们得到10。
-#这两个值是我们唯一能得到的，并且不大于10。
-#
-#输入样本 2
-#999
-#1500
-#
-#样本输出2
-#3
-#X中最大的数字是9。
-#把X看作是一个基数10的数字，我们得到999。
-#把X看成是一个基数11的数字，我们得到1197。
-#把X看成是一个基数12的数字，我们得到1413。
-#这三个值是我们唯一能得到的，并且不大于1500。
-#
-#输入样本3
-#100000000000000000000000000000000000000000000000000000000000
-#1000000000000000000
-#
-#样本输出3
-#1
-#通过将X看作是一个基数，我们得到576460752303423488，这是我们唯一可以得到的且不大于100000000000000的值。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def g_1(x):
+    return int(''.join(sorted(str(x), reverse=True)))
+
+=======
+Suggestion 2
+
+def g1(x):
+    s = str(x)
+    s = sorted(s, reverse=True)
+    s = ''.join(s)
+    return int(s)
+
+=======
+Suggestion 3
+
+def g_1(x):
+    x_str = str(x)
+    x_list = list(x_str)
+    x_list.sort(reverse=True)
+    x_str = ''.join(x_list)
+    return int(x_str)
+
+=======
+Suggestion 4
+
+def g1(x):
+    return int(''.join(sorted(str(x), reverse=True)))
+
+=======
+Suggestion 5
+
+def g_1(x):
+    return int("".join(sorted(str(x), reverse=True)))
+
+=======
+Suggestion 6
+
+def g1(x):
+    s = str(x)
+    l = list(s)
+    l.sort(reverse=True)
+    s = "".join(l)
+    return int(s)
+
+=======
+Suggestion 7
+
+def f(x):
+    g1 = int("".join(sorted(str(x), reverse=True)))
+    g2 = int("".join(sorted(str(x))))
+    return g1 - g2
+
+n, k = map(int, input().split())
+a = n
+for _ in range(k):
+    a = f(a)
+print(a)
+
+=======
+Suggestion 8
+
+def g_1(x):
+    x = str(x)
+    x_list = []
+    for i in x:
+        x_list.append(i)
+    x_list.sort()
+    x_list.reverse()
+    x = ''.join(x_list)
+    return int(x)

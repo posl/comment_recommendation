@@ -1,38 +1,164 @@
-#问题陈述
-#有N个人，编号为1到N。
-#第i人猜测基恩士总部大楼的面积为S_i平方米。
-#基恩士总部大楼的形状如下所示，其中a和b是一些正整数。
-#也就是说，该楼的建筑面积可以表示为4ab+3a+3b。
-#仅根据这些信息，N个人中保证有多少人的猜测是错误的？
-#
-#限制条件
-#1 ≦ N ≦ 20
-#1 ≦ S_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1 ...S_N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#3
-#10 20 39
-#
-#样本输出1
-#1
-#如果a=1,b=1，则面积为10平方米；如果a=2,b=3，则面积为39平方米。
-#但是，没有一对正整数a和b能使面积达到20平方米。
-#因此，我们只能确定，第2人猜错了。
-#
-#输入样本2
-#5
-#666 777 888 777 666
-#
-#样本输出2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k,a = map(int,input().split())
+    if k < n:
+        print(k+a)
+    else:
+        k = k-n
+        a = a-1
+        print((a+k)%n+1)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    n, k, a = map(int, input().split())
+    # 模拟发卡
+    cards = [i for i in range(1, k + 1)]
+    for i in range(k):
+        # 人数循环
+        if i % n + 1 == a:
+            # 该人拿到最后一张牌
+            print(i % n + 1)
+            break
+        else:
+            # 该人拿不到最后一张牌
+            cards[i % n] = 0
+
+=======
+Suggestion 3
+
+def main():
+    # N,K,A = map(int,input().split())
+    N,K,A = 3,14,2
+    print(N,K,A)
+    print('hello world')
+
+=======
+Suggestion 4
+
+def get_last_card(n,k,a):
+    # n,k,a = input().split()
+    # n = int(n)
+    # k = int(k)
+    # a = int(a)
+    n = int(n)
+    k = int(k)
+    a = int(a)
+    if n == 1:
+        return 1
+    if a+k <= n:
+        return a+k
+    else:
+        return a+k-n
+
+=======
+Suggestion 5
+
+def main():
+    n, k, a = map(int, input().split())
+    print((k - a + 1) % n)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    input_line = input()
+    input_line = input_line.split(" ")
+    # print(input_line)
+    n = int(input_line[0])
+    k = int(input_line[1])
+    a = int(input_line[2])
+
+    # print(n, k, a)
+
+    # 开始处理
+    # 用一个数组表示每个人的卡片数量
+    card_nums = [0 for i in range(n)]
+    # print(card_nums)
+
+    # 从a开始发牌，循环k次
+    for i in range(k):
+        # print(i)
+        # print(a)
+        # print(card_nums)
+        card_nums[a-1] += 1
+        # print(card_nums)
+        # print("-----")
+        a += 1
+        if a > n:
+            a = 1
+    # print(card_nums)
+
+    # 找到最大值
+    max_num = max(card_nums)
+    # print(max_num)
+
+    # 找到最大值的索引
+    max_index = card_nums.index(max_num)
+    # print(max_index)
+
+    # print(max_index + 1)
+
+    # 输出结果
+    print(max_index + 1)
+
+=======
+Suggestion 7
+
+def get_last_person(n,k,a):
+    if a + k <= n:
+        return a + k - 1
+    else:
+        return a + k - n - 1
+
+=======
+Suggestion 8
+
+def main():
+    n, k, a = map(int, input().split())
+    k = k % n
+    if a + k <= n:
+        print(a + k)
+    else:
+        print(a + k - n)
+
+=======
+Suggestion 9
+
+def main():
+    n, k, a = map(int, input().split())
+    print((k - n + a - 1) % n + 1)
+
+=======
+Suggestion 10
+
+def main():
+    N,K,A = input().split()
+    N = int(N)
+    K = int(K)
+    A = int(A)
+    if N == 1:
+        print(1)
+        return
+    else:
+        if K % N == 0:
+            if A == N:
+                print(1)
+                return
+            else:
+                print(A + K % N - 1)
+                return
+        else:
+            if A + K % N - 1 <= N:
+                print(A + K % N - 1)
+                return
+            else:
+                print(A + K % N - 1 - N)
+                return

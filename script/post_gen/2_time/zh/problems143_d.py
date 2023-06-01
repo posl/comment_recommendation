@@ -1,45 +1,159 @@
-#问题陈述
-#高桥市有N根可以相互区分的棍子。第i根棍子的长度为L_i。
-#他要用其中三根棍子组成一个三角形。设a、b、c是所用三根棍子的长度。这里，必须满足以下所有条件：
-#a < b + c
-#b < c + a
-#c < a + b
-#可以形成多少个不同的三角形？当只有一个三角形中使用了一根棍子时，两个三角形被认为是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 2 × 10^3
-#1 ≦ L_i ≦ 10^3
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#限制条件
-#打印可以形成的不同三角形的数量。
-#
-#输入样本1
-#4
-#3 4 2 1
-#
-#样本输出 1
-#1
-#只能形成一个三角形：由第一、第二和第三根棍子形成的三角形。
-#
-#样本输入2
-#3
-#1 1000 1
-#
-#样本输出2
-#0
-#不能形成任何三角形。
-#
-#样本输入3
-#7
-#218 786 704 233 645 728 389
-#
-#样本输出3
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    if N == 1:
+        print(1)
+        return
+    slime = []
+    for i in range(N):
+        if i == 0:
+            slime.append(S[i])
+        elif slime[-1] != S[i]:
+            slime.append(S[i])
+    print(len(slime))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 1
+    for i in range(1,n):
+        if s[i] != s[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    s = input()
+    count = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    N = int(input())
+    S = input()
+    # print('N=', N)
+    # print('S=', S)
+    # 统计粘液数量
+    slime_count = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            slime_count += 1
+    # 输出结果
+    print(slime_count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    cnt = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    if N == 1:
+        print(1)
+        return
+    slime = []
+    for i in range(N):
+        slime.append(S[i])
+    i = 0
+    while i < len(slime)-1:
+        if slime[i] == slime[i+1]:
+            del slime[i+1]
+        else:
+            i += 1
+    print(len(slime))
+main()
+
+=======
+Suggestion 7
+
+def mergeSlime(slime):
+    #merge
+    i = 0
+    while i < len(slime) - 1:
+        if slime[i] == slime[i + 1]:
+            slime[i] = slime[i] + slime[i + 1]
+            slime.pop(i + 1)
+        else:
+            i += 1
+    #print(slime)
+    #merge again
+    i = 0
+    while i < len(slime) - 1:
+        if slime[i][-1] == slime[i + 1][0]:
+            slime[i] = slime[i] + slime[i + 1]
+            slime.pop(i + 1)
+        else:
+            i += 1
+    #print(slime)
+    return slime
+
+=======
+Suggestion 8
+
+def slime(s):
+    if len(s) == 1:
+        return 1
+    else:
+        i = 0
+        while i < len(s):
+            if i == len(s) - 1:
+                break
+            if s[i] == s[i + 1]:
+                s = s[:i] + s[i + 2:]
+                i = 0
+            else:
+                i += 1
+        return len(s)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solution():
+    N = int(input())
+    S = input()
+    cnt = 1
+    for i in range(1, N):
+        if S[i-1] != S[i]:
+            cnt += 1
+    print(cnt)
+solution()

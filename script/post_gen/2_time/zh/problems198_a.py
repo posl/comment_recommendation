@@ -1,35 +1,95 @@
-#问题陈述
-#两个男孩，A和B，将分享N个没有区别的糖果。
-#有多少种方法可以使每个男孩得到正整数的糖果？
-#
-#限制条件
-#N是一个整数。
-# 1 ≦ N ≦ 15
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#1
-#只有一种方法可以分享这些糖果：A和B各得一个甜食。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#
-#采样输入3
-#3
-#
-#采样输出3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems197_d():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    return
+
+=======
+Suggestion 3
+
+def get_xy(x0,y0,x1,y1):
+    x2 = (x0 + x1)/2
+    y2 = (y0 + y1)/2
+    return x2,y2
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    x2 = (x0 + x1 + (y0 - y1) * ((3 ** 0.5) / 2)) / 2
+    y2 = (y0 + y1 + (x1 - x0) * ((3 ** 0.5) / 2)) / 2
+    print(x2, y2)
+
+=======
+Suggestion 6
+
+def main():
+    # 输入
+    N = int(input())
+    x0, y0 = map(float, input().split())
+    x2, y2 = map(float, input().split())
+
+    # 计算
+    x1 = (x0 + x2 + (y2 - y0) * (3 ** 0.5)) / 2
+    y1 = (y0 + y2 - (x2 - x0) * (3 ** 0.5)) / 2
+
+    # 输出
+    print(x1, y1)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0+x2)/2
+    y1 = (y0+y2)/2
+    x3 = x1 - y0 + y1
+    y3 = y1 + x0 - x1
+    x4 = x3 - x0 + x2
+    y4 = y3 - y0 + y2
+    print(x3, y3)
+    print(x4, y4)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+    x1 = (2*xN2 - x0) / 2
+    y1 = (2*yN2 - y0) / 2
+    print(x1, y1)
+
+=======
+Suggestion 9
+
+def get_x1_y1(x0, y0, x2, y2):
+    x1 = x0 + (x2 - x0) * 1.0 / 2 - (y2 - y0) * 1.0 / 2 * 3 ** 0.5
+    y1 = y0 + (y2 - y0) * 1.0 / 2 + (x2 - x0) * 1.0 / 2 * 3 ** 0.5
+    return x1, y1
+
+N = int(input())
+x0, y0 = map(int, input().split())
+x2, y2 = map(int, input().split())
+x1, y1 = get_x1_y1(x0, y0, x2, y2)
+print(x1, y1)

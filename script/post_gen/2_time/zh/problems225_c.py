@@ -1,59 +1,177 @@
-#问题陈述
-#有一个10^{100}×7的矩阵A，其中第(i,j)项对于每一对整数(i,j)都是(i-1)×7+j(1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7) 。
-#给出一个N×M矩阵B，确定B是否是A的某个（未旋转的）矩形部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#B_{1,1} B_{1,2} ...B_{1,M}
-#B_{2,1} B_{2,2} ...B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ...B_{N,M}
-#
-#输出
-#如果B是A的某个矩形部分，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#样本输出1
-#Yes
-#给定的矩阵B是A的左上角2×3子矩阵。
-#
-#输入样本 2
-#2 1
-#1
-#2
-#
-#样本输出2
-#No
-#尽管给定的矩阵B在旋转90度后与A的左上角1×2子矩阵相匹配，但问题陈述中
-# 问的是B是否是A的一个未旋转部分，所以答案是否定的。
-#
-#输入样本 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n-1):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    a.sort()
+    b.sort()
+    if a[0] == 1 and b.count(n) == n-1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [0] * n
+    b = [0] * n
+    for i in range(n-1):
+        a[i], b[i] = map(int, input().split())
+    a.sort()
+    b.sort()
+    if a[0] == 1:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    edges = []
+    for i in range(n-1):
+        edges.append(list(map(int, input().split())))
+    edges.sort()
+    #print(edges)
+    if edges[0][0] != 1:
+        print('No')
+        exit()
+    for i in range(n-1):
+        if edges[i][0] != edges[i+1][0]:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    edges = []
+    for i in range(N-1):
+        a,b = map(int,input().split())
+        edges.append((a,b))
+    #print(edges)
+    #edges = [(1, 4), (2, 4), (3, 4), (4, 5)]
+    #edges = [(2, 4), (1, 4), (2, 3)]
+    #edges = [(9, 10), (3, 10), (4, 10), (8, 10), (1, 10), (2, 10), (7, 10), (6, 10), (5, 10)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7),(7,8)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7),(7,8),(8,9)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7),(7,8),(8,9),(9,10)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7),(7,8),(8,9),(9,10),(10,11)]
+    #edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6),(6,7),(7,8),(8,9),(9,10),(10,11),(11,12
+
+=======
+Suggestion 5
+
+def f():
+    N = int(input())
+    a = [0] * (N - 1)
+    b = [0] * (N - 1)
+    for i in range(N - 1):
+        a[i], b[i] = map(int, input().split())
+    a.sort()
+    b.sort()
+    if a[0] == 1 and a[N - 2] == N:
+        print("Yes")
+    else:
+        print("No")
+
+f()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [0] * (n-1)
+    b = [0] * (n-1)
+    for i in range(n-1):
+        a[i], b[i] = map(int, input().split())
+    #print(a)
+    #print(b)
+    #print(n)
+    for i in range(n-1):
+        if a[i] == 1 or b[i] == 1:
+            return print("Yes")
+    return print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = [0] * (N - 1)
+    b = [0] * (N - 1)
+    for i in range(N - 1):
+        a[i], b[i] = map(int, input().split())
+
+    c = [0] * N
+    for i in range(N - 1):
+        c[a[i] - 1] += 1
+        c[b[i] - 1] += 1
+
+    for i in range(N):
+        if c[i] == N - 1:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    ab = sorted(ab, key=lambda x: x[1])
+    ab = sorted(ab, key=lambda x: x[0])
+    max_num = max([i[1] for i in ab])
+    if ab[-1][1] == max_num:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def problem225_b():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n-1):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    a.sort()
+    b.sort()
+    if a[0] == 1:
+        for i in range(1, n):
+            if a[i] != i+1:
+                print('No')
+                break
+        else:
+            print('Yes')
+    else:
+        print('No')

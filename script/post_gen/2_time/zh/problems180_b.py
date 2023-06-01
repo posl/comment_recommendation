@@ -1,45 +1,73 @@
-#问题陈述
-#给出的是N维空间中的一个点（x_1,...,x_N）。
-#求该点与原点之间的曼哈顿距离、欧几里德距离和切比雪夫距离。
-#这里，他们每个人的定义如下：
-#曼哈顿距离：|x_1|+...+|x_N|
-#欧几里德距离：(|x_1|^2+...+|x_N|^2)^(1/2)
-#切比雪夫距离：max(|x_1|,...,|x_N|)
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#x_1 ... x_N
-#
-#输出
-#打印给定点和原点之间的曼哈顿距离、欧几里得距离和切比雪夫距离，每个都在自己的行中。
-#当每个值与正确值的绝对或相对误差不超过10^{-9}时，你的打印结果将被接受。
-#
-#输入样本 1
-#2
-#2 -1
-#
-#样本输出1
-#3
-#2.236067977499790
-#2
-#每个距离的计算方法如下：
-#曼哈顿距离：|2|+|-1|=3
-#欧氏距离：(|2|^2+|-1|^2)^(1/2)=2.2360679774997896...
-#切比雪夫距离: max(|2|,|-1|)=2
-#
-#样本输入2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#样本输出2
-#39
-#14.387494569938159
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 从标准输入读取数据
+    N, A, B = map(int, input().split())
+    # 计算答案
+    ans = N - A + B
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,a,b = map(int,input().split())
+    print(n+a-b)
+
+=======
+Suggestion 3
+
+def problem180_a():
+    n, a, b = map(int, input().split())
+    print(n - a + b)
+
+problem180_a()
+
+=======
+Suggestion 4
+
+def main():
+    # 读取数据
+    # 读取一行数据，然后按空格分割成一个列表
+    # 读取的数据是字符串类型
+    line = input().split(" ")
+    # 将数据转换成整数类型
+    N = int(line[0])
+    A = int(line[1])
+    B = int(line[2])
+    # 计算答案
+    ans = N - A + B
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 5
+
+def test():
+    a = 100
+    b = 1
+    c = 2
+    print(a-b+c)
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n + b - a)
+
+=======
+Suggestion 7
+
+def problem180a(N,A,B):
+    return N-A+B
+
+=======
+Suggestion 8
+
+def ball(n,a,b):
+    return n+a-b

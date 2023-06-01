@@ -1,36 +1,89 @@
-#问题陈述
-#高桥喜欢回文。非同音字串对他来说是不可接受的。他每次拥抱一个字符串时，可以将其中的一个字符改为他选择的任何字符。
-#给出一个字符串S，求使S成为同音异义词所需的最少拥抱次数。
-#
-#限制条件
-#S是一个由小写英文字母组成的字符串。
-#S的长度在1到100之间（包括100）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印使S成为重名所需的最小拥抱次数。
-#
-#样本输入1
-#redcoder
-#
-#样本输出1
-#1
-#例如，我们可以把第四个字符改成o，得到一个回文的redooder。
-#
-#输入样本2
-#vvvvvvv
-#
-#样本输出2
-#0
-#我们可能根本就不需要拥抱。
-#
-#输入样本3
-#abcdabc
-#
-#样本输出3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 输入数据
+    a, b, c = map(int, input().split())
+    # 判断是否bust
+    if a + b + c >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 3
+
+def main():
+    a = input()
+    b = a.split()
+    c = int(b[0]) + int(b[1]) + int(b[2])
+    if c >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 4
+
+def main():
+    a = input()
+    a = a.split()
+    sum = 0
+    for i in range(3):
+        sum += int(a[i])
+    if sum >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    if a+b+c >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 6
+
+def main():
+    A_1,A_2,A_3 = map(int,input().split())
+    if A_1 + A_2 + A_3 >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    if a + b + c >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print('bust')
+    else:
+        print('win')

@@ -1,34 +1,90 @@
-#问题陈述
-#给出一个长度为N的整数序列A，和一个整数X。
-#从A中除去所有等于X的元素，并在不改变顺序的情况下排列其余的元素，得到序列A'。打印A'。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#輸出
-#按顺序打印A'的元素，中间有空格。
-#
-#输入样本 1
-#5 5
-#3 5 6 5 4
-#
-#样本输出 1
-#3 6 4
-#从[3，5，6，5，4]中去除5，结果是[3，6，4]。
-#
-#输入样本 2
-#3 3
-#3 3 3
-#
-#输出示例 2
-#A'可以是一个零元素的序列，在这种情况下，我们应该只打印一个空行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if v*t <= d <= v*s:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def play_ball():
+    v, t, s, d = map(int, input().split())
+    if d/v >= t and d/v <= s:
+        print('No')
+    else:
+        print('Yes')
+
+play_ball()
+
+=======
+Suggestion 3
+
+def main():
+    v,t,s,d = map(int, input().split())
+    if d < v*t or v*s < d:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    v,t,s,d = map(int, input().split())
+    print("Yes" if (t * v <= d <= s * v) else "No")
+
+=======
+Suggestion 5
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if d < v*t or d > v*s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    input = raw_input()
+    # 读取输入，分割成列表
+    input_list = input.split(' ')
+    # 把列表里的元素转换成整数
+    input_list = [int(x) for x in input_list]
+    # 把列表里的元素赋值给变量
+    V,T,S,D = input_list
+    # 计算球飞行的距离
+    distance = V*T
+    # 判断是否能被击中
+    if distance <= D <= V*S:
+        print 'No'
+    else:
+        print 'Yes'
+
+=======
+Suggestion 7
+
+def main():
+    v, t, s, d = map(int, input().split())
+    if d / v >= t and d / v <= s:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if d < t * v or d > s * v:
+        print('Yes')
+    else:
+        print('No')

@@ -1,42 +1,111 @@
-#问题陈述
-#有N个史莱姆从左到右排成一列。这些史莱姆的颜色是由小写英文字母组成的长度为N的字符串S。从左边开始的第i个粘液的颜色与S的第i个字符相对应。
-#具有相同颜色的相邻粘液将融合成一个更大的粘液，而不改变其颜色。如果在融合之前，这组粘液旁边有一个粘液，那么这个粘液现在就与新的大粘液相邻。
-#最终，会有多少个粘液？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S由小写的英文字母组成。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S
-#
-#输出
-#打印粘液的最终数量。
-#
-#输入样本1
-#10
-#aabbbbaaca
-#
-#样本输出1
-#5
-#最终，这些史莱姆将融合成麻布。
-#
-#输入样本2
-#5
-#aaaaa
-#
-#样本输出2
-#1
-#所有的史莱姆将融合成一个。
-#
-#样本输入3
-#20
-#xxzaffeeeeddfkkkkllq
-#
-#样本输出3
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    d = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            ans += d[i]*d[j]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = list(map(int,input().split()))
+    sum = 0
+    for i in range(n-1):
+        for j in range(i+1,n):
+            sum += d[i]*d[j]
+    print(sum)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    n = int(input())
+    d = list(map(int, input().split()))
+
+    # 求和
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i] * d[j]
+
+    # 输出
+    print(sum)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    d = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += d[i] * d[j]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    d = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            sum += d[i] * d[j]
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            sum += d[i] * d[j]
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    d = list(map(int, input().split()))
+
+    total = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            total += d[i] * d[j]
+
+    print(total)
+
+=======
+Suggestion 8
+
+def getSumOfHealthPoints(N, d):
+    sum = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            sum += d[i] * d[j]
+
+    print(sum)
+
+=======
+Suggestion 9
+
+def get_input():
+    n = int(input())
+    d = list(map(int, input().split()))
+    return n, d

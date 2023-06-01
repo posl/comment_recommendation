@@ -1,98 +1,178 @@
-#问题陈述
-#Snuke正在为他的工厂引进一个具有以下特性的机器人手臂：
-#该机器人手臂由m个部分和m+1个关节组成。节段编号为1，2，...，m，关节编号为0，1，...，m。节段i连接关节i-1和关节i。
-#对于每个部分，它的模式可以被单独指定。有四种模式：一个部分的模式决定了该部分的方向。如果我们把工厂看作是一个坐标平面，第i节的位置将被确定如下（我们表示其坐标为（x_i，y_i））：
-#(x_0, y_0) = (0, 0)。
-#如果第i节的模式是L，（x_{i}, y_{i}）=（x_{i-1}-d_{i}, y_{i-1}）。
-#如果第i节的模式是R，（x_{i}, y_{i}）=（x_{i-1}+ d_{i}, y_{i-1}）。
-#如果第i节的模式是D，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}- d_{i}）。
-#如果第i节的模式是U，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}+ d_{i}）。
-#
-#Snuke想引入一个机械臂，这样关节m的位置就可以通过正确指定各部分的模式与所有N个点（X_1, Y_1）、（X_2, Y_2）、...、（X_N, Y_N）匹配。
-#这可能吗？
-#如果可以，请找到这样的机械臂，以及如何将关节m带到每个点（X_j, Y_j）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分得分
-#在价值300分的测试案例中，-10 ≦ X_i ≦ 10和-10 ≦ Y_i ≦ 10成立。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#输出
-#如果条件可以得到满足，按照以下格式。如果条件不能满足，打印-1。
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m和d_i是机器人手臂的配置。关于它们各自的含义，请参考问题陈述。
-#这里，1 ≦ m ≦ 40和1 ≦ d_i ≦ 10^{12}必须成立。另外，m和d_i必须都是整数。
-#w_j是一个长度为m的字符串，代表将机器人手臂的关节m带到点（X_j，Y_j）的方式。
-#w_j的第i个字符应该是字母L、R、D和U中的一个，代表第i节的模式。
-#
-#输入样本1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#输出样本1
-#2
-#1 2
-#RL
-#UU
-#DR
-#在给定的方式中，将机械臂的关节m带到每个（X_j，Y_j），关节的位置将如下：
-#到（X_1，Y_1）=（-1，0）：首先，关节0的位置是（X_0，Y_0）=（0，0）。由于第1节的模式是R，所以第1节的位置是（x_1, y_1）=（1, 0）。然后，由于第2节的模式是L，关节2的位置是（x_2, y_2）=（-1, 0）。
-#到（X_2，Y_2）=（0，3）：(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3)。
-#对（X_3，Y_3）=（2，-1）：（x_0，y_0）=（0，0），（x_1，y_1）=（0，-1），（x_2，y_2）=（2，-1）。
-#
-#样本输入2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#样本输出2
-#-1
-#
-#采样输入3
-#2
-#1 1
-#1 1
-#
-#样本输出3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j)中可能有重复的点。
-#
-#样本输入 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#样本输出 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    print(min(replace(v, 0), replace(v, 1)))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    even, odd = v[::2], v[1::2]
+    even_cnt = dict()
+    odd_cnt = dict()
+    for i in range(n//2):
+        even_cnt[even[i]] = even_cnt.get(even[i], 0) + 1
+        odd_cnt[odd[i]] = odd_cnt.get(odd[i], 0) + 1
+    even_cnt = sorted(even_cnt.items(), key=lambda x:x[1], reverse=True)
+    odd_cnt = sorted(odd_cnt.items(), key=lambda x:x[1], reverse=True)
+    if even_cnt[0][0] != odd_cnt[0][0]:
+        print(n - even_cnt[0][1] - odd_cnt[0][1])
+    else:
+        if len(even_cnt) == 1 and len(odd_cnt) == 1:
+            print(n//2)
+        elif len(even_cnt) == 1:
+            print(n//2 - odd_cnt[1][1])
+        elif len(odd_cnt) == 1:
+            print(n//2 - even_cnt[1][1])
+        else:
+            print(min(n - even_cnt[0][1] - odd_cnt[1][1], n - even_cnt[1][1] - odd_cnt[0][1]))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    odd = [0] * 100001
+    even = [0] * 100001
+    for i in range(n):
+        if i % 2 == 0:
+            even[v[i]] += 1
+        else:
+            odd[v[i]] += 1
+    even_max = max(even)
+    odd_max = max(odd)
+    if even_max == odd_max:
+        even[even_max] = 0
+        odd[odd_max] = 0
+        print(n - max(max(even), max(odd)))
+    else:
+        print(n - even_max - odd_max)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n-1):
+        if a[i-1] == a[i+1] and a[i-1] != a[i]:
+            ans += 1
+            a[i] = a[i-1]
+    print(ans)
+
+=======
+Suggestion 5
+
+def min_replace_count(n, v):
+    # 通过排序找出最小值和最大值
+    v = sorted(v)
+    # 最小值和最大值相等，说明所有元素都相等，无法构造/\/\/\/
+    if v[0] == v[-1]:
+        return n // 2
+    # 最小值和最大值不相等，说明可以构造/\/\/\/
+    else:
+        # 构造/\/\/\/需要替换的元素个数
+        return n // 2 - v.count(v[0])
+
+=======
+Suggestion 6
+
+def solve(n, v):
+    odd = v[::2]
+    even = v[1::2]
+    from collections import Counter
+    odd_cnt = Counter(odd).most_common()
+    even_cnt = Counter(even).most_common()
+    if len(odd_cnt) == 1 and len(even_cnt) == 1:
+        if odd_cnt[0][0] == even_cnt[0][0]:
+            return n // 2
+        else:
+            return 0
+    if len(odd_cnt) == 1:
+        return n // 2 - even_cnt[0][1]
+    if len(even_cnt) == 1:
+        return n // 2 - odd_cnt[0][1]
+    return n - odd_cnt[0][1] - even_cnt[0][1]
+
+=======
+Suggestion 7
+
+def check(l):
+    if len(l) % 2 != 0:
+        return False
+    if len(l) == 2:
+        return False
+    if len(l) == 4:
+        if l[0] == l[2] and l[1] == l[3] and l[0] != l[1]:
+            return True
+        else:
+            return False
+    if len(l) > 4:
+        if l[0] == l[2] and l[1] == l[3] and l[0] != l[1]:
+            return check(l[2:])
+        else:
+            return False
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    even = v[0::2]
+    odd = v[1::2]
+
+    if len(set(even)) == 1 and len(set(odd)) == 1:
+        if even[0] == odd[0]:
+            print(len(v) // 2)
+        else:
+            print(0)
+    else:
+        if len(set(even)) == 1:
+            print(len(v) // 2 - odd.count(even[0]))
+        elif len(set(odd)) == 1:
+            print(len(v) // 2 - even.count(odd[0]))
+        else:
+            print(len(v) // 2 - max(odd.count(max(set(odd), key=odd.count)), even.count(max(set(even), key=even.count))))
+
+=======
+Suggestion 9
+
+def solve(n, v):
+    ans = 0
+    for i in range(0, n, 2):
+        if v[i] == v[i+1]:
+            ans += 1
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    a = v[::2]
+    b = v[1::2]
+    from collections import Counter
+    a_c = Counter(a).most_common()
+    b_c = Counter(b).most_common()
+    if a_c[0][0] != b_c[0][0]:
+        print(n - a_c[0][1] - b_c[0][1])
+    else:
+        if len(a_c) == 1 and len(b_c) == 1:
+            print(n // 2)
+        elif len(a_c) == 1:
+            print(n - b_c[1][1])
+        elif len(b_c) == 1:
+            print(n - a_c[1][1])
+        else:
+            print(n - max(a_c[0][1] + b_c[1][1], a_c[1][1] + b_c[0][1]))

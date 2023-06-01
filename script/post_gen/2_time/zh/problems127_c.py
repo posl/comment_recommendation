@@ -1,54 +1,66 @@
-#问题陈述
-#我们有N张ID卡，有M个闸门。
-#如果我们有以下身份证之一，就可以通过第i个门：L_i-th, (L_i+1)-th, ..., 和R_i-th身份证。
-#有多少张ID卡可以让我们单独通过所有的闸门？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#输出
-#打印允许我们单独通过所有闸门的ID卡数量。
-#
-#输入样本 1
-#4 2
-#1 3
-#2 4
-#
-#样本输出 1
-#2
-#两张身份证允许我们单独通过所有的闸门，如下图：
-#第一张ID卡不允许我们通过第二道门。
-#第二张ID卡允许我们通过所有的闸门。
-#第三张ID卡允许我们通过所有的闸门。
-#第四张ID卡不允许我们通过第一道门。
-#
-#样本输入 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100000 1
-#1 100000
-#
-#样本输出3
-#100000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r, D, x = map(int, input().split())
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 2
+
+def get_x_i(r, D, x_i):
+    return r * x_i - D
+
+=======
+Suggestion 3
+
+def main():
+    r, D, x2000 = map(int, input().split())
+    for i in range(10):
+        x2000 = r * x2000 - D
+        print(x2000)
+
+=======
+Suggestion 4
+
+def print_x(r, D, x):
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+r, D, x = map(int, input().split())
+print_x(r, D, x)
+
+=======
+Suggestion 5
+
+def main():
+    r, D, x = map(int, input().split())
+    for i in range(1, 11):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 6
+
+def problem127_b():
+    r,D,x_2000 = map(int,input().split())
+
+    for i in range(10):
+        x_2000 = r*x_2000 - D
+        print(x_2000)
+
+problem127_b()
+
+=======
+Suggestion 7
+
+def main():
+    r, D, x = map(int, input().split())
+    for _ in range(10):
+        x = r * x - D
+        print(x)

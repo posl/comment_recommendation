@@ -1,49 +1,142 @@
-#问题陈述
-#给你两个序列，每个序列的长度为N，由整数组成：A=(A_1, ..., A_N)和B=(B_1, ..., B_N)。
-#确定是否有一个长度为N的序列，X=(X_1, ..., X_N)，满足以下所有的条件。
-#X_i = A_i或X_i = B_i，对于每一个i(1≦ i≦ N)。
-#|X_i - X_{i+1}| ≦ K，对于每个i(1≦ i≦ N-1)。
-#
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ K ≦ 10^9
-#1 ≦ A_i,B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 ...A_N
-#B_1 ...B_N
-#
-#输出
-#如果有一个满足所有条件的X，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 4
-#9 8 3 7 2
-#1 6 2 9 5
-#
-#样本输出1
-#Yes
-#X=(9,6,3,7,5) 满足所有条件。
-#
-#样本输入2
-#4 90
-#1 1 1 100
-#1 2 3 100
-#
-#样本输出2
-#No
-#没有X满足所有条件。
-#
-#样本输入3
-#4 1000000000
-#1 1 1000000000 1000000000
-#1 1000000000 1 1000000000
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find_min_int_not_in_list(list):
+    list.sort()
+    min = 0
+    for i in list:
+        if i == min:
+            min += 1
+    return min
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    m = 0
+    for i in range(0, N):
+        if A[i] > m:
+            print(m)
+            exit()
+        elif A[i] == m:
+            m += 1
+    print(m)
+
+=======
+Suggestion 3
+
+def problems245_b():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    num = 0
+    for i in range(N):
+        if A[i] > num:
+            print(num)
+            return
+        elif A[i] == num:
+            num += 1
+    print(num)
+    return
+
+=======
+Suggestion 4
+
+def findMinNum(n, arr):
+    arr.sort()
+    if arr[0] > 0:
+        return 0
+    if arr[-1] < 0:
+        return 0
+    for i in range(n-1):
+        if arr[i] >= 0:
+            if arr[i+1] - arr[i] > 1:
+                return arr[i] + 1
+    return arr[-1] + 1
+
+=======
+Suggestion 5
+
+def answer(n, a):
+    result = 0
+    for i in range(0, n):
+        if a[i] == result:
+            result += 1
+    return result
+
+=======
+Suggestion 6
+
+def getMinNum(a):
+    # a.sort()
+    # print(a)
+    # for i in range(0,len(a)):
+    #     if a[i] != i:
+    #         return i
+    # return len(a)
+    b = [0]*len(a)
+    for i in range(0,len(a)):
+        if a[i] < len(a):
+            b[a[i]] = 1
+    for i in range(0,len(b)):
+        if b[i] == 0:
+            return i
+    return len(a)
+
+=======
+Suggestion 7
+
+def findMinInt(N, A):
+    for i in range(N):
+        if A.count(i) == 0:
+            return i
+    return N
+
+=======
+Suggestion 8
+
+def get_min_non_negative_integer(N, A):
+    A.sort()
+    if A[0] != 0:
+        return 0
+    for i in range(N-1):
+        if A[i+1] - A[i] > 1:
+            return A[i] + 1
+    return A[N-1] + 1
+
+N = int(input())
+A = list(map(int, input().split()))
+print(get_min_non_negative_integer(N, A))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(n):
+        if A[i] <= ans:
+            ans += A[i]
+        else:
+            break
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    min = 0
+    for i in range(N):
+        if min == A[i]:
+            min += 1
+    print(min)

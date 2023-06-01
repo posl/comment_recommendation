@@ -1,66 +1,83 @@
-#问题陈述
-#有N个编号为1，...，N的城市，以及M条连接城市的道路。
-#第i条路（1≦i≦M）连接城市A_i和城市B_i。
-#打印N行，如下所示。
-#设d_i为与城市i直接相连的城市数量（1 ≦ i ≦ N），这些城市为城市a_{i, 1}, ..., 城市a_{i, d_i}，依次递增。
-#第i行（1 ≦ i ≦ N）应该包含d_i + 1个整数d_i, a_{i, 1}, ..., a_{i, d_i}，按照这个顺序，用空格分开。
-#
-#约束条件
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i < B_i ≦ N (1 ≦ i ≦ M)
-#(A_i, B_i) ≠ (A_j, B_j) if (i ≠ j).
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#按照问题陈述中的规定打印N行。
-#
-#输入样本 1
-#6 6
-#3 6
-#1 3
-#5 6
-#2 5
-#1 2
-#1 6
-#
-#样本输出 1
-#3 2 3 6
-#2 1 5
-#2 1 6
-#0
-#2 2 6
-#3 1 3 5
-#与城市1直接相连的城市是城市2、城市3和城市6。因此，我们有d_1=3，a_{1，1}=2，a_{1，2}=3，a_{1，3}=6，所以你应该在第一行按这个顺序打印3，2，3，6，用空格分开。
-#注意，a_{i, 1}, ..., a_{i, d_i}必须是升序排列。例如，在第一行以这种顺序打印3、3、2、6是不可接受的。
-#
-#输入样本 2
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#样本输出 2
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def last_index_of_a(s):
+    index = -1
+    for i in range(len(s)):
+        if s[i] == 'a':
+            index = i + 1
+    return index
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.rfind('a') + 1)
+
+=======
+Suggestion 3
+
+def last_index_of_a(text):
+    index = -1
+    for i in range(len(text)):
+        if text[i] == 'a':
+            index = i + 1
+    return index
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    print(S.rfind('a') + 1)
+    return 0
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    index = -1
+    for i in range(len(S)):
+        if S[i] == 'a':
+            index = i + 1
+    print(index)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    s = s[::-1]
+    if s.find('a') == -1:
+        print(-1)
+    else:
+        print(len(s) - s.find('a'))
+
+=======
+Suggestion 7
+
+def get_index(s):
+    index = -1
+    for i in range(len(s)):
+        if s[i] == 'a':
+            index = i + 1
+    return index
+
+=======
+Suggestion 8
+
+def solve(input):
+    # 在这里编写你的代码
+    return -1
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    a = s.rfind('a')
+    print(a+1 if a != -1 else -1)

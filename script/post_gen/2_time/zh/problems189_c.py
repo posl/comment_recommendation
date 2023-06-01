@@ -1,39 +1,174 @@
-#问题陈述
-#在高桥面前，有N个盘子排成一排。从左边开始的第i个盘子上有A_i个桔子。
-#高桥将选择一个满足以下所有条件的三倍整数（l, r, x）：
-#1≦ l ≦ r ≦ N；
-#1 ≦ x;
-#对于l和r之间的每个整数i（包括），x≦A_i。
-#然后他将从左边的第l个到第r个盘子里拿起x个橙子吃。
-#通过选择（l，r，x）这三者，他最多可以吃多少个橙子，使这个数字最大化？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^4
-#1 ≦ A_i ≦ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印高桥能吃的最大数量的橙子。
-#
-#样本输入1
-#6
-#2 4 4 9 4 9
-#
-#样本输出1
-#20
-#通过选择(l,r,x)=(2,6,4)，他可以吃20个橙子。
-#
-#样本输入2
-#6
-#200 4 4 9 4 9
-#
-#样本输出2
-#200
-#通过选择(l,r,x)=(1,1,200)，他可以吃200个橙子。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,X = map(int,input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v,p = map(int,input().split())
+        V.append(v)
+        P.append(p)
+    sum = 0
+    for i in range(N):
+        sum += V[i]*P[i]
+        if sum > X*100:
+            print(i+1)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    v = []
+    p = []
+    for _ in range(n):
+        v_i,p_i = map(int,input().split())
+        v.append(v_i)
+        p.append(p_i)
+    sum = 0
+    for i in range(n):
+        sum += v[i]*p[i]
+        if sum > x*100:
+            print(i+1)
+            exit()
+    print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    for i in range(n):
+        v,p = map(int,input().split())
+        x -= v * p / 100
+        if x < 0:
+            print(i+1)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def get_input():
+    n, x = map(int, input().split())
+    v_p = []
+    for i in range(n):
+        v_p.append(list(map(int, input().split())))
+    return n, x, v_p
+
+=======
+Suggestion 5
+
+def main():
+    N, X = map(int, input().split())
+    V = []
+    P = []
+    for i in range(N):
+        v, p = map(int, input().split())
+        V.append(v)
+        P.append(p)
+    sum = 0
+    for i in range(N):
+        sum += V[i]*P[i]
+        if sum > X*100:
+            print(i+1)
+            return
+    print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    x *= 100
+    for i in range(n):
+        v, p = map(int, input().split())
+        x -= v * p
+        if x < 0:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+    alc = 0
+    for i in range(N):
+        alc += V[i] * P[i] / 100
+        if alc > X:
+            print(i + 1)
+            exit()
+    print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        v_i, p_i = map(int, input().split())
+        v.append(v_i)
+        p.append(p_i)
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i] / 100
+        if sum > x:
+            print(i + 1)
+            return
+    print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        V, P = map(int, input().split())
+        v.append(V)
+        p.append(P)
+    alcohol = 0
+    for i in range(n):
+        alcohol += v[i] * p[i] / 100
+        if alcohol > x:
+            print(i + 1)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    v = []
+    p = []
+    for i in range(n):
+        v_temp, p_temp = map(int, input().split())
+        v.append(v_temp)
+        p.append(p_temp)
+    sum = 0
+    for i in range(n):
+        sum += v[i] * p[i]
+        if sum > x * 100:
+            print(i + 1)
+            return
+    print(-1)
+    return
+
+main()

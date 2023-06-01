@@ -1,67 +1,126 @@
-#问题说明
-#N个球从左到右排成一排。  最初，从左边开始的第i个（1 ≦ i ≦ N）球上写有一个整数i。
-#高桥已经进行了Q操作。  第i次（1 ≦ i ≦ Q）操作如下。
-#将写有整数x_i的球与右边的下一个球交换。  如果写有整数x_i的球原来是最右边的球，就把它和左边的下一个球换一下。
-#让a_i成为操作后写在第i个（1 ≦ i ≦ N）球上的整数。  求a_1,...,a_N。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印a_1,...,a_N，中间有空格。
-#
-#输入样本 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#样本输出1
-#1 2 3 5 4
-#这些操作是按以下方式进行的。  
-#将写有1的球与右边的下一个球交换。  现在，球上写着整数2、1、3、4、5，从左到右。
-#将写有2的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有3的球与右边的下一个球交换。  现在，这些球上写着1,2,4,3,5的整数，从左到右。
-#将写有4的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有5的球与左边的下一个球交换，因为它是最右边的球。  现在，这些球上都写着1,2,3,5,4的整数，从左到右。
-#
-#输入样本 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#样本输出2
-#1 2 3 4 5 7 6
-#
-#样本输入3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#样本输出3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,a,b = map(int,input().split())
+    for i in range(n*a):
+        if i%a == 0:
+            for j in range(n*b):
+                if j%b == 0:
+                    print("#",end="")
+                else:
+                    print(".",end="")
+            print("")
+        else:
+            for j in range(n*b):
+                if j%b == 0:
+                    print(".",end="")
+                else:
+                    print("#",end="")
+            print("")
+
+=======
+Suggestion 2
+
+def main():
+    N,A,B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i+j)%2 == 0:
+                        print("#", end='')
+                    else:
+                        print(".", end='')
+                print("", end='')
+            print("")
+        print("")
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def print_tile(a,b):
+    for i in range(a):
+        if i%2==0:
+            print("#"*b,end="")
+        else:
+            print("."*b,end="")
+        print()
+    return
+
+=======
+Suggestion 5
+
+def problems250_b(n, a, b):
+    #print(n, a, b)
+    for i in range(a*n):
+        for j in range(b*n):
+            if (i//a + j//b) % 2 == 0:
+                print('.', end='')
+            else:
+                print('#', end='')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + j) % 2 == 0:
+                        print("#", end="")
+                    else:
+                        print(".", end="")
+            print()
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    n,a,b = map(int,input().split())
+    #n = int(n)
+    #a = int(a)
+    #b = int(b)
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i+j)%2 == 0:
+                        print('.',end='')
+                    else:
+                        print('#',end='')
+            print()
+main()
+
+=======
+Suggestion 8
+
+def print_tile(n,a,b):
+    n = int(n)
+    a = int(a)
+    b = int(b)
+    for i in range(a*n):
+        for j in range(b*n):
+            if ((i//a)+(j//b))%2 == 0:
+                print('.',end='')
+            else:
+                print('#',end='')
+        print('')
+
+=======
+Suggestion 9
+
+def problems250_b():
+    pass

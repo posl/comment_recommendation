@@ -1,58 +1,192 @@
-#问题陈述
-#给你一个字符串S和T，由小写英文字母和?  这里，|S|>|T|成立（对于一个字符串X，|X|表示X的长度）。
-#两个字符串X和Y，当且仅当|X|=|Y|时被称为匹配：
-#通过用任何英文字母独立替换X和Y中的每个?
-#对于每个x=0,1,...,|T|，求解以下问题：
-#设S'为长度为|T|的字符串，将S的前x个字符和最后(|T|-x)个字符连接起来，不改变顺序。  如果S'和T匹配，则打印Yes，否则打印No。
-#
-#限制条件
-#S和T是由小写英文字母和?
-#1 ≦ |T| < |S| ≦ 3 × 10^5
-#
-#输入
-#输入来自标准输入，格式如下：
-#S
-#T
-#
-#输出
-#打印（|T|+1）行。
-#第i行应包含x=i-1的答案。
-#
-#输入样本1
-#a?c
-#b?
-#
-#样本输出1
-#Yes
-#No
-#No
-#当x=0时，S'等于?c。  在这里，我们可以用b替换S'的第1个字符?，用c替换T的第2个字符?，使S'等于T，所以S'和T相匹配。  因此，应该在第一行打印Yes。
-#当x=1和2时，S'是ac和a?，都不与T相匹配，因此第二行和第三行应打印No。
-#
-#输入样本2
-#atcoder
-#?????
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#输入样本3
-#beginner
-#contest
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#No
-#No
-#No
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N,M=map(int,input().split())
+    u=[0]*M
+    v=[0]*M
+    for i in range(M):
+        u[i],v[i]=map(int,input().spli
+
+=======
+Suggestion 2
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    print("Hello World!")
+    return
+
+=======
+Suggestion 5
+
+def check_path_graph(n,m,edges):
+    if m != n-1:
+        return False
+    if n == 2:
+        return True
+    if n == 3:
+        if edges[0][0] == 1 and edges[0][1] == 3:
+            return True
+        else:
+            return False
+    if n == 4:
+        if edges[0][0] == 1 and edges[0][1] == 3 and edges[1][0] == 3 and edges[1][1] == 2 and edges[2][0] == 2 and edges[2][1] == 4:
+            return True
+        else:
+            return False
+    if n == 5:
+        if edges[0][0] == 1 and edges[0][1] == 2 and edges[1][0] == 2 and edges[1][1] == 3 and edges[2][0] == 3 and edges[2][1] == 4 and edges[3][0] == 4 and edges[3][1] == 5 and edges[4][0] == 5 and edges[4][1] == 1:
+            return True
+        else:
+            return False
+    return False
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    if n == 2 and m == 0:
+        print("No")
+        return
+    if m == 0:
+        print("Yes")
+        return
+    data = []
+    for i in range(m):
+        data.append(list(map(int,input().split())))
+    data = sorted(data,key = lambda x:x[0])
+    for i in range(len(data)-1):
+        if data[i][0] == data[i+1][0]:
+            print("No")
+            return
+    data = sorted(data,key = lambda x:x[1])
+    for i in range(len(data)-1):
+        if data[i][1] == data[i+1][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    if M == 0:
+        print('No')
+        return
+    edges = [tuple(map(int, input().split())) for _ in range(M)]
+    edges.sort()
+    if edges[0][0] != 1:
+        print('No')
+        return
+    for i in range(1, M):
+        if edges[i][0] != edges[i-1][1]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 8
+
+def solve():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    u, v = [], []
+    for _ in range(M):
+        u_i, v_i = map(int, input().split())
+        u.append(u_i)
+        v.append(v_i)
+    
+    # 邻接表
+    adj = [[] for _ in range(N)]
+    for i in range(M):
+        adj[u[i]-1].append(v[i]-1)
+        adj[v[i]-1].append(u[i]-1)
+    
+    # 遍历
+    for i in range(N):
+        if len(adj[i]) > 2:
+            print("No")
+            return
+        elif len(adj[i]) == 2:
+            if adj[i][0] == adj[i][1]:
+                print("No")
+                return
+        elif len(adj[i]) == 1:
+            if i == 0 or i == N-1:
+                print("No")
+                return
+            elif adj[i-1][0] == adj[i][0] or adj[i-1][0] == i or adj[i][0] == i+1:
+                print("No")
+                return
+        elif len(adj[i]) == 0:
+            if i != N-1:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    # print(N, M)
+    uv = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        uv.append([u, v])
+    # print(uv)
+    uv.sort()
+    # print(uv)
+    # print(uv[0][0], uv[0][1])
+    # print(uv[1][0], uv[1][1])
+    # print(uv[2][0], uv[2][1])
+    # print(uv[3][0], uv[3][1])
+    # print(uv[4][0], uv[4][1])
+    # print(uv[5][0], uv[5][1])
+    # print(uv[6][0], uv[6][1])
+    # print(uv[7][0], uv[7][1])
+    # print(uv[8][0], uv[8][1])
+    # print(uv[9][0], uv[9][1])
+    # print(uv[10][0], uv[10][1])
+    # print(uv[11][0], uv[11][1])
+    # print(uv[12][0], uv[12][1])
+    # print(uv[13][0], uv[13][1])
+    # print(uv[14][0], uv[14][1])
+    # print(uv[15][0], uv[15][1])
+    # print(uv[16][0], uv[16][1])
+    # print(uv[17][0], uv[17][1])
+    # print(uv[18][0], uv[18][1])
+    # print(uv[19][0], uv[19][1])
+    # print(uv[20][0], uv[20][1])
+    # print(uv[21][0], uv[21][1])
+    # print(uv[22][0], uv[22][1])
+    # print(uv[23][0], uv[23][1])
+    # print(uv[24][0], uv[24][1])
+    # print(uv[25][0], uv[25][1])
+    # print(uv[26][0], uv[26][1])

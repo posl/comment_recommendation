@@ -1,47 +1,142 @@
-#问题陈述
-#有N个空盒子从左到右排列成一排。
-#整数i写在左起第i个盒子上（1 ≦ i ≦ N）。
-#对于每一个盒子，Snuke可以选择在里面放一个球或者什么都不放。
-#当满足以下条件时，我们说一组在盒子里放球或不放球的选择是好的：
-#对于1到N（包括）之间的每一个整数i，写有i的倍数的盒子中所包含的球的总数与a_i的模数2相同。
-#是否存在一个好的选择集？如果答案是肯定的，请找出一个好的选择集。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#a_i是0或1。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#输出
-#如果一个好的选择集不存在，打印-1。
-#如果存在一个好的选择集，以下列格式打印一个这样的选择集：
-#M
-#b_1 b_2 ... b_M
-#其中M表示将包含一个球的盒子的数量，而b_1, b_2, ..., b_M是写在这些盒子上的整数，顺序不限。
-#
-#输入样本1
-#3
-#1 0 0
-#
-#样本输出1
-#1
-#1
-#考虑只在写有1的盒子里放一个球。
-#有三个写着1的倍数的盒子：写着1、2、3的盒子。这些盒子里装的球的总数是1。
-#只有一个写着2的倍数的盒子：写着2的盒子，这些盒子里的球的总数是0。
-#只有一个盒子上写着3的倍数：3的盒子，这些盒子里的球的总数是0。
-#因此，条件得到满足，所以这组选择是好的。
-#
-#输入样本2
-#5
-#0 0 0 0 0
-#
-#样本输出2
-#0
-#在盒子里什么都不放可以是一组好的选择。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems134_c():
+    pass
+
+=======
+Suggestion 2
+
+def find_max_except_i(n, a):
+    a.sort()
+    for i in range(n):
+        if i == 0:
+            print(a[-1])
+        elif i == n - 1:
+            print(a[-2])
+        else:
+            if a[-1] == a[-2]:
+                print(a[-1])
+            else:
+                if a[i] == a[-1]:
+                    print(a[-2])
+                else:
+                    print(a[-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+
+    max_value = max(A)
+    max_index = A.index(max_value)
+
+    for i in range(N):
+        if i == max_index:
+            print(max(A[:max_index] + A[max_index + 1:]))
+        else:
+            print(max_value)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    max_a = max(a)
+    for i in range(n):
+        if a[i] != max_a:
+            print(max_a)
+        else:
+            print(sorted(a[:-1])[-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    m = max(a)
+    for i in a:
+        if i == m:
+            print(max(a[:a.index(m)] + a[a.index(m) + 1:]))
+        else:
+            print(m)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    max1 = max(A)
+    for i in range(N):
+        if A[i] == max1:
+            A.pop(i)
+            break
+    for i in range(N-1):
+        print(max(A))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    a_max = max(a)
+    a_max_count = a.count(a_max)
+    if a_max_count == 1:
+        for i in range(n):
+            if a[i] == a_max:
+                print(max(a[:i] + a[i+1:]))
+            else:
+                print(a_max)
+    else:
+        for i in range(n):
+            print(a_max)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+
+    max_A = max(A)
+    for i in range(N):
+        if A[i] == max_A:
+            print(max(A[:i] + A[i+1:]))
+        else:
+            print(max_A)
+
+=======
+Suggestion 9
+
+def max_num(num_list):
+    max_num = 0
+    for num in num_list:
+        if num > max_num:
+            max_num = num
+    return max_num
+
+=======
+Suggestion 10
+
+def main():
+    n=int(input())
+    a=[]
+    for i in range(n):
+        a.append(int(input()))
+    for i in range(n):
+        b=a[0:i]+a[i+1:n]
+        print(max(b))

@@ -1,61 +1,134 @@
-#问题陈述
-#有N个学生要参加为期4天的考试。
-#每天都有300分的考试，总分1200分。
-#前三天的考试已经结束，现在第四天即将开始。第i个学生（1 ≦ i ≦ N）在第j天（1 ≦ j ≦ 3）得到P_{i, j}分。
-#对于每个学生，确定他/她在第四天之后是否有可能排在前K位。
-#这里，一个学生在第四天后的排名被定义为四天内总分高于该学生的学生数量，再加上1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 10^5
-#0 ≦ P_{i, j} ≦ 300 (1 ≦ i ≦ N, 1 ≦ j ≦ 3)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#P_{1,1} P_{1,2} P_{1,3}
-#.
-#.
-#.
-#P_{N,1} P_{N,2} P_{N,3}
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含Yes，如果第i个学生在第四天后有可能排在前K名，否则就是No。
-#
-#输入样本 1
-#3 1
-#178 205 132
-#112 220 96
-#36 64 20
-#
-#样本输出1
-#Yes
-#Yes
-#No
-#如果每个学生在第四天都得了100分，那么第1名的学生将排名第1。
-#如果第2名学生在第四天得了100分，其他学生得了0分，第2名学生将排名第1。
-#第3名的学生永远不会排名第1。  
-#
-#输入样本 2
-#2 1
-#300 300 300
-#200 200 200
-#
-#样品输出2
-#Yes
-#Yes
-#
-#采样输入3
-#4 2
-#127 235 78
-#192 134 298
-#28 56 42
-#96 120 250
-#
-#样本输出3
-#Yes
-#Yes
-#No
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    count = 1
+    for i in range(n):
+        if a[i] != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i-1 for i in a]
+    b = [0]*n
+    b[x-1] = 1
+    for i in range(n):
+        if b[i] == 1:
+            b[a[i]] = 1
+    print(sum(b))
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    a[x-1] = 0
+    ans = 1
+    for i in range(n):
+        if a[i] != 0:
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [False] * n
+    b[x - 1] = True
+    for i in range(n):
+        if b[i]:
+            a[i] -= 1
+            b[a[i]] = True
+    print(b.count(True))
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    b = [0]*n
+    for i in range(n):
+        if a[i] != 0:
+            b[a[i]-1] += 1
+    print(b.count(max(b)))
+
+=======
+Suggestion 6
+
+def get_input():
+    n_x = input().split()
+    n = int(n_x[0])
+    x = int(n_x[1])
+    a = input().split()
+    a = [int(i) for i in a]
+    return n, x, a
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.insert(0,0)
+    b = [0 for i in range(n+1)]
+    b[x] = 1
+    cnt = 1
+    for i in range(1,n+1):
+        if b[a[i]] == 0:
+            b[a[i]] = 1
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    for i in range(n):
+        if a[i] != 0:
+            a[a[i]-1] = 0
+    print(n - a.count(0))
+
+=======
+Suggestion 9
+
+def check_friend(friends, friend_id, secret_owner):
+    if friend_id == secret_owner:
+        return True
+    elif friends[friend_id] == secret_owner:
+        return True
+    else:
+        return check_friend(friends, friends[friend_id], secret_owner)
+
+=======
+Suggestion 10
+
+def f(n,x,l):
+    d = {}
+    for i in range(n):
+        d[i+1] = 0
+    d[x] = 1
+    for i in range(n):
+        if d[l[i]] == 1:
+            d[i+1] = 1
+    return sum(d.values())

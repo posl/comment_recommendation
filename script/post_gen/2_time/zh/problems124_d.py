@@ -1,47 +1,120 @@
-#问题陈述
-#N个人从左到右排成一排。
-#给你一个由0和1组成的长度为N的字符串S，以及一个正整数K。
-#如果S的第i个字符是0，则从左边开始的第i个人是站在脚上的，如果该字符是1，则站在手上。
-#你最多可以给以下方向K次（可能是零）：
-#方向：选择满足1 ≦ l ≦ r ≦ N的整数l和r，并翻转第l，(l+1)-第，...，和第r人。也就是说，对于每一个i = l, l+1, ..., r，从左边开始的第i个人，如果他/她是用脚站立的，现在就用手站立，如果他/她是用手站立的，就用脚站立。
-#求最多经过K个方向后连续站立的人的最大可能数量。
-#
-#约束条件
-#N是一个整数，满足1 ≦ N ≦ 10^5。
-#K是一个整数，满足1 ≦ K ≦ 10^5。
-#字符串S的长度为N。
-#字符串S的每个字符都是0或1。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#S
-#
-#輸出
-#打印最多经过K个方向后连续站立的人的最大可能数量。
-#
-#输入样本 1
-#5 1
-#00010
-#
-#样本输出1
-#4
-#我们可以让四个人连续站在一起，这是最大的结果，通过给出以下方向：
-#给出l=1，r=3的方向，从左边翻开第一、第二和第三人。
-#
-#输入样本 2
-#14 2
-#11101010110011
-#
-#样本输出2
-#8
-#
-#采样输入3
-#1 1
-#1
-#
-#样品输出3
-#1
-#不需要指示。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0' and i % 2 == 0:
+            count += 1
+        elif s[i] == '1' and i % 2 == 1:
+            count += 1
+    print(min(count, len(s) - count))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    s1 = s[::2]
+    s2 = s[1::2]
+    s3 = s[1::2]
+    s4 = s[::2]
+    n1 = 0
+    n2 = 0
+    for i in range(len(s)):
+        if s[i] == s1[i]:
+            n1 += 1
+        if s[i] == s2[i]:
+            n2 += 1
+    print(min(n1, n2))
+
+=======
+Suggestion 3
+
+def problems124_c():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s.strip()
+    if len(s) == 1:
+        print(0)
+        return
+    count = 0
+    for i in range(len(s) - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0':
+            count += 1
+    print(min(count, len(s) - count))
+
+=======
+Suggestion 6
+
+def solution(s):
+    s = s.strip()
+    if len(s) == 1:
+        return 0
+    else:
+        count = 0
+        for i in range(len(s) - 1):
+            if s[i] == s[i + 1]:
+                count += 1
+        return count
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    if n == 1:
+        print(0)
+    else:
+        print(min(s.count('0'),s.count('1'))*2)
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    s = s.replace("01", "0 1").replace("10", "1 0").split()
+    print(min(len(s[::2]), len(s[1::2])))
+
+=======
+Suggestion 9
+
+def solve(s):
+    a = s.count("0")
+    b = s.count("1")
+    return min(a,b)*2
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    white = 0
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == "1":
+                white += 1
+        else:
+            if s[i] == "0":
+                white += 1
+    print(min(white, len(s) - white))

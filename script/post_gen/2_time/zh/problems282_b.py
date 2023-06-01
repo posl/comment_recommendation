@@ -1,55 +1,81 @@
-#问题说明
-#N个参赛者，编号为1到N，将参加一个有M个问题的竞赛，编号为1到M。
-#对于1到N之间的整数i和1到M之间的整数j，如果S_i的第j个字符是o，则参赛者i可以解决j问题，如果该字符是x，则不能解决。
-#参与者必须是成对的。打印形成一对能够共同解决所有M个问题的参与者的方法的数量。
-#更确切地说，打印满足1≦ x < y≦ N的整数对（x,y）的数量，以便对于1和M之间的任何整数j，参与者x和参与者y中至少有一个能解决j的问题。
-#
-#约束条件
-#N是2到30之间的整数，包括在内。
-#M是1至30之间的整数，包括在内。
-#S_i是一个长度为M的字符串，由o和x组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 5
-#ooooo
-#oooxx
-#xxooo
-#oxoxo
-#xxxxx
-#
-#样本输出1
-#5
-#以下五对参与者满足条件：参与者1和2，参与者1和3，参与者1和4，参与者1和5，以及参与者2和3。
-#另一方面，例如参与者2和4的配对不满足条件，因为他们不能解决问题4。
-#
-#样本输入 2
-#3 2
-#ox
-#xo
-#xx
-#
-#样本输出2
-#1
-#
-#样本输入3
-#2 4
-#xxxx
-#xxox
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    # print(k)
+    # print(type(k))
+    if k >= 1 and k <= 26:
+        for i in range(0,k):
+            print(chr(65+i),end="")
+        print()
+    else:
+        print("K is out of range.")
+        return 0
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    print(''.join([chr(i) for i in range(ord('A'), ord('A') + k)]))
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    print(''.join([chr(i) for i in range(65,65+K)]))
+
+=======
+Suggestion 4
+
+def main():
+    K = int(input())
+    print(''.join([chr(x) for x in range(65, 65 + K)]))
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    s = ''
+    for i in range(k):
+        s += chr(65+i)
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    for i in range(k):
+        print(chr(65 + i), end='')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    for i in range(0, n):
+        print(chr(ord('A') + i), end='')
+    print()
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    print("".join([chr(i) for i in range(65, 65+k)]))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    for i in range(k):
+        print(chr(ord('A')+i),end="")
+    print()

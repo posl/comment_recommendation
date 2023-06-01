@@ -1,54 +1,124 @@
-#问题陈述
-#给出N个字符串S_1,...,S_N，其中每个字符串都是AND或OR。
-#求N+1个变量(x_0,...,x_N)的数组，其中每个元素都是真或假的，使得下面的计算结果y_N为真：
-#y_0=x_0；
-#对于i≧1，如果S_i是AND，y_i=y_{i-1} ∧ x_i；如果S_i是OR，y_i=y_{i-1} ∨ x_i。
-#这里，a ∧ b 和 a ∨ b 是逻辑运算符。
-#
-#限制条件
-#1 ≦ N ≦ 60
-#S_i 是 AND 或 OR。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2
-#AND
-#OR
-#
-#样本输出1
-#5
-#例如，如果(x_0,x_1,x_2)=(True,False,True)，我们有y_2=True，如下所示：
-#y_0=x_0=True
-#y_1=y_0 ∧ x_1=True ∧ False=False
-#y_2=y_1 ∨ x_2 = False ∨ True=True
-#所有五个图元 (x_0,x_1,x_2) 的结果是 y_2 = True，如下所示：
-#(True,True,True)
-#(True,True,False)
-#(True,False,True)
-#(False,True,True)
-#(False,False,True)
-#
-#样本输入2
-#5
-#OR
-#OR
-#OR
-#OR
-#OR
-#
-#样本输出2
-#63
-#所有的图元，除了一个完全填写为 "假 "的图元外，其他图元的结果都是y_5=真。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for l in range(n):
+        x=a[l]
+        for r in range(l,n):
+            x=min(x,a[r])
+            ans=max(ans,x*(r-l+1))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    # N = 6
+    # A = [2, 4, 4, 9, 4, 9]
+    N = 6
+    A = [200, 4, 4, 9, 4, 9]
+    # N = int(input())
+    # A = list(map(int, input().split()))
+    max = 0
+    for i in range(N):
+        for j in range(i, N):
+            min = 100000
+            for k in range(i, j+1):
+                if A[k] < min:
+                    min = A[k]
+            if min * (j - i + 1) > max:
+                max = min * (j - i + 1)
+    print(max)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 计算答案
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            x = min(a[i:j+1])
+            ans = max(ans, x*(j-i+1))
+
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_input():
+    N = int(input())
+    A = list(map(int, input().split()))
+    return N, A
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            x = min(a[i:j+1])
+            ans = max(ans, x*(j-i+1))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split(" ")))
+    max = 0
+    for l in range(1,N+1):
+        for r in range(l,N+1):
+            for x in range(1,100000):
+                if x > max:
+                    flag = True
+                    for i in range(l-1,r):
+                        if x > A[i]:
+                            flag = False
+                            break
+                    if flag:
+                        max = x
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    arr = list(map(int,input().split()))
+    max = 0
+    for i in range(n):
+        for j in range(i,n):
+            min = 100000
+            for k in range(i,j+1):
+                if arr[k] < min:
+                    min = arr[k]
+            if max < min*(j-i+1):
+                max = min*(j-i+1)
+    print(max)
+
+=======
+Suggestion 8
+
+def get_max_orange_number(orange_list):
+    max_orange_number = 0
+    for i in range(0, len(orange_list)):
+        for j in range(i, len(orange_list)):
+            for k in range(1, orange_list[j] + 1):
+                if k > max_orange_number:
+                    max_orange_number = k
+    return max_orange_number

@@ -1,40 +1,75 @@
-#问题陈述
-#给定一个整数N，求满足下列所有条件的整数X的数目，模数为998244353。
-#X是一个N位数的正整数。
-#让X_1,X_2,...,X_N是X的数字，从上到下。它们满足以下所有条件：
-#1 ≦ X_i ≦ 9 为所有整数 1 ≦ i ≦ N；
-#≦ X_i-X_{i+1}| ≦ 1 对于所有整数1 ≦ i ≦ N-1。
-#
-#
-#限制条件
-#N是一个整数。
-#2 ≦ N ≦ 10^6
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4
-#
-#样本输出1
-#203
-#一些符合条件的4位数整数是1111,1234,7878,6545。
-#
-#输入样本2
-#2
-#
-#样本输出 2
-#25
-#
-#样本输入3
-#1000000
-#
-#样本输出3
-#248860093
-#一定要找到998244353的模数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    s = list(s)
+    s.sort()
+    print(''.join(s))
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    S = "".join(S)
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    print(''.join(S))
+
+=======
+Suggestion 4
+
+def main():
+    S = raw_input()
+    print ''.join(sorted(S))
+
+=======
+Suggestion 5
+
+def solve():
+    S = input()
+    S = sorted(S)
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    s = sorted(s)
+    print(''.join(s))
+    return
+
+=======
+Suggestion 7
+
+def minstring(s):
+    s = list(s)
+    s.sort()
+    return "".join(s)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    ss = sorted(s)
+    if len(ss) == 1:
+        print(ss[0])
+    else:
+        if ss[0] == ss[1]:
+            print("".join(ss))
+        else:
+            print(ss[0] + "".join(ss[1:]))

@@ -1,44 +1,64 @@
-#问题陈述
-#给你一个长度为N的序列：A_1, A_2, ..., A_N。
-#对于1到N（包括）之间的每个整数i，回答下面的问题：
-#找出该序列中除A_i以外的N-1个元素的最大值。
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#1 ≦ A_i ≦ 200000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1
-#:
-#A_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含序列中除A_i以外的N-1个元素的最大值。
-#
-#输入样本 1
-#3
-#1
-#4
-#3
-#
-#样本输出1
-#4
-#3
-#4
-#除A_1以外的两个元素，即A_2=4和A_3=3，其最大值为4。
-#除A_2以外的两个元素，即A_1=1和A_3=3，其最大值为3。
-#除A_3以外的两个元素，即A_1=1和A_2=4，其最大值为4。
-#
-#样本输入2
-#2
-#5
-#5
-#
-#样本输出2
-#5
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    print((N + 2 * D) // (2 * D + 1))
+
+=======
+Suggestion 2
+
+def main():
+    N, D = map(int, input().split())
+    print((N + 2 * D) // (2 * D + 1))
+
+main()
+
+=======
+Suggestion 3
+
+def check_apple_tree(n, d):
+    if n % (2 * d + 1) == 0:
+        return n // (2 * d + 1)
+    else:
+        return n // (2 * d + 1) + 1
+
+=======
+Suggestion 4
+
+def calc_min_checker_num(num_of_trees, distance):
+    return num_of_trees // (2 * distance + 1) + 1
+
+=======
+Suggestion 5
+
+def main():
+    n,d = map(int,input().split())
+    print((n+2*d)//(2*d+1))
+
+=======
+Suggestion 6
+
+def apple(N, D):
+    if N % (2 * D + 1) == 0:
+        return N // (2 * D + 1)
+    else:
+        return N // (2 * D + 1) + 1
+
+=======
+Suggestion 7
+
+def main():
+    n, d = map(int, input().split())
+    print(n // (2 * d + 1) + (1 if n % (2 * d + 1) else 0))
+
+=======
+Suggestion 8
+
+def calc_min_checker(tree_num, distance):
+    if tree_num < 2:
+        return 1
+    else:
+        return 1 + (tree_num - 2 * distance - 1) // (2 * distance + 1)

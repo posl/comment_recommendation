@@ -1,59 +1,75 @@
-#问题陈述
-#阿德做了N次以下的动作：掷两个骰子。
-#第i次掷出的结果是D_{i,1}和D_{i,2}。
-#检查是否至少连续发生了三次双色球。
-#具体来说，检查是否存在至少一个i，使得D_{i,1}=D_{i,2}，D_{i+1,1}=D_{i+1,2}和D_{i+2,1}=D_{i+2,2}成立。
-#
-#约束条件
-#3 ≦ N ≦ 100
-#1 ≦ D_{i,j} ≦ 6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#d_{1,1} d_{1,2}
-#.
-#.
-#.
-#d_{n,1} d_{n,2}
-#
-#输出
-#如果连续出现至少3次双色球，则打印Yes。否则打印No。
-#
-#输入样本1
-#5
-#1 2
-#6 6
-#4 4
-#3 3
-#3 2
-#
-#样本输出1
-#Yes
-#从第二卷到第四卷，连续出现了三个双胞胎。
-#
-#样本输入2
-#5
-#1 1
-#2 2
-#3 4
-#5 5
-#6 6
-#
-#样本输出2
-#No
-#
-#样本输入3
-#6
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[-1] == 's':
+        print(S + 'es')
+    else:
+        print(S + 's')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[-1] == "s":
+        print(s + "es")
+    else:
+        print(s + "s")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[-1] == 's':
+        print(s + 'es')
+    else:
+        print(s + 's')
+
+=======
+Suggestion 4
+
+def problem179_a():
+    s = input()
+    if s[-1] == 's':
+        print(s + 'es')
+    else:
+        print(s + 's')
+
+=======
+Suggestion 5
+
+def plural(s):
+    if s[-1] == 's':
+        return s+'es'
+    else:
+        return s+'s'
+
+print(plural(input()))
+
+=======
+Suggestion 6
+
+def plural_form(s):
+    if s[-1] == "s":
+        return s + "es"
+    else:
+        return s + "s"
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    s = input()
+    # 根据题意，判断单词s是否以s结尾
+    if s[-1] == 's':
+        # 如果是，则在单数形式的末尾加上es
+        print(s + 'es')
+    else:
+        # 如果不是，则在单数形式的后面加上s
+        print(s + 's')

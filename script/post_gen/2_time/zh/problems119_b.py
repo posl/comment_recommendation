@@ -1,46 +1,152 @@
-#问题陈述
-#高桥从他的N个亲戚那里收到了otoshidama（新年礼物）。
-#给你N个值x_1, x_2, ..., x_N和N个字符串u_1, u_2, ..., u_N作为输入。每个字符串u_i是日元或BTC，x_i和u_i代表第i个亲戚的otoshidama的内容。
-#例如，如果x_1=10000，u_1=JPY，来自第一个亲戚的otoshidama就是10000日元；如果x_2=0.10000000，u_2=BTC，来自第二个亲戚的otoshidama就是0.1比特币。
-#如果我们按照每1.0个BTC兑换380000.0日元的汇率将比特币兑换成日元，那么这些礼物总共值多少钱？
-#
-#限制条件
-#2 ≦ N ≦ 10
-#u_i = JPY或BTC。
-#如果u_i = JPY，x_i是一个整数，使得1 ≦ x_i ≦ 10^8。
-#如果u_i = BTC，x_i是一个有8位小数的小数，这样0.00000001 ≦ x_i ≦ 100.00000000。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#x_1 u_1
-#x_2 u_2
-#:
-#x_N u_N
-#
-#输出
-#如果礼物的总价值为Y日元，则打印数值Y（不一定是整数）。
-#输出
-# 的绝对或相对误差最多为10^{-5}时，将被判断为正确。
-#
-#输入样本 1
-#2
-#10000日元
-#0.10000000 BTC
-#
-#样本输出1
-#48000.0
-#第一个亲戚的otoshidama是10000日元。第二个亲戚的otoshidama是0.1比特币，如果按照每1.0BTC兑换380000.0日元的汇率，价值38000.0日元。这些的总和是48000.0日元。
-#48000和48000.1这样的输出也将被判断为正确。
-#
-#输入样本2
-#3
-#100000000日元
-#100.00000000 BTC
-#0.00000001 BTC
-#
-#样本输出2
-#138000000.0038
-#在这种情况下，138001000和1.38e8这样的输出也将被判断为正确。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def chenggong():
+    print("平成")
+
+=======
+Suggestion 2
+
+def problem119_a():
+    S = input()
+    S = S.split("/")
+    if int(S[0]) < 2019:
+        print("Heisei")
+    elif int(S[0]) == 2019:
+        if int(S[1]) < 4:
+            print("Heisei")
+        elif int(S[1]) == 4:
+            if int(S[2]) <= 30:
+                print("Heisei")
+            else:
+                print("TBD")
+        else:
+            print("TBD")
+    else:
+        print("TBD")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    year, month, day = S.split('/')
+    year = int(year)
+    month = int(month)
+    day = int(day)
+    if year < 2019:
+        print('Heisei')
+    elif year == 2019 and month <= 4:
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 4
+
+def main():
+    #input
+    date = input()
+    year = int(date[0:4])
+    month = int(date[5:7])
+    day = int(date[8:10])
+    #compute
+    if year < 2019:
+        print("Heisei")
+    elif year == 2019:
+        if month < 4:
+            print("Heisei")
+        elif month == 4:
+            if day <= 30:
+                print("Heisei")
+            else:
+                print("TBD")
+        else:
+            print("TBD")
+    else:
+        print("TBD")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    y = int(S[0:4])
+    m = int(S[5:7])
+    d = int(S[8:10])
+    if y < 2019:
+        print("Heisei")
+    elif y == 2019 and m <= 4:
+        print("Heisei")
+    else:
+        print("TBD")
+
+=======
+Suggestion 6
+
+def main():
+    # 日期输入
+    date = input()
+    # 年月日分离
+    year, month, day = date.split('/')
+    # 判断
+    if int(year) < 2019:
+        print('Heisei')
+    elif int(year) == 2019 and int(month) < 4:
+        print('Heisei')
+    elif int(year) == 2019 and int(month) == 4 and int(day) <= 30:
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 7
+
+def main():
+    str = input()
+    str_list = str.split('/')
+    if int(str_list[0]) < 2019:
+        print('Heisei')
+    elif int(str_list[1]) < 4:
+        print('Heisei')
+    elif int(str_list[2]) <= 30:
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S <= "2019/04/30":
+        print("平成")
+    else:
+        print("TBD")
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    year, month, day = S.split('/')
+    year = int(year)
+    month = int(month)
+    day = int(day)
+    if year < 2019:
+        print('Heisei')
+    elif year == 2019 and month < 4:
+        print('Heisei')
+    elif year == 2019 and month == 4 and day <= 30:
+        print('Heisei')
+    else:
+        print('TBD')
+
+=======
+Suggestion 10
+
+def get_input():
+    return input()

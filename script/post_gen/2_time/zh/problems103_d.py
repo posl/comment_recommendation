@@ -1,63 +1,218 @@
-#问题陈述
-#有N个岛屿自西向东排开，由N-1座桥连接。
-#第i座桥从西边连接第i个岛，从西边连接第（i+1）个岛。
-#有一天，一些岛屿之间发生了争端，岛屿上的居民提出了M个请求：
-#要求i：从西边来的第a_i个岛和从西边来的第b_i个岛之间发生了争端。请使这些岛屿之间的桥梁交通不可能。
-#你决定拆除一些桥梁以满足所有这些M请求。
-#请找出必须拆除的最小桥梁数量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#所有对（a_i, b_i）都是独立的。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1 b_1
-#a_2 b_2
-#:
-#a_M b_M
-#
-#输出
-#打印必须移除的最小桥梁数量。
-#
-#输入样本 1
-#5 2
-#1 4
-#2 5
-#
-#样本输出 1
-#1
-#通过拆除从西边连接第二和第三岛的桥梁，可以满足这些要求。
-#
-#样本输入2
-#9 5
-#1 8
-#2 7
-#3 5
-#4 6
-#7 9
-#
-#输出样本2
-#2
-#
-#样本输入3
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#样本输出 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    # print(a, b)
+    # 从西边来的第i个岛和从西边来的第（i+1）个岛之间发生了争端。
+    # 请使这些
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    print(N - 1 - len(set(A)) - len(set(B)))
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    a = []
+    b = []
+    for i in range(M):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    a.sort()
+    b.sort()
+    a_b = []
+    for i in range(M):
+        a_b.append([a[i], b[i]])
+    a_b.sort()
+    a = []
+    b = []
+    for i in range(M):
+        a.append(a_b[i][0])
+        b.append(a_b[i][1])
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    #print(a)
+    #print(b)
+    ans = 0
+    for i in range(len(a)):
+        ans += (b[i] - a[i] - 1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    bridge = []
+    for _ in range(m):
+        a, b = map(int, input().split())
+        bridge.append((a, b))
+
+    bridge.sort()
+
+    # print(bridge)
+
+    bridge_set = set()
+    for i in range(m):
+        bridge_set.add(bridge[i])
+
+    # print(bridge_set)
+
+    # print(bridge_set)
+
+    def dfs(graph, start):
+        visited, stack = set(), [start]
+        while stack:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                for v in graph[vertex]:
+                    stack.append(v)
+        return visited
+
+    graph = {}
+    for i in range(1, n + 1):
+        graph[i] = []
+
+    for i in range(m):
+        graph[bridge[i][0]].append(bridge[i][1])
+        graph[bridge[i][1]].append(bridge[i][0])
+
+    # print(graph)
+
+    # print(dfs(graph, 1))
+
+    count = 0
+    for i in range(1, n + 1):
+        if i not in dfs(graph, 1):
+            count += 1
+
+    print(count - 1)
+
+    # print(graph)
+
+    # print(dfs(graph, 1))
+
+=======
+Suggestion 6
+
+def main():
+    print('Hello World!')
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    A = [0 for _ in range(M)]
+    B = [0 for _ in range(M)]
+    for i in range(M):
+        A[i],B[i] = map(int,input().split())
+    print(solve(N,M,A,B))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int, input().split())
+    #print(n,m)
+    #print(type(n),type(m))
+    a = []
+    b = []
+    for i in range(m):
+        ai,bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    #print(a)
+    #print(b)
+
+    #各个岛屿的连接数
+    c = [0 for i in range(n)]
+    for i in range(m):
+        c[a[i]-1] += 1
+        c[b[i]-1] += 1
+    #print(c)
+
+    #计算桥梁数
+    bridge = 0
+    for i in range(n):
+        bridge += c[i]//2
+    #print(bridge)
+
+    #计算拆除桥梁数
+    #拆除桥梁的条件：必须是两个岛屿之间的桥梁，且岛屿的连接数都大于2
+    remove = 0
+    for i in range(m):
+        if c[a[i]-1] > 2 and c[b[i]-1] > 2:
+            remove += 1
+    #print(remove)
+
+    #print(bridge - remove)
+    print(bridge - remove)
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    ab = sorted(ab,key=lambda x:x[1])
+    #print(ab)
+    count = 0
+    for i in range(m):
+        if ab[i][0] == 1:
+            count +=1
+    print(count)
+
+=======
+Suggestion 10
+
+def dfs(v):
+    global k
+    if visited[v]:
+        return
+    visited[v] = True
+    for i in range(1, n+1):
+        if G[v][i] == 1:
+            dfs(i)
+        elif G[v][i] == 2:
+            k += 1
+            G[v][i] = 0
+            G[i][v] = 0
+            dfs(i)
+
+n, m = map(int, input().split())
+G = [[0] * (n+1) for i in range(n+1)]
+for i in range(m):
+    a, b = map(int, input().split())
+    G[a][b] = 1
+    G[b][a] = 1
+visited = [False] * (n+1)
+k = 0
+dfs(1)
+print(k)
