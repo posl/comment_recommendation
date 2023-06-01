@@ -27,7 +27,7 @@ class Div_accuracy:
         
     
     def write(self, div_accuracy_l):
-        with open('{0}/div_accuracy.csv'.format(self.result_path), 'w') as f:
+        with open('{0}/div_ratio_accuracy.csv'.format(self.result_path), 'w') as f:
             writer = csv.writer(f)
             percentage_l = []
             for percentage in range(0, 110, 10):
