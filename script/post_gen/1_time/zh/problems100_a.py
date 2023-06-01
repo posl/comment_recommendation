@@ -1,40 +1,96 @@
-#问题陈述
-#E869120和square1001的16岁生日马上就要到了。
-#来自AtCoder王国的高桥给了他们一个圆形的蛋糕，切成16块相等的扇形。
-#E869120和square1001正准备分别吃其中的A块和B块蛋糕
-#的时候，他们发现蛋糕上有一张纸条，上面写着 "同一个人不应该吃相邻的两块蛋糕"。
-#他们两人都能遵守纸条上的指示，吃到所需数量的蛋糕吗？
-#
-#限制条件
-#A和B是1到16（包括）之间的整数。
-#A+B最多为16。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#如果E869120和square1001都能听从纸条上的指令，并取走所需数量的蛋糕，则打印Yay！；否则，打印:(。
-#
-#输入示例 1
-#5 4
-#
-#输出示例 1
-#Yay!
-#两者都可以取走所需数量的蛋糕，如下所示：
-#
-#样本输入2
-#8 8
-#
-#样本输出2
-#Yay!
-#两者都可以取走所需数量的蛋糕，如下所示：
-#
-#输入样本3
-#11 4
-#
-#样本输出3
-#:(
-#在这种情况下，不幸的是，他们不可以取走所需数量的蛋糕。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    ab = input().split()
+    a = int(ab[0])
+    b = int(ab[1])
+    if a <= 8 and b <= 8:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 2
+
+def main():
+    a,b=map(int,input().split())
+    if a<=8 and b<=8:
+        print('Yay!')
+    else:
+        print(':(')
+main()
+
+=======
+Suggestion 3
+
+def main():
+    A,B=map(int,input().split())
+    if A<=8 and B<=8:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    if a <= 8 and b <= 8:
+        print('Yay!')
+    else:
+        print(':(')
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if a <= 8 and b <= 8:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 6
+
+def main():
+    A,B = (int(x) for x in input().split())
+    if A <= 8 and B <= 8:
+        print("Yay!")
+    else:
+        print(":(")
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a > 8 or b > 8:
+        print(':(')
+    else:
+        print('Yay!')
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    if a <= 8 and b <= 8:
+        print("Yay!")
+    else:
+        print(":(")
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    if A > 8 or B > 8:
+        print(":(")
+    else:
+        print("Yay!")

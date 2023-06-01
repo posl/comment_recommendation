@@ -1,102 +1,221 @@
-#问题陈述
-#Patisserie AtCoder出售带有数字型蜡烛的蛋糕。
-#有X、Y和Z种蛋糕，分别有1根、2根和3根的蜡烛。
-#每个蛋糕都有一个整数值，称为美味度，如下所示：
-#带有1根蜡烛的蛋糕的美味程度为A_1，A_2，...，A_X。
-#有2根蜡烛的蛋糕的美味程度是B_1, B_2, ..., B_Y。
-#有3根蜡烛的蛋糕的美味程度是C_1，C_2，...，C_Z。
-#高桥决定买三个蛋糕，三种形状的蜡烛各一个，以庆祝ABC 123。
-#有X×Y×Z这样的方法来选择三个蛋糕。
-#我们将把这些X×Y×Z的方式按照蛋糕美味之和的降序排列。
-#请打印该列表中第一、第二、...、第K种方式的蛋糕美味之和。
-#
-#限制条件
-#1 ≦ X ≦ 1 000
-#1 ≦ Y ≦ 1 000
-#1 ≦ Z ≦ 1 000
-#1 ≦ K ≦ min(3 000, X × Y × Z)
-#1 ≦ A_i ≦ 10 000 000
-#1 ≦ B_i ≦ 10 000 000 000
-#1 ≦ C_i ≦ 10 000 000 000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y Z K
-#A_1 A_2 A_3 ...  A_X
-#B_1 B_2 B_3 ...  B_Y
-#C_1 C_2 C_3 ...  C_Z
-#
-#输出
-#打印K行。第i行应包含问题陈述中所述的第i个值。
-#
-#输入样本 1
-#2 2 2 8
-#4 6
-#1 5
-#3 8
-#
-#样本输出1
-#19
-#17
-#15
-#14
-#13
-#12
-#10
-#8
-#有2×2×2=8种方法可以选择三个蛋糕，如下图所示，按蛋糕的美味程度之和降序排列：
-#(a_2, b_2, c_2)：6 + 5 + 8 = 19
-#(a_1, b_2, c_2)：4 + 5 + 8 = 17
-#(a_2, b_1, c_2)：6 + 1 + 8 = 15
-#(a_2, b_2, c_1)：6 + 5 + 3 = 14
-#(a_1, b_1, c_2)：4 + 1 + 8 = 13
-#(A_1, B_2, C_1)：4 + 5 + 3 = 12
-#(a_2, b_1, c_1)：6 + 1 + 3 = 10
-#(a_1, b_1, c_1)：4 + 1 + 3 = 8
-#
-#样本输入 2
-#3 3 3 5
-#1 10 100
-#2 20 200
-#1 10 100
-#
-#样本输出2
-#400
-#310
-#310
-#301
-#301
-#可能有多种组合的蛋糕的美味之和相同。例如，在这个测试案例中，A_1, B_3, C_3的和与A_3, B_3, C_1的和都是301。
-#然而，它们是不同的选择蛋糕的方式，所以301在输出中出现了两次。
-#
-#样本输入3
-#10 10 10 20
-#7467038376 5724769290 292794712 2843504496 3381970101 8402252870 249131806 6310293640 6690322794 6082257488
-#1873977926 2576529623 1144842195 1379118507 6003234687 4925540914 3902539811 3326692703 484657758 2877436338
-#4975681328 8974383988 2882263257 7690203955 514305523 6679823484 4263279310 585966808 3752282379 620585736
-#
-#样本输出3
-#23379871545
-#22444657051
-#22302177772
-#22095691512
-#21667941469
-#21366963278
-#21287912315
-#21279176669
-#21160477018
-#21085311041
-#21059876163
-#21017997739
-#20703329561
-#20702387965
-#20590247696
-#20383761436
-#20343962175
-#20254073196
-#20210218542
-#20150096547
-#注意，输入或输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ab = []
+    for ai in a:
+        for bi in b:
+            ab.append(ai + bi)
+
+    ab.sort(reverse=True)
+
+    abc = []
+    for i in range(min(k, len(ab))):
+        for ci in c:
+            abc.append(ab[i] + ci)
+
+    abc.sort(reverse=True)
+
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 2
+
+def problems123_d():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    x,y,z,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    ab=[i+j for i in a for j in b]
+    ab.sort(reverse=True)
+    ab=ab[0:k]
+    abc=[i+j for i in ab for j in c]
+    abc.sort(reverse=True)
+    for i in abc[0:k]:
+        print(i)
+
+=======
+Suggestion 4
+
+def main():
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    # 从大到小排序
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+
+    # 从大到小排序
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i] + b[j])
+    ab.sort(reverse=True)
+
+    # 从大到小排序
+    abc = []
+    for i in range(min(k, x * y)):
+        for j in range(z):
+            abc.append(ab[i] + c[j])
+    abc.sort(reverse=True)
+
+    # 输出
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 5
+
+def main():
+    X,Y,Z,K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a+b)
+    AB.sort(reverse=True)
+
+    ABC = []
+    for i in range(min(K, len(AB))):
+        for c in C:
+            ABC.append(AB[i]+c)
+    ABC.sort(reverse=True)
+
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 6
+
+def main():
+    x,y,z,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+    sum=[]
+    for i in range(x):
+        for j in range(y):
+            for k in range(z):
+                if (i+1)*(j+1)*(k+1)<=k:
+                    sum.append(a[i]+b[j]+c[k])
+    sum.sort(reverse=True)
+    for i in range(k):
+        print(sum[i])
+
+=======
+Suggestion 7
+
+def main():
+    X,Y,Z,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+    ans = []
+    for i in range(X):
+        for j in range(Y):
+            for k in range(Z):
+                if (i+1)*(j+1)*(k+1) > K:
+                    break
+                ans.append(A[i]+B[j]+C[k])
+    ans.sort(reverse=True)
+    for i in range(K):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    x,y,z,k = map(int, input().split())
+    a = sorted(list(map(int, input().split())), reverse=True)
+    b = sorted(list(map(int, input().split())), reverse=True)
+    c = sorted(list(map(int, input().split())), reverse=True)
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i]+b[j])
+    ab.sort(reverse=True)
+    abc = []
+    for i in range(min(k, x*y)):
+        for j in range(z):
+            abc.append(ab[i]+c[j])
+    abc.sort(reverse=True)
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # 从大到小排序
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    C.sort(reverse=True)
+
+    # 暴力搜索
+    ans = []
+    for a in A:
+        for b in B:
+            for c in C:
+                ans.append(a + b + c)
+
+    # 从大到小排序
+    ans.sort(reverse=True)
+
+    # 打印前K个
+    for i in range(K):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    x,y,z,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+    ans=[]
+    for i in range(x):
+        for j in range(y):
+            for k in range(z):
+                if (i+1)*(j+1)*(k+1)<=k:
+                    break
+                else:
+                    ans.append(a[i]+b[j]+c[k])
+    ans.sort(reverse=True)
+    for i in range(k):
+        print(ans[i])

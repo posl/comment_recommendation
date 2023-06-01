@@ -1,44 +1,142 @@
-#问题陈述
-#林戈喜欢整数200。请为他解决下面的问题。
-#给出一个N个正整数的序列A，找出一对满足下列所有条件的整数(i, j)：
-#1 ≦ i < j ≦ N；
-#A_i - A_j是200的倍数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#123 223 123 523 200 2000
-#
-#样本输出1
-#4
-#例如，对于（i，j）=（1，3），A_1-A_3=0是200的倍数。
-#我们有四对满足条件：(i,j)=(1,3), (1,4), (3,4), (5,6)。
-#
-#样本输入2
-#5
-#1 2 3 4 5
-#
-#样本输出2
-#0
-#可能没有满足条件的配对。
-#
-#样本输入3
-#8
-#199 100 200 400 300 500 600 200
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * 200
+    for i in range(n):
+        b[a[i] % 200] += 1
+    ans = 0
+    for i in range(200):
+        ans += b[i] * (b[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def problems200_c():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    mod = [0] * 200
+    for i in range(n):
+        mod[a[i] % 200] += 1
+    for i in range(200):
+        ans += mod[i] * (mod[i] - 1) // 2
+    print(ans)
+
+problems200_c()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    B = [0]*200
+    for i in range(N):
+        B[A[i] % 200] += 1
+    for i in range(200):
+        ans += B[i]*(B[i]-1)//2
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    d = {}
+    for i in range(n):
+        if a[i] % 200 in d:
+            d[a[i] % 200] += 1
+        else:
+            d[a[i] % 200] = 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def func():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(A)
+    # print(len(A))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] - A[j]) % 200 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def find_pairs(nums):
+    count = 0
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if (nums[i]-nums[j])%200 == 0:
+                count += 1
+    return count
+
+=======
+Suggestion 7
+
+def solve():
+    print("solve")
+
+=======
+Suggestion 8
+
+def count_pairs(n, a):
+    d = {}
+    for i in range(n):
+        r = a[i] % 200
+        if r in d:
+            d[r] += 1
+        else:
+            d[r] = 1
+    count = 0
+    for k in d:
+        if d[k] > 1:
+            count += (d[k] - 1) * d[k] // 2
+    return count
+
+=======
+Suggestion 9
+
+def problems200_c():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [0] * 200
+    for i in range(n):
+        b[a[i] % 200] += 1
+    ans = 0
+    for i in range(200):
+        ans += b[i] * (b[i] - 1) // 2
+    print(ans)
+    return
+
+problems200_c()
+
+=======
+Suggestion 10
+
+def get_count(a):
+    a.sort()
+    c = [0]*200
+    for i in a:
+        c[i%200] += 1
+    count = 0
+    for i in range(200):
+        if c[i] > 1:
+            count += c[i]*(c[i]-1)//2
+    return count

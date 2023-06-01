@@ -1,61 +1,97 @@
-#问题陈述
-#有N个学生要参加为期4天的考试。
-#每天都有300分的考试，总分1200分。
-#前三天的考试已经结束，现在第四天即将开始。第i个学生（1 ≦ i ≦ N）在第j天（1 ≦ j ≦ 3）得到P_{i, j}分。
-#对于每个学生，确定他/她在第四天之后是否有可能排在前K位。
-#这里，一个学生在第四天后的排名被定义为四天内总分高于该学生的学生数量，再加上1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 10^5
-#0 ≦ P_{i, j} ≦ 300 (1 ≦ i ≦ N, 1 ≦ j ≦ 3)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#P_{1,1} P_{1,2} P_{1,3}
-#.
-#.
-#.
-#P_{N,1} P_{N,2} P_{N,3}
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含Yes，如果第i个学生在第四天后有可能排在前K名，否则就是No。
-#
-#输入样本 1
-#3 1
-#178 205 132
-#112 220 96
-#36 64 20
-#
-#样本输出1
-#Yes
-#Yes
-#No
-#如果每个学生在第四天都得了100分，那么第1名的学生将排名第1。
-#如果第2名学生在第四天得了100分，其他学生得了0分，第2名学生将排名第1。
-#第3名的学生永远不会排名第1。  
-#
-#输入样本 2
-#2 1
-#300 300 300
-#200 200 200
-#
-#样品输出2
-#Yes
-#Yes
-#
-#采样输入3
-#4 2
-#127 235 78
-#192 134 298
-#28 56 42
-#96 120 250
-#
-#样本输出3
-#Yes
-#Yes
-#No
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems228_c():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = [list(map(int,input().split())) for _ in range(n)]
+    a.sort(key=sum)
+    a.reverse()
+    b = [sum(a[i][:3]) for i in range(n)]
+    b.sort()
+    b.reverse()
+    for i in range(n):
+        if a[i][0] == b[k-1]:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(sum(map(int, input().split())))
+    s.sort(reverse=True)
+    print("Yes" if s[k-1] != s[k] else "No")
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int, input().split())
+    students = []
+    for i in range(n):
+        students.append(sum(map(int, input().split())))
+    students.sort(reverse=True)
+    print('Yes' if students[k-1] == students[k] else 'No')
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    print(p)
+    print(n, k)
+    print(p[0][0])
+
+=======
+Suggestion 6
+
+def solve():
+    n, k = map(int, input().split())
+    scores = []
+    for i in range(n):
+        scores.append(list(map(int, input().split())))
+    scores.sort(key=lambda x: sum(x), reverse=True)
+    for i in range(n):
+        if i < k:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    p = []
+    for i in range(n):
+        p.append([int(i) for i in input().split()])
+    for i in range(n):
+        p[i].sort(reverse=True)
+        if sum(p[i][:k]) >= 300:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    scores = []
+    for _ in range(N):
+        scores.append(sum(map(int, input().split())))
+    scores.sort(reverse=True)
+    print('Yes' if scores[K-1] > scores[K] else 'No')

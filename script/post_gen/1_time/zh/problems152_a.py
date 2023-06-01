@@ -1,39 +1,76 @@
-#问题陈述
-#高桥正在参加一个编程比赛，AXC001。他刚刚提交了他的代码给问题A。
-#这个问题有N个测试用例，必须全部通过才能得到AC判决。
-#在N个测试案例中，高桥的代码通过了M个案例。
-#判断高桥的提交是否获得了AC。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#0 ≦ M ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#
-#輸出
-#如果高桥的提交得到一个AC，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 3
-#
-#样本输出 1
-#Yes
-#所有三个测试用例都通过了，所以他的提交获得了AC。
-#
-#输入样本2
-#3 2
-#
-#样本输出 2
-#No
-#三个测试案例中只有两个通过了，所以他的提交没有得到AC。
-#
-#样本输入3
-#1 1
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int, input().split())
+    if N == M:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    if n == m:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve():
+    n,m = map(int,input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    if n == m:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    if N == M:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    print("Yes" if n == m else "No")
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    if n == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def get_input():
+    n, m = map(int, input().split())
+    return n, m

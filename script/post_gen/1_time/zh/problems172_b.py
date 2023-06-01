@@ -1,45 +1,110 @@
-#问题陈述
-#给出的是字符串S和T，考虑通过重复下面的操作将S改为T。请找出这样做所需的最少操作数。
-#操作：选择S中的一个字符，用一个不同的字符替换它。
-#
-#限制条件
-#S和T的长度在1到2×10^5之间（含）。
-#S和T由小写英文字母组成。
-#S和T的长度相等。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#cupofcoffee
-#cupofhottea
-#
-#样本输出1
-#4
-#我们可以通过四次操作来实现目标，例如以下：
-#首先，将第六个字符c替换为h。
-#第二，用t替换第八个字符f。
-#第三，用t替换第九个字符f。
-#第四，用a替换第11个字符e。
-#
-#输入样本2
-#abcde
-#bcdea
-#
-#样本输出2
-#5
-#
-#样本输入3
-#apple
-#apple
-#
-#样本输出3
-#0
-#可能不需要任何操作来实现目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    ans = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 5
+
+def solve(s,t):
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    return count
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print(0)
+        return
+    else:
+        count = 0
+        for i in range(len(S)):
+            if S[i] != T[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    #print(S)
+    #print(T)
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    ans = n
+    for i in range(n):
+        cnt = 0
+        for j in range(n):
+            if i + j < n:
+                if s[i + j] != t[j]:
+                    cnt += 1
+            else:
+                if s[i + j - n] != t[j]:
+                    cnt += 1
+        ans = min(ans, cnt)
+    print(ans)

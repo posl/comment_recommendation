@@ -1,35 +1,126 @@
-#问题陈述
-#给出整数a、b、c，判断b是否是这些整数的中位数。
-#
-#限制条件
-#1 ≦ a, b, c ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b c
-#
-#輸出
-#如果b是所给整数的中位数，则打印是；否则，打印否。
-#
-#输入样本 1
-#5 3 2
-#
-#样本输出 1
-#是
-#给定的整数按升序排序后是2、3、5，其中b是中位数。
-#
-#输入样本 2
-#2 5 3
-#
-#样本输出 2
-#没有
-#b不是所给整数的中位数。
-#
-#样本输入3
-#100 100 100
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def median(a,b,c):
+    if a < b:
+        if b < c:
+            return b
+        elif a < c:
+            return c
+        else:
+            return a
+    else:
+        if a < c:
+            return a
+        elif b < c:
+            return c
+        else:
+            return b
+
+=======
+Suggestion 2
+
+def median(a,b,c):
+    if ((a>b and a<c) or (a>c and a<b)):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def sort(a, b, c):
+    if a > b:
+        a, b = b, a
+    if a > c:
+        a, c = c, a
+    if b > c:
+        b, c = c, b
+
+    return a, b, c
+
+=======
+Suggestion 4
+
+def is_middle(a,b,c):
+    if a<b<c or c<b<a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if a <= b <= c or c <= b <= a:
+        print('是')
+    else:
+        print('没有')
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int, input().split())
+    if b == a or b == c:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    if b > a and b < c or b < a and b > c:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 8
+
+def median(a, b, c):
+    if a < b:
+        if b < c:
+            return b
+        else:
+            if a < c:
+                return c
+            else:
+                return a
+    else:
+        if a < c:
+            return a
+        else:
+            if b < c:
+                return c
+            else:
+                return b
+
+a, b, c = map(int, input().split())
+
+print('是' if b == median(a, b, c) else '否')
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    if b>a and b<c or b<a and b>c:
+        print('是')
+    else:
+        print('没有')
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c = map(int,input().split())
+    if b == sorted([a,b,c])[1]:
+        print("是")
+    else:
+        print("没有")

@@ -1,70 +1,211 @@
-#问题陈述
-#我们有一个水平圆柱体。  给出Q个查询，按给定的顺序处理它们。
-#每个查询都是以下两种类型中的一种。
-#1 x c：在圆柱体的右端插入c个球，每个球上写有数字x。
-#2 c:取出圆柱体中最左边的c个球，并打印出被取出的球上所写的数字之和。
-#我们假设这些球在圆柱体中的顺序从未改变。
-#
-#限制条件
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ 10^9
-#每当给出2 c类型的查询时，圆柱体中就有c个或更多的球。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#第i个query_i是以下两种格式中的一种。
-#1 x c
-#2 c
-#
-#输出
-#按给定的顺序打印对类型2 c的查询的响应，中间有换行。
-#
-#输入样本 1
-#4
-#1 2 3
-#2 2
-#1 3 4
-#2 3
-#
-#样本输出1
-#4
-#8
-#对于第一项查询，在圆柱体的右端插入3个球，每个球上都写有数字2。
-#  圆柱体上的球从左到右都写有数字（2,2,2）。
-#对于第2个问题，拿出圆柱体中最左边的两个球。
-#  拿出的球上写的数字是2,2，总和是4，应该被打印出来。
-#  现在圆柱体上有一个写有数字（2）的球，从左到右。
-#对于第3个问题，在圆柱体的右端插入4个球，每个球上写有数字3。
-#  现在圆柱体上的球从左到右写着数字（2,3,3,3,3）。
-#在第4个问题中，取出圆柱体中最左边的3个球。
-#  取出的球上写的数字是2,3,3，总和是8，应该被打印出来。
-#  现在圆柱体上的球从左到右写着数字（3,3）。
-#
-#输入样本2
-#2
-#1 1000000000 1000000000
-#2 1000000000
-#
-#样本输出2
-#1000000000000000000
-#
-#样本输入3
-#5
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1 1
-#
-#输出样本3
-#可能没有什么你应该打印的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    for i in range(N):
+        print("Hello World")
+
+=======
+Suggestion 2
+
+def main():
+    q = int(input())
+    c = [0] * q
+    x = [0] * q
+    for i in range(q):
+        c[i], x[i] = map(int, input().split())
+
+    # print(c)
+    # print(x)
+
+    # 計算
+    sum = 0
+    for i in range(q):
+        if c[i] == 1:
+            sum += x[i]
+        elif c[i] == 2:
+            print(sum)
+            sum = 0
+        else:
+            print("error")
+            return
+
+=======
+Suggestion 3
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    write = sys.stdout.write
+    n = int(readline())
+    a = []
+    b = []
+    for _ in range(n):
+        q = readline().split()
+        if q[0] == "1":
+            x, c = int(q[1]), int(q[2])
+            a.append((x, c))
+        else:
+            c = int(q[1])
+            b.append(c)
+    a.reverse()
+    for c in b:
+        s = 0
+        while c > 0:
+            if len(a) == 0:
+                break
+            x, d = a[-1]
+            a.pop()
+            if c >= d:
+                s += x * d
+                c -= d
+            else:
+                s += x * c
+                a.append((x, d - c))
+                break
+        write("%d\n" % s)
+    return
+
+
+main()
+
+=======
+Suggestion 4
+
+def solve():
+    from collections import deque
+    q = int(input())
+    que = deque()
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            que.appendleft([query[1], query[2]])
+        else:
+            ans = 0
+            for i in range(query[1]):
+                a = que.pop()
+                ans += a[0]
+                a[1] -= 1
+                if a[1] != 0:
+                    que.append(a)
+            print(ans)
+
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    q = int(input())
+    ans = 0
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            ans += query[1] * query[2]
+        else:
+            print(ans)
+            ans = 0
+
+=======
+Suggestion 6
+
+def main():
+    Q = int(input())
+    balls = []
+    total = 0
+    for i in range(Q):
+        query = input().split()
+        if query[0] == '1':
+            balls.append(int(query[1]))
+            total += int(query[2])
+        else:
+            print(total)
+            total -= balls.pop(0)
+    return
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    from collections import deque
+    q = int(input())
+    queries = [sys.stdin.readline().strip() for i in range(q)]
+
+    ans = deque()
+    num = 0
+    for query in queries:
+        q = query.split()
+        if q[0] == '1':
+            num += int(q[2])
+            if q[1] == '1':
+                ans.appendleft(int(q[2]))
+            else:
+                ans.append(int(q[2]))
+        else:
+            temp = 0
+            for i in range(int(q[1])):
+                temp += ans.popleft()
+            print(temp)
+            num -= int(q[1])
+    return
+
+=======
+Suggestion 8
+
+def main():
+    q = int(input())
+    a = [0] * q
+    b = [0] * q
+    for i in range(q):
+        a[i], b[i] = map(int, input().split())
+
+    s = []
+    for i in range(q):
+        if a[i] == 1:
+            s.append(b[i])
+        else:
+            ans = 0
+            for j in range(b[i]):
+                ans += s[j]
+            print(ans)
+            s = s[b[i]:]
+
+=======
+Suggestion 9
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        a.append(input().split())
+    for i in range(q):
+        if int(a[i][0]) == 1:
+            print(a[i][1] + a[i][2])
+        else:
+            print(int(a[i][1]) + int(a[i][1]) + 1)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    # query = []
+    # for i in range(Q):
+    #     query.append(list(map(int, input().split())))
+    query = [list(map(int, input().split())) for i in range(Q)]
+    # print(query)
+    ans = []
+    for i in range(Q):
+        if query[i][0] == 1:
+            ans.append(query[i][1] * query[i][2])
+        else:
+            ans.append(sum(ans[:query[i][1]]))
+    # print(ans)
+    for i in ans:
+        print(i)

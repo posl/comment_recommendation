@@ -1,39 +1,112 @@
-#问题陈述
-#高桥正在组织一个聚会。
-#在聚会上，每个客人都会得到一个或多个零食片。
-#高桥预测，参加这个聚会的客人的数量将是A或B。
-#请找出在预测的两种情况下可以平均分配给客人的最小数量的零食。
-#我们假设一块零食不能被分割并分给多个客人。
-#
-#限制条件
-#1 ≦ A, B ≦ 10^5
-#A ≠ B
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#打印在A客人和B客人两种情况下可以平均分配给客人的最小数量的零食。
-#
-#输入样本 1
-#2 3
-#
-#样本输出 1
-#6
-#当我们有六块零食时，如果我们有两个客人，每个客人可以拿三块，如果我们有三个客人，每个客人可以拿两块。
-#
-#样本输入2
-#123 456
-#
-#样本输出2
-#18696
-#
-#样本输入3
-#100000 99999
-#
-#样品输出3
-#9999900000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b,a%b)
+
+a,b = map(int,input().split())
+g = gcd(a,b)
+l = a*b//g
+print(l)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+a,b=map(int,input().split())
+g=gcd(a,b)
+print(a*b//g)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+c = gcd(a, b)
+print(a * b // c)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+A,B=map(int,input().split())
+g=gcd(A,B)
+lcm=A*B//g
+print(lcm)
+
+=======
+Suggestion 5
+
+def lcm(x, y):
+    return (x * y) // gcd(x, y)
+
+=======
+Suggestion 6
+
+def lcm(x, y):
+    if x > y:
+        greater = x
+    else:
+        greater = y
+    while True:
+        if greater % x == 0 and greater % y == 0:
+            lcm = greater
+            break
+        greater += 1
+    return lcm
+
+a, b = map(int, input().split())
+print(lcm(a, b))
+
+=======
+Suggestion 7
+
+def lcm(a,b):
+    return a*b//gcd(a,b)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    while b:
+        a, b = b, a%b
+    return a
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+print(a * b // g)
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(b,a%b)

@@ -1,66 +1,60 @@
-#问题陈述
-#在xy平面上有N个编号为1，2，...，N的人。人i在坐标（X_i，Y_i）上。
-#这些人中的K人，即A_1, A_2, ..., A_K，将收到相同强度的灯光。
-#当一个位于坐标（x，y）的人拥有强度为R的灯光时，它会照亮以（x，y）为中心半径为R的圆的内部（包括边界）。
-#找出每个人至少被一盏灯照亮所需要的最小强度的灯。  
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ k < n ≦ 1000
-#1 ≦ A_1 < A_2 < ...< A_K ≦ N
-#|X_i|,|Y_i| ≦ 10^5
-#(X_i,Y_i) ≠ (X_j,Y_j)，如果i ≠ j。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#A_1 A_2 ...A_K
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#
-#输出
-#将答案打印成一个实数。
-#如果你的输出与法官的输出的绝对或相对误差最多为10^{-5}，你的输出将被视为正确的。
-#
-#输入样本 1
-#4 2
-#2 3
-#0 0
-#0 1
-#1 2
-#2 0
-#
-#样本输出1
-#2.23606797749978969
-#这个输入包含四个人。其中，第2人和第3人将有灯光。
-#如果R≧(5)^(1/2)≈2.236068，则每个人至少会被一盏灯照亮。
-#
-#样本输入2
-#2 1
-#2
-#-100000 -100000
-#100000 100000
-#
-#样本输出2
-#282842.712474619009
-#
-#样本输入3
-#8 3
-#2 6 8
-#-17683 17993
-#93038 47074
-#58079 -57520
-#-41515 -89802
-#-72739 68805
-#24324 -73073
-#71049 72103
-#47863 19268
-#
-#样本输出3
-#130379.280458974768
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dis(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    return
+
+=======
+Suggestion 4
+
+def main():
+    print("hello world!")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    print(xy)
+    print(a)
+    print(n, k)
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def get_distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    xy = [list(map(int, input().split())) for _ in range(n)]
+    print(a)
+    print(xy)
+    #print(n, k, a, xy)

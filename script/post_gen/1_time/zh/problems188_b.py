@@ -1,48 +1,135 @@
-#问题陈述
-#给出两个N维向量A=（A_1, A_2, A_3, ..., A_N）和B=（B_1, B_2, B_3, ..., B_N）。
-#确定A和B的内积是否为0。
-#换言之，确定A_1B_1 + A_2B_2 + A_3B_3 + ...+ A_NB_N = 0。
-#
-#限制条件
-#1 ≦ N ≦ 100000
-#-100 ≦ A_i ≦ 100
-#-100 ≦ B_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#b_1 b_2 b_3 ... b_n
-#
-#输出
-#如果A和B的内积为0，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2
-#-3 6
-#4 2
-#
-#样本输出1
-#Yes
-#A和B的内积是（-3）×4+6×2=0。
-#
-#样本输入2
-#2
-#4 5
-#-1 -3
-#
-#样本输出2
-#No
-#A和B的内积是4×（-1）+5×（-3）=-19。
-#
-#样本输入3
-#3
-#1 3 5
-#3 -6 3
-#
-#样本输出 3
-#Yes
-#A和B的内积是1×3+3×（-6）+5×3=0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # get input
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    # calculate
+    sum = 0
+    for i in range(n):
+        sum += a[i]*b[i]
+    # output
+    if sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def dot_product(a, b):
+    if len(a) != len(b):
+        raise ValueError("length of a and b must be equal")
+    product = 0
+    for i in range(len(a)):
+        product += a[i] * b[i]
+    return product
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += a[i] * b[i]
+
+    if sum == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = 0
+    for i in range(n):
+        c += a[i]*b[i]
+    if c == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    result = 0
+    for i in range(n):
+        result += a[i] * b[i]
+
+    if result == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        result += a[i] * b[i]
+    if result == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+
+    if sum([a[i]*b[i] for i in range(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')

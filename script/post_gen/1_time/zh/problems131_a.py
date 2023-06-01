@@ -1,42 +1,128 @@
-#问题陈述
-#Snuke实验室的门是用安全密码锁上的。
-#安全密码是一个4位数的数字。当安全密码包含两个相同的连续数字时，我们就说它很难输入。
-#如果S难以输入，就打印 "Bad"，否则就打印 "Good"。
-#
-#限制条件
-#S是一个由数字组成的4个字符的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S难以输入，则打印Bad；否则，打印Good。
-#
-#输入样本1
-#3776
-#
-#样本输出1
-#Bad
-#第二和第三位数字是一样的，所以3776很难输入。
-#
-#样本输入2
-#8080
-#
-#样本输出2
-#Good
-#没有两个连续的数字是相同的，所以8080并不难输入。
-#
-#样本输入3
-#1333
-#
-#样本输出3
-#Bad
-#
-#样本输入4
-#0024
-#
-#样品输出4
-#Bad
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == s[1] or s[1] == s[2] or s[2] == s[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] == s[2] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[1] == s[2] and s[2] != s[3]:
+        print("Bad")
+    elif s[0] == s[1] and s[1] != s[2] and s[2] == s[3]:
+        print("Bad")
+    elif s[0] != s[1] and s[1] == s[2] and s[2] == s[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[2] and S[1] == S[3]:
+        print("Bad")
+    elif S[0] == S[3] and S[1] == S[2]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[1] == S[2]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 6
+
+def isDifficultToInput(password):
+    if password[0] == password[1] and password[1] == password[2] and password[2] == password[3]:
+        return True
+    elif password[0] != password[1] and password[1] != password[2] and password[2] != password[3]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S[0]==S[1] or S[1]==S[2] or S[2]==S[3]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[1] and S[2] == S[3]:
+        print("Bad")
+    elif S[0] == S[2] and S[1] == S[3]:
+        print("Bad")
+    elif S[0] == S[3] and S[1] == S[2]:
+        print("Bad")
+    else:
+        print("Good")
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print('Bad')
+    else:
+        print('Good')
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    S = input()
+    # 判断是否有两个连续的数字是相同的
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")

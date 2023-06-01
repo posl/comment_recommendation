@@ -1,49 +1,163 @@
-#问题陈述
-#一家商店里有N种商品。对于每个i=1，2，...，N，第i种商品的价格是A_i日元（日本的货币）。
-#高桥有K张优惠券。
-#每张优惠券可用于一件商品。你可以在同一件商品上使用任何数量的优惠券，可能是零。在一件价格为a日元的商品上使用k张优惠券，可以用最大{a-kX，0}日元的价格购买。
-#打印出高桥购买所有物品所需的最低金额。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ k, x ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K X
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4 7
-#8 3 10 5 13
-#
-#样本输出1
-#12
-#通过在第1件商品上使用1张优惠券，在第3件商品上使用1张优惠券，在第5件商品上使用2张优惠券，高桥可以：
-#以最大{A_1-X, 0 } = 1日元的价格购买第1件商品、
-#以最大{A_2, 0 }=3日元的价格购买第2件商品、
-#购买第3件物品，最大价格{A_3-X, 0 } = 3日元、
-#买入第4件商品，最大{A_4, 0 } = 5日元、
-#以最大{A_5-2X, 0 }=0日元的价格购买第5件物品、
-#总共1+3+3+5+0=12日元，这是最小的可能。
-#
-#输入样本 2
-#5 100 7
-#8 3 10 5 13
-#
-#样本输出2
-#0
-#
-#样本输入3
-#20 815 60
-#2066 3193 2325 4030 3725 1669 1969 763 1653 159 5311 5341 4671 2374 4513 285 810 742 2981 202
-#
-#样本输出3
-#112
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    res = 0
+    for i in range(n):
+        if k > 0:
+            res += max(a[i] - x, 0)
+            k -= 1
+        else:
+            res += a[i]
+    print(res)
+
+=======
+Suggestion 2
+
+def resolve():
+    n,k,x = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    # 优惠券使用策略：优先使用在单价最高的商品上使用优惠券
+    # 由于最大单价是10^9，因此优惠券最多只能使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+    # 优惠券使用次数最多为10^9，因此优惠券最多使用10^9次
+
+    # 优惠券使用策略：优先使用在单价最高的商品上使用优惠券
+    # 由于最大单价是10^9，因此优惠
+
+=======
+Suggestion 3
+
+def main():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    total = 0
+    for i in range(n):
+        if k > 0:
+            total += max(a[i]-x, 0)
+            k -= 1
+        else:
+            total += a[i]
+    print(total)
+
+=======
+Suggestion 4
+
+def solve(n, k, x, a):
+    cost = 0
+    for i in range(n):
+        if k > 0:
+            cost += max(a[i]-x, 0)
+            k -= 1
+        else:
+            cost += a[i]
+    return cost
+
+=======
+Suggestion 5
+
+def solve(n, k, x, a):
+    sum = 0
+    for i in range(n):
+        sum += max(a[i] - x, 0)
+    return sum
+
+=======
+Suggestion 6
+
+def solve():
+    N,K,X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if K > 0:
+            if A[i] < X:
+                ans += A[i]
+            else:
+                ans += X
+            K -= 1
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def problems246_c():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > k:
+            ans += (a[i] - k) * x
+            k = 0
+        else:
+            k -= a[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 优惠券数目大于商品数目，直接返回0
+    if k >= n:
+        print(0)
+        return
+    # 对商品价格排序
+    a.sort()
+    # 优惠券最多使用k次，所以最多可以优惠k*x元
+    # 如果优惠券最多可以优惠k*x元，那么就优惠掉最贵的k*x元商品
+    # 剩下的商品价格之和就是最小价格
+    print(sum(a[:n-k]) - k*x)
+
+=======
+Suggestion 9
+
+def solve():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if K > 0:
+            ans += max(A[i]-X, 0)
+            K -= 1
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if K > 0:
+            ans += max(A[i]-X, 0)
+            K -= 1
+        else:
+            ans += A[i]
+    print(ans)

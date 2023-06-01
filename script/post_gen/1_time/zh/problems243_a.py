@@ -1,44 +1,177 @@
-#问题陈述
-#高桥的房子里住着三个人：高桥，他的父亲，和他的母亲。每天晚上他们都在浴室里洗头。
-#他的父亲、母亲和高桥按这个顺序洗澡，分别使用A、B、C毫升的洗发水。
-#今天早上，瓶子里有V毫升的洗发水。如果不加水，谁会是第一个缺少洗发水洗头的人？
-#
-#限制条件
-#1 ≦ v,a,b,c ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#V A B C
-#
-#输出
-#如果第一个没有洗发水洗头的人是高桥的父亲，打印F；如果是高桥的母亲，打印M；如果是高桥，打印T。
-#
-#输入样本1
-#25 10 11 12
-#
-#样本输出1
-#T
-#现在，他们有25毫升的洗发水。
-#首先，高桥的父亲用了10毫升，剩下15毫升。
-#接下来，高桥的母亲用了11毫升，剩下4毫升。
-#最后，高桥试图用12毫升，但由于只剩下4毫升，所以洗发水不够了。
-#
-#输入样本2
-#30 10 10 10
-#
-#样本输出2
-#F
-#现在，他们有30毫升的洗发水。
-#首先，高桥的父亲用了10毫升，剩下20毫升。
-#接下来，高桥的母亲用了10毫升，剩下10毫升。
-#然后，高桥用了10毫升，剩下0毫升。
-#第二天，高桥的父亲试图用10毫升，但由于只剩下0毫升，所以洗发水不够了。
-#
-#输入样本 3
-#100000 1 1 1
-#
-#样本输出3
-#M
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def judge(v,a,b,c):
+    if v>a:
+        if v>b:
+            if v>c:
+                return True
+    return False
+
+=======
+Suggestion 2
+
+def main():
+    v, a, b, c = map(int, input().split())
+    v1 = v - a
+    v2 = v - a - b
+    v3 = v - a - b - c
+    if v1 <= 0:
+        print('F')
+    elif v2 <= 0:
+        print('M')
+    else:
+        print('T')
+
+=======
+Suggestion 3
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while v >= 0:
+        v -= a
+        if v < 0:
+            print('F')
+            return
+        v -= b
+        if v < 0:
+            print('M')
+            return
+        v -= c
+        if v < 0:
+            print('T')
+            return
+
+=======
+Suggestion 4
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while v >= 0:
+        if v >= c:
+            v -= c
+        else:
+            print('T')
+            break
+        if v >= b:
+            v -= b
+        else:
+            print('F')
+            break
+        if v >= a:
+            v -= a
+        else:
+            print('M')
+            break
+
+=======
+Suggestion 5
+
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    if v % a == 0 or v % b == 0 or v % c == 0:
+        print("T")
+    else:
+        print("F")
+
+=======
+Suggestion 6
+
+def problems243_a():
+    v,a,b,c = map(int, input().split())
+    while v > 0:
+        if v >= a:
+            v -= a
+        else:
+            print('F')
+            return
+        if v >= b:
+            v -= b
+        else:
+            print('M')
+            return
+        if v >= c:
+            v -= c
+        else:
+            print('T')
+            return
+    print('T')
+
+=======
+Suggestion 7
+
+def solve():
+    v,a,b,c = map(int,input().split())
+    while v >= 0:
+        if v >= a:
+            v -= a
+        else:
+            print("F")
+            break
+        if v >= b:
+            v -= b
+        else:
+            print("M")
+            break
+        if v >= c:
+            v -= c
+        else:
+            print("T")
+            break
+    return 0
+
+=======
+Suggestion 8
+
+def problems243_a():
+    v, a, b, c = map(int, input().split())
+    while True:
+        if v >= a:
+            v -= a
+        else:
+            print("F")
+            break
+        if v >= b:
+            v -= b
+        else:
+            print("M")
+            break
+        if v >= c:
+            v -= c
+        else:
+            print("T")
+            break
+
+=======
+Suggestion 9
+
+def main():
+    v,a,b,c = map(int, input().split())
+    while True:
+        if v < a:
+            print('F')
+            break
+        else:
+            v -= a
+        if v < b:
+            print('M')
+            break
+        else:
+            v -= b
+        if v < c:
+            print('T')
+            break
+        else:
+            v -= c
+
+=======
+Suggestion 10
+
+def main():
+    v,a,b,c = map(int, input().split())
+    if (v % a == 0) or (v % b == 0) or (v % c == 0):
+        print("T")
+    else:
+        print("F")

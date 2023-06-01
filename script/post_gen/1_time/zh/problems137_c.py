@@ -1,54 +1,191 @@
-#问题陈述
-#我们将把一个字符串a中包含的字符按某种顺序排列而得到的字符串称为a的变形。
-#例如，greenbin是初学者的变形。从这里可以看出，当同一个字符出现多次时，该字符必须被使用该次数。
-#有N个字符串s_1, s_2, ..., s_N。每个字符串的长度为10，由小写英文字符组成。此外，所有这些字符串都是不同的。请找出有多少对整数i, j (1 ≦ i < j ≦ N)，使得s_i是s_j的变形。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#s_i是一个长度为10的字符串。
-#s_i中的每个字符都是一个小写的英文字母。
-#s_1, s_2, ..., s_N都是独立的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#s_1
-#s_2
-#:
-#s_N
-#
-#输出
-#打印整数i, j (1 ≦ i < j ≦ N)的对数，以便s_i是s_j的变形。
-#
-#输入样本 1
-#3
-#acornistnt
-#peanutbomb
-#constraint
-#
-#样本输出1
-#1
-#s_1 = acornistnt是s_3 = constraint的变形词。没有其他一对i，j，使s_i是s_j的变位，所以答案是1。
-#
-#输入样本2
-#2
-#1-2-2
-#ninemodsix
-#
-#样本输出2
-#0
-#如果没有一对i，j，使得s_i是s_j的变形，则打印0。
-#
-#输入样本3
-#5
-#abaaaaaaaa
-#oneplustwo
-#aaaaaaaaba
-#twoplusone
-#aaaabaaaaa
-#
-#样本输出3
-#4
-#注意，答案可能不适合32位的整数类型，尽管我们不能把这样的情况放在这里。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n=int(input())
+    s=[input() for i in range(n)]
+    dic={}
+    for i in range(n):
+        s[i]="".join(sorted(s[i]))
+        if s[i] in dic:
+            dic[s[i]]+=1
+        else:
+            dic[s[i]]=1
+    ans=0
+    for key in dic:
+        ans+=dic[key]*(dic[key]-1)//2
+    print(ans)
+
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s.sort()
+    s.append('end')
+    cnt = 0
+    ans = 0
+    for i in range(N):
+        if s[i] == s[i+1]:
+            cnt += 1
+        else:
+            ans += (cnt+1)*cnt//2
+            cnt = 0
+    print(ans)
+
+=======
+Suggestion 3
+
+def count_chars(s):
+    chars = {}
+    for c in s:
+        if c in chars:
+            chars[c] += 1
+        else:
+            chars[c] = 1
+    return chars
+
+n = int(input())
+strings = []
+for i in range(n):
+    strings.append(input())
+
+strings_chars = []
+for s in strings:
+    strings_chars.append(count_chars(s))
+
+count = 0
+for i in range(n):
+    for j in range(i+1, n):
+        if strings_chars[i] == strings_chars[j]:
+            count += 1
+
+print(count)
+
+=======
+Suggestion 4
+
+def count_anagrams(arr):
+    anagrams = {}
+    for s in arr:
+        key = ''.join(sorted(s))
+        if key in anagrams:
+            anagrams[key] += 1
+        else:
+            anagrams[key] = 1
+
+    count = 0
+    for key in anagrams:
+        n = anagrams[key]
+        count += n * (n-1) / 2
+
+    return count
+
+=======
+Suggestion 5
+
+def problem137_c():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    s.sort()
+    ans = 0
+    cnt = 1
+    for i in range(1, n):
+        if s[i] == s[i-1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    ans += cnt * (cnt - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    #print(s)
+    count = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            count += 1
+    print(count)
+main()
+
+=======
+Suggestion 7
+
+def get_char_list(str):
+    char_list = []
+    for i in range(0, 26):
+        char_list.append(0)
+    for i in range(0, len(str)):
+        char_list[ord(str[i]) - ord('a')] += 1
+    return char_list
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    strs = []
+    for i in range(N):
+        strs.append(input())
+    strs.sort()
+    cnt = 0
+    ans = 0
+    for i in range(N):
+        if strs[i] == strs[i-1]:
+            cnt += 1
+        else:
+            cnt = 0
+        ans += cnt
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_char_list(str):
+    char_list = []
+    for i in range(len(str)):
+        if str[i] not in char_list:
+            char_list.append(str[i])
+    return char_list
+
+=======
+Suggestion 10
+
+def hash(s):
+    h = 0
+    for i in range(0, len(s)):
+        h = h * 26 + ord(s[i]) - ord('a')
+    return h
+
+n = int(input())
+d = {}
+for i in range(0, n):
+    s = input()
+    h = hash(s)
+    if h in d:
+        d[h] += 1
+    else:
+        d[h] = 1
+ans = 0
+for k in d:
+    v = d[k]
+    ans += v * (v - 1) // 2
+print(ans)

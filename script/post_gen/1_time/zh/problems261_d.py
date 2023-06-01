@@ -1,62 +1,179 @@
-#问题陈述
-#高桥将抛出一枚硬币N次。
-#他也有一个计数器，最初显示为0。
-#根据第i次投掷硬币的结果，会发生以下情况：
-#如果是正面：高桥将计数器的值增加1，并获得X_i日元（日本货币）。
-#如果是反面，他就把计数器的值重设为0，不收钱。
-#此外，有M种连胜奖金。第i种连胜奖金在计数器显示C_i时奖励Y_i日元。
-#求高桥能得到的最大金额。
-#
-#限制条件
-#1≦ M≦ N≦ 5000
-#1≦ X_i≦ 10^9
-#1≦ C_i≦ N
-#1≦ Y_i≦ 10^9
-#C_1,C_2,...,C_M都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#X_1 X_2 ...X_N
-#C_1 Y_1
-#C_2 Y_2
-#.
-#.
-#.
-#C_M Y_M
-#
-#输出
-#打印高桥能收到的最大金额，为整数。
-#
-#输入样本 1
-#6 3
-#2 7 1 8 2 8
-#2 10
-#3 1
-#5 5
-#
-#样本输出1
-#48
-#如果他按这个顺序得到头，头，尾，头，头，头，头，就会得到以下金额的奖励。
-#在第1次抛硬币时，硬币是头。将计数器的值从0改为1，获得2日元。
-#在第2次投掷硬币时，硬币正面。将计数器的值从1改为2，获得7日元。此外，获得10日元作为连胜奖金。
-#在第3次投掷硬币时，硬币为反面。将计数器的值从2改为0。
-#在第4次抛硬币时，硬币是正面。将计数器的值从0改为1，获得8日元。
-#在第5次抛硬币时，硬币是正面。将计数器的值从1改为2，获得2日元。此外，获得10日元作为连胜奖金。
-#在第6次抛硬币时，硬币正面。将计数器的值从2改为3，获得8日元。此外，获得1日元的连胜奖金。
-#在这种情况下，高桥得到2+(7+10)+0+8+(2+10)+(8+1)=48日元，这是可能的最大值。
-#请注意，每次计数器显示C_i时，连胜奖金可以获得任意次数。
-#顺便提一下，如果他在6次抛硬币中都得到头像，他只得到2+(7+10)+(1+1)+8+(2+5)+8=44日元，这不是最大值。
-#
-#输入样本 2
-#3 2
-#1000000000 1000000000 1000000000
-#1 1000000000
-#3 1000000000
-#
-#样本输出2
-#5000000000
-#注意，答案可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = []
+    Y = []
+    for i in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+
+    #dp[i][j] 表示第i次投掷后，连续投掷j次且获得奖励的最大金额
+    dp = [[0 for _ in range(N+1)] for _ in range(N+1)]
+
+    #初始化
+    for i in range(1, N+1):
+        dp[i][0] = dp[i-1][0] + X[i-1]
+
+    #状态转移
+    for i in range(1, N+1):
+        for j in range(1, i+1):
+            dp[i][j] = max(dp[i-1][j-1] + X[i-1], dp[i-1][j])
+            if j in C:
+                dp[i][0] = max(dp[i][0], dp[i][j] + Y[C.index(j)])
+
+    print(max(dp[N]))
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    cy = []
+    for i in range(m):
+        cy.append(list(map(int,input().split())))
+    cy.sort(key=lambda x:x[1],reverse=True)
+    #print(cy)
+    #print(x)
+    dp = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            dp[i+1][j+1] = max(dp[i][j+1],dp[i+1][j])
+            if x[i] == cy[0][0]:
+                for k in range(m):
+                    if j+1 == cy[k][0]:
+                        dp[i+1][j+1] = max(dp[i+1][j+1],dp[i][j+1-cy[k][0]]+cy[k][1])
+    print(dp[n][n])
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C, Y = [], []
+    for i in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+    ans = 0
+    for i in range(N):
+        ans += X[i]
+        if i + 1 in C:
+            ans += max(Y)
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N,M = map(int,input().split())
+    X = list(map(int,input().split()))
+    CY = [list(map(int,input().split())) for _ in range(M)]
+    CY.sort(key=lambda x:x[1],reverse=True)
+    dp = [[-1 for _ in range(N+1)] for _ in range(N+1)]
+    dp[0][0] = 0
+    for i in range(N):
+        for j in range(N):
+            if dp[i][j] == -1:
+                continue
+            dp[i+1][j] = max(dp[i+1][j],dp[i][j])
+            for k in range(M):
+                if j + CY[k][0] > N:
+                    continue
+                dp[i+CY[k][0]][j+CY[k][0]] = max(dp[i+CY[k][0]][j+CY[k][0]],dp[i][j]+CY[k][1])
+    ans = 0
+    for i in range(N+1):
+        ans = max(ans,dp[N][i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        ci, yi = map(int, input().split())
+        c.append(ci)
+        y.append(yi)
+    dp = [[0 for _ in range(n + 1)] for _ in range(n + 1)]
+    for i in range(n):
+        for j in range(i + 1):
+            if j == 0:
+                dp[i + 1][j] = dp[i][j] + x[i]
+            else:
+                dp[i + 1][j] = max(dp[i][j] + x[i], dp[i][j - 1])
+    ans = 0
+    for i in range(m):
+        for j in range(n + 1):
+            ans = max(ans, dp[c[i]][j] + y[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    CY = [list(map(int, input().split())) for _ in range(M)]
+
+    #dp[n][m]表示第n次投掷后，连续投掷m次的最大金额
+    dp = [[0]*(M+1) for _ in range(N+1)]
+    for n in range(1, N+1):
+        for m in range(1, M+1):
+            c, y = CY[m-1]
+            if n < c: dp[n][m] = dp[n][m-1]
+            else:
+                dp[n][m] = max(dp[n][m-1], dp[n-c][m-1] + y)
+    #print(dp)
+    ans = 0
+    for n in range(N+1):
+        ans = max(ans, dp[n][M] + sum(X[:n]))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def problems261_d():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_, y_ = map(int,input().split())
+        c.append(c_)
+        y.append(y_)
+    #print(n,m,x,c,y)
+    dp = [[0 for i in range(n+1)] for j in range(n+1)]
+    for i in range(n):
+        dp[i][0] = 0
+    for i in range(n):
+        for j in range(n):
+            dp[i+1][j+1] = max(dp[i][j+1],dp[i][j]+x[i])
+    #print(dp)
+    ans = 0
+    for i in range(m):
+        for j in range(n+1):
+            ans = max(ans,dp[j][j-c[i]]+y[i])
+    print(ans)

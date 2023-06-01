@@ -1,54 +1,140 @@
-#问题陈述
-#给出一个数列A_1, A_2, A_3, ..., A_N，其中可能包含负数元素。
-#在一条数列上，有一个机器人在坐标0处，它将依次做以下动作：  
-#将A_1向正方向移动。
-#向正方向移动A_1，然后向正方向移动A_2。
-#向正方向移动A_1，然后向正方向移动A_2，再向正方向移动A_3。
-#.
-#.
-#.
-# 
-#向正方向移动A_1，然后向正方向移动A_2，再向正方向移动A_3，...，...，然后再向正方向移动A_N。
-#找到机器人从开始到结束所占据的最大坐标。
-#
-#约束条件
-#1 ≦ N ≦ 200000
-#-10^8 ≦ A_i ≦ 10^8
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#输出
-#打印机器人从过程开始到结束所占据的最大坐标。
-#
-#输入样本 1
-#3
-#2 -1 -2
-#
-#样本输出1
-#5
-#机器人的动作如下：
-#在正方向上移动2，到坐标2。
-#在正方向上移动2，到坐标4。然后在正方向上移动-1，到坐标3。
-#在正方向上移动2，到坐标5。然后在正方向上移动-1，到坐标4。然后在正方向上移动-2，到坐标2。
-#在这个过程中，占据的最大坐标是5，所以我们应该打印5。
-#
-#输入样本2
-#5
-#-2 1 3 -1 -1
-#
-#样本输出 2
-#2
-#
-#样本输入3
-#5
-#-1000 -1000 -1000 -1000 -1000
-#
-#样本输出3
-#0
-#在这种情况下，初始坐标0是占用的最大坐标。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = 0
+    s = 0
+    for i in range(n):
+        x += a[i]
+        s = max(s, x)
+    print(s)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        if i % 2 == 1:
+            ans -= 2 * a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    minx = 0
+    ans = 0
+    for i in range(1, n+1):
+        ans = max(ans, s[i] - minx)
+        minx = min(minx, s[i])
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    pos = 0
+    max_pos = 0
+    for a in A:
+        pos += a
+        if pos > max_pos:
+            max_pos = pos
+    print(max_pos)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    maxa = 0
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum > maxa:
+            maxa = sum
+    print(maxa)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    ans = 0
+    for i in range(n):
+        ans = max(ans, s[i + 1])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    s[0] = a[0]
+    for i in range(1, n):
+        s[i] = s[i-1] + a[i]
+    print(max(s))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = 0
+    ans = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans
+    print(max(a))
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += a[i]
+        ans = max(ans, s)
+    print(ans)
+solve()

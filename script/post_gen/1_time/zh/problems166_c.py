@@ -1,57 +1,197 @@
-#问题陈述
-#在AtCoder Hill有N个观测站，称为Obs.1, Obs.2, ..., Obs.观测站i的海拔高度为H_i。
-#还有M条路，每条路连接两个不同的观测站。道路j连接着Obs.A_j和Obs.B_j。
-#当i号观测点的海拔高度高于仅用一条路就能到达的所有观测点时，就可以说它是好的。
-#需要注意的是，如果从i号观测点出发，仅用一条路就能到达任何一个观测点，那么i号观测点也是好的。
-#有多少个好的天文台？
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#多条道路可以连接同一对观测站。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N M
-#H_1 H_2 ...H_N
-#A_1 B_1
-#A_2 B_2
-#:
-#A_M B_M
-#
-#输出
-#打印好的观测站的数量。
-#
-#输入样本 1
-#4 3
-#1 2 3 4
-#1 3
-#2 3
-#2 4
-#
-#样本输出 1
-#2
-#
-#从观察点。1，你可以通过一条路到达Obs.3，只需使用一条路。观察点1的海拔高度不高于观察点3。1的海拔不比3的高。3，所以观察点。1不是很好。
-#从Obs.2，你可以通过一条路到达观测点。3和4只需使用一条路。观察点2的海拔不比观察点3高。2的海拔不比3的高。3，所以观察点。2号观测点不好走。
-#从Obs.3，你可以通过一条路到达观测点。1和2只需使用一条路。观察点3的海拔高度比观察点2高。3的海拔比1和2的高。1和2，所以3号观测点很好。3号观测点是好的。
-#从观察点4，可以到达观察点5。4，你可以通过一条路到达Obs.2，只需使用一条路。观察点4的海拔高度比观察点2高。4的海拔比2的高。2，所以观察点。4是好的。
-#因此，好的观测站是Obs.3和4，所以有两个好的天文台。
-#
-#样本输入2
-#6 5
-#8 6 9 1 2 1
-#1 3
-#4 2
-#4 3
-#4 6
-#4 6
-#
-#样本输出 2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n,m = map(int, input().split())
+    h = list(map(int, input().split()))
+    ab = [list(map(int, input().split())) for _ in range(m)]
+    return n,m,h,ab
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    road = [list(map(int, input().split())) for _ in range(M)]
+    good = [1] * N
+    for i in range(M):
+        if H[road[i][0]-1] <= H[road[i][1]-1]:
+            good[road[i][0]-1] = 0
+        if H[road[i][0]-1] >= H[road[i][1]-1]:
+            good[road[i][1]-1] = 0
+    print(sum(good))
+
+=======
+Suggestion 3
+
+def get_input():
+    n, m = map(int, input().split())
+    h_list = list(map(int, input().split()))
+    ab_list = []
+    for i in range(m):
+        ab_list.append(list(map(int, input().split())))
+    return n, m, h_list, ab_list
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = [0]*m
+    b = [0]*m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(m):
+        if h[a[i]-1] <= h[b[i]-1]:
+            h[a[i]-1] = 0
+        if h[b[i]-1] <= h[a[i]-1]:
+            h[b[i]-1] = 0
+    print(h.count(0))
+
+=======
+Suggestion 6
+
+def problems166_c():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    # print(N, M)
+    # print(H)
+    # print(AB)
+
+    # 1. 首先，我们需要一个列表来存储每个观测站的海拔高度。
+    # 2. 然后，我们需要一个列表来存储每个观测站的连接观测站的列表。
+    # 3. 然后，我们需要一个列表来存储每个观测站是否是好的。
+    # 4. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 5. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 6. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 7. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 8. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 9. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 10. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 11. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 12. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 13. 然后，我们需要一个循环来检查每个观测站是否是好的。
+    # 14. 然后，我们需要一个循环来检查每个观测站是否是好的
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if i == A[j] - 1:
+                if H[i] <= H[B[j] - 1]:
+                    flag = False
+            elif i == B[j] - 1:
+                if H[i] <= H[A[j] - 1]:
+                    flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if A[j] == i + 1:
+                if H[i] <= H[B[j] - 1]:
+                    flag = False
+                    break
+            elif B[j] == i + 1:
+                if H[i] <= H[A[j] - 1]:
+                    flag = False
+                    break
+        if flag:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(N, M, H, A, B)
+
+    #print(N, M, H, A, B)
+    #print('N = ', N)
+    #print('M = ', M)
+    #print('H = ', H)
+    #print('A = ', A)
+    #print('B = ', B)
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H) = ', len(H))
+    #print('len(A) = ', len(A))
+    #print('len(B) = ', len(B))
+    #print('len(H)
+
+=======
+Suggestion 10
+
+def problems166_c():
+    pass

@@ -1,65 +1,222 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N）。
-#对于每个K = 0, 1, 2, ..., N-1，解决以下问题。
-#找出介于1和N之间的整数i的数目（包括在内），以便：
-#A正好包含大于A_i的K个不同的整数。  
-#
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N行。
-#对于i=1，2，...，N，第i行应该包含K=i-1的答案。
-#
-#输入样本 1
-#6
-#2 7 1 8 2 8
-#
-#样本输出 1
-#2
-#1
-#2
-#1
-#0
-#0
-#例如，我们将找到K=2的答案。
-#关于A_1=2，A包含两个大于A_1的整数：7和8。
-#关于A_2=7，A包含一个大于A_2的整数：8。
-#关于A_3=1，A包含3个大于A_3的不同的整数：2，7，和8。
-#关于A_4=8，A包含比A_4大的0个不同的整数（不存在这样的整数）。
-#关于A_5=2，A包含两个大于A_5的整数：7和8。
-#关于A_6=8，A包含0个大于A_6的不同整数（没有这样的整数）。
-#因此，有两个i，i=1和i=5，这样A就正好包含了K=2个大于A_i的不同整数。  因此，K=2的答案是2。
-#
-#输入样本 2
-#1
-#1
-#
-#样品输出2
-#1
-#
-#样品输入3
-#10
-#979861204 57882493 979861204 447672230 644706927 710511029 763027379 710511029 447672230 136397527
-#
-#样本输出3
-#2
-#1
-#2
-#1
-#2
-#1
-#1
-#0
-#0
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(N, A)
+
+    # print(N, A)
+    # print(A)
+    # print(N, A)
+
+    # N = 6
+    # A = [2, 7, 1, 8, 2, 8]
+
+    # N = 10
+    # A = [979861204, 57882493, 979861204, 447672230, 644706927, 710511029, 763027379, 710511029, 447672230, 136397527]
+
+    # N = 1
+    # A = [1]
+
+    # N = 2
+    # A = [1, 1]
+
+    # N = 3
+    # A = [1, 1, 1]
+
+    # N = 4
+    # A = [1, 1, 1, 1]
+
+    # N = 5
+    # A = [1, 1, 1, 1, 1]
+
+    # N = 6
+    # A = [1, 1, 1, 1, 1, 1]
+
+    # N = 7
+    # A = [1, 1, 1, 1, 1, 1, 1]
+
+    # N = 8
+    # A = [1, 1, 1, 1, 1, 1, 1, 1]
+
+    # N = 9
+    # A = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+    # N = 10
+    # A = [1, 1, 1, 1, 1, 1, 1, 1, 1,
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    ans = [0] * n
+    for i in range(n):
+        if i == 0:
+            ans[0] = 0
+        elif a[i] == a[i-1]:
+            ans[i] = ans[i-1]
+        else:
+            ans[i] = ans[i-1] + 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    a.sort()
+    print(a)
+    ans = [0] * (n + 1)
+    ans[0] = 0
+    for i in range(1, n + 1):
+        if a[i] != a[i - 1]:
+            ans[i] = ans[i - 1] + 1
+        else:
+            ans[i] = ans[i - 1]
+    print(ans)
+    for i in range(1, n + 1):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+    d = sorted(d.items(), key=lambda x: x[0])
+    #print(d)
+    ans = 0
+    for i in range(len(d)):
+        ans += d[i][1]
+        d[i] = (d[i][0], ans)
+    #print(d)
+    for i in range(n):
+        for j in range(len(d)):
+            if a[i] == d[j][0]:
+                print(d[j][1] - 1)
+                break
+
+=======
+Suggestion 5
+
+def problems273_c():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(10**9+1)
+    ans = [0] * N
+    cnt = 0
+    for i in range(N):
+        if A[i] != A[i+1]:
+            for j in range(cnt, i+1):
+                ans[j] = i - cnt + 1
+            cnt = i + 1
+    print('\n'.join(map(str, ans)))
+    return 0
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    a.append(0)
+    k = 0
+    for i in range(n):
+        if a[i] != a[i+1]:
+            print(k)
+            k = 0
+        else:
+            k += 1
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0] * n
+    for i in range(n):
+        if i == 0:
+            ans[i] = 1
+        elif a[i] == a[i-1]:
+            ans[i] = ans[i-1]
+        else:
+            ans[i] = ans[i-1] + 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def solve():
+    # 读入数据
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 用于存储答案
+    ans = [0] * N
+
+    # 用于存储之前的出现过的数字
+    used = set()
+
+    # 用于存储之前的出现过的数字的个数
+    used_count = 0
+
+    # 从后往前遍历
+    for i in range(N - 1, -1, -1):
+
+        # 如果A[i]之前没有出现过
+        if A[i] not in used:
+            # 之前出现过的数字的个数+1
+            used_count += 1
+            # 将A[i]加入到已经出现过的数字中
+            used.add(A[i])
+
+        # 之前出现过的数字的个数就是答案
+        ans[i] = used_count
+
+    # 输出答案
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    k = 0
+    for i in range(n):
+        if i != 0 and a[i] != a[i-1]:
+            k += 1
+        print(k)
+
+=======
+Suggestion 10
+
+def get_count(a):
+    count = 0
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i] < a[j]:
+                count += 1
+    return count

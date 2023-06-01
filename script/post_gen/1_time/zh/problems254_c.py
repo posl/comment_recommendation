@@ -1,46 +1,164 @@
-#问题陈述
-#我们有一个长度为N的序列：A=（a_1，...，a_N）。此外，给你一个整数K。
-#你可以进行以下操作0次或多次。
-#选择一个整数i，使得1≦i≦N-K，然后交换a_i和a_{i+K}的值。
-#判断是否有可能对A进行升序排序。
-#
-#约束条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#a_1 ... a_N
-#
-#输出
-#如果有可能对A进行升序排序，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 2
-#3 4 1 3 4
-#
-#样品输出1
-#Yes
-#下面的操作序列将A按升序排序。
-#选择i=1来交换a_1和a_3的值。现在A是（1,4,3,3,4）。
-#选择i=2来交换a_2和a_4的值。现在A是（1,3,3,4,4）。
-#
-#输入样本 2
-#5 3
-#3 4 1 3 4
-#
-#样本输出2
-#No
-#
-#样本输入3
-#7 5
-#1 2 3 4 5 5 10
-#
-#样本输出3
-#Yes
-#可能不需要操作。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n-k):
+        if a[i] > a[i+k]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def solve(N, K, A):
+    # 一旦K的值大于N的一半，则不可能对A进行升序排序。
+    if K > N // 2:
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    # 一旦A中有重复的值，则不可能对A进行升序排序。
+    if len(A) != len(set(A)):
+        return False
+
+    return True
+
+=======
+Suggestion 3
+
+def solve(N, K, A):
+    A = sorted(A)
+    for i in range(N-K):
+        if A[i] >= A[i+K]:
+            return "No"
+    return "Yes"
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n - k):
+        if a[i] > a[i + k]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n-k):
+        if a[i] > a[i+k]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 从左到右，从小到大排序
+    left = 0
+    while left < N - 1:
+        if A[left] > A[left + 1]:
+            break
+        left += 1
+
+    # 从右到左，从小到大排序
+    right = N - 1
+    while right > 0:
+        if A[right - 1] > A[right]:
+            break
+        right -= 1
+
+    # 如果整个序列已经排序，我们可以完成
+    if left >= right:
+        print("Yes")
+        exit()
+
+    # 如果K是偶数，我们可以完成
+    if K % 2 == 0:
+        print("Yes")
+        exit()
+
+    # 如果K是奇数，我们不能完成
+    print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    if K * 2 >= N:
+        print('Yes')
+        return
+    for i in range(K, N):
+        if A[i - K] >= A[i]:
+            print('Yes')
+            return
+    print('No')
+
+solve()
+
+=======
+Suggestion 9
+
+def sort_check(N, K, A):
+    for i in range(N - K):
+        if A[i] > A[i + K]:
+            return False
+    return True
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))

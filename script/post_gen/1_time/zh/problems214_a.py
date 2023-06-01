@@ -1,38 +1,86 @@
-#问题说明
-#这是第214届AtCoder初学者竞赛（ABC）。
-#到目前为止，ABC的问题数量如下。
-#第1届至第125届ABC，每届有4个问题。
-#第126届至第211届ABC，每届有6个问题。
-#第212个到第214个ABC每个都有8个问题。
-#求第N个ABC中的问题数。
-#
-#限制条件
-#1 ≦ N ≦ 214
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#214
-#
-#样本输出1
-#8
-#
-#样本输入2
-#1
-#
-#样本输出2
-#4
-#
-#样本输入3
-#126
-#
-#样本输出3
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+
+    if N <= 125:
+        print(4)
+    elif N <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n <= 125:
+        print(4)
+    elif n <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 3
+
+def main():
+    # 读入一个整数
+    n = int(input())
+    # 判断
+    if n <= 125:
+        print(4)
+    elif n <= 211:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N < 126:
+        print(4)
+    elif N < 212:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 5
+
+def problems214_a(n):
+    if n <= 125:
+        return 4
+    elif n <= 211:
+        return 6
+    else:
+        return 8
+
+=======
+Suggestion 6
+
+def problem214_a():
+    n = int(input())
+    if n < 126:
+        print(4)
+    elif n < 212:
+        print(6)
+    else:
+        print(8)
+
+=======
+Suggestion 7
+
+def get_problem_num(n):
+    if n <= 125:
+        return 4
+    elif n <= 211:
+        return 6
+    else:
+        return 8

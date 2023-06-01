@@ -1,39 +1,72 @@
-#问题陈述
-#Kurohashi从未参加过AtCoder初级竞赛（ABC）。
-#下一个ABC是ABC N（有史以来的第N个ABC）。
-#黑桥想在某个ABC x中首次亮相，使x的所有数字都是以10为底数的。
-#黑桥能首次亮相的最早的ABC是什么？
-#
-#限制条件
-#100 ≦ N ≦ 999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果黑石能首次亮相的最早的ABC是ABC n，打印n。
-#
-#输入样本 1
-#111
-#
-#样本输出1
-#111
-#下一个举行的ABC是ABC111，黑桥可以在那里首次亮相。
-#
-#样本输入2
-#112
-#
-#样本输出2
-#222
-#下一个ABC是ABC 112，这意味着黑桥不能再参加ABC 111了。
-#在黑桥可以登场的ABC中，最早的一个是ABC 222。
-#
-#样本输入3
-#750
-#
-#样本输出3
-#777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print((n-1)//111*111+111)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N%111 == 0:
+        print(N)
+    else:
+        print(N//111*111+111)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n % 111 != 0:
+        print((n // 111 + 1) * 111)
+    else:
+        print(n)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    for i in range(N, 1000):
+        if i % 111 == 0:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    print((N-1)//111*111+111)

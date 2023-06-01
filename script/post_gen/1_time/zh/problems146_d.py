@@ -1,76 +1,276 @@
-#问题陈述
-#给出的是一棵有N个顶点的树G。
-#顶点的编号为1到N，第i条边连接着顶点a_i和顶点b_i。
-#考虑用一定数量的颜色涂抹G中的边。
-#我们想给它们上色，以便对每个顶点来说，与该顶点相连的边的颜色都是不同的。
-#在满足上述条件的着色方法中，构建一个使用颜色数量最少的方法。
-#
-#限制条件
-# 2 ≦ N ≦ 10^5
-# 1 ≦ a_i < b_i ≦ N
-#输入的所有数值都是整数。
-#给定的图是一棵树。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#
-#输出
-#打印N行。
-#第一行应该包含K，即使用的颜色数量。
-#第（i+1）行（1 ≦ i ≦ N-1）应该包含c_i，代表第i条边的颜色的整数，其中1 ≦ c_i ≦ K必须成立。
-#如果有多个满足条件的最小颜色数的着色，打印其中任何一个都会被接受。
-#
-#输入样本 1
-#3
-#1 2
-#2 3
-#
-#样本输出 1
-#2
-#1
-#2
-#
-#样本输入2
-#8
-#1 2
-#2 3
-#2 4
-#2 5
-#4 7
-#5 6
-#6 8
-#
-#样本输出2
-#4
-#1
-#2
-#3
-#4
-#1
-#1
-#2
-#
-#样本输入3
-#6
-#1 2
-#1 3
-#1 4
-#1 5
-#1 6
-#
-#样本输出 3
-#5
-#1
-#2
-#3
-#4
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def dfs(v, p, c):
+    color[c] = True
+    ans[v] = c
+    for u in g[v]:
+        if u == p:
+            continue
+        nc = 1
+        while color[nc]:
+            nc += 1
+        dfs(u, v, nc)
+
+N = int(input())
+g = [[] for _ in range(N)]
+for _ in range(N-1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    g[a].append(b)
+    g[b].append(a)
+
+color = [False] * N
+ans = [0] * N
+dfs(0, -1, 0)
+
+print(max(ans))
+for i in range(N-1):
+    print(ans[i]+1)
+
+=======
+Suggestion 2
+
+def dfs(v, p, c):
+    global color
+    color[c] += 1
+    for u in G[v]:
+        if u == p:
+            continue
+        dfs(u, v, c)
+
+N = int(input())
+G = [[] for i in range(N)]
+for i in range(N-1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    G[a].append(b)
+    G[b].append(a)
+
+color = [0] * N
+dfs(0, -1, 0)
+
+K = max(color)
+print(K)
+for i in range(N-1):
+    print(color[i])
+
+=======
+Suggestion 3
+
+def dfs(v, p, c):
+    color = 1
+    for i in range(len(G[v])):
+        if G[v][i] == p:
+            continue
+        if color == c:
+            color += 1
+        ans[G[v][i]] = color
+        dfs(G[v][i], v, color)
+        color += 1
+
+N = int(input())
+G = [[] for _ in range(N)]
+for _ in range(N-1):
+    a, b = map(int, input().split())
+    G[a-1].append(b-1)
+    G[b-1].append(a-1)
+ans = [0] * N
+dfs(0, -1, 0)
+print(max(ans))
+for i in range(N-1):
+    print(ans[i+1])
+
+=======
+Suggestion 4
+
+def dfs(node, parent, color, color_used):
+    color_used[color] = True
+    k = 1
+    for child in node:
+        if child != parent:
+            while color_used[k]:
+                k += 1
+            print(k)
+            dfs(node, node.index(child), k, color_used)
+
+n = int(input())
+node = [[] for _ in range(n)]
+for _ in range(n-1):
+    a, b = map(int, input().split())
+    node[a-1].append(b-1)
+    node[b-1].append(a-1)
+print(node)
+color_used = [False] * (n+1)
+print(1)
+dfs(node, 0, 1, color_used)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ab = [list(map(int, input().split())) for i in range(N-1)]
+    #print(N)
+    #print(ab)
+    #print(len(ab))
+    #print(ab[0])
+    #print(ab[0][0])
+    #print(ab[0][1])
+    #print(ab[1])
+    #print(ab[1][0])
+    #print(ab[1][1])
+    #print(ab[2])
+    #print(ab[2][0])
+    #print(ab[2][1])
+    #print(ab[3])
+    #print(ab[3][0])
+    #print(ab[3][1])
+    #print(ab[4])
+    #print(ab[4][0])
+    #print(ab[4][1])
+    #print(ab[5])
+    #print(ab[5][0])
+    #print(ab[5][1])
+    #print(ab[6])
+    #print(ab[6][0])
+    #print(ab[6][1])
+    #print(ab[7])
+    #print(ab[7][0])
+    #print(ab[7][1])
+    #print(ab[8])
+    #print(ab[8][0])
+    #print(ab[8][1])
+    #print(ab[9])
+    #print(ab[9][0])
+    #print(ab[9][1])
+    #print(ab[10])
+    #print(ab[10][0])
+    #print(ab[10][1])
+    #print(ab[11])
+    #print(ab[11][0])
+    #print(ab[11][1])
+    #print(ab[12])
+    #print(ab[12][0])
+    #print(ab[12][1])
+    #print(ab[13])
+    #print(ab[13][0])
+    #print(ab[13][1])
+    #print(ab[14])
+    #print(ab[14][0])
+    #print(ab[14][1])
+    #print(ab[15])
+    #print(ab[15][0])
+    #print(ab[15][1])
+    #print(ab[16])
+    #print(ab[16][0])
+    #print(ab[16][1])
+    #print(ab[17])
+    #print(ab[17][0])
+    #print(ab[17][1])
+    #print(ab[18
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def dfs(v, p, c):
+    global color
+    color[c] += 1
+    for e in G[v]:
+        if e == p:
+            continue
+        dfs(e, v, c)
+
+N = int(input())
+G = [[] for _ in range(N)]
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
+
+color = [0] * N
+dfs(0, -1, 0)
+print(max(color))
+for i in range(N - 1):
+    print(color[i + 1])
+
+=======
+Suggestion 9
+
+def dfs(v, p, c):
+    color[c] = True
+    col = 1
+    for nv in G[v]:
+        if nv == p:
+            continue
+        while color[col]:
+            col += 1
+        ans[nv] = col
+        dfs(nv, v, col)
+        col += 1
+
+N = int(input())
+G = [[] for _ in range(N)]
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    G[a].append(b)
+    G[b].append(a)
+
+ans = [0 for _ in range(N)]
+color = [False for _ in range(N)]
+ans[0] = 1
+dfs(0, -1, 1)
+print(max(ans))
+for c in ans:
+    print(c)
+
+=======
+Suggestion 10
+
+def dfs(v, p):
+    global k
+    global color
+    c = 1
+    for u in g[v]:
+        if u == p:
+            continue
+        if c == color[v]:
+            c += 1
+        color[u] = c
+        k = max(k, c)
+        dfs(u, v)
+        c += 1
+
+n = int(input())
+g = [[] for _ in range(n)]
+for _ in range(n - 1):
+    a, b = map(int, input().split())
+    g[a - 1].append(b - 1)
+    g[b - 1].append(a - 1)
+
+color = [-1] * n
+color[0] = 1
+k = 1
+dfs(0, -1)
+
+print(k)
+for i in range(n - 1):
+    print(color[i + 1])

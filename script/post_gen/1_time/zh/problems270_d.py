@@ -1,59 +1,143 @@
-#问题陈述
-#高桥和青木将用一个序列（A_1，...，A_K）进行取石游戏。
-#有一个最初包含N个石头的堆。两位玩家将交替进行以下操作，由高桥先进行。
-#选择一个A_i，它最多是当前棋堆中棋子的数量。从棋堆中取出A_i的棋子。
-#当棋堆中没有棋子时，游戏结束。
-#如果两位棋手都试图在游戏结束前最大限度地增加他们移走的棋子总数，那么高桥会移走多少个棋子？
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ...< A_K ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#A_1 A_2 ...A_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#10 2
-#1 4
-#
-#样本输出1
-#5
-#下面是游戏的一个可能进展。
-#高桥从棋堆中取出4颗棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从这堆棋子中取出1个棋子。
-#青木从棋堆中移走1个棋子。
-#在这种情况下，高桥去掉了5颗棋子。他不可能移走6个或更多的棋子，所以这就是最大限度。
-#下面是另一种可能的游戏进程，高桥移走了5颗棋子。
-#高桥从棋堆中移走1个棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从牌堆中移走4个棋子。
-#青木从棋堆中移走1个棋子。
-#
-#输入样本 2
-#11 4
-#1 2 3 6
-#
-#样本输出2
-#8
-#下面是对局的一个可能的进展情况。
-#高桥去掉了6个棋子。
-#青木去掉3个棋子。
-#高桥去掉2个棋子。
-#在这种情况下，高桥去掉了8个棋子。他没有办法去掉9个或更多的棋子，所以这就是最大限度。
-#
-#输入样本 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#样本输出3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems270_d():
+    pass
+
+=======
+Suggestion 2
+
+def get_num_of_stones(n, k, a):
+    num_of_stones = 0
+    for i in range(k-1, -1, -1):
+        num_of_stones += (n//a[i])
+        n = n%a[i]
+    return num_of_stones
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    a.append(n + 1)
+    for i in range(k):
+        ans += max(0, a[i + 1] - a[i] - 1)
+    print(n - ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(n+1)
+    ans = 0
+    for i in range(k):
+        ans += (a[i+1]-a[i])*(i+1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(K - 1, -1, -1):
+        if N >= A[i]:
+            ans += (N // A[i]) * A[i]
+            N %= A[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_max_take(n,k,a):
+    if n == 0:
+        return 0
+    if k == 1:
+        return n
+    if k == 2:
+        return n - 1
+    if k == 3:
+        return n - 2
+    if k == 4:
+        return n - 3
+    if k == 5:
+        return n - 4
+    if k == 6:
+        return n - 5
+    if k == 7:
+        return n - 6
+    if k == 8:
+        return n - 7
+    if k == 9:
+        return n - 8
+    if k == 10:
+        return n - 9
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(n)
+    ans = 0
+    cur = 0
+    for i in range(k+1):
+        ans += (a[i]-cur+1)//2
+        cur = a[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + 1
+        for j in range(k):
+            if i + 1 - a[j] >= 0:
+                s[i + 1] = min(s[i + 1], s[i + 1 - a[j]])
+            else:
+                break
+        s[i + 1] = 1 - s[i + 1]
+    print(s[n])
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = [0] * (n + 1)
+    for i in range(n + 1):
+        B[i] = i
+    for i in range(1, n + 1):
+        for j in range(k):
+            if i - A[j] >= 0:
+                B[i] = min(B[i], B[i - A[j]] + 1)
+    print(B[n])
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(k):
+        ans += a[i]
+        if ans >= n:
+            print(ans - n)
+            return
+        ans *= 2
+    print(ans + 1 - n)

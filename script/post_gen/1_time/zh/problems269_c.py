@@ -1,62 +1,124 @@
-#问题陈述
-#给你一个非负整数N，按升序打印所有满足下列条件的非负整数x。
-#x的二进制表示中包含1的数字位置集是N的二进制表示中包含1的数字位置集的一个子集。
-#也就是说，对于每一个非负整数k，以下情况都成立：如果x的 "2^ks "位上的数字是1，N的2^ks位上的数字也是1。
-#
-#
-#约束条件
-#N是一个整数。
-#0 ≦ N < 2^{60}
-#在N的二进制表示中，最多只有15个数字位置包含1。
-#
-#输入
-#输入是由标准输入的，格式如下：
-#N
-#
-#输出
-#以升序排列的十进制整数打印答案，每个答案都在自己的行中。
-#
-#输入样本1
-#11
-#
-#输出样本1
-#0
-#1
-#2
-#3
-#8
-#9
-#10
-#11
-#N=11_{(10)}的二进制表示是1011_{(2)}。
-#满足条件的非负整数x是：
-#0000_{(2)}=0_{(10)}
-#0001_{(2)}=1_{(10)}
-#0010_{(2)}=2_{(10)}
-#0011_{(2)}=3_{(10)}
-#1000_{(2)}=8_{(10)}
-#1001_{(2)}=9_{(10)}
-#1010_{(2)}=10_{(10)}
-#1011_{(2)}=11_{(10)}
-#
-#样本输入2
-#0
-#
-#样本输出2
-#0
-#
-#样本输入3
-#576461302059761664
-#
-#样本输出3
-#0
-#524288
-#549755813888
-#549756338176
-#576460752303423488
-#576460752303947776
-#576461302059237376
-#576461302059761664
-#输入可能不适合32位有符号整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    #n = 576461302059761664
+    #n = 11
+    #n
+
+=======
+Suggestion 2
+
+def binary(n):
+    if n == 0:
+        return 0
+    else:
+        return (n % 2 + 10 * binary(int(n / 2)))
+
+=======
+Suggestion 3
+
+def get_binary_position_set(num):
+    binary_position_set = []
+    i = 0
+    while num != 0:
+        if num & 1 == 1:
+            binary_position_set.append(i)
+        num = num >> 1
+        i += 1
+    return binary_position_set
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def isSubset(arr1, arr2, m, n): 
+	i = 0; 
+	j = 0; 
+	for i in range(n): 
+		for j in range(m): 
+			if(arr2[i] == arr1[j]): 
+				break; 
+		if (j == m): 
+			return 0; 
+	return 1;
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    nbin = bin(n)[2:]
+    nlen = len(nbin)
+    ans = []
+    for i in range(1 << nlen):
+        x = bin(i)[2:]
+        xlen = len(x)
+        if xlen > nlen:
+            break
+        ok = True
+        for j in range(xlen):
+            if x[j] == '1' and nbin[nlen - xlen + j] == '0':
+                ok = False
+                break
+        if ok:
+            ans.append(i)
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 7
+
+def problem269_c():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    n = bin(N).count("1")
+    for i in range(2 ** n):
+        if bin(i).count("1") == n:
+            print(i)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    # 1. n的二进制表示中，最多只有15个数字位置包含1
+    # 2. 2^60 < 2^61
+    # 3. 2^60 < 2^30 * 2^30
+    # 4. 2^30 < 2^15 * 2^15
+    # 5. 2^15 < 2^7 * 2^7
+    # 6. 2^7 < 2^3 * 2^3
+    # 7. 2^3 < 2^1 * 2^1
+    # 8. 2^1 < 2^0 * 2^0
+    # 9. 2^0 < 2^0 * 2^0
+    # 10. 2^0 < 2^0 * 2^0
+    # 11. 2^0 < 2^0 * 2^0
+    # 12. 2^0 < 2^0 * 2^0
+    # 13. 2^0 < 2^0 * 2^0
+    # 14. 2^0 < 2^0 * 2^0
+    # 15. 2^0 < 2^0 * 2^0
+    # 16. 2^0 < 2^0 * 2^0
+    # 17. 2^0 < 2^0 * 2^0
+    # 18. 2^0 < 2^0 * 2^0
+    # 19. 2^0 < 2^0 * 2^0
+    # 20. 2^0 < 2^0 * 2^0
+    # 21. 2^0 < 2^0 * 2^0
+    # 22. 2^0 < 2^0 * 2^0
+    # 23. 2^0 < 2^0 * 2^0
+    # 24. 2^0 < 2^0 * 2

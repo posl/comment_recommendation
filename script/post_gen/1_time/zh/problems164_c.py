@@ -1,50 +1,78 @@
-#问题陈述
-#你抽了N次彩票。在第i次抽奖中，你得到了一个由字符串S_i代表的物品。
-#你得到了多少种物品？
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#S_i由小写英文字母组成，长度在1到10之间（包括10）。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S_1
-#:
-#S_N
-#
-#输出
-#打印你得到的物品种类的数量。
-#
-#输入样本 1
-#3
-#苹果
-#橙子
-#苹果
-#
-#样本输出1
-#2
-#你有两种物品：苹果和橙子。
-#
-#样本输入2
-#5
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#
-#样本输出2
-#1
-#
-#样品输入3
-#4
-#aaaa
-#a
-#aaa
-#aa
-#
-#样本输出3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    print(len(s))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = set(S)
+    print(len(S))
+
+=======
+Suggestion 3
+
+def main():
+    # Get the number of times to draw
+    num_draws = int(input())
+    # Create a set to store the items
+    items = set()
+    # Iterate through the draws
+    for i in range(num_draws):
+        # Get the item from the draw
+        item = input()
+        # Add the item to the set
+        items.add(item)
+    # Print the number of unique items
+    print(len(items))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    s.sort()
+    count = 1
+    for i in range(n-1):
+        if s[i] != s[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(len(set(s)))
+
+=======
+Suggestion 6
+
+def problems164_c():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s = set(s)
+    print(len(s))
+
+problems164_c()

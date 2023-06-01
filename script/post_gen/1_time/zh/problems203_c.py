@@ -1,63 +1,178 @@
-#问题陈述
-#有10^{100}+1个村庄，用数字0，1，...，10^{100}标示。
-#对于0和10^{100}-1（包括）之间的每一个整数i，你可以在i村支付1日元（货币）来到达（i+1）村。
-#村庄之间没有其他的旅行方式。
-#太郎有K日元，现在在0村。他将尝试去一个标有尽可能多的数字的村庄。
-#他有N个朋友。第i个朋友在A_i村，当他到达A_i村时，他将给太郎B_i日元。
-#找出他将到达的最后一个村庄所标示的数字。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i ≦ 10^{18}
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 B_1
-#:
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 3
-#2 1
-#5 10
-#
-#样本输出1
-#4
-#高桥将按以下方式旅行：
-#从0号村到1号村，花费1日元。现在他有2日元。
-#从1号村到2号村，花1日元。现在他有1日元。
-#从第2村的第1个朋友那里得到1日元。现在他有2日元。
-#从2号村到3号村，花1日元。现在他有1日元。
-#从3号村到4号村，换取1日元。现在他有0日元，而且他在这个村子里没有朋友，所以他的旅程到此为止。
-#因此，我们应该打印4。
-#
-#样本输入2
-#5 1000000000
-#1 1000000000
-#2 1000000000
-#3 1000000000
-#4 1000000000
-#5 1000000000
-#
-#样本输出2
-#6000000000
-#注意，答案可能不适合32位整数。
-#
-#输入样本 3
-#3 2
-#5 5
-#2 1
-#2 2
-#
-#样本输出3
-#10
-#他可能在同一个村庄有多个朋友。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solution():
+    n, k = map(int, input().split())
+    ab = [tuple(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[0])
+
+    for a, b in ab:
+        if a > k:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 2
+
+def main():
+    N,K = map(int,input().split())
+    AB = [map(int,input().split()) for _ in range(N)]
+    A,B = [list(i) for i in zip(*AB)]
+    A.append(10**100)
+    B.append(0)
+    from bisect import bisect_left
+    index = bisect_left(A,K)
+    print(B[index-1])
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    # 按照村庄的位置排序
+    ab.sort(key=lambda x: x[0])
+    # 遍历村庄
+    i = 0
+    while k > 0 and i < n:
+        # k - ab[i][0]是从当前村庄到下一个村庄所需的日元数
+        # k - ab[i][0] < 0意味着无法到达下一个村庄
+        if k - ab[i][0] < 0:
+            break
+        # 否则可以到达下一个村庄
+        k += ab[i][1] - ab[i][0]
+        i += 1
+    # 输出结果
+    print(k + ab[i - 1][0] if i > 0 else k)
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    ab = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        ab.append([a,b])
+    ab.sort(key=lambda x:x[0])
+    now = 0
+    for i in range(n):
+        if ab[i][0] > now + k:
+            break
+        k += ab[i][1]
+        now = ab[i][0]
+    print(now+k)
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        friends.append((a, b))
+    friends.sort()
+    friends.append((10**100, 0))
+    money = k
+    pos = 0
+    for i in range(n):
+        money += friends[i][1]
+        if money >= friends[i+1][0]:
+            money -= friends[i+1][0]
+            pos = friends[i+1][0]
+        else:
+            pos += money
+            break
+    print(pos)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        friends.append(list(map(int, input().split())))
+
+    friends = sorted(friends, key=lambda x: x[0])
+    # print(friends)
+    money = k
+    village = 0
+    for i in range(n):
+        if money >= friends[i][0] - village:
+            money += friends[i][1]
+            village = friends[i][0]
+        else:
+            break
+    print(village + money)
+
+=======
+Suggestion 7
+
+def solve():
+    n, k = map(int, input().split())
+    AB = []
+    for _ in range(n):
+        a, b = map(int, input().split())
+        AB.append((a, b))
+    AB.sort()
+    now = 0
+    for a, b in AB:
+        if a - now > k:
+            break
+        k += b - (a - now)
+        now = a
+    print(now + k)
+
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    for a, b in ab:
+        if k < a:
+            break
+        k += b
+    print(k)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0])
+
+    money = K
+    for a, b in AB:
+        if a <= money:
+            money += b
+        else:
+            break
+    print(money)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    money = 0
+    for i in range(n):
+        a,b = map(int,input().split())
+        if k >= a - money:
+            k = k - (a - money) + b
+            money = a
+        else:
+            print(money + k)
+            exit()
+    print(money + k)

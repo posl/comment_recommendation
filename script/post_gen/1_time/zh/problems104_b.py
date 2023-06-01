@@ -1,54 +1,150 @@
-#问题陈述
-#给你一个字符串S，S的每个字符是大写或小写的英文字母。
-#判断S是否满足以下所有条件：
-#S的初始字符是一个大写的A。
-#从开始的第三个字符到倒数第二个字符（包括）之间正好有一个C的出现。
-#除了上述的A和C之外，所有字母都是小写的。
-#
-#限制条件
-#4 ≤ S| ≤ 10 (|S|是字符串S的长度。)
-#S的每个字符都是大写或小写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S满足问题陈述中的所有条件，打印AC；否则，打印WA。
-#
-#样本输入1
-#AtCoder
-#
-#样本输出1
-#AC
-#第一个字母是A，第三个字母是C，其余字母都是小写，所以所有条件都满足。
-#
-#输入样本2
-#ACoder
-#
-#样本输出2
-#WA
-#第二个字母不应该是C。
-#
-#输入样本3
-#AcycliC
-#
-#样本输出3
-#WA
-#最后一个字母也不应该是C。
-#
-#输入样本4
-#AtCoCo
-#
-#样本输出4
-#WA
-#不应该有两个或两个以上的C出现。
-#
-#输入样本5
-#Atcoder
-#
-#样本输出5
-#WA
-#C的数量也不应该是零。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == "A":
+        if s[2:-1].count("C") == 1:
+            if s[1:].replace("C","").islower():
+                print("AC")
+                return
+    print("WA")
+    return
+
+=======
+Suggestion 2
+
+def solve():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    if s[1:].replace('C', '').islower():
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    if s[0] != 'A':
+        print('WA')
+        return
+    if s[2:-1].count('C') != 1:
+        print('WA')
+        return
+    for i in range(len(s)):
+        if i != 0 and i != 1 and i != s.index('C') and s[i].isupper():
+            print('WA')
+            return
+    print('AC')
+
+=======
+Suggestion 4
+
+def check(s):
+    if s[0] != 'A':
+        return False
+    if s[2:-1].count('C') != 1:
+        return False
+    if s.replace('A', '').replace('C', '').islower():
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def judge(s):
+    if s[0] != 'A':
+        return False
+    if s[1] != s[-1] != 'C':
+        return False
+    if s[2:-1].count('C') != 1:
+        return False
+    for i in s[2:-1]:
+        if i != i.lower():
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def is_ac():
+    s = input()
+    if s[0] == 'A' and 'C' in s[2:-1] and s[1:].islower():
+        return 'AC'
+    else:
+        return 'WA'
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S[0] != 'A':
+        print('WA')
+        return
+    if S[2:-1].count('C') != 1:
+        print('WA')
+        return
+    for i in range(1, len(S)):
+        if S[i] != 'C' and S[i].isupper():
+            print('WA')
+            return
+    print('AC')
+
+=======
+Suggestion 8
+
+def test():
+    s = input()
+    if s[0] != "A":
+        print("WA")
+        return
+    if s[2:-1].count("C") != 1:
+        print("WA")
+        return
+    if s[1:].replace("C", "").islower():
+        print("AC")
+    else:
+        print("WA")
+
+test()
+
+=======
+Suggestion 9
+
+def problem104_b():
+    s = input()
+    if s[0] == 'A' and s[2:-1].count('C') == 1:
+        s = s.replace('A', '').replace('C', '')
+        if s.islower():
+            print('AC')
+            return
+    print('WA')
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if s[0] == "A":
+        if s[2:-1].count("C") == 1:
+            for i in s[1:]:
+                if i != "C" and i.isupper():
+                    print("WA")
+                    break
+            else:
+                print("AC")
+        else:
+            print("WA")
+    else:
+        print("WA")

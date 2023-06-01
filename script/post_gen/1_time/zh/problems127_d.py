@@ -1,68 +1,273 @@
-#问题陈述
-#你有N张卡片。在第i张卡片上，写着一个整数A_i。
-#对于每个j=1，2，...，M的顺序，你将执行一次以下操作：
-#操作：最多选择B_j张牌（可能是零）。用C_j代替写在每张所选卡片上的整数。
-#找到M次操作后写在N张卡片上的整数的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i, C_i ≦ 10^9
-#1 ≦ B_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 A_2 ...A_N
-#B_1 C_1
-#B_2 C_2
-#.
-#.
-#.
-#B_M C_M
-#
-#输出
-#打印M次操作后写在N个卡片上的最大可能的整数之和。
-#
-#输入样本 1
-#3 2
-#5 1 4
-#2 3
-#1 5
-#
-#样本输出1
-#14
-#把第二张卡片上的整数换成5，三张卡片上的整数之和就变成了5+5+4=14，这就是最大的结果。
-#
-#输入样本2
-#10 3
-#1 8 5 7 100 4 52 33 13 5
-#3 10
-#4 30
-#1 4
-#
-#样本输出2
-#338
-#
-#样本输入3
-#3 2
-#100 100 100
-#3 99
-#3 99
-#
-#样本输出3
-#300
-#
-#样本输入4
-#11 3
-#1 1 1 1 1 1 1 1 1 1 1
-#3 1000000000
-#4 1000000000
-#3 1000000000
-#
-#样本输出4
-#10000000001
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, m, a, b, c):
+    bc = []
+    for i in range(m):
+        bc.append((b[i], c[i]))
+    bc.sort(key=lambda x: x[1], reverse=True)
+    # print(bc)
+    i = 0
+    ans = 0
+    for k in range(n):
+        if i < m and bc[i][0] > 0:
+            ans += bc[i][1]
+            bc[i] = (bc[i][0] - 1, bc[i][1])
+        else:
+            ans += a[k]
+        # print(ans)
+        while i < m and bc[i][0] == 0:
+            i += 1
+    return ans
+
+=======
+Suggestion 2
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    b = []
+    c = []
+    for i in range(m):
+        bi,ci = map(int,input().split())
+        b.append(bi)
+        c.append(ci)
+    b = b[::-1]
+    c = c[::-1]
+    index = 0
+    ans = 0
+    for i in range(n):
+        if index < m and a[i] < c[index]:
+            ans += c[index]
+            b[index] -= 1
+            if b[index] == 0:
+                index += 1
+        else:
+            ans += a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort()
+    b=[]
+    c=[]
+    for i in range(m):
+        bi,ci=map(int,input().split())
+        b.append(bi)
+        c.append(ci)
+    b.sort()
+    c.sort()
+    sum=0
+    for i in range(m):
+        if(a[n-1]>c[m-i-1]):
+            sum+=a[n-1]
+            n-=1
+        else:
+            sum+=c[m-i-1]
+            if(b[m-i-1]>n):
+                n=0
+            else:
+                n-=b[m-i-1]
+    for i in range(n):
+        sum+=a[i]
+    print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    BC = [list(map(int, input().split())) for i in range(M)]
+
+    A.sort(reverse=True)
+    BC.sort(key=lambda x: x[1], reverse=True)
+
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if A[i] < BC[j][1]:
+            A[i] = BC[j][1]
+            BC[j][0] -= 1
+            if BC[j][0] == 0:
+                j += 1
+        i += 1
+
+    print(sum(A))
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [list(map(int, input().split())) for i in range(m)]
+    a.sort(reverse=True)
+    b.sort(key=lambda x:x[1], reverse=True)
+    j = 0
+    for i in range(n):
+        if j < m and a[i] < b[j][1]:
+            a[i] = b[j][1]
+            b[j][0] -= 1
+            if b[j][0] == 0:
+                j += 1
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    bc = []
+    for i in range(m):
+        bc.append(list(map(int,input().split())))
+    # 操作
+    a.sort()
+    bc.sort(key=lambda x:x[1],reverse=True)
+    idx = 0
+    for i in range(m):
+        for j in range(bc[i][0]):
+            if idx >= n:
+                break
+            if a[idx] < bc[i][1]:
+                a[idx] = bc[i][1]
+                idx += 1
+            else:
+                break
+    # 答案
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    b = []
+    c = []
+    for i in range(m):
+        b_i,c_i = map(int,input().split())
+        b.append(b_i)
+        c.append(c_i)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < c[j]:
+            a[i] = c[j]
+            b[j] -= 1
+            if b[j] == 0:
+                j += 1
+        i += 1
+    print(sum(a))
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    bc = []
+    for i in range(m):
+        b, c = map(int, input().split())
+        bc.append([b, c])
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < bc[j][1]:
+            a[i] = bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+            i += 1
+        else:
+            break
+    print(sum(a))
+
+=======
+Suggestion 9
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = []
+    c = []
+    for i in range(m):
+        b1,c1 = map(int,input().split())
+        b.append(b1)
+        c.append(c1)
+    b = [b[i] for i in range(m) if c[i] > a[b[i]-1]]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+1]:
+            b[i+1] += 1
+    b = [b[i] for i in range(len(b)) if b[i] <= n]
+    b.sort()
+    for i in range(len(b)-1):
+        if b[i] == b[i+
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = [list(map(int, input().split())) for _ in range(m)]
+
+    # 贪心算法
+    a.sort()
+    bc.sort(key=lambda x: x[1], reverse=True)
+
+    p = 0
+    for b, c in bc:
+        for _ in range(b):
+            if p >= n or a[p] >= c:
+                break
+            a[p] = c
+            p += 1
+
+    print(sum(a))

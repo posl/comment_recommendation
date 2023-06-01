@@ -1,36 +1,103 @@
-#问题陈述
-#给你整数N和M。
-#考虑一个由正整数组成的长度为N的序列，使得a_1+a_2+...+a_N=M。+ 求a_1, a_2, ..., a_N的最大公除数的可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#N ≦ M ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#
-#輸出
-#打印满足条件的序列a_1, a_2, ..., a_N的最大公除数的最大可能值。
-#
-#输入样本 1
-#3 14
-#
-#输出示例 1
-#2
-#考虑序列（a_1，a_2，a_3）=（2，4，8）。它们的最大公除数是2，而且是最大值。
-#
-#输入样本 2
-#10 123
-#
-#样本输出2
-#3
-#
-#样本输入3
-#100000 1000000000
-#
-#样本输出3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+    
+n,m = map(int, input().split())
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+c = gcd(n, m)
+print(m // c)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if a%b == 0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+n,m = map(int,input().split())
+a = gcd(n,m)
+print(int(m/a))
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        r=a%b
+        a=b
+        b=r
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, M = map(int, input().split())
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+	while b:
+		a,b = b,a%b
+	return a
+
+n,m = map(int,input().split())
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n, m = map(int, input().split())
+a = gcd(n, m)
+print(m // a)

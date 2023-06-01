@@ -1,47 +1,92 @@
-#问题陈述
-#高桥正在参加N个科目的考试。每个科目的分数将是0到K（包括）之间的整数。
-#他已经参加了N-1个科目的考试，在第i个科目上得了A_i分。
-#他的目标是在N个科目上达到M分或以上的平均分数。
-#请打印出高桥在最后一科上所需的最低分数，以实现他的目标。
-#如果该目标无法实现，则打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 100
-#1 ≦ K ≦ 100
-#1 ≦ M ≦ K
-#0 ≦ A_i ≦ K
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K M
-#A_1 A_2 ...A_{N-1}
-#
-#输出
-#打印最终主题所需的最小点数，或-1。
-#
-#输入样本 1
-#5 10 7
-#8 10 3 6
-#
-#样本输出1
-#8
-#如果他在最后一科得了8分，他的平均分数将是（8+10+3+6+8）/5=7分，达到目标。
-#
-#样本输入2
-#4 100 60
-#100 100 100
-#
-#样品输出2
-#0
-#在最后的科目上得0分，仍然符合目标。
-#
-#样本输入3
-#4 100 60
-#0 0 0
-#
-#样本输出3
-#-1
-#他无法再达到目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if n*m-sum(a)>k:
+        print(-1)
+    else:
+        print(max(0,n*m-sum(a)))
+
+=======
+Suggestion 2
+
+def main():
+    n,k,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if n*m-sum(a)>k:
+        print(-1)
+    elif n*m-sum(a)<=0:
+        print(0)
+    else:
+        print(n*m-sum(a))
+
+=======
+Suggestion 3
+
+def main():
+    n,k,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if n*m-sum(a) <= k and n*m-sum(a) >= 0:
+        print(n*m-sum(a))
+    else:
+        print(-1)
+
+=======
+Suggestion 4
+
+def get_input():
+    n, k, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, k, m, a
+
+=======
+Suggestion 5
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if N * M - sum(A) > K:
+        print(-1)
+    elif N * M - sum(A) < 0:
+        print(0)
+    else:
+        print(N * M - sum(A))
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n, k, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    if n * m - sum(a) <= k:
+        print(max(n * m - sum(a), 0))
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, K, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if N*M-sum(A) <= K:
+        print(max(0, N*M-sum(A)))
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    n, k, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum_a = sum(a)
+    if n * m - sum_a > k:
+        print(-1)
+    else:
+        print(max(n * m - sum_a, 0))

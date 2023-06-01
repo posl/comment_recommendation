@@ -1,46 +1,178 @@
-#问题陈述
-#我们有很多橙子。已知每个橙子的重量在A到B克之间，包括在内。(一个橙子可以有非整数的重量）。
-#我们从这些桔子中选择了一些，它们的总重量正好是W千克。
-#请找出所选橙子的最小和最大可能数量。如果没有一组橙子的总重量正好是W千克，请报告这一事实。
-#
-#限制条件
-#1 ≦ a ≦ b ≦ 1000
-#1 ≦ W ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B W
-#
-#输出
-#打印所选橙子的最小和最大可能数量，按这个顺序，中间有空格。如果没有可以达到指定总重量的橙子数量，则打印UNSATISFIABLE。
-#
-#输入样本 1
-#100 200 2
-#
-#样本输出1
-#10 20
-#这里，一个范围的重量在100到200克之间（包括）。
-#如果我们选择10个200克的橙子，它们的总重量正好是2公斤。
-#如果我们选择20个100克的橙子，它们的总重量将正好是2公斤。
-#如果少于10个或多于20个橙子，总重量永远不会正好是2公斤，所以选择的橙子的最小和最大数量分别为10和20。
-#
-#输入样本 2
-#120 150 2
-#
-#样本输出2
-#14 16
-#这里，一个范围的重量在120和150克之间（包括）。
-#例如，如果我们选择10个140克的橙子和4个150克的橙子，它们的总重量将正好是2公斤。
-#例如，如果我们选择8个120克的橙子和8个130克的橙子，它们的总重量将正好是2公斤。
-#如果少于14个或多于16个橙子，总重量永远不会正好是2公斤，所以选择橙子的最小和最大可能数量分别为14和16。
-#
-#输入样本 3
-#300 333 1
-#
-#样本输出3
-#UNSATISFIABLE
-#这里，一个范围的重量在300到333克之间（包括）。
-#没有一组这样的橙子的总重量可以正好是1公斤。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,w = map(int, input().split())
+    min = 0
+    max = 0
+    for i in range(1,1000):
+        if a*i <= w*1000 <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 0
+    max = 0
+    for i in range(a,b+1):
+        if w%i == 0:
+            min = w//i
+            break
+    for i in range(b,a-1,-1):
+        if w%i == 0:
+            max = w//i
+            break
+    if min == 0 and max == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min,max)
+
+=======
+Suggestion 3
+
+def solve():
+    a,b,w=map(int,input().split())
+    w*=1000
+    min=0
+    max=0
+    for i in range(1,w+1):
+        if(a*i<=w and w<=b*i):
+            if(min==0):
+                min=i
+            max=i
+    if(min==0):
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 4
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    ans = [0, 0]
+    for i in range(1, w+1):
+        if a*i <= w and w <= b*i:
+            ans[0] = i
+            break
+    for i in range(w, 0, -1):
+        if a*i <= w and w <= b*i:
+            ans[1] = i
+            break
+    if ans[0] == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(ans[0], ans[1])
+
+=======
+Suggestion 5
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = w // b
+    max = w // a
+    if min * a > w or max * b < w:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,w=map(int,input().split())
+    w*=1000
+    min_num=w//b
+    max_num=w//a
+    if w%b==0:
+        min_num=w//b
+    else:
+        min_num=w//b+1
+    if w%a==0:
+        max_num=w//a
+    else:
+        max_num=w//a
+    if min_num>max_num:
+        print("UNSATISFIABLE")
+    else:
+        print(min_num,max_num)
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    a,b,w = map(int,input().split())
+    # 由于题目要求输出最大最小，所以先把最小的橙子数量算出来
+    min_num = w*1000//b
+    # 由于题目要求输出最大最小，所以先把最大的橙子数量算出来
+    max_num = w*1000//a
+    # 如果最小的橙子数量乘以最小的重量大于总重量或者最大的橙子数量乘以最大的重量小于总重量，那么就不存在这样的橙子
+    if min_num*a > w*1000 or max_num*b < w*1000:
+        print("UNSATISFIABLE")
+    else:
+        print(min_num,max_num)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,w = map(int,input().split())
+    w = w*1000
+    min = 0
+    max = 0
+    for i in range(1,1000001):
+        if a*i <= w and w <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min,max)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    ans = []
+    for i in range(1,w+1):
+        if a*i <= w <= b*i:
+            ans.append(i)
+    if len(ans) == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min(ans),max(ans))
+
+=======
+Suggestion 10
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 0
+    max = 0
+    for i in range(1,1001):
+        if a*i <= w <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min,max)

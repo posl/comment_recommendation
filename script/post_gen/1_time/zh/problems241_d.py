@@ -1,63 +1,191 @@
-#问题陈述
-#我们有一个空序列A。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下三种类型中的一种。  
-#1 x : 向A插入x。
-#2 x k : 在A中小于或等于x的元素中，打印第k个最大值。  (k不超过5)
-#    如果A中小于等于或等于x的元素少于k，则打印-1。
-#3 x k : 在A中大于或等于x的元素中，打印第k个最小的值。  (k不超过5)
-#    如果A中小于k的元素大于或等于x，则打印-1。
-#
-#
-#限制条件
-#1≦ Q ≦ 2× 10^5
-#1≦ x≦ 10^{18}
-#1≦ k≦ 5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#在第i个查询query_i中，首先给出查询的类型c_i（是1，2，还是3）。
-#如果c_i=1，则另外给出x；如果c_i=2，3，则另外给出x和k。
-#换句话说，每个查询都是以以下三种格式之一给出的：  
-#1 x
-#2 x k
-#3 x k
-#
-#输出
-#打印q行，其中q是指c_i=2,3的查询的数量。
-#第j行（1≦ j≦ q）应该包含第j个这样的查询的答案。
-#
-#输入样本 1
-#11
-#1 20
-#1 10
-#1 30
-#1 20
-#3 15 1
-#3 15 2
-#3 15 3
-#3 15 4
-#2 100 5
-#1 1
-#2 100 5
-#
-#样本输出1
-#20
-#20
-#30
-#-1
-#-1
-#1
-#在查询_{1,2,3,4}被处理后，我们有A=(20,10,30,20)。  
-#对于查询_{5,6,7}，A中大于或等于15的元素是（20,30,20）。
-#其中第1个最小的值是20；第2个是20；第3个是30。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def insert(x, A):
+    A.append(x)
+    A.sort()
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [0] * n
+    for i in range(n):
+        a[i] = int(input())
+    print(a)
+    q = int(input())
+    for i in range(q):
+        query = input().split()
+        if query[0] == "1":
+            a.append(int(query[1]))
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            if query[0] == "2":
+                cnt = 0
+                for j in range(len(a)):
+                    if a[j] <= x:
+                        cnt += 1
+                        if cnt == k:
+                            print(a[j])
+                            break
+                else:
+                    print(-1)
+            else:
+                cnt = 0
+                for j in range(len(a)):
+                    if a[j] >= x:
+                        cnt += 1
+                        if cnt == k:
+                            print(a[j])
+                            break
+                else:
+                    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i <= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort(reverse=True)
+                print(b[k-1])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i >= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort()
+                print(b[k-1])
+    return 0
+
+=======
+Suggestion 5
+
+def insert(x, A):
+    A.append(x)
+    return A
+
+=======
+Suggestion 6
+
+def main():
+    print("Hello World!")
+    return
+
+=======
+Suggestion 7
+
+def insert(A, x):
+    A.append(x)
+    return A
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        query = input().strip().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x, k = int(query[1]), int(query[2])
+            tmp = [i for i in a if i <= x]
+            if len(tmp) < k:
+                print(-1)
+            else:
+                print(sorted(tmp)[-k])
+        else:
+            x, k = int(query[1]), int(query[2])
+            tmp = [i for i in a if i >= x]
+            if len(tmp) < k:
+                print(-1)
+            else:
+                print(sorted(tmp)[k-1])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    for _ in range(n):
+        query = input().split()
+        if query[0] == '1':
+            a.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = sorted(a)
+            if x > b[-1]:
+                print(-1)
+            else:
+                c = b.index(x) + k - 1
+                if c >= len(b):
+                    print(-1)
+                else:
+                    print(b[c])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            b = sorted(a)
+            if x < b[0]:
+                print(-1)
+            else:
+                c = b.index(x) - k + 1
+                if c < 0:
+                    print(-1)
+                else:
+                    print(b[c])
+
+=======
+Suggestion 10
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+        elif query[0] == 2:
+            a.sort()
+            if query[1] in a:
+                print(a[-query[2]])
+            else:
+                print(-1)
+        elif query[0] == 3:
+            a.sort()
+            if query[1] in a:
+                print(a[query[2]-1])
+            else:
+                print(-1)
+        else:
+            print("error")
+    return 0

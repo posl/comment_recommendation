@@ -1,63 +1,200 @@
-#问题陈述
-#有N个岛屿自西向东排开，由N-1座桥连接。
-#第i座桥从西边连接第i个岛，从西边连接第（i+1）个岛。
-#有一天，一些岛屿之间发生了争端，岛屿上的居民提出了M个请求：
-#要求i：从西边来的第a_i个岛和从西边来的第b_i个岛之间发生了争端。请使这些岛屿之间的桥梁交通不可能。
-#你决定拆除一些桥梁以满足所有这些M请求。
-#请找出必须拆除的最小桥梁数量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ a_i < b_i ≦ N
-#所有对（a_i, b_i）都是独立的。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1 b_1
-#a_2 b_2
-#:
-#a_M b_M
-#
-#输出
-#打印必须移除的最小桥梁数量。
-#
-#输入样本 1
-#5 2
-#1 4
-#2 5
-#
-#样本输出 1
-#1
-#通过拆除从西边连接第二和第三岛的桥梁，可以满足这些要求。
-#
-#样本输入2
-#9 5
-#1 8
-#2 7
-#3 5
-#4 6
-#7 9
-#
-#输出样本2
-#2
-#
-#样本输入3
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#样本输出 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    a = [0] * M
+    b = [0] * M
+    for i in range(M):
+        a[i], b[i] = map(int, input().split())
+    #print(a)
+    #print(b)
+    #print(N)
+    #print(M)
+    #print("end")
+    #pri
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    bridge = [0] * N
+    for i in range(N):
+        bridge[i] = i
+    for i in range(M):
+        a, b = map(int, input().split())
+        bridge[a - 1] = min(bridge[a - 1], bridge[b - 1])
+        bridge[b - 1] = min(bridge[a - 1], bridge[b - 1])
+    print(len(set(bridge)) - 1)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    a = []
+    b = []
+    for i in range(M):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    print(a)
+    print(b)
+    # 争端的桥梁
+    c = []
+    for i in range(M):
+        if a[i] == 1:
+            c.append(b[i])
+    print(c)
+    # 争端的岛屿
+    d = []
+    for i in range(M):
+        if b[i] in c:
+            d.append(a[i])
+        if a[i] in c:
+            d.append(b[i])
+    print(d)
+    # 争端的岛屿和桥梁
+    e = []
+    for i in range(M):
+        if a[i] in d and b[i] in d:
+            e.append(i)
+    print(e)
+    # 争端的桥梁的索引
+    print(len(e))
+
+=======
+Suggestion 5
+
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    #print(N, M)
+    a = []
+    b = []
+    for _ in range(M):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    #print(a, b)
+    #print(list(zip(a, b)))
+    ans = 0
+    for i in range(1, N+1):
+        #print(i)
+        if i in a and i in b:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    bridge = [0] * (N + 1)
+    for i in range(M):
+        a, b = map(int, input().split())
+        bridge[a] += 1
+        bridge[b] += 1
+    print(bridge.count(1))
+
+=======
+Suggestion 8
+
+def find_root(x, parents):
+    if parents[x] == x:
+        return x
+    else:
+        parents[x] = find_root(parents[x], parents)
+        return parents[x]
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    a = [0 for i in range(M)]
+    b = [0 for i in range(M)]
+    for i in range(M):
+        a[i], b[i] = map(int, input().split())
+    a = sorted(a)
+    b = sorted(b)
+    ans = 0
+    i = 0
+    j = 0
+    while i < M and j < M:
+        if a[i] <= b[j]:
+            ans += 1
+            i += 1
+        else:
+            ans -= 1
+            j += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve(n, m, a, b):
+    #print(n, m, a, b)
+    #print(a[0], b[0])
+    #print(a[1], b[1])
+    #print(a[2], b[2])
+    #print(a[3], b[3])
+    #print(a[4], b[4])
+    #print(a[5], b[5])
+    #print(a[6], b[6])
+    #print(a[7], b[7])
+    #print(a[8], b[8])
+    #print(a[9], b[9])
+    #print(a[10], b[10])
+    #print(a[11], b[11])
+    #print(a[12], b[12])
+    #print(a[13], b[13])
+    #print(a[14], b[14])
+    #print(a[15], b[15])
+    #print(a[16], b[16])
+    #print(a[17], b[17])
+    #print(a[18], b[18])
+    #print(a[19], b[19])
+    #print(a[20], b[20])
+    #print(a[21], b[21])
+    #print(a[22], b[22])
+    #print(a[23], b[23])
+    #print(a[24], b[24])
+    #print(a[25], b[25])
+    #print(a[26], b[26])
+    #print(a[27], b[27])
+    #print(a[28], b[28])
+    #print(a[29], b[29])
+    #print(a[30], b[30])
+    #print(a[31], b[31])
+    #print(a[32], b[32])
+    #print(a[33], b[33])
+    #print(a[34], b[34])
+    #print(a[35], b[35])
+    #print(a[36], b[36])
+    #print(a[37], b[37])
+    #print(a[38], b[38])
+    #print(a[39], b[39])
+    #print(a[40], b[40])
+    #print(a[41], b[41])
+    #print(a[42], b[42])
+    #print(a[43],

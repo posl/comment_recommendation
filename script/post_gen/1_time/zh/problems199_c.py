@@ -1,60 +1,261 @@
-#问题陈述
-#我们有一个长度为2N的字符串S。
-#给你Q个关于这个字符串的查询。
-#在第i个查询中，给定三个整数T_i、A_i和B_i，请做如下处理：
-#如果T_i=1：交换S的第A_i个和第B_i个字符；
-#如果T_i = 2：交换S的前N个字符和后N个字符（A_i和B_i的值不使用）。
-#  例如，如果S是FLIP，这个查询使其成为IPFL。
-#按照给出的顺序处理完所有的Q查询后，打印出字符串S。
-#
-#约束条件
-#1 ≦ N ≦ 2 × 10^5
-#S是一个长度为2N的字符串，由大写的英文字母组成。
-#1 ≦ Q ≦ 3 × 10^5
-#T_i为1或2。
-#如果T_i = 1，1 ≦ A_i < B_i ≦ 2N。
-#如果T_i = 2，A_i = B_i = 0。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S
-#Q
-#T_1 A_1 B_1
-#T_2 A_2 B_2
-#T_3 A_3 B_3
-#.
-#.
-#.
-#T_Q A_Q B_Q
-#
-#输出
-#在处理完查询后打印出字符串S。
-#
-#输入样本 1
-#2
-#FLIP
-#2
-#2 0 0
-#1 1 4
-#
-#样本输出1
-#LPFI
-#第1次查询交换了S的前N个字符和后N个字符，使之成为IPFL。
-#第2次查询交换了S的第1个和第4个字符，使其成为LPFI。  
-#
-#输入样本2
-#2
-#FLIP
-#6
-#1 1 3
-#2 0 0
-#1 1 2
-#1 2 3
-#2 0 0
-#1 1 4
-#
-#样本输出2
-#ILPF
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def swap(s, a, b):
+    s[a-1], s[b-1] = s[b-1], s[a-1]
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = input()
+    q = int(input())
+    t = []
+    a = []
+    b = []
+    for i in range(q):
+        t_i, a_i, b_i = map(int, input().split())
+        t.append(t_i)
+        a.append(a_i)
+        b.append(b_i)
+    # print(t)
+    # print(a)
+    # print(b)
+    s1 = s[:n]
+    s2 = s[n:]
+    for i in range(q):
+        if t[i] == 1:
+            if a[i] <= n and b[i] <= n:
+                s1 = s1[:a[i]-1] + s2[b[i]-1] + s1[a[i]:]
+                s2 = s2[:b[i]-1] + s1[a[i]-1] + s2[b[i]:]
+            elif a[i] <= n and b[i] > n:
+                s1 = s1[:a[i]-1] + s2[b[i]-n-1] + s1[a[i]:]
+                s2 = s2[:b[i]-n-1] + s1[a[i]-1] + s2[b[i]-n:]
+            elif a[i] > n and b[i] <= n:
+                s1 = s1[:a[i]-n-1] + s2[b[i]-1] + s1[a[i]-n:]
+                s2 = s2[:b[i]-1] + s1[a[i]-n-1] + s2[b[i]:]
+            else:
+                s1 = s1[:a[i]-n-1] + s2[b[i]-n-1] + s1[a[i]-n:]
+                s2 = s2[:b[i]-n-1] + s1[a[i]-n-1] + s2[b[i]-n:]
+        else:
+            s1, s2 = s2, s1
+    print(s1 + s2)
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    T = []
+    A = []
+    B = []
+    for i in range(Q):
+        t, a, b = map(int, input().split())
+        T.append(t)
+        A.append(a)
+        B.append(b)
+    for i in range(Q):
+        if T[i] == 1:
+            S = S[:A[i]-1] + S[B[i]-1] + S[A[i]:B[i]-1] + S[A[i]-1] + S[B[i]:]
+        elif T[i] == 2:
+            S = S[N:] + S[:N]
+    print(S)
+
+=======
+Suggestion 4
+
+def swap(s, a, b):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    T = []
+    A = []
+    B = []
+    for i in range(Q):
+        t, a, b = input().split()
+        T.append(int(t))
+        A.append(int(a))
+        B.append(int(b))
+    for i in range(Q):
+        if T[i] == 1:
+            S = S[:A[i]-1] + S[B[i]-1] + S[A[i]:B[i]-1] + S[A[i]-1] + S[B[i]:]
+        else:
+            S = S[N:] + S[:N]
+    print(S)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = input()
+    q = int(input())
+
+    # 0-indexed
+    # 前半部分
+    s1 = s[:n]
+    # 后半部分
+    s2 = s[n:]
+
+    # 1-indexed
+    # 前半部分
+    s1 = list(s1)
+    # 后半部分
+    s2 = list(s2)
+
+    for _ in range(q):
+        t, a, b = map(int, input().split())
+        if t == 1:
+            a -= 1
+            b -= 1
+            if a < n and b < n:
+                s1[a], s1[b] = s1[b], s1[a]
+            elif a < n and b >= n:
+                b -= n
+                s1[a], s2[b] = s2[b], s1[a]
+            elif a >= n and b >= n:
+                a -= n
+                b -= n
+                s2[a], s2[b] = s2[b], s2[a]
+        elif t == 2:
+            s1, s2 = s2, s1
+    print(''.join(s1) + ''.join(s2))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    q = int(input())
+    t = []
+    a = []
+    b = []
+    for i in range(q):
+        tt, aa, bb = map(int, input().split())
+        t.append(tt)
+        a.append(aa)
+        b.append(bb)
+    #print(t)
+    #print(a)
+    #print(b)
+    #print(s)
+    for i in range(q):
+        if t[i] == 1:
+            if a[i] <= n:
+                aa = a[i] - 1
+            else:
+                aa = a[i] - 1 - n
+            if b[i] <= n:
+                bb = b[i] - 1
+            else:
+                bb = b[i] - 1 - n
+            ss = s[aa]
+            s = s[:aa] + s[bb] + s[aa+1:]
+            s = s[:bb] + ss + s[bb+1:]
+        else:
+            ss = s[:n]
+            s = s[n:] + ss
+        #print(s)
+    print(s)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    q = int(input())
+    t = []
+    a = []
+    b = []
+    for i in range(q):
+        ti, ai, bi = map(int, input().split())
+        t.append(ti)
+        a.append(ai)
+        b.append(bi)
+
+    for i in range(q):
+        if t[i] == 1:
+            s = s[:a[i]-1] + s[b[i]-1] + s[a[i]:b[i]-1] + s[a[i]-1] + s[b[i]:]
+        else:
+            s = s[n:] + s[:n]
+
+    print(s)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    T = []
+    A = []
+    B = []
+    for i in range(Q):
+        t, a, b = map(int, input().split())
+        T.append(t)
+        A.append(a)
+        B.append(b)
+    flag = 0
+    S1 = S[:N]
+    S2 = S[N:]
+    for i in range(Q):
+        if T[i] == 1:
+            if flag == 0:
+                if A[i] <= N and B[i] <= N:
+                    S1 = S1[:A[i]-1] + S2[B[i]-1] + S1[A[i]:]
+                    S2 = S2[:B[i]-1] + S[S1.index(S2[B[i]-1])] + S2[B[i]:]
+                elif A[i] > N and B[i] > N:
+                    S2 = S2[:A[i]-N-1] + S1[B[i]-N-1] + S2[A[i]-N:]
+                    S1 = S1[:B[i]-N-1] + S[S2.index(S1[B[i]-N-1])] + S1[B[i]-N:]
+                elif A[i] <= N and B[i] > N:
+                    S1 = S1[:A[i]-1] + S2[B[i]-N-1] + S1[A[i]:]
+                    S2 = S2[:B[i]-N-1] + S[S1.index(S2[B[i]-N-1])] + S2[B[i]-N:]
+                elif A[i] > N and B[i] <= N:
+                    S2 = S2[:A[i]-N-1] + S1[B[i]-1] + S2[A[i]-N:]
+                    S1 = S1[:B[i]-1] + S[S2.index(S1[B[i]-1])] + S1[B[i]:]
+            else:
+                if A[i] <= N and B[i] <= N:
+                    S2 = S2[:A[i]-1] + S1[B[i]-1] + S2[A[i]:]
+                    S1 = S1[:B[i]-1] + S[S2.index(S1[B[i]-1])] + S1[B[i]:]
+                elif A[i] >
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = input()
+    Q = int(input())
+    T = []
+    A = []
+    B = []
+    for i in range(Q):
+        t, a, b = map(int, input().split())
+        T.append(t)
+        A.append(a)
+        B.append(b)
+    for i in range(Q):
+        t = T[i]
+        a = A[i]
+        b = B[i]
+        if t == 1:
+            S = S[:a-1] + S[b-1] + S[a:b-1] + S[a-1] + S[b:]
+        elif t == 2:
+            S = S[N:] + S[:N]
+    print(S)

@@ -1,70 +1,189 @@
-#问题陈述
-#给你N个编号为1到N的区间，这些区间的情况如下：
-#如果t_i=1，区间i是[l_i,r_i]；
-#如果t_i=2，区间i是[l_i,r_i]；
-#如果t_i=3，则区间i为（l_i,r_i）；
-#如果t_i=4，区间i是(l_i,r_i)。
-#有多少对满足1 ≦ i < j ≦ N的整数(i,j)可以使区间i和区间j相交？
-#什么是[X,Y],[X,Y],(X,Y)?
-#闭合区间[X,Y]是由所有实数x组成的区间，使得X ≦ x ≦ Y。
-#半开区间[X,Y]是一个由所有实数x组成的区间，使得X ≦ x < Y。
-#半开区间(X,Y)是一个由所有实数x组成的区间，使得X < x ≦ Y。
-#一个开放区间(X,Y)是一个由所有实数x组成的区间，使得X < x < Y。
-#粗略地说，方括号[]意味着端点被包括在内，而大括号（）意味着端点被排除。
-#
-#限制条件
-#2 ≦ N ≦ 2000
-#1 ≦ t_i ≦ 4
-#1 ≦ l_i < r_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#t_1 l_1 r_1
-#t_2 l_2 r_2
-#.
-#.
-#.
-#t_N l_N r_N
-#
-#输出
-#打印有多少对整数(i,j)使区间i和区间j相交。
-#
-#输入样本 1
-#3
-#1 1 2
-#2 2 3
-#3 2 4
-#
-#样本输出 1
-#2
-#根据问题陈述的定义，区间1是[1,2]，区间2是[2,3]，区间3是（2,4）。
-#有两对整数（i,j）使区间i和区间j相交：（1,2）和（2,3）。对于第一对，交点是[2,2]，对于第二对，交点是(2,3)。
-#
-#样本输入2
-#19
-#4 210068409 221208102
-#4 16698200 910945203
-#4 76268400 259148323
-#4 370943597 566244098
-#1 428897569 509621647
-#4 250946752 823720939
-#1 642505376 868415584
-#2 619091266 868230936
-#2 306543999 654038915
-#4 486033777 715789416
-#1 527225177 583184546
-#2 885292456 900938599
-#3 264004185 486613484
-#2 345310564 818091848
-#1 152544274 521564293
-#4 13819154 555218434
-#3 507364086 545932412
-#4 797872271 935850549
-#2 415488246 685203817
-#
-#样本输出2
-#102
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if tlr[i][1] <= tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if tlr[i][1] <= tlr[j][2] and tlr[j][1] <= tlr[i][2]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    tlr = [list(map(int,input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if tlr[i][1]<=tlr[j][1]<=tlr[i][2] or tlr[i][1]<=tlr[j][2]<=tlr[i][2] or tlr[j][1]<=tlr[i][1]<=tlr[j][2] or tlr[j][1]<=tlr[i][2]<=tlr[j][2]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    N = int(input())
+    data = []
+    for i in range(N):
+        data.append(list(map(int, input().split())))
+    
+    # 计算相交的区间
+    count = 0
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            if (data[i][1] <= data[j][1] and data[j][1] <= data[i][2]) or \
+                (data[j][1] <= data[i][1] and data[i][1] <= data[j][2]):
+                count += 1
+    
+    # 输出结果
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if (tlr[i][1] <= tlr[j][1] and tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] and tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] and tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] and tlr[i][2] <= tlr[j][2]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def func(l,r):
+    if l[0]==1:
+        if r[0]==1:
+            return 1
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 0
+        else:
+            return 0
+    elif l[0]==2:
+        if r[0]==1:
+            return 1
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 1
+        else:
+            return 0
+    elif l[0]==3:
+        if r[0]==1:
+            return 0
+        elif r[0]==2:
+            return 1
+        elif r[0]==3:
+            return 1
+        else:
+            return 0
+    else:
+        if r[0]==1:
+            return 0
+        elif r[0]==2:
+            return 0
+        elif r[0]==3:
+            return 0
+        else:
+            return 0
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int,input().split())))
+    cnt = 0
+    for i in range(n-1):
+        for j in range(i+1,n):
+            if tlr[i][2] < tlr[j][1]:
+                continue
+            if tlr[j][2] < tlr[i][1]:
+                continue
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    #读取数据
+    n = int(input())
+    data = []
+    for i in range(n):
+        data.append(list(map(int,input().split())))
+    #遍历所有的组合
+    count = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if data[i][1] <= data[j][2] and data[i][2] >= data[j][1]:#判断是否相交
+                count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T = []
+    for i in range(N):
+        T.append(list(map(int,input().split())))
+    
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if T[i][1] <= T[j][1] and T[j][1] <= T[i][2]:
+                cnt += 1
+            elif T[i][1] <= T[j][2] and T[j][2] <= T[i][2]:
+                cnt += 1
+            elif T[j][1] <= T[i][1] and T[i][1] <= T[j][2]:
+                cnt += 1
+            elif T[j][1] <= T[i][2] and T[i][2] <= T[j][2]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        intervals.append((t, l, r))
+    return n, intervals

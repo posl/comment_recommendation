@@ -1,59 +1,140 @@
-#问题陈述
-#有一个有N个台阶的楼梯。高桥现在站在楼梯的脚下，也就是第0个台阶上。
-#他可以一次爬上一个或两个台阶。
-#但是，第a_1，a_2，a_3，...，a_M级台阶的踏板都坏了，所以踏上这些台阶是很危险的。
-#有多少人可以爬到最上面的台阶，也就是第N个台阶，而不踏上那些破损的台阶？
-#求1 000 000 007的模数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 < ...  < a_M ≦ N-1
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#输出
-#打印在条件下爬上楼梯的方法的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#6 1
-#3
-#
-#样本输出1
-#4
-#有四种方法可以爬上楼梯，如下所示：
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#样本输入2
-#10 2
-#4
-#5
-#
-#样本输出2
-#0
-#如果不踏上破碎的台阶，可能就没有办法爬上楼梯。
-#
-#样本输入3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#样本输出3
-#608200469
-#一定要打印出1 000 000 007的模数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int,input().split())
+    a = [int(input()) for _ in range(M)]
+
+    dp = [0 for _ in range(N+1)]
+    dp[0] = 1
+    for i in range(N+1):
+        for j in range(1,3):
+            if i-j >= 0 and not(i-j in a):
+                dp[i] += dp[i-j]
+                dp[i] %= 1000000007
+    print(dp[N])
+
+=======
+Suggestion 2
+
+def get_input():
+    n,m = map(int,input().split())
+    a = [0] * m
+    for i in range(m):
+        a[i] = int(input())
+    return n,m,a
+
+=======
+Suggestion 3
+
+def climb(n, m, a):
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(1, n + 1):
+        if i in a:
+            continue
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n] % 1000000007
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(m):
+        a.append(int(input()))
+    a.append(n+1)
+
+    dp = [0 for i in range(n+1)]
+    dp[0] = 1
+    for i in range(n+1):
+        for j in range(m+1):
+            if a[j] == i:
+                dp[i] = 0
+                break
+            if a[j] > i:
+                break
+            dp[i] += dp[i-a[j]]
+            dp[i] %= 1000000007
+    print(dp[n])
+
+=======
+Suggestion 6
+
+def climb_stairs(N, M, broken):
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if i in broken:
+            dp[i] = 0
+        else:
+            dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[N] % 1000000007
+
+=======
+Suggestion 7
+
+def climb_stairs(n, m, a):
+    dp = [0 for i in range(n+1)]
+    dp[0] = 1
+    for i in range(1, n+1):
+        if i in a:
+            dp[i] = 0
+        else:
+            if i == 1:
+                dp[i] = dp[i-1]
+            else:
+                dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
+    return dp[n]
+
+n, m = map(int, input().split())
+a = []
+for i in range(m):
+    a.append(int(input()))
+print(climb_stairs(n, m, a))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for _ in range(M)]
+    A.append(N)
+    A.append(N+1)
+    A.sort()
+    dp = [0] * (N + 2)
+    dp[0] = 1
+    for i in range(1, N + 2):
+        if i in A:
+            continue
+        dp[i] = dp[i - 1] + dp[i - 2]
+    print(dp[N + 1] % 1000000007)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    a = []
+    for i in range(M):
+        a.append(int(input()))
+    a.append(N)
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(N):
+        if dp[i] == 0:
+            continue
+        for j in range(M + 1):
+            if i + a[j] > N:
+                break
+            dp[i + a[j]] = (dp[i + a[j]] + dp[i]) % 1000000007
+    print(dp[N])

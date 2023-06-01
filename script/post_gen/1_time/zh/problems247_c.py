@@ -1,41 +1,109 @@
-#问题陈述
-#我们对序列S_n的定义如下。
-#S_1是一个长度为1的序列，包含一个1。
-#S_n（n是大于或等于2的整数）是由S_{n-1}，n，S_{n-1}按这个顺序串联得到的序列。
-#例如，S_2和S_3的定义如下。
-#S_2是S_1、2和S_1的连接，按照这个顺序，所以它是1,2,1。
-#S_3是S_2, 3, 和S_2的连接，按这个顺序，所以它是1,2,1,3,1,2,1。
-#给定N，打印整个序列S_N。
-#
-#限制条件
-#N是一个整数。
-#1 ≦ N ≦ 16
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印S_N，中间有空格。
-#
-#输入样本 1
-#2
-#
-#输出样本 1
-#1 2 1
-#如问题陈述中所述，S_2是1,2,1。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#4
-#
-#样本输出 3
-#1 2 1 3 1 2 1 4 1 2 1 3 1 2 1
-#S_4是S_3、4和S_3的串联，按照这个顺序。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print("1", end="")
+    for i in range(n-1):
+        print(" " + str(i+2) + " 1", end="")
+    print()
+
+=======
+Suggestion 2
+
+def problem247_c(n):
+    if n == 1:
+        print(1)
+        return
+    s = [1]
+    for i in range(2,n+1):
+        s = s + [i] + s
+    print(" ".join(map(str,s)))
+    return
+
+=======
+Suggestion 3
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        a = s(n-1)
+        return a + [n] + a
+
+n = int(input())
+print(" ".join(map(str, s(n))))
+
+=======
+Suggestion 4
+
+def S(n):
+    if n == 1:
+        return [1]
+    else:
+        return S(n-1) + [n] + S(n-1)
+
+n = int(input())
+print(*S(n))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(' '.join(map(str, s(n))))
+
+=======
+Suggestion 6
+
+def S(n):
+    if n==1:
+        return [1]
+    else:
+        x = S(n-1)
+        return x + [n] + x
+
+n = int(input())
+print(" ".join(map(str, S(n))))
+
+=======
+Suggestion 7
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        s_n_1 = s(n-1)
+        return s_n_1 + [n] + s_n_1
+
+=======
+Suggestion 8
+
+def get_s(n):
+    if n == 1:
+        return [1]
+    else:
+        return get_s(n-1) + [n] + get_s(n-1)
+
+=======
+Suggestion 9
+
+def f(n):
+    if n == 1:
+        return [1]
+    else:
+        return f(n-1) + [n] + f(n-1)
+
+n = int(input())
+print(*f(n))
+
+=======
+Suggestion 10
+
+def recursion(n):
+    if n == 1:
+        return [1]
+    else:
+        return recursion(n-1) + [n] + recursion(n-1)

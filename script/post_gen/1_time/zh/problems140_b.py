@@ -1,57 +1,160 @@
-#问题陈述
-#高桥去吃一个有N种菜的自助餐，他把所有的菜（菜1，菜2，...，菜N）都吃了一次。
-#他吃的第i道菜（1 ≦ i ≦ N）是菜A_i。
-#当他吃了第i道菜（1 ≦ i ≦ N）时，他获得了B_i的满意度积分。
-#此外，当他在吃完第i道菜（1 ≦ i ≦ N - 1）后又吃了第i+1道菜，他又获得了C_i的满意度积分。
-#找出他获得的满意度积分的总和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 20
-#1 ≦ A_i ≦ N
-#A_1, A_2, ..., A_N都是不同的。
-#1 ≦ B_i ≦ 50
-#1 ≦ C_i ≦ 50
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#C_1 C_2 ...C_{N-1}
-#
-#输出
-#打印高桥获得的满意度积分的总和，以整数表示。
-#
-#输入样本 1
-#3
-#3 1 2
-#2 5 4
-#3 6
-#
-#样本输出1
-#14
-#高桥总共获得了14个满意度积分，具体如下：
-#首先，他吃了第三道菜，获得了4个满意度积分。
-#接着，他吃了碟子1，获得了2个满意度积分。
-#最后，他吃了盘子2，获得了5+3=8个满意度积分。
-#
-#样本输入2
-#4
-#2 3 4 1
-#13 5 8 24
-#45 9 15
-#
-#样本输出2
-#74
-#
-#样本输入3
-#2
-#1 2
-#50 50
-#50
-#
-#样本输出3
-#150
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_score(A, B, C):
+    score = 0
+    for i in range(len(A)):
+        score += B[A[i]-1]
+        if i < len(A)-1:
+            if A[i+1] == A[i] + 1:
+                score += C[A[i]-1]
+    return score
+
+=======
+Suggestion 2
+
+def cal_satisfaction():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    satisfaction = 0
+    for i in range(n):
+        satisfaction += b[a[i]-1]
+        if i < n-1 and a[i]+1 == a[i+1]:
+            satisfaction += c[a[i]-1]
+    print(satisfaction)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    total = 0
+    for i in range(N):
+        total += B[A[i]-1]
+        if i != N-1 and A[i] == A[i+1] - 1:
+            total += C[A[i]-1]
+    print(total)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    score = 0
+    for i in range(n):
+        score += b[a[i]-1]
+        if i < n-1 and a[i+1] == a[i] + 1:
+            score += c[a[i]-1]
+    print(score)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    satisfaction = 0
+    prev = a[0]
+    satisfaction += b[prev-1]
+    for i in range(1, n):
+        current = a[i]
+        satisfaction += b[current-1]
+        if prev + 1 == current:
+            satisfaction += c[prev-1]
+        prev = current
+    print(satisfaction)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += b[a[i]-1]
+        if i < n-1 and a[i] == a[i+1]-1:
+            sum += c[a[i]-1]
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(N):
+        sum += B[A[i] - 1]
+        if i < N - 1 and A[i] + 1 == A[i + 1]:
+            sum += C[A[i] - 1]
+
+    print(sum)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+    C = [int(x) for x in input().split()]
+    total = 0
+    for i in range(N):
+        total += B[A[i]-1]
+        if i < N-1 and A[i+1] == A[i]+1:
+            total += C[A[i]-1]
+    print(total)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    c = [int(i) for i in input().split()]
+    total = 0
+    for i in range(n):
+        total += b[a[i]-1]
+        if i < n - 1 and a[i+1] - a[i] == 1:
+            total += c[a[i]-1]
+    print(total)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += b[a[i]-1]
+        if i != n-1 and a[i] == a[i+1]-1:
+            sum += c[a[i]-1]
+    print(sum)

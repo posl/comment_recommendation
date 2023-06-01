@@ -1,46 +1,94 @@
-#问题陈述
-#我们有两个大小为N的排列组合P和Q（也就是说，P和Q都是(1,2,...,N)的重排）。
-#在这些排列组合中，让P和Q分别为第a和第b个最小的排列组合。找出|a-b|。
-#
-#备注
-#对于两个序列X和Y，当且仅当存在一个整数k，使得X_i = Y_i(1 ≦ i < k)且X_k < Y_k时，称X比Y小。
-#
-#限制条件
-#2 ≦ N ≦ 8
-#P和Q是大小为N的排列组合。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#P_1 P_2 ...P_N
-#Q_1 Q_2 ...Q_N
-#
-#输出
-#打印|a-b|.
-#
-#样本输入1
-#3
-#1 3 2
-#3 1 2
-#
-#样本输出1
-#3
-#有6个大小为3的排列组合：(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), 以及(3,2,1)。其中，(1,3,2)和(3,1,2)在词汇表中排在第2位和第5位，所以答案是|2-5|=3。
-#
-#输入样本2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#样本输出2
-#17517
-#
-#样本输入3
-#3
-#1 2 3
-#1 2 3
-#
-#样本输出 3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_min_permutation(n):
+    return [i for i in range(1, n+1)]
+
+=======
+Suggestion 2
+
+def find_min_permutation(n):
+    return 1
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+    print(abs(p.index(1) - q.index(1)))
+
+=======
+Suggestion 4
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+
+    def permutation(n, p):
+        ans = 0
+        for i in range(n):
+            ans *= n - i
+            for j in range(i + 1, n):
+                if p[i] > p[j]:
+                    ans += 1
+        return ans
+
+    print(abs(permutation(n, p) - permutation(n, q)))
+
+=======
+Suggestion 6
+
+def get_min_permutation(n):
+    return range(1,n+1)
+
+=======
+Suggestion 7
+
+def main():
+    #输入
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    q = [int(x) for x in input().split()]
+
+    #处理
+    def permutation_to_number(p):
+        n = len(p)
+        r = 0
+        for i in range(n):
+            c = 0
+            for j in range(i + 1, n):
+                if p[i] > p[j]:
+                    c += 1
+            r += c * math.factorial(n - i - 1)
+        return r
+
+    #输出
+    print(abs(permutation_to_number(p) - permutation_to_number(q)))
+
+=======
+Suggestion 8
+
+def get_permutation_index(perm):
+    """Return the index of the permutation in the lexicographic order."""
+    perm = list(perm)
+    perm = [x - 1 for x in perm]  # adjust the index to start from 0
+    index = 0
+    factorial = 1
+    for i in range(len(perm)):
+        index += perm[-i - 1] * factorial
+        factorial *= len(perm) - i - 1
+    return index

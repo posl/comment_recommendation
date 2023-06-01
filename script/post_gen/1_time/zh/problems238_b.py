@@ -1,49 +1,128 @@
-#问题陈述
-#我们有一个圆形比萨饼。
-#高桥将用一个长度为N的序列A，按照以下程序切割这个比萨饼。
-#首先，从中心向12点方向切一刀。
-#接下来，做N次操作。第i次操作如下。
-#将比萨饼A_i顺时针旋转一度。
-#然后，从中心向12点方向进行切割。
-#
-#例如，如果A=(90,180,45,195)，程序对披萨的切割方式如下。
-#找到程序后最大的比萨饼的中心角。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 359
-#1 ≦ A_i ≦ 359
-#在同一位置不会有多重切割。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4
-#90 180 45 195
-#
-#样本输出1
-#120
-#这个输入与问题陈述中的例子相吻合。
-#最大的比萨饼的中心角是120度。
-#
-#样本输入2
-#1
-#1
-#
-#样本输出2
-#359
-#
-#样本输入3
-#10
-#215 137 320 339 341 41 44 18 241 149
-#
-#样本输出3
-#170
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        a[i] = a[i] % 360
+    a.sort()
+    for i in range(n):
+        a.append(a[i] + 360)
+    for i in range(n):
+        ans = max(ans, a[i+n-1] - a[i])
+    print(360 - ans)
+
+=======
+Suggestion 2
+
+def problem238b():
+    pass
+
+=======
+Suggestion 3
+
+def max_angle(N, A):
+    max_angle = 0
+    for i in range(N):
+        angle = 0
+        for j in range(N):
+            angle += A[(i+j)%N]
+            if max_angle < angle:
+                max_angle = angle
+    return max_angle
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(A[0]+360)
+    max = 0
+    for i in range(N):
+        if max < A[i+1] - A[i]:
+            max = A[i+1] - A[i]
+    print(360 - max)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        now = 0
+        for j in range(n):
+            now += a[(i + j) % n]
+            result = max(result, now)
+    print(360 - result)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0]+360)
+    ans = 0
+    for i in range(n):
+        ans = max(ans, a[i+1]-a[i])
+    print(360-ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    A.append(A[0]+360)
+    max = 0
+    for i in range(N):
+        if max < A[i+1]-A[i]:
+            max = A[i+1]-A[i]
+    print(360-max)
+
+=======
+Suggestion 8
+
+def main():
+    #读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    #计算最大值
+    max = 0
+    for i in range(n):
+        #计算角度
+        angle = 360.0 / 2.0 - a[i]
+        #如果角度大于180，就用360减去角度
+        if(angle > 180):
+            angle = 360 - angle
+        #如果角度大于max，就更新max
+        if(angle > max):
+            max = angle
+    #打印结果
+    print(int(max))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    max_angle = 0
+    for i in range(N):
+        angle = 0
+        for j in range(N):
+            angle += A[(j + i) % N]
+            max_angle = max(max_angle, min(angle, 360 - angle))
+
+    print(360 - max_angle)

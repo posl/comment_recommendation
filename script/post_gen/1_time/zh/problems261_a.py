@@ -1,41 +1,141 @@
-#问题陈述
-#我们有一条数字线。高桥在这条线上画了一些部分，如下所示：
-#首先，他把从X=L_1到X=R_1的部分涂成红色。
-#接下来，他把从X=L_2到X=R_2的部分涂成蓝色。
-#求这条直线上既涂红又涂蓝的部分的长度。
-#
-#约束条件
-#0≦ l_1<r_1≦ 100
-#0≦ l_2<r_2≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#l_1 r_1 l_2 r_2
-#
-#输出
-#打印红色和蓝色线条部分的长度，以整数表示。
-#
-#输入样本 1
-#0 3 1 5
-#
-#输出示例 1
-#2
-#从X=0到X=3的部分被涂成红色，而从X=1到X=5的部分被涂成蓝色。
-#因此，从X=1到X=3的部分被涂成红色和蓝色，其长度为2。
-#
-#输入样本 2
-#0 1 4 5
-#
-#样本输出2
-#0
-#没有一个零件同时被涂成红色和蓝色。
-#
-#样本输入3
-#0 3 3 7
-#
-#样本输出3
-#0
-#如果涂成红色的部分和涂成蓝色的部分是相邻的，那么涂成红色和蓝色的部分的长度是0。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    l1,r1,l2,r2 = map(int,input().split())
+    # 求解
+    if r1 < l2 or r2 < l1:
+        # 没有重叠
+        print(0)
+    else:
+        # 有重叠
+        print(min(r1,r2)-max(l1,l2))
+
+=======
+Suggestion 2
+
+def problems261_a():
+    l1,r1,l2,r2 = map(int,input().split())
+    if r1 <= l2:
+        print(0)
+    elif r2 <= l1:
+        print(0)
+    elif l1 <= l2 and r2 <= r1:
+        print(r2 - l2)
+    elif l2 <= l1 and r1 <= r2:
+        print(r1 - l1)
+    elif l1 <= l2 and r1 <= r2:
+        print(r1 - l2)
+    elif l2 <= l1 and r2 <= r1:
+        print(r2 - l1)
+
+=======
+Suggestion 3
+
+def main():
+    l1,r1,l2,r2=map(int,input().split())
+    if l2<r1:
+        print(max(l2,r1)-min(l1,r2))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def solve():
+    l1, r1, l2, r2 = map(int, input().split())
+    if l2 <= r1:
+        print(max(0, min(r1, r2) - l2))
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    l1,r1,l2,r2 = map(int,input().split())
+    if (l1 <= l2 <= r1) and (r1 <= r2):
+        print(r1 - l2)
+    elif (l2 <= l1 <= r2) and (r2 <= r1):
+        print(r2 - l1)
+    elif (l1 <= l2 <= r2) and (r2 <= r1):
+        print(r2 - l2)
+    elif (l2 <= l1 <= r1) and (r1 <= r2):
+        print(r1 - l1)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    l_1, r_1, l_2, r_2 = map(int, input().split())
+    if l_2 > r_1 or l_1 > r_2:
+        print(0)
+    elif l_1 <= l_2 and r_1 <= r_2:
+        print(r_1 - l_2)
+    elif l_2 <= l_1 and r_2 <= r_1:
+        print(r_2 - l_1)
+    elif l_1 <= l_2 and r_2 <= r_1:
+        print(r_2 - l_2)
+    elif l_2 <= l_1 and r_1 <= r_2:
+        print(r_1 - l_1)
+    else:
+        print(0)
+
+=======
+Suggestion 7
+
+def main():
+    l1,r1,l2,r2 = map(int,input().split())
+    if l2 <= l1 <= r2 <= r1:
+        print(r2-l1)
+    elif l1 <= l2 <= r1 <= r2:
+        print(r1-l2)
+    elif l1 <= l2 <= r2 <= r1:
+        print(r2-l2)
+    elif l2 <= l1 <= r1 <= r2:
+        print(r1-l1)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    l1,r1,l2,r2 = map(int,input().split())
+
+    if r2 < l1 or r1 < l2:
+        print(0)
+    else:
+        print(min(r1,r2) - max(l1,l2))
+
+=======
+Suggestion 9
+
+def main():
+    l1,r1,l2,r2 = map(int,input().split())
+    if l1 <= l2 and l2 <= r1:
+        if r1 <= r2:
+            print(r1 - l2)
+        else:
+            print(r2 - l2)
+    elif l1 <= r2 and r2 <= r1:
+        if r1 <= l2:
+            print(r2 - l1)
+        else:
+            print(r2 - l1)
+    else:
+        print(0)
+
+=======
+Suggestion 10
+
+def get_length(l1, r1, l2, r2):
+    if (r1 < l2) or (r2 < l1):
+        return 0
+    else:
+        return min(r1, r2) - max(l1, l2)

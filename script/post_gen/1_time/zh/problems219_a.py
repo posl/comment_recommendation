@@ -1,48 +1,138 @@
-#问题陈述
-#在AtCoder王国，有一个标准化的竞争性编程能力测试。
-#考生将得到一个满分100分的分数，并根据分数获得一个等级，具体如下：
-#新手，得分不低于0，但低于40；
-#中级，得分不低于40分，但低于70分；
-#高级，得分不低于70但不低于90；
-#专家，得分不低于90分。
-#高桥参加了这次考试，得到了X分。
-#找出提高一个等级所需的最低加分数。如果他的等级是专家，则打印专家，因为没有比这更高的等级。
-#
-#限制条件
-#0 ≦ X ≦ 100
-#X是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#56
-#
-#样本输出1
-#14
-#他得到了56分，被认证为中级。为了达到下一个级别的高级，他至少还需要14分。
-#
-#样本输入2
-#32
-#
-#样本输出2
-#8
-#
-#样本输入3
-#0
-#
-#样本输出3
-#40
-#
-#样本输入4
-#100
-#
-#样本输出4
-#专家
-#他得到了满分，被认证为专家。没有比这更高的等级，所以打印专家。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print("expert")
+
+=======
+Suggestion 2
+
+def get_score_level(score):
+    if score >= 0 and score < 40:
+        return "新手"
+    elif score >= 40 and score < 70:
+        return "中级"
+    elif score >= 70 and score < 90:
+        return "高级"
+    elif score >= 90 and score <= 100:
+        return "专家"
+    else:
+        return "输入分数有误"
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40-x)
+    elif x < 70:
+        print(70-x)
+    elif x < 90:
+        print(90-x)
+    else:
+        print('专家')
+
+=======
+Suggestion 4
+
+def get_level(score):
+    if score >= 0 and score < 40:
+        return "新手"
+    elif score >= 40 and score < 70:
+        return "中级"
+    elif score >= 70 and score < 90:
+        return "高级"
+    elif score >= 90 and score <= 100:
+        return "专家"
+    else:
+        return "输入错误"
+
+=======
+Suggestion 5
+
+def get_level(x):
+    if x < 40:
+        return 40
+    elif x < 70:
+        return 70
+    elif x < 90:
+        return 90
+    else:
+        return 'expert'
+
+=======
+Suggestion 6
+
+def getScore():
+    score = int(input())
+    if score >= 0 and score < 40:
+        print(40-score)
+    elif score >= 40 and score < 70:
+        print(70-score)
+    elif score >= 70 and score < 90:
+        print(90-score)
+    elif score >= 90 and score <= 100:
+        print('专家')
+    else:
+        print('输入错误')
+
+getScore()
+
+=======
+Suggestion 7
+
+def exam_grade(n):
+    if n < 40:
+        return 40 - n
+    elif n < 70:
+        return 70 - n
+    elif n < 90:
+        return 90 - n
+    else:
+        return 'expert'
+
+n = int(input())
+print(exam_grade(n))
+
+=======
+Suggestion 8
+
+def get_score():
+    while True:
+        score = input("请输入你的分数：")
+        if score.isdigit():
+            score = int(score)
+            if score >= 0 and score <= 100:
+                break
+            else:
+                print("请输入0到100之间的数字")
+                continue
+        else:
+            print("请输入数字")
+            continue
+    return score
+
+=======
+Suggestion 9
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print("专家")

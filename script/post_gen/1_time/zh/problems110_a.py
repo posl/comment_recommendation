@@ -1,39 +1,93 @@
-#问题陈述
-#你决定根据你孩子现在要玩的游戏的结果给他一笔零用钱。
-#这个游戏的玩法如下：
-#有三个 "整数板"，每个板上印有1到9（含）之间的数字，还有一个 "运算板"，上面印有 "+"。
-#玩家应通过从左到右排列四个面板，构建一个X+Y的公式。(操作面板不应该放在公式的两端）。
-#然后，零用钱的数额将等于公式的结果值。
-#给出游戏中使用的整数板上所印的数值A、B和C，找出可能的最大零用钱数额。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B, C ≦ 9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#打印零用钱的最大可能数额。
-#
-#输入样本 1
-#1 5 2
-#
-#样本输出1
-#53
-#当面板排列为52+1时，零用钱的数额将是53，这是可能的最大数额。
-#
-#样本输入2
-#9 9 9
-#
-#样本输出2
-#108
-#
-#样本输入3
-#6 6 7
-#
-#样本输出3
-#82
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    print(10*a+b+c)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int,input().split())
+    print(max(a+b+c,a*10+b+c,a+b*10+c,a+b+c*10))
+
+=======
+Suggestion 3
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a * 10 + b + c, a + b * 10 + c, a + b + c * 10))
+
+=======
+Suggestion 4
+
+def max_money(A,B,C):
+    max = 0
+    if A+B+C > max:
+        max = A+B+C
+    if A+B*C > max:
+        max = A+B*C
+    if A*B+C > max:
+        max = A*B+C
+    if A*B*C > max:
+        max = A*B*C
+    if (A+B)*C > max:
+        max = (A+B)*C
+    if A*(B+C) > max:
+        max = A*(B+C)
+    return max
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b+c, a+b*c, a*b+c, a*b*c))
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int,input().split())
+    result = a+b+c
+    result = max(result,(a+b)*c)
+    result = max(result,a*(b+c))
+    result = max(result,a*b*c)
+    print(result)
+
+=======
+Suggestion 7
+
+def main(a, b, c):
+    # 1. 3个数都为9的情况
+    if a == 9 and b == 9 and c == 9:
+        return 108
+    # 2. 3个数都为1的情况
+    if a == 1 and b == 1 and c == 1:
+        return 12
+    # 3. 2个数为9，1个数为1的情况
+    if (a == 9 and b == 9 and c == 1) or (a == 9 and b == 1 and c == 9) or (a == 1 and b == 9 and c == 9):
+        return 91
+    # 4. 2个数为1，1个数为9的情况
+    if (a == 1 and b == 1 and c == 9) or (a == 1 and b == 9 and c == 1) or (a == 9 and b == 1 and c == 1):
+        return 19
+    # 5. 2个数为9，1个数为2的情况
+    if (a == 9 and b == 9 and c == 2) or (a == 9 and b == 2 and c == 9) or (a == 2 and b == 9 and c == 9):
+        return 92
+    # 6. 2个数为2，1个数为9的情况
+    if (a == 2 and b == 2 and c == 9) or (a == 2 and b == 9 and c == 2) or (a == 9 and b == 2 and c == 2):
+        return 29
+    # 7. 2个数为9，1个数为3的情况
+    if (a == 9 and b == 9 and c == 3) or (a == 9 and b == 3 and c == 9) or (a == 3 and b == 9 and c == 9):
+        return 93
+    # 8. 2个数为3，1个数为9的情
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C = map(int, input().split())
+    print(max(A+B+C, A+B*C, A*B+C, A*B*C))

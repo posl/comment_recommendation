@@ -1,54 +1,161 @@
-#问题陈述
-#高桥要逐一购买N件商品。
-#他购买的第i件商品的价格是A_i日元（日本的货币）。
-#他有M张折扣票，他可以在购买商品时使用任何数量的折扣票。
-#如果在购买价格为X日元的商品时使用了Y张折扣券，他可以用(X/(2^Y))(四舍五入到最近的整数)日元买到该商品。
-#购买所有物品所需的最低金额是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ n, m ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印购买所有物品所需的最小资金量。
-#
-#输入样本 1
-#3 3
-#2 13 8
-#
-#样本输出1
-#9
-#我们可以用9日元购买所有的物品，如下所示：
-#以2日元的价格购买第1件商品，不需要门票。
-#用2张票购买第2件商品，价格为3日元。
-#购买第3件商品，价格为4日元，有1张票。
-#
-#输入样本 2
-#4 4
-#1 9 3 5
-#
-#样本输出2
-#6
-#
-#样本输入3
-#1 100000
-#1000000000
-#
-#样本输出3
-#0
-#我们可以用100000张票购买价格为1000000000日元的物品，价格为0日元。
-#
-#样本输入4
-#10 1
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#样本输出4
-#9500000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(m):
+        a[-1] = a[-1]//2
+        a.sort()
+    print(sum(a))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    i = 0
+    while m > 0:
+        a[i] = a[i] // 2
+        m -= 1
+        i += 1
+        if i == n:
+            i = 0
+    print(sum(a))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] = a[0] // 2
+        a.sort(reverse=True)
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def solve(n, m, a):
+    a.sort()
+    for i in range(m):
+        a[-1] = a[-1] // 2
+        a.sort()
+    return sum(a)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(m):
+        a[-1] = a[-1]//2
+        a.sort()
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def solve():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    #print(a)
+    for i in range(m):
+        a[0] = a[0] // 2
+        a.sort(reverse=True)
+        #print(a)
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    for i in range(M):
+        A[-1] = A[-1] // 2
+        A.sort()
+    print(sum(A))
+
+=======
+Suggestion 8
+
+def buyGoods(N, M, A):
+    #print(N, M, A)
+    A.sort()
+    #print(A)
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    if M >= sum:
+        return 0
+    else:
+        for i in range(M):
+            A[N-1-i] = A[N-1-i]//2
+        return buyGoods(N, M, A)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 二分探索
+    def is_ok(arg):
+        cnt = 0
+        for i in range(n):
+            cnt += max(0, a[i] - arg // 2)
+        return cnt >= m
+
+    def meguru_bisect(ng, ok):
+        while (abs(ok - ng) > 1):
+            mid = (ok + ng) // 2
+            if is_ok(mid):
+                ok = mid
+            else:
+                ng = mid
+        return ok
+
+    print(meguru_bisect(0, 10 ** 9 + 1))
+
+=======
+Suggestion 10
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+
+    # 二分探索
+    def is_ok(x):
+        # 二分探索の判定部分
+        cnt = 0
+        for a in A:
+            if a < x // 2:
+                break
+            cnt += min(a, x // 2)
+        return cnt >= M * x
+
+    def meguru_bisect(ng, ok):
+        # 二分探索
+        while (abs(ok - ng) > 1):
+            mid = (ok + ng) // 2
+            if is_ok(mid):
+                ok = mid
+            else:
+                ng = mid
+        return ok
+
+    print(meguru_bisect(0, 10 ** 18))

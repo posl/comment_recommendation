@@ -1,38 +1,135 @@
-#问题陈述
-#你有一个长度为4的数字序列S，你想知道S是以下哪种格式：
-#YYMM格式：年的最后两位数和月的两位数（例如：01代表1月），按这个顺序连接起来。
-#MMYY格式：月份的两位数和年份的最后两位数，按这个顺序连接起来。
-#如果S只在YYMM格式下有效，则打印YYMM；如果S只在MMYY格式下有效，则打印MMYY；如果S在两种格式下都有效，则打印AMBIGUOUS；如果S在两种格式下都无效，则打印NA。
-#
-#限制条件
-#S是一个长度为4的数字序列。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印指定的字符串：YYMM, MMYY, AMBIGUOUS或NA。
-#
-#输入样本1
-#1905
-#
-#样本输出1
-#YYMM
-#XX19年5月是一个有效的日期，但19作为一个月是无效的。因此，这个字符串只在YYMM格式下有效。
-#
-#样本输入2
-#0112
-#
-#样本输出2
-#AMBIGUOUS
-#十二月XX01和一月XX12都是有效的日期。因此，这个字符串在两种格式下都是有效的。
-#
-#样本输入3
-#1700
-#
-#样本输出3
-#0和17都不是有效的月份。
-#0和17都不是有效的月份。因此，这个字符串在这两种格式中都是无效的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if 1<=int(s[0:2])<=12 and 1<=int(s[2:4])<=12:
+        print("AMBIGUOUS")
+    elif 1<=int(s[0:2])<=12:
+        print("MMYY")
+    elif 1<=int(s[2:4])<=12:
+        print("YYMM")
+    else:
+        print("NA")
+
+main()
+
+=======
+Suggestion 2
+
+def is_valid_month(month):
+    return 1 <= month <= 12
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    m1 = int(S[0:2])
+    m2 = int(S[2:4])
+    if m1 < 1 or m1 > 12:
+        if m2 < 1 or m2 > 12:
+            print('NA')
+        else:
+            print('YYMM')
+    else:
+        if m2 < 1 or m2 > 12:
+            print('MMYY')
+        else:
+            print('AMBIGUOUS')
+
+=======
+Suggestion 4
+
+def check(s):
+    if 1 <= s <= 12:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def check(s):
+    if int(s[0:2]) > 12 or int(s[0:2]) == 0:
+        return False
+    if int(s[2:]) > 12 or int(s[2:]) == 0:
+        return False
+    return True
+
+s = input()
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    # print(s)
+    # print(s[0:2])
+    # print(s[2:4])
+    # print(s[0:2] in range(1,13))
+    # print(s[2:4] in range(1,13))
+    if 1 <= int(s[0:2]) <= 12 and 1 <= int(s[2:4]) <= 12:
+        print('AMBIGUOUS')
+    elif 1 <= int(s[0:2]) <= 12 and not 1 <= int(s[2:4]) <= 12:
+        print('MMYY')
+    elif not 1 <= int(s[0:2]) <= 12 and 1 <= int(s[2:4]) <= 12:
+        print('YYMM')
+    else:
+        print('NA')
+
+=======
+Suggestion 7
+
+def check(s):
+    if int(s) > 0 and int(s) <= 12:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    s1 = S[:2]
+    s2 = S[2:]
+    if (int(s1) in range(1, 13)) and (int(s2) in range(1, 13)):
+        print("AMBIGUOUS")
+    elif (int(s1) in range(1, 13)) and (int(s2) not in range(1, 13)):
+        print("MMYY")
+    elif (int(s1) not in range(1, 13)) and (int(s2) in range(1, 13)):
+        print("YYMM")
+    else:
+        print("NA")
+
+=======
+Suggestion 9
+
+def check(s):
+    if 1 <= int(s[2:]) <= 12 and 1 <= int(s[:2]) <= 12:
+        return "AMBIGUOUS"
+    elif 1 <= int(s[2:]) <= 12:
+        return "YYMM"
+    elif 1 <= int(s[:2]) <= 12:
+        return "MMYY"
+    else:
+        return "NA"
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    S1 = int(S[0:2])
+    S2 = int(S[2:4])
+    if 1 <= S1 <= 12 and 1 <= S2 <= 12:
+        print("AMBIGUOUS")
+    elif 1 <= S1 <= 12 and not 1 <= S2 <= 12:
+        print("MMYY")
+    elif not 1 <= S1 <= 12 and 1 <= S2 <= 12:
+        print("YYMM")
+    else:
+        print("NA")

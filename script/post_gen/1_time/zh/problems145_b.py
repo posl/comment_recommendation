@@ -1,41 +1,126 @@
-#问题陈述
-#给出一个正整数N和一个由小写英文字母组成的长度为N的字符串S。
-#判断该字符串是否是某个字符串的两个副本的串联。
-#也就是说，确定是否有一个字符串T，使S = T + T。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#S由小写英文字母组成。
-#|S| = N
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S
-#
-#输出
-#如果S是某个字符串的两个副本的串联，打印Yes；否则，打印No。
-#
-#输入样本 1
-#6
-#abcabc
-#
-#样本输出1
-#Yes
-#设T=abc，S=T+T。
-#
-#样本输入2
-#6
-#abcadc
-#
-#样本输出2
-#No
-#
-#样本输入3
-#1
-#z
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[0:N//2] == S[N//2:N]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 1:
+        print("No")
+    else:
+        if s[:n//2] == s[n//2:]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 1:
+        print("No")
+    else:
+        T = S[:N//2]
+        if T + T == S:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 == 0:
+        if S[:N//2] == S[N//2:]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def is_double_copy(s):
+    if len(s)%2!=0:
+        return False
+    else:
+        l=len(s)//2
+        return s[:l]==s[l:]
+
+n=int(input())
+s=input()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    if n % 2 == 0 and s[:n//2] == s[n//2:]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def find_substring(s):
+    s_len = len(s)
+    for i in range(1, s_len//2+1):
+        if s_len%i != 0:
+            continue
+        else:
+            if s[:i]*(s_len//i) == s:
+                return True
+    return False
+
+=======
+Suggestion 8
+
+def is_double_copy(N,S):
+    if N%2 != 0:
+        return "No"
+    else:
+        if S[0:N/2] == S[N/2:N]:
+            return "Yes"
+        else:
+            return "No"
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    print("Yes" if s[0:n//2] == s[n//2:] else "No")
+
+=======
+Suggestion 10
+
+def main():
+    n = input()
+    s = raw_input()
+    if s[0:n/2] == s[n/2:n]:
+        print "Yes"
+    else:
+        print "No"

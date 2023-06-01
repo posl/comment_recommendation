@@ -1,35 +1,80 @@
-#问题陈述
-#给你一个整数A和B，每一个都在1到3（包括）之间。
-#请确定在1到3之间是否有一个整数C，使得A×B×C是一个奇数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B ≦ 3
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B
-#
-#輸出
-#如果在1和3之间有一个满足条件的整数C，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 1
-#
-#输出样本 1
-#Yes
-#让C=3。那么，A×B×C=3×1×3=9，这是一个奇数。
-#
-#输入样本2
-#1 2
-#
-#样本输出2
-#No
-#
-#样本输入 3
-#2 2
-#
-#样品输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if (a * b) % 2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if a*b%2==1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve(A, B):
+    if A % 2 == 0 or B % 2 == 0:
+        return 'No'
+    else:
+        return 'Yes'
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int,input().split())
+    if A*B*3%2 != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    A,B = map(int, input().split())
+    if A*B%2 == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a*b%2 == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if (A*B)%2 == 0:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int, input().split())
+    if a==1 or b==1 or a==3 or b==3:
+        print("Yes")
+    else:
+        print("No")

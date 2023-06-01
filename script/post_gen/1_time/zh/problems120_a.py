@@ -1,38 +1,97 @@
-#问题陈述
-#高桥喜欢从自动售货机买饮料时的声音。
-#每次花A日元（日本的货币）就可以听到这种声音。
-#高桥有B日元。他将用这些钱尽可能多地听到这个声音，但最多是C次，因为他在那个时候会感到满意。
-#他将听到多少次声音？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a, b, c ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#打印高桥将听到他最喜欢的声音的次数。
-#
-#输入样本 1
-#2 11 4
-#
-#样本输出 1
-#4
-#由于他有不少于8日元，他将听到四次声音并感到满意。
-#
-#输入样本2
-#3 9 5
-#
-#样本输出2
-#3
-#他可能无法得到满足。
-#
-#样本输入3
-#100 1 10
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems120_a():
+    A, B, C = map(int, input().split())
+    print(min(B // A, C))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 计算结果
+    result = min(b // a, c)
+
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    A,B,C = map(int,input().split())
+    if A > C:
+        print(0)
+    else:
+        print(B//A)
+
+=======
+Suggestion 4
+
+def solve():
+    a,b,c = map(int,input().split())
+    print(min(b//a,c))
+
+=======
+Suggestion 5
+
+def problem120_a():
+    a, b, c = map(int, input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b // a if c > b // a else c)
+
+problem120_a()
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c = map(int, input().split())
+    print(min(b//a, c))
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+
+    # 解决问题
+    if a * c <= b:
+        ans = c
+    else:
+        ans = b // a
+
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int,input().split())
+    print(min(b//a,c))
+main()
+
+=======
+Suggestion 9
+
+def solve(a, b, c):
+    if a * c <= b:
+        return c
+    else:
+        return b // a
+
+=======
+Suggestion 10
+
+def main():
+    a, b, c = map(int, input().split())
+    print(min(c, b // a))

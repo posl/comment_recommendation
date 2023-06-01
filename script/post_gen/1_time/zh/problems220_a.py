@@ -1,31 +1,58 @@
-#问题陈述
-#打印A和B之间的一个数字（包括），它是C的倍数。
-#如果没有这样的数字，则打印-1。
-#
-#限制条件
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ C ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#打印答案。
-#如果没有具有所需属性的数字，打印-1。
-#
-#输入样本 1
-#123 456 100
-#
-#输出样本 1
-#200
-#300或400也会被接受。
-#
-#样本输入2
-#630 940 314
-#
-#样本输出2
-#-1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c=map(int,input().split())
+    for i in range(a,b+1):
+        if i%c==0:
+            print(i)
+            break
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def problem220_a():
+    a, b, c = map(int, input().split())
+    for i in range(a, b + 1):
+        if i % c == 0:
+            print(i)
+            break
+    else:
+        print(-1)
+
+problem220_a()
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int,input().split())
+    for i in range(a,b+1):
+        if i % c == 0:
+            print(i)
+            exit()
+    print(-1)
+
+=======
+Suggestion 4
+
+def problem220_a():
+    a, b, c = map(int, input().split())
+    for i in range(a, b + 1):
+        if i % c == 0:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 5
+
+def findTheNumber(a,b,c):
+    for i in range(a,b+1):
+        if i % c == 0:
+            return i
+    return -1

@@ -1,37 +1,120 @@
-#问题说明
-#N块瓷砖从左到右排列成一排。每块瓷砖的初始颜色由一个长度为N的字符串S表示。
-#如果S的第i个字符是0，从左边开始的第i个瓷砖被涂成黑色，如果该字符是1，则涂成白色。
-#你想把一些瓷砖重新涂成黑色或白色，这样任何相邻的两块瓷砖都有不同的颜色。
-#至少有多少块瓷砖需要重新涂抹才能满足条件？
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S_i为0或1。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印为满足条件需要重新涂抹的最小瓷砖数量。
-#
-#输入样本 1
-#000
-#
-#样本输出 1
-#1
-#这个条件可以通过把中间的瓦片重新涂成白色来满足。
-#
-#输入样本2
-#10010010
-#
-#样本输出2
-#3
-#
-#样本输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0' and i % 2 == 0:
+            count += 1
+        elif s[i] == '1' and i % 2 == 1:
+            count += 1
+    print(min(count, len(s) - count))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    s1 = s[::2]
+    s2 = s[1::2]
+    s3 = s[1::2]
+    s4 = s[::2]
+    n1 = 0
+    n2 = 0
+    for i in range(len(s)):
+        if s[i] == s1[i]:
+            n1 += 1
+        if s[i] == s2[i]:
+            n2 += 1
+    print(min(n1, n2))
+
+=======
+Suggestion 3
+
+def problems124_c():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s.strip()
+    if len(s) == 1:
+        print(0)
+        return
+    count = 0
+    for i in range(len(s) - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0':
+            count += 1
+    print(min(count, len(s) - count))
+
+=======
+Suggestion 6
+
+def solution(s):
+    s = s.strip()
+    if len(s) == 1:
+        return 0
+    else:
+        count = 0
+        for i in range(len(s) - 1):
+            if s[i] == s[i + 1]:
+                count += 1
+        return count
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    if n == 1:
+        print(0)
+    else:
+        print(min(s.count('0'),s.count('1'))*2)
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    s = s.replace("01", "0 1").replace("10", "1 0").split()
+    print(min(len(s[::2]), len(s[1::2])))
+
+=======
+Suggestion 9
+
+def solve(s):
+    a = s.count("0")
+    b = s.count("1")
+    return min(a,b)*2
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    white = 0
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == "1":
+                white += 1
+        else:
+            if s[i] == "0":
+                white += 1
+    print(min(white, len(s) - white))

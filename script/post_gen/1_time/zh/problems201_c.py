@@ -1,39 +1,180 @@
-#问题陈述
-#高桥忘记了他的密码。密码是一个四位数的字符串，由0，1，...，9组成，可以以0开头。
-#对于0到9的每个数字，高桥记得以下事实，用一个10个字符的字符串S_0S_1 ...S_9:
-#如果S_i是o：他确定PIN码包含数字i；
-#如果S_i是x：他确定密码不包含数字i；
-#如果S_i是？：他不确定密码是否包含数字i。
-#有多少个字符串可以成为高桥的密码？
-#
-#限制条件
-#S是一个由o，x，和?组成的10个字符的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#ooo??? xxxx
-#
-#样本输出1
-#108
-#一些可能的密码是0123和0021。
-#
-#样本输入2
-#o?oo?oxoxo
-#
-#采样输出2
-#0
-#可能没有可能的PIN，在这种情况下，答案是0。
-#
-#输入样本3
-#xxxxx?xxxo
-#
-#样本输出3
-#15
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        pin = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in pin:
+                flag = False
+            if s[j] == 'x' and str(j) in pin:
+                flag = False
+        if flag:
+            count += 1
+    print(count)
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        if all([i[int(j)] == s[int(j)] for j in range(len(s)) if s[int(j)] in '0123456789']):
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def f(S):
+    S = S.replace('o','1')
+    S = S.replace('x','0')
+    S = S.replace('?','2')
+    S = S.replace('2','?')
+    return int(S,3)
+
+S = input()
+print(f(S))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = list(s)
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    cnt = 0
+
+    for i in range(10000):
+        pin = "{:0>4}".format(i)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in pin:
+                flag = False
+                break
+            if s[j] == 'x' and str(j) in pin:
+                flag = False
+                break
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    cnt = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def count_passwords(s):
+    count = 0
+    for i in range(10000):
+        password = str(i).zfill(4)
+        if all([password[int(c)] == s[int(c)] for c in range(10) if s[int(c)] != '?']):
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    #print(S)
+    #print(S[0:10])
+    #print(S[0:10].count("o"))
+    #print(S[0:10].count("x"))
+    #print(S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x"))
+    #print(S[0:10].count("o") + S[0:10].count("?") + S[0:10].count("x") + S[0:10].count("?") + S[0:10].count("x") +
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        if i < 1000:
+            i = '0' * (4 - len(str(i))) + str(i)
+        else:
+            i = str(i)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o':
+                if str(j) not in i:
+                    flag = False
+                    break
+            elif s[j] == 'x':
+                if str(j) in i:
+                    flag = False
+                    break
+        if flag:
+            count += 1
+    print(count)

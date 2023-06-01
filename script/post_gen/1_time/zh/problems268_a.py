@@ -1,29 +1,64 @@
-#问题陈述
-#打印给定的五个整数A、B、C、D、E中有多少个不同的整数。
-#
-#限制条件
-#0 ≦ A, B, C, D, E ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D E
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#31 9 24 31 24
-#
-#样本输出1
-#3
-#在给定的五个整数31、9、24、31和24中，有三个不同的整数9、24和31。
-#因此，3应该被打印出来。
-#
-#输入示例 2
-#0 0 0 0 0
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, C, D, E = map(int, input().split())
+    print(len(set([A, B, C, D, E])))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c, d, e = map(int, input().split())
+    print(len(set([a, b, c, d, e])))
+
+=======
+Suggestion 3
+
+def get_diff_num(a, b, c, d, e):
+    return len(set([a, b, c, d, e]))
+
+=======
+Suggestion 4
+
+def main():
+    a = input().split()
+    b = []
+    for i in range(5):
+        if a[i] not in b:
+            b.append(a[i])
+    print(len(b))
+
+=======
+Suggestion 5
+
+def solve():
+    num = input().split()
+    num = set(num)
+    print(len(num))
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    nums = [int(x) for x in input().split()]
+    print(len(set(nums)))
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    input_line = input().split()
+    # 初始化一个空列表
+    list = []
+    # 遍历输入的每一个值
+    for i in range(len(input_line)):
+        # 将每一个值转换为int类型，并添加到列表中
+        list.append(int(input_line[i]))
+    # 将列表转换为集合，并打印集合的长度
+    print(len(set(list)))

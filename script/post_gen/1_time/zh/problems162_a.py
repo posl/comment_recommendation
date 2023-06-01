@@ -1,35 +1,111 @@
-#问题陈述
-#给出的是一个三位数的整数N，N是否包含数字7？
-#如果是，打印 "是"；否则，打印 "否"。
-#
-#限制条件
-#100 ≦ N ≦ 999
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#如果N包含数字7，打印Y 是；否则，打印 否。
-#
-#输入样本1
-#117
-#
-#样本输出1
-#是
-#117包含7作为它的最后一个数字。
-#
-#输入样本2
-#123
-#
-#样本输出2
-#否
-#123不包含数字7。
-#
-#样本输入3
-#777
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    if num % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def is_include_7(num):
+    if num % 10 == 7:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def is_contain_seven(n):
+    if n % 10 == 7:
+        return True
+    elif n // 10 % 10 == 7:
+        return True
+    elif n // 100 % 10 == 7:
+        return True
+    else:
+        return False
+
+n = int(input())
+
+=======
+Suggestion 5
+
+def is_contain_seven(num):
+    return num % 10 == 7 or num // 10 % 10 == 7 or num // 100 == 7
+
+num = int(input())
+print("是" if is_contain_seven(num) else "否")
+
+=======
+Suggestion 6
+
+def problem162_a():
+    n = input()
+    if '7' in n:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 7
+
+def solution():
+    n = int(input())
+    if n%10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n % 10 == 7:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 9
+
+def isSevenInNum(num):
+    if num%10==7:
+        return True
+    elif num/10%10==7:
+        return True
+    elif num/100%10==7:
+        return True
+    else:
+        return False
+
+num = int(raw_input())
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    n = int(input())
+    # 计算
+    if n % 10 == 7:
+        print("是")
+    else:
+        print("否")

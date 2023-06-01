@@ -1,42 +1,117 @@
-#问题陈述
-#巨无霸高桥将练习高尔夫。
-#他的目标是获得K的倍数的搬运距离，而他只能做出A和B（包括）之间的搬运距离。
-#如果他能达到目标，就打印OK；如果不能，就打印NG。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A ≦ B ≦ 1000
-#1 ≦ K ≦ 1000
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#K
-#A B
-#
-#输出
-#如果他能实现目标，打印OK；如果他不能，打印NG。
-#
-#输入样本1
-#7
-#500 600
-#
-#样品输出1
-#OK
-#例如，在7的倍数中，567位于500和600之间。
-#
-#样本输入2
-#4
-#5 7
-#
-#样本输出2
-#NG
-#4的倍数不在5和7之间。
-#
-#样本输入3
-#1
-#11 11
-#
-#样本输出3
-#OK
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0 or a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    a,b = map(int,input().split())
+    if (a%k == 0) or (b%k == 0):
+        print("OK")
+    elif (a//k < b//k):
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 3
+
+def main():
+    K = int(input())
+    A, B = map(int, input().split())
+    if A % K == 0 or B % K == 0 or (A // K < B // K):
+        print("OK")
+    else:
+        print("NG")
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a%k == 0 or b%k == 0:
+        print('OK')
+    elif a//k != b//k:
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 5
+
+def a165(k,a,b):
+    if a%k==0 or b%k==0:
+        print('OK')
+    elif a//k==b//k:
+        print('NG')
+    else:
+        print('OK')
+
+k=int(input())
+a,b=map(int,input().split())
+a165(k,a,b)
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0 or (a // k) != (b // k):
+        print('OK')
+    else:
+        print('NG')
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+    elif a // k != b // k:
+        print("OK")
+    else:
+        print("NG")
+
+=======
+Suggestion 8
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0 or b % k == 0:
+        print("OK")
+        return
+    if a // k != b // k:
+        print("OK")
+        return
+    print("NG")
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    a, b = map(int, input().split())
+    if a % k == 0:
+        print('OK')
+    elif b // k > a // k:
+        print('OK')
+    else:
+        print('NG')

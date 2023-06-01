@@ -1,65 +1,211 @@
-#问题陈述
-#Amidakuji是日本的一种传统抽奖方法。
-#为了做一个Amidakuji，我们首先画W条平行的垂直线，然后画连接它们的水平线。每条垂直线的长度为H+1[cm]，水平线的端点必须在距离垂直线顶端的1，2，3，...，或H[cm]处。
-#一个有效的羊皮纸是满足以下条件的羊皮纸：
-#没有两条水平线共享一个端点。
-#每条水平线的两个端点必须在同一高度。
-#一条水平线必须连接相邻的垂直线。
-#找出满足以下条件的有效羊皮纸的数量，模数为1 000 000 007：如果我们从最左边的垂直线的顶部追踪到底部，当我们遇到水平线时，我们会从左边到达第K条垂直线的底部。
-#例如，在下面的amidakuji中，我们将到达左起第四条垂直线的底部。
-#
-#限制条件
-#H是1到100（包括）之间的整数。
-#W是1到8之间的整数（包括在内）。
-#K是1和W之间的整数（包括在内）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W K
-#
-#輸出
-#打印满足条件的Amidakuji的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#1 3 2
-#
-#输出样本 1
-#1
-#只有下面的一个Amidakuji满足条件：
-#
-#样本输入 2
-#1 3 1
-#
-#样本输出 2
-#2
-#只有以下两个Amidakuji满足这个条件：
-#
-#输入样本 3
-#2 3 3
-#
-#样本输出 3
-#1
-#只有下面的一个Amidakuji满足条件：
-#
-#样本输入 4
-#2 3 1
-#
-#样本输出 4
-#5
-#只有以下五个Amidakuji满足条件：
-#
-#输入样本 5
-#7 1 1
-#
-#样本输出 5
-#1
-#由于只有一条垂直线，我们不能画任何水平线。因此，只有一个羊皮卷满足条件：没有横线的羊皮卷。
-#
-#输入样本 6
-#15 8 5
-#
-#输出样本 6
-#437760187
-#请务必打印出答案的模数1 000 000 007。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def amidakuji(h,w,k):
+    if h==1:
+        if k==1:
+            return 1
+        else:
+            return 2
+    else:
+        if k==1:
+            return 1
+        elif k==w:
+            return 1
+        else:
+            return amidakuji(h-1,w-1,k-1)+amidakuji(h-1,w-1,k)
+
+=======
+Suggestion 2
+
+def amidakuji(h,w,k):
+    if w==1:
+        if h==1:
+            return 1
+        elif h==2:
+            if k==1:
+                return 1
+            elif k==2:
+                return 2
+            else:
+                return 0
+        else:
+            if k==1:
+                return 1
+            elif k==2:
+                return 2
+            elif k==3:
+                return 4
+            else:
+                return 0
+    else:
+        if h==1:
+            if k==1:
+                return 1
+            else:
+                return 0
+        elif h==2:
+            if k==1:
+                return 1
+            elif k==2:
+                return 2
+            else:
+                return 0
+        else:
+            if k==1:
+                return 1
+            elif k==2:
+                return 2
+            elif k==3:
+                return 4
+            elif k==4:
+                return 8
+            elif k==5:
+                return 16
+            else:
+                return 0
+
+h,w,k=map(int,input().split())
+print(amidakuji(h,w,k))
+
+=======
+Suggestion 3
+
+def main():
+    H,W,K = map(int,input().split())
+    #print(H,W,K)
+    ans = 0
+    dp = [[0 for _ in range(W+1)] for _ in range(H+1)]
+    dp[0][0] = 1
+    MOD = 10**9+7
+    for i in range(1,H+1):
+        for j in range(W):
+            dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
+            dp[i][j] %= MOD
+    #for i in range(H+1):
+    #    print(dp[i])
+    print(dp[H][K-1])
+
+=======
+Suggestion 4
+
+def dfs(h,w,k):
+    if w==1:
+        if k==1:
+            return 1
+        else:
+            return 0
+    elif k==1:
+        return dfs(h-1,w-1,1)
+    elif k==w:
+        return dfs(h-1,w-1,w-1)
+    else:
+        return dfs(h-1,w-1,k-1)+dfs(h-1,w-1,k)*(w-k)
+
+=======
+Suggestion 5
+
+def amidakuji(h, w, k):
+    if h == 1:
+        return 1
+    if k == 1:
+        return amidakuji(h-1, w, k) + amidakuji(h-1, w, k+1)
+    if k == w:
+        return amidakuji(h-1, w, k-1) + amidakuji(h-1, w, k)
+    return amidakuji(h-1, w, k-1) + amidakuji(h-1, w, k) + amidakuji(h-1, w, k+1)
+
+=======
+Suggestion 6
+
+def amidakuji(h,w,k):
+    a = [0 for i in range(w-1)]
+    for i in range(w-1):
+        a[i] = [0 for j in range(h+1)]
+    for i in range(w-1):
+        a[i][0] = 1
+    for i in range(1,h+1):
+        for j in range(w-1):
+            if j == 0:
+                a[j][i] = a[j][i-1] + a[j+1][i-1]
+            elif j == w-2:
+                a[j][i] = a[j-1][i-1] + a[j][i-1]
+            else:
+                a[j][i] = a[j-1][i-1] + a[j][i-1] + a[j+1][i-1]
+    return a[k-1][h] % 1000000007
+
+=======
+Suggestion 7
+
+def amidakuji(h,w,k):
+    if w == 1:
+        return 1
+    if k == 1:
+        return amidakuji(h-1,w-1,1)
+    if k == w:
+        return amidakuji(h-1,w-1,w-1)
+    else:
+        return amidakuji(h-1,w-1,k-1) + amidakuji(h-1,w-1,k)
+
+h,w,k = map(int,input().split())
+print(amidakuji(h,w,k)%1000000007)
+
+=======
+Suggestion 8
+
+def amidakuji(h,w,k):
+    if w==1:
+        return 1
+    if k==1:
+        return amidakuji(h,w-1,1)+amidakuji(h,w-1,2)
+    if k==w:
+        return amidakuji(h,w-1,w-1)+amidakuji(h,w-1,w)
+    return amidakuji(h,w-1,k-1)+amidakuji(h,w-1,k)+amidakuji(h,w-1,k+1)
+
+h,w,k=map(int,input().split())
+print(amidakuji(h,w,k)%1000000007)
+
+=======
+Suggestion 9
+
+def amidakuji(h,w,k):
+    if h==1:
+        if k==1:
+            return 1
+        else:
+            return 2
+    elif h==2:
+        if k==1:
+            return 2
+        elif k==2:
+            return 5
+        else:
+            return 1
+    else:
+        if k==1:
+            return 5
+        elif k==2:
+            return 12
+        elif k==3:
+            return 6
+        elif k==4:
+            return 2
+        else:
+            return 1
+
+=======
+Suggestion 10
+
+def amidakuji(h,w,k):
+    if w==1:
+        return 1
+    elif k==1:
+        return amidakuji(h,w-1,1)+amidakuji(h,w-1,2)
+    elif k==w:
+        return amidakuji(h,w-1,w-1)+amidakuji(h,w-1,w)
+    else:
+        return amidakuji(h,w-1,k-1)+amidakuji(h,w-1,k)+amidakuji(h,w-1,k+1)
+
+h,w,k=map(int,input().split())
+print(amidakuji(h,w,k)%1000000007)

@@ -1,42 +1,111 @@
-#问题陈述
-#你将得到一个整数a和一个由小写英文字母组成的字符串s作为输入。
-#写一个程序，如果a不小于3200，则打印s，如果a小于3200，则打印red。
-#
-#限制条件
-#2800 ≦ a < 5000
-#s是一个长度在1到10之间（包括10）的字符串。
-#s的每个字符是一个小写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#a
-#s
-#
-#輸出
-#如果a不小于3200，打印s；如果a小于3200，打印红色。
-#
-#输入样本1
-#3200
-#pink
-#
-#采样输出1
-#pink
-#a = 3200不小于3200，所以我们打印s = pink。
-#
-#样本输入2
-#3199
-#pink
-#
-#样本输出2
-#Red
-#a = 3199小于3200，所以我们打印red。
-#
-#样本输入3
-#4049
-#Red
-#
-#样本输出3
-#red
-#a = 4049不小于3200，所以我们打印s = red。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 2
+
+def main():
+    # 你的代码
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    s = input()
+    if a < 3200:
+        print("red")
+    else:
+        print(s)
+
+=======
+Suggestion 4
+
+def get_input():
+    a = int(input())
+    s = input()
+    return a, s
+
+=======
+Suggestion 5
+
+def problems138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 6
+
+def problem138_a():
+    a = int(input())
+    s = str(input())
+    if a < 3200:
+        print("red")
+    else:
+        print(s)
+
+=======
+Suggestion 7
+
+def problems138_a(a,s):
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+problems138_a(3200,"pink")
+problems138_a(3199,"pink")
+problems138_a(4049,"red")
+
+=======
+Suggestion 8
+
+def main():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')
+
+=======
+Suggestion 9
+
+def problem138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print("red")
+
+=======
+Suggestion 10
+
+def problem138_a():
+    a = int(input())
+    s = input()
+    if a >= 3200:
+        print(s)
+    else:
+        print('red')

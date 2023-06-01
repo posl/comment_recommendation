@@ -1,42 +1,84 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S。
-#将S开头的第a个和第b个字符互换，并打印出所得字符串。
-#
-#限制条件
-#S是一个由小写英文字母组成的字符串。
-#S的长度，|S|，满足2 ≦ |S| ≦ 10。
-#1 ≦ a < b ≦ |S|
-#a和b是整数。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S
-#a b
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#chokudai
-#3 5
-#
-#样本输出1
-#chukodai
-#将chokudai的第3个字符o和第5个字符u互换后，我们得到chukodai。
-#
-#输入样本2
-#aa
-#1 2
-#
-#样本输出2
-#aa
-#在这个例子中，交换了S的第1和第2个字符后，我们得到了与S相同的字符串。
-#
-#输入样本3
-#aaaabbbb
-#1 8
-#
-#样本输出3
-#baaabbba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    s = list(s)
+    s[a], s[b] = s[b], s[a]
+    print(''.join(s))
+
+=======
+Suggestion 2
+
+def swap(s, a, b):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 3
+
+def my_swap(s, a, b):
+    if a > b:
+        a, b = b, a
+    if a == b:
+        return s
+    if a == 1:
+        return s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 4
+
+def swap(a, b, s):
+    s = list(s)
+    s[a-1], s[b-1] = s[b-1], s[a-1]
+    return ''.join(s)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    S = list(S)
+    S[a], S[b] = S[b], S[a]
+    print(''.join(S))
+
+=======
+Suggestion 6
+
+def main():
+    s = raw_input()
+    a, b = map(int, raw_input().split())
+    s = s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+    print s
+
+=======
+Suggestion 7
+
+def swap(a, b, s):
+    return s[:a-1] + s[b-1] + s[a:b-1] + s[a-1] + s[b:]
+
+=======
+Suggestion 8
+
+def swap_char(s, a, b):
+    a = a - 1
+    b = b - 1
+    s[a], s[b] = s[b], s[a]
+    return s
+
+=======
+Suggestion 9
+
+def swap(s, a, b):
+    a = a - 1
+    b = b - 1
+    s[a], s[b] = s[b], s[a]
+    return s

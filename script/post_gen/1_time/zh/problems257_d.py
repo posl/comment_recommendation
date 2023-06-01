@@ -1,56 +1,116 @@
-#问题陈述
-#在高桥居住的二维平面小镇上有N个蹦床。  第i个蹦床位于(x_i, y_i)点上，其功率为P_i。  高桥的跳跃能力用S表示。最初，S=0，高桥每训练一次，S就增加1。
-#高桥可以从第i个蹦床跳到第j个蹦床，当且仅当：
-#P_iS≧ |x_i - x_j| +|y_i - y_j|。
-#高桥的目标是能够选择一个开始的蹦床，使他能够通过一些跳跃从所选的蹦床到达任何蹦床。
-#他至少需要训练多少次才能实现他的目标？
-#
-#限制条件
-#2 ≦ N ≦ 200
-#-10^9 ≦ x_i,y_i ≦ 10^9
-#1 ≦ P_i ≦ 10^9
-#(x_i, y_i) ≠ (x_j,y_j) (i≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#x_1 y_1 P_1
-#.
-#.
-#.
-#x_N y_N P_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#-10 0 1
-#0 0 5
-#10 0 1
-#11 0 1
-#
-#样本输出1
-#2
-#如果他训练了两次，S=2、
-#在这种情况下，他可以从第2个蹦床到达任何一个蹦床。
-#例如，他可以到达第4个蹦床，方法如下。
-#从第2个蹦床跳到第3个蹦床。  (由于P_2 S=10，并且|x_2-x_3|+|y_2-y_3|=10，所以P_2 S ≧|x_2-x_3|+|y_2-y_3|。）
-#从第3个蹦床跳到第4个蹦床。  (因为P_3 S = 2，并且|x_3-x_4| + |y_3-y_4| = 1，所以成立P_3 S ≧ |x_3-x_4| + |y_3-y_4|。)
-#
-#
-#样本输入2
-#7
-#20 31 1
-#13 4 3
-#-10 -15 2
-#34 26 5
-#-2 39 4
-#0 -50 1
-#5 -20 2
-#
-#样本输出2
-#18
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for _ in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if P[i] * ans >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    x = []
+    y = []
+    p = []
+    for i in range(n):
+        a, b, c = map(int, input().split())
+        x.append(a)
+        y.append(b)
+        p.append(c)
+    INF = 10 ** 9
+    # dp[i][j]表示第i个蹦床训练j次能访问的蹦床
+    dp = [[0] * (n + 1) for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                dp[i][j] = INF
+            else:
+                if p[i] * j >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                    dp[i][j] = 1
+    # floyd
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+    res = INF
+    for i in range(n):
+        res = min(res, max(dp[i]))
+    print(res + 1)
+solve()
+
+=======
+Suggestion 4
+
+def get_distance(x1,y1,x2,y2):
+    return abs(x1-x2)+abs(y1-y2)
+
+=======
+Suggestion 5
+
+def getPower(s, x, y, xi, yi, pi):
+    return pi * s >= abs(x - xi) + abs(y - yi)
+
+=======
+Suggestion 6
+
+def main():
+    n=int(input())
+    x=[]
+    y=[]
+    p=[]
+    for i in range(n):
+        x1,y1,p1=map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+        p.append(p1)
+    ans=0
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                continue
+            if p[i]*ans>=abs(x[i]-x[j])+abs(y[i]-y[j]):
+                ans+=1
+                break
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for i in range(N):
+        x1, y1, P1 = map(int, input().split())
+        x.append(x1)
+        y.append(y1)
+        P.append(P1)
+    print(N)

@@ -1,40 +1,84 @@
-#问题陈述
-#有4个水平排列的方块。
-#给你一个由0和1组成的长度为4的字符串S。
-#如果S的第i个字符是1，则左起第i个方格中有一个人；
-#如果S的第i个字符是0，则左起第i个格子里没有人。
-#现在，每个人都将同时移动到右边的下一个方格。  通过这一移动，原来在最右边的方格中的人将消失。
-#确定移动后每个方格中是否会有一个人。  将结果打印成与S相同格式的字符串（也可参见输入/输出示例，以了解情况）。
-#
-#限制条件
-#S是一个长度为4的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#打印一个长度为4的字符串，如果移动后从左边开始的第i个格子里有一个人，则第i个字符为1，否则为0。
-#
-#输入样本 1
-#1011
-#
-#样本输出1
-#0101
-#移動後，原本在第1格的人會移動到第2格、
-#第3个方格的人移到第4个方格、
-#而第4个方格的人将会消失。
-#
-#样本输入2
-#0000
-#
-#样本输出2
-#0000
-#
-#样本输入3
-#1111
-#
-#样本输出3
-#0111
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S[1:]+S[0])
+
+=======
+Suggestion 2
+
+def main():
+    str = input()
+    print(str[1:] + str[0])
+
+=======
+Suggestion 3
+
+def main():
+    # 输入
+    S = input()
+
+    # 处理
+    S = S.replace('1', '2').replace('0', '1').replace('2', '0')
+
+    # 输出
+    print(S)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print(s[1:]+s[0])
+
+=======
+Suggestion 5
+
+def problem247_a():
+    s = input()
+    result = ""
+    for i in range(len(s)):
+        if i == len(s) - 1:
+            result += "0"
+        else:
+            result += s[i + 1]
+    print(result)
+
+problem247_a()
+
+=======
+Suggestion 6
+
+def problems247_a():
+    S = str(input())
+    s = list(S)
+    s.append(s[0])
+    s.pop(0)
+    print("".join(s))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = s.replace("1", "2")
+    s = s.replace("0", "1")
+    s = s.replace("2", "0")
+    print(s)
+
+=======
+Suggestion 8
+
+def problem247_a(s):
+    # print(s)
+    s = s.replace('1','2')
+    s = s.replace('0','1')
+    s = s.replace('2','0')
+    print(s)
+
+problem247_a('1011')
+problem247_a('0000')
+problem247_a('1111')

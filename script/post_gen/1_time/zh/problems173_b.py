@@ -1,62 +1,175 @@
-#问题陈述
-#高桥正在参加一个名为AXC002的编程比赛，他刚刚提交了问题A的代码。
-#该问题有N个测试用例。
-#对于每个测试用例i（1≦i≦N），你会得到一个字符串S_i，代表该测试用例的判决。找出裁决为AC、WA、TLE和RE的测试用例的数量。
-#关于输出格式，请参见输出部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i是AC, WA, TLE, 或RE。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#让C_0, C_1, C_2, 和C_3分别为判决为AC, WA, TLE, 和RE的测试案例的数量。打印以下内容：
-#AC x C_0
-#WA x C_1
-#TLE x C_2
-#RE x C_3
-#
-#样本输入1
-#6
-#AC
-#TLE
-#AC
-#AC
-#WA
-#TLE
-#
-#样本输出1
-#AC x 3
-#WA x 1
-#TLE x 2
-#RE x 0
-#我们有3个、1个、2个和0个测试案例，其判决结果分别为AC、WA、TLE和RE。
-#
-#样本输入2
-#10
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#
-#样品输出2
-#AC x 10
-#WA x 0
-#TLE x 0
-#RE x 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(num):
+        s = input()
+        if s == "AC":
+            a += 1
+        elif s == "WA":
+            b += 1
+        elif s == "TLE":
+            c += 1
+        elif s == "RE":
+            d += 1
+    print("AC x " + str(a))
+    print("WA x " + str(b))
+    print("TLE x " + str(c))
+    print("RE x " + str(d))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(N):
+        S = input()
+        if S == "AC":
+            ac += 1
+        elif S == "WA":
+            wa += 1
+        elif S == "TLE":
+            tle += 1
+        else:
+            re += 1
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+
+    ac = wa = tle = re = 0
+    for i in range(N):
+        if S[i] == "AC":
+            ac += 1
+        elif S[i] == "WA":
+            wa += 1
+        elif S[i] == "TLE":
+            tle += 1
+        elif S[i] == "RE":
+            re += 1
+
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+
+=======
+Suggestion 8
+
+def count(s):
+    count = [0,0,0,0]
+    for i in s:
+        if i == "AC":
+            count[0] += 1
+        elif i == "WA":
+            count[1] += 1
+        elif i == "TLE":
+            count[2] += 1
+        elif i == "RE":
+            count[3] += 1
+    return count
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+count = count(s)
+print("AC x",count[0])
+print("WA x",count[1])
+print("TLE x",count[2])
+print("RE x",count[3])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x {}".format(s.count("AC")))
+    print("WA x {}".format(s.count("WA")))
+    print("TLE x {}".format(s.count("TLE")))
+    print("RE x {}".format(s.count("RE")))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("AC x", s.count("AC"))
+    print("WA x", s.count("WA"))
+    print("TLE x", s.count("TLE"))
+    print("RE x", s.count("RE"))

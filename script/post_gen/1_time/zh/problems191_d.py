@@ -1,39 +1,172 @@
-#问题陈述
-#我们有一个半径为R的圆，中心是(X, Y)。
-#求圆内或圆上的网格点（x和y坐标都是整数的点）的数量。
-#
-#约束条件
-#|X| ≦ 10^5
-#|Y| ≦ 10^5
-#0 < R ≦ 10^5
-#X、Y和R中的每一个在小数点之后都有最多四位数字。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#X Y R
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#0.2 0.8 1.1
-#
-#样本输出1
-#3
-#这个圆圈如下图所示。圆内或圆上的网格点被标记为红色。
-#
-#样本输入2
-#100 100 1
-#
-#样本输出2
-#5
-#X、Y和R可能没有小数点。
-#请注意，我们也计算圆上的网格点。
-#
-#输入样本3
-#42782.4720 31949.0192 99999.99
-#
-#样本输出3
-#31415920098
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, Y, R = map(float, input().split())
+    X = int(X * 10000)
+    Y = int(Y * 10000)
+    R = int(R * 10000)
+    ans = 0
+    for i in range(X - R, X + R + 1):
+        for j in range(Y - R, Y + R + 1):
+            if (X - i) ** 2 + (Y - j) ** 2 <= R ** 2:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def get_input():
+    input_str = input()
+    input_str = input_str.split()
+    return input_str
+
+=======
+Suggestion 4
+
+def solve():
+    X, Y, R = map(float, input().split())
+    X = int(X * 10000)
+    Y = int(Y * 10000)
+    R = int(R * 10000)
+    ans = 0
+    for x in range(X - R, X + R + 1):
+        if (X - x) ** 2 > R ** 2:
+            continue
+        y = Y + (R ** 2 - (X - x) ** 2) ** 0.5
+        while y > Y - 1:
+            if x ** 2 + y ** 2 <= R ** 2:
+                break
+            y -= 1
+        y = int(y)
+        ans += y - (Y - 1)
+    print(ans * 4)
+
+=======
+Suggestion 5
+
+def main():
+    x, y, r = map(float, input().split())
+    x, y, r = int(x*10000), int(y*10000), int(r*10000)
+    ans = 0
+    for i in range(-r, r+1):
+        j = int((r**2 - i**2)**0.5)
+        while i**2 + j**2 > r**2:
+            j -= 1
+        ans += j*2+1
+    print(ans*4)
+
+=======
+Suggestion 6
+
+def main():
+    x,y,r = map(float,input().split())
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
+    ans = 0
+    for i in range(x-r,x+r+1):
+        for j in range(y-r,y+r+1):
+            if (i-x)**2 + (j-y)**2 <= r**2:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(x, y, r):
+    x1 = int(x * 10000 - r * 10000)
+    x2 = int(x * 10000 + r * 10000)
+    y1 = int(y * 10000 - r * 10000)
+    y2 = int(y * 10000 + r * 10000)
+    ans = 0
+    for i in range(x1, x2 + 1):
+        for j in range(y1, y2 + 1):
+            if (i - x * 10000) ** 2 + (j - y * 10000) ** 2 <= r * 10000 ** 2:
+                ans += 1
+    return ans
+
+=======
+Suggestion 8
+
+def main():
+    x,y,r = map(float, input().split())
+    x,y,r = int(x*10000), int(y*10000), int(r*10000)
+    x1 = int((x-r)/10000)
+    x2 = int((x+r)/10000)
+    cnt = 0
+    for i in range(x1, x2+1):
+        y1 = int((r**2 - (i*10000-x)**2)**0.5/10000)
+        y2 = int(-(r**2 - (i*10000-x)**2)**0.5/10000)
+        cnt += y1 - y2 + 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    import sys
+    import math
+
+    # 读入数据
+    x, y, r = map(float, sys.stdin.readline().split())
+
+    # 计算答案
+    # 在圆内或圆上的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆上的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆的边界上的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆的边界上的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆的边界上的网格点的数量
+
+    # 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+
+    # 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+    # + 在圆内的网格点的数量
+    # = 在圆内的网格点的数量
+
+    # 在圆内的网格点的数量
+    # = 在圆内的网格点的
+
+=======
+Suggestion 10
+
+def main():
+    X, Y, R = map(float, input().split())
+    X = int(X * 10000)
+    Y = int(Y * 10000)
+    R = int(R * 10000)
+    ans = 0
+    for i in range(X - R, X + R + 1):
+        for j in range(Y - R, Y + R + 1):
+            if (i - X) ** 2 + (j - Y) ** 2 <= R ** 2:
+                ans += 1
+    print(ans)

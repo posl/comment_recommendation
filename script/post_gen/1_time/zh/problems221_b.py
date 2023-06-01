@@ -1,42 +1,158 @@
-#问题陈述
-#给你两个字符串S和T，判断是否有可能通过最多一次以下操作使S和T相等：
-#在S中选择两个相邻的字符并将它们交换。
-#请注意，可以选择不做这个操作。
-#
-#限制条件
-#S和T中的每一个都是长度在2到100（包括）之间的字符串，由小写英文字母组成。
-#S和T有相同的长度。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#輸出
-#如果有可能通过最多一次问题陈述中的操作使S和T相等，则打印Yes；否则，打印No。
-#
-#输入样本1
-#abc
-#acb
-#
-#样品输出1
-#Yes
-#你可以调换S的第2和第3个字符，使S和T相等。
-#
-#输入样本2
-#aabb
-#bbaa
-#
-#样本输出2
-#No
-#没有办法进行使S和T相等的操作。
-#
-#输入样本3
-#abcde
-#abcde
-#
-#样本输出3
-#Yes
-#S和T已经相等。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+
+    if len(S) != len(T):
+        print("No")
+        return
+
+    for i in range(len(S)):
+        for j in range(i + 1, len(S)):
+            if S[i] == T[j] and S[j] == T[i]:
+                print("Yes")
+                return
+
+    print("No")
+
+=======
+Suggestion 2
+
+def swap(s):
+    return s[1]+s[0]
+
+s = input()
+t = input()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if len(s) == len(t):
+        s_list = list(s)
+        t_list = list(t)
+        if s_list == t_list:
+            print('Yes')
+        else:
+            for i in range(len(s_list)):
+                for j in range(len(s_list)):
+                    if i == j:
+                        continue
+                    else:
+                        s_list[i],s_list[j] = s_list[j],s_list[i]
+                        if s_list == t_list:
+                            print('Yes')
+                            break
+                        else:
+                            s_list[i],s_list[j] = s_list[j],s_list[i]
+                else:
+                    continue
+                break
+            else:
+                print('No')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print('Yes')
+        return
+    for i in range(len(S)-1):
+        if S[i] == T[i+1] and S[i+1] == T[i]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 5
+
+def func(s,t):
+    if s==t:
+        return True
+    else:
+        for i in range(len(s)-1):
+            if s[i+1]+s[i]==t[i+1]+t[i]:
+                return True
+    return False
+
+=======
+Suggestion 6
+
+def swap(s, i, j):
+    s[i], s[j] = s[j], s[i]
+    return s
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        if s[i+1] == t[i] and s[i] == t[i+1]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 8
+
+def swap(S, T):
+    for i in range(len(S)-1):
+        if S[i] != T[i]:
+            if S[i+1] != T[i+1]:
+                return False
+    return True
+
+S = input()
+T = input()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    for i in range(len(s)-1):
+        s = s[:i] + s[i+1] + s[i] + s[i+2:]
+        if s == t:
+            print("Yes")
+            return
+        s = s[:i] + s[i+1] + s[i] + s[i+2:]
+    print("No")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print("Yes")
+        return
+    for i in range(len(S)):
+        for j in range(i + 1, len(S)):
+            tmp = list(S)
+            tmp[i], tmp[j] = tmp[j], tmp[i]
+            if "".join(tmp) == T:
+                print("Yes")
+                return
+    print("No")

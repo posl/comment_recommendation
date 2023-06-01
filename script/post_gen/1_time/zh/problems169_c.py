@@ -1,36 +1,75 @@
-#问题陈述
-#计算A×B，截断其小数部分，并将结果打印为整数。
-#
-#限制条件
-#0 ≦ A ≦ 10^{15}
-#0 ≦ B < 10
-#A是一个整数。
-#B是一个小数点后有两位数的数字。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本1
-#198 1.10
-#
-#样本输出1
-#217
-#我们有198×1.10=217.8。截断小数部分后，我们得到的答案是：217。
-#
-#输入样本2
-#1 0.01
-#
-#样本输出2
-#0
-#
-#样本输入3
-#1000000000000000 9.99
-#
-#样本输出3
-#9990000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = input().split()
+    print(int(int(A)*float(B)))
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(float, input().split())
+    print(int(A * B))
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(float, input().split())
+    C = A * B
+    print(int(C))
+
+=======
+Suggestion 4
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = float(b)
+    print(int(a*b))
+
+=======
+Suggestion 5
+
+def mul(a, b):
+    a = int(a)
+    b = float(b)
+    c = a * b
+    return int(c)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = float(b)
+    b = int(b * 100)
+    print(a*b//100)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(float,input().split())
+    print(int(a*b))
+
+=======
+Suggestion 8
+
+def calc(A,B):
+    #print(A,B)
+    A = int(A)
+    B = int(B*100)
+    #print(A,B)
+    return A*B//100
+
+=======
+Suggestion 9
+
+def solve():
+    A, B = map(float, input().split())
+    print(int(A * B))

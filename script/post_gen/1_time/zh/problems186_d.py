@@ -1,34 +1,156 @@
-#问题陈述
-#给出N个整数A_1,...,A_N。
-#求所有i,j对的|A_i-A_j|之和，且1≦i<j≦N。
-#换句话说，求（sum_{i=1}^{N-1}sum_{j=i+1}^{N}|A_i-A_j|）。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#|A_i|≦ 10^8
-#A_i是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#5 1 2
-#
-#样本输出1
-#8
-#我们有|5-1|+|5-2|+|1-2|=8。
-#
-#样本输入2
-#5
-#31 41 59 26 53
-#
-#样本输出2
-#176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * i - A[i] * (N - 1 - i)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    sum = 0
+    for i in range(n):
+        sum += (a[i] - a[0]) + (a[n-1] - a[i])
+    print(sum)
+
+main()
+
+=======
+Suggestion 3
+
+def sum_of_absolute_differences(n, a):
+    a.sort()
+    sum = 0
+    for i in range(n):
+        sum += a[i] * (i - (n - i - 1))
+    return sum
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+
+    # 1. 两两之差
+    # 2. 两两之差的和
+    # 3. 两两之差的和的和
+    # 4. 两两之差的和的和的和
+    # 5. 两两之差的和的和的和的和
+
+    # 1. 两两之差
+    diff = []
+    for i in range(n):
+        for j in range(i+1, n):
+            diff.append(abs(a[i] - a[j]))
+
+    # 2. 两两之差的和
+    diff_sum = 0
+    for i in range(len(diff)):
+        diff_sum += diff[i]
+
+    # 3. 两两之差的和的和
+    diff_sum_sum = 0
+    for i in range(len(diff)):
+        diff_sum_sum += diff_sum
+
+    # 4. 两两之差的和的和的和
+    diff_sum_sum_sum = 0
+    for i in range(len(diff)):
+        diff_sum_sum_sum += diff_sum_sum
+
+    # 5. 两两之差的和的和的和的和
+    diff_sum_sum_sum_sum = 0
+    for i in range(len(diff)):
+        diff_sum_sum_sum_sum += diff_sum_sum_sum
+
+    print(diff_sum_sum_sum_sum)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    #print(A)
+    sum = 0
+    for i in range(1,N):
+        sum += A[i] * i - A[i-1] * (N-i)
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (2 * i - N + 1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(N, A):
+    ans = 0
+    A.sort()
+    for i in range(N):
+        ans += (2 * i - N + 1) * A[i]
+    return ans
+
+N = int(input())
+A = list(map(int, input().split()))
+print(solve(N, A))
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        ans += a[i] * (2 * i - n + 1)
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 9
+
+def solve(n, a):
+    a.sort()
+    ans = 0
+    for i in range(n-1):
+        ans += (i+1) * a[i] - sum(a[:i+1])
+        ans += sum(a[i+1:]) - (n-i-1) * a[i]
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(N):
+        sum += A[i] * i - A[i] * (N - 1 - i)
+    print(sum)

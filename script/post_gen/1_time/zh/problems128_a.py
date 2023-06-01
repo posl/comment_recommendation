@@ -1,37 +1,69 @@
-#问题陈述
-#我们有A个苹果和P块苹果。
-#我们可以把一个苹果切成三块，把两块苹果放在锅里煮，做成一个苹果派。
-#请找出我们现在所拥有的东西最多可以做多少个苹果派。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ A, P ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A P
-#
-#输出
-#打印我们能做的最大数量的苹果派。
-#
-#输入样本 1
-#1 3
-#
-#输出样本 1
-#3
-#我们可以先把三块苹果中的两块煨熟，做成一个苹果派。然后，我们可以通过熬制剩下的一块和切开整个苹果得到的另外三块来制作两个。
-#
-#样本输入2
-#0 1
-#
-#样本输出2
-#0
-#不幸的是，在这种情况下，我们不能做一个苹果派。
-#
-#样本输入3
-#32 21
-#
-#样本输出3
-#58
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem128_a():
+    a, p = map(int, input().split())
+    print((a*3+p)//2)
+problem128_a()
+
+=======
+Suggestion 2
+
+def max_pie(a, p):
+    if a == 0:
+        return 0
+    else:
+        return int((a * 3 + p) / 2)
+
+=======
+Suggestion 3
+
+def solve():
+    A, P = map(int, input().split())
+    print((A * 3 + P) // 2)
+
+=======
+Suggestion 4
+
+def get_max_pie(a, p):
+    return int((a * 3 + p) / 2)
+
+=======
+Suggestion 5
+
+def main():
+    A,P = map(int,input().split())
+    print((A*3+P)//2)
+
+=======
+Suggestion 6
+
+def problems128_a():
+    pass
+
+=======
+Suggestion 7
+
+def problems128_a():
+    A,P = map(int,input().split())
+    print((A*3+P)//2)
+
+=======
+Suggestion 8
+
+def solve(a, p):
+    return (a * 3 + p) // 2
+
+=======
+Suggestion 9
+
+def max_pie(apple, piece):
+    return min(apple * 3 + piece, (apple + piece) // 2)
+
+=======
+Suggestion 10
+
+def solve(A, P):
+    return (A * 3 + P) // 2

@@ -1,35 +1,116 @@
-#问题陈述
-#一个整数N是9的倍数，当且仅当N的小数表示法中的数字之和是9的倍数。
-#确定N是否是9的倍数。
-#
-#约束条件
-#0 ≦ N < 10^{200000}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果N是9的倍数，打印Yes；否则，打印No。
-#
-#输入样本 1
-#123456789
-#
-#样本输出1
-#Yes
-#这些数字的总和是1+2+3+4+5+6+7+8+9=45，是9的倍数，所以123456789是9的倍数。
-#
-#输入样本2
-#0
-#
-#样本输出2
-#Yes
-#
-#样本输入3
-#31415926535897932384626433832795028841971693993751058209749445923078164062862089986280
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = input()
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    #n = int(input())
+    n = input()
+    #print(n)
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N%9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = input()
+    sum = 0
+    for i in N:
+        sum += int(i)
+    if sum % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = input()
+    total = 0
+    for i in n:
+        total += int(i)
+    if total % 9 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 6
+
+def solve():
+    n = input()
+    if int(n)%9==0:
+        print("Yes")
+    else:
+        print("No")
+
+solve()
+
+=======
+Suggestion 7
+
+def isMultipleOf9(n):
+    if (n == 0 or n == 9):
+        return True
+    if (n < 9):
+        return False
+    return isMultipleOf9(int(n/9) - int(n%9))
+
+n = input()
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    if sum % 9 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def is_9_multiple(n):
+    sum = 0
+    for i in n:
+        sum += int(i)
+    if sum % 9 == 0:
+        return True
+    else:
+        return False

@@ -1,50 +1,210 @@
-#问题陈述
-#考虑一个XY平面。  x轴的正方向为东，y轴的正方向为北。
-#高桥最初在点（x，y）=（0，0），面向东（x轴的正方向）。
-#给你一个由S和R组成的长度为N的字符串T=t_1t_2...t_N。
-#高桥将对每个i=1，2，...，N按这个顺序做以下动作。
-#如果t_i=S，高桥在当前方向前进了1个距离。
-#如果t_i = R，高桥在不改变位置的情况下顺时针转90度。  结果，高桥的方向变化如下。
-#如果他在转弯前是面向东方（X轴的正方向），他转弯后将面向南方（Y轴的负方向）。
-#如果他在转弯前面向南方（Y轴的负方向），他转弯后将面向西方（X轴的负方向）。
-#如果他在转弯前面向西（在X轴的负方向），他转弯后将面向北（在Y轴的正方向）。
-#如果他在转弯前面向北方（Y轴的正方向），他转弯后将面向东方（X轴的正方向）。
-#
-#在完成上述所有步骤后，打印出高桥所处的坐标。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#N是一个整数。
-#T是一个长度为N的字符串，由S和R组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#T
-#
-#輸出
-#在完成问题陈述中描述的所有步骤后，打印高桥的坐标（x，y）。
-# 中描述的所有步骤完成后，以下列格式打印高桥的坐标（x, y），中间有一个空格：
-#x y
-#
-#输入样本1
-#4
-#SSRS
-#
-#样本输出1
-#2 -1
-#高桥最初在(0, 0)处面向东。  然后，他按以下方式移动。
-#t_1=S，所以他向东边的方向前进了1距离，到达（1，0）。
-#t_2=S，所以他向东边的方向前进了1距离，到达了（2，0）。
-#t_3=R，所以他顺时针转了90度，结果是面向南方。
-#t_4=S，所以他向南边的方向前进了1距离，到达（2，-1）。
-#因此，高桥的最终位置，（x，y）=（2，-1），应该被打印出来。
-#
-#输入样本2
-#20
-#SRSRSSRSSSRSRRRRRSRR
-#
-#样本输出2
-#0 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = input()
+    x = y = 0
+    for i in range(N):
+        if T[i] == "S":
+            y += 1
+        else:
+            if x == 0:
+                x = y
+                y = 0
+            else:
+                x = 0 - x
+    print(x, y)
+
+=======
+Suggestion 2
+
+def problem244_b():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if t[i] == 'S':
+            x += 1
+        else:
+            if x % 2 == 0:
+                y += 1
+            else:
+                y -= 1
+    print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    x = 0
+    y = 0
+    d = 0
+    for i in range(n):
+        if s[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            else:
+                y += 1
+        else:
+            d = (d + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y -= 1
+            elif direction == 2:
+                x -= 1
+            elif direction == 3:
+                y += 1
+        elif T[i] == 'R':
+            direction = (direction + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    d = 'E'
+    for i in range(n):
+        if t[i] == 'S':
+            if d == 'E':
+                x += 1
+            elif d == 'W':
+                x -= 1
+            elif d == 'N':
+                y += 1
+            else:
+                y -= 1
+        else:
+            if d == 'E':
+                d = 'S'
+            elif d == 'W':
+                d = 'N'
+            elif d == 'N':
+                d = 'W'
+            else:
+                d = 'E'
+    print(x, y)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if t[i] == "S":
+            if x > 0:
+                x -= 1
+            elif x < 0:
+                x += 1
+            elif y > 0:
+                y -= 1
+            elif y < 0:
+                y += 1
+        else:
+            if x > 0:
+                y -= 1
+            elif x < 0:
+                y += 1
+            elif y > 0:
+                x += 1
+            elif y < 0:
+                x -= 1
+    print(x, y)
+
+=======
+Suggestion 7
+
+def main():
+    # 输入数据
+    n = int(input())
+    t = input()
+
+    # 初始化
+    x = 0
+    y = 0
+    direction = 0
+
+    # 处理数据
+    for i in range(n):
+        if t[i] == 'S':
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y -= 1
+            elif direction == 2:
+                x -= 1
+            else:
+                y += 1
+        else:
+            direction += 1
+            if direction == 4:
+                direction = 0
+
+    # 输出结果
+    print(x, y)
+
+=======
+Suggestion 8
+
+def direction_change(direction):
+    if direction == 'N':
+        return 'E'
+    elif direction == 'E':
+        return 'S'
+    elif direction == 'S':
+        return 'W'
+    elif direction == 'W':
+        return 'N'
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    d = 0
+    for i in range(n):
+        if t[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            elif d == 3:
+                y += 1
+        else:
+            d = (d + 1) % 4
+    print(x, y)

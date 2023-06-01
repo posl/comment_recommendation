@@ -1,39 +1,124 @@
-#问题陈述
-#在高桥面前，有N个盘子排成一排。从左边开始的第i个盘子上有A_i个桔子。
-#高桥将选择一个满足以下所有条件的三倍整数（l, r, x）：
-#1≦ l ≦ r ≦ N；
-#1 ≦ x;
-#对于l和r之间的每个整数i（包括），x≦A_i。
-#然后他将从左边的第l个到第r个盘子里拿起x个橙子吃。
-#通过选择（l，r，x）这三者，他最多可以吃多少个橙子，使这个数字最大化？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^4
-#1 ≦ A_i ≦ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印高桥能吃的最大数量的橙子。
-#
-#样本输入1
-#6
-#2 4 4 9 4 9
-#
-#样本输出1
-#20
-#通过选择(l,r,x)=(2,6,4)，他可以吃20个橙子。
-#
-#样本输入2
-#6
-#200 4 4 9 4 9
-#
-#样本输出2
-#200
-#通过选择(l,r,x)=(1,1,200)，他可以吃200个橙子。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for l in range(n):
+        x=a[l]
+        for r in range(l,n):
+            x=min(x,a[r])
+            ans=max(ans,x*(r-l+1))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    # N = 6
+    # A = [2, 4, 4, 9, 4, 9]
+    N = 6
+    A = [200, 4, 4, 9, 4, 9]
+    # N = int(input())
+    # A = list(map(int, input().split()))
+    max = 0
+    for i in range(N):
+        for j in range(i, N):
+            min = 100000
+            for k in range(i, j+1):
+                if A[k] < min:
+                    min = A[k]
+            if min * (j - i + 1) > max:
+                max = min * (j - i + 1)
+    print(max)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 计算答案
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            x = min(a[i:j+1])
+            ans = max(ans, x*(j-i+1))
+
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_input():
+    N = int(input())
+    A = list(map(int, input().split()))
+    return N, A
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            x = min(a[i:j+1])
+            ans = max(ans, x*(j-i+1))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split(" ")))
+    max = 0
+    for l in range(1,N+1):
+        for r in range(l,N+1):
+            for x in range(1,100000):
+                if x > max:
+                    flag = True
+                    for i in range(l-1,r):
+                        if x > A[i]:
+                            flag = False
+                            break
+                    if flag:
+                        max = x
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    arr = list(map(int,input().split()))
+    max = 0
+    for i in range(n):
+        for j in range(i,n):
+            min = 100000
+            for k in range(i,j+1):
+                if arr[k] < min:
+                    min = arr[k]
+            if max < min*(j-i+1):
+                max = min*(j-i+1)
+    print(max)
+
+=======
+Suggestion 8
+
+def get_max_orange_number(orange_list):
+    max_orange_number = 0
+    for i in range(0, len(orange_list)):
+        for j in range(i, len(orange_list)):
+            for k in range(1, orange_list[j] + 1):
+                if k > max_orange_number:
+                    max_orange_number = k
+    return max_orange_number

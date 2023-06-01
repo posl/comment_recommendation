@@ -1,45 +1,103 @@
-#问题陈述
-#在某次编程比赛中，根据以下规则向参赛者颁发T恤衫。
-#所有排名在A级或以上的参赛者都可以得到一件T恤衫。
-#此外，从排名在(A+1)-th和B-th(包括)之间的参赛者中，均匀地随机选择C个参赛者获得一件T恤衫。
-#这次比赛有1000名参与者，他们都得到了不同的排名。
-#Iroha-chan参加了这次比赛，排名第X位。
-#求她得到一件T恤衫的概率。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A < B ≦ 1000
-#1 ≦ C ≦ B-A
-#1 ≦ X ≦ 1000
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B C X
-#
-#输出
-#打印答案。
-#如果与法官答案的绝对或相对误差最多为10^{-6}，你的输出将被视为正确。
-#
-#输入样本 1
-#30 500 20 103
-#
-#样本输出1
-#0.042553191489
-#Iroha-chan排名第103位。
-#如果她是在排名在第31名和第500名之间的470名参与者中均匀随机选择的20名参与者之一，她将得到一件T恤，这发生的概率是((20)/(470))=0.04255319....。
-#
-#样本输入 2
-#50 500 100 1
-#
-#样本输出2
-#1.000000000000
-#Iroha-chan排名第1。这一次，她保证会得到一件T恤衫。
-#
-#样本输入3
-#1 2 1 1000
-#
-#样本输出3
-#0.000000000000
-#Iroha-chan排名第1000位。这一次，她将永远不会得到一件T恤衫。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B,C,X = map(int,input().split())
+    if X <= A:
+        print(1)
+    elif A+1 <= X <= B:
+        print(C/(B-A))
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,x = map(int,input().split())
+    if a > x:
+        print(0.0)
+    elif a <= x <= b:
+        print(1/c)
+    else:
+        print(0.0)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,x = map(int,input().split())
+    if x <= a:
+        print(1)
+    elif x <= b:
+        print(c/(b-a))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C,X = map(int,input().split())
+    if X <= A:
+        print(1)
+    elif X >= B:
+        print(0)
+    else:
+        print(C/(B-A))
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C,X = [int(x) for x in input().split()]
+    if X <= A:
+        print(1)
+    elif X > B:
+        print(0)
+    else:
+        print(C/(B-A))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c, x = map(int, input().split())
+    print(c / (b - a + 1) if a <= x <= b else 0)
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C,X = map(int,input().split())
+    count=0
+    if A<=X:
+        count+=1
+    if A+1<=X and X<=B:
+        count+=C
+    print(count/(B-A))
+
+=======
+Suggestion 8
+
+def problems242_a():
+    A,B,C,X = map(int,input().split())
+    if X <= A:
+        print(1)
+    elif X > B:
+        print(0)
+    else:
+        print(C/(B-A))
+
+=======
+Suggestion 9
+
+def get_probability(A, B, C, X):
+    if X <= A:
+        return 1
+    elif X <= B:
+        return C / (B - A)
+    else:
+        return 0

@@ -1,95 +1,143 @@
-#问题陈述
-#给你两个集合S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)}和T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)}，在一个二维平面上各有N个点。
-#确定是否有可能以任何顺序对S做以下操作（可能是零），使S与T相匹配。
-#选择一个实数p(0 < p < 360)，将S中的每个点围绕原点顺时针旋转p度。
-#选择实数q和r，将S中的每个点在x方向移动q，在y方向移动r。这里，q和r可以是任何实数，无论是正数、负数还是零。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) 如果i ≠ j。
-#(c_i,d_i) ≠ (c_j,d_j) 如果 i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#输出
-#如果我们能将S与T匹配，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#样本输出1
-#Yes
-#下图显示了给定的点集，其中S和T中的点分别被涂成红色和绿色：
-#在这种情况下，我们可以按以下方法将S与T匹配：
-#将S中的每个点围绕原点顺时针旋转270度。
-#将S中的每个点在X方向上移动3，在Y方向上移动0。
-#
-#输入样本 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#样本输出2
-#No
-#下图是给定的几组点：
-#虽然S和T是围绕Y轴对称的，但我们不能像问题陈述中所说的那样通过旋转和平移来匹配S和T。
-#
-#输入样本3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#样本输出3
-#Yes
-#
-#采样输入4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#样本输出4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    S = []
+    T = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        S.append([a,b])
+    for i in range(n):
+        a,b = map(int,input().split())
+        T.append([a,b])
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    #n = int(input())
+    #s = []
+    #for _ in range(n):
+    #    s.append([int(x) for x in input().split()])
+    #t = []
+    #for _ in range(n):
+    #    t.append([int(x) for x in input().split()])
+    n = 3
+    s = [[0,0],[0,1],[1,0]]
+    t = [[2,0],[3,0],[3,1]]
+    print(s)
+    print(t)
+
+=======
+Suggestion 4
+
+def isMatch(point1,point2):
+    if point1[0]*point2[0]+point1[1]*point2[1] == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(map(int, input().split())))
+    for i in range(n):
+        t.append(list(map(int, input().split())))
+    s.sort()
+    t.sort()
+    for i in range(n):
+        for j in range(n):
+            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
+                break
+        else:
+            print('No')
+            return
+    for i in range(n):
+        s[i][0] -= t[0][0]
+        s[i][1] -= t[0][1]
+    for i in range(n):
+        for j in range(n):
+            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
+                break
+        else:
+            print('No')
+            return
+    print('Yes')
+
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [list(map(int, input().split())) for _ in range(n)]
+    t = [list(map(int, input().split())) for _ in range(n)]
+
+    s.sort(key=lambda x: x[0]**2+x[1]**2)
+    t.sort(key=lambda x: x[0]**2+x[1]**2)
+
+    for i in range(n):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            print('No')
+            return
+
+    print('Yes')
+
+=======
+Suggestion 7
+
+def getAngle(x1, y1, x2, y2):
+    if x1 == x2:
+        return 0
+    else:
+        return (y2 - y1) / (x2 - x1)
+
+=======
+Suggestion 8
+
+def get_angle(a,b):
+    import math
+    return math.atan2(b,a) / math.pi * 180
+
+=======
+Suggestion 9
+
+def solve(n, s, t):
+    for i in range(n):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            break
+    else:
+        return 'Yes'
+    for i in range(n):
+        for j in range(n):
+            if s[(i + j) % n][0] != t[j][0] or s[(i + j) % n][1] != t[j][1]:
+                break
+        else:
+            return 'Yes'
+    for i in range(n):
+        for j in range(n):
+            if s[(i + j) % n][0] != t[-j][0] or s[(i + j) % n][1] != t[-j][1]:
+                break
+        else:
+            return 'Yes'
+    return 'No'

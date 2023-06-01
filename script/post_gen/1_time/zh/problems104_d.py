@@ -1,54 +1,231 @@
-#问题陈述
-#一个字符串T的ABC数是满足以下所有条件的整数（i, j, k）的三倍数：
-#1 ≤ i < j < k ≤ |T| (|T|是T的长度。)
-#T_i = A (T_i是T的第i个字符，从头开始。)
-#T_j = B
-#T_k = C
-#例如，当T=ABCBC时，有三个满足条件的三倍整数（i, j, k）：（1, 2, 3），（1, 2, 5），（1, 4, 5）。因此，T的ABC数是3。
-#给你一个字符串S，S的每个字符是A，B，C或?
-#我们可以用A、B或C替换S中出现的每个字符，从而组成3^Q的字符串，求所有这些字符串的ABC号码之和。
-#这个和可能非常大，所以要打印10^9+7的模数。
-#
-#限制条件
-#3 ≤ |S| ≤ 10^5
-#S的每个字符都是A、B、C或?
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#輸出
-#打印所有 3^Q 字符串的 ABC 数字之和，模数为 10^9 + 7。
-#
-#输入样本1
-#A??C
-#
-#样本输出1
-#8
-#在这种情况下，Q=2，我们可以通过用A、B或C替换每一次出现的?来制作3^Q=9个字符串，这些字符串的ABC号码如下：
-#AAAC：0
-#AABC：2
-#AACC：0
-#ABAC：1
-#ABBC：2
-#ABCC: 2
-#ACAC: 0
-#ACBC：1
-#ACCC：0
-#这些的总和是0+2+0+1+2+2+0+1+0=8，所以我们打印8的模数10^9+7，也就是8。
-#
-#输入样本2
-#ABCBC
-#
-#样本输出 2
-#3
-#当Q=0时，我们打印S本身的ABC号码，模数为10^9+7。这个字符串与问题陈述中作为例子给出的字符串相同，其ABC数为3。
-#
-#输入样本3
-#????C?????B??????A???????
-#
-#样本输出3
-#979596887
-#在这种情况下，所有 3^Q 字符串的 ABC 数字之和是 2291979612924，我们应该打印这个数字的模数 10^9 + 7，即 979596887。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s=input()
+    n=len(s)
+    q=s.count("?")
+    ans=0
+    for i in range(n):
+        if s[i]=="B" or s[i]=="?":
+            ans+=pow(3,q,1000000007)*pow(3,i,1000000007)
+            q-=1
+        if s[i]=="C" or s[i]=="?":
+            ans+=pow(3,q,1000000007)*pow(3,i,1000000007)
+            q-=1
+    print(ans%1000000007)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    l = len(s)
+    ans = 0
+    a = 0
+    b = 0
+    c = 0
+    for i in range(l):
+        if s[i] == 'A':
+            a += 1
+        elif s[i] == 'B':
+            b += 1
+        elif s[i] == 'C':
+            c += 1
+    ans = (a * b * c) % 1000000007
+    for i in range(l):
+        if s[i] == '?':
+            a -= 1
+            ans = (ans + a * b * c) % 1000000007
+        elif s[i] == 'A':
+            a -= 1
+        elif s[i] == 'B':
+            b -= 1
+        elif s[i] == 'C':
+            c -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def problem104_d():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    len_s = len(s)
+    q = s.count('?')
+    mod = 10**9+7
+    a = 0
+    b = 0
+    c = 0
+    for i in range(len_s):
+        if s[i] == 'A':
+            a += 1
+        elif s[i] == 'B':
+            b += 1
+        elif s[i] == 'C':
+            c += 1
+    ans = 0
+    for i in range(q+1):
+        for j in range(q-i+1):
+            k = q-i-j
+            ans += pow(3,i,mod)*pow(3,j,mod)*pow(3,k,mod)*\
+                   (a+i)*(b+j)*(c+k)%mod
+            ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    q = s.count("?")
+    a = s.count("A")
+    b = s.count("B")
+    c = s.count("C")
+    mod = 10**9+7
+    ans = 0
+    for i in range(q+1):
+        for j in range(q+1-i):
+            k = q-i-j
+            tmp = 1
+            tmp *= pow(3,i,mod)
+            tmp *= pow(3,j,mod)
+            tmp *= pow(3,k,mod)
+            tmp *= pow(2,a,mod)
+            tmp *= pow(2,b,mod)
+            tmp *= pow(2,c,mod)
+            tmp %= mod
+            ans += tmp
+            ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    Q = S.count("?")
+    A = S.count("A")
+    B = S.count("B")
+    C = S.count("C")
+    ans = 0
+    for i in range(Q+1):
+        for j in range(Q+1-i):
+            k = Q - i - j
+            ans += (pow(3, i, 10**9+7) * pow(3, j, 10**9+7) * pow(3, k, 10**9+7) * (A+i) * (B+j) * (C+k))
+    print(ans % (10**9+7))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    q = 0
+    for i in range(len(s)):
+        if s[i] == "?":
+            q += 1
+    print (q)
+    ans = 0
+    for i in range(q+1):
+        ans += 3**i
+    print (ans)
+    print (ans % (10**9 + 7))
+
+=======
+Suggestion 8
+
+def problems104_d():
+    pass
+
+=======
+Suggestion 9
+
+def solve(S):
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    # 请在这里编写代码
+    # 请不要使用已经存在的库函数
+    ans = 0
+    mod = 10**9 + 7
+    for i in range(len(S)):
+        if S[i] == 'A':
+            ans += (S[i+1:].count('B') * S[i+1
+
+=======
+Suggestion 10
+
+def solve():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    a = [0] * (n+1)
+    b = [0] * (n+1)
+    c = [0] * (n+1)
+    for i in range(n):
+        if s[i] == "A":
+            a[i+1] += 1
+        elif s[i] == "B":
+            b[i+1] += 1
+        elif s[i] == "C":
+            c[i+1] += 1
+        else:
+            a[i+1] += 1
+            b[i+1] += 1
+            c[i+1] += 1
+    for i in range(n):
+        a[i+1] += a[i]
+        b[i+1] += b[i]
+        c[i+1] += c[i]
+    ans = 0
+    for i in range(n):
+        if s[i] == "B" or s[i] == "?":
+            ans += a[i] * (c[n]-c[i+1])
+            ans %= mod
+    print(ans)
+
+solve()

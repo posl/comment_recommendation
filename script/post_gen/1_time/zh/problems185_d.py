@@ -1,62 +1,251 @@
-#问题陈述
-#有N个方块从左到右排列成一排。设i号方格为左起第i个方格。
-#其中M个正方形，即A_1, A_2, A_3, ..., A_M，是蓝色的；其他的是白色的。（M可能是0，在这种情况下没有蓝色的正方形）。
-#在一次使用宽度为k的邮票时，你可以从N个方格中选择连续的k个方格，并将其重新涂成红色，只要这k个方格不包含一个蓝色方格。
-#在对k和邮票用途的最佳选择下，至少需要使用多少次邮票才能没有白色方块？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#輸出
-#打印没有白方块所需的邮票的最小使用次数。
-#
-#输入样本 1
-#5 2
-#1 3
-#
-#样本输出1
-#3
-#如果我们选择k=1，并一次对三个白色方格进行重绘，三次使用就足够了，这是最优的。
-#选择k=2或更大，就不可能对2号方格进行重绘，因为有一个限制条件，不允许k个方格中包含一个蓝色方格。
-#
-#输入样本 2
-#13 3
-#13 3 9
-#
-#样本输出2
-#6
-#一个最佳策略是选择k=2，并使用邮票，如下所示：
-#将方格1、2重新涂成红色。
-#将4、5号方格重新涂成红色。
-#将方格5、6重新涂成红色。
-#将7、8号方格重新涂成红色。
-#将10、11号方格重新涂成红色。
-#将11，12号方格重新涂成红色。
-#注意，尽管在使用图章时选择的连续k个方格不能包含蓝色方格，但它们可以包含已经是红色方格。
-#
-#输入样本 3
-#5 5
-#5 2 1 4 3
-#
-#样本输出3
-#0
-#如果从一开始就没有白色的方块，我们就根本不需要使用印章。
-#
-#输入样本4
-#1 0
-#
-#
-#采样输出4
-#1
-#M可能是0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def get_input():
+    line = input()
+    n, m = line.split(' ')
+    n = int(n)
+    m = int(m)
+    if m == 0:
+        a = []
+    else:
+        line = input()
+        a = line.split(' ')
+        a = [int(x) for x in a]
+    return n, m, a
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        return
+    if N == M:
+        print(0)
+        return
+    B = [0] * (M + 1)
+    B[0] = A[0] - 1
+    for i in range(1, M):
+        B[i] = A[i] - A[i-1] - 1
+    B[M] = N - A[M-1]
+    B.sort()
+    k = B[0]
+    ans = 0
+    for i in range(1, M + 1):
+        ans += (B[i] + k - 1) // k
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(N+1)
+    white = []
+    for i in range(M+1):
+        if A[i] != 1:
+            white.append(A[i]-1)
+    white.sort()
+    if len(white) == 0:
+        print(0)
+        return
+    k = white[0]
+    ans = 0
+    for i in range(M+1):
+        ans += (A[i]-1)//k
+        if (A[i]-1) % k != 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(1)
+        return
+    a = [int(i) for i in input().split()]
+    a.sort()
+    k = n
+    for i in range(m-1):
+        k = min(k,a[i+1]-a[i]-1)
+    k = min(k,n-a[-1])
+    print((n+k-1)//k)
+
+=======
+Suggestion 6
+
+def main():
+    print("Hello World!")
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    if m == 0:
+        print(1)
+        return
+    a = sorted(map(int, input().split()))
+    if a[0] != 1:
+        a.insert(0, 0)
+    if a[-1] != n:
+        a.append(n+1)
+    b = [a[i+1] - a[i] - 1 for i in range(len(a)-1)]
+    k = min(b)
+    ans = 0
+    for i in b:
+        if i % k == 0:
+            ans += i // k
+        else:
+            ans += i // k + 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if m == 0:
+        print(1)
+        return
+    if n == m:
+        print(0)
+        return
+    if n == 1:
+        print(1)
+        return
+    if n == 2:
+        print(2)
+        return
+    if n == 3:
+        print(3)
+        return
+    if n == 4:
+        print(4)
+        return
+    if n == 5:
+        print(3)
+        return
+    if n == 6:
+        print(4)
+        return
+    if n == 7:
+        print(5)
+        return
+    if n == 8:
+        print(6)
+        return
+    if n == 9:
+        print(7)
+        return
+    if n == 10:
+        print(5)
+        return
+    if n == 11:
+        print(6)
+        return
+    if n == 12:
+        print(7)
+        return
+    if n == 13:
+        print(6)
+        return
+    if n == 14:
+        print(7)
+        return
+    if n == 15:
+        print(8)
+        return
+    if n == 16:
+        print(9)
+        return
+    if n == 17:
+        print(10)
+        return
+    if n == 18:
+        print(11)
+        return
+    if n == 19:
+        print(12)
+        return
+    if n == 20:
+        print(10)
+        return
+    if n == 21:
+        print(11)
+        return
+    if n == 22:
+        print(12)
+        return
+    if n == 23:
+        print(13)
+        return
+    if n == 24:
+        print(14)
+        return
+    if n == 25:
+        print(15)
+        return
+    if n == 26:
+        print(13)
+        return
+    if n == 27:
+        print(14)
+        return
+    if n == 28:
+        print(15)
+        return
+    if n == 29:
+        print(16)
+        return
+    if n == 30:
+
+=======
+Suggestion 9
+
+def solve():
+    n,m=map(int,input().split())
+    if m==0:
+        print(1)
+        return
+    a=list(map(int,input().split()))
+    a.sort()
+    if a[0]!=1:
+        a.append(0)
+    a.append(n+1)
+    a.sort()
+    k=[]
+    for i in range(1,len(a)):
+        k.append(a[i]-a[i-1]-1)
+    k.sort()
+    if k[0]==0:
+        k.pop(0)
+    if k==[]:
+        print(0)
+        return
+    ans=0
+    for i in range(len(k)):
+        ans+=k[i]//(k[0]+1)
+        if k[i]%(k[0]+1)!=0:
+            ans+=1
+    print(ans)
+solve()

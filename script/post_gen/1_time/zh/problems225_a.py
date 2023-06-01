@@ -1,36 +1,77 @@
-#问题陈述
-#给你一个由小写英文字母组成的长度为3的字符串S。
-#通过对S中的字符进行排列组合，可以得到多少个不同的字符串？
-#
-#限制条件
-#S是一个由小写英文字母组成的长度为3的字符串S。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印通过交换S中的字符可以得到的不同字符串的数量。
-#
-#输入样本1
-#aba
-#
-#样本输出1
-#3
-#通过对S= aba中的字符进行排列组合，可以得到三个不同的字符串：aab, aba, baa。
-#
-#输入样本2
-#ccc
-#
-#样本输出2
-#1
-#通过对S=ccc中的字符进行排列组合，可以得到一个字符串：ccc。
-#
-#输入样本3
-#xyz
-#
-#样本输出 3
-#6
-#通过对S= xyz中的字符进行替换，可以得到六个不同的字符串：xyz, xzy, yxz, yzx, zxy, zyx。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 请在此添加代码，实现问题解决方案
+    s = input()
+    # print(s)
+    # print(len(s))
+    # print(s[0])
+    # print(s[1])
+    # print(s[2])
+    if len(s) == 3:
+        if s[0] == s[1] and s[1] == s[2]:
+            print(1)
+        elif s[0] == s[1] or s[1] == s[2] or s[0] == s[2]:
+            print(3)
+        else:
+            print(6)
+    else:
+        print("字符串长度不为3")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 3
+
+def f(s):
+    if len(s) == 1:
+        return 1
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 1
+        else:
+            return 2
+    if len(s) == 3:
+        if s[0] == s[1] and s[0] == s[2]:
+            return 1
+        elif s[0] == s[1] or s[0] == s[2] or s[1] == s[2]:
+            return 3
+        else:
+            return 6
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    count = 1
+    for i in range(2):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print(len(set(S)))
+main()
+
+=======
+Suggestion 6
+
+def swap(s, i, j):
+    t = s[i]
+    s[i] = s[j]
+    s[j] = t

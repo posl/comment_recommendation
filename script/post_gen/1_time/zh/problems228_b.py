@@ -1,41 +1,134 @@
-#问题陈述
-#高桥有N个朋友。他们都有绰号：朋友1，朋友2，...，朋友N。
-#有一天，高桥不小心让他的一个朋友，朋友X，知道了他可耻的秘密。
-#对于每个i=1，2，...，N，当朋友i知道这个秘密时，如果朋友A_i还没有知道，他/她会与朋友A_i分享这个秘密。
-#最后有多少个高桥的朋友会知道这个秘密？
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N X
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#3 1 1 2
-#
-#样本输出 1
-#3
-#高桥的秘密会被朋友1、朋友2和朋友3知道，如下所示。
-#有一天，高桥让朋友2知道了这个秘密。
-#朋友2与朋友1分享。
-#朋友1与朋友3分享。
-#最后，他的三个朋友都知道了这个秘密，所以我们打印了3。
-#
-#样本输入2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#样本输出2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    count = 1
+    for i in range(n):
+        if a[i] != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [i-1 for i in a]
+    b = [0]*n
+    b[x-1] = 1
+    for i in range(n):
+        if b[i] == 1:
+            b[a[i]] = 1
+    print(sum(b))
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    a[x-1] = 0
+    ans = 1
+    for i in range(n):
+        if a[i] != 0:
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [False] * n
+    b[x - 1] = True
+    for i in range(n):
+        if b[i]:
+            a[i] -= 1
+            b[a[i]] = True
+    print(b.count(True))
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    b = [0]*n
+    for i in range(n):
+        if a[i] != 0:
+            b[a[i]-1] += 1
+    print(b.count(max(b)))
+
+=======
+Suggestion 6
+
+def get_input():
+    n_x = input().split()
+    n = int(n_x[0])
+    x = int(n_x[1])
+    a = input().split()
+    a = [int(i) for i in a]
+    return n, x, a
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.insert(0,0)
+    b = [0 for i in range(n+1)]
+    b[x] = 1
+    cnt = 1
+    for i in range(1,n+1):
+        if b[a[i]] == 0:
+            b[a[i]] = 1
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    for i in range(n):
+        if a[i] != 0:
+            a[a[i]-1] = 0
+    print(n - a.count(0))
+
+=======
+Suggestion 9
+
+def check_friend(friends, friend_id, secret_owner):
+    if friend_id == secret_owner:
+        return True
+    elif friends[friend_id] == secret_owner:
+        return True
+    else:
+        return check_friend(friends, friends[friend_id], secret_owner)
+
+=======
+Suggestion 10
+
+def f(n,x,l):
+    d = {}
+    for i in range(n):
+        d[i+1] = 0
+    d[x] = 1
+    for i in range(n):
+        if d[l[i]] == 1:
+            d[i+1] = 1
+    return sum(d.values())

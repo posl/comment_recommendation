@@ -1,46 +1,228 @@
-#问题陈述
-#高桥有一个迷宫，它是一个由H×W个方块组成的网格，有H个横行和W个纵列。
-#如果S_{ij}是#，位于从顶部第i行和第j列的方格是 "墙 "方格，如果S_{ij}是.，则是 "道路"方格。
-#从一个道路方格，你可以移动到一个水平或垂直相邻的道路方格。
-#你不能移出迷宫，不能移到墙上的方格，也不能斜向移动。
-#高桥将选择一个起始方格和一个目标方格，可以是任何道路方格，并将迷宫交给青木。
-#然后，青木将在所需的最小移动数内从起点方格走到目标方格。
-#在这种情况下，请找出Aoki所要走的最大可能的 v。
-#
-#限制条件
-#1 ≦ H,W ≦ 20
-#S_{ij}是.或#。
-#S中至少有两次出现.的情况。
-#任何一个道路方块都可以在零或更多的移动中从任何道路方块到达。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#H W
-#S_{11}...S_{1W}。
-#:
-#s_{h1}...s_{hw}。
-#
-#输出
-#打印Aoki所要下的最大可能的步数。
-#
-#输入样本 1
-#3 3
-#...
-#...
-#...
-#
-#样本输出1
-#4
-#如果高桥选择左上角的方格作为起始方格，右下角的方格作为目标方格，那么青木必须下四步棋。
-#
-#输入样本2
-#3 5
-#...#.
-#.#.#.
-#.#...
-#
-#样本输出2
-#10
-#如果高桥选择左下角的方格作为起始方格，右上角的方格作为目标方格，那么青木必须下十步棋。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def bfs(start, goal):
+    INF =
+
+=======
+Suggestion 2
+
+def main():
+    h, w = map(int, input().split())
+    s = [[c for c in input()] for _ in range(h)]
+    ans = 0
+    for si in s:
+        ans += si.count('.')
+    print(ans - 1)
+
+=======
+Suggestion 3
+
+def main():
+    H,W = map(int,input().split())
+    S = [input() for i in range(H)]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '.':
+                ans += 1
+    if ans == H * W:
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 4
+
+def dfs(x, y, cnt):
+    global ans
+    if cnt > ans:
+        ans = cnt
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0 <= nx < h and 0 <= ny < w and maze[nx][ny] == '.' and visited[nx][ny] == 0:
+            visited[nx][ny] = 1
+            dfs(nx, ny, cnt+1)
+            visited[nx][ny] = 0
+
+h, w = map(int, input().split())
+maze = [list(input()) for _ in range(h)]
+visited = [[0 for _ in range(w)] for _ in range(h)]
+ans = 0
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+for i in range(h):
+    for j in range(w):
+        if maze[i][j] == '.':
+            visited[i][j] = 1
+            dfs(i, j, 0)
+            visited[i][j] = 0
+print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '.':
+                ans += 1
+    print(ans - 1)
+
+=======
+Suggestion 6
+
+def dfs(i,j):
+    global maxv
+    if i<0 or h<=i or j<0 or w<=j or maze[i][j]=='#':
+        return
+    if maxv < dist[i][j]:
+        maxv = dist[i][j]
+    if dist[i][j] != 0:
+        return
+    dist[i][j] = dist[i][j] + 1
+    dfs(i+1,j)
+    dfs(i-1,j)
+    dfs(i,j+1)
+    dfs(i,j-1)
+    dist[i][j] = dist[i][j] - 1
+    return
+
+h,w = map(int,input().split())
+maze = [list(input()) for i in range(h)]
+dist = [[0 for i in range(w)] for i in range(h)]
+maxv = 0
+for i in range(h):
+    for j in range(w):
+        if maze[i][j] == '.':
+            dfs(i,j)
+print(maxv)
+
+=======
+Suggestion 7
+
+def bfs(sx, sy):
+    dist = [[-1] * w for _ in range(h)]
+    dist[sx][sy] = 0
+    que = []
+    que.append((sx, sy))
+
+    while que:
+        x, y = que.pop(0)
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if 0 <= nx < h and 0 <= ny < w and maze[nx][ny] != '#' and dist[nx][ny] == -1:
+                que.append((nx, ny))
+                dist[nx][ny] = dist[x][y] + 1
+
+    res = 0
+    for i in range(h):
+        for j in range(w):
+            if maze[i][j] != '#' and dist[i][j] != -1:
+                res = max(res, dist[i][j])
+
+    return res
+
+
+h, w = map(int, input().split())
+maze = [input() for _ in range(h)]
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+
+ans = 0
+for sx in range(h):
+    for sy in range(w):
+        if maze[sx][sy] == '#':
+            continue
+        ans = max(ans, bfs(sx, sy))
+
+print(ans)
+
+=======
+Suggestion 8
+
+def dfs(i,j):
+    global maxv
+    if i<0 or i>=h or j<0 or j>=w or maze[i][j] == '#':
+        return
+    if maxv < dist[i][j]:
+        maxv = dist[i][j]
+    if dist[i][j] != -1:
+        return
+    dist[i][j] = dist[i][j]+1
+    dfs(i+1,j)
+    dfs(i-1,j)
+    dfs(i,j+1)
+    dfs(i,j-1)
+    dist[i][j] = dist[i][j]-1
+
+h,w = map(int,input().split())
+maze = [list(input()) for i in range(h)]
+dist = [[-1]*w for i in range(h)]
+maxv = 0
+for i in range(h):
+    for j in range(w):
+        if maze[i][j] == '.':
+            dfs(i,j)
+print(maxv)
+
+=======
+Suggestion 9
+
+def dfs(x,y):
+    if x<0 or x>=h or y<0 or y>=w or maze[x][y]=="#":
+        return
+    maze[x][y]="#"
+    for i in range(4):
+        dfs(x+dx[i],y+dy[i])
+
+h,w=map(int,input().split())
+maze=[list(input()) for i in range(h)]
+dx=[1,0,-1,0]
+dy=[0,1,0,-1]
+ans=0
+
+for i in range(h):
+    for j in range(w):
+        if maze[i][j]==".":
+            dfs(i,j)
+            ans+=1
+
+print(ans-1)
+
+=======
+Suggestion 10
+
+def dfs(x,y):
+    global ans
+    ans = max(ans, dist[x][y])
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0<=nx<h and 0<=ny<w and s[nx][ny] != '#' and dist[nx][ny] == -1:
+            dist[nx][ny] = dist[x][y] + 1
+            dfs(nx,ny)
+            dist[nx][ny] = -1
+
+h,w = map(int,input().split())
+s = [list(input()) for i in range(h)]
+dx = [1,0,-1,0]
+dy = [0,1,0,-1]
+ans = 0
+for i in range(h):
+    for j in range(w):
+        if s[i][j] == '#':
+            continue
+        dist = [[-1] * w for i in range(h)]
+        dist[i][j] = 0
+        dfs(i,j)
+print(ans)

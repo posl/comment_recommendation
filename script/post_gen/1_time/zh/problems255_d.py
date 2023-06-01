@@ -1,70 +1,156 @@
-#问题陈述
-#给你一个长度为N的序列：A=（A_1,A_2,...,A_N）。以下对这个序列的操作被称为操作。
-#首先，选择一个整数i，使得1 ≦ i ≦ N。
-#接下来，选择并执行以下操作之一。
-#给A_i加1。
-#从A_i中减去1。
-#
-#回答Q问题。
-#第i个问题是以下内容。
-#考虑进行零次或多次操作，将A的每个元素都改为X_i。请找出这样做所需的最少操作数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ n,q ≦ 2 × 10^5
-#0 ≦ A_i ≦ 10^9
-#0 ≦ X_i ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N Q
-#A_1 A_2 ...A_N
-#X_1
-#X_2
-#.
-#.
-#.
-#X_Q
-#
-#输出
-#打印Q行。
-#第i行应包含第i个问题的答案，是一个整数。
-#
-#输入样本 1
-#5 3
-#6 11 2 5 5
-#5
-#20
-#0
-#
-#样本输出1
-#10
-#71
-#29
-#我们有A=(6,11,2,5,5)，在这个输入中有三个问题。
-#对于第1个问题，你可以通过10次操作将A的每个元素变为5，具体操作如下。
-#从A_1中减去1。
-#从A_2中减去1六次。
-#从A_3中加1三次。
-#不可能用9次或更少的操作将A的每个元素都变成5。
-#对于第2个问题，你可以通过71次操作将A的每个元素变成20。
-#对于第3个问题，你可以通过29次运算将A的每个元素变为0。
-#
-#输入样本 2
-#10 5
-#1000000000 314159265 271828182 141421356 161803398 0 777777777 255255255 536870912 998244353
-#555555555
-#321654987
-#1000000000
-#789456123
-#0
-#
-#样本输出2
-#3316905982
-#2811735560
-#5542639502
-#4275864946
-#4457360498
-#输出可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for i in range(q)]
+    ans = 0
+    for i in range(1,n):
+        ans += abs(a[i]-a[i-1])
+    for i in range(q):
+        if x[i] == a[0]:
+            ans += abs(a[1]-a[0])
+            ans -= abs(a[1]-a[0])
+        elif x[i] == a[n-1]:
+            ans += abs(a[n-1]-a[n-2])
+            ans -= abs(a[n-1]-a[n-2])
+        else:
+            ans += abs(a[1]-a[0])
+            ans += abs(a[n-1]-a[n-2])
+            ans -= abs(a[1]-a[0])
+            ans -= abs(a[n-1]-a[n-2])
+            ans += abs(x[i]-a[0])
+            ans += abs(x[i]-a[n-1])
+        print(ans)
+        ans = 0
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+
+    A.sort()
+    A.append(0)
+    for i in range(N):
+        A[i+1] += A[i]
+
+    for x in X:
+        idx = bisect.bisect_left(A, x)
+        ans = 0
+        if idx == N:
+            ans = x - A[N-1] + N
+        elif A[idx] == x:
+            ans = x - A[idx-1]
+        else:
+            ans = x - A[idx-1] + N - idx
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
+    for i in range(q):
+        sum = 0
+        for j in range(n):
+            if a[j] > x[i]:
+                sum += a[j] - x[i]
+            else:
+                sum += x[i] - a[j]
+        print(sum)
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = [int(input()) for _ in range(Q)]
+    # print(N, Q, A, X)
+
+    for i in range(Q):
+        # print(i, X[i])
+        # print(A)
+        for j in range(N):
+            # print(j, A[j])
+            if A[j] > X[i]:
+                A[j] = X[i]
+        # print(A)
+        print(sum(A))
+
+=======
+Suggestion 5
+
+def main():
+    N,Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    X = []
+    for i in range(Q):
+        X.append(int(input()))
+    for x in X:
+        print(min([abs(a - x) for a in A]))
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    s = sum(a)
+    for i in range(q):
+        s += x[i]
+        print(s)
+
+main()
+
+=======
+Suggestion 7
+
+def getMinOperateNum(A,X):
+    # 计算A中每个元素到X的距离，然后求和
+    sum = 0
+    for i in range(len(A)):
+        sum += abs(A[i] - X)
+    return sum
+
+=======
+Suggestion 8
+
+def main():
+    n,q = map(int,input().split())
+    A = list(map(int,input().split()))
+    X = [int(input()) for i in range(q)]
+    print(n,q)
+    print(A)
+    print(X)
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    print(n, q, a, x)
+
+=======
+Suggestion 10
+
+def get_min_operation_count(n, q, a, x):
+    result = []
+    for i in range(q):
+        min_count = 0
+        for j in range(n):
+            min_count += abs(a[j] - x[i])
+        result.append(min_count)
+    return result

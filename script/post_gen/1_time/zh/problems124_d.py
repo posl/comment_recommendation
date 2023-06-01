@@ -1,47 +1,225 @@
-#问题陈述
-#N个人从左到右排成一排。
-#给你一个由0和1组成的长度为N的字符串S，以及一个正整数K。
-#如果S的第i个字符是0，则从左边开始的第i个人是站在脚上的，如果该字符是1，则站在手上。
-#你最多可以给以下方向K次（可能是零）：
-#方向：选择满足1 ≦ l ≦ r ≦ N的整数l和r，并翻转第l，(l+1)-第，...，和第r人。也就是说，对于每一个i = l, l+1, ..., r，从左边开始的第i个人，如果他/她是用脚站立的，现在就用手站立，如果他/她是用手站立的，就用脚站立。
-#求最多经过K个方向后连续站立的人的最大可能数量。
-#
-#约束条件
-#N是一个整数，满足1 ≦ N ≦ 10^5。
-#K是一个整数，满足1 ≦ K ≦ 10^5。
-#字符串S的长度为N。
-#字符串S的每个字符都是0或1。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#S
-#
-#輸出
-#打印最多经过K个方向后连续站立的人的最大可能数量。
-#
-#输入样本 1
-#5 1
-#00010
-#
-#样本输出1
-#4
-#我们可以让四个人连续站在一起，这是最大的结果，通过给出以下方向：
-#给出l=1，r=3的方向，从左边翻开第一、第二和第三人。
-#
-#输入样本 2
-#14 2
-#11101010110011
-#
-#样本输出2
-#8
-#
-#采样输入3
-#1 1
-#1
-#
-#样品输出3
-#1
-#不需要指示。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(n):
+        if s[i] == '0':
+            ans += 1
+        else:
+            if k > 0:
+                k -= 1
+                ans += 1
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    S = input()
+    # print(N, K, S)
+
+    # 1. 将字符串S转化为一个数组A，其中A[i]表示第i个人的姿势
+    A = []
+    for i in range(N):
+        if S[i] == '0':
+            A.append(0)
+        else:
+            A.append(1)
+    # print(A)
+
+    # 2. 计算从左到右连续站立的人的数量
+    #    为了计算方便，我们将连续站立的人的数量的数组表示为B
+    #    B[i]表示从左到右连续站立的人的数量
+    B = []
+    tmp = 0
+    for i in range(N):
+        if A[i] == 0:
+            tmp += 1
+        else:
+            tmp = 0
+        B.append(tmp)
+    # print(B)
+
+    # 3. 计算从右到左连续站立的人的数量
+    #    为了计算方便，我们将连续站立的人的数量的数组表示为C
+    #    C[i]表示从右到左连续站立的人的数量
+    C = []
+    tmp = 0
+    for i in range(N-1, -1, -1):
+        if A[i] == 0:
+            tmp += 1
+        else:
+            tmp = 0
+        C.append(tmp)
+    C.reverse()
+    # print(C)
+
+    # 4. 计算最终结果
+    #    D[i]表示最多经过i个方向后连续站立的人的最大可能数量
+    #    D[i] = max(B[j] + C[j+i] for j in range(N-i))
+    D = []
+    for i in range(K+1):
+        tmp = 0
+        for j in range(N-i):
+            tmp = max(tmp, B[j]+C[j+i])
+        D.append(tmp)
+    # print(D)
+    print(max(D))
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    # print(n, k, s)
+    # print(s.count('0'), s.count('1'))
+    if s.count('0') <= k:
+        print(n)
+        return
+    ans = 0
+    for i in range(n):
+        j = i
+        while j < n and s[j] == '0':
+            j += 1
+        ans = max(ans, j - i)
+        k -= 1
+        if k < 0:
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    s = input()
+
+    # 求解
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # ...
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # ...
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # ...
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+    # 以1开始的连续0的个数
+    # 以0开始的连续1的个数
+
+    # 以0开始的连
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    ans = 0
+    for i in range(n-1):
+        if s[i] != s[i+1]:
+            ans += 1
+    print(min(ans+2*k, n-1))
+
+=======
+Suggestion 7
+
+def solve():
+    N, K = map(int, input().split())
+    S = input()
+    S = list(S)
+    S = [int(s) for s in S]
+    # print(S)
+    # print(K)
+    # print(N)
+    cnt = 0
+    for i in range(N - 1):
+        if S[i] == S[i + 1]:
+            cnt += 1
+    # print(cnt)
+    ans = cnt + 2 * K
+    if ans > N - 1:
+        ans = N - 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,k=map(int,input().split())
+    s=input()
+    t=[0]*(n+1)
+    for i in range(n):
+        t[i+1]=t[i]+int(s[i])
+    ans=0
+    for i in range(n):
+        l=max(0,i-k)
+        r=min(n,i+k)
+        ans=max(ans,t[r]-t[l])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    N, K = map(int, input().split())
+    S = input()
+
+    # 计算连续站立的人的最大可能数量
+    max_count = 0
+    count = 0
+    for i in range(N):
+        if S[i] == "0":
+            count += 1
+        else:
+            if K > 0:
+                K -= 1
+                count += 1
+            else:
+                count -= 1
+        if count > max_count:
+            max_count = count
+
+    # 输出结果
+    print(max_count)

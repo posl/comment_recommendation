@@ -1,59 +1,179 @@
-#问题陈述
-#给你一个N个正整数的序列：A = (A_1, A_2, ..., A_n)。确定是否有一对序列B = (B_1, B_2, ..., B_x), C = (C_1, C_2, ..., C_y)满足所有的条件，如果存在，请打印一个这样的序列。
-#1 ≦ x, y ≤ N.
-#1 ≦ b_1 < b_2 < ...< B_{x} ≦ N。
-#1 ≦ C_1 < C_2 < ...< C_{y} ≦ N。
-#B和C是不同的序列。
-#这里，当x≠y或者有一个整数i（1≤i≤min(x, y)），使得B_i≠C_i时，我们认为B和C不同。
-#A_{B_1}+ A_{B_2}+ ...+ A_{B_x}和A_{C_1}+ A_{C_2}+ ...+ A_{C_y}等于200的模数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 200
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果没有满足条件的一对序列B，C，则打印一个包含No的单行。
-#否则，以下列格式打印你选择的B和C：
-#Yes
-#x B_1 B_2 ...B_x
-#y C_1 C_2 ...C_y
-#检查器是不区分大小写的：你可以使用大写或小写字母。
-#
-#输入样本1
-#5
-#180 186 189 191 218
-#
-#样本输出1
-#Yes
-#1 1
-#2 3 4
-#对于B=(1),C=(3,4),我们有A_1=180,A_3+A_4=380,它们都等于模数200。
-#还有其他的解决方案也将被接受，例如：
-#yEs
-#4 2 3 4 5
-#3 1 2 5
-#
-#样本输入 2
-#2
-#123 523
-#
-#样本输出2
-#有
-#1 1
-#1 2
-#
-#样本输入3
-#6
-#2013 1012 2765 2021 508 6971
-#
-#样本输出3
-#No
-#如果没有满足条件的一对序列，则打印一个包含No的单行。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    print('No')
+
+=======
+Suggestion 2
+
+def solve():
+    print 'Yes'
+    print '1 1'
+    print '1 2'
+    return 0
+
+=======
+Suggestion 3
+
+def find_subset(N, A):
+    for i in range(N):
+        for j in range(i+1, N):
+            if (A[i] + A[j]) % 200 == 0:
+                return True
+    return False
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    a = [i % 200 for i in a]
+    d = {}
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            if a[i] == a[j]:
+                print('Yes')
+                print(1, i)
+                print(1, j)
+                return
+            if a[i] in d:
+                d[a[i]].append(i)
+            else:
+                d[a[i]] = [i]
+    for k, v in d.items():
+        if len(v) >= 2:
+            print('Yes')
+            print(len(v), v[0], v[1])
+            print(len(v), v[2], v[3])
+            return
+    print('No')
+
+=======
+Suggestion 5
+
+def find_sum_200(A, x, y):
+    sum_x = sum([A[i] for i in x])
+    sum_y = sum([A[i] for i in y])
+    if sum_x % 200 == sum_y % 200 == 0:
+        return 0
+    else:
+        return 1
+
+=======
+Suggestion 6
+
+def main():
+    print("Hello World")
+    return 0
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    a = [sum(a[:i]) % 200 for i in range(1, n + 1)]
+
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]].append(i)
+        else:
+            d[a[i]] = [i]
+
+    for k, v in d.items():
+        if len(v) >= 2:
+            print('Yes')
+            print(1, v[0] + 1)
+            print(1, v[1] + 1)
+            return
+    for k, v in d.items():
+        if len(v) >= 3:
+            print('Yes')
+            print(1, v[0] + 1)
+            print(2, v[1] + 1, v[2] + 1)
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i] % 200 for i in range(n)]
+    dp = [[-1 for _ in range(200)] for _ in range(n+1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(200):
+            if dp[i][j] == -1:
+                continue
+            dp[i+1][j] = dp[i][j]
+            dp[i+1][(j+a[i])%200] = i
+    if dp[n][0] == 0:
+        print("No")
+        return
+    print("Yes")
+    ans = []
+    i = n
+    j = 0
+    while i > 0:
+        if dp[i][j] != dp[i-1][j]:
+            ans.append(i)
+            j = (j-a[i-1])%200
+        i -= 1
+    print(len(ans), *ans)
+    ans = []
+    i = n
+    j = 0
+    while i > 0:
+        if dp[i][j] != dp[i-1][j]:
+            ans.append(i)
+            j = (j-a[i-1])%200
+        i -= 1
+    print(len(ans), *ans)
+
+solve()
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    # a = [180, 186, 189, 191, 218]
+    # n = 5
+    d = {}
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i]+a[j])%200 not in d:
+                d[(a[i]+a[j])%200] = [[i, j]]
+            else:
+                d[(a[i]+a[j])%200].append([i, j])
+    for k, v in d.items():
+        if len(v) >= 2:
+            print('Yes')
+            print(len(v[0]), end=' ')
+            for i in v[0]:
+                print(i+1, end=' ')
+            print()
+            print(len(v[1]), end=' ')
+            for i in v[1]:
+                print(i+1, end=' ')
+            print()
+            return
+    print('No')
+
+solve()

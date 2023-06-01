@@ -1,76 +1,188 @@
-#问题陈述
-#N名考生参加了一次入学考试。
-#编号为i的考生的数学成绩为A_i分，英语成绩为B_i分。
-#录取情况决定如下。
-#数学分数最高的X位考生被录取。
-#然后，在尚未录取的考生中，录取英语成绩最高的Y名考生。
-#然后，在未被录取的考生中，数学和英语总分最高的Z考生被录取。
-#那些还没有被录取的考生被拒绝。
-#在这里，在第1至第3步的每一步中，并列关系由考生号码打破：考生号码较小的考生被优先考虑。  参见输入和输出样本。
-#打印由上述步骤确定的被录取考生的考号，以升序排列，用换行符隔开。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#0 ≦ X,Y,Z ≦ N
-#1 ≦ X+Y+Z ≦ N
-#0 ≦ A_i,B_i ≦ 100
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N X Y Z
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#
-#輸出
-#按升序打印被录取考生的编号，用换行符分隔。
-#
-#输入样本 1
-#6 1 0 2
-#80 60 80 60 70 70
-#40 20 50 90 90 80
-#
-#样本输出 1
-#1
-#4
-#5
-#首先，数学分数最高的1名考生被录取。
-#考生1与考生3并列，数学得分最高为80分，并列关系由考生人数打破，所以考生1被录取。
-#然后，在还没有被录取的考生中，有0名英语成绩最高的考生被录取。
-#很显然，这并不影响录取。
-#然后，在未被录取的考生中，数学和英语总分最高的2名考生被录取。
-#首先，在未被录取的考生中，5号考生被录取，他的总分最高，达到160分。
-#接下来，在尚未被录取的考生中，考生4与考生6并列，总分150分。  根据考生的编号，打破平局，考生4被录取。
-#
-#因此，被录取者的编号为1、4、5。  按升序打印。
-#
-#输入样本 2
-#5 2 1 2
-#0 100 0 100 0
-#0 0 100 100 0
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#所有应试者都可以被录取。
-#
-#输入样本 3
-#15 4 3 2
-#30 65 20 95 100 45 70 85 20 35 95 50 40 15 85
-#0 25 45 35 65 70 80 90 40 55 20 20 45 75 100
-#
-#样本输出 3
-#2
-#4
-#5
-#6
-#7
-#8
-#11
-#14
-#15
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x,y,z = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = []
+    for i in range(n):
+        c.append([i+1,a[i],b[i],a[i]+b[i]])
+    c.sort(key=lambda x:(-x[1],x[0]))
+    c = c[:x]
+    c.sort(key=lambda x:(-x[2],x[0]))
+    c = c[:x+y]
+    c.sort(key=lambda x:(-x[3],x[0]))
+    c = c[:x+y+z]
+    c.sort()
+    for i in range(x+y+z):
+        print(c[i][0])
+
+=======
+Suggestion 2
+
+def main():
+    n,x,y,z = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = []
+    for i in range(n):
+        c.append([i+1,a[i],b[i],a[i]+b[i]])
+    c.sort(key=lambda x:(x[1],x[0]),reverse=True)
+    c = c[:x]
+    c.sort(key=lambda x:(x[2],x[0]),reverse=True)
+    c = c[:x+y]
+    c.sort(key=lambda x:(x[3],x[0]),reverse=True)
+    c = c[:x+y+z]
+    c.sort(key=lambda x:x[0])
+    for i in range(len(c)):
+        print(c[i][0])
+
+=======
+Suggestion 3
+
+def main():
+    N,X,Y,Z = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = []
+    for i in range(N):
+        C.append([A[i]+B[i],A[i],B[i],i+1])
+    C.sort(reverse=True)
+    #print(C)
+    ans = []
+    for i in range(X):
+        ans.append(C[i][3])
+    #print(ans)
+    C = C[X:]
+    C.sort(key=lambda x:(x[1],x[3]),reverse=True)
+    #print(C)
+    for i in range(Y):
+        ans.append(C[i][3])
+    #print(ans)
+    C = C[Y:]
+    C.sort(key=lambda x:(x[0],x[3]),reverse=True)
+    #print(C)
+    for i in range(Z):
+        ans.append(C[i][3])
+    #print(ans)
+    ans.sort()
+    #print(ans)
+    for i in range(len(ans)):
+        print(ans[i])
+
+main()
+
+=======
+Suggestion 4
+
+def get_input():
+    input_list = []
+    for i in range(17):
+        input_list.append(input())
+    return input_list
+
+=======
+Suggestion 5
+
+def main():
+    N,X,Y,Z = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    C = []
+    for i in range(N):
+        C.append([i+1,A[i],B[i]])
+    C.sort(key=lambda x: x[0])
+    C.sort(key=lambda x: x[2],reverse=True)
+    C.sort(key=lambda x: x[1],reverse=True)
+    for i in range(X):
+        print(C[i][0])
+    for i in range(X,X+Y):
+        print(C[i][0])
+    for i in range(X+Y,X+Y+Z):
+        print(C[i][0])
+
+=======
+Suggestion 6
+
+def get_input():
+    #获取输入
+    n,x,y,z = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    return n,x,y,z,a,b
+
+=======
+Suggestion 7
+
+def input_int():
+    return int(input())
+
+=======
+Suggestion 8
+
+def main():
+    n,x,y,z = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = []
+    for i in range(n):
+        c.append([a[i]+b[i],a[i],i+1])
+    c.sort(reverse=True)
+    print(c)
+    ans = []
+    for i in range(x):
+        ans.append(c[i][2])
+    for i in range(x,x+y):
+        ans.append(c[i][2])
+    for i in range(x+y,x+y+z):
+        ans.append(c[i][2])
+    ans.sort()
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def main():
+    n,x,y,z = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = []
+    for i in range(n):
+        c.append([i+1,a[i],b[i],a[i]+b[i]])
+    c.sort(key=lambda x:(-x[1],-x[2],-x[3],x[0]))
+    for i in range(x+y+z):
+        print(c[i][0])
+
+=======
+Suggestion 10
+
+def main():
+    N, X, Y, Z = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    C = []
+    for i in range(N):
+        C.append([i+1, A[i], B[i], A[i]+B[i]])
+
+    C.sort(key=lambda x: x[3], reverse=True)
+    C.sort(key=lambda x: x[2], reverse=True)
+    C.sort(key=lambda x: x[1], reverse=True)
+
+    D = []
+    for i in range(X):
+        D.append(C[i][0])
+    for i in range(X, X+Y):
+        if C[i][1] == C[X-1][1]:
+            D.append(C[i][0])
+    for i in range(X+Y, X+Y+Z):
+        if C[i][1] == C[X+Y-1][1] and C[i][2] == C[X+Y-1][2]:
+            D.append(C[i][0])
+
+    D.sort()
+    for i in D:
+        print(i)

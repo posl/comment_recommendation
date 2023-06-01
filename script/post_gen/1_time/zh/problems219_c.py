@@ -1,68 +1,217 @@
-#问题陈述
-#管理AtCoder王国的高桥决定改变英文小写字母的字母顺序。
-#新的字母顺序由一个字符串X表示，它是a, b, ..., z的排列组合。X的第i个字符（1≦i≦26）将是新顺序中第i个最小的英文小写字母。
-#这个王国有N个公民，他们的名字是S_1, S_2, ..., S_N，其中每个S_i（1 ≦ i ≦ N）由小写英文字母组成。
-#根据高桥决定的字母顺序对这些名字进行词法排序。
-#什么是词法顺序？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间的词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j在字母顺序上早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度。如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#
-#
-#约束条件
-#X是a, b, ..., z的排列组合。
-#2 ≦ N ≦ 50000
-#N是一个整数。
-#1 ≦ |S_i| ≦ 10 (1 ≦ i ≦ N)
-#S_i由小写英文字母组成。(1 ≦ i ≦ N)
-#S_i ≠ S_j (1 ≦ i < j ≦ N)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#X
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含第i个最小的名字，当公民的名字按照高桥决定的字母顺序进行排序时。
-#
-#输入样本1
-#bacdefghijklmnopqrstuvwxzy
-#4
-#abx
-#bzz
-#bzy
-#caa
-#
-#样本输出1
-#bzz
-#bzy
-#abx
-#caa
-#在高桥设定的新的字母顺序中，b比a小，z比y小。因此，按词法对公民的名字进行排序的结果是：bzz, bzy, abx, caa，升序排列。
-#
-#输入样本2
-#zyxwvutsrqponmlkjihgfedcba
-#5
-#a
-#ab
-#abc
-#ac
-#b
-#
-#样本输出2
-#b
-#a
-#ac
-#ab
-#abc
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return x, n, s
+
+=======
+Suggestion 2
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        s[i] = s[i].translate(str.maketrans(x, 'abcdefghijklmnopqrstuvwxyz'))
+    s.sort()
+    for i in range(n):
+        s[i] = s[i].translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', x))
+    print(*s, sep='\n')
+    return
+
+=======
+Suggestion 3
+
+def str2int(str):
+    int = 0
+    for s in str:
+        int = int * 26 + ord(s) - ord('a')
+    return int
+
+=======
+Suggestion 4
+
+def get_order():
+    return input()
+
+=======
+Suggestion 5
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key=lambda x: [x.index(c) for c in x])
+    s.sort(key=lambda x: [x.index(c) for c in x], reverse=True)
+    print(s)
+    print(x)
+    print(n)
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    #print("请输入字母表顺序：")
+    #x = input()
+    #print("请输入人数：")
+    #n = int(input())
+    #print("请输入人名：")
+    #s = []
+    #for i in range(n):
+    #    s.append(input())
+    #print("字母表顺序为：",x)
+    #print("人数为：",n)
+    #print("人名为：",s)
+    x = "bacdefghijklmnopqrstuvwxzy"
+    n = 4
+    s = ["abx","bzz","bzy","caa"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 5
+    #s = ["a","ab","abc","ac","b"]
+    #x = "abcdefghijklmnopqrstuvwxyz"
+    #n = 2
+    #s = ["ac","ab"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 2
+    #s = ["ac","ab"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 2
+    #s = ["ab","ac"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["ab","ac","abc"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["abc","ab","ac"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["abc","ac","ab"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["ac","abc","ab"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["ac","ab","abc"]
+    #x = "zyxwvutsrqponmlkjihgfedcba"
+    #n = 3
+    #s = ["ab","abc","ac"]
+    #x =
+
+=======
+Suggestion 7
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(x)
+    #print(n)
+    #print(s)
+    d = {}
+    for i in range(len(x)):
+        d[x[i]] = i
+    #print(d)
+    s.sort(key = lambda x: [d[c] for c in x])
+    for i in s:
+        print(i)
+
+=======
+Suggestion 8
+
+def main():
+    X = input()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    X = list(X)
+    X.sort()
+    X = ''.join(X)
+    X = X[::-1]
+    S.sort(key = lambda x:X.index(x[0]))
+    S.sort(key = lambda x:X.index(x[1]))
+    S.sort(key = lambda x:X.index(x[2]))
+    S.sort(key = lambda x:X.index(x[3]))
+    S.sort(key = lambda x:X.index(x[4]))
+    S.sort(key = lambda x:X.index(x[5]))
+    S.sort(key = lambda x:X.index(x[6]))
+    S.sort(key = lambda x:X.index(x[7]))
+    S.sort(key = lambda x:X.index(x[8]))
+    S.sort(key = lambda x:X.index(x[9]))
+    S.sort(key = lambda x:X.index(x[10]))
+    S.sort(key = lambda x:X.index(x[11]))
+    S.sort(key = lambda x:X.index(x[12]))
+    S.sort(key = lambda x:X.index(x[13]))
+    S.sort(key = lambda x:X.index(x[14]))
+    S.sort(key = lambda x:X.index(x[15]))
+    S.sort(key = lambda x:X.index(x[16]))
+    S.sort(key = lambda x:X.index(x[17]))
+    S.sort(key = lambda x:X.index(x[18]))
+    S.sort(key = lambda x:X.index(x[19]))
+    S.sort(key = lambda x:X.index(x[20]))
+    S.sort(key = lambda x:X.index(x[21]))
+    S.sort(key = lambda x:X.index(x[22]))
+    S.sort(key = lambda x:X.index(x[23]))
+    S.sort(key = lambda x:X.index(x[24]))
+    S.sort(key = lambda x:X.index(x[25]))
+    for i in range(N):
+        print(S[i])
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    x = raw_input()
+    n = int(raw_input())
+    s = []
+    for i in range(n):
+        s.append(raw_input())
+    # 解决问题
+    # 排序
+    # 用一个字典来存储字母和新字母的映射
+    x_dict = {}
+    for i in range(26):
+        x_dict[x[i]] = chr(ord('a')+i)
+    # 用一个字典来存储新字母和字母的映射
+    x_dict_reverse = {}
+    for i in range(26):
+        x_dict_reverse[chr(ord('a')+i)] = x[i]
+    # 用一个字典来存储字符串和新字符串的映射
+    s_dict = {}
+    for i in range(n):
+        s_dict[s[i]] = ''
+        for j in range(len(s[i])):
+            s_dict[s[i]] += x_dict[s[i][j]]
+    # 排序
+    s_dict_sorted = sorted(s_dict.items(), key=lambda d:d[1])
+    # 输出
+    for i in range(n):
+        print s_dict_sorted[i][0]
+
+=======
+Suggestion 10
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key = lambda a: [x.index(c) for c in a])
+    for i in s:
+        print(i)

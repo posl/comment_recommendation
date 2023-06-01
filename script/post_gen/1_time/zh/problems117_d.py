@@ -1,47 +1,152 @@
-#问题陈述
-#给你N个非负整数A_1, A_2, ..., A_N和另一个非负整数K。
-#对于0到K（包括）之间的整数X，让f（X）=（XOR A_1）+（XOR A_2）+...。+ (X XOR A_N)。
-#这里，对于非负整数a和b，a XOR b表示a和b的按位异或。
-#找出f的最大值。
-#什么是XOR？
-#a和b的按位异或，X，定义如下：
-#当X以二进制书写时，如果以二进制书写时，A和B中正好有一个数字在2^k的位置上有1，则2^k的位置上的数字为1，否则为0。
-#例如，3 XOR 5 = 6。（当以二进制书写时：011 XOR 101 = 110）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#0 ≦ K ≦ 10^{12}
-#0 ≦ A_i ≦ 10^{12}
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印f的最大值。
-#
-#样本输入1
-#3 7
-#1 6 3
-#
-#样本输出1
-#14
-#最大值是：f(4) = (4 XOR 1) + (4 XOR 6) + (4 XOR 3) = 5 + 2 + 7 = 14。
-#
-#样本输入2
-#4 9
-#7 4 0 3
-#
-#样本输出2
-#46
-#
-#样本输入3
-#1 0
-#1000000000000
-#
-#样本输出3
-#1000000000000
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    f = [0] * 41
+    for i in range(41):
+        for j in range(n):
+            if a[j] & (1 << i):
+                f[i] += 1
+    ans = 0
+    for i in range(40, -1, -1):
+        if ans + (1 << i) <= k:
+            ans += (1 << i) * max(f[i], n - f[i])
+        else:
+            ans += (1 << i) * f[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    K = bin(K)[2:]
+    K = '0' * (len(A) - len(K)) + K
+    ans = 0
+    for i in range(len(A)):
+        if K[i] == '1':
+            ans += A[i]
+        else:
+            ans += A[i] // 2
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def xor_sum(a, b):
+    if a == b:
+        return a
+    if b - a == 1:
+        return a ^ b
+    if a % 2 == 0 and b % 2 == 0:
+        return xor_sum(a // 2, b // 2) * 2
+    if a % 2 == 0 and b % 2 == 1:
+        return xor_sum(a // 2, b // 2) * 2 + 1
+    if a % 2 == 1 and b % 2 == 0:
+        return xor_sum((a + 1) // 2, b // 2) * 2
+    if a % 2 == 1 and b % 2 == 1:
+        return xor_sum((a + 1) // 2, b // 2) * 2 + 1
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+ans = 0
+for i in range(41, -1, -1):
+    count = 0
+    for j in range(n):
+        if a[j] >> i & 1:
+            count += 1
+    if count <= n // 2:
+        continue
+    if ans + (1 << i) <= k:
+        ans += 1 << i
+
+s = 0
+for i in range(n):
+    s += ans ^ a[i]
+print(s)
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    bit = 0
+    for i in range(40, -1, -1):
+        cnt = 0
+        for a in A:
+            if a >> i & 1:
+                cnt += 1
+        if cnt <= N - cnt and bit + (1 << i) <= K:
+            bit += 1 << i
+    ans = 0
+    for a in A:
+        ans += bit ^ a
+    print(ans)
+
+=======
+Suggestion 5
+
+def f(x, a):
+    return sum([x ^ i for i in a])
+
+=======
+Suggestion 6
+
+def f(x, a_list):
+    res = 0
+    for a in a_list:
+        res += x ^ a
+    return res
+
+=======
+Suggestion 7
+
+def f(x, a):
+    return sum([x ^ ai for ai in a])
+
+=======
+Suggestion 8
+
+def f(x, arr):
+    sum = 0
+    for i in range(len(arr)):
+        sum += x ^ arr[i]
+    return sum
+
+=======
+Suggestion 9
+
+def xor(a,b):
+    a1 = bin(a)[2:]
+    b1 = bin(b)[2:]
+    if len(a1) > len(b1):
+        b1 = '0'*(len(a1)-len(b1))+b1
+    else:
+        a1 = '0'*(len(b1)-len(a1))+a1
+    result = ''
+    for i in range(len(a1)):
+        if a1[i] == b1[i]:
+            result += '0'
+        else:
+            result += '1'
+    return int(result,2)
+
+N,K = map(int,input().strip().split())
+A = list(map(int,input().strip().split()))
+result = 0
+for i in range(K+1):
+    temp = 0
+    for j in range(N):
+        temp += xor(i,A[j])
+    if temp > result:
+        result = temp
+print(result)

@@ -1,36 +1,90 @@
-#问题陈述
-#高桥和青木正在打棒球。高桥是投手，而青木是击球手。
-#高桥可以投出一个无形的球。当他投出时，球以恒定的速度V[m/s]线性移动，在投出后的T秒和投出后的S秒（含）之间，球变得看不见了。球在看不见的时候一直在移动。
-#如果在球离高桥正好D米的时候，球没有隐形，那么青木就可以击球。否则，他不能击球。
-#青木能打到球吗？
-#
-#限制条件
-#1 ≦ V ≦ 1000
-#1 ≦ t < s ≦ 1000
-#1 ≦ D ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#V T S D
-#
-#輸出
-#如果青木能击球，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 3 5 20
-#
-#样本输出 1
-#Yes
-#在投掷后2秒，球正好离高桥20米。
-#另一方面，球在投掷后3到5秒（包括5秒）之间变得不可见，所以青木可以击中球。
-#
-#输入样本 2
-#10 3 5 30
-#
-#样本输出2
-#No
-#请注意，球在投掷后的T秒和S秒也是看不见的。
-#这里，球在投掷后T秒时离高桥正好有D米，所以球是看不见的，不能被青木击中。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if v*t <= d <= v*s:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def play_ball():
+    v, t, s, d = map(int, input().split())
+    if d/v >= t and d/v <= s:
+        print('No')
+    else:
+        print('Yes')
+
+play_ball()
+
+=======
+Suggestion 3
+
+def main():
+    v,t,s,d = map(int, input().split())
+    if d < v*t or v*s < d:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    v,t,s,d = map(int, input().split())
+    print("Yes" if (t * v <= d <= s * v) else "No")
+
+=======
+Suggestion 5
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if d < v*t or d > v*s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    input = raw_input()
+    # 读取输入，分割成列表
+    input_list = input.split(' ')
+    # 把列表里的元素转换成整数
+    input_list = [int(x) for x in input_list]
+    # 把列表里的元素赋值给变量
+    V,T,S,D = input_list
+    # 计算球飞行的距离
+    distance = V*T
+    # 判断是否能被击中
+    if distance <= D <= V*S:
+        print 'No'
+    else:
+        print 'Yes'
+
+=======
+Suggestion 7
+
+def main():
+    v, t, s, d = map(int, input().split())
+    if d / v >= t and d / v <= s:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    v,t,s,d = map(int,input().split())
+    if d < t * v or d > s * v:
+        print('Yes')
+    else:
+        print('No')

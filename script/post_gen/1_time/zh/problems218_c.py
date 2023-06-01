@@ -1,93 +1,174 @@
-#问题陈述
-#在一个有正方形单元格的二维网格上，我们有两个图形S和T。
-#S位于一个有N行N列的网格中，由S_{i,j}为#的单元格组成。
-#T位于同一个有N行N列的网格中，由T_{i,j}为#的单元格组成。
-#判断是否有可能通过90度的旋转和平移使S和T完全匹配。
-#
-#约束条件
-#1 ≦ N ≦ 200
-#S和T中的每一个都由#和.组成。
-#S和T中的每一个都至少包含一个#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_{1,1}S_{1,2}...S_{1,N}
-#.
-#.
-#.
-#S_{N,1}S_{N,2}...S_{N,N}
-#T_{1,1}T_{1,2}...T_{1,N}
-#.
-#.
-#.
-#T_{N,1}T_{N,2}...T_{N,N}
-#
-#输出
-#如果通过90度的旋转和平移可以完全匹配S和T，则打印Yes，否则打印No。
-#
-#输入样本 1
-#5
-#.....
-#..#..
-#.###.
-#.....
-#.....
-#.....
-#.....
-#....#
-#...##
-#....#
-#
-#样本输出1
-#Yes
-#我们可以通过逆时针旋转90度和平移，将S与T匹配。
-#
-#样本输入2
-#5
-######
-###..#
-##..##
-######
-#.....
-######
-##..##
-###..#
-######
-#.....
-#
-#样本输出2
-#No
-#不可能通过90度的旋转和平移来匹配它们。
-#
-#输入样本3
-#4
-##...
-#..#.
-#..#.
-#....
-##...
-##...
-#..#.
-#....
-#
-#样本输出3
-#Yes
-#S和T中的每一个都可能没有连接。
-#
-#采样输入4
-#4
-##...
-#.##.
-#..#.
-#....
-###..
-##...
-#..#.
-#....
-#
-#样本输出4
-#No
-#注意，不允许只旋转或平移一个图形的一部分；只允许旋转或平移整个图形。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def match_str(str1, str2):
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def rotate(s):
+    s_new = []
+    for i in range(len(s)):
+        s_new.append([])
+        for j in range(len(s)):
+            s_new[i].append(s[j][len(s)-1-i])
+    return s_new
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] != t[i][j]:
+                break
+        else:
+            continue
+        break
+    else:
+        print("Yes")
+        return
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] != t[j][n-i-1]:
+                break
+        else:
+            continue
+        break
+    else:
+        print("Yes")
+        return
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] != t[n-i-1][n-j-1]:
+                break
+        else:
+            continue
+        break
+    else:
+        print("Yes")
+        return
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] != t[n-j-1][i]:
+                break
+        else:
+            continue
+        break
+    else:
+        print("Yes")
+        return
+    print("No")
+main()
+
+=======
+Suggestion 4
+
+def rotate(matrix):
+    return [list(reversed(col)) for col in zip(*matrix)]
+
+=======
+Suggestion 5
+
+def rotate90(S):
+    return list(map(list,zip(*S[::-1])))
+
+=======
+Suggestion 6
+
+def rotate90(arr):
+    return list(zip(*arr[::-1]))
+
+=======
+Suggestion 7
+
+def do():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        t.append(input())
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                s[i] = s[i][j:] + s[i][:j]
+                break
+    for i in range(n):
+        for j in range(n):
+            if t[i][j] == '#':
+                t[i] = t[i][j:] + t[i][:j]
+                break
+    for i in range(n):
+        if s[i] != t[i]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def problem218_c():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        t.append(input())
+
+    def rotate(x):
+        return list(zip(*x[::-1]))
+
+    def check():
+        for i in range(n):
+            for j in range(n):
+                if s[i][j] != t[i][j]:
+                    return False
+        return True
+
+    for i in range(4):
+        if check():
+            print('Yes')
+            return
+        t = rotate(t)
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(input()))
+    for i in range(n):
+        t.append(list(input()))
+    for i in range(4):
+        t = rotate(t)
+        if match(s, t):
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 10
+
+def rotate90(input):
+    result = []
+    for i in range(len(input)):
+        result.append([])
+        for j in range(len(input)):
+            result[i].append(input[j][i])
+    return result

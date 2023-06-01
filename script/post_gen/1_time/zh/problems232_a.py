@@ -1,36 +1,32 @@
-#问题陈述
-#给你一个3个字符的字符串S，它是由1到9（包括9）之间的整数a和b以及字符x按以下顺序串联而成的：axb。
-#求a和b的乘积。
-#
-#限制条件
-#S的长度为3。
-#第1个和第3个字符是1到9（包括）之间的数字。
-#第2个字符是x。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#3x7
-#
-#样本输出1
-#21
-#我们有3×7=21，这应该被打印出来。
-#
-#输入样本2
-#9x9
-#
-#样本输出2
-#81
-#
-#样本输入3
-#1x1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    a = int(s[0])
+    b = int(s[2])
+    print(a*b)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    a = int(S[0])
+    b = int(S[2])
+    print(a * b)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    S = input()
+    # 在此编写处理逻辑
+    a = int(S[0])
+    b = int(S[2])
+    print(a*b)
+    # 输出结果
+    pass

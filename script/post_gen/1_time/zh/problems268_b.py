@@ -1,50 +1,91 @@
-#问题陈述
-#给你两个由小写英文字母组成的字符串S和T。
-#判断S是否是T的前缀。
-#什么是前缀？
-#字符串T_1T_2......的前缀是一个长度为N的字符串。T_N的前缀是一个字符串，表示为T的前i个字符，T_1T_2......。例如，当T = abc时，T有四个前缀：空字符串、a、ab和abc。
-#
-#约束条件
-#S和T是由小写英文字母组成的长度在1到100之间（包括100）的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#输出
-#如果S是T的前缀，打印Yes；否则打印No。
-#请注意，法官是区分大小写的。
-#
-#输入样本1
-#atco
-#atcoder
-#
-#样品输出1
-#Yes
-#atco是atcoder的前缀。  因此，Yes应该被打印出来。
-#
-#输入样本2
-#code
-#atcoder
-#
-#样本输出2
-#No
-#code不是atcoder的前缀。  因此，No应该被打印出来。
-#
-#输入样本3
-#abc
-#abc
-#
-#样本输出3
-#Yes
-#请注意，一个字符串也是其自身的前缀。
-#
-#输入样本4
-#aaaa
-#aa
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if t.startswith(s):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    if S in T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s == t[0:len(s)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    if S == T[0:len(S)]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if t.startswith(s):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def is_prefix(s,t):
+    if len(s) > len(t):
+        return False
+    if s == t[:len(s)]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    s = input()
+    t = input()
+    # 检查
+    if t.startswith(s):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:len(s)]:
+        print("Yes")
+    else:
+        print("No")

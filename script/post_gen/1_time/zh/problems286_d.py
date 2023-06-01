@@ -1,59 +1,197 @@
-#问题陈述
-#高桥有N种硬币；
-#具体来说，对于1≦i≦N，他有B_i个硬币，每个硬币价值A_i日元（日本的货币）。
-#请确定高桥是否能用他目前拥有的硬币准确支付X日元（不找零）。
-#
-#限制条件
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥能用他目前拥有的硬币正好支付X日元，则打印Yes；
-#否则打印No。
-#
-#输入样本 1
-#2 19
-#2 3
-#5 6
-#
-#样本输出1
-#Yes
-#高桥有三个2日元的硬币和六个5日元的硬币。
-#他可以用两个2元硬币和三个5元硬币来支付2×2+5×3=19日元。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#2 18
-#2 3
-#5 6
-#
-#样本输出2
-#No
-#没有一个硬币的组合可以让他正好支付18日元。
-#因此，应该打印No。
-#
-#输入样本3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#样本输出3
-#Yes
-#他不需要使用所有种类的硬币。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # print(A)
+    # print(B)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum <= X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N,X=map(int,input().split())
+    A=[]
+    B=[]
+    for i in range(N):
+        a,b=map(int,input().split())
+        A.append(a)
+        B.append(b)
+    sum=0
+    for i in range(N):
+        sum=sum+A[i]*B[i]
+    if sum>=X:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def solve(n, x, ab):
+    # n: number of coins
+    # x: target
+    # ab: list of (a, b)
+    # return: True/False
+    # print(n, x, ab)
+    if n == 0:
+        return False
+    a, b = ab[0]
+    if a * b == x:
+        return True
+    if a * b > x:
+        return solve(n - 1, x, ab[1:])
+    else:
+        return solve(n - 1, x - a * b, ab[1:])
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    sum = 0
+
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += a * b
+
+    if sum <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def solve():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * B[i]
+    if ans <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def coin_pay(coin_list, pay):
+    coin_list.sort(key=lambda x: x[0], reverse=True)
+    pay_list = []
+    for coin in coin_list:
+        for i in range(coin[1]):
+            pay_list.append(coin[0])
+    pay_list.sort(reverse=True)
+    pay_sum = 0
+    for coin in pay_list:
+        pay_sum += coin
+        if pay_sum == pay:
+            return True
+    return False
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    sum = 0
+    for i in range(n):
+        sum += a[i]*b[i]
+    if sum >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai,bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    #print(n,x,a,b)
+    #print(sum([a[i]*b[i] for i in range(n)]))
+    if sum([a[i]*b[i] for i in range(n)]) >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    ans = "No"
+    for i in range(2 ** n):
+        sum = 0
+        for j in range(n):
+            if i >> j & 1 == 1:
+                sum += a[j] * b[j]
+        if sum == x:
+            ans = "Yes"
+            break
+    print(ans)
+
+solve()
+
+=======
+Suggestion 10
+
+def pay(coin, price):
+    if coin == 0:
+        return False
+    if coin == 1:
+        return price == 0
+    if coin == 2:
+        return price % 2 == 0
+    if coin == 5:
+        return price % 5 == 0
+    if coin == 10:
+        return price % 10 == 0
+    if coin == 50:
+        return price % 50 == 0
+    if coin == 100:
+        return price % 100 == 0
+    if coin == 500:
+        return price % 500 == 0
+    if coin == 1000:
+        return price % 1000 == 0
+    return False

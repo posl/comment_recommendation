@@ -1,82 +1,197 @@
-#问题陈述
-#高桥产生了10个字符串S_1,S_2,...,S_{10}，如下。
-#首先，让S_i (1 ≦ i ≦ 10)= .......... (10 .s在一排)。
-#接下来，选择四个整数A、B、C和D，满足以下所有条件。
-#1 ≦ A ≦ B ≦ 10。
-#1 ≦ c ≦ d ≦ 10。
-#然后，对于每一对满足以下所有条件的整数（i,j），用#替换S_i的第j个字符。
-#A ≦ i ≦ B。
-#C ≦ j ≦ D。
-#
-#给你如上生成的S_1,S_2,...,S_{10}。找出高桥选择的整数A, B, C, 和D。
-#可以证明，在约束条件下，这样的整数A, B, C, 和D是唯一存在的（只有一个答案）。
-#
-#约束条件
-#S_1,S_2,...,S_{10}是字符串，每个长度为10，可以根据问题陈述生成。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S_1
-#S_2
-#.
-#.
-#.
-#S_{10}
-#
-#输出
-#以下列格式打印答案：
-#A B
-#C D
-#
-#输入样本1
-#..........
-#..........
-#..........
-#..........
-#...######.
-#...######.
-#...######.
-#...######.
-#..........
-#..........
-#
-#样本输出1
-#5 8
-#4 9
-#这里，高桥选择了A=5，B=8，C=4，D=9。
-#这个选择产生了10个字符串S_1,S_2,...,S_{10}，每个长度为10，其中S_5,S_6,S_7,S_8的第4到第9个字符为#，其他字符为...。
-#这些等于输入中给出的字符串。
-#
-#输入样本2
-#..........
-#..#.......
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#..........
-#
-#样本输出 2
-#2 2
-#3 3
-#
-#输入样本3
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-###########
-#
-#输出样本3
-#1 10
-#1 10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    s = []
+    for i in range(10):
+        s.append(input())
+    return s
+
+=======
+Suggestion 2
+
+def main():
+    for i in range(10):
+        print(input())
+    for i in range(10):
+        print(input())
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    data = []
+    for i in range(10):
+        data.append(input())
+
+    # 找出最左边的#和最右边的#
+    left = 10
+    right = 0
+    for i in range(10):
+        for j in range(10):
+            if data[i][j] == '#':
+                if j < left:
+                    left = j
+                if j > right:
+                    right = j
+
+    # 找出最上面的#和最下面的#
+    top = 10
+    bottom = 0
+    for i in range(10):
+        for j in range(10):
+            if data[i][j] == '#':
+                if i < top:
+                    top = i
+                if i > bottom:
+                    bottom = i
+
+    # 输出结果
+    print(top+1, right+1)
+    print(bottom+1, left+1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    s = []
+    for i in range(10):
+        s.append(list(input()))
+
+    # 从上往下找
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                print(i+1, j+1, end=' ')
+                break
+        if s[i][j] == '#':
+            break
+
+    # 从下往上找
+    for i in range(9, -1, -1):
+        for j in range(9, -1, -1):
+            if s[i][j] == '#':
+                print(i+1, j+1)
+                break
+        if s[i][j] == '#':
+            break
+
+=======
+Suggestion 5
+
+def solve():
+    s = []
+    for i in range(10):
+        s.append(input())
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                return i+1, j+1
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    s = []
+    for i in range(10):
+        s.append(input())
+    # 检查数据
+    for i in range(10):
+        if len(s[i]) != 10:
+            print('输入数据有误')
+            return
+    # 找到A,B
+    A = 10
+    B = 1
+    for i in range(10):
+        if '#' in s[i]:
+            if A > i:
+                A = i
+            if B < i:
+                B = i
+    # 找到C,D
+    C = 10
+    D = 1
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                if C > j:
+                    C = j
+                if D < j:
+                    D = j
+    # 输出结果
+    print(A+1, B+1)
+    print(C+1, D+1)
+    return
+
+=======
+Suggestion 7
+
+def get_input():
+    input = []
+    for i in range(10):
+        input.append(raw_input())
+    return input
+
+=======
+Suggestion 8
+
+def main():
+    s = []
+    for i in range(10):
+        s.append(input())
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(10):
+        if s[i].find('#') != -1:
+            a = i + 1
+            b = i + 1
+            c = s[i].find('#') + 1
+            d = s[i].rfind('#') + 1
+            break
+    for i in range(a, 10):
+        if s[i].find('#') != -1:
+            b = i + 1
+            break
+    print(a, b)
+    print(c, d)
+main()
+
+=======
+Suggestion 9
+
+def solve():
+    for i in range(10):
+        s = input()
+        if s.find('#') >= 0:
+            break
+    for j in range(10):
+        if s[j] == '#':
+            break
+    print(i+1,j+1)
+    for k in range(10):
+        if s[k] != '#':
+            break
+    print(k+1,j+1)
+
+=======
+Suggestion 10
+
+def main():
+    # 从标准输入读取数据
+    s = []
+    for i in range(10):
+        s.append(input())
+    # 求解
+    for i in range(10):
+        for j in range(10):
+            if s[i][j] == '#':
+                print(i+1,j+1)
+                exit()

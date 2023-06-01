@@ -1,43 +1,133 @@
-#问题陈述
-#罗杰家的屋顶下突然出现了1000000000000001只狗，他决定把这些狗都留下来。这些狗被编号为1到1000000000000001，但他给它们起了新的名字，如下：
-#编号为1,2,...,26的狗分别被命名为a,b,...,z；
-#编号为27,28,29,...,701,702的狗分别被命名为aa, ab, ac, ..., zy, zz；
-#编号为703,704,705,...,18277,18278的狗分别被命名为aa, aab, aac, ..., zzy, zzz；
-#编号为18279,18280,18281,...,475253,475254的狗分别被命名为aaa,aaab,aaac,...,zzzy,zzz；
-#编号为475255,475256,...的狗分别被命名为aaaa, aaaab, ...；
-#以此类推。
-#总而言之，编号为1，2，......的狗分别被赋予以下名字：
-#a, b, ..., z, aa, ab, ..., az, ba, bb, ..., bz, ..., za, zb, ..., zz, aaa, aab, ..., aaz, aba, abb, ..., abz, ..., Zzz, aaaa, ...
-#现在，罗杰问你
-#"编号为N的狗的名字是什么？"
-#
-#约束条件
-#N是一个整数。
-# 1 ≦ N ≦ 1000000000000001
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#将罗杰问题的答案打印成一个由小写英文字母组成的字符串。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#b
-#
-#样本输入2
-#27
-#
-#样本输出2
-#aa
-#
-#样本输入3
-#123456789
-#
-#样本输出3
-#jjddja
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    res = ""
+    while num > 0:
+        num -= 1
+        res = chr(ord('a') + num % 26) + res
+        num //= 26
+    print(res)
+
+=======
+Suggestion 2
+
+def dogName(N):
+    dogName = ""
+    while N > 0:
+        N -= 1
+        dogName = chr(ord('a') + N % 26) + dogName
+        N /= 26
+    return dogName
+
+=======
+Suggestion 3
+
+def dogname(n):
+    if n<=26:
+        return chr(n+96)
+    elif n<=702:
+        return chr(n//26+96)+chr(n%26+96)
+    elif n<=18278:
+        return chr(n//702+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=475254:
+        return chr(n//18278+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=12356630:
+        return chr(n//475254+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=321272406:
+        return chr(n//12356630+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=8451004008:
+        return chr(n//321272406+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=222651511842:
+        return chr(n//8451004008+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=5843183014110:
+        return chr(n//222651511842+96)+chr(n//8451004008%26+96)+chr(n//321272406%26+96)+chr(n//12356630%26+96)+chr(n//475254%26+96)+chr(n//18278%26+96)+chr(n//702%26+96)+chr(n//26%26+96)+chr(n%26+96)
+    elif n<=153
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        n -= 1
+        ans += chr(ord('a') + n % 26)
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = ''
+    while n > 0:
+        n -= 1
+        a = chr(ord('a') + n % 26) + a
+        n //= 26
+    print(a)
+
+=======
+Suggestion 6
+
+def get_name(n):
+    name = ""
+    while n > 0:
+        n -= 1
+        name = chr(n%26+97) + name
+        n //= 26
+    return name
+
+=======
+Suggestion 7
+
+def get_new_name(n):
+    name = ''
+    while n > 0:
+        n -= 1
+        name = chr(ord('a') + n % 26) + name
+        n //= 26
+    return name
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    name = ''
+    while n > 0:
+        n -= 1
+        name = chr(n%26 + ord('a')) + name
+        n //= 26
+    print(name)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    res = ""
+    while N > 0:
+        N -= 1
+        res = chr(ord('a') + N % 26) + res
+        N //= 26
+    print(res)
+solve()
+
+=======
+Suggestion 10
+
+def get_s(n):
+    s = ""
+    while n > 0:
+        n -= 1
+        s = chr(ord('a') + n % 26) + s
+        n //= 26
+    return s
+
+n = int(input())
+print(get_s(n))

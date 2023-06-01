@@ -1,37 +1,96 @@
-#问题陈述
-#一台饼干制造机在以下时刻生产出B型饼干：A秒、2A秒、3A秒以及启动后A秒的后续倍数。
-#求激活后T+0.5秒内生产的饼干总数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B, T ≦ 20
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B T
-#
-#输出
-#打印激活后T+0.5秒内生产的饼干总数。
-#
-#输入样本 1
-#3 5 7
-#
-#样本输出1
-#10
-#激活三秒后将产生五块饼干。
-#另外5块饼干将在激活后6秒内生产出来。
-#因此，在激活后的7.5秒内，总共将生产10块饼干。
-#
-#样本输入2
-#3 2 9
-#
-#样本输出 2
-#6
-#
-#样本输入3
-#20 20 19
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems125_a():
+    a,b,t = map(int,input().split())
+    cnt = 0
+    for i in range(1,t+1):
+        if i%a==0:
+            cnt += b
+    print(cnt)
+
+=======
+Suggestion 2
+
+def problems125_a(a, b, t):
+    count = 0
+    for i in range(1, t+1):
+        if i%a == 0:
+            count += 1
+    return count*b
+
+=======
+Suggestion 3
+
+def main():
+    a, b, t = map(int, input().split())
+    print(int(t/a)*b)
+
+=======
+Suggestion 4
+
+def solve():
+    A, B, T = map(int, input().split())
+    ans = 0
+    for i in range(1, T + 1):
+        if i % A == 0:
+            ans += B
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+	nums = input().split()
+	A = int(nums[0])
+	B = int(nums[1])
+	T = int(nums[2])
+	sum = 0
+	for i in range(1, T+1):
+		if (i % A == 0):
+			sum += B
+	print(sum)
+
+=======
+Suggestion 6
+
+def cookie_maker(a,b,t):
+    cookie = 0
+    for i in range(1,t+1):
+        if i%a == 0:
+            cookie += b
+    return cookie
+
+=======
+Suggestion 7
+
+def solve(a,b,t):
+    count=0
+    for i in range(1,t+1):
+        if i%a==0:
+            count+=b
+    return count
+
+=======
+Suggestion 8
+
+def problems125_a():
+    A, B, T = map(int, input().split())
+    count = 0
+    for i in range(1, T + 1):
+        if i % A == 0:
+            count += B
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,t = map(int,input().split())
+    count = 0
+    for i in range(1,t+1):
+        if i % a == 0:
+            count += b
+    print(count)

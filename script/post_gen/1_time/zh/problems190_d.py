@@ -1,41 +1,139 @@
-#问题陈述
-#有多少个由公差为1的整数组成的算术级数的和为N？
-#
-#限制条件
-#1 ≤ N ≤ 10^{12}
-#N是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#12
-#
-#样本输出1
-#4
-#我们有四个这样的进位：
-#[12]
-#[3, 4, 5]
-#[-2, -1, 0, 1, 2, 3, 4, 5]
-#[-11, -10, -9, ..., 10, 11, 12]
-#
-#样本输入2
-#1
-#
-#样本输出2
-#2
-#我们有两个这样的级数：
-#[1]
-#[0, 1]
-#
-#样本输入3
-#963761198400
-#
-#样本输出3
-#1920
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            if i%2 != n//i%2:
+                ans += 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int((2 * n) ** 0.5) + 1):
+        if 2 * n % i == 0:
+            m = 2 * n // i
+            if (i - m + 1) % 2 == 0:
+                if (i - m + 1) // 2 > 0:
+                    ans += 1
+            if (m - i + 1) % 2 == 0:
+                if (m - i + 1) // 2 > 0:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if N % i == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N**0.5)+1):
+        if N%i == 0:
+            if i%2 == N//i%2:
+                ans += 1
+    print(ans*2)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, int(N ** 0.5) + 1):
+        if N % i == 0:
+            if i % 2 == 1:
+                ans += 1
+            if i != N // i and N // i % 2 == 1:
+                ans += 1
+    print(ans * 2)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            if i % 2 == 1:
+                ans += 2
+            if i*i == n:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # N = int(input())
+    N = 963761198400
+    # N = 12
+    count = 0
+    for i in range(1, N+1):
+        sum = 0
+        for j in range(i, N+1):
+            sum += j
+            if sum == N:
+                count += 1
+                break
+            elif sum > N:
+                break
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N + 1):
+        if i * (i + 1) // 2 >= N:
+            break
+        if (N - i * (i + 1) // 2) % i == 0:
+            ans += 1
+    print(ans * 2)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    count = 0
+    i = 1
+    while i * (i + 1) // 2 <= N:
+        if (N - i * (i + 1) // 2) % i == 0:
+            count += 1
+        i += 1
+    print(count * 2)
+
+=======
+Suggestion 10
+
+def get_arithmetic_series_num(n):
+    count = 0
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            if i % 2 == 1:
+                count += 1
+            if i != n // i and (n // i) % 2 == 1:
+                count += 1
+    return count

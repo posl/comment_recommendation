@@ -1,31 +1,112 @@
-#问题陈述
-#给你一个正整数A和B。
-#让我们计算一下A+B（十进制）。如果不涉及进位，打印Easy；如果涉及carry，打印Hard。
-#
-#限制条件
-#A和B是整数。
-#1 ≦ A,B ≦ 10^{18}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#如果计算不涉及携带，打印Easy；如果涉及进位，打印Hard。
-#
-#输入样本1
-#229 390
-#
-#样本输出1
-#Hard
-#在计算229+390时，我们有一个从十位到百位的进位，所以答案是Hard。
-#
-#输入样本2
-#123456789 9876543210
-#
-#输出示例2
-#Easy
-#我们在这里没有进位，答案是Easy。
-#请注意，输入可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 10**10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 2
+
+def plus(a, b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 0:
+        return b
+    elif b == 0:
+        return a
+
+    result = 0
+    carry = 0
+    while a > 0 and b > 0:
+        if a % 10 + b % 10 + carry >= 10:
+            carry = 1
+        else:
+            carry = 0
+        a = a // 10
+        b = b // 10
+        result = result * 10 + carry
+    while a > 0:
+        if a % 10 + carry >= 10:
+            carry = 1
+        else:
+            carry = 0
+        a = a // 10
+        result = result * 10 + carry
+    while b > 0:
+        if b % 10 + carry >= 10:
+            carry = 1
+        else:
+            carry = 0
+        b = b // 10
+        result = result * 10 + carry
+    return result
+
+=======
+Suggestion 3
+
+def solve():
+    a,b = map(int,input().split())
+    if a+b>=10**18:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 4
+
+def main():
+    #读取输入
+    inputs = input().split()
+    #将读取的输入转换为整数
+    A = int(inputs[0])
+    B = int(inputs[1])
+    #计算A+B
+    sum = A + B
+    #如果sum小于10^18，输出Easy
+    if sum < 10**18:
+        print("Easy")
+    #如果sum大于等于10^18，输出Hard
+    else:
+        print("Hard")
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a + b < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 10 ** 10:
+        print('Hard')
+    else:
+        print('Easy')
+
+=======
+Suggestion 7
+
+def add(a, b):
+    return a + b
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if a + b < 10:
+        print('Easy')
+    else:
+        print('Hard')

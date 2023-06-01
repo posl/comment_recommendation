@@ -1,40 +1,82 @@
-#问题陈述
-#给定任何整数x，Aoki可以做以下操作。
-#操作：用x和K的绝对差值替换x。
-#给你一个整数N的初始值，找出Aoki做了零次或多次操作后N的最小可能值。
-#
-#限制条件
-#0 ≤ N ≤ 10^{18}
-#1 ≤ K ≤ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#輸出
-#打印Aoki做了零次或多次操作后，N的最小可能值。
-#
-#输入样本 1
-#7 4
-#
-#样本输出1
-#1
-#最初，N=7。
-#经过一次操作，N变成了 |7-4| = 3。
-#经过两次操作，N变成|3-4|=1，这是N的最小值。
-#
-#样本输入 2
-#2 6
-#
-#样本输出 2
-#2
-#零操作后的N=2是最小值。
-#
-#样本输入3
-#1000000000000000000 1
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(n, k):
+    return min(n % k, k - (n % k))
+
+=======
+Suggestion 2
+
+def solve(n,k):
+    ans = n
+    while True:
+        if ans > abs(ans-k):
+            ans = abs(ans-k)
+        else:
+            break
+    return ans
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    print(min(n % k, k - n % k))
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    if n==0:
+        print(0)
+    else:
+        print(min(n%k,k-n%k))
+
+=======
+Suggestion 5
+
+def main():
+    n,k = list(map(int, input().split()))
+    if n < k:
+        print(n)
+    else:
+        print(min(n % k, k - n % k))
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    while n >= k:
+        n = n % k
+        if n == 0:
+            print(0)
+            return
+    print(min(n, abs(k - n)))
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+
+    # 计算答案
+    print(min(n % k, k - n % k))
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    print(min(n%k, k-(n%k)))
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    print(min(N%K, K-N%K))

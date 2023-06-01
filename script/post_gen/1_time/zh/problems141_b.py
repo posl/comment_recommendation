@@ -1,53 +1,162 @@
-#问题陈述
-#高桥将做一个踢踏舞。舞蹈由一个字符串S描述，其中每个字符是L、R、U或D，这些字符表示高桥应该踩的位置。他将从第一个字符开始，按顺序一个接一个地遵循这些指示。
-#当且仅当它满足以下两个条件时，我们说S是容易下的：
-#奇数位置（第1个、第3个、第5个......）上的每个字符都是R、U或D。
-#偶数位置（第2，4，6，...）的每个字符是L，U或D。
-#你的任务是，如果S很容易玩，就打印出Yes，否则就打印出No。
-#
-#限制条件
-#S是一个长度在1到100之间（包括100）的字符串。
-#S的每个字符都是L、R、U或D。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#如果S很容易玩，则打印Yes，否则打印No。
-#
-#输入样本1
-#RUDLUDR
-#
-#样本输出1
-#Yes
-#在奇数位置（第1、3、5、7）的每个字符是R、U或D。
-#在偶数位置（第2、4、6）的每个字符都是L、U或D。
-#因此，S是很容易玩的。
-#
-#输入样本2
-#DULL
-#
-#样本输出2
-#No
-#第3个字符不是R，U，也不是D，所以S不容易玩。
-#
-#样本输入3
-#uuuuuuuuuuuuu
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#ULURU
-#
-#样本输出4
-#No
-#
-#样本输入5
-#rdululdururlrdulrlr
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == 'L':
+                print('No')
+                exit()
+        else:
+            if S[i] == 'R':
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    for i in range(len(S)):
+        if i & 1 and S[i] in 'RL':
+            print('No')
+            return
+        if not i & 1 and S[i] in 'UD':
+            print('No')
+            return
+    print('Yes')
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[::2] == s[::2].replace('L', '').replace('U', '').replace('D', '') and s[1::2] == s[1::2].replace('R', '').replace('U', '').replace('D', ''):
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    odd = S[0::2]
+    even = S[1::2]
+    if odd.find('L') == -1 and odd.find('R') == -1 and even.find('U') == -1 and even.find('D') == -1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if len(S) % 2 == 0:
+        print("Yes" if S[0::2].count("L") == 0 and S[1::2].count("R") == 0 else "No")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if len(S) % 2 == 0:
+        for i in range(0, len(S), 2):
+            if S[i] == "L":
+                print("No")
+                exit()
+        for i in range(1, len(S), 2):
+            if S[i] == "R":
+                print("No")
+                exit()
+    else:
+        for i in range(0, len(S), 2):
+            if S[i] == "R":
+                print("No")
+                exit()
+        for i in range(1, len(S), 2):
+            if S[i] == "L":
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                exit()
+        else:
+            if s[i] == 'R':
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    # 读入输入
+    s = input()
+    # 计算奇数位置的字符是否是R、U或D
+    for i in range(0, len(s), 2):
+        if s[i] not in ['R', 'U', 'D']:
+            print('No')
+            return
+    # 计算偶数位置的字符是否是L、U或D
+    for i in range(1, len(s), 2):
+        if s[i] not in ['L', 'U', 'D']:
+            print('No')
+            return
+    # 输出结果
+    print('Yes')
+
+=======
+Suggestion 10
+
+def main():
+    s=input()
+    flag=True
+    for i in range(len(s)):
+        if i%2==0:
+            if s[i] not in ['R','U','D']:
+                flag=False
+                break
+        else:
+            if s[i] not in ['L','U','D']:
+                flag=False
+                break
+    if flag:
+        print('Yes')
+    else:
+        print('No')

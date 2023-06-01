@@ -1,42 +1,159 @@
-#问题陈述
-#有N个史莱姆从左到右排成一列。这些史莱姆的颜色是由小写英文字母组成的长度为N的字符串S。从左边开始的第i个粘液的颜色与S的第i个字符相对应。
-#具有相同颜色的相邻粘液将融合成一个更大的粘液，而不改变其颜色。如果在融合之前，这组粘液旁边有一个粘液，那么这个粘液现在就与新的大粘液相邻。
-#最终，会有多少个粘液？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S由小写的英文字母组成。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S
-#
-#输出
-#打印粘液的最终数量。
-#
-#输入样本1
-#10
-#aabbbbaaca
-#
-#样本输出1
-#5
-#最终，这些史莱姆将融合成麻布。
-#
-#输入样本2
-#5
-#aaaaa
-#
-#样本输出2
-#1
-#所有的史莱姆将融合成一个。
-#
-#样本输入3
-#20
-#xxzaffeeeeddfkkkkllq
-#
-#样本输出3
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    if N == 1:
+        print(1)
+        return
+    slime = []
+    for i in range(N):
+        if i == 0:
+            slime.append(S[i])
+        elif slime[-1] != S[i]:
+            slime.append(S[i])
+    print(len(slime))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 1
+    for i in range(1,n):
+        if s[i] != s[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    s = input()
+    count = 1
+    for i in range(1, n):
+        if s[i] != s[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    N = int(input())
+    S = input()
+    # print('N=', N)
+    # print('S=', S)
+    # 统计粘液数量
+    slime_count = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            slime_count += 1
+    # 输出结果
+    print(slime_count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    cnt = 1
+    for i in range(1, N):
+        if S[i] != S[i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    if N == 1:
+        print(1)
+        return
+    slime = []
+    for i in range(N):
+        slime.append(S[i])
+    i = 0
+    while i < len(slime)-1:
+        if slime[i] == slime[i+1]:
+            del slime[i+1]
+        else:
+            i += 1
+    print(len(slime))
+main()
+
+=======
+Suggestion 7
+
+def mergeSlime(slime):
+    #merge
+    i = 0
+    while i < len(slime) - 1:
+        if slime[i] == slime[i + 1]:
+            slime[i] = slime[i] + slime[i + 1]
+            slime.pop(i + 1)
+        else:
+            i += 1
+    #print(slime)
+    #merge again
+    i = 0
+    while i < len(slime) - 1:
+        if slime[i][-1] == slime[i + 1][0]:
+            slime[i] = slime[i] + slime[i + 1]
+            slime.pop(i + 1)
+        else:
+            i += 1
+    #print(slime)
+    return slime
+
+=======
+Suggestion 8
+
+def slime(s):
+    if len(s) == 1:
+        return 1
+    else:
+        i = 0
+        while i < len(s):
+            if i == len(s) - 1:
+                break
+            if s[i] == s[i + 1]:
+                s = s[:i] + s[i + 2:]
+                i = 0
+            else:
+                i += 1
+        return len(s)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    count = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solution():
+    N = int(input())
+    S = input()
+    cnt = 1
+    for i in range(1, N):
+        if S[i-1] != S[i]:
+            cnt += 1
+    print(cnt)
+solution()

@@ -1,66 +1,248 @@
-#问题陈述
-#高桥将在一个编号为1，2，...，N的方格阵列上用棋子进行游戏。方格i上写有一个整数C_i。另外，他还得到了1, 2, ..., N的一个排列组合：P_1, P_2, ..., P_N。
-#现在，他将选择一个方格并将棋子放在该方格上。然后，他将在1到K（包括）之间的一些次数进行下面的移动：
-#在一步棋中，如果棋子现在在i方格（1 ≦ i ≦ N），就把它移到P_i方格。在这里，他的分数会增加C_{P_i}。
-#帮助他找到对局结束时的最大可能分数。(在游戏开始时分数为0）。
-#
-#限制条件
-#2 ≦ N ≦ 5000
-#1 ≦ K ≦ 10^9
-#1 ≦ P_i ≦ N
-#P_i ≠ i
-#P_1, P_2, ..., P_N 都是不同的。
-#-10^9 ≦ C_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#P_1 P_2 ...P_N
-#C_1 C_2 ...C_N
-#
-#输出
-#在游戏结束时打印出可能的最大分数。
-#
-#输入样本 1
-#5 2
-#2 4 5 1 3
-#3 4 -10 -8 8
-#
-#样本输出1
-#8
-#当我们从我们选择的某个方格开始，并最多走两步棋时，我们有以下选择：
-#如果我们从1号方格开始，走一步就把棋子送到2号方格，之后的分数是4。
-#如果我们从方格2开始，走一步棋将棋子送到方格4，之后的分数是-8。再走一步棋将棋子送到方格1，之后的分数是-8+3=-5。
-#如果我们从3号方格开始，走一步棋将棋子送到5号方格，之后的分数是8。再走一步棋将棋子送到3号方格，之后的分数是8+（-10）=-2。
-#如果我们从方格4开始，走一步棋将棋子送到方格1，之后的分数是3。再走一步棋将棋子送到方格2，之后的分数是3+4=7。
-#如果我们从5号方格开始，走一步棋会把棋子送到3号方格，之后的分数是-10。再走一步就把棋子送到5号方格，之后的分数是-10+8=-2。
-#最高得分是8分。
-#
-#输入样本 2
-#2 3
-#2 1
-#10 -7
-#
-#样本输出2
-#13
-#
-#样本输入3
-#3 3
-#3 1 2
-#-1000 -2000 -3000
-#
-#样本输出 3
-#-1000
-#我们至少要走一步。
-#
-#输入样本4
-#10 58
-#9 1 6 7 8 4 3 2 10 5
-#695279662 988782657 -119067776 382975538 -151885171 -177220596 -169777795 37619092 389386780 980092719
-#
-#样本输出4
-#29507023469
-#答案的绝对值可能是巨大的。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    return
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = -float('inf')
+    for i in range(n):
+        x = i
+        s = 0
+        t = 0
+        while True:
+            x = p[x] - 1
+            s += c[x]
+            t += 1
+            if x == i:
+                break
+            if t == k:
+                break
+        if c[x] > 0:
+            u = (k // t - 1) * s
+        else:
+            u = 0
+        for j in range(k % t):
+            x = p[x] - 1
+            u += c[x]
+            ans = max(ans, u)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    #读入数据
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    
+    #print(n, k, p, c)
+    #print(len(p), len(c))
+    
+    #定义最大分数
+    max_score = -10**9 - 1
+    
+    #遍历所有可能的起点
+    for i in range(n):
+        #print('i =', i)
+        #定义当前分数
+        current_score = 0
+        #定义当前位置
+        current_position = i
+        #定义当前步数
+        current_step = 0
+        #定义当前最大分数
+        current_max_score = -10**9 - 1
+        #定义当前循环的步数
+        current_loop_step = 0
+        #定义当前循环的最大分数
+        current_loop_max_score = -10**9 - 1
+        
+        #如果k大于n，则可以循环k//n次，再加上k%n次
+        if k >= n:
+            #print('k >= n')
+            #print('k // n =', k // n)
+            #print('k % n =', k % n)
+            #遍历k//n次
+            for j in range(k // n):
+                #print('j =', j)
+                #print('current_step =', current_step)
+                #print('current_position =', current_position)
+                #print('current_score =', current_score)
+                #print('current_max_score =', current_max_score)
+                
+                #如果当前位置和当前步数的最大分数大于当前循环的最大分数，则更新当前循环的最大分数
+                if c[p[current_position] - 1] + current_score > current_loop_max_score:
+                    current_loop_max_score = c[p[current_position] - 1] + current_score
+                
+                #更新当前位置
+                current_position = p[current_position] - 1
+                #更新当前步数
+                current_step += 1
+                #更新当前分数
+                current_score += c[current_position]
+                
+                #如果当前位置和当前步数的最大分数大于当前最
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    ans = -10 ** 18
+    for i in range(N):
+        # 一圈的得分
+        score = 0
+        # 一圈的步数
+        cnt = 0
+        # 一圈的开始位置
+        j = i
+        while True:
+            # 走一步
+            j = P[j] - 1
+            score += C[j]
+            cnt += 1
+            # 一圈走完了
+            if j == i:
+                break
+        # 一圈的得分
+        loop = score
+        # 一圈的步数
+        loop_cnt = cnt
+        # 一圈的开始位置
+        loop_start = i
+        # 一圈的得分
+        score = 0
+        # 一圈的步数
+        cnt = 0
+        # 一圈的开始位置
+        j = i
+        while True:
+            # 走一步
+            j = P[j] - 1
+            score += C[j]
+            cnt += 1
+            # 一圈走完了
+            if j == i:
+                break
+
+        # 一圈的得分
+        loop = score
+        # 一圈的步数
+        loop_cnt = cnt
+        # 一圈的开始位置
+        loop_start = i
+
+        # 一圈的得分
+        score = 0
+        # 一圈的步数
+        cnt = 0
+        # 一圈的开始位置
+        j = i
+        while True:
+            # 走一步
+            j = P[j] - 1
+            score += C[j]
+            cnt += 1
+            # 一圈走完了
+            if j == i:
+                break
+        # 一圈的得分
+        loop = score
+        # 一圈的步数
+        loop_cnt = cnt
+        # 一圈的开始位置
+        loop_start = i
+
+        # 一
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = -10**18
+    for i in range(n):
+        x = i
+        s = 0
+        t = 0
+        while True:
+            x = p[x] - 1
+            s += c[x]
+            t += 1
+            if x == i:
+                break
+            if t == k:
+                break
+        if c[x] > 0:
+            u = (k // t - 1) * s
+            ans = max(ans, u)
+            for j in range(k % t):
+                x = p[x] - 1
+                u += c[x]
+                ans = max(ans, u)
+        else:
+            ans = max(ans, s)
+    print(ans)
+    return
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    p = [p[i]-1 for i in range(n)]
+    ans = -float("inf")
+    for i in range(n):
+        now = i
+        tmp = 0
+        cnt = 0
+        while True:
+            cnt += 1
+            tmp += c[p[now]]
+            now = p[now]
+            ans = max(ans,tmp)
+            if cnt == k:
+                break
+            if now == i:
+                break
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve(n, k, p, c):
+    # 从1号格开始，走一步就把棋子送到2号格，之后的分数是4。
+    # 如果我们从方格2开始，走一步棋将棋子送到方格4，之后的分数是-8。再走一步棋将棋子送到方格1，之后的分数是-8+3=-5。
+    # 如果我们从3号方格开始，走一步棋将棋子送到5号方格，之后的分数是8。再走一步棋将棋子送到3号方格，之后的分数是8+（-10）=-2。
+    # 如果我们从方格4开始，走一步棋将棋子送到方格1，之后的分数是3。再走一步棋将棋子送到方格2，之后的分数是3+4=7。
+    # 如果我们从5号方格开始，走一步棋会把棋子送到3号方格，之后的分数是-10。再走一步就把棋子送到5号方格，之后的分数是-10+8=-2。
+    # 最高得分是8分。
+    # 1.从1号格开始，走一步就把棋子送到2号格，之后的分数是4。
+    # 2.如果我们从方格2开始，走一步棋将棋子送到方格4，之后的分数是-8。再走一步棋将棋子送到方格1，之后的分数是-8+3=-5。
+    # 3.如果我们从3号方格开始，走一步棋将棋子送到5号方格，之后的分数是8。再走一步棋将棋子送到3号方格，之后的分数是8+（-10）=-2。
+    # 4.如果

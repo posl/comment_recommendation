@@ -1,55 +1,101 @@
-#问题陈述
-#有N个城市。从城市i到城市j所需的时间为T_{i, j}。
-#在那些从城市1开始，正好到过所有其他城市一次，然后回到城市1的路径中，有多少条路径的总时间正好为K？
-#
-#限制条件
-#2≦ N ≦ 8
-#如果i≠j，1≦ T_{i,j} ≦ 10^8。
-#T_{i,i}=0
-#T_{i,j}=T_{j,i}
-#1≦ K ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#T_{1,1} ...T_{1,N}
-#.
-#.
-#.
-#T_{N,1} ...T_{N,N}
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4 330
-#0 1 10 100
-#1 0 20 200
-#10 20 0 300
-#100 200 300 0
-#
-#样本输出1
-#2
-#有六条路径从城市1开始，正好访问所有其他城市一次，然后再回到城市1：
-#1-> 2-> 3-> 4-> 1
-#1-> 2-> 4-> 3-> 1
-#1-> 3-> 2-> 4-> 1
-#1-> 3-> 4-> 2-> 1
-#1-> 4-> 2-> 3-> 1
-#1-> 4-> 3-> 2-> 1
-#沿着这些路径行驶的时间分别为421、511、330、511、330和421，其中有两个正好是330。
-#
-#输入样本 2
-#5 5
-#0 1 1 1 1
-#1 0 1 1 1
-#1 1 0 1 1
-#1 1 1 0 1
-#1 1 1 1 0
-#
-#样本输出2
-#24
-#无论我们按什么顺序访问这些城市，都需要5的总时间来旅行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def search(start, visited, time):
+    if time == k:
+        return 1
+    else:
+        total = 0
+        for i in range(n):
+            if i != start and visited[i] == False:
+                visited[i] = True
+                total += search(i, visited, time + t[start][i])
+                visited[i] = False
+    return total
+
+n, k = map(int, input().split())
+t = [list(map(int, input().split())) for i in range(n)]
+visited = [False for i in range(n)]
+visited[0] = True
+print(search(0, visited, 0))
+
+=======
+Suggestion 3
+
+def dfs(now, cost, visit):
+    global ans
+    if cost > K:
+        return
+    if visit == (1 << N) - 1:
+        if cost == K:
+            ans += 1
+        return
+    for i in range(N):
+        if visit & (1 << i) == 0:
+            dfs(i, cost + T[now][i], visit | (1 << i))
+
+
+N, K = map(int, input().split())
+T = [list(map(int, input().split())) for _ in range(N)]
+ans = 0
+dfs(0, 0, 1)
+print(ans)
+
+=======
+Suggestion 4
+
+def get_input():
+    n, k = map(int, input().split())
+    t = []
+    for i in range(n):
+        t.append(list(map(int, input().split())))
+    return n, k, t
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    T = []
+    for i in range(N):
+        T.append(list(map(int, input().split())))
+    #print(T)
+    #print(N, K)
+    #print(T[0][1])
+    #print(T[1][0])
+    #print(T[1][2])
+    #print(T[2][1])
+    #print(T[0][2])
+    #print(T[2][0])
+    #print(T[0][3])
+    #print(T[3][0])
+    #print(T[1][3])
+    #print(T[3][1])
+    #print(T[2][3])
+    #print(T[3][2])
+    #print(T[0][4])
+    #print(T[4][0])
+    #print(T[1][4])
+    #print(T[4][1])
+    #print(T[2][4])
+    #print(T[4][2])
+    #print(T[3][4])
+    #print(T[4][3])
+    #print(T[0][1]+T[1][2]+T[2][3]+T[3][0])
+    #print(T[0][1]+T[1][3]+T[3][2]+T[2][0])
+    #print(T[0][2]+T[2][1]+T[1][3]+T[3][0])
+    #print(T[0][2]+T[2][3]+T[3][1]+T[1][0])
+    #print(T[0][3]+T[3][1]+T[1][2]+T[2][0])
+    #print(T[0][3]+T[3][2]+T[2][1]+T[1][0])
+    #print(T[0][1]+T[1][4]+T[4][2]+T[2][3]+T[3][0])
+    #print(T[0][1]+T[1][4]+T[4][3]+T[3][2]+T[2][0])
+    #print(T[0][2]+T[2][4]+T[4][1]+T[1][3]+T[3][0])
+    #print(T[0][2]+T[

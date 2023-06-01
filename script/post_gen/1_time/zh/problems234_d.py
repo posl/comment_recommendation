@@ -1,42 +1,101 @@
-#问题陈述
-#给出一个(1,2,...,N)的排列组合P=(P_1,P_2,...,P_N)和一个正数K。
-#对于每个i=K,K+1,...,N,求出以下结果。
-#P的前i项中的第K个最大值。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 5 × 10^5
-#(P_1,P_2,...,P_N)是(1,2,...,N)的一个排列组合。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#P_1 P_2 ...P_N
-#
-#输出
-#对于每个i=K，K+1，...，N，按照这个顺序，打印问题陈述中的指定值，用换行符分隔。
-#
-#输入样本 1
-#3 2
-#1 2 3
-#
-#样本输出 1
-#1
-#2
-#在P的前两个项中，(K=)第2个最大值，(P_1,P_2)=(1,2)，是1。
-#(K=) P的前3项中的第2个最大值，(P_1,P_2,P_3)=(1,2,3)，是2。
-#
-#样本输入2
-#11 5
-#3 7 2 5 11 6 1 9 8 10 4
-#
-#样本输出 2
-#2
-#3
-#3
-#5
-#6
-#7
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n,k,p):
+    ans=[]
+    for i in range(k,n+1):
+        ans.append(max(p[i-k:i]))
+    print(*ans,sep='\n')
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n-k+1):
+        print(max(a[i:i+k]))
+
+=======
+Suggestion 3
+
+def max_k(n, k, arr):
+    from collections import deque
+    d = deque()
+    for i in range(n):
+        while d and arr[d[-1]] <= arr[i]:
+            d.pop()
+        d.append(i)
+        if d[0] == i - k:
+            d.popleft()
+        if i >= k - 1:
+            print(arr[d[0]])
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    for i in range(K-1, N):
+        print(sorted(P[:i+1], reverse=True)[K-1])
+
+=======
+Suggestion 5
+
+def func():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    for i in range(k-1, n):
+        print(sorted(p[:i+1], reverse=True)[k-1])
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    for i in range(k-1,n):
+        print(sorted(p[:i+1])[-k+1])
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    for i in range(k,n+1):
+        print(sorted(p[:i])[-k])
+
+=======
+Suggestion 8
+
+def solve(n, k, p):
+    #print(n, k, p)
+    #print(p[0:k-1])
+    #print(p[k-1:n])
+    for i in range(k-1, n):
+        print(sorted(p[0:i+1])[k-1])
+    return 0
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    for i in range(K-1, N):
+        print(sorted(P[:i+1])[-1])
+    return
+
+=======
+Suggestion 10
+
+def solve(n,k,nums):
+    # k-1个最大数
+    res = []
+    for i in range(k-1,n):
+        res.append(max(nums[i-k+1:i+1]))
+    return res

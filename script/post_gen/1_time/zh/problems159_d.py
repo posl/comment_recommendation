@@ -1,70 +1,161 @@
-#问题陈述
-#我们有N个球。第i个球上写有一个整数A_i。
-#对于每一个k=1，2，...，N，解决以下问题并打印答案。  
-#从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#輸出
-#对于每一个k=1,2,...,N，打印一行，包含答案。
-#
-#输入样本 1
-#5
-#1 1 2 1 2
-#
-#样本输出 1
-#2
-#2
-#3
-#2
-#3
-#以k=1的情况为例，考虑一下。剩下的球上写的数字是1，2，1，2。
-#从这些球中，有两种方法可以选择两个不同的球，使它们上面写的整数相等。
-#因此，k=1的答案是2。
-#
-#输入样本2
-#4
-#1 2 3 4
-#
-#样本输出2
-#0
-#0
-#0
-#0
-#没有两个球上写的数字相等。
-#
-#输入样本 3
-#5
-#3 3 3 3 3
-#
-#样本输出 3
-#6
-#6
-#6
-#6
-#6
-#任何两个球上都写有相等的数字。
-#
-#输入样本 4
-#8
-#1 2 1 4 2 1 4 1
-#
-#样本输出 4
-#5
-#7
-#5
-#7
-#7
-#5
-#7
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    a.sort()
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] += 1
+    ans = 0
+    for i in range(n):
+        ans += b[i] * (b[i] - 1) // 2
+    for i in range(n):
+        print(ans - (b[a[i] - 1] - 1))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    from collections import Counter
+    c = Counter(a)
+    ans = [0] * n
+    for k, v in c.items():
+        ans[k-1] = v * (v-1) // 2
+    for i in a:
+        print(sum(ans) - ans[i-1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    d = {}
+    for a in A:
+        if a in d:
+            d[a] += 1
+        else:
+            d[a] = 1
+    ans = [0] * N
+    for a in A:
+        ans[a-1] = N - d[a]
+    for a in ans:
+        print(a)
+
+=======
+Suggestion 4
+
+def solve():
+    import sys
+
+    f = open('problems159_d.txt', 'r')
+    sys.stdin = f
+
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    from collections import defaultdict
+    d = defaultdict(int)
+    for i in range(N):
+        d[A[i]] += 1
+
+    ans = 0
+    for k in range(1, N+1):
+        ans += d[k] * (d[k] - 1) // 2
+
+    for i in range(N):
+        print(ans - (d[A[i]] - 1))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = [0] * (n + 1)
+    for i in range(n):
+        c[a[i]] += 1
+    ans = 0
+    for i in range(1, n + 1):
+        ans += c[i] * (c[i] - 1) // 2
+    for i in range(n):
+        print(ans - c[a[i]] + 1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = [0] * (n + 1)
+    for i in range(n):
+        cnt[a[i]] += 1
+    ans = 0
+    for i in range(1, n + 1):
+        ans += cnt[i] * (cnt[i] - 1) // 2
+    for i in range(n):
+        print(ans - cnt[a[i]] + 1)
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    count = {}
+    for i in A:
+        if i in count:
+            count[i] += 1
+        else:
+            count[i] = 1
+    total = 0
+    for i in count.values():
+        total += i * (i - 1) // 2
+    for i in A:
+        print(total - (count[i] - 1))
+
+=======
+Suggestion 9
+
+def count_pairs(n, a):
+    cnt = 0
+    for i in range(1, n):
+        for j in range(i+1, n+1):
+            if a[i-1] == a[j-1]:
+                cnt += 1
+    return cnt
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    #print("N = ", N)
+    #print("A = ", A)
+    ans = 0
+    cnt = [0] * (N + 1)
+    for i in range(N):
+        cnt[A[i]] += 1
+    #print("cnt = ", cnt)
+    for i in range(1, N + 1):
+        ans += cnt[i] * (cnt[i] - 1) // 2
+    #print("ans = ", ans)
+    for i in range(N):
+        print(ans - (cnt[A[i]] - 1))
+    return

@@ -1,69 +1,166 @@
-#问题陈述
-#给你N个字符串，每个长度为2，由大写的英文字母和数字组成。第i个字符串是S_i。
-#请确定以下三个条件是否都得到满足。
-#每个字符串的第一个字符都是H、D、C和S中的一个。
-#对于每个字符串，第二个字符是A、2、3、4、5、6、7、8、9、T、J、Q、K中的一个。
-#・所有的字符串都是成对的不同。也就是说，如果i≠j，那么S_i≠S_j。
-#
-#限制条件
-#1 ≦ N ≦ 52
-#S_i是一个长度为2的字符串，由大写的英文字母和数字组成。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果三个条件都满足，打印Yes；否则，打印No。
-#
-#样本输入1
-#4
-#H3
-#DA
-#D3
-#SK
-#
-#样本输出1
-#Yes
-#我们可以验证，这三个条件都得到了满足。
-#
-#样本输入2
-#5
-#H3
-#DA
-#CK
-#H3
-#S7
-#
-#采样输出2
-#No
-#S_1和S_4都是H3，违反了第三个条件。
-#
-#样本输入3
-#4
-#3H
-#AD
-#3D
-#KS
-#
-#样品输出3
-#No
-#
-#样品输入4
-#5
-#00
-#AA
-#XX
-#YY
-#ZZ
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    cards.sort()
+    for i in range(n-1):
+        if cards[i] == cards[i+1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def check_card(s):
+    if len(s) != 2:
+        return False
+    if s[0] not in "HDCS":
+        return False
+    if s[1] not in "A23456789TJQK":
+        return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+
+    n = int(input())
+    card = []
+    for i in range(n):
+        card.append(input())
+
+    if len(set(card)) != n:
+        print("No")
+        return
+
+    for i in range(n):
+        if card[i][0] not in "HDCS":
+            print("No")
+            return
+
+    for i in range(n):
+        if card[i][1] not in "A23456789TJQK":
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if len(set(cards)) == n:
+        for card in cards:
+            if card[0] not in ['H','D','C','S']:
+                print('No')
+                return
+            if card[1] not in ['A','2','3','4','5','6','7','8','9','T','J','Q','K']:
+                print('No')
+                return
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if n == len(set(cards)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if len(s) == len(set(s)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def check_card(card):
+    if len(card) != 2:
+        return False
+    if card[0] not in ['H', 'D', 'C', 'S']:
+        return False
+    if card[1] not in ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T','J', 'Q', 'K']:
+        return False
+    return True
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    card = set()
+    for i in range(n):
+        s = input()
+        card.add(s)
+    if len(card) == n:
+        print('Yes')
+    else:
+        print('No')
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    # N = int(input())
+    # S = [input() for _ in range(N)]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "D3", "SK"]
+    # S = ["3H", "AD", "3D", "KS"]
+    S = ["00", "AA", "XX", "YY", "ZZ"]
+    # S = ["H3", "DA", "D3", "SK"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA", "CK", "H3", "S7"]
+    # S = ["H3", "DA
+
+=======
+Suggestion 10
+
+def main():
+    pass

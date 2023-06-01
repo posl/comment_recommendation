@@ -1,56 +1,218 @@
-#问题陈述
-#我们有一个由N个阶段组成的视频游戏。第i个阶段(1 ≦ i ≦ N)是由一个持续A_i分钟的电影和持续B_i分钟的游戏组成。
-#为了第一次通关第i个阶段，人们必须观看电影并完成该阶段的游戏。对于第二次和以后的时间，可以跳过电影，只做游戏。
-#在开始时，只有第1个阶段被解锁，通关第i个阶段（1 ≦ i ≦ N - 1）后，可以解锁第（i+1）个阶段。
-#找到清除一个阶段总共X次所需的最短时间。这里，如果同一个阶段被清除了多次，那么所有的都算。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9 (1 ≦ i ≦ N)
-#1 ≦ X ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N X
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 4
-#3 4
-#2 3
-#4 2
-#
-#样本输出1
-#18
-#下面是一种在18分钟内清除一个阶段4次的方法：
-#清理第1阶段。需要A_1+B_1=7分钟。
-#清理第2阶段。需要A_2 + B_2 = 5分钟。
-#再次清除第2阶段。这需要B_2=3分钟。
-#再次清空第二阶段。这需要B_2=3分钟。
-#不可能在17分钟内清除一个阶段的4次。
-#
-#样本输入2
-#10 1000000000
-#3 3
-#1 6
-#4 7
-#1 8
-#5 7
-#9 9
-#2 4
-#6 4
-#5 1
-#3 1
-#
-#样本输出2
-#1000000076
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[0] + x[1])
+    ans = 0
+    for i in range(N):
+        ans += AB[i][0] + AB[i][1]
+        if ans > X:
+            print(i + 1)
+            exit()
+    print(N + 1)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    A = [ab[0] for ab in AB]
+    B = [ab[1] for ab in AB]
+    # print(N, X)
+    # print(A)
+    # print(B)
+
+    # 第i个阶段清除一次的时间
+    # T1 = [A[i] + B[i] for i in range(N)]
+    # print(T1)
+
+    # 第i个阶段清除X次的时间
+    T = [A[i] * X + B[i] for i in range(N)]
+    # print(T)
+
+    # 第i个阶段清除X次的时间的前缀和
+    T_sum = [0] * N
+    T_sum[0] = T[0]
+    for i in range(1, N):
+        T_sum[i] = T_sum[i - 1] + T[i]
+    # print(T_sum)
+
+    # 第i个阶段清除X次的时间的后缀和
+    T_sum_r = [0] * N
+    T_sum_r[N - 1] = T[N - 1]
+    for i in range(N - 2, -1, -1):
+        T_sum_r[i] = T_sum_r[i + 1] + T[i]
+    # print(T_sum_r)
+
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans = T_sum_r[i + 1] + (N - 1) * T[i]
+        elif i == N - 1:
+            ans = T_sum[i - 1] + (N - 1) * T[i]
+        else:
+            ans = min(ans, T_sum[i - 1] + T_sum_r[i + 1] + (N - 1) * T[i])
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    a = [ab[i][0] for i in range(n)]
+    b = [ab[i][1] for i in range(n)]
+    # print(a)
+    # print(b)
+    # print(ab)
+    # print(n)
+    # print(x)
+
+    # 二分探索
+    left = 0
+    right = 1000000000 * 1000000000
+    while left < right:
+        mid = (left + right) // 2
+        # print("mid = ", mid)
+        # print("left = ", left)
+        # print("right = ", right)
+        # print("check = ", check(mid, a, b, x))
+        if check(mid, a, b, x):
+            right = mid
+        else:
+            left = mid + 1
+
+    print(left)
+
+=======
+Suggestion 5
+
+def getMinTime(N,X,AB):
+    if N == 1:
+        return AB[0][0] + AB[0][1] * X
+    else:
+        minTime = AB[0][0] + AB[0][1] * X
+        for i in range(1,N):
+            time = AB[i][0] + AB[i][1] * X
+            if time < minTime:
+                minTime = time
+        return minTime
+
+=======
+Suggestion 6
+
+def main():
+    n,x = map(int,input().split())
+    data = []
+    for i in range(n):
+        data.append(list(map(int,input().split())))
+    print(data)
+    min_time = 10**9*n
+    for i in range(1,n+1):
+        sum_time = 0
+        for j in range(n):
+            if j == i-1:
+                sum_time += data[j][0]+data[j][1]
+            else:
+                sum_time += data[j][1]
+        if sum_time < min_time:
+            min_time = sum_time
+    print(min_time+x)
+
+=======
+Suggestion 7
+
+def main():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    A = [AB[i][0] for i in range(N)]
+    B = [AB[i][1] for i in range(N)]
+    #print(N, X)
+    #print(AB)
+    #print(A)
+    #print(B)
+    #print(sum(A))
+    #print(sum(B))
+    #print(X)
+    #print(X*sum(A))
+    #print(X*sum(B))
+    #print(sum(A)+sum(B))
+    #print(sum(A)+sum(B)+X)
+    #print(X*sum(A)+X*sum(B))
+    #print(X*sum(A)+X*sum(B)+sum(A)+sum(B))
+    print(X*sum(A)+X*sum(B)+sum(A)+sum(B))
+    return
+
+=======
+Suggestion 8
+
+def solve():
+    N,X = map(int,input().split())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int,input().split())))
+    #print(AB)
+    #print(N,X)
+    min_time = 10**9*N
+    for i in range(N):
+        time = 0
+        for j in range(N):
+            if j <= i:
+                time += AB[j][0] + AB[j][1]
+            else:
+                time += AB[j][1]
+        #print(time)
+        min_time = min(min_time,time)
+    print(min_time+X)
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    # print(N, X)
+    # print(AB)
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i] = AB[i][0]
+        B[i] = AB[i][1]
+    # print(A)
+    # print(B)
+    min_time = 10 ** 20
+    for i in range(N):
+        time = A[i] * X + B[i] * (X - 1)
+        if min_time > time:
+            min_time = time
+    print(min_time)
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    A = [ab[0] for ab in AB]
+    B = [ab[1] for ab in AB]
+    ans = 0
+    for i in range(N):
+        if B[i] > A[i]:
+            ans += A[i] * X
+        else:
+            ans += B[i] * X
+    print(ans)

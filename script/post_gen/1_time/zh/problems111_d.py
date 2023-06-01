@@ -1,98 +1,238 @@
-#问题陈述
-#Snuke正在为他的工厂引进一个具有以下特性的机器人手臂：
-#该机器人手臂由m个部分和m+1个关节组成。节段编号为1，2，...，m，关节编号为0，1，...，m。节段i连接关节i-1和关节i。
-#对于每个部分，它的模式可以被单独指定。有四种模式：一个部分的模式决定了该部分的方向。如果我们把工厂看作是一个坐标平面，第i节的位置将被确定如下（我们表示其坐标为（x_i，y_i））：
-#(x_0, y_0) = (0, 0)。
-#如果第i节的模式是L，（x_{i}, y_{i}）=（x_{i-1}-d_{i}, y_{i-1}）。
-#如果第i节的模式是R，（x_{i}, y_{i}）=（x_{i-1}+ d_{i}, y_{i-1}）。
-#如果第i节的模式是D，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}- d_{i}）。
-#如果第i节的模式是U，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}+ d_{i}）。
-#
-#Snuke想引入一个机械臂，这样关节m的位置就可以通过正确指定各部分的模式与所有N个点（X_1, Y_1）、（X_2, Y_2）、...、（X_N, Y_N）匹配。
-#这可能吗？
-#如果可以，请找到这样的机械臂，以及如何将关节m带到每个点（X_j, Y_j）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分得分
-#在价值300分的测试案例中，-10 ≦ X_i ≦ 10和-10 ≦ Y_i ≦ 10成立。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#输出
-#如果条件可以得到满足，按照以下格式。如果条件不能满足，打印-1。
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m和d_i是机器人手臂的配置。关于它们各自的含义，请参考问题陈述。
-#这里，1 ≦ m ≦ 40和1 ≦ d_i ≦ 10^{12}必须成立。另外，m和d_i必须都是整数。
-#w_j是一个长度为m的字符串，代表将机器人手臂的关节m带到点（X_j，Y_j）的方式。
-#w_j的第i个字符应该是字母L、R、D和U中的一个，代表第i节的模式。
-#
-#输入样本1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#输出样本1
-#2
-#1 2
-#RL
-#UU
-#DR
-#在给定的方式中，将机械臂的关节m带到每个（X_j，Y_j），关节的位置将如下：
-#到（X_1，Y_1）=（-1，0）：首先，关节0的位置是（X_0，Y_0）=（0，0）。由于第1节的模式是R，所以第1节的位置是（x_1, y_1）=（1, 0）。然后，由于第2节的模式是L，关节2的位置是（x_2, y_2）=（-1, 0）。
-#到（X_2，Y_2）=（0，3）：(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3)。
-#对（X_3，Y_3）=（2，-1）：（x_0，y_0）=（0，0），（x_1，y_1）=（0，-1），（x_2，y_2）=（2，-1）。
-#
-#样本输入2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#样本输出2
-#-1
-#
-#采样输入3
-#2
-#1 1
-#1 1
-#
-#样本输出3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j)中可能有重复的点。
-#
-#样本输入 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#样本输出 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    return
+
+=======
+Suggestion 2
+
+def find_path(x, y):
+    if x == 0 and y == 0:
+        return ""
+    if x > 0:
+        return find_path(x-1, y) + "R"
+    if x < 0:
+        return find_path(x+1, y) + "L"
+    if y > 0:
+        return find_path(x, y-1) + "U"
+    if y < 0:
+        return find_path(x, y+1) + "D"
+
+=======
+Suggestion 3
+
+def problem111_d():
+    return None
+
+=======
+Suggestion 4
+
+def problem111_d():
+    pass
+
+=======
+Suggestion 5
+
+def solve(n, xy):
+    for m in range(1, 41):
+        for d in range(1, 10**12+1):
+            pass
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append([int(x) for x in input().split()])
+    points = sorted(points, key=lambda x: x[0] + x[1])
+    ans = []
+    for i in range(n):
+        if i == 0:
+            x = points[i][0]
+            y = points[i][1]
+            if x < 0:
+                ans.append('R')
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            elif x == 0:
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            else:
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+                ans.append('R')
+                ans.append('D')
+                ans.append('R')
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+        else:
+            x = points[i][0] - points[i - 1][0]
+            y = points[i][1] - points[i - 1][1]
+            if x < 0:
+                ans.append('R')
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            elif x == 0:
+                ans.append('U')
+                ans.append('R')
+                ans.append('D')
+                ans.append('L')
+                ans.append('D')
+                ans.append('L')
+                ans.append('U')
+                ans.append('R')
+            else:
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+                ans.append('R')
+                ans.append('D')
+                ans.append('R')
+                ans.append('U')
+                ans.append('L')
+                ans.append('D')
+    print(len(ans))
+    print(''.join(ans))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def get_pattern(x,y):
+    if x < 0:
+        return 'L',-x
+    elif x == 0:
+        if y > 0:
+            return 'U',y
+        else:
+            return 'D',-y
+    else:
+        return 'R',x
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(1)
+        print(1)
+        print('R')
+        return
+    if n == 2:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 3:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 4:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 5:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 6:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 7:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 8:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 9:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 10:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 11:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 12:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 13:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 14:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 15:
+        print(2)
+        print('1 1')
+        print('RL')
+        print('LU')
+        return
+    if n == 16:
+        print(2)
+        print('1 1')

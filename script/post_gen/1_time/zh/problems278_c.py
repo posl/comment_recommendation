@@ -1,127 +1,147 @@
-#问题陈述
-#Takahashi经营着一个SNS "Twidai"，它有N个用户，从用户1到用户N。
-#在Twidai，用户可以关注或取消关注其他用户。
-#自Twidai推出以来，已经进行了Q次操作。
-#第i次（1≦i≦Q）操作由三个整数T_i、A_i和B_i表示，其含义如下：
-#如果T_i=1：意味着用户A_i关注了用户B_i。  如果用户A_i在此操作时已经在关注用户B_i，它不会做任何改变。
-#如果T_i = 2：意味着用户A_i取消对用户B_i的关注。  如果用户A_i在此操作时没有关注用户B_i，它不会做任何改变。
-#如果T_i = 3：意味着要求你确定用户A_i和B_i是否在互相关注。  如果用户A_i跟随用户B_i，用户B_i跟随用户A_i，你需要打印Yes，否则打印No。
-#当服务启动时，没有用户跟随任何用户。
-#按i的升序打印所有操作的正确答案，使T_i=3。
-#
-#限制条件
-#2 ≦ N ≦ 10 ^ 9
-#1 ≦ Q ≦ 2×10 ^ 5
-#T _ i=1,2,3 (1≦ i≦ Q)
-#1 ≦ A _ i ≦ N (1≦ i≦ Q)
-#1 ≦ B _ i ≦ N (1≦ i≦ Q)
-#A _ i≠B _ i (1≦ i≦ Q)
-#存在i (1≦ i≦ Q)，使得T _ i=3。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N Q
-#t _ 1 a _ 1 b _ 1
-#t _ 2 a _ 2 b _ 2
-#.
-#.
-#.
-#t _ q a _ q b _ q
-#
-#输出
-#打印X行，其中X是i的数量(1≦i≦Q)，使T _ i=3。
-#第j个(1≦ j≦ X)行应该包含第j个操作的答案，使T _ i=3。
-#
-#输入样本 1
-#3 9
-#1 1 2
-#3 1 2
-#1 2 1
-#3 1 2
-#1 2 3
-#1 3 2
-#3 1 3
-#2 1 2
-#3 1 2
-#
-#样本输出1
-#No
-#Yes
-#No
-#No
-#Twidai有三个用户。
-#这九个操作如下。
-#用户1跟随用户2。  没有其他用户关注或被任何用户关注。
-#判断用户1和2是否在互相关注。  用户1在关注用户2，但是用户2没有关注用户1，所以No是这个操作的正确答案。
-#用户2跟随用户1。
-#判断用户1和2是否在互相关注。  用户1在跟随用户2，而用户2在跟随用户1，所以Yes是这个操作的正确答案。
-#用户2跟随用户3。
-#用户3跟随用户2。
-#判断用户1和3是否在互相关注。  用户1没有关注用户3，而用户3也没有关注用户1，所以No是这个操作的正确答案。
-#用户1取消关注用户2。
-#判断用户1和2是否在互相关注。  用户2正在关注用户1，但是用户1没有关注用户2，所以No是这个操作的正确答案。
-#
-#输入样本 2
-#2 8
-#1 1 2
-#1 2 1
-#3 1 2
-#1 1 2
-#1 1 2
-#1 1 2
-#2 1 2
-#3 1 2
-#
-#样本输出2
-#Yes
-#No
-#一个用户可以多次关注同一个用户。
-#
-#输入样本3
-#10 30
-#3 1 6
-#3 5 4
-#1 6 1
-#3 1 7
-#3 8 4
-#1 1 6
-#2 4 3
-#1 6 5
-#1 5 6
-#1 1 8
-#1 8 1
-#2 3 10
-#1 7 6
-#3 5 6
-#1 6 7
-#3 6 7
-#1 9 5
-#3 8 6
-#3 3 8
-#2 6 9
-#1 7 1
-#3 10 8
-#2 9 2
-#1 10 9
-#2 6 10
-#2 6 8
-#3 1 6
-#3 1 8
-#2 8 5
-#1 9 10
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#Yes
-#Yes
-#No
-#No
-#No
-#Yes
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    users = {i: set() for i in range(1, N+1)}
+    for i in range(Q):
+        T, A, B = map(int, input().split())
+        if T == 1:
+            users[A].add(B)
+        elif T == 2:
+            users[A].discard(B)
+        else:
+            print("Yes" if A in users[B] and B in users[A] else "No")
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    follow = []
+    for _ in range(Q):
+        T, A, B = map(int, input().split())
+        if T == 1:
+            follow.append((A, B))
+        elif T == 2:
+            follow.remove((A, B))
+        else:
+            if (A, B) in follow and (B, A) in follow:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n,q = map(int,input().split())
+    follow = {}
+    for i in range(1,n+1):
+        follow[i] = set()
+    for i in range(q):
+        t,a,b = map(int,input().split())
+        if t == 1:
+            follow[a].add(b)
+        elif t == 2:
+            follow[a].discard(b)
+        elif t == 3:
+            if b in follow[a] and a in follow[b]:
+                print('Yes')
+            else:
+                print('No')
+
+=======
+Suggestion 4
+
+def main():
+    # 读取标准输入
+    N, Q = map(int, input().split())
+    # print(N, Q)
+    # print(type(N), type(Q))
+    # 生成一个N*N的二维列表
+    matrix = [[0 for i in range(N)] for j in range(N)]
+    # print(matrix)
+    # print(type(matrix))
+    # 读取操作
+    for i in range(Q):
+        T, A, B = map(int, input().split())
+        # print(T, A, B)
+        # print(type(T), type(A), type(B))
+        if T == 1:
+            # A关注B
+            matrix[A - 1][B - 1] = 1
+        elif T == 2:
+            # A取消关注B
+            matrix[A - 1][B - 1] = 0
+        elif T == 3:
+            # 判断A和B是否互相关注
+            if matrix[A - 1][B - 1] == 1 and matrix[B - 1][A - 1] == 1:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def follow(followers, followings, a, b):
+    if a == b:
+        return False
+    if b in followings[a]:
+        return True
+    return False
+
+=======
+Suggestion 7
+
+def find_father(fathers, x):
+    if fathers[x] == x:
+        return x
+    else:
+        fathers[x] = find_father(fathers, fathers[x])
+        return fathers[x]
+
+=======
+Suggestion 8
+
+def follow(a,b):
+    if a in follow_dict.keys():
+        follow_dict[a].append(b)
+    else:
+        follow_dict[a] = [b]
+    if b in followed_dict.keys():
+        followed_dict[b].append(a)
+    else:
+        followed_dict[b] = [a]
+
+=======
+Suggestion 9
+
+def main():
+    n,q = map(int,input().split())
+    t = []
+    a = []
+    b = []
+    for i in range(q):
+        t1,a1,b1 = map(int,input().split())
+        t.append(t1)
+        a.append(a1)
+        b.append(b1)
+    for i in range(q):
+        if t[i] == 1:
+            print("No")
+        elif t[i] == 2:
+            print("No")
+        else:
+            if a[i] == b[i]:
+                print("Yes")
+            else:
+                print("No")

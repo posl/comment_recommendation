@@ -1,42 +1,143 @@
-#问题陈述
-#我们有N个骰子，从左到右排成一行。从左边开始的第i个骰子在投掷时显示出从1到p_i的p_i个数字，概率相同。
-#我们将选择相邻的K个骰子，独立投掷每个骰子，并计算出所显示的数字之和。找出这个和的预期值的最大可能值。
-#
-#限制条件
-#1 ≤ k ≤ n ≤ 200000
-#1 ≤ p_i ≤ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#p_1 ... p_N
-#
-#输出
-#打印所示数字之和的预期值的最大可能值。
-#当你的输出与我们的答案的绝对或相对误差最多为10^{-6}时，你的输出将被视为正确。
-#
-#输入样本 1
-#5 3
-#1 2 2 4 5
-#
-#样本输出1
-#7.000000000000
-#当我们从左边开始投掷第三个、第四个和第五个骰子时，所显示的数字之和的期望值是7，这是我们能够达到的最大值。
-#
-#样本输入2
-#4 1
-#6 6 6 6
-#
-#样本输出2
-#3.500000000000
-#无论我们选择哪种骰子，所示数字的期望值都是3.5。
-#
-#样本输入3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#样本输出3
-#32.000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    sum = 0
+    for i in range(k):
+        sum += p[i]
+    max = sum
+    for i in range(k, n):
+        sum = sum - p[i-k] + p[i]
+        if sum > max:
+            max = sum
+    print((max + k)/2)
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    for i in range(1, n + 1):
+        p[i] += p[i - 1]
+    ans = 0
+    for i in range(k, n + 1):
+        ans = max(ans, p[i] - p[i - k])
+    print((ans + k) / 2)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    #print(n,k,p)
+    psum = [0] * (n+1)
+    for i in range(n):
+        psum[i+1] = psum[i] + p[i]
+    #print(psum)
+    ans = 0
+    for i in range(n-k+1):
+        ans = max(ans,(psum[i+k]-psum[i]+k)/2)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    p = list(map(int,input().split()))
+    sum_p = [0]*(N+1)
+    for i in range(N):
+        sum_p[i+1] = sum_p[i] + p[i]
+    ans = 0
+    for i in range(N-K+1):
+        ans = max(ans, (sum_p[i+K]-sum_p[i])/2 + sum_p[i])
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int, input().split())
+    p = list(map(int, input().split()))
+    sum_p = sum(p[:k])
+    max_sum_p = sum_p
+    for i in range(k,n):
+        sum_p = sum_p - p[i-k] + p[i]
+        if sum_p > max_sum_p:
+            max_sum_p = sum_p
+    print((max_sum_p+k)/2)
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+
+    # 计算答案
+    s = sum(p[:k])
+    ans = s
+    for i in range(k, n):
+        s += p[i] - p[i-k]
+        ans = max(ans, s)
+
+    # 打印答案
+    print((ans + k) / 2)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    max_sum = 0
+    for i in range(n-k+1):
+        sum = 0
+        for j in range(i,i+k):
+            sum += p[j]
+        if max_sum < sum:
+            max_sum = sum
+    print((max_sum+k)/2)
+
+=======
+Suggestion 9
+
+def solve():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        ans += (p[i] + 1) / 2
+    cur = ans
+    for i in range(K, N):
+        cur += (p[i] + 1) / 2
+        cur -= (p[i - K] + 1) / 2
+        ans = max(ans, cur)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    s = sum(p[:k])
+    ans = s
+    for i in range(n-k):
+        s = s - p[i] + p[i+k]
+        ans = max(ans,s)
+    print((ans+k)/2)

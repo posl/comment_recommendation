@@ -1,49 +1,107 @@
-#问题陈述
-#你有一个锅和N种配料。每种原料都有一个实数参数，叫做值，第i种原料的值（1 ≦ i ≦ N）是v_i。
-#当你在锅里放入两种原料时，它们会消失并形成一种新的原料。新原料的价值将是（x+y）/2，其中x和y是所消耗的原料的价值，你可以再次将这种原料放入锅中。
-#在你以这种方式组合原料N-1次后，你最终会得到一种原料。找到这个原料的最大可能值。
-#
-#限制条件
-#2 ≦ N ≦ 50
-#1 ≦ v_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#v_1 v_2 ... v_N
-#
-#输出
-#打印一个十进制数字（或一个整数），代表剩余的最后一种成分的最大可能值。
-#当你的输出与法官的输出的绝对或相对误差最多为10^{-5}时，你的输出将被判断为正确。
-#
-#输入样本 1
-#2
-#3 4
-#
-#样本输出1
-#3.5
-#如果你开始有两种成分，唯一的选择就是把它们都放到锅里。由数值为3和4的原料产生的原料的数值是（3+4）/2=3.5。
-#打印3.50001、3.49999等也会被接受。
-#
-#输入样本 2
-#3
-#500 300 200
-#
-#样本输出2
-#375
-#这次你开始有三种成分，你可以选择在第一种成分中使用什么。有三种可能的选择：
-#使用价值500和300的原料来生产价值（500+300）/2=400的原料。下一个成分将使用这个成分和价值200的成分，产生一个价值（400+200）/2=300的成分。
-#使用价值为500和200的原料生产价值为（500+200）/2=350的原料。下一个成分将使用这个成分和价值300的成分，得到一个价值（350+300）/2=325的成分。
-#使用价值300和200的原料来生产价值（300+200）/2=250的原料。下一个成分将使用这个成分和价值500的成分，得到一个价值（250+500）/2=375的成分。
-#因此，剩下的最后一个原料的最大可能值是375。
-#打印375.0，以此类推也会被接受。
-#
-#输入样本 3
-#5
-#138 138 138 138 138
-#
-#样本输出3
-#138
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = v[0]
+    for i in range(1, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    result = v[0]
+    for i in range(1, N):
+        result = (result + v[i]) / 2
+    print(result)
+
+=======
+Suggestion 3
+
+def get_max_value_of_last_ingredient(ingredient_list):
+    # 从大到小排序
+    ingredient_list.sort(reverse=True)
+    # 从最大的两个开始计算
+    while len(ingredient_list) > 1:
+        # 取出最大的两个值
+        max_value1 = ingredient_list.pop(0)
+        max_value2 = ingredient_list.pop(0)
+        # 计算并添加到列表
+        ingredient_list.append((max_value1 + max_value2) / 2)
+        # 从大到小排序
+        ingredient_list.sort(reverse=True)
+    # 取出最后一个值
+    max_value = ingredient_list.pop()
+    return max_value
+
+=======
+Suggestion 4
+
+def main():
+    print("Hello World!")
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    ans = v[0]
+    for i in range(1, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    v.sort()
+    result = v[0]
+    for i in range(1, n):
+        result = (result + v[i]) / 2
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    v = [int(i) for i in input().split()]
+    v.sort()
+    ans = v[0]
+    for i in range(1, n):
+        ans = (ans + v[i]) / 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    v = list(map(int,input().split()))
+    v.sort()
+    ans = v[0]
+    for i in range(1,N):
+        ans = (ans+v[i])/2
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_max_value(vlist):
+    vlist.sort()
+    while len(vlist) > 1:
+        vlist.append((vlist.pop(0) + vlist.pop(0)) / 2)
+    return vlist[0]

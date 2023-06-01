@@ -1,30 +1,90 @@
-#问题陈述
-#Serval、Fennec和Raccoon玩石头剪刀布，结果打成平手。
-#你得到的字符x和y分别代表Fennec和Raccoon投掷的手。这里，0代表石头，1代表剪刀，2代表纸。
-#打印与薮猫扔出的手相对应的字符，这可以唯一地确定。
-#
-#限制条件
-#x和y各为0、1或2。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#x y
-#
-#输出
-#打印答案，石头为0，剪刀为1，纸为2。
-#
-#输入样本 1
-#0 1
-#
-#输出样本 1
-#2
-#Fennec扔了石头，Raccoon扔了剪刀。薮猫必须投掷纸张，才能抽中。
-#
-#输入样本2
-#0 0
-#
-#样本输出2
-#0
-#Fennec扔了石头，Raccoon也扔了石头。要想平局，薮猫必须扔出石头。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(int,input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3-x-y)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    print((x + 1) % 3 if x == y else 3 - x - y)
+
+=======
+Suggestion 3
+
+def janken(x, y):
+    if x == 0 and y == 1:
+        return 2
+    if x == 0 and y == 2:
+        return 0
+    if x == 1 and y == 0:
+        return 0
+    if x == 1 and y == 2:
+        return 1
+    if x == 2 and y == 0:
+        return 2
+    if x == 2 and y == 1:
+        return 1
+
+x, y = map(int, input().split())
+print(janken(x, y))
+
+=======
+Suggestion 4
+
+def f(x,y):
+    if x==0 and y==1:
+        print(2)
+    elif x==0 and y==2:
+        print(0)
+    elif x==1 and y==0:
+        print(0)
+    elif x==1 and y==2:
+        print(1)
+    elif x==2 and y==0:
+        print(1)
+    elif x==2 and y==1:
+        print(2)
+    else:
+        print(x)
+x,y=map(int,input().split())
+f(x,y)
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x + 3) % 3)
+
+=======
+Suggestion 6
+
+def main():
+    x,y = map(int, input().split())
+    print(3-x-y)
+
+=======
+Suggestion 7
+
+def main():
+    x,y = map(int, input().split())
+    print((x-y)%3)
+
+=======
+Suggestion 8
+
+def solve():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)

@@ -1,27 +1,92 @@
-#问题陈述
-#有三个编号为1、2、3的高桥，以及三顶红色、绿色和蓝色的帽子。  每个高桥穿戴一顶帽子。  高桥i目前所戴的帽子的颜色由一个字符S_i表示。  这里，R对应红色，G对应绿色，B对应蓝色。  现在，他们将准确地进行以下操作10^{18}次。
-#操作
-#在三个高桥人中选择两个。  两人交换他们所戴的帽子。
-#有没有可能在10^{18}次重复之后，让高桥i戴上与字符T_i对应的颜色的帽子？
-#
-#限制条件
-#S_1, S_2, S_3是R, G, B的排列组合。
-#T_1, T_2, T_3是R, G, B的排列组合。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_1 S_2 S_3
-#T_1 T_2 T_3
-#
-#输出
-#如果在10^{18}次重复之后，有可能使高桥i戴上与字符T_i对应的颜色的帽子，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#R G B
-#R G B
-#
-#样本输出1
-#Yes
-#例如，可以通过重复10^{18}次交换高桥1号和高桥2号的帽子的操作来实现目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input().split()
+    T = input().split()
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input().split()
+    t = input().split()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def check():
+    S = input()
+    T = input()
+    if S == T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    # 输入
+    s = input().split()
+    t = input().split()
+    # 处理
+    # 输出
+    if s[0] == t[0] and s[1] == t[1] and s[2] == t[2]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    s1, s2, s3 = input().split()
+    t1, t2, t3 = input().split()
+    if s1 == t1 and s2 == t2 and s3 == t3:
+        print("Yes")
+    else:
+        print("No")
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    t = input()
+    print('Yes' if s == t else 'No')
+solve()

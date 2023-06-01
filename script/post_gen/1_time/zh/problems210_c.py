@@ -1,46 +1,203 @@
-#问题陈述
-#有N颗糖果从左到右排成一排。
-#每个糖果都有一种颜色，是10^9种颜色中的一种，称为颜色1，颜色2，...，和颜色10^9。
-#对于每个i=1，2，...，N，从左边开始的第i颗糖果的颜色是颜色c_i。
-#从这一行中，高桥可以选择K个连续的糖果并得到它们。
-#也就是说，他可以选择一个整数i，使1≦i≦N-K+1，并从左边得到第i，(i+1)-第，(i+2)-第，...，(i+K-1)-第糖果。
-#高桥喜欢吃五颜六色的糖果，所以他的糖果颜色越多，他就会越高兴。
-#请打印出他得到的糖果中可能存在的最大数量的不同颜色。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 3 × 10^5
-#1 ≦ c_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#c_1 c_2 ... c_N
-#
-#輸出
-#打印出高桥的糖果中可能存在的最大数量的不同颜色。
-#
-#输入样本 1
-#7 3
-#1 2 1 2 3 3 1
-#
-#样本输出 1
-#3
-#如果高桥得到第3至第5颗糖果，它们将有3种不同的颜色，这是可能的最大数量。
-#
-#输入样本2
-#5 5
-#4 4 4 4 4
-#
-#样本输出2
-#1
-#高桥可以得到所有这些糖果，但它们都是单一颜色的。
-#
-#样本输入3
-#10 6
-#304621362 506696497 304621362 506696497 834022578 304621362 414720753 304621362 304621362 414720753
-#
-#样本输出3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    c = list(map(int,input().split()))
+    s = set()
+    for i in range(k):
+        s.add(c[i])
+    ans = len(s)
+    for i in range(k,n):
+        s.add(c[i])
+        s.remove(c[i-k])
+        ans = max(ans,len(s))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int, input().split())
+    c = list(map(int, input().split()))
+    max = 0
+    for i in range(n-k+1):
+        if len(set(c[i:i+k])) > max:
+            max = len(set(c[i:i+k]))
+    print(max)
+
+=======
+Suggestion 3
+
+def get_max_color_count(candies, k):
+    max_color_count = 0
+    for i in range(0, len(candies) - k + 1):
+        color_count = len(set(candies[i:i+k]))
+        if color_count > max_color_count:
+            max_color_count = color_count
+    return max_color_count
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    s = set()
+    for i in range(n-k+1):
+        for j in range(i,i+k):
+            s.add(a[j])
+        ans = max(ans,len(s))
+        s.clear()
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    c = list(map(int, input().split()))
+    c_set = set(c[:K])
+    c_max = len(c_set)
+    for i in range(N-K):
+        c_set.remove(c[i])
+        c_set.add(c[i+K])
+        if len(c_set) > c_max:
+            c_max = len(c_set)
+    print(c_max)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    candies = list(map(int, input().split()))
+    colors = {}
+    for i in range(k):
+        if candies[i] in colors.keys():
+            colors[candies[i]] += 1
+        else:
+            colors[candies[i]] = 1
+    max_colors = len(colors.keys())
+    for i in range(k, n):
+        if candies[i] in colors.keys():
+            colors[candies[i]] += 1
+        else:
+            colors[candies[i]] = 1
+        if colors[candies[i-k]] == 1:
+            del colors[candies[i-k]]
+        else:
+            colors[candies[i-k]] -= 1
+        max_colors = max(max_colors, len(colors.keys()))
+    print(max_colors)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    # print(n, k)
+    # print(c)
+    # print(len(c))
+    # print(len(set(c)))
+    # print(set(c))
+    # print(list(set(c)))
+    # print(c[0:0 + k])
+    # print(c[0:0 + k - 1])
+    # print(c[0:0 + k - 2])
+    # print(c[0:0 + k - 3])
+    # print(c[0:0 + k - 4])
+    # print(c[0:0 + k - 5])
+    # print(c[0:0 + k - 6])
+    # print(c[0:0 + k - 7])
+    # print(c[0:0 + k - 8])
+    # print(c[0:0 + k - 9])
+    # print(c[0:0 + k - 10])
+    # print(c[0:0 + k - 11])
+    # print(c[0:0 + k - 12])
+    # print(c[0:0 + k - 13])
+    # print(c[0:0 + k - 14])
+    # print(c[0:0 + k - 15])
+    # print(c[0:0 + k - 16])
+    # print(c[0:0 + k - 17])
+    # print(c[0:0 + k - 18])
+    # print(c[0:0 + k - 19])
+    # print(c[0:0 + k - 20])
+    # print(c[0:0 + k - 21])
+    # print(c[0:0 + k - 22])
+    # print(c[0:0 + k - 23])
+    # print(c[0:0 + k - 24])
+    # print(c[0:0 + k - 25])
+    # print(c[0:0 + k - 26])
+    # print(c[0:0 + k - 27])
+    # print(c[0:0 + k - 28])
+    # print(c[0:0 + k - 29])
+    # print(c[0:0 + k - 30])
+    # print(c[0
+
+=======
+Suggestion 8
+
+def solve():
+    n, k = map(int, input().split())
+    c = list(map(int, input().split()))
+    s = set(c[:k])
+    ans = len(s)
+    for i in range(k, n):
+        s.add(c[i])
+        s.discard(c[i - k])
+        ans = max(ans, len(s))
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+    candies = list(map(int, input().split()))
+
+    # 用字典记录每个糖果的数目
+    candy_dict = {}
+    for candy in candies:
+        if candy not in candy_dict:
+            candy_dict[candy] = 1
+        else:
+            candy_dict[candy] += 1
+
+    # 用集合记录每个糖果的数目
+    candy_set = set(candy_dict.values())
+
+    # 如果有k个糖果，那么输出k
+    if len(candy_set) == k:
+        print(k)
+        return
+
+    # 如果有k个糖果以上，那么输出k
+    if len(candy_set) > k:
+        print(k)
+        return
+
+    # 如果有k个糖果以下，那么输出糖果的种类数
+    print(len(candy_set))
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    candy = list(map(int, input().split()))
+    candy_set = set(candy[:k])
+    max_candy = len(candy_set)
+    for i in range(n - k):
+        candy_set.add(candy[i + k])
+        if len(candy_set) > max_candy:
+            max_candy = len(candy_set)
+        candy_set.remove(candy[i])
+    print(max_candy)

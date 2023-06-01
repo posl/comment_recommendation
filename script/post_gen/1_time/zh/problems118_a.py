@@ -1,36 +1,64 @@
-#问题陈述
-#给你一个正整数A和B。
-#如果A是B的除数，打印A+B；否则，打印B-A。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A ≦ B ≦ 20
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#如果A是B的除数，打印A+B；否则，打印B-A。
-#
-#输入样本 1
-#4 12
-#
-#输出样本 1
-#16
-#因为4是12的除数，所以应该打印4+12=16。
-#
-#输入样本2
-#8 20
-#
-#样本输出2
-#12
-#
-#样本输入3
-#1 1
-#
-#样品输出3
-#2
-#1是1的除数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    input_str = input("请输入两个数，以空格分隔:")
+    input_list = input_str.split(" ")
+    return input_list
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 计算
+    if b % a == 0:
+        result = a + b
+    else:
+        result = b - a
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 5
+
+def add_or_sub(a,b):
+    if b%a == 0:
+        print(a+b)
+    else:
+        print(b-a)
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    if B % A == 0:
+        print(A+B)
+    else:
+        print(B-A)

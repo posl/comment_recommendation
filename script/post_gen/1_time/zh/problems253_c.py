@@ -1,68 +1,270 @@
-#问题陈述
-#我们有一个整数多集S，最初是空的。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下类型之一。
-#1 x:在S中插入一个x。
-#2 x c：从S中删除一个x m次，其中m = min(c,( S中包含的x的数量))。
-#3 : 打印（S的最大值）-（S的最小值）。  当这个查询被给出时，保证S不是空的。
-#
-#
-#约束条件
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ Q
-#当给定一个类型3的查询时，S不是空的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#query_i，表示第i个查询，是以下格式之一：
-#1 x
-#2 x c
-#3
-#
-#输出
-#按给定的顺序打印3类查询的答案，用换行符分隔。
-#
-#输入样本1
-#8
-#1 3
-#1 2
-#3
-#1 2
-#1 7
-#3
-#2 2 3
-#3
-#
-#样本输出1
-#1
-#5
-#4
-#多集S的转换过程如下。
-#第1次查询：在S中插入3，现在S是{3 }。
-#第2次查询：在S中插入2，现在S是{2, 3 }。
-#第3次查询：S = { 2, 3}的最大值是3，最小值是2，所以打印3-2=1。
-#第4次查询：在S中插入2，现在S是{2，2，3 }。
-#第5次查询：在S中插入7，现在S是{2，2，3，7}。
-#第6次查询：S={2,2,3,7}的最大值为7，最小值为2，所以打印7-2=5。
-#第7次查询：由于S中有两个2，并且[min(2,3)]=2，所以从S中删除2两次。  现在S是{3，7}。
-#第8次查询：S={3，7}的最大值是7，最小值是3，所以打印7-3=4。
-#
-#输入样本 2
-#4
-#1 10000
-#1 1000
-#2 100 3
-#1 10
-#
-#输出样本2
-#如果给定的查询不包含类型3的查询，就不应该打印任何东西。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    q = int(input())
+    s = []
+    for i in range(q):
+        query = input().split()
+        if int(query[0]) == 1:
+            s.append(int(query[1]))
+        elif int(query[0]) == 2:
+            for i in range(int(query[2])):
+                if int(query[1]) in s:
+                    s.remove(int(query[1]))
+        elif int(query[0]) == 3:
+            print(max(s)-min(s))
+
+=======
+Suggestion 2
+
+def main():
+    #n = int(input())
+    #a = [0]*n
+    #for i in range(n):
+    #    a[i] = int(input())
+    #a.sort()
+    #print(a[-1]-a[0])
+    #print(a)
+    #print(a[-1])
+    #print(a[0])
+
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = input()
+        if query[0] == "1":
+            a.append(int(query.split()[1]))
+        elif query[0] == "2":
+            x, c = map(int, query.split()[1:])
+            for j in range(min(c, a.count(x))):
+                a.remove(x)
+        else:
+            a.sort()
+            print(a[-1]-a[0])
+
+=======
+Suggestion 3
+
+def solve():
+    import sys
+    from collections import defaultdict
+    from heapq import heappush, heappop
+    input = sys.stdin.readline
+    Q = int(input())
+    S = []
+    cnt = defaultdict(int)
+    for i in range(Q):
+        query = input().split()
+        if query[0] == '1':
+            heappush(S, int(query[1]))
+            cnt[int(query[1])] += 1
+        elif query[0] == '2':
+            x = int(query[1])
+            c = int(query[2])
+            while c > 0:
+                if S[0] == x:
+                    heappop(S)
+                    cnt[x] -= 1
+                    c -= 1
+                else:
+                    break
+        else:
+            while cnt[S[0]] == 0:
+                heappop(S)
+            print(S[-1] - S[0])
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+
+    # 问题求解
+    S = []
+    for i in range(Q):
+        if query[i][0] == 1:
+            S.append(query[i][1])
+        elif query[i][0] == 2:
+            for j in range(min(query[i][2], S.count(query[i][1]))):
+                S.remove(query[i][1])
+        else:
+            print(max(S) - min(S))
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    import bisect
+    input = sys.stdin.readline
+    n = int(input())
+    a = []
+    for _ in range(n):
+        query = input().split()
+        if query[0] == '1':
+            bisect.insort_left(a, int(query[1]))
+        elif query[0] == '2':
+            for _ in range(min(int(query[2]), a.count(int(query[1])))):
+                a.remove(int(query[1]))
+        else:
+            print(a[-1] - a[0])
+
+=======
+Suggestion 6
+
+def main():
+    q = int(input())
+    s = []
+    for _ in range(q):
+        query = input().split()
+        if query[0] == '1':
+            s.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            c = int(query[2])
+            count = 0
+            for i in range(len(s) - 1, -1, -1):
+                if s[i] == x:
+                    s.pop(i)
+                    count += 1
+                    if count == c:
+                        break
+        else:
+            print(max(s) - min(s))
+
+=======
+Suggestion 7
+
+def solve():
+    from collections import Counter
+    from heapq import heappush, heappop
+    from bisect import bisect_left, bisect_right
+    import sys
+    input = sys.stdin.readline
+
+    Q = int(input())
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 1回目のクエリの処理
+    c = Counter()
+    minheap = []
+    maxheap = []
+    for q in queries:
+        if q[0] == 1:
+            c[q[1]] += 1
+            heappush(minheap, q[1])
+            heappush(maxheap, -q[1])
+        elif q[0] == 2:
+            x, c = q[1], q[2]
+            while c > 0 and c[x] > 0:
+                c[x] -= 1
+                c -= 1
+        else:
+            break
+    # 2回目のクエリの処理
+    minheap2 = []
+    maxheap2 = []
+    for q in queries:
+        if q[0] == 1:
+            c[q[1]] += 1
+            heappush(minheap2, q[1])
+            heappush(maxheap2, -q[1])
+        elif q[0] == 2:
+            x, c = q[1], q[2]
+            while c > 0 and c[x] > 0:
+                c[x] -= 1
+                c -= 1
+        else:
+            break
+
+    ans = []
+    for q in queries:
+        if q[0] == 1:
+            c[q[1]] += 1
+            heappush(minheap2, q[1])
+            heappush(maxheap2, -q[1])
+        elif q[0] == 2:
+            x, c = q[1], q[2]
+            while c > 0 and c[x] > 0:
+                c[x] -= 1
+                c -= 1
+        else:
+            ans.append(-maxheap2[0] - minheap2[0])
+    print('\n'.join(map(str, ans)))
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    q = int(input())
+    query = []
+
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+
+    S = []
+    for i in range(q):
+        if query[i][0] == 1:
+            S.append(query[i][1])
+        elif query[i][0] == 2:
+            x = query[i][1]
+            c = query[i][2]
+            count = 0
+            for j in range(len(S)):
+                if S[j] == x:
+                    count += 1
+                    if count == c:
+                        S.pop(j)
+                        break
+        elif query[i][0] == 3:
+            print(max(S) - min(S))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+
+    ans = []
+    for i in range(N):
+        if A[i][0] == 1:
+            ans.append(A[i][1])
+        elif A[i][0] == 2:
+            tmp = []
+            for j in range(len(ans)):
+                if ans[j] == A[i][1]:
+                    tmp.append(j)
+            for j in range(A[i][2]):
+                ans.pop(tmp.pop())
+        elif A[i][0] == 3:
+            print(max(ans) - min(ans))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        query = input().split()
+        if query[0] == "1":
+            s.append(int(query[1]))
+        elif query[0] == "2":
+            x = int(query[1])
+            c = int(query[2])
+            for i in range(min(c, s.count(x))):
+                s.remove(x)
+        else:
+            print(max(s) - min(s))

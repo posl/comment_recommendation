@@ -1,37 +1,228 @@
-#问题陈述
-#给你正整数N和M。
-#有多少个由正整数组成的长度为N的序列a满足a_1 × a_2 × ...？× a_N = M?找出10^9+7的模数。
-#这里，当存在一些i，使得a_i'≠a_i''时，两个序列a'和a''被视为不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#
-#输出
-#打印由满足条件的正整数组成的序列的数量，以10^9+7为模数。
-#
-#输入样本 1
-#2 6
-#
-#输出示例 1
-#4
-#有四个序列满足条件：{a_1, a_2}={1, 6}, {2, 3}, {3, 2}和{6, 1}。
-#
-#输入样本2
-#3 12
-#
-#样本输出2
-#18
-#
-#样本输入3
-#100000 1000000000
-#
-#样本输出3
-#957870001
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_prime_list(num):
+    prime_list = []
+    for i in range(2, num+1):
+        if num % i == 0:
+            prime_list.append(i)
+            num = num // i
+            if num == 1:
+                break
+    return prime_list
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    #N, M = 100000, 1000000000
+    mod = 10**9+7
+    ans = 1
+    i = 2
+    while i*i <= M:
+        if M % i == 0:
+            cnt = 0
+            while M % i == 0:
+                cnt += 1
+                M //= i
+            ans *= comb(N+cnt-1, cnt, mod)
+            ans %= mod
+        i += 1
+    if M != 1:
+        ans *= N
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    #print(n,m)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    #print(10**5)
+    #print(10**9)
+    #print(10**9+7)
+    ans = 1
+    for i in range(2,int(m**0.5)+1):
+        if m%i == 0:
+            cnt = 0
+            while m%i == 0:
+                cnt += 1
+                m //= i
+            ans *= cnt+n-1
+            ans %= 10**9+7
+    if m != 1:
+        ans *= 1+n-1
+        ans %= 10**9+7
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    ans = 1
+    i = 2
+    while i * i <= M:
+        cnt = 0
+        while M % i == 0:
+            cnt += 1
+            M //= i
+        ans *= cnt + 1
+        ans %= 1000000007
+        i += 1
+    if M != 1:
+        ans *= 2
+        ans %= 1000000007
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+    return divisors
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    i = 2
+    ans = 1
+    while i*i <= m:
+        cnt = 0
+        while m % i == 0:
+            cnt += 1
+            m //= i
+        ans *= cnt + 1
+        i += 1
+    if m > 1:
+        ans *= 2
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+n, m = map(int, input().split())
+MOD = 10**9 + 7
+ans = 1
+for i in range(1, m + 1):
+    cnt = 0
+    for p in prime_factorize(i):
+        cnt += 1
+    ans *= pow(cnt, n, MOD)
+    ans %= MOD
+print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    pass
+
+=======
+Suggestion 9
+
+def prime_factorize(n):
+    a=[]
+    while n%2==0:
+        a.append(2)
+        n//=2
+    f=3
+    while f*f<=n:
+        if n%f==0:
+            a.append(f)
+            n//=f
+        else:
+            f+=2
+    if n!=1:
+        a.append(n)
+    return a
+
+n,m=map(int,input().split())
+mod=10**9+7
+
+f=prime_factorize(m)
+f=list(set(f))
+f.sort()
+size=len(f)
+cnt=[0]*size
+for i in range(size):
+    while m%f[i]==0:
+        cnt[i]+=1
+        m//=f[i]
+
+=======
+Suggestion 10
+
+def solve():
+    #N,M = map(int, input().split())
+    N,M = 100000, 1000000000
+    mod = 1000000007
+    ans = 1
+    i = 2
+    while i * i <= M:
+        cnt = 0
+        while M % i == 0:
+            cnt += 1
+            M //= i
+        ans = ans * (cnt + N - 1) % mod
+        i += 1
+    if M != 1:
+        ans = ans * N % mod
+    print(ans)

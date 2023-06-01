@@ -1,34 +1,165 @@
-#问题陈述
-#我们有一个长度为N的字符串S，由R、G和B组成。
-#求满足以下两个条件的三联体(i,j,k)(1 ≦ i < j < k ≦ N)的数量：
-#S_i ≠ S_j, S_i ≠ S_k, and S_j ≠ S_k.
-#j - i ≠ k - j。
-#
-#限制条件
-#1 ≦ N ≦ 4000
-#S是一个长度为N的字符串，由R、G和B组成。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#S
-#
-#输出
-#打印有关三联体的数量。
-#
-#输入样本1
-#4
-#RRGB
-#
-#采样输出1
-#1
-#只有三联体（1,3,4）满足两个条件。三联体（2,3,4）满足第一个条件，但不满足第二个条件，所以不算数。
-#
-#样本输入2
-#39
-#rbrbgrbggbbrrgbbrrrbggbrbgbrbgbrbbbgbbb
-#
-#样本输出2
-#1800
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def count(s):
+    c = [0]*3
+    for i in range(len(s)):
+        if s[i] == 'R':
+            c[0] += 1
+        elif s[i] == 'G':
+            c[1] += 1
+        else:
+            c[2] += 1
+    return c[0]*c[1]*c[2]
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = j * 2 - i
+            if k < n and s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    r = S.count('R')
+    g = S.count('G')
+    b = S.count('B')
+    ans = r * g * b
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2 * j - i
+            if k >= N:
+                continue
+            if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                ans -= 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2*j - i
+            if k < N:
+                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+    count = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if S[i] != S[j] and S[i] != S[k] and S[j] != S[k] and j-i != k-j:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def calc(s):
+    n = len(s)
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == s[j]:
+                continue
+            k = 2*j - i
+            if k >= n:
+                continue
+            if s[i] == s[k] or s[j] == s[k]:
+                continue
+            cnt += 1
+    return cnt
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            k = 2*j - i
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[i] != s[k] and s[j] != s[k]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1, n):
+            k = 2 * j - i
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                ans -= 1
+    print(ans)
+solve()
+
+=======
+Suggestion 9
+
+def countRGB(s):
+    count = 0
+    for i in range(len(s)):
+        for j in range(i+1, len(s)):
+            for k in range(j+1, len(s)):
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j - i != k - j:
+                    count += 1
+    return count
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r*g*b
+    for i in range(n):
+        for j in range(i+1,n):
+            k = 2*j-i
+            if k >= n:
+                continue
+            if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                ans -= 1
+    print(ans)

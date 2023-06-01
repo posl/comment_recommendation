@@ -1,38 +1,58 @@
-#问题陈述
-#给你整数A、B和C。
-#判断A^2+B^2<C^2是否成立。  
-#
-#限制条件
-#0 ≦ A ≦ 1000
-#0 ≦ B ≦ 1000
-#0 ≦ C ≦ 1000
-#A, B, 和 C 是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B C
-#
-#輸出
-#如果A^2 + B^2 < C^2成立，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 2 4
-#
-#输出样本 1
-#Yes
-#由于A^2 + B^2 = 2^2 + 2^2 = 8，C^2 = 4^2 = 16，我们有A^2 + B^2 < C^2，所以我们应该打印是。
-#
-#输入样本2
-#10 10 10
-#
-#样本输出 2
-#No
-#因为A^2+B^2=200，C^2=100，所以A^2+B^2<C^2不成立。
-#
-#样本输入3
-#3 4 5
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int, input().split())
+    if a**2 + b**2 < c**2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a**2+b**2 < c**2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    while True:
+        try:
+            a, b, c = map(int, input().split())
+            if a**2 + b**2 < c**2:
+                print('Yes')
+            else:
+                print('No')
+        except:
+            break
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C = map(int,input().split())
+    if A**2+B**2<C**2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def square():
+    A, B, C = input().split()
+    A = int(A)
+    B = int(B)
+    C = int(C)
+    if A ** 2 + B ** 2 < C ** 2:
+        print('Yes')
+    else:
+        print('No')

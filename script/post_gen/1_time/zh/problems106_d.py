@@ -1,90 +1,150 @@
-#问题陈述
-#在高桥王国，有一条东西走向的铁路，沿途有N个城市，从西到东编号为1，2，3，...，N。
-#一家名为AtCoder Express的公司拥有M列火车，火车i从城市L_i运行到城市R_i（有可能L_i=R_i）。
-#国王高桥对以下Q事项感兴趣：
-#在城市p_i到城市q_i这一段内严格运行的列车数量，也就是说，有多少列车j使p_i≦L_j，R_j≦q_i。
-#虽然他是天才，但这一数据太多，他一个人无法处理。请为这些Q查询中的每一个找到答案，以帮助他。
-#
-#限制条件
-#N是1到500之间的整数（包括在内）。
-#M是1至200 000（包括）之间的整数。
-#Q是一个介于1和100 000之间的整数(包括在内)。
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#输出
-#打印Q行。第i行应该包含从城市p_i到城市q_i这一段内严格运行的列车数量。
-#
-#输入样本 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#样本输出1
-#3
-#由于所有的列车都在城市1到城市2的路段内运行，唯一的查询答案是3。
-#
-#输入样本2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#样本输出2
-#1
-#1
-#第一个查询是关于从城市1到7的路段。只有一列火车在该区间内严格运行：1号列车。
-#第二个查询是关于城市3至10的路段。只有一列火车严格在该区间内运行：3号列车。
-#
-#输入样本 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#样本输出3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m,q = map(int,input().split())
+    trains = []
+    for i in range(m):
+        trains.append(list(map(int,input().split())))
+    for i in range(q):
+        p,q = map(int,input().split())
+        count = 0
+        for j in range(m):
+            if trains[j][0] >= p and trains[j][1] <= q:
+                count += 1
+        print(count)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M, Q = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(M)]
+    PQ = [list(map(int, input().split())) for _ in range(Q)]
+
+    # M列火车，火车i从城市L_i运行到城市R_i（有可能L_i=R_i）。
+    # 国王高桥对以下Q事项感兴趣：
+    # 在城市p_i到城市q_i这一段内严格运行的列车数量，也就是说，有多少列车j使p_i≦L_j，R_j≦q_i。
+    # 虽然他是天才，但这一数据太多，他一个人无法处理。请为这些Q查询中的每一个找到答案，以帮助他。
+
+    # 1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
+    # 1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
+
+    # 1 2 3 4 5 6 7 8 9 10
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+    # 1 1 1 1 1 1 1 1 1 1
+
+    # 1 2 3 4 5 6 7
+
+=======
+Suggestion 4
+
+def get_input():
+    n, m, q = map(int, raw_input().split())
+    l = []
+    r = []
+    p = []
+    q1 = []
+    for i in range(m):
+        l1, r1 = map(int, raw_input().split())
+        l.append(l1)
+        r.append(r1)
+    for i in range(q):
+        p1, q2 = map(int, raw_input().split())
+        p.append(p1)
+        q1.append(q2)
+    return n, m, q, l, r, p, q1
+
+=======
+Suggestion 5
+
+def main():
+    n, m, q = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_, r_ = map(int, input().split())
+        l.append(l_)
+        r.append(r_)
+    p = []
+    q = []
+    for i in range(q):
+        p_, q_ = map(int, input().split())
+        p.append(p_)
+        q.append(q_)
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if l[j] >= p[i] and r[j] <= q[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N,M,Q = map(int,input().split())
+    l = [0] * (N + 1)
+    r = [0] * (N + 1)
+    for i in range(M):
+        a,b = map(int,input().split())
+        l[a] += 1
+        r[b] += 1
+    for i in range(1,N+1):
+        l[i] += l[i-1]
+        r[i] += r[i-1]
+    for i in range(Q):
+        p,q = map(int,input().split())
+        print(r[q] - l[p-1])
+
+=======
+Suggestion 7
+
+def read_input():
+    n,m,q = [int(x) for x in input().split()]
+    l = []
+    r = []
+    for i in range(m):
+        l_i,r_i = [int(x) for x in input().split()]
+        l.append(l_i)
+        r.append(r_i)
+    p = []
+    q = []
+    for i in range(q):
+        p_i,q_i = [int(x) for x in input().split()]
+        p.append(p_i)
+        q.append(q_i)
+    return n,m,q,l,r,p,q
+
+=======
+Suggestion 8
+
+def run():
+    n,m,q = map(int,input().split())
+    l_r = []
+    for _ in range(m):
+        l_r.append(list(map(int,input().split())))
+    p_q = []
+    for _ in range(q):
+        p_q.append(list(map(int,input().split())))
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if l_r[j][0] >= p_q[i][0] and l_r[j][1] <= p_q[i][1]:
+                count += 1
+        print(count)

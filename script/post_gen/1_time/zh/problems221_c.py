@@ -1,54 +1,187 @@
-#问题陈述
-#给你一个整数N，考虑将N中的数字进行互换，并将它们分成两个正整数。
-#例如，对于整数123，有六种方法可以分开，如下所示：
-#12和3
-#21和3
-#13和2、
-#31和2、
-#23和1、
-#32和1。
-#这里，分离后的两个整数不能包含前导零。例如，不允许将整数101分成1和01。此外，由于所得的整数必须是正数，所以也不允许将101分成11和0。
-#通过最佳分离方式得到的两个整数的最大可能积是多少？
-#
-#限制条件
-#N是1到10^9（包括）之间的整数。
-#N包含两个或多个不为0的数字。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印两个整数分离后的最大可能积。
-#
-#输入样本 1
-#123
-#
-#样本输出1
-#63
-#如问题陈述中所述，有六种方法可以分开：
-#12和3、
-#21和3
-#13和2
-#31和2、
-#23和1、
-#32和1。
-#这些对子的乘积，按照这个顺序，是36、63、26、62、23、32，其中63为最大。
-#
-#样本输入2
-#1010
-#
-#样本输出2
-#100
-#有两种方法可以分开：
-#100和1、
-#10和10。
-#无论哪种情况，乘积都是100。
-#
-#样本输入3
-#998244353
-#
-#样本输出3
-#939337176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    n_str = str(n)
+    n_len = len(n_str)
+    n_list = list(n_str)
+    n_list.sort(reverse=True)
+    n_str = ''.join(n_list)
+    n_list = list(n_str)
+    n_list.sort()
+    n_str2 = ''.join(n_list)
+    n_str2 = n_str2.lstrip('0')
+    if n_str2 == '':
+        n_str2 = '0'
+    n_str = n_str.lstrip('0')
+    if n_str == '':
+        n_str = '0'
+    print(int(n_str)*int(n_str2))
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    digits = []
+    while N > 0:
+        digits.append(N % 10)
+        N //= 10
+    digits.sort(reverse=True)
+    a = []
+    b = []
+    for i in range(len(digits)):
+        if i % 2 == 0:
+            a.append(digits[i])
+        else:
+            b.append(digits[i])
+    a = int("".join(map(str, a)))
+    b = int("".join(map(str, b)))
+    print(a * b)
+
+solve()
+
+=======
+Suggestion 3
+
+def f(N):
+    if N < 10:
+        return 0
+    elif N < 20:
+        return N - 10
+    else:
+        return (N - 10) * (N - 10)
+
+N = int(input())
+ans = 0
+
+for i in range(1, N):
+    ans = max(ans, f(i) * f(N - i))
+
+print(ans)
+
+=======
+Suggestion 4
+
+def get_max_product(n):
+    if n <= 10:
+        return n
+    else:
+        s = str(n)
+        length = len(s)
+        if length % 2 == 0:
+            half = length // 2
+            return int(s[:half]) * int(s[half:])
+        else:
+            half = length // 2
+            return max(int(s[:half]) * int(s[half:]), int(s[:half+1]) * int(s[half+1:]))
+
+=======
+Suggestion 5
+
+def func(n):
+    s = str(n)
+    if len(s) == 2:
+        return n
+    else:
+        a = int(s[0])
+        b = int(s[1:])
+        return a*b
+
+=======
+Suggestion 6
+
+def f(n):
+    if n < 10:
+        return n
+    else:
+        n = str(n)
+        if n[0] == '1':
+            return 9 * f(int(n[1:])) + int(n[1:])
+        else:
+            return (int(n[0])-1) * f(int(n[1:])) + int(n[1:])
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 7
+
+def solve():
+    N = input()
+    if len(N) == 2:
+        print(int(N[0]) * int(N[1]))
+        return
+    if len(N) == 3:
+        print(int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 4:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 5:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 6:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 7:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 8:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 9:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+    if len(N) == 10:
+        print(9 * int(N[0]) * int(N[1:]))
+        return
+
+=======
+Suggestion 8
+
+def get_max_product(num):
+    if num < 10:
+        return 0
+    if num < 100:
+        return num
+    if num < 1000:
+        return int(str(num)[0]) * int(str(num)[1:])
+    if num < 10000:
+        return int(str(num)[0:2]) * int(str(num)[2:])
+    if num < 100000:
+        return int(str(num)[0:2]) * int(str(num)[2:])
+    if num < 1000000:
+        return int(str(num)[0:3]) * int(str(num)[3:])
+    if num < 10000000:
+        return int(str(num)[0:3]) * int(str(num)[3:])
+    if num < 100000000:
+        return int(str(num)[0:4]) * int(str(num)[4:])
+    if num < 1000000000:
+        return int(str(num)[0:4]) * int(str(num)[4:])
+
+=======
+Suggestion 9
+
+def split(n):
+    #将数字n分成两个正整数
+    #返回两个正整数的列表
+    #先将数字n转换成字符串
+    #然后将字符串转换成列表
+    #最后将列表转换成整数
+    #返回两个正整数的列表
+    #先将数字n转换成字符串
+    #然后将字符串转换成列表
+    #最后将列表转换成整数
+    #返回两个正整数的列表
+    #先将数字n转换成字符串
+    #然后将字符串转换成列表
+
+=======
+Suggestion 10
+
+def main():
+    pass

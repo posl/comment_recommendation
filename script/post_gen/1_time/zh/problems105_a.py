@@ -1,36 +1,66 @@
-#问题陈述
-#高桥决定将N个AtCoder破解器尽可能均匀地分配给K个用户。
-#当所有的破解器分配完毕后，找出一个用户收到的最大破解器数量和一个用户收到的最小数量之间可能的最小（绝对）差异。
-#
-#限制条件
-#1 ≦ N,K ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#输出
-#打印一个用户收到的最大破解器和一个用户收到的最小破解器之间可能的最小（绝对）差异。
-#
-#输入样本 1
-#7 3
-#
-#样本输出 1
-#1
-#当用户分别收到两个、两个和三个破解器时，一个用户收到的最大破解器数和一个用户收到的最小破解器数之间的（绝对）差异为1。
-#
-#样本输入2
-#100 10
-#
-#样本输出2
-#0
-#破解器可以均匀地分布。
-#
-#样本输入3
-#1 1
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,K = map(int, input().split())
+    print(0 if N%K == 0 else 1)
+
+=======
+Suggestion 2
+
+def get_min_diff(n, k):
+    if k == 1:
+        return 0
+    else:
+        return n - k
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    print(0 if n % k == 0 else 1)
+
+=======
+Suggestion 4
+
+def main():
+    n,k=map(int,input().split())
+    if n%k==0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    if N % K == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 6
+
+def problems105_a():
+    n,k = map(int,input().split())
+    if(n%k == 0):
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    if n%k == 0:
+        print(0)
+    else:
+        print(1)
+
+main()

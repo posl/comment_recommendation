@@ -1,35 +1,68 @@
-#问题陈述
-#有一列N节车厢的火车。
-#找出j的值，使下面的陈述为真："从火车前面的第i节车厢是后面的第j节车厢"。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N i
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#
-#样本输出 1
-#3
-#在一列4节车厢的火车上，从前面的第二节车厢是后面的第三节车厢。
-#
-#输入样本2
-#1 1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#15 11
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    str = input("输入N i：")
+    strlist = str.split()
+    N = int(strlist[0])
+    i = int(strlist[1])
+    j = N - i + 1
+    print(j)
+
+=======
+Suggestion 2
+
+def main():
+    N,i = map(int,input().split())
+    print(N+1-i)
+
+=======
+Suggestion 3
+
+def main():
+    N,i = map(int,input().split())
+    print(N-i+1)
+
+=======
+Suggestion 4
+
+def main():
+    #N i
+    N,i = input().split()
+    N = int(N)
+    i = int(i)
+    print(N-i+1)
+
+=======
+Suggestion 5
+
+def main():
+    n,i = map(int,input().split())
+    print(n-i+1)
+
+=======
+Suggestion 6
+
+def solve(n, i):
+    return n - i + 1
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    n, i = map(int, input().split())
+
+    # 计算
+    j = n - i + 1
+
+    # 打印输出
+    print(j)
+
+=======
+Suggestion 8
+
+def get_j(n,i):
+    return n+1-i

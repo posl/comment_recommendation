@@ -1,48 +1,164 @@
-#问题陈述
-#在一个非空字符串中，左移将第一个字符移到字符串的末尾，而右移将最后一个字符移到字符串的开头。
-#例如，对abcde进行左移的结果是bcdea，而对abcde进行两次右移的结果是deabc。
-#给你一个由小写英文字母组成的非空的S。在对S进行零次或多次左移和零次或多次右移后可以得到的字符串中，找出词典上最小的字符串和词典上最大的字符串。
-#什么是lexicographical order？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j在字母顺序上早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度。如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#
-#
-#限制条件
-#S由小写英文字母组成。
-#S的长度在1到1000之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#
-#输出
-#打印两行。第一行应包含S_{min}，第二行应包含S_{max}。这里，S_{min}和S_{max}分别是对S进行零次或多次左移和零次或多次右移后得到的词汇学上最小和最大的字符串。
-#
-#输入样本1
-#aaba
-#
-#样本输出1
-#aaab
-#baaa
-#通过执行移位，我们可以得到四个字符串：aaab, aaba, abaa, baaa。其中词汇学上最小的和最大的分别是aaab和baaaa。
-#
-#样本输入2
-#z
-#
-#样本输出2
-#z
-#z
-#任何操作序列的结果都是z。
-#
-#样本输入3
-#abracadabra
-#
-#样本输出3
-#aabracadabr
-#racadabraab
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print(s)
+        print(s)
+        return
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 2
+
+def min_max_string(s):
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    return min_s, max_s
+
+=======
+Suggestion 3
+
+def problem223_b():
+    s = input()
+    if len(s) == 1:
+        print(s)
+        print(s)
+        return
+    min_s = s
+    max_s = s
+    for i in range(0,len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    Smin = S
+    Smax = S
+    for i in range(len(S)):
+        S = S[1:] + S[0]
+        if S < Smin:
+            Smin = S
+        if S > Smax:
+            Smax = S
+    print(Smin)
+    print(Smax)
+
+=======
+Suggestion 5
+
+def get_min_max(s):
+    min_str = s
+    max_str = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_str:
+            min_str = s
+        if s > max_str:
+            max_str = s
+    return min_str, max_str
+
+=======
+Suggestion 6
+
+def main():
+    print("请输入字符串：")
+    s = input()
+    s_min = s
+    s_max = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < s_min:
+            s_min = s
+        if s > s_max:
+            s_max = s
+    print(s_min)
+    print(s_max)
+
+=======
+Suggestion 7
+
+def get_min_max_str(s):
+    l = len(s)
+    min_str = s
+    max_str = s
+    for i in range(l):
+        tmp_str = s[i:] + s[:i]
+        if tmp_str < min_str:
+            min_str = tmp_str
+        if tmp_str > max_str:
+            max_str = tmp_str
+    return min_str, max_str
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    min_s = s
+    max_s = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        if s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 9
+
+def get_min_max(s):
+    min = s
+    max = s
+    for i in range(0, len(s)):
+        s = s[1:] + s[0]
+        if s < min:
+            min = s
+        elif s > max:
+            max = s
+    return min, max
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    s_len = len(s)
+    s_min = s
+    s_max = s
+    for i in range(s_len):
+        s = s[1:] + s[0]
+        if s < s_min:
+            s_min = s
+        if s > s_max:
+            s_max = s
+    print(s_min)
+    print(s_max)

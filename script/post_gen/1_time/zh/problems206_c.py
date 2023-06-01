@@ -1,44 +1,146 @@
-#问题描述
-#给定一个由N个整数组成的数组A=(A_1,A_2,...,A_N),求满足以下所有条件的整数对(i,j)的数目：
-#1 ≦ i < j ≦ N
-#A_i ≠ A_j
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 3 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#3
-#1 7 1
-#
-#样本输出1
-#2
-#在这个输入中，我们有A=（1，7，1）。
-#对于一对(1,2)，A_1≠A_2。
-#对于(1,3)对，A_1 = A_3。
-#对于(2,3)这一对，A_2≠A_3。
-#
-#样本输入2
-#10
-#1 10 100 1000 10000 100000 1000000 10000000 100000000 1000000000
-#
-#样本输出2
-#45
-#
-#样本输入3
-#20
-#7 8 1 1 4 9 9 6 8 2 4 1 1 9 5 5 5 3 6 4
-#
-#样本输出3
-#173
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    ans = 0
+    for k in d:
+        ans += d[k] * (d[k] - 1) // 2
+    print(n * (n - 1) // 2 - ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n < 2 or n > 3 * 10 ** 5:
+        return
+    a = list(map(int, input().split()))
+    if len(a) != n:
+        return
+    # print(a)
+    count = 0
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            if a[i] != a[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    # print(A)
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] != A[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if A[i] != A[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = [0] * (10**9 + 1)
+    for i in a:
+        count[i] += 1
+    ans = 0
+    for i in range(10**9 + 1):
+        ans += count[i] * (count[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve(n, a):
+    ans = 0
+    cnt = [0] * (10 ** 6 + 1)
+    for i in range(n):
+        ans += i - cnt[a[i]]
+        cnt[a[i]] += 1
+    return ans
+
+=======
+Suggestion 7
+
+def problem206_c():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(n * (n - 1) // 2 - ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = [0 for _ in range(10 ** 9 + 1)]
+    for i in range(n):
+        c[a[i]] += 1
+    ans = 0
+    for i in range(10 ** 9 + 1):
+        ans += c[i] * (c[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if a[i] != a[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def count_pairs(N, A):
+    from collections import Counter
+    counter = Counter(A)
+    total = 0
+    for v in counter.values():
+        total += v * (v - 1) // 2
+    return total

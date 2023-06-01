@@ -1,55 +1,176 @@
-#问题陈述
-#有N个字符串S_1, S_2, ..., S_N。
-#每一个都是由小写英文字母组成的非空字符串，在开头添加了0或1个！。
-#当一个字符串T与S_1, S_2, ..., S_N中的一个相匹配时，我们说它是不满足的，无论我们是否在T的开头添加一个!
-#确定是否存在一个不满足的字符串。如果存在，就提出一个这样的字符串。
-#
-#约束条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ |S_i| ≦ 10
-#S_i是一个由小写英文字母组成的非空字符串，在开头添加了0或1个！。  
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果存在一个不满足的字符串，打印一个这样的字符串。
-#如果没有不满足的字符串，打印可满足的。  
-#
-#输入样本 1
-#6
-#a
-#!a
-#b
-#!c
-#d
-#!d
-#
-#样本输出1
-#a
-#a符合S_1的原样，当我们加上一个！时，它符合S_2，所以它不满足。
-#除此之外，d也将被接受。
-#
-#输入样本2
-#10
-#red
-#red
-#red
-#!orange
-#yellow
-#!blue
-#cyan
-#!green
-#brown
-#!gray
-#
-#输出样本2
-#可满足
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print("存在")
+            return
+    print("不存在")
+    return
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print(s[i])
+            exit()
+    print("satisfiable")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s[i][0] == '!':
+            s[i] = s[i][1:]
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print(s[i])
+            exit()
+    print('satisfiable')
+
+=======
+Suggestion 4
+
+def solve(n, s):
+    s1 = set()
+    s2 = set()
+    for i in range(n):
+        if s[i][0] == '!':
+            s1.add(s[i][1:])
+        else:
+            s2.add(s[i])
+    for i in s2:
+        if i in s1:
+            return i
+    return 'satisfiable'
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+print(solve(n, s))
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    S = [s.lstrip('!') for s in S]
+    S = set(S)
+
+    for s in S:
+        if '!' + s in S:
+            return s
+    return 'satisfiable'
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ss = [input() for _ in range(n)]
+    s1 = set()
+    s2 = set()
+    for s in ss:
+        if s[0] == '!':
+            s1.add(s[1:])
+        else:
+            s2.add(s)
+    for s in s1:
+        if s in s2:
+            print(s)
+            return
+    print('satisfiable')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    for _ in range(n):
+        s.append(input())
+    s = set(s)
+    for i in s:
+        if '!' + i in s:
+            print(i)
+            break
+    else:
+        print('satisfiable')
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s_set = set(s)
+    for i in s_set:
+        if i[0] == '!':
+            if i[1:] in s_set:
+                print(i[1:])
+                return
+        else:
+            if '!' + i in s_set:
+                print(i)
+                return
+    print('satisfiable')
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    S = [input() for i in range(N)]
+    S = [s[1:] if s[0] == '!' else s for s in S]
+    S.sort()
+    for i in range(N - 1):
+        if S[i] == S[i + 1]:
+            print(S[i])
+            return
+    print('satisfiable')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s = list(set(s))
+    for i in range(len(s)):
+        if s[i][0] == '!':
+            if s[i][1:] in s:
+                print(s[i][1:])
+                exit()
+        else:
+            if '!' + s[i] in s:
+                print(s[i])
+                exit()
+    print('satisfiable')
+main()

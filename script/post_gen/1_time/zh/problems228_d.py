@@ -1,46 +1,184 @@
-#问题陈述
-#有一个序列A = (A_0, A_1, ..., A_{N - 1})，有N = 2^{20}项。初始时，每个项都是-1。
-#按顺序处理Q个查询。第i个查询（1 ≦ i ≦ Q）由一个整数t_i描述，如t_i = 1或t_i = 2，以及另一个整数x_i，如下。
-#如果t_i=1，依次进行以下操作。
-#定义一个整数h为h=x_i。
-#当A_{h mod N}≠-1时，不断向h加1。我们可以证明，在这个问题的约束条件下，这个过程在有限迭代后结束。
-#用x_i替换A_{h mod N}的值。
-#如果t_i=2，则打印当时的A_{x_i mod N}的值。
-#这里，对于整数a和b，a mod b表示a除以b时的余数。
-#
-#限制条件
-#1 ≦ Q ≦ 2 × 10^5
-#t_i在{ 1, 2 }中  (1 ≦ i ≦ Q)
-#0 ≦ x_i ≦ 10^{18}。  (1 ≦ i ≦ Q)
-#至少有一个i (1 ≦ i ≦ Q)使得t_i = 2。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#t_1 x_1
-#.
-#.
-#.
-#t_{Q} x_{Q}
-#
-#输出
-#对于每个t_i = 2的查询，用一行打印出响应。保证至少有一个这样的查询。
-#
-#输入样本 1
-#4
-#1 1048577
-#1 1
-#2 2097153
-#2 3
-#
-#样本输出1
-#1048577
-#-1
-#我们有x_1 mod N = 1，所以第一个查询设定A_1 = 1048577。
-#在第二个查询中，最初我们有h = x_2，对于它，A_{h mod N} = A_{1} ≠ -1，所以我们在h上加1。≠ 现在我们有A_{h mod N} = A_{2} = -1，所以这个查询设置A_2 = 1。
-#在第三个查询中，我们打印出A_{x_3 mod N} = A_{1} = 1048577。
-#在第四个查询中，我们打印出A_{x_4 mod N} = A_{3} = -1。
-#注意，在这个问题中，N=2^{20}=1048576是一个常数，没有在输入中给出。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def process():
+    N = 1048576
+    A = [-1] * (N + 1)
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+process()
+
+=======
+Suggestion 2
+
+def main():
+    import sys
+    readline = sys.stdin.readline
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(readline())
+    for _ in range(Q):
+        t, x = map(int, readline().split())
+        if t == 1:
+            while A[x % N] != -1:
+                x += 1
+            A[x % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 3
+
+def main():
+    N = 2**20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 4
+
+def main():
+    n = 2**20
+    q = int(input())
+    a = [-1]*n
+    for _ in range(q):
+        t, x = map(int, input().split())
+        x = x % n
+        if t == 1:
+            while a[x] != -1:
+                x += 1
+                x = x % n
+            a[x] = x
+        else:
+            print(a[x])
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    # 获取输入内容
+    q = int(input())
+    # 定义列表
+    a = [-1 for i in range(2 ** 20)]
+    # 循环处理输入内容
+    for i in range(q):
+        # 获取输入内容
+        t, x = map(int, input().split())
+        # 判断输入内容
+        if t == 1:
+            # 定义变量
+            h = x
+            # 循环处理
+            while a[h % (2 ** 20)] != -1:
+                h += 1
+            # 定义变量
+            a[h % (2 ** 20)] = x
+        else:
+            # 输出结果
+            print(a[x % (2 ** 20)])
+
+=======
+Suggestion 7
+
+def solve():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    from collections import deque
+    input = sys.stdin.readline
+    N = 2 ** 20
+    Q = int(input())
+    A = [-1] * N
+    q = deque()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+            q.append(h % N)
+        else:
+            if x <= q[0]:
+                print(A[x])
+            else:
+                print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    Q = int(input())
+    # 用字典存储数据
+    A = {}
+    # 用列表存储查询
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    # 处理查询
+    for i in range(Q):
+        if query[i][0] == 1:
+            h = query[i][1]
+            while A.get(h % 1048576) != None:
+                h += 1
+            A[h % 1048576] = query[i][1]
+        else:
+            print(A.get(query[i][1] % 1048576))
+
+=======
+Suggestion 10
+
+def main():
+    Q = int(input())
+    A = [-1] * (2 ** 20)
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % (2 ** 20)] != -1:
+                h += 1
+            A[h % (2 ** 20)] = x
+        else:
+            print(A[x % (2 ** 20)])

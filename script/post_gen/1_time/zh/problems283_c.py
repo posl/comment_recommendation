@@ -1,47 +1,164 @@
-#问题陈述
-#高桥是一名收银员。
-#有一个收银机，有11个键：00，0，1，2，3，4，5，6，7，8，和9。
-#收银机最初显示0。
-#每当他输入00键时，显示的数字就会乘以100；
-#每当他输入一个其他的键，显示的数字就会乘以10，然后再加上写在键上的数字。
-#高桥希望收银机显示一个整数S。
-#至少需要敲多少次键盘才能使它显示S？
-#
-#限制条件
-#1≦ S≦ 10^{100000}
-#S是一个整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#S
-#
-#輸出
-#在一行中打印出答案。
-#
-#输入样本1
-#40004
-#
-#样本输出1
-#4
-#例如，下面的四个按键使收银机显示40004。
-#初始时，收银机显示0。
-#输入键4。  现在显示4。
-#键入00。  现在显示400。
-#键入0。  现在显示4000。
-#键入键4。  现在显示40004。
-#他不能用三个或更少的键来使它显示40004，所以4应该被打印出来。
-#
-#输入样本2
-#1355506027
-#
-#输出样本2
-#10
-#
-#样本输入3
-#10888869450418352160768000001
-#
-#样本输出3
-#27
-#注意，S可能不适合64位的整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    n = len(s) - 1
+    an
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    S = int(S)
+    count = 0
+    while S > 0:
+        if S % 100 == 0:
+            S = S // 100
+        else:
+            S = S - S % 10
+        count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        if s[i] != '0':
+            ans += 1
+    if s[-1] != '0':
+        print(ans)
+    else:
+        print(ans-1)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S == '0':
+        print(0)
+        return
+    ans = 10000000
+    for i in range(1, 11):
+        if i == 1:
+            dp = [0] * len(S)
+            if S[0] != '1':
+                dp[0] = 1
+        else:
+            dp = [10000000] * len(S)
+            if S[0] != '1':
+                dp[0] = 2
+            else:
+                dp[0] = 1
+        for j in range(1, len(S)):
+            if S[j] == '0':
+                dp[j] = dp[j - 1] + 1
+            else:
+                if dp[j - 1] == 10000000:
+                    dp[j] = 10000000
+                else:
+                    dp[j] = min(dp[j], dp[j - 1] + i)
+            if j == len(S) - 1:
+                if S[j] == '1':
+                    ans = min(ans, dp[j])
+                else:
+                    ans = min(ans, dp[j] + 1)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S = int(S)
+    count = 0
+    while S > 0:
+        if S % 10 == 0:
+            S //= 10
+            count += 1
+        else:
+            S -= 1
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s_len = len(s)
+    count = 0
+    index = 0
+    while index < s_len:
+        if index == 0 and s[index] == '1':
+            index += 1
+            continue
+        if s[index] == '0':
+            index += 1
+            count += 1
+            continue
+        if s[index] == '1':
+            if index == s_len - 1:
+                count += 1
+                break
+            if s[index + 1] == '0':
+                index += 1
+                count += 1
+                continue
+        count += 1
+        index += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    s = s[::-1]
+    ans = 0
+    for i in range(len(s)):
+        if i == 0:
+            ans += int(s[i])
+        elif i == 1:
+            ans += int(s[i]) * 2
+        else:
+            ans += int(s[i]) * (i + 1)
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(s):
+    s = list(s)
+    s.reverse()
+    i = 0
+    count = 0
+    while i < len(s):
+        if s[i] == '0':
+            i += 1
+            count += 1
+        else:
+            j = i
+            while j < len(s):
+                if s[j] == '0':
+                    break
+                j += 1
+            if j == len(s):
+                break
+            else:
+                count += 1
+                i = j
+    return count

@@ -1,35 +1,66 @@
-#问题陈述
-#高桥想打印一份有N页的双面文件，其中两页的数据可以打印在一张纸上。
-#他至少需要多少张纸？
-#
-#约束条件
-#N是一个整数。
-#1 ≦ N ≦ 100
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#5
-#
-#样本输出1
-#3
-#通过在第1页上打印第1、2页，在第2页上打印第3、4页，在第3页上打印第5页，我们可以在3张纸上打印所有数据。
-#
-#输入样本2
-#2
-#
-#样本输出2
-#1
-#
-#输入样本3
-#100
-#
-#样品输出3
-#50
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print(n//2+n%2)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(int(n / 2))
+    else:
+        print(int(n / 2) + 1)
+
+=======
+Suggestion 4
+
+def solve(n):
+    if n%2==0:
+        return int(n/2)
+    else:
+        return int(n/2+1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N % 2 == 0:
+        print(N // 2)
+    else:
+        print(N // 2 + 1)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    result = N // 2
+    if N % 2 == 1:
+        result += 1
+    print(result)
+
+=======
+Suggestion 7
+
+def solve(n):
+    if n % 2 == 0:
+        return n // 2
+    else:
+        return n // 2 + 1

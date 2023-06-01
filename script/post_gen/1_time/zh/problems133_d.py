@@ -1,49 +1,139 @@
-#问题陈述
-#在一个圆圈内有N座山，按顺时针顺序称为山1，山2，...，山N。N是一个奇数。
-#在这些山之间有N个水坝，称为水坝1，水坝2，...，水坝N。水坝i（1 ≦ i ≦ N）位于山i和i+1之间（山N+1就是山1）。
-#当i山（1 ≦ i ≦ N）收到2x升的雨水时，水坝i-1和水坝i各积了x升的水（水坝0就是水坝N）。
-#有一天，每座山都收到了非负的偶数的雨量。
-#结果，水坝i（1 ≦ i ≦ N）总共积累了A_i升的水。
-#求每座山收到的雨量。我们可以证明，在这个问题的约束下，解决方案是唯一的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 10^5-1
-#N是一个奇数。
-#0 ≦ A_i ≦ 10^9
-#当每座山都收到非负的偶数的雨量时，输入所代表的情况就会发生。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个整数，代表山地1、山地2、...、山地N收到的雨水数量，按照这个顺序。
-#
-#输入样本 1
-#3
-#2 2 4
-#
-#样本输出1
-#4 0 4
-#如果我们假设1号、2号和3号山分别接受了4、0和4升的雨水，与这个输入是一致的，如下所示：
-#水坝1应该积累了(4/(2))+ (0/(2)) = 2升的水。
-#水坝2应该已经积累了(0/(2))+ (4/(2)) = 2公升的水。
-#水坝3应该已经积累了(4/(2))+ (4/(2)) = 4升的水。
-#
-#样本输入2
-#5
-#3 8 7 5 5
-#
-#样本输出 2
-#2 4 12 2 8
-#
-#样本输入3
-#3
-#1000000000 1000000000 0
-#
-#样本输出3
-#0 2000000000 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    total = sum(A)
+    for i in range(N):
+        print(total - A[i], end=' ')
+    print()
+
+=======
+Suggestion 2
+
+def solve(N, A):
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = A[i] * 2
+    for i in range(N):
+        ans[i] -= sum(ans) / 2
+    return ans
+
+N = int(input())
+A = list(map(int, input().split()))
+print(*solve(N, A))
+
+=======
+Suggestion 3
+
+def rain(N, A):
+    # 计算每座山收到的雨量
+    # 思路：计算每个山的雨水量，然后用总雨水量减去每个山的雨水量
+    # 从第一个山开始，计算雨水量，然后累加雨水量，直到最后一个山
+    # 然后从第二个山开始，计算雨水量，然后累加雨水量，直到最后一个山
+    # 依次类推，直到最后一个山
+    # 最后计算总雨水量减去每个山的雨水量，就是每个山收到的雨水量
+    # 注意：最后一个山的雨水量要用第一个山的雨水量减去最后一个山的雨水量
+    # 注意：第一个山的雨水量要用最后一个山的雨水量减去第一个山的雨水量
+    # 雨水量 = (前一个山的雨水量 + 后一个山的雨水量) / 2
+    # 从第一个山开始，计算雨水量，然后累加雨水量，直到最后一个山
+    # 然后从第二个山开始，计算雨水量，然后累加雨水量，直到最后一个山
+    # 依次类推，直到最后一个山
+    # 最后计算总雨水量减去每个山的雨水量，就是每个山收到的雨水量
+    # 注意：最后一个山的雨水量要用第一个山的雨水量减去最后一个山的雨水量
+    # 注意：第一个山的雨水量要用最后一个山的雨水量减去第一个山的雨水量
+    # 雨水量 = (前一个山的雨水量 + 后一个山的
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0]*n
+    ans[0] = sum(a[1::2]) - sum(a[0::2])
+    for i in range(1, n):
+        ans[i] = 2*a[i-1] - ans[i-1]
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(1, N):
+        ans[i] = 2 * A[i - 1] - ans[i - 1]
+    ans[0] = 2 * A[N - 1] - ans[N - 1]
+    print(*ans)
+
+=======
+Suggestion 6
+
+def resolve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - b[i - 1] // 2 - b[(i + 1) % n] // 2
+    print(*b)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = A[i] - sum(B)
+    print(*B)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        if i % 2 == 0:
+            B[0] += A[i]
+        else:
+            B[0] -= A[i]
+    for i in range(1, N):
+        B[i] = 2 * A[i - 1] - B[i - 1]
+    print(*B)
+
+=======
+Suggestion 9
+
+def solve(n, a):
+    # print(n, a)
+    # print(a[0], a[1], a[2])
+    b = [0 for i in range(n)]
+    for i in range(n):
+        if i == 0:
+            b[i] = a[i] - (a[i+1] + a[n-1]) // 2
+        elif i == n-1:
+            b[i] = a[i] - (a[0] + a[i-1]) // 2
+        else:
+            b[i] = a[i] - (a[i+1] + a[i-1]) // 2
+    return b
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        B[i] = A[i] - sum(B) * 2
+    print(*B)

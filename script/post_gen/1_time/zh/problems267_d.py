@@ -1,37 +1,130 @@
-#问题陈述
-#给你一个长度为N的整数序列A=（A_1,A_2,...,A_N）。
-#求A的长度为M的子序列B=(B_1,B_2,...,B_M)的sum_{i=1}^{M} i × B_i的最大值（不一定连续）。
-#
-#注释
-#一个数列的子序列是通过从原数列中删除0个或更多的元素，并在不改变顺序的情况下将剩余的元素连接起来而得到的序列。
-#例如，(10,30)是(10,20,30)的子序列，但(20,10)不是(10,20,30)的子序列。
-#
-#约束条件
-#1 ≦ m ≦ n ≦ 2000
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#5 4 -1 8
-#
-#样本输出1
-#21
-#当B=(A_1,A_4)时，我们有 sum_{i=1}^{M} i × B_i = 1 × 5 + 2 × 8 = 21。  由于不可能达到22或更大的值，所以解是21。
-#
-#输入样本 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#样本输出2
-#54
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [[0] * m for _ in range(n)]
+    for i in range(n):
+        dp[i][0] = a[i]
+    for j in range(1, m):
+        for i in range(j, n):
+            dp[i][j] = max(dp[k][j - 1] + a[i] * (i - k) for k in range(j - 1, i))
+    print(max(dp[i][m - 1] for i in range(m - 1, n)))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [[-float('inf')] * (m + 1) for _ in range(n + 1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(m + 1):
+            if j > 0:
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - 1] + (j * a[i]))
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
+    print(dp[n][m])
+
+=======
+Suggestion 3
+
+def solve(n,m,a):
+    dp = [[0 for _ in range(m+1)] for _ in range(n+1)]
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+i*a[i-1])
+    return dp[n][m]
+
+=======
+Suggestion 4
+
+def solve(n,m,a):
+    dp = [[0 for i in range(m+1)] for j in range(n+1)]
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            if i<j:
+                dp[i][j] = -100000000
+            else:
+                dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+a[i-1]*j)
+    return dp[n][m]
+
+=======
+Suggestion 5
+
+def max_sum_subsequence(N, M, A):
+    # dp[i][j]表示前i个数中取j个数的最大值
+    dp = [[0 for i in range(M + 1)] for j in range(N + 1)]
+    for i in range(1, N + 1):
+        for j in range(1, M + 1):
+            if j > i:
+                continue
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1] + A[i - 1] * j)
+    return dp[N][M]
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(m):
+            dp[i+1][j+1] = max(dp[i+1][j+1],dp[i][j]+a[i]*(j+1))
+            dp[i+1][j] = max(dp[i+1][j],dp[i][j])
+    print(dp[n][m])
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    dp = [[0 for i in range(m+1)] for j in range(n+1)]
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-1]+a[i-1])
+    print(dp[n][m])
+
+=======
+Suggestion 9
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
+    dp[0][0] = 0
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            dp[i][j] = max(dp[i-1][j],dp[i-1][j-1]+i*a[i-1])
+    print(max(dp[-1]))
+
+=======
+Suggestion 10
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    dp = [[-float("inf")]*(m+1) for _ in range(n+1)]
+    dp[0][0] = 0
+    for i in range(n):
+        for j in range(m+1):
+            if j == 0:
+                dp[i+1][j] = 0
+            else:
+                dp[i+1][j] = max(dp[i][j],dp[i][j-1]+j*a[i])
+    print(max(dp[n]))

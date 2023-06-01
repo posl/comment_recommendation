@@ -1,35 +1,86 @@
-#问题陈述
-#高桥和青木将用他们的怪兽进行一场战斗。
-#高桥的怪物的健康和力量分别为A和B，青木的怪物的健康和力量分别为C和D。
-#两只怪物将轮流攻击，顺序是高桥的、青木的、高桥的、青木的......。
-#在这里，一次攻击会减少对方的健康，减少的数值等于攻击者的力量。
-#怪物不断攻击，直到一个怪物的健康状况变成0或以下。拥有健康状况变为0或低于0的怪物的人就输了，另一个人则赢。
-#如果高桥会赢，就打印是；如果他会输，就打印否。
-#
-#限制条件
-#1 ≦ a,b,c,d ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#输出
-#如果高桥会赢，打印Yes；如果他会输，打印No。
-#
-#输入样本 1
-#10 9 10 10
-#
-#样本输出 1
-#否
-#首先，高桥的怪物攻击青木的怪物，青木的怪物现在的生命值是10-9=1。
-#接下来，青木的怪物攻击高桥的怪物，他的健康状况现在是10-10=0。
-#高桥的怪物是第一个生命值为0或更少的，所以高桥输了。
-#
-#样本输入2
-#46 4 40 5
-#
-#样本输出2
-#是
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d = map(int, input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print('Yes')
+            break
+        a -= d
+        if a <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if (c-1)//b > (a-1)//d:
+        print("否")
+    else:
+        print("是")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 4
+
+def problem164_b():
+    A, B, C, D = map(int, input().split())
+    while True:
+        C = C - B
+        if C <= 0:
+            print('Yes')
+            break
+        A = A - D
+        if A <= 0:
+            print('No')
+            break
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int,input().split())
+    while a > 0 and c > 0:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break
+
+=======
+Suggestion 6
+
+def main():
+    a, b, c, d = map(int, input().strip().split())
+    while True:
+        c -= b
+        if c <= 0:
+            print("Yes")
+            break
+        a -= d
+        if a <= 0:
+            print("No")
+            break

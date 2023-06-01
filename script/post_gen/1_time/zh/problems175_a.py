@@ -1,37 +1,115 @@
-#问题陈述
-#我们在AtCoder镇有一些连续三天的天气记录。一个长度为3的字符串S代表这些记录--如果第i个字符是S，意味着第i天是晴天；如果该字符是R，意味着该天是雨天。
-#找出这段时间内连续下雨的最大天数。
-#
-#限制条件
-#|S| = 3
-#S的每个字符都是S或R。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印该期间最大的连续阴雨天数。
-#
-#样本输入1
-#RRS
-#
-#样本输出1
-#2
-#我们在这段时间的第1天和第2天都有雨。这里，最大的连续下雨天数是2，所以我们应该打印2。
-#
-#输入样本 2
-#SSS
-#
-#样本输出2
-#0
-#整个时期都是晴天。我们没有雨天，所以我们应该打印0。
-#
-#样本输入3
-#RSR
-#
-#样本输出3
-#1
-#我们在第1天和第3天有雨--两个 "连环 "的雨天，所以我们应该打印1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    # print(s)
+    if 'R' in s:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.count("R"))
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    R = S.count('R')
+    print(R)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S.count("R"))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s == 'RRR':
+        print(3)
+    elif s == 'RRS' or s == 'SRR':
+        print(2)
+    elif s == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    count = 0
+    max_count = 0
+    for i in range(len(s)):
+        if s[i] == 'R':
+            count += 1
+            if max_count < count:
+                max_count = count
+        else:
+            count = 0
+    print(max_count)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    a = s.count("R")
+    print(a)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    #print(S)
+    rain = 0
+    max_rain = 0
+    for i in range(len(S)):
+        #print(S[i])
+        if S[i] == 'S':
+            rain = 0
+        elif S[i] == 'R':
+            rain += 1
+        if max_rain < rain:
+            max_rain = rain
+    print(max_rain)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    S = S.replace("S","0")
+    S = S.replace("R","1")
+    print(S.count("1"))
+
+=======
+Suggestion 10
+
+def main():
+    weather = input()
+    count = 0
+    max = 0
+    for i in range(len(weather)):
+        if weather[i] == 'R':
+            count += 1
+        else:
+            count = 0
+        if count > max:
+            max = count
+    print(max)

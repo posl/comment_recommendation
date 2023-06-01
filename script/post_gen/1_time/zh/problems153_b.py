@@ -1,52 +1,126 @@
-#问题陈述
-#浣熊正在与一只怪物战斗。
-#怪物的健康状况是H。
-#浣熊可以使用N种特殊动作。使用第i种招数会使怪物的生命值减少A_i。
-#没有其他方法可以减少怪物的健康。
-#当怪物的健康状况变成0或更低时，Raccoon就赢了。
-#如果Raccoon可以在不使用同一招数两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#限制条件
-#1 ≦ H ≦ 10^9
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果Raccoon能在不使用相同棋步两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 3
-#4 5 6
-#
-#样本输出1
-#Yes
-#例如，在使用第二和第三招后，怪物的健康状况将变成0或更低。
-#
-#输入样本2
-#20 3
-#4 5 6
-#
-#样本输出2
-#No
-#
-#样本输入3
-#210 5
-#31 41 59 26 53
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#211 5
-#31 41 59 26 53
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(h, a):
+    if h <= 0:
+        return True
+    if len(a) == 0:
+        return False
+    t = a.pop()
+    return solve(h, a) or solve(h-t, a)
+
+=======
+Suggestion 2
+
+def main():
+    h,n = map(int, input().split())
+    a = list(map(int, input().split()))
+    if sum(a) >= h:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    H,N = map(int,input().split())
+    A = list(map(int,input().split()))
+    if H <= sum(A):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 求和
+    sum_a = sum(a)
+    # 判断
+    if h <= sum_a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    h,n = map(int,input().split())
+    a = list(map(int,input().split()))
+    if h <= sum(a):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    # 读入输入
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 用于动态规划的数组，dp[i]表示减少i点生命值所需的最小消耗
+    dp = [float("inf")] * (H + 1)
+    dp[0] = 0
+
+    for i in range(H + 1):
+        for j in range(N):
+            # 注意判断是否越界
+            if i + A[j] <= H:
+                dp[i + A[j]] = min(dp[i + A[j]], dp[i] + 1)
+            else:
+                dp[H] = min(dp[H], dp[i] + 1)
+
+    if dp[H] <= 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    if sum(A) >= H:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def solve():
+    h,n = map(int,input().split())
+    a = list(map(int,input().split()))
+    if h <= sum(a):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    h,n = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    if h <= sum(a):
+        print("Yes")
+    else:
+        print("No")

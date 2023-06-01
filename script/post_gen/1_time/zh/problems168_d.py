@@ -1,67 +1,129 @@
-#问题陈述
-#有一个山洞。
-#洞里有N个房间和M条通道。房间编号为1到N，通道编号为1到M。通道i双向连接A_i室和B_i室。人们可以通过穿越通道在任何两个房间之间旅行。房间1是一个特殊的房间，有一个来自外部的入口。
-#洞里很黑，所以我们决定在除1号房间外的每个房间都放置一个路标。 每个房间的路标都会指向与该房间直接相连的一个房间的通道。
-#由于山洞里很危险，我们的目标是满足除1号房间外的每个房间的以下条件。
-#如果你从该房间开始，反复移动到你所在房间的路标所指示的房间，你将在穿越尽可能少的通道后到达1号房间。
-#确定是否有一种方法可以放置满足我们目标的路标，如果存在，就打印一个这样的方法。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#人们可以通过穿越通道在任何两个房间之间旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 B_1
-#:
-#A_M B_M
-#
-#输出
-#如果没有办法放置满足目标的路标，则打印No。
-#否则，打印N行。第一行应该包含Yes，第i行（2 ≦ i ≦ N）应该包含整数，代表i号房间的路标所指示的房间。
-#
-#输入样本 1
-#4 4
-#1 2
-#2 3
-#3 4
-#4 2
-#
-#样本输出1
-#Yes
-#1
-#2
-#2
-#如果我们按照样本输出中的描述放置路标，就会发生以下情况：
-#从2号房间开始，穿越一条通道后，你将到达1号房间：(2) -> 1。这是可能的最小通道数。
-#从3号房间开始，你将在穿越两条通道后到达1号房间：(3) -> 2 -> 1，这是可能的最小通道数。
-#从4号房间开始，你将在穿越两个通道后到达1号房间：(4) -> 2 -> 1，这是可能的最小通道数。
-#因此，目标得到了满足。
-#
-#输入样本 2
-#6 9
-#3 4
-#6 1
-#2 4
-#5 3
-#4 6
-#1 5
-#6 2
-#4 5
-#5 6
-#
-#样本输出2
-#Yes
-#6
-#5
-#5
-#1
-#1
-#如果有多个解决方案，任何一个都会被接受。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def dfs(v):
+    global flag
+    visited[v] = True
+    for next_v in G[v]:
+        if visited[next_v]:
+            continue
+        dfs(next_v)
+    if flag:
+        return
+    if v == 1:
+        flag = True
+        return
+    for next_v in G[v]:
+        if flag:
+            return
+        if visited[next_v]:
+            continue
+        visited[next_v] = True
+        ans[next_v] = v
+        dfs(next_v)
+        visited[next_v] = False
+        ans[next_v] = 0
+
+N, M = map(int, input().split())
+G = [[] for _ in range(N+1)]
+for _ in range(M):
+    A, B = map(int, input().split())
+    G[A].append(B)
+    G[B].append(A)
+
+flag = False
+visited = [False] * (N+1)
+ans = [0] * (N+1)
+dfs(2)
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    path = []
+    for i in range(M):
+        path.append(list(map(int,input().split())))
+    print(path)
+
+=======
+Suggestion 5
+
+def dfs(x):
+    if vis[x]: return
+    vis[x] = 1
+    for y in G[x]:
+        if vis[y]: continue
+        dfs(y)
+    ans.append(x)
+
+n,m = map(int,input().split())
+G = [[] for _ in range(n+1)]
+for _ in range(m):
+    a,b = map(int,input().split())
+    G[a].append(b)
+vis = [0]*(n+1)
+ans = []
+for i in range(1,n+1):
+    if vis[i]: continue
+    dfs(i)
+ans = ans[::-1]
+vis = [0]*(n+1)
+ans2 = []
+for i in ans:
+    if vis[i]: continue
+    ans2.append(i)
+    vis[i] = 1
+    for j in G[i]:
+        vis[j] = 1
+print("Yes")
+for i in ans2:
+    print(i)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    s = [[0 for i in range(2)] for j in range(m)]
+    for i in range(m):
+        s[i] = map(int,input().split())
+    print(s)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    G = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        G[a - 1].append(b - 1)
+        G[b - 1].append(a - 1)
+    R = [0] * N
+    R[0] = 1
+    S = [0]
+    while S:
+        x = S.pop()
+        for y in G[x]:
+            if R[y] == 0:
+                R[y] = x + 1
+                S.append(y)
+    print('Yes')
+    print('\n'.join(map(str, R[1:])))
+
+solve()

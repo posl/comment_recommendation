@@ -1,48 +1,136 @@
-#问题陈述
-#给出的是一个正整数N。
-#求满足下列条件的不大于N的正整数对（A，B）的数目：
-#当A和B以不带前导零的十进制写成时，A的最后一位数字等于B的第一位数字，A的第一位数字等于B的最后一位数字。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#25
-#
-#样本输出1
-#17
-#以下17个配对满足条件：（1,1），（1,11），（2,2），（2,22），（3,3），（4,4），（5,5），（6,6），（7,7），（8,8），（9,9），（11,1），（11,11），（12，21），（21，12），（22，2）和（22，22）。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100
-#
-#样品输出3
-#108
-#
-#样本输入4
-#2020
-#
-#样本输出4
-#40812
-#
-#样本输入5
-#200000
-#
-#样品输出5
-#400000008
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i % 10 == int(j / 10) and i / 10 == j % 10:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if i % 10 == 0:
+            continue
+        for j in range(1, N+1):
+            if j % 10 == 0:
+                continue
+            if str(i)[0] == str(j)[-1] and str(i)[-1] == str(j)[0]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        for j in range(i, N+1):
+            if i%10 == j//100 and j%10 == i//100:
+                cnt += 2
+                if i == j:
+                    cnt -= 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    cnt = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if str(i)[-1] == str(j)[0] and str(i)[0] == str(j)[-1]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def get_num(n):
+    num = 0
+    for i in range(1,n+1):
+        if i < 10:
+            num += 1
+        else:
+            if i % 10 == i // (10 ** (len(str(i)) - 1)):
+                num += 1
+    return num
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        s = str(i)
+        if s[0] == s[-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_num(n):
+    count = 0
+    for i in range(1,n+1):
+        if i < 10:
+            count += 1
+            continue
+        if i % 10 == int(str(i)[0]):
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print(solve(n))
+
+=======
+Suggestion 9
+
+def f(n):
+    ans = 0
+    for i in range(1, n+1):
+        s = str(i)
+        if s[0] == s[-1]:
+            ans += 1
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        if i%10 == 0:
+            continue
+        else:
+            str_i = str(i)
+            len_i = len(str_i)
+            if str_i[-1] == str_i[0]:
+                count += 1
+            else:
+                if len_i == 1:
+                    continue
+                else:
+                    for j in range(1,len_i):
+                        if str_i[j] == str_i[j-1]:
+                            count += 1
+                            break
+    print(count)
+main()

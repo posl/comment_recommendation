@@ -1,36 +1,41 @@
-#问题陈述
-#给定一个字符串S，如果它与Hello,World完全匹配，就打印AC；否则就打印WA。
-#什么是完全匹配？当A的长度等于B的长度，且A的第i个字符与B的第i个字符相同，且每一个整数i都是1≦i≦|A|，则称字符串A完全匹配B。
-#
-#限制条件
-#1 ≦ |S| ≦ 15
-#S由英文小写字母、英文大写字母、、、和！组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#Hello,World
-#
-#样本输出1
-#AC
-#字符串S与Hello,World！完全匹配。
-#
-#样本输入2
-#Hello,world!
-#
-#样本输出2
-#WA
-#从头开始的第七个字符应该是Hello,World！中的大写W，但是S在这个位置上有一个小写W。因此，S与Hello,World！不匹配。
-#
-#输入示例3
-#Hello!World!
-#
-#样本输出3
-#WA
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s == 'Hello,World':
+        print('AC')
+    else:
+        print('WA')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == "Hello,World":
+        print("AC")
+    else:
+        print("WA")
+
+=======
+Suggestion 3
+
+def main():
+    input = raw_input()
+    if input == "Hello,World":
+        print "AC"
+    else:
+        print "WA"
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s == "Hello,World!":
+        print("AC")
+    else:
+        print("WA")

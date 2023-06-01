@@ -1,67 +1,116 @@
-#问题说明
-#N个球从左到右排成一排。  最初，从左边开始的第i个（1 ≦ i ≦ N）球上写有一个整数i。
-#高桥已经进行了Q操作。  第i次（1 ≦ i ≦ Q）操作如下。
-#将写有整数x_i的球与右边的下一个球交换。  如果写有整数x_i的球原来是最右边的球，就把它和左边的下一个球换一下。
-#让a_i成为操作后写在第i个（1 ≦ i ≦ N）球上的整数。  求a_1,...,a_N。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印a_1,...,a_N，中间有空格。
-#
-#输入样本 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#样本输出1
-#1 2 3 5 4
-#这些操作是按以下方式进行的。  
-#将写有1的球与右边的下一个球交换。  现在，球上写着整数2、1、3、4、5，从左到右。
-#将写有2的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有3的球与右边的下一个球交换。  现在，这些球上写着1,2,4,3,5的整数，从左到右。
-#将写有4的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有5的球与左边的下一个球交换，因为它是最右边的球。  现在，这些球上都写着1,2,3,5,4的整数，从左到右。
-#
-#输入样本 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#样本输出2
-#1 2 3 4 5 7 6
-#
-#样本输入3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#样本输出3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def swap(l, i, j):
+    temp = l[i]
+    l[i] = l[j]
+    l[j] = temp
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    x = [int(input()) for _ in range(q)]
+    a = [i for i in range(1, n+1)]
+    for i in range(q):
+        a[i], a[i+1] = a[i+1], a[i]
+        if a[i] == x[i]:
+            a[i], a[i+1] = a[i+1], a[i]
+    print(*a)
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    x = [int(input()) for _ in range(q)]
+    num = [i for i in range(1, n+1)]
+    for i in range(q):
+        #print(num)
+        #print(x[i])
+        #print(num.index(x[i]))
+        num[num.index(x[i])], num[num.index(x[i])+1] = num[num.index(x[i])+1], num[num.index(x[i])]
+    print(*num)
+
+=======
+Suggestion 4
+
+def swap(arr, i):
+    tmp = arr[i]
+    arr[i] = arr[i+1]
+    arr[i+1] = tmp
+
+=======
+Suggestion 5
+
+def swap(a, i, j):
+    a[i], a[j] = a[j], a[i]
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int,input().split())
+    x = [int(input()) for _ in range(q)]
+    a = [i+1 for i in range(n)]
+    for i in range(q):
+        a[x[i]-1],a[x[i]] = a[x[i]],a[x[i]-1]
+    print(' '.join(map(str,a)))
+
+=======
+Suggestion 7
+
+def swap(a, b):
+    return b, a
+
+=======
+Suggestion 8
+
+def main():
+    n, q = map(int, input().split())
+    x = []
+    for i in range(q):
+        x.append(int(input()))
+    a = list(range(1, n+1))
+    for i in range(q-1, -1, -1):
+        a[i], a[i+1] = a[i+1], a[i]
+        if a[i] == x[i]:
+            a[i], a[i+1] = a[i+1], a[i]
+    print(*a)
+
+=======
+Suggestion 9
+
+def main():
+    n,q = map(int,input().split())
+    x = []
+    for i in range(q):
+        x.append(int(input()))
+    #print(x)
+    #print(n,q)
+    l = [i+1 for i in range(n)]
+    #print(l)
+    for i in range(q):
+        #print('i',i)
+        #print('x[i]-1',x[i]-1)
+        if x[i] != 1:
+            l[x[i]-2],l[x[i]-1] = l[x[i]-1],l[x[i]-2]
+            #print(l)
+        else:
+            l[0],l[1] = l[1],l[0]
+            #print(l)
+    for i in range(n):
+        print(l[i],end=' ')
+    print('')
+
+=======
+Suggestion 10
+
+def swap(x, y):
+    tmp = x
+    x = y
+    y = tmp
+    return x, y

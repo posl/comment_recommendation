@@ -1,58 +1,176 @@
-#问题陈述
-#给你一个字符串S和T，由小写英文字母和?  这里，|S|>|T|成立（对于一个字符串X，|X|表示X的长度）。
-#两个字符串X和Y，当且仅当|X|=|Y|时被称为匹配：
-#通过用任何英文字母独立替换X和Y中的每个?
-#对于每个x=0,1,...,|T|，求解以下问题：
-#设S'为长度为|T|的字符串，将S的前x个字符和最后(|T|-x)个字符连接起来，不改变顺序。  如果S'和T匹配，则打印Yes，否则打印No。
-#
-#限制条件
-#S和T是由小写英文字母和?
-#1 ≦ |T| < |S| ≦ 3 × 10^5
-#
-#输入
-#输入来自标准输入，格式如下：
-#S
-#T
-#
-#输出
-#打印（|T|+1）行。
-#第i行应包含x=i-1的答案。
-#
-#输入样本1
-#a?c
-#b?
-#
-#样本输出1
-#Yes
-#No
-#No
-#当x=0时，S'等于?c。  在这里，我们可以用b替换S'的第1个字符?，用c替换T的第2个字符?，使S'等于T，所以S'和T相匹配。  因此，应该在第一行打印Yes。
-#当x=1和2时，S'是ac和a?，都不与T相匹配，因此第二行和第三行应打印No。
-#
-#输入样本2
-#atcoder
-#?????
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#输入样本3
-#beginner
-#contest
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#No
-#No
-#No
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    #print(S,T)
+    for x in range(len(T)+1):
+        S_ = S[:x] + S[len(S) - len(T) + x:]
+        #print(S_)
+        flag = True
+        for i in range(len(T)):
+            if S_[i] == "?":
+                continue
+            if S_[i] != T[i]:
+                flag = False
+                break
+        if flag:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    n = len(t)
+    m = len(s)
+    for i in range(m-n+1):
+        flag = True
+        for j in range(n):
+            if s[i+j] != t[j] and s[i+j] != "?":
+                flag = False
+                break
+        if flag:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    slen = len(s)
+    tlen = len(t)
+    for i in range(tlen+1):
+        s1 = s[0:i]
+        s2 = s[i+tlen:slen]
+        if s1.replace('?', 'a') + t + s2.replace('?', 'a') == s:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    t = input()
+    ls = len(s)
+    lt = len(t)
+    for i in range(ls-lt+1):
+        flag = True
+        for j in range(lt):
+            if s[i+j] != t[j] and s[i+j] != '?':
+                flag = False
+                break
+        if flag:
+            print('Yes')
+        else:
+            print('No')
+    for i in range(ls-lt+1,lt+1):
+        print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    s = s.replace('?', 'a')
+    t = t.replace('?', 'a')
+    for i in range(n - m + 1):
+        if s[i:i + m] == t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    T = input()
+
+    for i in range(len(S) - len(T) + 1):
+        if S[i] == T[0] or S[i] == '?':
+            for j in range(len(T)):
+                if S[i + j] != T[j] and S[i + j] != '?':
+                    break
+            else:
+                print('YES')
+                continue
+        print('NO')
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    len_s = len(S)
+    len_t = len(T)
+    for x in range(len_t+1):
+        if x == 0:
+            S_ = S[len_s-len_t:]
+        else:
+            S_ = S[:x] + S[len_s-len_t+x:]
+        flag = True
+        for i in range(len_t):
+            if T[i] != '?' and T[i] != S_[i]:
+                flag = False
+                break
+        if flag:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    ls = len(s)
+    lt = len(t)
+    for x in range(0, lt+1):
+        if s[x] == t[x] or s[x] == '?':
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    print(s)
+    print(t)
+    for i in range(len(t)+1):
+        print(i)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(t_len+1):
+        s_new = s[:i] + t_len * '?' + s[i+t_len:]
+        #print(s_new)
+        if s_new == t:
+            print('Yes')
+        else:
+            print('No')

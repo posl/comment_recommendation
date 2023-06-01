@@ -1,31 +1,84 @@
-#问题陈述
-#猫咪Snuke正在学习书写字符。
-#今天，他练习写数字1和9，但他反过来写了。
-#你会得到一个由Snuke书写的三位数的整数n。
-#请打印出n中每个数字1替换为9，每个数字9替换为1后得到的整数。
-#
-#限制条件
-#111 ≦ n ≦ 999
-#n是一个由数字1和9组成的整数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#n
-#
-#輸出
-#打印在n中用9替换每一次出现的1，用1替换每一次出现的9所得到的整数。
-#
-#输入样本 1
-#119
-#
-#输出样本 1
-#991
-#用1替换1位上的9，用9替换10位上的1，用9替换100位上的1，答案是991。
-#
-#输入样本2
-#999
-#
-#样本输出2
-#111
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def replace1with9(n):
+    return int(str(n).replace('1','x').replace('9','1').replace('x','9'))
+
+=======
+Suggestion 2
+
+def replace_1_9(n):
+    return int(str(n).replace('1', 'a').replace('9', '1').replace('a', '9'))
+
+=======
+Suggestion 3
+
+def swap(num):
+    num = str(num)
+    num = num.replace('1','x')
+    num = num.replace('9','1')
+    num = num.replace('x','9')
+    return num
+
+=======
+Suggestion 4
+
+def problems111_a():
+    n = input("请输入一个三位数：")
+    if 111 <= int(n) <= 999:
+        result = ''
+        for i in n:
+            if i == '1':
+                result += '9'
+            else:
+                result += '1'
+        print(result)
+    else:
+        print("输入的数字不符合要求，请重新输入！")
+        problems111_a()
+
+problems111_a()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(1110-n)
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    for i in range(len(n)):
+        if n[i] == '1':
+            print('9', end='')
+        else:
+            print('1', end='')
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = input()
+    n = n.replace('1','x')
+    n = n.replace('9','1')
+    n = n.replace('x','9')
+    print(n)
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    for i in range(len(n)):
+        if n[i] == '1':
+            print('9', end='')
+        elif n[i] == '9':
+            print('1', end='')
+        else:
+            print(n[i], end='')

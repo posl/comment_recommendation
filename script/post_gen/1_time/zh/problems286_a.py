@@ -1,53 +1,142 @@
-#问题陈述
-#给你一个长度为N的序列A=(A_1,A_2,...,A_N)和正整数P,Q,R,和S。
-#这里，P,Q,R,和S满足1≦ P≦ Q<R≦ S ≦ N和Q-P=S-R。
-#让B=(B_1, B_2,..., B_N)是通过交换A的P项到Q项和R项到S项得到的序列。
-#打印序列B。
-#
-#限制条件
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N P Q R S
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1，B_2，...，B_N，中间有空格。
-#
-#输入样本 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#样本输出 1
-#5 6 7 4 1 2 3 8
-#将序列A=(1,2,3,4,5,6,7,8)的第1项到第3项(1,2,3)和第5项到第7项(5,6,7)进行交换
-#结果是B=(5,6,7,4,1,2,3,8)，应在中间加空格打印。
-#
-#输入样本2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#样本输出 2
-#2 1 1 2 1
-#同一整数可能在序列中出现多次。
-#
-#输入样本 3
-#2 1 1 2 2
-#50 100
-#
-#样本输出3
-#100 50
-#
-#样本输入4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#样本输出 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def swap_list(l, p, q, r, s):
+    new_list = []
+    new_list.extend(l[0:p])
+    new_list.extend(l[r:s+1])
+    new_list.extend(l[q:r])
+    new_list.extend(l[p:q])
+    new_list.extend(l[s+1:])
+    return new_list
+
+=======
+Suggestion 2
+
+def swap(A, P, Q, R, S):
+    B = []
+    for i in range(0, len(A)):
+        if i == P-1:
+            for j in range(R-1, S):
+                B.append(A[j])
+        elif i == R-1:
+            for j in range(P-1, Q):
+                B.append(A[j])
+        else:
+            B.append(A[i])
+    return B
+
+=======
+Suggestion 3
+
+def swap_list(list, p, q, r, s):
+    list[p-1:q],list[r-1:s] = list[r-1:s],list[p-1:q]
+    return list
+
+N, P, Q, R, S = map(int, input().split())
+A = list(map(int, input().split()))
+B = swap_list(A, P, Q, R, S)
+print(' '.join(str(i) for i in B))
+
+=======
+Suggestion 4
+
+def swap_list(list_, start, end):
+    list_ = list(list_)
+    for i in range(start, (end+start)//2+1):
+        list_[i], list_[end+start-i] = list_[end+start-i], list_[i]
+    return list_
+
+=======
+Suggestion 5
+
+def swap(L, i, j):
+    temp = L[i:j+1]
+    temp.reverse()
+    L[i:j+1] = temp
+
+=======
+Suggestion 6
+
+def swap(a, p, q, r, s):
+    # 交换p到q和r到s的序列
+    b = a[:]
+    for i in range(q-p+1):
+        b[p+i-1] = a[r+i-1]
+    for i in range(s-r+1):
+        b[r+i-1] = a[q+i-1]
+    return b
+
+=======
+Suggestion 7
+
+def swap_list(list, p, q, r, s):
+    # 交换A的P项到Q项和R项到S项得到序列B
+    list[p:q], list[r:s] = list[r:s], list[p:q]
+    return list
+
+=======
+Suggestion 8
+
+def main():
+    #get N,P,Q,R,S
+    line = input()
+    line = line.split()
+    N = int(line[0])
+    P = int(line[1])
+    Q = int(line[2])
+    R = int(line[3])
+    S = int(line[4])
+    #get A
+    line = input()
+    line = line.split()
+    A = []
+    for i in range(N):
+        A.append(int(line[i]))
+    #get B
+    B = []
+    for i in range(N):
+        if i < P-1 or i > Q-1:
+            B.append(A[i])
+        else:
+            B.append(A[i+R-Q])
+    #print B
+    for i in range(N):
+        print(B[i], end=" ")
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    N, P, Q, R, S = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 交换
+    B = A[:P-1] + A[R-1:S] + A[Q-1:R-1] + A[S:]
+
+    # 打印输出
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 10
+
+def swap(p,q,r,s):
+    for i in range(p-1,q):
+        temp = a[i]
+        a[i] = a[s-1]
+        a[s-1] = temp
+        s = s-1
+    for i in range(r-1,s):
+        temp = a[i]
+        a[i] = a[q-1]
+        a[q-1] = temp
+        q = q+1
+    return a
+
+n,p,q,r,s = map(int,input().split())
+a = list(map(int,input().split()))
+b = swap(p,q,r,s)
+print(*b)

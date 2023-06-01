@@ -1,54 +1,222 @@
-#问题说明
-#我们有N个串联的保险丝。从左边开始的第i条保险丝的长度为A_i厘米，以每秒B_i厘米的速度匀速燃烧。
-#考虑从左、右两端同时点燃这个物体。求两个火焰相遇的位置与物体的左端之间的距离。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i,B_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印两个火焰相遇的位置与物体左端之间的距离，单位是厘米（只打印数字）。
-#当你的输出与我们的答案的绝对或相对误差不超过10^{-5}时，将被认为是正确的。
-#
-#输入样本1
-#3
-#1 1
-#2 1
-#3 1
-#
-#样本输出1
-#3.000000000000000
-#两团火焰将在距离物体左端3厘米处相遇。
-#
-#样本输入2
-#3
-#1 3
-#2 2
-#3 1
-#
-#样本输出2
-#3.833333333333333
-#
-#样本输入3
-#5
-#3 9
-#1 2
-#4 6
-#1 5
-#5 3
-#
-#样本输出3
-#8.916666666666668
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getDistance(a, b, n):
+    # a: length of wire
+    # b: burning speed
+    # n: number of wires
+    # return: distance between two fires
+    # the distance between two fires is determin
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    left = 0
+    right = 0
+    for i in range(N):
+        left += A[i]/B[i]
+        right += A[N-1-i]/B[N-1-i]
+    ans = 0
+    for i in range(N):
+        ans += A[i]*(left-right)/2
+        left -= A[i]/B[i]
+        right += A[N-1-i]/B[N-1-i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    #print(a)
+    #print(b)
+    if n == 1:
+        print(a[0])
+        return
+    if n == 2:
+        print(a[0] + a[1])
+        return
+    total = 0
+    for i in range(n):
+        total += a[i] / b[i]
+    #print(total)
+    half = total / 2
+    #print(half)
+    for i in range(n):
+        if half < a[i] / b[i]:
+            print(half * b[i])
+            return
+        half -= a[i] / b[i]
+    print(total - half)
+
+=======
+Suggestion 4
+
+def solve(n, ab):
+    s = 0
+    for a, b in ab:
+        s += a / b
+    t = s / 2
+    s = 0
+    for a, b in ab:
+        if a / b < t:
+            s += a
+        else:
+            s += t * b
+            break
+    return s
+
+=======
+Suggestion 5
+
+def calc_distance(a, b):
+    return float(a) / (a + b)
+
+=======
+Suggestion 6
+
+def cal_distance(AB):
+    N = len(AB)
+    if N == 1:
+        return AB[0][0]
+    else:
+        left = AB[0][0]
+        right = AB[N-1][0]
+        while left < right:
+            mid = (left + right) / 2
+            sum = 0
+            for i in range(N):
+                if mid < AB[i][0]:
+                    sum += AB[i][0] - mid
+            if sum == mid:
+                return mid
+            elif sum > mid:
+                left = mid
+            else:
+                right = mid
+
+N = int(raw_input())
+AB = []
+for i in range(N):
+    AB.append(map(int, raw_input().split()))
+AB.sort()
+print cal_distance(AB)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = input().split()
+        a.append(int(ai))
+        b.append(int(bi))
+
+    # print(a)
+    # print(b)
+
+    # 从左到右
+    left = 0
+    for i in range(n):
+        left += a[i]
+    # print(left)
+
+    # 从右到左
+    right = 0
+    for i in range(n):
+        right += a[n - 1 - i]
+    # print(right)
+
+    # 从左到右
+    left_speed = 0
+    for i in range(n):
+        left_speed += b[i]
+    # print(left_speed)
+
+    # 从右到左
+    right_speed = 0
+    for i in range(n):
+        right_speed += b[n - 1 - i]
+    # print(right_speed)
+
+    # 两团火焰将在距离物体左端3厘米处相遇。
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇的位置与物体的右端之间的距离
+    # 两个火焰相遇的时间
+
+    # 两个火焰相遇的时间
+    t = left / (left_speed + right_speed)
+    # print(t)
+
+    # 两个火焰相遇的位置与物体的左端之间的距离
+    # 两个火焰相遇
+
+=======
+Suggestion 8
+
+def get_distance(a, b, n):
+    """
+    二分法
+    :param a: a
+    :param b: b
+    :param n: n
+    :return: distance
+    """
+    left = 0
+    right = 1000
+    while left < right:
+        mid = (left + right) / 2
+        sum = 0
+        for i in range(n):
+            sum += a[i] / (mid - b[i])
+        if sum < 1:
+            right = mid
+        else:
+            left = mid
+    return left
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    total = sum(A)
+    half = total / 2
+    time = 0
+    for i in range(N):
+        time += A[i] / B[i]
+        if time >= half:
+            print(half * 2 - total)
+            break

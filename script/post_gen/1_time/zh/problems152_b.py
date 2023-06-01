@@ -1,29 +1,132 @@
-#问题陈述
-#给出的是1位正整数a和b。考虑这两个字符串：数字a的b副本的连接，以及数字b的a副本的连接。
-#
-#限制条件
-#1 ≦ a ≦ 9
-#1 ≦ b ≦ 9
-#a和b是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b
-#
-#输出
-#打印两个字符串中按字母顺序排列的较小的字符串。(如果这两个字符串相等，则打印其中一个）。
-#
-#输入样本 1
-#4 3
-#
-#输出样本 1
-#3333
-#我们有两个字符串444和3333。在它们之间，3333是词汇学上较小的一个。
-#
-#输入样本2
-#7 7
-#
-#样本输出2
-#7777777
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if a == b:
+        print(str(a) * a)
+    elif a > b:
+        print(str(b) * a)
+    else:
+        print(str(a) * b)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    input_line = input()
+    a, b = map(int, input_line.split())
+
+    # 求解并输出
+    if a < b:
+        print(str(a) * b)
+    else:
+        print(str(b) * a)
+
+=======
+Suggestion 3
+
+def problem152_b(a,b):
+    a = int(a)
+    b = int(b)
+    a_str = str(a)
+    b_str = str(b)
+    a_str = a_str * b
+    b_str = b_str * a
+    if a_str < b_str:
+        print(a_str)
+    else:
+        print(b_str)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    a_str = str(a)
+    b_str = str(b)
+    if a_str == b_str:
+        print(a_str*a)
+    elif a_str < b_str:
+        print(a_str*b)
+    else:
+        print(b_str*a)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    if a>b:
+        print(str(b)*a)
+    elif a<b:
+        print(str(a)*b)
+    else:
+        print(str(a)*b)
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a > b :
+        print(str(b)*a)
+    else:
+        print(str(a)*b)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = [int(i) for i in input().split()]
+    if a > b:
+        print(str(b)*a)
+    else:
+        print(str(a)*b)
+
+=======
+Suggestion 8
+
+def main():
+    a = input("请输入a：")
+    b = input("请输入b：")
+    if a<b:
+        print(a*a)
+    elif a>b:
+        print(b*b)
+    else:
+        print(a*a)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    if a == b:
+        print(str(a)*b)
+    elif a < b:
+        print(str(a)*b)
+    else:
+        print(str(b)*a)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    a, b = input().split()
+    # 计算
+    a = int(a)
+    b = int(b)
+    a_str = str(a)
+    b_str = str(b)
+    a_str *= b
+    b_str *= a
+    if a_str < b_str:
+        print(a_str)
+    else:
+        print(b_str)
+    return

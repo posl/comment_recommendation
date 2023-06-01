@@ -1,91 +1,234 @@
-#问题陈述
-#高桥王国由N个城镇和N-1条道路组成，其中城镇的编号为1到N。第i条道路（1 ≦ i ≦ N-1）连接城镇a_i和城镇b_i，因此你可以通过一些道路从每个城镇到达每个城镇。所有的道路都有相同的长度。
-#你将被给予Q个查询。在第i次查询中（1 ≦ i ≦ Q），给定整数c_i和d_i，解决以下问题：
-#高桥现在在c_i镇，青木现在在d_i镇。他们将同时离开城镇并开始以相同的速度行驶，高桥前往d_i镇，青木前往c_i镇。确定他们是否会在一个城镇相遇，或在公路上的中途相遇。在这里，假设他们两个人都沿着最短的路径行驶，而且经过城镇所需的时间可以忽略不计。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#输入的所有数值都是整数。
-#通过使用一些道路，有可能从每个城镇到达每个城镇。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#输出
-#打印Q行。
-#第i行（1 ≦ i ≦ Q）应该包含Town，如果高桥和青木将在第i个查询中的一个城镇相遇，以及Road，如果他们在该查询中沿着一条道路中途相遇。
-#
-#输入样本 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#样本输出1
-#Road
-#在第一个也是唯一的一个查询中，高桥和青木分别同时离开镇1和镇2，他们将在1号路的中途相遇，所以我们应该打印出路。
-#
-#输入样本2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#样本输出2
-#Town
-#Town
-#在第一个查询中，高桥和青木同时分别离开镇1和镇3，他们将在镇2相遇，所以我们应该打印镇。
-#在第一个查询中，高桥和青木分别同时离开镇1和镇5，他们将在镇3相遇，所以我们应该打印镇。
-#
-#输入样本 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#样本输出3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    roads = []
+    for i in range(n-1):
+        roads.append(list(map(int, input().split())))
+    queries = []
+    for i in range(q):
+        queries.append(list(map(int, input().split())))
+    for query in queries:
+        if query[0] > query[1]:
+            query[0], query[1] = query[1], query[0]
+        for road in roads:
+            if road[0] > road[1]:
+                road[0], road[1] = road[1], road[0]
+        if query[0] == query[1]:
+            print('Town')
+        else:
+            for road in roads:
+                if query[0] == road[0] and query[1] == road[1]:
+                    print('Road')
+                    break
+                elif query[0] == road[0] and query[1] == road[1]:
+                    print('Road')
+                    break
+                elif query[0] > road[0] and query[1] < road[1]:
+                    print('Town')
+                    break
+                elif query[0] < road[0] and query[1] > road[1]:
+                    print('Town')
+                    break
+            else:
+                print('Road')
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    #print(n, q)
+    #print(type(n), type(q))
+    #print("n = ", n, "q = ", q)
+    #print("n = %d, q = %d" % (n, q))
+    #print("n = {0}, q = {1}".format(n, q))
+
+    # 读取道路信息
+    roads = []
+    for i in range(n - 1):
+        road = list(map(int, input().split()))
+        roads.append(road)
+    #print(roads)
+
+    # 读取查询信息
+    queries = []
+    for i in range(q):
+        query = list(map(int, input().split()))
+        queries.append(query)
+    #print(queries)
+
+    # 构建图
+    graph = {}
+    for road in roads:
+        if road[0] not in graph:
+            graph[road[0]] = [road[1]]
+        else:
+            graph[road[0]].append(road[1])
+
+        if road[1] not in graph:
+            graph[road[1]] = [road[0]]
+        else:
+            graph[road[1]].append(road[0])
+    #print(graph)
+
+    # 构建距离表
+    distance = {}
+    for i in range(1, n + 1):
+        distance[i] = -1
+    #print(distance)
+
+    # 深度优先搜索
+    def dfs(graph, start, distance):
+        #print("start = ", start)
+        #print("distance = ", distance)
+        #print("graph = ", graph)
+        for node in graph[start]:
+            if distance[node] == -1:
+                distance[node] = distance[start] + 1
+                dfs(graph, node, distance)
+
+    # 计算所有节点到根节点的距离
+    distance[1] = 0
+    dfs(graph, 1, distance)
+    #print(distance)
+
+    # 处理查询
+    for query in queries:
+        #print(query)
+        #print(distance[query[0]], distance[query[1]])
+        if (distance[query[0]] % 2) == (distance[query[1]] % 2):
+            print("Town")
+        else:
+
+=======
+Suggestion 3
+
+def find_parent(parent,x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent,parent[x])
+    return parent[x]
+
+=======
+Suggestion 4
+
+def find_root(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find_root(par[x])
+        return par[x]
+
+=======
+Suggestion 5
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    # print(N, Q)
+    # print(type(N), type(Q))
+    # print(type(N), type(Q))
+    # print(type(N), type(Q))
+
+    # a = [0] * (N - 1)
+    # b = [0] * (N - 1)
+    # c = [0] * Q
+    # d = [0] * Q
+    # for i in range(N - 1):
+    #     a[i], b[i] = map(int, input().split())
+    # for i in range(Q):
+    #     c[i], d[i] = map(int, input().split())
+
+    # print(a, b, c, d)
+
+    graph = [[] for _ in range(N + 1)]
+    for _ in range(N - 1):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+
+    # print(graph)
+
+    # print(graph)
+    # print(graph[1][0])
+    # print(graph[graph[1][0]][0])
+    # print(graph[graph[graph[1][0]][0]][0])
+    # print(graph[graph[graph[graph[1][0]][0]][0]][0])
+    # print(graph[graph[graph[graph[graph[1][0]][0]][0]][0]][0])
+    # print(graph[graph[graph[graph[graph[graph[1][0]][0]][0]][0]][0]][0])
+    # print(graph[graph[graph[graph[graph[graph[graph[1][0]][0]][0]][0]][0]][0]][0])
+    # print(graph[graph[graph[graph[graph[graph[graph[graph[1][0]][0]][0]][0]][0]][0]][0]][0])
+    # print(graph[graph[graph[graph[graph[graph[graph[graph[graph[1][0]][0]][0]][0]][0]][0]][0]][0]][0])
+
+    # print(graph[1][0])
+    # print(graph[graph[1][0]][0])
+    # print(graph[graph[graph[1][0]][0]][0])
+    # print(graph[graph[graph[graph[1][0]][0]][
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    #print(N, Q)
+    towns = []
+    roads = []
+    for i in range(N-1):
+        a, b = map(int, input().split())
+        #print(a, b)
+        towns.append([a, b])
+    for i in range(Q):
+        c, d = map(int, input().split())
+        #print(c, d)
+        roads.append([c, d])
+    for i in range(Q):
+        c = roads[i][0]
+        d = roads[i][1]
+        #print(c, d)
+        if c == d:
+            print("Town")
+            continue
+        #print(c, d)
+        if c > d:
+            c, d = d, c
+        #print(c, d)
+        for j in range(N-1):
+            if towns[j][0] == c and towns[j][1] == d:
+                print("Town")
+                break
+            if towns[j][0] == c and towns[j][1] > d:
+                print("Town")
+                break
+            if towns[j][0] > c and towns[j][1] == d:
+                print("Town")
+                break
+            if towns[j][0] > c and towns[j][1] < d:
+                print("Road")
+                break
+        else:
+            print("Road")
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    return
+
+=======
+Suggestion 9
+
+def main():
+    pass

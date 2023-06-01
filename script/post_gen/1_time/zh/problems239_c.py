@@ -1,49 +1,116 @@
-#问题陈述
-#在xy坐标平面上，是否有一个格点与两个格点（x_1, y_1）和（x_2, y_2）的距离都是(5)^(1/2)？
-#
-#注释
-#在xy坐标平面上的一个点，其x和y坐标都是整数的，称为格点。
-#两点(a, b)和(c, d)之间的距离被定义为它们之间的欧几里得距离，((a - c)^2 + (b-d)^2)^(1/2)。
-#下图展示了一个xy平面，黑色圆圈位于(0, 0)，白色圆圈位于格子点，它们与(0, 0)的距离为(5)^(1/2)。  (网格显示x或y是整数的地方)。
-#
-#约束条件
-#-10^9 ≦ x_1 ≦ 10^9
-#-10^9 ≦ y_1 ≦ 10^9
-#-10^9 ≦ x_2 ≦ 10^9
-#-10^9 ≦ y_2 ≦ 10^9
-#(x_1, y_1) ≠ (x_2, y_2)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1 x_2 y_2
-#
-#输出
-#如果有一个满足条件的晶格点，打印Yes；否则，打印No。
-#
-#输入样本 1
-#0 0 3 3
-#
-#样本输出 1
-#是
-#点(2,1)和(x_1, y_1)之间的距离是((0-2)^2 + (0-1)^2)^(1/2) = (5)^(1/2)；
-#点(2,1)和(x_2, y_2)之间的距离是((3-2)^2 + (3-1)^2)^(1/2) = (5)^(1/2) ；
-#点(2, 1)是一个格子点、
-#所以点(2, 1)满足这个条件。  因此，Yes应该被打印出来。
-#我们也可以用同样的方法断言（1，2）也满足条件。
-#
-#输入样本 2
-#0 1 2 3
-#
-#样本输出2
-#No
-#没有晶格点满足条件，所以应该打印No。
-#
-#输入样本 3
-#1000000000 1000000000 999999999 999999999
-#
-#样本输出3
-#Yes
-#点（10^9 + 1，10^9 - 2）和点（10^9 - 2，10^9 + 1）满足条件。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
+=======
+Suggestion 2
+
+def main():
+    x1,y1,x2,y2=map(int,input().split())
+    if ((x1-x2)**2+(y1-y2)**2)**(1/2)==(5)**(1/2):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    x_1, y_1, x_2, y_2 = map(int, input().split())
+    if (x_1 - x_2) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2) ** 2 + (y_1 - y_2 + 1) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2) ** 2 + (y_1 - y_2 - 1) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2 + 1) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    elif (x_1 - x_2 - 1) ** 2 + (y_1 - y_2) ** 2 == 5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 5
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if x1 == x2 and y1 == y2:
+        print("No")
+        return
+    elif (x1-x2)**2 + (y1-y2)**2 == 5:
+        print("Yes")
+        return
+    elif (x1-x2)**2 + (y1-y2)**2 == 50:
+        print("Yes")
+        return
+    else:
+        print("No")
+        return
+
+=======
+Suggestion 6
+
+def problems239_c(x_1, y_1, x_2, y_2):
+    if x_1 == x_2 and y_1 == y_2:
+        return "No"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 10:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 50:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 90:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 130:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 170:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 210:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 250:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 290:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 330:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 370:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 410:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 450:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 490:
+        return "Yes"
+    if (x_1 - x_2)**2 + (y_1 - y_2)**2 == 530:
+        return "Yes"
+    if (x_1 - x_2
+
+=======
+Suggestion 7
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if (x1 + y1) % 2 == (x2 + y2) % 2:
+        if abs(x1 - x2) + abs(y1 - y2) <= 6:
+            print('Yes')
+            return
+    print('No')

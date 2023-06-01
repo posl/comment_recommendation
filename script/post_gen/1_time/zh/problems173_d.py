@@ -1,36 +1,205 @@
-#问题陈述
-#在完成了网络游戏ATChat的教程之后，你很快就决定去一个特定的地方，那里正好有N-1个玩家。这N个玩家，包括你，编号为1到N，玩家i的友好度为A_i。
-#这N个玩家将按照一定的顺序逐一到达该地。为了确保没有人迷路，你制定了以下规则：已经到达那里的玩家应该形成一个圆圈，而刚刚到达那里的玩家应该在某个地方切入这个圆圈。
-#当每个玩家，除了第一个到达的玩家，到达该处时，该玩家得到的安慰等于顺时针方向相邻玩家的友好度和逆时针方向相邻玩家的友好度中较小的那个。第一个到达那里的玩家得到的舒适度为0。
-#通过优化选择到达的顺序和在圆圈中切入的位置，N个玩家能得到的最大总舒适度是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个玩家能得到的最大总舒适度。
-#
-#样本输入1
-#4
-#2 2 1 3
-#
-#样本输出1
-#7
-#按玩家4、2、1、3的顺序到达该处，并按图中所示切入圆圈，他们可以得到总的舒适度为7。
-#他们不能得到大于7的总舒适度，所以答案是7。
-#
-#输入样本2
-#7
-#1 1 1 1 1 1 1
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems173_d():
+    return None
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(1, N):
+        ans += A[i // 2]
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a += a
+    s = [0] * (2 * n + 1)
+    for i in range(1, 2 * n + 1):
+        s[i] = s[i - 1] + a[i - 1]
+    ans = 0
+    for i in range(n):
+        ans = max(ans, s[i + n] - s[i] + min(a[i:i + n]))
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A + A
+    ans = 0
+    t = 0
+    for i in range(2*N):
+        t += A[i]
+        if i >= N:
+            t -= A[i-N]
+        if i >= N-1:
+            ans = max(ans, t)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.append(a[0])
+    a.append(a[1])
+    a.append(a[2])
+    a.append(a[3])
+    a.append(a[4])
+    a.append(a[5])
+    a.append(a[6])
+    a.append(a[7])
+    a.append(a[8])
+    a.append(a[9])
+    a.append(a[10])
+    a.append(a[11])
+    a.append(a[12])
+    a.append(a[13])
+    a.append(a[14])
+    a.append(a[15])
+    a.append(a[16])
+    a.append(a[17])
+    a.append(a[18])
+    a.append(a[19])
+    a.append(a[20])
+    a.append(a[21])
+    a.append(a[22])
+    a.append(a[23])
+    a.append(a[24])
+    a.append(a[25])
+    a.append(a[26])
+    a.append(a[27])
+    a.append(a[28])
+    a.append(a[29])
+    a.append(a[30])
+    a.append(a[31])
+    a.append(a[32])
+    a.append(a[33])
+    a.append(a[34])
+    a.append(a[35])
+    a.append(a[36])
+    a.append(a[37])
+    a.append(a[38])
+    a.append(a[39])
+    a.append(a[40])
+    a.append(a[41])
+    a.append(a[42])
+    a.append(a[43])
+    a.append(a[44])
+    a.append(a[45])
+    a.append(a[46])
+    a.append(a[47])
+    a.append(a[48])
+    a.append(a[49])
+    a.append(a[50])
+    a.append(a[51])
+    a.append(a[52])
+    a.append(a[53])
+    a.append(a[54])
+    a.append(a[55])
+    a.append(a[56])
+    a.append(a[57])
+    a.append(a[58])
+    a.append(a[59])
+    a.append(a[60])
+    a.append(a[61])
+    a.append(a[62])
+    a.append(a[63])
+    a.append(a[64])
+    a.append(a[65])
+    a.append(a[66])
+    a.append(a[67])
+    a.append(a[
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.append(A[0])
+    A.append(A[1])
+    A.append(A[2])
+    max = 0
+    for i in range(1, N+1):
+        sum = 0
+        if i == 1:
+            sum = A[i-1] + A[i+1]
+            if sum > max:
+                max = sum
+        elif i == N:
+            sum = A[i-1] + A[i+1]
+            if sum > max:
+                max = sum
+        else:
+            sum = A[i-1] + A[i+1]
+            if sum > max:
+                max = sum
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.append(a[0])
+    a.append(a[1])
+
+    ans = 0
+    for i in range(n):
+        ans += max(a[i], a[i+1])
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.sort()
+    ans = 0
+    for i in range(1,n):
+        ans += a[i]*i
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A + A
+    cumsum = [0]
+    for i in range(2 * N):
+        cumsum.append(cumsum[-1] + A[i])
+    ans = 0
+    for i in range(N):
+        ans = max(ans, cumsum[i + N] - cumsum[i + 1] + min(A[i], A[i + N]))
+    print(ans)

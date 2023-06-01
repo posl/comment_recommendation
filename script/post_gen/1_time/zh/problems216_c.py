@@ -1,40 +1,211 @@
-#问题陈述
-#我们有一个空盒子。
-#高桥可以按任何顺序施放以下两个法术，次数不限。
-#咒语A：往盒子里放一个新球。
-#咒语B：将盒子里的球的数量增加一倍。
-#告诉我们一个方法，在最多施用120次法术的情况下，盒子里正好有N个球。
-#可以证明，在限制条件下，总是存在这样一种方法
-# 给定。
-#除了法术之外，没有任何方法可以改变盒子里的球的数量。
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印一个由A和B组成的字符串S。
-#S的第i个字符应代表第i次施法的咒语。
-#S必须最多拥有120个字符。
-#
-#输入样本1
-#5
-#
-#样本输出1
-#AABA
-#这就改变了球的数量，如下所示：0 -{a}-> 1-{a}-> 2 -{b}-> 4-{a}-> 5。
-#也有其他可接受的输出，如AAAAA。
-#
-#输入样本2
-#14
-#
-#样本输出2
-#BBABBAAAB
-#这就改变了球的数量，如下所示：0 -{b}-> 0 -{b}-> 0 -{a}-> 1 -{b}-> 2 -{b}-> 4 -{a}-> 5 -{a}-> 6 -{a}-> 7 -{b}-> 14。
-#不要求最小化S的长度。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n == 1:
+        return "A"
+    elif n == 2:
+        return "B"
+    elif n % 2 == 0:
+        return f(n // 2) + "B"
+    else:
+        return f(n - 1) + "A"
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 2
+
+def solve(n):
+    if n == 1:
+        return 'A'
+    if n % 2 == 0:
+        return solve(n // 2) + 'B'
+    else:
+        return solve(n - 1) + 'A'
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("A")
+        return
+    if n == 2:
+        print("AA")
+        return
+    if n == 3:
+        print("AAA")
+        return
+    if n == 4:
+        print("AABA")
+        return
+
+    # 2, 4, 8, 16, 32, 64
+    # 3, 6, 12, 24, 48, 96
+    # 5, 10, 20, 40, 80
+    # 7, 14, 28, 56
+    # 9, 18, 36, 72
+    # 11, 22, 44, 88
+    # 13, 26, 52
+    # 15, 30, 60
+    # 17, 34, 68
+    # 19, 38, 76
+    # 21, 42, 84
+    # 23, 46, 92
+    # 25, 50
+    # 27, 54
+    # 29, 58
+    # 31, 62
+    # 33, 66
+    # 35, 70
+    # 37, 74
+    # 39, 78
+    # 41, 82
+    # 43, 86
+    # 45, 90
+    # 47, 94
+    # 49
+    # 51
+    # 53
+    # 55
+    # 57
+    # 59
+    # 61
+    # 63
+    # 65
+    # 67
+    # 69
+    # 71
+    # 73
+    # 75
+    # 77
+    # 79
+    # 81
+    # 83
+    # 85
+    # 87
+    # 89
+    # 91
+    # 93
+    # 95
+    # 97
+    # 99
+    # 101
+    # 103
+    # 105
+    # 107
+    # 109
+    # 111
+    # 113
+    # 115
+
+=======
+Suggestion 4
+
+def f(n):
+    if n==0:
+        return ''
+    if n%2==0:
+        return f(n//2)+'B'
+    else:
+        return f(n-1)+'A'
+
+print(f(int(input())))
+
+=======
+Suggestion 5
+
+def solve(n):
+    if n == 0:
+        return ''
+    elif n == 1:
+        return 'A'
+    elif n % 2 == 0:
+        return solve(n // 2) + 'B'
+    else:
+        return solve(n - 1) + 'A'
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def f(n):
+    if n == 0:
+        return ''
+    if n % 2 == 0:
+        return f((n - 2) // 2) + 'b'
+    else:
+        return f((n - 1) // 2) + 'a'
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    while n > 0:
+        if n % 2 == 0:
+            s.append('B')
+            n = n // 2
+        else:
+            s.append('A')
+            n -= 1
+    print(''.join(reversed(s)))
+
+=======
+Suggestion 8
+
+def solve(n):
+    res = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n // 2
+            res.append('B')
+        else:
+            n = n - 1
+            res.append('A')
+    return ''.join(res[::-1])
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 9
+
+def solve(n):
+    ans = ''
+    while n > 0:
+        if n % 2 == 0:
+            n //= 2
+            ans += 'B'
+        else:
+            n -= 1
+            ans += 'A'
+    return ans[::-1]
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 10
+
+def getMinSteps(n):
+    steps = []
+    while n > 0:
+        if n % 2 == 0:
+            n = n / 2
+            steps.append('B')
+        else:
+            n = n - 1
+            steps.append('A')
+    return steps[::-1]

@@ -1,35 +1,115 @@
-#问题陈述
-#给你一个由v和w组成的字符串S。
-#打印字符串S中的 "底 "的数量（见样本输入/输出的图）。
-#
-#限制条件
-#S是一个由v和w组成的字符串。
-#S的长度在1到100之间，包括在内。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本1
-#vvwvw
-#
-#样本输出1
-#7
-#上面的图片显示了字符串vvwvw中的七个 "底"。
-#
-#样本输入2
-#v
-#
-#样本输出2
-#1
-#
-#样本输入3
-#wwwvvvvvvv
-#
-#样本输出3
-#12
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S.count('wv'))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s.count('vw') + s.count('wv'))
+
+=======
+Suggestion 3
+
+def count_bottoms(s):
+    if s == 'v':
+        return 1
+    elif s == 'w':
+        return 2
+    else:
+        return 0
+
+s = input()
+bottoms = 0
+for i in range(len(s)):
+    bottoms += count_bottoms(s[i])
+print(bottoms)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    print(S.count("wv"))
+
+=======
+Suggestion 5
+
+def count_bottoms(s):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'w':
+            count += s[i+1:].count('v')
+    return count
+
+=======
+Suggestion 6
+
+def print_count_of_bottoms(s):
+    # 记录连续的v的个数
+    count_of_v = 0
+    # 记录底的个数
+    count_of_bottoms = 0
+    for c in s:
+        if c == 'v':
+            count_of_v += 1
+        else:
+            count_of_bottoms += count_of_v
+    print(count_of_bottoms)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == "w":
+            count += 1
+            for j in range(i+1,len(s)):
+                if s[j] == "v":
+                    count += 1
+                else:
+                    break
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'v':
+            for j in range(i+1, len(s)):
+                if s[j] == 'v':
+                    count += 1
+    print(count)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    s = input().strip()
+    print(s.count('vv') + s.count('wv') * 2 + s.count('vw') * 2 + s.count('ww') * 3)
+
+=======
+Suggestion 10
+
+def count_bottoms(s):
+    """
+    计算字符串s中的底的数量
+    :param s: 一个由v和w组成的字符串
+    :return: 底的数量
+    """
+    if len(s) == 1:
+        return 1 if s == 'v' else 0
+    else:
+        return count_bottoms(s[0]) + count_bottoms(s[1:])

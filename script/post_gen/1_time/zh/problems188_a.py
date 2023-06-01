@@ -1,42 +1,76 @@
-#问题陈述
-#一场篮球比赛正在进行中，现在的比分是X-Y。这里，可以保证X≠Y。
-#落后的一方能否用一个成功的三分球扭转局面？
-#换句话说，如果落后的一队获得三分，其分数是否会严格地大于另一队的分数？  
-#
-#限制条件
-#0 ≦ X ≦ 100
-#0 ≦ Y ≦ 100
-#X ≠ Y
-#X和Y是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y
-#
-#输出
-#如果落后的球队能用一个成功的三分球扭转局面，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 5
-#
-#输出示例 1
-#Yes
-#得3分的球队落后。
-#在一个成功的3分球后，它将有6分，这比另一队的5分要多。
-#因此，我们应该打印Yes。
-#
-#输入样本 2
-#16 2
-#
-#样本输出2
-#No
-#差距太大。落后的球队不能通过获得3分而超越对方。  
-#
-#输入样本 3
-#12 15
-#
-#样本输出3
-#No
-#一个3分球可以追平比分，但不能扭转局面。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(int,input().split())
+    if x > y :
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x > y:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    print("Yes" if x < y else "No")
+
+=======
+Suggestion 4
+
+def main():
+    #input
+    x, y = input().split()
+    x = int(x)
+    y = int(y)
+    #process
+    if x < y:
+        print("Yes")
+    else:
+        print("No")
+    #output
+
+=======
+Suggestion 5
+
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    X, Y = map(int, input().split())
+    if X < Y:
+        X, Y = Y, X
+    if X - Y < 3:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(int, input().split())
+
+    if x < y:
+        print("Yes")
+    else:
+        print("No")

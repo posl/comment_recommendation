@@ -1,52 +1,169 @@
-#问题陈述
-#高桥的家里有N种食物。第i种食物的美味程度为A_i。
-#他不喜欢其中的K种食物：对于每个i=1,2,...,K，他不喜欢第B_i种食物。
-#在N种食物中具有最大美味的食物中，高桥将随机选择一种并吃掉。
-#如果他有机会吃到他不喜欢的东西，就打印Yes；否则，就打印No。
-#
-#限制条件
-#1≦ K≦ N≦ 100
-#1≦ A_i≦ 100
-#1≦ B_i≦ N
-#所有B_i都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_K
-#
-#输出
-#如果高桥有机会吃到他不喜欢的食物，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 3
-#6 8 10 7 10
-#2 3 4
-#
-#样本输出1
-#Yes
-#在这五种食物中，味道最好的是食物3和5，他吃了其中的一种。
-#他不喜欢食物2、3和4，他有机会吃其中一种：食物3。
-#因此，答案是肯定的。
-#
-#样本输入 2
-#5 2
-#100 100 100 1 1
-#5 4
-#
-#样品输出2
-#No
-#味道最好的食物是食物1、2和3，他都没有机会吃。
-#
-#样本输入 3
-#2 1
-#100 1
-#2
-#
-#样本输出3
-#No
-#味道最大的食物是食物1，他没有机会吃。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    max_A = max(A)
+    max_B = max(B)
+
+    if max_A > max_B:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n,k = input().split()
+    n = int(n)
+    k = int(k)
+    a = input().split()
+    b = input().split()
+    a = [int(i) for i in a]
+    b = [int(i) for i in b]
+    max_a = max(a)
+    max_b = max(b)
+    if max_a > max_b:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+
+    maxA = max(A)
+
+    for i in range(K):
+        if B[i] == A.index(maxA)+1:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    #输入数据
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    #解决问题
+    maxA = max(A)
+    maxB = max(B)
+    if maxA > maxB:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    for i in range(K):
+        A[B[i]-1] = 0
+    if max(A) != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort()
+    B.sort()
+    for i in range(K):
+        if A[-1] == B[i]:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    foods = list(map(int, input().split()))
+    hate_foods = list(map(int, input().split()))
+    foods.sort()
+    hate_foods.sort()
+    for i in range(k):
+        if foods[n-1] == hate_foods[i]:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    c = [0] * n
+    for i in b:
+        c[i - 1] = 1
+
+    d = []
+    for i in range(n):
+        if c[i] == 0:
+            d.append(a[i])
+
+    if len(d) == 0:
+        print('No')
+    else:
+        d.sort()
+        if d[-1] > a[-1]:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    i = 0
+    j = 0
+    while i < N:
+        if j < K and A[i] == B[j]:
+            j += 1
+        else:
+            print("Yes")
+            return
+        i += 1
+    print("No")
+
+=======
+Suggestion 10
+
+def problems252_b():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    for i in range(k):
+        a[b[i]-1] = 0
+    print("Yes" if max(a)>0 else "No")

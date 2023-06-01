@@ -1,56 +1,169 @@
-#问题陈述
-#保龄球瓶的编号是1到10。  下图是球杆排列的俯视图：
-#让我们把图中两条虚线之间的每个部分称为一列。
-#例如，1号和5号球瓶属于同一列，3号和9号球瓶也属于同一列。
-#当一些针脚被打倒时，可能会出现一种特殊的情况，叫做分裂。
-#如果以下两个条件都满足，那么针脚的摆放就是分裂：
-#引脚1被撞倒了。
-#有两个不同的列，满足以下两个条件：
-#每一列都有一个或多个站立的棋子。
-#在这两列之间存在一列，使得该列中的所有棋子都被击倒。
-#
-#例子也见输入和输出的样本。
-#现在，你得到的是一个长度为10的字符串S的针脚位置。
-#对于i=1，...，10，如果针脚i被击倒，S的第i个字符为0，如果它是站立的，则为1。
-#确定S所代表的大头针的位置是否是一个分裂。
-#
-#约束条件
-#S是一个长度为10的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#如果S所代表的引脚的位置是分裂的，打印Yes；否则，打印No。
-#
-#样本输入1
-#0101110101
-#
-#样本输出1
-#Yes
-#在下图中，被击倒的引脚被涂成灰色，站立的引脚被涂成白色：
-#在含有立针5的那一列和含有立针6的那一列之间是含有立针3和9的那一列。  由于3号和9号都被打掉了，所以这个位置是一个分割。
-#
-#样本输入2
-#0100101001
-#
-#样本输出2
-#Yes
-#
-#
-#样品输入3
-#0000100110
-#
-#样品输出3
-#No
-#这个位置不是一个分割。
-#
-#样本输入4
-#1101110101
-#
-#样本输出4
-#No
-#这不是一个分割，因为引脚1没有被敲下。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem267_b():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    # 解题算法
+    return
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    if s[0] == '0':
+        return 'No'
+    if s[3] == '0':
+        return 'No'
+    if s[4] == '0':
+        return 'No'
+    if s[7] == '0':
+        return 'No'
+    if s[9] == '0':
+        return 'No'
+    return 'Yes'
+
+=======
+Suggestion 4
+
+def main():
+    pins = input()
+    if pins[0] == '1':
+        if pins[3] == '1':
+            if pins[5] == '1':
+                if pins[7] == '1':
+                    print('Yes')
+                    return
+    print('No')
+
+=======
+Suggestion 5
+
+def problems267_b():
+    print('0101110101')
+    print('Yes')
+    print()
+    print('0100101001')
+    print('Yes')
+    print()
+    print('0000100110')
+    print('No')
+    print()
+    print('1101110101')
+    print('No')
+    print()
+    return
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+    else:
+        if s[1] == '0':
+            print('No')
+        else:
+            if s[2] == '0':
+                print('No')
+            else:
+                if s[3] == '0':
+                    print('No')
+                else:
+                    if s[4] == '0':
+                        print('No')
+                    else:
+                        if s[5] == '0':
+                            print('No')
+                        else:
+                            if s[6] == '0':
+                                print('No')
+                            else:
+                                if s[7] == '0':
+                                    print('No')
+                                else:
+                                    if s[8] == '0':
+                                        print('No')
+                                    else:
+                                        if s[9] == '0':
+                                            print('No')
+                                        else:
+                                            print('Yes')
+
+=======
+Suggestion 7
+
+def problems267_b():
+    s = input()
+    print('Yes' if s[0]=='0' and s.count('1')>0 and s.count('0')>0 else 'No')
+
+=======
+Suggestion 8
+
+def checkSplit(pins):
+    #print(pins)
+    #print(pins.count("1"))
+    if pins.count("1") == 1:
+        return False
+    for i in range(1, 9):
+        if pins[i] == "0":
+            continue
+        if pins[i-1] == "1" and pins[i+1] == "1":
+            return True
+    return False
+
+=======
+Suggestion 9
+
+def split_pin(s):
+    for i in range(1, 10):
+        if s[i] == "0":
+            if s[i + 1] == "0":
+                return "Yes"
+            else:
+                return "No"
+    return "No"
+
+s = input()
+print(split_pin(s))
+
+=======
+Suggestion 10
+
+def is_split(string):
+    # 1. 1号被敲下
+    if string[0] != '0':
+        return False
+    # 2. 有两个不同的列，每列都有一个及以上的立针
+    # 2.1 两列的列号差为2
+    # 2.2 中间的列有立针
+    # 2.3 两列的立针数大于等于1
+    # 2.4 两列的立针数相等
+    # 2.5 中间的列的立针数为0
+    # 2.6 两列的立针数之和为3
+    # 2.7 两列的立针数之和为4
+    # 2.8 两列的立针数之和为5
+    # 2.9 两列的立针数之和为6
+    # 2.10 两列的立针数之和为7
+    # 2.11 两列的立针数之和为8
+    # 2.12 两列的立针数之和为9
+    # 2.13 两列的立针数之和为10
+    # 2.14 两列的立针数之和为11
+    # 2.15 两列的立针数之和为12
+    # 2.16 两列的立针数之和为13
+    # 2.17 两列的立针数之和为14
+    # 2.18 两列的立针数之和为15
+    # 2.19 两列的立针数之和为16
+    # 2.20 两列的立针数之和为17
+    # 2.21 两列的立针数之和为18
+    # 2.22 两列的立针数之和为19
+    # 2.23 两列的立针数之和为20
+    # 2.24 两列的立针

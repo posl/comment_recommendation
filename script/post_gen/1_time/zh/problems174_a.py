@@ -1,28 +1,51 @@
-#问题陈述
-#当且仅当房间的温度为30摄氏度或以上时，你将打开空调。
-#目前房间的温度是X摄氏度。你会打开空调吗？
-#
-#限制条件
-#-40 ≦ X ≦ 40
-#X是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#如果你将打开空调，打印Yes；否则打印No。
-#
-#输入样本1
-#25
-#
-#样本输出1
-#Yes
-#
-#样本输入2
-#30
-#
-#样本输出2
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x >= 30:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def ac():
+    x = int(input())
+    if x >= 30:
+        print('Yes')
+    else:
+        print('No')
+
+ac()
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x >= 30:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def is_open_air_conditioner(temperature):
+    if temperature >= 30:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def solve(X):
+    if X >= 30:
+        return "Yes"
+    else:
+        return "No"

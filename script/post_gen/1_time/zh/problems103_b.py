@@ -1,45 +1,96 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S和T。
-#判断S在旋转后是否等于T。
-#也就是说，确定在执行以下操作若干次后，S是否等于T：
-#操作：让S = S_1 S_2 ...S_{|S|}。将S改为S_{|S|} S_1 S_2 ...S_{|S|-1}。
-#这里，|X|表示字符串X的长度。
-#
-#约束条件
-#2 ≦ |S| ≦ 100
-#|S| = |T|
-#S和T由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#輸出
-#如果旋转后S等于T，打印Yes；如果不等于，打印No。
-#
-#输入样本1
-#kyoto
-#tokyo
-#
-#样本输出1
-#Yes
-#在第一次操作中，kyoto变成kyot。
-#在第二次操作中，kyot变成了tokyo。
-#
-#输入样本2
-#abc
-#arc
-#
-#样本输出2
-#No
-#abc在任何次数的操作后都不等于arc。
-#
-#输入样本3
-#aaaaaaaaaaaaab
-#aaaaaaaaaaaaaaab
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    s = s + s
+    if t in s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def rotate(s):
+    return s[1:] + s[0]
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if s in t+t:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 4
+
+def rotate(s):
+    return s[-1] + s[:-1]
+
+s = input()
+t = input()
+
+=======
+Suggestion 5
+
+def rotate(s):
+    return s[-1] + s[:-1]
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s == t:
+            print("Yes")
+            return
+        s = s[-1] + s[:-1]
+    print("No")
+
+=======
+Suggestion 7
+
+def judge(s,t):
+    if s == t:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def check(s,t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return True
+    for i in range(len(s)):
+        s = s[-1] + s[:-1]
+        if s == t:
+            return True
+    return False
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    if s in t*2:
+        print("Yes")
+    else:
+        print("No")

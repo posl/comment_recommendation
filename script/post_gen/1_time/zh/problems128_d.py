@@ -1,54 +1,182 @@
-#问题陈述
-#你的朋友给了你一个D作为生日礼物。
-#D是一个水平圆柱体，里面有一排N个珠宝。
-#宝石的数值从左到右依次是V_1, V_2, ..., V_N。可能有负值的珠宝。
-#一开始，你的手中没有珠宝。
-#你最多可以对D进行K次（可能为零）的操作，这些操作选自以下几项：
-#操作A：取出D中包含的最左边的宝石，并把它放在你手中。当D是空的时候，你不能做这个操作。
-#操作B：取出D中最右边的宝石，并把它拿在手中。当D是空的时候，你不能做这个操作。
-#操作C：选择你手中的一颗宝石，将其插入D的左端。
-#操作D：在你的手中选择一颗宝石，并将其插入D的右端，当你手中没有宝石时，你不能做这个操作。
-#找到操作后你手中珠宝价值的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 50
-#1 ≦ K ≦ 100
-#-10^7 ≦ V_i ≦ 10^7
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#V_1 V_2 ...V_N
-#
-#输出
-#打印操作后你手中的珠宝价值的最大可能总和。
-#
-#输入样本 1
-#6 4
-#-10 8 2 1 2 6
-#
-#样本输出1
-#14
-#经过下面一连串的操作，你手中有两颗价值为8和6的宝石，总价值为14，这是最大的结果。
-#执行操作A，从D的左端取出价值为-10的宝石。
-#执行操作B，从D的右端取出价值6的宝石。
-#执行操作A，从D的左端取出价值8的宝石。
-#执行操作D，你把价值为-10的宝石插入D的右端。
-#
-#输入样本 2
-#6 4
-#-6 -100 50 -2 -5 -3
-#
-#样本输出2
-#44
-#
-#样本输入3
-#6 3
-#-6 -100 50 -2 -5 -3
-#
-#样本输出3
-#0
-#不做任何操作是最好的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for l in range(min(N, K)+1):
+        for r in range(min(N, K)-l+1):
+            a = V[:l]
+            b = V[N-r:]
+            c = V[l:N-r]
+            for i in range(min(K-l-r, min(l, r))):
+                if a[i] < b[i]:
+                    a[i], b[i] = b[i], a[i]
+            a.sort()
+            b.sort(reverse=True)
+            for i in range(min(K-l-r, len(c))):
+                if c[i] < b[i]:
+                    c[i], b[i] = b[i], c[i]
+            ans = max(ans, sum(a)+sum(b))
+    print(ans)
+
+solve()
+
+=======
+Suggestion 2
+
+def solve(n, k, v):
+    ans = 0
+    for i in range(1, k+1):
+        for j in range(i+1):
+            if j <= n and i-j <= n:
+                dp = [[-10**9 for _ in range(i+1)] for _ in range(i+1)]
+                dp[0][0] = 0
+                for l in range(n):
+                    if l != j-1 and l != n-(i-j):
+                        for m in range(i+1):
+                            if m != 0:
+                                dp[l+1][m] = max(dp[l+1][m], dp[l][m-1]+v[l])
+                            dp[l+1][m] = max(dp[l+1][m], dp[l][m])
+                ans = max(ans, dp[n][i-j])
+    return ans
+
+n, k = map(int, input().split())
+v = list(map(int, input().split()))
+print(solve(n, k, v))
+
+=======
+Suggestion 3
+
+def problems128_d():
+    pass
+
+=======
+Suggestion 4
+
+def solve(N, K, V):
+    # dp[i][j][k]表示第i次操作后，左端有j个宝石，右端有k个宝石时的最大值
+    dp = [[[0 for k in range(N+1)] for j in range(N+1)] for i in range(K+1)]
+    for i in range(N):
+        dp[0][0][i] = V[i]
+
+    for i in range(1, K+1):
+        for j in range(N+1):
+            for k in range(N+1):
+                if j > 0:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i-1][j-1][k]+V[j-1])
+                if k > 0:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i-1][j][k-1]+V[N-k])
+                if j < N:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i-1][j+1][k])
+                if k < N:
+                    dp[i][j][k] = max(dp[i][j][k], dp[i-1][j][k+1])
+    return dp[K][0][0]
+
+=======
+Suggestion 5
+
+def problems128_d():
+    return None
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for l in range(min(K, N) + 1):
+        for r in range(min(K, N) + 1 - l):
+            a = V[:l] + V[N - r:]
+            a.sort()
+            ans = max(ans, sum(a[max(0, K - l - r):]))
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def get_max_value(n,k,v):
+    if n==1:
+        return v[0]
+    if k==0:
+        return 0
+    max_value = 0
+    for i in range(0,n):
+        for j in range(i+1,n+1):
+            value = get_max_value(i,k-1,v[0:i]) + get_max_value(j-i,k-1,v[i:j]) + get_max_value(n-j,k-1,v[j:n])
+            if value > max_value:
+                max_value = value
+    return max_value
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    v = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(n, k) + 1):
+        for j in range(min(n, k) - i + 1):
+            tmp = v[:i] + v[n - j:]
+            tmp.sort()
+            ans = max(ans, sum(tmp[max(0, k - i - j):]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve(n, k, v):
+    result = 0
+    for i in range(min(n, k) + 1):
+        for j in range(min(n, k) + 1 - i):
+            l = max(0, i - n)
+            r = max(0, j - n)
+            dp = [[0] * (n + l + r + 1) for _ in range(n + 1)]
+            for x in range(n + 1):
+                for y in range(n + l + r + 1):
+                    dp[x][y] = -float('inf')
+                dp[x][0] = 0
+            for x in range(n):
+                for y in range(n + l + r + 1):
+                    dp[x + 1][y] = max(dp[x + 1][y], dp[x][y])
+                    if y + 1 < n + l + r + 1:
+                        dp[x + 1][y + 1] = max(dp[x + 1][y + 1], dp[x][y] + v[x])
+            result = max(result, dp[n][i + j + l])
+    print(result)
+    return result
+
+=======
+Suggestion 10
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for l in range(min(N, K)+1):
+        for r in range(min(N, K)-l+1):
+            now = 0
+            Vl = V[:l]
+            Vr = V[N-r:]
+            Vl.sort()
+            Vr.sort()
+            for i in range(K-l-r):
+                if i < len(Vl) and Vl[i] < 0:
+                    Vl[i] = 0
+                if i < len(Vr) and Vr[i] < 0:
+                    Vr[i] = 0
+            now += sum(Vl) + sum(Vr)
+            Vl.sort(reverse=True)
+            Vr.sort(reverse=True)
+            for i in range(min(K-l-r, len(Vl))):
+                now -= Vl[i]
+            for i in range(min(K-l-r, len(Vr))):
+                now -= Vr[i]
+            ans = max(ans, now)
+    print(ans)
+solve()

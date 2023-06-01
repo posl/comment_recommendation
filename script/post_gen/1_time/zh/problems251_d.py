@@ -1,50 +1,253 @@
-#问题陈述
-#给你一个整数W。
-#你要准备一些权重，使下面所有的条件都得到满足。
-#砝码的数量在1到300之间，包括在内。
-#每个砝码的质量为不超过10^6的正整数。
-#1到W之间的每一个整数，包括在内，都是一个好的整数。  这里，如果满足以下条件，一个正整数n被称为好整数：
-#我们可以从准备好的权重中最多选择3个不同的权重，总质量为n。
-#
-#打印一个满足条件的砝码组合。
-#
-#限制条件
-#1 ≦ W ≦ 10^6
-#W是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#W
-#
-#输出
-#按以下格式打印，其中N是权重的数量，A_i是第i个权重的质量。  如果存在多个解决方案，打印其中任何一个都可以接受。
-#N
-#A_1 A_2 ...A_N
-#这里，N和A_1,A_2,...,A_N应该满足以下条件：
-#1 ≦ N ≦ 300
-#1 ≦ A_i ≦ 10^6
-#
-#样本输入1
-#6
-#
-#样本输出 1
-#3
-#1 2 3
-#在上面的输出中，准备了3个质量为1、2、3的砝码。
-#这个输出满足了条件。  特别是关于第3个条件，我们可以确认1到W之间的每一个整数，包括在内，都是一个好的整数。
-#如果我们只选择第1个重量，它的总质量为1。
-#如果我们只选择第2个砝码，它的总质量为2。
-#如果我们只选择第3个砝码，它的总质量为3。
-#如果我们选择第1个和第3个砝码，它们的总质量为4。
-#如果我们选择第2和第3个砝码，它们的总质量为5。
-#如果我们选择第1个、第2个和第3个砝码，它们的总质量为6。
-#
-#样本输入2
-#12
-#
-#样本输出2
-#6
-#2 5 1 2 5 1
-#你可以准备多个具有相同质量的砝码。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1, 2)
+    elif w == 4:
+        print(3)
+        print(1, 2, 4)
+    elif w == 5:
+        print(3)
+        print(1, 2, 5)
+    elif w == 6:
+        print(3)
+        print(1, 2, 6)
+    elif w == 7:
+        print(4)
+        print(1, 2, 4, 7)
+    elif w == 8:
+        print(4)
+        print(1, 2, 5, 8)
+    elif w == 9:
+        print(4)
+        print(1, 2, 6, 9)
+    elif w == 10:
+        print(4)
+        print(1, 2, 7, 10)
+    elif w == 11:
+        print(5)
+        print(1, 2, 4, 7, 11)
+    elif w == 12:
+        print(6)
+        print(1, 2, 5, 8, 11, 12)
+    elif w == 13:
+        print(6)
+        print(1, 2, 5, 8, 11, 13)
+    elif w == 14:
+        print(6)
+        print(1, 2, 5, 8, 11, 14)
+    elif w == 15:
+        print(6)
+        print(1, 2, 5, 8, 11, 15)
+    elif w == 16:
+        print(6)
+        print(1, 2, 5, 8, 11, 16)
+    elif w == 17:
+        print(7)
+        print(1, 2, 5, 8, 11, 14, 17)
+    elif w == 18:
+        print(7)
+        print(1, 2, 5, 8, 11, 14, 18)
+    elif w == 19:
+        print(7)
+        print(1, 2, 5, 8, 11, 14, 19)
+    elif w ==
+
+=======
+Suggestion 3
+
+def find_good_integers(w):
+    if w <= 2:
+        return [1, 2]
+    elif w == 3:
+        return [1, 2, 3]
+    else:
+        return [1, 2, 3] * (w // 3) + [1, 2, 3][:w % 3]
+
+=======
+Suggestion 4
+
+def main():
+    w = int(input())
+    if w == 3:
+        print(2)
+        print(1,2)
+    elif w == 2:
+        print(2)
+        print(1,1)
+    elif w == 1:
+        print(1)
+        print(1)
+    elif w == 4:
+        print(3)
+        print(1,2,1)
+    elif w == 5:
+        print(3)
+        print(1,2,2)
+    elif w == 6:
+        print(3)
+        print(1,2,3)
+    elif w == 7:
+        print(4)
+        print(1,2,2,2)
+    elif w == 8:
+        print(4)
+        print(1,2,2,3)
+    elif w == 9:
+        print(4)
+        print(1,2,3,3)
+    elif w == 10:
+        print(4)
+        print(1,2,3,4)
+    elif w == 11:
+        print(5)
+        print(1,2,3,4,1)
+    elif w == 12:
+        print(6)
+        print(1,2,3,4,1,1)
+    elif w == 13:
+        print(6)
+        print(1,2,3,4,1,2)
+    elif w == 14:
+        print(6)
+        print(1,2,3,4,1,3)
+    elif w == 15:
+        print(6)
+        print(1,2,3,4,1,4)
+    elif w == 16:
+        print(6)
+        print(1,2,3,4,2,4)
+    elif w == 17:
+        print(6)
+        print(1,2,3,4,3,4)
+    elif w == 18:
+        print(6)
+        print(1,2,3,4,4,4)
+    elif w == 19:
+        print(6)
+        print(1,2,3,4,4,5)
+    elif w == 20:
+        print(6)
+        print(1,2,3,4,4,6)
+    elif w == 21:
+        print(6)
+        print
+
+=======
+Suggestion 5
+
+def get_weight(w):
+    if w <= 3:
+        return [1,2,3]
+    elif w <= 5:
+        return [1,2,3]
+    elif w <= 8:
+        return [1,2,3]
+    elif w <= 12:
+        return [1,2,3]
+    elif w <= 17:
+        return [1,2,3]
+    elif w <= 22:
+        return [1,2,3]
+    elif w <= 26:
+        return [1,2,3]
+    elif w <= 30:
+        return [1,2,3]
+    elif w <= 34:
+        return [1,2,3]
+    elif w <= 38:
+        return [1,2,3]
+    elif w <= 42:
+        return [1,2,3]
+    elif w <= 46:
+        return [1,2,3]
+    elif w <= 50:
+        return [1,2,3]
+    elif w <= 54:
+        return [1,2,3]
+    elif w <= 58:
+        return [1,2,3]
+    elif w <= 62:
+        return [1,2,3]
+    elif w <= 66:
+        return [1,2,3]
+    elif w <= 70:
+        return [1,2,3]
+    elif w <= 74:
+        return [1,2,3]
+    elif w <= 78:
+        return [1,2,3]
+    elif w <= 82:
+        return [1,2,3]
+    elif w <= 86:
+        return [1,2,3]
+    elif w <= 90:
+        return [1,2,3]
+    elif w <= 94:
+        return [1,2,3]
+    elif w <= 98:
+        return [1,2,3]
+    elif w <= 102:
+        return [1,2,3]
+    elif w <= 106:
+        return [1,2,3]
+    elif w <= 110:
+        return [1,2,3]
+    elif w <= 114:
+        return [1,2,3]
+    elif w <= 118:
+        return [1,2,3]
+    elif w <= 122:
+        return [1,2,3]
+
+=======
+Suggestion 6
+
+def solve(w):
+    if w <= 3:
+        return [1, 2, 3][:w]
+    if w <= 5:
+        return [1, 2, 3, 4, 5][:w]
+    if w <= 7:
+        return [1, 2, 3, 4, 5, 6, 7][:w]
+    if w <= 9:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9][:w]
+    if w <= 11:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 13:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 15:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 17:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 19:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 21:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 23:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    if w <= 25:
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][:w]
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9,
+
+=======
+Suggestion 7
+
+def get_weight(n):
+    if n <= 3:
+        return [1,2,3]
+    elif n % 2 == 0:
+        return [1,2] + get_weight(n - 3)
+    else:
+        return [2,3] + get_weight(n - 5)

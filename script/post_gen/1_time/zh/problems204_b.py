@@ -1,36 +1,109 @@
-#问题陈述
-#有N棵树。第i棵树结了A_i个坚果。
-#花栗鼠将以下列方式从树上收获坚果：
-#在有10个或更少坚果的树上，她不采摘坚果。
-#在有10个以上坚果的树上，除了10个以外，她会拿走所有的坚果。
-#求花栗鼠将从树上摘取的坚果总数。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#0 ≦ A_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#6 17 28
-#
-#样本输出1
-#25
-#从这三棵树上，花栗鼠将取走0、7和18个坚果，总共25个坚果。
-#
-#样本输入2
-#4
-#8 9 10 11
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if A[i] > 10:
+            count += A[i] - 10
+    print(count)
+
+=======
+Suggestion 4
+
+def calc(x):
+    if x < 10:
+        return 0
+    else:
+        return x - 10
+
+n = int(input())
+a = list(map(int,input().split()))
+
+print(sum(map(calc,a)))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] > 10:
+            ans += A[i] - 10
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in a:
+        if i > 10:
+            ans += i - 10
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    answer = 0
+    for a in A:
+        if a > 10:
+            answer += a - 10
+    print(answer)
+
+=======
+Suggestion 8
+
+def f(n):
+    if n < 10:
+        return 0
+    else:
+        return n - 10
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    print(ans)

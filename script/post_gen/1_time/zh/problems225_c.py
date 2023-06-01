@@ -1,59 +1,180 @@
-#问题陈述
-#有一个10^{100}×7的矩阵A，其中第(i,j)项对于每一对整数(i,j)都是(i-1)×7+j(1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7) 。
-#给出一个N×M矩阵B，确定B是否是A的某个（未旋转的）矩形部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#B_{1,1} B_{1,2} ...B_{1,M}
-#B_{2,1} B_{2,2} ...B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ...B_{N,M}
-#
-#输出
-#如果B是A的某个矩形部分，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#样本输出1
-#Yes
-#给定的矩阵B是A的左上角2×3子矩阵。
-#
-#输入样本 2
-#2 1
-#1
-#2
-#
-#样本输出2
-#No
-#尽管给定的矩阵B在旋转90度后与A的左上角1×2子矩阵相匹配，但问题陈述中
-# 问的是B是否是A的一个未旋转部分，所以答案是否定的。
-#
-#输入样本 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#样本输出3
-#Yes
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def problem225_c():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+    B = sorted(B)
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] != (i * 7 + j + 1):
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    b = [list(map(int,input().split())) for _ in range(n)]
+    #print(b)
+    for i in range(10**7):
+        a = [[(i*7+j) for j in range(1,8)] for i in range(10**2)]
+        for k in range(10**2):
+            for l in range(7):
+                if a[k][l] in b:
+                    a[k][l] = 0
+        if sum(map(sum,a)) == 0:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    B = []
+    for i in range(N):
+        B.append(list(map(int, input().split())))
+    if N == 1 and M == 1:
+        if B[0][0] == 1:
+            print("Yes")
+        else:
+            print("No")
+        return
+    if N == 1:
+        for i in range(1, M):
+            if B[0][i] - B[0][i-1] != 1:
+                print("No")
+                return
+        print("Yes")
+        return
+    if M == 1:
+        for i in range(1, N):
+            if B[i][0] - B[i-1][0] != 7:
+                print("No")
+                return
+        print("Yes")
+        return
+    for i in range(N):
+        for j in range(M):
+            if B[i][j] == 1:
+                if i == 0 or j == 0:
+                    print("No")
+                    return
+                if B[i][j-1] != 7*(i+1)+j-1:
+                    print("No")
+                    return
+                if B[i-1][j] != 7*i+j-6:
+                    print("No")
+                    return
+                for k in range(i+1, N):
+                    if B[k][j] - B[k-1][j] != 7:
+                        print("No")
+                        return
+                for k in range(j+1, M):
+                    if B[i][k] - B[i][k-1] != 1:
+                        print("No")
+                        return
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 6
+
+def isMatched(A,B,N):
+    for i in range(1,100):
+        for j in range(1,8):
+            if A[i][j]==B[1][1]:
+                if i+N-1>100:
+                    return False
+                for k in range(1,N+1):
+                    for l in range(1,8):
+                        if A[i+k-1][l]!=B[k][l]:
+                            return False
+                return True
+    return False
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int,input().split())))
+    a = []
+    for i in range(1,10**100+1):
+        temp = []
+        for j in range(1,8):
+            temp.append((i-1)*7+j)
+        a.append(temp)
+    for i in range(0,10**100-n+1):
+        for j in range(0,7-m+1):
+            if a[i][j:j+m] == b[0]:
+                for k in range(1,n):
+                    if a[i+k][j:j+m] != b[k]:
+                        break
+                    if k == n-1:
+                        print('Yes')
+                        return
+    print('No')
+    return
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(N)]
+    if N > 10:
+        print("No")
+        return
+    if M > 7:
+        print("No")
+        return
+    for i in range(1,100):
+        for j in range(1,8):
+            if B[0][0] == (i-1)*7+j:
+                if B[0][1] == (i-1)*7+j+1:
+                    if B[0][2] == (i-1)*7+j+2:
+                        if B[1][0] == (i)*7+j:
+                            if B[1][1] == (i)*7+j+1:
+                                if B[1][2] == (i)*7+j+2:
+                                    print("Yes")
+                                    return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    b = []
+    for i in range(n):
+        b.append(list(map(int,input().split())))
+    for i in range(10**100):
+        for j in range(7):
+            if b == [[(i*7+j+1)+k*7 for k in range(m)] for i in range(n)]:
+                print("Yes")
+                return
+    print("No")

@@ -1,35 +1,99 @@
-#问题陈述
-#给出的是一个整数N。
-#是否有可能在代表N的十进制字符串的开头加上0或更多的0，从而得到一个回文？
-#
-#限制条件
-#0 ≦ N ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果可以做出一个回文，打印Yes；否则，打印No。
-#
-#输入样本1
-#1210
-#
-#样本输出1
-#Yes
-#在1210的开头加上一个0，结果是01210，一个回文。
-#
-#输入样本2
-#777
-#
-#输出样本2
-#Yes
-#777已经是一个回文。
-#
-#输入样本3
-#123456789
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_palindrome(n):
+    n = str(n)
+    if n == n[::-1]:
+        return True
+    else:
+        return False
+
+n = int(input())
+for i in range(1, n):
+    if is_palindrome(str(i) + str(i)[::-1]):
+        print("Yes")
+        exit()
+print("No")
+
+=======
+Suggestion 2
+
+def isPalindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def is_palindrome(n):
+    n = str(n)
+    #print(n)
+    if n == n[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def check(n):
+    n_str = str(n)
+    n_str_rev = n_str[::-1]
+    if n_str == n_str_rev:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def is_palindrome(n):
+    s = str(n)
+    return s == s[::-1]
+
+n = int(input())
+print('Yes' if is_palindrome(n) else 'No')
+
+=======
+Suggestion 6
+
+def reverse(s):
+    return s[::-1]
+
+=======
+Suggestion 7
+
+def isPalindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 8
+
+def main():
+    n = input()
+    if n == n[::-1]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def is_palindrome(n):
+    n = str(n)
+    return n == n[::-1]
+
+print('Yes' if is_palindrome(input()) else 'No')
+
+=======
+Suggestion 10
+
+def is_palindrome(string):
+    if string == string[::-1]:
+        return True
+    else:
+        return False

@@ -1,39 +1,171 @@
-#问题陈述
-#给定一个整数N，找出N的基数-2表示法。
-#在这里，当下列条件都满足时，S就是N的基数-2表示法：
-#S是一个由0和1组成的字符串。
-#除非S=0，否则S的初始字符是1。
-#让S = S_k S_{k-1} ...S_0，那么S_0 × (-2)^0 + S_1 × (-2)^1 + ...+ S_k × (-2)^k = N。
-#可以证明，对于任何整数M，M的基数-2表示是唯一确定的。
-#
-#约束条件
-#输入的每个值都是整数。
-#-10^9 ≦ N ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印N的基数-2表示法。
-#
-#输入样本 1
-#-9
-#
-#样本输出 1
-#1011
-#由于(-2)^0 + (-2)^1 + (-2)^3 = 1 + (-2) + (-8) = -9，1011是-9的基数-2表示。
-#
-#输入样本2
-#123456789
-#
-#样本输出2
-#11000101011001101110100010101
-#
-#样本输入3
-#0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def negative_base2(n):
+    if n == 0:
+        return 0
+    s = ''
+    while n != 0:
+        if n % 2 == 0:
+            s = '0' + s
+            n = n / (-2)
+        else:
+            s = '1' + s
+            n = (n - 1) / (-2)
+    return s
+
+n = int(input())
+print(negative_base2(n))
+
+=======
+Suggestion 2
+
+def base2minus(N):
+    if N == 0:
+        return "0"
+    else:
+        result = ""
+        while N != 0:
+            r = N % -2
+            N = N // -2
+            if r < 0:
+                r += 2
+                N += 1
+            result = str(r) + result
+        return result
+
+=======
+Suggestion 3
+
+def base2(n):
+    if n == 0:
+        return '0'
+    else:
+        s = ''
+        while n != 0:
+            s = str(abs(n % -2)) + s
+            n = (n - (n % -2)) // -2
+        return s
+
+n = int(input())
+print(base2(n))
+
+=======
+Suggestion 4
+
+def base2(num):
+    if num == 0:
+        return num
+    else:
+        return num % (-2) + 10 * base2(num // (-2))
+
+num = int(input())
+print(base2(num))
+
+=======
+Suggestion 5
+
+def base_minus2(n):
+    if n == 0:
+        return '0'
+    else:
+        s = ''
+        while n != 0:
+            m = n % (-2)
+            n = n // (-2)
+            if m == -1:
+                m = 1
+                n = n + 1
+            s = str(m) + s
+        return s
+
+print(base_minus2(int(input())))
+
+=======
+Suggestion 6
+
+def radix2(num):
+    if num == 0:
+        return '0'
+    res = ''
+    while num != 0:
+        num, mod = divmod(num, -2)
+        if mod == -1:
+            mod = 1
+            num += 1
+        res = str(mod) + res
+    return res
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    ans = ""
+    while N != 0:
+        if N % 2 == 0:
+            ans = "0" + ans
+        else:
+            ans = "1" + ans
+            N -= 1
+        N //= -2
+    print(ans)
+
+=======
+Suggestion 8
+
+def base_minus2(n):
+
+    if n == 0:
+        return '0'
+
+    result = ''
+
+    while n != 0:
+        if n % (-2) == 0:
+            result += '0'
+            n = n / (-2)
+        else:
+            result += '1'
+            n = (n - 1) / (-2)
+
+    return result[::-1]
+
+=======
+Suggestion 9
+
+def toBaseNeg2(number):
+    if number == 0:
+        return '0'
+    result = ''
+    while number != 0:
+        remainder = number % -2
+        number = number // -2
+        if remainder < 0:
+            remainder += 2
+            number += 1
+        result = str(remainder) + result
+    return result
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    ans = ''
+    while n != 0:
+        if n % 2 == 0:
+            ans = '0' + ans
+            n = n // -2
+        else:
+            ans = '1' + ans
+            n = (n - 1) // -2
+    print(ans)

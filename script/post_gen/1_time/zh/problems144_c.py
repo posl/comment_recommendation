@@ -1,39 +1,225 @@
-#问题陈述
-#高桥站在一个有无限多行和列的乘法表上。
-#正方形(i,j)包含整数i×j，最初，高桥站在(1,1)处。
-#在一次移动中，他可以从（i,j）移动到（i+1,j）或（i,j+1）。
-#给定一个整数N，找出到达一个包含N的方格所需的最小移动次数。
-#
-#限制条件
-#2 ≦ N ≦ 10^{12}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印到达包含整数N的方格所需的最小移动次数。
-#
-#输入样本 1
-#10
-#
-#输出示例 1
-#5
-#(2,5)可以在五步之内到达。我们不可能在少于五步的情况下到达一个包含10的方块。
-#
-#输入样本2
-#50
-#
-#样本输出2
-#13
-#(5, 10)可以在13步内到达。
-#
-#样本输入3
-#10000000019
-#
-#样本输出3
-#10000000018
-#输入和输出都可能是巨大的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(2, int(N ** 0.5) + 1):
+        if N % i == 0:
+            ans = i
+            break
+    if ans == 0:
+        ans = N
+    print(ans - 1)
+
+=======
+Suggestion 2
+
+def solve(n):
+    a = 1
+    b = n
+    while a < b:
+        mid = int((a + b) / 2)
+        if mid * mid < n:
+            a = mid + 1
+        else:
+            b = mid
+    return a + n - a * a
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    if N == 2:
+        print(1)
+        return
+    if N == 3:
+        print(2)
+        return
+    if N == 4:
+        print(3)
+        return
+    if N == 5:
+        print(3)
+        return
+    if N == 6:
+        print(4)
+        return
+    if N == 7:
+        print(4)
+        return
+    if N == 8:
+        print(4)
+        return
+    if N == 9:
+        print(4)
+        return
+    if N == 10:
+        print(5)
+        return
+    if N == 11:
+        print(5)
+        return
+    if N == 12:
+        print(5)
+        return
+    if N == 13:
+        print(5)
+        return
+    if N == 14:
+        print(5)
+        return
+    if N == 15:
+        print(5)
+        return
+    if N == 16:
+        print(5)
+        return
+    if N == 17:
+        print(5)
+        return
+    if N == 18:
+        print(5)
+        return
+    if N == 19:
+        print(5)
+        return
+    if N == 20:
+        print(5)
+        return
+    if N == 21:
+        print(5)
+        return
+    if N == 22:
+        print(6)
+        return
+    if N == 23:
+        print(6)
+        return
+    if N == 24:
+        print(6)
+        return
+    if N == 25:
+        print(6)
+        return
+    if N == 26:
+        print(6)
+        return
+    if N == 27:
+        print(6)
+        return
+    if N == 28:
+        print(6)
+        return
+    if N == 29:
+        print(6)
+        return
+    if N == 30:
+        print(6)
+        return
+    if N == 31:
+        print(6)
+        return
+    if N == 32:
+        print(6)
+        return
+    if N == 33:
+        print(6)
+        return
+    if N == 34:
+        print(6)
+
+=======
+Suggestion 4
+
+def solve(n):
+    ans = 1
+    while ans * ans < n:
+        ans += 1
+    if ans * ans == n:
+        return 2 * ans - 2
+    elif (ans - 1) * ans < n <= (ans - 1) * ans + ans:
+        return 2 * ans - 1
+    else:
+        return 2 * ans
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    count = 0
+    while n != 2:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = n - 1
+        count += 1
+    print(count + 2)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    i = 1
+    j = 1
+    while i * j < N:
+        if i < j:
+            i += 1
+        else:
+            j += 1
+    print(i+j-2)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            ans = i + n//i - 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = 1
+    y = 1
+    while x*y < n:
+        if x < y:
+            x += 1
+        else:
+            y += 1
+    print(x+y-2)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    ans = 0
+    for i in range(2, int(n ** 0.5) + 1):
+        while n % i == 0:
+            n //= i
+            ans += 1
+    if n > 1:
+        ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 10
+
+def main():
+    pass

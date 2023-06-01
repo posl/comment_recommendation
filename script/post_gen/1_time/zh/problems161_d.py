@@ -1,60 +1,128 @@
-#问题陈述
-#当且仅当以下条件得到满足时，一个正整数X被认为是一个朗朗上口的数字：
-#在X的十进制表示中（不含前导零），对于每一对相邻的数字，这些数字的绝对差值最多为1。
-#例如，1234、1和334都是仑数，而31415、119和13579都不是。
-#给你一个正整数K，找出第K个最小的伦常数。
-#
-#限制条件
-#1 ≦ K ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#15
-#
-#样本输出1
-#23
-#我们将按升序列出15个最小的朗朗上口数字：
-#1,
-#2,
-#3,
-#4,
-#5,
-#6,
-#7,
-#8,
-#9,
-#10,
-#11,
-#12,
-#21,
-#22,
-#23.
-#因此，答案是23。
-#
-#输入样本2
-#1
-#
-#样本输出2
-#1
-#
-#样品输入3
-#13
-#
-#样品输出3
-#21
-#
-#样本输入4
-#100000
-#
-#样本输出4
-#3234566667
-#注意，答案可能不适合32位有符号整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_llsk(n):
+    s = str(n)
+    for i in range(1, len(s)):
+        if abs(int(s[i]) - int(s[i-1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def isLuckyNum(n):
+    n = str(n)
+    if len(n) <= 1:
+        return True
+    for i in range(len(n) - 1):
+        if abs(int(n[i]) - int(n[i + 1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def is_lucky(x):
+    s = str(x)
+    for i in range(len(s)-1):
+        if abs(int(s[i])-int(s[i+1]))>1:
+            return False
+    return True
+
+=======
+Suggestion 4
+
+def isLuckyNumber(n):
+    if n < 10:
+        return True
+    n = str(n)
+    for i in range(len(n)-1):
+        if abs(int(n[i]) - int(n[i+1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def isLLSK(n):
+    #print(n)
+    if n < 10:
+        return True
+    n = str(n)
+    for i in range(len(n)-1):
+        if abs(int(n[i])-int(n[i+1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def isLuckyNumber(num):
+    if num < 10:
+        return True
+    numStr = str(num)
+    for i in range(1, len(numStr)):
+        if abs(int(numStr[i]) - int(numStr[i - 1])) > 1:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    count = 0
+    for i in range(1,10**6):
+        if is_lucky(i):
+            count += 1
+        if count == k:
+            print(i)
+            break
+
+=======
+Suggestion 8
+
+def isLuckyNum(number):
+    if number < 10:
+        return True
+    digits = []
+    while number > 0:
+        digits.append(number % 10)
+        number = number // 10
+    digits.reverse()
+    for i in range(1, len(digits)):
+        if abs(digits[i] - digits[i-1]) > 1:
+            return False
+    return True
+
+=======
+Suggestion 9
+
+def isLucky(x):
+    s = str(x)
+    for i in range(len(s)-1):
+        if abs(int(s[i])-int(s[i+1])) > 1:
+            return False
+    return True
+
+k = int(input())
+count = 0
+i = 1
+while count < k:
+    if isLucky(i):
+        count += 1
+    i += 1
+print(i-1)
+
+=======
+Suggestion 10
+
+def isLuckyNumber(n):
+    n = str(n)
+    for i in range(len(n)-1):
+        if abs(int(n[i])-int(n[i+1])) > 1:
+            return False
+    return True

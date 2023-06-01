@@ -1,55 +1,144 @@
-#问题陈述
-#你观察了变形虫并做了一些记录。
-#最初，有一个变形，编号为1。
-#你做了N次记录。根据第i条记录，编号为A_i的变形虫消失了，它自己分成了两个新的变形虫，然后被编号为2i和2i+1。
-#这里，变形虫A_i被说成是变形虫2i和2i+1的父母。
-#对于每个k=1,...,2N+1，变形虫k与变形虫1相距多少代？
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#记录是一致的。就是说：
-#1≦ A_i ≦ 2i-1。
-#A_i是不同的整数。
-#
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印2N+1行。第k行应包含变形虫1和变形虫k之间的生成距离。
-#
-#输入样本 1
-#2
-#1 2
-#
-#采样输出1
-#0
-#1
-#1
-#2
-#2
-#从变形虫1中，诞生了变形虫2和3。从变形虫2开始，诞生了变形虫4和5。
-#变形虫1与变形虫1是零代的关系。
-#变形虫2与变形虫1有一代之隔。
-#变形虫3与变形虫1相距一代。
-#变形虫4与变形虫2相距一代，与变形虫1相距两代。
-#变形虫5与变形虫2相距一代，与变形虫1相距两代。
-#
-#样本输入2
-#4
-#1 3 5 2
-#
-#样本输出2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    for i in range(n):
+        ans[a[i]] = i + 1
+    for i in range(1, n + 1):
+        x = i
+        while x != 1:
+            ans[x // 2] = max(ans[x // 2], ans[x] + 1)
+            x //= 2
+    for i in range(1, 2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    for i in range(n):
+        ans[a[i]] = i + 1
+    for i in range(2 * n - 1, 0, -1):
+        ans[i // 2] += ans[i]
+    for i in range(2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    for i in range(n):
+        ans[a[i]] = i + 1
+    for i in range(2, 2 * n + 1):
+        ans[i] = ans[i // 2] + 1
+    for i in range(1, 2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 * n + 1)
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2 * n + 1):
+        j = i
+        while j <= 2 * n:
+            b[j] = max(b[j], b[i] + 1)
+            j += i
+    for i in range(1, 2 * n + 1):
+        print(b[i] - 1)
+
+=======
+Suggestion 5
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=[0]*(2*n+1)
+    for i in range(n):
+        ans[a[i]]=i+1
+    for i in range(2*n,0,-1):
+        ans[i//2]+=ans[i]
+    for i in range(2*n+1):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.insert(0,0)
+    ans = [0] * (2 * n + 1)
+    for i in range(1, n + 1):
+        ans[i] = 1
+    for i in range(n, 0, -1):
+        ans[i] += max(ans[2 * i], ans[2 * i + 1])
+    for i in range(1, 2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = [0] + list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    for i in range(1, n + 1):
+        p = i
+        cnt = 0
+        while True:
+            cnt += 1
+            p = a[p]
+            if p == 1:
+                break
+        ans[i] = cnt
+    for i in range(1, 2 * n + 1):
+        print(ans[i])
+
+=======
+Suggestion 8
+
+def solve():
+  n = int(input())
+  a = [int(i) - 1 for i in input().split()]
+  b = [0] * (2 * n + 1)
+  for i in range(n):
+    b[a[i]] = i + 1
+  for i in range(2 * n - 1, 0, -1):
+    b[i // 2] += b[i]
+  for i in range(1, 2 * n + 1):
+    print(b[i])
+
+solve()
+
+=======
+Suggestion 9
+
+def get_generation_distance(n, a):
+    generation_distance = [0 for i in range(2*n+1)]
+    generation_distance[1] = 0
+    for i in range(n):
+        generation_distance[2*(i+1)] = generation_distance[a[i]] + 1
+        generation_distance[2*(i+1)+1] = generation_distance[a[i]] + 1
+    return generation_distance
+
+=======
+Suggestion 10
+
+def read_ints():
+    return list(map(int, input().split()))

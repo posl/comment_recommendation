@@ -1,42 +1,180 @@
-#问题陈述
-#给你一个长度为N的字符串S，让S_i (1≦ i ≦ N)为S的第i个字符，从左边开始。
-#你可以按任何顺序进行以下两种操作，次数为零或多：
-#支付A日元（日本的货币）。  将S的最左边的字符移到右端。  换句话说，把S_1S_2...S_N改为S_2...S_NS_1。
-#支付B日元。  在1和N之间选择一个整数i，用任何小写英文字母替换S_i。
-#你需要支付多少日元才能使S成为一个复数？
-#什么是回文？
-#当且仅当一个字符串T对于所有整数i（1 ≦ i ≦ |T|）来说，左边的第i个字符和右边的第i个字符是相同的，其中|T|是T的长度，那么这个字符串就是一个宫格。
-#
-#限制条件
-#1≦ N ≦ 5000
-#1≦ A,B≦ 10^9
-#S是一个长度为N的字符串，由小写英文字母组成。
-#除了S以外，输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#5 1 2
-#rrefa
-#
-#样本输出1
-#3
-#首先，支付2日元进行一次第二种操作：让i=5，用e替换S_5，现在S是rrefe。
-#然后，支付1日元，执行一次第一种操作。  现在S是refer，这是一个宫格。
-#因此，你可以用3日元使S成为一个复数。  由于你不能用2日元或更少的钱使S成为一个宫格，所以3是答案。
-#
-#输入样本 2
-#8 1000000000 1000000000
-#bcdfcgaa
-#
-#样本输出2
-#4000000000
-#注意，答案可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N//2):
+        if S[i] != S[-i-1]:
+            ans += 1
+    if ans == 0:
+        print(0)
+    elif ans == 1:
+        print(A)
+    else:
+        print(ans * B + A)
+
+=======
+Suggestion 2
+
+def isPalindromic(s):
+    for i in range(0, int(len(s)/2)):
+        if s[i] != s[-(i+1)]:
+            return False
+    return True
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == 'a':
+            if A > 0:
+                ans += 1
+                A -= 1
+        elif S[i] == 'b':
+            if B > 0:
+                ans += 1
+                B -= 1
+                if A > 0:
+                    ans += 1
+                    A -= 1
+        else:
+            if B > 0:
+                ans += 1
+                B -= 1
+                if A > 0:
+                    ans += 1
+                    A -= 1
+            elif A > 0:
+                ans += 1
+                A -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def getMinCost(s, a, b):
+    if len(s) == 0:
+        return 0
+    if len(s) == 1:
+        return a
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 0
+        else:
+            return min(a, b)
+    if s[0] == s[-1]:
+        return getMinCost(s[1:-1], a, b)
+    else:
+        return min(getMinCost(s[1:], a, b) + a, getMinCost(s[:-1], a, b) + a, getMinCost(s[1:-1], a, b) + b)
+
+=======
+Suggestion 6
+
+def palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def solve():
+    n,a,b=input().split()
+    s=input()
+    n=int(n)
+    a=int(a)
+    b=int(b)
+    #print(n,a,b,s)
+    if n%2==0:
+        #print("n为偶数")
+        if a>b:
+            #print("a>b")
+            #print("b*(n//2)+a")
+            print(b*(n//2)+a)
+        else:
+            #print("a<=b")
+            #print("a*n")
+            print(a*n)
+    else:
+        #print("n为奇数")
+        if a>b:
+            #print("a>b")
+            #print("b*(n//2)+a")
+            print(b*(n//2)+a)
+        else:
+            #print("a<=b")
+            #print("a*(n-1)+b")
+            print(a*(n-1)+b)
+
+=======
+Suggestion 8
+
+def main():
+    N,A,B = map(int,input().split())
+    S = input()
+    #print(N,A,B)
+    #print(S)
+    cnt = 0
+    for i in range(N):
+        if S[i] == S[N-1-i]:
+            cnt += 1
+    if cnt == N:
+        print(A*N+B*(N-1))
+    elif cnt == N-1:
+        print(A*N+B)
+    elif cnt < N-1:
+        print(A*N)
+
+=======
+Suggestion 9
+
+def main():
+    N,A,B = map(int,input().split())
+    S = input()
+    S_r = S[::-1]
+    count = 0
+    for i in range(N//2):
+        if S[i] != S_r[i]:
+            if S[i] == 'a':
+                count += A
+                S = S[:i] + 'a' + S[i+1:]
+            elif S_r[i] == 'a':
+                count += A
+                S = S[:N-i-1] + 'a' + S[N-i:]
+            else:
+                count += B
+                S = S[:i] + 'a' + S[i+1:]
+                S = S[:N-i-1] + 'a' + S[N-i:]
+    if N % 2 == 1:
+        if S[N//2] == 'a':
+            count += A
+        else:
+            count += B
+    print(count)
+
+=======
+Suggestion 10
+
+def isPalindromic(s):
+    if len(s) == 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return isPalindromic(s[1:-1])
+        else:
+            return False

@@ -1,78 +1,191 @@
-#问题陈述
-#有N个生物站在一个圆圈里，按逆时针顺序称为Snuke 1, 2, ..., N。
-#当Snuke i（1 ≦ i ≦ N）在时间t收到一颗宝石，S_i单位的时间后，它将在时间t+S_i将该宝石交给Snuke i+1。这里，Snuke N+1就是Snuke 1。
-#此外，高桥将在时间T_i递给Snuke i一颗宝石。
-#对于每个i（1 ≦ i ≦ N），找出Snuke i第一次收到宝石的时间。假设递送宝石需要的时间可以忽略不计。
-#
-#限制条件
-#1 ≦ N ≦ 200000
-#1 ≦ S_i,T_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1 S_2 ...S_N
-#T_1 T_2 ...T_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应包含Snuke i第一次收到宝石的时间。
-#
-#输入样本 1
-#3
-#4 1 5
-#3 10 100
-#
-#样本输出1
-#3
-#7
-#8
-#我们将按时间顺序列出Snuke三人和Takahashi到时间13为止的行动。
-#时间3：高桥将一颗宝石交给Snuke 1。
-#时间7：斯诺克1把宝石交给斯诺克2。
-#时间8：Snuke 2将一颗宝石交给Snuke 3。
-#时间10：高桥将一颗宝石交给Snuke 2。
-#时间11：Snuke 2递给Snuke 3一颗宝石。
-#时间13：Snuke 3将一颗宝石交给Snuke 1。
-#此后，他们将继续递送宝石，尽管这与答案无关。
-#
-#输入样本2
-#4
-#100 100 100 100
-#1 1 1 1
-#
-#样本输出2
-#1
-#1
-#1
-#1
-#请注意，S_i和T_i的值可能不是不同的。
-#
-#样本输入 3
-#4
-#1 2 3 4
-#1 2 4 7
-#
-#样本输出 3
-#1
-#2
-#4
-#7
-#请注意，一个Snuke可以同时进行多个交易。特别是，一个Snuke可以同时从高桥和另一个Snuke那里接收宝石。
-#
-#输入样本4
-#8
-#84 87 78 16 94 36 87 93
-#50 22 63 28 91 60 64 27
-#
-#样本输出4
-#50
-#22
-#63
-#28
-#44
-#60
-#64
-#27
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    s_t = list(zip(s, t))
+    s_t.sort(key=lambda x: x[1])
+    s_t.sort(key=lambda x: x[0])
+    # print(s_t)
+    for i in range(n):
+        if i == 0:
+            print(s_t[i][1])
+        else:
+            if s_t[i][0] == s_t[i - 1][0]:
+                print(s_t[i - 1][1])
+            else:
+                print(s_t[i][1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+
+    # print(n)
+    # print(s)
+    # print(t)
+
+    # print(len(s))
+    # print(len(t))
+    # print(len(s) == len(t))
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0], t[0])
+    # print(s[1], t[1])
+    # print(s[2], t[2])
+
+    # for i in range(n):
+    #     print(s[i], t[i])
+
+    # print(s[0],
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        if i == 0:
+            ans[i] = T[i]
+        else:
+            ans[i] = min(ans[i - 1] + S[i - 1], T[i])
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = t[i]
+    for i in range(n):
+        if i == 0:
+            if t[i] + s[i] < t[n-1]:
+                ans[i] = t[i] + s[i]
+        else:
+            if t[i] + s[i] < t[i-1]:
+                ans[i] = t[i] + s[i]
+    for i in range(n):
+        print(ans[i])
+main()
+
+=======
+Suggestion 7
+
+def main():
+    print("hello world!")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        if i == 0:
+            ans[i] = t[i]
+        else:
+            ans[i] = min(ans[i-1] + s[i-1], t[i])
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def solve(n, s, t):
+    # t[i] = i-th person will give a gem at time t[i]
+    # s[i] = i-th person will give a gem to i+1-th person after s[i] time
+    # s[n] = s[0]
+    # t[n] = t[0]
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[0] = min(t[0], t[n-1] + s[n-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])
+    # t[i] = min(t[i], t[i-1] + s[i-1])

@@ -1,38 +1,148 @@
-#问题陈述
-#高桥每天在S点（24小时制时钟）打开他房间的灯，并在T点关闭。
-#在灯亮的时候，日期可能会改变。
-#判断灯在X点30分时是否亮着。
-#
-#约束条件
-#0 ≦ S, T, X ≦ 23
-#S ≠ T
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S T X
-#
-#输出
-#如果灯在X点30分时亮着，打印Yes；否则，打印No。
-#
-#输入样本 1
-#7 20 12
-#
-#样本输出1
-#Yes
-#灯在7点和20点之间是亮的。在12点过30分，它是亮的，所以我们打印Yes。
-#
-#样本输入2
-#20 7 12
-#
-#样本输出2
-#No
-#在0点和7点之间，以及20点和0点之间（第二天），灯是亮的。在12点过30分，它是关闭的，所以我们打印No。
-#
-#样本输入3
-#23 0 23
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t, x = map(int, input().split())
+    if s <= t:
+        if s <= x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s <= x or x < t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def main():
+    S, T, X = map(int, input().split())
+    if S < T:
+        if S <= X and X < T:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if S <= X or X < T:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s < x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s < x or x < t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s,t,x = map(int, input().split())
+    if s>t:
+        if x>=s or x<t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if x>=s and x<t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s,t,x = map(int,input().split())
+    if s < t:
+        if s <= x and x <= t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s <= x or x <= t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def isLight(s, t, x):
+    if s < t:
+        return s <= x and x < t
+    elif s > t:
+        return s <= x or x < t
+    else:
+        return False
+
+s, t, x = map(int, input().split())
+
+=======
+Suggestion 7
+
+def problems228_a():
+    s,t,x = map(int, input().split())
+    if s <= x and x < t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s,t,x = map(int,input().split())
+    if s < t:
+        if s < x and x < t:
+            print('Yes')
+        else:
+            print('No')
+    else:
+        if s < x or x < t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s, t, x = map(int, input().split())
+    if s < t:
+        if s <= x and x < t:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        if s <= x or x < t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    s,t,x = map(int,input().split())
+    # 处理数据
+    if x > s and x < t:
+        print("Yes")
+    else:
+        print("No")

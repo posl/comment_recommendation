@@ -1,48 +1,164 @@
-#问题陈述
-#如果满足以下所有条件，我们称一个由大写和小写英文字母组成的字符串为精彩字符串：
-#该字符串包含一个大写的英文字母。
-#该字符串包含一个小写的英文字母。
-#字符串中的所有字符都是成对独立的。
-#例如，AtCoder和Aa是美妙的字符串，而atcoder和Perfect则不是。
-#给定一个字符串S，确定S是否是一个精彩字符串。
-#
-#约束条件
-#1 ≦ |S| ≦ 100
-#S是一个由大写和小写英文字母组成的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#如果S是一个精彩字符串，打印Yes；否则，打印No。
-#
-#输入样本1
-#AtCoder
-#
-#样本输出1
-#Yes
-#AtCoder是一个精彩字符串，因为它包含一个大写的英文字母，一个小写的英文字母，并且字符串中的所有字符都是成对的。
-#
-#输入样本2
-#Aa
-#
-#样本输出2
-#Yes
-#请注意，A和a是不同的字符。  这个字符串是一个精彩字符串。
-#
-#输入样本3
-#atcoder
-#
-#样本输出3
-#No
-#这不是一个精彩字符串，因为它不包含一个大写的英文字母。
-#
-#输入样本4
-#Perfect
-#
-#样本输出4
-#No
-#这不是一个精彩字符串，因为第2和第5个字符是相同的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 2
+
+def is_wonderful_string(s):
+    if len(s) < 2 or len(s) > 100:
+        return False
+    if s.islower() or s.isupper():
+        return False
+    if s.isalnum():
+        return False
+    if s.isalpha():
+        return True
+    return False
+
+=======
+Suggestion 3
+
+def check(s):
+    if(s.islower() or s.isupper() or len(s)%2!=0):
+        return False
+    else:
+        return True
+
+s=input()
+if(check(s)):
+    print("Yes")
+else:
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.islower():
+        print('No')
+    elif s.isupper():
+        print('No')
+    elif len(s) == 1:
+        print('No')
+    elif len(s) == 2:
+        if s[0] == s[1]:
+            print('No')
+        else:
+            print('Yes')
+    else:
+        if s[0] == s[1]:
+            print('No')
+        elif s[0] == s[-1]:
+            print('No')
+        elif s[1] == s[-1]:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 5
+
+def is_wonderful_string(s):
+    if not s.islower() and not s.isupper():
+        return False
+    if not s.islower():
+        if s[0].isupper():
+            return True
+        else:
+            return False
+    if not s.isupper():
+        if s[0].islower():
+            return True
+        else:
+            return False
+
+s = input()
+
+=======
+Suggestion 6
+
+def is_wonderful_string(string):
+    if len(string) < 2:
+        return False
+    if len(string) == 2:
+        return string[0] != string[1]
+    if len(string) % 2 == 1:
+        return False
+    if string[0].isupper():
+        return False
+    if string[-1].islower():
+        return False
+    if string[0].islower() and string[-1].isupper():
+        return False
+
+    return True
+
+=======
+Suggestion 7
+
+def check(s):
+    if len(s) < 2:
+        return False
+    if len(s) % 2 != 0:
+        return False
+    if s[0].isupper() == False:
+        return False
+    if s[-1].islower() == False:
+        return False
+    for i in range(1, len(s)-1):
+        if i % 2 != 0:
+            if s[i].isupper() == True:
+                return False
+        else:
+            if s[i].islower() == True:
+                return False
+    return True
+
+s = input()
+
+=======
+Suggestion 8
+
+def is_wonderful(s):
+    if len(s) < 3:
+        return False
+    if s.islower():
+        return False
+    if s.isupper():
+        return False
+    if s.lower() == s.upper():
+        return False
+    for i in range(0, len(s)):
+        if s[i].islower():
+            if s[i].upper() not in s[i+1:]:
+                return False
+        if s[i].isupper():
+            if s[i].lower() not in s[i+1:]:
+                return False
+    return True
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S.islower() or S.isupper():
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 10
+
+def is_upper(s):
+    return s.isupper()

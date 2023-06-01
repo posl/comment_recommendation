@@ -1,40 +1,189 @@
-#问题陈述
-#在一张桌子上有N个垂直堆放的立方体。
-#如果S中的第i个字符是0，则从底部开始的第i个立方体的颜色是红色，如果该字符是1，则是蓝色。
-#你可以进行以下任意次数的操作：选择一个相邻的红色立方体和一个蓝色立方体，然后把它们移走。在这里，堆积在被移走的立方体上的立方体将落到它们下面的物体上。
-#最多可以移走多少个立方体？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S中的每个字符都是0或1。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印可移除的最大立方体数量。
-#
-#样本输入1
-#0011
-#
-#样本输出1
-#4
-#所有的四个立方体都可以被移走，操作方法如下：
-#从底部取出第二个和第三个立方体。然后，第四个立方体落到第一个立方体上。
-#从底部移走第一个和第二个立方体。
-#
-#样本输入2
-#11011010001011
-#
-#样本输出2
-#12
-#
-#采样输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    r = s.count('0')
+    b = len(s) - r
+    print(min(r, b) * 2)
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    str = input()
+    # 计算数据
+    count0 = 0
+    count1 = 0
+    for i in range(len(str)):
+        if str[i] == '0':
+            count0 += 1
+        else:
+            count1 += 1
+    # 输出结果
+    print(min(count0, count1) * 2)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    #print(S)
+    #print(type(S))
+    #print(len(S))
+    #print(S[0])
+
+    #从左到右依次遍历，如果是0则入栈，如果是1则出栈，如果出栈的时候栈为空则将结果+1
+    stack = []
+    result = 0
+    for i in range(len(S)):
+        if S[i] == '0':
+            stack.append(S[i])
+        else:
+            if len(stack) == 0:
+                result += 1
+            else:
+                stack.pop()
+
+    #从右到左依次遍历，如果是1则入栈，如果是0则出栈，如果出栈的时候栈为空则将结果+1
+    stack = []
+    for i in range(len(S)-1, -1, -1):
+        if S[i] == '1':
+            stack.append(S[i])
+        else:
+            if len(stack) == 0:
+                result += 1
+            else:
+                stack.pop()
+
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = list(s)
+    s.reverse()
+    count = 0
+    for i in range(0,len(s)-1):
+        if s[i] == '0':
+            count += 1
+        elif s[i] == '1' and s[i+1] == '0':
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    N = len(S)
+    count = 0
+    for i in range(N):
+        if S[i] == '1':
+            count += 1
+    print(min(count, N - count) * 2)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    #print(S)
+    #print(len(S))
+    #print(type(S))
+    #print(S[0])
+    #print(type(S[0]))
+    #print(S[0] == '0')
+    #print(S[0] == '1')
+    #print(S[0] == 0)
+    #print(S[0] == 1)
+    #print(S[0] == 2)
+    #print(S[0] == 3)
+    #print(S[0] == 4)
+    #print(S[0] == 5)
+    #print(S[0] == 6)
+    #print(S[0] == 7)
+    #print(S[0] == 8)
+    #print(S[0] == 9)
+    #print(S[0] == 10)
+    #print(S[0] == 11)
+    #print(S[0] == 12)
+    #print(S[0] == 13)
+    #print(S[0] == 14)
+    #print(S[0] == 15)
+    #print(S[0] == 16)
+    #print(S[0] == 17)
+    #print(S[0] == 18)
+    #print(S[0] == 19)
+    #print(S[0] == 20)
+    #print(S[0] == 21)
+    #print(S[0] == 22)
+    #print(S[0] == 23)
+    #print(S[0] == 24)
+    #print(S[0] == 25)
+    #print(S[0] == 26)
+    #print(S[0] == 27)
+    #print(S[0] == 28)
+    #print(S[0] == 29)
+    #print(S[0] == 30)
+    #print(S[0] == 31)
+    #print(S[0] == 32)
+    #print(S[0] == 33)
+    #print(S[0] == 34)
+    #print(S[0] == 35)
+    #print(S[0] == 36)
+    #print(S[0] == 37)
+    #print(S[0] == 38)
+    #print(S[0] == 39
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    r = s.count("0")
+    b = s.count("1")
+    print(min(r, b) * 2)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
+    for i in range(n):
+        if s[i] == "1":
+            cnt += 1
+    print(min(cnt, n - cnt) * 2)
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if S[i] == "1":
+            ans += 1
+    ans = min(ans, N-ans)
+    print(ans)
+solve()
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    N = len(S)
+    num = 0
+    for i in range(N):
+        if S[i] == '1':
+            num += 1
+    print(min(num, N-num)*2)

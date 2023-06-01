@@ -1,58 +1,151 @@
-#问题陈述
-#我们的世界是一维的，由两个帝国统治，称为帝国A和帝国B。
-#帝国A的首都位于坐标X，而帝国B的首都位于坐标Y。
-#有一天，帝国A倾向于将坐标x_1, x_2, ..., x_N的城市置于其控制之下，而帝国B则倾向于将坐标y_1, y_2, ..., y_M的城市置于其控制之下。
-#如果存在一个满足以下三个条件的整数Z，他们将达成协议，否则将爆发战争。
-#X < Z ≦ Y
-#x_1, x_2, ..., x_N < Z
-#y_1, y_2, ..., y_M ≧ Z
-#确定战争是否会爆发。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N, M ≦ 100
-#-100 ≦ x < y ≦ 100
-#-100 ≦ x_i, y_i ≦ 100
-#x_1, x_2, ..., x_N ≠ X
-#x_i都是不同的。
-#y_1, y_2, ..., y_M ≠ Y
-#y_i都是不同的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M X Y
-#x_1 x_2 ... x_N
-#y_1 y_2 ... y_M
-#
-#输出
-#如果战争将爆发，打印战争；否则，打印无战争。
-#
-#输入样本 1
-#3 2 10 20
-#8 15 13
-#16 22
-#
-#样本输出1
-#无战争
-#选择Z = 16满足以下所有三个条件，因此他们会达成协议。
-#x = 10 < 16 ≦ 20 = y
-#8, 15, 13 < 16
-#16, 22 ≧ 16
-#
-#样本输入 2
-#4 2 -48 -1
-#-20 -35 -91 -23
-#-22 66
-#
-#样本输出2
-#战争
-#
-#样本输入3
-#5 3 6 8
-#-10 3 1 5 -100
-#100 6 14
-#
-#样本输出3
-#战争
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] < y_list[0] and x < y:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 2
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    if max(x_list) < min(y_list) and x < min(y_list) and max(x_list) < y:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 3
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x = x + 1
+    y = y - 1
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] > y_list[0]:
+        print('War')
+    else:
+        print('No War')
+
+=======
+Suggestion 4
+
+def main():
+    n,m,x,y = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    y_list = list(map(int,input().split()))
+    x_list.append(x)
+    y_list.append(y)
+    x_list.sort()
+    y_list.sort()
+    if x_list[-1] < y_list[0]:
+        print("No War")
+    else:
+        print("War")
+
+=======
+Suggestion 5
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+    for z in range(x + 1, y + 1):
+        if max(x_list) < z and min(y_list) >= z:
+            print("No War")
+            return
+    print("War")
+
+=======
+Suggestion 6
+
+def main():
+    n, m, x, y = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    y_list = list(map(int, input().split()))
+
+    for z in range(x+1, y+1):
+        if max(x_list) < z and min(y_list) >= z:
+            print("No War")
+            return
+
+    print("War")
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N,M,X,Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x.append(X)
+    y.append(Y)
+    x.sort()
+    y.sort()
+    if x[-1] < y[0]:
+        print('No War')
+    else:
+        print('War')
+
+=======
+Suggestion 8
+
+def main():
+    n,m,x,y = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    y_list = list(map(int,input().split()))
+    for i in range(x+1,y+1):
+        if i in x_list and i in y_list:
+            print("No War")
+            break
+    else:
+        print("War")
+
+=======
+Suggestion 9
+
+def main():
+    N, M, X, Y = map(int, input().split())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+    x.sort()
+    y.sort()
+    x_max = x[N-1]
+    y_min = y[0]
+    if x_max >= y_min:
+        print("War")
+    else:
+        if X < x_max < Y and X < y_min < Y:
+            print("No War")
+        else:
+            print("War")
+
+=======
+Suggestion 10
+
+def readinput():
+    n,m,x,y=map(int,input().split())
+    xlist=list(map(int,input().split()))
+    ylist=list(map(int,input().split()))
+    return n,m,x,y,xlist,ylist

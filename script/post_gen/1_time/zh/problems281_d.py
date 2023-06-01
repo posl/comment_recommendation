@@ -1,43 +1,281 @@
-#问题陈述
-#给你一个非负整数序列A=（a_1,a_2,...,a_N）。
-#设S是能成为A中K项之和的非负整数的集合（有不同的索引）。
-#如果在S中没有D的倍数，则打印-1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 100
-#1 ≦ D ≦ 100
-#0 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N K D
-#a_1 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#4 2 2
-#1 2 3 4
-#
-#样本输出 1
-#6
-#下面是选择A中两个项的所有方法。
-#选择a_1和a_2，其和为1+2=3。
-#选择a_1和a_3，其和为1+3=4。
-#选择a_1和a_4，它们的总和是1+4=5。
-#选择a_2和a_3，两者之和为2+3=5。
-#选择a_2和a_4，它们的总和是2+4=6。
-#选择a_3和a_4，它们的总和是3+4=7。
-#因此，我们有S={3，4，5，6，7}。S中2的最大倍数是6，所以你应该打印6。
-#
-#输入样本 2
-#3 1 2
-#1 3 5
-#
-#样本输出2
-#-1
-#在这个例子中，我们有S={1，3，5}。S中没有任何东西是2的倍数，所以你应该打印-1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    
+    # 生成和的集合
+    s = set()
+    for i in range(n):
+        for j in range(i + 1, n):
+            s.add(a[i] + a[j])
+    
+    # 找出最大的D的倍数
+    result = -1
+    for x in s:
+        if x % d == 0:
+            result = max(result, x)
+    
+    # 打印答案
+    print(result)
+
+=======
+Suggestion 2
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = -1
+    for i in range(n-k+1):
+        s = sum(a[i:i+k])
+        if s%d == 0:
+            ans = max(ans,s)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    if k == 1:
+        if sum % d == 0:
+            print(sum)
+        else:
+            print(-1)
+        return
+    if k == n:
+        if sum % d == 0:
+            print(0)
+        else:
+            print(-1)
+        return
+    if k == 2:
+        ans = -1
+        for i in range(n):
+            for j in range(i+1,n):
+                if (sum - a[i] - a[j]) % d == 0:
+                    ans = max(ans,sum - a[i] - a[j])
+        print(ans)
+        return
+    if k == 3:
+        ans = -1
+        for i in range(n):
+            for j in range(i+1,n):
+                for m in range(j+1,n):
+                    if (sum - a[i] - a[j] - a[m]) % d == 0:
+                        ans = max(ans,sum - a[i] - a[j] - a[m])
+        print(ans)
+        return
+    if k == 4:
+        ans = -1
+        for i in range(n):
+            for j in range(i+1,n):
+                for m in range(j+1,n):
+                    for p in range(m+1,n):
+                        if (sum - a[i] - a[j] - a[m] - a[p]) % d == 0:
+                            ans = max(ans,sum - a[i] - a[j] - a[m] - a[p])
+        print(ans)
+        return
+    if k == 5:
+        ans = -1
+        for i in range(n):
+            for j in range(i+1,n):
+                for m in range(j+1,n):
+                    for p in range(m+1,n):
+                        for q in range(p+1,n):
+                            if (sum - a[i] - a[j] - a[m] - a[p] - a[q]) % d == 0:
+                                ans = max(ans,sum - a[i] - a[j] - a[m] - a[p] - a[q])
+        print(ans)
+        return
+    if k == 6:
+        ans = -1
+
+=======
+Suggestion 4
+
+def get_sum(array, k, d):
+    # 从array中取k个数，和为d的倍数的最大值
+    # 从array中取k个数，和为d的倍数的最大值
+    if k == 1:
+        if array[0] % d == 0:
+            return array[0]
+        else:
+            return -1
+    elif k == 2:
+        max_sum = -1
+        for i in range(len(array)):
+            for j in range(i + 1, len(array)):
+                if (array[i] + array[j]) % d == 0:
+                    max_sum = max(max_sum, array[i] + array[j])
+        return max_sum
+    else:
+        max_sum = -1
+        for i in range(len(array)):
+            temp = get_sum(array[i+1:], k-1, d)
+            if temp != -1:
+                max_sum = max(max_sum, array[i] + temp)
+        return max_sum
+
+
+line = input().strip()
+n, k, d = list(map(int, line.split()))
+array = list(map(int, input().strip().split()))
+print(get_sum(array, k, d))
+
+=======
+Suggestion 5
+
+def func():
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = -1
+    for i in range(n-k+1):
+        s = sum(a[i:i+k])
+        if s % d == 0:
+            ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    s = set()
+    for i in range(n):
+        for j in range(i+1,n):
+            s.add(a[i]+a[j])
+    s = list(s)
+    s.sort()
+    for i in range(len(s)-1,-1,-1):
+        if s[i]%d == 0:
+            print(s[i])
+            break
+        elif i == 0:
+            print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N, K, D = map(int, input().split())
+    A = list(map(int, input().split()))
+    #N, K, D = 4, 2, 2
+    #A = [1, 2, 3, 4]
+    #N, K, D = 3, 1, 2
+    #A = [1, 3, 5]
+    print(N, K, D)
+    print(A)
+    print()
+
+    S = []
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                S.append(A[i] + A[j])
+    print(S)
+    print()
+
+    S = list(set(S))
+    print(S)
+    print()
+
+    S.sort()
+    print(S)
+    print()
+
+    S = [x for x in S if x % D != 0]
+    print(S)
+    print()
+
+    if len(S) == 0:
+        print(-1)
+    else:
+        print(S[-1])
+
+=======
+Suggestion 8
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = -1
+    for i in range(1,n+1):
+        for j in range(i,n+1):
+            if j-i+1 == k:
+                if sum(a[i-1:j]) % d != 0:
+                    ans = max(ans,sum(a[i-1:j]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,k,d=map(int,input().split())
+    a=list(map(int,input().split()))
+    count=0
+    for i in range(n):
+        for j in range(i+1,n):
+            if a[i]+a[j] < d:
+                count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    # print(n,k,d)
+    # print(a)
+
+    # a = [1,2,3,4]
+    # n = 4
+    # k = 2
+    # d = 2
+    # a = [1,3,5]
+    # n = 3
+    # k = 1
+    # d = 2
+    # a = [1,2,3,4,5,6]
+    # n = 6
+    # k = 5
+    # d = 3
+    # a = [1,2,3,4,5,6,7,8,9,10]
+    # n = 10
+    # k = 5
+    # d = 3
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12]
+    # n = 12
+    # k = 7
+    # d = 2
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # n = 13
+    # k = 7
+    # d = 2
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # n = 13
+    # k = 6
+    # d = 2
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # n = 13
+    # k = 5
+    # d = 2
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # n = 13
+    # k = 4
+    # d = 2
+    # a = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # n = 13
+    # k = 3
+    # d = 2
+    # a = [

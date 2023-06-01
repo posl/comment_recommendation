@@ -1,51 +1,159 @@
-#问题陈述
-#人0，人1，......，人（N-1）按逆时针顺序坐在转盘周围，均匀地排列着。  盘子p_i在桌子上第i个人的前面。
-#你可以执行以下操作0次或多次：
-#将转盘逆时针旋转N圈。  结果，旋转前在i号人面前的盘子现在在(i+1)N号人面前了。
-#当你完成后，如果菜品i在人(i-1)mod N、人(i)或人(i+1)mod N前面，则人(i)是快乐的。
-#求最大可能的快乐者人数。
-# 什么是a mod m？  对于一个整数a和一个正整数m，a mod m表示介于0和(m-1)(包括)之间的整数x，使得(a-x)是m的倍数。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^5
-#0 ≦ p_i ≦ N-1
-#p_i ≠ p_j if i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#p_0 ... p_{N-1}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4
-#1 2 0 3
-#
-#样本输出1
-#4
-#下图显示了一次操作后的表格。
-#在这里，有四个快乐的人：
-#0号人很高兴，因为0号盘子在3号人的前面（=(0-1)mod 4）；
-#人1很高兴，因为盘子1在人1的前面（=1）；
-#2号人很高兴，因为菜品2在2号人面前（=2）；
-#人3很高兴，因为菜3在人0的前面(=(3+1)mod 4)。
-#不可能有五个或更多的快乐者，所以答案是4。
-#
-#输入样本 2
-#3
-#0 1 2
-#
-#样本输出2
-#3
-#
-#样本输入3
-#10
-#3 9 6 1 7 2 8 0 5 4
-#
-#样本输出 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    P = [p-1 for p in
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    p.insert(N+1, 0)
+    ans = 0
+    for i in range(1, N+1):
+        if (p[i-1] < p[i] < p[i+1]) or (p[i+1] < p[i] < p[i-1]):
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    p = [x-1 for x in p]
+    ans = 0
+    for i in range(n):
+        if p[i] == i:
+            ans += 1
+            if i < n-1:
+                p[i], p[i+1] = p[i+1], p[i]
+            else:
+                p[0], p[i] = p[i], p[0]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    p = [int(i) for i in input().split()]
+    happy = 0
+    for i in range(N):
+        if p[i] == (p[(i-1)%N]+1)%N or p[i] == (p[(i+1)%N]-1)%N:
+            happy += 1
+    print(happy)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p = [x - 1 for x in p]
+    res = 0
+    for i in range(N):
+        if p[i] == i:
+            res += 1
+            if i < N - 1:
+                p[i], p[i + 1] = p[i + 1], p[i]
+            else:
+                p[i], p[0] = p[0], p[i]
+    print(res)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ps = list(map(int, input().split()))
+    ps = [p-1 for p in ps]
+    # print(ps)
+    cnt = 0
+    for i in range(n):
+        if ps[ps[ps[i]]] == i:
+            cnt += 1
+    print(cnt//2)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p = [x-1 for x in p]
+    ans = 0
+    for i in range(N):
+        if (p[p[i]] == i):
+            ans += 1
+    print(ans//2)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    P = [int(i) for i in input().split()]
+
+    # 0 1 2 3
+    # 1 2 0 3
+    # 2 0 3 1
+    # 3 1 2 0
+
+    # 0 1 2 3 4 5 6 7 8 9
+    # 3 9 6 1 7 2 8 0 5 4
+    # 6 1 7 2 8 0 5 4 3 9
+    # 7 2 8 0 5 4 3 9 6 1
+    # 8 0 5 4 3 9 6 1 7 2
+    # 5 4 3 9 6 1 7 2 8 0
+    # 3 9 6 1 7 2 8 0 5 4
+    # 6 1 7 2 8 0 5 4 3 9
+    # 7 2 8 0 5 4 3 9 6 1
+    # 8 0 5 4 3 9 6 1 7 2
+
+    # 0 1 2 3 4 5 6 7 8 9
+    # 3 9 6 1 7 2 8 0 5 4
+    # 6 1 7 2 8 0 5 4 3 9
+    # 7 2 8 0 5 4 3 9 6 1
+    # 8 0 5 4 3 9 6 1 7 2
+    # 5 4 3 9 6 1 7 2 8 0
+    # 3 9 6 1 7 2 8 0 5 4
+    # 6 1 7 2 8 0 5 4 3 9
+    # 7 2 8 0 5 4 3 9 6
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    # 逆時針の転回回数を求める
+    cnt = 0
+    for i in range(N):
+        if P[i] == i:
+            cnt += 1
+
+    if cnt == N:
+        print(N)
+    else:
+        print(cnt + 2 * ((N - cnt) // 2))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if p[i] == (i - 1) % n or p[i] == i or p[i] == (i + 1) % n:
+            ans += 1
+    print(ans)

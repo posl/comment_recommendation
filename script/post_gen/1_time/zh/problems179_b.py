@@ -1,59 +1,149 @@
-#问题陈述
-#阿德做了N次以下的动作：掷两个骰子。
-#第i次掷出的结果是D_{i,1}和D_{i,2}。
-#检查是否至少连续发生了三次双色球。
-#具体来说，检查是否存在至少一个i，使得D_{i,1}=D_{i,2}，D_{i+1,1}=D_{i+1,2}和D_{i+2,1}=D_{i+2,2}成立。
-#
-#约束条件
-#3 ≦ N ≦ 100
-#1 ≦ D_{i,j} ≦ 6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#d_{1,1} d_{1,2}
-#.
-#.
-#.
-#d_{n,1} d_{n,2}
-#
-#输出
-#如果连续出现至少3次双色球，则打印Yes。否则打印No。
-#
-#输入样本1
-#5
-#1 2
-#6 6
-#4 4
-#3 3
-#3 2
-#
-#样本输出1
-#Yes
-#从第二卷到第四卷，连续出现了三个双胞胎。
-#
-#样本输入2
-#5
-#1 1
-#2 2
-#3 4
-#5 5
-#6 6
-#
-#样本输出2
-#No
-#
-#样本输入3
-#6
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    return n, d
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print('Yes')
+            break
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    #print(d)
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    flag = False
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            flag = True
+            break
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d = [list(map(int, input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            cnt += 1
+    if cnt >= 1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    dice = []
+    for i in range(n):
+        dice.append(list(map(int, input().split())))
+    #print(dice)
+    #print(dice[0][0])
+    #print(dice[0][1])
+    for i in range(n-2):
+        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    for i in range(N):
+        d1, d2 = input().split()
+        if i >= 2 and d1 == d2 and d0 == d1:
+            print("Yes")
+            return
+        d0 = d1
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    dice = [list(map(int, input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n-2):
+        if dice[i][0] == dice[i][1] and dice[i+1][0] == dice[i+1][1] and dice[i+2][0] == dice[i+2][1]:
+            cnt += 1
+    if cnt > 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+
+    for i in range(n - 2):
+        if d[i][0] == d[i][1] and d[i + 1][0] == d[i + 1][1] and d[i + 2][0] == d[i + 2][1]:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    d = []
+    for i in range(n):
+        d.append(list(map(int, input().split())))
+    for i in range(0, n-2):
+        if d[i][0] == d[i][1] and d[i+1][0] == d[i+1][1] and d[i+2][0] == d[i+2][1]:
+            print("Yes")
+            return
+    print("No")

@@ -1,55 +1,180 @@
-#问题说明
-#N个参赛者，编号为1到N，将参加一个有M个问题的竞赛，编号为1到M。
-#对于1到N之间的整数i和1到M之间的整数j，如果S_i的第j个字符是o，则参赛者i可以解决j问题，如果该字符是x，则不能解决。
-#参与者必须是成对的。打印形成一对能够共同解决所有M个问题的参与者的方法的数量。
-#更确切地说，打印满足1≦ x < y≦ N的整数对（x,y）的数量，以便对于1和M之间的任何整数j，参与者x和参与者y中至少有一个能解决j的问题。
-#
-#约束条件
-#N是2到30之间的整数，包括在内。
-#M是1至30之间的整数，包括在内。
-#S_i是一个长度为M的字符串，由o和x组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 5
-#ooooo
-#oooxx
-#xxooo
-#oxoxo
-#xxxxx
-#
-#样本输出1
-#5
-#以下五对参与者满足条件：参与者1和2，参与者1和3，参与者1和4，参与者1和5，以及参与者2和3。
-#另一方面，例如参与者2和4的配对不满足条件，因为他们不能解决问题4。
-#
-#样本输入 2
-#3 2
-#ox
-#xo
-#xx
-#
-#样本输出2
-#1
-#
-#样本输入3
-#2 4
-#xxxx
-#xxox
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = [int(i) for i in input().split()]
+    s = [input() for i in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            flag = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    flag = False
+                    break
+            if flag:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_input():
+    n, m = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return n, m, s
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            flag = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    flag = False
+                    break
+            if flag:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def get_input():
+    input_line = input().split()
+    n = int(input_line[0])
+    m = int(input_line[1])
+    s = [input() for i in range(n)]
+    return n, m, s
+
+=======
+Suggestion 5
+
+def main():
+    # 输入
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+
+    # 预处理
+    # S[i][j] == 'o' ならば 1, 'x' ならば 0 に置き換える
+    for i in range(N):
+        S[i] = [1 if c == 'o' else 0 for c in S[i]]
+
+    # dp[i][j] := 集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき 1, 存在しないとき 0
+    dp = [[0] * M for _ in range(1 << N)]
+    for i in range(N):
+        dp[1 << i] = S[i]
+
+    # 集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者が存在するとき、集合 i に含まれる参加者のうち、問題 j を解くことができる参加者
+
+=======
+Suggestion 6
+
+def solve(n, m, s):
+    count = 0
+    for i in range(1, n):
+        for j in range(i + 1, n + 1):
+            for k in range(m):
+                if s[i - 1][k] == 'o' or s[j - 1][k] == 'o':
+                    if k == m - 1:
+                        count += 1
+                else:
+                    break
+    return count
+
+
+n, m = map(int, input().split())
+s = []
+for i in range(n):
+    s.append(input())
+print(solve(n, m, s))
+
+=======
+Suggestion 7
+
+def solve(n, m, s):
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    if k == m-1:
+                        ans += 1
+                else:
+                    break
+    return ans
+
+n, m = map(int, input().split())
+s = []
+for i in range(n):
+    s.append(input())
+print(solve(n, m, s))
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            ok = True
+            for k in range(M):
+                if S[i][k] == "x" and S[j][k] == "x":
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    # 读取输入
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+
+    # 计算结果
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N, M = map(int, input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ok = True
+            for k in range(M):
+                if S[i][k] == 'x' and S[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)

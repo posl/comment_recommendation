@@ -1,60 +1,123 @@
-#问题说明
-#有一个N×N的横行竖列的网格，所有的方块最初都是白色的。让(i,j)表示位于第i行和第j列的方格。
-#高桥有整数A和B，它们在1和N之间（包括在内）。他将进行以下操作。
-#对于每一个整数k，使得max(1-A,1-B)≦ k≦ min(N-A,N-B)，将(A+k,B+k)涂黑。
-#对于每个整数k，如max(1-A,B-N)≦ k≦ min(N-A,B-1)，将(A+k,B-k)涂成黑色。
-#在这些操作之后的网格中，找出每个方格（i,j）的颜色，使得P≦ i≦ Q和R≦ j≦ S。
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#P Q R S
-#
-#输出
-#打印Q-P+1行。
-#每一行应该包含一个长度为S-R+1的字符串，由#和.组成。
-#第i行中字符串的第j个字符应该是#，表示(P+i-1, R+j-1)被涂成黑色，而.表示(P+i-1, R+j-1)是白色。  
-#
-#输入样本 1
-#5 3 2
-#1 5 1 5
-#
-#输出样本1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#第一个操作将(2,1), (3,2), (4,3), (5,4)四个方块涂成黑色，第二个操作将(4,1), (3,2), (2,3), (1,4)四个方块涂成黑色。
-#因此，上述输出应该被打印出来，因为P=1，Q=5，R=1，S=5。
-#
-#输入样本 2
-#5 3 3
-#4 5 2 5
-#
-#输出样本2
-##.#.
-#...#
-#操作画出九个方块（1,1）、（1,5）、（2,2）、（2,4）、（3,3）、（4,2）、（4,4）、（5,1）、（5,5）。
-#因此，上述输出应该被打印出来，因为P=4，Q=5，R=2，S=5。
-#
-#输入样本3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#输出样本3
-##.#
-#.#.
-##.#
-#注意，输入可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f1():
+    N,A,B = map(int, input().split())
+    P,Q,R,S = map(int, input().split())
+    #print(N,A,B,P,Q,R,S)
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%d'%(N,A,B,P,Q,R,S))
+    #print('N=%d,A=%d,B=%d,P=%d,Q=%d,R=%d,S=%
+
+=======
+Suggestion 2
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q + 1):
+        for j in range(r, s + 1):
+            if (i + j) % 2 == (a + b) % 2:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def paint(a,b,n):
+    #a,b表示起始点的坐标，n表示方块的大小
+    for i in range(a,a+n):
+        for j in range(b,b+n):
+            if i+j == a+b+n-1:
+                print('#',end='')
+            else:
+                print('.',end='')
+        print()
+
+=======
+Suggestion 5
+
+def main():
+    #读取数据
+    n,a,b = map(int,input().split())
+    p,q,r,s = map(int,input().split())
+    #初始化
+    #矩阵
+    matrix = [['.' for i in range(n)] for j in range(n)]
+    #计算最大最小值
+    min1 = min(1-a,1-b)
+    max1 = max(n-a,n-b)
+    min2 = min(1-a,b-n)
+    max2 = max(n-a,b-1)
+    #对矩阵进行填充
+    for i in range(min1,max1+1):
+        matrix[a+i-1][b+i-1] = '#'
+    for i in range(min2,max2+1):
+        matrix[a+i-1][b-i-1] = '#'
+    #输出结果
+    for i in range(p-1,q):
+        print(''.join(matrix[i][r-1:s]))
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q+1):
+        for j in range(r, s+1):
+            if (max(1-a, 1-b) <= i-j <= min(n-a, n-b)) or (max(1-a, b-n) <= i+j <= min(n-a, b-1)):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 7
+
+def solve(n, a, b, p, q, r, s):
+    #print("n=%d, a=%d, b=%d, p=%d, q=%d, r=%d, s=%d" % (n, a, b, p, q, r, s))
+    ret = []
+    for i in range(p, q+1):
+        ret.append([])
+        for j in range(r, s+1):
+            ret[i-p].append('.')
+    for k in range(max(1-a, 1-b), min(n-a, n-b)+1):
+        ret[a+k-p][b+k-r] = '#'
+    for k in range(max(1-a, b-n), min(n-a, b-1)+1):
+        ret[a+k-p][b-k-r] = '#'
+    for k in range(max(a-n, 1-b), min(a-1, n-b)+1):
+        ret[a-k-p][b+k-r] = '#'
+    for k in range(max(a-n, b-n), min(a-1, b-1)+1):
+        ret[a-k-p][b-k-r] = '#'
+    for i in range(q-p+1):
+        print(''.join(ret[i]))
+
+=======
+Suggestion 8
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    for i in range(P, Q+1):
+        for j in range(R, S+1):
+            if (i+j)%2 == (A+B)%2:
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()

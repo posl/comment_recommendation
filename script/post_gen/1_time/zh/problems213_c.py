@@ -1,73 +1,165 @@
-#问题陈述
-#我们有HW张卡片排列在一个有H行和W列的矩阵中。
-#对于每张i=1, ..., N的卡片，从上往下第A_i行和从左往下第B_i列的卡片上写有一个数字i。其他的HW-N牌上没有写任何东西。
-#只要我们能做到，我们就会在这些卡片上重复以下两种操作。
-#如果有一行没有数字牌，就把这一行的所有牌拿掉，然后把剩下的牌往上移，填补这个空缺。
-#如果有一列没有号码牌，就把这一列的所有牌移走，然后把剩下的牌向左移，以填补这个缺口。
-#在上述过程结束后，找出每张数字牌的位置。可以证明，这些位置是唯一确定的，不取决于操作的顺序。
-#
-#约束条件
-#1 ≦ H,W ≦ 10^9
-#1 ≦ N ≦ min(10^5,HW)
-#1 ≦ A_i ≦ H
-#1 ≦ B_i ≦ W
-#所有的对（A_i,B_i）都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印N行。
-#如果在程序结束后，编号为i的卡片位于从上往下的第C_i行和从左往下的第D_i列，那么第i行应该包含C_i和D_i，并在它们之间有一个空格。
-#
-#输入样本 1
-#4 5 2
-#3 2
-#2 5
-#
-#样本输出 1
-#2 1
-#1 2
-#让*代表一张没有写任何东西的牌。卡片的初始排列是：
-#*****
-#****2
-#*1***
-#*****
-#结束后，它们将被排列如下：
-#*2
-#1*
-#这里，1的卡片位于从上往下第2行，从左边第1列，2的卡片位于从上往下第1行，从左边第2列。
-#
-#输入样本 2
-#1000000000 1000000000 10
-#1 1
-#10 10
-#100 100
-#1000 1000
-#10000 10000
-#100000 100000
-#1000000 1000000
-#10000000 10000000
-#100000000 100000000
-#1000000000 1000000000
-#
-#样本输出2
-#1 1
-#2 2
-#3 3
-#4 4
-#5 5
-#6 6
-#7 7
-#8 8
-#9 9
-#10 10
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    h,w,n = map(int,input().split())
+    cards = []
+    for i in range(n):
+        cards.append(list(map(int,input().split())))
+    for i in range(n):
+        cards[i].append(i+1)
+    cards.sort(key=lambda x:x[1])
+    cards.sort(key=lambda x:x[0])
+    for i in range(n):
+        print(cards[i][2],cards[i][0],cards[i][1])
+
+=======
+Suggestion 3
+
+def main():
+    h,w,n = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_,b_ = map(int,input().split())
+        a.append(a_)
+        b.append(b_)
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a_index = {}
+    b_index = {}
+    for i in range(len(a)):
+        a_index[a[i]] = i+1
+    for i in range(len(b)):
+        b_index[b[i]] = i+1
+    for i in range(n):
+        print(a_index[a[i]],b_index[b[i]])
+
+=======
+Suggestion 4
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+    a_sorted = sorted(a)
+    b_sorted = sorted(b)
+    a_dict = {}
+    b_dict = {}
+    for i in range(n):
+        a_dict[a_sorted[i]] = i + 1
+        b_dict[b_sorted[i]] = i + 1
+    for i in range(n):
+        print(a_dict[a[i]], b_dict[b[i]])
+
+=======
+Suggestion 5
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a)):
+        a_dict[a[i]] = i + 1
+    for i in range(len(b)):
+        b_dict[b[i]] = i + 1
+
+    for i in range(n):
+        print(a_dict[a[i]], b_dict[b[i]])
+
+=======
+Suggestion 6
+
+def main():
+    H, W, N = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    A = sorted(A)
+    B = sorted(B)
+    C = []
+    D = []
+    for i in range(N):
+        if i == 0:
+            C.append(A[i])
+            D.append(B[i])
+        else:
+            if A[i] != A[i-1]:
+                C.append(A[i])
+            if B[i] != B[i-1]:
+                D.append(B[i])
+    for i in range(N):
+        print(C.index(A[i])+1, D.index(B[i])+1)
+
+=======
+Suggestion 7
+
+def main():
+    h, w, n = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a = {a[i]:i+1 for i in range(len(a))}
+    b = {b[i]:i+1 for i in range(len(b))}
+    for i in range(n):
+        print(a[a[i+1]], b[b[i+1]])
+
+=======
+Suggestion 8
+
+def solve(h, w, n, ab):
+    a = []
+    b = []
+    for i in range(n):
+        a.append(ab[i][0])
+        b.append(ab[i][1])
+    a.sort()
+    b.sort()
+    a = list(set(a))
+    b = list(set(b))
+    a.sort()
+    b.sort()
+    a_dict = {}
+    b_dict = {}
+    for i in range(len(a)):
+        a_dict[a[i]] = i+1
+    for i in range(len(b)):
+        b_dict[b[i]] = i+1
+    for i in range(n):
+        print(a_dict[ab[i][0]], b_dict[ab[i][1]])

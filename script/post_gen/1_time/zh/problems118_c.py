@@ -1,45 +1,115 @@
-#问题陈述
-#有N个怪兽，编号为1，2，...，N。
-#最初，怪物i的健康状况为A_i。
-#下面，一个健康状况至少为1的怪物被称为活着。
-#直到只有一个活着的怪物，下面的过程会重复进行：
-#一个随机的活着的怪物攻击另一个随机的活着的怪物。
-#结果，被攻击的怪物的健康状况会减少，减少的量等于攻击的怪物的当前健康状况。
-#找到最后一个活着的怪物的最小可能的最终健康状况。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印最后活着的怪物的最小可能的最终健康状况。
-#
-#输入样本1
-#4
-#2 10 8 40
-#
-#样本输出1
-#2
-#当只有第一个怪物继续攻击时，最后一个怪物的最终健康状况将是2，这是最小值。
-#
-#输入样本2
-#4
-#5 13 8 1000000000
-#
-#样本输出2
-#1
-#
-#样本输入3
-#3
-#1000000000 1000000000 1000000000
-#
-#样本输出3
-#1000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    while len(A) > 1:
+        A = [a % min(A) for a in A if a % min(A) > 0]
+    print(min(A))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = a[0]
+    for i in range(1, n):
+        ans = gcd(ans, a[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N-1):
+        if A[i+1] % A[i] != 0:
+            A[i+1] %= A[i]
+    print(A[N-1])
+solve()
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b > 0:
+        r = a % b
+        a, b = b, r
+    return a
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    import fractions
+    ans = A[0]
+    for i in range(1, N):
+        ans = fractions.gcd(ans, A[i])
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    import fractions
+    def gcd_list(numbers):
+        return functools.reduce(fractions.gcd, numbers)
+    print(gcd_list(A))
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)

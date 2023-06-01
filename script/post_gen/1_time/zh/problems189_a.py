@@ -1,30 +1,113 @@
-#问题陈述
-#你正在玩老虎机。
-#转动的结果由三个大写的英文字母C_1、C_2和C_3表示。当所有这些字母都是相同的时候，就被认为是赢了。
-#请确定这是否是一场胜利。
-#
-#限制条件
-#C_i是一个大写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#C_1 C_2 C_3
-#
-#輸出
-#如果结果是赢了，打印Won；否则，打印Lost。
-#
-#输入样本1
-#SSS
-#
-#样本输出1
-#Won
-#所有这些都是相同的字母，所以它是一个胜利。
-#
-#样本输入2
-#WVW
-#
-#样本输出2
-#Lost
-#这不是一场胜利。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    c1, c2, c3 = input().split()
+    if c1 == c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 2
+
+def main():
+    c1, c2, c3 = input().split()
+    if c1 == c2 == c3:
+        print('Won')
+    else:
+        print('Lost')
+
+=======
+Suggestion 3
+
+def main():
+    # 输入
+    C = input()
+    # 处理
+    if C[0] == C[1] == C[2]:
+        result = "Won"
+    else:
+        result = "Lost"
+    # 输出
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    print("请输入三个大写的英文字母，以空格隔开：")
+    str = input()
+    strList = str.split(" ")
+    if strList[0] == strList[1] == strList[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 5
+
+def problem189_a():
+    #读取输入
+    C = input()
+    #判断是否胜利
+    if C[0] == C[1] == C[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 6
+
+def problem189_a():
+    c1,c2,c3 = input().split()
+    if c1 == c2 and c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+problem189_a()
+
+=======
+Suggestion 7
+
+def main():
+    result = input()
+    if result[0] == result[1] == result[2]:
+        print('Won')
+    else:
+        print('Lost')
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] == s[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    s = input()
+    # 判断是否胜利
+    if s[0] == s[1] and s[1] == s[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 10
+
+def main():
+    c1,c2,c3 = input().split()
+    if c1 == c2 and c2 == c3:
+        print("Won")
+    else:
+        print("Lost")

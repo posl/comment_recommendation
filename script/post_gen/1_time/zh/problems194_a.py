@@ -1,51 +1,137 @@
-#问题陈述
-#在日本，有四大类冰淇淋类型的产品：
-#奶类固体含量不低于15%，奶类脂肪含量不低于8%的冰激凌类产品被称为冰淇淋；
-#乳固体含量至少为10%，乳脂肪含量至少为3%，但不属于冰淇淋的冰淇淋类型产品称为冰牛奶；
-#一种乳固体含量至少为3%，但不是冰淇淋或冰牛奶的冰淇淋类型产品，称为乳冰；
-#不属于冰淇淋、冰牛奶或乳冰的冰淇淋类型产品被称为调味冰。
-#这里，牛奶固体包括牛奶脂肪和牛奶固体-非脂肪。
-#AtCoder的著名产品Snuke Ice含有A%的牛奶固体-非脂肪和B%的牛奶脂肪。
-#Snuke Ice属于上述的哪一类？
-#根据输出部分，将你的答案打印成一个整数。
-#
-#限制条件
-#0 ≦ A ≦ 100
-#0 ≦ B ≦ 100
-#A + B ≦ 100
-#A和B是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#输出
-#打印一个整数，如下所示：
-#如果Snuke Ice是冰激凌，打印1；
-#如果Snuke Ice是冰牛奶，打印2；
-#如果Snuke Ice是乳冰，打印3；
-#如果Snuke Ice是调味冰，打印4。
-#
-#输入样本1
-#10 8
-#
-#样本输出 1
-#1
-#这个产品含有10%的非脂乳固体和8%的乳脂肪，总共有18%的乳固体。
-#因为它含有不少于15%的乳固体和不少于8%的乳脂肪，所以它是一种冰淇淋；正确的输出是1。
-#
-#输入样本 2
-#1 2
-#
-#样本输出 2
-#3
-#因为它正好含有3%的牛奶固体，所以它不是冰淇淋或冰牛奶，而是乳冰；正确的输出是3。
-#
-#样本输入3
-#0 0
-#
-#样本输出3
-#4
-#它是一种调味冰。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def icecream_type(A,B):
+    if A+B>=15 and B>=8:
+        return 1
+    elif A+B>=10 and B>=3:
+        return 2
+    elif A+B>=3:
+        return 3
+    else:
+        return 4
+
+=======
+Suggestion 2
+
+def icecream(a,b):
+    if a+b>=15 and b>=8:
+        print(1)
+    elif a+b>=10 and b>=3:
+        print(2)
+    elif a+b<10 and b>=3:
+        print(3)
+    else:
+        print(4)
+
+=======
+Suggestion 3
+
+def icecream(a,b):
+    if a+b >= 15 and b >= 8:
+        return 1
+    elif a+b >= 10 and b >= 3:
+        return 2
+    elif a+b >= 3:
+        return 3
+    else:
+        return 4
+
+=======
+Suggestion 4
+
+def icecream_type(a, b):
+    if a + b >= 15 and b >= 8:
+        return 1
+    elif a + b >= 10 and b >= 3:
+        return 2
+    elif a + b >= 3:
+        return 3
+    else:
+        return 4
+
+=======
+Suggestion 5
+
+def solve(a, b):
+    if a + b >= 15 and b >= 8:
+        return 1
+    elif a + b >= 10 and b >= 3:
+        return 2
+    elif a + b >= 3:
+        return 3
+    else:
+        return 4
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int,input().split())
+    if A+B>=15 and B>=8:
+        print(1)
+    elif A+B>=10 and B>=3:
+        print(2)
+    elif A+B>=3:
+        print(3)
+    else:
+        print(4)
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 15 and b >= 8:
+        print(1)
+    elif a + b >= 10 and b >= 3:
+        print(2)
+    elif a + b >= 3:
+        print(3)
+    else:
+        print(4)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    if A == 0:
+        print(4)
+    elif B == 0:
+        print(3)
+    elif A + B < 15:
+        print(4)
+    elif A + B >= 15 and B >= 8:
+        print(1)
+    elif A + B >= 10 and B >= 3:
+        print(2)
+    else:
+        print(4)
+
+=======
+Suggestion 9
+
+def icecream(a, b):
+    if a+b >= 15 and b >= 8:
+        return 1
+    elif a+b >= 10 and b >= 3:
+        return 2
+    elif a+b < 10 and b >= 3:
+        return 3
+    else:
+        return 4
+
+=======
+Suggestion 10
+
+def icecream(a,b):
+    if a+b >= 15 and b >= 8:
+        return 1
+    if a+b >= 10 and b >= 3:
+        return 2
+    if a+b < 10 and b >= 3:
+        return 3
+    return 4

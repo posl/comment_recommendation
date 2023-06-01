@@ -1,53 +1,169 @@
-#问题说明
-#我们将用一条数线和N个棋子玩一个单人游戏。
-#首先，我们把每个棋子放在某个整数坐标上。
-#这里，多个棋子可以放在同一个坐标上。
-#我们的目标是用这些棋子访问所有的M个坐标X_1, X_2, ..., X_M，通过重复以下动作：
-#移动：选择一个棋子，让x为其坐标。将该棋子放在坐标x+1或x-1处。
-#请注意，我们最初放置棋子的坐标已经被视为已被访问。
-#找到实现目标所需的最小棋步数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#-10^5 ≦ X_i ≦ 10^5
-#X_1, X_2, ..., X_M都是不同的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#X_1 X_2 ...X_M
-#
-#输出
-#找到实现目标所需的最小棋数。
-#
-#输入样本 1
-#2 5
-#10 12 1 2 14
-#
-#样本输出1
-#5
-#该目标可以通过以下五步棋实现，这也是所需的最少步数。
-#最初，将两个棋子放在坐标1和10处。
-#将坐标1的棋子移到2。
-#将坐标10的棋子移到11。
-#将坐标11的棋子移到12。
-#在坐标12处移动棋子到13处。
-#在坐标13处移动棋子到14处。
-#
-#输入样本 2
-#3 7
-#-10 -3 0 9 -100 2 17
-#
-#样本输出2
-#19
-#
-#样本输入3
-#100 1
-#-100000
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        return
+    dis = []
+    for i in range(m - 1):
+        dis.append(x[i + 1] - x[i])
+    dis.sort()
+    print(sum(dis[:m - n]))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    X.sort()
+    d = [0] * (M-1)
+    for i in range(M-1):
+        d[i] = X[i+1] - X[i]
+    d.sort()
+    print(sum(d[:M-N]))
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    if n >= m:
+        print(0)
+        return
+
+    dist = []
+    for i in range(1, m):
+        dist.append(x[i] - x[i-1])
+    dist.sort()
+    print(sum(dist[:m-n]))
+
+=======
+Suggestion 4
+
+def main():
+    n,m=map(int,input().split())
+    x=list(map(int,input().split()))
+    x.sort()
+    if(n>=m):
+        print(0)
+        return
+    l=[]
+    for i in range(m-1):
+        l.append(x[i+1]-x[i])
+    l.sort()
+    print(sum(l[:m-n]))
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    # 排序
+    x.sort()
+    # 计算棋子间距
+    distance = [0] * (m - 1)
+    for i in range(m - 1):
+        distance[i] = x[i + 1] - x[i]
+    # 排序
+    distance.sort()
+    # 计算差值
+    ans = 0
+    for i in range(m - n):
+        ans += distance[i]
+    # 输出
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    # print(x)
+    if n >= m:
+        print(0)
+        return
+    if n == 1:
+        print(x[m-1]-x[0])
+        return
+    # print(x)
+    # print(x[n-1]-x[0])
+    # print(x[m-1]-x[n])
+    # print(min(x[m-1]-x[0],x[n-1]-x[0],x[m-1]-x[n]))
+    print(min(x[m-1]-x[0],x[n-1]-x[0],x[m-1]-x[n]))
+
+main()
+
+=======
+Suggestion 7
+
+def solve(n,m,x):
+    x.sort()
+    if n == 1:
+        return 0
+    if n == 2:
+        return x[1]-x[0]
+    if n == 3:
+        return x[2]-x[0]
+    return x[n-1]-x[0]
+
+=======
+Suggestion 8
+
+def main():
+    # input
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    # solve
+    x.sort()
+    if n == 1:
+        print(min(abs(x[0]-x[m-1]),abs(x[0]-x[1])))
+    else:
+        print(min(abs(x[0]-x[m-1]),abs(x[1]-x[m-1]),abs(x[0]-x[m-2]),abs(x[1]-x[m-2])))
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+
+    if n >= m:
+        print(0)
+        return
+
+    if n == 1:
+        print(min(abs(x[i] - x[i + n - 1]) for i in range(m - n + 1)))
+        return
+
+    if n == 2:
+        print(min(abs(x[i] - x[i + n - 1]) + abs(x[i + n - 1] - x[i + n]) for i in range(m - n + 2)))
+        return
+
+    print(min(abs(x[i] - x[i + n - 1]) + abs(x[i + n - 1] - x[i + n]) + abs(x[i + n] - x[i + n + 1]) for i in range(m - n + 3)))
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.sort()
+    distance = []
+    for i in range(1, m):
+        distance.append(x[i] - x[i - 1])
+    distance.sort()
+    print(sum(distance[:m - n]))

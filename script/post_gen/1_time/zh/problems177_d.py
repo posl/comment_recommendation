@@ -1,62 +1,101 @@
-#问题陈述
-#有N个人，从Person 1到Person N。
-#给你M个事实："人A_i和人B_i是朋友"。同一事实可以被多次给出。
-#如果X和Y是朋友，而Y和Z是朋友，那么X和Z也是朋友。没有什么友谊是不能从M个给定的事实中得出的。
-#邪恶的高桥想把N个人分成若干组，使每个人在他/她的组中没有朋友。
-#他至少需要做多少个小组？
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1 ≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#样本输出1
-#3
-#将它们分为三组，如{1,3}，{2,4}和{5}，就达到了目的。
-#
-#样本输入2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#样本输出2
-#4
-#
-#样本输入3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#输出样本3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        return find(parent[x])
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    friend = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friend[a-1].append(b-1)
+        friend[b-1].append(a-1)
+
+    group = [0] * N
+    group_id = 1
+    for i in range(N):
+        if group[i] == 0:
+            dfs(friend, group, i, group_id)
+            group_id += 1
+    print(max(group))
+
+=======
+Suggestion 3
+
+def find(x):
+  if x == parents[x]:
+    return x
+  else:
+    parents[x] = find(parents[x])
+    return parents[x]
+
+=======
+Suggestion 4
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 5
+
+def find(x):
+    if x == p[x]:
+        return x
+    else:
+        p[x] = find(p[x])
+        return p[x]
+
+=======
+Suggestion 6
+
+def init(n):
+    global parent
+    parent = [i for i in range(n + 1)]
+
+=======
+Suggestion 7
+
+def findRoots(n, m, edges):
+    roots = [i for i in range(n)]
+    for edge in edges:
+        roots[edge[1]] = roots[edge[0]]
+    return roots
+
+=======
+Suggestion 8
+
+def find(x):
+    if x != p[x]:
+        p[x] = find(p[x])
+    return p[x]
+
+=======
+Suggestion 9
+
+def find(x):
+    if x != parent[x]:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+=======
+Suggestion 10
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]

@@ -1,33 +1,143 @@
-#问题陈述
-#高桥决定举办一些编程比赛。
-#举办一次比赛需要一个100分的问题，一个200分的问题，一个300分的问题和一个400分的问题。
-#当他有A_1、A_2、A_3和A_4的草稿，分别是100分、200分、300分和400分的问题，他最多可以举办多少次比赛？
-#同一草稿只能使用一次。
-#
-#限制条件
-#1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A_1 A_2 A_3 A_4
-#
-#输出
-#打印一个整数，代表可以举行的最大竞赛数量。  
-#
-#输入样本 1
-#5 3 7 11
-#
-#样本输出1
-#3
-#通过为每个档期使用三个草稿，他可以举行三次比赛。
-#他只有三个草稿来解决200分的问题，所以他不能举行四次。
-#
-#样本输入2
-#100 100 1 100
-#
-#样本输出2
-#1
-#即使只有一个空位，也不能举行比赛。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    a = [int(i) for i in input().split()]
+    a.sort()
+    print(a[0])
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    a = list(map(int, input().split()))
+    # 排序
+    a.sort()
+    # 计算结果
+    print(a[0])
+    # 输出结果
+
+=======
+Suggestion 3
+
+def main():
+    A = [int(i) for i in input().split()]
+    A.sort()
+    if A[0] + A[1] + A[2] + A[3] < 500:
+        print(4)
+    elif A[0] + A[1] + A[2] < 500:
+        print(3)
+    elif A[0] + A[1] < 500:
+        print(2)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a = [int(x) for x in input().split()]
+    # 计算输出
+    print(min(a))
+
+=======
+Suggestion 5
+
+def main():
+    #读取输入
+    a = input()
+    #print(a)
+    #将输入转换成整数数组
+    a = list(map(int, a.split()))
+    #print(a)
+    #计算最小的数值
+    min = a[0]
+    for i in range(1, len(a)):
+        if min > a[i]:
+            min = a[i]
+    #print(min)
+    #计算最大的数值
+    max = a[0]
+    for i in range(1, len(a)):
+        if max < a[i]:
+            max = a[i]
+    #print(max)
+    #计算最大的数值出现的次数
+    maxCount = 0
+    for i in range(0, len(a)):
+        if max == a[i]:
+            maxCount += 1
+    #print(maxCount)
+    #计算最大的数值出现的次数
+    minCount = 0
+    for i in range(0, len(a)):
+        if min == a[i]:
+            minCount += 1
+    #print(minCount)
+    #计算最大的数值出现的次数
+    print(maxCount * minCount)
+
+=======
+Suggestion 6
+
+def problem185_a():
+    A = input().split()
+    A = list(map(int, A))
+    A.sort()
+    print(A[0])
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    a_1, a_2, a_3, a_4 = map(int, input().split())
+
+    # 计算结果
+    result = 0
+    if a_1 + a_2 + a_3 + a_4 >= 100:
+        result += 1
+    if a_1 + a_2 + a_3 + a_4 >= 200:
+        result += 1
+    if a_1 + a_2 + a_3 + a_4 >= 300:
+        result += 1
+    if a_1 + a_2 + a_3 + a_4 >= 400:
+        result += 1
+
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 8
+
+def get_max_contest_num(a1,a2,a3,a4):
+    if a1==a2==a3==a4:
+        return 1
+    elif (a1==a2 and a3==a4) or (a1==a3 and a2==a4) or (a1==a4 and a2==a3):
+        return 2
+    elif a1==a2 and a3==a4 and a1==a3 and a2==a4:
+        return 3
+    else:
+        return 0
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    A = [int(x) for x in input().split()]
+
+    # 处理
+    A.sort()
+    print(A[0])
+
+=======
+Suggestion 10
+
+def get_ints():
+	return map(int, raw_input().split())

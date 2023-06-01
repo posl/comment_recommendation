@@ -1,77 +1,152 @@
-#问题陈述
-#有一个网格，从上到下有H行，从左到右有W列。让(i, j)表示从上往下第i行和从左往下第j列的方格。
-#这些方块由字符C_{i,j}描述。如果C_{i,j}是.，（i，j）是空的；如果是#，（i，j）包含一个方块。
-#对于满足1≦j≦W的整数j，让整数X_j定义如下。
-#X_j是第j列中的盒子的数量。换句话说，X_j是整数i的数量，使得C_{i,j}是#。
-#找到所有的X_1，X_2，...，X_W。
-#
-#限制条件
-#1 ≦ H ≦ 1000
-#1 ≦ W ≦ 1000
-#H和W是整数。
-#C_{i, j}是.或#。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H W
-#C_{1,1}C_{1,2}...。C_{1,W}
-#C_{2,1}C_{2,2}...C_{2,W}
-#.
-#.
-#.
-#C_{H,1}C_{H,2}...C_{H,W}
-#
-#输出
-#按以下格式打印X_1, X_2, ..., X_W：
-#X_1 X_2 ...X_W
-#
-#样本输入 1
-#3 4
-##..#
-#.#.#
-#.#.#
-#
-#样本输出1
-#1 2 0 3
-#在第1列中，有一个正方形（1，1），包含一个盒子。因此，X_1=1。
-#在第2列中，两个方格（2，2）和（3，2）包含一个盒子。因此，X_2=2。
-#在第3列中，没有方格包含一个盒子。因此，X_3=0。
-#在第4列中，有三个方格（1，4）、（2，4）和（3，4）包含一个盒子。因此，X_4=3。
-#因此，答案是（X_1, X_2, X_3, X_4）=（1, 2, 0, 3）。
-#
-#输入样本 2
-#3 7
-#.......
-#.......
-#.......
-#
-#样本输出2
-#0 0 0 0 0 0 0
-#可能没有包含盒子的方块。
-#
-#输入样本3
-#8 3
-#.#.
-####
-#.#.
-#.#.
-#.##
-#..#
-###.
-#.##
-#
-#样本输出 3
-#2 7 4
-#
-#样本输入4
-#5 47
-#.#..#..#####..#...#..#####..#...#...###...#####
-#.#.#...#.......#.#...#......##..#..#...#..#....
-#.##....#####....#....#####..#.#.#..#......#####
-#.#.#...#........#....#......#..##..#...#..#....
-#.#..#..#####....#....#####..#...#...###...#####
-#
-#输出样本 4
-#0 5 1 2 2 0 0 5 3 3 3 3 0 0 1 1 3 1 1 0 0 5 3 3 3 3 0 0 5 1 1 1 5 0 0 3 2 2 2 2 0 0 5 3 3 3 3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,w = map(int,input().split())
+    a = []
+    for i in range(h):
+        a.append(list(input()))
+    for i in range(w):
+        c = 0
+        for j in range(h):
+            if a[j][i] == '#':
+                c += 1
+        print(c)
+
+=======
+Suggestion 2
+
+def problems274_b():
+    H,W = map(int,input().split())
+    list = []
+    for i in range(H):
+        list.append(input())
+    for i in range(W):
+        count = 0
+        for j in range(H):
+            if list[j][i] == '#':
+                count += 1
+        print(count,end=' ')
+    return
+
+=======
+Suggestion 3
+
+def problems274_b():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    h,w = map(int,input().split())
+    c = [input() for _ in range(h)]
+    for i in range(w):
+        x = 0
+        for j in range(h):
+            if c[j][i] == "#":
+                x += 1
+        print(x)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    #print(h, w)
+    data = [0 for i in range(w)]
+    #print(data)
+    for i in range(h):
+        row = input()
+        #print(row)
+        for j in range(w):
+            #print(row[j])
+            if row[j] == '#':
+                data[j] += 1
+    #print(data)
+    for i in range(w):
+        print(data[i], end=' ')
+    print()
+
+=======
+Suggestion 6
+
+def get_input():
+    h, w = map(int, input().split())
+    input_list = []
+    for i in range(h):
+        input_list.append(input())
+    return h, w, input_list
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(input())
+    for i in range(w):
+        c = 0
+        for j in range(h):
+            if a[j][i] == "#":
+                c += 1
+        print(c)
+
+=======
+Suggestion 8
+
+def count_box(box):
+    box_count = 0
+    for i in range(len(box)):
+        if box[i] == '#':
+            box_count += 1
+    return box_count
+
+=======
+Suggestion 9
+
+def main():
+    h, w = map(int, input().split())
+    c = [input() for _ in range(h)]
+    ans = [[0 for _ in range(w)] for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                ans[i][j] = '#'
+    for i in ans:
+        print(''.join(i))

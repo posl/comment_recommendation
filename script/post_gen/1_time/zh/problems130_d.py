@@ -1,46 +1,201 @@
-#问题陈述
-#给你一个长度为N的正整数序列，A=a_1,a_2,...,a_{N}，和一个整数K。
-#有多少个A的连续子序列满足以下条件？
-#(条件）连续的子序列中的元素之和至少是K。
-#如果两个连续的子序列来自A中的不同位置，我们认为它们是不同的，即使它们的内容是相同的。
-#请注意，答案可能不适合32位整数类型。
-#
-#约束条件
-#1 ≦ a_i ≦ 10^5
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^{10}
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#a_1 a_2 ... a_N
-#
-#输出
-#打印满足条件的A的连续子序列的数量。
-#
-#输入样本 1
-#4 10
-#6 1 2 7
-#
-#样本输出 1
-#2
-#以下两个连续的子序列满足条件：
-#A[1...4]=a_1,a_2,a_3,a_4, 总和为16
-#A[2...4]=a_2,a_3,a_4, 总和为10
-#
-#样本输入 2
-#3 5
-#3 3 3
-#
-#样本输出 2
-#3
-#请注意，如果两个连续的子序列来自不同的位置，我们认为它们是不同的，即使它们的内容相同。
-#
-#输入样本3
-#10 53462
-#103 35322 232 342 21099 90000 18843 9010 35221 19352
-#
-#样本输出3
-#36
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(N, K, A):
+    ans = 0
+    sum = 0
+    r = 0
+    for l in range(N):
+        while sum < K and r < N:
+            sum += A[r]
+            r += 1
+        if sum < K:
+            break
+        ans += N - r + 1
+        sum -= A[l]
+    return ans
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+print(solve(N, K, A))
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    # A = [int(input()) for i in range(N)]
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(N):
+        while right < N and total + A[right] < K:
+            total += A[right]
+            right += 1
+        ans += N - right
+        if right == left:
+            right += 1
+        else:
+            total -= A[left]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 3
+
+def solve():
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    s=[0]*(n+1)
+    for i in range(n):
+        s[i+1]=s[i]+a[i]
+    ans=0
+    r=0
+    for l in range(n):
+        while r<n and s[r+1]-s[l]<k:
+            r+=1
+        ans+=n-r
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0] * (n+1)
+    for i in range(n):
+        s[i+1] = s[i] + a[i]
+    ans = 0
+    right = 0
+    for left in range(n):
+        while right < n+1 and s[right] - s[left] < k:
+            right += 1
+        ans += n - right + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    r = 0
+    sum = 0
+    for l in range(N):
+        while r < N and sum < K:
+            sum += A[r]
+            r += 1
+        if sum < K:
+            break
+        ans += N - r + 1
+        if r == l:
+            r += 1
+        else:
+            sum -= A[l]
+    print(ans)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    count = 0
+    for i in range(N):
+        sum = 0
+        for j in range(i,N):
+            sum += A[j]
+            if sum >= K:
+                count += 1
+                break
+    print(count)
+
+=======
+Suggestion 7
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 累積和
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+
+    # しゃくとり法
+    res = 0
+    r = 0
+    for l in range(N):
+        while r < N + 1 and S[r] - S[l] < K:
+            r += 1
+        res += N - r + 1
+    print(res)
+
+solve()
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    total = 0
+    right = 0
+    for left in range(N):
+        while right < N and total + A[right] < K:
+            total += A[right]
+            right += 1
+        ans += right - left
+        if right == left:
+            right += 1
+        else:
+            total -= A[left]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def problems130_d(N, K, A):
+    count = 0
+    start = 0
+    end = 0
+    sum = A[0]
+    while start < N and end < N:
+        if sum < K:
+            end += 1
+            if end < N:
+                sum += A[end]
+        else:
+            count += N - end
+            sum -= A[start]
+            start += 1
+    return count
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    right = 0
+    total = 0
+    for left in range(n):
+        while (right < n) and (total < k):
+            total += a[right]
+            right += 1
+        if total < k:
+            break
+        ans += n - right + 1
+        total -= a[left]
+    print(ans)

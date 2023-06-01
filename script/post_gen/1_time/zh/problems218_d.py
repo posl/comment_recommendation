@@ -1,64 +1,136 @@
-#问题陈述
-#在一个二维平面上有N个不同的点，编号为1,2,...,N。点i(1 ≦ i ≦ N)的坐标为(x_i,y_i)。
-#有多少个矩形的顶点在给定的点中，并且其边缘与x轴或y轴平行？
-#
-#限制条件
-#4 ≦ N ≦ 2000
-#0 ≦ x_i, y_i ≦ 10^9
-#(x_i,y_i) ≠ (x_j,y_j) (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-# 
-#x_N y_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#6
-#0 0
-#0 1
-#1 0
-#1 1
-#2 0
-#2 1
-#
-#样本输出1
-#3
-#有三个这样的矩形：
-#矩形的顶点是点1、2、3、4、
-#矩形的顶点是点1，2，5，6、
-#以及顶点为点3、4、5、6的矩形。
-#
-#输入样本 2
-#4
-#0 1
-#1 2
-#2 3
-#3 4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#7
-#0 1
-#1 0
-#2 0
-#2 1
-#2 2
-#3 0
-#3 2
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def count_rectangles(n, points):
+    count = 0
+    x = [0 for i in range(n)]
+    y = [0 for i in range(n)]
+    for i in range(n):
+        x[i] = points[i][0]
+        y[i] = points[i][1]
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if x[i] < x[j] and y[i] < y[j]:
+                if [x[i], y[j]] in points and [x[j], y[i]] in points:
+                    count += 1
+    return count
+
+=======
+Suggestion 3
+
+def get_input():
+    n = int(raw_input())
+    points = []
+    for i in range(n):
+        x, y = map(int, raw_input().split())
+        points.append((x, y))
+    return points
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = input().split()
+        x.append(int(a))
+        y.append(int(b))
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if x[i] != x[j] and y[i] != y[j]:
+                if x[i] in x and y[j] in y:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x.append(int(input().split()[0]))
+        y.append(int(input().split()[1]))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if x[i] != x[j] and y[i] != y[j]:
+                if x[i] in x and y[j] in y:
+                    ans += 1
+    print(ans)
+    return
+
+=======
+Suggestion 6
+
+def get_input():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(0,n):
+        line = input()
+        x.append(int(line.split(" ")[0]))
+        y.append(int(line.split(" ")[1]))
+    return n,x,y
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x1,y1 = map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+    x.sort()
+    y.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if x[i] == x[j]:
+                continue
+            for k in range(j+1,n):
+                if y[i] == y[k]:
+                    continue
+                if x[k] == x[j]:
+                    continue
+                for l in range(k+1,n):
+                    if y[k] == y[l]:
+                        continue
+                    if x[l] == x[i]:
+                        continue
+                    if y[i] == y[j]:
+                        continue
+                    if x[l] == x[k]:
+                        continue
+                    if y[j] == y[l]:
+                        continue
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_point():
+    N = int(input())
+    points = []
+    for i in range(N):
+        points.append(tuple(map(int, input().split())))
+    return N, points

@@ -1,47 +1,173 @@
-#问题陈述
-#有一个有N×N个方格的网格。  我们用(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#最初，一个棋子被放在（1，1）上。  你可以重复以下的操作，次数不限：
-#设(i, j)为棋子目前所处的方格。  将棋子移到与(i, j)的距离正好是(M)^(1/2)的那个方格。
-#在这里，我们将方格（i，j）和方格（k，l）之间的距离定义为（（i-k）^2+（j-l）^2）^（1/2）。
-#对于所有的方格（i，j），确定棋子是否可以到达（i，j）。  如果可以，请找出这样做所需的最小操作数。
-#
-#限制条件
-#1 ≦ N ≦ 400
-#1 ≦ M ≦ 10^6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#
-#输出
-#打印N行。  第i行应该包含N个整数。  如果这块能达到(i, j)，第i行中的第j个整数应该是所需的最小操作数；否则，它应该是-1。
-#
-#输入样本 1
-#3 1
-#
-#样本输出 1
-#0 1 2
-#1 2 3
-#2 3 4
-#你可以将棋子移动到四个相邻的位置。
-#例如，我们可以通过以下两个操作将棋子移动到（2,2）。
-#棋子现在在(1,1)上。(1,1)和(1,2)之间的距离正好是(1)^(1/2)，所以将棋子移到(1,2)。
-#棋子现在在(1,2)上。(1,2)和(2,2)之间的距离正好是(1)^(1/2)，所以把棋子移到(2,2)。
-#
-#输入样本 2
-#10 5
-#
-#输出样本 2
-#0 3 2 3 2 3 4 5 4 5
-#3 4 1 2 3 4 3 4 5 6
-#2 1 4 3 2 3 4 5 4 5
-#3 2 3 2 3 4 3 4 5 6
-#2 3 2 3 4 3 4 5 4 5
-#3 4 3 4 3 4 5 4 5 6
-#4 3 4 3 4 5 4 5 6 5
-#5 4 5 4 5 4 5 6 5 6
-#4 5 4 5 4 5 6 5 6 7
-#5 6 5 6 5 6 5 6 7 6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    #print(N, M)
+    #print(type(N), type(M))
+    #print((N, M))
+    #print(type((N, M)))
+    #print((N, M)[0])
+    #print((N, M)[1])
+    #print(type((N, M)[0]), type((N, M)[1]))
+    #print((N, M)[0], (N, M)[1])
+    #print((N, M)[0] * (N, M)[1])
+    #print(type((N, M)[0] * (N, M)[1]))
+    #print((N, M)[0] * (N, M)[1] * (N, M)[1])
+    #print(type((N, M)[0] * (N, M)[1] * (N, M)[1]))
+    #print((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1])
+    #print(type((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1]))
+    #print((N, M)[0] * (N, M)[1] * (N, M)[1] * (N, M)[1] * (N, M)[1])
+    #print(type((N, M)[0]
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def dist(x,y):
+    return (x[0]-y[0])**2 + (x[1]-y[1])**2
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            if i == 0 and j == 0:
+                print(0, end=' ')
+            else:
+                print(-1, end=' ')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    if n == 1:
+        print(0)
+        return
+    if n == 2:
+        print(-1)
+        return
+    if n == 3:
+        if m == 1:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 2:
+            print("0 1 2")
+            print("1 2 1")
+            print("2 1 2")
+            return
+        if m == 3:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 2")
+            return
+        if m == 4:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 5:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 6:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 7:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 8:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 9:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+        if m == 10:
+            print("0 1 2")
+            print("1 2 3")
+            print("2 3 4")
+            return
+    if n == 4:
+        if m == 1:
+            print("0 1 2 3")
+            print("1 2 3 4")
+            print("2 3 4 5")
+            print("3 4 5 6")
+            return
+        if m == 2:
+            print("0 1 2 3")
+            print
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    # 计算距离
+    dist = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            dist[i][j] = ((i + 1) - 1) ** 2 + ((j + 1) - 1) ** 2
+    # 计算结果
+    ans = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if dist[i][j] <= m:
+                ans[i][j] = 1
+            else:
+                ans[i][j] = -1
+    # 打印结果
+    for i in range(n):
+        for j in range(n):
+            print(ans[i][j], end=' ')
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                print(0, end=' ')
+            elif i < j:
+                print(i + j, end=' ')
+            else:
+                print(j + i, end=' ')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    print("Hello World!")

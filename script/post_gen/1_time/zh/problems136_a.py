@@ -1,39 +1,109 @@
-#问题陈述
-#我们有两个装水的瓶子。
-#1号瓶最多可以装A毫升的水，现在它装有B毫升的水。
-#2号瓶里有C毫升的水。
-#我们将尽可能地把水从瓶子2转移到瓶子1。
-#2号瓶中还会有多少水？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ B ≦ A ≦ 20
-#1 ≦ C ≦ 20
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#打印代表2号瓶中剩余水量的整数，单位是毫升。
-#
-#输入样本1
-#6 4 3
-#
-#样本输出 1
-#1
-#我们将把2毫升的水从2号瓶转移到1号瓶，1毫升的水将留在2号瓶中。
-#
-#输入样本2
-#8 3 9
-#
-#样品输出2
-#4
-#
-#输入样本3
-#12 3 7
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 从瓶子2转移到瓶子1
+    if b >= a:
+        print(c)
+    else:
+        print(c - (a - b))
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a >= b + c:
+        print(0)
+    else:
+        print(c - (a - b))
+
+=======
+Suggestion 3
+
+def main():
+    # 从标准输入读取
+    a,b,c = map(int, input().split())
+    # 从瓶子2转移到瓶子1
+    b = b + c
+    # 2号瓶中还有多少水
+    c = 0
+    # 1号瓶中还可以装多少水
+    a = a - b
+    # 1号瓶中装满
+    if a < 0:
+        c = abs(a)
+        a = 0
+    print(c)
+
+=======
+Suggestion 4
+
+def main():
+    A,B,C = map(int,input().split())
+    print(C-(A-B) if C-(A-B) > 0 else 0)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    if a > b + c:
+        print(0)
+    else:
+        print(c - (a - b))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    A, B, C = map(int, input().split())
+
+    # 从2号瓶中尽可能地将水转移到1号瓶
+    # 2号瓶中剩余水量
+    C -= A - B
+
+    # 输出结果
+    print(C if C >= 0 else 0)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int,input().split())
+    if b+c<a:
+        print(c)
+    else:
+        print(a-b)
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    print(c - (a - b) if a - b < c else 0)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    if a < b+c:
+        print(b+c-a)
+    else:
+        print(0)
+
+=======
+Suggestion 10
+
+def main():
+    A,B,C = map(int,input().split())
+    print(max(0,C-(A-B)))

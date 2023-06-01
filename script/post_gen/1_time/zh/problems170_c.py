@@ -1,44 +1,160 @@
-#问题陈述
-#给出一个整数X和一个长度为N的整数序列：p_1, ..., p_N。
-#在不包含在序列p_1, ..., p_N中的整数（不一定是正数）中，找出最接近X的整数，也就是说，找出与X的绝对差值最小的整数。如果有多个这样的整数，请报告最小的那个整数。
-#
-#限制条件
-#1 ≦ X ≦ 100
-#0 ≦ N ≦ 100
-#1 ≦ p_i ≦ 100
-#p_1, ..., p_N都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#X N
-#p_1 ... p_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#6 5
-#4 7 10 6 5
-#
-#样本输出1
-#8
-#在不包含在序列4，7，10，6，5的整数中，最接近6的是8。
-#
-#输入样本2
-#10 5
-#4 7 10 6 5
-#
-#样本输出2
-#9
-#在不包含在序列4，7，10，6，5中的整数中，最接近10的是9和11。我们应该打印较小的那个，9。
-#
-#输入样本 3
-#100 0
-#
-#
-#样本输出3
-#100
-#当N=0时，输入的第二行将是空的。另外，从这里可以看出，X本身也可以是答案。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find_nearest(x, p):
+    #print("x: %d" % x)
+    #print("p: %s" % p)
+    if len(p) == 0:
+        return x
+    else:
+        min = 100
+        for i in p:
+            if abs(x - i) < min:
+                min = abs(x - i)
+        return min + x
+
+=======
+Suggestion 2
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    if n == 0:
+        print(x)
+    else:
+        p.append(x)
+        p.sort()
+        index = p.index(x)
+        if index == 0:
+            print(p[1])
+        elif index == n:
+            print(p[n-1])
+        else:
+            if (p[index] - p[index-1]) > (p[index+1] - p[index]):
+                print(p[index+1])
+            else:
+                print(p[index-1])
+
+=======
+Suggestion 3
+
+def problem170_c():
+    x = int(input().strip())
+    n = int(input().strip())
+    p = list(map(int,input().strip().split()))
+    p.append(x)
+    p.sort()
+    for i in range(len(p)-1):
+        if p[i] == x:
+            if abs(p[i-1]-x) <= abs(p[i+1]-x):
+                print(p[i-1])
+            else:
+                print(p[i+1])
+            break
+
+=======
+Suggestion 4
+
+def get_closest_number(x, p_list):
+    closest_number = x
+    diff = x
+    for p in p_list:
+        if abs(x - p) < diff:
+            closest_number = p
+            diff = abs(x - p)
+    return closest_number
+
+=======
+Suggestion 5
+
+def find_closest_num(array, num):
+    if len(array) == 0:
+        return num
+    else:
+        closest_num = array[0]
+        for n in array:
+            if abs(num-n) < abs(num-closest_num):
+                closest_num = n
+        return closest_num
+
+input_str = input()
+input_list = input_str.split()
+x = int(input_list[0])
+n = int(input_list[1])
+
+=======
+Suggestion 6
+
+def find_min_diff(x, p):
+    min_diff = 100
+    for i in range(0, 101):
+        if i not in p:
+            if abs(x - i) < min_diff:
+                min_diff = abs(x - i)
+                result = i
+    return result
+
+=======
+Suggestion 7
+
+def find_nearest_int(x, n, p):
+    min_diff = 100
+    nearest_int = 0
+    for i in range(1, 101):
+        if i not in p:
+            diff = abs(x - i)
+            if diff < min_diff:
+                min_diff = diff
+                nearest_int = i
+    return nearest_int
+
+=======
+Suggestion 8
+
+def findClosestInt(x, p):
+    p.sort()
+    if x in p:
+        return x
+    if len(p) == 0:
+        return x
+    if x < p[0]:
+        return p[0]
+    if x > p[-1]:
+        return p[-1]
+    for i in range(len(p)):
+        if x < p[i]:
+            if p[i] - x < x - p[i-1]:
+                return p[i]
+            else:
+                return p[i-1]
+
+=======
+Suggestion 9
+
+def findClosestNumber(x, n, p):
+    if n == 0:
+        return x
+    if x in p:
+        return findClosestNumber(x + 1, n, p)
+    else:
+        return x
+
+=======
+Suggestion 10
+
+def main():
+    x, n = map(int, input().split())
+    p = list(map(int, input().split()))
+    if n == 0:
+        print(x)
+        return
+    p.sort()
+    ans = x
+    for i in range(102):
+        if i in p:
+            continue
+        if abs(x - i) < abs(x - ans):
+            ans = i
+    print(ans)

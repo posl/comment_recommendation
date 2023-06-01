@@ -1,62 +1,139 @@
-#问题陈述
-#给定的是一个正整数N，考虑在N上重复应用下面的操作：
-#首先，选择一个满足以下所有条件的正整数z：
-#z可以表示为z=p^e，其中p是一个素数，e是一个正整数；
-#z除以N；
-#z与之前操作中选择的所有整数不同。
-#然后，用N/z替换N。
-#找出该操作可应用的最大次数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印该操作可应用的最大次数。
-#
-#样本输入1
-#24
-#
-#样本输出1
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=12)。
-#选择z=3 (=3^1)。(现在我们有N=4)。
-#选择z=4 (=2^2).(现在我们有N=1)。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#我们根本就不能应用这个操作。
-#
-#样本输入3
-#64
-#
-#样本输出3
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=32)。
-#选择z=4（=2^2）。(现在我们有N=8)。
-#选择z=8 (=2^3).(现在我们有N=1)。
-#
-#样本输入4
-#1000000007
-#
-#样本输出4
-#1
-#我们可以应用一次操作，例如，做出以下选择：
-#z=1000000007 (=1000000007^1).(现在我们有N=1)。
-#
-#输入样本5
-#997764507000
-#
-#样本输出5
-#7
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def prime_factorization(N):
+    prime_factor = []
+    i = 2
+    while i * i <= N:
+        while N % i == 0:
+            prime_factor.append(i)
+            N //= i
+        i += 1
+    if N > 1:
+        prime_factor.append(N)
+    return prime_factor
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    count = 0
+    while True:
+        flag = False
+        for i in range(2, n):
+            if n % i == 0:
+                flag = True
+                n = n // i
+                count += 1
+                break
+        if not flag:
+            break
+    print(count)
+
+=======
+Suggestion 4
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            if i not in factors:
+                factors.append(i)
+    if n > 1:
+        if n not in factors:
+            factors.append(n)
+    return factors
+
+=======
+Suggestion 5
+
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+
+    return True
+
+=======
+Suggestion 6
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+=======
+Suggestion 7
+
+def prime_factors(n):
+    i = 2
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            yield i
+    if n > 1:
+        yield n
+
+=======
+Suggestion 8
+
+def get_prime_factor(n):
+    factor = []
+    if n < 2:
+        return factor
+    for i in range(2, n + 1):
+        if i * i > n:
+            break
+        while n % i == 0:
+            n //= i
+            factor.append(i)
+    if n > 1:
+        factor.append(n)
+    return factor
+
+=======
+Suggestion 9
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+
+import sys
+N = int(sys.stdin.readline())

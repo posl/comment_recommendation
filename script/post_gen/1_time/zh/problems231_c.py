@@ -1,68 +1,169 @@
-#问题陈述
-#有一个有N个学生的班级。第i个学生（1 ≦ i ≦ N）的身高是A_i。
-#对于每个j=1,2,...,Q，请回答以下问题。
-#在N个学生中，有多少人的身高至少是x_j？
-#
-#限制条件
-#1 ≦ n,q ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ x_j ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#A_1 A_2 ...A_N
-#x_1
-#x_2
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印Q行。
-#第j行（1 ≦ j ≦ Q）应该包含高度至少为x_j的学生数量。
-#
-#输入样本 1
-#3 1
-#100 160 130
-#120
-#
-#样品输出1
-#2
-#身高至少为120的学生是第2和第3名。
-#
-#样本输入2
-#5 5
-#1 2 3 4 5
-#6
-#5
-#4
-#3
-#2
-#
-#样本输出2
-#0
-#1
-#2
-#3
-#4
-#
-#样本输入3
-#5 5
-#804289384 846930887 681692778 714636916 957747794
-#424238336
-#719885387
-#649760493
-#596516650
-#189641422
-#
-#样本输出3
-#5
-#3
-#5
-#5
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    for i in range(q):
+        count = 0
+        for j in range(n):
+            if a[j] >= x[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 2
+
+def binary_search(x, array, left, right):
+    if left == right:
+        return left
+    if left + 1 == right:
+        if array[left] >= x:
+            return left
+        else:
+            return right
+    middle = (left + right) // 2
+    if array[middle] >= x:
+        return binary_search(x, array, left, middle)
+    else:
+        return binary_search(x, array, middle, right)
+
+=======
+Suggestion 3
+
+def binary_search(a, x):
+    """二分查找"""
+    n = len(a)
+    left = 0
+    right = n - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if a[mid] == x:
+            return mid
+        elif a[mid] < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
+a = sorted(a)
+for _ in range(q):
+    x = int(input())
+    print(binary_search(a, x) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n,q = map(int, input().split())
+    A = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+
+    for i in range(q):
+        count = 0
+        for j in range(n):
+            if A[j] >= x[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    x = [int(input()) for _ in range(q)]
+    for i in range(q):
+        print(n - (len(a) - bisect.bisect_left(a, x[i])))
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    for i in range(q):
+        x = int(input())
+        cnt = 0
+        for j in range(n):
+            if a[j] >= x:
+                cnt += 1
+        print(cnt)
+
+=======
+Suggestion 7
+
+def binary_search(array, x):
+    left = 0
+    right = len(array) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if array[mid] == x:
+            return mid
+        elif array[mid] > x:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return left
+
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
+x = [int(input()) for _ in range(q)]
+a.sort()
+
+for i in range(q):
+    print(n - binary_search(a, x[i]))
+
+=======
+Suggestion 8
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in x:
+        print(n - (a.index(i) if i in a else len(a) - 1 - a[::-1].index(i) + 1))
+
+=======
+Suggestion 9
+
+def solve():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(Q):
+        x = int(input())
+        low = 0
+        high = N - 1
+        while low < high:
+            mid = (low + high) // 2
+            if A[mid] >= x:
+                high = mid
+            else:
+                low = mid + 1
+        if A[low] >= x:
+            print(N - low)
+        else:
+            print(N - low - 1)
+
+=======
+Suggestion 10
+
+def binary_search(a, x, low, high):
+    if low > high:
+        return -1
+    mid = (low + high) // 2
+    if a[mid] == x:
+        return mid
+    elif a[mid] > x:
+        return binary_search(a, x, low, mid - 1)
+    else:
+        return binary_search(a, x, mid + 1, high)

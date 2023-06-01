@@ -1,69 +1,161 @@
-#问题陈述
-#有N个细胞排列成一排，从左到右编号为1，2，...，N。
-#德住在这些细胞里，目前在1号细胞。他正试图通过下面的程序到达N单元。
-#给你一个小于或等于10的整数K，以及K个不相交的线段[L_1, R_1], [L_2, R_2], ..., [L_K, R_K]。
-#让S是这K个线段的线段。
-#这里，段[l, r]表示由满足l ≦ i ≦ r的所有整数i组成的集合。
-#当你在单元格i上时，从S中挑选一个整数d并移动到单元格i+d。
-#为了帮助德，请找出去N单元格的方法，模数为998244353。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ min(N, 10)
-#1 ≦ L_i ≦ R_i ≦ N
-#[L_i, R_i] 和 [L_j, R_j] 不相交 (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#L_1 R_1
-#L_2 R_2
-#:
-#L_K R_K
-#
-#输出
-#打印Tak从单元格1到单元格N的方式的数量，模数为998244353。
-#
-#输入样本 1
-#5 2
-#1 1
-#3 4
-#
-#样本输出 1
-#4
-#集合S是段[1，1]和段[3，4]的联合，因此S={1，3，4}成立。
-#有4种可能的方式来到达单元格5：
-#1 -> 2 -> 3 -> 4 -> 5,
-#1 -> 2 -> 5,
-#1->4->5和
-#1 -> 5.
-#
-#样本输入 2
-#5 2
-#3 3
-#5 5
-#
-#样本输出2
-#0
-#因为S = { 3, 5 }成立，你无法到达单元格5。
-#打印0。
-#
-#输入样本 3
-#5 1
-#1 2
-#
-#样本输出3
-#5
-#
-#样本输入4
-#60 3
-#5 8
-#1 3
-#10 15
-#
-#样本输出4
-#221823067
-#请注意，你必须打印出998244353的模数的答案。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solution():
+    pass
+
+=======
+Suggestion 2
+
+def get_input():
+    n, k = map(int, input().split())
+    seg = []
+    for i in range(k):
+        seg.append(list(map(int, input().split())))
+    return n, k, seg
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    N, K = map(int, input().split())
+    # 读入K个区间
+    # 区间按照左端点排序
+    intervals = []
+    for i in range(K):
+        L, R = map(int, input().split())
+        intervals.append((L, R))
+    intervals.sort()
+    # dp[i]表示到达i的方案数
+    dp = [0] * (N+1)
+    dp[1] = 1
+    # 遍历区间
+    for i in range(K):
+        L, R = intervals[i]
+        # 计算区间[L, R]的方案数
+        # 从左到右遍历每个位置
+        # 如果当前位置是区间的左端点，那么它的方案数就是dp[L]
+        # 如果当前位置不是区间的左端点，那么它的方案数就是dp[L] + dp[L+1] + ... + dp[R]
+        # 为了防止重复计算，我们可以用一个数组sum存储dp[L] + dp[L+1] + ... + dp[R]的值
+        # 令sum[i] = dp[L] + dp[L+1] + ... + dp[i]
+        # 那么sum[i+1] = sum[i] + dp[i+1]
+        # 这样我们就可以用sum[R] - sum[L-1]来计算区间[L, R]的方案数
+        sum = [0] * (N+1)
+        sum[0] = dp[0]
+        for j in range(1, N+1):
+            sum[j] = sum[j-1] + dp[j]
+        # 计算区间[L, R]的方案数
+        # sum[R] - sum[L-1]
+        dp[L] = sum[R] - sum[L-1]
+        # 防止dp[L]为负数
+        dp[L] %= 998244353
+        # 更新dp
+        for j in range(L+1, R+1):
+            dp[j] = 0
+    # 打印结果
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def problems179_d():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    lr = []
+    for i in range(k):
+        lr.append(list(map(int, input().split())))
+    dp = [0]*n
+    dp[0] = 1
+    for i in range(n):
+        for j in range(k):
+            if i + lr[j][0] < n:
+                dp[i+lr[j][0]] += dp[i]
+            if i + lr[j][1] + 1 < n:
+                dp[i+lr[j][1]+1] -= dp[i]
+    dp = dp[:-1]
+    for i in range(1, n):
+        dp[i] += dp[i-1]
+    print(dp[-1]%998244353)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for i in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+
+    S = set()
+    for i in range(K):
+        for j in range(L[i], R[i] + 1):
+            S.add(j)
+
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    for i in range(2, N + 1):
+        for j in S:
+            if i - j < 1:
+                break
+            dp[i] += dp[i - j]
+            dp[i] %= 998244353
+
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def get_input():
+    nk = input().split()
+    n = int(nk[0])
+    k = int(nk[1])
+    lr = []
+    for i in range(k):
+        lr.append(input().split())
+    return n, k, lr
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    L = []
+    R = []
+    for i in range(K):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dpsum = [0] * (N + 1)
+    dpsum[1] = 1
+    for i in range(2, N + 1):
+        for j in range(K):
+            li = i - R[j]
+            ri = i - L[j]
+            if ri < 0:
+                continue
+            li = max(li, 1)
+            dp[i] += dpsum[ri] - dpsum[li - 1]
+        dp[i] %= 998244353
+        dpsum[i] = dpsum[i - 1] + dp[i]
+        dpsum[i] %= 998244353
+    print(dp[N])

@@ -1,62 +1,117 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N），由正整数和整数x和y组成。
-#请判断在xy坐标平面上放置N+1个点p_1, p_2, ..., p_N, p_{N+1}是否能满足以下所有条件。(允许在同一坐标上放置两个或多个点)。
-#p_1 = (0, 0).
-#p_2 = (A_1, 0).
-#p_{N+1}=（x，y）。
-#点p_i和p_{i+1}之间的距离是A_i。(1 ≦ i ≦ N)
-#线段p_i p_{i+1}和p_{i+1} p_{i+2}形成一个90度角。(1 ≦ i ≦ N - 1)
-#
-#限制条件
-#2 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ 10
-#|x|, |y| ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N x y
-#A_1 A_2 ...A_N
-#
-#输出
-#如果可以放置p_1, p_2, ..., p_N, p_{N+1}来满足问题陈述中的所有条件，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 -1 1
-#2 1 3
-#
-#样本输出1
-#Yes
-#下图显示了一个安置，其中p_1=（0，0），p_2=（2，0），p_3=（2，1），p_4=（-1，1）。问题陈述中的所有条件
-# 都得到满足。
-#
-#样本输入 2
-#5 2 0
-#2 2 2 2 2
-#
-#样本输出2
-#Yes
-#让p_1=（0，0），p_2=（2，0），p_3=（2，2），p_4=（0，2），p_5=（0，0），p_6=（2，0）满足所有条件。请注意，多个点可以放在同一坐标上。
-#
-#输入样本 3
-#4 5 5
-#1 2 3 4
-#
-#样本输出3
-#No
-#
-#样本输入 4
-#3 2 7
-#2 7 4
-#
-#样本输出4
-#No
-#
-#样本输入5
-#10 8 -7
-#6 10 4 1 5 9 8 6 5 1
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(n, x, y, a):
+    a.ap
+
+=======
+Suggestion 2
+
+def main():
+    n,x,y = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.append(abs(x))
+    a.append(abs(y))
+    a.sort()
+    a.reverse()
+    for i in range(n):
+        if a[i] > a[i+1] + a[i+2]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def solve(n,x,y,A):
+    for i in range(n):
+        for j in range(i+1,n):
+            if abs(A[i]-A[j]) == abs(x-y):
+                return True
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    n,x,y = map(int,input().split())
+    a = list(map(int,input().split()))
+    x1 = a[0]
+    y1 = 0
+    for i in range(1,n):
+        r = (x1-x)**2 + (y1-y)**2
+        if r == a[i]**2:
+            x1 = x
+            y1 = y
+            continue
+        else:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    print('Hello World!')
+
+=======
+Suggestion 7
+
+def main():
+    n, x, y = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(0)
+    a.insert(0, 0)
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 2):
+            if (a[i] - a[j]) ** 2 + (i - j) ** 2 == (a[i] - x) ** 2 + (i - y) ** 2 + (a[j] - x) ** 2 + (j - y) ** 2 and (a[i] - x) * (j - y) == (a[j] - x) * (i - y):
+                print("Yes")
+                exit()
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(0)
+    A.append(0)
+    for i in range(N):
+        for j in range(i+1, N+1):
+            if A[i] == A[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def solve():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(0)
+    if N == 1:
+        if A[0] == x and A[1] == y:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        for i in range(N):
+            for j in range(i + 1, N + 1):
+                if A[i] + A[j] == abs(x - y):
+                    print("Yes")
+                    return
+        print("No")

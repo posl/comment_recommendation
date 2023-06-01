@@ -1,49 +1,134 @@
-#问题陈述
-#给你两个序列，每个序列的长度为N，由整数组成：A=(A_1, ..., A_N)和B=(B_1, ..., B_N)。
-#确定是否有一个长度为N的序列，X=(X_1, ..., X_N)，满足以下所有的条件。
-#X_i = A_i或X_i = B_i，对于每一个i(1≦ i≦ N)。
-#|X_i - X_{i+1}| ≦ K，对于每个i(1≦ i≦ N-1)。
-#
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ K ≦ 10^9
-#1 ≦ A_i,B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 ...A_N
-#B_1 ...B_N
-#
-#输出
-#如果有一个满足所有条件的X，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 4
-#9 8 3 7 2
-#1 6 2 9 5
-#
-#样本输出1
-#Yes
-#X=(9,6,3,7,5) 满足所有条件。
-#
-#样本输入2
-#4 90
-#1 1 1 100
-#1 2 3 100
-#
-#样本输出2
-#No
-#没有X满足所有条件。
-#
-#样本输入3
-#4 1000000000
-#1 1 1000000000 1000000000
-#1 1000000000 1 1000000000
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,k = [int(i) for i in input().split()]
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    for i in range(n):
+        if abs(a[i]-b[i])>k:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A_max = max(A)
+    B_max = max(B)
+    if abs(A_max - B_max) > K:
+        print('No')
+        return
+    if A_max > B_max:
+        A, B = B, A
+    A.sort()
+    B.sort(reverse=True)
+    for i in range(N):
+        if A[i] + B[i] > K:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A_min = min(A)
+    A_max = max(A)
+    B_min = min(B)
+    B_max = max(B)
+
+    if abs(A_max - B_max) > K or abs(A_min - B_min) > K:
+        print("No")
+        return
+
+    for i in range(N - 1):
+        if abs(A[i] - A[i + 1]) > K and abs(B[i] - B[i + 1]) > K:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 5
+
+def solve(n, k, a, b):
+    res = True
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            res = False
+            break
+    return "Yes" if res else "No"
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+print(solve(n, k, a, b))
+
+=======
+Suggestion 6
+
+def check(a,b,k):
+    for i in range(len(a)):
+        if abs(a[i]-b[i])>k:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    # 0: A, 1: B
+    dp = [[False for _ in range(2)] for _ in range(N)]
+    dp[0][0] = dp[0][1] = True
+    for i in range(1, N):
+        for j in range(2):
+            for k in range(2):
+                if abs(A[i] - B[i]) <= K:
+                    dp[i][j] = True
+                    break
+    if dp[N-1][0] or dp[N-1][1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve(n, k, a, b):
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            return 'No'
+    return 'Yes'
+
+=======
+Suggestion 9
+
+def get_max_diff(A, B):
+    max_diff = 0
+    for i in range(len(A)):
+        diff = abs(A[i] - B[i])
+        if diff > max_diff:
+            max_diff = diff
+    return max_diff

@@ -1,38 +1,75 @@
-#问题陈述
-#高桥喜欢金币。他每拥有一枚500日元的金币就能获得1000点幸福感，每拥有一枚5日元的金币就能获得5点幸福感。(日元是日本的货币）。
-#高桥有X日元。如果他用钱交换，使他获得最多的幸福点数，他将获得多少幸福点数？
-#(我们假设有六种硬币可用：500日元、100日元、50日元、10日元、5日元和1日元硬币）。
-#
-#限制条件
-#0 ≦ X ≦ 10^9
-#X是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#打印可获得的最大幸福点数。
-#
-#输入样本1
-#1024
-#
-#样本输出1
-#2020
-#通过交换他的钱，使他得到两个500日元的硬币和四个5日元的硬币，他获得了2020个幸福点，这是可以获得的最大幸福点。
-#
-#样本输入2
-#0
-#
-#样本输出2
-#0
-#他身无分文--或者说没有日元。
-#
-#样本输入3
-#1000000000
-#
-#样本输出3
-#2000000000
-#他是一个亿万富翁--以日元计算。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    print(1000 * (x // 500) + 5 * ((x % 500) // 5))
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    coin500 = x // 500
+    coin5 = (x % 500) // 5
+    print(coin500 * 1000 + coin5 * 5)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    print(x//500*1000+(x%500)//5*5)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    print((x//500)*1000 + ((x%500)//5)*5)
+
+=======
+Suggestion 5
+
+def problem160_b(x):
+    #x = int(input())
+    if x >= 500:
+        a = x // 500
+        b = x % 500
+        if b >= 5:
+            c = b // 5
+            d = b % 5
+            return a * 1000 + c * 5
+        else:
+            return a * 1000
+    else:
+        if x >= 5:
+            c = x // 5
+            d = x % 5
+            return c * 5
+        else:
+            return 0
+print(problem160_b(1024))
+print(problem160_b(0))
+print(problem160_b(1000000000))
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    y500 = x // 500
+    y5 = (x % 500) // 5
+    print(y500 * 1000 + y5 * 5)
+
+=======
+Suggestion 7
+
+def main():
+    x = int(input())
+    ans = (x//500)*1000
+    x = x%500
+    ans += (x//5)*5
+    print(ans)

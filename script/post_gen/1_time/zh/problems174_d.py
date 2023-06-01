@@ -1,45 +1,216 @@
-#问题陈述
-#一个祭坛上供奉着N块石头，从左到右排成一排。左边第i块石头的颜色（1 ≦ i ≦ N）以字符c_i的形式给你；R代表红色，W代表白色。
-#你可以按任何顺序做以下两种操作，次数不限：
-#选择两个石头（不一定是相邻的），然后交换它们。
-#选择一块石头并改变其颜色（从红色到白色，反之亦然）。
-#根据一个算命先生的说法，白色石头放在红色石头的左边会带来灾难。至少需要多少次操作才能达到没有这种白石头的情况？
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#c_i为R或W。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#c_{1}c_{2}...c_{N}
-#
-#输出
-#打印一个代表所需最小操作数的整数。
-#
-#输入样本 1
-#4
-#WWRR
-#
-#采样输出1
-#2
-#例如，下面的两个操作可以达到目的。
-#从左边开始交换第1个和第3个石头，结果是RWWR。
-#从左边开始改变第4个石头的颜色，结果是RWWW。
-#
-#输入样本2
-#2
-#RR
-#
-#采样输出2
-#0
-#可以是不需要操作的情况。
-#
-#样本输入3
-#8
-#WRWWRWRR
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+        return
+    if r >= w:
+        print(w)
+    else:
+        print(r)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+        return
+    if r == w:
+        print(1)
+        return
+    if r > w:
+        print(w)
+    else:
+        print(r)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    c = input()
+    r = c.count('R')
+    w = n - r
+    if r == 0 or w == 0:
+        print(0)
+    else:
+        print(c[:r].count('W'))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    stones = input()
+    red = stones.count('R')
+    ans = 0
+    for i in range(red):
+        if stones[i] == 'W':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve(n, c):
+    r = 0
+    w = 0
+    for i in range(n):
+        if c[i] == 'R':
+            r += 1
+    for i in range(r):
+        if c[i] == 'W':
+            w += 1
+    return w
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    c = input()
+    #print(c)
+    w = c.count('W')
+    #print(w)
+    r = c.count('R')
+    #print(r)
+    if w == 0 or r == 0:
+        print(0)
+        return
+    i = 0
+    j = N - 1
+    cnt = 0
+    while i < j:
+        if c[i] == 'W' and c[j] == 'R':
+            cnt += 1
+            i += 1
+            j -= 1
+        elif c[i] == 'R' and c[j] == 'W':
+            i += 1
+            j -= 1
+        elif c[i] == 'W':
+            j -= 1
+        elif c[j] == 'R':
+            i += 1
+        else:
+            i += 1
+            j -= 1
+    print(cnt)
+    return
+
+=======
+Suggestion 8
+
+def problems174_d():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    c = input()
+    r = 0
+    w = 0
+    for i in range(n):
+        if c[i] == "R":
+            r += 1
+    for i in range(r):
+        if c[i] == "W":
+            w += 1
+    print(w)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    c = input()
+    #print(N)
+    #print(c)
+    #print(c[0])
+    #print(c[1])
+    #print(c[2])
+    #print(c[3])
+    #print(c[4])
+    #print(c[5])
+    #print(c[6])
+    #print(c[7])
+    #print(c[8])
+    #print(c[9])
+    #print(c[10])
+    #print(c[11])
+    #print(c[12])
+    #print(c[13])
+    #print(c[14])
+    #print(c[15])
+    #print(c[16])
+    #print(c[17])
+    #print(c[18])
+    #print(c[19])
+    #print(c[20])
+    #print(c[21])
+    #print(c[22])
+    #print(c[23])
+    #print(c[24])
+    #print(c[25])
+    #print(c[26])
+    #print(c[27])
+    #print(c[28])
+    #print(c[29])
+    #print(c[30])
+    #print(c[31])
+    #print(c[32])
+    #print(c[33])
+    #print(c[34])
+    #print(c[35])
+    #print(c[36])
+    #print(c[37])
+    #print(c[38])
+    #print(c[39])
+    #print(c[40])
+    #print(c[41])
+    #print(c[42])
+    #print(c[43])
+    #print(c[44])
+    #print(c[45])
+    #print(c[46])
+    #print(c[47])
+    #print(c[48])
+    #print(c[49])
+    #print(c[50])
+    #print(c[51])
+    #print(c[52])
+    #print(c[53])
+    #print(c[54])
+    #print(c[55])
+    #print(c[56])
+    #print(c[57])
+    #print(c[58])
+    #print(c[59])
+    #print(c[60])
+    #print(c[61])
+    #print(c[62])
+    #print(c[63])
+    #print(c[64])
+    #print(c[65])
+    #print(c[66])
+    #print(c[67])

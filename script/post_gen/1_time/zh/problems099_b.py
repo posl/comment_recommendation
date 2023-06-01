@@ -1,33 +1,87 @@
-#问题陈述
-#在某个村子里，有999座塔，从西到东都是1,(1+2),(1+2+3),...,(1+2+3+...+999)米高，每座塔间隔1米。
-#雪下了好一阵子才终于停了。对于相隔1米的一些相邻的塔，我们测量了这些塔没有被雪覆盖的部分的长度，结果是西边的塔有a米，东边的塔有b米。
-#假设村里各处的积雪深度和海拔高度相同，求积雪的数量。
-#还假设雪覆盖的深度总是至少1米。
-#
-#限制条件
-#1 ≦ a < b < 499500(=1+2+3+...+999)
-#输入的所有数值都是整数。
-#没有与假设相矛盾的输入。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#a b
-#
-#输出
-#如果雪覆盖的深度是x米，打印x为整数。
-#
-#输入样本 1
-#8 13
-#
-#输出样本 1
-#2
-#两座塔的高度分别为10米和15米。
-#因此，我们可以看到，雪覆盖的深度是2米。
-#
-#样本输入2
-#54 65
-#
-#样本输出2
-#1
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(a, b):
+    # a是西边的塔，b是东边的塔
+    # a = 1 + 2 + 3 + ... + x
+    # b = 1 + 2 + 3 + ... + x + x + 1
+    # a = x * (x + 1) / 2
+    # b = (x + 1) * (x + 2) / 2
+    # a * 2 = x * (x + 1)
+    # b * 2 = (x + 1) * (x + 2)
+
+=======
+Suggestion 2
+
+def snow(a,b):
+    x = b - a
+    y = x*(x+1)/2
+    return int(y-a)
+
+=======
+Suggestion 3
+
+def main():
+    input_line = input()
+    input_line = input_line.split(' ')
+    a = int(input_line[0])
+    b = int(input_line[1])
+    if a < 1 or a >= b or b >= 499500:
+        print("输入不合法")
+        return
+    #求出塔的总高度
+    total_height = int((1 + 999) * 999 / 2)
+    #求出雪覆盖的高度
+    snow_height = total_height - (b - a)
+    #求出雪覆盖的深度
+    snow_depth = b - a - snow_height + 1
+    print(snow_depth)
+
+=======
+Suggestion 4
+
+def snow(a, b):
+    total = (b - a + 1) * (a + b) // 2
+    return total - b
+
+print(snow(8, 13))
+print(snow(54, 65))
+
+=======
+Suggestion 5
+
+def problem099_b():
+    pass
+
+=======
+Suggestion 6
+
+def get_n(n):
+    return int((1+n)*n/2)
+
+=======
+Suggestion 7
+
+def solve(a, b):
+    return (b-a)*(b-a+1)//2 - b
+
+=======
+Suggestion 8
+
+def main():
+    #a,b = map(int, input().split())
+    a,b = 8, 13
+    print(b-a)
+
+=======
+Suggestion 9
+
+def calc_snow_cover(a,b):
+    #print("a,b",a,b)
+    #print("a,b",a,b)
+    #print("b-a",b-a)
+    #print("b-a+1",b-a+1)
+    #print("b-a+1//2",(b-a+1)//2)
+    return (b-a+1)//2

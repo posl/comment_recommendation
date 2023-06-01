@@ -1,54 +1,146 @@
-#问题陈述
-#我们有N张ID卡，有M个闸门。
-#如果我们有以下身份证之一，就可以通过第i个门：L_i-th, (L_i+1)-th, ..., 和R_i-th身份证。
-#有多少张ID卡可以让我们单独通过所有的闸门？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ L_i ≦ R_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_M R_M
-#
-#输出
-#打印允许我们单独通过所有闸门的ID卡数量。
-#
-#输入样本 1
-#4 2
-#1 3
-#2 4
-#
-#样本输出 1
-#2
-#两张身份证允许我们单独通过所有的闸门，如下图：
-#第一张ID卡不允许我们通过第二道门。
-#第二张ID卡允许我们通过所有的闸门。
-#第三张ID卡允许我们通过所有的闸门。
-#第四张ID卡不允许我们通过第一道门。
-#
-#样本输入 2
-#10 3
-#3 6
-#5 7
-#6 9
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100000 1
-#1 100000
-#
-#样本输出3
-#100000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    L = []
+    R = []
+    for i in range(m):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[m-1] > R[0]:
+        print(0)
+    else:
+        print(R[0]-L[m-1]+1)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for _ in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    L.sort()
+    R.sort()
+    if L[-1] > R[0]:
+        print(0)
+    else:
+        print(R[0] - L[-1] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    l = 0
+    r = n
+    for i in range(m):
+        ll, rr = map(int, input().split())
+        l = max(l, ll)
+        r = min(r, rr)
+    print(max(0, r - l + 1))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l_max = max(l)
+    r_min = min(r)
+    if r_min - l_max >= 0:
+        print(r_min - l_max + 1)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    l = [0] * m
+    r = [0] * m
+    for i in range(m):
+        l[i], r[i] = map(int, input().split())
+    lmax = max(l)
+    rmin = min(r)
+    print(max(0, rmin - lmax + 1))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    print(min(r) - max(l) + 1 if min(r) - max(l) >= 0 else 0)
+
+=======
+Suggestion 9
+
+def solve():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_, r_ = map(int, input().split())
+        l.append(l_)
+        r.append(r_)
+    print(max(0, min(r) - max(l) + 1))
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    l = []
+    r = []
+    for i in range(m):
+        l_i, r_i = map(int, input().split())
+        l.append(l_i)
+        r.append(r_i)
+    l_max = max(l)
+    r_min = min(r)
+    print(max(r_min - l_max + 1, 0))

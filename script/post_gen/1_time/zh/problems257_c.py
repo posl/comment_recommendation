@@ -1,57 +1,172 @@
-#问题陈述
-#有N个人，每个人都是儿童或成年人。  第i个人的权重为W_i。
-#每个人是儿童还是成人由一个长度为N的字符串S指定，该字符串由0和1组成。
-#如果S的第i个字符是0，那么第i个人是一个孩子；如果是1，那么第i个人是一个成年人。  
-#当机器人高桥被赋予一个实数X、
-#高桥判断一个体重小于X的人是儿童，一个体重大于或等于X的人是成年人。
-#对于一个实数X，让f(X)为高桥正确判断为儿童或成人的人数。
-#求所有实值X的f(X)的最大值。
-#
-#限制条件
-#1≦ N≦ 2× 10^5
-#S是一个长度为N的字符串，由0和1组成。
-#1≦ W_i≦ 10^9
-#N和W_i是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#S
-#W_1 W_2 ...W_N
-#
-#输出
-#将f(X)的最大值作为一个整数打印在一行中。
-#
-#输入样本1
-#5
-#10101
-#60 45 30 40 80
-#
-#样本输出1
-#4
-#当高桥被赋予X=50时，它判断第2、3、4人是儿童，第1、5人是成人。
-#实际上，第2个和第4个是儿童，第1个、第3个和第5个是成年人，所以第1个、第2个、第4个和第5个被正确判断。
-#因此，f(50)=4。
-#这是最大值，因为没有一个X能正确判断所有5个人。  因此，应该打印4。
-#
-#输入样本 2
-#3
-#000
-#1 2 3
-#
-#样本输出2
-#3
-#例如，X=10实现了最大值f(10)=3。
-#请注意，这些人可能是所有的儿童或所有的成年人。
-#
-#样本输入3
-#5
-#10101
-#60 50 50 50 60
-#
-#样本输出3
-#4
-#例如，X=55实现了最大值f(55)=4。
-#请注意，可能有多个具有相同权重的人。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n,s,w):
+    w.sort()
+    ans = 0
+    for i in range(n):
+        if s[i]=='0':
+            ans+=1
+    minw = 10**9+1
+    for i in range(n):
+        if s[i]=='0':
+            if w[i]<minw:
+                minw = w[i]
+    if minw==10**9+1:
+        minw = 0
+    maxw = -1
+    for i in range(n):
+        if s[i]=='1':
+            if w[i]>maxw:
+                maxw = w[i]
+    if maxw==-1:
+        maxw = 0
+    if ans==0:
+        return 0
+    return min(ans,2*n-ans)
+
+=======
+Suggestion 2
+
+def isChild(W, S, X):
+    if W < X and S == '0':
+        return True
+    elif W >= X and S == '1':
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int, input().split()))
+    ans = 0
+    for x in range(0, 200):
+        #print(x)
+        cnt = 0
+        for i in range(N):
+            if S[i] == '0' and W[i] <= x:
+                cnt += 1
+            if S[i] == '1' and W[i] > x:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def f(x, s, w):
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if s[i] == '1':
+            if w[i] >= x:
+                count += 1
+        else:
+            if w[i] < x:
+                count += 1
+    return count
+
+=======
+Suggestion 5
+
+def get_max_f(x, n, s, w):
+    f = 0
+    for i in range(n):
+        if s[i] == '0' and w[i] < x:
+            f += 1
+        elif s[i] == '1' and w[i] >= x:
+            f += 1
+    return f
+
+=======
+Suggestion 6
+
+def f(x, s, w):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '0' and w[i] < x:
+            count += 1
+        elif s[i] == '1' and w[i] >= x:
+            count += 1
+    return count
+
+n = int(input())
+s = input()
+w = [int(i) for i in input().split()]
+max_w = max(w)
+min_w = min(w)
+max_x = max_w
+min_x = min_w
+max_f = f(max_x, s, w)
+min_f = f(min_x, s, w)
+
+while min_x < max_x:
+    mid_x = (min_x + max_x) // 2
+    mid_f = f(mid_x, s, w)
+    if mid_f == max_f:
+        min_x = mid_x
+    elif mid_f == min_f:
+        max_x = mid_x
+    else:
+        min_x = mid_x
+        max_x = mid_x
+
+print(max_f)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    w = list(map(int, input().split()))
+    if s.count('0') == 0 or s.count('1') == 0:
+        print(n)
+        return
+    if s.count('0') == n or s.count('1') == n:
+        print(0)
+        return
+    w.sort()
+    for i in range(n):
+        if s[i] == '1':
+            w[i] = -1
+    for i in range(n-1):
+        if w[i] == -1:
+            continue
+        if w[i] < w[i+1]:
+            w[i] = -1
+    print(w.count(-1))
+
+=======
+Suggestion 8
+
+def f(x, n, s, w):
+    c = 0
+    for i in range(n):
+        if s[i] == '0':
+            if x > w[i]:
+                c += 1
+        else:
+            if x <= w[i]:
+                c += 1
+    return c
+
+=======
+Suggestion 9
+
+def f(x, N, S, W):
+    count = 0
+    for i in range(N):
+        if S[i] == '0':
+            if W[i] < x:
+                count += 1
+        else:
+            if W[i] >= x:
+                count += 1
+    return count

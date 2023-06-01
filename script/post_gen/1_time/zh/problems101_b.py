@@ -1,37 +1,108 @@
-#问题陈述
-#让S(n)表示n的十进制数字之和。
-#例如，S(101)=1+0+1=2。
-#给定一个整数N，确定S(N)是否能够除以N。
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果S(N)能够除以N，打印 Yes；如果不能，打印 No。
-#
-#输入样本 1
-#12
-#
-#样本输出1
-#Yes
-#在这个输入中，N=12。
-#由于S(12)=1+2=3，S(N)能够有除以N。
-#
-#样本输入2
-#101
-#
-#采样输出2
-#No
-#由于S(101)=1+0+1=2，S(N)不能够除以N。
-#
-#样本输入3
-#999999999
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sum_digit(n):
+    sum = 0
+    while n > 0:
+        sum += n%10
+        n = n//10
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = sum(int(i) for i in str(n))
+    if n % s == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n % sum([int(i) for i in str(n)]) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def S(n):
+    return sum(map(int, str(n)))
+
+n = int(input())
+print('Yes' if n % S(n) == 0 else 'No')
+
+=======
+Suggestion 5
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n /= 10
+    return sum
+
+=======
+Suggestion 6
+
+def s(n):
+    sum = 0
+    while n>0:
+        sum += n%10
+        n = n//10
+    return sum
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = 0
+    for i in str(N):
+        S += int(i)
+    if S % N == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def S(n):
+    s = 0
+    while n > 0:
+        s += n%10
+        n = n//10
+    return s
+
+=======
+Suggestion 9
+
+def check_divisible(number):
+    sum = 0
+    for i in str(number):
+        sum += int(i)
+    if number % sum == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def getSum(n):
+    sum = 0
+    while n > 0:
+        sum = sum + n%10
+        n = n // 10
+    return sum
+
+n = int(input())

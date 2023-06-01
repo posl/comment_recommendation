@@ -1,36 +1,144 @@
-#问题陈述
-#Snuke有一个公平的N面骰子，它以相等的概率显示1到N的整数，还有一枚公平的硬币。他将用它们玩以下游戏：
-#投掷骰子。当前的分数是骰子的结果。
-#只要分数在1和K-1（包括）之间，就继续投掷硬币。每次硬币正面朝上，分数就翻倍，如果硬币反面朝上，分数就变成0。
-#当分数变成0或变成K或以上时，游戏结束。如果分数是K或以上，Snuke就赢了，如果分数是0就输了。
-#给你N和K，找出Snuke赢得游戏的概率。
-#
-#限制条件
-#1 ≤ N ≤ 10^5
-#1 ≤ K ≤ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#
-#输出
-#打印Snuke赢得比赛的概率。当绝对或相对误差最多为10^{-9}时，输出被视为正确。
-#
-#输入样本 1
-#3 10
-#
-#样本输出 1
-#0.145833333333
-#如果骰子显示为1，Snuke需要从四次掷硬币中连续得到四个头，以获得10或以上的分数。这种情况发生的概率是(1/(3)) × ((1/(2))^4 = (1/(48))。
-#如果骰子显示为2，Snuke需要从三次掷硬币中连续得到三个头，以获得10或以上的分数。这种情况发生的概率是(1/(3)) × ((1/(2))^3 = (1/(24))。
-#如果骰子显示为3，Snuke需要从两次掷硬币中连续得到两个头，以获得10或以上的分数。这种情况发生的概率是(1/(3)) × ((1/(2))^2=(1/(12))。
-#因此，Snuke获胜的概率是（1/(48)）+（1/(24)）。+ (1/(12)) = (7/(48)) ≃ 0.1458333333.
-#
-#样本输入2
-#100000 5
-#
-#样本输出2
-#0.999973749998
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem126_c(n,k):
+    if n>k:
+        return 1/(2**(n-k))
+    else:
+        return 0.5
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    p = 0
+    for i in range(1,n+1):
+        if i >= k:
+            p += 1/n
+        elif i < k:
+            x = i
+            while x < k:
+                x *= 2
+            p += 1/n * (0.5 ** (x/i))
+    print(p)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        cnt = 0
+        while i < k:
+            i *= 2
+            cnt += 1
+        ans += (1 / n) * (1 / (2 ** cnt))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    ans = 0
+    for i in range(1, N+1):
+        score = i
+        p = 1 / N
+        while score < K:
+            score *= 2
+            p /= 2
+        ans += p
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(n, k):
+    ans = 0
+    for i in range(1, n + 1):
+        p = 1
+        while i < k:
+            i *= 2
+            p /= 2
+        ans += p
+    return ans / n
+
+n, k = map(int, input().split())
+print(solve(n, k))
+
+=======
+Suggestion 6
+
+def solve(n,k):
+    ans = 0
+    for i in range(1,n+1):
+        if i >= k:
+            ans += 1/n
+        else:
+            cnt = 0
+            while i < k:
+                i *= 2
+                cnt += 1
+            ans += (1/n) * (0.5 ** cnt)
+    return ans
+
+=======
+Suggestion 7
+
+def solve():
+    n,k = map(int,input().split())
+    ans = 0
+    for i in range(1,n+1):
+        if i >= k:
+            ans += 1/n
+        else:
+            ans += 1/n*(1/2)**(len(bin(k-i))-3)
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N,K = map(int,input().split())
+    ans = 0
+    for i in range(1,N+1):
+        p = 1
+        while i<K:
+            i *= 2
+            p /= 2
+        ans += p
+    print(ans/N)
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int,input().split())
+    p = 0
+    for i in range(1,n+1):
+        if i >= k:
+            p += 1/n
+        else:
+            j = 1
+            while i * 2 ** j < k:
+                j += 1
+            p += (1/2) ** j / n
+    print(p)
+
+=======
+Suggestion 10
+
+def solve():
+    n, k = map(int, input().split())
+    ans = 0
+    for i in range(1, n + 1):
+        cnt = 0
+        while i < k:
+            i *= 2
+            cnt += 1
+        ans += (1 / n) * (0.5 ** cnt)
+    print(ans)

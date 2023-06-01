@@ -1,45 +1,95 @@
-#问题陈述
-#在一个x轴指向右，y轴指向上的二维坐标平面上，我们有一个有N个顶点p_0, p_1, p_2, ..., p_{N - 1}的规则N-gon。
-#这里，保证N是偶数，顶点p_0, p_1, p_2, ..., p_{N - 1}是按逆时针顺序排列。
-#让（x_i，y_i）表示p_i的坐标。
-#给出x_0, y_0, x_{(N/(2))}, and y_{(N/(2))}，求x_1和y_1。
-#
-#限制条件
-#4 ≦ N ≦ 100
-#N是偶数。
-#0 ≦ x_0, y_0 ≦ 100
-#0 ≦ x_{（N/(2)）}, y_{（N/(2)）} ≦ 100
-#(x_0, y_0) ≠ (x_{(N/(2))}, y_{(N/(2))})
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_0 y_0
-#x_{（N/（2））} y_{（N/（2））}
-#
-#输出
-#按照这个顺序打印x_1和y_1，中间有一个空格。
-#你的输出被认为是正确的，当对于打印的每个值，与我们的答案的绝对或相对误差最多为10^{-5}。
-#
-#输入样本1
-#4
-#1 1
-#2 2
-#
-#样本输出 1
-#2.00000000000 1.00000000000
-#我们得到p_0 = (1, 1)和p_2 = (2, 2)。
-#p_0、p_1、p_2和p_3构成一个正方形，并且它们按逆时针顺序排列，这一事实唯一地决定了其他顶点的坐标，如下所示：
-#p_1 = (2, 1)
-#p_3 = (1, 2)
-#
-#样本输入2
-#6
-#5 3
-#7 4
-#
-#样本输出2
-#5.93301270189 2.38397459622
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems197_d():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    return
+
+=======
+Suggestion 3
+
+def get_xy(x0,y0,x1,y1):
+    x2 = (x0 + x1)/2
+    y2 = (y0 + y1)/2
+    return x2,y2
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x1, y1 = map(int, input().split())
+    x2 = (x0 + x1 + (y0 - y1) * ((3 ** 0.5) / 2)) / 2
+    y2 = (y0 + y1 + (x1 - x0) * ((3 ** 0.5) / 2)) / 2
+    print(x2, y2)
+
+=======
+Suggestion 6
+
+def main():
+    # 输入
+    N = int(input())
+    x0, y0 = map(float, input().split())
+    x2, y2 = map(float, input().split())
+
+    # 计算
+    x1 = (x0 + x2 + (y2 - y0) * (3 ** 0.5)) / 2
+    y1 = (y0 + y2 - (x2 - x0) * (3 ** 0.5)) / 2
+
+    # 输出
+    print(x1, y1)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x0, y0 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x1 = (x0+x2)/2
+    y1 = (y0+y2)/2
+    x3 = x1 - y0 + y1
+    y3 = y1 + x0 - x1
+    x4 = x3 - x0 + x2
+    y4 = y3 - y0 + y2
+    print(x3, y3)
+    print(x4, y4)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    x0, y0 = map(int, input().split())
+    xN2, yN2 = map(int, input().split())
+    x1 = (2*xN2 - x0) / 2
+    y1 = (2*yN2 - y0) / 2
+    print(x1, y1)
+
+=======
+Suggestion 9
+
+def get_x1_y1(x0, y0, x2, y2):
+    x1 = x0 + (x2 - x0) * 1.0 / 2 - (y2 - y0) * 1.0 / 2 * 3 ** 0.5
+    y1 = y0 + (y2 - y0) * 1.0 / 2 + (x2 - x0) * 1.0 / 2 * 3 ** 0.5
+    return x1, y1
+
+N = int(input())
+x0, y0 = map(int, input().split())
+x2, y2 = map(int, input().split())
+x1, y1 = get_x1_y1(x0, y0, x2, y2)
+print(x1, y1)

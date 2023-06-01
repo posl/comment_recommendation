@@ -1,94 +1,194 @@
-#问题陈述
-#一个SNS有N个用户--用户1，用户2，...，用户N。
-#在这N个用户之间，有一些关系--M条友谊和K条阻隔。
-#对于每个i = 1, 2, ..., M，用户A_i和用户B_i之间有一个双向的友谊。
-#对于每个i = 1, 2, ..., K，在用户C_i和用户D_i之间有一个双向的阻隔关系。
-#当以下四个条件都满足时，我们定义用户a为用户b的候选好友：
-#a ≠ b。
-#用户a和用户b之间不存在友谊。
-#用户a和用户b之间不存在blockhip。
-#存在一个由1到N（包括）之间的整数组成的序列c_0, c_1, c_2, ..., c_L，使得c_0 = a, c_L = b，并且对于每个i = 0, 1, ..., L - 1的用户c_i和c_{i+1}之间存在友谊。
-#对于每个用户i = 1, 2, ...N，它有多少个朋友候选人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#按顺序打印答案，中间有空格。
-#
-#输入样本 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#样本输出1
-#0 1 0 1
-#用户2和3之间有友谊，3和4之间也有友谊。同时，用户2和4之间没有友谊或阻隔关系。因此，用户4是用户2的候选好友。
-#然而，用户1或3都不是用户2的候选朋友，所以用户2有一个候选朋友。
-#
-#样本输入2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#样本输出2
-#0 0 0 0 0
-#每个人都是其他人的朋友，没有朋友候选人。
-#
-#样本输入3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#输出样本3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    CD = [list(map(int, input().split())) for _ in range(K)]
+
+    # 友達関係を表すグラフを作成する
+    G = [[] for _ in range(N)]
+    for a, b in AB:
+        G[a - 1].append(b - 1)
+        G[b - 1].append(a - 1)
+
+    # ブロック関係を表すグラフを作成する
+    B = [[] for _ in range(N)]
+    for c, d in CD:
+        B[c - 1].append(d - 1)
+        B[d - 1].append(c - 1)
+
+    # 幅優先探索を行う
+    # 頂点sから各頂点への最短距離を求める
+    def bfs(s, G):
+        dist = [-1] * N
+        que = []
+        dist[s] = 0
+        que.append(s)
+        while que:
+            v = que.pop(0)
+            for nv in G[v]:
+                if dist[nv] == -1:
+                    dist[nv] = dist[v] + 1
+                    que.append(nv)
+        return dist
+
+    # 頂点0を始点とした時の最短距離を求める
+    dist = bfs(0, G)
+
+    # 頂点0から各頂点への最短距離が2以下であれば、
+    # 友達候補となる頂点である
+    ans = [0] * N
+    for i in range(N):
+        if dist[i] <= 2:
+            ans[i] = 1
+
+    # 頂点0から各頂点への最短距離が2以下である頂点を
+    # 頂点とするグラフを作成する
+    G2 = [[] for _ in range(N)]
+    for i in range(N):
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def bfs(start, end, graph):
+    visited = [0] * (len(graph) + 1)
+    queue = []
+    queue.append(start)
+    while queue:
+        node = queue.pop(0)
+        if node == end:
+            return True
+        visited[node] = 1
+        for i in graph[node]:
+            if visited[i] == 0:
+                queue.append(i)
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    n,m,k = map(int,input().split())
+    l = []
+    for i in range(m):
+        l.append(list(map(int,input().split())))
+    l2 = []
+    for i in range(k):
+        l2.append(list(map(int,input().split())))
+    l3 = []
+    for i in range(n):
+        l3.append(0)
+    for i in range(m):
+        l3[l[i][0]-1] += 1
+        l3[l[i][1]-1] += 1
+    for i in range(k):
+        l3[l2[i][0]-1] -= 1
+        l3[l2[i][1]-1] -= 1
+    for i in range(n):
+        l3[i] -= 1
+    for i in range(n):
+        print(l3[i],end=" ")
+
+=======
+Suggestion 6
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    blocks = [[] for _ in range(N)]
+    for _ in range(M):
+        A, B = map(int, input().split())
+        friends[A-1].append(B-1)
+        friends[B-1].append(A-1)
+    for _ in range(K):
+        C, D = map(int, input().split())
+        blocks[C-1].append(D-1)
+        blocks[D-1].append(C-1)
+    for i in range(N):
+        ans = len(friends[i])
+        for j in blocks[i]:
+            if j in friends[i]:
+                ans -= 1
+        for j in friends[i]:
+            for k in friends[j]:
+                if k != i and k not in friends[i] and k not in blocks[i]:
+                    ans += 1
+        print(ans, end=" ")
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = []
+    blocks = []
+    for i in range(M):
+        friends.append(list(map(int, input().split())))
+    for i in range(K):
+        blocks.append(list(map(int, input().split())))
+
+    #print(N, M, K)
+    #print(friends)
+    #print(blocks)
+
+    candidates = [0] * N
+    for i in range(N):
+        for j in range(M):
+            if friends[j][0] == i + 1:
+                candidates[i] += 1
+            if friends[j][1] == i + 1:
+                candidates[i] += 1
+
+    #print(candidates)
+
+    for i in range(N):
+        for j in range(K):
+            if blocks[j][0] == i + 1:
+                candidates[i] -= 1
+            if blocks[j][1] == i + 1:
+                candidates[i] -= 1
+
+    #print(candidates)
+
+    for i in range(N):
+        for j in range(M):
+            if friends[j][0] == i + 1:
+                candidates[i] -= 1
+            if friends[j][1] == i + 1:
+                candidates[i] -= 1
+
+    #print(candidates)
+
+    for i in range(N):
+        for j in range(K):
+            if blocks[j][0] == i + 1:
+                candidates[i] += 1
+            if blocks[j][1] == i + 1:
+                candidates[i] += 1
+
+    #print(candidates)
+
+    for i in range(N):
+        print(candidates[i], end=' ')
+
+main()

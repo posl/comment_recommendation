@@ -1,57 +1,153 @@
-#问题陈述
-#当且仅当s_i ≦ s_{i+1}对每个i(1 ≦ i ≦ n - 1)成立时，n个数的序列S = (s_1, s_2, ..., s_n)，被称为非递减。
-#给出的是各为N个整数的非递减序列：A = (a_1, a_2, ..., a_N) 和 B = (b_1, b_2, ..., b_N)。
-#考虑一个非递减的N个整数序列，C = (c_1, c_2, ..., c_N)，它满足以下条件：
-#a_i ≦ c_i ≦ b_i，对于每一个i（1 ≦ i ≦ N）。
-#找出能成为C的序列的数量，模数为998244353。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#0 ≦ a_i ≦ b_i ≦ 3000 (1 ≦ i ≦ N)
-#序列A和B是不递减的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#b_1 b_2 ... b_N
-#
-#输出
-#打印可以是C的序列的数量，模数为998244353。
-#
-#输入样本 1
-#2
-#1 1
-#2 3
-#
-#样本输出 1
-#5
-#有五个序列可以是C，如下所示。
-#(1, 1)
-#(1, 2)
-#(1, 3)
-#(2, 2)
-#(2, 3)
-#请注意，（2，1）不满足条件，因为它不是非递减的。
-#
-#样本输入 2
-#3
-#2 2 2
-#2 2 2
-#
-#样本输出 2
-#1
-#有一个序列可以是C，如下所示。
-#(2, 2, 2)
-#
-#样本输入3
-#10
-#1 2 3 4 5 6 7 8 9 10
-#1 4 9 16 25 36 49 64 81 100
-#
-#样本输出3
-#978222082
-#一定要找到998244353的模数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def func(n, a, b):
+    result = 1
+    for i in range(n):
+        result *= (b[i] - a[i] + 1)
+    return result % 998244353
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    mod = 998244353
+    # 用dp[i][j]表示长度为i，第i个数为j的方案数
+    dp = [[0] * 3001 for i in range(n + 1)]
+    for i in range(a[0], b[0] + 1):
+        dp[1][i] = 1
+    for i in range(2, n + 1):
+        for j in range(a[i - 1], b[i - 1] + 1):
+            for k in range(j, b[i - 2] + 1):
+                dp[i][j] += dp[i - 1][k]
+                dp[i][j] %= mod
+    print(sum(dp[n]) % mod)
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    MOD = 998244353
+
+    # dp[i][j] = C[i][j] * dp[i-1][j]
+    dp = [[0 for _ in range(3001)] for _ in range(3001)]
+    dp[0][0] = 1
+
+    for i in range(n):
+        for j in range(3001):
+            dp[i+1][j] += dp[i][j]
+            dp[i+1][j] %= MOD
+            if j >= a[i]:
+                dp[i+1][j] += dp[i][j-a[i]]
+                dp[i+1][j] %= MOD
+            if j >= b[i]:
+                dp[i+1][j] -= dp[i][j-b[i]-1]
+                dp[i+1][j] %= MOD
+
+    print(dp[n][3000])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    mod = 998244353
+
+    ans = 1
+    for i in range(n):
+        ans *= max(0, b[i] - a[i] + 1)
+        ans %= mod
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def func(n,a,b):
+    result = 1
+    for i in range(n):
+        result *= (b[i]-a[i]+1)
+    print(result%998244353)
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    MOD = 998244353
+
+    dp = [[0] * 3001 for _ in range(N + 1)]
+
+    dp[0][0] = 1
+
+    for i in range(N):
+        for j in range(A[i], B[i] + 1):
+            dp[i + 1][j] = dp[i][j]
+        for j in range(1, 3001):
+            dp[i + 1][j] = (dp[i + 1][j] + dp[i + 1][j - 1]) % MOD
+
+    print(dp[N][3000])
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    mod = 998244353
+    ans = 1
+    for i in range(N):
+        ans *= max(0, B[i] - A[i] + 1)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    mod = 998244353
+
+    dp = [[0 for _ in range(3001)] for _ in range(3001)]
+    dp[0][0] = 1
+
+    for i in range(1, n + 1):
+        for j in range(a[i - 1], b[i - 1] + 1):
+            dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % mod
+
+    print(dp[n][b[n - 1]])
+
+=======
+Suggestion 9
+
+def get_num(n, a, b):
+    #print(n, a, b)
+    if n == 1:
+        return b[0] - a[0] + 1
+    else:
+        return get_num(n-1, a[:-1], b[:-1]) + b[-1] - a[-1] + 1
+
+n = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+print(get_num(n, a, b) % 998244353)

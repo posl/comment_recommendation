@@ -1,32 +1,99 @@
-#问题陈述
-#在一个坐标平面内有一个矩形。四个顶点的坐标是(0,0), (W,0), (W,H), 和(0,H)。
-#给你一个点(x,y)，它在矩形内或矩形的边界上。我们将画一条经过(x,y)的直线，把矩形切成两部分。找出面积不大于另一部分的最大可能面积。此外，确定是否有多种方法来切割矩形并达到该最大值。
-#
-#限制条件
-#1 ≦ W,H ≦ 10^9
-#0≦ x≦ W
-#0≦ y≦ H
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#W H x y
-#
-#输出
-#打印面积不大于其他部分的最大可能面积，如果有多种方法切割矩形并达到该最大面积，则后面加1，否则加0。
-#当打印的面积的绝对或相对误差最多为10^{-9}时，将被判断为正确。
-#
-#输入样本 1
-#2 3 1 2
-#
-#输出样本 1
-#3.000000 0
-#x=1这一行给出了最佳切割，而其他行都没有。
-#
-#输入样本 2
-#2 2 1 1
-#
-#样本输出 2
-#2.000000 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    W, H, x, y = map(int, input().split())
+    if x == W / 2 and y == H / 2:
+        print(W * H / 2, 1)
+    else:
+        print(W * H / 2, 0)
+
+=======
+Suggestion 2
+
+def main():
+    w,h,x,y = map(int,input().split())
+    if x == w/2 and y == h/2:
+        print(w*h/2,1)
+    else:
+        print(w*h/2,0)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取数据
+    W,H,x,y = map(int,input().split())
+    # 计算面积
+    area = W*H/2
+    # 判断是否在中间
+    if x*2 == W and y*2 == H:
+        print(area,1)
+    else:
+        print(area,0)
+
+=======
+Suggestion 4
+
+def split_rect(W, H, x, y):
+    # print(W, H, x, y)
+    area = W * H
+    if W / 2 == x and H / 2 == y:
+        return area / 2, 1
+    elif W / 2 == x:
+        return max(y * W, (H - y) * W), 0
+    elif H / 2 == y:
+        return max(x * H, (W - x) * H), 0
+    else:
+        return max(x * H, (W - x) * H), 0
+
+=======
+Suggestion 5
+
+def main():
+    w,h,x,y = map(int,input().split())
+    s = w*h/2
+    if w/2 == x and h/2 == y:
+        print(s,1)
+    else:
+        print(s,0)
+
+=======
+Suggestion 6
+
+def main():
+    W,H,x,y = map(int,input().split())
+    area = W*H/2
+    if x == W/2 and y == H/2:
+        print(area,1)
+    else:
+        print(area,0)
+
+=======
+Suggestion 7
+
+def main():
+    w, h, x, y = map(int, input().split())
+    print(w * h / 2, 1 if w == 2 * x and h == 2 * y else 0)
+
+=======
+Suggestion 8
+
+def main():
+    w, h, x, y = map(int, input().split())
+
+    area = w * h / 2
+    print(area, end=' ')
+    if 2 * x == w and 2 * y == h:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    w,h,x,y = map(int,input().split())
+    print(w*h/2,1 if x==w/2 and y==h/2 else 0)

@@ -1,39 +1,127 @@
-#问题陈述
-#设f(A, B)是A, A+1, ..., B的互斥，求f(A, B)。
-#什么是排他性OR？
-#整数c_1, c_2, ..., c_n的互斥（我们称它为y）定义如下：
-#当y以二进制书写时，如果c_1, c_2, ...c_m中二进制表示的2^k位上有1的整数是奇数，则2^k位上的数字为1，如果是偶数则为0。
-#例如，3和5的互斥是6。（当以二进制书写时：011和101的互斥或是110）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ a ≦ b ≦ 10^{12}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#计算f(A, B)并打印。
-#
-#输入样本 1
-#2 4
-#
-#输出样本 1
-#5
-#2, 3, 4分别是010, 011, 100的二进制。
-#这些的互斥或是101，也就是10进制的5。
-#
-#样本输入2
-#123 456
-#
-#样本输出2
-#435
-#
-#样本输入3
-#123456789012 123456789012
-#
-#样本输出3
-#123456789012
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        if a%2 == 1:
+            return a^f(a+1, b)
+        else:
+            return f(a+1, b)
+
+=======
+Suggestion 2
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return b | f(a, b-1)
+
+=======
+Suggestion 3
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return f(a, (a+b)//2) | f((a+b)//2+1, b)
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 4
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return f(a, b - 1) ^ b
+
+=======
+Suggestion 5
+
+def f(a,b):
+    def g(x):
+        if x%4==0:
+            return x
+        elif x%4==1:
+            return 1
+        elif x%4==2:
+            return x+1
+        else:
+            return 0
+    return g(b)^g(a-1)
+
+a,b=map(int,input().split())
+print(f(a,b))
+
+=======
+Suggestion 6
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return a ^ f(a+1, b)
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 7
+
+def f(a, b):
+    if a == b:
+        return a
+    elif a == b - 1:
+        return a ^ b
+    elif a % 2 == 0 and b % 2 == 0:
+        return f(a >> 1, b >> 1) << 1
+    elif a % 2 == 0 and b % 2 == 1:
+        return (f(a >> 1, b >> 1) << 1) + 1
+    elif a % 2 == 1 and b % 2 == 0:
+        return (f(a >> 1, b >> 1) << 1) + 1
+    else:
+        return (f(a >> 1, b >> 1) << 1) + 2
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 8
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return a ^ f(a+1, b)
+
+=======
+Suggestion 9
+
+def get_xor(a, b):
+    if a == b:
+        return a
+    else:
+        return get_xor(a, b-1) ^ b
+
+=======
+Suggestion 10
+
+def f(a, b):
+    if a == b:
+        return a
+    elif a + 1 == b:
+        return a ^ b
+    elif a % 2 == 0 and b % 2 == 0:
+        return f(a, b - 1) ^ b
+    elif a % 2 == 0 and b % 2 == 1:
+        return f(a, b - 1)
+    elif a % 2 == 1 and b % 2 == 0:
+        return f(a, b) ^ b
+    else:
+        return f(a, b) ^ b
