@@ -22,7 +22,7 @@ class Sum_accuracy:
                 total_num = len(df)
                 sum_accuracy_l[i][0] += pass_num
                 sum_accuracy_l[i][1] += total_num
-        
+            print(each_result) 
         return sum_accuracy_l
     
     def write(self, sum_accuracy_l):
