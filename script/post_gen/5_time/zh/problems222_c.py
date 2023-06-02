@@ -1,73 +1,220 @@
-#问题陈述
-#2N个ID号为1到2N的选手将参加一个石头剪刀布比赛。
-#比赛有M轮。每轮有N场一对一的比赛，每个选手都参加其中的一场。
-#对于每个i=0，1，...，M，选手在第i轮结束时的排名确定如下。
-#在前i轮比赛中获胜较多的选手排名较高。
-#平局是由ID号码打破的：ID号码较小的玩家排名较高。
-#此外，对于每个i=1，...，M，第i轮的比赛安排如下。
-#对于每个k=1，2，...，N，在第（i-1）轮结束时排名（2k-1）-第和2k-第的玩家之间进行一场比赛。
-#在每场比赛中，两个玩家只打一手牌，结果是一个玩家赢，另一个玩家输，或者平局。
-#可以预见未来的高桥知道，玩家i将在第j轮的比赛中玩A_{i, j}，其中A_{i,j}是G、C或P。
-#这里，G代表石头，C代表剪刀，而P代表布。(这些都来自于日语）。
-#在第M轮结束时，找出玩家的等级。
-#石头-剪子-布的规则
-#石头剪子纸比赛的结果是根据两位选手的手牌决定的。
-# 如果一个玩家玩石头（G），另一个玩家玩剪刀（C），玩石头（G）的玩家获胜。
-# 如果一方出剪刀（C），另一方出布（P），出剪刀（C）的一方获胜。
-# 如果一个玩家玩布（P），另一个玩家玩石头（G），玩布（P）的玩家获胜。
-# 如果双方玩的是同一把牌，则比赛结束。
-#
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 100
-#A_{i,j}是G, C, 或P。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_{1,1}A_{1,2}...A_{1,M}
-#A_{2,1}A_{2,2}...A_{2,M}
-#.
-#.
-#.
-#A_{2N,1}A_{2N,2}...A_{2N,M}
-#
-#输出
-#打印2N行。
-#第i行应包含在第M轮结束时排名第i的棋手的ID号。
-#
-#输入样本 1
-#2 3
-#GCP
-#PPP
-#CCC
-#PPC
-#
-#样本输出1
-#3
-#1
-#2
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。棋手3赢得前者，棋手1赢得后者。
-#在第三轮，比赛在球员3和1之间，以及球员2和4之间进行。玩家3赢得了前者，而玩家4赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：3、1、2、4，从高到低。
-#
-#输入样本 2
-#2 2
-#GC
-#PG
-#CG
-#PP
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。前者是平局，而玩家1赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：1、2、3、4，从高到低。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int,input().split())
+    A = []
+    for i in range(2*N):
+        A.append(input())
+    rank = [[i+1,0] for i in range(2*N)]
+    for i in range(M):
+        for j in range(0,2*N,2):
+            if A[rank[j][0]-1][i] == A[rank[j+1][0]-1][i]:
+                continue
+            elif A[rank[j][0]-1][i] == 'G' and A[rank[j+1][0]-1][i] == 'C':
+                rank[j][1] -= 1
+            elif A[rank[j][0]-1][i] == 'C' and A[rank[j+1][0]-1][i] == 'P':
+                rank[j][1] -= 1
+            elif A[rank[j][0]-1][i] == 'P' and A[rank[j+1][0]-1][i] == 'G':
+                rank[j][1] -= 1
+            else:
+                rank[j+1][1] -= 1
+        rank.sort(key=lambda x:(x[1],x[0]))
+    for i in range(2*N):
+        print(rank[i][0])
+
+=======
+Suggestion 2
+
+def main():
+    N,M = map(int,input().split())
+    A = [list(input()) for _ in range(2*N)]
+    rank = [[i,0] for i in range(2*N)]
+    for i in range(M):
+        for j in range(N):
+            p1 = rank[2*j][0]
+            p2 = rank[2*j+1][0]
+            if A[p1][i] == A[p2][i]:
+                continue
+            elif A[p1][i] == 'G':
+                if A[p2][i] == 'C':
+                    rank[2*j][1] -= 1
+                else:
+                    rank[2*j+1][1] -= 1
+            elif A[p1][i] == 'C':
+                if A[p2][i] == 'P':
+                    rank[2*j][1] -= 1
+                else:
+                    rank[2*j+1][1] -= 1
+            else:
+                if A[p2][i] == 'G':
+                    rank[2*j][1] -= 1
+                else:
+                    rank[2*j+1][1] -= 1
+        rank.sort(key=lambda x:(x[1],x[0]))
+    for i in range(2*N):
+        print(rank[i][0]+1)
+
+=======
+Suggestion 3
+
+def gcp(a, b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 4
+
+def judge(player1,player2):
+    if player1 == player2:
+        return 0
+    elif player1 == 'G' and player2 == 'C':
+        return 1
+    elif player1 == 'C' and player2 == 'P':
+        return 1
+    elif player1 == 'P' and player2 == 'G':
+        return 1
+    else:
+        return 2
+
+=======
+Suggestion 5
+
+def solve():
+    n,m = map(int,input().split())
+    a = []
+    for _ in range(2*n):
+        a.append(list(input()))
+    rank = [i for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            x = rank[2*j]
+            y = rank[2*j+1]
+            if a[x][i] == a[y][i]:
+                continue
+            elif a[x][i] == 'G' and a[y][i] == 'C':
+                rank[2*j] = y
+                rank[2*j+1] = x
+            elif a[x][i] == 'C' and a[y][i] == 'P':
+                rank[2*j] = y
+                rank[2*j+1] = x
+            elif a[x][i] == 'P' and a[y][i] == 'G':
+                rank[2*j] = y
+                rank[2*j+1] = x
+    for i in range(2*n):
+        print(rank[i]+1)
+
+=======
+Suggestion 6
+
+def check_winner(a, b):
+    if a == 'G' and b == 'C':
+        return True
+    elif a == 'C' and b == 'P':
+        return True
+    elif a == 'P' and b == 'G':
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def judge(a,b):
+    if a == b:
+        return 0
+    elif (a == "G" and b == "C") or (a == "C" and b == "P") or (a == "P" and b == "G"):
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = [input() for _ in range(2 * N)]
+    rank = [[i + 1, 0] for i in range(2 * N)]
+    for i in range(M):
+        for j in range(N):
+            k = 2 * j
+            if (A[rank[k][0] - 1][i] == "G" and A[rank[k + 1][0] - 1][i] == "C") or (A[rank[k][0] - 1][i] == "C" and A[rank[k + 1][0] - 1][i] == "P") or (A[rank[k][0] - 1][i] == "P" and A[rank[k + 1][0] - 1][i] == "G"):
+                rank[k][1] += 1
+            elif (A[rank[k][0] - 1][i] == "C" and A[rank[k + 1][0] - 1][i] == "G") or (A[rank[k][0] - 1][i] == "P" and A[rank[k + 1][0] - 1][i] == "C") or (A[rank[k][0] - 1][i] == "G" and A[rank[k + 1][0] - 1][i] == "P"):
+                rank[k + 1][1] += 1
+        rank.sort(key=lambda x: x[1], reverse=True)
+    for i in range(2 * N):
+        print(rank[i][0])
+
+=======
+Suggestion 9
+
+def getRanking(N, M, A):
+    #print(N, M, A)
+    #print("A[1][1]", A[1][1])
+    #print("A[2][1]", A[2][1])
+    #print("A[3][1]", A[3][1])
+    #print("A[4][1]", A[4][1])
+    #print("A[5][1]", A[5][1])
+    #print("A[6][1]", A[6][1])
+    #print("A[7][1]", A[7][1])
+    #print("A[8][1]", A[8][1])
+    #print("A[9][1]", A[9][1])
+    #print("A[10][1]", A[10][1])
+    #print("A[11][1]", A[11][1])
+    #print("A[12][1]", A[12][1])
+    #print("A[13][1]", A[13][1])
+    #print("A[14][1]", A[14][1])
+    #print("A[15][1]", A[15][1])
+    #print("A[16][1]", A[16][1])
+    #print("A[17][1]", A[17][1])
+    #print("A[18][1]", A[18][1])
+    #print("A[19][1]", A[19][1])
+    #print("A[20][1]", A[20][1])
+    #print("A[21][1]", A[21][1])
+    #print("A[22][1]", A[22][1])
+    #print("A[23][1]", A[23][1])
+    #print("A[24][1]", A[24][1])
+    #print("A[25][1]", A[25][1])
+    #print("A[26][1]", A[26][1])
+    #print("A[27][1]", A[27][1])
+    #print("A[28][1]", A[28][1])
+    #print("A[29][1]", A[29][1])
+    #print("A[30][1]", A[30][1])
+    #
+
+=======
+Suggestion 10
+
+def RPS(i,j):
+    if i == 'G':
+        if j == 'G':
+            return 0
+        elif j == 'C':
+            return 1
+        elif j == 'P':
+            return -1
+    elif i == 'C':
+        if j == 'G':
+            return -1
+        elif j == 'C':
+            return 0
+        elif j == 'P':
+            return 1
+    elif i == 'P':
+        if j == 'G':
+            return 1
+        elif j == 'C':
+            return -1
+        elif j == 'P':
+            return 0

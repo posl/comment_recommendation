@@ -1,67 +1,164 @@
-#问题陈述
-#高桥有一个由小写英文字母组成的字符串S。
-#在这个字符串上，他将只做一次下面的操作。
-#首先，选择一个非负的整数K。
-#然后，将S的每个字符向右移动K（见下文）。
-#这里、
-#a向右移动1就是b；
-#b向右移动1就是c；
-#c向右移动1就是d；
-#...
-#y向右移动1是z；
-#z向右移动1是a。
-#例如，b向右移动4是f，y向右移动3是b。
-#给你一个字符串T。
-#请判断高桥是否能通过上述操作使S等于T。
-#
-#限制条件
-#S和T都是一个长度在1到10^5之间的字符串，由小写英文字母组成。
-#S和T的长度是相等的。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#T
-#
-#輸出
-#如果高桥能使S等于T，打印Yes；如果不能，打印No。
-#
-#输入样本1
-#abc
-#ijk
-#
-#样本输出1
-#Yes
-#当高桥选择K=8时、
-#a向右移动8，成为i、
-#b向右移动8，成为j、
-#c向右移动8，成为k、
-#而现在S和T是相等的。
-#因此，他可以使S等于T，所以应该印出Yes。
-#
-#输入样本2
-#z
-#a
-#
-#样本输出2
-#Yes
-#选择K=1使S和T相等。
-#请注意，z右边的字母是a。
-#
-#样本输入3
-#ppq
-#qqp
-#
-#样本输出3
-#No
-#没有一个非负整数K可以让他选择使S等于T，所以应该打印No。
-#
-#输入样本4
-#atcoder
-#atcoder
-#
-#样本输出4
-#Yes
-#选择K=0使S和T相等。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print('No')
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 2
+
+def move(s, k):
+    return ''.join([chr((ord(x)-ord('a')+k)%26+ord('a')) for x in s])
+
+s = input()
+t = input()
+
+for i in range(26):
+    if move(s, i) == t:
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 3
+
+def check(s,t):
+    if s == t:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+    else:
+        for i in range(1, 26):
+            ss = ''
+            for c in s:
+                ss += chr((ord(c) - ord('a') + i) % 26 + ord('a'))
+            if ss == t:
+                print('Yes')
+                return
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+    else:
+        for i in range(len(s)):
+            if s[i] != t[i]:
+                print("No")
+                return
+        print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def move(s, k):
+    return chr((ord(s) - ord('a') + k) % 26 + ord('a'))
+
+s = input()
+t = input()
+
+for i in range(26):
+    for j in range(len(s)):
+        if move(s[j], i) != t[j]:
+            break
+    else:
+        print('Yes')
+        exit()
+
+print('No')
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            break
+    else:
+        print('Yes')
+        return
+
+    for k in range(1, 26):
+        u = ''
+        for j in range(len(s)):
+            u += chr((ord(s[j]) - ord('a') + k) % 26 + ord('a'))
+        if u == t:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if (ord(t[i])-ord(s[i]))%26 != 0:
+            print("No")
+            return
+    print("Yes")
+    return
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t):
+        print('No')
+        return
+    if s == t:
+        print('Yes')
+        return
+    for i in range(len(s)):
+        if s[i:] + s[:i] == t:
+            print('Yes')
+            return
+    print('No')

@@ -1,54 +1,145 @@
-#问题陈述
-#给出N个字符串S_1,...,S_N，其中每个字符串都是AND或OR。
-#求N+1个变量(x_0,...,x_N)的数组，其中每个元素都是真或假的，使得下面的计算结果y_N为真：
-#y_0=x_0；
-#对于i≧1，如果S_i是AND，y_i=y_{i-1} ∧ x_i；如果S_i是OR，y_i=y_{i-1} ∨ x_i。
-#这里，a ∧ b 和 a ∨ b 是逻辑运算符。
-#
-#限制条件
-#1 ≦ N ≦ 60
-#S_i 是 AND 或 OR。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2
-#AND
-#OR
-#
-#样本输出1
-#5
-#例如，如果(x_0,x_1,x_2)=(True,False,True)，我们有y_2=True，如下所示：
-#y_0=x_0=True
-#y_1=y_0 ∧ x_1=True ∧ False=False
-#y_2=y_1 ∨ x_2 = False ∨ True=True
-#所有五个图元 (x_0,x_1,x_2) 的结果是 y_2 = True，如下所示：
-#(True,True,True)
-#(True,True,False)
-#(True,False,True)
-#(False,True,True)
-#(False,False,True)
-#
-#样本输入2
-#5
-#OR
-#OR
-#OR
-#OR
-#OR
-#
-#样本输出2
-#63
-#所有的图元，除了一个完全填写为 "假 "的图元外，其他图元的结果都是y_5=真。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s[0] == 'AND':
+        ans = 1
+    else:
+        ans = 0
+    for i in range(1, n):
+        if s[i] == 'AND':
+            ans *= 2
+        else:
+            ans = ans * 2 + 1
+    print(2 ** (n + 1) - ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = 1
+    for i in range(n):
+        if s[i] == 'OR':
+            ans += 2**(i+1)
+    print(ans)
+
+=======
+Suggestion 4
+
+def OR(a,b):
+    if a == True or b == True:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def main():
+    n=int(input())
+    s=[input() for _ in range(n)]
+    for i in range(n):
+        if s[i]=="AND":
+            print(2**n-2**(i+1)+1)
+        else:
+            print(2**(i+1))
+
+=======
+Suggestion 6
+
+def check(p):
+    y = [0]*(N+1)
+    y[0] = p[0]
+    for i in range(1,N+1):
+        if S[i-1] == "AND":
+            y[i] = y[i-1] and p[i]
+        else:
+            y[i] = y[i-1] or p[i]
+    return y[N]
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    #print(N)
+    #print(S)
+
+    #x = [False]*(N+1)
+    #y = [False]*(N+1)
+
+    #x[0] = True
+    #y[0] = True
+
+    #for i in range(1,N+1):
+    #    if S[i-1] == "AND":
+    #        x[i] = x[i-1]
+    #    else:
+    #        x[i] = not x[i-1]
+    #    y[i] = y[i-1] and x[i]
+
+    #print(x)
+    #print(y)
+
+    #print(2**N)
+
+    ans = 2**N
+    for i in range(N):
+        if S[i] == "OR":
+            ans += 2**(i+1)
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    return N, S
+
+=======
+Suggestion 9
+
+def solve(n, s):
+    if n == 1:
+        return 2
+    if s[n - 2] == "OR":
+        return 2 ** n - 1
+    else:
+        return 2 ** n - 2
+
+n = int(input())
+s = []
+for _ in range(n):
+    s.append(input())
+print(solve(n, s))
+
+=======
+Suggestion 10
+
+def solve(n, s):
+    # 请在这里编写代码
+    return 0

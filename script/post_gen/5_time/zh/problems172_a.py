@@ -1,29 +1,24 @@
-#问题陈述
-#给出一个整数a作为输入，打印出a+a^2+a^3的值。
-#
-#限制条件
-#1 ≦ a ≦ 10
-#a是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a
-#
-#輸出
-#将a+a^2+a^3的值打印为整数。
-#
-#输入样本 1
-#2
-#
-#样本输出 1
-#14
-#当a = 2时，我们有a + a^2 + a^3 = 2 + 2^2 + 2^3 = 2 + 4 + 8 = 14。
-#打印答案作为输入。像14.0这样的输出将被判断为不正确。
-#
-#输入样本2
-#10
-#
-#样本输出2
-#1110
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    print(a+a**2+a**3)
+
+=======
+Suggestion 2
+
+def problem172_a():
+    a = int(input())
+    print(a+a**2+a**3)
+
+=======
+Suggestion 3
+
+def problem_172_a():
+    a = int(input())
+    print(a+a**2+a**3)
+
+problem_172_a()

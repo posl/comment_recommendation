@@ -1,52 +1,151 @@
-#问题陈述
-#高桥站在数线上的坐标0处。
-#他现在将进行N次跳跃。在第i次跳跃中（1 ≦ i ≦ N），他向正方向移动a_i或b_i。
-#他是否有可能在N次跳跃后到达坐标X处？
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ a_i < b_i ≦ 100 (1 ≦ i ≦ N)
-#1 ≦ X ≦ 10000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#a_1 b_1
-#.
-#.
-#.
-#a_N b_N
-#
-#输出
-#如果高桥在N次跳跃后有可能在坐标X处，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 10
-#3 6
-#4 5
-#
-#样本输出1
-#Yes
-#通过在第一跳中移动b_1（=6），在第二跳中移动a_2（=4），他可以在坐标X（=10）处。
-#
-#样本输入2
-#2 10
-#10 100
-#10 100
-#
-#样本输出2
-#No
-#在第一跳之后，他可以在坐标X(=10)处，但在所有的跳动之后就不能了。
-#
-#样本输入3
-#4 12
-#1 8
-#5 7
-#3 4
-#2 6
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def can_jump(x, jump):
+    if x == 0:
+        return True
+    if jump == []:
+        return False
+    return can_jump(x-jump[0], jump[1:]) or can_jump(x+jump[0], jump[1:])
+
+=======
+Suggestion 2
+
+def check(X, N, a, b):
+    if X == 0:
+        return True
+    elif N == 0:
+        return False
+    else:
+        return check(X - a[N-1], N-1, a, b) or check(X - b[N-1], N-1, a, b)
+
+=======
+Suggestion 3
+
+def jump(N, X, a, b):
+    # 从第N个开始跳，看是否能跳到X
+    if N == 0:
+        return False
+    if X == a[N - 1] or X == b[N - 1]:
+        return True
+    if X < a[N - 1]:
+        return False
+    if X > b[N - 1]:
+        return False
+    return jump(N - 1, X - a[N - 1], a, b) or jump(N - 1, X - b[N - 1], a, b)
+
+=======
+Suggestion 4
+
+def solve():
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    # print(a)
+    # print(b)
+    # print(X)
+    sum = 0
+    for i in range(N):
+        if (i+1) % 2 == 0:
+            sum += b[i]
+        else:
+            sum += a[i]
+    if sum >= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def jumpable(n, x, a, b):
+    if x == 0:
+        return True
+    if n == 0:
+        return False
+    if jumpable(n-1, x-a[n-1], a, b) or jumpable(n-1, x-b[n-1], a, b):
+        return True
+    return False
+
+=======
+Suggestion 6
+
+def main():
+    n, x = map(int, input().split())
+    for i in range(n):
+        a, b = map(int, input().split())
+        if (x - a) % b == 0:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 7
+
+def jump(n, x, a, b):
+    current = 0
+    for i in range(n):
+        if (x - current) % a[i] == 0:
+            return 'Yes'
+        elif (x - current) % b[i] == 0:
+            return 'Yes'
+        else:
+            current += a[i]
+    return 'No'
+
+=======
+Suggestion 8
+
+def canReach(X, N, a, b):
+    # 从第N次开始跳
+    if X == 0:
+        return True
+    if N == 0:
+        return False
+    if X < 0:
+        return False
+    return canReach(X - a[N - 1], N - 1, a, b) or canReach(X - b[N - 1], N - 1, a, b)
+
+N, X = map(int, input().split())
+a = []
+b = []
+for i in range(N):
+    ai, bi = map(int, input().split())
+    a.append(ai)
+    b.append(bi)
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1], reverse=True)
+    for a, b in ab:
+        if x == a or x == b:
+            print('Yes')
+            break
+        elif x > a:
+            x -= a
+            x += b
+        else:
+            print('No')
+            break
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def jump(n, x, a, b):
+    if x == 0:
+        return True
+    if n == 0:
+        return False
+    return jump(n - 1, x - a[n - 1], a, b) or jump(n - 1, x - b[n - 1], a, b)

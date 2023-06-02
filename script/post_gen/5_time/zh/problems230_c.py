@@ -1,60 +1,129 @@
-#问题说明
-#有一个N×N的横行竖列的网格，所有的方块最初都是白色的。让(i,j)表示位于第i行和第j列的方格。
-#高桥有整数A和B，它们在1和N之间（包括在内）。他将进行以下操作。
-#对于每一个整数k，使得max(1-A,1-B)≦ k≦ min(N-A,N-B)，将(A+k,B+k)涂黑。
-#对于每个整数k，如max(1-A,B-N)≦ k≦ min(N-A,B-1)，将(A+k,B-k)涂成黑色。
-#在这些操作之后的网格中，找出每个方格（i,j）的颜色，使得P≦ i≦ Q和R≦ j≦ S。
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#P Q R S
-#
-#输出
-#打印Q-P+1行。
-#每一行应该包含一个长度为S-R+1的字符串，由#和.组成。
-#第i行中字符串的第j个字符应该是#，表示(P+i-1, R+j-1)被涂成黑色，而.表示(P+i-1, R+j-1)是白色。  
-#
-#输入样本 1
-#5 3 2
-#1 5 1 5
-#
-#输出样本1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#第一个操作将(2,1), (3,2), (4,3), (5,4)四个方块涂成黑色，第二个操作将(4,1), (3,2), (2,3), (1,4)四个方块涂成黑色。
-#因此，上述输出应该被打印出来，因为P=1，Q=5，R=1，S=5。
-#
-#输入样本 2
-#5 3 3
-#4 5 2 5
-#
-#输出样本2
-##.#.
-#...#
-#操作画出九个方块（1,1）、（1,5）、（2,2）、（2,4）、（3,3）、（4,2）、（4,4）、（5,1）、（5,5）。
-#因此，上述输出应该被打印出来，因为P=4，Q=5，R=2，S=5。
-#
-#输入样本3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#输出样本3
-##.#
-#.#.
-##.#
-#注意，输入可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def paint(n, a, b, p, q, r, s):
+    #print("n:%d, a:%d, b:%d, p:%d, q:%d, r:%d, s:%d" % (n, a, b, p, q, r, s))
+    if (p <= a <= q and r <= b <= s):
+        return '#'
+    if (p <= a <= q and r <= b <= s):
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p,q+1):
+        for j in range(r,s+1):
+            if (i-a == j-b) or (i-a == b-j):
+                print("#",end="")
+            else:
+                print(".",end="")
+        print("")
+
+=======
+Suggestion 4
+
+def problem230_c():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+  N, A, B = [int(x) for x in input().split()]
+  P, Q, R, S = [int(x) for x in input().split()]
+  
+  #print(N, A, B)
+  #print(P, Q, R, S)
+  
+  #print("N:", N)
+  #print("A:", A)
+  #print("B:", B)
+  #print("P:", P)
+  #print("Q:", Q)
+  #print("R:", R)
+  #print("S:", S)
+  
+  #print("max(1-A,1-B):", max(1-A,1-B))
+  #print("min(N-A,N-B):", min(N-A,N-B))
+  #print("max(1-A,B-N):", max(1-A,B-N))
+  #print("min(N-A,B-1):", min(N-A,B-1))
+  
+  #print("P+i-1:", P+i-1)
+  #print("R+j-1:", R+j-1)
+  
+  for i in range(P, Q+1):
+    for j in range(R, S+1):
+      if (max(1-A,1-B) <= i <= min(N-A,N-B)) and (A+i, B+i) == (i, j):
+        print("#", end="")
+      elif (max(1-A,B-N) <= i <= min(N-A,B-1)) and (A+i, B-i) == (i, j):
+        print("#", end="")
+      else:
+        print(".", end="")
+    print()
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q + 1):
+        for j in range(r, s + 1):
+            if (i - a) == (j - b) or (i - a) == (b - j):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 7
+
+def problems230_c():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n,a,b = map(int, input().split())
+    p,q,r,s = map(int, input().split())
+    for i in range(p,q+1):
+        for j in range(r,s+1):
+            if (i-a==j-b) or (i-a==b-j) or (a-i==j-b) or (a-i==b-j):
+                print('#', end='')
+            else:
+                print('.', end='')
+        print()
+
+=======
+Suggestion 9
+
+def get_input():
+    line1 = input().split()
+    line2 = input().split()
+    return line1, line2
+
+=======
+Suggestion 10
+
+def printGrid(N, A, B, P, Q, R, S):
+    # 1. 先把所有格子都填上.，再把需要涂黑的格子填上#
+    grid = [['.' for col in range(S-R+1)] for row in range(Q-P+1)]
+    # 2. 涂黑(A+k,B+k)和(A+k,B-k)两个点
+    for k in range(max(1-A,1-B), min(N-A,N-B)+1):
+        grid[A+k-P][B+k-R] = '#'
+    for k in range(max(1-A,B-N), min(N-A,B-1)+1):
+        grid[A+k-P][B-k-R] = '#'
+    # 3. 输出
+    for row in grid:
+        print(''.join(row))

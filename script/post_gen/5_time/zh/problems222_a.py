@@ -1,35 +1,116 @@
-#问题陈述
-#给你一个0到9999（包括）之间的整数N。
-#在加上必要数量的前导零后，将其打印成一个四位数的字符串。
-#
-#限制条件
-#0 ≦ N ≦ 9999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#321
-#
-#样本输出1
-#0321
-#321有三个数字，所以我们需要在它前面加一个零，使它有四个数字。
-#
-#输入样本2
-#7777
-#
-#样本输出2
-#7777
-#
-#样本输入3
-#1
-#
-#采样输出3
-#0001
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #从标准输入读取整数
+    n = int(input())
+    #格式化输出
+    print('{:04d}'.format(n))
+
+=======
+Suggestion 2
+
+def test():
+    N = input()
+    N = int(N)
+    if N < 0 or N > 9999:
+        return
+    print("%04d" % N)
+
+=======
+Suggestion 3
+
+def add_zero(n):
+    if n < 10:
+        return '000' + str(n)
+    elif n < 100:
+        return '00' + str(n)
+    elif n < 1000:
+        return '0' + str(n)
+    else:
+        return str(n)
+
+n = int(input())
+print(add_zero(n))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print("{:04d}".format(N))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print('{:0>4}'.format(n))
+
+=======
+Suggestion 6
+
+def main():
+    n = input()
+    print('{:0>4}'.format(n))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print(f"{n:04d}")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print("%04d" % n)
+    # print('{0:04d}'.format(n))
+    # print('{:04d}'.format(n))
+    # print(f"{n:04d}")
+    # print(f"{n:0>4}")
+    # print(format(n, '04d'))
+    # print(format(n, '0>4'))
+    # print(format(n, '04'))
+    # print(format(n, '0>4'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+    # print(format(n, '04d'))
+    # print(format(n, '0>4d'))
+
+=======
+Suggestion 9
+
+def main():
+    a = int(input())
+    print('{:0=4}'.format(a))
+main()
+
+=======
+Suggestion 10
+
+def add_zero(num):
+    num_str = str(num)
+    while len(num_str) < 4:
+        num_str = "0" + num_str
+    return num_str
+
+print(add_zero(int(input())))

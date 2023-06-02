@@ -1,68 +1,191 @@
-#问题陈述
-#管理AtCoder王国的高桥决定改变英文小写字母的字母顺序。
-#新的字母顺序由一个字符串X表示，它是a, b, ..., z的排列组合。X的第i个字符（1≦i≦26）将是新顺序中第i个最小的英文小写字母。
-#这个王国有N个公民，他们的名字是S_1, S_2, ..., S_N，其中每个S_i（1 ≦ i ≦ N）由小写英文字母组成。
-#根据高桥决定的字母顺序对这些名字进行词法排序。
-#什么是词法顺序？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间的词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j在字母顺序上早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度。如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#
-#
-#约束条件
-#X是a, b, ..., z的排列组合。
-#2 ≦ N ≦ 50000
-#N是一个整数。
-#1 ≦ |S_i| ≦ 10 (1 ≦ i ≦ N)
-#S_i由小写英文字母组成。(1 ≦ i ≦ N)
-#S_i ≠ S_j (1 ≦ i < j ≦ N)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#X
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含第i个最小的名字，当公民的名字按照高桥决定的字母顺序进行排序时。
-#
-#输入样本1
-#bacdefghijklmnopqrstuvwxzy
-#4
-#abx
-#bzz
-#bzy
-#caa
-#
-#样本输出1
-#bzz
-#bzy
-#abx
-#caa
-#在高桥设定的新的字母顺序中，b比a小，z比y小。因此，按词法对公民的名字进行排序的结果是：bzz, bzy, abx, caa，升序排列。
-#
-#输入样本2
-#zyxwvutsrqponmlkjihgfedcba
-#5
-#a
-#ab
-#abc
-#ac
-#b
-#
-#样本输出2
-#b
-#a
-#ac
-#ab
-#abc
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getSortKey(x):
+    return x[1]
+
+=======
+Suggestion 2
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key=lambda x: [x[y] for y in range(len(x))])
+    print('\n'.join(s))
+
+=======
+Suggestion 3
+
+def main():
+    #X = 'bacdefghijklmnopqrstuvwxzy'
+    #N = 4
+    #S = ['abx', 'bzz', 'bzy', 'caa']
+    X = input()
+    N = int(input())
+    S = [input() for i in range(N)]
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'bacdefghijklmnopqrstuvwxzy'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyxwvutsrqponmlkjihgfedcba'
+
+    X = 'abcdefghijklmnopqrstuvwxyz'
+    X = 'zyx
+
+=======
+Suggestion 4
+
+def get_key_index(key):
+    key_index = [0]*26
+    for i in range(len(key)):
+        key_index[ord(key[i])-97] = i
+    return key_index
+
+=======
+Suggestion 5
+
+def main():
+    X = input()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    #print(X)
+    #print(N)
+    #print(S)
+    X_dict = {}
+    for i in range(26):
+        X_dict[X[i]] = chr(ord('a') + i)
+    #print(X_dict)
+    S_dict = {}
+    for i in range(N):
+        S_dict[S[i]] = ''
+        for j in range(len(S[i])):
+            S_dict[S[i]] += X_dict[S[i][j]]
+    #print(S_dict)
+    S_dict_sorted = sorted(S_dict.items(), key=lambda x:x[1])
+    #print(S_dict_sorted)
+    for i in range(N):
+        print(S_dict_sorted[i][0])
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key = lambda s: [x.index(c) for c in s])
+    print('\n'.join(s))
+
+=======
+Suggestion 7
+
+def main():
+    order = input()
+    num = int(input())
+    names = []
+    for i in range(num):
+        names.append(input())
+    #print(order)
+    #print(names)
+    order_dict = {}
+    for i in range(len(order)):
+        order_dict[order[i]] = i
+    #print(order_dict)
+    names = sorted(names, key=lambda x: [order_dict[c] for c in x])
+    for i in range(num):
+        print(names[i])
+
+=======
+Suggestion 8
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key=lambda i: [x.index(j) for j in i])
+    for i in s:
+        print(i)
+
+=======
+Suggestion 9
+
+def get_min_name(name_list, order_list):
+    #print(name_list)
+    #print(order_list)
+    min_name = name_list[0]
+    for name in name_list[1:]:
+        #print(name)
+        for i in range(len(min_name)):
+            #print(i)
+            if name[i] == min_name[i]:
+                continue
+            else:
+                if order_list.index(name[i]) < order_list.index(min_name[i]):
+                    min_name = name
+                break
+        if len(name) < len(min_name):
+            min_name = name
+    return min_name
+
+=======
+Suggestion 10
+
+def sort_by_lexicographical_order(s, x):
+    y = list(s)
+    for i in range(len(y)):
+        y[i] = chr(ord('a') + x.index(y[i]))
+    return ''.join(y)
+
+x = input()
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+s.sort(key = lambda x: sort_by_lexicographical_order(x, x))
+for i in range(n):
+    print(s[i])

@@ -1,46 +1,141 @@
-#问题陈述
-#我们有一个长度为N的序列：A=（a_1，...，a_N）。此外，给你一个整数K。
-#你可以进行以下操作0次或多次。
-#选择一个整数i，使得1≦i≦N-K，然后交换a_i和a_{i+K}的值。
-#判断是否有可能对A进行升序排序。
-#
-#约束条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ N-1
-#1 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#a_1 ... a_N
-#
-#输出
-#如果有可能对A进行升序排序，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 2
-#3 4 1 3 4
-#
-#样品输出1
-#Yes
-#下面的操作序列将A按升序排序。
-#选择i=1来交换a_1和a_3的值。现在A是（1,4,3,3,4）。
-#选择i=2来交换a_2和a_4的值。现在A是（1,3,3,4,4）。
-#
-#输入样本 2
-#5 3
-#3 4 1 3 4
-#
-#样本输出2
-#No
-#
-#样本输入3
-#7 5
-#1 2 3 4 5 5 10
-#
-#样本输出3
-#Yes
-#可能不需要操作。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    #print(N, K)
+    #print(A)
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 2
+
+def is_sorted(arr):
+    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))
+
+=======
+Suggestion 3
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(N-K):
+        if A[i] > A[i+K]:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n-k):
+        if a[i] < a[i+k]:
+            continue
+        else:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 5
+
+def is_sorted(a):
+    for i in range(1, len(a)):
+        if a[i] < a[i-1]:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    if K == 1:
+        for i in range(N-1):
+            if a[i] > a[i+1]:
+                print('No')
+                return
+        print('Yes')
+        return
+    for i in range(N-K):
+        if a[i] > a[i+K]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 7
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    if K == 1:
+        if A == sorted(A):
+            print('Yes')
+        else:
+            print('No')
+        return
+    if K == 2:
+        if A == sorted(A):
+            print('Yes')
+        else:
+            print('No')
+        return
+    if K > 2:
+        if A == sorted(A):
+            print('Yes')
+        else:
+            print('No')
+        return
+
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    for i in range(n-k):
+        if a[i] > a[i+k]:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 9
+
+def solve(n, k, a):
+    ans = "Yes"
+    for i in range(n-k):
+        if a[i] > a[i+k]:
+            ans = "No"
+    return ans
+
+=======
+Suggestion 10
+
+def solve(n,k,a):
+    if k==1:
+        return "Yes"
+    for i in range(0,k):
+        if a[i]>a[i+k]:
+            return "No"
+    return "Yes"
+
+n,k=map(int,input().split())
+a=list(map(int,input().split()))
+print(solve(n,k,a))

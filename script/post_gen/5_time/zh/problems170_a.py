@@ -1,31 +1,98 @@
-#问题陈述
-#我们有五个变量x_1, x_2, x_3, x_4, 和x_5。
-#变量x_i最初被赋值为i。
-#Snuke从这些变量中选择了一个，并将其赋值为0。
-#在这次分配之后，你得到了五个变量的值。
-#找出Snuke分配给哪个变量的0。
-#
-#限制条件
-#输入的x_1、x_2、x_3、x_4和x_5的值是Snuke分配的可能结果。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 x_2 x_3 x_4 x_5
-#
-#输出
-#如果变量Snuke分配的0是x_i，则打印整数i。
-#
-#输入样本 1
-#0 2 3 4 5
-#
-#输出样本 1
-#1
-#在这种情况下，Snuke给x_1分配了0，所以我们应该打印1。
-#
-#输入样本2
-#1 2 0 4 5
-#
-#输出样本 2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = input().split()
+    for i in range(5):
+        if x[i] == '0':
+            print(i+1)
+            break
+
+=======
+Suggestion 2
+
+def find_zero():
+    x = input().split()
+    for i in range(len(x)):
+        if x[i] == '0':
+            return i + 1
+
+print(find_zero())
+
+=======
+Suggestion 3
+
+def main():
+    x = list(map(int, input().split()))
+    for i in range(5):
+        if x[i] == 0:
+            print(i+1)
+            break
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    x = input()
+
+    # 处理输入
+    x = x.split(" ")
+    x = [int(i) for i in x]
+
+    # 处理输出
+    print(x.index(0)+1)
+
+=======
+Suggestion 5
+
+def main():
+    str = input()
+    str = str.split()
+    for i in range(0, len(str)):
+        if str[i] == '0':
+            print(i+1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    x = list(map(int,input().split()))
+    print(x.index(0)+1)
+
+=======
+Suggestion 7
+
+def main():
+    import sys
+    x = list(map(int, sys.stdin.readline().strip().split()))
+    for i in range(5):
+        if x[i] == 0:
+            print(i+1)
+            break
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    x = list(map(int, input().split()))
+
+    #search
+    for i in range(5):
+        if x[i] == 0:
+            print(i+1)
+            break
+
+=======
+Suggestion 9
+
+def main():
+    str = input()
+    str_split = str.split()
+    for i in range(0, 5):
+        if str_split[i] == '0':
+            print(i+1)

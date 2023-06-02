@@ -1,40 +1,138 @@
-#问题陈述
-#高桥有A块饼干，青木有B块饼干。
-#高桥将做以下动作K次：
-#如果高桥有一块或多块饼干，就吃他的一块饼干。
-#否则，如果青木有一个或更多的曲奇，就吃青木的一个曲奇。
-#如果他们都没有饼干，就什么都不做。
-#最后，高桥和青木将分别有多少块饼干？
-#
-#限制条件
-#0 ≦ A ≦ 10^{12}
-#0 ≦ B ≦ 10^{12}
-#0 ≦ K ≦ 10^{12}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B K
-#
-#輸出
-#打印经过K次行动后高桥和青木的饼干数量。
-#
-#输入样本 1
-#2 3 3
-#
-#样本输出 1
-#0 2
-#高桥会做以下事情：
-#他有两块饼干，所以他吃了其中一块。
-#现在他还剩下一块饼干，他就吃了。
-#现在他没有饼干了，但青木有三块，所以高桥吃了其中一块。
-#因此，最后，高桥将有0块饼干，而青木将有2块。
-#
-#输入样本2
-#500000000000 500000000000 1000000000000
-#
-#样本输出2
-#0 0
-#注意溢出的情况。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(a, b, k):
+    if a >= k:
+        a -= k
+    else:
+        b -= (k - a)
+        a = 0
+        if b < 0:
+            b = 0
+    return a, b
+
+=======
+Suggestion 2
+
+def main():
+    A, B, K = map(int, input().split())
+    if K <= A:
+        print(A - K, B)
+    elif K <= A + B:
+        print(0, B - (K - A))
+    else:
+        print(0, 0)
+
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        A -= K
+    else:
+        B -= (K - A)
+        A = 0
+        if B < 0:
+            B = 0
+    print(A, B)
+
+=======
+Suggestion 4
+
+def main():
+    A, B, K = map(int, input().split())
+    if A >= K:
+        A = A - K
+    else:
+        B = B - (K - A)
+        A = 0
+        if B < 0:
+            B = 0
+    print(A, B)
+
+=======
+Suggestion 5
+
+def solve(A, B, K):
+    if K <= A:
+        return (A-K, B)
+    else:
+        return (0, max(0, B-(K-A)))
+
+=======
+Suggestion 6
+
+def main():
+    a, b, k = map(int, input().split())
+    if k > a:
+        b -= k - a
+        a = 0
+    else:
+        a -= k
+    if b < 0:
+        b = 0
+    print(a, b)
+
+=======
+Suggestion 7
+
+def main():
+    A,B,K = map(int,input().split())
+
+    if K == 0:
+        print(A,B)
+    else:
+        if A >= K:
+            print(A-K,B)
+        else:
+            if A+B >= K:
+                print(0,B-(K-A))
+            else:
+                print(0,0)
+
+=======
+Suggestion 8
+
+def main():
+    A,B,K = map(int,input().split())
+    if K <= A:
+        A -= K
+    else:
+        K -= A
+        A = 0
+        if K <= B:
+            B -= K
+        else:
+            B = 0
+    print(A,B)
+
+=======
+Suggestion 9
+
+def solve():
+    A,B,K=map(int,input().split())
+    if A>=K:
+        print(A-K,B)
+    elif A+B>=K:
+        print(0,B-(K-A))
+    else:
+        print(0,0)
+solve()
+
+=======
+Suggestion 10
+
+def main():
+    a,b,k = map(int, input().split())
+    if k <= a:
+        print(a-k, b)
+    elif k <= a+b:
+        print(0, b-(k-a))
+    else:
+        print(0, 0)

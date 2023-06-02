@@ -1,32 +1,46 @@
-#问题陈述
-#你在一个叫twiblr的社交网站上。
-#在twiblr中，你最多可以关注2×（关注你的用户数）+100个用户。
-#你现在关注了B个用户，A个用户也在关注你。
-#你现在最多可以关注多少个额外的用户？  
-#
-#限制条件
-#0 ≦ a, b ≦ 10000
-#b ≦ 2 × a + 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印你现在可以关注的最大数量的额外用户。
-#
-#输入样本 1
-#200 300
-#
-#样本输出1
-#200
-#你最多可以关注2×200+100=500个用户，也就是说，比你现在关注的用户多200人。
-#
-#样本输入2
-#10000 0
-#
-#样本输出2
-#20100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    print(2*a+100-b)
+
+=======
+Suggestion 2
+
+def solve(a,b):
+    if b > 2 * a + 100:
+        return 0
+    else:
+        return 2 * a + 100 - b
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(2 * a + 100 - b)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if B <= 2*A+100:
+        print(2*A+100-B)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if b <= 2*a+100:
+        print(2*a+100-b)
+    else:
+        print(0)

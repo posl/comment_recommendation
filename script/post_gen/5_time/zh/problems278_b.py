@@ -1,53 +1,147 @@
-#问题陈述
-#高桥买了一个台钟。
-#该钟显示的时间如图1所示，在24小时制的AB：CD。
-#例如，图2中的时钟显示7:58。
-#时间的格式被正式描述如下。
-#假设当前时间是24小时制中h的m分钟。  这里，24小时制用0到23（包括）之间的整数表示小时，用0到59（包括）之间的整数表示分钟。
-#假设A是h的十位数，B是h的一位数，C是m的十位数，D是m的一位数（这里，如果h只有一位数，我们认为它有一个前导零；同样适用于m）。
-#然后，时钟的左上方显示A，左下方显示B，右上方显示C，右下方显示D。
-#高桥决定，如果一个时间满足以下条件，就称之为混乱时间：
-#将时钟的右上角和左下角的数字对调后，它仍然读出24小时制的有效时间。
-#例如，图3中的时钟显示为20:13。  将右上角和左下角的数字对调后，显示为21:03。  因此，20:13是一个混乱的时间。
-#现在时钟显示的是H:M。
-#在24小时制中找出下一个令人困惑的时间（包括现在）。
-#
-#限制条件
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H和M是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H M
-#
-#輸出
-#让h:m成为答案，其中h和m必须满足0≦h≦23和0≦m≦59。
-#以下列格式打印h和m：  
-#h m
-#你的答案被认为是正确的，即使h包含一个前导零来表示它是一个2位数的整数；这同样适用于m。
-#
-#输入样本 1
-#1 23
-#
-#输出样本 1
-#1 23
-#1:23是一个令人困惑的时间，因为将时钟的右上角和左下角的数字对调后，它的读数是2:13。
-#因此，答案是1:23。
-#你的答案被认为是正确的，即使你打印的01 23有一个前导零。
-#
-#输入样本2
-#19 57
-#
-#样本输出2
-#20 0
-#19:57之后的下一个混乱的时间是20:00。
-#
-#样本输入3
-#20 40
-#
-#样本输出3
-#21 0
-#请注意，在24小时制中，24:00是一个无效的记号。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            break
+    print("{0:02d}:{1:02d}".format(h, m))
+
+=======
+Suggestion 2
+
+def isConfuseTime(h, m):
+    if h == 0:
+        h = 24
+    h1 = int(str(m)[::-1])
+    m1 = int(str(h)[::-1])
+    if h1 <= 23 and m1 <= 59:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def main():
+    hour, minute = map(int, input().split())
+    while True:
+        minute += 1
+        if minute == 60:
+            minute = 0
+            hour += 1
+            if hour == 24:
+                hour = 0
+        if hour // 10 == minute % 10 and hour % 10 == minute // 10:
+            break
+    print("{:0>2}:{:0>2}".format(hour, minute))
+
+=======
+Suggestion 4
+
+def get_input():
+    """获取用户输入"""
+    user_input = input("请输入时间(HH:MM):")
+    time = user_input.split(':')
+    return time
+
+=======
+Suggestion 5
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print(h, m)
+            break
+
+=======
+Suggestion 6
+
+def check_time(h,m):
+    if h<0 or h>23 or m<0 or m>59:
+        return False
+    else:
+        return True
+
+=======
+Suggestion 7
+
+def is_chaotic_time(time):
+    hour = time // 100
+    minute = time % 100
+    if hour < 0 or hour > 23 or minute < 0 or minute > 59:
+        return False
+    else:
+        if hour < 10:
+            hour = "0"+str(hour)
+        if minute < 10:
+            minute = "0"+str(minute)
+        if str(hour)[::-1] == str(minute):
+            return True
+        else:
+            return False
+
+=======
+Suggestion 8
+
+def main():
+    h, m = [int(x) for x in input().split()]
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+            if h == 24:
+                h = 0
+        if int(str(m).zfill(2)[::-1]) == h:
+            break
+    print(f'{h} {m}')
+
+=======
+Suggestion 9
+
+def is_confused_time(h, m):
+    a = h // 10
+    b = h % 10
+    c = m // 10
+    d = m % 10
+    if (b == 2 and c == 7 and d == 9) or (b == 5 and c == 9 and d == 2):
+        return True
+    return False
+
+=======
+Suggestion 10
+
+def isConfusingTime(h,m):
+    h1 = h // 10
+    h2 = h % 10
+    m1 = m // 10
+    m2 = m % 10
+    if h1 == 0:
+        h1 = '0'
+    if m1 == 0:
+        m1 = '0'
+    if h2 == 0:
+        h2 = '0'
+    if m2 == 0:
+        m2 = '0'
+    if h1 == m2 and h2 == m1:
+        return True
+    else:
+        return False

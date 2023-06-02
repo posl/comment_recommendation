@@ -1,34 +1,150 @@
-#问题陈述
-#高桥正在解决测验问题。除了最后一道题，他已经轻松解决了所有问题。
-#最后一道测试题有三个选项：1、2、3。
-#高桥用他的超自然能力发现，选项A和B都是错的。
-#打印出这个问题的正确选择。
-#
-#限制条件
-#A和B的每一个数字都是1，2，或3。
-#A和B是不同的。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A
-#B
-#
-#输出
-#打印正确的选择。
-#
-#输入样本1
-#3
-#1
-#
-#采样输出1
-#2
-#当我们知道3和1都是错误的，正确的选择是2。
-#
-#输入样本2
-#1
-#2
-#
-#采样输出2
-#3
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 2:
+        print(1)
+
+=======
+Suggestion 2
+
+def main():
+    A = int(input())
+    B = int(input())
+    if A == 1:
+        if B == 2:
+            print(3)
+        else:
+            print(2)
+    elif A == 2:
+        if B == 1:
+            print(3)
+        else:
+            print(1)
+    else:
+        if B == 1:
+            print(2)
+        else:
+            print(1)
+
+=======
+Suggestion 3
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = 6 - a - b
+    print(c)
+
+=======
+Suggestion 4
+
+def main():
+    a = input()
+    b = input()
+    if a == '1':
+        if b == '2':
+            print(3)
+        elif b == '3':
+            print(2)
+    elif a == '2':
+        if b == '1':
+            print(3)
+        elif b == '3':
+            print(1)
+    elif a == '3':
+        if b == '1':
+            print(2)
+        elif b == '2':
+            print(1)
+
+=======
+Suggestion 5
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 3 and b == 2:
+        print(1)
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 2:
+        print(1)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 1 and b == 3:
+        print(2)
+
+=======
+Suggestion 7
+
+def main():
+    a = int(input())
+    b = int(input())
+    if a == 1 and b == 2:
+        print(3)
+    elif a == 1 and b == 3:
+        print(2)
+    elif a == 2 and b == 1:
+        print(3)
+    elif a == 2 and b == 3:
+        print(1)
+    elif a == 3 and b == 1:
+        print(2)
+    elif a == 3 and b == 2:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    a = int(input())
+    b = int(input())
+    print(6-a-b)
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    a = int(input())
+    b = int(input())
+    # 用set去重
+    print((set([1,2,3]) - set([a,b])).pop())

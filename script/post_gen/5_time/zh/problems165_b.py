@@ -1,39 +1,119 @@
-#问题陈述
-#高桥在AtCoder银行有一笔100日元（日本的货币）的存款。
-#该银行的年利率为1%，每年复利。(小于1日元的部分被舍弃）。
-#假设除利息外没有其他因素影响高桥的余额，那么在多少年后，余额首次达到X日元或以上？
-#
-#限制条件
-# 101 ≦ X ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#X
-#
-#輸出
-#打印高桥的余额首次达到X日元或以上所需的年数。
-#
-#样本输入1
-#103
-#
-#样本输出1
-#3
-#一年后的余额为101日元。
-#两年后的余额是102日元。
-#三年后的余额是103日元。
-#因此，余额需要三年才能达到103日元或以上。
-#
-#样本输入2
-#1000000000000000000
-#
-#样本输出2
-#3760
-#
-#样本输入3
-#1333333333
-#
-#样本输出3
-#1706
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    y = 100
+    count = 0
+    while y < x:
+        y = y + y // 100
+        count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    y = 100
+    i = 0
+    while y < x:
+        y = int(y * 1.01)
+        i += 1
+    print(i)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    total = 100
+    year = 0
+    while total < x:
+        total = int(total * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 4
+
+def main():
+    X = int(input())
+    Y = 100
+    count = 0
+    while Y < X:
+        Y = Y + Y // 100
+        count = count + 1
+    print(count)
+
+=======
+Suggestion 5
+
+def solve(x):
+    balance = 100
+    years = 0
+    while balance < x:
+        balance += balance // 100
+        years += 1
+    return years
+
+=======
+Suggestion 6
+
+def main():
+    X = int(input())
+    total = 100
+    year = 0
+    while total < X:
+        total = int(total * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 7
+
+def main():
+    X = int(input())
+    balance = 100
+    year = 0
+    while balance < X:
+        balance = int(balance * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 8
+
+def cal_year(X):
+    balance = 100
+    year = 0
+    while balance < X:
+        balance = int(balance * 1.01)
+        year += 1
+    return year
+
+=======
+Suggestion 9
+
+def solve():
+    x = int(input())
+    y = 100
+    year = 0
+    while y < x:
+        y = int(y * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 10
+
+def main():
+    x = int(input())
+    y = 100
+    year = 0
+    while y < x:
+        y = int(y * 1.01)
+        year += 1
+    print(year)

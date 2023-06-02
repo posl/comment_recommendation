@@ -1,45 +1,137 @@
-#问题陈述
-#高桥市有N根可以相互区分的棍子。第i根棍子的长度为L_i。
-#他要用其中三根棍子组成一个三角形。设a、b、c是所用三根棍子的长度。这里，必须满足以下所有条件：
-#a < b + c
-#b < c + a
-#c < a + b
-#可以形成多少个不同的三角形？当只有一个三角形中使用了一根棍子时，两个三角形被认为是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 2 × 10^3
-#1 ≦ L_i ≦ 10^3
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#限制条件
-#打印可以形成的不同三角形的数量。
-#
-#输入样本1
-#4
-#3 4 2 1
-#
-#样本输出 1
-#1
-#只能形成一个三角形：由第一、第二和第三根棍子形成的三角形。
-#
-#样本输入2
-#3
-#1 1000 1
-#
-#样本输出2
-#0
-#不能形成任何三角形。
-#
-#样本输入3
-#7
-#218 786 704 233 645 728 389
-#
-#样本输出3
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def triangle_count(L):
+    L.sort()
+    N = len(L)
+    count = 0
+    for i in range(N-2):
+        for j in range(i+1,N-1):
+            for k in range(j+1,N):
+                if L[i]+L[j]>L[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 2
+
+def triangle(n, l):
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] < l[j] + l[k] and l[j] < l[k] + l[i] and l[k] < l[i] + l[j]:
+                    ans += 1
+    print(ans)
+    return ans
+
+n = int(input())
+l = list(map(int, input().split()))
+triangle(n, l)
+
+=======
+Suggestion 3
+
+def check_triangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    cnt = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k]:
+                    cnt += 1
+    print(cnt)
+solve()
+
+=======
+Suggestion 5
+
+def get_triangle_num(n, l):
+    l.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    ans += 1
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k] and L[i] != L[j] and L[j] != L[k]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def triangle(a,b,c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def triangle(n, l):
+    count = 0
+    l.sort()
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 9
+
+def triangle_count():
+    n = input()
+    l = list(map(int, input().split()))
+    l.sort()
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def triangle(n, l):
+    l.sort()
+    count = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    count += 1
+                else:
+                    break
+    return count

@@ -1,63 +1,124 @@
-#问题陈述
-#给出的是正整数N，M，Q和Q的四分法（a_i，b_i，c_i，d_i）。
-#考虑一个满足下列条件的序列A：
-#A是一个N个正整数的序列。
-#1 ≦ a_1 ≦ a_2 ≦ ... ≦ a_n ≦ m。
-#让我们把这个序列的得分定义如下：
-#分数是所有指数i的d_i之和，使A_{b_i}-A_{a_i}=c_i。(如果没有这样的i，则分数为0）。
-#找到A的最大可能得分。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) ( 其中 i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M Q
-#A_1 B_1 C_1 D_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#输出
-#打印A的最大可能得分。
-#
-#输入样本 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#样本输出1
-#110
-#当A={1，3，4}时，其得分是110。在这些条件下，没有一个序列的分数大于110，所以答案是110。
-#
-#输入样本2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#样本输出2
-#357500
-#
-#样本输入3
-#10 10 1
-#1 10 9 1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_score(n, m, q, a, b, c, d):
+    score = 0
+    for i in range(q):
+        if a[i] < b[i]:
+            score += d[i]
+    return score
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n,m,q = map(int,input().split())
+    print(n,m,q)
+
+=======
+Suggestion 4
+
+def f(a,b,c,d):
+    #print(a,b,c,d)
+    if a==b:
+        return 0
+    else:
+        return d
+
+=======
+Suggestion 5
+
+def main():
+    a = 1
+
+=======
+Suggestion 6
+
+def main():
+    N,M,Q = map(int,input().split())
+    a = []
+    b = []
+    c = []
+    d = []
+    for i in range(Q):
+        a_i,b_i,c_i,d_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+        c.append(c_i)
+        d.append(d_i)
+    #print(a,b,c,d)
+    #print(N,M,Q)
+    #N = 3
+    #M = 4
+    #Q = 3
+    #a = [1,1,2]
+    #b = [3,2,3]
+    #c = [3,2,2]
+    #d = [100,10,10]
+    #print(a,b,c,d)
+    #print(N,M,Q)
+    #print(len(a),len(b),len(c),len(d))
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1],c[1],d[1])
+    #print(a[2],b[2],c[2],d[2])
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1],c[1],d[1])
+    #print(a[2],b[2],c[2],d[2])
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1],c[1],d[1])
+    #print(a[2],b[2],c[2],d[2])
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1],c[1],d[1])
+    #print(a[2],b[2],c[2],d[2])
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1],c[1],d[1])
+    #print(a[2],b[2],c[2],d[2])
+    #print(a[0],b[0],c[0],d[0])
+    #print(a[1],b[1
+
+=======
+Suggestion 7
+
+def get_score(N,M,Q,ABCD):
+    max_score = 0
+    for i in range(1,M+1):
+        for j in range(1,M+1):
+            for k in range(1,M+1):
+                for l in range(1,M+1):
+                    score = 0
+                    for m in range(1,N+1):
+                        for n in range(1,N+1):
+                            for o in range(1,N+1):
+                                for p in range(1,N+1):
+                                    for q in range(1,N+1):
+                                        for r in range(1,N+1):
+                                            for s in range(1,N+1):
+                                                for t in range(1,N+1):
+                                                    for u in range(1,N+1):
+                                                        for v in range(1,N+1):
+                                                            for w in range(1,N+1):
+                                                                for x in range(1,N+1):
+                                                                    for y in range(1,N+1):
+                                                                        for z in range(1,N+1):
+                                                                            if m < n < o < p < q < r < s < t < u < v < w < x < y < z:
+                                                                                if ABCD[0][0] <= m <= ABCD[0][1]:
+                                                                                    if ABCD[1][0] <= n <= ABCD[1][1]:
+                                                                                        if ABCD[2][0] <= o <= ABCD[2][1]:
+                                                                                            if ABCD[3][0] <= p <= ABCD[3][1]:
+                                                                                                if ABCD[4][0] <= q <= ABCD[4][1]:
+                                                                                                    if ABCD[5][0] <= r <= ABCD[5][1]:
+                                                                                                        if ABCD[6][0] <= s <= ABCD[6][1]:
+                                                                                                            if ABCD[7][0] <= t <= ABCD[7][1]:
+                                                                                                                if ABCD[8][0] <= u <= ABCD[8][1]:
+                                                                                                                    if ABCD[9][0] <= v <= ABCD[9][1]:
+                                                                                                                        if ABCD[10][0] <= w <= ABCD[10][1]:
+                                                                                                                            if ABCD[11][0] <= x <= ABCD[11][1]:
+                                                                                                                                if ABCD[12][0] <= y <= ABCD

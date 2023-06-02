@@ -1,36 +1,151 @@
-#问题陈述
-#阿卡里有n种花，每种都有。
-#她要从这些花中选择一种或几种来做花束。
-#但是，她讨厌两个数字a和b，所以花束中的花的数量不能是a或b。
-#阿卡里可以做多少种不同的花束？
-#找出模数（10^9+7）。
-#在这里，如果有一种花在其中一束花中使用，而在另一束花中不使用，则认为两束花是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ n ≦ 10^9
-#1 ≦ a < b ≦ min(n, 2 × 10^5)
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n a b
-#
-#輸出
-#打印阿卡里能做的花束数量，模数为(10^9 + 7)。(如果没有这样的花束，打印0。）
-#
-#输入样本 1
-#4 1 3
-#
-#输出样本 1
-#7
-#在这个例子中，Akari可以选择2或4朵花来制作花束。
-#有6种方法可以从4种花中选择2种，有1种方法可以选择4种，所以阿卡里一共可以做7种不同的花束。
-#
-#输入样本2
-#1000000000 141421 173205
-#
-#样本输出2
-#34076506
-#打印计数的模数（10^9+7）。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    while b:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 5
+
+def main():
+    n,a,b = map(int,input().split())
+    mod = 10**9+7
+    if a+b>n:
+        print(0)
+        return
+    ans = pow(2,n,mod)-1
+    def cmb(n,r,mod):
+        if r==0:return 1
+        if r<0:return 0
+        if (n-r)<r:r=n-r
+        num = den = 1
+        for i in range(r):
+            num = num*(n-i)%mod
+            den = den*(i+1)%mod
+        return num*pow(den,mod-2,mod)%mod
+    print((ans-cmb(n,a,mod)-cmb(n,b,mod))%mod)
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    if a > b:
+        a, b = b, a
+    MOD = 10 ** 9 + 7
+    ans = pow(n, 2, MOD)
+    ans -= (n - a + 1) ** 2
+    ans -= (n - b + 1) ** 2
+    ans += (n - a - b + 2) ** 2
+    ans %= MOD
+    ans *= pow(2, MOD - 2, MOD)
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve(n, a, b):
+    MOD = 10**9 + 7
+    ans = pow(n, 2, MOD)
+    ans -= pow(n - a, 2, MOD)
+    ans -= pow(n - b, 2, MOD)
+    ans += pow(n - a - b, 2, MOD)
+    ans %= MOD
+    ans = ans * (n - 2) % MOD
+    ans = ans * (n - 1) % MOD
+    ans = ans * 500000004 % MOD
+    return ans
+
+n, a, b = map(int, input().split())
+print(solve(n, a, b))
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    mod = 10**9 + 7
+    ans = pow(2, n, mod) - 1
+    c = 1
+    for i in range(a):
+        c *= n - i
+        c %= mod
+        c *= pow(a - i, mod - 2, mod)
+        c %= mod
+    for i in range(b):
+        c *= n - i
+        c %= mod
+        c *= pow(b - i, mod - 2, mod)
+        c %= mod
+    ans -= c
+    ans %= mod
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, a, b = map(int, input().split())
+    if n < a or n < b:
+        print(0)
+        return
+    if a + b > n:
+        print(0)
+        return
+    if a == b:
+        print(1)
+        return
+    if a > n/2:
+        a = n - a
+    if b > n/2:
+        b = n - b
+    if a == 1:
+        print(n)
+        return
+    if b % a == 0:
+        print(2)
+        return
+    if a == 2:
+        print(n - b)
+        return
+    if b % a == 1:
+        print(2)
+        return
+    print(1)
+
+=======
+Suggestion 10
+
+def main():
+    pass

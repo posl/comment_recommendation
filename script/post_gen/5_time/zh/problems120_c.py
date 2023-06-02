@@ -1,40 +1,125 @@
-#问题陈述
-#在一张桌子上有N个垂直堆放的立方体。
-#如果S中的第i个字符是0，则从底部开始的第i个立方体的颜色是红色，如果该字符是1，则是蓝色。
-#你可以进行以下任意次数的操作：选择一个相邻的红色立方体和一个蓝色立方体，然后把它们移走。在这里，堆积在被移走的立方体上的立方体将落到它们下面的物体上。
-#最多可以移走多少个立方体？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#|S| = N
-#S中的每个字符都是0或1。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印可移除的最大立方体数量。
-#
-#样本输入1
-#0011
-#
-#样本输出1
-#4
-#所有的四个立方体都可以被移走，操作方法如下：
-#从底部取出第二个和第三个立方体。然后，第四个立方体落到第一个立方体上。
-#从底部移走第一个和第二个立方体。
-#
-#样本输入2
-#11011010001011
-#
-#样本输出2
-#12
-#
-#采样输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if S[i] == '1':
+            ans += 1
+    ans = min(ans, N-ans)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if S[i] == '0':
+            ans += 1
+    print(min(ans, N - ans) * 2)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    S = input()
+    # 计算并输出结果
+    print(calc_max_remove(S))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    red, blue = 0, 0
+    for i in range(len(s)):
+        if s[i] == "0":
+            red += 1
+        else:
+            blue += 1
+    print(min(red, blue) * 2)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    red = 0
+    blue = 0
+    for i in range(len(s)):
+        if s[i] == "0":
+            red += 1
+        else:
+            blue += 1
+    print(min(red, blue) * 2)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    r = s.count("0")
+    b = s.count("1")
+    print(min(r, b) * 2)
+
+=======
+Suggestion 7
+
+def solve():
+    s = input()
+    n = len(s)
+    ans = 0
+    for i in range(n):
+        if s[i] == '1':
+            ans += 1
+    ans = min(ans, n-ans)
+    print(ans)
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    r = 0
+    b = 0
+    for i in range(n):
+        if s[i] == '0':
+            r += 1
+        else:
+            b += 1
+    print(n - abs(r - b))
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    red = S.count('0')
+    blue = len(S) - red
+    print(min(red, blue) * 2)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    n = len(s)
+    if n == 1:
+        print(0)
+        return
+    count = 0
+    for i in range(n):
+        if s[i] == '0':
+            count += 1
+    print(min(count, n-count)*2)

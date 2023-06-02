@@ -1,39 +1,121 @@
-#问题陈述
-#我们有一个有2个水平行和2个垂直列的网格。
-#每个方格都是黑色或白色的，并且至少有2个黑色方格。
-#这些方格的颜色以字符串S_1和S_2的形式提供给你，如下所示。
-#如果S_i的第j个字符是#，那么从顶部第i行和从左边第j列的方格是黑色的。
-#如果S_i的第j个字符是.，那么从上面第i行和左边第j列的方格是白色的。
-#当且仅当两个不同的黑色方块共用一个边时，你可以在它们之间旅行。
-#判断是否有可能只通过黑色方格就能从每个黑色方格到每个黑色方格（直接或间接）旅行。
-#
-#限制条件
-#S_1和S_2中的每一个都是一个由#和.组成的两个字符的字符串。
-#S_1和S_2总共有两个或两个以上的#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_1
-#S_2
-#
-#輸出
-#如果有可能从每个黑色方格到每个黑色方格，则打印Yes；否则，打印No。
-#
-#输入样本1
-###
-#.#
-#
-#样本输出1
-#Yes
-#我们可以直接在左上角和右上角的黑色方格之间以及右上角和右下角的方格之间移动。
-#这两步棋可以让我们从每个黑色方格走到每个黑色方格，所以答案是肯定的。
-#
-#输入样本2
-#.#
-##.
-#
-#样本输出2
-#No
-#不可能在右上角和左下角的黑方块之间移动，所以答案是No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    s1 = input()
+    s2 = input()
+
+    # 初始化
+    flag = False
+
+    # 处理
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        flag = True
+
+    # 输出结果
+    if flag:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    elif s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '.':
+        print('Yes')
+    elif s1[0] == '#' and s1[1] == '#' and s2[0] == '.' and s2[1] == '#':
+        print('Yes')
+    elif s1[0] == '#' and s1[1] == '.' and s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    elif s1[0] == '#' and s1[1] == '.' and s2[0] == '#' and s2[1] == '.':
+        print('No')
+    elif s1[0] == '#' and s1[1] == '.' and s2[0] == '.' and s2[1] == '#':
+        print('No')
+    elif s1[0] == '.' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    elif s1[0] == '.' and s1[1] == '#' and s2[0] == '#' and s2[1] == '.':
+        print('No')
+    elif s1[0] == '.' and s1[1] == '#' and s2[0] == '.' and s2[1] == '#':
+        print('No')
+    elif s1[0] == '.' and s1[1] == '.' and s2[0] == '#' and s2[1] == '#':
+        print('No')
+    elif s1[0] == '.' and s1[1] == '.' and s2[0] == '#' and s2[1] == '.':
+        print('No')
+    elif s1[0] == '.' and s1[1] == '.' and s2[0] == '.' and s2[1] == '#':
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[1] == '#' and s2[0] == '#' and s2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    s1 = input()
+    s2 = input()
+    if s1[0] == '#' and s1[2] == '#' or s2[0] == '#' and s2[2] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    #输入
+    S_1 = input()
+    S_2 = input()
+    #判断
+    if (S_1[0] == "#" and S_1[1] == "#") or (S_1[0] == "#" and S_2[0] == "#") or (S_1[1] == "#" and S_2[1] == "#") or (S_2[0] == "#" and S_2[1] == "#"):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    s_1 = input()
+    s_2 = input()
+    if s_1[0] == '#' and s_1[1] == '#' and s_2[0] == '#' and s_2[1] == '#':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    s1 = input()
+    s2 = input()
+    if s1[0] == "#" and s1[2] == "#" and s2[0] == "#" and s2[2] == "#":
+        print("Yes")
+    else:
+        print("No")

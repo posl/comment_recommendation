@@ -1,40 +1,129 @@
-#问题说明
-#Iroha进入了一个饲养宠物的游戏。
-#Iroha的宠物是Takahashi。最初，高桥的STR和EXP分别为X和0。
-#这些参数在以下两种训练中增加：
-#去Kakomon健身房：STR会被乘以A，EXP会增加1。
-#去AtCoder体育馆：STR增加B，EXP增加1。
-#当高桥的STR变成Y或更大时，他就会进化，但Iroha认为这使他不那么可爱。
-#当高桥被训练而不让他进化时，找出他的最大可能EXP。
-#
-#限制条件
-#1 ≦ x < y ≦ 10^{18}。
-#2 ≦ A ≦ 10^9
-#1 ≦ B ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y A B
-#
-#输出
-#打印给定情况下高桥的最大可能EXP。
-#
-#输入样本 1
-#4 20 2 10
-#
-#样本输出 1
-#2
-#最初，高桥的STR是4。我们可以在下面的训练过程中使他的EXP变成2：
-#首先，去Kakomon体育馆，这使他的STR为8，EXP为1。
-#然后，去AtCoder健身房，使他的STR为18，EXP为2。
-#另一方面，没有办法训练他，使他的EXP大于2。
-#
-#输入样本 2
-#1 1000000000000000000 10 1000000000
-#
-#样本输出2
-#1000000007
-#注意溢出。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y,a,b=map(int,input().split())
+    exp=0
+    while x*a<=x+b and x*a<y:
+        x*=a
+        exp+=1
+    exp+=(y-1-x)//b
+    print(exp)
+
+=======
+Suggestion 2
+
+def solve(x,y,a,b):
+    exp=0
+    if x>=y:
+        return exp
+    else:
+        while x<y:
+            if x*a<x+b:
+                x=x*a
+                exp+=1
+            else:
+                x=x+b
+                exp+=1
+        return exp
+
+=======
+Suggestion 3
+
+def main():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x < y:
+        if x * a < x + b:
+            x *= a
+        else:
+            x += b
+        exp += 1
+    print(exp - 1)
+
+=======
+Suggestion 4
+
+def solution():
+    x,y,a,b = map(int,input().split())
+    exp = 0
+    while x*a < x+b and x*a<y:
+        x *= a
+        exp += 1
+    exp += (y-1-x)//b
+    print(exp)
+
+=======
+Suggestion 5
+
+def problem180_d(x,y,a,b):
+    exp = 0
+    str = x
+    while str < y:
+        if str*a < str + b:
+            str = str * a
+            exp += 1
+        else:
+            str = str + b
+            exp += 1
+    print(exp)
+
+=======
+Suggestion 6
+
+def f(x,y,a,b):
+    exp = 0
+    str = x
+    while str < y:
+        if str * a < str + b:
+            str = str * a
+        else:
+            str = str + b
+        exp += 1
+    return exp
+
+x,y,a,b = map(int, input().split())
+print(f(x,y,a,b))
+
+=======
+Suggestion 7
+
+def solve():
+    x, y, a, b = map(int, input().split())
+    exp = 0
+    while x * a < x + b and x * a < y:
+        x *= a
+        exp += 1
+    exp += (y - x - 1) // b
+    print(exp)
+
+=======
+Suggestion 8
+
+def problem180_d():
+    x,y,a,b = map(int,input().split())
+    i = 0
+    while True:
+        if x*a < x+b and x*a < y:
+            x = x*a
+            i += 1
+        else:
+            break
+    i += (y-x-1)//b
+    print(i)
+
+=======
+Suggestion 9
+
+def solve():
+    x, y, a, b = map(int, input().split())
+    ans = 0
+    while a * x < y and a * x < x + b:
+        x *= a
+        ans += 1
+    ans += (y - 1 - x) // b
+    print(ans)
+
+solve()

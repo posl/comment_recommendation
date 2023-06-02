@@ -1,36 +1,176 @@
-#问题陈述
-#在完成了网络游戏ATChat的教程之后，你很快就决定去一个特定的地方，那里正好有N-1个玩家。这N个玩家，包括你，编号为1到N，玩家i的友好度为A_i。
-#这N个玩家将按照一定的顺序逐一到达该地。为了确保没有人迷路，你制定了以下规则：已经到达那里的玩家应该形成一个圆圈，而刚刚到达那里的玩家应该在某个地方切入这个圆圈。
-#当每个玩家，除了第一个到达的玩家，到达该处时，该玩家得到的安慰等于顺时针方向相邻玩家的友好度和逆时针方向相邻玩家的友好度中较小的那个。第一个到达那里的玩家得到的舒适度为0。
-#通过优化选择到达的顺序和在圆圈中切入的位置，N个玩家能得到的最大总舒适度是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个玩家能得到的最大总舒适度。
-#
-#样本输入1
-#4
-#2 2 1 3
-#
-#样本输出1
-#7
-#按玩家4、2、1、3的顺序到达该处，并按图中所示切入圆圈，他们可以得到总的舒适度为7。
-#他们不能得到大于7的总舒适度，所以答案是7。
-#
-#输入样本2
-#7
-#1 1 1 1 1 1 1
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_comfort(n, a):
+    c = [0 for i in range(n)]
+    c[0] = a[0]
+    for i in range(1, n):
+        c[i] = min(c[i-1], a[i])
+    s = sum(a)
+    for i in range(1, n):
+        s += min(a[i-1], a[i])
+    return s - max(c)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A + A
+    tmp = 0
+    for i in range(N):
+        tmp += A[i]
+    ans = tmp
+    for i in range(N):
+        tmp += A[i+N] - A[i]
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    ans -= max(A)
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_max_comfort(n, list):
+    # 1. get the max comfort for the first player
+    comfort = 0
+    for i in range(1, n):
+        comfort += min(list[i-1], list[i])
+    comfort += min(list[n-1], list[0])
+
+    # 2. get the max comfort for the second player
+    # 2.1 get the max comfort for the first player
+    comfort2 = 0
+    for i in range(2, n):
+        comfort2 += min(list[i-1], list[i])
+    comfort2 += min(list[n-1], list[1])
+    comfort2 += min(list[0], list[1])
+
+    # 2.2 get the max comfort for the second player
+    comfort3 = 0
+    for i in range(2, n):
+        comfort3 += min(list[i-2], list[i])
+    comfort3 += min(list[n-2], list[0])
+    comfort3 += min(list[n-1], list[0])
+
+    # 3. return the max comfort
+    return max(comfort, comfort2, comfort3)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = a + a
+    a.append(0)
+    s = sum(a[:n])
+    ans = s
+    t = s
+    for i in range(n):
+        t = t + a[i+n] - a[i]
+        ans = max(ans, t)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sumA = sum(A)
+    sumB = 0
+    for i in range(1, N):
+        if i % 2 == 1:
+            sumB += A[i]
+    maxsumB = sumB
+    for i in range(N):
+        if i % 2 == 0:
+            sumB += A[i]
+        else:
+            sumB -= A[i]
+        maxsumB = max(maxsumB, sumB)
+    print(sumA - maxsumB)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = 0
+    for i in range(1, N):
+        ans += A[i // 2]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    result = 0
+    for i in range(1, N):
+        result += A[i // 2]
+    print(result)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A + A
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    if N == 2:
+        print(ans)
+        return
+    s = 0
+    for i in range(N):
+        s += A[i]
+    t = s
+    for i in range(N, 2*N):
+        s += A[i]
+        s -= A[i-N]
+        if s < t:
+            t = s
+    print(ans - t)
+
+solve()
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A = A + A
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    max = sum
+    for i in range(N):
+        sum -= A[i]
+        sum += A[i+N//2]
+        if sum > max:
+            max = sum
+    print(max)

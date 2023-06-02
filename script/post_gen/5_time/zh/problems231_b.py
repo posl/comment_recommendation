@@ -1,55 +1,133 @@
-#问题陈述
-#一次选举正在进行中。
-#有N个人投票。第i个人（1 ≦ i ≦ N）向名为S_i的候选人投了一票。
-#请找出得票最多的候选人的名字。给定的输入保证了有一个得票最多的唯一候选人。
-#
-#约束条件
-#1 ≦ N ≦ 100
-#S_i是一个长度在1到10之间（包括10）的字符串，由小写英文字母组成。
-#N是一个整数。
-#有一个得票最多的唯一候选人。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印获得最多选票的候选人的名字。
-#
-#输入样本1
-#5
-#snuke
-#snuke
-#takahashi
-#takahashi
-#takahashi
-#
-#样本输出1
-#takahashi
-#takahashi有3票，snuke有2票，所以我们打印takahashi。
-#
-#输入样本2
-#5
-#takahashi
-#takahashi
-#aoki
-#takahashi
-#snuke
-#
-#样本输出2
-#takahashi
-#
-#样本输入3
-#1
-#a
-#
-#样品输出3
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print(max(set(s), key=s.count))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(max(s, key=s.count))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    votes = []
+    for i in range(n):
+        votes.append(input())
+    print(max(votes, key=votes.count))
+
+=======
+Suggestion 4
+
+def main():
+    #input
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    #process
+    D = {}
+    for i in range(N):
+        if S[i] in D:
+            D[S[i]] += 1
+        else:
+            D[S[i]] = 1
+    #output
+    print(max(D, key=D.get))
+
+=======
+Suggestion 5
+
+def get_max_vote_name():
+    n = int(input())
+    vote_dict = {}
+    for i in range(n):
+        name = input()
+        if name in vote_dict:
+            vote_dict[name] += 1
+        else:
+            vote_dict[name] = 1
+
+    max_vote = 0
+    max_name = ''
+    for k, v in vote_dict.items():
+        if v > max_vote:
+            max_vote = v
+            max_name = k
+    print(max_name)
+
+get_max_vote_name()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    print(s[-1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input())
+    names.sort()
+    max = 0
+    max_name = ""
+    for name in names:
+        if names.count(name) > max:
+            max = names.count(name)
+            max_name = name
+    print(max_name)
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #process
+    s.sort()
+    c = {}
+    for i in range(n):
+        if s[i] in c:
+            c[s[i]] += 1
+        else:
+            c[s[i]] = 1
+    #output
+    print(max(c, key=c.get))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    votes = {}
+    for i in range(n):
+        s = input()
+        if s not in votes:
+            votes[s] = 1
+        else:
+            votes[s] += 1
+    print(max(votes, key=votes.get))

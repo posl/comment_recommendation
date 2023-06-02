@@ -1,51 +1,89 @@
-#问题陈述
-#给你N个字符串S_1,S_2,...,S_N，按这个顺序排列。
-#按照这个顺序打印S_N,S_{N-1},...,S_1。
-#
-#限制条件
-#1≦ N ≦ 10
-#N是一个整数。
-#S_i是一个长度在1到10之间的字符串，由小写英文字母、大写英文字母和数字组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印N行。
-#第i（1≦i≦N）行应该包含S_{N+1-i}。
-#
-#输入样本 1
-#3
-#Takahashi
-#Aoki
-#Snuke
-#
-#样本输出1
-#Snuke
-#Aoki
-#Takahashi
-#我们有N=3，S_1=高桥，S_2=青木，S_3=Snuke。
-#因此，你应该按照这个顺序打印Snuke、Aoki和Takahashi。
-#
-#输入样本2
-#4
-#2023
-#Year
-#New
-#Happy
-#
-#样本输出2
-#Happy
-#New
-#Year
-#2023
-#给定的字符串可能包含数字。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        print(S[N-1-i])
+
+=======
+Suggestion 2
+
+def problems284_a():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        print(S[N-i-1])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        print(s[n-1-i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.reverse()
+    for i in range(N):
+        print(S[i])
+
+=======
+Suggestion 5
+
+def reverse():
+    n = int(input())
+    for i in range(n):
+        print(input()[::-1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.reverse()
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 7
+
+def main():
+    num = int(input())
+    str_list = []
+    for i in range(num):
+        str_list.append(input())
+    for i in range(num):
+        print(str_list[num-i-1])
+
+=======
+Suggestion 8
+
+def main():
+    num = int(input())
+    lists = []
+    for i in range(num):
+        lists.append(input())
+    lists.reverse()
+    for i in lists:
+        print(i)

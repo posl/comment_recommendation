@@ -1,36 +1,37 @@
-#问题陈述
-#给定的是一个整数N。
-#高桥从不大于N的正整数中选择一个概率相同的整数a。
-#求a为奇数的概率。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印a是奇数的概率。
-#当你的输出与法官的输出的绝对或相对误差最多为10^{-6}时，你的输出将被视为正确。
-#
-#输入样本 1
-#4
-#
-#样本输出1
-#0.5000000000
-#有四个不大于4的正整数：1、2、3、4。在这些数字中，我们有两个奇数：1和3。因此，答案是（2/（4））=0.5。
-#
-#输入样本 2
-#5
-#
-#样本输出2
-#0.6000000000
-#
-#样本输入3
-#1
-#
-#样品输出3
-#1.0000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print((n+1)//2/n)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print((N//2)/N)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(1)
+    else:
+        print((n//2)/n)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        if i % 2 == 1:
+            count += 1
+    print('{:.10f}'.format(count/N))

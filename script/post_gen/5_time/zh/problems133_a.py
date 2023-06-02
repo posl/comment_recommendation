@@ -1,39 +1,65 @@
-#问题陈述
-#我们中的N个人要去旅行，乘坐火车或出租车。
-#火车将花费我们每个人A日元（日本的货币）。
-#出租车将花费我们总共B日元。
-#我们的最低总旅行费用是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 20
-#1 ≦ A ≦ 50
-#1 ≦ B ≦ 50
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N A B
-#
-#输出
-#打印一个整数，代表最小的总旅行费用。
-#
-#输入样本 1
-#4 2 9
-#
-#输出样本 1
-#8
-#火车将花费我们4×2=8日元，出租车将花费我们9日元，所以最小的总旅行费用是8日元。
-#
-#样本输入2
-#4 2 7
-#
-#样本输出 2
-#7
-#
-#样本输入 3
-#4 2 8
-#
-#样品输出3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    n, a, b = map(int, input().split())
+    # 计算最小值
+    print(min(n*a, b))
+
+=======
+Suggestion 2
+
+def main():
+    n,a,b = map(int,input().split())
+    print(min(n*a,b))
+
+=======
+Suggestion 3
+
+def min_cost(N,A,B):
+    if N*A > B:
+        return B
+    else:
+        return N*A
+
+=======
+Suggestion 4
+
+def min_trip_cost(n,a,b):
+    return min(n*a,b)
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    print(min(A*N,B))
+
+=======
+Suggestion 6
+
+def main():
+    n,a,b = map(int,input().split())
+    if a*n < b:
+        print(a*n)
+    else:
+        print(b)
+
+=======
+Suggestion 7
+
+def main():
+    n,a,b = map(int,input().split())
+    if n*a < b:
+        print(n*a)
+    else:
+        print(b)
+
+=======
+Suggestion 8
+
+def cost(n, a, b):
+    return min(n * a, b)

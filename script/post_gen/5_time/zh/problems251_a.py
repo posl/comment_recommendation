@@ -1,31 +1,40 @@
-#问题陈述
-#给你一个由小写英文字符组成的字符串S。
-#S的长度在1到3之间，包括在内。
-#请打印出长度为6的字符串，它是S的重复。
-#可以证明，在本问题的约束条件下，唯一存在这样一个字符串。
-#
-#限制条件
-#S是一个由小写英文字符组成的字符串，长度在1到3之间，包括在内。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印答案字符串，长度为6。
-#
-#输入样本1
-#abc
-#
-#样本输出1
-#abcabc
-#这些是S=abc的重复字符串：abc、abcabc、abcabcabc、abcabcabc，等等。
-#其中，abcabc的长度为6，所以abcabc应该被打印出来。
-#
-#输入样本2
-#zz
-#
-#输出样本2
-#zzzzzz
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def print_repeat_string(s):
+    print(s * 6)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s*6)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S*6)
+
+=======
+Suggestion 4
+
+def solve(input):
+    return input*2
+
+=======
+Suggestion 5
+
+def print_repeat(S):
+    print(S*2)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    print(S*2)

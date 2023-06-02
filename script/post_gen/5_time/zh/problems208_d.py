@@ -1,75 +1,171 @@
-#问题陈述
-#在高桥王国有N个城市和M条道路。
-#道路i是一条单行道，从城市A_i通向城市B_i，通过它需要C_i分钟。
-#让我们把f(s, t, k)定义为以下查询的答案。
-#计算从城市s到城市t所需的最小时间。这里，除了城市s和t，只允许通过城市1到k。如果城市t无法到达或s=t，答案应该是0。
-#计算所有三元组s,t,k的f(s,t,k)并打印它们的总和。更正式地说，打印sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k)。
-#
-#约束条件
-#1 ≦ N ≦ 400
-#0 ≦ M ≦ N(N-1)
-#1 ≦ A_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#1 ≦ C_i ≦ 10^6 (1 ≦ i ≦ M)
-#A_i ≠ A_j 或 B_i ≠ B_j，如果 i ≠ j。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 B_1 C_1
-#.
-#.
-#.
-#A_M B_M C_M
-#
-#输出
-#打印 sum_{s = 1}^N sum_{t = 1}^N sum_{k = 1}^N f(s, t, k).
-#
-#输入样本 1
-#3 2
-#1 2 3
-#2 3 2
-#
-#样本输出1
-#25
-#使f(s,t,k)≠0的三元组如下。
-#对于k = 1: f(1,2,1) = 3, f(2,3,1) = 2.
-#对于k = 2: f(1,2,2) = 3, f(2,3,2) = 2, f(1,3,2) = 5.
-#对于k=3：f（1,2,3）=3，f（2,3,3）=2，f（1,3,3）=5。
-#
-#样本输入 2
-#3 0
-#
-#样本输出 2
-#0
-#我们有f(s,t,k)=0，对于所有的s,t,k。
-#
-#样本输入3
-#5 20
-#1 2 6
-#1 3 10
-#1 4 4
-#1 5 1
-#2 1 5
-#2 3 9
-#2 4 8
-#2 5 6
-#3 1 5
-#3 2 1
-#3 4 7
-#3 5 9
-#4 1 4
-#4 2 6
-#4 3 4
-#4 5 8
-#5 1 2
-#5 2 5
-#5 3 6
-#5 4 5
-#
-#样本输出3
-#517
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m=list(map(int,input().split()))
+    abclist=[]
+    for _ in range(m):
+        a,b,c=list(map(int,input().split()))
+        abclist.append([a,b,c])
+    return n,m,abclist
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def floyd_warshall(n, d):
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+    return d
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    INF = 10 ** 9
+    d = [[INF for i in range(N + 1)] for j in range(N + 1)]
+    for i in range(M):
+        a, b, c = map(int, input().split())
+        d[a][b] = c
+    for k in range(1, N + 1):
+        for i in range(1, N + 1):
+            for j in range(1, N + 1):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+    ans = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            for k in range(1, N + 1):
+                if d[i][j] == d[i][k] + d[k][j]:
+                    ans += d[i][j]
+    print(ans)
+solve()
+
+=======
+Suggestion 5
+
+def floyd_warshall(n, dist):
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+
+n, m = map(int, input().split())
+
+dist = [[float('inf')] * n for _ in range(n)]
+
+for i in range(n):
+    dist[i][i] = 0
+
+for _ in range(m):
+    a, b, c = map(int, input().split())
+    dist[a-1][b-1] = c
+
+floyd_warshall(n, dist)
+
+ans = 0
+
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if dist[i][j] == dist[i][k] + dist[k][j]:
+                ans += dist[i][j]
+
+print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    # 邻接矩阵
+    adj = [[float('inf')] * N for _ in range(N)]
+    for i in range(N):
+        adj[i][i] = 0
+    for _ in range(M):
+        A, B, C = map(int, input().split())
+        adj[A - 1][B - 1] = C
+
+    # Floyd-Warshall
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j])
+
+    # 计算f(s, t, k)
+    ans = 0
+    for s in range(N):
+        for t in range(N):
+            for k in range(N):
+                if s != t and t != k and k != s:
+                    ans += adj[s][t] + adj[t][k]
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def floyd_warshall(d):
+    n = len(d)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+    return d
+
+=======
+Suggestion 8
+
+def floyd_warshall(d):
+    n = len(d)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+
+=======
+Suggestion 9
+
+def warshall_floyd(d):
+    #d[i][j]: iからjへの最短距離
+    #d[i][j] = inf (iからjへ直接行く辺がない場合)
+    #d[i][i] = 0
+    n = len(d)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                d[i][j] = min(d[i][j], d[i][k]+d[k][j])
+    return d
+
+n,m = map(int,input().split())
+d = [[float("inf") for i in range(n)] for j in range(n)]
+for i in range(m):
+    a,b,c = map(int,input().split())
+    d[a-1][b-1] = c
+d = warshall_floyd(d)
+ans = 0
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if d[i][j] == d[i][k] + d[k][j]:
+                ans += d[i][j]
+print(ans)
+
+=======
+Suggestion 10
+
+def floyd_warshall(d):
+    for k in range(len(d)):
+        for i in range(len(d)):
+            for j in range(len(d)):
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+    return d

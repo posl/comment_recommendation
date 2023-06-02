@@ -1,93 +1,110 @@
-#问题陈述
-#在一个有正方形单元格的二维网格上，我们有两个图形S和T。
-#S位于一个有N行N列的网格中，由S_{i,j}为#的单元格组成。
-#T位于同一个有N行N列的网格中，由T_{i,j}为#的单元格组成。
-#判断是否有可能通过90度的旋转和平移使S和T完全匹配。
-#
-#约束条件
-#1 ≦ N ≦ 200
-#S和T中的每一个都由#和.组成。
-#S和T中的每一个都至少包含一个#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_{1,1}S_{1,2}...S_{1,N}
-#.
-#.
-#.
-#S_{N,1}S_{N,2}...S_{N,N}
-#T_{1,1}T_{1,2}...T_{1,N}
-#.
-#.
-#.
-#T_{N,1}T_{N,2}...T_{N,N}
-#
-#输出
-#如果通过90度的旋转和平移可以完全匹配S和T，则打印Yes，否则打印No。
-#
-#输入样本 1
-#5
-#.....
-#..#..
-#.###.
-#.....
-#.....
-#.....
-#.....
-#....#
-#...##
-#....#
-#
-#样本输出1
-#Yes
-#我们可以通过逆时针旋转90度和平移，将S与T匹配。
-#
-#样本输入2
-#5
-######
-###..#
-##..##
-######
-#.....
-######
-##..##
-###..#
-######
-#.....
-#
-#样本输出2
-#No
-#不可能通过90度的旋转和平移来匹配它们。
-#
-#输入样本3
-#4
-##...
-#..#.
-#..#.
-#....
-##...
-##...
-#..#.
-#....
-#
-#样本输出3
-#Yes
-#S和T中的每一个都可能没有连接。
-#
-#采样输入4
-#4
-##...
-#.##.
-#..#.
-#....
-###..
-##...
-#..#.
-#....
-#
-#样本输出4
-#No
-#注意，不允许只旋转或平移一个图形的一部分；只允许旋转或平移整个图形。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate90(S):
+    S90 = []
+    for i in range(len(S)):
+        temp = ''
+        for j in range(len(S)):
+            temp += S[j][i]
+        S90.append(temp[::-1])
+    return S90
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        t.append(input())
+    # print(s)
+    # print(t)
+    s = rotate(s)
+    # print(s)
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def rotate_90_clockwise(matrix):
+    n = len(matrix)
+    m = len(matrix[0])
+    res = [[0]*n for i in range(m)]
+    for i in range(n):
+        for j in range(m):
+            res[j][n-1-i] = matrix[i][j]
+    return res
+
+=======
+Suggestion 4
+
+def rotate90(S):
+    N = len(S)
+    S2 = [['' for _ in range(N)] for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            S2[N-1-j][i] = S[i][j]
+    return S2
+
+=======
+Suggestion 5
+
+def get_matrix(n):
+    matrix = []
+    for i in range(n):
+        matrix.append(list(input()))
+    return matrix
+
+=======
+Suggestion 6
+
+def get_rotate_matrix(matrix):
+    """
+    顺时针旋转矩阵90度
+    :param matrix: list[list[]]
+    :return:
+    """
+    n = len(matrix)
+    rotate_matrix = [[0 for i in range(n)] for j in range(n)]
+    for i in range(n):
+        for j in range(n):
+            rotate_matrix[i][j] = matrix[n - 1 - j][i]
+    return rotate_matrix
+
+=======
+Suggestion 7
+
+def rotate90(a):
+    return [[a[j][i] for j in range(len(a))] for i in range(len(a[0])-1,-1,-1)]
+
+=======
+Suggestion 8
+
+def rotate90(S):
+    N = len(S)
+    T = [['.' for _ in range(N)] for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            T[i][j] = S[N-1-j][i]
+    return T
+
+=======
+Suggestion 9
+
+def rotate(matrix):
+    return list(zip(*matrix[::-1]))
+
+=======
+Suggestion 10
+
+def rotate_90(matrix):
+    return list(zip(*matrix[::-1]))

@@ -1,36 +1,74 @@
-#问题陈述
-#给你一个以er或ist结尾的字符串S。
-#如果S以er结尾，打印er；如果以ist结尾，打印ist。
-#
-#限制条件
-#2 ≦ |S| ≦ 20
-#S由小写英文字母组成。
-#S以er或ist结尾。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#atcoder
-#
-#样本输出1
-#er
-#S="atcoder "以er结束。
-#
-#样本输入2
-#tourist
-#
-#样本输出2
-#ist
-#
-#样本输入3
-#er
-#
-#样品输出3
-#er
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[-2:] == "er":
+        print("er")
+    else:
+        print("ist")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.endswith("er"):
+        print("er")
+    else:
+        print("ist")
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    if S.endswith('er'):
+        print('er')
+    else:
+        print('ist')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.endswith("er"):
+        print("er")
+    elif s.endswith("ist"):
+        print("ist")
+    else:
+        print("error")
+
+=======
+Suggestion 5
+
+def get_suffix(s):
+    if s.endswith("er"):
+        return "er"
+    elif s.endswith("ist"):
+        return "ist"
+    else:
+        return "error"
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s[-2:] == "er":
+        print("er")
+    elif s[-3:] == "ist":
+        print("ist")
+
+=======
+Suggestion 7
+
+def problem224_a():
+    s = input()
+    if s.endswith("er"):
+        print("er")
+    else:
+        print("ist")

@@ -1,40 +1,62 @@
-#问题陈述
-#高桥想给圣诞老人寄一封信。他有一个信封，上面贴着X日元（日本货币）的邮票。
-#要送到圣诞老人手中，信封上的邮票总价值至少要达到Y日元。
-#高桥将再贴一些10日元的邮票，这样信封上的邮票总价值至少为Y日元。
-#高桥需要在信封上至少再贴多少张10日元的邮票？
-#
-#限制条件
-#X和Y是整数。
-#1 ≦ X,Y ≦ 1000
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本1
-#80 94
-#
-#样本输出 1
-#2
-#在80元的邮票上加了0张10元的邮票后，总数是80元，比要求的94元少。
-#在80元的邮票上加盖一张10元的邮票后，总额为90元，比所需的94元少。
-#在80日元的邮票上加盖两张10日元的邮票后，总额为100日元，不低于规定的94日元。
-#
-#输入样本2
-#1000 63
-#
-#样本输出2
-#0
-#信封上可能已经有一个足够价值的邮票。
-#
-#样本输入3
-#270 750
-#
-#样本输出3
-#48
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(x, y):
+    if x >= y:
+        return 0
+    else:
+        return (y - x) // 10 + (1 if (y - x) % 10 > 0 else 0)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    if x >= y:
+        print(0)
+    else:
+        print((y-x)//10)
+
+=======
+Suggestion 3
+
+def main():
+    x,y = map(int, input().split())
+    if x >= y:
+        print(0)
+    else:
+        print(int((y-x)/10))
+
+=======
+Suggestion 4
+
+def main():
+    x,y = map(int,input().split())
+    a = y - x
+    if a % 10 == 0:
+        print(a // 10)
+    else:
+        print(a // 10 + 1)
+
+=======
+Suggestion 5
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y - X) // 10)
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(int, input().split())
+    print((y - x) // 10)
+
+=======
+Suggestion 7
+
+def main():
+    X, Y = map(int, input().split())
+    print((Y-X%Y)%Y)

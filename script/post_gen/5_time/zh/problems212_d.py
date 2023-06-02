@@ -1,66 +1,245 @@
-#问题陈述
-#高桥有许多球，上面没有任何文字，还有一个袋子。
-#最初，袋子是空的。高桥将做Q个操作，每个操作属于以下三种类型之一。
-#类型1：在一个空球上写一个整数X_i，然后把它放进袋子里。
-#类型2：对于袋子里的每个球，用该整数加X_i替换写在上面的整数。
-#类型3：拿起袋子里整数最小的球（如果有多个这样的球，拿起其中一个）。记录写在这个球上的整数并把它扔掉。
-#对于每个1≦i≦Q，你会得到第i个操作的类型P_i和X_i的值，如果该操作属于类型1或2。依次打印类型3的操作中记录的整数。
-#
-#约束条件
-#1 ≦ Q ≦ 2× 10^5
-#1 ≦ P_i ≦ 3
-#1 ≦ X_i ≦ 10^9
-#输入的所有数值都是整数。
-#有一个或多个i使得P_i=3。
-#如果P_i=3，则在第i次操作之前，袋子里至少有一个球。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#Q
-#query_1
-#query_2
-#:
-#query_Q
-#第2行至第(Q+1)行的每个查询_i的格式如下：
-#1 X_i
-#2 X_i
-#3
-#每行的第一个数字是1≦P_i≦3，代表操作的类型。
-#如果P_i=1或P_i=2，后面是一个空格，然后是X_i。
-#
-#输出
-#对于Q操作中每一个P_i=3的操作，在自己的行中打印记录的整数。
-#
-#输入样本 1
-#5
-#1 3
-#1 5
-#3
-#2 2
-#3
-#
-#样本输出1
-#3
-#7
-#高桥将做以下操作。
-#在一个球上写上3，然后把它放到袋子里。
-#在一个球上写上5并把它放进袋子里。
-#袋子里现在有一个写着3的球和另一个写着5的球，拿起其中小的那个球，即3。记录下3并把它扔掉。
-#现在袋子里只有一个带5的球，用5+2=7代替这个整数。
-#现在袋子里只有一个带7的球，拿起这个球，记录下7，然后把它扔掉。
-#因此，我们应该按照记录的顺序来打印3和7。
-#
-#输入样本 2
-#6
-#1 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#3
-#
-#样本输出2
-#5000000000
-#注意，输出可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        a.append(list(map(int, input().split())))
+    ret = []
+    bag = []
+    for i in range(q):
+        if a[i][0] == 1:
+            bag.append(a[i][1])
+        elif a[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += a[i][1]
+        else:
+            ret.append(min(bag))
+            bag.remove(min(bag))
+    for i in range(len(ret)):
+        print(ret[i])
+
+=======
+Suggestion 2
+
+def main():
+    Q = int(input())
+    bag = []
+    for i in range(Q):
+        query = input()
+        if query[0] == '1':
+            bag.append(int(query.split(' ')[1]))
+        elif query[0] == '2':
+            for j in range(len(bag)):
+                bag[j] += int(query.split(' ')[1])
+        else:
+            print(min(bag))
+            bag.remove(min(bag))
+main()
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    Q = int(input())
+    queries = [input().split() for _ in range(Q)]
+    #print(queries)
+    #print(queries[0])
+    #print(queries[0][0])
+    #print(queries[0][1])
+    #print(queries[0][2])
+    #print(queries[0][3])
+    #print(queries[0][4])
+    #print(queries[0][5])
+    #print(queries[0][6])
+    #print(queries[0][7])
+    #print(queries[0][8])
+    #print(queries[0][9])
+    #print(queries[0][10])
+    #print(queries[0][11])
+    #print(queries[0][12])
+    #print(queries[0][13])
+    #print(queries[0][14])
+    #print(queries[0][15])
+    #print(queries[0][16])
+    #print(queries[0][17])
+    #print(queries[0][18])
+    #print(queries[0][19])
+    #print(queries[0][20])
+    #print(queries[0][21])
+    #print(queries[0][22])
+    #print(queries[0][23])
+    #print(queries[0][24])
+    #print(queries[0][25])
+    #print(queries[0][26])
+    #print(queries[0][27])
+    #print(queries[0][28])
+    #print(queries[0][29])
+    #print(queries[0][30])
+    #print(queries[0][31])
+    #print(queries[0][32])
+    #print(queries[0][33])
+    #print(queries[0][34])
+    #print(queries[0][35])
+    #print(queries[0][36])
+    #print(queries[0][37])
+    #print(queries[0][38])
+    #print(queries[0][39])
+    #print(queries[0][40])
+    #print(queries[0][41])
+    #print(queries[0][42])
+    #print(queries[0][43])
+    #print(queries[0][44])
+    #print(queries[0
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    arr = []
+    for i in range(n):
+        arr.append(list(map(int,input().split())))
+    bag = []
+    for i in range(n):
+        if arr[i][0] == 1:
+            bag.append(arr[i][1])
+        elif arr[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += arr[i][1]
+        else:
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 5
+
+def main():
+    #输入
+    q = int(input())
+    queries = []
+    for i in range(q):
+        queries.append(list(map(int,input().split())))
+
+    #处理
+    bag = []
+    for query in queries:
+        if query[0] == 1:
+            bag.append(query[1])
+        elif query[0] == 2:
+            bag = [x+query[1] for x in bag]
+        elif query[0] == 3:
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 6
+
+def main():
+    q = int(input())
+    bag = []
+    for i in range(q):
+        line = input().split()
+        if line[0] == "1":
+            bag.append(int(line[1]))
+        elif line[0] == "2":
+            for j in range(len(bag)):
+                bag[j] += int(line[1])
+        elif line[0] == "3":
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    bag = []
+    for i in range(n):
+        query = input()
+        if query[0] == '1':
+            bag.append(int(query[2:]))
+        elif query[0] == '2':
+            for j in range(len(bag)):
+                bag[j] += int(query[2:])
+        elif query[0] == '3':
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    Q = int(input())
+    # 初始化一个空的列表
+    bag = []
+    # 循环Q次
+    for i in range(Q):
+        # 读入操作类型
+        P = int(input())
+        # 如果是类型1或2
+        if P == 1 or P == 2:
+            # 读入整数X
+            X = int(input())
+            # 如果是类型1
+            if P == 1:
+                # 把整数X放进袋子里
+                bag.append(X)
+            # 如果是类型2
+            else:
+                # 对于袋子里的每个球
+                for j in range(len(bag)):
+                    # 用该整数加X替换写在上面的整数
+                    bag[j] += X
+        # 如果是类型3
+        else:
+            # 找到袋子里整数最小的球
+            min_ball = min(bag)
+            # 记录写在这个球上的整数
+            ans = min_ball
+            # 把它扔掉
+            bag.remove(min_ball)
+            # 打印记录的整数
+            print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    nums = []
+    for i in range(n):
+        num = input().split()
+        if num[0] == '1':
+            nums.append(int(num[1]))
+        elif num[0] == '2':
+            nums = [x+int(num[1]) for x in nums]
+        elif num[0] == '3':
+            print(min(nums))
+            nums.remove(min(nums))
+
+=======
+Suggestion 10
+
+def main():
+    q = int(input())
+    op = []
+    for i in range(q):
+        op.append(list(map(int, input().split())))
+
+    bag = []
+    for i in range(q):
+        if op[i][0] == 1:
+            bag.append(op[i][1])
+        elif op[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += op[i][1]
+        else:
+            bag.sort()
+            print(bag[0])
+            bag.pop(0)

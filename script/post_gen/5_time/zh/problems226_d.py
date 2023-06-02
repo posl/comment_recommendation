@@ -1,76 +1,163 @@
-#问题陈述
-#AtCoder共和国位于一个笛卡尔坐标平面上。
-#它有N个城镇，编号为1，2，...，N。城镇i位于（x_i，y_i），没有两个不同的城镇位于相同的坐标。
-#这个国家有传送法术。一个法术由一对整数(a,b)标识，在坐标(x,y)处施展法术(a,b)可以将你传送到(x+a, y+b)。
-#斯努克是一个伟大的魔术师，他可以为他选择的任何一对整数（a，b）学习咒语（a，b）。他能学习的法术数量也是无限的。
-#为了能够使用法术在城镇之间旅行，他决定学习一定数量的法术，这样就有可能对每一对不同的城镇（i，j）做以下事情。
-#在所学的法术中只选择一个法术。然后，反复使用所选的法术，从i镇到j镇。
-#Snuke至少需要学习多少个法术才能实现上述目标？
-#
-#限制条件
-#2 ≦ N ≦ 500
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ y_i ≦ 10^9 (1 ≦ i ≦ N)
-#(x_i, y_i) ≠ (x_j, y_j) if i ≠ j.
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-#x_N y_N
-#
-#输出
-#打印Snuke需要学习的最小法术数。
-#
-#输入样本 1
-#3
-#1 2
-#3 6
-#7 4
-#
-#样本输出1
-#6
-#下图说明了城镇的位置（以及四个角的坐标）。
-#如果Snuke学会了下面的六个法术，他可以通过对每一对(i,j)(i≠j)使用一次法术，从城镇i到城镇j，实现他的目标。
-#(2, 4)
-#(-2, -4)
-#(4, -2)
-#(-4, 2)
-#(-6, -2)
-#(6, 2)
-#另一个选择是学习下面的六个法术。在这种情况下，他可以通过对每一对(i,j)(i ≠ j)使用其中一个法术两次来从i镇到j镇，实现他的目标。
-#(1, 2)
-#(-1, -2)
-#(2, -1)
-#(-2, 1)
-#(-3, -1)
-#(3, 1)
-#没有一个法术组合是由少于6个法术组成并达到目的的，所以我们应该打印6。
-#
-#输入样本 2
-#3
-#1 2
-#2 2
-#4 2
-#
-#样本输出 2
-#2
-#最佳选择是学习下面两个咒语：
-#(1, 0)
-#(-1, 0)
-#
-#样本输入 3
-#4
-#0 0
-#0 1000000000
-#1000000000 0
-#1000000000 1000000000
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 2
+
+def get_min_spell_num(town_list):
+    min_spell_num = 0
+    return min_spell_num
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    res = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            a = x[i]-x[j]
+            b = y[i]-y[j]
+            c = 0
+            d = 0
+            for k in range(n):
+                for l in range(k+1, n):
+                    if x[k]-x[l] == a and y[k]-y[l] == b:
+                        c += 1
+                    if x[k]-x[l] == -a and y[k]-y[l] == -b:
+                        d += 1
+            res = max(res, n-c, n-d)
+    print(res)
+    return
+
+=======
+Suggestion 4
+
+def get_distance(x1,y1,x2,y2):
+    return (x1-x2)**2+(y1-y2)**2
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def getMinNumOfSpell(N, x, y):
+    spells = []
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                spells.append((x[j] - x[i], y[j] - y[i]))
+    spells = list(set(spells))
+    return len(spells)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dx = x[i] - x[j]
+            dy = y[i] - y[j]
+            cnt = 0
+            for k in range(n):
+                for l in range(k+1, n):
+                    if x[k] - x[l] == dx and y[k] - y[l] == dy:
+                        cnt += 1
+            ans = max(ans, n - cnt)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    x.sort()
+    y.sort()
+    if n%2 == 1:
+        x_med = x[n//2]
+        y_med = y[n//2]
+    else:
+        x_med = (x[n//2-1]+x[n//2])//2
+        y_med = (y[n//2-1]+y[n//2])//2
+    ans = 0
+    for i in range(n):
+        ans += abs(x[i]-x_med) + abs(y[i]-y_med)
+    print(ans)
+
+=======
+Suggestion 9
+
+def getMinNumOfMagic(N, towns):
+    # 1. 遍历所有城镇，计算城镇 i 到城镇 j 的距离，保存到数组中
+    # 2. 遍历数组，计算数组中的元素的最大公约数
+    # 3. 计算数组中的元素的最大公约数的最大公约数
+    # 4. 返回最大公约数的最大公约数
+    distance = []
+    for i in range(0, N):
+        for j in range(i+1, N):
+            distance.append(abs(towns[i][0]-towns[j][0])+abs(towns[i][1]-towns[j][1]))
+    # print(distance)
+    # 2. 遍历数组，计算数组中的元素的最大公约数
+    def getGCD(a, b):
+        if b == 0:
+            return a
+        else:
+            return getGCD(b, a%b)
+    gcd = distance[0]
+    for i in range(1, len(distance)):
+        gcd = getGCD(gcd, distance[i])
+    return gcd
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x1,y1 = map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+    x.sort()
+    y.sort()
+    xdiff = []
+    ydiff = []
+    for i in range(n-1):
+        xdiff.append(x[i+1]-x[i])
+        ydiff.append(y[i+1]-y[i])
+    xdiff.sort()
+    ydiff.sort()
+    print(max(xdiff[-1],ydiff[-1]))

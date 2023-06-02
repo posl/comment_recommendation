@@ -1,37 +1,107 @@
-#问题陈述
-#我们在AtCoder镇有一些连续三天的天气记录。一个长度为3的字符串S代表这些记录--如果第i个字符是S，意味着第i天是晴天；如果该字符是R，意味着该天是雨天。
-#找出这段时间内连续下雨的最大天数。
-#
-#限制条件
-#|S| = 3
-#S的每个字符都是S或R。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印该期间最大的连续阴雨天数。
-#
-#样本输入1
-#RRS
-#
-#样本输出1
-#2
-#我们在这段时间的第1天和第2天都有雨。这里，最大的连续下雨天数是2，所以我们应该打印2。
-#
-#输入样本 2
-#SSS
-#
-#样本输出2
-#0
-#整个时期都是晴天。我们没有雨天，所以我们应该打印0。
-#
-#样本输入3
-#RSR
-#
-#样本输出3
-#1
-#我们在第1天和第3天有雨--两个 "连环 "的雨天，所以我们应该打印1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(S.count('R'))
+
+=======
+Suggestion 2
+
+def main():
+    a = input()
+    count = 0
+    max_count = 0
+    for i in range(3):
+        if a[i] == "R":
+            count += 1
+        else:
+            count = 0
+        max_count = max(count, max_count)
+    print(max_count)
+
+=======
+Suggestion 3
+
+def problem175_a():
+    S = input()
+    if S == "RRR":
+        print(3)
+    elif S == "RRS" or S == "SRR":
+        print(2)
+    elif S == "SSS":
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    r = s.count('R')
+    print(r)
+
+=======
+Suggestion 5
+
+def max_rain_days(s):
+    count = 0
+    max_count = 0
+    for i in range(3):
+        if s[i] == 'R':
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    return max_count
+
+=======
+Suggestion 6
+
+def problem175_a(s):
+    if s == 'RRR':
+        return 3
+    elif s == 'RRS' or s == 'SRR':
+        return 2
+    elif s == 'SSS':
+        return 0
+    else:
+        return 1
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    print(s.count('R'))
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    a = s.count('R')
+    print(a)
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print(0)
+    elif S[0] == S[1] or S[1] == S[2]:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    print(S.count("R"))

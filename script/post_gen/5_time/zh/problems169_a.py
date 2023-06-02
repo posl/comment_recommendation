@@ -1,29 +1,42 @@
-#问题陈述
-#计算A×B。
-#
-#限制条件
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#将A×B的值打印成整数。
-#
-#输入样本 1
-#2 5
-#
-#输出样本 1
-#10
-#我们有2×5=10。
-#
-#样本输入2
-#100 100
-#
-#样本输出2
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    print(a*b)
+
+=======
+Suggestion 2
+
+def multi():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if a >= 1 and a <= 100 and b >= 1 and b <= 100:
+        print(a*b)
+    else:
+        print("输入的数值不符合要求")
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 处理
+    c = a * b
+    # 输出结果
+    print(c)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a,b = map(int, input().split())
+    # 计算
+    ans = a * b
+    # 输出答案
+    print(ans)

@@ -1,36 +1,110 @@
-#问题陈述
-#给出一个整数或小数X，将其四舍五入为整数并打印结果。
-#
-#限制条件
-#0 ≦ X ≦ 10^{100}
-#X是一个整数或小数，小数点后最多有100位，没有多余的前导零。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#将X四舍五入为整数，并打印结果（为整数）。
-#
-#输入样本 1
-#5.90
-#
-#样本输出1
-#5
-#我们将5.90四舍五入为一个整数，即5，并将其打印为一个整数。非整数输出，如5.0，将被判定为不正确。
-#
-#输入样本2
-#0
-#
-#样本输出2
-#0
-#X中可能没有小数点。
-#
-#输入样本3
-#84939825309432908832902189.9092309409809091329
-#
-#输出样本3
-#84939825309432908832902189
-#处理大数字时要注意。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    import sys
+    try:
+        input = sys.stdin.readline
+        x = float(input())
+        print(int(x+0.5))
+    except:
+        print("输入有误")
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    x = input()
+    # 四舍五入
+    x = round(float(x))
+    # 打印结果
+    print(x)
+
+=======
+Suggestion 3
+
+def round(x):
+    if x.isdecimal():
+        return x
+    else:
+        if '.' in x:
+            x = x.split('.')
+            if x[1][0] >= '5':
+                x[0] = str(int(x[0]) + 1)
+            return x[0]
+        else:
+            return x
+
+x = input()
+print(round(x))
+
+=======
+Suggestion 4
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 5
+
+def main():
+    x = input()
+    if '.' in x:
+        x = x.split('.')[0]
+    print(x)
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    if '.' in x:
+        print(int(float(x)+0.5))
+    else:
+        print(x)
+
+=======
+Suggestion 7
+
+def main():
+    x = input()
+    x = float(x)
+    print(round(x))
+
+=======
+Suggestion 8
+
+def main():
+    x = input()
+    print(round(float(x)))
+
+=======
+Suggestion 9
+
+def main():
+    #get input
+    x = input()
+    #convert to float
+    x = float(x)
+    #round to nearest integer
+    x = round(x)
+    #print result
+    print(x)
+
+=======
+Suggestion 10
+
+def main():
+    x = input()
+    if x.find('.') == -1:
+        print(x)
+    else:
+        x = x.split('.')
+        if int(x[1][0]) >= 5:
+            print(int(x[0]) + 1)
+        else:
+            print(int(x[0]))

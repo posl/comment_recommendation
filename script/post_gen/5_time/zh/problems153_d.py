@@ -1,42 +1,91 @@
-#问题陈述
-#狞猫正在与一只怪物战斗。
-#怪物的健康状况是H。
-#狞猫可以通过选择一个怪物进行攻击。当一个怪物被攻击时，根据该怪物的健康状况，会发生以下情况：
-#如果该怪物的健康状况是1，它就会降到0。
-#如果怪物的健康状况，X，大于1，则该怪物消失。然后，出现两个新的怪物，每个怪物的健康状况为⌊ X/2 ⌋。
-#(⌊ r ⌋表示不超过r的最大整数)。
-#当所有现有怪物的健康状况变成0或低于0时，卡拉卡尔就赢了。
-#找出卡拉卡尔在获胜前需要进行的最小攻击次数。
-#
-#限制条件
-#1 ≦ H ≦ 10^{12}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H
-#
-#输出
-#找到Caracal在获胜前需要的最小攻击次数。
-#
-#输入样本 1
-#2
-#
-#样本输出 1
-#3
-#当卡拉卡尔攻击最初的怪物时，它就会消失，然后出现两个怪物，每个怪物的生命值都是1。
-#然后，狞猫可以对这些新怪物各攻击一次，总共攻击三次就能获胜。
-#
-#样本输入2
-#4
-#
-#样本输出2
-#7
-#
-#样本输入3
-#1000000000000
-#
-#样本输出3
-#1099511627775
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solution(h):
+    if h == 1:
+        return 1
+    return solution(h//2)*2+1
+
+=======
+Suggestion 2
+
+def f(h):
+    if h == 1:
+        return 1
+    else:
+        return 2 * f(h // 2) + 1
+
+h = int(input())
+print(f(h))
+
+=======
+Suggestion 3
+
+def solve(H):
+    if H == 1:
+        return 1
+    else:
+        return 2*solve(H//2)+1
+
+=======
+Suggestion 4
+
+def solve():
+    h = int(input())
+    print(2**(h.bit_length())-1)
+
+=======
+Suggestion 5
+
+def solve(H):
+    if H == 1:
+        return 1
+    else:
+        return 2*solve(H//2)+1
+
+H = int(input())
+print(solve(H))
+
+=======
+Suggestion 6
+
+def f(x):
+    if x == 1:
+        return 1
+    else:
+        return 2*f(x//2)+1
+
+H = int(input())
+print(f(H))
+
+=======
+Suggestion 7
+
+def solve(h):
+    if h == 1:
+        return 1
+    else:
+        return 2*solve(h//2)+1
+
+h = int(input())
+print(solve(h))
+
+=======
+Suggestion 8
+
+def solve(h):
+    if h == 1:
+        return 1
+    else:
+        return 2 * solve(h // 2) + 1
+
+=======
+Suggestion 9
+
+def f(h):
+    if h == 1:
+        return 1
+    else:
+        return 2 * f(h // 2) + 1

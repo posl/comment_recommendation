@@ -1,54 +1,99 @@
-#问题陈述
-#高桥要逐一购买N件商品。
-#他购买的第i件商品的价格是A_i日元（日本的货币）。
-#他有M张折扣票，他可以在购买商品时使用任何数量的折扣票。
-#如果在购买价格为X日元的商品时使用了Y张折扣券，他可以用(X/(2^Y))(四舍五入到最近的整数)日元买到该商品。
-#购买所有物品所需的最低金额是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ n, m ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印购买所有物品所需的最小资金量。
-#
-#输入样本 1
-#3 3
-#2 13 8
-#
-#样本输出1
-#9
-#我们可以用9日元购买所有的物品，如下所示：
-#以2日元的价格购买第1件商品，不需要门票。
-#用2张票购买第2件商品，价格为3日元。
-#购买第3件商品，价格为4日元，有1张票。
-#
-#输入样本 2
-#4 4
-#1 9 3 5
-#
-#样本输出2
-#6
-#
-#样本输入3
-#1 100000
-#1000000000
-#
-#样本输出3
-#0
-#我们可以用100000张票购买价格为1000000000日元的物品，价格为0日元。
-#
-#样本输入4
-#10 1
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#样本输出4
-#9500000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    ans = 0
+    for i in range(m):
+        a.append(a.pop()//2)
+    print(sum(a))
+main()
+
+=======
+Suggestion 2
+
+def solve(n, m, a):
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] //= 2
+        a.sort(reverse=True)
+    return sum(a)
+
+=======
+Suggestion 3
+
+def buyItemByDiscountTicket(itemPrice, ticketNum, ticketPrice):
+    if ticketNum == 0:
+        return itemPrice
+    else:
+        return buyItemByDiscountTicket(int(itemPrice/2), ticketNum-1, ticketPrice)
+
+=======
+Suggestion 4
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] //= 2
+        a.sort(reverse=True)
+    print(sum(a))
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    for _ in range(M):
+        A[-1] //= 2
+        A.sort()
+    print(sum(A))
+
+=======
+Suggestion 6
+
+def get_min_price(N, M, A):
+    A.sort()
+    A.reverse()
+    for i in range(M):
+        A[0] = A[0] >> 1
+        A.sort()
+        A.reverse()
+    return sum(A)
+
+=======
+Suggestion 7
+
+def problem141_d():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(m):
+        a[-1] = a[-1] // 2
+        a.sort()
+    print(sum(a))
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(m):
+        a[0] = a[0] // 2
+        a.sort(reverse=True)
+    print(sum(a))

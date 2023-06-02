@@ -1,30 +1,92 @@
-#问题陈述
-#N年是哪个世纪？
-#什么是世纪？
-#一个世纪是一个100年的时期。例如，第1个世纪由1到100年组成，第2个世纪由101到200年组成，以此类推。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2021
-#
-#样本输出1
-#21
-#这一年2021年是在21世纪。
-#
-#样本输入2
-#200
-#
-#样本输出2
-#2
-#200年是在第2个世纪。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    century = n // 100
+    if n % 100 != 0:
+        century += 1
+    print(century)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n % 100 == 0:
+        print(n // 100)
+    else:
+        print(n // 100 + 1)
+
+=======
+Suggestion 3
+
+def century(year):
+    if year%100 == 0:
+        return int(year/100)
+    else:
+        return int(year/100)+1
+
+=======
+Suggestion 4
+
+def get_century(year):
+    century = year // 100
+    if year % 100 != 0:
+        century += 1
+    return century
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    print(N%100)
+    if N%100 == 0:
+        print(N//100)
+    else:
+        print(N//100 + 1)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    print((N+99)//100)
+
+=======
+Suggestion 7
+
+def century(year):
+    return (year + 99) // 100
+
+=======
+Suggestion 8
+
+def century(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1
+
+=======
+Suggestion 9
+
+def getCentury(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1
+
+=======
+Suggestion 10
+
+def century(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1
+
+print(century(int(input())))

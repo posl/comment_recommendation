@@ -1,49 +1,89 @@
-#问题陈述
-#Fennec正在与N个怪兽战斗。
-#第i个怪物的健康状况为H_i。
-#Fennec可以做以下两个动作：
-#攻击：Fennec选择一个怪物。该怪物的生命值将减少1。
-#特殊移动：Fennec选择一只怪物。该怪物的生命值将变为0。
-#除了攻击和特殊移动之外，没有其他方法可以减少怪物的生命值。
-#当所有怪物的生命值都变成0或低于0时，Fennec获胜。
-#当Fennec最多可以使用特殊移动K次时，找出Fennec在获胜前需要进行攻击（不算特殊移动）的最少次数。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#0 ≦ K ≦ 2 × 10^5
-#1 ≦ H_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#H_1 ...H_N
-#
-#输出
-#打印Fennec在获胜前需要进行的最小攻击次数（不计入特殊移动）。
-#
-#输入样本 1
-#3 1
-#4 1 5
-#
-#样本输出 1
-#5
-#通过对第三只怪物使用特殊移动，对第一只怪物进行四次攻击，对第二只怪物进行一次攻击，芬尼克可以用五次攻击获胜。
-#
-#输入样本2
-#8 9
-#7 9 3 2 3 8 4 6
-#
-#样本输出2
-#0
-#她可以对所有的怪兽使用特殊移动。
-#
-#输入样本3
-#3 0
-#1000000000 1000000000 1000000000
-#
-#样本输出3
-#3000000000
-#注意溢出。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    h.sort(reverse=True)
+    if k >= n:
+        print(0)
+    else:
+        print(sum(h[k:]))
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort(reverse=True)
+    ans = sum(h)
+    for i in range(k):
+        ans -= h[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    h.sort(reverse=True)
+    print(sum(h[k:]))
+
+=======
+Suggestion 4
+
+def solve(n, k, h):
+    h.sort(reverse=True)
+    ans = sum(h)
+    for i in range(k):
+        ans -= h[i]
+    return ans
+
+n, k = map(int, input().split())
+h = list(map(int, input().split()))
+
+print(solve(n, k, h))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    H = list(map(int, input().split()))
+    H.sort(reverse=True)
+    print(sum(H[K:]))
+
+=======
+Suggestion 6
+
+def solve():
+    N,K = map(int,input().split())
+    H = list(map(int,input().split()))
+    H = sorted(H,reverse=True)
+    if K >= N:
+        print(0)
+        return
+    else:
+        print(sum(H[K:]))
+
+=======
+Suggestion 7
+
+def solve(N, K, H):
+    H.sort()
+    #print(H)
+    print(sum(H[:-K]) if K < N else 0)
+
+=======
+Suggestion 8
+
+def main():
+    N,K = map(int,input().split())
+    H = list(map(int,input().split()))
+    H.sort(reverse=True)
+    H = H[K:]
+    print(sum(H))

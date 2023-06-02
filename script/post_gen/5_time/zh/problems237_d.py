@@ -1,43 +1,134 @@
-#问题陈述
-#有一个包含一个0的序列，A=(0)。
-#另外，给你一个长度为N的字符串，S=s_1s_2...s_N，由L和R组成。
-#对于每个i=1，2，...，N的这个顺序，将进行以下操作。
-#如果s_i是L，则在A中i-1的左近插入i。
-#如果s_i是R，在A中i-1的右边插入i。
-#找到A的最终内容。
-#
-#限制条件
-#1≦ N ≦ 5× 10^5
-#N是一个整数。
-#|S| = N
-#s_i是L或R。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S
-#
-#输出
-#打印A的最终内容，用空格分隔。
-#
-#输入样本1
-#5
-#LRRLR
-#
-#样本输出1
-#1 2 4 5 3 0
-#最初，A=(0)。
-#S_1是L，这使它成为A=(1,0)。
-#S_2是R，这使它成为A=(1,2,0)。
-#S_3是R，这使得A=(1,2,3,0)。
-#S_4是L，这使它成为A=(1,2,4,3,0)。
-#S_5是R，这使它成为A=(1,2,4,5,3,0)。  
-#
-#样本输入2
-#7
-#LLLLLLLLL
-#
-#样本输出2
-#7 6 5 4 3 2 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == "L":
+            A.insert(i, i+1)
+        else:
+            A.append(i+1)
+    print(*A)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0,i+1)
+        else:
+            a.append(i+1)
+    print(*a)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    A = [0]
+    for i in range(N):
+        if S[i] == 'L':
+            A.insert(0, i+1)
+        else:
+            A.append(i+1)
+    print(*A)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    ans = [0]
+    for i in range(1, n):
+        if s[i] == 'L':
+            ans.insert(0, i + 1)
+        else:
+            ans.append(i + 1)
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n-1):
+        if s[i] == 'L':
+            a.insert(0,i+2)
+        else:
+            a.append(i+2)
+    for i in a:
+        print(i,end=' ')
+    print('0')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+
+    A = [0]
+    for i in range(1, N+1):
+        if S[i-1] == 'L':
+            A.insert(0, i)
+        else:
+            A.append(i)
+    print(' '.join(map(str, A)))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0, i + 1)
+        else:
+            a.append(i + 1)
+    print(*a)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = input()
+    a = [0]
+    for i in range(n):
+        if s[i] == 'L':
+            a.insert(0, i+1)
+        else:
+            a.append(i+1)
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    s = input()
+    l = []
+    r = []
+    for i in range(n):
+        if s[i] == 'L':
+            l.append(i+1)
+        else:
+            r.append(i+1)
+    r.reverse()
+    l.extend(r)
+    print(' '.join(map(str,l)))

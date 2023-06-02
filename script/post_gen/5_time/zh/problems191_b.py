@@ -1,34 +1,93 @@
-#问题陈述
-#给出一个长度为N的整数序列A，和一个整数X。
-#从A中除去所有等于X的元素，并在不改变顺序的情况下排列其余的元素，得到序列A'。打印A'。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#A_1 A_2 A_3 ... A_N
-#
-#輸出
-#按顺序打印A'的元素，中间有空格。
-#
-#输入样本 1
-#5 5
-#3 5 6 5 4
-#
-#样本输出 1
-#3 6 4
-#从[3，5，6，5，4]中去除5，结果是[3，6，4]。
-#
-#输入样本 2
-#3 3
-#3 3 3
-#
-#输出示例 2
-#A'可以是一个零元素的序列，在这种情况下，我们应该只打印一个空行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = []
+    for i in range(n):
+        if a[i] != x:
+            result.append(a[i])
+    print(*result)
+
+=======
+Suggestion 2
+
+def remove_x_from_a(a, x):
+    new_a = [i for i in a if i != x]
+    return new_a
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=" ")
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        if a[i] != x:
+            ans.append(a[i])
+    print(*ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=" ")
+    print()
+
+=======
+Suggestion 6
+
+def problem191_b():
+    #输入
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    #处理
+    result = []
+    for i in range(n):
+        if a[i] != x:
+            result.append(a[i])
+
+    #输出
+    for i in range(len(result)):
+        if i != 0:
+            print(" ", end="")
+        print(result[i], end="")
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    A = [i for i in A if i != X]
+    print(*A)
+
+=======
+Suggestion 8
+
+def main():
+    n, x = map(int, input().split())
+    a = [int(x) for x in input().split()]
+    for i in range(n):
+        if a[i] != x:
+            print(a[i], end=' ')

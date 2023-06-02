@@ -1,75 +1,218 @@
-#问题陈述
-#我们有N张投票纸。第i张票（1 ≦ i ≦ N）上写有字符串S_i。
-#打印所有写在最多票数上的字符串，按词序排列。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#S_i（1 ≦ i ≦ N）是由小写英文字母组成的字符串。
-#S_i (1 ≦ i ≦ N)的长度在1和10之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#:
-#S_N
-#
-#输出
-#按词典顺序打印问题中的所有字符串。
-#
-#输入样本1
-#7
-#打
-#兽医
-#甜菜
-#床
-#兽医
-#赌注
-#甜菜
-#
-#样本输出1
-#甜菜
-#兽医
-#beet和vet分别写在两张纸上，而beat、bed和bet则分别写在一张纸上。因此，我们应该打印beet和vet这两个字符串。
-#
-#输入样本2
-#8
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#水牛
-#
-#样本输出2
-#水牛
-#
-#样本输入3
-#7
-#低音
-#低音
-#踢球
-#踢球
-#低音
-#踢球
-#踢球
-#
-#样本输出3
-#踢球
-#
-#采样输入4
-#4
-#ushi
-#tapu
-#nichia
-#kun
-#
-#样本输出4
-#ushi
-#tapu
-#nichia
-#kun
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S = list(set(S))
+    S.sort()
+    for i in range(len(S)):
+        print(S[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    votes = []
+    for i in range(n):
+        votes.append(input())
+    votes.sort()
+    max_cnt = 0
+    cnt = 0
+    max_vote = ""
+    for i in range(n):
+        if i == 0:
+            cnt = 1
+        else:
+            if votes[i] == votes[i-1]:
+                cnt += 1
+            else:
+                if cnt > max_cnt:
+                    max_cnt = cnt
+                    max_vote = votes[i-1]
+                cnt = 1
+    if cnt > max_cnt:
+        max_cnt = cnt
+        max_vote = votes[n-1]
+    print(max_vote)
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    max_count = 0
+    max_str = ""
+    count = 1
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+        else:
+            count = 1
+        if max_count < count:
+            max_count = count
+            max_str = s[i]
+    print(max_str)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    # print
+    s.sort()
+    max = 1
+    count = 1
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+        else:
+            if count > max:
+                max = count
+            count = 1
+    if count > max:
+        max = count
+
+    count = 1
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+        else:
+            if count == max:
+                print(s[i])
+            count = 1
+    if count == max:
+        print(s[n - 1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = {}
+    for i in range(n):
+        si = input()
+        if si in s:
+            s[si] += 1
+        else:
+            s[si] = 1
+    max = 0
+    for i in s:
+        if s[i] > max:
+            max = s[i]
+    for i in sorted(s):
+        if s[i] == max:
+            print(i)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    d = {}
+    for _ in range(n):
+        s = input()
+        if s in d:
+            d[s] += 1
+        else:
+            d[s] = 1
+    max_cnt = max(d.values())
+    ans = []
+    for k in d:
+        if d[k] == max_cnt:
+            ans.append(k)
+    ans.sort()
+    for s in ans:
+        print(s)
+solve()
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    max = 0
+    for i in range(n):
+        if s.count(s[i]) > max:
+            max = s.count(s[i])
+    for i in range(n):
+        if s.count(s[i]) == max:
+            print(s[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    dic = {}
+    for i in range(n):
+        s = input()
+        if s in dic:
+            dic[s] += 1
+        else:
+            dic[s] = 1
+    max = 0
+    for key in dic:
+        if dic[key] > max:
+            max = dic[key]
+    for key in sorted(dic):
+        if dic[key] == max:
+            print(key)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    count = 0
+    max = 0
+    for i in range(n):
+        if i == 0:
+            count = 1
+            max = 1
+        else:
+            if s[i] == s[i-1]:
+                count += 1
+                if count > max:
+                    max = count
+            else:
+                count = 1
+    for i in range(n):
+        if i == 0:
+            count = 1
+        else:
+            if s[i] == s[i-1]:
+                count += 1
+            else:
+                count = 1
+        if count == max:
+            print(s[i])

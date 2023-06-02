@@ -1,54 +1,218 @@
-#问题陈述
-#一个字符串T的ABC数是满足以下所有条件的整数（i, j, k）的三倍数：
-#1 ≤ i < j < k ≤ |T| (|T|是T的长度。)
-#T_i = A (T_i是T的第i个字符，从头开始。)
-#T_j = B
-#T_k = C
-#例如，当T=ABCBC时，有三个满足条件的三倍整数（i, j, k）：（1, 2, 3），（1, 2, 5），（1, 4, 5）。因此，T的ABC数是3。
-#给你一个字符串S，S的每个字符是A，B，C或?
-#我们可以用A、B或C替换S中出现的每个字符，从而组成3^Q的字符串，求所有这些字符串的ABC号码之和。
-#这个和可能非常大，所以要打印10^9+7的模数。
-#
-#限制条件
-#3 ≤ |S| ≤ 10^5
-#S的每个字符都是A、B、C或?
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#輸出
-#打印所有 3^Q 字符串的 ABC 数字之和，模数为 10^9 + 7。
-#
-#输入样本1
-#A??C
-#
-#样本输出1
-#8
-#在这种情况下，Q=2，我们可以通过用A、B或C替换每一次出现的?来制作3^Q=9个字符串，这些字符串的ABC号码如下：
-#AAAC：0
-#AABC：2
-#AACC：0
-#ABAC：1
-#ABBC：2
-#ABCC: 2
-#ACAC: 0
-#ACBC：1
-#ACCC：0
-#这些的总和是0+2+0+1+2+2+0+1+0=8，所以我们打印8的模数10^9+7，也就是8。
-#
-#输入样本2
-#ABCBC
-#
-#样本输出 2
-#3
-#当Q=0时，我们打印S本身的ABC号码，模数为10^9+7。这个字符串与问题陈述中作为例子给出的字符串相同，其ABC数为3。
-#
-#输入样本3
-#????C?????B??????A???????
-#
-#样本输出3
-#979596887
-#在这种情况下，所有 3^Q 字符串的 ABC 数字之和是 2291979612924，我们应该打印这个数字的模数 10^9 + 7，即 979596887。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    Q = S.count('?')
+    mod = 10**9+7
+    ans = 0
+    for i in range(len(S)):
+        if S[i]=='B' or S[i]=='?':
+            ans += pow(3,Q,mod)*(S[:i].count('A')+S[i+1:].count('C'))
+            ans %= mod
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def solve():
+    # 解题思路
+    # 1. 遍历字符串，统计A、B、C的位置
+    # 2. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 3. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    # 4. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 5. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    # 6. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 7. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    # 8. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 9. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    # 10. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 11. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    # 12. 从左到右遍历字符串，遇到?则加上之前的值，然后加上A、B、C的位置
+    # 13. 从右到左遍历字符串，遇到?则加上之后的值，然后加上A、B、C的位置
+    #
+
+=======
+Suggestion 3
+
+def solve():
+    S = input()
+    mod = 10**9 + 7
+    N = len(S)
+    Q = S.count('?')
+    S = S.replace('?','')
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if S[i] == 'B':
+            ans += pow(3,Q,mod) * pow(3,i,mod)
+        elif S[i] == 'C':
+            ans += pow(3,Q,mod) * pow(3,i,mod) * 2
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    n = len(s)
+    q = s.count('?')
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(n):
+        if s[i] == 'B' or s[i] == '?':
+            a = 0
+            c = 0
+            for j in range(i, n):
+                if s[j] == 'A':
+                    a += 1
+                elif s[j] == 'C':
+                    c += 1
+                elif s[j] == '?':
+                    ans += pow(3, q - 1, mod) * (pow(3, a, mod) + pow(3, c, mod)) % mod
+                    ans %= mod
+                    q -= 1
+                    a += 1
+                    c += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9 + 7
+
+    ans = 0
+    x = 1
+    for i in range(n):
+        if s[i] == 'B' or s[i] == '?':
+            ans += x
+        x *= 3
+        x %= mod
+
+    x = 1
+    for i in range(n-1, -1, -1):
+        if s[i] == 'B' or s[i] == '?':
+            ans += x * pow(3, s[i+1:].count('?'), mod)
+        x *= 3
+        x %= mod
+
+    print(ans % mod)
+
+=======
+Suggestion 7
+
+def main():
+    s=input()
+    n=len(s)
+    mod=10**9+7
+    a=[0]*(n+1)
+    b=[0]*(n+1)
+    c=[0]*(n+1)
+    q=0
+    for i in range(n):
+        if s[i]=="A":
+            a[i+1]=a[i]+pow(3,q,mod)
+        elif s[i]=="B":
+            b[i+1]=b[i]+pow(3,q,mod)
+        elif s[i]=="C":
+            c[i+1]=c[i]+pow(3,q,mod)
+        else:
+            a[i+1]=a[i]*3+pow(3,q,mod)
+            b[i+1]=b[i]*3+a[i]
+            c[i+1]=c[i]*3+b[i]
+            q+=1
+    print(c[n]%mod)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    ans = 0
+    a = 0
+    ab = 0
+    abc = 0
+    for i in range(n):
+        if s[i] == 'A':
+            a += 1
+        elif s[i] == 'B':
+            ab += a
+        elif s[i] == 'C':
+            abc += ab
+        else:
+            abc = 3*abc+ab
+            ab = 3*ab+a
+            a = 3*a+1
+        a %= mod
+        ab %= mod
+        abc %= mod
+    print(abc)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    q = s.count("?")
+    a = [0] * (q + 1)
+    b = [0] * (q + 1)
+    c = [0] * (q + 1)
+    a[0] = 1
+    b[0] = 1
+    c[0] = 1
+    for i in range(len(s)):
+        if s[i] == "A":
+            a[1] += a[0]
+        elif s[i] == "B":
+            b[1] += b[0]
+        elif s[i] == "C":
+            c[1] += c[0]
+        else:
+            a[1] += a[0]
+            b[1] += b[0]
+            c[1] += c[0]
+        a[0] = a[1]
+        b[0] = b[1]
+        c[0] = c[1]
+        a[1] %= 1000000007
+        b[1] %= 1000000007
+        c[1] %= 1000000007
+    print(c[0])
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    dp = [[0]*8 for _ in range(n+1)]
+    dp[n][0] = 1
+    for i in range(n-1,-1,-1):
+        for j in range(8):
+            if s[i] == "?":
+                for k in range(3):
+                    dp[i][j] += dp[i+1][j*3+k]
+            else:
+                dp[i][j] += dp[i+1][j*3+ord(s[i])-ord("A")]
+            dp[i][j] %= mod
+    print(dp[0][0])
+main()

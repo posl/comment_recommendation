@@ -1,64 +1,111 @@
-#问题陈述
-#给你一个有N个顶点和M条边的简单无向图。  顶点编号为1，...，N，第i条（1≦i≦M）边连接着顶点U_i和顶点V_i。
-#找出满足以下所有条件的整数组a, b, c的数目：
-#1 ≦ a < b < c ≦ N
-#有一条边连接顶点a和顶点b。
-#有一条边连接着顶点b和顶点c。
-#有一条边连接着顶点c和顶点a。
-#
-#限制条件
-#3 ≦ N ≦ 100
-#1 ≦ m ≦ ((n(n - 1))/(2))
-#1 ≦ U_i < V_i ≦ N (1 ≦ i ≦ M)
-#(U_i, V_i) ≠ (U_j, V_j) (i ≠ j)
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#U_1 V_1
-#.
-#.
-#.
-#U_M V_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 6
-#1 5
-#4 5
-#2 3
-#1 4
-#3 5
-#2 5
-#
-#样本输出 1
-#2
-#(a, b, c）=（1, 4, 5），（2, 3, 5）满足条件。
-#
-#样本输入 2
-#3 1
-#1 2
-#
-#样本输出2
-#0
-#
-#采样输入3
-#7 10
-#1 7
-#5 7
-#2 5
-#3 6
-#4 7
-#1 5
-#2 4
-#1 3
-#1 6
-#2 7
-#
-#样本输出 3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    return
+
+=======
+Suggestion 3
+
+def check(a,b,c):
+    if (a<b and b<c and a<c):
+        return True
+    return False
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    U = []
+    V = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        U.append(u)
+        V.append(v)
+    ans = 0
+    for a in range(1, N + 1):
+        for b in range(1, N + 1):
+            if a == b:
+                continue
+            for c in range(1, N + 1):
+                if b == c or c == a:
+                    continue
+                if (a in U and b in U and c in U) or (a in V and b in V and c in V):
+                    ans += 1
+    print(ans // 6)
+
+=======
+Suggestion 5
+
+def check(a,b,c):
+    if a < b < c:
+        if (a,b) in edge and (b,c) in edge and (c,a) in edge:
+            return True
+    return False
+
+=======
+Suggestion 6
+
+def isTriangle(a,b,c):
+    if a+b>c and a+c>b and b+c>a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    edges = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        edges.append((u, v))
+    ans = 0
+    for i in range(M):
+        u, v = edges[i]
+        for j in range(i+1, M):
+            x, y = edges[j]
+            if u == x or u == y or v == x or v == y:
+                continue
+            if (u, v) not in edges and (v, u) not in edges:
+                continue
+            if (x, y) not in edges and (y, x) not in edges:
+                continue
+            if (u, x) in edges or (x, u) in edges:
+                if (v, y) in edges or (y, v) in edges:
+                    ans += 1
+            if (u, y) in edges or (y, u) in edges:
+                if (v, x) in edges or (x, v) in edges:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def func(n, m, u, v):
+    # 1. get the adjacent matrix
+    adjacent_matrix = [[0 for _ in range(n)] for _ in range(n)]
+    for i in range(m):
+        adjacent_matrix[u[i] - 1][v[i] - 1] = 1
+        adjacent_matrix[v[i] - 1][u[i] - 1] = 1
+
+    # 2. get the number of triangles
+    num = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if adjacent_matrix[i][j] == 1:
+                for k in range(j + 1, n):
+                    if adjacent_matrix[i][k] == 1 and adjacent_matrix[j][k] == 1:
+                        num += 1
+
+    return num

@@ -1,59 +1,135 @@
-#问题陈述
-#高桥和青木将用一个序列（A_1，...，A_K）进行取石游戏。
-#有一个最初包含N个石头的堆。两位玩家将交替进行以下操作，由高桥先进行。
-#选择一个A_i，它最多是当前棋堆中棋子的数量。从棋堆中取出A_i的棋子。
-#当棋堆中没有棋子时，游戏结束。
-#如果两位棋手都试图在游戏结束前最大限度地增加他们移走的棋子总数，那么高桥会移走多少个棋子？
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ...< A_K ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#A_1 A_2 ...A_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#10 2
-#1 4
-#
-#样本输出1
-#5
-#下面是游戏的一个可能进展。
-#高桥从棋堆中取出4颗棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从这堆棋子中取出1个棋子。
-#青木从棋堆中移走1个棋子。
-#在这种情况下，高桥去掉了5颗棋子。他不可能移走6个或更多的棋子，所以这就是最大限度。
-#下面是另一种可能的游戏进程，高桥移走了5颗棋子。
-#高桥从棋堆中移走1个棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从牌堆中移走4个棋子。
-#青木从棋堆中移走1个棋子。
-#
-#输入样本 2
-#11 4
-#1 2 3 6
-#
-#样本输出2
-#8
-#下面是对局的一个可能的进展情况。
-#高桥去掉了6个棋子。
-#青木去掉3个棋子。
-#高桥去掉2个棋子。
-#在这种情况下，高桥去掉了8个棋子。他没有办法去掉9个或更多的棋子，所以这就是最大限度。
-#
-#输入样本 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#样本输出3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def remove_stone(n, k, a):
+
+=======
+Suggestion 2
+
+def max_move(stones, a_list):
+    a_list = sorted(a_list)
+    a_list.append(stones)
+    a_list.insert(0, 0)
+    max_move = 0
+    for i in range(len(a_list) - 1):
+        max_move = max(max_move, a_list[i + 1] - a_list[i])
+    return max_move
+
+=======
+Suggestion 3
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        for j in range(k):
+            if i >= a[j]:
+                dp[i] = max(dp[i - a[j]] + a[j], dp[i])
+    print(dp[n])
+
+solve()
+
+=======
+Suggestion 4
+
+def get_max_stone(n, k, a):
+    if n == 0:
+        return 0
+
+    # dp[i][j]表示从i移除j个棋子的最大值
+    dp = [[0 for i in range(n + 1)] for j in range(k + 1)]
+    for i in range(1, k + 1):
+        for j in range(1, n + 1):
+            if j >= a[i - 1]:
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - a[i - 1]] + a[i - 1])
+            else:
+                dp[i][j] = dp[i - 1][j]
+
+    return dp[k][n]
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(K):
+        if i == 0:
+            ans += A[i] * (N // A[i])
+            N = N % A[i]
+        else:
+            if N >= A[i]:
+                ans += (N - A[i]) + 1
+                N = A[i] - 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(n+1)
+    l = []
+    for i in range(k):
+        l.append(a[i+1]-a[i]-1)
+    l.append(a[0]-1)
+    print(n-max(l))
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(k):
+            if a[j] <= i:
+                ans = max(ans,i-a[j])
+            else:
+                break
+    print(ans)
+
+=======
+Suggestion 8
+
+def calc(N, K, A):
+    return 0
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    a = [0] * (N + 1)
+    for i in range(N):
+        a[i] = 1
+    for i in range(K):
+        a[A[i]] = 0
+    ans = 0
+    for i in range(1, N + 1):
+        if a[i] == 1:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_max_stone(N, K, A):
+    max_stone = 0
+    for i in range(K):
+        if i == 0:
+            max_stone = A[i]
+        elif i == K-1:
+            if max_stone < N-A[K-1]:
+                max_stone = N-A[K-1]
+        else:
+            if max_stone < A[i]-A[i-1]:
+                max_stone = A[i]-A[i-1]
+    return max_stone

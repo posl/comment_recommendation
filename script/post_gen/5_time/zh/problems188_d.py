@@ -1,64 +1,228 @@
-#问题陈述
-#Snuke公司提供各种类型的服务。
-#有一个名为Snuke Prime的付款计划。
-#在这个计划中，通过每天支付C日元（日本的货币），你可以使用该公司提供的所有服务，而不需要额外的费用。
-#你可以在任何一天的开始时开始订阅这个计划，在任何一天的结束时取消订阅。
-#高桥将使用该公司提供的N项服务。
-#他将从第a_i天开始使用这些服务中的第i项，直到第b_i天结束，其中今天是第一天。
-#如果没有订阅Snuke Prime，他必须每天支付c_i日元来使用第i项服务。  
-#求高桥为使用这些服务所需支付的最低总金额。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C ≦ 10^9
-#1 ≦ a_i ≦ b_i ≦ 10^9
-#1 ≦ c_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N C
-#A_1 B_1 C_1
-#.
-#.
-#.
-#a_N b_N c_N
-#
-#输出
-#打印高桥需要支付的最小总金额。
-#
-#输入样本 1
-#2 6
-#1 2 4
-#2 2 4
-#
-#样本输出 1
-#10
-#他将在第1天和第2天使用第1种服务，在第2天使用第2种服务。
-#如果他只在第2天订阅Snuke Prime，他将在第1天支付4日元，在第2天支付6日元，总共10日元。
-#总付款额不可能少于10日元，所以我们应该印10。
-#
-#输入样本2
-#5 1000000000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#样本输出2
-#163089627821228
-#没有Snuke Prime的情况下，是最佳选择。
-#
-#样本输入3
-#5 100000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#样本输出3
-#88206004785464
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def read_int_list():
+    return list(map(int, input().split()))
+
+N, C = read_int_list()
+services = []
+for _ in range(N):
+    services.append(read_int_list())
+
+=======
+Suggestion 2
+
+def solve(n,c,events):
+    events.sort()
+    dp = [0]
+    for day in range(1,events[-1][1]+1):
+        dp.append(dp[-1]+c)
+        for a,b,p in events:
+            if b < day:
+                continue
+            if day < a:
+                dp[-1] += p
+            else:
+                dp[-1] += min(p,(day-a+1)*c)
+    return min(dp)
+
+n,c = map(int,input().split())
+events = []
+for _ in range(n):
+    a,b,p = map(int,input().split())
+    events.append((a,b,p))
+print(solve(n,c,events))
+
+=======
+Suggestion 3
+
+def solve():
+    N,C = map(int,input().split())
+    A = []
+    B = []
+    C = []
+    for i in range(N):
+        a,b,c = map(int,input().split())
+        A.append(a)
+        B.append(b)
+        C.append(c)
+
+    #print(A)
+    #print(B)
+    #print(C)
+
+=======
+Suggestion 4
+
+def solve():
+    n,c = map(int, input().split())
+    d = {}
+    for _ in range(n):
+        a,b,c = map(int, input().split())
+        d[a] = d.get(a,0) + c
+        d[b+1] = d.get(b+1,0) - c
+    d = sorted(d.items())
+    ans = 0
+    s = 0
+    t = 0
+    for i in range(len(d)-1):
+        s += d[i][1]
+        t += d[i+1][0] - d[i][0]
+        if s > c:
+            ans += c * t
+        else:
+            ans += s * t
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, C = map(int, input().split())
+    service = []
+    for i in range(N):
+        service.append(list(map(int, input().split())))
+    service.sort()
+    #print(service)
+
+    #计算每天的费用
+    daily_cost = [0] * (service[-1][1] + 1)
+    for i in range(N):
+        daily_cost[service[i][0] - 1] += service[i][2]
+        daily_cost[service[i][1]] -= service[i][2]
+    #print(daily_cost)
+
+    #计算每天的费用累计和
+    daily_cost_sum = [0] * (service[-1][1] + 1)
+    daily_cost_sum[0] = daily_cost[0]
+    for i in range(1, service[-1][1] + 1):
+        daily_cost_sum[i] = daily_cost_sum[i - 1] + daily_cost[i]
+    #print(daily_cost_sum)
+
+    #计算每天的费用累计和的最小值
+    daily_cost_sum_min = [0] * (service[-1][1] + 1)
+    daily_cost_sum_min[0] = daily_cost_sum[0]
+    for i in range(1, service[-1][1] + 1):
+        daily_cost_sum_min[i] = min(daily_cost_sum_min[i - 1], daily_cost_sum[i])
+    #print(daily_cost_sum_min)
+
+    #计算最小总金额
+    total_cost = 0
+    for i in range(service[-1][1] + 1):
+        if daily_cost_sum_min[i] * C < daily_cost_sum[i]:
+            total_cost += daily_cost_sum_min[i] * C
+        else:
+            total_cost += daily_cost_sum[i]
+    print(total_cost)
+
+=======
+Suggestion 6
+
+def main():
+    N, C = map(int, input().split())
+    A, B, C = [], [], []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        A.append(a)
+        B.append(b)
+        C.append(c)
+
+    # 1. 按照开始时间排序
+    # 2. 合并时间段
+    # 3. 遍历时间段，计算总费用
+    # 4. 比较总费用和C，取最小值
+    # 5. 如果最小值小于C，输出最小值；否则输出C
+    # 6. 如果没有合并时间段，输出总费用
+
+    # 1. 按照开始时间排序
+    AB = sorted(zip(A, B, C), key=lambda x: x[0])
+    # 2. 合并时间段
+    AB = merge(AB)
+    # 3. 遍历时间段，计算总费用
+    cost = 0
+    for a, b, c in AB:
+        cost += c * (b - a + 1)
+    # 4. 比较总费用和C，取最小值
+    cost = min(cost, C)
+    # 5. 如果最小值小于C，输出最小值；否则输出C
+    print(cost)
+
+=======
+Suggestion 7
+
+def solve():
+    N, C = map(int, input().split())
+    events = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        events.append((a, c))
+        events.append((b+1, -c))
+    events.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x, y in events:
+        if x != t:
+            ans += min(C, fee) * (x - t)
+            t = x
+        fee += y
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, c = map(int, input().split())
+    a = [0] * n
+    b = [0] * n
+    cost = [0] * n
+    for i in range(n):
+        a[i], b[i], cost[i] = map(int, input().split())
+    max_day = max(b)
+    dp = [0] * (max_day + 1)
+    for i in range(n):
+        dp[a[i] - 1] += cost[i]
+        dp[b[i]] -= cost[i]
+    for i in range(1, max_day + 1):
+        dp[i] += dp[i - 1]
+    print(min(c, min(dp)))
+
+=======
+Suggestion 9
+
+def main():
+    N,C = map(int,input().split())
+    A = []
+    B = []
+    C = []
+    for i in range(N):
+        a,b,c = map(int,input().split())
+        A.append(a)
+        B.append(b)
+        C.append(c)
+    print(N,C,A,B,C)
+
+=======
+Suggestion 10
+
+def solve():
+    N, C = map(int, input().split())
+    service = []
+    for _ in range(N):
+        a, b, c = map(int, input().split())
+        service.append((a, c))
+        service.append((b + 1, -c))
+    service.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x, y in service:
+        if x != t:
+            ans += min(C, fee) * (x - t)
+            t = x
+        fee += y
+    print(ans)

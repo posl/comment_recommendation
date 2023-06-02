@@ -1,44 +1,126 @@
-#问题陈述
-#高桥过了N次生日，当时他身高为T厘米。
-#此外，我们知道以下事实：
-#在高桥出生（0岁生日）和X岁生日之间的每一年，他的身高都增加了D厘米。更确切地说，对于每个i=1，2，...，X，他的身高在他的第（i-1）个生日和第i个生日之间增加了D厘米。
-#在高桥的第X个生日和第N个生日之间，他的身高没有变化。
-#求高桥在第M个生日时的身高，单位是厘米。
-#
-#限制条件
-#0 ≦ M < N ≦ 100
-#1 ≦ X ≦ N
-#1 ≦ T ≦ 200
-#1 ≦ D ≦ 100
-#高桥出生时身高至少有1厘米。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M X T D
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#38 20 17 168 3
-#
-#样本输出 1
-#168
-#在这个样本中，高桥在他38岁生日时身高是168厘米。而且，他的身高在17岁生日和38岁生日之间没有变化。
-#根据这些事实，我们发现他在20岁生日时身高是168厘米，所以答案是168。
-#
-#输入样本2
-#1 0 1 3 2
-#
-#样本输出 2
-#1
-#在这个样本中，高桥在他0(=M)岁生日时身高1厘米，在他1(=N)岁生日时身高3(=T)厘米。
-#
-#样本输入3
-#100 10 100 180 1
-#
-#样本输出3
-#90
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, m, x, t, d):
+    height = t
+    for i in range(1, n):
+        if i >= x:
+            height += d
+        else:
+            height += d
+    return height
+
+=======
+Suggestion 2
+
+def main():
+    N,M,X,T,D = map(int,input().split())
+    height = T
+    for i in range(X,M):
+        height += D
+    print(height)
+
+=======
+Suggestion 3
+
+def problem259_a():
+    N, M, X, T, D = map(int, input().split())
+    height = T
+    for i in range(1, M):
+        if i < X:
+            height += D
+        else:
+            height += D
+    print(height)
+
+=======
+Suggestion 4
+
+def solve(n,m,x,t,d):
+    h = t
+    for i in range(1,m):
+        h += d
+    for i in range(m,n):
+        h += d
+    return h
+
+=======
+Suggestion 5
+
+def main():
+    N,M,X,T,D = map(int,input().split())
+    for i in range(X,M):
+        T += D
+    print(T)
+
+=======
+Suggestion 6
+
+def main():
+    n, m, x, t, d = map(int, input().split())
+    h = t
+    for i in range(1, x):
+        h += d
+    for i in range(x, m):
+        h += d
+    for i in range(m, n):
+        h += d
+    print(h)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, X, T, D = map(int, input().split())
+    height = T
+    for i in range(X, M):
+        height += D
+    for i in range(M, N):
+        height += D
+    print(height)
+
+=======
+Suggestion 8
+
+def main():
+    N,M,X,T,D = map(int,input().split())
+    for i in range(1,N+1):
+        if i == M:
+            print(X)
+        else:
+            X = X+D
+    return 0
+
+=======
+Suggestion 9
+
+def q259_a():
+    n,m,x,t,d = map(int, input().split())
+    height = t
+    for i in range(1,x):
+        height += d
+    for i in range(x,m):
+        height += d
+    print(height)
+
+=======
+Suggestion 10
+
+def main():
+    n,m,x,t,d = map(int,input().split())
+    height = t
+    for i in range(1,n):
+        if i == m:
+            print(height)
+            break
+        else:
+            if i < x:
+                height += d
+            elif i == x:
+                height += d
+            else:
+                height += d
+    else:
+        print(height)

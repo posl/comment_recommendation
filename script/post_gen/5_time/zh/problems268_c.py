@@ -1,51 +1,217 @@
-#问题陈述
-#人0，人1，......，人（N-1）按逆时针顺序坐在转盘周围，均匀地排列着。  盘子p_i在桌子上第i个人的前面。
-#你可以执行以下操作0次或多次：
-#将转盘逆时针旋转N圈。  结果，旋转前在i号人面前的盘子现在在(i+1)N号人面前了。
-#当你完成后，如果菜品i在人(i-1)mod N、人(i)或人(i+1)mod N前面，则人(i)是快乐的。
-#求最大可能的快乐者人数。
-# 什么是a mod m？  对于一个整数a和一个正整数m，a mod m表示介于0和(m-1)(包括)之间的整数x，使得(a-x)是m的倍数。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^5
-#0 ≦ p_i ≦ N-1
-#p_i ≠ p_j if i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#p_0 ... p_{N-1}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4
-#1 2 0 3
-#
-#样本输出1
-#4
-#下图显示了一次操作后的表格。
-#在这里，有四个快乐的人：
-#0号人很高兴，因为0号盘子在3号人的前面（=(0-1)mod 4）；
-#人1很高兴，因为盘子1在人1的前面（=1）；
-#2号人很高兴，因为菜品2在2号人面前（=2）；
-#人3很高兴，因为菜3在人0的前面(=(3+1)mod 4)。
-#不可能有五个或更多的快乐者，所以答案是4。
-#
-#输入样本 2
-#3
-#0 1 2
-#
-#样本输出2
-#3
-#
-#样本输入3
-#10
-#3 9 6 1 7 2 8 0 5 4
-#
-#样本输出 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if p[i] == (i - 1) % n or p[i] == i or p[i] == (i + 1) % n:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, -1)
+    ans = 0
+    for i in range(1, n + 1):
+        if p[i] == i - 1:
+            ans += 1
+            p[i] = p[i + 1]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if i == 0:
+            if P[i] == N-1 or P[i] == 1:
+                count += 1
+        elif i == N-1:
+            if P[i] == 0 or P[i] == N-2:
+                count += 1
+        else:
+            if P[i] == i-1 or P[i] == i+1:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [i - 1 for i in p]
+
+    cnt = 0
+    for i in range(n):
+        if p[p[i]] == i:
+            cnt += 1
+    print(cnt // 2)
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    n = int(input())
+    p = [int(i) for i in input().split()]
+
+    # 计算答案
+    ans = 0
+    for i in range(n):
+        if p[i] == (p[(i-1) % n] + 1) % n or p[i] == (p[(i+1) % n] + 1) % n:
+            ans += 1
+
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    max = 0
+    happy = 0
+    for i in range(N):
+        if p[i] == i:
+            happy += 1
+            if happy > max:
+                max = happy
+        else:
+            happy = 0
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p = [i-1 for i in p]
+    count = 0
+    for i in range(N):
+        if p[p[i]] == i:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    p = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if p[i] == i:
+            ans += 1
+            if i < N-1 and p[i+1] == i+1:
+                p[i], p[i+1] = p[i+1], p[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    # 人iが幸福かどうかを表す値
+    # 0: 不幸
+    # 1: 幸福
+    # 2: 未定
+    status = [2] * N
+
+    # 幸福な人の数
+    happy_count = 0
+
+    while True:
+        # 幸福な人の数を更新
+        happy_count += status.count(1)
+
+        # 幸福な人の数が変わらなかったら終了
+        if happy_count == N:
+            break
+
+        # 幸福な人の数を更新
+        happy_count = 0
+
+        # 人iが幸福かどうかを更新
+        for i in range(N):
+            if status[i] == 1:
+                continue
+
+            # 人iの前の人の番号
+            prev = (i - 1 + N) % N
+
+            # 人iの後ろの人の番号
+            next = (i + 1) % N
+
+            # 人iの前の人が幸福なら人iは幸福
+            if status[prev] == 1:
+                status[i] = 1
+
+            # 人iの後ろの人が幸福なら人iは幸福
+            elif status[next] == 1:
+                status[i] = 1
+
+        # 転置
+        P = [P[p] for p in P]
+
+    # 幸福な人の数を出力
+    print(happy_count)
+
+=======
+Suggestion 10
+
+def get_max_happy_persons(N, p):
+    #print(N, p)
+    #print("p[0]=", p[0])
+    #print("p[1]=", p[1])
+    #print("p[2]=", p[2])
+    #print("p[3]=", p[3])
+    #print("p[4]=", p[4])
+    #print("p[5]=", p[5])
+    #print("p[6]=", p[6])
+    #print("p[7]=", p[7])
+    #print("p[8]=", p[8])
+    #print("p[9]=", p[9])
+    #print("p[10]=", p[10])
+    #print("p[11]=", p[11])
+    #print("p[12]=", p[12])
+    #print("p[13]=", p[13])
+    #print("p[14]=", p[14])
+    #print("p[15]=", p[15])
+    #print("p[16]=", p[16])
+    #print("p[17]=", p[17])
+    #print("p[18]=", p[18])
+    #print("p[19]=", p[19])
+    #print("p[20]=", p[20])
+    #print("p[21]=", p[21])
+    #print("p[22]=", p[22])
+    #print("p[23]=", p[23])
+    #print("p[24]=", p[24])
+    #print("p[25]=", p[25])
+    #print("p[26]=", p[26])
+    #print("p[27]=", p[27])
+    #print("p[28]=", p[28])
+    #print("p[29]=", p[29])
+    #print("p[30]=", p[30])
+    #print("p[31]=", p[31])
+    #print("p[32]=", p[32])
+    #print("p[33]=", p[33])
+    #print("p[34]=", p[34])
+    #print("p[35]=", p[35])
+    #print("p[36]=", p[36])
+    #

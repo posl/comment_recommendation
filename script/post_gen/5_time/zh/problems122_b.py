@@ -1,41 +1,135 @@
-#问题陈述
-#给你一个由大写英文字母组成的字符串S。求最长的ACGT字符串的长度，该字符串是S的子串（见注释）。
-#这里，ACGT字符串是指除了A、C、G和T之外不包含其他字符的字符串。
-#
-#注释
-#字符串T的子串是指从T的开头和结尾去除零个或多个字符后得到的字符串。
-#例如，ATCODER的子串包括TCO、AT、CODER、ATCODER和（空字符串），但不包括AC。
-#
-#限制条件
-#S是一个长度在1到10（包括）之间的字符串。
-#S中的每个字符是一个大写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印作为S的子串的最长ACGT字符串的长度。
-#
-#输入样本1
-#ATCODER
-#
-#样本输出1
-#3
-#在作为ATCODER子串的ACGT字符串中，最长的一个是ATC。
-#
-#样本输入2
-#HATAGAYA
-#
-#样本输出2
-#5
-#在作为HATAGAYA子串的ACGT字符串中，最长的一个是ATAGA。
-#
-#输入样本3
-#SHINJUKU
-#
-#样本输出3
-#0
-#在作为SHINJUKU子串的ACGT字符串中，最长的一个是（空字符串）。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(s):
+    if s == "A" or s == "C" or s == "G" or s == "T":
+        return True
+    else:
+        return False
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    max_len = 0
+    count = 0
+    for s in S:
+        if s in 'ACGT':
+            count += 1
+            if count > max_len:
+                max_len = count
+        else:
+            count = 0
+    print(max_len)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    max_len = 0
+    count = 0
+    for i in range(len(s)):
+        if s[i] in "ACGT":
+            count += 1
+        else:
+            count = 0
+        max_len = max(max_len, count)
+    print(max_len)
+main()
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    max_length = 0
+    length = 0
+    for c in s:
+        if c in 'ACGT':
+            length += 1
+            max_length = max(max_length, length)
+        else:
+            length = 0
+    print(max_length)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    max_len = 0
+    for i in range(len(s)):
+        for j in range(i+1, len(s)+1):
+            if all(c in 'ACGT' for c in s[i:j]):
+                max_len = max(max_len, j-i)
+    print(max_len)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            if isACGT(s[i:j+1]):
+                ans = max(ans, j-i+1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    ans = 0
+    cnt = 0
+    for i in range(len(s)):
+        if s[i] in "ACGT":
+            cnt += 1
+            ans = max(ans, cnt)
+        else:
+            cnt = 0
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    ans = 0
+    for i in range(len(s)):
+        for j in range(i+1, len(s)+1):
+            if is_acgt(s[i:j]):
+                ans = max(ans, j-i)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    max_len = 0
+    for i in range(len(s)):
+        for j in range(i+1,len(s)+1):
+            if (j-i) > max_len and check(s[i:j]):
+                max_len = j-i
+    print(max_len)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    max_length = 0
+    length = 0
+    for i in range(len(s)):
+        if s[i] == 'A' or s[i] == 'C' or s[i] == 'G' or s[i] == 'T':
+            length += 1
+        else:
+            length = 0
+        max_length = max(max_length, length)
+    print(max_length)

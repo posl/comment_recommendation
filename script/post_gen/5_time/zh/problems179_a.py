@@ -1,40 +1,103 @@
-#问题陈述
-#在AtCoder王国，人们使用一种叫做Taknese的语言，它使用小写英文字母。
-#在Taknese中，名词的复数形式是根据以下规则来拼写的：
-#如果一个名词的单数形式不以s结尾，就在单数形式的后面加上s。
-#如果一个名词的单数形式以s结尾，则在单数形式的末尾加上es。
-#你得到的是一个塔克尼语名词的单数形式S。输出
-# 其复数形式。
-#
-#限制条件
-#S是一个长度为1到1000之间的字符串，包括在内。
-#S只包含小写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印给定的塔克尼语单词的复数形式。
-#
-#输入样本1
-#apple
-#
-#样本输出 1
-#apple
-#apple以e结尾，所以它的复数形式是apples。
-#
-#样本输入2
-#bus
-#
-#样本输出2
-#bus
-#bus以s结尾，所以它的复数形式是bus。
-#
-#样本输入3
-#Box
-#
-#样本输出3
-#Box
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[-1] == 's':
+        print(S + 'es')
+    else:
+        print(S + 's')
+
+=======
+Suggestion 2
+
+def main():
+    # 读取数据
+    S = input()
+    # 计算结果
+    if S[-1] == "s":
+        print(S + "es")
+    else:
+        print(S + "s")
+
+=======
+Suggestion 3
+
+def plural_form(S):
+    if S[-1] == 's':
+        return S + 'es'
+    else:
+        return S + 's'
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[-1] == "s":
+        S = S + "es"
+    else:
+        S = S + "s"
+    print(S)
+
+=======
+Suggestion 5
+
+def pluralize(s):
+    if s[-1] == "s":
+        return s + "es"
+    else:
+        return s + "s"
+
+s = input()
+print(pluralize(s))
+
+=======
+Suggestion 6
+
+def plural(s):
+    if s[-1] == 's':
+        return s + 'es'
+    else:
+        return s + 's'
+
+print(plural(input()))
+
+=======
+Suggestion 7
+
+def pluralForm(S):
+    if S[-1] == "s":
+        return S + "es"
+    else:
+        return S + "s"
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    if s[-1] == 's':
+        print(s + 'es')
+    else:
+        print(s + 's')
+
+=======
+Suggestion 9
+
+def plural_form(s):
+    if s[-1] == 's':
+        return s + 'es'
+    else:
+        return s + 's'
+
+=======
+Suggestion 10
+
+def pluralize(s):
+    if s[-1] == 's':
+        return s + 'es'
+    else:
+        return s + 's'

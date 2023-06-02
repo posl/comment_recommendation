@@ -1,43 +1,242 @@
-#问题陈述
-#给出一个由L和R组成的字符串S。
-#有N个从左到右排列的方格，S的第i个字符被写在从左边开始的第i个方格上。
-#写在最左边的方格上的字符总是R，而写在最右边的方格上的字符总是L。
-#最初，每个方格上站着一个孩子。
-#每个孩子将进行下面的移动10^{100}次：
-#在孩子所站的方格上所写的字符所指定的方向上移动一个方格。L表示左边，R表示右边。
-#在孩子们做完这些动作后，找出站在每个方格上的孩子人数。
-#
-#限制条件
-#S是一个长度在2到10^5（包括）之间的字符串。
-#S的每个字符都是L或R。
-#S的第一个和最后一个字符分别是R和L。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#输出
-#按从左到右的顺序，打印出孩子们做完动作后，站在每个方格上的孩子数量。
-#
-#输入样本1
-#RRLRL
-#
-#样本输出1
-#0 1 2 1 1
-#每个孩子走完一步后，站在每个方格上的孩子数量从左到右依次为0、2、1、1、1。
-#每个孩子走了两步后，站在每个方格上的孩子数量从左到右分别是0、1、2、1、1。
-#在每个孩子进行了10^{100}次移动后，站在每个方格上的孩子的数量从左到右分别是0、1、2、1、1。
-#
-#输入样本2
-#RRLLLLRLRRLL
-#
-#样本输出2
-#0 3 3 0 0 0 1 1 0 2 2 0
-#
-#样本输入3
-#rrrllrllrlllll
-#
-#样本输出3
-#0 0 3 2 0 2 1 0 0 0 4 4 0 0 0 0
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    for i in range(n - 1):
+        if s[i] == "R" and s[i + 1] == "L":
+            ans[i] += 1
+            ans[i + 1] += 1
+    for i in range(n):
+        if s[i] == "R":
+            if ans[i] % 2 == 1:
+                ans[i + 1] += 1
+            ans[i] //= 2
+        else:
+            if ans[i] % 2 == 1:
+                ans[i - 1] += 1
+            ans[i] //= 2
+    print(*ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    S = input()
+    # 处理数据
+    N = len(S)
+    # 从左向右计算
+    R = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            if i == 0:
+                R[i] = 1
+            else:
+                R[i] = R[i-1] + 1
+        else:
+            R[i] = 0
+    # 从右向左计算
+    L = [0] * N
+    for i in range(N-1, -1, -1):
+        if S[i] == 'L':
+            if i == N-1:
+                L[i] = 1
+            else:
+                L[i] = L[i+1] + 1
+        else:
+            L[i] = 0
+    # 计算结果
+    result = [0] * N
+    for i in range(N):
+        if S[i] == 'R':
+            if i+L[i] < N:
+                result[i+L[i]] += 1
+            else:
+                result[N-1] += 1
+        else:
+            if i-R[i] >= 0:
+                result[i-R[i]] += 1
+            else:
+                result[0] += 1
+    # 输出结果
+    print(" ".join(map(str, result)))
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    N = len(S)
+    ans = [0] * N
+    cnt = 0
+    for i in range(N):
+        if S[i] == 'R':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2
+            ans[i-1] += (cnt+1) // 2
+            cnt = 0
+    cnt = 0
+    for i in range(N-1, -1, -1):
+        if S[i] == 'L':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2
+            ans[i+1] += (cnt+1) // 2
+            cnt = 0
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def countRL(s):
+    r = 0
+    l = 0
+    for c in s:
+        if c == 'R':
+            r += 1
+        else:
+            l += 1
+    return r, l
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    cnt = 0
+    for i in range(n):
+        if s[i] == 'R':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2
+            ans[i - 1] += cnt // 2
+            if cnt % 2 == 1:
+                ans[i - 1] += 1
+            cnt = 0
+    cnt = 0
+    for i in range(n - 1, -1, -1):
+        if s[i] == 'L':
+            cnt += 1
+        else:
+            ans[i] += cnt // 2
+            ans[i + 1] += cnt // 2
+            if cnt % 2 == 1:
+                ans[i + 1] += 1
+            cnt = 0
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 6
+
+def problem136_d():
+    s = input()
+    n = len(s)
+    ans = [0]*n
+    cnt = 0
+    for i in range(n):
+        if s[i] == 'R':
+            cnt += 1
+        else:
+            ans[i] += cnt//2
+            ans[i-1] += (cnt+1)//2
+            cnt = 0
+    cnt = 0
+    for i in range(n-1,-1,-1):
+        if s[i] == 'L':
+            cnt += 1
+        else:
+            ans[i] += cnt//2
+            ans[i+1] += (cnt+1)//2
+            cnt = 0
+    print(' '.join(map(str,ans)))
+
+problem136_d()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = s.replace("RL", "R L")
+    s = s.split()
+    n = len(s)
+    ans = [0] * n
+    for i in range(n):
+        if s[i] == "R":
+            ans[i + 1] += ans[i] // 2 + ans[i] % 2
+            ans[i] = ans[i] // 2
+        else:
+            ans[i - 1] += ans[i] // 2
+            ans[i] = ans[i] // 2 + ans[i] % 2
+    print(" ".join(map(str, ans)))
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    n = len(s)
+    ans = [0] * n
+    for i in range(n - 1):
+        if s[i] == "R" and s[i + 1] == "L":
+            if (i + 1) % 2 == 0:
+                ans[i + 1] += 1
+            else:
+                ans[i] += 1
+    for i in range(n):
+        if s[i] == "R":
+            x = i + 1
+            while x < n and s[x] == "R":
+                x += 1
+            if (i + 1) % 2 == 0:
+                ans[x] += (x - i) // 2
+                ans[x - 1] += (x - i) // 2 + (x - i) % 2
+            else:
+                ans[x] += (x - i) // 2 + (x - i) % 2
+                ans[x - 1] += (x - i) // 2
+            i = x - 1
+    for i in range(n - 1, -1, -1):
+        if s[i] == "L":
+            x = i - 1
+            while x >= 0 and s[x] == "L":
+                x -= 1
+            if (i + 1) % 2 == 0:
+                ans[x] += (i - x) // 2
+                ans[x + 1] += (i - x) // 2 + (i - x) % 2
+            else:
+                ans[x] += (i - x) // 2 + (i - x) % 2
+                ans[x + 1] += (i - x) // 2
+            i = x + 1
+    for i in range(n):
+        print(ans[i], end=" ")
+    print()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    n = len(s)
+    ans = [0]*n
+    for i in range(n):
+        if s[i] == 'L':
+            if i%2 == 0:
+                ans[i-1] += 1
+            else:
+                ans[i+1] += 1
+        else:
+            if i%2 == 0:
+                ans[i+1] += 1
+            else:
+                ans[i-1] += 1
+    print(' '.join(map(str,ans)))

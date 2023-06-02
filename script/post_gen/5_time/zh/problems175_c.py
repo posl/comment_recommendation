@@ -1,55 +1,156 @@
-#问题陈述
-#高桥，住在数线上，现在在坐标X处，他将在正或负的方向上恰好做K次距离D的移动。
-#更确切地说，在一次移动中，他可以从坐标x到x+D或x-D。
-#他想做K次移动，使目的地坐标的绝对值尽可能的小。
-#找出目的地坐标的最小可能的绝对值。
-#
-#限制条件
-#-10^{15}≦ X ≦ 10^{15}
-#1 ≦ K ≦ 10^{15}
-#1 ≦ D ≦ 10^{15}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X K D
-#
-#输出
-#打印目的地坐标的最小可能绝对值。
-#
-#输入样本 1
-#6 2 4
-#
-#输出样本 1
-#2
-#高桥现在在坐标6处。做以下的动作是最理想的：
-#从坐标6移到（6-4=）2。
-#从坐标2移到（2-4=）-2。
-#这里，目的地坐标的绝对值是2，我们不能让它变小。
-#
-#输入样本 2
-#7 4 3
-#
-#样本输出 2
-#1
-#高桥现在在坐标7处。举例来说，做出以下动作是最理想的：
-#从坐标7移到坐标4。
-#从坐标4移动到7。
-#从坐标7移动到4。
-#从坐标4移到1。
-#这里，目的地坐标的绝对值是1，我们不能让它变小。
-#
-#输入样本 3
-#10 1 2
-#
-#样本输出3
-#8
-#
-#样本输入4
-#1000000000000000 1000000000000000 1000000000000000
-#
-#样本输出4
-#1000000000000000
-#答案可能是巨大的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    X, K, D = map(int, input().split())
+    X = abs(X)
+    if K*D <= X:
+        print(X-K*D)
+        return
+    K -= X//D
+    X %= D
+    if K%2 == 0:
+        print(X)
+    else:
+        print(D-X)
+
+=======
+Suggestion 2
+
+def problems175_c():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+        return
+    if (k - x // d) % 2 == 0:
+        print(x % d)
+        return
+    print(d - x % d)
+
+=======
+Suggestion 3
+
+def main():
+    x,k,d = map(int, input().split())
+    x = abs(x)
+    if x - k*d >= 0:
+        print(x-k*d)
+    else:
+        if (x//d)%2 == k%2:
+            print(x%d)
+        else:
+            print(d-x%d)
+
+=======
+Suggestion 4
+
+def main():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= k * d:
+        print(x - k * d)
+    else:
+        k -= x // d
+        x = x % d
+        if k % 2 == 0:
+            print(x)
+        else:
+            print(d - x)
+
+=======
+Suggestion 5
+
+def main():
+    x,k,d = map(int, input().split())
+    x = abs(x)
+    if x//d > k:
+        print(x-k*d)
+    else:
+        k = k - x//d
+        x = x%d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
+
+=======
+Suggestion 6
+
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x >= k*d:
+        print(x-k*d)
+        return
+    else:
+        k = k - x//d
+        x = x%d
+        if k%2 == 0:
+            print(x)
+        else:
+            print(d-x)
+
+=======
+Suggestion 7
+
+def main():
+    X, K, D = map(int, input().split())
+    if X > 0:
+        if X - K * D > 0:
+            print(X - K * D)
+        else:
+            print(abs(X - K * D))
+    elif X < 0:
+        if X + K * D < 0:
+            print(abs(X + K * D))
+        else:
+            print(X + K * D)
+    else:
+        print(abs(X + K * D))
+
+=======
+Suggestion 8
+
+def problem175_c():
+    x, k, d = map(int, input().split())
+    x = abs(x)
+    if x >= d * k:
+        print(x - d * k)
+        return
+    n = x // d
+    if (k - n) % 2 == 0:
+        print(x - n * d)
+    else:
+        print(d - x + n * d)
+
+=======
+Suggestion 9
+
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x > k*d:
+        print(x-k*d)
+    else:
+        t = x//d
+        if (k-t)%2==0:
+            print(x%d)
+        else:
+            print(d-x%d)
+
+=======
+Suggestion 10
+
+def main():
+    x,k,d = map(int,input().split())
+    x = abs(x)
+    if x//d >= k:
+        print(x-d*k)
+    else:
+        if (k-x//d)%2 == 0:
+            print(x%d)
+        else:
+            print(abs(x%d-d))

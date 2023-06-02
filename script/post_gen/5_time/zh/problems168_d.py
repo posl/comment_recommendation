@@ -1,67 +1,126 @@
-#问题陈述
-#有一个山洞。
-#洞里有N个房间和M条通道。房间编号为1到N，通道编号为1到M。通道i双向连接A_i室和B_i室。人们可以通过穿越通道在任何两个房间之间旅行。房间1是一个特殊的房间，有一个来自外部的入口。
-#洞里很黑，所以我们决定在除1号房间外的每个房间都放置一个路标。 每个房间的路标都会指向与该房间直接相连的一个房间的通道。
-#由于山洞里很危险，我们的目标是满足除1号房间外的每个房间的以下条件。
-#如果你从该房间开始，反复移动到你所在房间的路标所指示的房间，你将在穿越尽可能少的通道后到达1号房间。
-#确定是否有一种方法可以放置满足我们目标的路标，如果存在，就打印一个这样的方法。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#人们可以通过穿越通道在任何两个房间之间旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 B_1
-#:
-#A_M B_M
-#
-#输出
-#如果没有办法放置满足目标的路标，则打印No。
-#否则，打印N行。第一行应该包含Yes，第i行（2 ≦ i ≦ N）应该包含整数，代表i号房间的路标所指示的房间。
-#
-#输入样本 1
-#4 4
-#1 2
-#2 3
-#3 4
-#4 2
-#
-#样本输出1
-#Yes
-#1
-#2
-#2
-#如果我们按照样本输出中的描述放置路标，就会发生以下情况：
-#从2号房间开始，穿越一条通道后，你将到达1号房间：(2) -> 1。这是可能的最小通道数。
-#从3号房间开始，你将在穿越两条通道后到达1号房间：(3) -> 2 -> 1，这是可能的最小通道数。
-#从4号房间开始，你将在穿越两个通道后到达1号房间：(4) -> 2 -> 1，这是可能的最小通道数。
-#因此，目标得到了满足。
-#
-#输入样本 2
-#6 9
-#3 4
-#6 1
-#2 4
-#5 3
-#4 6
-#1 5
-#6 2
-#4 5
-#5 6
-#
-#样本输出2
-#Yes
-#6
-#5
-#5
-#1
-#1
-#如果有多个解决方案，任何一个都会被接受。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+
+    # 从1号房间开始，通过通道移动到达的房间
+    to = [[] for _ in range(n + 1)]
+    for i in range(m):
+        to[a[i]].append(b[i])
+        to[b[i]].append(a[i])
+
+    # 求解
+    ans = [0] * (n + 1)
+    ans[1] = 1
+    for i in to[1]:
+        ans[i] = 1
+    for i in to[1]:
+        for j in to[i]:
+            if ans[j] == 0:
+                ans[j] = i
+
+    # 输出结果
+    print("Yes")
+    for i in range(2, n + 1):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def dfs(v):
+    global ans
+    global flag
+    if flag == False:
+        return
+    visited[v] = True
+    for i in graph[v]:
+        if visited[i] == False:
+            ans[i-1] = v
+            dfs(i)
+        else:
+            if ans[v-1] != i:
+                flag = False
+                return
+
+n,m = map(int,input().split())
+graph = [[] for _ in range(n+1)]
+visited = [False] * (n+1)
+ans = [0] * (n+1)
+flag = True
+for i in range(m):
+    a,b = map(int,input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+dfs(1)
+
+=======
+Suggestion 4
+
+def dfs(v):
+    global flag
+    for i in range(len(g[v])):
+        if visited[g[v][i]] == 0:
+            visited[g[v][i]] = 1
+            if g[v][i] == 1:
+                flag = True
+                return
+            dfs(g[v][i])
+            if flag:
+                return
+        else:
+            continue
+
+n,m = map(int,input().split())
+g = [[] for _ in range(n+1)]
+visited = [0]*(n+1)
+for _ in range(m):
+    a,b = map(int,input().split())
+    g[a].append(b)
+    g[b].append(a)
+flag = False
+visited[1] = 1
+dfs(1)
+
+=======
+Suggestion 5
+
+def solve():
+    pass
+
+=======
+Suggestion 6
+
+def dfs(v):
+    if visited[v]:
+        return
+    visited[v] = True
+    for next_v in graph[v]:
+        dfs(next_v)
+    ans.append(v+1)
+
+N, M = map(int, input().split())
+graph = [[] for _ in range(N)]
+for _ in range(M):
+    a, b = map(int, input().split())
+    graph[a-1].append(b-1)
+visited = [False] * N
+ans = []
+for i in range(N):
+    dfs(i)
+print('Yes')
+for i in range(N-1):
+    print(ans[i+1])

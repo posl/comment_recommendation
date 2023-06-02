@@ -1,39 +1,136 @@
-#问题陈述
-#我们有一个半径为R的圆，中心是(X, Y)。
-#求圆内或圆上的网格点（x和y坐标都是整数的点）的数量。
-#
-#约束条件
-#|X| ≦ 10^5
-#|Y| ≦ 10^5
-#0 < R ≦ 10^5
-#X、Y和R中的每一个在小数点之后都有最多四位数字。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#X Y R
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#0.2 0.8 1.1
-#
-#样本输出1
-#3
-#这个圆圈如下图所示。圆内或圆上的网格点被标记为红色。
-#
-#样本输入2
-#100 100 1
-#
-#样本输出2
-#5
-#X、Y和R可能没有小数点。
-#请注意，我们也计算圆上的网格点。
-#
-#输入样本3
-#42782.4720 31949.0192 99999.99
-#
-#样本输出3
-#31415920098
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    x,y,r=map(float,input().split())
+    return x,y,r
+
+=======
+Suggestion 2
+
+def solve(x, y, r):
+    # Write your code here
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    x, y, r = map(float, input().split())
+    x = int(x*10000)
+    y = int(y*10000)
+    r = int(r*10000)
+    x1 = x - r
+    x2 = x + r
+    count = 0
+    for i in range(x1, x2+1):
+        y1 = y - r
+        y2 = y + r
+        for j in range(y1, y2+1):
+            if (i-x)**2 + (j-y)**2 <= r**2:
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def count(x, y, r):
+    x1 = int(x - r)
+    x2 = int(x + r)
+    y1 = int(y - r)
+    y2 = int(y + r)
+
+    cnt = 0
+    for x in range(x1, x2 + 1):
+        for y in range(y1, y2 + 1):
+            if (x - x1) * (x - x1) + (y - y1) * (y - y1) <= r * r:
+                cnt += 1
+    return cnt
+
+=======
+Suggestion 6
+
+def main():
+    #输入
+    x,y,r = map(float, input().split())
+    #计算
+    x1 = int(x-r)
+    x2 = int(x+r)
+    count = 0
+    for i in range(x1,x2+1):
+        #y = sqrt(r^2-(x-x0)^2)+y0
+        y1 = y + (r**2-(i-x)**2)**0.5
+        y2 = y - (r**2-(i-x)**2)**0.5
+        count += int(y1) - int(y2)
+    #输出
+    print(count*4+4)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    X,Y,R = map(float,input().split())
+    x = int(X*10000)
+    y = int(Y*10000)
+    r = int(R*10000)
+    #solve
+    x_min = x-r
+    x_max = x+r
+    y_min = y-r
+    y_max = y+r
+    ans = 0
+    for i in range(x_min,x_max+1):
+        for j in range(y_min,y_max+1):
+            if (i-x)**2+(j-y)**2 <= r**2:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def count_grid_points(x, y, r):
+    #圆内网格点数
+    #圆上网格点数
+    #圆外网格点数
+    #圆内网格点数+圆上网格点数+圆外网格点数=圆内网格点数+圆上网格点数+圆外网格点数
+    #圆内网格点数+圆上网格点数+圆外网格点数=2*圆内网格点数+圆上网格点数
+    #圆上网格点数=圆内网格点数+圆外网格点数
+    #圆上网格点数=2*圆内网格点数+圆上网格点数
+    #圆上网格点数=圆内网格点数
+    #圆上网格点数=圆内网格点数+圆外网格点数
+    #圆内网格点数=圆外网格点数
+    #圆内网格点数=圆外网格点数=圆上网格点数
+    #圆内网格点数=圆外网格点数=圆上网格点数=圆内网格点数+圆外网格点数
+    #圆内网格点数=圆外网格点数=圆上网格点数=圆内网格点数+圆外网格点数=圆内网格点数+圆上网格点数+圆外网格点数
+    #圆内网格点数=圆外网格点数=圆上网格点数=圆内网格点数+圆外网格点数=圆内网格点数+圆上网格点数+圆外网格点数=圆内网格点数+圆上网格点数+圆外网格点数
+    #圆内网格点数=圆外网格点数=圆上网格点数=
+
+=======
+Suggestion 9
+
+def count_points(x, y, r):
+    # 网格点数
+    points = 0
+    # 网格点坐标
+    x0 = int(x)
+    y0 = int(y)
+    # 半径
+    r2 = r * r
+    # 遍历网格点
+    for x in range(x0 - int(r), x0 + int(r) + 1):
+        for y in range(y0 - int(r), y0 + int(r) + 1):
+            # 判断网格点是否在圆内
+            if (x - x0) * (x - x0) + (y - y0) * (y - y0) <= r2:
+                points += 1
+    return points

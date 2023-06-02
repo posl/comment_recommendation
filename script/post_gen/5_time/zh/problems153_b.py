@@ -1,52 +1,116 @@
-#问题陈述
-#浣熊正在与一只怪物战斗。
-#怪物的健康状况是H。
-#浣熊可以使用N种特殊动作。使用第i种招数会使怪物的生命值减少A_i。
-#没有其他方法可以减少怪物的健康。
-#当怪物的健康状况变成0或更低时，Raccoon就赢了。
-#如果Raccoon可以在不使用同一招数两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#限制条件
-#1 ≦ H ≦ 10^9
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果Raccoon能在不使用相同棋步两次或更多的情况下获胜，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 3
-#4 5 6
-#
-#样本输出1
-#Yes
-#例如，在使用第二和第三招后，怪物的健康状况将变成0或更低。
-#
-#输入样本2
-#20 3
-#4 5 6
-#
-#样本输出2
-#No
-#
-#样本输入3
-#210 5
-#31 41 59 26 53
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#211 5
-#31 41 59 26 53
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    if sum(A) >= H:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    if h <= sum(a):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    print('Yes' if sum(a) >= h else 'No')
+
+=======
+Suggestion 4
+
+def main():
+    H,N = map(int,input().split())
+    A = list(map(int,input().split()))
+    if sum(A) >= H:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    h, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    for i in range(n):
+        h -= a[i]
+        if h <= 0:
+            print('Yes')
+            exit()
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    H, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    print('Yes' if H <= sum(A) else 'No')
+
+=======
+Suggestion 7
+
+def solve(H, A):
+    for i in range(len(A)):
+        for j in range(i+1, len(A)):
+            if A[i] == A[j]:
+                return 'Yes'
+    return 'No'
+
+H, N = map(int, input().split())
+A = list(map(int, input().split()))
+print(solve(H, A))
+
+=======
+Suggestion 8
+
+def main():
+    a = input().split()
+    H = int(a[0])
+    N = int(a[1])
+    A = input().split()
+    sumA = 0
+    for i in range(N):
+        sumA += int(A[i])
+    if sumA >= H:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    h,n = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    if sum(a) >= h:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    pass

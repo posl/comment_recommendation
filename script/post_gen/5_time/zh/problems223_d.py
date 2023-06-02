@@ -1,45 +1,164 @@
-#问题陈述
-#在作为(1,2,...,N)的排列组合且满足下列条件的序列P中，找出在词法上最小的序列。
-#对于每个i = 1, ..., M，A_i在P中比B_i早出现。
-#如果没有这样的P，打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#2 1
-#3 4
-#2 4
-#
-#输出样本 1
-#2 1 3 4
-#以下五个排列组合P满足条件：（2，1，3，4），（2，3，1，4），（2，3，4，1），（3，2，1，4），（3，2，4，1）。其中词汇学上最小的是（2，1，3，4）。
-#
-#输入样本 2
-#2 3
-#1 2
-#1 2
-#2 1
-#
-#样本输出2
-#-1
-#没有满足条件的排列组合P。
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = [0] * N
+    for i in range(M):
+        ans[B[i] - 1] = A[i]
+    if ans[0] == 0:
+        ans[0] = 1
+    for i in range(1, N):
+        if ans[i] == 0:
+            ans[i] = ans[i - 1] + 1
+    if len(set(ans)) != N:
+        print(-1)
+    else:
+        print(*ans)
+
+=======
+Suggestion 4
+
+def f(n,m,a,b):
+    ans = []
+    for i in range(n):
+        ans.append(i+1)
+    for i in range(m):
+        if ans.index(a[i]) < ans.index(b[i]):
+            continue
+        else:
+            return -1
+    return ans
+
+=======
+Suggestion 5
+
+def solve():
+    N, M = map(int, input().split())
+    A, B = [], []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(A, B)
+
+    # A, B = zip(*sorted(zip(A, B), key=lambda x: x[1]))
+
+    # print(A, B)
+    # print(list(zip(A, B)))
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1]))
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][1])
+
+    # print(sorted(list(zip(A, B)), key=lambda x: x[1])[0][0])
+    # print(sorted(list(zip(A, B)), key=lambda x:
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+
+    # 1. 1～Nのリストを作成
+    # 2. ABのBに含まれる数字を削除
+    # 3. ABのAに含まれる数字を削除
+    # 4. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 5. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 6. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 7. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 8. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 9. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 10. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 11. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 12. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 13. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 14. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 15. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 16. ABのAに含まれる数字をABのBに含まれる数字の前に挿入
+    # 17
+
+=======
+Suggestion 7
+
+def findPath(n, m, a, b):
+    if n == 1:
+        return [1]
+    elif n == 2:
+        return [-1]
+    else:
+        result = [0] * n
+        result[0] = 1
+        result[1] = 2
+        result[2] = 3
+        for i in range(3, n):
+            result[i] = i + 1
+        for i in range(m):
+            if a[i] == 1 and b[i] == 2:
+                return [-1]
+            elif a[i] == 1:
+                result[b[i] - 1] = 1
+                result[1] = b[i]
+            elif b[i] == 1:
+                result[a[i] - 1] = 2
+                result[0] = a[i]
+            else:
+                result[a[i] - 1] = b[i]
+                result[b[i] - 1] = a[i]
+        return result
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)

@@ -1,56 +1,301 @@
-#问题陈述
-#保龄球瓶的编号是1到10。  下图是球杆排列的俯视图：
-#让我们把图中两条虚线之间的每个部分称为一列。
-#例如，1号和5号球瓶属于同一列，3号和9号球瓶也属于同一列。
-#当一些针脚被打倒时，可能会出现一种特殊的情况，叫做分裂。
-#如果以下两个条件都满足，那么针脚的摆放就是分裂：
-#引脚1被撞倒了。
-#有两个不同的列，满足以下两个条件：
-#每一列都有一个或多个站立的棋子。
-#在这两列之间存在一列，使得该列中的所有棋子都被击倒。
-#
-#例子也见输入和输出的样本。
-#现在，你得到的是一个长度为10的字符串S的针脚位置。
-#对于i=1，...，10，如果针脚i被击倒，S的第i个字符为0，如果它是站立的，则为1。
-#确定S所代表的大头针的位置是否是一个分裂。
-#
-#约束条件
-#S是一个长度为10的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#如果S所代表的引脚的位置是分裂的，打印Yes；否则，打印No。
-#
-#样本输入1
-#0101110101
-#
-#样本输出1
-#Yes
-#在下图中，被击倒的引脚被涂成灰色，站立的引脚被涂成白色：
-#在含有立针5的那一列和含有立针6的那一列之间是含有立针3和9的那一列。  由于3号和9号都被打掉了，所以这个位置是一个分割。
-#
-#样本输入2
-#0100101001
-#
-#样本输出2
-#Yes
-#
-#
-#样品输入3
-#0000100110
-#
-#样品输出3
-#No
-#这个位置不是一个分割。
-#
-#样本输入4
-#1101110101
-#
-#样本输出4
-#No
-#这不是一个分割，因为引脚1没有被敲下。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(s):
+    if s[0] == "0":
+        return "No"
+    if s[1] == "0":
+        return "No"
+    if s[2] == "0":
+        return "No"
+    if s[3] == "0":
+        return "No"
+    if s[4] == "0":
+        return "No"
+    if s[5] == "0":
+        return "No"
+    if s[6] == "0":
+        return "No"
+    if s[7] == "0":
+        return "No"
+    if s[8] == "0":
+        return "No"
+    if s[9] == "0":
+
+=======
+Suggestion 2
+
+def problem267_b():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == "0":
+        print("No")
+        return
+
+    if s[4] == "0" and s[5] == "0":
+        print("No")
+        return
+
+    if s[6] == "0" and s[7] == "0" and s[8] == "0" and s[9] == "0":
+        print("No")
+        return
+
+    print("Yes")
+
+=======
+Suggestion 4
+
+def solve():
+    pins = input()
+    if pins[0] == '0':
+        print('No')
+        return
+    if pins[1] == '0':
+        print('No')
+        return
+    if pins[2] == '0':
+        print('Yes')
+        return
+    if pins[3] == '0':
+        print('Yes')
+        return
+    if pins[4] == '0':
+        print('Yes')
+        return
+    if pins[5] == '0':
+        print('Yes')
+        return
+    if pins[6] == '0':
+        print('Yes')
+        return
+    if pins[7] == '0':
+        print('Yes')
+        return
+    if pins[8] == '0':
+        print('Yes')
+        return
+    if pins[9] == '0':
+        print('Yes')
+        return
+    print('No')
+
+solve()
+
+=======
+Suggestion 5
+
+def split_pins(bowl):
+    bowl = list(bowl)
+    for i in range(10):
+        bowl[i] = int(bowl[i])
+    for i in range(10):
+        if bowl[i] == 0:
+            bowl[i] = 1
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            bowl[i] = 0
+            break
+    for i in range(10):
+        if bowl[i] == 1:
+            return "Yes"
+    return "No"
+
+=======
+Suggestion 6
+
+def solve(s):
+    # Write your code here
+    for i in range(1, 11):
+        if s[i - 1] == "0":
+            for j in range(1, 11):
+                if s[j - 1] == "1":
+                    if i == 1:
+                        if j == 2 or j == 3 or j == 4 or j == 5:
+                            if s[j] == "1":
+                                return "Yes"
+                    elif i == 10:
+                        if j == 6 or j == 7 or j == 8 or j == 9:
+                            if s[j - 2] == "1":
+                                return "Yes"
+                    else:
+                        if j == i + 1 or j == i + 2 or j == i + 3 or j == i + 4:
+                            if s[j - 2] == "1" and s[j] == "1":
+                                return "Yes"
+    return "No"
+
+
+s = input()
+print(solve(s))
+
+=======
+Suggestion 7
+
+def problems267_b():
+    pass
+
+=======
+Suggestion 8
+
+def split_pin(s):
+    if s[0] == '0':
+        return 'No'
+    if s[1] == '1':
+        return 'No'
+    if s[2] == '1':
+        return 'No'
+    if s[3] == '1':
+        return 'No'
+    if s[4] == '1':
+        return 'No'
+    if s[5] == '1':
+        return 'No'
+    if s[6] == '1':
+        return 'No'
+    if s[7] == '1':
+        return 'No'
+    if s[8] == '1':
+        return 'No'
+    if s[9] == '1':
+        return 'No'
+    return 'Yes'
+
+s = input()
+print(split_pin(s))
+
+=======
+Suggestion 9
+
+def pin(S):
+    if S[0] == '0':
+        return 'No'
+    else:
+        for i in range(1, 10):
+            if S[i] != '0':
+                return 'No'
+        return 'Yes'
+
+S = input()
+print(pin(S))
+
+=======
+Suggestion 10
+
+def solve():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    if s[1] == '0':
+        print('No')
+        return
+    if s[2] == '0':
+        print('No')
+        return
+    if s[3] == '0':
+        print('No')
+        return
+    if s[4] == '0':
+        print('No')
+        return
+    if s[5] == '0':
+        print('No')
+        return
+    if s[6] == '0':
+        print('No')
+        return
+    if s[7] == '0':
+        print('No')
+        return
+    if s[8] == '0':
+        print('No')
+        return
+    if s[9] == '0':
+        print('No')
+        return
+    if s[5] == '0':
+        if s[1] == '0':
+            print('No')
+            return
+        if s[2] == '0':
+            print('No')
+            return
+        if s[3] == '0':
+            print('No')
+            return
+        if s[4] == '0':
+            print('No')
+            return
+        if s[6] == '0':
+            print('No')
+            return
+        if s[7] == '0':
+            print('No')
+            return
+        if s[8] == '0':
+            print('No')
+            return
+        if s[9] == '0':
+            print('No')
+            return
+    if s[6] == '0':
+        if s[1] == '0':
+            print('No')
+            return
+        if s[2] == '0':
+            print('No')
+            return
+        if s[3] == '0':
+            print('No')
+            return
+        if s[4] == '0':
+            print('No')
+            return
+        if s[5] == '0':
+            print('No')
+            return
+        if s[7] == '0':
+            print('No')
+            return
+        if s[8] == '0':
+            print('No')
+            return
+        if s[9] == '0':
+            print('No')
+            return
+    if s[7

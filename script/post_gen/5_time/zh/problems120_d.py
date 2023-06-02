@@ -1,69 +1,130 @@
-#问题陈述
-#有N个岛屿和M座桥。
-#第i座桥双向连接A_i-th和B_i-th岛。
-#最初，我们可以使用其中一些桥梁在任何两个岛屿之间旅行。
-#然而，调查的结果显示，这些桥会因为老化而全部倒塌，顺序是从第一座桥到第M座桥。
-#不便是指有多少对岛屿（a，b）（a<b），使我们不能再使用剩余的一些桥梁在第a个和第b个岛屿之间旅行。
-#对于每一个i（1 ≦ i ≦ M），找出第i座桥刚倒塌时的不便。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i < B_i ≦ N
-#所有对（A_i, B_i）都是独立的。
-#不方便的地方最初为0。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#按照i = 1, 2, ..., M的顺序，打印第i座桥倒塌后的不便之处。
-#注意，答案可能不适合32位的整数类型。
-#
-#输入样本 1
-#4 5
-#1 2
-#3 4
-#1 3
-#2 3
-#1 4
-#
-#样本输出1
-#0
-#0
-#4
-#5
-#6
-#例如，当第一座到第三座桥倒塌时，不便是4，因为我们不能再在（1，2），（1，3），（2，4）和（3，4）这几对之间旅行。
-#
-#样本输入 2
-#6 5
-#2 3
-#1 2
-#5 6
-#3 4
-#4 5
-#
-#样本输出2
-#8
-#9
-#12
-#14
-#15
-#
-#样本输入 3
-#2 1
-#1 2
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(N)
+    print(M)
+    print(A)
+    print(B)
+
+=======
+Suggestion 3
+
+def find(x):
+    if x != par[x]:
+        par[x] = find(par[x])
+    return par[x]
+
+=======
+Suggestion 4
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge = []
+    for i in range(M):
+        bridge.append((A[i], B[i]))
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[1])
+
+    # 用于保存桥的信息，用于后面的排序
+    bridge.sort(key=lambda x: x[0])
+
+=======
+Suggestion 6
+
+def main():
+    return
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * (m + 1)
+    b = [0] * (m + 1)
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    ans = 0
+    for i in range(m - 1, -1, -1):
+        if a[i] > b[i]:
+            a[i], b[i] = b[i], a[i]
+        if a[i] == b[i]:
+            ans += 1
+            continue
+        if a[i] == 1:
+            for j in range(i + 1, m + 1):
+                if a[j] < b[i] and b[j] >= b[i]:
+                    ans += 1
+        else:
+            for j in range(i + 1, m + 1):
+                if a[j] < a[i] and b[j] >= a[i]:
+                    ans += 1
+    print(ans)

@@ -1,80 +1,206 @@
-#问题陈述
-#有一个横排为H，竖排为W的方格。
-#位于从上往下第i行和从左往下第j列的方格表示为（i，j）。
-#每个方格都是黑色或白色。
-#方格的颜色以H乘W的矩阵（a_{i, j}）给出。
-#如果a_{i, j}为.，则该方格（i, j）为白色；如果a_{i, j}为#，则该方格（i, j）为黑色。
-#Snuke正在压缩这个网格。
-#他将通过在有一个只由白色方格组成的行或列中反复执行以下操作来实现：
-#操作：选择任何一行或一列只由白色方块组成，将其移除并删除行或列之间的空间。
-#可以证明，无论在每个操作中选择哪一行或哪一列，网格的最终状态都是唯一确定的。
-#找到网格的最终状态。
-#
-#限制条件
-#1 ≦ H, W ≦ 100
-#a_{i, j}是.或#。
-#整个网格中至少有一个黑色方块。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#a_{1, 1}...a_{1, W}。
-#:
-#a_{H, 1}...a_{H, W}。
-#
-#输出
-#以与输入相同的格式打印网格的最终状态（不包括行和列的数字）；请看样本以了解情况。
-#
-#输入样本 1
-#4 4
-###.#
-#....
-###.#
-#.#.#
-#
-#输出样本1
-####
-####
-#.##
-#原始网格中的第二行和第三列将被删除。
-#
-#输入样本 2
-#3 3
-##..
-#.#.
-#..#
-#
-#输出样本2
-##..
-#.#.
-#..#
-#由于没有只由白色方块组成的行或列，因此不会进行任何操作。
-#
-#输入样本 3
-#4 5
-#.....
-#.....
-#..#..
-#.....
-#
-#输出样本3
-##
-#
-#样本输入4
-#7 6
-#......
-#....#.
-#.#....
-#..#...
-#..#...
-#......
-#.#..#.
-#
-#输出样本4
-#..#
-##..
-#.#.
-#.#.
-##.#
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    a = []
+    for i in range(H):
+        a.append(input())
+    #print(a)
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[2][0])
+    #print(a[2][1])
+    #print(a[3][0])
+    #print(a[3][1])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[0][3])
+    #print(a[0][4])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[1][2])
+    #print(a[1][3])
+    #print(a[1][4])
+    #print(a[2][0])
+    #print(a[2][1])
+    #print(a[2][2])
+    #print(a[2][3])
+    #print(a[2][4])
+    #print(a[3][0])
+    #print(a[3][1])
+    #print(a[3][2])
+    #print(a[3][3])
+    #print(a[3][4])
+    #print(a[4][0])
+    #print(a[4][1])
+    #print(a[4][2])
+    #print(a[4][3])
+    #print(a[4][4])
+    #print(a[5][0])
+    #print(a[5][1])
+    #print(a[5][2])
+    #print(a[5][3])
+    #print(a[5][4])
+    #print(a[6][0])
+    #print(a[6][1])
+    #print(a[6][2])
+    #print(a[6][3])
+    #print(a[6][4])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[0][3])
+    #print(a[0][4])
+    #print(a[0][5])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[1
+
+=======
+Suggestion 2
+
+def problems107_b():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for i in range(H)]
+
+    # 各行各列に黒マスがあるかどうかのフラグ
+    row = [False] * H
+    col = [False] * W
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                row[i] = True
+                col[j] = True
+
+    # どの行もどの列も黒マスがあるかどうか
+    for i in range(H):
+        if row[i]:
+            for j in range(W):
+                if col[j]:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 4
+
+def main():
+    #print("请输入行数H和列数W：")
+    H, W = map(int, input().split())
+    #print("请输入网格：")
+    a = [list(input()) for i in range(H)]
+    #print("输入的网格为：")
+    #print(a)
+    #print("网格的行数为：",len(a))
+    #print("网格的列数为：",len(a[0]))
+    #print("网格的第一行为：")
+    #print(a[0])
+    #print("网格的第一列为：")
+    #print([x[0] for x in a])
+    row = [0]*H
+    col = [0]*W
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == "#":
+                row[i] = 1
+                col[j] = 1
+    #print("网格的行状态为：")
+    #print(row)
+    #print("网格的列状态为：")
+    #print(col)
+    for i in range(H):
+        if row[i] == 1:
+            for j in range(W):
+                if col[j] == 1:
+                    print(a[i][j], end="")
+            print()
+
+=======
+Suggestion 5
+
+def main():
+    #读入数据
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    #处理数据
+    #行列都是白色的行列
+    white_rows = [i for i in range(h) if all(a[i][j] == '.' for j in range(w))]
+    white_cols = [j for j in range(w) if all(a[i][j] == '.' for i in range(h))]
+    #输出数据
+    for i in range(h):
+        if i in white_rows:
+            continue
+        for j in range(w):
+            if j in white_cols:
+                continue
+            print(a[i][j], end='')
+        print()
+
+=======
+Suggestion 6
+
+def solve():
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    row = [False] * h
+    col = [False] * w
+    for i in range(h):
+        for j in range(w):
+            if a[i][j] == '#':
+                row[i] = True
+                col[j] = True
+    for i in range(h):
+        if row[i]:
+            for j in range(w):
+                if col[j]:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for _ in range(H)]
+    b = []
+    for i in range(H):
+        if '#' in a[i]:
+            b.append(a[i])
+    c = []
+    for j in range(W):
+        if '#' in [a[i][j] for i in range(H)]:
+            c.append([a[i][j] for i in range(H)])
+    for i in range(len(b)):
+        print(''.join([c[j][i] for j in range(len(c))]))
+
+=======
+Suggestion 8
+
+def get_input():
+    H, W = map(int, input().split())
+    a = []
+    for _ in range(H):
+        a.append(list(input()))
+    return H, W, a
+
+=======
+Suggestion 9
+
+def get_matrix():
+    H, W = map(int, input().split())
+    matrix = []
+    for i in range(H):
+        row = input()
+        matrix.append(row)
+    return matrix

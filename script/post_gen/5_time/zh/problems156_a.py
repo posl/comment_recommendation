@@ -1,33 +1,95 @@
-#问题陈述
-#高桥是一个编程竞赛网站ButCoder的成员。
-#每个ButCoder的成员都被分配了两个值：内在评价和显示评价。
-#如果一个会员参加了10个或更多的比赛，那么该会员的显示等级就等于他们的内部等级。否则，当会员参加了K个比赛时，显示评价将是他们的内在评价减去100×（10-K）。
-#高桥参加了N次比赛，他的显示评分是R，求他的内在评价。
-#
-#限制条件
-#所有的输入值都是整数。
-#1 ≦ N ≦ 100
-#0 ≦ R ≦ 4111
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N R
-#
-#输出
-#打印他的内在评价。
-#
-#输入样本 1
-#2 2919
-#
-#样本输出1
-#3719
-#高桥参加过2次比赛，少于10次，所以他的显示评分是他的内在评价减去100×（10-2）=800。
-#因此，高桥的内在评价是2919+800=3719。
-#
-#输入样本2
-#22 3051
-#
-#样本输出2
-#3051
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,r = map(int, raw_input().split())
+    if n >= 10:
+        print r
+    else:
+        print r + 100 * (10 - n)
+
+=======
+Suggestion 2
+
+def main():
+    n, r = map(int, input().split())
+    if n >= 10:
+        print(r)
+    else:
+        print(r + 100 * (10 - n))
+
+=======
+Suggestion 3
+
+def main():
+    n, r = map(int, input().split())
+    if n < 10:
+        print(r + 100 * (10 - n))
+    else:
+        print(r)
+
+=======
+Suggestion 4
+
+def inner_grade(n, r):
+    if n >= 10:
+        return r
+    else:
+        return r + (10 - n) * 100
+
+=======
+Suggestion 5
+
+def inner_grade(n,r):
+    inner = 0
+    if n >= 10:
+        inner = r
+    else:
+        inner = r + (10 - n) * 100
+    return inner
+
+=======
+Suggestion 6
+
+def getInnerEva(n, r):
+    if n >= 10:
+        return r
+    else:
+        return r + 100 * (10 - n)
+
+=======
+Suggestion 7
+
+def main():
+    N, R = map(int, input().split())
+    if N >= 10:
+        print(R)
+    else:
+        print(R + (100 * (10 - N)))
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    input = raw_input()
+    input = input.split()
+    input = [int(i) for i in input]
+    n = input[0]
+    r = input[1]
+    # 计算
+    if n >= 10:
+        print r
+    else:
+        print r + 100 * (10 - n)
+
+=======
+Suggestion 9
+
+def getInnerGrade(n, r):
+    if n >= 10:
+        return r
+    else:
+        return r + 100 * (10 - n)

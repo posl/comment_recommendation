@@ -1,28 +1,46 @@
-#问题陈述
-#给定N，打印2^N。
-#
-#限制条件
-#0 ≦ N ≦ 30
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。  
-#
-#输入样本1
-#3
-#
-#样本输出1
-#8
-#我们有2^3=8。
-#
-#样本输入2
-#30
-#
-#样本输出2
-#1073741824
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(2**n)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(2**N)
+
+=======
+Suggestion 3
+
+def power2(n):
+    return 2**n
+
+n = int(input())
+print(power2(n))
+
+=======
+Suggestion 4
+
+def main():
+    num = int(input())
+    print(2**num)
+
+=======
+Suggestion 5
+
+def main():
+    print(2**int(input()))
+
+main()
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    print(2**N)

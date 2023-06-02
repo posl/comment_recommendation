@@ -1,54 +1,161 @@
-#问题陈述
-#我们将把一个字符串a中包含的字符按某种顺序排列而得到的字符串称为a的变形。
-#例如，greenbin是初学者的变形。从这里可以看出，当同一个字符出现多次时，该字符必须被使用该次数。
-#有N个字符串s_1, s_2, ..., s_N。每个字符串的长度为10，由小写英文字符组成。此外，所有这些字符串都是不同的。请找出有多少对整数i, j (1 ≦ i < j ≦ N)，使得s_i是s_j的变形。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#s_i是一个长度为10的字符串。
-#s_i中的每个字符都是一个小写的英文字母。
-#s_1, s_2, ..., s_N都是独立的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#s_1
-#s_2
-#:
-#s_N
-#
-#输出
-#打印整数i, j (1 ≦ i < j ≦ N)的对数，以便s_i是s_j的变形。
-#
-#输入样本 1
-#3
-#acornistnt
-#peanutbomb
-#constraint
-#
-#样本输出1
-#1
-#s_1 = acornistnt是s_3 = constraint的变形词。没有其他一对i，j，使s_i是s_j的变位，所以答案是1。
-#
-#输入样本2
-#2
-#1-2-2
-#ninemodsix
-#
-#样本输出2
-#0
-#如果没有一对i，j，使得s_i是s_j的变形，则打印0。
-#
-#输入样本3
-#5
-#abaaaaaaaa
-#oneplustwo
-#aaaaaaaaba
-#twoplusone
-#aaaabaaaaa
-#
-#样本输出3
-#4
-#注意，答案可能不适合32位的整数类型，尽管我们不能把这样的情况放在这里。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        word = input()
+        words.append(word)
+
+    words.sort()
+    ans = 0
+    cnt = 1
+    for i in range(1, n):
+        if words[i] == words[i - 1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    ans += cnt * (cnt - 1) // 2
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_hash(text):
+    hash = 0
+    for i in range(len(text)):
+        hash += ord(text[i]) * (i+1)
+    return hash
+
+=======
+Suggestion 3
+
+def get_hash(s):
+    hash = [0]*26
+    for i in range(10):
+        hash[ord(s[i])-ord('a')] += 1
+    return hash
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+hash = []
+for i in range(n):
+    hash.append(get_hash(s[i]))
+
+hash.sort()
+ans = 0
+cnt = 1
+for i in range(n-1):
+    if hash[i] == hash[i+1]:
+        cnt += 1
+    else:
+        ans += cnt * (cnt-1) // 2
+        cnt = 1
+
+ans += cnt * (cnt-1) // 2
+print(ans)
+
+=======
+Suggestion 4
+
+def get_word_dict(word):
+    word_dict = {}
+    for i in range(len(word)):
+        if word[i] in word_dict:
+            word_dict[word[i]] += 1
+        else:
+            word_dict[word[i]] = 1
+    return word_dict
+
+=======
+Suggestion 5
+
+def problem137_c():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s.sort()
+    #print(s)
+    count = 0
+    i = 0
+    while i < N:
+        j = i + 1
+        while j < N:
+            if s[i] == s[j]:
+                count += 1
+            else:
+                break
+            j += 1
+        i = j
+    print(count)
+
+=======
+Suggestion 6
+
+def get_n():
+    n = int(input())
+    return n
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s = input()
+        s = sorted(s)
+        s = ''.join(s)
+        if s in d:
+            d[s] += 1
+        else:
+            d[s] = 1
+    ans = 0
+    for i in d.values():
+        ans += i * (i - 1) // 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_char_num(s):
+    char_num = [0] * 26
+    for char in s:
+        char_num[ord(char)-ord('a')] += 1
+    return char_num
+
+=======
+Suggestion 9
+
+def getHash(s):
+    hash = [0] * 26
+    for i in range(len(s)):
+        hash[ord(s[i]) - ord('a')] += 1
+    return hash
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    s = [input() for i in range(n)]
+    for i in range(n):
+        s[i] = ''.join(sorted(s[i]))
+    s = sorted(s)
+    ans = 0
+    cnt = 1
+    for i in range(1, n):
+        if s[i] == s[i - 1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    ans += cnt * (cnt - 1) // 2
+    print(ans)

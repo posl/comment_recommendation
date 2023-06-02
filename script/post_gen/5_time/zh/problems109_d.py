@@ -1,68 +1,106 @@
-#问题陈述
-#有一个由H个水平行和W个垂直列组成的方形单元格。位于第i行和第j列的单元格将被称为单元格（i，j）。
-#在单元格（i，j）中，放置了a_{ij}枚硬币。
-#你可以进行以下任意次数的操作：
-#操作：选择一个之前没有选择的、含有一个或多个硬币的单元格，然后将其中一个硬币移到垂直或水平相邻的单元格。
-#最大限度地增加含有偶数硬币的单元格的数量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ H, W ≦ 500
-#0 ≦ a_{ij} ≦ 9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#a_{11} a_{12}... a_{1W}
-#a_{21} a_{22} ... a_{2W}
-#:
-#a_{H1} a_{H2} ... a_{HW} 。
-#
-#输出
-#打印一个操作序列，使含有偶数硬币的单元格数量达到最大，格式如下：
-#N
-#y_1 x_1 y_1' x_1')
-#y_2 x_2 y_2' x_2')
-#:
-#y_N x_N y_N' x_N'。
-#也就是说，在第一行，打印一个介于0和H×W（包括）之间的整数N，代表操作的数量。
-#在第（i+1）行（1 ≦ i ≦ N），打印四个整数y_i, x_i, y_i' 和 x_i' （1 ≦ y_i, y_i' ≦ H 和 1 ≦ x_i, x_i' ≦ W），代表第i次操作。这四个整数代表将放置在单元格（y_i, x_i）中的一枚硬币移动到垂直或水平相邻的单元格（y_i', x_i'）的操作。
-#请注意，如果指定的操作违反了问题陈述中的规范或输出格式无效，将导致错误的答案。
-#
-#输入样本 1
-#2 3
-#1 2 3
-#0 1 1
-#
-#样本输出 1
-#3
-#2 2 2 3
-#1 1 1 2
-#1 3 1 2
-#经过以下一连串的操作后，每个单元格都含有偶数的硬币：
-#将单元格（2，2）中的硬币移至单元格（2，3）。
-#将单元格（1，1）中的硬币移到单元格（1，2）。
-#将单元格（1，3）中的一枚硬币移到单元格（1，2）。
-#
-#样本输入 2
-#3 2
-#1 0
-#2 1
-#1 0
-#
-#样本输出2
-#3
-#1 1 1 2
-#1 2 2 2
-#3 1 3 2
-#
-#样本输入 3
-#1 5
-#9 9 9 9 9
-#
-#样本输出3
-#2
-#1 1 1 2
-#1 3 1 4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    h,w=map(int,input().split())
+    a=[]
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    ans=[]
+    for i in range(h):
+        for j in range(w-1):
+            if a[i][j]%2==1:
+                a[i][j+1]+=1
+                ans.append([i+1,j+1,i+1,j+2])
+    for i in range(h-1):
+        if a[i][w-1]%2==1:
+            a[i+1][w-1]+=1
+            ans.append([i+1,w,i+2,w])
+    print(len(ans))
+    for i in ans:
+        print(*i)
+
+=======
+Suggestion 3
+
+def get_even_num(H, W, a_list):
+    even_num = 0
+    for i in range(H):
+        for j in range(W):
+            if a_list[i][j] % 2 == 0:
+                even_num += 1
+    return even_num
+
+=======
+Suggestion 4
+
+def check_even(matrix, h, w):
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if matrix[i][j] % 2 == 0:
+                count += 1
+    return count
+
+=======
+Suggestion 5
+
+def main():
+    #输入
+    H,W = map(int,input().split())
+    a = [list(map(int,input().split())) for i in range(H)]
+    #处理
+    ans = []
+    for h in range(H):
+        for w in range(W):
+            if a[h][w]%2 == 1:
+                if w != W-1:
+                    a[h][w+1] += 1
+                    ans.append([h+1,w+1,h+1,w+2])
+                elif h != H-1:
+                    a[h+1][w] += 1
+                    ans.append([h+1,w+1,h+2,w+1])
+    #输出
+    print(len(ans))
+    for i in range(len(ans)):
+        print(*ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(H)]
+    ans = []
+    for i in range(H):
+        if i % 2 == 0:
+            for j in range(W):
+                if a[i][j] % 2 == 1:
+                    if j < W-1:
+                        a[i][j+1] += 1
+                        ans.append([i+1, j+1, i+1, j+2])
+                    else:
+                        if i < H-1:
+                            a[i+1][j] += 1
+                            ans.append([i+1, j+1, i+2, j+1])
+        else:
+            for j in range(W-1, -1, -1):
+                if a[i][j] % 2 == 1:
+                    if j > 0:
+                        a[i][j-1] += 1
+                        ans.append([i+1, j+1, i+1, j])
+                    else:
+                        if i < H-1:
+                            a[i+1][j] += 1
+                            ans.append([i+1, j+1, i+2, j+1])
+    print(len(ans))
+    for i in range(len(ans)):
+        print(*ans[i])

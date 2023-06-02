@@ -1,54 +1,144 @@
-#问题陈述
-#你的朋友给了你一个D作为生日礼物。
-#D是一个水平圆柱体，里面有一排N个珠宝。
-#宝石的数值从左到右依次是V_1, V_2, ..., V_N。可能有负值的珠宝。
-#一开始，你的手中没有珠宝。
-#你最多可以对D进行K次（可能为零）的操作，这些操作选自以下几项：
-#操作A：取出D中包含的最左边的宝石，并把它放在你手中。当D是空的时候，你不能做这个操作。
-#操作B：取出D中最右边的宝石，并把它拿在手中。当D是空的时候，你不能做这个操作。
-#操作C：选择你手中的一颗宝石，将其插入D的左端。
-#操作D：在你的手中选择一颗宝石，并将其插入D的右端，当你手中没有宝石时，你不能做这个操作。
-#找到操作后你手中珠宝价值的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 50
-#1 ≦ K ≦ 100
-#-10^7 ≦ V_i ≦ 10^7
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#V_1 V_2 ...V_N
-#
-#输出
-#打印操作后你手中的珠宝价值的最大可能总和。
-#
-#输入样本 1
-#6 4
-#-10 8 2 1 2 6
-#
-#样本输出1
-#14
-#经过下面一连串的操作，你手中有两颗价值为8和6的宝石，总价值为14，这是最大的结果。
-#执行操作A，从D的左端取出价值为-10的宝石。
-#执行操作B，从D的右端取出价值6的宝石。
-#执行操作A，从D的左端取出价值8的宝石。
-#执行操作D，你把价值为-10的宝石插入D的右端。
-#
-#输入样本 2
-#6 4
-#-6 -100 50 -2 -5 -3
-#
-#样本输出2
-#44
-#
-#样本输入3
-#6 3
-#-6 -100 50 -2 -5 -3
-#
-#样本输出3
-#0
-#不做任何操作是最好的。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(n, k, v):
+    dp = [[[0 for i in range(n+1)] for j in range(n+1)] for l in range(k+1)]
+    for i in range(1, k+1):
+        for j in range(n+1):
+            for l in range(n+1):
+                if j > 0:
+                    dp[i][j][l] = max(dp[i][j][l], dp[i-1][j-1][l]+v[j-1])
+                if l > 0:
+                    dp[i][j][l] = max(dp[i][j][l], dp[i-1][j][l-1])
+                if j > 0 and l > 0:
+                    dp[i][j][l] = max(dp[i][j][l], dp[i-1][j-1][l-1])
+    return dp[k][n][n]
+
+=======
+Suggestion 2
+
+def max_value(N, K, V):
+    max_sum = 0
+    for i in range(0, min(K, N) + 1):
+        for j in range(0, min(K - i, N - i) + 1):
+            if i + j > N:
+                continue
+            else:
+                sum = 0
+                sum += sum_max(V[0:i])
+                sum += sum_max(V[N - j:N])
+                max_sum = max(max_sum, sum)
+    return max_sum
+
+=======
+Suggestion 3
+
+def dp(n, k, v):
+    dp = [[0 for _ in range(k+1)] for _ in range(n+1)]
+    for i in range(n):
+        for j in range(k+1):
+            if j == 0:
+                dp[i+1][j] = dp[i][j] + v[i]
+            else:
+                dp[i+1][j] = max(dp[i][j] + v[i], dp[i][j-1])
+    return dp[n][k]
+
+n, k = map(int, input().split())
+v = list(map(int, input().split()))
+print(dp(n, k, v))
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for i in range(min(N, K) + 1):
+        for j in range(min(N, K) - i + 1):
+            # print(i, j)
+            # print(V[:i] + V[N-j:])
+            ans = max(ans, sum(sorted(V[:i] + V[N-j:])[j:]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def max_sum(N, K, V):
+    if K == 0:
+        return 0
+    if N == 1:
+        return V[0]
+    if N == 2:
+        return max(V[0], V[1])
+    if N == 3:
+        return max(V[0] + V[2], V[1])
+    if N == 4:
+        return max(V[0] + V[2], V[1] + V[3])
+    if N == 5:
+        return max(V[0] + V[2] + V[4], V[1] + V[3])
+    if N == 6:
+        return max(V[0] + V[2] + V[4], V[1] + V[3] + V[5])
+
+=======
+Suggestion 7
+
+def solve():
+    N,K = map(int,input().split())
+    V = list(map(int,input().split()))
+    ans = 0
+    for i in range(min(N,K)+1):
+        for j in range(min(N-i,K-i)+1):
+            #print(i,j)
+            v = V[:i]+V[N-j:]
+            v.sort()
+            for k in range(K-i-j):
+                if k < len(v) and v[k] < 0:
+                    v[k] = 0
+            ans = max(ans,sum(v))
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    V = list(map(int, input().split()))
+    ans = 0
+    for a in range(K+1):
+        for b in range(K+1-a):
+            c = K-a-b
+            l = sorted([V[i] for i in range(a)])
+            r = sorted([V[i] for i in range(N-b, N)], reverse=True)
+            s = sum(l)+sum(r)
+            for _ in range(min(c, len(l), len(r))):
+                if l[_] < r[_]:
+                    s += r[_]-l[_]
+                else:
+                    break
+            ans = max(ans, s)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def max_sum(N, K, V):
+    ans = 0
+    for i in range(min(N, K)+1):
+        for j in range(min(N, K)-i+1):
+            left = V[:i]
+            right = V[N-j:]
+            left.sort()
+            right.sort()
+            ans = max(ans, sum(right)-sum(left))
+    return ans

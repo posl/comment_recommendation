@@ -1,35 +1,86 @@
-#问题陈述
-#给出整数a、b、c，判断b是否是这些整数的中位数。
-#
-#限制条件
-#1 ≦ a, b, c ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b c
-#
-#輸出
-#如果b是所给整数的中位数，则打印是；否则，打印否。
-#
-#输入样本 1
-#5 3 2
-#
-#样本输出 1
-#是
-#给定的整数按升序排序后是2、3、5，其中b是中位数。
-#
-#输入样本 2
-#2 5 3
-#
-#样本输出 2
-#没有
-#b不是所给整数的中位数。
-#
-#样本输入3
-#100 100 100
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    if a <= b <= c:
+        print("是")
+    elif c <= b <= a:
+        print("是")
+    else:
+        print("没有")
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int, input().split())
+    if a<=b<=c or c<=b<=a:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 3
+
+def is_median(a, b, c):
+    if a <= b <= c or c <= b <= a:
+        return True
+    else:
+        return False
+
+a, b, c = map(int, input().split())
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int,input().split())
+    if b >= a and b <= c or b >= c and b <= a:
+        print("是")
+    else:
+        print("没有")
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    if a<=b<=c or c<=b<=a:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int, input().split())
+    if b == max(a,b,c) or b == min(a,b,c):
+        print("NO")
+    else:
+        print("YES")
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int,input().split())
+    if a < b < c or c < b < a:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int,input().split())
+    if b in [a,c]:
+        print('是')
+    else:
+        print('没有')

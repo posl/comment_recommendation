@@ -1,64 +1,123 @@
-#问题陈述
-#在一个二维平面上有N个不同的点，编号为1,2,...,N。点i(1 ≦ i ≦ N)的坐标为(x_i,y_i)。
-#有多少个矩形的顶点在给定的点中，并且其边缘与x轴或y轴平行？
-#
-#限制条件
-#4 ≦ N ≦ 2000
-#0 ≦ x_i, y_i ≦ 10^9
-#(x_i,y_i) ≠ (x_j,y_j) (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-# 
-#x_N y_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#6
-#0 0
-#0 1
-#1 0
-#1 1
-#2 0
-#2 1
-#
-#样本输出1
-#3
-#有三个这样的矩形：
-#矩形的顶点是点1、2、3、4、
-#矩形的顶点是点1，2，5，6、
-#以及顶点为点3、4、5、6的矩形。
-#
-#输入样本 2
-#4
-#0 1
-#1 2
-#2 3
-#3 4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#7
-#0 1
-#1 0
-#2 0
-#2 1
-#2 2
-#3 0
-#3 2
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x.append(int(input().split()[0]))
+        y.append(int(input().split()[1]))
+    x.sort()
+    y.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if x[i] < x[j] and y[i] < y[j]:
+                if x[i] in x[j:] and y[i] in y[j:]:
+                    ans += 1
+            elif x[i] > x[j] and y[i] > y[j]:
+                if x[j] in x[i:] and y[j] in y[i:]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        tmp = input().split()
+        x.append(int(tmp[0]))
+        y.append(int(tmp[1]))
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if x[i] == x[j] or y[i] == y[j]:
+                for k in range(j+1,N):
+                    if x[i] == x[j] and x[j] == x[k]:
+                        for l in range(k+1,N):
+                            if y[i] == y[k] and y[j] == y[l]:
+                                ans += 1
+                    elif y[i] == y[j] and y[j] == y[k]:
+                        for l in range(k+1,N):
+                            if x[i] == x[k] and x[j] == x[l]:
+                                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_rect_num(x, y):
+    rect_num = 0
+    for i in range(len(x)):
+        for j in range(i+1, len(x)):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if (x[i], y[j]) in point_set and (x[j], y[i]) in point_set:
+                rect_num += 1
+    return rect_num
+
+=======
+Suggestion 5
+
+def solve():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if x[i] in x[j] and y[i] in y[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x1,y1 = map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if x[i] in x and y[j] in y:
+                ans += 1
+    print(ans)

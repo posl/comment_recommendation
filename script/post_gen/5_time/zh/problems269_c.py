@@ -1,62 +1,129 @@
-#问题陈述
-#给你一个非负整数N，按升序打印所有满足下列条件的非负整数x。
-#x的二进制表示中包含1的数字位置集是N的二进制表示中包含1的数字位置集的一个子集。
-#也就是说，对于每一个非负整数k，以下情况都成立：如果x的 "2^ks "位上的数字是1，N的2^ks位上的数字也是1。
-#
-#
-#约束条件
-#N是一个整数。
-#0 ≦ N < 2^{60}
-#在N的二进制表示中，最多只有15个数字位置包含1。
-#
-#输入
-#输入是由标准输入的，格式如下：
-#N
-#
-#输出
-#以升序排列的十进制整数打印答案，每个答案都在自己的行中。
-#
-#输入样本1
-#11
-#
-#输出样本1
-#0
-#1
-#2
-#3
-#8
-#9
-#10
-#11
-#N=11_{(10)}的二进制表示是1011_{(2)}。
-#满足条件的非负整数x是：
-#0000_{(2)}=0_{(10)}
-#0001_{(2)}=1_{(10)}
-#0010_{(2)}=2_{(10)}
-#0011_{(2)}=3_{(10)}
-#1000_{(2)}=8_{(10)}
-#1001_{(2)}=9_{(10)}
-#1010_{(2)}=10_{(10)}
-#1011_{(2)}=11_{(10)}
-#
-#样本输入2
-#0
-#
-#样本输出2
-#0
-#
-#样本输入3
-#576461302059761664
-#
-#样本输出3
-#0
-#524288
-#549755813888
-#549756338176
-#576460752303423488
-#576460752303947776
-#576461302059237376
-#576461302059761664
-#输入可能不适合32位有符号整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    # n = 576461302059761664
+    n = bin(n)[2:]
+    n = list(n)
+    n.reverse()
+    # print(n)
+    # print(len(n))
+    l = len(n)
+    # print(l)
+    ans = []
+    for i in range(l):
+        if n[i] == '1':
+            ans.append(2**i)
+    # print(ans)
+    # print(len(ans))
+    # print(2**60)
+    # print(2**60>576461302059761664)
+    # print(2**60>5764
+
+=======
+Suggestion 2
+
+def get_all_subsets(s):
+    if len(s) == 0:
+        return [[]]
+    subsets = get_all_subsets(s[1:])
+    return subsets + [[s[0]] + subset for subset in subsets]
+
+=======
+Suggestion 3
+
+def getNums(n):
+    num = 0
+    while n:
+        n &= n - 1
+        num += 1
+    return num
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    # print(N)
+    # print(bin(N))
+    # print(len(bin(N)))
+    # print(bin(2**60))
+    # print(len(bin(2**60)))
+    # print(bin(2**60).count('1'))
+    # print(bin(N).count('1'))
+    # print(bin(N).count('1') <= 15)
+    result = []
+    for i in range(0, 2**60):
+        if bin(i).count('1') <= 15:
+            if bin(i) in bin(N):
+                result.append(i)
+    # print(result)
+    for j in result:
+        print(j)
+
+=======
+Suggestion 6
+
+def check(n, x):
+    while n > 0:
+        if n & 1 == 1 and x & 1 == 0:
+            return False
+        n >>= 1
+        x >>= 1
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    for i in range(2**15):
+        if i & n == i:
+            print(i)
+
+=======
+Suggestion 8
+
+def solve(n):
+    if n == 0:
+        return [0]
+    ans = []
+    def dfs(x, k):
+        if x > n:
+            return
+        ans.append(x)
+        if k == 60:
+            return
+        dfs(x * 2, k + 1)
+        dfs(x * 2 + 1, k + 1)
+    dfs(0, 0)
+    return sorted(ans)
+
+n = int(input())
+ans = solve(n)
+for x in ans:
+    print(x)
+
+=======
+Suggestion 9
+
+def f(n):
+    if n==0:
+        return [0]
+    elif n==1:
+        return [0,1]
+    else:
+        l=f(n-1)
+        return l+[i+2**(n-1) for i in l[::-1]]
+
+n=int(input())
+print(*f(n),sep='\n')

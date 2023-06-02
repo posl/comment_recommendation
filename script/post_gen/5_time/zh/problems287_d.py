@@ -1,58 +1,185 @@
-#问题陈述
-#给你一个字符串S和T，由小写英文字母和?  这里，|S|>|T|成立（对于一个字符串X，|X|表示X的长度）。
-#两个字符串X和Y，当且仅当|X|=|Y|时被称为匹配：
-#通过用任何英文字母独立替换X和Y中的每个?
-#对于每个x=0,1,...,|T|，求解以下问题：
-#设S'为长度为|T|的字符串，将S的前x个字符和最后(|T|-x)个字符连接起来，不改变顺序。  如果S'和T匹配，则打印Yes，否则打印No。
-#
-#限制条件
-#S和T是由小写英文字母和?
-#1 ≦ |T| < |S| ≦ 3 × 10^5
-#
-#输入
-#输入来自标准输入，格式如下：
-#S
-#T
-#
-#输出
-#打印（|T|+1）行。
-#第i行应包含x=i-1的答案。
-#
-#输入样本1
-#a?c
-#b?
-#
-#样本输出1
-#Yes
-#No
-#No
-#当x=0时，S'等于?c。  在这里，我们可以用b替换S'的第1个字符?，用c替换T的第2个字符?，使S'等于T，所以S'和T相匹配。  因此，应该在第一行打印Yes。
-#当x=1和2时，S'是ac和a?，都不与T相匹配，因此第二行和第三行应打印No。
-#
-#输入样本2
-#atcoder
-#?????
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#输入样本3
-#beginner
-#contest
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#No
-#No
-#No
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    for i in range(s_len - t_len + 1):
+        s1 = s[:i] + s[i + t_len:]
+        if t == s1.replace('?', 'a'):
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    len_s = len(s)
+    len_t = len(t)
+    for i in range(len_t+1):
+        if (s[:i] + t[i:]).replace("?", "a") == t:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    n = len(t)
+    m = len(s)
+    for i in range(m-n+1):
+        flag = True
+        for j in range(n):
+            if s[i+j] != t[j] and s[i+j] != '?':
+                flag = False
+                break
+        if flag:
+            print('Yes')
+        else:
+            print('No')
+    for i in range(m-n+1,m):
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = input()
+    x = len(T)
+    S = S.replace("?","")
+    T = T.replace("?","")
+    if x == 0:
+        print("Yes")
+        return
+    if len(S) < x:
+        print("No")
+        return
+    for i in range(len(S)-x+1):
+        if S[i:i+x] == T:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S) - len(T) + 1):
+        if S[i:i+len(T)].replace('?', 'a') == T:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    for i in range(n-m+1):
+        if s[i:i+m].replace('?', 'a') == t:
+            print('Yes')
+        else:
+            print('No')
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    T = input()
+    lenS = len(S)
+    lenT = len(T)
+    for i in range(lenT+1):
+        if i == 0:
+            if S[lenT:lenS] == T:
+                print("Yes")
+            else:
+                print("No")
+        elif i == lenT:
+            if S[0:lenT] == T:
+                print("Yes")
+            else:
+                print("No")
+        else:
+            if S[i:lenT+i] == T:
+                print("Yes")
+            else:
+                print("No")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+
+    for i in range(t_len + 1):
+        s_ = s[0:i] + t_len * '?' + s[i + t_len:]
+        if s_ == t:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    s_len = len(s)
+    t_len = len(t)
+    if s_len < t_len:
+        print("No")
+        return
+    for i in range(t_len):
+        if s[i] == t[i] or s[i] == "?":
+            continue
+        else:
+            print("No")
+            return
+    print("Yes")
+    for i in range(t_len, s_len):
+        if s[i] == "?":
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    T = input()
+    n = len(S)
+    m = len(T)
+    for x in range(n - m + 1):
+        flag = True
+        for i in range(m):
+            if S[x + i] != T[i] and S[x + i] != '?':
+                flag = False
+                break
+        if flag:
+            print('Yes')
+        else:
+            print('No')

@@ -1,43 +1,159 @@
-#问题陈述
-#给你一个非负整数序列A=（a_1,a_2,...,a_N）。
-#设S是能成为A中K项之和的非负整数的集合（有不同的索引）。
-#如果在S中没有D的倍数，则打印-1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 100
-#1 ≦ D ≦ 100
-#0 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N K D
-#a_1 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#4 2 2
-#1 2 3 4
-#
-#样本输出 1
-#6
-#下面是选择A中两个项的所有方法。
-#选择a_1和a_2，其和为1+2=3。
-#选择a_1和a_3，其和为1+3=4。
-#选择a_1和a_4，它们的总和是1+4=5。
-#选择a_2和a_3，两者之和为2+3=5。
-#选择a_2和a_4，它们的总和是2+4=6。
-#选择a_3和a_4，它们的总和是3+4=7。
-#因此，我们有S={3，4，5，6，7}。S中2的最大倍数是6，所以你应该打印6。
-#
-#输入样本 2
-#3 1 2
-#1 3 5
-#
-#样本输出2
-#-1
-#在这个例子中，我们有S={1，3，5}。S中没有任何东西是2的倍数，所以你应该打印-1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getSum(a, b):
+    return a + b
+
+=======
+Suggestion 2
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = -1
+    for i in range(0,n-k+1):
+        s = sum(a[i:i+k])
+        if s%d == 0:
+            ans = max(ans,s)
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve(N, K, D, A):
+    ans = -1
+    for i in range(N - K + 1):
+        sum = 0
+        for j in range(K):
+            sum += A[i + j]
+        if sum % D != 0:
+            ans = sum
+            break
+    return ans
+
+=======
+Suggestion 4
+
+def solve(n, k, d, a):
+    dp = [[[0 for i in range(10001)] for j in range(101)] for k in range(101)]
+    dp[0][0][0] = 1
+    for i in range(n):
+        for j in range(k):
+            for k in range(d):
+                dp[i + 1][j][k] += dp[i][j][k]
+                dp[i + 1][j + 1][(k + a[i]) % d] += dp[i][j][k]
+    if dp[n][k][0] == 0:
+        return -1
+    else:
+        return dp[n][k][0] - 1
+
+=======
+Suggestion 5
+
+def main():
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(k):
+        ans += a[i]
+    if ans % d == 0:
+        print(ans)
+        return
+    for i in range(k, n):
+        ans += a[i]
+        ans -= a[i-k]
+        if ans % d == 0:
+            print(ans)
+            return
+    print(-1)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n,k,d = map(int,input().split())
+    a_list = list(map(int,input().split()))
+    ans = -1
+    for i in range(n-k+1):
+        b_list = a_list[i:i+k]
+        if sum(b_list)%d != 0:
+            ans = max(ans,sum(b_list))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = -1
+    for i in range(1, n+1):
+        for j in range(0, n-i+1):
+            if sum(a[j:j+i]) % d == 0:
+                ans = max(ans, sum(a[j:j+i]))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,k,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = -1
+    for i in range(n):
+        for j in range(i+1,n):
+            if (a[i]+a[j]) % d == 0:
+                ans = max(ans,a[i]+a[j])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N, K, D = map(int, input().split())
+    A = list(map(int, input().split()))
+    print(N, K, D, A)
+
+=======
+Suggestion 10
+
+def main():
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 3, 1, 2
+    # a = [1, 3, 5]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 3
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+    # n, k, d = 4, 2, 2
+    # a = [1, 2, 3, 4]
+    # print(n, k, d, a)
+
+    # n, k, d = 3, 1, 2
+    # a = [1,

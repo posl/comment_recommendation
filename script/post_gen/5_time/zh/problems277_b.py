@@ -1,69 +1,147 @@
-#问题陈述
-#给你N个字符串，每个长度为2，由大写的英文字母和数字组成。第i个字符串是S_i。
-#请确定以下三个条件是否都得到满足。
-#每个字符串的第一个字符都是H、D、C和S中的一个。
-#对于每个字符串，第二个字符是A、2、3、4、5、6、7、8、9、T、J、Q、K中的一个。
-#・所有的字符串都是成对的不同。也就是说，如果i≠j，那么S_i≠S_j。
-#
-#限制条件
-#1 ≦ N ≦ 52
-#S_i是一个长度为2的字符串，由大写的英文字母和数字组成。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果三个条件都满足，打印Yes；否则，打印No。
-#
-#样本输入1
-#4
-#H3
-#DA
-#D3
-#SK
-#
-#样本输出1
-#Yes
-#我们可以验证，这三个条件都得到了满足。
-#
-#样本输入2
-#5
-#H3
-#DA
-#CK
-#H3
-#S7
-#
-#采样输出2
-#No
-#S_1和S_4都是H3，违反了第三个条件。
-#
-#样本输入3
-#4
-#3H
-#AD
-#3D
-#KS
-#
-#样品输出3
-#No
-#
-#样品输入4
-#5
-#00
-#AA
-#XX
-#YY
-#ZZ
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    if len(set(s)) == n:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def isvalid(s):
+    if len(s) != 2:
+        return False
+    if s[0] not in ['H', 'D', 'C', 'S']:
+        return False
+    if s[1] not in ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T','J', 'Q', 'K']:
+        return False
+    return True
+
+=======
+Suggestion 3
+
+def judge():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    cards.sort()
+    for i in range(n-1):
+        if cards[i] == cards[i+1]:
+            return "No"
+    return "Yes"
+
+print(judge())
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    if len(s) == len(set(s)):
+        if all(s[i][0] in 'HDCS' and s[i][1] in 'A23456789TJQK' for i in range(n)):
+            print('Yes')
+        else:
+            print('No')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 5
+
+def check_str(str):
+    if len(str) != 2:
+        return False
+
+    if str[0] not in 'HDCS':
+        return False
+
+    if str[1] not in 'A23456789TJQK':
+        return False
+
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    card_list = []
+    for i in range(n):
+        card = input()
+        card_list.append(card)
+    if n == len(set(card_list)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if n == len(set(cards)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def check():
+    n = input()
+    l = []
+    for i in range(n):
+        s = raw_input()
+        l.append(s)
+    l = set(l)
+    if len(l) == n:
+        for i in l:
+            if i[0] not in 'HDCS':
+                return 'No'
+            if i[1] not in 'A23456789TJQK':
+                return 'No'
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if len(set(s)) == n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    if len(s) == n:
+        print("Yes")
+    else:
+        print("No")

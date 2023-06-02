@@ -1,43 +1,108 @@
-#问题说明
-#在一个平行宇宙中，AtCoder举办了AtCoder大竞赛，在这个竞赛中一次给出10^{16}个问题。
-#这些问题的ID如下，从第1个问题开始依次排列：a, b, ..., z, aa, ab, ..., zz, aaa, ...
-#换句话说，ID是按以下顺序给出的：
-#由大写英文字母组成的长度为1的字符串，按词法顺序排列；
-#长度为2的字符串，由大写英文字母组成，按词法顺序排列；
-#长度为3的字符串，由大写英文字母组成，按词汇表顺序排列；
-#...
-#给出一个字符串S，它是本次竞赛中给出的一个问题的ID，找出该问题的索引。  (另见样本)。
-#
-#限制条件
-#S是AtCoder Big Contest中给出的一个问题的有效ID。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本1
-#AB
-#
-#样本输出1
-#28
-#ID为AB的问题是AtCoder大竞赛的第28个问题，所以应该打印28。
-#
-#输入样本2
-#C
-#
-#输出样本2
-#3
-#ID为C的问题是AtCoder大竞赛的第3个问题，所以应该打印3。
-#
-#输入样本3
-#BRUTMHYHIIZP
-#
-#输出样本3
-#10000000000000000
-#ID为BRUTMHYHIIZP的问题是
-#10^{16}的问题（最后一个），所以10^{16}应该被打印成一个整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_index(s):
+    result = 0
+    for i in range(len(s)):
+        result += (ord(s[i]) - ord('A') + 1) * 26 ** (len(s) - i - 1)
+    return result
+
+=======
+Suggestion 2
+
+def get_index(s):
+    if len(s) == 1:
+        return ord(s) - ord('A') + 1
+    else:
+        return 26 * get_index(s[:-1]) + ord(s[-1]) - ord('A') + 1
+
+=======
+Suggestion 3
+
+def get_index(s):
+    l = len(s)
+    if l == 1:
+        return ord(s) - ord('A') + 1
+    else:
+        index = 0
+        for i in range(l-1):
+            index += 26 ** (i+1)
+        return index + get_index(s[1:]) + 1
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    ans = 0
+    for i in range(len(S)):
+        ans = ans * 26 + ord(S[i]) - ord('A') + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def getNum(s):
+    res = 0
+    for i in range(len(s)):
+        res = res * 26 + ord(s[i]) - ord('A') + 1
+    return res
+
+=======
+Suggestion 6
+
+def get_num(s):
+    num = 0
+    for i in range(len(s)):
+        num += (ord(s[i])-64)*26**(len(s)-i-1)
+    return num
+
+print(get_num(input()))
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    s = input()
+    # 计算
+    ans = 0
+    for i in range(len(s)):
+        if i == 0:
+            ans += (ord(s[i]) - ord('A')) + 1
+        else:
+            ans += (ord(s[i]) - ord('A')) * 26 ** i + 1
+    # 输出
+    print(ans)
+
+=======
+Suggestion 8
+
+def findWord(word):
+    if len(word) == 1:
+        return ord(word) - 64
+    else:
+        count = 0
+        for i in range(len(word)):
+            count += (ord(word[i]) - 64) * 26 ** (len(word) - i - 1)
+        return count
+
+=======
+Suggestion 9
+
+def get_index(s):
+    index = 0
+    for i in range(len(s)):
+        index += (ord(s[i])-ord('A')+1)*(26**(len(s)-i-1))
+    return index
+
+=======
+Suggestion 10
+
+def get_index(s):
+    index = 0
+    for i in range(len(s)):
+        index = index * 26 + (ord(s[i]) - ord('A') + 1)
+    return index

@@ -1,35 +1,88 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S。
-#如果a出现在S中，请打印它出现的最后一个索引；否则，请打印-1（索引从1开始）。
-#
-#限制条件
-#S是一个长度在1到100之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#abcdaxayz
-#
-#样本输出1
-#7
-#a在S中出现了三次，最后一次出现在索引7处，所以你应该打印7。
-#
-#输入样本2
-#bcbbbz
-#
-#样本输出2
-#-1
-#a没有出现在S中，所以你应该打印-1。
-#
-#输入样本3
-#aaaaa
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s.rfind('a') + 1)
+
+=======
+Suggestion 2
+
+def last_index(s, c):
+    return s.rfind(c) + 1
+
+s = input()
+c = 'a'
+print(last_index(s, c))
+
+=======
+Suggestion 3
+
+def main():
+    # 请在下面编写你的代码
+    s = input()
+    print(s.rfind('a')+1)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.count('a') == 0:
+        print(-1)
+    else:
+        print(s.rfind('a') + 1)
+
+=======
+Suggestion 5
+
+def problem276_a():
+    S = input()
+    if 'a' in S:
+        print(S.rfind('a') + 1)
+    else:
+        print(-1)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if 'a' in s:
+        print(s.rfind('a') + 1)
+    else:
+        print(-1)
+
+=======
+Suggestion 7
+
+def last_index(s):
+    index = -1
+    for i in range(len(s)):
+        if s[i] == "a":
+            index = i
+    return index + 1
+
+=======
+Suggestion 8
+
+def get_last_index(s, c):
+    index = -1
+    for i in range(len(s)):
+        if s[i] == c:
+            index = i + 1
+    return index
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    n = len(S)
+    for i in range(n-1,-1,-1):
+        if S[i] == 'a':
+            print(i+1)
+            exit()
+    print(-1)

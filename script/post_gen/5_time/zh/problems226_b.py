@@ -1,69 +1,156 @@
-#问题陈述
-#给你N个编号为1到N的序列。
-#序列i的长度为L_i，其第j个元素(1 ≦ j ≦ L_i)为a_{i,j}。
-#当L_i = L_j和a_{i,k} = a_{j,k}对于每个k(1 ≦ k ≦ L_i)，序列i和序列j被认为是相同的。
-#在序列1到序列N之间有多少个不同的序列？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9}(1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#序列中的元素总数，sum_{i=1}^N L_i，不超过2×10^5。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#输出
-#打印不同序列的数量。
-#
-#输入样本 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#样本输出1
-#3
-#样本输入1
-# 包含四个序列：
-#序列1 : (1, 2)
-#序列2：(1，1)
-#序列3：(2, 1)
-#序列4：(1, 2)
-#除了序列1和序列4是相同的，这些序列在配对上是不同的，所以我们有三个不同的序列。
-#
-#样本输入2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#样本输出2
-#4
-#样本输入2
-# 包含五个序列：
-#序列1：(1)
-#序列2 : (1)
-#序列3：(2)
-#序列4：(1，1)
-#序列5：(1，1，1)
-#
-#样本输入3
-#1
-#1 1
-#
-#样品输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(input().split())
+    # print(L)
+    L.sort()
+    # print(L)
+    cnt = 1
+    for i in range(1, N):
+        if L[i] != L[i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    l = []
+    for _ in range(n):
+        l.append(input().split())
+    l = list(map(lambda x: x[1:], l))
+    l = list(map(lambda x: ''.join(x), l))
+    print(len(set(l)))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    seqs = []
+    for i in range(n):
+        seqs.append(list(map(int,input().split()))[1:])
+    seqs.sort()
+    ans = 1
+    for i in range(1,n):
+        if seqs[i] != seqs[i-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    d = {}
+    for i in range(N):
+        L = list(map(int, input().split(" ")))
+        L = L[1:]
+        L = tuple(L)
+        if L not in d:
+            d[L] = 1
+        else:
+            d[L] += 1
+    print(len(d))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    seqs = []
+    for i in range(N):
+        seqs.append(list(map(int, input().split()[1:])))
+    seqs.sort()
+    # print(seqs)
+    ans = 1
+    for i in range(N-1):
+        if seqs[i] != seqs[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        l = list(map(int, input().split()))
+        s.add(tuple(l[1:]))
+    print(len(s))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    lst = []
+    for i in range(N):
+        lst.append(list(map(int, input().split(" "))))
+    lst.sort()
+    count = 1
+    for i in range(1, N):
+        if lst[i] != lst[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def main():
+    import sys
+    N = int(sys.stdin.readline().strip())
+    seqs = []
+    for i in range(N):
+        seq = sys.stdin.readline().strip().split()
+        seqs.append(seq[1:])
+    print(len(set(tuple(seq) for seq in seqs)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    d = {}
+    for _ in range(n):
+        l = list(map(int, input().split()))
+        if len(l) > 1:
+            l.pop(0)
+        s = ''.join(map(str, l))
+        d[s] = 1
+    print(len(d))
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(input().split())
+    #print(L)
+    #print(len(L))
+    #print(len(L[0]))
+    #print(int(L[0][1]))
+    #print(L[0][1])
+    #print(L[0][2])
+    #print(type(L[0][2]))
+    #print(int(L[0][2]))
+    #print(type(int(L[0][2])))
+    #print(L[0][2] == L[0][2])
+    #print(L[0][1] == L[1][1])
+    #print(L[0][2] == L[1][2])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2] and L[0][3] == L[1][3])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2] and L[0][3] == L[1][3] and L[0][4] == L[1][4])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2] and L[0][3] == L[1][3] and L[0][4] == L[1][4] and L[0][5] == L[1][5])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2] and L[0][3] == L[1][3] and L[0][4] == L[1][4] and L[0][5] == L[1][5] and L[0][6] == L[1][6])
+    #print(L[0][1] == L[1][1] and L[0][2] == L[1][2] and L[0][3] == L[1][3] and L[0][4] == L[1][4]

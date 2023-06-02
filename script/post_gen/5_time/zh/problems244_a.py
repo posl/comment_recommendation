@@ -1,32 +1,47 @@
-#问题陈述
-#给定一个由小写英文字母组成的长度为N的字符串S，打印S的最后一个字符。
-#
-#限制条件
-#N是一个整数。
-#1 ≤ N ≤ 1000
-#S是一个长度为N的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S
-#
-#输出
-#打印S的最后一个字符。
-#
-#输入样本1
-#5
-#abcde
-#
-#样本输出1
-#e
-#S=abcde的最后一个字符是e，所以e应该被打印出来。
-#
-#输入样本2
-#1
-#a
-#
-#样本输出2
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def last_char():
+    N = int(input())
+    S = input()
+    print(S[-1])
+
+=======
+Suggestion 2
+
+def get_last_char(s):
+    return s[len(s) - 1]
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    print(S[N-1])
+
+=======
+Suggestion 4
+
+def print_last_char():
+    n = int(input())
+    s = input()
+    print(s[-1])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    print(s[-1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    print(s[n-1])

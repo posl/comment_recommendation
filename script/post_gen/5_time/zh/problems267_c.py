@@ -1,38 +1,190 @@
-#问题陈述
-#给你一个长度为N的整数序列A=（A_1,A_2,...,A_N）。
-#求长度为M的A的连续子数组B=(B_1,B_2,...,B_M)的sum_{i=1}^{M} i × B_i的最大值。
-#
-#注释
-#一个数列的连续子数组是通过从原数列中去除0个或更多的首项和0个或更多的尾项而得到的数列。
-#例如，（2，3）和（1，2，3）是（1，2，3，4）的连续子数组，但是（1，3）和（3，2，1）不是（1，2，3，4）的连续子数组。  
-#
-#约束条件
-#1 ≦ m ≦ n ≦ 2 × 10^5
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#5 4 -1 8
-#
-#样本输出1
-#15
-#当B=(A_3,A_4)时，我们有 sum_{i=1}^{M} i × B_i = 1 × (-1) + 2 × 8 = 15。  由于不可能达到16或更大的数值，所以解决方案是15。
-#请注意，你不允许选择，例如，B=(A_1,A_4)。
-#
-#输入样本 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#样本输出2
-#31
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def get_max_sum(n, m, a):
+    #print("n: %d, m: %d" % (n, m))
+    #print(a)
+    max_sum = 0
+    for i in range(n-m+1):
+        sum = 0
+        for j in range(m):
+            sum += (j+1)*a[i+j]
+        if sum > max_sum:
+            max_sum = sum
+    return max_sum
+
+=======
+Suggestion 3
+
+def sum_of_subarrays(a):
+    n = len(a)
+    result = 0
+    for i in range(n):
+        for j in range(i, n):
+            result += (j-i+1) * sum(a[i:j+1])
+    return result
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = []
+    for i in range(n):
+        if a[i] == 0:
+            continue
+        else:
+            b.append(a[i])
+    if len(b) < m:
+        print(0)
+    else:
+        b.sort(reverse = True)
+        ans = 0
+        for i in range(m):
+            ans += (i+1)*b[i]
+        print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[-1] + a[i])
+    ans = 0
+    for i in range(1, m + 1):
+        ans = max(ans, s[i] - min(s[:i]))
+    for i in range(m + 1, n + 1):
+        ans = max(ans, s[i] - min(s[i - m:i]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    from collections import deque
+    q = deque()
+    q.append((0, 0))
+    res = -float('inf')
+    for i in range(1, n + 1):
+        while q and q[0][0] < i - m:
+            q.popleft()
+        res = max(res, s[i] - q[0][1])
+        while q and q[-1][1] >= s[i]:
+            q.pop()
+        q.append((i, s[i]))
+    print(res)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    b = [0] * (n + 1)
+    for i in range(1, n + 1):
+        b[i] = b[i - 1] + a[i]
+    c = [0] * (n + 1)
+    for i in range(1, n + 1):
+        c[i] = max(c[i - 1], b[i])
+    d = [0] * (n + 1)
+    for i in range(1, n + 1):
+        d[i] = max(d[i - 1], c[i] + b[i])
+    e = [0] * (n + 1)
+    for i in range(1, n + 1):
+        e[i] = max(e[i - 1], d[i] + b[i])
+    f = [0] * (n + 1)
+    for i in range(1, n + 1):
+        f[i] = max(f[i - 1], e[i] + b[i])
+    g = [0] * (n + 1)
+    for i in range(1, n + 1):
+        g[i] = max(g[i - 1], f[i] + b[i])
+    h = [0] * (n + 1)
+    for i in range(1, n + 1):
+        h[i] = max(h[i - 1], g[i] + b[i])
+    i = [0] * (n + 1)
+    for i in range(1, n + 1):
+        i[i] = max(i[i - 1], h[i] + b[i])
+    j = [0] * (n + 1)
+    for i in range(1, n + 1):
+        j[i] = max(j[i - 1], i[i] + b[i])
+    k = [0] * (n + 1)
+    for i in range(1, n + 1):
+        k[i] = max(k[i - 1], j[i] + b[i])
+    l = [0] * (n + 1)
+    for i in range(1, n +
+
+=======
+Suggestion 8
+
+def max_sum(n, m, a):
+    if m == 1:
+        return max(a)
+    if m == 2:
+        return max(a[0] + a[1], a[-1] + a[-2])
+    if m == 3:
+        return max(a[0] + a[1] + a[2], a[-1] + a[-2] + a[-3], a[0] + a[1] + a[-1], a[0] + a[-2] + a[-1], a[-1] + a[-2] + a[0])
+    if m == 4:
+        return max(a[0] + a[1] + a[2] + a[3], a[-1] + a[-2] + a[-3] + a[-4], a[0] + a[1] + a[-1] + a[-2], a[0] + a[-1] + a[-2] + a[-3], a[-1] + a[-2] + a[-3] + a[0], a[0] + a[1] + a[2] + a[-1], a[0] + a[1] + a[-2] + a[-1], a[0] + a[-1] + a[-2] + a[-3], a[-1] + a[-2] + a[-3] + a[0])
+    if m == 5:
+        return max(a[0] + a[1] + a[2] + a[3] + a[4], a[-1] + a[-2] + a[-3] + a[-4] + a[-5], a[0] + a[1] + a[-1] + a[-2] + a[-3], a[0] + a[-1] + a[-2] + a[-3] + a[-4], a[-1] + a[-2] + a[-3] + a[-4] + a[0], a[0] + a[1] + a[2] + a[3] + a[-1], a[0] + a[1] + a[2] + a[-2] + a[-1], a[0] + a[1] + a[-1
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    a = [int(x) for x in input().split()]
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    l = [0] * (n + 1)
+    r = [0] * (n + 1)
+    for i in range(n + 1):
+        if i % m == 0:
+            l[i] = s[i]
+        else:
+            l[i] = max(l[i - 1], s[i])
+    for i in range(n, -1, -1):
+        if i % m == 0:
+            r[i] = s[i]
+        else:
+            r[i] = max(r[i + 1], s[i])
+    ans = 0
+    for i in range(1, n):
+        ans = max(ans, l[i] + r[i + 1] - s[i])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(m):
+        ans += (i + 1) * a[i]
+    tmp = ans
+    for i in range(m, n):
+        tmp += (i + 1) * a[i] - i * a[i - m]
+        ans = max(tmp, ans)
+    print(ans)
+
+main()

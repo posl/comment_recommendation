@@ -1,57 +1,138 @@
-#问题陈述
-#当且仅当s_i ≦ s_{i+1}对每个i(1 ≦ i ≦ n - 1)成立时，n个数的序列S = (s_1, s_2, ..., s_n)，被称为非递减。
-#给出的是各为N个整数的非递减序列：A = (a_1, a_2, ..., a_N) 和 B = (b_1, b_2, ..., b_N)。
-#考虑一个非递减的N个整数序列，C = (c_1, c_2, ..., c_N)，它满足以下条件：
-#a_i ≦ c_i ≦ b_i，对于每一个i（1 ≦ i ≦ N）。
-#找出能成为C的序列的数量，模数为998244353。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#0 ≦ a_i ≦ b_i ≦ 3000 (1 ≦ i ≦ N)
-#序列A和B是不递减的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#b_1 b_2 ... b_N
-#
-#输出
-#打印可以是C的序列的数量，模数为998244353。
-#
-#输入样本 1
-#2
-#1 1
-#2 3
-#
-#样本输出 1
-#5
-#有五个序列可以是C，如下所示。
-#(1, 1)
-#(1, 2)
-#(1, 3)
-#(2, 2)
-#(2, 3)
-#请注意，（2，1）不满足条件，因为它不是非递减的。
-#
-#样本输入 2
-#3
-#2 2 2
-#2 2 2
-#
-#样本输出 2
-#1
-#有一个序列可以是C，如下所示。
-#(2, 2, 2)
-#
-#样本输入3
-#10
-#1 2 3 4 5 6 7 8 9 10
-#1 4 9 16 25 36 49 64 81 100
-#
-#样本输出3
-#978222082
-#一定要找到998244353的模数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    MOD = 998244353
+    ans = 1
+    for i in range(n):
+        ans *= max(0, b[i] - a[i] + 1)
+        ans %= MOD
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    mod = 998244353
+    ans = 1
+    for i in range(n):
+        ans = ans * (min(b[i], max(a[i], b[i - 1])) - a[i] + 1) % mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    mod = 998244353
+    dp = [[0 for i in range(3010)] for j in range(3010)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(a[i], b[i] + 1):
+            dp[i + 1][j] = (dp[i + 1][j - 1] + dp[i][j]) % mod
+    print(dp[n][b[n - 1]])
+
+=======
+Suggestion 4
+
+def get_input():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    return n, a, b
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    mod = 998244353
+    dp = [[0] * 3001 for _ in range(3001)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(a[i], b[i] + 1):
+            dp[i + 1][j] = (dp[i + 1][j - 1] + dp[i][j]) % mod
+    print(dp[n][b[n - 1]])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 1
+    for i in range(N):
+        ans *= max(0, b[i] - a[i] + 1)
+        ans %= 998244353
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    MOD = 998244353
+
+    #C = (c_1, c_2, ..., c_N)
+    #a_i ≦ c_i ≦ b_i，对于每一个i（1 ≦ i ≦ N）。
+    #找出能成为C的序列的数量，模数为998244353。
+
+    #dp[i][j] = (a_i ≦ c_i ≦ j)的数量
+    dp = [[0 for _ in range(3001)] for _ in range(3001)]
+    for i in range(N):
+        for j in range(A[i], B[i]+1):
+            dp[i][j] = 1
+    for i in range(N):
+        for j in range(1, 3001):
+            if i == 0:
+                dp[i][j] += dp[i][j-1]
+            else:
+                dp[i][j] += dp[i-1][j] + dp[i][j-1]
+            dp[i][j] %= MOD
+    print(dp[N-1][3000])
+    return
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def solve(N, A, B):
+    # 请在这里编写代码
+    return 0
+
+=======
+Suggestion 10
+
+def problem222_d():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    mod = 998244353
+    ans = 1
+    for i in range(n):
+        ans *= max(b[i] - a[i] + 1, 0)
+        ans %= mod
+    print(ans)
+problem222_d()

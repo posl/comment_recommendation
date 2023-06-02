@@ -1,95 +1,186 @@
-#问题陈述
-#高桥决定举办最快手指速度的问答游戏。负责制作记分牌的Kizahashi正在努力编写管理游戏中玩家分数的程序，游戏的过程如下。
-#一场游戏由N个玩家进行，编号为1至N。在游戏开始时，每个玩家有K分。
-#当一个玩家正确回答一个问题时，其他N-1个玩家中的每一个都会得到减去1分。没有其他因素会影响玩家的分数。
-#在游戏结束时，0分或更低的玩家被淘汰，剩下的玩家生存。
-#在最后一局中，玩家总共给出了Q个正确答案，其中第i个是由玩家A_i给出的。
-#对于Kizahashi，写一个程序来确定N个玩家中的每个人是否在这个游戏中幸存下来。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ Q ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ Q)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K Q
-#A_1
-#A_2
-#.
-#.
-#.
-#A_Q
-#
-#输出
-#打印N行。第i行应该包含Yes，如果玩家i在游戏中幸存下来，否则就是No。
-#
-#输入样本 1
-#6 3 4
-#3
-#1
-#3
-#2
-#
-#样本输出1
-#No
-#No
-#Yes
-#No
-#No
-#No
-#开始时，玩家的分数是（3，3，3，3，3，3）。
-#玩家3正确地回答了一个问题。现在玩家的分数是（2, 2, 3, 2, 2, 2）。
-#玩家1正确地回答了一个问题。现在选手们的分数是（2, 1, 2, 1, 1, 1）。
-#玩家3正确地回答了一个问题。现在选手们的分数是（1, 0, 2, 0, 0, 0）。
-#玩家2正确地回答了一个问题。现在玩家的分数是（0, 0, 1, -1, -1, -1）。
-#玩家1、2、4、5、6的分数为0或更低，被淘汰，玩家3在这场比赛中幸存。
-#
-#输入样本 2
-#6 5 4
-#3
-#1
-#3
-#2
-#
-#样本输出2
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#Yes
-#
-#样本输入3
-#10 13 15
-#3
-#1
-#4
-#1
-#5
-#9
-#2
-#6
-#5
-#3
-#5
-#8
-#9
-#7
-#9
-#
-#样本输出3
-#No
-#No
-#No
-#No
-#Yes
-#No
-#No
-#No
-#Yes
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [0] * n
+    for i in range(q):
+        a[int(input()) - 1] += 1
+    for i in range(n):
+        if k - (q - a[i]) > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 2
+
+def solve():
+    #n,k,q = map(int,input().split())
+    #a = [int(input()) for _ in range(q)]
+    n,k,q = 6,5,4
+    a = [3,1,3,2]
+    score = [k]*n
+    for i in range(q):
+        score[a[i]-1] -= 1
+    for i in range(n):
+        if score[i] <= 0:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    N,K,Q = map(int,input().split())
+    A = [int(input()) for i in range(Q)]
+    #print(N,K,Q,A)
+    ans = [0]*N
+    for i in range(Q):
+        ans[A[i]-1] += 1
+    #print(ans)
+    for i in range(N):
+        if K+ans[i] - Q > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    score = [0] * N
+    for i in A:
+        score[i-1] += 1
+    for i in score:
+        if K + i - Q > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = []
+    for i in range(Q):
+        A.append(int(input()))
+    # print(N, K, Q, A)
+
+    # 玩家的分数是（3，3，3，3，3，3）
+    # 玩家3正确地回答了一个问题。现在玩家的分数是（2, 2, 3, 2, 2, 2）。
+    # 玩家1正确地回答了一个问题。现在选手们的分数是（2, 1, 2, 1, 1, 1）。
+    # 玩家3正确地回答了一个问题。现在选手们的分数是（1, 0, 2, 0, 0, 0）。
+    # 玩家2正确地回答了一个问题。现在玩家的分数是（0, 0, 1, -1, -1, -1）。
+    # 玩家1、2、4、5、6的分数为0或更低，被淘汰，玩家3在这场比赛中幸存。
+
+    # 玩家的分数是（3，3，3，3，3，3）
+    # 玩家3正确地回答了一个问题。现在玩家的分数是（2, 2, 3, 2, 2, 2）。
+    # 玩家1正确地回答了一个问题。现在选手们的分数是（2, 1, 2, 1, 1, 1）。
+    # 玩家3正确地回答了一个问题。现在选手们的分数是（1, 0, 2, 0, 0, 0）。
+    # 玩家2正确地回答了一个问题。现在玩家的分数是（0, 0, 1, -1, -1, -1）。
+    # 玩家1、2、4
+
+=======
+Suggestion 7
+
+def main():
+    N, K, Q = input().split()
+    N = int(N)
+    K = int(K)
+    Q = int(Q)
+    A = []
+    for i in range(Q):
+        A.append(int(input()))
+
+    # print(N, K, Q)
+    # print(A)
+    # print("end")
+    # print("N = ", N)
+    # print("K = ", K)
+    # print("Q = ", Q)
+    # print("A = ", A)
+
+    #初始化分数
+    score = []
+    for i in range(N):
+        score.append(K)
+    # print("score = ", score)
+
+    #开始游戏
+    for i in range(Q):
+        # print("A[", i, "] = ", A[i])
+        for j in range(N):
+            if j != (A[i] - 1):
+                # print("j = ", j)
+                score[j] = score[j] - 1
+        # print("score = ", score)
+
+    #判断是否幸存
+    for i in range(N):
+        if score[i] <= 0:
+            print("No")
+        else:
+            print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(input()) for _ in range(Q)]
+    scores = [K-Q] * N
+    for a in A:
+        scores[a-1] += 1
+    for score in scores:
+        if score > 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 9
+
+def main():
+    n, k, q = map(int, input().split())
+    a = [int(input()) for _ in range(q)]
+    scores = [k - q for _ in range(n)]
+    for i in a:
+        scores[i - 1] += 1
+    for i in scores:
+        if i > 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 10
+
+def main():
+    # 读取N,K,Q
+    N,K,Q = map(int, input().split())
+    # 读取A_i
+    A_i = [int(input()) for i in range(Q)]
+    # 初始化玩家分数
+    score = [K for i in range(N)]
+    # 玩家分数变化
+    for i in range(Q):
+        score[A_i[i]-1] -= 1
+    # 判断玩家是否幸存
+    for i in range(N):
+        if score[i] <= 0:
+            print('No')
+        else:
+            print('Yes')

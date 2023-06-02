@@ -1,43 +1,149 @@
-#问题陈述
-#高桥想成为某个网络服务的成员。
-#他试图用ID S来注册，结果发现这个ID已经被另一个用户使用了。
-#因此，他决定用一个字符串作为他的ID，这个字符串是在S的末尾加上一个字符得到的。
-#他现在试图用ID T进行注册。请判断这个字符串是否满足上述属性。
-#
-#限制条件
-#S和T是由小写英文字母组成的字符串。
-#1 ≦ |S| ≦ 10
-#|T| = |S| + 1
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#輸出
-#如果T满足问题陈述中的属性，打印Yes；否则，打印No。
-#
-#输入样本1
-#chokudai
-#chokudaiz
-#
-#样本输出1
-#Yes
-#chokudaiz可以通过在chokudai的末尾加上z来获得。
-#
-#输入样本2
-#snuke
-#snekee
-#
-#样本输出2
-#No
-#snekee不能通过在snuke的末尾添加一个字符来获得。
-#
-#输入样本3
-#a
-#aa
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem167_a():
+    s = input()
+    t = input()
+    if s + t[-1] == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    if s + "z" == t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if len(s) == len(t) - 1 and t[:-1] == s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    if len(s) != len(t) - 1:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    if s + 'a' == t:
+        print('Yes')
+    elif s + 'b' == t:
+        print('Yes')
+    elif s + 'c' == t:
+        print('Yes')
+    elif s + 'd' == t:
+        print('Yes')
+    elif s + 'e' == t:
+        print('Yes')
+    elif s + 'f' == t:
+        print('Yes')
+    elif s + 'g' == t:
+        print('Yes')
+    elif s + 'h' == t:
+        print('Yes')
+    elif s + 'i' == t:
+        print('Yes')
+    elif s + 'j' == t:
+        print('Yes')
+    elif s + 'k' == t:
+        print('Yes')
+    elif s + 'l' == t:
+        print('Yes')
+    elif s + 'm' == t:
+        print('Yes')
+    elif s + 'n' == t:
+        print('Yes')
+    elif s + 'o' == t:
+        print('Yes')
+    elif s + 'p' == t:
+        print('Yes')
+    elif s + 'q' == t:
+        print('Yes')
+    elif s + 'r' == t:
+        print('Yes')
+    elif s + 's' == t:
+        print('Yes')
+    elif s + 't' == t:
+        print('Yes')
+    elif s + 'u' == t:
+        print('Yes')
+    elif s + 'v' == t:
+        print('Yes')
+    elif s + 'w' == t:
+        print('Yes')
+    elif s + 'x' == t:
+        print('Yes')
+    elif s + 'y' == t:
+        print('Yes')
+    elif s + 'z' == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def problem167_a():
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print("Yes")
+    else:
+        print("No")
+
+problem167_a()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if s == t[:-1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    s = input()
+    t = input()
+    print('Yes' if t == s + 'z' else 'No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if len(s) == len(t)-1 and s == t[:-1]:
+        print('Yes')
+    else:
+        print('No')

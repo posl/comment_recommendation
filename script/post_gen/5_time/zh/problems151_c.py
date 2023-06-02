@@ -1,57 +1,224 @@
-#问题陈述
-#高桥参加了AtCoder上的一个竞赛。
-#这次比赛有N个问题。
-#高桥在比赛中提交了M个问题。
-#第i次提交的问题是第p_i，并得到了S_i的裁决（AC或WA）。
-#高桥的正确答案的数量是他得到一次或多次AC的问题的数量。
-#高桥的受罚次数是他收到一次或多次AC的问题的以下计数之和：在该问题上第一次收到AC之前收到的WA的数量。
-#找出高桥的正确答案和罚分的数目。
-#
-#限制条件
-#N, M, 和 p_i 是整数。
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ 10^5
-#1 ≦ p_i ≦ N
-#S_i是AC或WA。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#p_1 S_1
-#:
-#p_M S_M
-#
-#输出
-#打印高桥正确答案的数量和高桥被罚的数量。
-#
-#输入样本 1
-#2 5
-#1 WA
-#1 AC
-#2 WA
-#2 AC
-#2 WA
-#
-#样本输出 1
-#2 2
-#在他的第二次提交中，他第一次在第一个问题上获得了AC。在此之前，他在这个问题上收到了一个WA。
-#在他的第四次提交中，他第一次在第二个问题上获得了AC。在此之前，他在这个问题上得到了一个WA。
-#因此，他有两个正确答案和两个处罚。
-#
-#输入样本 2
-#100000 3
-#7777 AC
-#7777 AC
-#7777 AC
-#
-#样本输出2
-#1 0
-#请注意，在同一个问题上多次获得AC是没有意义的。
-#
-#输入样本3
-#6 0
-#
-#样本输出 3
-#0 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    p = []
+    s = []
+    for i in range(m):
+        a,b = input().split()
+        p.append(int(a))
+        s.append(b)
+    ac = 0
+    wa = 0
+    ac_list = []
+    wa_list = []
+    for i in range(m):
+        if s[i] == 'AC':
+            ac_list.append(p[i])
+        else:
+            wa_list.append(p[i])
+    ac = len(set(ac_list))
+    wa = len(set(wa_list))
+    print(ac,wa)
+
+=======
+Suggestion 2
+
+def problem151_c():
+    n,m = map(int, input().split())
+    p = []
+    s = []
+    for i in range(m):
+        p_i, s_i = input().split()
+        p.append(p_i)
+        s.append(s_i)
+    print(p)
+    print(s)
+    print(n,m)
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    plist = []
+    for i in range(m):
+        plist.append(list(input().split()))
+    plist.sort(key=lambda x:x[0])
+    print(plist)
+    ac = 0
+    wacount = 0
+    for i in range(m):
+        if plist[i][1] == 'AC':
+            ac += 1
+            wacount += int(plist[i][0]) - 1
+        else:
+            if int(plist[i][0]) - 1 == wacount:
+                ac += 1
+    print(ac,wacount)
+
+=======
+Suggestion 4
+
+def main():
+    #第一行输入
+    n, m = map(int, input().split())
+    #初始化题目状态
+    p = [0]*n
+    s = [0]*n
+    #记录AC的题目数
+    ac = 0
+    #记录罚分
+    wa = 0
+    for i in range(m):
+        #输入题号和状态
+        pi, si = input().split()
+        pi = int(pi)
+        #如果是AC
+        if si == "AC":
+            #如果之前没AC过
+            if s[pi-1] == 0:
+                #AC题目数+1
+                ac += 1
+                #罚分+之前WA的数量
+                wa += p[pi-1]
+                #标记AC
+                s[pi-1] = 1
+        #如果是WA
+        else:
+            #之前没AC过
+            if s[pi-1] == 0:
+                #WA数量+1
+                p[pi-1] += 1
+    #输出答案
+    print(ac, wa)
+
+=======
+Suggestion 5
+
+def get_input():
+    n,m = input().split(' ')
+    n = int(n)
+    m = int(m)
+    p = []
+    s = []
+    for i in range(m):
+        p_i,s_i = input().split(' ')
+        p_i = int(p_i)
+        p.append(p_i)
+        s.append(s_i)
+    return n,m,p,s
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    p = [0] * N
+    s = [0] * N
+    for i in range(M):
+        p_i, s_i = input().split()
+        p_i = int(p_i)
+        p[p_i - 1] += 1
+        if s_i == 'AC':
+            s[p_i - 1] = 1
+        else:
+            if s[p_i - 1] != 1:
+                s[p_i - 1] = 2
+    ac = 0
+    wa = 0
+    for i in range(N):
+        if s[i] == 1:
+            ac += 1
+            wa += p[i] - 1
+        elif s[i] == 2:
+            wa += p[i]
+    print(ac, wa)
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    ac = [0] * n
+    wa = [0] * n
+    for i in range(m):
+        p,s = input().split()
+        p = int(p)
+        if s == 'AC':
+            ac[p-1] = 1
+        else:
+            if ac[p-1] == 0:
+                wa[p-1] += 1
+    print(sum(ac),sum([ac[i]*wa[i] for i in range(n)]))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    ac = [0]*n
+    wa = [0]*n
+    for i in range(m):
+        p,s = input().split()
+        p = int(p)
+        if s == "AC":
+            ac[p-1] = 1
+        else:
+            if ac[p-1] == 0:
+                wa[p-1] += 1
+    print(sum(ac),sum([ac[i]*wa[i] for i in range(n)]))
+
+=======
+Suggestion 9
+
+def main():
+    n,m=map(int,input().split())
+    p=[0]*n
+    s=[0]*n
+    for i in range(m):
+        tmp=list(input().split())
+        p[int(tmp[0])-1]+=1
+        if tmp[1]=='AC':
+            s[int(tmp[0])-1]=1
+    ans=0
+    for i in range(n):
+        if s[i]==1:
+            ans+=1
+    s=[0]*n
+    for i in range(m):
+        tmp=list(input().split())
+        if s[int(tmp[0])-1]==0:
+            if tmp[1]=='WA':
+                s[int(tmp[0])-1]=1
+            elif tmp[1]=='AC':
+                s[int(tmp[0])-1]=2
+    wa=0
+    for i in range(n):
+        if s[i]==2:
+            wa+=p[i]
+    print(ans,wa)
+
+=======
+Suggestion 10
+
+def problems151_c():
+    n,m = map(int,input().split())
+    p = []
+    s = []
+    for i in range(m):
+        a,b = input().split()
+        p.append(int(a))
+        s.append(b)
+    ac = 0
+    wa = 0
+    for i in range(n):
+        if s[i] == 'AC':
+            ac += 1
+            wa += p[i]
+    print(ac,wa)
+
+problems151_c()

@@ -1,53 +1,129 @@
-#问题陈述
-#高桥将做一个踢踏舞。舞蹈由一个字符串S描述，其中每个字符是L、R、U或D，这些字符表示高桥应该踩的位置。他将从第一个字符开始，按顺序一个接一个地遵循这些指示。
-#当且仅当它满足以下两个条件时，我们说S是容易下的：
-#奇数位置（第1个、第3个、第5个......）上的每个字符都是R、U或D。
-#偶数位置（第2，4，6，...）的每个字符是L，U或D。
-#你的任务是，如果S很容易玩，就打印出Yes，否则就打印出No。
-#
-#限制条件
-#S是一个长度在1到100之间（包括100）的字符串。
-#S的每个字符都是L、R、U或D。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#如果S很容易玩，则打印Yes，否则打印No。
-#
-#输入样本1
-#RUDLUDR
-#
-#样本输出1
-#Yes
-#在奇数位置（第1、3、5、7）的每个字符是R、U或D。
-#在偶数位置（第2、4、6）的每个字符都是L、U或D。
-#因此，S是很容易玩的。
-#
-#输入样本2
-#DULL
-#
-#样本输出2
-#No
-#第3个字符不是R，U，也不是D，所以S不容易玩。
-#
-#样本输入3
-#uuuuuuuuuuuuu
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#ULURU
-#
-#样本输出4
-#No
-#
-#样本输入5
-#rdululdururlrdulrlr
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if len(s) % 2 == 0:
+        for i in range(0, len(s), 2):
+            if s[i] == 'L':
+                print('No')
+                exit()
+        for i in range(1, len(s), 2):
+            if s[i] == 'R':
+                print('No')
+                exit()
+    else:
+        for i in range(0, len(s), 2):
+            if s[i] == 'R':
+                print('No')
+                exit()
+        for i in range(1, len(s), 2):
+            if s[i] == 'L':
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if (i % 2 == 0 and S[i] == "L") or (i % 2 == 1 and S[i] == "R"):
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def is_easy_to_play(s):
+    if len(s) == 0:
+        return False
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                return False
+        else:
+            if s[i] == 'R':
+                return False
+    return True
+
+=======
+Suggestion 4
+
+def is_easy(s):
+    for i in range(0, len(s), 2):
+        if s[i] == 'L':
+            return False
+    for i in range(1, len(s), 2):
+        if s[i] == 'R':
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    for i in range(0, len(S)):
+        if (i % 2 == 0 and S[i] == 'L') or (i % 2 == 1 and S[i] == 'R'):
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i%2==0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    for i in range(0,len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print("No")
+                exit()
+        else:
+            if s[i] == 'R':
+                print("No")
+                exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    s1 = s[0::2]
+    s2 = s[1::2]
+    if s1.count('R') == 0 and s1.count('U') == 0 and s1.count('D') == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    if is_easy(S):
+        print("Yes")
+    else:
+        print("No")

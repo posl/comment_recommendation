@@ -1,47 +1,171 @@
-#问题陈述
-#给你N个非负整数A_1, A_2, ..., A_N和另一个非负整数K。
-#对于0到K（包括）之间的整数X，让f（X）=（XOR A_1）+（XOR A_2）+...。+ (X XOR A_N)。
-#这里，对于非负整数a和b，a XOR b表示a和b的按位异或。
-#找出f的最大值。
-#什么是XOR？
-#a和b的按位异或，X，定义如下：
-#当X以二进制书写时，如果以二进制书写时，A和B中正好有一个数字在2^k的位置上有1，则2^k的位置上的数字为1，否则为0。
-#例如，3 XOR 5 = 6。（当以二进制书写时：011 XOR 101 = 110）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#0 ≦ K ≦ 10^{12}
-#0 ≦ A_i ≦ 10^{12}
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印f的最大值。
-#
-#样本输入1
-#3 7
-#1 6 3
-#
-#样本输出1
-#14
-#最大值是：f(4) = (4 XOR 1) + (4 XOR 6) + (4 XOR 3) = 5 + 2 + 7 = 14。
-#
-#样本输入2
-#4 9
-#7 4 0 3
-#
-#样本输出2
-#46
-#
-#样本输入3
-#1 0
-#1000000000000
-#
-#样本输出3
-#1000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    #print(n,k,a)
+    max=0
+    for i in range(0,k+1):
+        sum=0
+        for j in range(0,n):
+            sum+=i^a[j]
+        if sum>max:
+            max=sum
+    print(max)
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    max = 0
+    for i in range(k+1):
+        sum = 0
+        for j in range(n):
+            sum += (i^a[j])
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    k_bin = bin(k)[2:]
+    n_bin = len(k_bin)
+    a_bin = [bin(a_i)[2:] for a_i in a]
+    a_bin = [a_i.zfill(n_bin) for a_i in a_bin]
+    a_bin = list(zip(*a_bin))
+    a_bin = ["".join(a_i) for a_i in a_bin]
+    a_bin = [int(a_i, 2) for a_i in a_bin]
+    a_bin = sorted(a_bin, reverse=True)
+    k_bin = k_bin.zfill(n_bin)
+    k_bin = [int(k_bin_i) for k_bin_i in k_bin]
+    k_bin = [k_bin_i * 2 ** (n_bin - 1 - i) for i, k_bin_i in enumerate(k_bin)]
+    k_bin = sum(k_bin)
+    ans = 0
+    for a_i in a_bin:
+        if ans + a_i <= k_bin:
+            ans += a_i
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    # print(n,k,a)
+    # print(len(a))
+    # print(a[0])
+    # print(a[1])
+    # print(a[2])
+    # print(a[0] ^ a[1])
+    # print(a[0] ^ a[2])
+    # print(a[1] ^ a[2])
+    # print(a[0] ^ a[1] ^ a[2])
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11 ^ 12)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11 ^ 12 ^ 13)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11 ^ 12 ^ 13 ^ 14)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11 ^ 12 ^ 13 ^ 14 ^ 15)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^ 7 ^ 8 ^ 9 ^ 10 ^ 11 ^ 12 ^ 13 ^ 14 ^ 15 ^ 16)
+    # print(1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 6 ^
+
+=======
+Suggestion 5
+
+def f(n,k,a):
+    b = []
+    for i in range(n):
+        b.append(a[i] ^ k)
+    return sum(b)
+
+n,k = map(int,input().split())
+a = list(map(int,input().split()))
+print(f(n,k,a))
+
+=======
+Suggestion 6
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for k in range(40, -1, -1):
+        count = 0
+        for a in A:
+            if a & (1 << k):
+                count += 1
+        if count <= N // 2:
+            if ans + (1 << k) <= K:
+                ans += (1 << k)
+    f = 0
+    for a in A:
+        f += ans ^ a
+    print(f)
+
+=======
+Suggestion 7
+
+def xor(a, b):
+    if a == 0:
+        return b
+    elif b == 0:
+        return a
+    else:
+        return a ^ b
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(40, -1, -1):
+        tmp = 0
+        for a in A:
+            if a & (1 << i):
+                tmp += a ^ (1 << i)
+            else:
+                tmp += a
+        if tmp <= k:
+            ans += 1 << i
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = 0
+    for i in range(1, 41):
+        mask = 1 << (40 - i)
+        count = 0
+        for j in range(n):
+            if a[j] & mask:
+                count += 1
+        if count <= n // 2 and result + mask <= k:
+            result += mask
+    s = 0
+    for i in range(n):
+        s += result ^ a[i]
+    print(s)

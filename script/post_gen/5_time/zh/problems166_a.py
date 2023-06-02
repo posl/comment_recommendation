@@ -1,24 +1,53 @@
-#问题说明
-#AtCoder公司每周六举行一次比赛。
-#有两种类型的比赛，称为ABC和ARC，每次只举行其中一种。
-#该公司交替举行这两种类型的比赛：在ABC比赛之后举行ARC比赛，反之亦然。
-#给出一个代表上周比赛类型的字符串S，打印代表本周比赛类型的字符串。
-#
-#约束条件
-#S是ABC或ARC。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印代表本周举行的比赛类型的字符串。
-#
-#输入样本1
-#ABC
-#
-#样本输出1
-#ARC
-#他们上周举行了一个ABC，所以这周他们将举行一个ARC。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 3
+
+def main():
+    s = str(input())
+    if s == 'ABC':
+        print('ARC')
+    else:
+        print('ABC')
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    s = input()
+    # 处理
+    if s == "ABC":
+        print("ARC")
+    else:
+        print("ABC")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S == "ABC":
+        print("ARC")
+    else:
+        print("ABC")

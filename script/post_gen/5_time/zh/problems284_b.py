@@ -1,48 +1,123 @@
-#问题说明
-#在这个问题中，一个输入文件包含多个测试用例。
-#首先给你一个整数T，为T个测试用例解决以下问题。
-#我们有N个正整数A_1, A_2, ..., A_N。其中有多少个是奇数？
-#
-#限制条件
-#1 ≦ T ≦ 100
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下，其中test_i代表第i个测试案例：
-#T
-#测试_1
-#测试_2
-#.
-#.
-#.
-#test_T
-#每个测试案例的格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印T行。第i行应该包含第i个测试案例的答案。
-#
-#输入样本 1
-#4
-#3
-#1 2 3
-#2
-#20 23
-#10
-#6 10 4 1 5 9 8 6 5 1
-#1
-#1000000000
-#
-#样本输出1
-#2
-#1
-#5
-#0
-#这个输入包含四个测试案例。
-#第二行和第三行对应于第一个测试用例，其中N=3，A_1=1，A_2=2，A_3=3。
-#我们在A_1, A_2, 和A_3中有两个奇数，所以第一行应该包含2。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def count_odd(list):
+    count = 0
+    for i in list:
+        if i % 2 != 0:
+            count += 1
+    return count
+
+=======
+Suggestion 2
+
+def problem284_b():
+    t = int(input())
+    for i in range(t):
+        n = int(input())
+        a = input().split()
+        count = 0
+        for j in range(n):
+            if int(a[j]) % 2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def count_odd_number(a_list):
+    count = 0
+    for i in a_list:
+        if i % 2 != 0:
+            count += 1
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for j in range(N):
+            if A[j] % 2 != 0:
+                count += 1
+        print(count)
+
+=======
+Suggestion 5
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        odd = 0
+        for j in range(N):
+            if A[j] % 2 != 0:
+                odd += 1
+        print(odd)
+
+=======
+Suggestion 6
+
+def test():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        print(sum([1 for a in A if a % 2 != 0]))
+
+test()
+
+=======
+Suggestion 7
+
+def count_odd(n, a):
+    count = 0
+    for i in range(n):
+        if a[i] % 2 != 0:
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    num = int(input())
+    for i in range(num):
+        n = int(input())
+        a_list = list(map(int, input().split()))
+        count = 0
+        for j in range(n):
+            if a_list[j] % 2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 9
+
+def main():
+    t = int(input())
+    for i in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        count = 0
+        for j in range(n):
+            if a[j] % 2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 10
+
+def count_odd(n, a):
+    count = 0
+    for i in range(n):
+        if a[i] % 2 == 1:
+            count += 1
+    return count

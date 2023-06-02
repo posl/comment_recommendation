@@ -1,37 +1,109 @@
-#问题陈述
-#让S(n)表示n的十进制数字之和。
-#例如，S(101)=1+0+1=2。
-#给定一个整数N，确定S(N)是否能够除以N。
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果S(N)能够除以N，打印 Yes；如果不能，打印 No。
-#
-#输入样本 1
-#12
-#
-#样本输出1
-#Yes
-#在这个输入中，N=12。
-#由于S(12)=1+2=3，S(N)能够有除以N。
-#
-#样本输入2
-#101
-#
-#采样输出2
-#No
-#由于S(101)=1+0+1=2，S(N)不能够除以N。
-#
-#样本输入3
-#999999999
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sumOfDigits(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n /= 10
+    return sum
+
+=======
+Suggestion 2
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n = n // 10
+    return sum
+
+N = int(input())
+
+=======
+Suggestion 3
+
+def S(n):
+    sum=0
+    while n>0:
+        sum+=n%10
+        n=n//10
+    return sum
+
+n=int(input())
+
+=======
+Suggestion 4
+
+def sumn(n):
+    sum = 0
+    while n > 0:
+        sum += (n % 10)
+        n = n // 10
+    return sum
+
+=======
+Suggestion 5
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+N = int(input())
+
+=======
+Suggestion 6
+
+def S(n):
+    n = str(n)
+    sum = 0
+    for i in range(len(n)):
+        sum += int(n[i])
+    return sum
+
+N = int(input())
+
+=======
+Suggestion 7
+
+def getSum(num):
+    sum = 0
+    while num > 0:
+        sum += num % 10
+        num = num // 10
+    return sum
+
+=======
+Suggestion 8
+
+def sum_digits(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 9
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 10
+
+def getSum(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n = n // 10
+    return sum

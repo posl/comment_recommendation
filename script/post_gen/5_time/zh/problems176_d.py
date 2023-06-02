@@ -1,84 +1,135 @@
-#问题陈述
-#一个迷宫是由H×W个方格组成的--H是垂直的，W是水平的。
-#从上往下第i行，从左往下第j列的方格--(i,j)--如果S_{ij}是#，则是墙，如果S_{ij}是.，则是路。
-#在（C_h,C_w）有一个魔术师。他可以做以下两种动作：
-#移动A：走到与他当前所在的方格垂直或水平相邻的道路方格。
-#移动B：使用魔法将自己扭曲到以他当前所在的方格为中心的5×5区域的一个道路方格。
-#在这两种情况下，他都不能走出迷宫。
-#他至少需要使用多少次魔法才能到达（D_h，D_w）？
-#
-#限制条件
-#1 ≦ H,W ≦ 10^3
-#1 ≦ C_h,D_h ≦ H
-#1 ≦ C_w,D_w ≦ W
-#S_{ij}是#或.
-#S_{C_h C_w}和S_{D_h D_w}是.
-#(C_h,C_w) ≠ (D_h,D_w)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#C_h C_w
-#D_h D_w
-#S_{11}...S_{1W}
-#.
-#.
-#.
-#S_{H1}...S_{HW}
-#
-#输出
-#打印魔术师需要使用魔术的最少次数。如果他不能达到（D_h,D_w），则打印-1。
-#
-#输入样本 1
-#4 4
-#1 1
-#4 4
-#..#.
-#..#.
-#.#..
-#.#..
-#
-#样本输出1
-#1
-#例如，通过走到(2,2)，然后用魔法走到(4,4)，只要使用一次魔法就够了。
-#注意，他不能斜着走。
-#
-#样本输入2
-#4 4
-#1 4
-#4 1
-#.##.
-#####
-#####
-#.##.
-#
-#输出样本2
-#-1
-#他不能从那里移动。
-#
-#样本输入3
-#4 4
-#2 2
-#3 3
-#....
-#....
-#....
-#....
-#
-#样本输出3
-#0
-#不需要使用魔法。
-#
-#输入样本 4
-#4 5
-#1 2
-#2 5
-##.###
-#####.
-##..##
-##..##
-#
-#样本输出4
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def get_input():
+    H, W = map(int, input().split())
+    C_h, C_w = map(int, input().split())
+    D_h, D_w = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    return H, W, C_h, C_w, D_h, D_w, S
+
+=======
+Suggestion 3
+
+def main():
+    h,w = map(int,input().split())
+    c_h,c_w = map(int,input().split())
+    d_h,d_w = map(int,input().split())
+    s = [input() for i in range(h)]
+    c_h -= 1
+    c_w -= 1
+    d_h -= 1
+    d_w -= 1
+    #print(h,w,c_h,c_w,d_h,d_w,s)
+    visited = [[False]*w for i in range(h)]
+    visited[c_h][c_w] = True
+    q = []
+    q.append((c_h,c_w,0))
+    while len(q) > 0:
+        (ch,cw,step) = q.pop(0)
+        #print(ch,cw,step)
+        if ch == d_h and cw == d_w:
+            print(step)
+            return
+        for (dh,dw) in [(0,1),(0,-1),(1,0),(-1,0)]:
+            nh = ch + dh
+            nw = cw + dw
+            if nh >= 0 and nh < h and nw >= 0 and nw < w and s[nh][nw] == '.' and visited[nh][nw] == False:
+                visited[nh][nw] = True
+                q.append((nh,nw,step))
+        for dh in range(-2,3):
+            for dw in range(-2,3):
+                nh = ch + dh
+                nw = cw + dw
+                if nh >= 0 and nh < h and nw >= 0 and nw < w and s[nh][nw] == '.' and visited[nh][nw] == False:
+                    visited[nh][nw] = True
+                    q.append((nh,nw,step+1))
+    print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    H, W = map(int, input().split())
+    C_h, C_w = map(int, input().split())
+    D_h, D_w = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+
+    # 求解
+    # 从(C_h, C_w)到(D_h, D_w)的最短距离
+    dist = [[-1] * W for _ in range(H)]
+    dist[C_h - 1][C_w - 1] = 0
+    queue = [(C_h - 1, C_w - 1)]
+    while queue:
+        i, j = queue.pop(0)
+        for i2, j2 in ((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)):
+            if not (0 <= i2 < H and 0 <= j2 < W):
+                continue
+            if S[i2][j2] == '#':
+                continue
+            if dist[i2][j2] != -1:
+                continue
+            dist[i2][j2] = dist[i][j] + 1
+            queue.append((i2, j2))
+    # 从(D_h, D_w)到(C_h, C_w)的最短距离
+    dist2 = [[-1] * W for _ in range(H)]
+    dist2[D_h - 1][D_w - 1] = 0
+    queue = [(D_h - 1, D_w - 1)]
+    while queue:
+        i, j = queue.pop(0)
+        for i2, j2 in ((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)):
+            if not (0 <= i2 < H and 0 <= j2 < W):
+                continue
+            if S[i2][j2] == '#':
+                continue
+            if dist2[i2][j2] != -1:
+                continue
+            dist2[i2][j2] = dist2[i][j] + 1
+            queue.append((i2, j2))
+
+    # 从
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    C_h,C_w = map(int,input().split())
+    D_h,D_w = map(int,input().split())
+    S = [list(input()) for _ in range(H)]
+    C_h -= 1
+    C_w -= 1
+    D_h -= 1
+    D_w -= 1
+    visited = [[float("inf") for _ in range(W)] for _ in range(H)]
+    visited[C_h][C_w] = 0
+    queue = [(C_h,C_w)]
+    d = [(0,1),(0,-1),(1,0),(-1,0)]
+    while queue:
+        h,w = queue.pop(0)
+        if h == D_h and w == D_w:
+            break
+        for dh,dw in d:
+            if 0 <= h+dh < H and 0 <= w+dw < W and S[h+dh][w+dw] == "." and visited[h+dh][w+dw] == float("inf"):
+                visited[h+dh][w+dw] = visited[h][w]
+                queue.append((h+dh,w+dw))
+        for dh in range(-2,3):
+            for dw in range(-2,3):
+                if 0 <= h+dh < H and 0 <= w+dw < W and S[h+dh][w+dw] == "." and visited[h+dh][w+dw] == float("inf"):
+                    visited[h+dh][w+dw] = visited[h][w] + 1
+                    queue.append((h+dh,w+dw))
+    if visited[D_h][D_w] == float("inf"):
+        print(-1)
+    else:
+        print(visited[D_h][D_w])

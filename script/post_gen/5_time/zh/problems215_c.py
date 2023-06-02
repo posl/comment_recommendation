@@ -1,36 +1,133 @@
-#问题描述
-#在一个字符串S的排列组合中找出第K个最小的字符串。
-#什么是字符串的排列组合？当任何字符在A和B中出现的次数相同时，就说A字符串是B字符串的排列组合。
-#
-#限制条件
-#1 ≦ |S| ≦ 8
-#S由小写英文字母组成。
-#至少有K个不同的字符串是S的排列组合。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#aab 2
-#
-#样本输出1
-#aba
-#一个字符串aab有三种排列组合：{ aab, aba, baa }。其中第2个最小的词汇表是aba。
-#
-#输入样本 2
-#baba 4
-#
-#输出样本2
-#baab
-#
-#样本输入3
-#ydxwacbz 40320
-#
-#样本输出3
-#zyxwdcba
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def permutation(lst):
+    if len(lst) <= 1:
+        return [lst]
+    r = []
+    for i in range(len(lst)):
+        s = lst[:i] + lst[i+1:]
+        p = permutation(s)
+        for x in p:
+            r.append(lst[i:i+1] + x)
+    return r
+
+=======
+Suggestion 2
+
+def get_permutations(s):
+    if len(s) == 1:
+        return [s]
+    else:
+        result = []
+        for i in range(len(s)):
+            for j in get_permutations(s[:i]+s[i+1:]):
+                result.append(s[i]+j)
+        return result
+
+=======
+Suggestion 3
+
+def get_permutation(s, k):
+    s = list(s)
+    s.sort()
+    k = k - 1
+    result = []
+    for i in range(len(s) - 1, -1, -1):
+        j = k // factorial(i)
+        k = k % factorial(i)
+        result.append(s[j])
+        del s[j]
+    return ''.join(result)
+
+=======
+Suggestion 4
+
+def next_permutation(a):
+    i = len(a) - 2
+    while i >= 0 and a[i] >= a[i+1]:
+        i -= 1
+    if i == -1:
+        return False
+    j = len(a) - 1
+    while a[i] >= a[j]:
+        j -= 1
+    a[i], a[j] = a[j], a[i]
+    a[i+1:] = reversed(a[i+1:])
+    return True
+
+=======
+Suggestion 5
+
+def get_permutation(s, k):
+    from itertools import permutations
+    perm = sorted(set(permutations(s)))
+    if k > len(perm):
+        return 'None'
+    else:
+        return ''.join(perm[k-1])
+
+=======
+Suggestion 6
+
+def next_permutation(a):
+    i = len(a) - 2
+    while not (i < 0 or a[i] < a[i + 1]):
+        i -= 1
+    if i < 0:
+        return False
+    j = len(a) - 1
+    while not (a[j] > a[i]):
+        j -= 1
+    a[i], a[j] = a[j], a[i]
+    a[i + 1:] = reversed(a[i + 1:])
+    return True
+
+=======
+Suggestion 7
+
+def permutation(s):
+    if len(s) <= 1:
+        return [s]
+    sl = []
+    for i in range(len(s)):
+        for j in permutation(s[:i] + s[i+1:]):
+            sl.append(s[i] + j)
+    return sl
+
+=======
+Suggestion 8
+
+def get_permutations(s):
+    if len(s) == 1:
+        return [s]
+    else:
+        perm_list = []
+        for i in range(len(s)):
+            for perm in get_permutations(s[:i] + s[i+1:]):
+                perm_list.append(s[i] + perm)
+        return perm_list
+
+=======
+Suggestion 9
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 10
+
+def permutation(s):
+    if len(s) == 1:
+        return [s]
+    else:
+        res = []
+        for i in range(len(s)):
+            for j in permutation(s[:i] + s[i+1:]):
+                res.append(s[i] + j)
+        return res

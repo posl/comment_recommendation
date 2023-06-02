@@ -1,34 +1,142 @@
-#问题陈述
-#给你一个由整数组成的长度为N的序列：A=（A_1,...,A_N）。
-#请找出不在(A_1,...,A_N)中的最小的非负整数。
-#
-#限制条件
-#1 ≦ N ≦ 2000
-#0 ≦ A_i ≦ 2000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#8
-#0 3 2 6 2 1 0 0
-#
-#样本输出1
-#4
-#非负的整数是0,1,2,3,4,....。
-#在A中我们有0,1,2,3，但没有4，所以答案是4。
-#
-#输入样本 2
-#3
-#2000 2000 2000
-#
-#样本输出2
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getMinNum(list):
+    list.sort()
+    if list[0] != 0:
+        return 0
+    else:
+        for i in range(len(list)):
+            if i == len(list) - 1:
+                return list[i] + 1
+            if list[i] + 1 != list[i + 1]:
+                return list[i] + 1
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    if A[0] > 0:
+        print(0)
+    else:
+        for i in range(1, N):
+            if A[i] - A[i-1] > 1:
+                print(A[i-1]+1)
+                return
+        print(A[N-1]+1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if A[i] > ans:
+            break
+        ans += A[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        if A[i] > i:
+            print(i)
+            return
+    print(N)
+
+=======
+Suggestion 5
+
+def find_min_positive_integer(N,A):
+    A.sort()
+    if A[0] > 0:
+        return 0
+    for i in range(0,N-1):
+        if A[i] >= 0 and A[i+1] - A[i] > 1:
+            return A[i] + 1
+    return A[N-1] + 1
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    a.sort()
+    if a[0] > 0:
+        print(0)
+        return
+    for i in range(1, n):
+        if a[i] - a[i - 1] > 1:
+            print(a[i - 1] + 1)
+            return
+    print(a[-1] + 1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    m = 0
+    for i in range(N):
+        if A[i] > m:
+            break
+        m += A[i]
+    print(m)
+
+=======
+Suggestion 8
+
+def findMinNonNegativeInteger(N, A):
+    A.sort()
+    maxNum = A[-1]
+    if maxNum == 0:
+        return 0
+    for i in range(maxNum):
+        if i not in A:
+            return i
+    return maxNum + 1
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A.sort()
+    result = 0
+    for i in range(N):
+        if A[i] > result:
+            print(result)
+            break
+        else:
+            result += A[i]
+    else:
+        print(result)
+
+=======
+Suggestion 10
+
+def find_min_num_not_in_list(list):
+    min = 0
+    for i in range(0, len(list)):
+        if list[i] > min:
+            break
+        elif list[i] == min:
+            min += 1
+    return min

@@ -1,36 +1,72 @@
-#问题陈述
-#给你一个正整数A和B。
-#如果A是B的除数，打印A+B；否则，打印B-A。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A ≦ B ≦ 20
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#如果A是B的除数，打印A+B；否则，打印B-A。
-#
-#输入样本 1
-#4 12
-#
-#输出样本 1
-#16
-#因为4是12的除数，所以应该打印4+12=16。
-#
-#输入样本2
-#8 20
-#
-#样本输出2
-#12
-#
-#样本输入3
-#1 1
-#
-#样品输出3
-#2
-#1是1的除数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)
+
+=======
+Suggestion 2
+
+def calc(a,b):
+    if a%b==0:
+        return a+b
+    else:
+        return b-a
+
+=======
+Suggestion 3
+
+def main():
+    A,B=map(int,input().split())
+    if B%A==0:
+        print(A+B)
+    else:
+        print(B-A)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a,b = map(int,input().split())
+    # 判断输出
+    if b%a == 0:
+        print(a+b)
+    else:
+        print(b-a)
+
+=======
+Suggestion 5
+
+def cal(a,b):
+    if b%a == 0:
+        return a+b
+    else:
+        return b-a
+
+=======
+Suggestion 6
+
+def get_input():
+    A,B = map(int,input().split())
+    if 1 <= A <= B <= 20:
+        return A,B
+    else:
+        print("输入不符合要求，请重新输入")
+        return get_input()
+
+=======
+Suggestion 7
+
+def problems118_a():
+    a, b = map(int, input().split())
+    if b % a == 0:
+        print(a + b)
+    else:
+        print(b - a)

@@ -1,37 +1,93 @@
-#问题陈述
-#有一个设备，屏幕上显示一个单数数字，还有一个按钮。  
-#当屏幕上显示数字k时，按一次按钮，屏幕上的数字就变成a_k。  
-#该设备目前显示为0。按3次按钮后，屏幕上将显示什么？
-#
-#限制条件
-#0≦ a_i ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a_0 a_1 ... a_9
-#
-#輸出
-#打印答案。  
-#
-#输入样本1
-#9 0 1 2 3 4 5 6 7 8
-#
-#样本输出1
-#7
-#屏幕上的数字转换为0->9->8->7。
-#
-#输入样本2
-#4 8 8 8 0 8 8 8 8 8
-#
-#输出样本2
-#4
-#屏幕上的数字转换为0->4->0->4。
-#
-#输入样本3
-#0 0 0 0 0 0 0 0 0 0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = map(int, raw_input().split())
+    for i in range(3):
+        a = a[a[0]]
+    print a
+
+=======
+Suggestion 2
+
+def a():
+    pass
+
+=======
+Suggestion 3
+
+def problem241_a():
+    a = input().split()
+    for i in range(3):
+        a = a[int(a[0])]
+    print(a)
+
+=======
+Suggestion 4
+
+def main():
+    a = [int(i) for i in input().split()]
+    n = 0
+    for i in range(3):
+        n = a[n]
+    print(n)
+
+=======
+Suggestion 5
+
+def main():
+    a = [int(x) for x in input().split()]
+    n = len(a)
+    for i in range(1, n):
+        a[i] = a[a[i]]
+    print(a[3])
+
+=======
+Suggestion 6
+
+def main():
+    a = [int(x) for x in input().split()]
+    x = 0
+    for i in range(3):
+        x = a[x]
+    print(x)
+
+=======
+Suggestion 7
+
+def main():
+    a = input().split()
+    k = 0
+    for i in range(3):
+        k = int(a[k])
+    print(k)
+
+=======
+Suggestion 8
+
+def solve():
+    a = map(int, raw_input().split())
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print k
+
+=======
+Suggestion 9
+
+def problems241_a():
+    a = [int(i) for i in input().split()]
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)
+
+=======
+Suggestion 10
+
+def func(a):
+    for i in range(10):
+        if a[i] == 0:
+            return i

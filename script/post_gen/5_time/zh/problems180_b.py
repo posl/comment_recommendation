@@ -1,45 +1,97 @@
-#问题陈述
-#给出的是N维空间中的一个点（x_1,...,x_N）。
-#求该点与原点之间的曼哈顿距离、欧几里德距离和切比雪夫距离。
-#这里，他们每个人的定义如下：
-#曼哈顿距离：|x_1|+...+|x_N|
-#欧几里德距离：(|x_1|^2+...+|x_N|^2)^(1/2)
-#切比雪夫距离：max(|x_1|,...,|x_N|)
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#x_1 ... x_N
-#
-#输出
-#打印给定点和原点之间的曼哈顿距离、欧几里得距离和切比雪夫距离，每个都在自己的行中。
-#当每个值与正确值的绝对或相对误差不超过10^{-9}时，你的打印结果将被接受。
-#
-#输入样本 1
-#2
-#2 -1
-#
-#样本输出1
-#3
-#2.236067977499790
-#2
-#每个距离的计算方法如下：
-#曼哈顿距离：|2|+|-1|=3
-#欧氏距离：(|2|^2+|-1|^2)^(1/2)=2.2360679774997896...
-#切比雪夫距离: max(|2|,|-1|)=2
-#
-#样本输入2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#样本输出2
-#39
-#14.387494569938159
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = [int(x) for x in input().split()]
+    print(sum([abs(x[i]) for i in range(n)]))
+    print(sum([x[i]**2 for i in range(n)])**0.5)
+    print(max([abs(x[i]) for i in range(n)]))
+
+=======
+Suggestion 2
+
+def manhattan_distance(x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 3
+
+def minkowski(x, y, p):
+    return sum([abs(xi - yi) ** p for xi, yi in zip(x, y)]) ** (1 / p)
+
+=======
+Suggestion 4
+
+def manhattan_distance(x):
+    sum = 0
+    for i in range(len(x)):
+        sum += abs(x[i])
+    return sum
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    x = input().split()
+    x = [int(i) for i in x]
+    x_manhattan = 0
+    x_euclidean = 0
+    x_chebyshev = 0
+    for i in x:
+        x_manhattan += abs(i)
+        x_euclidean += i**2
+        if abs(i) > x_chebyshev:
+            x_chebyshev = abs(i)
+    x_euclidean = x_euclidean**0.5
+    print(x_manhattan)
+    print(x_euclidean)
+    print(x_chebyshev)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    x = list(map(int, input().split()))
+    print(sum(map(abs, x)))
+    print(sum(map(lambda x: x**2, x))**0.5)
+    print(max(map(abs, x)))
+
+=======
+Suggestion 7
+
+def manhattan_distance(x):
+    return sum(map(abs,x))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    x = list(map(int,input().split()))
+    #曼哈顿距离
+    print(sum(map(abs,x)))
+    #欧氏距离
+    print(sum(map(lambda x:x**2,x))**0.5)
+    #切比雪夫距离
+    print(max(map(abs,x)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    print(sum([abs(x[i]) for i in range(n)]))
+    print(sum([x[i] ** 2 for i in range(n)]) ** 0.5)
+    print(max([abs(x[i]) for i in range(n)]))
+
+=======
+Suggestion 10
+
+def manhattan(x):
+    return sum([abs(i) for i in x])

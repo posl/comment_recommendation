@@ -1,62 +1,136 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N），由正整数和整数x和y组成。
-#请判断在xy坐标平面上放置N+1个点p_1, p_2, ..., p_N, p_{N+1}是否能满足以下所有条件。(允许在同一坐标上放置两个或多个点)。
-#p_1 = (0, 0).
-#p_2 = (A_1, 0).
-#p_{N+1}=（x，y）。
-#点p_i和p_{i+1}之间的距离是A_i。(1 ≦ i ≦ N)
-#线段p_i p_{i+1}和p_{i+1} p_{i+2}形成一个90度角。(1 ≦ i ≦ N - 1)
-#
-#限制条件
-#2 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ 10
-#|x|, |y| ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N x y
-#A_1 A_2 ...A_N
-#
-#输出
-#如果可以放置p_1, p_2, ..., p_N, p_{N+1}来满足问题陈述中的所有条件，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 -1 1
-#2 1 3
-#
-#样本输出1
-#Yes
-#下图显示了一个安置，其中p_1=（0，0），p_2=（2，0），p_3=（2，1），p_4=（-1，1）。问题陈述中的所有条件
-# 都得到满足。
-#
-#样本输入 2
-#5 2 0
-#2 2 2 2 2
-#
-#样本输出2
-#Yes
-#让p_1=（0，0），p_2=（2，0），p_3=（2，2），p_4=（0，2），p_5=（0，0），p_6=（2，0）满足所有条件。请注意，多个点可以放在同一坐标上。
-#
-#输入样本 3
-#4 5 5
-#1 2 3 4
-#
-#样本输出3
-#No
-#
-#样本输入 4
-#3 2 7
-#2 7 4
-#
-#样本输出4
-#No
-#
-#样本输入5
-#10 8 -7
-#6 10 4 1 5 9 8 6 5 1
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().s
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def check(x, y, a):
+    # 从第一个点开始
+    px, py = 0, 0
+    for i in range(len(a)):
+        # 取得下一个点的坐标
+        nx, ny = px + a[i], py
+        # 如果是奇数个点，下一个点的y坐标与上一个点相同
+        if i % 2 == 0:
+            ny = -ny
+        # 如果是偶数个点，下一个点的y坐标与上一个点相同
+        else:
+            ny = ny
+        # 判断下一个点是否在坐标轴上
+        if nx == x and ny == y:
+            return True
+        # 更新当前点坐标
+        px, py = nx, ny
+    return False
+
+=======
+Suggestion 4
+
+def solve():
+    n,x,y = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(0)
+    a.insert(0,0)
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+            if a[i] + a[j] == abs(x-y):
+                if (x > y and i > j) or (x < y and i < j):
+                    print("No")
+                    return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def check(n, x, y, a):
+    for i in range(n):
+        for j in range(i + 1, n):
+            if a[i] == a[j]:
+                return False
+    if x in a or y in a:
+        return False
+    return True
+
+n, x, y = map(int, input().split())
+a = list(map(int, input().split()))
+a.append(x)
+a.append(y)
+
+=======
+Suggestion 6
+
+def solve():
+    N, x, y = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(0)
+    A.append(0)
+    for i in range(N+1):
+        for j in range(i+1, N+2):
+            if A[i] + A[j] == abs(x - y):
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 7
+
+def problems274_d():
+    pass
+
+=======
+Suggestion 8
+
+def isYes(n,x,y,a):
+    if n<=2:
+        return "Yes"
+    if x==0 and y==0:
+        return "Yes"
+    if n==3:
+        if a[0]==a[1] and a[1]==a[2]:
+            return "Yes"
+        else:
+            return "No"
+    if n==4:
+        if a[0]==a[1] and a[2]==a[3]:
+            return "Yes"
+        else:
+            return "No"
+    if n==5:
+        if a[0]==a[1] and a[1]==a[2] and a[2]==a[3] and a[3]==a[4]:
+            return "Yes"
+        else:
+            return "No"
+    if n==6:
+        if a[0]==a[1] and a[1]==a[2] and a[2]==a[3] and a[3]==a[4] and a[4]==a[5]:
+            return "Yes"
+        else:
+            return "No"
+    if n==7:
+        if a[0]==a[1] and a[1]==a[2] and a[2]==a[3] and a[3]==a[4] and a[4]==a[5] and a[5]==a[6]:
+            return "Yes"
+        else:
+            return "No"
+    if n==8:
+        if a[0]==a[1] and a[1]==a[2] and a[2]==a[3] and a[3]==a[4] and a[4]==a[5] and a[5]==a[6] and a[6]==a[7]:
+            return "Yes"
+        else:
+            return "No"
+    if n==9:
+        if a[0]==a[1] and a[1]==a[2] and a[2]==a[3] and a[3]==a[4] and a[4]==a[5] and a[5]==a[6] and a[6]==a[7] and a[7]==a[8]:
+            return "Yes"
+        else:
+            return "No"
+    if n==10:
+        if a[0]==a[1] and a[1]==

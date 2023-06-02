@@ -1,29 +1,92 @@
-#问题陈述
-#打印给定的五个整数A、B、C、D、E中有多少个不同的整数。
-#
-#限制条件
-#0 ≦ A, B, C, D, E ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D E
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#31 9 24 31 24
-#
-#样本输出1
-#3
-#在给定的五个整数31、9、24、31和24中，有三个不同的整数9、24和31。
-#因此，3应该被打印出来。
-#
-#输入示例 2
-#0 0 0 0 0
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num_list = list(map(int, input().split()))
+    print(len(set(num_list)))
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    arr = [a,b,c,d,e]
+    arr.sort()
+    count = 1
+    for i in range(1,5):
+        if arr[i] != arr[i-1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    input_str = input()
+    input_list = input_str.split()
+    input_list = list(map(int, input_list))
+    input_set = set(input_list)
+    print(len(input_set))
+
+=======
+Suggestion 4
+
+def main():
+    a = input()
+    b = input()
+    c = input()
+    d = input()
+    e = input()
+    list = [a, b, c, d, e]
+    list = set(list)
+    print(len(list))
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    input = raw_input()
+    nums = input.split(' ')
+    nums = map(int, nums)
+    print len(set(nums))
+
+=======
+Suggestion 6
+
+def main():
+    nums = input().split()
+    nums = [int(x) for x in nums]
+    print(len(set(nums)))
+
+=======
+Suggestion 7
+
+def main():
+    nums = list(map(int, input().strip().split()))
+    print(len(set(nums)))
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c, d, e = map(int, input().split())
+    nums = [a, b, c, d, e]
+    print(len(set(nums)))
+
+=======
+Suggestion 9
+
+def main():
+    a = list(map(int, input().split()))
+    print(len(set(a)))
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c,d,e=map(int,input().split())
+    print(len(set([a,b,c,d,e])))

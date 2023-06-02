@@ -1,42 +1,168 @@
-#问题陈述
-#给出的是一个长度为N的数列A。
-#求具有以下性质的整数i (1 ≦ i ≦ N)的数目：
-#对于每一个整数j (1 ≦ j ≦ N)，使得i ≠ j ，A_j不除以A_i。
-#
-#约束条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^6
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#5
-#24 11 8 3 16
-#
-#样本输出1
-#3
-#具有该属性的整数是2，3，和4。
-#
-#输入样本2
-#4
-#5 5 5 5
-#
-#样本输出2
-#0
-#注意，可以有多个相等的数字。
-#
-#样本输入3
-#10
-#33 18 45 28 8 19 89 86 2 4
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def d170():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    count = 0
+    for i in range(n):
+        if i == 0:
+            if a[i] != a[i+1]:
+                count += 1
+        elif i == n-1:
+            if a[i] != a[i-1]:
+                count += 1
+        elif a[i] != a[i-1] and a[i] != a[i+1]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def get_divisor(num):
+    divisor_list = []
+    for i in range(1, num+1):
+        if num % i == 0:
+            divisor_list.append(i)
+    return divisor_list
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A.sort()
+    #print(A)
+    #print(N)
+    #print(A[N-1])
+    #print(A[N-2])
+    #print(A[N-3])
+    #print(A[N-4])
+    #print(A[N-5])
+
+    count = 0
+    for i in range(N-1):
+        if A[i] != A[i+1]:
+            count += 1
+    if A[N-1] != A[N-2]:
+        count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(10**6+1)
+    ans = 0
+    for i in range(n):
+        if a[i] != a[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    max = A[-1]
+    is_div = [0] * (max + 1)
+    for i in range(N):
+        is_div[A[i]] = 1
+    for i in range(1, max+1):
+        if is_div[i] == 0:
+            continue
+        for j in range(2*i, max+1, i):
+            is_div[j] = 0
+    print(sum(is_div))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[j] % a[i] == 0:
+                break
+        else:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if i == 0 or a[i] != a[i - 1]:
+            ok = True
+            for j in range(i + 1, n):
+                if a[j] % a[i] == 0:
+                    ok = False
+                    break
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        if i == 0 or A[i] != A[i - 1]:
+            ok = True
+            for j in range(i + 1, N):
+                if A[j] % A[i] == 0:
+                    ok = False
+                    break
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    #print(A)
+    cnt = 0
+    for i in range(N):
+        if i == 0:
+            if A[i] != A[i+1]:
+                cnt += 1
+        elif i == N-1:
+            if A[i] != A[i-1]:
+                cnt += 1
+        else:
+            if A[i-1] != A[i] and A[i] != A[i+1]:
+                cnt += 1
+    print(cnt)

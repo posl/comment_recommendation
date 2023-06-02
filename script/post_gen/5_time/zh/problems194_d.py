@@ -1,34 +1,97 @@
-#问题陈述
-#我们有一个有N个顶点的图形，称为顶点1到N。
-#该图现在没有边。
-#高桥将重复进行以下操作：
-#在N个顶点中选择一个（包括高桥现在所站的那个）。每个顶点都是以概率（1/(N)）选择的，与之前的操作无关。
-#在高桥现在所站的顶点和所选择的顶点之间添加一条边，然后去选择的顶点。
-#找出他做这个操作的次数的期望值，直到该图成为连接的。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#当你的答案与我们的答案的绝对或相对误差最多为10^{-6}时，你的答案将被视为正确。
-#
-#输入样本 1
-#2
-#
-#样本输出1
-#2.00000000000
-#当操作第一次选择顶点2时，图就成为连接的。
-#通过考虑每个i的第i次操作中首次选择顶点2的情况，答案是sum_{i = 1}^{infty} (i × ((1/(2))^i)=2。
-#
-#样本输入2
-#3
-#
-#样本输出2
-#4.50000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print((n-1)*2/(n-2))
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    ans = 0
+    for i in range(1,N):
+        ans += 1/i
+    ans = ans * N
+    print("{:.11f}".format(ans))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(N * (N - 1) / 2 / (N - 1) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    print((N+1)*3/2)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(n * (n - 1) / (n * (n - 1) / 2))
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    print(sum([1/i for i in range(1, N+1)]))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(1+sum([i*((1/N)**i) for i in range(1,N)]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n+1):
+        ans += n/i
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print(N * ((N + 1) / 2))
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    n = int(input())
+
+    # 算法
+    # 期望值 = 每次操作的期望值 * 操作次数
+    # 每次操作的期望值 = 1 / (n - i) (i为已经有边的顶点数)
+    # 操作次数 = 1 / (1 / n) = n
+    # 期望值 = 1 / (n - i) * n
+    # 总期望值 = sum(1 / (n - i) * n) (i = 0 to n - 1)
+    #         = n * sum(1 / (n - i)) (i = 0 to n - 1)
+    #         = n * sum(1 / i) (i = 1 to n)
+    #         = n * H(n)
+    #         = n * (ln(n) + γ + 1 / (2n) - 1 / (12n^2) + 1 / (120n^4) - 1 / (252n^6) + ...)
+    #         = n * (ln(n) + γ + 1 / (2n) + O(1 / n^2))
+
+    # 期望值 = n * (ln(n) + γ + 1 / (2n) + O(1 / n^2))
+    # 期望值 = n * ln(n) + n * γ + 1 / 2 + O(1 / n)
+    # 期望值 = n * ln(n) + n * γ + O(n)
+
+    # 输出
+    print(n * math.log(n) + n * 0.57721566490153286060651209008240243104215933593992 + 0.5)

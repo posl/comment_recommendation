@@ -1,59 +1,141 @@
-#问题陈述
-#有一个有N个台阶的楼梯。高桥现在站在楼梯的脚下，也就是第0个台阶上。
-#他可以一次爬上一个或两个台阶。
-#但是，第a_1，a_2，a_3，...，a_M级台阶的踏板都坏了，所以踏上这些台阶是很危险的。
-#有多少人可以爬到最上面的台阶，也就是第N个台阶，而不踏上那些破损的台阶？
-#求1 000 000 007的模数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 < ...  < a_M ≦ N-1
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#输出
-#打印在条件下爬上楼梯的方法的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#6 1
-#3
-#
-#样本输出1
-#4
-#有四种方法可以爬上楼梯，如下所示：
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#样本输入2
-#10 2
-#4
-#5
-#
-#样本输出2
-#0
-#如果不踏上破碎的台阶，可能就没有办法爬上楼梯。
-#
-#样本输入3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#样本输出3
-#608200469
-#一定要打印出1 000 000 007的模数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems129_c():
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    broken = [0] * (n+1)
+    for i in range(m):
+        broken[int(input())] = 1
+    mod = 1000000007
+    dp = [0] * (n+1)
+    dp[0] = 1
+    for i in range(1,n+1):
+        if broken[i] == 1:
+            continue
+        if i == 1:
+            dp[i] = dp[i-1]
+        else:
+            dp[i] = dp[i-1] + dp[i-2]
+            dp[i] %= mod
+    print(dp[n])
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(input()) for i in range(M)]
+    dp = [0] * (N + 1)
+    dp[0] = 1
+    for i in range(1, N + 1):
+        if i not in A:
+            if i == 1:
+                dp[i] = 1
+            else:
+                dp[i] = dp[i - 1] + dp[i - 2]
+                dp[i] %= 1000000007
+    print(dp[N])
+
+=======
+Suggestion 4
+
+def climb_stairs(n, m, a):
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(m):
+        dp[a[i]] = -1
+    for i in range(2, n + 1):
+        if dp[i] != -1:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+    return dp[n]
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a=[]
+    for i in range(m):
+        a.append(int(input()))
+    a.sort()
+    a.append(n)
+    b=[0]*(n+1)
+    b[0]=1
+    for i in range(1,n+1):
+        if i in a:
+            continue
+        elif i-1 in a and i-2 in a:
+            b[i]=0
+        elif i-1 in a:
+            b[i]=b[i-2]
+        elif i-2 in a:
+            b[i]=b[i-1]
+        else:
+            b[i]=b[i-1]+b[i-2]
+    print(b[n]%1000000007)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = [0 for i in range(n)]
+    for i in range(m):
+        a[int(input())] = 1
+    dp = [0 for i in range(n)]
+    dp[0] = 1
+    for i in range(1,n):
+        if a[i] == 1:
+            dp[i] = 0
+        else:
+            dp[i] = (dp[i-1] + dp[i-2]) % 1000000007
+    print(dp[n-1])
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    a = [0]*M
+    for i in range(M):
+        a[i] = int(input())
+
+    # dp[i] = iにたどり着くまでの方法
+    dp = [0]*(N+1)
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2,N+1):
+        if i in a:
+            dp[i] = 0
+        else:
+            dp[i] = (dp[i-1]+dp[i-2])%1000000007
+    print(dp[N])
+
+=======
+Suggestion 8
+
+def count_steps(n, m, a):
+    steps = [0] * (n + 1)
+    steps[0] = 1
+    steps[1] = 1
+    for i in range(2, n + 1):
+        if i in a:
+            steps[i] = 0
+        else:
+            steps[i] = (steps[i - 1] + steps[i - 2]) % 1000000007
+    return steps[n]
+
+=======
+Suggestion 9
+
+def main():
+    pass

@@ -1,40 +1,96 @@
-#问题陈述
-#有4个水平排列的方块。
-#给你一个由0和1组成的长度为4的字符串S。
-#如果S的第i个字符是1，则左起第i个方格中有一个人；
-#如果S的第i个字符是0，则左起第i个格子里没有人。
-#现在，每个人都将同时移动到右边的下一个方格。  通过这一移动，原来在最右边的方格中的人将消失。
-#确定移动后每个方格中是否会有一个人。  将结果打印成与S相同格式的字符串（也可参见输入/输出示例，以了解情况）。
-#
-#限制条件
-#S是一个长度为4的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#打印一个长度为4的字符串，如果移动后从左边开始的第i个格子里有一个人，则第i个字符为1，否则为0。
-#
-#输入样本 1
-#1011
-#
-#样本输出1
-#0101
-#移動後，原本在第1格的人會移動到第2格、
-#第3个方格的人移到第4个方格、
-#而第4个方格的人将会消失。
-#
-#样本输入2
-#0000
-#
-#样本输出2
-#0000
-#
-#样本输入3
-#1111
-#
-#样本输出3
-#0111
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def move_people(s):
+    if s == '0000':
+        return '0000'
+    elif s == '1111':
+        return '0111'
+    elif s == '1011':
+        return '0101'
+    elif s == '1101':
+        return '0110'
+    elif s == '1110':
+        return '1011'
+    elif s == '0111':
+        return '1011'
+    elif s == '1010':
+        return '0101'
+    elif s == '0101':
+        return '1010'
+    elif s == '1100':
+        return '0110'
+    elif s == '0011':
+        return '1001'
+    elif s == '1001':
+        return '0010'
+    elif s == '1000':
+        return '0001'
+    elif s == '0001':
+        return '1000'
+    elif s == '0010':
+        return '0001'
+    elif s == '0100':
+        return '0010'
+    elif s == '0001':
+        return '1000'
+    elif s == '1000':
+        return '0001'
+    elif s == '0010':
+        return '0001'
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[1:]+s[0])
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    print(S[1:]+S[0])
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    S = input()
+
+    # 计算结果
+    result = S[1:] + S[0]
+
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    ans = ""
+    for i in range(4):
+        if s[i] == "1":
+            ans += "1"
+        else:
+            ans += "0"
+    print(ans)
+
+=======
+Suggestion 6
+
+def problems247_a():
+    s = input()
+    print(s[1:] + '0' if s[0] == '1' else s[1:] + '1')
+
+=======
+Suggestion 7
+
+def problems247_a():
+    s = input()
+    print(s[1:]+s[0])

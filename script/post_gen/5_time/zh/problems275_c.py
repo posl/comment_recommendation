@@ -1,51 +1,186 @@
-#问题陈述
-#有一个二维平面。对于1到9之间的整数r和c，如果S_{r}的第c个字符是#，则在坐标(r,c)处有一个卒，如果S_{r}的第c个字符是...，则没有卒。
-#求该平面内四个顶点都有棋子的方格数。
-#
-#限制条件
-#S_1,...,S_9中的每一个都是一个长度为9的字符串，由#和...组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S_1
-#S_2
-#.
-#.
-#.
-#S_9
-#
-#输出
-#打印答案。
-#
-#输入样本1
-###.......
-###.......
-#.........
-#.......#.
-#.....#...
-#........#
-#......#..
-#.........
-#.........
-#
-#样本输出1
-#2
-#顶点为(1,1)、(1,2)、(2,2)和(2,1)的正方形在所有四个顶点上都有棋子。
-#顶点为(4,8)、(5,6)、(7,7)和(6,9)的广场也在所有四个顶点上都有棋子。
-#因此，答案是2。
-#
-#输入样本2
-#.#.......
-##.#......
-#.#.......
-#.........
-#....#.#.#
-#.........
-#....#.#.#
-#........#
-#.........
-#
-#样本输出2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 1. 读入数据
+    # 2. 计算
+    # 3. 输出结果
+    # 4. 退出程序
+    pass
+
+=======
+Suggestion 2
+
+def get_num_of_chessboard(s):
+    res = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i + 1 < 9 and j + 1 < 9:
+                    if s[i][j + 1] == '#' and s[i + 1][j] == '#' and s[i + 1][j + 1] == '#':
+                        res += 1
+    return res
+
+=======
+Suggestion 3
+
+def solve():
+    s = []
+    for i in range(9):
+        s.append(input())
+    ans = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i - 1 >= 0 and j - 1 >= 0 and s[i - 1][j - 1] == '#':
+                    if i - 1 >= 0 and j >= 0 and s[i - 1][j] == '#':
+                        if i >= 0 and j - 1 >= 0 and s[i][j - 1] == '#':
+                            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    S = []
+    for i in range(9):
+        S.append(input())
+
+    # 计算
+    count = 0
+    for r in range(9):
+        for c in range(9):
+            if S[r][c] == "#":
+                if r+1 < 9 and c+1 < 9 and S[r+1][c] == "#" and S[r][c+1] == "#" and S[r+1][c+1] == "#":
+                    count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    S = []
+    for i in range(9):
+        S.append(input())
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if S[i][j] == "#":
+                if i == 0 and j == 0:
+                    if S[i][j + 1] == "#" and S[i + 1][j] == "#" and S[i + 1][j + 1] == "#":
+                        count += 1
+                elif i == 0 and j == 8:
+                    if S[i][j - 1] == "#" and S[i + 1][j] == "#" and S[i + 1][j - 1] == "#":
+                        count += 1
+                elif i == 8 and j == 0:
+                    if S[i][j + 1] == "#" and S[i - 1][j] == "#" and S[i - 1][j + 1] == "#":
+                        count += 1
+                elif i == 8 and j == 8:
+                    if S[i][j - 1] == "#" and S[i - 1][j] == "#" and S[i - 1][j - 1] == "#":
+                        count += 1
+                elif i == 0:
+                    if S[i][j - 1] == "#" and S[i][j + 1] == "#" and S[i + 1][j] == "#" and S[i + 1][j - 1] == "#" and S[i + 1][j + 1] == "#":
+                        count += 1
+                elif i == 8:
+                    if S[i][j - 1] == "#" and S[i][j + 1] == "#" and S[i - 1][j] == "#" and S[i - 1][j - 1] == "#" and S[i - 1][j + 1] == "#":
+                        count += 1
+                elif j == 0:
+                    if S[i][j + 1] == "#" and S[i - 1][j] == "#" and S[i + 1][j] == "#" and S[i - 1][j + 1] == "#" and S[i + 1][j + 1] == "#":
+                        count +=
+
+=======
+Suggestion 6
+
+def main():
+    # 读取数据
+    data = []
+    for i in range(9):
+        data.append(list(input()))
+    # print(data)
+
+    # 统计棋子个数
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if data[i][j] == "#":
+                count += 1
+    # print(count)
+
+    # 统计顶点个数
+    count2 = 0
+    for i in range(9):
+        for j in range(9):
+            if i < 8 and j < 8:
+                if data[i][j] == "#" and data[i + 1][j] == "#" and data[i][j + 1] == "#" and data[i + 1][j + 1] == "#":
+                    count2 += 1
+    # print(count2)
+
+    # 输出结果
+    print(count - count2)
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    s = []
+    for i in range(9):
+        s.append(list(input()))
+    # 求解
+    ans = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i + 1 < 9 and j + 1 < 9:
+                    if s[i + 1][j] == '#' and s[i][j + 1] == '#' and s[i + 1][j + 1] == '#':
+                        ans += 1
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 8
+
+def read_input():
+    try:
+        while True:
+            yield input()
+    except EOFError:
+        pass
+
+=======
+Suggestion 9
+
+def main():
+    s = []
+    for i in range(9):
+        s.append(input())
+    count = 0
+    for i in range(9):
+        for j in range(9):
+            if s[i][j] == '#':
+                if i+1 < 9 and j+1 < 9 and s[i+1][j] == '#' and s[i][j+1] == '#' and s[i+1][j+1] == '#':
+                    count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    s = []
+    for i in range(9):
+        s.append(input())
+
+    # 计算
+    count = 0
+    for r in range(9):
+        for c in range(9):
+            if s[r][c] == '#':
+                if r < 8 and c < 8 and s[r + 1][c + 1] == '#' and s[r + 1][c] == '#' and s[r][c + 1] == '#':
+                    count += 1
+
+    # 输出
+    print(count)

@@ -1,110 +1,191 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N）。
-#给出Q个查询，按顺序处理所有的查询。
-#第q个(1≦q≦Q)查询是以下三种格式中的一种，它代表以下查询：
-#1 x _ q：将x_q分配给A的每个元素。
-#2 i _ q x _ q: 将x_q添加到A _ {i _ q}。
-#3 i _ q: 打印A _ {i _ q}的值。
-#
-#限制条件
-#1 ≦ N ≦ 2×10^5
-#1 ≦ Q ≦ 2×10^5
-#0 ≦ A _ i ≦ 10^9 (1≦ i≦ N)
-#如果第q个(1≦ q≦ Q)查询是第二或第三格式，1 ≦ i _ q ≦ N。
-#如果第q个(1≦ q≦ Q)查询是在第一或第二格式，0 ≦ x _ q ≦ 10^9。
-#存在一个第三种格式的查询。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#这里，query_q表示第q个查询，它是以下格式中的一种：1 x, 2 i x, 和 3 i。
-#
-#输出
-#打印X行，其中X是q的数量（1≦ q≦ Q），以便query_q是第三种格式。
-#第j个（1≦ j≦ X）行应该包含第j个这样的查询的答案。
-#
-#输入样本1
-#5
-#3 1 4 1 5
-#6
-#3 2
-#2 3 4
-#3 3
-#1 1
-#2 3 4
-#3 3
-#
-#样本输出1
-#1
-#8
-#5
-#最初，A=（3，1，4，1，5）。
-#查询的处理方式如下：
-#A_2=1，所以打印1。
-#在A_3上加4，使A=(3,1,8,1,5)。
-#A_3=8，所以打印8。
-#给A的每个元素分配1，使A=(1,1,1,1,1)。
-#在A_3上加4，使A=(1,1,5,1,1)。
-#A_3=5，所以打印5。
-#
-#输入样本2
-#1
-#1000000000
-#8
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#2 1 1000000000
-#3 1
-#
-#样本输出2
-#8000000000
-#注意，A的元素可能不适合32位整数类型。
-#
-#样本输入3
-#10
-#1 8 4 15 7 5 7 5 8 0
-#20
-#2 7 0
-#3 7
-#3 8
-#1 7
-#3 3
-#2 4 4
-#2 4 9
-#2 10 5
-#1 10
-#2 4 2
-#1 10
-#2 3 1
-#2 8 11
-#2 3 14
-#2 1 9
-#3 8
-#3 8
-#3 1
-#2 6 5
-#3 7
-#
-#样本输出3
-#7
-#5
-#7
-#21
-#21
-#19
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            for j in range(N):
+                A[j] = query[1]
+        elif query[0] == 2:
+            A[query[1]-1] += query[2]
+        else:
+            print(A[query[1]-1])
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            for j in range(n):
+                a[j] = query[1]
+        elif query[0] == 2:
+            a[query[1] - 1] += query[2]
+        elif query[0] == 3:
+            print(a[query[1] - 1])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for _ in range(Q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            for i in range(N):
+                A[i] = query[1]
+        elif query[0] == 2:
+            A[query[1]-1] += query[2]
+        elif query[0] == 3:
+            print(A[query[1]-1])
+
+=======
+Suggestion 4
+
+def problem278d():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    queries = []
+    for _ in range(Q):
+        queries.append(list(map(int, input().split())))
+
+    # print(N)
+    # print(A)
+    # print(Q)
+    # print(queries)
+
+    for q in queries:
+        if q[0] == 1:
+            for i in range(N):
+                A[i] = q[1]
+        elif q[0] == 2:
+            A[q[1]-1] += q[2]
+        elif q[0] == 3:
+            print(A[q[1]-1])
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+    # 1. 二分探索で該当するindexを探す
+    # 2. 二分探索で該当するindexを探す
+    # 3. 二分探索で該当するindexを探す
+    # 4. 二分探索で該当するindexを探す
+    # 5. 二分探索で該当するindexを探す
+    # 6. 二分探索で該当するindexを探す
+    # 7. 二分探索で該当するindexを探す
+    # 8. 二分探索で該当するindexを探す
+    # 9. 二分探索で該当するindexを探す
+    # 10. 二分探索で該当するindexを探す
+
+    # 1. 二分探索で該当するindexを探す
+    # 2. 二分探索で該当するindexを探す
+    # 3. 二分探索で該当するindexを探す
+    # 4. 二分探索で該当するindexを探す
+    # 5. 二分探索で該当するindexを探す
+    # 6. 二分探索で該当するindexを探す
+    # 7. 二分探索で該当するindexを探す
+    # 8. 二分探索で該当するindexを探す
+    # 9. 二分探索で該当するindexを探す
+    # 10. 二分探索で該当するindexを探す
+
+    # 1. 二分探索で該当するindex
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    queries = []
+    for _ in range(Q):
+        queries.append(list(map(int, input().split())))
+    queries.reverse()
+    for query in queries:
+        if query[0] == 1:
+            A = list(map(lambda x: query[1], A))
+        elif query[0] == 2:
+            A[query[1] - 1] += query[2]
+        else:
+            print(A[query[1] - 1])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    q = int(input())
+    query = [input().split() for _ in range(q)]
+    #print(query)
+    #print(a)
+    for i in query:
+        if i[0] == '1':
+            a = [int(i[1]) for _ in range(n)]
+        elif i[0] == '2':
+            a[int(i[1])-1] += int(i[2])
+        else:
+            print(a[int(i[1])-1])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            a = [query[1] for _ in range(n)]
+        elif query[0] == 2:
+            a[query[1]-1] += query[2]
+        else:
+            print(a[query[1]-1])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    for i in range(Q):
+        query = input().split()
+        if query[0] == '1':
+            x = int(query[1])
+            for i in range(len(A)):
+                A[i] = x
+        elif query[0] == '2':
+            i = int(query[1])
+            x = int(query[2])
+            A[i-1] += x
+        else:
+            i = int(query[1])
+            print(A[i-1])

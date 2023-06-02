@@ -1,36 +1,93 @@
-#问题描述
-#给你一个由26个整数组成的序列P=(P_1,P_2,...,P_{26})，由从1到26的整数组成。保证P中的所有元素都是不同的。
-#打印一个长度为26的字符串S，满足以下条件。
-#对于每个i（1 ≦ i ≦ 26），S的第i个字符是按字母顺序排列的P_i-th的小写英文字母。
-#
-#约束条件
-#1 ≦ P_i ≦ 26
-#P_i ≠ P_j (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#P_1 P_2 ...P_{26}
-#
-#输出
-#打印字符串S。
-#
-#输入样本 1
-#1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#输出示例 1
-#abcdefghijklmnopqrstuvwxyz
-#
-#样本输入2
-#2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-#
-#输出样本2
-#bacdefghijklmnopqrstuvwxyz
-#
-#样本输入3
-#5 11 12 16 25 17 18 1 7 10 4 23 20 3 2 24 26 19 14 9 6 22 8 13 15 21
-#
-#输出样本3
-#eklpyqragjdwtcbxzsnifvhmou
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    line = input()
+    line = line.split()
+    for i in range(len(line)):
+        line[i] = int(line[i])
+    for i in range(len(line)):
+        line[i] -= 1
+    output = [0 for i in range(len(line))]
+    for i in range(len(line)):
+        output[line[i]] = chr(ord('a') + i)
+    print(''.join(output))
+
+=======
+Suggestion 2
+
+def main():
+    p = list(map(int, input().split()))
+    s = ''
+    for i in range(26):
+        s += chr(ord('a') + p[i] - 1)
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    a = input()
+    b = a.split()
+    c = []
+    for i in b:
+        c.append(chr(int(i)+96))
+    print(''.join(c))
+
+=======
+Suggestion 4
+
+def main():
+    p = list(map(int, input().split()))
+    s = [chr(ord('a') + i - 1) for i in p]
+    print(''.join(s))
+
+=======
+Suggestion 5
+
+def main():
+    p = list(map(int, input().split()))
+    s = ''
+    for i in p:
+        s += chr(ord('a') + i - 1)
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    P = input().split(' ')
+    P = [int(i) for i in P]
+    S = [0]*26
+    for i in range(26):
+        S[P[i]-1] = chr(i+97)
+    print(''.join(S))
+
+=======
+Suggestion 7
+
+def main():
+    p = list(map(int, input().split()))
+    s = [chr(ord('a') + p[i] - 1) for i in range(len(p))]
+    print(''.join(s))
+
+=======
+Suggestion 8
+
+def main():
+    p = list(map(int, input().split()))
+    s = [chr(p[i] + 96) for i in range(26)]
+    print(''.join(s))
+
+=======
+Suggestion 9
+
+def main():
+    p = input()
+    p = p.split()
+    s = ''
+    for i in p:
+        s += chr(int(i) + 96)
+    print(s)

@@ -1,62 +1,224 @@
-#问题陈述
-#高桥将抛出一枚硬币N次。
-#他也有一个计数器，最初显示为0。
-#根据第i次投掷硬币的结果，会发生以下情况：
-#如果是正面：高桥将计数器的值增加1，并获得X_i日元（日本货币）。
-#如果是反面，他就把计数器的值重设为0，不收钱。
-#此外，有M种连胜奖金。第i种连胜奖金在计数器显示C_i时奖励Y_i日元。
-#求高桥能得到的最大金额。
-#
-#限制条件
-#1≦ M≦ N≦ 5000
-#1≦ X_i≦ 10^9
-#1≦ C_i≦ N
-#1≦ Y_i≦ 10^9
-#C_1,C_2,...,C_M都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#X_1 X_2 ...X_N
-#C_1 Y_1
-#C_2 Y_2
-#.
-#.
-#.
-#C_M Y_M
-#
-#输出
-#打印高桥能收到的最大金额，为整数。
-#
-#输入样本 1
-#6 3
-#2 7 1 8 2 8
-#2 10
-#3 1
-#5 5
-#
-#样本输出1
-#48
-#如果他按这个顺序得到头，头，尾，头，头，头，头，就会得到以下金额的奖励。
-#在第1次抛硬币时，硬币是头。将计数器的值从0改为1，获得2日元。
-#在第2次投掷硬币时，硬币正面。将计数器的值从1改为2，获得7日元。此外，获得10日元作为连胜奖金。
-#在第3次投掷硬币时，硬币为反面。将计数器的值从2改为0。
-#在第4次抛硬币时，硬币是正面。将计数器的值从0改为1，获得8日元。
-#在第5次抛硬币时，硬币是正面。将计数器的值从1改为2，获得2日元。此外，获得10日元作为连胜奖金。
-#在第6次抛硬币时，硬币正面。将计数器的值从2改为3，获得8日元。此外，获得1日元的连胜奖金。
-#在这种情况下，高桥得到2+(7+10)+0+8+(2+10)+(8+1)=48日元，这是可能的最大值。
-#请注意，每次计数器显示C_i时，连胜奖金可以获得任意次数。
-#顺便提一下，如果他在6次抛硬币中都得到头像，他只得到2+(7+10)+(1+1)+8+(2+5)+8=44日元，这不是最大值。
-#
-#输入样本 2
-#3 2
-#1000000000 1000000000 1000000000
-#1 1000000000
-#3 1000000000
-#
-#样本输出2
-#5000000000
-#注意，答案可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入输入
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    cy = [list(map(int, input().split())) for _ in range(m)]
+
+    # 初始化
+    dp = [0] * (n + 1)
+    # dp[0] = 0
+    # dp[1] = x[0]
+    # dp[2] = x[0] + x[1]
+    # dp[3] = x[0] + x[1] + x[2]
+    # dp[4] = x[0] + x[1] + x[2] + x[3]
+    # ...
+    # dp[n] = x[0] + x[1] + ... + x[n-1]
+    for i in range(n):
+        dp[i+1] = dp[i] + x[i]
+
+    # 算法
+    ans = 0
+    for i in range(m):
+        for j in range(i+1, m):
+            # i < j
+            # c_i < c_j
+            # y_i < y
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    X = list(map(int, input().split()))
+    C = []
+    Y = []
+    for i in range(M):
+        c, y = map(int, input().split())
+        C.append(c)
+        Y.append(y)
+
+    dp = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(N + 1):
+        for j in range(N + 1):
+            if i > 0 and j > 0:
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + Y[i - 1])
+            if i > 0:
+                dp[i][j] = max(dp[i][j], dp[i - 1][j])
+            if j > 0:
+                dp[i][j] = max(dp[i][j], dp[i][j - 1])
+            if i == j:
+                dp[i][j] = max(dp[i][j], dp[i][j - 1] + X[i - 1])
+
+    print(dp[N][N])
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_,y_ = map(int,input().split())
+        c.append(c_)
+        y.append(y_)
+    c_y = list(zip(c,y))
+    c_y.sort(key=lambda x:x[0])
+    #print(c_y)
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            if i == 0:
+                if j+1 == c_y[i][0]:
+                    dp[i][j+1] = max(dp[i][j],dp[i][j]+c_y[i][1])
+                else:
+                    dp[i][j+1] = dp[i][j]
+            else:
+                if j+1 == c_y[i][0]:
+                    dp[i][j+1] = max(dp[i-1][j],dp[i][j],dp[i][j+1]+c_y[i][1])
+                else:
+                    dp[i][j+1] = dp[i][j]
+    #print(dp)
+    print(dp[n-1][n])
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    X = list(map(int,input().split()))
+    C = []
+    Y = []
+    for i in range(M):
+        c,y = map(int,input().split())
+        C.append(c)
+        Y.append(y)
+    #print(N,M,X,C,Y)
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    #print(X[0:3])
+    #print(C[0:3])
+    #print(Y[0:3])
+    dp = [[0 for i in range(N+1)] for j in range(N+1)]
+    for i in range(N):
+        dp[i+1][1] = dp[i][1] + X[i]
+    for i in range(N):
+        for j in range(2,N+1):
+            dp[i+1][j] = max(dp[i][j-1] + X[i],dp[i][j])
+    #print(dp)
+    ans = 0
+    for i in range(N):
+        for j in range(N+1):
+            if dp[i][j] != 0:
+                if j in C:
+                    ans = max(ans,dp[i][j]+Y[C.index(j)])
+                else:
+                    ans = max(ans,dp[i][j])
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_max_money(N, M, X, C, Y):
+    max_money = 0
+    for i in range(2**N):
+        money = 0
+        count = 0
+        for j in range(N):
+            if i & 1 << j:
+                count += 1
+                money += X[j]
+        for k in range(M):
+            if count == C[k]:
+                money += Y[k]
+        if money > max_money:
+            max_money = money
+    return max_money
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    x = list(map(int,input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_i,y_i = map(int,input().split())
+        c.append(c_i)
+        y.append(y_i)
+    print(n,m)
+    print(x)
+    print(c)
+    print(y)
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    x = list(map(int, input().split()))
+    c = []
+    y = []
+    for i in range(m):
+        c_i, y_i = map(int, input().split())
+        c.append(c_i)
+        y.append(y_i)
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    for i in range(n):
+        for j in range(i+1):
+            dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j]+x[i])
+            if j+1 in c:
+                dp[i+1][1] = max(dp[i+1][1], dp[i][j]+y[c.index(j+1)])
+    print(max(dp[n]))
+
+=======
+Suggestion 9
+
+def solve(n,m,x,c,y):
+    #dp[i][j]表示第i次投掷，连胜奖金为j时的最大金额
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n+1):
+            dp[i+1][j] = max(dp[i+1][j],dp[i][j])
+            if j < m and c[j] == i+1:
+                dp[i+1][j+1] = max(dp[i+1][j+1],dp[i][j]+y[j])
+            dp[i+1][0] = max(dp[i+1][0],dp[i][j]+x[i])
+    return max(dp[n])
+
+=======
+Suggestion 10
+
+def problem261_d():
+    pass

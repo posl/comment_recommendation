@@ -1,67 +1,145 @@
-#问题说明
-#N个球从左到右排成一排。  最初，从左边开始的第i个（1 ≦ i ≦ N）球上写有一个整数i。
-#高桥已经进行了Q操作。  第i次（1 ≦ i ≦ Q）操作如下。
-#将写有整数x_i的球与右边的下一个球交换。  如果写有整数x_i的球原来是最右边的球，就把它和左边的下一个球换一下。
-#让a_i成为操作后写在第i个（1 ≦ i ≦ N）球上的整数。  求a_1,...,a_N。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ x_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N Q
-#x_1
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印a_1,...,a_N，中间有空格。
-#
-#输入样本 1
-#5 5
-#1
-#2
-#3
-#4
-#5
-#
-#样本输出1
-#1 2 3 5 4
-#这些操作是按以下方式进行的。  
-#将写有1的球与右边的下一个球交换。  现在，球上写着整数2、1、3、4、5，从左到右。
-#将写有2的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有3的球与右边的下一个球交换。  现在，这些球上写着1,2,4,3,5的整数，从左到右。
-#将写有4的球与右边的下一个球交换。  现在，这些球上写着1,2,3,4,5的整数，从左到右。
-#将写有5的球与左边的下一个球交换，因为它是最右边的球。  现在，这些球上都写着1,2,3,5,4的整数，从左到右。
-#
-#输入样本 2
-#7 7
-#7
-#7
-#7
-#7
-#7
-#7
-#7
-#
-#样本输出2
-#1 2 3 4 5 7 6
-#
-#样本输入3
-#10 6
-#1
-#5
-#2
-#9
-#6
-#6
-#
-#样本输出3
-#1 2 3 4 5 7 6 8 10 9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    x = [int(input()) for i in range(Q)]
+    a = [i+1 for i in range(N)]
+    for i in range(Q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(*a)
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    x = [int(input()) for _ in range(Q)]
+    a = [i for i in range(1, N + 1)]
+    for i in range(Q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    print(*a)
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    x = []
+    for i in range(q):
+        x.append(int(input()))
+    #print(x)
+    a = [i for i in range(1, n+1)]
+    #print(a)
+    for i in range(q):
+        #print(x[i])
+        #print(a)
+        #print(a.index(x[i]))
+        tmp = a.index(x[i])
+        #print(tmp)
+        if tmp != n-1:
+            a[tmp], a[tmp+1] = a[tmp+1], a[tmp]
+        else:
+            a[tmp], a[tmp-1] = a[tmp-1], a[tmp]
+    #print(a)
+    print(*a)
+
+=======
+Suggestion 4
+
+def swap(x, i):
+    if x[i] == i + 1:
+        return x
+    else:
+        tmp = x[i]
+        x[i] = x[i + 1]
+        x[i + 1] = tmp
+        return x
+
+=======
+Suggestion 5
+
+def main():
+    import sys
+    # 读取标准输入
+    lines = sys.stdin.readlines()
+    # 读取第一行
+    line = lines[0].strip()
+    # 按空格分割
+    n, q = line.split()
+    # 转换为整数
+    n = int(n)
+    q = int(q)
+    # 读取第二行
+    line = lines[1].strip()
+    # 按空格分割
+    x = line.split()
+    # 转换为整数
+    x = [int(i) for i in x]
+    # 球的位置
+    pos = [i for i in range(1, n + 1)]
+    # 操作
+    for i in range(q):
+        # 球的位置
+        p = pos[x[i] - 1]
+        # 球的位置
+        pos[x[i] - 1] = pos[x[i]]
+        # 球的位置
+        pos[x[i]] = p
+        # 球的位置
+        x[i] = x[i] + 1
+    # 打印
+    for i in range(n):
+        print(pos[i], end=" ")
+
+=======
+Suggestion 6
+
+def swap(a, i, j):
+    tmp = a[i]
+    a[i] = a[j]
+    a[j] = tmp
+
+=======
+Suggestion 7
+
+def swap(lst, i, j):
+    tmp = lst[i]
+    lst[i] = lst[j]
+    lst[j] = tmp
+
+=======
+Suggestion 8
+
+def swap(a, b):
+    tmp = a
+    a = b
+    b = tmp
+    return a, b
+
+=======
+Suggestion 9
+
+def main():
+    # 读取数据
+    n, q = map(int, input().split())
+    x = [int(input()) for _ in range(q)]
+    # 初始化
+    a = [i for i in range(1, n+1)]
+    # 交换
+    for i in range(q):
+        a[x[i]-1], a[x[i]] = a[x[i]], a[x[i]-1]
+    # 输出
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 10
+
+def swap(arr, i, j):
+    if i == j:
+        return
+    tmp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tmp

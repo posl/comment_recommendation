@@ -1,53 +1,181 @@
-#问题陈述
-#你的公司有N个雇员，称为雇员1到N。
-#你收到了两个必须完成的工作单，分别称为工作A和工作B。
-#员工i可以在A_i分钟内完成工作A，在B_i分钟内完成工作B。
-#你将把每项工作分配给一个员工。
-#你可以将这两项工作分配给同一个员工，在这种情况下，他/她完成这两项工作的时间是他/她单独完成这两项工作的时间之和。
-#如果你把工作分配给不同的员工，他们完成工作所需的时间就是他们各自工作所需时间的长短。
-#找到完成工作所需的最短的时间。
-#
-#限制条件
-#2 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^5
-#1 ≦ B_i ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印完成工作所需的最短时间，以分钟为单位。
-#
-#输入样本1
-#3
-#8 5
-#4 4
-#7 9
-#
-#样本输出1
-#5
-#如果你把工作A分配给雇员2，把工作B分配给雇员1，他们将分别在4和5分钟内完成。
-#由于你把工作分配给了不同的员工，所以这两项工作将需要max(4, 5)=5分钟才能完成。
-#要提前完成它们是不可能的。
-#
-#输入样本 2
-#3
-#11 7
-#3 2
-#6 7
-#
-#样本输出2
-#5
-#将这两项工作分配给雇员2是最佳选择。
-#请注意，如果你把这两项工作分配给同一个雇员，那么他/她完成这两项工作的时间就是他/她单独完成这两项工作的时间之和。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    min_time = 10**10
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                min_time = min(min_time, a[i]+b[j])
+            else:
+                min_time = min(min_time, max(a[i], b[j]))
+    print(min_time)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                time = A[i] + B[j]
+            else:
+                time = max(A[i], B[j])
+            if time < min_time:
+                min_time = time
+    print(min_time)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    a.sort()
+    b.sort()
+    if n % 2 == 0:
+        a_median = (a[n // 2] + a[n // 2 - 1]) / 2
+        b_median = (b[n // 2] + b[n // 2 - 1]) / 2
+        print(int(b_median - a_median + 1))
+    else:
+        a_median = a[n // 2]
+        b_median = b[n // 2]
+        print(int(b_median - a_median + 1))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = 10**9
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                min_time = min(min_time, A[i]+B[j])
+            else:
+                min_time = min(min_time, max(A[i], B[j]))
+    print(min_time)
+
+=======
+Suggestion 5
+
+def min_time(a_list, b_list):
+    min_time = 10**10
+    for i in range(len(a_list)):
+        for j in range(len(b_list)):
+            if i == j:
+                time = a_list[i] + b_list[j]
+            else:
+                time = max(a_list[i], b_list[j])
+            if time < min_time:
+                min_time = time
+    return min_time
+
+=======
+Suggestion 6
+
+def min_time(works):
+    works.sort(key=lambda x: x[0] + x[1])
+    return works[-1][0] + works[-2][1]
+
+=======
+Suggestion 7
+
+def getMinTime(n, a, b):
+    minTime = 0
+    for i in range(n):
+        minTime += min(a[i], b[i])
+    return minTime
+
+n = int(input())
+a = [0 for i in range(n)]
+b = [0 for i in range(n)]
+for i in range(n):
+    a[i], b[i] = map(int, input().split())
+
+print(getMinTime(n, a, b))
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    AB = [list(map(int,input().split())) for _ in range(N)]
+    ans = 10**10
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                ans = min(ans,AB[i][0]+AB[j][1])
+            else:
+                ans = min(ans,max(AB[i][0],AB[j][1]))
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        a.append(x)
+        b.append(y)
+    ans = 10**10
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                ans = min(ans, a[i]+b[j])
+            else:
+                ans = min(ans, max(a[i], b[j]))
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    min_time = float('inf')
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                min_time = min(min_time, A[i] + B[j])
+            else:
+                min_time = min(min_time, max(A[i], B[j]))
+    return min_time
+
+print(solve())

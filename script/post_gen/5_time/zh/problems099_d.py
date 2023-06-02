@@ -1,61 +1,73 @@
-#问题陈述
-#有一个有N行和N列方格的网格。假设(i,j)是位于从上往下第i行和从左往下第j列的方格。
-#这些方格必须被涂成从颜色1到颜色C中的一种颜色。最初，（i,j）被涂成颜色c_{i,j}。
-#对于所有的i,j,x,y满足1 ≦ i,j,x,y ≦ N， 当满足以下条件时，我们说这个网格是一个好的网格：
-#如果(i+j)%3=(x+y)%3，那么(i,j)的颜色和(x,y)的颜色是一样的。
-#如果(i+j)%3≠(x+y)%3，则(i,j)的颜色和(x,y)的颜色不同。
-#这里，X % Y代表 X除以Y的余数。
-#我们将对零个或更多的方块进行重绘，这样网格将是一个好的网格。
-#对于一个方格，当方格的颜色在重绘前为X，重绘后为Y时，其错误度为D_{X,Y}。
-#求所有方格的错误度的最小可能之和。
-#
-#限制条件
-#1 ≦ N ≦ 500
-#3 ≦ C ≦ 30
-#1 ≦ D_{i,j} ≦ 1000 (i ≠ j),D_{i,j}=0 (i=j)
-#1 ≦ c_{i,j} ≦ C
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N C
-#D_{1,1} ...D_{1,C}
-#:
-#D_{C,1} ...D_{C,C}
-#C_{1,1} ... C_{1,N} ...
-#:
-#C_{N,1} ... C_{N,N}
-#
-#输出
-#如果所有方块的最小可能错误之和为x，则打印x。
-#
-#输入样本 1
-#2 3
-#0 1 1
-#1 0 1
-#1 4 0
-#1 2
-#3 3
-#
-#样本输出1
-#3
-#将(1,1)重绘为颜色2。(1,1)的错误度变为D_{1,2}=1。
-#将(1,2)重绘为颜色3。(1,2)的错误度变成了D_{2,3}=1。
-#将(2,2)重绘为颜色1。(2,2)的错误度变成了D_{3,1}=1。
-#在这种情况下，所有方块的错误度之和为3。
-#注意，D_{i,j}≠D_{j,i}是可能的。
-#
-#样本输入 2
-#4 3
-#0 12 71
-#81 0 53
-#14 92 0
-#1 1 2 1
-#2 1 1 2
-#2 2 1 3
-#1 1 2 2
-#
-#样本输出2
-#428
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve(N, C, D, color):
+    # dp[i][j]: 1~i列，第i列的颜色为j时，最小错误度之和
+    dp = [[float("inf") for i in range(C)] for j in range(N)]
+    for i in range(C):
+        dp[0][i] = 0
+    for i in range(1, N):
+        for j in range(C):
+            for k in range(C):
+                dp[i][j] = min(dp[i][j], dp[i - 1][k] + D[k][j])
+    res = float("inf")
+    for i in range(C):
+        for j in range(C):
+            res = min(res, dp[N - 1][i] + D[i][j] + dp[N - 1][j])
+    return res
+
+=======
+Suggestion 3
+
+def get_input():
+    n, c = map(int, input().split())
+    d = [list(map(int, input().split())) for _ in range(c)]
+    cc = [list(map(int, input().split())) for _ in range(n)]
+    return n, c, d, cc
+
+=======
+Suggestion 4
+
+def solve():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    N, C = map(int, input().split())
+    D = [list(map(int, input().split())) for _ in range(C)]
+    c = [list(map(int, input().split())) for _ in range(N)]
+    mod = [[0] * C for _ in range(3)]
+    for i in range(N):
+        for j in range(N):
+            mod[(i + j) % 3][c[i][j] - 1] += 1
+    ans = 10 ** 9
+    for i in range(C):
+        for j in range(C):
+            if i == j:
+                continue
+            for k in range(C):
+                if i == k or j == k:
+                    continue
+                tmp = 0
+                for l in range(C):
+                    tmp += D[l][i] * mod[0][l]
+                    tmp += D[l][j] * mod[1][l]
+                    tmp += D[l][k] * mod[2][l]
+                ans = min(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    print("hello world")

@@ -1,72 +1,210 @@
-#问题陈述
-#我们有一个无限的六边形网格，如下图所示。最初，所有的方格都是白色的。
-#一个六边形单元表示为（i,j），有两个整数i和j。
-#单元（i,j）与以下六个单元相邻：
-#(i-1,j-1)
-#(i-1,j)
-#(i,j-1)
-#(i,j+1)
-#(i+1,j)
-#(i+1,j+1)
-#高桥将N个单元格(X_1,Y_1),(X_2,Y_2),...,(X_N,Y_N)涂黑。
-#求黑色单元格所形成的连接部件的数量。
-#当人们可以通过反复移动到相邻的黑色单元而在这两个黑色单元之间旅行时，两个黑色单元属于同一个连接组件。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#|X_i|,|Y_i| ≦ 1000
-#成对的(X_i,Y_i)是不同的。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#.
-#.
-#.
-#X_N Y_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#-1 -1
-#0 1
-#0 2
-#1 0
-#1 2
-#2 0
-#
-#样本输出1
-#3
-#高桥将单元格涂成黑色后，网格看起来如下所示。
-#黑色的方格形成了以下三个相连的部分：
-#(-1,-1)
-#(1,0),(2,0)
-#(0,1),(0,2),(1,2)
-#
-#样本输入2
-#4
-#5 0
-#4 1
-#-3 -4
-#-2 -5
-#
-#样本输出 2
-#4
-#
-#样本输入3
-#5
-#2 1
-#2 -1
-#1 0
-#3 1
-#1 -1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def find(x):
+    if x != parent[x]:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+=======
+Suggestion 3
+
+def dfs(x,y):
+    if not(0<=x<=2000 and 0<=y<=2000):
+        return
+    if not (x,y) in d:
+        return
+    if d[(x,y)]:
+        return
+    d[(x,y)]=True
+    dfs(x-1,y-1)
+    dfs(x-1,y)
+    dfs(x,y-1)
+    dfs(x,y+1)
+    dfs(x+1,y)
+    dfs(x+1,y+1)
+
+n=int(input())
+d={}
+for i in range(n):
+    x,y=map(int,input().split())
+    d[(x,y)]=False
+cnt=0
+for i in range(n):
+    if not d[(x,y)]:
+        cnt+=1
+        dfs(x,y)
+print(cnt)
+
+=======
+Suggestion 4
+
+def dfs(i,j):
+    if i<0 or i>=1001 or j<0 or j>=1001:
+        return
+    if visited[i][j] == 1:
+        return
+    if grid[i][j] == 0:
+        return
+
+    visited[i][j] = 1
+    dfs(i-1,j-1)
+    dfs(i-1,j)
+    dfs(i,j-1)
+    dfs(i,j+1)
+    dfs(i+1,j)
+    dfs(i+1,j+1)
+
+    return
+
+N = int(input())
+grid = [[0 for i in range(1001)] for j in range(1001)]
+visited = [[0 for i in range(1001)] for j in range(1001)]
+for i in range(N):
+    x,y = map(int,input().split())
+    grid[x+500][y+500] = 1
+
+count = 0
+for i in range(1001):
+    for j in range(1001):
+        if visited[i][j] == 0 and grid[i][j] == 1:
+            dfs(i,j)
+            count += 1
+
+print(count)
+
+=======
+Suggestion 5
+
+def dfs(x, y):
+    global n, m, a
+    a[x][y] = 0
+    for dx in range(-1, 2):
+        for dy in range(-1, 2):
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < n and 0 <= ny < m and a[nx][ny] == 1:
+                dfs(nx, ny)
+
+n = int(input())
+m = 1000
+a = [[0] * m for _ in range(n)]
+for i in range(n):
+    x, y = map(int, input().split())
+    x += 500
+    y += 500
+    a[x][y] = 1
+ans = 0
+for i in range(m):
+    for j in range(m):
+        if a[i][j] == 1:
+            dfs(i, j)
+            ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def dfs(x,y):
+    if x < 0 or x >= 2000 or y < 0 or y >= 2000:
+        return
+    if graph[x][y] == 0:
+        return
+    if visited[x][y]:
+        return
+    visited[x][y] = True
+    dfs(x-1,y-1)
+    dfs(x-1,y)
+    dfs(x,y-1)
+    dfs(x,y+1)
+    dfs(x+1,y)
+    dfs(x+1,y+1)
+
+n = int(input())
+graph = [[0 for _ in range(2000)] for _ in range(2000)]
+visited = [[False for _ in range(2000)] for _ in range(2000)]
+for _ in range(n):
+    x,y = map(int,input().split())
+    x += 1000
+    y += 1000
+    graph[x][y] = 1
+ans = 0
+for i in range(2000):
+    for j in range(2000):
+        if graph[i][j] == 1 and not visited[i][j]:
+            dfs(i,j)
+            ans += 1
+print(ans)
+
+=======
+Suggestion 7
+
+def dfs(x, y):
+    if x < -1000 or x > 1000 or y < -1000 or y > 1000:
+        return
+    if not (x, y) in d:
+        return
+    if d[(x, y)]:
+        return
+    d[(x, y)] = True
+    dfs(x - 1, y - 1)
+    dfs(x - 1, y)
+    dfs(x, y - 1)
+    dfs(x, y + 1)
+    dfs(x + 1, y)
+    dfs(x + 1, y + 1)
+
+n = int(input())
+d = {}
+for i in range(n):
+    x, y = map(int, input().split())
+    d[(x, y)] = False
+ans = 0
+for k, v in d.items():
+    if not v:
+        ans += 1
+        dfs(k[0], k[1])
+print(ans)
+
+=======
+Suggestion 8
+
+def dfs(x,y):
+    if x < -1000 or x > 1000 or y < -1000 or y > 1000:
+        return
+    if (x,y) in visited:
+        return
+    visited.add((x,y))
+    dfs(x-1,y-1)
+    dfs(x-1,y)
+    dfs(x,y-1)
+    dfs(x,y+1)
+    dfs(x+1,y)
+    dfs(x+1,y+1)
+
+N = int(input())
+visited = set()
+for _ in range(N):
+    x,y = map(int,input().split())
+    dfs(x,y)
+print(len(visited))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        X, Y = map(int, input().split())
+        x.append(X)
+        y.append(Y)
+    print(len(set(zip(x, y))))

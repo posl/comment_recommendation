@@ -1,30 +1,48 @@
-#问题陈述
-#高桥要设置一个3个字符的密码。
-#如果每个字符都必须是1到N（包括）之间的数字，那么有多少个可能的密码？
-#
-#限制条件
-#1 ≦ N ≦ 9
-#N是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印可能的密码的数量。
-#
-#输入样本 1
-#2
-#
-#输出样本 1
-#8
-#有八个可能的密码：111, 112, 121, 122, 211, 212, 221, 和 222.
-#
-#输入样本2
-#1
-#
-#样本输出2
-#1
-#如果你只能使用一种字符，就只有一种可能的密码。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(n**3)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(N**3)
+
+=======
+Suggestion 3
+
+def main():
+    print('Hello World!')
+    print('请输入N的值：')
+    n = int(input())
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(n**3)
+
+main()

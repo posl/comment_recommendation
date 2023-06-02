@@ -1,72 +1,172 @@
-#问题陈述
-#我们有一个有N个顶点和M条边的简单无向图。顶点的编号是1到N，边的编号是1到M。
-#边i连接着顶点A_i和顶点B_i。
-#请找出将该图中的每个顶点涂成红色、绿色或蓝色的方法，以使下列条件得到满足：
-#由一条边直接连接的两个顶点总是被涂成不同的颜色。
-#这里，并不强制要求使用所有的颜色。
-#
-#限制条件
-#1 ≦ N ≦ 20
-#0 ≦ m ≦ ((n(n - 1))/(2))
-#1 ≦ A_i ≦ N
-#1 ≦ B_i ≦ N
-#给定的图是简单的（即没有多线和自循环）。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#A_1 B_1
-#A_2 B_2
-#A_3 B_3
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 3
-#1 2
-#2 3
-#3 1
-#
-#样本输出1
-#6
-#设c_1，c_2，c_3为顶点1，2，3的颜色，R，G，B分别表示红，绿，蓝。有六种方法可以满足这个条件：
-#c_1c_2c_3 = RGB
-#c_1c_2c_3 = RBG
-#c_1c_2c_3 = GRB
-#c_1c_2c_3 = GBR
-#c_1c_2c_3 = BRG
-#c_1c_2c_3 = BGR
-#
-#样本输入2
-#3 0
-#
-#采样输出2
-#27
-#由于该图没有边，我们可以自由选择顶点的颜色。
-#
-#输入样本3
-#4 6
-#1 2
-#2 3
-#3 4
-#2 4
-#1 3
-#1 4
-#
-#样本输出3
-#0
-#可能没有办法满足这个条件。
-#
-#样本输入4
-#20 0
-#
-#样本输出4
-#3486784401
-#答案可能不适合32位有符号整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    b = []
+    for i in range(m):
+        a1,b1 = map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    print(a,b)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    #print(n,m)
+    #edge = []
+    #for i in range(m):
+    #    edge.append(list(map(int, input().split())))
+    #print(edge)
+    print(3**n)
+
+=======
+Suggestion 4
+
+def get_color_num(n, m):
+    if n == 1:
+        return 3
+    else:
+        return 3 * get_color_num(n - 1, m) - get_color_num(n - 2, m)
+
+=======
+Suggestion 5
+
+def dfs(v, color):
+    global N
+    global M
+    global A
+    global B
+    global ans
+    global used
+
+    if v == N:
+        ans += 1
+        return
+
+    for i in range(3):
+        if color == i:
+            continue
+        for j in range(M):
+            if A[j] == v + 1:
+                used[B[j] - 1] = True
+            if B[j] == v + 1:
+                used[A[j] - 1] = True
+        for k in range(N):
+            if used[k]:
+                continue
+            dfs(v + 1, k)
+        for j in range(M):
+            if A[j] == v + 1:
+                used[B[j] - 1] = False
+            if B[j] == v + 1:
+                used[A[j] - 1] = False
+
+N, M = map(int, input().split())
+A = []
+B = []
+for i in range(M):
+    a, b = map(int, input().split())
+    A.append(a)
+    B.append(b)
+ans = 0
+used = [False] * N
+dfs(0, 0)
+print(ans)
+
+=======
+Suggestion 6
+
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(edges[v])):
+        if color[edges[v][i]] == c:
+            return False
+        if color[edges[v][i]] == 0 and (not dfs(edges[v][i], -c)):
+            return False
+    return True
+
+n, m = map(int, input().split())
+edges = [[] for i in range(n)]
+color = [0 for i in range(n)]
+for i in range(m):
+    a, b = map(int, input().split())
+    edges[a - 1].append(b - 1)
+    edges[b - 1].append(a - 1)
+
+ans = 0
+for i in range(n):
+    if color[i] == 0:
+        if dfs(i, 1):
+            ans += 1
+        else:
+            print(0)
+            exit()
+
+print(3 ** ans)
+
+=======
+Suggestion 7
+
+def dfs(n, m, e, v, i):
+    if i == n:
+        return 1
+    res = 0
+    for c in range(3):
+        ok = True
+        for j in range(i):
+            if e[i][j] == 1 and v[j] == c:
+                ok = False
+                break
+        if ok:
+            v[i] = c
+            res += dfs(n, m, e, v, i + 1)
+            v[i] = -1
+    return res
+
+=======
+Suggestion 8
+
+def dfs(v, c):
+    global ans
+    color[v] = c
+    if v == N - 1:
+        ans += 1
+        return
+    for i in range(N):
+        if G[v][i] == 1 and color[i] == -1:
+            dfs(i, 0)
+            dfs(i, 1)
+            dfs(i, 2)
+            break
+
+N, M = map(int, input().split())
+G = [[0] * N for _ in range(N)]
+for i in range(M):
+    a, b = map(int, input().split())
+    G[a - 1][b - 1] = 1
+    G[b - 1][a - 1] = 1
+
+color = [-1] * N
+ans = 0
+dfs(0, 0)
+dfs(0, 1)
+dfs(0, 2)
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    return

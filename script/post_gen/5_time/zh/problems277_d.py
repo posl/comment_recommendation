@@ -1,51 +1,251 @@
-#问题陈述
-#高桥手中有N张牌。
-#对于i=1，2，...，N，第i张牌上写有一个非负整数A_i。
-#首先，高桥将从他的手中自由选择一张牌并把它放在桌子上。
-#然后，他将重复以下操作，次数不限（可能为零）。
-#设X是写在最后一张放在桌子上的牌上的整数。如果他手里有写着整数X或整数(X+1)mod M的牌，就自由选择其中一张牌放在桌子上。这里，(X+1)mod M表示(X+1)除以M时的余数。
-#印出写在卡片上的最小的整数之和，最后留在他的手中。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 10^9
-#0 ≦ A_i < M
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#9 7
-#3 0 2 5 5 3 0 6 3
-#
-#样本输出1
-#11
-#假设他先把第四张牌（写着5）放在桌上，然后进行以下操作。
-#把第五张牌（写的是5）放在桌子上。
-#把第八张牌（写的是6）放在桌子上。
-#把第二张牌（写的是0）放在桌子上。
-#把第七张牌（写的是0）放在桌子上。
-#然后，第一、第三、第六和第九张牌最终会留在他的手中，这些牌上的整数之和是3+2+3+3=11。
-#这是最后留在他手中的牌上所写的最小可能的整数之和。
-#
-#输入样本 2
-#1 10
-#4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#20 20
-#18 16 15 9 8 8 17 1 3 17 11 9 12 11 7 3 2 14 3 12
-#
-#样本输出3
-#99
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = [0] * N
+    for i in range(N):
+        if i == 0:
+            B[i] = A[i]
+        else:
+            B[i] = (B[i - 1] + A[i]) % M
+    ans = 0
+    for i in range(N - 1):
+        if B[i] <= B[i + 1]:
+            ans += B[i + 1] - B[i]
+        else:
+            ans += B[i + 1] + M - B[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(a[0] + m)
+    s = 0
+    for i in range(n):
+        d = a[i + 1] - a[i]
+        if d <= 0:
+            continue
+        s += d
+        a[i + 1] -= d
+    print(s)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    a = 0
+    for i in range(N):
+        if A[i] >= M//2:
+            a = i
+            break
+    A = A[a:]
+    N = len(A)
+    for i in range(N):
+        A[i] %= M
+    ans = 0
+    for i in range(N):
+        if i == 0:
+            ans += A[i]
+            continue
+        if A[i] - A[i-1] <= 1:
+            continue
+        ans += A[i-1]+1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(m)
+    ans = 0
+    for i in range(1, n+1):
+        if a[i] != a[i-1]:
+            ans += a[i] - a[i-1] - 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve(N, M, A):
+    # 从大到小排序
+    A.sort(reverse=True)
+    # 从大到小排序的累加和
+    A_sum = [0 for i in range(N)]
+    A_sum[0] = A[0]
+    for i in range(1, N):
+        A_sum[i] = A_sum[i-1] + A[i]
+    # 从大到小排序的累加和的模M
+    A_mod = [0 for i in range(N)]
+    for i in range(N):
+        A_mod[i] = A_sum[i] % M
+    # 去掉A_mod中的0
+    A_mod = [i for i in A_mod if i != 0]
+    # 求和
+    ans = sum(A_mod)
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if n == 1:
+        print(a[0])
+        return
+    if a[0] == 0:
+        print(0)
+        return
+    if n == 2:
+        if a[0] + 1 == a[1]:
+            print(a[0])
+        else:
+            print(a[0] + 1)
+        return
+    if a[0] + 1 == a[1]:
+        print(a[0])
+        return
+    if a[0] + 1 != a[1]:
+        print(a[0] + 1)
+        return
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = A[::-1]
+    ans = 0
+    for i in range(N):
+        A[i] = A[i] % M
+    for i in range(N):
+        if A[i] == 0:
+            break
+        if i == N - 1:
+            ans += A[i]
+            break
+        if A[i] == A[i + 1] or A[i] == A[i + 1] + 1:
+            A[i + 1] = 0
+        else:
+            ans += A[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, m, a
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(M)
+    B = []
+    cnt = 1
+    for i in range(N):
+        if A[i] != A[i+1]:
+            B.append(cnt)
+            cnt = 1
+        else:
+            cnt += 1
+    ans = 0
+    B.sort()
+    for i in range(len(B)):
+        if B[i] % 2 == 0:
+            ans += B[i]-1
+        else:
+            ans += B[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+        a[i] = ans % m
+    print(a)

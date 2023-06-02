@@ -1,48 +1,95 @@
-#问题陈述
-#在AtCoder王国，有一个标准化的竞争性编程能力测试。
-#考生将得到一个满分100分的分数，并根据分数获得一个等级，具体如下：
-#新手，得分不低于0，但低于40；
-#中级，得分不低于40分，但低于70分；
-#高级，得分不低于70但不低于90；
-#专家，得分不低于90分。
-#高桥参加了这次考试，得到了X分。
-#找出提高一个等级所需的最低加分数。如果他的等级是专家，则打印专家，因为没有比这更高的等级。
-#
-#限制条件
-#0 ≦ X ≦ 100
-#X是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#56
-#
-#样本输出1
-#14
-#他得到了56分，被认证为中级。为了达到下一个级别的高级，他至少还需要14分。
-#
-#样本输入2
-#32
-#
-#样本输出2
-#8
-#
-#样本输入3
-#0
-#
-#样本输出3
-#40
-#
-#样本输入4
-#100
-#
-#样本输出4
-#专家
-#他得到了满分，被认证为专家。没有比这更高的等级，所以打印专家。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print("专家")
+
+=======
+Suggestion 2
+
+def get_score_level(score):
+    if score >= 0 and score < 40:
+        return "新手"
+    elif score >= 40 and score < 70:
+        return "中级"
+    elif score >= 70 and score < 90:
+        return "高级"
+    else:
+        return "专家"
+
+=======
+Suggestion 3
+
+def print_level(X):
+    if X >= 0 and X < 40:
+        print(40 - X)
+    elif X >= 40 and X < 70:
+        print(70 - X)
+    elif X >= 70 and X < 90:
+        print(90 - X)
+    else:
+        print('expert')
+
+=======
+Suggestion 4
+
+def get_score(score):
+    if score < 40:
+        return 40 - score
+    elif score < 70:
+        return 70 - score
+    elif score < 90:
+        return 90 - score
+    else:
+        return 'expert'
+
+=======
+Suggestion 5
+
+def main():
+    score = int(input())
+    if score < 40:
+        print(40 - score)
+    elif score < 70:
+        print(70 - score)
+    elif score < 90:
+        print(90 - score)
+    else:
+        print("专家")
+
+=======
+Suggestion 6
+
+def problem219_a():
+    x = int(input())
+    if x < 40:
+        print(40 - x)
+    elif x < 70:
+        print(70 - x)
+    elif x < 90:
+        print(90 - x)
+    else:
+        print('expert')
+
+=======
+Suggestion 7
+
+def get_grade(x):
+    if 0 <= x < 40:
+        return 40 - x
+    elif 40 <= x < 70:
+        return 70 - x
+    elif 70 <= x < 90:
+        return 90 - x
+    else:
+        return '专家'

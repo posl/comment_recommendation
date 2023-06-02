@@ -1,34 +1,63 @@
-#问题陈述
-#给你一个字符串S，它代表从明天开始的七天的天气预报。
-#如果S的第i个字符是o，那么这七天中的第i天将是晴天，如果该字符是x，则是雨天。
-#请告诉我们第N天是否会是晴天。
-#
-#限制条件
-#N是1到7之间的一个整数（包括在内）。
-#S是一个长度为7的字符串，由o和x组成。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#S
-#
-#输出
-#如果明天开始的七天中的第N天预测为晴天，则打印 "是"；如果该天预测为雨天，则打印 "否"。
-#
-#输入样本 1
-#4
-#oooxoox
-#
-#样本输出1
-#否
-#从明天开始的七天中，每一天的预报都是这样的：晴天，晴天，晴天，雨天，晴天，雨天。
-#特别是，第四天预测是雨天。
-#
-#样本输入2
-#7
-#ooooooo
-#
-#样本输出2
-#是
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    S = input()
+    print("是" if S[N-1] == "o" else "否")
+
+=======
+Suggestion 2
+
+def get_input():
+    input_int = int(input())
+    input_str = input()
+    return input_int, input_str
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    print("是" if s[n-1] == "o" else "否")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    print("是" if S[N-1] == 'o' else "否")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    if s[n-1] == 'o':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = input()
+    print('是' if s[n-1] == 'o' else '否')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    if S[N-1] == "o":
+        print("Yes")
+    else:
+        print("No")

@@ -1,37 +1,90 @@
-#问题陈述
-#我们有A卡，每张卡上都写有一个整数1。同样地，我们也有写有0的B卡和写有-1的C卡。
-#我们将从这些卡片中挑选出K。所选卡片上的数字之和最大可能是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ A, B, C
-#1 ≦ K ≦ A + B + C ≦ 2 × 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B C K
-#
-#输出
-#打印所选卡片上的数字的最大可能之和。
-#
-#输入样本 1
-#2 1 1 3
-#
-#输出样本 1
-#2
-#考虑拿起两张1的卡片和一张0的卡片。
-#在这种情况下，卡片上的数字之和为2，这是可能的最大值。
-#
-#输入样本2
-#1 2 3 4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#2000000000 0 0 2000000000
-#
-#样品输出3
-#2000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B,C,K = map(int,input().split())
+    if K <= A:
+        print(K)
+    elif K <= A + B:
+        print(A)
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,k = map(int,input().split())
+    if a >= k:
+        print(k)
+    elif a+b >= k:
+        print(a)
+    else:
+        print(a-(k-a-b))
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,k = map(int, input().split())
+    if k <= a:
+        print(k)
+    elif k <= a + b:
+        print(a)
+    else:
+        print(a - (k - a - b))
+
+=======
+Suggestion 4
+
+def main():
+    A, B, C, K = map(int, input().split())
+    #print(A, B, C, K)
+    if A >= K:
+        print(K)
+    elif A + B >= K:
+        print(A)
+    else:
+        print(A - (K - A - B))
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    A, B, C, K = map(int, input().split())
+    # 计算和
+    ans = min(A, K)
+    K -= A
+    K = max(K, 0)
+    K -= B
+    ans -= min(C, K)
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C,K = map(int,input().split())
+    if A >= K:
+        print(K)
+    elif A+B >= K:
+        print(A)
+    else:
+        print(A-(K-A-B))
+
+=======
+Suggestion 7
+
+def main():
+    A,B,C,K = map(int,input().split())
+    if A >= K:
+        print(K)
+    elif A+B >= K:
+        print(A)
+    else:
+        print(A-(K-A-B))
+main()

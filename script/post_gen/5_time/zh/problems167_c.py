@@ -1,62 +1,192 @@
-#问题Takahashi是一个竞争性编程的新手，他想学习M种算法。
-#最初，他对M种算法中的每一种的理解水平是0。
-#高桥正在逛一家书店，在那里他找到了N本关于算法的书。
-#第i本书（1≦i≦N）的售价为C_i日元（日本的货币）。如果他买下这本书并阅读，他对第j种算法的理解水平将在每个j（1≦ j≦ M）上增加A_{i,j}。
-#没有其他方法可以提高算法的理解水平。
-#高桥的目标是使他对所有M种算法的理解水平达到X或更高。确定这个目标是否可以实现。如果可以实现，请找出实现这一目标所需的最小资金量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1≦ N, M≦ 12
-#1≦ X≦ 10^5
-#1≦ C_i ≦ 10^5
-#0≦ A_{i, j} ≦ 10^5
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M X
-#C_1 A_{1,1} A_{1,2} ...A_{1,M}
-#C_2 A_{2,1} A_{2,2} ...A_{2,M}
-#.
-#.
-#.
-#C_N A_{N,1} A_{N,2} ...A_{N,M}
-#
-#输出
-#如果目标无法实现，打印-1；否则，打印实现目标所需的最小资金量。
-#
-#输入样本 1
-#3 3 10
-#60 2 2 4
-#70 8 7 9
-#50 2 3 9
-#
-#样本输出1
-#120
-#购买第二本和第三本，使他对所有算法的理解水平达到10或更高，并尽可能地减少费用。
-#
-#样本输入 2
-#3 3 10
-#100 3 1 4
-#100 1 5 9
-#100 2 6 5
-#
-#样本输出2
-#-1
-#购买所有的书仍然不足以使他对所有算法的理解水平达到10或更高。
-#
-#样本输入3
-#8 5 22
-#100 3 7 5 3 1
-#164 4 5 2 7 8
-#334 7 2 7 2 9
-#234 4 7 2 8 2
-#541 5 4 3 3 6
-#235 4 8 6 9 7
-#394 3 6 1 6 2
-#872 8 4 3 7 2
-#
-#样本输出3
-#1067
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M,X = map(int,input().split())
+    C = []
+    A = []
+    for i in range(N):
+        c,a = map(int,input().split())
+        C.append(c)
+        A.append(a)
+    #print(C)
+    #print(A)
+
+    min_cost = 1000000000
+    for i in range(2**N):
+        cost = 0
+        level = [0 for _ in range(M)]
+        for j in range(N):
+            if (i >> j) & 1:
+                cost += C[j]
+                for k in range(M):
+                    level[k] += A[j][k]
+        if min(level) >= X:
+            min_cost = min(min_cost,cost)
+    if min_cost == 1000000000:
+        print(-1)
+    else:
+        print(min_cost)
+
+=======
+Suggestion 2
+
+def main():
+    n,m,x = map(int,input().split())
+    c = []
+    a = []
+    for i in range(n):
+        c.append(list(map(int,input().split())))
+    for i in range(n):
+        a.append(c[i][1:])
+    print(c)
+    print(a)
+    print(n,m,x)
+
+=======
+Suggestion 3
+
+def dfs(i, cost, level):
+    if i == n:
+        if level >= x:
+            return cost
+        else:
+            return -1
+    else:
+        return min(dfs(i+1, cost + c[i], [level[j] + a[i][j] for j in range(m)]), dfs(i+1, cost, level))
+
+n, m, x = map(int, input().split())
+c = [0]*n
+a = [[0]*m for _ in range(n)]
+for i in range(n):
+    c[i], *a[i] = map(int, input().split())
+print(dfs(0, 0, [0]*m))
+
+=======
+Suggestion 4
+
+def main():
+    n, m, x = map(int, input().split())
+    c = []
+    a = []
+    for i in range(n):
+        c.append(list(map(int, input().split())))
+        a.append(c[i][1:])
+    c = [c[i][0] for i in range(n)]
+    # print(n, m, x)
+    # print(c)
+    # print(a)
+    # print()
+    import itertools
+    min_cost = 10**9
+    for i in range(1, n+1):
+        for j in itertools.combinations(range(n), i):
+            # print(j)
+            temp_cost = 0
+            temp_a = [0]*m
+            for k in j:
+                temp_cost += c[k]
+                for l in range(m):
+                    temp_a[l] += a[k][l]
+            # print(temp_cost)
+            # print(temp_a)
+            # print()
+            if min(temp_a) >= x:
+                min_cost = min(min_cost, temp_cost)
+    if min_cost == 10**9:
+        print(-1)
+    else:
+        print(min_cost)
+
+=======
+Suggestion 5
+
+def input():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 6
+
+def main():
+    # n,m,x = map(int,input().split())
+    # c_a = []
+    # for i in range(n):
+    #     c_a.append(list(map(int,input().split())))
+    n,m,x = 3,3,10
+    c_a = [[60,2,2,4],[70,8,7,9],[50,2,3,9]]
+    # n,m,x = 3,3,10
+    # c_a = [[100,3,1,4],[100,1,5,9],[100,2,6,5]]
+    # n,m,x = 8,5,22
+    # c_a = [[100,3,7,5,3,1],[164,4,5,2,7,8],[334,7,2,7,2,9],[234,4,7,2,8,2],[541,5,4,3,3,6],[235,4,8,6,9,7],[394,3,6,1,6,2],[872,8,4,3,7,2]]
+    min_price = 100000000
+    for i in range(2**n):
+        total_price = 0
+        total_a = [0]*m
+        for j in range(n):
+            if i & (1<<j):
+                total_price += c_a[j][0]
+                for k in range(m):
+                    total_a[k] += c_a[j][k+1]
+        if min(total_a) >= x and total_price < min_price:
+            min_price = total_price
+    if min_price == 100000000:
+        print(-1)
+    else:
+        print(min_price)
+
+=======
+Suggestion 7
+
+def get_min_cost(N, M, X, C, A):
+    min_cost = -1
+    for i in range(1, 2 ** N):
+        cost = 0
+        algos = [0] * M
+        for j in range(N):
+            if (i >> j) & 1:
+                cost += C[j]
+                for k in range(M):
+                    algos[k] += A[j][k]
+        if min(algos) >= X:
+            if min_cost == -1:
+                min_cost = cost
+            else:
+                min_cost = min(min_cost, cost)
+    return min_cost
+
+=======
+Suggestion 8
+
+def dfs(n, m, x, c, a, i, money, sum):
+    if i == n:
+        if sum >= x:
+            return money
+        else:
+            return -1
+
+    money1 = dfs(n, m, x, c, a, i + 1, money, sum)
+    money2 = dfs(n, m, x, c, a, i + 1, money + c[i], sum + a[i])
+    if money1 == -1:
+        return money2
+    elif money2 == -1:
+        return money1
+    else:
+        return min(money1, money2)
+
+=======
+Suggestion 9
+
+def main():
+    n,m,x = map(int,input().split())
+    c = []
+    a = []
+    for i in range(n):
+        c.append(list(map(int,input().split())))
+    for i in range(n):
+        a.append(c[i][1:])
+    print(c)
+    print(a)
+
+main()

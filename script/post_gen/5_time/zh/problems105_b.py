@@ -1,36 +1,156 @@
-#问题陈述
-#La Confiserie d'ABC出售的蛋糕每个4美元，甜甜圈每个7美元。
-#请确定是否有办法以刚好N美元的价格买到其中的一些东西。你可以买两个或更多的甜甜圈和两个或更多的蛋糕，你也可以选择买零个甜甜圈或零个蛋糕。
-#
-#限制条件
-#N是1到100之间的整数，包括在内。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果有一种方法可以用N美元买到一些蛋糕和一些甜甜圈，则打印Yes；否则，打印No。
-#
-#输入样本1
-#11
-#
-#输出示例 1
-#Yes
-#如果你买了一个蛋糕和一个甜甜圈，总额将是4+7=11美元。
-#
-#样本输入2
-#40
-#
-#样本输出2
-#Yes
-#如果你买了10个蛋糕，总额将是4×10=40美元。
-#
-#样本输入3
-#3
-#
-#样本输出 3
-#No
-#蛋糕（4元）和甜甜圈（7元）的价格都高于3元，所以不存在这种方式。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    for i in range(0, n//4 + 1):
+        for j in range(0, n//7 + 1):
+            if i * 4 + j * 7 == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    for i in range(0, N):
+        for j in range(0, N):
+            if (4*i+7*j) == N:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0:
+        print('Yes')
+        return
+    for i in range(1, N // 4 + 1):
+        if (N - 4 * i) % 7 == 0:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print("Yes" if n % 7 == 0 or n % 4 == 0 or n % 11 == 0 or n % 15 == 0 or n % 19 == 0 or n % 20 == 0 or n % 24 == 0 or n % 28 == 0 or n % 31 == 0 or n % 35 == 0 or n % 39 == 0 or n % 43 == 0 or n % 44 == 0 or n % 47 == 0 or n % 48 == 0 or n % 51 == 0 or n % 55 == 0 or n % 59 == 0 or n % 60 == 0 or n % 64 == 0 or n % 67 == 0 or n % 68 == 0 or n % 71 == 0 or n % 72 == 0 or n % 75 == 0 or n % 76 == 0 or n % 79 == 0 or n % 80 == 0 or n % 84 == 0 or n % 88 == 0 or n % 91 == 0 or n % 92 == 0 or n % 95 == 0 or n % 96 == 0 or n % 99 == 0 or n % 100 == 0 else "No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    for i in range(0, n//4+1):
+        for j in range(0, n//7+1):
+            if 4*i+7*j == n:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    if n % 7 == 0 or n % 4 == 0:
+        print("Yes")
+        return
+    for i in range(1, 15):
+        if n - 7 * i < 0:
+            print("No")
+            return
+        if (n - 7 * i) % 4 == 0:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0:
+        print("Yes")
+    elif N % 4 == 3:
+        print("Yes")
+    elif N % 7 == 6:
+        print("Yes")
+    elif N % 11 == 9:
+        print("Yes")
+    elif N % 4 == 2:
+        print("Yes")
+    elif N % 7 == 5:
+        print("Yes")
+    elif N % 11 == 7:
+        print("Yes")
+    elif N % 4 == 1:
+        print("Yes")
+    elif N % 7 == 4:
+        print("Yes")
+    elif N % 11 == 2:
+        print("Yes")
+    elif N % 4 == 0:
+        print("Yes")
+    elif N % 7 == 0:
+        print("Yes")
+    elif N % 11 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    for i in range(0, N//4+1):
+        for j in range(0, N//7+1):
+            if i*4 + j*7 == N:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n % 4 == 0 or n % 7 == 0 or n % 11 == 0:
+        print("Yes")
+        return
+    for i in range(1, n // 4 + 1):
+        for j in range(1, n // 7 + 1):
+            if 4 * i + 7 * j == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 10
+
+def main():
+    while True:
+        try:
+            N = int(input('请输入一个1到100之间的整数：'))
+            if 1 <= N <= 100:
+                break
+            else:
+                print('输入的数不在范围内，请重新输入')
+        except:
+            print('输入的数不是整数，请重新输入')
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0:
+        print('Yes')
+    elif N % 4 == 3 or N % 7 == 3 or N % 11 == 3:
+        print('No')
+    else:
+        print('Yes')

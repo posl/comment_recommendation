@@ -1,30 +1,73 @@
-#问题陈述
-#Serval、Fennec和Raccoon玩石头剪刀布，结果打成平手。
-#你得到的字符x和y分别代表Fennec和Raccoon投掷的手。这里，0代表石头，1代表剪刀，2代表纸。
-#打印与薮猫扔出的手相对应的字符，这可以唯一地确定。
-#
-#限制条件
-#x和y各为0、1或2。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#x y
-#
-#输出
-#打印答案，石头为0，剪刀为1，纸为2。
-#
-#输入样本 1
-#0 1
-#
-#输出样本 1
-#2
-#Fennec扔了石头，Raccoon扔了剪刀。薮猫必须投掷纸张，才能抽中。
-#
-#输入样本2
-#0 0
-#
-#样本输出2
-#0
-#Fennec扔了石头，Raccoon也扔了石头。要想平局，薮猫必须扔出石头。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y = map(int,input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3-x-y)
+
+=======
+Suggestion 2
+
+def main(x, y):
+    if x == y:
+        return x
+    else:
+        return 3 - x - y
+
+x, y = map(int, input().split())
+print(main(x, y))
+
+=======
+Suggestion 3
+
+def main():
+    x,y = map(int,input().split())
+    if x == y:
+        print(x)
+    elif x == 0 and y == 1:
+        print(2)
+    elif x == 1 and y == 0:
+        print(2)
+    elif x == 1 and y == 2:
+        print(0)
+    elif x == 2 and y == 1:
+        print(0)
+    elif x == 2 and y == 0:
+        print(1)
+    elif x == 0 and y == 2:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    x, y = map(int, input().split())
+    print((x-y) % 3)
+
+=======
+Suggestion 5
+
+def get_opposite(x):
+    return 2 if x == 0 else 0
+
+x, y = map(int, input().split())
+print(get_opposite(x) if x == y else 1 if x != get_opposite(y) else y)
+
+=======
+Suggestion 6
+
+def get_input():
+    x, y = map(int, input().split())
+    return x, y
+
+=======
+Suggestion 7
+
+def solve():
+    x, y = map(int, input().split())
+    print((x - y + 3) % 3)

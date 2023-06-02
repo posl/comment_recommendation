@@ -1,36 +1,76 @@
-#问题陈述
-#我们有一个由小写英文字母组成的字符串S。
-#如果S的长度最多为K，则打印S，不做任何改动。
-#如果S的长度超过K，则提取S中的前K个字符，将...附加到它们的末尾，然后打印结果。
-#
-#限制条件
-#K是1到100（包括）之间的整数。
-#S是一个由小写英文字母组成的字符串。
-#S的长度在1到100之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#K
-#S
-#
-#输出
-#打印一个问题陈述中所述的字符串。
-#
-#输入样本1
-#7
-#nikoandsolstice
-#
-#样本输出1
-#nikoand...
-#nikoandsolstice的长度为15，超过了K=7。
-#我们应该提取这个字符串中的前7个字符，将...附加到它们的末尾，然后打印结果nikoand....
-#
-#输入样本2
-#40
-#ferelibenterhominesidquodvoluntcredunt
-#
-#样本输出2
-#ferelibenterhominesidquodvoluntcredunt
-#Gaius Julius Caesar的名言。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[0:k] + "...")
+
+=======
+Suggestion 2
+
+def printString(S,K):
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[0:K]+'...')
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[0:k] + "...")
+    else:
+        print(s)
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) > k:
+        print(s[:k] + "...")
+    else:
+        print(s)
+
+=======
+Suggestion 5
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[:k] + '...')
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    S = input()
+    if len(S) <= K:
+        print(S)
+    else:
+        print(S[:K] + "...")
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    s = input()
+    if len(s) <= k:
+        print(s)
+    else:
+        print(s[:k] + "...")

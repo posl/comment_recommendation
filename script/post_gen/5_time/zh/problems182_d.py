@@ -1,54 +1,119 @@
-#问题陈述
-#给出一个数列A_1, A_2, A_3, ..., A_N，其中可能包含负数元素。
-#在一条数列上，有一个机器人在坐标0处，它将依次做以下动作：  
-#将A_1向正方向移动。
-#向正方向移动A_1，然后向正方向移动A_2。
-#向正方向移动A_1，然后向正方向移动A_2，再向正方向移动A_3。
-#.
-#.
-#.
-# 
-#向正方向移动A_1，然后向正方向移动A_2，再向正方向移动A_3，...，...，然后再向正方向移动A_N。
-#找到机器人从开始到结束所占据的最大坐标。
-#
-#约束条件
-#1 ≦ N ≦ 200000
-#-10^8 ≦ A_i ≦ 10^8
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#输出
-#打印机器人从过程开始到结束所占据的最大坐标。
-#
-#输入样本 1
-#3
-#2 -1 -2
-#
-#样本输出1
-#5
-#机器人的动作如下：
-#在正方向上移动2，到坐标2。
-#在正方向上移动2，到坐标4。然后在正方向上移动-1，到坐标3。
-#在正方向上移动2，到坐标5。然后在正方向上移动-1，到坐标4。然后在正方向上移动-2，到坐标2。
-#在这个过程中，占据的最大坐标是5，所以我们应该打印5。
-#
-#输入样本2
-#5
-#-2 1 3 -1 -1
-#
-#样本输出 2
-#2
-#
-#样本输入3
-#5
-#-1000 -1000 -1000 -1000 -1000
-#
-#样本输出3
-#0
-#在这种情况下，初始坐标0是占用的最大坐标。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    x = 0
+    for i in range(N):
+        x += A[i]
+        ans = max(ans, x)
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        ans = max(ans, sum)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    max_x = 0
+    x = 0
+    for i in range(n):
+        x += a[i]
+        max_x = max(max_x, x)
+    print(max_x)
+
+=======
+Suggestion 5
+
+def main():
+    n = input()
+    a = map(int, raw_input().split())
+    max = 0
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum > max:
+            max = sum
+    print max
+
+main()
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    max_p = 0
+    p = 0
+    for i in range(n):
+        p += a[i]
+        max_p = max(max_p, p)
+    print(max_p)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(maxCoordinate(N, A))
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    x = 0
+    max_x = 0
+    for i in range(N):
+        x += A[i]
+        max_x = max(max_x, x)
+    print(max_x)
+
+=======
+Suggestion 9
+
+def read_ints():
+    return map(int, raw_input().split())
+
+=======
+Suggestion 10
+
+def calc_max_coord(n, a):
+    max_coord = 0
+    cur_coord = 0
+    for i in range(n):
+        cur_coord += a[i]
+        if cur_coord > max_coord:
+            max_coord = cur_coord
+    return max_coord

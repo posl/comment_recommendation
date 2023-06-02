@@ -1,37 +1,109 @@
-#问题陈述
-#有一个周长为K米的圆形池塘，周围有N个房子。
-#第i间房子建在离池塘最北端A_i米的地方，按顺时针方向围绕池塘测量。
-#在这些房子之间行驶时，只能绕着池塘走。
-#当你从其中一所房子开始，并访问所有N所房子时，请找出需要走的最小距离。
-#
-#限制条件
-#2 ≦ K ≦ 10^6
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ A_1 < ...< A_N < K
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印当你从其中一个房子开始并访问所有N个房子时需要走的最小距离。
-#
-#输入样本 1
-#20 3
-#5 10 15
-#
-#样本输出1
-#10
-#如果你从第1个房子开始，按这个顺序去第2个和第3个房子，总的路程是10。
-#
-#样本输入2
-#20 3
-#0 5 15
-#
-#样本输出2
-#10
-#如果你从第2间房子开始，按这个顺序去第1间和第3间房子，总的路程是10。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0] + k)
+    ans = k
+    for i in range(n):
+        ans = min(ans, k - (a[i + 1] - a[i]))
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    d = 0
+    for i in range(n):
+        d = max(d, a[i] - a[i - 1])
+    d = max(d, k - a[n - 1] + a[0])
+    print(k - d)
+
+=======
+Suggestion 3
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(K)
+    ans = K
+    for i in range(N):
+        ans = min(ans, K - A[i] + A[i - 1])
+    print(ans)
+    return
+
+=======
+Suggestion 4
+
+def solve(k,n,alist):
+    if n==1:
+        return k
+    else:
+        return min(alist[i+1]-alist[i] for i in range(n-1))+k-alist[-1]+alist[0]
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def solve(K,N,A):
+    #print(K,N,A)
+    #print(A[0],K-A[N-1])
+    #print(max(A[0],K-A[N-1]))
+    #print((K-A[N-1])+(A[N-1]-A[0]))
+    return min(max(A[0],K-A[N-1]),(K-A[N-1])+(A[N-1]-A[0]))
+
+=======
+Suggestion 7
+
+def solve(k,n,a):
+    a = sorted(a)
+    m = k-a[-1]+a[0]
+    for i in range(1,n):
+        m = max(m,a[i]-a[i-1])
+    return k-m
+
+k,n = map(int,input().split())
+a = list(map(int,input().split()))
+print(solve(k,n,a))
+
+=======
+Suggestion 8
+
+def main():
+    k, n = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(a[0] + k)
+    d = [a[i+1] - a[i] for i in range(n)]
+    print(k - max(d))
+
+=======
+Suggestion 9
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(A[0] + K)
+    ans = K
+    for i in range(N):
+        ans = min(ans, K - (A[i + 1] - A[i]))
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    K, N = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(A[0] + K)
+    print(K-max(A[i+1]-A[i] for i in range(N)))

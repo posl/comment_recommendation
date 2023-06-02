@@ -1,64 +1,155 @@
-#问题陈述
-#给你正整数N和Q，以及一个由小写英文字母组成的长度为N的字符串S。
-#处理Q的查询。每个查询都是以下两种类型中的一种。
-#1 x:连续执行以下x次：删除S的最后一个字符并将其附加到开头。
-#2 x:打印S的第x个字符。
-#
-#限制条件
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ Q ≦ 5 × 10^5
-#1 ≦ x ≦ N
-#|S|=N
-#S由小写英文字母组成。
-#至少有一个格式为2 x的查询。
-#N, Q, x都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#S
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#每个查询的格式如下，其中t为1或2：
-#t x
-#
-#输出
-#对于每个格式为2 x的查询，将答案打印在一个单行中。
-#
-#输入样本 1
-#3 3
-#abc
-#2 2
-#1 1
-#2 2
-#
-#样本输出1
-#b
-#a
-#在第1个查询中，S是abc，所以第2个字符b应该被打印。
-#在第2次查询中，S从abc变为cab。
-#在第3次查询中，S是cab，所以第2个字符a应该被打印出来。
-#
-#输入示例 2
-#10 8
-#dsuccxulnl
-#2 4
-#2 7
-#1 2
-#2 7
-#1 1
-#1 2
-#1 3
-#2 5
-#
-#样本输出2
-#c
-#u
-#c
-#u
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    n, q = map(int, input().split())
+    s = input()
+    # 以列表形式存储
+    s = list(s)
+    # 处理查询
+    for i in range(q):
+        t, x = map(str, input().split())
+        x = int(x)
+        if t == '1':
+            # 1 x:连续执行以下x次：删除S的最后一个字符并将其附加到开头。
+            for j in range(x):
+                s.insert(0, s.pop())
+        elif t == '2':
+            # 2 x:打印S的第x个字符。
+            print(s[x - 1])
+
+=======
+Suggestion 3
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    s = list(s)
+    for _ in range(q):
+        t,x = map(int,input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 4
+
+def solve():
+    # 读入数据
+    n, q = map(int, input().split())
+    s = input()
+    query = [list(map(int, input().split())) for _ in range(q)]
+
+    # 处理
+    # 1.找到第一个被移动的字符位置
+    # 2.找到该字符被移动后的位置
+    # 3.根据移动的次数和字符移动后的位置，计算出字符移动后的位置
+    # 4.根据移动后的位置，找到原来的字符
+    # 5.输出
+    # 6.重复1-5
+    for t, x in query:
+        x = x - 1
+        for _ in range(x):
+            if s[x] == s[x - 1]:
+                x -= 1
+            else:
+                break
+        x = (x - t) % n
+        print(s[x])
+
+=======
+Suggestion 5
+
+def main():
+    # 将输入的字符串转换为列表
+    N, Q = map(int, input().split())
+    S = list(input())
+    # 依次处理Q个查询
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            # 1 x:连续执行以下x次：删除S的最后一个字符并将其附加到开头。
+            S = S[-x:] + S[:-x]
+        else:
+            # 2 x:打印S的第x个字符。
+            print(S[x - 1])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[N-x:] + S[:N-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    n, q = map(int, input().split())
+    s = input()
+    # 处理
+    for i in range(q):
+        # 读取输入
+        t, x = map(int, input().split())
+        if t == 2:
+            # 输出
+            print(s[x - 1])
+        else:
+            # 处理
+            s = s[-x:] + s[:-x]
+
+=======
+Suggestion 9
+
+def shift_string(s, n):
+    return s[n:] + s[:n]
+
+=======
+Suggestion 10
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])

@@ -1,48 +1,133 @@
-#问题陈述
-#高桥将回答N道问答题。
-#最初，他有X点。他每次回答问题时，如果回答正确，就会得到1分，如果回答错误，就会失去1分。
-#然而，有一个例外：当他有0分时，他回答错误的问题不会损失任何东西。
-#你将得到一个字符串S，代表高桥的答案是否正确。
-#如果S的左边第i个字符是o，说明他对第i个问题的回答是正确的；如果这个字符是x，说明他对第i个问题的回答是错误的。
-#他最后会有多少分？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#0 ≦ X ≦ 2 × 10^5
-#S是一个由o和x组成的长度为N的字符串。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#N X
-#S
-#
-#輸出
-#打印高桥最后拥有的点数。
-#
-#输入样本 1
-#3 0
-#xox
-#
-#样本输出1
-#0
-#最初，他有0分。
-#他错误地回答了第一个问题，但没有损失，因为他没有分数。
-#然后，他正确回答了第二个问题，获得了1分，现在有1分。
-#最后，他错误地回答了第三个问题，失去了1分，现在有0分。
-#因此，他最后有0分。我们应该打印0。
-#
-#输入样本2
-#20 199999
-#ooooooooxooooooooo
-#
-#样本输出2
-#200017
-#
-#样本输入3
-#20 10
-#xxxxxxxxxxxxxxxxxxxx
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        elif s[i] == 'x' and score > 0:
+            score -= 1
+    print(score)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    s = input()
+    count = x
+    for i in s:
+        if i == 'o':
+            count += 1
+        else:
+            if count == 0:
+                continue
+            else:
+                count -= 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve(n,x,s):
+    score = x
+    for i in range(n):
+        if s[i] == 'o':
+            score += 1
+        else:
+            if score > 0:
+                score -= 1
+    return score
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'o':
+            ans += 1
+        elif ans > 0:
+            ans -= 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,x=input().split()
+    n=int(n)
+    x=int(x)
+    s=input()
+    sum=x
+    for i in range(n):
+        if s[i]=='o':
+            sum+=1
+        elif s[i]=='x' and sum>0:
+            sum-=1
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    n,x = map(int,input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'x':
+            if ans > 0:
+                ans -= 1
+        else:
+            ans += 1
+    print(ans)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+    for i in range(n):
+        if s[i] == 'o':
+            x += 1
+        else:
+            if x > 0:
+                x -= 1
+    print(x)
+
+=======
+Suggestion 8
+
+def main():
+    N,X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'o':
+            X += 1
+        elif S[i] == 'x' and X > 0:
+            X -= 1
+    print(X)
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    s = input()
+    ans = x
+    for i in range(n):
+        if s[i] == 'o':
+            ans += 1
+        else:
+            if ans > 0:
+                ans -= 1
+    print(ans)

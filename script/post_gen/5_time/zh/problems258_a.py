@@ -1,37 +1,119 @@
-#问题说明
-#AtCoder初学者竞赛通常在日本时间21:00开始，持续100分钟。
-#给你一个介于0和100之间的整数K（包括在内）。以HH:MM格式打印21:00后的K分钟，其中HH表示24小时制时钟上的小时，MM表示分钟。如果小时或分钟只有一位数，在开头加上一个0，表示它是一个2位数的整数。
-#
-#限制条件
-#K是0到100（包括）之间的整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#输出
-#按照问题陈述中指定的格式打印21:00后的K分钟。
-#
-#输入样本1
-#63
-#
-#样本输出1
-#22:03
-#21:00之后的63分钟，将是22:03，所以应该打印22:03。
-#以下输出将被判断为不正确：
-#10:03
-#22:3
-#
-#样本输入2
-#45
-#
-#样本输出2
-#21:45
-#
-#样本输入3
-#100
-#
-#样本输出3
-#22:40
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem258_a():
+    k = int(input())
+    h = 21
+    m = 0
+    for i in range(k):
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+    print('{:02}:{:02}'.format(h, m))
+
+=======
+Suggestion 2
+
+def main():
+    k = int(input())
+    h = k//60
+    m = k%60
+    print('{:02d}:{:02d}'.format(h+21, m))
+
+=======
+Suggestion 3
+
+def get_time(k):
+    hour = 21
+    minute = 0
+    while k > 0:
+        minute += 1
+        if minute == 60:
+            hour += 1
+            minute = 0
+        if hour == 24:
+            hour = 0
+        k -= 1
+    return str(hour).zfill(2) + ':' + str(minute).zfill(2)
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    h = 21
+    m = 0
+    h += k // 60
+    m += k % 60
+    if m >= 60:
+        h += 1
+        m -= 60
+    if h >= 24:
+        h -= 24
+    print("{:02d}:{:02d}".format(h, m))
+
+=======
+Suggestion 5
+
+def f(k):
+    m = k % 60
+    h = k // 60 + 21
+    if h > 23:
+        h -= 24
+    return '{:02d}:{:02d}'.format(h, m)
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    print("{:02d}:{:02d}".format((k+120)//60+21,(k+120)%60))
+
+=======
+Suggestion 7
+
+def problem258_a():
+    K = int(input())
+    H = K // 60 + 21
+    M = K % 60
+    if M < 10:
+        print(str(H) + ':0' + str(M))
+    else:
+        print(str(H) + ':' + str(M))
+
+=======
+Suggestion 8
+
+def time_calculator(time):
+    time = 21*60 + time
+    hour = time // 60
+    minute = time % 60
+    return hour, minute
+
+=======
+Suggestion 9
+
+def main():
+    K = int(input())
+    H = K // 60
+    M = K % 60
+    print("%02d:%02d" % (H + 21, M))
+
+=======
+Suggestion 10
+
+def main():
+    k = int(input())
+    h = 21
+    m = 0
+    m = m + k
+    if m >= 60:
+        h = h + 1
+        m = m - 60
+    if m < 10:
+        print(str(h) + ':0' + str(m))
+    else:
+        print(str(h) + ':' + str(m))

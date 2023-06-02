@@ -1,42 +1,112 @@
-#问题说明
-#确定是否可以在二维平面上画一个边长为L_1, L_2, ..., L_N的N边形（不一定是凸形）。
-#你可以使用下面的定理：
-#定理：当且仅当最长边严格短于其他N-1边的长度之和时，可以画出满足条件的N边多边形。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 10
-#1 ≦ L_i ≦ 100
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#输出
-#如果可以画出满足条件的N边多边形，则打印 "是"；否则，打印 "否"。
-#
-#输入样本 1
-#4
-#3 8 5 1
-#
-#样本输出1
-#是
-#由于8<9=3+5+1，从定理中可以看出，这样的多边形可以画在平面上。
-#
-#输入样本2
-#4
-#3 8 4 1
-#
-#样本输出2
-#否
-#由于8≧8=3+4+1，从定理中可以看出，这样的多边形不能画在平面上。
-#
-#输入样本3
-#10
-#1 8 10 5 8 12 34 100 11 3
-#
-#样本输出3
-#否
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_polygon(n, l):
+    if max(l) < sum(l) - max(l):
+        return "是"
+    else:
+        return "否"
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    if l[-1] < sum(l[:-1]):
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def check_polygon(n, l):
+    max_l = max(l)
+    sum_l = sum(l) - max_l
+    if max_l < sum_l:
+        return "是"
+    else:
+        return "否"
+
+=======
+Suggestion 4
+
+def get_input():
+    N = int(input())
+    L = list(map(int, input().split()))
+    return N, L
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    l = list(map(int,input().split()))
+    max = l[0]
+    sum = 0
+    for i in l:
+        if i > max:
+            max = i
+        sum += i
+    if max < sum - max:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 6
+
+def isPolygon(L):
+    if max(L) < sum(L) - max(L):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def is_drawable(lengths):
+    max_length = max(lengths)
+    if sum(lengths) - max_length > max_length:
+        return '是'
+    else:
+        return '否'
+
+=======
+Suggestion 8
+
+def is_polygon_possible(n, l):
+    l.sort()
+    if l[-1] < sum(l[:-1]):
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 9
+
+def is_polygon(n, l):
+    if max(l) < sum(l) - max(l):
+        return "是"
+    else:
+        return "否"
+
+n = int(input())
+l = list(map(int, input().split()))
+print(is_polygon(n, l))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort(reverse=True)
+    if l[0] < sum(l[1:]):
+        print('是')
+    else:
+        print('否')

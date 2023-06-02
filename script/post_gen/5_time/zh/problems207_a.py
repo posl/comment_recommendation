@@ -1,38 +1,85 @@
-#问题陈述
-#桌子上有三张卡片，每张卡片上都写有一个正整数。卡片上的整数是A、B和C。
-#你选择了两张卡片并把它们捡起来。
-#请找出这两张卡片上的整数的最大可能之和。
-#
-#限制条件
-#1 ≦ a,b,c ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#打印答案为整数。
-#
-#输入样本 1
-#3 4 5
-#
-#输出示例 1
-#9
-#如果你拿起两张4和5的牌，整数之和将是4+5=9。
-#没有办法捡到总和更大的牌，所以我们应该打印9。
-#
-#输入样本2
-#6 6 6
-#
-#输出样本 2
-#12
-#无论你选择哪张牌，整数之和都是12。
-#
-#样本输入3
-#99 99 98
-#
-#样本输出3
-#198
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem207_a():
+    a, b, c = map(int, input().split())
+    print(max(a+b, a+c, b+c))
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int, input().split())
+    print(a+b+c)
+
+=======
+Suggestion 3
+
+def max_sum():
+    a,b,c = input().split()
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    if a == b == c:
+        print(a+b)
+    elif a == b:
+        print(a+c)
+    elif a == c:
+        print(a+b)
+    elif b == c:
+        print(b+a)
+    else:
+        print(max(a,b,c)*2)
+
+=======
+Suggestion 4
+
+def max_sum(a,b,c):
+    if a >= b and a >= c:
+        return a + max(b,c)
+    elif b >= a and b >= c:
+        return b + max(a,c)
+    else:
+        return c + max(a,b)
+
+=======
+Suggestion 5
+
+def main():
+    num_list = input().split()
+    num_list = [int(i) for i in num_list]
+    num_list.sort()
+    print(sum(num_list[-2:]))
+
+=======
+Suggestion 6
+
+def max_sum():
+    a, b, c = map(int, input().split())
+    print(a + b + c - min(a, b, c))
+    return
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c = map(int, input().split())
+    print(max(a+b,b+c,c+a))
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 输出结果
+    print(a + b + c - min(a, b, c))
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int, input().split())
+    print(max(a+b, a+c, b+c))

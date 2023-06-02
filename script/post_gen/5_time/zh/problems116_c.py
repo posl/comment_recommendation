@@ -1,45 +1,154 @@
-#问题陈述
-#在一个花坛中，有N朵花，编号为1,2,......,N。最初，所有花朵的高度都是0。
-#给你一个序列h={h_1,h_2,h_3,......}作为输入。你想通过重复以下 "浇水 "操作，将所有k（1 ≦ k ≦ N）的花的高度改为h_k：
-#指定整数l和r。对于所有x，使l ≦ x ≦ r的花的高度增加1。
-#求满足条件所需的最小浇水次数。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#0 ≦ h_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#h_1 h_2 h_3 ...... h_N
-#
-#输出
-#打印满足条件所需的最小浇水操作数。
-#
-#输入样本 1
-#4
-#1 2 2 1
-#
-#样本输出 1
-#2
-#所需的最小浇水操作数是2。
-#实现它的一个方法是：
-#以(l,r)=(1,3)的方式进行操作。
-#用(l,r)=(2,4)进行操作。
-#
-#样本输入2
-#5
-#3 1 2 3 1
-#
-#样本输出2
-#5
-#
-#样本输入3
-#8
-#4 23 75 0 23 96 50 100
-#
-#样本输出3
-#221
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def min_watering(h):
+    count = 0
+    for i in range(len(h)):
+        if h[i] == 0:
+            continue
+        elif i == len(h)-1:
+            count += h[i]
+        else:
+            count += h[i]
+            if h[i] <= h[i+1]:
+                count += h[i]
+            else:
+                count += h[i+1]
+    return count
+
+=======
+Suggestion 2
+
+def solve(n,h):
+    ans = 0
+    for i in range(1,n+1):
+        if h[i-1] == 0:
+            continue
+        else:
+            ans += h[i-1]
+            if i != n:
+                if h[i] != 0:
+                    ans += h[i-1]
+    return ans
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    h = list(map(int, input().split()))
+    h.insert(0, 0)
+    ans = 0
+    for i in range(1, n + 1):
+        if h[i] > h[i - 1]:
+            ans += h[i] - h[i - 1]
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = list(map(int,input().split()))
+    h.insert(0,0)
+    h.append(0)
+    ans = 0
+    for i in range(1,n+1):
+        if h[i-1] < h[i] and h[i] > h[i+1]:
+            ans += 1
+        if h[i-1] > h[i] and h[i] < h[i+1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    ans = 0
+    while sum(h) > 0:
+        for i in range(N):
+            if h[i] > 0:
+                ans += 1
+                h[i] -= 1
+                while i < N and h[i] > 0:
+                    h[i] -= 1
+                    i += 1
+                break
+    print(ans)
+
+=======
+Suggestion 6
+
+def water_flowers(N, h):
+    return 0
+
+=======
+Suggestion 7
+
+def solve(n, h):
+    ans = 0
+    while True:
+        left = -1
+        right = -1
+        for i in range(n):
+            if h[i] > 0:
+                if left == -1:
+                    left = i
+                right = i
+        if left == -1:
+            break
+        for i in range(left, right+1):
+            h[i] -= 1
+        ans += 1
+    return ans
+
+n = int(input())
+h = list(map(int, input().split()))
+print(solve(n, h))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    h = list(map(int, input().split()))
+    h.insert(0, 0)
+    h.append(0)
+    count = 0
+    for i in range(1,N+2):
+        if h[i] > h[i-1]:
+            count += h[i] - h[i-1]
+    print(count)
+
+=======
+Suggestion 9
+
+def get_min_watering_times(N, h):
+    water_times = 0
+    for i in range(N):
+        if h[i] == 0:
+            continue
+        elif h[i] == 1:
+            water_times += 1
+        else:
+            water_times += h[i]
+    return water_times
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    h = list(map(int,input().split()))
+    h.insert(0,0)
+    ans = 0
+    for i in range(1,n+1):
+        if h[i-1] < h[i]:
+            ans += h[i] - h[i-1]
+    print(ans)

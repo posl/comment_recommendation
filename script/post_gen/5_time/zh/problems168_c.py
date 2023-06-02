@@ -1,33 +1,136 @@
-#问题陈述
-#考虑一个模拟时钟，其时针和分针分别为A和B厘米长。
-#时针的端点和分针的端点固定在同一点上，每根指针都以恒定的角速度围绕该点顺时针旋转。时针和分针分别需要12小时和1小时才能旋转一圈。
-#在0点钟方向，两根指针相互重叠。H小时和M分钟后，两根指针的非固定端点之间的距离是多少厘米？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a, b ≦ 1000
-#0 ≦ H ≦ 11
-#0 ≦ M ≦ 59
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#A B H M
-#
-#輸出
-#打印没有单位的答案。当你的输出与正确值的绝对或相对误差最多为10^{-9}时，你的输出将被接受。
-#
-#输入样本 1
-#3 4 9 0
-#
-#输出样本1
-#5.00000000000000000000
-#两只手将处于下图所示的位置，所以答案是5厘米。
-#
-#样本输入2
-#3 4 10 40
-#
-#样本输出2
-#4.56425719433005567605
-#两只手将处于下图所示的位置。请注意，每只手总是以恒定的角速度旋转。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, h, m = map(int, input().split())
+    x = a * (h * 60 + m) / 720
+    y = b * m / 60
+    print((x ** 2 + y ** 2) ** 0.5)
+
+=======
+Suggestion 2
+
+def clockHand(a, b, h, m):
+    import math
+    # 时针转动的角度
+    h_angle = 30 * h + 0.5 * m
+    # 分针转动的角度
+    m_angle = 6 * m
+    # 两个指针之间的角度
+    angle = abs(h_angle - m_angle)
+    # 余弦定理求出两个指针之间的距离
+    c = math.sqrt(a * a + b * b - 2 * a * b * math.cos(math.radians(angle)))
+    return c
+
+=======
+Suggestion 3
+
+def main():
+    a, b, h, m = map(int, input().split())
+    import math
+    x = (h + m / 60) * 30
+    y = m * 6
+    z = (x - y) % 360
+    if z > 180:
+        z = 360 - z
+    z = math.radians(z)
+    print((a ** 2 + b ** 2 - 2 * a * b * math.cos(z)) ** 0.5)
+
+=======
+Suggestion 4
+
+def clock(a,b,h,m):
+    import math
+    # 分针的角速度
+    v_m = 360/60
+    # 时针的角速度
+    v_h = 360/12
+    # 分针的角度
+    angle_m = v_m*m
+    # 时针的角度
+    angle_h = v_h*h + v_h*m/60
+    # 分针的坐标
+    x_m = a*math.cos(math.radians(angle_m))
+    y_m = a*math.sin(math.radians(angle_m))
+    # 时针的坐标
+    x_h = b*math.cos(math.radians(angle_h))
+    y_h = b*math.sin(math.radians(angle_h))
+    # 两个坐标之间的距离
+    distance = math.sqrt((x_m-x_h)**2+(y_m-y_h)**2)
+    return distance
+
+=======
+Suggestion 5
+
+def main():
+    # 读入输入
+    a, b, h, m = map(int, input().split())
+    # 计算角度
+    a_rad = 2 * 3.14159265358979323846 * (h / 12 + m / 60 / 12)
+    b_rad = 2 * 3.14159265358979323846 * (m / 60)
+    # 计算距离
+    import math
+    print(math.sqrt(a ** 2 + b ** 2 - 2 * a * b * math.cos(a_rad - b_rad)))
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    a, b, h, m = map(int, input().split())
+    from math import cos, pi
+    print((a**2+b**2-2*a*b*cos((h*60+m)*pi/360))**0.5)
+
+=======
+Suggestion 8
+
+def clock_distance(a, b, h, m):
+    h_angle = h * 30 + m * 0.5
+    m_angle = m * 6
+    angle = abs(h_angle - m_angle)
+    if angle > 180:
+        angle = 360 - angle
+    angle = angle * 3.141592653589793238462643383279502884197169399375105820974944592307816406286 / 180
+    return (a ** 2 + b ** 2 - 2 * a * b * cos(angle)) ** 0.5
+
+=======
+Suggestion 9
+
+def main():
+    A, B, H, M = map(int, input().split())
+    import math
+
+    # 角度をラジアンに変換
+    H_rad = (H * 60 + M) / 720 * math.pi * 2
+    M_rad = M / 60 * math.pi * 2
+
+    # 余弦定理
+    print(math.sqrt(A ** 2 + B ** 2 - 2 * A * B * math.cos(H_rad - M_rad)))
+
+=======
+Suggestion 10
+
+def clock(a,b,h,m):
+    if h > 12:
+        h = h - 12
+    h = h + m/60
+    h = h * 30
+    m = m * 6
+    angle = abs(h - m)
+    if angle > 180:
+        angle = 360 - angle
+    angle = angle * 3.1415926535897932384626433832795 / 180
+    c = a**2 + b**2 - 2*a*b * math.cos(angle)
+    c = math.sqrt(c)
+    return c
+
+import math
+a,b,h,m = map(int,input().split())
+print(clock(a,b,h,m))

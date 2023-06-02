@@ -1,66 +1,182 @@
-#问题陈述
-#高桥将在一个编号为1，2，...，N的方格阵列上用棋子进行游戏。方格i上写有一个整数C_i。另外，他还得到了1, 2, ..., N的一个排列组合：P_1, P_2, ..., P_N。
-#现在，他将选择一个方格并将棋子放在该方格上。然后，他将在1到K（包括）之间的一些次数进行下面的移动：
-#在一步棋中，如果棋子现在在i方格（1 ≦ i ≦ N），就把它移到P_i方格。在这里，他的分数会增加C_{P_i}。
-#帮助他找到对局结束时的最大可能分数。(在游戏开始时分数为0）。
-#
-#限制条件
-#2 ≦ N ≦ 5000
-#1 ≦ K ≦ 10^9
-#1 ≦ P_i ≦ N
-#P_i ≠ i
-#P_1, P_2, ..., P_N 都是不同的。
-#-10^9 ≦ C_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#P_1 P_2 ...P_N
-#C_1 C_2 ...C_N
-#
-#输出
-#在游戏结束时打印出可能的最大分数。
-#
-#输入样本 1
-#5 2
-#2 4 5 1 3
-#3 4 -10 -8 8
-#
-#样本输出1
-#8
-#当我们从我们选择的某个方格开始，并最多走两步棋时，我们有以下选择：
-#如果我们从1号方格开始，走一步就把棋子送到2号方格，之后的分数是4。
-#如果我们从方格2开始，走一步棋将棋子送到方格4，之后的分数是-8。再走一步棋将棋子送到方格1，之后的分数是-8+3=-5。
-#如果我们从3号方格开始，走一步棋将棋子送到5号方格，之后的分数是8。再走一步棋将棋子送到3号方格，之后的分数是8+（-10）=-2。
-#如果我们从方格4开始，走一步棋将棋子送到方格1，之后的分数是3。再走一步棋将棋子送到方格2，之后的分数是3+4=7。
-#如果我们从5号方格开始，走一步棋会把棋子送到3号方格，之后的分数是-10。再走一步就把棋子送到5号方格，之后的分数是-10+8=-2。
-#最高得分是8分。
-#
-#输入样本 2
-#2 3
-#2 1
-#10 -7
-#
-#样本输出2
-#13
-#
-#样本输入3
-#3 3
-#3 1 2
-#-1000 -2000 -3000
-#
-#样本输出 3
-#-1000
-#我们至少要走一步。
-#
-#输入样本4
-#10 58
-#9 1 6 7 8 4 3 2 10 5
-#695279662 988782657 -119067776 382975538 -151885171 -177220596 -169777795 37619092 389386780 980092719
-#
-#样本输出4
-#29507023469
-#答案的绝对值可能是巨大的。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,K = map(int,input().split())
+    P = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    P.insert(0,0)
+    C.insert(0,0)
+    ans = -float("inf")
+    for i in range(1,N+1):
+        loop = []
+        loop.append(C[i])
+        loop.append(C[P[i]])
+        loop.append(C[P[P[i]]])
+        if K>=3:
+            loop.append(C[P[P[P[i]]]])
+        if K>=4:
+            loop.append(C[P[P[P[P[i]]]]])
+        if K>=5:
+            loop.append(C[P[P[P[P[P[i]]]]]])
+        if K>=6:
+            loop.append(C[P[P[P[P[P[P[i]]]]]]])
+        if K>=7:
+            loop.append(C[P[P[P[P[P[P[P[i]]]]]]]])
+        if K>=8:
+            loop.append(C[P[P[P[P[P[P[P[P[i]]]]]]]]])
+        if K>=9:
+            loop.append(C[P[P[P[P[P[P[P[P[P[i]]]]]]]]]])
+        if K>=10:
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def solve(n,k,p,c):
+    maxScore = -10000000000
+    for i in range(n):
+        next = p[i]-1
+        score = c[next]
+        for j in range(k-1):
+            next = p[next]-1
+            score += c[next]
+        if score > maxScore:
+            maxScore = score
+    return maxScore
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    ans = -float('inf')
+    for i in range(N):
+        v = i
+        s = 0
+        t = 0
+        while True:
+            v = P[v] - 1
+            s += C[v]
+            t += 1
+            if v == i:
+                break
+            if t == K:
+                break
+        if s > ans:
+            ans = s
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = -10 ** 18
+    for i in range(n):
+        # i: start point
+        # j: end point
+        j = i
+        s = 0
+        t = 0
+        while True:
+            j = p[j] - 1
+            s += c[j]
+            t += 1
+            if j == i:
+                break
+            if t == k:
+                break
+        if s > 0:
+            u = s * (k // t - 1)
+            ans = max(ans, u + s)
+        else:
+            ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def problems175_d():
+    return None
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    #print(n, k, p, c)
+    max_score = -1e9
+    for i in range(n):
+        score = 0
+        j = i
+        step = 0
+        while True:
+            j = p[j] - 1
+            score += c[j]
+            step += 1
+            if j == i:
+                break
+            if step == k:
+                break
+        if step < k and score > 0:
+            score += (k - step) // step * score
+        if score > max_score:
+            max_score = score
+    print(max_score)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    P = [p-1 for p in P]
+    # print(P)
+    # print(C)
+
+    # 1. 从每个点开始，计算最大得分
+    # 2. 从每个点开始，计算最大得分，再走一步，计算最大得分
+    # 3. 从每个点开始，计算最大得分，再走两步，计算最大得分
+    # 4. 从每个点开始，计算最大得分，再走三步，计算最大得分
+    # ...
+    # 5. 从每个点开始，计算最大得分，再走K-1步，计算最大得分
+    # 6. 取5个中最大的
+
+    # 1. 从每个点开始，计算最大得分
+    # 1.1 从每个点开始，计算最大得分
+    # 1.2 从每个点开始，计算最大得分
+    # 1.3 从每个点开始，计算最大得分
+    # 1.4 从每个点开始，计算最大得分
+    # ...
+    # 1.K-1 从每个点开始，计算最大得分
+    # 1.K 取1.K-1个中最大的
+
+    # 2. 从每个点开始，计算最大得分，再走一步，计算最大得分
+    # 2.1 从每个点开始，计算最大得分，再走一步，计算最大得分
+    # 2.2 从每个点开始，计算最大得分，再走一步，计算最大得分
+    # 2.3 从每个点开始，计算最大得分，再走一步，计算最大得分
+    # 2.

@@ -1,34 +1,160 @@
-#问题陈述
-#我们有一个长度为N的字符串S，由R、G和B组成。
-#求满足以下两个条件的三联体(i,j,k)(1 ≦ i < j < k ≦ N)的数量：
-#S_i ≠ S_j, S_i ≠ S_k, and S_j ≠ S_k.
-#j - i ≠ k - j。
-#
-#限制条件
-#1 ≦ N ≦ 4000
-#S是一个长度为N的字符串，由R、G和B组成。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#S
-#
-#输出
-#打印有关三联体的数量。
-#
-#输入样本1
-#4
-#RRGB
-#
-#采样输出1
-#1
-#只有三联体（1,3,4）满足两个条件。三联体（2,3,4）满足第一个条件，但不满足第二个条件，所以不算数。
-#
-#样本输入2
-#39
-#rbrbgrbggbbrrgbbrrrbggbrbgbrbgbrbbbgbbb
-#
-#样本输出2
-#1800
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_num_of_triple(s):
+    n = len(s)
+    num = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if s[i] != s[j] and s[i] != s[k] and s[j] != s[k] and j - i != k - j:
+                    num += 1
+    return num
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+
+    ans = r * g * b
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            k = 2 * j - i
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    print("hello")
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    R = S.count('R')
+    G = S.count('G')
+    B = S.count('B')
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            k = 2*j - i
+            if k < N:
+                if S[i] != S[j] and S[j] != S[k] and S[k] != S[i]:
+                    ans += 1
+    print(R*G*B - ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = input()
+
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if S[i] != S[j] and S[j] != S[k] and S[i] != S[k] and j - i != k - j:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    g = s.count('G')
+    b = s.count('B')
+    ans = r * g * b
+
+    for i in range(n):
+        for j in range(i+1, n):
+            k = j + (j - i)
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    S = input()
+    cnt = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if S[i] != S[j] and S[j] != S[k] and S[i] != S[k]:
+                    if j - i != k - j:
+                        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def find_next_char(s, i, c):
+    for j in range(i+1, len(s)):
+        if s[j] != c:
+            return j
+    return -1
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count("R")
+    g = s.count("G")
+    b = s.count("B")
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i+1,n):
+            k = 2 * j - i
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[i] != s[k]:
+                    ans -= 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = input()
+    r, g, b = 0, 0, 0
+    for i in range(n):
+        if s[i] == 'R':
+            r += 1
+        elif s[i] == 'G':
+            g += 1
+        else:
+            b += 1
+    ans = r * g * b
+    for i in range(n):
+        for j in range(i + 1, n):
+            k = 2 * j - i
+            if k < n:
+                if s[i] != s[j] and s[j] != s[k] and s[k] != s[i]:
+                    ans -= 1
+    print(ans)

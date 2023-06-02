@@ -1,37 +1,135 @@
-#问题说明
-#N块瓷砖从左到右排列成一排。每块瓷砖的初始颜色由一个长度为N的字符串S表示。
-#如果S的第i个字符是0，从左边开始的第i个瓷砖被涂成黑色，如果该字符是1，则涂成白色。
-#你想把一些瓷砖重新涂成黑色或白色，这样任何相邻的两块瓷砖都有不同的颜色。
-#至少有多少块瓷砖需要重新涂抹才能满足条件？
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S_i为0或1。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印为满足条件需要重新涂抹的最小瓷砖数量。
-#
-#输入样本 1
-#000
-#
-#样本输出 1
-#1
-#这个条件可以通过把中间的瓦片重新涂成白色来满足。
-#
-#输入样本2
-#10010010
-#
-#样本输出2
-#3
-#
-#样本输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(s):
+    if len(s) == 1:
+        return 0
+    else:
+        if s[0] == '0' and s[1] == '0':
+            return 1 + solve(s[1:])
+        elif s[0] == '1' and s[1] == '1':
+            return 1 + solve(s[1:])
+        else:
+            return solve(s[1:])
+
+=======
+Suggestion 2
+
+def solve(s):
+    return min(s.count('0'), s.count('1')) * 2
+
+=======
+Suggestion 3
+
+def solve():
+    S = input()
+    ans = 0
+    for i in range(len(S)):
+        if i % 2 == 0 and S[i] == '1':
+            ans += 1
+        elif i % 2 == 1 and S[i] == '0':
+            ans += 1
+    print(min(ans, len(S) - ans))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    l = len(s)
+    c = 0
+    for i in range(l):
+        if i % 2 == 0:
+            if s[i] == '1':
+                c += 1
+        else:
+            if s[i] == '0':
+                c += 1
+    print(c if c < l - c else l - c)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    n = len(s)
+    count = 0
+    for i in range(n):
+        if i % 2 == 0 and s[i] == '1':
+            count += 1
+        elif i % 2 == 1 and s[i] == '0':
+            count += 1
+    print(min(count, n - count))
+
+=======
+Suggestion 6
+
+def solve(S):
+    N = len(S)
+    ans = 0
+    for i in range(N):
+        if i % 2 == 0:
+            if S[i] == '0':
+                ans += 1
+        else:
+            if S[i] == '1':
+                ans += 1
+    return min(ans, N - ans)
+
+S = input()
+print(solve(S))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    n = 0
+    for i in range(len(s)):
+        if s[i] == '1' and i % 2 == 0:
+            n += 1
+        elif s[i] == '0' and i % 2 == 1:
+            n += 1
+    print(min(n, len(s) - n))
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i%2 == 0:
+            if s[i] == '1':
+                count += 1
+        else:
+            if s[i] == '0':
+                count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = input()
+    ans = 0
+    for i in range(N):
+        if S[i] == "0":
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i] == '1':
+            count += 1
+        if i % 2 == 1 and s[i] == '0':
+            count += 1
+    print(min(count, len(s) - count))

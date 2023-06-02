@@ -1,74 +1,172 @@
-#问题陈述
-#我们有一块长度为L米的长木板。
-#对于每个x=1，2，...，L-1，在距离木头左端x米处有一个标记，叫做Mark x。
-#给你Q个查询，其中第i个查询表示为一对数字（c_i, x_i）。
-#如下所述，按i的升序来处理这些查询。
-#如果c_i=1：将标记x_i处的棋子切成两个。
-#如果c_i = 2：选择上面有标记x_i的那块，并打印其长度。
-#在这里，对于这两种查询c_i = 1, 2，可以保证在查询被处理时，在标记x_i处没有切割。
-#
-#限制条件
-#1 ≦ L ≦ 10^9
-#1 ≦ Q ≦ 2 × 10^5
-#c_i = 1, 2 (1 ≦ i ≦ Q)
-#1 ≦ x_i ≦ L - 1 (1 ≦ i ≦ Q)
-#对于每一个i (1 ≦ i ≦ Q)，以下情况成立：没有j使1 ≦ j < i和(c_j,x_j) = (1, x_i)。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#L Q
-#c_1 x_1
-#c_2 x_2
-#.
-#.
-#.
-#c_Q x_Q
-#
-#输出
-#打印与查询数量相等的行数 c_i = 2。
-#在第j行中，打印对第j个此类查询的响应。
-#
-#输入样本 1
-#5 3
-#2 2
-#1 3
-#2 2
-#
-#样本输出1
-#5
-#3
-#在第一次查询时，还没有进行切割，所以带有标记2的工件的长度为5米。因此，你应该打印5。
-#在第二次查询中，这块材料被切割成两块，长度分别为3米和2米。
-#在第三次查询时，标记为2的那块的长度为3米，所以应该打印3。  
-#
-#输入样本 2
-#5 3
-#1 2
-#1 4
-#2 3
-#
-#样本输出 2
-#2
-#
-#样本输入3
-#100 10
-#1 31
-#2 41
-#1 59
-#2 26
-#1 53
-#2 58
-#1 97
-#2 93
-#1 23
-#2 84
-#
-#样本输出3
-#69
-#31
-#6
-#38
-#38
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    L, Q = map(int, input().split())
+    cuts = [0, L]
+    for _ in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            cuts.append(x)
+        else:
+            cuts.sort()
+            idx = cuts.index(x)
+            print(cuts[idx] - cuts[idx-1])
+
+=======
+Suggestion 2
+
+def main():
+    l,q = map(int,input().split())
+    mark = [0] * (l+1)
+    mark[1] = l
+    for i in range(q):
+        c,x = map(int,input().split())
+        if c == 1:
+            mark[x],mark[x+1] = x,mark[x]-x
+        else:
+            print(mark[x])
+
+=======
+Suggestion 3
+
+def main():
+    L, Q = map(int, input().split())
+    mark = [0 for i in range(L+1)]
+    for i in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            mark[x] = 1
+        else:
+            left = 0
+            right = L
+            for j in range(x, -1, -1):
+                if mark[j] == 1:
+                    left = j
+                    break
+            for j in range(x, L+1):
+                if mark[j] == 1:
+                    right = j
+                    break
+            print(right-left)
+
+=======
+Suggestion 4
+
+def main():
+    #输入
+    L,Q = map(int, input().split())
+    #初始长度为L的木材
+    wood = [L]
+    #标记列表
+    mark = []
+    #处理查询
+    for i in range(Q):
+        c,x = map(int, input().split())
+        if c==1:
+            #将标记插入到标记列表
+            mark.append(x)
+        else:
+            #找到标记所在的位置
+            pos = bisect.bisect(mark, x)
+            #计算标记左边的长度
+            left = mark[pos-1] if pos>0 else 0
+            #计算标记右边的长度
+            right = L-mark[pos] if pos<len(mark) else 0
+            #将标记左边的长度和标记右边的长度插入到木材列表
+            wood.append(left)
+            wood.append(right)
+            #删除标记
+            del mark[pos]
+            #排序木材列表
+            wood.sort()
+            #打印最长的木材长度
+            print(wood[-1])
+
+=======
+Suggestion 5
+
+def main():
+    L,Q = map(int,input().split())
+    mark = [0]*(L+1)
+    for i in range(Q):
+        c,x = map(int,input().split())
+        if c == 1:
+            mark[x] = 1
+        else:
+            if mark[x] == 1:
+                mark[x] = 0
+                left = 0
+                right = 0
+                for j in range(x+1,L+1):
+                    if mark[j] == 0:
+                        right = j
+                        break
+                for j in range(x-1,-1,-1):
+                    if mark[j] == 0:
+                        left = j
+                        break
+                print(right-left)
+            else:
+                print(0)
+
+=======
+Suggestion 6
+
+def main():
+    L, Q = map(int, input().split())
+    X = [0, L]
+    for _ in range(Q):
+        c, x = map(int, input().split())
+        if c == 1:
+            X.append(x)
+        else:
+            X.sort()
+            for i in range(len(X)):
+                if X[i] == x:
+                    print(X[i + 1] - X[i - 1])
+                    break
+
+=======
+Suggestion 7
+
+def main():
+    L,Q = map(int,input().split())
+    cut_point = [0,L]
+    for i in range(Q):
+        c_i,x_i = map(int,input().split())
+        if c_i == 1:
+            cut_point.append(x_i)
+        if c_i == 2:
+            cut_point.sort()
+            index = cut_point.index(x_i)
+            print(cut_point[index+1]-cut_point[index-1])
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    L,Q = map(int,input().split())
+    mark = [0] * L
+    for i in range(Q):
+        c,x = map(int,input().split())
+        if c == 1:
+            mark[x-1] = 1
+        else:
+            if mark[x-1] == 1:
+                mark[x-1] = 0
+                print(L)
+            else:
+                for j in range(x-1,L):
+                    if mark[j] == 1:
+                        len = j - x + 1
+                        print(len)
+                        break

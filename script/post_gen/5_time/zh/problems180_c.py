@@ -1,68 +1,68 @@
-#问题陈述
-#我们有N个奶油泡芙。
-#请找出所有可能的人数，以便在不切割奶油泡芙的情况下将其均匀地分配给这些人。
-#
-#限制条件
-#1 ≦ N ≦ 10^{12}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#按升序打印人的数量，每个人都在自己的行中。
-#
-#输入样本 1
-#6
-#
-#样本输出 1
-#1
-#2
-#3
-#6
-#例如，我们可以把奶油泡芙均匀地分给两个人，每人给三个。
-#
-#样本输入2
-#720
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#6
-#8
-#9
-#10
-#12
-#15
-#16
-#18
-#20
-#24
-#30
-#36
-#40
-#45
-#48
-#60
-#72
-#80
-#90
-#120
-#144
-#180
-#240
-#360
-#720
-#
-#样本输入3
-#1000000007
-#
-#样品输出3
-#1
-#1000000007
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    i = 1
+    while i * i <= N:
+        if N % i == 0:
+            print(i)
+            if i != N // i:
+                print(N // i)
+        i += 1
+
+=======
+Suggestion 2
+
+def solve(n):
+    ans = []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            ans.append(i)
+            if i != n // i:
+                ans.append(n // i)
+        i += 1
+    ans.sort()
+    return ans
+
+=======
+Suggestion 3
+
+def problem180_c():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            print(i)
+            if i != n // i:
+                print(n // i)
+        i += 1
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    i = 1
+    while i*i <= n:
+        if n % i == 0:
+            print(i)
+            if i*i != n:
+                print(n // i)
+        i += 1
+main()

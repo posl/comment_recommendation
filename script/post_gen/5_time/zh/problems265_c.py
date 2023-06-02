@@ -1,68 +1,179 @@
-#问题陈述
-#我们有一个有H个水平行和W个垂直列的网格。  (i, j)表示从上往下第i行和从左往下第j列的方格。
-#(i,j)上写有一个字符G_{i,j}。  G_{i,j}是U、D、L或R。
-#你最初是在（1,1）。  你重复以下操作，直到你无法下棋为止。
-#设(i,j)为你目前所在的方格。
-#如果G_{i,j}是U且i≠1，则移动到（i-1,j）。
-#如果G_{i,j}是D，且i≠H，则移动到（i+1,j）。
-#如果G_{i,j}是L且j≠1，则移动到（i,j-1）。
-#如果G_{i,j}是R且j≠W，则移动到（i,j+1）。
-#否则，你不能走棋。  
-#打印你在无法下棋时最终所处的位置。
-#如果你无限期地重复移动，则打印-1来代替。
-#
-#限制条件
-#1 ≦ H, W ≦ 500
-#G_{i,j}是U, D, L, 或R。
-#H和W是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#G_{1,1}G_{1,2}...G_{1,W}
-#G_{2,1}G_{2,2}...G_{2,W}
-#.
-#.
-#.
-#G_{H,1}G_{H,2}...G_{H,W}
-#
-#输出
-#如果你在(i, j)处结束，请按以下格式打印：
-#i j
-#如果你无限期地重复移动，则打印-1。
-#
-#输入样本 1
-#2 3
-#RDU
-#LRU
-#
-#样本输出1
-#1 3
-#你将以（1，1）->（1，2）->（2，2）->（2，3）->（1，3）的方式移动，最后在这里结束，所以答案是（1，3）。
-#
-#输入样本 2
-#2 3
-#RRD
-#ULL
-#
-#样本输出2
-#-1
-#你将无限期地重复移动，如（1，1）->（1，2）->（1，3）->（2，3）->（2，2）->（2，1）->（1，1）->（1，2）->...，所以在这种情况下应该打印-1。
-#
-#输入样本 3
-#9 44
-#RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR
-#RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD
-#DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR
-#DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD
-#RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR
-#RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR
-#RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR
-#RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR
-#RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR
-#
-#
-#样本输出3
-#9 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem265_c():
+    pass
+
+=======
+Suggestion 2
+
+def problems265_c():
+    pass
+
+=======
+Suggestion 3
+
+def get_input():
+    h, w = map(int, input().split())
+    g = []
+    for i in range(h):
+        g.append(input())
+    return h, w, g
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    G = [input() for _ in range(H)]
+    i = 0
+    j = 0
+    while True:
+        if G[i][j] == 'U':
+            if i == 0:
+                print(i+1, j+1)
+                break
+            else:
+                i -= 1
+        elif G[i][j] == 'D':
+            if i == H-1:
+                print(i+1, j+1)
+                break
+            else:
+                i += 1
+        elif G[i][j] == 'L':
+            if j == 0:
+                print(i+1, j+1)
+                break
+            else:
+                j -= 1
+        elif G[i][j] == 'R':
+            if j == W-1:
+                print(i+1, j+1)
+                break
+            else:
+                j += 1
+        else:
+            print(-1)
+            break
+
+=======
+Suggestion 5
+
+def solve():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    grid = [input() for _ in range(H)]
+    x, y = 0, 0
+    visited = [[0 for _ in range(W)] for _ in range(H)]
+    while True:
+        if grid[x][y] == 'U':
+            if x == 0:
+                break
+            else:
+                x -= 1
+        elif grid[x][y] == 'D':
+            if x == H - 1:
+                break
+            else:
+                x += 1
+        elif grid[x][y] == 'L':
+            if y == 0:
+                break
+            else:
+                y -= 1
+        elif grid[x][y] == 'R':
+            if y == W - 1:
+                break
+            else:
+                y += 1
+        if visited[x][y] == 1:
+            print(-1)
+            return
+        else:
+            visited[x][y] = 1
+    print(x + 1, y + 1)
+    return
+
+main()
+
+=======
+Suggestion 7
+
+def problem265_c():
+    return None
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    H,W = map(int,input().split())
+    G = [[0 for i in range(W+2)] for j in range(H+2)]
+    for i in range(1,H+1):
+        G[i] = [0] + list(input()) + [0]
+    x = 1
+    y = 1
+    while True:
+        if G[x][y] == 'U':
+            x -= 1
+        elif G[x][y] == 'D':
+            x += 1
+        elif G[x][y] == 'L':
+            y -= 1
+        elif G[x][y] == 'R':
+            y += 1
+        if x == 0 or x == H+1 or y == 0 or y == W+1:
+            break
+    if x == 0:
+        x += 1
+    elif x == H+1:
+        x -= 1
+    elif y == 0:
+        y += 1
+    elif y == W+1:
+        y -= 1
+    print(x,y)
+
+=======
+Suggestion 10
+
+def move(i,j):
+    if G[i-1][j-1] == "U" and i!=1:
+        return i-1,j
+    elif G[i-1][j-1] == "D" and i!=H:
+        return i+1,j
+    elif G[i-1][j-1] == "L" and j!=1:
+        return i,j-1
+    elif G[i-1][j-1] == "R" and j!=W:
+        return i,j+1
+    else:
+        return -1,-1
+
+H,W = map(int,input().split())
+G = [list(input()) for i in range(H)]
+i,j = 1,1
+seen = [[0 for i in range(W)] for j in range(H)]
+seen[0][0] = 1
+while True:
+    i,j = move(i,j)
+    if i==-1 and j==-1:
+        print(-1)
+        break
+    elif seen[i-1][j-1] == 1:
+        print(i,j)
+        break
+    else:
+        seen[i-1][j-1] = 1

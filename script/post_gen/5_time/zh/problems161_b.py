@@ -1,43 +1,154 @@
-#问题陈述
-#我们为N个正在销售的商品举行了一次人气投票。项目i获得了A_i票。
-#从这N件商品中，我们将选择M件作为流行商品。但是，我们不能选择票数少于总票数的（1/(4M)）的项目。
-#如果可以选择M个受欢迎的项目，打印 "是"；否则，打印 "否"。
-#
-#限制条件
-#1 ≦ m ≦ n ≦ 100
-#1 ≦ A_i ≦ 1000
-#A_i是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 ...A_N
-#
-#输出
-#如果可以选择M个受欢迎的项目，打印 是；否则，打印 否。
-#
-#样本输入 1
-#4 1
-#5 4 2 1
-#
-#样本输出1
-#是
-#总共有12张投票。最受欢迎的项目得到5票，我们可以选择它。
-#
-#样本输入2
-#3 2
-#380 19 1
-#
-#样品输出2
-#否
-#总共有400张票。第二和第三最受欢迎的项目获得的票数少于总票数的（1/（4×2）），所以我们不能选择它们。因此，我们不能选择两个受欢迎的项目。
-#
-#样本输入 3
-#12 3
-#4 56 78 901 2 345 67 890 123 45 6 789
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def isPopular(items, m):
+    total = sum(items)
+    for item in items:
+        if item < total/(4*m):
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    sum = 0
+    for i in range(m):
+        sum += a[i]
+    if sum >= sum(a) / (4 * m):
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    total = sum(A)
+    if A[m-1] >= total/(4*m):
+        print('是')
+    else:
+        print('否')
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    s = sum(a)
+    for i in range(m):
+        if a[i] < s/(4*m):
+            print("否")
+            return
+    print("是")
+
+=======
+Suggestion 5
+
+def problem161_b():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    for i in range(m):
+        if a[i] * 4 * m < total:
+            print('否')
+            return
+    print('是')
+
+=======
+Suggestion 6
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, m, a
+
+=======
+Suggestion 7
+
+def is_popular(A, M):
+    sum = 0
+    for i in range(len(A)):
+        sum += A[i]
+    for i in range(len(A)):
+        if A[i] < sum / (4 * M):
+            return False
+    return True
+
+N, M = input().split()
+N = int(N)
+M = int(M)
+A = list(map(int, input().split()))
+A.sort(reverse=True)
+
+=======
+Suggestion 8
+
+def problems161_b():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort(reverse=True)
+    sumA = sum(A)
+    for i in range(m):
+        if A[i] < sumA/(4*m):
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 9
+
+def problem161_b():
+    n = 0
+    m = 0
+    a = []
+    while True:
+        try:
+            line = input()
+            if line:
+                if n == 0:
+                    n = int(line.split(' ')[0])
+                    m = int(line.split(' ')[1])
+                else:
+                    a = line.split(' ')
+            else:
+                break
+        except:
+            break
+
+    a = [int(i) for i in a]
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1] >= total/(4*m):
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    A = list(map(int, input().split()))
+    # 排序
+    A.sort(reverse=True)
+    # 计算总票数
+    s = sum(A)
+    # 计算最小票数
+    if s >= 4 * m * A[m - 1]:
+        print("是")
+    else:
+        print("否")

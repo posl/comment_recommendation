@@ -1,36 +1,91 @@
-#问题陈述
-#有多少个不小于A且不大于B的整数？
-#
-#限制条件
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A和B是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#打印不小于A且不大于B的整数的数量。
-#
-#输入样本 1
-#2 4
-#
-#输出示例 1
-#3
-#我们有三个不小于2且不大于4的整数：2、3、4，所以我们应该打印3。
-#
-#输入样本2
-#10 100
-#
-#样本输出2
-#91
-#
-#样本输入3
-#3 2
-#
-#样品输出3
-#0
-#我们没有不低于3和不高于2的整数，所以我们应该打印0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def count(a,b):
+    if a>b:
+        return 0
+    else:
+        return b-a+1
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(B - A + 1 if B - A >= 0 else 0)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    print(b-a+1 if b>a else 0)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(max(0, b - a + 1))
+
+=======
+Suggestion 5
+
+def main():
+    a,b=map(int,input().split())
+    count=0
+    for i in range(a,b+1):
+        count+=1
+    print(count)
+
+=======
+Suggestion 6
+
+def countNums(a,b):
+    count = 0
+    for i in range(a,b+1):
+        count += 1
+    return count
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a > b:
+        print(0)
+    else:
+        print(b-a+1)
+
+=======
+Suggestion 8
+
+def count_integers(a,b):
+    # a,b = input("please input two numbers:").split()
+    # a = int(a)
+    # b = int(b)
+    if a > b:
+        return 0
+    elif a == b:
+        return 1
+    else:
+        return b-a+1
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 初始化答案
+    ans = 0
+    # 遍历所有的整数
+    for i in range(1, 101):
+        # 如果整数的范围在a和b之间
+        if a <= i and i <= b:
+            # 答案+1
+            ans += 1
+    # 输出答案
+    print(ans)

@@ -1,35 +1,111 @@
-#问题陈述
-#给出的是一个正整数N。
-#有多少个正整数的图组（A,B,C）满足A×B+C=N？
-#
-#限制条件
-# 2 ≦ N ≦ 10^6
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#3
-#
-#样本输出1
-#3
-#有3个满足A×B+C=3的整数组：（A，B，C）=（1，1，2），（1，2，1），（2，1，1）。
-#
-#样本输入2
-#100
-#
-#样本输出2
-#473
-#
-#样本输入3
-#1000000
-#
-#样本输出3
-#13969985
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N):
+        for j in range(i, N):
+            if i * j < N:
+                count += 1
+            else:
+                break
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N):
+        for j in range(1,N):
+            if i*j < N:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N):
+        if N % i == 0:
+            if i == N/i:
+                count += 1
+            else:
+                count += 2
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,int(N**0.5)+1):
+        if N%i == 0:
+            if N//i != i:
+                count += (N//i-1)
+            else:
+                count += (N//i-1)
+    print(count)
+
+=======
+Suggestion 5
+
+def f(n):
+    ans = 0
+    for i in range(1, n):
+        ans += (n-1) // i
+    return ans
+
+n = int(input())
+print(f(n))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input().strip())
+    ans = 0
+    for i in range(1, n):
+        ans += (n - 1) // i
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n):
+        ans += (n - 1) // i
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    cnt = 0
+    for i in range(1, n):
+        for j in range(1, n):
+            if i * j < n:
+                cnt += 1
+            else:
+                break
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N):
+        ans += (N-1)//i
+    print(ans)

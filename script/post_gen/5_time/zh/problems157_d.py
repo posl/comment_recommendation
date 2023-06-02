@@ -1,94 +1,212 @@
-#问题陈述
-#一个SNS有N个用户--用户1，用户2，...，用户N。
-#在这N个用户之间，有一些关系--M条友谊和K条阻隔。
-#对于每个i = 1, 2, ..., M，用户A_i和用户B_i之间有一个双向的友谊。
-#对于每个i = 1, 2, ..., K，在用户C_i和用户D_i之间有一个双向的阻隔关系。
-#当以下四个条件都满足时，我们定义用户a为用户b的候选好友：
-#a ≠ b。
-#用户a和用户b之间不存在友谊。
-#用户a和用户b之间不存在blockhip。
-#存在一个由1到N（包括）之间的整数组成的序列c_0, c_1, c_2, ..., c_L，使得c_0 = a, c_L = b，并且对于每个i = 0, 1, ..., L - 1的用户c_i和c_{i+1}之间存在友谊。
-#对于每个用户i = 1, 2, ...N，它有多少个朋友候选人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#按顺序打印答案，中间有空格。
-#
-#输入样本 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#样本输出1
-#0 1 0 1
-#用户2和3之间有友谊，3和4之间也有友谊。同时，用户2和4之间没有友谊或阻隔关系。因此，用户4是用户2的候选好友。
-#然而，用户1或3都不是用户2的候选朋友，所以用户2有一个候选朋友。
-#
-#样本输入2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#样本输出2
-#0 0 0 0 0
-#每个人都是其他人的朋友，没有朋友候选人。
-#
-#样本输入3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#输出样本3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,m,k = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    cd = [list(map(int,input().split())) for _ in range(k)]
+    ans = [0]*n
+    friend = [[] for _ in range(n)]
+    block = [[] for _ in range(n)]
+    for a,b in ab:
+        friend[a-1].append(b-1)
+        friend[b-1].append(a-1)
+    for c,d in cd:
+        block[c-1].append(d-1)
+        block[d-1].append(c-1)
+    for i in range(n):
+        ans[i] = len(set(friend[i])-set(block[i])-{i})
+    print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, M, K = map(int, input().split())
+    relation = [[0 for _ in range(N)] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        relation[a-1][b-1] = 1
+        relation[b-1][a-1] = 1
+    for _ in range(K):
+        c, d = map(int, input().split())
+        relation[c-1][d-1] = 2
+        relation[d-1][c-1] = 2
+    for i in range(N):
+        count = 0
+        for j in range(N):
+            if i != j and relation[i][j] == 0:
+                for k in range(N):
+                    if relation[i][k] == 1 and relation[j][k] == 1:
+                        count += 1
+                        break
+        print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, K = map(int, input().split())
+    A = [0] * M
+    B = [0] * M
+    C = [0] * K
+    D = [0] * K
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+    for i in range(K):
+        C[i], D[i] = map(int, input().split())
+    #print(N, M, K)
+    #print(A)
+    #print(B)
+    #print(C)
+    #print(D)
+    #print()
+    #print()
+    #print()
+
+    #朋友候选人数
+    friend_candidate = [0] * N
+
+    #友谊关系
+    friendship = []
+
+    #阻隔关系
+    blockhip = []
+
+    #初始朋友候选人数
+    for i in range(N):
+        friend_candidate[i] = N - 1
+
+    #print(friend_candidate)
+
+    #友谊关系
+    for i in range(M):
+        friendship.append([A[i], B[i]])
+
+    #阻隔关系
+    for i in range(K):
+        blockhip.append([C[i], D[i]])
+
+    #print(friendship)
+    #print(blockhip)
+
+    #初始朋友候选人数
+    for i in range(N):
+        for j in range(M):
+            if friendship[j][0] == i + 1:
+                friend_candidate[i] -= 1
+            if friendship[j][1] == i + 1:
+                friend_candidate[i] -= 1
+        for j in range(K):
+            if blockhip[j][0] == i + 1:
+                friend_candidate[i] -= 1
+            if blockhip[j][1] == i + 1:
+                friend_candidate[i] -= 1
+
+    #print(friend_candidate)
+
+    #朋友候选人数
+    for i in range(N):
+        for j in range(M):
+            if friendship[j][0] == i + 1:
+                for k in range(N):
+                    if friend_candidate[k] == 0:
+                        continue
+                    if friendship[j][1] == k + 1:
+                        friend_candidate[k] -= 1
+            if
+
+=======
+Suggestion 4
+
+def dfs(u, color, G):
+    color[u] = 1
+    for v in G[u]:
+        if color[v] == 0:
+            dfs(v, color, G)
+    color[u] = 2
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    N, M, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    CD = [list(map(int, input().split())) for _ in range(K)]
+    # 建立邻接表
+    adj = [[] for _ in range(N)]
+    for a, b in AB:
+        adj[a-1].append(b-1)
+        adj[b-1].append(a-1)
+    # 建立阻隔表
+    block = [[False]*N for _ in range(N)]
+    for c, d in CD:
+        block[c-1][d-1] = True
+        block[d-1][c-1] = True
+    # 计算候选人数
+    for i in range(N):
+        ans = 0
+        for j in range(N):
+            if i == j:
+                continue
+            if j in adj[i]:
+                continue
+            if block[i][j]:
+                continue
+            # 到这里说明j是i的候选人
+            # 遍历从i到j的所有路径
+            # 为了避免重复，规定只能往后走
+            # 用栈实现dfs
+            stack = [i]
+            while stack:
+                # 取出栈顶元素
+                now = stack.pop()
+                # 如果已经到达j，则计数+1
+                if now == j:
+                    ans += 1
+                    break
+                # 如果没到达，则将邻接点入栈
+                for k in adj[now]:
+                    if k in stack:
+                        continue
+                    stack.append(k)
+        print(ans, end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def input_value():
+    N, M, K = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(K):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    return N, M, K, A, B, C, D
+
+=======
+Suggestion 8
+
+def dfs(node, visited, graph, result):
+    visited[node] = True
+    for i in graph[node]:
+        if visited[i] == False:
+            result[i] = 1
+            dfs(i, visited, graph, result)

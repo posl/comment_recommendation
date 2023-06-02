@@ -1,112 +1,111 @@
-#问题陈述
-#高桥在某条路上发现了一个拼图。
-#它是由一个有九个顶点和M条边的无向图和八个碎片组成的。
-#图中的九个顶点被称为顶点1，顶点2，...，顶点9。对于每个i=1，2，...，M，第i条边连接着顶点u_i和顶点v_i。
-#这八个片断被称为片断1，片断2，...，片断8。
-#对于每个j=1，2，...，8，件j都在顶点p_j上。
-#在这里，我们保证所有的棋子都在不同的顶点上。
-#请注意，正好有一个没有棋子的空顶点。
-#高桥可以对这个拼图进行任意次数的操作（可能是零）。
-#在与空顶点相邻的顶点上选择一个棋子，并将其移动到空顶点上。
-#通过重复这个操作，他的目的是完成这个拼图。
-#当以下情况成立时，该拼图被认为是完整的。
-#对于每个j = 1, 2, ..., 8, 棋子j都在顶点j上。
-#确定高桥是否有可能完成这个拼图。如果有可能，请找出完成该拼图所需的最少操作数。
-#
-#限制条件
-#0 ≦ M ≦ 36
-#1 ≦ u_i, v_i ≦ 9
-#给定的图形没有多线或自循环。
-#1 ≦ p_j ≦ 9
-#j ≠ j' -> p_j ≠ p_{j'}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#p_1 p_2 ... p_8
-#
-#输出
-#如果高桥有可能完成这个拼图，请找出完成这个拼图所需的最少操作数。
-#否则，打印-1。
-#
-#输入样本 1
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#3 9 2 4 5 6 7 8
-#
-#样本输出1
-#5
-#下面的程序通过五次操作完成了这个谜题。
-#将棋子2从顶点9移到顶点1。
-#将棋子3从顶点2移到顶点9。
-#将棋子2从顶点1移到顶点2。
-#将棋子1从顶点3移到顶点1。
-#将棋子3从顶点9移到顶点3。
-#另一方面，我们不可能在少于五次的操作中完成这个拼图。因此，我们应该打印5。
-#请注意，给定的图形可能是不相连的。
-#
-#输入样本 2
-#5
-#1 2
-#1 3
-#1 9
-#2 9
-#3 9
-#1 2 3 4 5 6 7 8
-#
-#样本输出2
-#0
-#这个拼图从一开始就已经完成了。
-#因此，完成该拼图所需的最少操作数为0。
-#
-#输入样本3
-#12
-#8 5
-#9 6
-#4 5
-#4 1
-#2 5
-#8 9
-#2 1
-#3 6
-#8 7
-#6 5
-#7 4
-#2 3
-#1 2 3 4 5 6 8 7
-#
-#样本输出3
-#-1
-#没有任何操作序列可以完成这个拼图，所以我们应该打印-1。
-#
-#输入样本4
-#12
-#6 5
-#5 4
-#4 1
-#4 7
-#8 5
-#2 1
-#2 5
-#6 9
-#3 6
-#9 8
-#8 7
-#3 2
-#2 3 4 6 1 9 7 8
-#
-#样本输出4
-#16
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def dfs(v, visited, graph):
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(i, visited, graph)
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def dfs(v, p, d):
+    if d == 8: return 0
+    res = 100
+    for i in range(1, 10):
+        if i == p: continue
+        res = min(res, dfs(i, v, d + 1) + 1)
+    return res
+
+M = int(input())
+G = [[] for i in range(9)]
+for i in range(M):
+    u, v = map(int, input().split())
+    G[u - 1].append(v - 1)
+    G[v - 1].append(u - 1)
+P = list(map(int, input().split()))
+res = 100
+for i in range(1, 10):
+    res = min(res, dfs(i, -1, 0))
+print(res if res < 100 else -1)
+
+=======
+Suggestion 5
+
+def dfs(puz,depth):
+    if depth > 16:
+        return -1
+    if puz == end:
+        return depth
+    if puz in visited:
+        return -1
+    visited.append(puz)
+    for i in range(9):
+        if puz[i] == 0:
+            break
+    for j in range(9):
+        if j == i or puz[j] == 0:
+            continue
+        puz[i],puz[j] = puz[j],puz[i]
+        if puz not in visited:
+            res = dfs(puz,depth+1)
+            if res != -1:
+                return res
+        puz[i],puz[j] = puz[j],puz[i]
+    return -1
+
+start = [1,2,3,4,5,6,7,8,0]
+end = list(map(int,input().split()))
+visited = []
+print(dfs(end,0))
+
+=======
+Suggestion 6
+
+def dfs(state, depth, prev):
+    if depth + state[0] > limit:
+        return False
+    if state[1:] == goal:
+        return True
+    min = 100
+    for i in range(4):
+        if prev == i:
+            continue
+        next = state[:]
+        next[0] += 1
+        for j in range(8):
+            next[j+1] += dir[i][j]
+        if dfs(next, depth + 1, i):
+            return True
+    return False
+
+=======
+Suggestion 7
+
+def dfs(v, p):
+    if v == 9:
+        return p == 0
+    if dp[v][p] != -1:
+        return dp[v][p]
+    dp[v][p] = 0
+    for i in range(1, 9):
+        if (p >> (i - 1)) & 1:
+            for u in G[v]:
+                if dfs(u, p ^ (1 << (i - 1))):
+                    dp[v][p] = 1
+    return dp[v][p]

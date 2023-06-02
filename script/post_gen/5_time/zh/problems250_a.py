@@ -1,67 +1,117 @@
-#问题陈述
-#有一个有H个水平行和W个垂直列的网格。让(i,j)表示从上往下第i行和从左往下第j列的正方形。
-#求与正方形（R，C）共用一条边的正方形的数量。
-#在这里，当且仅当|a-c|+|b-d|=1（其中|x|表示x的绝对值）时，两个正方形（a,b）和（c,d）被称为共享一个边。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ R ≦ H ≦ 10
-#1 ≦ C ≦ W ≦ 10
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H W
-#R C
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#3 4
-#2 2
-#
-#样品输出1
-#4
-#我们将在下面一次性描述样本输入/输出1,2和3，样本输出3。
-#
-#样本输入2
-#3 4
-#1 3
-#
-#样本输出2
-#3
-#
-#样本输入 3
-#3 4
-#3 4
-#
-#样本输出 3
-#2
-#当H=3，W=4时，网格看起来如下。
-#对于样本输入1，有4个方格与方格（2,2）相邻。
-#对于样本输入2，有3个方格与方格（1,3）相邻。
-#对于样本输入3，有2个方格与方格（3,4）相邻。
-#
-#
-#样本输入4
-#1 10
-#1 5
-#
-#样本输出4
-#2
-#
-#样本输入5
-#8 1
-#8 1
-#
-#样本输出 5
-#1
-#
-#样本输入 6
-#1 1
-#1 1
-#
-#样本输出6
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print((H-R)*(W-C))
+
+=======
+Suggestion 2
+
+def main():
+    h,w = map(int,input().split())
+    r,c = map(int,input().split())
+    print((h-r+1)*(w-c+1))
+
+=======
+Suggestion 3
+
+def count_square(h,w,r,c):
+    count=0
+    if r==1 and c==1:
+        count=0
+    elif r==1 and c==w:
+        count=0
+    elif r==h and c==1:
+        count=0
+    elif r==h and c==w:
+        count=0
+    elif r==1 and c!=1 and c!=w:
+        count=1
+    elif r==h and c!=1 and c!=w:
+        count=1
+    elif c==1 and r!=1 and r!=h:
+        count=1
+    elif c==w and r!=1 and r!=h:
+        count=1
+    else:
+        count=2
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    #input
+    H,W=map(int,input().split())
+    R,C=map(int,input().split())
+    #init
+    ans=0
+    #calc
+    if R==1 or R==H:
+        ans+=1
+    if C==1 or C==W:
+        ans+=1
+    #output
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print((H-R+1)*(W-C+1))
+
+=======
+Suggestion 6
+
+def main():
+    h = int(input())
+    w = int(input())
+    r = int(input())
+    c = int(input())
+    if h == 1 and w == 1:
+        print(0)
+        return
+    if r == 1 and c == 1:
+        print(2)
+        return
+    if r == h and c == w:
+        print(2)
+        return
+    if r == 1 and c == w:
+        print(1)
+        return
+    if r == h and c == 1:
+        print(1)
+        return
+    if r == 1 or r == h or c == 1 or c == w:
+        print(3)
+        return
+    print(4)
+
+=======
+Suggestion 7
+
+def problems250_a(H, W, R, C):
+    return 2 * (H - R + 1) * (W - C + 1) - (H - R + 1) - (W - C + 1)
+
+=======
+Suggestion 8
+
+def main():
+    H,W = map(int,input().split())
+    R,C = map(int,input().split())
+    print(H*W - (H*C+W*R-C*R)*2 + 4*R*C - 3*R - 3*C + 4)
+
+=======
+Suggestion 9
+
+def get_input():
+    H, W = map(int, input().split())
+    R, C = map(int, input().split())
+    return H, W, R, C

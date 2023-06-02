@@ -1,36 +1,153 @@
-#问题陈述
-#给你整数N和M。
-#考虑一个由正整数组成的长度为N的序列，使得a_1+a_2+...+a_N=M。+ 求a_1, a_2, ..., a_N的最大公除数的可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#N ≦ M ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#
-#輸出
-#打印满足条件的序列a_1, a_2, ..., a_N的最大公除数的最大可能值。
-#
-#输入样本 1
-#3 14
-#
-#输出示例 1
-#2
-#考虑序列（a_1，a_2，a_3）=（2，4，8）。它们的最大公除数是2，而且是最大值。
-#
-#输入样本 2
-#10 123
-#
-#样本输出2
-#3
-#
-#样本输入3
-#100000 1000000000
-#
-#样本输出3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,m=map(int,input().split())
+
+print(gcd(n,m))
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n,m = map(int, input().split())
+for i in range(1, int(m/n)+1):
+    if m % i == 0:
+        if i * n <= m:
+            ans = i
+print(ans)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N,M=map(int,input().split())
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+N,M=map(int,input().split())
+#M=10**9
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+n, m = map(int, input().split())
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, m = map(int, input().split())
+# n, m = 10, 123
+# n, m = 100000, 1000000000
+# n, m = 3, 14
+# n, m = 3, 6
+# n, m = 3, 7
+# n, m = 3, 8
+# n, m = 3, 9
+# n, m = 3, 10
+# n, m = 3, 11
+# n, m = 3, 12
+# n, m = 3, 13
+# n, m = 3, 14
+# n, m = 3, 15
+# n, m = 3, 16
+# n, m = 3, 17
+# n, m = 3, 18
+# n, m = 3, 19
+# n, m = 3, 20
+# n, m = 3, 21
+# n, m = 3, 22
+# n, m = 3, 23
+# n, m = 3, 24
+# n, m = 3, 25
+# n, m = 3, 26
+# n, m = 3, 27
+# n, m = 3, 28
+# n, m = 3, 29
+# n, m = 3, 30
+# n, m = 3, 31
+# n, m = 3, 32
+# n, m = 3, 33
+# n, m = 3, 34
+# n, m = 3, 35
+# n, m = 3, 36
+# n, m = 3, 37
+# n, m = 3, 38
+# n, m = 3, 39
+# n, m = 3, 40
+# n, m = 3, 41
+# n, m = 3, 42
+# n, m = 3, 43
+# n, m =
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while a%b!=0:
+        a,b=b,a%b
+    return b
+
+
+N,M=map(int,input().split())
+a=gcd(N,M)
+print(M//a)
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)

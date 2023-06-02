@@ -1,40 +1,25 @@
-#问题陈述
-#给出一个2×2矩阵A=[[a, b], [c, d]]。
-#A的行列式可求为ad-bc。
-#找到它。
-#
-#限制条件
-#输入的所有数值都是整数。
-#-100 ≦ A, B, C, D ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b
-#c d
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#1 2
-#3 4
-#
-#样本输出1
-#-2
-#[[1, 2], [3, 4]]的行列式是 1 × 4 - 2 × 3 = -2。
-#
-#输入样本 2
-#0 -1
-#1 0
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100 100
-#100 100
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c,d = map(int,input().split())
+    print(a*d-b*c)
+
+=======
+Suggestion 2
+
+def main():
+    A = []
+    for i in range(2):
+        A.append([int(i) for i in input().split()])
+    print(A[0][0]*A[1][1]-A[0][1]*A[1][0])
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a*d-b*c)

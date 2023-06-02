@@ -1,35 +1,45 @@
-#问题陈述
-#我们从一个装有N个球的盒子里取出A个球，然后把B个新球放进这个盒子里。现在这个盒子里有多少个球？
-#
-#限制条件
-#输入的所有数值都是整数。
-# 100 ≦ N ≦ 200
-# 1 ≦ A,B ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N A B
-#
-#輸出
-#打印答案为整数。
-#
-#输入样本 1
-#100 1 2
-#
-#样本输出 1
-#101
-#这个盒子里有100个球。去掉一个球，放上两个新球后，现在有101个球。
-#
-#样本输入2
-#100 2 1
-#
-#样本输出2
-#99
-#
-#样本输入3
-#100 1 1
-#
-#样品输出3
-#100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N - A + B)
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    print(N + B - A)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n + b - a)
+
+=======
+Suggestion 4
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n+a-b)
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n - a + b)
+
+=======
+Suggestion 6
+
+def main():
+    N,A,B = map(int,input().split())
+    print(N+A-B)
+
+main()

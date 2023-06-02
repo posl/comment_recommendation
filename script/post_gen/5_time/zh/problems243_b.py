@@ -1,55 +1,156 @@
-#问题陈述
-#给你一个长度为N的整数序列：A=（A_1, A_2, ..., A_N）和B=（B_1, B_2, ..., B_N）。
-#A的所有元素都是不同的。B的所有元素也是不同的。
-#打印以下两个数值。
-#包含在A和B中的整数的数量，出现在两个序列的相同位置。换句话说，有多少个整数i使A_i = B_i。
-#包含在A和B中的整数的数量，出现在两个序列的不同位置。换句话说，有多少对整数（i，j）使A_i = B_j，且i≠j。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#A_1, A_2, ..., A_N都是不同的。
-#B_1, B_2, ..., B_N都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#
-#输出
-#分两行打印答案：第一行是1.的答案，第二行是2.的答案。
-#
-#输入样本1
-#4
-#1 3 5 2
-#2 3 1 4
-#
-#样本输出 1
-#1
-#2
-#有一个整数同时包含在A和B中，出现在两个序列的相同位置：A_2 = B_2 = 3。
-#有两个整数同时包含在A和B中，出现在这两个序列的不同位置：A_1 = B_3 = 1 和 A_4 = B_1 = 2。
-#
-#样本输入2
-#3
-#1 2 3
-#4 5 6
-#
-#样本输出2
-#0
-#0
-#在1.和2.中，没有整数满足条件。
-#
-#输入样本 3
-#7
-#4 8 1 7 9 5 6
-#3 5 1 7 8 2 6
-#
-#样本输出 3
-#3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[j] and i != j:
+                count2 += 1
+    print(count1)
+    print(count2)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans1 = 0
+    ans2 = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            ans1 += 1
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A[i] == B[j]:
+                    ans2 += 1
+    print(ans1)
+    print(ans2//2)
+solve()
+
+=======
+Suggestion 3
+
+def get_same_num(A, B):
+    same_num = 0
+    for i in range(len(A)):
+        if A[i] == B[i]:
+            same_num += 1
+    return same_num
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    set_a = set(a)
+    set_b = set(b)
+    print(len(set_a & set_b))
+    print(len(set_a ^ set_b)))
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    res1 = 0
+    res2 = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            res1 += 1
+    for i in range(N):
+        for j in range(N):
+            if i != j and A[i] == B[j]:
+                res2 += 1
+    print(res1)
+    print(res2)
+    
+solve()
+
+=======
+Suggestion 6
+
+def count_same_position(n, a, b):
+    count = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count += 1
+    return count
+
+=======
+Suggestion 7
+
+def get_same_num(a, b):
+    cnt = 0
+    for i in range(len(a)):
+        if a[i] == b[i]:
+            cnt += 1
+    return cnt
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    cnt1 = 0
+    cnt2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            cnt1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j and a[i] == b[j]:
+                cnt2 += 1
+    print(cnt1)
+    print(cnt2)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    c = [i for i in range(1, n+1) if a[i-1] == b[i-1]]
+    d = [i for i in range(1, n+1) if a[i-1] in b and a[i-1] != b[i-1]]
+    print(len(c))
+    print(len(d))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    count1 = 0
+    count2 = 0
+    for i in range(n):
+        if a[i] == b[i]:
+            count1 += 1
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if a[i] == b[j]:
+                    count2 += 1
+    print(count1)
+    print(count2//2)

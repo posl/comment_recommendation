@@ -1,91 +1,141 @@
-#问题陈述
-#高桥王国由N个城镇和N-1条道路组成，其中城镇的编号为1到N。第i条道路（1 ≦ i ≦ N-1）连接城镇a_i和城镇b_i，因此你可以通过一些道路从每个城镇到达每个城镇。所有的道路都有相同的长度。
-#你将被给予Q个查询。在第i次查询中（1 ≦ i ≦ Q），给定整数c_i和d_i，解决以下问题：
-#高桥现在在c_i镇，青木现在在d_i镇。他们将同时离开城镇并开始以相同的速度行驶，高桥前往d_i镇，青木前往c_i镇。确定他们是否会在一个城镇相遇，或在公路上的中途相遇。在这里，假设他们两个人都沿着最短的路径行驶，而且经过城镇所需的时间可以忽略不计。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#输入的所有数值都是整数。
-#通过使用一些道路，有可能从每个城镇到达每个城镇。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#输出
-#打印Q行。
-#第i行（1 ≦ i ≦ Q）应该包含Town，如果高桥和青木将在第i个查询中的一个城镇相遇，以及Road，如果他们在该查询中沿着一条道路中途相遇。
-#
-#输入样本 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#样本输出1
-#Road
-#在第一个也是唯一的一个查询中，高桥和青木分别同时离开镇1和镇2，他们将在1号路的中途相遇，所以我们应该打印出路。
-#
-#输入样本2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#样本输出2
-#Town
-#Town
-#在第一个查询中，高桥和青木同时分别离开镇1和镇3，他们将在镇2相遇，所以我们应该打印镇。
-#在第一个查询中，高桥和青木分别同时离开镇1和镇5，他们将在镇3相遇，所以我们应该打印镇。
-#
-#输入样本 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#样本输出3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    print("Hello World!")
+    return
+
+=======
+Suggestion 2
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 4
+
+def find(x):
+    global parent
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
+
+=======
+Suggestion 5
+
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    graph = [[] for _ in range(n+1)]
+    for _ in range(n-1):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+    for _ in range(q):
+        c, d = map(int, input().split())
+        if c == d:
+            print('Town')
+        else:
+            if len(graph[c]) == 1 and len(graph[d]) == 1:
+                print('Road')
+            else:
+                print('Town')
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    cd = [list(map(int, input().split())) for _ in range(q)]
+
+    # 木構造を作る
+    tree = [[] for _ in range(n+1)]
+    for a, b in ab:
+        tree[a].append(b)
+        tree[b].append(a)
+
+    # 木の根を求める
+    root = 1
+    for i in range(1, n+1):
+        if len(tree[i]) == 1:
+            root = i
+            break
+
+    # 木の深さを求める
+    depth = [0] * (n+1)
+    def dfs(u, p):
+        for v in tree[u]:
+            if v != p:
+                depth[v] = depth[u] + 1
+                dfs(v, u)
+    dfs(root, -1)
+
+    # 各クエリについて、高橋と青木の位置関係を調べる
+    for c, d in cd:
+        # 木の深さが同じなら Town
+        if depth[c] == depth[d]:
+            print('Town')
+        # 違うなら Road
+        else:
+            print('Road')
+
+=======
+Suggestion 8
+
+def get_input():
+    n, q = map(int, input().split())
+    roads = []
+    for i in range(n-1):
+        roads.append(list(map(int, input().split())))
+    queries = []
+    for i in range(q):
+        queries.append(list(map(int, input().split())))
+    return n, q, roads, queries
+
+=======
+Suggestion 9
+
+def main():
+    n, q = [int(i) for i in input().split()]
+    roads = []
+    for i in range(n-1):
+        a, b = [int(i) for i in input().split()]
+        roads.append((a, b))
+    queries = []
+    for i in range(q):
+        c, d = [int(i) for i in input().split()]
+        queries.append((c, d))
+    for query in queries:
+        c, d = query
+        if (c, d) in roads or (d, c) in roads:
+            print("Road")
+        else:
+            print("Town")

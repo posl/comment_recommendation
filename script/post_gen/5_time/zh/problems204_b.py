@@ -1,36 +1,103 @@
-#问题陈述
-#有N棵树。第i棵树结了A_i个坚果。
-#花栗鼠将以下列方式从树上收获坚果：
-#在有10个或更少坚果的树上，她不采摘坚果。
-#在有10个以上坚果的树上，除了10个以外，她会拿走所有的坚果。
-#求花栗鼠将从树上摘取的坚果总数。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#0 ≦ A_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#6 17 28
-#
-#样本输出1
-#25
-#从这三棵树上，花栗鼠将取走0、7和18个坚果，总共25个坚果。
-#
-#样本输入2
-#4
-#8 9 10 11
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 计算
+    result = 0
+    for i in A:
+        if i > 10:
+            result += i - 10
+    # 打印输出
+    print(result)
+
+main()
+
+=======
+Suggestion 2
+
+def problem204_b():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    count = 0
+    for i in range(N):
+        if A[i] > 10:
+            count += A[i] - 10
+
+    print(count)
+
+problem204_b()
+
+=======
+Suggestion 3
+
+def get_nuts(nuts):
+    nuts = list(map(int, nuts.split()))
+    nuts = [i-10 for i in nuts if i > 10]
+    return sum(nuts)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] > 10:
+            ans += a[i] - 10
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_nuts(nuts):
+    nuts = list(map(int, nuts.split()))
+    nuts.sort(reverse=True)
+    nuts = list(filter(lambda x: x >= 10, nuts))
+    nuts = list(map(lambda x: x - 10, nuts))
+    return sum(nuts)
+
+=======
+Suggestion 6
+
+def getNutsFromTree(nuts):
+    nuts.sort(reverse=True)
+    nuts.pop(0)
+    return sum(nuts)
+
+=======
+Suggestion 7
+
+def main():
+    num = int(input())
+    nuts = list(map(int,input().split()))
+    total = 0
+    for i in nuts:
+        if i >= 10:
+            total += i - 10
+    print(total)
+
+=======
+Suggestion 8
+
+def harvest_nuts(nuts):
+    nuts = [int(nut) for nut in nuts]
+    nuts.sort(reverse=True)
+    nuts = [nut if nut < 10 else nut - 10 for nut in nuts]
+    return sum(nuts)
+
+=======
+Suggestion 9
+
+def get_nuts(nuts):
+    sum = 0
+    for nut in nuts:
+        if nut > 10:
+            sum += nut - 10
+    return sum

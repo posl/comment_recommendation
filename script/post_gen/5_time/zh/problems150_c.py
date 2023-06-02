@@ -1,46 +1,98 @@
-#问题陈述
-#我们有两个大小为N的排列组合P和Q（也就是说，P和Q都是(1,2,...,N)的重排）。
-#在这些排列组合中，让P和Q分别为第a和第b个最小的排列组合。找出|a-b|。
-#
-#备注
-#对于两个序列X和Y，当且仅当存在一个整数k，使得X_i = Y_i(1 ≦ i < k)且X_k < Y_k时，称X比Y小。
-#
-#限制条件
-#2 ≦ N ≦ 8
-#P和Q是大小为N的排列组合。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#P_1 P_2 ...P_N
-#Q_1 Q_2 ...Q_N
-#
-#输出
-#打印|a-b|.
-#
-#样本输入1
-#3
-#1 3 2
-#3 1 2
-#
-#样本输出1
-#3
-#有6个大小为3的排列组合：(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), 以及(3,2,1)。其中，(1,3,2)和(3,1,2)在词汇表中排在第2位和第5位，所以答案是|2-5|=3。
-#
-#输入样本2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#样本输出2
-#17517
-#
-#样本输入3
-#3
-#1 2 3
-#1 2 3
-#
-#样本输出 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getPermutationCount(n):
+    if n == 1:
+        return 1
+    else:
+        return n*getPermutationCount(n-1)
+
+=======
+Suggestion 2
+
+def fact(n):
+    if n == 1:
+        return 1
+    else:
+        return n*fact(n-1)
+
+=======
+Suggestion 3
+
+def permutation(n, p, q):
+    p_rank = 0
+    q_rank = 0
+    for i in range(n):
+        p_rank += p[i] * 10 ** (n - i - 1)
+        q_rank += q[i] * 10 ** (n - i - 1)
+    return p_rank, q_rank
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = input().split()
+    q = input().split()
+    print(abs(p.index(q)+1-q.index(q)-1))
+
+=======
+Suggestion 5
+
+def getNum(a):
+    n = len(a)
+    if n == 1:
+        return 0
+    else:
+        b = a[1:]
+        c = []
+        for i in range(len(b)):
+            if a[0] > b[i]:
+                c.append(b[i])
+        return getNum(c) + len(c)
+
+=======
+Suggestion 6
+
+def get_min_permutation(n):
+    if n == 1:
+        return [1]
+    else:
+        return [n] + get_min_permutation(n - 1)
+
+=======
+Suggestion 7
+
+def get_num(arr):
+    num = 0
+    for i in range(len(arr)-1):
+        for j in range(i+1, len(arr)):
+            if arr[i] > arr[j]:
+                num += 1
+    return num
+
+=======
+Suggestion 8
+
+def factorial(n):
+    if n==1:
+        return 1
+    else:
+        return n*factorial(n-1)
+
+=======
+Suggestion 9
+
+def permutationNumber(a):
+    if len(a) == 1:
+        return 1
+    else:
+        return len(a) * permutationNumber(a[1:])
+
+=======
+Suggestion 10
+
+def find_min_permutation(n):
+    return 1

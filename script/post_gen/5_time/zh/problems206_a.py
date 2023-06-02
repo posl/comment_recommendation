@@ -1,38 +1,117 @@
-#问题陈述
-#阿特卡德共和国的消费税率为8%。
-#这个国家的一家能量饮料店，一罐能量饮料不含税售价为N日元（日本货币）。
-#含税价为⌊ 1.08×N ⌋日元，其中⌊ x ⌋表示不超过x的实数x的最大整数。
-#如果这个含税价格低于清单价格206日元，打印Yay！；如果等于清单价格，打印so-so；如果高于清单价格，打印:(。
-#
-#限制条件
-#1 ≦ N ≦ 300
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#180
-#
-#样本输出1
-#Yay！
-#对于N=180，含税价格是⌊ 180 × 1.08 ⌋ = 194日元，比清单价格206日元低。
-#
-#样本输入2
-#200
-#
-#样本输出2
-#:(
-#
-#样本输入3
-#191
-#
-#样本输出3
-#so-so
-#在这种情况下，含税价格正好等于206日元的清单价格。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N * 1.08 < 206:
+        print('Yay!')
+    elif N * 1.08 > 206:
+        print(':(')
+    else:
+        print('so-so')
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    N = int(1.08 * N)
+    if N < 206:
+        print("Yay!")
+    elif N == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    n = int(input())
+    # process
+    price = int(n * 1.08)
+    # output
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 4
+
+def main():
+    # input
+    n = int(input())
+
+    # process
+    n = int(n * 1.08)
+    if n < 206:
+        print('Yay!')
+    elif n == 206:
+        print('so-so')
+    else:
+        print(':(')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if int(n*1.08)<206:
+        print("Yay!")
+    elif int(n*1.08)==206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 6
+
+def main():
+    # input
+    n = int(input())
+    # process
+    ans = 'Yay!' if int(1.08*n) < 206 else 'so-so' if int(1.08*n) == 206 else ':('
+    # output
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    input = int(input())
+    price = int(input * 1.08)
+
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
+
+=======
+Suggestion 8
+
+def main():
+    #input
+    N = int(input())
+    #process
+    #output
+    if N*1.08<206:
+        print("Yay!")
+    elif N*1.08>206:
+        print(":(")
+    else:
+        print("so-so")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    print('Yay!' if int(N * 1.08) < 206 else 'so-so' if int(N * 1.08) == 206 else ':(')

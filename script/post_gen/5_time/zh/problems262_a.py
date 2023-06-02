@@ -1,35 +1,98 @@
-#问题陈述
-#一项体育赛事在每年的6月举行，其余数除以4后为2。
-#假设现在是Y年的1月，那么这个运动会下次将在哪年举行？
-#
-#限制条件
-#2000 ≦ Y ≦ 3000
-#Y是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Y
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#2022
-#
-#样本输出1
-#2022
-#2022年除以4的余数是2，所以如果现在是2022年1月，下一届运动会将在同年的6月举行。
-#
-#样本输入2
-#2023
-#
-#样本输出2
-#2026
-#
-#样本输入3
-#3000
-#
-#样品输出3
-#3002
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def next_sport_year(year):
+    while True:
+        year += 1
+        if year % 4 == 2:
+            return year
+
+=======
+Suggestion 2
+
+def main():
+    Y = int(input())
+    while Y < 2000 or Y > 3000:
+        Y = int(input())
+    while Y % 4 != 2:
+        Y += 1
+    print(Y)
+
+=======
+Suggestion 3
+
+def main():
+    Y = int(input())
+    while Y < 2000 or Y > 3000:
+        print('输入的年份不在范围内，请重新输入！')
+        Y = int(input())
+    while Y % 4 != 2:
+        Y += 1
+    print(Y)
+
+=======
+Suggestion 4
+
+def problems262_a():
+    y = int(input())
+    print(y+2-(y%4))
+
+=======
+Suggestion 5
+
+def main():
+    Y = int(input())
+    while True:
+        if Y % 4 == 2:
+            print(Y)
+            break
+        else:
+            Y += 1
+
+=======
+Suggestion 6
+
+def main():
+    y = int(input())
+    while True:
+        y += 1
+        if y % 4 == 2:
+            break
+    print(y)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    y = int(input())
+    while True:
+        if y % 4 == 2:
+            print(y)
+            break
+        else:
+            y += 1
+
+=======
+Suggestion 8
+
+def main():
+    Y = int(input())
+    while Y < 2000 or Y > 3000:
+        Y = int(input())
+    while (Y % 4) != 2:
+        Y += 1
+    print(Y)
+
+=======
+Suggestion 9
+
+def main():
+    year = int(input())
+    while True:
+        if year % 4 == 2:
+            print(year)
+            break
+        year += 1

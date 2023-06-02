@@ -1,39 +1,191 @@
-#问题陈述
-#高桥忘记了他的密码。密码是一个四位数的字符串，由0，1，...，9组成，可以以0开头。
-#对于0到9的每个数字，高桥记得以下事实，用一个10个字符的字符串S_0S_1 ...S_9:
-#如果S_i是o：他确定PIN码包含数字i；
-#如果S_i是x：他确定密码不包含数字i；
-#如果S_i是？：他不确定密码是否包含数字i。
-#有多少个字符串可以成为高桥的密码？
-#
-#限制条件
-#S是一个由o，x，和?组成的10个字符的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#ooo??? xxxx
-#
-#样本输出1
-#108
-#一些可能的密码是0123和0021。
-#
-#样本输入2
-#o?oo?oxoxo
-#
-#采样输出2
-#0
-#可能没有可能的PIN，在这种情况下，答案是0。
-#
-#输入样本3
-#xxxxx?xxxo
-#
-#样本输出3
-#15
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    count = 0
+    for i in range(0, 10000):
+        str_i = str(i).zfill(4)
+        flag = True
+        for j in range(0, 10):
+            if s[j] == 'o':
+                if str_i.find(str(j)) == -1:
+                    flag = False
+                    break
+            elif s[j] == 'x':
+                if str_i.find(str(j)) != -1:
+                    flag = False
+                    break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def solve(s):
+    s = list(s)
+    count = 0
+    for i in range(10000):
+        i = '{:04}'.format(i)
+        if all(si == 'o' or si == i.count(str(index)) for index, si in enumerate(s)):
+            count += 1
+    return count
+
+=======
+Suggestion 3
+
+def compute(s):
+    count = 0
+    for i in range(10000):
+        istr = str(i).zfill(4)
+        if ismatch(istr, s):
+            count += 1
+    return count
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    cnt = 0
+    for i in range(10000):
+        flag = True
+        for j in range(10):
+            if s[j] == "o" and str(j) not in str(i):
+                flag = False
+            elif s[j] == "x" and str(j) in str(i):
+                flag = False
+        if flag:
+            cnt += 1
+    print(cnt)
+
+solve()
+
+=======
+Suggestion 5
+
+def check(s, num):
+    for i in range(0, 10):
+        if s[i] == 'o' and str(i) not in num:
+            return False
+        if s[i] == 'x' and str(i) in num:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def check(s):
+    for i in range(10):
+        if s[i] == 'o':
+            if str(i) not in s:
+                return False
+        elif s[i] == 'x':
+            if str(i) in s:
+                return False
+    return True
+
+S = input()
+ans = 0
+for i in range(10000):
+    s = str(i).zfill(4)
+    if check(S.replace('?', s)):
+        ans += 1
+print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    o = s.count('o')
+    x = s.count('x')
+    q = s.count('?')
+    if o > 4:
+        print(0)
+    elif o == 4:
+        print(24)
+    elif o == 3:
+        print(36)
+    elif o == 2:
+        print(14 + 12 * q)
+    elif o == 1:
+        print(4 + 4 * q + 6 * q * (q - 1) // 2)
+    elif o == 0:
+        print(q * (q - 1) * (q - 2) * (q - 3) // 24)
+
+=======
+Suggestion 8
+
+def isPossible(s):
+    #print(s)
+    #print(s.count('?'))
+    if s.count('?') == 0:
+        return True
+    if s.count('?') == 1:
+        return True
+    if s.count('?') == 2:
+        return True
+    if s.count('?') == 3:
+        return True
+    if s.count('?') == 4:
+        return True
+    if s.count('?') == 5:
+        return True
+    if s.count('?') == 6:
+        return True
+    if s.count('?') == 7:
+        return True
+    if s.count('?') == 8:
+        return True
+    if s.count('?') == 9:
+        return True
+    if s.count('?') == 10:
+        return True
+    return False
+
+=======
+Suggestion 9
+
+def get_input():
+    input_str = input()
+    return input_str
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    ans = 0
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                for l in range(10):
+                    if s[i] == 'o' and s[j] == 'o' and s[k] == 'o' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == 'o' and s[k] == 'o' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == 'o' and s[k] == '?' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == 'o' and s[k] == '?' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == '?' and s[k] == 'o' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == '?' and s[k] == 'o' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == '?' and s[k] == '?' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == 'o' and s[j] == '?' and s[k] == '?' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == '?' and s[j] == 'o' and s[k] == 'o' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == '?' and s[j] == 'o' and s[k] == 'o' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == '?' and s[j] == 'o' and s[k] == '?' and s[l] == 'o':
+                        ans += 1
+                    elif s[i] == '?' and s[j] == 'o' and s[k] == '?' and s[l] == '?':
+                        ans += 1
+                    elif s[i] == '?' and s[j] == '?' and s[k] == 'o'

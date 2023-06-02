@@ -1,48 +1,174 @@
-#问题说明
-#AtCoder Grand Contest（AGC）是一个定期举行的具有世界权威性的比赛，已经举行了54次。
-#就像第230届ABC--也就是你现在所在的那届--被称为ABC230一样，第N届AGC最初是用一个零填充的3位数N来命名的（第1届AGC为AGC001，第2届AGC为AGC002，...）。
-#然而，最新的第54个AGC被称为AGC055，其中数字是比54大的一个。因为AGC042由于社会情况而被取消和缺失，所以第42次和以后的比赛被分配的号码比所举行的比赛的数量大一。(参见样本输入和输出的解释)。
-#问题是：给定一个整数N，以AGCXXX的格式打印第N个AGC的名称，其中XXX是加零的3位数字。
-#
-#限制条件
-#1 ≦ N ≦ 54
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#以指定格式打印第N个AGC的名称。
-#
-#样本输入1
-#42
-#
-#样本输出1
-#AGC043
-#正如问题陈述中所解释的，第42个及以后的AGC被分配的数字比比赛的数字大一。
-#因此，第42个AGC被命名为AGC043。
-#
-#样本输入2
-#19
-#
-#采样输出2
-#AGC019
-#第41个和前面的AGC被分配的数字与比赛的数字相等。
-#因此，答案是AGC019。
-#
-#样本输入3
-#1
-#
-#样本输出3
-#AGC001
-#如问题陈述中所述，第1个AGC被命名为AGC001。
-#请确保用零来填充这个数字，使之成为一个3位数的数字。
-#
-#输入样本4
-#50
-#
-#采样输出4
-#AGC051
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N < 10:
+        print("AGC00", N, sep="")
+    elif N < 100:
+        print("AGC0", N, sep="")
+    else:
+        print("AGC", N, sep="")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n >= 1 and n <= 9:
+        print('AGC00'+str(n))
+    elif n >= 10 and n <= 99:
+        print('AGC0'+str(n))
+    else:
+        print('AGC'+str(n))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    if N <= 9:
+        print("AGC00" + str(N))
+    elif N <= 99:
+        print("AGC0" + str(N))
+    else:
+        print("AGC" + str(N))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    if N < 10:
+        print("AGC00"+str(N))
+    elif N < 100:
+        print("AGC0"+str(N))
+    else:
+        print("AGC"+str(N))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N < 10:
+        print("AGC00" + str(N))
+    elif N < 100:
+        print("AGC0" + str(N))
+    else:
+        print("AGC" + str(N))
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N <= 21:
+        print('AGC0' + str(N))
+    else:
+        print('AGC' + str(N + 2))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N >= 1 and N <= 9:
+        print('AGC00' + str(N))
+    elif N >= 10 and N <= 99:
+        print('AGC0' + str(N))
+    else:
+        print('AGC' + str(N))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n == 1:
+        print("AGC001")
+    elif n == 2:
+        print("AGC002")
+    elif n == 3:
+        print("AGC003")
+    elif n == 4:
+        print("AGC004")
+    elif n == 5:
+        print("AGC005")
+    elif n == 6:
+        print("AGC006")
+    elif n == 7:
+        print("AGC007")
+    elif n == 8:
+        print("AGC008")
+    elif n == 9:
+        print("AGC009")
+    elif n == 10:
+        print("AGC010")
+    elif n == 11:
+        print("AGC011")
+    elif n == 12:
+        print("AGC012")
+    elif n == 13:
+        print("AGC013")
+    elif n == 14:
+        print("AGC014")
+    elif n == 15:
+        print("AGC015")
+    elif n == 16:
+        print("AGC016")
+    elif n == 17:
+        print("AGC017")
+    elif n == 18:
+        print("AGC018")
+    elif n == 19:
+        print("AGC019")
+    elif n == 20:
+        print("AGC020")
+    elif n == 21:
+        print("AGC021")
+    elif n == 22:
+        print("AGC022")
+    elif n == 23:
+        print("AGC023")
+    elif n == 24:
+        print("AGC024")
+    elif n == 25:
+        print("AGC025")
+    elif n == 26:
+        print("AGC026")
+    elif n == 27:
+        print("AGC027")
+    elif n == 28:
+        print("AGC028")
+    elif n == 29:
+        print("AGC029")
+    elif n == 30:
+        print("AGC030")
+    elif n == 31:
+        print("AGC031")
+    elif n == 32:
+        print("AGC032")
+    elif n == 33:
+        print("AGC033")
+    elif n == 34:
+        print("AGC034")
+    elif n == 35:
+        print("AGC035")
+    elif
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n < 10:
+        print('AGC00%d' % n)
+    elif n < 100:
+        print('AGC0%d' % n)
+    else:
+        print('AGC%d' % n)

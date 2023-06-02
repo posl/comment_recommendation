@@ -1,43 +1,136 @@
-#问题陈述
-#高桥要做N道菜，称为菜1到N。
-#第i道菜可以通过使用烤箱连续烤制T_i分钟。一个烤箱不能同时用于两个或更多的菜肴。
-#如果高桥有两个烤箱可以使用，那么烹制所有N道菜所需的最短分钟数是多少？假设除使用烤箱外的所有过程所需时间可以忽略不计。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ T_i ≦ 10^3
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#T_1 ...T_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#5
-#8 3 7 2 5
-#
-#样本输出1
-#13
-#例如，我们可以按以下方式使用两个烤箱，在13分钟内完成所有的菜肴。
-#第一台烤箱按照这个顺序烹制第5和第1道菜。
-#第二台烤箱：按照这个顺序烹制菜肴2、4和3。
-#
-#样本输入2
-#2
-#1000 1
-#
-#样品输出2
-#1000
-#
-#样品输入3
-#9
-#3 14 15 9 26 5 35 89 79
-#
-#样本输出3
-#138
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    T.reverse()
+    A = 0
+    B = 0
+    for i in range(N):
+        if A > B:
+            B += T[i]
+        else:
+            A += T[i]
+    print(max(A, B))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    t1 = 0
+    t2 = 0
+    for i in range(N):
+        if t1 <= t2:
+            t1 += T[N - 1 - i]
+        else:
+            t2 += T[N - 1 - i]
+    print(max(t1, t2))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort(reverse=True)
+    a = 0
+    b = 0
+    for i in range(n):
+        if a < b:
+            a += t[i]
+        else:
+            b += t[i]
+    print(max(a, b))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    print(min2(T))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort(reverse=True)
+    T1 = 0
+    T2 = 0
+    for i in range(N):
+        if T1 < T2:
+            T1 += T[i]
+        else:
+            T2 += T[i]
+    print(max(T1, T2))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    t1 = 0
+    t2 = 0
+    for i in range(N):
+        if t1 < t2:
+            t1 += T[N-i-1]
+        else:
+            t2 += T[N-i-1]
+    print(max(t1, t2))
+
+=======
+Suggestion 7
+
+def solve(N, T):
+    T.sort()
+    T.reverse()
+    oven1 = 0
+    oven2 = 0
+    for i in range(N):
+        if oven1 < oven2:
+            oven1 += T[i]
+        else:
+            oven2 += T[i]
+    return max(oven1, oven2)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T = [int(i) for i in input().split()]
+    T.sort()
+    oven = [0] * 2
+    for i in range(N):
+        oven[0] += T.pop()
+        oven.sort()
+    print(oven[1])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T = list(map(int, input().split()))
+    T.sort()
+    print(T[N-1]+T[N-2])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    t = list(map(int, input().split()))
+    t.sort()
+    print(t[-1] + t[-2])

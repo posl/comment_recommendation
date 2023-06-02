@@ -1,30 +1,67 @@
-#问题陈述
-#高桥正在玩一个游戏。
-#在这个游戏中，每当你到目前为止收集的硬币数量成为100的倍数时，你就会得到一个奖励。
-#到目前为止，高桥已经收集了X枚硬币。他还需要收集多少个硬币才能得到下一个奖品？(如果X是100的倍数，我们假设他已经得到了总共收集到X个硬币的奖品）。
-#
-#限制条件
-#0 ≦ X ≦ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#輸出
-#打印他在获得下一个奖项之前需要收集的额外硬币的数量。
-#
-#输入样本1
-#140
-#
-#样本输出1
-#60
-#当他总共收集了200个硬币时，他得到了下一个奖项。为了得到它，他需要再收集60个硬币。
-#
-#样本输入2
-#1000
-#
-#样本输出2
-#100
-#当他总共收集到1100个硬币时，他就会得到下一个奖项。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    print(100 - x % 100)
+
+=======
+Suggestion 2
+
+def coin(X):
+    if X%100 == 0:
+        return 100
+    else:
+        return 100 - X%100
+
+=======
+Suggestion 3
+
+def get_next_prize_coin(x):
+    return (100 - (x % 100)) % 100
+
+=======
+Suggestion 4
+
+def extra_coin(x):
+    if x % 100 == 0:
+        return 100
+    else:
+        return 100 - x % 100
+
+=======
+Suggestion 5
+
+def f(x):
+    return 100 - x % 100
+
+=======
+Suggestion 6
+
+def main():
+    X = int(input())
+    if X % 100 == 0:
+        print(100)
+    else:
+        print(100 - X % 100)
+    return 0
+
+=======
+Suggestion 7
+
+def main():
+    x = int(input())
+    print(100 - x % 100)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print(100)
+    else:
+        print(100 - x % 100)

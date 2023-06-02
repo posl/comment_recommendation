@@ -1,81 +1,147 @@
-#问题说明
-#瓷砖被排列成N个水平行和N个垂直列。  每块瓷砖的网格有A个水平行和B个垂直列。  总的来说，瓷砖形成了一个具有(A×N)水平行和(B×N)垂直列的网格X。
-#对于1≦ i,j ≦ N，瓦片（i,j）表示位于从上往下第i行和从左往下第j列的瓦片。
-#X的每一个方块都被画成以下样子。  
-#每块瓷砖要么是白色瓷砖，要么是黑色瓷砖。
-#白色瓷砖中的每个方块都被涂成白色；黑色瓷砖中的每个方块都被涂成黑色。
-#瓷砖（1,1）是白色瓷砖。
-#两个共用一面的瓦片有不同的颜色。  这里，当且仅当|a-c|+|b-d|=1（其中|x|表示x的绝对值）时，瓷砖（a,b）和瓷砖（c,d）被认为是共用一个边。
-#按照输出部分指定的格式打印网格X。
-#
-#限制条件
-#1 ≦ N,A,B ≦ 10
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N A B
-#
-#输出
-#打印满足以下条件的(A×N)字符串S_1,...,S_{A×N}，中间有换行。
-#S_1,...,S_{A×N}中的每一个都是一个长度为(B×N)的字符串，由.和#组成。
-#对于每个i和j（1 ≦ i ≦ A× N,1 ≦ j ≦ B× N），如果网格X中从上往下第i行和从左往下第j列的方块被涂成白色，那么S_i的第j个字符就是.；如果该方块被涂成黑色，则该字符就是#。
-#
-#输入样本 1
-#4 3 2
-#
-#输出样本 1
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#..##..##
-#..##..##
-#..##..##
-###..##..
-###..##..
-###..##..
-#
-#样本输入2
-#5 1 5
-#
-#样本输出2
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-######.....#####.....#####
-#.....#####.....#####.....
-#
-#样本输入 3
-#4 4 1
-#
-#输出样本 3
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#.#.#
-#.#.#
-#.#.#
-#.#.#
-##.#.
-##.#.
-##.#.
-##.#.
-#
-#样本输入 4
-#1 4 4
-#
-#输出样本 4
-#....
-#....
-#....
-#....
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem250_b():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    for i in range(N):
+        for j in range(A):
+            for k in range(N):
+                for l in range(B):
+                    if (i + j) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print()
+        print()
+
+=======
+Suggestion 3
+
+def main():
+    N,A,B = map(int,input().split())
+    for i in range(A*N):
+        for j in range(B*N):
+            if (i//N+j//B)%2==0:
+                print('.',end='')
+            else:
+                print('#',end='')
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    n,a,b = [int(x) for x in input().split()]
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i+j)%2==0:
+                        print(".",end="")
+                    else:
+                        print("#",end="")
+                print("",end="")
+            print("")
+        print("")
+
+=======
+Suggestion 5
+
+def main():
+    N,A,B = map(int, input().split())
+    for i in range(A*N):
+        for j in range(B*N):
+            if i%2==0:
+                if j%2==0:
+                    print('.',end='')
+                else:
+                    print('#',end='')
+            else:
+                if j%2==0:
+                    print('#',end='')
+                else:
+                    print('.',end='')
+        print('')
+
+=======
+Suggestion 6
+
+def print_tile(n, a, b):
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + j) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+                print('', end='')
+            print('')
+        print('')
+
+=======
+Suggestion 7
+
+def problems250_b(n,a,b):
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i+j)%2==0 and (k+l)%2==0:
+                        print('.',end='')
+                    elif (i+j)%2==0 and (k+l)%2!=0:
+                        print('#',end='')
+                    elif (i+j)%2!=0 and (k+l)%2==0:
+                        print('#',end='')
+                    elif (i+j)%2!=0 and (k+l)%2!=0:
+                        print('.',end='')
+                print('')
+        print('')
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+
+    for i in range(n):
+        for j in range(a):
+            for k in range(n):
+                for l in range(b):
+                    if (i + j) % 2 == 0:
+                        print('.', end='')
+                    else:
+                        print('#', end='')
+            print()
+        print()
+
+=======
+Suggestion 9
+
+def print_tile(n,a,b):
+    for i in range(a):
+        for j in range(n):
+            for k in range(b):
+                if (i+j)%2==0:
+                    if k==0:
+                        print('.',end='')
+                    else:
+                        print('#',end='')
+                else:
+                    if k==0:
+                        print('#',end='')
+                    else:
+                        print('.',end='')
+            print('')
+        print('')
+
+n,a,b=map(int,input().split())
+print_tile(n,a,b)

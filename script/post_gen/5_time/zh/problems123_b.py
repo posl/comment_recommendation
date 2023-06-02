@@ -1,75 +1,258 @@
-#问题陈述
-#餐馆AtCoder提供以下五种菜肴：
-#ABC Don（饭碗）：需要A分钟上菜。
-#ARC 咖喱：需要B分钟上菜。
-#AGC意大利面：需要C分钟上菜。
-#APC拉面：需要D分钟上菜。
-#ATC Hanbagu（汉堡饼）：需要E分钟上菜。
-#在这里，上菜的时间是指从下单到送菜的时间。
-#这家餐厅对订单有以下规定：
-#一个订单只能在10的倍数的时间下单（时间0，10，20，...）。
-#每次只能点一道菜。
-#当一个订单已经下了，而菜品仍未送达时，不能再下新的订单，但可以在菜品送达的确切时间下新的订单。
-#E869120在时间0到达这家餐厅，他将订购全部五道菜。找出最后一道菜的最早送达时间。
-#在这里，他可以按他喜欢的任何顺序点菜，而且他可以在时间0时已经下单。
-#
-#限制条件
-#A，B，C，D和E是1到123之间的整数（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A
-#B
-#C
-#D
-#E
-#
-#输出
-#打印最后一道菜的最早送达时间，为一个整数。
-#
-#输入样本1
-#29
-#20
-#7
-#35
-#120
-#
-#样本输出1
-#215
-#如果我们决定按ABC Don, ARC Curry, AGC Pasta, ATC Hanbagu, APC Ramen的顺序订购菜肴，那么每个订单的最早可能时间如下：
-#在时间0点订购ABC Don，它将在时间29点送达。
-#在时间30点订购ARC咖喱，将在时间50点送达。
-#在时间50点订购AGC意大利面，将在时间57点送达。
-#在时间60点订购ATC Hanbagu，将在时间180点送达。
-#在时间180点订购APC拉面，将在时间215点送达。
-#没有办法订购最后一道菜会比这更早送到的菜。
-#
-#输入样本2
-#101
-#86
-#119
-#108
-#57
-#
-#样本输出2
-#481
-#如果我们决定按AGC意大利面、ARC咖喱、ATC汉白玉、APC拉面、ABC唐的顺序订购菜品，每个订单的最早可能时间如下：
-#在时间0点订购AGC意大利面，它将在时间119点送达。
-#在时间120点订购ARC咖喱，将在时间206点送达。
-#在时间210点订购ATC Hanbagu，将在时间267点交付。
-#在时间270点订购APC拉面，将在时间378点送达。
-#在时间380点订购ABC唐，将在时间481点送达。
-#没有办法订购最后一道菜会比这更早送到的菜。
-#
-#样本输入3
-#123
-#123
-#123
-#123
-#123
-#
-#样本输出3
-#643
-#这是最大的有效案例。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    res = 0
+    if a % 10 != 0:
+        res = max(res, a + 10 - a % 10)
+    else:
+        res = max(res, a)
+    if b % 10 != 0:
+        res = max(res, b + 10 - b % 10)
+    else:
+        res = max(res, b)
+    if c % 10 != 0:
+        res = max(res, c + 10 - c % 10)
+    else:
+        res = max(res, c)
+    if d % 10 != 0:
+        res = max(res, d + 10 - d % 10)
+    else:
+        res = max(res, d)
+    if e % 10 != 0:
+        res = max(res, e + 10 - e % 10)
+    else:
+        res = max(res, e)
+    print(res)
+
+=======
+Suggestion 2
+
+def main():
+    dishes = []
+    for i in range(5):
+        dishes.append(int(input()))
+    min_time = 100000000000
+    for i in range(5):
+        if dishes[i] < min_time:
+            min_time = dishes[i]
+    for i in range(5):
+        if dishes[i] % 10 != 0:
+            dishes[i] = dishes[i] + 10 - dishes[i] % 10
+    print(dishes[0] + dishes[1] + dishes[2] + dishes[3] + dishes[4])
+
+=======
+Suggestion 3
+
+def solution(a,b,c,d,e):
+    res = 0
+    if a%10 > 0:
+        res = a + (10 - a%10)
+    else:
+        res = a
+    if b%10 > 0:
+        res = min(res, b + (10 - b%10))
+    else:
+        res = min(res, b)
+    if c%10 > 0:
+        res = min(res, c + (10 - c%10))
+    else:
+        res = min(res, c)
+    if d%10 > 0:
+        res = min(res, d + (10 - d%10))
+    else:
+        res = min(res, d)
+    if e%10 > 0:
+        res = min(res, e + (10 - e%10))
+    else:
+        res = min(res, e)
+    return res
+
+=======
+Suggestion 4
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    min_time = min(a%10,b%10,c%10,d%10,e%10)
+    if min_time == 0:
+        min_time = 10
+    print(str((a//10+1)*10)+str((b//10+1)*10)+str((c//10+1)*10)+str((d//10+1)*10)+str((e//10+1)*10))
+    #print((a//10+1)*10)
+
+=======
+Suggestion 5
+
+def solution():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    if A % 10 == 0:
+        pass
+    else:
+        A = (A // 10 + 1) * 10
+    if B % 10 == 0:
+        pass
+    else:
+        B = (B // 10 + 1) * 10
+    if C % 10 == 0:
+        pass
+    else:
+        C = (C // 10 + 1) * 10
+    if D % 10 == 0:
+        pass
+    else:
+        D = (D // 10 + 1) * 10
+    if E % 10 == 0:
+        pass
+    else:
+        E = (E // 10 + 1) * 10
+    return A + B + C + D + E
+
+=======
+Suggestion 6
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+
+    #print(a,b,c,d,e)
+    #print(type(a),type(b),type(c),type(d),type(e))
+
+    #print(a%10,b%10,c%10,d%10,e%10)
+    #print(type(a%10),type(b%10),type(c%10),type(d%10),type(e%10))
+
+    #print(a//10,b//10,c//10,d//10,e//10)
+    #print(type(a//10),type(b//10),type(c//10),type(d//10),type(e//10))
+
+    #print(a//10*10,b//10*10,c//10*10,d//10*10,e//10*10)
+    #print(type(a//10*10),type(b//10*10),type(c//10*10),type(d//10*10),type(e//10*10))
+
+    #print(a//10*10+10,b//10*10+10,c//10*10+10,d//10*10+10,e//10*10+10)
+    #print(type(a//10*10+10),type(b//10*10+10),type(c//10*10+10),type(d//10*10+10),type(e//10*10+10))
+
+    #print(a//10*10+10-a,b//10*10+10-b,c//10*10+10-c,d//10*10+10-d,e//10*10+10-e)
+    #print(type(a//10*10+10-a),type(b//10*10+10-b),type(c//10*10+10-c),type(d//10*10+10-d),type(e//10*10+10-e))
+
+    #print(a//10*10+10-a+b//10*10+10-b+c//10*10+10-c+d//10*10+10-d+e//10*10+10-e)
+    #print(type(a//10*10+10-a+b//10*10+10-b+c//10*10+10-c+d//10*10+10-d+e//10*10+10-e))
+
+    #print(a//
+
+=======
+Suggestion 7
+
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    print(min(a%10 and 10-a%10 or 0, b%10 and 10-b%10 or 0, c%10 and 10-c%10 or 0, d%10 and 10-d%10 or 0, e%10 and 10-e%10 or 0) + a + b + c + d + e)
+
+=======
+Suggestion 8
+
+def readinput():
+    a=int(input())
+    b=int(input())
+    c=int(input())
+    d=int(input())
+    e=int(input())
+    return a,b,c,d,e
+
+=======
+Suggestion 9
+
+def problems123_b():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    if a%10 == 0:
+        a1 = a
+    else:
+        a1 = (a//10+1)*10
+    if b%10 == 0:
+        b1 = b
+    else:
+        b1 = (b//10+1)*10
+    if c%10 == 0:
+        c1 = c
+    else:
+        c1 = (c//10+1)*10
+    if d%10 == 0:
+        d1 = d
+    else:
+        d1 = (d//10+1)*10
+    if e%10 == 0:
+        e1 = e
+    else:
+        e1 = (e//10+1)*10
+    print(a1+b1+c1+d1+e1)
+problems123_b()
+
+=======
+Suggestion 10
+
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    a = A % 10
+    b = B % 10
+    c = C % 10
+    d = D % 10
+    e = E % 10
+    if a == 0:
+        a = 10
+    if b == 0:
+        b = 10
+    if c == 0:
+        c = 10
+    if d == 0:
+        d = 10
+    if e == 0:
+        e = 10
+    if A % 10 == 0:
+        A = A - 10
+    else:
+        A = A - A % 10
+    if B % 10 == 0:
+        B = B - 10
+    else:
+        B = B - B % 10
+    if C % 10 == 0:
+        C = C - 10
+    else:
+        C = C - C % 10
+    if D % 10 == 0:
+        D = D - 10
+    else:
+        D = D - D % 10
+    if E % 10 == 0:
+        E = E - 10
+    else:
+        E = E - E % 10
+    if a + b + c + d + e == 10:
+        print(A + B + C + D + E + 10)
+    else:
+        print(A + B + C + D + E)

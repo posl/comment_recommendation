@@ -1,35 +1,123 @@
-#问题陈述
-#高桥王国有N个城镇，编号为1到N。
-#每个镇都有一个传送器。第i个镇的传送器（1 ≦ i ≦ N）会把你送到A_i镇。
-#高桥，国王，喜欢正整数K。这个自私的国王想知道，如果他从1号镇开始，从那里正好使用传送器K次，他将会在什么镇上。
-#帮助国王写一个程序来回答这个问题。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ K ≦ 10^{18}
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#如果国王从城镇1开始，并从那里使用传送器整整K次，则打印出代表国王将在的城镇的整数。
-#
-#输入样本 1
-#4 5
-#3 2 4 1
-#
-#样本输出1
-#4
-#如果我们从1号镇开始，使用5次传送器，我们的旅行将是这样的：1 -> 3 -> 4 -> 1 -> 3 -> 4.
-#
-#输入样本2
-#6 727202214173249351
-#6 5 2 5 3 2
-#
-#样本输出2
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    i = 0
+    while b[i] == 0:
+        b[i] = 1
+        i = a[i] - 1
+    c = []
+    while b[i] == 1:
+        c.append(i)
+        b[i] = 2
+        i = a[i] - 1
+    d = c.index(i)
+    if k < d:
+        print(c[k] + 1)
+    else:
+        print(c[(k - d) % (len(c) - d) + d] + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    i = 0
+    count = 0
+    while True:
+        count += 1
+        i = A[i] - 1
+        if count == K:
+            print(i + 1)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    town = 1
+    for i in range(K):
+        town = A[town - 1]
+    print(town)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    [N,K] = [int(i) for i in input().split()]
+    A = [int(i) for i in input().split()]
+    count = 0
+    while count < K:
+        count += 1
+        A = [A[ai-1] for ai in A]
+    print(A[0])
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    i = 0
+    for j in range(K):
+        i = A[i] - 1
+    print(i + 1)
+
+=======
+Suggestion 7
+
+def readinput():
+    n,k=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    return n,k,a
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    visited = [0] * N
+    visited[0] = 1
+    i = 0
+    while K > 0:
+        i = A[i] - 1
+        K -= 1
+        if visited[i] == 1:
+            break
+        visited[i] = 1
+    if K == 0:
+        print(i + 1)
+    else:
+        K %= sum(visited)
+        while K > 0:
+            i = A[i] - 1
+            K -= 1
+        print(i + 1)
+
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    k = k % n
+    for i in range(k):
+        a = [a[i-1] for i in a]
+    print(a[0])

@@ -1,57 +1,227 @@
-#问题陈述
-#给你一个正整数N。
-#我们有一个有N行N列的网格，其中从上往下第i行、从左往下第j列的方格上写有一个数字A_{i,j}。
-#假设这个网格的上边和下边以及左边和右边是相连的。换句话说，以下所有情况都成立。
-#(N,i)正好在(1,i)上面，而(1,i)正好在(N,i)下面。(1≦i≦N)。
-#(i,N)正好在(i,1)的左边，而(i,1)正好在(i,N)的右边。(1≦ i≦ N)。
-#高桥将首先从以下八个方向中选择一个：上、下、左、右，以及四个对角线方向。然后，他将从自己选择的一个方格开始，在所选方向上重复移动一个方格N-1次。
-#在这个过程中，高桥访问了N个方格。将高桥访问过的方格上的数字按其访问的顺序从左到右排列，求其可能的最大整数值。
-#
-#限制条件
-#1 ≦ N ≦ 10
-#1 ≦ A_{i,j} ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_{1,1}A_{1,2}...A_{1,N}
-#A_{2,1}A_{2,2}...A_{2,N}
-#.
-#.
-#.
-#A_{N,1}A_{N,2}...A_{N,N}
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#1161
-#1119
-#7111
-#1811
-#
-#样本输出1
-#9786
-#如果高桥从顶部第2行和左侧第4列的方格开始，向下和向右走，通过排列被访问方格上的数字得到的整数将是9786。
-#不可能有大于9786的数值，所以答案是9786。
-#
-#输入样本2
-#10
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#
-#样本输出2
-#1111111111
-#注意，答案可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    # 从左上角开始，向右下方向走，求和
+    # 从右下角开始，向左上方向走，求和
+    # 两个和相加，减去中间重复计算的值
+    sum1 = 0
+    sum2 = 0
+    for i in range(n):
+        sum1 += int(a[0][i])
+        sum1 += int(a[i][0])
+        sum2 += int(a[n-1][i])
+        sum2 += int(a[i][n-1])
+    sum1 -= int(a[0][0])
+    sum1 -= int(a[n-1][n-1])
+    print(sum1 + sum2)
+
+=======
+Suggestion 3
+
+def get_max_num(N, grid):
+    max_num = 0
+    for i in range(N):
+        for j in range(N):
+            max_num = max(max_num, grid[i][j])
+    return max_num
+
+=======
+Suggestion 4
+
+def get_max_num(N, A):
+    max = 0
+    for i in range(N):
+        for j in range(N):
+            if i == 0 and j == 0:
+                continue
+            if i == 0:
+                max = max * 10 + A[i][j]
+                continue
+            if j == 0:
+                max = max * 10 + A[i][j]
+                continue
+            if i == N - 1:
+                max = max * 10 + A[i][j]
+                continue
+            if j == N - 1:
+                max = max * 10 + A[i][j]
+                continue
+            max = max * 10 + A[i][j]
+    return max
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(input())
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            for k in range(8):
+                ni = i
+                nj = j
+                for l in range(N):
+                    ni += di[k]
+                    nj += dj[k]
+                    if ni < 0:
+                        ni = N - 1
+                    elif ni == N:
+                        ni = 0
+                    if nj < 0:
+                        nj = N - 1
+                    elif nj == N:
+                        nj = 0
+                    ans = max(ans, int(A[ni][nj]))
+    print(ans)
+
+di = [1, 1, 1, 0, -1, -1, -1, 0]
+dj = [-1, 0, 1, 1, 1, 0, -1, -1]
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input())))
+    ans = -1
+    for i in range(n):
+        for j in range(n):
+            if i == 0 and j == 0:
+                continue
+            if i == n - 1 and j == n - 1:
+                continue
+            num = a[i][j]
+            x = 0
+            y = 0
+            for k in range(n - 1):
+                if x == 0 and y == 0:
+                    if i + 1 < n:
+                        x = i + 1
+                        y = j
+                    else:
+                        x = i
+                        y = j + 1
+                elif x == n - 1 and y == n - 1:
+                    if i > 0:
+                        x = i - 1
+                        y = j
+                    else:
+                        x = i
+                        y = j - 1
+                elif x == 0:
+                    if y + 1 < n:
+                        x = i
+                        y = j + 1
+                    else:
+                        x = i + 1
+                        y = j
+                elif x == n - 1:
+                    if y > 0:
+                        x = i
+                        y = j - 1
+                    else:
+                        x = i - 1
+                        y = j
+                elif y == 0:
+                    if x > 0:
+                        x = i - 1
+                        y = j
+                    else:
+                        x = i
+                        y = j + 1
+                elif y == n - 1:
+                    if x + 1 < n:
+                        x = i + 1
+                        y = j
+                    else:
+                        x = i
+                        y = j - 1
+                elif x + 1 < n and y + 1 < n:
+                    x = x + 1
+                    y = y + 1
+                elif x > 0 and y > 0:
+                    x = x - 1
+                    y = y - 1
+                num = num * 10 + a[x][y]
+            if ans < num:
+                ans = num
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    A = [[0 for j in range(n)] for i in range(n)]
+    for i in range(n):
+        A[i] = list(map(int, input()))
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            for k in range(8):
+                ni, nj = i, j
+                for l in range(n-1):
+                    ni += dx[k]
+                    nj += dy[k]
+                    if ni == n:
+                        ni = 0
+                    if nj == n:
+                        nj = 0
+                    ans = max(ans, A[ni][nj])
+    print(ans)
+
+dx = [1, 1, 0, -1, -1, -1, 0, 1]
+dy = [0, 1, 1, 1, 0, -1, -1, -1]
+main()
+
+=======
+Suggestion 8
+
+def readInput():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int,input())))
+    return N,A
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    grid = []
+    for i in range(n):
+        grid.append(list(map(int, input())))
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if i == 0 or i == n-1 or j == 0 or j == n-1:
+                continue
+            ans = max(ans, grid[i-1][j-1]*1000 + grid[i-1][j]*100 + grid[i-1][j+1]*10 + grid[i][j+1])
+            ans = max(ans, grid[i-1][j]*1000 + grid[i-1][j+1]*100 + grid[i][j+1]*10 + grid[i+1][j+1])
+            ans = max(ans, grid[i-1][j+1]*1000 + grid[i][j+1]*100 + grid[i+1][j+1]*10 + grid[i+1][j])
+            ans = max(ans, grid[i][j+1]*1000 + grid[i+1][j+1]*100 + grid[i+1][j]*10 + grid[i+1][j-1])
+            ans = max(ans, grid[i+1][j+1]*1000 + grid[i+1][j]*100 + grid[i+1][j-1]*10 + grid[i][j-1])
+            ans = max(ans, grid[i+1][j]*1000 + grid[i+1][j-1]*100 + grid[i][j-1]*10 + grid[i-1][j-1])
+            ans = max(ans, grid[i+1][j-1]*1000 + grid[i][j-1]*100 + grid[i-1][j-1]*10 + grid[i-1][j])
+            ans = max(ans, grid[i][j-1]*1000 + grid[i-1][j-1]*100 + grid[i-1][j]*10 + grid[i-1][j+1])
+    print(ans)

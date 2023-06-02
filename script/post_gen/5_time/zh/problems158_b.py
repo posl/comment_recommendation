@@ -1,42 +1,69 @@
-#问题陈述
-#高桥有许多红球和蓝球。现在，他要把它们摆成一排。
-#最初，没有放置任何球。
-#高桥很有耐心，他要做10^{100}次以下操作：
-#在已经放置的一排球的末端放置A蓝球。然后，在这一排球的末尾放置B红球。
-#这样做出来的一排球中，前N个球中会有多少个蓝球？
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < a + b ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N A B
-#
-#輸出
-#打印这一排球中前N个球中的蓝球数量。
-#
-#输入样本 1
-#8 3 4
-#
-#输出示例 1
-#4
-#让b表示一个蓝球，r表示一个红球。行中的前八个球将是bbbrrrrb，其中有四个蓝球。
-#
-#输入样本2
-#8 0 4
-#
-#样本输出2
-#0
-#他从一开始就只放红球。
-#
-#输入样本 3
-#6 2 4
-#
-#输出样本 3
-#2
-#在bbrrrrr中，有两个蓝球。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    print(n // (a + b) * a + min(n % (a + b), a))
+
+=======
+Suggestion 2
+
+def main():
+    N, A, B = map(int, input().split())
+    if N == 1:
+        if A == 0 and B == 0:
+            print(0)
+        else:
+            print(1)
+    else:
+        if A == 0 and B == 0:
+            print(0)
+        else:
+            print((N // (A + B)) * A + min(N % (A + B), A))
+
+=======
+Suggestion 3
+
+def main():
+    n,a,b=map(int,input().split())
+    print(n//(a+b)*a+min(a,n%(a+b)))
+
+=======
+Suggestion 4
+
+def main():
+    n,a,b = map(int,input().split())
+    print(a*(n//(a+b))+min(a,n%(a+b)))
+
+=======
+Suggestion 5
+
+def main():
+    n,a,b = map(int,input().split())
+    c = a+b
+    if n%c == 0:
+        print(a*(n//c))
+    else:
+        if n%c <= a:
+            print(a*(n//c)+n%c)
+        else:
+            print(a*(n//c)+a)
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    print((n // (a + b)) * a + min(n % (a + b), a))
+
+=======
+Suggestion 7
+
+def main():
+    n,a,b = map(int,input().split())
+    if a+b == 0:
+        print(0)
+    else:
+        print((n//(a+b))*a+min(n%(a+b),a))

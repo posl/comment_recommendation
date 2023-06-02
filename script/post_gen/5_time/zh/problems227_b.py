@@ -1,38 +1,165 @@
-#问题陈述
-#有N个人，编号为1到N。
-#第i人猜测基恩士总部大楼的面积为S_i平方米。
-#基恩士总部大楼的形状如下所示，其中a和b是一些正整数。
-#也就是说，该楼的建筑面积可以表示为4ab+3a+3b。
-#仅根据这些信息，N个人中保证有多少人的猜测是错误的？
-#
-#限制条件
-#1 ≦ N ≦ 20
-#1 ≦ S_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1 ...S_N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#3
-#10 20 39
-#
-#样本输出1
-#1
-#如果a=1,b=1，则面积为10平方米；如果a=2,b=3，则面积为39平方米。
-#但是，没有一对正整数a和b能使面积达到20平方米。
-#因此，我们只能确定，第2人猜错了。
-#
-#输入样本2
-#5
-#666 777 888 777 666
-#
-#样本输出2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # N = int(input())
+    # S = list(map(int, input().split()))
+    N = 5
+    S = [666, 777, 888, 777, 666]
+    error = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if S[i] == S[j]:
+                error += 1
+    print(error)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        for j in range(1, 1001):
+            if (j * (j + 1) * 4 + 3 * (j + 1) + 3 * j) == s[i]:
+                break
+            elif (j * (j + 1) * 4 + 3 * (j + 1) + 3 * j) > s[i]:
+                count += 1
+                break
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if s[i] == 4:
+            cnt += 1
+            continue
+        for a in range(1, 1000):
+            for b in range(1, 1000):
+                if 4 * a * b + 3 * a + 3 * b == s[i]:
+                    cnt += 1
+    print(n - cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    count = 0
+    for i in range(N):
+        a = 1
+        while a*a <= S[i]:
+            if S[i] % a == 0:
+                b = S[i] // a
+                if 4*a*b + 3*a + 3*b == S[i]:
+                    break
+            a += 1
+        if a*a > S[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+
+    count = 0
+    for i in range(n):
+        if s[i] % 2 == 0:
+            count += 1
+        else:
+            if s[i] % 3 == 0:
+                count += 1
+            else:
+                if s[i] % 5 == 0:
+                    count += 1
+                else:
+                    pass
+
+    print(n - count)
+
+=======
+Suggestion 6
+
+def check(a, b, s):
+    if 4 * a * b + 3 * a + 3 * b == s:
+        return True
+    else:
+        return False
+
+n = int(input())
+s = list(map(int, input().split()))
+count = 0
+for i in range(n):
+    for a in range(1, s[i] + 1):
+        for b in range(1, s[i] + 1):
+            if check(a, b, s[i]):
+                count += 1
+print(n - count)
+
+=======
+Suggestion 7
+
+def getArea(a,b):
+    return 4*a*b+3*a+3*b
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        a = 1
+        b = 1
+        while 4 * a * b + 3 * a + 3 * b < S[i]:
+            a += 1
+            if 4 * a * b + 3 * a + 3 * b >= S[i]:
+                break
+            b += 1
+            if 4 * a * b + 3 * a + 3 * b >= S[i]:
+                break
+        if 4 * a * b + 3 * a + 3 * b != S[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = list(map(int,input().split()))
+    cnt = 0
+    for i in range(n):
+        a = 1
+        b = 1
+        while 4*a*b+3*a+3*b <= s[i]:
+            if 4*a*b+3*a+3*b == s[i]:
+                cnt += 1
+            b += 1
+        a += 1
+    print(n-cnt)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [int(x) for x in input().split()]
+    count = 0
+    for i in range(N):
+        if (S[i] % 2 == 0):
+            count += 1
+    print(count)

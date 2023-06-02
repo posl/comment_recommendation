@@ -1,54 +1,191 @@
-#问题陈述
-#有N个人从西向东排队等候。
-#给出的是一个长度为N的字符串S，代表人们的方向。
-#如果S的第i个字符是L，那么从西边来的第i个人就朝向西边，如果S的这个字符是R，就朝向东边。
-#如果在他/她前面的人朝向相同的方向，那么一个人是快乐的。
-#然而，如果没有人站在一个人的前面，他/她就不快乐。
-#你可以在0和K（包括）之间的任何次数进行以下操作：
-#操作：选择整数l和r，使1 ≦ l ≦ r ≦ N，并将队列中的部分旋转180度：第l人，(l+1)-第，...，第r人。也就是说，对于每个i = 0, 1, ..., r-l，从西边来的第(l + i)-人在操作后将站在从西边来的第(r - i)-人，如果他/她现在面向西边，则面向东边，反之亦然。
-#你能拥有的最大可能的快乐人数是多少？
-#
-#限制条件
-#N是一个整数，满足1 ≦ N ≦ 10^5。
-#K是一个整数，满足1 ≦ K ≦ 10^5。
-#|S| = N
-#S的每个字符都是L或R。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#S
-#
-#輸出
-#打印最多经过K次操作后可能出现的最大快乐人数。
-#
-#输入样本 1
-#6 1
-#LRLRRL
-#
-#样本输出1
-#3
-#如果我们选择（l，r）=（2，5），我们有LLLRLL，其中来自西方的第2，3，6个人都很快乐。
-#
-#样本输入2
-#13 3
-#LRRLRLRRLLR
-#
-#样本输出2
-#9
-#
-#样本输入3
-#10 1
-#LLLLLRRRRRR
-#
-#样本输出3
-#9
-#
-#样本输入4
-#9 2
-#RRRLRLL
-#
-#样本输出4
-#7
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    S = list(S)
+    S.append("E")
+    count = 0
+    for i in range(0, N):
+        if S[i] == S[i+1]:
+            count += 1
+    count = min(count + 2 * K, N - 1)
+    print(count)
+
+=======
+Suggestion 2
+
+def cal_happy_num(str):
+    happy_num = 0
+    for i in range(len(str)-1):
+        if str[i] == str[i+1]:
+            happy_num += 1
+    return happy_num
+
+=======
+Suggestion 3
+
+def happyPeople(s):
+    n = len(s)
+    count = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            count += 1
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    N, K = map(int, input().split())
+    S = input()
+
+    # 将字符串转换成列表
+    S = list(S)
+
+    # 计算最大快乐人数
+    ans = 0
+    for i in range(N - 1):
+        if S[i] == S[i + 1]:
+            ans += 1
+
+    # 最多经过K次操作后可能出现的最大快乐人数
+    ans += 2 * K
+    print(min(ans, N - 1))
+
+=======
+Suggestion 5
+
+def max_happy(N,K,S):
+    #统计快乐人数
+    happy = 0
+    #统计快乐人数的最大值
+    max_happy = 0
+    #统计快乐人数的最大值的左端点
+    max_happy_left = 0
+    #统计快乐人数的最大值的右端点
+    max_happy_right = 0
+    #统计快乐人数的最大值的左端点
+    happy_left = 0
+    #统计快乐人数的最大值的右端点
+    happy_right = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp2 = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp2 = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp3 = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp3 = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp4 = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp4 = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp5 = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp5 = 0
+    #统计快乐人数的最大值的左端点
+    happy_left_temp6 = 0
+    #统计快乐人数的最大值的右端点
+    happy_right_temp6 = 0
+    #统计快乐人数的
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    happy = 0
+    for i in range(1, n):
+        if s[i] == s[i-1]:
+            happy += 1
+    print(min(happy + 2 * k, n-1))
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    s = input()
+    #print(n, k, s)
+    #n, k = 6, 1
+    #s = 'LRLRRL'
+    #n, k = 13, 3
+    #s = 'LRRLRLRRLLR'
+    #n, k = 10, 1
+    #s = 'LLLLLRRRRRR'
+    #n, k = 9, 2
+    #s = 'RRRLRLL'
+    #n, k = 9, 1
+    #s = 'RRRLRLL'
+    #n, k = 9, 0
+    #s = 'RRRLRLL'
+    #n, k = 9, 3
+    #s = 'RRRLRLL'
+    #n, k = 9, 4
+    #s = 'RRRLRLL'
+    #n, k = 9, 5
+    #s = 'RRRLRLL'
+    #n, k = 9, 6
+    #s = 'RRRLRLL'
+    #n, k = 9, 7
+    #s = 'RRRLRLL'
+    #n, k = 9, 8
+    #s = 'RRRLRLL'
+    #n, k = 9, 9
+    #s = 'RRRLRLL'
+    #n, k = 9, 10
+    #s = 'RRRLRLL'
+    #n, k = 9, 11
+    #s = 'RRRLRLL'
+    #n, k = 9, 12
+    #s = 'RRRLRLL'
+    #n, k = 9, 13
+    #s = 'RRRLRLL'
+    #n, k = 9, 14
+    #s = 'RRRLRLL'
+    #n, k = 9, 15
+    #s = 'RRRLRLL'
+    #n, k = 9, 16
+    #s = 'RRRLRLL'
+    #n, k = 9, 17
+    #s = 'RRRLRLL'
+    #n, k =
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    s = input()
+    happy = 0
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            happy += 1
+    happy += 2*k
+    if happy > n-1:
+        happy = n-1
+    print(happy)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    count = 0
+    for i in range(1, N):
+        if S[i] == S[i-1]:
+            count += 1
+    count += 2 * K
+    print(min(count, N-1))

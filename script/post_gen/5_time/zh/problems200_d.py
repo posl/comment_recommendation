@@ -1,59 +1,162 @@
-#问题陈述
-#给你一个N个正整数的序列：A = (A_1, A_2, ..., A_n)。确定是否有一对序列B = (B_1, B_2, ..., B_x), C = (C_1, C_2, ..., C_y)满足所有的条件，如果存在，请打印一个这样的序列。
-#1 ≦ x, y ≤ N.
-#1 ≦ b_1 < b_2 < ...< B_{x} ≦ N。
-#1 ≦ C_1 < C_2 < ...< C_{y} ≦ N。
-#B和C是不同的序列。
-#这里，当x≠y或者有一个整数i（1≤i≤min(x, y)），使得B_i≠C_i时，我们认为B和C不同。
-#A_{B_1}+ A_{B_2}+ ...+ A_{B_x}和A_{C_1}+ A_{C_2}+ ...+ A_{C_y}等于200的模数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 200
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果没有满足条件的一对序列B，C，则打印一个包含No的单行。
-#否则，以下列格式打印你选择的B和C：
-#Yes
-#x B_1 B_2 ...B_x
-#y C_1 C_2 ...C_y
-#检查器是不区分大小写的：你可以使用大写或小写字母。
-#
-#输入样本1
-#5
-#180 186 189 191 218
-#
-#样本输出1
-#Yes
-#1 1
-#2 3 4
-#对于B=(1),C=(3,4),我们有A_1=180,A_3+A_4=380,它们都等于模数200。
-#还有其他的解决方案也将被接受，例如：
-#yEs
-#4 2 3 4 5
-#3 1 2 5
-#
-#样本输入 2
-#2
-#123 523
-#
-#样本输出2
-#有
-#1 1
-#1 2
-#
-#样本输入3
-#6
-#2013 1012 2765 2021 508 6971
-#
-#样本输出3
-#No
-#如果没有满足条件的一对序列，则打印一个包含No的单行。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find_2_sum(arr, target):
+    dic = {}
+    for i, a in enumerate(arr):
+        if target - a in dic:
+            return dic[target-a], i
+        dic[a] = i
+    return -1, -1
+
+=======
+Suggestion 2
+
+def solve():
+    print('Yes')
+    print('1 1')
+    print('2 3 4')
+    exit()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    for i in range(1, n):
+        a[i + 1] += a[i]
+    for i in range(n):
+        a[i + 1] %= 200
+    d = {}
+    for i in range(n + 1):
+        if a[i] in d:
+            d[a[i]].append(i)
+        else:
+            d[a[i]] = [i]
+    for k, v in d.items():
+        if len(v) > 1:
+            print('Yes')
+            print(1, v[0])
+            print(1, v[1])
+            return
+    print('No')
+
+=======
+Suggestion 4
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n,a
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    if n == 2:
+        if a[0] % 200 == a[1] % 200:
+            print('Yes')
+            print('1 1')
+            print('1 2')
+        else:
+            print('No')
+    else:
+        print('Yes')
+        print('1 1')
+        print('1 2')
+
+=======
+Suggestion 6
+
+def check(a,b,c):
+    sumb = 0
+    sumc = 0
+    for i in b:
+        sumb += a[i-1]
+    for i in c:
+        sumc += a[i-1]
+    if sumb%200 == sumc%200:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def readinput():
+    n=int(input())
+    a=list(map(int,input().split()))
+    return n,a
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    a = [0] + a
+    a_sum = sum(a)
+    if a_sum%200 == 0:
+        print('Yes')
+        print(1,1)
+        print(1,2)
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def solve():
+    import sys
+    N = int(sys.stdin.readline())
+    A = map(int, sys.stdin.readline().split())
+    A = [a % 200 for a in A]
+
+    # 一组数的和的模数的所有可能
+    sum_mods = [[] for _ in range(200)]
+    for i, a in enumerate(A):
+        sum_mods[a].append(i)
+
+    # 一组数的和的模数的所有可能的笛卡尔积
+    sum_mods_product = [[] for _ in range(200)]
+    for i in range(200):
+        for j in range(i + 1, 200):
+            for x in sum_mods[i]:
+                for y in sum_mods[j]:
+                    sum_mods_product[(i + j) % 200].append((x, y))
+
+    # 一组数的和的模数的所有可能的笛卡尔积的所有子集
+    sum_mods_product_subset = [[] for _ in range(200)]
+    for i in range(200):
+        for j in range(1, len(sum_mods_product[i]) + 1):
+            for k in range(len(sum_mods_product[i]) - j + 1):
+                sum_mods_product_subset[i].append(sum_mods_product[i][k:k + j])
+
+    # 一组数的和的模数的所有可能的笛卡尔积的所有子集的所有和的模数
+    sum_mods_product_subset_sum_mods = [[] for _ in range(200)]
+    for i in range(200):
+        for subset in sum_mods_product_subset[i]:
+            sum_mod = sum(A[x] for x in subset) % 200
+            if sum_mods_product_subset_sum_mods[sum_mod] == []:
+                sum_mods_product_subset_sum_mods[sum_mod].append(subset)
+            else:
+                print("有")
+                print(len(sum_mods_product_subset_sum_mods[sum_mod][0]), *sum_mods_product_subset_sum_mods[sum_mod][0])
+                print(len(subset), *subset)
+                return
+
+    print("No")
+
+solve()
+
+=======
+Suggestion 10
+
+def solve():
+    pass

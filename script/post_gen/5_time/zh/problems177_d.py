@@ -1,62 +1,88 @@
-#问题陈述
-#有N个人，从Person 1到Person N。
-#给你M个事实："人A_i和人B_i是朋友"。同一事实可以被多次给出。
-#如果X和Y是朋友，而Y和Z是朋友，那么X和Z也是朋友。没有什么友谊是不能从M个给定的事实中得出的。
-#邪恶的高桥想把N个人分成若干组，使每个人在他/她的组中没有朋友。
-#他至少需要做多少个小组？
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1 ≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#样本输出1
-#3
-#将它们分为三组，如{1,3}，{2,4}和{5}，就达到了目的。
-#
-#样本输入2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#样本输出2
-#4
-#
-#样本输入3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#输出样本3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    friends = [[] for i in range(N)]
+    for i in range(M):
+        a, b = map(int, input().split())
+        friends[a - 1].append(b - 1)
+        friends[b - 1].append(a - 1)
+    # print(friends)
+    group = [0] * N
+    group_num = 0
+    for i in range(N):
+        if group[i] == 0:
+            group_num += 1
+            group[i] = group_num
+            stack = [i]
+            while stack:
+                j = stack.pop()
+                for k in friends[j]:
+                    if group[k] == 0:
+                        group[k] = group_num
+                        stack.append(k)
+    print(group_num)
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def find(x):
+    if x!=p[x]:
+        p[x]=find(p[x])
+    return p[x]
+
+=======
+Suggestion 5
+
+def find_set(x):
+    if x != parent[x]:
+        parent[x] = find_set(parent[x])
+    return parent[x]
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A, B = [], []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+
+=======
+Suggestion 7
+
+def find(a, x):
+    if a[x] == x:
+        return x
+    else:
+        a[x] = find(a, a[x])
+        return a[x]
+
+=======
+Suggestion 8
+
+def find(x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]

@@ -1,59 +1,72 @@
-#问题陈述
-#在一个坐标平面内有N个城镇。镇i位于坐标(x_i, y_i)处。镇i和镇j之间的距离是（（x_i-x_j）^2+（y_i-y_j）^2）^(1/2)。
-#有N条可能的路径可以访问所有这些城镇一次。让路径的长度为我们从路径中的第一个城镇开始，访问第二个，第三个，......，城镇，并到达最后一个城镇时的距离（假设我们从一个城镇到另一个城镇是直线行驶）。计算这N条路径的平均长度。
-#
-#限制条件
-#2 ≦ N ≦ 8
-#-1000 ≦ x_i ≦ 1000
-#-1000 ≦ y_i ≦ 1000
-#(x_i, y_i) ≠ (x_j, y_j) (如果 i ≠ j)
-#(日本时间21:12添加) 输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#:
-#x_N y_N
-#
-#输出
-#打印路径的平均长度。
-#当你的输出与判断的输出的绝对值最多相差10^{-6}时，你的输出将被判定为正确。
-#
-#输入样本 1
-#3
-#0 0
-#1 0
-#0 1
-#
-#样本输出1
-#2.2761423749
-#有六条访问城镇的路径：1→2→3，1→3→2，2→1→3，2→3→1，3→1→2，以及3→2→1。
-#路径1→2→3的长度是（（0-1）^2+（0-0）^2）^（1/2）+（（1-0）^2+（0-1）^2）^（1/2）=1+（2）^（1/2）。
-#通过这样计算其他路径的长度，我们看到所有路线的平均长度是：
-#(((1+(2)^(1/2))+(1+(2)^(1/2))+(2)+(1+(2)^(1/2))+(2)+(1+(2)^(1/2)))/(6)) = 2.276142...
-#
-#样本输入2
-#2
-#-879 981
-#-866 890
-#
-#样本输出2
-#91.9238815543
-#有两条访问城镇的路径：1→2和2→1。这些路径的长度相同。
-#
-#样本输入3
-#8
-#-406 10
-#512 859
-#494 362
-#-955 -475
-#128 553
-#-986 -885
-#763 77
-#449 310
-#
-#样本输出3
-#7641.9817824387
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        xi, yi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+
+    # 计算路径长度
+    import itertools
+    sum = 0
+    for perm in itertools.permutations(range(n)):
+        for i in range(n-1):
+            sum += ((x[perm[i]]-x[perm[i+1]])**2 + (y[perm[i]]-y[perm[i+1]])**2)**0.5
+
+    # 输出结果
+    print(sum / math.factorial(n))
+
+=======
+Suggestion 2
+
+def get_distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
+=======
+Suggestion 3
+
+def distance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+    import itertools
+    total = 0
+    for i in itertools.permutations(range(N)):
+        for j in range(N - 1):
+            total += ((x[i[j]] - x[i[j + 1]]) ** 2 + (y[i[j]] - y[i[j + 1]]) ** 2) ** 0.5
+    print(total / (N - 1))
+
+=======
+Suggestion 5
+
+def getDistance(x1, y1, x2, y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(1/2)
+
+=======
+Suggestion 6
+
+def get_distance(x1, y1, x2, y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**(1/2)
+
+=======
+Suggestion 7
+
+def distance(x1,y1,x2,y2):
+    return ((x2-x1)**2+(y2-y1)**2)**(1/2)

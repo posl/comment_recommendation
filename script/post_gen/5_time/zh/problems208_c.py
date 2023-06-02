@@ -1,58 +1,169 @@
-#问题陈述
-#高桥王国有N个公民。每个公民都有一个国民身份证号码；第i个公民的身份证是a_i。这里，所有的a_i都是成对不同的。
-#高桥有K块糖果。他决定以下列方式将这些糖果分发给公民，直到他没有更多的糖果为止。
-#当他有N块或更多的糖果时，就给每个市民发一块。
-#否则，让K'是他目前拥有的糖果数量，并向拥有K'最小ID的公民每人发放一块。
-#当所有的棋子都发完后，第i个公民将有多少棋子？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ 10^{18}
-#1 ≦ a_i ≦ 10^9
-#所有a_i都是成对不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#a_1 a_2 ... a_N
-#
-#输出
-#打印N行。第i行应该包含第i个公民收到的糖果的数量。
-#
-#输入样本 1
-#2 7
-#1 8
-#
-#样本输出1
-#4
-#3
-#高桥将按以下方式分发棋子。
-#给每个人发一个棋子，让高桥有5个棋子。
-#给每个人发一块，让高桥有3块。
-#给每个人发一个棋子，让高桥有一个棋子。
-#给第1个公民发1块，让Takhashi没有碎片。
-#最后，第1位公民将得到4块，第2位公民将得到3块。
-#
-#输入样本 2
-#1 3
-#33
-#
-#样本输出2
-#3
-#由于只有一个公民，高桥将把所有的棋子分给这个第1个公民。
-#
-#输入样本3
-#7 1000000000000
-#99 8 2 4 43 5 3
-#
-#样本输出3
-#142857142857
-#142857142857
-#142857142858
-#142857142857
-#142857142857
-#142857142857
-#142857142857
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    num = 0
+    ans = [0 for i in range(n)]
+    for i in range(n):
+        ans[i] = k//n
+    for i in range(n):
+        if ans[i] > a[i]:
+            num += ans[i] - a[i]
+    for i in range(n):
+        if num == 0:
+            break
+        if ans[i] > a[i]:
+            if num > 0:
+                ans[i] -= 1
+                num -= 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort()
+    b=[0]*n
+    for i in range(n):
+        b[i]=k//n
+    k%=n
+    for i in range(k):
+        b[i]+=1
+    c=[0]*n
+    for i in range(n):
+        c[i]=a[i]
+    c.sort()
+    for i in range(n):
+        for j in range(n):
+            if a[i]==c[j]:
+                print(b[j])
+                break
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    a.append(K+1)
+    for i in range(N):
+        print((K-a[i]+1)//N)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    num = k//n
+    res = [num]*n
+    k = k%n
+    for i in range(k):
+        res[i] += 1
+    for i in range(n):
+        print(res[a.index(i+1)])
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    num = k // n
+    mod = k % n
+    for i in range(n):
+        if i < mod:
+            print(num + 1)
+        else:
+            print(num)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    cnt = k//n
+    rem = k%n
+    for i in range(n):
+        if i < rem:
+            print(cnt+1)
+        else:
+            print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = a[::-1]
+    ans = [k//n for i in range(n)]
+    k = k%n
+    for i in range(k):
+        ans[i] += 1
+    for i in range(n):
+        print(ans[a.index(a[i])])
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    b = [0]*n
+    for i in range(n):
+        b[i] = k//n
+    for i in range(k%n):
+        b[i] += 1
+    for i in range(n):
+        print(b[a.index(a[i])])
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 从小到大排序
+    a.sort()
+    # 每个人最少拿一个
+    k = k - n
+    # 每个人拿的个数
+    num = k // n
+    # 拿不完的人数
+    num2 = k % n
+    # 拿不完的人的id
+    id = a[num2]
+    # 拿完的人拿的个数
+    num3 = num + 1
+    # 拿完的人的id
+    id2 = id - 1
+    # 输出
+    for i in range(n):
+        if a[i] <= id:
+            print(num3)
+        else:
+            print(num)

@@ -1,37 +1,91 @@
-#问题陈述
-#给你一个正整数N。
-#请找出能同时被2和N整除的最小正整数。
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印能被2和N整除的最小正整数。
-#
-#输入样本 1
-#3
-#
-#输出示例 1
-#6
-#6是可以被2和3整除的。
-#另外，没有一个小于6的正整数能同时被2和3整除。
-#因此，答案是6。
-#
-#输入样本 2
-#10
-#
-#样本输出2
-#10
-#
-#样本输入3
-#999999999
-#
-#样品输出3
-#1999999998
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def common_multiple(n):
+    i = 1
+    while i:
+        if i % 2 == 0 and i % n == 0:
+            return i
+        i += 1
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+print(2 * N // gcd(2, N))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print(2*n)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+n = int(input())
+print(n*2//gcd(n, 2))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(n * 2)
+
+=======
+Suggestion 6
+
+def solve(N):
+    ans = 1
+    while True:
+        if ans % 2 == 0 and ans % N == 0:
+            return ans
+        ans += 1
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print(2 * N)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    while r != 0:
+        a = b
+        b = r
+        r = a % b
+    return b
+
+=======
+Suggestion 9
+
+def get_min_number(n):
+    min_number = 0
+    while True:
+        min_number += n
+        if min_number % 2 == 0 and min_number % n == 0:
+            break
+    return min_number

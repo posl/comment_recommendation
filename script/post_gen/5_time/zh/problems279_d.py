@@ -1,48 +1,124 @@
-#问题陈述
-#一个叫高桥的超人要从一栋大楼的屋顶上跳下，去帮助一个在地面上有困难的人。
-#高桥的星球上有一个代表重力强度的恒定值g，他开始下落后到达地面的时间是（A/((g)^(1/2))。
-#现在是时间0，而g=1。
-#高桥将进行以下操作，想做多少次就做多少次（可能是0）。
-#使用超能力将g的值增加1，这需要一个B的时间。
-#然后，他将跳下大楼。此外，我们只考虑执行操作和下降所需的时间。
-#找到高桥能到达地面的最早时间。
-#
-#限制条件
-#1 ≦ A ≦ 10^{18}
-#1 ≦ B ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#A B
-#
-#輸出
-#打印高桥能到达地面的最早时间。
-#当你的输出与真实值的绝对或相对误差最多为10^{-6}时，你的输出将被接受。
-#
-#输入样本 1
-#10 1
-#
-#样本输出1
-#7.7735026919
-#如果他执行了零次操作，他将在1×0+((10)/((1)^(1/2))=10的时间到达地面。
-#如果他进行一次操作，他将在1×1+((10)/((2)^(1/2))≒8.07时间到达地面。
-#如果他进行两次操作，他将在1×2+((10)/((3)^(1/2))≒7.77的时间到达地面。
-#如果他做了三次手术，他将在1×3+((10)/((4)^(1/2))≒8时到达地面。
-#进行四次或更多次的操作只会推迟到达地面的时间。
-#因此，最好在跳下之前进行两次操作，答案是2+((10)/((3)^(1/2))。
-#
-#输入样本 2
-#5 10
-#
-#样本输出2
-#5.0000000000
-#最佳的做法是完全不进行操作。
-#
-#样本输入3
-#1000000000000000000 100
-#
-#样本输出3
-#8772053214538.5976562500
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print((A + B) ** 0.5)
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    a, b = map(int, input().split())
+    # 二分法求解
+    left = 0
+    right = 10 ** 18
+    while right - left > 10 ** (-6):
+        mid = (left + right) / 2
+        if mid + a / (b * mid ** 0.5) < mid + a / ((b + 1) * (mid + 1) ** 0.5):
+            right = mid
+        else:
+            left = mid
+    print(left + a / (b * left ** 0.5))
+
+=======
+Suggestion 3
+
+def main():
+    a,b=map(int,input().split())
+    c=a+b
+    print(c)
+
+=======
+Suggestion 4
+
+def solve():
+    A, B = map(int, input().split())
+    if A <= B:
+        print(A + 1)
+        return
+    l = 0
+    r = 1e18
+    while r - l > 1:
+        m = (l + r) // 2
+        if m * (m + 1) // 2 + A // (m + 1) >= B:
+            r = m
+        else:
+            l = m
+    print(r + A // (r + 1))
+
+=======
+Suggestion 5
+
+def solve(A, B):
+    import math
+    def get_time(g):
+        return A / math.sqrt(g) + B * math.log(g, math.e)
+    def get_g(t):
+        return 1 / (t / A - B)
+    # 二分探索で解を求める
+    # 解は必ず存在する
+    left = 0
+    right = 10 ** 18
+    while right - left > 10 ** -6:
+        mid = (left + right) / 2
+        if get_time(get_g(mid)) > mid:
+            left = mid
+        else:
+            right = mid
+    return get_time(get_g(left))
+
+A, B = map(int, input().split())
+print(solve(A, B))
+
+=======
+Suggestion 6
+
+def solve():
+    a,b = map(int,input().split())
+    print("{:.10f}".format((a+b*3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253**0.5)/2))
+solve()
+
+=======
+Suggestion 7
+
+def solve(A, B):
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    a,b=map(int,input().split())
+    print((a+(b/2))/((a**2)**(1/2)))
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    #print(A,B)
+    print((A+B)/B)
+
+=======
+Suggestion 10
+
+def solve(A: int, B: int):
+    # 二分法
+    # 1. 先计算不操作的情况下的时间
+    # 2. 二分法，计算操作的情况下的时间
+    # 3. 直到精度满足要求
+    def calc(t):
+        return t + A / (t ** 0.5)
+    left = 0
+    right = 10 ** 18
+    while right - left > 10 ** -6:
+        mid = (left + right) / 2
+        if calc(mid) < calc(mid + 10 ** -6):
+            right = mid
+        else:
+            left = mid
+    return calc(right)

@@ -1,34 +1,84 @@
-#问题陈述
-#N个玩家，编号为1，...，N，进行了一场游戏。玩家i的得分是A_i，得分较少的玩家排名较高。
-#排名第二低的玩家将得到一个诱杀奖。这个玩家是谁？用一个代表该玩家的整数回答。
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#A_i是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#6
-#1 123 12345 12 1234 123456
-#
-#样本输出1
-#3
-#是玩家3在六个玩家中排名第五。
-#
-#样本输入2
-#5
-#3 1 4 15 9
-#
-#样本输出2
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n, a
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    second = min(a)
+    a.remove(second)
+    print(a.index(min(a))+2)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[1])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    print(A[1])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    min1 = min2 = float('inf')
+    for i in range(N):
+        if A[i] < min1:
+            min2 = min1
+            min1 = A[i]
+        elif A[i] < min2:
+            min2 = A[i]
+
+    for i in range(N):
+        if A[i] == min2:
+            print(i + 1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    player = list(map(int, input().split()))
+    player.sort()
+    print(player[1])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A = sorted(A)
+    print(A[1])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[1])

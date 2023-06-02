@@ -1,46 +1,142 @@
-#问题陈述
-#有一个N度的多项式，A(x)=A_Nx^N+A_{N-1}x^{N-1}+...。+A_1x+A_0、
-#和另一个M度的B(x)=B_Mx^M+B_{M-1}x^{M-1}+...。+B_1x+B_0。
-#这里，A(x)和B(x)的每个系数都是一个绝对值最多为100的整数，并且前导系数不为0。
-#同时，让它们的乘积为C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+...+C_1x+C_0。
-#给出A_0,A_1,..., A_N和C_0,C_1,..., C_{N+M}，找到B_0,B_1,..., B_M。
-#这里，给定的输入保证有一个唯一的序列B_0,B_1,...,B_M满足给定条件。
-#
-#限制条件
-#1 ≦ N < 100
-#1 ≦ M < 100
-#|A_i| ≦ 100
-#|C_i| ≦ 10^6
-#A_N ≠ 0
-#C_{N+M}≠ 0
-#有一个唯一的序列B_0, B_1, ..., B_M满足声明中给出的条件。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_0 A_1 ...A_{N-1} A_N
-#C_0 C_1 ...C_{N+M-1} C_{N+M}
-#
-#输出
-#在一行中打印M+1个整数B_0,B_1,..., B_M，中间有空格。
-#
-#输入示例 1
-#1 2
-#2 1
-#12 14 8 2
-#
-#样本输出 1
-#6 4 2
-#对于A(x)=x+2和B(x)=2x^2+4x+6，我们有C(x)=A(x)B(x)=(x+2)(2x^2+4x+6)=2x^3+8x^2+14x+12，所以B(x)=2x^2+4x+6满足所给条件。因此，B_0=6，B_1=4，B_2=2应该按照这个顺序打印，中间有空格。
-#
-#输入样本 2
-#1 1
-#100 1
-#10000 0 -1
-#
-#样本输出2
-#100 -1
-#我们有A(x)=x+100，C(x)=-x^2+10000，其中B(x)=-x+100满足给定条件。
-#因此，100，-1应该按照这个顺序打印，中间有空格。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(N+1):
+        B[0] += C[i] * A[i]
+    for j in range(1, M+1):
+        B[j] = (C[N+j] - B[0]) // A[0]
+    print(*B)
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    B = [0]*(M+1)
+    for i in range(N+M,0,-1):
+        B[M-(N+M-i)] = C[i]
+        for j in range(0,N+M-i):
+            C[j] -= A[j]*C[i]
+    print(" ".join(map(str,B)))
+
+=======
+Suggestion 3
+
+def solve():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    C = list(map(int,input().split()))
+    B = [0]*(m+1)
+    for i in range(m+1):
+        B[m-i] = C[n+m-i]
+        for j in range(n+1):
+            B[m-i] -= A[n-j]*B[m-i+j]
+    print(*B)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    B[0] = C[0] // A[0]
+    for i in range(1, M + 1):
+        B[i] = (C[i] - sum([B[j] * A[i - j] for j in range(i)])) // A[0]
+    print(' '.join(map(str, B)))
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0]*(m+1)
+    for i in range(n+1):
+        for j in range(m+1):
+            b[j] += c[i]*a[n-i]
+    print(*b)
+
+=======
+Suggestion 6
+
+def solve():
+    # 读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    # 从c中读取出b
+    b = [0] * (m + 1)
+    for i in range(n + m):
+        b[m - i] = c[i] // a[n]
+
+        # 用b更新c
+        for j in range(n + 1):
+            c[i + j] -= b[m - i] * a[n - j]
+
+    for i in range(m + 1):
+        print(b[i], end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(M, -1, -1):
+        B[i] = C[i] // A[N]
+        for j in range(N, -1, -1):
+            C[i - j] -= B[i] * A[j]
+    print(*B)
+
+=======
+Suggestion 8
+
+def problem245_d():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0 for i in range(M+1)]
+    for i in range(M+1):
+        for j in range(N+1):
+            B[i] += C[i+j] * A[j]
+    for i in range(M+1):
+        print(B[i], end=" ")
+    print()
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int, input().split())
+    an = list(map(int, input().split()))
+    cn = list(map(int, input().split()))
+    bn = [0] * (m+1)
+    for i in range(n+1):
+        for j in range(m+1):
+            bn[j] += an[i] * cn[i+j]
+    print(' '.join(map(str, bn)))

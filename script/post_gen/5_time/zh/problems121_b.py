@@ -1,63 +1,158 @@
-#问题陈述
-#有N段源代码。第i段代码的特征由M个整数A_{i1}, A_{i2}, ..., A_{iM}表示。
-#此外，你还得到了整数B_1, B_2, ..., B_M和C。
-#当且仅当A_{i1}的第i个代码正确地解决了这个问题。B_1 + A_{i2}...。B_2 + ...+ A_{iM}B_M + C > 0。
-#在N个代码中，找出能正确解决这个问题的代码数量。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N, M ≦ 20
-#-100 ≦ A_{ij} ≦ 100
-#-100 ≦ B_i ≦ 100
-#-100 ≦ C ≦ 100
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M C
-#B_1 B_2 ...B_M
-#A_{11}A_{12}...A_{1M}
-#A_{21}A_{22} ...A_{2M}
-#.
-#.
-#.
-#A_{N1}A_{N2} ...A_{NM}
-#
-#输出
-#打印给定的N个代码中能正确解决该问题的代码数量。
-#
-#输入样本 1
-#2 3 -10
-#1 2 3
-#3 2 1
-#1 2 2
-#
-#样本输出 1
-#1
-#只有第二段代码正确地解决了这个问题，如下所示：
-#由于3 × 1 + 2 × 2 + 1 × 3 + (-10) = 0 ≦ 0，第一段代码不能解决这个问题。
-#1 × 1 + 2 × 2 + 2 × 3 + (-10) = 1 > 0，第二个代码解决了这个问题。
-#
-#输入样本 2
-#5 2 -4
-#-2 5
-#100 41
-#100 40
-#-3 0
-#-6 -2
-#18 -13
-#
-#样本输出2
-#2
-#
-#采样输入3
-#3 3 0
-#100 -100 0
-#0 100 100
-#100 100 100
-#-100 100 100
-#
-#样本输出3
-#0
-#所有这些都是错误的答案。除了你的答案。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m, c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        tmp = 0
+        for j in range(m):
+            tmp += a[i][j] * b[j]
+        if tmp + c > 0:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def solution1():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [list(map(int, input().split())) for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        tmp = 0
+        for j in range(M):
+            tmp += A[i][j] * B[j]
+        tmp += C
+        if tmp > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    cnt = 0
+    for a in A:
+        tmp = 0
+        for i in range(M):
+            tmp += a[i] * B[i]
+        if tmp + C > 0:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 4
+
+def main():
+    n,m,c = map(int,input().split())
+    b = list(map(int,input().split()))
+    a = [list(map(int,input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        if sum + c > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,M,C = map(int,input().split())
+    B = list(map(int,input().split()))
+    A = []
+    for i in range(N):
+        A.append(list(map(int,input().split())))
+    ans = 0
+    for i in range(N):
+        tmp = 0
+        for j in range(M):
+            tmp += A[i][j]*B[j]
+        if tmp + C > 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = 2
+    m = 3
+    c = -10
+    b = [1,2,3]
+    a = [[3,2,1],[1,2,2]]
+    count = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        sum += c
+        if sum > 0:
+            count += 1
+
+    print(count)
+
+=======
+Suggestion 7
+
+def solve():
+    N, M, C = map(int, input().split())
+    B = list(map(int, input().split()))
+    A = [list(map(int, input().split())) for i in range(N)]
+
+    ans = 0
+    for i in range(N):
+        tmp = 0
+        for j in range(M):
+            tmp += A[i][j] * B[j]
+        if tmp + C > 0:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m,c = map(int, input().split())
+    b = list(map(int, input().split()))
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    count = 0
+    for i in range(n):
+        sum = 0
+        for j in range(m):
+            sum += a[i][j] * b[j]
+        if sum + c > 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n,m,c = map(int,input().split())
+    b = list(map(int,input().split()))
+    a = [list(map(int,input().split())) for i in range(n)]
+    cnt = 0
+    for i in range(n):
+        sum = c
+        for j in range(m):
+            sum += a[i][j]*b[j]
+        if sum > 0:
+            cnt += 1
+    print(cnt)

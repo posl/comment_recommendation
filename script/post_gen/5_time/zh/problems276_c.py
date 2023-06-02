@@ -1,49 +1,134 @@
-#问题陈述
-#给你一个(1, ..., N)的排列组合P=(P_1, ..., P_N)，其中(P_1, ..., P_N)≠(1, ..., N)。
-#假设P是(1 ..., N)的所有排列组合中第K个最小的排列组合。找到第(K-1)个最小的排列组合。
-# 什么是互换？
-#(1, ..., N)的互换是将(1, ..., N)排列成一个序列。
-# 什么是排列顺序？
-#对于长度为N的序列，A = (A_1, ..., A_N) 和B = (B_1, ..., B_N)，当且仅当有一个整数1 ≦ i ≦ N，满足以下两个条件时，就说A严格小于B的lexicographically。
-#(A_{1},...,A_{i-1}) = (B_1,...,B_{i-1}) 。
-#A_i < B_i。
-#
-#
-#约束条件
-#2 ≦ N ≦ 100
-#1 ≦ P_i ≦ N (1 ≦ i ≦ N)
-#P_i ≠ P_j (i ≠ j)
-#(p_1, ..., p_n) ≠ (1, ..., n)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N
-#P_1 ...P_N
-#
-#输出
-#让Q = (Q_1, ..., Q_N) 是所寻求的排列组合。将Q_1, ..., Q_N按这个顺序打印在一行中，用空格分隔。
-#
-#输入样本 1
-#3
-#3 1 2
-#
-#样本输出 1
-#2 3 1
-#下面是(1, 2, 3)的排列组合，按升序排列。
-#(1, 2, 3)
-#(1, 3, 2)
-#(2, 1, 3)
-#(2, 3, 1)
-#(3, 1, 2)
-#(3, 2, 1)
-#因此，P=（3，1，2）是第五小的，所以寻求的排列组合是（2，3，1），这是第四小的（5-1=4）。
-#
-#输入样本2
-#10
-#9 8 6 5 10 3 1 2 4 7
-#
-#样本输出2
-#9 8 6 5 10 2 7 4 3 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def reverse(s, e, p):
+    while s < e:
+        p[s], p[e] = p[e], p[s]
+        s += 1
+        e -= 1
+
+=======
+Suggestion 2
+
+def get_min_permutation(n, p):
+    p = [int(x) for x in p.split()]
+    k = 0
+    for i in range(n):
+        k += (p[i] - 1) * factorial(n - i - 1)
+    k += 1
+    q = [0] * n
+    used = [False] * n
+    for i in range(n):
+        for j in range(n):
+            if used[j]:
+                continue
+            q[i] = j + 1
+            if factorial(n - i - 1) < k:
+                k -= factorial(n - i - 1)
+            else:
+                used[j] = True
+                break
+    return q
+
+=======
+Suggestion 3
+
+def swap(a, b):
+    return b, a
+
+=======
+Suggestion 4
+
+def permute(nums):
+    res = []
+    def backtrack(nums, tmp):
+        if not nums:
+            res.append(tmp)
+            return
+        for i in range(len(nums)):
+            backtrack(nums[:i]+nums[i+1:], tmp+[nums[i]])
+    backtrack(nums, [])
+    return res
+
+=======
+Suggestion 5
+
+def next_permutation(a):
+    i = len(a)-1
+    while i > 0 and a[i-1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = len(a)-1
+    while a[j] <= a[i-1]:
+        j -= 1
+    a[i-1], a[j] = a[j], a[i-1]
+    a[i:] = a[len(a)-1:i-1:-1]
+    return True
+
+n = int(input())
+p = list(map(int, input().split()))
+a = list(range(1, n+1))
+i = 1
+while True:
+    if p == a:
+        print(*a)
+        break
+    next_permutation(a)
+    i += 1
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = [int(i) for i in input().split()]
+    Q = [0] * N
+    for i, p in enumerate(P):
+        Q[p - 1] = i + 1
+    print(*Q)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(*Q)
+
+=======
+Suggestion 8
+
+def get_input():
+    n = int(input())
+    p = list(map(int, input().split()))
+    return n, p
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    q = [0] * (n + 1)
+    for i in range(1, n + 1):
+        q[p[i]] = i
+    print(*q[1:])
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    P = list(map(int,input().split()))
+    #print(P)
+    Q = [0]*N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    print(*Q)

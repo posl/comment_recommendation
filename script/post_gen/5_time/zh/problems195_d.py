@@ -1,59 +1,315 @@
-#问题陈述
-#我们有N件行李，称为行李1到N，有M个箱子，称为箱子1到M。
-#行李i的大小为W_i，价值为V_i。
-#箱子i可以包含一件行李，其大小最多为X_i。它不能包含两件或多件行李。
-#你将会得到Q个查询。在每个查询中，给定两个整数L和R，解决以下问题：
-#问题：在M个箱子中，R-L+1个箱子，箱子L,L+1,...,R，已经无法使用。
-#找出我们可以同时放入剩余箱子的一组行李的最大可能总价值。
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 50
-#1 ≦ Q ≦ 50
-#1 ≦ W_i ≦ 10^6
-#1 ≦ V_i ≦ 10^6
-#1 ≦ X_i ≦ 10^6
-#1 ≦ L ≦ R ≦ M
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M Q
-#W_1 V_1
-#.
-#.
-#.
-#W_N V_N
-#X_1 ... X_M
-#Query_1
-#.
-#.
-#.
-#Query_Q
-#每个查询的格式如下：
-#L R
-#
-#输出
-#打印Q行。
-#第i行应该包含Query_i所描述的问题的答案。
-#
-#输入样本 1
-#3 4 3
-#1 9
-#5 3
-#7 8
-#1 8 6 9
-#4 4
-#1 4
-#1 3
-#
-#样本输出1
-#20
-#0
-#9
-#在第1个查询中，只有箱子4是不可用的。
-#通过将行李1放入盒子1，行李3放入盒子2，行李2放入盒子3，我们可以将所有的行李放入盒子，使得盒子里的行李总价值为20。
-#在第2个查询中，所有箱子都不可用；答案是0。
-#在第3次查询中，只有盒子4是可用的。通过将行李1放入盒子4，我们可以使盒子里的行李总价值为9，这是可能的最大结果。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m,q = map(int,input().split())
+    wv = [list(map(int,input().split())) for _ in range(n)]
+    x = list(map(int,input().split()))
+    query = [list(map(int,input().split())) for _ in range(q)]
+    for i in range(q):
+        l,r = query[i]
+        y = x[:l-1]+x[r:]
+        y.sort()
+        ans = 0
+        for j in range(n):
+            for k in range(len(y)):
+                if wv[j][0]<=y[k]:
+                    ans += wv[j][1]
+                    y.pop(k)
+                    break
+        print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N, M, Q = map(int, input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i], V[i] = map(int, input().split())
+    X = list(map(int, input().split()))
+    for _ in range(Q):
+        L, R = map(int, input().split())
+        X_ = X[:L - 1] + X[R:]
+        N_ = len(X_)
+        dp = [[0] * (sum(X_) + 1) for _ in range(N_ + 1)]
+        for i in range(N_):
+            for j in range(sum(X_) + 1):
+                if j < X_[i]:
+                    dp[i + 1][j] = dp[i][j]
+                else:
+                    dp[i + 1][j] = max(dp[i][j], dp[i][j - X_[i]] + V[i])
+        print(dp[-1][-1])
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N,M,Q = map(int,input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i],V[i] = map(int,input().split())
+    X = list(map(int,input().split()))
+    for i in range(Q):
+        L,R = map(int,input().split())
+        X2 = X[:L-1] + X[R:]
+        X2.sort()
+        ans = 0
+        for j in range(N):
+            for k in range(len(X2)):
+                if W[j] <= X2[k]:
+                    ans += V[j]
+                    X2.pop(k)
+                    break
+        print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, M, Q = map(int, input().split())
+    WV = [list(map(int, input().split())) for _ in range(N)]
+    X = list(map(int, input().split()))
+    Query = [list(map(int, input().split())) for _ in range(Q)]
+
+    for L, R in Query:
+        X_ = X[:L-1]+X[R:]
+        X_.sort()
+        WV_ = sorted(WV, key=lambda x: x[1], reverse=True)
+        ans = 0
+        for w, v in WV_:
+            for i, x in enumerate(X_):
+                if w <= x:
+                    X_.pop(i)
+                    ans += v
+                    break
+        print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N,M,Q = map(int,input().split())
+    W = [0] * N
+    V = [0] * N
+    for i in range(N):
+        W[i],V[i] = map(int,input().split())
+    X = [0] * M
+    X = list(map(int,input().split()))
+    query = [0] * Q
+    for i in range(Q):
+        query[i] = list(map(int,input().split()))
+    for i in range(Q):
+        L = query[i][0]
+        R = query[i][1]
+        X1 = X[:L-1]
+        X2 = X[R:]
+        X1.extend(X2)
+        X1.sort()
+        X2 = X1
+        X2 = X2[::-1]
+        X1 = X1[::-1]
+        X3 = X1[:N]
+        X4 = X2[:N]
+        ans = 0
+        for j in range(1<<N):
+            w = 0
+            v = 0
+            for k in range(N):
+                if j & (1<<k):
+                    w += W[k]
+                    v += V[k]
+            if w > X3[0]:
+                continue
+            if w <= X4[0]:
+                ans = max(ans,v)
+                continue
+            l = 0
+            r = N-1
+            while r-l > 1:
+                m = (l+r)//2
+                if w <= X4[m]:
+                    l = m
+                else:
+                    r = m
+            ans = max(ans,v+X4[l+1]-w)
+        print(ans)
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    n,m,q = map(int,input().split())
+    wv = [list(map(int,input().split())) for _ in range(n)]
+    x = list(map(int,input().split()))
+    query = [list(map(int,input().split())) for _ in range(q)]
+
+    ans = []
+
+    for i in range(q):
+        l,r = query[i][0],query[i][1]
+        box = x[:l-1]+x[r:]
+        box.sort()
+        box.reverse()
+        box = box[:n]
+        box.sort()
+        box.reverse()
+        box = box[:n]
+        wv.sort(key=lambda x:x[1])
+        wv.reverse()
+        wv = wv[:n]
+        wv.sort(key=lambda x:x[0])
+        wv.reverse()
+        wv = wv[:n]
+        wv = [i for i in wv if i[0]<=box[0]]
+        wv.sort(key=lambda x:x[1])
+        wv.reverse()
+        wv = wv[:n]
+        ans.append(sum([i[1] for i in wv]))
+
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 7
+
+def main():
+    N, M, Q = map(int, input().split())
+    W = []
+    V = []
+    for i in range(N):
+        w, v = map(int, input().split())
+        W.append(w)
+        V.append(v)
+    X = list(map(int, input().split()))
+    query = []
+    for i in range(Q):
+        l, r = map(int, input().split())
+        query.append([l, r])
+    for i in range(Q):
+        l, r = query[i]
+        X_copy = X.copy()
+        del X_copy[l-1:r]
+        X_copy.sort()
+        W_copy = W.copy()
+        V_copy = V.copy()
+        ans = 0
+        for j in range(N):
+            for k in range(M-len(X_copy)):
+                if W_copy[j] <= X_copy[k]:
+                    ans += V_copy[j]
+                    del W_copy[j]
+                    del V_copy[j]
+                    break
+        print(ans)
+
+=======
+Suggestion 8
+
+def max_value(w,v,x):
+    dp = [[0 for i in range(x+1)] for j in range(len(w)+1)]
+    for i in range(1,len(w)+1):
+        for j in range(1,x+1):
+            if j >= w[i-1]:
+                dp[i][j] = max(dp[i-1][j],dp[i-1][j-w[i-1]]+v[i-1])
+            else:
+                dp[i][j] = dp[i-1][j]
+    return dp[-1][-1]
+
+n,m,q = map(int,input().split())
+w,v = [],[]
+for i in range(n):
+    wi,vi = map(int,input().split())
+    w.append(wi)
+    v.append(vi)
+x = list(map(int,input().split()))
+query = []
+for i in range(q):
+    l,r = map(int,input().split())
+    query.append([l,r])
+for i in range(q):
+    l,r = query[i]
+    w1 = w[:l-1]+w[r:]
+    v1 = v[:l-1]+v[r:]
+    x1 = x[:]
+    print(max_value(w1,v1,x1))
+
+=======
+Suggestion 9
+
+def main():
+    # N M Q = map(int, input().split())
+    # print(N, M, Q)
+    # W = []
+    # V = []
+    # for i in range(N):
+    #     w, v = map(int, input().split())
+    #     W.append(w)
+    #     V.append(v)
+    # print(W)
+    # print(V)
+    # X = list(map(int, input().split()))
+    # print(X)
+    # Q = int(input())
+    # print(Q)
+    # for i in range(Q):
+    #     l, r = map(int, input().split())
+    #     print(l, r)
+    N = 3
+    M = 4
+    Q = 3
+    W = [1, 5, 7]
+    V = [9, 3, 8]
+    X = [1, 8, 6, 9]
+    Q = [[4, 4], [1, 4], [1, 3]]
+    for i in range(Q):
+        l = Q[i][0]
+        r = Q[i][1]
+        print(l, r)
+        # for j in range(l, r+1):
+        #     print(j)
+        #     X[j-1] = 0
+        # print(X)
+        # X.sort()
+        # print(X)
+        # for j in range(N):
+        #     for k in range(M):
+        #         if W[j] <= X[k]:
+        #             X[k] = 0
+        #             break
+        # print(X)
+        # for j in range(M):
+        #     if X[j] != 0:
+        #         print(X[j])
+        #         X[j] = 0
+        #         break
+        # print(X)
+        # X.sort()
+        # print(X)
+        # for j in range(N):
+        #     for k in range(M):
+        #         if W[j] <= X[k]:
+        #             X[k] = 0
+        #             break
+        # print(X)
+        # for j in range(M):
+        #     if X[j] != 0:
+        #         print(X[j])
+        #         X[j] = 0
+        #         break
+        # print(X)
+        # X.sort()
+        # print(X)
+
+=======
+Suggestion 10
+
+def main():
+    pass

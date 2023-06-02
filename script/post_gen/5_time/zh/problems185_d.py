@@ -1,62 +1,280 @@
-#问题陈述
-#有N个方块从左到右排列成一排。设i号方格为左起第i个方格。
-#其中M个正方形，即A_1, A_2, A_3, ..., A_M，是蓝色的；其他的是白色的。（M可能是0，在这种情况下没有蓝色的正方形）。
-#在一次使用宽度为k的邮票时，你可以从N个方格中选择连续的k个方格，并将其重新涂成红色，只要这k个方格不包含一个蓝色方格。
-#在对k和邮票用途的最佳选择下，至少需要使用多少次邮票才能没有白色方块？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#輸出
-#打印没有白方块所需的邮票的最小使用次数。
-#
-#输入样本 1
-#5 2
-#1 3
-#
-#样本输出1
-#3
-#如果我们选择k=1，并一次对三个白色方格进行重绘，三次使用就足够了，这是最优的。
-#选择k=2或更大，就不可能对2号方格进行重绘，因为有一个限制条件，不允许k个方格中包含一个蓝色方格。
-#
-#输入样本 2
-#13 3
-#13 3 9
-#
-#样本输出2
-#6
-#一个最佳策略是选择k=2，并使用邮票，如下所示：
-#将方格1、2重新涂成红色。
-#将4、5号方格重新涂成红色。
-#将方格5、6重新涂成红色。
-#将7、8号方格重新涂成红色。
-#将10、11号方格重新涂成红色。
-#将11，12号方格重新涂成红色。
-#注意，尽管在使用图章时选择的连续k个方格不能包含蓝色方格，但它们可以包含已经是红色方格。
-#
-#输入样本 3
-#5 5
-#5 2 1 4 3
-#
-#样本输出3
-#0
-#如果从一开始就没有白色的方块，我们就根本不需要使用印章。
-#
-#输入样本4
-#1 0
-#
-#
-#采样输出4
-#1
-#M可能是0。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    if m == 0:
+        print(1)
+        return
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[0] != 1:
+        a.insert(0,0)
+    if a[-1] != n:
+        a.append(n+1)
+    k = n
+    for i in range(len(a)-1):
+        if a[i+1] - a[i] - 1 > 0:
+            k = min(k,a[i+1] - a[i] - 1)
+    ans = 0
+    for i in range(len(a)-1):
+        ans += (a[i+1] - a[i] - 1) // k
+        if (a[i+1] - a[i] - 1) % k != 0:
+            ans += 1
+    print(ans)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    n,m=map(int,input().split())
+    if m==0:
+        print(1)
+        return
+    mlist=list(map(int,input().split()))
+    mlist.sort()
+    klist=[]
+    for i in range(m-1):
+        klist.append(mlist[i+1]-mlist[i])
+    klist.sort()
+    k=klist[0]
+    count=0
+    for i in range(m):
+        count+=((mlist[i]-1)//k)
+        if (mlist[i]-1)%k!=0:
+            count+=1
+    count+=((n-mlist[m-1])//k)
+    if (n-mlist[m-1])%k!=0:
+        count+=1
+    print(count)
+    return
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N, M = [int(x) for x in input().split()]
+    if M == 0:
+        print(1)
+        return
+    A = [int(x) for x in input().split()]
+    A.sort()
+    if A[0] != 1:
+        A = [0] + A
+    if A[-1] != N:
+        A = A + [N+1]
+    #print(A)
+    k = 1
+    while True:
+        for i in range(0, len(A)-1):
+            if A[i+1] - A[i] - 1 < k:
+                break
+        else:
+            print(k)
+            return
+        k += 1
+
+main()
+
+=======
+Suggestion 4
+
+def solve(n, m, a):
+    if m == 0:
+        return 1
+    a.sort()
+    a.append(n + 1)
+    k = 1
+    b = []
+    for i in range(m):
+        if a[i + 1] - a[i] - 1 > 0:
+            b.append(a[i + 1] - a[i] - 1)
+    return (max(b) + k - 1) // k
+
+=======
+Suggestion 5
+
+def solution():
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    if m == 0:
+        print(1)
+        return
+    if n == m:
+        print(0)
+        return
+    if n == 1:
+        print(0)
+        return
+    if n == 2:
+        if m == 1:
+            print(1)
+        else:
+            print(0)
+        return
+    if n == 3:
+        if m == 2:
+            print(0)
+        elif m == 1:
+            if a[0] == 1 or a[0] == 3:
+                print(1)
+            else:
+                print(0)
+        else:
+            print(0)
+        return
+    if n == 4:
+        if m == 3:
+            print(0)
+        elif m == 2:
+            if a[0] == 1 and a[1] == 2:
+                print(0)
+            else:
+                print(1)
+        elif m == 1:
+            if a[0] == 1 or a[0] == 4:
+                print(1)
+            else:
+                print(0)
+        else:
+            print(0)
+        return
+    if n == 5:
+        if m == 4:
+            print(0)
+        elif m == 3:
+            if a[0] == 1 and a[1] == 3 and a[2] == 5:
+                print(0)
+            else:
+                print(1)
+        elif m == 2:
+            if a[0] == 1 and a[1] == 3:
+                print(1)
+            elif a[0] == 2 and a[1] == 4:
+                print(1)
+            else:
+                print(0)
+        elif m == 1:
+            if a[0] == 1 or a[0] == 4:
+                print(1)
+            else:
+                print(0)
+        else:
+            print(0)
+        return
+    if m == 0:
+        print(1)
+        return
+    if m == 1:
+        if a[0] == 1 or a[0] == n:
+            print(1)
+        else:
+
+=======
+Suggestion 7
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(N+1)
+    if M == 0:
+        print(1)
+        return
+    if N == M:
+        print(0)
+        return
+    if M == 1:
+        print(N-1)
+        return
+    B = []
+    for i in range(M):
+        if A[i+1]-A[i]-1 > 0:
+            B.append(A[i+1]-A[i]-1)
+    B.sort()
+    k = B[0]
+    ans = 0
+    for i in B:
+        ans += (i+k-1)//k
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    if m == 0:
+        print(1)
+        return
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[0] != 1:
+        a.append(0)
+    a.append(n+1)
+    a.sort()
+    b = []
+    for i in range(1, m+2):
+        if a[i] - a[i-1] - 1 > 0:
+            b.append(a[i] - a[i-1] - 1)
+    k = min(b)
+    ans = 0
+    for i in range(len(b)):
+        ans += (b[i] + k - 1) // k
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        exit()
+    if N == M:
+        print(0)
+        exit()
+    B = []
+    for i in range(1,M):
+        B.append(A[i]-A[i-1]-1)
+    B.sort()
+    print(sum(B[0:N-M]))
+
+=======
+Suggestion 10
+
+def solve(n, m, a):
+    if m == 0:
+        return 1
+    a.sort()
+    a.append(n+1)
+    s = []
+    for i in range(m+1):
+        if a[i+1] - a[i] > 1:
+            s.append(a[i+1] - a[i] - 1)
+    if len(s) == 0:
+        return 0
+    k = min(s)
+    ans = 0
+    for i in range(len(s)):
+        ans += (s[i] + k - 1) // k
+    return ans
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(n, m, a))

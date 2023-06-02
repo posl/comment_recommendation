@@ -1,66 +1,172 @@
-#问题陈述
-#对于两个字符串A和B，让A+B表示A和B按这个顺序的串联。
-#给你N个字符串S_1,...,S_N。按照i=1, ..., N的顺序，对它们进行修改并打印如下：
-#如果S_1,...,S_{i-1}中没有一个等于S_i，打印S_i；
-#如果S_1,...,S_{i-1}中的X（X>0）等于S_i，则打印S_i+ ( +X+ )，将X作为一个字符串处理。
-#
-#约束条件
-#1 ≦ N ≦ 2× 10^5
-#S_i是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#按照问题陈述中的规定打印N行。
-#
-#输入样本1
-#5
-#newfile
-#newfile
-#newfolder
-#newfile
-#newfolder
-#
-#输出样本1
-#newfile
-#newfile(1)
-#newfolder
-#newfile(2)
-#newfolder(1)
-#
-#输入样本2
-#11
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#
-#样本输出2
-#a
-#a(1)
-#a(2)
-#a(3)
-#a(4)
-#a(5)
-#a(6)
-#a(7)
-#a(8)
-#a(9)
-#a(10)
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        count = 0
+        for j in range(i):
+            if s[i] == s[j]:
+                count += 1
+        if count == 0:
+            print(s[i])
+        else:
+            print(s[i] + '(' + str(count) + ')')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s[i] in s[:i]:
+            x = 0
+            for j in range(i):
+                if s[j] == s[i]:
+                    x += 1
+            print(s[i] + '(' + str(x) + ')')
+        else:
+            print(s[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    files = {}
+    for _ in range(n):
+        s = input()
+        if s in files:
+            files[s] += 1
+            print(s + '(' + str(files[s]) + ')')
+        else:
+            files[s] = 0
+            print(s)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    d = {}
+    for i in range(n):
+        if s[i] in d:
+            d[s[i]] += 1
+            s[i] = s[i] + '(' + str(d[s[i]]) + ')'
+        else:
+            d[s[i]] = 0
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    file_list = []
+    for i in range(n):
+        file_list.append(input())
+    file_dict = {}
+    for i in range(n):
+        if file_list[i] not in file_dict:
+            file_dict[file_list[i]] = 1
+            print(file_list[i])
+        else:
+            file_dict[file_list[i]] += 1
+            print(file_list[i] + '(' + str(file_dict[file_list[i]] - 1) + ')')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    d = {}
+    for i in range(n):
+        if s[i] not in d:
+            d[s[i]] = 1
+            print(s[i])
+        else:
+            d[s[i]] += 1
+            print(s[i] + "(" + str(d[s[i]]-1) + ")")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    file = []
+    for i in range(n):
+        file.append(input())
+    for i in range(n):
+        if file[i] not in file[:i]:
+            print(file[i])
+        else:
+            for j in range(i):
+                if file[j] == file[i]:
+                    k = file[:i].count(file[i])
+                    print(file[i] + "(" + str(k) + ")")
+                    break
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    for i in range(n):
+        if s[i] in s[:i]:
+            j = 1
+            while s[i]+ '(' + str(j) + ')' in s[:i]:
+                j += 1
+            s[i] += '(' + str(j) + ')'
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    for i in range(n):
+        if s[i] not in s[:i]:
+            print(s[i])
+        else:
+            j = 1
+            while True:
+                if s[i] + '(' + str(j) + ')' not in s[:i]:
+                    print(s[i] + '(' + str(j) + ')')
+                    break
+                else:
+                    j += 1
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    d = {}
+    for i in range(n):
+        if s[i] not in d:
+            d[s[i]] = 1
+            print(s[i])
+        else:
+            d[s[i]] += 1
+            print(s[i] + "(" + str(d[s[i]] - 1) + ")")

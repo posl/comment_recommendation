@@ -1,44 +1,143 @@
-#问题陈述
-#从东到西有N座山，西边有一片海。
-#每座山的山顶都有一个旅馆。你决定从这些旅店中选择住的地方。
-#从西边看第i座山的高度是H_i。
-#从最西边的山顶上的客栈，你肯定能看到大海。
-#对于从西面第i座山顶的旅馆（i=2，3，...，N），当且仅当H_1≦H_i，H_2≦H_i，...，以及H_{i-1}≦H_i时，你可以看到大海。
-#你能从这N个旅馆中的多少个旅馆看到大海？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 20
-#1 ≦ H_i ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#H_1 H_2 ...H_N
-#
-#输出
-#打印可以看到大海的旅馆的数量。
-#
-#输入样本 1
-#4
-#6 5 6 8
-#
-#样本输出1
-#3
-#你可以从西边的第一、第三和第四家旅馆看到大海。
-#
-#样本输入2
-#5
-#4 5 3 5 4
-#
-#样本输出 2
-#3
-#
-#样本输入3
-#5
-#9 5 6 8 4
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 1
+    for i in range(1, n):
+        flag = True
+        for j in range(i):
+            if h[j] >= h[i]:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def get_input():
+    n = int(input())
+    h = list(map(int, input().split()))
+    return n, h
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    max = 0
+    count = 0
+    for i in range(N):
+        if H[i] >= max:
+            max = H[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if h[i] >= max(h[:i+1]):
+            cnt += 1
+    print(cnt)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    max = 0
+    count = 0
+    for i in range(n):
+        if h[i] >= max:
+            count += 1
+            max = h[i]
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    h = [int(x) for x in input().split()]
+    cnt = 0
+    for i in range(n):
+        for j in range(i):
+            if h[i] < h[j]:
+                break
+        else:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    count = 0
+    max = 0
+    for i in range(n):
+        if max <= h[i]:
+            count = count + 1
+            max = h[i]
+    print(count)
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    h = [int(x) for x in input().split()]
+    cnt = 1
+    for i in range(1, n):
+        flag = True
+        for j in range(0, i):
+            if h[i] < h[j]:
+                flag = False
+                break
+        if flag:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def problems124_b():
+    n = int(input())
+    h = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n):
+        if max(h[:i+1]) == h[i]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+
+    count = 1
+    for i in range(1, N):
+        for j in range(0, i):
+            if H[j] > H[i]:
+                break
+            if j == i - 1:
+                count += 1
+
+    print(count)

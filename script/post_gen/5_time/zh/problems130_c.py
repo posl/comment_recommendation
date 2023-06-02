@@ -1,32 +1,106 @@
-#问题陈述
-#在一个坐标平面内有一个矩形。四个顶点的坐标是(0,0), (W,0), (W,H), 和(0,H)。
-#给你一个点(x,y)，它在矩形内或矩形的边界上。我们将画一条经过(x,y)的直线，把矩形切成两部分。找出面积不大于另一部分的最大可能面积。此外，确定是否有多种方法来切割矩形并达到该最大值。
-#
-#限制条件
-#1 ≦ W,H ≦ 10^9
-#0≦ x≦ W
-#0≦ y≦ H
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#W H x y
-#
-#输出
-#打印面积不大于其他部分的最大可能面积，如果有多种方法切割矩形并达到该最大面积，则后面加1，否则加0。
-#当打印的面积的绝对或相对误差最多为10^{-9}时，将被判断为正确。
-#
-#输入样本 1
-#2 3 1 2
-#
-#输出样本 1
-#3.000000 0
-#x=1这一行给出了最佳切割，而其他行都没有。
-#
-#输入样本 2
-#2 2 1 1
-#
-#样本输出 2
-#2.000000 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    W, H, x, y = map(int, input().split())
+
+    if x == W/2 and y == H/2:
+        print(W*H/2, 1)
+    else:
+        print(W*H/2, 0)
+
+=======
+Suggestion 2
+
+def main():
+    W,H,x,y = map(int, input().split())
+    area = W*H/2
+    print(area, end=' ')
+    if x*2 == W and y*2 == H:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    w, h, x, y = map(int, input().split())
+    print(w * h / 2, 1 if 2 * x == w and 2 * y == h else 0)
+
+=======
+Suggestion 4
+
+def cut(x,y,w,h):
+    if x==w/2 and y==h/2:
+        return w*h/2
+    elif x==w/2:
+        return h*x
+    elif y==h/2:
+        return w*y
+    elif x==0 and y==0:
+        return w*h/2
+    elif x==0:
+        return w*h/2
+    elif y==0:
+        return w*h/2
+    else:
+        return max(x*h,(w-x)*h,w*y,w*(h-y))
+
+=======
+Suggestion 5
+
+def main():
+    w,h,x,y = map(int,input().split())
+    if (w/2 == x) and (h/2 == y):
+        print(w*h/2,1)
+    else:
+        print(w*h/2,0)
+
+=======
+Suggestion 6
+
+def main():
+    w,h,x,y = map(int, raw_input().split())
+    if (w/2.0 == x) and (h/2.0 == y):
+        print w*h/2.0, 1
+    else:
+        print w*h/2.0, 0
+
+=======
+Suggestion 7
+
+def main():
+    # W,H,x,y = map(int, input().split())
+    # if x==0 or y==0 or x==W or y==H:
+    #     print(W*H/2, 1)
+    # else:
+    #     print(W*H/2, 0)
+    W,H,x,y = map(int, input().split())
+    if x==0 or y==0 or x==W or y==H:
+        print(W*H/2, 1)
+    else:
+        print(W*H/2, 0)
+
+=======
+Suggestion 8
+
+def main():
+    w,h,x,y = map(int,input().split())
+
+    if x == w/2 and y == h/2:
+        print(w*h/2,1)
+    else:
+        print(w*h/2,0)
+
+=======
+Suggestion 9
+
+def solve():
+    W, H, x, y = map(int, input().split())
+    print(W*H/2, 1 if W/2 == x and H/2 == y else 0)
+
+
+solve()

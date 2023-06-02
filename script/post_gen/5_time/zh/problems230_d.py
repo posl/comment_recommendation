@@ -1,72 +1,179 @@
-#问题陈述
-#在一个被划分为N行10^9列的网格中，有N面墙，编号为1到N。
-#墙的范围从L_i-th列到R_i-th列，从顶部开始的第i行的左边。
-# 1.)
-#高桥决定要摧毁所有N面墙。
-#以他超人的力量，他的一拳可以同时破坏连续的D列。
-#更正式地说，他可以在1和10^9-D+1（包括）之间选择一个整数x，来破坏所有存在于（或部分存在于）第x列到（x+D-1）列的、尚未被破坏的墙。
-#当墙的一部分被破坏时，整个墙将被冲撞破坏。
-#(也见样本输入和输出的图
-# 1.)
-#高桥至少需要打多少次拳才能摧毁所有的墙？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#输出
-#打印摧毁所有墙体所需的最小打孔数。
-#
-#输入样本 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#输出样本1
-#2
-#下图描述了样本输入1中墙体的排列情况
-#.
-#他可以用两拳摧毁所有的墙，比如下面的方法。(下面，lbrack a, b rbrack表示从第a列到第b列的范围)。
-#首先，打出lbrack 2, 4 rbrack。在lbrack 2, 4 rbrack中存在的墙--墙1和墙2--被损坏和摧毁。
-#第二，打通lbrack 5, 7 rbrack。在lbrack 5, 7 rbrack中存在的墙--墙3--被损坏和摧毁。
-#也可以通过这种方式，用两个拳头破坏所有的墙：
-#首先，击打lbrack 7, 9 rbrack来摧毁墙体2和3。
-#第二，打lbrack 1, 3 rbrack来摧毁墙1。
-#
-#输入样本 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#样本输出2
-#1
-#与样本输入/输出的区别
-# 1的区别是，墙3现在覆盖了lbrack 4, 9 rbrack，而不是lbrack 5, 9 rbrack。
-#在这种情况下，他可以打lbrack 2, 4 rbrack，一拳摧毁所有的墙。
-#
-#输入样本 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    N, D = map(int, input().split())
+    LRs = [list(map(int, input().split())) for _ in range(N)]
+    LRs.sort(key=lambda x: x[0])
+    LRs = [[0, 0]] + LRs
+    LRs.append([10 ** 9 + 1, 10 ** 9 + 1])
+    ans = 0
+    for i in range(1, N + 2):
+        if LRs[i][0] - LRs[i - 1][1] >= D:
+            ans += 1
+        elif LRs[i][0] - LRs[i - 1][1] < D and LRs[i][0] - LRs[i - 1][1] > 0:
+            ans += 2
+        else:
+            pass
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,d = map(int,input().split())
+    lst = []
+    for i in range(n):
+        l,r = map(int,input().split())
+        lst.append([l,r])
+    lst.sort()
+    #print(lst)
+    if n == 1:
+        print(1)
+        return
+    ans = 1
+    l = lst[0][0]
+    r = lst[0][1]
+    for i in range(1,n):
+        if lst[i][0] > r:
+            l = lst[i][0]
+            r = lst[i][1]
+            ans += 1
+        else:
+            l = max(l,lst[i][0])
+            r = min(r,lst[i][1])
+    print(ans)
+    return
+
+=======
+Suggestion 5
+
+def solve(n,d,wall):
+    #wall = sorted(wall,key=lambda x:x[0])
+    r = 0
+    for i in range(n):
+        if i == n-1:
+            r += (wall[i][1] - wall[i][0] + d) // d
+        else:
+            r += (wall[i][1] - wall[i][0] + d) // d - 1
+    return r
+
+n,d = map(int,input().split())
+wall = []
+for i in range(n):
+    l,r = map(int,input().split())
+    wall.append([l,r])
+print(solve(n,d,wall))
+
+=======
+Suggestion 6
+
+def main():
+    n,d=map(int,input().split())
+    l=[]
+    for i in range(n):
+        l.append(list(map(int,input().split())))
+    l.sort(key=lambda x:x[0])
+    count=1
+    for i in range(n-1):
+        if l[i][1]>l[i+1][0]:
+            count+=1
+    print(count)
+
+=======
+Suggestion 7
+
+def solve(n, d, lr):
+    lr.sort()
+    ans = 0
+    p = 0
+    for i in range(n):
+        l, r = lr[i]
+        if p < l:
+            p = l
+        if r - p + 1 < d:
+            continue
+        ans += 1
+        p += d
+    return ans
+
+n, d = map(int, input().split())
+lr = [list(map(int, input().split())) for _ in range(n)]
+print(solve(n, d, lr))
+
+=======
+Suggestion 8
+
+def solve():
+    # 读入数据
+    N, D = map(int, input().split())
+    L = []
+    R = []
+    for i in range(N):
+        l, r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+
+    # 求出所有墙的左右端点
+    L_all = []
+    R_all = []
+    for i in range(N):
+        L_all.append(L[i])
+        R_all.append(R[i])
+        L_all.append(L[i] - D)
+        R_all.append(R[i] - D)
+    L_all.sort()
+    R_all.sort()
+
+    # 从最左端开始，依次求出各个墙的所需打孔次数
+    ans = 0
+    l = 0
+    r = 0
+    for i in range(len(L_all)):
+        while r < len(R_all) and R_all[r] <= L_all[i]:
+            r += 1
+        ans = max(ans, r - l)
+        if L_all[i] == R_all[l]:
+            l += 1
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 9
+
+def f(n,d):
+    l = []
+    for i in range(n):
+        l.append(list(map(int,input().split())))
+    l.sort(key=lambda x:x[0])
+    r = 0
+    for i in range(n):
+        if i == 0:
+            r += (l[i][1] - l[i][0]) // d + 1
+        else:
+            if l[i][0] <= l[i - 1][1]:
+                r += (l[i][1] - l[i - 1][1]) // d
+                if (l[i][1] - l[i - 1][1]) % d == 0:
+                    r -= 1
+            else:
+                r += (l[i][1] - l[i][0]) // d + 1
+    print(r)
+
+n,d = map(int,input().split())
+f(n,d)

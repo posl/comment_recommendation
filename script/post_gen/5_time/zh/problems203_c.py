@@ -1,63 +1,170 @@
-#问题陈述
-#有10^{100}+1个村庄，用数字0，1，...，10^{100}标示。
-#对于0和10^{100}-1（包括）之间的每一个整数i，你可以在i村支付1日元（货币）来到达（i+1）村。
-#村庄之间没有其他的旅行方式。
-#太郎有K日元，现在在0村。他将尝试去一个标有尽可能多的数字的村庄。
-#他有N个朋友。第i个朋友在A_i村，当他到达A_i村时，他将给太郎B_i日元。
-#找出他将到达的最后一个村庄所标示的数字。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i ≦ 10^{18}
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 B_1
-#:
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 3
-#2 1
-#5 10
-#
-#样本输出1
-#4
-#高桥将按以下方式旅行：
-#从0号村到1号村，花费1日元。现在他有2日元。
-#从1号村到2号村，花1日元。现在他有1日元。
-#从第2村的第1个朋友那里得到1日元。现在他有2日元。
-#从2号村到3号村，花1日元。现在他有1日元。
-#从3号村到4号村，换取1日元。现在他有0日元，而且他在这个村子里没有朋友，所以他的旅程到此为止。
-#因此，我们应该打印4。
-#
-#样本输入2
-#5 1000000000
-#1 1000000000
-#2 1000000000
-#3 1000000000
-#4 1000000000
-#5 1000000000
-#
-#样本输出2
-#6000000000
-#注意，答案可能不适合32位整数。
-#
-#输入样本 3
-#3 2
-#5 5
-#2 1
-#2 2
-#
-#样本输出3
-#10
-#他可能在同一个村庄有多个朋友。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a, b = zip(*sorted(zip(a, b), key=lambda x:x[0]))
+    # print(a, b)
+    ans = k
+    for i in range(n):
+        if a[i] > ans:
+            break
+        ans += b[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    for A, B in AB:
+        if K >= A:
+            K += B
+    print(K)
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    money = K
+    for i in range(N):
+        if money < AB[i][0]:
+            break
+        money += AB[i][1]
+    print(money)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for _ in range(n):
+        friends.append(list(map(int, input().split())))
+    friends.sort(key=lambda x: x[0])
+    money = k
+    village = 0
+    for i in range(n):
+        if friends[i][0] <= village:
+            money += friends[i][1]
+        else:
+            if friends[i][0] - village > money:
+                break
+            else:
+                money -= friends[i][0] - village
+                money += friends[i][1]
+                village = friends[i][0]
+    print(village + money)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    l = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        l.append([a,b])
+    l.sort()
+    for i in range(n):
+        if k < l[i][0]:
+            break
+        else:
+            k += l[i][1]
+    print(k)
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    friends = []
+    for i in range(N):
+        friends.append(list(map(int,input().split())))
+    friends.sort()
+    # print(friends)
+    for i in range(N):
+        if friends[i][0] > K:
+            break
+        K += friends[i][1]
+    print(K)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    people = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        people.append([a, b])
+    people.sort()
+    i = 0
+    while k > 0 and i < n:
+        if k >= people[i][0]:
+            k += people[i][1]
+        else:
+            break
+        i += 1
+    print(k)
+
+=======
+Suggestion 8
+
+def find_max_village(N, K, AB):
+    AB.sort(key=lambda x: x[0])
+    AB.sort(key=lambda x: x[1], reverse=True)
+    # print(AB)
+    res = 0
+    for i in range(N):
+        if K >= AB[i][0]:
+            K += AB[i][1]
+            res = AB[i][0]
+    return res
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        friends.append(list(map(int, input().split())))
+    friends.sort()
+    # print(friends)
+    money = k
+    village = 0
+    for i in range(n):
+        if friends[i][0] > village:
+            if friends[i][0] - village > money:
+                break
+            else:
+                money += friends[i][1]
+                village = friends[i][0]
+    print(village + money)
+
+=======
+Suggestion 10
+
+def solve():
+    N, K = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort()
+    ans = K
+    for a, b in AB:
+        if a <= ans:
+            ans += b
+    print(ans)

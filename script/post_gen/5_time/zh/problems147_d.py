@@ -1,46 +1,196 @@
-#问题陈述
-#我们有N个整数。第i个整数是A_i。
-#求sum_{i=1}^{N-1}sum_{j=i+1}^{N}（A_i XOR A_j），模数为（10^9+7）。
-#什么是XOR？
-#整数A和B的XOR，A XOR B，定义如下：
-#当A XOR B以2为基数时，如果A或B（而不是两者）在2^k的位置上有1，则2^k的位置上的数字为1，否则为0。
-#例如，3 XOR 5 = 6。（在二进制中：011 XOR 101 = 110）。
-#
-#
-#限制条件
-#2 ≦ N ≦ 3 × 10^5
-#0 ≦ A_i < 2^{60}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印数值sum_{i=1}^{N-1}sum_{j=i+1}^{N}（A_i XOR A_j），模数（10^9+7）。
-#
-#输入样本 1
-#3
-#1 2 3
-#
-#样本输出1
-#6
-#我们有（1 XOR 2）+（1 XOR 3）+（2 XOR 3）=3+2+1=6。
-#
-#样本输入2
-#10
-#3 1 4 1 5 9 2 6 5 3
-#
-#样本输出2
-#237
-#
-#样本输入3
-#10
-#3 14 159 2653 58979 323846 2643383 27950288 419716939 9375105820
-#
-#样本输出 3
-#103715602
-#打印和的模数（10^9+7）。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+    ans = 0
+    for i in range(60):
+        x = 0
+        for j in range(n):
+            if (a[j]>>i)&1:
+                x += 1
+        ans += ((1<<i)%mod) * (x*(n-x)%mod)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        ans += (cnt * (n - cnt) * pow(2, i, mod))
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    #print(2**60)
+    #print(2**60-1)
+    #print(2**60-1 < 2**60)
+    #print(2**60-1 < 2**60-1)
+    #print(2**60-1 < 2**60-2)
+    #print(2**60-1 < 2**60-3)
+    #print(2**60-1 < 2**60-4)
+    #print(2**60-1 < 2**60-5)
+    #print(2**60-1 < 2**60-6)
+    #print(2**60-1 < 2**60-7)
+    #print(2**60-1 < 2**60-8)
+    #print(2**60-1 < 2**60-9)
+    #print(2**60-1 < 2**60-10)
+    #print(2**60-1 < 2**60-11)
+    #print(2**60-1 < 2**60-12)
+    #print(2**60-1 < 2**60-13)
+    #print(2**60-1 < 2**60-14)
+    #print(2**60-1 < 2**60-15)
+    #print(2**60-1 < 2**60-16)
+    #print(2**60-1 < 2**60-17)
+    #print(2**60-1 < 2**60-18)
+    #print(2**60-1 < 2**60-19)
+    #print(2**60-1 < 2**60-20)
+    #print(2**60-1 < 2**60-21)
+    #print(2**60-1 < 2**60-22)
+    #print(2**60-1 < 2**60-23)
+    #print(2**60-1 < 2**60-24)
+    #print(2**60-1 < 2**60-25)
+    #print(2**60-1 < 2**60-26
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        zero = 0
+        one = 0
+        for j in range(n):
+            if a[j] & (1 << i):
+                one += 1
+            else:
+                zero += 1
+        ans += (zero * one) * (1 << i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if (a[j] >> i) & 1:
+                cnt += 1
+        ans += cnt * (n - cnt) * (1 << i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    # 读入数据
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 计算答案
+    ans = 0
+    for i in range(60):
+        # 计算第i位的答案
+        # 令c0为第i位为0的A的个数，c1为第i位为1的A的个数
+        c0 = 0
+        c1 = 0
+        for j in range(N):
+            if (A[j] >> i) & 1:
+                c1 += 1
+            else:
+                c0 += 1
+        # 第i位的答案为c0 * c1 * 2^i
+        ans += c0 * c1 * (1 << i)
+        ans %= 10**9 + 7
+
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9+7
+
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for j in range(n):
+            if a[j] & (1<<i):
+                cnt += 1
+        ans += (cnt*(n-cnt)*(1<<i))
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().strip().split()))
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        cnt = 0
+        for a in A:
+            if a & (1 << i):
+                cnt += 1
+        ans += cnt * (N - cnt) * (1 << i)
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 9
+
+def calXor(a,b):
+    c = a^b
+    return c
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(60):
+        num = 0
+        for j in range(N):
+            if A[j] & (1 << i):
+                num += 1
+        ans += num * (N - num) * (1 << i)
+        ans %= mod
+    print(ans)

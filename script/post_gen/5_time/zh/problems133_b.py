@@ -1,60 +1,141 @@
-#问题说明
-#在一个D维空间中有N个点。
-#第i个点的坐标为（X_{i1}, X_{i2}, ..., X_{iD}）。
-#坐标为（y_1, y_2, ..., y_D）和（z_1, z_2, ..., z_D）的两点之间的距离是（（y_1 - z_1）^2 +（y_2 - z_2）^2 + ...+ (y_D - z_D)^2)^(1/2)。
-#有多少对(i, j)(i < j)，使得第i点和第j点之间的距离是一个整数？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10
-#1 ≦ D ≦ 10
-#-20 ≦ X_{ij} ≦ 20
-#没有两个给定的点具有相同的坐标。也就是说，如果i≠j，存在k，使得X_{ik}≠X_{jk}。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N D
-#X_{11}X_{12}...X_{1D}
-#X_{21}X_{22} ...X_{2D}
-#.
-#.
-#.
-#X_{N1}X_{N2} ...X_{ND}
-#
-#输出
-#打印第i点和第j点之间的距离为整数的对（i, j）（i < j）的数量。
-#
-#输入样本 1
-#3 2
-#1 2
-#5 5
-#-2 8
-#
-#样本输出1
-#1
-#距离为整数的对子数量为1，如下所示：
-#第一个点和第二个点之间的距离是(|1-5|^2 + |2-5|^2)^(1/2) = 5，这是一个整数。
-#第二点和第三点之间的距离是(|5-(-2)|^2 + |5-8|^2)^(1/2) = (58)^(1/2)，这不是一个整数。
-#第三点和第一点之间的距离是(|-2-1|^2+|8-2|^2)^(1/2)=3(5)^(1/2)，这不是一个整数。
-#
-#样本输入2
-#3 4
-#-3 7 8 2
-#-12 1 10 2
-#-2 8 9 3
-#
-#样本输出2
-#2
-#
-#样本输入3
-#5 1
-#1
-#2
-#3
-#4
-#5
-#
-#样本输出3
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def read_ints():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def calDistance(x,y):
+    import math
+    sum = 0
+    for i in range(len(x)):
+        sum += (x[i]-y[i])**2
+    return math.sqrt(sum)
+
+=======
+Suggestion 3
+
+def main():
+    N, D = map(int, input().split())
+    x = []
+    for i in range(N):
+        x.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            dis = 0
+            for k in range(D):
+                dis += (x[i][k] - x[j][k])**2
+            if int(dis**0.5)**2 == dis:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def get_distance(x, y):
+    #计算两个点之间的距离
+    distance = 0
+    for i in range(len(x)):
+        distance += (x[i] - y[i])**2
+    return distance**0.5
+
+=======
+Suggestion 5
+
+def distance(x, y):
+    dist = 0
+    for i in range(len(x)):
+        dist += (x[i] - y[i]) ** 2
+    return dist ** 0.5
+
+N, D = map(int, input().split())
+X = [list(map(int, input().split())) for _ in range(N)]
+
+ans = 0
+for i in range(N):
+    for j in range(i + 1, N):
+        if distance(X[i], X[j]).is_integer():
+            ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def get_distance(a, b):
+    distance = 0
+    for i in range(len(a)):
+        distance += (a[i] - b[i]) ** 2
+    return distance ** 0.5
+
+=======
+Suggestion 7
+
+def is_integer(num):
+    if num == int(num):
+        return True
+    else:
+        return False
+
+N, D = map(int, input().split())
+X = []
+for i in range(N):
+    X.append(list(map(int, input().split())))
+
+count = 0
+for i in range(N):
+    for j in range(i+1, N):
+        distance = 0
+        for k in range(D):
+            distance += (X[i][k] - X[j][k])**2
+        if is_integer(distance**0.5):
+            count += 1
+
+print(count)
+
+=======
+Suggestion 8
+
+def distance(x,y):
+    sum=0
+    for i in range(len(x)):
+        sum+=pow((x[i]-y[i]),2)
+    return pow(sum,0.5)
+
+n,d=map(int,input().split())
+x=[]
+for i in range(n):
+    x.append(list(map(int,input().split())))
+count=0
+for i in range(n):
+    for j in range(i+1,n):
+        if distance(x[i],x[j]).is_integer():
+            count+=1
+print(count)
+
+=======
+Suggestion 9
+
+def is_integer(num):
+    if int(num) == num:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 10
+
+def main():
+    n, d = map(int, input().split())
+    x = [list(map(int, input().split())) for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dist = sum([(x[i][k]-x[j][k])**2 for k in range(d)])**0.5
+            if dist.is_integer():
+                cnt += 1
+    print(cnt)

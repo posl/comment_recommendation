@@ -1,31 +1,77 @@
-#问题陈述
-#我们将在一家商店以N日元（日本的货币）购买一种产品。
-#如果我们只用1000日元的纸币来支付价格，我们会收到多少零钱？
-#假设我们使用所需的最低数量的钞票。
-#
-#限制条件
-#1 ≦ N ≦ 10000
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#以整数形式打印变化的数量。
-#
-#输入样本1
-#1900
-#
-#样本输出1
-#100
-#我们将用两张1000日元的钞票来支付价格，并收到100日元的零钱。
-#
-#样本输入2
-#3000
-#
-#样本输出2
-#0
-#我们可以支付确切的价格。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print(1000-N%1000)
+
+=======
+Suggestion 2
+
+def problems173_a():
+    N = int(input())
+    print(1000-N%1000)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print(1000 - n % 1000)
+
+=======
+Suggestion 4
+
+def change(N):
+    # 确定用了多少张1000日元的纸币
+    num_1000 = N // 1000
+    # 确定用了多少张100日元的纸币
+    num_100 = N % 1000 // 100
+    # 确定用了多少张10日元的纸币
+    num_10 = N % 1000 % 100 // 10
+    # 确定用了多少张1日元的纸币
+    num_1 = N % 1000 % 100 % 10 // 1
+    return num_1000 + num_100 + num_10 + num_1
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    if N % 1000 == 0:
+        print(0)
+    else:
+        print(1000 - N % 1000)
+
+=======
+Suggestion 6
+
+def main():
+    n=int(input())
+    print(1000-n%1000 if n%1000!=0 else 0)
+
+=======
+Suggestion 7
+
+def change(n):
+    if n % 1000 == 0:
+        return 0
+    else:
+        return 1000 - n % 1000
+
+=======
+Suggestion 8
+
+def get_change(money):
+    return 1000 - money%1000 if money%1000 != 0 else 0
+
+=======
+Suggestion 9
+
+def change_money(n):
+    money = 1000 - n % 1000
+    if money == 1000:
+        money = 0
+    return money

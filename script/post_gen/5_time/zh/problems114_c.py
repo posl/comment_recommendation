@@ -1,37 +1,103 @@
-#问题陈述
-#给你一个整数N，在1到N（包括）之间的整数中，有多少个七五三数字（字面意思是 "七五三数字"）？
-#这里，七五三数是一个满足以下条件的正整数：
-#当数字以十进制书写时，每个数字7、5和3至少出现一次，而其他数字从未出现。
-#
-#约束条件
-#1 ≦ N < 10^9
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印1到N（包括）之间的七巧板数字。
-#
-#输入样本 1
-#575
-#
-#样本输出1
-#4
-#有四个不大于575的七巧板数字：357、375、537和573。
-#
-#样本输入2
-#3600
-#
-#样本输出2
-#13
-#有13个不大于3600的七巧板数字：以上四个数字，735，753，3357，3375，3537，3557，3573，3575和3577。
-#
-#样本输入3
-#999999999
-#
-#样本输出3
-#26484
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(3, n+1):
+        if '7' in str(i) and '5' in str(i) and '3' in str(i):
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def is753(n):
+    s = str(n)
+    if s.count('7') > 0 and s.count('5') > 0 and s.count('3') > 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def is753(num):
+    if num % 10 == 3:
+        return True
+    if num % 10 == 5:
+        return True
+    if num % 10 == 7:
+        return True
+    return False
+
+=======
+Suggestion 4
+
+def is753(n):
+    s = str(n)
+    return s.count('7') > 0 and s.count('5') > 0 and s.count('3') > 0
+
+=======
+Suggestion 5
+
+def solve(n):
+    count = 0
+    for i in range(1, n+1):
+        if '7' in str(i) and '5' in str(i) and '3' in str(i):
+            count += 1
+    return count
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 6
+
+def is753(n):
+    if '7' in str(n) and '5' in str(n) and '3' in str(n):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def is753(num):
+    num_str = str(num)
+    if num_str.count('7') > 0 and num_str.count('5') > 0 and num_str.count('3') > 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def is753(num):
+    if num < 357:
+        return False
+    if num % 10 == 7:
+        return True
+    if num % 10 == 5:
+        return True
+    if num % 10 == 3:
+        return True
+    return False
+
+=======
+Suggestion 9
+
+def check753(n):
+    n_str = str(n)
+    return (n_str.count('7') > 0 and n_str.count('5') > 0 and n_str.count('3') > 0)
+
+=======
+Suggestion 10
+
+def is753(num):
+    if "7" in str(num) and "5" in str(num) and "3" in str(num):
+        return True
+    else:
+        return False

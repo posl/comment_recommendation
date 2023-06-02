@@ -1,68 +1,139 @@
-#问题陈述
-#有一个有N个学生的班级。第i个学生（1 ≦ i ≦ N）的身高是A_i。
-#对于每个j=1,2,...,Q，请回答以下问题。
-#在N个学生中，有多少人的身高至少是x_j？
-#
-#限制条件
-#1 ≦ n,q ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ x_j ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#A_1 A_2 ...A_N
-#x_1
-#x_2
-#.
-#.
-#.
-#x_Q
-#
-#输出
-#打印Q行。
-#第j行（1 ≦ j ≦ Q）应该包含高度至少为x_j的学生数量。
-#
-#输入样本 1
-#3 1
-#100 160 130
-#120
-#
-#样品输出1
-#2
-#身高至少为120的学生是第2和第3名。
-#
-#样本输入2
-#5 5
-#1 2 3 4 5
-#6
-#5
-#4
-#3
-#2
-#
-#样本输出2
-#0
-#1
-#2
-#3
-#4
-#
-#样本输入3
-#5 5
-#804289384 846930887 681692778 714636916 957747794
-#424238336
-#719885387
-#649760493
-#596516650
-#189641422
-#
-#样本输出3
-#5
-#3
-#5
-#5
-#5
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def binary_search(a, n, key):
+    left = 0
+    right = n
+    while left < right:
+        mid = (left + right) // 2
+        if a[mid] == key:
+            return mid
+        elif key < a[mid]:
+            right = mid
+        else:
+            left = mid + 1
+    return -1
+
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
+x = [int(input()) for _ in range(q)]
+a.sort()
+for i in x:
+    print(binary_search(a, n, i) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        print(n - binary_search(a, x[i]) - 1)
+
+=======
+Suggestion 3
+
+def binary_search(array, target):
+    left = 0
+    right = len(array) - 1
+    while left <= right:
+        mid = (left + right)//2
+        if array[mid] == target:
+            return mid
+        elif array[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return right
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+
+    for i in range(q):
+        count = 0
+        for j in range(n):
+            if a[j] >= x[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        j = 0
+        while j < n:
+            if x[i] <= a[j]:
+                print(n-j)
+                break
+            j += 1
+
+=======
+Suggestion 6
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    x = [int(input()) for _ in range(q)]
+    for i in range(q):
+        print(n - binary_search(a,x[i]) + 1)
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    x = [int(input()) for _ in range(q)]
+    a.sort()
+    for i in range(q):
+        print(n - bisect.bisect_left(a, x[i]))
+
+=======
+Suggestion 8
+
+def main():
+    n,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    x = [int(input()) for i in range(q)]
+    a.sort()
+    for i in range(q):
+        if x[i] < a[0]:
+            print(n)
+        elif x[i] > a[n-1]:
+            print(0)
+        else:
+            left = 0
+            right = n-1
+            while left < right:
+                mid = (left+right)//2
+                if a[mid] < x[i]:
+                    left = mid+1
+                else:
+                    right = mid
+            print(n-left)
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(q):
+        x = int(input())
+        print(n - binary_search(a, x))

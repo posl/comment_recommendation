@@ -1,88 +1,199 @@
-#问题陈述
-#我们有N个编号为1，2，...，N的盘子和M个编号为1，2，...，M的条件。
-#当盘子A_i和盘子B_i上都有（一个或多个）球时，条件i得到满足。
-#有K个编号为1，2，...，K的人，第i人将在碟子C_i或碟子D_i上放一个球。
-#最多可以满足多少个条件？
-#
-#限制条件
-#所有的输入值都是整数。
-#2 ≤ N ≤ 100
-#1 ≤ M ≤ 100
-#1 ≤ A_i < B_i ≤ N
-#1 ≤ K ≤ 16
-#1 ≤ C_i < D_i ≤ N
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#K
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 4
-#1 2
-#1 3
-#2 4
-#3 4
-#3
-#1 2
-#1 3
-#2 3
-#
-#样本输出 1
-#2
-#例如，如果人们1，2，3把他们的球分别放在盘子1，3，2上，条件1和2将被满足。
-#
-#输入样本 2
-#4 4
-#1 2
-#1 3
-#2 4
-#3 4
-#4
-#3 4
-#1 2
-#2 4
-#2 4
-#
-#样本输出 2
-#4
-#例如，如果人们1，2，3，4把他们的球分别放在盘子3，1，2，4上，所有的条件都会得到满足。
-#
-#输入样本 3
-#6 12
-#2 3
-#4 6
-#1 2
-#4 5
-#2 6
-#1 5
-#4 5
-#1 3
-#1 2
-#2 6
-#2 3
-#2 5
-#5
-#3 5
-#1 4
-#2 6
-#4 6
-#5 6
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    K = int(input())
+    CD = [list(map(int, input().split())) for _ in range(K)]
+
+    ans = 0
+    for i in range(2**K):
+        dish = [0] * N
+        for j in range(K):
+            if (i >> j) & 1:
+                dish[CD[j][0]-1] += 1
+            else:
+                dish[CD[j][1]-1] += 1
+        cnt = 0
+        for a, b in AB:
+            if dish[a-1] > 0 and dish[b-1] > 0:
+                cnt += 1
+        ans = max(ans, cnt)
+
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    N,M = map(int,input().split())
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    K = int(input())
+    CD = [list(map(int,input().split())) for _ in range(K)]
+    ans = 0
+    for i in range(2**K):
+        balls = [0]*N
+        for j in range(K):
+            if((i>>j)&1):
+                balls[CD[j][0]-1] += 1
+            else:
+                balls[CD[j][1]-1] += 1
+        cnt = 0
+        for j in range(M):
+            if balls[AB[j][0]-1] and balls[AB[j][1]-1]:
+                cnt += 1
+        ans = max(ans,cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def count_satisfied_conditions(N, M, conditions, K, persons):
+    count = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            satisfied = True
+            for k in range(M):
+                if i < conditions[k][0] or conditions[k][1] < j:
+                    satisfied = False
+            for k in range(K):
+                if i != persons[k][0] and j != persons[k][1]:
+                    satisfied = False
+            if satisfied:
+                count += 1
+    return count
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    AB = [tuple(map(int, input().split())) for _ in range(M)]
+    K = int(input())
+    CD = [tuple(map(int, input().split())) for _ in range(K)]
+
+    ans = 0
+    for i in range(2 ** K):
+        cnt = 0
+        balls = [0] * (N + 1)
+        for j in range(K):
+            if (i >> j) & 1:
+                balls[CD[j][0]] += 1
+            else:
+                balls[CD[j][1]] += 1
+        for a, b in AB:
+            if balls[a] and balls[b]:
+                cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for _ in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    K = int(input())
+    C = []
+    D = []
+    for _ in range(K):
+        c,d = map(int,input().split())
+        C.append(c)
+        D.append(d)
+    ans = 0
+    for i in range(1<<K):
+        dish = [False]*N
+        for j in range(K):
+            if i & 1<<j:
+                dish[C[j]-1] = True
+            else:
+                dish[D[j]-1] = True
+        cnt = 0
+        for j in range(M):
+            if dish[A[j]-1] and dish[B[j]-1]:
+                cnt += 1
+        ans = max(ans,cnt)
+    print(ans)
+
+=======
+Suggestion 7
+
+def dfs(i, balls):
+    if i == K:
+        return sum([1 if all([balls[a-1] and balls[b-1] for a, b in AB]) else 0 for AB in ABs])
+    else:
+        balls[C[i]-1] += 1
+        res = dfs(i+1, balls)
+        balls[C[i]-1] -= 1
+        balls[D[i]-1] += 1
+        res = max(res, dfs(i+1, balls))
+        balls[D[i]-1] -= 1
+        return res
+
+N, M = map(int, input().split())
+ABs = [list(map(int, input().split())) for _ in range(M)]
+K = int(input())
+C, D = [], []
+for _ in range(K):
+    c, d = map(int, input().split())
+    C.append(c)
+    D.append(d)
+
+print(dfs(0, [0]*N))
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(m)]
+    k = int(input())
+    cd = [list(map(int,input().split())) for _ in range(k)]
+    ans = 0
+    for i in range(2**k):
+        dish = [0] * (n+1)
+        for j in range(k):
+            if (i >> j) & 1:
+                dish[cd[j][0]] += 1
+            else:
+                dish[cd[j][1]] += 1
+        sum = 0
+        for l in range(m):
+            if dish[ab[l][0]] >= 1 and dish[ab[l][1]] >= 1:
+                sum += 1
+        ans = max(ans,sum)
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_max_satisfied_conditions(N, M, conditions, K, people):
+    max_satisfied = 0
+    for i in range(2**K):
+        satisfied_conditions = 0
+        plates = [0]*N
+        for j in range(K):
+            if (i & (1<<j)) > 0:
+                plates[people[j][0]-1] = 1
+            else:
+                plates[people[j][1]-1] = 1
+        for j in range(M):
+            if plates[conditions[j][0]-1] == 1 and plates[conditions[j][1]-1] == 1:
+                satisfied_conditions += 1
+        if max_satisfied < satisfied_conditions:
+            max_satisfied = satisfied_conditions
+    return max_satisfied

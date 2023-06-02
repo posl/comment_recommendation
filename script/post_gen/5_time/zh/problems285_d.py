@@ -1,67 +1,183 @@
-#问题陈述
-#你运行一个有N个用户的网络服务。
-#拥有当前句柄S_i的第i个用户想把它改成T_i。
-#这里，S_1,...,和S_N是成对独立的，T_1,...,和T_N也是。
-#确定是否有一个合适的顺序来改变他们的句柄，以满足他们所有的请求，但要符合以下条件：
-#你一次只能改变一个用户的句柄；
-#你对每个用户的句柄只改变一次；
-#当改变句柄时，新的句柄不应该被其他用户在这一点上使用。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i和T_i是由小写英文字母组成的长度在1到8之间（含）的字符串。
-#S_i ≠ T_i
-#S_i是成对独立的。
-#T_i是成对独立的。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#如果他们能改变他们的手柄以满足他们所有的请求，在符合条件的情况下，打印Yes；否则打印No。
-#
-#输入样本 1
-#2
-#b m
-#m d
-#
-#样本输出1
-#Yes
-#拥有当前手柄b的第1个用户想把它改成m。
-#第2个用户有一个当前的句柄m，想把它改成d。
-#首先，你把第2个用户的句柄从m改成d；
-#然后你把第1个用户的句柄从b改成m。这样，你就可以实现目标。
-#注意，你不能一开始就把第1个用户的句柄改成m，因为这时它被第2个用户使用。
-#
-#输入样本 2
-#3
-#a b
-#b c
-#c a
-#
-#样本输出2
-#No
-#第1个拥有当前手柄a的用户想把它改成b。
-#第2个用户用当前的手柄b想把它改成c。
-#拥有当前句柄c的第3个用户想把它改成a。
-#我们不能在条件允许的情况下改变他们的手柄。
-#
-#样本输入3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n=int(input())
+    s=[]
+    t=[]
+    for i in range(n):
+        s1,t1=input().split()
+        s.append(s1)
+        t.append(t1)
+    for i in range(n):
+        for j in range(n):
+            if s[i]==t[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+main()
+
+=======
+Suggestion 2
+
+def read_int():
+    return int(input())
+
+=======
+Suggestion 3
+
+def check(a,b):
+    if a[0] == b[0] or a[0] == b[1] or a[1] == b[0] or a[1] == b[1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def handle(s,t):
+    if s==t:
+        return False
+    if len(s)!=len(t):
+        return False
+    if len(s)>8 or len(s)<1 or len(t)>8 or len(t)<1:
+        return False
+    return True
+
+n=int(input())
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    arr = []
+    for i in range(n):
+        arr.append(input().split())
+    return n, arr
+
+=======
+Suggestion 6
+
+def change_handle(n, s, t):
+    if n == 1:
+        print('Yes')
+        return
+    for i in range(n):
+        if s[i] == t[i]:
+            print('No')
+            return
+    for i in range(n):
+        for j in range(i + 1, n):
+            if s[i] == t[j] and s[j] == t[i]:
+                print('Yes')
+                return
+    print('No')
+    return
+
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    tmp = input().split()
+    s.append(tmp[0])
+    t.append(tmp[1])
+change_handle(n, s, t)
+
+=======
+Suggestion 7
+
+def isOk():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s,t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(i+1,N):
+            if S[i] == S[j]:
+                if T[i] == T[j]:
+                    return False
+    return True
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        si, ti = input().split()
+        s.append(si)
+        t.append(ti)
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == t[j] and s[j] == t[i]:
+                print('Yes')
+                return
+    print('No')
+    return
+
+=======
+Suggestion 9
+
+def check(s, t):
+    if s == t:
+        return False
+    if len(s) != len(t):
+        return False
+    for i in range(len(s)):
+        if s[i] == t[i]:
+            return False
+    return True
+
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    s_i, t_i = input().split()
+    s.append(s_i)
+    t.append(t_i)
+
+for i in range(n):
+    for j in range(i+1, n):
+        if check(s[i], s[j]) == False:
+            return False
+        if check(t[i], t[j]) == False:
+            return False
+    for j in range(n):
+        if check(s[i], t[j]) == False:
+            return False
+        if check(t[i], s[j]) == False:
+            return False
+return True
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        si, ti = input().split()
+        s.append(si)
+        t.append(ti)
+    for i in range(n):
+        for j in range(n - 1):
+            if s[j] == t[j + 1]:
+                s[j], s[j + 1] = s[j + 1], s[j]
+            if t[j] == s[j + 1]:
+                t[j], t[j + 1] = t[j + 1], t[j]
+    for i in range(n):
+        if s[i] == t[i]:
+            print('No')
+            return
+    print('Yes')

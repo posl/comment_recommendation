@@ -1,36 +1,202 @@
-#问题陈述
-#给你一个正整数N。
-#求正整数（A，B，C）的三倍数，使得A≦B≦C和ABC≦N。
-#限制条件保证答案小于2^{63}。
-#
-#约束条件
-#1 ≦ N ≦ 10^{11}
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#4
-#
-#样本输出1
-#5
-#有五个这样的三元组：(1,1,1),(1,1,2),(1,1,3),(1,1,4),(1,2,2).
-#
-#样本输入2
-#100
-#
-#样本输出2
-#323
-#
-#样本输入3
-#100000000000
-#
-#样本输出3
-#5745290566750
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n):
+    ans = 0
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            if a * b > n:
+                break
+            for c in range(b, n+1):
+                if a * b * c > n:
+                    break
+                ans += 1
+    return ans
+
+=======
+Suggestion 2
+
+def solve(n):
+    ans = 0
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            for c in range(b, n+1):
+                if a*b*c <= n:
+                    ans += 1
+                else:
+                    break
+    return ans
+
+=======
+Suggestion 3
+
+def solve(N):
+    ans = 0
+    for A in range(1,N+1):
+        for B in range(A,N+1):
+            if A*B>N:
+                break
+            for C in range(B,N+1):
+                if A*B*C<=N:
+                    ans+=1
+                else:
+                    break
+    return ans
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    for a in range(1, n + 1):
+        for b in range(a, n + 1):
+            for c in range(b, n + 1):
+                if a * b * c <= n:
+                    ans += 1
+                else:
+                    break
+    print(ans)
+
+=======
+Suggestion 5
+
+def count(N):
+    count = 0
+    for i in range(1, N+1):
+        for j in range(i, N+1):
+            for k in range(j, N+1):
+                if i * j * k <= N:
+                    count += 1
+                else:
+                    break
+    return count
+
+=======
+Suggestion 6
+
+def f(n):
+    ans = 0
+    for a in range(1, n + 1):
+        for b in range(a, n + 1):
+            for c in range(b, n + 1):
+                if a * b * c <= n:
+                    ans += 1
+    return ans
+
+=======
+Suggestion 7
+
+def solve(n):
+    ans = 0
+    for i in range(1, n+1):
+        for j in range(i, n+1):
+            for k in range(j, n+1):
+                if i*j*k <= n:
+                    if i == j and j == k:
+                        ans += 1
+                    elif i == j or j == k:
+                        ans += 3
+                    else:
+                        ans += 6
+                else:
+                    break
+    return ans
+
+n = int(input())
+print(solve(n))
+
+=======
+Suggestion 8
+
+def f(n):
+    ans = 0
+    for a in range(1, n+1):
+        for b in range(a, n+1):
+            c = n // (a*b)
+            if c < b:
+                break
+            if a <= b <= c:
+                ans += 1
+    return ans
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    count = 0
+    for a in range(1, N + 1):
+        for b in range(a, N + 1):
+            for c in range(b, N + 1):
+                if a * b * c <= N:
+                    if a == b and b == c:
+                        count += 1
+                    elif a == b or b == c:
+                        count += 3
+                    else:
+                        count += 6
+                else:
+                    break
+    print(count)
+
+=======
+Suggestion 10
+
+def problem227_c(n):
+    # 三重循环，时间复杂度O(n^3)
+    # count = 0
+    # for a in range(1, n+1):
+    #     for b in range(a, n+1):
+    #         for c in range(b, n+1):
+    #             if a*b*c <= n:
+    #                 count += 1
+    # return count
+
+    # 二重循环，时间复杂度O(n^2)
+    # count = 0
+    # for a in range(1, n+1):
+    #     for b in range(a, n+1):
+    #         if a*b <= n:
+    #             count += 1
+    # return count
+
+    # 一重循环，时间复杂度O(n)
+    # count = 0
+    # for a in range(1, n+1):
+    #     if a*a <= n:
+    #         count += 1
+    # return count
+
+    # 二分查找，时间复杂度O(n*logn)
+    # count = 0
+    # for a in range(1, n+1):
+    #     for b in range(a, n+1):
+    #         if a*b > n:
+    #             break
+    #         count += 1
+    # return count
+
+    # 二分查找，时间复杂度O(n*logn)
+    # count = 0
+    # for a in range(1, n+1):
+    #     count += binary_search(a, n)
+    # return count
+
+    # 二分查找，时间复杂度O(n*logn)
+    # count = 0
+    # for a in range(1, n+1):
+    #     count += binary_search(a, n)
+    # return count
+
+    # 二分查找，时间复杂度O(n*logn)
+    # count = 0
+    # for a in range(1, n+1):
+    #     count += binary_search(a, n)
+    # return count
+
+    # 二分查找，时间复杂度O(n*logn)
+    # count = 0
+    # for a in range(1,

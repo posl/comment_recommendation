@@ -1,60 +1,165 @@
-#问题陈述
-#我们有N个袋子。
-#袋子i包含L_i个球。袋i中的第j个球(1≦ j≦ L_i)上面写有一个正整数a_{i,j}。
-#我们将从每个袋子里挑出一个球。
-#有多少种方法可以挑出球，使挑出的球上所写的数字的乘积为X？
-#在这里，我们把所有的球都区分开来，即使上面写着相同的数字。
-#
-#限制条件
-#N ≧ 2
-#L_i ≧ 2
-#袋中球数的乘积最多为10^5: prod_{i=1}^{N}L_i ≦ 10^5。
-#1 ≦ a_{i,j} ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N X
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 40
-#3 1 8 4
-#2 10 5
-#
-#样本输出1
-#2
-#当选择袋1中的第3个球和袋2中的第1个球时，我们有a_{1,3} × a_{2,1} = 4 × 10 = 40。
-#当选择袋1中的第2个球和袋2中的第2个球时，我们有a_{1,2} × a_{2,2} = 4 × 10 = 40。× a_{2,2} = 8 × 5 = 40.
-#没有其他方法可以使积为40，所以答案是2。
-#
-#输入样本2
-#3 200
-#3 10 10 10
-#3 10 10 10
-#5 2 2 2 2 2
-#
-#样本输出2
-#45
-#请注意，我们区分了所有的球，即使上面写着相同的数字。
-#
-#样本输入3
-#3 1000000000000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#2 1000000000 1000000000
-#
-#样本输出3
-#0
-#可能没有办法使产品变成X。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n, x = map(int, input().split())
+    l = []
+    a = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+        a.append(l[i][1:])
+    return n, x, l, a
+
+=======
+Suggestion 2
+
+def solve(n, x, L, a):
+    ans = 0
+    # write your code here
+    return ans
+
+
+n, x = map(int, input().split())
+L = []
+a = []
+for i in range(n):
+    tmp = list(map(int, input().split()))
+    L.append(tmp[0])
+    a.append(tmp[1:])
+ans = solve(n, x, L, a)
+print(ans)
+
+=======
+Suggestion 3
+
+def f():
+    N, X = map(int, input().split())
+    bag = []
+    for i in range(N):
+        L = list(map(int, input().split()))
+        bag.append(L[1:])
+    from itertools import product
+    ans = 0
+    for p in product(*bag):
+        if X == 1:
+            if 1 in p:
+                ans += 1
+        else:
+            if X == 0:
+                continue
+            else:
+                prod = 1
+                for i in p:
+                    prod *= i
+                if prod == X:
+                    ans += 1
+    print(ans)
+    return
+
+f()
+
+=======
+Suggestion 4
+
+def f(L, X):
+    #print(L, X)
+    if len(L) == 1:
+        if X in L[0]:
+            return 1
+        else:
+            return 0
+    else:
+        a = L[0]
+        b = L[1:]
+        c = []
+        for i in range(len(a)):
+            for j in range(len(b)):
+                for k in range(len(b[j])):
+                    if a[i] * b[j][k] <= X:
+                        c.append(a[i] * b[j][k])
+        return f([c] + L[2:], X)
+
+N, X = map(int, input().split())
+L = []
+for i in range(N):
+    L.append(list(map(int, input().split()[1:])))
+print(f(L, X))
+
+=======
+Suggestion 5
+
+def get_gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return get_gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    for _ in range(N):
+        A.append(list(map(int, input().split()))[1:])
+    ans = 0
+    for i in range(1, 1 << N):
+        product = 1
+        for j in range(N):
+            if i >> j & 1:
+                product *= A[j][0]
+        if product == X:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_divisors(n):
+    divisors = []
+    i = 1
+    while i*i <= n:
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+        i += 1
+    return divisors
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int,input().split())
+    bag = []
+    for i in range(n):
+        bag.append(list(map(int,input().split())))
+    print(bag)
+
+=======
+Suggestion 9
+
+def func():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    # print(a)
+
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数
+    # 从每个袋子中取出一个球，使得取出的球上的数字之积为X，求取法的种数

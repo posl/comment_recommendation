@@ -1,46 +1,132 @@
-#问题陈述
-#有一个长度为N的序列：A_1, A_2, ..., A_N。最初，这个序列是1，2，...，N的排列组合。
-#在这个序列上，Snuke可以进行以下操作：
-#在序列中选择K个连续的元素。然后，用所选元素中的最小值替换每个所选元素的值。
-#Snuke希望通过重复上述操作若干次来使这个序列中的所有元素相等。
-#找出所需的最小操作次数。
-#可以证明，在这个问题的约束下，这个目标总是可以实现的。
-#
-#约束条件
-#2 ≦ k ≦ n ≦ 100000
-#A_1, A_2, ..., A_N是1, 2, ..., N的一个排列组合。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印所需的最小操作数。
-#
-#输入样本 1
-#4 3
-#2 3 1 4
-#
-#样本输出 1
-#2
-#一个最佳策略如下：
-#在第一次操作中，选择第一、第二和第三元素。序列A成为1，1，1，4。
-#在第二次操作中，选择第二、第三和第四元素。序列A变成了1，1，1，1。
-#
-#
-#输入样本 2
-#3 3
-#1 2 3
-#
-#样本输出2
-#1
-#
-#样本输入3
-#8 3
-#7 3 1 8 4 6 2 5
-#
-#样本输出 3
-#4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    A = list(map(int,input().split()))
+    min = A[0]
+    count = 0
+    for i in range(n-k+1):
+        min = A[i]
+        for j in range(k):
+            if A[i+j] < min:
+                min = A[i+j]
+        for j in range(k):
+            A[i+j] = min
+        count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def problems101_c():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += 1
+        if i + k <= n:
+            ans += i // (k - 1)
+    print(ans)
+
+
+problems101_c()
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    min_num = 10**9
+    for i in range(n-k+1):
+        if a[i] < a[i+k-1]:
+            min_num = min(min_num,a[i])
+        else:
+            min_num = min(min_num,a[i+k-1])
+    print(min_num)
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    min_num = min(a)
+    index = a.index(min_num)
+    if index < k:
+        result = 1 + (k-1)//(k-index)
+    else:
+        result = 1 + (index-k)//(k-1)
+    print(result)
+
+=======
+Suggestion 5
+
+def problems101_c():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n):
+        if a[i] > a[i - 1]:
+            ans += 1
+    print(ans)
+
+problems101_c()
+
+=======
+Suggestion 6
+
+def get_min(a, b):
+    if a < b:
+        return a
+    else:
+        return b
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    print((n-2)//(k-1)+1)
+
+=======
+Suggestion 8
+
+def problems101_c():
+    n,k = map(int, input().split())
+    A = list(map(int, input().split()))
+    res = 0
+    for i in range(n-k+1):
+        res += min(A[i:i+k])
+    print(res)
+
+=======
+Suggestion 9
+
+def solve(n, k, a):
+    ans = 0
+    for i in range(n-k):
+        ans += 1
+    if (n-k) % (k-1) != 0:
+        ans += 1
+    return ans
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(n, k, a))
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n - k):
+        if a[i] < a[i + k]:
+            ans += 1
+    print(ans)

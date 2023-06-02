@@ -1,51 +1,226 @@
-#问题陈述
-#高桥的家里有由N根面条组成的意大利面。  第i根面条的长度为A_i。
-#高桥有一个未来M天的膳食计划。
-#在第i天，他将选择长度正好为B_i的面条并吃掉。
-#如果在任何一天没有这样的面条，他的计划就会失败。
-#此外，他不能在多天内吃同一种面条。
-#高桥能完成他的膳食计划吗？
-#
-#限制条件
-#1 ≦ m ≦ n ≦ 1000
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_M
-#
-#输出
-#如果高桥能完成他的膳食计划，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 2
-#1 1 3
-#3 1
-#
-#样本输出 1
-#Yes
-#他可以在第1天吃第3碗面，第2天吃第1碗面，所以他的膳食计划是可行的。
-#
-#输入样本2
-#1 1
-#1000000000
-#1
-#
-#样本输出2
-#No
-#需要一个长度正好为1的面条。
-#
-#输入样本3
-#5 2
-#1 2 3 4 5
-#5 5
-#
-#样本输出3
-#No
-#由于只有一个长度为5的面条，他不能在第2天吃到饭。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # 处理
+    A.sort()
+    B.sort()
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if A[i] <= B[j]:
+            i += 1
+        j += 1
+    # 输出
+    if i == N:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def solution():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    if max(A) < max(B):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+
+    a.sort()
+    b.sort()
+
+    i = 0
+    j = 0
+
+    while i < n and j < m:
+        if a[i] <= b[j]:
+            i += 1
+        j += 1
+
+    if i == n:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    if n < m:
+        print('No')
+        return
+    for i in range(m):
+        if a[i] < b[i]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def solve(n, m, a, b):
+    if m > n:
+        return False
+    a.sort()
+    b.sort()
+    for i in range(m):
+        if a[i] > b[i]:
+            return False
+    return True
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+print('Yes' if solve(n, m, a, b) else 'No')
+
+=======
+Suggestion 6
+
+def main():
+    # n:面条的数量，m:需要的面条的数量
+    n, m = map(int, input().split())
+    # 面条的长度
+    a = list(map(int, input().split()))
+    # 需要的面条的长度
+    b = list(map(int, input().split()))
+    # 如果需要的面条的数量大于面条的数量，则不能完成计划
+    if m > n:
+        print('No')
+        return
+    # 面条的长度排序
+    a.sort()
+    # 需要的面条的长度排序
+    b.sort()
+    # 面条的长度
+    a_index = 0
+    # 需要的面条的长度
+    b_index = 0
+    # 需要的面条的数量
+    b_count = 0
+    # 遍历需要的面条的长度
+    while b_index < m:
+        # 如果需要的面条的长度小于面条的长度，则不能完成计划
+        if b[b_index] < a[a_index]:
+            print('No')
+            return
+        # 如果需要的面条的长度等于面条的长度，则需要的面条的数量加1
+        if b[b_index] == a[a_index]:
+            b_count += 1
+            # 如果需要的面条的数量大于面条的数量，则不能完成计划
+            if b_count > n:
+                print('No')
+                return
+            # 如果需要的面条的数量等于面条的数量，则计划完成
+            if b_count == n:
+                print('Yes')
+                return
+            # 如果需要的面条的数量没有等于面条的数量，则面条的长度加1
+            a_index += 1
+        # 如果需要的面条的长度大于面条的长度，则面条的长度加1
+        b_index += 1
+    # 如果需要的面条的数量没有等于面条的数量，则不能完成计划
+    if b_count != n:
+        print('No')
+        return
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort()
+    B.sort()
+    if n<m:
+        print("No")
+    else:
+        count = 0
+        for i in range(m):
+            for j in range(count,n):
+                if A[j] == B[i]:
+                    count += 1
+                    break
+        if count == m:
+            print("Yes")
+        else:
+            print("No")
+main()
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+
+    if n < m:
+        print('No')
+        return
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] >= b[j]:
+            i += 1
+            j += 1
+        else:
+            i += 1
+    if j == m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def get_input():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    return n, m, a, b
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+    A.sort(reverse=True)
+    B.sort(reverse=True)
+    if n < m:
+        print("No")
+    else:
+        for i in range(m):
+            if A[i] < B[i]:
+                print("No")
+                break
+            else:
+                if i == m-1:
+                    print("Yes")

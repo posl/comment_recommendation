@@ -1,42 +1,118 @@
-#问题陈述
-#给你一个长度为N的字符串S，由小写英文字母、、和 "组成。保证S包含偶数的""。
-#对于每个i=1,2,...,K，从第(2i-1)个 "到第(2i)个 "的字符都被称为封闭的。
-#你的任务是用.替换S中每一个不是封闭字符的""，并打印出结果字符串。
-#
-#限制条件
-#N是1到2×10^5之间的一个整数，包括在内。
-#S是一个长度为N的字符串，由小写英文字母 ,,和"。
-#S包含一个偶数的".
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#S
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#8
-#"a,b "c,d
-#
-#样本输出1
-#"a,b "c.d
-#在S中，"a,b "是封闭的字符，而c,d则不是。
-#在S中，不属于封闭字符的,是S中从左边开始的第七个字符，所以用.替换该字符就可以得到答案。
-#
-#输入样本2
-#5
-#,,,,,
-#
-#输出样本2
-#.....
-#
-#样本输入3
-#20
-#A, "T, "C, "O, "D, "E, "R、
-#
-#样本输出3
-#A. "T, "C. "O, "D. "E, "R.
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def replace(s):
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == '"' and i % 2 == 0:
+            s[i] = '.'
+    return ''.join(s)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    s = s.replace(',"', '.')
+    s = s.replace('"', '')
+    print(s)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1,N):
+        if S[i-1] == '"' and S[i] == '"':
+            print('.',end='')
+        else:
+            print(S[i-1],end='')
+    print(S[N-1],end='')
+    print()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(0, n):
+        if i % 2 == 0:
+            if s[i] == "\"":
+                print(s[i], end="")
+            else:
+                print(".", end="")
+        else:
+            print(s[i], end="")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n):
+        if i % 2 == 0 and s[i] == '"':
+            print('"', end='')
+        else:
+            print(s[i], end='')
+
+=======
+Suggestion 6
+
+def solve(n,s):
+    ans = ''
+    for i in range(n):
+        if i % 2 == 0:
+            ans += s[i]
+        else:
+            if s[i] == '"':
+                ans += '"'
+            else:
+                ans += '.'
+    return ans
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    if N % 2 != 0:
+        print('error')
+        return
+    for i in range(0, N, 2):
+        if S[i] == '"':
+            if S[i + 1] == '"':
+                print('error')
+                return
+            else:
+                S = S[:i] + '.' + S[i + 1:]
+    print(S)
+
+=======
+Suggestion 8
+
+def replace(s):
+    s = list(s)
+    s[0] = '"'
+    s[-1] = '"'
+    for i in range(1, len(s)-1):
+        if s[i] == '"':
+            if s[i-1] == ',':
+                s[i-1] = '.'
+            if s[i+1] == ',':
+                s[i+1] = '.'
+    return "".join(s)
+
+=======
+Suggestion 9
+
+def get_input():
+    n = int(input())
+    s = input()
+    return n, s

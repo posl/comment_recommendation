@@ -1,78 +1,214 @@
-#问题陈述
-#有N个生物站在一个圆圈里，按逆时针顺序称为Snuke 1, 2, ..., N。
-#当Snuke i（1 ≦ i ≦ N）在时间t收到一颗宝石，S_i单位的时间后，它将在时间t+S_i将该宝石交给Snuke i+1。这里，Snuke N+1就是Snuke 1。
-#此外，高桥将在时间T_i递给Snuke i一颗宝石。
-#对于每个i（1 ≦ i ≦ N），找出Snuke i第一次收到宝石的时间。假设递送宝石需要的时间可以忽略不计。
-#
-#限制条件
-#1 ≦ N ≦ 200000
-#1 ≦ S_i,T_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1 S_2 ...S_N
-#T_1 T_2 ...T_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应包含Snuke i第一次收到宝石的时间。
-#
-#输入样本 1
-#3
-#4 1 5
-#3 10 100
-#
-#样本输出1
-#3
-#7
-#8
-#我们将按时间顺序列出Snuke三人和Takahashi到时间13为止的行动。
-#时间3：高桥将一颗宝石交给Snuke 1。
-#时间7：斯诺克1把宝石交给斯诺克2。
-#时间8：Snuke 2将一颗宝石交给Snuke 3。
-#时间10：高桥将一颗宝石交给Snuke 2。
-#时间11：Snuke 2递给Snuke 3一颗宝石。
-#时间13：Snuke 3将一颗宝石交给Snuke 1。
-#此后，他们将继续递送宝石，尽管这与答案无关。
-#
-#输入样本2
-#4
-#100 100 100 100
-#1 1 1 1
-#
-#样本输出2
-#1
-#1
-#1
-#1
-#请注意，S_i和T_i的值可能不是不同的。
-#
-#样本输入 3
-#4
-#1 2 3 4
-#1 2 4 7
-#
-#样本输出 3
-#1
-#2
-#4
-#7
-#请注意，一个Snuke可以同时进行多个交易。特别是，一个Snuke可以同时从高桥和另一个Snuke那里接收宝石。
-#
-#输入样本4
-#8
-#84 87 78 16 94 36 87 93
-#50 22 63 28 91 60 64 27
-#
-#样本输出4
-#50
-#22
-#63
-#28
-#44
-#60
-#64
-#27
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def process(n, s, t):
+    times = [0] * n
+    for i in range(n):
+        times[i] = t[i]
+        if i == 0:
+            times[i] = max(times[i], s[i])
+        else:
+            times[i] = max(times[i], times[i - 1] + s[i])
+    return times
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = [int(i) for i in input().split()]
+    T = [int(i) for i in input().split()]
+    res = [0 for i in range(N)]
+    res[0] = T[0]
+    for i in range(1, N):
+        if res[i-1] + S[i-1] < T[i]:
+            res[i] = T[i]
+        else:
+            res[i] = res[i-1] + S[i-1]
+    for i in range(N):
+        print(res[i])
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+    for i in range(1, N):
+        ans[i] = min(ans[i], ans[i - 1] + S[i - 1])
+    ans[0] = min(ans[0], ans[N - 1] + S[N - 1])
+
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    for i in range(n):
+        t[i] = (t[i], i)
+    t.sort()
+    ans = [0] * n
+    for i in range(n):
+        ans[t[i][1]] = t[i][0]
+    for i in range(n):
+        if ans[i] < s[i]:
+            ans[i] = s[i]
+        elif ans[i] % s[i] == 0:
+            pass
+        else:
+            ans[i] = s[i] * (ans[i] // s[i] + 1)
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    S = list(map(int, input().split()))
+    T = list(map(int, input().split()))
+    ans = [0] * N
+    for i in range(N):
+        ans[i] = T[i]
+    for i in range(1, N):
+        ans[i] = min(ans[i], ans[i - 1] + S[i - 1])
+    for i in range(N):
+        ans[i] = min(ans[i], ans[(i - 1 + N) % N] + S[(i - 1 + N) % N])
+    for i in range(N):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = list(map(int, input().split()))
+    t = list(map(int, input().split()))
+    s_t = sorted(zip(s, t), key=lambda x: x[0])
+    s, t = zip(*s_t)
+    ans = [0] * n
+    ans[0] = t[0]
+    for i in range(1, n):
+        ans[i] = min(ans[i - 1] + s[i - 1], t[i])
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 7
+
+def solve(N, S, T):
+    # 用于存储Snuke i第一次收到宝石的时间
+    ans = [0] * N
+    # 用于存储Snuke i第一次收到宝石的时间的最小值
+    min_time = 0
+    # 用于存储Snuke i第一次收到宝石的时间的最大值
+    max_time = 0
+    # 用于存储Snuke i第一次收到宝石的时间的最大值的索引
+    max_time_index = 0
+    # 用于存储Snuke i第一次收到宝石的时间的最小值的索引
+    min_time_index = 0
+    # 用于存储Snuke i第一次收到宝石的时间的最小值的索引
+    min_time_index = 0
+    # 用于存储Snuke i第一次收到宝石的时间的最大值的索引
+    max_time_index = 0
+    # 用于存储Snuke i第一次收到宝石
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    snuke = list(map(int, input().split()))
+    takahashi = list(map(int, input().split()))
+
+    snuke_time = [0] * n
+    snuke_time[0] = takahashi[0]
+    for i in range(1, n):
+        snuke_time[i] = max(snuke_time[i - 1] + snuke[i - 1], takahashi[i])
+
+    for i in range(n):
+        print(snuke_time[i])
+
+=======
+Suggestion 9
+
+def main():
+    #N = 3
+    #S = [4, 1, 5]
+    #T = [3, 10, 100]
+    #N = 4
+    #S = [100, 100, 100, 100]
+    #T = [1, 1, 1, 1]
+    #N = 4
+    #S = [1, 2, 3, 4]
+    #T = [1, 2, 4, 7]
+    N = 8
+    S = [84, 87, 78, 16, 94, 36, 87, 93]
+    T = [50, 22, 63, 28, 91, 60, 64, 27]
+    #print(N, S, T)
+    #N = int(input())
+    #S = list(map(int, input().split()))
+    #T = list(map(int, input().split()))
+    #print(N, S, T)
+
+    #print(S[0], T[0])
+    #print(S[1], T[1])
+    #print(S[2], T[2])
+
+    #print(S[0], T[0])
+    #print(S[1], T[1])
+    #print(S[2], T[2])
+    #print(S[3], T[3])
+
+    #print(S[0], T[0])
+    #print(S[1], T[1])
+    #print(S[2], T[2])
+    #print(S[3], T[3])
+    #print(S[4], T[4])
+
+    #print(S[0], T[0])
+    #print(S[1], T[1])
+    #print(S[2], T[2])
+    #print(S[3], T[3])
+    #print(S[4], T[4])
+    #print(S[5], T[5])
+
+    #print(S[0], T[0])
+    #print(S[1], T[1])
+    #print(S[2], T[2])
+    #print(S[3], T[3])
+    #print(S[4], T[4])
+    #print(S[5], T[5])
+    #print(S[6], T[6])
+
+    #print
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = list(map(int,input().split()))
+    T = list(map(int,input().split()))
+    for i in range(N):
+        T[i] = [T[i],i]
+    T.sort()
+    for i in range(N):
+        T[i] = T[i][1]
+    for i in range(N):
+        if i == 0:
+            time = 0
+        else:
+            time = max(time,S[T[i-1]])
+        print(time)

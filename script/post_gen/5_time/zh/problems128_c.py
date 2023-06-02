@@ -1,60 +1,172 @@
-#问题陈述
-#我们有N个具有 "开 "和 "关 "状态的开关，以及M个灯泡。开关的编号是1到N，灯泡的编号是1到M。
-#灯泡i与k_i个开关相连：开关s_{i1}，s_{i2}，...，和s_{ik_i}。当这些开关中 "开 "的开关数与p_i的模数一致时，它就被点亮。
-#有多少种开关的 "开 "和 "关 "状态的组合可以点亮所有的灯泡？
-#
-#限制条件
-#1 ≦ N, M ≦ 10
-#1 ≦ k_i ≦ N
-#1 ≦ s_{ij} ≦ N
-#s_{ia}≠ s_{ib} (a ≠ b)
-#p_i为0或1。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#k_1 s_{11} s_{12}...s_{1k_1}
-#:
-#k_M s_{M1} s_{M2} ... s_{Mk_M} 。
-#p_1 p_2 ... p_M
-#
-#输出
-#打印能点亮所有灯泡的开关的 "开 "和 "关 "状态的组合数。
-#
-#输入样本 1
-#2 2
-#2 1 2
-#1 2
-#0 1
-#
-#样本输出1
-#1
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有奇数个 "打开 "时，灯泡2被点亮：开关2。
-#开关1、开关2）的状态有四种可能的组合：(开，开），（开，关），（关，开）和（关，关）。其中，只有（开，开）能点亮所有的灯泡，所以我们应该打印1。
-#
-#输入样本 2
-#2 3
-#2 1 2
-#1 1
-#1 2
-#0 0 1
-#
-#样本输出2
-#0
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有偶数个 "打开 "时，灯泡2被点亮：开关1。
-#当下列开关中有奇数个 "打开 "时，灯泡3会被点亮：开关2。
-#开关1必须 "关闭 "才能点亮灯泡2，开关2必须 "打开 "才能点亮灯泡3，但这样灯泡1就不会被点亮。因此，不存在能点亮所有灯泡的开关状态组合，所以我们应该打印0。
-#
-#输入样本 3
-#5 2
-#3 1 2 5
-#2 2 3
-#1 0
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    K = [0] * M
+    S = [[]] * M
+    P = [0] * M
+    for i in range(M):
+        K[i], *S[i] = map(int, input().split())
+    P = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(2 ** N):
+        for j in range(M):
+            cnt = 0
+            for s in S[j]:
+                if (i >> (s - 1)) & 1:
+                    cnt += 1
+            if cnt % 2 != P[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_number_of_combinations(N, M, K, S, P):
+    """
+    N: number of switches
+    M: number of light bulbs
+    K: list of number of switches connected to each light bulb
+    S: list of switches connected to each light bulb
+    P: list of remainders for each light bulb
+    """
+    combinations = 0
+    for i in range(2**N):
+        # convert i to binary
+        i_binary = "{0:b}".format(i)
+        # pad the binary string with 0s
+        i_binary = i_binary.zfill(N)
+        # check if the switch combination satisfies the remainders
+        if satisfies_remainders(i_binary, K, S, P):
+            combinations += 1
+    return combinations
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    k = []
+    s = []
+    p = []
+    for i in range(m):
+        k.append(list(map(int,input().split()))[0])
+        s.append(list(map(int,input().split())))
+    p = list(map(int,input().split()))
+    ans = 0
+    for i in range(2**n):
+        flag = True
+        for j in range(m):
+            on = 0
+            for sij in s[j]:
+                if (i >> (sij-1)) & 1:
+                    on += 1
+            if on % 2 != p[j]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def check_on_off(switch, bulb, p):
+    #print("switch: ", switch)
+    #print("bulb: ", bulb)
+    #print("p: ", p)
+    for i in range(bulb):
+        count = 0
+        for j in range(len(switch[i])):
+            if switch[i][j] in p:
+                count += 1
+        if count % 2 != p[i]:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def get_input():
+    N, M = map(int, input().split())
+    k = [0] * M
+    s = [0] * M
+    for i in range(M):
+        k[i], *s[i] = map(int, input().split())
+        s[i].sort()
+    p = list(map(int, input().split()))
+    return N, M, k, s, p
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    s = []
+    p = []
+    for i in range(M):
+        k.append(list(map(int, input().split())))
+    for i in range(M):
+        s.append(list(map(int, input().split())))
+    p = list(map(int, input().split()))
+    print(N, M)
+    print(k)
+    print(s)
+    print(p)
+    return 0
+
+=======
+Suggestion 8
+
+def solve(N, M, k, s, p):
+    result = 0
+    for i in range(2**N):
+        flag = True
+        for j in range(M):
+            count = 0
+            for l in range(k[j]):
+                if (i >> (s[j][l]-1) & 1):
+                    count += 1
+            if (count % 2 != p[j]):
+                flag = False
+                break
+        if (flag):
+            result += 1
+    return result
+
+=======
+Suggestion 9
+
+def get_light_num(num, switch, light):
+    switch_num = len(switch)
+    switch_status = [0] * switch_num
+    light_status = [0] * light
+    for i in range(num):
+        for j in range(switch_num):
+            if (i + 1) in switch[j]:
+                switch_status[j] += 1
+    for i in range(switch_num):
+        switch_status[i] = switch_status[i] % 2
+    for i in range(switch_num):
+        for j in range(light):
+            if (j + 1) in switch[i]:
+                light_status[j] += switch_status[i]
+    for i in range(light):
+        light_status[i] = light_status[i] % 2
+    if light_status.count(1) == 0:
+        return 1
+    else:
+        return 0

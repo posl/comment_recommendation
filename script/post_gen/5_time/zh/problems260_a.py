@@ -1,37 +1,139 @@
-#问题陈述
-#给你一个长度为3的字符串S。
-#打印一个在S中只出现一次的字符。
-#如果没有这样的字符，则打印-1。
-#
-#限制条件
-#S是一个长度为3的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。  如果存在多个解决方案，你可以打印其中任何一个。
-#
-#输入样本1
-#流行
-#
-#样本输出1
-#o
-#o在pop中只出现一次。
-#
-#样本输入2
-#abc
-#
-#样本输出2
-#a
-#a、b、c在abc中各出现一次，所以你可以打印它们中的任何一个。
-#
-#输入示例3
-#xxx
-#
-#输出样本3
-#-1
-#没有字符在xxx中只出现一次。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] == s[1]:
+        print(s[2])
+    elif s[1] == s[2]:
+        print(s[0])
+    elif s[0] == s[2]:
+        print(s[1])
+    else:
+        print(-1)
+
+=======
+Suggestion 2
+
+def solution(s):
+    if s[0] == s[1] and s[1] == s[2]:
+        return -1
+    elif s[0] == s[1]:
+        return s[2]
+    elif s[1] == s[2]:
+        return s[0]
+    elif s[0] == s[2]:
+        return s[1]
+    else:
+        return -1
+
+=======
+Suggestion 3
+
+def solve(string):
+    for i in string:
+        if string.count(i) == 1:
+            return i
+    return -1
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[0] == S[1] and S[1] == S[2]:
+        print(-1)
+    elif S[0] != S[1] and S[1] == S[2]:
+        print(S[0])
+    elif S[0] == S[1] and S[1] != S[2]:
+        print(S[2])
+    elif S[0] != S[1] and S[1] != S[2] and S[0] == S[2]:
+        print(S[1])
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[0] != S[1] and S[1] != S[2] and S[0] != S[2]:
+        print("1")
+    elif S[0] == S[1] and S[1] != S[2]:
+        print("2")
+    elif S[0] != S[1] and S[1] == S[2]:
+        print("3")
+    else:
+        print("-1")
+
+=======
+Suggestion 6
+
+def solve():
+    s = input()
+    if s[0] != s[1] and s[1] != s[2] and s[2] != s[0]:
+        print(-1)
+    elif s[0] == s[1]:
+        print(s[2])
+    elif s[1] == s[2]:
+        print(s[0])
+    else:
+        print(s[1])
+
+=======
+Suggestion 7
+
+def solve():
+    s = input()
+    if s[0] != s[1] and s[1] != s[2] and s[2] != s[0]:
+        print(s[0])
+    elif s[0] == s[1] and s[1] != s[2]:
+        print(s[2])
+    elif s[1] == s[2] and s[2] != s[0]:
+        print(s[0])
+    elif s[2] == s[0] and s[0] != s[1]:
+        print(s[1])
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if s[0] == s[1] and s[1] != s[2]:
+        print(s[2])
+    elif s[0] == s[2] and s[1] != s[2]:
+        print(s[1])
+    elif s[1] == s[2] and s[0] != s[1]:
+        print(s[0])
+    else:
+        print(-1)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s[0] == s[1]:
+        print(s[2])
+    elif s[0] == s[2]:
+        print(s[1])
+    elif s[1] == s[2]:
+        print(s[0])
+    else:
+        print(-1)
+
+=======
+Suggestion 10
+
+def getUniqueChar(s):
+    if s[0] == s[1]:
+        return s[2]
+    if s[1] == s[2]:
+        return s[0]
+    if s[0] == s[2]:
+        return s[1]
+    return -1

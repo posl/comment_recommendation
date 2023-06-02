@@ -1,30 +1,45 @@
-#问题陈述
-#地震的震级是地震所释放的能量的对数尺度。众所周知，震级每增加1级，能量就会增加32倍。
-#在这里，我们假设震级每增加1，能量就会增加32。
-#
-#限制条件
-#3≦ B≦ A≦ 9
-#A和B是整数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6 4
-#
-#样本输出 1
-#1024
-#6比4大2，所以6级地震的能量是4级地震的32×32=1024倍。
-#
-#输入样本2
-#5 5
-#
-#样本输出 2
-#1
-#相同震级的地震具有相同的能量。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+    # 计算答案
+    ans = 32 ** (A - B)
+    # 利用print()函数输出结果
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(32**(A-B))
+
+=======
+Suggestion 3
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    print(32**(a-b))
+
+=======
+Suggestion 4
+
+def main():
+    # A, B = map(int, input().split())
+    # print(32 ** (A - B))
+    A, B = map(int, input().split())
+    print(32 ** (A - B))
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    print(32 ** (A - B))
+main()

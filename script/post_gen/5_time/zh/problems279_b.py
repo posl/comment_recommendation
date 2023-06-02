@@ -1,53 +1,66 @@
-#问题陈述
-#给你一个由小写英文字母组成的字符串S和T。请判断T是否是S的（连续的）子串。
-#当且仅当Y可以通过对X进行零次或多次的操作而得到时，就可以说Y是X的一个（连续）子串。
-#执行以下操作之一。
-#删除X中的第一个字符。
-#删除X中的最后一个字符。
-#
-#例如，tag是voltage的一个（连续的）子串，而ace不是atcoder的（连续的）子串。
-#
-#限制条件
-#S和T由小写英文字母组成。
-#1 ≦ |S|,|T| ≦ 100 (|X|表示一个字符串X的长度。)
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#T
-#
-#输出
-#如果T是S的一个（连续的）子串，打印Yes；否则，打印No。
-#
-#样本输入1
-#voltage
-#tag
-#
-#样本输出1
-#Yes
-#tag是voltage的一个（连续的）子串。
-#
-#输入样本2
-#atcoder
-#ace
-#
-#样品输出2
-#No
-#ace不是atcoder的（连续的）子串。
-#
-#输入样本3
-#gorilla
-#gorillagorillagorilla
-#
-#样本输出3
-#No
-#
-#样本输入4
-#toyotasystems
-#toyotasystems
-#
-#样本输出4
-#Yes
-#有可能，S=T。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    if T in S:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    str1 = input()
+    str2 = input()
+    if str2 in str1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    if t in s:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def problem279_b():
+    s = input()
+    t = input()
+    print('Yes' if t in s else 'No')
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    T = input()
+    if T in S:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i:len(t)+i] == t:
+            print("Yes")
+            break
+    else:
+        print("No")

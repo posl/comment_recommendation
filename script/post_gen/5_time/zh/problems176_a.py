@@ -1,32 +1,85 @@
-#问题陈述
-#高桥喜欢章鱼烧--一种球状小吃。
-#用一台章鱼烧机器，他每次最多可以制作X块章鱼烧，无论制作多少块，都需要T分钟。
-#制作N块章鱼烧需要多长时间？
-#
-#限制条件
-#1 ≦ n,x,t ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N X T
-#
-#输出
-#打印一个整数，代表制作N块章鱼烧所需的最少分钟数。
-#
-#输入样本 1
-#20 12 6
-#
-#输出示例 1
-#12
-#他可以在前6分钟内做12块章鱼烧，在接下来的6分钟内再做8块，所以他在12分钟内可以做20块。
-#注意，能在6分钟内做12块并不意味着他能在1分钟内做2块。
-#
-#输入样本 2
-#1000 1 1000
-#
-#样本输出2
-#1000000
-#做这种章鱼烧似乎需要很长的时间。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems176_a():
+    N,X,T = map(int, input().split())
+    if N%X==0:
+        print(int(N/X)*T)
+    else:
+        print((int(N/X)+1)*T)
+
+=======
+Suggestion 2
+
+def problems176_a():
+    n,x,t = map(int,input().split())
+    if n%x == 0:
+        print(int(n/x)*t)
+    else:
+        print((int(n/x)+1)*t)
+
+=======
+Suggestion 3
+
+def main():
+    n,x,t = map(int,input().split())
+    if n%x == 0:
+        print((n//x)*t)
+    else:
+        print((n//x+1)*t)
+
+=======
+Suggestion 4
+
+def problems176_a():
+    N, X, T = map(int, input().split())
+    print((N+X-1)//X*T)
+
+=======
+Suggestion 5
+
+def main():
+    n,x,t = map(int,input().split())
+    if n%x == 0:
+        print(n//x*t)
+    else:
+        print((n//x+1)*t)
+
+=======
+Suggestion 6
+
+def main():
+    n, x, t = map(int, input().split())
+    print((n + x - 1) // x * t)
+
+=======
+Suggestion 7
+
+def problem176_a():
+    n,x,t = map(int,input().split())
+    print(((n-1)//x+1)*t)
+
+=======
+Suggestion 8
+
+def problem176_a():
+    n, x, t = map(int, input().split())
+    if n % x == 0:
+        print(int(n / x) * t)
+    else:
+        print((int(n / x) + 1) * t)
+
+=======
+Suggestion 9
+
+def calc_time():
+    n,x,t = input("请输入N,X,T\n").split(" ")
+    n = int(n)
+    x = int(x)
+    t = int(t)
+    if n%x == 0:
+        return (n//x)*t
+    else:
+        return (n//x)*t+t

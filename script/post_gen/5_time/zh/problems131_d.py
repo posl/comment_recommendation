@@ -1,89 +1,188 @@
-#问题陈述
-#在AtCoder王国的国家问题研讨会上，Kizahashi被任命为ABC的管理员，他过于兴奋，承担了太多的工作。
-#设当前时间为0，Kizahashi有N个工作，编号为1到N。
-#Kizahashi完成工作i需要A_i单位的时间。工作i的最后期限是时间B_i，他必须在这个时间之前或之前完成工作。
-#Kizahashi不能同时进行两项或多项工作，但当他完成一项工作后，可以立即开始进行另一项工作。
-#Kizahashi能及时完成所有的工作吗？如果他能，请打印 "Yes"；如果他不能，请打印 "No"。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9 (1 ≦ i ≦ N)
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果Kizahashi能及时完成所有工作，打印Yes；如果他不能，打印No。
-#
-#输入样本1
-#5
-#2 4
-#1 9
-#1 8
-#4 9
-#3 12
-#
-#样本输出1
-#Yes
-#他可以按时完成所有的工作，例如，按以下顺序做这些工作：
-#从时间0到1做工作2。
-#从时间1到3做工作1。
-#从时间3到7做工作4。
-#从时间7到8做工作3。
-#做工作5，从时间8到11。
-#请注意，在最后期限，即时间8完成工作3是可以的。
-#
-#输入样本2
-#3
-#334 1000
-#334 1000
-#334 1000
-#
-#样本输出2
-#No
-#他不能及时完成所有的工作，无论他以何种顺序做这些工作。
-#
-#输入样本3
-#30
-#384 8895
-#1725 9791
-#170 1024
-#4 11105
-#2 6
-#578 1815
-#702 3352
-#143 5141
-#1420 6980
-#24 1602
-#849 999
-#76 7586
-#85 5570
-#444 4991
-#719 11090
-#470 10708
-#1137 4547
-#455 9003
-#110 9901
-#15 8578
-#368 3692
-#104 1286
-#3 4
-#366 12143
-#7 6649
-#610 2374
-#152 7324
-#4 7042
-#292 11386
-#334 5720
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    work = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        work.append((a, b))
+    work.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(N):
+        time += work[i][0]
+        if time > work[i][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    #N = int(input())
+    #AB = []
+    #for i in range(N):
+    #    AB.append(list(map(int, input().split())))
+    N = 30
+    AB = [[384, 8895], [1725, 9791], [170, 1024], [4, 11105], [2, 6], [578, 1815], [702, 3352], [143, 5141], [1420, 6980], [24, 1602], [849, 999], [76, 7586], [85, 5570], [444, 4991], [719, 11090], [470, 10708], [1137, 4547], [455, 9003], [110, 9901], [15, 8578], [368, 3692], [104, 1286], [3, 4], [366, 12143], [7, 6649], [610, 2374], [152, 7324], [4, 7042], [292, 11386], [334, 5720]]
+    AB.sort(key=lambda x:x[1])
+    time = 0
+    for i in range(N):
+        time += AB[i][0]
+        if time > AB[i][1]:
+            print("No")
+            exit()
+    print("Yes")
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ab = []
+    for i in range(n):
+        ab.append(list(map(int, input().split())))
+    ab.sort(key=lambda x: x[1])
+    time = 0
+    for i in range(n):
+        time += ab[i][0]
+        if time > ab[i][1]:
+            print("No")
+            break
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    C = sorted(zip(A, B), key=lambda x: x[1])
+    t = 0
+    for i in range(N):
+        t += C[i][0]
+        if t > C[i][1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    #读取输入
+    n = int(input())
+    a_b = []
+    for i in range(n):
+        a_b.append(list(map(int,input().split())))
+
+    #按照最后期限排序
+    a_b.sort(key=lambda x:x[1])
+
+    #计算完成时间
+    time = 0
+    for i in range(n):
+        time += a_b[i][0]
+        if time > a_b[i][1]:
+            print("No")
+            return
+
+    print("Yes")
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    AB.sort(key=lambda x: x[1])
+    t = 0
+    for a, b in AB:
+        t += a
+        if t > b:
+            return False
+    return True
+
+print('Yes' if solve() else 'No')
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+
+    AB.sort(key=lambda x:x[1])
+
+    for i in range(N):
+        if sum(map(lambda x:x[0], AB[:i+1])) > AB[i][1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append([int(i) for i in input().split()])
+    AB.sort(key=lambda x: x[1])
+    t = 0
+    for i in range(N):
+        t += AB[i][0]
+        if t > AB[i][1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x:x[1])
+    t = 0
+    for i in range(N):
+        t += AB[i][0]
+        if t > AB[i][1]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    work = []
+    for i in range(N):
+        work.append(list(map(int, input().split())))
+
+    work.sort(key=lambda x: x[1])
+
+    time = 0
+    for i in range(N):
+        time += work[i][0]
+        if time > work[i][1]:
+            print("No")
+            return
+    print("Yes")

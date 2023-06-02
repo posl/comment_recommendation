@@ -1,34 +1,93 @@
-#问题陈述
-#给你一个字符串S，找出通过对S的字符进行排列组合得到的词典上最小的字符串S'。
-#这里，对于不同的两个字符串s = s_1 s_2 ... s_n和t = t_1 t_2 ... t_m，当以下条件之一得到满足时，s < t在词典上成立。
-#有一个整数i (1 ≦ i ≦ min(n,m))，使得s_i < t_i并且s_j=t_j对于所有整数j (1 ≦ j < i)。
-#对于所有整数i (1 ≦ i ≦ min(n,m))，且n < m，s_i = t_i。
-#
-#约束条件
-#S是一个长度在1到2×10^5（包括）之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印通过对S中的字符进行排列组合而得到的词典上最小的字符串S'。
-#
-#输入样本1
-#aba
-#
-#样本输出1
-#aab
-#通过permuting aba可以得到三个字符串：
-#aba
-#aab
-#baa
-#其中词汇学上最小的是aab。
-#
-#输入样本2
-#zzzz
-#
-#样本输出2
-#zzzz
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    s = list(s)
+    s.sort()
+    print(''.join(s))
+
+=======
+Suggestion 2
+
+def permute(s):
+    if len(s) == 1:
+        return s
+    else:
+        res = []
+        for i in range(len(s)):
+            for j in permute(s[:i]+s[i+1:]):
+                res.append(s[i]+j)
+        return res
+
+=======
+Suggestion 3
+
+def minstr(s):
+    s = sorted(s)
+    return ''.join(s)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = sorted(s)
+    print(''.join(s))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    print(''.join(sorted(s)))
+
+=======
+Suggestion 6
+
+def solution():
+    s = input()
+    l = len(s)
+    s = list(s)
+    s.sort()
+    if s[0] == s[-1]:
+        print(s[0] * l)
+        return
+    if l == 2:
+        print(s[0] + s[1])
+        return
+    if s[0] == s[1]:
+        print(s[0] + s[2] * (l - 1))
+        return
+    else:
+        print(s[0] + s[1] + s[2] * (l - 2))
+        return
+
+solution()
+
+=======
+Suggestion 7
+
+def get_permutation(s):
+    if len(s) == 1:
+        return [s]
+    else:
+        result = []
+        for i in range(len(s)):
+            result.extend([s[i] + p for p in get_permutation(s[:i] + s[i+1:])])
+        return result
+
+s = input()
+permutation_list = get_permutation(s)
+print(min(permutation_list))
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S_list = list(S)
+    S_list.sort()
+    print(''.join(S_list))

@@ -1,40 +1,68 @@
-#问题陈述
-#给你一个长度为N的字符串S。
-#请找出将S中所有连续出现的na替换为nya后得到的字符串。
-#
-#限制条件
-#N是1到1000之间的整数，包括在内。
-#S是一个由小写英文字母组成的长度为N的字符串。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#naan
-#
-#样本输出1
-#nyaan
-#将naan中所有连续出现的na替换为nya，得到的是字符串nyaan。
-#
-#输入样本2
-#4
-#near
-#
-#样本输出2
-#Near
-#S可能不包含一个连续的na。
-#
-#样本输入3
-#8
-#national
-#
-#样本输出3
-#nyationyal
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    print(s.replace("na", "nya"))
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = input()
+    s = s.replace('na', 'nya')
+    print(s)
+
+=======
+Suggestion 3
+
+def problem():
+    n = int(input())
+    s = input()
+    print(s.replace('na', 'nya'))
+
+=======
+Suggestion 4
+
+def replace_na(s):
+    if len(s) < 2:
+        return s
+    else:
+        if s[0:2] == 'na':
+            return 'nya' + replace_na(s[2:])
+        else:
+            return s[0] + replace_na(s[1:])
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    s = s.replace("na", "nya")
+    print(s)
+
+=======
+Suggestion 6
+
+def replace_na(s):
+    s = s.replace('na', 'nya')
+    return s
+
+=======
+Suggestion 7
+
+def replace_na(s):
+    return s.replace('na', 'nya')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    print(S.replace('na', 'nya'))

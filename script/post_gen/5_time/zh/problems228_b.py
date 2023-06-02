@@ -1,41 +1,154 @@
-#问题陈述
-#高桥有N个朋友。他们都有绰号：朋友1，朋友2，...，朋友N。
-#有一天，高桥不小心让他的一个朋友，朋友X，知道了他可耻的秘密。
-#对于每个i=1，2，...，N，当朋友i知道这个秘密时，如果朋友A_i还没有知道，他/她会与朋友A_i分享这个秘密。
-#最后有多少个高桥的朋友会知道这个秘密？
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ X ≦ N
-#1 ≦ A_i ≦ N
-#A_i ≠ i
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N X
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#3 1 1 2
-#
-#样本输出 1
-#3
-#高桥的秘密会被朋友1、朋友2和朋友3知道，如下所示。
-#有一天，高桥让朋友2知道了这个秘密。
-#朋友2与朋友1分享。
-#朋友1与朋友3分享。
-#最后，他的三个朋友都知道了这个秘密，所以我们打印了3。
-#
-#样本输入2
-#20 12
-#7 11 10 1 7 20 14 2 17 3 2 5 19 20 8 14 18 2 10 10
-#
-#样本输出2
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    a = list(map(lambda x:x-1,a))
+    #print(a)
+    count = 0
+    for i in range(n):
+        if a[i] != -1:
+            count += 1
+            p = a[i]
+            a[i] = -1
+            while a[p] != -1:
+                q = a[p]
+                a[p] = -1
+                p = q
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    a = list(map(lambda x:x-1,a))
+    b = [0]*n
+    b[x-1] = 1
+    for i in range(n):
+        if b[i] == 1:
+            b[a[i]] = 1
+    print(sum(b))
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    count = 1
+    for i in range(n):
+        if a[i] != 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    ans = 1
+    for i in range(n):
+        if a[i] != 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a[x-1] = 0
+    b = [0]*n
+    for i in range(n):
+        if a[i] != 0:
+            b[a[i]-1] += 1
+    for i in range(n):
+        if b[i] > 0:
+            b[i] += 1
+    print(sum(b))
+
+=======
+Suggestion 6
+
+def solve():
+    N,X = map(int,input().split())
+    A = list(map(int,input().split()))
+    A = [i-1 for i in A]
+    B = [0]*N
+    B[X-1] = 1
+    for i in range(N):
+        if B[A[i]] == 1:
+            B[i] = 1
+    print(sum(B))
+
+=======
+Suggestion 7
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    x -= 1
+    b = [False] * n
+    b[x] = True
+    for i in range(n):
+        if b[i]:
+            b[a[i] - 1] = True
+    print(b.count(True))
+
+=======
+Suggestion 8
+
+def main():
+    n,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a = [a[i]-1 for i in range(n)]
+    ans = 1
+    y = x-1
+    while a[y]!=x-1:
+        ans+=1
+        y = a[y]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[x-1] = 0
+    a.sort()
+    for i in range(n):
+        if a[i] == 0:
+            print(i)
+            break
+    else:
+        print(n)
+
+=======
+Suggestion 10
+
+def main():
+    N, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [a - 1 for a in A]
+    friends = [False] * N
+    friends[X - 1] = True
+    count = 1
+    while True:
+        if friends[A[X - 1]]:
+            break
+        friends[A[X - 1]] = True
+        count += 1
+        X = A[X - 1] + 1
+    print(count)

@@ -1,46 +1,101 @@
-#问题陈述
-#我们有一个袋子，里面有A金币，B银币，C铜币。
-#直到袋子里有100个相同颜色的硬币，我们将重复以下操作：
-#操作：随机从袋子里拿出一枚硬币。(每枚硬币被选中的概率相同。)然后，将两枚与取出的硬币相同的硬币放回袋中。
-#求该操作次数的期望值。
-#
-#限制条件
-#0 ≦ A,B,C ≦ 99
-#A+B+C ≧ 1
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B C
-#
-#輸出
-#打印该操作次数的预期值。如果你的输出与正确值的绝对或相对误差最多为10^{-6}，你的输出将被接受。
-#
-#输入样本 1
-#99 99 99
-#
-#样本输出1
-#1.000000000
-#无论我们在第一次操作中拿出什么硬币，袋子里都会有100个该种硬币。
-#
-#样本输入2
-#98 99 99
-#
-#样本输出2
-#1.331081081
-#只有在第一次操作中拿出一枚金币，我们才会进行第二次操作。
-#因此，预期的操作次数是2×（（98）/（98+99+99））+1×（（99）/（98+99+99））+1×（（99）/（98+99+99））=1.331081081...
-#
-#样本输入3
-#0 0 1
-#
-#样本输出3
-#99.000000000
-#每次操作都会增加一枚铜币。
-#
-#样本输入4
-#31 41 59
-#
-#输出样本4
-#91.835008202
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem184_d():
+    return 0
+
+=======
+Suggestion 2
+
+def f(a,b,c):
+    if a==100 or b==100 or c==100:
+        return 0
+    else:
+        return (a/(a+b+c))*(f(a+1,b,c)+1)+(b/(a+b+c))*(f(a,b+1,c)+1)+(c/(a+b+c))*(f(a,b,c+1)+1)
+
+a,b,c=map(int,input().split())
+print(f(a,b,c))
+
+=======
+Suggestion 3
+
+def solve(A,B,C):
+    # 1. 三种硬币都有的时候
+    if A > 0 and B > 0 and C > 0:
+        return 1 + A / (A + B + C) * solve(A + 1, B - 1, C) + B / (A + B + C) * solve(A, B + 1, C - 1) + C / (A + B + C) * solve(A - 1, B, C + 1)
+    # 2. 只有两种硬币的时候
+    elif A == 0 and B > 0 and C > 0:
+        return 1 + B / (B + C) * solve(0, B + 1, C - 1) + C / (B + C) * solve(0, B - 1, C + 1)
+    elif A > 0 and B == 0 and C > 0:
+        return 1 + A / (A + C) * solve(A + 1, 0, C - 1) + C / (A + C) * solve(A - 1, 0, C + 1)
+    elif A > 0 and B > 0 and C == 0:
+        return 1 + A / (A + B) * solve(A + 1, B - 1, 0) + B / (A + B) * solve(A - 1, B + 1, 0)
+    # 3. 只有一种硬币的时候
+    elif A == 0 and B == 0 and C > 0:
+        return 1 + solve(0, 0, C + 1)
+    elif A == 0 and B > 0 and C == 0:
+        return 1 + solve(0, B + 1, 0)
+    elif A > 0 and B == 0 and C == 0:
+        return 1 + solve(A + 1, 0, 0)
+    # 4. 没有硬币的时候
+    elif A == 0 and B == 0 and C == 0:
+        return 0
+
+=======
+Suggestion 4
+
+def f(a,b,c):
+    return 1 + a*f(a+1,b-1,c) + b*f(a,b+1,c-1) + c*f(a,b,c+1) - (a+b+c)
+
+a,b,c = map(int, input().split())
+print(f(a,b,c))
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C = map(int,input().split())
+    print((A+B+C)*(A*B+B*C+C*A)/(A*B*C-A*B-B*C-C*A))
+
+=======
+Suggestion 7
+
+def solve(a,b,c):
+    if a == 0 and b == 0 and c == 0:
+        return 0
+    return a/(a+b+c)*(1+solve(a+1,b-1,c))+b/(a+b+c)*(1+solve(a,b+1,c-1))+c/(a+b+c)*(1+solve(a,b,c+1))
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c=map(int,input().split())
+    print(a*b*c/(a*b+b*c+c*a)-1)
+
+=======
+Suggestion 10
+
+def solve(A,B,C):
+    if A==B==C:
+        return 1
+    else:
+        return 2*A/(A+B+C)+solve(A+1,B-1,C)+solve(A,B+1,C-1)

@@ -1,37 +1,131 @@
-#问题陈述
-#给你一个由小写英文字母组成的长度为N的字符串S。  S的第x个（1≦x≦N）字符是S_x。
-#对于每个i=1,2,...,N-1，请找出满足以下所有条件的最大非负整数l：
-#l+i ≦ N, 并且
-#对于所有整数k，使得1 ≦ k ≦ l，则S_{k}成立。≠S_{k+i}。
-#注意，l=0总是满足这些条件。
-#
-#约束条件
-#N是一个整数，使得2 ≦ N ≦ 5000。
-#S是一个长度为N的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S
-#
-#输出
-#打印（N-1）行。  当i=x时，第x（1 ≦ x < N）行应包含答案的整数。
-#
-#输入样本 1
-#6
-#abcbac
-#
-#样本输出1
-#5
-#1
-#2
-#0
-#1
-#在这个输入中，S= abcbac。  
-#当i=1时，我们有S_1≠S_2，S_2≠S_3，...，以及S_5≠S_6，所以最大值为l=5。
-#当i=2时，我们有S_1≠S_3，但S_2=S_4，所以最大值为l=1。
-#当i=3时，我们有S_1≠S_4，S_2≠S_5，但S_3=S_6，所以最大值为l=2。
-#当i=4时，我们有S_1=S_5，所以最大值为l=0。
-#当i=5时，我们有S_1≠S_6，所以最大值是l=1。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        while l + i < n:
+            if s[l] != s[l + i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 2
+
+def problem285_b():
+    n = int(input())
+    s = input()
+    for i in range(1,n):
+        l = 0
+        while(i + l < n):
+            if(s[l] == s[i+l]):
+                break
+            l += 1
+        print(l)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        while i + l < n:
+            if s[l] != s[i + l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(n-1):
+        l = 0
+        while i + l < n and i + l * 2 < n and s[i] != s[i + l] and s[i + l] != s[i + l * 2]:
+            l += 1
+        print(l)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1,n):
+        l = 0
+        while i + l < n and s[l] != s[i+l]:
+            l += 1
+        print(l)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        l = 0
+        while i + l < N:
+            if S[l] != S[i + l]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    ans = []
+    for i in range(1, N):
+        l = 0
+        while i + l < N:
+            if S[l] != S[i + l]:
+                l += 1
+            else:
+                break
+        ans.append(l)
+    print("\n".join(map(str, ans)))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S = input()
+    for i in range(1, N):
+        l = 0
+        while l + i < N:
+            if S[l] != S[l + i]:
+                l += 1
+            else:
+                break
+        print(l)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    for i in range(1, n):
+        l = 0
+        while i + l < n:
+            if s[l] != s[i + l]:
+                break
+            l += 1
+        print(l)
