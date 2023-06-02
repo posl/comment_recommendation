@@ -64,6 +64,7 @@ if __name__ == '__main__':
                                 f.write(line)
                     print(file)
                 except:
+                    index = 0
                     if os.path.exists(result_path + language + '_errors.txt'):
                         with open(result_path + language + '_errors.txt', 'w') as f:
                             f.write(file + '\n')
