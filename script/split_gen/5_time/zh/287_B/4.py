@@ -1,0 +1,14 @@
+def main():
+    N,M = map(int,input().split())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(M):
+        T.append(input())
+    num = 0
+    for i in range(M):
+        for j in range(N):
+            if T[i] in S[j]:
+                num += 1
+    print(num)
