@@ -1,0 +1,10 @@
+def main():
+    s = input().split()
+    t = input().split()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    main()

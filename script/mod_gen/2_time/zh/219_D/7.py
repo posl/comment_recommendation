@@ -1,0 +1,41 @@
+def main():
+    X = input()
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    X = list(X)
+    X.sort()
+    X = ''.join(X)
+    X = X[::-1]
+    S.sort(key = lambda x:X.index(x[0]))
+    S.sort(key = lambda x:X.index(x[1]))
+    S.sort(key = lambda x:X.index(x[2]))
+    S.sort(key = lambda x:X.index(x[3]))
+    S.sort(key = lambda x:X.index(x[4]))
+    S.sort(key = lambda x:X.index(x[5]))
+    S.sort(key = lambda x:X.index(x[6]))
+    S.sort(key = lambda x:X.index(x[7]))
+    S.sort(key = lambda x:X.index(x[8]))
+    S.sort(key = lambda x:X.index(x[9]))
+    S.sort(key = lambda x:X.index(x[10]))
+    S.sort(key = lambda x:X.index(x[11]))
+    S.sort(key = lambda x:X.index(x[12]))
+    S.sort(key = lambda x:X.index(x[13]))
+    S.sort(key = lambda x:X.index(x[14]))
+    S.sort(key = lambda x:X.index(x[15]))
+    S.sort(key = lambda x:X.index(x[16]))
+    S.sort(key = lambda x:X.index(x[17]))
+    S.sort(key = lambda x:X.index(x[18]))
+    S.sort(key = lambda x:X.index(x[19]))
+    S.sort(key = lambda x:X.index(x[20]))
+    S.sort(key = lambda x:X.index(x[21]))
+    S.sort(key = lambda x:X.index(x[22]))
+    S.sort(key = lambda x:X.index(x[23]))
+    S.sort(key = lambda x:X.index(x[24]))
+    S.sort(key = lambda x:X.index(x[25]))
+    for i in range(N):
+        print(S[i])
+
+if __name__ == '__main__':
+    main()
