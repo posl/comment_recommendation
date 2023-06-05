@@ -1,0 +1,14 @@
+def get_min_price(x, y, n):
+    # 用25日元买三个苹果，买三次，用10日元买一个苹果，你将得到正好10个苹果，总价为85日元。
+    # 你不可能以更低的价格获得正好10个苹果，所以答案是85日元。
+    # 用10日元买一个苹果10次是最好的。
+    # 用100日元买一个苹果两次。
+    if n % 3 == 0:
+        return min(x * n, y * (n // 3))
+    elif n % 3 == 1:
+        return min(x * n, y * (n // 3) + x)
+    elif n % 3 == 2:
+        return min(x * n, y * (n // 3) + y)
+
+if __name__ == '__main__':
+    get_min_price()

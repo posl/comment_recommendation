@@ -1,0 +1,15 @@
+def solve():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(n):
+            if x == a[j]:
+                cnt += 1
+            if cnt == k:
+                print(j + 1)
+                break
+        else:
+            print(-1)
+solve()

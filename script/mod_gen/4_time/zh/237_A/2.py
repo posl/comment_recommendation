@@ -1,0 +1,9 @@
+def solve():
+    N = int(input())
+    if N >= -2**31 and N <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+
+if __name__ == '__main__':
+    solve()

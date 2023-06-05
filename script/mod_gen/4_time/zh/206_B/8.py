@@ -1,0 +1,13 @@
+def main():
+    n = int(input())
+    sum = 0
+    i = 1
+    while True:
+        sum += i
+        if sum >= n:
+            print(i)
+            break
+        i += 1
+
+if __name__ == '__main__':
+    main()

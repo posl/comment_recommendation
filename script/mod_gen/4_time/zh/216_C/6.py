@@ -1,0 +1,12 @@
+def solve(n):
+    s = ""
+    while n > 0:
+        if n % 2 == 0:
+            n //= 2
+            s += "B"
+        else:
+            n -= 1
+            s += "A"
+    return s[::-1]
+n = int(input())
+print(solve(n))

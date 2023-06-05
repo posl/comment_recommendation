@@ -1,0 +1,37 @@
+def main():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int, input().split())))
+    #print("N=", N)
+    #print("M=", M)
+    #print("AB=", AB)
+    #print("AB[0][0]=", AB[0][0])
+    #print("AB[0][1]=", AB[0][1])
+    #print("AB[1][0]=", AB[1][0])
+    #print("AB[1][1]=", AB[1][1])
+    #print("AB[2][0]=", AB[2][0])
+    #print("AB[2][1]=", AB[2][1])
+    #print("AB[3][0]=", AB[3][0])
+    #print("AB[3][1]=", AB[3][1])
+    #print("AB[4][0]=", AB[4][0])
+    #print("AB[4][1]=", AB[4][1])
+    #print("AB[5][0]=", AB[5][0])
+    #print("AB[5][1]=", AB[5][1])
+    #print("AB[6][0]=", AB[6][0])
+    #print("AB[6][1]=", AB[6][1])
+    #print("AB[7][0]=", AB[7][0])
+    #print("AB[7][1]=", AB[7][1])
+    #print("AB[8][0]=", AB[8][0])
+    #print("AB[8][1]=", AB[8][1])
+    #print("AB[9][0]=", AB[9][0])
+    #print("AB[9][1]=", AB[9][1])
+    #print("AB[10][0]=", AB[10][0])
+    #print("AB[10][1]=", AB[10][1])
+    #print("AB[11][0]=", AB[11][0])
+    #print("AB[11][1]=", AB[11][1])
+    #print("AB[12][0]=", AB[12][0])
+    #print("AB[12][1]=", AB[12][
+
+if __name__ == '__main__':
+    main()
