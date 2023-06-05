@@ -77,7 +77,13 @@ if __name__ == '__main__':
     # delete csv file and make new one with header
     print('input times')
     times = input() + '_time'
-    language_l = ['en', 'ja']
+    language_l = []
+    while True:
+        print('input language en or ja or zh or end')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     
     for language in language_l:
