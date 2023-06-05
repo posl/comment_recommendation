@@ -1,0 +1,38 @@
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        ss, tt = input().split()
+        s.append(ss)
+        t.append(int(tt))
+    #print(s)
+    #print(t)
+    #print(s.index('aa'))
+    #print(t[s.index('aa')])
+    #print(max(t))
+    #print(t.index(max(t)))
+    #print(s[t.index(max(t))])
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    #print(s.index(s[t.index(max(t))]))
+    #print(s.index(s[t.index(max(t))])+1)
+    print(s.index(s[t.index(max(t))])+1)
+
+if __name__ == '__main__':
+    main()

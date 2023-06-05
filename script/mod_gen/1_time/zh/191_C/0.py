@@ -1,0 +1,15 @@
+def main():
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                count += 1
+    if count == 0:
+        return 0
+    else:
+        return 1
+
+if __name__ == '__main__':
+    main()

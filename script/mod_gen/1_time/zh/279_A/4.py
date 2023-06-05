@@ -1,0 +1,9 @@
+def count_bottoms(s):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'w':
+            count += s[i+1:].count('v')
+    return count
+
+if __name__ == '__main__':
+    count_bottoms()
