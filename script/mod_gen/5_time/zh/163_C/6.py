@@ -1,0 +1,12 @@
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 1からNまでの各社員の直属の部下の数を数える
+    ans = [0] * N
+    for i in range(1, N):
+        ans[A[i - 1] - 1] += 1
+    for i in range(N):
+        print(ans[i])
+
+if __name__ == '__main__':
+    main()

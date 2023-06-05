@@ -1,0 +1,12 @@
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+if __name__ == '__main__':
+    main()

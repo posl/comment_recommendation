@@ -1,0 +1,64 @@
+def main():
+    n,k=input().split()
+    n=int(n)
+    k=int(k)
+    #print(n,k)
+    a=[]
+    for i in range(0,n):
+        a.append([])
+    #print(a)
+    for i in range(0,n):
+        a[i]=list(map(int,input().split()))
+    #print(a)
+    #print(a[0][0])
+    #print(a[1][1])
+    #print(a[2][2])
+    #print(a[2][1])
+    #print(a[1][2])
+    #print(a[1][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[2][0])
+    #print(a[1][1])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[1][2])
+    #print(a[2][0])
+    #print(a[2][1])
+    #print(a[2][2])
+    #print(a[0][0])
+    #print(a[0][1])
+    #print(a[0][2])
+    #print(a[1][0])
+    #print(a[1][1])
+    #print(a[1][2])
+    #print(a[2][0])
+    #print(a[2][1])
+    #print(a[2][2])
+    b=[]
+    for i in range(0,n-k+1):
+        b.append([])
+    #print(b)
+    for i in range(0,n-k+1):
+        b[i]=list(map(int,a[i][0:k]))
+    #print(b)
+    #print(b[0][0])
+    #print(b[0][1])
+    #print(b[1][0])
+    #print(b[1][1])
+    c=[]
+    for i in range(0,n-k+1):
+        c.append([])
+    for i in range(0,n-k+1):
+        c[i]=list(map(int,a[i][1:k+1]))
+    #print(c)
+    #print(c[0][0])
+    #print(c[0][1])
+    #print(c[1][0])
+    #print(c[1][1])
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,23 @@
+def main():
+    print('Hello World!')
+    print('请输入N的值：')
+    n = int(input())
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+    print('n的值为：',n)
+    print('n的类型为：',type(n))
+
+if __name__ == '__main__':
+    main()

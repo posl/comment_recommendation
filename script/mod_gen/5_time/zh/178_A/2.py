@@ -1,0 +1,11 @@
+def main():
+    x = float(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+    else:
+        print("输入的数据不符合规范")
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,24 @@
+def main():
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    d = int(input())
+    e = int(input())
+    #print(a,b,c,d,e)
+    #print(type(a),type(b),type(c),type(d),type(e))
+    #print(a%10,b%10,c%10,d%10,e%10)
+    #print(type(a%10),type(b%10),type(c%10),type(d%10),type(e%10))
+    #print(a//10,b//10,c//10,d//10,e//10)
+    #print(type(a//10),type(b//10),type(c//10),type(d//10),type(e//10))
+    #print(a//10*10,b//10*10,c//10*10,d//10*10,e//10*10)
+    #print(type(a//10*10),type(b//10*10),type(c//10*10),type(d//10*10),type(e//10*10))
+    #print(a//10*10+10,b//10*10+10,c//10*10+10,d//10*10+10,e//10*10+10)
+    #print(type(a//10*10+10),type(b//10*10+10),type(c//10*10+10),type(d//10*10+10),type(e//10*10+10))
+    #print(a//10*10+10-a,b//10*10+10-b,c//10*10+10-c,d//10*10+10-d,e//10*10+10-e)
+    #print(type(a//10*10+10-a),type(b//10*10+10-b),type(c//10*10+10-c),type(d//10*10+10-d),type(e//10*10+10-e))
+    #print(a//10*10+10-a+b//10*10+10-b+c//10*10+10-c+d//10*10+10-d+e//10*10+10-e)
+    #print(type(a//10*10+10-a+b//10*10+10-b+c//10*10+10-c+d//10*10+10-d+e//10*10+10-e))
+    #print(a//
+
+if __name__ == '__main__':
+    main()

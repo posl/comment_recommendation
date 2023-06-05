@@ -1,0 +1,31 @@
+def main():
+    N = int(input())
+    S = input()
+    W = list(map(int,input().split()))
+    #print(N,S,W)
+    #print(S[0])
+    #print(W[0])
+    #print(len(S))
+    #print(len(W))
+    #print(S[0])
+    #print(W[0])
+    #print(S[0] == '0')
+    #print(S[0] == '1')
+    #print(S[0] == 0)
+    #print(S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1')
+    #print(S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    #print(S[0] == '0' or S[0] == '1' or S[0] == 0 or S[0] == 1)
+    
+    #print(S[0] == '0' or S
+
+if __name__ == '__main__':
+    main()

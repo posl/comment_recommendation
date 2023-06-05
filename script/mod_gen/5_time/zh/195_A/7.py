@@ -1,0 +1,7 @@
+def problems195_a():
+    m, h = map(int, input().split())
+    if h % m == 0:
+        print("Yes")
+    else:
+        print("No")
+problems195_a()

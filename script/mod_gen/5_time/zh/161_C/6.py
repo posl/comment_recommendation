@@ -1,0 +1,8 @@
+def solution(n,k):
+    if n == 0:
+        return 0
+    else:
+        return min(n%k, k - n%k)
+
+if __name__ == '__main__':
+    solution()
