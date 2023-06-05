@@ -1,41 +1,61 @@
-#问题陈述
-#高桥在一个二维平面上打台球。X轴的作用是一堵墙；当球击中轴时，它将从轴上弹起，使入射角等于反射角。
-#高桥的球现在在（S_x,S_y）。当他以某一点为目标击球时，球将以一条直线滚向该点。
-#为了使球正好击中x轴一次，然后通过(G_x,G_y)，他应该瞄准x轴的哪一点？
-#
-#限制条件
-#-10^6 ≦ S_x, G_x ≦ 10^6
-#0 < S_y, G_y ≦ 10^6
-#S_x ≠ G_x
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_x S_y G_x G_y
-#
-#输出
-#让(x, 0)为高桥应该瞄准的点。打印x。
-#当你的输出与我们的答案的绝对或相对误差最多为10^{-6}时，将被认为是正确的。
-#
-#输入样本 1
-#1 1 7 2
-#
-#输出样本 1
-#3.0000000000
-#如下图所示，我们可以让球通过(7, 2)，以(3, 0)为目标进行打击。
-#
-#输入样本 2
-#1 1 3 2
-#
-#样本输出2
-#1.6666666667
-#
-#
-#样本输入3
-#-9 99 -999 9999
-#
-#样本输出3
-#-18.7058823529
-#当输出的绝对或相对误差与我们的答案最多只有10^{-6}时，将被视为正确。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((S_x * G_y + G_x * S_y) / (S_y + G_y))
+
+=======
+Suggestion 2
+
+def main():
+    s_x, s_y, g_x, g_y = map(int, input().split())
+    ans = s_x + (g_x - s_x) * s_y / (s_y + g_y)
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    print((S_x*G_y + G_x*S_y)/(S_y + G_y))
+
+=======
+Suggestion 4
+
+def main():
+    S_x, S_y, G_x, G_y = map(int,input().split())
+    print(S_x + (G_x - S_x) * S_y / (S_y + G_y))
+
+=======
+Suggestion 5
+
+def solve():
+    S_x, S_y, G_x, G_y = map(int, input().split())
+    x = (S_x * G_y + G_x * S_y) / (S_y + G_y)
+    print(x)
+
+=======
+Suggestion 6
+
+def solve():
+    S_x,S_y,G_x,G_y = map(int,input().split())
+    print(G_x-(G_y*S_x/(S_y+G_y)))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    x1, y1, x2, y2 = map(int, s.split())
+    x = (x2 * y1 + x1 * y2) / (y1 + y2)
+    print(x)
+
+=======
+Suggestion 8
+
+def main():
+    sx,sy,gx,gy = map(int,input().split())
+    print((sx*gy + gx*sy)/(sy+gy))

@@ -1,46 +1,207 @@
-#问题陈述
-#给你一个长度为N的整数序列：A=（A_1,A_2,...,A_N）。
-#你将只进行一次以下的连续操作：
-#选择一个整数x（0≦x≦N）。如果x是0，什么都不做。如果x是1或更大，用L替换A_1,A_2,...,A_x中的每个。
-#选择一个整数y (0≦ y ≦ N)。如果y是0，什么都不做。如果y为1或更大，用R替换A_{N},A_{N-1},...,A_{N-y+1}中的每一个。
-#打印运算后的A元素的最小可能之和。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#-10^9 ≦ l, r≦ 10^9
-#-10^9 ≦ A_i≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N L R
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4 3
-#5 5 0 6 3
-#
-#样本输出1
-#14
-#如果你选择x=2和y=2，你将得到A=（4,4,0,3,3），总和为14，这是可以实现的最小总和。
-#
-#样本输入2
-#4 10 10
-#1 2 3 4
-#
-#样本输出 2
-#10
-#如果你选择x=0，y=0，你将得到A=（1,2,3,4），为10的总和，这是可实现的最小总和。
-#
-#样本输入3
-#10 -5 -3
-#9 -6 10 -1 2 10 -1 7 -15 5
-#
-#样本输出3
-#-58
-#L、R和A_i可能是负数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans += A[i]
+    for i in range(1, N):
+        A[i] = min(A[i], A[i - 1] + L)
+    for i in range(N - 2, -1, -1):
+        A[i] = min(A[i], A[i + 1] + R)
+    for i in range(N):
+        ans += A[i] - A[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n,l,r = map(int, input().split())
+    a = list(map(int, input().split()))
+    if l > r:
+        l,r = r,l
+    if l >= 0:
+        ans = sum(a) + l * n
+    elif r <= 0:
+        ans = sum(a) + r * n
+    else:
+        ans = sum(a)
+        m = 0
+        for i in range(n):
+            if a[i] < 0:
+                if l + a[i] < 0:
+                    m += (l + a[i])
+                    a[i] = 0
+                else:
+                    a[i] += l
+        if m < 0:
+            for i in range(n):
+                if a[i] > 0:
+                    if r + a[i] > 0:
+                        m += (r + a[i])
+                        a[i] = 0
+                    else:
+                        a[i] += r
+                if m >= 0:
+                    break
+        ans += m
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,l,r = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        a[i] = a[i] - l
+    # print(a)
+    # print(sum(a))
+    dp = [[0 for i in range(2)] for j in range(n+1)]
+    for i in range(n):
+        dp[i+1][0] = max(dp[i][0], dp[i][1])
+        dp[i+1][1] = max(dp[i][0] + a[i], dp[i][1] + a[i])
+    print(max(dp[n][0], dp[n][1]) + n * r)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n,l,r = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    s = sum(a[:l])
+    for i in range(l,n):
+        s += min(a[i],a[l-1])
+    print(s)
+
+=======
+Suggestion 5
+
+def main():
+    n,l,r = map(int,input().split())
+    a = list(map(int,input().split()))
+    sum = 0
+    for i in range(n):
+        if a[i] < 0:
+            sum += a[i]*(l+r)
+        else:
+            sum += a[i]*(l-r)
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    n,l,r=map(int,input().split())
+    a=list(map(int,input().split()))
+    print(min(sum(a),sum(a[:l])+l*min(a[l:]),sum(a[:r])+r*min(a[r:])))
+
+=======
+Suggestion 7
+
+def solve(a, l, r):
+    n = len(a)
+    if n == 1:
+        return a[0]
+    elif n == 2:
+        return min(a[0] * l + a[1] * r, (a[0] + a[1]) * l)
+    else:
+        return min(a[0] * l + a[1] * r + sum(a[2:]) * r, (a[0] + a[1]) * l + sum(a[2:]) * r, a[0] * l + (a[1] + sum(a[2:])) * r, (a[0] + a[1]) * l + (sum(a[2:])) * r, a[0] * l + a[1] * r + sum(a[2:]) * l, (a[0] + a[1]) * l + sum(a[2:]) * l, a[0] * l + (a[1] + sum(a[2:])) * l, (a[0] + a[1]) * l + (sum(a[2:])) * l)
+
+
+n, l, r = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(a, l, r))
+
+=======
+Suggestion 8
+
+def solve():
+    N, L, R = map(int, input().split())
+    A = list(map(int, input().split()))
+    # print(N, L, R)
+    # print(A)
+    A.sort()
+    # print(A)
+    ans = 0
+    for i in range(N):
+        if A[i] < 0:
+            if L > 0:
+                L -= 1
+                ans += -A[i]
+            elif R > 0:
+                R -= 1
+                ans += -A[i]
+            else:
+                ans += A[i]
+        else:
+            if R > 0:
+                R -= 1
+                ans += A[i]
+            elif L > 0:
+                L -= 1
+                ans += A[i]
+            else:
+                ans += -A[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, l, r = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] < 0:
+            if l > 0:
+                ans += l
+                l = 0
+            else:
+                ans += a[i]
+        elif a[i] > 0:
+            if r > 0:
+                ans += r
+                r = 0
+            else:
+                ans += a[i]
+        else:
+            ans += l + r
+            l = r = 0
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, l, r = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] < 0:
+            if l + r < 0:
+                ans += l + r
+                l = 0
+                r = 0
+            else:
+                ans += a[i]
+        elif l + r < a[i]:
+            ans += l + r
+            l = 0
+            r = 0
+        else:
+            ans += a[i]
+            if l > r:
+                l -= a[i]
+            else:
+                r -= a[i]
+    print(ans)

@@ -1,38 +1,232 @@
-#问题陈述
-#在下图中，编号为a和b的两点是否由一条线段直接连接？
-#
-#限制条件
-#1 ≦ a < b ≦ 10
-#a和b是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#a b
-#
-#輸出
-#如果编号为a和b的点被一条线段直接连接，则打印Yes；否则，打印No。
-#判断是区分大小写的：请确保正确打印大写和小写字母。
-#
-#输入样本 1
-#4 5
-#
-#输出样本1
-#Yes
-#在问题陈述中的图中，编号为4和5的点是由一条线段直接连接的。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#3 5
-#
-#样本输出2
-#No
-#在问题陈述中的图中，编号为3和5的点没有被线段直接连接。
-#因此，应该打印No。
-#
-#输入样本 3
-#1 10
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    if b-a == 1 or b-a == -1 or b-a == 9:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int,input().split())
+    if a<b and a>=1 and b<=10:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    if 1 <= a and a <= 10 and 1 <= b and b <= 10:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if a == 1 or a == 3 or a == 5 or a == 7 or a == 8 or a == 10:
+        if b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10:
+            print("Yes")
+        else:
+            print("No")
+    elif a == 4 or a == 6 or a == 9:
+        if b == 4 or b == 6 or b == 9:
+            print("Yes")
+        else:
+            print("No")
+    elif a == 2:
+        if b == 2:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def judge(a,b):
+    if a>b:
+        a,b=b,a
+    if a==1 and b==2:
+        print("Yes")
+    elif a==2 and b==4:
+        print("Yes")
+    elif a==3 and b==4:
+        print("Yes")
+    elif a==3 and b==5:
+        print("Yes")
+    elif a==4 and b==5:
+        print("Yes")
+    elif a==5 and b==6:
+        print("Yes")
+    elif a==6 and b==7:
+        print("Yes")
+    elif a==6 and b==8:
+        print("Yes")
+    elif a==7 and b==8:
+        print("Yes")
+    elif a==7 and b==9:
+        print("Yes")
+    elif a==8 and b==9:
+        print("Yes")
+    elif a==8 and b==10:
+        print("Yes")
+    elif a==9 and b==10:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a+1 == b:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def isConnect(a,b):
+    if a == 1 and b == 10:
+        return True
+    elif a == 2 and b == 9:
+        return True
+    elif a == 3 and b == 8:
+        return True
+    elif a == 4 and b == 7:
+        return True
+    elif a == 5 and b == 6:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def problems240_a(a,b):
+    if a < b:
+        print('Yes')
+    else:
+        print('No')
+
+problems240_a(4,5)
+problems240_a(3,5)
+problems240_a(1,10)
+
+=======
+Suggestion 9
+
+def isConnect(a,b):
+    if a == 1 and b == 3:
+        return True
+    if a == 1 and b == 4:
+        return True
+    if a == 1 and b == 5:
+        return True
+    if a == 1 and b == 6:
+        return True
+    if a == 2 and b == 3:
+        return True
+    if a == 2 and b == 4:
+        return True
+    if a == 2 and b == 5:
+        return True
+    if a == 2 and b == 6:
+        return True
+    if a == 3 and b == 5:
+        return True
+    if a == 3 and b == 6:
+        return True
+    if a == 4 and b == 5:
+        return True
+    if a == 4 and b == 6:
+        return True
+    if a == 5 and b == 6:
+        return True
+    return False
+
+=======
+Suggestion 10
+
+def judge(a,b):
+    if a==1 and b==2:
+        print('Yes')
+    elif a==1 and b==3:
+        print('Yes')
+    elif a==1 and b==4:
+        print('Yes')
+    elif a==1 and b==5:
+        print('No')
+    elif a==1 and b==6:
+        print('No')
+    elif a==1 and b==7:
+        print('Yes')
+    elif a==1 and b==8:
+        print('No')
+    elif a==1 and b==9:
+        print('Yes')
+    elif a==1 and b==10:
+        print('Yes')
+    elif a==2 and b==3:
+        print('No')
+    elif a==2 and b==4:
+        print('No')
+    elif a==2 and b==5:
+        print('No')
+    elif a==2 and b==6:
+        print('No')
+    elif a==2 and b==7:
+        print('Yes')
+    elif a==2 and b==8:
+        print('No')
+    elif a==2 and b==9:
+        print('Yes')
+    elif a==2 and b==10:
+        print('Yes')
+    elif a==3 and b==4:
+        print('No')
+    elif a==3 and b==5:
+        print('No')
+    elif a==3 and b==6:
+        print('No')
+    elif a==3 and b==7:
+        print('Yes')
+    elif a==3 and b==8:
+        print('No')
+    elif a==3 and b==9:
+        print('Yes')
+    elif a==3 and b==10:
+        print('Yes')
+    elif a==4 and b==5:
+        print('Yes')
+    elif a==4 and b==6:
+        print('Yes')
+    elif a==4 and b==7:
+        print('Yes')
+    elif a==4 and b==8:
+        print('Yes')
+    elif a==4 and b==9:
+        print('Yes')
+    elif a==4 and b==10:
+        print('Yes')
+    elif a==5 and b==6:
+        print('Yes')
+    elif a==5 and b==7:
+        print('No')
+    elif a==5 and b==8:
+        print('No')

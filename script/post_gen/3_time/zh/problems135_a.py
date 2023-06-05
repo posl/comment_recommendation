@@ -1,39 +1,93 @@
-#问题陈述
-#我们有两个不同的整数A和B。
-#打印整数K，使得|A-K|=|B-K|。
-#如果不存在这样的整数，则打印出IMPOSSIBLE。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ a, b ≦ 10^9
-#A和B是不同的。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#打印满足条件的整数K。
-#如果这样的整数不存在，则打印出IMPOSIBLE。
-#
-#输入样本 1
-#2 16
-#
-#输出示例 1
-#9
-#|2-9|=7，16-9|=7，所以9满足条件。
-#
-#样本输入2
-#0 3
-#
-#输出样本 2
-#IMPOSIBLE
-#没有整数能满足条件。
-#
-#输入样本3
-#998244353 99824435
-#
-#样本输出3
-#549034394
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = input().split()
+    a = int(a)
+    b = int(b)
+    if a == b:
+        print("IMPOSIBLE")
+    else:
+        print(int((a+b)/2))
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 != 0:
+        print("IMPOSSIBLE")
+    else:
+        print((a + b) // 2)
+
+=======
+Suggestion 3
+
+def solve(a,b):
+    if a == b:
+        return a
+    elif a > b:
+        if (a - b) % 2 == 0:
+            return (a - b) // 2
+        else:
+            return "IMPOSSIBLE"
+    else:
+        if (b - a) % 2 == 0:
+            return (b - a) // 2
+        else:
+            return "IMPOSSIBLE"
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    if (a+b)%2 == 0:
+        print(int((a+b)/2))
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+
+    # 处理
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 6
+
+def problems135_a():
+    a,b=map(int,input().split())
+    if (a+b)%2==0:
+        print((a+b)//2)
+    else:
+        print('IMPOSIBLE')
+
+=======
+Suggestion 7
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print(int((a + b) / 2))
+    else:
+        print('IMPOSSIBLE')

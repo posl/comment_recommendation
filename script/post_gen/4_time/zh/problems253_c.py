@@ -1,68 +1,231 @@
-#问题陈述
-#我们有一个整数多集S，最初是空的。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下类型之一。
-#1 x:在S中插入一个x。
-#2 x c：从S中删除一个x m次，其中m = min(c,( S中包含的x的数量))。
-#3 : 打印（S的最大值）-（S的最小值）。  当这个查询被给出时，保证S不是空的。
-#
-#
-#约束条件
-#1 ≦ Q ≦ 2× 10^5
-#0 ≦ x ≦ 10^9
-#1 ≦ c ≦ Q
-#当给定一个类型3的查询时，S不是空的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#.
-#.
-#.
-#query_Q
-#query_i，表示第i个查询，是以下格式之一：
-#1 x
-#2 x c
-#3
-#
-#输出
-#按给定的顺序打印3类查询的答案，用换行符分隔。
-#
-#输入样本1
-#8
-#1 3
-#1 2
-#3
-#1 2
-#1 7
-#3
-#2 2 3
-#3
-#
-#样本输出1
-#1
-#5
-#4
-#多集S的转换过程如下。
-#第1次查询：在S中插入3，现在S是{3 }。
-#第2次查询：在S中插入2，现在S是{2, 3 }。
-#第3次查询：S = { 2, 3}的最大值是3，最小值是2，所以打印3-2=1。
-#第4次查询：在S中插入2，现在S是{2，2，3 }。
-#第5次查询：在S中插入7，现在S是{2，2，3，7}。
-#第6次查询：S={2,2,3,7}的最大值为7，最小值为2，所以打印7-2=5。
-#第7次查询：由于S中有两个2，并且[min(2,3)]=2，所以从S中删除2两次。  现在S是{3，7}。
-#第8次查询：S={3，7}的最大值是7，最小值是3，所以打印7-3=4。
-#
-#输入样本 2
-#4
-#1 10000
-#1 1000
-#2 100 3
-#1 10
-#
-#输出样本2
-#如果给定的查询不包含类型3的查询，就不应该打印任何东西。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def min(a,b):
+    if a > b:
+        return b
+    else:
+        return a
+
+=======
+Suggestion 2
+
+def main():
+    Q = int(input())
+    S = []
+    for i in range(0,Q):
+        query = input().split()
+        if query[0] == '1':
+            S.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            c = int(query[2])
+            for j in range(0,c):
+                if x in S:
+                    S.remove(x)
+                else:
+                    break
+        else:
+            print(max(S)-min(S))
+
+=======
+Suggestion 3
+
+def main():
+    q = int(input())
+    s = []
+    for _ in range(q):
+        query = input().split()
+        if query[0] == "1":
+            s.append(int(query[1]))
+        elif query[0] == "2":
+            x = int(query[1])
+            c = int(query[2])
+            for _ in range(min(c, s.count(x))):
+                s.remove(x)
+        else:
+            print(max(s)-min(s))
+
+=======
+Suggestion 4
+
+def main():
+    Q = int(input())
+    S = []
+    for i in range(Q):
+        query = input().split()
+        if query[0] == '1':
+            S.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            c = int(query[2])
+            if x in S:
+                count = 0
+                for j in range(len(S)):
+                    if S[j] == x:
+                        S.pop(j)
+                        count += 1
+                        if count == c:
+                            break
+        elif query[0] == '3':
+            print(max(S) - min(S))
+
+=======
+Suggestion 5
+
+def problem253_c():
+    import sys
+    from collections import defaultdict
+    from heapq import heappush, heappop
+    from heapq import heapify
+
+    def solve():
+        Q = int(sys.stdin.readline())
+        S = defaultdict(int)
+        min_heap = []
+        max_heap = []
+        for _ in range(Q):
+            query = sys.stdin.readline().split()
+            if query[0] == "1":
+                x = int(query[1])
+                S[x] += 1
+                heappush(min_heap, x)
+                heappush(max_heap, -x)
+            elif query[0] == "2":
+                x = int(query[1])
+                c = int(query[2])
+                while c > 0 and S[x] > 0:
+                    S[x] -= 1
+                    c -= 1
+                if S[x] == 0:
+                    while min_heap and S[min_heap[0]] == 0:
+                        heappop(min_heap)
+                    while max_heap and S[-max_heap[0]] == 0:
+                        heappop(max_heap)
+            else:
+                while min_heap and S[min_heap[0]] == 0:
+                    heappop(min_heap)
+                while max_heap and S[-max_heap[0]] == 0:
+                    heappop(max_heap)
+                print(-max_heap[0] - min_heap[0])
+
+    solve()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    q_list = []
+    for i in range(n):
+        q_list.append(list(map(int, input().split())))
+    s = []
+    for i in range(n):
+        if q_list[i][0] == 1:
+            s.append(q_list[i][1])
+        elif q_list[i][0] == 2:
+            for j in range(q_list[i][2]):
+                if q_list[i][1] in s:
+                    s.remove(q_list[i][1])
+        else:
+            s.sort()
+            print(s[-1]-s[0])
+
+=======
+Suggestion 7
+
+def main():
+    q = int(input())
+    L = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            L.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            c = int(query[2])
+            for i in range(c):
+                if x in L:
+                    L.remove(x)
+                else:
+                    break
+        elif query[0] == '3':
+            print(max(L) - min(L))
+
+=======
+Suggestion 8
+
+def main():
+    from collections import defaultdict
+    from heapq import heappush, heappop
+    from sys import stdin
+    input = stdin.readline
+
+    class Heap:
+        def __init__(self):
+            self.__heap = []
+            self.__counter = defaultdict(int)
+
+        def push(self, x):
+            heappush(self.__heap, x)
+            self.__counter[x] += 1
+
+        def pop(self):
+            while self.__heap:
+                x = heappop(self.__heap)
+                if self.__counter[x] > 0:
+                    self.__counter[x] -= 1
+                    return x
+            return None
+
+        def __len__(self):
+            return len(self.__heap)
+
+    q = int(input())
+    h = Heap()
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            h.push(query[1])
+        elif query[0] == 2:
+            for _ in range(min(query[2], h.__counter[query[1]])):
+                h.pop()
+        else:
+            print(h.pop() - h.pop())
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    for i in range(n):
+        a = input().split()
+        if a[0] == "1":
+            print("insert")
+        elif a[0] == "2":
+            print("delete")
+        else:
+            print("print")
+
+=======
+Suggestion 10
+
+def main():
+    # 读取标准输入
+    # 读取第一行的n
+    q = int(input())
+    # 读取每一行
+    for i in range(q):
+        # 读取每一行
+        line = input().split()
+        # 读取每一行
+        if line[0] == "1":
+            num = int(line[1])
+            print(num)
+        elif line[0] == "2":
+            num = int(line[1])
+            print(num)
+        elif line[0] == "3":
+            print(1)

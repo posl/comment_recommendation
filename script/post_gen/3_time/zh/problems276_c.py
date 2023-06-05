@@ -1,49 +1,132 @@
-#问题陈述
-#给你一个(1, ..., N)的排列组合P=(P_1, ..., P_N)，其中(P_1, ..., P_N)≠(1, ..., N)。
-#假设P是(1 ..., N)的所有排列组合中第K个最小的排列组合。找到第(K-1)个最小的排列组合。
-# 什么是互换？
-#(1, ..., N)的互换是将(1, ..., N)排列成一个序列。
-# 什么是排列顺序？
-#对于长度为N的序列，A = (A_1, ..., A_N) 和B = (B_1, ..., B_N)，当且仅当有一个整数1 ≦ i ≦ N，满足以下两个条件时，就说A严格小于B的lexicographically。
-#(A_{1},...,A_{i-1}) = (B_1,...,B_{i-1}) 。
-#A_i < B_i。
-#
-#
-#约束条件
-#2 ≦ N ≦ 100
-#1 ≦ P_i ≦ N (1 ≦ i ≦ N)
-#P_i ≠ P_j (i ≠ j)
-#(p_1, ..., p_n) ≠ (1, ..., n)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N
-#P_1 ...P_N
-#
-#输出
-#让Q = (Q_1, ..., Q_N) 是所寻求的排列组合。将Q_1, ..., Q_N按这个顺序打印在一行中，用空格分隔。
-#
-#输入样本 1
-#3
-#3 1 2
-#
-#样本输出 1
-#2 3 1
-#下面是(1, 2, 3)的排列组合，按升序排列。
-#(1, 2, 3)
-#(1, 3, 2)
-#(2, 1, 3)
-#(2, 3, 1)
-#(3, 1, 2)
-#(3, 2, 1)
-#因此，P=（3，1，2）是第五小的，所以寻求的排列组合是（2，3，1），这是第四小的（5-1=4）。
-#
-#输入样本2
-#10
-#9 8 6 5 10 3 1 2 4 7
-#
-#样本输出2
-#9 8 6 5 10 2 7 4 3 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def exchange(perm):
+    for i in range(len(perm)):
+        if perm[i] > perm[i+1]:
+            return i
+    return -1
+
+=======
+Suggestion 2
+
+def get_next_permutation(a):
+    n = len(a)
+    i = n - 1
+    while a[i - 1] >= a[i]:
+        i -= 1
+    j = n - 1
+    while j >= i and a[j] <= a[i - 1]:
+        j -= 1
+    a[i - 1], a[j] = a[j], a[i - 1]
+    a[i:] = a[n - 1: i - 1: -1]
+    return a
+
+n = int(input())
+p = list(map(int, input().split()))
+q = get_next_permutation(p)
+print(*q)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int,input().split()))
+    k = 1
+    for i in range(n):
+        for j in range(i+1,n):
+            if p[i]>p[j]:
+                k += 1
+    q = [0]*n
+    q[0] = k
+    for i in range(1,n):
+        k = 1
+        for j in range(i+1,n):
+            if p[i-1]>p[j]:
+                k += 1
+        q[i] = k
+    print(" ".join(map(str,q)))
+
+=======
+Suggestion 4
+
+def problems276_c():
+    pass
+
+=======
+Suggestion 5
+
+def swap(arr, i, j):
+    arr[i], arr[j] = arr[j], arr[i]
+
+=======
+Suggestion 6
+
+def get_next_permutation(arr):
+    n = len(arr)
+    for i in range(n - 2, -1, -1):
+        if arr[i] < arr[i + 1]:
+            break
+    else:
+        return arr[::-1]
+
+    for j in range(n - 1, i, -1):
+        if arr[j] > arr[i]:
+            break
+
+    arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1:] = arr[i + 1:][::-1]
+
+    return arr
+
+n = int(input())
+p = list(map(int, input().split()))
+
+p = get_next_permutation(p)
+print(*p)
+
+=======
+Suggestion 7
+
+def find_min_index(nums):
+    min_index = 0
+    min_num = nums[0]
+    for i in range(1,len(nums)):
+        if nums[i] < min_num:
+            min_num = nums[i]
+            min_index = i
+    return min_index
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    q = [0] * n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(' '.join([str(i) for i in q]))
+
+=======
+Suggestion 9
+
+def get_input():
+    n = int(input())
+    p = list(map(int, input().split()))
+    return n, p
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i]-1] = i+1
+    print(*Q)

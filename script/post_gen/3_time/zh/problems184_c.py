@@ -1,53 +1,208 @@
-#问题陈述
-#有一个无限的二维网格，我们在(r_1, c_1)方格有一个叫超级龙马的棋子。(龙的意思是龙，马的意思是马）。
-#在一步棋中，该棋子可以走到如下所示的一个方格中：
-#更正式地说，当超级龙马在(a, b)方格时，它可以走到(c, d)方格，这样至少有一个下列条件成立：
-#a + b = c + d
-#a - b = c - d
-#|a - c| + |b - d| ≦ 3
-#求该棋子从(r_1, c_1)到达(r_2, c_2)所需的最少步数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ r_1, c_1, r_2, c_2 ≦ 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#r_1 c_1
-#r_2 c_2
-#
-#输出
-#打印超级龙马从(r_1, c_1)到达(r_2, c_2)所需的最少动作数。
-#
-#输入样本 1
-#1 1
-#5 6
-#
-#样本输出1
-#2
-#我们需要两步棋--例如，（1，1）->（5，5）->（5，6）。
-#
-#输入样本 2
-#1 1
-#1 200001
-#
-#样本输出2
-#2
-#我们需要两个动作--例如，（1，1）->（100001，100001）->（1，200001）。
-#
-#输入样本 3
-#2 3
-#998244353 998244853
-#
-#样本输出 3
-#3
-#我们需要三步棋--例如，（2，3）->（3，3）->（-247，253）->（998244353，998244853）。
-#
-#输入样本 4
-#1 1
-#1 1
-#
-#样本输出4
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    elif abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    elif (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    else:
+        for i in range(-3, 4):
+            for j in range(-3, 4):
+                if abs(i) + abs(j) != 3:
+                    continue
+                if r1 + i + c1 + j == r2 + c2:
+                    print(2)
+                    return
+        print(3)
+        return
+
+=======
+Suggestion 3
+
+def solution():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 6:
+        print(2)
+        return
+    if abs(r1 + c1 - r2 - c2) <= 3 or abs(r1 - c1 - r2 + c2) <= 3:
+        print(2)
+        return
+    print(3)
+    return
+
+=======
+Suggestion 4
+
+def main():
+    return
+
+=======
+Suggestion 5
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            r3 = r1 + i
+            c3 = c1 + j
+            if abs(r3 - r2) + abs(c3 - c2) <= 3:
+                print(2)
+                return
+    print(3)
+    return
+
+=======
+Suggestion 6
+
+def main():
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+
+    if r1 == r2 and c1 == c2:
+        print(0)
+        return
+
+    if abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+
+    if r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2:
+        print(1)
+        return
+
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+
+    if abs(r1 - r2) + abs(c1 - c2) <= 6:
+        print(2)
+        return
+
+    if abs((r1 + c1) - (r2 + c2)) <= 3 or abs((r1 - c1) - (r2 - c2)) <= 3:
+        print(2)
+        return
+
+    print(3)
+    return
+
+=======
+Suggestion 7
+
+def solve():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if r1==r2 and c1==c2:
+        print(0)
+        return
+    if r1+c1==r2+c2 or r1-c1==r2-c2 or abs(r1-r2)+abs(c1-c2)<=3:
+        print(1)
+        return
+    if (r1+c1)%2==(r2+c2)%2:
+        print(2)
+        return
+    for i in range(-3,4):
+        for j in range(-3,4):
+            if abs(i)+abs(j)>3:
+                continue
+            if (r1+i+c1+j)%2==(r2+c2)%2:
+                print(2)
+                return
+    print(3)
+    return
+
+=======
+Suggestion 8
+
+def main():
+    print('')
+
+=======
+Suggestion 9
+
+def solution():
+    r1,c1 = map(int,input().split())
+    r2,c2 = map(int,input().split())
+    if r1==r2 and c1==c2:
+        print(0)
+        return
+    if (r1+c1)%2 == (r2+c2)%2:
+        if abs(r1-r2) + abs(c1-c2) <= 3:
+            print(1)
+            return
+        else:
+            print(2)
+            return
+    else:
+        if abs(r1-r2) + abs(c1-c2) <= 3:
+            print(2)
+            return
+        else:
+            print(3)
+            return
+
+=======
+Suggestion 10
+
+def main():
+    # input
+    r1, c1 = map(int, input().split())
+    r2, c2 = map(int, input().split())
+
+    # calc
+    if (r1, c1) == (r2, c2):
+        print(0)
+        return
+
+    if (r1 + c1) == (r2 + c2) or (r1 - c1) == (r2 - c2) or abs(r1 - r2) + abs(c1 - c2) <= 3:
+        print(1)
+        return
+
+    if (r1 + c1) % 2 == (r2 + c2) % 2:
+        print(2)
+        return
+
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            if abs(i) + abs(j) <= 3:
+                if (r1 + i + c1 + j) % 2 == (r2 + c2) % 2:
+                    print(2)
+                    return
+
+    print(3)
+    return

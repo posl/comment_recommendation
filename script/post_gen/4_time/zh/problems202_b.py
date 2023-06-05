@@ -1,38 +1,139 @@
-#问题陈述
-#给你一个由0、1、6、8、9组成的字符串S。
-#将S旋转180度并打印结果。换句话说，对S进行以下操作并打印出结果的字符串：
-#反转S。
-#用0代替每个0，用1代替每个1，用9代替每个6，用8代替每个8，用6代替每个9。
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S由0, 1, 6, 8, 和9组成。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印S旋转180度的结果。
-#
-#输入样本1
-#0601889
-#
-#样本输出1
-#6881090
-#将0601889旋转180度的结果是6881090。
-#
-#样本输入2
-#86910
-#
-#样本输出2
-#01698
-#
-#样品输入3
-#01010
-#
-#样品输出3
-#01010
-#S可以保持不变。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate(s):
+    return s[::-1]
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0', 'a')
+    S = S.replace('1', 'b')
+    S = S.replace('6', '1')
+    S = S.replace('8', '2')
+    S = S.replace('9', '6')
+    S = S.replace('a', '0')
+    S = S.replace('b', '1')
+    print(S)
+
+=======
+Suggestion 3
+
+def main():
+    # 输入
+    S = input()
+    # 反转
+    S = S[::-1]
+    # 替换
+    S = S.replace('6', 't')
+    S = S.replace('9', '6')
+    S = S.replace('t', '9')
+    S = S.replace('0', 't')
+    S = S.replace('1', '0')
+    S = S.replace('t', '1')
+    # 输出
+    print(S)
+
+=======
+Suggestion 4
+
+def reverse_str(s):
+    return s[::-1]
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('6','a')
+    S = S.replace('9','6')
+    S = S.replace('a','9')
+    S = S.replace('1','a')
+    S = S.replace('0','1')
+    S = S.replace('a','0')
+    print(S)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    s = s[::-1]
+    s = s.replace('6', 't')
+    s = s.replace('9', '6')
+    s = s.replace('t', '9')
+    s = s.replace('1', 't')
+    s = s.replace('0', '1')
+    s = s.replace('t', '0')
+    print(s)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace("6","a")
+    S = S.replace("9","6")
+    S = S.replace("a","9")
+    S = S.replace("0","a")
+    S = S.replace("1","b")
+    S = S.replace("a","1")
+    S = S.replace("b","0")
+    print(S)
+
+=======
+Suggestion 8
+
+def rotate_180(S):
+    S = S[::-1]
+    S = S.replace('0', 'x')
+    S = S.replace('1', '0')
+    S = S.replace('x', '1')
+    S = S.replace('6', 'x')
+    S = S.replace('9', '6')
+    S = S.replace('x', '9')
+    return S
+
+print(rotate_180('0601889'))
+print(rotate_180('86910'))
+print(rotate_180('01010'))
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('6','a')
+    S = S.replace('9','6')
+    S = S.replace('a','9')
+    S = S.replace('0','a')
+    S = S.replace('1','b')
+    S = S.replace('a','1')
+    S = S.replace('b','0')
+    print(S)
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    S = S[::-1]
+    S = S.replace('0','a')
+    S = S.replace('1','b')
+    S = S.replace('6','1')
+    S = S.replace('8','2')
+    S = S.replace('9','6')
+    S = S.replace('a','0')
+    S = S.replace('b','1')
+    print(S)
+main()

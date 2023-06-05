@@ -1,49 +1,146 @@
-#问题陈述
-#一家商店里有N种商品。对于每个i=1，2，...，N，第i种商品的价格是A_i日元（日本的货币）。
-#高桥有K张优惠券。
-#每张优惠券可用于一件商品。你可以在同一件商品上使用任何数量的优惠券，可能是零。在一件价格为a日元的商品上使用k张优惠券，可以用最大{a-kX，0}日元的价格购买。
-#打印出高桥购买所有物品所需的最低金额。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ k, x ≦ 10^9
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K X
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4 7
-#8 3 10 5 13
-#
-#样本输出1
-#12
-#通过在第1件商品上使用1张优惠券，在第3件商品上使用1张优惠券，在第5件商品上使用2张优惠券，高桥可以：
-#以最大{A_1-X, 0 } = 1日元的价格购买第1件商品、
-#以最大{A_2, 0 }=3日元的价格购买第2件商品、
-#购买第3件物品，最大价格{A_3-X, 0 } = 3日元、
-#买入第4件商品，最大{A_4, 0 } = 5日元、
-#以最大{A_5-2X, 0 }=0日元的价格购买第5件物品、
-#总共1+3+3+5+0=12日元，这是最小的可能。
-#
-#输入样本 2
-#5 100 7
-#8 3 10 5 13
-#
-#样本输出2
-#0
-#
-#样本输入3
-#20 815 60
-#2066 3193 2325 4030 3725 1669 1969 763 1653 159 5311 5341 4671 2374 4513 285 810 742 2981 202
-#
-#样本输出3
-#112
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, k, x, a):
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if k > 0:
+            ans += max(a[i] - x, 0)
+            k -= 1
+        else:
+            ans += a[i]
+    return ans
+
+=======
+Suggestion 2
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    print(A)
+    total = 0
+    for i in range(N):
+        if (K > 0):
+            total += max(A[i] - X, 0)
+            K -= 1
+        else:
+            total += A[i]
+    print(total)
+
+=======
+Suggestion 3
+
+def main():
+    n,k,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    sum = 0
+    for i in range(n):
+        if k > 0:
+            sum += max(a[i] - x,0)
+            k -= 1
+        else:
+            sum += a[i]
+    print(sum)
+
+=======
+Suggestion 4
+
+def solve(N, K, X, A):
+    ans = 0
+    for i in range(N):
+        if A[i] > X:
+            ans += A[i] - X
+    return ans
+
+=======
+Suggestion 5
+
+def get_input():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    return n, k, x, a
+
+=======
+Suggestion 6
+
+def main():
+    n, k, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    sum = 0
+    for i in range(n):
+        if k > 0:
+            if a[i] < x:
+                sum += a[i]
+                k -= 1
+            else:
+                sum += x
+        else:
+            sum += a[i]
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    n,k,x = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    #print(n,k,x)
+    #print(a)
+    sum = 0
+    for i in range(n):
+        if k>0:
+            sum += max(a[i]-x,0)
+            k -= 1
+        else:
+            sum += a[i]
+    print(sum)
+
+=======
+Suggestion 8
+
+def problem246_c():
+    n,k,x = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    for i in range(n):
+        if x <= 0:
+            break
+        if a[i] < x:
+            a[i] = 0
+            x -= 1
+    print(sum(a))
+
+problem246_c()
+
+=======
+Suggestion 9
+
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    total = 0
+    for i in range(N):
+        if K > 0:
+            total += max(A[i] - X, 0)
+            K -= 1
+        else:
+            total += A[i]
+    print(total)
+
+=======
+Suggestion 10
+
+def cal(a, x):
+    if a < x:
+        return 0
+    else:
+        return a - x

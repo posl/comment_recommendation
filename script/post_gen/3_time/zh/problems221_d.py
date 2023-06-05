@@ -1,47 +1,289 @@
-#问题陈述
-#有一个网络游戏，有N个注册玩家。
-#今天是游戏推出后的第10^{100}天，开发者Takahashi检查了用户的登录历史。结果发现，第i个玩家从第A_i天开始连续登录了B_i天，其中第1天是上线日，而其他几天都没有登录过。
-#换句话说，第i个玩家在A_i, A_i+1, ..., A_i+B_i-1日登录，而且只在这些日子登录。
-#对于每个整数k，如1≦k≦N，找出正好有k个玩家登录的天数。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#:
-#A_N B_N
-#
-#输出
-#打印N个中间有空格的整数，如下所示：
-#D_1 D_2 ...D_N
-#这里，D_i表示正好有k个玩家登录的天数。
-#
-#输入样本 1
-#3
-#1 2
-#2 3
-#3 1
-#
-#样本输出 1
-#2 2 0
-#第一个玩家在第1、2天登录，第二个玩家在第2、3、4天登录，而第三个玩家只在第3天登录。
-#因此，我们可以看到，第1、4天有1名玩家登录，第2、3天有2名玩家登录，而其他几天没有玩家登录。
-#答案是：有2天正好有1名玩家登录，2天正好有2名玩家登录，而0天正好有3名玩家登录。
-#
-#输入样本2
-#2
-#1000000000 1000000000
-#1000000000 1000000000
-#
-#样本输出2
-#0 1000000000
-#可能有两个或更多的玩家在同一时期内登录。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def read_ints():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    # print(a)
+    # print(b)
+    # print(max(a))
+    # print(min(a))
+    # print(max(b))
+    # print(min(b))
+    # print(range(1, 11))
+    # print(range(2, 12))
+    # print(range(3, 13))
+    # print(range(4, 14))
+    # print(range(5, 15))
+    # print(range(6, 16))
+    # print(range(7, 17))
+    # print(range(8, 18))
+    # print(range(9, 19))
+    # print(range(10, 20))
+    # print(range(11, 21))
+    # print(range(12, 22))
+    # print(range(13, 23))
+    # print(range(14, 24))
+    # print(range(15, 25))
+    # print(range(16, 26))
+    # print(range(17, 27))
+    # print(range(18, 28))
+    # print(range(19, 29))
+    # print(range(20, 30))
+    # print(range(21, 31))
+    # print(range(22, 32))
+    # print(range(23, 33))
+    # print(range(24, 34))
+    # print(range(25, 35))
+    # print(range(26, 36))
+    # print(range(27, 37))
+    # print(range(28, 38))
+    # print(range(29, 39))
+    # print(range(30, 40))
+    # print(range(31, 41))
+    # print(range(32, 42))
+    # print(range(33, 43))
+    # print(range(34, 44))
+    # print(range(35, 45))
+    # print(range(36, 46))
+    # print(range(37, 47))
+    # print(range(38, 48))
+    # print(range(39, 49))
+    # print(range(40, 50))
+    # print(range(41, 51))
+    # print(range(42,
+
+=======
+Suggestion 3
+
+def check_login_days(n, login_days):
+    login_days.sort()
+    days = [0] * n
+    for i in range(n):
+        for j in range(i, n):
+            if login_days[i] <= login_days[j] < login_days[i] + n:
+                days[j - i] += 1
+            else:
+                break
+    return days
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+    #print(A)
+    #print(B)
+    #print(len(A))
+    #print(len(B))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    #print(len(A[1:]))
+    #print(len(B[:-1]))
+    #print(A[1:])
+    #print(B[:-1])
+    #print(len(A[1:]) == len(B[:-1]))
+    C = [0]*N
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A[i] <= A[j] and A[j] < A[i]+B[i]:
+                    C[i] += 1
+    print(C)
+    for i in range(N):
+        print(C[i],
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    d = [0] * (10**9 + 1)
+    for _ in range(n):
+        a, b = map(int, input().split())
+        d[a] += 1
+        d[a+b] -= 1
+    for i in range(10**9):
+        d[i+1] += d[i]
+    print(*d[1:])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    login = [0] * (10**9 + 2)
+    for i in range(N):
+        A, B = map(int, input().split())
+        login[A] += 1
+        login[A + B] -= 1
+    for i in range(10**9 + 1):
+        login[i + 1] += login[i]
+    for i in range(1, N + 1):
+        ans = 0
+        for j in range(10**9 + 1):
+            if login[j] == i:
+                ans += 1
+        print(ans)
+
+=======
+Suggestion 7
+
+def solve(n,ab):
+    ab.sort(key=lambda x:x[0])
+    ans = [0]*n
+    for i in range(n):
+        a,b = ab[i]
+        ans[b-1] += 1
+    for i in range(n-2,-1,-1):
+        ans[i] += ans[i+1]
+    return ans
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    N = int(input())
+    AB = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        AB.append((A, B))
+
+    # 计算答案
+    D = [0] * (N + 1)
+    for i in range(N):
+        A, B = AB[i]
+        D[A] += 1
+        D[A + B] -= 1
+
+    for i in range(N):
+        D[i + 1] += D[i]
+
+    # 输出答案
+    print(*D[1:])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    #print(N)
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    dict = {}
+    for i in range(N):
+        for j in range(B[i]):
+            if A[i]+j in dict:
+                dict[A[i]+j] += 1
+            else:
+                dict[A[i]+j] = 1
+    #print(dict)
+    for i in range(N):
+        if i == N-1:
+            print(dict[i+1])
+        else:
+            print(dict[i+1], end=" ")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A, B)
+
+    # D = [0] * N
+    # for i in range(N):
+    #     for j in range(A[i], A[i]+B[i]):
+    #         D[j-1] += 1
+    # print(D)
+
+    # D = [0] * (10**9 + 1)
+    # for i in range(N):
+    #     for j in range(A[i], A[i]+B[i]):
+    #         D[j] += 1
+    # print(D)
+
+    # D = [0] * (10**9 + 1)
+    # for i in range(N):
+    #     D[A[i]] += 1
+    #     D[A[i]+B[i]] -= 1
+    # print(D)
+
+    # D = [0] * (10**9 + 1)
+    # for i in range(N):
+    #     D[A[i]] += 1
+    #     D[A[i]+B[i]] -= 1
+    # for i in range(1, 10**9+1):
+    #     D[i] += D[i-1]
+    # print(D)
+
+    D = [0] * (10**9 + 1)
+    for i in range(N):
+        D[A[i]] += 1
+        D[A[i]+B[i]] -= 1
+    for i in range(1, 10**9+1):
+        D[i] += D[i-1]
+    print(*D[1:])

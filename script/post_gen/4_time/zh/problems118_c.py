@@ -1,45 +1,131 @@
-#问题陈述
-#有N个怪兽，编号为1，2，...，N。
-#最初，怪物i的健康状况为A_i。
-#下面，一个健康状况至少为1的怪物被称为活着。
-#直到只有一个活着的怪物，下面的过程会重复进行：
-#一个随机的活着的怪物攻击另一个随机的活着的怪物。
-#结果，被攻击的怪物的健康状况会减少，减少的量等于攻击的怪物的当前健康状况。
-#找到最后一个活着的怪物的最小可能的最终健康状况。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印最后活着的怪物的最小可能的最终健康状况。
-#
-#输入样本1
-#4
-#2 10 8 40
-#
-#样本输出1
-#2
-#当只有第一个怪物继续攻击时，最后一个怪物的最终健康状况将是2，这是最小值。
-#
-#输入样本2
-#4
-#5 13 8 1000000000
-#
-#样本输出2
-#1
-#
-#样本输入3
-#3
-#1000000000 1000000000 1000000000
-#
-#样本输出3
-#1000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = list(map(int, input().split()))
+g = A[0]
+for i in range(1, N):
+    g = gcd(g, A[i])
+print(g)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n):
+        a[i] = a[i] % a[0]
+    if a[0] == 1:
+        print(1)
+    else:
+        print(a[0])
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+=======
+Suggestion 4
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+n = int(input())
+a = list(map(int, input().split()))
+g = a[0]
+for i in range(1, n):
+    g = gcd(g, a[i])
+print(g)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 最后活着的怪物的最小可能的最终健康状况
+    # 一开始的思路是，每次攻击，攻击者的健康值都会减少，那么最后一定是健康值最小的怪物幸存
+    # 但是这个思路是错误的
+    # 例如：1 2 3 4 5，那么最后一定是1幸存，但是如果是1 1 1 1 1，那么最后一定是1幸存
+    # 所以健康值最小的怪物不一定是最后幸存的怪物
+
+    # 正确的思路是，每次攻击，被攻击的怪物的健康值都会减少，那么最后一定是健康值最小的怪物幸存
+    # 例如：1 2 3 4 5，那么最后一定是1幸存，但是如果是1 1 1 1 1，那么最后一定是1幸存
+    # 所以健康值最小的怪物一定是最后幸存的怪物
+
+    # 但是，这样的话，最后一定是1幸存，那么就没有必要进行N-1次攻击了
+    # 所以，一开始的思路是正确的，只是需要修改一下
+    # 那么，最后一定是健康值最小的怪物幸存，但是这个怪物不一定是最后幸存的怪物
+    # 例如：1 2 3 4 5，那么最后一定是1幸存，但是如果是1 1 1 1 1，那么最后一
+
+=======
+Suggestion 7
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N = int(input())
+A = list(map(int, input().split()))
+A.sort()
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    r = a % b
+    if r == 0:
+        return b
+    else:
+        return gcd(b, r)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 10
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        c = a % b
+        a = b
+        b = c
+    return a

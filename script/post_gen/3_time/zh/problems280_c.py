@@ -1,43 +1,93 @@
-#问题陈述
-#S由小写英文字母组成，T是通过在S中插入一个小写英文字母得到的。
-#找到插入的字符在T中的位置。
-#如果有多个候选人，请找出其中任何一个。
-#
-#约束条件
-#1 ≦ |S| ≦ 5× 10^5
-#S由小写英文字母组成。
-#在S中插入一个小写的英文字母就可以得到T。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#输出
-#打印一个整数i，代表插入的字符是T开头的第i个字符。如果有多个可能的答案，打印其中任何一个都可以接受。  
-#
-#输入样本1
-#atcoder
-#atcorder
-#
-#样本输出1
-#5
-#从T开头的第5个字符，r，被插入。
-#
-#样本输入2
-#million
-#milllion
-#
-#样本产出 2
-#5
-#从T开头的第3、第4和第5个字符中插入一个。
-#因此，打印3、4、5中的任何一个都可以接受。
-#
-#输入示例 3
-#vvwvw
-#vvvwvw
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+
+=======
+Suggestion 2
+
+def solve():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i + 1)
+            return
+    print(len(s) + 1)
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 6
+
+def solve(s, t):
+    for i in range(len(s)):
+        if s[:i] + s[i+1:] == t:
+            return i+1
+    return len(s)+1
+
+=======
+Suggestion 7
+
+def find_diff(s, t):
+    for i in range(len(t)):
+        if s[i] != t[i]:
+            return i
+    return len(t)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+    for i in range(0, len(s)):
+        if s[i] != t[i]:
+            print(i + 1)
+            break

@@ -1,59 +1,175 @@
-#问题陈述
-#给你一个N个正整数的序列：A = (A_1, A_2, ..., A_n)。确定是否有一对序列B = (B_1, B_2, ..., B_x), C = (C_1, C_2, ..., C_y)满足所有的条件，如果存在，请打印一个这样的序列。
-#1 ≦ x, y ≤ N.
-#1 ≦ b_1 < b_2 < ...< B_{x} ≦ N。
-#1 ≦ C_1 < C_2 < ...< C_{y} ≦ N。
-#B和C是不同的序列。
-#这里，当x≠y或者有一个整数i（1≤i≤min(x, y)），使得B_i≠C_i时，我们认为B和C不同。
-#A_{B_1}+ A_{B_2}+ ...+ A_{B_x}和A_{C_1}+ A_{C_2}+ ...+ A_{C_y}等于200的模数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 200
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果没有满足条件的一对序列B，C，则打印一个包含No的单行。
-#否则，以下列格式打印你选择的B和C：
-#Yes
-#x B_1 B_2 ...B_x
-#y C_1 C_2 ...C_y
-#检查器是不区分大小写的：你可以使用大写或小写字母。
-#
-#输入样本1
-#5
-#180 186 189 191 218
-#
-#样本输出1
-#Yes
-#1 1
-#2 3 4
-#对于B=(1),C=(3,4),我们有A_1=180,A_3+A_4=380,它们都等于模数200。
-#还有其他的解决方案也将被接受，例如：
-#yEs
-#4 2 3 4 5
-#3 1 2 5
-#
-#样本输入 2
-#2
-#123 523
-#
-#样本输出2
-#有
-#1 1
-#1 2
-#
-#样本输入3
-#6
-#2013 1012 2765 2021 508 6971
-#
-#样本输出3
-#No
-#如果没有满足条件的一对序列，则打印一个包含No的单行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    pass
+
+=======
+Suggestion 2
+
+def find_sum_equal_200(n, a):
+    m = len(a)
+    for i in range(m):
+        for j in range(i+1, m):
+            if (a[i]+a[j])%200 == 0:
+                return True, [i+1], [j+1]
+    return False, [], []
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    for x in range(1, N+1):
+        for y in range(1, N+1):
+            B = [i for i in range(1, N+1) if i not in range(x+1, N+1)]
+            C = [i for i in range(1, N+1) if i not in range(y+1, N+1)]
+            if sum([A[i-1] for i in B]) % 200 == sum([A[i-1] for i in C]) % 200:
+                print('Yes')
+                print(len(B), ' '.join(map(str, B)))
+                print(len(C), ' '.join(map(str, C)))
+                return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+
+    # x = 1
+    for i in range(n):
+        for j in range(i+1, n):
+            if (a[i] + a[j]) % 200 == 0:
+                print('Yes')
+                print(1, i+1)
+                print(1, j+1)
+                return
+
+    # x = 2
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if (a[i] + a[j] + a[k]) % 200 == 0:
+                    print('Yes')
+                    print(2, i+1, j+1)
+                    print(1, k+1)
+                    return
+
+    # x = 3
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                for l in range(k+1, n):
+                    if (a[i] + a[j] + a[k] + a[l]) % 200 == 0:
+                        print('Yes')
+                        print(3, i+1, j+1, k+1)
+                        print(1, l+1)
+                        return
+
+    # x = 4
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                for l in range(k+1, n):
+                    for m in range(l+1, n):
+                        if (a[i] + a[j] + a[k] + a[l] + a[m]) % 200 == 0:
+                            print('Yes')
+                            print(4, i+1, j+1, k+1, l+1)
+                            print(1, m+1)
+                            return
+
+    # x = 5
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                for l in range(k+1, n):
+                    for m in range(l+1, n):
+                        for o in range(m+1, n):
+                            if (a[i] + a[j] + a[k] + a[l] + a[m] +
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    A = [0] + A
+    d = {}
+    for i in range(1, N + 1):
+        for j in range(i, N + 1):
+            if (A[i] + A[j]) % 200 not in d:
+                d[(A[i] + A[j]) % 200] = (i, j)
+            else:
+                print('Yes')
+                print(2, i, j)
+                print(2, d[(A[i] + A[j]) % 200][0], d[(A[i] + A[j]) % 200][1])
+                return
+    print('No')
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def find_two_nums(num_list):
+    for i in range(len(num_list)):
+        for j in range(len(num_list)):
+            if i != j:
+                if num_list[i] + num_list[j] == 200:
+                    return num_list[i], num_list[j]
+    return None, None
+
+=======
+Suggestion 8
+
+def find():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [0] + a
+    d = {}
+    for i in range(1, n + 1):
+        d[a[i]] = i
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            b = a[i] + a[j]
+            if b % 200 in d:
+                if d[b % 200] != i and d[b % 200] != j:
+                    print('Yes')
+                    print('1', i)
+                    print('1', d[b % 200])
+                    return
+    print('No')
+    return
+
+find()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = input().split()
+    A = [int(i) for i in A]
+    if N == 2:
+        if A[0] % 200 == A[1] % 200:
+            print('Yes')
+            print(1, 1)
+            print(1, 2)
+        else:
+            print('No')
+    else:
+        print('Yes')
+        print(1, 1)
+        print(2, 2, 3)

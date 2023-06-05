@@ -1,39 +1,133 @@
-#问题陈述
-#高桥在一条数线的原点上。他想在坐标X处达到一个目标。
-#在坐标Y处有一堵墙，高桥起初不能越过这堵墙。
-#然而，在坐标Z处拿起一个锤子后，他可以摧毁这堵墙并通过。
-#判断高桥是否能到达目标。如果他能，求他需要走的最小总距离。
-#
-#限制条件
-#-1000 ≦ X,Y,Z ≦ 1000
-#X、Y、Z是不同的，而且没有一个是0。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#X Y Z
-#
-#输出
-#如果高桥能到达目标，打印出他需要走的最小总距离。如果他不能，则打印-1。
-#
-#输入样本 1
-#10 -10 1
-#
-#输出样本 1
-#10
-#高桥可以直奔目标。
-#
-#输入样本2
-#20 10 -10
-#
-#样本输出2
-#40
-#目标是在墙外。他可以先拿起锤子，然后摧毁墙壁，就可以到达那里。
-#
-#样本输入3
-#100 1 1000
-#
-#样本输出3
-#-1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,y,z = map(int,input().split())
+    if (x > y and y > z) or (x < y and y < z):
+        print(-1)
+    else:
+        print(abs(x-z)+abs(y-z))
+
+=======
+Suggestion 2
+
+def main():
+    x, y, z = map(int, input().split())
+    if (x > y) and (y > z):
+        print(x - z)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def main():
+    x, y, z = map(int, input().split())
+    print(x + z if x < y < z else -1)
+
+=======
+Suggestion 4
+
+def problems270_b(x,y,z):
+    if x > 0 and y > 0 and z > 0:
+        return -1
+    elif x < 0 and y < 0 and z < 0:
+        return -1
+    elif x > 0 and y < 0 and z < 0:
+        return -1
+    elif x < 0 and y > 0 and z > 0:
+        return -1
+    elif x > 0 and y > 0 and z < 0:
+        return -1
+    elif x > 0 and y < 0 and z > 0:
+        return -1
+    elif x < 0 and y > 0 and z < 0:
+        return -1
+    elif x < 0 and y < 0 and z > 0:
+        return -1
+    else:
+        return abs(x - y) + abs(y - z)
+
+print(problems270_b(10,-10,1))
+print(problems270_b(20,10,-10))
+print(problems270_b(100,1,1000))
+
+=======
+Suggestion 5
+
+def get_distance(x, y, z):
+    if x < z:
+        return -1
+    return x - z + y
+
+=======
+Suggestion 6
+
+def problem270_b(x,y,z):
+    if z>y:
+        return -1
+    return x+y+z
+
+print(problem270_b(10,-10,1))
+print(problem270_b(20,10,-10))
+print(problem270_b(100,1,1000))
+
+=======
+Suggestion 7
+
+def main():
+    x,y,z=map(int,input().split())
+    if x>y>z:
+        print(x-y+z)
+    else:
+        print(-1)
+
+=======
+Suggestion 8
+
+def solve():
+    x,y,z = map(int, input().split())
+    if y < z:
+        print(-1)
+    else:
+        print( (x*z)//(y-z) )
+
+=======
+Suggestion 9
+
+def main():
+    #输入
+    X,Y,Z = map(int,input().split())
+    #判断
+    if (X > Y and Y > Z) or (X < Y and Y < Z):
+        print(-1)
+    else:
+        print(abs(X-Z)+abs(Z-Y))
+
+=======
+Suggestion 10
+
+def main():
+    x, y, z = input().split()
+    x = int(x)
+    y = int(y)
+    z = int(z)
+    if x > y and x > z:
+        if y < z:
+            print(x - y)
+        else:
+            print(x - z)
+    elif y > x and y > z:
+        if x < z:
+            print(y - x)
+        else:
+            print(y - z)
+    elif z > x and z > y:
+        if x < y:
+            print(z - x)
+        else:
+            print(z - y)
+    else:
+        print(-1)

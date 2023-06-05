@@ -1,32 +1,82 @@
-#问题陈述
-#给你一个长度为N的字符串S，由A、B和C组成，还有一个介于1和N之间的整数K（含）。
-#将字符串S中的第K个字符下划线后打印出来。
-#
-#限制条件
-#1 ≤ N ≤ 50
-#1 ≤ K ≤ N
-#S是一个长度为N的字符串，由A、B和C组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#S
-#
-#輸出
-#将字符串S中的第K个字符下划线后打印出来。
-#
-#输入示例 1
-#3 1
-#ABC
-#
-#样本输出1
-#aBC
-#
-#样本输入2
-#4 3
-#CABA
-#
-#样品输出2
-#CAbA
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    print(S[:K-1] + S[K-1].lower() + S[K:])
+
+=======
+Suggestion 2
+
+def problem126_a():
+    n,k = map(int,input().split())
+    s = input()
+    print(s[:k-1]+s[k-1].lower()+s[k:])
+
+=======
+Suggestion 3
+
+def replace_str_char(str_text, index=0, char=''):
+    str_list = list(str_text)
+    str_list[index] = char
+    return ''.join(str_list)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    n, k = map(int, input().split())
+    s = input()
+    # 解决方案
+    print(s[:k-1] + s[k-1].lower() + s[k:])
+
+=======
+Suggestion 5
+
+def main():
+    # 1. 获取输入
+    n, k = map(int, input().split())
+    s = input()
+    # 2. 处理
+    result = s[:k-1] + s[k-1].lower() + s[k:]
+    # 3. 输出
+    print(result)
+
+=======
+Suggestion 6
+
+def problem126_a():
+    n,k = map(int,input().split())
+    s = input()
+    print(s[:k-1]+s[k-1].lower()+s[k:])
+
+problem126_a()
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    S = input()
+    S = S[:K-1] + S[K-1].lower() + S[K:]
+    print(S)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    s = input()
+    print(s[:k-1]+s[k-1].lower()+s[k:])
+
+=======
+Suggestion 9
+
+def problems126_a():
+    N,K = map(int,input().split())
+    S = input()
+    print(S[:K-1]+S[K-1].lower()+S[K:])

@@ -1,34 +1,90 @@
-#问题说明
-#打印字符串atcoder的第L到第R个字符。
-#
-#限制条件
-#L和R是整数。
-#1 ≦ L ≦ R ≦ 7
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#L R
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3 6
-#
-#样本输出1
-#code
-#atcoder的第3至第6个字符是code。
-#
-#输入样本2
-#4 4
-#
-#样本输出 2
-#o
-#
-#样本输入3
-#1 7
-#
-#样本输出3
-#atcoder
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    l,r = map(int, input().split())
+    print('atcoder'[l-1:r])
+
+=======
+Suggestion 2
+
+def main():
+    L, R = map(int, input().split())
+    S = "atcoder"
+    print(S[L-1:R])
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def print_atcoder(l,r):
+    if l==1:
+        print('a',end='')
+    if l==2:
+        print('t',end='')
+    if l==3:
+        print('c',end='')
+    if l==4:
+        print('o',end='')
+    if l==5:
+        print('d',end='')
+    if l==6:
+        print('e',end='')
+    if l==7:
+        print('r',end='')
+    if r==1:
+        print('a',end='')
+    if r==2:
+        print('t',end='')
+    if r==3:
+        print('c',end='')
+    if r==4:
+        print('o',end='')
+    if r==5:
+        print('d',end='')
+    if r==6:
+        print('e',end='')
+    if r==7:
+        print('r',end='')
+    print()
+
+=======
+Suggestion 5
+
+def main():
+    l, r = map(int, input().split())
+    s = 'atcoder'
+    print(s[l-1:r])
+
+=======
+Suggestion 6
+
+def main():
+    l, r = map(int, input().split())
+    s = "atcoder"
+    print(s[l-1:r])
+
+=======
+Suggestion 7
+
+def main():
+    a = input()
+    b = a.split(" ")
+    c = int(b[0])
+    d = int(b[1])
+    e = "atcoder"
+    print(e[c-1:d])
+
+=======
+Suggestion 8
+
+def print_atcoder(L, R):
+    atcoder = 'atcoder'
+    print(atcoder[L-1:R])

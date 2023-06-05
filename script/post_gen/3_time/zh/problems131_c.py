@@ -1,35 +1,69 @@
-#问题陈述
-#给你四个整数A、B、C和D，求A和B之间（含）能被C和D平分的整数数量。
-#
-#限制条件
-#1≦ A≦ B≦ 10^{18}
-#1≦ C,D≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#輸出
-#打印A和B之间（包括）能被C和D平分的整数的数量。
-#
-#输入示例 1
-#4 9 2 3
-#
-#输出示例 1
-#2
-#5和7满足条件。
-#
-#样本输入2
-#10 40 6 8
-#
-#样本输出2
-#23
-#
-#样本输入3
-#314159265358979323 846264338327950288 419716939 937510582
-#
-#样本输出3
-#532105071133627368
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 2
+
+def problem131_c():
+    a,b,c,d = map(int,input().split())
+    cnt = 0
+    for i in range(a,b+1):
+        if i % c == 0 and i % d == 0:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if a%b==0:
+        return b
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def gcd(m, n):
+    if n == 0:
+        return m
+    else:
+        return gcd(n, m % n)
+
+=======
+Suggestion 7
+
+def get_num(x, y, a, b):
+    return b//x - (a-1)//x + b//y - (a-1)//y - b//(x*y) + (a-1)//(x*y)
+
+a, b, c, d = map(int, input().split())
+print(get_num(c, d, a, b))

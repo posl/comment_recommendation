@@ -1,54 +1,169 @@
-#问题陈述
-#有一个H×W的方格，有H个水平行和W个垂直列。让(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#每个方格由一个字符C_{i, j}描述，其中C_{i, j} = . 表示（i, j）是一个空方格，C_{i, j} = # 表示（i, j）是一面墙。
-#高桥即将开始在这个网格中行走。当他在（i，j）上时，他可以去（i，j+1）或（i+1，j）。然而，他不能退出网格，也不能进入一个墙的方格。当没有更多的方格可以去的时候，他就会停下来。
-#当从（1，1）开始时，高桥在停止前最多可以访问多少个方格？
-#
-#限制条件
-#1 ≦ H, W ≦ 100
-#H和W是整数。
-#C_{i, j} = . 或 C_{i, j} = #. (1 ≦ i ≦ H, 1 ≦ j ≦ W)
-#C_{1, 1} = .
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#C_{1, 1} ...C_{1, W}
-#.
-#.
-#.
-#C_{H, 1} ...C_{H, W}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 4
-#.#..
-#..#.
-#..##
-#
-#样本输出1
-#4
-#例如，通过走（1，1）->（2，1）->（2，2）->（3，2），他可以访问4个方格。
-#他不能访问5个或更多的方格，所以我们应该打印4。
-#
-#输入样本 2
-#1 1
-#.
-#
-#样本输出2
-#1
-#
-#样本输入3
-#5 5
-#.....
-#.....
-#.....
-#.....
-#.....
-#
-#输出样本3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    maze = [input() for _ in range(h)]
+    dp = [[0 for _ in range(w)] for _ in range(h)]
+    dp[0][0] = 1
+    for i in range(h):
+        for j in range(w):
+            if maze[i][j] == '#':
+                continue
+            if i > 0:
+                dp[i][j] += dp[i-1][j]
+            if j > 0:
+                dp[i][j] += dp[i][j-1]
+    print(dp[-1][-1])
+
+=======
+Suggestion 2
+
+def get_max_count(h,w):
+    if h == 1 and w == 1:
+        return 1
+    elif h == 1:
+        return w-1
+    elif w == 1:
+        return h-1
+    else:
+        return h*w-1
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    C = [input() for i in range(H)]
+    dp = [[0 for j in range(W)] for i in range(H)]
+    dp[0][0] = 1
+    for i in range(H):
+        for j in range(W):
+            if C[i][j] == '#':
+                continue
+            if i - 1 >= 0:
+                dp[i][j] += dp[i - 1][j]
+            if j - 1 >= 0:
+                dp[i][j] += dp[i][j - 1]
+    print(dp[H - 1][W - 1])
+
+=======
+Suggestion 4
+
+def dfs(i,j):
+    if i==H-1 and j==W-1:
+        return 1
+    if i==H-1:
+        if grid[i][j+1]=='#':
+            return 1
+        else:
+            return dfs(i,j+1)+1
+    if j==W-1:
+        if grid[i+1][j]=='#':
+            return 1
+        else:
+            return dfs(i+1,j)+1
+    if grid[i+1][j]=='#':
+        return dfs(i,j+1)+1
+    if grid[i][j+1]=='#':
+        return dfs(i+1,j)+1
+    return max(dfs(i+1,j),dfs(i,j+1))+1
+
+H,W=map(int,input().split())
+grid=[]
+for i in range(H):
+    grid.append(list(input()))
+print(dfs(0,0))
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    c = [input() for i in range(h)]
+    print(walk(h, w, c))
+
+=======
+Suggestion 6
+
+def isWall(x, y):
+    if x >= 0 and x < H and y >= 0 and y < W:
+        if maze[x][y] == '#':
+            return True
+    return False
+
+=======
+Suggestion 7
+
+def solve(H, W, C):
+    #dp[i][j]表示从(i, j)开始的最大路径数
+    dp = [[0 for j in range(W)] for i in range(H)]
+    dp[H - 1][W - 1] = 1
+    for i in range(H - 1, -1, -1):
+        for j in range(W - 1, -1, -1):
+            if C[i][j] == '#':
+                continue
+            if i + 1 < H:
+                dp[i][j] = (dp[i][j] + dp[i + 1][j]) % 1000000007
+            if j + 1 < W:
+                dp[i][j] = (dp[i][j] + dp[i][j + 1]) % 1000000007
+    return dp[0][0]
+
+=======
+Suggestion 8
+
+def dfs(x, y):
+    global ans
+    ans += 1
+    maze[x][y] = '#'
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if (0 <= nx) and (nx < H) and (0 <= ny) and (ny < W) and (maze[nx][ny] == '.'):
+            dfs(nx, ny)
+
+H, W = map(int, input().split())
+maze = [list(input()) for _ in range(H)]
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+ans = 0
+dfs(0, 0)
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    c = [input() for _ in range(H)]
+    print(H, W)
+    print(c)
+    print(c[0][1])
+    print(c[1][0])
+    print(c[0][0])
+
+    # for i in range(H):
+    #     for j in range(W):
+    #         print(c[i][j])
+
+=======
+Suggestion 10
+
+def main():
+    h, w = map(int, input().split())
+    c = [list(input()) for _ in range(h)]
+    dp = [[0 for _ in range(w)] for _ in range(h)]
+    dp[0][0] = 1
+    for i in range(h):
+        for j in range(w):
+            if c[i][j] == '#':
+                continue
+            if i > 0:
+                dp[i][j] += dp[i - 1][j]
+            if j > 0:
+                dp[i][j] += dp[i][j - 1]
+    print(dp[h - 1][w - 1] % (10 ** 9 + 7))
+
+main()

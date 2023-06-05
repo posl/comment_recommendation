@@ -1,51 +1,140 @@
-#问题陈述
-#有一棵完美的二叉树，有2^{10^{100}}-1个顶点，编号为1，2，...，2^{10^{100}}-1。
-#顶点1是根。对于每个1≦i < 2^{10^{100}-1}，顶点i有两个孩子：顶点2i在左边，顶点2i+1在右边。
-#高桥从顶点X开始，执行N次移动，用一个字符串S表示，第i次移动如下。
-#如果S的第i个字符是U，就去他现在所在顶点的父方。
-#如果S的第i个字符是L，就去他现在所在的顶点的左边的子节点。
-#如果S的第i个字符是R，则转到他现在所在的顶点的右子。
-#找出高桥在N次移动后将在哪个顶点上的索引。在给定的情况下，可以保证答案最多为10^{18}。
-#
-#限制条件
-#1 ≦ N ≦ 10^6
-#1 ≦ X ≦ 10^{18}
-#N和X是整数。
-#S的长度为N，由U、L和R组成。
-#当高桥在根部时，他从未试图去找父部。
-#当高桥在叶子上时，他从来没有试图去找一个子。
-#高桥在N次移动后所处顶点的索引最多为10^{18}。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N X
-#S
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 2
-#URL
-#
-#样本输出1
-#6
-#完美的二进制树有如下结构。
-#在这三步棋中，高桥走2->1->3->6。
-#
-#输入样本 2
-#4 500000000000000000
-#RRUUU
-#
-#样品输出2
-#500000000000000000
-#在这个过程中，高桥可能在一个索引超过10^{18}的顶点。
-#
-#输入样本3
-#30 123456789
-#LRULURLURLULULRURRLRULRRRUURRU
-#
-#样本输出3
-#126419752371
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(n,x,s):
+    ans = x
+    for i in range(n):
+        if s[i] == 'U':
+            ans = ans // 2
+        elif s[i] == 'L':
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+    return ans
+
+=======
+Suggestion 2
+
+def main():
+    N, X = map(int, input().split(' '))
+    S = input()
+    res = X
+    for i in range(N):
+        if S[i] == 'U':
+            res = res // 2
+        elif S[i] == 'L':
+            res = res * 2 - 1
+        else:
+            res = res * 2 + 1
+    print(res)
+
+=======
+Suggestion 3
+
+def main():
+    n, x = map(int, input().split())
+    s = input()
+
+    ans = x
+    for i in range(n):
+        if s[i] == 'U':
+            ans = ans // 2
+        elif s[i] == 'L':
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def find_index(n, x, s):
+    index = x
+    for i in range(n):
+        if s[i] == 'U':
+            index = index // 2
+        elif s[i] == 'L':
+            index = index * 2
+        else:
+            index = index * 2 + 1
+    return index
+
+=======
+Suggestion 5
+
+def solve():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    N, X = map(int, input().split())
+    S = input()
+    for i in range(N):
+        if S[i] == 'U':
+            X = (X + 1) // 2
+        elif S[i] == 'L':
+            X = X * 2 - 1
+        else:
+            X = X * 2 + 1
+    print(X)
+
+=======
+Suggestion 7
+
+def solve(n, x, s):
+    p = 1 << n
+    for i in range(n):
+        if s[i] == 'U':
+            p = (p - 1) // 2
+        elif s[i] == 'L':
+            p = p * 2
+        else:
+            p = p * 2 + 1
+    return p
+
+n, x = map(int, input().split())
+s = input()
+print(solve(n, x, s))
+
+=======
+Suggestion 8
+
+def solve(n, x, s):
+    ans = x
+    for c in s:
+        if c == 'U':
+            ans = ans // 2
+        elif c == 'L':
+            ans = ans * 2 - 1
+        else:
+            ans = ans * 2 + 1
+    return ans
+
+=======
+Suggestion 9
+
+def find_index(N, X, S):
+    index = X
+    for i in range(N):
+        if S[i] == 'U':
+            index = index // 2
+        elif S[i] == 'L':
+            index = index * 2 - 1
+        else:
+            index = index * 2 + 1
+    return index
+
+N, X = map(int, input().split())
+S = input()
+print(find_index(N, X, S))
+
+=======
+Suggestion 10
+
+def problems243_d():
+    return None

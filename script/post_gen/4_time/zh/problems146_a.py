@@ -1,30 +1,70 @@
-#问题陈述
-#给出一个字符串S，代表今天是星期几。
-#S是SUN、MON、TUE、WED、THU、FRI或SAT，分别代表星期天、星期一、星期二、星期三、星期四、星期五和星期六。
-#多少天后是下一个星期天（明天或以后）？
-#
-#限制条件
-#S是SUN, MON, TUE, WED, THU, FRI, 或SAT。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印下一个星期天之前的天数。
-#
-#输入样本1
-#SAT
-#
-#样本输出1
-#1
-#今天是星期六，明天是星期天。
-#
-#样本输入2
-#SUN
-#
-#样本输出2
-#7
-#今天是星期天，七天后又是星期天。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    s = input()
+    # 解决问题
+    if s == 'SUN':
+        print(7)
+    elif s == 'MON':
+        print(6)
+    elif s == 'TUE':
+        print(5)
+    elif s == 'WED':
+        print(4)
+    elif s == 'THU':
+        print(3)
+    elif s == 'FRI':
+        print(2)
+    elif s == 'SAT':
+        print(1)
+    else:
+        print('error')
+
+=======
+Suggestion 2
+
+def main():
+    week = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+    s = input()
+    print(7-week.index(s))
+
+=======
+Suggestion 3
+
+def get_next_sun_day(s):
+    days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+    return 7 - days.index(s)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    s = input()
+    # 计算并输出答案
+    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+    print(7 - week.index(s))
+
+=======
+Suggestion 5
+
+def problem146_a():
+    S = input()
+    if S == "SUN":
+        print(7)
+    elif S == "MON":
+        print(6)
+    elif S == "TUE":
+        print(5)
+    elif S == "WED":
+        print(4)
+    elif S == "THU":
+        print(3)
+    elif S == "FRI":
+        print(2)
+    elif S == "SAT":
+        print(1)

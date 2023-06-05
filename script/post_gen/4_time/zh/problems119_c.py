@@ -1,71 +1,189 @@
-#问题陈述
-#你有N根竹子。这些竹子的长度（以厘米为单位）分别为l_1，l_2，...，l_N。
-#你的目标是用这些竹子中的一部分（可能是全部）来获得长度为A、B、C的三根竹子。为此，你可以使用以下三种魔法的任意数量：
-#延伸魔法：消耗1MP（魔法点）。选择一根竹子，将其长度增加1。
-#缩短魔法：消耗1MP。选择一根长度至少为2的竹子，减少其长度1。
-#组成魔法：消耗10MP。选择两根竹子并将它们合并成一根竹子。这个新竹子的长度等于两根竹子的长度之和。(之后，可以对这根竹子使用更多的魔法）。
-#至少需要多少MP才能达到目的？
-#
-#限制条件
-#3 ≦ N ≦ 8
-#1 ≦ c < b < a ≦ 1000
-#1 ≦ l_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N A B C
-#l_1
-#l_2
-#:
-#l_N
-#
-#输出
-#打印实现目标所需的最小MP量。
-#
-#输入样本1
-#5 100 90 80
-#98
-#40
-#30
-#21
-#80
-#
-#样本输出1
-#23
-#我们要从98、40、30、21、80这五根竹子中获得长度为100、90、80的三根竹子。我们已经有了一根长度为80的竹子，我们可以通过使用以下魔法获得长度为100、90的竹子，总花费为23MP，这是最佳的。
-#对长度为98的竹子使用两次延伸魔法，获得长度为100的竹子。(消耗的MP: 2)
-#对长度为40，30的竹子使用组成魔法，得到一根长度为70的竹子。(消耗的MP: 10)
-#对长度为21的竹子使用一次缩短魔法，获得长度为20的竹子。(消耗的MP: 1)
-#对步骤2中得到的长度为70的竹子和步骤3中得到的长度为20的竹子使用组合魔法，得到长度为90的竹子。(消耗的MP: 10)
-#
-#输入样本2
-#8 100 90 80
-#100
-#100
-#90
-#90
-#90
-#80
-#80
-#80
-#
-#样本输出2
-#0
-#如果我们已经有了所需长度的所有竹子，那么需要的MP数量是0。
-#
-#输入样本3
-#8 1000 800 100
-#300
-#333
-#400
-#444
-#500
-#555
-#600
-#666
-#
-#样本输出3
-#243
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(N, A, B, C, L):
+    ans = 10**9
+    for i in range(4**N):
+        a = i
+        mp = 0
+        p = [0, 0, 0]
+        for j in range(N):
+            if a % 4 == 1:
+                mp += 10
+                p[0] += L[j]
+            elif a % 4 == 2:
+                mp += 10
+                p[1] += L[j]
+            elif a % 4 == 3:
+                mp += 10
+                p[2] += L[j]
+            a //= 4
+        if p[0] == 0 or p[1] == 0 or p[2] == 0:
+            continue
+        mp += abs(A - p[0]) + abs(B - p[1]) + abs(C - p[2])
+        ans = min(ans, mp)
+    return ans
+
+N, A, B, C = map(int, input().split())
+L = [int(input()) for _ in range(N)]
+print(solve(N, A, B, C, L))
+
+=======
+Suggestion 2
+
+def dfs(a,b,c,mp):
+    global ans
+    if a==0 and b==0 and c==0:
+        ans=min(ans,mp)
+        return
+    if a<0 or b<0 or c<0:
+        return
+    if mp==0:
+        for i in range(n):
+            dfs(a-l[i],b,c,mp+1)
+            dfs(a,b-l[i],c,mp+1)
+            dfs(a,b,c-l[i],mp+1)
+    else:
+        dfs(a-l[i],b,c,mp+1)
+        dfs(a,b-l[i],c,mp+1)
+        dfs(a,b,c-l[i],mp+1)
+        dfs(a-l[i],b-l[i],c,mp+1)
+        dfs(a-l[i],b,c-l[i],mp+1)
+        dfs(a,b-l[i],c-l[i],mp+1)
+        dfs(a-l[i],b-l[i],c-l[i],mp+1)
+
+n,a,b,c=map(int,input().split())
+l=[int(input()) for _ in range(n)]
+ans=10000
+dfs(a,b,c,0)
+print(ans)
+
+=======
+Suggestion 3
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else float('inf')
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + l[i], b, c) + 10
+    ret2 = dfs(i + 1, a, b + l[i], c) + 10
+    ret3 = dfs(i + 1, a, b, c + l[i]) + 10
+    return min(ret0, ret1, ret2, ret3)
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 4
+
+def magic(a, b, c, d, e, f, g):
+    if a == 0 and b == 0 and c == 0:
+        return 0
+    if a < 0 or b < 0 or c < 0:
+        return 100000000
+    return min(magic(a - d, b, c, d, e, f, g) + 1, magic(a, b - e, c, d, e, f, g) + 1, magic(a, b, c - f, d, e, f, g) + 1, magic(a - d, b - e, c, d, e, f, g) + 10, magic(a - d, b, c - f, d, e, f, g) + 10, magic(a, b - e, c - f, d, e, f, g) + 10, magic(a - d, b - e, c - f, d, e, f, g) + 10)
+
+N, A, B, C = map(int, input().split())
+l = [int(input()) for i in range(N)]
+print(magic(A, B, C, l[0], l[1], l[2], l[3]))
+
+=======
+Suggestion 5
+
+def dfs(depth, a, b, c):
+    if depth == n:
+        return abs(a - A) + abs(b - B) + abs(c - C) - 30 if min(a, b, c) > 0 else 10 ** 9
+    ret0 = dfs(depth + 1, a, b, c)
+    ret1 = dfs(depth + 1, a + l[depth], b, c) + 10
+    ret2 = dfs(depth + 1, a, b + l[depth], c) + 10
+    ret3 = dfs(depth + 1, a, b, c + l[depth]) + 10
+    return min(ret0, ret1, ret2, ret3)
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for i in range(n)]
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 6
+
+def dfs(a,b,c,mp):
+    if a==b==c:
+        return mp
+    if a==0 or b==0 or c==0:
+        return float('inf')
+    return min(dfs(a-1,b+1,c+1,mp+1),dfs(a-1,b,c,c+10),dfs(a,b-1,c+1,mp+1),dfs(a,b-1,c,c+10),dfs(a,b,c-1,mp+1),dfs(a,b,c-1,c+10))
+
+n,a,b,c=map(int,input().split())
+l=[]
+for i in range(n):
+    l.append(int(input()))
+l.sort(reverse=True)
+print(dfs(a,b,c,0))
+
+=======
+Suggestion 7
+
+def dfs(a, b, c, mp, l, n, i):
+    if i == n:
+        if a == 0 or b == 0 or c == 0:
+            return 10**9
+        else:
+            return mp - 30
+    else:
+        mp1 = dfs(a, b, c, mp, l, n, i + 1)
+        mp2 = dfs(a - l[i], b, c, mp + 10, l, n, i + 1)
+        mp3 = dfs(a, b - l[i], c, mp + 10, l, n, i + 1)
+        mp4 = dfs(a, b, c - l[i], mp + 10, l, n, i + 1)
+        return min(mp1, mp2, mp3, mp4)
+
+n, a, b, c = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(a, b, c, 0, l, n, 0))
+
+=======
+Suggestion 8
+
+def dfs(a, b, c, mp, l):
+    if a == 0 and b == 0 and c == 0:
+        return mp
+    if a < 0 or b < 0 or c < 0:
+        return 10 ** 9
+    if l == n:
+        return 10 ** 9
+    if dp[a][b][c][l] != -1:
+        return dp[a][b][c][l]
+    dp[a][b][c][l] = min(dfs(a - L[l], b, c, mp + 1, l), dfs(a, b - L[l], c, mp + 1, l), dfs(a, b, c - L[l], mp + 1, l), dfs(a + L[l], b + L[l], c, mp + 10, l + 1), dfs(a, b + L[l], c + L[l], mp + 10, l + 1), dfs(a + L[l], b, c + L[l], mp + 10, l + 1), dfs(a + L[l], b + L[l], c + L[l], mp + 10, l + 1))
+    return dp[a][b][c][l]
+
+n, a, b, c = map(int, input().split())
+L = [int(input()) for _ in range(n)]
+dp = [[[[0] * (n + 1) for _ in range(101)] for _ in range(101)] for _ in range(101)]
+for i in range(101):
+    for j in range(101):
+        for k in range(101):
+            for l in range(n + 1):
+                dp[i][j][k][l] = -1
+ans = dfs(a, b, c, 0, 0)
+print(ans if ans != 10 ** 9 else -1)
+
+=======
+Suggestion 9
+
+def dfs(i,a,b,c):
+    if i == n:
+        if a == 0 or b == 0 or c == 0:
+            return float('inf')
+        else:
+            return abs(a - A) + abs(b - B) + abs(c - C) - 30
+    ret0 = dfs(i + 1, a, b, c)
+    ret1 = dfs(i + 1, a + l[i], b, c) + 10
+    ret2 = dfs(i + 1, a, b + l[i], c) + 10
+    ret3 = dfs(i + 1, a, b, c + l[i]) + 10
+    return min(ret0, ret1, ret2, ret3)
+
+n, A, B, C = map(int, input().split())
+l = [int(input()) for _ in range(n)]
+print(dfs(0, 0, 0, 0))

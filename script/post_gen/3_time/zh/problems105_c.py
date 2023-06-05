@@ -1,39 +1,169 @@
-#问题陈述
-#给定一个整数N，找出N的基数-2表示法。
-#在这里，当下列条件都满足时，S就是N的基数-2表示法：
-#S是一个由0和1组成的字符串。
-#除非S=0，否则S的初始字符是1。
-#让S = S_k S_{k-1} ...S_0，那么S_0 × (-2)^0 + S_1 × (-2)^1 + ...+ S_k × (-2)^k = N。
-#可以证明，对于任何整数M，M的基数-2表示是唯一确定的。
-#
-#约束条件
-#输入的每个值都是整数。
-#-10^9 ≦ N ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印N的基数-2表示法。
-#
-#输入样本 1
-#-9
-#
-#样本输出 1
-#1011
-#由于(-2)^0 + (-2)^1 + (-2)^3 = 1 + (-2) + (-8) = -9，1011是-9的基数-2表示。
-#
-#输入样本2
-#123456789
-#
-#样本输出2
-#11000101011001101110100010101
-#
-#样本输入3
-#0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    num = int(input())
+    if num == 0:
+        print(0)
+        return
+    result = []
+    while num != 0:
+        if num % -2 == 0:
+            result.append('0')
+            num = num // -2
+        else:
+            result.append('1')
+            num = (num - 1) // -2
+    result.reverse()
+    print(''.join(result))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    
+    ans = []
+    while n != 0:
+        if n % 2 != 0:
+            ans.append(1)
+            n -= 1
+        else:
+            ans.append(0)
+        n //= -2
+    ans.reverse()
+    print(''.join(map(str, ans)))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 0:
+        print(0)
+        return
+    s = ""
+    while n != 0:
+        if n % 2 == 0:
+            s = "0" + s
+            n //= (-2)
+        else:
+            s = "1" + s
+            n = (n - 1) // (-2)
+    print(s)
+
+=======
+Suggestion 4
+
+def baseN(num, b):
+    return ((num == 0) and "0") or (baseN(num // b, b).lstrip("0") + "0123456789abcdefghijklmnopqrstuvwxyz"[num % b])
+
+a = int(input())
+print(baseN(a, -2))
+
+=======
+Suggestion 5
+
+def base_m2(num):
+    result = []
+    while num != 0:
+        if num % (-2) == 0:
+            result.append(0)
+            num = num // (-2)
+        else:
+            result.append(1)
+            num = (num - 1) // (-2)
+    result.reverse()
+    return result
+
+=======
+Suggestion 6
+
+def convertToBaseNeg2(n):
+    if n == 0:
+        return '0'
+    res = ''
+    while n != 0:
+        res = str(n&1) + res
+        n = -(n>>1)
+    return res
+
+n = int(input())
+print(convertToBaseNeg2(n))
+
+=======
+Suggestion 7
+
+def convert(n):
+    if n == 0:
+        return '0'
+    s = ''
+    while n != 0:
+        if n % 2 == 0:
+            s = '0' + s
+            n = n // (-2)
+        else:
+            s = '1' + s
+            n = (n - 1) // (-2)
+    return s
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+
+    if n == 0:
+        print(0)
+        return
+
+    ans = []
+    while n != 0:
+        if n % 2 == 0:
+            ans.append('0')
+            n = n // (-2)
+        else:
+            ans.append('1')
+            n = (n-1) // (-2)
+
+    ans.reverse()
+    print(''.join(ans))
+
+=======
+Suggestion 9
+
+def convert_to_base2(n):
+    if n == 0:
+        return '0'
+    result = ''
+    while n != 0:
+        remainder = n % (-2)
+        n = n // (-2)
+        if remainder < 0:
+            remainder += 2
+            n += 1
+        result = str(remainder) + result
+    return result
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    if N == 0:
+        print(0)
+        return
+    result = ""
+    while N != 0:
+        if N % 2 == 0:
+            result = "0" + result
+        else:
+            result = "1" + result
+            N -= 1
+        N = N // (-2)
+    print(result)

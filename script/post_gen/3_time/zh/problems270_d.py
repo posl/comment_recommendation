@@ -1,59 +1,129 @@
-#问题陈述
-#高桥和青木将用一个序列（A_1，...，A_K）进行取石游戏。
-#有一个最初包含N个石头的堆。两位玩家将交替进行以下操作，由高桥先进行。
-#选择一个A_i，它最多是当前棋堆中棋子的数量。从棋堆中取出A_i的棋子。
-#当棋堆中没有棋子时，游戏结束。
-#如果两位棋手都试图在游戏结束前最大限度地增加他们移走的棋子总数，那么高桥会移走多少个棋子？
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ...< A_K ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#A_1 A_2 ...A_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#10 2
-#1 4
-#
-#样本输出1
-#5
-#下面是游戏的一个可能进展。
-#高桥从棋堆中取出4颗棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从这堆棋子中取出1个棋子。
-#青木从棋堆中移走1个棋子。
-#在这种情况下，高桥去掉了5颗棋子。他不可能移走6个或更多的棋子，所以这就是最大限度。
-#下面是另一种可能的游戏进程，高桥移走了5颗棋子。
-#高桥从棋堆中移走1个棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从牌堆中移走4个棋子。
-#青木从棋堆中移走1个棋子。
-#
-#输入样本 2
-#11 4
-#1 2 3 6
-#
-#样本输出2
-#8
-#下面是对局的一个可能的进展情况。
-#高桥去掉了6个棋子。
-#青木去掉3个棋子。
-#高桥去掉2个棋子。
-#在这种情况下，高桥去掉了8个棋子。他没有办法去掉9个或更多的棋子，所以这就是最大限度。
-#
-#输入样本 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#样本输出3
-#5136
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems270_d():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(k):
+        if i == 0:
+            ans += a[i]
+        else:
+            ans += a[i] - a[i-1]
+    ans += n - a[-1]
+    print(ans)
+
+=======
+Suggestion 3
+
+def problem270_d():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0]*n
+    b[0] = 1
+    for i in range(1,n):
+        for j in a:
+            if i-j>=0 and b[i-j]==0:
+                b[i] = 1
+                break
+    for i in range(n-1,-1,-1):
+        if b[i]==0:
+            print(i)
+            break
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.append(0)
+    a.reverse()
+    a.append(n+1)
+    a.reverse()
+    ans = 0
+    for i in range(k+1):
+        ans += (a[i+1]-a[i])*(i+1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.append(n+1)
+    ans = 0
+    for i in range(k):
+        ans += max(0, a[i+1]-a[i]-1)
+    print(n-ans)
+
+=======
+Suggestion 7
+
+def get_max_num(a, k):
+    num = 0
+    for i in range(k-1, -1, -1):
+        if a[i] <= num:
+            continue
+        num = (a[i] - 1) // a[i]
+    return num
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(N+1)
+    ans = 0
+    for i in range(K):
+        ans += max(0, A[i+1]-A[i]-1)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 从最后一个石头开始，一直向前，每次减去A[i]个石头
+    ans = 0
+    for i in range(K-1, -1, -1):
+        # 如果剩下的石头比A[i]大，那么就可以减去A[i]个石头
+        if N >= A[i]:
+            # 剩下的石头减去A[i]个，得到最后剩下的石头数
+            N -= A[i]
+            # 由于高桥先开始，所以只有当i为偶数时，才可以加上A[i]个石头
+            if i % 2 == 0:
+                ans += A[i]
+        # 如果剩下的石头比A[i]小，那么就可以减去剩下的石头
+        else:
+            ans += N
+            break
+
+    # 输出答案
+    print(ans)

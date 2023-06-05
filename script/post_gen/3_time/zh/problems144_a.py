@@ -1,38 +1,62 @@
-#问题陈述
-#在学习了乘法表之后，高桥可以将1到9（包括）之间的两个整数相乘。他不能做任何其他计算。
-#给出的是两个整数A和B。
-#如果高桥能计算出A×B，请打印结果；如果他不能，请打印-1。
-#
-#限制条件
-#1 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#如果高桥能计算出A×B，打印结果；如果不能，打印-1。
-#
-#输入样本 1
-#2 5
-#
-#输出样本 1
-#10
-#2 × 5 = 10.
-#
-#样本输入2
-#5 10
-#
-#样本输出2
-#-1
-#5×10=50，但高桥不能做这个计算，所以打印-1代替。
-#
-#输入样本3
-#9 9
-#
-#样本输出 3
-#81
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    if a > 9 or b > 9:
+        print(-1)
+    else:
+        print(a*b)
+
+=======
+Suggestion 2
+
+def main():
+    a = input("请输入第一个数：")
+    b = input("请输入第二个数：")
+    if a.isdigit() and b.isdigit():
+        a = int(a)
+        b = int(b)
+        if a >= 1 and a <= 20 and b >= 1 and b <= 20:
+            print(a * b)
+        else:
+            print("输入的数不在范围内")
+    else:
+        print("输入的不是整数")
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 计算结果
+    if a < 1 or a > 20 or b < 1 or b > 20:
+        print(-1)
+    else:
+        print(a * b)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+
+    # 计算
+    if a <= 9 and b <= 9:
+        print(a * b)
+    else:
+        print(-1)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if 1<=a<=20 and 1<=b<=20:
+        print(a*b)
+    else:
+        print(-1)

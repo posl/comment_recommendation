@@ -1,64 +1,110 @@
-#问题陈述
-#给你一个有N个顶点和M条边的简单无向图。  顶点编号为1，...，N，第i条（1≦i≦M）边连接着顶点U_i和顶点V_i。
-#找出满足以下所有条件的整数组a, b, c的数目：
-#1 ≦ a < b < c ≦ N
-#有一条边连接顶点a和顶点b。
-#有一条边连接着顶点b和顶点c。
-#有一条边连接着顶点c和顶点a。
-#
-#限制条件
-#3 ≦ N ≦ 100
-#1 ≦ m ≦ ((n(n - 1))/(2))
-#1 ≦ U_i < V_i ≦ N (1 ≦ i ≦ M)
-#(U_i, V_i) ≠ (U_j, V_j) (i ≠ j)
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#U_1 V_1
-#.
-#.
-#.
-#U_M V_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 6
-#1 5
-#4 5
-#2 3
-#1 4
-#3 5
-#2 5
-#
-#样本输出 1
-#2
-#(a, b, c）=（1, 4, 5），（2, 3, 5）满足条件。
-#
-#样本输入 2
-#3 1
-#1 2
-#
-#样本输出2
-#0
-#
-#采样输入3
-#7 10
-#1 7
-#5 7
-#2 5
-#3 6
-#4 7
-#1 5
-#2 4
-#1 3
-#1 6
-#2 7
-#
-#样本输出 3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    pass
+
+=======
+Suggestion 2
+
+def readinput():
+    n,m=map(int,input().split())
+    uv=[]
+    for _ in range(m):
+        u,v=map(int,input().split())
+        uv.append((u,v))
+    return n,m,uv
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    edges = []
+    for i in range(M):
+        edges.append(list(map(int, input().split())))
+
+    # print(edges)
+    cnt = 0
+    for i in range(M):
+        for j in range(M):
+            if i == j:
+                continue
+            if edges[i][0] in edges[j] and edges[i][1] in edges[j]:
+                cnt += 1
+                # print(edges[i], edges[j])
+    print(int(cnt/3))
+
+solve()
+
+=======
+Suggestion 4
+
+def get_input():
+    n,m = map(int,input().split())
+    u = []
+    v = []
+    for i in range(m):
+        u_i,v_i = map(int,input().split())
+        u.append(u_i)
+        v.append(v_i)
+    return n,m,u,v
+
+=======
+Suggestion 5
+
+def get_input():
+    line = raw_input()
+    line = line.split()
+    n = int(line[0])
+    m = int(line[1])
+    edges = []
+    for i in range(m):
+        line = raw_input()
+        line = line.split()
+        edges.append([int(line[0]), int(line[1])])
+    return n, m, edges
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    edges = []
+    for i in range(m):
+        edges.append(list(map(int,input().split())))
+    print(edges)
+    count = 0
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+            for k in range(j+1,n+1):
+                if [i,j] in edges and [j,k] in edges and [k,i] in edges:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def check(a, b, c):
+    if a < b and b < c:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def get_edge_num():
+    n,m = map(int,raw_input().split())
+    edge_list = []
+    for i in range(m):
+        edge_list.append(map(int,raw_input().split()))
+    return n,m,edge_list
+
+=======
+Suggestion 9
+
+def main():
+    pass

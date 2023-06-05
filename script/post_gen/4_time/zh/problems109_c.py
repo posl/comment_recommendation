@@ -1,55 +1,181 @@
-#问题陈述
-#在一条数线上有N个城市。第i个城市位于坐标x_i处。
-#你的目标是至少访问所有这些城市一次。
-#为了做到这一点，你将首先设定一个正整数D。
-#然后，你将从坐标X出发，执行下面的移动1和移动2，次数不限：
-#第1步：从坐标y到坐标y+D。
-#第2步：从坐标y到坐标y-D。
-#找出能使你访问所有城市的最大D值。
-#在这里，访问一个城市就是前往该城市所在的坐标。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ X ≦ 10^9
-#1 ≦ x_i ≦ 10^9
-#x_i都是不同的。
-#x_1, x_2, ..., x_N ≠ X
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N X
-#x_1 x_2 ... x_N
-#
-#输出
-#打印使你能够访问所有城市的D的最大值。
-#
-#输入样本 1
-#3 3
-#1 7 11
-#
-#样本输出1
-#2
-#设置D=2可以使你访问所有的城市，如下图所示，这是这种D的最大值。
-#执行移动2，前往坐标1。
-#执行移动1，前往坐标3。
-#执行移动1， "以前往坐标5。
-#执行移动1，前往坐标7。
-#执行移动1，前往坐标9。
-#执行移动1，前往坐标11。
-#
-#样本输入2
-#3 81
-#33 105 57
-#
-#样本输出2
-#24
-#
-#样本输入3
-#1 1
-#1000000000
-#
-#样本输出3
-#999999999
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    d_list = []
+    for i in range(n):
+        d_list.append(x_list[i+1] - x_list[i])
+    import math
+    ans = d_list[0]
+    for i in range(1, n):
+        ans = math.gcd(ans, d_list[i])
+    print(ans)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+n, x = map(int, input().split())
+x_list = list(map(int, input().split()))
+x_list.append(x)
+x_list.sort()
+diff_list = [x_list[i] - x_list[i-1] for i in range(1, n+1)]
+diff_list.sort()
+gcd_num = diff_list[0]
+for i in range(1, n):
+    gcd_num = gcd(gcd_num, diff_list[i])
+print(gcd_num)
+
+=======
+Suggestion 3
+
+def main():
+    N,X = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.append(X)
+    x.sort()
+    d = [x[i+1] - x[i] for i in range(N)]
+    import math
+    def gcd(a,b):
+        while b:
+            a,b = b,a%b
+        return a
+    def lcm(a,b):
+        return a*b//gcd(a,b)
+    ans = d[0]
+    for i in range(1,N):
+        ans = gcd(ans,d[i])
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    xlist = list(map(int, input().split()))
+    xlist.append(x)
+    xlist.sort()
+    xlist = [xlist[i+1]-xlist[i] for i in range(n)]
+    print(gcd_list(xlist))
+
+=======
+Suggestion 5
+
+def main():
+    #读取数据
+    n,x = map(int,input().split())
+    x_list = list(map(int,input().split()))
+    x_list.append(x)
+    x_list.sort()
+    #计算两个相邻城市的距离
+    dis = []
+    for i in range(n):
+        dis.append(x_list[i+1]-x_list[i])
+    #求最大公约数
+    def gcd(a,b):
+        if a<b:
+            a,b = b,a
+        while b!=0:
+            a,b = b,a%b
+        return a
+    #求最大公约数的函数
+    def gcd_list(numbers):
+        return reduce(gcd,numbers)
+    #求最大公约数
+    print(gcd_list(dis))
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 7
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y, x%y)
+
+N, X = map(int, input().split())
+x = list(map(int, input().split()))
+
+x.append(X)
+x.sort()
+
+d = []
+for i in range(N):
+    d.append(x[i+1]-x[i])
+
+=======
+Suggestion 8
+
+def main():
+    N, X = map(int, input().split())
+    x = list(map(int, input().split()))
+    x.append(X)
+    x.sort()
+    d = []
+    for i in range(N):
+        d.append(x[i+1] - x[i])
+    import math
+    def gcd(a,b):
+        if b == 0:
+            return a
+        else:
+            return gcd(b, a%b)
+    ans = d[0]
+    for i in range(1, N):
+        ans = gcd(ans, d[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    x_list = list(map(int, input().split()))
+    x_list.append(x)
+    x_list.sort()
+    x_diff = [x_list[i+1] - x_list[i] for i in range(n)]
+    x_diff.sort()
+    if len(x_diff) == 1:
+        print(x_diff[0])
+    else:
+        x_diff.remove(max(x_diff))
+        print(max(x_diff))
+
+=======
+Suggestion 10
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+n,x=map(int,input().split())
+a=list(map(int,input().split()))
+a.append(x)
+a.sort()
+d=a[1]-a[0]
+for i in range(2,n+1):
+    d=gcd(d,a[i]-a[i-1])
+print(d)

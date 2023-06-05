@@ -1,55 +1,101 @@
-#问题陈述
-#有N个城市。从城市i到城市j所需的时间为T_{i, j}。
-#在那些从城市1开始，正好到过所有其他城市一次，然后回到城市1的路径中，有多少条路径的总时间正好为K？
-#
-#限制条件
-#2≦ N ≦ 8
-#如果i≠j，1≦ T_{i,j} ≦ 10^8。
-#T_{i,i}=0
-#T_{i,j}=T_{j,i}
-#1≦ K ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#T_{1,1} ...T_{1,N}
-#.
-#.
-#.
-#T_{N,1} ...T_{N,N}
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#4 330
-#0 1 10 100
-#1 0 20 200
-#10 20 0 300
-#100 200 300 0
-#
-#样本输出1
-#2
-#有六条路径从城市1开始，正好访问所有其他城市一次，然后再回到城市1：
-#1-> 2-> 3-> 4-> 1
-#1-> 2-> 4-> 3-> 1
-#1-> 3-> 2-> 4-> 1
-#1-> 3-> 4-> 2-> 1
-#1-> 4-> 2-> 3-> 1
-#1-> 4-> 3-> 2-> 1
-#沿着这些路径行驶的时间分别为421、511、330、511、330和421，其中有两个正好是330。
-#
-#输入样本 2
-#5 5
-#0 1 1 1 1
-#1 0 1 1 1
-#1 1 0 1 1
-#1 1 1 0 1
-#1 1 1 1 0
-#
-#样本输出2
-#24
-#无论我们按什么顺序访问这些城市，都需要5的总时间来旅行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def search(city, time, k, n, visited):
+    if time > k:
+        return 0
+    if len(visited) == n:
+        if time == k:
+            return 1
+        else:
+            return 0
+    ans = 0
+    for i in range(n):
+        if i in visited:
+            continue
+        visited.append(i)
+        ans += search(i, time+city[i], k, n, visited)
+        visited.pop()
+    return ans
+
+n, k = map(int, input().split())
+city = []
+for i in range(n):
+    city.append(list(map(int, input().split())))
+
+ans = search(0, 0, k, n, [0])
+print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    print('hello world')
+
+=======
+Suggestion 3
+
+def get_path_sum(path, T):
+    path_sum = 0
+    for i in range(len(path) - 1):
+        path_sum += T[path[i]][path[i + 1]]
+    return path_sum
+
+=======
+Suggestion 4
+
+def dfs(now, visited, cost, n, k):
+    visited[now] = True
+    if all(visited):
+        if cost == k:
+            return 1
+        else:
+            return 0
+
+    ret = 0
+    for next in range(n):
+        if not visited[next]:
+            ret += dfs(next, visited, cost + T[now][next], n, k)
+    visited[now] = False
+    return ret
+
+
+n, k = map(int, input().split())
+T = [list(map(int, input().split())) for _ in range(n)]
+visited = [False] * n
+print(dfs(0, visited, 0, n, k))
+
+=======
+Suggestion 5
+
+def get_path_num(N, K, T):
+    path_num = 0
+    for i in range(1, N):
+        path_num += get_path_num_from_i(N, K, T, i)
+    return path_num
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def get_path(N, K, T):
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    return

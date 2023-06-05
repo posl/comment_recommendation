@@ -1,33 +1,164 @@
-#问题陈述
-#我们有五张牌，上面写着整数A、B、C、D、E，每张牌都有一个。
-#当且仅当满足以下条件时，这五张牌的组合被称为满堂红：
-#这组牌中有三张牌上写着一个相同的数字，两张牌上写着另一个相同的数字。
-#判断这套牌是否是满堂红。
-#
-#限制条件
-#1 ≦ A,B,C,D,E≦ 13
-#不是所有的A、B、C、D、E都是一样的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B C D E
-#
-#輸出
-#如果这组数字是满堂红，打印Yes；否则，打印No。
-#
-#输入样本 1
-#1 2 1 2 1
-#
-#样本输出 1
-#Yes
-#这组牌有三张写有1的牌，两张写有2的牌，所以是满堂红。
-#
-#输入样本2
-#12 12 11 1 2
-#
-#样本输出2
-#No
-#条件不满足。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if a[0] == a[1] and a[1] == a[2] and a[3] == a[4]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    if a == b == c or a == b == d or a == b == e or a == c == d or a == c == e or a == d == e or b == c == d or b == c == e or b == d == e or c == d == e:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = input()
+    nlist = n.split()
+    nset = set(nlist)
+    if len(nset) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    num_list = list(map(int, input().split()))
+    num_list.sort()
+    if num_list[0]==num_list[1] and num_list[1]==num_list[2] and num_list[3]==num_list[4]:
+        print('Yes')
+    elif num_list[0]==num_list[1] and num_list[2]==num_list[3] and num_list[3]==num_list[4]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d,e = map(int, input().split())
+    if (a==b==c) or (a==b==d) or (a==b==e) or (a==c==d) or (a==c==e) or (a==d==e) or (b==c==d) or (b==c==e) or (b==d==e) or (c==d==e):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    a = input().split()
+    if a.count(a[0]) == 3 and a.count(a[1]) == 2:
+        print('Yes')
+    elif a.count(a[0]) == 2 and a.count(a[1]) == 3:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    if a[0] == a[1] and a[1] != a[2] and a[2] == a[3] and a[3] == a[4]:
+        print("Yes")
+    elif a[0] == a[1] and a[1] == a[2] and a[3] == a[4]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    if (a[0] == a[1] and a[1] == a[2] and a[3] == a[4]) or (a[0] == a[1] and a[2] == a[3] and a[3] == a[4]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    if (a==b and b==c) or (a==b and b==d) or (a==b and b==e) or (a==c and c==d) or (a==c and c==e) or (a==d and d==e) or (b==c and c==d) or (b==c and c==e) or (b==d and d==e) or (c==d and d==e):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    a = input()
+    a = a.split()
+    if a[0] == a[1] and a[1] == a[2]:
+        if a[3] == a[4]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[0] == a[1] and a[1] == a[3]:
+        if a[2] == a[4]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[0] == a[1] and a[1] == a[4]:
+        if a[2] == a[3]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[0] == a[2] and a[2] == a[3]:
+        if a[1] == a[4]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[0] == a[2] and a[2] == a[4]:
+        if a[1] == a[3]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[0] == a[3] and a[3] == a[4]:
+        if a[1] == a[2]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[1] == a[2] and a[2] == a[3]:
+        if a[0] == a[4]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[1] == a[2] and a[2] == a[4]:
+        if a[0] == a[3]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[1] == a[3] and a[3] == a[4]:
+        if a[0] == a[2]:
+            print("Yes")
+        else:
+            print("No")
+    elif a[2] == a[3] and a[3] == a[4]:
+        if a[0] == a[1]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+main()

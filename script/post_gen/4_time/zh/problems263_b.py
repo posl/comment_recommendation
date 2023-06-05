@@ -1,36 +1,128 @@
-#问题陈述
-#有N个人，称为Person 1, Person 2, ..., Person N。
-#第i个人（2 ≦ i ≦ N）的父母是第P_i个人。这里，保证P_i < i。
-#第1人离第N人有多少代？
-#
-#限制条件
-#2 ≦ N ≦ 50
-#1 ≦ P_i < i(2 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#p_2 p_3 ... p_n
-#
-#输出
-#将答案打印成一个正整数。
-#
-#输入样本 1
-#3
-#1 2
-#
-#样品输出1
-#2
-#第2人是第3人的父母，因此与第3人相差1代。
-#人1是人2的父母，因此与人3相隔两代。
-#因此，答案是2。
-#
-#输入样本2
-#10
-#1 2 3 4 5 6 7 8 9
-#
-#样本输出2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = max(ans, dfs(i, P))
+    print(ans)
+    return
+
+=======
+Suggestion 2
+
+def get_list():
+    N = int(input())
+    p_list = input().split()
+    p_list = [int(i) for i in p_list]
+    return N,p_list
+
+=======
+Suggestion 3
+
+def get_father(person):
+    father = 0
+    if person == 1:
+        father = 0
+    else:
+        father = p[person-2]
+    return father
+
+=======
+Suggestion 4
+
+def func(n,l):
+    result = 0
+    for i in range(n):
+        tmp = 0
+        j = i
+        while j != -1:
+            tmp += 1
+            j = l[j]
+        result = max(result,tmp)
+    return result
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        cnt = 0
+        j = i
+        while j != -1:
+            j = p[j] - 1
+            cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 6
+
+def func():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    max_num = 0
+    for i in range(1, N+1):
+        num = 1
+        j = p[i]
+        while j != -1:
+            num += 1
+            j = p[j]
+        max_num = max(max_num, num)
+    print(max_num)
+
+func()
+
+=======
+Suggestion 7
+
+def count_generation(n, p):
+    generation = [0 for i in range(n)]
+    for i in range(1, n):
+        generation[i] = generation[p[i-1]-1] + 1
+    return generation[n-1]
+
+=======
+Suggestion 8
+
+def solve(n, p):
+    def dfs(i):
+        if i == 0:
+            return 0
+        return dfs(p[i-1]) + 1
+    return dfs(n)
+
+=======
+Suggestion 9
+
+def problem263_b():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        x = i + 1
+        while x != 1:
+            x = p[x - 2]
+            ans += 1
+    print(ans)
+
+problem263_b()
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans = max(ans, count(i, p))
+    print(ans)

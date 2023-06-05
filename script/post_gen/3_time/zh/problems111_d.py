@@ -1,98 +1,203 @@
-#问题陈述
-#Snuke正在为他的工厂引进一个具有以下特性的机器人手臂：
-#该机器人手臂由m个部分和m+1个关节组成。节段编号为1，2，...，m，关节编号为0，1，...，m。节段i连接关节i-1和关节i。
-#对于每个部分，它的模式可以被单独指定。有四种模式：一个部分的模式决定了该部分的方向。如果我们把工厂看作是一个坐标平面，第i节的位置将被确定如下（我们表示其坐标为（x_i，y_i））：
-#(x_0, y_0) = (0, 0)。
-#如果第i节的模式是L，（x_{i}, y_{i}）=（x_{i-1}-d_{i}, y_{i-1}）。
-#如果第i节的模式是R，（x_{i}, y_{i}）=（x_{i-1}+ d_{i}, y_{i-1}）。
-#如果第i节的模式是D，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}- d_{i}）。
-#如果第i节的模式是U，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}+ d_{i}）。
-#
-#Snuke想引入一个机械臂，这样关节m的位置就可以通过正确指定各部分的模式与所有N个点（X_1, Y_1）、（X_2, Y_2）、...、（X_N, Y_N）匹配。
-#这可能吗？
-#如果可以，请找到这样的机械臂，以及如何将关节m带到每个点（X_j, Y_j）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分得分
-#在价值300分的测试案例中，-10 ≦ X_i ≦ 10和-10 ≦ Y_i ≦ 10成立。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#输出
-#如果条件可以得到满足，按照以下格式。如果条件不能满足，打印-1。
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m和d_i是机器人手臂的配置。关于它们各自的含义，请参考问题陈述。
-#这里，1 ≦ m ≦ 40和1 ≦ d_i ≦ 10^{12}必须成立。另外，m和d_i必须都是整数。
-#w_j是一个长度为m的字符串，代表将机器人手臂的关节m带到点（X_j，Y_j）的方式。
-#w_j的第i个字符应该是字母L、R、D和U中的一个，代表第i节的模式。
-#
-#输入样本1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#输出样本1
-#2
-#1 2
-#RL
-#UU
-#DR
-#在给定的方式中，将机械臂的关节m带到每个（X_j，Y_j），关节的位置将如下：
-#到（X_1，Y_1）=（-1，0）：首先，关节0的位置是（X_0，Y_0）=（0，0）。由于第1节的模式是R，所以第1节的位置是（x_1, y_1）=（1, 0）。然后，由于第2节的模式是L，关节2的位置是（x_2, y_2）=（-1, 0）。
-#到（X_2，Y_2）=（0，3）：(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3)。
-#对（X_3，Y_3）=（2，-1）：（x_0，y_0）=（0，0），（x_1，y_1）=（0，-1），（x_2，y_2）=（2，-1）。
-#
-#样本输入2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#样本输出2
-#-1
-#
-#采样输入3
-#2
-#1 1
-#1 1
-#
-#样本输出3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j)中可能有重复的点。
-#
-#样本输入 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#样本输出 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+    return N, X, Y
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = [0] * n
+    y = [0] * n
+    for i in range(n):
+        x[i], y[i] = map(int, input().split())
+    if n == 1:
+        print(-1)
+        return
+    for i in range(n):
+        for j in range(i + 1, n):
+            if x[i] == x[j] and y[i] == y[j]:
+                print(2)
+                print(1, 1)
+                print('UD')
+                print('DU')
+                return
+    if n == 2:
+        print(-1)
+        return
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if x[i] == x[j] == x[k] or y[i] == y[j] == y[k]:
+                    print(3)
+                    print(1, 1, 1)
+                    print('UDL')
+                    print('DUL')
+                    print('LUR')
+                    return
+    if n == 3:
+        print(-1)
+        return
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                for l in range(k + 1, n):
+                    if x[i] == x[j] == x[k] == x[l] or y[i] == y[j] == y[k] == y[l]:
+                        print(4)
+                        print(1, 1, 1, 1)
+                        print('UDLR')
+                        print('DULR')
+                        print('LURD')
+                        print('RDLU')
+                        return
+    print(5)
+    print(1, 1, 1, 1, 1)
+    print('UDLRL')
+    print('DULRL')
+    print('LURDL')
+    print('RDLUR')
+    print('LRDLU')
+
+main()
+
+=======
+Suggestion 4
+
+def get_direction(x, y, x1, y1):
+    if x == x1 and y == y1:
+        return ""
+    if x == x1:
+        if y1 > y:
+            return "U"
+        else:
+            return "D"
+    elif y == y1:
+        if x1 > x:
+            return "R"
+        else:
+            return "L"
+    else:
+        return ""
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        points.append(list(map(int, input().split())))
+    if n == 1:
+        print(0)
+        print(0)
+        print(" ")
+        print(" ")
+    elif n == 2:
+        print(1)
+        print(abs(points[1][0] - points[0][0]))
+        print("L" if points[1][0] < points[0][0] else "R")
+        print(" ")
+    else:
+        print(2)
+        print(abs(points[1][0] - points[0][0]))
+        print("L" if points[1][0] < points[0][0] else "R")
+        print("U" if points[1][1] < points[0][1] else "D")
+        print(" ")
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def func():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        X.append(a)
+        Y.append(b)
+    print(X)
+    print(Y)
+    if N == 1:
+        print(1)
+        print(1)
+        print('U')
+        return
+    if N == 2:
+        if X[0] == X[1]:
+            print(2)
+            print(1, 1)
+            print('RU')
+            print('UR')
+            return
+        elif Y[0] == Y[1]:
+            print(2)
+            print(1, 1)
+            print('UR')
+            print('RU')
+            return
+        else:
+            print(-1)
+            return
+    if N == 3:
+        if X[0] == X[1] == X[2]:
+            print(2)
+            print(1, 1)
+            print('RUU')
+            print('URD')
+            return
+        elif Y[0] == Y[1] == Y[2]:
+            print(2)
+            print(1, 1)
+            print('URR')
+            print('RUL')
+            return
+        else:
+            print(-1)
+            return
+    if N >= 4:
+        if X[0] == X[1] == X[2] == X[3]:
+            print(2)
+            print(1, 1)
+            print('RUUU')
+            print('URDD')
+            for i in range(4, N):
+                if X[i] != X[0]:
+                    print('R'*(i-3)+'U'+'R'*(N-1-i)+'D')
+                    return
+            return
+        elif Y[0] == Y[1] == Y[2] == Y[3]:
+            print(2)
+            print(1, 1)
+            print('URRR')
+            print('RULL')
+            for i in range(4, N):
+                if Y[i] != Y[0]:
+                    print('U'*(i-3)+'R'+'U'*(N-1-i)+'L')
+                    return
+            return
+        else:
+            print(-1)
+            return

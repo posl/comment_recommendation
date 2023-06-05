@@ -1,30 +1,49 @@
-#问题陈述
-#Serval、Fennec和Raccoon玩石头剪刀布，结果打成平手。
-#你得到的字符x和y分别代表Fennec和Raccoon投掷的手。这里，0代表石头，1代表剪刀，2代表纸。
-#打印与薮猫扔出的手相对应的字符，这可以唯一地确定。
-#
-#限制条件
-#x和y各为0、1或2。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#x y
-#
-#输出
-#打印答案，石头为0，剪刀为1，纸为2。
-#
-#输入样本 1
-#0 1
-#
-#输出样本 1
-#2
-#Fennec扔了石头，Raccoon扔了剪刀。薮猫必须投掷纸张，才能抽中。
-#
-#输入样本2
-#0 0
-#
-#样本输出2
-#0
-#Fennec扔了石头，Raccoon也扔了石头。要想平局，薮猫必须扔出石头。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x, y = map(int, input().split())
+    print((x - y + 3) % 3)
+
+=======
+Suggestion 2
+
+def main():
+    x, y = map(int, input().split())
+    print((y+1)%3)
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)
+
+=======
+Suggestion 4
+
+def problem204_a():
+    x, y = map(int, input().split())
+    if x == y:
+        print(x)
+    else:
+        print(3 - x - y)
+
+=======
+Suggestion 5
+
+def main():
+    x,y = map(int,input().split())
+    print((3-x-y)%3)
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(int, input().split())
+    print((x - y) % 3)

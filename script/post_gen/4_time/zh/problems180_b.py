@@ -1,45 +1,61 @@
-#问题陈述
-#给出的是N维空间中的一个点（x_1,...,x_N）。
-#求该点与原点之间的曼哈顿距离、欧几里德距离和切比雪夫距离。
-#这里，他们每个人的定义如下：
-#曼哈顿距离：|x_1|+...+|x_N|
-#欧几里德距离：(|x_1|^2+...+|x_N|^2)^(1/2)
-#切比雪夫距离：max(|x_1|,...,|x_N|)
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#-10^5 ≦ x_i ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#x_1 ... x_N
-#
-#输出
-#打印给定点和原点之间的曼哈顿距离、欧几里得距离和切比雪夫距离，每个都在自己的行中。
-#当每个值与正确值的绝对或相对误差不超过10^{-9}时，你的打印结果将被接受。
-#
-#输入样本 1
-#2
-#2 -1
-#
-#样本输出1
-#3
-#2.236067977499790
-#2
-#每个距离的计算方法如下：
-#曼哈顿距离：|2|+|-1|=3
-#欧氏距离：(|2|^2+|-1|^2)^(1/2)=2.2360679774997896...
-#切比雪夫距离: max(|2|,|-1|)=2
-#
-#样本输入2
-#10
-#3 -1 -4 1 -5 9 2 -6 5 -3
-#
-#样本输出2
-#39
-#14.387494569938159
-#9
+Synthesizing 6/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x = [abs(x[i]) for i in range(n)]
+    print(sum(x))
+    print(sum([x[i]*x[i] for i in range(n)])**0.5)
+    print(max(x))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x_abs = list(map(abs, x))
+    print(sum(x_abs))
+    print(sum([x**2 for x in x_abs])**0.5)
+    print(max(x_abs))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    x = list(map(int, input().split()))
+    x_abs = [abs(x[i]) for i in range(N)]
+    print(sum(x_abs))
+    print(sum(map(lambda x:x*x, x_abs))**0.5)
+    print(max(x_abs))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    print(sum(map(abs, x)))
+    print(sum(map(lambda x: x**2, x))**0.5)
+    print(max(map(abs, x)))
+
+=======
+Suggestion 5
+
+def manhattan_distance(N, x):
+    return sum([abs(i) for i in x])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = list(map(int, input().split()))
+    x_abs = list(map(abs, x))
+    print(sum(x_abs))
+    print(sum(i**2 for i in x_abs)**(1/2))
+    print(max(x_abs))

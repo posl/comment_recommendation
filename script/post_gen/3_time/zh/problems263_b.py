@@ -1,36 +1,146 @@
-#问题陈述
-#有N个人，称为Person 1, Person 2, ..., Person N。
-#第i个人（2 ≦ i ≦ N）的父母是第P_i个人。这里，保证P_i < i。
-#第1人离第N人有多少代？
-#
-#限制条件
-#2 ≦ N ≦ 50
-#1 ≦ P_i < i(2 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#p_2 p_3 ... p_n
-#
-#输出
-#将答案打印成一个正整数。
-#
-#输入样本 1
-#3
-#1 2
-#
-#样品输出1
-#2
-#第2人是第3人的父母，因此与第3人相差1代。
-#人1是人2的父母，因此与人3相隔两代。
-#因此，答案是2。
-#
-#输入样本2
-#10
-#1 2 3 4 5 6 7 8 9
-#
-#样本输出2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        x = i + 1
+        while x != -1:
+            x = p[x - 1]
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        cnt = 0
+        j = i
+        while j != -2:
+            j = p[j] - 1
+            cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        cnt = 0
+        j = i
+        while j != -1:
+            j = p[j] - 1
+            cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(n):
+        cnt = 0
+        x = i + 1
+        while x != -1:
+            x = p[x - 1]
+            cnt += 1
+        ans = max(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        x = i + 1
+        while x != -1:
+            x = p[x - 1]
+            ans += 1
+        print(ans)
+        ans = 0
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        x = i + 1
+        while x != -1:
+            x = P[x - 1]
+            ans += 1
+            if x == -1:
+                break
+    print(ans)
+
+=======
+Suggestion 7
+
+def func():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 1
+    for i in range(1, n):
+        count = 1
+        j = i
+        while p[j-1] != 0:
+            j = p[j-1]
+            count += 1
+        if count > ans:
+            ans = count
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_generation(p, generation):
+    if p == 1:
+        return generation
+    else:
+        return get_generation(p_list[p-2], generation+1)
+
+N = int(input())
+p_list = list(map(int, input().split()))
+print(get_generation(p_list[-1], 1))
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        ans = max(ans, dfs(i, P))
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, n):
+        ans = max(ans, dfs(i, p))
+    print(ans)

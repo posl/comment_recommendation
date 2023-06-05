@@ -1,41 +1,106 @@
-#问题陈述
-#当其中两个数字相等而另一个数字与这两个数字不同时，就说一个三倍的数字是差的。
-#你将得到三个整数A、B和C，如果这个三数是差数，就打印 "是"，否则就打印 "否"。
-#
-#限制条件
-#A、B、C都是1到9之间的整数（包括在内）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#如果给定的三元组是差的，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 7 5
-#
-#输出样本 1
-#是
-#A和C是相等的，但B与这两个数字不同，所以这个三倍数是差的。
-#
-#样本输入2
-#4 4 4
-#
-#样本输出 2
-#否
-#A、B、C都是相等的，所以这个三联体不差。
-#
-#输入样本3
-#4 9 6
-#
-#样本输出3
-#否
-#
-#样本输入 4
-#3 3 4
-#
-#样品输出4
-#是
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b and b != c:
+        print("Yes")
+    elif a == c and b != c:
+        print("Yes")
+    elif b == c and a != c:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def is_diff(a, b, c):
+    if a == b and a != c:
+        return True
+    elif a == c and a != b:
+        return True
+    elif b == c and b != a:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def main():
+    A,B,C = map(int,input().split())
+    if A==B and B==C:
+        print("否")
+    elif A==B or B==C or A==C:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b and b == c:
+        print("No")
+    elif a == b or a == c or b == c:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b and b != c or a == c and a != b or b == c and a != b:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 6
+
+def main():
+    A, B, C = map(int, input().split())
+    if A == B and A != C:
+        print("是")
+    elif B == C and B != A:
+        print("是")
+    elif A == C and A != B:
+        print("是")
+    else:
+        print("否")
+    return
+
+=======
+Suggestion 7
+
+def check(x,y,z):
+    if x==y and x!=z:
+        return True
+    elif x==z and x!=y:
+        return True
+    elif y==z and y!=x:
+        return True
+    else:
+        return False
+
+x,y,z=map(int,input().split())
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b and b != c:
+        print('Yes')
+    elif b == c and a != c:
+        print('Yes')
+    elif a == c and b != c:
+        print('Yes')
+    else:
+        print('No')

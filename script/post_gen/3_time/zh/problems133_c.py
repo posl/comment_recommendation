@@ -1,31 +1,152 @@
-#问题陈述
-#给你两个非负的整数L和R。
-#我们将选择两个整数i和j，使得L ≦ i < j ≦ R。
-#求(i×j) mod 2019的最小可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ L < R ≦ 2 × 10^9
-#
-#输入
-#输入由标准输入提供，格式如下：
-#L R
-#
-#输出
-#在给定条件下选择i和j时，打印(i×j)mod 2019的最小可能值。
-#
-#输入样本 1
-#2020 2040
-#
-#样本输出1
-#2
-#当（i，j）=（2020，2021），（i×j）mod 2019=2。
-#
-#样本输入2
-#4 5
-#
-#样本输出 2
-#20
-#我们只有一个选择：（i，j）=（4，5）。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(L, R):
+    if R - L >= 2019:
+        return 0
+    else:
+        ans = 2019
+        for i in range(L, R):
+            for j in range(i+1, R+1):
+                ans = min(ans, (i * j) % 2019)
+
+    return ans
+
+=======
+Suggestion 2
+
+def main():
+    L, R = map(int, input().split())
+
+    if R - L > 2019:
+        print(0)
+        exit()
+
+    min = 2019
+    for i in range(L, R):
+        for j in range(i + 1, R + 1):
+            if min > (i * j) % 2019:
+                min = (i * j) % 2019
+
+    print(min)
+
+=======
+Suggestion 3
+
+def main():
+    l, r = map(int, input().split())
+    if r - l >= 2019:
+        print(0)
+        exit()
+    min_num = 2019
+    for i in range(l, r):
+        for j in range(i + 1, r + 1):
+            min_num = min(min_num, (i * j) % 2019)
+            if min_num == 0:
+                print(0)
+                exit()
+    print(min_num)
+
+=======
+Suggestion 4
+
+def main():
+    L,R = map(int,input().split())
+    if R - L >= 2019:
+        print(0)
+    else:
+        min = 2019
+        for i in range(L,R):
+            for j in range(i+1,R+1):
+                if (i*j)%2019 < min:
+                    min = (i*j)%2019
+        print(min)
+
+=======
+Suggestion 5
+
+def main():
+    L, R = map(int, input().split())
+    if R - L >= 2019:
+        print(0)
+    else:
+        ans = 2019
+        for i in range(L, R):
+            for j in range(i + 1, R + 1):
+                ans = min(ans, (i * j) % 2019)
+        print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    l, r = map(int, input().split())
+    min = 2018
+    for i in range(l, r):
+        for j in range(i+1, r+1):
+            if min > (i*j) % 2019:
+                min = (i*j) % 2019
+    print(min)
+
+=======
+Suggestion 7
+
+def main():
+    l, r = map(int, input().split())
+    if r - l >= 2019:
+        print(0)
+        return
+    mod = 2019
+    ans = 2019
+    for i in range(l, r + 1):
+        for j in range(i + 1, r + 1):
+            ans = min(ans, (i * j) % mod)
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    l,r = list(map(int,input().split()))
+    if l == r:
+        print(0)
+    elif r-l >= 2019:
+        print(0)
+    else:
+        min = 2019
+        for i in range(l,r):
+            for j in range(i+1,r+1):
+                if (i*j)%2019 < min:
+                    min = (i*j)%2019
+        print(min)
+
+=======
+Suggestion 9
+
+def main():
+    L,R = map(int,input().split())
+    ans = 2019
+    for i in range(L,R):
+        for j in range(i+1,R+1):
+            ans = min(ans,(i*j)%2019)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    L,R = map(int,input().split())
+    if R-L >= 2019:
+        print(0)
+        return
+    ans = 2019
+    for i in range(L,R):
+        for j in range(i+1,R+1):
+            ans = min(ans,(i*j)%2019)
+    print(ans)

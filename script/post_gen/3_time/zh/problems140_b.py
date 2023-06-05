@@ -1,57 +1,141 @@
-#问题陈述
-#高桥去吃一个有N种菜的自助餐，他把所有的菜（菜1，菜2，...，菜N）都吃了一次。
-#他吃的第i道菜（1 ≦ i ≦ N）是菜A_i。
-#当他吃了第i道菜（1 ≦ i ≦ N）时，他获得了B_i的满意度积分。
-#此外，当他在吃完第i道菜（1 ≦ i ≦ N - 1）后又吃了第i+1道菜，他又获得了C_i的满意度积分。
-#找出他获得的满意度积分的总和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 20
-#1 ≦ A_i ≦ N
-#A_1, A_2, ..., A_N都是不同的。
-#1 ≦ B_i ≦ 50
-#1 ≦ C_i ≦ 50
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#C_1 C_2 ...C_{N-1}
-#
-#输出
-#打印高桥获得的满意度积分的总和，以整数表示。
-#
-#输入样本 1
-#3
-#3 1 2
-#2 5 4
-#3 6
-#
-#样本输出1
-#14
-#高桥总共获得了14个满意度积分，具体如下：
-#首先，他吃了第三道菜，获得了4个满意度积分。
-#接着，他吃了碟子1，获得了2个满意度积分。
-#最后，他吃了盘子2，获得了5+3=8个满意度积分。
-#
-#样本输入2
-#4
-#2 3 4 1
-#13 5 8 24
-#45 9 15
-#
-#样本输出2
-#74
-#
-#样本输入3
-#2
-#1 2
-#50 50
-#50
-#
-#样本输出3
-#150
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def add_b(a,b):
+    if len(a) != len(b):
+        return None
+    else:
+        l = len(a)
+        c = []
+        for i in range(l):
+            c.append(a[i]+b[i])
+        return c
+
+=======
+Suggestion 2
+
+def get_input():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    return N, A, B, C
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    # 计算满意度积分
+    result = 0
+    for i in range(n):
+        result += b[a[i] - 1]
+        if i < n - 1 and a[i + 1] - a[i] == 1:
+            result += c[a[i] - 1]
+
+    # 打印输出
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += b[a[i]-1]
+        if i < n-1 and a[i+1] == a[i]+1:
+            sum += c[a[i]-1]
+    print(sum)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += b[a[i]-1]
+        if i != n-1 and a[i] + 1 == a[i+1]:
+            sum += c[a[i]-1]
+    print(sum)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    s = 0
+    for i in range(n):
+        s += b[a[i] - 1]
+        if i < n - 1 and a[i + 1] == a[i] + 1:
+            s += c[a[i] - 1]
+
+    print(s)
+
+=======
+Suggestion 7
+
+def get_sum(N, A, B, C):
+    sum = 0
+    for i in range(N):
+        sum += B[A[i]-1]
+        if i < N-1 and A[i+1]-A[i] == 1:
+            sum += C[A[i]-1]
+    return sum
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = input().split()
+    B = input().split()
+    C = input().split()
+    satisfaction = 0
+    for i in range(N):
+        satisfaction += int(B[i])
+        if i < N-1 and int(A[i+1]) == int(A[i]) + 1:
+            satisfaction += int(C[i])
+    print(satisfaction)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        ans += b[a[i]-1]
+        if i < n-1 and a[i] + 1 == a[i+1]:
+            ans += c[a[i]-1]
+    print(ans)
+
+=======
+Suggestion 10
+
+def read_int():
+    return int(input())

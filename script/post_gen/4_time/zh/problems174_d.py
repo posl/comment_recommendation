@@ -1,45 +1,190 @@
-#问题陈述
-#一个祭坛上供奉着N块石头，从左到右排成一排。左边第i块石头的颜色（1 ≦ i ≦ N）以字符c_i的形式给你；R代表红色，W代表白色。
-#你可以按任何顺序做以下两种操作，次数不限：
-#选择两个石头（不一定是相邻的），然后交换它们。
-#选择一块石头并改变其颜色（从红色到白色，反之亦然）。
-#根据一个算命先生的说法，白色石头放在红色石头的左边会带来灾难。至少需要多少次操作才能达到没有这种白石头的情况？
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#c_i为R或W。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#c_{1}c_{2}...c_{N}
-#
-#输出
-#打印一个代表所需最小操作数的整数。
-#
-#输入样本 1
-#4
-#WWRR
-#
-#采样输出1
-#2
-#例如，下面的两个操作可以达到目的。
-#从左边开始交换第1个和第3个石头，结果是RWWR。
-#从左边开始改变第4个石头的颜色，结果是RWWW。
-#
-#输入样本2
-#2
-#RR
-#
-#采样输出2
-#0
-#可以是不需要操作的情况。
-#
-#样本输入3
-#8
-#WRWWRWRR
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    c = input()
+    cnt = 0
+    for i in range(n):
+        if c[i] == "W":
+            cnt += 1
+    ans = 0
+    for i in range(cnt):
+        if c[i] == "R":
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    c = list(input())
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+        return
+    if c[0] == 'R':
+        print(w)
+    else:
+        print(r)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    c = input()
+    w = c.count('W')
+    r = c.count('R')
+    if w == 0 or r == 0:
+        print(0)
+        return
+    w1 = 0
+    r1 = 0
+    for i in range(N):
+        if c[i] == 'W':
+            w1 += 1
+        else:
+            r1 += 1
+        if w1 == r:
+            print(r1)
+            return
+
+=======
+Suggestion 4
+
+def solve():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    colors = list(input())
+    left = 0
+    right = n - 1
+    count = 0
+    while left < right:
+        if colors[left] == 'W':
+            while left < right and colors[right] == 'W':
+                right -= 1
+            if left < right:
+                colors[left], colors[right] = colors[right], colors[left]
+                count += 1
+                left += 1
+                right -= 1
+        else:
+            left += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = input()
+    r = s.count("R")
+    w = s.count("W")
+    if r == 0 or w == 0:
+        print(0)
+        return
+    if r == w:
+        print(r)
+        return
+    if r > w:
+        print(w)
+        return
+    if r < w:
+        print(r)
+        return
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    s = input()
+    left = 0
+    right = n - 1
+    ans = 0
+    while True:
+        while left < n and s[left] == 'R':
+            left += 1
+        while right >= 0 and s[right] == 'W':
+            right -= 1
+        if left >= right:
+            break
+        ans += 1
+        left += 1
+        right -= 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solution():
+    n = int(input())
+    s = input()
+    w = 0
+    r = 0
+    for i in range(n):
+        if s[i] == 'W':
+            w += 1
+        else:
+            r += 1
+    if w == 0 or r == 0:
+        print(0)
+        return
+    if s[0] == 'R' and s[-1] == 'R':
+        print(r - 1)
+        return
+    if s[0] == 'W' and s[-1] == 'W':
+        print(w - 1)
+        return
+    if s[0] == 'W' and s[-1] == 'R':
+        print(r)
+        return
+    if s[0] == 'R' and s[-1] == 'W':
+        print(r)
+        return
+    print(min(r, w))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    c = input()
+    l = 0
+    r = n-1
+    ans = 0
+    while l < r:
+        if c[l] == 'W':
+            if c[r] == 'R':
+                ans += 1
+                l += 1
+                r -= 1
+            else:
+                r -= 1
+        else:
+            l += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve(n, c):
+    # i番目以前有几个W
+    w = [0] * (n + 1)
+    for i in range(n):
+        w[i + 1] = w[i] + (1 if c[i] == 'W' else 0)
+    # i番目以后有几个R
+    r = [0] * (n + 1)
+    for i in range(n - 1, -1, -1):
+        r[i] = r[i + 1] + (1 if c[i] == 'R' else 0)
+    return max(w[i] + r[i] for i in range(n + 1))

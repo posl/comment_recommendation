@@ -1,63 +1,217 @@
-#问题陈述
-#给你一个简单的无向图，有N个编号为1-N的顶点和M条编号为1-M的边。
-#请找出该图中的连接部分的数量。
-#
-#注释
-#一个简单的无定向图是一个简单的、有无定向边的图。
-#当且仅当一个图没有自环或多边时，它就是简单的。
-#一个图的子图是由该图的一些顶点和边形成的图。
-#当且仅当人们可以通过边在每一对顶点之间旅行时，该图是连接的。
-#连通组件是一个连通的子图，它不属于任何更大的连通子图。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#0 ≦ m ≦ ((n(n - 1))/(2))
-#1 ≦ u_i, v_i ≦ N
-#给定的图形很简单。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 3
-#1 2
-#1 3
-#4 5
-#
-#样本输出 1
-#2
-#给定的图形包含以下两个连接部分：
-#一个由顶点1，2，3和边1，2组成的子图；
-#一个由顶点4、5和边3组成的子图。
-#
-#
-#输入样本 2
-#5 0
-#
-#样本输出2
-#5
-#
-#样本输入3
-#4 6
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dfs(v):
+  seen[v] = True
+  for i in range(n):
+    if not seen[i] and G[v][i] == 1:
+      dfs(i)
+
+n,m = map(int,input().split())
+G = [[0]*n for i in range(n)]
+for i in range(m):
+  a,b = map(int,input().split())
+  G[a-1][b-1] = G[b-1][a-1] = 1
+
+seen = [False]*n
+res = 0
+for i in range(n):
+  if not seen[i]:
+    dfs(i)
+    res += 1
+print(res)
+
+=======
+Suggestion 2
+
+def dfs(v):
+    visited[v] = True
+    for i in range(n):
+        if not visited[i] and graph[v][i]:
+            dfs(i)
+
+n,m = map(int,input().split())
+graph = [[False for i in range(n)] for j in range(n)]
+visited = [False for i in range(n)]
+for i in range(m):
+    a,b = map(int,input().split())
+    graph[a-1][b-1] = True
+    graph[b-1][a-1] = True
+count = 0
+for i in range(n):
+    if not visited[i]:
+        dfs(i)
+        count += 1
+print(count)
+
+=======
+Suggestion 3
+
+def dfs(v):
+    seen[v] = True
+
+    for i in range(n):
+        if not graph[v][i]:
+            continue
+        if seen[i]:
+            continue
+        dfs(i)
+
+n, m = map(int, input().split())
+graph = [[False] * n for _ in range(n)]
+
+for i in range(m):
+    u, v = map(int, input().split())
+    graph[u - 1][v - 1] = graph[v - 1][u - 1] = True
+
+seen = [False] * n
+count = 0
+
+for v in range(n):
+    if seen[v]:
+        continue
+    dfs(v)
+    count += 1
+
+print(count)
+
+=======
+Suggestion 4
+
+def dfs(G, v, seen):
+    seen[v] = True
+
+    for next_v in G[v]:
+        if seen[next_v]:
+            continue
+        dfs(G, next_v, seen)
+
+=======
+Suggestion 5
+
+def dfs(i):
+    if not visited[i]:
+        visited[i] = True
+        for j in range(n):
+            if G[i][j]:
+                dfs(j)
+
+n, m = map(int, input().split())
+G = [[False]*n for i in range(n)]
+for i in range(m):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    G[u][v] = G[v][u] = True
+visited = [False]*n
+ans = 0
+for i in range(n):
+    if not visited[i]:
+        dfs(i)
+        ans += 1
+print(ans)
+
+=======
+Suggestion 6
+
+def dfs(x):
+    global n, m, g, seen
+    seen[x] = True
+    for i in range(n):
+        if g[x][i] == 1 and seen[i] == False:
+            dfs(i)
+
+n, m = map(int, input().split())
+g = [[0]*n for _ in range(n)]
+for i in range(m):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    g[u][v] = g[v][u] = 1
+seen = [False]*n
+ans = 0
+for i in range(n):
+    if seen[i] == False:
+        dfs(i)
+        ans += 1
+print(ans)
+
+=======
+Suggestion 7
+
+def dfs(v):
+    seen[v] = True
+    for i in range(n):
+        if graph[v][i] == 0:
+            continue
+        if seen[i]:
+            continue
+        dfs(i)
+
+n, m = map(int, input().split())
+graph = [[0 for i in range(n)] for i in range(n)]
+for i in range(m):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u][v] = 1
+    graph[v][u] = 1
+seen = [False for i in range(n)]
+ans = 0
+for i in range(n):
+    if seen[i]:
+        continue
+    dfs(i)
+    ans += 1
+print(ans)
+
+=======
+Suggestion 8
+
+def dfs(s):
+    global u, v, n, used
+    used[s] = True
+    for i in range(n):
+        if not used[i] and (u[i] == s or v[i] == s):
+            dfs(i)
+
+n, m = map(int, input().split())
+u = [0] * m
+v = [0] * m
+used = [False] * n
+for i in range(m):
+    u[i], v[i] = map(int, input().split())
+ans = 0
+for i in range(n):
+    if not used[i]:
+        dfs(i)
+        ans += 1
+print(ans)
+
+=======
+Suggestion 9
+
+def dfs(graph, v, visited):
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(graph, i, visited)
+
+n, m = map(int, input().split())
+graph = [[] for _ in range(n)]
+visited = [False] * n
+count = 0
+
+for _ in range(m):
+    u, v = map(int, input().split())
+    graph[u - 1].append(v - 1)
+    graph[v - 1].append(u - 1)
+
+for i in range(n):
+    if not visited[i]:
+        dfs(graph, i, visited)
+        count += 1
+
+print(count)

@@ -1,39 +1,120 @@
-#问题陈述
-#高桥在AtCoder银行有一笔100日元（日本的货币）的存款。
-#该银行的年利率为1%，每年复利。(小于1日元的部分被舍弃）。
-#假设除利息外没有其他因素影响高桥的余额，那么在多少年后，余额首次达到X日元或以上？
-#
-#限制条件
-# 101 ≦ X ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#X
-#
-#輸出
-#打印高桥的余额首次达到X日元或以上所需的年数。
-#
-#样本输入1
-#103
-#
-#样本输出1
-#3
-#一年后的余额为101日元。
-#两年后的余额是102日元。
-#三年后的余额是103日元。
-#因此，余额需要三年才能达到103日元或以上。
-#
-#样本输入2
-#1000000000000000000
-#
-#样本输出2
-#3760
-#
-#样本输入3
-#1333333333
-#
-#样本输出3
-#1706
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = int(input())
+    money = 100
+    count = 0
+    while money < x:
+        money = int(money * 1.01)
+        count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    year = 0
+    money = 100
+    while money < x:
+        money = int(money * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    y = 100
+    i = 0
+    while y < x:
+        y = int(y * 1.01)
+        i += 1
+    print(i)
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    y = 100
+    count = 0
+    while y < x:
+        y = y + y // 100
+        count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    i = 100
+    year = 0
+    while i < x:
+        i = int(i * 1.01)
+        year += 1
+    print(year)
+
+=======
+Suggestion 6
+
+def getYear(x):
+    i = 0
+    y = 100
+    while y < x:
+        y += int(y * 0.01)
+        i += 1
+    return i
+
+=======
+Suggestion 7
+
+def get_year(x):
+    y = 100
+    year = 0
+    while y < x:
+        y = int(y * 1.01)
+        year += 1
+    return year
+
+=======
+Suggestion 8
+
+def f(x):
+    y = 100
+    for i in range(10**18):
+        y = int(y * 1.01)
+        if y >= x:
+            return i+1
+
+x = int(input())
+print(f(x))
+
+=======
+Suggestion 9
+
+def main():
+    x = int(input())
+    balance = 100
+    year = 0
+    while balance < x:
+        balance += balance//100
+        year += 1
+    print(year)
+
+=======
+Suggestion 10
+
+def main():
+    x = int(input())
+    y = 100
+    count = 0
+    while y < x:
+        y = int(y * 1.01)
+        count += 1
+    print(count)

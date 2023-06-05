@@ -1,46 +1,134 @@
-#问题陈述
-#我们有两个大小为N的排列组合P和Q（也就是说，P和Q都是(1,2,...,N)的重排）。
-#在这些排列组合中，让P和Q分别为第a和第b个最小的排列组合。找出|a-b|。
-#
-#备注
-#对于两个序列X和Y，当且仅当存在一个整数k，使得X_i = Y_i(1 ≦ i < k)且X_k < Y_k时，称X比Y小。
-#
-#限制条件
-#2 ≦ N ≦ 8
-#P和Q是大小为N的排列组合。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#P_1 P_2 ...P_N
-#Q_1 Q_2 ...Q_N
-#
-#输出
-#打印|a-b|.
-#
-#样本输入1
-#3
-#1 3 2
-#3 1 2
-#
-#样本输出1
-#3
-#有6个大小为3的排列组合：(1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), 以及(3,2,1)。其中，(1,3,2)和(3,1,2)在词汇表中排在第2位和第5位，所以答案是|2-5|=3。
-#
-#输入样本2
-#8
-#7 3 5 4 2 1 6 8
-#3 8 2 5 4 6 7 1
-#
-#样本输出2
-#17517
-#
-#样本输入3
-#3
-#1 2 3
-#1 2 3
-#
-#样本输出 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def permutation(n):
+    if n == 1:
+        return [[1]]
+    else:
+        return [[n] + p for p in permutation(n-1)] + [p + [n] for p in permutation(n-1)]
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+
+    def permutation_to_int(p):
+        ret = 0
+        for i in range(len(p)):
+            ret += p[i] * 10 ** (len(p) - i - 1)
+        return ret
+
+    p_int = permutation_to_int(p)
+    q_int = permutation_to_int(q)
+    print(abs(p_int - q_int))
+
+=======
+Suggestion 3
+
+def main():
+    # N = int(input())
+    # P = list(map(int, input().split()))
+    # Q = list(map(int, input().split()))
+    N = 3
+    P = [1, 3, 2]
+    Q = [3, 1, 2]
+    print(abs(index(P) - index(Q)))
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    q = [int(i) for i in input().split()]
+
+    def permutation_index(p):
+        index = 0
+        for i in range(len(p)):
+            index += p[i] - 1
+            index *= len(p) - i - 1
+        return index
+
+    print(abs(permutation_index(p) - permutation_index(q)))
+
+
+solve()
+
+=======
+Suggestion 5
+
+def permutate(n):
+    if n == 0:
+        return [[]]
+    else:
+        return [[x] + p for x in range(n) for p in permutate(n - 1) if x not in p]
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = [int(x) for x in input().split()]
+    q = [int(x) for x in input().split()]
+
+    def permutation_to_number(l):
+        if len(l) == 1:
+            return 0
+        return l[-1] + permutation_to_number([x-1 for x in l[:-1] if x > l[-1]])
+
+    print(abs(permutation_to_number(p) - permutation_to_number(q)))
+
+=======
+Suggestion 7
+
+def solve(n,p,q):
+    l = []
+    for i in range(n):
+        l.append(i+1)
+    p_index = 0
+    q_index = 0
+    for i in range(n):
+        p_index += (l.index(p[i])) * (n-i-1)
+        l.remove(p[i])
+        q_index += (l.index(q[i])) * (n-i-1)
+        l.remove(q[i])
+    return abs(p_index - q_index)
+
+=======
+Suggestion 8
+
+def solve(n, p, q):
+    def permutation(n):
+        if n == 0:
+            return [[]]
+        else:
+            return [[i] + perm for i in range(1, n + 1) for perm in permutation(n - 1) if i not in perm]
+
+    def index(p):
+        return permutation(len(p)).index(p) + 1
+
+    return abs(index(p) - index(q))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = list(map(int, input().split()))
+
+    print(abs(p.index(1) - q.index(1)))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split(" ")))
+    q = list(map(int, input().split(" ")))
+    print(abs(p.index(1) - q.index(1)))

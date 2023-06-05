@@ -1,42 +1,134 @@
-#问题陈述
-#我们有N个骰子，从左到右排成一行。从左边开始的第i个骰子在投掷时显示出从1到p_i的p_i个数字，概率相同。
-#我们将选择相邻的K个骰子，独立投掷每个骰子，并计算出所显示的数字之和。找出这个和的预期值的最大可能值。
-#
-#限制条件
-#1 ≤ k ≤ n ≤ 200000
-#1 ≤ p_i ≤ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#p_1 ... p_N
-#
-#输出
-#打印所示数字之和的预期值的最大可能值。
-#当你的输出与我们的答案的绝对或相对误差最多为10^{-6}时，你的输出将被视为正确。
-#
-#输入样本 1
-#5 3
-#1 2 2 4 5
-#
-#样本输出1
-#7.000000000000
-#当我们从左边开始投掷第三个、第四个和第五个骰子时，所显示的数字之和的期望值是7，这是我们能够达到的最大值。
-#
-#样本输入2
-#4 1
-#6 6 6 6
-#
-#样本输出2
-#3.500000000000
-#无论我们选择哪种骰子，所示数字的期望值都是3.5。
-#
-#样本输入3
-#10 4
-#17 13 13 12 15 20 10 13 17 11
-#
-#样本输出3
-#32.000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    sum = 0
+    for i in range(n-k+1):
+        tmp = 0
+        for j in range(i,i+k):
+            tmp += p[j]
+        sum = max(sum,tmp)
+    print((sum+k)/2)
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    p = list(map(int, input().split()))
+    p = [0] + p
+    s = [0]
+    for i in range(1, N + 1):
+        s.append(s[i - 1] + p[i])
+    ans = 0
+    for i in range(N - K + 1):
+        ans = max(ans, (s[i + K] - s[i]) / 2 + s[i])
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    p = list(map(int,input().split()))
+    p2 = [0]*(n+1)
+    for i in range(n):
+        p2[i+1] = p2[i] + p[i]
+    ans = 0
+    for i in range(n-k+1):
+        ans = max(ans,(p2[i+k]-p2[i]+k)/2)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    s = sum(p[:k])
+    m = s
+    for i in range(n - k):
+        s = s - p[i] + p[i + k]
+        if s > m:
+            m = s
+    print((m + k) / 2)
+
+main()
+
+=======
+Suggestion 5
+
+def solve(n, k, ps):
+    ps = sorted(ps)
+    s = sum(ps[-k:])
+    return (s+k)/2
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p_sum = [0] * (n + 1)
+    for i in range(n):
+        p_sum[i + 1] = p_sum[i] + p[i]
+    ans = 0
+    for i in range(n - k + 1):
+        ans = max(ans, (p_sum[i + k] - p_sum[i]) / 2 + p_sum[i])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    p = list(map(int, input().split()))
+    p.sort()
+    sum = 0
+    for i in p[n-k:n]:
+        sum += i
+    print((sum+k)/2)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    pl = list(map(int, input().split()))
+    p_sum = sum(pl[:k])
+    max_p_sum = p_sum
+    for i in range(k, n):
+        p_sum += pl[i] - pl[i-k]
+        if p_sum > max_p_sum:
+            max_p_sum = p_sum
+    print((max_p_sum + k) / 2)
+
+=======
+Suggestion 9
+
+def max_expected_value(n, k, p):
+    s = sum(p[0:k])
+    max_s = s
+    for i in range(k, n):
+        s += p[i] - p[i-k]
+        max_s = max(max_s, s)
+    return (max_s + k) / 2
+
+=======
+Suggestion 10
+
+def main():
+  n, k = map(int, input().split())
+  p = list(map(int, input().split()))
+  p = [0] + p
+  s = [0] * (n + 1)
+  for i in range(1, n + 1):
+    s[i] = s[i - 1] + p[i]
+  t = 0
+  for i in range(n - k + 1):
+    t = max(t, (s[i + k] - s[i]) / 2 + s[i])
+  print(t)

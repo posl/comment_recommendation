@@ -1,93 +1,106 @@
-#问题陈述
-#在一个有正方形单元格的二维网格上，我们有两个图形S和T。
-#S位于一个有N行N列的网格中，由S_{i,j}为#的单元格组成。
-#T位于同一个有N行N列的网格中，由T_{i,j}为#的单元格组成。
-#判断是否有可能通过90度的旋转和平移使S和T完全匹配。
-#
-#约束条件
-#1 ≦ N ≦ 200
-#S和T中的每一个都由#和.组成。
-#S和T中的每一个都至少包含一个#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_{1,1}S_{1,2}...S_{1,N}
-#.
-#.
-#.
-#S_{N,1}S_{N,2}...S_{N,N}
-#T_{1,1}T_{1,2}...T_{1,N}
-#.
-#.
-#.
-#T_{N,1}T_{N,2}...T_{N,N}
-#
-#输出
-#如果通过90度的旋转和平移可以完全匹配S和T，则打印Yes，否则打印No。
-#
-#输入样本 1
-#5
-#.....
-#..#..
-#.###.
-#.....
-#.....
-#.....
-#.....
-#....#
-#...##
-#....#
-#
-#样本输出1
-#Yes
-#我们可以通过逆时针旋转90度和平移，将S与T匹配。
-#
-#样本输入2
-#5
-######
-###..#
-##..##
-######
-#.....
-######
-##..##
-###..#
-######
-#.....
-#
-#样本输出2
-#No
-#不可能通过90度的旋转和平移来匹配它们。
-#
-#输入样本3
-#4
-##...
-#..#.
-#..#.
-#....
-##...
-##...
-#..#.
-#....
-#
-#样本输出3
-#Yes
-#S和T中的每一个都可能没有连接。
-#
-#采样输入4
-#4
-##...
-#.##.
-#..#.
-#....
-###..
-##...
-#..#.
-#....
-#
-#样本输出4
-#No
-#注意，不允许只旋转或平移一个图形的一部分；只允许旋转或平移整个图形。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem218_c():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(input()))
+    for i in range(n):
+        t.append(list(input()))
+
+    if s == t:
+        print('Yes')
+        return
+
+    for i in range(3):
+        t = rotate(t)
+        if s == t:
+            print('Yes')
+            return
+
+    print('No')
+
+=======
+Suggestion 2
+
+def rotate90(S):
+    N = len(S)
+    T = [['' for i in range(N)] for j in range(N)]
+    for i in range(N):
+        for j in range(N):
+            T[j][N-1-i] = S[i][j]
+    return T
+
+=======
+Suggestion 3
+
+def check(S,T):
+    for i in range(len(S)):
+        for j in range(len(S)):
+            if S[i][j] != T[i][j]:
+                return False
+    return True
+
+=======
+Suggestion 4
+
+def rotate90(s):
+    return [''.join(x) for x in zip(*s[::-1])]
+
+=======
+Suggestion 5
+
+def rotate90(s):
+    s2 = s[:]
+    for i in range(len(s)):
+        for j in range(len(s)):
+            s2[j][len(s)-i-1] = s[i][j]
+    return s2
+
+=======
+Suggestion 6
+
+def rotate90(data):
+    # 逆时针旋转90度
+    n = len(data)
+    res = [[0 for _ in range(n)] for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            res[i][j] = data[j][n - i - 1]
+    return res
+
+=======
+Suggestion 7
+
+def is_same(s, t):
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if s[i][j] != t[i][j]:
+                return False
+    return True
+
+=======
+Suggestion 8
+
+def rotate90(grid):
+    n = len(grid)
+    new_grid = [['.'] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            new_grid[j][n - i - 1] = grid[i][j]
+    return new_grid
+
+=======
+Suggestion 9
+
+def rotate_90(li):
+    li_new = []
+    for i in range(len(li)):
+        li_new.append([])
+        for j in range(len(li)):
+            li_new[i].append(li[len(li)-1-j][i])
+    return li_new

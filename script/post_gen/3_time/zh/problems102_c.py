@@ -1,53 +1,150 @@
-#问题陈述
-#Snuke有一个长度为N的整数序列A。
-#他将自由选择一个整数b。
-#在这里，如果A_i和b+i相距甚远，他就会感到悲伤。
-#更具体地说，Snuke的悲伤程度的计算方法如下：
-#abs(A_1 - (b+1)) + abs(A_2 - (b+2))+ ...+ abs(A_N - (b+N))
-#这里，abs(x)是一个返回x的绝对值的函数。
-#找到Snuke的最小可能的悲伤。
-#
-#约束条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印Snuke的最小可能的悲伤。
-#
-#样本输入1
-#5
-#2 2 3 5 5
-#
-#样本输出 1
-#2
-#如果我们选择b=0，Snuke的悲伤程度将是abs(2-(0+1))+abs(2-(0+2))+abs(3-(0+3))+abs(5-(0+4))+abs(5-(0+5))=2。
-#任何b的选择都不会使Snuke的悲伤程度小于2，所以答案是2。
-#
-#输入样本2
-#9
-#1 2 3 4 5 6 7 8 9
-#
-#样本输出2
-#0
-#
-#样本输入3
-#6
-#6 5 4 3 2 1
-#
-#样本输出3
-#18
-#
-#样本输入4
-#7
-#1 1 1 1 2 3 4
-#
-#样本输出 4
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i] - (i + 1) for i in range(n)]
+    a.sort()
+    b = a[n // 2]
+    ans = sum(abs(a[i] - b) for i in range(n))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - (i + 1)
+    b.sort()
+    if n % 2 == 1:
+        ans = 0
+        for i in range(n):
+            ans += abs(b[i] - b[n // 2])
+        print(ans)
+    else:
+        ans1 = 0
+        for i in range(n):
+            ans1 += abs(b[i] - b[n // 2])
+        ans2 = 0
+        for i in range(n):
+            ans2 += abs(b[i] - b[n // 2 - 1])
+        print(min(ans1, ans2))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i] - (i + 1) for i in range(n)]
+    a.sort()
+    b = a[n // 2]
+    print(sum([abs(x - b) for x in a]))
+
+=======
+Suggestion 4
+
+def get_min_sadness(n, a):
+    min_sadness = 1000000000000000000000000
+    for b in range(-100, 101):
+        sadness = 0
+        for i in range(n):
+            sadness += abs(a[i] - (b + i + 1))
+        min_sadness = min(min_sadness, sadness)
+    return min_sadness
+
+n = int(input())
+a = list(map(int, input().split()))
+print(get_min_sadness(n, a))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i]-(i+1) for i in range(n)]
+    a.sort()
+    b = a[n//2]
+    print(sum([abs(a[i]-b) for i in range(n)]))
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i]-(i+1) for i in range(n)]
+    a.sort()
+    b = a[n//2]
+    ans = 0
+    for i in range(n):
+        ans += abs(a[i]-b)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # A = [2,2,3,5,5]
+    # A = [1,2,3,4,5,6,7,8,9]
+    # A = [6,5,4,3,2,1]
+    # A = [1,1,1,1,2,3,4]
+    # A = [1,1,1,1,1,1,1]
+    # A = [1,2,3,4,5,6,7,8,9]
+    # A = [1,2,3,4,5,6,7,8,9,10]
+    # A = [1,2,3,4,5,6,7,8,9,10,11]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+    # A = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+    # A = [2,2,3,5,5]
+    # A = [1,2,3
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = [a[i] - (i + 1) for i in range(n)]
+    a.sort()
+    b = a[n // 2]
+    print(sum(abs(a[i] - b) for i in range(n)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += a[i] - (i+1)
+    sum = abs(sum)
+    print(sum)
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    A = list(map(int, input().split()))
+    A = [A[i] - (i + 1) for i in range(n)]
+    A.sort()
+    b = A[n // 2]
+    print(sum(abs(a - b) for a in A))

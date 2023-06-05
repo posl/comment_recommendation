@@ -1,76 +1,195 @@
-#问题陈述
-#给出的是一棵有N个顶点的树G。
-#顶点的编号为1到N，第i条边连接着顶点a_i和顶点b_i。
-#考虑用一定数量的颜色涂抹G中的边。
-#我们想给它们上色，以便对每个顶点来说，与该顶点相连的边的颜色都是不同的。
-#在满足上述条件的着色方法中，构建一个使用颜色数量最少的方法。
-#
-#限制条件
-# 2 ≦ N ≦ 10^5
-# 1 ≦ a_i < b_i ≦ N
-#输入的所有数值都是整数。
-#给定的图是一棵树。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#
-#输出
-#打印N行。
-#第一行应该包含K，即使用的颜色数量。
-#第（i+1）行（1 ≦ i ≦ N-1）应该包含c_i，代表第i条边的颜色的整数，其中1 ≦ c_i ≦ K必须成立。
-#如果有多个满足条件的最小颜色数的着色，打印其中任何一个都会被接受。
-#
-#输入样本 1
-#3
-#1 2
-#2 3
-#
-#样本输出 1
-#2
-#1
-#2
-#
-#样本输入2
-#8
-#1 2
-#2 3
-#2 4
-#2 5
-#4 7
-#5 6
-#6 8
-#
-#样本输出2
-#4
-#1
-#2
-#3
-#4
-#1
-#1
-#2
-#
-#样本输入3
-#6
-#1 2
-#1 3
-#1 4
-#1 5
-#1 6
-#
-#样本输出 3
-#5
-#1
-#2
-#3
-#4
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dfs(start, parent, color):
+    c = 1
+    for to in edges[start]:
+        if to == parent:
+            continue
+        if c == color:
+            c += 1
+        ans.append((start, to, c))
+        dfs(to, start, c)
+        c += 1
+
+
+n = int(input())
+edges = [[] for _ in range(n + 1)]
+for _ in range(n - 1):
+    a, b = map(int, input().split())
+    edges[a].append(b)
+    edges[b].append(a)
+
+ans = []
+dfs(1, 0, 0)
+print(len(ans))
+for a, b, c in ans:
+    print(c)
+
+=======
+Suggestion 2
+
+def dfs(v,p=-1):
+    global k
+    c = 1
+    for u in g[v]:
+        if u==p:continue
+        if c==c1 or c==p1:c+=1
+        ans[u] = c
+        c1,p1 = c,p
+        c+=1
+        k = max(k,c)
+        dfs(u,v)
+
+n = int(input())
+g = [[] for _ in range(n+1)]
+for _ in range(n-1):
+    a,b = map(int,input().split())
+    g[a].append(b)
+    g[b].append(a)
+ans = [0]*(n+1)
+k = 0
+dfs(1)
+print(k)
+for i in range(1,n):
+    print(ans[i])
+
+=======
+Suggestion 3
+
+def dfs(v, p, c):
+    color[c] = True
+    ans[v] = c
+    k = 1
+    for i in range(len(g[v])):
+        if g[v][i] == p: continue
+        while color[k]: k += 1
+        dfs(g[v][i], v, k)
+
+n = int(input())
+g = [[] for _ in range(n+1)]
+for _ in range(n-1):
+    a, b = map(int, input().split())
+    g[a].append(b)
+    g[b].append(a)
+
+ans = [0] * (n+1)
+color = [False] * (n+1)
+dfs(1, 0, 0)
+print(max(ans))
+for i in range(1, n):
+    print(ans[i])
+
+=======
+Suggestion 4
+
+def dfs(v,p):
+    c = 1
+    for i in g[v]:
+        if i == p:
+            continue
+        if c == color[p]:
+            c += 1
+        color[i] = c
+        dfs(i,v)
+        c += 1
+
+n = int(input())
+g = [[] for i in range(n+1)]
+for i in range(n-1):
+    a,b = map(int,input().split())
+    g[a].append(b)
+    g[b].append(a)
+
+color = [0] * (n+1)
+dfs(1,0)
+print(max(color))
+for i in range(1,n):
+    print(color[i])
+
+=======
+Suggestion 5
+
+def dfs(v, p, c):
+    color = 1
+    for i in G[v]:
+        if i == p:
+            continue
+        if color == c:
+            color += 1
+        ans[i] = color
+        dfs(i, v, color)
+        color += 1
+
+N = int(input())
+G = [[] for _ in range(N)]
+ans = [0] * N
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
+
+dfs(0, -1, -1)
+print(max(ans))
+for i in ans:
+    print(i)
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def get_input():
+    n = int(input())
+    edges = []
+    for i in range(n-1):
+        edge = list(map(int,input().split()))
+        edges.append(edge)
+    return n, edges
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = []
+    b = []
+    for i in range(N-1):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    print(a)
+    print(b)
+
+=======
+Suggestion 9
+
+def dfs(v, p, c):
+    color = 1
+    for u in g[v]:
+        if u == p:
+            continue
+        if color == c:
+            color += 1
+        ans[(v, u)] = ans[(u, v)] = color
+        dfs(u, v, color)
+        color += 1
+
+n = int(input())
+g = [[] for _ in range(n)]
+for _ in range(n - 1):
+    a, b = map(lambda x: int(x) - 1, input().split())
+    g[a].append(b)
+    g[b].append(a)
+
+ans = {}
+dfs(0, -1, -1)
+print(max(ans.values()))
+for i in range(n - 1):
+    print(ans[(i, i + 1)])

@@ -1,33 +1,116 @@
-#问题陈述
-#给出的是一个长度为N的数列A。
-#求每一对元素的平方差之和： sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2.
-#
-#限制条件
-#2 ≦ N ≦ 3 × 10^5
-#|A_i| ≦ 200
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#2 8 4
-#
-#样本输出1
-#56
-#我们有 sum_{i = 2}^{N} sum_{j = 1}^{i - 1} (A_i - A_j)^2 = (8 - 2) ^2 + (4 - 2) ^2 + (4 - 8) ^2 = 56。
-#
-#样本输入2
-#5
-#-5 8 9 -4 -3
-#
-#样本输出2
-#950
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N = int(input())
+    A = list(map(int, input().split()))
+    return N, A
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += (n - i - 1) * a[i] ** 2
+        sum -= (n - i - 1) * a[i] * 2 * sum
+    print(sum)
+
+=======
+Suggestion 3
+
+def main():
+    #输入
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    #计算
+    ans = 0
+    for i in range(n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+
+    #输出
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        for j in range(i):
+            ans += (A[i] - A[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    ans = 0
+    for i in range(n):
+        s -= a[i]
+        ans += a[i] * s
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # ここにコードを書く
+    ans = 0
+    for i in range(n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N):
+        ans += (N - i) * (A[i] ** 2)
+        ans -= 2 * A[i] * sum(A[:i])
+        ans += sum(A[:i]) ** 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #print(n,a)
+    ans = 0
+    for i in range(1,n):
+        for j in range(i):
+            ans += (a[i] - a[j]) ** 2
+    print(ans)

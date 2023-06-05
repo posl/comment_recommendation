@@ -1,35 +1,203 @@
-#问题陈述
-#高桥王国有N个城镇，编号为1到N。
-#每个镇都有一个传送器。第i个镇的传送器（1 ≦ i ≦ N）会把你送到A_i镇。
-#高桥，国王，喜欢正整数K。这个自私的国王想知道，如果他从1号镇开始，从那里正好使用传送器K次，他将会在什么镇上。
-#帮助国王写一个程序来回答这个问题。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ K ≦ 10^{18}
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#如果国王从城镇1开始，并从那里使用传送器整整K次，则打印出代表国王将在的城镇的整数。
-#
-#输入样本 1
-#4 5
-#3 2 4 1
-#
-#样本输出1
-#4
-#如果我们从1号镇开始，使用5次传送器，我们的旅行将是这样的：1 -> 3 -> 4 -> 1 -> 3 -> 4.
-#
-#输入样本2
-#6 727202214173249351
-#6 5 2 5 3 2
-#
-#样本输出2
-#2
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    i = 0
+    while k > 0:
+        if i == n:
+            i = 0
+        k -= 1
+        i = a[i] - 1
+    print(i + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    visited = [False for _ in range(N)]
+
+    cnt = 0
+    while not visited[0]:
+        visited[cnt] = True
+        cnt = A[cnt] - 1
+
+    cnt2 = 0
+    while visited[cnt]:
+        visited[cnt] = False
+        cnt = A[cnt] - 1
+        cnt2 += 1
+
+    K %= cnt2
+
+    for _ in range(K):
+        cnt = A[cnt] - 1
+
+    print(cnt+1)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    next_town = [1]
+    next_town.append(a[0])
+    for i in range(n):
+        next_town.append(a[next_town[-1]-1])
+    #print(next_town)
+    next_town = next_town[1:]
+    #print(next_town)
+    #print(next_town.index(next_town[-1]))
+    #print(next_town[next_town.index(next_town[-1])+1:])
+    if k <= next_town.index(next_town[-1]):
+        print(next_town[k])
+    else:
+        k = k - next_town.index(next_town[-1])
+        k = k % len(next_town[next_town.index(next_town[-1])+1:])
+        print(next_town[next_town.index(next_town[-1])+1:][k])
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [1]
+    for i in range(1, n+1):
+        b.append(a[b[i-1]-1])
+    c = [1]
+    for i in range(1, n+1):
+        c.append(b[i])
+        if c.count(c[i]) == 2:
+            break
+    if k < i:
+        print(c[k+1])
+    else:
+        print(c[(k-i)%(i+1)+i+1])
+
+=======
+Suggestion 5
+
+def solve(n,k,a):
+    a = [i-1 for i in a]
+    s = [1]
+    c = [0]*n
+    c[0] = 1
+    while c[s[-1]] == 0:
+        s.append(a[s[-1]])
+        c[s[-1]] = c[s[-2]]+1
+    l = c[s[-1]]-1
+    r = len(s)-1
+    if k < l:
+        print(s[k]+1)
+    else:
+        print(s[(k-l)%(r-l)+l]+1)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # print(N, K)
+    # print(A)
+
+    # 1. 以A[0]为起点，寻找环
+    # 2. 求出环的长度
+    # 3. 求出环的起点
+    # 4. 求出环的终点
+    # 5. 求出环的长度
+    # 6. 求出环上第K个位置的元素
+
+    # 1. 以A[0]为起点，寻找环
+    # 2. 求出环的长度
+    # 3. 求出环的起点
+    # 4. 求出环的终点
+    # 5. 求出环的长度
+    # 6. 求出环上第K个位置的元素
+
+    # 1. 以A[0]为起点，寻找环
+    # 2. 求出环的长度
+    # 3. 求出环的起点
+    # 4. 求出环的终点
+    # 5. 求出环的长度
+    # 6. 求出环上第K个位置的元素
+
+    # 1. 以A[0]为起点，寻找环
+    # 2. 求出环的长度
+    # 3. 求出环的起点
+    # 4. 求出环的终点
+    # 5. 求出环的长度
+    # 6. 求出环上第K个位置的元素
+
+    # 1. 以A[0]为起点，寻找环
+    # 2. 求出环的长度
+    # 3. 求出环的起点
+    # 4. 求出环的终点
+    # 5. 求出环的长度
+    # 6. 求出环上第
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    t = [0] * N
+    now = 0
+    cnt = 0
+    while t[now] == 0:
+        t[now] = cnt
+        cnt += 1
+        now = A[now] - 1
+    loop = cnt - t[now]
+    if K < t[now]:
+        now = 0
+        for i in range(K):
+            now = A[now] - 1
+    else:
+        K -= t[now]
+        K %= loop
+        now = 0
+        for i in range(K):
+            now = A[now] - 1
+    print(now + 1)
+
+=======
+Suggestion 8
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    k -= 1
+    visited = [False] * n
+    visited[0] = True
+    path = [0]
+    while k:
+        k -= 1
+        path.append(a[path[-1]] - 1)
+        if visited[path[-1]]:
+            break
+        visited[path[-1]] = True
+    if k:
+        print(path[k % len(path)] + 1)
+    else:
+        print(path[-1] + 1)
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    i = 1
+    for j in range(k):
+        i = a[i-1]
+    print(i)

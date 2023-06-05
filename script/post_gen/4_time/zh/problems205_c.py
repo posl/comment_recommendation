@@ -1,39 +1,207 @@
-#问题说明
-#对于一个基数X，它乘以Y次方的乘积被称为X到Y次方，表示为pow(X, Y)。
-#例如，我们有pow(2,3)=2×2×2=8。
-#给出三个整数A、B和C，比较pow(A,C)和pow(B,C)以确定哪个更大。
-#
-#限制条件
-#-10^9 ≦ A,B ≦ 10^9
-#1 ≦ C ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#如果pow(A,C)<pow(B,C)，打印<；如果pow(A,C)>pow(B,C)，打印>；如果pow(A,C)=pow(B,C)，打印=。
-#
-#输入样本 1
-#3 2 4
-#
-#输出示例 1
-#>
-#我们有 pow(3,4)=81 和 pow(2,4)=16。
-#
-#样本输入2
-#-7 7 2
-#
-#样本输出2
-#=
-#我们有 pow(-7,2)=49 和 pow(7,2)=49。
-#
-#样本输入3
-#-8 6 3
-#
-#样本输出3
-#<
-#我们有 pow(-8,3)=-512 和 pow(6,3)=216。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if c % 2 == 0:
+        if abs(a) > abs(b):
+            print('>')
+        elif abs(a) < abs(b):
+            print('<')
+        else:
+            print('=')
+    else:
+        if a > b:
+            print('>')
+        elif a < b:
+            print('<')
+        else:
+            print('=')
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    if a > 0 and b > 0:
+        if a > b:
+            print(">")
+        elif a < b:
+            print("<")
+        else:
+            print("=")
+    elif a < 0 and b < 0:
+        if c % 2 == 0:
+            a = abs(a)
+            b = abs(b)
+        if a > b:
+            print("<")
+        elif a < b:
+            print(">")
+        else:
+            print("=")
+    elif a < 0 and b > 0:
+        if c % 2 == 0:
+            a = abs(a)
+        if a > b:
+            print("<")
+        elif a < b:
+            print(">")
+        else:
+            print("=")
+    elif a > 0 and b < 0:
+        if c % 2 == 0:
+            b = abs(b)
+        if a > b:
+            print(">")
+        elif a < b:
+            print("<")
+        else:
+            print("=")
+
+=======
+Suggestion 3
+
+def pow(a, b):
+    if b == 0:
+        return 1
+    elif b == 1:
+        return a
+    else:
+        return a * pow(a, b - 1)
+
+a, b, c = map(int, input().split())
+
+=======
+Suggestion 4
+
+def pow(a, b):
+    if b == 0:
+        return 1
+    else:
+        return a * pow(a, b - 1)
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print('=')
+    elif a < b:
+        if c % 2 == 0:
+            if abs(a) == abs(b):
+                print('=')
+            elif abs(a) < abs(b):
+                print('<')
+            else:
+                print('>')
+        else:
+            print('<')
+    else:
+        if c % 2 == 0:
+            if abs(a) == abs(b):
+                print('=')
+            elif abs(a) < abs(b):
+                print('<')
+            else:
+                print('>')
+        else:
+            print('>')
+
+=======
+Suggestion 6
+
+def compare_pow(a,b,c):
+    if pow(a,c) > pow(b,c):
+        return '>'
+    elif pow(a,c) < pow(b,c):
+        return '<'
+    else:
+        return '='
+
+=======
+Suggestion 7
+
+def main():
+    a, b, c = map(int, input().split())
+    if c%2==0:
+        a = abs(a)
+        b = abs(b)
+    if a<b:
+        print("<")
+    elif a>b:
+        print(">")
+    else:
+        print("=")
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print("=")
+    elif a > 0 and b > 0:
+        if a > b:
+            print(">")
+        else:
+            print("<")
+    elif a < 0 and b < 0:
+        if c % 2 == 0:
+            if a > b:
+                print("<")
+            else:
+                print(">")
+        else:
+            if a > b:
+                print(">")
+            else:
+                print("<")
+    elif a > 0 and b < 0:
+        if c % 2 == 0:
+            if a > abs(b):
+                print(">")
+            else:
+                print("<")
+        else:
+            print(">")
+    elif a < 0 and b > 0:
+        if c % 2 == 0:
+            if abs(a) > b:
+                print("<")
+            else:
+                print(">")
+        else:
+            print("<")
+
+=======
+Suggestion 9
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print('=')
+    elif c % 2 == 1:
+        if a > b:
+            print('>')
+        else:
+            print('<')
+    else:
+        if abs(a) > abs(b):
+            print('>')
+        elif abs(a) < abs(b):
+            print('<')
+        else:
+            print('=')
+
+=======
+Suggestion 10
+
+def pow(x,y):
+    result = 1
+    for i in range(y):
+        result = result * x
+    return result

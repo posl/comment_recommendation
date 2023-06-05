@@ -1,62 +1,158 @@
-#问题陈述
-#给出的是一个长度为N的数列A。
-#让我们把这个序列划分为一个或多个非空的连续区间。
-#然后，对于每一个区间，让我们计算其中的数字的位法OR。
-#找出以这种方式得到的数值的最小可能的位数XOR值。
-#        什么是位数OR？
-#    
-#        整数A和B的位数OR，A OR B，定义如下：
-#        
-#当A OR B以二进制书写时，如果A和B中至少有一个是1，那么2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 OR 5 = 7（在二进制中：011 OR 101 = 111）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位数OR被定义为（...（（p_1 OR p_2） OR p_3） OR ...或p_k）。我们可以证明这个值不取决于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#        什么是位数XOR？
-#    
-#        整数A和B的位数XOR，A XOR B，定义如下：
-#        
-#当A XOR B写在基数2中时，如果A和B中正好有一个是1，2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 XOR 5 = 6（在二进制中：011 XOR 101 = 110）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位XOR定义为（...（（p_1 XOR p_2）XOR p_3）XOR ...XOR p_k）。我们可以证明，这个值不依赖于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#限制条件
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 5 7
-#
-#样本输出1
-#2
-#如果我们把[1，5，7]分成[1，5]和[7]，它们的比特OR是5和7，其XOR是2。
-#不可能得到一个更小的结果，所以我们打印2。
-#
-#输入样本 2
-#3
-#10 10 10
-#
-#样本输出2
-#0
-#我们应该把这个序列分为[10]和[10，10]。
-#
-#样本输入3
-#4
-#1 3 3 1
-#
-#样本输出3
-#0
-#我们应该把这个序列分为[1，3]和[3，1]。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 1<<30
+    for i in range(n):
+        x = 0
+        for j in range(i,n):
+            x |= a[j]
+            y = 0
+            for k in range(j+1,n):
+                y ^= a[k]
+            ans = min(ans,x^y)
+    print(ans)
+
+=======
+Suggestion 2
+
+def getMinXOR(N, A):
+    # N = int(input())
+    # A = [int(i) for i in input().split()]
+    min_xor = 2**30
+    for i in range(1,N):
+        xor = 0
+        for j in range(i):
+            xor ^= A[j]
+        for j in range(i,N):
+            xor |= A[j]
+        min_xor = min(min_xor, xor)
+    return min_xor
+
+=======
+Suggestion 3
+
+def get_min_xor(A,N):
+    min_xor = 2**30
+    for i in range(N-1):
+        xor = A[i] ^ A[i+1]
+        if xor < min_xor:
+            min_xor = xor
+    return min_xor
+
+N = int(input())
+A = list(map(int, input().split()))
+print(get_min_xor(A,N))
+
+=======
+Suggestion 4
+
+def get_min_xor(n, a):
+    min_xor = 2**30
+    for i in range(n):
+        for j in range(i+1, n+1):
+            xor = a[i]
+            for k in range(i+1, j):
+                xor = xor ^ a[k]
+            if xor < min_xor:
+                min_xor = xor
+    return min_xor
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(N):
+        x = 0
+        for j in range(i, N):
+            x |= A[j]
+            y = 0
+            for k in range(j+1, N):
+                y ^= A[k]
+                ans = min(ans, x+y)
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def xor(a,b):
+    return a^b
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(n):
+        x = 0
+        for j in range(i, n):
+            x |= a[j]
+            y = 0
+            for k in range(j + 1, n):
+                y ^= a[k]
+                ans = min(ans, x + y)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    min_xor=2**31-1
+    for i in range(2**(n-1)):
+        xor=a[0]
+        ors=a[0]
+        for j in range(1,n):
+            if i & 2**(j-1):
+                xor^=a[j]
+                ors|=a[j]
+            else:
+                xor=a[j]
+                ors=a[j]
+        min_xor=min(min_xor,xor)
+    print(min_xor)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 2**31-1
+    for i in range(n):
+        x = 0
+        for j in range(i,n):
+            x |= a[j]
+            y = 0
+            for k in range(j+1,n):
+                y ^= a[k]
+                ans = min(ans,x^y)
+    print(ans)
+main()
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 2**30
+    for i in range(N):
+        a = A[i]
+        for j in range(i, N):
+            a = a | A[j]
+            ans = min(ans, a)
+    print(ans)
+main()

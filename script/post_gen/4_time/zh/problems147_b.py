@@ -1,36 +1,86 @@
-#问题陈述
-#高桥喜欢回文。非同音字串对他来说是不可接受的。他每次拥抱一个字符串时，可以将其中的一个字符改为他选择的任何字符。
-#给出一个字符串S，求使S成为同音异义词所需的最少拥抱次数。
-#
-#限制条件
-#S是一个由小写英文字母组成的字符串。
-#S的长度在1到100之间（包括100）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印使S成为重名所需的最小拥抱次数。
-#
-#样本输入1
-#redcoder
-#
-#样本输出1
-#1
-#例如，我们可以把第四个字符改成o，得到一个回文的redooder。
-#
-#输入样本2
-#vvvvvvv
-#
-#样本输出2
-#0
-#我们可能根本就不需要拥抱。
-#
-#输入样本3
-#abcdabc
-#
-#样本输出3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def check_palindrome(str):
+    if str == str[::-1]:
+        return True
+    else:
+        return False
+
+str = input()
+
+=======
+Suggestion 2
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 3
+
+def main():
+    # input
+    S = input()
+    # process
+    count = 0
+    for i in range(len(S)//2):
+        if S[i] != S[len(S)-1-i]:
+            count += 1
+    # output
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    str = input()
+    count = 0
+    for i in range(len(str)//2):
+        if str[i] != str[-1-i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def check_palindrome(s):
+    if len(s) == 1:
+        return True
+    elif len(s) == 2:
+        return s[0] == s[1]
+    else:
+        return s[0] == s[-1] and check_palindrome(s[1:-1])
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
+    for i in range(n//2):
+        if s[i] != s[n-i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)//2):
+        if s[i] != s[-i-1]:
+            count += 1
+    print(count)

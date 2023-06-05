@@ -1,42 +1,118 @@
-#问题陈述
-#N个学生参加了一次考试。这些学生被标记为学生1，学生2，...，学生N，学生i得了a_i分。
-#得分低于P的学生被认为是考试失败，不能获得学分。求考试不及格的学生人数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ P ≦ 100
-#0 ≦ a_i ≦ 100 (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N P
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印未能通过考试的学生人数。
-#
-#输入样本 1
-#4 50
-#80 60 40 0
-#
-#样本输出1
-#2
-#分别得了80分和60分的学生1和2，成功地获得了至少50分的学分。
-#另一方面，学生3和4，分别得了40分和0分，低于50分，没有通过考试。因此，答案是2。
-#
-#输入样本 2
-#3 90
-#89 89 89
-#
-#样本输出2
-#3
-#
-#样本输入3
-#2 22
-#6 37
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, P = map(int, input().split())
+    A = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if A[i] < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    n,p = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def count_student(N,P,student_score):
+    count = 0
+    for i in range(N):
+        if student_score[i] < P:
+            count += 1
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    N, P = map(int, input().split())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if a[i] < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N,P = input().split()
+    N = int(N)
+    P = int(P)
+    a = input().split()
+    count = 0
+    for i in range(N):
+        if int(a[i]) < P:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    N,P = map(int,input().split())
+    a = list(map(int,input().split()))
+    print(len(list(filter(lambda x:x<P,a))))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def solve():
+    n,p = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] < p:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_input():
+    input_list = []
+    while True:
+        try:
+            line = input()
+            if line == "":
+                break
+            else:
+                input_list.append(line)
+        except EOFError:
+            break
+    return input_list
+
+=======
+Suggestion 10
+
+def main():
+    #input
+    n,p = map(int,input().split())
+    a = list(map(int,input().split()))
+    #count
+    count = 0
+    for i in range(n):
+        if a[i] < p:
+            count += 1
+    #output
+    print(count)

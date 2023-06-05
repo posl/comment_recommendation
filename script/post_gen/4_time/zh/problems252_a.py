@@ -1,28 +1,30 @@
-#问题陈述
-#小写英文字母a,b,...,z的ASCII值依次为97,98,...,122。
-#给出97和122之间的一个整数N，打印ASCII值为N的字母。
-#
-#限制条件
-#N是97和122之间的一个整数（包括）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#97
-#
-#样本输出1
-#a
-#97是a的ASCII值。
-#
-#样本输入2
-#122
-#
-#样本输出2
-#z
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print(chr(n))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print(chr(n))
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    i = int(input())
+    print(chr(i))
+
+=======
+Suggestion 4
+
+def main():
+    print(chr(int(input())))

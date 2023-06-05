@@ -1,45 +1,84 @@
-#问题陈述
-#在作为(1,2,...,N)的排列组合且满足下列条件的序列P中，找出在词法上最小的序列。
-#对于每个i = 1, ..., M，A_i在P中比B_i早出现。
-#如果没有这样的P，打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#2 1
-#3 4
-#2 4
-#
-#输出样本 1
-#2 1 3 4
-#以下五个排列组合P满足条件：（2，1，3，4），（2，3，1，4），（2，3，4，1），（3，2，1，4），（3，2，4，1）。其中词汇学上最小的是（2，1，3，4）。
-#
-#输入样本 2
-#2 3
-#1 2
-#1 2
-#2 1
-#
-#样本输出2
-#-1
-#没有满足条件的排列组合P。
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    for _ in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    print(A)
+    print(B)
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(M)]
+    A = [0] * N
+    B = [0] * N
+    for i in range(M):
+        A[AB[i][0]-1] += 1
+        B[AB[i][1]-1] += 1
+    if max(A) > 1 or max(B) > 1:
+        print(-1)
+    else:
+        P = [0] * N
+        for i in range(N):
+            if A[i] == 0:
+                P[0] = i + 1
+        for i in range(N-1):
+            for j in range(M):
+                if P[i] == AB[j][0]:
+                    P[i+1] = AB[j][1]
+        for i in range(N):
+            print(P[i], end=" ")
+        print()
+
+main()
+
+=======
+Suggestion 3
+
+def solve(n,m,ab):
+    ans = [-1] * n
+    for a,b in ab:
+        if ans[a-1] == -1:
+            ans[a-1] = b
+        elif ans[a-1] != b:
+            return [-1]
+    if ans[0] == -1:
+        ans[0] = 1
+    for i in range(1,n):
+        if ans[i] == -1:
+            ans[i] = ans[i-1] + 1
+    return ans
+
+=======
+Suggestion 4
+
+def solve():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def find_next(n, m, a, b):
+    next = [0] * (n+1)
+    for i in range(1, n+1):
+        next[i] = i
+    for i in range(m):
+        if next[a[i]] > next[b[i]]:
+            next[a[i]], next[b[i]] = next[b[i]], next[a[i]]
+    return next

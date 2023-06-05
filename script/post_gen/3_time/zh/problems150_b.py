@@ -1,40 +1,117 @@
-#问题陈述
-#我们有一个长度为N的字符串S，由大写的英文字母组成。
-#ABC作为连续的子序列在S中出现了多少次（见输入和输出样本）？
-#
-#限制条件
-#3 ≦ N ≦ 50
-#S由大写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S
-#
-#輸出
-#打印S中ABC出现的次数，作为连续的子序列。
-#
-#输入样本 1
-#10
-#ZABCDBABCQ
-#
-#样本输出1
-#2
-#S的两个连续的子序列等于ABC：第2至第4个字符，以及第7至第9个字符。
-#
-#输入样本2
-#19
-#3-4-5
-#
-#样本输出2
-#0
-#S的连续子序列都不等于ABC。
-#
-#样本输入3
-#33
-#abccabcbabccabacbcbbabcbcbcabcb
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems150_b():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n-2):
+        if s[i:i+3] == "ABC":
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n-2):
+        if s[i:i+3] == 'ABC':
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = input()
+    count = 0
+    for i in range(N-2):
+        if S[i:i+3] == "ABC":
+            count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n):
+        if s[i:i+3] == "ABC":
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def problems150_b():
+    N = int(input())
+    S = input()
+    count = 0
+    for i in range(N):
+        if S[i:i+3] == "ABC":
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = input()
+    count = 0
+    for i in range(N-2):
+        if S[i:i+3] == 'ABC':
+            count += 1
+    print(count)
+
+=======
+Suggestion 8
+
+def count_abc(s):
+    count = 0
+    for i in range(len(s)-2):
+        if s[i:i+3] == 'ABC':
+            count += 1
+    return count
+
+=======
+Suggestion 9
+
+def main():
+    #输入
+    N = int(input())
+    S = input()
+    #计算ABC出现的次数
+    count = 0
+    for i in range(N-2):
+        if S[i:i+3] == "ABC":
+            count += 1
+    #输出
+    print(count)
+
+=======
+Suggestion 10
+
+def countABC(s):
+    # s = 'ZABCDBABCQ'
+    # s = '3-4-5'
+    # s = 'abccabcbabccabacbcbbabcbcbcabcb'
+    count = 0
+    for i in range(len(s)):
+        if s[i:i+3] == 'ABC':
+            count += 1
+    return count

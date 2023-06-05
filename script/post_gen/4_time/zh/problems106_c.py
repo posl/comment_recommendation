@@ -1,48 +1,135 @@
-#问题陈述
-#无限大先生有一个由1到9的数字组成的字符串S。每当日期变化时，这个字符串就会发生如下变化：
-#S中每次出现的2都被替换为22。同样地，每个3变成333，4变成4444，5变成55555，6变成66666，7变成777777，8变成888888，9变成999999。1仍然是1。
-#例如，如果S是1324，第二天就变成1333224444，后天就变成133333333224444。
-#你对5×10^{15}天后的字符串的样子感兴趣。在5×10^{15}天后，该字符串中从左至右的第K个字符是什么？
-#
-#限制条件
-#S是一个长度在1到100之间（包括100）的字符串。
-#K是1到10^{18}之间的整数。(包括)。
-#5×10^{15}天后的字符串的长度至少是K。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#K
-#
-#輸出
-#在5×10^{15}天后，打印出无限大先生的字符串中从左边开始的第K个字符。
-#
-#输入样本1
-#1214
-#4
-#
-#样本输出1
-#2
-#字符串S的变化如下：  
-#现在：1214
-#一天后12214444
-#两天后1222214444444444444444
-#三天后12222222214444444444444444444444444444444444444444444444444444444444444444
-#5×10^{15}天后，字符串中的前五个字符是1222。由于K=4，我们应该打印第四个字符，2。
-#
-#输入样本 2
-#3
-#157
-#
-#样本输出2
-#3
-#最初的字符串是3，5×10^{15}天后的字符串只由3组成。
-#
-#输入样本 3
-#299792458
-#9460730472580800
-#
-#样本输出3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def func(s, k):
+    if k < len(s):
+        return s[k-1]
+    else:
+        return func(s, k-len(s))
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    K = int(input())
+    for i in range(len(S)):
+        if S[i] != '1':
+            print(S[i])
+            return
+        elif i + 1 == K:
+            print(S[i])
+            return
+main()
+
+=======
+Suggestion 3
+
+def getKth(s, k):
+    if len(s) == 1:
+        return s
+    if len(s) == 2:
+        if k == 1:
+            return s[0]
+        else:
+            return s[1]
+    if len(s) == 3:
+        if k == 1:
+            return s[0]
+        elif k == 2:
+            return s[1]
+        else:
+            return s[2]
+    if len(s) == 4:
+        if k == 1:
+            return s[0]
+        elif k == 2:
+            return s[1]
+        elif k == 3:
+            return s[2]
+        else:
+            return s[3]
+    else:
+        if k <= len(s):
+            return s[k-1]
+        else:
+            return getKth(s[0] * len(s), k % len(s))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    k = int(input())
+    for i in range(k):
+        if s[i] != '1':
+            print(s[i])
+            break
+        if i == k-1:
+            print('1')
+
+=======
+Suggestion 5
+
+def problem106_c(s, k):
+    s = list(s)
+    for i in range(10):
+        s = [str(i) if x == str(i) else x for x in s]
+        s = [x * (i + 1) if x == str(i) else x for x in s]
+    s = ''.join(s)
+    print(s[k - 1])
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    k = int(input())
+    for i in range(k):
+        if s[i] != '1':
+            print(s[i])
+            return
+    print(1)
+
+=======
+Suggestion 7
+
+def f1(s):
+    s1 = ''
+    for i in s:
+        s1 += i*int(i)
+    return s1
+
+=======
+Suggestion 8
+
+def get_str(s):
+    result = ""
+    for i in s:
+        result += i * int(i)
+    return result
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    k = int(input())
+    a = 0
+    b = 0
+    c = 0
+    for i in range(len(s)):
+        if s[i] == '1':
+            a += 1
+        elif s[i] == '2':
+            b += 1
+        elif s[i] == '3':
+            c += 1
+    if k <= a:
+        print('1')
+    elif k <= a + b:
+        print('2')
+    else:
+        print('3')

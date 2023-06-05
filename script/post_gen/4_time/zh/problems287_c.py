@@ -1,62 +1,128 @@
-#问题陈述
-#给你一个有N个顶点和M条边的简单无向图。  顶点的编号为1，2，...，N，边的编号为1，2，...，M。
-#边i（i=1，2，...，M）连接着顶点u_i和v_i。
-#判断这个图是否是一个路径图。
-#什么是简单无向图？
-#一个简单的无定向图是一个没有自循环或多条边的图，其边没有方向。
-#什么是路径图？
-#当且仅当有一个序列（v_1, v_2, ..., v_N）是（1, 2, ..., N）的排列组合，并满足以下条件时，就可以说该图是一个路径图：
-#对于所有i = 1, 2, ..., N-1，存在一条连接顶点v_i和v_{i+1}的边。
-#如果整数i和j满足1≦i，j≦N和|i-j|≧2，那么就没有连接顶点v_i和v_j的边。
-#
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ u_i, v_i ≦ N (i = 1, 2, ..., M)
-#输入的所有数值都是整数。
-#输入的图形是简单的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#输出
-#如果给定的图是一个路径图，则打印Yes；否则打印No。
-#
-#输入样本 1
-#4 3
-#1 3
-#4 2
-#3 2
-#
-#样本输出1
-#Yes
-#下面是给定的图，它是一个路径图。
-#
-#输入样本 2
-#2 0
-#
-#样本输出 2
-#No
-#下图是给定的图，它不是一个路径图。
-#
-#输入样本 3
-#5 5
-#1 2
-#2 3
-#3 4
-#4 5
-#5 1
-#
-#样本输出3
-#No
-#下图是给定的图，它不是一个路径图。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n, m = map(int, input().split())
+    graph = {i: [] for i in range(1, n + 1)}
+    for _ in range(m):
+        u, v = map(int, input().split())
+        graph[u].append(v)
+        graph[v].append(u)
+    for i in range(1, n + 1):
+        if len(graph[i]) > 2:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    edge = []
+    for i in range(M):
+        edge.append(list(map(int, input().split())))
+    edge.sort()
+    v = [0] * N
+    for i in range(M):
+        v[edge[i][0]-1] += 1
+        v[edge[i][1]-1] += 1
+    if max(v) == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    graph = [[] for i in range(N)]
+    for i in range(M):
+        u, v = map(int, input().split())
+        graph[u-1].append(v-1)
+        graph[v-1].append(u-1)
+    for i in range(N):
+        if len(graph[i]) > 2:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def is_path_graph(n,m,edges):
+    if m != n-1:
+        return False
+    for i in range(1,n+1):
+        if len(edges[i]) != 2:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(M)]
+    edges = sorted(edges, key=lambda x: x[0])
+    # print(edges)
+    flag = True
+    for i in range(len(edges)-1):
+        if edges[i][1] != edges[i+1][0]:
+            flag = False
+            break
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    if M != N-1:
+        print("No")
+        return
+
+    edges = [[] for _ in range(N+1)]
+    for _ in range(M):
+        u, v = map(int, input().split())
+        edges[u].append(v)
+        edges[v].append(u)
+
+    for i in range(1, N+1):
+        if len(edges[i]) > 2:
+            print("No")
+            return
+
+    print("Yes")
+
+main()
+
+=======
+Suggestion 8
+
+def get_input():
+    N, M = input().split()
+    N = int(N)
+    M = int(M)
+    print(N, M)
+    u = [0] * M
+    v = [0] * M
+    for i in range(M):
+        u[i], v[i] = input().split()
+        u[i] = int(u[i])
+        v[i] = int(v[i])
+        print(u[i], v[i])
+    return N, M, u, v

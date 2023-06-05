@@ -1,44 +1,194 @@
-#问题陈述
-#给你两个字符串S和T。
-#判断是否有可能通过执行以下操作使S等于T，操作次数可能为零。
-#在S的两个连续相等的字符之间，插入一个与这些字符相等的字符。
-#也就是说，采取以下三个步骤。
-#设N为S的当前长度，S=S_1S_2......。S_N。
-#在1和N-1（包括）之间选择一个整数i，使得S_i = S_{i+1}。(如果没有这样的i，什么都不做，现在就终止操作，跳过第3步)。
-#在S的第i个和第(i+1)个字符之间插入一个字符S_i(=S_{i+1})的副本。S_i S_i S_{i+1} ...S_N。
-#
-#
-#约束条件
-#每个S和T都是一个长度在2到2×10^5（包括）之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#輸出
-#如果有可能使S等于T，打印Yes；否则，打印No。
-#请注意，法官是区分大小写的。
-#
-#输入样本1
-#abbaac
-#abbbbaaac
-#
-#样本输出1
-#Yes
-#你可以通过以下三个操作使S=abbaac等于T=abbbbaaac。
-#首先，在S的第2和第3个字符之间插入b，现在，S=abbbaac。
-#接下来，在S的第2和第3个字符之间再次插入b，现在，S=abbbbaac。
-#最后，在S的第6和第7个字符之间插入a，现在，S=abbbbaaac。
-#因此，Yes应该被打印出来。
-#
-#输入样本2
-#xyzz
-#xyyzz
-#
-#样本输出2
-#No
-#没有任何操作序列能使S = xyzz等于T = xyyzz。
-#因此，应该打印No。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    T = input()
+    i = 0
+    j = 0
+    while i < len(S):
+        if j == len(T):
+            print('No')
+            return
+        if S[i] == T[j]:
+            i += 1
+        j += 1
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    # print(s)
+    # print(t)
+    if len(s) == len(t):
+        for i in range(len(s)-1):
+            if s[i] == t[i]:
+                s = s[:i+1] + s[i] + s[i+1:]
+                # print(s)
+                if s == t:
+                    print("Yes")
+                    exit()
+        print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = input()
+    # s = "abbaac"
+    # t = "abbbbaaac"
+    # s = "xyzz"
+    # t = "xyyzz"
+    if len(s) >= len(t):
+        print("No")
+    else:
+        if s == t[:len(s)]:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 4
+
+def insert_char(string, index, char):
+    return string[:index] + char + string[index:]
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    n = len(s)
+    m = len(t)
+    if n+1 != m:
+        print("No")
+        return
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if s[i] == t[j]:
+            i += 1
+            j += 1
+            continue
+        if s[i] != t[j] and s[i] == t[j+1]:
+            j += 2
+            continue
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        exit()
+    if len(s) >= len(t):
+        print('No')
+        exit()
+    s1 = ''
+    index = 0
+    for i in range(len(t)):
+        if index < len(s):
+            if s[index] == t[i]:
+                s1 += s[index]
+                index += 1
+            else:
+                s1 += t[i]
+        else:
+            s1 += t[i]
+    if s1 == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    if len(s) + 1 == len(t):
+        if s + s[-1] == t:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    t = input()
+
+    i = 0
+    j = 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+            j += 1
+        else:
+            j += 1
+
+    if i == len(s):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print("Yes")
+        return
+    if len(s) >= len(t):
+        print("No")
+        return
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print('Yes')
+        return
+    if len(s) == len(t):
+        print('No')
+        return
+    if s[0] != t[0]:
+        print('No')
+        return
+    if s[-1] != t[-1]:
+        print('No')
+        return
+    s = s[1:-1]
+    t = t[1:-1]
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+main()

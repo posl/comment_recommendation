@@ -1,48 +1,139 @@
-#问题陈述
-#在一个非空字符串中，左移将第一个字符移到字符串的末尾，而右移将最后一个字符移到字符串的开头。
-#例如，对abcde进行左移的结果是bcdea，而对abcde进行两次右移的结果是deabc。
-#给你一个由小写英文字母组成的非空的S。在对S进行零次或多次左移和零次或多次右移后可以得到的字符串中，找出词典上最小的字符串和词典上最大的字符串。
-#什么是lexicographical order？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j在字母顺序上早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度。如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#
-#
-#限制条件
-#S由小写英文字母组成。
-#S的长度在1到1000之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#
-#输出
-#打印两行。第一行应包含S_{min}，第二行应包含S_{max}。这里，S_{min}和S_{max}分别是对S进行零次或多次左移和零次或多次右移后得到的词汇学上最小和最大的字符串。
-#
-#输入样本1
-#aaba
-#
-#样本输出1
-#aaab
-#baaa
-#通过执行移位，我们可以得到四个字符串：aaab, aaba, abaa, baaa。其中词汇学上最小的和最大的分别是aaab和baaaa。
-#
-#样本输入2
-#z
-#
-#样本输出2
-#z
-#z
-#任何操作序列的结果都是z。
-#
-#样本输入3
-#abracadabra
-#
-#样本输出3
-#aabracadabr
-#racadabraab
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate_left(s):
+    l = list(s)
+    first = l.pop(0)
+    l.append(first)
+    return ''.join(l)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    l = len(s)
+    min = s
+    max = s
+    for i in range(1, l):
+        s = s[1:] + s[0]
+        if s < min:
+            min = s
+        if s > max:
+            max = s
+    print(min)
+    print(max)
+
+=======
+Suggestion 3
+
+def min_max(S):
+    min = S
+    max = S
+    for i in range(len(S)):
+        S = S[1:] + S[0]
+        if S < min:
+            min = S
+        if S > max:
+            max = S
+    return min, max
+
+=======
+Suggestion 4
+
+def minstr(s):
+    s = list(s)
+    a = min(s)
+    b = s.index(a)
+    c = s[:b]
+    del s[:b]
+    s.extend(c)
+    return ''.join(s)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    length = len(s)
+    min_s = s
+    max_s = s
+    for i in range(1,length):
+        s = s[1:] + s[0]
+        if s < min_s:
+            min_s = s
+        elif s > max_s:
+            max_s = s
+    print(min_s)
+    print(max_s)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    a = [s]
+    for i in range(len(s)):
+        s = s[1:]+s[0]
+        a.append(s)
+    print(min(a))
+    print(max(a))
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    l = len(s)
+    s = s + s
+    s_min = s[0:l]
+    s_max = s[0:l]
+    for i in range(1, l):
+        s_min = min(s_min, s[i:i+l])
+        s_max = max(s_max, s[i:i+l])
+    print(s_min)
+    print(s_max)
+
+=======
+Suggestion 8
+
+def rotate(s):
+    return s[1:] + s[0]
+
+=======
+Suggestion 9
+
+def solve():
+    S = input()
+    S1 = S
+    S2 = S
+    for i in range(len(S)):
+        S1 = S1[1:] + S1[0]
+        S2 = S2[-1] + S2[0:-1]
+        if S1 < S2:
+            print(S1)
+            print(S2)
+            break
+        elif S1 > S2:
+            print(S2)
+            print(S1)
+            break
+        else:
+            continue
+solve()
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    s = s * 2
+    s_min = s[0:len(s)//2]
+    s_max = s[0:len(s)//2]
+    for i in range(1,len(s)//2):
+        s_min = min(s_min,s[i:i+len(s)//2])
+        s_max = max(s_max,s[i:i+len(s)//2])
+    print(s_min)
+    print(s_max)

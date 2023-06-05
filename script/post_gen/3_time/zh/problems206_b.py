@@ -1,36 +1,118 @@
-#问题陈述
-#AtCoDeer有一个空的储蓄罐。
-#在第i天的早晨，他将把i日元（日本货币）放入其中：第1天早上放1日元，第2天早上放2日元，以此类推。
-#每天晚上，他将检查里面的钱的数量。
-#在哪一天，他将发现他的储蓄罐里第一次有N日元或更多？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印一个整数x，使AtCoDeer在第x天第一次发现他的储蓄罐里有N日元或更多。
-#
-#输入样本 1
-#12
-#
-#样本输出 1
-#5
-#在第1天，储蓄罐在早上得到1日元，晚上有1日元。
-#在第2天，储蓄罐在早上得到2日元，晚上有3日元。
-#第3天，储蓄罐早上有3日元，晚上有6日元。
-#第4天，储蓄罐早上有4日元，晚上有10日元。
-#第5天，储蓄罐早上有5日元，晚上有15日元。
-#因此，在第5天晚上，AtCoDeer将发现他的储蓄罐第一次有12日元或更多。
-#
-#样本输入2
-#100128
-#
-#样本输出2
-#447
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n):
+    x = 0
+    while (x+1)*(x+2)/2 < n:
+        x += 1
+    return x+1
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    input = int(input())
+    # 处理
+    day = 1
+    sum = 0
+    while True:
+        sum += day
+        if sum >= input:
+            break
+        day += 1
+    # 输出
+    print(day)
+
+=======
+Suggestion 3
+
+def getN():
+    N = int(input())
+    return N
+
+=======
+Suggestion 4
+
+def solve():
+    #n = int(input())
+    n = 12
+    sum = 0
+    for i in range(1, n + 1):
+        sum += i
+        if sum >= n:
+            print(i)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(1,n+1):
+        sum += i
+        if sum >= n:
+            print(i)
+            break
+
+=======
+Suggestion 6
+
+def get_day(N):
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            return i
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    i = 1
+    sum = 0
+    while True:
+        sum += i
+        if sum >= N:
+            break
+        i += 1
+    print(i)
+
+=======
+Suggestion 8
+
+def get_num(n):
+    sum = 0
+    for i in range(1,n+1):
+        sum += i
+        if sum >= n:
+            return i
+    return 0
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    x = 1
+    y = 0
+    while y < n:
+        y += x
+        x += 1
+    print(x - 1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(1, N+1):
+        sum += i
+        if sum >= N:
+            print(i)
+            break

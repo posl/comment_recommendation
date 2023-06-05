@@ -1,33 +1,111 @@
-#问题陈述
-#在某个村子里，有999座塔，从西到东都是1,(1+2),(1+2+3),...,(1+2+3+...+999)米高，每座塔间隔1米。
-#雪下了好一阵子才终于停了。对于相隔1米的一些相邻的塔，我们测量了这些塔没有被雪覆盖的部分的长度，结果是西边的塔有a米，东边的塔有b米。
-#假设村里各处的积雪深度和海拔高度相同，求积雪的数量。
-#还假设雪覆盖的深度总是至少1米。
-#
-#限制条件
-#1 ≦ a < b < 499500(=1+2+3+...+999)
-#输入的所有数值都是整数。
-#没有与假设相矛盾的输入。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#a b
-#
-#输出
-#如果雪覆盖的深度是x米，打印x为整数。
-#
-#输入样本 1
-#8 13
-#
-#输出样本 1
-#2
-#两座塔的高度分别为10米和15米。
-#因此，我们可以看到，雪覆盖的深度是2米。
-#
-#样本输入2
-#54 65
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = input().split()
+    a = int(a)
+    b = int(b)
+    print(b-a-1)
+
+=======
+Suggestion 2
+
+def getSnowDepth(a,b):
+    """
+    根据题目中的条件，可以得出如下公式：
+    a = x + (x+1) + (x+2) + ... + (x+n)
+    b = (x+1) + (x+2) + ... + (x+n) + (x+n+1)
+    化简得：
+    a = nx + n(n+1)/2
+    b = (n+1)(n+2)/2 + nx
+    化简得：
+    b = 2a + n + 1
+    n = b - 2a - 1
+    """
+    n = b - 2*a - 1
+    return n
+
+=======
+Suggestion 3
+
+def snow_depth(a,b):
+    x = b - a
+    return x * (x + 1) // 2 - a
+
+=======
+Suggestion 4
+
+def calc(a, b):
+    return b - a
+
+=======
+Suggestion 5
+
+def snow_depth(a, b):
+    # 1+2+3+...+n = n*(n+1)/2
+    # a = x*(x+1)/2
+    # b = y*(y+1)/2
+    # b-a = y*(y+1)/2 - x*(x+1)/2
+    #     = (y-x)*(y+x+1)/2
+    #     = 499500
+    # y-x = 499500*2/(y+x+1)
+    # y = 499500*2/(y+x+1) + x
+    # b = 499500*2/(y+x+1) + x + 1/2
+    # 2*(b-x-1/2) = 499500/(y+x+1) + 2*x
+    # 2*(b-x-1/2) = 499500/(499500*2/(y+x+1) + x + 1) + 2*x
+    # 2*(b-x-1/2) = (y+x+1)/(y+x+1) + 2*x
+    # 2*(b-x-1/2) = (y+3*x+1)/(y+x+1)
+    # 2*(b-x-1/2)*(y+x+1) = y+3*x+1
+    # 2*(b-x-1/2)*(y+x+1) - y - 3*x = 1
+    # 2*(b-x-1/2)*(y+x+1) - y - 3*x - 1 = 0
+    # 2*(b-x-1/2)*(y+x+1) - y - 3*x - 1 - 2*(b-x-1/2)*(y+x+1) = - 2*(b-x-1/2)*(y+x+1)
+    # 2*(b-x-1/2)*(y+x+1) - y - 3*x - 1 - 2*(b-x-1/2)*(y+x+1) + (y+x+1)^2 = - 2*(b-x-1/2)*(y+x+1) + (y+x+1)^2
+    # 2*(b-x-1/2
+
+=======
+Suggestion 6
+
+def calSnow(a, b):
+    return int((b - a) * (b - a + 1) / 2 - a)
+
+a, b = map(int, input().split())
+print(calSnow(a, b))
+
+=======
+Suggestion 7
+
+def snow(a,b):
+    return b-a-1
+
+a,b = map(int, input().split())
+print(snow(a,b))
+
+=======
+Suggestion 8
+
+def main():
+    line = input().split()
+    a = int(line[0])
+    b = int(line[1])
+    print(b - a - 1)
+
+=======
+Suggestion 9
+
+def calc(a, b):
+    s = b - a
+    x = int((2 * s + 0.25) ** 0.5 - 0.5)
+    if x * (x + 1) < s:
+        x += 1
+    return x
+
+=======
+Suggestion 10
+
+def solve(a,b):
+    return sum(range(1,b-a+1))-a
+
+print(solve(8,13))
+print(solve(54,65))

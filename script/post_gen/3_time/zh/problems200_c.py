@@ -1,44 +1,157 @@
-#问题陈述
-#林戈喜欢整数200。请为他解决下面的问题。
-#给出一个N个正整数的序列A，找出一对满足下列所有条件的整数(i, j)：
-#1 ≦ i < j ≦ N；
-#A_i - A_j是200的倍数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#123 223 123 523 200 2000
-#
-#样本输出1
-#4
-#例如，对于（i，j）=（1，3），A_1-A_3=0是200的倍数。
-#我们有四对满足条件：(i,j)=(1,3), (1,4), (3,4), (5,6)。
-#
-#样本输入2
-#5
-#1 2 3 4 5
-#
-#样本输出2
-#0
-#可能没有满足条件的配对。
-#
-#样本输入3
-#8
-#199 100 200 400 300 500 600 200
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    ans = 0
+    cnt = [0] * 200
+    for i in range(n):
+        ans += cnt[a[i] % 200]
+        cnt[a[i] % 200] += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def get_ans(N,A):
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            if (A[i]-A[j])%200 == 0:
+                ans += 1
+    return ans
+
+=======
+Suggestion 3
+
+def get_input():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    return N, A
+
+=======
+Suggestion 4
+
+def problems200_c():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    D = {}
+    for i in range(N):
+        r = A[i] % 200
+        if r in D:
+            D[r] += 1
+        else:
+            D[r] = 1
+    #print(D)
+    ans = 0
+    for k in D:
+        if D[k] > 1:
+            ans += D[k] * (D[k]-1) // 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def count_pairs(A):
+    count = 0
+    for i in range(len(A)):
+        for j in range(i+1, len(A)):
+            if (A[i] - A[j]) % 200 == 0:
+                count += 1
+    return count
+
+=======
+Suggestion 6
+
+def solve():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 用于计数的数组
+    B = [0] * 200
+    # 遍历输入，计数
+    for a in A:
+        B[a % 200] += 1
+    # 计算答案
+    ans = 0
+    for b in B:
+        ans += b * (b - 1) // 2
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 保存余数的计数器
+    r = [0] * 200
+    # 计算余数
+    for a in A:
+        r[a % 200] += 1
+    # 计算配对数
+    ans = 0
+    for i in range(200):
+        ans += r[i] * (r[i] - 1) // 2
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*200
+    for a in A:
+        B[a%200] += 1
+    count = 0
+    for b in B:
+        count += b*(b-1)//2
+    print(count)
+main()
+
+=======
+Suggestion 9
+
+def problems200_c():
+    N = int(input())
+    A = list(map(int,input().split()))
+    cnt = [0]*200
+    for i in range(N):
+        cnt[A[i]%200] += 1
+    ans = 0
+    for i in range(200):
+        ans += cnt[i]*(cnt[i]-1)//2
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    answer = 0
+    # 问题解决方案:
+    # 1. 如果有200的倍数, 则必然存在两个数的差是200的倍数
+    # 2. 如果两个数的差是200的倍数, 则这两个数对200取余数必然是相同的
+    # 3. 因此, 可以遍历取余数, 然后统计每个余数的数目, 然后(1+2+...n-1)即为所求
+    # 4. 注意, 如果余数是0, 则需要特殊处理, 因为0是所有数的倍数, 所以需要单独统计
+    # 5. 注意, 如果余数是100, 则需要特殊处理, 因为100是所有数的倍数, 所以需要单独统计
+    remainder_dict = {}
+    for num in num_list:
+        remainder = num % 200
+        if remainder == 0:
+            answer += remainder_dict.get(0, 0)
+            remainder_dict[0] = remainder_dict.get(0, 0) + 1
+        elif remainder == 100:
+            answer += remainder_dict.get(100, 0)
+            remainder_dict[100] = remainder_dict.get(100, 0) + 1
+        else:
+            answer += remainder_dict.get(remainder, 0)
+            remainder_dict[remainder] = remainder_dict.get(remainder, 0) + 1
+    return answer

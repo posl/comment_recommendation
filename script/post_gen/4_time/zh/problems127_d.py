@@ -1,68 +1,212 @@
-#问题陈述
-#你有N张卡片。在第i张卡片上，写着一个整数A_i。
-#对于每个j=1，2，...，M的顺序，你将执行一次以下操作：
-#操作：最多选择B_j张牌（可能是零）。用C_j代替写在每张所选卡片上的整数。
-#找到M次操作后写在N张卡片上的整数的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i, C_i ≦ 10^9
-#1 ≦ B_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 A_2 ...A_N
-#B_1 C_1
-#B_2 C_2
-#.
-#.
-#.
-#B_M C_M
-#
-#输出
-#打印M次操作后写在N个卡片上的最大可能的整数之和。
-#
-#输入样本 1
-#3 2
-#5 1 4
-#2 3
-#1 5
-#
-#样本输出1
-#14
-#把第二张卡片上的整数换成5，三张卡片上的整数之和就变成了5+5+4=14，这就是最大的结果。
-#
-#输入样本2
-#10 3
-#1 8 5 7 100 4 52 33 13 5
-#3 10
-#4 30
-#1 4
-#
-#样本输出2
-#338
-#
-#样本输入3
-#3 2
-#100 100 100
-#3 99
-#3 99
-#
-#样本输出3
-#300
-#
-#样本输入4
-#11 3
-#1 1 1 1 1 1 1 1 1 1 1
-#3 1000000000
-#4 1000000000
-#3 1000000000
-#
-#样本输出4
-#10000000001
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    BC = [[int(i) for i in input().split()] for _ in range(M)]
+    A.sort()
+    BC.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if A[i] < BC[j][1]:
+            A[i] = BC[j][1]
+            BC[j][0] -= 1
+            if BC[j][0] == 0:
+                j += 1
+            i += 1
+        else:
+            break
+    print(sum(A))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = []
+    for _ in range(m):
+        b, c = map(int, input().split())
+        bc.append((b, c))
+    # 解决
+    a.sort()
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in bc:
+        for _ in range(b):
+            if i >= n or a[i] >= c:
+                break
+            a[i] = c
+            i += 1
+    print(sum(a))
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    bc = [list(map(int,input().split())) for _ in range(m)]
+    bc.sort(key=lambda x:x[1],reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < bc[j][1]:
+            a[i] = bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+        i += 1
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    BC = []
+    for i in range(M):
+        BC.append(list(map(int,input().split())))
+    A.sort(reverse=True)
+    BC.sort(key=lambda x: x[1],reverse=True)
+    i = 0
+    j = 0
+    while i<N and j<M:
+        if A[i]<BC[j][1]:
+            A[i] = BC[j][1]
+            BC[j][0] -= 1
+            if BC[j][0]==0:
+                j += 1
+            i += 1
+        else:
+            break
+    print(sum(A))
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    a.sort()
+    bc.sort(key=lambda x: x[1], reverse=True)
+    i = 0
+    for b, c in bc:
+        for j in range(b):
+            if i < n and a[i] < c:
+                a[i] = c
+                i += 1
+            else:
+                break
+    print(sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    a.sort()
+    bc.sort(key=lambda x: x[1], reverse=True)
+    idx = 0
+    for i in range(m):
+        for j in range(bc[i][0]):
+            if idx < n and a[idx] < bc[i][1]:
+                a[idx] = bc[i][1]
+                idx += 1
+            else:
+                break
+    print(sum(a))
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    bc = [list(map(int, input().split())) for _ in range(m)]
+    # 从大到小排序
+    a.sort(reverse=True)
+    bc.sort(key=lambda x: x[1], reverse=True)
+    # 从大到小取得最大值
+    ans = 0
+    j = 0
+    for i in range(n):
+        if j < m and a[i] < bc[j][1]:
+            ans += bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+        else:
+            ans += a[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    bc = [list(map(int,input().split())) for _ in range(m)]
+    a.sort()
+    bc.sort(key=lambda x:x[1],reverse=True)
+    i = 0
+    j = 0
+    while i < n and j < m:
+        if a[i] < bc[j][1]:
+            a[i] = bc[j][1]
+            bc[j][0] -= 1
+            if bc[j][0] == 0:
+                j += 1
+            i += 1
+        else:
+            break
+    print(sum(a))
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    bc = [list(map(int,input().split())) for i in range(m)]
+    a.sort()
+    bc.sort(key=lambda x:x[1],reverse=True)
+    i = 0
+    for b,c in bc:
+        while b>0 and i<n and a[i]<c:
+            a[i] = c
+            i += 1
+            b -= 1
+    print(sum(a))
+
+=======
+Suggestion 10
+
+def problems127_d():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    BC = [list(map(int,input().split())) for i in range(M)]
+    A.sort()
+    BC.sort(key=lambda x: x[1],reverse=True)
+    i = 0
+    j = 0
+    while j<M and i<N and BC[j][1]>A[i]:
+        A[i] = BC[j][1]
+        BC[j][0] -= 1
+        if BC[j][0]==0:
+            j += 1
+        i += 1
+    print(sum(A))

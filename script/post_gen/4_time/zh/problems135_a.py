@@ -1,39 +1,115 @@
-#问题陈述
-#我们有两个不同的整数A和B。
-#打印整数K，使得|A-K|=|B-K|。
-#如果不存在这样的整数，则打印出IMPOSSIBLE。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ a, b ≦ 10^9
-#A和B是不同的。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#打印满足条件的整数K。
-#如果这样的整数不存在，则打印出IMPOSIBLE。
-#
-#输入样本 1
-#2 16
-#
-#输出示例 1
-#9
-#|2-9|=7，16-9|=7，所以9满足条件。
-#
-#样本输入2
-#0 3
-#
-#输出样本 2
-#IMPOSIBLE
-#没有整数能满足条件。
-#
-#输入样本3
-#998244353 99824435
-#
-#样本输出3
-#549034394
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 0:
+        print((a + b) // 2)
+    else:
+        print("IMPOSIBLE")
+
+=======
+Suggestion 2
+
+def solve():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print('IMPOSSIBLE')
+
+=======
+Suggestion 3
+
+def calc_k(a,b):
+    if a == b:
+        return "IMPOSSIBLE"
+    else:
+        return (a+b)//2
+
+=======
+Suggestion 4
+
+def solve():
+    a, b = map(int, input().split())
+    if (a+b)%2 == 0:
+        print((a+b)//2)
+    else:
+        print('IMPOSIBLE')
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if (A+B)%2 == 0:
+        print((A+B)//2)
+    else:
+        print("IMPOSIBLE")
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a==b:
+        print(a)
+    elif a>b:
+        print(a)
+    else:
+        print(b)
+
+=======
+Suggestion 7
+
+def solution(a, b):
+    if a == b:
+        return "IMPOSIBLE"
+    if a > b:
+        if (a - b) % 2 == 0:
+            return int((a - b) / 2 + b)
+        else:
+            return "IMPOSIBLE"
+    else:
+        if (b - a) % 2 == 0:
+            return int((b - a) / 2 + a)
+        else:
+            return "IMPOSIBLE"
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    if (A + B) % 2 == 0:
+        print((A + B) // 2)
+    else:
+        print("IMPOSSIBLE")
+
+=======
+Suggestion 9
+
+def problems135_a():
+    a,b = map(int,input().split())
+    if a >= b:
+        if (a-b)%2 == 0:
+            print((a-b)//2 + b)
+        else:
+            print("IMPOSSIBLE")
+    else:
+        if (b-a)%2 == 0:
+            print((b-a)//2 + a)
+        else:
+            print("IMPOSSIBLE")
+
+=======
+Suggestion 10
+
+def main():
+    A, B = map(int, input().split())
+    if (A+B) % 2 != 0:
+        print("IMPOSSIBLE")
+    else:
+        print((A+B)//2)

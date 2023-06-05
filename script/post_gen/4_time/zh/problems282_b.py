@@ -1,55 +1,155 @@
-#问题说明
-#N个参赛者，编号为1到N，将参加一个有M个问题的竞赛，编号为1到M。
-#对于1到N之间的整数i和1到M之间的整数j，如果S_i的第j个字符是o，则参赛者i可以解决j问题，如果该字符是x，则不能解决。
-#参与者必须是成对的。打印形成一对能够共同解决所有M个问题的参与者的方法的数量。
-#更确切地说，打印满足1≦ x < y≦ N的整数对（x,y）的数量，以便对于1和M之间的任何整数j，参与者x和参与者y中至少有一个能解决j的问题。
-#
-#约束条件
-#N是2到30之间的整数，包括在内。
-#M是1至30之间的整数，包括在内。
-#S_i是一个长度为M的字符串，由o和x组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 5
-#ooooo
-#oooxx
-#xxooo
-#oxoxo
-#xxxxx
-#
-#样本输出1
-#5
-#以下五对参与者满足条件：参与者1和2，参与者1和3，参与者1和4，参与者1和5，以及参与者2和3。
-#另一方面，例如参与者2和4的配对不满足条件，因为他们不能解决问题4。
-#
-#样本输入 2
-#3 2
-#ox
-#xo
-#xx
-#
-#样本输出2
-#1
-#
-#样本输入3
-#2 4
-#xxxx
-#xxox
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def get_input():
+    n,m = map(int,input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return n,m,s
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            flag = True
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    continue
+                else:
+                    flag = False
+                    break
+            if flag:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input():
+    N,M = map(int,input().split())
+    S = []
+    for i in range(N):
+        S.append(input())
+    return N,M,S
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    a = [[0]*m for i in range(n)]
+    for i in range(n):
+        a[i] = list(input())
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            flag = True
+            for k in range(m):
+                if a[i][k] == 'o' or a[j][k] == 'o':
+                    continue
+                else:
+                    flag = False
+            if flag:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n,m = map(int,input().split())
+    s = [input() for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            cnt = 0
+            for k in range(m):
+                if s[i][k] == 'o' or s[j][k] == 'o':
+                    cnt += 1
+            if cnt == m:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n,m = map(int,input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, m = map(int, input().split())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            ok = True
+            for k in range(m):
+                if s[i][k] == 'x' and s[j][k] == 'x':
+                    ok = False
+            if ok:
+                ans += 1
+    print(ans)

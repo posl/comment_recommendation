@@ -1,36 +1,86 @@
-#问题陈述
-#高桥的钱包里有一个或多个100日元的硬币，没有其他东西。(日元是日本的货币）。
-#钱包里的钱总数有可能是X日元吗？
-#
-#限制条件
-#0 ≦ X ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#X
-#
-#輸出
-#如果高桥的钱包里的钱总数有可能是X日元，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#500
-#
-#样本输出1
-#Yes
-#如果钱包里有5个100日元的硬币，总金额是500日元。因此，总金额有可能是X=500日元，所以我们应该打印Yes。
-#
-#输入样本2
-#40
-#
-#样本输出2
-#No
-#
-#样本输入3
-#0
-#
-#样本输出3
-#No
-#请注意，钱包里至少有一个100日元的硬币。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    x = int(input())
+    # 检查是否满足条件
+    if 0 <= x <= 1000 and x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    x = int(input())
+    # 钱包里至少有一个100日元的硬币
+    if x >= 100:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x%100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    X = int(input())
+    if X % 100 == 0 and X != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    # X = int(input())
+    # if 0 <= X <= 1000:
+    #     print("Yes")
+    # else:
+    #     print("No")
+    print("Yes" if 0 <= int(input()) <= 1000 else "No")
+
+=======
+Suggestion 6
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x >= 100 and x <= 1000:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def isPossible(x):
+    for i in range(0, 15):
+        for j in range(0, 15):
+            if (i * 4 + j * 7) == x:
+                return True
+    return False

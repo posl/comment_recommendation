@@ -1,39 +1,47 @@
-#问题陈述
-#你决定根据你孩子现在要玩的游戏的结果给他一笔零用钱。
-#这个游戏的玩法如下：
-#有三个 "整数板"，每个板上印有1到9（含）之间的数字，还有一个 "运算板"，上面印有 "+"。
-#玩家应通过从左到右排列四个面板，构建一个X+Y的公式。(操作面板不应该放在公式的两端）。
-#然后，零用钱的数额将等于公式的结果值。
-#给出游戏中使用的整数板上所印的数值A、B和C，找出可能的最大零用钱数额。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B, C ≦ 9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#输出
-#打印零用钱的最大可能数额。
-#
-#输入样本 1
-#1 5 2
-#
-#样本输出1
-#53
-#当面板排列为52+1时，零用钱的数额将是53，这是可能的最大数额。
-#
-#样本输入2
-#9 9 9
-#
-#样本输出2
-#108
-#
-#样本输入3
-#6 6 7
-#
-#样本输出3
-#82
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int,input().split())
+    print(max(a+b+c, a+b*c, a*b+c, a*b*c))
+
+=======
+Suggestion 2
+
+def solve():
+    A,B,C = map(int,input().split())
+    print(A+B+C+max(A,B,C)*9)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int,input().split())
+    print(max(a+b+c,a+b*c,(a+b)*c,a*b+c,a*(b+c),a*b*c))
+
+=======
+Suggestion 4
+
+def main():
+    # 读入输入
+    a,b,c = map(int,input().split())
+
+    # 计算结果
+    print(max(a*10+b+c,a+b*10+c,a+b+c*10))
+
+=======
+Suggestion 5
+
+def main():
+    A,B,C = map(int,input().split())
+    print(A+B+C+max(A,B,C)*9)
+
+=======
+Suggestion 6
+
+def main():
+    A,B,C = map(int,input().split())
+    print(10*A+B+C)
+main()

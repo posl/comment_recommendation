@@ -1,35 +1,233 @@
-#问题说明
-#AtCoder目前有四个系列的定期比赛：ABC, ARC, AGC, 和AHC。
-#除了S_1，S_2和S_3之外，AtCoder目前举办的定期比赛系列是什么？
-#
-#限制条件
-#S_1, S_2, 和 S_3中的每一个都是ABC, ARC, AGC, 或AHC。
-#S_1, S_2, 和 S_3 是成对的不同。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S_1
-#S_2
-#S_3
-#
-#输出
-#打印答案。
-#
-#样本输入1
-#ARC
-#AGC
-#AHC
-#
-#样本输出1
-#ABC
-#输入的是ARC, AGC, 和AHC。剩下的是ABC。
-#
-#样本输入2
-#AGC
-#ABC
-#ARC
-#
-#样本输出2
-#AHC
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    S = [S1, S2, S3]
+    if "ABC" not in S:
+        print("ABC")
+    elif "ARC" not in S:
+        print("ARC")
+    elif "AGC" not in S:
+        print("AGC")
+    elif "AHC" not in S:
+        print("AHC")
+
+=======
+Suggestion 2
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC' and s2 == 'ARC':
+        print('AGC')
+    elif s1 == 'ABC' and s2 == 'AGC':
+        print('ARC')
+    elif s1 == 'ARC' and s2 == 'ABC':
+        print('AGC')
+    elif s1 == 'ARC' and s2 == 'AGC':
+        print('ABC')
+    elif s1 == 'AGC' and s2 == 'ABC':
+        print('ARC')
+    elif s1 == 'AGC' and s2 == 'ARC':
+        print('ABC')
+    else:
+        print('AHC')
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC' and s2 == 'ARC':
+        print('AGC')
+    elif s1 == 'ABC' and s2 == 'AGC':
+        print('ARC')
+    elif s1 == 'ARC' and s2 == 'AGC':
+        print('ABC')
+    elif s1 == 'ARC' and s2 == 'ABC':
+        print('AGC')
+    elif s1 == 'AGC' and s2 == 'ABC':
+        print('ARC')
+    elif s1 == 'AGC' and s2 == 'ARC':
+        print('ABC')
+
+=======
+Suggestion 4
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    if S1 == 'ABC' and S2 == 'ARC':
+        print('AGC')
+    elif S1 == 'ABC' and S2 == 'AGC':
+        print('ARC')
+    elif S1 == 'ARC' and S2 == 'ABC':
+        print('AGC')
+    elif S1 == 'ARC' and S2 == 'AGC':
+        print('ABC')
+    elif S1 == 'AGC' and S2 == 'ABC':
+        print('ARC')
+    elif S1 == 'AGC' and S2 == 'ARC':
+        print('ABC')
+    elif S1 == 'ABC' and S3 == 'ARC':
+        print('AGC')
+    elif S1 == 'ABC' and S3 == 'AGC':
+        print('ARC')
+    elif S1 == 'ARC' and S3 == 'ABC':
+        print('AGC')
+    elif S1 == 'ARC' and S3 == 'AGC':
+        print('ABC')
+    elif S1 == 'AGC' and S3 == 'ABC':
+        print('ARC')
+    elif S1 == 'AGC' and S3 == 'ARC':
+        print('ABC')
+    elif S2 == 'ABC' and S3 == 'ARC':
+        print('AGC')
+    elif S2 == 'ABC' and S3 == 'AGC':
+        print('ARC')
+    elif S2 == 'ARC' and S3 == 'ABC':
+        print('AGC')
+    elif S2 == 'ARC' and S3 == 'AGC':
+        print('ABC')
+    elif S2 == 'AGC' and S3 == 'ABC':
+        print('ARC')
+    elif S2 == 'AGC' and S3 == 'ARC':
+        print('ABC')
+
+=======
+Suggestion 5
+
+def find_missing_element(list):
+    for i in range(len(list)):
+        if list[i] == "ABC":
+            list.remove("ABC")
+        elif list[i] == "ARC":
+            list.remove("ARC")
+        elif list[i] == "AGC":
+            list.remove("AGC")
+        elif list[i] == "AHC":
+            list.remove("AHC")
+    return list
+
+=======
+Suggestion 6
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC' and s2 == 'ARC':
+        print('AGC')
+    elif s1 == 'ABC' and s2 == 'AGC':
+        print('ARC')
+    elif s1 == 'ARC' and s2 == 'ABC':
+        print('AGC')
+    elif s1 == 'ARC' and s2 == 'AGC':
+        print('ABC')
+    elif s1 == 'AGC' and s2 == 'ABC':
+        print('ARC')
+    elif s1 == 'AGC' and s2 == 'ARC':
+        print('ABC')
+    elif s1 == 'ABC' and s3 == 'ARC':
+        print('AGC')
+    elif s1 == 'ABC' and s3 == 'AGC':
+        print('ARC')
+    elif s1 == 'ARC' and s3 == 'ABC':
+        print('AGC')
+    elif s1 == 'ARC' and s3 == 'AGC':
+        print('ABC')
+    elif s1 == 'AGC' and s3 == 'ABC':
+        print('ARC')
+    elif s1 == 'AGC' and s3 == 'ARC':
+        print('ABC')
+    elif s2 == 'ABC' and s3 == 'ARC':
+        print('AGC')
+    elif s2 == 'ABC' and s3 == 'AGC':
+        print('ARC')
+    elif s2 == 'ARC' and s3 == 'ABC':
+        print('AGC')
+    elif s2 == 'ARC' and s3 == 'AGC':
+        print('ABC')
+    elif s2 == 'AGC' and s3 == 'ABC':
+        print('ARC')
+    elif s2 == 'AGC' and s3 == 'ARC':
+        print('ABC')
+
+=======
+Suggestion 7
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == "ABC" and s2 == "ARC":
+        print("AGC")
+    elif s1 == "ABC" and s2 == "AGC":
+        print("ARC")
+    elif s1 == "ARC" and s2 == "AGC":
+        print("ABC")
+    else:
+        print("AHC")
+
+=======
+Suggestion 8
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    s = [s1, s2, s3]
+    if 'ABC' not in s:
+        print('ABC')
+    elif 'ARC' not in s:
+        print('ARC')
+    elif 'AGC' not in s:
+        print('AGC')
+    elif 'AHC' not in s:
+        print('AHC')
+    return
+
+=======
+Suggestion 9
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    if s1 == 'ABC' and s2 == 'ARC':
+        print('AGC')
+    elif s1 == 'ABC' and s2 == 'AGC':
+        print('ARC')
+    elif s1 == 'ARC' and s2 == 'ABC':
+        print('AGC')
+    elif s1 == 'ARC' and s2 == 'AGC':
+        print('ABC')
+    elif s1 == 'AGC' and s2 == 'ABC':
+        print('ARC')
+    elif s1 == 'AGC' and s2 == 'ARC':
+        print('ABC')
+
+=======
+Suggestion 10
+
+def solution():
+    s = []
+    for i in range(3):
+        s.append(input())
+    if 'ABC' not in s:
+        print('ABC')
+    elif 'ARC' not in s:
+        print('ARC')
+    elif 'AGC' not in s:
+        print('AGC')
+    elif 'AHC' not in s:
+        print('AHC')

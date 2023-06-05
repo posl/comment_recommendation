@@ -1,39 +1,90 @@
-#问题陈述
-#给出的是整数a,b,c和d。
-#如果x和y是整数，并且a≦x≦b和c≦y≦d成立，x×y的最大可能值是多少？
-#
-#限制条件
-#-10^9 ≦ a ≦ b ≦ 10^9
-#-10^9 ≦ c ≦ d ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#a b c d
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#1 2 1 1
-#
-#样本输出 1
-#2
-#如果x=1，y=1，那么x×y=1。
-#如果x=2，y=1，那么x×y=2。
-#因此，答案是2。
-#
-#输入样本 2
-#3 5 -4 -2
-#
-#样本输出2
-#-6
-#答案可以是负数。
-#
-#输入样本3
-#-1000000000 0 -1000000000 0
-#
-#样本输出3
-#1000000000000000000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c,d = map(int, input().split())
+    print(max(a*c, a*d, b*c, b*d))
+
+=======
+Suggestion 2
+
+def get_max(a,b,c,d):
+    x = [a,b]
+    y = [c,d]
+    max_x = max(x)
+    min_x = min(x)
+    max_y = max(y)
+    min_y = min(y)
+    if max_x * max_y >= max_x * min_y:
+        if max_x * max_y >= min_x * max_y:
+            if max_x * max_y >= min_x * min_y:
+                return max_x * max_y
+            else:
+                return min_x * min_y
+        else:
+            if min_x * max_y >= min_x * min_y:
+                return min_x * max_y
+            else:
+                return min_x * min_y
+    else:
+        if min_x * max_y >= min_x * min_y:
+            if min_x * max_y >= max_x * min_y:
+                return min_x * max_y
+            else:
+                return max_x * min_y
+        else:
+            if min_x * min_y >= max_x * min_y:
+                return min_x * min_y
+            else:
+                return max_x * min_y
+
+=======
+Suggestion 3
+
+def maxProduct(a, b, c, d):
+    if a < 0 and b > 0:
+        if c < 0 and d > 0:
+            return max(a * c, a * d, b * c, b * d)
+        else:
+            return max(a * c, a * d, b * c, b * d, a * b)
+    elif a < 0 and b <= 0:
+        if c < 0 and d > 0:
+            return max(a * c, a * d, b * c, b * d)
+        else:
+            return max(a * c, a * d, b * c, b * d, a * b)
+    elif a >= 0 and b > 0:
+        if c < 0 and d > 0:
+            return max(a * c, a * d, b * c, b * d)
+        else:
+            return max(a * c, a * d, b * c, b * d, a * b)
+    elif a >= 0 and b <= 0:
+        if c < 0 and d > 0:
+            return max(a * c, a * d, b * c, b * d)
+        else:
+            return max(a * c, a * d, b * c, b * d, a * b)
+
+=======
+Suggestion 4
+
+def max_product(a,b,c,d):
+    max = a * c
+    if a * d > max:
+        max = a * d
+    if b * c > max:
+        max = b * c
+    if b * d > max:
+        max = b * d
+    return max
+
+=======
+Suggestion 5
+
+def solve(a,b,c,d):
+    max = 0
+    for i in range(a,b+1):
+        for j in range(c,d+1):
+            if i*j > max:
+                max = i*j
+    return max

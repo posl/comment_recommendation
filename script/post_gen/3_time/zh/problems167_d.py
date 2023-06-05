@@ -1,35 +1,163 @@
-#问题陈述
-#高桥王国有N个城镇，编号为1到N。
-#每个镇都有一个传送器。第i个镇的传送器（1 ≦ i ≦ N）会把你送到A_i镇。
-#高桥，国王，喜欢正整数K。这个自私的国王想知道，如果他从1号镇开始，从那里正好使用传送器K次，他将会在什么镇上。
-#帮助国王写一个程序来回答这个问题。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#1 ≦ K ≦ 10^{18}
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#如果国王从城镇1开始，并从那里使用传送器整整K次，则打印出代表国王将在的城镇的整数。
-#
-#输入样本 1
-#4 5
-#3 2 4 1
-#
-#样本输出1
-#4
-#如果我们从1号镇开始，使用5次传送器，我们的旅行将是这样的：1 -> 3 -> 4 -> 1 -> 3 -> 4.
-#
-#输入样本2
-#6 727202214173249351
-#6 5 2 5 3 2
-#
-#样本输出2
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve(n, k, a):
+    k = k % n
+    for i in range(k):
+        a = a[a[i] - 1]
+    return a
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = [0 for i in range(n)]
+    b[0] = 1
+    now = 1
+    for i in range(1,k+1):
+        now = a[now-1]
+        if b[now-1] == 0:
+            b[now-1] = i+1
+        else:
+            loop = i+1-b[now-1]
+            now = 1
+            for j in range(k%loop):
+                now = a[now-1]
+            break
+    print(now)
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    k = k % n
+    for i in range(k):
+        a[i] = a[i] - 1
+    for i in range(n):
+        if i == 0:
+            b = [a[i]]
+        else:
+            b.append(a[b[i-1]])
+        if b[i] == 0:
+            print(i+1)
+            return
+    print(b[k] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 记录访问过的城市
+    visited = [0] * n
+    # 记录访问过的城市的顺序
+    visited_order = []
+    # 访问的城市
+    city = 0
+    # 访问的城市的顺序
+    order = 1
+    # 访问城市
+    visited[city] = order
+    visited_order.append(city)
+    # 访问次数
+    count = 1
+    # 访问下一个城市
+    city = a[city] - 1
+    while True:
+        # 如果访问过
+        if visited[city] != 0:
+            # 记录访问次数
+            count = count - visited[city] + 1
+            # 记录访问的城市的顺序
+            visited_order = visited_order[visited[city] - 1:]
+            break
+        # 记录访问的城市
+        visited[city] = order + 1
+        visited_order.append(city)
+        # 访问次数加一
+        count += 1
+        # 访问下一个城市
+        city = a[city] - 1
+        # 增加访问的城市的顺序
+        order += 1
+    # 访问次数取模
+    k = k % count
+    # 访问的城市的顺序
+    visited_order = visited_order[:k]
+    # 访问的城市
+    city = visited_order[-1]
+    # 访问次数
+    count = len(visited_order)
+    # 访问下一个城市
+    city = a[city] - 1
+    while True:
+        # 访问次数加一
+        count += 1
+        # 访问下一个城市
+        city = a[city] - 1
+        # 如果访问过
+        if city in visited_order:
+            # 访问的城市的顺序
+            visited
+
+=======
+Suggestion 5
+
+def test():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    town = 1
+    for i in range(K):
+        town = A[town-1]
+    print(town)
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    pos = 0
+    pos_list = [0]
+    for i in range(K):
+        pos = A[pos] - 1
+        if pos in pos_list:
+            break
+        else:
+            pos_list.append(pos)
+    if i == K - 1:
+        print(pos + 1)
+    else:
+        print(pos_list[(K - 1) % (i + 1) + 1] + 1)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.insert(0,0)
+    now = 1
+    for i in range(K):
+        now = A[now]
+    print(now)
+
+=======
+Suggestion 9
+
+def main():
+    pass

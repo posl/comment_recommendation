@@ -1,41 +1,133 @@
-#问题陈述
-#给你一个由大写英文字母组成的4个字符的字符串S。
-#判断S是否恰好由两种字符组成，而这两种字符都在S中出现了两次。
-#
-#限制条件
-#S的长度是4。
-#S由大写的英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S恰好由两种字符组成，并且都在S中出现两次，则打印Yes；否则，打印No。
-#
-#输入样本1
-#ASSA
-#
-#样本输出1
-#Yes
-#S由A和S组成，它们都在S中出现两次。
-#
-#样本输入2
-#STOP
-#
-#样本输出2
-#No
-#
-#采样输入3
-#FFEE
-#
-#样品输出3
-#Yes
-#
-#样品输入4
-#Free
-#
-#样品输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if len(S) != 4:
+        print('No')
+        return
+    if len(set(S)) == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    s = s.upper()
+    if len(s) != 4:
+        print("No")
+        return
+    if s[0] == s[1] and s[2] == s[3] and s[0] != s[2]:
+        print("Yes")
+    elif s[0] == s[2] and s[1] == s[3] and s[0] != s[1]:
+        print("Yes")
+    elif s[0] == s[3] and s[1] == s[2] and s[0] != s[1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    a = s[0]
+    b = s[1]
+    c = s[2]
+    d = s[3]
+    if((a == b and c == d and b != c) or (a == c and b == d and b != c) or (a == d and b == c and b != d)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if len(set(s)) == 2 and s.count(s[0]) == 2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def judge(s):
+    if len(s) != 4 or not s.isupper():
+        return False
+    else:
+        for i in range(4):
+            if s.count(s[i]) != 2:
+                return False
+        return True
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    S_list = list(S)
+    S_set = set(S_list)
+    if len(S_set) == 2:
+        for i in S_set:
+            if S_list.count(i) != 2:
+                print("No")
+                break
+        else:
+            print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def is2char(s):
+    if len(s) != 4:
+        return False
+    if s[0] == s[1] and s[2] == s[3] and s[0] != s[2]:
+        return True
+    elif s[0] == s[2] and s[1] == s[3] and s[0] != s[1]:
+        return True
+    elif s[0] == s[3] and s[1] == s[2] and s[0] != s[1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    if len(set(s)) == 2 and s.count(s[0]) == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s=input()
+    if s[0]==s[1] and s[2]==s[3] and s[0]!=s[2]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if len(s) != 4:
+        print("No")
+        return
+    if len(set(s)) == 2:
+        print("Yes")
+    else:
+        print("No")

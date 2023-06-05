@@ -1,37 +1,128 @@
-#问题说明
-#N块瓷砖从左到右排列成一排。每块瓷砖的初始颜色由一个长度为N的字符串S表示。
-#如果S的第i个字符是0，从左边开始的第i个瓷砖被涂成黑色，如果该字符是1，则涂成白色。
-#你想把一些瓷砖重新涂成黑色或白色，这样任何相邻的两块瓷砖都有不同的颜色。
-#至少有多少块瓷砖需要重新涂抹才能满足条件？
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S_i为0或1。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S
-#
-#輸出
-#打印为满足条件需要重新涂抹的最小瓷砖数量。
-#
-#输入样本 1
-#000
-#
-#样本输出 1
-#1
-#这个条件可以通过把中间的瓦片重新涂成白色来满足。
-#
-#输入样本2
-#10010010
-#
-#样本输出2
-#3
-#
-#样本输入3
-#0
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(min(s.count('0'),s.count('1'))*2)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == '0':
+                count += 1
+        else:
+            if s[i] == '1':
+                count += 1
+    print(min(count,len(s)-count))
+main()
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    N = len(S)
+    count = 0
+    for i in range(N):
+        if i == 0:
+            if S[i] == S[i+1]:
+                count += 1
+        elif i == N-1:
+            if S[i] == S[i-1]:
+                count += 1
+        else:
+            if S[i] == S[i-1] or S[i] == S[i+1]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    # 从左到右的颜色
+    left = [0] * (len(s) + 1)
+    # 从右到左的颜色
+    right = [0] * (len(s) + 1)
+    for i in range(len(s)):
+        left[i + 1] = left[i] + int(s[i])
+        right[i + 1] = right[i] + int(s[len(s) - i - 1])
+    res = len(s)
+    for i in range(len(s) + 1):
+        res = min(res, left[i] + right[len(s) - i])
+    print(res)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i] == '1':
+            count += 1
+        elif i % 2 == 1 and s[i] == '0':
+            count += 1
+    print(min(count, len(s) - count))
+
+=======
+Suggestion 6
+
+def solve(s):
+    if len(s) == 1:
+        return 0
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 1
+        else:
+            return 0
+    if s[0] == s[1]:
+        return 1 + solve(s[1:])
+    else:
+        return solve(s[1:])
+
+=======
+Suggestion 7
+
+def min_flip(s):
+    # 从左到右遍历，如果遇到与前一个相同的，就要翻转
+    n = len(s)
+    cnt = 0
+    for i in range(1, n):
+        if s[i] == s[i-1]:
+            cnt += 1
+    return cnt
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    b = 0
+    w = 0
+    for i in range(len(s)):
+        if s[i] == "0":
+            b += 1
+        else:
+            w += 1
+    print(min(b, w) * 2)
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if i%2 == 0 and s[i] == '0':
+            count += 1
+        if i%2 == 1 and s[i] == '1':
+            count += 1
+    print(min(count,len(s)-count))

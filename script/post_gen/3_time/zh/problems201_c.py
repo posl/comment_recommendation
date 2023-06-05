@@ -1,39 +1,247 @@
-#问题陈述
-#高桥忘记了他的密码。密码是一个四位数的字符串，由0，1，...，9组成，可以以0开头。
-#对于0到9的每个数字，高桥记得以下事实，用一个10个字符的字符串S_0S_1 ...S_9:
-#如果S_i是o：他确定PIN码包含数字i；
-#如果S_i是x：他确定密码不包含数字i；
-#如果S_i是？：他不确定密码是否包含数字i。
-#有多少个字符串可以成为高桥的密码？
-#
-#限制条件
-#S是一个由o，x，和?组成的10个字符的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#ooo??? xxxx
-#
-#样本输出1
-#108
-#一些可能的密码是0123和0021。
-#
-#样本输入2
-#o?oo?oxoxo
-#
-#采样输出2
-#0
-#可能没有可能的PIN，在这种情况下，答案是0。
-#
-#输入样本3
-#xxxxx?xxxo
-#
-#样本输出3
-#15
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(s):
+    if s.count('?') == 10:
+        return 10000
+    else:
+        count = 0
+        for i in range(10):
+            if s[i] == 'o':
+                count += s.count(str(i))
+            elif s[i] == 'x':
+                count += 0
+            else:
+                count += 0
+        return count
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(i).find(str(j)) == -1:
+                flag = False
+                break
+            elif s[j] == 'x' and str(i).find(str(j)) != -1:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    S = S.replace('?', '0')
+    S = S.replace('o', '1')
+    S = S.replace('x', '2')
+    S = S.replace('0', '3')
+    S = S.replace('1', '4')
+    S = S.replace('2', '5')
+    S = S.replace('3', '6')
+    S = S.replace('4', '7')
+    S = S.replace('5', '8')
+    S = S.replace('6', '9')
+    S = S.replace('7', '0')
+    S = S.replace('8', '1')
+    S = S.replace('9', '2')
+    S = S.replace('0', '3')
+    S = S.replace('1', '4')
+    S = S.replace('2', '5')
+    S = S.replace('3', '6')
+    S = S.replace('4', '7')
+    S = S.replace('5', '8')
+    S = S.replace('6', '9')
+    S = S.replace('7', '0')
+    S = S.replace('8', '1')
+    S = S.replace('9', '2')
+    S = S.replace('0', '3')
+    S = S.replace('1', '4')
+    S = S.replace('2', '5')
+    S = S.replace('3', '6')
+    S = S.replace('4', '7')
+    S = S.replace('5', '8')
+    S = S.replace('6', '9')
+    S = S.replace('7', '0')
+    S = S.replace('8', '1')
+    S = S.replace('9', '2')
+    S = S.replace('0', '3')
+    S = S.replace('1', '4')
+    S = S.replace('2', '5')
+    S = S.replace('3', '6')
+    S = S.replace('4', '7')
+    S = S.replace('5', '8')
+    S = S.replace('6', '9')
+    S = S.replace('7', '0')
+    S = S.replace('8', '1')
+    S = S.replace('9', '2')
+    S = S.replace('0', '3')
+    S = S.replace('1', '4
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    ans = 0
+    for i in range(10000):
+        s = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if S[j] == 'o' and str(j) not in s:
+                flag = False
+            elif S[j] == 'x' and str(j) in s:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def getPinCount(S):
+    # 从S中获取o和x的个数
+    S_list = list(S)
+    o_count = S_list.count('o')
+    x_count = S_list.count('x')
+    # 从S中获取?的个数
+    question_mark_count = S_list.count('?')
+    # 获取S中o和x的位置
+    o_index_list = []
+    for i in range(len(S_list)):
+        if S_list[i] == 'o':
+            o_index_list.append(i)
+    # 获取S中?的位置
+    question_mark_index_list = []
+    for i in range(len(S_list)):
+        if S_list[i] == '?':
+            question_mark_index_list.append(i)
+    # 初始化密码个数
+    pin_count = 0
+    # 从o和x的位置中获取两个位置组成pin
+    if o_count + x_count >= 4:
+        for i in range(o_count + x_count - 3):
+            for j in range(i + 1, o_count + x_count - 2):
+                for k in range(j + 1, o_count + x_count - 1):
+                    for l in range(k + 1, o_count + x_count):
+                        # 获取pin
+                        pin = [o_index_list[i], o_index_list[j], o_index_list[k], o_index_list[l]]
+                        # 判断pin是否符合?的位置
+                        flag = True
+                        for index in question_mark_index_list:
+                            if index not in pin:
+                                flag = False
+                                break
+                        if flag:
+                            pin_count += 1
+    return pin_count
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+        if flag:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def count_passwords(s, x):
+    if len(s) == 0:
+        return 1
+    elif s[0] == '?':
+        return count_passwords('o' + s[1:], x) + count_passwords('x' + s[1:], x)
+    elif s[0] == 'o':
+        return count_passwords('o' + s[1:], x)
+    elif s[0] == 'x':
+        return count_passwords('x' + s[1:], x)
+    else:
+        return count_passwords(s[1:], x)
+
+s = input()
+x = input()
+print(count_passwords(s, x))
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        i = str(i).zfill(4)
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in i:
+                break
+            if s[j] == 'x' and str(j) in i:
+                break
+        else:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def problem201_c():
+    s = input()
+    #print(s)
+    count = 0
+    for i in range(10000):
+        #print(i)
+        i = str(i).zfill(4)
+        #print(i)
+        flag = True
+        for j in range(10):
+            #print(j)
+            if s[j] == 'o' and str(j) not in i:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in i:
+                flag = False
+                break
+        if flag:
+            #print(i)
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    count = 0
+    for i in range(10000):
+        pin = str(i).zfill(4)
+        flag = True
+        for j in range(10):
+            if s[j] == 'o' and str(j) not in pin:
+                flag = False
+                break
+            elif s[j] == 'x' and str(j) in pin:
+                flag = False
+                break
+        if flag:
+            count += 1
+    print(count)

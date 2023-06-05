@@ -1,54 +1,164 @@
-#问题陈述
-#有一台有N个卷轴的老虎机。
-#第i个卷轴上的符号的位置由一个长度为10的字符串S_i表示，其中包含0，1，...，9中的每一个符号，正好一次。
-#每个轮盘都有一个相应的按钮。对于每个非负整数t，高桥可以在卷轴开始旋转后的t秒内按下他选择的一个按钮（或什么都不做）。
-#如果第i个卷轴的按钮在旋转开始后t秒被按下，第i个卷轴将停止显示S_i的（（t mod 10）+1）-个字符。
-#这里，t mod 10表示t除以10时的余数。
-#高桥想让所有的卷轴停下来，使它们显示相同的字符。
-#请找出在旋转开始后实现他的目标所需的最小秒数。
-#
-#限制条件
-#2≦ N≦ 100
-#N是一个整数。
-#S_i是一个长度为10的字符串，其中包含0, 1, ..., 9中的每一个，正好一次。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印旋转开始后实现高桥目标所需的最小秒数。
-#
-#样本输入1
-#3
-#1937458062
-#8124690357
-#2385760149
-#
-#样本输出1
-#6
-#高桥可以在旋转开始后的6秒内，通过以下方式使所有卷轴停止显示8。
-#在旋转开始0秒后，按下第2个卷轴的按钮，使其停止显示S_2的((0 mod 10)+1=1)-个字符，即8。
-#旋转开始2秒后，按下第3个卷轴的按钮，使其停止显示S_3的((2 mod 10)+1=3)-个字符，8。
-#旋转开始6秒后，按下第1个卷轴的按钮，使其停止显示((6 mod 10)+1=7)个S_1的字符，8。
-#没有办法在5秒或更短的时间内使所有卷轴显示相同的字符，所以答案是6。
-#
-#输入样本2
-#5
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#0123456789
-#
-#样本输出2
-#40
-#请注意，他必须停止所有的卷轴，使其显示相同的字符。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    ans = float('inf')
+    for i in range(n):
+        for j in range(10):
+            t = 0
+            for k in range(n):
+                t += min(abs(i-k), n-abs(i-k)) + abs((j-int(s[k][t%10]))%10)
+            ans = min(ans, t)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(s)
+    #print(len(s[0]))
+    ans = 0
+    for i in range(10):
+        flag = 0
+        for j in range(n):
+            if s[j][i] == '0':
+                flag += 1
+        if flag == n:
+            ans = i+1
+            break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    ans = 0
+    for i in range(10):
+        for j in range(1,n):
+            if s[0][i:] == s[j][i:]+s[j][:i]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    ans = 0
+    for i in range(10):
+        #print(i)
+        #print(s)
+        #print(s[0][i])
+        #print(s[1][i])
+        #print(s[2][i])
+        #print(s[3][i])
+        #print(s[4][i])
+        #print()
+        if s[0][i] != s[1][i] or s[0][i] != s[2][i] or s[0][i] != s[3][i] or s[0][i] != s[4][i]:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_match_count(str1, str2):
+    count = 0
+    for i in range(10):
+        if str1[i] == str2[i]:
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    #print(s)
+    t = 0
+    while True:
+        t += 1
+        for i in range(n):
+            if s[i][t % 10] == s[i][0]:
+                continue
+            else:
+                break
+        else:
+            break
+    print(t)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    ans = 10**10
+    for i in range(n):
+        t = 0
+        for j in range(n):
+            t += min((i-j)%n, (j-i)%n)
+        ans = min(ans, t)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = [input() for i in range(N)]
+    #print(S)
+    #print(len(S[0]))
+    #print(S[0][0])
+    #print(len(S[0][0]))
+    #print(S[0][0][0])
+    #print(len(S[0][0][0]))
+    #print(S[0][0][0][0])
+    #print(len(S[0][0][0][0]))
+    #print(S[0][0][0][0][0])
+    #print(len(S[0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0][0][0][0][0])
+    #print(len(S[0][0][0][0][0][0][0][0][0][0][0][0]))
+    #print(S[0][0][0][0][0][0][0][0][0][0][0][0][0])
+    #print(len(S[0

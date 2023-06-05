@@ -1,53 +1,261 @@
-#问题陈述
-#高桥买了一个台钟。
-#该钟显示的时间如图1所示，在24小时制的AB：CD。
-#例如，图2中的时钟显示7:58。
-#时间的格式被正式描述如下。
-#假设当前时间是24小时制中h的m分钟。  这里，24小时制用0到23（包括）之间的整数表示小时，用0到59（包括）之间的整数表示分钟。
-#假设A是h的十位数，B是h的一位数，C是m的十位数，D是m的一位数（这里，如果h只有一位数，我们认为它有一个前导零；同样适用于m）。
-#然后，时钟的左上方显示A，左下方显示B，右上方显示C，右下方显示D。
-#高桥决定，如果一个时间满足以下条件，就称之为混乱时间：
-#将时钟的右上角和左下角的数字对调后，它仍然读出24小时制的有效时间。
-#例如，图3中的时钟显示为20:13。  将右上角和左下角的数字对调后，显示为21:03。  因此，20:13是一个混乱的时间。
-#现在时钟显示的是H:M。
-#在24小时制中找出下一个令人困惑的时间（包括现在）。
-#
-#限制条件
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H和M是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H M
-#
-#輸出
-#让h:m成为答案，其中h和m必须满足0≦h≦23和0≦m≦59。
-#以下列格式打印h和m：  
-#h m
-#你的答案被认为是正确的，即使h包含一个前导零来表示它是一个2位数的整数；这同样适用于m。
-#
-#输入样本 1
-#1 23
-#
-#输出样本 1
-#1 23
-#1:23是一个令人困惑的时间，因为将时钟的右上角和左下角的数字对调后，它的读数是2:13。
-#因此，答案是1:23。
-#你的答案被认为是正确的，即使你打印的01 23有一个前导零。
-#
-#输入样本2
-#19 57
-#
-#样本输出2
-#20 0
-#19:57之后的下一个混乱的时间是20:00。
-#
-#样本输入3
-#20 40
-#
-#样本输出3
-#21 0
-#请注意，在24小时制中，24:00是一个无效的记号。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,m = map(int,input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print(h,m)
+            break
+
+=======
+Suggestion 2
+
+def main():
+    h,m=map(int,input().split())
+    if (h==0 and m==0) or (h==23 and m==59):
+        print('0 0')
+    elif m==59:
+        print(h+1,'0')
+    else:
+        print(h,m+1)
+
+=======
+Suggestion 3
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        if m < 59:
+            m += 1
+        else:
+            m = 0
+            if h < 23:
+                h += 1
+            else:
+                h = 0
+        if str(h).zfill(2)[::-1] == str(m).zfill(2):
+            print(str(h).zfill(2) + ':' + str(m).zfill(2))
+            break
+
+=======
+Suggestion 4
+
+def get_next_time(h, m):
+    if m == 59:
+        if h == 23:
+            h = 0
+            m = 0
+        else:
+            h += 1
+            m = 0
+    else:
+        m += 1
+    return h, m
+
+=======
+Suggestion 5
+
+def is_confuse_time(h, m):
+    if h < 10 and m < 10:
+        h = str(0) + str(h)
+        m = str(0) + str(m)
+    elif h < 10:
+        h = str(0) + str(h)
+    elif m < 10:
+        m = str(0) + str(m)
+    else:
+        pass
+    if h[0] == m[1] and h[1] == m[0]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+            if h == 24:
+                h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            break
+    print(h, m)
+
+=======
+Suggestion 7
+
+def findNextTime(H,M):
+    while True:
+        M += 1
+        if M == 60:
+            H += 1
+            M = 0
+        if H == 24:
+            H = 0
+        if H // 10 == M % 10 and H % 10 == M // 10:
+            return H, M
+
+=======
+Suggestion 8
+
+def main():
+    h,m = map(int,input().split(' '))
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            print(h,m,sep=':')
+            break
+
+=======
+Suggestion 9
+
+def checkTime(h,m):
+    if h == 0 and m == 0:
+        return False
+    elif h == 0 and m == 1:
+        return False
+    elif h == 0 and m == 2:
+        return False
+    elif h == 0 and m == 3:
+        return False
+    elif h == 0 and m == 4:
+        return False
+    elif h == 0 and m == 5:
+        return False
+    elif h == 0 and m == 6:
+        return False
+    elif h == 0 and m == 7:
+        return False
+    elif h == 0 and m == 8:
+        return False
+    elif h == 0 and m == 9:
+        return False
+    elif h == 0 and m == 10:
+        return False
+    elif h == 0 and m == 11:
+        return False
+    elif h == 0 and m == 12:
+        return False
+    elif h == 0 and m == 13:
+        return False
+    elif h == 0 and m == 14:
+        return False
+    elif h == 0 and m == 15:
+        return False
+    elif h == 0 and m == 16:
+        return False
+    elif h == 0 and m == 17:
+        return False
+    elif h == 0 and m == 18:
+        return False
+    elif h == 0 and m == 19:
+        return False
+    elif h == 0 and m == 20:
+        return False
+    elif h == 0 and m == 21:
+        return False
+    elif h == 0 and m == 22:
+        return False
+    elif h == 0 and m == 23:
+        return False
+    elif h == 0 and m == 24:
+        return False
+    elif h == 0 and m == 25:
+        return False
+    elif h == 0 and m == 26:
+        return False
+    elif h == 0 and m == 27:
+        return False
+    elif h == 0 and m == 28:
+        return False
+    elif h == 0 and m == 29:
+        return False
+    elif h == 0 and m == 30:
+        return False
+
+=======
+Suggestion 10
+
+def is_confusing_time(h,m):
+    if h == 0 and m == 0:
+        return False
+    if h == 0:
+        return False
+    if h == 1 and m == 0:
+        return False
+    if h == 2 and m == 0:
+        return False
+    if h == 3 and m == 0:
+        return False
+    if h == 4 and m == 0:
+        return False
+    if h == 5 and m == 0:
+        return False
+    if h == 6 and m == 0:
+        return False
+    if h == 7 and m == 0:
+        return False
+    if h == 8 and m == 0:
+        return False
+    if h == 9 and m == 0:
+        return False
+    if h == 10 and m == 0:
+        return False
+    if h == 11 and m == 0:
+        return False
+    if h == 12 and m == 0:
+        return False
+    if h == 13 and m == 0:
+        return False
+    if h == 14 and m == 0:
+        return False
+    if h == 15 and m == 0:
+        return False
+    if h == 16 and m == 0:
+        return False
+    if h == 17 and m == 0:
+        return False
+    if h == 18 and m == 0:
+        return False
+    if h == 19 and m == 0:
+        return False
+    if h == 20 and m == 0:
+        return False
+    if h == 21 and m == 0:
+        return False
+    if h == 22 and m == 0:
+        return False
+    if h == 23 and m == 0:
+        return False
+    if h == 23 and m == 59:
+        return False
+    if h == 0 and m == 59:
+        return False
+    if h == 0 and m == 58:
+        return False
+    if h == 0 and m == 57:
+        return False
+    if h == 0 and m == 56:
+        return False
+    if h == 0 and m == 55:
+        return False
+    if

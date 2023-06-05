@@ -1,45 +1,131 @@
-#问题陈述
-#打印所有长度为N的严格递增的整数序列，其中所有元素都在1到M之间（包括），按词典上的升序排列。
-#
-#注意事项
-#对于两个长度相同的整数序列A_1,A_2,...,A_N和B_1,B_2,...,B_N，当且仅当，A被认为比B早：
-#有一个整数i (1 ≦ i ≦ N)，使A_j=B_j，对于所有整数j，满足1 ≦ j < i，并且A_i < B_i。
-#一个整数序列A_1,A_2,...,A_N被称为严格增加，当且仅当：
-#A_i < A_{i+1}对于所有整数i（1 ≦ i ≦ N-1）。
-#
-#限制条件
-#1 ≦ N ≦ M ≦ 10
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N M
-#
-#输出
-#按从大到小的顺序打印所寻求的序列，每个序列在自己的行中（见输出样本）。
-#
-#输入样本 1
-#2 3
-#
-#输出样本 1
-#1 2
-#1 3
-#2 3
-#所寻求的序列是(1,2),(1,3),(2,3)，应按词典上的升序打印。
-#
-#输入样本 2
-#3 5
-#
-#输出样本 2
-#1 2 3
-#1 2 4
-#1 2 5
-#1 3 4
-#1 3 5
-#1 4 5
-#2 3 4
-#2 3 5
-#2 4 5
-#3 4 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    a = list(range(1,m+1))
+    for i in range(1,n):
+        a = [x for x in a if x < m-n+i+1]
+    print(a)
+
+=======
+Suggestion 2
+
+def print_sequence(n, m, sequence):
+    if len(sequence) == n:
+        print(" ".join(map(str, sequence)))
+    else:
+        for i in range(1, m + 1):
+            if i not in sequence:
+                print_sequence(n, m, sequence + [i])
+
+=======
+Suggestion 3
+
+def printSequence(n, m):
+    if n == 0:
+        return [[]]
+    elif n == 1:
+        return [[i] for i in range(1, m+1)]
+    else:
+        result = []
+        for i in range(1, m+1):
+            for j in printSequence(n-1, i):
+                result.append([i]+j)
+        return result
+
+=======
+Suggestion 4
+
+def get_next(seq, n, m):
+    if len(seq) == n:
+        print(*seq)
+    else:
+        for i in range(seq[-1]+1, m+1):
+            get_next(seq+[i], n, m)
+
+=======
+Suggestion 5
+
+def dfs(N,M,now):
+    if len(now)==N:
+        print(*now)
+        return
+    for i in range(now[-1]+1,M+1):
+        dfs(N,M,now+[i])
+
+N,M=map(int,input().split())
+for i in range(1,M+1):
+    dfs(N,M,[i])
+
+=======
+Suggestion 6
+
+def print_seq(n, m, seq):
+    if len(seq) == n:
+        print(' '.join(map(str, seq)))
+        return
+    for i in range(1, m+1):
+        if len(seq) == 0 or i > seq[-1]:
+            print_seq(n, m, seq + [i])
+
+=======
+Suggestion 7
+
+def print_sequence(n,m):
+    if n == 0:
+        print()
+    elif n == 1:
+        for i in range(1,m+1):
+            print(i)
+    else:
+        for i in range(n,m+1):
+            print_sequence(n-1,i-1)
+
+n,m = map(int,input().split())
+print_sequence(n,m)
+
+=======
+Suggestion 8
+
+def f(n,m):
+    if n==1:
+        return [[i] for i in range(1,m+1)]
+    else:
+        return [ [i]+j for i in range(1,m+1) for j in f(n-1,m) if i<j[0] ]
+
+n,m=map(int,input().split())
+for i in f(n,m):
+    print(*i)
+
+=======
+Suggestion 9
+
+def dfs(N, M, arr, i, j):
+    if i == N:
+        print(' '.join(map(str, arr)))
+        return
+    for k in range(j+1, M+1):
+        arr[i] = k
+        dfs(N, M, arr, i+1, k)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = [1]*n
+    while True:
+        for i in range(n):
+            print(a[i],end=' ')
+        print()
+        i = n-1
+        while i>=0 and a[i] == m:
+            i -= 1
+        if i<0:
+            break
+        a[i] += 1
+        for j in range(i+1,n):
+            a[j] = a[i]

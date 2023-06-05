@@ -1,40 +1,60 @@
-#问题说明
-#有非负整数A、B、C、D、E和F，满足A×B×C≧D×E×F。
-#求（A×B×C）-（D×E×F）除以998244353时的余数。
-#
-#限制条件
-#0≦ A，B，C，D，E，F≦ 10^{18}
-#A×B×C≧D×E×F
-#A、B、C、D、E、F是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#A B C D E F
-#
-#输出
-#打印(A×B×C)-(D×E×F)除以998244353时的余数，为整数。
-#
-#输入示例 1
-#2 3 5 1 2 4
-#
-#输出示例 1
-#22
-#因为A×B×C=2×3×5=30，D×E×F=1×2×4=8、
-#我们有（A×B×C）-（D×E×F）=22。用此数除以998244353，打印出余数，即为22。
-#
-#输入样本 2
-#1 1 1000000000 0 0 0
-#
-#样本输出2
-#1755647
-#因为A×B×C=1000000000，D×E×F=0、
-#我们有（A×B×C）-（D×E×F）=1000000000。用此数除以998244353，打印余数，即为1755647。
-#
-#输入样本3
-#1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000
-#
-#样本输出3
-#0
-#我们有(A×B×C)-(D×E×F)=0，除以998244353，打印余数，即为0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c,d,e,f = map(int,input().split())
+    x = a*b*c
+    y = d*e*f
+    print((x-y)%998244353)
+
+=======
+Suggestion 2
+
+def main():
+    A,B,C,D,E,F = map(int,input().split())
+    print((A*B*C-D*E*F)%998244353)
+
+=======
+Suggestion 3
+
+def main():
+    #读取输入
+    a,b,c,d,e,f = map(int,input().split())
+    #计算结果
+    ans = (a*b*c-d*e*f)%998244353
+    #输出结果
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c,d,e,f = map(int,input().split())
+    if a*b*c >= d*e*f:
+        x = (a*b*c)%(998244353)
+        y = (d*e*f)%(998244353)
+        print(x-y)
+    else:
+        print("输入不符合要求")
+
+=======
+Suggestion 5
+
+def main():
+    a, b, c, d, e, f = map(int, input().split())
+    print((a * b * c - d * e * f) % 998244353)
+
+=======
+Suggestion 6
+
+def problems275_b():
+    pass
+
+=======
+Suggestion 7
+
+def problems275_b():
+    A,B,C,D,E,F = map(int, input().split())
+    print((A*B*C-D*E*F)%998244353)

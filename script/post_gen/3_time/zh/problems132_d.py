@@ -1,37 +1,149 @@
-#问题陈述
-#有K个蓝球和N-K个红球。相同颜色的球是无法区分的。Snuke和Takahashi正在玩这些球。
-#首先，Snuke将N个球从左到右排列成一排。
-#然后，Takahashi将只收集K个蓝球。在一次行动中，他可以收集任何数量的连续蓝球。他将以尽可能少的动作收集所有的蓝球。
-#Snuke有多少种方法可以将N个球排成一排，使Takahashi恰好需要i步来收集所有的蓝球？计算这个数字的模数为10^9+7，每一个i都是1≦i≦K。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 2000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#
-#输出
-#打印K行。第i行（1 ≦ i ≦ K）应该包含安排N个球的方法的数量，以便Takahashi正好需要i步来收集所有蓝球，模数为10^9+7。
-#
-#输入样本 1
-#5 3
-#
-#输出样本 1
-#3
-#6
-#1
-#有三种方法可以安排球，使Takahashi正好需要一步棋：（B，B，B，R，R），（R，B，B，B，R），以及（R，R，B，B，B）。(R和B分别代表红色和蓝色）。
-#有六种方法可以安排球，使Takahashi正好需要两步棋：（B，B，R，B，R），（B，B，R，R，B），（R，B，B，R，B），（R，B，R，B，B），（B，R，B，B，R），和（B，R，R，B，B）。
-#有一种方法可以安排这些球，使Takahashi正好需要三步棋：（B，R，B，R，B）。
-#
-#输入样本 2
-#2000 3
-#
-#样本输出2
-#1998
-#3990006
-#327341989
-#一定要打印出10^9+7的模数的排列数字。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    print(n,k)
+    #prin
+
+=======
+Suggestion 2
+
+def main():
+    n, k = map(int, input().split())
+    mod = 10 ** 9 + 7
+    dp = [[0] * (k + 1) for _ in range(n + 1)]
+    dp[0][0] = 1
+    for i in range(1, n + 1):
+        dp[i][0] = 1
+        for j in range(1, min(i, k) + 1):
+            dp[i][j] = (dp[i - 1][j] * j + dp[i - 1][j - 1]) % mod
+    for i in range(1, k + 1):
+        print(dp[n - k + i][i])
+
+=======
+Suggestion 3
+
+def problems132_d():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(1,n+1):
+        dp[i][0] = 1
+        for j in range(1,i+1):
+            dp[i][j] = (dp[i-1][j-1]+dp[i-1][j])%mod
+    for i in range(1,k+1):
+        print((dp[n-k+1][i]*dp[k-1][i-1])%mod)
+
+problems132_d()
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    dp = [[0 for i in range(n+1)] for j in range(k+1)]
+    dp[0][0] = 1
+    for i in range(1,k+1):
+        for j in range(n+1):
+            dp[i][j] = dp[i-1][j]*(n-k+1+i-1)//(i)
+            dp[i][j] %= mod
+    for i in range(1,k+1):
+        print(dp[i][n])
+
+=======
+Suggestion 5
+
+def problems132_d():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    dp = [[0 for i in range(n+1)] for j in range(k+1)]
+    dp[0][0] = 1
+    for i in range(1,k+1):
+        for j in range(n+1):
+            if j-i >= 0:
+                dp[i][j] = (dp[i-1][j] + dp[i][j-1])%mod
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[k][n])
+
+=======
+Suggestion 6
+
+def problems132_d():
+    pass
+
+=======
+Suggestion 7
+
+def problems132_d():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    #dp[i][j]表示i个球，j步走完的方案数
+    dp = [[0]*(k+1) for i in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(k):
+            dp[i+1][j+1] += dp[i][j+1]
+            dp[i+1][j+1] %= mod
+            dp[i+1][j] += dp[i][j]*(n-k-i+j+1)
+            dp[i+1][j] %= mod
+    print(dp[n][k])
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    mod = 10**9 + 7
+    # 有多少种方法可以安排球，使Takahashi正好需要i步棋
+    dp = [[0 for _ in range(K+1)] for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(1, N+1):
+        for j in range(K+1):
+            # 蓝球的数量
+            for k in range(j+1):
+                dp[i][j] += dp[i-1][j-k]
+                dp[i][j] %= mod
+    for i in range(1, K+1):
+        res = dp[N-K][i] * dp[K][K-i]
+        res %= mod
+        print(res)
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int, input().split())
+    mod = 10**9+7
+    dp = [[0]*(k+1) for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(k+1):
+            if j == 0:
+                dp[i+1][j] = dp[i][j]
+            else:
+                dp[i+1][j] = (dp[i][j] + dp[i][j-1]*(n-k-i))%mod
+    for i in range(1,k+1):
+        print(dp[n][i])
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    # N, K = 5, 3
+    MOD = 10**9 + 7
+    dp = [[0 for _ in range(N+1)] for _ in range(K+1)]
+    dp[0][0] = 1
+    for i in range(1, K+1):
+        for j in range(N+1):
+            if j - i >= 0:
+                dp[i][j] = (dp[i][j-i] + dp[i-1][j]) % MOD
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[K][N])

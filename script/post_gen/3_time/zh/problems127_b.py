@@ -1,51 +1,54 @@
-#问题说明
-#一个池塘中藻类的发展情况如下。
-#设第i年年初藻类的总重量为x_i克。对于i≥2000，以下公式成立：
-#x_{i+1} = rx_i - D
-#你得到了r、D和x_{2000}。计算x_{2001}, ..., x_{2010}并按顺序打印出来。
-#
-#限制条件
-#2 ≤ r ≤ 5
-#1 ≤ D ≤ 100
-#D < x_{2000} ≤ 200
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#r D x_{2000}
-#
-#输出
-#打印10行。第i行（1≤i≤10）应包含x_{2000+i}的整数。
-#
-#输入样本 1
-#2 10 20
-#
-#样本输出 1
-#30
-#50
-#90
-#170
-#330
-#650
-#1290
-#2570
-#5130
-#10250
-#例如，x_{2001} = rx_{2000} - D = 2 × 20 - 10 = 30，x_{2002} = rx_{2001} - D = 2 × 30 - 10 = 50。
-#
-#样本输入2
-#4 40 60
-#
-#样本输出2
-#200
-#760
-#3000
-#11960
-#47800
-#191160
-#764600
-#3058360
-#12233400
-#48933560
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def calc(r, D, x):
+    return r * x - D
+
+=======
+Suggestion 2
+
+def get_x(r, D, x):
+    return r * x - D
+
+=======
+Suggestion 3
+
+def solve(r, D, x_2000):
+    for i in range(10):
+        x_2000 = r * x_2000 - D
+        print(x_2000)
+
+=======
+Suggestion 4
+
+def main():
+    r,D,x = map(int,input().split())
+    for i in range(10):
+        x = r*x - D
+        print(x)
+
+=======
+Suggestion 5
+
+def problems127_b():
+    r, D, x = map(int, input().split())
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 6
+
+def sum(i,r):
+    if i > 2000:
+        return r*sum(i-1,r)-10
+    else:
+        return 20
+
+=======
+Suggestion 7
+
+def f(r, D, x):
+    return r * x - D

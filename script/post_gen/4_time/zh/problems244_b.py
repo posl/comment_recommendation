@@ -1,50 +1,211 @@
-#问题陈述
-#考虑一个XY平面。  x轴的正方向为东，y轴的正方向为北。
-#高桥最初在点（x，y）=（0，0），面向东（x轴的正方向）。
-#给你一个由S和R组成的长度为N的字符串T=t_1t_2...t_N。
-#高桥将对每个i=1，2，...，N按这个顺序做以下动作。
-#如果t_i=S，高桥在当前方向前进了1个距离。
-#如果t_i = R，高桥在不改变位置的情况下顺时针转90度。  结果，高桥的方向变化如下。
-#如果他在转弯前是面向东方（X轴的正方向），他转弯后将面向南方（Y轴的负方向）。
-#如果他在转弯前面向南方（Y轴的负方向），他转弯后将面向西方（X轴的负方向）。
-#如果他在转弯前面向西（在X轴的负方向），他转弯后将面向北（在Y轴的正方向）。
-#如果他在转弯前面向北方（Y轴的正方向），他转弯后将面向东方（X轴的正方向）。
-#
-#在完成上述所有步骤后，打印出高桥所处的坐标。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#N是一个整数。
-#T是一个长度为N的字符串，由S和R组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#T
-#
-#輸出
-#在完成问题陈述中描述的所有步骤后，打印高桥的坐标（x，y）。
-# 中描述的所有步骤完成后，以下列格式打印高桥的坐标（x, y），中间有一个空格：
-#x y
-#
-#输入样本1
-#4
-#SSRS
-#
-#样本输出1
-#2 -1
-#高桥最初在(0, 0)处面向东。  然后，他按以下方式移动。
-#t_1=S，所以他向东边的方向前进了1距离，到达（1，0）。
-#t_2=S，所以他向东边的方向前进了1距离，到达了（2，0）。
-#t_3=R，所以他顺时针转了90度，结果是面向南方。
-#t_4=S，所以他向南边的方向前进了1距离，到达（2，-1）。
-#因此，高桥的最终位置，（x，y）=（2，-1），应该被打印出来。
-#
-#输入样本2
-#20
-#SRSRSSRSSSRSRRRRRSRR
-#
-#样本输出2
-#0 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    T = input()
+    x = 0
+    y = 0
+    direction = 0
+    for i in range(N):
+        if T[i] == 'S':
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y -= 1
+            elif direction == 2:
+                x -= 1
+            elif direction == 3:
+                y += 1
+        else:
+            direction = (direction + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    d = 0
+    for i in range(n):
+        if t[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            elif d == 3:
+                y += 1
+        else:
+            d = (d + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    face = 0
+    for i in range(n):
+        if t[i] == 'S':
+            if face == 0:
+                x += 1
+            elif face == 1:
+                y -= 1
+            elif face == 2:
+                x -= 1
+            elif face == 3:
+                y += 1
+        else:
+            face = (face + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = input()
+    x = 0
+    y = 0
+    for i in range(n):
+        if s[i] == 'S':
+            x += 1
+        else:
+            if x % 2 == 0:
+                y += 1
+            else:
+                y -= 1
+    print(x, y)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = input()
+    x = 0
+    y = 0
+    direction = 0
+    for i in range(n):
+        if s[i] == 'S':
+            if direction == 0:
+                x += 1
+            elif direction == 1:
+                y -= 1
+            elif direction == 2:
+                x -= 1
+            else:
+                y += 1
+        else:
+            direction = (direction + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    t = input()
+    x, y = 0, 0
+    d = 0
+    for i in range(n):
+        if t[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            elif d == 3:
+                y += 1
+        elif t[i] == 'R':
+            d = (d + 1) % 4
+    print(x, y)
+
+=======
+Suggestion 7
+
+def main():
+    n=int(input())
+    s=input()
+    x=0
+    y=0
+    direction='E'
+    for i in range(n):
+        if s[i]=='S':
+            if direction=='E':
+                x+=1
+            elif direction=='W':
+                x-=1
+            elif direction=='N':
+                y+=1
+            elif direction=='S':
+                y-=1
+        elif s[i]=='R':
+            if direction=='E':
+                direction='S'
+            elif direction=='W':
+                direction='N'
+            elif direction=='N':
+                direction='E'
+            elif direction=='S':
+                direction='W'
+    print(x,y)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    t = input()
+    x = 0
+    y = 0
+    d = 0
+    for i in range(n):
+        if t[i] == "S":
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            elif d == 3:
+                y += 1
+        elif t[i] == "R":
+            d += 1
+            if d > 3:
+                d = 0
+    print(x, y)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = input()
+    x = 0
+    y = 0
+    d = 0
+    for i in range(n):
+        if s[i] == 'S':
+            if d == 0:
+                x += 1
+            elif d == 1:
+                y -= 1
+            elif d == 2:
+                x -= 1
+            elif d == 3:
+                y += 1
+        else:
+            d = (d + 1) % 4
+    print(x, y)

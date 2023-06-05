@@ -1,60 +1,138 @@
-#问题陈述
-#有一个网格，从上到下有H行，从左到右有W列。  每个方格上都有一个棋子，或者是空的。
-#网格的状态由H个字符串S_1, S_2, ..., S_H表示，每个字符串的长度为W。
-#如果S_i的第j个字符是#，那么从顶部开始的第i行和从左边开始的第j列的方格上有一个棋子；
-#如果S_i的第j个字符是.，那么从上面第i行和从左边第j列的方格是空的。
-#该网格中有多少个方格有棋子？
-#
-#限制条件
-#1≦ H,W ≦ 10
-#H和W是整数。
-#S_i是一个长度为W的字符串，由#和...组成。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#
-#输出
-#以整数形式打印有棋子的方格数。
-#
-#输入样本 1
-#3 5
-##....
-#.....
-#.##..
-#
-#样本输出1
-#3
-#以下三个方块上有棋子：
-#从上往下第1行，从左往下第1列的方格；
-#从上往下第3行，从左往右第2列的方格；
-#从上往下第3行和从左往下第3列的方格。
-#因此，3应该被打印出来。
-#
-#输入样本 2
-#1 10
-#..........
-#
-#样本输出2
-#0
-#由于没有一个方块上有棋子，所以应该打印0。
-#
-#输入样本 3
-#6 5
-##.#.#
-#....#
-#..##.
-#####.
-#..#..
-######
-#
-#样本输出3
-#16
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def chessboard():
+    h, w = map(int, input().split())
+    s = [input() for i in range(h)]
+    count = 0
+    for i in range(h):
+        count += s[i].count("#")
+    print(count)
+
+chessboard()
+
+=======
+Suggestion 2
+
+def get_input():
+    H, W = input().split()
+    H = int(H)
+    W = int(W)
+    S = []
+    for i in range(H):
+        S.append(input())
+    return H, W, S
+
+=======
+Suggestion 3
+
+def main():
+    h, w = map(int, input().split())
+    count = 0
+    for i in range(h):
+        s = input()
+        for j in range(w):
+            if s[j] == '#':
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def count_chess():
+    # 读取输入
+    H, W = map(int, input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    # 计算棋子数
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                count += 1
+    # 输出结果
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    print(sum(s[i][j] == '#' for i in range(h) for j in range(w)))
+    #print(sum(s[i][j] == '#' for i in range(h) for j in range(w)))  # 用for循环的话，会超时
+    #print(sum(s[i].count('#') for i in range(h)))  # 用for循环的话，会超时
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    # 处理
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == '#':
+                ans += 1
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    h,w = map(int,input().split())
+    s = []
+    for i in range(h):
+        s.append(input())
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def problems280_a():
+    pass
+
+=======
+Suggestion 9
+
+def problems280_a():
+    h,w = map(int,input().split())
+    ans = 0
+    for i in range(h):
+        s = input()
+        for j in range(w):
+            if s[j] == '#':
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    h, w = map(int, input().split())
+    # 用列表保存输入的字符串
+    s = []
+    for i in range(h):
+        s.append(input())
+
+    # 计数器
+    count = 0
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                count += 1
+    print(count)
+
+main()

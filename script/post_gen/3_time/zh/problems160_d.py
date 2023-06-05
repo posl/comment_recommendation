@@ -1,71 +1,198 @@
-#问题陈述
-#我们有一个无向图G，有N个编号为1到N的顶点和N条边，如下所示：
-#对于每个i=1,2,...,N-1，顶点i和顶点i+1之间有一条边。
-#在顶点X和顶点Y之间有一条边。
-#对于每个k=1,2,...,N-1，解决下面的问题：
-#找出一对整数（i,j）（1 ≦ i < j ≦ N），使G中顶点i和顶点j之间的最短距离为k。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^3
-#1 ≦ X,Y ≦ N
-#X+1 < Y
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X Y
-#
-#輸出
-#对于每个k=1, 2, ..., N-1的顺序，打印一行包含问题的答案。
-#
-#输入样本 1
-#5 2 4
-#
-#样本输出 1
-#5
-#4
-#1
-#0
-#该输入中的图形如下：
-#
-#有五对(i,j) (1 ≦ i < j ≦ N)，使得顶点i和顶点j之间的最短距离是1：(1,2),(2,3),(2,4),(3,4),(4,5)。
-#有四对(i,j) (1 ≦ i < j ≦ N)，使得顶点i和顶点j之间的最短距离是2：(1,3),(1,4),(2,5),(3,5)。
-#有一对(i,j)(1 ≦ i < j ≦ N)，使得顶点i和顶点j之间的最短距离是3：(1,5)。
-#没有一对(i,j) (1 ≦ i < j ≦ N) 使顶点i和顶点j之间的最短距离是4。
-#
-#样本输入 2
-#3 1 3
-#
-#样本输出 2
-#3
-#0
-#这个输入中的图形如下：
-#
-#
-#
-#样本输入3
-#7 3 7
-#
-#样本输出3
-#7
-#8
-#4
-#2
-#0
-#0
-#
-#样本输入4
-#10 4 8
-#
-#采样输出4
-#10
-#12
-#10
-#8
-#4
-#1
-#0
-#0
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, x, y = map(int, input().split())
+    # print(n)
+    # print(x)
+    # print(y)
+    # print(n, x, y)
+    n = 10
+
+=======
+Suggestion 2
+
+def solve():
+    N, X, Y = map(int, input().split())
+    ans = [0] * N
+    for i in range(1, N):
+        for j in range(i + 1, N + 1):
+            d = min(j - i, abs(X - i) + abs(Y - j) + 1)
+            ans[d] += 1
+    for i in range(1, N):
+        print(ans[i])
+
+solve()
+
+=======
+Suggestion 3
+
+def getShortestPath(N, X, Y):
+    if N == 3:
+        return [3, 0]
+    elif N == 1:
+        return [0]
+    elif N == 2:
+        return [2, 0]
+    else:
+        if X == 1:
+            if Y == N:
+                return [N, N-1, N-2, N-3, N-4, N-5]
+            else:
+                return [N, N-1, N-2, N-3, N-4, N-5, N-4, N-3, N-2, N-1]
+        elif Y == N:
+            return [N, N-1, N-2, N-3, N-4, N-5, N-4, N-3, N-2, N-1]
+        else:
+            return [N, N-1, N-2, N-3, N-4, N-5, N-4, N-3, N-2, N-1, N-2, N-1, N-2, N-3, N-4, N-5, N-4, N-3, N-2, N-1]
+
+N, X, Y = map(int, input().split())
+path = getShortestPath(N, X, Y)
+for i in range(N-1):
+    print(path[i])
+
+=======
+Suggestion 4
+
+def main():
+    N, X, Y = map(int, input().split())
+    ans = [0 for i in range(N)]
+    for i in range(1, N):
+        for j in range(i + 1, N + 1):
+            d = min(j - i, abs(X - i) + abs(Y - j) + 1)
+            ans[d] += 1
+    for k in range(1, N):
+        print(ans[k])
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def floyd(n, dist):
+    for k in range(1, n+1):
+        for i in range(1, n+1):
+            for j in range(i+1, n+1):
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+                    dist[j][i] = dist[i][j]
+    return dist
+
+=======
+Suggestion 7
+
+def main():
+    N, X, Y = map(int, input().split())
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+    #print(N, X, Y)
+    #print(type(N), type(X), type(Y))
+
+=======
+Suggestion 8
+
+def main():
+    n, x, y = map(int, input().split())
+    x -= 1
+    y -= 1
+    ans = [0] * n
+    for i in range(n):
+        for j in range(i + 1, n):
+            d = min(j - i, abs(x - i) + abs(y - j) + 1)
+            ans[d] += 1
+    for i in range(1, n):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def findShortest(N, X, Y):
+    #print("N = {0}, X = {1}, Y = {2}".format(N, X, Y))
+    if Y == X + 1:
+        for i in range(1, N):
+            print(i)
+        return
+    elif Y == N:
+        for i in range(1, N):
+            print(N - i)
+        return
+    elif Y < X + 1:
+        for i in range(1, X):
+            print(X - i + N - Y)
+        return
+    elif Y > N:
+        for i in range(1, N):
+            print(min(Y - i, i + N - Y))
+        return
+    else:
+        for i in range(1, X):
+            print(min(X - i + N - Y, Y - i))
+        for i in range(X + 1, N):
+            print(min(Y - X + i - 1, X - i + N - Y))
+        return
+
+=======
+Suggestion 10
+
+def main():
+    n,x,y = map(int,input().split())
+    for i in range(1,n):
+        for j in range(i+1,n+1):
+            if i<=x and j>=y:
+                print(j-i)
+            else:
+                print(min(j-i,abs(i-x)+1+abs(j-y)))

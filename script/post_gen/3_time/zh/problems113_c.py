@@ -1,54 +1,181 @@
-#问题陈述
-#在阿特卡德共和国，有N个县，以及属于这些县的总共M个城市。
-#城市i是在Y_i年建立的，属于P_i县。
-#你可以假设没有多个城市是在同一年建立的。
-#决定为每个城市分配一个12位数的ID号码。
-#如果i市是属于i县的城市中第x个成立的城市，i市的ID号的前六位是P_i，后六位是x。
-#在这里，如果P_i或x（或两者）的数字少于六位，则在左边加零，直到它有六位数字。
-#找到所有城市的身份证号码。
-#请注意，可以有一个没有城市的县。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ P_i ≦ N
-#1 ≦ Y_i ≦ 10^9
-#Y_i都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#P_1 Y_1
-#:
-#P_M Y_M
-#
-#输出
-#打印所有城市的ID号码，按照指数的升序排列（城市1，城市2，...）。
-#
-#输入样本 1
-#2 3
-#1 32
-#2 63
-#1 12
-#
-#样本输出1
-#000001000002
-#000002000001
-#000001000001
-#由于城市1是属于县1的城市中第二个建立的城市，它的ID号是000001000002。
-#由于城市2是属于县2的城市中第一个建立的城市，它的ID号是000002000001。
-#由于城市3是属于县1的城市中第一个建立的城市，其ID号为000001000001。
-#
-#输入样本 2
-#2 3
-#2 55
-#2 77
-#2 99
-#
-#样本输出2
-#000002000001
-#000002000002
-#000002000003
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int,input().split())
+    p_y = [list(map(int,input().split())) for i in range(m)]
+    p_y.sort(key=lambda x:x[1])
+    p_y2 = [p_y[i]+[i] for i in range(m)]
+    p_y2.sort(key=lambda x:x[2])
+    ans = []
+    for i in range(m):
+        ans.append([p_y2[i][0],p_y2[i][2]+1])
+    ans.sort(key=lambda x:x[1])
+    for i in range(m):
+        print(str(ans[i][0]).zfill(6)+str(ans[i][1]).zfill(6))
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    lst = []
+    for i in range(M):
+        lst.append(list(map(int, input().split())))
+    lst = sorted(lst, key=lambda x: x[1])
+    dic = {}
+    for i in range(M):
+        if lst[i][0] not in dic:
+            dic[lst[i][0]] = 1
+        else:
+            dic[lst[i][0]] += 1
+        print(str(lst[i][0]).zfill(6) + str(dic[lst[i][0]]).zfill(6))
+
+=======
+Suggestion 3
+
+def main():
+    N,M = map(int,input().split())
+    #print(N,M)
+    input_list = []
+    for i in range(M):
+        input_list.append(list(map(int,input().split())))
+    #print(input_list)
+    input_list = sorted(input_list,key=lambda x:x[1])
+    #print(input_list)
+    input_dict = {}
+    for i in range(M):
+        if input_list[i][0] not in input_dict:
+            input_dict[input_list[i][0]] = 1
+        else:
+            input_dict[input_list[i][0]] += 1
+    #print(input_dict)
+    input_dict2 = {}
+    for i in range(M):
+        if input_list[i][0] not in input_dict2:
+            input_dict2[input_list[i][0]] = 1
+        else:
+            input_dict2[input_list[i][0]] += 1
+        input_list[i].append(input_dict2[input_list[i][0]])
+    #print(input_list)
+    input_list = sorted(input_list,key=lambda x:x[0])
+    #print(input_list)
+    for i in range(M):
+        print(str(input_list[i][0]).zfill(6)+str(input_list[i][3]).zfill(6))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    city = []
+    for i in range(M):
+        P, Y = map(int, input().split())
+        city.append([P, Y, i])
+    city.sort(key=lambda x: x[1])
+    count = [0] * (N + 1)
+    ans = []
+    for i in range(M):
+        count[city[i][0]] += 1
+        ans.append([city[i][0], count[city[i][0]], city[i][2]])
+    ans.sort(key=lambda x: x[2])
+    for i in range(M):
+        print(str(ans[i][0]).zfill(6) + str(ans[i][1]).zfill(6))
+
+=======
+Suggestion 5
+
+def main():
+    N, M = map(int, input().split())
+    city = []
+    for i in range(M):
+        P, Y = map(int, input().split())
+        city.append([i, P, Y])
+    city.sort(key=lambda x: x[2])
+    city.sort(key=lambda x: x[1])
+    #print(city)
+    #for i in range(M):
+    #    print(city[i][0], city[i][1], city[i][2])
+    ans = [0] * M
+    count = [0] * (N + 1)
+    for i in range(M):
+        count[city[i][1]] += 1
+        ans[city[i][0]] = str(city[i][1]).zfill(6) + str(count[city[i][1]]).zfill(6)
+    for i in range(M):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N,M = map(int,input().split())
+    P_Y = [list(map(int,input().split())) for _ in range(M)]
+    P_Y.sort(key=lambda x:x[1])
+    #print(P_Y)
+    city = [0]*N
+    for i in range(M):
+        city[P_Y[i][0]-1] += 1
+    #print(city)
+    for i in range(M):
+        print(str(P_Y[i][0]).zfill(6)+str(city[P_Y[i][0]-1]).zfill(6))
+
+=======
+Suggestion 7
+
+def problem113_c():
+    n, m = map(int, input().split())
+    p_y = [list(map(int, input().split())) for _ in range(m)]
+    p_y.sort(key=lambda x:x[1])
+    p_y_dict = {}
+    for p, y in p_y:
+        if p not in p_y_dict:
+            p_y_dict[p] = 1
+        else:
+            p_y_dict[p] += 1
+    ans = {}
+    for p, y in p_y:
+        ans[y] = str(p).zfill(6) + str(p_y_dict[p]).zfill(6)
+        p_y_dict[p] -= 1
+    for y in p_y:
+        print(ans[y[1]])
+
+=======
+Suggestion 8
+
+def main():
+    N, M = map(int, input().split())
+    P = []
+    Y = []
+    for i in range(M):
+        p, y = map(int, input().split())
+        P.append(p)
+        Y.append(y)
+    for i in range(M):
+        P[i] = str(P[i]).zfill(6)
+        Y[i] = str(Y[i]).zfill(6)
+    for i in range(M):
+        print(P[i]+Y[i])
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    city = []
+    for i in range(M):
+        P, Y = map(int, input().split())
+        city.append([P, Y, i])
+    city.sort(key=lambda x: x[1])
+    ans = [None] * M
+    for i in range(M):
+        ans[city[i][2]] = '{:06}{:06}'.format(city[i][0], i + 1)
+    for i in range(M):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def problems113_c():
+    pass

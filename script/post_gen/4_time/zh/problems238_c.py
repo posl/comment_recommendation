@@ -1,42 +1,137 @@
-#问题陈述
-#给定一个整数N，解决以下问题。
-#设f(x)=(最多x的正整数，其位数与x相同)。
-#求f(1)+f(2)+...+f(N)的modulo 998244353。
-#
-#限制条件
-#N是一个整数。
-#1 ≦ N < 10^{18}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#16
-#
-#样本输出1
-#73
-#对于1到9之间的正整数x，最多只有1,2,...,x的正整数与x的位数相同。
-#因此，我们有f(1)=1,f(2)=2,...,f(9)=9。
-#对于10到16之间的正整数x，与x位数相同的正整数最多只有10,11,...,x。
-#因此，我们有f(10)=1,f(11)=2,...,f(16)=7。
-#
-#最后的答案是73。
-#
-#输入样本2
-#238
-#
-#样本输出2
-#13870
-#
-#样本输入3
-#999999999999999999
-#
-#样本输出3
-#762062362
-#一定要找到998244353的模数之和。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    return len(str(x))
+
+n = int(input())
+ans = 0
+mod = 998244353
+for i in range(1, n+1):
+    ans += i
+    ans %= mod
+    if i == n:
+        break
+    if f(i) == f(i+1):
+        continue
+    else:
+        ans += i
+        ans %= mod
+print(ans)
+
+=======
+Suggestion 2
+
+def f(x):
+    if x==0:
+        return 0
+    else:
+        return 1+f(x//10)
+
+N=int(input())
+mod=998244353
+ans=0
+for i in range(1,10):
+    if i<=N:
+        ans+=i
+    else:
+        break
+for i in range(1,18):
+    if 10**i<=N:
+        ans+=i*(min(N,10**(i+1)-1)-10**i+1)
+    else:
+        break
+for i in range(1,18):
+    if 10**i<=N:
+        ans+=(10**i-1)//9
+    else:
+        break
+print(ans%mod)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    mod = 998244353
+    ans = 0
+    for i in range(1, 19):
+        if n < 10 ** i:
+            ans += i * (n - 10 ** (i - 1) + 1)
+            break
+        else:
+            ans += i * (10 ** i - 10 ** (i - 1))
+    print(ans % mod)
+
+=======
+Suggestion 4
+
+def solve(n):
+    mod = 998244353
+    ans = 0
+    x = 1
+    while x <= n:
+        y = min(n, x * 10 - 1)
+        ans += (x + y) * (y - x + 1) // 2 * len(str(x))
+        ans %= mod
+        x *= 10
+    return ans
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print(solve(n))
+
+=======
+Suggestion 6
+
+def problem238_c():
+    print("problem238_c")
+    return
+
+=======
+Suggestion 7
+
+def f(x):
+    return x
+
+N = int(input())
+print(f(N))
+
+=======
+Suggestion 8
+
+def f(x):
+    if x < 10:
+        return x
+    else:
+        return 1 + f(x // 10)
+
+=======
+Suggestion 9
+
+def problem238_c():
+    print("238_c")
+    N = int(input())
+    print(N)
+
+=======
+Suggestion 10
+
+def f(x):
+    if x < 10:
+        return x
+    else:
+        return 1 + f(x//10)
+
+n = int(input())
+mod = 998244353
+ans = 0
+for i in range(1, n+1):
+    ans += f(i)
+    ans %= mod
+print(ans)

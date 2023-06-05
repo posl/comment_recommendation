@@ -1,73 +1,217 @@
-#问题陈述
-#2N个ID号为1到2N的选手将参加一个石头剪刀布比赛。
-#比赛有M轮。每轮有N场一对一的比赛，每个选手都参加其中的一场。
-#对于每个i=0，1，...，M，选手在第i轮结束时的排名确定如下。
-#在前i轮比赛中获胜较多的选手排名较高。
-#平局是由ID号码打破的：ID号码较小的玩家排名较高。
-#此外，对于每个i=1，...，M，第i轮的比赛安排如下。
-#对于每个k=1，2，...，N，在第（i-1）轮结束时排名（2k-1）-第和2k-第的玩家之间进行一场比赛。
-#在每场比赛中，两个玩家只打一手牌，结果是一个玩家赢，另一个玩家输，或者平局。
-#可以预见未来的高桥知道，玩家i将在第j轮的比赛中玩A_{i, j}，其中A_{i,j}是G、C或P。
-#这里，G代表石头，C代表剪刀，而P代表布。(这些都来自于日语）。
-#在第M轮结束时，找出玩家的等级。
-#石头-剪子-布的规则
-#石头剪子纸比赛的结果是根据两位选手的手牌决定的。
-# 如果一个玩家玩石头（G），另一个玩家玩剪刀（C），玩石头（G）的玩家获胜。
-# 如果一方出剪刀（C），另一方出布（P），出剪刀（C）的一方获胜。
-# 如果一个玩家玩布（P），另一个玩家玩石头（G），玩布（P）的玩家获胜。
-# 如果双方玩的是同一把牌，则比赛结束。
-#
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 100
-#A_{i,j}是G, C, 或P。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_{1,1}A_{1,2}...A_{1,M}
-#A_{2,1}A_{2,2}...A_{2,M}
-#.
-#.
-#.
-#A_{2N,1}A_{2N,2}...A_{2N,M}
-#
-#输出
-#打印2N行。
-#第i行应包含在第M轮结束时排名第i的棋手的ID号。
-#
-#输入样本 1
-#2 3
-#GCP
-#PPP
-#CCC
-#PPC
-#
-#样本输出1
-#3
-#1
-#2
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。棋手3赢得前者，棋手1赢得后者。
-#在第三轮，比赛在球员3和1之间，以及球员2和4之间进行。玩家3赢得了前者，而玩家4赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：3、1、2、4，从高到低。
-#
-#输入样本 2
-#2 2
-#GC
-#PG
-#CG
-#PP
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。前者是平局，而玩家1赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：1、2、3、4，从高到低。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = [input() for i in range(2*N)]
+    rank = [i for i in range(2*N)]
+    for i in range(M):
+        rank = sorted(rank, key=lambda x: (-A[x][i], x))
+    for i in rank:
+        print(i+1)
+
+=======
+Suggestion 2
+
+def compare(a,b):
+    if a[1] > b[1]:
+        return -1
+    elif a[1] == b[1]:
+        if a[0] < b[0]:
+            return -1
+        else:
+            return 1
+    else:
+        return 1
+
+=======
+Suggestion 3
+
+def judge(a,b):
+    if a == 'G':
+        if b == 'C':
+            return 1
+        elif b == 'P':
+            return -1
+        else:
+            return 0
+    elif a == 'C':
+        if b == 'P':
+            return 1
+        elif b == 'G':
+            return -1
+        else:
+            return 0
+    else:
+        if b == 'G':
+            return 1
+        elif b == 'C':
+            return -1
+        else:
+            return 0
+
+=======
+Suggestion 4
+
+def playGame(a, b):
+    if a == 'G':
+        if b == 'G':
+            return 0
+        elif b == 'C':
+            return 1
+        elif b == 'P':
+            return -1
+    elif a == 'C':
+        if b == 'G':
+            return -1
+        elif b == 'C':
+            return 0
+        elif b == 'P':
+            return 1
+    elif a == 'P':
+        if b == 'G':
+            return 1
+        elif b == 'C':
+            return -1
+        elif b == 'P':
+            return 0
+
+n, m = map(int, input().split())
+a = []
+for i in range(2*n):
+    a.append(input())
+win = []
+for i in range(2*n):
+    win.append([0, i+1])
+for i in range(m):
+    for j in range(n):
+        result = playGame(a[win[j*2][1]-1][i], a[win[j*2+1][1]-1][i])
+        if result == 1:
+            win[j*2][0] += 1
+        elif result == -1:
+            win[j*2+1][0] += 1
+    win.sort(reverse=True)
+for i in range(2*n):
+    print(win[i][1])
+
+=======
+Suggestion 5
+
+def game(a, b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 6
+
+def rps(a, b):
+    if a == "G":
+        if b == "G":
+            return 0
+        elif b == "C":
+            return 1
+        elif b == "P":
+            return -1
+    elif a == "C":
+        if b == "G":
+            return -1
+        elif b == "C":
+            return 0
+        elif b == "P":
+            return 1
+    elif a == "P":
+        if b == "G":
+            return 1
+        elif b == "C":
+            return -1
+        elif b == "P":
+            return 0
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = [input() for _ in range(2*n)]
+
+    # 生成初始排名
+    rank = [[i+1, 0] for i in range(2*n)]
+
+    # 比赛
+    for i in range(m):
+        # 每一轮比赛
+        for j in range(n):
+            # 每一场比赛
+            p1, p2 = rank[2*j][0]-1, rank[2*j+1][0]-1
+            if (a[p1][i] == 'G' and a[p2][i] == 'C') or \
+                    (a[p1][i] == 'C' and a[p2][i] == 'P') or \
+                    (a[p1][i] == 'P' and a[p2][i] == 'G'):
+                rank[2*j][1] -= 1
+            elif (a[p1][i] == 'G' and a[p2][i] == 'P') or \
+                    (a[p1][i] == 'C' and a[p2][i] == 'G') or \
+                    (a[p1][i] == 'P' and a[p2][i] == 'C'):
+                rank[2*j+1][1] -= 1
+        rank.sort(key=lambda x: (x[1], x[0]))
+
+    # 输出结果
+    for i in range(2*n):
+        print(rank[i][0])
+
+=======
+Suggestion 8
+
+def judge(a,b):
+    if a == "G":
+        if b == "C":
+            return True
+        else:
+            return False
+    elif a == "C":
+        if b == "P":
+            return True
+        else:
+            return False
+    else:
+        if b == "G":
+            return True
+        else:
+            return False
+
+=======
+Suggestion 9
+
+def get_winner(a, b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return -1
+
+=======
+Suggestion 10
+
+def jugeWinner(a,b):
+    if a == 'G' and b == 'C':
+        return True
+    elif a == 'C' and b == 'P':
+        return True
+    elif a == 'P' and b == 'G':
+        return True
+    else:
+        return False

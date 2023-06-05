@@ -1,39 +1,90 @@
-#问题陈述
-#从二维平面的点(0,0)开始，让我们向点(A, B)移动1的距离。找出我们移动后的坐标。
-#这里，从点X到点Y（d≦线段XY的长度）移动d的距离后，我们在线段XY上的点，该点与X的距离为d。
-#约束条件保证点（0，0）和（A，B）之间的距离至少是1。
-#
-#约束条件
-#输入的所有数值都是整数。
-#0 ≦ A,B ≦ 1000
-#(A,B) ≠ (0,0)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#让（x，y）成为我们移动后的坐标。按照这个顺序打印x和y，用空格隔开。
-#你的输出被认为是正确的，当对于每个打印的数值，与法官的答案的绝对或相对误差最多为10^{-6}。
-#
-#输入样本 1
-#3 4
-#
-#输出样本 1
-#0.600000000000 0.800000000000
-#例如，打印0.5999999999 0.8000000001，也会被接受。
-#
-#输入样本2
-#1 0
-#
-#样本输出2
-#1.000000000000 0.000000000000
-#我们可以得出（A，B）。
-#
-#样本输入3
-#246 402
-#
-#样本输出3
-#0.521964870245 0.852966983083
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = map(int, input().split())
+    print(A/B)
+    print(A//B)
+    print(A%B)
+
+=======
+Suggestion 2
+
+def problem246_b():
+    A,B = map(int, input().split())
+    x = A/(A**2+B**2)**0.5
+    y = B/(A**2+B**2)**0.5
+    print('{:.12f} {:.12f}'.format(x,y))
+
+=======
+Suggestion 3
+
+def distance(x, y):
+    return (x**2 + y**2)**0.5
+
+=======
+Suggestion 4
+
+def problems246_b():
+    import math
+    A, B = map(int, input().split())
+    x = (A**2 + B**2) ** 0.5
+    y = math.atan(B/A)
+    print(x*math.cos(y), x*math.sin(y))
+
+problems246_b()
+
+=======
+Suggestion 5
+
+def getDistance(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y1-y2)**2)**0.5
+
+=======
+Suggestion 6
+
+def problems246_b():
+    a, b = map(int, input().split())
+    x = a / (a ** 2 + b ** 2) ** 0.5
+    y = b / (a ** 2 + b ** 2) ** 0.5
+    print(x, y)
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int, input().split())
+    x = A/(A**2+B**2)**0.5
+    y = B/(A**2+B**2)**0.5
+    print(x,y)
+
+=======
+Suggestion 8
+
+def f(x, y):
+    c = (x**2 + y**2)**0.5
+    return x/c, y/c
+
+a, b = map(int, input().split())
+x, y = f(a, b)
+print(x, y)
+
+=======
+Suggestion 9
+
+def problems246_b():
+    a,b = map(int, input().split())
+    print(a/b, b/a)
+
+=======
+Suggestion 10
+
+def problems246_b():
+    a, b = map(int, input().split())
+    x = b / (a ** 2 + b ** 2) ** 0.5
+    y = a / (a ** 2 + b ** 2) ** 0.5
+    print(x, y)
+
+problems246_b()

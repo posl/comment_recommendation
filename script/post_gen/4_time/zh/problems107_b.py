@@ -1,80 +1,191 @@
-#问题陈述
-#有一个横排为H，竖排为W的方格。
-#位于从上往下第i行和从左往下第j列的方格表示为（i，j）。
-#每个方格都是黑色或白色。
-#方格的颜色以H乘W的矩阵（a_{i, j}）给出。
-#如果a_{i, j}为.，则该方格（i, j）为白色；如果a_{i, j}为#，则该方格（i, j）为黑色。
-#Snuke正在压缩这个网格。
-#他将通过在有一个只由白色方格组成的行或列中反复执行以下操作来实现：
-#操作：选择任何一行或一列只由白色方块组成，将其移除并删除行或列之间的空间。
-#可以证明，无论在每个操作中选择哪一行或哪一列，网格的最终状态都是唯一确定的。
-#找到网格的最终状态。
-#
-#限制条件
-#1 ≦ H, W ≦ 100
-#a_{i, j}是.或#。
-#整个网格中至少有一个黑色方块。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#a_{1, 1}...a_{1, W}。
-#:
-#a_{H, 1}...a_{H, W}。
-#
-#输出
-#以与输入相同的格式打印网格的最终状态（不包括行和列的数字）；请看样本以了解情况。
-#
-#输入样本 1
-#4 4
-###.#
-#....
-###.#
-#.#.#
-#
-#输出样本1
-####
-####
-#.##
-#原始网格中的第二行和第三列将被删除。
-#
-#输入样本 2
-#3 3
-##..
-#.#.
-#..#
-#
-#输出样本2
-##..
-#.#.
-#..#
-#由于没有只由白色方块组成的行或列，因此不会进行任何操作。
-#
-#输入样本 3
-#4 5
-#.....
-#.....
-#..#..
-#.....
-#
-#输出样本3
-##
-#
-#样本输入4
-#7 6
-#......
-#....#.
-#.#....
-#..#...
-#..#...
-#......
-#.#..#.
-#
-#输出样本4
-#..#
-##..
-#.#.
-#.#.
-##.#
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+    b = []
+    for i in range(h):
+        if '#' in a[i]:
+            b.append(a[i])
+    c = []
+    for i in range(len(b[0])):
+        d = []
+        for j in range(len(b)):
+            d.append(b[j][i])
+        if '#' in d:
+            c.append(d)
+    for i in range(len(c)):
+        print(''.join(c[i]))
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    a = [input() for _ in range(H)]
+    rows = [False] * H
+    cols = [False] * W
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                rows[i] = True
+                cols[j] = True
+    for i in range(H):
+        if rows[i]:
+            for j in range(W):
+                if cols[j]:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 3
+
+def problem107_b():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(input()) for _ in range(h)]
+    # print(a)
+    # print(len(a))
+    # print(len(a[0]))
+    # print(a[0][0])
+    # print(a[1][1])
+    # print(a[2][2])
+    # print(a[3][3])
+    # print(a[4][4])
+    # print(a[5][5])
+    # print(a[6][6])
+    # print(a[7][7])
+    # print(a[8][8])
+    # print(a[9][9])
+    # print(a[10][10])
+    # print(a[11][11])
+    # print(a[12][12])
+    # print(a[13][13])
+    # print(a[14][14])
+    # print(a[15][15])
+    # print(a[16][16])
+    # print(a[17][17])
+    # print(a[18][18])
+    # print(a[19][19])
+    # print(a[20][20])
+    # print(a[21][21])
+    # print(a[22][22])
+    # print(a[23][23])
+    # print(a[24][24])
+    # print(a[25][25])
+    # print(a[26][26])
+    # print(a[27][27])
+    # print(a[28][28])
+    # print(a[29][29])
+    # print(a[30][30])
+    # print(a[31][31])
+    # print(a[32][32])
+    # print(a[33][33])
+    # print(a[34][34])
+    # print(a[35][35])
+    # print(a[36][36])
+    # print(a[37][37])
+    # print(a[38][38])
+    # print(a[39][39])
+    # print(a[40][40])
+    # print(a[41][41])
+    # print(a[42][42])
+    # print(a[43][43])
+    # print(a[44][44])
+    # print(a[45][45])
+    # print(a[46][46])
+    # print(a[47][47])
+    # print(a[48][48])
+    # print(a[49][49])
+    # print(a
+
+=======
+Suggestion 5
+
+def get_input():
+    H, W = map(int, input().split())
+    a = [list(input()) for _ in range(H)]
+    return H, W, a
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    a = []
+    for i in range(H):
+        a.append(input())
+    row = [False] * H
+    col = [False] * W
+
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                row[i] = True
+                col[j] = True
+
+    for i in range(H):
+        if row[i]:
+            for j in range(W):
+                if col[j]:
+                    print(a[i][j], end='')
+            print()
+
+=======
+Suggestion 7
+
+def problems107_b():
+    return None
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(input())
+    hlist = []
+    wlist = []
+    for i in range(h):
+        if a[i].count('#') == 0:
+            hlist.append(i)
+    for j in range(w):
+        if [a[i][j] for i in range(h)].count('#') == 0:
+            wlist.append(j)
+    for i in range(h):
+        if i not in hlist:
+            print(''.join([a[i][j] for j in range(w) if j not in wlist]))
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    a = [list(input()) for _ in range(H)]
+    #print(a)
+    row = [False] * H
+    col = [False] * W
+    for i in range(H):
+        for j in range(W):
+            if a[i][j] == '#':
+                row[i] = True
+                col[j] = True
+    #print(row)
+    #print(col)
+    for i in range(H):
+        if row[i]:
+            for j in range(W):
+                if col[j]:
+                    print(a[i][j], end='')
+            print()

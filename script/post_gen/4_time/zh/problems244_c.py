@@ -1,37 +1,292 @@
-#问题陈述
-#高桥和青木将互相进行以下游戏。
-#从高桥开始，两人交替宣布1到2N+1（包括）之间的一个整数，直到游戏结束。
-#任何一方宣布的整数都不能被任何一方再次宣布。
-#不再能宣布整数的一方输了；没输的一方赢了。
-#在这个游戏中，高桥将永远是赢家。
-#你的任务是代表高桥实际进行游戏并赢得游戏。
-#
-#限制条件
-#1 ≦ N ≦ 1000
-#N是一个整数。
-#
-#输入和输出
-#这个任务是一个交互式任务（你的程序和裁判程序通过输入和输出相互作用）。
-#你的程序代表高桥玩这个游戏，而裁判程序代表青木玩这个游戏。
-#首先，你的程序从标准输入中得到一个正整数N。
-#然后，重复以下程序，直到游戏结束。
-#你的程序输出一个介于1和2N+1（包括）之间的整数到标准输出。
-#，它定义了高桥宣称的整数。  (你不能输出任何一方已经声明的整数）。
-#青木声明的整数是由法官程序从标准输入端给你的程序的。  (任何一方已经声明的整数都不会被给出）。
-#如果青木没有更多的整数可供宣布，就会给出0，这意味着游戏结束，高桥获胜。
-#
-#注意事项
-#每次输出后，你必须刷新标准输出。  否则，你可能会得到TLE。
-#在游戏结束，高桥获胜后，必须立即终止程序。  否则，裁判不一定会给AC。
-#如果你的程序输出的东西违反了游戏规则（比如一个已经被任何一方声明的整数），你的答案被认为是不正确的。  在这种情况下，判决是不确定的。  它不一定给出WA。
-#
-#输入和输出示例
-#输入 输出 说明
-#2 首先，给出一个整数N。
-#  1 高桥宣布一个整数1。
-#3 青木声明一个整数3。
-#  2 高桥宣称有一个整数2。
-#4 青木声明一个整数4。
-#  5 高桥宣称有一个整数5。
-#0 青木没有更多的整数可以申报，所以高桥赢了，游戏结束。
-def 
+Synthesizing 10/10 solutions (Duplicates hidden)
+
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(1,2*n+2):
+        a.append(i)
+    judge = 0
+    while(1):
+        if judge == 0:
+            print(a.pop(0))
+            judge = 1
+        elif judge == 1:
+            b = int(input())
+            if b == 0:
+                break
+            else:
+                a.remove(b)
+                judge = 0
+
+=======
+Suggestion 2
+
+def get_input():
+    return int(input())
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    nums = [i for i in range(1, 2*n+2)]
+    for i in range(1, 2*n+2):
+        print(nums.pop(0))
+        flush()
+        a = int(input())
+        if a == 0:
+            break
+        nums.remove(a)
+        b = nums.pop(-1)
+        print(b)
+        flush()
+        c = int(input())
+        if c == 0:
+            break
+        nums.remove(c)
+        nums.insert(0, a)
+    exit()
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    if n == 1:
+        print(1)
+        return
+    left = 1
+    right = 2*n+1
+    while True:
+        mid = (left+right)//2
+        print(mid)
+        judge = int(input())
+        if judge == 0:
+            break
+        if judge == -1:
+            right = mid
+        else:
+            left = mid
+    return
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(range(1,2*N+2))
+    B = []
+    while True:
+        a = int(input())
+        if a == 0:
+            break
+        A.remove(a)
+        b = A.pop()
+        B.append(b)
+        print(b)
+        A.remove(b)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = 0
+    b = 2*n+1
+    while True:
+        print((a+b)//2)
+        a = int(input())
+        if a == 0:
+            break
+        if a < (a+b)//2:
+            b = (a+b)//2
+        else:
+            a = (a+b)//2
+
+=======
+Suggestion 7
+
+def main():
+    #print("start")
+    N = int(input())
+    #print(N)
+    if N == 1:
+        print(1)
+        #print("end")
+        return
+    list = [0]*(2*N+1)
+    list[0] = -1
+    list[1] = -1
+    list[2] = -1
+    list[3] = -1
+    list[4] = -1
+    list[5] = -1
+    list[6] = -1
+    list[7] = -1
+    list[8] = -1
+    list[9] = -1
+    list[10] = -1
+    list[11] = -1
+    list[12] = -1
+    list[13] = -1
+    list[14] = -1
+    list[15] = -1
+    list[16] = -1
+    list[17] = -1
+    list[18] = -1
+    list[19] = -1
+    list[20] = -1
+    list[21] = -1
+    list[22] = -1
+    list[23] = -1
+    list[24] = -1
+    list[25] = -1
+    list[26] = -1
+    list[27] = -1
+    list[28] = -1
+    list[29] = -1
+    list[30] = -1
+    list[31] = -1
+    list[32] = -1
+    list[33] = -1
+    list[34] = -1
+    list[35] = -1
+    list[36] = -1
+    list[37] = -1
+    list[38] = -1
+    list[39] = -1
+    list[40] = -1
+    list[41] = -1
+    list[42] = -1
+    list[43] = -1
+    list[44] = -1
+    list[45] = -1
+    list[46] = -1
+    list[47] = -1
+    list[48] = -1
+    list[49] = -1
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print(1)
+    flush()
+    a = int(input())
+    if a == 2:
+        print(3)
+        flush()
+        a = int(input())
+        if a == 4:
+            print(5)
+            flush()
+            a = int(input())
+            if a == 6:
+                print(7)
+                flush()
+                a = int(input())
+                if a == 8:
+                    print(9)
+                    flush()
+                    a = int(input())
+                    if a == 10:
+                        print(11)
+                        flush()
+                        a = int(input())
+                        if a == 12:
+                            print(13)
+                            flush()
+                            a = int(input())
+                            if a == 14:
+                                print(15)
+                                flush()
+                                a = int(input())
+                                if a == 16:
+                                    print(17)
+                                    flush()
+                                    a = int(input())
+                                    if a == 18:
+                                        print(19)
+                                        flush()
+                                        a = int(input())
+                                        if a == 20:
+                                            print(21)
+                                            flush()
+                                            a = int(input())
+                                            if a == 22:
+                                                print(23)
+                                                flush()
+                                                a = int(input())
+                                                if a == 24:
+                                                    print(25)
+                                                    flush()
+                                                    a = int(input())
+                                                    if a == 26:
+                                                        print(27)
+                                                        flush()
+                                                        a = int(input())
+                                                        if a == 28:
+                                                            print(29)
+                                                            flush()
+                                                            a = int(input())
+                                                            if a == 30:
+                                                                print(31)
+                                                                flush()
+                                                                a = int(input())
+                                                                if a == 32:
+                                                                    print(33)
+                                                                    flush()
+                                                                    a = int(input())
+                                                                    if a == 34:
+                                                                        print(35)
+                                                                        flush()
+                                                                        a = int(input())
+                                                                        if a == 36:
+                                                                            print(37)
+                                                                            flush()
+                                                                            a = int(input())
+                                                                            if a == 38:
+                                                                                print(39)
+                                                                                flush()
+                                                                                a = int(input())
+                                                                                if a == 40:
+                                                                                    print(41)
+                                                                                    flush()
+                                                                                    a = int(input())
+                                                                                    if a == 42:
+                                                                                        print(43)
+                                                                                        flush()
+                                                                                        a = int(input())
+                                                                                        if a == 44:
+                                                                                            print(45)
+                                                                                            flush()
+                                                                                            a = int(input())
+                                                                                            if a == 46:
+                                                                                                print(47)
+                                                                                                flush()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    used = [False] * (2 * n + 2)
+    for i in range(n):
+        a = int(input())
+        used[a] = True
+        b = int(input())
+        if b == 0:
+            break
+        used[b] = True
+        for j in range(1, 2 * n + 2):
+            if not used[j]:
+                print(j)
+                used[j] = True
+                break
+    return

@@ -1,39 +1,117 @@
-#问题陈述
-#设f(A, B)是A, A+1, ..., B的互斥，求f(A, B)。
-#什么是排他性OR？
-#整数c_1, c_2, ..., c_n的互斥（我们称它为y）定义如下：
-#当y以二进制书写时，如果c_1, c_2, ...c_m中二进制表示的2^k位上有1的整数是奇数，则2^k位上的数字为1，如果是偶数则为0。
-#例如，3和5的互斥是6。（当以二进制书写时：011和101的互斥或是110）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#0 ≦ a ≦ b ≦ 10^{12}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#计算f(A, B)并打印。
-#
-#输入样本 1
-#2 4
-#
-#输出样本 1
-#5
-#2, 3, 4分别是010, 011, 100的二进制。
-#这些的互斥或是101，也就是10进制的5。
-#
-#样本输入2
-#123 456
-#
-#样本输出2
-#435
-#
-#样本输入3
-#123456789012 123456789012
-#
-#样本输出3
-#123456789012
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(a,b):
+    c=a
+    for i in range(a+1,b+1):
+        c=c^i
+    return c
+
+=======
+Suggestion 2
+
+def f(A, B):
+    if A == B:
+        return A
+    else:
+        return A ^ B
+
+A, B = map(int, input().split())
+print(f(A, B))
+
+=======
+Suggestion 3
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return (a & b) + f(a+1, b)
+
+=======
+Suggestion 4
+
+def f(A,B):
+    if A == B:
+        return A
+    else:
+        return A^B
+
+=======
+Suggestion 5
+
+def f(a,b):
+    #print(a,b)
+    if a==b:
+        return a
+    elif a+1==b:
+        return a^b
+    elif a+2==b:
+        return a^b^(a+1)
+    else:
+        if a%2==0:
+            if b%2==0:
+                return f(a,b-1)^b
+            else:
+                return f(a,b-2)^b^(b-1)
+        else:
+            if b%2==0:
+                return f(a+1,b)^a
+            else:
+                return f(a+2,b)^a^(a+1)
+
+=======
+Suggestion 6
+
+def f(a, b):
+    if a == b:
+        return a
+    else:
+        return f(a, b-1) ^ b
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 7
+
+def f(a, b):
+    if a == b:
+        return a
+    if a == 0:
+        return f(0, b)
+    if a & 1:
+        return f(a + 1, b) ^ a
+    if b & 1:
+        return f(a, b - 1) ^ b
+    return f(a >> 1, b >> 1) << 1
+
+a, b = map(int, input().split())
+print(f(a, b))
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    print(f(a, b))
+
+=======
+Suggestion 9
+
+def f(a, b):
+    if a == b:
+        return a
+    if a % 2 == 0 and b % 2 == 0:
+        return f(a // 2, b // 2) * 2
+    if a % 2 == 0 and b % 2 == 1:
+        return f(a // 2, b // 2) * 2 + 1
+    if a % 2 == 1 and b % 2 == 0:
+        return f((a + 1) // 2, b // 2) * 2
+    if a % 2 == 1 and b % 2 == 1:
+        return f((a + 1) // 2, b // 2) * 2 + 1
+
+a, b = map(int, input().split())
+print(f(a, b))

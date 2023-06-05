@@ -1,95 +1,226 @@
-#问题陈述
-#给你两个集合S={(a_1,b_1),(a_2,b_2),...,(a_N,b_N)}和T={(c_1,d_1),(c_2,d_2),...,(c_N,d_N)}，在一个二维平面上各有N个点。
-#确定是否有可能以任何顺序对S做以下操作（可能是零），使S与T相匹配。
-#选择一个实数p(0 < p < 360)，将S中的每个点围绕原点顺时针旋转p度。
-#选择实数q和r，将S中的每个点在x方向移动q，在y方向移动r。这里，q和r可以是任何实数，无论是正数、负数还是零。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#-10 ≦ a_i,b_i,c_i,d_i ≦ 10
-#(a_i,b_i) ≠ (a_j,b_j) 如果i ≠ j。
-#(c_i,d_i) ≠ (c_j,d_j) 如果 i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_N b_N
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_N d_N
-#
-#输出
-#如果我们能将S与T匹配，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#0 0
-#0 1
-#1 0
-#2 0
-#3 0
-#3 1
-#
-#样本输出1
-#Yes
-#下图显示了给定的点集，其中S和T中的点分别被涂成红色和绿色：
-#在这种情况下，我们可以按以下方法将S与T匹配：
-#将S中的每个点围绕原点顺时针旋转270度。
-#将S中的每个点在X方向上移动3，在Y方向上移动0。
-#
-#输入样本 2
-#3
-#1 0
-#1 1
-#3 0
-#-1 0
-#-1 1
-#-3 0
-#
-#样本输出2
-#No
-#下图是给定的几组点：
-#虽然S和T是围绕Y轴对称的，但我们不能像问题陈述中所说的那样通过旋转和平移来匹配S和T。
-#
-#输入样本3
-#4
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#0 0
-#2 9
-#10 -2
-#-6 -7
-#
-#样本输出3
-#Yes
-#
-#采样输入4
-#6
-#10 5
-#-9 3
-#1 -5
-#-6 -5
-#6 9
-#-9 0
-#-7 -10
-#-10 -5
-#5 4
-#9 0
-#0 -10
-#-10 -2
-#
-#样本输出4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def rotate(x,y,p):
+    return (x*math.cos(p)-y*math.sin(p),x*math.sin(p)+y*math.cos(p))
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(map(int, input().split())))
+    for i in range(n):
+        t.append(list(map(int, input().split())))
+    if n == 1:
+        print('Yes')
+        return
+    for i in range(1, n):
+        s[i][0] -= s[0][0]
+        s[i][1] -= s[0][1]
+        t[i][0] -= t[0][0]
+        t[i][1] -= t[0][1]
+    for i in range(n):
+        for j in range(n):
+            if s[i][0] == t[j][0] and s[i][1] == t[j][1]:
+                for k in range(n):
+                    s[k][0] += s[i][0]
+                    s[k][1] += s[i][1]
+                for k in range(n):
+                    if s[k][0] != t[k][0] or s[k][1] != t[k][1]:
+                        print('No')
+                        return
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 3
+
+def solve():
+    # N = 3
+    # S = [(0, 0), (0, 1), (1, 0)]
+    # T = [(2, 0), (3, 0), (3, 1)]
+
+    # N = 3
+    # S = [(1, 0), (1, 1), (3, 0)]
+    # T = [(-1, 0), (-1, 1), (-3, 0)]
+
+    # N = 4
+    # S = [(0, 0), (2, 9), (10, -2), (-6, -7)]
+    # T = [(0, 0), (2, 9), (10, -2), (-6, -7)]
+
+    # N = 6
+    # S = [(10, 5), (-9, 3), (1, -5), (-6, -5), (6, 9), (-9, 0)]
+    # T = [(-7, -10), (-10, -5), (5, 4), (9, 0), (0, -10), (-10, -2)]
+
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(tuple(map(int, input().split())))
+    for i in range(N):
+        T.append(tuple(map(int, input().split())))
+
+    def rotate(s, t):
+        p = t[0] - s[0]
+        q = t[1] - s[1]
+        if p == 0:
+            if q == 0:
+                return True
+            else:
+                return False
+        else:
+            if q == 0:
+                return False
+            else:
+                return True
+
+    def translate(s, t):
+        p = t[0] - s[0]
+        q = t[1] - s[1]
+        if p == 0:
+            if q == 0:
+                return True
+            else:
+                return False
+        else:
+            if q == 0:
+                return False
+            else:
+                return True
+
+    def check(s, t):
+        if rotate(s, t):
+            return True
+        else:
+            return False
+
+    for i in range(N):
+        flag = False
+        for
+
+=======
+Suggestion 4
+
+def main():
+    return
+
+=======
+Suggestion 5
+
+def func():
+    pass
+
+=======
+Suggestion 6
+
+def is_match(s, t):
+    s.sort()
+    t.sort()
+    for i in range(len(s)):
+        if s[i][0] != t[i][0] or s[i][1] != t[i][1]:
+            return False
+    return True
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n=int(input())
+    s=[]
+    t=[]
+    for i in range(n):
+        s.append(list(map(int,input().split())))
+    for i in range(n):
+        t.append(list(map(int,input().split())))
+    #print(s)
+    #print(t)
+    for i in range(n):
+        for j in range(n):
+            s1=s.copy()
+            t1=t.copy()
+            #print(s1)
+            #print(t1)
+            #print(i)
+            #print(j)
+            #print(s1[i][0])
+            #print(s1[i][1])
+            #print(t1[j][0])
+            #print(t1[j][1])
+            p=(t1[j][0]-s1[i][0],t1[j][1]-s1[i][1])
+            #print(p)
+            #print(p[0])
+            #print(p[1])
+            for k in range(n):
+                s1[k][0]=s1[k][0]+p[0]
+                s1[k][1]=s1[k][1]+p[1]
+            #print(s1)
+            #print(t1)
+            #print(s1[i][0])
+            #print(s1[i][1])
+            #print(t1[j][0])
+            #print(t1[j][1])
+            q=(t1[j][0]-s1[i][0],t1[j][1]-s1[i][1])
+            #print(q)
+            #print(q[0])
+            #print(q[1])
+            #print(s1)
+            #print(t1)
+            for k in range(n):
+                s1[k][0]=s1[k][0]+q[0]
+                s1[k][1]=s1[k][1]+q[1]
+            #print(s1)
+            #print(t1)
+            #print(s1[i][0])
+            #print(s1[i][1])
+            #print(t1[j][0])
+            #print(t1[j][1])
+            #print(s1)
+            #print(t1)
+            #print(s1[i][0])
+            #print(s1[i][1])
+            #print(t1[j][0])
+            #print(t1[j][1])
+            #print(s1)
+            #print(t1)
+            #print(s1[i][0])
+            #print(s1[i][1
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(map(int, input().split())))
+    for i in range(n):
+        t.append(list(map(int, input().split())))
+    s.sort()
+    t.sort()
+    sx = s[0][0]
+    sy = s[0][1]
+    tx = t[0][0]
+    ty = t[0][1]
+    for i in range(n):
+        s[i][0] -= sx
+        s[i][1] -= sy
+        t[i][0] -= tx
+        t[i][1] -= ty
+    if s == t:
+        print("Yes")
+    else:
+        print("No")

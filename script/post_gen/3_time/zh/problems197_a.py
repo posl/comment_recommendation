@@ -1,28 +1,55 @@
-#问题陈述
-#给出一个长度为3的字符串S。
-#将S的第一个字符移到S的末尾，并打印出所得的字符串S'。
-#
-#限制条件
-#S是一个由小写英文字母组成的长度为3的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印S'。
-#
-#输入样本1
-#abc
-#
-#样本输出1
-#bca
-#移动字符串abc的第一个字符a，结果是bca。
-#
-#样本输入2
-#aab
-#
-#样本输出2
-#aba
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    str = input()
+    print(str[1:3] + str[0])
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[1:]+s[0])
+
+=======
+Suggestion 3
+
+def move(s):
+    return s[1:]+s[0]
+
+=======
+Suggestion 4
+
+def main():
+    str = input()
+    print(str[1:]+str[0])
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s1 = s[1:3]
+    s2 = s[0]
+    print(s1+s2)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    print(S[1:]+S[0])
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    s = input()
+    # 处理
+    s = s[1:] + s[0]
+    # 输出
+    print(s)

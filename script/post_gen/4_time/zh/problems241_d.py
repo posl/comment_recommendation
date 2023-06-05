@@ -1,63 +1,90 @@
-#问题陈述
-#我们有一个空序列A。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下三种类型中的一种。  
-#1 x : 向A插入x。
-#2 x k : 在A中小于或等于x的元素中，打印第k个最大值。  (k不超过5)
-#    如果A中小于等于或等于x的元素少于k，则打印-1。
-#3 x k : 在A中大于或等于x的元素中，打印第k个最小的值。  (k不超过5)
-#    如果A中小于k的元素大于或等于x，则打印-1。
-#
-#
-#限制条件
-#1≦ Q ≦ 2× 10^5
-#1≦ x≦ 10^{18}
-#1≦ k≦ 5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#在第i个查询query_i中，首先给出查询的类型c_i（是1，2，还是3）。
-#如果c_i=1，则另外给出x；如果c_i=2，3，则另外给出x和k。
-#换句话说，每个查询都是以以下三种格式之一给出的：  
-#1 x
-#2 x k
-#3 x k
-#
-#输出
-#打印q行，其中q是指c_i=2,3的查询的数量。
-#第j行（1≦ j≦ q）应该包含第j个这样的查询的答案。
-#
-#输入样本 1
-#11
-#1 20
-#1 10
-#1 30
-#1 20
-#3 15 1
-#3 15 2
-#3 15 3
-#3 15 4
-#2 100 5
-#1 1
-#2 100 5
-#
-#样本输出1
-#20
-#20
-#30
-#-1
-#-1
-#1
-#在查询_{1,2,3,4}被处理后，我们有A=(20,10,30,20)。  
-#对于查询_{5,6,7}，A中大于或等于15的元素是（20,30,20）。
-#其中第1个最小的值是20；第2个是20；第3个是30。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    A = []
+    for i in range(n):
+        query = input().split()
+        if query[0] == '1':
+            A.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            tmp = [a for a in A if a <= x]
+            tmp.sort(reverse=True)
+            if len(tmp) >= k:
+                print(tmp[k-1])
+            else:
+                print(-1)
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            tmp = [a for a in A if a >= x]
+            tmp.sort()
+            if len(tmp) >= k:
+                print(tmp[k-1])
+            else:
+                print(-1)
+
+=======
+Suggestion 3
+
+def insert(x):
+    global A
+    A.append(x)
+
+=======
+Suggestion 4
+
+def get_min(a, x, k):
+    if k > 5:
+        return -1
+    count = 0
+    for i in range(len(a)):
+        if a[i] >= x:
+            count += 1
+            if count == k:
+                return a[i]
+    return -1
+
+=======
+Suggestion 5
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        l = list(map(int, input().split()))
+        if l[0] == 1:
+            a.append(l[1])
+        elif l[0] == 2:
+            a.sort()
+            if len(a) >= l[2]:
+                print(a[-l[2]])
+            else:
+                print(-1)
+        elif l[0] == 3:
+            a.sort()
+            if len(a) >= l[2]:
+                print(a[l[2]-1])
+            else:
+                print(-1)
+
+main()
+
+=======
+Suggestion 6
+
+def insert(x):
+    global A
+    A.append(x)
+    return

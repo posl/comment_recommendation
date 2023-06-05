@@ -1,52 +1,237 @@
-#问题陈述
-#一家商店出售N种午餐盒，每种都有。
-#对于每个i=1，2，...，N，第i种午餐盒包含A_i章鱼烧（章鱼丸）和B_i大饼（鱼形蛋糕）。
-#高桥想吃X个或更多的章鱼烧和Y个或更多的鱼形蛋糕。
-#确定是否有可能购买一定数量的午餐盒来获得至少X个章鱼烧和至少Y个鱼形蛋糕。如果有可能，请找出高桥必须购买的最小数量的午餐盒来获得它们。
-#请注意，每种午餐盒的库存只有一个，你不能买两个或更多的同种午餐盒。
-#
-#限制条件
-#1 ≦ N ≦ 300
-#1 ≦ X, Y ≦ 300
-#1 ≦ A_i, B_i ≦ 300
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#X Y
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥不能得到至少X个章鱼烧和至少Y个鱼形蛋糕，打印-1；否则，打印他必须购买的最小便当数量以得到它们。
-#
-#输入样本 1
-#3
-#5 6
-#2 1
-#3 4
-#2 3
-#
-#样本输出 1
-#2
-#他想吃5个或更多的章鱼烧和6个或更多的鱼形蛋糕。
-#购买第二个和第三个午餐盒将使他得到3+2=5个章鱼烧和4+3=7个鱼形蛋糕。
-#
-#输入样本 2
-#3
-#8 8
-#3 4
-#2 3
-#2 1
-#
-#输出样本2
-#-1
-#即使他要买每一个午餐盒，也不可能至少买到8个章鱼烧和至少8个鱼形蛋糕。
-#因此，打印-1。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f():
+    N = int(input())
+    X,Y = map(int,input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    ans = float('inf')
+    for i in range(N):
+        for j in range(N):
+            if A[i]+B[j]>=X and A[i]+B[j]>=Y:
+                ans = min(ans,i+j+2)
+    if ans == float('inf'):
+        print(-1)
+    else:
+        print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    # 处理
+    # 1. 如果x，y都大于a，b的和，那么肯定是-1
+    if x > sum(a) or y > sum(b):
+        print(-1)
+        return
+    # 2. 如果x，y都小于a，b的最小值，那么肯定是-1
+    if x < min(a) or y < min(b):
+        print(-1)
+        return
+    # 3. 如果x，y都等于a，b的最小值，那么肯定是1
+    if x == min(a) and y == min(b):
+        print(1)
+        return
+    # 4. 如果x，y都等于a，b的和，那么肯定是n
+    if x == sum(a) and y == sum(b):
+        print(n)
+        return
+    # 5. 如果x，y都等于a，b的最大值，那么肯定是n
+    if x == max(a) and y == max(b):
+        print(n)
+        return
+    # 6. 如果x，y都等于a，b的最大值，那么肯定是n
+    if x == max(a) and y == max(b):
+        print(n)
+        return
+    # 7. 如果x，y都等于a，b的最大值，那么肯定是n
+    if x == max(a) and y == max(b):
+        print(n)
+        return
+    # 8. 如果x，y都等于a，b的最大值，那么肯定是n
+    if x == max(a) and y == max(b):
+        print(n)
+        return
+    # 9. 如果x，y都等于a，b的最大值，那么肯定是n
+    if x ==
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[[0 for i in range(300 * 300 + 1)] for i in range(300 + 1)] for i in range(N + 1)]
+    dp[0][0][0] = 1
+    for i in range(N):
+        for j in range(300):
+            for k in range(300 * 300 + 1):
+                if dp[i][j][k] == 1:
+                    dp[i + 1][j][k] = 1
+                    if j + 1 <= 300:
+                        dp[i + 1][j + 1][k + A[i]] = 1
+    ans = -1
+    for i in range(300 * 300 + 1):
+        if dp[N][X][i] == 1 and dp[N][Y][i] == 1:
+            ans = i
+            break
+    print(ans)
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    #print(a)
+    #print(b)
+    #print(x)
+    #print(y)
+    #print(n)
+    #print(len(a))
+    #print(len(b))
+    #print(len(a) == len(b))
+    #print(len(a) == n)
+    #print(len(b) == n)
+    #print(len(a) == len(b) == n)
+    #print(len(a) == len(b) == n == True)
+    #print(len(a) == len(b) == n == True == True)
+    #print(len(a) == len(b) == n == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n == True == True == True == True == True == True == True == True == True == True == True == True == True)
+    #print(len(a) == len(b) == n ==
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    X, Y = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[False for _ in range(Y+1)] for _ in range(X+1)]
+    dp[0][0] = True
+    for i in range(N):
+        for x in range(X, -1, -1):
+            for y in range(Y, -1, -1):
+                if dp[x][y]:
+                    dp[min(X, x+AB[i][0])][min(Y, y+AB[i][1])] = True
+    ans = -1
+    for x in range(X, X+1):
+        for y in range(Y, Y+1):
+            if dp[x][y]:
+                ans = max(ans, x+y)
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_min_box_num(box_num, x, y, a, b):
+    min_box_num = 9999999
+    for i in range(box_num):
+        if a[i] >= x and b[i] >= y:
+            min_box_num = min(min_box_num, i+1)
+    return min_box_num
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    dp = [[[False for k in range(Y+1)] for j in range(X+1)] for i in range(N+1)]
+    dp[0][0][0] = True
+    for i in range(N):
+        for j in range(X+1):
+            for k in range(Y+1):
+                if dp[i][j][k]:
+                    dp[i+1][j][k] = True
+                    if j+A[i]<=X and k+B[i]<=Y:
+                        dp[i+1][j+A[i]][k+B[i]] = True
+    #print(dp)
+    if dp[N][X][Y]:
+        for i in range(N, 0, -1):
+            if dp[i-1][X][Y]:
+                continue
+            else:
+                print(i)
+                break
+    else:
+        print(-1)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[0 for i in range(Y+1)] for j in range(X+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(X,-1,-1):
+            for k in range(Y,-1,-1):
+                if dp[j][k] == 1:
+                    dp[min(j+A[i],X)][min(k+B[i],Y)] = 1
+    for i in range(X+1):
+        for j in range(Y+1):
+            if dp[X-i][Y-j] == 1:
+                print(N-i)
+                exit()
+    print(-1)

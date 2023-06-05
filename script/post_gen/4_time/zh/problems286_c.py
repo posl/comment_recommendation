@@ -1,42 +1,123 @@
-#问题陈述
-#给你一个长度为N的字符串S，让S_i (1≦ i ≦ N)为S的第i个字符，从左边开始。
-#你可以按任何顺序进行以下两种操作，次数为零或多：
-#支付A日元（日本的货币）。  将S的最左边的字符移到右端。  换句话说，把S_1S_2...S_N改为S_2...S_NS_1。
-#支付B日元。  在1和N之间选择一个整数i，用任何小写英文字母替换S_i。
-#你需要支付多少日元才能使S成为一个复数？
-#什么是回文？
-#当且仅当一个字符串T对于所有整数i（1 ≦ i ≦ |T|）来说，左边的第i个字符和右边的第i个字符是相同的，其中|T|是T的长度，那么这个字符串就是一个宫格。
-#
-#限制条件
-#1≦ N ≦ 5000
-#1≦ A,B≦ 10^9
-#S是一个长度为N的字符串，由小写英文字母组成。
-#除了S以外，输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#5 1 2
-#rrefa
-#
-#样本输出1
-#3
-#首先，支付2日元进行一次第二种操作：让i=5，用e替换S_5，现在S是rrefe。
-#然后，支付1日元，执行一次第一种操作。  现在S是refer，这是一个宫格。
-#因此，你可以用3日元使S成为一个复数。  由于你不能用2日元或更少的钱使S成为一个宫格，所以3是答案。
-#
-#输入样本 2
-#8 1000000000 1000000000
-#bcdfcgaa
-#
-#样本输出2
-#4000000000
-#注意，答案可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def check_palindrome(s):
+    if len(s) == 1:
+        return True
+    else:
+        for i in range(int(len(s)/2)):
+            if s[i] != s[len(s)-1-i]:
+                return False
+        return True
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def problems286_c():
+    n, a, b = map(int, input().split())
+    s = input()
+    if n % 2 == 0:
+        if a > b:
+            print((a * n) + b)
+        else:
+            print((a * n) + (b * (n // 2)))
+    else:
+        if a > b:
+            print((a * n) + b)
+        else:
+            print((a * n) + (b * (n // 2)) + a)
+
+=======
+Suggestion 4
+
+def solve():
+    N, A, B = map(int, input().split())
+    S = input()
+    print(N, A, B, S)
+    return 0
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    S = input()
+    count = 0
+    for i in range(N//2):
+        if S[i] != S[-i-1]:
+            if S[i] == 'a' or S[-i-1] == 'a':
+                count += A
+            else:
+                count += B
+    if N % 2 == 1 and S[N//2] == 'a':
+        count += A
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a, b = map(int, input().split())
+    s = input()
+    print(n, a, b, s)
+    #print(s[0:int(n/2)])
+    #print(s[int(n/2):n])
+    if s[0:int(n/2)] == s[int(n/2):n]:
+        print(a*n+b*n)
+    else:
+        print(a*n+b*(n+1))
+
+=======
+Suggestion 7
+
+def problems286_c():
+    pass
+
+=======
+Suggestion 8
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 9
+
+def main():
+    N,A,B = map(int, input().split())
+    S = input()
+
+    #print(S)
+    #print(N,A,B)
+
+    #判断是否是回文
+    def is_huiwen(S):
+        if S == S[::-1]:
+            return True
+        else:
+            return False
+
+    #print(is_huiwen(S))
+
+    #判断回文的个数
+    def huiwen_count(S):
+        count = 0
+        for i in range(N//2):
+            if S[i] != S[N-i-1]:
+                count += 1
+        return count
+
+    #print(huiwen_count(S))
+
+    if is_huiwen(S):
+        print(A*N+B*(huiwen_count(S)//2))
+    else:
+        print(A*N+B*huiwen_count(S))

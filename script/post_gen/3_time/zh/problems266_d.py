@@ -1,69 +1,314 @@
-#问题陈述
-#高桥正试图抓住许多Snuke。
-#在坐标为0、1、2、3、4的数线上有五个坑，与Snuke的巢穴相连。
-#现在，N个Snuke将从坑中出现。已知第i个Snuke将在时间T_i时从坐标X_i的坑里出现，其大小为A_i。
-#高桥在时间0时位于坐标0，并能以最多1的速度在线上移动。
-#当且仅当Snuke出现时，他正好在该坑的坐标上，他才能抓住它。
-#捕捉Snuke的时间是可以忽略不计的。
-#求高桥通过最佳移动所能捕捉到的Snuke的最大尺寸之和。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 < t_1 < t_2 < ...< T_N ≦ 10^5
-#0 ≦ X_i ≦ 4
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#T_1 X_1 A_1
-#T_2 X_2 A_2
-#.
-#.
-#.
-#T_N X_N A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#3
-#1 0 100
-#3 3 10
-#5 4 1
-#
-#样本输出1
-#101
-#最佳策略如下。
-#在坐标0处等待，在时间1处捕捉第一个Snuke。
-#在坐标4处，在时间5处抓到第三只Snuke。
-#不可能同时抓住第一条和第二条Snuke，所以这是他能做到的最好的办法。
-#
-#输入样本 2
-#3
-#1 4 1
-#2 4 1
-#3 4 1
-#
-#样本输出2
-#0
-#高桥无法抓到任何Snuke。
-#
-#输入样本3
-#10
-#1 4 602436426
-#2 1 623690081
-#3 3 262703497
-#4 4 628894325
-#5 3 450968417
-#6 1 161735902
-#7 1 707723857
-#8 2 802329211
-#9 0 317063340
-#10 2 125660016
-#
-#样本输出3
-#2978279323
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    snuke = []
+    for i in range(n):
+        t,x,a = map(int,input().split())
+        snuke.append([t,x,a])
+    ans = 0
+    for i in range(1,n):
+        if snuke[i][0] - snuke[i-1][0] >= abs(snuke[i][1] - snuke[i-1][1]):
+            ans += snuke[i][2]
+    print(ans)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    #input
+    N = int(input())
+    T = []
+    X = []
+    A = []
+    for i in range(N):
+        t, x, a = map(int, input().split())
+        T.append(t)
+        X.append(x)
+        A.append(a)
+    #print(N, T, X, A)
+    #init
+    ans = 0
+    #search
+    for i in range(N):
+        if i == 0:
+            ans += A[i]
+            #print("i=0, ans=", ans)
+        else:
+            if T[i] - T[i-1] >= abs(X[i] - X[i-1]):
+                ans += A[i]
+                #print("i=",i, ", ans=", ans)
+    #output
+    print(ans)
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    txa = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            ans += txa[i][2]
+        else:
+            ans += txa[i][2]
+            if txa[i][0] - txa[i - 1][0] >= abs(txa[i][1] - txa[i - 1][1]):
+                if (txa[i][1] - txa[i - 1][1]) % 2 == 0:
+                    ans -= (txa[i][1] - txa[i - 1][1]) // 2
+                else:
+                    ans -= (txa[i][1] - txa[i - 1][1]) // 2 + 1
+            else:
+                ans = 0
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    #读取输入
+    N = int(input())
+    T = [0] * N
+    X = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    #计算
+    result = 0
+    for i in range(N):
+        #计算从i开始的最大值
+        #i开始的最大值
+        tmp = A[i]
+        for j in range(i+1, N):
+            if T[j] - T[i] >= abs(X[j] - X[i]):
+                tmp += A[j]
+        if tmp > result:
+            result = tmp
+    print(result)
+    return
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    Snukes = []
+    for i in range(N):
+        Snukes.append(list(map(int, input().split())))
+    # print(Snukes)
+    max_sum = 0
+    for i in range(N):
+        if i == 0:
+            max_sum = Snukes[i][2]
+        else:
+            if Snukes[i][0] - Snukes[i-1][0] >= abs(Snukes[i][1] - Snukes[i-1][1]):
+                max_sum += Snukes[i][2]
+            else:
+                max_sum += Snukes[i][2] - (abs(Snukes[i][1] - Snukes[i-1][1]) - (Snukes[i][0] - Snukes[i-1][0]))
+    print(max_sum)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    txa = []
+    for i in range(n):
+        txa.append(list(map(int,input().split())))
+
+    t0 = 0
+    x0 = 0
+
+    for i in range(n):
+        t = txa[i][0]
+        x = txa[i][1]
+        a = txa[i][2]
+        if (t - t0) < abs(x - x0):
+            print('No')
+            return
+        if (t - t0) % 2 != abs(x - x0) % 2:
+            print('No')
+            return
+        t0 = t
+        x0 = x
+    print('Yes')
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    T = [0] * N
+    X = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], X[i], A[i] = map(int, input().split())
+    #print(T)
+    #print(X)
+    #print(A)
+    #dp = [0] * (T[N-1] + 1)
+    dp = [0] * 5
+    for i in range(N):
+        #print(i)
+        #print(dp)
+        #print(dp[T[i]])
+        #print(dp[X[i]])
+        #print(dp[X[i]] + A[i])
+        if dp[X[i]] < dp[T[i]]:
+            dp[X[i]] = dp[T[i]]
+        if dp[T[i]] + A[i] > dp[X[i]]:
+            dp[X[i]] = dp[T[i]] + A[i]
+    print(dp[4])
+    return
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    txa = [list(map(int, input().split())) for i in range(n)]
+    #print(txa)
+    txa.sort()
+    #print(txa)
+    t0, x0, a0 = 0, 0, 0
+    ans = 0
+    for t, x, a in txa:
+        dt = t - t0
+        dx = abs(x - x0)
+        if dt < dx:
+            print('No')
+            return
+        if (dt - dx) % 2 == 1:
+            print('No')
+            return
+        m = (dt - dx) // 2
+        ans += max(a, a0) + m
+        t0, x0, a0 = t, x, a
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    T = []
+    X = []
+    A = []
+    for i in range(N):
+        t, x, a = map(int, input().split())
+        T.append(t)
+        X.append(x)
+        A.append(a)
+    #print(N)
+    #print(T)
+    #print(X)
+    #print(A)
+
+    #最大值
+    #max = 0
+    #for i in range(1, N):
+    #    if T[i] > T[max]:
+    #        max = i
+    #print(max)
+    #print(T[max])
+
+    #最大值
+    max = 0
+    for i in range(1, N):
+        if T[i] > T[max]:
+            max = i
+        elif T[i] == T[max]:
+            if A[i] > A[max]:
+                max = i
+    #print(max)
+    #print(T[max])
+    #print(A[max])
+
+    #最大值
+    max = 0
+    for i in range(1, N):
+        if T[i] > T[max]:
+            max = i
+        elif T[i] == T[max]:
+            if A[i] > A[max]:
+                max = i
+            elif A[i] == A[max]:
+                if X[i] < X[max]:
+                    max = i
+    #print(max)
+    #print(T[max])
+    #print(A[max])
+    #print(X[max])
+
+    #最大值
+    max = 0
+    for i in range(1, N):
+        if T[i] > T[max]:
+            max = i
+        elif T[i] == T[max]:
+            if A[i] > A[max]:
+                max = i
+            elif A[i] == A[max]:
+                if X[i] < X[max]:
+                    max = i
+                elif X[i] == X[max]:
+                    if A[i] < A[max]:
+                        max = i
+    #print(max)
+    #print(T[max])
+    #print(A[max])
+    #print(X[max])
+
+    #最大值
+    max = 0
+    for i in range(1, N):
+        if T[i] > T[max]:
+            max = i
+        elif T[i] == T[max]:
+            if A[i] > A[max]:
+                max = i
+            elif A
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    snuke = []
+    for i in range(n):
+        snuke.append(list(map(int, input().split())))
+    snuke.sort()
+    print(snuke)
+    max_size = 0
+    max_size_sum = 0
+    for i in range(n):
+        if snuke[i][0] > max_size_sum:
+            max_size_sum = snuke[i][0]
+        if snuke[i][1] == 0:
+            max_size += snuke[i][2]
+        elif snuke[i][1] == 1:
+            if max_size_sum < snuke[i][0]:
+                max_size_sum = snuke[i][0]
+                max_size += snuke[i][2]
+        elif snuke[i][1] == 2:
+            if max_size_sum < snuke[i][0]:
+                max_size_sum = snuke[i][0]
+                max_size += snuke[i][2]
+        elif snuke[i][1] == 3:
+            if max_size_sum < snuke[i][0]:
+                max_size_sum = snuke[i][0]
+                max_size += snuke[i][2]
+        elif snuke[i][1] == 4:
+            if max_size_sum < snuke[i][0]:
+                max_size_sum = snuke[i][0]
+                max_size += snuke[i][2]
+    print(max_size)

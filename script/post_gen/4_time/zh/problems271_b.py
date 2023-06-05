@@ -1,63 +1,129 @@
-#问题陈述
-#有N个整数的序列。
-#第i个（1 ≦ i ≦ N）序列有L_i项；第i个序列的第j个（1 ≦ j ≦ L_i）项是a_{i, j}。
-#你得到了Q个查询。  对于第k个(1 ≦ k ≦ Q)查询，给定整数s_k和t_k，找出第s_k序列的第t_k项。
-#
-#约束条件
-#1 ≦ n, q ≦ 2 × 10^5
-#L_i ≧1 (1 ≦ i ≦ N)
-#sum_{i=1}^N L_i ≦ 2 × 10^5
-#1 ≦ a_{i, j} ≦ 10^9 (1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#1 ≦ s_k ≦ N, 1 ≦ t_k ≦ L_{s_k }  (1 ≦ k ≦ Q)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#L_1 a_{1, 1} ... a_{1, L_1}
-#.
-#.
-#.
-#L_N a_{N, 1} ... a_{N, L_N}
-#s_1 t_1
-#.
-#.
-#.
-# 
-#s_Q t_Q
-#
-#输出
-#打印Q行。  第k（1 ≦ k ≦ Q）行应该包含第k个查询的答案。
-#
-#输入样本 1
-#2 2
-#3 1 4 7
-#2 5 9
-#1 3
-#2 1
-#
-#样本输出1
-#7
-#5
-#第1个序列是（1，4，7），第2个是（5，9）。
-#每个查询的答案如下：
-#第1个序列的第3项是7。
-#第2个序列的第1项是5。
-#
-#输入样本 2
-#3 4
-#4 128 741 239 901
-#2 1 1
-#3 314 159 26535
-#1 1
-#2 2
-#3 3
-#1 4
-#
-#样本输出2
-#128
-#1
-#26535
-#901
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 2
+
+def main():
+    n, q = map(int, input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(l[s-1][t-1])
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, input().split())))
+    for _ in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 4
+
+def get_input():
+    n, q = map(int, input().split())
+    l = []
+    for i in range(n):
+        l.append(list(map(int, input().split())))
+    s = []
+    for i in range(q):
+        s.append(list(map(int, input().split())))
+    return n, q, l, s
+
+=======
+Suggestion 5
+
+def solve():
+    n,q = list(map(int,input().split()))
+    arr = []
+    for i in range(n):
+        arr.append(list(map(int,input().split())))
+    for i in range(q):
+        s,t = list(map(int,input().split()))
+        print(arr[s-1][t-1])
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append([int(x) for x in input().split()])
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, q = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    for _ in range(q):
+        i, j = map(int, input().split())
+        print(a[i-1][j-1])
+
+=======
+Suggestion 8
+
+def main():
+    n,q = map(int,input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    for i in range(q):
+        s,t = map(int,input().split())
+        print(a[s-1][t-1])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    #print(n, q)
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    #print(a)
+    for i in range(q):
+        s, t = map(int, input().split())
+        print(a[s-1][t-1])
+
+=======
+Suggestion 10
+
+def get_input():
+    input_list = list(map(int, input().split()))
+    N = input_list[0]
+    Q = input_list[1]
+    seq_list = []
+    for i in range(N):
+        seq_list.append(list(map(int, input().split())))
+    query_list = []
+    for i in range(Q):
+        query_list.append(list(map(int, input().split())))
+    return N, Q, seq_list, query_list

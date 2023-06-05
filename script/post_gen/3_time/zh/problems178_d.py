@@ -1,37 +1,106 @@
-#问题陈述
-#给出的是一个整数S。
-#找出有多少个序列的项都是大于或等于3的整数，并且其和等于S。
-#答案可能非常大，所以输出10^9+7的模数。
-#
-#限制条件
-#1 ≦ S ≦ 2000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#7
-#
-#样本输出1
-#3
-#3个序列满足条件：{3，4}，{4，3}和{7}。
-#
-#样本输入2
-#2
-#
-#样本输出2
-#0
-#没有满足条件的序列。
-#
-#样本输入3
-#1729
-#
-#样本输出3
-#294867501
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem178_d():
+    pass
+
+=======
+Suggestion 2
+
+def solve(S):
+    if S < 3:
+        return 0
+    else:
+        ans = 1
+        for i in range(1, S):
+            ans *= 2
+            ans %= 1000000007
+        return ans
+
+S = int(input())
+print(solve(S))
+
+=======
+Suggestion 3
+
+def problems178_d():
+    pass
+
+=======
+Suggestion 4
+
+def problem178d():
+    pass
+
+=======
+Suggestion 5
+
+def solve():
+    S = int(input())
+    mod = 10 ** 9 + 7
+    dp = [[0 for i in range(S + 1)] for j in range(S + 1)]
+    dp[0][0] = 1
+    for i in range(1, S + 1):
+        for j in range(3, S + 1):
+            if i >= j:
+                dp[i][j] = (dp[i][j - 1] + dp[i - j][j]) % mod
+            else:
+                dp[i][j] = dp[i][j - 1]
+    print(dp[S][S])
+
+solve()
+
+=======
+Suggestion 6
+
+def solve():
+    mod = 10**9 + 7
+    S = int(input())
+    dp = [[0] * (S + 1) for _ in range(S + 1)]
+    dp[0][0] = 1
+    for i in range(3, S + 1):
+        for j in range(S + 1):
+            dp[i][j] += dp[i - 1][j - i]
+            if j >= i:
+                dp[i][j] += dp[i][j - i]
+            dp[i][j] %= mod
+    print(dp[S][S])
+
+solve()
+
+=======
+Suggestion 7
+
+def solve(S):
+    dp = [[0 for i in range(S+1)] for j in range(S+1)]
+    dp[0][0] = 1
+    for i in range(3,S+1):
+        for j in range(S+1):
+            for k in range(j-i+1):
+                dp[i][j] += dp[i-1][j-k]
+                dp[i][j] %= 1000000007
+    return dp[S][S]
+
+=======
+Suggestion 8
+
+def solve(s):
+    if s < 3:
+        return 0
+    dp = [[0 for _ in range(s + 1)] for _ in range(s + 1)]
+    dp[0][0] = 1
+    for i in range(3, s + 1):
+        for j in range(s + 1):
+            dp[i][j] = dp[i - 1][j]
+            if j >= i:
+                dp[i][j] += dp[i][j - i]
+            dp[i][j] %= 1000000007
+    return dp[s][s]
+
+=======
+Suggestion 9
+
+def main():
+    pass

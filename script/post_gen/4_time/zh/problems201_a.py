@@ -1,38 +1,106 @@
-#问题陈述
-#给你一个三个数字的序列：A=（A_1，A_2，A_3）。
-#有没有可能将A的元素重新排列成一个算术序列？
-#换句话说，有没有可能重新排列A的元素，使A_3-A_2=A_2-A_1？
-#
-#限制条件
-#1 ≦ A_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#A_1 A_2 A_3
-#
-#輸出
-#如果有可能将A的元素重新排列成一个算术序列，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 1 3
-#
-#输出示例 1
-#Yes
-#我们可以把它们重新排列成一个算术序列，比如说，把它变成(1,3,5)。
-#
-#输入样本2
-#1 4 3
-#
-#样本输出2
-#No
-#没有办法将它们重新排列成一个算术序列。
-#
-#输入样本3
-#5 5 5
-#
-#样本输出 3
-#Yes
-#A的所有元素可能是相等的，或者A可能已经是一个算术序列。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def isAP(a,b,c):
+    if a-b == b-c:
+        return True
+    else:
+        return False
+
+a,b,c = map(int,input().split())
+
+=======
+Suggestion 2
+
+def arithmetic_sequence(a1, a2, a3):
+    if a3 - a2 == a2 - a1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c = map(int,input().split())
+    if (c-b) == (b-a):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def arithmetic_sequence():
+    A = list(map(int,input().split()))
+    A.sort()
+    if A[2]-A[1]==A[1]-A[0]:
+        print('Yes')
+    else:
+        print('No')
+
+arithmetic_sequence()
+
+=======
+Suggestion 5
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[2]-A[1] == A[1]-A[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def arithmetic_sequence(a1,a2,a3):
+    if a3-a2 == a2-a1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    # 获取输入
+    line = input()
+    # 用空格分隔输入的三个数字
+    A = line.split(" ")
+    # 将字符串转换为整数
+    A = [int(s) for s in A]
+    # 排序
+    A.sort()
+    # 如果A_3-A_2=A_2-A_1，则打印“Yes”，否则打印“No”
+    if A[2] - A[1] == A[1] - A[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int,input().split()))
+    a.sort()
+    if a[1] - a[0] == a[2] - a[1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def problems201_a():
+    a = input()
+    a = a.split(" ")
+    a = [int(i) for i in a]
+    a.sort()
+    if a[2]-a[1] == a[1]-a[0]:
+        print("Yes")
+    else:
+        print("No")

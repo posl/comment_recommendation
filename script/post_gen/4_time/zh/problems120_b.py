@@ -1,39 +1,121 @@
-#问题陈述
-#给你正整数A和B。
-#请找出能同时除以A和B的第K个最大的正整数。
-#输入保证存在这样一个数字。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A, B ≦ 100
-#同时除以A和B的第K个最大正整数存在。
-#K ≧ 1
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B K
-#
-#输出
-#打印同时除以A和B的第K个最大正整数。
-#
-#输入样本 1
-#8 12 2
-#
-#输出示例 1
-#2
-#三个正整数同时除以8和12：1，2和4。
-#其中，第二大的是2。
-#
-#输入样本2
-#100 50 4
-#
-#样本输出2
-#5
-#
-#样本输入3
-#1 1 1
-#
-#样品输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getGCD(x,y):
+    if x < y:
+        x, y = y, x
+    while y != 0:
+        x, y = y, x % y
+    return x
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+a,b,k=map(int,input().split())
+c=gcd(a,b)
+cnt=0
+for i in range(c,0,-1):
+    if a%i==0 and b%i==0:
+        cnt+=1
+    if cnt==k:
+        print(i)
+        break
+
+=======
+Suggestion 3
+
+def getKthCommonDivisor(A, B, K):
+    if A > B:
+        A, B = B, A
+    count = 0
+    for i in range(1, B + 1):
+        if A % i == 0 and B % i == 0:
+            count += 1
+            if count == K:
+                return i
+    return 0
+
+=======
+Suggestion 4
+
+def f(x,y):
+    if x>y:
+        x,y=y,x
+    for i in range(1,x+1):
+        if x%i==0 and y%i==0:
+            a=i
+    return a
+
+=======
+Suggestion 5
+
+def gcd(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 7
+
+def f():
+    A,B,K = map(int,input().split())
+    L = []
+    for i in range(1,101):
+        if A % i == 0 and B % i == 0:
+            L.append(i)
+    print(L[-K])
+
+f()
+
+=======
+Suggestion 8
+
+def getDivisor(a, b):
+    divisor = []
+    for i in range(1, min(a, b)+1):
+        if a % i == 0 and b % i == 0:
+            divisor.append(i)
+    return divisor
+
+=======
+Suggestion 9
+
+def solve():
+    A, B, K = map(int, input().split())
+    cnt = 0
+    for i in range(1, 10000):
+        if A % i == 0 and B % i == 0:
+            cnt += 1
+            if cnt == K:
+                print(i)
+                break
+
+=======
+Suggestion 10
+
+def problem120_b():
+    a,b,k = map(int, input().split())
+    count = 0
+    for i in range(1, max(a,b)+1):
+        if a%i == 0 and b%i == 0:
+            count += 1
+            if count == k:
+                print(i)
+                break

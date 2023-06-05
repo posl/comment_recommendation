@@ -1,81 +1,243 @@
-#问题陈述
-#高桥和青木各有一个玩具，用M条绳索系在N个球上。
-#在高桥的玩具中，球的编号为1，...，N，第i根绳子系着球A_i和B_i。
-#同样地，在Aoki的玩具中，球的编号为1，...，N，第i条绳子系着球C_i和D_i。
-#在每个玩具中，没有一条绳子把球绑在自己身上，也没有两个球被两条或更多不同的绳子绑住。
-#Snuke想知道这两个玩具是否有相同的形状。
-#在这里，当有一个序列P满足以下条件时，就可以说它们有相同的形状。
-#P是(1,...,N)的一个置换。
-#对于1到N（包括）之间的每一对整数i，j，下面的条件成立。
-#当且仅当青木玩具中的球P_i和P_j被绳子绑住时，高桥玩具中的球i和j被绳子绑住。
-#
-#如果这两个玩具的形状相同，则打印Yes；否则，打印No。
-#
-#限制条件
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ ((n(n - 1))/(2))
-#1 ≦ A_i < B_i ≦ N (1 ≦ i ≦ M)
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#1 ≦ C_i < D_i ≦ N (1 ≦ i ≦ M)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_M D_M
-#
-#输出
-#如果两个玩具的形状相同，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 4
-#1 2
-#1 3
-#1 4
-#3 4
-#1 3
-#1 4
-#2 3
-#3 4
-#
-#样本输出1
-#Yes
-#下图左边是高桥的玩具，右边是青木的玩具。
-#下图显示这两个玩具有相同的形状。例如，当P=（3，2，1，4）时，声明中的条件得到满足。
-#
-#输入样本 2
-#5 6
-#1 2
-#1 3
-#1 4
-#3 4
-#3 5
-#4 5
-#1 2
-#1 3
-#1 4
-#1 5
-#3 5
-#4 5
-#
-#样本输出2
-#No
-#这两个玩具的形状不一样。
-#
-#样本输入3
-#8 0
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(M):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    print(A)
+    print(B)
+    print(C)
+    print(D)
+
+=======
+Suggestion 2
+
+def main():
+    n,m=map(int,input().split())
+    a=[]
+    b=[]
+    c=[]
+    d=[]
+    for i in range(m):
+        x,y=map(int,input().split())
+        a.append(x)
+        b.append(y)
+    for i in range(m):
+        x,y=map(int,input().split())
+        c.append(x)
+        d.append(y)
+    if a==c and b==d:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        Ai,Bi = map(int,input().split())
+        A.append(Ai)
+        B.append(Bi)
+    for i in range(M):
+        Ci,Di = map(int,input().split())
+        C.append(Ci)
+        D.append(Di)
+    #print(A,B,C,D)
+    #print(N,M)
+    #print(A[0],B[0],C[0],D[0])
+
+    #print(A[0],B[0],C[0],D[0])
+    #print(A[1],B[1],C[1],D[1])
+    #print(A[2],B[2],C[2],D[2])
+    #print(A[3],B[3],C[3],D[3])
+
+    #print(A[0],B[0],C[0],D[0])
+    #print(A[1],B[1],C[1],D[1])
+    #print(A[2],B[2],C[2],D[2])
+    #print(A[3],B[3],C[3],D[3])
+    #print(A[4],B[4],C[4],D[4])
+    #print(A[5],B[5],C[5],D[5])
+
+    #print(A[0],B[0],C[0],D[0])
+    #print(A[1],B[1],C[1],D[1])
+    #print(A[2],B[2],C[2],D[2])
+    #print(A[3],B[3],C[3],D[3])
+    #print(A[4],B[4],C[4],D[4])
+    #print(A[5],B[5],C[5],D[5])
+    #print(A[6],B[6],C[6],D[6])
+    #print(A[7],B[7],C[7],D[7])
+    #print(A[8],B[8],C[8],D[8])
+    #print(A[9],B[9],C[9],D[9
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    a = []
+    b = []
+    c = []
+    d = []
+    for i in range(M):
+        x,y = map(int,input().split())
+        a.append(x)
+        b.append(y)
+    for i in range(M):
+        x,y = map(int,input().split())
+        c.append(x)
+        d.append(y)
+    for i in range(1,N+1):
+        if i not in a:
+            a.append(i)
+            b.append(i)
+        if i not in c:
+            c.append(i)
+            d.append(i)
+    for i in range(N):
+        for j in range(i+1,N):
+            if a[i] == a[j] and b[i] == b[j]:
+                if c[i] != c[j] or d[i] != d[j]:
+                    print('No')
+                    exit()
+            if a[i] == b[j] and b[i] == a[j]:
+                if c[i] != d[j] or d[i] != c[j]:
+                    print('No')
+                    exit()
+    print('Yes')
+    exit()
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(m)]
+    b = [list(map(int, input().split())) for _ in range(m)]
+
+    # 判断是否有相同的形状
+    # 1. 先判断是否有相同的绳子
+    # 2. 再判断是否有相同的球
+    # 3. 再判断是否有相同的绳子
+    # 4. 再判断是否有相同的球
+    # 5. 依次类推
+    # 6. 如果都没有相同的球和绳子，则两个玩具有相同的形状
+    for i in range(1 << n):
+        # 1. 先判断是否有相同的绳子
+        # 2. 再判断是否有相同的球
+        # 3. 再判断是否有相同的绳子
+        # 4. 再判断是否有相同的球
+        # 5. 依次类推
+        # 6. 如果都没有相同的球和绳子，则两个玩具有相同的形状
+        # 1. 先判断是否有相同的绳子
+        # 2. 再判断是否有相同的球
+        # 3. 再判断是否有相同的绳子
+        # 4. 再判断是否有相同的球
+        # 5. 依次类推
+        # 6. 如果都没有相同的球和绳子，则两个玩具有相同的形状
+        # 1. 先判断是否有相同的绳子
+        # 2. 再判断是否有相同的球
+        # 3. 再判断是否有相同的绳子
+        # 4. 再判断是否有相同的球
+        # 5. 依次类推
+        # 6. 如果都没有相同
+
+=======
+Suggestion 7
+
+def solve():
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(m)]
+    c = [list(map(int, input().split())) for _ in range(m)]
+    p = list(range(n))
+    def root(x):
+        if p[x] != x: p[x] = root(p[x])
+        return p[x]
+    for i in range(m):
+        a[i][0] -= 1
+        a[i][1] -= 1
+        c[i][0] -= 1
+        c[i][1] -= 1
+    for i in range(m):
+        p[root(a[i][0])] = root(a[i][1])
+    q = list(range(n))
+    for i in range(m):
+        q[root(c[i][0])] = root(c[i][1])
+    print("Yes" if p == q else "No")
+
+solve()
+
+=======
+Suggestion 8
+
+def solve():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(M):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    for i in range(2 ** N):
+        P = []
+        for j in range(N):
+            if (i >> j) & 1:
+                P.append(j + 1)
+        if len(P) != N:
+            continue
+        flag = True
+        for j in range(M):
+            if ((A[j] in P) and (B[j] in P)) or ((not (A[j] in P)) and (not (B[j] in P))):
+                if ((C[j] in P) and (D[j] in P)) or ((not (C[j] in P)) and (not (D[j] in P))):
+                    continue
+                else:
+                    flag = False
+                    break
+            else:
+                if ((C[j] in P) and (D[j] in P)) or ((not (C[j] in P)) and (not (D[j] in P))):
+                    flag = False
+                    break
+                else:
+                    continue
+        if flag:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 9
+
+def solve():
+    pass

@@ -1,29 +1,52 @@
-#问题陈述
-#一个大写或小写的英文字母alpha将被作为输入。
-#如果字母是大写的，则打印A；如果是小写的，则打印a。
-#
-#限制条件
-#alpha是一个大写（A-Z）或小写（a-z）的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#α
-#
-#输出
-#如果α是大写，打印A；如果是小写，打印a。
-#
-#输入样本1
-#B
-#
-#样本输出1
-#A
-#B是大写字母，所以我们应该打印A。
-#
-#输入样本2
-#a
-#
-#样本输出2
-#a
-#a是小写的，所以我们应该打印a。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    alpha = input()
+    if alpha.isupper():
+        print('A')
+    else:
+        print('a')
+
+=======
+Suggestion 2
+
+def main():
+    alpha = input()
+    if alpha.isupper():
+        print("A")
+    elif alpha.islower():
+        print("a")
+    else:
+        print("error")
+
+=======
+Suggestion 3
+
+def main():
+    alpha = input()
+    if alpha.isupper():
+        print("A")
+    else:
+        print("a")
+
+=======
+Suggestion 4
+
+def problem171_a():
+    alpha = input()
+    if alpha.isupper():
+        print('A')
+    else:
+        print('a')
+
+=======
+Suggestion 5
+
+def change_alpha(alpha):
+    if alpha.isupper():
+        print('A')
+    else:
+        print('a')

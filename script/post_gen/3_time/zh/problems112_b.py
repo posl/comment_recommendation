@@ -1,62 +1,187 @@
-#问题陈述
-#当X先生离家时，他决定用他的智能手表来搜索回家的最佳路线，以参加ABC。
-#你，智能手表，已经找到了N条通往他家的路线。
-#如果X先生使用这些路线中的第i条，他将在时间t_i内到家，成本为c_i。
-#请找出花费不超过时间T的路线的最小成本。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ T ≦ 1000
-#1 ≦ c_i ≦ 1000
-#1 ≦ T_i ≦ 1000
-#成对的（c_i, t_i）是不同的。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N T
-#c_1 t_1
-#c_2 t_2
-#:
-#c_N t_N
-#
-#输出
-#打印花费不超过时间T的路线的最小成本。
-#如果没有花费不超过时间T的路线，则打印TLE。
-#
-#输入样本 1
-#3 70
-#7 60
-#1 80
-#4 50
-#
-#样本输出1
-#4
-#第一条路线让他以7的成本回家。
-#第二条路线需要的时间比T=70长。
-#第三条路线让他以4的成本回家。
-#因此，第三条路线的成本4是最小的。
-#
-#输入样本 2
-#4 3
-#1 1000
-#2 4
-#3 1000
-#4 500
-#
-#样本输出2
-#TLE
-#没有一条路线的时间不超过T=3。
-#
-#样本输入3
-#5 9
-#25 8
-#5 9
-#4 10
-#1000 1000
-#6 1
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, t = map(int, input().split())
+    c = []
+    for i in range(n):
+        c.append(list(map(int, input().split())))
+    c.sort(key=lambda x: x[1])
+    for i in range(n):
+        if c[i][1] > t:
+            c.pop(i)
+            break
+    if len(c) == 0:
+        print("TLE")
+    else:
+        print(min(c, key=lambda x: x[0])[0])
+
+=======
+Suggestion 2
+
+def get_input():
+    N, T = map(int, input().split())
+    c_t = []
+    for i in range(N):
+        c_t.append(list(map(int, input().split())))
+    return N, T, c_t
+
+=======
+Suggestion 3
+
+def main():
+    N, T = map(int, input().split())
+    routes = []
+    for i in range(N):
+        c, t = map(int, input().split())
+        routes.append((c, t))
+    routes.sort(key=lambda x: x[1])
+    # print(routes)
+    # if routes[0][1] > T:
+    #     print("TLE")
+    #     return
+    dp = [[0 for _ in range(T + 1)] for _ in range(N + 1)]
+    # print(dp)
+    for i in range(1, N + 1):
+        for j in range(1, T + 1):
+            if routes[i - 1][1] <= j:
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - routes[i - 1][1]] + routes[i - 1][0])
+            else:
+                dp[i][j] = dp[i - 1][j]
+    # print(dp)
+    if dp[N][T] == 0:
+        print("TLE")
+    else:
+        print(dp[N][T])
+
+=======
+Suggestion 4
+
+def searchBestRoute(N, T, c, t):
+    if N <= 0:
+        return 0
+    if T <= 0:
+        return 0
+    if T < min(t):
+        return 0
+    if T == min(t):
+        return min(c)
+    if N == 1:
+        return c[0]
+    if N == 2:
+        if T >= t[0] and T >= t[1]:
+            return min(c)
+        elif T >= t[0] and T < t[1]:
+            return c[0]
+        elif T >= t[1] and T < t[0]:
+            return c[1]
+        else:
+            return 0
+    if N > 2:
+        if T >= t[0]:
+            return min(c[0] + searchBestRoute(N - 1, T - t[0], c[1:], t[1:]),
+                       searchBestRoute(N - 1, T, c[1:], t[1:]))
+        else:
+            return searchBestRoute(N - 1, T, c[1:], t[1:])
+
+=======
+Suggestion 5
+
+def calc_cost(cost, time):
+    if time <= T:
+        return cost
+    else:
+        return 1001
+
+=======
+Suggestion 6
+
+def get_input():
+    N, T = input().split()
+    N = int(N)
+    T = int(T)
+    if N < 1 or N > 100 or T < 1 or T > 1000:
+        return None
+    c = []
+    t = []
+    for i in range(N):
+        c_i, t_i = input().split()
+        c_i = int(c_i)
+        t_i = int(t_i)
+        if c_i < 1 or c_i > 1000 or t_i < 1 or t_i > 1000:
+            return None
+        c.append(c_i)
+        t.append(t_i)
+    return N, T, c, t
+
+=======
+Suggestion 7
+
+def main():
+  n, t = map(int, input().split())
+  data = [[int(x) for x in input().split()] for _ in range(n)]
+  data.sort(key=lambda x: x[1])
+  ans = 1000
+  for i in range(n):
+    if data[i][1] <= t:
+      ans = min(ans, data[i][0])
+  if ans == 1000:
+    print("TLE")
+  else:
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    N, T = map(int, input().split())
+    costs = []
+    times = []
+    for _ in range(N):
+        c, t = map(int, input().split())
+        costs.append(c)
+        times.append(t)
+
+    min_cost = 1001
+    for i in range(N):
+        if times[i] <= T:
+            min_cost = min(min_cost, costs[i])
+
+    if min_cost == 1001:
+        print("TLE")
+    else:
+        print(min_cost)
+
+=======
+Suggestion 9
+
+def solve():
+    N, T = map(int, input().split())
+    ans = 1001
+    for i in range(N):
+        c, t = map(int, input().split())
+        if t <= T and c < ans:
+            ans = c
+    if ans == 1001:
+        print("TLE")
+    else:
+        print(ans)
+
+solve()
+
+=======
+Suggestion 10
+
+def solve(n, t, c, ti):
+    res = t
+    for i in range(n):
+        if ti[i] <= t:
+            res = min(res, c[i])
+    if res == t:
+        return "TLE"
+    else:
+        return res

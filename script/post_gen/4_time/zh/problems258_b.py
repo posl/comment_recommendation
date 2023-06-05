@@ -1,57 +1,203 @@
-#问题陈述
-#给你一个正整数N。
-#我们有一个有N行N列的网格，其中从上往下第i行、从左往下第j列的方格上写有一个数字A_{i,j}。
-#假设这个网格的上边和下边以及左边和右边是相连的。换句话说，以下所有情况都成立。
-#(N,i)正好在(1,i)上面，而(1,i)正好在(N,i)下面。(1≦i≦N)。
-#(i,N)正好在(i,1)的左边，而(i,1)正好在(i,N)的右边。(1≦ i≦ N)。
-#高桥将首先从以下八个方向中选择一个：上、下、左、右，以及四个对角线方向。然后，他将从自己选择的一个方格开始，在所选方向上重复移动一个方格N-1次。
-#在这个过程中，高桥访问了N个方格。将高桥访问过的方格上的数字按其访问的顺序从左到右排列，求其可能的最大整数值。
-#
-#限制条件
-#1 ≦ N ≦ 10
-#1 ≦ A_{i,j} ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_{1,1}A_{1,2}...A_{1,N}
-#A_{2,1}A_{2,2}...A_{2,N}
-#.
-#.
-#.
-#A_{N,1}A_{N,2}...A_{N,N}
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#1161
-#1119
-#7111
-#1811
-#
-#样本输出1
-#9786
-#如果高桥从顶部第2行和左侧第4列的方格开始，向下和向右走，通过排列被访问方格上的数字得到的整数将是9786。
-#不可能有大于9786的数值，所以答案是9786。
-#
-#输入样本2
-#10
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#1111111111
-#
-#样本输出2
-#1111111111
-#注意，答案可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def get_max_num(list):
+    max_num = 0
+    for i in range(len(list)):
+        max_num += list[i] * (10 ** (len(list) - i - 1))
+    return max_num
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            for di in range(-1, 2):
+                for dj in range(-1, 2):
+                    if di == 0 and dj == 0:
+                        continue
+
+                    x, y = i, j
+                    num = 0
+                    while True:
+                        num *= 10
+                        num += a[x][y]
+                        x += di
+                        y += dj
+                        if x < 0 or x >= n or y < 0 or y >= n:
+                            break
+
+                    ans = max(ans, num)
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+    ans = -1
+    for i in range(n):
+        for j in range(n):
+            for di in range(-1, 2):
+                for dj in range(-1, 2):
+                    if di == 0 and dj == 0:
+                        continue
+                    x, y = i, j
+                    num = a[x][y]
+                    for _ in range(n - 1):
+                        x += di
+                        y += dj
+                        if not (0 <= x < n and 0 <= y < n):
+                            break
+                        num = num * 10 + a[x][y]
+                    ans = max(ans, num)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            for k in range(8):
+                ni = i
+                nj = j
+                tmp = ''
+                for l in range(n):
+                    if not (0 <= ni < n and 0 <= nj < n):
+                        break
+                    tmp += a[ni][nj]
+                    ni += di[k]
+                    nj += dj[k]
+                ans = max(ans, int(tmp))
+    print(ans)
+
+di = [0, 1, 1, 1, 0, -1, -1, -1]
+dj = [1, 1, 0, -1, -1, -1, 0, 1]
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input())))
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            for k in range(8):
+                ni = i
+                nj = j
+                tmp = 0
+                for l in range(N):
+                    tmp *= 10
+                    tmp += A[ni][nj]
+                    if k & 1:
+                        ni = 2 * i - ni
+                    else:
+                        ni = 2 * i + ni
+                    if k & 2:
+                        nj = 2 * j - nj
+                    else:
+                        nj = 2 * j + nj
+                    if ni < 0 or N <= ni or nj < 0 or N <= nj:
+                        break
+                ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_max_num(n, nums):
+    max_num = 0
+    for i in range(n):
+        for j in range(n):
+            tmp = get_max_num_by_start(n, nums, i, j)
+            if tmp > max_num:
+                max_num = tmp
+    return max_num
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [list(map(int, input())) for _ in range(n)]
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            p = a[i][j]
+            for k in range(n):
+                for l in range(n):
+                    q = a[k][l]
+                    b = [[0] * n for _ in range(n)]
+                    b[i][j] = 1
+                    b[k][l] = 1
+                    for m in range(n):
+                        for o in range(n):
+                            if b[m][o] == 1:
+                                continue
+                            if (m == 0 or b[m - 1][o]) and (m == n - 1 or b[m + 1][o]) and (o == 0 or b[m][o - 1]) and (o == n - 1 or b[m][o + 1]):
+                                b[m][o] = 1
+                    t = 0
+                    for m in range(n):
+                        for o in range(n):
+                            if b[m][o] == 1:
+                                t += a[m][o]
+                    ans = max(ans, t - p - q)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input())))
+    ans = -1
+    for i in range(n):
+        for j in range(n):
+            for k in range(8):
+                d = 10 ** 9
+                ni = i
+                nj = j
+                for l in range(n):
+                    ni += di[k]
+                    nj += dj[k]
+                    if ni == -1:
+                        ni = n - 1
+                    elif ni == n:
+                        ni = 0
+                    if nj == -1:
+                        nj = n - 1
+                    elif nj == n:
+                        nj = 0
+                    d *= 10
+                    d += a[ni][nj]
+                ans = max(ans, d)
+    print(ans)
+
+di = [0, 1, 1, 1, 0, -1, -1, -1]
+dj = [1, 1, 0, -1, -1, -1, 0, 1]

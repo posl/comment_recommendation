@@ -1,36 +1,123 @@
-#问题陈述
-#La Confiserie d'ABC出售的蛋糕每个4美元，甜甜圈每个7美元。
-#请确定是否有办法以刚好N美元的价格买到其中的一些东西。你可以买两个或更多的甜甜圈和两个或更多的蛋糕，你也可以选择买零个甜甜圈或零个蛋糕。
-#
-#限制条件
-#N是1到100之间的整数，包括在内。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果有一种方法可以用N美元买到一些蛋糕和一些甜甜圈，则打印Yes；否则，打印No。
-#
-#输入样本1
-#11
-#
-#输出示例 1
-#Yes
-#如果你买了一个蛋糕和一个甜甜圈，总额将是4+7=11美元。
-#
-#样本输入2
-#40
-#
-#样本输出2
-#Yes
-#如果你买了10个蛋糕，总额将是4×10=40美元。
-#
-#样本输入3
-#3
-#
-#样本输出 3
-#No
-#蛋糕（4元）和甜甜圈（7元）的价格都高于3元，所以不存在这种方式。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0:
+        print("Yes")
+    elif N % 4 == 1 or N % 7 == 1 or N % 11 == 1:
+        print("Yes")
+    elif N % 4 == 2 or N % 7 == 2 or N % 11 == 2:
+        print("Yes")
+    elif N % 4 == 3 or N % 7 == 3 or N % 11 == 3:
+        print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    for i in range(0, 26):
+        for j in range(0, 16):
+            if i*4 + j*7 == n:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    for i in range(0, n // 4 + 1):
+        for j in range(0, n // 7 + 1):
+            if i * 4 + j * 7 == n:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    for i in range(0, n//4+1):
+        for j in range(0, n//7+1):
+            if (i*4 + j*7) == n:
+                print("Yes")
+                exit()
+    print("No")
+
+=======
+Suggestion 5
+
+def check(n):
+    for i in range(0, n//4+1):
+        for j in range(0, n//7+1):
+            if i*4 + j*7 == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N%4 == 0 or N%7 == 0 or N%11 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0 or N % 15 == 0 or N % 19 == 0 or N % 20 == 0 or N % 23 == 0 or N % 27 == 0 or N % 31 == 0 or N % 35 == 0 or N % 39 == 0 or N % 43 == 0 or N % 47 == 0 or N % 51 == 0 or N % 55 == 0 or N % 59 == 0 or N % 63 == 0 or N % 67 == 0 or N % 71 == 0 or N % 75 == 0 or N % 79 == 0 or N % 83 == 0 or N % 87 == 0 or N % 91 == 0 or N % 95 == 0 or N % 99 == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0:
+        print("Yes")
+        return
+    for i in range(1, N // 4 + 1):
+        for j in range(1, N // 7 + 1):
+            if 4 * i + 7 * j == N:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    for i in range(0, n+1, 4):
+        if (n-i)%7 == 0:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    for i in range(0, n//4 + 1):
+        for j in range(0, n//7 + 1):
+            if 4*i + 7*j == n:
+                print("Yes")
+                return
+    print("No")

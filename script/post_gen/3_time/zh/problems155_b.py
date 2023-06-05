@@ -1,41 +1,130 @@
-#问题陈述
-#你是AtCoder王国的一名移民官员。一个移民携带的文件上写有一些整数，你需要检查它们是否符合某些标准。
-#根据规定，当且仅当满足以下条件时，该移民应被允许进入王国：
-#所有写在文件上的偶数都能被3或5整除。
-#如果按照规定应该允许该移民入境，则输出APPROVED；否则，打印DENIED。
-#
-#注意事项
-#语句中的条件可以改写为 "如果x是写在文件上的偶数，x能被3或5整除"。
-#这里的 "如果 "和 "或 "是逻辑术语。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果根据规定，该移民应被允许进入，打印APPROVED；否则，打印DENIED。
-#
-#输入样本1
-#5
-#6 7 9 10 31
-#
-#样本输出1
-#APPROVED
-#文件上写的偶数是6和10。
-#所有这些数字都能被3或5整除，所以移民应该被允许进入。
-#
-#输入样本2
-#3
-#28 27 24
-#
-#样本输出2
-#DENIED
-#28违反了条件，所以不应该允许该移民入境。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check(n, l):
+    for i in range(n):
+        if l[i] % 2 == 0:
+            if l[i] % 3 != 0 and l[i] % 5 != 0:
+                return False
+    return True
+
+n = int(input())
+l = list(map(int, input().split()))
+print("APPROVED" if check(n, l) else "DENIED")
+
+=======
+Suggestion 2
+
+def isEven(num):
+    if num%2 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                print('DENIED')
+                return
+    print('APPROVED')
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in a:
+        if (i % 2 == 0) and (i % 3 != 0) and (i % 5 != 0):
+            print('DENIED')
+            return
+    print('APPROVED')
+
+=======
+Suggestion 5
+
+def check_condition(n, a):
+  for i in range(n):
+    if a[i] % 2 == 0 and (a[i] % 3 != 0 and a[i] % 5 != 0):
+      return False
+  return True
+
+=======
+Suggestion 6
+
+def judge(s):
+    if s % 3 == 0 or s % 5 == 0:
+        return True
+    else:
+        return False
+
+n = int(input())
+l = list(map(int, input().split()))
+
+flag = True
+for i in l:
+    if i % 2 == 0:
+        if judge(i) == False:
+            flag = False
+            break
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print("APPROVED" if all(x % 2 == 1 or x % 3 == 0 or x % 5 == 0 for x in a) else "DENIED")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    flag = True
+    for i in range(n):
+        if a[i] % 2 == 0:
+            if a[i] % 3 != 0 and a[i] % 5 != 0:
+                flag = False
+                break
+    if flag:
+        print('APPROVED')
+    else:
+        print('DENIED')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    r = 'APPROVED'
+    for i in a:
+        if i % 2 == 0:
+            if i % 3 != 0 and i % 5 != 0:
+                r = 'DENIED'
+                break
+    print(r)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    nums = list(map(int,input().split()))
+    for num in nums:
+        if num % 2 == 0:
+            if num % 3 != 0 and num % 5 != 0:
+                print("DENIED")
+                return
+    print("APPROVED")

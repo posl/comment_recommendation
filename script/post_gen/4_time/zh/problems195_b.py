@@ -1,46 +1,157 @@
-#问题陈述
-#我们有很多橙子。已知每个橙子的重量在A到B克之间，包括在内。(一个橙子可以有非整数的重量）。
-#我们从这些桔子中选择了一些，它们的总重量正好是W千克。
-#请找出所选橙子的最小和最大可能数量。如果没有一组橙子的总重量正好是W千克，请报告这一事实。
-#
-#限制条件
-#1 ≦ a ≦ b ≦ 1000
-#1 ≦ W ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B W
-#
-#输出
-#打印所选橙子的最小和最大可能数量，按这个顺序，中间有空格。如果没有可以达到指定总重量的橙子数量，则打印UNSATISFIABLE。
-#
-#输入样本 1
-#100 200 2
-#
-#样本输出1
-#10 20
-#这里，一个范围的重量在100到200克之间（包括）。
-#如果我们选择10个200克的橙子，它们的总重量正好是2公斤。
-#如果我们选择20个100克的橙子，它们的总重量将正好是2公斤。
-#如果少于10个或多于20个橙子，总重量永远不会正好是2公斤，所以选择的橙子的最小和最大数量分别为10和20。
-#
-#输入样本 2
-#120 150 2
-#
-#样本输出2
-#14 16
-#这里，一个范围的重量在120和150克之间（包括）。
-#例如，如果我们选择10个140克的橙子和4个150克的橙子，它们的总重量将正好是2公斤。
-#例如，如果我们选择8个120克的橙子和8个130克的橙子，它们的总重量将正好是2公斤。
-#如果少于14个或多于16个橙子，总重量永远不会正好是2公斤，所以选择橙子的最小和最大可能数量分别为14和16。
-#
-#输入样本 3
-#300 333 1
-#
-#样本输出3
-#UNSATISFIABLE
-#这里，一个范围的重量在300到333克之间（包括）。
-#没有一组这样的橙子的总重量可以正好是1公斤。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = (w//b) if w%b==0 else (w//b)+1
+    max = w//a
+    if min>max:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 2
+
+def get_input():
+    input_list = input().split()
+    return input_list
+
+=======
+Suggestion 3
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 1000000000
+    max = 0
+    for i in range(1,1000001):
+        if a*i <= w <= b*i:
+            if i < min:
+                min = i
+            if i > max:
+                max = i
+    if min == 1000000000:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 4
+
+def main():
+    a, b, w = map(int, input().split())
+    w *= 1000
+    min = w // b
+    if w % b != 0:
+        min += 1
+    max = w // a
+    if w % a != 0:
+        max += 1
+    if min > max:
+        print("UNSATISFIABLE")
+    else:
+        print(min, max)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = w // b
+    max = w // a
+    if min > max:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min_num = 1000000
+    max_num = 0
+    for i in range(a,b+1):
+        if i * w % 1000 == 0:
+            min_num = min(min_num,i * w // 1000)
+            max_num = max(max_num,i * w // 1000)
+    if min_num == 1000000:
+        print("UNSATISFIABLE")
+    else:
+        print(min_num,max_num)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,w = map(int,input().split())
+    ans = []
+    for i in range(1,1001):
+        if a*i <= w*1000 <= b*i:
+            ans.append(i)
+    if len(ans) == 0:
+        print("UNSATISFIABLE")
+    else:
+        print(min(ans),max(ans))
+
+=======
+Suggestion 8
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 0
+    max = 0
+    for i in range(1,1000001):
+        if a*i <= w and w <= b*i:
+            if min == 0:
+                min = i
+            max = i
+    if min == 0:
+        print('UNSATISFIABLE')
+    else:
+        print(min,max)
+
+=======
+Suggestion 9
+
+def count_orange(a,b,w):
+    min = 0
+    max = 0
+    if w%a == 0:
+        min = w//a
+    else:
+        min = w//a + 1
+    if w%b == 0:
+        max = w//b
+    else:
+        max = w//b
+    if max < min:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,w = map(int,input().split())
+    w *= 1000
+    min = 1000000
+    max = 0
+    for i in range(a,b+1):
+        if i <= w and w <= i*b:
+            if i < min:
+                min = i
+            if i > max:
+                max = i
+    if min == 1000000:
+        print("UNSATISFIABLE")
+    else:
+        print(min,max)

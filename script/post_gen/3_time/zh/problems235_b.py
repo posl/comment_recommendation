@@ -1,46 +1,128 @@
-#问题说明
-#有N个平台排成一排。从左边开始第i个平台的高度是H_i。
-#高桥最初站在最左边的平台上。
-#因为他喜欢高度，所以只要有可能，他就会重复下面的动作。
-#如果他所站的平台不是最右边的平台，而右边的下一个平台的高度大于当前平台的高度，则踏上下一个平台。
-#找到他将站在的最后一个平台的高度。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#H_1 ...H_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#5
-#1 5 10 4 2
-#
-#样本输出1
-#10
-#高桥最初站在最左边的平台上，平台的高度是1，右边的下一个平台的高度是5，比现在的平台高，所以他踏上了这个平台。
-#他现在站在左边第2个平台上，这个平台的高度是5，右边下一个平台的高度是10，比现在的平台高，所以他踏上了这个平台。
-#他现在站在左边第3个平台上，其高度为10。右边的下一个平台的高度是4，比现在的平台低，所以他停止移动。
-#因此，高桥将站在的最后一个平台的高度是10。
-#
-#输入样本 2
-#3
-#100 1000 100000
-#
-#样本输出2
-#100000
-#
-#样品输入3
-#4
-#27 1828 1828 9242
-#
-#样本输出3
-#1828
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+
+    max = 0
+    for i in range(n):
+        if h[i] >= max:
+            max = h[i]
+    print(max)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    ans = 0
+    tmp = 0
+    for i in range(N-1):
+        if H[i] < H[i+1]:
+            tmp += 1
+        else:
+            ans = max(ans, tmp)
+            tmp = 0
+    print(max(ans, tmp))
+
+=======
+Suggestion 3
+
+def get_max_height(N, H):
+    max_height = 0
+    for i in range(N):
+        if H[i] > max_height:
+            max_height = H[i]
+    return max_height
+
+=======
+Suggestion 4
+
+def get_input():
+    n = int(input())
+    h = list(map(int, input().split()))
+    return n, h
+
+=======
+Suggestion 5
+
+def solution(h):
+    h.append(0)
+    ans = 0
+    stack = []
+    for i in range(len(h)):
+        if len(stack) == 0:
+            stack.append(i)
+        else:
+            while len(stack) > 0 and h[stack[-1]] > h[i]:
+                tmp = stack.pop()
+                if len(stack) == 0:
+                    ans = max(ans, h[tmp] * i)
+                else:
+                    ans = max(ans, h[tmp] * (i - stack[-1] - 1))
+            stack.append(i)
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    H = list(map(int, input().split()))
+    max_h = H[0]
+    for i in range(1, N):
+        if H[i] >= max_h:
+            max_h = H[i]
+    print(max_h)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    max_h = h[0]
+    for i in range(1, n):
+        if h[i] > max_h:
+            max_h = h[i]
+    print(max_h)
+
+=======
+Suggestion 8
+
+def find_last_platform_height(n, heights):
+    last_platform_height = 0
+    for i in range(n-1):
+        if heights[i] < heights[i+1]:
+            last_platform_height = heights[i+1]
+    return last_platform_height
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    max_h = 0
+    for i in range(n):
+        if h[i] >= max_h:
+            max_h = h[i]
+    print(max_h)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+    max_height = h[0]
+    for i in range(1, n):
+        if h[i] > max_height:
+            max_height = h[i]
+    print(max_height)

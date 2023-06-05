@@ -1,70 +1,136 @@
-#问题陈述
-#你决定写一本介绍好餐馆的书。
-#你想介绍的餐馆有N家：餐馆1，餐馆2，......，餐馆N。餐馆i位于城市S_i，你对该餐馆的评估分数在100分制下为P_i。
-#没有两家餐厅有相同的分数。
-#你想按以下顺序介绍这些餐馆：
-#餐馆按其城市名称的词法顺序排列。
-#如果在同一城市有多家餐馆，则按分数的降序排列。
-#按照书中介绍餐厅的顺序，打印出餐厅的识别号。
-#
-#限制条件
-#1 ≤ N ≤ 100
-#S是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#0 ≤ P_i ≤ 100
-#P_i是一个整数。
-#P_i ≠ P_j (1 ≤ i < j ≤ N)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_1 P_1
-#:
-#S_N P_N
-#
-#输出
-#打印N行。第i行（1≤i≤N）应包含书中第i个介绍的餐厅的识别号。
-#
-#输入示例 1
-#6
-#khabarovsk 20
-#moscow 10
-#kazan 50
-#kazan 35
-#moscow 60
-#khabarovsk 40
-#
-#样本输出1
-#3
-#4
-#6
-#1
-#5
-#2
-#这三个城市的名字的词法顺序是kazan < khabarovsk < moscow。对于这些城市中的每一个，它的餐馆都是按照分数的降序来介绍的。因此，这些餐厅是按照3,4,6,1,5,2的顺序介绍的。
-#
-#样本输入2
-#10
-#yakutsk 10
-#yakutsk 20
-#yakutsk 30
-#yakutsk 40
-#yakutsk 50
-#yakutsk 60
-#yakutsk 70
-#yakutsk 80
-#yakutsk 90
-#yakutsk 100
-#
-#样本输出2
-#10
-#9
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N = int(input())
+    restaurants = []
+    for i in range(N):
+        restaurant = input().split()
+        restaurants.append(restaurant)
+    return N, restaurants
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    restaurant = []
+    for i in range(n):
+        s, p = input().split()
+        restaurant.append([s, int(p), i+1])
+    restaurant.sort(key=lambda x: (x[0], -x[1]))
+    for r in restaurant:
+        print(r[2])
+
+=======
+Suggestion 3
+
+def getkey(item):
+    return item[1]
+
+N = int(input())
+a = []
+
+for i in range(N):
+    s, p = input().split()
+    a.append([i+1, s, int(p)])
+
+a.sort(key=getkey, reverse=True)
+a.sort(key=lambda x:x[1])
+
+for i in range(N):
+    print(a[i][0])
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    data = []
+    for i in range(n):
+        s, p = input().split()
+        data.append((s, int(p)))
+    data.sort(key=lambda x: (x[0], -x[1]))
+    for i in range(n):
+        print(data[i][1])
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        restaurant = input().split()
+        restaurant[1] = int(restaurant[1])
+        restaurants.append(restaurant)
+    return restaurants
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        s, p = input().split()
+        restaurants.append((s, int(p), i+1))
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurant[2])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        restaurant = input().split()
+        restaurants.append((restaurant[0],int(restaurant[1]),i+1))
+    restaurants.sort(key=lambda x:(x[0],-x[1]))
+    for i in range(n):
+        print(restaurants[i][2])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        restaurant = input().split()
+        restaurant[1] = int(restaurant[1])
+        restaurant.append(i + 1)
+        restaurants.append(restaurant)
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurant[2])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    restaurants = []
+    for i in range(n):
+        s, p = input().split()
+        restaurants.append((s, int(p), i))
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurant[2] + 1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    restaurants = []
+    for i in range(N):
+        S, P = input().split()
+        restaurants.append((S, int(P)))
+    restaurants.sort(key=lambda x: (x[0], -x[1]))
+    for restaurant in restaurants:
+        print(restaurants.index(restaurant) + 1)

@@ -1,43 +1,122 @@
-#问题陈述
-#罗杰家的屋顶下突然出现了1000000000000001只狗，他决定把这些狗都留下来。这些狗被编号为1到1000000000000001，但他给它们起了新的名字，如下：
-#编号为1,2,...,26的狗分别被命名为a,b,...,z；
-#编号为27,28,29,...,701,702的狗分别被命名为aa, ab, ac, ..., zy, zz；
-#编号为703,704,705,...,18277,18278的狗分别被命名为aa, aab, aac, ..., zzy, zzz；
-#编号为18279,18280,18281,...,475253,475254的狗分别被命名为aaa,aaab,aaac,...,zzzy,zzz；
-#编号为475255,475256,...的狗分别被命名为aaaa, aaaab, ...；
-#以此类推。
-#总而言之，编号为1，2，......的狗分别被赋予以下名字：
-#a, b, ..., z, aa, ab, ..., az, ba, bb, ..., bz, ..., za, zb, ..., zz, aaa, aab, ..., aaz, aba, abb, ..., abz, ..., Zzz, aaaa, ...
-#现在，罗杰问你
-#"编号为N的狗的名字是什么？"
-#
-#约束条件
-#N是一个整数。
-# 1 ≦ N ≦ 1000000000000001
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#将罗杰问题的答案打印成一个由小写英文字母组成的字符串。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#b
-#
-#样本输入2
-#27
-#
-#样本输出2
-#aa
-#
-#样本输入3
-#123456789
-#
-#样本输出3
-#jjddja
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_name(n):
+    name = ""
+    while n > 0:
+        n -= 1
+        name = chr(ord('a') + n % 26) + name
+        n //= 26
+    return name
+
+=======
+Suggestion 2
+
+def dog_name(n):
+    name = ''
+    while n > 0:
+        n -= 1
+        name += chr(n % 26 + ord('a'))
+        n //= 26
+    return name[::-1]
+
+=======
+Suggestion 3
+
+def getChar(n):
+    if n == 0:
+        return 'z'
+    else:
+        return chr(n + 96)
+
+=======
+Suggestion 4
+
+def get_name(num):
+    if num <= 26:
+        return chr(num + ord('a') - 1)
+    else:
+        return get_name((num - 1) // 26) + get_name((num - 1) % 26 + 1)
+
+=======
+Suggestion 5
+
+def num2str(n):
+    if n <= 26:
+        return chr(n + 96)
+    else:
+        return num2str((n - 1) // 26) + chr((n - 1) % 26 + 97)
+
+n = int(input())
+print(num2str(n))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = ""
+    while n > 0:
+        n -= 1
+        ans += chr(n % 26 + ord("a"))
+        n //= 26
+    print(ans[::-1])
+
+=======
+Suggestion 7
+
+def get_letter(num):
+    letter = ''
+    while num > 0:
+        num -= 1
+        letter = chr(97 + num % 26) + letter
+        num = num // 26
+    return letter
+
+num = int(input())
+print(get_letter(num))
+
+=======
+Suggestion 8
+
+def get_str(n):
+    if n <= 26:
+        return chr(n+96)
+    else:
+        return get_str((n-1)//26) + chr((n-1)%26+97)
+
+=======
+Suggestion 9
+
+def convert(num):
+    if num == 0:
+        return ""
+    elif num <= 26:
+        return chr(96 + num)
+    else:
+        return convert((num - 1) // 26) + convert((num - 1) % 26 + 1)
+
+=======
+Suggestion 10
+
+def convert(num):
+    num -= 1
+    alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
+                "n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    if num < 26:
+        return alphabet[num]
+    elif num < 26+26**2:
+        return alphabet[num//26-1]+alphabet[num%26]
+    elif num < 26+26**2+26**3:
+        return alphabet[num//26//26-1]+alphabet[num//26%26-1]+alphabet[num%26]
+    elif num < 26+26**2+26**3+26**4:
+        return alphabet[num//26//26//26-1]+alphabet[num//26//26%26-1]+alphabet[num//26%26-1]+alphabet[num%26]
+    elif num < 26+26**2+26**3+26**4+26**5:
+        return alphabet[num//26//26//26//26-1]+alphabet[num//26//26//26%26-1]+alphabet[num//26//26%26-1]+alphabet[num//26%26-1]+alphabet[num%26]
+    elif num < 26+26**2+26**3+26**4+26**5+26**6:
+        return alphabet[num//26//26//26//26//26-1]+alphabet[num//26//26//26//26%26-1]+alphabet[num//26//26//26%26-1]+alphabet[num//26//26%26-1]+alphabet[num//26%26-1]+alphabet[num%26]
+    elif num < 26+26**2+26**3+26**4+26**5+26**6+26**7:
+        return alphabet[num//26//26//26//26//26//26-1]+alphabet[num//26//26//26//26//26%26-1]+alphabet[num//26//26//26//26%26-1]+alphabet[num//26//26//26%26-1]+alphabet[num//26//26%26-1]+alphabet[num//26%26-1]+alphabet[num%26]
+    elif num < 26

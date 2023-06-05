@@ -1,58 +1,173 @@
-#问题陈述
-#我们有一个热水器，每分钟提供W升的热水。
-#有N个人。第i个人计划从时间S_i到T_i（不包括时间T_i）每分钟使用热水器烧的P_i升热水。由于热水很快变冷，所以不能储存。
-#是否可以按照人们的计划向他们供应热水？
-#
-#限制条件
-#1≦ N ≦ 2× 10^5
-#0≦ S_i < T_i ≦ 2× 10^5
-#1≦ W, P_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N W
-#S_1 T_1 P_1
-#.
-#.
-#.
-#S_N T_N P_N
-#
-#输出
-#如果可以按照人们的计划向他们供应热水，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 10
-#1 3 5
-#2 4 4
-#3 10 6
-#2 4 1
-#
-#样本输出1
-#No
-#在时间3和4之间，第2、3和4个人计划每分钟使用4、6和1升热水，总共每分钟11升。
-#热水器每分钟只能提供10升的热水，这是不足够的。
-#
-#样本输入2
-#4 10
-#1 3 5
-#2 4 4
-#3 10 6
-#2 3 1
-#
-#样本输出2
-#Yes
-#
-#样本输入3
-#6 1000000000
-#0 200000 999999999
-#2 20 1
-#20 200 1
-#200 2000 1
-#2000 20000 1
-#20000 200000 1
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N, W = map(int, input().split())
+    # 从1开始计算
+    # 建立一个数组，记录��
+
+=======
+Suggestion 2
+
+def main():
+    n, w = map(int, input().split())
+    a = [0] * 200010
+    for i in range(n):
+        s, t, p = map(int, input().split())
+        a[s] += p
+        a[t] -= p
+    for i in range(1, 200010):
+        a[i] += a[i - 1]
+        if a[i] > w:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n, w = map(int, input().split())
+    a = []
+    for i in range(n):
+        s, t, p = map(int, input().split())
+        a.append((s, p))
+        a.append((t, -p))
+    a.sort()
+    s = 0
+    for _, p in a:
+        s += p
+        if s > w:
+            print("No")
+            break
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def isEnoughWater(N, W, S, T, P):
+    #按时间顺序，每次加水，判断是否满足
+    #S, T, P = sorted(zip(S, T, P), key=lambda x:x[0])
+    #print(S, T, P)
+    #print(zip(S, T, P))
+    #print(list(zip(S, T, P)))
+    for i in range(N):
+        water = 0
+        for j in range(i + 1):
+            if S[j] <= i and i < T[j]:
+                water += P[j]
+        if water > W:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def main():
+    n, w = map(int, input().split())
+    a = [0] * 200001
+    for i in range(n):
+        s, t, p = map(int, input().split())
+        a[s] += p
+        a[t] -= p
+    for i in range(1, 200001):
+        a[i] += a[i - 1]
+        if a[i] > w:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    n,w = map(int, input().split())
+    a = []
+    for i in range(n):
+        s,t,p = map(int, input().split())
+        a.append((s,p))
+        a.append((t,-p))
+    a.sort()
+    for i in range(1,2*n):
+        a[i] = (a[i-1][1]+a[i][1],a[i][0])
+    for i in range(2*n):
+        if a[i][0] > w:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    n, w = map(int, input().split())
+    t = [0] * 200001
+    for _ in range(n):
+        s, e, p = map(int, input().split())
+        t[s] += p
+        t[e] -= p
+    for i in range(1, 200001):
+        t[i] += t[i-1]
+        if t[i] > w:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    n, w = map(int, input().split())
+    a = [0] * 200001
+    for _ in range(n):
+        s, t, p = map(int, input().split())
+        a[s] += p
+        a[t] -= p
+    for i in range(1, 200001):
+        a[i] += a[i - 1]
+    if max(a) <= w:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 9
+
+def main():
+    n, w = map(int, input().split())
+    events = []
+    for _ in range(n):
+        s, t, p = map(int, input().split())
+        events.append((s, p))
+        events.append((t, -p))
+    events.sort()
+
+    for _, p in events:
+        w -= p
+        if w < 0:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def solve():
+    N, W = map(int, input().split())
+    # 从0开始，所以要+1
+    imos = [0] * (200001)
+    for i in range(N):
+        S, T, P = map(int, input().split())
+        imos[S] += P
+        imos[T] -= P
+    for i in range(200001):
+        if i > 0:
+            imos[i] += imos[i - 1]
+        if imos[i] > W:
+            print("No")
+            return
+    print("Yes")
+    return

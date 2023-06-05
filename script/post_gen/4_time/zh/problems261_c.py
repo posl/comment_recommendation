@@ -1,66 +1,155 @@
-#问题陈述
-#对于两个字符串A和B，让A+B表示A和B按这个顺序的串联。
-#给你N个字符串S_1,...,S_N。按照i=1, ..., N的顺序，对它们进行修改并打印如下：
-#如果S_1,...,S_{i-1}中没有一个等于S_i，打印S_i；
-#如果S_1,...,S_{i-1}中的X（X>0）等于S_i，则打印S_i+ ( +X+ )，将X作为一个字符串处理。
-#
-#约束条件
-#1 ≦ N ≦ 2× 10^5
-#S_i是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#按照问题陈述中的规定打印N行。
-#
-#输入样本1
-#5
-#newfile
-#newfile
-#newfolder
-#newfile
-#newfolder
-#
-#输出样本1
-#newfile
-#newfile(1)
-#newfolder
-#newfile(2)
-#newfolder(1)
-#
-#输入样本2
-#11
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#a
-#
-#样本输出2
-#a
-#a(1)
-#a(2)
-#a(3)
-#a(4)
-#a(5)
-#a(6)
-#a(7)
-#a(8)
-#a(9)
-#a(10)
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    return N,S
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s = input()
+        if s in d:
+            d[s] += 1
+            print(s + "(" + str(d[s]) + ")")
+        else:
+            d[s] = 0
+            print(s)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        s = input()
+        if s in d:
+            d[s] += 1
+            print(s + '(' + str(d[s]) + ')')
+        else:
+            d[s] = 0
+            print(s)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [input() for _ in range(n)]
+    count = {}
+    for i in range(n):
+        if a[i] not in count:
+            count[a[i]] = 0
+            print(a[i])
+        else:
+            count[a[i]] += 1
+            print(a[i] + '(' + str(count[a[i]]) + ')')
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+
+    for i in range(N):
+        if i == 0:
+            print(S[i])
+        else:
+            if S[i] in S[:i]:
+                cnt = S[:i].count(S[i])
+                print(S[i] + "(" + str(cnt) + ")")
+            else:
+                print(S[i])
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        if S[i] not in S[:i]:
+            print(S[i])
+        else:
+            cnt = S[:i].count(S[i])
+            print(S[i]+'('+str(cnt)+')')
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s[i] not in s[:i]:
+            print(s[i])
+        else:
+            x = s[:i].count(s[i])
+            print(s[i]+"("+str(x)+")")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s2 = []
+    for i in range(n):
+        if s[i] in s2:
+            cnt = 1
+            for j in range(len(s2)):
+                if s[i] == s2[j]:
+                    cnt += 1
+            s2.append(s[i] + "(" + str(cnt) + ")")
+        else:
+            s2.append(s[i])
+    for i in range(len(s2)):
+        print(s2[i])
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        if S[i] not in S[:i]:
+            print(S[i])
+        else:
+            j = S[:i].count(S[i])
+            print(S[i] + "(" + str(j+1) + ")")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        if s.count(s[i]) == 1:
+            print(s[i])
+        else:
+            print(s[i] + "(" + str(s[:i].count(s[i])) + ")")

@@ -1,48 +1,189 @@
-#问题陈述
-#如果满足以下所有条件，我们称一个由大写和小写英文字母组成的字符串为精彩字符串：
-#该字符串包含一个大写的英文字母。
-#该字符串包含一个小写的英文字母。
-#字符串中的所有字符都是成对独立的。
-#例如，AtCoder和Aa是美妙的字符串，而atcoder和Perfect则不是。
-#给定一个字符串S，确定S是否是一个精彩字符串。
-#
-#约束条件
-#1 ≦ |S| ≦ 100
-#S是一个由大写和小写英文字母组成的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#如果S是一个精彩字符串，打印Yes；否则，打印No。
-#
-#输入样本1
-#AtCoder
-#
-#样本输出1
-#Yes
-#AtCoder是一个精彩字符串，因为它包含一个大写的英文字母，一个小写的英文字母，并且字符串中的所有字符都是成对的。
-#
-#输入样本2
-#Aa
-#
-#样本输出2
-#Yes
-#请注意，A和a是不同的字符。  这个字符串是一个精彩字符串。
-#
-#输入样本3
-#atcoder
-#
-#样本输出3
-#No
-#这不是一个精彩字符串，因为它不包含一个大写的英文字母。
-#
-#输入样本4
-#Perfect
-#
-#样本输出4
-#No
-#这不是一个精彩字符串，因为第2和第5个字符是相同的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.islower() or s.isupper():
+        print("No")
+        return
+    if s[0].islower() or s[-1].isupper():
+        print("No")
+        return
+    for i in range(1, len(s) - 1):
+        if s[i].isupper():
+            if s[i + 1].isupper() or s[i - 1].isupper():
+                print("No")
+                return
+        else:
+            if s[i + 1].islower() or s[i - 1].islower():
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.islower():
+        print("No")
+        exit()
+    if s.isupper():
+        print("No")
+        exit()
+    if len(s) % 2 != 0:
+        print("No")
+        exit()
+    if s[0] == s[1]:
+        print("No")
+        exit()
+    if s[-1] == s[-2]:
+        print("No")
+        exit()
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s.islower():
+        print("No")
+    elif s.isupper():
+        print("No")
+    elif len(s) == 1:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s.islower() or s.isupper() or len(s) < 2:
+        print("No")
+        return
+    if len(s) % 2 != 0:
+        print("No")
+        return
+    if s[0].islower():
+        print("No")
+        return
+    if s[-1].isupper():
+        print("No")
+        return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def check(s):
+    if len(s) < 3:
+        return False
+    if s.islower() or s.isupper():
+        return False
+    if len(s) % 2 != 0:
+        return False
+    for i in range(0, len(s), 2):
+        if s[i] != s[i+1]:
+            return False
+    return True
+
+s = input()
+print("Yes" if check(s) else "No")
+
+=======
+Suggestion 6
+
+def isWonderfulString(s):
+    if len(s) < 2:
+        return False
+    if len(s) == 2:
+        if s[0].islower() and s[1].isupper():
+            return True
+        else:
+            return False
+    else:
+        if s[0].islower() and s[1].isupper():
+            for i in range(2, len(s)):
+                if s[i].islower() and s[i-2].islower():
+                    return False
+                if s[i].isupper() and s[i-2].isupper():
+                    return False
+            return True
+        else:
+            return False
+
+s = input()
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    if S.islower() == False and S.isupper() == False and S.isalnum() == True:
+        if len(S) % 2 == 0:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def check(s):
+    if len(s) < 2:
+        return False
+    if s[0].isupper() and s[1].islower():
+        return True
+    if s[0].islower() and s[1].isupper():
+        return True
+    return False
+
+s = input()
+
+=======
+Suggestion 9
+
+def is_wonderful_string(s):
+    if len(s) < 2:
+        return False
+    if len(s) == 2:
+        if s[0].isupper() and s[1].islower():
+            return True
+        else:
+            return False
+    if len(s) > 2:
+        if s[0].isupper() and s[1].islower():
+            for i in range(2, len(s)):
+                if s[i].isupper() and s[i-1].islower():
+                    return True
+                else:
+                    continue
+        else:
+            return False
+    return False
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if s.islower():
+        print("No")
+        return
+    if s.isupper():
+        print("No")
+        return
+    if s[0].islower():
+        print("No")
+        return
+    if s[-1].isupper():
+        print("No")
+        return
+    print("Yes")
+main()

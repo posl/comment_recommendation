@@ -1,52 +1,248 @@
-#问题陈述
-#一家商店出售N种午餐盒，每种都有。
-#对于每个i=1，2，...，N，第i种午餐盒包含A_i章鱼烧（章鱼丸）和B_i大饼（鱼形蛋糕）。
-#高桥想吃X个或更多的章鱼烧和Y个或更多的鱼形蛋糕。
-#确定是否有可能购买一定数量的午餐盒来获得至少X个章鱼烧和至少Y个鱼形蛋糕。如果有可能，请找出高桥必须购买的最小数量的午餐盒来获得它们。
-#请注意，每种午餐盒的库存只有一个，你不能买两个或更多的同种午餐盒。
-#
-#限制条件
-#1 ≦ N ≦ 300
-#1 ≦ X, Y ≦ 300
-#1 ≦ A_i, B_i ≦ 300
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#X Y
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥不能得到至少X个章鱼烧和至少Y个鱼形蛋糕，打印-1；否则，打印他必须购买的最小便当数量以得到它们。
-#
-#输入样本 1
-#3
-#5 6
-#2 1
-#3 4
-#2 3
-#
-#样本输出 1
-#2
-#他想吃5个或更多的章鱼烧和6个或更多的鱼形蛋糕。
-#购买第二个和第三个午餐盒将使他得到3+2=5个章鱼烧和4+3=7个鱼形蛋糕。
-#
-#输入样本 2
-#3
-#8 8
-#3 4
-#2 3
-#2 1
-#
-#输出样本2
-#-1
-#即使他要买每一个午餐盒，也不可能至少买到8个章鱼烧和至少8个鱼形蛋糕。
-#因此，打印-1。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    x, y = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    return n, x, y, ab
+
+=======
+Suggestion 2
+
+def main():
+    print('start')
+    n = 3
+    x = 8
+    y = 8
+    a = [3, 2, 2]
+    b = [4, 3, 1]
+    print(n)
+    print(x, y)
+    print(a, b)
+
+    ans = -1
+    for i in range(n):
+        for j in range(n):
+            if a[i] + b[j] >= x + y:
+                if ans == -1:
+                    ans = i + j
+                else:
+                    ans = min(ans, i + j)
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n=int(input())
+    x,y=map(int,input().split())
+    a=[]
+    b=[]
+    for i in range(n):
+        ai,bi=map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+    dp=[[[False for i in range(301)]for j in range(301)]for k in range(n+1)]
+    dp[0][0][0]=True
+    for i in range(n):
+        for j in range(n+1):
+            for k in range(n+1):
+                if dp[i][j][k]:
+                    dp[i+1][j][k]=True
+                    if j+a[i]<=n:
+                        dp[i+1][j+a[i]][k]=True
+                    if k+b[i]<=n:
+                        dp[i+1][j][k+b[i]]=True
+                    if j+a[i]<=n and k+b[i]<=n:
+                        dp[i+1][j+a[i]][k+b[i]]=True
+    ans=-1
+    for i in range(n+1):
+        for j in range(n+1):
+            if dp[n][i][j] and i>=x and j>=y:
+                ans=i+j
+                break
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    #print(n, x, y)
+    #print(a)
+    #print(b)
+
+    #dp[i][j][k]表示前i种便当中选j个章鱼烧和k个鱼形蛋糕的最小便当数量
+    dp = [[[float('inf') for _ in range(y+1)] for _ in range(x+1)] for _ in range(n+1)]
+    dp[0][0][0] = 0
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                if j >= a[i] and k >= b[i]:
+                    dp[i+1][j][k] = min(dp[i][j][k], dp[i][j-a[i]][k-b[i]]+1)
+                else:
+                    dp[i+1][j][k] = dp[i][j][k]
+
+    if dp[n][x][y] == float('inf'):
+        print(-1)
+    else:
+        print(dp[n][x][y])
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    # 递推
+    dp = [[False for j in range(y + 1)] for i in range(x + 1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if j - a[i] >= 0 and k - b[i] >= 0:
+                    dp[j][k] |= dp[j - a[i]][k - b[i]]
+
+    # 输出结果
+    for i in range(x, -1, -1):
+        for j in range(y, -1, -1):
+            if dp[i][j]:
+                print(i + j)
+                return
+    print(-1)
+
+=======
+Suggestion 6
+
+def solve(n, x, y, a, b):
+    #dp[i][j][k]表示前i种便当中选出j个章鱼烧和k个鱼形蛋糕的最小便当数
+    dp = [[[float('inf') for _ in range(y+1)] for _ in range(x+1)] for _ in range(n+1)]
+    dp[0][0][0] = 0
+    for i in range(n):
+        for j in range(x+1):
+            for k in range(y+1):
+                dp[i+1][min(x, j+a[i])][min(y, k+b[i])] = min(dp[i+1][min(x, j+a[i])][min(y, k+b[i])], dp[i][j][k] + 1)
+                dp[i+1][j][k] = min(dp[i+1][j][k], dp[i][j][k])
+    return dp[n][x][y] if dp[n][x][y] != float('inf') else -1
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    X, Y = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    dp = [[0 for i in range(301)] for j in range(301)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(300, -1, -1):
+            for k in range(300, -1, -1):
+                if dp[j][k] == 1:
+                    dp[j + A[i]][k + B[i]] = 1
+    ans = -1
+    for i in range(X, 301):
+        for j in range(Y, 301):
+            if dp[i][j] == 1:
+                ans = i + j
+                break
+        if ans != -1:
+            break
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for _ in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    dp = [[False for _ in range(y + 1)] for _ in range(x + 1)]
+    dp[0][0] = True
+    for i in range(n):
+        for j in range(x, -1, -1):
+            for k in range(y, -1, -1):
+                if dp[j][k]:
+                    dp[min(x, j + a[i])][min(y, k + b[i])] = True
+    ans = 10 ** 18
+    for i in range(x, y + 1):
+        for j in range(y, y + 1):
+            if dp[i][j]:
+                ans = min(ans, i + j)
+    print(ans if ans != 10 ** 18 else -1)
+solve()
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    x, y = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_, b_ = map(int, input().split())
+        a.append(a_)
+        b.append(b_)
+
+    dp = [[[0 for _ in range(300 * 300 + 1)] for _ in range(300 + 1)] for _ in range(n + 1)]
+
+    for i in range(n + 1):
+        dp[i][0][0] = 1
+
+    for i in range(1, n + 1):
+        for j in range(1, 300 + 1):
+            for k in range(300 * 300 + 1):
+                if k - a[i - 1] >= 0 and j - 1 >= 0:
+                    dp[i][j][k] |= dp[i - 1][j - 1][k - a[i - 1]]
+                if k - b[i - 1] >= 0:
+                    dp[i][j][k] |= dp[i - 1][j][k - b[i - 1]]
+
+    ans = -1
+    for i in range(1, n + 1):
+        for j in range(1, 300 * 300 + 1):
+            if dp[i][x][j] and dp[i][y][j]:
+                ans = max(ans, j)
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 10
+
+def get_input():
+    n = int(input())
+    x, y = map(int, input().split())
+    lunch = []
+    for i in range(n):
+        lunch.append(tuple(map(int, input().split())))
+    return n, x, y, lunch

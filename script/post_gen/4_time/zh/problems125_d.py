@@ -1,47 +1,148 @@
-#问题陈述
-#有N个整数，A_1, A_2, ..., A_N，按这个顺序排列成一行。
-#你可以对这个整数序列进行任意次数的以下操作：
-#操作：选择一个整数i，满足1≦i≦N-1。将A_i和A_{i+1}都乘以-1。
-#让B_1, B_2, ..., B_N为你操作后的整数序列。
-#找出B_1+B_2+...+ B_N的最大可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#-10^9 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1+B_2+...的最大可能值。+ B_N。
-#
-#样本输入1
-#3
-#-10 5 -4
-#
-#样本输出1
-#19
-#如果我们进行如下的操作：
-#选择1作为i，使序列变为10, -5, -4。
-#选择2作为i，使序列变为10, 5, 4。
-#我们有B_1=10，B_2=5，B_3=4。这里的和，B_1+B_2+B_3=10+5+4=19，是可能的最大结果。
-#
-#样本输入2
-#5
-#10 -4 -8 -11 3
-#
-#样本输出2
-#30
-#
-#样本输入3
-#11
-#-1000000000 1000000000 -1000000000 1000000000 -1000000000 0 1000000000 -1000000000 1000000000 -1000000000 1000000000
-#
-#样本输出3
-#10000000000
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n % 2 == 0:
+        print(sum(a))
+    else:
+        print(sum(a[1:]) - a[0] * 2)
+
+=======
+Suggestion 2
+
+def solve(n, a):
+    sum = 0
+    minus = 0
+    absmin = 1000000000
+    for i in range(n):
+        sum += abs(a[i])
+        if a[i] < 0:
+            minus += 1
+        if abs(a[i]) < absmin:
+            absmin = abs(a[i])
+    if minus % 2 == 0:
+        return sum
+    else:
+        return sum - 2*absmin
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    if N == 2:
+        print(A[1] - A[0])
+        return
+    if A[0] >= 0:
+        print(sum(A) - 2 * A[0])
+        return
+    if A[-1] <= 0:
+        print(-sum(A) + 2 * A[-1])
+        return
+    print(sum([abs(i) for i in A]))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(N):
+        sum += abs(A[i])
+    if A[0] < 0:
+        sum -= 2 * A[0]
+    elif A[-1] > 0:
+        sum -= 2 * A[-1]
+    print(sum)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    minus = 0
+    abs_a = []
+    for i in range(n):
+        if a[i] < 0:
+            minus += 1
+        abs_a.append(abs(a[i]))
+    if minus % 2 == 0:
+        print(sum(abs_a))
+    else:
+        print(sum(abs_a) - 2 * min(abs_a))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    minus = 0
+    for i in range(N):
+        ans += abs(A[i])
+        if A[i] < 0:
+            minus += 1
+    if minus % 2 == 1:
+        ans -= 2*min(abs(A))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    if N % 2 == 0:
+        print(sum([abs(i) for i in A]))
+    else:
+        print(sum([abs(i) for i in A]) - 2 * min([abs(i) for i in A if i < 0]))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [abs(i) for i in a]
+    c = [i for i in a if i < 0]
+    if len(c) % 2 == 0:
+        print(sum(b))
+    else:
+        print(sum(b) - 2 * min(b))
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    A.sort()
+    if N % 2 == 0:
+        ans = 0
+        for a in A:
+            ans += abs(a)
+    else:
+        ans = 0
+        for a in A:
+            ans += abs(a)
+        ans -= 2 * abs(A[0])
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    print("hello world!")

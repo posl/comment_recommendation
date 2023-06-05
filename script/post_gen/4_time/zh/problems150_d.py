@@ -1,49 +1,83 @@
-#问题陈述
-#给出N个正偶数的序列A= {a_1,a_2,......a_N}，以及一个整数M。
-#让A的半公倍数是一个正整数X，对每一个k（1≦k≦N）都满足以下条件：
-#存在一个非负的整数p，使得X= a_k × (p+0.5)。
-#找出1到M（包括）之间的整数中A的半公倍数的数量。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#2 ≦ a_i ≦ 10^9
-#a_i是一个偶数。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#a_1 a_2 ... a_N
-#
-#输出
-#打印1到M（包括）之间的整数中A的半公倍数的数量。
-#
-#输入样本 1
-#2 50
-#6 10
-#
-#样本输出1
-#2
-#15 = 6 × 2.5
-#15 = 10 × 1.5
-#45 = 6 × 7.5
-#45 = 10 × 4.5
-#因此，15和45是A的半公倍数，在1和50之间没有其他A的半公倍数，所以答案是2。
-#
-#输入样本 2
-#3 100
-#14 22 40
-#
-#样本输出2
-#0
-#答案可以是0。
-#
-#样本输入3
-#5 1000000000
-#6 6 2 6 2
-#
-#样本输出3
-#166666667
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a,b):
+    while b:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a = list(set(a))
+a.sort()
+lcm = a[0]
+for i in range(1, len(a)):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+for i in range(len(a)):
+    if (lcm // a[i]) % 2 == 0:
+        print(0)
+        exit()
+ans = m // lcm
+ans = (ans + 1) // 2
+print(ans)
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a%b
+    return a
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 6
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+a = list(map(lambda x: x//2, a))
+lcm = a[0]
+for i in range(1, n):
+    lcm = lcm * a[i] // gcd(lcm, a[i])
+lcm = lcm // 2
+ans = m // lcm
+print(ans)

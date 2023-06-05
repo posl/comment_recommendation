@@ -1,60 +1,223 @@
-#问题陈述
-#我们有一个有H行W列的方格，每个方格都是蓝色或红色。如果A_{i, j}为+，位于第i行和第j列的方格为蓝色，如果A_{i, j}为-，则为红色。
-#这个网格上有一个棋子，最初被放在左上角的方格上。高桥和青木将使用这个棋子进行游戏。
-#两位棋手一开始都有0分。他们将交替进行以下操作，由高桥先下：
-#将棋子向右移动一格或向下移动一格。不允许将棋子移到格子之外。然后，如果棋子现在在蓝色方格上，该棋手（移动棋子的人）得一分；如果棋子现在在红色方格上，则失去一分。
-#当其中一个玩家无法进行操作时，游戏结束。然后，如果双方的点数不同，则点数多的一方赢得游戏。否则，游戏将被抽出。
-#当两个玩家都进行游戏以获得最佳结果时，请找出游戏的结果。
-#
-#限制条件
-#1 ≦ h, w ≦ 2000
-#A_{i, j}为+或-。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#A_{1, 1}A_{1, 2}A_{1, 3} ...A_{1, W}
-#A_{2, 1}A_{2, 2}A_{2, 3} ...A_{2, W}
-#A_{3, 1}A_{3, 2}A_{3, 3} ...A_{3, W}
-#.
-#.
-#.
-#A_{H, 1}A_{H, 2}A_{H, 3} ...A_{H, W}
-#
-#输出
-#如果高桥会赢，则打印高桥；如果青木会赢，则打印青木；如果游戏将被平局，则打印平局。
-#
-#输入样本 1
-#3 3
-#---
-#+-+
-#+--
-#
-#样本输出1
-#高桥
-#高桥有一个获胜的策略，描述如下。
-#首先，高桥将棋子向右移动，这使他失去了一分，因为棋子走到了红方。现在，高桥有-1分，青木有0分。然后、
-#如果青木将棋子向右移动，高桥将棋子向下移动；
-#如果青木把棋子往下移，高桥就把它往右移。
-#在任何一种情况下，青木将棋子移到红色方格，失去1分，而高桥将棋子移到蓝色方格，得到1分，这意味着现在高桥有0分，青木有-1分。
-#棋子现在在从上往下第2行、从左往下第3列的方格上，青木只能选择把它往下移，移到一个红色方格。现在，高桥有0分，青木有-2分。
-#这颗棋子不能再向右或向下移动，所以游戏结束。由于高桥有更多的分数，他赢了。
-#
-#输入样本 2
-#2 4
-#+++-
-#-+-+
-#
-#样本输出2
-#青木
-#无论高桥做出什么选择，青木都能赢得比赛。
-#
-#样本输入3
-#1 1
-#-
-#
-#样本输出3
-#平局
-#在这种情况下，游戏立即结束。由于双方都是0分，所以游戏是平局。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    print("hello world!")
+
+=======
+Suggestion 3
+
+def main():
+    h,w = map(int,input().split())
+    a = [list(input()) for _ in range(h)]
+    dp = [[0 for _ in range(w)] for _ in range(h)]
+    for i in range(h)[::-1]:
+        for j in range(w)[::-1]:
+            if i == h-1 and j == w-1:
+                continue
+            if (i+j)%2 == 0:
+                dp[i][j] = -float('inf')
+                if i+1 < h:
+                    dp[i][j] = max(dp[i][j],dp[i+1][j]+(1 if a[i+1][j] == '+' else -1))
+                if j+1 < w:
+                    dp[i][j] = max(dp[i][j],dp[i][j+1]+(1 if a[i][j+1] == '+' else -1))
+            else:
+                dp[i][j] = float('inf')
+                if i+1 < h:
+                    dp[i][j] = min(dp[i][j],dp[i+1][j]-(1 if a[i+1][j] == '+' else -1))
+                if j+1 < w:
+                    dp[i][j] = min(dp[i][j],dp[i][j+1]-(1 if a[i][j+1] == '+' else -1))
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] == 0:
+        print('Draw')
+    else:
+        print('Aoki')
+
+=======
+Suggestion 4
+
+def main():
+    h,w = map(int,input().split())
+    a = [list(input()) for i in range(h)]
+    dp = [[0 for i in range(w)] for j in range(h)]
+    for i in range(h-1,-1,-1):
+        for j in range(w-1,-1,-1):
+            if i == h-1 and j == w-1:
+                continue
+            if i == h-1:
+                if a[i][j+1] == "+":
+                    dp[i][j] = dp[i][j+1] + 1
+                else:
+                    dp[i][j] = dp[i][j+1] - 1
+            elif j == w-1:
+                if a[i+1][j] == "+":
+                    dp[i][j] = dp[i+1][j] + 1
+                else:
+                    dp[i][j] = dp[i+1][j] - 1
+            else:
+                if a[i][j+1] == "+":
+                    dp[i][j] = max(dp[i][j],dp[i][j+1] + 1)
+                else:
+                    dp[i][j] = max(dp[i][j],dp[i][j+1] - 1)
+                if a[i+1][j] == "+":
+                    dp[i][j] = max(dp[i][j],dp[i+1][j] + 1)
+                else:
+                    dp[i][j] = max(dp[i][j],dp[i+1][j] - 1)
+    if dp[0][0] > 0:
+        print("Takahashi")
+    elif dp[0][0] < 0:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 5
+
+def main():
+    H,W = map(int,input().split())
+    A = [list(input()) for i in range(H)]
+    dp = [[0]*W for i in range(H)]
+    for i in range(H-1,-1,-1):
+        for j in range(W-1,-1,-1):
+            if i == H-1 and j == W-1:
+                dp[i][j] = 0
+            elif i == H-1:
+                if A[i][j+1] == "+":
+                    dp[i][j] = dp[i][j+1] + 1
+                else:
+                    dp[i][j] = dp[i][j+1] - 1
+            elif j == W-1:
+                if A[i+1][j] == "+":
+                    dp[i][j] = dp[i+1][j] + 1
+                else:
+                    dp[i][j] = dp[i+1][j] - 1
+            else:
+                if A[i][j+1] == "+":
+                    dp[i][j] = max(dp[i][j+1] + 1,dp[i+1][j])
+                else:
+                    dp[i][j] = min(dp[i][j+1] - 1,dp[i+1][j])
+    if dp[0][0] > 0:
+        print("Takahashi")
+    elif dp[0][0] < 0:
+        print("Aoki")
+    else:
+        print("Draw")
+
+=======
+Suggestion 6
+
+def main():
+    h,w = map(int,input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0]*w for _ in range(h)]
+    for i in range(h-1,-1,-1):
+        for j in range(w-1,-1,-1):
+            if i == h-1 and j == w-1:
+                continue
+            if i == h-1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i][j+1]-1
+                else:
+                    dp[i][j] = dp[i][j+1]+1
+            elif j == w-1:
+                if a[i][j] == '+':
+                    dp[i][j] = dp[i+1][j]-1
+                else:
+                    dp[i][j] = dp[i+1][j]+1
+            else:
+                if a[i][j] == '+':
+                    dp[i][j] = min(dp[i+1][j]-1,dp[i][j+1]-1)
+                else:
+                    dp[i][j] = min(dp[i+1][j]+1,dp[i][j+1]+1)
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] < 0:
+        print('Aoki')
+    else:
+        print('Draw')
+
+=======
+Suggestion 7
+
+def main():
+    print("Hello World!")
+    return
+
+=======
+Suggestion 8
+
+def main():
+    # 读入
+    h, w = map(int, input().split())
+    a = [input() for _ in range(h)]
+
+    # 从下往上、从右往左依次计算
+    dp = [[0] * w for _ in range(h)]
+    for i in range(h - 1, -1, -1):
+        for j in range(w - 1, -1, -1):
+            # 如果是最后一个，就是自己的得分
+            if i == h - 1 and j == w - 1:
+                continue
+            # 如果是红色，就是对方的得分
+            if (i + j) % 2 == 1:
+                dp[i][j] = 10 ** 10
+                if i + 1 < h:
+                    dp[i][j] = min(dp[i][j], dp[i + 1][j] + (1 if a[i + 1][j] == '-' else -1))
+                if j + 1 < w:
+                    dp[i][j] = min(dp[i][j], dp[i][j + 1] + (1 if a[i][j + 1] == '-' else -1))
+            # 如果是蓝色，就是自己的得分
+            else:
+                dp[i][j] = -10 ** 10
+                if i + 1 < h:
+                    dp[i][j] = max(dp[i][j], dp[i + 1][j] - (1 if a[i + 1][j] == '-' else -1))
+                if j + 1 < w:
+                    dp[i][j] = max(dp[i][j], dp[i][j + 1] - (1 if a[i][j + 1] == '-' else -1))
+
+    # 判断结果
+    if dp[0][0] == 0:
+        print("Draw")
+    elif dp[0][0] > 0:
+        print("Takahashi")
+    else:
+        print("Aoki")
+
+=======
+Suggestion 9
+
+def main():
+    h,w = map(int,input().split())
+    a = [input() for _ in range(h)]
+    dp = [[0 for _ in range(w)] for _ in range(h)]
+    for i in range(h-1,-1,-1):
+        for j in range(w-1,-1,-1):
+            if i == h-1 and j == w-1:
+                continue
+            if (i+j)%2 == 0:
+                if i == h-1:
+                    dp[i][j] = dp[i][j+1] + (1 if a[i][j] == '+' else -1)
+                elif j == w-1:
+                    dp[i][j] = dp[i+1][j] + (1 if a[i][j] == '+' else -1)
+                else:
+                    dp[i][j] = max(dp[i+1][j],dp[i][j+1]) + (1 if a[i][j] == '+' else -1)
+            else:
+                if i == h-1:
+                    dp[i][j] = dp[i][j+1] - (1 if a[i][j] == '+' else -1)
+                elif j == w-1:
+                    dp[i][j] = dp[i+1][j] - (1 if a[i][j] == '+' else -1)
+                else:
+                    dp[i][j] = min(dp[i+1][j],dp[i][j+1]) - (1 if a[i][j] == '+' else -1)
+    if dp[0][0] > 0:
+        print('Takahashi')
+    elif dp[0][0] == 0:
+        print('Draw')
+    else:
+        print('Aoki')

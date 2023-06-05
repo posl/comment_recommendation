@@ -1,36 +1,69 @@
-#问题陈述
-#给你0到255之间的整数A和B（含）。找到一个非负整数C，使A xor C=B。
-#可以证明唯一存在这样的C，它将在0和255（包括）之间。
-#什么是逐位XOR？
-#整数A和B的位数XOR，A XOR B，定义如下：
-#        
-#当A XOR B以二进制书写时，如果A和B中正好有一个是1，那么2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 XOR 5 = 6（在二进制中：011 XOR 101 = 110）。
-#
-#
-#限制条件
-#0≦ A,B ≦ 255
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 6
-#
-#样本输出 1
-#5
-#当写成二进制时，3将是11，5将是101。因此，它们的乘积在二进制中是110，在十进制中是6。
-#简而言之，3 xor 5 = 6，所以答案是5。
-#
-#输入样本 2
-#10 12
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def xor(a,b):
+    c = 0
+    for i in range(8):
+        if a%2 != b%2:
+            c += 2**i
+        a = a//2
+        b = b//2
+    return c
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(A^B)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    print(a^b)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    print(a^b)
+    
+main()
+
+=======
+Suggestion 5
+
+def xor(a,b):
+    c = a^b
+    return c
+
+a,b = map(int,input().split())
+
+print(xor(a,b))
+
+=======
+Suggestion 6
+
+def xor(a,b):
+    c = []
+    d = []
+    for i in range(8):
+        c.append(a%2)
+        d.append(b%2)
+        a = int(a/2)
+        b = int(b/2)
+    e = []
+    for i in range(8):
+        if c[i] == d[i]:
+            e.append(0)
+        else:
+            e.append(1)
+    f = 0
+    for i in range(8):
+        f = f + e[i] * (2**i)
+    return f

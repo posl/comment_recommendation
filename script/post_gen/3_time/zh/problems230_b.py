@@ -1,39 +1,102 @@
-#问题陈述
-#当有一对整数i和j(1 ≦ i ≦ j ≦ |T|)满足以下条件时，就说一个字符串S是一个字符串T的子串。
-#在不改变顺序的情况下提取T的第i到第j个字符等于S。
-#让T是10^5份xxx的串联。
-#给定一个字符串S，如果S是T的一个子串，则打印Yes，否则打印No。
-#
-#约束条件
-#S是一个由o和x组成的字符串。
-#S的长度在1到10之间（包括在内）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S满足条件，打印Yes；否则，打印No。
-#
-#输入样本1
-#xoxxoxxo
-#
-#输出样本1
-#Yes
-#T的开头是这样的：oxxoxxoxxoxx...。
-#由于T的第3至第10个字符的提取等于S，S是T的一个子串，所以Yes应该被打印。
-#
-#输入样本2
-#xxoxxoxo
-#
-#样本输出2
-#No
-#由于没有办法从T中提取一个等于S的字符串，S不是T的一个子串，所以应该打印No。
-#
-#输入示例3
-#ox
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s.count('o') == 1 or s.count('x') == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s.find('o') != -1 and s.find('x') != -1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    print('Yes' if 'o' in s else 'No')
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    T = 'x' * 100000
+    if S in T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    S = input()
+    # 判断
+    if "o" in S and "x" in S:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def sub_string(s):
+    if s.count('o') == 0 or s.count('x') == 0:
+        return 'Yes'
+    else:
+        return 'No'
+
+=======
+Suggestion 7
+
+def main():
+    # 读取数据
+    str = input()
+    # 处理数据
+    if str.count('o') == 0 or str.count('x') == 0:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    t = input()
+    if t == 'o' or t == 'x':
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s.count('o') == 2:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if s.find("o") > -1 and s.find("x") > -1:
+        print("Yes")
+    else:
+        print("No")

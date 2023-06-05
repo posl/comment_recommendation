@@ -1,72 +1,299 @@
-#问题陈述
-#有N块寿司。每一块都有两个参数："配料的种类 "t_i和 "美味程度 "d_i。
-#你要在这N块中选择K块来吃。
-#你在这里的 "满意度 "将被计算如下：
-#满意度是 "基本总美味 "和 "品种奖励 "的总和。
-#基本总美味是你所吃的各块的美味之和。
-#种类奖励是x*x，其中x是你吃的不同种类的配料的数量。
-#你希望有尽可能多的满足感。
-#找到这个最大的满意度。
-#
-#约束条件
-#1 ≦ k ≦ n ≦ 10^5
-#1 ≦ t_i ≦ N
-#1 ≦ d_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#t_1 d_1
-#t_2 d_2
-#.
-#.
-#.
-#t_N d_N
-#
-#输出
-#打印你能获得的最大满意度。
-#
-#输入样本 1
-#5 3
-#1 9
-#1 7
-#2 6
-#2 5
-#3 1
-#
-#样本输出1
-#26
-#如果你吃了寿司1,2和3：
-#基本总美味是9+7+6=22。
-#种类奖励是2*2=4。
-#因此，你的满意度将是26，这是最佳的。
-#
-#输入样本 2
-#7 4
-#1 1
-#2 1
-#3 1
-#4 6
-#4 5
-#4 5
-#4 5
-#
-#样本输出2
-#25
-#吃寿司1,2,3和4是最佳选择。
-#
-#样本输入3
-#6 5
-#5 1000000000
-#2 990000000
-#3 980000000
-#6 970000000
-#6 960000000
-#4 950000000
-#
-#样本输出3
-#4900000016
-#注意，输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    neta = []
+    for i in range(n):
+        t,d = map(int,input().split())
+        neta.append([d,t])
+    neta.sort(reverse=True)
+    #print(neta)
+    #print(neta[:k])
+
+=======
+Suggestion 2
+
+def solve():
+    # N, K = map(int, input().split())
+    # sushi = []
+    # for _ in range(N):
+    #     t, d = map(int, input().split())
+    #     sushi.append((t, d))
+    N, K = 6, 5
+    sushi = [(5, 1000000000), (2, 990000000), (3, 980000000), (6, 970000000), (6, 960000000), (4, 950000000)]
+    sushi.sort(key=lambda x: -x[1])
+    # print(sushi)
+    # print()
+    # print()
+    # print()
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int, input().split())
+    sushi = []
+    for _ in range(n):
+        sushi.append(list(map(int, input().split())))
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    print(sushi)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    sushi = []
+    for _ in range(n):
+        sushi.append(list(map(int, input().split())))
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+    sushi.sort(key=lambda x: x[1], reverse=True)
+    sushi.sort(key=lambda x: x[0])
+
+    print(sushi)
+    print(sushi[0:k])
+
+    # for i in range(k):
+    #     print(sushi[i][1])
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    t_d = [list(map(int,input().split())) for _ in range(n)]
+    t_d.sort(key=lambda x:x[1],reverse=True)
+    #print(t_d)
+    t = []
+    d = []
+    for i in range(n):
+        t.append(t_d[i][0])
+        d.append(t_d[i][1])
+    #print(t,d)
+    t_d = []
+    for i in range(n):
+        t_d.append([t[i],d[i]])
+    #print(t_d)
+    t_d.sort(key=lambda x:x[0])
+    #print(t_d)
+    t = []
+    d = []
+    for i in range(n):
+        t.append(t_d[i][0])
+        d.append(t_d[i][1])
+    #print(t,d)
+    t_d = []
+    for i in range(n):
+        t_d.append([t[i],d[i]])
+    #print(t_d)
+    s = 0
+    t = []
+    d = []
+    for i in range(n):
+        if t_d[i][0] not in t:
+            t.append(t_d[i][0])
+            d.append(t_d[i][1])
+    #print(t,d)
+    for i in range(k):
+        s += d[i]
+    #print(s)
+    for i in range(n):
+        if t_d[i][0] not in t[:k]:
+            s += t_d[i][1]
+    print(s)
+
+=======
+Suggestion 6
+
+def main():
+    # 读入
+    N, K = map(int, input().split())
+    # 建立一个字典
+    d = {}
+    for i in range(N):
+        t, d_ = map(int, input().split())
+        if t not in d:
+            d[t] = [d_]
+        else:
+            d[t].append(d_)
+    # 按照美味程度排序
+    for k in d.keys():
+        d[k].sort(reverse=True)
+    # 按照美味程度排序
+    sushi = []
+    for k in d.keys():
+        sushi += d[k]
+    sushi.sort(reverse=True)
+
+    # print(sushi)
+    # 从头开始吃K个
+    # 1. 基本总美味
+    base = sum(sushi[:K])
+    # 2. 种类奖励
+    kind = 0
+    # 计算种类奖励
+    for k in d.keys():
+        if len(d[k]) > 1:
+            kind += (len(d[k]) - 1) ** 2
+    # 输出
+    print(base + kind)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    td = []
+    for i in range(n):
+        td.append(list(map(int,input().split())))
+    td.sort(key=lambda x:x[1],reverse=True)
+    td.sort(key=lambda x:x[0])
+    print(td)
+    t = []
+    d = []
+    for i in range(n):
+        t.append(td[i][0])
+        d.append(td[i][1])
+    print(t)
+    print(d)
+    print()
+    count = 0
+    for i in range(k):
+        count += d[i]
+    print(count)
+    print()
+    count2 = 0
+    for i in range(k):
+        if t[i] not in t[:i]:
+            count2 += 1
+    print(count2)
+    print()
+    count3 = count + count2**2
+    print(count3)
+    print()
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    n, k = map(int, input().split())
+    td = [list(map(int, input().split())) for _ in range(n)]
+    td.sort(key=lambda x: -x[1])
+    td.sort(key=lambda x: x[0])
+    td.append([0, 0])
+    i = 0
+    j = 0
+    s = 0
+    t = []
+    while i < n:
+        while j < n and td[i][0] == td[j][0]:
+            t.append(td[j][1])
+            j += 1
+        t.sort(reverse=True)
+        for l in range(len(t)):
+            if l < k - i:
+                s += t[l]
+            else:
+                break
+        i = j
+        t = []
+    print(s)
+
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    sushis = []
+    for _ in range(n):
+        t, d = map(int, input().split())
+        sushis.append((t, d))
+    sushis.sort(key=lambda x: x[1], reverse=True)
+    t_set = set()
+    sushis_selected = []
+    for t, d in sushis:
+        if t not in t_set:
+            t_set.add(t)
+            sushis_selected.append((t, d))
+    sushis_selected.sort(key=lambda x: x[1], reverse=True)
+    ans = 0
+    for t, d in sushis_selected[:k]:
+        ans += d
+    t_set = set()
+    t_count = 0
+    for t, d in sushis_selected[:k]:
+        if t not in t_set:
+            t_set.add(t)
+            t_count += 1
+    ans += t_count ** 2
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    t_d = []
+    for i in range(n):
+        t_d.append(list(map(int,input().split())))
+    t_d.sort(key=lambda x:x[1],reverse=True)
+    t_d.sort(key=lambda x:x[0])
+    t = []
+    d = []
+    for i in range(n):
+        t.append(t_d[i][0])
+        d.append(t_d[i][1])
+    t_d = []
+    for i in range(n):
+        t_d.append([t[i],d[i]])
+    t = []
+    d = []
+    for i in range(n):
+        if t_d[i][0] not in t:
+            t.append(t_d[i][0])
+            d.append(t_d[i][1])
+    #print(t)
+    #print(d)
+    t_d = []
+    for i in range(len(t)):
+        t_d.append([t[i],d[i]])
+    #print(t_d)
+    d = []
+    for i in range(len(t_d)):
+        d.append(t_d[i][1])
+    #print(d)
+    for i in range(len(d)-1):
+        if d[i] < d[i+1]:
+            d[i+1] = d[i]
+    #print(d)
+    d = d[::-1]
+    #print(d)
+    d = d[:k]
+    #print(d)
+    print(sum(d)+len(d)**2)

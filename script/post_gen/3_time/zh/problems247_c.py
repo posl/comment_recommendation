@@ -1,41 +1,122 @@
-#问题陈述
-#我们对序列S_n的定义如下。
-#S_1是一个长度为1的序列，包含一个1。
-#S_n（n是大于或等于2的整数）是由S_{n-1}，n，S_{n-1}按这个顺序串联得到的序列。
-#例如，S_2和S_3的定义如下。
-#S_2是S_1、2和S_1的连接，按照这个顺序，所以它是1,2,1。
-#S_3是S_2, 3, 和S_2的连接，按这个顺序，所以它是1,2,1,3,1,2,1。
-#给定N，打印整个序列S_N。
-#
-#限制条件
-#N是一个整数。
-#1 ≦ N ≦ 16
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#打印S_N，中间有空格。
-#
-#输入样本 1
-#2
-#
-#输出样本 1
-#1 2 1
-#如问题陈述中所述，S_2是1,2,1。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#4
-#
-#样本输出 3
-#1 2 1 3 1 2 1 4 1 2 1 3 1 2 1
-#S_4是S_3、4和S_3的串联，按照这个顺序。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def S(n):
+    if n == 1:
+        return [1]
+    else:
+        s = S(n-1)
+        return s + [n] + s
+
+n = int(input())
+print(*S(n))
+
+=======
+Suggestion 2
+
+def printS(n):
+    if n == 1:
+        print(1,end=' ')
+    else:
+        printS(n-1)
+        print(n,end=' ')
+        printS(n-1)
+
+n = int(input())
+printS(n)
+print()
+
+=======
+Suggestion 3
+
+def f(n):
+    if n == 1:
+        return [1]
+    else:
+        tmp = f(n-1)
+        return tmp + [n] + tmp
+
+n = int(input())
+print(' '.join(map(str, f(n))))
+
+=======
+Suggestion 4
+
+def printS(n):
+    if n == 1:
+        return "1"
+    else:
+        return printS(n-1) + " " + str(n) + " " + printS(n-1)
+n = int(input())
+print(printS(n))
+
+=======
+Suggestion 5
+
+def f(n):
+    if n==1:
+        return [1]
+    else:
+        return f(n-1)+[n]+f(n-1)
+
+n=int(input())
+print(' '.join(map(str,f(n))))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print("1",end="")
+    for i in range(2,n+1):
+        print(" "+str(i),end="")
+        print(" 1",end="")
+    print()
+
+main()
+
+=======
+Suggestion 7
+
+def sequence(n):
+    if n == 1:
+        return [1]
+    else:
+        seq = sequence(n-1)
+        return seq + [n] + seq
+
+=======
+Suggestion 8
+
+def func(n):
+    if n == 1:
+        return [1]
+    else:
+        return func(n-1) + [n] + func(n-1)
+
+n = int(input())
+print(*func(n))
+
+=======
+Suggestion 9
+
+def sequence(n):
+    if n == 1:
+        return [1]
+    else:
+        s = sequence(n-1)
+        return s + [n] + s
+
+=======
+Suggestion 10
+
+def s(n):
+    if n == 1:
+        return [1]
+    else:
+        return s(n-1) + [n] + s(n-1)
+
+n = int(input())
+print(*s(n))

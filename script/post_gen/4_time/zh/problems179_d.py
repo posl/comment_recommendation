@@ -1,69 +1,150 @@
-#问题陈述
-#有N个细胞排列成一排，从左到右编号为1，2，...，N。
-#德住在这些细胞里，目前在1号细胞。他正试图通过下面的程序到达N单元。
-#给你一个小于或等于10的整数K，以及K个不相交的线段[L_1, R_1], [L_2, R_2], ..., [L_K, R_K]。
-#让S是这K个线段的线段。
-#这里，段[l, r]表示由满足l ≦ i ≦ r的所有整数i组成的集合。
-#当你在单元格i上时，从S中挑选一个整数d并移动到单元格i+d。
-#为了帮助德，请找出去N单元格的方法，模数为998244353。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ min(N, 10)
-#1 ≦ L_i ≦ R_i ≦ N
-#[L_i, R_i] 和 [L_j, R_j] 不相交 (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#L_1 R_1
-#L_2 R_2
-#:
-#L_K R_K
-#
-#输出
-#打印Tak从单元格1到单元格N的方式的数量，模数为998244353。
-#
-#输入样本 1
-#5 2
-#1 1
-#3 4
-#
-#样本输出 1
-#4
-#集合S是段[1，1]和段[3，4]的联合，因此S={1，3，4}成立。
-#有4种可能的方式来到达单元格5：
-#1 -> 2 -> 3 -> 4 -> 5,
-#1 -> 2 -> 5,
-#1->4->5和
-#1 -> 5.
-#
-#样本输入 2
-#5 2
-#3 3
-#5 5
-#
-#样本输出2
-#0
-#因为S = { 3, 5 }成立，你无法到达单元格5。
-#打印0。
-#
-#输入样本 3
-#5 1
-#1 2
-#
-#样本输出3
-#5
-#
-#样本输入4
-#60 3
-#5 8
-#1 3
-#10 15
-#
-#样本输出4
-#221823067
-#请注意，你必须打印出998244353的模数的答案。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    l = []
+    r = []
+    for i in range(k):
+        a, b = map(int, input().split())
+        l.append(a)
+        r.append(b)
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    s = [0] * (n + 1)
+    s[1] = 1
+    for i in range(2, n + 1):
+        for j in range(k):
+            if i - l[j] >= 0:
+                dp[i] += s[i - l[j]]
+            if i - r[j] - 1 >= 0:
+                dp[i] -= s[i - r[j] - 1]
+        s[i] = (s[i - 1] + dp[i]) % 998244353
+    print(dp[n] % 998244353)
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def get_input():
+    n, k = map(int, input().split())
+    lrs = []
+    for i in range(k):
+        lrs.append(list(map(int, input().split())))
+    return n, k, lrs
+
+=======
+Suggestion 4
+
+def solve(n, k, l, r):
+    mod = 998244353
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(2, n + 1):
+        for j in range(k):
+            if i - l[j] >= 1:
+                dp[i] += dp[i - l[j]]
+                dp[i] %= mod
+            if i - r[j] - 1 >= 1:
+                dp[i] -= dp[i - r[j] - 1]
+                dp[i] %= mod
+    return dp[n]
+
+n, k = map(int, input().split())
+l = []
+r = []
+for _ in range(k):
+    li, ri = map(int, input().split())
+    l.append(li)
+    r.append(ri)
+print(solve(n, k, l, r))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(K)]
+    mod = 998244353
+
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dp_sum = [0] * (N + 1)
+    dp_sum[1] = 1
+
+    for i in range(2, N + 1):
+        for l, r in LR:
+            li = max(i - r, 0)
+            ri = i - l
+            if ri < 0:
+                continue
+            dp[i] += dp_sum[ri] - dp_sum[li - 1]
+            dp[i] %= mod
+        dp_sum[i] = dp_sum[i - 1] + dp[i]
+        dp_sum[i] %= mod
+    print(dp[N])
+
+=======
+Suggestion 6
+
+def solve(n, k, l, r):
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    lr = [list(map(int, input().split())) for _ in range(k)]
+    mod = 998244353
+    dp = [0] * (n+1)
+    dp[1] = 1
+    dpsum = [0] * (n+1)
+    dpsum[1] = 1
+    for i in range(2, n+1):
+        for l, r in lr:
+            if i-l < 1:
+                continue
+            dp[i] += dpsum[i-l] - dpsum[max(0, i-r-1)]
+            dp[i] %= mod
+        dpsum[i] = dpsum[i-1] + dp[i]
+        dpsum[i] %= mod
+    print(dp[n])
+
+=======
+Suggestion 9
+
+def main():
+    return
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    LRs = [list(map(int, input().split())) for _ in range(K)]
+    mod = 998244353
+    dp = [0] * (N+1)
+    dp[1] = 1
+    for i in range(2, N+1):
+        for l, r in LRs:
+            if i-l >= 0:
+                dp[i] += dp[i-l]
+                dp[i] %= mod
+            if i-r-1 >= 0:
+                dp[i] -= dp[i-r-1]
+                dp[i] %= mod
+    print(dp[N])

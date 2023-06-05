@@ -1,31 +1,109 @@
-#问题陈述
-#给你一个正整数A和B。
-#让我们计算一下A+B（十进制）。如果不涉及进位，打印Easy；如果涉及carry，打印Hard。
-#
-#限制条件
-#A和B是整数。
-#1 ≦ A,B ≦ 10^{18}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#如果计算不涉及携带，打印Easy；如果涉及进位，打印Hard。
-#
-#输入样本1
-#229 390
-#
-#样本输出1
-#Hard
-#在计算229+390时，我们有一个从十位到百位的进位，所以答案是Hard。
-#
-#输入样本2
-#123456789 9876543210
-#
-#输出示例2
-#Easy
-#我们在这里没有进位，答案是Easy。
-#请注意，输入可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int,input().split())
+    if a+b >= 10**10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 10**10:
+        print('Hard')
+    else:
+        print('Easy')
+
+=======
+Suggestion 3
+
+def easy_or_hard(a,b):
+    a = str(a)
+    b = str(b)
+    if len(a) > len(b):
+        b = '0' * (len(a) - len(b)) + b
+    elif len(a) < len(b):
+        a = '0' * (len(b) - len(a)) + a
+    for i in range(len(a)):
+        if int(a[i]) + int(b[i]) > 9:
+            return 'Hard'
+    return 'Easy'
+
+=======
+Suggestion 4
+
+def problem229_b():
+    a, b = map(int, input().split())
+    if a + b >= 10 ** 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 5
+
+def solve():
+    a, b = map(int, input().split())
+    if a + b >= 10 ** 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 6
+
+def main():
+    A,B = map(int, input().split())
+    sum = A + B
+    if sum < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int, input().split())
+    if A+B < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 计算
+    if (a + b) % 2 == 0:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    if (a+b) < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 10
+
+def problem229_b():
+    A, B = map(int, input().split())
+    if A + B >= 10**9:
+        print("Hard")
+    else:
+        print("Easy")

@@ -1,73 +1,208 @@
-#问题陈述
-#2N个ID号为1到2N的选手将参加一个石头剪刀布比赛。
-#比赛有M轮。每轮有N场一对一的比赛，每个选手都参加其中的一场。
-#对于每个i=0，1，...，M，选手在第i轮结束时的排名确定如下。
-#在前i轮比赛中获胜较多的选手排名较高。
-#平局是由ID号码打破的：ID号码较小的玩家排名较高。
-#此外，对于每个i=1，...，M，第i轮的比赛安排如下。
-#对于每个k=1，2，...，N，在第（i-1）轮结束时排名（2k-1）-第和2k-第的玩家之间进行一场比赛。
-#在每场比赛中，两个玩家只打一手牌，结果是一个玩家赢，另一个玩家输，或者平局。
-#可以预见未来的高桥知道，玩家i将在第j轮的比赛中玩A_{i, j}，其中A_{i,j}是G、C或P。
-#这里，G代表石头，C代表剪刀，而P代表布。(这些都来自于日语）。
-#在第M轮结束时，找出玩家的等级。
-#石头-剪子-布的规则
-#石头剪子纸比赛的结果是根据两位选手的手牌决定的。
-# 如果一个玩家玩石头（G），另一个玩家玩剪刀（C），玩石头（G）的玩家获胜。
-# 如果一方出剪刀（C），另一方出布（P），出剪刀（C）的一方获胜。
-# 如果一个玩家玩布（P），另一个玩家玩石头（G），玩布（P）的玩家获胜。
-# 如果双方玩的是同一把牌，则比赛结束。
-#
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ M ≦ 100
-#A_{i,j}是G, C, 或P。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_{1,1}A_{1,2}...A_{1,M}
-#A_{2,1}A_{2,2}...A_{2,M}
-#.
-#.
-#.
-#A_{2N,1}A_{2N,2}...A_{2N,M}
-#
-#输出
-#打印2N行。
-#第i行应包含在第M轮结束时排名第i的棋手的ID号。
-#
-#输入样本 1
-#2 3
-#GCP
-#PPP
-#CCC
-#PPC
-#
-#样本输出1
-#3
-#1
-#2
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。棋手3赢得前者，棋手1赢得后者。
-#在第三轮，比赛在球员3和1之间，以及球员2和4之间进行。玩家3赢得了前者，而玩家4赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：3、1、2、4，从高到低。
-#
-#输入样本 2
-#2 2
-#GC
-#PG
-#CG
-#PP
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#在第一轮中，玩家1和2之间以及玩家3和4之间进行比赛。棋手2赢得前者，棋手3赢得后者。
-#在第二轮，比赛在玩家2和3之间，以及玩家1和4之间进行。前者是平局，而玩家1赢得了后者。
-#因此，在最后，球员的排名是按以下顺序排列的：1、2、3、4，从高到低。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    return x[1]
+
+=======
+Suggestion 2
+
+def win(a, b):
+    if a == 'G' and b == 'C':
+        return True
+    elif a == 'C' and b == 'P':
+        return True
+    elif a == 'P' and b == 'G':
+        return True
+    else:
+        return False
+
+n, m = map(int, input().split())
+a = [input() for _ in range(2 * n)]
+rank = [[i + 1, 0] for i in range(2 * n)]
+for i in range(m):
+    for j in range(n):
+        p1, p2 = rank[2 * j][0] - 1, rank[2 * j + 1][0] - 1
+        if win(a[p1][i], a[p2][i]):
+            rank[2 * j][1] -= 1
+        elif win(a[p2][i], a[p1][i]):
+            rank[2 * j + 1][1] -= 1
+    rank.sort(key=lambda x: (x[1], x[0]))
+for i in range(2 * n):
+    print(rank[i][0])
+
+=======
+Suggestion 3
+
+def get_winner(player1, player2):
+    if player1 == player2:
+        return player1
+    elif player1 == 'G':
+        if player2 == 'C':
+            return player1
+        else:
+            return player2
+    elif player1 == 'C':
+        if player2 == 'P':
+            return player1
+        else:
+            return player2
+    elif player1 == 'P':
+        if player2 == 'G':
+            return player1
+        else:
+            return player2
+
+=======
+Suggestion 4
+
+def rps(a, b):
+    if a == b:
+        return 0
+    elif (a == "G" and b == "C") or (a == "C" and b == "P") or (a == "P" and b == "G"):
+        return 1
+    else:
+        return -1
+
+n, m = map(int, input().split())
+a = [list(input()) for _ in range(2*n)]
+rank = [[i, 0] for i in range(2*n)]
+
+for i in range(m):
+    for j in range(n):
+        idx1, idx2 = rank[2*j][0], rank[2*j+1][0]
+        res = rps(a[idx1][i], a[idx2][i])
+        if res == 1:
+            rank[2*j][1] -= 1
+        elif res == -1:
+            rank[2*j+1][1] -= 1
+    rank.sort(key=lambda x: (x[1], x[0]))
+
+for i in range(2*n):
+    print(rank[i][0]+1)
+
+=======
+Suggestion 5
+
+def game(a,b):
+    if a == b:
+        return 0
+    elif a == 'G' and b == 'C':
+        return 1
+    elif a == 'C' and b == 'P':
+        return 1
+    elif a == 'P' and b == 'G':
+        return 1
+    else:
+        return 2
+
+=======
+Suggestion 6
+
+def jiaquan(a):
+    if a == 'G':
+        return 0
+    elif a == 'C':
+        return 1
+    else:
+        return 2
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = [input() for _ in range(2*n)]
+    rank = [[i,0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            p1,p2 = rank[2*j][0],rank[2*j+1][0]
+            if a[p1][i] == a[p2][i]:
+                continue
+            elif a[p1][i] == "G" and a[p2][i] == "C":
+                rank[2*j][1] -= 1
+            elif a[p1][i] == "C" and a[p2][i] == "P":
+                rank[2*j][1] -= 1
+            elif a[p1][i] == "P" and a[p2][i] == "G":
+                rank[2*j][1] -= 1
+            else:
+                rank[2*j][1] += 1
+    rank.sort(key=lambda x: (x[1],x[0]))
+    for i in range(2*n):
+        print(rank[i][0]+1)
+
+=======
+Suggestion 8
+
+def main():
+    n,m=map(int,input().split())
+    a=[]
+    for i in range(2*n):
+        a.append(input())
+    ans=[]
+    for i in range(2*n):
+        ans.append([0,i+1])
+    for i in range(m):
+        for j in range(n):
+            p1=ans[2*j][1]-1
+            p2=ans[2*j+1][1]-1
+            if a[p1][i]==a[p2][i]:
+                continue
+            elif a[p1][i]=='G' and a[p2][i]=='C':
+                ans[2*j][0]-=1
+            elif a[p1][i]=='C' and a[p2][i]=='P':
+                ans[2*j][0]-=1
+            elif a[p1][i]=='P' and a[p2][i]=='G':
+                ans[2*j][0]-=1
+            else:
+                ans[2*j+1][0]-=1
+        ans.sort(reverse=True)
+    for i in range(2*n):
+        print(ans[i][1])
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n,m=map(int,input().split())
+    a=[]
+    for i in range(2*n):
+        a.append(input())
+    rank=[[i+1,0] for i in range(2*n)]
+    for i in range(m):
+        for j in range(n):
+            if a[rank[2*j][0]-1][i]==a[rank[2*j+1][0]-1][i]:
+                continue
+            elif a[rank[2*j][0]-1][i]=="G" and a[rank[2*j+1][0]-1][i]=="C":
+                rank[2*j][1]+=1
+            elif a[rank[2*j][0]-1][i]=="C" and a[rank[2*j+1][0]-1][i]=="P":
+                rank[2*j][1]+=1
+            elif a[rank[2*j][0]-1][i]=="P" and a[rank[2*j+1][0]-1][i]=="G":
+                rank[2*j][1]+=1
+            else:
+                rank[2*j+1][1]+=1
+        rank.sort(key=lambda x:(-x[1],x[0]))
+    for i in range(2*n):
+        print(rank[i][0])
+
+main()
+
+=======
+Suggestion 10
+
+def compare(x,y):
+    if x[0] > y[0]:
+        return -1
+    elif x[0] < y[0]:
+        return 1
+    else:
+        if x[1] < y[1]:
+            return -1
+        elif x[1] > y[1]:
+            return 1
+        else:
+            return 0

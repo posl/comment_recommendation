@@ -1,48 +1,124 @@
-#问题陈述
-#一家水果店出售苹果。
-#你可以按照任何顺序进行以下操作，次数不限：
-#用X日元（日本的货币）买一个苹果。
-#用Y日元买三个苹果。
-#你需要支付多少日元才能准确获得N个苹果？  
-#
-#限制条件
-#1 ≦ x ≦ y ≦ 100
-#1 ≦ N ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y N
-#
-#输出
-#打印答案为整数。
-#
-#输入样本 1
-#10 25 10
-#
-#样本输出 1
-#85
-#用25日元买三个苹果，买三次，用10日元买一个苹果，你将得到正好10个苹果，总价为85日元。
-#你不可能以更低的价格获得正好10个苹果，所以答案是85日元。
-#
-#输入样本2
-#10 40 10
-#
-#样本输出2
-#100
-#用10日元买一个苹果10次是最好的。
-#
-#样本输入3
-#100 100 2
-#
-#样本输出3
-#200
-#获得正好2个苹果的唯一方法是用100日元买一个苹果两次。
-#
-#样本输入4
-#100 100 100
-#
-#样本输出4
-#3400
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x,y,n):
+    min = 100000000
+    for i in range(0,n+1):
+        for j in range(0,n+1):
+            if i*3+j*1==n:
+                if min>(x*i+y*j):
+                    min = x*i+y*j
+    return min
+
+=======
+Suggestion 2
+
+def buy_apple(x,y,n):
+    if x*3 <= y:
+        return x*n
+    else:
+        if n%3 == 0:
+            return y*(n/3)
+        else:
+            return y*(n/3)+x*(n%3)
+
+=======
+Suggestion 3
+
+def buy_apple(x, y, n):
+    # 用x买
+    if n % 3 == 0:
+        return x * n // 3
+    else:
+        # 用y买
+        if n % 3 == 1:
+            return min(x*(n-1)//3 + y, x*(n-2)//3 + 2*y)
+        else:
+            return min(x*(n-2)//3 + 2*y, x*(n-1)//3 + y)
+
+=======
+Suggestion 4
+
+def main():
+    X,Y,N = map(int,input().split())
+    if X == Y:
+        print(X*N)
+    elif X > Y:
+        print(Y*N)
+    else:
+        if N%3 == 0:
+            print(int((N/3)*Y))
+        elif N%3 == 1:
+            print(int((N/3)*Y+X))
+        else:
+            print(int((N/3)*Y+Y))
+
+=======
+Suggestion 5
+
+def main():
+    x, y, n = map(int, input().split())
+    if n % 3 == 0:
+        print(n // 3 * y)
+    elif n % 3 == 1:
+        print(n // 3 * y + x)
+    elif n % 3 == 2:
+        print(n // 3 * y + 2 * x)
+
+=======
+Suggestion 6
+
+def main():
+    x,y,n = map(int,input().split())
+    if n%3==0:
+        print((n//3)*y)
+    elif n%3==1:
+        print((n//3)*y+x)
+    else:
+        print((n//3)*y+2*x)
+
+=======
+Suggestion 7
+
+def main():
+    x, y, n = map(int, input().split())
+    ans = n // 3 * y
+    if n % 3 == 1:
+        ans += x
+    elif n % 3 == 2:
+        ans += y
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    x,y,n=map(int,input().split())
+    if n%3==0:
+        print(int(n/3)*y)
+    elif n%3==1:
+        print(int(n/3)*y+x)
+    elif n%3==2:
+        print(int(n/3)*y+x*2)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    x,y,n = map(int,input().split())
+    if n % 3 == 0:
+        print(y * (n // 3))
+    elif n % 3 == 1:
+        print(y * (n // 3) + x)
+    else:
+        print(y * (n // 3) + x * 2)
+
+=======
+Suggestion 10
+
+def main():
+    x, y, n = map(int, input().split())
+    print(int((n+y-1)/y*x))

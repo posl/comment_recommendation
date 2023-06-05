@@ -1,82 +1,159 @@
-#问题陈述
-#高桥有一个由小写英文字母组成的字符串S。
-#从这个字符串开始，他将按照下面的程序产生一个新的字符串。
-#该程序由Q个操作组成。在操作i（1 ≦ i ≦ Q）中，提供了一个整数T_i，其含义如下：
-#如果T_i = 1：倒转字符串S。
-#如果T_i = 2：另外提供一个整数F_i和一个小写英文字母C_i。
-#如果F_i = 1 : 在字符串S的开头加上C_i。
-#如果F_i = 2 : 将C_i加到字符串S的结尾。
-#
-#请帮助高桥找到该程序产生的最终字符串。
-#
-#限制条件
-#1 ≦ |S| ≦ 10^5
-#S由小写的英文字母组成。
-#1 ≦ Q ≦ 2 × 10^5
-#T_i = 1 或 2。
-#F_i = 1或2，如果提供的话。
-#C_i是一个小写的英文字母，如果提供的话。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#S
-#Q
-#查询_1
-#:
-#查询_Q
-#在第3行到第(Q+2)行中，Query_i是以下的一个：
-#1
-#这意味着T_i=1，以及：
-#2 F_i C_i
-#这意味着T_i = 2。
-#
-#输出
-#打印结果字符串。
-#
-#输入样本1
-#a
-#4
-#2 1 p
-#1
-#2 2 c
-#1
-#
-#样本输出1
-#cpa
-#将有Q=4个操作。最初，S是a。
-#操作1：在S的开头添加p，S变成pa。
-#操作2：反转S，S变成ap。
-#操作3：在S的末尾加入c，S变成apc。
-#操作4：反转S，S变成cpa。
-#因此，得到的字符串是cpa。
-#
-#输入样本2
-#a
-#6
-#2 2 a
-#2 1 b
-#1
-#2 2 c
-#1
-#1
-#
-#样本输出2
-#aabc
-#将有Q=6个操作。最初，S是a。
-#操作1：S变成aa。
-#操作2：S变成baa。
-#操作3：S变成aab。
-#操作4：S变成aabc。
-#操作5：S变成cbaa。
-#操作6：S变成aabc。
-#因此，产生的字符串是aabc。
-#
-#输入样本3
-#y
-#1
-#2 1 x
-#
-#样本输出3
-#xy
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t = input().split()
+        if t[0] == '1':
+            s = s[::-1]
+        else:
+            if t[1] == '1':
+                s = t[2] + s
+            else:
+                s = s + t[2]
+    print(s)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    q = int(input())
+    query = []
+    for i in range(q):
+        query.append(input().split())
+    reverse = False
+    for i in range(q):
+        if query[i][0] == '1':
+            reverse = not reverse
+        elif query[i][0] == '2':
+            if query[i][1] == '1':
+                if reverse:
+                    s += query[i][2]
+                else:
+                    s = query[i][2] + s
+            elif query[i][1] == '2':
+                if reverse:
+                    s = s + query[i][2]
+                else:
+                    s = query[i][2] + s
+    if reverse:
+        s = s[::-1]
+    print(s)
+
+=======
+Suggestion 3
+
+def reverse(s):
+    return s[::-1]
+
+s = input()
+q = int(input())
+for i in range(q):
+    query = input().split()
+    if query[0] == '1':
+        s = reverse(s)
+    elif query[0] == '2':
+        if query[1] == '1':
+            s = query[2] + s
+        elif query[1] == '2':
+            s = s + query[2]
+print(s)
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        t = input().split()
+        if t[0] == "1":
+            s = s[::-1]
+        else:
+            if t[1] == "1":
+                s = t[2] + s
+            else:
+                s = s + t[2]
+    print(s)
+
+=======
+Suggestion 5
+
+def func(s, q, query):
+    for i in range(q):
+        if query[i][0] == 1:
+            s = s[::-1]
+        elif query[i][0] == 2:
+            if query[i][1] == 1:
+                s = query[i][2] + s
+            elif query[i][1] == 2:
+                s = s + query[i][2]
+    return s
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def reverse(s):
+    return s[::-1]
+
+=======
+Suggestion 8
+
+def reverse_str(s):
+    return s[::-1]
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    q = int(input())
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            s = s[::-1]
+        else:
+            if query[1] == '1':
+                s = query[2] + s
+            else:
+                s = s + query[2]
+    print(s)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    q = int(input())
+    s = list(s)
+    flag = True
+    for i in range(q):
+        t = input().split()
+        if t[0] == '1':
+            flag = not flag
+        else:
+            if t[1] == '1':
+                if flag:
+                    s.insert(0, t[2])
+                else:
+                    s.append(t[2])
+            else:
+                if flag:
+                    s.append(t[2])
+                else:
+                    s.insert(0, t[2])
+    if flag:
+        print(''.join(s))
+    else:
+        print(''.join(s[::-1]))

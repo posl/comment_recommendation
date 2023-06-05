@@ -1,56 +1,170 @@
-#问题陈述
-#在高桥居住的二维平面小镇上有N个蹦床。  第i个蹦床位于(x_i, y_i)点上，其功率为P_i。  高桥的跳跃能力用S表示。最初，S=0，高桥每训练一次，S就增加1。
-#高桥可以从第i个蹦床跳到第j个蹦床，当且仅当：
-#P_iS≧ |x_i - x_j| +|y_i - y_j|。
-#高桥的目标是能够选择一个开始的蹦床，使他能够通过一些跳跃从所选的蹦床到达任何蹦床。
-#他至少需要训练多少次才能实现他的目标？
-#
-#限制条件
-#2 ≦ N ≦ 200
-#-10^9 ≦ x_i,y_i ≦ 10^9
-#1 ≦ P_i ≦ 10^9
-#(x_i, y_i) ≠ (x_j,y_j) (i≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#x_1 y_1 P_1
-#.
-#.
-#.
-#x_N y_N P_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#-10 0 1
-#0 0 5
-#10 0 1
-#11 0 1
-#
-#样本输出1
-#2
-#如果他训练了两次，S=2、
-#在这种情况下，他可以从第2个蹦床到达任何一个蹦床。
-#例如，他可以到达第4个蹦床，方法如下。
-#从第2个蹦床跳到第3个蹦床。  (由于P_2 S=10，并且|x_2-x_3|+|y_2-y_3|=10，所以P_2 S ≧|x_2-x_3|+|y_2-y_3|。）
-#从第3个蹦床跳到第4个蹦床。  (因为P_3 S = 2，并且|x_3-x_4| + |y_3-y_4| = 1，所以成立P_3 S ≧ |x_3-x_4| + |y_3-y_4|。)
-#
-#
-#样本输入2
-#7
-#20 31 1
-#13 4 3
-#-10 -15 2
-#34 26 5
-#-2 39 4
-#0 -50 1
-#5 -20 2
-#
-#样本输出2
-#18
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    #n = 4
+    x = []
+    y = []
+    p = []
+    for i in range(n):
+        #x.append(0)
+        #y.append(0)
+        #p.append(0)
+        x_i, y_i, p_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        p.append(p_i)
+    #print(x)
+    #print(y)
+    #print(p)
+    #x = [0, 0, 10, 11]
+    #y = [0, 0, 0, 0]
+    #p = [1, 5, 1, 1]
+    #print(x)
+    #print(y)
+    #print(p)
+    #print("-------------")
+    #print("-------------")
+    #print("-
+
+=======
+Suggestion 2
+
+def getDistance(x1,y1,x2,y2):
+    return abs(x1-x2)+abs(y1-y2)
+
+n = int(input())
+x = [0]*n
+y = [0]*n
+p = [0]*n
+for i in range(n):
+    x[i],y[i],p[i] = map(int,input().split())
+
+=======
+Suggestion 3
+
+def main():
+    return 0
+
+=======
+Suggestion 4
+
+def get_distance(x1,y1,x2,y2):
+    return abs(x1-x2)+abs(y1-y2)
+
+=======
+Suggestion 5
+
+def solve():
+    pass
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    x = [0] * N
+    y = [0] * N
+    p = [0] * N
+    for i in range(N):
+        x[i], y[i], p[i] = map(int, input().split())
+    # print(N, x, y, p)
+
+    # dp[i][j] 表示高桥从第i个蹦床跳到第j个蹦床的最小训练次数
+    dp = [[0] * N for _ in range(N)]
+
+    # 初始化dp
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if p[i] * 0 >= abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                dp[i][j] = 1
+            else:
+                dp[i][j] = float('inf')
+
+    # print(dp)
+
+    # 动态规划
+    for k in range(N):
+        for i in range(N):
+            for j in range(N):
+                if i == j or i == k or j == k:
+                    continue
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+
+    # print(dp)
+
+    # 找出最大值
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if dp[i][j] != float('inf'):
+                ans = max(ans, dp[i][j])
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    x = []
+    y = []
+    P = []
+    for i in range(N):
+        x_i, y_i, P_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        P.append(P_i)
+    S = 0
+    while True:
+        S += 1
+        flag = True
+        for i in range(N):
+            for j in range(N):
+                if i == j:
+                    continue
+                if P[i] * S < abs(x[i] - x[j]) + abs(y[i] - y[j]):
+                    flag = False
+                    break
+            if not flag:
+                break
+        if flag:
+            break
+    print(S)
+
+=======
+Suggestion 8
+
+def readinput():
+    n=int(input())
+    xyplist=[]
+    for _ in range(n):
+        x,y,p=map(int,input().split())
+        xyplist.append((x,y,p))
+    return n,xyplist
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def get_input():
+    N = int(input())
+    x = []
+    y = []
+    p = []
+    for i in range(N):
+        a, b, c = map(int, input().split())
+        x.append(a)
+        y.append(b)
+        p.append(c)
+    return N, x, y, p

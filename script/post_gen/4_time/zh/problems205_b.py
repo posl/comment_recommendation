@@ -1,48 +1,115 @@
-#问题陈述
-#给你一个1到N（包括）之间的N个整数序列：A=（A_1, A_2, ..., A_N）。
-#请判断A是否是（1，2，...，N）的一个置换。
-#
-#约束条件
-#1 ≦ N ≦ 10^3
-#1 ≦ A_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#輸出
-#如果A是(1, 2, ..., N)的排列组合，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#5
-#3 1 2 4 5
-#
-#样本输出1
-#Yes
-#(3, 1, 2, 4, 5)是(1, 2, 3, 4, 5)的排列组合，所以我们应该打印是。
-#
-#输入样本2
-#6
-#3 1 4 1 5 2
-#
-#样本输出2
-#No
-#(3, 1, 4, 1, 5, 2)不是(1, 2, 3, 4, 5, 6)的排列组合，所以我们应该打印No。
-#
-#输入样本3
-#3
-#1 2 3
-#
-#样品输出3
-#Yes
-#
-#样品输入4
-#1
-#1
-#
-#采样输出4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n + 1):
+        if a[i - 1] != i:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    a.sort()
+    if a == list(range(1,n+1)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def f():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if a == list(range(1, n+1)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def is_permutation(n, a):
+    if len(a) != n:
+        return False
+    for i in range(1, n+1):
+        if i not in a:
+            return False
+    return True
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n):
+        if a[i] != i + 1:
+            print('No')
+            exit()
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if A == list(range(1, N+1)):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n+1):
+        if a[i-1] != i:
+            print("No")
+            exit()
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n+1):
+        if i != a[i-1]:
+            print("No")
+            break
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(1, n+1):
+        if a[i-1] != i:
+            print('No')
+            break
+    else:
+        print('Yes')

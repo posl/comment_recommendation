@@ -1,41 +1,114 @@
-#问题陈述
-#你有三个任务，都需要完成。
-#首先，你可以以0的成本完成任何一项任务。
-#然后，在完成第i项任务后，你可以以|A_j-A_i|的成本完成第j项任务。
-#这里，|x|表示x的绝对值。
-#找到完成所有任务所需的最小总成本。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a_1, a_2, a_3 ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#A_1 A_2 A_3
-#
-#輸出
-#打印完成所有任务所需的最小总成本。
-#
-#输入样本 1
-#1 6 3
-#
-#样本输出 1
-#5
-#当任务按以下顺序完成时，总成本将是5，这是最小的：
-#以0的成本完成第一个任务。
-#完成第三项任务，成本为2。
-#完成第二项任务，成本为3。
-#
-#样本输入2
-#11 5 5
-#
-#样本输出2
-#6
-#
-#样本输入3
-#100 100 100
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_min_cost(a1, a2, a3):
+    cost = 0
+    if a1 > a2:
+        cost += a1 - a2
+        a1 = a2
+    if a1 > a3:
+        cost += a1 - a3
+        a1 = a3
+    if a2 < a1:
+        cost += a2 - a1
+        a2 = a1
+    if a2 > a3:
+        cost += a2 - a3
+        a2 = a3
+    return cost
+
+=======
+Suggestion 2
+
+def main():
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[2] - a[0])
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    a1,a2,a3 = map(int, input().split())
+    # 用一个list保存
+    a = [a1, a2, a3]
+    # 从小到大排序
+    a.sort()
+    # 从小到大排序后，a[0]一定是最小的，所以，a[1]和a[2]的差值一定是最小的
+    # 所以，完成所有任务的最小成本就是a[2]-a[0]
+    print(a[2]-a[0])
+
+=======
+Suggestion 4
+
+def main():
+    #输入
+    a1,a2,a3 = map(int,input().split())
+    #处理
+    #输出
+    print(max(a1,a2,a3)-min(a1,a2,a3))
+
+=======
+Suggestion 5
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    print(A[2] - A[0])
+
+=======
+Suggestion 6
+
+def main():
+    # 从标准输入读取
+    a1, a2, a3 = map(int, input().split())
+    # 请在此处编写您的代码
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+    # 请注意，如果使用了标准输入，则不要使用input（）。
+    # 请注意，如果使用了标准输出，则不要使用print（）。
+
+    # 从标准输出打印
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    # 读取数据
+    a1, a2, a3 = map(int, input().split())
+
+    # 计算结果
+    result = 0
+    if a1 > a2:
+        result += a1 - a2
+        a1 = a2
+    if a1 > a3:
+        result += a1 - a3
+        a1 = a3
+    if a2 < a3:
+        result += a3 - a2
+        a3 = a2
+    if a1 < a2:
+        result += a2 - a1
+        a2 = a1
+    if a1 < a3:
+        result += a3 - a1
+        a3 = a1
+    if a2 > a3:
+        result += a2 - a3
+        a2 = a3
+
+    # 输出结果
+    print(result)

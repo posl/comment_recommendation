@@ -1,63 +1,181 @@
-#问题陈述
-#在一条数线上有N支蜡烛。
-#从左边开始的第i支蜡烛被放在坐标x_i上。
-#这里，x_1 < x_2 < ...< x_N成立。
-#最初，没有蜡烛在燃烧。
-#Snuke决定点燃N支蜡烛中的K支。
-#现在，他在坐标0处。
-#他可以以1的速度沿直线向左和向右移动。
-#当他与蜡烛在同一位置时，他也可以点燃蜡烛，时间可以忽略不计。
-#求点燃K支蜡烛所需的最少时间。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ N
-#x_i是一个整数。
-#|x_i| ≦ 10^8
-#x_1 < x_2 < ...< x_N
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#x_1 x_2 ... x_N
-#
-#输出
-#打印点燃K支蜡烛所需的最小时间。
-#
-#输入样本 1
-#5 3
-#-30 -10 10 20 50
-#
-#样本输出1
-#40
-#他应该按以下方式移动和点燃蜡烛：
-#从坐标0移动到-10。
-#点燃从左边开始的第二支蜡烛。
-#从坐标-10移动到10。
-#从左边点燃第三根蜡烛。
-#从坐标10移动到20。
-#从左边点燃第四支蜡烛。
-#
-#输入样本 2
-#3 2
-#10 20 30
-#
-#样本输出2
-#20
-#
-#样本输入3
-#1 1
-#0
-#
-#样本输出3
-#0
-#在坐标0处可能有一个蜡烛。
-#
-#样本输入4
-#8 5
-#-9 -7 -4 -3 1 2 3 4
-#
-#样本输出 4
-#10
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    x = list(map(int, input().split()))
+    ans = 10 ** 9
+    for i in range(n - k + 1):
+        l = x[i]
+        r = x[i + k - 1]
+        if l * r <= 0:
+            ans = min(ans, min(-l, r) + r - l)
+        else:
+            ans = min(ans, max(l, r))
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    print("请输入蜡烛数量和点燃数量：")
+    n,k = input().split()
+    n = int(n)
+    k = int(k)
+    print("请输入蜡烛坐标：")
+    x = input().split()
+    x = list(map(int,x))
+    #print(x)
+    #print(n,k)
+    #print("最小时间为：")
+    print(min_time(n,k,x))
+
+=======
+Suggestion 3
+
+def main():
+    N, K = map(int, input().split())
+    X = list(map(int, input().split()))
+    ans = 10**9
+    for i in range(N-K+1):
+        l = X[i]
+        r = X[i+K-1]
+        ans = min(ans, min(abs(l)+abs(l-r), abs(r)+abs(l-r)))
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    x = list(map(int,input().split()))
+    x.sort()
+    if k == n:
+        print(0)
+        return
+    elif k == 1:
+        print(x[-1] - x[0])
+        return
+    else:
+        ans = 10**9
+        for i in range(n-k+1):
+            ans = min(ans,x[i+k-1]-x[i]+min(abs(x[i]),abs(x[i+k-1])))
+        print(ans)
+        return
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    x = list(map(int,input().split()))
+    ans = 10**9
+    for i in range(n-k+1):
+        if x[i]*x[i+k-1] <= 0:
+            ans = min(ans, min(abs(x[i]), abs(x[i+k-1]))*2 + max(abs(x[i]), abs(x[i+k-1])))
+        else:
+            ans = min(ans, max(abs(x[i]), abs(x[i+k-1])))
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    x = list(map(int, input().split()))
+
+    #print(N, K)
+    #print(x)
+
+    # 从0开始的时间
+    time = 0
+    # 从0开始向左移动的时间
+    time_left = 0
+    # 从0开始向右移动的时间
+    time_right = 0
+
+    # 将x列表中的正负数分开
+    x_left = []
+    x_right = []
+    for i in x:
+        if i < 0:
+            x_left.append(i)
+        elif i > 0:
+            x_right.append(i)
+        else:
+            pass
+    #print(x_left)
+    #print(x_right)
+    #print(len(x_left))
+    #print(len(x_right))
+
+    # 从0开始向左移动的时间
+    if len(x_left) > 0:
+        time_left = abs(x_left[0])
+    # 从0开始向右移动的时间
+    if len(x_right) > 0:
+        time_right = x_right[-1]
+
+    #print(time_left)
+    #print(time_right)
+
+    # 从0开始向左移动的时间和向右移动的时间，取大的值
+    time = max(time_left, time_right)
+
+    #print(time)
+
+    # 从0开始的时间，加上从0开始向左移动的时间和向右移动的时间
+    time = time + (time_right - time_left)
+
+    #print(time)
+
+    # 从0开始的时间，加上从0开始向左移动的时间和向右移动的时间，再加上点燃蜡烛的时间
+    time = time + (x_right[-1] - x_left[0])
+
+    #print(time)
+
+    # 从0开始的时间，加上从0开始向左移动的时间和向右移动的时间，再加上点燃蜡烛的时间，再减去点燃K支蜡烛的时间
+    time = time - x_right[-K]
+
+    #print(time)
+
+    # 从0开始的时间，加上从0
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    x = list(map(int,input().split()))
+    ans = 10**9
+    for i in range(n-k+1):
+        if x[i]*x[i+k-1] > 0:
+            ans = min(ans,max(abs(x[i]),abs(x[i+k-1])))
+        else:
+            ans = min(ans,x[i+k-1]-x[i]+min(abs(x[i]),abs(x[i+k-1])))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int, input().split())
+    x = list(map(int, input().split()))
+    
+    min_time = 10**9
+    for i in range(n-k+1):
+        if x[i] <= 0 and x[i+k-1] >= 0:
+            min_time = min(min_time, abs(x[i])+abs(x[i]-x[i+k-1]), abs(x[i+k-1])+abs(x[i]-x[i+k-1]))
+        elif x[i] <= 0 and x[i+k-1] <= 0:
+            min_time = min(min_time, abs(x[i]))
+        else:
+            min_time = min(min_time, abs(x[i+k-1]))
+    print(min_time)

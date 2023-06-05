@@ -1,42 +1,90 @@
-#问题陈述
-#给你一个序列P，它是(1,2,...,N)的置换，和一个整数X。
-#P的第i项的值为P_i。
-#打印k，使P_k=X。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ X ≦ N
-#P是一个(1,2,...,N)的排列组合。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N X
-#P_1 P_2 ...P_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#2 3 1 4
-#
-#样本输出 1
-#2
-#我们有P=（2,3,1,4），所以P_2=3。因此，你应该打印2。
-#
-#输入样本2
-#5 2
-#3 5 1 4 2
-#
-#样本输出2
-#5
-#
-#样本输入3
-#6 6
-#1 2 3 4 5 6
-#
-#样本输出 3
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input().split()[0])
+    p = list(map(int, input().split()))
+    x = int(input().split()[1])
+    print(p.index(x)+1)
+
+=======
+Suggestion 2
+
+def main():
+    n,x=map(int,input().split())
+    p=list(map(int,input().split()))
+    for i in range(n):
+        if p[i]==x:
+            print(i+1)
+
+=======
+Suggestion 3
+
+def findit(n,x,p):
+    for i in range(n):
+        if p[i] == x:
+            return i+1
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    p = list(map(int, input().split()))
+    print(p.index(x) + 1)
+
+=======
+Suggestion 5
+
+def get_input():
+    n, x = map(int, raw_input().split())
+    p = map(int, raw_input().split())
+    return n, x, p
+
+=======
+Suggestion 6
+
+def find_x(p, x):
+    for i in range(len(p)):
+        if p[i] == x:
+            return i + 1
+
+=======
+Suggestion 7
+
+def main():
+    line = input().split()
+    N = int(line[0])
+    X = int(line[1])
+    P = input().split()
+    for i in range(N):
+        P[i] = int(P[i])
+    for i in range(N):
+        if P[i] == X:
+            print(i+1)
+            break
+
+=======
+Suggestion 8
+
+def find_x(n,x,p):
+    for i in range(n):
+        if p[i]==x:
+            return i+1
+
+n,x=map(int,input().split())
+p=list(map(int,input().split()))
+print(find_x(n,x,p))
+
+=======
+Suggestion 9
+
+def main():
+    n, x = map(int, input().split())
+    p = list(map(int, input().split()))
+    for i in range(n):
+        if p[i] == x:
+            print(i + 1)
+            break

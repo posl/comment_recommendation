@@ -1,38 +1,73 @@
-#问题陈述
-#一排有N棵苹果树。人们说，其中一棵会结出金苹果。
-#我们想部署一定数量的检查员，以便对这些树中的每一棵进行检查。
-#每个检查员将被部署在其中一棵树下。为方便起见，我们将给这些树分配从1到N的数字。部署在第i棵树下的检查员（1 ≦ i ≦ N）将检查编号在i-D和i+D（包括）之间的树。
-#找到我们需要部署的检查员的最小数量以实现目标。
-#
-#约束条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 20
-#1 ≦ D ≦ 20
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N D
-#
-#输出
-#打印我们为实现目标所需部署的最小检查员数量。
-#
-#输入样本 1
-#6 2
-#
-#样本输出 1
-#2
-#我们可以通过，例如，在树3和树4下放置一个检查员来实现这个目标。
-#
-#输入样本2
-#14 3
-#
-#样本输出 2
-#2
-#
-#采样输入3
-#20 4
-#
-#样品输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, D = map(int, input().split())
+    print(N // (2 * D + 1) + (N % (2 * D + 1) > 0))
+
+=======
+Suggestion 2
+
+def main():
+    N,D = map(int,input().split())
+    if N%(2*D+1)==0:
+        print(N//(2*D+1))
+    else:
+        print(N//(2*D+1)+1)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    n,d = map(int,input().split())
+    # 检查员数量
+    count = 0
+    # 树列表
+    tree = [0 for i in range(n)]
+    # 读取树的信息
+    for i in range(n):
+        tree[i] = int(input())
+    # 遍历树
+    for i in range(n):
+        # 检查员是否已经部署
+        flag = False
+        # 遍历检查员
+        for j in range(count):
+            # 检查员已经部署
+            if tree[i] - d <= check[j] and check[j] <= tree[i] + d:
+                flag = True
+                break
+        # 检查员未部署
+        if flag == False:
+            # 部署检查员
+            check[count] = tree[i]
+            # 检查员数量增加
+            count += 1
+    # 输出检查员数量
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n, d = map(int, input().split())
+    print((n + 2 * d) // (2 * d + 1))
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    print((N + 2 * D) // (2 * D + 1))
+
+=======
+Suggestion 6
+
+def check_apple_tree(n, d):
+    if n % (d * 2 + 1) == 0:
+        return n // (d * 2 + 1)
+    else:
+        return n // (d * 2 + 1) + 1

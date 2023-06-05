@@ -1,55 +1,199 @@
-#问题陈述
-#你观察了变形虫并做了一些记录。
-#最初，有一个变形，编号为1。
-#你做了N次记录。根据第i条记录，编号为A_i的变形虫消失了，它自己分成了两个新的变形虫，然后被编号为2i和2i+1。
-#这里，变形虫A_i被说成是变形虫2i和2i+1的父母。
-#对于每个k=1,...,2N+1，变形虫k与变形虫1相距多少代？
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#记录是一致的。就是说：
-#1≦ A_i ≦ 2i-1。
-#A_i是不同的整数。
-#
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印2N+1行。第k行应包含变形虫1和变形虫k之间的生成距离。
-#
-#输入样本 1
-#2
-#1 2
-#
-#采样输出1
-#0
-#1
-#1
-#2
-#2
-#从变形虫1中，诞生了变形虫2和3。从变形虫2开始，诞生了变形虫4和5。
-#变形虫1与变形虫1是零代的关系。
-#变形虫2与变形虫1有一代之隔。
-#变形虫3与变形虫1相距一代。
-#变形虫4与变形虫2相距一代，与变形虫1相距两代。
-#变形虫5与变形虫2相距一代，与变形虫1相距两代。
-#
-#样本输入2
-#4
-#1 3 5 2
-#
-#样本输出2
-#0
-#1
-#1
-#2
-#2
-#3
-#3
-#2
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*(2*N+1)
+    for i in range(N):
+        B[A[i]] = i+1
+
+    #print(B)
+    for i in range(1, 2*N+1):
+        if i == 1:
+            print(0)
+        else:
+            j = i
+            count = 0
+            while j != 1:
+                j = B[j]
+                count += 1
+            print(count)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    N = int(input())
+    A = list(map(int, input().split()))
+    # 生成结果
+    ans = []
+    for i in range(2 ** N):
+        ans.append(0)
+    for i in range(N):
+        ans[2 * i] = 1
+    for i in range(N):
+        ans[A[i] - 1] = ans[i] + 1
+    # 输出结果
+    for i in range(2 ** N):
+        print(ans[i])
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = [0]*(2*n+1)
+    for i in range(n):
+        b[a[i]] = i+1
+    ans = [0]*(2*n+1)
+    for i in range(1,2*n+1):
+        j = i
+        cnt = 0
+        while j > 0:
+            cnt += 1
+            j //= 2
+        ans[i] = cnt-1
+    for i in range(1,2*n+1):
+        j = i
+        cnt = 0
+        while j > 0:
+            cnt += 1
+            j //= 2
+        ans[i] = cnt-1
+    for i in range(2,2*n+1):
+        if ans[i] == 1:
+            ans[i] = ans[b[i]]+1
+    for i in range(1,2*n+1):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * (2 * N + 1)
+    for i in range(N):
+        B[A[i]] = i + 1
+    from collections import deque
+    Q = deque()
+    Q.append((1, 0))
+    while Q:
+        i, d = Q.popleft()
+        print(d)
+        if 2 * i <= 2 * N and B[2 * i] != 0:
+            Q.append((2 * i, d + 1))
+        if 2 * i + 1 <= 2 * N and B[2 * i + 1] != 0:
+            Q.append((2 * i + 1, d + 1))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * (2*N+1)
+    for i in range(N):
+        B[A[i]] = i+1
+    for i in range(1, 2*N+1):
+        j = i
+        while j > 1:
+            j = j // 2
+            B[i] += 1
+    for i in range(1, 2*N+1):
+        print(B[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2 * n + 1)
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2 * n + 1):
+        j = i
+        cnt = 0
+        while j > 0:
+            j //= 2
+            cnt += 1
+        print(cnt - 1 + b[i])
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0]*(2*N+1)
+    for i in range(N):
+        B[A[i]] = i+1
+    for i in range(1, 2*N+1):
+        j = i
+        while j > 0:
+            print(i-j)
+            j = B[j]//2
+
+=======
+Suggestion 8
+
+def solve(n, A):
+    n = 2*n + 1
+    B = [0]*n
+    B[0] = 0
+    for i in range(n-1):
+        B[i+1] = B[(i+1)//2] + 1
+    ans = []
+    for i in range(n):
+        ans.append(B[A[i]])
+    return ans
+
+n = int(input())
+A = list(map(int, input().split()))
+ans = solve(n, A)
+for i in range(len(ans)):
+    print(ans[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (2*n + 1)
+    for i in range(n):
+        b[a[i]] = i + 1
+    for i in range(1, 2*n + 1):
+        j = i
+        while j > 0 and b[j] < b[(j + 1) // 2]:
+            b[j], b[(j + 1) // 2] = b[(j + 1) // 2], b[j]
+            j = (j + 1) // 2
+    for i in range(1, 2*n + 1):
+        j = i
+        ans = 0
+        while j > 1:
+            j //= 2
+            ans += 1
+        print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * (2 * n + 1)
+    for i in range(n):
+        ans[a[i]] = i + 1
+    for i in range(2 * n - 1, 0, -1):
+        ans[i // 2] = min(ans[i // 2], ans[i] + 1)
+    for i in range(1, 2 * n + 1):
+        print(ans[i])

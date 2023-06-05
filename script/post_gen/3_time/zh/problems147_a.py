@@ -1,30 +1,106 @@
-#问题陈述
-#给出三个整数A_1, A_2, 和A_3。
-#如果A_1+A_2+A_3大于或等于22，则打印bust；否则，打印win。
-#
-#限制条件
-#1 ≦ A_i ≦ 13 (i=1,2,3)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A_1 A_2 A_3
-#
-#輸出
-#如果A_1+A_2+A_3大于或等于22，打印bust；否则，打印win。
-#
-#输入样本 1
-#5 7 9
-#
-#输出样本 1
-#Win
-#5+7+9=21，所以打印win。
-#
-#输入样本2
-#13 7 2
-#
-#输出样本 2
-#bust
-#13+7+2=22，所以打印bust。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = input()
+    b = input()
+    c = input()
+    if int(a) + int(b) + int(c) >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 2
+
+def main():
+    a = input()
+    a = a.split(" ")
+    a[0] = int(a[0])
+    a[1] = int(a[1])
+    a[2] = int(a[2])
+    if (a[0] + a[1] + a[2] >= 22):
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 3
+
+def main():
+    a = input().split()
+    sum = 0
+    for i in a:
+        sum += int(i)
+    if sum >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int,input().split())
+
+    if a+b+c >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 5
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print('bust')
+    else:
+        print('win')
+
+=======
+Suggestion 6
+
+def main():
+    a = input().split()
+    sum = 0
+    for i in range(3):
+        sum += int(a[i])
+    if sum >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 7
+
+def main():
+    a = input()
+    a = a.split(" ")
+    a = [int(n) for n in a]
+    if sum(a) >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 8
+
+def main():
+    a = list(map(int, input().split()))
+    if sum(a) >= 22:
+        print("bust")
+    else:
+        print("win")
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    if a+b+c >= 22:
+        print('bust')
+    else:
+        print('win')

@@ -1,71 +1,204 @@
-#问题陈述
-#给你一个有N个顶点和M条边的简单无向图G（一个简单的图不包含自循环或多条边）。
-#对于i=1，2，...，M，第i条边连接着顶点u_i和顶点v_i。
-#打印满足1 ≦ u < v ≦ N和以下两个条件的整数对（u, v）的数量。
-#图G没有一条连接顶点u和顶点v的边。
-#在图G中增加一条连接顶点u和顶点v的边，就形成了一个双线图。
-# 什么是双线图？
-#当且仅当人们可以将每个顶点涂成黑色或白色以满足以下条件时，一个无向图就被称为是双线图。
-# 没有一条边连接到涂成相同颜色的顶点。
-#
-#
-#约束条件
-#2 ≦ N ≦ 2 × 10^5
-#0 ≦ M ≦ min {2 × 10^5, N(N-1)/2 }
-#1 ≦ u_i, v_i ≦ N
-#图G很简单。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#u_1 v_1
-#u_2 v_2
-#.
-#.
-#.
-#u_M v_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 4
-#4 2
-#3 1
-#5 2
-#3 2
-#
-#样本输出 1
-#2
-#我们有两对整数（u，v）满足问题陈述中的条件：（1，4）和（1，5）。因此，你应该打印2。
-#其他的对不满足条件。例如，对于（1，3），图G有一条连接顶点1和顶点3的边；对于（4，5），在图G中增加一条连接顶点4和顶点5的边并不能形成一个双线图。
-#
-#输入样本 2
-#4 3
-#3 1
-#3 2
-#1 2
-#
-#样本输出2
-#0
-#请注意，给定的图可能不是双线的或连接的。
-#
-#输入样本 3
-#9 11
-#4 9
-#9 1
-#8 2
-#8 3
-#9 2
-#8 4
-#6 7
-#4 6
-#7 5
-#4 5
-#7 8
-#
-#样本输出3
-#9
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,m = map(int, input().split())
+    #print(n,m)
+    #print(type(n),type(m))
+    edges = []
+    for i in range(m):
+        edges.append(list(map(int, input().split())))
+    #print(edges)
+    #print(type(edges))
+    graph = {}
+    for i in range(1,n+1):
+        graph[i] = []
+    for edge in edges:
+        graph[edge[0]].append(edge[1])
+        graph[edge[1]].append(edge[0])
+    #print(graph)
+    #print(type(graph))
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+            if j not in graph[i]:
+                #print(i,j)
+                #print(graph[i])
+                #print(graph[j])
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    n, m = map(int, input().split())
+    d = [0] * n
+    for _ in range(m):
+        u, v = map(int, input().split())
+        d[u - 1] += 1
+        d[v - 1] += 1
+    print(sum(i == 1 for i in d))
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    N, M = map(int, input().split())
+    # 1. 读取边
+    edges = []
+    for i in range(M):
+        u, v = map(int, input().split())
+        edges.append((u, v))
+    # 2. 构建邻接表
+    adj = [[] for _ in range(N+1)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    # 3. 构建双线图
+    # 黑色：0，白色：1，未涂色：-1
+    colors = [-1] * (N+1)
+    def dfs(u, color):
+        colors[u] = color
+        for v in adj[u]:
+            if colors[v] == -1:
+                dfs(v, 1-color)
+    dfs(1, 0)
+    # 4. 统计答案
+    ans = 0
+    for u, v in edges:
+        if colors[u] != colors[v]:
+            ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    N,M = map(int,input().split())
+    u = [0]*M
+    v = [0]*M
+    for i in range(M):
+        u[i],v[i] = map(int,input().split())
+    #print(N,M,u,v)
+    #print(len(u),len(v))
+    #print(u[0],v[0])
+    #print(u[1],v[1])
+    #print(u[2],v[2])
+    #print(u[3],v[3])
+    #print(u[4],v[4])
+    #print(u[5],v[5])
+    #print(u[6],v[6])
+    #print(u[7],v[7])
+    #print(u[8],v[8])
+    #print(u[9],v[9])
+    #print(u[10],v[10])
+    #print(u[11],v[11])
+    #print(u[12],v[12])
+    #print(u[13],v[13])
+    #print(u[14],v[14])
+    #print(u[15],v[15])
+    #print(u[16],v[16])
+    #print(u[17],v[17])
+    #print(u[18],v[18])
+    #print(u[19],v[19])
+    #print(u[20],v[20])
+    #print(u[21],v[21])
+    #print(u[22],v[22])
+    #print(u[23],v[23])
+    #print(u[24],v[24])
+    #print(u[25],v[25])
+    #print(u[26],v[26])
+    #print(u[27],v[27])
+    #print(u[28],v[28])
+    #print(u[29],v[29])
+    #print(u[30],v[30])
+    #print(u[31],v[31])
+    #print(u[32],v[32])
+    #print(u[33],v[33])
+    #print(u[34],v[34])
+    #print(u[35],v[35])
+    #print(u[36],v[36])
+    #print(u[37],v[37])
+    #print(u[38],v[38])
+    #print(u[
+
+=======
+Suggestion 6
+
+def solve(n, m, u, v):
+    # 从1开始，所以需要n+1
+    color = [0] * (n + 1)
+    # 从1开始，所以需要n+1
+    g = [[] for _ in range(n + 1)]
+    for i in range(m):
+        g[u[i]].append(v[i])
+        g[v[i]].append(u[i])
+    # print(g)
+    ans = 0
+    for i in range(1, n + 1):
+        # 如果当前节点没有被染色
+        if color[i] == 0:
+            # 从当前节点开始染色
+            ans += 1
+            q = [i]
+            color[i] = 1
+            while len(q) != 0:
+                cur = q.pop()
+                # 遍历当前节点的所有邻接边
+                for j in g[cur]:
+                    # 如果当前节点和邻接边的颜色相同，返回False
+                    if color[j] == color[cur]:
+                        return 0
+                    # 如果邻接边没有被染色，那么染成和当前节点不同的颜色
+                    if color[j] == 0:
+                        color[j] = -color[cur]
+                        q.append(j)
+    return ans
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    graph = [[] for i in range(n+1)]
+    for i in range(m):
+        a,b = map(int,input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+    #print(graph)
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+            if j in graph[i]:
+                continue
+            for k in graph[i]:
+                if k in graph[j]:
+                    break
+            else:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_input():
+    n, m = map(int, input().split())
+    edges = [list(map(int, input().split())) for _ in range(m)]
+    return n, m, edges
+
+=======
+Suggestion 9
+
+def main():
+    return

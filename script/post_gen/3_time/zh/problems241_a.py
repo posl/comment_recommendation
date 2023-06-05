@@ -1,37 +1,120 @@
-#问题陈述
-#有一个设备，屏幕上显示一个单数数字，还有一个按钮。  
-#当屏幕上显示数字k时，按一次按钮，屏幕上的数字就变成a_k。  
-#该设备目前显示为0。按3次按钮后，屏幕上将显示什么？
-#
-#限制条件
-#0≦ a_i ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a_0 a_1 ... a_9
-#
-#輸出
-#打印答案。  
-#
-#输入样本1
-#9 0 1 2 3 4 5 6 7 8
-#
-#样本输出1
-#7
-#屏幕上的数字转换为0->9->8->7。
-#
-#输入样本2
-#4 8 8 8 0 8 8 8 8 8
-#
-#输出样本2
-#4
-#屏幕上的数字转换为0->4->0->4。
-#
-#输入样本3
-#0 0 0 0 0 0 0 0 0 0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = map(int, raw_input().split())
+    cnt = 0
+    while cnt < 3:
+        cnt += 1
+        a = a[a[0]]
+    print a[0]
+
+=======
+Suggestion 2
+
+def main():
+    a = input()
+    a = a.split()
+    b = 0
+    for i in range(3):
+        b = a[b]
+        b = int(b)
+    print(b)
+
+=======
+Suggestion 3
+
+def main():
+    a = map(int, raw_input().split())
+    for i in range(10):
+        a[i] = a[a[i]]
+    print a[0]
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)
+
+=======
+Suggestion 5
+
+def main():
+    a = input().split()
+    k = 0
+    for i in range(3):
+        k = int(a[k])
+    print(k)
+
+=======
+Suggestion 6
+
+def main():
+    import sys
+    a = [int(x) for x in sys.stdin.readline().strip().split()]
+    b = [0] * 10
+    for i in range(10):
+        b[a[i]] = i
+    p = 0
+    for i in range(3):
+        p = b[p]
+    print(p)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    arr = list(map(int, input().split()))
+    count = 0
+    while True:
+        count += 1
+        if count > 100:
+            break
+        arr[0] = arr[arr[0]]
+        if arr[0] == 0:
+            break
+    print(arr[0])
+
+=======
+Suggestion 8
+
+def main():
+    input_str = input()
+    input_list = input_str.split()
+    input_list = list(map(int, input_list))
+    count = 0
+    while count < 3:
+        input_list = list(map(lambda x:input_list[x], input_list))
+        count += 1
+    print(input_list[0])
+
+=======
+Suggestion 9
+
+def main():
+    a = map(int, raw_input().split())
+    i = 0
+    while i < 3:
+        a = a[a[i]]
+        i += 1
+    print a
+
+=======
+Suggestion 10
+
+def main():
+    a = input()
+    a = a.split(' ')
+    for i in range(10):
+        a[i] = int(a[i])
+    k = 0
+    for i in range(3):
+        k = a[k]
+    print(k)

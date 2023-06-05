@@ -1,43 +1,148 @@
-#问题陈述
-#S由小写英文字母组成，T是通过在S中插入一个小写英文字母得到的。
-#找到插入的字符在T中的位置。
-#如果有多个候选人，请找出其中任何一个。
-#
-#约束条件
-#1 ≦ |S| ≦ 5× 10^5
-#S由小写英文字母组成。
-#在S中插入一个小写的英文字母就可以得到T。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#S
-#T
-#
-#输出
-#打印一个整数i，代表插入的字符是T开头的第i个字符。如果有多个可能的答案，打印其中任何一个都可以接受。  
-#
-#输入样本1
-#atcoder
-#atcorder
-#
-#样本输出1
-#5
-#从T开头的第5个字符，r，被插入。
-#
-#样本输入2
-#million
-#milllion
-#
-#样本产出 2
-#5
-#从T开头的第3、第4和第5个字符中插入一个。
-#因此，打印3、4、5中的任何一个都可以接受。
-#
-#输入示例 3
-#vvwvw
-#vvvwvw
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #读取输入
+    S = input()
+    T = input()
+    #判断S与T的长度
+    len_S = len(S)
+    len_T = len(T)
+    #判断S与T的长度是否符合约束
+    if 1 <= len_S <= 5*10**5 and 1 <= len_T <= 5*10**5:
+        #判断S与T的长度是否相等
+        if len_S == len_T - 1:
+            #遍历S
+            for i in range(len_S):
+                #判断S与T的第i个字符是否相同
+                if S[i] != T[i]:
+                    #输出i+1
+                    print(i+1)
+                    #跳出循环
+                    break
+            else:
+                #输出len_T
+                print(len_T)
+        else:
+            #输出len_T
+            print(len_T)
+    else:
+        #输出len_T
+        print(len_T)
+
+=======
+Suggestion 2
+
+def solve():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            return
+    print(len(S)+1)
+
+solve()
+
+=======
+Suggestion 3
+
+def solve(s,t):
+    i = 0
+    j = 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+        j += 1
+    return i + 1
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(t)):
+        if t[:i] + t[i+1:] == s:
+            print(i+1)
+            break
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    t = input()
+    i = 0
+    j = 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i = i + 1
+        j = j + 1
+    print(j)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+=======
+Suggestion 7
+
+def solve(s,t):
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            return i+1
+    return len(s)+1
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    T = input()
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            print(i+1)
+            break
+    else:
+        print(len(S)+1)
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    t = input()
+    for i in range(len(t)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(t))
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    t = input()
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            print(i+1)
+            break
+    else:
+        print(len(s)+1)
+
+main()

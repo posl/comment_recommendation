@@ -1,68 +1,330 @@
-#问题陈述
-#有N个方块，索引为方块1，方块2，...，方块N，从左到右排列成一排。
-#同时，有K个棋子。  从左边开始的第i个棋子最初被放在方格A_i上。
-#现在，我们将对它们进行Q操作。
-#第i个操作如下：
-#如果左边的第L_i个棋子在其最右边的方格上，则不做任何操作。
-#否则，如果右边的下一个方格上没有棋子，则将左边的第L_i个棋子向右移动一个方格；如果有，则不做任何操作。
-#在Q操作结束后，对每个i=1,2,...,K打印左边第i个棋子所在的方格的索引。
-#
-#限制条件
-#1≦ K≦ N≦ 200
-#1≦ a_1<a_2<...<a_k≦ n
-#1≦ Q≦ 1000
-#1≦ L_i≦ K
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K Q
-#A_1 A_2 ...A_K
-#L_1 L_2 ...L_Q
-#
-#输出
-#在一行中打印K个整数，中间有空格。
-#其中第i个应该是Q操作结束后左边第i个棋子所在的方格的索引。
-#
-#输入样本 1
-#5 3 5
-#1 3 4
-#3 3 1 1 2
-#
-#样本输出 1
-#2 4 5
-#起初，棋子在1、3、4号方格上。  对它们进行的操作如下：
-#左边第3个棋子在4号方格。
-#这不是最右边的方格，而且右边的下一个方格也没有棋子，所以把左边第3个棋子移到第5个方格。
-#现在，棋子都在1、3、5号方格上。
-#左边第3个棋子在5号方格。
-#这是最右边的方格，所以什么都不要做。
-#棋子仍然在1、3、5号方格上。
-#左边第1个棋子在1号方格上。
-#这不是最右边的方格，而且右边的下一个方格也没有棋子，所以把左边的第1个棋子移到方格2。
-#现在，棋子都在2、3、5号方格上。
-#左边的第1个棋子在2号格子上。
-#这不是最右边的方格，但是右边的下一个方格（3号方格）有一个棋子，所以什么都不要做。
-#棋子仍然在2、3、5号方格上。
-#左边第2个棋子在3号方格上。
-#这不是最右边的方格，而且右边的下一个方格也没有棋子，所以把左边第2个棋子移到第4方格；
-#现在，棋子仍然在2、4、5号方格上。
-#因此，在Q操作结束后，棋子都在2、4、5号方格上，所以2、4、5号方格应该按照这个顺序打印，中间要有空格。
-#
-#输入样本 2
-#2 2 2
-#1 2
-#1 2
-#
-#样本输出 2
-#1 2
-#
-#样本输入3
-#10 6 9
-#1 3 5 7 8 9
-#1 2 3 4 5 6 5 6 2
-#
-#样本输出 3
-#2 5 6 7 9 10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(k):
+        b[a[i] - 1] += 1
+    for i in range(q):
+        for j in range(k):
+            if b[a[l[j] - 1] - 1] == 0:
+                a[l[j] - 1] += 1
+                b[a[l[j] - 1] - 1] += 1
+    print(' '.join(map(str, a)))
+
+=======
+Suggestion 2
+
+def main():
+    N,K,Q = map(int,input().split())
+    A = list(map(int,input().split()))
+    L = list(map(int,input().split()))
+    #print(N,K,Q)
+    #print(A)
+    #print(L)
+    #N,K,Q = 5,3,5
+    #A = [1,3,4]
+    #L = [3,3,1,1,2]
+    #N,K,Q = 2,2,2
+    #A = [1,2]
+    #L = [1,2]
+    #N,K,Q = 10,6,9
+    #A = [1,3,5,7,8,9]
+    #L = [1,2,3,4,5,6,5,6,2]
+    #print(N,K,Q)
+    #print(A)
+    #print(L)
+
+    #棋子的位置
+    p = [0]*N
+    for i in range(K):
+        p[A[i]-1] += 1
+    #print(p)
+
+    #棋子移动
+    for i in range(Q):
+        for j in range(K):
+            if p[L[j]-1] == N:
+                continue
+            elif p[L[j]] == 0:
+                p[L[j]-1] -= 1
+                p[L[j]] += 1
+    #print(p)
+
+    #输出
+    for i in range(K):
+        print(p[i],end=' ')
+    print()
+
+=======
+Suggestion 3
+
+def main():
+    n,k,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    l = list(map(int,input().split()))
+    for i in range(q):
+        if a[l[i]-1] < a[l[i]]:
+            a[l[i]-1],a[l[i]] = a[l[i]],a[l[i]-1]
+    for i in range(k):
+        print(a[i],end=' ')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N,K,Q=map(int,input().split())
+    A=list(map(int,input().split()))
+    L=list(map(int,input().split()))
+    #print(N,K,Q,A,L)
+    #初始化
+    #空间复杂度O(N)
+    #时间复杂度O(N)
+    #B=[0]*N
+    #for i in range(K):
+    #    B[A[i]-1]=1
+    #print(B)
+    #for i in range(Q):
+    #    if B[L[i]-1]==1:
+    #        pass
+    #    else:
+    #        if B[L[i]]==0:
+    #            B[L[i]]=1
+    #        else:
+    #            B[L[i]-2]=1
+    #print(B)
+    #for i in range(K):
+    #    if B[i]==1:
+    #        print(i+1,end=' ')
+    #print()
+
+    #空间复杂度O(N)
+    #时间复杂度O(Q)
+    #B=[0]*N
+    #for i in range(K):
+    #    B[A[i]-1]=1
+    #print(B)
+    #for i in range(Q):
+    #    if B[L[i]-1]==1:
+    #        pass
+    #    else:
+    #        if B[L[i]]==0:
+    #            B[L[i]]=1
+    #        else:
+    #            B[L[i]-2]=1
+    #print(B)
+    #for i in range(K):
+    #    if B[i]==1:
+    #        print(i+1,end=' ')
+    #print()
+
+    #空间复杂度O(N)
+    #时间复杂度O(Q)
+    #B=[0]*N
+    #for i in range(K):
+    #    B[A[i]-1]=1
+    #print(B)
+    #for i in range(Q):
+    #    if B[L[i]-1]==1:
+    #        pass
+    #    else:
+    #        if B[L[i]]==0:
+    #            B[L[i]]=1
+    #        else:
+    #            B[L[i]-2]=1
+    #print(B)
+    #for i in range(K):
+    #    if B[i]==1:
+    #        print(i
+
+=======
+Suggestion 5
+
+def main():
+    n,k,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    l = list(map(int,input().split()))
+    for i in range(q):
+        if a[l[i]-1] < n:
+            if a[l[i]-1]+1 in a:
+                pass
+            else:
+                a[l[i]-1] += 1
+    for i in range(k):
+        print(a[i],end = ' ')
+
+=======
+Suggestion 6
+
+def problem257_b():
+    N, K, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    L = list(map(int, input().split()))
+
+    # 1. 棋子位置
+    chess = [0] * N
+    for i in range(K):
+        chess[A[i] - 1] = 1
+
+    # 2. 棋子移动
+    for i in range(Q):
+        current = L[i] - 1
+        while current < N - 1:
+            if chess[current + 1] == 1:
+                break
+            else:
+                chess[current] = 0
+                chess[current + 1] = 1
+                current += 1
+
+    # 3. 输出结果
+    for i in range(K):
+        for j in range(N):
+            if chess[j] == 1:
+                print(j + 1, end=' ')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    n,k,q = map(int,input().split())
+    a = list(map(int,input().split()))
+    l = list(map(int,input().split()))
+    for i in range(q):
+        if a[l[i]-1] == n:
+            pass
+        else:
+            if a[l[i]-1] == a[l[i]]:
+                pass
+            else:
+                a[l[i]-1] += 1
+    for i in range(k):
+        print(a[i])
+
+=======
+Suggestion 8
+
+def main():
+    #读取输入
+    #N K Q
+    N,K,Q = map(int, input().split())
+    #A_1 A_2 ...A_K
+    A = list(map(int, input().split()))
+    #L_1 L_2 ...L_Q
+    L = list(map(int, input().split()))
+    
+    #棋子位置
+    pos = [0]*N
+    #初始化棋子位置
+    for i in range(K):
+        pos[A[i]-1] = 1
+
+    #print(pos)
+    #print(L)
+
+    #执行操作
+    for i in range(Q):
+        #print(L[i])
+        #print(pos)
+        #print(pos[L[i]-1])
+        #print(pos[L[i]])
+        if pos[L[i]-1] == 1:
+            continue
+        elif pos[L[i]] == 0:
+            pos[L[i]-1] = 0
+            pos[L[i]] = 1
+        else:
+            continue
+    #print(pos)
+    #输出
+    for i in range(N):
+        if pos[i] == 1:
+            print(i+1, end=" ")
+    print()
+
+=======
+Suggestion 9
+
+def main():
+    N, K, Q = map(int, input().split())
+    A = [int(x) for x in input().split()]
+    L = [int(x) for x in input().split()]
+    #print(N, K, Q)
+    #print(A)
+    #print(L)
+
+    #棋子的位置
+    chess = [0] * K
+    for i in range(K):
+        chess[i] = A[i]
+    #print(chess)
+
+    #操作
+    for i in range(Q):
+        #print("第%d次操作" % (i+1))
+        #print("棋子位置：", chess)
+        #print("操作：", L[i])
+        #print("棋子位置：", chess)
+        #print("操作：", L[i])
+        #如果左边的第L_i个棋子在其最右边的方格上，则不做任何操作。
+        if chess[L[i]-1] == N:
+            continue
+        #否则，如果右边的下一个方格上没有棋子，则将左边的第L_i个棋子向右移动一个方格；
+        #如果有，则不做任何操作。
+        else:
+            if chess[L[i]-1] + 1 in chess:
+                continue
+            else:
+                chess[L[i]-1] += 1
+
+    #print("棋子位置：", chess)
+    #print("操作：", L[i])
+    #print("棋子位置：", chess)
+    #print("操作：", L[i])
+    #print("棋子位置：", chess)
+    #print("操作：", L[i])
+
+    #打印
+    for i in range(K):
+        print(chess[i], end=" ")
+    print()
+
+=======
+Suggestion 10
+
+def main():
+    n, k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = list(map(int, input().split()))
+
+    # 棋子位置
+    p = [0] * n
+    for i in range(k):
+        p[a[i] - 1] += 1
+    # print(p)
+
+    # 棋子移动
+    for i in range(q):
+        for j in range(k):
+            if p[a[l[j] - 1] - 1] == 1:
+                break
+            if a[l[j] - 1] == n:
+                continue
+            p[a[l[j] - 1] - 1] -= 1
+            p[a[l[j] - 1]] += 1
+            a[l[j] - 1] += 1
+        # print(p)
+    # print(a)
+    # print(l)
+
+    # 输出
+    for i in range(k):
+        print(a[l[i] - 1], end=' ')

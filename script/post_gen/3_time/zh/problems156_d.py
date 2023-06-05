@@ -1,36 +1,209 @@
-#问题陈述
-#阿卡里有n种花，每种都有。
-#她要从这些花中选择一种或几种来做花束。
-#但是，她讨厌两个数字a和b，所以花束中的花的数量不能是a或b。
-#阿卡里可以做多少种不同的花束？
-#找出模数（10^9+7）。
-#在这里，如果有一种花在其中一束花中使用，而在另一束花中不使用，则认为两束花是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ n ≦ 10^9
-#1 ≦ a < b ≦ min(n, 2 × 10^5)
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n a b
-#
-#輸出
-#打印阿卡里能做的花束数量，模数为(10^9 + 7)。(如果没有这样的花束，打印0。）
-#
-#输入样本 1
-#4 1 3
-#
-#输出样本 1
-#7
-#在这个例子中，Akari可以选择2或4朵花来制作花束。
-#有6种方法可以从4种花中选择2种，有1种方法可以选择4种，所以阿卡里一共可以做7种不同的花束。
-#
-#输入样本2
-#1000000000 141421 173205
-#
-#样本输出2
-#34076506
-#打印计数的模数（10^9+7）。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+n, a, b = map(int, input().split())
+mod = 10 ** 9 + 7
+g = gcd(a, b)
+a //= g
+b //= g
+ans = pow(2, n, mod) - 1
+c1 = c2 = 1
+for i in range(b):
+    c1 = c1 * (n - i) * pow(i + 1, mod - 2, mod) % mod
+for i in range(a):
+    c2 = c2 * (n - i) * pow(i + 1, mod - 2, mod) % mod
+ans = (ans - c1 - c2) % mod
+print(ans)
+
+=======
+Suggestion 2
+
+def gcd(a, b):
+    if a < b:
+        a, b = b, a
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+n, a, b = map(int, input().split())
+g = gcd(a, b)
+a //= g
+b //= g
+m = min(a, b)
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    mod = 10**9 + 7
+    if n == 2:
+        print(0)
+        exit()
+    if a == 1:
+        if b == 2:
+            print(0)
+            exit()
+        else:
+            print(1)
+            exit()
+    if b == n:
+        print(0)
+        exit()
+    if a == 2:
+        if b == 3:
+            print(0)
+            exit()
+        else:
+            print(1)
+            exit()
+    if b == n - 1:
+        print(0)
+        exit()
+    if b - a == 1:
+        print(0)
+        exit()
+    if a == b:
+        print(1)
+        exit()
+    if b - a == 2:
+        print(1)
+        exit()
+    if b - a == 3:
+        print(2)
+        exit()
+    if b - a == 4:
+        print(4)
+        exit()
+    if b - a == 5:
+        print(7)
+        exit()
+    if b - a == 6:
+        print(13)
+        exit()
+    if b - a == 7:
+        print(24)
+        exit()
+    if b - a == 8:
+        print(44)
+        exit()
+    if b - a == 9:
+        print(81)
+        exit()
+    if b - a == 10:
+        print(149)
+        exit()
+    if b - a == 11:
+        print(274)
+        exit()
+    if b - a == 12:
+        print(504)
+        exit()
+    if b - a == 13:
+        print(927)
+        exit()
+    if b - a == 14:
+        print(1705)
+        exit()
+    if b - a == 15:
+        print(3136)
+        exit()
+    if b - a == 16:
+        print(5768)
+        exit()
+    if b - a == 17:
+        print(10609)
+        exit()
+    if b - a == 18:
+        print(19513)
+        exit()
+    if b - a == 19:
+        print(35890)
+        exit()
+    if b - a == 20:
+        print(66012)
+        exit()
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(b,a%b)
+
+=======
+Suggestion 5
+
+def find_gcd(a, b):
+    if a < b:
+        a, b = b, a
+    if b == 0:
+        return a
+    else:
+        return find_gcd(b, a%b)
+
+=======
+Suggestion 6
+
+def solve(n, a, b):
+    MOD = 10 ** 9 + 7
+    # 1. nCkを求める
+    # 2. nCkから、aCkとbCkを引く
+    # 3. 2で求めた値をnCkから引く
+    # 4. 3で求めた値をMODで割る
+    def comb(n, k):
+        x, y = 1, 1
+        for i in range(k):
+            x *= n - i
+            y *= i + 1
+            x %= MOD
+            y %= MOD
+        return x * pow(y, MOD - 2, MOD)
+
+    ans = pow(2, n, MOD) - comb(n, a) - comb(n, b)
+    return ans % MOD
+
+n, a, b = map(int, input().split())
+print(solve(n, a, b))
+
+=======
+Suggestion 7
+
+def main():
+    n, a, b = map(int, input().split())
+    if n < 2 * 10 ** 5:
+        ans = pow(2, n, 10 ** 9 + 7) - 1
+        ans -= comb(n, a)
+        ans -= comb(n, b)
+        print(ans % (10 ** 9 + 7))
+    else:
+        pass
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a

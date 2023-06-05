@@ -1,72 +1,108 @@
-#问题陈述
-#在一个被划分为N行10^9列的网格中，有N面墙，编号为1到N。
-#墙的范围从L_i-th列到R_i-th列，从顶部开始的第i行的左边。
-# 1.)
-#高桥决定要摧毁所有N面墙。
-#以他超人的力量，他的一拳可以同时破坏连续的D列。
-#更正式地说，他可以在1和10^9-D+1（包括）之间选择一个整数x，来破坏所有存在于（或部分存在于）第x列到（x+D-1）列的、尚未被破坏的墙。
-#当墙的一部分被破坏时，整个墙将被冲撞破坏。
-#(也见样本输入和输出的图
-# 1.)
-#高桥至少需要打多少次拳才能摧毁所有的墙？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ D ≦ 10^9
-#1 ≦ L_i ≦ R_i ≦ 10^9
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N D
-#L_1 R_1
-#L_2 R_2
-#.
-#.
-#.
-#L_N R_N
-#
-#输出
-#打印摧毁所有墙体所需的最小打孔数。
-#
-#输入样本 1
-#3 3
-#1 2
-#4 7
-#5 9
-#
-#输出样本1
-#2
-#下图描述了样本输入1中墙体的排列情况
-#.
-#他可以用两拳摧毁所有的墙，比如下面的方法。(下面，lbrack a, b rbrack表示从第a列到第b列的范围)。
-#首先，打出lbrack 2, 4 rbrack。在lbrack 2, 4 rbrack中存在的墙--墙1和墙2--被损坏和摧毁。
-#第二，打通lbrack 5, 7 rbrack。在lbrack 5, 7 rbrack中存在的墙--墙3--被损坏和摧毁。
-#也可以通过这种方式，用两个拳头破坏所有的墙：
-#首先，击打lbrack 7, 9 rbrack来摧毁墙体2和3。
-#第二，打lbrack 1, 3 rbrack来摧毁墙1。
-#
-#输入样本 2
-#3 3
-#1 2
-#4 7
-#4 9
-#
-#样本输出2
-#1
-#与样本输入/输出的区别
-# 1的区别是，墙3现在覆盖了lbrack 4, 9 rbrack，而不是lbrack 5, 9 rbrack。
-#在这种情况下，他可以打lbrack 2, 4 rbrack，一拳摧毁所有的墙。
-#
-#输入样本 3
-#5 2
-#1 100
-#1 1000000000
-#101 1000
-#9982 44353
-#1000000000 1000000000
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    n, d = map(int, input().split())
+    l = []
+    r = []
+    for i in range(n):
+        li, ri = map(int, input().split())
+        l.append(li)
+        r.append(ri)
+    l.sort()
+    r.sort()
+    ans = 1
+    cnt = 0
+    i = 0
+    j = 0
+    while i < n and j < n:
+        if l[i] <= r[j]:
+            cnt += 1
+            ans = max(ans, cnt)
+            i += 1
+        else:
+            cnt -= 1
+            j += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    N, D = map(int, input().split())
+    walls = []
+    for _ in range(N):
+        L, R = map(int, input().split())
+        walls.append((L, R))
+    walls.sort()
+    ans = 0
+    i = 0
+    while i < N:
+        L = walls[i][0]
+        R = walls[i][1]
+        if L + D <= R:
+            ans += 1
+            i += 1
+            continue
+        else:
+            j = i + 1
+            while j < N:
+                L2 = walls[j][0]
+                R2 = walls[j][1]
+                if L2 + D <= R:
+                    ans += 1
+                    i = j + 1
+                    break
+                else:
+                    j += 1
+            else:
+                ans += 1
+                i += 1
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    N, D = map(int, input().split())
+    wall = []
+    for i in range(N):
+        L, R = map(int, input().split())
+        wall.append([L, R])
+    wall.sort()
+    ans = 0
+    for i in range(N):
+        L = wall[i][0]
+        R = wall[i][1]
+        if L != R:
+            if R - L < D:
+                ans += 1
+            elif R - L == D:
+                ans += 2
+            else:
+                ans += 2
+                ans += (R - L - D) // D
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    print("hello")

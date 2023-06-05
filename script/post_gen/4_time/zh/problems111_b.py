@@ -1,39 +1,166 @@
-#问题陈述
-#Kurohashi从未参加过AtCoder初级竞赛（ABC）。
-#下一个ABC是ABC N（有史以来的第N个ABC）。
-#黑桥想在某个ABC x中首次亮相，使x的所有数字都是以10为底数的。
-#黑桥能首次亮相的最早的ABC是什么？
-#
-#限制条件
-#100 ≦ N ≦ 999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果黑石能首次亮相的最早的ABC是ABC n，打印n。
-#
-#输入样本 1
-#111
-#
-#样本输出1
-#111
-#下一个举行的ABC是ABC111，黑桥可以在那里首次亮相。
-#
-#样本输入2
-#112
-#
-#样本输出2
-#222
-#下一个ABC是ABC 112，这意味着黑桥不能再参加ABC 111了。
-#在黑桥可以登场的ABC中，最早的一个是ABC 222。
-#
-#样本输入3
-#750
-#
-#样本输出3
-#777
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print((N//111+1)*111)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    print((n+110)//111*111)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    # print(N)
+    # print(type(N))
+    # print(100)
+    # print(type(100))
+    # print(999)
+    # print(type(999))
+    if N >= 100 and N <= 999:
+        # print("OK")
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        # print(N)
+        # print(type(N))
+        # print(100)
+        # print(type(100))
+        # print(999)
+        # print(type(999))
+        for i in range(N,1000):
+            # print(i)
+            # print(type(i))
+            # print(100)
+            # print(type(100))
+            # print(999)
+            # print(type(999))
+            # print(i)
+            # print(type(i))
+            # print(100)
+            # print(type(100))
+            # print(999)
+            # print(type(999))
+            if i % 111 == 0:
+                print(i)
+                break
+    else:
+        print("ERROR")
+        print(N)
+        print(type(N))
+        print(100)
+        print(type(100))
+        print(999)
+        print(type(999))
+
+=======
+Suggestion 4
+
+def get_next_abc(n):
+    while True:
+        n += 1
+        if n % 111 == 0:
+            return n
+
+=======
+Suggestion 5
+
+def problem111_b():
+    # 输入数据
+    N = input()
+    # 逻辑处理
+    # 输出结果
+    print(N[0]*3)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    n = int(input())
+
+    # 处理
+    if n <= 111:
+        print(111)
+    elif n <= 222:
+        print(222)
+    elif n <= 333:
+        print(333)
+    elif n <= 444:
+        print(444)
+    elif n <= 555:
+        print(555)
+    elif n <= 666:
+        print(666)
+    elif n <= 777:
+        print(777)
+    elif n <= 888:
+        print(888)
+    else:
+        print(999)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N % 111 == 0:
+        print(N)
+    else:
+        print((N // 111 + 1) * 111)
+
+=======
+Suggestion 8
+
+def get_abc(n):
+    if n%111 == 0:
+        return n
+    else:
+        return (n//111 + 1)*111

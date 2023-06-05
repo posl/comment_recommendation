@@ -1,45 +1,135 @@
-#问题陈述
-#给出的是正整数A和B。
-#让我们选择一些A和B的正公约数。
-#这里，所选的任何两个除数必须是互质的。
-#我们最多可以选择多少个除数？
-#公约数的定义
-#当一个整数d同时除以x和y时，就被称为整数x和y的公约数。
-#互质的定义
-#当x和y没有除1以外的正公约数时，整数x和y被称为互质。
-#除法的定义
-#当存在一个整数α，使y=αx时，就说一个整数x能除掉另一个整数y。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a, b ≦ 10^{12}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印为满足条件可选择的最大除数。
-#
-#输入样本 1
-#12 18
-#
-#输出示例 1
-#3
-#12和18有以下正共除数：1，2，3，和6。
-#1和2是互质数，2和3是互质数，3和1是互质数，所以我们可以选择1、2和3，这样可以得到最大的结果。
-#
-#样本输入2
-#420 660
-#
-#样本输出2
-#4
-#
-#样本输入3
-#1 2019
-#
-#样本输出3
-#1
-#1和2019没有除1以外的正公约数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(x,y):
+    if x%y==0:
+        return y
+    else:
+        return gcd(y,x%y)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+a,b=map(int,input().split())
+g=gcd(a,b)
+ans=1
+for i in range(2,int(g**0.5)+1):
+    if g%i==0:
+        ans+=1
+        while g%i==0:
+            g//=i
+
+=======
+Suggestion 3
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+ans = 1
+for i in range(2, int(g**0.5)+1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 4
+
+def gcd(a,b):#最大公约数
+    if a>b:
+        a,b=b,a
+    while a!=0:
+        a,b=b%a,a
+    return b
+
+=======
+Suggestion 5
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a, b = map(int, input().split())
+g = gcd(a, b)
+cnt = 1
+for i in range(2, int(g ** 0.5) + 1):
+    if g % i == 0:
+        cnt += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    r=a%b
+    if r==0:
+        return b
+    else:
+        return gcd(b,r)
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+
+A, B = map(int, input().split())
+g = gcd(A, B)
+ans = 1
+for i in range(2, int(g**0.5)+1):
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+
+=======
+Suggestion 9
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+a, b = map(int, input().split())
+
+g = gcd(a, b)
+ans = 1
+i = 2
+while i*i <= g:
+    if g % i == 0:
+        ans += 1
+        while g % i == 0:
+            g //= i
+    i += 1

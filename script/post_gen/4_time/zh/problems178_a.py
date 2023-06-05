@@ -1,28 +1,98 @@
-#问题陈述
-#给出一个整数x，它大于或等于0，小于或等于1。
-#如果x等于0，输出1；如果x等于1，输出0。
-#
-#限制条件
-#0 ≦ x ≦ 1
-#x是一个整数
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#x
-#
-#输出
-#如果x等于0，打印1，如果x等于1，打印0。
-#
-#输入样本 1
-#1
-#
-#样本输出1
-#0
-#
-#样本输入2
-#0
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = float(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+    else:
+        print("输入错误！")
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+    else:
+        print('输入错误')
+
+=======
+Suggestion 4
+
+def main():
+    x = float(input())
+    if x == 0:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+    else:
+        pass
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    if x == "0":
+        print("1")
+    elif x == "1":
+        print("0")
+    else:
+        print("输入错误")
+
+=======
+Suggestion 7
+
+def main():
+    x = input()
+    if x == 1:
+        print 0
+    else:
+        print 1
+
+=======
+Suggestion 8
+
+def main():
+    x = int(input())
+    if x == 0:
+        print(1)
+    elif x == 1:
+        print(0)
+    else:
+        print("输入错误！")
+
+=======
+Suggestion 9
+
+def main():
+    x = int(input())
+    print(1-x)

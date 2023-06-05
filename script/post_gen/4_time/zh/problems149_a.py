@@ -1,28 +1,32 @@
-#问题陈述
-#给出两个由小写英文字母组成的字符串S和T。把T和S按这个顺序连接起来，中间不要有空格，并打印出所得的字符串。
-#
-#限制条件
-#S和T是由小写英文字母组成的字符串。
-#S和T的长度在1到100之间（包括）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S T
-#
-#输出
-#打印结果的字符串。
-#
-#输入样本1
-#oder atc
-#
-#样本输出1
-#atcoder
-#当S = oder和T = atc时，将T和S按这个顺序连接起来就得到了atcoder。
-#
-#样本输入2
-#humu humu
-#
-#样本输出2
-#humuhumu
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s, t = input().split()
+    print(t+s)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    t = input()
+    print(t + s)
+
+=======
+Suggestion 3
+
+def main():
+    S, T = input().split()
+    print(T+S)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入字符串
+    s, t = input().split()
+    # 输出
+    print(t + s)

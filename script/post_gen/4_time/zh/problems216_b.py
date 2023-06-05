@@ -1,53 +1,186 @@
-#问题陈述
-#一共有N个人。第i个人（1 ≦ i ≦ N）的姓氏和名字分别是S_i和T_i。
-#确定是否存在一对具有相同姓氏和名字的人。换句话说，确定是否有一对整数（i,j），使得1 ≦ i < j ≦ N，S_i=S_j，和T_i=T_j。
-#
-#限制条件
-#2 ≦ N ≦ 1000
-#N是一个整数。
-#S_i和T_i中的每一个都是由英文小写字母组成的长度在1到10之间（包括10）的字符串。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#如果有一对人的姓氏和名字相同，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#样本产出1
-#Yes
-#第一和第三人有相同的姓氏和名字。
-#
-#样本输入2
-#3
-#tanaka taro
-#sato hanako
-#tanaka taro
-#
-#样本输出2
-#No
-#没有两个人有相同的姓氏和名字。
-#
-#样本输入3
-#4
-#sypdgidop bkseq
-#bajsqz hh
-#ozjekw mcybmtt
-#qfeysvw dbo
-#
-#输出样本3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        names.append(input().split())
+
+    for i in range(n):
+        for j in range(i+1, n):
+            if names[i] == names[j]:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input().split())
+    for i in range(n):
+        for j in range(i+1,n):
+            if s[i] == s[j]:
+                print('Yes')
+                exit()
+    print('No')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    name = []
+    for i in range(n):
+        name.append(input())
+    if len(name) == len(set(name)):
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    name_list = []
+    for i in range(N):
+        name_list.append(input())
+    name_list.sort()
+    for i in range(N-1):
+        if name_list[i] == name_list[i+1]:
+            print("Yes")
+            return
+    print("No")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    data = []
+    for i in range(n):
+        data.append(input().split())
+    for i in range(n):
+        for j in range(i+1,n):
+            if data[i][0] == data[j][0] and data[i][1] == data[j][1]:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    names = []
+    for i in range(n):
+        name = input().split()
+        names.append(name)
+    print(names)
+    for i in range(n):
+        for j in range(i+1,n):
+            if names[i][0]==names[j][0] and names[i][1]==names[j][1]:
+                print('Yes')
+                exit()
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n = int(input())
+    # print(n)
+    # print(type(n))
+    # print(type(input()))
+    # print(type(input().split()))
+    # print(type(input().split()[0]))
+    # print(type(input().split()[1]))
+    # print(type(input().split()[0][0]))
+    # print(type(input().split()[0][1]))
+    # print(type(input().split()[0][2]))
+    # print(type(input().split()[0][3]))
+    # print(type(input().split()[0][4]))
+    # print(type(input().split()[0][5]))
+    # print(type(input().split()[0][6]))
+    # print(type(input().split()[0][7]))
+    # print(type(input().split()[0][8]))
+    # print(type(input().split()[0][9]))
+    # print(type(input().split()[1][0]))
+    # print(type(input().split()[1][1]))
+    # print(type(input().split()[1][2]))
+    # print(type(input().split()[1][3]))
+    # print(type(input().split()[1][4]))
+    # print(type(input().split()[1][5]))
+    # print(type(input().split()[1][6]))
+    # print(type(input().split()[1][7]))
+    # print(type(input().split()[1][8]))
+    # print(type(input().split()[1][9]))
+    # print(type(input().split()[2][0]))
+    # print(type(input().split()[2][1]))
+    # print(type(input().split()[2][2]))
+    # print(type(input().split()[2][3]))
+    # print(type(input().split()[2][4]))
+    # print(type(input().split()[2][5]))
+    # print(type(input().split()[2][6]))
+    # print(type(input().split()[2][7]))
+    # print(type(input().split()[2][8]))
+    # print(type(input().split()[2][9]))
+    # print(type(input().split()[3][0]))
+    # print(type(input().split()[3][1]))
+    # print(type(input().split()[3][2]))
+    # print(type(input().split()[3][3]))
+    # print(type(input().split()[3][4]))
+    # print(type(input().split()[3][5]))
+    # print(type(input().split()[
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    name_list = []
+    for i in range(n):
+        name_list.append(input())
+    if len(set(name_list)) == len(name_list):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    list1 = []
+    for i in range(n):
+        list1.append(input())
+    if len(list1) == len(set(list1)):
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    list = []
+    for i in range(n):
+        s, t = input().split()
+        list.append(s + t)
+    if len(list) == len(set(list)):
+        print("No")
+    else:
+        print("Yes")
+
+main()

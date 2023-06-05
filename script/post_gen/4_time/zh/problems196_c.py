@@ -1,37 +1,189 @@
-#问题陈述
-#给出的是一个整数N。
-#有多少个介于1和N（包括）之间的整数x满足以下条件？
-#x的十进制表示法（不含前导零）有偶数位，并且它的前半部分和后半部分作为字符串是相等的。
-#
-#限制条件
-#N是一个整数。
-#1 ≤ N < 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#33
-#
-#样本输出1
-#3
-#有三个数字11、22和33满足条件。
-#
-#样本输入2
-#1333
-#
-#样本输出2
-#13
-#例如，1313的十进制表示法有四个数字，它的前半部分和后半部分都是13，所以1313满足这个条件。
-#
-#输入样本3
-#10000000
-#
-#样本输出3
-#999
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def isEven(num):
+    if num%2 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 2
+
+def is_even_digit(num):
+    return len(str(num)) % 2 == 0
+
+=======
+Suggestion 3
+
+def count(N):
+    if N<=11:
+        return 0
+    elif N<=22:
+        return 1
+    elif N<=33:
+        return 2
+    elif N<=44:
+        return 3
+    elif N<=55:
+        return 4
+    elif N<=66:
+        return 5
+    elif N<=77:
+        return 6
+    elif N<=88:
+        return 7
+    elif N<=99:
+        return 8
+    elif N<=101:
+        return 9
+    elif N<=111:
+        return 10
+    elif N<=121:
+        return 11
+    elif N<=131:
+        return 12
+    elif N<=141:
+        return 13
+    elif N<=151:
+        return 14
+    elif N<=161:
+        return 15
+    elif N<=171:
+        return 16
+    elif N<=181:
+        return 17
+    elif N<=191:
+        return 18
+    elif N<=202:
+        return 19
+    elif N<=212:
+        return 20
+    elif N<=222:
+        return 21
+    elif N<=232:
+        return 22
+    elif N<=242:
+        return 23
+    elif N<=252:
+        return 24
+    elif N<=262:
+        return 25
+    elif N<=272:
+        return 26
+    elif N<=282:
+        return 27
+    elif N<=292:
+        return 28
+    elif N<=303:
+        return 29
+    elif N<=313:
+        return 30
+    elif N<=323:
+        return 31
+    elif N<=333:
+        return 32
+    elif N<=343:
+        return 33
+    elif N<=353:
+        return 34
+    elif N<=363:
+        return 35
+    elif N<=373:
+        return 36
+    elif N<=383:
+        return 37
+    elif N<=393:
+        return 38
+    elif N<=404:
+        return 39
+    elif N<=414:
+        return 40
+    elif N<=424:
+        return 41
+    elif N<=434:
+        return 42
+    elif N<=444:
+        return 43
+    elif N<=454:
+        return 44
+    elif
+
+=======
+Suggestion 4
+
+def is_even_digit(n):
+    """
+    判断一个数是否是偶数位
+    :param n:
+    :return:
+    """
+    str_n = str(n)
+    if len(str_n) % 2 == 0:
+        return True
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1,N+1):
+        if len(str(i))%2==0:
+            if str(i)[:int(len(str(i))/2)] == str(i)[int(len(str(i))/2):]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def f(n):
+    if n < 11:
+        return 0
+    if n < 101:
+        return (n - 10) // 11 + 1
+    if n < 1001:
+        return 9 + (n - 100) // 111 + 1
+    if n < 10001:
+        return 9 + 90 + (n - 1000) // 1111 + 1
+    if n < 100001:
+        return 9 + 90 + 900 + (n - 10000) // 11111 + 1
+    if n < 1000001:
+        return 9 + 90 + 900 + 9000 + (n - 100000) // 111111 + 1
+    if n < 10000001:
+        return 9 + 90 + 900 + 9000 + 90000 + (n - 1000000) // 1111111 + 1
+    if n < 100000001:
+        return 9 + 90 + 900 + 9000 + 90000 + 900000 + (n - 10000000) // 11111111 + 1
+    if n < 1000000001:
+        return 9 + 90 + 900 + 9000 + 90000 + 900000 + 9000000 + (n - 100000000) // 111111111 + 1
+    if n < 10000000001:
+        return 9 + 90 + 900 + 9000 + 90000 + 900000 + 9000000 + 90000000 + (n - 1000000000) // 1111111111 + 1
+    if n < 100000000001:
+        return 9 + 90 + 900 + 9000 + 90000 + 900000 + 9000000 + 90000000 + 900000000 + (n - 10000000000) // 11111111111 + 1
+    if n < 1000000000001:
+        return 9 + 90 + 900 + 9000 + 90000 + 900000 + 9000000 + 90000000 + 900000000 + 9000000000 +
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    # print(N)
+    cnt = 0
+    for i in range(1, N+1):
+        if len(str(i)) % 2 == 0:
+            if str(i)[:len(str(i))//2] == str(i)[len(str(i))//2:]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def isEven(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False

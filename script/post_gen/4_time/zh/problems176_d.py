@@ -1,84 +1,167 @@
-#问题陈述
-#一个迷宫是由H×W个方格组成的--H是垂直的，W是水平的。
-#从上往下第i行，从左往下第j列的方格--(i,j)--如果S_{ij}是#，则是墙，如果S_{ij}是.，则是路。
-#在（C_h,C_w）有一个魔术师。他可以做以下两种动作：
-#移动A：走到与他当前所在的方格垂直或水平相邻的道路方格。
-#移动B：使用魔法将自己扭曲到以他当前所在的方格为中心的5×5区域的一个道路方格。
-#在这两种情况下，他都不能走出迷宫。
-#他至少需要使用多少次魔法才能到达（D_h，D_w）？
-#
-#限制条件
-#1 ≦ H,W ≦ 10^3
-#1 ≦ C_h,D_h ≦ H
-#1 ≦ C_w,D_w ≦ W
-#S_{ij}是#或.
-#S_{C_h C_w}和S_{D_h D_w}是.
-#(C_h,C_w) ≠ (D_h,D_w)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#C_h C_w
-#D_h D_w
-#S_{11}...S_{1W}
-#.
-#.
-#.
-#S_{H1}...S_{HW}
-#
-#输出
-#打印魔术师需要使用魔术的最少次数。如果他不能达到（D_h,D_w），则打印-1。
-#
-#输入样本 1
-#4 4
-#1 1
-#4 4
-#..#.
-#..#.
-#.#..
-#.#..
-#
-#样本输出1
-#1
-#例如，通过走到(2,2)，然后用魔法走到(4,4)，只要使用一次魔法就够了。
-#注意，他不能斜着走。
-#
-#样本输入2
-#4 4
-#1 4
-#4 1
-#.##.
-#####
-#####
-#.##.
-#
-#输出样本2
-#-1
-#他不能从那里移动。
-#
-#样本输入3
-#4 4
-#2 2
-#3 3
-#....
-#....
-#....
-#....
-#
-#样本输出3
-#0
-#不需要使用魔法。
-#
-#输入样本 4
-#4 5
-#1 2
-#2 5
-##.###
-#####.
-##..##
-##..##
-#
-#样本输出4
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    C_h, C_w = map(int, input().split())
+    D_h, D_w = map(int, input().split())
+    S = [input() for _ in range(H)]
+    C_h, C_w, D_h, D_w = C_h-1, C_w-1, D_h-1, D_w-1
+    dist = [[-1]*W for _ in range(H)]
+    dist[C_h][C_w] = 0
+    queue = [(C_h, C_w)]
+    while queue:
+        h, w = queue.pop(0)
+        for dh, dw in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nh, nw = h+dh, w+dw
+            if 0 <= nh < H and 0 <= nw < W and S[nh][nw] == '.' and dist[nh][nw] == -1:
+                dist[nh][nw] = dist[h][w]
+                queue.append((nh, nw))
+        for dh in range(-2, 3):
+            for dw in range(-2, 3):
+                nh, nw = h+dh, w+dw
+                if 0 <= nh < H and 0 <= nw < W and S[nh][nw] == '.' and dist[nh][nw] == -1:
+                    dist[nh][nw] = dist[h][w] + 1
+                    queue.append((nh, nw))
+    print(dist[D_h][D_w])
+
+=======
+Suggestion 3
+
+def main():
+    H, W = map(int, input().split())
+    C_h, C_w = map(int, input().split())
+    D_h, D_w = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+
+    C_h, C_w, D_h, D_w = C_h - 1, C_w - 1, D_h - 1, D_w - 1
+
+    from collections import deque
+    q = deque([(C_h, C_w)])
+    dist = [[-1] * W for _ in range(H)]
+    dist[C_h][C_w] = 0
+
+    while q:
+        i, j = q.popleft()
+        for i2, j2 in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
+            if not (0 <= i2 < H and 0 <= j2 < W):
+                continue
+            if S[i2][j2] == '#':
+                continue
+            if dist[i2][j2] != -1:
+                continue
+            dist[i2][j2] = dist[i][j]
+            q.appendleft((i2, j2))
+        for i2 in range(i - 2, i + 3):
+            for j2 in range(j - 2, j + 3):
+                if not (0 <= i2 < H and 0 <= j2 < W):
+                    continue
+                if S[i2][j2] == '#':
+                    continue
+                if dist[i2][j2] != -1:
+                    continue
+                dist[i2][j2] = dist[i][j] + 1
+                q.append((i2, j2))
+
+    print(dist[D_h][D_w])
+
+=======
+Suggestion 4
+
+def get_input():
+    H,W = map(int,input().split())
+    C_h,C_w = map(int,input().split())
+    D_h,D_w = map(int,input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    return H,W,C_h,C_w,D_h,D_w,S
+
+=======
+Suggestion 5
+
+def solve():
+    h, w = map(int, input().split())
+    ch, cw = map(int, input().split())
+    dh, dw = map(int, input().split())
+    ch -= 1
+    cw -= 1
+    dh -= 1
+    dw -= 1
+    s = [input() for _ in range(h)]
+    d = [[-1] * w for _ in range(h)]
+    d[ch][cw] = 0
+    q = []
+    q.append((ch, cw))
+    while q:
+        i, j = q.pop(0)
+        for i2 in range(i - 2, i + 3):
+            for j2 in range(j - 2, j + 3):
+                if not (0 <= i2 < h and 0 <= j2 < w):
+                    continue
+                if s[i2][j2] == '#':
+                    continue
+                if d[i2][j2] != -1:
+                    continue
+                if abs(i2 - i) + abs(j2 - j) == 1:
+                    d[i2][j2] = d[i][j]
+                    q.append((i2, j2))
+                else:
+                    d[i2][j2] = d[i][j] + 1
+                    q.append((i2, j2))
+    print(d[dh][dw])
+
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    return
+
+=======
+Suggestion 7
+
+def main():
+    H,W = map(int,input().split())
+    C_h,C_w = map(int,input().split())
+    D_h,D_w = map(int,input().split())
+    S = [list(input()) for i in range(H)]
+    C_h -= 1
+    C_w -= 1
+    D_h -= 1
+    D_w -= 1
+    from collections import deque
+    Q = deque()
+    Q.append((C_h,C_w,0))
+    dist = [[-1]*W for i in range(H)]
+    dist[C_h][C_w] = 0
+    while Q:
+        i,j,d = Q.popleft()
+        for i2,j2 in [(i+1,j),(i-1,j),(i,j+1),(i,j-1)]:
+            if not (0 <= i2 < H and 0 <= j2 < W):
+                continue
+            if S[i2][j2] == '#':
+                continue
+            if dist[i2][j2] == -1:
+                dist[i2][j2] = d
+                Q.appendleft((i2,j2,d))
+        for i2 in range(i-2,i+3):
+            for j2 in range(j-2,j+3):
+                if not (0 <= i2 < H and 0 <= j2 < W):
+                    continue
+                if S[i2][j2] == '#':
+                    continue
+                if dist[i2][j2] == -1:
+                    dist[i2][j2] = d + 1
+                    Q.append((i2,j2,d+1))
+    print(dist[D_h][D_w])

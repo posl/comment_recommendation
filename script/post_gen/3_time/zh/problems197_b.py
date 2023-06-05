@@ -1,66 +1,204 @@
-#问题陈述
-#我们有一个由H个横行和W个纵列组成的网格，其中一些方格含有障碍物。
-#让(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#给你H个字符串S_1, S_2, S_3, ..., S_H。S_i的第j个字符描述了广场（i，j）；#表示广场上有障碍物，而.表示没有。
-#当一个方格位于同一行或同一列，并且它们之间没有障碍物（包括它们自己）时，我们就说另一个方格是可见的。
-#打印从方格（X，Y）可见的方格数量（包括（X，Y）本身）。
-#
-#限制条件
-#1 ≦ H ≦ 100
-#1 ≦ W ≦ 100
-#1 ≦ X ≦ H
-#1 ≦ Y ≦ W
-#S_i是一个长度为W的字符串，由.和#组成。
-#正方形（X，Y）不包含障碍物。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W X Y
-#S_1
-#S_2
-#S_3
-#.
-#.
-#.
-#S_H
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 4 2 2
-###..
-#...#
-##.#.
-#.#.#
-#
-#样本输出1
-#4
-#从正方形(2, 2)可见的正方形是：
-#(2, 1)
-#(2, 2)
-#(2, 3)
-#(3, 2)
-#
-#样本输入 2
-#3 5 1 4
-##....
-######
-#....#
-#
-#输出样本2
-#4
-#即使两个方块在同一行或同一列，当它们之间有障碍物时，它们之间也不可见。
-#
-#输入样本 3
-#5 5 4 2
-#.#..#
-##.###
-###...
-##..#.
-##.###
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems197_b():
+    H, W, X, Y = map(int, input().split())
+    S = [input() for _ in range(H)]
+    X -= 1
+    Y -= 1
+    cnt = 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == '#':
+            break
+        cnt += 1
+    for i in range(X + 1, H):
+        if S[i][Y] == '#':
+            break
+        cnt += 1
+    for j in range(Y - 1, -1, -1):
+        if S[X][j] == '#':
+            break
+        cnt += 1
+    for j in range(Y + 1, W):
+        if S[X][j] == '#':
+            break
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def count_visible(x, y, h, w, s):
+    count = 0
+    for i in range(h):
+        if s[i][y - 1] == ".":
+            count += 1
+    for j in range(w):
+        if s[x - 1][j] == ".":
+            count += 1
+    return count - 1
+
+=======
+Suggestion 3
+
+def main():
+    H, W, X, Y = map(int,input().split())
+    S = []
+    for i in range(H):
+        S.append(input())
+    X -= 1
+    Y -= 1
+    ans = 1
+    for i in range(X-1,-1,-1):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for i in range(X+1,H):
+        if S[i][Y] == "#":
+            break
+        ans += 1
+    for j in range(Y-1,-1,-1):
+        if S[X][j] == "#":
+            break
+        ans += 1
+    for j in range(Y+1,W):
+        if S[X][j] == "#":
+            break
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def visible_count(H, W, X, Y, S):
+    count = 0
+    for i in range(X-1, -1, -1):
+        if S[i][Y-1] == '#':
+            break
+        count += 1
+    for i in range(X, H):
+        if S[i][Y-1] == '#':
+            break
+        count += 1
+    for i in range(Y-1, -1, -1):
+        if S[X-1][i] == '#':
+            break
+        count += 1
+    for i in range(Y, W):
+        if S[X-1][i] == '#':
+            break
+        count += 1
+    return count
+
+=======
+Suggestion 5
+
+def is_valid(i, j, H, W):
+    if 0 <= i < H and 0 <= j < W:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 6
+
+def main():
+    H, W, X, Y = map(int, input().split())
+    S = []
+    for i in range(H):
+        s = input()
+        S.append(s)
+    X -= 1
+    Y -= 1
+    count = 1
+    for i in range(X - 1, -1, -1):
+        if S[i][Y] == "#":
+            break
+        count += 1
+    for i in range(X + 1, H):
+        if S[i][Y] == "#":
+            break
+        count += 1
+    for j in range(Y - 1, -1, -1):
+        if S[X][j] == "#":
+            break
+        count += 1
+    for j in range(Y + 1, W):
+        if S[X][j] == "#":
+            break
+        count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 7
+
+def check(x, y):
+    if x < 0 or x >= H or y < 0 or y >= W:
+        return False
+    if grid[x][y] == '#':
+        return False
+    return True
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def get_visible_count(grid, x, y):
+    count = 0
+    for i in range(x-1, -1, -1):
+        if grid[i][y-1] == '#':
+            break
+        else:
+            count += 1
+    for i in range(x, len(grid)):
+        if grid[i][y-1] == '#':
+            break
+        else:
+            count += 1
+    for i in range(y-1, -1, -1):
+        if grid[x-1][i] == '#':
+            break
+        else:
+            count += 1
+    for i in range(y, len(grid[0])):
+        if grid[x-1][i] == '#':
+            break
+        else:
+            count += 1
+    return count
+
+=======
+Suggestion 10
+
+def count_visible_square(h, w, x, y, s):
+    count = 1
+    for i in range(x-1, -1, -1):
+        if s[i][y-1] == '#':
+            break
+        else:
+            count += 1
+    for i in range(x, h):
+        if s[i][y-1] == '#':
+            break
+        else:
+            count += 1
+    for i in range(y-2, -1, -1):
+        if s[x-1][i] == '#':
+            break
+        else:
+            count += 1
+    for i in range(y, w):
+        if s[x-1][i] == '#':
+            break
+        else:
+            count += 1
+    return count

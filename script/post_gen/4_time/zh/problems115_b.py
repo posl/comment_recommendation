@@ -1,44 +1,102 @@
-#问题陈述
-#在另一个世界，今天是平安夜的前一天。
-#Takaha先生在一家百货公司购买N件商品。第i件商品（1 ≦ i ≦ N）的正常价格是p_i日元（日本的货币）。
-#他有一张折扣券，可以用正常价格的一半购买最高价格的一件商品。剩下的N-1件商品的价格是正常价格。他将支付的总金额是多少？
-#
-#限制条件
-#2 ≦ N ≦ 10
-#100 ≦ p_i ≦ 10000
-#p_i是一个偶数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#p_1
-#p_2
-#:
-#p_N
-#
-#输出
-#打印Takaha先生将支付的总金额。
-#
-#输入样本1
-#3
-#4980
-#7980
-#6980
-#
-#样本输出1
-#15950
-#7980日元的商品得到了折扣，总额为4980+7980/2+6980=15950日元。
-#请注意，像15950.0这样的输出将被判定为错误的答案。
-#
-#输入示例2
-#4
-#4320
-#4320
-#4320
-#4320
-#
-#样本输出2
-#15120
-#四件商品中只有一件得到折扣，总额为4320 / 2 + 4320 + 4320 + 4320 = 15120日元。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = [int(input()) for _ in range(n)]
+    p.sort(reverse=True)
+    price = sum(p)
+    price -= p[0] / 2
+    print(int(price))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    p_list = []
+    for i in range(n):
+        p_list.append(int(input()))
+    p_list.sort()
+    p_list[-1] = p_list[-1] // 2
+    print(sum(p_list))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p_list = [int(input()) for i in range(n)]
+    p_list.sort(reverse=True)
+    p_list[0] = p_list[0] // 2
+    print(sum(p_list))
+    return
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = [int(input()) for i in range(n)]
+    p.sort()
+    print(int(sum(p) - p[-1]/2))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    price = []
+    for i in range(n):
+        price.append(int(input()))
+    price.sort(reverse=True)
+    price[0] = price[0] / 2
+    print(int(sum(price)))
+
+=======
+Suggestion 6
+
+def problem115_b():
+    n = int(input())
+    p = [int(input()) for i in range(n)]
+    max = 0
+    for i in range(n):
+        if p[i] > max:
+            max = p[i]
+    total = 0
+    for i in range(n):
+        if p[i] == max:
+            total += int(max / 2)
+        else:
+            total += p[i]
+    print(total)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    p = [int(input()) for i in range(N)]
+    p.sort()
+    p[-1] = int(p[-1] / 2)
+    print(sum(p))
+
+=======
+Suggestion 8
+
+def get_input():
+    n = int(input())
+    p_list = []
+    for i in range(n):
+        p_list.append(int(input()))
+    return n, p_list
+
+=======
+Suggestion 9
+
+def calc_price(n, price_list):
+    price_list.sort()
+    price_list[-1] = price_list[-1] / 2
+    return sum(price_list)

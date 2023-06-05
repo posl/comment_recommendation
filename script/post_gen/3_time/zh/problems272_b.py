@@ -1,47 +1,226 @@
-#问题陈述
-#有N个编号为1,2,...,N的人。
-#k_i人参加了第i个（1≦i≦M）聚会，他们是人x_{i,1},x_{i,2},...,x_{i,k_i}。
-#确定每两个人是否至少参加过一次相同的聚会。
-#
-#约束条件
-#2≦ N ≦ 100
-#1≦ M ≦ 100
-#2≦ k_i ≦ N
-#1≦ x_{i,1}<x_{i,2}<...< x_{i,k_i}≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#k_1 x_{1,1} x_{1,2} ... x_{1,k_1} 。
-#.
-#.
-#.
-#k_M x_{M,1} x_{M,2} ... x_{M,k_M}
-#
-#输出
-#如果每两个人都至少参加过一次同一个聚会，则打印Yes；否则打印No。
-#
-#输入样本 1
-#3 3
-#2 1 2
-#2 2 3
-#2 1 3
-#
-#样本输出1
-#Yes
-#人1和人2都参加了第1次聚会。
-#人2和人3都参加了第2次聚会。
-#人1和人3都参加了第3次聚会。
-#因此，每两个人都至少参加过一次同一个聚会，所以答案是Yes。
-#
-#输入样本 2
-#4 2
-#3 1 2 4
-#3 2 3 4
-#
-#样品输出2
-#No
-#人1和人3没有参加同一个聚会，所以答案是No。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    n = [0] * M
+    x = [0] * M
+    for i in range(M):
+        n[i], *x[i] = map(int, input().split())
+    for i in range(1, N + 1):
+        for j in range(i + 1, N + 1):
+            for k in range(M):
+                if i in x[k] and j in x[k]:
+                    break
+            else:
+                print("No")
+                exit()
+    print("Yes")
+main()
+
+=======
+Suggestion 2
+
+def get_input():
+    n,m = map(int,input().split())
+    return n,m
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    K = []
+    for i in range(M):
+        K.append(list(map(int, input().split())))
+
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            for k in range(M):
+                if not (i+1 in K[k][1:] and j+1 in K[k][1:]):
+                    break
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+    else:
+        print("Yes")
+        return
+    print("No")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    #print(N,M)
+    X = []
+    for i in range(M):
+        X.append(list(map(int,input().split())))
+    #print(X)
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            else:
+                flag = 0
+                for k in range(M):
+                    if i+1 in X[k] and j+1 in X[k]:
+                        flag = 1
+                        break
+                if flag == 0:
+                    print('No')
+                    return
+    print('Yes')
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    d = {}
+    for i in range(m):
+        k, *a = map(int, input().split())
+        for j in range(k):
+            if a[j] not in d:
+                d[a[j]] = set()
+            d[a[j]].add(i)
+    ans = 'Yes'
+    for v in d.values():
+        if len(v) == 1:
+            ans = 'No'
+            break
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    x = []
+    for i in range(M):
+        x.append(list(map(int, input().split())))
+
+    # print(N,M,x)
+    # print(x[0][0])
+
+    # print(x[0][0])
+    # print(x[0][1])
+    # print(x[0][2])
+    # print(x[1][0])
+    # print(x[1][1])
+    # print(x[1][2])
+    # print(x[2][0])
+    # print(x[2][1])
+    # print(x[2][2])
+
+    # print(x[0][0],x[0][1])
+    # print(x[0][0],x[0][2])
+    # print(x[0][1],x[0][2])
+    # print(x[1][0],x[1][1])
+    # print(x[1][0],x[1][2])
+    # print(x[1][1],x[1][2])
+    # print(x[2][0],x[2][1])
+    # print(x[2][0],x[2][2])
+    # print(x[2][1],x[2][2])
+
+    # print(x[0][0],x[0][1])
+    # print(x[0][0],x[0][2])
+    # print(x[0][1],x[0][2])
+    # print(x[1][0],x[1][1])
+    # print(x[1][0],x[1][2])
+    # print(x[1][1],x[1][2])
+    # print(x[2][0],x[2][1])
+    # print(x[2][0],x[2][2])
+    # print(x[2][1],x[2][2])
+
+    # print(x[0][0],x[0][1])
+    # print(x[0][0],x[0][2])
+    # print(x[0][1],x[0][2])
+    # print(x[1][0],x[1][1])
+    # print(x[1][0],x[1][2])
+    # print(x[1][1],x[1][2])
+    # print(x[2
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    x = []
+    for i in range(M):
+        k.append(list(map(int, input().split())))
+        x.append(k[i][1:])
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            else:
+                flag = True
+                for l in range(M):
+                    if i + 1 not in x[l] or j + 1 not in x[l]:
+                        flag = False
+                if flag:
+                    print("Yes")
+                    exit()
+    print("No")
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(m):
+        a.append(list(map(int,input().split())))
+    a.sort()
+    ans = "No"
+    for i in range(m-1):
+        for j in range(i+1,m):
+            if a[i][0] == a[j][0]:
+                continue
+            if a[i][1] == a[j][1]:
+                ans = "Yes"
+                break
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int, input().split())
+    ans = [[0] * N for _ in range(N)]
+    for i in range(M):
+        k,x = map(int, input().split())
+        for j in range(k):
+            ans[x-1][int(input())-1] = 1
+    for i in range(N):
+        for j in range(N):
+            if ans[i][j] == 0 and i != j:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    n,m=map(int,input().split())
+    a=[list(map(int,input().split())) for i in range(m)]
+    ans="No"
+    for i in range(1,n+1):
+        for j in range(i+1,n+1):
+            for k in range(m):
+                if i in a[k] and j in a[k]:
+                    ans="Yes"
+                    break
+    print(ans)

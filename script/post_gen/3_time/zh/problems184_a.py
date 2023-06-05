@@ -1,40 +1,59 @@
-#问题陈述
-#给出一个2×2矩阵A=[[a, b], [c, d]]。
-#A的行列式可求为ad-bc。
-#找到它。
-#
-#限制条件
-#输入的所有数值都是整数。
-#-100 ≦ A, B, C, D ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b
-#c d
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#1 2
-#3 4
-#
-#样本输出1
-#-2
-#[[1, 2], [3, 4]]的行列式是 1 × 4 - 2 × 3 = -2。
-#
-#输入样本 2
-#0 -1
-#1 0
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100 100
-#100 100
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def det(a, b, c, d):
+    return a * d - b * c
+
+a, b = map(int, input().split())
+c, d = map(int, input().split())
+print(det(a, b, c, d))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取数据
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    # 计算结果
+    ans = a * d - b * c
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a*d-b*c)
+
+=======
+Suggestion 4
+
+def main():
+    a, b = [int(x) for x in input().split()]
+    c, d = [int(x) for x in input().split()]
+    print(a*d-b*c)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = map(int, input().split())
+    print(a*d-b*c)
+
+=======
+Suggestion 6
+
+def main():
+    a = []
+    b = []
+    for i in range(2):
+        a.append(list(map(int, input().split())))
+    for i in range(2):
+        b.append(list(map(int, input().split())))
+    print(a[0][0]*b[0][0]+a[0][1]*b[1][0], a[0][0]*b[0][1]+a[0][1]*b[1][1])
+    print(a[1][0]*b[0][0]+a[1][1]*b[1][0], a[1][0]*b[0][1]+a[1][1]*b[1][1])

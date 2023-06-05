@@ -1,31 +1,44 @@
-#问题陈述
-#给你一个由小写英文字母组成的奇数长度的字符串S。
-#打印S的中心字符。
-#什么是中心字符？
-#对于一个奇数长度的字符串T，它的中心字符是从开始的第((|T|+1)/(2))个字符，其中|T|是T的长度。
-#
-#限制条件
-#S是一个由小写英文字母组成的奇数长度的字符串。
-#S的长度在1到99之间（含）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#atcoder
-#
-#样本输出1
-#o
-#atcoder的中心字符是o。
-#
-#样本输入2
-#a
-#
-#样本输出2
-#a
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s[int((len(s)+1)/2)-1])
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(s[(len(s) + 1) // 2 - 1])
+
+=======
+Suggestion 3
+
+def main():
+    # 读入输入
+    s = input()
+    # 求解并输出答案
+    print(s[int((len(s)+1)/2)-1])
+
+=======
+Suggestion 4
+
+def center_char(s):
+    return s[(len(s)-1)//2]
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    print(S[len(S)//2])
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print(s[len(s)//2])

@@ -1,37 +1,80 @@
-#问题说明
-#给定一个正整数N，找出最大的整数k，使2^k≦N。
-#
-#限制条件
-#N是一个整数，满足1 ≦ N ≦ 10^{18}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#6
-#
-#输出示例 1
-#2
-#k=2满足2^2=4 ≦ 6。
-#对于每个整数k，如k≧3，2^k>6成立。
-#因此，答案是k=2。
-#
-#输入样本 2
-#1
-#
-#样本输出2
-#0
-#注意，2^0=1。
-#
-#样本输入3
-#1000000000000000000
-#
-#样本输出3
-#59
-#输入值可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_max_k(n):
+    k = 0
+    while 2**k <= n:
+        k += 1
+    return k - 1
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    k = 0
+    while 2**k <= n:
+        k += 1
+    print(k-1)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    k = 0
+    while True:
+        if 2**k > N:
+            break
+        k += 1
+    print(k-1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    k = 0
+    while (2 ** k) <= n:
+        k += 1
+    print(k - 1)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    k = 0
+    while 2**k <= N:
+        k += 1
+    print(k-1)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    print(int(math.log2(n)))
+
+=======
+Suggestion 7
+
+def find_max_k(n):
+    k = 0
+    while 2 ** k <= n:
+        k += 1
+    return k - 1
+
+=======
+Suggestion 8
+
+def solve(n):
+    k = 0
+    while 2 ** k <= n:
+        k += 1
+    return k - 1
+
+print(solve(int(input())))

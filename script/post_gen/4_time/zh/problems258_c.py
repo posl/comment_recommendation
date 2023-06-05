@@ -1,64 +1,144 @@
-#问题陈述
-#给你正整数N和Q，以及一个由小写英文字母组成的长度为N的字符串S。
-#处理Q的查询。每个查询都是以下两种类型中的一种。
-#1 x:连续执行以下x次：删除S的最后一个字符并将其附加到开头。
-#2 x:打印S的第x个字符。
-#
-#限制条件
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ Q ≦ 5 × 10^5
-#1 ≦ x ≦ N
-#|S|=N
-#S由小写英文字母组成。
-#至少有一个格式为2 x的查询。
-#N, Q, x都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#S
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#每个查询的格式如下，其中t为1或2：
-#t x
-#
-#输出
-#对于每个格式为2 x的查询，将答案打印在一个单行中。
-#
-#输入样本 1
-#3 3
-#abc
-#2 2
-#1 1
-#2 2
-#
-#样本输出1
-#b
-#a
-#在第1个查询中，S是abc，所以第2个字符b应该被打印。
-#在第2次查询中，S从abc变为cab。
-#在第3次查询中，S是cab，所以第2个字符a应该被打印出来。
-#
-#输入示例 2
-#10 8
-#dsuccxulnl
-#2 4
-#2 7
-#1 2
-#2 7
-#1 1
-#1 2
-#1 3
-#2 5
-#
-#样本输出2
-#c
-#u
-#c
-#u
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 2
+
+def solve():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x - 1])
+
+=======
+Suggestion 3
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    query = [list(map(int, input().split())) for _ in range(Q)]
+
+    for t, x in query:
+        if t == 1:
+            S = S[N-x:] + S[:N-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 4
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[N-x:] + S[:N-x]
+        else:
+            print(S[x-1])
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    queries = [list(map(int, input().split())) for _ in range(Q)]
+
+
+    # S = list(S)
+    # for q in queries:
+    #     if q[0] == 1:
+    #         for _ in range(q[1]):
+    #             S.insert(0, S.pop())
+    #     else:
+    #         print(S[q[1]-1])
+
+    S = S*2
+    for q in queries:
+        if q[0] == 1:
+            S = S[N-q[1]:2*N-q[1]]
+        else:
+            print(S[q[1]-1])
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    query = [list(map(str, input().split())) for _ in range(Q)]
+    for i in range(Q):
+        if query[i][0] == '1':
+            S = S[-1] + S[:-1]
+        else:
+            print(S[int(query[i][1])-1])
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+
+    # 1-indexedにする
+    S = " " + S
+
+    # 累積和
+    cum = [0] * (N + 1)
+    for i in range(1, N + 1):
+        cum[i] = cum[i - 1] + ord(S[i]) - ord("a") + 1
+
+    #print(cum)
+
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            cum[x] = cum[x] - ord(S[x]) + ord(S[x - 1])
+            cum[x - 1] = cum[x - 1] - ord(S[x - 1]) + ord(S[x])
+            S = S[:x - 1] + S[x] + S[x - 1] + S[x + 1:]
+        else:
+            print(cum[x] - cum[x - 1])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for i in range(Q):
+        t, x = map(str, input().split())
+        if t == '2':
+            print(S[int(x) - 1])
+        else:
+            S = S[-1] + S[:-1]
+    return 0
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    s = list(input())
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])

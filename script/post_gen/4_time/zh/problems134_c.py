@@ -1,44 +1,139 @@
-#问题陈述
-#给你一个长度为N的序列：A_1, A_2, ..., A_N。
-#对于1到N（包括）之间的每个整数i，回答下面的问题：
-#找出该序列中除A_i以外的N-1个元素的最大值。
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#1 ≦ A_i ≦ 200000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1
-#:
-#A_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含序列中除A_i以外的N-1个元素的最大值。
-#
-#输入样本 1
-#3
-#1
-#4
-#3
-#
-#样本输出1
-#4
-#3
-#4
-#除A_1以外的两个元素，即A_2=4和A_3=3，其最大值为4。
-#除A_2以外的两个元素，即A_1=1和A_3=3，其最大值为3。
-#除A_3以外的两个元素，即A_1=1和A_2=4，其最大值为4。
-#
-#样本输入2
-#2
-#5
-#5
-#
-#样本输出2
-#5
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems134_c():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    a_max = max(a)
+    a_max_2nd = sorted(a)[-2]
+
+    for i in range(n):
+        if a[i] == a_max:
+            print(a_max_2nd)
+        else:
+            print(a_max)
+
+=======
+Suggestion 2
+
+def problems134_c():
+    return None
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [int(input()) for _ in range(N)]
+    A.sort()
+    max = A[N-1]
+    for i in range(N):
+        if A[i] < max:
+            print(max)
+        else:
+            print(A[N-2])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    a_max = max(a)
+    for i in range(n):
+        if a[i] == a_max:
+            print(max(a[:i] + a[i+1:]))
+        else:
+            print(a_max)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max_a = max(a)
+    for i in range(n):
+        if a[i] == max_a:
+            print(max(a[:i] + a[i+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    A = []
+    for i in range(n):
+        A.append(int(input()))
+    for i in range(n):
+        print(max(A[:i]+A[i+1:]))
+
+=======
+Suggestion 7
+
+def main():
+    # N = int(input())
+    # A = []
+    # for i in range(N):
+    #     A.append(int(input()))
+    # for i in range(N):
+    #     tmp = A[i]
+    #     A[i] = 0
+    #     print(max(A))
+    #     A[i] = tmp
+    # 以上是自己写的，但是会超时
+    # 以下是参考答案
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    max_num = max(A)
+    max_num2 = max(A[:A.index(max_num)] + A[A.index(max_num) + 1:])
+    for i in range(N):
+        if A[i] == max_num:
+            print(max_num2)
+        else:
+            print(max_num)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    a_max = max(a)
+    a.remove(a_max)
+    for i in range(n):
+        print(a_max)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(input()) for i in range(n)]
+    max_a = max(a)
+    max_a_index = a.index(max_a)
+    for i in range(n):
+        if i == max_a_index:
+            print(max(a[:max_a_index] + a[max_a_index+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 10
+
+def problems134_c():
+    pass

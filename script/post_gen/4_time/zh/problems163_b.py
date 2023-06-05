@@ -1,52 +1,124 @@
-#问题陈述
-#高桥有N天的暑假。
-#他的老师给他布置了M项暑假作业。他需要A_i天来完成第i项作业。
-#他不能在同一天做多项作业，也不能在做作业的当天出去玩。
-#如果高桥在这个假期中完成所有的作业，那么他在假期中最多可以出去玩多少天？
-#如果高桥在假期中不能完成所有的作业，则打印-1。
-#
-#限制条件
-#1 ≦ N ≦ 10^6
-#1 ≦ M ≦ 10^4
-#1 ≦ A_i ≦ 10^4
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#A_1 ...A_M
-#
-#输出
-#打印高桥在假期中最多可以游玩的天数，或-1。
-#
-#输入样本 1
-#41 2
-#5 6
-#
-#样本输出1
-#30
-#例如，他可以在头5天做第一项任务，在接下来的30天里出去玩，并在假期的最后6天做第二项任务。这样一来，他可以安全地花30天时间出去玩。
-#
-#输入样本2
-#10 2
-#5 6
-#
-#样本输出2
-#-1
-#他不能完成他的作业。
-#
-#输入样本3
-#11 2
-#5 6
-#
-#样本输出3
-#0
-#他可以完成他的作业，但他将没有时间出去玩。
-#
-#样本输入4
-#314 15
-#9 26 5 35 8 9 79 3 23 8 46 2 6 43 3
-#
-#样本输出 4
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    if N < sum(A):
+        print(-1)
+    else:
+        print(N-sum(A))
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    sum = 0
+    for i in range(m):
+        sum += a[i]
+    if sum <= n:
+        print(n - sum)
+    else:
+        print(-1)
+
+=======
+Suggestion 3
+
+def solve(n, m, a):
+    if n < sum(a):
+        return -1
+    else:
+        return n - sum(a)
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    total = sum(A)
+
+    if total > N:
+        print(-1)
+    else:
+        print(N - total)
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n - sum(a))
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum_a = sum(a)
+    if sum_a > n:
+        print(-1)
+    else:
+        print(n - sum_a)
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    if sum(a) > n:
+        print(-1)
+    else:
+        print(n-sum(a))
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    # 处理数据
+    # 如果作业总天数大于假期天数，直接返回-1
+    if sum(A) > N:
+        print(-1)
+        return
+    # 如果作业总天数小于等于假期天数，输出假期天数减去作业总天数
+    else:
+        print(N - sum(A))
+        return
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    if sum(a) <= n:
+        print(0)
+        return
+    for i in range(m):
+        if sum(a[:i]) <= n:
+            print(i)
+            return
+    print(-1)

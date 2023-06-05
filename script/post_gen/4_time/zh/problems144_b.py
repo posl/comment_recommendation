@@ -1,36 +1,112 @@
-#问题陈述
-#在学习了乘法表之后，高桥可以将1到9（包括9）之间的两个整数相乘。
-#给出一个整数N，判断N是否可以表示为1到9之间两个整数的乘积。如果可以，打印 "Yes"；如果不能，打印 "No"。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果N可以表示为1到9（包括9）之间的两个整数的乘积，打印Yes；如果不能，打印No。
-#
-#输入样本 1
-#10
-#
-#输出示例 1
-#Yes
-#10可以表示为，例如，2×5。
-#
-#样本输入2
-#50
-#
-#样本输出2
-#No
-#50不能被表示为1和9之间的两个整数的乘积。
-#
-#样本输入3
-#81
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and N / i < 10:
+            print("Yes")
+            return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    for i in range(1, 10):
+        for j in range(1, 10):
+            if n == i * j:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    for i in range(1,10):
+        for j in range(1,10):
+            if i * j == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0 and 1 <= N / i <= 9:
+            print("Yes")
+            exit()
+    print("No")
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    return n
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    for i in range(1, 10):
+        if N % i == 0:
+            if N / i <= 9:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 7
+
+def check(n):
+    for i in range(1,10):
+        for j in range(1,10):
+            if i * j == n:
+                return True
+    return False
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    for i in range(1,10):
+        if n % i == 0:
+            if n / i <= 9:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    for i in range(1,10):
+        if N%i == 0 and N/i <= 9:
+            print("Yes")
+            break
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    for i in range(1,10):
+        if N % i == 0:
+            if N / i < 10:
+                print("Yes")
+                return
+    print("No")

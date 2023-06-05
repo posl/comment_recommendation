@@ -1,41 +1,161 @@
-#问题陈述
-#我们有一个N个正整数的序列：A=（A_1,...,A_n）。
-#让B是A的10^{100}份的连接。
-#考虑将B的项从左到右相加。什么时候总和第一次超过X？
-#换句话说，找出最小的整数k，使之：
-#(sum_{i=1}^{k} B_i > X）。
-#
-#约束条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ X ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#X
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#3 5 2
-#26
-#
-#样本输出1
-#8
-#我们有B=（3，5，2，3，5，2，3，5，2，...）。
-#(sum_{i=1}^{8} B_i = 28 > 26）成立，但当k为7或更少时，条件不满足，所以答案为8。
-#
-#样本输入2
-#4
-#12 34 56 78
-#1000
-#
-#样本输出2
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    s = sum(a)
+    k = x // s
+    ans = n * k
+    x -= s * k
+    for i in range(n):
+        x -= a[i]
+        ans += 1
+        if x < 0:
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+    B = A * (10 ** 100)
+    sum = 0
+    i = 0
+    while sum < X:
+        sum += B[i]
+        i += 1
+    print(i)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 10 ** 100
+    s = 0
+    for i in range(len(b)):
+        s += b[i]
+        if s > x:
+            print(i + 1)
+            break
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    X = int(input())
+
+    sum_A = sum(A)
+    if X <= sum_A:
+        print(1)
+        return
+
+    B = A * 100
+    sum_B = sum_A * 100
+    for i in range(1, N * 100):
+        B.append(B[i - 1])
+        sum_B += B[i - 1]
+        if sum_B > X:
+            print(i + 1)
+            return
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    s = 0
+    for i in range(100):
+        s += sum([a[j] * (10 ** (100 - i - 1)) for j in range(n)])
+        if s > x:
+            print(i + 1)
+            break
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    total = sum(a)
+    if total >= x:
+        print(n)
+    else:
+        print(n * (x // total) + sum([1 for i in range(x % total) if sum(a[:i]) > x]))
+main()
+
+=======
+Suggestion 7
+
+def solve(n, a, x):
+  sum = 0
+  i = 0
+  while True:
+    sum += a[i % n]
+    i += 1
+    if sum > x:
+      return i
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    b = a * 100
+    s = 0
+    for i in range(n * 100):
+        s += b[i]
+        if s > x:
+            print(i + 1)
+            break
+
+=======
+Suggestion 9
+
+def getSum(A, X):
+    B = []
+    for i in range(100):
+        B.extend(A)
+    #print(B)
+    sum = 0
+    for i in range(len(B)):
+        sum += B[i]
+        if sum > X:
+            return i+1
+    return -1
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = int(input())
+    a_sum = sum(a)
+    k = x // a_sum
+    ans = n * k
+    x -= a_sum * k
+    i = 0
+    while x > 0:
+        x -= a[i]
+        ans += 1
+        i += 1
+    print(ans)

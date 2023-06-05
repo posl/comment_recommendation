@@ -1,54 +1,136 @@
-#问题陈述
-#我们将把一个字符串a中包含的字符按某种顺序排列而得到的字符串称为a的变形。
-#例如，greenbin是初学者的变形。从这里可以看出，当同一个字符出现多次时，该字符必须被使用该次数。
-#有N个字符串s_1, s_2, ..., s_N。每个字符串的长度为10，由小写英文字符组成。此外，所有这些字符串都是不同的。请找出有多少对整数i, j (1 ≦ i < j ≦ N)，使得s_i是s_j的变形。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#s_i是一个长度为10的字符串。
-#s_i中的每个字符都是一个小写的英文字母。
-#s_1, s_2, ..., s_N都是独立的。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#s_1
-#s_2
-#:
-#s_N
-#
-#输出
-#打印整数i, j (1 ≦ i < j ≦ N)的对数，以便s_i是s_j的变形。
-#
-#输入样本 1
-#3
-#acornistnt
-#peanutbomb
-#constraint
-#
-#样本输出1
-#1
-#s_1 = acornistnt是s_3 = constraint的变形词。没有其他一对i，j，使s_i是s_j的变位，所以答案是1。
-#
-#输入样本2
-#2
-#1-2-2
-#ninemodsix
-#
-#样本输出2
-#0
-#如果没有一对i，j，使得s_i是s_j的变形，则打印0。
-#
-#输入样本3
-#5
-#abaaaaaaaa
-#oneplustwo
-#aaaaaaaaba
-#twoplusone
-#aaaabaaaaa
-#
-#样本输出3
-#4
-#注意，答案可能不适合32位的整数类型，尽管我们不能把这样的情况放在这里。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def convert_to_int(string):
+    return [ord(c) - ord('a') for c in string]
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for _ in range(n)]
+    d = {}
+    for i in range(n):
+        s[i] = ''.join(sorted(s[i]))
+        if s[i] in d:
+            d[s[i]] += 1
+        else:
+            d[s[i]] = 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s.sort()
+    s.append('')
+    ans = 0
+    cnt = 1
+    for i in range(N):
+        if s[i] == s[i + 1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_key(s):
+    a = [0 for i in range(26)]
+    for i in s:
+        a[ord(i) - ord('a')] += 1
+    return tuple(a)
+
+=======
+Suggestion 5
+
+def count(s):
+    result = 0
+    for i in range(len(s)):
+        for j in range(i+1,len(s)):
+            if s[i] == s[j]:
+                result += 1
+    return result
+
+=======
+Suggestion 6
+
+def get_hash(s):
+    hash = [0]*26
+    for c in s:
+        hash[ord(c)-ord('a')] += 1
+    return hash
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    s = []
+    for i in range(N):
+        s.append(input())
+    s.sort()
+    ans = 0
+    cnt = 1
+    for i in range(1, N):
+        if s[i] == s[i-1]:
+            cnt += 1
+        else:
+            ans += cnt * (cnt - 1) // 2
+            cnt = 1
+    ans += cnt * (cnt - 1) // 2
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = [input() for i in range(n)]
+    d = {}
+    for i in s:
+        if i not in d:
+            d[i] = 1
+        else:
+            d[i] += 1
+    ans = 0
+    for i in d:
+        ans += d[i] * (d[i] - 1) // 2
+    print(ans)
+
+solve()
+
+=======
+Suggestion 9
+
+def count_chars(s):
+    chars = {}
+    for c in s:
+        if c in chars:
+            chars[c] += 1
+        else:
+            chars[c] = 1
+    return chars
+
+=======
+Suggestion 10
+
+def getCharNumber(c):
+    a = ord('a')
+    z = ord('z')
+    val = ord(c)
+    if a <= val and val <= z:
+        return val - a
+    return -1

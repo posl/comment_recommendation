@@ -1,81 +1,192 @@
-#问题陈述
-#高桥和青木各有一个玩具，用M条绳索系在N个球上。
-#在高桥的玩具中，球的编号为1，...，N，第i根绳子系着球A_i和B_i。
-#同样地，在Aoki的玩具中，球的编号为1，...，N，第i条绳子系着球C_i和D_i。
-#在每个玩具中，没有一条绳子把球绑在自己身上，也没有两个球被两条或更多不同的绳子绑住。
-#Snuke想知道这两个玩具是否有相同的形状。
-#在这里，当有一个序列P满足以下条件时，就可以说它们有相同的形状。
-#P是(1,...,N)的一个置换。
-#对于1到N（包括）之间的每一对整数i，j，下面的条件成立。
-#当且仅当青木玩具中的球P_i和P_j被绳子绑住时，高桥玩具中的球i和j被绳子绑住。
-#
-#如果这两个玩具的形状相同，则打印Yes；否则，打印No。
-#
-#限制条件
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ ((n(n - 1))/(2))
-#1 ≦ A_i < B_i ≦ N (1 ≦ i ≦ M)
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#1 ≦ C_i < D_i ≦ N (1 ≦ i ≦ M)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_M D_M
-#
-#输出
-#如果两个玩具的形状相同，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4 4
-#1 2
-#1 3
-#1 4
-#3 4
-#1 3
-#1 4
-#2 3
-#3 4
-#
-#样本输出1
-#Yes
-#下图左边是高桥的玩具，右边是青木的玩具。
-#下图显示这两个玩具有相同的形状。例如，当P=（3，2，1，4）时，声明中的条件得到满足。
-#
-#输入样本 2
-#5 6
-#1 2
-#1 3
-#1 4
-#3 4
-#3 5
-#4 5
-#1 2
-#1 3
-#1 4
-#1 5
-#3 5
-#4 5
-#
-#样本输出2
-#No
-#这两个玩具的形状不一样。
-#
-#样本输入3
-#8 0
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def func():
+    return
+
+=======
+Suggestion 3
+
+def get_ball_list(n, m, a_list, b_list):
+    ball_list = []
+    for i in range(1, n+1):
+        ball = []
+        for j in range(m):
+            if i == a_list[j]:
+                ball.append(b_list[j])
+            elif i == b_list[j]:
+                ball.append(a_list[j])
+        ball_list.append(ball)
+    return ball_list
+
+=======
+Suggestion 4
+
+def main():
+    n,m=map(int,input().split())
+    a=[list(map(int,input().split())) for _ in range(m)]
+    b=[list(map(int,input().split())) for _ in range(m)]
+    a.sort()
+    b.sort()
+    for i in range(m):
+        a[i][0]-=1
+        a[i][1]-=1
+        b[i][0]-=1
+        b[i][1]-=1
+    for i in range(m):
+        a[i][0],a[i][1]=a[i][1],a[i][0]
+        b[i][0],b[i][1]=b[i][1],b[i][0]
+    a.sort()
+    b.sort()
+    for i in range(m):
+        a[i][0],a[i][1]=a[i][1],a[i][0]
+        b[i][0],b[i][1]=b[i][1],b[i][0]
+    for i in range(m):
+        if a[i]!=b[i]:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = [[False] * n for _ in range(n)]
+    b = [[False] * n for _ in range(n)]
+    for _ in range(m):
+        x, y = map(int, input().split())
+        x -= 1
+        y -= 1
+        a[x][y] = a[y][x] = True
+    for _ in range(m):
+        x, y = map(int, input().split())
+        x -= 1
+        y -= 1
+        b[x][y] = b[y][x] = True
+    def dfs(x, y):
+        if x == n: return True
+        if y == n: return dfs(x + 1, x + 2)
+        if a[x][y] != b[x][y]: return False
+        return dfs(x, y + 1)
+    print("Yes" if dfs(0, 1) else "No")
+
+=======
+Suggestion 6
+
+def main():
+    n,m=map(int,input().split())
+    a=[]
+    b=[]
+    c=[]
+    d=[]
+    for i in range(m):
+        a1,b1=map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    for i in range(m):
+        c1,d1=map(int,input().split())
+        c.append(c1)
+        d.append(d1)
+    for i in range(m):
+        if a[i]>c[i]:
+            a[i],c[i]=c[i],a[i]
+            b[i],d[i]=d[i],b[i]
+    for i in range(m):
+        for j in range(m):
+            if a[i]==c[j] and b[i]==d[j]:
+                c[i],c[j]=c[j],c[i]
+                d[i],d[j]=d[j],d[i]
+    count=0
+    for i in range(m):
+        if a[i]==c[i] and b[i]==d[i]:
+            count+=1
+    if count==m:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(M):
+        c,d = map(int,input().split())
+        C.append(c)
+        D.append(d)
+    #print(A,B,C,D)
+    #print(N,M)
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if i != j:
+                for k in range(M):
+                    if A[k] == i and B[k] == j:
+                        for l in range(M):
+                            if C[l] == i and D[l] == j:
+                                break
+                        else:
+                            break
+                else:
+                    for l in range(M):
+                        if C[l] == i and D[l] == j:
+                            break
+                    else:
+                        print("No")
+                        break
+            if i == N and j == N:
+                print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int, input().split())
+    a = []
+    b = []
+    c = []
+    d = []
+    for i in range(m):
+        a1,b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    for i in range(m):
+        c1,d1 = map(int, input().split())
+        c.append(c1)
+        d.append(d1)
+    #print(a)
+    #print(b)
+    #print(c)
+    #print(d)
+    for i in range(m):
+        for j in range(m):
+            if a[i] == c[j] and b[i] == d[j]:
+                a[i] = 0
+                b[i] = 0
+                c[j] = 0
+                d[j] = 0
+    #print(a)
+    #print(b)
+    #print(c)
+    #print(d)
+    if sum(a) == 0 and sum(b) == 0 and sum(c) == 0 and sum(d) == 0:
+        print('Yes')
+    else:
+        print('No')

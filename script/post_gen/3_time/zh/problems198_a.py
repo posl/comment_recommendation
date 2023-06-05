@@ -1,35 +1,68 @@
-#问题陈述
-#两个男孩，A和B，将分享N个没有区别的糖果。
-#有多少种方法可以使每个男孩得到正整数的糖果？
-#
-#限制条件
-#N是一个整数。
-# 1 ≦ N ≦ 15
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#1
-#只有一种方法可以分享这些糖果：A和B各得一个甜食。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#
-#采样输入3
-#3
-#
-#采样输出3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem198_a():
+    n = int(input())
+    if n < 3:
+        print(0)
+    else:
+        print(int((n-1)*(n-2)/2))
+
+=======
+Suggestion 2
+
+def f(n):
+    return n * (n + 1) // 2
+
+n = int(input())
+print(f(n-1))
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    print(N-1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print(n-1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n % 2 == 0:
+        print(int(n/2 - 1))
+    else:
+        print(int(n/2))
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    print(N-1)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N%2 == 0:
+        print(int(N/2 - 1))
+    else:
+        print(int((N-1)/2))
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    print((n-1) if n > 1 else 0)

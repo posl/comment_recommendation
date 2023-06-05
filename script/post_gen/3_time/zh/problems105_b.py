@@ -1,36 +1,133 @@
-#问题陈述
-#La Confiserie d'ABC出售的蛋糕每个4美元，甜甜圈每个7美元。
-#请确定是否有办法以刚好N美元的价格买到其中的一些东西。你可以买两个或更多的甜甜圈和两个或更多的蛋糕，你也可以选择买零个甜甜圈或零个蛋糕。
-#
-#限制条件
-#N是1到100之间的整数，包括在内。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#如果有一种方法可以用N美元买到一些蛋糕和一些甜甜圈，则打印Yes；否则，打印No。
-#
-#输入样本1
-#11
-#
-#输出示例 1
-#Yes
-#如果你买了一个蛋糕和一个甜甜圈，总额将是4+7=11美元。
-#
-#样本输入2
-#40
-#
-#样本输出2
-#Yes
-#如果你买了10个蛋糕，总额将是4×10=40美元。
-#
-#样本输入3
-#3
-#
-#样本输出 3
-#No
-#蛋糕（4元）和甜甜圈（7元）的价格都高于3元，所以不存在这种方式。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    for i in range(n//4+1):
+        for j in range(n//7+1):
+            if i*4+j*7 == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0 or N % 15 == 0 or N % 19 == 0 or N % 20 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def func(N):
+    for i in range(0, N//4+1):
+        for j in range(0, N//7+1):
+            if 4*i+7*j == N:
+                return "Yes"
+    return "No"
+
+N = int(input())
+print(func(N))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if n % 4 == 0 or n % 7 == 0 or n % 11 == 0:
+        print("Yes")
+    elif (n - 4) % 7 == 0 or (n - 4) % 11 == 0 or (n - 7) % 4 == 0 or (n - 7) % 11 == 0 or (n - 11) % 4 == 0 or (n - 11) % 7 == 0:
+        print("Yes")
+    elif (n - 4 - 7) % 11 == 0 or (n - 4 - 11) % 7 == 0 or (n - 7 - 11) % 4 == 0:
+        print("Yes")
+    elif (n - 4 - 7 - 11) % 4 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    for i in range(n//4+1):
+        if (n-4*i)%7 == 0:
+            print('Yes')
+            return
+    print('No')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    for i in range(int(n/4)+1):
+        for j in range(int(n/7)+1):
+            if i*4+j*7 == n:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    if N % 4 == 0 or N % 7 == 0 or N % 11 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    for i in range(n//4+1):
+        for j in range(n//7+1):
+            if i*4+j*7==n:
+                print("Yes")
+                return
+    print("No")
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    flag = False
+    for i in range(0, n // 4 + 1):
+        for j in range(0, n // 7 + 1):
+            if 4 * i + 7 * j == n:
+                flag = True
+                break
+    if flag:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    n = int(input())
+    # 依次尝试买 0，1，2，…，n/7 个甜甜圈
+    for i in range(n // 7 + 1):
+        # 甜甜圈的总价
+        price = 7 * i
+        # 剩余的钱
+        rest = n - price
+        # 如果剩余的钱可以被 4 整除，说明可以买到蛋糕
+        if rest % 4 == 0:
+            print('Yes')
+            return
+    # 以上循环结束后，没有找到可以买到甜甜圈和蛋糕的方案
+    print('No')

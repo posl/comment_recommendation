@@ -1,30 +1,114 @@
-#问题陈述
-#N年是哪个世纪？
-#什么是世纪？
-#一个世纪是一个100年的时期。例如，第1个世纪由1到100年组成，第2个世纪由101到200年组成，以此类推。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2021
-#
-#样本输出1
-#21
-#这一年2021年是在21世纪。
-#
-#样本输入2
-#200
-#
-#样本输出2
-#2
-#200年是在第2个世纪。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def century_from_year(year):
+    return (year - 1) // 100 + 1
+
+=======
+Suggestion 2
+
+def century(N):
+    return (N-1)//100+1
+
+=======
+Suggestion 3
+
+def century(n):
+    if n % 100 == 0:
+        return n // 100
+    else:
+        return n // 100 + 1
+
+print(century(int(input())))
+
+=======
+Suggestion 4
+
+def century_from_year(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1
+
+print(century_from_year(2021))
+print(century_from_year(200))
+print(century_from_year(1900))
+print(century_from_year(3000))
+print(century_from_year(3001))
+print(century_from_year(0))
+print(century_from_year(1))
+print(century_from_year(99))
+print(century_from_year(100))
+print(century_from_year(101))
+print(century_from_year(199))
+print(century_from_year(200))
+print(century_from_year(201))
+print(century_from_year(899))
+print(century_from_year(900))
+print(century_from_year(901))
+print(century_from_year(999))
+print(century_from_year(1000))
+print(century_from_year(1001))
+print(century_from_year(9999))
+print(century_from_year(10000))
+print(century_from_year(10001))
+
+=======
+Suggestion 5
+
+def century(year):
+    # Finish this :)
+    if year%100 == 0:
+        return year//100
+    else:
+        return year//100 +1
+
+print(century(2021))
+print(century(200))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if N % 100 == 0:
+        century = N // 100
+    else:
+        century = N // 100 + 1
+    print(century)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    print((n+99)//100)
+
+=======
+Suggestion 8
+
+def century_from_year(year):
+    if year % 100 == 0:
+        return int(year/100)
+    else:
+        return int(year/100)+1
+
+=======
+Suggestion 9
+
+def getCentury(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1
+
+=======
+Suggestion 10
+
+def century(year):
+    if year % 100 == 0:
+        return year // 100
+    else:
+        return year // 100 + 1

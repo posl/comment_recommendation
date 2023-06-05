@@ -1,68 +1,141 @@
-#问题陈述
-#管理AtCoder王国的高桥决定改变英文小写字母的字母顺序。
-#新的字母顺序由一个字符串X表示，它是a, b, ..., z的排列组合。X的第i个字符（1≦i≦26）将是新顺序中第i个最小的英文小写字母。
-#这个王国有N个公民，他们的名字是S_1, S_2, ..., S_N，其中每个S_i（1 ≦ i ≦ N）由小写英文字母组成。
-#根据高桥决定的字母顺序对这些名字进行词法排序。
-#什么是词法顺序？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间的词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j在字母顺序上早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度。如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#
-#
-#约束条件
-#X是a, b, ..., z的排列组合。
-#2 ≦ N ≦ 50000
-#N是一个整数。
-#1 ≦ |S_i| ≦ 10 (1 ≦ i ≦ N)
-#S_i由小写英文字母组成。(1 ≦ i ≦ N)
-#S_i ≠ S_j (1 ≦ i < j ≦ N)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#X
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含第i个最小的名字，当公民的名字按照高桥决定的字母顺序进行排序时。
-#
-#输入样本1
-#bacdefghijklmnopqrstuvwxzy
-#4
-#abx
-#bzz
-#bzy
-#caa
-#
-#样本输出1
-#bzz
-#bzy
-#abx
-#caa
-#在高桥设定的新的字母顺序中，b比a小，z比y小。因此，按词法对公民的名字进行排序的结果是：bzz, bzy, abx, caa，升序排列。
-#
-#输入样本2
-#zyxwvutsrqponmlkjihgfedcba
-#5
-#a
-#ab
-#abc
-#ac
-#b
-#
-#样本输出2
-#b
-#a
-#ac
-#ab
-#abc
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    s.sort(key=lambda s: [x.index(c) for c in s])
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 2
+
+def sort_by_new_order(x, y):
+    for i in range(len(x)):
+        if x[i] != y[i]:
+            return new_order.index(x[i]) - new_order.index(y[i])
+    return len(x) - len(y)
+
+new_order = input()
+n = int(input())
+names = []
+for i in range(n):
+    names.append(input())
+names.sort(key = lambda x: sort_by_new_order(x, new_order))
+for name in names:
+    print(name)
+
+=======
+Suggestion 3
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort(key=lambda x: [ord(x[i]) for i in range(len(x))])
+    for i in s:
+        print(i)
+
+=======
+Suggestion 4
+
+def lex_cmp(x, y, order):
+    for i in range(0, min(len(x), len(y))):
+        if order.index(x[i]) < order.index(y[i]):
+            return -1
+        elif order.index(x[i]) > order.index(y[i]):
+            return 1
+    if len(x) < len(y):
+        return -1
+    elif len(x) > len(y):
+        return 1
+    else:
+        return 0
+
+=======
+Suggestion 5
+
+def sort_by_alphabet_order():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    # print(x)
+    # print(n)
+    # print(s)
+    s.sort(key=lambda x: [x.replace(c, chr(123 - ord(c))) for c in x])
+    # print(s)
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 6
+
+def main():
+    x = input()
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    x_dict = {}
+    for i in range(26):
+        x_dict[x[i]] = chr(ord('a') + i)
+    for i in range(n):
+        s[i] = ''.join([x_dict[x] for x in s[i]])
+    s.sort()
+    for i in range(n):
+        print(s[i])
+
+=======
+Suggestion 7
+
+def get_order_dict(order):
+    order_dict = {}
+    for i in range(len(order)):
+        order_dict[order[i]] = i
+    return order_dict
+
+=======
+Suggestion 8
+
+def main():
+    x = input()
+    n = int(input())
+    s = [input() for i in range(n)]
+    d = {c: i for i, c in enumerate(x)}
+    s.sort(key=lambda x: [d[c] for c in x])
+    print(*s, sep='\n')
+
+=======
+Suggestion 9
+
+def compare(s1, s2, x):
+    if len(s1) < len(s2):
+        s1 = s1 + 'a' * (len(s2) - len(s1))
+    elif len(s1) > len(s2):
+        s2 = s2 + 'a' * (len(s1) - len(s2))
+    for i in range(len(s1)):
+        if x.index(s1[i]) < x.index(s2[i]):
+            return -1
+        elif x.index(s1[i]) > x.index(s2[i]):
+            return 1
+    return 0
+
+x = input()
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+s.sort(cmp=lambda s1, s2:compare(s1, s2, x))
+for i in range(n):
+    print s[i]

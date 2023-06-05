@@ -1,33 +1,110 @@
-#问题陈述
-#让S(n)表示n的十进制数字之和。
-#例如，S（123）=1+2+3=6。
-#当对所有正整数m，如m>n，(n/(S(n)))≦(m/(S(m)))成立时，我们将称一个整数n为Snuke数。
-#给定一个整数K，列出最小的K个Snuke数。
-#
-#限制条件
-#1 ≦ K
-#第K个最小的Snuke数不大于10^{15}。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#输出
-#打印K行。第i行应包含第i个最小的Snuke数字。
-#
-#输入样本 1
-#10
-#
-#样本输出 1
-#1
-#2
-#3
-#4
-#5
-#6
-#7
-#8
-#9
-#19
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def S(n):
+    sum = 0
+    while n>0:
+        sum += n%10
+        n = n//10
+    return sum
+
+K = int(input())
+n = 1
+while K>0:
+    if S(n) == 1:
+        print(n)
+        K -= 1
+    n += 1
+
+=======
+Suggestion 2
+
+def snuke(n):
+    return n/sum([int(x) for x in str(n)])
+
+=======
+Suggestion 3
+
+def S(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n = n // 10
+    return s
+
+=======
+Suggestion 4
+
+def S(n):
+    # 计算n的十进制数字之和
+    n = str(n)
+    sum = 0
+    for i in n:
+        sum += int(i)
+    return sum
+
+=======
+Suggestion 5
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n%10
+        n = n//10
+    return sum
+
+=======
+Suggestion 6
+
+def S(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+=======
+Suggestion 7
+
+def S(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+=======
+Suggestion 8
+
+def s(n):
+    return sum([int(i) for i in str(n)])
+
+=======
+Suggestion 9
+
+def S(n):
+    sum = 0
+    while n:
+        sum += n%10
+        n = n/10
+    return sum
+
+=======
+Suggestion 10
+
+def snuke(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+k = int(input())
+n = 1
+while k > 0:
+    if snuke(n) == 1:
+        print(n)
+        k -= 1
+    n += 1

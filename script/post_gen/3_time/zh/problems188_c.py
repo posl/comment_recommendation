@@ -1,52 +1,238 @@
-#问题陈述
-#2^N个玩家，标记为1到2^N，将在一个单淘汰的编程比赛中相互竞争。
-#玩家i的评分是A_i。任何两位选手都有不同的评分，两位选手之间的比赛结果总是评分高的选手获胜。  
-#锦标赛看起来像一棵完美的二叉树。
-#从形式上看，锦标赛将按以下方式进行：  
-#对于每个整数i=1，2，3，...，N的这个顺序，会发生以下情况。
-#对于每个整数j（1 ≦ j ≦ 2^{N - i}），在从未输过的玩家中，拥有（2j - 1）-第1个最小标签的玩家和拥有第2j个最小标签的玩家互相进行比赛。
-#
-#找出将获得第二名的选手的标签，即在最后的比赛中输掉。
-#
-#限制条件
-#1 ≦ N ≦ 16
-#1 ≦ A_i ≦ 10^9
-#A_i是成对的不同。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 a_3 ... a_{2^n}
-#
-#输出
-#打印将获得第二名的选手的标签。
-#
-#输入样本 1
-#2
-#1 4 2 5
-#
-#样本输出 1
-#2
-#首先，玩家1和2以及玩家3和4之间将有两场比赛。根据评分，选手2和4将获胜。
-#然后，玩家2和4之间将进行一场比赛，比赛结束时玩家4将成为冠军。
-#在最后一场比赛中输掉的球员是球员2，所以我们应该打印2。  
-#
-#输入样本 2
-#2
-#3 1 5 4
-#
-#样本输出2
-#1
-#首先，玩家1和2以及玩家3和4之间将有两场比赛。根据评分，球员1和3将获胜。
-#然后，球员1和3之间将进行一场比赛，比赛结束时球员3将成为冠军。
-#在最后一场比赛中输掉的球员是球员1，所以我们应该打印1。  
-#
-#输入样本 3
-#4
-#6 13 12 5 3 7 10 11 16 9 8 15 2 1 14 4
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = a
+    for i in range(n - 1):
+        tmp = []
+        for j in range(0, 2 ** (n - i), 2):
+            if b[j] > b[j + 1]:
+                tmp.append(b[j])
+            else:
+                tmp.append(b[j + 1])
+        b = tmp
+    print(a.index(min(b)) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    print(a[-2])
+
+=======
+Suggestion 3
+
+def tournament(A):
+    N = len(A)
+    B = [0] * N
+    for i in range(N):
+        B[i] = [A[i], i]
+    return B
+
+=======
+Suggestion 4
+
+def find_second_player(n, a):
+    # find the second player in the final game
+    # n: number of players
+    # a: list of the players' scores
+    # return: the second player's id
+    # 2^n players, a list of 2^n scores
+    # a[1] is the winner
+    # a[2] is the second player
+    # a[2^n] is the loser
+    # a[2^n-1] is the second loser
+    # a[2^n-2] is the third loser
+    # a[2^n-3] is the fourth loser
+    # a[2^n-4] is the fifth loser
+    # ...
+    # a[2^n-2^(n-1)] is the first loser
+    # a[2^n-2^(n-1)+1] is the second player
+    # a[2^n-2^(n-1)+2] is the third player
+    # ...
+    # a[2^n-2^(n-2)] is the last player
+    # a[2^n-2^(n-2)+1] is the first player
+    # a[2^n-2^(n-2)+2] is the second player
+    # ...
+    # a[2^n-2^(n-3)] is the last player
+    # a[2^n-2^(n-3)+1] is the first player
+    # ...
+    # a[2^n-2^(n-4)] is the last player
+    # a[2^n-2^(n-4)+1] is the first player
+    # ...
+    # a[2^n-2^(n-5)] is the last player
+    # a[2^n-2^(n-5)+1] is the first player
+    # ...
+    # a[2^n-2^(n-6)] is the last player
+    # a[2^n-2^(n-6)+1] is the first player
+    # ...
+    # a[2^n-2^(n-7)] is the last player
+    # a[2^n-2^(n-7)+1] is the first player
+    # ...
+    # a[2^n-2^(n-8)] is the last player
+    #
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 二分探索
+    def bisect(l, r):
+        if r - l == 1:
+            return l
+        else:
+            m = (l + r) // 2
+            l1 = bisect(l, m)
+            l2 = bisect(m, r)
+            if a[l1] > a[l2]:
+                return l1
+            else:
+                return l2
+
+    print(bisect(0, 2 ** n))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    #N = 2
+    #A = [1, 4, 2, 5]
+    #N = 2
+    #A = [3, 1, 5, 4]
+    #N = 4
+    #A = [6, 13, 12, 5, 3, 7, 10, 11, 16, 9, 8, 15, 2, 1, 14, 4]
+    #print(N, A)
+    #print(N, A)
+    #N = 2
+    #A = [1, 4, 2, 5]
+    #N = 2
+    #A = [3, 1, 5, 4]
+    #N = 4
+    #A = [6, 13, 12, 5, 3, 7, 10, 11, 16, 9, 8, 15, 2, 1, 14, 4]
+    #print(N, A)
+    #print(N, A)
+    #N = 2
+    #A = [1, 4, 2, 5]
+    #N = 2
+    #A = [3, 1, 5, 4]
+    #N = 4
+    #A = [6, 13, 12, 5, 3, 7, 10, 11, 16, 9, 8, 15, 2, 1, 14, 4]
+    #print(N, A)
+    #print(N, A)
+    #N = 2
+    #A = [1, 4, 2, 5]
+    #N = 2
+    #A = [3, 1, 5, 4]
+    #N = 4
+    #A = [6, 13, 12, 5, 3, 7, 10, 11, 16, 9, 8, 15, 2, 1, 14, 4]
+    #print(N, A)
+    #print(N,
+
+=======
+Suggestion 7
+
+def get_second_place(players):
+    players.sort()
+    second_place = players[1]
+    return second_place
+
+=======
+Suggestion 8
+
+def findSecondPlayer(N, A):
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    # 1. 生成比赛表
+    # 2. 生成比赛结果
+    # 3. 找到第二名
+    # 4. 输出第二名
+    tree = [0 for i in range(2 ** N)]
+    for i in range(2 ** N):
+        tree[i] = A[i]
+    for i in range(N):
+        for j in range(2 ** (N - i - 1)):
+            if tree[2 * j] > tree[2 * j + 1]:
+                tree[j] = tree
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 1. 2^N 个选手，按照评分，进行比赛
+    # 2. 2^N 个选手，两两进行比赛，按照评分，进行比赛
+    # 3. 2^N 个选手，两两进行比赛，按照评分，进行比赛，最后获胜的选手，就是冠军
+    # 4. 2^N 个选手，两两进行比赛，按照评分，进行比赛，最后获胜的选手，就是冠军，输掉比赛的选手，就是亚军
+    # 5. 2^N 个选手，两两进行比赛，按照评分，进行比赛，最后获胜的选手，就是冠军，输掉比赛的选手，就是亚军，输出亚军的评分
+    # 6. 2^N 个选手，两两进行比赛，按照评分，进行比赛，最后获胜的选手，就是冠军，输掉比赛的选手，就是亚军，输出亚军的评分，输入的评分是成对的不同的，所以输出亚军的评分，就是输出亚军的标签
+
+    # 1. 2^N 个选手，按照评分，进行比赛
+    # 2. 2^N 个选手，两两进行比赛，按照评分，进行比赛
+    # 3. 2^N 个选手，两两进行比赛，按照评分，进行比赛，最后获胜的选手，就是冠军
+    # 4. 2^N 个选手，两两进行比
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    n = 2 ** n
+    index = [i for i in range(n)]
+    while len(index) > 2:
+        tmp = []
+        for i in range(0, len(index), 2):
+            if a[index[i]] > a[index[i + 1]]:
+                tmp.append(index[i])
+            else:
+                tmp.append(index[i + 1])
+        index = tmp
+    if a[index[0]] < a[index[1]]:
+        print(index[0] + 1)
+    else:
+        print(index[1] + 1)

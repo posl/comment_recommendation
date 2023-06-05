@@ -1,31 +1,125 @@
-#问题陈述
-#在长度为A+B的字符串中，包含A的出现次数和B的出现次数的字符串中，找出按词典顺序排列的第K个字符串。
-#
-#限制条件
-#1 ≦ A, B ≦ 30
-#1 ≦ K ≦ S，其中S是长度为A+B的字符串的数量，包含A出现的a和B出现的b。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B K
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#2 2 4
-#
-#输出样本 1
-#baab
-#下面是包含两个as和两个b的字符串，按词典顺序排列：aabb, abab, abba, baab, baba, and bbaa。
-#第四个字符串，baab，应该被打印出来。
-#
-#输入样本 2
-#30 30 118264581564861424
-#
-#输出样本2
-#bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-#K可能不适合32位整数类型。
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def calc_combination(a, b):
+    if a == 0 or b == 0:
+        return 1
+    return calc_combination(a - 1, b) + calc_combination(a, b - 1)
+
+=======
+Suggestion 3
+
+def dfs(a,b,k):
+    if a==0:
+        return 'b'*b
+    if b==0:
+        return 'a'*a
+    i=comb[a+b-1][b]
+    if k<=i:
+        return 'a'+dfs(a-1,b,k)
+    else:
+        return 'b'+dfs(a,b-1,k-i)
+
+A,B,K=map(int,input().split())
+comb=[[0 for i in range(B+1)] for j in range(A+B+1)]
+for i in range(A+B+1):
+    comb[i][0]=1
+    for j in range(1,min(i,B+1)):
+        comb[i][j]=comb[i-1][j-1]+comb[i-1][j]
+print(dfs(A,B,K))
+
+=======
+Suggestion 4
+
+def comb(n, m):
+    if n == m or m == 0:
+        return 1
+    elif 0 < m < n:
+        return comb(n-1, m-1) + comb(n-1, m)
+    else:
+        return 0
+
+=======
+Suggestion 5
+
+def solve(A, B, K):
+    if A == 0:
+        return 'b' * B
+    elif B == 0:
+        return 'a' * A
+    elif K == 1:
+        return 'a' * A + 'b' * B
+    elif K == 2 ** (A + B):
+        return 'b' * B + 'a' * A
+    elif K <= 2 ** (A + B - 1):
+        return 'a' + solve(A - 1, B, K - 1)
+    else:
+        return 'b' + solve(A, B - 1, K - 2 ** (A + B - 1))
+
+=======
+Suggestion 6
+
+def solve(A, B, K):
+    if A == 0:
+        return 'b'*B
+    elif B == 0:
+        return 'a'*A
+    else:
+        if K <= comb(A+B-1, B-1):
+            return 'a' + solve(A-1, B, K)
+        else:
+            return 'b' + solve(A, B-1, K-comb(A+B-1, B-1))
+
+=======
+Suggestion 7
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 8
+
+def permutation(a,b,k):
+    if a == 0 or b == 0:
+        return "a"*a + "b"*b
+    elif k <= 0:
+        return "a"*a + "b"*b
+    else:
+        count = 1
+        for i in range(1,a+b+1):
+            count *= i
+        for i in range(1,a+1):
+            count /= i
+        for i in range(1,b+1):
+            count /= i
+        if k <= count:
+            return "a" + permutation(a-1,b,k)
+        else:
+            return "b" + permutation(a,b-1,k-count)
+
+=======
+Suggestion 9
+
+def getStr(A, B, K):
+    if A == 0:
+        return "b"*B
+    if B == 0:
+        return "a"*A
+    if K <= 1:
+        return "a"*A + "b"*B
+    if K > 1:
+        return getStr(A-1, B, K-1) + getStr(A, B-1, K-1)
+
+A, B, K = map(int, input().split())
+print(getStr(A, B, K))

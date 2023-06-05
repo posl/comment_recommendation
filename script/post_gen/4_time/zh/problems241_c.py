@@ -1,72 +1,286 @@
-#问题陈述
-#有一个有N个水平行和N个垂直列的网格，每个方格都被涂成白色或黑色。
-#网格的状态由N个字符串S_i表示。
-#如果S_i的第j个字符是#，那么从上面第i行和左边第j列的方格就被涂成黑色。
-#如果该字符是.，则该广场被涂成白色。
-#高桥可以从这些被涂成白色的方格中最多选择两个，并将其涂成黑色。
-#确定是否有可能使该网格包含6个或更多连续的涂成黑色的方格，这些方格可以是垂直、水平或斜向排列的。
-#这里，如果具有N行N列的网格完全包含一个具有6行6列的子网格，并且至少在其对角线上的所有方格都被涂成了黑色，则称该网格包含6个或更多的连续涂黑的方格。
-#
-#限制条件
-#6 ≦ N ≦ 1000
-#| S_i| =N
-#S_i由#和.
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果有可能通过最多两个方格的绘画来满足条件，那么打印Yes；否则，打印No。
-#
-#输入样本 1
-#8
-#........
-#........
-#.#.##.#.
-#........
-#........
-#........
-#........
-#........
-#
-#样本输出1
-#Yes
-#通过涂抹从上往下第3行左边的第3个和第6个方块，将有6个方块被涂成黑色，并在水平方向上排列。
-#
-#输入样本2
-#6
-#######
-#######
-#######
-#######
-#######
-#######
-#
-#样本输出2
-#Yes
-#虽然高桥不能选择一个正方形涂成黑色，但这个网格已经满足了条件。
-#
-#样本输入3
-#10
-#..........
-##..##.....
-#..........
-#..........
-#....#.....
-#....#.....
-#.#...#..#.
-#..........
-#..........
-#..........
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                continue
+            s[i] = s[i][:j] + '#' + s[i][j+1:]
+            if check(s):
+                print('Yes')
+                return
+            s[i] = s[i][:j] + '.' + s[i][j+1:]
+    print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        s[i] = s[i].replace('#', '1')
+        s[i] = s[i].replace('.', '0')
+    for i in range(n):
+        s[i] = int(s[i], 2)
+    for i in range(n):
+        s[i] = bin(s[i])
+    for i in range(n):
+        s[i] = s[i].replace('0b', '')
+        s[i] = s[i].rjust(n, '0')
+    for i in range(n):
+        s[i] = list(s[i])
+        for j in range(n):
+            s[i][j] = int(s[i][j])
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                for k in range(1, 6):
+                    if i+k < n and s[i+k][j] == 1:
+                        for l in range(1, 6):
+                            if j+l < n and s[i][j+l] == 1:
+                                if i+k+l < n and s[i+k+l][j+l] == 1:
+                                    print('Yes')
+                                    exit()
+    print('No')
+main()
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    #print(s)
+    #print(s[0][0])
+    #print(s[0][1])
+    #print(s[1][0])
+    #print(s[1][1])
+    #print(s[0][0] == s[0][1])
+    #print(s[1][0] == s[1][1])
+    #print(s[0][0] == s[1][0])
+    #print(s[0][1] == s[1][1])
+    #print(s[0][0] == s[1][1])
+    #print(s[0][1] == s[1][0])
+    #print(s[0][0] == s[1][0])
+    #print(s[0][1] == s[1][1])
+    #print(s[0][0] == s[1][1])
+    #print(s[0][1] == s[1][0])
+    #print(s[0][0] == s[1][0])
+    #print(s[0][1] == s[1][1])
+    #print(s[0][0] == s[1][1])
+    #print(s[0][1] == s[1][0])
+    #print(s[0][0] == s[1][0])
+    #print(s[0][1] == s[1][1])
+    #print(s[0][0] == s[1][1])
+    #print(s[0][1] == s[1][0])
+    #print(s[0][0] == s[1][0])
+    #print(s[0][1] == s[1][1])
+    #print(s[0][0] == s[1][1])
+    #print(s[0][1] == s[1][0])
+    for i in range(n):
+        for j in range(n):
+            if i < n - 1 and j < n - 1:
+                if s[i][j] == s[i][j + 1] and s[i][j] == s[i + 1][j] and s[i][j] == s[i + 1][j + 1]:
+                    return print('
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    # print(s)
+    for i in range(1, n-1):
+        for j in range(1, n-1):
+            if s[i][j] == '#':
+                if s[i-1][j] == '#' and s[i+1][j] == '#' and s[i][j-1] == '#' and s[i][j+1] == '#':
+                    print("Yes")
+                    return
+    print("No")
+    return
+
+=======
+Suggestion 5
+
+def checkRow(arr,row):
+    for i in range(0, len(arr[row])):
+        if arr[row][i] == '#':
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                s[i] = s[i][:j] + '1' + s[i][j + 1:]
+    for j in range(n):
+        for i in range(n):
+            if s[i][j] == '#':
+                s[i] = s[i][:j] + '1' + s[i][j + 1:]
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '.':
+                s[i] = s[i][:j] + '0' + s[i][j + 1:]
+    for j in range(n):
+        for i in range(n):
+            if s[i][j] == '.':
+                s[i] = s[i][:j] + '0' + s[i][j + 1:]
+    for i in range(n):
+        s[i] = int(s[i], 2)
+    for i in range(n):
+        for j in range(n - 5):
+            if s[i] >> j & 63 == 0:
+                print('Yes')
+                return
+    for j in range(n):
+        for i in range(n - 5):
+            if (s[i] >> j & 63) == 0:
+                print('Yes')
+                return
+    for i in range(n - 5):
+        for j in range(n - 5):
+            if (s[i] >> j & 63) == 0:
+                print('Yes')
+                return
+    for i in range(n - 5):
+        for j in range(n - 1, 4, -1):
+            if (s[i] >> j & 63) == 0:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 7
+
+def check(n, s):
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                if j < n - 5 and s[i][j:j+6] == '######':
+                    return True
+                if i < n - 5 and s[i][j] == '#' and s[i+1][j] == '#' and s[i+2][j] == '#' and s[i+3][j] == '#' and s[i+4][j] == '#' and s[i+5][j] == '#':
+                    return True
+                if i < n - 5 and j < n - 5 and s[i][j] == '#' and s[i+1][j+1] == '#' and s[i+2][j+2] == '#' and s[i+3][j+3] == '#' and s[i+4][j+4] == '#' and s[i+5][j+5] == '#':
+                    return True
+    return False
+
+n = int(input())
+s = []
+for i in range(n):
+    s.append(input())
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == '#':
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if s[i][j] == 1:
+                s[i][j] = 1
+            else:
+                s[i][j] =
+
+=======
+Suggestion 9
+
+def get_input():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return n, s
+
+=======
+Suggestion 10
+
+def check_grid(grid, N):
+    for i in range(N):
+        for j in range(N):
+            if grid[i][j] == '#':
+                if i+5 < N and grid[i+1][j] == '#' and grid[i+2][j] == '#' and grid[i+3][j] == '#' and grid[i+4][j] == '#' and grid[i+5][j] == '#':
+                    return True
+                if j+5 < N and grid[i][j+1] == '#' and grid[i][j+2] == '#' and grid[i][j+3] == '#' and grid[i][j+4] == '#' and grid[i][j+5] == '#':
+                    return True
+                if i+5 < N and j+5 < N and grid[i+1][j+1] == '#' and grid[i+2][j+2] == '#' and grid[i+3][j+3] == '#' and grid[i+4][j+4] == '#' and grid[i+5][j+5] == '#':
+                    return True
+                if i+5 < N and j-5 >= 0 and grid[i+1][j-1] == '#' and grid[i+2][j-2] == '#' and grid[i+3][j-3] == '#' and grid[i+4][j-4] == '#' and grid[i+5][j-5] == '#':
+                    return True
+    return False

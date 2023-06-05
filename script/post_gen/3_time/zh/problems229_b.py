@@ -1,31 +1,74 @@
-#问题陈述
-#给你一个正整数A和B。
-#让我们计算一下A+B（十进制）。如果不涉及进位，打印Easy；如果涉及carry，打印Hard。
-#
-#限制条件
-#A和B是整数。
-#1 ≦ A,B ≦ 10^{18}。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#如果计算不涉及携带，打印Easy；如果涉及进位，打印Hard。
-#
-#输入样本1
-#229 390
-#
-#样本输出1
-#Hard
-#在计算229+390时，我们有一个从十位到百位的进位，所以答案是Hard。
-#
-#输入样本2
-#123456789 9876543210
-#
-#输出示例2
-#Easy
-#我们在这里没有进位，答案是Easy。
-#请注意，输入可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def carry(a, b):
+    if a == 0 and b == 0:
+        return 0
+    elif a % 10 + b % 10 >= 10:
+        return 1 + carry(a // 10, b // 10)
+    else:
+        return carry(a // 10, b // 10)
+
+a, b = map(int, input().split())
+
+=======
+Suggestion 2
+
+def main():
+    A,B = map(int,input().split())
+    if A + B >= 10**10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int, input().split())
+    if a+b < 10:
+        print('Easy')
+    else:
+        print('Hard')
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    if a + b >= 10**10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if a+b < 10:
+        print("Easy")
+    else:
+        print("Hard")
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    if a+b >= 10:
+        print("Hard")
+    else:
+        print("Easy")
+
+=======
+Suggestion 7
+
+def main():
+    A,B = map(int,input().split())
+    if A+B >= 10**9:
+        print("Hard")
+    else:
+        print("Easy")

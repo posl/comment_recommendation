@@ -1,41 +1,95 @@
-#问题陈述
-#给出N个整数A_1, ..., A_N, 计算A_1×...。× A_N。
-#但是，如果结果超过10^{18}，则打印-1。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 10^{18}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印数值A_1 × ...× A_N为整数，如果数值超过10^{18}则为-1。
-#
-#输入样本 1
-#2
-#1000000000 1000000000
-#
-#样本输出1
-#1000000000000000000
-#我们有1000000000×1000000000=10000000000000。
-#
-#样本输入2
-#3
-#101 9901 999999000001
-#
-#样本输出2
-#-1
-#我们有101 × 9901 × 999999000001 = 1000000000000000001，超过了10^{18}，所以我们应该打印-1。
-#
-#输入样本3
-#31
-#4 1 5 9 2 6 5 3 5 8 9 7 9 3 2 3 8 4 6 2 6 4 3 3 8 3 2 7 9 5 0
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def mul_list(list):
+    """
+    :param list: list of integer
+    :return: multiplication of the list
+    """
+    result = 1
+    for i in range(len(list)):
+        result = result * list[i]
+    return result
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if 0 in a:
+        print(0)
+        exit()
+    ans = 1
+    for i in a:
+        ans *= i
+        if ans > 10**18:
+            print(-1)
+            exit()
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if 0 in a:
+        print(0)
+        return
+    ans = 1
+    for i in a:
+        ans *= i
+        if ans > 10**18:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 4
+
+def mul(a):
+    m = 1
+    for i in range(len(a)):
+        m *= a[i]
+    return m
+
+n = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if 0 in a:
+        print(0)
+        return
+    ans = 1
+    for i in range(n):
+        ans *= a[i]
+        if ans > 10**18:
+            print(-1)
+            return
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if 0 in a:
+        print(0)
+        return
+    p = 1
+    for i in a:
+        p *= i
+        if p > 10**18:
+            print(-1)
+            return
+    print(p)
+    return

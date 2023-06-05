@@ -1,43 +1,142 @@
-#问题陈述
-#我们为N个正在销售的商品举行了一次人气投票。项目i获得了A_i票。
-#从这N件商品中，我们将选择M件作为流行商品。但是，我们不能选择票数少于总票数的（1/(4M)）的项目。
-#如果可以选择M个受欢迎的项目，打印 "是"；否则，打印 "否"。
-#
-#限制条件
-#1 ≦ m ≦ n ≦ 100
-#1 ≦ A_i ≦ 1000
-#A_i是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 ...A_N
-#
-#输出
-#如果可以选择M个受欢迎的项目，打印 是；否则，打印 否。
-#
-#样本输入 1
-#4 1
-#5 4 2 1
-#
-#样本输出1
-#是
-#总共有12张投票。最受欢迎的项目得到5票，我们可以选择它。
-#
-#样本输入2
-#3 2
-#380 19 1
-#
-#样品输出2
-#否
-#总共有400张票。第二和第三最受欢迎的项目获得的票数少于总票数的（1/（4×2）），所以我们不能选择它们。因此，我们不能选择两个受欢迎的项目。
-#
-#样本输入 3
-#12 3
-#4 56 78 901 2 345 67 890 123 45 6 789
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    sum_a = sum(a)
+    for i in range(m):
+        if a[i] < sum_a / (4 * m):
+            print("否")
+            break
+    else:
+        print("是")
+
+=======
+Suggestion 2
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+    if a[m-1] * 4 * m >= sum:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 3
+
+def get_input():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    return n,m,a
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    sum = 0
+    for i in range(m):
+        sum += a[i]
+    if sum >= sum(a) * 0.25:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    sum_a = sum(a)
+    a.sort(reverse=True)
+    if a[m-1]*4*m >= sum_a:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 排序
+    a.sort(reverse=True)
+    # 计算总票数
+    total = sum(a)
+    # 判断是否为受欢迎的项目
+    if a[m-1] >= total / (4 * m):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum_a = sum(a)
+    a.sort(reverse=True)
+    if a[m-1] >= sum_a/(4*m):
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    if a[m-1] >= total / (4*m):
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    sum = 0
+    for i in range(M):
+        sum += A[i]
+    if sum >= sum(A) / (4 * M):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort(reverse=True)
+    total = sum(a)
+    count = 0
+    for i in range(m):
+        if a[i]*4*m >= total:
+            count += 1
+    if count == m:
+        print("是")
+    else:
+        print("否")

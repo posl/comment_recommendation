@@ -1,56 +1,63 @@
-#问题陈述
-#给你在xy坐标平面上的N个圆。
-#对于每个i = 1, 2, ..., N，第i个圆的中心是(x_i, y_i)，半径为r_i。
-#判断从（s_x，s_y）到（t_x，t_y）是否有可能只通过位于N个圆周上的至少一个圆的点来实现。
-#
-#限制条件
-#1 ≦ N ≦ 3000
-#-10^9 ≦ x_i, y_i ≦ 10^9
-#1 ≦ r_i ≦ 10^9
-#(s_x, s_y)位于N个圆中至少一个圆的周长上。
-#(t_x, t_y)位于N个圆中至少一个圆的圆周上。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#S_X S_Y T_X T_Y
-#x_1 y_1 r_1
-#x_2 y_2 r_2
-#.
-#.
-#.
-#x_N y_N r_N
-#
-#输出
-#如果有可能从(s_x, s_y)到(t_x, t_y)，打印Yes；否则，打印No。
-#注意，判断是区分大小写的。
-#
-#输入样本 1
-#4
-#0 -2 3 3
-#0 0 2
-#2 0 2
-#2 3 1
-#-3 3 3
-#
-#样本输出1
-#Yes
-#下面是一种从（0，-2）到（3，3）的方法。
-#从(0, -2)开始，逆时针穿过第一圆的圆周，到达(1, -(3)^(1/2))。
-#从(1, -(3)^(1/2))，顺时针通过第2个圆的周长，到达(2, 2)。
-#从（2，2）开始，逆时针穿过第3个圆的圆周，到达（3，3）。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#3
-#0 1 0 3
-#0 0 1
-#0 0 2
-#0 0 3
-#
-#样本输出2
-#No
-#从(0, 1)到(0, 3)不可能只经过至少一个圆的圆周上的点，所以应该打印No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    print("Hello World!")
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    n=int(input())
+    s_x,s_y,t_x,t_y=map(int,input().split())
+    xy=[]
+    for i in range(n):
+        xy.append(list(map(int,input().split())))
+    #print(xy)
+    for i in range(n):
+        if (xy[i][0]-s_x)**2+(xy[i][1]-s_y)**2<xy[i][2]**2 and (xy[i][0]-t_x)**2+(xy[i][1]-t_y)**2<xy[i][2]**2:
+            print("No")
+            exit()
+    print("Yes")
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    S_X, S_Y, T_X, T_Y = map(int, input().split())
+    circles = []
+    for _ in range(N):
+        circles.append(list(map(int, input().split())))
+
+    def check(x, y):
+        for i in range(N):
+            if (x - circles[i][0]) ** 2 + (y - circles[i][1]) ** 2 > circles[i][2] ** 2:
+                return False
+        return True
+
+    def solve():
+        for i in range(N):
+            if check(circles[i][0], circles[i][1]):
+                return True
+        return False
+
+    if solve():
+        print('Yes')
+    else:
+        print('No')

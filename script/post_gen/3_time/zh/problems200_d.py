@@ -1,59 +1,139 @@
-#问题陈述
-#给你一个N个正整数的序列：A = (A_1, A_2, ..., A_n)。确定是否有一对序列B = (B_1, B_2, ..., B_x), C = (C_1, C_2, ..., C_y)满足所有的条件，如果存在，请打印一个这样的序列。
-#1 ≦ x, y ≤ N.
-#1 ≦ b_1 < b_2 < ...< B_{x} ≦ N。
-#1 ≦ C_1 < C_2 < ...< C_{y} ≦ N。
-#B和C是不同的序列。
-#这里，当x≠y或者有一个整数i（1≤i≤min(x, y)），使得B_i≠C_i时，我们认为B和C不同。
-#A_{B_1}+ A_{B_2}+ ...+ A_{B_x}和A_{C_1}+ A_{C_2}+ ...+ A_{C_y}等于200的模数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 200
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#如果没有满足条件的一对序列B，C，则打印一个包含No的单行。
-#否则，以下列格式打印你选择的B和C：
-#Yes
-#x B_1 B_2 ...B_x
-#y C_1 C_2 ...C_y
-#检查器是不区分大小写的：你可以使用大写或小写字母。
-#
-#输入样本1
-#5
-#180 186 189 191 218
-#
-#样本输出1
-#Yes
-#1 1
-#2 3 4
-#对于B=(1),C=(3,4),我们有A_1=180,A_3+A_4=380,它们都等于模数200。
-#还有其他的解决方案也将被接受，例如：
-#yEs
-#4 2 3 4 5
-#3 1 2 5
-#
-#样本输入 2
-#2
-#123 523
-#
-#样本输出2
-#有
-#1 1
-#1 2
-#
-#样本输入3
-#6
-#2013 1012 2765 2021 508 6971
-#
-#样本输出3
-#No
-#如果没有满足条件的一对序列，则打印一个包含No的单行。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = li
+
+=======
+Suggestion 2
+
+def find_seq(n, A):
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            if (A[i] + A[j]) % 200 == 0:
+                return [i + 1], [j + 1]
+    return [], []
+
+=======
+Suggestion 3
+
+def solve():
+    print('No')
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def check(a, b):
+    if a == 0 and b == 0:
+        return True
+    if a == 0 or b == 0:
+        return False
+    if a == b:
+        return False
+    if a == 1 and b == 1:
+        return False
+    return True
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum_A = sum(A)
+    mod_A = [a % 200 for a in A]
+    mod_A.sort()
+    for i in range(N):
+        if i == N - 1 or mod_A[i] != mod_A[i + 1]:
+            continue
+        elif i == N - 2 or mod_A[i] != mod_A[i + 2]:
+            continue
+        else:
+            print("Yes")
+            print(1, i + 1)
+            print(1, i + 2)
+            return
+    if sum_A % 200 == 0:
+        print("Yes")
+        print(1, 1)
+        print(1, 2)
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        a[i] = a[i] % 200
+    dp = [[0 for i in range(200)] for i in range(n+1)]
+    dp[0][0] = 1
+    for i in range(1, n+1):
+        for j in range(200):
+            if dp[i-1][j] == 1:
+                dp[i][j] = 1
+                dp[i][(j+a[i-1])%200] = 1
+    #print(dp)
+    for i in range(1, n+1):
+        for j in range(i+1, n+1):
+            if dp[i][0] == 1 and dp[j][0] == 1:
+                print("Yes")
+                print(i, end=" ")
+                for k in range(i):
+                    if dp[k+1][0] == 1:
+                        print(k+1, end=" ")
+                print()
+                print(j-i, end=" ")
+                for k in range(i, j):
+                    if dp[k+1][0] == 1:
+                        print(k+1, end=" ")
+                print()
+                return
+    print("No")
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(a) for a in input().split()]
+    if N == 2:
+        print('Yes')
+        print('1 1')
+        print('1 2')
+        return
+
+    # 用来存储所有可能的和
+    s = set()
+    # 用来存储和对应的下标
+    d = dict()
+    for i in range(N):
+        for j in range(i+1, N):
+            sum = A[i] + A[j]
+            if sum % 200 in s:
+                print('Yes')
+                print('1', end=' ')
+                print(d[sum % 200][0] + 1)
+                print('1', end=' ')
+                print(d[sum % 200][1] + 1)
+                print(i + 1, j + 1)
+                return
+            else:
+                s.add(sum % 200)
+                d[sum % 200] = (i, j)
+    print('No')

@@ -1,80 +1,143 @@
-#问题陈述
-#高桥在玩玩具火车，把它们连接和断开。
-#有N个玩具火车车厢，车厢的编号：1号车，2号车，...，N号车。
-#最初，所有车厢都是分开的。
-#你将会得到Q个查询。按照给定的顺序处理它们。
-#有三种查询，如下所示。
-#1 x y：把车y的前面和车x的后面连接起来。
-#可以保证：
-#x ≠ y
-#就在这个查询之前，没有火车连接到x号车的后面；
-#就在这个查询之前，没有火车连接到y车的前面；
-#就在这次查询之前，车x和车y属于不同的连接部件。
-#
-#2 x y：将车y的车头与车x的车尾断开连接。
-#可以保证：
-#x ≠ y；
-#就在这个查询之前，车y的前面与车x的后面直接相连。
-#
-#3 x:打印属于包含车x的连接部件的车的车号，从前到后。
-#
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ x ≦ N
-#1 ≦ y ≦ N
-#输入的所有数值都是整数。
-#所有的查询都满足问题陈述中的条件。
-#格式为3 x的查询要求总共打印出最多10^6个汽车号码。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#第i个查询query_i以一个代表查询种类的整数c_i（1，2或3）开始，如果c_i=1或2，后面是x和y，如果c_i=3，后面是x。
-#简而言之，每个查询都是以下三种格式中的一种：
-#1 x y
-#2 x y
-#3 x
-#
-#输出
-#如果一个c_i=3的查询要求打印j_1, j_2, ..., j_M的值，则输出以下一行：
-#M j_1 j_2 ... j_M
-#你的输出应该由q行组成，其中q是c_i = 3的查询的数量。
-#第k行（1 ≦ k ≦ q）应该包含对第k个此类查询的响应。
-#
-#输入样本 1
-#7 14
-#1 6 3
-#1 4 1
-#1 5 2
-#1 2 7
-#1 3 5
-#3 2
-#3 4
-#3 6
-#2 3 5
-#2 4 1
-#1 1 5
-#3 2
-#3 4
-#3 6
-#
-#样本输出1
-#5 6 3 5 2 7
-#2 4 1
-#5 6 3 5 2 7
-#4 1 5 2 7
-#1 4
-#2 6 3
-#下图显示了处理前5个查询时的汽车。
-#例如，汽车2与汽车3、5、6、7属于同一个连接部件，与包含汽车1、4的连接部件不同。
-#下图显示了在处理前11个查询时的汽车。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def find_set(x):
+    global p
+    if p[x] != x:
+        p[x] = find_set(p[x])
+    return p[x]
+
+=======
+Suggestion 2
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def find(x):
+    if x != parent[x]:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    p = [i for i in range(n+1)]
+    head = [i for i in range(n+1)]
+    tail = [i for i in range(n+1)]
+    for i in range(q):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            p[head[query[2]]] = p[tail[query[1]]]
+            p[tail[query[1]]] = query[2]
+            tail[head[query[2]]] = tail[query[1]]
+            head[query[2]] = head[query[1]]
+            head[query[1]] = 0
+            tail[query[1]] = 0
+        elif query[0] == 2:
+            p[tail[query[2]]] = p[tail[query[1]]]
+            p[head[query[1]]] = query[2]
+            tail[query[1]] = 0
+            tail[query[2]] = tail[query[1]]
+            head[query[1]] = 0
+        else:
+            print(' '.join(map(str, [i for i in range(1, n+1) if p[i] == p[query[1]]])))
+
+=======
+Suggestion 5
+
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
+
+=======
+Suggestion 6
+
+def main():
+    N,Q = map(int,input().split())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int,input().split())))
+
+    #print(N,Q)
+    #print(query)
+
+    # 连接部件
+    parts = []
+    for i in range(N):
+        parts.append([i+1])
+
+    #print(parts)
+
+    # 处理查询
+    for i in range(Q):
+        if query[i][0] == 1:
+            # 1 x y：把车y的前面和车x的后面连接起来。
+            # 可以保证：
+            # x ≠ y
+            # 就在这个查询之前，没有火车连接到x号车的后面；
+            # 就在这个查询之前，没有火车连接到y车的前面；
+            # 就在这次查询之前，车x和车y属于不同的连接部件。
+            x = query[i][1]
+            y = query[i][2]
+            #print("1",x,y)
+            #print(parts)
+            #print(parts[x-1])
+            #print(parts[y-1])
+            #print(parts[x-1] == parts[y-1])
+            if parts[x-1] != parts[y-1]:
+                parts[x-1] = parts[x-1] + parts[y-1]
+                parts[y-1] = parts[x-1]
+            #print(parts)
+
+        if query[i][0] == 2:
+            # 2 x y：将车y的车头与车x的车尾断开连接。
+            # 可以保证：
+            # x ≠ y；
+            # 就在这个查询之前，车y的前面与车x的后面直接相连。
+            x = query[i][1]
+            y = query[i][2]
+            #print("2",x,y)
+            #print(parts)
+            #print(parts[x-1])
+            #print(parts[y-1])
+            #print(parts[x-1] == parts[y-1])
+            if parts[x-1] == parts[y-1]:
+                parts[x-1] = [x]
+                parts[y-1] = [y]
+            #print(parts)
+
+        if query[i][0]
+
+=======
+Suggestion 7
+
+def get_input():
+    n, q = map(int, input().split())
+    query = []
+    for i in range(q):
+        query.append(list(map(int, input().split())))
+    return n, q, query
+
+=======
+Suggestion 8
+
+def find(x):
+    if par[x] == x:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]

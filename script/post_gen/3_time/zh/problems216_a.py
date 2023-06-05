@@ -1,40 +1,129 @@
-#问题陈述
-#给你一个实数X.Y，其中Y是一个数字。
-#请打印以下内容：(为清楚起见引号)
-#X-, 如果0 ≦ Y ≦ 2；
-#X, 如果3 ≦ Y ≦ 6；
-#X+，如果7 ≦ Y ≦ 9。
-#
-#限制条件
-#1 ≦ X ≦ 15
-#0 ≦ Y ≦ 9
-#X和Y是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X.Y
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#15.8
-#
-#样本输出1
-#15+
-#这里不接受打印15+：不要在X和+之间，或X和-之间打印空格。
-#
-#输入样本2
-#1.0
-#
-#样本输出2
-#1-
-#你将不会得到诸如1.00和1的输入。
-#
-#样本输入3
-#12.5
-#
-#样本输出3
-#12
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solution(x, y):
+    if 0 <= y <= 2:
+        return x + "-"
+    elif 3 <= y <= 6:
+        return x
+    else:
+        return x + "+"
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    x, y = map(float, input().split('.'))
+    if 0 <= y <= 2:
+        print(int(x), end='-')
+    elif 3 <= y <= 6:
+        print(int(x), end='')
+    else:
+        print(int(x), end='+')
+
+=======
+Suggestion 3
+
+def main():
+    x, y = map(float, input().split('.'))
+    if y <= 2:
+        print(int(x), end='')
+        print('-')
+    elif y <= 6:
+        print(int(x), end='')
+    else:
+        print(int(x), end='')
+        print('+')
+
+=======
+Suggestion 4
+
+def printX_Y(X, Y):
+    if 0 <= Y <= 2:
+        print("{}-".format(X))
+    elif 3 <= Y <= 6:
+        print("{}".format(X))
+    elif 7 <= Y <= 9:
+        print("{}+".format(X))
+
+=======
+Suggestion 5
+
+def check(x,y):
+    if y>=0 and y<=2:
+        return "X-"
+    elif y>=3 and y<=6:
+        return "X"
+    elif y>=7 and y<=9:
+        return "X+"
+
+=======
+Suggestion 6
+
+def main():
+    x, y = map(float, input().split("."))
+    if y <= 2:
+        print(str(int(x)) + "-")
+    elif y <= 6:
+        print(int(x))
+    else:
+        print(str(int(x)) + "+")
+
+=======
+Suggestion 7
+
+def main():
+    x, y = map(float, input().split("."))
+    if 0 <= y <= 2:
+        print(int(x) - 1, end="")
+        print("-")
+    elif 3 <= y <= 6:
+        print(int(x), end="")
+        print("")
+    elif 7 <= y <= 9:
+        print(int(x) + 1, end="")
+        print("+")
+
+=======
+Suggestion 8
+
+def main():
+    x,y = map(float,input().split('.'))
+    if y <= 2:
+        print(int(x),end='-')
+    elif y <= 6:
+        print(int(x))
+    else:
+        print(int(x),end='+')
+
+=======
+Suggestion 9
+
+def main():
+    x,y = map(float,input().split("."))
+    if 0 <= y <= 2:
+        print(int(x) - 1,end="")
+        print("-")
+    elif 3 <= y <= 6:
+        print(int(x),end="")
+    elif 7 <= y <= 9:
+        print(int(x) + 1,end="")
+        print("+")
+main()
+
+=======
+Suggestion 10
+
+def main():
+    input_str = input()
+    x, y = input_str.split('.')
+    y = int(y)
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(x + '+')

@@ -1,47 +1,181 @@
-#问题陈述
-#有N个整数，A_1, A_2, ..., A_N，按这个顺序排列成一行。
-#你可以对这个整数序列进行任意次数的以下操作：
-#操作：选择一个整数i，满足1≦i≦N-1。将A_i和A_{i+1}都乘以-1。
-#让B_1, B_2, ..., B_N为你操作后的整数序列。
-#找出B_1+B_2+...+ B_N的最大可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#-10^9 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1+B_2+...的最大可能值。+ B_N。
-#
-#样本输入1
-#3
-#-10 5 -4
-#
-#样本输出1
-#19
-#如果我们进行如下的操作：
-#选择1作为i，使序列变为10, -5, -4。
-#选择2作为i，使序列变为10, 5, 4。
-#我们有B_1=10，B_2=5，B_3=4。这里的和，B_1+B_2+B_3=10+5+4=19，是可能的最大结果。
-#
-#样本输入2
-#5
-#10 -4 -8 -11 3
-#
-#样本输出2
-#30
-#
-#样本输入3
-#11
-#-1000000000 1000000000 -1000000000 1000000000 -1000000000 0 1000000000 -1000000000 1000000000 -1000000000 1000000000
-#
-#样本输出3
-#10000000000
-#该输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    arr = list(map(int, input().split()))
+    cnt = 0
+    min_num = 10**9
+    for i in range(n):
+        if arr[i] < 0:
+            cnt += 1
+        arr[i] = abs(arr[i])
+        min_num = min(min_num, arr[i])
+    if cnt % 2 == 0:
+        print(sum(arr))
+    else:
+        print(sum(arr) - 2 * min_num)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        ans += abs(a[i])
+        if a[i] < 0:
+            cnt += 1
+
+    if cnt % 2 == 0:
+        print(ans)
+    else:
+        print(ans - 2 * min(abs(x) for x in a))
+
+=======
+Suggestion 3
+
+def solver1():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    for i in range(1, n):
+        b[i] = 2 * a[i - 1] - b[i - 1]
+    print(*b)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    sum = 0
+    for i in range(N):
+        if A[i] < 0:
+            sum += -A[i]
+        else:
+            sum += A[i]
+    if A[0] < 0:
+        if N % 2 == 0:
+            sum -= 2 * A[0]
+        else:
+            sum += 2 * A[0]
+    print(sum)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    sum = 0
+    minus = 0
+    min_abs = float('inf')
+    for i in range(n):
+        sum += abs(a[i])
+        if a[i] < 0:
+            minus += 1
+        min_abs = min(min_abs, abs(a[i]))
+    if minus % 2 == 0:
+        ans = sum
+    else:
+        ans = sum - 2 * min_abs
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        if a[i] < 0:
+            cnt += 1
+            a[i] = -a[i]
+        ans += a[i]
+    if cnt % 2 == 0:
+        print(ans)
+    else:
+        print(ans - min(a) * 2)
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    if N % 2 == 0:
+        print(sum(A))
+    else:
+        print(sum(A[1:]) - A[0])
+
+=======
+Suggestion 8
+
+def get_max_sum(n, a):
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不用管
+    #如果有正数，那么正数全都取正号；如果没有正数，那么全都取负号
+    #如果有0，那么可以不用管；如果全是负数，那么可以不
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        ans += abs(a[i])
+        if a[i] < 0:
+            cnt += 1
+    if cnt % 2 == 0:
+        print(ans)
+    else:
+        print(ans - min(abs(a[i]) for i in range(n)) * 2)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        ans += abs(a[i])
+        if a[i] < 0:
+            cnt += 1
+    if cnt % 2 == 0:
+        print(ans)
+    else:
+        print(ans - abs(min(a)) * 2)

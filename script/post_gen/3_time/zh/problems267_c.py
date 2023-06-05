@@ -1,38 +1,173 @@
-#问题陈述
-#给你一个长度为N的整数序列A=（A_1,A_2,...,A_N）。
-#求长度为M的A的连续子数组B=(B_1,B_2,...,B_M)的sum_{i=1}^{M} i × B_i的最大值。
-#
-#注释
-#一个数列的连续子数组是通过从原数列中去除0个或更多的首项和0个或更多的尾项而得到的数列。
-#例如，（2，3）和（1，2，3）是（1，2，3，4）的连续子数组，但是（1，3）和（3，2，1）不是（1，2，3，4）的连续子数组。  
-#
-#约束条件
-#1 ≦ m ≦ n ≦ 2 × 10^5
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#5 4 -1 8
-#
-#样本输出1
-#15
-#当B=(A_3,A_4)时，我们有 sum_{i=1}^{M} i × B_i = 1 × (-1) + 2 × 8 = 15。  由于不可能达到16或更大的数值，所以解决方案是15。
-#请注意，你不允许选择，例如，B=(A_1,A_4)。
-#
-#输入样本 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#样本输出2
-#31
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = sum(a[:m])
+    ans = s
+    for i in range(n - m):
+        s += a[i + m] - a[i]
+        ans = max(ans, s)
+    for i in range(m):
+        s += a[i + n - m] - a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve(n, m, a):
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    t = [0] * (n + 1)
+    for i in range(n):
+        t[i + 1] = t[i] + i * a[i]
+    from collections import deque
+    q = deque()
+    q.append(0)
+    res = -float('inf')
+    for j in range(1, n + 1):
+        while q and t[q[0]] > t[j]:
+            q.popleft()
+        if q:
+            res = max(res, t[j] - t[q[0]] + (s[j] - s[q[0]]) * (m + 1))
+        while q and t[j] <= t[q[-1]]:
+            q.pop()
+        q.append(j)
+    return res
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(n, m, a))
+
+=======
+Suggestion 3
+
+def solve(n, m, a):
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最小
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最小值最大
+    # 从a中选出m个数，使得sum_{i=1}^{M} i × B_i的最大值最大
+    # 从a中选出m个数，使得sum_{i
+
+=======
+Suggestion 4
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[-1]+a[i])
+    from collections import deque
+    q = deque()
+    q.append((0,0))
+    res = -float("inf")
+    for i in range(1,n+1):
+        while q and q[0][0] < i-m:
+            q.popleft()
+        res = max(res,s[i]-q[0][1])
+        while q and q[-1][1] >= s[i]:
+            q.pop()
+        q.append((i,s[i]))
+    print(res)
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] >= 0:
+            ans += a[i]
+            a[i] = 0
+    a.sort()
+    a.reverse()
+    for i in range(m):
+        if a[i] < 0:
+            ans -= a[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.insert(0,0)
+    for i in range(n):
+        a[i+1] += a[i]
+    ans = -10**10
+    for i in range(n-m+1):
+        ans = max(ans,a[i+m]-a[i])
+    for i in range(1,m+1):
+        ans += i*a[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    # print(A)
+    # print(A[0:M])
+    # print(sum([i*A[i] for i in range(M)]))
+    # print(sum([i*A[i] for i in range(M,N)]))
+    ans = sum([i*A[i] for i in range(M)])
+    tmp = ans
+    for i in range(M,N):
+        tmp += (i+1)*A[i] - sum([j*A[j] for j in range(i-M+1,i)])
+        ans = max(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n-m+1):
+        ans = max(ans,sum([(i+1)*j for i,j in enumerate(a[i:i+m])]))
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    dp = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        dp[i+1][0] = dp[i][0] + a[i]
+    for i in range(1,n+1):
+        for j in range(1,i+1):
+            dp[i][j] = dp[i-1][j-1] + a[i-1] * j
+    ans = 0
+    for i in range(m+1):
+        ans = max(ans,dp[n][i])
+    print(ans)
+solve()

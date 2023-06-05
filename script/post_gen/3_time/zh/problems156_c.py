@@ -1,37 +1,136 @@
-#问题陈述
-#有N个人住在一条数线上。
-#第i个人住在坐标X_i处。
-#你要召开一个会议，所有N个人都必须参加。
-#这个会议可以在任何一个整数坐标上举行。如果你选择在坐标P举行会议，第i个人将花费(X_i-P)^2点体力来参加会议。
-#求N个人必须花费的最小总体力点数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 100
-#1 ≦ X_i ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#X_1 X_2 ...X_N
-#
-#输出
-#打印N个人需要花费的最小总体力。
-#
-#输入样本 1
-#2
-#1 4
-#
-#样本输出1
-#5
-#假设会议是在坐标2举行。在这种情况下，第一个人将花费(1-2)^2点体力，第二个人将花费(4-2)^2=4点体力，总共5点体力。这就是2个人要花费的最低总体力。
-#注意，你只能在一个整数的坐标上举行会议。
-#
-#输入样本2
-#7
-#14 14 2 13 56 2 37
-#
-#样本输出2
-#2354
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def func(l):
+    l.sort()
+    n = len(l)
+    if n % 2 == 1:
+        return sum([(l[i] - l[n/2]) ** 2 for i in range(n)])
+    else:
+        return min(sum([(l[i] - l[n/2]) ** 2 for i in range(n)]), sum([(l[i] - l[n/2 - 1]) ** 2 for i in range(n)]))
+
+=======
+Suggestion 2
+
+def min_energy(n, x):
+    min_e = 100000
+    for i in range(1, 101):
+        e = 0
+        for j in range(n):
+            e += (x[j] - i) ** 2
+        if e < min_e:
+            min_e = e
+    return min_e
+
+n = int(input())
+x = [int(i) for i in input().split()]
+print(min_energy(n, x))
+
+=======
+Suggestion 3
+
+def min_energy(x, p):
+    e = 0
+    for i in x:
+        e += (i - p) ** 2
+    return e
+
+=======
+Suggestion 4
+
+def calcMinPower():
+    N = int(input())
+    X = list(map(int, input().split()))
+    minPower = 1000000
+    for P in range(1, 101):
+        power = 0
+        for i in range(N):
+            power += (X[i] - P) ** 2
+        if power < minPower:
+            minPower = power
+    print(minPower)
+
+calcMinPower()
+
+=======
+Suggestion 5
+
+def min_sum_power(n, x):
+    min_power = 10000
+    for i in range(1, 101):
+        power = 0
+        for j in range(n):
+            power += (x[j] - i) ** 2
+        if power < min_power:
+            min_power = power
+    return min_power
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    x = list(map(int, input().split()))
+    ans = 10 ** 9
+    for p in range(1, 101):
+        sum = 0
+        for i in range(n):
+            sum += (x[i] - p) ** 2
+        ans = min(ans, sum)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 7
+
+def min_power(n, x):
+    min_p = 10000
+    for i in range(1, 101):
+        p = 0
+        for j in range(n):
+            p += (x[j] - i) ** 2
+        if p < min_p:
+            min_p = p
+    return min_p
+
+n = int(input())
+x = list(map(int, input().split()))
+print(min_power(n, x))
+
+=======
+Suggestion 8
+
+def min_cost(x_list, p):
+    cost = 0
+    for x in x_list:
+        cost += (x - p) ** 2
+    return cost
+
+=======
+Suggestion 9
+
+def getSumOfPower(x, p):
+    sum = 0
+    for i in x:
+        sum += (i - p) ** 2
+    return sum
+
+=======
+Suggestion 10
+
+def min_energy(n, x):
+    min = 1000000000000000000000000
+    for p in range(1, 101):
+        energy = 0
+        for i in range(0, n):
+            energy += (x[i] - p) ** 2
+        if energy < min:
+            min = energy
+    return min
+
+n = int(input())
+x = list(map(int, input().split()))
+print(min_energy(n, x))

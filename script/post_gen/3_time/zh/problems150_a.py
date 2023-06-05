@@ -1,37 +1,74 @@
-#问题陈述
-#高桥有K个500日元的硬币。(日元是日本的货币）。
-#如果这些硬币加起来有X日元或更多，就打印 "是"，否则就打印 "否"。
-#
-#限制条件
-#1 ≦ K ≦ 100
-#1 ≦ X ≦ 10^5
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K X
-#
-#輸出
-#如果硬币加起来是X日元或更多，打印是；否则，打印否。
-#
-#输入样本 1
-#2 900
-#
-#样本输出1
-#是
-#两个500日元的硬币加起来是1000日元，不低于X=900日元。
-#
-#样本输入2
-#1 501
-#
-#样本输出2
-#否
-#一个500日元的硬币价值500日元，小于X=501日元。
-#
-#样本输入3
-#4 2000
-#
-#样本输出3
-#是
-#四个500日元的硬币加起来是2000日元，不低于X=2000日元。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k, x = map(int, input().split())
+    if k * 500 >= x:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    k,x = map(int, input().split())
+    if k*500 >= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def is_enough(coin, money):
+    if (coin * 500) >= money:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    inputs = input()
+    # 分割字符串
+    inputs = inputs.split()
+    # 转换为整数
+    k = int(inputs[0])
+    x = int(inputs[1])
+    # 判断
+    if k * 500 >= x:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 5
+
+def main():
+    # 1.输入
+    # 2.处理
+    # 3.输出
+    # 1.输入
+    k, x = map(int, input().split())
+    # 2.处理
+    if k * 500 >= x:
+        print("Yes")
+    else:
+        print("No")
+    # 3.输出
+
+=======
+Suggestion 6
+
+def main():
+    print("请输入硬币的个数和金钱数")
+    k,x = map(int,input().split())
+    if k*500 >= x:
+        print("否")
+    else:
+        print("是")

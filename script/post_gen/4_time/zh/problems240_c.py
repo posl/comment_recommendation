@@ -1,52 +1,182 @@
-#问题陈述
-#高桥站在数线上的坐标0处。
-#他现在将进行N次跳跃。在第i次跳跃中（1 ≦ i ≦ N），他向正方向移动a_i或b_i。
-#他是否有可能在N次跳跃后到达坐标X处？
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ a_i < b_i ≦ 100 (1 ≦ i ≦ N)
-#1 ≦ X ≦ 10000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#a_1 b_1
-#.
-#.
-#.
-#a_N b_N
-#
-#输出
-#如果高桥在N次跳跃后有可能在坐标X处，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 10
-#3 6
-#4 5
-#
-#样本输出1
-#Yes
-#通过在第一跳中移动b_1（=6），在第二跳中移动a_2（=4），他可以在坐标X（=10）处。
-#
-#样本输入2
-#2 10
-#10 100
-#10 100
-#
-#样本输出2
-#No
-#在第一跳之后，他可以在坐标X(=10)处，但在所有的跳动之后就不能了。
-#
-#样本输入3
-#4 12
-#1 8
-#5 7
-#3 4
-#2 6
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n,x = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        a,b = map(int, input().split())
+        if a <= x <= b:
+            ans += 1
+    if ans > 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def solve(n, x, a, b):
+    for i in range(n):
+        if i % 2 == 0:
+            x -= a[i]
+        else:
+            x -= b[i]
+    return x >= 0
+
+n, x = map(int, input().split())
+a = []
+b = []
+for i in range(n):
+    ai, bi = map(int, input().split())
+    a.append(ai)
+    b.append(bi)
+
+=======
+Suggestion 3
+
+def main():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    for i in range(n):
+        if x == a[i] or x == b[i]:
+            print("Yes")
+            break
+        elif x < a[i]:
+            print("No")
+            break
+        else:
+            x = x - a[i]
+            x = x + b[i]
+            if i == n-1:
+                print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+
+    # print(a)
+    # print(b)
+
+    # 从后往前推
+    # 最后一个跳跃
+    if x == a[n-1] or x == b[n-1]:
+        print('Yes')
+        return
+
+    # 倒数第二个跳跃
+    if x > a[n-1] and x < b[n-1]:
+        print('Yes')
+        return
+
+    # 倒数第三个跳跃
+    if x > a[n-2] and x < b[n-2]:
+        print('Yes')
+        return
+
+    # 倒数第四个跳跃
+    if x > a[n-3] and x < b[n-3]:
+        print('Yes')
+        return
+
+    print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    N,X = map(int,input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i,b_i = map(int,input().split())
+        a.append(a_i)
+        b.append(b_i)
+    for i in range(N):
+        if X < a[i] or X > b[i]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    # 输入
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+
+    # 判断
+    sum = 0
+    for i in range(N):
+        if (i % 2 == 0):
+            sum += b[i]
+        else:
+            sum += a[i]
+    if (sum >= X):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def is_reach(x, a, b, n):
+    if n == 0:
+        return False
+    if x == a[n-1] or x == b[n-1]:
+        return True
+    return is_reach(x - a[n-1], a, b, n-1) or is_reach(x - b[n-1], a, b, n-1)
+
+=======
+Suggestion 9
+
+def main():
+    N, X = map(int, input().split())
+    a = []
+    b = []
+    for i in range(N):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    for i in range(N):
+        if X <= a[i]:
+            print("No")
+            return
+        X += b[i] - a[i]
+    print("Yes")
+
+=======
+Suggestion 10
+
+def solve(n, x, a, b):
+    for i in range(n):
+        if x == a[i] or x == b[i]:
+            return 'Yes'
+    return 'No'

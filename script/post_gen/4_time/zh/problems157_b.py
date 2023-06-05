@@ -1,81 +1,315 @@
-#问题陈述
-#我们有一张3×3网格的宾果卡。从上往下第i行和从左往下第j列的方格中含有数字A_{i, j}。
-#主持人将选择N个数字，b_1, b_2, ..., b_N。如果我们的宾果表包含其中的一些数字，我们将在我们的表上标记它们。
-#确定当N个数字被选中时，我们是否会有一个宾果，也就是说，表上会在一行、一列或对角线上包含三个被标记的数字。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ A_{i, j} ≦ 100
-#A_{i_1, j_1} ≦ 100≠ A_{i_2, j_2} ((i_1, j_1) ≠ (i_2, j_2))
-#1 ≦ N ≦ 10
-#1 ≦ b_i ≦ 100
-#b_i ≠ b_j (i ≠ j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#A_{1, 1} A_{1, 2} A_{1, 3}
-#A_{2, 1} A_{2, 2} A_{2, 3}
-#A_{3, 1} A_{3, 2} A_{3, 3}
-#N
-#b_1
-#.
-#.
-#.
-#b_N
-#
-#输出
-#如果我们将有一个宾果，打印Yes；否则，打印No。
-#
-#输入样本 1
-#84 97 66
-#79 89 11
-#61 59 7
-#7
-#89
-#7
-#87
-#79
-#24
-#84
-#30
-#
-#样本输出1
-#Yes
-#我们将标记A_{1, 1}, A_{2, 1}, A_{2, 2}, A_{3, 3}，并完成从左上方到右下方的对角线。
-#
-#样本输入2
-#41 7 46
-#26 89 2
-#78 92 8
-#5
-#6
-#45
-#16
-#57
-#17
-#
-#样本输出2
-#No
-#我们将什么都不标记。
-#
-#输入样本3
-#60 88 34
-#92 41 43
-#65 73 48
-#10
-#60
-#43
-#88
-#11
-#48
-#73
-#65
-#41
-#92
-#34
-#
-#样本输出3
-#Yes
-#我们将标记所有的方块。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #读取数据
+    A = []
+    for i in range(3):
+        A.append(list(map(int, input().split())))
+    N = int(input())
+    b = []
+    for i in range(N):
+        b.append(int(input()))
+    #判断是否有宾果
+    for i in range(3):
+        for j in range(3):
+            if A[i][j] in b:
+                A[i][j] = 0
+    for i in range(3):
+        if A[i][0] == A[i][1] == A[i][2] == 0:
+            print('Yes')
+            exit()
+    for i in range(3):
+        if A[0][i] == A[1][i] == A[2][i] == 0:
+            print('Yes')
+            exit()
+    if A[0][0] == A[1][1] == A[2][2] == 0:
+        print('Yes')
+        exit()
+    if A[0][2] == A[1][1] == A[2][0] == 0:
+        print('Yes')
+        exit()
+    print('No')
+    return
+
+=======
+Suggestion 2
+
+def main():
+    bingo = [[],[],[]]
+    for i in range(3):
+        bingo[i] = list(map(int, input().split()))
+    N = int(input())
+    b = []
+    for i in range(N):
+        b.append(int(input()))
+    for i in range(3):
+        for j in range(3):
+            for k in range(N):
+                if bingo[i][j] == b[k]:
+                    bingo[i][j] = 0
+    ans = 'No'
+    for i in range(3):
+        if bingo[i][0] == 0 and bingo[i][1] == 0 and bingo[i][2] == 0:
+            ans = 'Yes'
+        if bingo[0][i] == 0 and bingo[1][i] == 0 and bingo[2][i] == 0:
+            ans = 'Yes'
+    if bingo[0][0] == 0 and bingo[1][1] == 0 and bingo[2][2] == 0:
+        ans = 'Yes'
+    if bingo[0][2] == 0 and bingo[1][1] == 0 and bingo[2][0] == 0:
+        ans = 'Yes'
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    bingo = []
+    for i in range(3):
+        bingo.append(list(map(int, input().split())))
+    n = int(input())
+    b = []
+    for i in range(n):
+        b.append(int(input()))
+    flag = False
+    for i in range(3):
+        if bingo[i][0] in b and bingo[i][1] in b and bingo[i][2] in b:
+            flag = True
+    for i in range(3):
+        if bingo[0][i] in b and bingo[1][i] in b and bingo[2][i] in b:
+            flag = True
+    if bingo[0][0] in b and bingo[1][1] in b and bingo[2][2] in b:
+        flag = True
+    if bingo[0][2] in b and bingo[1][1] in b and bingo[2][0] in b:
+        flag = True
+    if flag:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    bingo = []
+    for i in range(3):
+        bingo.append(list(map(int, input().split())))
+
+    N = int(input())
+    for i in range(N):
+        b = int(input())
+        for j in range(3):
+            for k in range(3):
+                if bingo[j][k] == b:
+                    bingo[j][k] = 0
+
+    for i in range(3):
+        if bingo[i][0] == bingo[i][1] == bingo[i][2] == 0:
+            print("Yes")
+            exit()
+        if bingo[0][i] == bingo[1][i] == bingo[2][i] == 0:
+            print("Yes")
+            exit()
+
+    if bingo[0][0] == bingo[1][1] == bingo[2][2] == 0:
+        print("Yes")
+        exit()
+    if bingo[0][2] == bingo[1][1] == bingo[2][0] == 0:
+        print("Yes")
+        exit()
+
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    matrix = [[0 for i in range(3)] for j in range(3)]
+    for i in range(3):
+        matrix[i] = list(map(int, input().split()))
+    n = int(input())
+    b = [0 for i in range(n)]
+    for i in range(n):
+        b[i] = int(input())
+
+    # 处理数据
+    for i in range(3):
+        for j in range(3):
+            for k in range(n):
+                if matrix[i][j] == b[k]:
+                    matrix[i][j] = 0
+                    break
+
+    # 判断是否有宾果
+    bingo = False
+    for i in range(3):
+        if matrix[i][0] == 0 and matrix[i][1] == 0 and matrix[i][2] == 0:
+            bingo = True
+            break
+        if matrix[0][i] == 0 and matrix[1][i] == 0 and matrix[2][i] == 0:
+            bingo = True
+            break
+    if matrix[0][0] == 0 and matrix[1][1] == 0 and matrix[2][2] == 0:
+        bingo = True
+    if matrix[0][2] == 0 and matrix[1][1] == 0 and matrix[2][0] == 0:
+        bingo = True
+
+    # 输出结果
+    if bingo:
+        print("Yes")
+    else:
+        print("No")
+
+main()
+
+=======
+Suggestion 6
+
+def bingo():
+    # 读取输入
+    A = []
+    for i in range(3):
+        A.append(list(map(int, input().split())))
+    N = int(input())
+    b = []
+    for i in range(N):
+        b.append(int(input()))
+
+    # 算法
+    # 横向
+    for i in range(3):
+        if A[i][0] in b and A[i][1] in b and A[i][2] in b:
+            return 'Yes'
+    # 纵向
+    for i in range(3):
+        if A[0][i] in b and A[1][i] in b and A[2][i] in b:
+            return 'Yes'
+    # 斜向
+    if A[0][0] in b and A[1][1] in b and A[2][2] in b:
+        return 'Yes'
+    if A[0][2] in b and A[1][1] in b and A[2][0] in b:
+        return 'Yes'
+    # 其他
+    return 'No'
+
+print(bingo())
+
+=======
+Suggestion 7
+
+def bingo():
+    bingo_map = []
+    for i in range(3):
+        bingo_map.append(list(map(int, input().split())))
+    bingo_num = int(input())
+    bingo_list = []
+    for i in range(bingo_num):
+        bingo_list.append(int(input()))
+    for i in range(3):
+        for j in range(3):
+            if bingo_map[i][j] in bingo_list:
+                bingo_map[i][j] = 0
+    #print(bingo_map)
+    if bingo_map[0][0] == bingo_map[0][1] == bingo_map[0][2] == 0:
+        print('Yes')
+        return
+    if bingo_map[1][0] == bingo_map[1][1] == bingo_map[1][2] == 0:
+        print('Yes')
+        return
+    if bingo_map[2][0] == bingo_map[2][1] == bingo_map[2][2] == 0:
+        print('Yes')
+        return
+    if bingo_map[0][0] == bingo_map[1][0] == bingo_map[2][0] == 0:
+        print('Yes')
+        return
+    if bingo_map[0][1] == bingo_map[1][1] == bingo_map[2][1] == 0:
+        print('Yes')
+        return
+    if bingo_map[0][2] == bingo_map[1][2] == bingo_map[2][2] == 0:
+        print('Yes')
+        return
+    if bingo_map[0][0] == bingo_map[1][1] == bingo_map[2][2] == 0:
+        print('Yes')
+        return
+    if bingo_map[0][2] == bingo_map[1][1] == bingo_map[2][0] == 0:
+        print('Yes')
+        return
+    print('No')
+    return
+
+bingo()
+
+=======
+Suggestion 8
+
+def bingo(bingo_card, bingo_num):
+    bingo_line = [[bingo_card[0][0], bingo_card[0][1], bingo_card[0][2]],
+                  [bingo_card[1][0], bingo_card[1][1], bingo_card[1][2]],
+                  [bingo_card[2][0], bingo_card[2][1], bingo_card[2][2]],
+                  [bingo_card[0][0], bingo_card[1][0], bingo_card[2][0]],
+                  [bingo_card[0][1], bingo_card[1][1], bingo_card[2][1]],
+                  [bingo_card[0][2], bingo_card[1][2], bingo_card[2][2]],
+                  [bingo_card[0][0], bingo_card[1][1], bingo_card[2][2]],
+                  [bingo_card[0][2], bingo_card[1][1], bingo_card[2][0]]]
+    for i in range(len(bingo_line)):
+        if set(bingo_line[i]) & set(bingo_num) == set(bingo_line[i]):
+            return 'Yes'
+    return 'No'
+
+=======
+Suggestion 9
+
+def main():
+    matrix = []
+    for i in range(3):
+        matrix.append(list(map(int, input().split())))
+    N = int(input())
+    bingo = []
+    for i in range(N):
+        bingo.append(int(input()))
+    flag = 0
+    for i in range(3):
+        if matrix[0][i] in bingo and matrix[1][i] in bingo and matrix[2][i] in bingo:
+            flag = 1
+            break
+    for i in range(3):
+        if matrix[i][0] in bingo and matrix[i][1] in bingo and matrix[i][2] in bingo:
+            flag = 1
+            break
+    if matrix[0][0] in bingo and matrix[1][1] in bingo and matrix[2][2] in bingo:
+        flag = 1
+    if matrix[0][2] in bingo and matrix[1][1] in bingo and matrix[2][0] in bingo:
+        flag = 1
+    if flag == 1:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 10
+
+def bingo():
+    #输入数据
+    matrix = [[0 for i in range(3)] for j in range(3)]
+    for i in range(3):
+        matrix[i] = list(map(int,input().split()))
+    n = int(input())
+    b = [0]*n
+    for i in range(n):
+        b[i] = int(input())
+    #判断
+    for i in range(3):
+        if matrix[i][0] in b and matrix[i][1] in b and matrix[i][2] in b:
+            return "Yes"
+    for i in range(3):
+        if matrix[0][i] in b and matrix[1][i] in b and matrix[2][i] in b:
+            return "Yes"
+    if matrix[0][0] in b and matrix[1][1] in b and matrix[2][2] in b:
+        return "Yes"
+    if matrix[0][2] in b and matrix[1][1] in b and matrix[2][0] in b:
+        return "Yes"
+    return "No"

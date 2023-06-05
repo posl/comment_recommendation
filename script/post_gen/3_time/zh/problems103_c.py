@@ -1,42 +1,131 @@
-#问题陈述
-#给你N个正整数a_1, a_2, ..., a_N。
-#对于一个非负整数m，让f(m)=(m mod a_1)+(m mod a_2)+...+ (m mod a_N)。
-#这里，X mod Y表示X除以Y的余数。
-#找出f的最大值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 3000
-#2 ≦ a_i ≦ 10^5
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印f的最大值。
-#
-#样本输入1
-#3
-#3 4 6
-#
-#样本输出1
-#10
-#f(11) = (11 mod 3) + (11 mod 4) + (11 mod 6) = 10是f的最大值。
-#
-#样本输入2
-#5
-#7 46 11 20 11
-#
-#样本输出2
-#90
-#
-#样本输入3
-#7
-#994 518 941 851 647 2 581
-#
-#样本输出3
-#4527
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(m, a):
+    sum = 0
+    for i in a:
+        sum += m % i
+    return sum
+
+n = int(input())
+a = list(map(int, input().split()))
+print(f(max(a), a))
+
+=======
+Suggestion 2
+
+def f(m):
+    res = 0
+    for i in range(n):
+        res += m % a[i]
+    return res
+
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+print(f(a[-1] - 1))
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    res = 0
+    for i in range(N):
+        if i == N - 1:
+            res += a[i] - 1
+        else:
+            res += a[i] - 2
+    print(res)
+
+=======
+Suggestion 4
+
+def get_max_f(num_list):
+    max_num = max(num_list)
+    num_list.remove(max_num)
+    max_f = 0
+    for i in range(max_num):
+        f = 0
+        for num in num_list:
+            f += i%num
+        if f > max_f:
+            max_f = f
+    return max_f
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(i) for i in input().split()]
+    A.sort()
+    max = 0
+    for i in range(N):
+        sum = 0
+        for j in range(N):
+            sum += A[j] % A[i]
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 6
+
+def f(m):
+    sum = 0
+    for i in range(N):
+        sum += m % a[i]
+    return sum
+
+N = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    #print(a)
+    max = 0
+    for i in range(1, a[N-1]+a[N-2]+1):
+        sum = 0
+        for j in range(N):
+            sum += i%a[j]
+        if sum > max:
+            max = sum
+    print(max)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            ans = max(ans, a[i] ^ a[j])
+    print(ans)
+
+=======
+Suggestion 9
+
+def f(m, a):
+    return sum([m % i for i in a])
+
+=======
+Suggestion 10
+
+def f(m, a):
+    sum = 0
+    for i in a:
+        sum += m % i
+    return sum

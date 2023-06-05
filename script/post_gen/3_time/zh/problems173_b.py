@@ -1,62 +1,147 @@
-#问题陈述
-#高桥正在参加一个名为AXC002的编程比赛，他刚刚提交了问题A的代码。
-#该问题有N个测试用例。
-#对于每个测试用例i（1≦i≦N），你会得到一个字符串S_i，代表该测试用例的判决。找出裁决为AC、WA、TLE和RE的测试用例的数量。
-#关于输出格式，请参见输出部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i是AC, WA, TLE, 或RE。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#.
-#.
-#.
-#S_N
-#
-#输出
-#让C_0, C_1, C_2, 和C_3分别为判决为AC, WA, TLE, 和RE的测试案例的数量。打印以下内容：
-#AC x C_0
-#WA x C_1
-#TLE x C_2
-#RE x C_3
-#
-#样本输入1
-#6
-#AC
-#TLE
-#AC
-#AC
-#WA
-#TLE
-#
-#样本输出1
-#AC x 3
-#WA x 1
-#TLE x 2
-#RE x 0
-#我们有3个、1个、2个和0个测试案例，其判决结果分别为AC、WA、TLE和RE。
-#
-#样本输入2
-#10
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#AC
-#
-#样品输出2
-#AC x 10
-#WA x 0
-#TLE x 0
-#RE x 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ac = s.count('AC')
+    wa = s.count('WA')
+    tle = s.count('TLE')
+    re = s.count('RE')
+    print('AC x',ac)
+    print('WA x',wa)
+    print('TLE x',tle)
+    print('RE x',re)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print('AC x', s.count('AC'))
+    print('WA x', s.count('WA'))
+    print('TLE x', s.count('TLE'))
+    print('RE x', s.count('RE'))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("AC x", s.count("AC"))
+    print("WA x", s.count("WA"))
+    print("TLE x", s.count("TLE"))
+    print("RE x", s.count("RE"))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(n):
+        s = input()
+        if s == 'AC':
+            ac += 1
+        elif s == 'WA':
+            wa += 1
+        elif s == 'TLE':
+            tle += 1
+        elif s == 'RE':
+            re += 1
+    print('AC x ' + str(ac))
+    print('WA x ' + str(wa))
+    print('TLE x ' + str(tle))
+    print('RE x ' + str(re))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x " + str(s.count("AC")))
+    print("WA x " + str(s.count("WA")))
+    print("TLE x " + str(s.count("TLE")))
+    print("RE x " + str(s.count("RE")))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(n):
+        if s[i] == "AC":
+            ac += 1
+        elif s[i] == "WA":
+            wa += 1
+        elif s[i] == "TLE":
+            tle += 1
+        elif s[i] == "RE":
+            re += 1
+    print("AC x " + str(ac))
+    print("WA x " + str(wa))
+    print("TLE x " + str(tle))
+    print("RE x " + str(re))
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+
+    # 处理数据
+    ac = 0
+    wa = 0
+    tle = 0
+    re = 0
+    for i in range(n):
+        if s[i] == "AC":
+            ac += 1
+        elif s[i] == "WA":
+            wa += 1
+        elif s[i] == "TLE":
+            tle += 1
+        elif s[i] == "RE":
+            re += 1
+
+    # 输出结果
+    print("AC x", ac)
+    print("WA x", wa)
+    print("TLE x", tle)
+    print("RE x", re)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print("AC x {}".format(s.count("AC")))
+    print("WA x {}".format(s.count("WA")))
+    print("TLE x {}".format(s.count("TLE")))
+    print("RE x {}".format(s.count("RE")))

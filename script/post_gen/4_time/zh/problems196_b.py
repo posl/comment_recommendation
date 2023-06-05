@@ -1,36 +1,69 @@
-#问题陈述
-#给出一个整数或小数X，将其四舍五入为整数并打印结果。
-#
-#限制条件
-#0 ≦ X ≦ 10^{100}
-#X是一个整数或小数，小数点后最多有100位，没有多余的前导零。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#将X四舍五入为整数，并打印结果（为整数）。
-#
-#输入样本 1
-#5.90
-#
-#样本输出1
-#5
-#我们将5.90四舍五入为一个整数，即5，并将其打印为一个整数。非整数输出，如5.0，将被判定为不正确。
-#
-#输入样本2
-#0
-#
-#样本输出2
-#0
-#X中可能没有小数点。
-#
-#输入样本3
-#84939825309432908832902189.9092309409809091329
-#
-#输出样本3
-#84939825309432908832902189
-#处理大数字时要注意。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = input()
+    print(int(round(float(x))))
+
+=======
+Suggestion 2
+
+def main():
+    num = input()
+    print(round(float(num)))
+
+=======
+Suggestion 3
+
+def main():
+    X = input()
+    print(round(float(X)))
+
+=======
+Suggestion 4
+
+def solution(x):
+    x = str(x)
+    if '.' in x:
+        return int(float(x)+0.5)
+    else:
+        return int(x)
+
+=======
+Suggestion 5
+
+def main():
+    x = float(input())
+    print(round(x))
+
+=======
+Suggestion 6
+
+def main():
+    X = input()
+    print(int(float(X)+0.5))
+
+=======
+Suggestion 7
+
+def main():
+    x = input()
+    if x.find(".") == -1:
+        print(x)
+    else:
+        print(x[:x.find(".")])
+
+=======
+Suggestion 8
+
+def main():
+    print(round(float(input())))
+
+=======
+Suggestion 9
+
+def main():
+    x = input()
+    print(round(float(x)))

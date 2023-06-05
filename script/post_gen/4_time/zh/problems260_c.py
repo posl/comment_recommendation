@@ -1,48 +1,110 @@
-#问题陈述
-#高桥有一颗N级的红色宝石（他没有其他宝石）。
-#高桥可以做以下任意次数的操作。
-#将一个n级的红色宝石（n至少是2）转换成 "一个(n-1)级的红色宝石和X个n级的蓝色宝石"。
-#将一个n级的蓝宝石（n至少是2）转换成 "一个（n-1）级的红宝石和Y个（n-1）级的蓝宝石"。
-#高桥想要尽可能多的1级蓝色宝石。  通过运算，他最多可以得到多少颗1级的蓝色宝石？
-#
-#限制条件
-#1 ≦ N ≦ 10
-#1 ≦ X ≦ 5
-#1 ≦ Y ≦ 5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N X Y
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 3 4
-#
-#样本输出1
-#12
-#高桥通过以下转换可以得到12颗1级的蓝色宝石。
-#首先，他将一颗2级的红宝石转换为1级的红宝石和3颗2级的蓝宝石。
-#经过这一操作，高桥有1颗1级的红色宝石和3颗2级的蓝色宝石。
-#接下来，他重复了3次以下的转换：将2级的蓝色宝石转换成1级的红色宝石和4级的蓝色宝石。
-#经过这些操作，高桥有4颗1级的红色宝石和12颗1级的蓝色宝石。
-#他不能再进行转换了。
-#他不能得到超过12颗1级的蓝色宝石，所以答案是12。
-#
-#输入样本2
-#1 5 5
-#
-#样本输出2
-#0
-#高桥可能无法获得1级的蓝色宝石。
-#
-#样本输入3
-#10 5 5
-#
-#样本输出3
-#3942349900
-#注意，答案可能不适合32位的整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def func(n, x, y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x
+    else:
+        return func(n-1, x, y) + func(n-2, x, y) + y
+
+=======
+Suggestion 2
+
+def calcBlue(n, x, y):
+    if n == 1:
+        return 1
+    if n == 2:
+        return x
+    return calcBlue(n-1, x, y) + calcBlue(n-2, x, y)*y
+
+=======
+Suggestion 3
+
+def f(n, x, y):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return x
+    else:
+        return f(n-1, x, y) + f(n-2, x, y) + y
+
+=======
+Suggestion 4
+
+def main():
+    n,x,y = map(int,input().split())
+    if x > y:
+        print(0)
+    else:
+        print((n-1)*x)
+
+=======
+Suggestion 5
+
+def main():
+    N, X, Y = map(int, input().split())
+    result = 0
+    for i in range(N-1, 0, -1):
+        if i >= X:
+            result += 1
+        else:
+            result += 1 + (X - i) * (N - i - 1)
+    print(result)
+
+=======
+Suggestion 6
+
+def solve(N,X,Y):
+    if N == 1:
+        return 0
+    elif N == 2:
+        return 1
+    else:
+        return solve(N-1,X,Y) + solve(N-2,X,Y) + X
+
+=======
+Suggestion 7
+
+def solve(n,x,y):
+    if n==1:
+        return 0
+    else:
+        return (n-1)*min(x,y)+solve(n-1,x,y)
+
+=======
+Suggestion 8
+
+def f(n,x,y):
+    if n==1:
+        return 0
+    elif n==2:
+        return x
+    else:
+        return f(n-1,x,y)+f(n-2,x,y)+y
+
+n,x,y=map(int,input().split())
+print(f(n,x,y))
+
+=======
+Suggestion 9
+
+def get_num(n,x,y):
+    if n == 1:
+        return 0
+    if n == 2:
+        return x + y
+    else:
+        return get_num(n-1,x,y) + get_num(n-2,x,y) + x
+
+N,X,Y = map(int,input().split())
+print(get_num(N,X,Y))
+
+=======
+Suggestion 10
+
+def main():
+    pass

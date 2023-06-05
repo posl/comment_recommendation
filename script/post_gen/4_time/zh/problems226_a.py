@@ -1,36 +1,79 @@
-#问题陈述
-#给你一个实数X，它最多可以用三位小数表示，有三位小数。
-#将X四舍五入到最接近的整数，并打印结果。
-#
-#限制条件
-#0 ≦ X < 100
-#X最多可以用三个小数位表示。
-#X在输入时有三位小数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X
-#
-#输出
-#打印将X四舍五入到最接近的整数的结果。
-#
-#输入样本 1
-#3.456
-#
-#样本输出1
-#3
-#3.456的小数点后第一位的数字是4，所以我们应该把它四舍五入为3。
-#
-#样本输入2
-#99.500
-#
-#样本输出2
-#100
-#
-#样本输入3
-#0.000
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x = float(input())
+    x = x + 0.001
+    print(int(x))
+
+=======
+Suggestion 2
+
+def round(x):
+    if x - int(x) < 0.5:
+        return int(x)
+    else:
+        return int(x) + 1
+
+=======
+Suggestion 3
+
+def main():
+    x = float(input())
+    x = x + 0.0001
+    print(int(x))
+
+=======
+Suggestion 4
+
+def main():
+    import sys
+    import math
+
+    for line in sys.stdin:
+        x = float(line)
+        print(int(math.floor(x + 0.5)))
+
+=======
+Suggestion 5
+
+def main():
+    # input
+    x = float(input())
+    # process
+    y = int(round(x))
+    # output
+    print(y)
+
+=======
+Suggestion 6
+
+def round(x):
+    if x - int(x) >= 0.5:
+        return int(x) + 1
+    else:
+        return int(x)
+
+=======
+Suggestion 7
+
+def get_input():
+    x = float(input())
+    return x
+
+=======
+Suggestion 8
+
+def main():
+    a = float(input())
+    b = int(a * 10 + 0.5)
+    print(b // 10)
+
+=======
+Suggestion 9
+
+def main():
+    X = float(input())
+    print(round(X))

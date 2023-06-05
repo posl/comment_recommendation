@@ -1,34 +1,75 @@
-#问题陈述
-#2^n > n^2是否成立？
-#
-#限制条件
-#n是1到10^9（包括）之间的整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n
-#
-#輸出
-#如果 2^n > n^2，打印 "是"；否则，打印 "否"。
-#
-#输入样本 1
-#5
-#
-#样本输出1
-#是
-#因为2^5=32，5^2=25，我们有2^n>n^2，所以应该打印是。
-#
-#输入样本 2
-#2
-#
-#样本输出 2
-#否
-#对于 n=2，我们有 2^n=n^2=2^2，所以 2^n > n^2 不成立。因此，应该打印否。
-#
-#输入样本 3
-#623947744
-#
-#样本输出3
-#是
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def func(n):
+    if 2**n > n**2:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 2
+
+def is2n_greater_n2(n):
+    if 2**n > n**2:
+        return '是'
+    else:
+        return '否'
+
+=======
+Suggestion 3
+
+def f(n):
+    if n==1:
+        return True
+    if n%2==0:
+        return f(n/2)
+    if n%2==1:
+        return f(n-1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if 2**n > n**2:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if 2**n > n**2:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 6
+
+def isBiggerThan(n):
+    if 2**n > n**2:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def problems238_a(n):
+    if 2**n > n**2:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    print("是" if 2**n > n**2 else "否")

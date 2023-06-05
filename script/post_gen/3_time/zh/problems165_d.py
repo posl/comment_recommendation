@@ -1,32 +1,91 @@
-#问题陈述
-#给出的是整数A、B和N。
-#求一个不大于N的非负整数x的floor(Ax/B)-A×floor(x/B)的最大可能值。
-#这里floor(t)表示不大于实数t的最大整数。
-#
-#限制条件
-#1 ≤ A ≤ 10^{6}
-#1 ≤ B ≤ 10^{12}
-#1 ≤ N ≤ 10^{12}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B N
-#
-#輸出
-#打印一个不大于N的非负整数x的floor(Ax/B)-A×floor(x/B)的最大可能值，为整数。
-#
-#输入示例 1
-#5 7 4
-#
-#输出示例 1
-#2
-#当x=3时，floor(Ax/B)-A×floor(x/B) = floor(15/7) - 5×floor(3/7) = 2。这是可能的最大值。
-#
-#样本输入2
-#11 10 9
-#
-#样本输出2
-#9
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def floor(a,b):
+    return int(a/b)
+
+=======
+Suggestion 2
+
+def main():
+    # 读入数据
+    A, B, N = map(int, input().split())
+    # 计算结果
+    ans = int(A * min(B - 1, N) / B)
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    A, B, N = map(int, input().split())
+    ans = 0
+    x = min(B - 1, N)
+    ans = (A * x) // B - A * (x // B)
+    print(ans)
+
+=======
+Suggestion 4
+
+def get_max(a, b, n):
+    max = 0
+    for x in range(0, n+1):
+        temp = (a * x // b) - a * (x // b)
+        if temp > max:
+            max = temp
+    return max
+
+=======
+Suggestion 5
+
+def main():
+    a,b,n = map(int,input().split())
+    x = min(b-1,n)
+    print((a*x)//b)
+
+=======
+Suggestion 6
+
+def main():
+    A,B,N = map(int,input().split())
+    if B > N:
+        print((A*N)//B)
+    else:
+        print((A*(B-1))//B)
+
+=======
+Suggestion 7
+
+def floor(a,b):
+    return a//b
+
+=======
+Suggestion 8
+
+def main():
+    A,B,N = map(int,input().split())
+    x = min(B-1,N)
+    print(A*x//B - A*(x//B))
+
+=======
+Suggestion 9
+
+def main():
+    A,B,N = map(int,input().split())
+    x = min(N,B-1)
+    print(int(A*x/B)-A*int(x/B))
+
+=======
+Suggestion 10
+
+def main():
+    A,B,N = map(int,input().split())
+    # print(A,B,N)
+    x = min(B-1,N)
+    print((A*x)//B - A*(x//B))
+    # print((A*x)//B - A*(x//B))
+    # print((A*x)//B)
+    # print(A*(x//B))

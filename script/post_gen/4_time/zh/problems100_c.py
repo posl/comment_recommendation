@@ -1,47 +1,131 @@
-#问题陈述
-#在AtCoder第100届初学者竞赛进行时，AtCoder公司的办公室里摆放着一个长度为N的序列，a={a_1, a_2, a_3, ..., a_N}。
-#员工Snuke想玩玩这个序列。
-#具体来说，他想尽可能多地重复以下操作：
-#对于每一个满足1≦i≦N的i，执行下列操作之一："将a_i除以2 "和 "将a_i乘以3"。  
-#这里，不允许对每个i都选择 "a_i乘以3"，操作后的a_i的值必须是一个整数。
-#最多可以进行多少次操作？
-#
-#约束条件
-#N是1到10 000（包括）之间的整数。
-#a_i是1到1 000 000 000（包括）之间的整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#a_1 a_2 a_3 ... a_N
-#
-#输出
-#打印Snuke可以执行的最大操作数。
-#
-#输入样本 1
-#3
-#5 2 4
-#
-#样本输出1
-#3
-#序列最初是{5，2，4}。可以进行以下三种操作：
-#首先，a_1乘以3，a_2乘以3，a_3除以2，现在序列是{15, 6, 2}。
-#接下来，a_1乘以3，a_2除以2，a_3乘以3，现在的序列是{45, 3, 6}。
-#最后，a_1乘以3，a_2乘以3，a_3除以2，现在的序列是{135, 9, 3}。
-#
-#输入样本 2
-#4
-#631 577 243 199
-#
-#样本输出2
-#0
-#由于所有的元素都是奇数，所以不能进行任何操作。因此，答案是0。
-#
-#输入样本3
-#10
-#2184 2126 1721 1800 1024 2528 3360 1945 1280 1776
-#
-#样本输出3
-#39
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check_even(num):
+    if num%2 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    while True:
+        for i in range(N):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+            else:
+                print(count)
+                exit()
+        count += 1
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        while a[i] % 2 == 0:
+            a[i] /= 2
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        while a[i] % 2 == 0:
+            a[i] = a[i] / 2
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_max_operation_count(n, a):
+    count = 0
+    while True:
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+            else:
+                return count
+        count += 1
+
+=======
+Suggestion 6
+
+def solve(N, A):
+    # 除以2的次数
+    ans = 0
+    for i in range(N):
+        while A[i] % 2 == 0:
+            A[i] //= 2
+            ans += 1
+    return ans
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        while a[i]%2 == 0:
+            a[i] //= 2
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    while True:
+        if all(i % 2 == 0 for i in a):
+            a = [i/2 for i in a]
+            count += 1
+        else:
+            break
+    print(count)
+
+=======
+Suggestion 9
+
+def function():
+    N = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    while True:
+        for i in range(N):
+            if a[i] % 2 == 0:
+                a[i] = a[i] // 2
+            else:
+                return count
+        count += 1
+
+=======
+Suggestion 10
+
+def solve(n, a):
+    count = 0
+    for i in range(n):
+        while a[i]%2 == 0:
+            a[i] = a[i] / 2
+            count += 1
+    return count

@@ -1,42 +1,186 @@
-#问题陈述
-#在另一个世界，今天是圣诞节。
-#塔卡哈先生决定在他的派对上做一个多维汉堡。一个L级汉堡（L是一个大于或等于0的整数）是以下东西：
-#一个0级的汉堡是一个肉饼。
-#一个L级汉堡（L≧1）是一个面包，一个（L-1）级汉堡，一个肉饼，另一个（L-1）级汉堡和另一个面包，按这个顺序从下往上垂直堆放。
-#例如，一级汉堡和二级汉堡看起来像BPPPB和BBPPPBPBPPPBB（旋转90度），其中B和P代表一个面包和一个馅饼。
-#塔卡哈先生要做的汉堡是一个N级汉堡。腊肠犬Lunlun将从这个汉堡的底部吃X层（一层是一个肉饼或一个面包）。她会吃多少个肉饼？
-#
-#限制条件
-#1 ≦ N ≦ 50
-#1 ≦ X ≦ ( 一个N层汉堡的总层数 )
-#N和X是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#
-#输出
-#打印N层汉堡最底层的X层中的肉饼数量。
-#
-#输入样本 1
-#2 7
-#
-#样本输出 1
-#4
-#在一个二级汉堡的最下面7层有4个饼（BBPPPBPBPPPBB）。
-#
-#输入样本2
-#1 1
-#
-#样本输出2
-#0
-#第一层汉堡的最底层是一个面包。
-#
-#样本输入3
-#50 4321098765432109
-#
-#样本输出3
-#2160549382716056
-#一个50级的汉堡是相当厚的，以至于它的层数不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n,x):
+    if n==0:
+        return 0 if x<=0 else 1
+    num_layer=3*(2**n-1)+1
+    num_patty=2**(n+1)-1
+    if x==1:
+        return 0
+    elif x==num_layer:
+        return num_patty
+    elif x<=1+num_layer//2:
+        return solve(n-1,x-1)
+    else:
+        return num_patty//2+1+solve(n-1,x-2-(num_layer//2))
+
+=======
+Suggestion 2
+
+def burger(n,x):
+    if n==0:
+        return 0 if x<=0 else 1
+    elif x<=1+burger(n-1,1):
+        return burger(n-1,x-1)
+    else:
+        return 1+burger(n-1,x-2-burger(n-1,1))
+
+n,x=map(int,input().split(' '))
+print(burger(n,x))
+
+=======
+Suggestion 3
+
+def burger(n,x):
+    if n == 0:
+        return 0
+    elif x == 1:
+        return 0
+    elif x <= 1 + burger(n-1,1+(2**(n+1)-3)/2):
+        return burger(n-1,x-1)
+    elif x == 2 + burger(n-1,1+(2**(n+1)-3)/2):
+        return 1 + burger(n-1,1+(2**(n+1)-3)/2)
+    elif x <= 2 + 2*burger(n-1,1+(2**(n+1)-3)/2):
+        return 1 + burger(n-1,x-2-burger(n-1,1+(2**(n+1)-3)/2))
+    elif x == 3 + 2*burger(n-1,1+(2**(n+1)-3)/2):
+        return 2 + burger(n-1,1+(2**(n+1)-3)/2)
+    elif x <= 3 + 3*burger(n-1,1+(2**(n+1)-3)/2):
+        return 2 + burger(n-1,x-3-burger(n-1,1+(2**(n+1)-3)/2))
+    elif x == 4 + 3*burger(n-1,1+(2**(n+1)-3)/2):
+        return 3 + burger(n-1,1+(2**(n+1)-3)/2)
+    elif x <= 4 + 4*burger(n-1,1+(2**(n+1)-3)/2):
+        return 3 + burger(n-1,x-4-burger(n-1,1+(2**(n+1)-3)/2))
+    elif x == 5 + 4*burger(n-1,1+(2**(n+1)-3)/2):
+        return 4 + burger(n-1,1+(2**(n+1)-3)/2)
+    elif x <= 5 + 5*burger(n-1,1+(2**(n+1)-3)/2):
+        return 4 + burger(n-1,x-5-burger(n-1,1+(2**(n+1)-3)/2))
+    elif x == 6 + 5*burger(n-1,1+(
+
+=======
+Suggestion 4
+
+def findBurger(N,X):
+    if N == 0:
+        return 0
+    elif X == 1:
+        return 0
+    elif X <= 1 + findBurger(N-1, 2**(N-1)-1):
+        return findBurger(N-1, X-1)
+    elif X == 2 + findBurger(N-1, 2**(N-1)-1):
+        return 1 + findBurger(N-1, 2**(N-1)-1)
+    elif X <= 2 + 2*findBurger(N-1, 2**(N-1)-1):
+        return 1 + findBurger(N-1, X-2)
+    else:
+        return 1 + findBurger(N-1, 2**(N-1)-1)
+
+N,X = input().split()
+N = int(N)
+X = int(X)
+print(findBurger(N,X))
+
+=======
+Suggestion 5
+
+def get_burger_level(n):
+    if n == 0:
+        return 1
+    else:
+        return 2 * get_burger_level(n-1) + 3
+
+=======
+Suggestion 6
+
+def f(n,x):
+    if n==0:
+        return 0
+    elif x==1:
+        return 0
+    elif x<=2**(n+1)-2:
+        return f(n-1,x-1)
+    elif x==2**(n+1)-1:
+        return 2**n
+    elif x<=2**(n+2)-3:
+        return 2**n+f(n-1,x-2**(n+1)+1)
+    else:
+        return 2**(n+1)-1
+
+n,x=map(int,input().split())
+print(f(n,x))
+
+=======
+Suggestion 7
+
+def f(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + a[n - 1]:
+        return f(n - 1, x - 1)
+    else:
+        return p[n - 1] + 1 + f(n - 1, x - 2 - a[n - 1])
+
+n, x = map(int, input().split())
+a = [1]
+p = [1]
+for i in range(n):
+    a.append(3 + 2 * a[i])
+    p.append(1 + 2 * p[i])
+print(f(n, x))
+
+=======
+Suggestion 8
+
+def solve(n,x):
+    if n==0:
+        return 0 if x<=0 else 1
+    elif x<=1+size[n-1]:
+        return solve(n-1,x-1)
+    else:
+        return patty[n-1]+1+solve(n-1,x-2-size[n-1])
+
+n,x=map(int,input().split())
+size=[1]
+patty=[1]
+for i in range(n):
+    size.append(size[-1]*2+3)
+    patty.append(patty[-1]*2+1)
+print(solve(n,x))
+
+=======
+Suggestion 9
+
+def hamburger(n,x):
+    if n==0:
+        return 0
+    elif x==1:
+        return 0
+    elif x<=1+2*hamburger(n-1,2**(n-1)-1):
+        return hamburger(n-1,x-1)
+    elif x==2+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)
+    elif x<=2+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)
+    elif x==3+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x<=3+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x==4+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)
+    elif x<=4+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)
+    elif x==5+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x<=5+2*hamburger(n-1,2**(n-1)-1)+1+
+
+=======
+Suggestion 10
+
+def hamburger(n, x):
+    if n == 0:
+        return 0 if x <= 0 else 1
+    elif x <= 1 + hamburger(n - 1, n - 1):
+        return hamburger(n - 1, x - 1)
+    else:
+        return 1 + n + hamburger(n - 1, x - 2 - hamburger(n - 1, n - 1))

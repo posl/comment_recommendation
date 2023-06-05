@@ -1,67 +1,199 @@
-#问题陈述
-#你运行一个有N个用户的网络服务。
-#拥有当前句柄S_i的第i个用户想把它改成T_i。
-#这里，S_1,...,和S_N是成对独立的，T_1,...,和T_N也是。
-#确定是否有一个合适的顺序来改变他们的句柄，以满足他们所有的请求，但要符合以下条件：
-#你一次只能改变一个用户的句柄；
-#你对每个用户的句柄只改变一次；
-#当改变句柄时，新的句柄不应该被其他用户在这一点上使用。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i和T_i是由小写英文字母组成的长度在1到8之间（含）的字符串。
-#S_i ≠ T_i
-#S_i是成对独立的。
-#T_i是成对独立的。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#如果他们能改变他们的手柄以满足他们所有的请求，在符合条件的情况下，打印Yes；否则打印No。
-#
-#输入样本 1
-#2
-#b m
-#m d
-#
-#样本输出1
-#Yes
-#拥有当前手柄b的第1个用户想把它改成m。
-#第2个用户有一个当前的句柄m，想把它改成d。
-#首先，你把第2个用户的句柄从m改成d；
-#然后你把第1个用户的句柄从b改成m。这样，你就可以实现目标。
-#注意，你不能一开始就把第1个用户的句柄改成m，因为这时它被第2个用户使用。
-#
-#输入样本 2
-#3
-#a b
-#b c
-#c a
-#
-#样本输出2
-#No
-#第1个拥有当前手柄a的用户想把它改成b。
-#第2个用户用当前的手柄b想把它改成c。
-#拥有当前句柄c的第3个用户想把它改成a。
-#我们不能在条件允许的情况下改变他们的手柄。
-#
-#样本输入3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    S = [None] * N
+    T = [None] * N
+    for i in range(N):
+        S[i],T[i] = input().split()
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if S[i] == T[j]:
+                print("No")
+                return
+    print("Yes")
+
+solve()
+
+=======
+Suggestion 2
+
+def problems285_d():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s1, t1 = input().split()
+        s.append(s1)
+        t.append(t1)
+    #print(s)
+    #print(t)
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if s[i] == t[j]:
+                    s[i], t[i] = t[i], s[i]
+    #print(s)
+    #print(t)
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                if s[i] == s[j] or t[i] == t[j]:
+                    print('No')
+                    return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == t[j] and s[j] == t[i]:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s,t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        if S[i] == T[i]:
+            print('No')
+            return
+    for i in range(N):
+        for j in range(N):
+            if i != j and S[i] == T[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        s, t = input().split()
+        a.append(s)
+        b.append(t)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if a[i] == b[j] and a[j] == b[i]:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    s = [0]*N
+    t = [0]*N
+    for i in range(N):
+        s[i],t[i] = input().split()
+    for i in range(N):
+        for j in range(N):
+            if i != j and s[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def find_next_user(user):
+    global users
+    for u in users:
+        if u[0] == user[1]:
+            return u
+    return None
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(b)
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and s[i] == t[j]:
+                return "No"
+
+    return "Yes"
+
+=======
+Suggestion 9
+
+def check(s, t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return False
+    s_count = {}
+    t_count = {}
+    for i in range(len(s)):
+        if s[i] not in s_count:
+            s_count[s[i]] = 1
+        else:
+            s_count[s[i]] += 1
+        if t[i] not in t_count:
+            t_count[t[i]] = 1
+        else:
+            t_count[t[i]] += 1
+    for i in range(len(s)):
+        if s_count[s[i]] != t_count[s[i]]:
+            return False
+        if s_count[t[i]] != t_count[t[i]]:
+            return False
+    return True
+
+n = int(input())
+s = []
+t = []
+for i in range(n):
+    s_i, t_i = input().split()
+    s.append(s_i)
+    t.append(t_i)
+
+=======
+Suggestion 10
+
+def check(s, t):
+    if len(s) != len(t):
+        return False
+    for i in range(len(s) - 1):
+        if s[i] == s[i + 1] or t[i] == t[i + 1]:
+            return False
+    return True

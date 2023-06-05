@@ -1,47 +1,135 @@
-#问题陈述
-#给你一个长度为N的序列：A = (A_1, A_2, A_3, ..., A_N) 和 B = (B_1, B_2, B_3, ..., B_N)。
-#求满足以下条件的整数x的数量：
-#A_i ≦ x ≦ B_i 对每个整数i都成立，这样1 ≦ i ≦ N。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ B_i ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#b_1 b_2 b_3 ... b_n
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2
-#3 2
-#7 5
-#
-#样本输出1
-#3
-#x必须同时满足3 ≦ x ≦ 7和2 ≦ x ≦ 5。
-#有三个这样的整数：3，4和5。
-#
-#样本输入2
-#3
-#1 5 3
-#10 7 3
-#
-#样本输出2
-#0
-#可能没有满足条件的整数x。
-#
-#输入样本3
-#3
-#3 2 5
-#6 9 8
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    max_a = max(a)
+    min_b = min(b)
+
+    if max_a > min_b:
+        print(0)
+    else:
+        print(min_b - max_a + 1)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    print(max(0, min(B) - max(A) + 1))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    min = max(a)
+    max = min
+    for i in range(n):
+        if max < b[i]:
+            max = b[i]
+    print(max - min + 1)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for x in range(1, 1001):
+        ok = True
+        for i in range(N):
+            if x < A[i] or x > B[i]:
+                ok = False
+        if ok:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_input():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [int(x) for x in input().split()]
+    return n, a, b
+
+=======
+Suggestion 6
+
+def solve(N, A, B):
+    res = 0
+    for x in range(1, 1001):
+        for i in range(N):
+            if x < A[i] or x > B[i]:
+                break
+        else:
+            res += 1
+    return res
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+print(solve(N, A, B))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, 1001):
+        for j in range(n):
+            if i < a[j] or i > b[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    count = 0
+    for i in range(1,1001):
+        flag = True
+        for j in range(n):
+            if a[j] > i or b[j] < i:
+                flag = False
+                break
+        if flag == True:
+            count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, 1001):
+        flag = True
+        for j in range(N):
+            if i < A[j] or i > B[j]:
+                flag = False
+        if flag:
+            ans += 1
+    print(ans)

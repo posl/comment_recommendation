@@ -1,53 +1,129 @@
-#问题陈述
-#我们有编号为1, ..., N的木棍。木棍i(1 ≦ i ≦ N)的长度是L_i。
-#我们可以用多少种方法来选择不同长度的棍子中的三根可以组成一个三角形？
-#也就是说，找出满足以下两个条件的整数(i, j, k)(1 ≦ i < j < k ≦ N)的三倍数量：
-#L_i、L_j和L_k都是不同的。
-#存在一个边长为L_i、L_j和L_k的三角形。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ L_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#输出
-#打印在不同长度的棍子中选择三个可以形成三角形的方法的数量。
-#
-#输入样本 1
-#5
-#4 4 9 7 5
-#
-#样本输出1
-#5
-#以下五个三联体（i，j，k）满足条件：（1，3，4），（1，4，5），（2，3，4），（2，4，5）和（3，4，5）。
-#
-#样本输入2
-#6
-#4 5 4 3 3 5
-#
-#样本输出2
-#8
-#我们有两根长度为3、4、5的棍子。为了满足第一个条件，我们必须从每个长度中选择一个。
-#有一个边长为3、4、5的三角形，所以我们有2 ^ 3 = 8个满足条件的三角形（i, j, k）。
-#
-#输入样本 3
-#10
-#9 4 6 1 9 6 10 6 6 8
-#
-#样本输出3
-#39
-#
-#样本输入4
-#2
-#1 1
-#
-#采样输出4
-#0
-#没有一个三联体（i, j, k）满足1 ≦ i < j < k ≦ N，所以我们应该打印0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_num_of_triangles_with_length(lengths):
+    lengths.sort()
+    num_of_triangles = 0
+    for i in range(len(lengths)):
+        for j in range(i+1, len(lengths)):
+            for k in range(j+1, len(lengths)):
+                if lengths[i] + lengths[j] > lengths[k]:
+                    num_of_triangles += 1
+    return num_of_triangles
+
+=======
+Suggestion 2
+
+def is_triangle(a, b, c):
+    if (a + b > c) and (b + c > a) and (c + a > b):
+        return True
+    return False
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    L = list(map(int,input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            for k in range(j+1,N):
+                if L[i] != L[j] and L[j] != L[k] and L[k] < L[i]+L[j]:
+                    ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def triangle_count(n, l):
+    l.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if l[i] != l[j] and l[j] != l[k] and l[i] != l[k]:
+                    if l[i] + l[j] > l[k]:
+                        count += 1
+    return count
+
+=======
+Suggestion 5
+
+def getnum(n):
+    n.sort()
+    num=0
+    for i in range(len(n)-2):
+        for j in range(i+1,len(n)-1):
+            for k in range(j+1,len(n)):
+                if n[i]+n[j]>n[k]:
+                    num+=1
+    return num
+n=int(input())
+a=list(map(int,input().split()))
+print(getnum(a))
+
+=======
+Suggestion 6
+
+def triangle_number(n, a):
+    a.sort()
+    count = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if a[i] + a[j] > a[k]:
+                    count += 1
+                else:
+                    break
+    return count
+
+=======
+Suggestion 7
+
+def get_num_of_triangles(n, l):
+    l.sort()
+    num = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if l[i] + l[j] > l[k]:
+                    num += 1
+                else:
+                    break
+    return num
+
+=======
+Suggestion 8
+
+def triangle_count(n, l):
+    l.sort()
+    count = 0
+    for i in range(n-2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if l[i] != l[j] and l[j] != l[k] and l[i] + l[j] > l[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 9
+
+def triangle_count(n, l):
+    count = 0
+    for i in range(n - 2):
+        for j in range(i + 1, n - 1):
+            for k in range(j + 1, n):
+                if l[i] != l[j] and l[i] != l[k] and l[j] != l[k]:
+                    if l[i] + l[j] > l[k] and l[i] + l[k] > l[j] and l[j] + l[k] > l[i]:
+                        count += 1
+    return count
+
+n = int(input())
+l = list(map(int, input().split()))
+print(triangle_count(n, l))

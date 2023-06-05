@@ -1,54 +1,183 @@
-#问题陈述
-#给你一个整数N，考虑将N中的数字进行互换，并将它们分成两个正整数。
-#例如，对于整数123，有六种方法可以分开，如下所示：
-#12和3
-#21和3
-#13和2、
-#31和2、
-#23和1、
-#32和1。
-#这里，分离后的两个整数不能包含前导零。例如，不允许将整数101分成1和01。此外，由于所得的整数必须是正数，所以也不允许将101分成11和0。
-#通过最佳分离方式得到的两个整数的最大可能积是多少？
-#
-#限制条件
-#N是1到10^9（包括）之间的整数。
-#N包含两个或多个不为0的数字。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印两个整数分离后的最大可能积。
-#
-#输入样本 1
-#123
-#
-#样本输出1
-#63
-#如问题陈述中所述，有六种方法可以分开：
-#12和3、
-#21和3
-#13和2
-#31和2、
-#23和1、
-#32和1。
-#这些对子的乘积，按照这个顺序，是36、63、26、62、23、32，其中63为最大。
-#
-#样本输入2
-#1010
-#
-#样本输出2
-#100
-#有两种方法可以分开：
-#100和1、
-#10和10。
-#无论哪种情况，乘积都是100。
-#
-#样本输入3
-#998244353
-#
-#样本输出3
-#939337176
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_product(num_str):
+    if len(num_str) == 2:
+        return int(num_str[0]) * int(num_str[1])
+    max_product = 0
+    for i in range(1, len(num_str)):
+        left = num_str[:i]
+        right = num_str[i:]
+        if left[0] == '0' or right[0] == '0':
+            continue
+        product = int(left) * int(right)
+        if product > max_product:
+            max_product = product
+    return max_product
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n):
+        a = str(i)
+        b = str(n - i)
+        if '0' in a or '0' in b:
+            continue
+        ans = max(ans, int(a) * int(b))
+    print(ans)
+
+=======
+Suggestion 3
+
+def split(n):
+    n_str = str(n)
+    n_len = len(n_str)
+    max = 0
+    for i in range(1, n_len):
+        a = int(n_str[:i])
+        b = int(n_str[i:])
+        if a * b > max:
+            max = a * b
+    return max
+
+=======
+Suggestion 4
+
+def main():
+    N = input()
+    N1 = list(N)
+    N2 = N1.copy()
+    N1.sort(reverse=True)
+    N2.sort()
+    if N2[0] == '0':
+        N2.pop(0)
+        N2.append('0')
+    N1 = int(''.join(N1))
+    N2 = int(''.join(N2))
+    print(N1*N2)
+
+=======
+Suggestion 5
+
+def split_num(n):
+    num = [int(i) for i in str(n)]
+    l = len(num)
+    max = 0
+    for i in range(1, l):
+        a = num[:i]
+        b = num[i:]
+        if a[0] == 0 or b[0] == 0:
+            continue
+        a = int(''.join(str(i) for i in a))
+        b = int(''.join(str(i) for i in b))
+        if a * b > max:
+            max = a * b
+    return max
+
+=======
+Suggestion 6
+
+def maxProduct(n):
+    n = str(n)
+    if len(n) == 2:
+        return int(n[0]) * int(n[1])
+    else:
+        maxProduct = 0
+        for i in range(1, len(n)):
+            a = int(n[:i])
+            b = int(n[i:])
+            if a * b > maxProduct:
+                maxProduct = a * b
+        return maxProduct
+
+=======
+Suggestion 7
+
+def max_product(n):
+    n = str(n)
+    l = len(n)
+    if l == 2:
+        return int(n[0]) * int(n[1])
+    elif l == 3:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]))
+    elif l == 4:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]))
+    elif l == 5:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]), int(n[3]) * int(n[4:]))
+    elif l == 6:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]), int(n[3]) * int(n[4:]), int(n[4]) * int(n[5:]))
+    elif l == 7:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]), int(n[3]) * int(n[4:]), int(n[4]) * int(n[5:]), int(n[5]) * int(n[6:]))
+    elif l == 8:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]), int(n[3]) * int(n[4:]), int(n[4]) * int(n[5:]), int(n[5]) * int(n[6:]), int(n[6]) * int(n[7:]))
+    elif l == 9:
+        return max(int(n[0]) * int(n[1:]) , int(n[1]) * int(n[2:]), int(n[2]) * int(n[3:]), int(n[3]) * int(n[4:]), int(n[4]) * int(n[5:]), int(n[5]) * int(n[6
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    N = int(input())
+
+    # 读取输入
+    N = int(input())
+
+    # 将数字转换为字符串
+    N_str = str(N)
+
+    # 计算数字长度
+    N_len = len(N_str)
+
+    # 计算最大的乘积
+    max_product = 0
+
+    # 遍历所有的可能
+    for i in range(1, N_len):
+        # 将数字分为两个数字
+        N_1 = int(N_str[:i])
+        N_2 = int(N_str[i:])
+
+        # 计算乘积
+        product = N_1 * N_2
+
+        # 更新最大值
+        if product > max_product:
+            max_product = product
+
+    # 打印最大乘积
+    print(max_product)
+
+=======
+Suggestion 9
+
+def split(n):
+    if n < 10:
+        return [[n]]
+    else:
+        ret = []
+        for i in range(1, len(str(n))):
+            a = int(str(n)[:i])
+            b = int(str(n)[i:])
+            if a > 0 and b > 0:
+                ret.append([a, b])
+        return ret
+
+=======
+Suggestion 10
+
+def f(n):
+    if n < 10:
+        return n
+    else:
+        s = str(n)
+        l = len(s)
+        if l % 2 == 0:
+            return int(s[0:l//2])*int(s[l//2:l])
+        else:
+            return max(int(s[0:l//2+1])*int(s[l//2+1:l]), int(s[0:l//2])*int(s[l//2:l]))

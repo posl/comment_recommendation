@@ -1,53 +1,181 @@
-#问题陈述
-#高桥将做一个踢踏舞。舞蹈由一个字符串S描述，其中每个字符是L、R、U或D，这些字符表示高桥应该踩的位置。他将从第一个字符开始，按顺序一个接一个地遵循这些指示。
-#当且仅当它满足以下两个条件时，我们说S是容易下的：
-#奇数位置（第1个、第3个、第5个......）上的每个字符都是R、U或D。
-#偶数位置（第2，4，6，...）的每个字符是L，U或D。
-#你的任务是，如果S很容易玩，就打印出Yes，否则就打印出No。
-#
-#限制条件
-#S是一个长度在1到100之间（包括100）的字符串。
-#S的每个字符都是L、R、U或D。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#如果S很容易玩，则打印Yes，否则打印No。
-#
-#输入样本1
-#RUDLUDR
-#
-#样本输出1
-#Yes
-#在奇数位置（第1、3、5、7）的每个字符是R、U或D。
-#在偶数位置（第2、4、6）的每个字符都是L、U或D。
-#因此，S是很容易玩的。
-#
-#输入样本2
-#DULL
-#
-#样本输出2
-#No
-#第3个字符不是R，U，也不是D，所以S不容易玩。
-#
-#样本输入3
-#uuuuuuuuuuuuu
-#
-#样本输出3
-#Yes
-#
-#样本输入4
-#ULURU
-#
-#样本输出4
-#No
-#
-#样本输入5
-#rdululdururlrdulrlr
-#
-#样本输出5
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        if (i+1)%2==1 and S[i] not in ('R','U','D'):
+            print('No')
+            return
+        elif (i+1)%2==0 and S[i] not in ('L','U','D'):
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 2
+
+def main():
+    # S = input()
+    S = "rdululdururlrdulrlr"
+    S_odd = S[::2]
+    S_even = S[1::2]
+    # print(S_odd)
+    # print(S_even)
+    if S_odd.count("R") == 0 and S_odd.count("L") == 0 and S_even.count("U") == 0 and S_even.count("D") == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == 'L':
+                print('No')
+                return
+        else:
+            if s[i] == 'R':
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if len(s) == 1:
+        if s == 'L' or s == 'U' or s == 'D':
+            print('No')
+        else:
+            print('Yes')
+    else:
+        for i in range(len(s)):
+            if i % 2 == 0:
+                if s[i] == 'L':
+                    print('No')
+                    break
+            else:
+                if s[i] == 'R':
+                    print('No')
+                    break
+        else:
+            print('Yes')
+
+=======
+Suggestion 5
+
+def main():
+    # S = "RUDLUDR"
+    # S = "DULL"
+    # S = "uuuuuuuuuuuuu"
+    # S = "ULURU"
+    # S = "rdululdururlrdulrlr"
+    S = input()
+    result = "Yes"
+    for i in range(len(S)):
+        if i % 2 == 0:
+            if S[i] == "L":
+                result = "No"
+                break
+        else:
+            if S[i] == "R":
+                result = "No"
+                break
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] == "L":
+                print("No")
+                return
+        else:
+            if s[i] == "R":
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    odd = S[::2]
+    even = S[1::2]
+    if 'L' in odd or 'R' in even:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 8
+
+def check(s):
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i] == 'L':
+            return False
+        elif i % 2 == 1 and s[i] == 'R':
+            return False
+    return True
+
+s = input()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if len(s) == 1:
+        print("Yes")
+        return
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i] == "L":
+                print("No")
+                return
+        else:
+            if s[i] == "R":
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    i = 1
+    for s in S:
+        if i % 2 == 0:
+            if s == 'L':
+                pass
+            elif s == 'U':
+                pass
+            elif s == 'D':
+                pass
+            else:
+                print('No')
+                exit()
+        else:
+            if s == 'R':
+                pass
+            elif s == 'U':
+                pass
+            elif s == 'D':
+                pass
+            else:
+                print('No')
+                exit()
+        i += 1
+    print('Yes')

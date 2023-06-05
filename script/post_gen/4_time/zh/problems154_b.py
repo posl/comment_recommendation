@@ -1,34 +1,68 @@
-#问题陈述
-#给出一个字符串S，用x替换S中的每个字符并打印结果。
-#
-#限制条件
-#S是一个由小写英文字母组成的字符串。
-#S的长度在1到100之间（包括100）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#用x替换S中的每个字符并打印结果。
-#
-#输入样本1
-#sardine
-#
-#样本输出1
-#xxxxxxx
-#用x替换S中的每个字符，结果是XXXXXX。
-#
-#输入样本2
-#xxxx
-#
-#输出样本2
-#xxxx
-#
-#样本输入3
-#gone
-#
-#样本输出3
-#xxxx
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def replace_str_with_x(input_str):
+    result = ''
+    for i in range(len(input_str)):
+        result += 'x'
+    return result
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print('x'*len(s))
+
+=======
+Suggestion 3
+
+def replace_char(string):
+    return 'x'*len(string)
+
+=======
+Suggestion 4
+
+def replace_char(s):
+    return 'x'*len(s)
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    print('x' * len(s))
+
+=======
+Suggestion 6
+
+def solve():
+    S = input()
+    print('x' * len(S))
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    for i in range(len(S)):
+        print('x',end='')
+    print()
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    print("x" * len(S))
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    print(len(S) * "x")

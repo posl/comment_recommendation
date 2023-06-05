@@ -1,35 +1,140 @@
-#问题陈述
-#一个球将沿着一条数线弹跳，进行N+1次弹跳。它在坐标D_1=0处进行第一次反弹，在坐标D_i=D_{i-1}+L_{i-1}处进行第i次反弹（2≦i≦N+1）。
-#球在坐标为X的地方最多反弹多少次？
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ L_i ≦ 100
-#1 ≦ X ≦ 10000
-#输入的所有值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N X
-#L_1 L_2 ...L_{N-1} L_N
-#
-#输出
-#打印球在坐标最多为X的地方反弹的次数。
-#
-#输入样本 1
-#3 6
-#3 4 5
-#
-#样本输出1
-#2
-#球将在坐标0、3、7和12处反弹，其中有2处小于或等于6。
-#
-#输入样本2
-#4 9
-#3 3 3 3
-#
-#样本输出2
-#4
-#球将在坐标0、3、6、9和12处反弹，其中有4处小于或等于9。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    input = raw_input()
+    input = input.split()
+    n = int(input[0])
+    x = int(input[1])
+    input = raw_input()
+    input = input.split()
+    l = map(int,input)
+    return n,x,l
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    l = list(map(int,input().split()))
+    d = 0
+    cnt = 0
+    for i in range(n):
+        d += l[i]
+        if d <= x:
+            cnt += 1
+    print(cnt+1)
+
+=======
+Suggestion 3
+
+def main():
+    line = input()
+    line = line.split()
+    N = int(line[0])
+    X = int(line[1])
+    line = input()
+    line = line.split()
+    L = [int(x) for x in line]
+    D = [0]*(N+1)
+    for i in range(1,N+1):
+        D[i] = D[i-1]+L[i-1]
+    D.append(D[N]+L[N-1])
+    count = 0
+    for i in range(N+1):
+        if D[i] <= X:
+            count += 1
+    print(count)
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    L = [int(x) for x in input().split()]
+    D = [0]
+    for i in range(N):
+        D.append(D[i] + L[i])
+    print(len([x for x in D if x <= X]))
+
+=======
+Suggestion 5
+
+def main():
+    n,x = map(int,input().split())
+    l = list(map(int,input().split()))
+    d = [0]
+    for i in range(0,n):
+        d.append(d[i]+l[i])
+    for i in range(0,n+1):
+        if d[i] > x:
+            print(i)
+            return
+    print(n+1)
+
+=======
+Suggestion 6
+
+def bounce(N, X, L):
+    D = 0
+    count = 0
+    for i in range(N):
+        D = D + L[i]
+        if D <= X:
+            count = count + 1
+    return count + 1
+
+=======
+Suggestion 7
+
+def problem130_b():
+    N, X = map(int, input().split())
+    L = list(map(int, input().split()))
+    D = [0] * (N + 1)
+    for i in range(1, N + 1):
+        D[i] = D[i - 1] + L[i - 1]
+    cnt = 0
+    for i in range(N + 1):
+        if D[i] <= X:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def input():
+    n,x = map(int,raw_input().split())
+    l = map(int,raw_input().split())
+    return n,x,l
+
+=======
+Suggestion 9
+
+def main():
+    n,x = map(int,input().split())
+    l = list(map(int,input().split()))
+    sum = 0
+    for i in range(n):
+        sum += l[i]
+        if sum > x:
+            print(i+1)
+            break
+    else:
+        print(n+1)
+
+=======
+Suggestion 10
+
+def main():
+    n,x = map(int, input().split())
+    L = list(map(int, input().split()))
+    D = [0]*(n+1)
+    for i in range(1,n+1):
+        D[i] = D[i-1] + L[i-1]
+    for i in range(n+1):
+        if D[i] > x:
+            print(i)
+            return

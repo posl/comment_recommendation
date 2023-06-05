@@ -1,56 +1,218 @@
-#问题声明
-#AtCoder市将举行一次市长选举。候选人是青木和高桥。
-#该市由N个镇组成，其中第i个镇有A_i支持青木的选民和B_i支持高桥的选民。没有其他选民。
-#高桥可以在每个城镇发表演讲。
-#如果他在某个镇上发表演讲，该镇的所有选民，不管是亲高桥的还是青木的，都会投票给高桥。
-#另一方面，如果他不在某个镇上发表演讲，该镇上支持青木的选民将投票给青木，而支持高桥的选民将不投票。
-#为了获得比青木更多的选票，高桥至少需要在多少个城镇发表演讲？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#4
-#2 1
-#2 2
-#5 1
-#1 3
-#
-#样本输出1
-#1
-#在第三镇发表演讲后，青木和高桥将分别获得5票和6票。
-#
-#样本输入2
-#5
-#2 1
-#2 1
-#2 1
-#2 1
-#2 1
-#
-#样本输出 2
-#3
-#在三个城镇发表演讲后，青木和高桥将分别获得4票和9票。
-#
-#样本输入3
-#1
-#273 691
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[0] + x[1], reverse=True)
+    sumA = sum([a for a, b in AB])
+    sumB = 0
+    ans = 0
+    for a, b in AB:
+        sumA -= a
+        sumB += a + b
+        ans += 1
+        if sumB > sumA:
+            break
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    ans = 0
+    for i in range(n):
+        ans += a[i] * i + b[i] * (n - i)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    c = []
+    for i in range(n):
+        c.append(a[i] + b[i])
+    c.sort(reverse=True)
+    sum = 0
+    for i in range(0, n, 2):
+        sum += c[i]
+    print(sum)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A, B = [], []
+    for _ in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N-1, -1, -1):
+        A[i] += ans
+        if A[i] < B[i]:
+            ans += B[i] - A[i]
+            A[i] = B[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a1, b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    a_sum = sum(a)
+    b_sum = 0
+    num = 0
+    for i in range(n):
+        a_sum -= a[i]
+        b_sum += a[i] + b[i]
+        num += 1
+        if b_sum > a_sum:
+            break
+    print(num)
+main()
+#解答
+#在每个镇上发表演讲的候选人都会获得该镇的所有选票。
+#因此，高桥至少需要在具有最多支持高桥的选民的镇上发表演讲。
+#因此，我们首先按照支持高桥的选民的数量对镇进行排序。
+#然后，我们按照这个顺序依次发表演讲。
+#在这种情况下，高桥将获得最多的选票。
+#我们将在高桥获得的选票数超过青木获得的选票数时停止发表演讲。
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    # print(A)
+    # print(B)
+    sum = 0
+    for i in range(N):
+        sum += A[i]
+    # print(sum)
+    ave = sum / 2
+    # print(ave)
+    flag = False
+    for i in range(N):
+        sum -= A[i]
+        if sum < ave:
+            flag = True
+            print(i + 1)
+            break
+    if flag == False:
+        print(N)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    a.sort()
+    b.sort()
+    if n % 2 == 1:
+        print(b[n//2] - a[n//2] + 1)
+    else:
+        print(b[n//2] + b[n//2-1] - a[n//2] - a[n//2-1] + 1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int,input().split())
+        a.append(ai)
+        b.append(bi)
+
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    cnt = 0
+    i = 0
+    j = 0
+    while i < n and j < n:
+        if a[i] > b[j]:
+            cnt += 1
+            i += 1
+        j += 1
+
+    print(cnt)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[0]+x[1], reverse=True)
+    #print(AB)
+    ans = 0
+    for i in range(N):
+        if i % 2 == 0:
+            ans += AB[i][0]
+        else:
+            ans -= AB[i][1]
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        c, d = map(int, input().split())
+        a.append(c)
+        b.append(d)
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    ans = 0
+    for i in range(n):
+        if a[i] > b[i]:
+            ans += 1
+    print(ans)
