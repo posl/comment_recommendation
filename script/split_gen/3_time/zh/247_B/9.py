@@ -1,0 +1,5 @@
+def check_name(name1, name2):
+    if name1 == name2:
+        return False
+    else:
+        return True

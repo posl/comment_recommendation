@@ -1,0 +1,8 @@
+def main():
+    H,A = map(int,input().split())
+    #print(H,A)
+    count = 0
+    while H > 0:
+        H -= A
+        count += 1
+    print(count)

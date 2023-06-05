@@ -1,0 +1,17 @@
+def main():
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if AB[j][0] == i+1:
+                if H[i] <= H[AB[j][1]-1]:
+                    flag = False
+            elif AB[j][1] == i+1:
+                if H[i] <= H[AB[j][0]-1]:
+                    flag = False
+        if flag:
+            ans += 1
+    print(ans)

@@ -1,0 +1,6 @@
+def convertToBaseTwo(num):
+    result = ''
+    while num > 0:
+        result = str(num % 2) + result
+        num //= 2
+    return result

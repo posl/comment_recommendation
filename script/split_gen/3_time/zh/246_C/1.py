@@ -1,0 +1,14 @@
+def main():
+    N, K, X = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    A.reverse()
+    print(A)
+    total = 0
+    for i in range(N):
+        if (K > 0):
+            total += max(A[i] - X, 0)
+            K -= 1
+        else:
+            total += A[i]
+    print(total)

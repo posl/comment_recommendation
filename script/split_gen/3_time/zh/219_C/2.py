@@ -1,0 +1,2 @@
+def getNewOrder():
+    return input()
