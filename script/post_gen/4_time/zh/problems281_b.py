@@ -1,49 +1,152 @@
-#问题陈述
-#给你一个由大写英文字母和数字组成的字符串S。判断S是否满足以下条件。
-#S是由下列字符和字符串按顺序串联而成的。
-#一个大写的英文字母
-#一个长度为6的字符串，是100000和999999之间的整数的十进制表示，包括在内
-#一个大写的英文字母
-#
-#
-#限制条件
-#S由大写的英文字母和数字组成。
-#S的长度在1到10之间，包括在内。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S
-#
-#輸出
-#如果S满足问题陈述中的条件，打印Yes；否则，打印No。
-#
-#输入样本1
-#Q142857Z
-#
-#样本输出1
-#Yes
-#S是Q、142857和Z按照这个顺序的串联。
-#Q和Z是大写的英文字母，142857是一个长度为6的字符串，是100000和999999之间的整数的十进制表示，所以S满足条件。
-#
-#输入样本2
-#AB912278C
-#
-#样本输出2
-#No
-#AB不是一个大写的英文字母，所以S不满足条件。
-#
-#输入样本3
-#X900000
-#
-#样本输出3
-#No
-#S的最后一个字符不是大写的英文字母，所以S不满足条件。
-#
-#输入样本4
-#K012345K
-#
-#样本输出4
-#No
-#012345不是一个长度为6的字符串，是100000和999999之间的整数的十进制表示，所以S不满足条件。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[0] >= 'A' and s[0] <= 'Z' and s[-1] >= 'A' and s[-1] <= 'Z':
+        if len(s) == 8:
+            if s[1] >= '0' and s[1] <= '9':
+                if s[2] >= '0' and s[2] <= '9':
+                    if s[3] >= '0' and s[3] <= '9':
+
+=======
+Suggestion 2
+
+def check(s):
+    if len(s) != 8:
+        return False
+    if not s[0].isupper():
+        return False
+    if not s[7].isupper():
+        return False
+    if not s[1:7].isdigit():
+        return False
+    if int(s[1:7]) < 100000 or int(s[1:7]) > 999999:
+        return False
+    return True
+
+s = input()
+
+=======
+Suggestion 3
+
+def is_upper_case_char(c):
+    return 'A' <= c and c <= 'Z'
+
+=======
+Suggestion 4
+
+def check_uppercase(c):
+    return c >= 'A' and c <= 'Z'
+
+=======
+Suggestion 5
+
+def is_num(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+=======
+Suggestion 6
+
+def is_upper_case_letter(char):
+    return char >= 'A' and char <= 'Z'
+
+=======
+Suggestion 7
+
+def isUpperLetter(ch):
+    if ord(ch) >= 65 and ord(ch) <= 90:
+        return True
+    return False
+
+=======
+Suggestion 8
+
+def check(s):
+    if len(s) != 8:
+        return False
+    if not s[0].isupper() or not s[-1].isupper():
+        return False
+    if not s[1:-1].isdigit():
+        return False
+    if int(s[1:-1]) < 100000 or int(s[1:-1]) > 999999:
+        return False
+    return True
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    if s[0].isupper() and s[-1].isupper() and len(s) == 8:
+        if s[1:7].isdigit():
+            if int(s[1:7]) >= 100000 and int(s[1:7]) <= 999999:
+                print("Yes")
+                return
+    print("No")
+    return
+
+=======
+Suggestion 10
+
+def check():
+    S = input()
+    if S[0] < 'A' or S[0] > 'Z':
+        print('No')
+        return
+    if S[-1] < 'A' or S[-1] > 'Z':
+        print('No')
+        return
+    if len(S) != 8:
+        print('No')
+        return
+    if S[1] < '0' or S[1] > '9':
+        print('No')
+        return
+    if S[2] < '0' or S[2] > '9':
+        print('No')
+        return
+    if S[3] < '0' or S[3] > '9':
+        print('No')
+        return
+    if S[4] < '0' or S[4] > '9':
+        print('No')
+        return
+    if S[5] < '0' or S[5] > '9':
+        print('No')
+        return
+    if S[6] < '0' or S[6] > '9':
+        print('No')
+        return
+    if S[1] != '0':
+        print('No')
+        return
+    if S[2] != '0':
+        print('No')
+        return
+    if S[3] != '0':
+        print('No')
+        return
+    if S[4] != '0':
+        print('No')
+        return
+    if S[5] != '0':
+        print('No')
+        return
+    if S[6] != '0':
+        print('No')
+        return
+    if int(S[1:7]) < 100000:
+        print('No')
+        return
+    if int(S[1:7]) > 999999:
+        print('No')
+        return
+    print('Yes')
+    return

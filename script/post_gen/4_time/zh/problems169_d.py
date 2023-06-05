@@ -1,62 +1,196 @@
-#问题陈述
-#给定的是一个正整数N，考虑在N上重复应用下面的操作：
-#首先，选择一个满足以下所有条件的正整数z：
-#z可以表示为z=p^e，其中p是一个素数，e是一个正整数；
-#z除以N；
-#z与之前操作中选择的所有整数不同。
-#然后，用N/z替换N。
-#找出该操作可应用的最大次数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印该操作可应用的最大次数。
-#
-#样本输入1
-#24
-#
-#样本输出1
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=12)。
-#选择z=3 (=3^1)。(现在我们有N=4)。
-#选择z=4 (=2^2).(现在我们有N=1)。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#我们根本就不能应用这个操作。
-#
-#样本输入3
-#64
-#
-#样本输出3
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=32)。
-#选择z=4（=2^2）。(现在我们有N=8)。
-#选择z=8 (=2^3).(现在我们有N=1)。
-#
-#样本输入4
-#1000000007
-#
-#样本输出4
-#1
-#我们可以应用一次操作，例如，做出以下选择：
-#z=1000000007 (=1000000007^1).(现在我们有N=1)。
-#
-#输入样本5
-#997764507000
-#
-#样本输出5
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_prime_factors(n):
+    factors = []
+    for i in range(2,int(n**0.5)+1):
+        if n%i == 0:
+            factors.append(i)
+            while n%i == 0:
+                n = n//i
+    if n > 1:
+        factors.append(n)
+    return factors
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(2, N):
+        if N % i == 0:
+            ans += 1
+            N = N // i
+            if N == 1:
+                break
+    print(ans)
+
+=======
+Suggestion 3
+
+def prime_factorize(n):
+    # 素因数分解
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+n = int(input())
+a = prime_factorize(n)
+b = list(set(a))
+c = sorted(b)
+ans = 0
+for i in c:
+    ans += a.count(i)
+print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ans = 0
+    while n > 1:
+        ans += 1
+        #print("n=", n)
+        max = 0
+        maxp = 0
+        for p in range(2, int(n**0.5)+1):
+            if n % p == 0:
+                #print("p=", p)
+                e = 0
+                tmp = n
+                while tmp % p == 0:
+                    tmp = tmp // p
+                    e += 1
+                if e > max:
+                    max = e
+                    maxp = p
+        if max == 0:
+            break
+        #print("maxp=", maxp)
+        n = n // maxp
+    print(ans)
+
+=======
+Suggestion 5
+
+def check_prime(x):
+    if x == 1:
+        return False
+    for i in range(2, int(x**0.5)+1):
+        if x % i == 0:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def find_max_times(n):
+    result = 0
+    for i in range(2, int(pow(n, 0.5))+1):
+        if n % i == 0:
+            while n % i == 0:
+                n /= i
+            result += 1
+    if n != 1:
+        result += 1
+    return result
+
+=======
+Suggestion 7
+
+def is_prime(n):
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    for i in range(2,int(n**0.5)+1):
+        if n%i == 0:
+            return False
+    return True
+
+=======
+Suggestion 8
+
+def factorize(n):
+    res = []
+    if n == 1:
+        return res
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            res.append(i)
+            while n % i == 0:
+                n //= i
+    if n != 1:
+        res.append(n)
+    return res
+n = int(input())
+factors = factorize(n)
+ans = 0
+for p in factors:
+    e = 0
+    x = n
+    while x % p == 0:
+        x //= p
+        e += 1
+    ans = max(ans, e)
+print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+        return
+    ans = 0
+    for i in range(2,int(n**0.5)+1):
+        if n % i == 0:
+            m = n
+            while m % i == 0:
+                m //= i
+            if m % i == 1:
+                m = n
+                while m % i == 0:
+                    m //= i
+                ans += 1
+    m = n-1
+    for i in range(2,int(m**0.5)+1):
+        if m % i == 0:
+            while m % i == 0:
+                m //= i
+            if m % i == 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def factorization(n):
+    i = 2
+    table = []
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table
+
+n = int(input())

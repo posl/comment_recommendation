@@ -1,36 +1,80 @@
-#问题陈述
-#给你一个由小写英文字母组成的长度为3的字符串S。
-#通过对S中的字符进行排列组合，可以得到多少个不同的字符串？
-#
-#限制条件
-#S是一个由小写英文字母组成的长度为3的字符串S。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#打印通过交换S中的字符可以得到的不同字符串的数量。
-#
-#输入样本1
-#aba
-#
-#样本输出1
-#3
-#通过对S= aba中的字符进行排列组合，可以得到三个不同的字符串：aab, aba, baa。
-#
-#输入样本2
-#ccc
-#
-#样本输出2
-#1
-#通过对S=ccc中的字符进行排列组合，可以得到一个字符串：ccc。
-#
-#输入样本3
-#xyz
-#
-#样本输出 3
-#6
-#通过对S= xyz中的字符进行替换，可以得到六个不同的字符串：xyz, xzy, yxz, yzx, zxy, zyx。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    print(len(set(S)))
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 3
+
+def problems225_a():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    print(len(s) * (len(s) - 1) * (len(s) - 2) // 6)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    l = list(S)
+    l1 = []
+    for i in range(len(l)):
+        if l[i] not in l1:
+            l1.append(l[i])
+    print(len(l1))
+
+=======
+Suggestion 6
+
+def problem225_a():
+    s = input()
+    print(len(set(s)))
+
+=======
+Suggestion 7
+
+def problems225_a():
+    S = input()
+    print(len(set(S)))
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    s = input()
+    # 通过交换S中的字符可以得到的不同字符串的数量。
+    print(len(set(s)))
+
+=======
+Suggestion 9
+
+def main():
+    # 读入字符串
+    s = input()
+    # 用set来存储排列组合后的字符串
+    s_set = set()
+    # 遍历s的所有排列组合
+    for i in range(len(s)):
+        for j in range(len(s)):
+            for k in range(len(s)):
+                s_set.add(s[i] + s[j] + s[k])
+    # 输出set的大小
+    print(len(s_set))

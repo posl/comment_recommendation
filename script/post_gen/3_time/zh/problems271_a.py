@@ -1,47 +1,121 @@
-#问题说明
-#在十六进制系统中，除了0123456789之外，还使用了对应于10,11,12,13,14和15的数字ABCDEF，0和255之间的每个整数都被表示为1位或2位数字。
-#例如，0和12表示为1位数的十六进制数字0和C；99和255表示为2位数的十六进制数字63和FF。  
-#给出一个介于0和255之间的整数N，将其转换为恰好两位数的十六进制数字，必要时预留前导0。
-#
-#注意事项
-#法官是区分大小写的。  具体来说，你不能用abcdef作为十六进制数字，而是ABCDEF。
-#
-#限制条件
-#0 ≦ N ≦ 255
-#N是一个整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#99
-#
-#样本输出1
-#63
-#99在十六进制中表示为63。
-#
-#样本输入2
-#12
-#
-#样本输出2
-#0C
-#12在十六进制中被表示为C。
-#由于我们要求你将其转换为两位数的十六进制数字，所以答案是0C，其中0被加在C前面。
-#
-#输入样本3
-#0
-#
-#样本输出3
-#00
-#
-#采样输入4
-#255
-#
-#采样输出4
-#FF
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    print('{:02x}'.format(n))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if n < 16:
+        print("0" + hex(n)[2:].upper())
+    else:
+        print(hex(n)[2:].upper())
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    print('{:02X}'.format(n))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print("%02X" % n)
+
+=======
+Suggestion 5
+
+def toHexadecimal(N):
+    if N < 10:
+        return N
+    elif N == 10:
+        return 'A'
+    elif N == 11:
+        return 'B'
+    elif N == 12:
+        return 'C'
+    elif N == 13:
+        return 'D'
+    elif N == 14:
+        return 'E'
+    elif N == 15:
+        return 'F'
+    else:
+        return 0
+
+N = int(input())
+print(toHexadecimal(N // 16), end='')
+print(toHexadecimal(N % 16))
+
+=======
+Suggestion 6
+
+def convert_to_hex(num):
+    hex_num = hex(num)
+    return hex_num[2:].upper().zfill(2)
+
+=======
+Suggestion 7
+
+def problem271_a():
+    n = int(input())
+    print('{:02X}'.format(n)) # X大写表示16进制，x小写表示16进制
+    # print(format(n,'02X'))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n < 16:
+        print('0' + hex(n)[2:])
+    else:
+        print(hex(n)[2:])
+
+=======
+Suggestion 9
+
+def hexa(n):
+    a = n // 16
+    b = n % 16
+    if a < 10:
+        a = str(a)
+    elif a == 10:
+        a = 'A'
+    elif a == 11:
+        a = 'B'
+    elif a == 12:
+        a = 'C'
+    elif a == 13:
+        a = 'D'
+    elif a == 14:
+        a = 'E'
+    else:
+        a = 'F'
+    if b < 10:
+        b = str(b)
+    elif b == 10:
+        b = 'A'
+    elif b == 11:
+        b = 'B'
+    elif b == 12:
+        b = 'C'
+    elif b == 13:
+        b = 'D'
+    elif b == 14:
+        b = 'E'
+    else:
+        b = 'F'
+    return a+b
+
+n = int(input())
+print(hexa(n))

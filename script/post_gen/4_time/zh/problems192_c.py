@@ -1,52 +1,81 @@
-#问题陈述
-#对于一个不小于0的整数x，我们定义g_1(x), g_2(x), f(x)如下：
-#g_1(x)=将x的十进制数字按降序重新排列而得到的整数
-#g_2(x)=将x的十进制数字按升序重新排列而得到的整数
-#f(x)=g_1(x)-g_2(x)
-#例如，我们有g_1（314）=431，g_2（3021）=123，f（271）=721-127=594。注意，前导零被忽略。
-#给出整数N, K, 在a_0=N, a_{i+1}=f(a_i) (i≧0)定义的序列中找出a_K。
-#
-#限制条件
-#0 ≦ N ≦ 10^9
-#0 ≦ K ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#输出
-#打印a_K。
-#
-#样本输入1
-#314 2
-#
-#样本输出1
-#693
-#我们有
-#a_0=314
-#a_1=f(314)=431-134=297
-#a_2=f(297)=972-279=693
-#
-#样本输入2
-#1000000000 100
-#
-#样本输出2
-#0
-#我们有
-#a_0=1000000000
-#a_1=f(1000000000)=1000000000-1=999999999
-#a_2=f(999999999)=999999999-999999999=0
-#a_3=f(0)=0-0=0
-#.
-#.
-#.
-#
-#
-#样本输入3
-#6174 100000
-#
-#样本输出3
-#6174
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def g1(x):
+    x = str(x)
+    x = list(x)
+    x.sort(reverse=True)
+    x = ''.join(x)
+    x = int(x)
+    return x
+
+=======
+Suggestion 2
+
+def g_1(x):
+    x_str = str(x)
+    x_list = list(x_str)
+    x_list.sort(reverse=True)
+    return int(''.join(x_list))
+
+=======
+Suggestion 3
+
+def g1(x):
+    l = list(str(x))
+    l.sort(reverse=True)
+    return int(''.join(l))
+
+=======
+Suggestion 4
+
+def g1(x):
+    return int(''.join(sorted(str(x), reverse=True)))
+
+=======
+Suggestion 5
+
+def g_1(x):
+    x_str = str(x)
+    x_str = sorted(x_str,reverse=True)
+    x_str = ''.join(x_str)
+    x_int = int(x_str)
+    return x_int
+
+=======
+Suggestion 6
+
+def g_1(x):
+    x = str(x)
+    x = list(x)
+    x.sort(reverse=True)
+    x = int(''.join(x))
+    return x
+
+=======
+Suggestion 7
+
+def g1(x):
+    #将x的十进制数字按降序重新排列而得到的整数
+    #例如，我们有g_1（314）=431
+    #注意，前导零被忽略。
+    x = str(x)
+    x = list(x)
+    x.sort(reverse=True)
+    x = "".join(x)
+    x = int(x)
+    return x
+
+=======
+Suggestion 8
+
+def g_1(x):
+    return int(''.join(sorted(str(x),reverse=True)))
+
+=======
+Suggestion 9
+
+def g_1(x):
+    return int(''.join(sorted(list(str(x)),reverse=True)))

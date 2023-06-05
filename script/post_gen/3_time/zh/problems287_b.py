@@ -1,76 +1,150 @@
-#问题陈述
-#给你N个长度为6的字符串，每个字符串由数字组成。  设S_i是其中第i个（i=1，2，...，N）。
-#还给你M个字符串，每个字符串的长度为3，由数字组成。  让T_j成为其中的第j个（j=1，2，...，M）。
-#在S_1, S_2, ..., S_N中找出最后三个字符与T_1, T_2, ..., T_M中一个或多个字符重合的字符串的数量。
-#
-#限制条件
-#1 ≦ N, M ≦ 1000
-#N和M是整数。
-#S_i是一个长度为6的字符串，由数字组成，对于所有i = 1, 2, ..., N。
-#T_j是一个长度为3的字符串，由数字组成，对于所有j = 1, 2, ..., M。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 3
-#142857
-#004159
-#071028
-#159
-#287
-#857
-#
-#样本输出1
-#2
-#S_1的最后三个字符是857，与T_3相吻合。
-#S_2的最后三个字符是159，与T_1相吻合。
-#S_3的最后三个字符是028，与T_1、T_2或T_3不一致。  
-#因此，答案是2。
-#
-#输入样本 2
-#5 4
-#235983
-#109467
-#823476
-#592801
-#000333
-#333
-#108
-#467
-#983
-#
-#样本输出2
-#3
-#
-#样本输入3
-#4 4
-#000000
-#123456
-#987111
-#000000
-#000
-#111
-#999
-#111
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    #print(s)
+    #print(t)
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                count += 1
+    print(count)
+    return 0
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    # 逐个检查
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:] == t[j]:
+                ans += 1
+    # 输出结果
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:] == t[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    count = 0
+    for i in range(M):
+        for j in range(N):
+            if T[i] == S[j][-3:]:
+                count += 1
+                break
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][3:6] == t[j] or s[i][4:6] == t[j] or s[i][5] == t[j]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = [input() for i in range(n)]
+    b = [input() for i in range(m)]
+    c = 0
+    for i in a:
+        for j in b:
+            if i[-3:] == j:
+                c += 1
+    print(c)
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    S = [input() for i in range(N)]
+    T = [input() for i in range(M)]
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if S[i][3:] == T[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    #N, M = map(int, input().split())
+    #S = [input() for _ in range(N)]
+    #T = [input() for _ in range(M)]
+    S = ['000000', '123456', '987111', '000000']
+    T = ['000', '111', '999', '111']
+    ans = 0
+    for i in range(len(S)):
+        for j in range(len(T)):
+            if S[i][-3:] == T[j]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for i in range(n)]
+    t = [input() for i in range(m)]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            if s[i][-3:] == t[j]:
+                count += 1
+    print(count)

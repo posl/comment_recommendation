@@ -1,47 +1,129 @@
-#问题说明
-#在十六进制系统中，除了0123456789之外，还使用了对应于10,11,12,13,14和15的数字ABCDEF，0和255之间的每个整数都被表示为1位或2位数字。
-#例如，0和12表示为1位数的十六进制数字0和C；99和255表示为2位数的十六进制数字63和FF。  
-#给出一个介于0和255之间的整数N，将其转换为恰好两位数的十六进制数字，必要时预留前导0。
-#
-#注意事项
-#法官是区分大小写的。  具体来说，你不能用abcdef作为十六进制数字，而是ABCDEF。
-#
-#限制条件
-#0 ≦ N ≦ 255
-#N是一个整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#99
-#
-#样本输出1
-#63
-#99在十六进制中表示为63。
-#
-#样本输入2
-#12
-#
-#样本输出2
-#0C
-#12在十六进制中被表示为C。
-#由于我们要求你将其转换为两位数的十六进制数字，所以答案是0C，其中0被加在C前面。
-#
-#输入样本3
-#0
-#
-#样本输出3
-#00
-#
-#采样输入4
-#255
-#
-#采样输出4
-#FF
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def print_hex(n):
+    if n < 10:
+        print("0"+str(n))
+    else:
+        print(hex(n).upper()[2:])
+
+=======
+Suggestion 2
+
+def hexa(n):
+    if n < 10:
+        return str(n)
+    elif n == 10:
+        return 'A'
+    elif n == 11:
+        return 'B'
+    elif n == 12:
+        return 'C'
+    elif n == 13:
+        return 'D'
+    elif n == 14:
+        return 'E'
+    elif n == 15:
+        return 'F'
+
+n = int(input())
+n1 = n // 16
+n2 = n % 16
+print(hexa(n1) + hexa(n2))
+
+=======
+Suggestion 3
+
+def hexa(n):
+    if n<10:
+        return str(n)
+    elif n==10:
+        return 'A'
+    elif n==11:
+        return 'B'
+    elif n==12:
+        return 'C'
+    elif n==13:
+        return 'D'
+    elif n==14:
+        return 'E'
+    elif n==15:
+        return 'F'
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    print('{:02X}'.format(n))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    print("%02X" % n)
+
+main()
+
+=======
+Suggestion 6
+
+def convert_to_hexadecimal(N):
+    #将十进制转换为十六进制
+    hexadecimal = hex(N)
+    #将十六进制转换为大写
+    hexadecimal = hexadecimal.upper()
+    #去除前缀0X
+    hexadecimal = hexadecimal[2:]
+    #如果是一位数，则在前面加0
+    if len(hexadecimal) == 1:
+        hexadecimal = "0" + hexadecimal
+    return hexadecimal
+
+N = int(input())
+print(convert_to_hexadecimal(N))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    print("%02X" % (N))
+
+=======
+Suggestion 8
+
+def convert_to_hexadecimal(decimal):
+    hexadecimal = hex(decimal)
+    return hexadecimal[2:].upper()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print(format(n, '02x').upper())
+
+=======
+Suggestion 10
+
+def hex(n):
+    if n < 10:
+        return n
+    elif n == 10:
+        return 'A'
+    elif n == 11:
+        return 'B'
+    elif n == 12:
+        return 'C'
+    elif n == 13:
+        return 'D'
+    elif n == 14:
+        return 'E'
+    elif n == 15:
+        return 'F'
+    else:
+        return None

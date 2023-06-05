@@ -1,42 +1,305 @@
-#问题陈述
-#我们有N个整数A_1, A_2, ..., A_N。
-#有((N(N-1))/(2))种方法可以选择其中两个并形成一对。如果我们计算其中每一对的乘积，并将结果按升序排序，那么列表中的第K个数字是什么？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ k ≦ ((n(n-1))/(2))
-#-10^9 ≦ A_i ≦ 10^9 (1 ≦ i ≦ N)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 3
-#3 3 -4 -2
-#
-#样本输出1
-#-6
-#有六种方法可以组成一对。这些配对的产物是9，-12，-6，-12，-6，8。
-#将这些数字按升序排列，我们有-12、-12、-6、-6、8、9。这个列表中的第三个数字是-6。
-#
-#输入样本 2
-#10 40
-#5 4 3 2 -1 0 0 0 0 0
-#
-#样本输出2
-#6
-#
-#样本输入3
-#30 413
-#-170202098 -268409015 537203564 983211703 21608710 -443999067 -937727165 -97596546 -372334013 398994917 -972141167 798607104 -949068442 -959948616 37909651 0 886627544 -20098238 0 -948955241 0 -214720580 277222296 -18897162 834475626 0 -425610555 110117526 663621752 0
-#
-#样本输出3
-#448283280358331064
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().s
+
+=======
+Suggestion 2
+
+def get_input():
+    input_str = input()
+    input_list = input_str.split()
+    n = int(input_list[0])
+    k = int(input_list[1])
+    input_str = input()
+    input_list = input_str.split()
+    a_list = []
+    for i in range(n):
+        a_list.append(int(input_list[i]))
+    return n, k, a_list
+
+=======
+Suggestion 3
+
+def problems155_d():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    l = -10**18-1
+    r = 10**18+1
+    while l+1<r:
+        mid = (l+r)//2
+        cnt = 0
+        for i in range(n):
+            if a[i]<0:
+                cnt += n-i-1
+                l = mid
+            else:
+                #二分查找
+                l = -1
+                r = n
+                while l+1<r:
+                    m = (l+r)//2
+                    if a[i]*a[m]<mid:
+                        l = m
+                    else:
+                        r = m
+                cnt += n-r
+        if cnt<k:
+            l = mid
+        else:
+            r = mid
+    print(l)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    #print(a)
+    #print(k)
+    #print(n)
+    #print(a[k])
+    #print(a[k-1])
+    #print(a[k-2])
+    #print(a[k-3])
+    #print(a[k-4])
+    #print(a[k-5])
+    #print(a[k-6])
+    #print(a[k-7])
+    #print(a[k-8])
+    #print(a[k-9])
+    #print(a[k-10])
+    #print(a[k-11])
+    #print(a[k-12])
+    #print(a[k-13])
+    #print(a[k-14])
+    #print(a[k-15])
+    #print(a[k-16])
+    #print(a[k-17])
+    #print(a[k-18])
+    #print(a[k-19])
+    #print(a[k-20])
+    #print(a[k-21])
+    #print(a[k-22])
+    #print(a[k-23])
+    #print(a[k-24])
+    #print(a[k-25])
+    #print(a[k-26])
+    #print(a[k-27])
+    #print(a[k-28])
+    #print(a[k-29])
+    #print(a[k-30])
+    #print(a[k-31])
+    #print(a[k-32])
+    #print(a[k-33])
+    #print(a[k-34])
+    #print(a[k-35])
+    #print(a[k-36])
+    #print(a[k-37])
+    #print(a[k-38])
+    #print(a[k-39])
+    #print(a[k-40])
+    #print(a[k-41])
+    #print(a[k-42])
+    #print(a[k-43])
+    #print(a[k-44])
+    #print(a[k-45])
+    #print(a[k-46])
+    #print(a[k-47])
+    #print(a[k-48])
+    #print(a[k-49])
+    #print(a[k-50])
+    #print(a[k-51])
+    #print(a[k-52])
+    #print(a[k-53])
+    #print(a[k-54])
+    #print(a[k-55])
+    #print(a[k-56])
+    #print(a[k
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    l = list(map(int,input().split()))
+
+    l.sort()
+    print(l[k-1])
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.reverse()
+    left = -10**18
+    right = 10**18
+    while right - left > 1:
+        mid = (left + right) // 2
+        cnt = 0
+        for i in range(n):
+            if a[i] >= 0:
+                l = -1
+                r = n
+                while r - l > 1:
+                    m = (l + r) // 2
+                    if a[i] * a[m] <= mid:
+                        r = m
+                    else:
+                        l = m
+                cnt += n - r
+            else:
+                l = -1
+                r = n
+                while r - l > 1:
+                    m = (l + r) // 2
+                    if a[i] * a[m] <= mid:
+                        l = m
+                    else:
+                        r = m
+                cnt += r
+            if a[i] * a[i] <= mid:
+                cnt -= 1
+        cnt //= 2
+        if cnt < k:
+            left = mid
+        else:
+            right = mid
+    print(right)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    left = -10**18
+    right = 10**18
+    while right - left > 1:
+        mid = (left + right) // 2
+        cnt = 0
+        for i in range(n):
+            if a[i] < 0:
+                l = -1
+                r = n
+                while r - l > 1:
+                    m = (l + r) // 2
+                    if a[i] * a[m] < mid:
+                        r = m
+                    else:
+                        l = m
+                cnt += n - r
+            elif a[i] == 0:
+                if mid > 0:
+                    cnt += n
+            else:
+                l = -1
+                r = n
+                while r - l > 1:
+                    m = (l + r) // 2
+                    if a[i] * a[m] < mid:
+                        l = m
+                    else:
+                        r = m
+                cnt += r
+                cnt += n - r
+        cnt //= 2
+        if cnt < k:
+            left = mid
+        else:
+            right = mid
+    print(left)
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    l = -10**18
+    r = 10**18
+    while r - l > 1:
+        mid = (r + l) // 2
+        count = 0
+        for i in range(N):
+            if A[i] < 0:
+                l2 = -1
+                r2 = N
+                while r2 - l2 > 1:
+                    mid2 = (r2 + l2) // 2
+                    if A[i] * A[mid2] < mid:
+                        r2 = mid2
+                    else:
+                        l2 = mid2
+                count += N - r2
+            else:
+                l2 = -1
+                r2 = N
+                while r2 - l2 > 1:
+                    mid2 = (r2 + l2) // 2
+                    if A[i] * A[mid2] < mid:
+                        l2 = mid2
+                    else:
+                        r2 = mid2
+                count += r2
+            if A[i] * A[i] < mid:
+                count -= 1
+        if count < K:
+            l = mid
+        else:
+            r = mid
+    print(l)
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    #print(A)
+    #print(K)
+    #print(N)
+    #print(A[K-1])
+    #print(A[N-1])
+    #print(A[0])
+    #print(A[N-1]*A[N-2])
+    #print(A[0]*A[1])
+    #print(A[N-1]*A[0])
+    #print(A[N-1]*A[1])
+    #print(A[N-2]*A[0])
+    #print(A[N-2]*A[1])
+    if K <= ((N*(N-1))/2):
+        if A[N-1] >= 0:
+            if K == 1:
+                print(A[N-1]*A[N-2])
+            else:
+                print(A[K-1])
+        elif A[N-1] < 0:
+            if K == ((N*(N-1))/2):
+                print(A[0]*A[1])
+            else:
+                print(A[N-1]*A[0])
+    elif K > ((N*(N-1))/2):
+        if A[N-1] >= 0:
+            print(A[N-1]*A[0])
+        elif A[N-1] < 0:
+            print(A[N-1]*A[1])

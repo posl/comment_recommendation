@@ -1,29 +1,121 @@
-#问题陈述
-#在另一个世界，今天是12月D日。
-#写一个程序，如果D=25，则打印圣诞节；如果D=24，则打印平安夜；如果D=23，则打印平安夜；如果D=22，则打印平安夜的前夜。
-#
-#限制条件
-#22 ≦ D ≦ 25
-#D是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#D
-#
-#输出
-#打印指定的字符串（区分大小写）。
-#
-#输入样本1
-#25
-#
-#输出样本1
-#圣诞节
-#
-#样本输入2
-#22
-#
-#样本输出2
-#平安夜的前夜
-#请确保在单词之间打印空格。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("圣诞节")
+    elif D == 24:
+        print("平安夜")
+    elif D == 23:
+        print("平安夜前夜")
+    elif D == 22:
+        print("平安夜的前夜")
+    else:
+        print("输入不在范围内")
+
+=======
+Suggestion 2
+
+def main():
+    d = int(input())
+    if d == 25:
+        print("圣诞节")
+    elif d == 24:
+        print("平安夜")
+    elif d == 23:
+        print("平安夜")
+    else:
+        print("平安夜的前夜")
+
+=======
+Suggestion 3
+
+def main():
+    d = int(input())
+    if d == 25:
+        print("圣诞节")
+    elif d == 24:
+        print("平安夜")
+    elif d == 23:
+        print("平安夜")
+    elif d == 22:
+        print("平安夜的前夜")
+
+=======
+Suggestion 4
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("圣诞节")
+    elif D == 24:
+        print("平安夜")
+    elif D == 23:
+        print("平安夜的前夜")
+    elif D == 22:
+        print("平安夜的前夜的前夜")
+    else:
+        print("输入错误")
+
+=======
+Suggestion 5
+
+def christmas():
+    D = int(input())
+    if D == 25:
+        print('Christmas')
+    elif D == 24:
+        print('Christmas Eve')
+    elif D == 23:
+        print('Christmas Eve Eve')
+    else:
+        print('Christmas Eve Eve Eve')
+
+=======
+Suggestion 6
+
+def main():
+    D = int(input())
+    if D == 25:
+        print('圣诞节')
+    elif D == 24:
+        print('平安夜')
+    elif D == 23:
+        print('平安夜')
+    elif D == 22:
+        print('平安夜的前夜')
+
+=======
+Suggestion 7
+
+def problem():
+    D = int(input())
+    if D==25:
+        print("圣诞节")
+    elif D==24:
+        print("平安夜")
+    elif D==23:
+        print("平安夜")
+    elif D==22:
+        print("平安夜的前夜")
+
+problem()
+
+=======
+Suggestion 8
+
+def main():
+    D = int(input())
+    if D == 25:
+        print("圣诞节")
+    elif D == 24:
+        print("平安夜")
+    elif D == 23:
+        print("平安夜前夜")
+    else:
+        print("平安夜前前夜")
+
+main()

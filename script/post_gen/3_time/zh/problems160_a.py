@@ -1,34 +1,51 @@
-#问题陈述
-#当且仅当一个由小写英文字母组成的长度为6的字符串的第3个和第4个字符相等，第5个和第6个字符也相等时，可以说它是类咖啡。
-#给出一个字符串S，请确定它是否是类咖啡。
-#
-#约束条件
-#S是一个由小写英文字母组成的长度为6的字符串。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#如果S是咖啡状的，打印Yes；否则，打印No。
-#
-#输入样本1
-#sippuu
-#
-#样本输出1
-#Yes
-#在sippuu中，第3和第4个字符是相等的，第5和第6个字符也是相等的。
-#
-#输入样本2
-#iphone
-#
-#样本输出2
-#No
-#
-#样本输入3
-#coffee
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def coffee():
+    s=input()
+    if s[2]==s[3] and s[4]==s[5]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[2] == s[3] and s[4] == s[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    if S[2] == S[3] and S[4] == S[5]:
+        print('Yes')
+    else:
+        print('No')

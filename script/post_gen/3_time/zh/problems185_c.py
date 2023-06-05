@@ -1,37 +1,149 @@
-#问题陈述
-#有一根长度为L的铁条，呈东西走向。我们将在11个位置切割这根铁条，把它分成12根。在这里，所得到的12根铁条中的每一根都必须有正整数的长度。
-#找出进行这种分割的方法的数量。当且仅当这两种方式中只有一种方式有切割的位置时，才认为这两种方式是不同的。
-#在这个问题的约束下，可以证明答案是小于2^{63}的。
-#
-#约束条件
-#12 ≦ L ≦ 200
-#L是一个整数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#L
-#
-#輸出
-#打印做除法的方法的数量。
-#
-#输入样本 1
-#12
-#
-#样本输出 1
-#1
-#只有一个办法：把棒子切成12条，每条长度为1。  
-#
-#样本输入2
-#13
-#
-#采样输出2
-#12
-#我们有12个选项：一个是最西边的柱子长度为2，一个是西边第二个柱子长度为2，以此类推。
-#
-#输入样本3
-#17
-#
-#输出样本3
-#4368
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def cut_iron_rod(length):
+    if length <= 4:
+        return 1
+    else:
+        return cut_iron_rod(length - 1) + cut_iron_rod(length - 4)
+
+=======
+Suggestion 2
+
+def solve():
+    L = int(input())
+    print((L-1)*(L-2)*(L-3)*(L-4)//24)
+
+=======
+Suggestion 3
+
+def solve():
+    # 先输入
+    l = int(input())
+    # 问题转换为求解
+    # a + b + c + d + e + f + g + h + i + j + k = l
+    # a, b, c, d, e, f, g, h, i, j, k > 0
+    # l - 11 = a + b + c + d + e + f + g + h + i + j + k
+    # 问题转换为求解
+    # a + b + c + d + e + f + g + h + i + j + k = l - 11
+    # a, b, c, d, e, f, g, h, i, j, k >= 0
+    # l - 11 + 11 = a + b + c + d + e + f + g + h + i + j + k
+    # 问题转换为求解
+    # a + b + c + d + e + f + g + h + i + j + k = l - 11
+    # a, b, c, d, e, f, g, h, i, j, k >= 0
+    # l - 11 + 11 = a + b + c + d + e + f + g + h + i + j + k
+    # 问题转换为求解
+    # a + b + c + d + e + f + g + h + i + j + k = l - 11
+    # a, b, c, d, e, f, g, h, i, j, k >= 0
+    # l - 11 + 11 = a + b + c + d + e + f + g + h + i + j + k
+    # 问题转换为求解
+    # a + b + c + d + e + f + g + h + i + j + k = l - 11
+    # a, b, c, d, e, f, g, h, i, j, k >= 0
+    # l - 11 + 11 = a + b + c + d + e + f + g + h + i + j + k
+    #
+
+=======
+Suggestion 4
+
+def cut_rod(n):
+    if n==0:
+        return 1
+    if n<0:
+        return 0
+    return sum([cut_rod(n-i) for i in range(1,12+1)])
+
+=======
+Suggestion 5
+
+def cut_iron(L):
+    # L = 12
+    # 1 1 1 1 1 1 1 1 1 1 1 1
+    # 2 1 1 1 1 1 1 1 1 1 1
+    # 2 2 1 1 1 1 1 1 1 1
+    # 2 2 2 1 1 1 1 1 1
+    # 2 2 2 2 1 1 1 1
+    # 2 2 2 2 2 1 1
+    # 2 2 2 2 2 2
+    # 3 2 2 2 2 1
+    # 3 3 2 2 2
+    # 3 3 3 2
+    # 4 3 3 1
+    # 4 4 2 1
+    # 4 4 4
+    # 5 4 3
+    # 5 5 2
+    # 6 5 1
+    # 6 6
+    # 7 5
+    # 8 4
+    # 9 3
+    # 10 2
+    # 11 1
+    # 12
+    # 1 1 1 1 1 1 1 1 1 1 1 1
+    # 2 1 1 1 1 1 1 1 1 1 1
+    # 2 2 1 1 1 1 1 1 1 1
+    # 2 2 2 1 1 1 1 1 1
+    # 2 2 2 2 1 1 1 1
+    # 2 2 2 2 2 1 1
+    # 2 2 2 2 2 2
+    # 3 2 2 2 2 1
+    # 3 3 2 2 2
+    # 3 3 3 2
+    # 4 3 3 1
+
+=======
+Suggestion 6
+
+def cut_rod(n):
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
+    else:
+        return sum([cut_rod(n-i) for i in range(1, 12+1)])
+
+=======
+Suggestion 7
+
+def main():
+    l = int(input())
+    print(cut(l))
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def count_cut(l):
+    if l < 12:
+        return 0
+    elif l == 12:
+        return 1
+    else:
+        return count_cut(l-1) + count_cut(l-2) + count_cut(l-3) + count_cut(l-4) + count_cut(l-5) + count_cut(l-6)
+
+l = int(input())
+print(count_cut(l))
+
+=======
+Suggestion 10
+
+def cut_rod(p,n):
+    if n == 0:
+        return 1
+    if n < 0:
+        return 0
+    if p[n] >= 0:
+        return p[n]
+    q = -1
+    for i in range(1,n+1):
+        q = max(q,cut_rod(p,n-i))
+    p[n] = q
+    return q

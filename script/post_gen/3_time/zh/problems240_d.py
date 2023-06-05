@@ -1,53 +1,193 @@
-#问题陈述
-#高桥市有N个球。每个球上都写有一个不小于2的整数。他将这些球一个一个地插入一个圆柱体中。写在第i个球上的整数是a_i。
-#这些球是由特殊材料制成的。当写有k（k≧2）的球排成一排时，所有这些k球都会消失。
-#对于每一个i（1 ≦ i ≦ N），找出插入第i个球后的球的数量。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ a_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 ... a_N
-#
-#輸出
-#打印N行。第i行（1 ≦ i ≦ N）应包含插入第i个球后的球数。
-#
-#输入样本 1
-#5
-#3 2 3 2 2
-#
-#样本输出 1
-#1
-#2
-#3
-#4
-#3
-#圆筒的内容变化如下。
-#插入第1个球后，圆柱体中含有3的球。
-#插入第2个球后，圆柱体从下到上包含3、2。
-#插入第3个球后，圆柱体从下到上包含3、2、3。
-#插入第4个球后，圆柱体从下到上包含3、2、3、2。
-#插入第5个球后，圆柱体从下到上暂时有3、2、3、2、2。连续的两个带2的球消失了，圆柱体最终从下到上包含3，2，3。
-#
-#
-#输入样本2
-#10
-#2 3 2 3 3 3 2 3 3 2
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#3
-#2
-#3
-#1
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+    for i in range(n):
+        print(n - sum([d[j] for j in d if j < a[i]]))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = []
+    for i in range(n):
+        while len(s) > 0 and s[-1] == a[i]:
+            s.pop()
+        s.append(a[i])
+        print(len(s))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    c = [0] * (n + 1)
+    for i in range(n):
+        c[a[i]] += 1
+    ans = n
+    for i in range(1, n + 1):
+        if c[i] >= 2:
+            ans -= c[i]
+    for i in range(n):
+        print(ans)
+        x = a[i]
+        c[x] -= 1
+        if c[x] >= 2:
+            ans -= 1
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    for i in range(n):
+        b.append(a[i])
+        while len(b) > 1:
+            if b[-1] == b[-2]:
+                b.pop()
+                b.pop()
+            else:
+                break
+        print(len(b))
+
+=======
+Suggestion 5
+
+def main():
+    N = input()
+    A = raw_input().split()
+    A = map(int, A)
+    B = []
+    for i in range(N):
+        B.append(i)
+    C = []
+    for i in range(N):
+        C.append(0)
+    for i in range(N):
+        C[A[i]-1] += 1
+    for i in range(N):
+        print N - sum(C[:A[i]-1]) - 1
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    #print(n,a)
+    b = [0]*n
+    for i in range(n-1):
+        b[i] = a[i]
+        if b[i] == 2:
+            b[i] = 0
+        elif b[i] % 2 == 0:
+            b[i] -= 1
+    #print(b)
+    for i in range(n-1):
+        if b[i] == 0:
+            b[i+1] = 0
+    #print(b)
+    for i in range(n):
+        print(n-sum(b[:i+1]))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if a[i] == 2:
+            count += 1
+        else:
+            count -= 1
+        print(N - count)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [0] * n
+    c = [0] * (2 * 10**5 + 1)
+
+    for i in range(n):
+        c[a[i]] += 1
+
+    for i in range(1, 2 * 10**5 + 1):
+        c[i] += c[i - 1]
+
+    for i in range(n):
+        b[c[a[i]] - 1] = i + 1
+        c[a[i]] -= 1
+
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    d = {}
+    for i in range(n):
+        if a[i] in d:
+            d[a[i]] += 1
+        else:
+            d[a[i]] = 1
+
+    ans = 0
+    for i in range(n):
+        if d[a[i]] > 0:
+            ans += 1
+            d[a[i]] -= 1
+            if a[i] - 1 in d:
+                d[a[i] - 1] += 1
+            else:
+                d[a[i] - 1] = 1
+
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = []
+    c = []
+    for i in range(n):
+        b.append(a[i])
+        if i == 0:
+            c.append(1)
+        else:
+            c.append(c[i - 1] + 1)
+        while len(b) >= 2 and b[-1] == b[-2]:
+            b.pop()
+            b.pop()
+            c[-1] = c[-1] + c[-2]
+            c.pop()
+            c.pop()
+            if len(b) == 0:
+                break
+    for i in range(n):
+        print(c[i])

@@ -1,54 +1,237 @@
-#问题陈述
-#一个字符串T的ABC数是满足以下所有条件的整数（i, j, k）的三倍数：
-#1 ≤ i < j < k ≤ |T| (|T|是T的长度。)
-#T_i = A (T_i是T的第i个字符，从头开始。)
-#T_j = B
-#T_k = C
-#例如，当T=ABCBC时，有三个满足条件的三倍整数（i, j, k）：（1, 2, 3），（1, 2, 5），（1, 4, 5）。因此，T的ABC数是3。
-#给你一个字符串S，S的每个字符是A，B，C或?
-#我们可以用A、B或C替换S中出现的每个字符，从而组成3^Q的字符串，求所有这些字符串的ABC号码之和。
-#这个和可能非常大，所以要打印10^9+7的模数。
-#
-#限制条件
-#3 ≤ |S| ≤ 10^5
-#S的每个字符都是A、B、C或?
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#輸出
-#打印所有 3^Q 字符串的 ABC 数字之和，模数为 10^9 + 7。
-#
-#输入样本1
-#A??C
-#
-#样本输出1
-#8
-#在这种情况下，Q=2，我们可以通过用A、B或C替换每一次出现的?来制作3^Q=9个字符串，这些字符串的ABC号码如下：
-#AAAC：0
-#AABC：2
-#AACC：0
-#ABAC：1
-#ABBC：2
-#ABCC: 2
-#ACAC: 0
-#ACBC：1
-#ACCC：0
-#这些的总和是0+2+0+1+2+2+0+1+0=8，所以我们打印8的模数10^9+7，也就是8。
-#
-#输入样本2
-#ABCBC
-#
-#样本输出 2
-#3
-#当Q=0时，我们打印S本身的ABC号码，模数为10^9+7。这个字符串与问题陈述中作为例子给出的字符串相同，其ABC数为3。
-#
-#输入样本3
-#????C?????B??????A???????
-#
-#样本输出3
-#979596887
-#在这种情况下，所有 3^Q 字符串的 ABC 数字之和是 2291979612924，我们应该打印这个数字的模数 10^9 + 7，即 979596887。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    Q = S.count("?")
+    A = S.count("A")
+    B = S.count("B")
+    C = S.count("C")
+    ans = 0
+    for i in range(Q+1):
+        for j in range(Q+1-i):
+            k = Q-i-j
+            ans += (pow(3,i,1000000007)*pow(3,j,1000000007)*pow(3,k,1000000007)*comb(A+i-1,i)*comb(B+j-1,j))%1000000007
+    print(ans%1000000007)
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    #print(s)
+    q = s.count('?')
+    #print(q)
+    #print(3**q)
+    abc = 0
+    for i in range(0, q+1):
+        abc += 3**i * s.count('B?C') * 2**s.count('A?C') * 2**s.count('A?B') * 2**s.count('??A') * 2**s.count('??B') * 2**s.count('??C')
+        abc += 3**i * s.count('A?B') * 2**s.count('B?C') * 2**s.count('A?C') * 2**s.count('??A') * 2**s.count('??B') * 2**s.count('??C')
+        abc += 3**i * s.count('A?C') * 2**s.count('B?C') * 2**s.count('A?B') * 2**s.count('??A') * 2**s.count('??B') * 2**s.count('??C')
+        abc %= 10**9 + 7
+    print(abc)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    t = s.replace('?', 'A')
+    q = s.count('?')
+    ans = 0
+    for i in range(q+1):
+        for j in range(q+1-i):
+            k = q - i - j
+            tmp = t
+            tmp = tmp.replace('A', 'B', i)
+            tmp = tmp.replace('B', 'C', j)
+            tmp = tmp.replace('C', 'A', k)
+            ans += tmp.count('ABC')
+    print(ans % (10**9+7))
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    Q = S.count('?')
+    mod = 10**9 + 7
+    ans = 0
+    for i, s in enumerate(S):
+        if s == 'A':
+            a = pow(3, Q, mod)
+            b = pow(3, i, mod)
+            ans += a * b
+            ans %= mod
+        elif s == 'B':
+            a = pow(3, Q, mod)
+            b = pow(3, i, mod)
+            ans += a * b
+            ans %= mod
+            ans += pow(3, Q, mod)
+            ans %= mod
+        elif s == 'C':
+            a = pow(3, Q, mod)
+            b = pow(3, i, mod)
+            ans += a * b
+            ans %= mod
+            ans += pow(3, Q, mod)
+            ans %= mod
+            ans += pow(3, Q, mod)
+            ans %= mod
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    Q = S.count('?')
+    mod = 10**9 + 7
+    ans = 0
+    for i in range(len(S)):
+        if S[i] == 'B' or S[i] == '?':
+            ans += pow(3, Q, mod) * pow(3, i, mod)
+            ans %= mod
+        if S[i] == 'C' or S[i] == '?':
+            ans += pow(3, Q, mod) * pow(3, i, mod)
+            ans %= mod
+        Q -= 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    q = s.count('?')
+    mod = 10**9 + 7
+    ans = 0
+    a = 0
+    b = 0
+    c = 0
+    for i in range(len(s)):
+        if s[i] == 'A':
+            a += 1
+        elif s[i] == 'B':
+            b += 1
+        elif s[i] == 'C':
+            c += 1
+    for i in range(len(s)):
+        if s[i] == 'A':
+            a -= 1
+        elif s[i] == 'B':
+            b -= 1
+        elif s[i] == 'C':
+            c -= 1
+        elif s[i] == '?':
+            ans += (a * pow(3, q, mod) + b * pow(3, q-1, mod) + c * pow(3, q-1, mod)) % mod
+            q -= 1
+    print(ans % mod)
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    Q = S.count('?')
+    MOD = 10**9 + 7
+    ABC = 0
+
+    # 3^Q 通りの文字列を作る
+    for i in range(3**Q):
+        # 3進数表現
+        s = ''
+        for j in range(Q):
+            s += 'ABC'[(i // 3**j) % 3]
+
+        # S の ? を置き換える
+        j = 0
+        for c in S:
+            if c == '?':
+                s = s[:j] + s[j+1:]
+            j += 1
+
+        # ABC の数を数える
+        for j in range(len(s)):
+            if s[j:j+3] == 'ABC':
+                ABC += 1
+
+    print(ABC % MOD)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 10**9+7
+    ans = 0
+    a = 0
+    ab = 0
+    abc = 0
+    for i in range(n):
+        if s[i] == 'A':
+            a += 1
+        elif s[i] == 'B':
+            ab += a
+        elif s[i] == 'C':
+            abc += ab
+        else:
+            abc = 3*abc + ab
+            ab = 3*ab + a
+            a = 3*a + 1
+    ans = abc % mod
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    q = s.count('?')
+    p = 1
+    for i in range(1,q+1):
+        p = (p*3)%1000000007
+    ans = 0
+    c = 0
+    for i in s:
+        if i == 'C':
+            c += 1
+        elif i == 'B':
+            ans += c*p
+        elif i == '?':
+            ans += c*p
+            c = (c*2)%1000000007
+    print(ans%1000000007)
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    q = s.count("?")
+    mod = 10**9 + 7
+    ans = 0
+    a = 0
+    b = 0
+    c = 0
+    for i in range(len(s)):
+        if s[i] == "A":
+            a += 1
+        elif s[i] == "B":
+            b += 1
+        elif s[i] == "C":
+            c += 1
+    for i in range(len(s)):
+        if s[i] == "B" or s[i] == "?":
+            ans += a * c * pow(3, q, mod)
+            if s[i] == "?":
+                q -= 1
+        if s[i] == "A":
+            a -= 1
+        if s[i] == "C":
+            c -= 1
+    print(ans % mod)

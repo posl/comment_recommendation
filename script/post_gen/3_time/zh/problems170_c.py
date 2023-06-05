@@ -1,44 +1,179 @@
-#问题陈述
-#给出一个整数X和一个长度为N的整数序列：p_1, ..., p_N。
-#在不包含在序列p_1, ..., p_N中的整数（不一定是正数）中，找出最接近X的整数，也就是说，找出与X的绝对差值最小的整数。如果有多个这样的整数，请报告最小的那个整数。
-#
-#限制条件
-#1 ≦ X ≦ 100
-#0 ≦ N ≦ 100
-#1 ≦ p_i ≦ 100
-#p_1, ..., p_N都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#X N
-#p_1 ... p_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#6 5
-#4 7 10 6 5
-#
-#样本输出1
-#8
-#在不包含在序列4，7，10，6，5的整数中，最接近6的是8。
-#
-#输入样本2
-#10 5
-#4 7 10 6 5
-#
-#样本输出2
-#9
-#在不包含在序列4，7，10，6，5中的整数中，最接近10的是9和11。我们应该打印较小的那个，9。
-#
-#输入样本 3
-#100 0
-#
-#
-#样本输出3
-#100
-#当N=0时，输入的第二行将是空的。另外，从这里可以看出，X本身也可以是答案。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    x,n = input().split()
+    p = input().split()
+    x = int(x)
+    n = int(n)
+    p = list(map(int,p))
+    if n == 0:
+        print(x)
+        return
+
+    p.append(x)
+    p.sort()
+    index = p.index(x)
+    if index == 0:
+        print(p[1])
+    elif index == len(p)-1:
+        print(p[-2])
+    else:
+        if p[index]-p[index-1] <= p[index+1]-p[index]:
+            print(p[index-1])
+        else:
+            print(p[index+1])
+
+=======
+Suggestion 2
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    if n == 0:
+        print(x)
+        return
+    if x not in p:
+        print(x)
+        return
+    p.sort()
+    for i in range(1,101):
+        if x-i not in p:
+            print(x-i)
+            return
+        elif x+i not in p:
+            print(x+i)
+            return
+
+=======
+Suggestion 3
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    p.sort()
+    if n == 0:
+        print(x)
+    else:
+        for i in range(1,100):
+            if x-i not in p:
+                print(x-i)
+                break
+            elif x+i not in p:
+                print(x+i)
+                break
+
+=======
+Suggestion 4
+
+def getClosestNum(x, p):
+    if len(p) == 0:
+        return x
+    else:
+        minNum = 100
+        for i in range(0, len(p)):
+            if abs(x - p[i]) < minNum:
+                minNum = abs(x - p[i])
+                result = p[i]
+        return result
+
+=======
+Suggestion 5
+
+def find_nearest_num(x, p):
+    if p == []:
+        return x
+    else:
+        p.sort()
+        for i in range(len(p)):
+            if x < p[i]:
+                return x
+            elif x == p[i]:
+                return x
+            else:
+                if i < len(p) -1:
+                    if x < (p[i] + p[i+1])/2:
+                        return p[i]
+                else:
+                    return p[i]
+
+=======
+Suggestion 6
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    p.sort()
+    if n == 0:
+        print(x)
+        return
+    if n == 1:
+        if p[0] == x:
+            print(x+1)
+        else:
+            print(x)
+        return
+    if x not in p:
+        print(x)
+        return
+    for i in range(1,x):
+        if i not in p:
+            print(i)
+            return
+    print(x+1)
+
+=======
+Suggestion 7
+
+def getClosestNumber(x, p):
+    p.sort()
+    #print(p)
+    if x in p:
+        return x
+    if x < p[0]:
+        return p[0]
+    if x > p[-1]:
+        return p[-1]
+    for i in range(len(p)-1):
+        if x > p[i] and x < p[i+1]:
+            return p[i] if abs(p[i]-x) < abs(p[i+1]-x) else p[i+1]
+
+=======
+Suggestion 8
+
+def main():
+    x,n = map(int,input().split())
+    p = list(map(int,input().split()))
+    if n == 0:
+        print(x)
+        return
+    else:
+        for i in range(0,101):
+            if i not in p:
+                if abs(x-i) < abs(x-p[0]):
+                    print(i)
+                    return
+                elif abs(x-i) == abs(x-p[0]) and i < p[0]:
+                    print(i)
+                    return
+        print(p[0])
+        return
+
+=======
+Suggestion 9
+
+def find_nearest(x, p):
+    if len(p) == 0:
+        return x
+    else:
+        p.append(x)
+        p.sort()
+        i = p.index(x)
+        if i == 0:
+            return p[1]
+        elif i == len(p) - 1:
+            return p[len(p) - 2]
+        else:
+            return p[i + 1] if x - p[i - 1] > p[i + 1] - x else p[i - 1]

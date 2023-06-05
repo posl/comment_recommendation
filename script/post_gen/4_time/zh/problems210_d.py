@@ -1,48 +1,171 @@
-#问题陈述
-#高桥王国可以被表示为一个有H行和W列的网格。让（i，j）表示从北边第i行和从西边第j列的方格。
-#最近，王国公民要求修建铁路的呼声越来越高，现在国王高桥别无选择，只能修建一条铁路。
-#铁路的建设将有以下两个阶段。
-#首先，选择两个不同的广场，在每个广场上建一个车站。在广场（i，j）上建站需要花费A_{i，j}日元。
-#然后，建造一条连接这两个车站的铁轨。当两个车站分别位于(i, j)和(i', j')广场时，这需要花费C×(|i-i'|+|j-j'|)日元。(|x|表示x的绝对值)。
-#高桥的首要任务是在这个建筑上花尽可能少的钱，而不是为市民提高便利性。
-#请打印出建造铁路的最小总成本。
-#
-#限制条件
-#2 ≦ h, w ≦ 1000
-#1 ≦ C ≦ 10^9
-#1 ≦ A_{ij} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W C
-#A_{1,1} A_{1,2} ...A_{1,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ...A_{H,W}
-#
-#输出
-#打印铁路建设的最小可能总成本。
-#
-#输入样本 1
-#3 4 2
-#1 7 7 9
-#9 6 3 7
-#7 8 6 4
-#
-#样本输出1
-#10
-#如果我们在(1, 1)和(2, 3)这两个方格上建站，建站的费用为1+3=4日元，建轨道的费用为2×(|1-2|+|1-3|)=6日元，总共为4+6=10日元。
-#这是可能的最低总建设成本。
-#
-#输入样本 2
-#3 3 1000000000
-#1000000 1000000 1
-#1000000 1000000 1000000
-#1 1000000 1000000
-#
-#样本输出2
-#1001000001
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def read_data():
+    h, w, c = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    return h, w, c, a
+
+=======
+Suggestion 2
+
+def min_cost():
+    H, W, C = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    ans = 10**18
+
+    for _ in range(2):
+        dp = [[10**18] * W for _ in range(H)]
+        for i in range(H):
+            for j in range(W):
+                if i > 0:
+                    dp[i][j] = min(dp[i][j], dp[i-1][j] + C)
+                    ans = min(ans, dp[i-1][j] + C + A[i][j] + C)
+                if j > 0:
+                    dp[i][j] = min(dp[i][j], dp[i][j-1] + C)
+                    ans = min(ans, dp[i][j-1] + C + A[i][j] + C)
+                dp[i][j] = min(dp[i][j], A[i][j])
+    print(ans)
+
+min_cost()
+
+=======
+Suggestion 3
+
+def main():
+    h,w,c = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    min_cost = 10**18
+    for i in range(h):
+        for j in range(w):
+            for k in range(i+1, h):
+                for l in range(j+1, w):
+                    min_cost = min(min_cost, a[i][j]+a[k][l]+c*(abs(i-k)+abs(j-l)))
+    print(min_cost)
+
+=======
+Suggestion 4
+
+def main():
+    h, w, c = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    ans = float('inf')
+    for i in range(h):
+        for j in range(w):
+            for k in range(i, h):
+                for l in range(j, w):
+                    ans = min(ans, a[i][j] + a[k][l] + c * (abs(i - k) + abs(j - l)))
+    print(ans)
+
+=======
+Suggestion 5
+
+def get_min_cost(h, w, c, a):
+    min_cost = 10**9 * 10**9
+    # 从左上角开始遍历
+    for i in range(h):
+        for j in range(w):
+            # 从右下角开始遍历
+            for k in range(h-1, i-1, -1):
+                for l in range(w-1, j-1, -1):
+                    # 计算建站花费
+                    cost = a[i][j] + a[k][l]
+                    # 计算建轨道花费
+                    cost += c * (abs(i-k) + abs(j-l))
+                    min_cost = min(min_cost, cost)
+    return min_cost
+
+=======
+Suggestion 6
+
+def main():
+    H, W, C = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+
+    min_cost = 10 ** 18
+    for i in range(H):
+        for j in range(W):
+            for k in range(i, H):
+                for l in range(W):
+                    cost = A[i][j] + A[k][l] + C * (abs(i - k) + abs(j - l))
+                    if i == k and j == l:
+                        continue
+                    min_cost = min(min_cost, cost)
+
+    print(min_cost)
+
+=======
+Suggestion 7
+
+def main():
+    h, w, c = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    ans = 10**18
+    for _ in range(2):
+        dp = [[10**18] * (w + 1) for _ in range(h + 1)]
+        for i in range(h):
+            for j in range(w):
+                dp[i + 1][j + 1] = min(dp[i][j + 1], dp[i + 1][j]) + c
+                ans = min(ans, dp[i + 1][j + 1] + a[i][j])
+        a = a[::-1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    h,w,c=map(int,input().split())
+    a=[]
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    min_cost=10**18
+    for i in range(h):
+        for j in range(w):
+            for k in range(i,h):
+                for l in range(j,w):
+                    cost=a[i][j]+a[k][l]+c*(abs(i-k)+abs(j-l))
+                    if cost<min_cost:
+                        min_cost=cost
+    print(min_cost)
+
+=======
+Suggestion 9
+
+def main():
+    H, W, C = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    min_cost = float('inf')
+    for i in range(H):
+        for j in range(W):
+            for k in range(i, H):
+                for l in range(j, W):
+                    if i == k and j == l:
+                        continue
+                    cost = A[i][j] + A[k][l] + C * (abs(i - k) + abs(j - l))
+                    min_cost = min(min_cost, cost)
+    print(min_cost)
+
+=======
+Suggestion 10
+
+def solve(h, w, c, a):
+    ans = 10**18
+    for i in range(h):
+        for j in range(w):
+            for i2 in range(h):
+                for j2 in range(w):
+                    if i == i2 and j == j2:
+                        continue
+                    cost = a[i][j] + a[i2][j2] + c * (abs(i - i2) + abs(j - j2))
+                    ans = min(ans, cost)
+    return ans

@@ -1,59 +1,173 @@
-#问题陈述
-#高桥是一个武术家。
-#一个武术家可以学习N个动作，称为动作1，2，...，N。
-#对于每一个1 ≦ i ≦ N，学习动作i需要T_i分钟的练习。
-#此外，在练习开始时，所有的动作A_{i,1}, A_{i,2}, ..., A_{i,K_i}必须已经学会。
-#在此，保证A_{i,j}在每一个1≦j的情况下，A_{i,j}<i。< i，对于每个1 ≦ j ≦ K_i。
-#高桥在时间0时还没有学会任何棋动作。
-#他不能同时练习一个以上的动作步，也不能停止他已经开始的练习。
-#求高桥学会第N步动作所需的最少分钟数。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ T_i ≦ 10^9
-#0 ≦ K_i < i
-#1 ≦ A_{i,j}< i
-#sum_{i=1}^N K_i ≦ 2× 10^5
-#A_{i,1}, A_{i,2}, ..., A_{i,K_i}都是独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#T_1 K_1 A_{1,1} A_{1,2} ...A_{1,K_1}
-#T_2 K_2 A_{2,1} A_{2,2} ...A_{2,K_2}
-#.
-#.
-#.
-#T_N K_N A_{N,1} A_{N,2} ...A_{N,K_N}
-#
-#输出
-#打印高桥学习动作 N所需的最少分钟数。
-#
-#样本输入1
-#3
-#3 0
-#5 1 1
-#7 1 1
-#
-#样本输出1
-#10
-#下面是高桥的一个可能的计划。
-#在时间0，开始练习动作1，以便在时间3学习动作1。
-#然后，在时间3，开始练习动作3，以便在时间10学习动作3。
-#这里，高桥花了3+7=10分钟来学习第3步，这是最快的速度。
-#请注意，他不需要学习第2步来学习第3步。
-#
-#样本输入2
-#5
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 0
-#1000000000 4 1 2 3 4
-#
-#样本输出2
-#5000000000
-#注意，答案可能不适合32位整数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    t = [0] * n
+    k = [0] * n
+    a = [[] for _ in range(n)]
+
+    for i in range(n):
+        t[i], k[i] = map(int, input().split())
+        a[i] = list(map(int, input().split()))
+
+    dp = [0] * n
+    for i in range(n):
+        if k[i] == 0:
+            dp[i] = t[i]
+        else:
+            for j in a[i]:
+                dp[i] = max(dp[i], dp[j - 1] + t[i])
+
+    print(max(dp))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    T = []
+    K = []
+    A = []
+    for i in range(N):
+        tmp = input().split()
+        T.append(int(tmp[0]))
+        K.append(int(tmp[1]))
+        A.append(list(map(lambda x:int(x)-1, tmp[2:])))
+    #print(T)
+    #print(K)
+    #print(A)
+    #print('=====================')
+    T = [0] + T
+    K = [0] + K
+    A = [[]] + A
+    #print(T)
+    #print(K)
+    #print(A)
+    #print('=====================')
+    dp = [0] * (N+1)
+    for i in range(1, N+1):
+        for j in range(K[i]):
+            dp[i] = max(dp[i], dp[A[i][j]+1] + T[A[i][j]+1])
+    #print(dp)
+    print(dp[N] + T[N])
+
+=======
+Suggestion 3
+
+def main():
+    return 0
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    t = []
+    k = []
+    a = []
+    for i in range(n):
+        t_i, k_i, *a_i = map(int, input().split())
+        t.append(t_i)
+        k.append(k_i)
+        a.append(a_i)
+    t_max = max(t)
+    t_min = min(t)
+    t_sum = sum(t)
+    print(t_max + t_sum)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    T = []
+    K = []
+    A = []
+    for i in range(N):
+        t, k, *a = map(int, input().split())
+        T.append(t)
+        K.append(k)
+        A.append(a)
+    time = 0
+    for i in range(N-1, -1, -1):
+        if T[i] == 0:
+            time = max(time, 0)
+        else:
+            time = max(time, T[i] + time)
+    print(time)
+
+main()
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    t = [0] * (n + 1)
+    k = [0] * (n + 1)
+    a = [0] * (n + 1)
+    for i in range(1, n + 1):
+        t[i], k[i] = map(int, input().split())
+        a[i] = list(map(int, input().split()))
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        for j in range(k[i]):
+            dp[a[i][j]] = max(dp[a[i][j]], dp[i] + t[i])
+    print(max(dp) + t[n])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    T = [0] * N
+    K = [0] * N
+    A = [0] * N
+    for i in range(N):
+        T[i], K[i], *A[i] = map(int, input().split())
+        A[i] = [a - 1 for a in A[i]]
+
+    from collections import deque
+    q = deque()
+    for i in range(N):
+        if K[i] == 0:
+            q.append(i)
+
+    dp = [0] * N
+    while q:
+        i = q.popleft()
+        if A[i]:
+            dp[i] = max(dp[j] for j in A[i]) + T[i]
+        else:
+            dp[i] = T[i]
+        for j in range(N):
+            if j in A[i]:
+                A[j].remove(j)
+                if not A[j]:
+                    q.append(j)
+
+    print(max(dp))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    t = [0] * (n+1)
+    k = [0] * (n+1)
+    a = [[] for _ in range(n+1)]
+    for i in range(1, n+1):
+        t[i], k[i], *a[i] = map(int, input().split())
+    ans = 0
+    for i in range(n, 0, -1):
+        ans = max(ans, t[i] + max([t[j] for j in a[i]]))
+    print(ans)

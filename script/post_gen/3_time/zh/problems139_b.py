@@ -1,39 +1,99 @@
-#问题陈述
-#高桥的房子只有一个插座。
-#高桥想用一定数量的电源条把它扩展到B个或更多的空插座上，每个电源条有A个插座。
-#一个有A个插座的电源条可以将一个空插座扩展到A个空插座。
-#求所需的最小电源条数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ A ≦ 20
-#1 ≦ B ≦ 20
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#输出
-#打印所需的最小电源条数。
-#
-#输入样本 1
-#4 10
-#
-#输出样本1
-#3
-#3个电源条，每个有4个插座，将插座延伸到10个空插座。
-#
-#样本输入2
-#8 9
-#
-#样本输出2
-#2
-#2个电源条，每个有8个插座，将插座扩展到15个空插座。
-#
-#样本输入3
-#8 8
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A,B = map(int,input().split())
+    if B%A == 0:
+        print(int(B/A))
+    else:
+        print(int(B/A)+1)
+
+=======
+Suggestion 2
+
+def main():
+    # 输入
+    A, B = map(int, input().split())
+    # 逻辑
+    if B % A == 0:
+        print(B // A)
+    else:
+        print(B // A + 1)
+
+=======
+Suggestion 3
+
+def solution():
+    A, B = map(int, input().split())
+    if B == 1:
+        return 0
+    else:
+        return (B - 1 + A - 2) // (A - 1)
+
+print(solution())
+
+=======
+Suggestion 4
+
+def main():
+    A,B = map(int,input().split())
+    if B%A == 0:
+        print(B//A)
+    else:
+        print(B//A+1)
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    print((b-1)//(a-1))
+
+=======
+Suggestion 6
+
+def main():
+    # 读取数据
+    a, b = map(int, input().split())
+    # 计算最少电源条数
+    if b % a == 0:
+        print(b//a)
+    else:
+        print(b//a+1)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if b%a==0:
+        print(int(b/a))
+    else:
+        print(int(b/a)+1)
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if b == 1:
+        print(0)
+    else:
+        if b % a == 0:
+            print(b // a)
+        else:
+            print(b // a + 1)
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    ans = 0
+    for i in range(1,20):
+        if a*i>=b:
+            ans = i
+            break
+    print(ans)

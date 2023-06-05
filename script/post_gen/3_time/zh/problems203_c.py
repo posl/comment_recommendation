@@ -1,63 +1,260 @@
-#问题陈述
-#有10^{100}+1个村庄，用数字0，1，...，10^{100}标示。
-#对于0和10^{100}-1（包括）之间的每一个整数i，你可以在i村支付1日元（货币）来到达（i+1）村。
-#村庄之间没有其他的旅行方式。
-#太郎有K日元，现在在0村。他将尝试去一个标有尽可能多的数字的村庄。
-#他有N个朋友。第i个朋友在A_i村，当他到达A_i村时，他将给太郎B_i日元。
-#找出他将到达的最后一个村庄所标示的数字。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ K ≦ 10^9
-#1 ≦ A_i ≦ 10^{18}
-#1 ≦ B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 B_1
-#:
-#A_N B_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#2 3
-#2 1
-#5 10
-#
-#样本输出1
-#4
-#高桥将按以下方式旅行：
-#从0号村到1号村，花费1日元。现在他有2日元。
-#从1号村到2号村，花1日元。现在他有1日元。
-#从第2村的第1个朋友那里得到1日元。现在他有2日元。
-#从2号村到3号村，花1日元。现在他有1日元。
-#从3号村到4号村，换取1日元。现在他有0日元，而且他在这个村子里没有朋友，所以他的旅程到此为止。
-#因此，我们应该打印4。
-#
-#样本输入2
-#5 1000000000
-#1 1000000000
-#2 1000000000
-#3 1000000000
-#4 1000000000
-#5 1000000000
-#
-#样本输出2
-#6000000000
-#注意，答案可能不适合32位整数。
-#
-#输入样本 3
-#3 2
-#5 5
-#2 1
-#2 2
-#
-#样本输出3
-#10
-#他可能在同一个村庄有多个朋友。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n,k,ab):
+    ab.sort(key=lambda x:x[0])
+    sum = k
+    for i in range(n):
+        if sum >= ab[i][0]:
+            sum += ab[i][1]
+        else:
+            return sum
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    d = {}
+    for i in range(N):
+        A, B = map(int, input().split())
+        if A not in d:
+            d[A] = B
+        else:
+            d[A] += B
+    d = sorted(d.items(), key=lambda x:x[0])
+    for i in range(len(d)):
+        if d[i][0] > K:
+            break
+        else:
+            K += d[i][1]
+    print(K)
+
+=======
+Suggestion 3
+
+def main():
+    N,K = map(int,input().split())
+    AB = []
+    for i in range(N):
+        A,B = map(int,input().split())
+        AB.append([A,B])
+    AB.sort()
+    money = K
+    for i in range(N):
+        if money >= AB[i][0]:
+            money += AB[i][1]
+        else:
+            print(money)
+            break
+    else:
+        print(money)
+
+=======
+Suggestion 4
+
+def main():
+    N, K = map(int, input().split())
+    friends = []
+    for i in range(N):
+        A, B = map(int, input().split())
+        friends.append((A, B))
+    friends.sort()
+    money = K
+    for i in range(N):
+        if money >= friends[i][0]:
+            money += friends[i][1]
+    print(money)
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    ab = [list(map(int,input().split())) for _ in range(n)]
+    ab.sort()
+    ans = 0
+    for a,b in ab:
+        if a > k:
+            break
+        k -= b
+        ans = a
+    print(ans+k)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort()
+    for i in range(n):
+        if k >= ab[i][0]:
+            k += ab[i][1]
+    print(k)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int, input().split())
+    friends = []
+    for i in range(n):
+        friends.append(list(map(int, input().split())))
+    friends.sort(key=lambda x: x[0])
+    money = k
+    current = 0
+    for i in range(n):
+        if money >= friends[i][0] - current:
+            money += friends[i][1]
+        else:
+            print(current + money)
+            return
+        current = friends[i][0]
+    print(current + money)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    A_B = [list(map(int, input().split())) for _ in range(N)]
+    A_B.sort()
+    now = 0
+    for i in range(N):
+        if A_B[i][0] - now <= K:
+            K -= A_B[i][0] - now
+            K += A_B[i][1]
+            now = A_B[i][0]
+        else:
+            now += K
+            break
+    print(now + K)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N,K=map(int,input().split())
+    A=[]
+    B=[]
+    for i in range(N):
+        a,b=map(int,input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #print(N)
+    #print(K)
+    #print(len(A))
+    #print(len(B))
+    #print(max(A))
+    #print(min(A))
+    #print(max(B))
+    #print(min(B))
+    #print(A.index(max(A)))
+    #print(A.index(min(A)))
+    #print(B.index(max(B)))
+    #print(B.index(min(B)))
+    #print(A[0])
+    #print(A[1])
+    #print(A[2])
+    #print(A[3])
+    #print(A[4])
+    #print(A[5])
+    #print(A[6])
+    #print(A[7])
+    #print(A[8])
+    #print(A[9])
+    #print(A[10])
+    #print(A[11])
+    #print(A[12])
+    #print(A[13])
+    #print(A[14])
+    #print(A[15])
+    #print(A[16])
+    #print(A[17])
+    #print(A[18])
+    #print(A[19])
+    #print(A[20])
+    #print(A[21])
+    #print(A[22])
+    #print(A[23])
+    #print(A[24])
+    #print(A[25])
+    #print(A[26])
+    #print(A[27])
+    #print(A[28])
+    #print(A[29])
+    #print(A[30])
+    #print(A[31])
+    #print(A[32])
+    #print(A[33])
+    #print(A[34])
+    #print(A[35])
+    #print(A[36])
+    #print(A[37])
+    #print(A[38])
+    #print(A[39])
+    #print(A[40])
+    #print(A[41])
+    #print(A[42])
+    #print(A[43])
+    #print(A[44])
+    #print(A[45])
+    #print(A[46])
+    #print(A[47])
+    #print(A[48])
+    #print(A[49])
+    #print(A[50])
+    #print(A[51])
+    #print
+
+=======
+Suggestion 10
+
+def main():
+    #输入
+    N,K = map(int,input().split())
+    AB = [list(map(int,input().split())) for i in range(N)]
+    #AB = [[2,1],[5,10]]
+    #N,K = 2,3
+    #AB = [[5,5],[2,1],[2,2]]
+    #AB = [[1,1000000000],[2,1000000000],[3,1000000000],[4,1000000000],[5,1000000000]]
+    #N,K = 5,1000000000
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,3
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,6
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,5
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,4
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,3
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,2
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,1
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,0
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,-1
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1]]
+    #N,K = 5,-2
+
+    #AB = [[1,1],[2,1],[3,1],[4,1],[5,1

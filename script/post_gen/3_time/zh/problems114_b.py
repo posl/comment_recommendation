@@ -1,41 +1,134 @@
-#问题陈述
-#有一个由数字1，2，...，9组成的字符串S。
-#腊肠犬Lunlun会从S中取出三个连续的数字，把它们当作一个单一的整数X，并把它带给它的主人。(她不能重新排列这些数字）。
-#主人最喜欢的数字是753。越接近这个数字就越好。
-#X和753之间的最小可能（绝对）差异是多少？
-#
-#限制条件
-#S是一个长度在4到10（包括10）之间的字符串。
-#S中的每个字符是1，2，...，或9。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印X和753之间的最小可能差异。
-#
-#输入样本1
-#1234567876
-#
-#样本输出1
-#34
-#去掉第七至第九个字符的结果是X=787，与753的差值是787-753=34。无论从哪里取出X，这个差值都不会变小。
-#请注意，这些数字不能重新排列。例如，取出567并重新排列成765是不允许的。
-#我们也不能从S中取出不连续的三个数字。例如，不允许拿出第七位数字7，第九位数字7和第十位数字6来得到776。
-#
-#输入样本2
-#35753
-#
-#样本输出2
-#0
-#如果753本身可以取出来，答案是0。
-#
-#样本输入3
-#1111111111
-#
-#样本输出3
-#642
-#不管X从哪里来，X=111，差值为753-111=642。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_min_diff(s):
+    min_diff = 1000
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        diff = abs(x-753)
+        if diff < min_diff:
+            min_diff = diff
+    return min_diff
+
+=======
+Suggestion 2
+
+def get_min_diff(s):
+    min_diff = 999
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        diff = abs(753-x)
+        if diff < min_diff:
+            min_diff = diff
+    return min_diff
+
+=======
+Suggestion 3
+
+def main():
+    #输入
+    S = input()
+    #初期化
+    min_diff = 999
+    #逐个取出三个连续的数字
+    for i in range(len(S)-2):
+        #取出数字
+        X = int(S[i:i+3])
+        #计算与753的差值
+        diff = abs(X-753)
+        #更新最小值
+        if diff < min_diff:
+            min_diff = diff
+    #输出
+    print(min_diff)
+
+=======
+Suggestion 4
+
+def min_diff(S):
+    min_diff = 999
+    for i in range(len(S)-2):
+        x = int(S[i:i+3])
+        diff = abs(753 - x)
+        if diff < min_diff:
+            min_diff = diff
+    return min_diff
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    min_diff = 1000
+    for i in range(len(S)-2):
+        diff = abs(753 - int(S[i:i+3]))
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    print(min(abs(int(s[i:i+3])-753) for i in range(len(s)-2)))
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    N = len(S)
+    min_diff = 1e9
+    for i in range(N-2):
+        x = int(S[i:i+3])
+        diff = abs(753 - x)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S = list(S)
+    S = list(map(int, S))
+    min_diff = 1000
+    for i in range(len(S)-2):
+        X = S[i]*100 + S[i+1]*10 + S[i+2]
+        diff = abs(X-753)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    sub = 1000
+    for i in range(len(s)-2):
+        x = int(s[i:i+3])
+        sub = min(sub,abs(753-x))
+    print(sub)
+
+=======
+Suggestion 10
+
+def get_num(s):
+    if len(s) == 3:
+        return int(s)
+    else:
+        return int(s[0:3])
+
+s = input()
+min_diff = 1000
+for i in range(len(s)-2):
+    diff = abs(get_num(s[i:i+3]) - 753)
+    if diff < min_diff:
+        min_diff = diff
+
+print(min_diff)

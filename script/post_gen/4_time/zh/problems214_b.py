@@ -1,41 +1,95 @@
-#问题陈述
-#有多少个非负整数(a, b, c)的三联体满足a+b+c ≦ S且a×b×c ≦ T?
-#
-#限制条件
-#0 ≦ S ≦ 100
-#0 ≦ T ≦ 10000
-#S和T是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S T
-#
-#輸出
-#打印满足条件的非负整数（a,b,c）的三倍数。
-#
-#输入样本 1
-#1 0
-#
-#输出示例 1
-#4
-#满足条件的三联体（a,b,c）是（0,0,0），（0,0,1），（0,1,0）和（1,0,0）--共有四个。
-#
-#样本输入 2
-#2 5
-#
-#样本输出 2
-#10
-#
-#样本输入3
-#10 10
-#
-#样品输出3
-#213
-#
-#样本输入4
-#30 100
-#
-#样本输出4
-#2471
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(s,t):
+    count = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    s, t = map(int, input().split())
+    count = 0
+    for a in range(s+1):
+        for b in range(s+1):
+            for c in range(s+1):
+                if a+b+c <= s and a*b*c <= t:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    S, T = map(int, input().split())
+    count = 0
+    for a in range(S + 1):
+        for b in range(S + 1):
+            for c in range(S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    count += 1
+    print(count)
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    S, T = map(int, input().split())
+    cnt = 0
+    for a in range(0, S + 1):
+        for b in range(0, S + 1):
+            for c in range(0, S + 1):
+                if a + b + c <= S and a * b * c <= T:
+                    cnt += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    s, t = map(int, input().split())
+    count = 0
+    for a in range(0, s + 1):
+        for b in range(0, s + 1):
+            for c in range(0, s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def solve(S, T):
+    count = 0
+    for a in range(S+1):
+        for b in range(S+1):
+            for c in range(S+1):
+                if a+b+c <= S and a*b*c <= T:
+                    count += 1
+    return count
+
+S, T = map(int, input().split())
+print(solve(S, T))
+
+=======
+Suggestion 7
+
+def main():
+    s, t = map(int, input().split())
+    ans = 0
+    for a in range(s + 1):
+        for b in range(s + 1):
+            for c in range(s + 1):
+                if a + b + c <= s and a * b * c <= t:
+                    ans += 1
+    print(ans)

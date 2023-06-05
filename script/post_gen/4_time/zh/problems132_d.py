@@ -1,37 +1,138 @@
-#问题陈述
-#有K个蓝球和N-K个红球。相同颜色的球是无法区分的。Snuke和Takahashi正在玩这些球。
-#首先，Snuke将N个球从左到右排列成一排。
-#然后，Takahashi将只收集K个蓝球。在一次行动中，他可以收集任何数量的连续蓝球。他将以尽可能少的动作收集所有的蓝球。
-#Snuke有多少种方法可以将N个球排成一排，使Takahashi恰好需要i步来收集所有的蓝球？计算这个数字的模数为10^9+7，每一个i都是1≦i≦K。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 2000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N K
-#
-#输出
-#打印K行。第i行（1 ≦ i ≦ K）应该包含安排N个球的方法的数量，以便Takahashi正好需要i步来收集所有蓝球，模数为10^9+7。
-#
-#输入样本 1
-#5 3
-#
-#输出样本 1
-#3
-#6
-#1
-#有三种方法可以安排球，使Takahashi正好需要一步棋：（B，B，B，R，R），（R，B，B，B，R），以及（R，R，B，B，B）。(R和B分别代表红色和蓝色）。
-#有六种方法可以安排球，使Takahashi正好需要两步棋：（B，B，R，B，R），（B，B，R，R，B），（R，B，B，R，B），（R，B，R，B，B），（B，R，B，B，R），和（B，R，R，B，B）。
-#有一种方法可以安排这些球，使Takahashi正好需要三步棋：（B，R，B，R，B）。
-#
-#输入样本 2
-#2000 3
-#
-#样本输出2
-#1998
-#3990006
-#327341989
-#一定要打印出10^9+7的模数的排列数字。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def problems132_d():
+    n, k = map(int, input().split())
+    dp = [[0 for i in range(n + 1)] for j in range(k + 1)]
+    dp[0][0] = 1
+    for i in range(1, k + 1):
+        for j in range(n + 1):
+            if j - i >= 0:
+                dp[i][j] += dp[i - 1][j - i]
+            dp[i][j] += dp[i][j - 1]
+            dp[i][j] %= 1000000007
+    print(dp[k][n])
+
+problems132_d()
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    MOD = 10**9+7
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(1,n+1):
+        dp[i][0] = 1
+        for j in range(1,i+1):
+            dp[i][j] = (dp[i-1][j-1]+dp[i-1][j])%MOD
+    for i in range(k):
+        ans = (dp[k-1][i]*dp[n-k+1][i])%MOD
+        print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    n,k = map(int, input().split())
+    mod = 10**9 + 7
+    dp = [[0 for _ in range(k+1)] for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(1, n+1):
+        for j in range(k+1):
+            dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % mod
+            if i - j - 1 >= 0:
+                dp[i][j] = (dp[i][j] - dp[i-j-1][j-1]) % mod
+    print(dp[n][k])
+
+=======
+Suggestion 5
+
+def get_input():
+    n,k = map(int,input().split())
+    return n,k
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    mod = 10**9 + 7
+    ans = [0] * k
+    for i in range(1, k+1):
+        ans[i-1] = (pow(k, i, mod) - pow(k-1, i, mod)) * pow(k, n-i, mod) % mod
+    print(*ans, sep='\n')
+
+=======
+Suggestion 7
+
+def main():
+    n,k=map(int,input().split())
+    mod=10**9+7
+    dp=[[0 for i in range(n+1)]for j in range(n+1)]
+    dp[0][0]=1
+    for i in range(n):
+        for j in range(i+1):
+            dp[i+1][j+1]=(dp[i+1][j+1]+dp[i][j])%mod
+            dp[i+1][j]=(dp[i+1][j]+dp[i][j]*(i-j))%mod
+    for i in range(1,k+1):
+        print(dp[n-k][i]*dp[k-1][i-1]%mod)
+
+=======
+Suggestion 8
+
+def main():
+    n,k = map(int,input().split())
+    mod = 10**9+7
+    dp = [[0 for _ in range(n+1)] for _ in range(k)]
+    dp[0][0] = 1
+    for i in range(1,k):
+        for j in range(n+1):
+            dp[i][j] = dp[i-1][j] + dp[i-1][j-1]
+            dp[i][j] %= mod
+    for i in range(1,k+1):
+        print(dp[i-1][n-k+1]*dp[k-i][k-1]%mod)
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int, input().split())
+    mod = 10**9+7
+    a = [0]*(n+1)
+    for i in range(1,n+1):
+        a[i] = (a[i-1]+pow(i,k,mod))%mod
+    b = [0]*(n+1)
+    for i in range(1,n+1):
+        b[i] = (b[i-1]+pow(i,k-1,mod))%mod
+    for i in range(1,k+1):
+        ans = a[n]
+        ans -= b[i]
+        ans %= mod
+        ans *= pow(i,mod-2,mod)
+        ans %= mod
+        print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    dp = [[0 for _ in range(n+1)] for _ in range(k+1)]
+    dp[0][0] = 1
+    for i in range(1, k+1):
+        for j in range(n+1):
+            if j >= i:
+                dp[i][j] = (dp[i-1][j] + dp[i][j-i]) % (10**9+7)
+            else:
+                dp[i][j] = dp[i-1][j]
+    print(dp[k][n])

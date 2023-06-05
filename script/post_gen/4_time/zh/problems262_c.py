@@ -1,36 +1,139 @@
-#问题陈述
-#给你一个长度为N的序列a=（a_1，...，a_N），由1到N之间的整数组成。
-#请找出满足以下所有条件的整数对i, j的数目：
-#1 ≦ i < j ≦ N
-#min(a_i, a_j) = i
-#max(a_i, a_j) = j
-#
-#限制条件
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ a_i ≦ N (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#4
-#1 3 2 4
-#
-#样本输出 1
-#2
-#(i，j）=（1，4），（2，3）满足条件。
-#
-#样本输入2
-#10
-#5 8 2 2 1 6 7 2 9 10
-#
-#样本输出2
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int,input().split()))
+    a = [0] + a
+    ans = 0
+    for i in range(1,n+1):
+        if a[i] == i:
+            for j in range(i+1,n+1):
+                if a[j] == j:
+                    ans += 1
+        else:
+            if a[a[i]] == i:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for j in range(1, N + 1):
+        i = A[j - 1]
+        if i >= j:
+            continue
+        if A[i - 1] == j:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def get_count(N, a):
+    count = 0
+    for i in range(N-1):
+        for j in range(i+1, N):
+            if min(a[i], a[j]) == i+1 and max(a[i], a[j]) == j+1:
+                count += 1
+    return count
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    print(a)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    ans = 0
+    for i in range(N):
+        if A[i] < i + 1:
+            continue
+        for j in range(i + 1, N):
+            if A[j] < i + 1:
+                continue
+            if A[i] == j + 1 and A[j] == i + 1:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    l = [0] * (n + 1)
+    for i in range(n):
+        l[a[i]] = i
+    r = [0] * (n + 1)
+    for i in range(n):
+        r[a[i]] = i
+    ans = 0
+    for i in range(1, n + 1):
+        ans += (l[i] - l[i - 1]) * (r[i] - r[i - 1])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (n + 1)
+    for i in range(n):
+        b[a[i]] = i + 1
+    ans = 0
+    for i in range(1, n + 1):
+        if b[i] == i:
+            ans += 1
+    for i in range(1, n + 1):
+        if b[i] != i:
+            if b[b[i]] == i:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    pass
+
+=======
+Suggestion 9
+
+def min(a, b):
+    if a < b:
+        return a
+    else:
+        return b
+
+=======
+Suggestion 10
+
+def solve():
+    # 读取输入
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 计算答案
+    ans = 0
+    for i in range(N):
+        if A[i] <= i + 1:
+            continue
+        for j in range(i + 1, N):
+            if A[j] < A[i]:
+                ans += 1
+    print(ans)

@@ -1,34 +1,75 @@
-#问题说明
-#打印字符串atcoder的第L到第R个字符。
-#
-#限制条件
-#L和R是整数。
-#1 ≦ L ≦ R ≦ 7
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#L R
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3 6
-#
-#样本输出1
-#code
-#atcoder的第3至第6个字符是code。
-#
-#输入样本2
-#4 4
-#
-#样本输出 2
-#o
-#
-#样本输入3
-#1 7
-#
-#样本输出3
-#atcoder
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def test():
+    L,R = map(int,input().split())
+    print("atcoder"[L-1:R])
+
+test()
+
+=======
+Suggestion 2
+
+def main():
+    l, r = input().split()
+    l = int(l)
+    r = int(r)
+    print('atcoder'[l-1:r])
+
+=======
+Suggestion 3
+
+def main():
+    str1 = 'atcoder'
+    str2 = input().split()
+    L = int(str2[0])
+    R = int(str2[1])
+    print(str1[L-1:R])
+
+=======
+Suggestion 4
+
+def get_input():
+    input_str = input("请输入L R:")
+    input_list = input_str.split(" ")
+    return input_list
+
+=======
+Suggestion 5
+
+def main():
+    l,r = map(int,input().split())
+    s = 'atcoder'
+    print(s[l-1:r])
+
+=======
+Suggestion 6
+
+def main():
+    L, R = map(int, input().split())
+    s = 'atcoder'
+    print(s[L-1:R])
+
+=======
+Suggestion 7
+
+def main():
+    str = "atcoder"
+    L, R = map(int, input().split())
+    print(str[L-1:R])
+
+=======
+Suggestion 8
+
+def print_str(s, l, r):
+    print(s[l-1:r])
+
+=======
+Suggestion 9
+
+def main():
+    s = "atcoder"
+    L, R = map(int, input().split())
+    print(s[L - 1:R])

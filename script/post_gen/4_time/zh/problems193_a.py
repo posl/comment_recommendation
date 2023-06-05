@@ -1,35 +1,58 @@
-#问题陈述
-#一家商店出售一种产品，其正常价格为A日元（日本货币），价格为B日元。该产品的折扣率是正常价格的多少？
-#
-#限制条件
-#A和B是整数。
-#1 ≤ B < A ≤ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#将答案打印成小数。
-#当你的答案与我们的答案的绝对或相对误差最多为10^{-2}时，你的答案将被判定为正确。
-#
-#输入样本 1
-#100 80
-#
-#样本输出1
-#20.0
-#如果一个正常价格为100日元的产品以80日元的价格出售，它的折扣是正常价格的20%。
-#
-#样本输入2
-#7 6
-#
-#样本输出2
-#14.285714285714285714
-#
-#样本输入3
-#99999 99998
-#
-#样本输出3
-#0.00100001000010000100
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print((A-B)/A*100)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(100 - (B * 100 / A))
+
+=======
+Suggestion 3
+
+def main():
+    A,B=map(int,input().split())
+    print((1-(B/A))*100)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    print((1 - B / A) * 100)
+
+=======
+Suggestion 5
+
+def getDiscountRate(A, B):
+    return (A - B) / A * 100
+
+=======
+Suggestion 6
+
+def main():
+    a,b = map(int,input().split())
+    print((a-b)/a*100)
+
+=======
+Suggestion 7
+
+def p193_a():
+    a, b = map(int, input().split())
+    print("{:.20f}".format(100*(a-b)/a))
+
+=======
+Suggestion 8
+
+def main():
+    a,b = map(int,input().split())
+    print(100*(a-b)/a)
+
+main()

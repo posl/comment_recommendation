@@ -1,39 +1,59 @@
-#问题陈述
-#一个编程竞赛网站AtCode定期举行编程竞赛。
-#AtCode上的下一个比赛叫做ABC，它是为评分低于1200分的参赛者准备的。
-#在ABC之后的比赛叫做ARC，是为评分低于2800分的参赛者而设的。
-#ARC之后的比赛被称为AGC，为所有参赛者评级。
-#高桥在AtCode上的评分是R，他的下一场比赛评分是多少？
-#
-#限制条件
-#0 ≤ R ≤ 4208
-#R是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#R
-#
-#输出
-#打印高桥的下一场比赛的名称（ABC、ARC或AGC）。
-#
-#样本输入1
-#1199
-#
-#样本输出1
-#ABC
-#1199小于1200，所以将被评为ABC。
-#
-#样本输入2
-#1200
-#
-#样本输出2
-#ARC
-#1200不小于1200，ABC将不被评级，但它小于2800，将被评级ARC。
-#
-#样本输入3
-#4208
-#
-#样本输出3
-#AGC
+Synthesizing 9/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    R = int(input())
+    if R < 1200:
+        print('ABC')
+    elif R < 2800:
+        print('ARC')
+    else:
+        print('AGC')
+
+=======
+Suggestion 2
+
+def get_next_match_name(r):
+    if r < 1200:
+        return 'ABC'
+    elif r < 2800:
+        return 'ARC'
+    else:
+        return 'AGC'
+
+=======
+Suggestion 3
+
+def main():
+    r = int(input())
+    if r < 1200:
+        print('ABC')
+    elif r < 2800:
+        print('ARC')
+    else:
+        print('AGC')
+
+=======
+Suggestion 4
+
+def main():
+    r = int(input())
+    if r < 1200:
+        print("ABC")
+    elif r < 2800:
+        print("ARC")
+    else:
+        print("AGC")
+
+=======
+Suggestion 5
+
+def get_level(R):
+    if R < 1200:
+        return 'ABC'
+    elif R < 2800:
+        return 'ARC'
+    else:
+        return 'AGC'

@@ -1,51 +1,116 @@
-#问题陈述
-#我们有一块黑板，上面什么也没写。
-#高桥将进行N次操作，在上面写上整数。
-#在第i次操作中，他将把从A_i到B_i的每个整数写一次，总共写了B_i-A_i+1个整数。
-#求N次操作后写在黑板上的整数之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ B_i ≦ 10^6
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#打印N次运算后写在黑板上的整数之和。
-#
-#输入样本 1
-#2
-#1 3
-#3 5
-#
-#样本输出1
-#18
-#在第一轮操作中，他将在黑板上写下1、2和3。
-#在第2次操作中，他将在黑板上写下3、4和5。
-#所写的整数之和为1+2+3+3+4+5=18。
-#
-#输入样本 2
-#3
-#11 13
-#17 47
-#359 44683
-#
-#样本输出2
-#998244353
-#
-#样本输入3
-#1
-#1 1000000
-#
-#样本输出3
-#500000500000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a,b = map(int, input().split())
+        sum += (b-a+1)*(a+b)/2
+    print(int(sum))
+
+=======
+Suggestion 2
+
+def problem181_b():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a,b = map(int,input().split())
+        sum += (a+b)*(b-a+1)//2
+    print(sum)
+
+=======
+Suggestion 3
+
+def sum_of_consecutive_numbers(a, b):
+    return (a + b) * (b - a + 1) // 2
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        a, b = map(int, input().split())
+        sum += (a+b)*(b-a+1)//2
+    print(sum)
+
+=======
+Suggestion 5
+
+def f(a,b):
+    return (a+b)*(b-a+1)//2
+
+n = int(input())
+ans = 0
+for i in range(n):
+    a,b = map(int,input().split())
+    ans += f(a,b)
+print(ans)
+
+=======
+Suggestion 6
+
+def problem181_b():
+    N = int(input())
+    sum = 0
+    for i in range(N):
+        A,B = map(int,input().split())
+        sum += (B-A+1)*(A+B)/2
+    print(int(sum))
+
+=======
+Suggestion 7
+
+def solve(n, arr):
+    sum = 0
+    for i in range(n):
+        sum += arr[i][1] - arr[i][0] + 1
+    return sum
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a_i, b_i = map(int, input().split())
+        a.append(a_i)
+        b.append(b_i)
+    sum = 0
+    for i in range(n):
+        sum += (b[i] - a[i] + 1) * (a[i] + b[i]) / 2
+    print(int(sum))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        a1, b1 = map(int, input().split())
+        a.append(a1)
+        b.append(b1)
+    sum = 0
+    for i in range(n):
+        sum += (a[i] + b[i]) * (b[i] - a[i] + 1) / 2
+    print(int(sum))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    sum = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        sum += (a+b)*(b-a+1)/2
+    print(int(sum))

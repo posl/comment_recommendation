@@ -1,68 +1,240 @@
-#问题陈述
-#我们有一个有H个水平行和W个垂直列的网格。  (i, j)表示从上往下第i行和从左往下第j列的方格。
-#(i,j)上写有一个字符G_{i,j}。  G_{i,j}是U、D、L或R。
-#你最初是在（1,1）。  你重复以下操作，直到你无法下棋为止。
-#设(i,j)为你目前所在的方格。
-#如果G_{i,j}是U且i≠1，则移动到（i-1,j）。
-#如果G_{i,j}是D，且i≠H，则移动到（i+1,j）。
-#如果G_{i,j}是L且j≠1，则移动到（i,j-1）。
-#如果G_{i,j}是R且j≠W，则移动到（i,j+1）。
-#否则，你不能走棋。  
-#打印你在无法下棋时最终所处的位置。
-#如果你无限期地重复移动，则打印-1来代替。
-#
-#限制条件
-#1 ≦ H, W ≦ 500
-#G_{i,j}是U, D, L, 或R。
-#H和W是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#G_{1,1}G_{1,2}...G_{1,W}
-#G_{2,1}G_{2,2}...G_{2,W}
-#.
-#.
-#.
-#G_{H,1}G_{H,2}...G_{H,W}
-#
-#输出
-#如果你在(i, j)处结束，请按以下格式打印：
-#i j
-#如果你无限期地重复移动，则打印-1。
-#
-#输入样本 1
-#2 3
-#RDU
-#LRU
-#
-#样本输出1
-#1 3
-#你将以（1，1）->（1，2）->（2，2）->（2，3）->（1，3）的方式移动，最后在这里结束，所以答案是（1，3）。
-#
-#输入样本 2
-#2 3
-#RRD
-#ULL
-#
-#样本输出2
-#-1
-#你将无限期地重复移动，如（1，1）->（1，2）->（1，3）->（2，3）->（2，2）->（2，1）->（1，1）->（1，2）->...，所以在这种情况下应该打印-1。
-#
-#输入样本 3
-#9 44
-#RRDDDDRRRDDDRRRRRRDDDRDDDDRDDRDDDDDDRRDRRRRR
-#RRRDLRDRDLLLLRDRRLLLDDRDLLLRDDDLLLDRRLLLLLDD
-#DRDLRLDRDLRDRLDRLRDDLDDLRDRLDRLDDRLRRLRRRDRR
-#DDLRRDLDDLDDRLDDLDRDDRDDDDRLRRLRDDRRRLDRDRDD
-#RDLRRDLRDLLLLRRDLRDRRDRRRDLRDDLLLLDDDLLLLRDR
-#RDLLLLLRDLRDRLDDLDDRDRRDRLDRRRLDDDLDDDRDDLDR
-#RDLRRDLDDLRDRLRDLDDDLDDRLDRDRDLDRDLDDLRRDLRR
-#RDLDRRLDRLLLLDRDRLLLRDDLLLLLRDRLLLRRRRLLLDDR
-#RRRRDRDDRRRDDRDDDRRRDRDRDRDRRRRRRDDDRDDDDRRR
-#
-#
-#样本输出3
-#9 5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,w = map(int,input().split())
+    g = [list(input()) for _ in range(h)]
+    i,j = 0,0
+    while g[i][j] != '.':
+        if g[i][j] == 'U':
+            if i == 0:
+                print(-1)
+                return
+            i -= 1
+        elif g[i][j] == 'D':
+            if i == h - 1:
+                print(-1)
+                return
+            i += 1
+        elif g[i][j] == 'L':
+            if j == 0:
+                print(-1)
+                return
+            j -= 1
+        elif g[i][j] == 'R':
+            if j == w - 1:
+                print(-1)
+                return
+            j += 1
+    print(i+1,j+1)
+
+=======
+Suggestion 2
+
+def main():
+    H,W = map(int,input().split())
+    G = []
+    for i in range(H):
+        G.append(input())
+    i,j = 0,0
+    while True:
+        if G[i][j] == 'U':
+            if i == 0:
+                print(i+1,j+1)
+                break
+            else:
+                i -= 1
+        elif G[i][j] == 'D':
+            if i == H-1:
+                print(i+1,j+1)
+                break
+            else:
+                i += 1
+        elif G[i][j] == 'L':
+            if j == 0:
+                print(i+1,j+1)
+                break
+            else:
+                j -= 1
+        elif G[i][j] == 'R':
+            if j == W-1:
+                print(i+1,j+1)
+                break
+            else:
+                j += 1
+
+=======
+Suggestion 3
+
+def path(H,W,G):
+    i,j = 1,1
+    while True:
+        if G[i-1][j-1] == "U":
+            if i == 1:
+                return [i,j]
+            else:
+                i -= 1
+        elif G[i-1][j-1] == "D":
+            if i == H:
+                return [i,j]
+            else:
+                i += 1
+        elif G[i-1][j-1] == "L":
+            if j == 1:
+                return [i,j]
+            else:
+                j -= 1
+        elif G[i-1][j-1] == "R":
+            if j == W:
+                return [i,j]
+            else:
+                j += 1
+        else:
+            return [-1,-1]
+
+=======
+Suggestion 4
+
+def main():
+    H,W = map(int,input().split())
+    G = [input() for _ in range(H)]
+    i = j = 0
+    visited = [[0]*W for _ in range(H)]
+    while True:
+        if G[i][j] == 'U' and i != 0:
+            i -= 1
+        elif G[i][j] == 'D' and i != H-1:
+            i += 1
+        elif G[i][j] == 'L' and j != 0:
+            j -= 1
+        elif G[i][j] == 'R' and j != W-1:
+            j += 1
+        else:
+            break
+        if visited[i][j] == 1:
+            print(-1)
+            return
+        visited[i][j] = 1
+    print(i+1,j+1)
+
+=======
+Suggestion 5
+
+def move(x,y,grid):
+    if grid[x][y] == 'U' and x != 0:
+        x -= 1
+    elif grid[x][y] == 'D' and x != H - 1:
+        x += 1
+    elif grid[x][y] == 'L' and y != 0:
+        y -= 1
+    elif grid[x][y] == 'R' and y != W - 1:
+        y += 1
+    else:
+        return -1
+    return x, y
+
+H, W = map(int, input().split())
+grid = [input() for _ in range(H)]
+x, y = 0, 0
+visited = set()
+while True:
+    if (x, y) in visited:
+        print(-1)
+        break
+    visited.add((x, y))
+    res = move(x, y, grid)
+    if res == -1:
+        print(x + 1, y + 1)
+        break
+    else:
+        x, y = res
+
+=======
+Suggestion 6
+
+def main():
+    h,w = map(int,input().split())
+    g = [list(input()) for _ in range(h)]
+    i,j = 0,0
+    while True:
+        if g[i][j] == "U":
+            if i == 0:
+                print(i+1,j+1)
+                return
+            else:
+                i -= 1
+        elif g[i][j] == "D":
+            if i == h-1:
+                print(i+1,j+1)
+                return
+            else:
+                i += 1
+        elif g[i][j] == "L":
+            if j == 0:
+                print(i+1,j+1)
+                return
+            else:
+                j -= 1
+        elif g[i][j] == "R":
+            if j == w-1:
+                print(i+1,j+1)
+                return
+            else:
+                j += 1
+        else:
+            print(i+1,j+1)
+            return
+    print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    # H, W = map(int, input().split())
+    H, W = 9, 44
+    # grid = [list(input()) for _ in range(H)]
+    grid = [['R','R','D','D','D','D','R','R','R','D','D','D','R','R','R','R','R','R','D','D','D','R','D','D','D','D','R','D','D','D','D','D','D','R','D','D','R','D','D','D','D','D','R','D','R'],
+            ['R','R','R','D','L','R','D','R','D','L','L','L','R','D','R','R','D','L','L','L','D','D','R','D','L','L','L','D','D','L','L','L','R','D','D','R','D','L','L','L','L','R','D','D'],
+            ['D','R','D','L','R','L','D','R','D','L','R','L','D','R','L','D','R','D','L','D','D','L','R','D','L','D','D','L','R','D','L','R','L','D','R','D','L','R','L','D','R','R','R','D'],
+            ['D','D','L','R','R','D','L','R','D','L','R','L','D','D','L','L','D','R','D','L','L','D','D','R','D','L','L','D','D','R','D','R','D','D','R','R','L','D','R','D','D','R','D','D'],
+            ['R','D','L','R','R','D','L','R','D','L','L','L','L','R','D','L','R','D','R','R','D','D','D','L','L','L','L','L','L','D','R','D','R','R','D','L','D','D','D','L','L','L','R','D'],
+            ['R','D','
+
+=======
+Suggestion 8
+
+def main():
+    h, w = map(int, input().split())
+    g = []
+    for i in range(h):
+        g.append(input())
+    i, j = 0, 0
+    while True:
+        if g[i][j] == "U" and i != 0:
+            i -= 1
+        elif g[i][j] == "D" and i != h - 1:
+            i += 1
+        elif g[i][j] == "L" and j != 0:
+            j -= 1
+        elif g[i][j] == "R" and j != w - 1:
+            j += 1
+        else:
+            break
+    if i == 0 and j == 0:
+        print(-1)
+    else:
+        print(i + 1, j + 1)
+
+=======
+Suggestion 9
+
+def solve():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    pass

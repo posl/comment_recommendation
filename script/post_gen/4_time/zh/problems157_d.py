@@ -1,94 +1,236 @@
-#问题陈述
-#一个SNS有N个用户--用户1，用户2，...，用户N。
-#在这N个用户之间，有一些关系--M条友谊和K条阻隔。
-#对于每个i = 1, 2, ..., M，用户A_i和用户B_i之间有一个双向的友谊。
-#对于每个i = 1, 2, ..., K，在用户C_i和用户D_i之间有一个双向的阻隔关系。
-#当以下四个条件都满足时，我们定义用户a为用户b的候选好友：
-#a ≠ b。
-#用户a和用户b之间不存在友谊。
-#用户a和用户b之间不存在blockhip。
-#存在一个由1到N（包括）之间的整数组成的序列c_0, c_1, c_2, ..., c_L，使得c_0 = a, c_L = b，并且对于每个i = 0, 1, ..., L - 1的用户c_i和c_{i+1}之间存在友谊。
-#对于每个用户i = 1, 2, ...N，它有多少个朋友候选人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#按顺序打印答案，中间有空格。
-#
-#输入样本 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#样本输出1
-#0 1 0 1
-#用户2和3之间有友谊，3和4之间也有友谊。同时，用户2和4之间没有友谊或阻隔关系。因此，用户4是用户2的候选好友。
-#然而，用户1或3都不是用户2的候选朋友，所以用户2有一个候选朋友。
-#
-#样本输入2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#样本输出2
-#0 0 0 0 0
-#每个人都是其他人的朋友，没有朋友候选人。
-#
-#样本输入3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#输出样本3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def dfs(u, p):
+    global ans
+    for v in g[u]:
+        if v == p:
+            continue
+        if v in s:
+            ans[v] -= 1
+        else:
+            ans[v] += 1
+        dfs(v, u)
+
+n, m, k = map(int, input().split())
+g = [[] for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    g[a].append(b)
+    g[b].append(a)
+
+s = set()
+for _ in range(k):
+    c, d = map(int, input().split())
+    c -= 1
+    d -= 1
+    if c > d:
+        c, d = d, c
+    if c == 0 and d == n - 1:
+        s.add(d)
+    else:
+        g[c].append(d)
+        g[d].append(c)
+
+ans = [0] * n
+dfs(0, -1)
+print(*ans)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    N, M, K = map(int, input().split())
+    A = []
+    B = []
+    C = []
+    D = []
+    for _ in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    for _ in range(K):
+        c, d = map(int, input().split())
+        C.append(c)
+        D.append(d)
+    # print(N, M, K)
+    # print(A)
+    # print(B)
+    # print(C)
+    # print(D)
+
+    # 建立图
+    graph = {}
+    for i in range(M):
+        if A[i] not in graph:
+            graph[A[i]] = [B[i]]
+        else:
+            graph[A[i]].append(B[i])
+        if B[i] not in graph:
+            graph[B[i]] = [A[i]]
+        else:
+            graph[B[i]].append(A[i])
+    # print(graph)
+
+    # 计算每个节点的候选好友
+    ans = [0] * N
+    for i in range(1, N + 1):
+        if i in graph:
+            for j in graph[i]:
+                if j not in graph:
+                    continue
+                for k in graph[j]:
+                    if k not in graph:
+                        continue
+                    if k != i and k not in graph[i]:
+                        ans[i - 1] += 1
+    print(' '.join(map(str, ans)))
+
+=======
+Suggestion 4
+
+def main():
+    n,m,k = map(int, input().split())
+
+    # 建立邻接表
+    adj = [[] for _ in range(n)]
+    for _ in range(m):
+        a,b = map(int, input().split())
+        adj[a-1].append(b-1)
+        adj[b-1].append(a-1)
+
+    # 建立阻隔表
+    block = [[False for _ in range(n)] for _ in range(n)]
+    for _ in range(k):
+        c,d = map(int, input().split())
+        block[c-1][d-1] = True
+        block[d-1][c-1] = True
+
+    # 深度优先搜索
+    ans = [0 for _ in range(n)]
+    for i in range(n):
+        visited = [False for _ in range(n)]
+        visited[i] = True
+        stack = [i]
+        while stack:
+            s = stack.pop()
+            for j in adj[s]:
+                if visited[j]: continue
+                if block[s][j]: continue
+                ans[i] += 1
+                visited[j] = True
+                stack.append(j)
+
+    print(*ans)
+    return
+
+=======
+Suggestion 5
+
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(graph[v])):
+        if color[graph[v][i]] == c:
+            return False
+        if color[graph[v][i]] == 0 and (not dfs(graph[v][i], -c)):
+            return False
+    return True
+
+n, m, k = map(int, input().split())
+graph = [[] for _ in range(n)]
+color = [0] * n
+
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a - 1].append(b - 1)
+    graph[b - 1].append(a - 1)
+
+for i in range(n):
+    if color[i] == 0:
+        if not dfs(i, 1):
+            print(-1)
+            exit()
+
+cnt = [0] * n
+for i in range(n):
+    cnt[i] = len(graph[i])
+
+for i in range(k):
+    c, d = map(int, input().split())
+    if color[c - 1] == color[d - 1]:
+        cnt[c - 1] -= 1
+        cnt[d - 1] -= 1
+
+print(*cnt)
+
+=======
+Suggestion 6
+
+def main():
+    n,m,k = map(int,input().split())
+    a = [0] * (n+1)
+    b = [0] * (n+1)
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+
+=======
+Suggestion 7
+
+def dfs(g, v, u, d, c):
+    if d == 0:
+        c[v] = 1
+        return
+    for w in g[v]:
+        if w == u:
+            continue
+        dfs(g, w, v, d - 1, c)

@@ -1,51 +1,78 @@
-#问题说明
-#一个池塘中藻类的发展情况如下。
-#设第i年年初藻类的总重量为x_i克。对于i≥2000，以下公式成立：
-#x_{i+1} = rx_i - D
-#你得到了r、D和x_{2000}。计算x_{2001}, ..., x_{2010}并按顺序打印出来。
-#
-#限制条件
-#2 ≤ r ≤ 5
-#1 ≤ D ≤ 100
-#D < x_{2000} ≤ 200
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#r D x_{2000}
-#
-#输出
-#打印10行。第i行（1≤i≤10）应包含x_{2000+i}的整数。
-#
-#输入样本 1
-#2 10 20
-#
-#样本输出 1
-#30
-#50
-#90
-#170
-#330
-#650
-#1290
-#2570
-#5130
-#10250
-#例如，x_{2001} = rx_{2000} - D = 2 × 20 - 10 = 30，x_{2002} = rx_{2001} - D = 2 × 30 - 10 = 50。
-#
-#样本输入2
-#4 40 60
-#
-#样本输出2
-#200
-#760
-#3000
-#11960
-#47800
-#191160
-#764600
-#3058360
-#12233400
-#48933560
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r, D, x = map(int, input().split())
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 2
+
+def main():
+    inList = input().split()
+    r = int(inList[0])
+    D = int(inList[1])
+    x = int(inList[2])
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 3
+
+def f(r, D, x):
+    return r * x - D
+
+=======
+Suggestion 4
+
+def func(r,D,x):
+    for i in range(10):
+        x = r*x - D
+        print(x)
+
+=======
+Suggestion 5
+
+def main():
+    r,D,x_2000 = map(int,input().split())
+    print(x_2000)
+    for i in range(10):
+        x_2000 = r*x_2000 - D
+        print(x_2000)
+
+=======
+Suggestion 6
+
+def algae(r, D, x):
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+r, D, x = map(int, input().split())
+algae(r, D, x)
+
+=======
+Suggestion 7
+
+def problem127_b():
+    r, D, x_2000 = map(int, input().split())
+    x = x_2000
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+=======
+Suggestion 8
+
+def problem127_b():
+    r, D, x = map(int, input().split())
+    for i in range(10):
+        x = r * x - D
+        print(x)
+
+problem127_b()

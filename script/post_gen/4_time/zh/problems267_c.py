@@ -1,38 +1,163 @@
-#问题陈述
-#给你一个长度为N的整数序列A=（A_1,A_2,...,A_N）。
-#求长度为M的A的连续子数组B=(B_1,B_2,...,B_M)的sum_{i=1}^{M} i × B_i的最大值。
-#
-#注释
-#一个数列的连续子数组是通过从原数列中去除0个或更多的首项和0个或更多的尾项而得到的数列。
-#例如，（2，3）和（1，2，3）是（1，2，3，4）的连续子数组，但是（1，3）和（3，2，1）不是（1，2，3，4）的连续子数组。  
-#
-#约束条件
-#1 ≦ m ≦ n ≦ 2 × 10^5
-#- 2 × 10^5 ≦ A_i ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4 2
-#5 4 -1 8
-#
-#样本输出1
-#15
-#当B=(A_3,A_4)时，我们有 sum_{i=1}^{M} i × B_i = 1 × (-1) + 2 × 8 = 15。  由于不可能达到16或更大的数值，所以解决方案是15。
-#请注意，你不允许选择，例如，B=(A_1,A_4)。
-#
-#输入样本 2
-#10 4
-#-3 1 -4 1 -5 9 -2 6 -5 3
-#
-#样本输出2
-#31
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 初始化
+    b = [0] * (n + 1)
+    for i in range(n):
+        b[i + 1] = b[i] + a[i]
+
+    # 解决
+    ans = -10 ** 18
+    for i in range(m, n + 1):
+        ans = max(ans, b[i] - b[i - m])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(m):
+        ans += (i + 1) * a[i]
+    tmp = ans
+    for i in range(m, n):
+        tmp += (i + 1) * a[i] - (i - m + 1) * a[i - m]
+        ans = max(ans, tmp)
+    print(ans)
+
+=======
+Suggestion 3
+
+def max_sum(n, m, a):
+    res = [0] * (n + 1)
+    for i in range(1, n + 1):
+        res[i] = res[i - 1] + a[i - 1]
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        if i >= m:
+            dp[i] = max(dp[i - 1], res[i] - res[i - m])
+    return dp[n]
+
+=======
+Suggestion 4
+
+def solve(n, m, a):
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    from collections import deque
+    q = deque()
+    ans = -float('inf')
+    for i in range(n + 1):
+        while q and q[0][1] < i - m:
+            q.popleft()
+        if q:
+            ans = max(ans, s[i] - q[0][0] - i * m)
+        while q and q[-1][0] >= s[i] - i * m:
+            q.pop()
+        q.append((s[i] - i * m, i))
+    return ans
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    # 计算前缀和
+    s = [0] * (n + 1)
+    for i in range(n):
+        s[i + 1] = s[i] + a[i]
+    # 计算答案
+    ans = -(10 ** 18)
+    for i in range(1, n + 1):
+        if i - m >= 0:
+            ans = max(ans, s[i] - s[i - m])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = sum(a[:m])
+    t = sum([i*a[i] for i in range(m)])
+    ans = t
+    for i in range(m,n):
+        t += (m-1)*a[i] - 2*s + a[i-m]
+        ans = max(ans, t)
+        s += a[i] - a[i-m]
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(1,m+1):
+        ans += i*a[i-1]
+    tmp = ans
+    for i in range(m,n):
+        tmp += (i+1)*a[i]
+        tmp -= (i-m+1)*a[i-m]
+        ans = max(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A = [0] + A
+    for i in range(1, N + 1):
+        A[i] += A[i - 1]
+    ans = 0
+    for i in range(N - M + 1):
+        ans = max(ans, A[i + M] - A[i] + sum(range(1, M + 1)) * A[i])
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    s = [0]
+    for i in range(n):
+        s.append(s[i] + a[i])
+    res = -10**10
+    for i in range(m, n+1):
+        res = max(res, s[i] - s[i-m])
+    print(res)
+
+=======
+Suggestion 10
+
+def resolve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        sum += a[i] * (i + 1)
+    ans = sum
+    for i in range(m):
+        sum -= a[n - 1 - i] * (n - i)
+        sum += a[i] * (n - i)
+        ans = max(ans, sum)
+    print(ans)

@@ -1,62 +1,190 @@
-#问题陈述
-#给定的是一个正整数N，考虑在N上重复应用下面的操作：
-#首先，选择一个满足以下所有条件的正整数z：
-#z可以表示为z=p^e，其中p是一个素数，e是一个正整数；
-#z除以N；
-#z与之前操作中选择的所有整数不同。
-#然后，用N/z替换N。
-#找出该操作可应用的最大次数。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印该操作可应用的最大次数。
-#
-#样本输入1
-#24
-#
-#样本输出1
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=12)。
-#选择z=3 (=3^1)。(现在我们有N=4)。
-#选择z=4 (=2^2).(现在我们有N=1)。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#0
-#我们根本就不能应用这个操作。
-#
-#样本输入3
-#64
-#
-#样本输出3
-#3
-#我们可以通过例如以下的选择来应用三次操作：
-#选择z=2（=2^1）。(现在我们有N=32)。
-#选择z=4（=2^2）。(现在我们有N=8)。
-#选择z=8 (=2^3).(现在我们有N=1)。
-#
-#样本输入4
-#1000000007
-#
-#样本输出4
-#1
-#我们可以应用一次操作，例如，做出以下选择：
-#z=1000000007 (=1000000007^1).(现在我们有N=1)。
-#
-#输入样本5
-#997764507000
-#
-#样本输出5
-#7
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def factorize(n):
+    factors = []
+    while n % 2 == 0:
+        factors.append(2)
+        n //= 2
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+        i += 2
+    if n > 1:
+        factors.append(n)
+    return factors
+
+=======
+Suggestion 2
+
+def isprime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n%2 == 0:
+        return False
+    i = 3
+    while i*i <= n:
+        if n%i == 0:
+            return False
+        i += 2
+    return True
+
+=======
+Suggestion 3
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    z = 2
+    cnt = 0
+    while n > 1:
+        if n % z == 0:
+            n = n // z
+            cnt += 1
+        else:
+            z += 1
+    print(cnt)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    result = 0
+    i = 2
+    while i*i <= N:
+        if N%i == 0:
+            result += 1
+            while N%i == 0:
+                N //= i
+        i += 1
+    if N != 1:
+        result += 1
+    print(result)
+    
+main()
+
+=======
+Suggestion 6
+
+def is_prime(n):
+    if n == 1:
+        return False
+    else:
+        for i in range(2, int(n**0.5)+1):
+            if n % i == 0:
+                return False
+        return True
+
+=======
+Suggestion 7
+
+def prime_factorization(n):
+    if n == 1:
+        return []
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return [i] + prime_factorization(n // i)
+    return [n]
+
+=======
+Suggestion 8
+
+def prime_factorization(n):
+    if n == 1:
+        return [1]
+    i = 2
+    table = []
+    while i * i <= n:
+        while n % i == 0:
+            n //= i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table
+
+n = int(input())
+factors = prime_factorization(n)
+fact_set = set(factors)
+ans = 0
+for fact in fact_set:
+    tmp = 0
+    while n % fact == 0:
+        n //= fact
+        tmp += 1
+    if tmp == 0:
+        continue
+    i = 1
+    while i * i <= tmp:
+        if tmp % i == 0:
+            if i in fact_set:
+                ans += 1
+            if tmp // i in fact_set:
+                ans += 1
+        i += 1
+    if tmp * tmp == tmp and tmp in fact_set:
+        ans -= 1
+
+=======
+Suggestion 9
+
+def prime_factorization(n):
+    i = 2
+    table = []
+    while i**2 <= n:
+        while n%i == 0:
+            n = n//i
+            table.append(i)
+        i += 1
+    if n > 1:
+        table.append(n)
+    return table
+
+=======
+Suggestion 10
+
+def primeFactorization(n):
+    i = 2
+    primeList = []
+    while i * i <= n:
+        if n % i == 0:
+            primeList.append(i)
+            n //= i
+        else:
+            i += 1
+    if n > 1:
+        primeList.append(n)
+    return primeList
+
+n = int(input())
+primeList = primeFactorization(n)
+ans = 0
+for i in range(1, len(primeList)):
+    if primeList[i] != primeList[i - 1]:
+        ans += 1
+print(ans)

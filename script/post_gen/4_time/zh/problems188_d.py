@@ -1,64 +1,294 @@
-#问题陈述
-#Snuke公司提供各种类型的服务。
-#有一个名为Snuke Prime的付款计划。
-#在这个计划中，通过每天支付C日元（日本的货币），你可以使用该公司提供的所有服务，而不需要额外的费用。
-#你可以在任何一天的开始时开始订阅这个计划，在任何一天的结束时取消订阅。
-#高桥将使用该公司提供的N项服务。
-#他将从第a_i天开始使用这些服务中的第i项，直到第b_i天结束，其中今天是第一天。
-#如果没有订阅Snuke Prime，他必须每天支付c_i日元来使用第i项服务。  
-#求高桥为使用这些服务所需支付的最低总金额。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ C ≦ 10^9
-#1 ≦ a_i ≦ b_i ≦ 10^9
-#1 ≦ c_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N C
-#A_1 B_1 C_1
-#.
-#.
-#.
-#a_N b_N c_N
-#
-#输出
-#打印高桥需要支付的最小总金额。
-#
-#输入样本 1
-#2 6
-#1 2 4
-#2 2 4
-#
-#样本输出 1
-#10
-#他将在第1天和第2天使用第1种服务，在第2天使用第2种服务。
-#如果他只在第2天订阅Snuke Prime，他将在第1天支付4日元，在第2天支付6日元，总共10日元。
-#总付款额不可能少于10日元，所以我们应该印10。
-#
-#输入样本2
-#5 1000000000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#样本输出2
-#163089627821228
-#没有Snuke Prime的情况下，是最佳选择。
-#
-#样本输入3
-#5 100000
-#583563238 820642330 44577
-#136809000 653199778 90962
-#54601291 785892285 50554
-#5797762 453599267 65697
-#468677897 916692569 87409
-#
-#样本输出3
-#88206004785464
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, c, a, b, cost):
+    #print(n, c, a, b, cost)
+    #print('=====================')
+    #print(a)
+    #print(b)
+    #print(cost)
+    #print('=====================')
+    #print('=====================
+
+=======
+Suggestion 2
+
+def main():
+    n,c = map(int,input().split())
+    l = []
+    for _ in range(n):
+        a,b,c = map(int,input().split())
+        l.append((a-1,c))
+        l.append((b,-c))
+    l.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x,y in l:
+        if x != t:
+            ans += min(c,fee)*(x-t)
+            t = x
+        fee += y
+    print(ans)
+main()
+
+=======
+Suggestion 3
+
+def get_input():
+    N,C = map(int,input().split())
+    v = []
+    for i in range(N):
+        a,b,c = map(int,input().split())
+        v.append((a,b,c))
+    return N,C,v
+
+=======
+Suggestion 4
+
+def main():
+    n,c = map(int, input().split())
+    l = []
+    for i in range(n):
+        a,b,d = map(int, input().split())
+        l.append((a,d))
+        l.append((b+1,-d))
+    l.sort()
+    ans = 0
+    fee = 0
+    t = 0
+    for x,y in l:
+        if x != t:
+            ans += min(c,fee)*(x-t)
+            t = x
+        fee += y
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N, C = map(int, input().split())
+    abcs = [list(map(int, input().split())) for _ in range(N)]
+    abcs.sort()
+    #print(abcs)
+    #print(N, C)
+    #print(abcs)
+    #print(abcs[0][0])
+    #print(abcs[0][1])
+    #print(abcs[0][2])
+    #print(abcs[1][0])
+    #print(abcs[1][1])
+    #print(abcs[1][2])
+    #print(abcs[2][0])
+    #print(abcs[2][1])
+    #print(abcs[2][2])
+    #print(abcs[3][0])
+    #print(abcs[3][1])
+    #print(abcs[3][2])
+    #print(abcs[4][0])
+    #print(abcs[4][1])
+    #print(abcs[4][2])
+    #print(abcs[5][0])
+    #print(abcs[5][1])
+    #print(abcs[5][2])
+    #print(abcs[6][0])
+    #print(abcs[6][1])
+    #print(abcs[6][2])
+    #print(abcs[7][0])
+    #print(abcs[7][1])
+    #print(abcs[7][2])
+    #print(abcs[8][0])
+    #print(abcs[8][1])
+    #print(abcs[8][2])
+    #print(abcs[9][0])
+    #print(abcs[9][1])
+    #print(abcs[9][2])
+    #print(abcs[10][0])
+    #print(abcs[10][1])
+    #print(abcs[10][2])
+    #print(abcs[11][0])
+    #print(abcs[11][1])
+    #print(abcs[11][2])
+    #print(abcs[12][0])
+    #print(abcs[12][1])
+    #print(abcs[12][2])
+    #print(abcs[13][0])
+    #print(abcs[13][1])
+    #print(abcs[13][2])
+    #print(abcs[14][0])
+    #print(abcs[14][1])
+    #print
+
+=======
+Suggestion 6
+
+def read_ints():
+    return list(map(int, input().split()))
+
+N, C = read_ints()
+plans = [read_ints() for _ in range(N)]
+plans.sort(key=lambda x:x[0])
+
+=======
+Suggestion 7
+
+def solve(n, c, a, b, cost):
+    dp = [0] * (10**9 + 1)
+    for i in range(n):
+        dp[a[i]] += cost[i]
+        dp[b[i] + 1] -= cost[i]
+    for i in range(10**9):
+        dp[i + 1] += dp[i]
+    return min(c, min(dp))
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    N, C = map(int, input().split())
+    #print(N, C)
+    #print(type(N), type(C))
+    #print(type(N) == int, type(C) == int)
+    #print(type(N) == float, type(C) == float)
+    #print(type(N) == str, type(C) == str)
+    #print(type(N) == bool, type(C) == bool)
+    #print(type(N) == list, type(C) == list)
+    #print(type(N) == tuple, type(C) == tuple)
+    #print(type(N) == set, type(C) == set)
+    #print(type(N) == dict, type(C) == dict)
+    #print(type(N) == complex, type(C) == complex)
+    #print(type(N) == object, type(C) == object)
+    #print(type(N) == frozenset, type(C) == frozenset)
+    #print(type(N) == bytes, type(C) == bytes)
+    #print(type(N) == bytearray, type(C) == bytearray)
+    #print(type(N) == memoryview, type(C) == memoryview)
+
+    #print(type(N) == str, type(C) == int)
+    #print(type(N) == int, type(C) == str)
+    #print(type(N) == str, type(C) == float)
+    #print(type(N) == float, type(C) == str)
+    #print(type(N) == str, type(C) == bool)
+    #print(type(N) == bool, type(C) == str)
+    #print(type(N) == str, type(C) == list)
+    #print(type(N) == list, type(C) == str)
+    #print(type(N) == str, type(C) == tuple)
+    #print(type(N) == tuple, type(C) == str)
+    #print(type(N) == str, type(C) == set)
+    #print(type(N) == set, type(C) == str)
+    #print(type(N) == str, type(C) == dict)
+    #print(type(N) == dict, type(C) == str)
+    #print(type(N) == str, type(C) == complex)
+    #print(type(N) == complex, type(C) == str)
+    #print(type(N) ==
+
+=======
+Suggestion 9
+
+def solve():
+    # N, C = map(int, input().split())
+    N, C = 5, 100000
+    # a, b, c = [], [], []
+    a = [583563238, 136809000, 54601291, 5797762, 468677897]
+    b = [820642330, 653199778, 785892285, 453599267, 916692569]
+    c = [44577, 90962, 50554, 65697, 87409]
+    # for _ in range(N):
+    #     a_i, b_i, c_i = map(int, input().split())
+    #     a.append(a_i)
+    #     b.append(b_i)
+    #     c.append(c_i)
+    # print(a, b, c)
+    # print(N, C)
+    # print(a, b, c)
+    # print(a[0], b[0], c[0])
+    # print(a[1], b[1], c[1])
+    # print(a[2], b[2], c[2])
+    # print(a[3], b[3], c[3])
+    # print(a[4], b[4], c[4])
+    # print(a[5], b[5], c[5])
+    # print(a[6], b[6], c[6])
+    # print(a[7], b[7], c[7])
+    # print(a[8], b[8], c[8])
+    # print(a[9], b[9], c[9])
+    # print(a[10], b[10], c[10])
+    # print(a[11], b[11], c[11])
+    # print(a[12], b[12], c[12])
+    # print(a[13], b[13], c[13])
+    # print(a[14], b[14], c[14])
+    # print(a[15], b[15], c[15])
+    # print(a[16], b[16], c[16])
+    # print(a[17], b[17], c[17])
+    # print(a[18], b[18], c[18])
+    # print(a[19], b[19], c[19])
+    # print(a[20],
+
+=======
+Suggestion 10
+
+def solve():
+    N,C = map(int, input().split())
+    lst = []
+    for i in range(N):
+        lst.append(list(map(int, input().split())))
+    print(lst)
+    print(N,C)
+    print(lst[0][0])
+    print(lst[0][1])
+    print(lst[0][2])
+    print(lst[1][0])
+    print(lst[1][1])
+    print(lst[1][2])
+    print(lst[2][0])
+    print(lst[2][1])
+    print(lst[2][2])
+    print(lst[3][0])
+    print(lst[3][1])
+    print(lst[3][2])
+    print(lst[4][0])
+    print(lst[4][1])
+    print(lst[4][2])
+    print(lst[0][0])
+    print(lst[0][1])
+    print(lst[0][2])
+    print(lst[1][0])
+    print(lst[1][1])
+    print(lst[1][2])
+    print(lst[2][0])
+    print(lst[2][1])
+    print(lst[2][2])
+    print(lst[3][0])
+    print(lst[3][1])
+    print(lst[3][2])
+    print(lst[4][0])
+    print(lst[4][1])
+    print(lst[4][2])
+    print(lst[0][0])
+    print(lst[0][1])
+    print(lst[0][2])
+    print(lst[1][0])
+    print(lst[1][1])
+    print(lst[1][2])
+    print(lst[2][0])
+    print(lst[2][1])
+    print(lst[2][2])
+    print(lst[3][0])
+    print(lst[3][1])
+    print(lst[3][2])
+    print(lst[4][0])
+    print(lst[4][1])
+    print(lst[4][2])
+    print(lst[0][0])
+    print(lst[0][1])
+    print(lst[0][2])
+    print(lst[1][0])
+    print(lst[1][1])
+    print(lst[1][2])
+    print(lst[2][0])
+    print(lst[2][1])
+    print(lst[2][2])
+    print(lst[3][0])
+    print(lst[3][1])
+    print(lst[3][2])

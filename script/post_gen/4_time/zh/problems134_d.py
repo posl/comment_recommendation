@@ -1,47 +1,151 @@
-#问题陈述
-#有N个空盒子从左到右排列成一排。
-#整数i写在左起第i个盒子上（1 ≦ i ≦ N）。
-#对于每一个盒子，Snuke可以选择在里面放一个球或者什么都不放。
-#当满足以下条件时，我们说一组在盒子里放球或不放球的选择是好的：
-#对于1到N（包括）之间的每一个整数i，写有i的倍数的盒子中所包含的球的总数与a_i的模数2相同。
-#是否存在一个好的选择集？如果答案是肯定的，请找出一个好的选择集。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#a_i是0或1。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#输出
-#如果一个好的选择集不存在，打印-1。
-#如果存在一个好的选择集，以下列格式打印一个这样的选择集：
-#M
-#b_1 b_2 ... b_M
-#其中M表示将包含一个球的盒子的数量，而b_1, b_2, ..., b_M是写在这些盒子上的整数，顺序不限。
-#
-#输入样本1
-#3
-#1 0 0
-#
-#样本输出1
-#1
-#1
-#考虑只在写有1的盒子里放一个球。
-#有三个写着1的倍数的盒子：写着1、2、3的盒子。这些盒子里装的球的总数是1。
-#只有一个写着2的倍数的盒子：写着2的盒子，这些盒子里的球的总数是0。
-#只有一个盒子上写着3的倍数：3的盒子，这些盒子里的球的总数是0。
-#因此，条件得到满足，所以这组选择是好的。
-#
-#输入样本2
-#5
-#0 0 0 0 0
-#
-#样本输出2
-#0
-#在盒子里什么都不放可以是一组好的选择。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N = int(input())
+    a = [int(i) for i in input().split()]
+    return N, a
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = [0]*n
+    for i in range(n-1,-1,-1):
+        if sum(b[i::i+1])%2 != a[i]:
+            b[i] = 1
+    print(sum(b))
+    if sum(b) != 0:
+        print(*[i+1 for i in range(n) if b[i] == 1])
+
+main()
+
+=======
+Suggestion 3
+
+def solve(n, a):
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i]
+    for i in range(1, n + 1):
+        if a[i - 1] == 1:
+            for j in range(i * 2 - 1, n, i):
+                b[j] = 1
+    if sum(b) == 0:
+        print(0)
+    else:
+        print(sum(b))
+        for i in range(n):
+            if b[i] == 1:
+                print(i + 1, end=' ')
+        print()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    a = [int(i) for i in input().split()]
+    b = [0]*N
+    c = [0]*N
+    d = []
+    for i in range(N):
+        if a[i] == 1:
+            d.append(i+1)
+    M = len(d)
+    if M == 0:
+        print(0)
+        return
+    for i in range(M):
+        for j in range(M):
+            if d[i] % d[j] == 0:
+                b[i] += 1
+    for i in range(M):
+        if b[i] % 2 == 1:
+            print(-1)
+            return
+    print(M)
+    for i in range(M):
+        print(d[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    a = list(map(int, input().split()))
+    b = [0]*N
+    for i in range(N):
+        if a[i] == 1:
+            b[i] = 1
+            for j in range(2, N//i+1):
+                b[i*j-1] += 1
+    c = []
+    for i in range(N):
+        if b[i] % 2 != a[i]:
+            c.append(i+1)
+    if len(c) == 0:
+        print(0)
+    else:
+        print(len(c))
+        print(*c)
+
+=======
+Suggestion 6
+
+def check(a):
+    n = len(a)
+    # print(n)
+    for i in range(n):
+        if a[i] == 1:
+            for j in range(n):
+                if (j+1) % (i+1) == 0:
+                    a[j] = (a[j] + 1) % 2
+    if sum(a) == 0:
+        return True
+    else:
+        return False
+
+n = int(input())
+a = list(map(int, input().split()))
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    a = list(map(int,input().split()))
+    b = [0]*N
+    for i in range(N):
+        if a[i] == 1:
+            if i+1 < N:
+                b[i+1] = 1
+            else:
+                b[0] = 1
+    print(sum(b))
+    for i in range(len(b)):
+        if b[i] == 1:
+            print(i+1)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n)[::-1]:
+        if sum(b[i::i+1]) % 2 != a[i]:
+            b[i] = 1
+    print(sum(b))
+    print(*[i+1 for i in range(n) if b[i]])

@@ -1,33 +1,117 @@
-#问题陈述
-#高桥决定举办一些编程比赛。
-#举办一次比赛需要一个100分的问题，一个200分的问题，一个300分的问题和一个400分的问题。
-#当他有A_1、A_2、A_3和A_4的草稿，分别是100分、200分、300分和400分的问题，他最多可以举办多少次比赛？
-#同一草稿只能使用一次。
-#
-#限制条件
-#1 ≦ A_i ≦ 100 (1 ≦ i ≦ 4)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A_1 A_2 A_3 A_4
-#
-#输出
-#打印一个整数，代表可以举行的最大竞赛数量。  
-#
-#输入样本 1
-#5 3 7 11
-#
-#样本输出1
-#3
-#通过为每个档期使用三个草稿，他可以举行三次比赛。
-#他只有三个草稿来解决200分的问题，所以他不能举行四次。
-#
-#样本输入2
-#100 100 1 100
-#
-#样本输出2
-#1
-#即使只有一个空位，也不能举行比赛。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = list(map(int, input().split()))
+    print(min(a))
+
+=======
+Suggestion 2
+
+def main():
+    #输入
+    a = list(map(int, input().split()))
+    #处理
+    a.sort()
+    #输出
+    if a[0] + a[1] + a[2] >= a[3]:
+        print(3)
+    elif a[0] + a[1] >= a[2] + a[3]:
+        print(2)
+    elif a[0] + a[1] >= a[3]:
+        print(2)
+    else:
+        print(1)
+
+=======
+Suggestion 3
+
+def main():
+    a = [int(i) for i in input().split()]
+    a.sort()
+    print(a[0])
+
+=======
+Suggestion 4
+
+def solve():
+    a = [int(i) for i in input().split(" ")]
+    a.sort()
+    print(a[0])
+
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    a = map(int, raw_input().split())
+    print min(a) / 100
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    a1, a2, a3, a4 = map(int, input().split())
+    # 计算可以举行的最大比赛数量
+    print(min(a1, a2, a3, a4))
+
+=======
+Suggestion 7
+
+def solve():
+    s = input()
+    a = s.split()
+    for i in range(len(a)):
+        a[i] = int(a[i])
+    if a.count(100) == 1 and a.count(200) == 1 and a.count(300) == 1 and a.count(400) == 1:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def solve():
+    #读取输入
+    a1,a2,a3,a4 = map(int,input().split())
+
+    #处理
+    if a1+a2+a3+a4 <= 100:
+        print(4)
+    elif a1+a2+a3 <= 100:
+        print(3)
+    elif a1+a2 <= 100:
+        print(2)
+    elif a1 <= 100:
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def main():
+    a = input().split()
+    a = [int(i) for i in a]
+    a.sort()
+    print(a[0])
+
+=======
+Suggestion 10
+
+def solve():
+    a1, a2, a3, a4 = map(int, input().split())
+    res = 0
+    if a1 == 100:
+        res += 1
+    if a2 == 100:
+        res += 1
+    if a3 == 100:
+        res += 1
+    if a4 == 100:
+        res += 1
+    print(res)

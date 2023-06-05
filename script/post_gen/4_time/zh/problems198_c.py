@@ -1,42 +1,65 @@
-#问题陈述
-#高桥站在一个二维平面的原点上。
-#只要迈出一步，他就可以移动到一个与他当前位置的欧几里得距离正好是R的点（移动的目的地的坐标不一定是整数）。没有其他的移动方式。
-#求高桥在到达（X，Y）之前要走的最小步数。
-#我们提醒你，点（x_1,y_1）和（x_2,y_2）之间的欧几里得距离是（（x_1-x_2）^2+（y_1-y_2）^2）^（1/2）。
-#
-#约束条件
-#1 ≦ R ≦ 10^5
-#0 ≦ X,Y ≦ 10^5
-#(X,Y) ≠ (0,0)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#R X Y
-#
-#輸出
-#打印高桥在到达(X, Y)之前所要走的最小步数。
-#
-#输入样本 1
-#5 15 0
-#
-#样本输出 1
-#3
-#他可以通过三个步骤到达那里：(0,0) -> (5,0) -> (10,0) -> (15,0).
-#这是需要的最小数量：他不能用两步或更少的步骤到达那里。
-#
-#输入样本 2
-#5 11 0
-#
-#样本输出 2
-#3
-#一条最佳路线是(0,0) -> (5,0) -> (8,4) -> (11,0)。
-#
-#输入样本 3
-#3 4 4
-#
-#输出样本 3
-#2
-#一条最优路线是(0,0)->(2-((2)^(1/2))/(2))，2+((2)^(1/2))/(2))-> (4,4).
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    input_list = input().split()
+    R = int(input_list[0])
+    X = int(input_list[1])
+    Y = int(input_list[2])
+    return R, X, Y
+
+=======
+Suggestion 2
+
+def problems198_c():
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    r,x,y = map(int,input().split())
+    if x**2+y**2 < r**2:
+        print(2)
+    else:
+        print(int((x**2+y**2)**0.5/r)+1)
+
+=======
+Suggestion 5
+
+def main():
+    R, X, Y = map(int, input().split())
+    if R * R > X * X + Y * Y:
+        print(2)
+    else:
+        print(int((X * X + Y * Y) ** 0.5 // R) + 1)
+
+=======
+Suggestion 6
+
+def problems198_c():
+    pass
+
+=======
+Suggestion 7
+
+def problem198_c():
+    pass
+
+=======
+Suggestion 8
+
+def solve():
+    R, X, Y = map(int, input().split())
+    if X**2 + Y**2 < R**2:
+        print(2)
+    else:
+        print(int((X**2 + Y**2)**0.5 / R) + 1)

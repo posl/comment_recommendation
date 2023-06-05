@@ -1,42 +1,118 @@
-#问题陈述
-#有一个长度为N的整数序列A，其值是未知的。
-#给出一个长度为N-1的整数序列B，已知其满足以下条件：
-# B_i ≧ max(A_i, A_{i+1})
-#求A中各元素的最大可能之和。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 100
-#0 ≦ B_i ≦ 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#B_1 B_2 ...B_{N-1}
-#
-#输出
-#打印A元素的最大可能之和。
-#
-#输入样本 1
-#3
-#2 5
-#
-#样本输出1
-#9
-#例如，A可以是( 2 , 1 , 5 )，( -1 , -2 , -3 )，或( 2 , 2 , 5 )。在这些候选数中，A = ( 2 , 2 , 5 ) 的总和可能最大。
-#
-#样本输入2
-#2
-#3
-#
-#样本输出2
-#6
-#
-#样本输入3
-#6
-#0 153 10 10 23
-#
-#样本输出3
-#53
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def sum_max(a):
+    sum = 0
+    for i in a:
+        sum += i
+    return sum
+
+=======
+Suggestion 2
+
+def maxsum(A):
+    if len(A) == 1:
+        return A[0]
+    elif len(A) == 2:
+        return max(A)
+    else:
+        maxA = max(A)
+        i = A.index(maxA)
+        if i == 0:
+            return maxA + maxsum(A[i+1:])
+        elif i == len(A)-1:
+            return maxA + maxsum(A[:i])
+        else:
+            return maxA + max(maxsum(A[:i]), maxsum(A[i+1:]))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[n-1] = b[n-2]
+    for i in range(1, n-1):
+        a[i] = min(b[i-1], b[i])
+    print(sum(a))
+
+=======
+Suggestion 4
+
+def get_max_sum(arr):
+    n = len(arr)
+    if n == 2:
+        return arr[0] + arr[1]
+    sum = arr[0] + arr[1]
+    for i in range(1, n-1):
+        if arr[i] > arr[i-1]:
+            sum += arr[i]
+        else:
+            sum += arr[i-1]
+    sum += arr[-1]
+    return sum
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = [0] * N
+    A[0] = B[0]
+    A[N-1] = B[N-2]
+    for i in range(1, N-1):
+        A[i] = min(B[i-1], B[i])
+    print(sum(A))
+
+=======
+Suggestion 6
+
+def max_sum(n, b):
+    a = [0 for i in range(n)]
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(1, n-1):
+        if b[i] <= b[i-1]:
+            a[i] = b[i]
+        else:
+            a[i] = b[i-1]
+    return sum(a)
+
+=======
+Suggestion 7
+
+def solve(n, b):
+    a = []
+    a.append(b[0])
+    for i in range(1, n-1):
+        a.append(max(b[i], b[i-1]))
+    a.append(b[n-2])
+    return sum(a)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    b = list(map(int, input().split()))
+    a = [0] * n
+    a[0] = b[0]
+    a[-1] = b[-1]
+    for i in range(1, n - 1):
+        a[i] = min(b[i - 1], b[i])
+    print(sum(a))
+
+=======
+Suggestion 9
+
+def solve(n, b):
+    a = [0] * n
+    a[0] = b[0]
+    for i in range(1, n):
+        a[i] = min(b[i-1], b[i])
+    return sum(a)

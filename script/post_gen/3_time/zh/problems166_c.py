@@ -1,57 +1,270 @@
-#问题陈述
-#在AtCoder Hill有N个观测站，称为Obs.1, Obs.2, ..., Obs.观测站i的海拔高度为H_i。
-#还有M条路，每条路连接两个不同的观测站。道路j连接着Obs.A_j和Obs.B_j。
-#当i号观测点的海拔高度高于仅用一条路就能到达的所有观测点时，就可以说它是好的。
-#需要注意的是，如果从i号观测点出发，仅用一条路就能到达任何一个观测点，那么i号观测点也是好的。
-#有多少个好的天文台？
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ H_i ≦ 10^9
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#多条道路可以连接同一对观测站。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N M
-#H_1 H_2 ...H_N
-#A_1 B_1
-#A_2 B_2
-#:
-#A_M B_M
-#
-#输出
-#打印好的观测站的数量。
-#
-#输入样本 1
-#4 3
-#1 2 3 4
-#1 3
-#2 3
-#2 4
-#
-#样本输出 1
-#2
-#
-#从观察点。1，你可以通过一条路到达Obs.3，只需使用一条路。观察点1的海拔高度不高于观察点3。1的海拔不比3的高。3，所以观察点。1不是很好。
-#从Obs.2，你可以通过一条路到达观测点。3和4只需使用一条路。观察点2的海拔不比观察点3高。2的海拔不比3的高。3，所以观察点。2号观测点不好走。
-#从Obs.3，你可以通过一条路到达观测点。1和2只需使用一条路。观察点3的海拔高度比观察点2高。3的海拔比1和2的高。1和2，所以3号观测点很好。3号观测点是好的。
-#从观察点4，可以到达观察点5。4，你可以通过一条路到达Obs.2，只需使用一条路。观察点4的海拔高度比观察点2高。4的海拔比2的高。2，所以观察点。4是好的。
-#因此，好的观测站是Obs.3和4，所以有两个好的天文台。
-#
-#样本输入2
-#6 5
-#8 6 9 1 2 1
-#1 3
-#4 2
-#4 3
-#4 6
-#4 6
-#
-#样本输出 2
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    A = [0] * M
+    B = [0] * M
+    for i in range(M):
+        A[i], B[i] = map(int, input().split())
+
+    good = [True] * N
+    for i in range(M):
+        if H[A[i] - 1] <= H[B[i] - 1]:
+            good[A[i] - 1] = False
+        if H[B[i] - 1] <= H[A[i] - 1]:
+            good[B[i] - 1] = False
+
+    print(sum(good))
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+
+    h = list(map(int, input().split()))
+
+    ab = [list(map(int, input().split())) for _ in range(m)]
+
+    good = [True] * n
+
+    for a, b in ab:
+        if h[a - 1] < h[b - 1]:
+            good[a - 1] = False
+        elif h[a - 1] > h[b - 1]:
+            good[b - 1] = False
+        else:
+            good[a - 1] = False
+            good[b - 1] = False
+
+    print(sum(good))
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    H = list(map(int, input().split()))
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    #print(N,M,H,AB)
+    #N = 6
+    #M = 5
+    #H = [8, 6, 9, 1, 2, 1]
+    #AB = [[1, 3], [4, 2], [4, 3], [4, 6], [4, 6]]
+    #print(N,M,H,AB)
+    #print(N,M,H,AB)
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3], [2, 4]]
+    #print(N,M,H,AB)
+    #print(N,M,H,AB)
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3], [2, 4]]
+    #print(N,M,H,AB)
+
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3], [2, 4]]
+    #print(N,M,H,AB)
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3], [2, 4]]
+    #print(N,M,H,AB)
+
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3], [2, 4]]
+    #print(N,M,H,AB)
+
+    #N = 4
+    #M = 3
+    #H = [1, 2, 3, 4]
+    #AB = [[1, 3], [2, 3],
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    h = list(map(int, input().split()))
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    ans = 0
+    for i in range(n):
+        flag = True
+        for j in range(m):
+            if i+1 == a[j] or i+1 == b[j]:
+                continue
+            if h[i] <= h[a[j]-1] or h[i] <= h[b[j]-1]:
+                flag = False
+                break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    h = list(map(int, input().split()))
+    edges = []
+    for i in range(m):
+        a, b = map(int, input().split())
+        edges.append((a, b))
+    ans = 0
+    for i in range(n):
+        flag = True
+        for edge in edges:
+            if i+1 in edge:
+                if h[i] <= h[edge[0]-1] or h[i] <= h[edge[1]-1]:
+                    flag = False
+                    break
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    #输入
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        #print(a,b)
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #计算
+    #定义一个列表用来存储是否是好的观测站
+    good = [True]*N
+    #print(good)
+    #遍历所有的道路
+    for i in range(M):
+        #print(i)
+        #print(H[A[i]-1],H[B[i]-1])
+        #print(A[i],B[i])
+        #print(good[A[i]-1],good[B[i]-1])
+        #print(good[A[i]-1] and good[B[i]-1])
+        #print(H[A[i]-1] <= H[B[i]-1])
+        #print(H[A[i]-1] >= H[B[i]-1])
+        #print(H[A[i]-1] <= H[B[i]-1] and H[A[i]-1] >= H[B[i]-1])
+        #print(good[A[i]-1] and good[B[i]-1] and H[A[i]-1] <= H[B[i]-1] and H[A[i]-1] >= H[B[i]-1])
+        if good[A[i]-1] and good[B[i]-1] and H[A[i]-1] <= H[B[i]-1] and H[A[i]-1] >= H[B[i]-1]:
+            good[A[i]-1] = False
+            good[B[i]-1] = False
+            #print(good)
+        elif good[A[i]-1] and H[A[i]-1] >= H[B[i]-1]:
+            good[A[i]-1] = False
+            #print(good)
+        elif good[B[i]-1] and H[A[i]-1] <= H[B[i]-1]:
+            good[B[i]-1] = False
+            #print(good)
+    #print(good)
+    #输出
+    print(good.count(True))
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    AB = [list(map(int,input().split())) for _ in range(M)]
+    ans = 0
+    for i in range(N):
+        flag = True
+        for j in range(M):
+            if AB[j][0] == i+1:
+                if H[i] <= H[AB[j][1]-1]:
+                    flag = False
+            elif AB[j][1] == i+1:
+                if H[i] <= H[AB[j][0]-1]:
+                    flag = False
+        if flag:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    H = list(map(int,input().split()))
+    A = []
+    B = []
+    for i in range(M):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    count = 0
+    for i in range(N):
+        flag = 0
+        for j in range(M):
+            if i+1 == A[j]:
+                if H[i] <= H[B[j]-1]:
+                    flag = 1
+                    break
+            elif i+1 == B[j]:
+                if H[i] <= H[A[j]-1]:
+                    flag = 1
+                    break
+        if flag == 0:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    h = list(map(int,input().split()))
+    a = [0]*m
+    b = [0]*m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    print(n,m)
+    print(h)
+    print(a)
+    print(b)
+    #print(h[a[0]-1])
+    #print(h[b[0]-1])
+    #print(h[a[1]-1])
+    #print(h[b[1]-1])
+    #print(h[a[2]-1])
+    #print(h[b[2]-1])
+
+    #print(h[a[0]-1] > h[b[0]-1])
+    #print(h[a[1]-1] > h[b[1]-1])
+    #print(h[a[2]-1] > h[b[2]-1])
+    #print(h[a[0]-1] > h[b[0]-1] and h[a[1]-1] > h[b[1]-1] and h[a[2]-1] > h[b[2]-1])
+    #print(h[0] > h[1])
+
+    count = 0
+    for i in range(m):
+        if h[a[i]-1] > h[b[i]-1]:
+            count += 1
+    print(count)

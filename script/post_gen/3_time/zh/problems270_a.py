@@ -1,48 +1,125 @@
-#问题陈述
-#有一次考试，包括三个问题，价值1、2、4分。
-#高桥、青木和斯努克参加了这次考试。
-#高桥得了A分，青木得了B分。
-#斯努克解决了高桥和青木中至少一个人解决的所有问题，而没有解决他们两人都没有解决的任何问题。
-#求克的得分。
-#可以证明，在这个问题的约束条件下，克的分数是唯一确定的。
-#
-#约束条件
-#0≦ A,B ≦ 7
-#A和B是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#A B
-#
-#输出
-#打印克的分数为一个整数。
-#
-#输入样本 1
-#1 2
-#
-#输出样本 1
-#3
-#由于高桥得了1分，我们看到他只解决了1分的问题，没有解决其他两个问题。
-#同样地，由于青木得了2分，我们看到他只解决了2分的问题，而没有解决其他两个问题。  
-#因此，斯努克一定是解决了1点和2点的问题，但没有解决4点的问题，而高桥和青木都没有解决，所以得分是3分。
-#因此，应该印上3。
-#
-#输入样本 2
-#5 3
-#
-#样本输出 2
-#7
-#由于高桥得了5分，我们看到他解决了1分和4分的问题，但没有解决2分的问题。
-#同样地，由于青木得了3分，我们看到他解决了1分和2分的问题，但没有解决4分的问题。
-#因此，三个问题中至少有一个被高桥和青木解决了，所以我们看到Snuke解决了所有的问题，得分是7分。
-#因此，7应该被打印出来。
-#
-#输入样本 3
-#0 0
-#
-#样本输出3
-#0
-#高桥和青木都没有解决任何问题。
-#因此，克也是如此。因此，应该打印0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b = map(int, input().split())
+    print(7-a+7-b)
+
+=======
+Suggestion 2
+
+def solve():
+    a,b = map(int,input().split())
+    print(7-a+7-b)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    A,B = map(int,input().split())
+    print(7-A+7-B)
+
+=======
+Suggestion 4
+
+def get_snuke_score(a, b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 0 and b == 1:
+        return 2
+    elif a == 0 and b == 2:
+        return 1
+    elif a == 0 and b == 3:
+        return 3
+    elif a == 0 and b == 4:
+        return 1
+    elif a == 0 and b == 5:
+        return 2
+    elif a == 0 and b == 6:
+        return 1
+    elif a == 0 and b == 7:
+        return 0
+    elif a == 1 and b == 0:
+        return 2
+    elif a == 1 and b == 1:
+        return 3
+    elif a == 1 and b == 2:
+        return 2
+    elif a == 1 and b == 3:
+        return 4
+    elif a == 1 and b == 4:
+        return 2
+    elif a == 1 and b == 5:
+        return 3
+    elif a == 1 and b == 6:
+        return 2
+    elif a == 1 and b == 7:
+        return 1
+    elif a == 2 and b == 0:
+        return 1
+    elif a == 2 and b == 1:
+        return 2
+    elif a == 2 and b == 2:
+        return 1
+    elif a == 2 and b == 3:
+        return 3
+    elif a == 2 and b == 4:
+        return 1
+    elif a == 2 and b == 5:
+        return 2
+    elif a == 2 and b == 6:
+        return 1
+    elif a == 2 and b == 7:
+        return 0
+    elif a == 3 and b == 0:
+        return 3
+    elif a == 3 and b == 1:
+        return 4
+    elif a == 3 and b == 2:
+        return 3
+    elif a == 3 and b == 3:
+        return 5
+    elif a == 3 and b == 4:
+        return
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(7-a+7-b)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    print(a ^ b)
+
+=======
+Suggestion 7
+
+def getScore(a,b):
+    if a == 0 and b == 0:
+        return 0
+    elif a == 0:
+        return b + 1
+    elif b == 0:
+        return a + 1
+    else:
+        return a + b + 1
+
+=======
+Suggestion 8
+
+def main():
+    A,B = map(int, input().split())
+    if A >= 4:
+        A -= 4
+    if B >= 4:
+        B -= 4
+    print(7 - A - B)

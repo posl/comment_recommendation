@@ -1,61 +1,144 @@
-#问题陈述
-#有N个学生要参加为期4天的考试。
-#每天都有300分的考试，总分1200分。
-#前三天的考试已经结束，现在第四天即将开始。第i个学生（1 ≦ i ≦ N）在第j天（1 ≦ j ≦ 3）得到P_{i, j}分。
-#对于每个学生，确定他/她在第四天之后是否有可能排在前K位。
-#这里，一个学生在第四天后的排名被定义为四天内总分高于该学生的学生数量，再加上1。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 10^5
-#0 ≦ P_{i, j} ≦ 300 (1 ≦ i ≦ N, 1 ≦ j ≦ 3)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#P_{1,1} P_{1,2} P_{1,3}
-#.
-#.
-#.
-#P_{N,1} P_{N,2} P_{N,3}
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含Yes，如果第i个学生在第四天后有可能排在前K名，否则就是No。
-#
-#输入样本 1
-#3 1
-#178 205 132
-#112 220 96
-#36 64 20
-#
-#样本输出1
-#Yes
-#Yes
-#No
-#如果每个学生在第四天都得了100分，那么第1名的学生将排名第1。
-#如果第2名学生在第四天得了100分，其他学生得了0分，第2名学生将排名第1。
-#第3名的学生永远不会排名第1。  
-#
-#输入样本 2
-#2 1
-#300 300 300
-#200 200 200
-#
-#样品输出2
-#Yes
-#Yes
-#
-#采样输入3
-#4 2
-#127 235 78
-#192 134 298
-#28 56 42
-#96 120 250
-#
-#样本输出3
-#Yes
-#Yes
-#No
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for _ in range(n)]
+    for i in range(n):
+        p[i].sort(reverse=True)
+    for i in range(n):
+        if p[i][0] + p[i][1] + p[i][2] >= k:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    p = [list(map(int,input().split())) for _ in range(n)]
+    p.sort(key=lambda x:sum(x),reverse=True)
+    p4 = [p[i][0] for i in range(n)]
+    p4.sort(reverse=True)
+    for i in range(n):
+        if p4.index(p[i][0])+1<=k:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int, input().split())
+    n_list = []
+    for i in range(n):
+        n_list.append(list(map(int, input().split())))
+    print(n_list)
+    print(n,k)
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    score = []
+    for i in range(n):
+        score.append(list(map(int, input().split())))
+    for i in range(n):
+        score[i].sort(reverse=True)
+    for i in range(n):
+        if score[i][0] + score[i][1] + score[i][2] >= k:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+    P.sort(key=lambda x: sum(x), reverse=True)
+    print("Yes" if P[K-1] == P[K] else "No")
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    p = []
+    for i in range(n):
+        p.append(list(map(int, input().split())))
+    p = sorted(p, key=lambda x: sum(x), reverse=True)
+    for i in range(n):
+        if i < k:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    p = [list(map(int, input().split())) for i in range(n)]
+    print(p)
+    for i in range(n):
+        p[i].append(sum(p[i]))
+    print(p)
+    p.sort(key=lambda x: x[3], reverse=True)
+    print(p)
+    for i in range(n):
+        if p[i][3] > p[k-1][3]:
+            print('No')
+        else:
+            print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    scores = []
+    for i in range(n):
+        scores.append(list(map(int, input().split())))
+    print(scores)
+    for i in range(n):
+        scores[i].sort(reverse=True)
+        if scores[i][0] + scores[i][1] + scores[i][2] >= k:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 9
+
+def main():
+    N, K = map(int, input().split())
+    P = [list(map(int, input().split())) for _ in range(N)]
+    P.sort(key=lambda x: sum(x), reverse=True)
+    for i in range(N):
+        if sum(P[i]) > sum(P[K - 1]):
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 10
+
+def solve():
+    N, K = map(int, input().split())
+    P = []
+    for i in range(N):
+        P.append(list(map(int, input().split())))
+    P.sort(key=lambda x: sum(x), reverse=True)
+    for i in range(N):
+        if i < K:
+            print('Yes')
+        else:
+            print('No')
+    return 0

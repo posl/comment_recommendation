@@ -1,54 +1,146 @@
-#问题陈述
-#我们有一个有N首歌曲的播放列表，编号为1，...，N。
-#歌曲i持续了A_i秒。
-#当播放该播放列表时，歌曲1，歌曲2，...，和歌曲N按这个顺序播放。当歌曲N结束时，播放列表会重复播放，再次从歌曲1开始。当一首歌曲正在播放时，下一首歌曲不会播放；当一首歌曲结束时，下一首歌曲立即开始。
-#在播放列表开始后的T秒内，哪首歌正在播放？还有，从那首歌开始到现在已经过去了多少秒？
-#没有任何输入，在播放列表开始播放后正好T秒的时候换歌。
-#
-#约束条件
-#1 ≦ N ≦ 10^5
-#1 ≦ T ≦ 10^{18}
-#1 ≦ A_i ≦ 10^9
-#播放列表在开始播放后的T秒内不更换歌曲。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N T
-#A_1 ...A_N
-#
-#输出
-#打印一个整数，代表在播放列表开始后T秒内正在播放的歌曲，以及一个整数，代表从该歌曲开始后已经过去的秒数，用空格分隔。
-#
-#输入示例 1
-#3 600
-#180 240 120
-#
-#样品输出1
-#1 60
-#当播放该播放列表时，会发生以下情况。(假设它在时间0开始播放）。
-#从时间0到时间180，播放歌曲1。
-#从时间180到时间420，播放歌曲2。
-#从时间420到时间540，播放歌曲3。
-#从时间540到时间720，播放歌曲1。
-#从时间720到时间960，播放歌曲2。
-#.
-#.
-#.
-#在时间600，歌曲1正在播放，从该歌曲的开始到现在已经过去了60秒。
-#
-#样本输入2
-#3 281
-#94 94 94
-#
-#样本输出2
-#3 93
-#
-#样本输入3
-#10 5678912340
-#1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-#
-#样本输出3
-#6 678912340
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T -= 1
+    T %= sum(A)
+    a = 0
+    for i in range(N):
+        T -= A[i]
+        if T < 0:
+            a = i
+            break
+    print(a+1, T+A[a])
+
+=======
+Suggestion 2
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+    total = sum(a)
+    t = t%total
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+        if sum >= t:
+            print(i+1)
+            break
+
+=======
+Suggestion 3
+
+def main():
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # print(n, t)
+    # print(a)
+
+    # t = t - 1
+    # t = t % sum(a)
+    # print(t)
+
+    # for i in range(n):
+    #     if t < a[i]:
+    #         print(i+1, t)
+    #         break
+    #     t -= a[i]
+
+    # print(a)
+    t -= 1
+    t %= sum(a)
+    # print(t)
+    for i in range(n):
+        if t < a[i]:
+            print(i+1, t)
+            break
+        t -= a[i]
+
+=======
+Suggestion 4
+
+def main():
+    n,t = map(int,input().split())
+    a = list(map(int,input().split()))
+
+    #print(n,t)
+    #print(a)
+
+    i = 0
+    while t > 0:
+        t -= a[i]
+        i += 1
+        if i == n:
+            i = 0
+
+    print(i,t+a[i-1])
+
+=======
+Suggestion 5
+
+def main():
+    N,T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T = T % sum(A)
+    for i in range(N):
+        if T <= A[i]:
+            print(i+1, T)
+            return
+        else:
+            T -= A[i]
+
+=======
+Suggestion 6
+
+def get_next_song(song_num, song_list):
+    if song_num >= len(song_list):
+        return 1
+    else:
+        return song_num + 1
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def main():
+    # 读入数据
+    n, t = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # 模拟
+    # 歌曲循环播放
+    # 当前播放的歌曲编号
+    cur = 0
+    # 当前播放的歌曲已经播放的时间
+    cur_time = 0
+    while cur_time + a[cur] <= t:
+        cur_time += a[cur]
+        cur += 1
+        if cur == n:
+            cur = 0
+
+    print(cur + 1, cur_time)
+
+=======
+Suggestion 9
+
+def main():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+    T = T % sum(A)
+    for i in range(N):
+        if T < A[i]:
+            print(i + 1, T)
+            exit()
+        else:
+            T -= A[i]

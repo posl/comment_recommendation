@@ -1,69 +1,73 @@
-#问题陈述
-#有N个细胞排列成一排，从左到右编号为1，2，...，N。
-#德住在这些细胞里，目前在1号细胞。他正试图通过下面的程序到达N单元。
-#给你一个小于或等于10的整数K，以及K个不相交的线段[L_1, R_1], [L_2, R_2], ..., [L_K, R_K]。
-#让S是这K个线段的线段。
-#这里，段[l, r]表示由满足l ≦ i ≦ r的所有整数i组成的集合。
-#当你在单元格i上时，从S中挑选一个整数d并移动到单元格i+d。
-#为了帮助德，请找出去N单元格的方法，模数为998244353。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ min(N, 10)
-#1 ≦ L_i ≦ R_i ≦ N
-#[L_i, R_i] 和 [L_j, R_j] 不相交 (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#L_1 R_1
-#L_2 R_2
-#:
-#L_K R_K
-#
-#输出
-#打印Tak从单元格1到单元格N的方式的数量，模数为998244353。
-#
-#输入样本 1
-#5 2
-#1 1
-#3 4
-#
-#样本输出 1
-#4
-#集合S是段[1，1]和段[3，4]的联合，因此S={1，3，4}成立。
-#有4种可能的方式来到达单元格5：
-#1 -> 2 -> 3 -> 4 -> 5,
-#1 -> 2 -> 5,
-#1->4->5和
-#1 -> 5.
-#
-#样本输入 2
-#5 2
-#3 3
-#5 5
-#
-#样本输出2
-#0
-#因为S = { 3, 5 }成立，你无法到达单元格5。
-#打印0。
-#
-#输入样本 3
-#5 1
-#1 2
-#
-#样本输出3
-#5
-#
-#样本输入4
-#60 3
-#5 8
-#1 3
-#10 15
-#
-#样本输出4
-#221823067
-#请注意，你必须打印出998244353的模数的答案。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    LR = [list(map(int, input().split())) for _ in range(K)]
+    MOD = 998244353
+    dp = [0] * (N + 1)
+    dp[1] = 1
+    dpsum = [0] * (N + 1)
+    dpsum[1] = 1
+    for i in range(2, N + 1):
+        for l, r in LR:
+            dp[i] += dpsum[max(0, i - l)] - dpsum[max(0, i - r - 1)]
+            dp[i] %= MOD
+        dpsum[i] = dpsum[i - 1] + dp[i]
+        dpsum[i] %= MOD
+    print(dp[N])
+solve()
+
+=======
+Suggestion 3
+
+def check_list(list):
+    for i in range(0,len(list)):
+        if list[i] == 0:
+            return False
+    return True
+
+=======
+Suggestion 4
+
+def problems179_d():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    print("Hello world!")
+
+=======
+Suggestion 6
+
+def get_input():
+    N, K = map(int, input().split())
+    LRs = [list(map(int, input().split())) for _ in range(K)]
+    return N, K, LRs
+
+=======
+Suggestion 7
+
+def input():
+    input_str = input()
+    input_list = input_str.split(' ')
+    N = int(input_list[0])
+    K = int(input_list[1])
+    L = []
+    R = []
+    for i in range(K):
+        input_str = input()
+        input_list = input_str.split(' ')
+        L.append(int(input_list[0]))
+        R.append(int(input_list[1]))
+    return N, K, L, R

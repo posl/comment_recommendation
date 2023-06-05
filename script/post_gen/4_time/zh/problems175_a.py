@@ -1,37 +1,131 @@
-#问题陈述
-#我们在AtCoder镇有一些连续三天的天气记录。一个长度为3的字符串S代表这些记录--如果第i个字符是S，意味着第i天是晴天；如果该字符是R，意味着该天是雨天。
-#找出这段时间内连续下雨的最大天数。
-#
-#限制条件
-#|S| = 3
-#S的每个字符都是S或R。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印该期间最大的连续阴雨天数。
-#
-#样本输入1
-#RRS
-#
-#样本输出1
-#2
-#我们在这段时间的第1天和第2天都有雨。这里，最大的连续下雨天数是2，所以我们应该打印2。
-#
-#输入样本 2
-#SSS
-#
-#样本输出2
-#0
-#整个时期都是晴天。我们没有雨天，所以我们应该打印0。
-#
-#样本输入3
-#RSR
-#
-#样本输出3
-#1
-#我们在第1天和第3天有雨--两个 "连环 "的雨天，所以我们应该打印1。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    str = input()
+    count = 0
+    max = 0
+    for i in str:
+        if i == 'R':
+            count += 1
+        else:
+            count = 0
+        if count > max:
+            max = count
+    print(max)
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    s = input()
+
+    # 初始化
+    count = 0
+    max_count = 0
+
+    # 计数
+    for i in s:
+        if i == "R":
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+
+    # 打印最大值
+    print(max_count)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    s = input()
+    # 处理
+    # 通过字符串的count方法，计算R出现的次数
+    # 通过max方法，计算最大值
+    max_count = max(s.count('R'), s.count('S'))
+    # 输出结果
+    print(max_count)
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    count = 0
+    max = 0
+    for i in range(3):
+        if S[i] == 'R':
+            count += 1
+        else:
+            if count > max:
+                max = count
+            count = 0
+    if count > max:
+        max = count
+    print(max)
+
+=======
+Suggestion 5
+
+def main():
+    S = input()
+    count = 0
+    max = 0
+    for i in range(3):
+        if S[i] == "R":
+            count = count + 1
+            if count > max:
+                max = count
+        else:
+            count = 0
+    print(max)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    print(S.count('R'))
+
+=======
+Suggestion 7
+
+def main():
+    S = input()
+    print(S.count("R"))
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    if S == 'RRR':
+        print(3)
+    elif S == 'SRR' or S == 'RRS':
+        print(2)
+    elif S == 'SSS':
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    s = input()
+
+    # 计算答案
+    ans = 0
+    for i in range(3):
+        if s[i] == "R":
+            ans += 1
+
+    # 输出答案
+    print(ans)

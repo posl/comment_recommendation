@@ -1,62 +1,181 @@
-#问题陈述
-#我们有一个N个数字的序列：A=（a_1, a_2, ..., a_N）。
-#处理下面解释的Q查询。
-#查询一：给你一对整数（x_i, k_i）。让我们从一开始就逐一看一下A的元素：a_1, a_2, ....哪个元素将是数字x_i的第k_i次出现？
-#    打印该元素的索引，如果没有这样的元素，则打印-1。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#0 ≦ a_i ≦ 10^9 (1 ≦ i ≦ N)
-#0 ≦ x_i ≦ 10^9 (1 ≦ i ≦ Q)
-#1 ≦ k_i ≦ N (1 ≦ i ≦ Q)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#a_1 a_2 ... a_N
-#x_1 k_1
-#x_2 k_2
-#.
-#.
-#.
-#x_Q k_Q
-#
-#输出
-#打印Q行。第i行应该包含查询i的答案。
-#
-#输入样本 1
-#6 8
-#1 1 2 3 1 2
-#1 1
-#1 2
-#1 3
-#1 4
-#2 1
-#2 2
-#2 3
-#4 1
-#
-#样本输出1
-#1
-#2
-#5
-#-1
-#3
-#6
-#-1
-#-1
-#1在A中出现在a_1，a_2，a_5。因此，查询1到4的答案依次是1，2，5，-1。
-#
-#输入样本 2
-#3 2
-#0 1000000000 999999999
-#1000000000 1
-#123456789 1
-#
-#样本输出2
-#2
-#-1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+            if count == k:
+                print(j + 1)
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 2
+
+def myfun(A, x, k):
+    for i in range(0, len(A)):
+        if A[i] == x:
+            k -= 1
+            if k == 0:
+                return i + 1
+    return -1
+
+=======
+Suggestion 3
+
+def find_kth(a, x, k):
+    cnt = 0
+    for i in range(len(a)):
+        if a[i] == x:
+            cnt += 1
+            if cnt == k:
+                return i+1
+    return -1
+
+=======
+Suggestion 4
+
+def solution1():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(n):
+            if a[j] == x:
+                cnt += 1
+                if cnt == k:
+                    print(j+1)
+                    break
+        if cnt != k:
+            print(-1)
+
+=======
+Suggestion 5
+
+def solve():
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    for i in range(q):
+        x, k = map(int, input().split())
+        cnt = 0
+        for j in range(n):
+            if x == a[j]:
+                cnt += 1
+            if cnt == k:
+                print(j + 1)
+                break
+        else:
+            print(-1)
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(Q):
+        x_i, k_i = map(int, input().split())
+        cnt = 0
+        for j in range(N):
+            if A[j] == x_i:
+                cnt += 1
+            if cnt == k_i:
+                print(j+1)
+                break
+        else:
+            print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    N,Q = map(int,input().split())
+    A = list(map(int,input().split()))
+    for i in range(Q):
+        x,k = map(int,input().split())
+        print(A.index(x,k-1)+1 if x in A[k-1:] else -1)
+
+=======
+Suggestion 8
+
+def main():
+    n, q = input().split()
+    n = int(n)
+    q = int(q)
+    a = input().split()
+    for i in range(n):
+        a[i] = int(a[i])
+    for i in range(q):
+        x, k = input().split()
+        x = int(x)
+        k = int(k)
+        count = 0
+        for j in range(n):
+            if a[j] == x:
+                count += 1
+                if count == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)
+
+=======
+Suggestion 9
+
+def  binary_search(a, x, k):
+    '''
+    二分查找
+    :param a: 数组
+    :param x: 查找的数
+    :param k: 第几次出现
+    :return: 第k次出现的位置
+    '''
+    # print(a, x, k)
+    if k == 1:
+        for i in range(len(a)):
+            if a[i] == x:
+                return i
+        return -1
+    elif k == 2:
+        for i in range(len(a)):
+            if a[i] == x:
+                k -= 1
+            if k == 1:
+                return i
+        return -1
+    else:
+        if x in a:
+            return a.index(x)
+        else:
+            return -1
+
+=======
+Suggestion 10
+
+def main():
+    N, Q = map(int, input().split())
+    A = list(map(int, input().split()))
+    for i in range(Q):
+        x, k = map(int, input().split())
+        #print(x, k)
+        count = 0
+        for j in range(N):
+            if A[j] == x:
+                count += 1
+                if count == k:
+                    print(j+1)
+                    break
+        else:
+            print(-1)

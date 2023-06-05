@@ -1,49 +1,129 @@
-#问题陈述
-#在xy坐标平面上，是否有一个格点与两个格点（x_1, y_1）和（x_2, y_2）的距离都是(5)^(1/2)？
-#
-#注释
-#在xy坐标平面上的一个点，其x和y坐标都是整数的，称为格点。
-#两点(a, b)和(c, d)之间的距离被定义为它们之间的欧几里得距离，((a - c)^2 + (b-d)^2)^(1/2)。
-#下图展示了一个xy平面，黑色圆圈位于(0, 0)，白色圆圈位于格子点，它们与(0, 0)的距离为(5)^(1/2)。  (网格显示x或y是整数的地方)。
-#
-#约束条件
-#-10^9 ≦ x_1 ≦ 10^9
-#-10^9 ≦ y_1 ≦ 10^9
-#-10^9 ≦ x_2 ≦ 10^9
-#-10^9 ≦ y_2 ≦ 10^9
-#(x_1, y_1) ≠ (x_2, y_2)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1 x_2 y_2
-#
-#输出
-#如果有一个满足条件的晶格点，打印Yes；否则，打印No。
-#
-#输入样本 1
-#0 0 3 3
-#
-#样本输出 1
-#是
-#点(2,1)和(x_1, y_1)之间的距离是((0-2)^2 + (0-1)^2)^(1/2) = (5)^(1/2)；
-#点(2,1)和(x_2, y_2)之间的距离是((3-2)^2 + (3-1)^2)^(1/2) = (5)^(1/2) ；
-#点(2, 1)是一个格子点、
-#所以点(2, 1)满足这个条件。  因此，Yes应该被打印出来。
-#我们也可以用同样的方法断言（1，2）也满足条件。
-#
-#输入样本 2
-#0 1 2 3
-#
-#样本输出2
-#No
-#没有晶格点满足条件，所以应该打印No。
-#
-#输入样本 3
-#1000000000 1000000000 999999999 999999999
-#
-#样本输出3
-#Yes
-#点（10^9 + 1，10^9 - 2）和点（10^9 - 2，10^9 + 1）满足条件。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def is_square(n):
+    return n**0.5 == int(n**0.5)
+
+x1,y1,x2,y2 = map(int,input().split())
+
+=======
+Suggestion 2
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if ((x1-x2)**2 + (y1-y2)**2)**0.5 == (5**0.5):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    x1,y1,x2,y2 = map(int, input().split())
+    if (x1,y1) == (x2,y2):
+        print("No")
+        return
+    elif abs(x1-x2) == abs(y1-y2):
+        print("Yes")
+        return
+    else:
+        print("No")
+        return
+
+=======
+Suggestion 4
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if x1 == x2 and y1 == y2:
+        print('No')
+    else:
+        if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 5
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if (x2 - x1)**2 + (y2 - y1)**2 == 5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    x1, y1, x2, y2 = map(int, input().split())
+    # 计算两点间的距离
+    dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    # 判断距离是否等于根号5
+    if dist == 5 ** 0.5:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if(x1 == x2 and y1 == y2):
+        print('No')
+        return
+    if(x1 == x2):
+        if(abs(y1-y2) == 5):
+            print('Yes')
+            return
+        else:
+            print('No')
+            return
+    if(y1 == y2):
+        if(abs(x1-x2) == 5):
+            print('Yes')
+            return
+        else:
+            print('No')
+            return
+    if(abs(x1-x2) == 5 and abs(y1-y2) == 5):
+        print('Yes')
+        return
+    else:
+        print('No')
+        return
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    if x1 == x2 and y1 == y2:
+        print("No")
+        return
+
+    if (x1 - x2) ** 2 + (y1 - y2) ** 2 == 5:
+        print("Yes")
+        return
+
+    if (x1 + y1) == (x2 + y2) or (x1 - y1) == (x2 - y2):
+        print("Yes")
+        return
+
+    print("No")
+
+=======
+Suggestion 9
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    if (x1-x2)**2+(y1-y2)**2 == 10:
+        print("Yes")
+    else:
+        print("No")

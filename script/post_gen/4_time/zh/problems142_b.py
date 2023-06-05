@@ -1,43 +1,118 @@
-#问题陈述
-#高桥的N个朋友来到了一个主题公园。
-#要乘坐公园里最受欢迎的过山车，你必须至少有K厘米高。
-#第i个朋友的身高是h_i厘米。
-#高桥的朋友中有多少人可以乘坐过山车？
-#
-#限制条件
-# 1 ≦ N ≦ 10^5
-# 1 ≦ K ≦ 500
-# 1 ≦ h_i ≦ 500
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#h_1 h_2 ... h_N
-#
-#輸出
-#打印高桥的朋友中能坐过山车的人数。
-#
-#输入样本 1
-#4 150
-#150 140 100 200
-#
-#样品输出1
-#2
-#其中两个人可以坐过山车：第一个和第四个朋友。
-#
-#样本输入2
-#1 500
-#499
-#
-#样本输出2
-#0
-#
-#样本输入3
-#5 1
-#100 200 300 400 500
-#
-#样本输出3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    heights = list(map(int, input().split()))
+    count = 0
+    for height in heights:
+        if height >= k:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(N):
+        if h[i] >= K:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def get_input():
+    n,k = map(int, input().split())
+    h = list(map(int, input().split()))
+    return n,k,h
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    print(len([x for x in h if x >= k]))
+
+=======
+Suggestion 5
+
+def main():
+    num, height = map(int, input().split())
+    heights = list(map(int, input().split()))
+    count = 0
+    for h in heights:
+        if h >= height:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def get_input():
+    #input_str = input()
+    input_str = "4 150"
+    input_list = input_str.split()
+    n = int(input_list[0])
+    k = int(input_list[1])
+    #input_str = input()
+    input_str = "150 140 100 200"
+    input_list = input_str.split()
+    h_list = []
+    for i in range(n):
+        h_list.append(int(input_list[i]))
+    return n, k, h_list
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    cnt = 0
+    for i in h:
+        if i >= k:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    N,K = map(int,input().split())
+    h = list(map(int,input().split()))
+    cnt = 0
+    for i in range(N):
+        if h[i] >= K:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if h[i] >= k:
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n,k = map(int,input().split())
+    h = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        if h[i] >= k:
+            ans += 1
+    print(ans)

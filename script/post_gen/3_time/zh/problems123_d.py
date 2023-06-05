@@ -1,102 +1,222 @@
-#问题陈述
-#Patisserie AtCoder出售带有数字型蜡烛的蛋糕。
-#有X、Y和Z种蛋糕，分别有1根、2根和3根的蜡烛。
-#每个蛋糕都有一个整数值，称为美味度，如下所示：
-#带有1根蜡烛的蛋糕的美味程度为A_1，A_2，...，A_X。
-#有2根蜡烛的蛋糕的美味程度是B_1, B_2, ..., B_Y。
-#有3根蜡烛的蛋糕的美味程度是C_1，C_2，...，C_Z。
-#高桥决定买三个蛋糕，三种形状的蜡烛各一个，以庆祝ABC 123。
-#有X×Y×Z这样的方法来选择三个蛋糕。
-#我们将把这些X×Y×Z的方式按照蛋糕美味之和的降序排列。
-#请打印该列表中第一、第二、...、第K种方式的蛋糕美味之和。
-#
-#限制条件
-#1 ≦ X ≦ 1 000
-#1 ≦ Y ≦ 1 000
-#1 ≦ Z ≦ 1 000
-#1 ≦ K ≦ min(3 000, X × Y × Z)
-#1 ≦ A_i ≦ 10 000 000
-#1 ≦ B_i ≦ 10 000 000 000
-#1 ≦ C_i ≦ 10 000 000 000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X Y Z K
-#A_1 A_2 A_3 ...  A_X
-#B_1 B_2 B_3 ...  B_Y
-#C_1 C_2 C_3 ...  C_Z
-#
-#输出
-#打印K行。第i行应包含问题陈述中所述的第i个值。
-#
-#输入样本 1
-#2 2 2 8
-#4 6
-#1 5
-#3 8
-#
-#样本输出1
-#19
-#17
-#15
-#14
-#13
-#12
-#10
-#8
-#有2×2×2=8种方法可以选择三个蛋糕，如下图所示，按蛋糕的美味程度之和降序排列：
-#(a_2, b_2, c_2)：6 + 5 + 8 = 19
-#(a_1, b_2, c_2)：4 + 5 + 8 = 17
-#(a_2, b_1, c_2)：6 + 1 + 8 = 15
-#(a_2, b_2, c_1)：6 + 5 + 3 = 14
-#(a_1, b_1, c_2)：4 + 1 + 8 = 13
-#(A_1, B_2, C_1)：4 + 5 + 3 = 12
-#(a_2, b_1, c_1)：6 + 1 + 3 = 10
-#(a_1, b_1, c_1)：4 + 1 + 3 = 8
-#
-#样本输入 2
-#3 3 3 5
-#1 10 100
-#2 20 200
-#1 10 100
-#
-#样本输出2
-#400
-#310
-#310
-#301
-#301
-#可能有多种组合的蛋糕的美味之和相同。例如，在这个测试案例中，A_1, B_3, C_3的和与A_3, B_3, C_1的和都是301。
-#然而，它们是不同的选择蛋糕的方式，所以301在输出中出现了两次。
-#
-#样本输入3
-#10 10 10 20
-#7467038376 5724769290 292794712 2843504496 3381970101 8402252870 249131806 6310293640 6690322794 6082257488
-#1873977926 2576529623 1144842195 1379118507 6003234687 4925540914 3902539811 3326692703 484657758 2877436338
-#4975681328 8974383988 2882263257 7690203955 514305523 6679823484 4263279310 585966808 3752282379 620585736
-#
-#样本输出3
-#23379871545
-#22444657051
-#22302177772
-#22095691512
-#21667941469
-#21366963278
-#21287912315
-#21279176669
-#21160477018
-#21085311041
-#21059876163
-#21017997739
-#20703329561
-#20702387965
-#20590247696
-#20383761436
-#20343962175
-#20254073196
-#20210218542
-#20150096547
-#注意，输入或输出可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取数据
+    # 读取第一行的n
+    line1 = input().split()
+    N = int(line1[0])
+    M = int(line1[1])
+    K = int(line1[2])
+    # 读取第二行的数组
+    line2 = input().split()
+    A = [int(i) for i in line2]
+    # 读取第三行的数组
+    line3 = input().split()
+    B = [int(i) for i in line3]
+
+    # 读取第四行的数组
+    line4 = input().split()
+    C = [int(i) for i in line4]
+
+    # 读取第五行的数组
+    line5 = input().split()
+    D = [int(i) for i in line5]
+    # 读取第六行的数组
+    line6 = input().split()
+    E = [int(i) for i in line6]
+
+    # 读取第七行的数组
+    line7 = input().split()
+    F = [int(i) for i in line7]
+
+    # 读取第八行的数组
+    line8 = input().split()
+    G = [int(i) for i in line8]
+
+    # 读取第九行的数组
+    line9 = input().split()
+    H = [int(i) for i in line9]
+
+    # 读取第十行的数组
+    line10 = input().split()
+    I = [int(i) for i in line10]
+
+    # 读取第十一行的数组
+    line11 = input().split()
+    J = [int(i) for i in line11]
+
+    # 读取第十二行的数组
+    line12 = input().split()
+    K = [int(i) for i in line12]
+
+    # 读取第十三行的数组
+    line13 = input().split()
+    L = [int(i) for i in line13]
+
+    # 读取第十四行的数组
+    line14 = input().split()
+    M = [int(i) for i in line14]
+
+    # 读取第十五行的数组
+    line15 = input().split()
+
+=======
+Suggestion 2
+
+def readinput():
+    x,y,z,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    return x,y,z,k,a,b,c
+
+=======
+Suggestion 3
+
+def main():
+    x,y,z,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i]+b[j])
+
+    ab.sort(reverse=True)
+
+    abc = []
+    for i in range(min(k,x*y)):
+        for j in range(z):
+            abc.append(ab[i]+c[j])
+
+    abc.sort(reverse=True)
+
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 4
+
+def main():
+    x, y, z, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    # a, b, cを大きい順にソート
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    c.sort(reverse=True)
+
+    # a, b, cの組み合わせを全探索
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i] + b[j])
+
+    ab.sort(reverse=True)
+
+    abc = []
+    for i in range(min(k, len(ab))):
+        for j in range(z):
+            abc.append(ab[i] + c[j])
+
+    abc.sort(reverse=True)
+
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 5
+
+def main():
+    x,y,z,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+
+    ab = []
+    for i in range(x):
+        for j in range(y):
+            ab.append(a[i]+b[j])
+    ab.sort(reverse=True)
+    ab = ab[:k]
+
+    abc = []
+    for i in range(len(ab)):
+        for j in range(z):
+            abc.append(ab[i]+c[j])
+    abc.sort(reverse=True)
+    abc = abc[:k]
+
+    for i in range(k):
+        print(abc[i])
+
+=======
+Suggestion 6
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    AB = []
+    for i in range(X):
+        for j in range(Y):
+            AB.append(A[i] + B[j])
+    AB.sort(reverse=True)
+
+    ABC = []
+    for i in range(min(K, X * Y)):
+        for j in range(Z):
+            ABC.append(AB[i] + C[j])
+    ABC.sort(reverse=True)
+
+    for i in range(K):
+        print(ABC[i])
+
+=======
+Suggestion 7
+
+def problems123_d():
+    return None
+
+=======
+Suggestion 8
+
+def readinput():
+    x,y,z,k=list(map(int,input().split()))
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    return x,y,z,k,a,b,c
+
+=======
+Suggestion 9
+
+def main():
+    X, Y, Z, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    AB = []
+    for a in A:
+        for b in B:
+            AB.append(a + b)
+    AB.sort(reverse=True)
+
+    ABC = []
+    for i in range(min(K, len(AB))):
+        for c in C:
+            ABC.append(AB[i] + c)
+    ABC.sort(reverse=True)
+
+    for i in range(K):
+        print(ABC[i])

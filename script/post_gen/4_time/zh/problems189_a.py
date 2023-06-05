@@ -1,30 +1,118 @@
-#问题陈述
-#你正在玩老虎机。
-#转动的结果由三个大写的英文字母C_1、C_2和C_3表示。当所有这些字母都是相同的时候，就被认为是赢了。
-#请确定这是否是一场胜利。
-#
-#限制条件
-#C_i是一个大写的英文字母。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#C_1 C_2 C_3
-#
-#輸出
-#如果结果是赢了，打印Won；否则，打印Lost。
-#
-#输入样本1
-#SSS
-#
-#样本输出1
-#Won
-#所有这些都是相同的字母，所以它是一个胜利。
-#
-#样本输入2
-#WVW
-#
-#样本输出2
-#Lost
-#这不是一场胜利。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    c1, c2, c3 = input().split()
+    if c1 == c2 and c2 == c3:
+        print('Won')
+    else:
+        print('Lost')
+
+=======
+Suggestion 2
+
+def main():
+    c_1,c_2,c_3 = input().split()
+    if c_1 == c_2 and c_2 == c_3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 3
+
+def main():
+    c = input()
+    if c[0] == c[1] and c[1] == c[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 4
+
+def main():
+    c = input()
+    if c[0] == c[1] == c[2]:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    c1, c2, c3 = input().split()
+
+    # 解决问题
+    if c1 == c2 == c3:
+        result = 'Won'
+    else:
+        result = 'Lost'
+
+    # 打印结果
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    #input
+    c1, c2, c3 = input().split()
+    #process
+    if c1 == c2 and c2 == c3:
+        print('Won')
+    else:
+        print('Lost')
+    #output
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    input_str = input()
+    # 处理
+    if input_str[0] == input_str[1] and input_str[1] == input_str[2]:
+        output_str = "Won"
+    else:
+        output_str = "Lost"
+    # 输出
+    print(output_str)
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    input_str = input()
+    # 处理输入
+    if input_str[0] == input_str[1] and input_str[1] == input_str[2]:
+        # 输出结果
+        print('Won')
+    else:
+        # 输出结果
+        print('Lost')
+
+=======
+Suggestion 9
+
+def main():
+    c1,c2,c3 = input().split()
+    if c1 == c2 == c3:
+        print("Won")
+    else:
+        print("Lost")
+
+=======
+Suggestion 10
+
+def main():
+    c1, c2, c3 = input().split()
+    if c1 == c2 == c3:
+        print('Won')
+    else:
+        print('Lost')

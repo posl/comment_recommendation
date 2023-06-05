@@ -1,39 +1,184 @@
-#问题陈述
-#A岁的高桥正在坐摩天轮。
-#如果你是13岁或以上，乘坐摩天轮需要花费B日元（B是偶数），但6至12岁（包括）的儿童可以用一半的费用乘坐，5岁或以下的儿童则免费。(日元是日本的货币）。
-#找出高桥摩天轮的费用。
-#
-#限制条件
-#0 ≤ A ≤ 100
-#2 ≤ B ≤ 1000
-#B是一个偶数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#输出
-#打印高桥的摩天轮的费用。
-#
-#样本输入1
-#30 100
-#
-#样本输出1
-#100
-#高桥现在30岁了，摩天轮的费用是100日元。
-#
-#样本输入2
-#12 100
-#
-#样本输出2
-#50
-#高桥是12岁，摩天轮的费用是100日元的一半，也就是50日元。
-#
-#样本输入3
-#0 100
-#
-#样本输出3
-#0
-#高桥是0岁，他可以免费乘坐摩天轮。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def cost(A, B):
+    if A >= 13:
+        return B
+    elif A >= 6:
+        return B // 2
+    else:
+        return 0
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6 and A <= 12:
+        print(int(B/2))
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(int(b/2))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(B // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif A >= 6:
+        print(int(B/2))
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def problem127_a():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif 6 <= a <= 12:
+        print(int(b/2))
+    elif a <= 5:
+        print(0)
+    else:
+        print("error")
+
+=======
+Suggestion 7
+
+def get_cost(a, b):
+    if a >= 13:
+        return b
+    elif a >= 6:
+        return b // 2
+    else:
+        return 0
+
+=======
+Suggestion 8
+
+def main():
+    a, b = map(int, input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(b // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 9
+
+def getFee(age):
+    if age <= 5:
+        return 0
+    elif age <= 12:
+        return 50
+    else:
+        return 100
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    line = input()
+    # line = "30 100"
+    # print(line)
+    # line = "12 100"
+    # print(line)
+    # line = "0 100"
+    # print(line)
+    # line = "100 100"
+    # print(line)
+    # line = "99 100"
+    # print(line)
+    # line = "98 100"
+    # print(line)
+    # line = "97 100"
+    # print(line)
+    # line = "96 100"
+    # print(line)
+    # line = "95 100"
+    # print(line)
+    # line = "94 100"
+    # print(line)
+    # line = "93 100"
+    # print(line)
+    # line = "92 100"
+    # print(line)
+    # line = "91 100"
+    # print(line)
+    # line = "90 100"
+    # print(line)
+    # line = "89 100"
+    # print(line)
+    # line = "88 100"
+    # print(line)
+    # line = "87 100"
+    # print(line)
+    # line = "86 100"
+    # print(line)
+    # line = "85 100"
+    # print(line)
+    # line = "84 100"
+    # print(line)
+    # line = "83 100"
+    # print(line)
+    # line = "82 100"
+    # print(line)
+    # line = "81 100"
+    # print(line)
+    # line = "80 100"
+    # print(line)
+    # line = "79 100"
+    # print(line)
+    # line = "78 100"
+    # print(line)
+    # line = "77 100"
+    # print(line)
+    # line = "76 100"
+    # print(line)
+    # line = "75 100"
+    # print(line)
+    # line = "74 100"
+    # print(line)
+    # line = "73 100"
+    # print(line)
+    # line = "72 100"
+    # print(line)
+    # line = "71 100"
+    # print(line)
+    # line = "70 100"
+    # print(line)
+    # line = "69 100"

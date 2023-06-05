@@ -1,60 +1,230 @@
-#问题陈述
-#我们有N个具有 "开 "和 "关 "状态的开关，以及M个灯泡。开关的编号是1到N，灯泡的编号是1到M。
-#灯泡i与k_i个开关相连：开关s_{i1}，s_{i2}，...，和s_{ik_i}。当这些开关中 "开 "的开关数与p_i的模数一致时，它就被点亮。
-#有多少种开关的 "开 "和 "关 "状态的组合可以点亮所有的灯泡？
-#
-#限制条件
-#1 ≦ N, M ≦ 10
-#1 ≦ k_i ≦ N
-#1 ≦ s_{ij} ≦ N
-#s_{ia}≠ s_{ib} (a ≠ b)
-#p_i为0或1。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#k_1 s_{11} s_{12}...s_{1k_1}
-#:
-#k_M s_{M1} s_{M2} ... s_{Mk_M} 。
-#p_1 p_2 ... p_M
-#
-#输出
-#打印能点亮所有灯泡的开关的 "开 "和 "关 "状态的组合数。
-#
-#输入样本 1
-#2 2
-#2 1 2
-#1 2
-#0 1
-#
-#样本输出1
-#1
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有奇数个 "打开 "时，灯泡2被点亮：开关2。
-#开关1、开关2）的状态有四种可能的组合：(开，开），（开，关），（关，开）和（关，关）。其中，只有（开，开）能点亮所有的灯泡，所以我们应该打印1。
-#
-#输入样本 2
-#2 3
-#2 1 2
-#1 1
-#1 2
-#0 0 1
-#
-#样本输出2
-#0
-#当下列开关中存在偶数个 "打开 "时，灯泡1被点亮：开关1和2。
-#当下列开关中有偶数个 "打开 "时，灯泡2被点亮：开关1。
-#当下列开关中有奇数个 "打开 "时，灯泡3会被点亮：开关2。
-#开关1必须 "关闭 "才能点亮灯泡2，开关2必须 "打开 "才能点亮灯泡3，但这样灯泡1就不会被点亮。因此，不存在能点亮所有灯泡的开关状态组合，所以我们应该打印0。
-#
-#输入样本 3
-#5 2
-#3 1 2 5
-#2 2 3
-#1 0
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems128_c():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    k = []
+    s = []
+    p = []
+    for i in range(m):
+        a = list(map(int,input().split()))
+        k.append(a[0])
+        s.append(a[1:])
+    p = list(map(int,input().split()))
+    #print(k,s,p)
+    ans = 0
+    for i in range(2**n):
+        #print(i)
+        flag = 0
+        for j in range(m):
+            cnt = 0
+            for l in range(k[j]):
+                #print(l,s[j][l])
+                if (i>>(s[j][l]-1))&1:
+                    cnt += 1
+            if cnt%2 != p[j]:
+                flag = 1
+        if flag == 0:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N,M = map(int,input().split())
+    k = []
+    for i in range(M):
+        k.append(list(map(int,input().split())))
+    p = list(map(int,input().split()))
+    count = 0
+    for i in range(2**N):
+        on = 0
+        for j in range(M):
+            s = 0
+            for l in range(k[j][0]):
+                if i >> (k[j][l+1]-1) & 1:
+                    s += 1
+            if s % 2 == p[j]:
+                on += 1
+        if on == M:
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    k = []
+    s = []
+    for i in range(m):
+        k.append(int(input().split()[0]))
+        s.append([int(x) for x in input().split()])
+
+    p = [int(x) for x in input().split()]
+
+    # 穷举
+    ans = 0
+    for i in range(2 ** n):
+        # 计算灯泡状态
+        light = [0] * m
+        for j in range(n):
+            if (i >> j) & 1 == 1:
+                for l in range(m):
+                    if j + 1 in s[l]:
+                        light[l] += 1
+
+        # 检查灯泡状态
+        ok = True
+        for j in range(m):
+            if light[j] % 2 != p[j]:
+                ok = False
+
+        # 计数
+        if ok:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    switch = []
+    for i in range(m):
+        switch.append(list(map(int, input().split())))
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(2**n):
+        on = [0]*m
+        for j in range(n):
+            if (i>>j)&1:
+                for k in range(m):
+                    if j+1 in switch[k][1:]:
+                        on[k] += 1
+        if on == p:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    k = []
+    s = []
+    for i in range(m):
+        k.append(list(map(int, input().split())))
+        s.append(list(map(int, input().split())))
+    p = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(2 ** n):
+        flag = True
+        for j in range(m):
+            count = 0
+            for x in range(1, k[j][0] + 1):
+                if i & (1 << (s[j][x - 1] - 1)):
+                    count += 1
+            if count % 2 != p[j]:
+                flag = False
+        if flag:
+            ans += 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def isLightUp(switch, bulb, p):
+    for i in range(len(bulb)):
+        if p[i] != sum([switch[j-1] for j in bulb[i]]) % 2:
+            return False
+    return True
+
+=======
+Suggestion 8
+
+def get_lights_on_count(switches, bulbs, switch_bulbs, p):
+    result = 0
+    for i in range(2**switches):
+        switch_state = []
+        for j in range(switches):
+            if (i >> j) & 1:
+                switch_state.append(1)
+            else:
+                switch_state.append(0)
+        #print(switch_state)
+        bulbs_on = 0
+        for k in range(bulbs):
+            bulbs_on_temp = 0
+            for l in range(switch_bulbs[k][0]):
+                bulbs_on_temp += switch_state[switch_bulbs[k][l+1]-1]
+            if bulbs_on_temp % 2 == p[k]:
+                bulbs_on += 1
+        if bulbs_on == bulbs:
+            result += 1
+    return result
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    k = []
+    s = []
+    p = []
+    for i in range(M):
+        ki, *si = map(int, input().split())
+        k.append(ki)
+        s.append(si)
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(1 << N):
+        for j in range(M):
+            on = 0
+            for l in range(k[j]):
+                if i & (1 << s[j][l] - 1):
+                    on += 1
+            if on % 2 != p[j]:
+                break
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    n,m=map(int,input().split())
+    k=[]
+    s=[]
+    p=[]
+    for i in range(m):
+        k.append(list(map(int,input().split()))[0])
+        s.append(list(map(int,input().split())))
+    p=list(map(int,input().split()))
+    count=0
+    for i in range(2**n):
+        flag=True
+        for j in range(m):
+            sum=0
+            for l in range(k[j]):
+                sum+=((i>>(s[j][l]-1))&1)
+            if sum%2!=p[j]:
+                flag=False
+                break
+        if flag:
+            count+=1
+    print(count)

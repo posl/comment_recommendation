@@ -1,46 +1,259 @@
-#问题陈述
-#Snuke有一个长度为N的整数序列A。
-#他将对A进行三次切割，并将其分成四个（非空）连续的子序列B、C、D和E。
-#切割的位置可以自由选择。
-#让P,Q,R,S分别为B,C,D,E中的元素之和。
-#当P,Q,R,S中的最大值和最小值的绝对差值较小时，Snuke会更快乐。
-#请找出P,Q,R,S中最大和最小的绝对差值的最小可能。
-#
-#限制条件
-#4 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#找到P,Q,R,S中最大和最小可能的绝对差。
-#
-#样本输入1
-#5
-#3 2 4 1 2
-#
-#样本输出 1
-#2
-#如果我们将A划分为B,C,D,E=(3),(2),(4),(1,2)，那么P=3,Q=2,R=4,S=1+2=3。
-#这里，P,Q,R,S中的最大值和最小值分别为4和2，绝对差值为2。
-#我们不能使最大值和最小值的绝对差值小于2，所以答案是2。
-#
-#输入样本2
-#10
-#10 71 84 33 6 47 23 25 52 64
-#
-#样本输出2
-#36
-#
-#样本输入3
-#7
-#1 2 3 1000000000 4 5 6
-#
-#样本输出3
-#999999994
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    a = [0] + a
+    for i in range(1, n + 1):
+        a[i] += a[i - 1]
+    ans = 10 ** 18
+    for i in range(1, n - 2):
+        for j in range(i + 1, n - 1):
+            x = a[i]
+            y = a[j] - a[i]
+            z = a[n] - a[j]
+            ans = min(ans, max(x, y, z) - min(x, y, z))
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    ans = float('inf')
+    l = 0
+    r = s
+    for i in range(n-1):
+        l += a[i]
+        r -= a[i]
+        ans = min(ans, abs(l-r))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    # print(a)
+    # print(a[0:n])
+    # print(a[1:n])
+    # print(a[2:n])
+    # print(a[3:n])
+    ans = 10**9
+    for i in range(n-3):
+        for j in range(i+1, n-2):
+            for k in range(j+1, n-1):
+                for l in range(k+1, n):
+                    max_num = max(sum(a[0:i+1]), sum(a[i+1:j+1]), sum(a[j+1:k+1]), sum(a[k+1:l+1]))
+                    min_num = min(sum(a[0:i+1]), sum(a[i+1:j+1]), sum(a[j+1:k+1]), sum(a[k+1:l+1]))
+                    if ans > max_num - min_num:
+                        ans = max_num - min_num
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    A_sum = sum(A)
+    A_cumsum = [0]
+    for i in range(N):
+        A_cumsum.append(A_cumsum[i]+A[i])
+    A_cumsum2 = [0]
+    for i in range(N):
+        A_cumsum2.append(A_cumsum2[i]+A[i]**2)
+
+    ans = A_sum
+    for i in range(1,N-2):
+        for j in range(i+1,N-1):
+            P = A_cumsum[i]
+            Q = A_cumsum[j]-A_cumsum[i]
+            R = A_cumsum[N]-A_cumsum[j]
+            S = A_sum-P-Q-R
+            ans = min(ans,max(P,Q,R,S)-min(P,Q,R,S))
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 累積和
+    S = [0] * (N + 1)
+    for i in range(N):
+        S[i + 1] = S[i] + A[i]
+
+    # 二分探索
+    ans = float("inf")
+    for i in range(2, N - 1):
+        # P, Q, R, S の候補のうち、最大値と最小値の差が最小になるものを求める
+        # P, Q, R, S の候補は、S[1:i], S[i:j], S[j:k], S[k:N] となる
+        # 二分探索を行うために、S[i:j] の値が S[1:i] から最も近い値を二分探索で求める
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の値と S[i:j] の値の差の最小値となる
+        # 二分探索で求めた値が S[1:i] の
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A[0])
+    #print(A[1])
+
+    #print(A)
+    #print(A[1:])
+
+    #print(A[:-1])
+    #print(A[:])
+    #print(A[-1:])
+    #print(A[-1])
+    #print(A[-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[2:-2])
+    #print(A[2:-1])
+    #print(A[1:-1])
+    #print(A[1:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+    #print(A[1:-1])
+    #print(A[1:-2])
+    #print(A[2:-1])
+    #print(A[2:-2])
+
+=======
+Suggestion 8
+
+def process():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    l = 0
+    r = s
+    ans = float('inf')
+    for i in range(n-1):
+        l += a[i]
+        r -= a[i]
+        ans = min(ans, abs(l-r))
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(N, A)
+    # N = 10
+    # A = [10, 71, 84, 33, 6, 47, 23, 25, 52, 64]
+
+    # N = 7
+    # A = [1, 2, 3, 1000000000, 4, 5, 6]
+
+    # N = 5
+    # A = [3, 2, 4, 1, 2]
+
+    # N = 10
+    # A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    # N = 10
+    # A = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+    # N = 10
+    # A = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+    # N = 10
+    # A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1000000000]
+
+    # N = 10
+    # A = [1000000000, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    # N = 10
+    # A = [1, 2, 3, 4, 5, 1000000000, 7, 8, 9, 10]
+
+    # N = 10
+    # A = [1, 2, 3, 4, 5, 6, 7, 8, 1000000000, 1000000000]
+
+    # N = 10
+    # A = [1000000000, 1000000000, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    # N = 10
+    # A = [1, 2, 1000000000,
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    ans = float('inf')
+    l = 0
+    r = s
+    for i in range(n - 1):
+        l += a[i]
+        r -= a[i]
+        ans = min(ans, abs(l - r))
+    print(ans)

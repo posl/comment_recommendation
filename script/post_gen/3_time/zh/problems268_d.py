@@ -1,89 +1,301 @@
-#问题陈述
-#高桥在决定一个服务的用户名时遇到了困难。  请写一段代码来帮助他。
-#找到一个满足以下所有条件的字符串X：
-#X是通过以下程序得到的：
-#让S_1', S_2', ..., S_N'是S_1, S_2, ..., S_N的一个置换。  让X是S_1', (1份或多份_), S_2', (1份或多份_), ..., (1份或多份_), 和S_N'的连接，按这个顺序。
-#X的长度在3和16之间，包括在内。
-#X不与M个字符串T_1,T_2,...,T_M中的任何一个重合。
-#如果没有满足所有条件的X，则打印-1。
-#
-#限制条件
-#1 ≦ N ≦ 8
-#0 ≦ M ≦ 10^5
-#N和M是整数。
-#1 ≦ |S_i| ≦ 16
-#N-1+sum{|S_i|} ≦ 16≦ 16
-#S_i ≠ S_j，如果i ≠ j。
-#S_i是一个由小写英文字母组成的字符串。
-#3 ≦ |T_i| ≦ 16
-#T_i ≠ T_j 如果 i ≠ j.
-#T_i是一个由小写英文字母和_组成的字符串。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#T_1
-#T_2
-#.
-#.
-#.
-#T_M
-#
-#输出
-#打印一个满足所有条件的字符串X。  如果没有满足所有条件的X，则打印-1。
-#如果有多个解决方案，打印其中任何一个。
-#
-#输入样本 1
-#1 1
-#chokudai
-#chokudai
-#
-#样本输出 1
-#-1
-#唯一满足第一和第二个条件的字符串是X= chokudai，但它与T_1重合。
-#因此，不存在满足所有条件的X，所以应该打印-1。
-#
-#输入样本 2
-#2 2
-#choku
-#dai
-#chokudai
-#choku_dai
-#
-#样本输出2
-#dai_choku
-#像choku__dai这样的字符串（在choku和dai之间有两个_）也满足所有的条件。
-#
-#输入样本 3
-#2 2
-#chokudai
-#atcoder
-#chokudai_atcoder
-#atcoder_chokudai
-#
-#样本输出3
-#-1
-#chokudai__atcoder和atcoder__chokudai（在chokudai和atcoder之间有两个_）的长度为17，这违反了第二个条件。
-#
-#输入样本 4
-#4 4
-#ab
-#cd
-#ef
-#gh
-#hoge
-#fuga
-#____
-#_ab_cd_ef_gh_
-#
-#样本输出4
-#ab__ef___cd_gh
-#给定的T_i可能包含一个无法通过第一个条件中描述的程序获得的字符串。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(input())
+    for i in range(m):
+        t.append(input())
+    # print(n, m)
+
+=======
+Suggestion 2
+
+def main():
+    N,M = map(int,input().split())
+    S = [input() for _ in range(N)]
+    T = [input() for _ in range(M)]
+    for i in range(N):
+        for j in range(M):
+            if S[i] == T[j]:
+                print(-1)
+                return
+    for i in range(N):
+        for j in range(M):
+            if S[i] in T[j]:
+                print(-1)
+                return
+    ans = ''
+    for i in range(N):
+        ans += S[i]
+        if i != N-1:
+            ans += '_'
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n, m = map(int, input().split())
+    s = [input() for _ in range(n)]
+    t = [input() for _ in range(m)]
+    ans = []
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            for k in range(m):
+                if t[k] == s[i] + '_' + s[j]:
+                    ans.append(s[i])
+                    ans.append(s[j])
+                    ans.append(t[k].split('_')[1])
+                    break
+                elif t[k] == s[j] + '_' + s[i]:
+                    ans.append(s[j])
+                    ans.append(s[i])
+                    ans.append(t[k].split('_')[1])
+                    break
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+    else:
+        print(-1)
+        return
+    for i in range(n):
+        if i == 0:
+            continue
+        for j in range(n):
+            if j == 0:
+                continue
+            if s[i] + '_' + s[j] == ans[-1]:
+                ans.append(s[i])
+                ans.append(s[j])
+                break
+            elif s[j] + '_' + s[i] == ans[-1]:
+                ans.append(s[j])
+                ans.append(s[i])
+                break
+        else:
+            continue
+        break
+    else:
+        print(-1)
+        return
+    for i in range(n):
+        if i == 0:
+            continue
+        for j in range(n):
+            if j == 0:
+                continue
+            if s[i] + '_' + s[j] == ans[-1]:
+                ans.append(s[i])
+                ans.append(s[j])
+                break
+            elif s[j] + '_' + s[i] == ans[-1]:
+                ans.append(s[j])
+                ans.append(s[i])
+                break
+        else:
+            continue
+        break
+    else:
+        print(-1)
+        return
+    print('_'.join(ans))
+
+=======
+Suggestion 4
+
+def getStr(s, n):
+    if n == 1:
+        return s[0]
+    else:
+        s.sort()
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                for k in range(len(s[i])):
+                    for l in range(len(s[j])):
+                        if s[i][k:] == s[j][:len(s[i]) - k] and s[j][len(s[i]) - k:] == s[i][:k]:
+                            return s[j] + s[i][k:]
+        return -1
+
+=======
+Suggestion 5
+
+def func(n, m, s, t):
+    if n == 1 and m == 1:
+        if s[0] == t[0]:
+            return -1
+        else:
+            return s[0] + t[0]
+    if n == 2 and m == 2:
+        if s[0] == t[0] and s[1] == t[1]:
+            return -1
+        else:
+            if s[0] == t[0]:
+                return s[1] + t[1]
+            elif s[1] == t[1]:
+                return s[0] + t[0]
+            else:
+                return s[0] + t[0] + s[1] + t[1]
+    if n == 3 and m == 3:
+        if s[0] == t[0] and s[1] == t[1] and s[2] == t[2]:
+            return -1
+        else:
+            if s[0] == t[0]:
+                return s[1] + t[1] + s[2] + t[2]
+            elif s[1] == t[1]:
+                return s[0] + t[0] + s[2] + t[2]
+            elif s[2] == t[2]:
+                return s[0] + t[0] + s[1] + t[1]
+            else:
+                return s[0] + t[0] + s[1] + t[1] + s[2] + t[2]
+    if n == 4 and m == 4:
+        if s[0] == t[0] and s[1] == t[1] and s[2] == t[2] and s[3] == t[3]:
+            return -1
+        else:
+            if s[0] == t[0]:
+                return s[1] + t[1] + s[2] + t[2] + s[3] + t[3]
+            elif s[1] == t[1]:
+                return s[0] + t[0] + s[2] + t[2] + s[3] + t[3]
+            elif s[2] == t[2]:
+                return s
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    N, M = map(int, input().split())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(M):
+        T.append(input())
+
+    # 从S中找到最长的字符串
+    max_len = 0
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从T中找到最长的字符串
+    for i in range(M):
+        if len(T[i]) > max_len:
+            max_len = len(T[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    # 从S中找到最长的字符串
+    for i in range(N):
+        if len(S[i]) > max_len:
+            max_len = len(S[i])
+
+    print(max_len)
+
+=======
+Suggestion 8
+
+def get_permutation(s):
+    if len(s) == 1:
+        return [s]
+    else:
+        permutations = []
+        for i in range(len(s)):
+            for j in get_permutation(s[:i] + s[i + 1:]):
+                permutations.append(s[i] + j)
+        return permutations
+
+=======
+Suggestion 9
+
+def main():
+    print("Hello World!")
+    pass
+
+=======
+Suggestion 10
+
+def getStr(n, m, s, t):
+    # n, m = map(int, input().split())
+    # s = [input() for _ in range(n)]
+    # t = [input() for _ in range(m)]
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    s = ['ab', 'cd', 'ef', 'gh']
+    t = ['hoge', 'fuga', '____', '_ab_cd_ef_gh_']
+    # s = ['choku', 'dai']
+    # t = ['chokudai', 'choku_dai']
+    # s = ['chokudai']
+    # t = ['chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+    # s = ['chokudai', 'atcoder']
+    # t = ['chokudai_atcoder', 'atcoder_chokudai']
+
+    # n, m = map(int, input().split())
+    # s = [input() for _ in range(n)]

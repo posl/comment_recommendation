@@ -1,42 +1,148 @@
-#问题陈述
-#我们有4张写着整数1的牌，4张写着2，...，4张写着N的牌，总共有4N张。
-#高桥洗了这些牌，去掉了其中一张，然后给你一堆剩下的4N-1张牌。这堆牌的第i张（1 ≦ i ≦ 4N - 1）上写有一个整数A_i。
-#求被高桥拿走的那张牌上的整数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ N (1 ≦ i ≦ 4N - 1)
-#对于每个k（1 ≦ k ≦ N），最多只有4个指数i，使A_i = k。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_{4N - 1}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 3 2 3 3 2 2 1 1 1 2
-#
-#样本输出 1
-#3
-#高桥取出一张写有3的卡片。
-#
-#样本输入2
-#1
-#1 1 1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#4
-#3 2 1 1 2 4 4 4 4 3 1 3 2 1 3
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    for i in range(1, N+1):
+        ans ^= i
+    for i in range(4*N-1):
+        ans ^= A[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def find_missing_number(n, a):
+    a.sort()
+    for i in range(1, n):
+        if a[i] != i:
+            return i
+    return n
+
+=======
+Suggestion 3
+
+def solve(n, a):
+    ans = 0
+    for i in range(1, n + 1):
+        ans ^= i
+    for i in range(4 * n - 1):
+        ans ^= a[i]
+    return ans
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = sorted(A)
+    for i in range(0, 4*N, 2):
+        if A[i] != A[i+1]:
+            print(A[i])
+            break
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    # 读入数据
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 累加求和
+    sum = 0
+    for i in range(4 * n - 1):
+        sum += a[i]
+
+    # 计算答案
+    ans = sum // (n * 2) - sum // (n * 4)
+
+    # 输出答案
+    print(ans)
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
+    for i in range(0, 4*n, 2):
+        if a[i] != a[i+1]:
+            print(a[i])
+            break
+
+solve()
+
+=======
+Suggestion 7
+
+def solve(n, a):
+    b = {}
+    for i in a:
+        if i in b:
+            b[i] += 1
+        else:
+            b[i] = 1
+    for i in b:
+        if b[i] % 2 == 1:
+            return i
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, 4*N-3, 2):
+        if A[i] != A[i+1]:
+            print(A[i])
+            break
+    else:
+        print(A[-1])
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    d = {}
+    for i in a:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    for i in d:
+        if d[i] % 2 == 1:
+            print(i)
+            break
+
+=======
+Suggestion 10
+
+def solve(n, a):
+    count = {}
+    for i in a:
+        if i in count:
+            count[i] += 1
+        else:
+            count[i] = 1
+
+    for i in count:
+        if count[i] % 2 == 1:
+            return i
+
+    return 0
+
+n = int(input())
+a = list(map(int, input().split()))
+print(solve(n, a))

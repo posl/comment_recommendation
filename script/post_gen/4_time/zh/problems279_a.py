@@ -1,35 +1,66 @@
-#问题陈述
-#给你一个由v和w组成的字符串S。
-#打印字符串S中的 "底 "的数量（见样本输入/输出的图）。
-#
-#限制条件
-#S是一个由v和w组成的字符串。
-#S的长度在1到100之间，包括在内。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本1
-#vvwvw
-#
-#样本输出1
-#7
-#上面的图片显示了字符串vvwvw中的七个 "底"。
-#
-#样本输入2
-#v
-#
-#样本输出2
-#1
-#
-#样本输入3
-#wwwvvvvvvv
-#
-#样本输出3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    print(s.count("wv"))
+
+=======
+Suggestion 2
+
+def problems279_a():
+    s = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] == "w":
+            count += 1
+    print(count * 2)
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    print(s.count('wv'))
+
+=======
+Suggestion 4
+
+def count_underscores(S):
+    count = 0
+    for i in range(0, len(S)-1):
+        if S[i] == 'v' and S[i+1] == 'w':
+            count += 1
+    return count
+
+S = input()
+print(count_underscores(S))
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    print(s.count('vv'))
+
+=======
+Suggestion 6
+
+def count_bottoms(s):
+    count = 0
+    for i in range(len(s)-1):
+        if s[i] == 'v' and s[i+1] == 'w':
+            count += 1
+    return count
+
+=======
+Suggestion 7
+
+def count_bottoms(s):
+    count = 0
+    for i in range(len(s)):
+        if s[i] == 'w':
+            count += len(s) - i
+    return count

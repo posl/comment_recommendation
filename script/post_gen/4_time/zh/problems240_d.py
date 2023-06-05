@@ -1,53 +1,194 @@
-#问题陈述
-#高桥市有N个球。每个球上都写有一个不小于2的整数。他将这些球一个一个地插入一个圆柱体中。写在第i个球上的整数是a_i。
-#这些球是由特殊材料制成的。当写有k（k≧2）的球排成一排时，所有这些k球都会消失。
-#对于每一个i（1 ≦ i ≦ N），找出插入第i个球后的球的数量。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ a_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#a_1 ... a_N
-#
-#輸出
-#打印N行。第i行（1 ≦ i ≦ N）应包含插入第i个球后的球数。
-#
-#输入样本 1
-#5
-#3 2 3 2 2
-#
-#样本输出 1
-#1
-#2
-#3
-#4
-#3
-#圆筒的内容变化如下。
-#插入第1个球后，圆柱体中含有3的球。
-#插入第2个球后，圆柱体从下到上包含3、2。
-#插入第3个球后，圆柱体从下到上包含3、2、3。
-#插入第4个球后，圆柱体从下到上包含3、2、3、2。
-#插入第5个球后，圆柱体从下到上暂时有3、2、3、2、2。连续的两个带2的球消失了，圆柱体最终从下到上包含3，2，3。
-#
-#
-#输入样本2
-#10
-#2 3 2 3 3 3 2 3 3 2
-#
-#样本输出2
-#1
-#2
-#3
-#4
-#5
-#3
-#2
-#3
-#1
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    b = [0]*n
+    for i in range(n):
+        b[i] = a[i]
+        if i == 0:
+            print(1)
+            continue
+        if a[i] == a[i-1]:
+            b[i] = 0
+        print(len(set(b))-1)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = {}
+    for i in range(n):
+        if a[i] not in c:
+            c[a[i]] = 1
+        else:
+            c[a[i]] += 1
+    ans = 0
+    for i in c:
+        ans += c[i] - 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] % 2 == 0:
+            a[i] -= 1
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #a = [3, 2, 3, 2, 2]
+    #a = [2, 3, 2, 3, 3, 3, 2, 3, 3, 2]
+    b = []
+    for i in range(n):
+        b.append(0)
+    for i in range(n):
+        b[a[i]-1] += 1
+    #print(b)
+    for i in range(n):
+        print(n - sum(b[0:a[i]]))
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # A = [3, 2, 3, 2, 2]
+    # A = [2, 3, 2, 3, 3, 3, 2, 3, 3, 2]
+    B = [0] * 200001
+    for a in A:
+        B[a] += 1
+    # print(B)
+    ans = 0
+    for i in range(200001):
+        if B[i] > 0:
+            ans += 1
+            B[i] -= 1
+        if B[i] > 0:
+            B[i + 1] += B[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=[]
+    for i in range(n):
+        b.append(0)
+    for i in range(n):
+        b[a[i]-1]+=1
+    for i in range(n):
+        if b[i]==0:
+            print(0)
+            continue
+        elif b[i]==1:
+            print(1)
+            continue
+        else:
+            if b[i]%2==0:
+                print(0)
+            else:
+                print(1)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #print(a)
+    result = []
+    for i in range(n):
+        if i == 0:
+            result.append(1)
+            continue
+        if a[i] == 2:
+            result.append(result[i-1])
+        else:
+            result.append(result[i-1]+1)
+    #print(result)
+    for i in range(n):
+        print(result[i])
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 3 2 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+    # 2 2 3 3 3 3 2 3 3 2
+
+    # 2 3 2 3 3 3 2 3 3
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.insert(0, 0)
+    b = [0] * (n + 1)
+    for i in range(1, n + 1):
+        b[i] = b[i - 1] + 1
+        if a[i] == a[i - 1]:
+            b[i] = b[i - 1]
+    for i in range(1, n + 1):
+        print(b[i])
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+    for i in range(n):
+        ans[i] = i + 1
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            ans[i+1] = ans[i]
+    for i in range(n-1, 0, -1):
+        if a[i] == a[i-1]:
+            ans[i-1] = ans[i]
+    for i in range(n):
+        print(ans[i])

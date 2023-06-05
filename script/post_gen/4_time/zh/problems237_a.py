@@ -1,37 +1,87 @@
-#问题陈述
-#给你一个整数N。
-#如果N在-2^{31}和2^{31}-1（包括）之间，打印 "是"；否则，打印 "否"。
-#
-#限制条件
-#-2^{63}≦ N < 2^{63}
-#N是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#
-#输出
-#如果N在-2^{31}和2^{31}-1（包括）之间，打印 "是"；否则，打印 "否"。
-#
-#输入样本 1
-#10
-#
-#样本输出1
-#是
-#10在-2^{31}和2^{31}-1之间，所以应该打印是。
-#
-#输入样本2
-#-9876543210
-#
-#样本输出2
-#否
-#-9876543210 小于 -2^{31}，所以应该打印 否。
-#
-#输入样本3
-#483597848400000
-#
-#样本输出3
-#否
-#483597848400000 大于 2^{31}-1，所以应该打印 否
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def is_integer(num):
+    if num >= -2**31 and num <= 2**31 -1:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    if -2**31 <= n and n <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+
+main()
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    if N >= -2**31 and N <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    if -2**31 <= n <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    if n >= -2**31 and n <= 2**31 - 1:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    if -2**31 <= N and N <= 2**31 - 1:
+        print("是")
+    else:
+        print("否")
+
+main()
+
+=======
+Suggestion 7
+
+def f(n):
+    if -2**31 <= n <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+
+n = int(input())
+f(n)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    if n >= -2**31 and n <= 2**31-1:
+        print("是")
+    else:
+        print("否")
+main()

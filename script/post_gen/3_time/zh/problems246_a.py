@@ -1,37 +1,155 @@
-#问题陈述
-#在xy平面上有一个矩形。这个矩形的每条边都平行于x轴或y轴，其面积不为零。
-#给出这个矩形的四个顶点中的三个顶点（x_1, y_1）、（x_2, y_2）和（x_3, y_3）的坐标，求另一个顶点的坐标。
-#
-#限制条件
-#-100 ≦ x_i, y_i ≦ 100
-#唯一存在一个以(x_1, y_1), (x_2, y_2), (x_3, y_3)为顶点的矩形，边与x轴或y轴平行，面积不为零。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1
-#x_2 y_2
-#x_3 y_3
-#
-#输出
-#以下列格式打印所寻求的坐标（x，y），并以空格分隔：
-#x y
-#
-#输入样本 1
-#-1 -1
-#-1 2
-#3 2
-#
-#样本输出 1
-#3 -1
-#顶点为（-1，-1），（-1，2），（3，2）的矩形的另一个顶点是（3，-1）。
-#
-#输入样本 2
-#-60 -40
-#-60 -80
-#-20 -80
-#
-#样本输出2
-#-20 -40
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_point(x1,y1,x2,y2,x3,y3):
+    if x1 == x2:
+        x = x3
+    elif x1 == x3:
+        x = x2
+    else:
+        x = x1
+    if y1 == y2:
+        y = y3
+    elif y1 == y3:
+        y = y2
+    else:
+        y = y1
+    return x,y
+
+=======
+Suggestion 2
+
+def get_vertex(x1, y1, x2, y2, x3, y3):
+    x4 = 0
+    y4 = 0
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+
+    return x4, y4
+
+=======
+Suggestion 3
+
+def find_point(x1,y1,x2,y2,x3,y3):
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+    return x4,y4
+
+=======
+Suggestion 4
+
+def solution(x1,y1,x2,y2,x3,y3):
+    x4 = x3 - (y3-y2)
+    y4 = y3 + (x3-x2)
+    return x4, y4
+
+=======
+Suggestion 5
+
+def get_point():
+    point = []
+    for i in range(3):
+        x, y = map(int, input().split())
+        point.append([x, y])
+    return point
+
+=======
+Suggestion 6
+
+def get_other_point(x1, y1, x2, y2, x3, y3):
+    x4 = x2 + x3 - x1
+    y4 = y2 + y3 - y1
+    return x4, y4
+
+=======
+Suggestion 7
+
+def find_coordinate():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+
+    if x1 == x2:
+        x4 = x3
+    elif x2 == x3:
+        x4 = x1
+    else:
+        x4 = x2
+
+    if y1 == y2:
+        y4 = y3
+    elif y2 == y3:
+        y4 = y1
+    else:
+        y4 = y2
+
+    print(x4, y4)
+
+find_coordinate()
+
+=======
+Suggestion 8
+
+def main():
+    x1,y1 = map(int,input().split())
+    x2,y2 = map(int,input().split())
+    x3,y3 = map(int,input().split())
+    x4 = 0
+    y4 = 0
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+    print(str(x4) + " " + str(y4))
+
+=======
+Suggestion 9
+
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
+    if x1 == x2:
+        x4 = x3
+    elif x1 == x3:
+        x4 = x2
+    else:
+        x4 = x1
+    if y1 == y2:
+        y4 = y3
+    elif y1 == y3:
+        y4 = y2
+    else:
+        y4 = y1
+    print(x4, y4)

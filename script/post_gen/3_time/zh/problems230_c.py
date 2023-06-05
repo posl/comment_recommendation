@@ -1,60 +1,152 @@
-#问题说明
-#有一个N×N的横行竖列的网格，所有的方块最初都是白色的。让(i,j)表示位于第i行和第j列的方格。
-#高桥有整数A和B，它们在1和N之间（包括在内）。他将进行以下操作。
-#对于每一个整数k，使得max(1-A,1-B)≦ k≦ min(N-A,N-B)，将(A+k,B+k)涂黑。
-#对于每个整数k，如max(1-A,B-N)≦ k≦ min(N-A,B-1)，将(A+k,B-k)涂成黑色。
-#在这些操作之后的网格中，找出每个方格（i,j）的颜色，使得P≦ i≦ Q和R≦ j≦ S。
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#1 ≦ A ≦ N
-#1 ≦ B ≦ N
-#1 ≦ P ≦ Q ≦ N
-#1 ≦ R ≦ S ≦ N
-#(Q-P+1)×(S-R+1)≦ 3× 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N A B
-#P Q R S
-#
-#输出
-#打印Q-P+1行。
-#每一行应该包含一个长度为S-R+1的字符串，由#和.组成。
-#第i行中字符串的第j个字符应该是#，表示(P+i-1, R+j-1)被涂成黑色，而.表示(P+i-1, R+j-1)是白色。  
-#
-#输入样本 1
-#5 3 2
-#1 5 1 5
-#
-#输出样本1
-#...#.
-##.#..
-#.#...
-##.#..
-#...#.
-#第一个操作将(2,1), (3,2), (4,3), (5,4)四个方块涂成黑色，第二个操作将(4,1), (3,2), (2,3), (1,4)四个方块涂成黑色。
-#因此，上述输出应该被打印出来，因为P=1，Q=5，R=1，S=5。
-#
-#输入样本 2
-#5 3 3
-#4 5 2 5
-#
-#输出样本2
-##.#.
-#...#
-#操作画出九个方块（1,1）、（1,5）、（2,2）、（2,4）、（3,3）、（4,2）、（4,4）、（5,1）、（5,5）。
-#因此，上述输出应该被打印出来，因为P=4，Q=5，R=2，S=5。
-#
-#输入样本3
-#1000000000000000000 999999999999999999 999999999999999999
-#999999999999999998 1000000000000000000 999999999999999998 1000000000000000000
-#
-#输出样本3
-##.#
-#.#.
-##.#
-#注意，输入可能不适合32位整数类型。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split()
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    #获取输入数据
+    input_str = input()
+    input_list = input_str.split()
+    N = int(input_list[0])
+    A = int(input_list[1])
+    B = int(input_list[2])
+    input_str = input()
+    input_list = input_str.split()
+    P = int(input_list[0])
+    Q = int(input_list[1])
+    R = int(input_list[2])
+    S = int(input_list[3])
+
+    #计算输出数据
+    #生成网格
+    grid = []
+    for i in range(N):
+        grid.append([0]*N)
+    #涂色
+    for k in range(max(1-A,1-B),min(N-A,N-B)+1):
+        grid[A+k-1][B+k-1] = 1
+    for k in range(max(1-A,B-N),min(N-A,B-1)+1):
+        grid[A+k-1][B-k-1] = 1
+    #统计输出数据
+    output_list = []
+    for i in range(P-1,Q):
+        output_str = ""
+        for j in range(R-1,S):
+            if grid[i][j] == 1:
+                output_str += "#"
+            else:
+                output_str += "."
+        output_list.append(output_str)
+
+    #输出
+    for output_str in output_list:
+        print(output_str)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取数据
+    line1 = input().split()
+    line2 = input().split()
+    n = int(line1[0])
+    a = int(line1[1])
+    b = int(line1[2])
+    p = int(line2[0])
+    q = int(line2[1])
+    r = int(line2[2])
+    s = int(line2[3])
+
+    # 初始化
+    row = [0 for i in range(n)]
+    col = [0 for i in range(n)]
+    left = [0 for i in range(n)]
+    right = [0 for i in range(n)]
+    for i in range(n):
+        row[i] = 1
+        col[i] = 1
+        left[i] = 1
+        right[i] = 1
+
+    # 横向
+    for i in range(1, n):
+        if i <= a - 1:
+            row[i] = 1
+        else:
+            row[i] = 0
+    # 纵向
+    for i in range(1, n):
+        if i <= b - 1:
+            col[i] = 1
+        else:
+            col[i] = 0
+    # 左上
+    for i in range(1, n):
+        if i <= min(a - 1, b - 1):
+            left[i] = 1
+        else:
+            left[i] = 0
+    # 右上
+    for i in range(1, n):
+        if i <= min(a - 1, n - b):
+            right[i] = 1
+        else:
+            right[i] = 0
+
+    # 横向
+    for i in range(1, n):
+        if i <= min(a - 1, b - 1):
+            row[i] = 1
+        else:
+            row[i] = 0
+    # 纵向
+    for i in range(1, n):
+        if i <= b - 1:
+            col[i] = 1
+        else:
+            col[i] = 0
+    # 左上
+    for i in range(1, n):
+        if i <= min(a - 1, b - 1):
+            left[i] = 1
+
+=======
+Suggestion 5
+
+def main():
+    n, a, b = map(int, input().split())
+    p, q, r, s = map(int, input().split())
+    for i in range(p, q+1):
+        for j in range(r, s+1):
+            if (i+a-j) % 2 == 0 and (j+b-i) % 2 == 0:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+=======
+Suggestion 6
+
+def problems230_c():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    P, Q, R, S = map(int, input().split())
+    print(N, A, B, P, Q, R, S)

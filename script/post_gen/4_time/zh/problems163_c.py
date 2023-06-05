@@ -1,62 +1,93 @@
-#问题陈述
-#一家公司有N个成员，他们的ID号是1，...，N。
-#除了编号为1的成员外，每个成员都有一个ID号较小的直接上司。
-#当一个人X是一个人Y的直接上司时，这个人Y被称为X的直接下属。
-#你得到的信息是，编号为i的成员的直接上司是编号为A_i的成员。对于每个成员，找出它有多少个直接下属。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i < i
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_2 ...A_N
-#
-#输出
-#对于每一个编号为1，2，...，N的成员，打印它的直属下级的数量，在它自己的行中。
-#
-#输入样本 1
-#5
-#1 1 2 2
-#
-#样本输出 1
-#2
-#2
-#0
-#0
-#0
-#编号为1的成员有两个直接下属：编号为2和3的成员。
-#编号为2的成员有两个直接下属：编号为4和5的成员。
-#编号为3、4、5的成员没有直接下属。
-#
-#样本输入2
-#10
-#1 1 1 1 1 1 1 1 1
-#
-#样本输出2
-#9
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#0
-#
-#样本输入3
-#7
-#1 2 3 4 5 6
-#
-#样本输出3
-#1
-#1
-#1
-#1
-#1
-#1
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.insert(0,0)
+    b = [0]*(n+1)
+    for i in range(1,n+1):
+        b[a[i]] += 1
+    for i in range(1,n+1):
+        print(b[i])
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #print(a)
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i-1]-1] += 1
+    for i in b:
+        print(i)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n-1):
+        b[a[i]-1] += 1
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i - 1] - 1] += 1
+    for i in range(n):
+        print(b[i])
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    B = [0 for i in range(N)]
+    for i in range(N-1):
+        B[A[i]-1] += 1
+    for i in range(N):
+        print(B[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    b = [0] * n
+    for i in range(1, n):
+        b[a[i - 1] - 1] += 1
+
+    for i in range(n):
+        print(b[i])
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N - 1):
+        B[A[i] - 1] += 1
+    for i in range(N):
+        print(B[i])

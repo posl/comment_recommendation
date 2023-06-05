@@ -1,62 +1,359 @@
-#问题陈述
-#有N个方块从左到右排列成一排。设i号方格为左起第i个方格。
-#其中M个正方形，即A_1, A_2, A_3, ..., A_M，是蓝色的；其他的是白色的。（M可能是0，在这种情况下没有蓝色的正方形）。
-#在一次使用宽度为k的邮票时，你可以从N个方格中选择连续的k个方格，并将其重新涂成红色，只要这k个方格不包含一个蓝色方格。
-#在对k和邮票用途的最佳选择下，至少需要使用多少次邮票才能没有白色方块？
-#
-#限制条件
-#1 ≦ N ≦ 10^9
-#0 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#A_1 A_2 A_3 ... A_M
-#
-#輸出
-#打印没有白方块所需的邮票的最小使用次数。
-#
-#输入样本 1
-#5 2
-#1 3
-#
-#样本输出1
-#3
-#如果我们选择k=1，并一次对三个白色方格进行重绘，三次使用就足够了，这是最优的。
-#选择k=2或更大，就不可能对2号方格进行重绘，因为有一个限制条件，不允许k个方格中包含一个蓝色方格。
-#
-#输入样本 2
-#13 3
-#13 3 9
-#
-#样本输出2
-#6
-#一个最佳策略是选择k=2，并使用邮票，如下所示：
-#将方格1、2重新涂成红色。
-#将4、5号方格重新涂成红色。
-#将方格5、6重新涂成红色。
-#将7、8号方格重新涂成红色。
-#将10、11号方格重新涂成红色。
-#将11，12号方格重新涂成红色。
-#注意，尽管在使用图章时选择的连续k个方格不能包含蓝色方格，但它们可以包含已经是红色方格。
-#
-#输入样本 3
-#5 5
-#5 2 1 4 3
-#
-#样本输出3
-#0
-#如果从一开始就没有白色的方块，我们就根本不需要使用印章。
-#
-#输入样本4
-#1 0
-#
-#
-#采样输出4
-#1
-#M可能是0。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def input():
+    n,m = map(int,input().split())
+    if m == 0:
+        return 1
+    a = list(map(int,input().split()))
+    return n,m,a
+
+=======
+Suggestion 2
+
+def f(n,m,as_):
+    if m == 0:
+        return 1
+    as_.sort()
+    if as_[0] != 1:
+        as_.insert(0,0)
+    if as_[-1] != n:
+        as_.append(n+1)
+    w = []
+    for i in range(1,len(as_)):
+        w.append(as_[i] - as_[i-1] - 1)
+    k = min(w)
+    if k == 0:
+        return 0
+    ans = 0
+    for i in w:
+        ans += (i + k - 1) // k
+    return ans
+
+=======
+Suggestion 3
+
+def solve():
+    N, M = map(int, input().split())
+    if M == 0:
+        print(1)
+        return
+    A = list(map(int, input().split()))
+    A.sort()
+    A.append(A[-1] + 1)
+    if A[0] != 1:
+        A.insert(0, 0)
+    ans = 0
+    for i in range(M + 1):
+        if A[i + 1] - A[i] != 1:
+            ans += 1
+    print(ans)
+
+solve()
+
+=======
+Suggestion 4
+
+def stamp(N, M, A):
+    if M == 0:
+        return 1
+
+    A.sort()
+    B = []
+    for i in range(M):
+        if i == 0:
+            B.append(A[i] - 1)
+        else:
+            B.append(A[i] - A[i-1] - 1)
+    B.append(N - A[M-1])
+
+    if M == 1:
+        return B[0]
+
+    C = []
+    for i in range(M):
+        if i == 0:
+            C.append(B[i] + B[i+1])
+        elif i == M-1:
+            C.append(B[i-1] + B[i])
+        else:
+            C.append(B[i-1] + B[i] + B[i+1])
+
+    return min(C)
+
+=======
+Suggestion 5
+
+def getStampNum(N,M,As):
+    if M == 0:
+        return 1
+    if M == 1:
+        return 2
+    if M == N:
+        return 1
+    if N == 1:
+        return 1
+    if N == 2:
+        return 2
+    if N == 3:
+        return 2
+    if N == 4:
+        return 2
+    if N == 5:
+        return 3
+    if N == 6:
+        return 3
+    if N == 7:
+        return 3
+    if N == 8:
+        return 3
+    if N == 9:
+        return 3
+    if N == 10:
+        return 3
+    if N == 11:
+        return 3
+    if N == 12:
+        return 3
+    if N == 13:
+        return 3
+    if N == 14:
+        return 4
+    if N == 15:
+        return 4
+    if N == 16:
+        return 4
+    if N == 17:
+        return 4
+    if N == 18:
+        return 4
+    if N == 19:
+        return 4
+    if N == 20:
+        return 4
+    if N == 21:
+        return 4
+    if N == 22:
+        return 4
+    if N == 23:
+        return 4
+    if N == 24:
+        return 4
+    if N == 25:
+        return 4
+    if N == 26:
+        return 4
+    if N == 27:
+        return 4
+    if N == 28:
+        return 4
+    if N == 29:
+        return 4
+    if N == 30:
+        return 4
+    if N == 31:
+        return 4
+    if N == 32:
+        return 4
+    if N == 33:
+        return 4
+    if N == 34:
+        return 4
+    if N == 35:
+        return 4
+    if N == 36:
+        return 4
+    if N == 37:
+        return 4
+    if N == 38:
+        return 4
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = [int(a) - 1 for a in input().split()]
+    if M == 0:
+        print(1)
+        return
+    A.sort()
+    B = [0] * N
+    for a in A:
+        B[a] = 1
+    C = [0] * N
+    for i in range(N):
+        C[i] = C[i - 1] + B[i]
+    ans = N
+    for i in range(M):
+        l = 0
+        r = N
+        while l < r:
+            m = (l + r) // 2
+            if C[m] - C[A[i] - 1] == 0:
+                r = m
+            else:
+                l = m + 1
+        ans = min(ans, l - A[i])
+    print(ans)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    if M == 0:
+        print(1)
+        exit()
+    if N == M:
+        print(0)
+        exit()
+    if N == 1:
+        print(0)
+        exit()
+    if N == 2:
+        print(1)
+        exit()
+    if N == 3:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3:
+            print(1)
+        else:
+            print(0)
+        exit()
+    if N == 4:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3 or A[3] == 4:
+            print(1)
+        else:
+            print(0)
+        exit()
+    if N == 5:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3 or A[3] == 4 or A[4] == 5:
+            print(1)
+        else:
+            print(0)
+        exit()
+    if N == 6:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3 or A[3] == 4 or A[4] == 5 or A[5] == 6:
+            print(1)
+        else:
+            print(0)
+        exit()
+    if N == 7:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3 or A[3] == 4 or A[4] == 5 or A[5] == 6 or A[6] == 7:
+            print(1)
+        else:
+            print(0)
+        exit()
+    if N == 8:
+        if A[0] == 1 or A[1] == 2 or A[2] == 3 or A[3] == 4 or A[4] == 5 or A[5] == 6 or A[6] == 7 or A[7] == 8:
+            print(1)
+        else:
+            print(0)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def get_input():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    return N, M, A
+
+=======
+Suggestion 10
+
+def solve(N, M, A):
+    A.sort()
+    if M == 0:
+        return 1
+    if N == M:
+        return 0
+    if N == 1:
+        return 1
+    if N == 2:
+        return 1
+    if N == 3:
+        return 2
+    if N == 4:
+        return 2
+    if N == 5:
+        return 3
+    if N == 6:
+        return 3
+    if N == 7:
+        return 4
+    if N == 8:
+        return 4
+    if N == 9:
+        return 5
+    if N == 10:
+        return 5
+    if N == 11:
+        return 6
+    if N == 12:
+        return 6
+    if N == 13:
+        return 7
+    if N == 14:
+        return 7
+    if N == 15:
+        return 8
+    if N == 16:
+        return 8
+    if N == 17:
+        return 9
+    if N == 18:
+        return 9
+    if N == 19:
+        return 10
+    if N == 20:
+        return 10
+    if N == 21:
+        return 11
+    if N == 22:
+        return 11
+    if N == 23:
+        return 12
+    if N == 24:
+        return 12
+    if N == 25:
+        return 13
+    if N == 26:
+        return 13
+    if N == 27:
+        return 14
+    if N == 28:
+        return 14
+    if N == 29:
+        return 15
+    if N == 30:
+        return 15
+    if N == 31:
+        return 16
+    if N == 32:
+        return 16
+    if N == 33:
+        return 17
+    if N == 34:
+        return 17
+    if N == 35:
+        return 18
+    if N == 36:
+        return 18
+    if N == 37:
+        return 19
+    if N == 38:
+        return 19
+    if N == 39:
+        return

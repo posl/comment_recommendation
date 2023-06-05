@@ -1,36 +1,169 @@
-#问题陈述
-#当一个字符串的奇数位置（从头开始的第1个、第3个、第5个...）的字符都是小写英文字母，而其偶数位置（从头开始的第2个、第4个、第6个...）的字符都是大写英文字母，我们称之为难读。
-#判断一个字符串S是否难读。
-#
-#约束条件
-#S由大写和小写的英文字母组成。
-#S的长度在1到1000之间（包括1000）。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#如果S是难读的，打印Yes；否则，打印No。
-#
-#样本输入1
-#dIfFiCuLt
-#
-#样本输出1
-#Yes
-#奇数位置的字符都是小写的，偶数位置的字符都是大写的，所以很难阅读。
-#
-#输入样本2
-#eASY
-#
-#样本输出2
-#No
-#第3个字符不是小写，所以不难读。
-#
-#输入样本3
-#a
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    isHard = True
+    for i in range(0, len(s)):
+        if i % 2 == 0 and s[i].islower():
+            isHard = False
+        if i % 2 == 1 and s[i].isupper():
+            isHard = False
+    if isHard:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def is_difficult(s):
+    for i in range(0,len(s),2):
+        if s[i].islower():
+            return False
+    for i in range(1,len(s),2):
+        if s[i].isupper():
+            return False
+    return True
+
+s = input()
+
+=======
+Suggestion 3
+
+def is_hard_to_read(s):
+    if len(s) == 0:
+        return True
+    for i in range(len(s)):
+        if i%2 == 0:
+            if s[i].islower():
+                return False
+        else:
+            if s[i].isupper():
+                return False
+    return True
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 1:
+            if s[i].isupper():
+                print("No")
+                return
+        else:
+            if s[i].islower():
+                print("No")
+                return
+    print("Yes")
+
+main()
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i].isupper():
+                print("No")
+                return
+        else:
+            if s[i].islower():
+                print("No")
+                return
+    print("Yes")
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0 and s[i].isupper():
+            print("No")
+            return
+        elif i % 2 != 0 and s[i].islower():
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 7
+
+def isHardToRead(s):
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if not s[i].islower():
+                return False
+        else:
+            if not s[i].isupper():
+                return False
+    return True
+
+=======
+Suggestion 8
+
+def isHardToRead(s):
+    for i in range(0, len(s)):
+        if i % 2 == 0:
+            if s[i].islower():
+                return False
+        else:
+            if s[i].isupper():
+                return False
+    return True
+
+s = input()
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    for i in range(len(s)):
+        if i % 2 == 0:
+            if s[i] >= 'a' and s[i] <= 'z':
+                continue
+            else:
+                print('No')
+                return
+        else:
+            if s[i] >= 'A' and s[i] <= 'Z':
+                continue
+            else:
+                print('No')
+                return
+    print('Yes')
+    return
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    if len(s) == 1:
+        if s.islower():
+            print("Yes")
+        else:
+            print("No")
+    else:
+        for i in range(1, len(s), 2):
+            if s[i].isupper():
+                print("No")
+                return
+        for i in range(0, len(s), 2):
+            if s[i].islower():
+                print("No")
+                return
+        print("Yes")

@@ -1,46 +1,154 @@
-#问题陈述
-#有一个序列A = (A_0, A_1, ..., A_{N - 1})，有N = 2^{20}项。初始时，每个项都是-1。
-#按顺序处理Q个查询。第i个查询（1 ≦ i ≦ Q）由一个整数t_i描述，如t_i = 1或t_i = 2，以及另一个整数x_i，如下。
-#如果t_i=1，依次进行以下操作。
-#定义一个整数h为h=x_i。
-#当A_{h mod N}≠-1时，不断向h加1。我们可以证明，在这个问题的约束条件下，这个过程在有限迭代后结束。
-#用x_i替换A_{h mod N}的值。
-#如果t_i=2，则打印当时的A_{x_i mod N}的值。
-#这里，对于整数a和b，a mod b表示a除以b时的余数。
-#
-#限制条件
-#1 ≦ Q ≦ 2 × 10^5
-#t_i在{ 1, 2 }中  (1 ≦ i ≦ Q)
-#0 ≦ x_i ≦ 10^{18}。  (1 ≦ i ≦ Q)
-#至少有一个i (1 ≦ i ≦ Q)使得t_i = 2。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#t_1 x_1
-#.
-#.
-#.
-#t_{Q} x_{Q}
-#
-#输出
-#对于每个t_i = 2的查询，用一行打印出响应。保证至少有一个这样的查询。
-#
-#输入样本 1
-#4
-#1 1048577
-#1 1
-#2 2097153
-#2 3
-#
-#样本输出1
-#1048577
-#-1
-#我们有x_1 mod N = 1，所以第一个查询设定A_1 = 1048577。
-#在第二个查询中，最初我们有h = x_2，对于它，A_{h mod N} = A_{1} ≠ -1，所以我们在h上加1。≠ 现在我们有A_{h mod N} = A_{2} = -1，所以这个查询设置A_2 = 1。
-#在第三个查询中，我们打印出A_{x_3 mod N} = A_{1} = 1048577。
-#在第四个查询中，我们打印出A_{x_4 mod N} = A_{3} = -1。
-#注意，在这个问题中，N=2^{20}=1048576是一个常数，没有在输入中给出。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    # print("solve")
+    N = 2 ** 20
+    # print(N)
+    A = [-1] * N
+    # print(A)
+    Q = int(input())
+    # print(Q)
+    for i in range(Q):
+        # print(i)
+        t, x = map(int, input().split())
+        # print(t)
+        # print(x)
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+
+solve()
+
+=======
+Suggestion 2
+
+def solve():
+    N = 1048576
+    A = [-1] * N
+    Q = int(input())
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 3
+
+def main():
+    n = 2 ** 20
+    a = [-1] * n
+    q = int(input())
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while a[h % n] != -1:
+                h += 1
+            a[h % n] = x
+        else:
+            print(a[x % n])
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 6
+
+def main():
+    n = 2 ** 20
+    a = [-1 for _ in range(n)]
+    q = int(input())
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while a[h % n] != -1:
+                h += 1
+            a[h % n] = x
+        else:
+            print(a[x % n])
+
+=======
+Suggestion 7
+
+def main():
+    Q = int(input())
+    A = [-1] * (2**20)
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % 2**20] != -1:
+                h += 1
+            A[h % 2**20] = x
+        else:
+            print(A[x % 2**20])
+
+=======
+Suggestion 8
+
+def solve():
+    N = 2 ** 20
+    A = [-1] * N
+    Q = int(input())
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])
+
+=======
+Suggestion 9
+
+def main():
+    N = 2 ** 20
+    A = [0] * N
+    Q = int(input())
+    for i in range(Q):
+        line = input().split()
+        t = int(line[0])
+        x = int(line[1])
+        if t == 1:
+            h = x
+            while A[h % N] != -1:
+                h += 1
+            A[h % N] = x
+        else:
+            print(A[x % N])

@@ -1,33 +1,138 @@
-#问题陈述
-#给出N个整数A_1,...,A_N。
-#求所有对(i,j)的A_i×A_j之和，使得1≦ i < j ≦ N, modulo (10^9+7)。
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#Print sum_{i=1}^{N-1}sum_{j=i+1}^{N}A_i A_j, modulo (10^9+7).
-#
-#输入样本 1
-#3
-#1 2 3
-#
-#样本输出1
-#11
-#我们有1×2+1×3+2×3=11。
-#
-#样本输入2
-#4
-#141421356 17320508 22360679 244949
-#
-#样本输出2
-#437235829
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem177_c():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9+7
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += A[i]*A[j]
+    print(ans%MOD)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            ans += a[i]*a[j]
+    print(ans%(10**9+7))
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    MOD = 10 ** 9 + 7
+    ans = 0
+    s = 0
+    for i in range(1, n):
+        s = (s + a[i]) % MOD
+    for i in range(n - 1):
+        ans = (ans + a[i] * s) % MOD
+        s = (s - a[i + 1]) % MOD
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+
+    S = sum(A)
+    ans = 0
+    for i in range(N):
+        ans += A[i] * (S - A[i])
+    print(ans // 2 % MOD)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+
+    ans = 0
+    for i in range(n-1):
+        for j in range(i+1, n):
+            ans += a[i] * a[j]
+            ans %= mod
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 10**9 + 7
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            ans += A[i]*A[j]
+            ans %= MOD
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 10**9 + 7
+    ans = 0
+    s = sum(a) % mod
+    for i in range(n):
+        s -= a[i]
+        ans += a[i] * s
+        ans %= mod
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    # input
+    N = int(input())
+    A = list(map(int,input().split()))
+
+    # calculate
+    sum = 0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            sum = sum + A[i]*A[j]
+
+    # print
+    print(sum%(10**9+7))
+
+main()
+
+=======
+Suggestion 10
+
+def sum_of_pairs(N,A):
+    sum = 0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            sum += A[i]*A[j]
+    return sum

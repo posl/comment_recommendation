@@ -1,40 +1,109 @@
-#问题陈述
-#给定任何整数x，Aoki可以做以下操作。
-#操作：用x和K的绝对差值替换x。
-#给你一个整数N的初始值，找出Aoki做了零次或多次操作后N的最小可能值。
-#
-#限制条件
-#0 ≤ N ≤ 10^{18}
-#1 ≤ K ≤ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#輸出
-#打印Aoki做了零次或多次操作后，N的最小可能值。
-#
-#输入样本 1
-#7 4
-#
-#样本输出1
-#1
-#最初，N=7。
-#经过一次操作，N变成了 |7-4| = 3。
-#经过两次操作，N变成|3-4|=1，这是N的最小值。
-#
-#样本输入 2
-#2 6
-#
-#样本输出 2
-#2
-#零操作后的N=2是最小值。
-#
-#样本输入3
-#1000000000000000000 1
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, K = map(int, input().split())
+
+    while True:
+        if N < K:
+            break
+        N = N % K
+
+    if N > K/2:
+        N = K - N
+
+    print(N)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    while N >= K:
+        N = N % K
+        if N > K/2:
+            N = abs(N - K)
+    print(N)
+
+=======
+Suggestion 3
+
+def main():
+    n,k = map(int,input().split())
+    if n >= k:
+        n = n%k
+    if n > k/2:
+        n = k-n
+    print(n)
+
+=======
+Suggestion 4
+
+def main():
+    n,k = map(int,input().split())
+    print(min(n%k,k-n%k))
+
+=======
+Suggestion 5
+
+def main():
+    N, K = map(int, input().split())
+    if N % K == 0:
+        print(0)
+    else:
+        print(1)
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    print(min(n%k, k-n%k))
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N, K = map(int, input().split())
+    while N >= K:
+        N = N - K
+    if N < K:
+        if N < K - N:
+            print(N)
+        else:
+            print(K - N)
+
+=======
+Suggestion 8
+
+def solve(n, k):
+    while True:
+        if n < k:
+            return min(n, abs(n-k))
+        else:
+            n %= k
+    return n
+
+=======
+Suggestion 9
+
+def gcd(a,b):
+    while b:
+        a,b=b,a%b
+    return a
+
+n,k=map(int,input().split())
+print(min(n%k,k-n%k))
+
+=======
+Suggestion 10
+
+def main():
+    N,K = map(int,input().split())
+    if N%K == 0:
+        print(0)
+    else:
+        print(min(N%K,abs(N%K-K)))

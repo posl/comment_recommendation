@@ -1,95 +1,119 @@
-#问题陈述
-#给你一个由#和.组成的模式S和T，每个模式有H行和W列。
-#模式S是由H个字符串组成的，S_i的第j个字符代表第i行和第j列中的元素。T的情况也是如此。
-#判断是否可以通过重新排列S的列来使S等于T。
-#这里，重新排列一个图案X的列的方法如下。
-#选择一个(1,2,...,W)的排列组合P=(P_1,P_2,...,P_W)。
-#然后，对于每一个整数i，如1 ≦ i ≦ H，同时做以下工作。
-#对于每个整数j，如1 ≦ j ≦ W，同时将X的第i行和第j列的元素替换为第i行和第P_j列的元素。
-#
-#
-#限制条件
-#H和W是整数。
-#1 ≦ H,W
-#1 ≦ H × W ≦ 4 × 10^5
-#S_i和T_i是长度为W的字符串，由#和.组成。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#H W
-#S_1
-#S_2
-#.
-#.
-#.
-#S_H
-#T_1
-#T_2
-#.
-#.
-#.
-#T_H
-#
-#输出
-#如果S可以与T相等，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 4
-###.#
-###..
-##...
-#.###
-#..##
-#...#
-#
-#样本输出1
-#Yes
-#例如，如果你把S的第3列、第4列、第2列和第1列按这个顺序从左到右排列，S将等于T。
-#
-#输入样本2
-#3 3
-##.#
-#.#.
-##.#
-###.
-###.
-#.#.
-#
-#样本输出2
-#No
-#在这个输入中，不能使S等于T。
-#
-#样本输入3
-#2 1
-##
-#.
-##
-#.
-#
-#样本输出3
-#Yes
-#有可能是S=T。
-#
-#样本输入4
-#8 7
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-##..#..#
-#.##.##.
-#....###
-#####...
-#....###
-#####...
-#....###
-#####...
-#....###
-#####...
-#
-#样本输出4
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    T = [input() for _ in range(H)]
+    s = []
+    t = []
+    for i in range(H):
+        s1 = []
+        t1 = []
+        for j in range(W):
+            if S[i][j] == '#':
+                s1.append(j)
+            if T[i][j] == '#':
+                t1.append(j)
+        s.append(s1)
+        t.append(t1)
+
+    s.sort()
+    t.sort()
+    if s == t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def get_input():
+    H,W = map(int, input().split())
+    S = []
+    T = []
+    for i in range(H):
+        S.append(input())
+    for i in range(H):
+        T.append(input())
+    return H,W,S,T
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    t = [input() for _ in range(h)]
+    s_count = [0] * h
+    t_count = [0] * h
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] == '#':
+                s_count[i] += 1
+            if t[i][j] == '#':
+                t_count[i] += 1
+    if s_count == t_count:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def read_ints():
+    return list(map(int, input().split()))
+
+=======
+Suggestion 6
+
+def main():
+    h, w = map(int, input().split())
+    s = [list(input()) for _ in range(h)]
+    t = [list(input()) for _ in range(h)]
+
+    for i in range(h):
+        s[i].sort()
+        t[i].sort()
+
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] != t[i][j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 7
+
+def main():
+    h, w = map(int, input().split())
+    s = [input() for _ in range(h)]
+    t = [input() for _ in range(h)]
+    s = [list(x) for x in s]
+    t = [list(x) for x in t]
+
+    s = sorted(s)
+    t = sorted(t)
+
+    for i in range(h):
+        for j in range(w):
+            if s[i][j] != t[i][j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def main():
+    # 由于题目的数据量很大，所以只能用C语言来实现了
+    pass

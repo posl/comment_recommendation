@@ -1,52 +1,119 @@
-#问题陈述
-#在一个x轴向右，y轴向上的xy坐标平面内，将一个点（a，b）绕原点逆时针旋转d度，求该点的新坐标。
-#
-#约束条件
-#-1000 ≦ a,b ≦ 1000
-#1 ≦ d ≦ 360
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b d
-#
-#輸出
-#让点的新坐标为（a', b'）。按这个顺序打印a'和b'，中间有一个空格。
-#你的输出将被认为是正确的，对于每一个打印的值，与答案的绝对或相对误差最多为10^{-6}。
-#
-#输入样本 1
-#2 2 180
-#
-#输出样本 1
-#-2 -2
-#当(2, 2)围绕原点逆时针旋转180度时，它成为(2, 2)相对于原点的对称点，即(-2, -2)。
-#
-#输入样本 2
-#5 0 120
-#
-#样本输出 2
-#-2.49999999999999911182 4.33012701892219364908
-#当(5, 0)围绕原点逆时针旋转120度时，它变成(-(5/2) , ((5(3)^(1/2))/2))。
-#这个样本输出与这些值并不精确匹配，但误差很小，可以认为是正确的。
-#
-#样本输入 3
-#0 0 11
-#
-#样本输出3
-#0.00000000000000000000 0.00000000000000000000
-#由于（a，b）是原点（旋转的中心），旋转不会改变其坐标。
-#
-#样本输入4
-#15 5 360
-#
-#输出样本 4
-#15.00000000000000177636 4.99999999999999555911
-#360度的旋转并不改变一个点的坐标。
-#
-#输入样本5
-#-505 191 278
-#
-#样本输出5
-#118.85878514480690171240 526.66743699786547949770
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate(a,b,d):
+    import math
+    d = math.radians(d)
+    import numpy as np
+    x = np.array([[math.cos(d),-math.sin(d)],[math.sin(d),math.cos(d)]])
+    y = np.array([a,b])
+    z = np.dot(x,y)
+    return z
+
+print(rotate(-505,191,278))
+
+=======
+Suggestion 2
+
+def rotate_point(x, y, d):
+    # x, y 是点的坐标
+    # d 是旋转角度
+    import math
+    rad = math.radians(d)
+    x1 = x * math.cos(rad) - y * math.sin(rad)
+    y1 = x * math.sin(rad) + y * math.cos(rad)
+    return x1, y1
+
+=======
+Suggestion 3
+
+def rotation(a,b,d):
+    import math
+    a1 = a*math.cos(math.radians(d)) - b*math.sin(math.radians(d))
+    b1 = a*math.sin(math.radians(d)) + b*math.cos(math.radians(d))
+    return a1,b1
+
+=======
+Suggestion 4
+
+def rotate(a,b,d):
+    import math
+    pi = math.pi
+    d = d*pi/180
+    a1 = a*math.cos(d) - b*math.sin(d)
+    b1 = a*math.sin(d) + b*math.cos(d)
+    return a1,b1
+
+a,b,d = map(int,input().split())
+a1,b1 = rotate(a,b,d)
+print(a1,b1)
+
+=======
+Suggestion 5
+
+def rotate(x, y, d):
+    import math
+    x1 = x*math.cos(math.radians(d)) - y*math.sin(math.radians(d))
+    y1 = x*math.sin(math.radians(d)) + y*math.cos(math.radians(d))
+    return x1, y1
+
+x, y, d = map(int, input().split())
+x1, y1 = rotate(x, y, d)
+print(x1, y1)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    x, y, d = map(int, input().split())
+    # 计算
+    # 旋转矩阵
+    # x' = x * cos(d) - y * sin(d)
+    # y' = x * sin(d) + y * cos(d)
+    x1 = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d))
+    y1 = x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))
+    # 输出
+    print(x1, y1)
+
+=======
+Suggestion 7
+
+def problems259_b(a, b, d):
+    import math
+    d = math.radians(d)
+    a1 = a * math.cos(d) - b * math.sin(d)
+    b1 = a * math.sin(d) + b * math.cos(d)
+    return a1, b1
+
+=======
+Suggestion 8
+
+def rotate(x,y,d):
+    import math
+    d = math.radians(d)
+    x_ = x*math.cos(d) - y*math.sin(d)
+    y_ = x*math.sin(d) + y*math.cos(d)
+    return x_,y_
+
+=======
+Suggestion 9
+
+def problems259_b():
+    pass
+
+=======
+Suggestion 10
+
+def rota(a,b,d):
+    import math
+    d1 = math.radians(d)
+    x = a * math.cos(d1) - b * math.sin(d1)
+    y = a * math.sin(d1) + b * math.cos(d1)
+    return x,y
+
+a,b,d = map(int,input().split())
+x,y = rota(a,b,d)
+print(x,y)

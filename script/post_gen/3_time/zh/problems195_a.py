@@ -1,33 +1,50 @@
-#问题陈述
-#魔术师Takahashi正在与一只怪物战斗。
-#他的魔法可以打败健康状况是M的倍数的怪物，但对健康状况不是M的倍数的怪物没有作用。
-#他的魔法能打败健康状况为H的怪物吗？
-#
-#限制条件
-#1 ≦ M ≦ 1000
-#1 ≦ H ≦ 1000
-#M和H是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#M H
-#
-#输出
-#如果高桥的魔法能打败怪物，打印Yes；否则，打印No。
-#
-#输入样本 1
-#10 120
-#
-#输出样本1
-#Yes
-#高桥的魔法可以打败一个健康状况是10的倍数的怪物。
-#120是10的倍数，所以他的魔法可以打败健康状况为120的怪物。
-#
-#样本输入2
-#10 125
-#
-#样本输出2
-#No
-#125不是10的倍数，所以他的魔法不能打败健康状况为125的怪物。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    M,H = map(int,input().split())
+    if H%M == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    M,H = map(int,input().split())
+    if H % M == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    m, h = map(int, input().split())
+    if h % m == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def problem195_a():
+    m, h = map(int, input().split())
+    if h % m == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def solve(M,H):
+    if H % M == 0:
+        return "Yes"
+    else:
+        return "No"

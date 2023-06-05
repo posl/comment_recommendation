@@ -1,48 +1,197 @@
-#问题陈述
-#给你一个正整数的序列：A=（a_1,a_2,...,a_N）。
-#你可以选择并执行下列操作中的任何一次，可能为零。
-#选择一个整数i，使得1≦i≦N，并且a_i是2的倍数，然后用((a_i)/(2))替换a_i。
-#选择一个整数i，使得1 ≦ i ≦ N并且a_i是3的倍数，用((a_i)/(3))替换a_i。
-#你的目标是使A满足a_1=a_2=...=a_N。
-#找出你为实现目标而需要进行的操作的最小总次数。如果没有办法实现这个目标，就打印-1代替。
-#
-#限制条件
-#2 ≦ N ≦ 1000
-#1 ≦ a_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#a_1 a_2 ... a_N
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 4 3
-#
-#样本输出1
-#3
-#这里有一个方法可以在三次操作中实现目标，这是最小的需要。
-#选择一个整数i=2，使a_i是2的倍数，用（（a_2）/（2））替换a_2。A就变成了（1,2,3）。
-#选择一个整数i=2，使得a_i是2的倍数，用((a_2)/(2))替换a_2。A就变成了(1,1,3)。
-#选择一个整数i=3，使得a_i是3的倍数，用((a_3)/(3))替换a_3。A变成了(1,1,1)。
-#
-#输入样本 2
-#3
-#2 7 6
-#
-#样本输出2
-#-1
-#没有办法实现这个目标。
-#
-#样本输入3
-#6
-#1 1 1 1 1 1
-#
-#样本输出 3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x):
+    if x%2==0:
+        return x/2
+    elif x%3==0:
+        return x/3
+    else:
+        return -1
+
+n = int(input())
+a = list(map(int,input().split()))
+ans = 0
+while True:
+    flag = True
+    for i in range(n):
+        if f(a[i])!=-1:
+            a[i] = f(a[i])
+            flag = False
+    if flag:
+        break
+    ans += 1
+for i in range(n):
+    if a[i]!=a[0]:
+        ans = -1
+        break
+print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    while True:
+        B = []
+        for a in A:
+            if a % 2 == 0:
+                B.append(a // 2)
+            elif a % 3 == 0:
+                B.append(a // 3)
+            else:
+                B.append(a)
+        if A == B:
+            break
+        A = B
+        ans += 1
+    for a in A:
+        if a != A[0]:
+            print(-1)
+            return
+    print(ans)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    ans = 0
+    while True:
+        if all([i % 2 == 0 for i in a]):
+            ans += 1
+            a = [i / 2 for i in a]
+        else:
+            break
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    res = 0
+    while True:
+        flag = True
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] / 2
+                res += 1
+                flag = False
+                break
+        if flag:
+            break
+    while True:
+        flag = True
+        for i in range(n):
+            if a[i] % 3 == 0:
+                a[i] = a[i] / 3
+                res += 1
+                flag = False
+                break
+        if flag:
+            break
+    for i in range(n):
+        if a[i] != a[0]:
+            print(-1)
+            return
+    print(res)
+
+=======
+Suggestion 5
+
+def divide2(n):
+    return n/2
+
+=======
+Suggestion 6
+
+def solve(n, a):
+    count = 0
+    while True:
+        if all([i%2==0 for i in a]):
+            a = [i/2 for i in a]
+            count += 1
+        elif all([i%3==0 for i in a]):
+            a = [i/3 for i in a]
+            count += 1
+        elif all([i==a[0] for i in a]):
+            return count
+        else:
+            return -1
+
+n = int(raw_input())
+a = map(int, raw_input().split())
+print solve(n, a)
+
+=======
+Suggestion 7
+
+def check():
+    for i in range(1,N):
+        if A[i] != A[i-1]:
+            return False
+    return True
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    
+    count = 0
+    while True:
+        for i in range(n):
+            if a[i] % 2 == 0:
+                a[i] = a[i] // 2
+            else:
+                break
+        else:
+            count += 1
+            continue
+        break
+    print(count)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    count = 0
+    while True:
+        if sum([a%2 for a in A]) == 0:
+            A = [a/2 for a in A]
+            count += 1
+        else:
+            break
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    count = 0
+    while True:
+        if all([x % 2 == 0 for x in a]):
+            a = [x / 2 for x in a]
+            count += 1
+        elif all([x % 3 == 0 for x in a]):
+            a = [x / 3 for x in a]
+            count += 1
+        else:
+            break
+    print(count if all([x == a[0] for x in a]) else -1)

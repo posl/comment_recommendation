@@ -1,49 +1,155 @@
-#问题陈述
-#在一个圆圈内有N座山，按顺时针顺序称为山1，山2，...，山N。N是一个奇数。
-#在这些山之间有N个水坝，称为水坝1，水坝2，...，水坝N。水坝i（1 ≦ i ≦ N）位于山i和i+1之间（山N+1就是山1）。
-#当i山（1 ≦ i ≦ N）收到2x升的雨水时，水坝i-1和水坝i各积了x升的水（水坝0就是水坝N）。
-#有一天，每座山都收到了非负的偶数的雨量。
-#结果，水坝i（1 ≦ i ≦ N）总共积累了A_i升的水。
-#求每座山收到的雨量。我们可以证明，在这个问题的约束下，解决方案是唯一的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 10^5-1
-#N是一个奇数。
-#0 ≦ A_i ≦ 10^9
-#当每座山都收到非负的偶数的雨量时，输入所代表的情况就会发生。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个整数，代表山地1、山地2、...、山地N收到的雨水数量，按照这个顺序。
-#
-#输入样本 1
-#3
-#2 2 4
-#
-#样本输出1
-#4 0 4
-#如果我们假设1号、2号和3号山分别接受了4、0和4升的雨水，与这个输入是一致的，如下所示：
-#水坝1应该积累了(4/(2))+ (0/(2)) = 2升的水。
-#水坝2应该已经积累了(0/(2))+ (4/(2)) = 2公升的水。
-#水坝3应该已经积累了(4/(2))+ (4/(2)) = 4升的水。
-#
-#样本输入2
-#5
-#3 8 7 5 5
-#
-#样本输出 2
-#2 4 12 2 8
-#
-#样本输入3
-#3
-#1000000000 1000000000 0
-#
-#样本输出3
-#0 2000000000 0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve(n, a):
+    x = [0] * n
+    for i in range(n):
+        x[i] = a[i] - sum(x) * 2
+    return x
+
+=======
+Suggestion 2
+
+def solve(n, a):
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] - sum(b) // 2
+    return b
+
+=======
+Suggestion 3
+
+def solve(n, a):
+    b = [0] * n
+    for i in range(0, n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    for i in range(1, n):
+        b[i] = 2 * a[i - 1] - b[i - 1]
+    return b
+
+n = int(input())
+a = list(map(int, input().split()))
+print(*solve(n, a))
+
+=======
+Suggestion 4
+
+def solve(n, a):
+    ans = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            ans[0] += a[i]
+        else:
+            ans[0] -= a[i]
+    for i in range(1, n):
+        ans[i] = 2 * a[i-1] - ans[i-1]
+    return ans
+
+n = int(input())
+a = list(map(int, input().split()))
+print(' '.join(map(str, solve(n, a))))
+
+=======
+Suggestion 5
+
+def solve(n, a):
+    ans = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            ans[0] += a[i]
+        else:
+            ans[0] -= a[i]
+    for i in range(1, n):
+        ans[i] = 2 * a[i - 1] - ans[i - 1]
+    return ans
+
+n = int(input())
+a = list(map(int, input().split()))
+print(*solve(n, a))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * N
+    for i in range(N):
+        if i % 2 == 0:
+            B[0] += A[i]
+        else:
+            B[0] -= A[i]
+    for i in range(1, N):
+        B[i] = 2 * A[i - 1] - B[i - 1]
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    b[0] //= 2
+    for i in range(n-1):
+        b[i+1] = a[i] - b[i]
+    print(*b)
+
+=======
+Suggestion 8
+
+def solve(n, a):
+    b = [0] * n
+    b[0] = a[0]
+    for i in range(1, n):
+        b[i] = 2 * a[i - 1] - b[i - 1]
+    return b
+
+n = int(input())
+a = list(map(int, input().split()))
+print(*solve(n, a))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        if i % 2 == 0:
+            b[0] += a[i]
+        else:
+            b[0] -= a[i]
+    for i in range(1, n):
+        b[i] = 2 * a[i - 1] - b[i - 1]
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * n
+
+    for i in range(n):
+        if i % 2 == 0:
+            ans[0] += a[i]
+        else:
+            ans[0] -= a[i]
+
+    for i in range(1, n):
+        ans[i] = 2 * a[i - 1] - ans[i - 1]
+
+    print(' '.join(map(str, ans)))

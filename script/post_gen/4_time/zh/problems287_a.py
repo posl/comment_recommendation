@@ -1,53 +1,121 @@
-#问题陈述
-#有N个人。  他们每个人都同意或不同意一项提议。  这里，N是一个奇数。
-#第i个（i=1，2，...，N）人的意见用一个字符串S_i表示：如果S_i=For，这个人就同意，如果S_i=Against，这个人就不同意。
-#确定大多数人是否同意该提案。
-#
-#约束条件
-#N是1到99之间的奇数，包括在内。
-#S_i = 赞成或S_i = 反对，对于所有i = 1, 2, ..., N。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果N个人中的大多数人同意该提议，则打印Yes；否则打印No。
-#
-#样本输入1
-#3
-#For
-#Against
-#For
-#
-#
-#样本输出1
-#Yes
-#该提案得到了两个人的支持，也就是大多数人的支持，所以应该打印 "Yes"。
-#
-#输入样本2
-#5
-#Against
-#Against
-#For
-#Against
-#For
-#
-#样本输出2
-#No
-#该提案得到了两个人的支持，这不是大多数人的支持，所以应该打印 "No"。
-#
-#输入样本3
-#1
-#For
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        if S[i] == "For":
+            print("Yes")
+            break
+        elif S[i] == "Against":
+            print("No")
+            break
+
+=======
+Suggestion 2
+
+def get_input():
+    n = int(input())
+    s = [input() for i in range(n)]
+    return n, s
+
+=======
+Suggestion 3
+
+def get_input():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    return n, s
+
+=======
+Suggestion 4
+
+def problem287_a():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > s.count('Against'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def get_input():
+    input_list = []
+    while True:
+        try:
+            line = input()
+            input_list.append(line)
+        except EOFError:
+            break
+    return input_list
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("Yes" if s.count("For") > n//2 else "No")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > s.count('Against'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    if s.count('For') > s.count('Against'):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    votes = []
+    for i in range(n):
+        votes.append(input())
+    if votes.count("For") > n//2:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    if S.count('For') > S.count('Against'):
+        print('Yes')
+    else:
+        print('No')

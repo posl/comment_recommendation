@@ -1,36 +1,91 @@
-#问题陈述
-#有多少个不小于A且不大于B的整数？
-#
-#限制条件
-#1 ≦ A ≦ 100
-#1 ≦ B ≦ 100
-#A和B是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#打印不小于A且不大于B的整数的数量。
-#
-#输入样本 1
-#2 4
-#
-#输出示例 1
-#3
-#我们有三个不小于2且不大于4的整数：2、3、4，所以我们应该打印3。
-#
-#输入样本2
-#10 100
-#
-#样本输出2
-#91
-#
-#样本输入3
-#3 2
-#
-#样品输出3
-#0
-#我们没有不低于3和不高于2的整数，所以我们应该打印0。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+    #初始化计数器
+    count = 0
+    # 遍历整数
+    for i in range(A, B + 1):
+        # 如果是整数，计数器加1
+        count += 1
+    # 打印计数器
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    A, B = map(int, input().split())
+    print(B - A + 1) if A <= B else print(0)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(b - a + 1 if b - a + 1 > 0 else 0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int, input().split())
+    print(b-a+1 if b>=a else 0)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    print(b-a+1 if b-a>=0 else 0)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+
+    # 用来计数的变量
+    count = 0
+
+    # 在这里写下你的代码
+    for x in range(A, B + 1):
+        if A <= x <= B:
+            count += 1
+
+    # 输出结果
+    print(count)
+
+=======
+Suggestion 7
+
+def cal(a,b):
+    sum = 0
+    for i in range(a,b+1):
+        sum += 1
+    return sum
+
+a,b = input().split()
+print(cal(int(a),int(b)))
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    print(B - A + 1 if B >= A else 0)
+
+=======
+Suggestion 9
+
+def main():
+    A,B = map(int,input().split())
+    if A <= B:
+        print(B-A+1)
+    else:
+        print(0)

@@ -1,45 +1,136 @@
-#问题陈述
-#高桥市有N根可以相互区分的棍子。第i根棍子的长度为L_i。
-#他要用其中三根棍子组成一个三角形。设a、b、c是所用三根棍子的长度。这里，必须满足以下所有条件：
-#a < b + c
-#b < c + a
-#c < a + b
-#可以形成多少个不同的三角形？当只有一个三角形中使用了一根棍子时，两个三角形被认为是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ N ≦ 2 × 10^3
-#1 ≦ L_i ≦ 10^3
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#L_1 L_2 ...L_N
-#
-#限制条件
-#打印可以形成的不同三角形的数量。
-#
-#输入样本1
-#4
-#3 4 2 1
-#
-#样本输出 1
-#1
-#只能形成一个三角形：由第一、第二和第三根棍子形成的三角形。
-#
-#样本输入2
-#3
-#1 1000 1
-#
-#样本输出2
-#0
-#不能形成任何三角形。
-#
-#样本输入3
-#7
-#218 786 704 233 645 728 389
-#
-#样本输出3
-#23
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def triangle_count(n, l):
+    count = 0
+    l.sort()
+    for i in range(n-1, 1, -1):
+        for j in range(i-1, 0, -1):
+            for k in range(j-1, -1, -1):
+                if l[i] < l[j] + l[k]:
+                    count += 1
+                else:
+                    break
+    return count
+
+n = int(input())
+l = list(map(int, input().split()))
+print(triangle_count(n, l))
+
+=======
+Suggestion 2
+
+def count_triangles(N, L):
+    triangles = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            for k in range(j+1, N):
+                if L[i] < L[j] + L[k] and L[j] < L[k] + L[i] and L[k] < L[i] + L[j]:
+                    triangles += 1
+    return triangles
+
+=======
+Suggestion 3
+
+def check(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def countTriangle(nums):
+    nums.sort()
+    count = 0
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            for k in range(j+1, len(nums)):
+                if nums[i] + nums[j] > nums[k]:
+                    count += 1
+    return count
+
+=======
+Suggestion 5
+
+def triangle(a, b, c):
+    if a < b + c and b < c + a and c < a + b:
+        return 1
+    else:
+        return 0
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    sticks = [int(x) for x in input().split()]
+    sticks.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if sticks[i] + sticks[j] > sticks[k]:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    l = list(map(int, input().split()))
+    l.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if l[i] + l[j] > l[k] and l[j] + l[k] > l[i] and l[k] + l[i] > l[j]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_num_of_triangles(lengths):
+    lengths.sort()
+    num_of_triangles = 0
+    for i in range(len(lengths)):
+        for j in range(i + 1, len(lengths)):
+            for k in range(j + 1, len(lengths)):
+                if lengths[i] + lengths[j] > lengths[k]:
+                    num_of_triangles += 1
+    return num_of_triangles
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    L = list(map(int, input().split()))
+    L.sort()
+    ans = 0
+    for i in range(N-2):
+        for j in range(i+1, N-1):
+            for k in range(j+1, N):
+                if L[i] + L[j] > L[k]:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_triangles(sticks):
+    sticks.sort()
+    triangles = []
+    for i in range(len(sticks)):
+        for j in range(i+1,len(sticks)):
+            for k in range(j+1,len(sticks)):
+                if sticks[i] + sticks[j] > sticks[k]:
+                    triangles.append([sticks[i],sticks[j],sticks[k]])
+                else:
+                    break
+    return triangles

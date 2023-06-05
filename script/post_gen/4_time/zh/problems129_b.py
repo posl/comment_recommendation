@@ -1,42 +1,125 @@
-#问题陈述
-#我们有N个索引为1到N的权重，索引为i的权重的质量为W_i。
-#我们将把这些权重分为两组：指数不大于T的权重，以及指数大于T的权重，对于某个整数1≦T＜N。
-#考虑所有可能的这种划分，找出S_1和S_2的最小可能的绝对差值。
-#
-#限制条件
-#2 ≦ N ≦ 100
-#1 ≦ W_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#W_1 W_2 ...W_{N-1} W_N
-#
-#输出
-#打印S_1和S_2的最小可能绝对差值。
-#
-#样本输入1
-#3
-#1 2 3
-#
-#样本输出1
-#0
-#如果T=2，S_1=1+2=3，S_2=3，绝对差值为0。
-#
-#样本输入2
-#4
-#1 3 1 1
-#
-#样本输出 2
-#2
-#如果T=2，S_1=1+3=4，S_2=1+1=2，绝对差值为2，我们不能有更小的绝对差值。
-#
-#样本输入3
-#8
-#27 23 76 2 3 5 62 52
-#
-#样本输出3
-#2
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 100000
+    for T in range(1, N):
+        S1 = sum(W[:T])
+        S2 = sum(W[T:])
+        diff = abs(S1 - S2)
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 100000000
+    for t in range(1, n):
+        s1 = sum(w[:t])
+        s2 = sum(w[t:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    ws = [int(x) for x in input().split()]
+    min = 100000
+    for i in range(1, n):
+        s1 = sum(ws[:i])
+        s2 = sum(ws[i:])
+        if abs(s1 - s2) < min:
+            min = abs(s1 - s2)
+    print(min)
+
+main()
+
+=======
+Suggestion 4
+
+def get_min_abs_diff(n, weights):
+    min_abs_diff = 100000
+    for i in range(1, n):
+        left = weights[:i]
+        right = weights[i:]
+        left_sum = sum(left)
+        right_sum = sum(right)
+        abs_diff = abs(left_sum - right_sum)
+        if abs_diff < min_abs_diff:
+            min_abs_diff = abs_diff
+    return min_abs_diff
+
+=======
+Suggestion 5
+
+def get_min_weight_diff(n, w):
+    min_diff = 1000000000
+    for i in range(1, n):
+        s1 = sum(w[:i])
+        s2 = sum(w[i:])
+        if abs(s1 - s2) < min_diff:
+            min_diff = abs(s1 - s2)
+
+    return min_diff
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 10000
+    for i in range(1, n):
+        ans = min(ans, abs(sum(w[:i]) - sum(w[i:])))
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    W = list(map(int, input().split()))
+    min_diff = 1000000000000000000
+    for i in range(1, N):
+        diff = abs(sum(W[:i]) - sum(W[i:]))
+        if diff < min_diff:
+            min_diff = diff
+    print(min_diff)
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    w = list(map(int, input().split()))
+    ans = 100 * 100
+    for i in range(1, n):
+        s1 = sum(w[:i])
+        s2 = sum(w[i:])
+        ans = min(ans, abs(s1 - s2))
+    print(ans)
+solve()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    w = [int(x) for x in input().split()]
+    ans = 10000
+    for t in range(1, n):
+        s1 = sum(w[:t])
+        s2 = sum(w[t:])
+        if abs(s1-s2) < ans:
+            ans = abs(s1-s2)
+    print(ans)

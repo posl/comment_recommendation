@@ -1,58 +1,200 @@
-#问题陈述
-#高桥王国有N个公民。每个公民都有一个国民身份证号码；第i个公民的身份证是a_i。这里，所有的a_i都是成对不同的。
-#高桥有K块糖果。他决定以下列方式将这些糖果分发给公民，直到他没有更多的糖果为止。
-#当他有N块或更多的糖果时，就给每个市民发一块。
-#否则，让K'是他目前拥有的糖果数量，并向拥有K'最小ID的公民每人发放一块。
-#当所有的棋子都发完后，第i个公民将有多少棋子？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ K ≦ 10^{18}
-#1 ≦ a_i ≦ 10^9
-#所有a_i都是成对不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#a_1 a_2 ... a_N
-#
-#输出
-#打印N行。第i行应该包含第i个公民收到的糖果的数量。
-#
-#输入样本 1
-#2 7
-#1 8
-#
-#样本输出1
-#4
-#3
-#高桥将按以下方式分发棋子。
-#给每个人发一个棋子，让高桥有5个棋子。
-#给每个人发一块，让高桥有3块。
-#给每个人发一个棋子，让高桥有一个棋子。
-#给第1个公民发1块，让Takhashi没有碎片。
-#最后，第1位公民将得到4块，第2位公民将得到3块。
-#
-#输入样本 2
-#1 3
-#33
-#
-#样本输出2
-#3
-#由于只有一个公民，高桥将把所有的棋子分给这个第1个公民。
-#
-#输入样本3
-#7 1000000000000
-#99 8 2 4 43 5 3
-#
-#样本输出3
-#142857142857
-#142857142857
-#142857142858
-#142857142857
-#142857142857
-#142857142857
-#142857142857
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    cnt = k // n
+    remain = k % n
+    ans = [cnt] * n
+    for i in range(remain):
+        ans[a[i] - 1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [K // N for i in range(N)]
+    K %= N
+    for i in range(K):
+        ans[A[i] - 1] += 1
+    for i in range(N):
+        print(ans[i])
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort()
+    #print(a)
+    #print(n,k)
+    #print(a)
+    #print("k//n=",k//n)
+    #print("k%n=",k%n)
+    for i in range(n):
+        if k//n>0:
+            print(k//n)
+        else:
+            print(0)
+
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if K >= N:
+        for i in range(N):
+            print(K//N)
+    else:
+        b = []
+        for i in range(N):
+            b.append([a[i],i])
+        b.sort()
+        c = K
+        for i in range(N):
+            if b[i][1] < c:
+                print(K//N + 1)
+            else:
+                print(K//N)
+        #print(b)
+
+=======
+Suggestion 5
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    #print(A)
+    #print(N,K)
+    #print(A[0])
+    #print(A[0]-1)
+    #print(K//(A[0]-1))
+    #print(K//(A[0]-1)+1)
+    #print(K//(A[0]-1)+2)
+    #print(K//(A[0]-1)+3)
+    #print(K//(A[0]-1)+4)
+    #print(K//(A[0]-1)+5)
+    #print(K//(A[0]-1)+6)
+    #print(K//(A[0]-1)+7)
+    #print(K//(A[0]-1)+8)
+    #print(K//(A[0]-1)+9)
+    #print(K//(A[0]-1)+10)
+    #print(K//(A[0]-1)+11)
+    #print(K//(A[0]-1)+12)
+    #print(K//(A[0]-1)+13)
+    #print(K//(A[0]-1)+14)
+    #print(K//(A[0]-1)+15)
+    #print(K//(A[0]-1)+16)
+    #print(K//(A[0]-1)+17)
+    #print(K//(A[0]-1)+18)
+    #print(K//(A[0]-1)+19)
+    #print(K//(A[0]-1)+20)
+    #print(K//(A[0]-1)+21)
+    #print(K//(A[0]-1)+22)
+    #print(K//(A[0]-1)+23)
+    #print(K//(A[0]-1)+24)
+    #print(K//(A[0]-1)+25)
+    #print(K//(A[0]-1)+26)
+    #print(K//(A[0]-1)+27)
+    #print(K//(A[0]-1)+28)
+    #print(K//(A[0]-1)+29)
+    #print(K//(A[0]-1)+30)
+    #print(K//(A[0]-1)+31)
+    #print(K//(A[0]-1)+32)
+    #print(K//(A[0]-1)+33)
+    #print(K//(A[
+
+=======
+Suggestion 6
+
+def main():
+    N,K = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    n = K//N
+    m = K%N
+    for i in range(N):
+        if a[i] <= n:
+            if m > 0:
+                print(n+1)
+                m -= 1
+            else:
+                print(n)
+        else:
+            print(n)
+
+=======
+Suggestion 7
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if n >= k:
+        for i in range(n):
+            print(k//n)
+    else:
+        for i in range(n):
+            print(k//n)
+        for i in range(k%n):
+            print(1)
+
+=======
+Suggestion 8
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    n = K // N
+    k = K % N
+    for i in range(N):
+        if i < k:
+            print(n+1)
+        else:
+            print(n)
+
+=======
+Suggestion 9
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [k // n] * n
+    k %= n
+    for i in range(k):
+        ans[a[i] - 1] += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+N, K = map(int, input().split())
+a = list(map(int, input().split()))
+a.sort()

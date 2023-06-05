@@ -1,69 +1,129 @@
-#问题陈述
-#给你N个字符串，每个长度为2，由大写的英文字母和数字组成。第i个字符串是S_i。
-#请确定以下三个条件是否都得到满足。
-#每个字符串的第一个字符都是H、D、C和S中的一个。
-#对于每个字符串，第二个字符是A、2、3、4、5、6、7、8、9、T、J、Q、K中的一个。
-#・所有的字符串都是成对的不同。也就是说，如果i≠j，那么S_i≠S_j。
-#
-#限制条件
-#1 ≦ N ≦ 52
-#S_i是一个长度为2的字符串，由大写的英文字母和数字组成。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_1
-#S_2
-#.
-#.
-#.
-#S_N
-#
-#输出
-#如果三个条件都满足，打印Yes；否则，打印No。
-#
-#样本输入1
-#4
-#H3
-#DA
-#D3
-#SK
-#
-#样本输出1
-#Yes
-#我们可以验证，这三个条件都得到了满足。
-#
-#样本输入2
-#5
-#H3
-#DA
-#CK
-#H3
-#S7
-#
-#采样输出2
-#No
-#S_1和S_4都是H3，违反了第三个条件。
-#
-#样本输入3
-#4
-#3H
-#AD
-#3D
-#KS
-#
-#样品输出3
-#No
-#
-#样品输入4
-#5
-#00
-#AA
-#XX
-#YY
-#ZZ
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    if len(cards) == len(set(cards)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = set()
+    for _ in range(n):
+        s.add(input())
+    if len(s) == n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def is_same(s1, s2):
+    if s1[0] == s2[0] and s1[1] == s2[1]:
+        return True
+    return False
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = [input() for i in range(n)]
+    print("Yes" if len(s) == len(set(s)) and all([i[0] in "HDCS" and i[1] in "A23456789TJQK" for i in s]) else "No")
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    s.sort()
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    if len(set(a)) == n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def is_valid(s):
+    if len(s) != 2:
+        return False
+    if s[0] not in "HDCS":
+        return False
+    if s[1] not in "A23456789TJQK":
+        return False
+    return True
+
+=======
+Suggestion 8
+
+def check():
+    N = input()
+    S = [raw_input() for i in range(N)]
+    if len(S) != len(set(S)):
+        return False
+    for s in S:
+        if s[0] not in "HDCS":
+            return False
+        if s[1] not in "A23456789TJQK":
+            return False
+    return True
+
+print "Yes" if check() else "No"
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+    for i in range(n):
+        for j in range(i+1,n):
+            if cards[i] == cards[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    cards = []
+    for i in range(n):
+        cards.append(input())
+
+    if len(set(cards)) == n:
+        print("Yes")
+    else:
+        print("No")

@@ -1,61 +1,189 @@
-#问题陈述
-#我们有一个0到9（包括）之间的N个整数序列：A=(A_1, ..., A_N)，按这个顺序从左到右排列。
-#直到序列的长度变成1，我们将重复做下面的操作F或G。
-#操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
-#操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
-#这里，a%b表示a除以b时的剩余部分。
-#对于每个K=0,1,...,9，请回答以下问题。
-#在我们进行操作的2^{N-1}种可能方式中，有多少种方式最终以K为序列的最终值？
-#由于答案可能是巨大的，请找出998244353的模数。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印10行。
-#第i行应包含K=i-1情况的答案。
-#
-#输入样本 1
-#3
-#2 7 6
-#
-#样本输出1
-#1
-#0
-#0
-#0
-#2
-#1
-#0
-#0
-#0
-#0
-#如果我们先做操作F，后做操作F：序列变成(2,7,6)→(9,6)→(5)。
-#如果我们先做操作F，后做操作G：序列变成(2,7,6)→(9,6)→(4)。
-#如果我们先做操作G，后做操作F：序列变成(2,7,6)→(4,6)→(0)。
-#如果我们先做操作G，后做操作G：序列变成(2,7,6)→(4,6)→(4)。
-#
-#样本输入2
-#5
-#0 1 2 3 4
-#
-#样本输出2
-#6
-#0
-#1
-#1
-#4
-#0
-#1
-#1
-#0
-#2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 998244353
+    dp = [[0] * 10 for _ in range(n)]
+    dp[0][a[0]] = 1
+    for i in range(1, n):
+        for j in range(10):
+            dp[i][(j + a[i]) % 10] += dp[i - 1][j]
+            dp[i][(j + a[i]) % 10] %= mod
+            dp[i][(j * a[i]) % 10] += dp[i - 1][j]
+            dp[i][(j * a[i]) % 10] %= mod
+    for i in range(10):
+        print(dp[n - 1][i])
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    m = 998244353
+    ans = [0] * 10
+    ans[a[0]] = 1
+    for i in range(1, n):
+        tmp = [0] * 10
+        for j in range(10):
+            tmp[(j + a[i]) % 10] += ans[j]
+            tmp[(j + a[i]) % 10] %= m
+            tmp[(j * a[i]) % 10] += ans[j]
+            tmp[(j * a[i]) % 10] %= m
+        ans = tmp
+    for i in range(10):
+        print(ans[i])
+
+
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # 2**N通りの操作の結果を求める
+    # dp[i][j] := i番目までの数字を使って、最後の数字をjにする方法の数
+    dp = [[0] * 10 for _ in range(N + 1)]
+    dp[0][A[0]] = 1
+    for i in range(N - 1):
+        for j in range(10):
+            dp[i + 1][(j + A[i + 1]) % 10] += dp[i][j]
+            dp[i + 1][(j + A[i + 1]) % 10] %= 998244353
+            dp[i + 1][(j * A[i + 1]) % 10] += dp[i][j]
+            dp[i + 1][(j * A[i + 1]) % 10] %= 998244353
+
+    # 出力
+    for i in range(10):
+        print(dp[N - 1][i])
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    # N = 3
+    # A = [2,7,6]
+    ans = [0]*10
+    for i in range(10):
+        if i == A[-1]:
+            ans[i] = 1
+    for i in range(N-2,-1,-1):
+        new = [0]*10
+        for j in range(10):
+            if (j+A[i])%10 == A[i+1]:
+                new[j] += ans[j]
+            if (j*A[i])%10 == A[i+1]:
+                new[j] += ans[j]
+        ans = new
+    for i in range(10):
+        print(ans[i])
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        dp = [[0] * 10 for _ in range(N)]
+        for j in range(10):
+            if i == A[0]:
+                dp[0][j] = 1
+            else:
+                dp[0][j] = 0
+        for j in range(1, N):
+            for k in range(10):
+                if k == A[j]:
+                    dp[j][k] = sum(dp[j - 1]) % mod
+                else:
+                    dp[j][k] = dp[j - 1][k]
+        ans[i] = sum(dp[-1]) % mod
+    print('\n'.join(map(str, ans)))
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+
+    def f(x, y):
+        return (x + y) % 10
+
+    def g(x, y):
+        return (x * y) % 10
+
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                dp = [0] * 10
+                dp[f(f(i, j), k)] = 1
+                dp[f(g(i, j), k)] = 1
+                dp[g(f(i, j), k)] = 1
+                dp[g(g(i, j), k)] = 1
+                for a in range(10):
+                    ans[a] += dp[a] * A.count(i) * A.count(j) * A.count(k)
+                    ans[a] %= MOD
+    for i in range(10):
+        print(ans[i])
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    A = [int(i) for i in input().split()]
+    ans = [0] * 10
+    for i in range(n):
+        ans[A[i]] += 1
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    if n == 1:
+        print(1)
+        return
+    if n == 2:
+        if (a[0] + a[1]) % 10 == 0:
+            print(1)
+        else:
+            print(0)
+        return
+    # 从左到右，每次删除两个数，只能是操作F或操作G
+    # 操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
+    # 操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
+    # 从左到右，每次删除两个数，只能是操作F或操作G
+    # 操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
+    # 操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
+    # 操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
+    # 操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
+    # 操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
+    # 操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
+    # 操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。

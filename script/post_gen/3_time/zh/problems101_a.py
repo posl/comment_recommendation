@@ -1,42 +1,129 @@
-#问题陈述
-#在高桥的脑海中始终有一个整数。
-#最初，高桥心中的整数是0。高桥现在要吃四个符号，每个符号是+或-。当他吃下 "+"时，他头脑中的整数增加1；当他吃下"-"时，他头脑中的整数减少1。
-#高桥要吃的符号以字符串S的形式给你，S中的第i个字符是他要吃的第i个符号。
-#找出高桥吃完所有符号后，他心中的整数。
-#
-#限制条件
-#S的长度是4。
-#S中的每个字符都是+或-。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印高桥吃下所有符号后脑中的整数。
-#
-#输入样本1
-#+-++
-#
-#样本输出1
-#2
-#最初，高桥的头脑中的整数是0。
-#他要吃的第一个整数是+。吃完后，他头脑中的整数变成了1。
-#第二个要吃的整数是-。吃完后，他脑海中的整数变成了0。
-#第三个要吃的整数是+。吃完后，他脑海中的整数变成了1。
-#第四个要吃的整数是+。吃完后，他脑海中的整数变成了2。
-#因此，高桥吃完所有的符号后，他头脑中的整数是2。
-#
-#输入样本2
-#-+--
-#
-#样本输出2
-#-2
-#
-#样本输入3
-#----
-#
-#样本输出3
-#-4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #S = input()
+    S = "+-++"
+    print(S.count('+')-S.count('-'))
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    #print(S)
+    count = 0
+    for i in range(len(S)):
+        if S[i] == '+':
+            count += 1
+        else:
+            count -= 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    count = 0
+    for i in range(4):
+        if S[i] == '+':
+            count += 1
+        else:
+            count -= 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    S = input()
+
+    # 计算结果
+    result = 0
+    for i in range(4):
+        if S[i] == '+':
+            result += 1
+        else:
+            result -= 1
+
+    # 打印结果
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    # 输入字符串
+    s = input()
+    # 计算结果
+    result = 0
+    # 遍历字符串
+    for i in range(0, len(s)):
+        # 如果是+号，结果+1
+        if s[i] == '+':
+            result += 1
+        # 如果是-号，结果-1
+        else:
+            result -= 1
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    S = input()
+    print(S.count('+') - S.count('-'))
+
+=======
+Suggestion 7
+
+def main():
+    #读入数据
+    s = input()
+    #print(s)
+    #计算结果
+    result = 0
+    for i in range(0,4):
+        if s[i] == "+":
+            result += 1
+        else:
+            result -= 1
+    #输出结果
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    s = input()
+    print(s.count('+') - s.count('-'))
+
+=======
+Suggestion 9
+
+def main():
+    S = input()
+    count = 0
+    for i in S:
+        if i == "+":
+            count += 1
+        elif i == "-":
+            count -= 1
+    print(count)
+
+=======
+Suggestion 10
+
+def get_result(s):
+    result = 0
+    for i in s:
+        if i == '+':
+            result += 1
+        else:
+            result -= 1
+    return result

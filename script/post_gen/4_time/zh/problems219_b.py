@@ -1,54 +1,183 @@
-#问题陈述
-#给你三个由小写英文字母组成的字符串S_1、S_2、S_3，以及一个由1、2、3组成的字符串T。
-#根据T中的字符将这三个字符串连接起来，并打印出所得到的字符串。从形式上看，符合以下指令。
-#对于每个整数i，使1≦i≦|T|，让字符串s_i定义如下：
-#S_1，如果T的第i个字符是1；
-#S_2，如果T的第i个字符是2；
-#S_3，如果T的第i个字符是3。
-#将字符串s_1, s_2, ..., s_{|T|}按照这个顺序串联起来，并打印出所得的字符串。
-#
-#约束条件
-#1 ≦ |s_1|, |s_2|, |s_3| ≦ 10
-#1 ≦ |T| ≦ 1000
-#S_1, S_2, 和 S_3由小写英文字母组成。
-#T由1、2和3组成。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S_1
-#S_2
-#S_3
-#T
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#mari
-#to
-#zzo
-#1321
-#
-#输出样本1
-#marizzotomari
-#我们有s_1 = mari, s_2 = zzo, s_3 = to, s_4 = mari。将这些串联起来，并打印出结果字符串：marizzotomari。
-#
-#输入样本2
-#abra
-#cad
-#abra
-#123
-#
-#输出样本2
-#abracadabra
-#
-#样本输入3
-#a
-#b
-#c
-#1
-#
-#样本输出3
-#a
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    T = input()
+    result = ""
+    for i in T:
+        if i == '1':
+            result += S1
+        elif i == '2':
+            result += S2
+        else:
+            result += S3
+    print(result)
+main()
+
+=======
+Suggestion 2
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in range(len(t)):
+        if t[i] == "1":
+            result += s1
+        elif t[i] == "2":
+            result += s2
+        else:
+            result += s3
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            result += s1
+        elif t[i] == '2':
+            result += s2
+        else:
+            result += s3
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            result += s1
+        elif t[i] == '2':
+            result += s2
+        elif t[i] == '3':
+            result += s3
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ''
+    for i in range(len(t)):
+        if t[i] == '1':
+            result += s1
+        elif t[i] == '2':
+            result += s2
+        elif t[i] == '3':
+            result += s3
+    print(result)
+main()
+
+=======
+Suggestion 6
+
+def main():
+    s1 = input().rstrip()
+    s2 = input().rstrip()
+    s3 = input().rstrip()
+    t = input().rstrip()
+    ans = ''
+    for i in t:
+        if i == '1':
+            ans += s1
+        elif i == '2':
+            ans += s2
+        else:
+            ans += s3
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in t:
+        if i == "1":
+            result += s1
+        elif i == "2":
+            result += s2
+        elif i == "3":
+            result += s3
+    print(result)
+
+=======
+Suggestion 8
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+    result = ""
+    for i in range(len(t)):
+        if t[i] == '1':
+            result += s1
+        elif t[i] == '2':
+            result += s2
+        else:
+            result += s3
+    print(result)
+
+=======
+Suggestion 9
+
+def main():
+    S1 = input()
+    S2 = input()
+    S3 = input()
+    T = input()
+    s = ""
+    for t in T:
+        if t == '1':
+            s += S1
+        elif t == '2':
+            s += S2
+        else:
+            s += S3
+    print(s)
+
+=======
+Suggestion 10
+
+def main():
+    s1 = input()
+    s2 = input()
+    s3 = input()
+    t = input()
+
+    for i in range(len(t)):
+        if t[i] == '1':
+            print(s1, end='')
+        elif t[i] == '2':
+            print(s2, end='')
+        elif t[i] == '3':
+            print(s3, end='')
+    print()

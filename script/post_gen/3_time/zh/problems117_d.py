@@ -1,47 +1,226 @@
-#问题陈述
-#给你N个非负整数A_1, A_2, ..., A_N和另一个非负整数K。
-#对于0到K（包括）之间的整数X，让f（X）=（XOR A_1）+（XOR A_2）+...。+ (X XOR A_N)。
-#这里，对于非负整数a和b，a XOR b表示a和b的按位异或。
-#找出f的最大值。
-#什么是XOR？
-#a和b的按位异或，X，定义如下：
-#当X以二进制书写时，如果以二进制书写时，A和B中正好有一个数字在2^k的位置上有1，则2^k的位置上的数字为1，否则为0。
-#例如，3 XOR 5 = 6。（当以二进制书写时：011 XOR 101 = 110）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#0 ≦ K ≦ 10^{12}
-#0 ≦ A_i ≦ 10^{12}
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印f的最大值。
-#
-#样本输入1
-#3 7
-#1 6 3
-#
-#样本输出1
-#14
-#最大值是：f(4) = (4 XOR 1) + (4 XOR 6) + (4 XOR 3) = 5 + 2 + 7 = 14。
-#
-#样本输入2
-#4 9
-#7 4 0 3
-#
-#样本输出2
-#46
-#
-#样本输入3
-#1 0
-#1000000000000
-#
-#样本输出3
-#1000000000000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def f(x, a):
+    return x ^ a
+
+=======
+Suggestion 2
+
+def solve():
+    # N, K = map(int, input().split())
+    # A = list(map(int, input().split()))
+    N, K = 3, 7
+    A = [1, 6, 3]
+    # N, K = 4, 9
+    # A = [7, 4, 0, 3]
+    # N, K = 1, 0
+    # A = [1000000000000]
+    # print(N, K)
+    # print(A)
+    # print("N, K = %d, %d" % (N, K))
+    # print("A = %s" % (A))
+    A.sort()
+    # print("A = %s" % (A))
+    ans = 0
+    for i in range(40, -1, -1):
+        count = 0
+        for a in A:
+            if a & (1 << i):
+                count += 1
+        # print("i = %d, count = %d" % (i, count))
+        if count >= N - count:
+            ans += (1 << i) * count
+        else:
+            ans += (1 << i) * (N - count)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = [0] * 41
+    for i in range(n):
+        for j in range(41):
+            if a[i] >> j & 1:
+                b[j] += 1
+    ans = 0
+    for i in range(40, -1, -1):
+        if b[i] <= n // 2 and ans + (1 << i) <= k:
+            ans += 1 << i
+    s = 0
+    for i in range(n):
+        s += ans ^ a[i]
+    print(s)
+
+=======
+Suggestion 4
+
+def max_xor(n, k, a):
+    max_xor = 0
+    for i in range(k+1):
+        xor = 0
+        for j in range(n):
+            xor += i ^ a[j]
+        if xor > max_xor:
+            max_xor = xor
+    return max_xor
+
+=======
+Suggestion 5
+
+def input():
+    line1 = input().split()
+    line2 = input().split()
+    n = int(line1[0])
+    k = int(line1[1])
+    a = []
+    for i in range(n):
+        a.append(int(line2[i]))
+    return n, k, a
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    k_bin = bin(k)[2:]
+    n_bin = len(k_bin)
+    a_bin = [bin(ai)[2:].zfill(n_bin) for ai in a]
+    a_bin_t = list(zip(*a_bin))
+    a_bin_t = [list(a_bin_ti) for a_bin_ti in a_bin_t]
+    a_bin_t.reverse()
+    k_bin = list(k_bin)
+    k_bin.reverse()
+
+    a_bin_t_max = []
+    for i in range(n_bin):
+        if k_bin[i] == '0':
+            a_bin_t_max.append('1')
+        else:
+            a_bin_t_max.append(max(a_bin_t[i]))
+    a_bin_t_max.reverse()
+    a_bin_max = ''.join(a_bin_t_max)
+    a_max = int(a_bin_max, 2)
+    f_max = 0
+    for ai in a:
+        f_max += ai ^ a_max
+    print(f_max)
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    max = 0
+    for i in range(k+1):
+        sum = 0
+        for j in range(n):
+            sum += (i^a[j])
+        if max < sum:
+            max = sum
+    print(max)
+
+=======
+Suggestion 8
+
+def f(x):
+    return sum([x^a for a in A])
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+=======
+Suggestion 9
+
+def get_max_xor_sum(n,k,a_list):
+    #a_list.sort(reverse=True)
+    a_list.sort()
+    a_list.reverse()
+
+    #print(a_list)
+
+    max_xor_sum = 0
+    for i in range(0,n):
+        xor_sum = 0
+        for j in range(0,n):
+            xor_sum += a_list[j] ^ a_list[i]
+        if xor_sum > max_xor_sum:
+            max_xor_sum = xor_sum
+
+    return max_xor_sum
+
+=======
+Suggestion 10
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    maxa = max(a)
+    maxa_bin = bin(maxa)[2:]
+    maxa_bin_len = len(maxa_bin)
+    k_bin = bin(k)[2:]
+    k_bin_len = len(k_bin)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    if maxa_bin_len - k_bin_len > 0:
+        for i in range(maxa_bin_len - k_bin_len):
+            k_bin = '0' + k_bin
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)
+    # print(maxa_bin_len - k_bin_len)
+
+    # print(k_bin)
+    # print(maxa_bin)
+    # print(k_bin_len)
+    # print(maxa_bin_len)

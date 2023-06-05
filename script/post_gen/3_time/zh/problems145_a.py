@@ -1,31 +1,39 @@
-#问题陈述
-#给出的是一个整数r。
-#半径为r的圆的面积比半径为1的圆的面积大多少倍？
-#可以证明，在给定的约束条件下，答案总是一个整数。
-#
-#约束条件
-#1 ≦ r ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#r
-#
-#输出
-#打印半径为r的圆的面积，除以半径为1的圆的面积，为整数。
-#
-#输入样本 1
-#2
-#
-#输出示例 1
-#4
-#半径为2的圆的面积比半径为1的圆的面积大4倍。
-#请注意，输出必须是一个整数，例如，4.0将不被接受。
-#
-#输入样本2
-#100
-#
-#样本输出2
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def circle_area(r):
+    return r**2
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(r*r)
+
+=======
+Suggestion 3
+
+def area(r):
+    return r**2
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    r = int(input())
+
+    # 计算
+    area = r ** 2
+
+    # 输出
+    print(area)
+
+=======
+Suggestion 5
+
+def main():
+    pass

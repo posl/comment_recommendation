@@ -1,37 +1,139 @@
-#问题陈述
-#给出的是一个整数N。
-#有多少个介于1和N（包括）之间的整数x满足以下条件？
-#x的十进制表示法（不含前导零）有偶数位，并且它的前半部分和后半部分作为字符串是相等的。
-#
-#限制条件
-#N是一个整数。
-#1 ≤ N < 10^{12}
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#33
-#
-#样本输出1
-#3
-#有三个数字11、22和33满足条件。
-#
-#样本输入2
-#1333
-#
-#样本输出2
-#13
-#例如，1313的十进制表示法有四个数字，它的前半部分和后半部分都是13，所以1313满足这个条件。
-#
-#输入样本3
-#10000000
-#
-#样本输出3
-#999
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_even_digit(x):
+    return len(str(x)) % 2 == 0
+
+=======
+Suggestion 2
+
+def solve(n):
+    if n < 11:
+        return 0
+    if n < 100:
+        return 1
+    if n < 1000:
+        return 10
+    if n < 10000:
+        return 100
+    if n < 100000:
+        return 1000
+    if n < 1000000:
+        return 10000
+    if n < 10000000:
+        return 100000
+    if n < 100000000:
+        return 1000000
+    if n < 1000000000:
+        return 10000000
+    if n < 10000000000:
+        return 100000000
+    if n < 100000000000:
+        return 1000000000
+    if n < 1000000000000:
+        return 10000000000
+    if n < 10000000000000:
+        return 100000000000
+    if n < 100000000000000:
+        return 1000000000000
+    if n < 1000000000000000:
+        return 10000000000000
+    if n < 10000000000000000:
+        return 100000000000000
+    if n < 100000000000000000:
+        return 1000000000000000
+    if n < 1000000000000000000:
+        return 10000000000000000
+    if n < 10000000000000000000:
+        return 100000000000000000
+    if n < 100000000000000000000:
+        return 1000000000000000000
+    if n < 1000000000000000000000:
+        return 10000000000000000000
+    if n < 10000000000000000000000:
+        return 100000000000000000000
+    if n < 100000000000000000000000:
+        return 1000000000000000000000
+    if n < 1000000000000000000000000:
+        return 10000000000000000000000
+    if n < 10000000000000000000000000:
+        return 100000000000000000000000
+    if n < 100000000000000000000000
+
+=======
+Suggestion 3
+
+def is_even(n):
+    return len(str(n)) % 2 == 0
+
+=======
+Suggestion 4
+
+def check(x):
+    s = str(x)
+    l = len(s)
+    if l % 2 == 1:
+        return False
+    return s[:l//2] == s[l//2:]
+
+=======
+Suggestion 5
+
+def solve(n):
+    ans = 0
+    for i in range(1, 10):
+        for j in range(10):
+            if i == j:
+                continue
+            for k in range(1, 20):
+                num = 0
+                for l in range(k):
+                    num = num * 10 + i
+                for l in range(k):
+                    num = num * 10 + j
+                if num <= n:
+                    ans += 1
+    return ans
+
+=======
+Suggestion 6
+
+def is_even(n):
+    return n % 2 == 0
+
+=======
+Suggestion 7
+
+def isEven(num):
+    if len(num) % 2 == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 8
+
+def is_even(num):
+    return len(str(num))%2 == 0
+
+=======
+Suggestion 9
+
+def check(x):
+    s = str(x)
+    l = len(s)
+    if l % 2 == 1:
+        return False
+    for i in range(l//2):
+        if s[i] != s[i+l//2]:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def is_even_digit(x):
+    x_str = str(x)
+    return len(x_str) % 2 == 0

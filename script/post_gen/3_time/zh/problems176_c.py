@@ -1,37 +1,170 @@
-#问题陈述
-#N个人站成一排。第i个人从前面开始的高度是A_i。
-#我们想让每个人都站在某个高度的凳子上--至少是0--这样每个人都能满足以下条件：
-#条件：在该人前面的人都不比该人高。这里，人的高度包括凳子的高度。
-#找到满足这一目标所需的最小的凳子总高度。
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印达到目标所需的凳子的最小总高度。
-#
-#输入样本1
-#5
-#2 1 5 4 3
-#
-#样本输出 1
-#4
-#如果这些人分别站在高度为0、1、0、1和2的凳子上，他们的高度将是2、2、5、5和5，满足了条件。
-#如果凳子的总高度较小，我们就不能满足目标。
-#
-#输入样本 2
-#5
-#3 3 3 3 3
-#
-#样本输出2
-#0
-#给每个人提供一个高度为0的凳子就可以了。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    max = 0
+    count = 0
+    for i in range(n):
+        if a[i] >= max:
+            count += 1
+            max = a[i]
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    max_h = 0
+    ans = 0
+    for i in range(N):
+        if max_h <= A[i]:
+            ans += max_h - A[i]
+            max_h = A[i]
+        else:
+            max_h = A[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(N):
+        A[i] -= i
+    A.sort()
+    if N % 2 == 1:
+        b = A[N // 2]
+    else:
+        b = (A[N // 2] + A[N // 2 - 1]) // 2
+    ans = 0
+    for i in range(N):
+        ans += abs(A[i] - b)
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    ans=0
+    for i in range(n-1,-1,-1):
+        if a[i]>ans:
+            ans=a[i]
+        else:
+            if (ans-a[i])%2==1:
+                ans=a[i]-1
+    print(ans)
+main()
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    # print(N)
+    # print(A)
+
+    # 从最后一个人开始，往前看，如果比前一个人高，那么就把前一个人的高度加1
+    # 如果比前一个人矮，那么就把前一个人的高度减到和当前人一样高
+    # 这样一直到第一个人，就是最小的总高度
+    # 注意，如果前一个人比当前人高，那么前一个人的高度减到和当前人一样高，那么前面的人也可能会变矮，所以要一直往前看
+    height = 0
+    for i in range(N - 1, 0, -1):
+        if A[i] > A[i - 1]:
+            height += A[i] - A[i - 1]
+        elif A[i] < A[i - 1]:
+            A[i - 1] = A[i]
+
+    print(height)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N, A)
+    maxA = max(A)
+    #print(maxA)
+    if maxA > N:
+        print(0)
+    else:
+        print(maxA)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    #print(N)
+    #print(A)
+    B = [0] * N
+    B[0] = 0
+    for i in range(1, N):
+        if A[i - 1] < A[i]:
+            B[i] = B[i - 1] + 1
+        else:
+            B[i] = 0
+    #print(B)
+    ans = 0
+    for i in range(N):
+        ans += B[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    a.reverse()
+    b=[0 for i in range(n)]
+    b[0]=a[0]
+    for i in range(1,n):
+        if a[i]>b[i-1]:
+            b[i]=a[i]
+        else:
+            b[i]=b[i-1]
+    b.reverse()
+    print(sum(b))
+main()
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    b[0] = a[0]
+    for i in range(1, n):
+        b[i] = max(b[i - 1], a[i])
+    c = 0
+    for i in range(n - 1, -1, -1):
+        if b[i] > a[i]:
+            c += b[i] - a[i]
+        if b[i] <= a[i]:
+            b[i] = a[i]
+    print(c)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += max(0, a[i] - a[i-1])
+    print(ans)

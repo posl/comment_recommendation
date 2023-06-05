@@ -1,35 +1,159 @@
-#问题陈述
-#有一个装有A个青色球的容器。高桥将做以下操作，只要他愿意，次数不限（可能是零次）：
-#在容器中加入B个青色球和C个红色球。
-#高桥的目标是达到容器中青色球的数量最多为容器中红色球数量的D倍。
-#判断该目标是否可以实现。如果可以实现，找出实现该目标所需的最少操作数。
-#
-#限制条件
-#1 ≦ a,b,c,d ≦ 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D
-#
-#輸出
-#如果高桥的目标是可以实现的，则打印实现该目标所需的最少操作数。否则，打印-1。
-#
-#输入样本 1
-#5 2 3 2
-#
-#输出样本 1
-#2
-#在第一次操作之前，容器里有5个青色的球和0个红色的球。由于5大于0乘以D=2，高桥的目标还没有实现。
-#就在第一次操作之后，容器里有7个青色的球和3个红色的球。由于7大于3乘以2，目标仍未实现。
-#就在第二次操作之后，容器里有9个青色的球和6个红色的球。由于9不大于6乘以2，所以目标实现了。
-#因此，答案是2。
-#
-#输入样本 2
-#6 9 2 3
-#
-#样本输出 2
-#-1
-#无论高桥重复操作多少次，他的目标都无法实现。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    A, B, C, D = map(int, input().split())
+    if A < B:
+        print(-1)
+        return
+    if D == 1:
+        print(0)
+        return
+    # D > 1
+    if B >= C * D:
+        print(-1)
+        return
+    # B < C * D
+    t1 = (A - B) // (C * D - B)
+    t2 = t1 + 1
+    if t1 * C * D + B >= A:
+        print(t1)
+    else:
+        print(t2)
+
+=======
+Suggestion 2
+
+def solve():
+    a,b,c,d = map(int, input().split())
+    if a < b:
+        print(-1)
+    else:
+        if d == 1:
+            print(0)
+        else:
+            x = (a * d - a) // (b * d - c)
+            if (a * d - a) % (b * d - c) != 0:
+                x += 1
+            print(x)
+
+=======
+Suggestion 3
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if (a<b):
+        print(-1)
+    else:
+        if (c*d-b<=0):
+            print(-1)
+        else:
+            print((a+b-1)//(c*d-b))
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a < b:
+        print(-1)
+        return
+    if b > c*d:
+        print(-1)
+        return
+    if a <= c*d:
+        print(1)
+        return
+    i = 1
+    while a > c*d:
+        a += b
+        a -= c*d
+        i += 1
+    print(i)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d = [int(x) for x in input().split()]
+    if a > b * c:
+        print(-1)
+    else:
+        print((a + b - 1) // b)
+
+=======
+Suggestion 6
+
+def main():
+    #读入数据
+    a,b,c,d=map(int,input().split())
+    #判断是否有解
+    if b>=a:
+        print(-1)
+        return
+    #二分查找
+    left=0
+    right=10**18
+    while right-left>1:
+        mid=(left+right)//2
+        if mid*d>=a:
+            right=mid
+        else:
+            left=mid
+    print(b*(right-1)+c*(right-1))
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c,d = map(int, input().split())
+    if a < b:
+        print(-1)
+    else:
+        if c*d <= b:
+            print(-1)
+        else:
+            print((a + b - 1) // b - 1)
+
+=======
+Suggestion 8
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a > c*d:
+        print(-1)
+        return
+    else:
+        if a <= b:
+            print(1)
+            return
+        else:
+            print((a-b-1)//(b-c)+2)
+            return
+
+=======
+Suggestion 9
+
+def main():
+    A,B,C,D = map(int,input().split())
+    count = 0
+    if A <= B:
+        print(-1)
+    else:
+        while A > B*D:
+            A += B
+            A -= C
+            count += 1
+        print(count)
+
+=======
+Suggestion 10
+
+def main():
+    a,b,c,d = map(int,input().split())
+    if a <= b * c:
+        print(-1)
+    else:
+        print((a+d*b-1)//(d*b-c))

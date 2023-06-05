@@ -1,87 +1,247 @@
-#问题陈述
-#高桥成为了一名糕点师，为了庆祝AtCoder初级竞赛100强，他开了一家商店La Confiserie d'ABC。
-#该店出售N种蛋糕。
-#每种蛋糕有三个参数 "美丽"、"美味 "和 "受欢迎"。第i种蛋糕的美丽度为x_i，美味度为y_i，受欢迎度为z_i。
-#这些值可能是零或负值。
-#Ringo已经决定在这里吃M块蛋糕。他将按以下方式选择蛋糕的集合：
-#不要有两块或两块以上相同种类的蛋糕。
-#在上述条件下，选择一组蛋糕，使（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）最大化。
-#找出Ringo选择的这组蛋糕的（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）的最大可能值。
-#
-#约束条件
-#N是1到1 000（包括）之间的整数。
-#M是0到N之间的一个整数（包括）。
-#x_i, y_i, z_i (1 ≦ i ≦ N)是介于-10 000 000和10 000 000（包括）之间的整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#X_1 Y_1 Z_1
-#x_2 y_2 z_2
-# : :
-#x_N y_N z_N
-#
-#输出
-#打印Ringo选择的一组蛋糕的最大可能值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）。
-#
-#输入样本 1
-#5 3
-#3 1 4
-#1 5 9
-#2 6 5
-#3 5 8
-#9 7 9
-#
-#样本输出1
-#56
-#考虑有第2种、第4种和第5种蛋糕。总的美丽度、美味度和受欢迎度将如下：
-#美丽度：1 + 3 + 9 = 13
-#美味度：5 + 5 + 7 = 17
-#受欢迎度：9+8+9=26
-#这里的值（总美感度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）是13+17+26=56。这是最高值。
-#
-#输入样本 2
-#5 3
-#1 -2 3
-#-4 5 -6
-#7 -8 -9
-#-10 11 -12
-#13 -14 15
-#
-#样本输出2
-#54
-#考虑有第1种、第3种和第5种蛋糕。总的美丽度、美味度和受欢迎度如下：
-#美丽度：1 + 7 + 13 = 21
-#味道度：（-2）+（-8）+（-14）=-24
-#受欢迎度：3+（-9）+15=9
-#这里的值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）是21+24+9=54。这是最高值。
-#
-#输入样本 3
-#10 5
-#10 -80 21
-#23 8 38
-#-94 28 11
-#-26 -2 18
-#-69 72 79
-#-26 -86 -54
-#-72 -50 59
-#21 65 -32
-#40 -94 87
-#-62 18 82
-#
-#样本输出3
-#638
-#如果我们有第3种、第4种、第5种、第7种和第10种蛋糕，那么总的美丽度、美味度和受欢迎度将分别为-323、66和249。
-#这里的值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）是323+66+249=638。这是最高值。
-#
-#输入样本 4
-#3 2
-#2000000000 -9000000000 4000000000
-#7000000000 -5000000000 3000000000
-#6000000000 -1000000000 8000000000
-#
-#样本输出4
-#30000000000
-#蛋糕的美丽度、美味度和受欢迎度的数值以及要打印的数值可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_sum(n, m, cakes):
+    max_sum = 0
+    for i in range(0, n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                sum = abs(cakes[i][0] + cakes[j][0] + cakes[k][0]) + abs(cakes[i][1] + cakes[j][1] + cakes[k][1]) + abs(cakes[i][2] + cakes[j][2] + cakes[k][2])
+                if sum > max_sum:
+                    max_sum = sum
+    return max_sum
+
+=======
+Suggestion 2
+
+def getN():
+    N = input()
+    return N
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    cakes = []
+    for _ in range(n):
+        cakes.append(list(map(int,input().split())))
+    #print(cakes)
+    maxVal = 0
+    for i in range(1 << n):
+        tmp = []
+        for j in range(n):
+            if i & (1 << j):
+                tmp.append(cakes[j])
+        if len(tmp) == m:
+            #print(tmp)
+            val = 0
+            for j in range(m):
+                val += abs(tmp[j][0])
+                val += abs(tmp[j][1])
+                val += abs(tmp[j][2])
+            if val > maxVal:
+                maxVal = val
+    print(maxVal)
+
+=======
+Suggestion 4
+
+def dfs(i, a, b, c):
+    if i == n:
+        return abs(a) + abs(b) + abs(c)
+    else:
+        return max(dfs(i + 1, a + x[i], b + y[i], c + z[i]),
+                   dfs(i + 1, a + x[i], b + y[i], c - z[i]),
+                   dfs(i + 1, a + x[i], b - y[i], c + z[i]),
+                   dfs(i + 1, a + x[i], b - y[i], c - z[i]),
+                   dfs(i + 1, a - x[i], b + y[i], c + z[i]),
+                   dfs(i + 1, a - x[i], b + y[i], c - z[i]),
+                   dfs(i + 1, a - x[i], b - y[i], c + z[i]),
+                   dfs(i + 1, a - x[i], b - y[i], c - z[i]))
+
+n, m = map(int, input().split())
+x = []
+y = []
+z = []
+for i in range(n):
+    a, b, c = map(int, input().split())
+    x.append(a)
+    y.append(b)
+    z.append(c)
+print(dfs(0, 0, 0, 0))
+
+=======
+Suggestion 5
+
+def myfun(x):
+    return x[0]+x[1]+x[2]
+
+n,m = input().split()
+n = int(n)
+m = int(m)
+cake = []
+for i in range(n):
+    cake.append(list(map(int,input().split())))
+
+cake.sort(key=myfun,reverse=True)
+#print(cake)
+max = 0
+for i in range(m):
+    max += abs(cake[i][0])
+    max += abs(cake[i][1])
+    max += abs(cake[i][2])
+print(max)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    x = []
+    y = []
+    z = []
+    for i in range(n):
+        x1,y1,z1 = map(int,input().split())
+        x.append(x1)
+        y.append(y1)
+        z.append(z1)
+    # print(x)
+    # print(y)
+    # print(z)
+    a = []
+    for i in range(n):
+        a.append(x[i]+y[i]+z[i])
+    # print(a)
+    a.sort(reverse=True)
+    # print(a)
+    print(sum(a[:m]))
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int,input().split())))
+    ans = 0
+    for i in range(8):
+        b = []
+        for j in range(n):
+            tmp = 0
+            for k in range(3):
+                if ((i>>k)&1):
+                    tmp += a[j][k]
+                else:
+                    tmp -= a[j][k]
+            b.append(tmp)
+        b.sort(reverse=True)
+        tmp = 0
+        for j in range(m):
+            tmp += b[j]
+        ans = max(ans,tmp)
+    print(ans)
+
+=======
+Suggestion 8
+
+def get_max_value(n, m, cake_list):
+    # 从列表中取出m个蛋糕，使得（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+（总美味度）+（总受欢迎度）最大
+    # 简单的说就是，从列表中取出m个蛋糕，使得（总美丽度）+
+
+=======
+Suggestion 9
+
+def get_max_value(n,m,info_list):
+    #print(n,m,info_list)
+    if m == 0:
+        return 0
+    if n == 0:
+        return 0
+    if n < m:
+        return 0
+    #print(n,m,info_list)
+    #print("info_list",info_list)
+    #print("info_list[0]",info_list[0])
+    #print("info_list[1:n]",info_list[1:n])
+    #print("info_list[1:n-1]",info_list[1:n-1])
+    #print("info_list[1:n-2]",info_list[1:n-2])
+    #print("info_list[1:n-3]",info_list[1:n-3])
+    #print("info_list[1:n-4]",info_list[1:n-4])
+    #print("info_list[1:n-5]",info_list[1:n-5])
+    #print("info_list[1:n-6]",info_list[1:n-6])
+    #print("info_list[1:n-7]",info_list[1:n-7])
+    #print("info_list[1:n-8]",info_list[1:n-8])
+    #print("info_list[1:n-9]",info_list[1:n-9])
+    #print("info_list[1:n-10]",info_list[1:n-10])
+    #print("info_list[1:n-11]",info_list[1:n-11])
+    #print("info_list[1:n-12]",info_list[1:n-12])
+    #print("info_list[1:n-13]",info_list[1:n-13])
+    #print("info_list[1:n-14]",info_list[1:n-14])
+    #print("info_list[1:n-15]",info_list[1:n-15])
+    #print("info_list[1:n-16]",info_list[1:n-16])
+    #print("info_list[1:n-17]",info_list[1:n-17])
+    #print("info_list[1:n-18]",info_list[1:n-18])
+    #print("info_list[1:n-19]",info_list[1:n-19])
+    #print("info_list[1:n-20]",info_list[1:n-
+
+=======
+Suggestion 10
+
+def solve():
+    #N是蛋糕种类，M是要吃的蛋糕数
+    N,M = map(int,input().split())
+    #蛋糕的美丽度、美味度和受欢迎度
+    cakes = []
+    for i in range(N):
+        cakes.append(list(map(int,input().split())))
+    #将蛋糕按照美丽度、美味度和受欢迎度排序
+    cakes = sorted(cakes, key=lambda x: (x[0], x[1],x[2]), reverse=True)
+    #将蛋糕按照美丽度、美味度和受欢迎度排序
+    cakes = sorted(cakes, key=lambda x: (x[2], x[1],x[0]), reverse=True)
+    #将蛋糕按照美丽度、美味度和受欢迎度排序
+    cakes = sorted(cakes, key=lambda x: (x[1], x[0],x[2]), reverse=True)
+
+    #print(cakes)
+    #将蛋糕的美丽度、美味度和受欢迎度分为三个列表
+    x = []
+    y = []
+    z = []
+    for i in cakes:
+        x.append(i[0])
+        y.append(i[1])
+        z.append(i[2])
+
+    #print(x)
+    #print(y)
+    #print(z)
+
+    #将蛋糕的美丽度、美味度和受欢迎度分为三个列表
+    x = []
+    y = []
+    z = []
+    for i in cakes:
+        x.append(i[0])
+        y.append(i[1])
+        z.append(i[2])
+
+    #print(x)
+    #print(y)
+    #print(z)
+
+    #将蛋糕的美丽度、美味度和受欢迎度分为三个列表
+    x = []
+    y = []
+    z = []
+    for i in cakes:
+        x.append(i[0])

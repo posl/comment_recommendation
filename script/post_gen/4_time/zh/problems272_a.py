@@ -1,34 +1,74 @@
-#问题陈述
-#给你N个整数A_1,A_2,...,和A_N。
-#求这N个整数的总和。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#2 7 2
-#
-#样本输出1
-#11
-#给你三个整数：2，7，和2。
-#答案是2+7+2=11。
-#
-#输入样本2
-#1
-#3
-#
-#采样输出2
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def sum_list(num_list):
+    sum = 0
+    for i in num_list:
+        sum += i
+    return sum
+
+=======
+Suggestion 2
+
+def sum_of_integers():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return sum(a)
+
+=======
+Suggestion 3
+
+def sum(a):
+    total = 0
+    for i in range(len(a)):
+        total = total + a[i]
+    return total
+
+n = int(input())
+a = list(map(int, input().split()))
+print(sum(a))
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int,input().split()))
+    print(sum(A))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = sum(a)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(sum(A))
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(sum(a))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    print(sum(a))

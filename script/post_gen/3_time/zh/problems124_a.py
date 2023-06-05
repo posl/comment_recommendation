@@ -1,37 +1,93 @@
-#问题陈述
-#有两个按钮，一个是A型，一个是B型。
-#当你按下一个大小为X的按钮时，你会得到X个硬币，并且该按钮的大小减少了1。
-#你会按下一个按钮两次。在这里，你可以按同一个按钮两次，也可以按两个按钮一次。
-#你最多可以得到多少个硬币？
-#
-#限制条件
-#输入的所有数值都是整数。
-#3 ≦ A, B ≦ 20
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#輸出
-#打印你能得到的最大数量的硬币。
-#
-#输入样本 1
-#5 3
-#
-#样本输出 1
-#9
-#你可以通过按两次大小为5的按钮得到5+4=9的硬币，这就是最大的结果。
-#
-#输入样本2
-#3 4
-#
-#样本输出 2
-#7
-#
-#样本输入3
-#6 6
-#
-#样品输出3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_coins(a,b):
+    if a == b:
+        return a*2
+    elif a > b:
+        return (a-1)*2
+    else:
+        return (b-1)*2
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    if a > b:
+        print(a + (a - 1))
+    elif a < b:
+        print(b + (b - 1))
+    else:
+        print(a + b)
+
+=======
+Suggestion 3
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a + a - 1, a + b, b + b - 1))
+
+=======
+Suggestion 4
+
+def main():
+    a, b = map(int, input().split())
+    print(max(a*2-1, a+b, b*2-1))
+
+=======
+Suggestion 5
+
+def main():
+    a,b = map(int,input().split())
+    if a > b:
+        print(a+a-1)
+    elif a < b:
+        print(b+b-1)
+    else:
+        print(a+b)
+
+=======
+Suggestion 6
+
+def main():
+    A, B = map(int, input().split())
+    if A == B:
+        print(A + B)
+    else:
+        print(max(A, B) + max(A, B) - 1)
+
+=======
+Suggestion 7
+
+def main():
+    a,b = map(int,input().split())
+    if a == b:
+        print(a+b)
+    elif a > b:
+        print(a+a-1)
+    else:
+        print(b+b-1)
+
+=======
+Suggestion 8
+
+def main():
+    A, B = map(int, input().split())
+    print(max(A + A - 1, A + B, B + B - 1))
+
+=======
+Suggestion 9
+
+def main():
+    a,b = map(int,input().split())
+    if a == b:
+        print(a+b)
+    elif a > b:
+        print(a+a-1)
+    else:
+        print(b+b-1)
+
+main()

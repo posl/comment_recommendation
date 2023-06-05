@@ -1,65 +1,159 @@
-#问题陈述
-#一个由小写英文字母、（，和）组成的字符串，如果你能通过以下程序使其成为一个空字符串，就可以说是一个好字符串：
-#首先，删除所有小写英文字母。
-#然后，在可能的情况下反复删除连续的（）。
-#例如，((a)ba)是一个好的字符串，因为去除所有小写英文字母可以得到()，我们可以在第2和第3个字符处连续去除()，得到()，而这又是一个空字符串。  
-#给你一个好的字符串S。
-#我们用S_i表示S的第i个字符。
-#对于每个小写英文字母a，b，...，和z，我们有一个球，上面写着这个字母。
-#此外，我们还有一个空盒子。
-#对于每个i = 1,2,...,|S|的顺序，高桥执行以下操作，除非他晕倒。
-#如果S_i是一个小写的英文字母，就把写有该字母的球放进盒子里。  如果球已经在盒子里了，他就会晕倒。  
-#如果S_i是（，什么都不做。  
-#如果S_i是（），取小于i的最大整数j，使S的第j到第i个字符形成一个好的字符串。  (我们可以证明这样的整数j总是存在的。)从盒子里取出他放在第j到第i个操作中的所有球。
-#判断高桥是否能完成这一系列的操作而不晕倒。
-#
-#限制条件
-#1 ≦ |S| ≦ 3 × 10^5
-#S是一个好的字符串。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#S
-#
-#输出
-#如果他能完成这一连串的操作而不晕倒，就打印 "是"；否则打印 "否"。
-#
-#输入样本1
-#((a)ba)
-#
-#样本输出1
-#是
-#对于i = 1，他什么都不做。
-#对于i = 2，他什么也不做。
-#对于i=3，他把写有 "A "的球放进盒子里。
-#对于i=4，j=2是小于4的最大整数，使S的第j个到第4个字符形成一个好的字符串，所以他从盒子里拿出写有a的球。
-#对于i=5，他把写有b的球放进盒子里。
-#对于i=6，他把写有a的球放进盒子里。
-#对于i=7，j=1是小于7的最大整数，这样S的第j个到第7个字符形成一个好的字符串，所以他从盒子里拿出写有a的球，和另一个写有b的球。
-#因此，这个案例的答案是肯定的。
-#
-#输入样本2
-#(a(ba))
-#
-#样本输出2
-#否
-#对于i = 1，他什么都不做。
-#对于i = 2，他把写有字的球放到盒子里。
-#对于i = 3，他什么也不做。
-#对于i = 4，他把写有b的球放进盒子里。
-#对于i=5，写有a的球已经在盒子里了，所以他晕倒了，中止了一系列的操作。
-#因此，这个案例的答案是否定的。
-#
-#输入样本3
-#(((())))
-#
-#样本输出3
-#是
-#
-#样本输入4
-#abca
-#
-#样本输出4
-#否
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    s = s.replace("a","")
+    s = s.replace("b","")
+    s = s.replace("c","")
+    s = s.replace("d","")
+    s = s.replace("e","")
+    s = s.replace("f","")
+    s = s.replace("g","")
+    s = s.replace("h","")
+    s = s.replace("i","")
+    s = s.replace("j","")
+    s = s.replace("k","")
+    s = s.replace("l","")
+    s = s.replace("m","")
+    s = s.replace("n","")
+    s = s.replace("o","")
+    s = s.replace("p","")
+    s = s.replace("q","")
+    s = s.replace("r","")
+    s = s.replace("s","")
+    s = s.replace("t","")
+    s = s.replace("u","")
+    s = s.replace("v","")
+    s = s.replace("w","")
+    s = s.replace("x","")
+    s = s.replace("y","")
+    s = s.replace("z","")
+    s = s.replace("(","")
+    s = s.replace(")","")
+    while s.find("()") != -1:
+        s = s.replace("()","")
+    if len(s) == 0:
+        print("是")
+    else:
+        print("否")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    n = len(s)
+    stack = []
+    for i in range(n):
+        if s[i] == '(':
+            stack.append(i)
+        elif s[i] == ')' and stack[-1] == i - 1:
+            stack.pop()
+        elif s[i] == ')' and stack[-1] != i - 1:
+            stack.append(i)
+        else:
+            pass
+    if len(stack) == 0:
+        print('是')
+    else:
+        print('否')
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    s = s.replace('()', '')
+    while True:
+        t = s.replace('()', '')
+        if t == s:
+            break
+        else:
+            s = t
+    if len(s) == 0:
+        print('是')
+    else:
+        print('否')
+
+=======
+Suggestion 5
+
+def main():
+    print('')
+
+=======
+Suggestion 6
+
+def is_good_str(str):
+    while True:
+        if str.find('()') == -1:
+            break
+        str = str.replace('()','')
+    return str == ''
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    stack = []
+    for c in s:
+        if c == ')':
+            if len(stack) > 0 and stack[-1] == '(':
+                stack.pop()
+            else:
+                stack.append(c)
+        else:
+            stack.append(c)
+    print('否' if len(stack) > 0 else '是')
+
+=======
+Suggestion 8
+
+def isGoodString(s):
+    if len(s) % 2 == 1:
+        return False
+    stack = []
+    for i in range(len(s)):
+        if s[i] == '(':
+            stack.append(s[i])
+        elif s[i] == ')':
+            if len(stack) > 0:
+                stack.pop()
+            else:
+                return False
+    if len(stack) == 0:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    stack = []
+    for c in s:
+        if c == '(':
+            stack.append(c)
+        elif c == ')':
+            if len(stack) == 0:
+                print("否")
+                return
+            else:
+                stack.pop()
+    if len(stack) == 0:
+        print("是")
+    else:
+        print("否")

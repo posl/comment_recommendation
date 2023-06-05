@@ -1,30 +1,81 @@
-#问题陈述
-#给你一个至少为100的整数N。打印N的最后两位数字。
-#严格地说，要按这个顺序打印N的十位和一位数字。
-#
-#限制条件
-#100 ≦ N ≦ 999
-#N是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#254
-#
-#样本输出1
-#54
-#254的最后两位数字是54，应该被打印出来。
-#
-#输入样本2
-#101
-#
-#样本输出2
-#01
-#101的最后两位数字是01，应该被打印出来。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    print(N%100)
+    return
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    print(N%100)
+
+=======
+Suggestion 3
+
+def print_last_two_digits(n):
+    print(str(n)[-2:])
+
+print_last_two_digits(254)
+print_last_two_digits(101)
+
+=======
+Suggestion 4
+
+def get_last_two_digits(number):
+    return number % 100
+
+=======
+Suggestion 5
+
+def last_two_digits():
+    while True:
+        try:
+            n = int(input())
+            print(n%100)
+        except:
+            break
+
+=======
+Suggestion 6
+
+def print_last_two_digits(N):
+    return N % 100
+
+print(print_last_two_digits(254))
+print(print_last_two_digits(101))
+
+=======
+Suggestion 7
+
+def main():
+    N = input()
+    print(N[1:])
+
+=======
+Suggestion 8
+
+def lastTwoDigits(num):
+    return num % 100
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    print(n % 100)
+
+main()
+
+=======
+Suggestion 10
+
+def get_last_two_digits(num):
+    if num < 100 or num > 999:
+        return None
+    return num % 100

@@ -1,51 +1,225 @@
-#问题陈述
-#高桥手中有N张牌。
-#对于i=1，2，...，N，第i张牌上写有一个非负整数A_i。
-#首先，高桥将从他的手中自由选择一张牌并把它放在桌子上。
-#然后，他将重复以下操作，次数不限（可能为零）。
-#设X是写在最后一张放在桌子上的牌上的整数。如果他手里有写着整数X或整数(X+1)mod M的牌，就自由选择其中一张牌放在桌子上。这里，(X+1)mod M表示(X+1)除以M时的余数。
-#印出写在卡片上的最小的整数之和，最后留在他的手中。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 10^9
-#0 ≦ A_i < M
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#A_1 A_2 ...A_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#9 7
-#3 0 2 5 5 3 0 6 3
-#
-#样本输出1
-#11
-#假设他先把第四张牌（写着5）放在桌上，然后进行以下操作。
-#把第五张牌（写的是5）放在桌子上。
-#把第八张牌（写的是6）放在桌子上。
-#把第二张牌（写的是0）放在桌子上。
-#把第七张牌（写的是0）放在桌子上。
-#然后，第一、第三、第六和第九张牌最终会留在他的手中，这些牌上的整数之和是3+2+3+3=11。
-#这是最后留在他手中的牌上所写的最小可能的整数之和。
-#
-#输入样本 2
-#1 10
-#4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#20 20
-#18 16 15 9 8 8 17 1 3 17 11 9 12 11 7 3 2 14 3 12
-#
-#样本输出3
-#99
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if a[i] < m:
+            ans += m - a[i]
+        else:
+            ans += a[i] % m
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a)
+    ans = 0
+    for i in range(n):
+        ans += a[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # A = [3, 0, 2, 5, 5, 3, 0, 6, 3]
+    # M = 7
+    # N = 9
+    # A = [18, 16, 15, 9, 8, 8, 17, 1, 3, 17, 11, 9, 12, 11, 7, 3, 2, 14, 3, 12]
+    # M = 20
+    # N = 20
+
+    A.sort()
+
+    if N == 1:
+        print((M - A[0]) % M)
+        return
+
+    # print(A)
+
+    ans = 0
+    for i in range(N - 1):
+        ans += (A[i + 1] - A[i] - 1) % M
+
+    ans += (A[0] + M - A[N - 1] - 1) % M
+
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    #n, m = map(int, input().split())
+    #a = list(map(int, input().split()))
+    n, m = 20, 20
+    a = [18, 16, 15, 9, 8, 8, 17, 1, 3, 17, 11, 9, 12, 11, 7, 3, 2, 14, 3, 12]
+    a.sort()
+    a.append(m)
+    ans = 0
+    i = 0
+    while i < n:
+        j = i
+        while a[j] == a[j + 1]:
+            j += 1
+        ans += (a[j] - a[i]) // (m + 1)
+        i = j + 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = [0] * n
+    for i in range(n):
+        b[i] = a[i] % m
+    b.sort()
+    c = [0] * n
+    for i in range(n):
+        c[i] = (b[i] + 1) % m
+    c.sort()
+    d = [0] * n
+    for i in range(n):
+        d[i] = (c[i] + 1) % m
+    d.sort()
+    e = [0] * n
+    for i in range(n):
+        e[i] = (d[i] + 1) % m
+    e.sort()
+    f = [0] * n
+    for i in range(n):
+        f[i] = (e[i] + 1) % m
+    f.sort()
+    g = [0] * n
+    for i in range(n):
+        g[i] = (f[i] + 1) % m
+    g.sort()
+    h = [0] * n
+    for i in range(n):
+        h[i] = (g[i] + 1) % m
+    h.sort()
+    i = [0] * n
+    for i in range(n):
+        i[i] = (h[i] + 1) % m
+    i.sort()
+    j = [0] * n
+    for i in range(n):
+        j[i] = (i[i] + 1) % m
+    j.sort()
+    k = [0] * n
+    for i in range(n):
+        k[i] = (j[i] + 1) % m
+    k.sort()
+    l = [0] * n
+    for i in range(n):
+        l[i] = (k[i] + 1) % m
+    l.sort()
+    m = [0] * n
+    for i in range(n):
+        m[i] = (l[i] + 1) % m
+    m.sort()
+    n = [0] * n
+    for i in range(n):
+        n[i] = (m[i] + 1) % m
+    n.sort()
+    o = [0] * n
+
+=======
+Suggestion 6
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    print(a)
+    for i in range(n):
+        if i == 0:
+            ans = a[i]
+        else:
+            ans += (a[i] - a[i-1] - 1)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = [0] * m
+    for i in a:
+        b[i % m] += 1
+    ans = 0
+    for i in range(m):
+        if b[i] == 0:
+            continue
+        ans += b[i]
+        if i == m - i:
+            b[i] = 0
+        elif b[i] > b[m - i]:
+            b[i] = b[m - i]
+        else:
+            b[m - i] = b[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    b = [0] * (m+1)
+    for i in range(n):
+        b[a[i]] += 1
+    ans = 0
+    for i in range(m):
+        if b[i] == 0:
+            continue
+        if b[i+1] == 0:
+            ans += i+1
+            b[i+1] += 1
+        b[i+1] -= 1
+        b[i] -= 1
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def solve():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    for i in range(n):
+        if a[i] >= m:
+            a[i] = a[i]%m
+    res = 0
+    for i in range(n):
+        if a[i] != 0:
+            res += a[i]
+            if i != n-1:
+                a[i+1] -= m-a[i]
+    print(res)
+solve()

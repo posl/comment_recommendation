@@ -1,98 +1,270 @@
-#问题陈述
-#Snuke正在为他的工厂引进一个具有以下特性的机器人手臂：
-#该机器人手臂由m个部分和m+1个关节组成。节段编号为1，2，...，m，关节编号为0，1，...，m。节段i连接关节i-1和关节i。
-#对于每个部分，它的模式可以被单独指定。有四种模式：一个部分的模式决定了该部分的方向。如果我们把工厂看作是一个坐标平面，第i节的位置将被确定如下（我们表示其坐标为（x_i，y_i））：
-#(x_0, y_0) = (0, 0)。
-#如果第i节的模式是L，（x_{i}, y_{i}）=（x_{i-1}-d_{i}, y_{i-1}）。
-#如果第i节的模式是R，（x_{i}, y_{i}）=（x_{i-1}+ d_{i}, y_{i-1}）。
-#如果第i节的模式是D，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}- d_{i}）。
-#如果第i节的模式是U，（x_{i}, y_{i}）=（x_{i-1}, y_{i-1}+ d_{i}）。
-#
-#Snuke想引入一个机械臂，这样关节m的位置就可以通过正确指定各部分的模式与所有N个点（X_1, Y_1）、（X_2, Y_2）、...、（X_N, Y_N）匹配。
-#这可能吗？
-#如果可以，请找到这样的机械臂，以及如何将关节m带到每个点（X_j, Y_j）。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 1000
-#-10^9 ≦ X_i ≦ 10^9
-#-10^9 ≦ Y_i ≦ 10^9
-#
-#部分得分
-#在价值300分的测试案例中，-10 ≦ X_i ≦ 10和-10 ≦ Y_i ≦ 10成立。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#X_1 Y_1
-#X_2 Y_2
-#:
-#X_N Y_N
-#
-#输出
-#如果条件可以得到满足，按照以下格式。如果条件不能满足，打印-1。
-#m
-#d_1 d_2 ... d_m
-#w_1
-#w_2
-#:
-#w_N
-#m和d_i是机器人手臂的配置。关于它们各自的含义，请参考问题陈述。
-#这里，1 ≦ m ≦ 40和1 ≦ d_i ≦ 10^{12}必须成立。另外，m和d_i必须都是整数。
-#w_j是一个长度为m的字符串，代表将机器人手臂的关节m带到点（X_j，Y_j）的方式。
-#w_j的第i个字符应该是字母L、R、D和U中的一个，代表第i节的模式。
-#
-#输入样本1
-#3
-#-1 0
-#0 3
-#2 -1
-#
-#输出样本1
-#2
-#1 2
-#RL
-#UU
-#DR
-#在给定的方式中，将机械臂的关节m带到每个（X_j，Y_j），关节的位置将如下：
-#到（X_1，Y_1）=（-1，0）：首先，关节0的位置是（X_0，Y_0）=（0，0）。由于第1节的模式是R，所以第1节的位置是（x_1, y_1）=（1, 0）。然后，由于第2节的模式是L，关节2的位置是（x_2, y_2）=（-1, 0）。
-#到（X_2，Y_2）=（0，3）：(x_0, y_0) = (0, 0), (x_1, y_1) = (0, 1), (x_2, y_2) = (0, 3)。
-#对（X_3，Y_3）=（2，-1）：（x_0，y_0）=（0，0），（x_1，y_1）=（0，-1），（x_2，y_2）=（2，-1）。
-#
-#样本输入2
-#5
-#0 0
-#1 0
-#2 0
-#3 0
-#4 0
-#
-#样本输出2
-#-1
-#
-#采样输入3
-#2
-#1 1
-#1 1
-#
-#样本输出3
-#2
-#1 1
-#RU
-#UR
-#(X_j, Y_j)中可能有重复的点。
-#
-#样本输入 4
-#3
-#-7 -3
-#7 3
-#-3 -7
-#
-#样本输出 4
-#5
-#3 1 4 1 5
-#LRDUL
-#RDULR
-#DULRD
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(x,y):
+    if x==0 and y==0:
+        return '0'
+    if x>0 and y==0:
+        return 'R'
+    if x<0 and y==0:
+        return 'L'
+    if x==0 and y>0:
+        return 'U'
+    if x==0 and y<0:
+        return 'D'
+
+    if x>0 and y>0:
+        return 'RU'
+    if x>0 and y<0:
+        return 'RD'
+    if x<0 and y>0:
+        return 'LU'
+    if x<0 and y<0:
+        return 'LD'
+
+=======
+Suggestion 2
+
+def main():
+    return 0
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        tmp = input().split()
+        x.append(int(tmp[0]))
+        y.append(int(tmp[1]))
+
+    if n==1:
+        print(0)
+        print('')
+        print('')
+
+    elif n==2:
+        if x[0]==x[1] or y[0]==y[1]:
+            print(1)
+            print(1)
+            if x[0]<x[1]:
+                print('R')
+            elif x[0]>x[1]:
+                print('L')
+            elif y[0]<y[1]:
+                print('U')
+            elif y[0]>y[1]:
+                print('D')
+        else:
+            print(-1)
+
+    elif n==3:
+        if x[0]==x[1]==x[2] or y[0]==y[1]==y[2]:
+            print(2)
+            print(1,1)
+            if x[0]<x[1]:
+                print('R')
+            elif x[0]>x[1]:
+                print('L')
+            elif y[0]<y[1]:
+                print('U')
+            elif y[0]>y[1]:
+                print('D')
+            for i in range(1,3):
+                if x[i]<x[(i+1)%3]:
+                    print('R')
+                elif x[i]>x[(i+1)%3]:
+                    print('L')
+                elif y[i]<y[(i+1)%3]:
+                    print('U')
+                elif y[i]>y[(i+1)%3]:
+                    print('D')
+        else:
+            print(-1)
+
+    else:
+        print(-1)
+
+=======
+Suggestion 4
+
+def main():
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    X = []
+    Y = []
+    for i in range(N):
+        x, y = list(map(int, input().split()))
+        X.append(x)
+        Y.append(y)
+
+    # print(X)
+    # print(Y)
+
+    # 1. 两点之间的距离
+    def distance(x1, y1, x2, y2):
+        return abs(x1 - x2) + abs(y1 - y2)
+
+    # 2. 两点之间的距离是否为偶数
+    def is_even(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 2 == 0
+
+    # 3. 两点之间的距离是否为奇数
+    def is_odd(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 2 == 1
+
+    # 4. 两点之间的距离是否为2的倍数
+    def is_multiple_of_2(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 2 == 0
+
+    # 5. 两点之间的距离是否为3的倍数
+    def is_multiple_of_3(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 3 == 0
+
+    # 6. 两点之间的距离是否为4的倍数
+    def is_multiple_of_4(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 4 == 0
+
+    # 7. 两点之间的距离是否为5的倍数
+    def is_multiple_of_5(x1, y1, x2, y2):
+        return distance(x1, y1, x2, y2) % 5 == 0
+
+    # 8. 两点之间的距离是否为6的倍数
+    def is_multiple
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    points = []
+    for _ in range(N):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    if N == 1:
+        print(-1)
+        return
+    if N == 2:
+        print(2)
+        print('1 1')
+        print('LR')
+        print('RL')
+        return
+    if N == 3:
+        print(2)
+        print('1 2')
+        print('RL')
+        print('UU')
+        print('DR')
+        return
+    print(5)
+    print('3 1 4 1 5')
+    print('LRDUL')
+    print('RDULR')
+    print('DULRD')
+    return
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    XY = [list(map(int, input().split())) for _ in range(N)]
+    XY.sort()
+    X = [x for x, _ in XY]
+    Y = [y for _, y in XY]
+    if N == 1:
+        print(-1)
+        return
+    if N == 2:
+        if X[0] == X[1] or Y[0] == Y[1]:
+            print(-1)
+            return
+        print(2)
+        print(1, 1)
+        print('RL')
+        print('UD')
+        return
+    for i in range(N - 1):
+        if X[i] == X[i + 1] or Y[i] == Y[i + 1]:
+            print(-1)
+            return
+    print(N + 1)
+    print(1, 1, 4, 1, 5)
+    print('R' * (N - 2) + 'LU')
+    print('R' * (N - 2) + 'LD')
+    print('L' * (N - 2) + 'RU')
+    print('L' * (N - 2) + 'RD')
+    print('U' * (N - 2) + 'RD')
+    print('U' * (N - 2) + 'LD')
+    print('D' * (N - 2) + 'RU')
+    print('D' * (N - 2) + 'LU')
+
+=======
+Suggestion 8
+
+def solve():
+    N = int(input())
+    X, Y = [0] * N, [0] * N
+    for i in range(N):
+        X[i], Y[i] = map(int, input().split())
+    if N == 1:
+        print(0)
+        print()
+        print()
+        return
+    if N == 2:
+        if X[0] == X[1] or Y[0] == Y[1]:
+            print(0)
+            print()
+            print()
+        else:
+            print(-1)
+        return
+    for i in range(N):
+        for j in range(i + 1, N):
+            if X[i] == X[j] and Y[i] == Y[j]:
+                print(-1)
+                return
+    ans = 100
+    for i in range(N):
+        for j in range(i + 1, N):
+            for k in range(j + 1, N):
+                x0, y0 = X[i], Y[i]
+                x1, y1 = X[j], Y[j]
+                x2, y2 = X[k], Y[k]
+                if x0 == x1:
+                    if x1 == x2:
+                        continue
+                    if y0 == y1:
+                        continue
+                    if y1 == y2:
+                        continue
+                    if x0 < x1 < x2 or x0 > x1 > x2:
+                        continue
+                    if y1 < y0 < y2 or y1 > y0 > y2:
+                        continue
+                    if abs(x1 - x2) + abs(y0 - y1) + abs(y1 - y2) <= ans:
+                        ans = abs(x1 - x2) + abs(y0 - y1) + abs(y1 - y2)
+                        m = 3
+                        d = [abs(x1 - x2), abs(y0 - y1), abs(y1 - y2)]
+                        w = ['R', 'U', 'D']
+                elif y0 == y1:
+                    if y1 == y2:
+                        continue
+                    if x0 == x1:
+                        continue
+                    if x1 == x2:
+                        continue
+                    if x1 < x0 < x2 or x1 > x0 > x2:
+                        continue
+                    if y0 < y1 < y2 or y0 >

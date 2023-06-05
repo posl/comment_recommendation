@@ -1,29 +1,110 @@
-#问题陈述
-#有一天，高桥上学累了，想知道离星期六还有多少天。
-#我们知道那一天是一个工作日，一周的名字是英文的S。
-#在这一天之后的第一个星期六之前有多少天（包括星期六，但不包括开始的那一天）？  
-#
-#约束条件
-#S是星期一、星期二、星期三、星期四或星期五。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本1
-#星期三
-#
-#样本输出 1
-#3
-#今天是星期三，所以在这一天之后的第一个星期六之前有3天。
-#
-#样本输入2
-#星期一
-#
-#样本输出2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    week = ['星期一','星期二','星期三','星期四','星期五','星期六','星期天']
+    day = input()
+    day = week.index(day)
+    print(5-day)
+
+=======
+Suggestion 2
+
+def get_days_to_saturday(day):
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    return 7 - days.index(day) if days.index(day) < 5 else 0
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    s = input()
+    # 处理
+    if s == "星期一":
+        print(5)
+    elif s == "星期二":
+        print(4)
+    elif s == "星期三":
+        print(3)
+    elif s == "星期四":
+        print(2)
+    else:
+        print(1)
+
+=======
+Suggestion 4
+
+def main():
+    week = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    s = input()
+    print(6-week.index(s))
+
+=======
+Suggestion 5
+
+def get_days_of_week(week_day):
+    week_days = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
+    return week_days.index(week_day)+1
+
+=======
+Suggestion 6
+
+def main():
+    days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    s = input()
+    print(7 - days.index(s))
+
+=======
+Suggestion 7
+
+def main():
+    day = input()
+    if day == "星期一":
+        print(5)
+    elif day == "星期二":
+        print(4)
+    elif day == "星期三":
+        print(3)
+    elif day == "星期四":
+        print(2)
+    elif day == "星期五":
+        print(1)
+    else:
+        print(0)
+
+=======
+Suggestion 8
+
+def main():
+    day = input()
+    if day == "星期一":
+        print(5)
+    elif day == "星期二":
+        print(4)
+    elif day == "星期三":
+        print(3)
+    elif day == "星期四":
+        print(2)
+    elif day == "星期五":
+        print(1)
+    else:
+        pass
+
+=======
+Suggestion 9
+
+def main():
+    week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+    s = input()
+    print(week.index('SAT') - week.index(s))
+
+=======
+Suggestion 10
+
+def main():
+    week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    S = input()
+    print(week.index('Saturday') - week.index(S))

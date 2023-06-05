@@ -1,48 +1,147 @@
-#问题陈述
-#我们有一个有H个横行和W个纵列的网格。位于从上往下第i行和从左往下第j列的方格上堆有A_{i, j}块。
-#要使所有的方格都有相同数量的图块，至少要移去多少个图块？
-#
-#限制条件
-#1 ≦ H,W ≦ 100
-#0 ≦ A_{i,j} ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H W
-#A_{1,1} A_{1,2} ...A_{1,W}
-#.
-#.
-#.
-#A_{H,1} A_{H,2} ...A_{H,W}
-#
-#输出
-#打印必须移除的最小块数。
-#
-#输入样本 1
-#2 3
-#2 2 3
-#3 2 2
-#
-#样本输出 1
-#2
-#从右上角的方格中移除1个图块，从左下角的方格中移除1个图块，使得所有方格都有2个图块。
-#
-#输入样本 2
-#3 3
-#99 99 99
-#99 0 99
-#99 99 99
-#
-#样本输出2
-#792
-#
-#样本输入3
-#3 2
-#4 4
-#4 4
-#4 4
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    min_n = min(map(min, a))
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_n
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    min_A = 100
+    for i in range(H):
+        for j in range(W):
+            if A[i][j] < min_A:
+                min_A = A[i][j]
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            ans += A[i][j] - min_A
+    print(ans)
+
+=======
+Suggestion 3
+
+def problem186_b():
+    pass
+
+=======
+Suggestion 4
+
+def solve(h, w, a):
+    min_a = 100
+    for i in range(h):
+        for j in range(w):
+            min_a = min(min_a, a[i][j])
+
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_a
+
+    return ans
+
+=======
+Suggestion 5
+
+def main():
+    h,w = map(int,input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    min_num = min(min(a))
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_num
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    h,w = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(h)]
+    min_a = min([min(a[i]) for i in range(h)])
+    print(sum([sum(a[i]) - min_a*w for i in range(h)]))
+
+=======
+Suggestion 7
+
+def main():
+    #input
+    h, w = map(int, input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int, input().split())))
+    #process
+    min_a = 100
+    for i in range(h):
+        for j in range(w):
+            if a[i][j] < min_a:
+                min_a = a[i][j]
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_a
+    #output
+    print(ans)
+
+=======
+Suggestion 8
+
+def solve():
+    H,W = map(int,input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int,input().split())))
+    min_a = 100
+    for i in range(H):
+        for j in range(W):
+            min_a = min(min_a,A[i][j])
+    ans = 0
+    for i in range(H):
+        for j in range(W):
+            ans += A[i][j] - min_a
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    min_num = min(map(min, A))
+    print(sum(map(lambda x: sum(x) - min_num * W, A)))
+
+=======
+Suggestion 10
+
+def main():
+    h, w = map(int, input().split())
+    a = [list(map(int, input().split())) for i in range(h)]
+    min_a = 100
+    for i in range(h):
+        for j in range(w):
+            min_a = min(min_a, a[i][j])
+    ans = 0
+    for i in range(h):
+        for j in range(w):
+            ans += a[i][j] - min_a
+    print(ans)
+main()

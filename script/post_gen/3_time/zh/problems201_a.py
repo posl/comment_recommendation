@@ -1,38 +1,125 @@
-#问题陈述
-#给你一个三个数字的序列：A=（A_1，A_2，A_3）。
-#有没有可能将A的元素重新排列成一个算术序列？
-#换句话说，有没有可能重新排列A的元素，使A_3-A_2=A_2-A_1？
-#
-#限制条件
-#1 ≦ A_i ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#A_1 A_2 A_3
-#
-#輸出
-#如果有可能将A的元素重新排列成一个算术序列，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 1 3
-#
-#输出示例 1
-#Yes
-#我们可以把它们重新排列成一个算术序列，比如说，把它变成(1,3,5)。
-#
-#输入样本2
-#1 4 3
-#
-#样本输出2
-#No
-#没有办法将它们重新排列成一个算术序列。
-#
-#输入样本3
-#5 5 5
-#
-#样本输出 3
-#Yes
-#A的所有元素可能是相等的，或者A可能已经是一个算术序列。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a = input()
+    b = a.split()
+    b.sort()
+    if (int(b[1]) - int(b[0])) == (int(b[2]) - int(b[1])):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    a = input()
+    a = a.split(" ")
+    a = list(map(int,a))
+    a.sort()
+    if a[1] - a[0] == a[2] - a[1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    a = input()
+    b = a.split(" ")
+    c = []
+    for i in b:
+        c.append(int(i))
+    c.sort()
+    if c[2] - c[1] == c[1] - c[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    A = list(map(int, input().split()))
+    A.sort()
+    if A[1] - A[0] == A[2] - A[1]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    A = list(map(int, input().split()))
+    # 排序
+    A.sort()
+    # 判断是否是等差数列
+    if A[2] - A[1] == A[1] - A[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    # Read three integers
+    a1, a2, a3 = map(int, input().split())
+    # Output Yes if a3-a2=a2-a1
+    if a3-a2 == a2-a1:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    a = input()
+    a = a.split()
+    a = list(map(int, a))
+    a.sort()
+    if (a[2]-a[1])==(a[1]-a[0]):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    a = input().split()
+    a.sort()
+    if int(a[2]) - int(a[1]) == int(a[1]) - int(a[0]):
+        print('Yes')
+    else:
+        print('No')
+main()
+
+=======
+Suggestion 9
+
+def main():
+    a = [int(x) for x in input().split()]
+    a.sort()
+    if a[2]-a[1] == a[1]-a[0]:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 10
+
+def main():
+    a = input().split()
+    a.sort()
+    if int(a[1])-int(a[0]) == int(a[2])-int(a[1]):
+        print("Yes")
+    else:
+        print("No")

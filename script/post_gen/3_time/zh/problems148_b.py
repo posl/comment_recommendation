@@ -1,39 +1,108 @@
-#问题陈述
-#给出长度为N的字符串s和t，都由小写英文字母组成。
-#让我们通过交替使用S和T的字符形成一个新的字符串，如下所示：S的第一个字符，T的第一个字符，S的第二个字符，T的第二个字符，...，S的第N个字符，T的第N个字符，打印这个新字符串。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#|S| = |T| = N
-#S和T是由小写英文字母组成的字符串。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S T
-#
-#輸出
-#打印形成的字符串。
-#
-#输入样本 1
-#2
-#ip cc
-#
-#样本输出1
-#icpc
-#
-#样本输入2
-#8
-#hmhmnknk uuuuuuuu
-#
-#样本输出2
-#humuhumunukunuku
-#
-#样本输入3
-#5
-#aaaaa aaaaa
-#
-#样本输出3
-#aaaaaaaaaa
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ''
+    for i in range(n):
+        ans += s[i]
+        ans += t[i]
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    result = ''
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    result = ""
+    for i in range(n):
+        result += s[i] + t[i]
+    print(result)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    S, T = input().split()
+    ans = ''
+    for i in range(N):
+        ans += S[i]
+        ans += T[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    s, t = input().split()
+    result = ''
+
+    for i in range(N):
+        result += s[i]
+        result += t[i]
+
+    print(result)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ''
+    for i in range(n):
+        ans += s[i] + t[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    s, t = input().split()
+    ans = ""
+    for i in range(n):
+        ans += s[i]
+        ans += t[i]
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    S,T = input().split()
+    ans = ''
+    for i in range(N):
+        ans += S[i] + T[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    n = int(input())
+    s, t = input().split()
+    ans = ""
+    for i in range(n):
+        ans += s[i]
+        ans += t[i]
+    print(ans)
+solve()

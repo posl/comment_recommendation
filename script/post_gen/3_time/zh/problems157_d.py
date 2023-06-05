@@ -1,94 +1,156 @@
-#问题陈述
-#一个SNS有N个用户--用户1，用户2，...，用户N。
-#在这N个用户之间，有一些关系--M条友谊和K条阻隔。
-#对于每个i = 1, 2, ..., M，用户A_i和用户B_i之间有一个双向的友谊。
-#对于每个i = 1, 2, ..., K，在用户C_i和用户D_i之间有一个双向的阻隔关系。
-#当以下四个条件都满足时，我们定义用户a为用户b的候选好友：
-#a ≠ b。
-#用户a和用户b之间不存在友谊。
-#用户a和用户b之间不存在blockhip。
-#存在一个由1到N（包括）之间的整数组成的序列c_0, c_1, c_2, ..., c_L，使得c_0 = a, c_L = b，并且对于每个i = 0, 1, ..., L - 1的用户c_i和c_{i+1}之间存在友谊。
-#对于每个用户i = 1, 2, ...N，它有多少个朋友候选人？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10^5
-#0 ≦ M ≦ 10^5
-#0 ≦ K ≦ 10^5
-#1 ≦ A_i, B_i ≦ N
-#A_i ≠ B_i
-#1 ≦ C_i, D_i ≦ N
-#C_i ≠ D_i
-#(A_i, B_i) ≠ (A_j, B_j) (i ≠ j)
-#(A_i, B_i) ≠ (B_j, A_j)
-#(C_i, D_i) ≠ (C_j, D_j) (i ≠ j)
-#(C_i, D_i) ≠ (D_j, C_j)
-#(A_i, B_i) ≠ (C_j, D_j)
-#(A_i, B_i) ≠ (D_j, C_j)
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M K
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#C_1 D_1
-#.
-#.
-#.
-#C_K D_K
-#
-#输出
-#按顺序打印答案，中间有空格。
-#
-#输入样本 1
-#4 4 1
-#2 1
-#1 3
-#3 2
-#3 4
-#4 1
-#
-#样本输出1
-#0 1 0 1
-#用户2和3之间有友谊，3和4之间也有友谊。同时，用户2和4之间没有友谊或阻隔关系。因此，用户4是用户2的候选好友。
-#然而，用户1或3都不是用户2的候选朋友，所以用户2有一个候选朋友。
-#
-#样本输入2
-#5 10 0
-#1 2
-#1 3
-#1 4
-#1 5
-#3 2
-#2 4
-#2 5
-#4 3
-#5 3
-#4 5
-#
-#样本输出2
-#0 0 0 0 0
-#每个人都是其他人的朋友，没有朋友候选人。
-#
-#样本输入3
-#10 9 3
-#10 1
-#6 7
-#8 2
-#2 5
-#8 4
-#7 3
-#10 9
-#6 4
-#5 8
-#2 6
-#7 5
-#3 1
-#
-#输出样本3
-#1 3 5 4 3 3 3 3 1 0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,m,k = map(int,input().split())
+    friends = [set() for i in range(n)]
+    blocks = [set() for i in range(n)]
+    for i in range(m):
+        a,b = map(int,input().split())
+        friends[a-1].add(b-1)
+        friends[b-1].add(a-1)
+    for i in range(k):
+        c,d = map(int,input().split())
+        blocks[c-1].add(d-1)
+        blocks[d-1].add(c-1)
+    for i in range(n):
+        print(len(friends[i] - blocks[i] - {i}),end=' ')
+    print()
+
+=======
+Suggestion 3
+
+def get_input():
+    n, m, k = map(int, input().split())
+    friends = []
+    blocks = []
+    for i in range(m):
+        friends.append(list(map(int, input().split())))
+    for i in range(k):
+        blocks.append(list(map(int, input().split())))
+    return n, m, k, friends, blocks
+
+=======
+Suggestion 4
+
+def solve(n, m, k, a, b, c, d):
+    # 1. 求出所有的朋友关系
+    friends = [[] for _ in range(n + 1)]
+    for i in range(m):
+        friends[a[i]].append(b[i])
+        friends[b[i]].append(a[i])
+    # 2. 求出所有的阻隔关系
+    blocks = [[] for _ in range(n + 1)]
+    for i in range(k):
+        blocks[c[i]].append(d[i])
+        blocks[d[i]].append(c[i])
+    # 3. 求出所有的候选人
+    candidates = [[] for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            if i != j and j not in friends[i] and j not in blocks[i]:
+                candidates[i].append(j)
+    # 4. 求出每个用户的候选人数
+    ans = [0] * (n + 1)
+    for i in range(1, n + 1):
+        ans[i] = len(candidates[i])
+    return ans[1:]
+
+=======
+Suggestion 5
+
+def dfs(now, goal, visited, friends, blocks):
+    if now == goal:
+        return True
+    visited[now] = True
+    for friend in friends[now]:
+        if not visited[friend]:
+            if dfs(friend, goal, visited, friends, blocks):
+                return True
+    return False
+
+N, M, K = map(int, input().split())
+friends = [[] for _ in range(N)]
+for _ in range(M):
+    A, B = map(int, input().split())
+    friends[A - 1].append(B - 1)
+    friends[B - 1].append(A - 1)
+
+blocks = [[] for _ in range(N)]
+for _ in range(K):
+    C, D = map(int, input().split())
+    blocks[C - 1].append(D - 1)
+    blocks[D - 1].append(C - 1)
+
+for i in range(N):
+    visited = [False] * N
+    ans = 0
+    for j in range(N):
+        if i == j:
+            continue
+        if not dfs(i, j, visited, friends, blocks):
+            ans += 1
+    print(ans, end=' ')
+
+=======
+Suggestion 6
+
+def main():
+    N, M, K = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a-1].append(b-1)
+        friends[b-1].append(a-1)
+
+    blocks = [[] for _ in range(N)]
+    for _ in range(K):
+        c, d = map(int, input().split())
+        blocks[c-1].append(d-1)
+        blocks[d-1].append(c-1)
+
+    candidate = [0] * N
+    for i in range(N):
+        for j in friends[i]:
+            candidate[i] += 1
+        for j in blocks[i]:
+            candidate[i] -= 1
+        candidate[i] -= 1
+    print(" ".join(map(str, candidate)))
+
+=======
+Suggestion 7
+
+def main():
+    n,m,k = map(int,input().split())
+    a = [0] * m
+    b = [0] * m
+    c = [0] * k
+    d = [0] * k
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    for i in range(k):
+        c[i],d[i] = map(int,input().split())
+    print(a,b,c,d)
+    for i in range(1,n+1):
+        cnt = 0
+        for j in range(m):
+            if a[j] == i:
+                cnt += 1
+            if b[j] == i:
+                cnt += 1
+        for j in range(k):
+            if c[j] == i:
+                cnt -= 1
+            if d[j] == i:
+                cnt -= 1
+        print(cnt,end=' ')
+    print()

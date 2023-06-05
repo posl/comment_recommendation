@@ -1,44 +1,166 @@
-#问题陈述
-#一个公园AtCoder的土地是一个N×N的网格，东西向的行和南北向的列。从北面第i行和西面第j列的方格的高度给定为A_{i,j}。
-#经理Takahashi决定在这个公园里建造一个占K×K方格的方形池塘。
-#为此，他想在公园内选择一个完全由K×K个方块组成的方块，其方块高度的中位数是最低的。找出这个区域内方格高度的中位数。
-#这里，K×K区的方格高度的中位数是该区K^2个方格中最高的(⌊((K^2)/(2))⌋+1)个方格的高度，其中⌊x⌋为不超过x的最大整数。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 800
-#0 ≦ A_{i,j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#A_{1,1} A_{1,2} ...A_{1,N}
-#A_{2,1} A_{2,2} ...A_{2,N}
-#:
-#A_{N,1} A_{N,2} ...A_{N,N}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 2
-#1 7 0
-#5 8 11
-#10 4 2
-#
-#样本输出1
-#4
-#让(i,j)表示从北边第i行和从西边第j列的方块。
-#对于池塘所占的2×2区域，我们有四个候选人：{(1,1),(1,2),(2,1),(2,2)}, {(1,2),(1,3),(2,2),(2,3)}, {(2,1),(2,2),(3,1),(3,2)}, {(2,2),(2,3),(3,2),(3,3)}.
-#当K=2时，由于⌊((2^2)/(2))⌋+1=3，一个部分的方格高度的中位数是最高的第3个方格的高度，对于上面的候选者，分别是5、7、5、4。我们应该打印其中最低的那个：4.
-#
-#输入样本 2
-#3 3
-#1 2 3
-#4 5 6
-#7 8 9
-#
-#样本输出2
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_median(x, y, k, n, a):
+    l = []
+    for i in range(k):
+        for j in range(k):
+            l.append(a[x+i][y+j])
+    l.sort()
+    return l[(k*k)//2]
+
+=======
+Suggestion 2
+
+def get_median(arr):
+    arr.sort()
+    return arr[len(arr)//2]
+
+N, K = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+ans = 10**9
+for i in range(N-K+1):
+    for j in range(N-K+1):
+        arr = []
+        for x in range(K):
+            for y in range(K):
+                arr.append(A[i+x][j+y])
+        ans = min(ans, get_median(arr))
+print(ans)
+
+=======
+Suggestion 3
+
+def find_median(arr):
+    arr.sort()
+    return arr[int(len(arr)/2)]
+
+=======
+Suggestion 4
+
+def main():
+    n, k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    b = [[0]*(n+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(n):
+            b[i+1][j+1] = a[i][j] + b[i][j+1] + b[i+1][j] - b[i][j]
+    def get(x, y):
+        return b[x][y] - b[x-k][y] - b[x][y-k] + b[x-k][y-k]
+    def check(x):
+        for i in range(n-k+1):
+            for j in range(n-k+1):
+                if get(i+k, j+k) - get(i+k, j) - get(i, j+k) + get(i, j) >= x:
+                    return True
+        return False
+    def solve():
+        l = -1
+        r = 10**9 + 1
+        while r - l > 1:
+            mid = (l + r) // 2
+            if check(mid):
+                l = mid
+            else:
+                r = mid
+        return l
+    print(solve())
+
+=======
+Suggestion 5
+
+def getMedian(arr):
+    arr.sort()
+    return arr[len(arr)//2]
+
+=======
+Suggestion 6
+
+def main():
+    n, k = map(int, input().split())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    ans = 10**9
+    for i in range(n-k+1):
+        for j in range(n-k+1):
+            b = []
+            for l in range(k):
+                for m in range(k):
+                    b.append(a[i+l][j+m])
+            b.sort()
+            ans = min(ans, b[k**2//2])
+    print(ans)
+
+=======
+Suggestion 7
+
+def get_median(a):
+    a.sort()
+    b = int(len(a)/2)
+    if len(a)%2 == 0:
+        return (a[b-1]+a[b])/2
+    else:
+        return a[b]
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 10 ** 9
+    for i in range(n - k + 1):
+        for j in range(n - k + 1):
+            b = []
+            for l in range(k):
+                for m in range(k):
+                    b.append(a[i + l][j + m])
+            b.sort()
+            ans = min(ans, b[(k * k) // 2])
+    print(ans)
+
+=======
+Suggestion 9
+
+def median(x):
+    x.sort()
+    return x[int((len(x)-1)/2)]
+
+=======
+Suggestion 10
+
+def main():
+    N, K = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+
+    def check(x):
+        # 长度为K的一维数组，其元素都大于等于x，是否存在
+        # 一个K×K的区域，其元素都大于等于x
+        B = [[0] * (N + 1) for _ in range(N + 1)]
+        for i in range(N):
+            for j in range(N):
+                B[i + 1][j + 1] = B[i + 1][j] + B[i][j + 1] - B[i][j]
+                if A[i][j] >= x:
+                    B[i + 1][j + 1] += 1
+        for i in range(N - K + 1):
+            for j in range(N - K + 1):
+                if B[i + K][j + K] - B[i][j + K] - B[i + K][j] + B[i][j] >= K * K // 2 + 1:
+                    return True
+        return False
+
+    # 二分探索
+    left = -1
+    right = 10 ** 9 + 1
+    while right - left > 1:
+        mid = (left + right) // 2
+        if check(mid):
+            left = mid
+        else:
+            right = mid
+    print(left)
+
+
+main()

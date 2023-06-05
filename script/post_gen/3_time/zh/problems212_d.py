@@ -1,66 +1,159 @@
-#问题陈述
-#高桥有许多球，上面没有任何文字，还有一个袋子。
-#最初，袋子是空的。高桥将做Q个操作，每个操作属于以下三种类型之一。
-#类型1：在一个空球上写一个整数X_i，然后把它放进袋子里。
-#类型2：对于袋子里的每个球，用该整数加X_i替换写在上面的整数。
-#类型3：拿起袋子里整数最小的球（如果有多个这样的球，拿起其中一个）。记录写在这个球上的整数并把它扔掉。
-#对于每个1≦i≦Q，你会得到第i个操作的类型P_i和X_i的值，如果该操作属于类型1或2。依次打印类型3的操作中记录的整数。
-#
-#约束条件
-#1 ≦ Q ≦ 2× 10^5
-#1 ≦ P_i ≦ 3
-#1 ≦ X_i ≦ 10^9
-#输入的所有数值都是整数。
-#有一个或多个i使得P_i=3。
-#如果P_i=3，则在第i次操作之前，袋子里至少有一个球。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#Q
-#query_1
-#query_2
-#:
-#query_Q
-#第2行至第(Q+1)行的每个查询_i的格式如下：
-#1 X_i
-#2 X_i
-#3
-#每行的第一个数字是1≦P_i≦3，代表操作的类型。
-#如果P_i=1或P_i=2，后面是一个空格，然后是X_i。
-#
-#输出
-#对于Q操作中每一个P_i=3的操作，在自己的行中打印记录的整数。
-#
-#输入样本 1
-#5
-#1 3
-#1 5
-#3
-#2 2
-#3
-#
-#样本输出1
-#3
-#7
-#高桥将做以下操作。
-#在一个球上写上3，然后把它放到袋子里。
-#在一个球上写上5并把它放进袋子里。
-#袋子里现在有一个写着3的球和另一个写着5的球，拿起其中小的那个球，即3。记录下3并把它扔掉。
-#现在袋子里只有一个带5的球，用5+2=7代替这个整数。
-#现在袋子里只有一个带7的球，拿起这个球，记录下7，然后把它扔掉。
-#因此，我们应该按照记录的顺序来打印3和7。
-#
-#输入样本 2
-#6
-#1 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#2 1000000000
-#3
-#
-#样本输出2
-#5000000000
-#注意，输出可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    q = []
+    for i in range(n):
+        q.append(list(map(int, input().split())))
+    q.reverse()
+    bag = []
+    for i in range(len(q)):
+        if q[i][0] == 1:
+            bag.append(q[i][1])
+        elif q[i][0] == 2:
+            for j in range(len(bag)):
+                bag[j] += q[i][1]
+        elif q[i][0] == 3:
+            print(bag.pop(bag.index(min(bag))))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(input())
+    print(a)
+
+=======
+Suggestion 3
+
+def main():
+    q = int(input())
+    balls = []
+    for i in range(q):
+        p, x = map(int, input().split())
+        if p == 1:
+            balls.append(x)
+        elif p == 2:
+            balls = [b + x for b in balls]
+        elif p == 3:
+            balls.sort()
+            print(balls[0])
+            balls.pop(0)
+
+=======
+Suggestion 4
+
+def main():
+    q=int(input())
+    p=[]
+    x=[]
+    for i in range(q):
+        p.append(input().split())
+    for i in range(q):
+        if p[i][0]=='1':
+            x.append(int(p[i][1]))
+        elif p[i][0]=='2':
+            for j in range(len(x)):
+                x[j]+=int(p[i][1])
+        else:
+            print(min(x))
+            x.remove(min(x))
+main()
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    a = a[::-1]
+    bag = []
+    for i in range(n):
+        if a[i][0] == 1:
+            bag.append(a[i][1])
+        elif a[i][0] == 2:
+            bag = [x+a[i][1] for x in bag]
+        else:
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    q = int(input())
+    bag = []
+    for i in range(q):
+        line = input().split()
+        if line[0] == '1':
+            bag.append(int(line[1]))
+        elif line[0] == '2':
+            bag = [x + int(line[1]) for x in bag]
+        elif line[0] == '3':
+            print(min(bag))
+            bag.remove(min(bag))
+
+=======
+Suggestion 7
+
+def get_input():
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(list(map(int, input().split())))
+    return Q, query
+
+=======
+Suggestion 8
+
+def main():
+    print("hello world")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    Q = int(input())
+    query = []
+    for i in range(Q):
+        query.append(input().split())
+    bag = []
+    for i in range(Q):
+        if query[i][0] == '1':
+            bag.append(int(query[i][1]))
+        elif query[i][0] == '2':
+            for j in range(len(bag)):
+                bag[j] += int(query[i][1])
+        elif query[i][0] == '3':
+            print(min(bag))
+            bag.remove(min(bag))
+
+main()
+
+=======
+Suggestion 10
+
+def main():
+    q = int(input())
+    query = [list(map(int,input().split())) for _ in range(q)]
+    bag = []
+    min = 0
+    for i in range(q):
+        if query[i][0] == 1:
+            bag.append(query[i][1])
+        elif query[i][0] == 2:
+            bag = [x + query[i][1] for x in bag]
+        else:
+            min = min(bag)
+            bag.remove(min)
+            print(min)

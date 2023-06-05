@@ -1,41 +1,115 @@
-#问题陈述
-#给出的是一个整数序列A_1, A_2, ..., A_N。
-#如果它的元素是成对不同的，打印YES；否则，打印NO。
-#
-#限制条件
-#2 ≤ N ≤ 200000
-#1 ≤ A_i ≤ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 ...A_N
-#
-#輸出
-#如果序列中的元素是成对不同的，打印YES；否则，打印NO。
-#
-#输入样本 1
-#5
-#2 6 1 4 5
-#
-#样本输出1
-#Yes
-#这些元素是成对不同的。
-#
-#样本输入2
-#6
-#4 1 3 1 6 2
-#
-#样本输出2
-#NO
-#第二和第四元素是相同的。
-#
-#样本输入3
-#2
-#10000000 10000000
-#
-#样本输出3
-#No
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.sort()
+    for i in range(0,n):
+        if i == n-1:
+            print("Yes")
+            break
+        if a[i] == a[i+1]:
+            print("No")
+            break
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    A.sort()
+
+    for i in range(N-1):
+        if A[i] == A[i+1]:
+            print("NO")
+            return
+    print("YES")
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            print('NO')
+            exit()
+    print('YES')
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(a) == len(set(a)):
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(set(a)) == n:
+        print("YES")
+    else:
+        print("NO")
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in range(n-1):
+        if a[i] == a[i+1]:
+            print("NO")
+            exit()
+    print("YES")
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    if len(set(a)) == n:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    for i in range(0, N-1):
+        if A[i] == A[i+1]:
+            print("NO")
+            exit()
+    print("YES")
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = set(a)
+    if len(a) == len(b):
+        print('YES')
+    else:
+        print('NO')

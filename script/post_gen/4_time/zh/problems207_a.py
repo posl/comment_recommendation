@@ -1,38 +1,102 @@
-#问题陈述
-#桌子上有三张卡片，每张卡片上都写有一个正整数。卡片上的整数是A、B和C。
-#你选择了两张卡片并把它们捡起来。
-#请找出这两张卡片上的整数的最大可能之和。
-#
-#限制条件
-#1 ≦ a,b,c ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#打印答案为整数。
-#
-#输入样本 1
-#3 4 5
-#
-#输出示例 1
-#9
-#如果你拿起两张4和5的牌，整数之和将是4+5=9。
-#没有办法捡到总和更大的牌，所以我们应该打印9。
-#
-#输入样本2
-#6 6 6
-#
-#输出样本 2
-#12
-#无论你选择哪张牌，整数之和都是12。
-#
-#样本输入3
-#99 99 98
-#
-#样本输出3
-#198
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b, b+c, c+a))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取输入
+    line = input()
+    # 用空格分割输入
+    s = line.split()
+    # 将输入转换为整数
+    a = int(s[0])
+    b = int(s[1])
+    c = int(s[2])
+    # 计算答案
+    ans = a + b + c
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    a = input().split()
+    print(int(max(a))*2)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+    # 计算结果
+    ans = max(a+b, b+c, c+a)
+    # 打印结果
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    print(a+b+c)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    # 用空格分割读取的字符串，转换成整数
+    # 用list保存输入的整数
+    a, b, c = map(int, input().split())
+    # 用list保存输入的整数
+    cards = [a, b, c]
+    # 用sum函数求和
+    print(sum(cards))
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+
+    # 计算答案
+    ans = a + b + c
+    ans = max(ans, a + b)
+    ans = max(ans, b + c)
+    ans = max(ans, c + a)
+
+    # 打印答案
+    print(ans)
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b, b+c, a+c))
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    max = a+b+c
+    if max < a+b:
+        max = a+b
+    if max < a+c:
+        max = a+c
+    if max < b+c:
+        max = b+c
+    print(max)

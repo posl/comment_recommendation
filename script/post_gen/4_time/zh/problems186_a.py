@@ -1,30 +1,23 @@
-#问题陈述
-#我们有一辆卡车，它最多可以装载N公斤。
-#我们要把砖头装到这辆卡车上，每块砖头的重量是W公斤。最多可以装多少块砖？
-#
-#限制条件
-#1≦ N,W ≦ 1000
-#N和W是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N W
-#
-#输出
-#打印一个整数，代表可以装载到卡车上的最大砖块数量。
-#
-#输入样本 1
-#10 3
-#
-#输出示例 1
-#3
-#每块砖头重3公斤，所以3块砖头重9公斤，4块重12公斤。
-#因此，我们最多可以把3块砖装到最多可以运10公斤的卡车上。
-#
-#输入样本2
-#1000 1
-#
-#样本输出2
-#1000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, w = map(int, input().split())
+    print(n // w)
+
+=======
+Suggestion 2
+
+def main():
+    N, W = map(int, input().split())
+    print(N//W)
+
+=======
+Suggestion 3
+
+def main():
+    N, W = map(int, input().split())
+
+    print(int(N/W))

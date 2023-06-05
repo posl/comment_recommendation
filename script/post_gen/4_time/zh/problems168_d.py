@@ -1,67 +1,177 @@
-#问题陈述
-#有一个山洞。
-#洞里有N个房间和M条通道。房间编号为1到N，通道编号为1到M。通道i双向连接A_i室和B_i室。人们可以通过穿越通道在任何两个房间之间旅行。房间1是一个特殊的房间，有一个来自外部的入口。
-#洞里很黑，所以我们决定在除1号房间外的每个房间都放置一个路标。 每个房间的路标都会指向与该房间直接相连的一个房间的通道。
-#由于山洞里很危险，我们的目标是满足除1号房间外的每个房间的以下条件。
-#如果你从该房间开始，反复移动到你所在房间的路标所指示的房间，你将在穿越尽可能少的通道后到达1号房间。
-#确定是否有一种方法可以放置满足我们目标的路标，如果存在，就打印一个这样的方法。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ N (1 ≦ i ≦ M)
-#A_i ≠ B_i (1 ≦ i ≦ M)
-#人们可以通过穿越通道在任何两个房间之间旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#A_1 B_1
-#:
-#A_M B_M
-#
-#输出
-#如果没有办法放置满足目标的路标，则打印No。
-#否则，打印N行。第一行应该包含Yes，第i行（2 ≦ i ≦ N）应该包含整数，代表i号房间的路标所指示的房间。
-#
-#输入样本 1
-#4 4
-#1 2
-#2 3
-#3 4
-#4 2
-#
-#样本输出1
-#Yes
-#1
-#2
-#2
-#如果我们按照样本输出中的描述放置路标，就会发生以下情况：
-#从2号房间开始，穿越一条通道后，你将到达1号房间：(2) -> 1。这是可能的最小通道数。
-#从3号房间开始，你将在穿越两条通道后到达1号房间：(3) -> 2 -> 1，这是可能的最小通道数。
-#从4号房间开始，你将在穿越两个通道后到达1号房间：(4) -> 2 -> 1，这是可能的最小通道数。
-#因此，目标得到了满足。
-#
-#输入样本 2
-#6 9
-#3 4
-#6 1
-#2 4
-#5 3
-#4 6
-#1 5
-#6 2
-#4 5
-#5 6
-#
-#样本输出2
-#Yes
-#6
-#5
-#5
-#1
-#1
-#如果有多个解决方案，任何一个都会被接受。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n, m = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(m)]
+
+    out = [0] * n
+    out[0] = 1
+    for a, b in ab:
+        if out[a - 1] == 1:
+            out[b - 1] = a
+        elif out[b - 1] == 1:
+            out[a - 1] = b
+
+    if 0 in out:
+        print('No')
+    else:
+        print('Yes')
+        for i in range(1, n):
+            print(out[i])
+
+=======
+Suggestion 3
+
+def dfs(node, parent):
+    global G, ans
+    for i in G[node]:
+        if i == parent:
+            continue
+        if ans[i] != 0:
+            continue
+        ans[i] = node
+        dfs(i, node)
+
+N, M = map(int, input().split())
+G = [[] for _ in range(N+1)]
+for _ in range(M):
+    A, B = map(int, input().split())
+    G[A].append(B)
+    G[B].append(A)
+
+ans = [0] * (N+1)
+ans[1] = 1
+dfs(1, -1)
+
+=======
+Suggestion 4
+
+def main():
+    n, m = map(int, input().split())
+    ab = []
+    for i in range(m):
+        a, b = map(int, input().split())
+        ab.append((a, b))
+
+    # print(ab)
+
+    # 1からの最短経路を求める
+    from collections import deque
+    adj = [[] for _ in range(n + 1)]
+    for a, b in ab:
+        adj[a].append(b)
+        adj[b].append(a)
+
+    # print(adj)
+
+    dist = [-1] * (n + 1)
+    dist[1] = 0
+    queue = deque([1])
+    while queue:
+        v = queue.popleft()
+        for nv in adj[v]:
+            if dist[nv] != -1:
+                continue
+            dist[nv] = dist[v] + 1
+            queue.append(nv)
+
+    # print(dist)
+
+    # 1からの最短経路から逆算していく
+    ans = [0] * (n + 1)
+    for a, b in ab:
+        # 1からの最短経路が繋がっているか
+        if dist[a] == dist[b] + 1:
+            ans[a] = b
+        if dist[b] == dist[a] + 1:
+            ans[b] = a
+
+    # print(ans)
+
+    # 全部埋まっているか
+    if 0 in ans[2:]:
+        print("No")
+    else:
+        print("Yes")
+        for i in range(2, n + 1):
+            print(ans[i])
+
+=======
+Suggestion 5
+
+def dfs(v):
+    visited[v] = True
+    for next_v in graph[v]:
+        if visited[next_v]:
+            continue
+        dfs(next_v)
+        if dp[next_v] == 0:
+            dp[v] = next_v
+            return
+        elif dp[v] == 0:
+            dp[v] = dp[next_v]
+        else:
+            dp[v] = -1
+
+n, m = map(int, input().split())
+graph = [[] for _ in range(n + 1)]
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+visited = [False] * (n + 1)
+dp = [0] * (n + 1)
+dfs(1)
+
+=======
+Suggestion 6
+
+def dfs(u, p):
+    for v in to[u]:
+        if v == p:
+            continue
+        if mark[v] == 0:
+            mark[v] = u
+            dfs(v, u)
+        else:
+            if ans[v] == 0:
+                t = u
+                while t != v:
+                    ans[t] = mark[t]
+                    t = mark[t]
+                ans[v] = mark[v]
+                print("Yes")
+                for i in range(1, n + 1):
+                    print(ans[i])
+                exit()
+            else:
+                continue
+    return
+
+n, m = map(int, input().split())
+to = [[] for i in range(n + 1)]
+for i in range(m):
+    a, b = map(int, input().split())
+    to[a].append(b)
+    to[b].append(a)
+mark = [0] * (n + 1)
+ans = [0] * (n + 1)
+mark[1] = -1
+dfs(1, -1)
+print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    pass

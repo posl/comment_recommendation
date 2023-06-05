@@ -1,34 +1,99 @@
-#问题陈述
-#给你一个由数字组成的长度正好为9的字符串S。
-#在S中，从0到9的所有数字正好出现一次。
-#请打印出S中唯一缺少的数字。
-#
-#限制条件
-#S是一个由数字组成的长度为9的字符串。
-#S中的所有字符都是不同的。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印S中唯一缺少的数字。
-#
-#输入样本1
-#023456789
-#
-#样本输出1
-#1
-#字符串023456789只缺少1。
-#因此，1应该被打印出来。
-#
-#输入样本2
-#459230781
-#
-#样本输出2
-#6
-#字符串459230781只缺少6。
-#因此，6应该被打印出来。
-#请注意，字符串中的数字可能不按递增顺序出现。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find_missing_number(s):
+    for i in range(10):
+        if str(i) not in s:
+            print(i)
+            break
+
+=======
+Suggestion 2
+
+def getMissingNumber(S):
+    a = [0] * 10
+    for i in S:
+        a[int(i)] = 1
+    for i in range(10):
+        if a[i] == 0:
+            return i
+
+=======
+Suggestion 3
+
+def get_missing_number(str):
+    for i in range(10):
+        if str.find(str(i)) == -1:
+            return i
+
+=======
+Suggestion 4
+
+def problem248_a():
+    s = input()
+    s = list(s)
+    s.sort()
+    for i in range(10):
+        if str(i) not in s:
+            print(i)
+            break
+
+problem248_a()
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    for i in range(10):
+        if not str(i) in s:
+            print(i)
+            break
+
+=======
+Suggestion 6
+
+def missing_number(s):
+    s = list(s)
+    for i in range(10):
+        if str(i) not in s:
+            print(i)
+            break
+
+=======
+Suggestion 7
+
+def missing_number(s):
+    for i in range(0,10):
+        if str(i) not in s:
+            return i
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S = list(S)
+    S = list(map(int, S))
+    S.sort()
+    for i in range(10):
+        if i not in S:
+            print(i)
+            break
+
+=======
+Suggestion 9
+
+def get_input():
+    return input()
+
+=======
+Suggestion 10
+
+def solution(s):
+    for i in range(1,10):
+        if str(i) not in s:
+            print(i)
+            break

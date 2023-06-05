@@ -1,65 +1,138 @@
-#问题陈述
-#高桥正试图创造一个受棒球启发的游戏，但他在编写代码时遇到困难。
-#请为高桥写一个程序，解决以下问题。
-#有4个方块，分别称为方块0、方块1、方块2和方块3。  最初，所有的方块都是空的。
-#还有一个整数P；最初，P=0。
-#给出一串正整数A=(A_1, A_2, ..., A_N)，对i=1, 2, ..., N按此顺序进行以下操作：
-#把一个棋子放在0号方格上。
-#将方格A_i上的每一个棋子向前推进。  换句话说，如果广场x有棋子，就把棋子移到广场（x+A_i）。   
-#    然而，如果目标方格不存在（即x+A_i大于或等于4）的棋子，则将其移除。  在P中加入被移除的棋子数量。
-#在进行完所有操作后，打印P的值。
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 4
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#在所有操作完成后打印P的值。
-#
-#示例输入1
-#4
-#1 1 3 2
-#
-#样本输出 1
-#3
-#这些操作描述如下。  在所有的操作完成后，P等于3。
-#i=1的操作：
-#在0号方格放一个棋子，现在0号方格有一个棋子。
-#将方格上的每个棋子向前推进1格。  经过这些操作，广场1有一个棋子。
-#对i=2的操作：
-#在方格0上放置一个棋子，现在，方格0和方格1都有一个棋子。
-#将每个棋子在方格上向前推进1个方格。  经过这些操作后，1号和2号方格都有一个棋子。
-#对i=3的操作：
-#现在，0、1、2号方格都有一个棋子。
-#将方格上的每个棋子向前推进3个方格。
-#在这里，对于1号和2号方格上的棋子来说，目标方格并不存在（因为1+3=4，2+3=5），所以移除这些棋子，并在P上加2，现在P等于2。
-#经过这些操作后，3号位有一个棋子。
-#对i=4的操作：
-#在0号方格放一个棋子，现在0号和3号方格都有一个棋子。
-#将方格上的每个棋子向前推进2个方格。
-#在这里，对于广场3上的棋子来说，目标广场并不存在（因为3+2=5），所以移除这颗棋子并在P上加1，现在P等于3。
-#经过这些动作后，2号广场有一个棋子。
-#
-#
-#输入样本 2
-#3
-#1 1 1
-#
-#样本输出2
-#0
-#P的值可能不会被操作所更新。
-#
-#样本输入3
-#10
-#2 2 4 1 1 1 4 2 2 1
-#
-#样本输出3
-#8
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        p += a[i] - 1
+        p %= 4
+    print(p)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = input().split()
+    P = 0
+    for i in range(N):
+        A[i] = int(A[i])
+        P += A[i]//4
+        if A[i]%4 == 0:
+            A[i] = 0
+        else:
+            A[i] = 4 - A[i]%4
+    print(P)
+
+=======
+Suggestion 3
+
+def main():
+    a = input("请输入A：")
+    a = a.split(" ")
+    p = 0
+    for i in range(len(a)):
+        a[i] = int(a[i])
+        if a[i] == 1:
+            p += 0
+        elif a[i] == 2:
+            p += 1
+        elif a[i] == 3:
+            p += 2
+        elif a[i] == 4:
+            p += 1
+    print(p)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    P = 0
+    for i in range(N):
+        P += A[i] - 1
+    print(P)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        P = P - 1 if A[i] + i >= 4 else P
+    print(P)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        p += a[i]-1
+    print(p)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p = 0
+    for i in range(n):
+        if a[i] == 1:
+            p += 3
+        elif a[i] == 2:
+            p += 2
+        elif a[i] == 3:
+            p += 1
+    print(p)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    print(A)
+    P = 0
+    for i in range(N):
+        P += A[i]
+        if P >= 4:
+            P = P - 4
+    print(P)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    P = 0
+    for i in range(N):
+        if A[i] + i < 4:
+            P += 0
+        else:
+            P += A[i] + i - 3
+    print(P)
+
+=======
+Suggestion 10
+
+def problem256_b(n, a):
+    p = 0
+    for i in a:
+        p += i // 4
+    print(p)

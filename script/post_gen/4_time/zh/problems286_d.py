@@ -1,59 +1,183 @@
-#问题陈述
-#高桥有N种硬币；
-#具体来说，对于1≦i≦N，他有B_i个硬币，每个硬币价值A_i日元（日本的货币）。
-#请确定高桥是否能用他目前拥有的硬币准确支付X日元（不找零）。
-#
-#限制条件
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥能用他目前拥有的硬币正好支付X日元，则打印Yes；
-#否则打印No。
-#
-#输入样本 1
-#2 19
-#2 3
-#5 6
-#
-#样本输出1
-#Yes
-#高桥有三个2日元的硬币和六个5日元的硬币。
-#他可以用两个2元硬币和三个5元硬币来支付2×2+5×3=19日元。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#2 18
-#2 3
-#5 6
-#
-#样本输出2
-#No
-#没有一个硬币的组合可以让他正好支付18日元。
-#因此，应该打印No。
-#
-#输入样本3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#样本输出3
-#Yes
-#他不需要使用所有种类的硬币。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n,x = map(int, input().split())
+    total = 0
+    for i in range(n):
+        a,b = map(int, input().split())
+        total += a * b
+        if total > x * 100:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    n,x = map(int,input().split())
+    a_b = [list(map(int,input().split())) for _ in range(n)]
+    a_b.sort(key=lambda x:x[0])
+    #print(a_b)
+    dp = [[0]*(x+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(x+1):
+            if j == 0:
+                dp[i+1][j] = 1
+            elif j >= a_b[i][0]:
+                dp[i+1][j] = dp[i][j] or dp[i+1][j-a_b[i][0]]
+            else:
+                dp[i+1][j] = dp[i][j]
+    #print(dp)
+    print('Yes' if dp[n][x] else 'No')
+
+=======
+Suggestion 3
+
+def pay(x, coins, remain):
+    if x == 0:
+        return True
+    if remain == 0:
+        return False
+    if x < 0:
+        return False
+    return pay(x, coins, remain - 1) or pay(x - coins[remain - 1], coins, remain - 1)
+
+n, x = map(int, input().split())
+coins = []
+for i in range(n):
+    a, b = map(int, input().split())
+    coins.append(a * b)
+
+=======
+Suggestion 4
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    # print(A, B)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum <= X:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def is_payable(n, x, a, b):
+    if n == 1:
+        if x % a[0] == 0 and x / a[0] <= b[0]:
+            return True
+        else:
+            return False
+    else:
+        for i in range(b[0] + 1):
+            if is_payable(n - 1, x - a[0] * i, a[1:], b[1:]):
+                return True
+        return False
+
+=======
+Suggestion 6
+
+def solve():
+    n,x = map(int,input().split())
+    a = []
+    b = []
+    for i in range(n):
+        a_,b_ = map(int,input().split())
+        a.append(a_)
+        b.append(b_)
+    ans = 0
+    for i in range(n):
+        ans += a[i]*b[i]
+    if ans <= x:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 7
+
+def main():
+    n,x = map(int,input().split())
+    coins = [list(map(int,input().split())) for _ in range(n)]
+    coins.sort()
+    #print(coins)
+    dp = [[0]*(x+1) for _ in range(n+1)]
+    #print(dp)
+    dp[0][0] = 1
+    for i in range(n):
+        for j in range(x+1):
+            if j-coins[i][0]>=0:
+                dp[i+1][j] = dp[i][j] | dp[i+1][j-coins[i][0]]
+            else:
+                dp[i+1][j] = dp[i][j]
+    if dp[-1][-1]:
+        print('Yes')
+    else:
+        print('No')
+
+main()
+
+=======
+Suggestion 8
+
+def pay():
+    n,x=map(int,input().split())
+    a=[]
+    b=[]
+    for i in range(n):
+        a1,b1=map(int,input().split())
+        a.append(a1)
+        b.append(b1)
+    sum=0
+    for i in range(n):
+        sum+=a[i]*b[i]
+    if sum<=x:
+        print('Yes')
+    else:
+        print('No')
+pay()
+
+=======
+Suggestion 9
+
+def check_coins(coins, money):
+    if money == 0:
+        return True
+    if money < 0:
+        return False
+    if len(coins) == 0:
+        return False
+    #print(coins, money)
+    return check_coins(coins[1:], money) or check_coins(coins[1:], money - coins[0])
+
+=======
+Suggestion 10
+
+def solve():
+    N,X=map(int,input().split())
+    A=[]
+    B=[]
+    for i in range(N):
+        a,b=map(int,input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(N):
+        X-=A[i]*B[i]
+    if X>=0:
+        print("Yes")
+    else:
+        print("No")

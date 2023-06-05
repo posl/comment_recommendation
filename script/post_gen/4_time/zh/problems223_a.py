@@ -1,36 +1,112 @@
-#问题陈述
-#高桥的钱包里有一个或多个100日元的硬币，没有其他东西。(日元是日本的货币）。
-#钱包里的钱总数有可能是X日元吗？
-#
-#限制条件
-#0 ≦ X ≦ 1000
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#X
-#
-#輸出
-#如果高桥的钱包里的钱总数有可能是X日元，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#500
-#
-#样本输出1
-#Yes
-#如果钱包里有5个100日元的硬币，总金额是500日元。因此，总金额有可能是X=500日元，所以我们应该打印Yes。
-#
-#输入样本2
-#40
-#
-#样本输出2
-#No
-#
-#样本输入3
-#0
-#
-#样本输出3
-#No
-#请注意，钱包里至少有一个100日元的硬币。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def test():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 3
+
+def main():
+    x = int(input())
+    if x % 100 == 0 and x != 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 4
+
+def main():
+    x = int(input())
+    if x%100 == 0 and x != 0:
+        print('Yes')
+    else:
+        print('No')
+main()
+
+=======
+Suggestion 5
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 6
+
+def solve():
+    X = int(input())
+    if X >= 100 and X % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    # X = int(input())
+    X = 40
+    if (X >= 100 and X % 100 == 0):
+        print("Yes")
+    elif (X >= 200 and X % 200 == 0):
+        print("Yes")
+    elif (X >= 300 and X % 300 == 0):
+        print("Yes")
+    elif (X >= 400 and X % 400 == 0):
+        print("Yes")
+    elif (X >= 500 and X % 500 == 0):
+        print("Yes")
+    elif (X >= 600 and X % 600 == 0):
+        print("Yes")
+    elif (X >= 700 and X % 700 == 0):
+        print("Yes")
+    elif (X >= 800 and X % 800 == 0):
+        print("Yes")
+    elif (X >= 900 and X % 900 == 0):
+        print("Yes")
+    elif (X >= 1000 and X % 1000 == 0):
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 8
+
+def main():
+    x = int(input())
+    if x % 100 == 0:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 9
+
+def isSumX(n):
+    if n % 100 == 0:
+        return True
+    else:
+        return False

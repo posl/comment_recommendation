@@ -1,29 +1,85 @@
-#问题陈述
-#给你一个整数K。
-#打印一个字符串，该字符串是由从A开始的前K个大写英文字母按升序连接而成的。
-#
-#限制条件
-#K是一个在1到26之间的整数，包括在内。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#3
-#
-#样本输出1
-#ABC
-#大写英文字母按升序排列是A、B、C、...。
-#通过连接前三个大写英文字母，我们得到ABC。
-#
-#输入样本2
-#1
-#
-#样本输出2
-#A
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    K = int(input())
+    print(''.join([chr(i) for i in range(ord('A'), ord('A')+K)]))
+
+=======
+Suggestion 2
+
+def main():
+    # 读取数据
+    k = int(input())
+    # 处理数据
+    # 输出结果
+    print("".join([chr(ord('A')+i) for i in range(k)]))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    print(''.join([chr(ord('A') + i) for i in range(k)]))
+
+=======
+Suggestion 4
+
+def main():
+    k = int(input())
+    print(''.join(chr(ord('A') + i) for i in range(k)))
+
+=======
+Suggestion 5
+
+def main():
+    K = int(input())
+    for i in range(K):
+        print(chr(i+65),end='')
+
+=======
+Suggestion 6
+
+def main():
+    k = int(input())
+    for i in range(k):
+        print(chr(ord('A')+i),end='')
+    print()
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    print(''.join([chr(i) for i in range(ord('A'), ord('A')+k)]))
+
+=======
+Suggestion 8
+
+def main():
+    K = int(input())
+    print("".join([chr(i) for i in range(65, 65 + K)]))
+
+=======
+Suggestion 9
+
+def main():
+    k = int(input())
+    s = ''
+    for i in range(k):
+        s += chr(i + ord('A'))
+    print(s)
+
+=======
+Suggestion 10
+
+def main():
+    K = int(input())
+    s = ''
+    for i in range(K):
+        s += chr(ord('A') + i)
+    print(s)
+
+main()

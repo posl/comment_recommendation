@@ -1,53 +1,96 @@
-#问题陈述
-#给你一个长度为N的序列A=(A_1,A_2,...,A_N)和正整数P,Q,R,和S。
-#这里，P,Q,R,和S满足1≦ P≦ Q<R≦ S ≦ N和Q-P=S-R。
-#让B=(B_1, B_2,..., B_N)是通过交换A的P项到Q项和R项到S项得到的序列。
-#打印序列B。
-#
-#限制条件
-#1≦ N ≦ 100
-#1≦ A_i≦ 100
-#1≦ P≦ Q<R≦ S ≦ N
-#Q-P=S-R
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N P Q R S
-#A_1 A_2 ...A_N
-#
-#输出
-#打印B_1，B_2，...，B_N，中间有空格。
-#
-#输入样本 1
-#8 1 3 5 7
-#1 2 3 4 5 6 7 8
-#
-#样本输出 1
-#5 6 7 4 1 2 3 8
-#将序列A=(1,2,3,4,5,6,7,8)的第1项到第3项(1,2,3)和第5项到第7项(5,6,7)进行交换
-#结果是B=(5,6,7,4,1,2,3,8)，应在中间加空格打印。
-#
-#输入样本2
-#5 2 3 4 5
-#2 2 1 1 1
-#
-#样本输出 2
-#2 1 1 2 1
-#同一整数可能在序列中出现多次。
-#
-#输入样本 3
-#2 1 1 2 2
-#50 100
-#
-#样本输出3
-#100 50
-#
-#样本输入4
-#10 2 4 7 9
-#22 75 26 45 72 81 47 29 97 2
-#
-#样本输出 4
-#22 47 29 97 72 81 75 26 45 2
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def swap(a,b):
+    temp = a
+    a = b
+    b = temp
+    return a,b
+
+=======
+Suggestion 2
+
+def swap(a, b):
+    tmp = a
+    a = b
+    b = tmp
+    return a, b
+
+=======
+Suggestion 3
+
+def reverse(arr,start,end):
+    while start < end:
+        arr[start],arr[end] = arr[end],arr[start]
+        start += 1
+        end -= 1
+    return arr
+
+=======
+Suggestion 4
+
+def swap(a,b):
+    c = a
+    a = b
+    b = c
+    return a,b
+
+=======
+Suggestion 5
+
+def swap(p, q, r, s, list):
+    list1 = list[0:p]
+    list2 = list[p:q]
+    list3 = list[q:r]
+    list4 = list[r:s]
+    list5 = list[s:]
+    list2.extend(list4)
+    list2.extend(list3)
+    list2.extend(list5)
+    list1.extend(list2)
+    return list1
+
+N, P, Q, R, S = map(int, input().split())
+A = list(map(int, input().split()))
+B = swap(P-1, Q, R, S+1, A)
+print(*B)
+
+=======
+Suggestion 6
+
+def main():
+    n, p, q, r, s = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = a[p-1:q] + a[r-1:s]
+    b.sort()
+    a[p-1:q] = b[:q-p]
+    a[r-1:s] = b[q-p:]
+    print(*a)
+
+=======
+Suggestion 7
+
+def swap(a, b, c, d, e):
+    return a[d:e] + a[b:c] + a[a:b] + a[c:d] + a[e:]
+
+=======
+Suggestion 8
+
+def swap(a, b):
+    return b, a
+
+=======
+Suggestion 9
+
+def get_input():
+    N, P, Q, R, S = input().split()
+    N = int(N)
+    P = int(P)
+    Q = int(Q)
+    R = int(R)
+    S = int(S)
+    A = input().split()
+    A = [int(x) for x in A]
+    return N, P, Q, R, S, A

@@ -1,48 +1,105 @@
-#问题陈述
-#我们把一个长度为N的序列，其中1,2,...,N各出现一次，称为长度为N的排列组合。
-#给出一个长度为N的排列组合，P = (p_1, p_2,...,p_N)，打印一个长度为N的排列组合，Q = (q_1,...,q_N)，该排列组合满足以下条件。
-#对于每个i（1 ≦ i ≦ N），Q的第p_i个元素是i。
-#可以证明，存在一个唯一的满足条件的Q。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#(p_1,p_2,...,p_N)是一个长度为N的置换（定义见问题陈述
-#).
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#p_1 p_2 ... p_N
-#
-#输出
-#在一行中打印序列Q，中间有空格。
-#q_1 q_2 ... q_N
-#
-#样本输入1
-#3
-#2 3 1
-#
-#样本输出 1
-#3 1 2
-#排列组合Q=(3,1,2)满足条件，如下所示。
-#对于i = 1，我们有p_i = 2，q_2 = 1。
-#对于i = 2，我们有p_i = 3，q_3 = 2。
-#对于i = 3，我们有p_i = 1，q_1 = 3。
-#
-#样本输入2
-#3
-#1 2 3
-#
-#样本输出 2
-#1 2 3
-#如果p_i = i对每个i（1 ≦ i ≦ N），我们将有P = Q。
-#
-#样本输入3
-#5
-#5 3 2 4 1
-#
-#样本输出 3
-#5 3 2 4 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i] - 1] = i + 1
+    print(' '.join(map(str, q)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = [int(p) for p in input().split()]
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    print(" ".join(str(q) for q in Q))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0 for i in range(n)]
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i] - 1] = i + 1
+    print(" ".join(map(str, q)))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = [int(i) for i in input().split()]
+    q = [0]*n
+    for i in range(n):
+        q[p[i]-1] = i+1
+    print(*q)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    P = input().split()
+    Q = [0] * N
+    for i in range(N):
+        Q[int(P[i])-1] = str(i+1)
+    print(' '.join(Q))
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+
+    for i in range(N):
+        Q[P[i]-1] = i+1
+
+    print(' '.join(map(str, Q)))
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    Q = [0] * N
+    for i in range(N):
+        Q[P[i] - 1] = i + 1
+    for i in range(N):
+        print(Q[i], end=' ')
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    p = [int(x) for x in input().split()]
+    q = [0]*N
+    for i in range(N):
+        q[p[i]-1] = i+1
+    for i in range(N):
+        print(q[i], end=" ")
+    print()

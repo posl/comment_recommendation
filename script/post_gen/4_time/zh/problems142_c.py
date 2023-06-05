@@ -1,46 +1,96 @@
-#问题陈述
-#高桥是一名教师，负责一个有N个学生的班级。
-#学生们被赋予了从1到N的不同学生编号。
-#今天，所有的学生在不同的时间进入教室。
-#根据高桥的记录，当学生号i进入教室时，教室里有A_i名学生（包括学生号i）。
-#根据这些记录，重建学生进入教室的顺序。
-#
-#限制条件
-# 1 ≦ N ≦ 10^5
-# 1 ≦ A_i ≦ N
-# A_i ≠ A_j (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#按照学生进入教室的顺序，打印学生的学号。
-#
-#输入样本 1
-#3
-#2 3 1
-#
-#样本输出 1
-#3 1 2
-#首先，3号学生进入教室。
-#然后，1号学生进入教室。
-#最后，2号学生进入教室。
-#
-#样本输入 2
-#5
-#1 2 3 4 5
-#
-#样本输出 2
-#1 2 3 4 5
-#
-#样本输入3
-#8
-#8 2 7 3 4 5 6 1
-#
-#样本输出 3
-#8 2 4 5 6 7 3 1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(*b)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(' '.join(map(str, b)))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [0] * n
+    for i in range(n):
+        b[a[i] - 1] = i + 1
+    print(*b)
+
+=======
+Suggestion 5
+
+def main():
+    # N = int(input())
+    # A = list(map(int, input().split()))
+    N = 8
+    A = [8, 2, 7, 3, 4, 5, 6, 1]
+    B = [0] * N
+    for i in range(N):
+        B[A[i] - 1] = i + 1
+    print(B)
+
+=======
+Suggestion 6
+
+def main():
+    # 读入数据
+    n = int(input())
+    a = list(map(int, input().split()))
+    # 从后往前遍历
+    ans = []
+    for i in range(n-1, -1, -1):
+        ans.insert(a[i]-1, i+1)
+    # 输出
+    print(*ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * n
+    for i in range(n):
+        b[a[i]-1] = i+1
+    print(*b)
+
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = []
+    for i in range(n):
+        ans.insert(a[i]-1, i+1)
+    print(*ans)

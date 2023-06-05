@@ -1,61 +1,221 @@
-#问题陈述
-#给出的是一棵有N个顶点的有根树，编号为1到N。
-#根是顶点1，第i条边（1 ≦ i ≦ N - 1）连接着顶点a_i和b_i。
-#每个顶点都安装有一个计数器。最初，所有顶点的计数器的值都是0。
-#现在，将进行以下Q操作：
-#操作j（1 ≦ j ≦ Q）：用x_j增加根在顶点p_j的子树中包含的每个顶点上的计数器。
-#找到所有操作后每个顶点上的计数器的值。
-#
-#限制条件
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ Q ≦ 2 × 10^5
-#1 ≦ a_i < b_i ≦ N
-#1 ≦ p_j ≦ N
-#1 ≦ x_j ≦ 10^4
-#给定的图是一棵树。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N Q
-#a_1 b_1
-#:
-#a_{N-1} b_{N-1}
-#p_1 x_1
-#:
-#p_Q x_Q
-#
-#输出
-#打印顶点1，2，...，N上的计数器的值，在所有操作之后，按这个顺序，中间有空格。
-#
-#输入样本 1
-#4 3
-#1 2
-#2 3
-#2 4
-#2 10
-#1 100
-#3 1
-#
-#样本输出1
-#100 110 111 110
-#这个输入中的树是这样的：
-#每个操作都会改变顶点上的计数器的值，如下所示：
-#操作1：将以顶点2为根的子树中的每个顶点的计数器增加10，即顶点2、3、4。现在顶点1、2、3、4上的计数器的值分别为0、10、10、10。
-#操作2：将根植于顶点1的子树上的每个顶点的计数器增加100，即顶点1、2、3、4。现在顶点1、2、3、4的计数器的值分别为100、110、110、110。
-#操作3：将根植于顶点3的子树上的每个顶点的计数器增加1，即顶点3。现在顶点1、2、3、4上的计数器的值分别为100、110、111、110。
-#
-#输入样本 2
-#6 2
-#1 2
-#1 3
-#2 4
-#3 6
-#2 5
-#1 10
-#1 10
-#
-#样本输出2
-#20 20 20 20 20 20
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def cal_tree():
+    n,q = map(int,input().split())
+    tree = {}
+    for i in range(n-1):
+        a,b = map(int,input().split())
+        if a in tree:
+            tree[a].append(b)
+        else:
+            tree[a] = [b]
+    #print(tree)
+    #print(tree[1][
+
+=======
+Suggestion 2
+
+def solve():
+    N, Q = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N-1)]
+    B = [list(map(int, input().split())) for _ in range(Q)]
+    C = [0] * N
+    for b in B:
+        C[b[0]-1] += b[1]
+    for a in A:
+        C[a[1]-1] += C[a[0]-1]
+    print(*C)
+
+=======
+Suggestion 3
+
+def dfs(v, p, d):
+    global dst
+    dst[v] += d
+    for i in range(len(g[v])):
+        if g[v][i] == p:
+            continue
+        dfs(g[v][i], v, d)
+
+n, q = map(int, input().split())
+g = [[] for i in range(n)]
+for i in range(n - 1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    g[a].append(b)
+    g[b].append(a)
+dst = [0] * n
+for i in range(q):
+    p, x = map(int, input().split())
+    p -= 1
+    dfs(p, -1, x)
+print(*dst)
+
+=======
+Suggestion 4
+
+def dfs(now, pre):
+    for i in range(len(tree[now])):
+        if tree[now][i] == pre: continue
+        dfs(tree[now][i], now)
+        cnt[now] += cnt[tree[now][i]]
+
+N, Q = map(int, input().split())
+tree = [[] for _ in range(N)]
+cnt = [0 for _ in range(N)]
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    tree[a - 1].append(b - 1)
+    tree[b - 1].append(a - 1)
+for _ in range(Q):
+    p, x = map(int, input().split())
+    cnt[p - 1] += x
+dfs(0, -1)
+print(' '.join(map(str, cnt)))
+
+=======
+Suggestion 5
+
+def main():
+    N, Q = map(int, input().split())
+    # 用邻接表表示树
+    tree = [[] for _ in range(N)]
+    for _ in range(N-1):
+        a, b = map(int, input().split())
+        tree[a-1].append(b-1)
+        tree[b-1].append(a-1)
+    # 用数组表示计数器
+    counter = [0] * N
+    for _ in range(Q):
+        p, x = map(int, input().split())
+        counter[p-1] += x
+    # 递归计算计数器
+    def dfs(tree, counter, node, parent=None):
+        for child in tree[node]:
+            if child != parent:
+                counter[child] += counter[node]
+                dfs(tree, counter, child, node)
+    dfs(tree, counter, 0)
+    print(*counter)
+
+=======
+Suggestion 6
+
+def dfs(v, p):
+    global cnt
+    cnt[v] += cnt[p]
+    for i in g[v]:
+        if i != p:
+            dfs(i, v)
+
+n, q = map(int, input().split())
+g = [[] for _ in range(n)]
+cnt = [0] * n
+for _ in range(n - 1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    g[a].append(b)
+    g[b].append(a)
+for _ in range(q):
+    p, x = map(int, input().split())
+    p -= 1
+    cnt[p] += x
+dfs(0, 0)
+print(*cnt)
+
+=======
+Suggestion 7
+
+def main():
+    pass
+
+=======
+Suggestion 8
+
+def dfs(v):
+    global ans
+    ans[v] += x
+    for i in range(len(child[v])):
+        dfs(child[v][i])
+    return
+
+N,Q = map(int,input().split())
+child = [[] for i in range(N)]
+for i in range(N-1):
+    a,b = map(int,input().split())
+    child[a-1].append(b-1)
+
+ans = [0] * N
+for i in range(Q):
+    p,x = map(int,input().split())
+    dfs(p-1)
+
+print(*ans)
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    px = [list(map(int, input().split())) for _ in range(q)]
+    #print(ab, px)
+    #print(n, q)
+    #print(px[0][0])
+    #print(ab[0][0])
+    #print(ab[0][1])
+    #print(px[0][1])
+    #print(px[1][1])
+    #print(px[2][1])
+    #print(px[3][1])
+    #print(px[4][1])
+    #print(px[5][1])
+    #print(px[6][1])
+    #print(px[7][1])
+    #print(px[8][1])
+    #print(px[9][1])
+
+    ans = [0] * n
+    for i in range(q):
+        ans[px[i][0]-1] += px[i][1]
+
+    #print(ans)
+    for i in range(n-1):
+        if ab[i][0] == 1:
+            ans[ab[i][1]-1] += ans[ab[i][0]-1]
+        else:
+            ans[ab[i][0]-1] += ans[ab[i][1]-1]
+
+    print(*ans)
+
+=======
+Suggestion 10
+
+def dfs(x):
+    global cnt
+    cnt[x] += cnt[par[x]]
+    for y in G[x]:
+        if y != par[x]:
+            dfs(y)
+
+N, Q = map(int, input().split())
+G = [[] for _ in range(N)]
+par = [0]*N
+cnt = [0]*N
+for i in range(N-1):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    G[a].append(b)
+    G[b].append(a)
+for i in range(Q):
+    p, x = map(int, input().split())
+    p -= 1
+    cnt[p] += x
+dfs(0)
+print(*cnt)

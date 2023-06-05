@@ -1,42 +1,53 @@
-#问题陈述
-#给你两个不同的字符串S和T。
-#如果S在词典上比T小，则打印Yes；否则，打印No。
-#什么是词表顺序？
-#简单地说，词表顺序是指单词在字典中的排列顺序。作为一个更正式的定义，下面是确定不同字符串S和T之间词表顺序的算法。
-#下面，让S_i表示S的第i个字符。另外，如果S在词典上比T小，我们将表示该事实为S<T；如果S在词典上比T大，我们将表示该事实为S>T。
-# 对于每个i=1,2,...,L，我们检查S_i和T_i是否相同。
-# 如果有一个i使得S_i≠T_i，那么让j是最小的这样的i，然后，我们比较S_j和T_j。如果S_j按字母顺序早于T_j，我们确定S<T并退出；如果S_j晚于T_j，我们确定S>T并退出。
-#  
-# 如果没有i使S_i≠T_i，我们比较S和T的长度，如果S比T短，我们确定S<T并退出；如果S比T长，我们确定S>T并退出。
-#注意，许多主要的编程语言都将字符串的词法比较作为操作符或标准库中的函数来实现。更多的细节，请参见你的语言的参考资料。
-#
-#限制条件
-#S和T是不同的字符串，每个字符串都由小写英文字母组成，长度在1到10之间（包括10）。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S T
-#
-#輸出
-#如果S比T小，打印Yes；否则，打印No。
-#
-#输入样本1
-#abc atcoder
-#
-#样本输出1
-#Yes
-#abc和atcoder以相同的字符开始，但它们的第二个字符是不同的。由于在字母顺序上b比t早，我们可以看到abc在词法上比atcoder小。
-#
-#输入样本2
-#arc agc
-#
-#样本输出2
-#No
-#
-#样本输入3
-#a aa
-#
-#样品输出3
-#Yes
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S, T = input().split()
+    if S < T:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 2
+
+def main():
+    s,t = input().split()
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 3
+
+def main():
+    S,T = input().split()
+    if S < T:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 4
+
+def main():
+    s,t = input().split()
+    if s < t:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def solve():
+    s, t = input().split()
+    if s < t:
+        print("Yes")
+    else:
+        print("No")
+
+solve()

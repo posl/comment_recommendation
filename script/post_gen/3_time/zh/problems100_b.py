@@ -1,41 +1,180 @@
-#问题陈述
-#今天，值得纪念的AtCoder初学者竞赛100举行。在这个场合，高桥想给Ringo一个整数。
-#由于比赛的名称是AtCoder初级比赛100，如果给他一个能被100整除D次的正整数，Ringo会很高兴。
-#请找出能使Ringo高兴的第N个最小的整数。
-#
-#限制条件
-#D是0，1或2。
-#N是1到100（包括）之间的整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#D N
-#
-#输出
-#打印能被100整除D次的第N个最小的整数。
-#
-#输入样本 1
-#0 5
-#
-#样本输出 1
-#5
-#能被100整除0次（即不能被100整除）的整数如下：1, 2, 3, 4, 5, 6, 7, ...
-#因此，能让Ringo高兴的第5个最小的整数是5。
-#
-#输入样本 2
-#1 11
-#
-#样本输出2
-#1100
-#能被100整除一次的整数有以下几种：100, 200, 300, 400, 500, 600, 700, 800, 900, 1 000, 1 100, ...
-#因此，我们要找的整数是1 100。
-#
-#输入样本 3
-#2 85
-#
-#样本输出 3
-#850000
-#能被100整除两次的整数如下：10 000, 20 000, 30 000, ...
-#因此，我们要找的整数是850 000。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem100_b():
+    D,N = map(int,input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(101*100)
+        else:
+            print(N*100)
+    elif D == 2:
+        if N == 100:
+            print(101*100*100)
+        else:
+            print(N*100*100)
+    else:
+        pass
+
+=======
+Suggestion 2
+
+def main():
+    D, N = map(int, input().split())
+
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    else:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+=======
+Suggestion 3
+
+def problems100_b():
+    a = input().split()
+    d = int(a[0])
+    n = int(a[1])
+    if d == 0:
+        if n == 100:
+            print(101)
+        else:
+            print(n)
+    elif d == 1:
+        if n == 100:
+            print(10100)
+        else:
+            print(100*n)
+    else:
+        if n == 100:
+            print(1010000)
+        else:
+            print(10000*n)
+
+problems100_b()
+
+=======
+Suggestion 4
+
+def problem100_b():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    else:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+=======
+Suggestion 5
+
+def problems100_b():
+    d,n = map(int,input().split())
+    if n == 100:
+        n = 101
+    if d == 0:
+        print(n)
+    elif d == 1:
+        print(n*100)
+    else:
+        print(n*10000)
+
+=======
+Suggestion 6
+
+def main():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N * 100)
+    elif D == 2:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N * 10000)
+
+=======
+Suggestion 7
+
+def problem100_b(D,N):
+    if D == 0:
+        if N == 100:
+            return 101
+        else:
+            return 100**D * N
+    elif D == 1:
+        if N == 100:
+            return 10001
+        else:
+            return 100**D * N
+    else:
+        if N == 100:
+            return 1000001
+        else:
+            return 100**D * N
+
+=======
+Suggestion 8
+
+def main():
+    d,n = map(int,input().split())
+    if d == 0:
+        print(n if n != 100 else 101)
+    elif d == 1:
+        print(n * 100 if n != 100 else 10100)
+    else:
+        print(n * 10000 if n != 100 else 1010000)
+
+=======
+Suggestion 9
+
+def problems100_b():
+    D,N = map(int,input().split())
+    if D == 0:
+        if N == 100:
+            print(101)
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(10100)
+        else:
+            print(N*100)
+    elif D == 2:
+        if N == 100:
+            print(1010000)
+        else:
+            print(N*10000)

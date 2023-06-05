@@ -1,70 +1,133 @@
-#问题陈述
-#我们有N个球。第i个球上写有一个整数A_i。
-#对于每一个k=1，2，...，N，解决以下问题并打印答案。  
-#从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#輸出
-#对于每一个k=1,2,...,N，打印一行，包含答案。
-#
-#输入样本 1
-#5
-#1 1 2 1 2
-#
-#样本输出 1
-#2
-#2
-#3
-#2
-#3
-#以k=1的情况为例，考虑一下。剩下的球上写的数字是1，2，1，2。
-#从这些球中，有两种方法可以选择两个不同的球，使它们上面写的整数相等。
-#因此，k=1的答案是2。
-#
-#输入样本2
-#4
-#1 2 3 4
-#
-#样本输出2
-#0
-#0
-#0
-#0
-#没有两个球上写的数字相等。
-#
-#输入样本 3
-#5
-#3 3 3 3 3
-#
-#样本输出 3
-#6
-#6
-#6
-#6
-#6
-#任何两个球上都写有相等的数字。
-#
-#输入样本 4
-#8
-#1 2 1 4 2 1 4 1
-#
-#样本输出 4
-#5
-#7
-#5
-#7
-#7
-#5
-#7
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems159_d():
+    return None
+
+=======
+Suggestion 2
+
+def get_sum(n, k):
+    return int(n * (n - 1) / 2)
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = {}
+    for i in range(n):
+        if a[i] not in d:
+            d[a[i]] = 1
+        else:
+            d[a[i]] += 1
+    ans = 0
+    for i in d.values():
+        ans += i * (i - 1) // 2
+    for i in range(n):
+        print(ans - d[a[i]] + 1)
+
+=======
+Suggestion 5
+
+def solve(n, a):
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+    # 从N-1个球中选择两个不同的球（不考虑顺序），而不是第k个球，以使写在它们上面的整数相等的方法的数量。
+
+    # 从N-1个球中选择两个不同的球（
+
+=======
+Suggestion 6
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = [0]*N
+    for i in range(N):
+        ans[i] = A.count(A[i])
+    for i in range(N):
+        print(ans[i]-1)
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (n + 1)
+    for i in range(n):
+        b[a[i]] += 1
+    ans = 0
+    for i in range(1, n + 1):
+        ans += b[i] * (b[i] - 1) // 2
+    for i in range(n):
+        print(ans - b[a[i]] + 1)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [0] * (n + 1)
+    for i in a:
+        b[i] += 1
+    ans = 0
+    for i in range(1, n + 1):
+        ans += b[i] * (b[i] - 1) // 2
+    for i in a:
+        print(ans - (b[i] - 1))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    num = {}
+    for i in range(n):
+        if a[i] not in num:
+            num[a[i]] = 1
+        else:
+            num[a[i]] += 1
+    total = 0
+    for i in num:
+        total += num[i] * (num[i] - 1) // 2
+    for i in range(n):
+        print(total - num[a[i]] + 1)
+
+=======
+Suggestion 10
+
+def solve(n, a):
+    c = [0] * (n + 1)
+    for i in range(n):
+        c[a[i]] += 1
+    ans = 0
+    for i in range(n):
+        ans += c[i] * (c[i] - 1) // 2
+    for i in range(n):
+        print(ans - c[a[i]] + 1)
+
+n = int(input())
+a = list(map(int, input().split()))
+solve(n, a)

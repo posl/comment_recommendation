@@ -1,37 +1,142 @@
-#问题陈述
-#给你正整数N和M。
-#有多少个由正整数组成的长度为N的序列a满足a_1 × a_2 × ...？× a_N = M?找出10^9+7的模数。
-#这里，当存在一些i，使得a_i'≠a_i''时，两个序列a'和a''被视为不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#
-#输出
-#打印由满足条件的正整数组成的序列的数量，以10^9+7为模数。
-#
-#输入样本 1
-#2 6
-#
-#输出示例 1
-#4
-#有四个序列满足条件：{a_1, a_2}={1, 6}, {2, 3}, {3, 2}和{6, 1}。
-#
-#输入样本2
-#3 12
-#
-#样本输出2
-#18
-#
-#样本输入3
-#100000 1000000000
-#
-#样本输出3
-#957870001
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem110_d():
+    pass
+
+=======
+Suggestion 2
+
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+
+=======
+Suggestion 3
+
+def prime_factorization(n):
+    prime_factors = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while n % i == 0:
+            prime_factors.append(i)
+            n //= i
+    if n > 1:
+        prime_factors.append(n)
+    return prime_factors
+
+=======
+Suggestion 4
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+    divisors.sort()
+    return divisors
+
+=======
+Suggestion 5
+
+def get_divisors(n):
+    divisors = []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+        i += 1
+    return divisors
+
+=======
+Suggestion 6
+
+def factorization(n):
+    arr = []
+    temp = n
+    for i in range(2, int(-(-n**0.5//1))+1):
+        if temp%i==0:
+            cnt=0
+            while temp%i==0:
+                cnt+=1
+                temp //= i
+            arr.append([i, cnt])
+    if temp!=1:
+        arr.append([temp, 1])
+    if arr==[]:
+        arr.append([n, 1])
+    return arr
+
+mod=10**9+7
+n,m=map(int,input().split())
+arr=factorization(m)
+ans=1
+for i in range(len(arr)):
+    ans*=arr[i][1]+n-1
+    ans%=mod
+print(ans)
+
+=======
+Suggestion 7
+
+def divisors(n):
+    divisors = []
+    for i in range(1, int(n**0.5)+1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n//i)
+
+    divisors.sort()
+    return divisors
+
+n, m = map(int, input().split())
+mod = 10**9 + 7
+ans = 1
+for x in divisors(m):
+    if x < n:
+        continue
+    y = m // x
+    if y < n:
+        continue
+    if y > x:
+        continue
+    if x == y:
+        ans *= 1
+    else:
+        ans *= 2
+    ans %= mod
+print(ans)
+
+=======
+Suggestion 8
+
+def getDivisor(n):
+    divisors = []
+    for i in range(1,n+1):
+        if n%i == 0:
+            divisors.append(i)
+    return divisors
+
+=======
+Suggestion 9
+
+def solve():
+    pass

@@ -1,46 +1,187 @@
-#问题陈述
-#我们有一个袋子，里面有A金币，B银币，C铜币。
-#直到袋子里有100个相同颜色的硬币，我们将重复以下操作：
-#操作：随机从袋子里拿出一枚硬币。(每枚硬币被选中的概率相同。)然后，将两枚与取出的硬币相同的硬币放回袋中。
-#求该操作次数的期望值。
-#
-#限制条件
-#0 ≦ A,B,C ≦ 99
-#A+B+C ≧ 1
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#A B C
-#
-#輸出
-#打印该操作次数的预期值。如果你的输出与正确值的绝对或相对误差最多为10^{-6}，你的输出将被接受。
-#
-#输入样本 1
-#99 99 99
-#
-#样本输出1
-#1.000000000
-#无论我们在第一次操作中拿出什么硬币，袋子里都会有100个该种硬币。
-#
-#样本输入2
-#98 99 99
-#
-#样本输出2
-#1.331081081
-#只有在第一次操作中拿出一枚金币，我们才会进行第二次操作。
-#因此，预期的操作次数是2×（（98）/（98+99+99））+1×（（99）/（98+99+99））+1×（（99）/（98+99+99））=1.331081081...
-#
-#样本输入3
-#0 0 1
-#
-#样本输出3
-#99.000000000
-#每次操作都会增加一枚铜币。
-#
-#样本输入4
-#31 41 59
-#
-#输出样本4
-#91.835008202
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_expectation(a, b, c):
+    if a + b + c == 0:
+        return 0
+    return (a * get_expectation(a - 1, b, c) + b * get_expectation(a + 1, b - 1, c) + c * get_expectation(a, b + 1, c - 1)) / (a + b + c) + 1
+
+=======
+Suggestion 2
+
+def main():
+    a, b, c = map(int, input().split())
+    print((a * (a + b + c) - a * a) / (a + b + c - a))
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def solve(a,b,c):
+    if a==0 and b==0 and c==0:
+        return 0
+    return a/(a+b+c)*(solve(a+1,b-1,c)+1)+b/(a+b+c)*(solve(a,b+1,c-1)+1)+c/(a+b+c)*(solve(a,b,c+1)+1)
+
+a,b,c=map(int,input().split())
+print(solve(a,b,c))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b == c:
+        print(1)
+    else:
+        print((a*b*c)/(a*b+b*c+c*a))
+
+=======
+Suggestion 6
+
+def get_expectation(a, b, c):
+    a = float(a)
+    b = float(b)
+    c = float(c)
+    total = a + b + c
+    if a == 0:
+        return total
+    if b == 0:
+        return total
+    if c == 0:
+        return total
+    if a == 1:
+        return total
+    if b == 1:
+        return total
+    if c == 1:
+        return total
+    if a == 2:
+        return total
+    if b == 2:
+        return total
+    if c == 2:
+        return total
+    if a == 3:
+        return total
+    if b == 3:
+        return total
+    if c == 3:
+        return total
+    if a == 4:
+        return total
+    if b == 4:
+        return total
+    if c == 4:
+        return total
+    if a == 5:
+        return total
+    if b == 5:
+        return total
+    if c == 5:
+        return total
+    if a == 6:
+        return total
+    if b == 6:
+        return total
+    if c == 6:
+        return total
+    if a == 7:
+        return total
+    if b == 7:
+        return total
+    if c == 7:
+        return total
+    if a == 8:
+        return total
+    if b == 8:
+        return total
+    if c == 8:
+        return total
+    if a == 9:
+        return total
+    if b == 9:
+        return total
+    if c == 9:
+        return total
+    if a == 10:
+        return total
+    if b == 10:
+        return total
+    if c == 10:
+        return total
+    if a == 11:
+        return total
+    if b == 11:
+        return total
+    if c == 11:
+        return total
+    if a == 12:
+        return total
+    if b == 12:
+        return total
+    if c == 12:
+        return total
+    if a == 13:
+        return total
+    if b == 13:
+        return total
+    if c == 13:
+        return total
+    if
+
+=======
+Suggestion 7
+
+def solve():
+    A, B, C = map(int, input().split())
+    print((A*B + B*C + C*A)/(A+B+C))
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    a, b, c = map(int, input().split())
+    # a, b, c = 99, 99, 99
+    # a, b, c = 98, 99, 99
+    # a, b, c = 0, 0, 1
+    # a, b, c = 31, 41, 59
+    # a, b, c = 0, 0, 0
+    # a, b, c = 1, 1, 1
+    # a, b, c = 1, 0, 0
+    # a, b, c = 0, 1, 0
+    # a, b, c = 0, 0, 1
+    # a, b, c = 1, 0, 1
+    # a, b, c = 1, 1, 0
+    # a, b, c = 0, 1, 1
+    # a, b, c = 1, 1, 2
+    # a, b, c = 1, 2, 1
+    # a, b, c = 2, 1, 1
+    # a, b, c = 1, 2, 2
+    # a, b, c = 2, 1, 2
+    # a, b, c = 2, 2, 1
+    # a, b, c = 2, 2, 2
+    # a, b, c = 2, 2, 3
+    # a, b, c = 2, 3, 2
+    # a, b, c = 3, 2, 2
+    # a, b, c = 2, 3, 3
+    # a, b, c = 3, 2, 3
+    # a, b, c = 3, 3, 2
+    # a, b, c = 3, 3, 3
+    # a, b, c = 3, 3, 4
+    # a, b, c = 3, 4, 3
+    # a, b, c =
+
+=======
+Suggestion 9
+
+def main():
+    a,b,c = map(int,input().split())
+    print((a*b*b+b*a*b)/(a*b+b*c+c*a))

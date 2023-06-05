@@ -1,53 +1,229 @@
-#问题陈述
-#高桥买了一个台钟。
-#该钟显示的时间如图1所示，在24小时制的AB：CD。
-#例如，图2中的时钟显示7:58。
-#时间的格式被正式描述如下。
-#假设当前时间是24小时制中h的m分钟。  这里，24小时制用0到23（包括）之间的整数表示小时，用0到59（包括）之间的整数表示分钟。
-#假设A是h的十位数，B是h的一位数，C是m的十位数，D是m的一位数（这里，如果h只有一位数，我们认为它有一个前导零；同样适用于m）。
-#然后，时钟的左上方显示A，左下方显示B，右上方显示C，右下方显示D。
-#高桥决定，如果一个时间满足以下条件，就称之为混乱时间：
-#将时钟的右上角和左下角的数字对调后，它仍然读出24小时制的有效时间。
-#例如，图3中的时钟显示为20:13。  将右上角和左下角的数字对调后，显示为21:03。  因此，20:13是一个混乱的时间。
-#现在时钟显示的是H:M。
-#在24小时制中找出下一个令人困惑的时间（包括现在）。
-#
-#限制条件
-#0 ≦ H ≦ 23
-#0 ≦ M ≦ 59
-#H和M是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#H M
-#
-#輸出
-#让h:m成为答案，其中h和m必须满足0≦h≦23和0≦m≦59。
-#以下列格式打印h和m：  
-#h m
-#你的答案被认为是正确的，即使h包含一个前导零来表示它是一个2位数的整数；这同样适用于m。
-#
-#输入样本 1
-#1 23
-#
-#输出样本 1
-#1 23
-#1:23是一个令人困惑的时间，因为将时钟的右上角和左下角的数字对调后，它的读数是2:13。
-#因此，答案是1:23。
-#你的答案被认为是正确的，即使你打印的01 23有一个前导零。
-#
-#输入样本2
-#19 57
-#
-#样本输出2
-#20 0
-#19:57之后的下一个混乱的时间是20:00。
-#
-#样本输入3
-#20 40
-#
-#样本输出3
-#21 0
-#请注意，在24小时制中，24:00是一个无效的记号。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    #读取输入
+    H, M = map(int, input().split())
+    #print(H, M)
+    #计算下一个时间
+    if M < 59:
+        M = M + 1
+    elif M == 59:
+        M = 0
+        if H < 23:
+            H = H + 1
+        elif H == 23:
+            H = 0
+    #输出结果
+    print('{0:02d} {1:02d}'.format(H, M))
+
+=======
+Suggestion 2
+
+def main():
+    #数据输入
+    h,m = map(int,input().split())
+    #数据处理
+    if m < 10:
+        m = "0" + str(m)
+    else:
+        m = str(m)
+    if h < 10:
+        h = "0" + str(h)
+    else:
+        h = str(h)
+    #数据输出
+    if h == "00":
+        if m == "00":
+            print("01:01")
+        else:
+            print("00:"+m)
+    elif h == "01":
+        if m == "01":
+            print("01:10")
+        else:
+            print("01:"+m)
+    elif h == "02":
+        if m == "02":
+            print("02:20")
+        else:
+            print("02:"+m)
+    elif h == "03":
+        if m == "03":
+            print("03:30")
+        else:
+            print("03:"+m)
+    elif h == "04":
+        if m == "04":
+            print("04:40")
+        else:
+            print("04:"+m)
+    elif h == "05":
+        if m == "05":
+            print("05:50")
+        else:
+            print("05:"+m)
+    elif h == "06":
+        if m == "06":
+            print("06:06")
+        else:
+            print("06:"+m)
+    elif h == "07":
+        if m == "07":
+            print("07:07")
+        else:
+            print("07:"+m)
+    elif h == "08":
+        if m == "08":
+            print("08:08")
+        else:
+            print("08:"+m)
+    elif h == "09":
+        if m == "09":
+            print("09:09")
+        else:
+            print("09:"+m)
+    elif h == "10":
+        if m == "10":
+            print("10:01")
+        else:
+            print("10:"+m)
+    elif h == "11":
+        if m == "11":
+            print("11:11")
+        else:
+            print("11:"+m)
+    elif h == "12":
+        if m == "12":
+            print("12:21")
+        else:
+            print("12:"+m)
+    elif h == "13":
+        if m == "13":
+            print("13
+
+=======
+Suggestion 3
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h//10 == m%10 and h%10 == m//10:
+            print(h, m)
+            break
+
+=======
+Suggestion 4
+
+def isConfuseTime(h,m):
+    if h==0:
+        h=24
+    if h<10:
+        h=str(h)
+        h='0'+h
+    if m<10:
+        m=str(m)
+        m='0'+m
+    if h[1]==m[0] and h[0]==m[1]:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 5
+
+def get_next_time(time):
+    h = time[0]
+    m = time[1]
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+            if h == 24:
+                h = 0
+        if is_confused_time([h, m]):
+            return [h, m]
+
+=======
+Suggestion 6
+
+def main():
+    h,m = map(int,input().split())
+    while True:
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+        if h == 24:
+            h = 0
+        if h//10 == m%10 and h%10 == m//10:
+            print("%d:%d"%(h,m))
+            break
+
+=======
+Suggestion 7
+
+def next_time(h,m):
+    while True:
+        if m<59:
+            m+=1
+        elif m==59:
+            m=0
+            if h<23:
+                h+=1
+            elif h==23:
+                h=0
+        if h//10==m%10 and h%10==m//10:
+            return h,m
+        else:
+            continue
+
+=======
+Suggestion 8
+
+def is_valid_time(h,m):
+    if h < 0 or h > 23 or m < 0 or m > 59:
+        return False
+    else:
+        return True
+
+=======
+Suggestion 9
+
+def main():
+    h, m = map(int, input().split())
+    while True:
+        m += 1
+        if m == 60:
+            h += 1
+            m = 0
+        if h == 24:
+            h = 0
+        if h // 10 == m % 10 and h % 10 == m // 10:
+            break
+    print(h, m)
+
+=======
+Suggestion 10
+
+def main():
+    h,m=map(int,input().split())
+    while True:
+        m+=1
+        if m==60:
+            h+=1
+            m=0
+        if h==24:
+            h=0
+        if h//10==m%10 and h%10==m//10:
+            print("%d:%d"%(h,m))
+            break

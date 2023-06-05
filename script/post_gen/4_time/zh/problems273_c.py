@@ -1,65 +1,199 @@
-#问题陈述
-#给你一个长度为N的序列A=（A_1, A_2, ..., A_N）。
-#对于每个K = 0, 1, 2, ..., N-1，解决以下问题。
-#找出介于1和N之间的整数i的数目（包括在内），以便：
-#A正好包含大于A_i的K个不同的整数。  
-#
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N行。
-#对于i=1，2，...，N，第i行应该包含K=i-1的答案。
-#
-#输入样本 1
-#6
-#2 7 1 8 2 8
-#
-#样本输出 1
-#2
-#1
-#2
-#1
-#0
-#0
-#例如，我们将找到K=2的答案。
-#关于A_1=2，A包含两个大于A_1的整数：7和8。
-#关于A_2=7，A包含一个大于A_2的整数：8。
-#关于A_3=1，A包含3个大于A_3的不同的整数：2，7，和8。
-#关于A_4=8，A包含比A_4大的0个不同的整数（不存在这样的整数）。
-#关于A_5=2，A包含两个大于A_5的整数：7和8。
-#关于A_6=8，A包含0个大于A_6的不同整数（没有这样的整数）。
-#因此，有两个i，i=1和i=5，这样A就正好包含了K=2个大于A_i的不同整数。  因此，K=2的答案是2。
-#
-#输入样本 2
-#1
-#1
-#
-#样品输出2
-#1
-#
-#样品输入3
-#10
-#979861204 57882493 979861204 447672230 644706927 710511029 763027379 710511029 447672230 136397527
-#
-#样本输出3
-#2
-#1
-#2
-#1
-#2
-#1
-#1
-#0
-#0
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    result = [0] * N
+    for i in range(N):
+        for j in range(i + 1, N):
+            if A[i] < A[j]:
+                result[i] += 1
+    for i in range(N):
+        print(result[i])
+
+solve()
+
+=======
+Suggestion 2
+
+def problems273_c():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
+    ans = [0] * n
+    for i in range(n-1, -1, -1):
+        if a[i] != a[i+1]:
+            ans[i] = ans[i+1] + 1
+        else:
+            ans[i] = ans[i+1]
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    #print(A)
+    count = [0 for _ in range(N)]
+    for i in range(N):
+        for j in range(N-1):
+            if A[j] > A[i]:
+                count[i] += 1
+    #print(count)
+    for i in range(N):
+        print(count.count(i))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a = sorted(a)
+    a.append(0)
+    count = 0
+    ans = [0] * n
+    for i in range(n):
+        if a[i] != a[i + 1]:
+            ans[count] = i + 1
+            count += 1
+    for i in range(n):
+        print(ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    #print(n)
+    #print(a)
+    a.sort()
+    #print(a)
+    #print(a[0])
+    #print(a[n-1])
+    #print(a[n-1] - a[0])
+    #print(a[n-1] - a[0] + 1)
+    #print(len(a))
+    #print(len(set(a)))
+    #print(set(a))
+    #print(sorted(list(set(a))))
+    #print(sorted(list(set(a)))[1])
+    #print(sorted(list(set(a)))[2])
+    #print(sorted(list(set(a)))[3])
+    #print(sorted(list(set(a)))[4])
+    #print(sorted(list(set(a)))[5])
+    #print(sorted(list(set(a)))[6])
+    #print(sorted(list(set(a)))[7])
+    #print(sorted(list(set(a)))[8])
+    #print(sorted(list(set(a)))[9])
+    #print(sorted(list(set(a)))[10])
+    #print(sorted(list(set(a)))[11])
+    #print(sorted(list(set(a)))[12])
+    #print(sorted(list(set(a)))[13])
+    #print(sorted(list(set(a)))[14])
+    #print(sorted(list(set(a)))[15])
+    #print(sorted(list(set(a)))[16])
+    #print(sorted(list(set(a)))[17])
+    #print(sorted(list(set(a)))[18])
+    #print(sorted(list(set(a)))[19])
+    #print(sorted(list(set(a)))[20])
+    #print(sorted(list(set(a)))[21])
+    #print(sorted(list(set(a)))[22])
+    #print(sorted(list(set(a)))[23])
+    #print(sorted(list(set(a)))[24])
+    #print(sorted(list(set(a)))[25])
+    #print(sorted(list(set(a)))[26])
+    #print(sorted(list(set(a)))[27])
+    #print(sorted(list(set(a)))[28])
+    #print(sorted(list(set(a)))[29])
+    #print(sorted(list(set(a)))[30])
+    #print(sorted(list(set(a)))[31])
+    #print(sorted(list(set(a)))[32])
+    #print(sorted(list(set(a)))[33])
+    #print(sorted(list(set(a)))[34])
+    #print(sorted(list(set(a)))[35])
+    #print(sorted(list
+
+=======
+Suggestion 7
+
+def solve(N, A):
+    A.sort()
+    ans = [0] * N
+    for i in range(N):
+        if i > 0 and A[i] == A[i-1]:
+            ans[i] = ans[i-1]
+            continue
+        l = 0
+        r = N
+        while r - l > 1:
+            m = (l + r) // 2
+            if A[m] > A[i]:
+                r = m
+            else:
+                l = m
+        ans[i] = l
+    return ans
+
+N = int(input())
+A = list(map(int, input().split()))
+ans = solve(N, A)
+for i in range(N):
+    print(ans[i])
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    a.append(0)
+    ans = [0] * n
+    cnt = 1
+    for i in range(n):
+        if a[i] != a[i + 1]:
+            for j in range(cnt, i + 1):
+                ans[j] = cnt - 1
+            cnt = i + 2
+    print(*ans, sep='\n')
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = [0] * n
+    for i in range(n):
+        if i == 0:
+            ans[i] = 1
+        else:
+            if a[i] == a[i-1]:
+                ans[i] = ans[i-1]
+            else:
+                ans[i] = ans[i-1] + 1
+
+    for i in range(n):
+        print(ans[ans[i]-1])

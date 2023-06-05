@@ -1,68 +1,175 @@
-#问题陈述
-#2N个编号为1，2，...，2N的人参加一个舞会。
-#他们将分组为N对，并进行舞蹈。
-#如果i号人和j号人配对，其中i号人小于j号人，则该配对的亲密度为A_{i, j}。
-#如果N对人的亲和力为B_1, B_2, ..., B_N，那么球的总乐趣就是它们的比特XOR：B_1⊕B_2⊕...⊕B_N。
-#当2N个人可以自由组合成N对时，打印出球的最大可能的总乐趣。
-#
-#限制条件
-#1 ≦ N ≦ 8
-#0 ≦ A_{i，j}< 2^{30}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_{1, 2} A_{1, 3} A_{1, 4} ...A_{1, 2N}
-#A_{2, 3} A_{2, 4} ...A_{2, 2N}
-#A_{3, 4} ...A_{3, 2N}
-#.
-#.
-#.
-#A_{2N-1, 2N}
-#
-#输出
-#打印该球的最大可能的总乐趣。
-#
-#输入样本 1
-#2
-#4 0 1
-#5 3
-#2
-#
-#样本输出1
-#6
-#让{i, j}表示一对人i和人j。
-#四个人有三种方式可以分组为两对，如下所示。
-#分组为{1，2}，{3，4}。
-#这里的球的总乐趣是A_{1，2}⊕A_{3，4}=4⊕2=6。
-#分组为{1，3}，{2，4}。
-#这里的球的总乐趣是A_{1, 3} ⊕ A_{2, 4} = 0 ⊕ 3 = 3。
-#分组为{1，4}，{2，3}。
-#这里的球的总乐趣是A_{1, 4} ⊕ A_{2, 3} = 1 ⊕ 5 = 4。
-#因此，球的最大可能的总乐趣是6。
-#
-#输入样本2
-#1
-#5
-#
-#采样输出2
-#5
-#将只有一对人1和人2，其中球的总乐趣是5。
-#
-#样本输入3
-#5
-#900606388 317329110 665451442 1045743214 260775845 726039763 57365372 741277060 944347467
-#369646735 642395945 599952146 86221147 523579390 591944369 911198494 695097136
-#138172503 571268336 111747377 595746631 934427285 840101927 757856472
-#655483844 580613112 445614713 607825444 252585196 725229185
-#827291247 105489451 58628521 1032791417 152042357
-#919691140 703307785 100772330 370415195
-#666350287 691977663 987658020
-#1039679956 218233643
-#70938785
-#
-#样本输出3
-#1073289207
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_xor(n, a):
+    dp = [[0 for i in range(1 << n)] for j in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(1 << n):
+            for k in range(1 << n):
+                if (j >> i & 1) == 0 and (k >> i & 1) == 0:
+                    dp[i][j] = max(dp[i][j], dp[i + 1][j] + dp[i + 1][k] + a[i][k])
+
+    return dp[0][0]
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(list(map(int, input().split())))
+    dp = [[0] * (1 << N) for i in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            dp[i][1 << j] = A[i][j]
+    for i in range(1, 1 << N):
+        for j in range(N):
+            if not (i & (1 << j)):
+                continue
+            for k in range(N):
+                if i & (1 << k):
+                    continue
+                dp[k][i | (1 << k)] = max(dp[k][i | (1 << k)], dp[j][i] + A[k][j])
+    print(dp[N - 1][(1 << N) - 1])
+main()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for i in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            ans ^= A[i][j]
+    print(ans)
+
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append([int(x) for x in input().split()])
+    print(a)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    ans = 0
+
+    for s in range(1 << n):
+        ok = True
+        for i in range(n):
+            if (s & (1 << i)) == 0:
+                continue
+            for j in range(i + 1, n):
+                if (s & (1 << j)) == 0:
+                    continue
+                if a[i][j] == 0:
+                    ok = False
+        if not ok:
+            continue
+        cur = 0
+        for i in range(n):
+            if (s & (1 << i)) == 0:
+                continue
+            for j in range(i + 1, n):
+                if (s & (1 << j)) == 0:
+                    continue
+                cur ^= a[i][j]
+        ans = max(ans, cur)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [[int(i) for i in input().split()] for _ in range(n)]
+    dp = [0] * (1 << n)
+    for s in range(1 << n):
+        x = bin(s).count('1')
+        for i in range(n):
+            if s >> i & 1:
+                for j in range(i + 1, n):
+                    if s >> j & 1:
+                        dp[s] += a[x - 1][i + j - x]
+    for s in range(1, 1 << n):
+        for t in range(s):
+            if s & t == t:
+                dp[s] = max(dp[s], dp[t] + dp[s ^ t])
+    print(dp[(1 << n) - 1])
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(list(map(int, input().split())))
+    print(a)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    dp = [[0] * N for _ in range(1 << N)]
+    for S in range(1 << N):
+        for i in range(N):
+            if (S >> i) & 1 == 0:
+                continue
+            for j in range(i + 1, N):
+                if (S >> j) & 1 == 0:
+                    continue
+                dp[S][i] = max(dp[S][i], dp[S - (1 << i)][j] + A[j][i])
+    print(max(dp[-1]))
+
+=======
+Suggestion 9
+
+def xor_sum(arr):
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        return arr[0] ^ xor_sum(arr[1:])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append([int(x) for x in input().split()])
+    bit = [0] * (N+1)
+    for i in range(N):
+        for j in range(i+1, N):
+            bit[i+1] ^= A[i][j]
+    dp = [[0] * (1<<N) for _ in range(N+1)]
+    for i in range(N):
+        for j in range(1<<i):
+            for k in range(i+1, N):
+                if j & (1<<k):
+                    dp[i+1][j] ^= A[i][k]
+    ans = 0
+    for i in range(N):
+        for j in range(1<<N):
+            if (j & (1<<i)) == 0:
+                ans = max(ans, bit[i+1] ^ dp[i+1][j])
+    print(ans)

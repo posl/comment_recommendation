@@ -1,50 +1,85 @@
-#问题陈述
-#你抽了N次彩票。在第i次抽奖中，你得到了一个由字符串S_i代表的物品。
-#你得到了多少种物品？
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#S_i由小写英文字母组成，长度在1到10之间（包括10）。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#N
-#S_1
-#:
-#S_N
-#
-#输出
-#打印你得到的物品种类的数量。
-#
-#输入样本 1
-#3
-#苹果
-#橙子
-#苹果
-#
-#样本输出1
-#2
-#你有两种物品：苹果和橙子。
-#
-#样本输入2
-#5
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#葡萄
-#
-#样本输出2
-#1
-#
-#样品输入3
-#4
-#aaaa
-#a
-#aaa
-#aa
-#
-#样本输出3
-#4
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    print(len(set(S)))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    S = []
+    for i in range(N):
+        S.append(input())
+    S.sort()
+    cnt = 1
+    for i in range(N-1):
+        if S[i] != S[i+1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    S = [input() for _ in range(N)]
+    print(len(set(S)))
+solve()
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    s = []
+    for i in range(n):
+        s.append(input())
+    print(len(set(s)))
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    items = []
+    for i in range(n):
+        items.append(input())
+    print(len(set(items)))
+
+=======
+Suggestion 6
+
+def solve():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    print(len(s))
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    s = set()
+    for i in range(N):
+        s.add(input())
+    print(len(s))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    s = set()
+    for i in range(n):
+        s.add(input())
+    print(len(s))

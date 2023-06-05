@@ -1,41 +1,98 @@
-#问题陈述
-#高桥有一个水瓶，形状像一个长方形的棱柱，其底面是边长为a[cm]的正方形，高为b[cm]（瓶子的厚度可以忽略）。
-#我们将把x[cm]^3的水倒入瓶中，并逐渐将瓶子向底座的一个侧面倾斜。
-#水什么时候会溢出来？更正式地说，请找出我们能使瓶子倾斜而不溢出任何水的最大角度。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ a ≦ 100
-#1 ≦ b ≦ 100
-#1 ≦ x ≦ a^2b
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#a b x
-#
-#輸出
-#打印我们可以倾斜瓶子而不溢出任何水的最大角度，单位是度。
-#当与判断的输出的绝对或相对误差最多为10^{-6}时，你的输出将被判定为正确。
-#
-#输入样本 1
-#2 2 4
-#
-#样本输出1
-#45.0000000000
-#这个瓶子有一个立方体的形状，它是半满的。当我们把瓶子倾斜超过45度时，水就会溢出来。
-#
-#样本输入2
-#12 21 10
-#
-#样本输出2
-#89.7834636934
-#这个瓶子几乎是空的。当水被打翻时，瓶子几乎是水平的。
-#
-#样本输入3
-#3 1 8
-#
-#样本输出3
-#4.2363947991
-#这个瓶子几乎是满的。当水被打翻时，瓶子还是几乎垂直的。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, x = map(int, input().split())
+    if x <= a*a*b/2:
+        print(90 - math.degrees(math.atan(2*x/(a*b*b))))
+    else:
+        print(math.degrees(math.atan(2*(a*a*b-x)/(a*a*a))))
+
+=======
+Suggestion 2
+
+def solve(a,b,x):
+    import math
+    if x >= a*a*b/2:
+        return math.atan(2*(a*a*b-x)/(a*a*a))*180/math.pi
+    else:
+        return math.atan(a*b*b/(2*x))*180/math.pi
+
+=======
+Suggestion 3
+
+def main():
+    a,b,x = map(int, input().split())
+    if x >= a*a*b/2:
+        print(90 - 90*2*(x-a*a*b/2)/(a*a*a))
+    else:
+        print(90*2*x/(a*b*b))
+
+=======
+Suggestion 4
+
+def solve(a, b, x):
+    if x > a * a * b / 2:
+        return 90 - solve(a, b, a * a * b - x)
+    return math.degrees(math.atan(2 * x / a / b / b))
+
+a, b, x = map(int, input().split())
+print(solve(a, b, x))
+
+=======
+Suggestion 5
+
+def solve(a, b, x):
+    if a*a*b/2.0 >= x:
+        return math.atan(a*b*b/2.0/x)/math.pi*180.0
+    else:
+        return math.atan(2.0*(a*a*b-x)/(a*a*a))/math.pi*180.0
+
+=======
+Suggestion 6
+
+def calcAngle(a, b, x):
+    return 90 - math.degrees(math.atan(2 * x / b / a ** 2))
+
+import math
+a, b, x = map(int, input().split())
+
+=======
+Suggestion 7
+
+def main():
+    a,b,x = map(int,input().split())
+    s = x/a
+    if 2*s >= a*b:
+        print(90-2*(a*b-x)/(a**3))
+    else:
+        print(2*s/b)
+
+=======
+Suggestion 8
+
+def solve(a,b,x):
+    return 0
+
+=======
+Suggestion 9
+
+def main():
+    a,b,x = map(int,input().split())
+    if x > a**2*b/2:
+        print(90 - 2*(a**2*b-x)/a**3)
+    else:
+        print(2*x/(a*b**2))
+
+=======
+Suggestion 10
+
+def main():
+    a, b, x = map(int, input().split())
+    if x <= a*a*b/2:
+        ans = 90 - math.degrees(math.atan(2*x/a/b/b))
+    else:
+        ans = math.degrees(math.atan(2*(a*a*b-x)/a/a/a))
+    print(ans)

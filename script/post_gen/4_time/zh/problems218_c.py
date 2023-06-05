@@ -1,93 +1,131 @@
-#问题陈述
-#在一个有正方形单元格的二维网格上，我们有两个图形S和T。
-#S位于一个有N行N列的网格中，由S_{i,j}为#的单元格组成。
-#T位于同一个有N行N列的网格中，由T_{i,j}为#的单元格组成。
-#判断是否有可能通过90度的旋转和平移使S和T完全匹配。
-#
-#约束条件
-#1 ≦ N ≦ 200
-#S和T中的每一个都由#和.组成。
-#S和T中的每一个都至少包含一个#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#S_{1,1}S_{1,2}...S_{1,N}
-#.
-#.
-#.
-#S_{N,1}S_{N,2}...S_{N,N}
-#T_{1,1}T_{1,2}...T_{1,N}
-#.
-#.
-#.
-#T_{N,1}T_{N,2}...T_{N,N}
-#
-#输出
-#如果通过90度的旋转和平移可以完全匹配S和T，则打印Yes，否则打印No。
-#
-#输入样本 1
-#5
-#.....
-#..#..
-#.###.
-#.....
-#.....
-#.....
-#.....
-#....#
-#...##
-#....#
-#
-#样本输出1
-#Yes
-#我们可以通过逆时针旋转90度和平移，将S与T匹配。
-#
-#样本输入2
-#5
-######
-###..#
-##..##
-######
-#.....
-######
-##..##
-###..#
-######
-#.....
-#
-#样本输出2
-#No
-#不可能通过90度的旋转和平移来匹配它们。
-#
-#输入样本3
-#4
-##...
-#..#.
-#..#.
-#....
-##...
-##...
-#..#.
-#....
-#
-#样本输出3
-#Yes
-#S和T中的每一个都可能没有连接。
-#
-#采样输入4
-#4
-##...
-#.##.
-#..#.
-#....
-###..
-##...
-#..#.
-#....
-#
-#样本输出4
-#No
-#注意，不允许只旋转或平移一个图形的一部分；只允许旋转或平移整个图形。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def rotate_90(s):
+    return [[s[y][x] for y in range(len(s))] for x in range(len(s[0])-1, -1, -1)]
+
+=======
+Suggestion 2
+
+def is_equal(s, t):
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if s[i][j] != t[i][j]:
+                return False
+    return True
+
+=======
+Suggestion 3
+
+def rotate90(list):
+    return list[::-1]
+
+=======
+Suggestion 4
+
+def isMatch(S, T):
+    # 逆时针旋转90度，顺时针旋转270度
+    def rotate(S):
+        return list(zip(*S[::-1]))
+    # 水平翻转
+    def reflect(S):
+        return [row[::-1] for row in S]
+    # 判断S和T是否完全匹配
+    def equal(S, T):
+        for i in range(N):
+            for j in range(N):
+                if S[i][j] != T[i][j]:
+                    return False
+        return True
+
+    N = len(S)
+    for _ in range(4):
+        if equal(S, T):
+            return True
+        S = rotate(S)
+    S = reflect(S)
+    if equal(S, T):
+        return True
+    for _ in range(3):
+        if equal(S, T):
+            return True
+        S = rotate(S)
+    return False
+
+N = int(input())
+S = [list(input()) for _ in range(N)]
+T = [list(input()) for _ in range(N)]
+
+=======
+Suggestion 5
+
+def read_input():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s.append(list(input()))
+    for i in range(n):
+        t.append(list(input()))
+    return n, s, t
+
+=======
+Suggestion 6
+
+def rotate(matrix):
+    return list(zip(*matrix[::-1]))
+
+=======
+Suggestion 7
+
+def rotate_90(matrix):
+    n = len(matrix)
+    for i in range(n):
+        for j in range(i):
+            matrix[i][j],matrix[j][i] = matrix[j][i],matrix[i][j]
+    for i in range(n):
+        for j in range(n//2):
+            matrix[i][j],matrix[i][n-1-j] = matrix[i][n-1-j],matrix[i][j]
+    return matrix
+
+n = int(input())
+s = [list(input()) for i in range(n)]
+t = [list(input()) for i in range(n)]
+
+for _ in range(4):
+    s = rotate_90(s)
+    if s == t:
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 8
+
+def check(s, t):
+    for i in range(len(s)):
+        for j in range(len(s[0])):
+            if s[i][j] != t[i][j]:
+                return False
+    return True
+
+=======
+Suggestion 9
+
+def rotate90(A):
+    return list(zip(*A[::-1]))
+
+=======
+Suggestion 10
+
+def read_input():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        S.append(input())
+    for i in range(N):
+        T.append(input())
+    return N, S, T

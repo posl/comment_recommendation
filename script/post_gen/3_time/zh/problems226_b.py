@@ -1,69 +1,139 @@
-#问题陈述
-#给你N个编号为1到N的序列。
-#序列i的长度为L_i，其第j个元素(1 ≦ j ≦ L_i)为a_{i,j}。
-#当L_i = L_j和a_{i,k} = a_{j,k}对于每个k(1 ≦ k ≦ L_i)，序列i和序列j被认为是相同的。
-#在序列1到序列N之间有多少个不同的序列？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ L_i ≦ 2 × 10^5 (1 ≦ i ≦ N)
-#0 ≦ a_{i,j} ≦ 10^{9}(1 ≦ i ≦ N, 1 ≦ j ≦ L_i)
-#序列中的元素总数，sum_{i=1}^N L_i，不超过2×10^5。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#L_1 a_{1,1} a_{1,2} ... a_{1,L_1}
-#L_2 a_{2,1} a_{2,2} ... a_{2,L_2}
-#.
-#.
-#.
-#L_N a_{N,1} a_{N,2} ... a_{N,L_N}
-#
-#输出
-#打印不同序列的数量。
-#
-#输入样本 1
-#4
-#2 1 2
-#2 1 1
-#2 2 1
-#2 1 2
-#
-#样本输出1
-#3
-#样本输入1
-# 包含四个序列：
-#序列1 : (1, 2)
-#序列2：(1，1)
-#序列3：(2, 1)
-#序列4：(1, 2)
-#除了序列1和序列4是相同的，这些序列在配对上是不同的，所以我们有三个不同的序列。
-#
-#样本输入2
-#5
-#1 1
-#1 1
-#1 2
-#2 1 1
-#3 1 1 1
-#
-#样本输出2
-#4
-#样本输入2
-# 包含五个序列：
-#序列1：(1)
-#序列2 : (1)
-#序列3：(2)
-#序列4：(1，1)
-#序列5：(1，1，1)
-#
-#样本输入3
-#1
-#1 1
-#
-#样品输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+    print(len(set(tuple(l) for l in L)))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    seqs = {}
+    for i in range(n):
+        seq = tuple(map(int, input().split()[1:]))
+        if seq not in seqs:
+            seqs[seq] = 1
+        else:
+            seqs[seq] += 1
+    print(len(seqs))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    d = {}
+    for i in range(n):
+        tmp = tuple(map(int, input().split()))
+        if tmp in d:
+            d[tmp] += 1
+        else:
+            d[tmp] = 1
+    print(len(d))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append([int(x) for x in input().split()][1:])
+    a.sort()
+    ans = 1
+    for i in range(n - 1):
+        if a[i] != a[i + 1]:
+            ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(input().split())
+    L = [int(L[i][0]) for i in range(N)]
+    print(len(set(L)))
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    result = set()
+    for i in range(n):
+        line = input().split()
+        result.add(tuple(line[1:]))
+    print(len(result))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    seq = []
+    for i in range(n):
+        seq.append(input().split())
+    print(len(set(map(tuple,seq))))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    a = [tuple(a[i][1:]) for i in range(n)]
+    print(len(set(a)))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    num = []
+    for i in range(n):
+        num.append(input().split())
+
+    for i in range(n):
+        num[i][0] = int(num[i][0])
+        for j in range(num[i][0]):
+            num[i][j+1] = int(num[i][j+1])
+
+    num.sort(key=lambda x: x[1:])
+
+    count = 1
+    for i in range(n-1):
+        if num[i] != num[i+1]:
+            count += 1
+
+    print(count)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    L = []
+    for i in range(N):
+        L.append(list(map(int, input().split())))
+
+    L.sort(key=lambda x:x[0])
+    #print(L)
+    cnt = 1
+    for i in range(N-1):
+        if L[i] == L[i+1]:
+            continue
+        else:
+            cnt += 1
+    print(cnt)

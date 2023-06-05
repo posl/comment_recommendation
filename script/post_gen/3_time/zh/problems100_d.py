@@ -1,87 +1,203 @@
-#问题陈述
-#高桥成为了一名糕点师，为了庆祝AtCoder初级竞赛100强，他开了一家商店La Confiserie d'ABC。
-#该店出售N种蛋糕。
-#每种蛋糕有三个参数 "美丽"、"美味 "和 "受欢迎"。第i种蛋糕的美丽度为x_i，美味度为y_i，受欢迎度为z_i。
-#这些值可能是零或负值。
-#Ringo已经决定在这里吃M块蛋糕。他将按以下方式选择蛋糕的集合：
-#不要有两块或两块以上相同种类的蛋糕。
-#在上述条件下，选择一组蛋糕，使（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）最大化。
-#找出Ringo选择的这组蛋糕的（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）的最大可能值。
-#
-#约束条件
-#N是1到1 000（包括）之间的整数。
-#M是0到N之间的一个整数（包括）。
-#x_i, y_i, z_i (1 ≦ i ≦ N)是介于-10 000 000和10 000 000（包括）之间的整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N M
-#X_1 Y_1 Z_1
-#x_2 y_2 z_2
-# : :
-#x_N y_N z_N
-#
-#输出
-#打印Ringo选择的一组蛋糕的最大可能值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）。
-#
-#输入样本 1
-#5 3
-#3 1 4
-#1 5 9
-#2 6 5
-#3 5 8
-#9 7 9
-#
-#样本输出1
-#56
-#考虑有第2种、第4种和第5种蛋糕。总的美丽度、美味度和受欢迎度将如下：
-#美丽度：1 + 3 + 9 = 13
-#美味度：5 + 5 + 7 = 17
-#受欢迎度：9+8+9=26
-#这里的值（总美感度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）是13+17+26=56。这是最高值。
-#
-#输入样本 2
-#5 3
-#1 -2 3
-#-4 5 -6
-#7 -8 -9
-#-10 11 -12
-#13 -14 15
-#
-#样本输出2
-#54
-#考虑有第1种、第3种和第5种蛋糕。总的美丽度、美味度和受欢迎度如下：
-#美丽度：1 + 7 + 13 = 21
-#味道度：（-2）+（-8）+（-14）=-24
-#受欢迎度：3+（-9）+15=9
-#这里的值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎程度的绝对值）是21+24+9=54。这是最高值。
-#
-#输入样本 3
-#10 5
-#10 -80 21
-#23 8 38
-#-94 28 11
-#-26 -2 18
-#-69 72 79
-#-26 -86 -54
-#-72 -50 59
-#21 65 -32
-#40 -94 87
-#-62 18 82
-#
-#样本输出3
-#638
-#如果我们有第3种、第4种、第5种、第7种和第10种蛋糕，那么总的美丽度、美味度和受欢迎度将分别为-323、66和249。
-#这里的值（总美丽度的绝对值）+（总美味度的绝对值）+（总受欢迎度的绝对值）是323+66+249=638。这是最高值。
-#
-#输入样本 4
-#3 2
-#2000000000 -9000000000 4000000000
-#7000000000 -5000000000 3000000000
-#6000000000 -1000000000 8000000000
-#
-#样本输出4
-#30000000000
-#蛋糕的美丽度、美味度和受欢迎度的数值以及要打印的数值可能不适合32位整数。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_value(n, m, cakes):
+    max_value = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                value = abs(cakes[i][0] + cakes[j][0] + cakes[k][0]) + abs(cakes[i][1] + cakes[j][1] + cakes[k][1]) + abs(cakes[i][2] + cakes[j][2] + cakes[k][2])
+                if value > max_value:
+                    max_value = value
+    return max_value
+
+=======
+Suggestion 2
+
+def abs_sum(a,b,c):
+    return abs(a) + abs(b) + abs(c)
+
+N, M = map(int, input().split())
+xyz = [list(map(int, input().split())) for _ in range(N)]
+ans = 0
+
+for i in range(2**3):
+    tmp = []
+    for j in range(N):
+        cnt = 0
+        for k in range(3):
+            if (i >> k) & 1:
+                cnt += xyz[j][k]
+            else:
+                cnt -= xyz[j][k]
+        tmp.append(cnt)
+    tmp.sort(reverse=True)
+    ans = max(ans, sum(tmp[:M]))
+
+print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    N, M = map(int, input().split())
+    cakes = []
+    for i in range(N):
+        cakes.append(list(map(int, input().split())))
+
+    # 找出最大值
+    ans = 0
+    for i in range(2 ** 3):
+        # 从二进制数的最低位开始，判断该位是否为1
+        # 如果是1，就把对应的蛋糕的值加起来
+        # 如果是0，就把对应的蛋糕的值减去
+        # 由于二进制数的最低位是1，所以先把蛋糕的值加起来
+        total = 0
+        for j in range(N):
+            value = 0
+            for k in range(3):
+                if ((i >> k) & 1) == 1:
+                    value += cakes[j][k]
+                else:
+                    value -= cakes[j][k]
+            total += abs(value)
+
+        # 更新答案
+        ans = max(ans, total)
+
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N,M = map(int,input().split())
+    X = []
+    Y = []
+    Z = []
+    for i in range(N):
+        x,y,z = map(int,input().split())
+        X.append(x)
+        Y.append(y)
+        Z.append(z)
+    ans = -1
+    for i in range(2**3):
+        sign = [1]*3
+        for j in range(3):
+            if i&(1<<j):
+                sign[j] = -1
+        tmp = []
+        for j in range(N):
+            tmp.append(sign[0]*X[j]+sign[1]*Y[j]+sign[2]*Z[j])
+        tmp.sort(reverse=True)
+        ans = max(ans,sum(tmp[:M]))
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    cakes = [list(map(int,input().split())) for _ in range(N)]
+    #print(cakes)
+    ans = 0
+    for i in range(2**3):
+        #print(i)
+        cake = []
+        for j in range(N):
+            tmp = 0
+            for k in range(3):
+                if ((i >> k) & 1):
+                    tmp += cakes[j][k]
+                else:
+                    tmp -= cakes[j][k]
+            cake.append(tmp)
+        cake.sort(reverse=True)
+        #print(cake)
+        ans = max(ans,sum(cake[:M]))
+    print(ans)
+
+=======
+Suggestion 6
+
+def get_max(N,M,beauty,delicious,favorite):
+    # 1.先按照美丽度排序
+    # 2.从美丽度最高的开始取，直到取满M个
+    # 3.取的时候，按照美味度排序
+    # 4.取的时候，按照受欢迎度排序
+    # 5.取的时候，按照美丽度排序
+    # 6.取的时候，计算总和
+    # 7.计算出来的总和，取最大的那个
+    # 8.如果取不满M个，就从美丽度第二高的开始取，直到取满M个
+    # 9.如果取不满M个，就从美丽度第三高的开始取，直到取满M个
+    # 10.如果取不满M个，就从美丽度第四高的开始取，直到取满M个
+    # 11.如果取不满M个，就从美丽度第五高的开始取，直到取满M个
+    # 12.如果取不满M个，就从美丽度第六高的开始取，直到取满M个
+    # 13.如果取不满M个，就从美丽度第七高的开始取，直到取满M个
+    # 14.如果取不满M个，就从美丽度第八高的开始取，直到取满M个
+    # 15.如果取不满M个，就从美丽度第九高的开始取，直到取满M个
+    # 16.如果取不满M个，就从美丽度第十高的开始取，直到取满M个
+    # 17.如果取不满M个，就从美丽度第十一高的开始取，直到取满M个
+    #
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    cakes = []
+    for i in range(n):
+        cakes.append(list(map(int,input().split())))
+    cakes.sort(key=lambda x: -(abs(x[0])+abs(x[1])+abs(x[2])))
+    ans = 0
+    for i in range(m):
+        ans += (abs(cakes[i][0])+abs(cakes[i][1])+abs(cakes[i][2]))
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    cakes = []
+    for i in range(n):
+        cakes.append(list(map(int,input().split())))
+    cakes.sort(key=lambda x:sum(x),reverse=True)
+    ans = 0
+    for i in range(m):
+        ans += abs(cakes[i][0]) + abs(cakes[i][1]) + abs(cakes[i][2])
+    print(ans)
+
+=======
+Suggestion 9
+
+def f(n,m,lists):
+    abs_lists = []
+    for i in range(n):
+        abs_lists.append([abs(lists[i][0]),abs(lists[i][1]),abs(lists[i][2])])
+    abs_lists.sort(key=lambda x:x[0]+x[1]+x[2],reverse=True)
+    print(abs_lists)
+    ans = 0
+    for i in range(m):
+        ans += abs_lists[i][0]+abs_lists[i][1]+abs_lists[i][2]
+    return ans
+
+=======
+Suggestion 10
+
+def findMaxBeauty(cakes, m):
+    cakes.sort(key=lambda cake: abs(cake[0]) + abs(cake[1]) + abs(cake[2]), reverse=True)
+    # print(cakes)
+    # print(cakes[0][0], cakes[0][1], cakes[0][2])
+    beauty = abs(cakes[0][0])
+    delicious = abs(cakes[0][1])
+    popularity = abs(cakes[0][2])
+    for i in range(1, m):
+        beauty += abs(cakes[i][0])
+        delicious += abs(cakes[i][1])
+        popularity += abs(cakes[i][2])
+    return beauty + delicious + popularity

@@ -1,64 +1,108 @@
-#问题陈述
-#给你正整数N和Q，以及一个由小写英文字母组成的长度为N的字符串S。
-#处理Q的查询。每个查询都是以下两种类型中的一种。
-#1 x:连续执行以下x次：删除S的最后一个字符并将其附加到开头。
-#2 x:打印S的第x个字符。
-#
-#限制条件
-#2 ≦ N ≦ 5 × 10^5
-#1 ≦ Q ≦ 5 × 10^5
-#1 ≦ x ≦ N
-#|S|=N
-#S由小写英文字母组成。
-#至少有一个格式为2 x的查询。
-#N, Q, x都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#S
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#每个查询的格式如下，其中t为1或2：
-#t x
-#
-#输出
-#对于每个格式为2 x的查询，将答案打印在一个单行中。
-#
-#输入样本 1
-#3 3
-#abc
-#2 2
-#1 1
-#2 2
-#
-#样本输出1
-#b
-#a
-#在第1个查询中，S是abc，所以第2个字符b应该被打印。
-#在第2次查询中，S从abc变为cab。
-#在第3次查询中，S是cab，所以第2个字符a应该被打印出来。
-#
-#输入示例 2
-#10 8
-#dsuccxulnl
-#2 4
-#2 7
-#1 2
-#2 7
-#1 1
-#1 2
-#1 3
-#2 5
-#
-#样本输出2
-#c
-#u
-#c
-#u
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n,q = map(int,input().split())
+    s = input()
+    for i in range(q):
+        t,x = map(int,input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[n-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 5
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for i in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:n-x]
+        else:
+            print(s[x-1])
+
+=======
+Suggestion 6
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    for _ in range(q):
+        t, x = map(int, input().split())
+        if t == 1:
+            s = s[-x:] + s[:-x]
+        else:
+            print(s[x - 1])
+
+=======
+Suggestion 7
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for _ in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x - 1])
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    for i in range(Q):
+        t, x = map(int, input().split())
+        if t == 1:
+            S = S[-x:] + S[:-x]
+        else:
+            print(S[x - 1])

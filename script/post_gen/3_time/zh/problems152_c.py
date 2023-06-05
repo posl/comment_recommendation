@@ -1,58 +1,137 @@
-#问题陈述
-#给出的是1, ..., N的一个排列组合P_1, ..., P_N。
-#求满足以下条件的整数i（1 ≦ i ≦ N）的数目：
-#对于任何整数j（1 ≦ j ≦ i），P_i ≦ P_j。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#P_1, ..., P_N是1, ..., N的排列组合。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#P_1 ...P_N
-#
-#输出
-#打印满足条件的整数i的数量。
-#
-#输入样本 1
-#5
-#4 2 5 1 3
-#
-#样本输出 1
-#3
-#i=1、2和4满足条件，但i=3不满足--例如，j=1时P_i>P_j成立。
-#同样地，i=5也不满足条件。因此，有三个整数满足该条件。
-#
-#输入样本 2
-#4
-#4 3 2 1
-#
-#样本输出2
-#4
-#所有整数i（1 ≦ i ≦ N）都满足条件。
-#
-#样本输入3
-#6
-#1 2 3 4 5 6
-#
-#样本输出 3
-#1
-#只有i=1满足该条件。
-#
-#样本输入4
-#8
-#5 7 4 2 6 8 1 3
-#
-#样本输出 4
-#4
-#
-#样本输入 5
-#1
-#1
-#
-#样本输出5
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    count = 0
+    min = 10**9+1
+    for i in range(N):
+        if P[i] < min:
+            count += 1
+            min = P[i]
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    min = p[0]
+    count = 1
+    for i in range(1, n):
+        if p[i] < min:
+            min = p[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    min = p[0]
+    for i in range(n):
+        if p[i] <= min:
+            ans += 1
+            min = p[i]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min = n+1
+    for i in range(n):
+        if p[i] <= min:
+            count += 1
+            min = p[i]
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    print(p)
+    ans = 0
+    min = n + 1
+    for i in range(n):
+        if p[i] <= min:
+            ans += 1
+            min = p[i]
+    print(ans)
+
+=======
+Suggestion 7
+
+def find_num(s):
+    s = s.split()
+    n = int(s[0])
+    s = s[1:]
+    count = 1
+    for i in range(1, n):
+        if int(s[i]) < int(s[i - 1]):
+            count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    min_p = p[0]
+    for i in range(n):
+        if min_p >= p[i]:
+            ans += 1
+            min_p = p[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    count = 0
+    min = n + 1
+    for i in range(n):
+        if p[i] < min:
+            min = p[i]
+            count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solve():
+    n = int(input())
+    p = list(map(int, input().split()))
+    s = [0] * n
+    s[0] = p[0]
+    for i in range(1, n):
+        s[i] = min(s[i - 1], p[i])
+    cnt = 0
+    for i in range(n):
+        if p[i] <= s[i]:
+            cnt += 1
+    print(cnt)
+
+solve()

@@ -1,38 +1,141 @@
-#问题陈述
-#高桥王国使用的硬币有1日元硬币、2日元硬币、......和10日元硬币。这里，N！=1×2×...。× N.
-#高桥有100个各种类型的硬币，他要买一个价值P日元的产品，给出准确的金额，不收零钱。
-#我们可以证明，总是有这样的付款方式。
-#他在付款时至少需要用多少个硬币？
-#
-#约束条件
-#1 ≦ P ≦ 10^7
-#P是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#P
-#
-#輸出
-#打印所需的最小硬币数。
-#
-#输入样本1
-#9
-#
-#样本输出1
-#3
-#通过提供一个(1!=)1日元的硬币，一个(2!=)2日元的硬币，一个(3!=)6日元的硬币，我们可以准确支付价值9日元的产品。没有办法用更少的硬币来支付这个金额。
-#
-#输入样本2
-#119
-#
-#样本输出2
-#10
-#我们应该使用一个1日元的硬币，两个2日元的硬币，三个3日元的硬币，四个4日元的硬币。
-#
-#输入样本3
-#10000000
-#
-#样本输出3
-#24
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+=======
+Suggestion 2
+
+def main():
+    P = int(input())
+    #P = 10000000
+    #P = 119
+    #P = 9
+
+    # 10! = 3628800
+    # 9! = 362880
+    # 8! = 40320
+    # 7! = 5040
+    # 6! = 720
+    # 5! = 120
+    # 4! = 24
+    # 3! = 6
+    # 2! = 2
+    # 1! = 1
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+    # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+    # 1, 2, 3, 4, 5, 6, 7
+
+=======
+Suggestion 3
+
+def get_min_coin_num(P):
+    coin_num = 0
+    for i in range(10,0,-1):
+        coin_num += P // factorial(i)
+        P %= factorial(i)
+    return coin_num
+
+=======
+Suggestion 4
+
+def main():
+    p = int(input())
+    n = 10
+    a = [1]
+    for i in range(1, n):
+        a.append(a[i-1] * (i+1))
+    c = 0
+    for i in range(n-1, -1, -1):
+        c += p // a[i]
+        p %= a[i]
+    print(c)
+
+=======
+Suggestion 5
+
+def main():
+    print("请输入一个整数：")
+    n = int(input())
+    if n < 0 or n > 10 ** 7:
+        print("输入的数不在范围内")
+        return
+    print("需要的最少硬币数为：")
+    print(coin(n))
+
+=======
+Suggestion 6
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+=======
+Suggestion 7
+
+def count_coins(p):
+    coins = [1]
+    for i in range(2, 11):
+        coins.append(coins[-1]*i)
+    count = 0
+    for i in range(9, -1, -1):
+        count += p // coins[i]
+        p %= coins[i]
+    return count
+
+while True:
+    try:
+        p = int(input())
+        print(count_coins(p))
+    except:
+        break
+
+=======
+Suggestion 8
+
+def exchange_coin(p):
+    coin = [1,2,6,24,120,720,5040,40320,362880,3628800]
+    count = 0
+    for i in range(9,-1,-1):
+        while p >= coin[i]:
+            p -= coin[i]
+            count += 1
+    return count
+
+=======
+Suggestion 9
+
+def main():
+    P = int(input())
+    coins = [1]
+    for i in range(1,11):
+        coins.append(coins[i-1]*(i+1))
+    count = 0
+    for i in range(10,0,-1):
+        count += P//coins[i]
+        P = P%coins[i]
+    print(count)

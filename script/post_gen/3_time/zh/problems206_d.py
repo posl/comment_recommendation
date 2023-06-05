@@ -1,46 +1,168 @@
-#问题陈述
-#给你一个N个正整数的序列：a=（a_1,a_2,...a_n）。
-#你可以做下面的操作，次数为零或更多。至少需要多少次操作才能使A成为一个宫格？
-#选择一对正整数(x,y)，用y替换A中出现的所有x。
-#在这里，我们说A是一个调色板，当且仅当A_i=A_{N+1-i}对每一个i（1 ≦ i ≦ N）都成立。
-#
-#约束条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 2 × 10^5
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#以整数形式打印答案。
-#
-#输入样本 1
-#8
-#1 5 3 2 5 2 3 1
-#
-#样本输出 1
-#2
-#最初，我们有A=（1,5,3,2,5,2,3,1）。
-#将A中的3替换成2后，我们有A=(1,5,2,2,5,2,2,1)。
-#在用5替换A中的2的每一次出现后，我们有A=(1,5,5,5,5,5,1)。
-#这样一来，我们可以通过两次操作使A成为一个回文，这是最小的需要。
-#
-#输入样本2
-#7
-#1 2 3 4 1 2 3
-#
-#样本输出2
-#1
-#
-#样本输入3
-#1
-#200000
-#
-#样品输出3
-#0
-#A在开始时可能已经是一个回文。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n // 2):
+        if a[i] != a[i + 1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(N//2):
+        if A[i] != A[N-i-1]:
+            ans += 1
+    print(ans)
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    i = 0
+    count = 0
+    while i < N:
+        if i == N-1:
+            count += 1
+            break
+        if A[i] == A[i+1]:
+            i += 2
+            count += 1
+        else:
+            i += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    i = 0
+    while i < N:
+        if i == N - 1 or A[i] != A[i + 1]:
+            i += 1
+        else:
+            ans += 1
+            i += 2
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    s = set()
+    for i in range(n):
+        if a[i] in s:
+            ans += 1
+        else:
+            s.add(a[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    cnt = 0
+    for i in range(n//2):
+        if a[i] != a[n-1-i]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def solve():
+    from collections import Counter
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = Counter(a)
+    ans = 0
+    for k,v in b.items():
+        if k > v:
+            ans += v
+        elif k < v:
+            ans += v-k
+    print(ans)
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    cnt = 0
+    for i in range(N//2):
+        if A[i] != A[N-i-1]:
+            cnt += 1
+    print(cnt)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    if n % 2 == 0:
+        i = 0
+        j = n - 1
+        while i < j:
+            if a[i] != a[i + 1] or a[j] != a[j - 1]:
+                print(0)
+                return
+            i += 2
+            j -= 2
+        print(2 ** (n // 2) % (10 ** 9 + 7))
+    else:
+        i = 1
+        j = n - 1
+        while i < j:
+            if a[i] != a[i + 1] or a[j] != a[j - 1]:
+                print(0)
+                return
+            i += 2
+            j -= 2
+        print(2 ** (n // 2) % (10 ** 9 + 7))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            if a[i] == a[i + 1]:
+                ans += 1
+        elif i == n - 1:
+            if a[i] == a[i - 1]:
+                ans += 1
+        else:
+            if a[i] == a[i - 1] or a[i] == a[i + 1]:
+                ans += 1
+    print(ans)

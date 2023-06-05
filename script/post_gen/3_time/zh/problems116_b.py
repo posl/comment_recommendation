@@ -1,41 +1,132 @@
-#问题陈述
-#一个序列a={a_1,a_2,a_3,......}被确定如下：
-#给出第一个项s作为输入。
-#设f(n)为以下函数：如果n是偶数，f(n)=n/2；如果n是奇数，f(n)=3n+1。
-#当i=1时，a_i=s，当i>1时，a_i=f(a_{i-1})。
-#求满足以下条件的最小整数m：
-#存在一个整数n，使得a_m=a_n（m>n）。
-#
-#限制条件
-#1 ≦ s ≦ 100
-#输入的所有数值都是整数。
-#保证a中的所有元素和满足条件的最小m最多为1000000。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#s
-#
-#輸出
-#打印满足条件的最小整数m。
-#
-#输入样本 1
-#8
-#
-#输出示例 1
-#5
-#a={8,4,2,1,4,2,1,4,2,1,......}.由于a_5=a_2，答案是5。
-#
-#样本输入2
-#7
-#
-#样本输出2
-#18
-#a={7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1,4,2,1,......}.
-#
-#样本输入3
-#54
-#
-#样本输出3
-#114
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s = int(input())
+a = [s]
+i = 1
+while True:
+    i += 1
+    a.append(f(a[i-2]))
+    if a[i-1] in a[:i-1]:
+        break
+print(i)
+
+=======
+Suggestion 2
+
+def main():
+    num = int(input())
+    list = []
+    list.append(num)
+    while True:
+        if num % 2 == 0:
+            num = num / 2
+            list.append(int(num))
+        else:
+            num = 3 * num + 1
+            list.append(int(num))
+        if list.count(num) == 2:
+            break
+    print(len(list))
+
+=======
+Suggestion 3
+
+def f(n):
+    if n % 2 == 0:
+        return n / 2
+    else:
+        return 3 * n + 1
+
+=======
+Suggestion 4
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s=int(input())
+a=[s]
+for i in range(1,1000000):
+    a.append(f(a[i-1]))
+    if a[i]==a[i-2]:
+        print(i+1)
+        break
+
+=======
+Suggestion 5
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s=int(raw_input())
+a=[s]
+i=1
+while True:
+    a.append(f(a[i-1]))
+    if a[i] in a[:i]:
+        print i+1
+        break
+    i+=1
+
+=======
+Suggestion 6
+
+def f(n):
+    if n%2==0:
+        return n/2
+    else:
+        return 3*n+1
+
+s=int(input())
+a=[s]
+while True:
+    s=f(s)
+    if s in a:
+        print(len(a)+1)
+        break
+    else:
+        a.append(s)
+
+=======
+Suggestion 7
+
+def main():
+    s = int(input())
+    a = [s]
+    while True:
+        if a[-1]%2 == 0:
+            a.append(a[-1]//2)
+        else:
+            a.append(3*a[-1]+1)
+        if a.count(a[-1]) == 2:
+            break
+    print(len(a)-1)
+
+=======
+Suggestion 8
+
+def main():
+    s = int(input())
+    a = [s]
+    while True:
+        if a[-1] % 2 == 0:
+            a.append(a[-1] // 2)
+        else:
+            a.append(3 * a[-1] + 1)
+        if a[-1] in a[:-1]:
+            print(len(a))
+            break

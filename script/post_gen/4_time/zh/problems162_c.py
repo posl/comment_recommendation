@@ -1,32 +1,75 @@
-#问题说明
-#求（sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd（a,b,c））。
-#这里gcd(a,b,c)表示a、b、c的最大公除数。
-#
-#限制条件
-#1 ≦ K ≦ 200
-#K是一个整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#K
-#
-#输出
-#打印（sum_{a=1}^{K}sum_{b=1}^{K}sum_{c=1}^{K} gcd(a,b,c)）的值。
-#
-#输入样本 1
-#2
-#
-#样本输出 1
-#9
-#gcd(1,1,1)+gcd(1,1,2)+gcd(1,2,1)+gcd(1,2,2)
-#+gcd(2,1,1)+gcd(2,1,2)+gcd(2,2,1)+gcd(2,2,2)
-#=1+1+1+1+1+1+1+2=9
-#因此，答案是9。
-#
-#输入样本2
-#200
-#
-#样本输出2
-#10813692
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
+
+=======
+Suggestion 2
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+=======
+Suggestion 3
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+k=int(input())
+ans=0
+for a in range(1,k+1):
+    for b in range(1,k+1):
+        for c in range(1,k+1):
+            ans+=gcd(gcd(a,b),c)
+print(ans)
+
+=======
+Suggestion 4
+
+def gcd(a,b):
+    if a<b:
+        a,b=b,a
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+=======
+Suggestion 5
+
+def gcd(a,b):
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+K = int(input())
+ans = 0
+for a in range(1, K + 1):
+    for b in range(1, K + 1):
+        for c in range(1, K + 1):
+            d = gcd(a, b)
+            ans += gcd(c, d)
+print(ans)
+
+=======
+Suggestion 6
+
+def gcd(a,b):
+    if a == 0:
+        return b
+    else:
+        return gcd(b%a,a)

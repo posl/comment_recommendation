@@ -1,49 +1,164 @@
-#问题陈述
-#给你两个序列，每个序列的长度为N，由整数组成：A=(A_1, ..., A_N)和B=(B_1, ..., B_N)。
-#确定是否有一个长度为N的序列，X=(X_1, ..., X_N)，满足以下所有的条件。
-#X_i = A_i或X_i = B_i，对于每一个i(1≦ i≦ N)。
-#|X_i - X_{i+1}| ≦ K，对于每个i(1≦ i≦ N-1)。
-#
-#
-#限制条件
-#1 ≦ N ≦ 2× 10^5
-#0 ≦ K ≦ 10^9
-#1 ≦ A_i,B_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 ...A_N
-#B_1 ...B_N
-#
-#输出
-#如果有一个满足所有条件的X，打印Yes；否则，打印No。
-#
-#输入样本 1
-#5 4
-#9 8 3 7 2
-#1 6 2 9 5
-#
-#样本输出1
-#Yes
-#X=(9,6,3,7,5) 满足所有条件。
-#
-#样本输入2
-#4 90
-#1 1 1 100
-#1 2 3 100
-#
-#样本输出2
-#No
-#没有X满足所有条件。
-#
-#样本输入3
-#4 1000000000
-#1 1 1000000000 1000000000
-#1 1000000000 1 1000000000
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a_max = max(a)
+    a_min = min(a)
+    b_max = max(b)
+    b_min = min(b)
+
+    if (a_max - a_min) > k or (b_max - b_min) > k:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    for i in range(N):
+        if abs(A[i] - B[i]) > K:
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 3
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    l = max(a[0], b[0])
+    r = min(a[0] + k, b[0] + k)
+    for i in range(1, n):
+        l = max(l, a[i], b[i])
+        r = min(r, a[i] + k, b[i] + k)
+        if l > r:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 4
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    for i in range(N):
+        if abs(A[i] - B[i]) > K:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    diff = 0
+    for i in range(n):
+        diff += abs(a[i] - b[i])
+    if diff > k:
+        print('No')
+    else:
+        if (k - diff) % 2 == 0:
+            print('Yes')
+        else:
+            print('No')
+
+=======
+Suggestion 6
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    diff = 0
+    for i in range(n):
+        diff += abs(a[i] - b[i])
+    if diff > k:
+        print("No")
+    else:
+        if (k - diff) % 2 == 0:
+            print("Yes")
+        else:
+            print("No")
+
+=======
+Suggestion 7
+
+def check(N, K, A, B):
+    for i in range(N):
+        if abs(A[i]-B[i]) > K:
+            return False
+    return True
+
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+=======
+Suggestion 8
+
+def solve():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    while A:
+        if abs(A.pop() - B.pop()) > K:
+            print("No")
+            return
+    print("Yes")
+    return
+
+=======
+Suggestion 9
+
+def main():
+    n,k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort()
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # 检查是否有解
+    a.sort()
+    b.sort()
+    for i in range(n):
+        if abs(a[i] - b[i]) > k:
+            print("No")
+            return
+    print("Yes")

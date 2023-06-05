@@ -1,31 +1,33 @@
-#问题陈述
-#高桥掷出了三颗骰子。骰子上面显示的数字是a、b、c。
-#求底面的数字之和。
-#这里，每个骰子都是一个标准的立方体骰子，相对面的数字之和为7。
-#
-#限制条件
-#1 ≦ a, b, c ≦ 6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b c
-#
-#輸出
-#打印三个骰子底面的数字之和。
-#
-#输入样本 1
-#1 4 3
-#
-#输出样本 1
-#13
-#底面的数字是6、3和4。
-#我们有6+3+4=13，这应该被打印出来。
-#
-#输入样本2
-#5 6 4
-#
-#输出样本 2
-#6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a,b,c = map(int, input().split())
+    print(21-a-b-c)
+
+=======
+Suggestion 2
+
+def main():
+    a,b,c = map(int, input().split())
+    print(7-a+7-b+7-c)
+
+=======
+Suggestion 3
+
+def sum_dice():
+    a, b, c = map(int, input().split())
+    print(21 - a - b - c)
+
+sum_dice()
+
+=======
+Suggestion 4
+
+def dice():
+    #输入骰子的三个面
+    a,b,c = map(int, input().split())
+    #输出骰子的底面的和
+    print(21-a-b-c)

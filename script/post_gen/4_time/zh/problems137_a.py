@@ -1,37 +1,36 @@
-#问题陈述
-#我们有两个整数：A和B。
-#在A+B、A-B和A×B中打印出最大的数字。
-#
-#限制条件
-#输入的所有数值都是整数。
-#-100 ≦ a, b ≦ 100
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B
-#
-#輸出
-#打印A+B、A-B和A×B中最大的数字。
-#
-#输入样本 1
-#-13 3
-#
-#样本输出 1
-#-10
-#在A+B=-10，A-B=-16，A×B=-39中最大的数字是-10。
-#
-#样本输入2
-#1 -33
-#
-#样本输出2
-#34
-#A+B=-32，A-B=34，A×B=-33中最大的数字是34。
-#
-#样本输入3
-#13 3
-#
-#样本输出 3
-#39
-#在A+B=16，A-B=10，A×B=39中，最大的数字是39。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def max(a,b,c):
+    if a>b and a>c:
+        return a
+    elif b>a and b>c:
+        return b
+    else:
+        return c
+a,b = map(int,input().split())
+print(max(a+b,a-b,a*b))
+
+=======
+Suggestion 2
+
+def main():
+    a,b = map(int, input().split())
+    print(max(a+b, a-b, a*b))
+
+=======
+Suggestion 3
+
+def max(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+
+=======
+Suggestion 4
+
+def func(a, b):
+    print(max(a+b, a-b, a*b))

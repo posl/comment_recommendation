@@ -1,56 +1,264 @@
-#问题陈述
-#保龄球瓶的编号是1到10。  下图是球杆排列的俯视图：
-#让我们把图中两条虚线之间的每个部分称为一列。
-#例如，1号和5号球瓶属于同一列，3号和9号球瓶也属于同一列。
-#当一些针脚被打倒时，可能会出现一种特殊的情况，叫做分裂。
-#如果以下两个条件都满足，那么针脚的摆放就是分裂：
-#引脚1被撞倒了。
-#有两个不同的列，满足以下两个条件：
-#每一列都有一个或多个站立的棋子。
-#在这两列之间存在一列，使得该列中的所有棋子都被击倒。
-#
-#例子也见输入和输出的样本。
-#现在，你得到的是一个长度为10的字符串S的针脚位置。
-#对于i=1，...，10，如果针脚i被击倒，S的第i个字符为0，如果它是站立的，则为1。
-#确定S所代表的大头针的位置是否是一个分裂。
-#
-#约束条件
-#S是一个长度为10的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#如果S所代表的引脚的位置是分裂的，打印Yes；否则，打印No。
-#
-#样本输入1
-#0101110101
-#
-#样本输出1
-#Yes
-#在下图中，被击倒的引脚被涂成灰色，站立的引脚被涂成白色：
-#在含有立针5的那一列和含有立针6的那一列之间是含有立针3和9的那一列。  由于3号和9号都被打掉了，所以这个位置是一个分割。
-#
-#样本输入2
-#0100101001
-#
-#样本输出2
-#Yes
-#
-#
-#样品输入3
-#0000100110
-#
-#样品输出3
-#No
-#这个位置不是一个分割。
-#
-#样本输入4
-#1101110101
-#
-#样本输出4
-#No
-#这不是一个分割，因为引脚1没有被敲下。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problems267_b():
+    pass
+
+=======
+Suggestion 2
+
+def split_pin(s):
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    if s[0] == '0':
+        return False
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1. 1号引脚被敲下
+    # 2. 两个不同的列，每一列都有一个或多个站立的棋子
+    # 3. 在这两列之间存在一列，使得该列中的所有棋子都被击倒
+    # 1. 1号
+
+=======
+Suggestion 3
+
+def solve():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    for i in range(1, 10):
+        if s[i] == '0':
+            print('No')
+            return
+    if s[1] == '0' and s[8] == '0':
+        print('No')
+        return
+    if s[2] == '0' and s[7] == '0':
+        print('No')
+        return
+    if s[3] == '0' and s[6] == '0':
+        print('No')
+        return
+    if s[4] == '0' and s[5] == '0':
+        print('No')
+        return
+    print('Yes')
+    return
+
+solve()
+
+=======
+Suggestion 4
+
+def get_input():
+    input = input()
+    return input
+
+=======
+Suggestion 5
+
+def solve():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    if s[1] == '0':
+        print('No')
+        return
+    if s[2] == '0':
+        print('No')
+        return
+    if s[3] == '0':
+        print('No')
+        return
+    if s[4] == '0':
+        print('No')
+        return
+    if s[5] == '0':
+        print('No')
+        return
+    if s[6] == '0':
+        print('No')
+        return
+    if s[7] == '0':
+        print('No')
+        return
+    if s[8] == '0':
+        print('No')
+        return
+    if s[9] == '0':
+        print('No')
+        return
+    if s[1] == '1' and s[2] == '1' and s[3] == '1' and s[4] == '1' and s[5] == '1':
+        print('No')
+        return
+    if s[2] == '1' and s[3] == '1' and s[4] == '1' and s[5] == '1' and s[6] == '1':
+        print('No')
+        return
+    if s[3] == '1' and s[4] == '1' and s[5] == '1' and s[6] == '1' and s[7] == '1':
+        print('No')
+        return
+    if s[4] == '1' and s[5] == '1' and s[6] == '1' and s[7] == '1' and s[8] == '1':
+        print('No')
+        return
+    if s[5] == '1' and s[6] == '1' and s[7] == '1' and s[8] == '1' and s[9] == '1':
+        print('No')
+        return
+    print('Yes')
+    return
+
+solve()
+
+=======
+Suggestion 6
+
+def problem267_b():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    print("请输入10个数字（0或1）：")
+    S = input()
+    if S[0] == '0':
+        print("No")
+    elif S[1] == '0':
+        print("No")
+    elif S[2] == '0':
+        print("No")
+    elif S[3] == '0':
+        print("No")
+    elif S[4] == '0':
+        print("No")
+    elif S[5] == '0':
+        print("No")
+    elif S[6] == '0':
+        print("No")
+    elif S[7] == '0':
+        print("No")
+    elif S[8] == '0':
+        print("No")
+    elif S[9] == '0':
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 8
+
+def split_bowling_pins(pins):
+    pins = list(pins)
+    #print(pins)
+    if pins[0] == '0':
+        return 'No'
+    else:
+        for i in range(1,10):
+            if pins[i] == '0':
+                if i < 5:
+                    if pins[i+1] == '1':
+                        return 'No'
+                else:
+                    if pins[i-1] == '1':
+                        return 'No'
+        return 'Yes'
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    #s = "0101110101"
+    #s = "0100101001"
+    #s = "0000100110"
+    #s = "1101110101"
+    #print(s)
+    #print(s[0])
+    #print(s[9])
+    #print(s[0:2])
+    #print(s[8:10])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #print(s[1:10])
+    #print(s[1:9])
+    #print(s[2:8])
+    #print(s[2:9])
+    #print(s[1:9])
+    #print(s[0:10])
+    #
+
+=======
+Suggestion 10
+
+def solve():
+    s = input()
+    for i in range(10):
+        if s[i] == '0':
+            if i == 0:
+                if s[1] == '1' and s[2] == '1':
+                    print('Yes')
+                    return
+            elif i == 9:
+                if s[8] == '1' and s[7] == '1':
+                    print('Yes')
+                    return
+            else:
+                if s[i-1] == '1' and s[i+1] == '1':
+                    print('Yes')
+                    return
+    print('No')
+
+
+solve()

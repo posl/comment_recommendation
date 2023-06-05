@@ -1,39 +1,105 @@
-#问题陈述
-#A岁的高桥正在坐摩天轮。
-#如果你是13岁或以上，乘坐摩天轮需要花费B日元（B是偶数），但6至12岁（包括）的儿童可以用一半的费用乘坐，5岁或以下的儿童则免费。(日元是日本的货币）。
-#找出高桥摩天轮的费用。
-#
-#限制条件
-#0 ≤ A ≤ 100
-#2 ≤ B ≤ 1000
-#B是一个偶数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#A B
-#
-#输出
-#打印高桥的摩天轮的费用。
-#
-#样本输入1
-#30 100
-#
-#样本输出1
-#100
-#高桥现在30岁了，摩天轮的费用是100日元。
-#
-#样本输入2
-#12 100
-#
-#样本输出2
-#50
-#高桥是12岁，摩天轮的费用是100日元的一半，也就是50日元。
-#
-#样本输入3
-#0 100
-#
-#样本输出3
-#0
-#高桥是0岁，他可以免费乘坐摩天轮。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def calc_fee(age, fee):
+    if age >= 13:
+        return fee
+    elif age >= 6 and age <= 12:
+        return fee / 2
+    else:
+        return 0
+
+=======
+Suggestion 2
+
+def problem127_a():
+    a, b = input().split()
+    a = int(a)
+    b = int(b)
+    if a >= 13:
+        print(b)
+    elif a >= 6 and a <= 12:
+        print(int(b/2))
+    else:
+        print(0)
+
+problem127_a()
+
+=======
+Suggestion 3
+
+def main():
+    A, B = map(int, input().split())
+    if A >= 13:
+        print(B)
+    elif 6 <= A <= 12:
+        print(int(B/2))
+    else:
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b = map(int,input().split())
+    if a >= 13:
+        print(b)
+    elif a >= 6:
+        print(b//2)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    age, fee = map(int, input().split())
+    if age >= 13:
+        print(fee)
+    elif age >= 6:
+        print(fee // 2)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    A, B = map(int, input().split())
+
+    # 计算结果
+    if A >= 13:
+        result = B
+    elif A >= 6:
+        result = B // 2
+    else:
+        result = 0
+
+    # 输出结果
+    print(result)
+
+=======
+Suggestion 7
+
+def calc_fee(age, fee):
+    if age <= 5:
+        return 0
+    elif age <= 12:
+        return fee // 2
+    else:
+        return fee
+
+=======
+Suggestion 8
+
+def main():
+    age, price = map(int, input().split())
+    if age >= 13:
+        print(price)
+    elif age >= 6:
+        print(price//2)
+    else:
+        print(0)

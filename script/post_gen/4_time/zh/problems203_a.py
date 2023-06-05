@@ -1,37 +1,120 @@
-#问题陈述
-#高桥抛出三个骰子，骰子显示三个数字a、b、c。
-#如果在a、b、c中存在两个相同的数字，则打印剩下的数字。否则，打印0。
-#
-#限制条件
-#1 ≦ a,b,c ≦ 6
-#所有的a、b、c都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#a b c
-#
-#輸出
-#如果a、b、c中有两个相同的数字，打印剩下的数字。否则，打印0。
-#
-#输入样本 1
-#2 5 2
-#
-#输出样本 1
-#5
-#第一个和第三个骰子都显示为2，所以我们应该打印剩下的骰子上的数字，也就是5。
-#
-#输入样本 2
-#4 5 6
-#
-#输出样本 2
-#0
-#任何两个数字都是不同的，所以我们应该打印0。
-#
-#输入样本 3
-#1 1 1
-#
-#输出样本 3
-#1
-#任何两个数字都是一样的。无论我们选择哪两个骰子，剩下的骰子上的数字都是1。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)
+
+=======
+Suggestion 2
+
+def main():
+    a = input().split()
+    if a[0] == a[1]:
+        print(a[2])
+    elif a[0] == a[2]:
+        print(a[1])
+    elif a[1] == a[2]:
+        print(a[0])
+    else:
+        print(0)
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    line = input()
+    # 分割输入
+    a, b, c = map(int, line.split())
+    # 用列表来存储输入
+    l = [a, b, c]
+    # 用列表来存储不同的数字
+    l2 = []
+    # 用列表来存储相同的数字
+    l3 = []
+    # 用列表来存储最终结果
+    l4 = []
+    # 如果有两个相同的数字
+    if l[0] == l[1] or l[1] == l[2] or l[2] == l[0]:
+        # 遍历列表
+        for i in l:
+            # 如果列表中不存在该数字
+            if i not in l2:
+                # 将该数字添加到列表中
+                l2.append(i)
+            # 如果列表中存在该数字
+            else:
+                # 将该数字添加到列表中
+                l3.append(i)
+        # 遍历列表
+        for i in l:
+            # 如果i不在列表l3中
+            if i not in l3:
+                # 将i添加到列表l4中
+                l4.append(i)
+        # 遍历列表
+        for i in l4:
+            # 打印列表中的数字
+            print(i)
+    # 如果没有两个相同的数字
+    else:
+        # 打印0
+        print(0)
+
+=======
+Suggestion 4
+
+def main():
+    a,b,c = map(int,input().split())
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif a == c:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 逻辑处理 & 结果输出
+    if a == b:
+        print(c)
+    elif b == c:
+        print(a)
+    elif a == c:
+        print(b)
+    else:
+        print(0)
+
+=======
+Suggestion 6
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 检查是否有两个数字相同
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    elif b == c:
+        print(a)
+    else:
+        print(0)

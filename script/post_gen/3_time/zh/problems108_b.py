@@ -1,39 +1,94 @@
-#问题陈述
-#在xy平面上有一个正方形。它的四个顶点的坐标是(x_1,y_1), (x_2,y_2), (x_3,y_3)和(x_4,y_4)，按逆时针顺序排列。
-#(假设正的x轴指向右，正的y轴指向上）。
-#高桥记得（x_1,y_1）和（x_2,y_2），但他忘记了（x_3,y_3）和（x_4,y_4）。
-#给出x_1,x_2,y_1,y_2，恢复x_3,y_3,x_4,y_4。可以证明x_3,y_3,x_4和y_4唯一存在且有整数值。
-#
-#约束条件
-#|x_1|,|y_1|,|x_2|,|y_2| ≦ 100
-#(x_1,y_1) ≠ (x_2,y_2)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#x_1 y_1 x_2 y_2
-#
-#输出
-#打印x_3,y_3,x_4和y_4的整数，按照这个顺序。
-#
-#输入样本 1
-#0 0 0 1
-#
-#样本输出 1
-#-1 1 -1 0
-#(0,0),(0,1),(-1,1),(-1,0)是一个正方形的四个顶点，按逆时针顺序排列。
-#注意(x_3,y_3)=(1,1),(x_4,y_4)=(1,0)不被接受，因为这些顶点是按顺时针顺序排列的。
-#
-#输入样本 2
-#2 3 6 6
-#
-#输出样本 2
-#3 10 -1 7
-#
-#样本输入3
-#31 -41 -59 26
-#
-#样本输出 3
-#-126 -64 -36 -131
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems108_b():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3,y3 = x2-y2+y1,x2-x1+y2
+    x4,y4 = x1-y2+y1,x2-x1+y1
+    print(x3,y3,x4,y4)
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x1 - (y2 - y1)
+    y4 = y1 + (x2 - x1)
+    print(x3,y3,x4,y4)
+
+=======
+Suggestion 4
+
+def problems108_b(x1,y1,x2,y2):
+    x3 = x2 - (y2 - y1)
+    y3 = y2 + (x2 - x1)
+    x4 = x1 - (y2 - y1)
+    y4 = y1 + (x2 - x1)
+    return x3,y3,x4,y4
+
+=======
+Suggestion 5
+
+def getxy(x1,y1,x2,y2):
+    x3 = x1+y1-y2
+    y3 = y1-x1+x2
+    x4 = x2+y1-y2
+    y4 = y2-x1+x2
+    return x3,y3,x4,y4
+
+=======
+Suggestion 6
+
+def problems108_b():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    print(x2+y1-y2,y2+x2-x1,x1+y1-y2,y1+x2-x1)
+    return 0
+
+=======
+Suggestion 8
+
+def main():
+    x1, y1, x2, y2 = map(int, input().split())
+    x3, y3, x4, y4 = x2 - y2 + y1, y2 + x2 - x1, x1 - y2 + y1, y1 + x2 - x1
+    print(x3, y3, x4, y4)
+
+=======
+Suggestion 9
+
+def main():
+    x1,y1,x2,y2 = map(int,input().split())
+    x3,y3,x4,y4 = 0,0,0,0
+    if x1 == x2:
+        if y2 > y1:
+            x3,y3 = x1 + (y2 - y1),y1 + (x1 - x2)
+            x4,y4 = x2 + (y2 - y1),y2 + (x1 - x2)
+        else:
+            x3,y3 = x1 + (y1 - y2),y1 + (x1 - x2)
+            x4,y4 = x2 + (y1 - y2),y2 + (x1 - x2)
+    elif y1 == y2:
+        if x2 > x1:
+            x3,y3 = x1 + (y1 - y2),y1 + (x2 - x1)
+            x4,y4 = x2 + (y1 - y2),y2 + (x2 - x1)
+        else:
+            x3,y3 = x1 + (y1 - y2),y1 + (x1 - x2)
+            x4,y4 = x2 + (y1 - y2),y2 + (x1 - x2)
+    else:
+        x3,y3 = x1 + (y1 - y2),y1 + (x2 - x1)
+        x4,y4 = x2 + (y1 - y2),y2 + (x2 - x1)
+    print(x3,y3,x4,y4)

@@ -1,64 +1,177 @@
-#问题陈述
-#在一个二维平面上有N个不同的点，编号为1,2,...,N。点i(1 ≦ i ≦ N)的坐标为(x_i,y_i)。
-#有多少个矩形的顶点在给定的点中，并且其边缘与x轴或y轴平行？
-#
-#限制条件
-#4 ≦ N ≦ 2000
-#0 ≦ x_i, y_i ≦ 10^9
-#(x_i,y_i) ≠ (x_j,y_j) (i ≠ j)
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#x_1 y_1
-#x_2 y_2
-#.
-#.
-#.
-# 
-#x_N y_N
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#6
-#0 0
-#0 1
-#1 0
-#1 1
-#2 0
-#2 1
-#
-#样本输出1
-#3
-#有三个这样的矩形：
-#矩形的顶点是点1、2、3、4、
-#矩形的顶点是点1，2，5，6、
-#以及顶点为点3、4、5、6的矩形。
-#
-#输入样本 2
-#4
-#0 1
-#1 2
-#2 3
-#3 4
-#
-#样本输出2
-#0
-#
-#样本输入3
-#7
-#0 1
-#1 0
-#2 0
-#2 1
-#2 2
-#3 0
-#3 2
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(n):
+            if x[i] < x[j] and y[i] < y[j]:
+                if x[i] in x and y[j] in y:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    points = []
+    for i in range(n):
+        x, y = map(int, input().split())
+        points.append((x, y))
+    points.sort()
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if points[i][0] < points[j][0] and points[i][1] < points[j][1]:
+                if (points[i][0], points[j][1]) in points and (points[j][0], points[i][1]) in points:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    x = []
+    y = []
+    for i in range(N):
+        x_i, y_i = [int(_) for _ in input().split()]
+        x.append(x_i)
+        y.append(y_i)
+    x.sort()
+    y.sort()
+    ans = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if x[i] < x[j] and y[i] < y[j]:
+                if x[i] in x and x[j] in x and y[i] in y and y[j] in y:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def getXY():
+    x = input("请输入x坐标：")
+    y = input("请输入y坐标：")
+    return x,y
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        x.append(a)
+        y.append(b)
+
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            dx = x[i] - x[j]
+            dy = y[i] - y[j]
+            if dx == 0 or dy == 0:
+                continue
+            if x[i] - dy in x and y[i] + dx in y:
+                if x[j] - dy in x and y[j] + dx in y:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(raw_input())
+    x = []
+    y = []
+    for i in range(n):
+        a, b = map(int, raw_input().split())
+        x.append(a)
+        y.append(b)
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if x[i] == x[j] or y[i] == y[j]:
+                continue
+            if (x[i], y[j]) in zip(x, y) and (x[j], y[i]) in zip(x, y):
+                ans += 1
+    print ans
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    for i in range(n):
+        x0, y0 = map(int, input().split())
+        x.append(x0)
+        y.append(y0)
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if x[i] != x[j] and y[i] != y[j]:
+                if x[i] in x and y[j] in y:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(raw_input())
+    points = []
+    for i in range(n):
+        x, y = map(int, raw_input().split())
+        points.append((x, y))
+    points.sort()
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            if x1 == x2 or y1 == y2:
+                continue
+            if (x1, y2) in points and (x2, y1) in points:
+                ans += 1
+    print ans / 2
+
+=======
+Suggestion 10
+
+def solve(n, points):
+    x = {}
+    y = {}
+    for p in points:
+        if p[0] not in x:
+            x[p[0]] = 1
+        else:
+            x[p[0]] += 1
+        if p[1] not in y:
+            y[p[1]] = 1
+        else:
+            y[p[1]] += 1
+    ans = 0
+    for p in points:
+        ans += (x[p[0]] - 1) * (y[p[1]] - 1)
+    return ans

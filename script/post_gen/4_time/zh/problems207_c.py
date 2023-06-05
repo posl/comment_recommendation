@@ -1,70 +1,208 @@
-#问题陈述
-#给你N个编号为1到N的区间，这些区间的情况如下：
-#如果t_i=1，区间i是[l_i,r_i]；
-#如果t_i=2，区间i是[l_i,r_i]；
-#如果t_i=3，则区间i为（l_i,r_i）；
-#如果t_i=4，区间i是(l_i,r_i)。
-#有多少对满足1 ≦ i < j ≦ N的整数(i,j)可以使区间i和区间j相交？
-#什么是[X,Y],[X,Y],(X,Y)?
-#闭合区间[X,Y]是由所有实数x组成的区间，使得X ≦ x ≦ Y。
-#半开区间[X,Y]是一个由所有实数x组成的区间，使得X ≦ x < Y。
-#半开区间(X,Y)是一个由所有实数x组成的区间，使得X < x ≦ Y。
-#一个开放区间(X,Y)是一个由所有实数x组成的区间，使得X < x < Y。
-#粗略地说，方括号[]意味着端点被包括在内，而大括号（）意味着端点被排除。
-#
-#限制条件
-#2 ≦ N ≦ 2000
-#1 ≦ t_i ≦ 4
-#1 ≦ l_i < r_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#t_1 l_1 r_1
-#t_2 l_2 r_2
-#.
-#.
-#.
-#t_N l_N r_N
-#
-#输出
-#打印有多少对整数(i,j)使区间i和区间j相交。
-#
-#输入样本 1
-#3
-#1 1 2
-#2 2 3
-#3 2 4
-#
-#样本输出 1
-#2
-#根据问题陈述的定义，区间1是[1,2]，区间2是[2,3]，区间3是（2,4）。
-#有两对整数（i,j）使区间i和区间j相交：（1,2）和（2,3）。对于第一对，交点是[2,2]，对于第二对，交点是(2,3)。
-#
-#样本输入2
-#19
-#4 210068409 221208102
-#4 16698200 910945203
-#4 76268400 259148323
-#4 370943597 566244098
-#1 428897569 509621647
-#4 250946752 823720939
-#1 642505376 868415584
-#2 619091266 868230936
-#2 306543999 654038915
-#4 486033777 715789416
-#1 527225177 583184546
-#2 885292456 900938599
-#3 264004185 486613484
-#2 345310564 818091848
-#1 152544274 521564293
-#4 13819154 555218434
-#3 507364086 545932412
-#4 797872271 935850549
-#2 415488246 685203817
-#
-#样本输出2
-#102
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        t, l, r = map(int, input().split())
+        tlr.append([t, l, r])
+    # print(tlr)
+    cnt = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if tlr[i][1] <= tlr[j][1] <= tlr[i][2] or tlr[j][1] <= tlr[i][1] <= tlr[j][2]:
+                cnt += 1
+    print(cnt)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    tlr = []
+    for i in range(n):
+        tlr.append(list(map(int, input().split())))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if (tlr[i][1] <= tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] <= tlr[j][2]):
+                ans += 1
+    print(ans)
+
+main()
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    l = []
+    for i in range(n):
+        t, l1, l2 = map(int, input().split())
+        if t == 1:
+            l.append([l1, l2])
+        elif t == 2:
+            l.append([l1, l2-1])
+        elif t == 3:
+            l.append([l1+1, l2])
+        elif t == 4:
+            l.append([l1+1, l2-1])
+    ans = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if l[i][0] <= l[j][1] and l[j][0] <= l[i][1]:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int, input().split())))
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if tlr[i][0] == 1 or tlr[i][0] == 2:
+                if tlr[j][0] == 1 or tlr[j][0] == 2:
+                    if tlr[i][1] <= tlr[j][1] and tlr[i][2] >= tlr[j][1]:
+                        count += 1
+                else:
+                    if tlr[i][1] <= tlr[j][1] and tlr[i][2] > tlr[j][1]:
+                        count += 1
+            else:
+                if tlr[j][0] == 1 or tlr[j][0] == 2:
+                    if tlr[i][1] < tlr[j][1] and tlr[i][2] >= tlr[j][1]:
+                        count += 1
+                else:
+                    if tlr[i][1] < tlr[j][1] and tlr[i][2] > tlr[j][1]:
+                        count += 1
+    print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    tlr_list = []
+    for i in range(N):
+        tlr_list.append(list(map(int, input().split())))
+
+    count = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if tlr_list[i][2] >= tlr_list[j][1] and tlr_list[i][1] <= tlr_list[j][2]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def get_intersection(l1, r1, l2, r2):
+    if r1 < l2 or r2 < l1:
+        return 0
+    else:
+        return min(r1, r2) - max(l1, l2) + 1
+
+n = int(input())
+t = []
+l = []
+r = []
+for i in range(n):
+    t_i, l_i, r_i = map(int, input().split())
+    t.append(t_i)
+    l.append(l_i)
+    r.append(r_i)
+
+res = 0
+for i in range(n):
+    for j in range(i+1, n):
+        if t[i] == 1 or t[i] == 3:
+            if t[j] == 1 or t[j] == 2:
+                res += get_intersection(l[i], r[i], l[j], r[j])
+        elif t[i] == 2 or t[i] == 4:
+            if t[j] == 3 or t[j] == 4:
+                res += get_intersection(l[i], r[i], l[j], r[j])
+
+print(res)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    tlr = []
+    for i in range(N):
+        tlr.append(list(map(int,input().split())))
+    cnt=0
+    for i in range(N-1):
+        for j in range(i+1,N):
+            if tlr[i][2]>=tlr[j][1] and tlr[i][1]<=tlr[j][2]:
+                cnt+=1
+    print(cnt)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    intervals = []
+    for i in range(n):
+        t, l, r = map(int, input().split())
+        if t == 1:
+            intervals.append([l, r])
+        elif t == 2:
+            intervals.append([l, r - 0.5])
+        elif t == 3:
+            intervals.append([l + 0.5, r])
+        else:
+            intervals.append([l + 0.5, r - 0.5])
+    result = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if intervals[i][0] <= intervals[j][0] <= intervals[i][1] or intervals[j][0] <= intervals[i][0] <= intervals[j][1]:
+                result += 1
+    print(result)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    tlr = [[int(x) for x in input().split()] for _ in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if (tlr[i][1] <= tlr[j][1] <= tlr[i][2]) or (tlr[i][1] <= tlr[j][2] <= tlr[i][2]) or (tlr[j][1] <= tlr[i][1] <= tlr[j][2]) or (tlr[j][1] <= tlr[i][2] <= tlr[j][2]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    tlr = [list(map(int,input().split())) for i in range(N)]
+    ans = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            t1,l1,r1 = tlr[i]
+            t2,l2,r2 = tlr[j]
+            if t1 in [1,2] and t2 in [1,2]:
+                if l2 <= r1 and l1 <= r2:
+                    ans += 1
+            elif t1 in [1,2] and t2 in [3,4]:
+                if l2 < r1 and l1 <= r2:
+                    ans += 1
+            elif t1 in [3,4] and t2 in [1,2]:
+                if l2 <= r1 and l1 < r2:
+                    ans += 1
+            elif t1 in [3,4] and t2 in [3,4]:
+                if l2 < r1 and l1 < r2:
+                    ans += 1
+    print(ans)

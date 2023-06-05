@@ -1,59 +1,128 @@
-#问题陈述
-#高桥有N种硬币；
-#具体来说，对于1≦i≦N，他有B_i个硬币，每个硬币价值A_i日元（日本的货币）。
-#请确定高桥是否能用他目前拥有的硬币准确支付X日元（不找零）。
-#
-#限制条件
-#1≦ N≦ 50
-#1≦ X≦ 10^4
-#1≦ A_i≦ 100
-#1≦ B_i≦ 50
-#A_i是成对独立的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N X
-#A_1 B_1
-#A_2 B_2
-#.
-#.
-#.
-#A_N B_N
-#
-#输出
-#如果高桥能用他目前拥有的硬币正好支付X日元，则打印Yes；
-#否则打印No。
-#
-#输入样本 1
-#2 19
-#2 3
-#5 6
-#
-#样本输出1
-#Yes
-#高桥有三个2日元的硬币和六个5日元的硬币。
-#他可以用两个2元硬币和三个5元硬币来支付2×2+5×3=19日元。
-#因此，Yes应该被打印出来。
-#
-#输入样本 2
-#2 18
-#2 3
-#5 6
-#
-#样本输出2
-#No
-#没有一个硬币的组合可以让他正好支付18日元。
-#因此，应该打印No。
-#
-#输入样本3
-#3 1001
-#1 1
-#2 1
-#100 10
-#
-#样本输出3
-#Yes
-#他不需要使用所有种类的硬币。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def pay(x, coins):
+    if x == 0:
+        return True
+    if len(coins) == 0:
+        return False
+    for i in range(coins[0][1]+1):
+        if pay(x - coins[0][0] * i, coins[1:]):
+            return True
+    return False
+
+=======
+Suggestion 2
+
+def pay(money, coin, num):
+    if money == 0:
+        return True
+    if money < 0:
+        return False
+    if num <= 0 and money >= 1:
+        return False
+    return pay(money, coin, num-1) or pay(money-coin[num-1], coin, num)
+
+=======
+Suggestion 3
+
+def main():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum > X:
+        print('No')
+    else:
+        print('Yes')
+
+=======
+Suggestion 4
+
+def pay_coin(coins, money):
+    if money == 0:
+        return True
+    if money < 0 or len(coins) == 0:
+        return False
+    return pay_coin(coins[1:], money - coins[0]) or pay_coin(coins[1:], money)
+
+=======
+Suggestion 5
+
+def get_input():
+    n, x = map(int, input().split())
+    a = []
+    b = []
+    for i in range(n):
+        ai, bi = map(int, input().split())
+        a.append(ai)
+        b.append(bi)
+    return n, x, a, b
+
+=======
+Suggestion 6
+
+def isPayable(coinList, value):
+    if value == 0:
+        return True
+    elif len(coinList) == 0:
+        return False
+    else:
+        for i in range(0, coinList[0][1]+1):
+            if value >= i*coinList[0][0]:
+                if isPayable(coinList[1:], value - i*coinList[0][0]):
+                    return True
+        return False
+
+=======
+Suggestion 7
+
+def solve():
+    N, X = map(int, input().split())
+    for i in range(N):
+        A, B = map(int, input().split())
+        X -= A * B
+    if X >= 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 8
+
+def get_input():
+    N,X = map(int,input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    return N,X,A,B
+
+=======
+Suggestion 9
+
+def solve():
+    N, X = map(int, input().split())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    sum = 0
+    for i in range(N):
+        sum += A[i] * B[i]
+    if sum >= X:
+        print("Yes")
+    else:
+        print("No")

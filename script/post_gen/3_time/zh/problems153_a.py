@@ -1,43 +1,91 @@
-#问题陈述
-#薮猫正在与一只怪物战斗。
-#该怪物的健康状况是H。
-#在一次攻击中，Serval可以使怪物的生命值减少A。
-#没有其他方法可以减少怪物的生命值。
-#当怪物的生命值变为0或低于0时，Serval就会获胜。
-#找出Serval在获胜前需要进行的攻击次数。
-#
-#限制条件
-#1 ≦ H ≦ 10^4
-#1 ≦ A ≦ 10^4
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H A
-#
-#输出
-#打印Serval在获胜前需要进行的攻击次数。
-#
-#输入样本 1
-#10 4
-#
-#输出样本 1
-#3
-#在一次攻击后，怪物的健康状况将是6。
-#两次攻击后，怪物的健康状况将是2。
-#三次攻击后，怪物的生命值将为-2。
-#因此，薮猫需要进行三次攻击才能获胜。
-#
-#输入样本2
-#1 10000
-#
-#样本输出2
-#1
-#
-#样本输入3
-#10000 1
-#
-#样本输出3
-#10000
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读入数据
+    H, A = map(int, input().split())
+    # 计算
+    print((H + A - 1) // A)
+
+=======
+Suggestion 2
+
+def main():
+    H,A = map(int,input().split())
+    count = 0
+    while H > 0:
+        H -= A
+        count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    H, A = map(int, input().split())
+    print((H + A - 1) // A)
+
+=======
+Suggestion 4
+
+def main():
+    h, a = map(int, input().split())
+    ans = 0
+    while h > 0:
+        h -= a
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    H, A = map(int, input().split())
+    cnt = 0
+    while H > 0:
+        H -= A
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 6
+
+def main():
+    H,A = map(int,input().split())
+    cnt = 0
+    while H > 0:
+        H -= A
+        cnt += 1
+    print(cnt)
+
+=======
+Suggestion 7
+
+def main():
+    H,A = map(int,input().split())
+    res = 0
+    while H > 0:
+        H -= A
+        res += 1
+    print(res)
+
+=======
+Suggestion 8
+
+def main():
+    H,A = map(int,input().split())
+    #print(H,A)
+    count = 0
+    while H > 0:
+        H -= A
+        count += 1
+    print(count)
+
+=======
+Suggestion 9
+
+def main():
+    H, A = map(int, input().split())
+    print((H - 1) // A + 1)

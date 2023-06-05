@@ -1,80 +1,178 @@
-#问题陈述
-#你有一个由N个正整数组成的序列A：a_{1}, a_{2}, ..., a_{n}。
-#现在你将陆续进行以下Q操作：
-#在第i次操作中，你用C_{i}替换每一个值为B_{i}的元素。
-#对于每一个i（1 ≦ i ≦ Q），找到S_{i}：第i次操作后A中所有元素的总和。
-#
-#限制条件
-#输入的所有数值都是整数。
-# 1 ≦ N, Q, A_{i}, B_{i}, C_{i} ≦ 10^{5}
-# B_{i} ≠ C_{i}
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N
-#A_{1}A_{2} ...A_{N}
-#Q
-#B_{1}C_{1}
-#B_{2}C_{2}
-#.
-#.
-#.
-#B_{Q}C_{Q}
-#
-#输出
-#打印Q整数S_{i}到标准输出
-# 以下列格式输出：
-#S_{1}
-#S_{2}
-#.
-#.
-#.
-#S_{Q}
-#请注意，S_{i}可能不适合32位整数。
-#
-#样本输入1
-#4
-#1 2 3 4
-#3
-#1 2
-#3 4
-#2 4
-#
-#样本输出1
-#11
-#12
-#16
-#最初，序列A是1，2，3，4。
-#在每次操作之后，它变成了以下内容：
-#2, 2, 3, 4
-#2, 2, 4, 4
-#4, 4, 4, 4
-#
-#样本输入2
-#4
-#1 1 1 1
-#3
-#1 2
-#2 1
-#3 5
-#
-#样本输出2
-#8
-#4
-#4
-#请注意，序列A可能不包含值为B_{i}的元素。
-#
-#输入样本 3
-#2
-#1 2
-#3
-#1 100
-#2 100
-#100 1000
-#
-#样本输出3
-#102
-#200
-#2000
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def sum1(A):
+    sum = 0
+    for i in A:
+        sum += i
+    return sum
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    BC = [list(map(int, input().split())) for _ in range(Q)]
+
+    dic = {}
+    for a in A:
+        dic[a] = dic.get(a, 0) + 1
+
+    ans = sum(A)
+    for b, c in BC:
+        if b in dic:
+            ans += (c - b) * dic[b]
+            dic[c] = dic.get(c, 0) + dic[b]
+            dic[b] = 0
+        print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    q = int(input())
+    bc = [input().split() for _ in range(q)]
+    b = [int(i[0]) for i in bc]
+    c = [int(i[1]) for i in bc]
+    print(sum(a))
+    for i in range(q):
+        print(sum(a) - a.count(b[i]) * (b[i] - c[i]))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = [0] * q
+    c = [0] * q
+    for i in range(q):
+        b[i], c[i] = map(int, input().split())
+    sum_a = sum(a)
+    for i in range(q):
+        sum_a = sum_a - a[b[i] - 1] * (b[i] - c[i]) + a[b[i] - 1] * c[i]
+        print(sum_a)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+
+    for i in range(q):
+        b, c = map(int, input().split())
+        sum += (c - b) * a.count(b)
+        print(sum)
+        a = [c if x == b else x for x in a]
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = [0] * q
+    c = [0] * q
+    for i in range(q):
+        b[i], c[i] = map(int, input().split())
+
+    sum = 0
+    for i in range(n):
+        sum += a[i]
+
+    for i in range(q):
+        sum = sum - a[b[i] - 1] + c[i] * b[i]
+        print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    BC = [list(map(int, input().split())) for _ in range(Q)]
+    S = sum(A)
+    for i in range(Q):
+        B, C = BC[i]
+        S += (C - B) * A.count(B)
+        print(S)
+        A = [C if a == B else a for a in A]
+    return
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    #读取输入数据
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    BC = [list(map(int, input().split())) for _ in range(Q)]
+
+    #计算并输出答案
+    print(sum(A))
+    for i in range(Q):
+        b, c = BC[i]
+        print(sum(A) - A.count(b) * (b - c))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    q = int(input())
+    b = []
+    c = []
+    for _ in range(q):
+        b_, c_ = map(int, input().split())
+        b.append(b_)
+        c.append(c_)
+    sum_a = sum(a)
+    for i in range(q):
+        sum_a = sum_a + (c[i] - b[i]) * a.count(b[i])
+        print(sum_a)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    Q = int(input())
+    BC = [list(map(int, input().split())) for _ in range(Q)]
+
+    sumA = sum(A)
+    dic = {}
+    for i in range(N):
+        if A[i] not in dic:
+            dic[A[i]] = 1
+        else:
+            dic[A[i]] += 1
+
+    for i in range(Q):
+        sumA += (BC[i][1] - BC[i][0]) * dic.get(BC[i][0], 0)
+        if BC[i][1] in dic:
+            dic[BC[i][1]] += dic.get(BC[i][0], 0)
+            dic[BC[i][0]] = 0
+        else:
+            dic[BC[i][1]] = dic.get(BC[i][0], 0)
+            dic[BC[i][0]] = 0
+        print(sumA)

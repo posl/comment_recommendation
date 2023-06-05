@@ -1,38 +1,100 @@
-#问题陈述
-#桌子上有三张卡片，每张卡片上都写有一个正整数。卡片上的整数是A、B和C。
-#你选择了两张卡片并把它们捡起来。
-#请找出这两张卡片上的整数的最大可能之和。
-#
-#限制条件
-#1 ≦ a,b,c ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C
-#
-#輸出
-#打印答案为整数。
-#
-#输入样本 1
-#3 4 5
-#
-#输出示例 1
-#9
-#如果你拿起两张4和5的牌，整数之和将是4+5=9。
-#没有办法捡到总和更大的牌，所以我们应该打印9。
-#
-#输入样本2
-#6 6 6
-#
-#输出样本 2
-#12
-#无论你选择哪张牌，整数之和都是12。
-#
-#样本输入3
-#99 99 98
-#
-#样本输出3
-#198
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c = map(int, input().split())
+    if a > b:
+        if a > c:
+            print(a + max(b, c))
+        else:
+            print(c + b)
+    else:
+        if b > c:
+            print(b + max(a, c))
+        else:
+            print(a + c)
+
+=======
+Suggestion 2
+
+def problem207_a():
+    #读取输入
+    a,b,c = map(int,input().split())
+    #计算输出
+    print(max(a+b,b+c,c+a))
+
+problem207_a()
+
+=======
+Suggestion 3
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+    # 计算答案
+    ans = a + b + c - min(a, b, c)
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 4
+
+def max_of_two(a,b):
+    if a>b:
+        return a
+    else:
+        return b
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c=map(int,input().split())
+    print(max(a+b,b+c,c+a))
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c = map(int,input().split())
+    print(a+b+c-max(a,b,c))
+
+=======
+Suggestion 7
+
+def main():
+    # 读入数据
+    a, b, c = map(int, input().split())
+    # 处理数据
+    max_num = max(a, b, c)
+    # 输出结果
+    print(max_num*2 + a + b + c - max_num*3)
+
+=======
+Suggestion 8
+
+def main():
+    A,B,C = map(int, input().split())
+    print(max(A+B,A+C,B+C))
+
+=======
+Suggestion 9
+
+def main():
+    # 读取输入
+    a, b, c = map(int, input().split())
+
+    # 计算答案
+    ans = max(a + b, b + c, c + a)
+
+    # 打印答案
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    a, b, c = map(int, input().split())
+    print(max(a+b, a+c, b+c))

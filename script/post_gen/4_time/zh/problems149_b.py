@@ -1,40 +1,96 @@
-#问题陈述
-#高桥有A块饼干，青木有B块饼干。
-#高桥将做以下动作K次：
-#如果高桥有一块或多块饼干，就吃他的一块饼干。
-#否则，如果青木有一个或更多的曲奇，就吃青木的一个曲奇。
-#如果他们都没有饼干，就什么都不做。
-#最后，高桥和青木将分别有多少块饼干？
-#
-#限制条件
-#0 ≦ A ≦ 10^{12}
-#0 ≦ B ≦ 10^{12}
-#0 ≦ K ≦ 10^{12}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B K
-#
-#輸出
-#打印经过K次行动后高桥和青木的饼干数量。
-#
-#输入样本 1
-#2 3 3
-#
-#样本输出 1
-#0 2
-#高桥会做以下事情：
-#他有两块饼干，所以他吃了其中一块。
-#现在他还剩下一块饼干，他就吃了。
-#现在他没有饼干了，但青木有三块，所以高桥吃了其中一块。
-#因此，最后，高桥将有0块饼干，而青木将有2块。
-#
-#输入样本2
-#500000000000 500000000000 1000000000000
-#
-#样本输出2
-#0 0
-#注意溢出的情况。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B, K = map(int, input().split())
+    if K <= A:
+        print(A-K, B)
+    elif K <= A+B:
+        print(0, B-(K-A))
+    else:
+        print(0, 0)
+
+=======
+Suggestion 2
+
+def main():
+    A,B,K = map(int,input().split())
+    if K >= A:
+        K -= A
+        A = 0
+    else:
+        A -= K
+        K = 0
+    if K >= B:
+        K -= B
+        B = 0
+    else:
+        B -= K
+        K = 0
+    print(A,B)
+
+=======
+Suggestion 3
+
+def main():
+    a, b, k = map(int, input().split())
+    if a >= k:
+        print(a-k, b)
+    elif a+b >= k:
+        print(0, b-(k-a))
+    else:
+        print(0, 0)
+
+=======
+Suggestion 4
+
+def solve():
+    A, B, K = map(int, input().split())
+    if K <= A:
+        print(A-K, B)
+    elif K <= A+B:
+        print(0, B-(K-A))
+    else:
+        print(0, 0)
+
+=======
+Suggestion 5
+
+def solve():
+    a,b,k = map(int,input().split())
+    if k <= a:
+        print(a-k,b)
+    elif k <= a+b:
+        print(0,b-(k-a))
+    else:
+        print(0,0)
+
+=======
+Suggestion 6
+
+def main():
+    a,b,k = map(int,input().split())
+    if k <= a:
+        print(a-k,b)
+    elif k <= a+b:
+        print(0,b-(k-a))
+    else:
+        print(0,0)
+
+=======
+Suggestion 7
+
+def main():
+    a, b, k = map(int, input().split())
+    if k > a:
+        k -= a
+        a = 0
+        if k > b:
+            b = 0
+        else:
+            b -= k
+    else:
+        a -= k
+    print(a, b)

@@ -1,36 +1,151 @@
-#问题陈述
-#在完成了网络游戏ATChat的教程之后，你很快就决定去一个特定的地方，那里正好有N-1个玩家。这N个玩家，包括你，编号为1到N，玩家i的友好度为A_i。
-#这N个玩家将按照一定的顺序逐一到达该地。为了确保没有人迷路，你制定了以下规则：已经到达那里的玩家应该形成一个圆圈，而刚刚到达那里的玩家应该在某个地方切入这个圆圈。
-#当每个玩家，除了第一个到达的玩家，到达该处时，该玩家得到的安慰等于顺时针方向相邻玩家的友好度和逆时针方向相邻玩家的友好度中较小的那个。第一个到达那里的玩家得到的舒适度为0。
-#通过优化选择到达的顺序和在圆圈中切入的位置，N个玩家能得到的最大总舒适度是多少？
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^9
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印N个玩家能得到的最大总舒适度。
-#
-#样本输入1
-#4
-#2 2 1 3
-#
-#样本输出1
-#7
-#按玩家4、2、1、3的顺序到达该处，并按图中所示切入圆圈，他们可以得到总的舒适度为7。
-#他们不能得到大于7的总舒适度，所以答案是7。
-#
-#输入样本2
-#7
-#1 1 1 1 1 1 1
-#
-#样本输出2
-#6
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    ans = 0
+    for i in range(n):
+        s -= a[i]
+        ans += a[i] * s
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.append(a[0])
+    a.append(a[1])
+    s = sum(a[:3])
+    ans = s
+    for i in range(n-3):
+        s += a[i+3]
+        s -= a[i]
+        ans = max(ans, s)
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    a.append(a[0])
+    a.append(a[1])
+    sum = 0
+    for i in range(n):
+        sum += abs(a[i+1] - a[i])
+    print(sum)
+
+=======
+Suggestion 4
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ans = 0
+    for i in range(N):
+        ans += (N - i - 1) * A[i]
+    print(ans)
+solve()
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A = A + A
+    for i in range(2 * N - 1):
+        A[i + 1] += A[i]
+    ans = 0
+    for i in range(N):
+        ans = max(ans, A[i + N - 1] - A[i])
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.append(0)
+    a.append(0)
+
+    # 从a[0]开始，逆时针方向的最大值
+    left = [0] * (n + 2)
+    # 从a[n-1]开始，顺时针方向的最大值
+    right = [0] * (n + 2)
+
+    for i in range(n):
+        left[i + 1] = max(left[i], a[i])
+        right[n - i] = max(right[n - i + 1], a[n - i - 1])
+
+    ans = 0
+    for i in range(n):
+        ans = max(ans, a[i] + min(left[i], right[i + 2]))
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort(reverse=True)
+    ans = A[0]
+    for i in range(1, N):
+        ans += A[i] * (i + 1)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if i == 0:
+            ans += a[i]
+        else:
+            ans += min(a[i], a[i-1])
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.append(a[0])
+    a.append(a[1])
+    for i in range(n):
+        a[i] += a[i+1]
+    a.append(a[2])
+    ans = 0
+    for i in range(n):
+        ans = max(ans, min(a[i], a[i+n]))
+    print(ans)
+
+=======
+Suggestion 10
+
+def maxComfort(n, a):
+    a.append(a[0])
+    a.append(a[1])
+    max_comfort = 0
+    comfort = 0
+    for i in range(1, n+1):
+        comfort += min(a[i-1], a[i+1])
+        max_comfort = max(max_comfort, comfort)
+        if comfort < 0:
+            comfort = 0
+    return max_comfort

@@ -1,42 +1,165 @@
-#问题陈述
-#高桥有许多红球和蓝球。现在，他要把它们摆成一排。
-#最初，没有放置任何球。
-#高桥很有耐心，他要做10^{100}次以下操作：
-#在已经放置的一排球的末端放置A蓝球。然后，在这一排球的末尾放置B红球。
-#这样做出来的一排球中，前N个球中会有多少个蓝球？
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < a + b ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N A B
-#
-#輸出
-#打印这一排球中前N个球中的蓝球数量。
-#
-#输入样本 1
-#8 3 4
-#
-#输出示例 1
-#4
-#让b表示一个蓝球，r表示一个红球。行中的前八个球将是bbbrrrrb，其中有四个蓝球。
-#
-#输入样本2
-#8 0 4
-#
-#样本输出2
-#0
-#他从一开始就只放红球。
-#
-#输入样本 3
-#6 2 4
-#
-#输出样本 3
-#2
-#在bbrrrrr中，有两个蓝球。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, a, b = map(int, input().split())
+
+    if a + b == 0:
+        print(0)
+    else:
+        print(n // (a + b) * a + min(n % (a + b), a))
+
+=======
+Suggestion 2
+
+def main():
+    n,a,b = map(int, input().split())
+    print(n//(a+b)*a + min(a, n%(a+b)))
+
+=======
+Suggestion 3
+
+def main():
+    n, a, b = map(int, input().split())
+    if a > b:
+        print(0)
+    elif a == b:
+        print(1)
+    else:
+        print(n * a // (a + b))
+
+=======
+Suggestion 4
+
+def solution1():
+    N, A, B = map(int, input().split())
+    if A + B == 0:
+        print(0)
+        return
+    if N == 1:
+        if A > 0:
+            print(1)
+        else:
+            print(0)
+        return
+    if A == 0:
+        print(0)
+        return
+    if B == 0:
+        print(1)
+        return
+    if N <= A:
+        print(N)
+        return
+    if N == A + 1:
+        print(A)
+        return
+    if N == A + 2:
+        print(A + 1)
+        return
+    if A <= N <= A + B:
+        print(A)
+        return
+    if N == A + B + 1:
+        print(A + 1)
+        return
+    if N == A + B + 2:
+        print(A + 2)
+        return
+    if A + B + 3 <= N <= 2 * A + B + 2:
+        print(N - A - 1)
+        return
+    if N == 2 * A + B + 3:
+        print(A + 1)
+        return
+    if N == 2 * A + B + 4:
+        print(A + 2)
+        return
+    if 2 * A + B + 5 <= N <= 2 * A + 2 * B + 4:
+        print(A + 2)
+        return
+    if N == 2 * A + 2 * B + 5:
+        print(A + 2)
+        return
+    if N == 2 * A + 2 * B + 6:
+        print(A + 3)
+        return
+    if 2 * A + 2 * B + 7 <= N <= 3 * A + 2 * B + 6:
+        print(A + 3)
+        return
+    if N == 3 * A + 2 * B + 7:
+        print(A + 3)
+        return
+    if N == 3 * A + 2 * B + 8:
+        print(A + 4)
+        return
+    if 3 * A + 2 * B + 9 <= N <= 3 * A + 3 * B + 8:
+        print(A
+
+=======
+Suggestion 5
+
+def main():
+    N, A, B = map(int, input().split())
+    if N <= A + B:
+        print(min(A, N))
+    else:
+        print(A + (N - A - B) * (A - B))
+
+=======
+Suggestion 6
+
+def problem158_b():
+    n, a, b = map(int, input().split())
+    if a+b == 0:
+        print(0)
+        return
+    if a == 0:
+        print(0)
+        return
+    if n <= a+b:
+        print(n)
+        return
+    else:
+        print(a+(n-a-b)*b)
+
+=======
+Suggestion 7
+
+def f(n, a, b):
+    if n <= a:
+        return n
+    else:
+        return a + (n - a) * b
+
+=======
+Suggestion 8
+
+def main():
+    N,A,B = map(int,input().split())
+    b = N//(A+B)
+    r = N%(A+B)
+    print(b*A+r if r<=A else b*A+A)
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif B == 0:
+        print(N)
+    else:
+        print(N // (A + B) * A + min(N % (A + B), A))
+
+=======
+Suggestion 10
+
+def main():
+    N, A, B = map(int, input().split())
+    n = N // (A + B)
+    r = N % (A + B)
+    print(n * A + min(r, A))

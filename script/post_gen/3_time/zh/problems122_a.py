@@ -1,27 +1,105 @@
-#问题说明
-#在AtCoder星球上，有四种类型的碱基：A与T结合，C与G结合。
-#给你一个字母b作为输入，它是A、C、G或T。编写一个程序，打印出代表与碱基b结合的字母。
-#
-#限制条件
-#b是A、C、G和T中的一个字母。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#b
-#
-#输出
-#打印代表与基数b结合的基数的字母。
-#
-#输入样本1
-#A
-#
-#样本输出1
-#T
-#
-#采样输入2
-#G
-#
-#采样输出2
-#C
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem122_a():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+    elif b == 'T':
+        print('A')
+
+=======
+Suggestion 2
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'G':
+        print('C')
+    elif b == 'C':
+        print('G')
+
+=======
+Suggestion 3
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "C":
+        print("G")
+    elif b == "G":
+        print("C")
+
+=======
+Suggestion 4
+
+def main():
+    b = input()
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')
+
+=======
+Suggestion 5
+
+def get_complementary_base(base):
+    if base == 'A':
+        return 'T'
+    elif base == 'T':
+        return 'A'
+    elif base == 'C':
+        return 'G'
+    elif base == 'G':
+        return 'C'
+    else:
+        return 'unknown base'
+
+=======
+Suggestion 6
+
+def main():
+    b = input()
+    if b == "A":
+        print("T")
+    elif b == "T":
+        print("A")
+    elif b == "G":
+        print("C")
+    elif b == "C":
+        print("G")
+    else:
+        print("输入的碱基不正确！")
+
+=======
+Suggestion 7
+
+def main():
+    # 读取输入
+    b = input()
+
+    # 计算并输出结果
+    if b == 'A':
+        print('T')
+    elif b == 'T':
+        print('A')
+    elif b == 'C':
+        print('G')
+    elif b == 'G':
+        print('C')

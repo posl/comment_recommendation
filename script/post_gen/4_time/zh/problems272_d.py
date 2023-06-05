@@ -1,47 +1,193 @@
-#问题陈述
-#有一个有N×N个方格的网格。  我们用(i, j)表示位于从上往下第i行和从左往下第j列的方格。
-#最初，一个棋子被放在（1，1）上。  你可以重复以下的操作，次数不限：
-#设(i, j)为棋子目前所处的方格。  将棋子移到与(i, j)的距离正好是(M)^(1/2)的那个方格。
-#在这里，我们将方格（i，j）和方格（k，l）之间的距离定义为（（i-k）^2+（j-l）^2）^（1/2）。
-#对于所有的方格（i，j），确定棋子是否可以到达（i，j）。  如果可以，请找出这样做所需的最小操作数。
-#
-#限制条件
-#1 ≦ N ≦ 400
-#1 ≦ M ≦ 10^6
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M
-#
-#输出
-#打印N行。  第i行应该包含N个整数。  如果这块能达到(i, j)，第i行中的第j个整数应该是所需的最小操作数；否则，它应该是-1。
-#
-#输入样本 1
-#3 1
-#
-#样本输出 1
-#0 1 2
-#1 2 3
-#2 3 4
-#你可以将棋子移动到四个相邻的位置。
-#例如，我们可以通过以下两个操作将棋子移动到（2,2）。
-#棋子现在在(1,1)上。(1,1)和(1,2)之间的距离正好是(1)^(1/2)，所以将棋子移到(1,2)。
-#棋子现在在(1,2)上。(1,2)和(2,2)之间的距离正好是(1)^(1/2)，所以把棋子移到(2,2)。
-#
-#输入样本 2
-#10 5
-#
-#输出样本 2
-#0 3 2 3 2 3 4 5 4 5
-#3 4 1 2 3 4 3 4 5 6
-#2 1 4 3 2 3 4 5 4 5
-#3 2 3 2 3 4 3 4 5 6
-#2 3 2 3 4 3 4 5 4 5
-#3 4 3 4 3 4 5 4 5 6
-#4 3 4 3 4 5 4 5 6 5
-#5 4 5 4 5 4 5 6 5 6
-#4 5 4 5 4 5 6 5 6 7
-#5 6 5 6 5 6 5 6 7 6
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    N,M = map(int,input().split())
+    l = []
+    for i in range(N):
+        l.append([])
+        for j in range(N):
+            l[i].append(-1)
+    l[0][0] = 0
+    for i in range(N):
+        for j in range(N):
+            if l[i][j] != -1:
+                if i - int(M**0.5) >= 0:
+                    if l[i - int(M**0.5)][j] == -1:
+                        l[i - int(M**0.5)][j] = l[i][j] + 1
+                    elif l[i - int(M**0.5)][j] > l[i][j] + 1:
+                        l[i - int(M**0.5)][j] = l[i][j] + 1
+                if i + int(M**0.5) < N:
+                    if l[i + int(M**0.5)][j] == -1:
+                        l[i + int(M**0.5)][j] = l[i][j] + 1
+                    elif l[i + int(M**0.5)][j] > l[i][j] + 1:
+                        l[i + int(M**0.5)][j] = l[i][j] + 1
+                if j - int(M**0.5) >= 0:
+                    if l[i][j - int(M**0.5)] == -1:
+                        l[i][j - int(M**0.5)] = l[i][j] + 1
+                    elif l[i][j - int(M**0.5)] > l[i][j] + 1:
+                        l[i][j - int(M**0.5)] = l[i][j] + 1
+                if j + int(M**0.5) < N:
+                    if l[i][j + int(M**0.5)] == -1:
+                        l[i][j + int(M**0.5)] = l[i][j] + 1
+                    elif l[i][j + int(M**0.5)] > l[i][j] + 1:
+                        l[i][j + int(M**0.5)] = l[i][j] + 1
+    for i in range(N):
+        for j in range
+
+=======
+Suggestion 3
+
+def main():
+    num = input().split()
+    n = int(num[0])
+    m = int(num[1])
+    #print(n,m)
+    #print(n**2)
+    #print(m**0.5)
+    #print(n**2-m**0.5)
+    #print(int(n**2-m**0.5))
+    #print((n**2-m**0.5)**0.5)
+    #print(int((n**2-m**0.5)**0.5))
+    #print(int((n**2-m**0.5)**0.5)+1)
+    #print(int((n**2-m**0.5)**0.5)+2)
+    #print(int((n**2-m**0.5)**0.5)+3)
+    #print(int((n**2-m**0.5)**0.5)+4)
+    #print(int((n**2-m**0.5)**0.5)+5)
+    #print(int((n**2-m**0.5)**0.5)+6)
+    #print(int((n**2-m**0.5)**0.5)+7)
+    #print(int((n**2-m**0.5)**0.5)+8)
+    #print(int((n**2-m**0.5)**0.5)+9)
+    #print(int((n**2-m**0.5)**0.5)+10)
+    #print(int((n**2-m**0.5)**0.5)+11)
+    #print(int((n**2-m**0.5)**0.5)+12)
+    #print(int((n**2-m**0.5)**0.5)+13)
+    #print(int((n**2-m**0.5)**0.5)+14)
+    #print(int((n**2-m**0.5)**0.5)+15)
+    #print(int((n**2-m**0.5)**0.5)+16)
+    #print(int((n**2-m**0.5)**0.5)+17)
+    #print(int((n**2-m**0.5)**0.5)+18)
+    #print(int((n**2-m**0.5)**0.5)+19)
+    #print(int((n**2-m**0.5
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    from math import sqrt
+    sqm = round(sqrt(m))
+    if sqm**2 == m:
+        sqm += 1
+    ans = [[0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == 0 and j == 0:
+                continue
+            ans[i][j] = 10**9
+            for k in range(i+1):
+                for l in range(j+1):
+                    if (i-k)**2+(j-l)**2 == m:
+                        ans[i][j] = min(ans[i][j],ans[k][l]+1)
+                    if (i-l)**2+(j-k)**2 == m:
+                        ans[i][j] = min(ans[i][j],ans[k][l]+1)
+    for i in range(n):
+        for j in range(n):
+            if ans[i][j] == 10**9:
+                ans[i][j] = -1
+    for i in range(n):
+        print(*ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    ans = [[-1 for _ in range(n)] for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                ans[i][j] = 0
+            else:
+                if i>j:
+                    ans[i][j] = ans[j][i]
+    for i in range(n):
+        for j in range(n):
+            if ans[i][j] == -1:
+                ans[i][j] = (i-j)**2
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                ans[i][j] = min(ans[i][j],ans[i][k]+ans[k][j])
+    for i in range(n):
+        for j in range(n):
+            if ans[i][j] == 0:
+                ans[i][j] = -1
+            else:
+                ans[i][j] = int(ans[i][j]**0.5)
+    for i in range(n):
+        print(*ans[i])
+
+=======
+Suggestion 6
+
+def main():
+    N,M=map(int,input().split())
+    result=[[-1 for i in range(N)] for j in range(N)]
+    result[0][0]=0
+    for i in range(N):
+        for j in range(N):
+            if result[i][j]!=-1:
+                if i-1>=0 and result[i-1][j]==-1:
+                    result[i-1][j]=result[i][j]+1
+                if i+1<N and result[i+1][j]==-1:
+                    result[i+1][j]=result[i][j]+1
+                if j-1>=0 and result[i][j-1]==-1:
+                    result[i][j-1]=result[i][j]+1
+                if j+1<N and result[i][j+1]==-1:
+                    result[i][j+1]=result[i][j]+1
+    for i in range(N):
+        print(" ".join(map(str,result[i])))
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    M = M ** (1 / 2)
+    M = int(M)
+    if M == 0:
+        print(-1)
+        return
+    else:
+        # 棋盘
+        chess = [[0 for _ in range(N)] for _ in range(N)]
+        # 起始位置
+        chess[0][0] = 1
+        # 从起始位置开始搜索
+        search(chess, 0, 0, 1, M)
+        # 打印结果
+        for i in range(N):
+            print(*chess[i])
+
+=======
+Suggestion 8
+
+def get_input():
+    N,M = map(int,input().split())
+    return N,M
+
+=======
+Suggestion 9
+
+def get_input():
+    n, m = map(int, input().split())
+    return n, m

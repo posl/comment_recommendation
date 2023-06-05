@@ -1,76 +1,168 @@
-#问题陈述
-#高桥今天又在独自练习 "白鸟"。
-#白鸟是一种游戏，内容如下：
-#在第一轮中，一个玩家宣布任何一个词。
-#在随后的回合中，玩家宣布一个满足以下条件的词：
-#该词之前没有宣布过。
-#该词的第一个字符与上一个宣布的词的最后一个字符相同。
-#
-#在这个游戏中，他正在练习在10秒内宣布尽可能多的单词。
-#给你高桥宣布的字数，N，和他宣布的第i个字，W_i，对于每个i，确定是否遵守了shiritori的规则，即他宣布的每个字都满足条件。
-#
-#限制条件
-#N是一个整数，满足2 ≦ N ≦ 100。
-#W_i是一个长度在1到10之间（含）的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#W_1
-#W_2
-#:
-#W_N
-#
-#输出
-#如果高桥宣布的每个词都满足条件，则打印Yes；否则，打印No。
-#
-#输入样本 1
-#4
-#hoge
-#english
-#hoge
-#Enigma
-#
-#样本输出1
-#No
-#由于hoge被多次宣布，白鸟的规则没有被遵守。
-#
-#输入样本2
-#9
-#basic
-#c
-#cpp
-#php
-#python
-#nadesico
-#ocaml
-#lua
-#assembly
-#
-#输出样本2
-#Yes
-#
-#样品输入3
-#8
-#a
-#aa
-#aaa
-#aaaa
-#aaaaa
-#aaaaaa
-#aaa
-#aaaaaaa
-#
-#样本输出3
-#No
-#
-#样本输入4
-#3
-#abc
-#arc
-#agc
-#
-#样本输出4
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def check_shiritori(n, words):
+    if len(words) != n:
+        return False
+    if len(set(words)) != n:
+        return False
+    for i in range(1, n):
+        if words[i][0] != words[i - 1][-1]:
+            return False
+    return True
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        word = input()
+        if word in words:
+            print("No")
+            return
+        else:
+            words.append(word)
+        if i > 0 and words[i-1][-1] != words[i][0]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def checkShiritori(words):
+    if len(words) == len(set(words)):
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    W = []
+    for i in range(N):
+        W.append(input())
+    for i in range(1, N):
+        if W[i] in W[:i]:
+            print("No")
+            return
+        if W[i][0] != W[i - 1][-1]:
+            print("No")
+            return
+    print("Yes")
+
+=======
+Suggestion 5
+
+def check_shiritori(word_list):
+    word_dict = {}
+    for word in word_list:
+        if word in word_dict:
+            return False
+        else:
+            word_dict[word] = 1
+    for i in range(len(word_list)-1):
+        if word_list[i][-1] != word_list[i+1][0]:
+            return False
+    return True
+
+=======
+Suggestion 6
+
+def check_shiritori(words):
+    for i in range(len(words)):
+        if i == 0:
+            continue
+        if words[i][0] != words[i-1][-1]:
+            return False
+    return True
+
+n = int(input())
+words = []
+for i in range(n):
+    word = input()
+    words.append(word)
+
+=======
+Suggestion 7
+
+def check_shiritori(words):
+    if len(words) == len(set(words)):
+        for i in range(0, len(words)-1):
+            if words[i][-1] != words[i+1][0]:
+                return False
+        return True
+    else:
+        return False
+
+n = int(input())
+words = []
+for i in range(n):
+    words.append(input())
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    word_list = []
+    word_list.append(input())
+    for i in range(N-1):
+        word_list.append(input())
+    for i in range(N-1):
+        if word_list[i][-1] != word_list[i+1][0]:
+            print('No')
+            exit()
+        for j in range(i+1,N):
+            if word_list[i] == word_list[j]:
+                print('No')
+                exit()
+    print('Yes')
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    words = []
+    for i in range(n):
+        word = input()
+        if word in words:
+            print('No')
+            return
+        words.append(word)
+        if i == 0:
+            continue
+        if words[i][0] != words[i-1][-1]:
+            print('No')
+            return
+    print('Yes')
+    return
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    w = []
+    for i in range(n):
+        w.append(input())
+    flag = True
+    for j in range(n-1):
+        if w[j][-1] != w[j+1][0]:
+            flag = False
+            break
+        for k in range(j+1,n):
+            if w[j] == w[k]:
+                flag = False
+                break
+    if flag:
+        print("Yes")
+    else:
+        print("No")

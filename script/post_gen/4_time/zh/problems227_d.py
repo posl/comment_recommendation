@@ -1,41 +1,141 @@
-#问题陈述
-#KEYENCE有N个部门，其中A_i员工属于第i个部门（1 ≦ i ≦ N）。没有员工属于多个部门。
-#该公司正在计划跨部门的项目。每个项目将由K个不同部门的员工组成。
-#最多可以做多少个项目？没有员工可以参与多个项目。
-#
-#限制条件
-#1 ≦ k ≦ n ≦ 2 × 10^5
-#1 ≦ A_i ≦ 10^{12}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N K
-#A_1 A_2 ...A_N
-#
-#输出
-#打印最大可能的项目数。
-#
-#输入样本 1
-#3 3
-#2 3 4
-#
-#样本输出 1
-#2
-#可以有两个项目，每个项目由来自不同部门的三名员工组成。
-#
-#输入样本2
-#4 2
-#1 1 3 4
-#
-#样本输出 2
-#4
-#
-#样本输入 3
-#4 3
-#1 1 3 4
-#
-#样本输出 3
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    b = []
+    for i in range(n - 1):
+        b.append(a[i + 1] - a[i])
+    b.sort()
+    print(sum(b[:n - k]))
+
+=======
+Suggestion 2
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    a = a[::-1]
+    print(sum(a[:k]))
+
+=======
+Suggestion 3
+
+def solve():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(sum(a[:k]))
+
+=======
+Suggestion 4
+
+def f(n,k,a):
+    d={}
+    for i in a:
+        if i not in d:
+            d[i]=1
+        else:
+            d[i]+=1
+    ans=0
+    for i in d:
+        if d[i]>=k:
+            ans+=k
+        else:
+            ans+=d[i]
+    return ans
+n,k=map(int,input().split())
+a=list(map(int,input().split()))
+print(f(n,k,a))
+
+=======
+Suggestion 5
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    if k == 1:
+        print(n)
+    else:
+        ans = 0
+        for i in range(n-k+1):
+            if a[i+k-1] - a[i] < ans:
+                continue
+            else:
+                ans = a[i+k-1] - a[i]
+        print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    a.sort()
+    a.reverse()
+    #print(a)
+    sum = 0
+    for i in range(k):
+        sum += a[i]
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    a = a[::-1]
+    ans = 0
+    for i in range(0, n, k):
+        ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    ans = 0
+    for i in range(n - 1, n - k - 1, -1):
+        ans += a[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def solve():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.sort()
+    print(A)
+    i = 0
+    j = 0
+    cnt = 0
+    while j < N:
+        if A[j] - A[i] >= K:
+            i += 1
+            cnt += 1
+        j += 1
+    print(cnt)
+solve()
+
+=======
+Suggestion 10
+
+def solve(n, k, a):
+    a.sort()
+    a.reverse()
+    sum = 0
+    for i in range(k):
+        sum += a[i]
+    return sum

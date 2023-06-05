@@ -1,44 +1,131 @@
-#问题陈述
-#给你一个长度为N的序列：A_1, A_2, ..., A_N。
-#对于1到N（包括）之间的每个整数i，回答下面的问题：
-#找出该序列中除A_i以外的N-1个元素的最大值。
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#1 ≦ A_i ≦ 200000
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1
-#:
-#A_N
-#
-#输出
-#打印N行。第i行（1 ≦ i ≦ N）应该包含序列中除A_i以外的N-1个元素的最大值。
-#
-#输入样本 1
-#3
-#1
-#4
-#3
-#
-#样本输出1
-#4
-#3
-#4
-#除A_1以外的两个元素，即A_2=4和A_3=3，其最大值为4。
-#除A_2以外的两个元素，即A_1=1和A_3=3，其最大值为3。
-#除A_3以外的两个元素，即A_1=1和A_2=4，其最大值为4。
-#
-#样本输入2
-#2
-#5
-#5
-#
-#样本输出2
-#5
-#5
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    for i in range(n):
+        max = 0
+        for j in range(n):
+            if i != j and a[j] > max:
+                max = a[j]
+        print(max)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+    for i in range(N):
+        print(max(A[:i]+A[i+1:]))
+
+=======
+Suggestion 3
+
+def main():
+    # 读取输入
+    N = int(input())
+    A = []
+    for i in range(N):
+        A.append(int(input()))
+
+    # 求解并输出
+    for i in range(N):
+        print(max(A[0:i] + A[i+1:N]))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    a_max = max(a)
+    for i in range(n):
+        if a[i] == a_max:
+            a[i] = -1
+    a_max = max(a)
+    for i in range(n):
+        if a[i] == -1:
+            print(a_max)
+        else:
+            print(a_max)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = [int(input()) for i in range(N)]
+    A.sort()
+    for i in range(N):
+        if A[i] != A[N-1]:
+            print(A[N-1])
+        else:
+            print(A[N-2])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    a_max = max(a)
+    for i in range(n):
+        if a[i] == a_max:
+            print(max(a[:i] + a[i+1:]))
+        else:
+            print(a_max)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    max_a = max(a)
+    for i in range(n):
+        if a[i] == max_a:
+            print(max(a[:i]+a[i+1:]))
+        else:
+            print(max_a)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+    a_max = max(a)
+    a_max_index = a.index(a_max)
+    a.pop(a_max_index)
+    for i in range(n-1):
+        print(a_max)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        a.append(int(input()))
+
+    max_num = max(a)
+    for i in range(n):
+        if a[i] == max_num:
+            print(max(a[:i] + a[i+1:]))
+        else:
+            print(max_num)

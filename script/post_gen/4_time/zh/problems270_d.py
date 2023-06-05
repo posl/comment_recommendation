@@ -1,59 +1,122 @@
-#问题陈述
-#高桥和青木将用一个序列（A_1，...，A_K）进行取石游戏。
-#有一个最初包含N个石头的堆。两位玩家将交替进行以下操作，由高桥先进行。
-#选择一个A_i，它最多是当前棋堆中棋子的数量。从棋堆中取出A_i的棋子。
-#当棋堆中没有棋子时，游戏结束。
-#如果两位棋手都试图在游戏结束前最大限度地增加他们移走的棋子总数，那么高桥会移走多少个棋子？
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ K ≦ 100
-#1 = A_1 < A_2 < ...< A_K ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N K
-#A_1 A_2 ...A_K
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#10 2
-#1 4
-#
-#样本输出1
-#5
-#下面是游戏的一个可能进展。
-#高桥从棋堆中取出4颗棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从这堆棋子中取出1个棋子。
-#青木从棋堆中移走1个棋子。
-#在这种情况下，高桥去掉了5颗棋子。他不可能移走6个或更多的棋子，所以这就是最大限度。
-#下面是另一种可能的游戏进程，高桥移走了5颗棋子。
-#高桥从棋堆中移走1个棋子。
-#青木从棋堆中移走4个棋子。
-#高桥从牌堆中移走4个棋子。
-#青木从棋堆中移走1个棋子。
-#
-#输入样本 2
-#11 4
-#1 2 3 6
-#
-#样本输出2
-#8
-#下面是对局的一个可能的进展情况。
-#高桥去掉了6个棋子。
-#青木去掉3个棋子。
-#高桥去掉2个棋子。
-#在这种情况下，高桥去掉了8个棋子。他没有办法去掉9个或更多的棋子，所以这就是最大限度。
-#
-#输入样本 3
-#10000 10
-#1 2 4 8 16 32 64 128 256 512
-#
-#样本输出3
-#5136
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    A.append(N+1)
+    ans = 0
+    for i in range(K):
+        ans += max(0,A[i+1]-A[i]-1)
+    print(N-ans)
+
+=======
+Suggestion 2
+
+def main():
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+    A.append(N + 1)
+    ans = 0
+    s = 0
+    for i in range(K):
+        if A[i + 1] - A[i] > ans:
+            ans = A[i + 1] - A[i] - 1
+            s = A[i]
+    print(s)
+    print(ans)
+    return
+
+main()
+
+=======
+Suggestion 3
+
+def problem270_d():
+    pass
+
+=======
+Suggestion 4
+
+def solve(n, k, a):
+    ans = 0
+    for i in range(k):
+        ans += a[i]
+    return ans - a[k - 1] // 2
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+print(solve(n, k, a))
+
+=======
+Suggestion 5
+
+def main():
+    N,K=map(int,input().split())
+    A=list(map(int,input().split()))
+    ans=0
+    for i in range(K-1,-1,-1):
+        if N>=A[i]:
+            ans+=N//A[i]
+            N%=A[i]
+    print(ans)
+
+main()
+
+=======
+Suggestion 6
+
+def cal_max(a, k):
+    if k == 0:
+        return a
+    else:
+        return cal_max(a - (a & -a), k - 1)
+
+=======
+Suggestion 7
+
+def solve():
+    # 读入数据
+    N, K = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # 贪心法
+    ans = 0
+    # 从大到小排序
+    A.sort(reverse=True)
+    # 从大到小遍历
+    for i in range(K):
+        # 从大到小遍历
+        for j in range(A[i]):
+            # 如果N为0，跳出循环
+            if N == 0:
+                break
+            # 否则N减1
+            N -= 1
+            # ans加1
+            ans += 1
+    # 输出结果
+    print(ans)
+
+solve()
+
+=======
+Suggestion 8
+
+def main():
+    N,K = map(int,input().split())
+    A = list(map(int,input().split()))
+    ans = 0
+    for i in range(K-1,-1,-1):
+        if N >= A[i]:
+            ans += (N//A[i])*(i+1)
+            N %= A[i]
+    print(ans)
+
+=======
+Suggestion 9
+
+def get_problem_description():
+    return "270D"

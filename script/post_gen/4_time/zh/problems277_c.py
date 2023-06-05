@@ -1,58 +1,179 @@
-#问题陈述
-#有一座10^9层的大楼，有N个梯子。
-#在第1层（最低层）的高桥想通过梯子（可能没有）到达最高层。
-#梯子的编号从1到N，梯子i连接着A_i-th和B_i-th楼层。人们可以使用梯子i从第A_i层移动到第B_i层，或者反过来，但不能在其他楼层之间移动。
-#高桥可以在同一楼层内自由移动，但不使用梯子就不能在楼层之间移动。
-#高桥能到达的最高楼层是什么？
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#1 ≦ A_i, B_i ≦ 10^9
-#A_i ≠ B_i
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，其格式如下：
-#N
-#A_1 B_1
-#A_2 B_2
-#...
-#A_N B_N
-#
-#输出
-#打印一个代表答案的整数。
-#
-#输入样本 1
-#4
-#1 4
-#4 3
-#4 10
-#8 3
-#
-#样本输出1
-#10
-#他可以通过梯子1到达4楼，再通过梯子3到达10楼。
-#
-#样本输入2
-#6
-#1 3
-#1 5
-#1 12
-#3 5
-#3 12
-#5 12
-#
-#样本输出2
-#12
-#
-#样本输入3
-#3
-#500000000 600000000
-#600000000 700000000
-#700000000 800000000
-#
-#样本输出3
-#1
-#他可能无法在楼层之间移动。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        tmp = input().split()
+        a.append(int(tmp[0]))
+        b.append(int(tmp[1]))
+    return n, a, b
+
+=======
+Suggestion 2
+
+def solve():
+    #读取输入
+    N = int(input())
+    A = [0] * N
+    B = [0] * N
+    for i in range(N):
+        A[i], B[i] = map(int,input().split())
+    #按照梯子的最高层排序
+    AB = sorted(zip(A,B),key=lambda x:x[1])
+    #print(AB)
+    #开始遍历梯子
+    now = 0
+    for a,b in AB:
+        if now < a:
+            now = b
+    print(now)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = [0]*N
+    B = [0]*N
+    for i in range(N):
+        A[i], B[i] = map(int, input().split())
+
+    A.sort()
+    B.sort()
+
+    if N % 2 == 1:
+        print(B[N//2] - A[N//2] + 1)
+    else:
+        print(B[N//2] + B[N//2 - 1] - A[N//2] - A[N//2 - 1] + 1)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1])
+    ans = 1
+    for i in range(n):
+        if ans < ab[i][0]:
+            ans = ab[i][0]
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    n = int(input())
+    a = []
+    b = []
+    for i in range(n):
+        tmp = input().split()
+        a.append(int(tmp[0]))
+        b.append(int(tmp[1]))
+    a.sort()
+    b.sort()
+    if n % 2 == 0:
+        print(b[n // 2] - a[n // 2] + b[n // 2 - 1] - a[n // 2 - 1] + 1)
+    else:
+        print(b[n // 2] - a[n // 2] + 1)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ab = []
+    for i in range(n):
+        ab.append(list(map(int,input().split())))
+
+    ab.sort(key=lambda x:x[1])
+
+    ans = 1
+    for i in range(n):
+        if ab[i][0] < ans <= ab[i][1]:
+            ans = ab[i][1] + 1
+
+    print(ans)
+
+=======
+Suggestion 7
+
+def solve():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n)]
+    ab.sort(key=lambda x: x[1])
+    ans = 1
+    for a, b in ab:
+        if ans < a:
+            ans = b
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N):
+        AB.append(list(map(int, input().split())))
+    AB.sort(key=lambda x: x[1])
+    #print(AB)
+    ans = 0
+    for i in range(N):
+        if AB[i][0] <= ans and AB[i][1] > ans:
+            ans = AB[i][1]
+    print(ans)
+
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+
+    min = 1
+    max = 10**9
+    for i in range(N):
+        if A[i] > min:
+            min = A[i]
+        if B[i] < max:
+            max = B[i]
+
+    if min > max:
+        print(0)
+    else:
+        print(max - min + 1)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    #A, B = [0 for i in range(N)], [0 for i in range(N)]
+    #for i in range(N):
+    #    A[i], B[i] = map(int, input().split())
+    #A.sort()
+    #B.sort()
+    #print(A)
+    #print(B)
+    A, B = zip(*[tuple(map(int, input().split())) for i in range(N)])
+    A = sorted(A)
+    B = sorted(B)
+    print(A)
+    print(B)
+    if N % 2 == 1:
+        print(B[N//2] - A[N//2] + 1)
+    else:
+        print(B[N//2-1] + B[N//2] - A[N//2-1] - A[N//2] + 1)

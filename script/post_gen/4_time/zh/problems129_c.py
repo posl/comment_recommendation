@@ -1,59 +1,156 @@
-#问题陈述
-#有一个有N个台阶的楼梯。高桥现在站在楼梯的脚下，也就是第0个台阶上。
-#他可以一次爬上一个或两个台阶。
-#但是，第a_1，a_2，a_3，...，a_M级台阶的踏板都坏了，所以踏上这些台阶是很危险的。
-#有多少人可以爬到最上面的台阶，也就是第N个台阶，而不踏上那些破损的台阶？
-#求1 000 000 007的模数。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#0 ≦ M ≦ N-1
-#1 ≦ a_1 < a_2 < ...  < a_M ≦ N-1
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N M
-#a_1
-#a_2
-# .
-# .
-# .
-#a_M
-#
-#输出
-#打印在条件下爬上楼梯的方法的数量，模数为1 000 000 007。
-#
-#输入样本 1
-#6 1
-#3
-#
-#样本输出1
-#4
-#有四种方法可以爬上楼梯，如下所示：
-#0 -> 1 -> 2 -> 4 -> 5 -> 6
-#0 -> 1 -> 2 -> 4 -> 6
-#0 -> 2 -> 4 -> 5 -> 6
-#0 -> 2 -> 4 -> 6
-#
-#样本输入2
-#10 2
-#4
-#5
-#
-#样本输出2
-#0
-#如果不踏上破碎的台阶，可能就没有办法爬上楼梯。
-#
-#样本输入3
-#100 5
-#1
-#23
-#45
-#67
-#89
-#
-#样本输出3
-#608200469
-#一定要打印出1 000 000 007的模数。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    N, M = map(int, input().split())
+    a = [0] * (M + 2)
+    a[0] = 0
+    a[M + 1] = N
+    for i in range(1, M + 1):
+        a[i] = int(input())
+    return N, M, a
+
+=======
+Suggestion 2
+
+def main():
+    pass
+
+=======
+Suggestion 3
+
+def climb_stairs(n, m, a):
+    dp = [0 for i in range(n + 1)]
+    dp[0] = 1
+    broken = [False for i in range(n + 1)]
+    for i in a:
+        broken[i] = True
+    for i in range(1, n + 1):
+        if not broken[i]:
+            if i == 1:
+                dp[i] = dp[i - 1]
+            else:
+                dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+    return dp[n]
+
+=======
+Suggestion 4
+
+def climb_stairs(n, m, a):
+    # 0到n的台阶，m个破损台阶，a为破损台阶的位置
+    # 状态转移方程：dp[i] = dp[i-1] + dp[i-2]
+    dp = [0] * (n+1)
+    dp[0] = 1
+    for i in range(1, n+1):
+        if i not in a:
+            dp[i] = dp[i-1] + dp[i-2]
+    return dp[n] % 1000000007
+
+=======
+Suggestion 5
+
+def climb_stairs(n, a):
+    stairs = [0] * (n + 1)
+    stairs[0] = 1
+    for i in range(1, n + 1):
+        for j in range(len(a)):
+            if i - a[j] >= 0:
+                stairs[i] += stairs[i - a[j]]
+                stairs[i] %= 1000000007
+    return stairs[n]
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    broken = [int(input()) for _ in range(m)]
+
+    # 1. 一次爬1阶或2阶，爬到第i阶的方法数记为dp[i]
+    # 2. 如果第i阶是坏的，则dp[i] = 0
+    # 3. 如果第i阶不是坏的，则dp[i] = dp[i-1] + dp[i-2]
+    # 4. 边界条件：dp[0] = 1, dp[1] = 1, dp[2] = 2
+
+    # 1. 一次爬1阶或2阶，爬到第i阶的方法数记为dp[i]
+    dp = [0] * (n + 1)
+
+    # 2. 如果第i阶是坏的，则dp[i] = 0
+    for b in broken:
+        dp[b] = -1
+
+    # 4. 边界条件：dp[0] = 1, dp[1] = 1, dp[2] = 2
+    dp[0] = 1
+    dp[1] = 1
+    dp[2] = 2
+
+    # 3. 如果第i阶不是坏的，则dp[i] = dp[i-1] + dp[i-2]
+    for i in range(3, n + 1):
+        if dp[i] != -1:
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007
+
+    print(dp[n])
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * (n+1)
+    for i in range(m):
+        a[int(input())] = -1
+    a[0] = 1
+    for i in range(1,n+1):
+        if a[i] != -1:
+            if a[i-1] != -1:
+                a[i] += a[i-1]
+            if a[i-2] != -1:
+                a[i] += a[i-2]
+            a[i] %= 1000000007
+    print(a[n])
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    a = [int(input()) for _ in range(m)]
+    a.append(n+1)
+    mod = 10**9+7
+    dp = [0]*(n+1)
+    dp[0] = 1
+    for i in range(n+1):
+        for j in range(m+1):
+            if i+1 == a[j]:
+                dp[i] = 0
+            elif i+1 > a[j]:
+                dp[i] = (dp[i] + dp[i-a[j]-1]) % mod
+    print(dp[n])
+
+=======
+Suggestion 9
+
+def climb(N,M,a):
+    if N == 1:
+        return 1
+    elif N == 2:
+        return 2
+    else:
+        dp = [0 for i in range(N+1)]
+        dp[0] = 1
+        dp[1] = 1
+        dp[2] = 2
+        for i in range(3,N+1):
+            if i in a:
+                dp[i] = 0
+            else:
+                dp[i] = dp[i-1] + dp[i-2]
+    return dp[N]
+
+N,M = map(int,input().split())
+a = []
+for i in range(M):
+    a.append(int(input()))
+
+print(climb(N,M,a)%1000000007)

@@ -1,41 +1,68 @@
-#问题陈述
-#在AtCoder市，有三个车站，编号为1、2、3。
-#一个长度为3的字符串S代表每个车站由哪个公司运营。如果S_i是A，则A公司经营i站；如果S_i是B，则B公司经营i站。
-#为了改善交通状况，对于每一对由A公司经营的车站和由B公司经营的车站，都会有一条公共汽车服务连接它们。
-#确定是否有一对车站将被公共汽车服务所连接。
-#
-#限制条件
-#S的每个字符都是A或B。
-#|S| = 3
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#如果有一对车站将由总线服务连接，则打印Yes；否则，打印No。
-#
-#输入样本1
-#ABA
-#
-#样本输出1
-#Yes
-#A公司经营1号和3号车站，而B公司经营2号车站。
-#在1号站和2号站之间以及2号站和3号站之间会有巴士服务，所以打印Yes。
-#
-#输入样本2
-#BBA
-#
-#样本输出2
-#Yes
-#B公司经营1号和2号车站，而A公司经营3号车站。
-#在1号站和3号站之间以及2号站和3号站之间会有巴士服务，所以打印Yes。
-#
-#输入样本3
-#BBB
-#
-#样本输出3
-#No
-#B公司经营所有的车站。因此，不会有巴士服务，所以打印No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S = input()
+    if S[0] == S[1] == S[2]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 2
+
+def main():
+    s = input()
+    if s == "AAA" or s == "BBB":
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    s = input()
+    if s[0] == s[1] == s[2]:
+        print("No")
+    else:
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    s = input()
+    if s[0] != s[1] and s[1] != s[2] and s[2] != s[0]:
+        print("Yes")
+    else:
+        print("No")
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    if s.count('A') == 1 or s.count('B') == 1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    if s.count('A') > 0 and s.count('B') > 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    print('Yes' if s[0] != s[1] != s[2] != s[0] else 'No')

@@ -1,61 +1,194 @@
-#问题陈述
-#我们有一个0到9（包括）之间的N个整数序列：A=(A_1, ..., A_N)，按这个顺序从左到右排列。
-#直到序列的长度变成1，我们将重复做下面的操作F或G。
-#操作F：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x+y）%10。
-#操作G：删除最左边的两个值（我们称它们为x和y），然后在左端插入（x×y）%10。
-#这里，a%b表示a除以b时的剩余部分。
-#对于每个K=0,1,...,9，请回答以下问题。
-#在我们进行操作的2^{N-1}种可能方式中，有多少种方式最终以K为序列的最终值？
-#由于答案可能是巨大的，请找出998244353的模数。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#0 ≦ A_i ≦ 9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#A_1 ...A_N
-#
-#输出
-#打印10行。
-#第i行应包含K=i-1情况的答案。
-#
-#输入样本 1
-#3
-#2 7 6
-#
-#样本输出1
-#1
-#0
-#0
-#0
-#2
-#1
-#0
-#0
-#0
-#0
-#如果我们先做操作F，后做操作F：序列变成(2,7,6)→(9,6)→(5)。
-#如果我们先做操作F，后做操作G：序列变成(2,7,6)→(9,6)→(4)。
-#如果我们先做操作G，后做操作F：序列变成(2,7,6)→(4,6)→(0)。
-#如果我们先做操作G，后做操作G：序列变成(2,7,6)→(4,6)→(4)。
-#
-#样本输入2
-#5
-#0 1 2 3 4
-#
-#样本输出2
-#6
-#0
-#1
-#1
-#4
-#0
-#1
-#1
-#0
-#2
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    an
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        dp = [[0] * 10 for _ in range(N + 1)]
+        dp[0][0] = 1
+        for j in range(N):
+            for k in range(10):
+                dp[j + 1][(k + A[j]) % 10] += dp[j][k]
+                dp[j + 1][(k + A[j]) % 10] %= MOD
+                dp[j + 1][(k * A[j]) % 10] += dp[j][k]
+                dp[j + 1][(k * A[j]) % 10] %= MOD
+        ans[i] = dp[N][i]
+    print(*ans, sep="\n")
+
+solve()
+
+=======
+Suggestion 3
+
+def get_num():
+    n = int(input())
+    a = list(map(int, input().split(' ')))
+    return n, a
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    mod = 998244353
+    ans = [0] * 10
+    for i in range(10):
+        dp = [0] * 1024
+        dp[0] = 1
+        for j in range(n):
+            for k in range(1023, -1, -1):
+                if dp[k] == 0:
+                    continue
+                if j == n - 1:
+                    if k | (1 << a[j]) == (1 << 10) - 1:
+                        ans[i] += dp[k]
+                        ans[i] %= mod
+                else:
+                    dp[k | (1 << a[j])] += dp[k]
+                    dp[k | (1 << a[j])] %= mod
+                    dp[k] *= 2
+                    dp[k] %= mod
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * 10
+    for a in A:
+        B[a] += 1
+
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    # 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    # 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    # 0, 1,
+
+=======
+Suggestion 6
+
+def main():
+    pass
+
+=======
+Suggestion 7
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    MOD = 998244353
+
+    # 10 ** 5 位の 0 で初期化されたビット列を用意する
+    bit = [0] * (10 ** 5)
+
+    # 1 から N までの各 i について、A[i] のビットを立てる
+    for i in range(N):
+        bit[A[i]] = 1
+
+    # 2 ** (N - 1) のビット列を用意する
+    bit2 = [0] * (2 ** (N - 1))
+
+    # 0 から 2 ** (N - 1) - 1 までの各 i について、
+    # i を 2 進数表記にしたときの各桁のビットを bit2 に立てる
+    for i in range(2 ** (N - 1)):
+        for j in range(N - 1):
+            if (i >> j) & 1:
+                bit2[i] += 1
+
+    # 各 K について、答えを求める
+    for k in range(10):
+        ans = 0
+        for i in range(2 ** (N - 1)):
+            # 操作の順番を bit2[i] によって決める
+            # bit2[i] が奇数のとき、最後に G を行う
+            # bit2[i] が偶数のとき、最後に F を行う
+            # このとき、操作の順番は 2 ** (N - 1) 通り存在する
+            # このうち、K が最後になるのは、
+            #   (N - 1) 回目の操作で K が出現する場合
+            # または、
+            #   (N - 1) 回目の操作で K が出現しない場合で、
+            #   その場合に限り、N 回目の操作
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    cnt = [0] * 10
+    for i in a:
+        cnt[i] += 1
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = (cnt[i] * (cnt[i] - 1)) // 2
+    for i in range(10):
+        for j in range(i + 1, 10):
+            ans[(i * j) % 10] += cnt[i] * cnt[j]
+    for i in ans:
+        print(i)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = [0] * 10
+    for i in range(10):
+        ans[i] = a.count(i)
+    for i in range(n - 1):
+        ans2 = [0] * 10
+        for j in range(10):
+            ans2[(j + a[i]) % 10] += ans[j]
+            ans2[(j * a[i]) % 10] += ans[j]
+        ans = ans2
+    for i in range(10):
+        print(ans[i])
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = [0] * 10
+    ans[A[0]] += 1
+    for i in range(N - 1):
+        B = [0] * 10
+        for j in range(10):
+            B[(j + A[i + 1]) % 10] += ans[j]
+            B[(j * A[i + 1]) % 10] += ans[j]
+        ans = B
+    for i in range(10):
+        print(ans[i] % 998244353)

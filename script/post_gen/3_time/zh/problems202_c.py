@@ -1,50 +1,206 @@
-#问题陈述
-#给出三个长度为N的序列：A = (A_1, A_2, ..., A_N), B = (B_1, B_2, ..., B_N), 和 C = (C_1, C_2, ..., C_N), 由1到N（包括）之间的整数组成。
-#有多少对（i，j）1到N（包括）之间的整数满足A_i=B_{C_j}？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i, B_i, C_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#C_1 C_2 ...C_N
-#
-#输出
-#打印A_i = B_{C_j}的配对数（i, j）。
-#
-#输入样本 1
-#3
-#1 2 2
-#3 1 2
-#2 3 2
-#
-#样本输出1
-#4
-#有四对满足条件：（1，1），（1，3），（2，2），（3，2）。
-#
-#样本输入2
-#4
-#1 1 1 1
-#1 1 1 1
-#1 2 3 4
-#
-#样本输出2
-#16
-#所有的配对都满足条件。
-#
-#样本输入3
-#3
-#2 3 3
-#1 3 3
-#1 1 1
-#
-#样本输出3
-#0
-#没有一对满足条件。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+    C.sort()
+    count = 0
+    for i in range(n):
+        count += A.count(B[C[i]-1])
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    #B中的元素作为key，B中元素出现的次数作为value存储在字典中
+    B_dict = {}
+    for i in range(N):
+        if B[i] in B_dict:
+            B_dict[B[i]] += 1
+        else:
+            B_dict[B[i]] = 1
+
+    #C中的元素作为key，C中元素出现的次数作为value存储在字典中
+    C_dict = {}
+    for i in range(N):
+        if C[i] in C_dict:
+            C_dict[C[i]] += 1
+        else:
+            C_dict[C[i]] = 1
+
+    #C中的元素作为key，C中元素出现的次数作为value存储在字典中
+    A_dict = {}
+    for i in range(N):
+        if A[i] in A_dict:
+            A_dict[A[i]] += 1
+        else:
+            A_dict[A[i]] = 1
+
+    #A_dict中的key作为B_dict的key，A_dict中的value乘以B_dict中的value作为最终的value
+    #A_dict中的key作为C_dict的key，A_dict中的value乘以C_dict中的value作为最终的value
+    #如果A_dict中的key在B_dict和C_dict中都存在，那么最终的value是上面两种情况相加
+    result = 0
+    for key in A_dict:
+        if key in B_dict and key in C_dict:
+            result += A_dict[key] * B_dict[key] * C_dict[key]
+
+    print(result)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    # Bの値をキーとして、出現回数をカウント
+    cnt_B = [0] * (N + 1)
+    for i in range(N):
+        cnt_B[B[C[i] - 1]] += 1
+
+    # Aの値をキーとして、Bの値をカウント
+    cnt_A = [0] * (N + 1)
+    for i in range(N):
+        cnt_A[A[i]] += cnt_B[i + 1]
+
+    # 結果を出力
+    print(sum(cnt_A))
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x)-1, input().split()))
+
+    ca = [0] * n
+    for i in range(n):
+        ca[c[i]] += 1
+
+    cb = [0] * n
+    for i in range(n):
+        cb[b[i]-1] += 1
+
+    ans = 0
+    for i in range(n):
+        ans += ca[i] * cb[i]
+
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    #Cの要素の値-1をインデックスとして、Bの要素の値を格納する配列
+    D = [0] * N
+    for i in range(N):
+        D[C[i] - 1] += 1
+
+    #Aの要素の値-1をインデックスとして、Dの要素の値を格納する配列
+    E = [0] * N
+    for i in range(N):
+        E[A[i] - 1] += D[i]
+
+    ans = 0
+    for i in range(N):
+        ans += E[B[i] - 1]
+
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B_C = [0] * N
+    for i in range(N):
+        B_C[C[i]-1] += 1
+
+    A_B_C = [0] * N
+    for i in range(N):
+        A_B_C[B[i]-1] += B_C[i]
+
+    print(sum(A_B_C))
+
+=======
+Suggestion 7
+
+def main():
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    count=[0]*n
+    for i in range(n):
+        count[b[c[i]-1]-1]+=1
+    ans=0
+    for i in range(n):
+        ans+=count[a[i]-1]
+    print(ans)
+
+=======
+Suggestion 8
+
+def solution1(N, A, B, C):
+    count = 0
+    for i in range(N):
+        for j in range(N):
+            if A[i] == B[C[j]-1]:
+                count += 1
+    return count
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    c = [int(i) for i in input().split()]
+    a_count = [0] * (n + 1)
+    for i in a:
+        a_count[i] += 1
+    c_count = [0] * (n + 1)
+    for i in c:
+        c_count[i] += 1
+    ans = 0
+    for i in range(1, n + 1):
+        ans += a_count[i] * c_count[i]
+    print(ans)
+
+=======
+Suggestion 10
+
+def get_num(N, A, B, C):
+    count = 0
+    for i in range(N):
+        for j in range(N):
+            if A[i] == B[C[j]-1]:
+                count += 1
+    return count

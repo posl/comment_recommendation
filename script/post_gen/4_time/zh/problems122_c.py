@@ -1,42 +1,169 @@
-#问题陈述
-#给你一个由A、C、G和T组成的长度为N的字符串S，回答以下Q个查询：
-#查询i（1 ≦ i ≦ Q）：你将得到整数l_i和r_i（1 ≦ l_i < r_i ≦ N）。考虑从索引l_i开始到索引r_i结束的S的子串（两者都包括在内）。在这个字符串中，AC作为一个子串出现了多少次？
-#
-#注释
-#字符串T的子串是指从T的开头和结尾去除零个或多个字符后得到的字符串。
-#例如，ATCODER的子串包括TCO、AT、CODER、ATCODER和（空字符串），但不包括AC。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#S是一个长度为N的字符串。
-#S中的每个字符都是A、C、G或T。
-#1 ≦ l_i < r_i ≦ N
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N Q
-#S
-#l_1 r_1
-#:
-#l_Q r_Q
-#
-#输出
-#打印Q行。第i行应该包含第i个查询的答案。
-#
-#输入样本 1
-#8 3
-#ACACTACG
-#3 7
-#2 3
-#1 8
-#
-#样本输出1
-#2
-#0
-#3
-#查询1：从索引3开始到索引7结束的S的子串是ACTAC。在这个字符串中，AC作为一个子串出现了两次。
-#查询2：从索引2开始到索引3结束的S的子串是CA。在这个字符串中，AC作为一个子串出现了0次。
-#查询3：从索引1开始到索引8结束的S的子串是ACACTACG。在这个字符串中，AC作为一个子串出现了三次。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = [0] * (N+1)
+    for i in range(1, N):
+        l[i+1] = l[i]
+        if S[i-1:i+1] == "AC":
+            l[i+1] += 1
+    for i in range(Q):
+        a, b = map(int, input().split())
+        print(l[b] - l[a])
+
+=======
+Suggestion 2
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    #print(N, Q, S)
+    #print(type(N), type(Q), type(S))
+    #print(S[0:2])
+    #print(S[0:2].count('AC'))
+    #print(S[1:3].count('AC'))
+    #print(S[2:4].count('AC'))
+    #print(S[3:5].count('AC'))
+    #print(S[4:6].count('AC'))
+    #print(S[5:7].count('AC'))
+    #print(S[6:8].count('AC'))
+    #print(S[7:9].count('AC'))
+    #print(S[8:10].count('AC'))
+    #print(S[9:11].count('AC'))
+    #print(S[10:12].count('AC'))
+    #print(S[11:13].count('AC'))
+    #print(S[12:14].count('AC'))
+    #print(S[13:15].count('AC'))
+    #print(S[14:16].count('AC'))
+    #print(S[15:17].count('AC'))
+    #print(S[16:18].count('AC'))
+    #print(S[17:19].count('AC'))
+    #print(S[18:20].count('AC'))
+    #print(S[19:21].count('AC'))
+    #print(S[20:22].count('AC'))
+    #print(S[21:23].count('AC'))
+    #print(S[22:24].count('AC'))
+    #print(S[23:25].count('AC'))
+    #print(S[24:26].count('AC'))
+    #print(S[25:27].count('AC'))
+    #print(S[26:28].count('AC'))
+    #print(S[27:29].count('AC'))
+    #print(S[28:30].count('AC'))
+    #print(S[29:31].count('AC'))
+    #print(S[30:32].count('AC'))
+    #print(S[31:33].count('AC'))
+    #print(S[32:34].count('AC'))
+    #print(S[33:35].count('AC'))
+    #print(S[34:36].
+
+=======
+Suggestion 3
+
+def countAC(s):
+    count = 0
+    for i in range(len(s) - 1):
+        if s[i] == 'A' and s[i + 1] == 'C':
+            count += 1
+    return count
+
+=======
+Suggestion 4
+
+def countAC(S):
+    count = 0
+    for i in range(len(S)-1):
+        if S[i]+S[i+1] == 'AC':
+            count += 1
+    return count
+
+=======
+Suggestion 5
+
+def count_ac(s):
+    cnt = 0
+    for i in range(len(s) - 1):
+        if s[i] == 'A' and s[i + 1] == 'C':
+            cnt += 1
+    return cnt
+
+=======
+Suggestion 6
+
+def problem122_c():
+    N, Q = map(int, input().split())
+    S = input()
+    #print(N, Q, S)
+    #print(S[3:7].count("AC"))
+    #print(S[2:3].count("AC"))
+    #print(S[1:8].count("AC"))
+    for i in range(Q):
+        l_i, r_i = map(int, input().split())
+        #print(l_i, r_i)
+        print(S[l_i-1:r_i].count("AC"))
+
+problem122_c()
+
+=======
+Suggestion 7
+
+def solve(S, l, r):
+    count = 0
+    for i in range(len(S)):
+        for j in range(i+1, len(S)+1):
+            if S[i:j] == "AC":
+                count += 1
+    return count
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    S = input()
+    l = []
+    r = []
+    for i in range(Q):
+        l1, r1 = map(int, input().split())
+        l.append(l1)
+        r.append(r1)
+    for i in range(Q):
+        print(S[l[i]-1:r[i]].count("AC"))
+
+=======
+Suggestion 9
+
+def main():
+    n, q = map(int, input().split())
+    s = input()
+    # 1. 生成累积和列表
+    acc = [0]
+    for i in range(1, n):
+        if s[i - 1] == 'A' and s[i] == 'C':
+            acc.append(acc[i - 1] + 1)
+        else:
+            acc.append(acc[i - 1])
+
+    # 2. 解决每个查询
+    for _ in range(q):
+        l, r = map(int, input().split())
+        print(acc[r - 1] - acc[l - 1])
+
+=======
+Suggestion 10
+
+def solve():
+    N, Q = map(int, input().split())
+    S = input()
+    cnt = [0] * N
+    for i in range(1, N):
+        cnt[i] = cnt[i-1]
+        if S[i-1:i+1] == 'AC':
+            cnt[i] += 1
+    for _ in range(Q):
+        l, r = map(int, input().split())
+        print(cnt[r-1] - cnt[l-1])
+solve()

@@ -1,67 +1,161 @@
-#问题陈述
-#你运行一个有N个用户的网络服务。
-#拥有当前句柄S_i的第i个用户想把它改成T_i。
-#这里，S_1,...,和S_N是成对独立的，T_1,...,和T_N也是。
-#确定是否有一个合适的顺序来改变他们的句柄，以满足他们所有的请求，但要符合以下条件：
-#你一次只能改变一个用户的句柄；
-#你对每个用户的句柄只改变一次；
-#当改变句柄时，新的句柄不应该被其他用户在这一点上使用。
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#S_i和T_i是由小写英文字母组成的长度在1到8之间（含）的字符串。
-#S_i ≠ T_i
-#S_i是成对独立的。
-#T_i是成对独立的。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#S_1 T_1
-#S_2 T_2
-#.
-#.
-#.
-#S_N T_N
-#
-#输出
-#如果他们能改变他们的手柄以满足他们所有的请求，在符合条件的情况下，打印Yes；否则打印No。
-#
-#输入样本 1
-#2
-#b m
-#m d
-#
-#样本输出1
-#Yes
-#拥有当前手柄b的第1个用户想把它改成m。
-#第2个用户有一个当前的句柄m，想把它改成d。
-#首先，你把第2个用户的句柄从m改成d；
-#然后你把第1个用户的句柄从b改成m。这样，你就可以实现目标。
-#注意，你不能一开始就把第1个用户的句柄改成m，因为这时它被第2个用户使用。
-#
-#输入样本 2
-#3
-#a b
-#b c
-#c a
-#
-#样本输出2
-#No
-#第1个拥有当前手柄a的用户想把它改成b。
-#第2个用户用当前的手柄b想把它改成c。
-#拥有当前句柄c的第3个用户想把它改成a。
-#我们不能在条件允许的情况下改变他们的手柄。
-#
-#样本输入3
-#5
-#aaa bbb
-#yyy zzz
-#ccc ddd
-#xxx yyy
-#bbb ccc
-#
-#样本输出3
-#Yes
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def handle_change():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s_i, t_i = input().split()
+        s.append(s_i)
+        t.append(t_i)
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if s[i] == t[j] and s[j] == t[i]:
+                return "Yes"
+    return "No"
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a, b = input().split()
+        s.append(a)
+        t.append(b)
+    for i in range(n):
+        for j in range(n):
+            if s[i] == t[j]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def get_input():
+    n = int(input())
+    s_t = []
+    for i in range(n):
+        s_t.append(input().split())
+    return n, s_t
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        a,b = input().split()
+        s.append(a)
+        t.append(b)
+    if len(set(s)) == n and len(set(t)) == n and len(set(s) & set(t)) == 0:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 5
+
+def check(s,t):
+    if s==t:
+        return False
+    else:
+        return True
+
+=======
+Suggestion 6
+
+def change_handle(n, s, t):
+    # n = int(input())
+    # s = []
+    # t = []
+    # for i in range(n):
+    #     s.append(input())
+    #     t.append(input())
+    # print(s)
+    # print(t)
+    # print(n)
+    for i in range(n):
+        for j in range(i+1, n):
+            if s[i] == t[j] and t[i] == s[j]:
+                return "Yes"
+    return "No"
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    S = []
+    T = []
+    for i in range(N):
+        s, t = input().split()
+        S.append(s)
+        T.append(t)
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                continue
+            if S[i] == T[j]:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def change_handle(N, S, T):
+    for i in range(N):
+        for j in range(N):
+            if S[i] == T[j]:
+                if i == j:
+                    continue
+                else:
+                    return 'No'
+    return 'Yes'
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    s = []
+    t = []
+    for i in range(N):
+        S, T = input().split()
+        s.append(S)
+        t.append(T)
+
+    for i in range(N):
+        for j in range(i + 1, N):
+            if s[i] == t[j] and s[j] == t[i]:
+                print('Yes')
+                return
+
+    print('No')
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    s = []
+    t = []
+    for i in range(n):
+        s1, t1 = input().split()
+        s.append(s1)
+        t.append(t1)
+    for i in range(n):
+        for j in range(i):
+            if s[i] == s[j] or t[i] == t[j]:
+                print("No")
+                return
+    print("Yes")

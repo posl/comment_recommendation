@@ -1,90 +1,200 @@
-#问题陈述
-#在高桥王国，有一条东西走向的铁路，沿途有N个城市，从西到东编号为1，2，3，...，N。
-#一家名为AtCoder Express的公司拥有M列火车，火车i从城市L_i运行到城市R_i（有可能L_i=R_i）。
-#国王高桥对以下Q事项感兴趣：
-#在城市p_i到城市q_i这一段内严格运行的列车数量，也就是说，有多少列车j使p_i≦L_j，R_j≦q_i。
-#虽然他是天才，但这一数据太多，他一个人无法处理。请为这些Q查询中的每一个找到答案，以帮助他。
-#
-#限制条件
-#N是1到500之间的整数（包括在内）。
-#M是1至200 000（包括）之间的整数。
-#Q是一个介于1和100 000之间的整数(包括在内)。
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#输出
-#打印Q行。第i行应该包含从城市p_i到城市q_i这一段内严格运行的列车数量。
-#
-#输入样本 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#样本输出1
-#3
-#由于所有的列车都在城市1到城市2的路段内运行，唯一的查询答案是3。
-#
-#输入样本2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#样本输出2
-#1
-#1
-#第一个查询是关于从城市1到7的路段。只有一列火车在该区间内严格运行：1号列车。
-#第二个查询是关于城市3至10的路段。只有一列火车严格在该区间内运行：3号列车。
-#
-#输入样本 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#样本输出3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_input():
+    n,m,q = map(int,raw_input().split())
+    trains = []
+    for i in xrange(m):
+        trains.append(map(int,raw_input().split()))
+    queries = []
+    for i in xrange(q):
+        queries.append(map(int,raw_input().split()))
+    return n,m,q,trains,queries
+
+=======
+Suggestion 2
+
+def main():
+    nmq = input().split(" ")
+    n = int(nmq[0])
+    m = int(nmq[1])
+    q = int(nmq[2])
+    lr = []
+    pq = []
+    for i in range(m):
+        lr.append(input().split(" "))
+    for i in range(q):
+        pq.append(input().split(" "))
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if int(pq[i][0]) <= int(lr[j][0]) and int(lr[j][1]) <= int(pq[i][1]):
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def main():
+    N,M,Q = map(int,input().split())
+    #print(N,M,Q)
+    #print(type(N),type(M),type(Q))
+    #L = [0]*M
+    #R = [0]*M
+    #P = [0]*Q
+    #Q = [0]*Q
+    #for i in range(M):
+    #    L[i],R[i] = map(int,input().split())
+    #for i in range(Q):
+    #    P[i],Q[i] = map(int,input().split())
+    #print(L,R,P,Q)
+    #print(type(L),type(R),type(P),type(Q))
+    L = []
+    R = []
+    P = []
+    Q = []
+    for i in range(M):
+        l,r = map(int,input().split())
+        L.append(l)
+        R.append(r)
+    for i in range(Q):
+        p,q = map(int,input().split())
+        P.append(p)
+        Q.append(q)
+    #print(L,R,P,Q)
+    #print(type(L),type(R),type(P),type(Q))
+    #print(len(L),len(R),len(P),len(Q))
+    #print(L[0],R[0],P[0],Q[0])
+    #print(type(L[0]),type(R[0]),type(P[0]),type(Q[0]))
+    #print(len(L),len(R),len(P),len(Q))
+    #print(L[0],R[0],P[0],Q[0])
+    #print(type(L[0]),type(R[0]),type(P[0]),type(Q[0]))
+    #print(len(L),len(R),len(P),len(Q))
+    #print(L[0],R[0],P[0],Q[0])
+    #print(type(L[0]),type(R[0]),type(P[0]),type(Q[0]))
+    #print(len(L),len(R),len(P),len(Q))
+    #print(L[0],R[0],P[0],Q[0])
+    #print(type(L[0]),type(R[0]),type(P[0]),type(Q[0]))
+    #print(len(L),len(R),len(P),len(Q))
+    #print(L[0],R[0],P[0],Q[0])
+    #print(type(L[
+
+=======
+Suggestion 4
+
+def fun():
+    n,m,q = map(int, input().split())
+    L = []
+    R = []
+    for i in range(m):
+        l,r = map(int, input().split())
+        L.append(l)
+        R.append(r)
+    P = []
+    Q = []
+    for i in range(q):
+        p,q = map(int, input().split())
+        P.append(p)
+        Q.append(q)
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if P[i] <= L[j] and R[j] <= Q[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 5
+
+def main():
+    N,M,Q = map(int, input().split())
+    train = []
+    for i in range(M):
+        L,R = map(int, input().split())
+        train.append([L,R])
+    for i in range(Q):
+        p,q = map(int, input().split())
+        count = 0
+        for j in range(M):
+            if train[j][0] >= p and train[j][1] <= q:
+                count += 1
+        print(count)
+
+=======
+Suggestion 6
+
+def binary_search(array, key):
+    low = 0
+    high = len(array)-1
+    while low <= high:
+        mid = (low + high) // 2
+        if array[mid] == key:
+            return mid
+        elif array[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+=======
+Suggestion 7
+
+def get_ints():
+    return [int(x) for x in input().split()]
+
+=======
+Suggestion 8
+
+def main():
+    n,m,q = map(int,input().split())
+    lr = [tuple(map(int,input().split())) for _ in range(m)]
+    pq = [tuple(map(int,input().split())) for _ in range(q)]
+    ans = [0 for _ in range(q)]
+    for i in range(q):
+        for j in range(m):
+            if pq[i][0] <= lr[j][0] and lr[j][1] <= pq[i][1]:
+                ans[i] += 1
+    for i in range(q):
+        print(ans[i])
+
+main()
+
+=======
+Suggestion 9
+
+def count_trains(l,r,train):
+    count = 0
+    for i in range(len(train)):
+        if train[i][0] >= l and train[i][1] <= r:
+            count += 1
+    return count
+
+=======
+Suggestion 10
+
+def main():
+    # 读入数据
+    N, M, Q = map(int, input().split())
+    trains = []
+    for i in range(M):
+        L, R = map(int, input().split())
+        trains.append((L, R))
+    queries = []
+    for i in range(Q):
+        p, q = map(int, input().split())
+        queries.append((p, q))
+
+    # 计算答案
+    answers = []
+    for p, q in queries:
+        count = 0
+        for L, R in trains:
+            if p <= L and R <= q:
+                count += 1
+        answers.append(count)
+
+    # 输出答案
+    for ans in answers:
+        print(ans)

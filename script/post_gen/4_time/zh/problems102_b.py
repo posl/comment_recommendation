@@ -1,40 +1,70 @@
-#问题陈述
-#给你一个长度为N的整数序列A。
-#找出A中两个元素（索引不同）的最大绝对差。
-#
-#限制条件
-#2 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印A中两个元素（具有不同的索引）的最大绝对差。
-#
-#输入样本 1
-#4
-#1 4 6 3
-#
-#样本输出1
-#5
-#两个元素的最大绝对差是A_3-A_1=6-1=5。
-#
-#样本输入2
-#2
-#1000000000 1
-#
-#样本输出2
-#999999999
-#
-#样本输入3
-#5
-#1 1 1 1 1
-#
-#样本输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(max(a) - min(a))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    print(a[-1] - a[0])
+
+=======
+Suggestion 3
+
+def max_diff(a_list):
+    max_num = max(a_list)
+    min_num = min(a_list)
+    return max_num - min_num
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    max_num = max(a)
+    min_num = min(a)
+    print(max_num - min_num)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    print(max(A)-min(A))
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    max = 0
+    for i in range(0, N):
+        for j in range(i+1, N):
+            if abs(A[i] - A[j]) > max:
+                max = abs(A[i] - A[j])
+    print(max)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    max = 0
+    for i in range(N):
+        for j in range(i+1, N):
+            if abs(A[i] - A[j]) > max:
+                max = abs(A[i] - A[j])
+    print(max)

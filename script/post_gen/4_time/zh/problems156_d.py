@@ -1,36 +1,136 @@
-#问题陈述
-#阿卡里有n种花，每种都有。
-#她要从这些花中选择一种或几种来做花束。
-#但是，她讨厌两个数字a和b，所以花束中的花的数量不能是a或b。
-#阿卡里可以做多少种不同的花束？
-#找出模数（10^9+7）。
-#在这里，如果有一种花在其中一束花中使用，而在另一束花中不使用，则认为两束花是不同的。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≦ n ≦ 10^9
-#1 ≦ a < b ≦ min(n, 2 × 10^5)
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#n a b
-#
-#輸出
-#打印阿卡里能做的花束数量，模数为(10^9 + 7)。(如果没有这样的花束，打印0。）
-#
-#输入样本 1
-#4 1 3
-#
-#输出样本 1
-#7
-#在这个例子中，Akari可以选择2或4朵花来制作花束。
-#有6种方法可以从4种花中选择2种，有1种方法可以选择4种，所以阿卡里一共可以做7种不同的花束。
-#
-#输入样本2
-#1000000000 141421 173205
-#
-#样本输出2
-#34076506
-#打印计数的模数（10^9+7）。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+=======
+Suggestion 2
+
+def main():
+    n,a,b=map(int,input().split())
+    mod=10**9+7
+    ans=pow(2,n,mod)-1
+    for i in range(a,b+1):
+        ans-=comb(n,i,mod)
+    print(ans%mod)
+
+=======
+Suggestion 3
+
+def getGCD(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 4
+
+def comb(n, r, mod=10**9+7):
+    if r > n - r:
+        r = n - r
+    if r == 0:
+        return 1
+    if r == 1:
+        return n % mod
+    numerator = [n - r + k + 1 for k in range(r)]
+    denominator = [k + 1 for k in range(r)]
+    for p in range(2, r + 1):
+        pivot = denominator[p - 1]
+        if pivot > 1:
+            offset = (n - r) % p
+            for k in range(p - 1, r, p):
+                numerator[k - offset] // = pivot
+                denominator[k] // = pivot
+    result = 1
+    for k in range(r):
+        if numerator[k] > 1:
+            result = result * numerator[k] % mod
+    return result
+
+n, a, b = map(int, input().split())
+mod = 10**9+7
+print((pow(2, n, mod) - 1 - comb(n, a, mod) - comb(n, b, mod)) % mod)
+
+=======
+Suggestion 5
+
+def f(a,b,n):
+    MOD = 10**9 + 7
+    ans = pow(n,2,MOD)
+    ans -= n
+    ans -= n
+    ans += 1
+    ans %= MOD
+    ans -= n-a+1
+    ans %= MOD
+    ans -= n-b+1
+    ans %= MOD
+    ans += n-a-b+2
+    ans %= MOD
+    return ans
+
+n,a,b = map(int,input().split())
+print(f(a,b,n))
+
+=======
+Suggestion 6
+
+def main():
+    n, a, b = map(int, input().split())
+    if a > b:
+        a, b = b, a
+    if b - a == 1:
+        print(n*(n-1) % (10**9+7))
+    else:
+        print((n-a-b+1)*(n-a-b+2) % (10**9+7))
+
+=======
+Suggestion 7
+
+def gcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+n,a,b = map(int,input().split())
+
+=======
+Suggestion 8
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+=======
+Suggestion 9
+
+def main():
+    N, A, B = map(int, input().split())
+    MOD = 10**9 + 7
+
+    t = pow(2, N, MOD) - 1
+    c = 1
+    for i in range(N, N - A, -1):
+        c = c * i % MOD
+    for i in range(1, A + 1):
+        c = c * pow(i, MOD - 2, MOD) % MOD
+    t -= c
+
+    c = 1
+    for i in range(N, N - B, -1):
+        c = c * i % MOD
+    for i in range(1, B + 1):
+        c = c * pow(i, MOD - 2, MOD) % MOD
+    t -= c
+
+    print((t % MOD + MOD) % MOD)

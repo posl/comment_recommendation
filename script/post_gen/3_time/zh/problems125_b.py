@@ -1,48 +1,155 @@
-#问题陈述
-#有N颗宝石。第i颗宝石的价值是V_i。
-#你将从这些宝石中选择一些，可能是全部或没有，并得到它们。
-#然而，你需要支付C_i的费用来获得第i颗宝石。
-#设X为获得的宝石的价值之和，Y为支付的费用之和。
-#找出X-Y的最大可能值。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 20
-#1 ≦ C_i, V_i ≦ 50
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#V_1 V_2 ...V_N
-#C_1 C_2 ...C_N
-#
-#输出
-#打印X-Y的最大可能值。
-#
-#样本输入1
-#3
-#10 2 5
-#6 3 4
-#
-#样本输出1
-#5
-#如果我们选择第一和第三颗宝石，X=10+5=15，Y=6+4=10。
-#我们在这里有X-Y=5，这是最可能的值。
-#
-#样本输入2
-#4
-#13 21 6 19
-#11 30 6 15
-#
-#样本输出2
-#6
-#
-#样本输入3
-#1
-#1
-#50
-#
-#样品输出3
-#0
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    dp = [[0 for _ in range(1001)] for _ in range(1001)]
+
+    for i in range(n):
+        for j in range(1000, -1, -1):
+            if j >= c[i]:
+                dp[i+1][j] = max(dp[i][j], dp[i][j-c[i]] + v[i])
+            else:
+                dp[i+1][j] = dp[i][j]
+
+    print(dp[n][1000])
+
+=======
+Suggestion 2
+
+def solve():
+    N = int(input())
+    V = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if V[i] > C[i]:
+            ans += V[i] - C[i]
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    sum = 0
+    for i in range(n):
+        if v[i] - c[i] > 0:
+            sum += v[i] - c[i]
+    print(sum)
+
+=======
+Suggestion 4
+
+def solve():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    ans = 0
+    for i in range(1 << n):
+        x = 0
+        y = 0
+        for j in range(n):
+            if i & (1 << j):
+                x += v[j]
+                y += c[j]
+        ans = max(ans, x - y)
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    x = 0
+    y = 0
+    for i in range(n):
+        if v[i] > c[i]:
+            x += v[i]
+            y += c[i]
+
+    print(x - y)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    v = [int(x) for x in input().split(' ')]
+    c = [int(x) for x in input().split(' ')]
+    res = 0
+    for i in range(1 << n):
+        s1, s2 = 0, 0
+        for j in range(n):
+            if (i >> j) & 1:
+                s1 += v[j]
+                s2 += c[j]
+        res = max(res, s1 - s2)
+    print(res)
+
+=======
+Suggestion 7
+
+def max_value(N, V, C):
+    # 递归
+    # if N == 0:
+    #     return 0
+    # elif V[N-1] < C[N-1]:
+    #     return max_value(N-1, V, C)
+    # else:
+    #     return max(max_value(N-1, V, C), max_value(N-1, V, C))
+
+    # 动态规划
+    dp = [[0 for i in range(1000)] for j in range(1000)]
+    for i in range(N):
+        for j in range(1000):
+            if j < C[i]:
+                dp[i+1][j] = dp[i][j]
+            else:
+                dp[i+1][j] = max(dp[i][j], dp[i][j-C[i]]+V[i])
+    return dp[N][999]
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    v = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    max = 0
+    for i in range(1, 2**n):
+        sum_v = 0
+        sum_c = 0
+        for j in range(n):
+            if (i >> j) & 1:
+                sum_v += v[j]
+                sum_c += c[j]
+        if sum_v - sum_c > max:
+            max = sum_v - sum_c
+    print(max)
+
+=======
+Suggestion 9
+
+def get_max_profit(N, Vs, Cs):
+    max_profit = 0
+    for i in range(1 << N):
+        profit = 0
+        cost = 0
+        for j in range(N):
+            if (i >> j) & 1:
+                profit += Vs[j]
+                cost += Cs[j]
+        if profit > cost and profit - cost > max_profit:
+            max_profit = profit - cost
+    return max_profit

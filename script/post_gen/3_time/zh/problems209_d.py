@@ -1,91 +1,165 @@
-#问题陈述
-#高桥王国由N个城镇和N-1条道路组成，其中城镇的编号为1到N。第i条道路（1 ≦ i ≦ N-1）连接城镇a_i和城镇b_i，因此你可以通过一些道路从每个城镇到达每个城镇。所有的道路都有相同的长度。
-#你将被给予Q个查询。在第i次查询中（1 ≦ i ≦ Q），给定整数c_i和d_i，解决以下问题：
-#高桥现在在c_i镇，青木现在在d_i镇。他们将同时离开城镇并开始以相同的速度行驶，高桥前往d_i镇，青木前往c_i镇。确定他们是否会在一个城镇相遇，或在公路上的中途相遇。在这里，假设他们两个人都沿着最短的路径行驶，而且经过城镇所需的时间可以忽略不计。
-#
-#限制条件
-#2 ≦ N ≦ 10^5
-#1 ≦ Q ≦ 10^5
-#1 ≦ a_i < b_i ≦ N (1 ≦ i ≦ N-1)
-#1 ≦ c_i < d_i ≦ N (1 ≦ i ≦ Q)
-#输入的所有数值都是整数。
-#通过使用一些道路，有可能从每个城镇到达每个城镇。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N Q
-#a_1 b_1
-#a_2 b_2
-#.
-#.
-#.
-#a_{N-1} b_{N-1}
-#c_1 d_1
-#c_2 d_2
-#.
-#.
-#.
-#c_Q d_Q
-#
-#输出
-#打印Q行。
-#第i行（1 ≦ i ≦ Q）应该包含Town，如果高桥和青木将在第i个查询中的一个城镇相遇，以及Road，如果他们在该查询中沿着一条道路中途相遇。
-#
-#输入样本 1
-#4 1
-#1 2
-#2 3
-#2 4
-#1 2
-#
-#样本输出1
-#Road
-#在第一个也是唯一的一个查询中，高桥和青木分别同时离开镇1和镇2，他们将在1号路的中途相遇，所以我们应该打印出路。
-#
-#输入样本2
-#5 2
-#1 2
-#2 3
-#3 4
-#4 5
-#1 3
-#1 5
-#
-#样本输出2
-#Town
-#Town
-#在第一个查询中，高桥和青木同时分别离开镇1和镇3，他们将在镇2相遇，所以我们应该打印镇。
-#在第一个查询中，高桥和青木分别同时离开镇1和镇5，他们将在镇3相遇，所以我们应该打印镇。
-#
-#输入样本 3
-#9 9
-#2 3
-#5 6
-#4 8
-#8 9
-#4 5
-#3 4
-#1 9
-#3 7
-#7 9
-#2 5
-#2 6
-#4 6
-#2 4
-#5 8
-#7 8
-#3 6
-#5 6
-#
-#样本输出3
-#Town
-#Road
-#Town
-#Town
-#Town
-#Town
-#Road
-#Road
-#Road
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def find(x):
+    if x == parent[x]:
+        return x
+    else:
+        return find(parent[x])
+
+=======
+Suggestion 3
+
+def main():
+    n, q = map(int, input().split())
+    road = []
+    town = []
+    for i in range(n-1):
+        road.append(list(map(int, input().split())))
+    for i in range(q):
+        town.append(list(map(int, input().split())))
+    for i in range(q):
+        if town[i][0] == town[i][1]:
+            print("Town")
+        else:
+            for j in range(n-1):
+                if road[j][0] == town[i][0] and road[j][1] == town[i][1]:
+                    print("Town")
+                    break
+                elif road[j][0] == town[i][1] and road[j][1] == town[i][0]:
+                    print("Town")
+                    break
+                elif road[j][0] == town[i][0] or road[j][1] == town[i][0]:
+                    if road[j][0] == town[i][1] or road[j][1] == town[i][1]:
+                        print("Road")
+                        break
+                elif road[j][0] == town[i][1] or road[j][1] == town[i][1]:
+                    if road[j][0] == town[i][0] or road[j][1] == town[i][0]:
+                        print("Road")
+                        break
+                else:
+                    print("Road")
+                    break
+main()
+
+=======
+Suggestion 4
+
+def main():
+    n, q = map(int, input().split())
+    road = [[0 for i in range(n)] for j in range(n)]
+    for i in range(n-1):
+        a, b = map(int, input().split())
+        road[a-1][b-1] = 1
+        road[b-1][a-1] = 1
+    for i in range(q):
+        c, d = map(int, input().split())
+        c -= 1
+        d -= 1
+        if road[c][d] == 1:
+            print("Road")
+        else:
+            print("Town")
+
+=======
+Suggestion 5
+
+def find(a):
+    if a == parent[a]:
+        return a
+    else:
+        parent[a] = find(parent[a])
+        return parent[a]
+
+=======
+Suggestion 6
+
+def findRoot(parent, x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = findRoot(parent, parent[x])
+        return parent[x]
+
+=======
+Suggestion 7
+
+def main():
+    n,q = map(int,raw_input().split())
+    roads = []
+    for i in range(n-1):
+        a,b = map(int,raw_input().split())
+        roads.append((a,b))
+    for i in range(q):
+        c,d = map(int,raw_input().split())
+        if (c,d) in roads or (d,c) in roads:
+            print "Road"
+        else:
+            print "Town"
+
+=======
+Suggestion 8
+
+def main():
+    N, Q = map(int, input().split())
+    AB = [list(map(int, input().split())) for i in range(N-1)]
+    CD = [list(map(int, input().split())) for i in range(Q)]
+
+    # print(N, Q)
+    # print(AB)
+    # print(CD)
+
+    # 1. 从AB中找到C和D的位置
+    # 2. 如果C和D相邻，输出Road
+    # 3. 如果C和D不相邻，输出Town
+    # 4. 如果C和D在同一条线上，输出Road
+    # 5. 如果C和D不在同一条线上，输出Town
+    # 6. 如果C和D在同一条线上，输出Road
+    # 7. 如果C和D不在同一条线上，输出Town
+    # 8. 如果C和D在同一条线上，输出Road
+    # 9. 如果C和D不在同一条线上，输出Town
+
+    # 1. 从AB中找到C和D的位置
+    # 2. 如果C和D相邻，输出Road
+    # 3. 如果C和D不相邻，输出Town
+    # 4. 如果C和D在同一条线上，输出Road
+    # 5. 如果C和D不在同一条线上，输出Town
+    # 6. 如果C和D在同一条线上，输出Road
+    # 7. 如果C和D不在同一条线上，输出Town
+    # 8. 如果C和D在同一条线上，输出Road
+    # 9. 如果C和D不在同一条线上，输出Town
+
+    # 1. 从AB中找到C和D的位置
+    # 2. 如果C和D相邻，输出Road
+    # 3. 如果C和D不相邻，输出Town
+    # 4. 如果C和D在同一条线上，输出Road
+    # 5. 如果C和D不在同一条线上，输出Town
+    # 6. 如果
+
+=======
+Suggestion 9
+
+def findRoot(root, x):
+    if root[x] == x:
+        return x
+    else:
+        root[x] = findRoot(root, root[x])
+        return root[x]
+
+=======
+Suggestion 10
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]

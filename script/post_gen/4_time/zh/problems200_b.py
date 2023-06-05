@@ -1,41 +1,121 @@
-#问题陈述
-#给你一个整数N。
-#对其进行以下操作K次，并打印出所得的整数。
-#如果N是200的倍数，就用它除以200。
-#否则，将N看作一个字符串，并在它的末尾加上200。
-#例如，7会变成7200，1234会变成1234200。
-#
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ K ≦ 20
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N K
-#
-#輸出
-#以整数形式打印答案。
-#
-#输入样本 1
-#2021 4
-#
-#样本输出1
-#50531
-#对N=2021进行运算的结果是N变成2021->2021200->10106->10106200->50531。
-#
-#输入样本2
-#40000 2
-#
-#样本输出2
-#1
-#
-#样本输入3
-#8691 20
-#
-#样本输出3
-#84875488281
-#答案可能不适合有符号的32位整数类型。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def problem200_b(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n //= 200
+        else:
+            n = int(str(n) + '200')
+    return n
+
+=======
+Suggestion 2
+
+def solve(n, k):
+    for _ in range(k):
+        if n % 200 == 0:
+            n //= 200
+        else:
+            n = int(str(n) + "200")
+    return n
+
+n, k = map(int, input().split())
+print(solve(n, k))
+
+=======
+Suggestion 3
+
+def problem200_b():
+    n, k = map(int, input().split())
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + '200')
+    print(n)
+
+=======
+Suggestion 4
+
+def func(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n // 200
+        else:
+            n = int(str(n) + '200')
+    return n
+
+print(func(2021, 4))
+print(func(40000, 2))
+print(func(8691, 20))
+
+=======
+Suggestion 5
+
+def problem200_b():
+    n, k = map(int, input().split())
+    for _ in range(k):
+        if n % 200 == 0:
+            n //= 200
+        else:
+            n = int(str(n) + "200")
+    print(n)
+
+=======
+Suggestion 6
+
+def main():
+    N, K = map(int, input().split())
+    for _ in range(K):
+        if N % 200 == 0:
+            N = N // 200
+        else:
+            N = int(str(N) + '200')
+    print(N)
+
+=======
+Suggestion 7
+
+def problems200_b():
+    N,K = map(int,input().split())
+    for i in range(K):
+        if N % 200 == 0:
+            N = N // 200
+        else:
+            N = int(str(N) + "200")
+    print(N)
+problems200_b()
+
+=======
+Suggestion 8
+
+def problems200_b():
+    n,k = map(int,input().split())
+    for i in range(k):
+        if n%200 == 0:
+            n = n//200
+        else:
+            n = int(str(n) + '200')
+    print(n)
+
+=======
+Suggestion 9
+
+def get_input():
+    input_line = input()
+    n, k = input_line.split()
+    return int(n), int(k)
+
+=======
+Suggestion 10
+
+def f(n, k):
+    for i in range(k):
+        if n % 200 == 0:
+            n = n / 200
+        else:
+            n = n * 1000 + 200
+    return int(n)

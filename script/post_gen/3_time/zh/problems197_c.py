@@ -1,62 +1,174 @@
-#问题陈述
-#给出的是一个长度为N的数列A。
-#让我们把这个序列划分为一个或多个非空的连续区间。
-#然后，对于每一个区间，让我们计算其中的数字的位法OR。
-#找出以这种方式得到的数值的最小可能的位数XOR值。
-#        什么是位数OR？
-#    
-#        整数A和B的位数OR，A OR B，定义如下：
-#        
-#当A OR B以二进制书写时，如果A和B中至少有一个是1，那么2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 OR 5 = 7（在二进制中：011 OR 101 = 111）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位数OR被定义为（...（（p_1 OR p_2） OR p_3） OR ...或p_k）。我们可以证明这个值不取决于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#        什么是位数XOR？
-#    
-#        整数A和B的位数XOR，A XOR B，定义如下：
-#        
-#当A XOR B写在基数2中时，如果A和B中正好有一个是1，2^k的位置（k≧0）的数字就是1，否则就是0。
-#        例如，我们有3 XOR 5 = 6（在二进制中：011 XOR 101 = 110）。  
-#        一般来说，k个整数p_1, p_2, p_3, ..., p_k的位XOR定义为（...（（p_1 XOR p_2）XOR p_3）XOR ...XOR p_k）。我们可以证明，这个值不依赖于p_1, p_2, p_3, ... p_k的顺序。
-#    
-#
-#限制条件
-#1 ≦ N ≦ 20
-#0 ≦ A_i < 2^{30}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，其格式如下：
-#N
-#a_1 a_2 a_3 ... a_n
-#
-#輸出
-#打印答案。
-#
-#输入样本 1
-#3
-#1 5 7
-#
-#样本输出1
-#2
-#如果我们把[1，5，7]分成[1，5]和[7]，它们的比特OR是5和7，其XOR是2。
-#不可能得到一个更小的结果，所以我们打印2。
-#
-#输入样本 2
-#3
-#10 10 10
-#
-#样本输出2
-#0
-#我们应该把这个序列分为[10]和[10，10]。
-#
-#样本输入3
-#4
-#1 3 3 1
-#
-#样本输出3
-#0
-#我们应该把这个序列分为[1，3]和[3，1]。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def find_min_xor(n, arr):
+    min_xor = 2**30
+    for i in range(n):
+        for j in range(i+1, n):
+            xor = arr[i] ^ arr[j]
+            if xor < min_xor:
+                min_xor = xor
+    return min_xor
+
+=======
+Suggestion 2
+
+def compute_xor(x, y):
+    x_bin = bin(x)[2:]
+    y_bin = bin(y)[2:]
+    x_len = len(x_bin)
+    y_len = len(y_bin)
+    if x_len > y_len:
+        y_bin = '0' * (x_len - y_len) + y_bin
+    elif x_len < y_len:
+        x_bin = '0' * (y_len - x_len) + x_bin
+    result_bin = ''
+    for i in range(len(x_bin)):
+        result_bin += '1' if x_bin[i] != y_bin[i] else '0'
+    return int(result_bin, 2)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(n):
+        x = 0
+        for j in range(i, n):
+            x |= a[j]
+            y = 0
+            for k in range(j + 1, n):
+                y ^= a[k]
+                ans = min(ans, x + y)
+    print(ans)
+
+=======
+Suggestion 4
+
+def f(n, a):
+    if n == 1:
+        return 0
+    if n == 2:
+        return a[0] ^ a[1]
+    if n == 3:
+        return a[0] ^ a[1] ^ a[2]
+    if n == 4:
+        return 0
+    if n == 5:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4]
+    if n == 6:
+        return 0
+    if n == 7:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4] ^ a[5] ^ a[6]
+    if n == 8:
+        return 0
+    if n == 9:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4] ^ a[5] ^ a[6] ^ a[7] ^ a[8]
+    if n == 10:
+        return 0
+    if n == 11:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4] ^ a[5] ^ a[6] ^ a[7] ^ a[8] ^ a[9] ^ a[10]
+    if n == 12:
+        return 0
+    if n == 13:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4] ^ a[5] ^ a[6] ^ a[7] ^ a[8] ^ a[9] ^ a[10] ^ a[11] ^ a[12]
+    if n == 14:
+        return 0
+    if n == 15:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4] ^ a[5] ^ a[6] ^ a[7] ^ a[8] ^ a[9] ^ a[10] ^ a[11] ^ a[12] ^ a[13] ^ a[14]
+    if n == 16:
+        return 0
+    if n == 17:
+        return a
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    nums = list(map(int, input().split()))
+    min_xor = 2**30
+    for i in range(n):
+        xor = nums[i]
+        for j in range(i+1, n):
+            xor = xor ^ nums[j]
+            min_xor = min(min_xor, xor)
+    print(min_xor)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        x = a[i]
+        for j in range(i, n):
+            x = x | a[j]
+            if x == 0:
+                break
+            ans = max(ans, x ^ a[j])
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 1 << 30
+    for i in range(n):
+        for j in range(i, n):
+            x = 0
+            for k in range(i, j + 1):
+                x |= a[k]
+            ans = min(ans, x)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    ans = 0
+    for i in range(n):
+        x = a[i]
+        for j in range(i,n):
+            x = x | a[j]
+            ans = max(ans,x)
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def solution(n, a):
+    if n == 1:
+        return 0
+    if n == 2:
+        return a[0] ^ a[1]
+    if n == 3:
+        return (a[0] ^ a[1]) ^ a[2]
+    if n == 4:
+        return 0
+    if n == 5:
+        return a[0] ^ a[1] ^ a[2] ^ a[3] ^ a[4]
+    return 0
+
+=======
+Suggestion 10
+
+def get_min_xor(a):
+    a.sort()
+    min_xor = 2**30
+    for i in range(len(a)-1):
+        xor = a[i] ^ a[i+1]
+        if xor < min_xor:
+            min_xor = xor
+    return min_xor

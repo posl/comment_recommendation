@@ -1,40 +1,109 @@
-#问题陈述
-#给你一个实数X.Y，其中Y是一个数字。
-#请打印以下内容：(为清楚起见引号)
-#X-, 如果0 ≦ Y ≦ 2；
-#X, 如果3 ≦ Y ≦ 6；
-#X+，如果7 ≦ Y ≦ 9。
-#
-#限制条件
-#1 ≦ X ≦ 15
-#0 ≦ Y ≦ 9
-#X和Y是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#X.Y
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#15.8
-#
-#样本输出1
-#15+
-#这里不接受打印15+：不要在X和+之间，或X和-之间打印空格。
-#
-#输入样本2
-#1.0
-#
-#样本输出2
-#1-
-#你将不会得到诸如1.00和1的输入。
-#
-#样本输入3
-#12.5
-#
-#样本输出3
-#12
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problem216a():
+    x,y = input().split('.')
+    y = int(y)
+    if y <= 2:
+        print(x+'-')
+    elif y <= 6:
+        print(x)
+    else:
+        print(x+'+')
+
+=======
+Suggestion 2
+
+def print_x_y(x, y):
+    if 0 <= y <= 2:
+        print(str(x) + '-')
+    elif 3 <= y <= 6:
+        print(str(x))
+    elif 7 <= y <= 9:
+        print(str(x) + '+')
+
+=======
+Suggestion 3
+
+def print_sign_of_x(x):
+    if 0 <= x <= 2:
+        print(str(x) + "-")
+    elif 3 <= x <= 6:
+        print(str(x))
+    elif 7 <= x <= 9:
+        print(str(x) + "+")
+    else:
+        print("error")
+
+=======
+Suggestion 4
+
+def main():
+    x,y = map(float, input().split('.'))
+    if y >= 0 and y <= 2:
+        print(int(x)+'-')
+    elif y >= 3 and y <= 6:
+        print(int(x))
+    elif y >= 7 and y <= 9:
+        print(int(x)+'+')
+
+=======
+Suggestion 5
+
+def print_result(x, y):
+    if 0 <= y <= 2:
+        print(str(x) + "-")
+    elif 3 <= y <= 6:
+        print(str(x))
+    elif 7 <= y <= 9:
+        print(str(x) + "+")
+
+=======
+Suggestion 6
+
+def main():
+    x, y = input().split('.')
+    y = int(y)
+    if 0 <= y <= 2:
+        print(x + '-')
+    elif 3 <= y <= 6:
+        print(x)
+    else:
+        print(x + '+')
+
+=======
+Suggestion 7
+
+def main():
+    x,y=input().split('.')
+    y=int(y)
+    if y>=0 and y<=2:
+        print(x+'-')
+    elif y>=3 and y<=6:
+        print(x)
+    elif y>=7 and y<=9:
+        print(x+'+')
+
+=======
+Suggestion 8
+
+def f(x,y):
+    if 0 <= y <= 2:
+        print(str(x)+'-')
+    elif 3 <= y <= 6:
+        print(str(x))
+    elif 7 <= y <= 9:
+        print(str(x)+'+')
+
+=======
+Suggestion 9
+
+def print_x_y(x,y):
+    if 0 <= y and y <= 2:
+        print(x + "-")
+    elif 3 <= y and y <= 6:
+        print(x)
+    elif 7 <= y and y <= 9:
+        print(x + "+")

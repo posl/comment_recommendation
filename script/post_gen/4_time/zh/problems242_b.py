@@ -1,34 +1,98 @@
-#问题陈述
-#给你一个字符串S，找出通过对S的字符进行排列组合得到的词典上最小的字符串S'。
-#这里，对于不同的两个字符串s = s_1 s_2 ... s_n和t = t_1 t_2 ... t_m，当以下条件之一得到满足时，s < t在词典上成立。
-#有一个整数i (1 ≦ i ≦ min(n,m))，使得s_i < t_i并且s_j=t_j对于所有整数j (1 ≦ j < i)。
-#对于所有整数i (1 ≦ i ≦ min(n,m))，且n < m，s_i = t_i。
-#
-#约束条件
-#S是一个长度在1到2×10^5（包括）之间的字符串，由小写英文字母组成。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#
-#输出
-#打印通过对S中的字符进行排列组合而得到的词典上最小的字符串S'。
-#
-#输入样本1
-#aba
-#
-#样本输出1
-#aab
-#通过permuting aba可以得到三个字符串：
-#aba
-#aab
-#baa
-#其中词汇学上最小的是aab。
-#
-#输入样本2
-#zzzz
-#
-#样本输出2
-#zzzz
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def solve():
+    S = input()
+    S = sorted(S)
+    print(''.join(S))
+
+solve()
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    # print(S)
+    S = list(S)
+    S.sort()
+    # print(S)
+    print(''.join(S))
+    # print(''.join(S).strip())
+
+=======
+Suggestion 3
+
+def find_min(str):
+    if len(str) == 1:
+        return str
+    else:
+        min_str = str
+        for i in range(len(str)):
+            str_list = list(str)
+            str_list[0], str_list[i] = str_list[i], str_list[0]
+            new_str = ''.join(str_list)
+            if new_str < min_str:
+                min_str = new_str
+        return min_str
+
+=======
+Suggestion 4
+
+def problem242_b(s):
+    s = list(s)
+    s.sort()
+    return ''.join(s)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s_list = list(s)
+    s_list.sort()
+    print("".join(s_list))
+
+=======
+Suggestion 6
+
+def problem242_b(s):
+    s = list(s)
+    s.sort()
+    return "".join(s)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = sorted(s)
+    print(''.join(s))
+
+=======
+Suggestion 8
+
+def main():
+    S = input()
+    S = list(S)
+    S.sort()
+    print(''.join(S))
+
+=======
+Suggestion 9
+
+def solve():
+    s = input()
+    s = list(s)
+    s.sort()
+    print("".join(s))
+
+=======
+Suggestion 10
+
+def min_str(str):
+    str_list = list(str)
+    str_list.sort()
+    return "".join(str_list)

@@ -1,59 +1,252 @@
-#问题陈述
-#在古代的斯努克王国，有一座金字塔，用来加强AtCoder公司总裁高桥的权威。
-#金字塔的中心坐标为（C_X，C_Y），高度为H。坐标（X，Y）的高度为max（H-|X-C_X|-|Y-C_Y|，0）。  
-#探险家Aoki进行了一次调查，以确定这个金字塔的中心坐标和高度。结果，他得到了以下信息：
-#C_X，C_Y是0到100（含）之间的整数，H是一个不小于1的整数。
-#此外，他还获得了N条信息。其中第i条是："点（x_i，y_i）的高度是h_i。"  
-#这足以确定金字塔的中心坐标和高度。用上面的线索找到这些值。  
-#
-#限制条件
-#N是1到100之间的整数（包括在内）。
-#x_i和y_i是0到100之间的整数（包括在内）。
-#h_i是0到10^9（包括）之间的整数。
-#N个坐标（x_1，y_1），（x_2，y_2），（x_3，y_3），...，（x_N，y_N）都不同。
-#中心坐标和金字塔的高度可以被唯一地确定。
-#
-#输入
-#输入是由标准输入给出的，其格式如下：  
-#N
-#x_1 y_1 h_1
-#x_2 y_2 h_2
-#x_3 y_3 h_3
-#:
-#x_N y_N h_N
-#
-#输出
-#在一行中打印代表中心坐标和金字塔高度的C_X、C_Y和H的值，中间有空格。  
-#
-#输入样本1
-#4
-#2 3 5
-#2 1 5
-#1 2 5
-#3 2 5
-#
-#样本输出 1
-#2 2 6
-#在这种情况下，中心坐标和高度可以被确定为（2，2）和6。  
-#
-#样本输入2
-#2
-#0 0 100
-#1 1 98
-#
-#样本输出2
-#0 0 100
-#在这种情况下，中心坐标和高度可以被确定为（0，0）和100。
-#注意，C_X和C_Y是已知的0和100之间的整数。
-#
-#样本输入3
-#3
-#99 1 191
-#100 1 192
-#99 0 192
-#
-#样本输出3
-#100 0 193
-#在这种情况下，中心坐标和高度可以被确定为（100，0）和193。  
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    x = [0] * n
+    y = [0] * n
+    h = [0] * n
+    for i in range(n):
+        x[i], y[i], h[i] = map(int, input().split())
+    for cx in range(101):
+        for cy in range(101):
+            for i in range(n):
+                if h[i] != 0:
+                    break
+            H = h[i] + abs(x[i] - cx) + abs(y[i] - cy)
+            for i in range(n):
+                if h[i] != max(H - abs(x[i] - cx) - abs(y[i] - cy), 0):
+                    break
+            else:
+                print(cx, cy, H)
+                return
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    h = []
+    for i in range(n):
+        x_, y_, h_ = map(int, input().split())
+        x.append(x_)
+        y.append(y_)
+        h.append(h_)
+
+    for cx in range(101):
+        for cy in range(101):
+            H = -1
+            for i in range(n):
+                if h[i] != 0:
+                    H = h[i] + abs(x[i] - cx) + abs(y[i] - cy)
+                    break
+
+            for i in range(n):
+                if h[i] != max(H - abs(x[i] - cx) - abs(y[i] - cy), 0):
+                    break
+            else:
+                print(cx, cy, H)
+                return
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    data = []
+    for i in range(N):
+        data.append(list(map(int, input().split())))
+    for i in range(N):
+        if data[i][2] != 0:
+            x, y, h = data[i]
+            break
+    for C_X in range(101):
+        for C_Y in range(101):
+            H = h + abs(C_X - x) + abs(C_Y - y)
+            for i in range(N):
+                if data[i][2] != max(H - abs(C_X - data[i][0]) - abs(C_Y - data[i][1]), 0):
+                    break
+            else:
+                print(C_X, C_Y, H)
+                exit()
+
+=======
+Suggestion 5
+
+def main():
+    # 读取数据
+    N = int(input())
+    X = [0]*N
+    Y = [0]*N
+    H = [0]*N
+    for i in range(N):
+        X[i], Y[i], H[i] = map(int, input().split())
+
+    # 从高度最大的点开始，逐个遍历所有点
+    for i in range(N):
+        if H[i] > 0:
+            cx, cy, ch = X[i], Y[i], H[i]
+            break
+
+    # 逐个遍历所有点
+    for x in range(101):
+        for y in range(101):
+            # 当前点的高度
+            h = ch + abs(x - cx) + abs(y - cy)
+            # 判断当前点是否满足条件
+            for i in range(N):
+                if H[i] != max(h - abs(x - X[i]) - abs(y - Y[i]), 0):
+                    break
+            else:
+                print(x, y, h)
+                return
+
+=======
+Suggestion 6
+
+def get_input():
+    N = int(input())
+    X, Y, H = [], [], []
+    for _ in range(N):
+        x, y, h = map(int, input().split())
+        X.append(x)
+        Y.append(y)
+        H.append(h)
+
+    return N, X, Y, H
+
+=======
+Suggestion 7
+
+def solve():
+    #N = int(input())
+    #x,y,h = [],[],[]
+    #for i in range(N):
+    #    x.append(int(input()))
+    #    y.append(int(input()))
+    #    h.append(int(input()))
+    #for cx in range(101):
+    #    for cy in range(101):
+    #        H = 0
+    #        for i in range(N):
+    #            if h[i] > 0:
+    #                H = h[i] + abs(x[i]-cx) + abs(y[i]-cy)
+    #                break
+    #        flag = True
+    #        for i in range(N):
+    #            if h[i] != max(H - abs(x[i]-cx) - abs(y[i]-cy), 0):
+    #                flag = False
+    #                break
+    #        if flag:
+    #            print(cx, cy, H)
+    #            return
+    #N = int(input())
+    #x,y,h = [],[],[]
+    #for i in range(N):
+    #    x.append(int(input()))
+    #    y.append(int(input()))
+    #    h.append(int(input()))
+    #for cx in range(101):
+    #    for cy in range(101):
+    #        H = -1
+    #        for i in range(N):
+    #            if h[i] > 0:
+    #                H = h[i] + abs(x[i]-cx) + abs(y[i]-cy)
+    #                break
+    #        flag = True
+    #        for i in range(N):
+    #            if h[i] != max(H - abs(x[i]-cx) - abs(y[i]-cy), 0):
+    #                flag = False
+    #                break
+    #        if flag:
+    #            print(cx, cy, H)
+    #            return
+    N = int(input())
+    x,y,h = [],[],[]
+    for i in range(N):
+        x.append(int(input()))
+        y.append(int(input()))
+        h.append(int(input()))
+    for cx in range(101):
+        for cy in range(101):
+            H = -1
+            for i in range(N):
+                if h[i] > 0:
+                    H = h[i] + abs(x[i]-cx) + abs(y[i]-cy)
+                    break
+            flag
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    x = []
+    y = []
+    h = []
+    for i in range(n):
+        a, b, c = map(int, input().split())
+        x.append(a)
+        y.append(b)
+        h.append(c)
+    for i in range(101):
+        for j in range(101):
+            for k in range(n):
+                if h[k] != 0:
+                    H = abs(x[k] - i) + abs(y[k] - j) + h[k]
+                    break
+            for k in range(n):
+                if h[k] != max(H-abs(x[k]-i)-abs(y[k]-j), 0):
+                    break
+            else:
+                print(i, j, H)
+                return
+
+=======
+Suggestion 9
+
+def problems112_c():
+    N = int(input())
+    x = []
+    y = []
+    h = []
+    for i in range(N):
+        x_i, y_i, h_i = map(int, input().split())
+        x.append(x_i)
+        y.append(y_i)
+        h.append(h_i)
+
+    # 从高度最高的点开始遍历，找到第一个高度不为0的点，即为中心点
+    for i in range(N):
+        if h[i] != 0:
+            center_x = x[i]
+            center_y = y[i]
+            height = h[i]
+            break
+
+    # 从中心点开始遍历，判断每个点的高度是否满足条件
+    for i in range(101):
+        for j in range(101):
+            # 如果该点高度为0，则跳过
+            if h[i] == 0:
+                continue
+            # 如果该点的高度不等于height-|i-center_x|-|j-center_y|，则跳过
+            if h[i] != height - abs(i-center_x) - abs(j-center_y):
+                continue
+            # 如果该点的高度等于height-|i-center_x|-|j-center_y|，则继续判断
+            if h[i] == height - abs(i-center_x) - abs(j-center_y):
+                continue
+
+    print(center_x, center_y, height)
+
+problems112_c()

@@ -1,42 +1,164 @@
-#问题陈述
-#高桥有许多红球和蓝球。现在，他要把它们摆成一排。
-#最初，没有放置任何球。
-#高桥很有耐心，他要做10^{100}次以下操作：
-#在已经放置的一排球的末端放置A蓝球。然后，在这一排球的末尾放置B红球。
-#这样做出来的一排球中，前N个球中会有多少个蓝球？
-#
-#限制条件
-#1 ≦ N ≦ 10^{18}
-#A, B ≧ 0
-#0 < a + b ≦ 10^{18}
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N A B
-#
-#輸出
-#打印这一排球中前N个球中的蓝球数量。
-#
-#输入样本 1
-#8 3 4
-#
-#输出示例 1
-#4
-#让b表示一个蓝球，r表示一个红球。行中的前八个球将是bbbrrrrb，其中有四个蓝球。
-#
-#输入样本2
-#8 0 4
-#
-#样本输出2
-#0
-#他从一开始就只放红球。
-#
-#输入样本 3
-#6 2 4
-#
-#输出样本 3
-#2
-#在bbrrrrr中，有两个蓝球。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, A, B = map(int, input().split())
+    if A > B:
+        print(0)
+    elif N == 1:
+        if A == B:
+            print(1)
+        else:
+            print(0)
+    else:
+        print((N - 2) * B + A - (N - 2) * A - B + 1)
+
+=======
+Suggestion 2
+
+def getBlueCount(n, a, b):
+    if a == 0:
+        return 0
+    if b == 0:
+        return n
+    if a + b >= n:
+        return a
+    else:
+        return a + (n - a - b)
+
+=======
+Suggestion 3
+
+def problems158_b():
+    n,a,b = map(int,input().split())
+    if a == 0:
+        print(0)
+        return
+    if a+b >= n:
+        print(a)
+        return
+    else:
+        print(a+(n-a-b))
+
+=======
+Suggestion 4
+
+def main():
+    n,a,b = map(int,input().split())
+    print(n//(a+b)*a+min(a,n%(a+b)))
+
+=======
+Suggestion 5
+
+def main():
+    # 读取输入
+    n, a, b = map(int, input().split())
+    # 蓝球数
+    blue = 0
+    # 蓝球数增加的次数
+    count = 0
+    # 蓝球数增加的次数限制
+    limit = 10 ** 100
+    while count < limit:
+        # 增加蓝球数
+        blue = blue + a
+        # 增加蓝球数增加的次数
+        count = count + 1
+        # 如果增加蓝球数的次数达到限制，跳出循环
+        if count == limit:
+            break
+        # 增加红球数
+        blue = blue - b
+        # 增加蓝球数增加的次数
+        count = count + 1
+        # 如果增加蓝球数的次数达到限制，跳出循环
+        if count == limit:
+            break
+    # 打印蓝球数
+    print(blue)
+
+=======
+Suggestion 6
+
+def main():
+    N,A,B = map(int,input().split())
+    if A == 0:
+        print(0)
+    elif A + B == 1:
+        print(N)
+    else:
+        print(N//(A+B)*A+min(N%(A+B),A))
+
+=======
+Suggestion 7
+
+def main():
+    N, A, B = map(int, input().split())
+    if A == 0:
+        print(0)
+    elif B == 0:
+        print(N)
+    else:
+        print(N // (A + B) * A + min(N % (A + B), A))
+
+=======
+Suggestion 8
+
+def main():
+    n, a, b = map(int, input().split())
+    print((n // (a + b)) * a + min(n % (a + b), a))
+
+=======
+Suggestion 9
+
+def blue_ball(n, a, b):
+    if n == 1:
+        return a
+    elif n == 2:
+        return a+b
+    else:
+        return blue_ball(n-1, a, b) + blue_ball(n-2, a, b)
+
+=======
+Suggestion 10
+
+def main():
+    # 读取输入
+    n, a, b = map(int, input().split())
+    # 用a+b表示蓝球和红球的总数
+    if a + b == 0:
+        print(0)
+    elif n == 1:
+        print(a)
+    else:
+        # 当n>1时，可以将n-1个球放在一行
+        # 一行中有a+b-1个球，其中a-1个球是蓝色的
+        # 因此，一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有a+b-1个球
+        # 一行中有a-1个蓝球
+        # 一行中有b个红球
+        # 一行中有

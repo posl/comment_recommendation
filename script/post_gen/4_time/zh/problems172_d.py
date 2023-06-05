@@ -1,35 +1,124 @@
-#问题陈述
-#对于一个正整数X，设f(X)是X的正除数。
-#给定一个正整数N，求sum_{K=1}^N K×f(K)。
-#
-#限制条件
-#1 ≦ N ≦ 10^7
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#输出
-#打印数值sum_{K=1}^N K×f(K)。
-#
-#样本输入1
-#4
-#
-#样本输出1
-#23
-#我们有f(1)=1，f(2)=2，f(3)=2，f(4)=3，所以答案是1×1+2×2+3×2+4×3=23。
-#
-#样本输入2
-#100
-#
-#样本输出2
-#26879
-#
-#样本输入3
-#10000000
-#
-#样本输出3
-#838627288460105
-#注意溢出。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def divisors(x):
+    divisors = []
+    for i in range(1, x + 1):
+        if x % i == 0:
+            divisors.append(i)
+    return divisors
+
+=======
+Suggestion 2
+
+def f(x):
+    s = 0
+    for i in range(1, x+1):
+        if x % i == 0:
+            s += 1
+    return s
+
+n = int(input())
+s = 0
+for i in range(1, n+1):
+    s += i * f(i)
+print(s)
+
+=======
+Suggestion 3
+
+def f(x):
+    return sum([i for i in range(1,x+1) if x%i==0])
+
+=======
+Suggestion 4
+
+def f(x):
+    ans = 0
+    i = 1
+    while i*i <= x:
+        if x % i == 0:
+            ans += i
+            if i != x // i:
+                ans += x // i
+        i += 1
+    return ans
+
+n = int(input())
+ans = 0
+for k in range(1, n+1):
+    ans += k * f(k)
+print(ans)
+
+=======
+Suggestion 5
+
+def f(x):
+    sum = 0
+    for i in range(1,x+1):
+        if x%i == 0:
+            sum += i
+    return sum
+
+n = int(input())
+sum = 0
+for i in range(1,n+1):
+    sum += i*f(i)
+print(sum)
+
+=======
+Suggestion 6
+
+def f(x):
+    ans = 0
+    for i in range(1, x+1):
+        if x % i == 0:
+            ans += 1
+    return ans
+
+n = int(input())
+ans = 0
+for i in range(1, n+1):
+    ans += i * f(i)
+print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        ans += i * f(i)
+    print(ans)
+
+=======
+Suggestion 8
+
+def f(x):
+    sum = 0
+    for i in range(1,x+1):
+        if x % i == 0:
+            sum += 1
+    return sum
+
+=======
+Suggestion 9
+
+def f(x):
+    return sum([i for i in range(1, x+1) if x % i == 0])
+
+n = int(input())
+print(sum([i * f(i) for i in range(1, n+1)]))
+
+=======
+Suggestion 10
+
+def f(x):
+    res = 0
+    for i in range(1, x + 1):
+        if x % i == 0:
+            res += 1
+    return res

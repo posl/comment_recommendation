@@ -1,47 +1,50 @@
-#问题陈述
-#在AtCoder村有N座桥。编号为i的桥的高度是H_i（i是1到N之间的整数）。
-#村中每两座不同的桥都有不同的高度。
-#请打印出代表村中最高桥梁的数字。
-#
-#限制条件
-#1≦ N ≦ 100
-#1≦ H_i ≦ 10^9
-#所有H_i都是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入来自标准输入，格式如下：
-#N
-#H_1 H_2 ...H_N
-#
-#输出
-#打印代表AtCoder村最高桥的整数。
-#
-#样本输入1
-#3
-#50 80 70
-#
-#样本输出1
-#2
-#该村有三座桥。
-#第一、第二和第三座桥的高度分别为50、80和70、
-#所以第二座桥是最高的。
-#因此，2应该被打印出来。
-#
-#输入样本 2
-#1
-#1000000000
-#
-#样本输出2
-#1
-#该村只有一座桥，所以第一座桥是最高的。
-#
-#样本输入3
-#10
-#22 75 26 45 72 81 47 29 97 2
-#
-#样本输出3
-#9
-#该村有十座桥，第九座桥（高度为97）是最高的。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    h = list(map(int, input().split()))
+
+    print(h.index(max(h)) + 1)
+
+=======
+Suggestion 2
+
+def main():
+    num = int(input())
+    list = input().split()
+    max = 0
+    for i in range(num):
+        if int(list[i]) > max:
+            max = int(list[i])
+            max_index = i + 1
+    print(max_index)
+
+=======
+Suggestion 3
+
+def problems275_a():
+    n = int(input())
+    heights = list(map(int, input().split()))
+    print(heights.index(max(heights)) + 1)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    n = int(input())
+    h = list(map(int, input().split()))
+
+    # 计算并打印结果
+    print(h.index(max(h)) + 1)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    h = [int(i) for i in input().split()]
+    print(h.index(max(h))+1)

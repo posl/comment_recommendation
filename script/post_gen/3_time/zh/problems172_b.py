@@ -1,45 +1,141 @@
-#问题陈述
-#给出的是字符串S和T，考虑通过重复下面的操作将S改为T。请找出这样做所需的最少操作数。
-#操作：选择S中的一个字符，用一个不同的字符替换它。
-#
-#限制条件
-#S和T的长度在1到2×10^5之间（含）。
-#S和T由小写英文字母组成。
-#S和T的长度相等。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#S
-#T
-#
-#输出
-#打印答案。
-#
-#输入样本1
-#cupofcoffee
-#cupofhottea
-#
-#样本输出1
-#4
-#我们可以通过四次操作来实现目标，例如以下：
-#首先，将第六个字符c替换为h。
-#第二，用t替换第八个字符f。
-#第三，用t替换第九个字符f。
-#第四，用a替换第11个字符e。
-#
-#输入样本2
-#abcde
-#bcdea
-#
-#样本输出2
-#5
-#
-#样本输入3
-#apple
-#apple
-#
-#样本输出3
-#0
-#可能不需要任何操作来实现目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    t = input()
+    if s == t:
+        print(0)
+        return
+    # 用于存储字母的位置
+    s_dict = {}
+    for i in range(len(s)):
+        if s[i] not in s_dict:
+            s_dict[s[i]] = [i]
+        else:
+            s_dict[s[i]].append(i)
+    # print(s_dict)
+    # 用于存储字母的位置
+    t_dict = {}
+    for i in range(len(t)):
+        if t[i] not in t_dict:
+            t_dict[t[i]] = [i]
+        else:
+            t_dict[t[i]].append(i)
+    # print(t_dict)
+    # 用于存储不同字母的位置
+    diff = []
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            diff.append(i)
+    # print(diff)
+    # 用于记录不同字母的位置是否相同
+    flag = True
+    for i in diff:
+        if s[i] not in t_dict or t[i] not in s_dict:
+            flag = False
+            break
+        elif s_dict[s[i]] != t_dict[t[i]]:
+            flag = False
+            break
+    if flag:
+        print(1)
+    else:
+        print(2)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    T = input()
+    count = 0
+    for i in range(len(S)):
+        if S[i] != T[i]:
+            count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    S = input()
+    T = input()
+    if S == T:
+        print(0)
+        return
+    for i in range(len(S)):
+        if S[i:] + S[:i] == T:
+            print(i)
+            return
+    print(-1)
+
+=======
+Suggestion 4
+
+def solve():
+    s = input()
+    t = input()
+    if s == t:
+        print(0)
+        return
+    i = 0
+    while i < len(s) and i < len(t):
+        if s[i] != t[i]:
+            break
+        i += 1
+    print(len(s) - i + len(t) - i)
+
+=======
+Suggestion 5
+
+def solve():
+    # 解题算法
+    S = input()
+    T = input()
+    if S == T:
+        return 0
+    ans = 10**5
+    for i in range(len(S)-len(T)+1):
+        count = 0
+        for j in range(len(T)):
+            if S[i+j] != T[j]:
+                count += 1
+        ans = min(ans, count)
+    return ans
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    t = input()
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)
+
+main()
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    t = input()
+    # print(s)
+    # print(t)
+    # print(len(s))
+    # print(len(t))
+    # print(s[0])
+    # print(t[0])
+    # print(s[0] != t[0])
+    # print(s[0] == t[0])
+    count = 0
+    for i in range(len(s)):
+        if s[i] != t[i]:
+            count += 1
+    print(count)

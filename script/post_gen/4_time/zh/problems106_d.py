@@ -1,90 +1,262 @@
-#问题陈述
-#在高桥王国，有一条东西走向的铁路，沿途有N个城市，从西到东编号为1，2，3，...，N。
-#一家名为AtCoder Express的公司拥有M列火车，火车i从城市L_i运行到城市R_i（有可能L_i=R_i）。
-#国王高桥对以下Q事项感兴趣：
-#在城市p_i到城市q_i这一段内严格运行的列车数量，也就是说，有多少列车j使p_i≦L_j，R_j≦q_i。
-#虽然他是天才，但这一数据太多，他一个人无法处理。请为这些Q查询中的每一个找到答案，以帮助他。
-#
-#限制条件
-#N是1到500之间的整数（包括在内）。
-#M是1至200 000（包括）之间的整数。
-#Q是一个介于1和100 000之间的整数(包括在内)。
-#1 ≦ L_i ≦ R_i ≦ N (1 ≦ i ≦ M)
-#1 ≦ p_i ≦ q_i ≦ N (1 ≦ i ≦ Q)
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N M Q
-#L_1 R_1
-#L_2 R_2
-#:
-#L_M R_M
-#p_1 q_1
-#p_2 q_2
-#:
-#p_Q q_Q
-#
-#输出
-#打印Q行。第i行应该包含从城市p_i到城市q_i这一段内严格运行的列车数量。
-#
-#输入样本 1
-#2 3 1
-#1 1
-#1 2
-#2 2
-#1 2
-#
-#样本输出1
-#3
-#由于所有的列车都在城市1到城市2的路段内运行，唯一的查询答案是3。
-#
-#输入样本2
-#10 3 2
-#1 5
-#2 8
-#7 10
-#1 7
-#3 10
-#
-#样本输出2
-#1
-#1
-#第一个查询是关于从城市1到7的路段。只有一列火车在该区间内严格运行：1号列车。
-#第二个查询是关于城市3至10的路段。只有一列火车严格在该区间内运行：3号列车。
-#
-#输入样本 3
-#10 10 10
-#1 6
-#2 9
-#4 5
-#4 7
-#4 7
-#5 8
-#6 6
-#6 7
-#7 9
-#10 10
-#1 8
-#1 9
-#1 10
-#2 8
-#2 9
-#2 10
-#3 8
-#3 9
-#3 10
-#1 10
-#
-#样本输出3
-#7
-#9
-#10
-#6
-#8
-#9
-#6
-#7
-#8
-#10
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n, m, q = map(int, input().split())
+    l = [0]*m
+    r = [0]*m
+    for i in range(m):
+        l[i], r[i] = map(int, input().split())
+    p = [0]*q
+    q = [0]*q
+    for i in range(q):
+        p[i], q[i] = map(int, input().split())
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if p[i] <= l[j] and r[j] <= q[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 3
+
+def solve():
+    N, M, Q = map(int, input().split())
+    L = [0] * M
+    R = [0] * M
+    for i in range(M):
+        L[i], R[i] = map(int, input().split())
+    p = [0] * Q
+    q = [0] * Q
+    for i in range(Q):
+        p[i], q[i] = map(int, input().split())
+    # 为了方便起见，我们将L和R的元素都减1。
+    for i in range(M):
+        L[i] -= 1
+        R[i] -= 1
+    # 用二维数组C来记录答案。
+    C = [[0] * N for i in range(N)]
+    for i in range(M):
+        for j in range(L[i], R[i] + 1):
+            C[j][R[i]] += 1
+    for i in range(N):
+        for j in range(N - 1):
+            C[i][j + 1] += C[i][j]
+    for i in range(Q):
+        print(C[p[i] - 1][q[i] - 1])
+
+solve()
+
+=======
+Suggestion 4
+
+def get_input():
+    input_str = input("请输入N M Q：")
+    input_list = input_str.split(" ")
+    N = int(input_list[0])
+    M = int(input_list[1])
+    Q = int(input_list[2])
+    print("N M Q = ",N,M,Q)
+    L = []
+    R = []
+    for i in range(M):
+        input_str = input("请输入L R：")
+        input_list = input_str.split(" ")
+        L.append(int(input_list[0]))
+        R.append(int(input_list[1]))
+    p = []
+    q = []
+    for i in range(Q):
+        input_str = input("请输入p q：")
+        input_list = input_str.split(" ")
+        p.append(int(input_list[0]))
+        q.append(int(input_list[1]))
+    return N,M,Q,L,R,p,q
+
+=======
+Suggestion 5
+
+def train_num(train, start, end):
+    num = 0
+    for i in range(len(train)):
+        if train[i][0] >= start and train[i][1] <= end:
+            num += 1
+    return num
+
+=======
+Suggestion 6
+
+def solve():
+    N,M,Q = map(int,input().split())
+    L = []
+    R = []
+    for i in range(M):
+        l,r = map(int,input().split())
+        L.append(l)
+        R.append(r)
+    P = []
+    Q = []
+    for i in range(Q):
+        p,q = map(int,input().split())
+        P.append(p)
+        Q.append(q)
+    for i in range(Q):
+        count = 0
+        for j in range(M):
+            if P[i] <= L[j] and R[j] <= Q[i]:
+                count += 1
+        print(count)
+
+=======
+Suggestion 7
+
+def main():
+    n,m,q = map(int,input().split())
+    train = []
+    for i in range(m):
+        train.append(list(map(int,input().split())))
+    query = []
+    for i in range(q):
+        query.append(list(map(int,input().split())))
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if train[j][0] >= query[i][0] and train[j][1] <= query[i][1]:
+                count += 1
+        print(count)
+
+main()
+
+=======
+Suggestion 8
+
+def get_train_num(p,q):
+    train_num = 0
+    for i in range(1,M+1):
+        if L[i] >= p and R[i] <= q:
+            train_num += 1
+    return train_num
+
+=======
+Suggestion 9
+
+def main():
+    n,m,q = map(int,input().split())
+    l = [0]*m
+    r = [0]*m
+    for i in range(m):
+        l[i],r[i] = map(int,input().split())
+    p = [0]*q
+    q = [0]*q
+    for i in range(q):
+        p[i],q[i] = map(int,input().split())
+
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug1")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug2")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug3")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug4")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug5")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug6")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug7")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug8")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug9")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug10")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug11")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug12")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug13")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug14")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("debug15")
+    # print(n,m,q)
+    # print(l,r)
+    # print(p,q)
+
+    # print("
+
+=======
+Suggestion 10
+
+def main():
+    n,m,q = map(int,input().split())
+    L = [0] * m
+    R = [0] * m
+    p = [0] * q
+    q = [0] * q
+    for i in range(m):
+        L[i],R[i] = map(int,input().split())
+    for i in range(q):
+        p[i],q[i] = map(int,input().split())
+    for i in range(q):
+        count = 0
+        for j in range(m):
+            if p[i] <= L[j] and R[j] <= q[i]:
+                count += 1
+        print(count)

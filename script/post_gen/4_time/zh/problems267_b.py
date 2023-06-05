@@ -1,56 +1,154 @@
-#问题陈述
-#保龄球瓶的编号是1到10。  下图是球杆排列的俯视图：
-#让我们把图中两条虚线之间的每个部分称为一列。
-#例如，1号和5号球瓶属于同一列，3号和9号球瓶也属于同一列。
-#当一些针脚被打倒时，可能会出现一种特殊的情况，叫做分裂。
-#如果以下两个条件都满足，那么针脚的摆放就是分裂：
-#引脚1被撞倒了。
-#有两个不同的列，满足以下两个条件：
-#每一列都有一个或多个站立的棋子。
-#在这两列之间存在一列，使得该列中的所有棋子都被击倒。
-#
-#例子也见输入和输出的样本。
-#现在，你得到的是一个长度为10的字符串S的针脚位置。
-#对于i=1，...，10，如果针脚i被击倒，S的第i个字符为0，如果它是站立的，则为1。
-#确定S所代表的大头针的位置是否是一个分裂。
-#
-#约束条件
-#S是一个长度为10的字符串，由0和1组成。
-#
-#输入
-#输入是由标准输入提供的，其格式如下：
-#S
-#
-#輸出
-#如果S所代表的引脚的位置是分裂的，打印Yes；否则，打印No。
-#
-#样本输入1
-#0101110101
-#
-#样本输出1
-#Yes
-#在下图中，被击倒的引脚被涂成灰色，站立的引脚被涂成白色：
-#在含有立针5的那一列和含有立针6的那一列之间是含有立针3和9的那一列。  由于3号和9号都被打掉了，所以这个位置是一个分割。
-#
-#样本输入2
-#0100101001
-#
-#样本输出2
-#Yes
-#
-#
-#样品输入3
-#0000100110
-#
-#样品输出3
-#No
-#这个位置不是一个分割。
-#
-#样本输入4
-#1101110101
-#
-#样本输出4
-#No
-#这不是一个分割，因为引脚1没有被敲下。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def problems267_b():
+    pass
+
+=======
+Suggestion 2
+
+def split_check(s):
+    if s[0] == '0':
+        return 'No'
+    for i in range(1, 5):
+        if s[i] == '0' and s[10 - i] == '0':
+            return 'No'
+    return 'Yes'
+
+=======
+Suggestion 3
+
+def solve():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    S = input()
+    if S[0] == '0':
+        print('No')
+        return
+    if S[1] == '0':
+        print('No')
+        return
+    if S[2] == '0':
+        print('No')
+        return
+    if S[3] == '0':
+        print('No')
+        return
+    if S[4] == '0':
+        print('No')
+        return
+    if S[5] == '0':
+        print('No')
+        return
+    if S[6] == '0':
+        print('No')
+        return
+    if S[7] == '0':
+        print('No')
+        return
+    if S[8] == '0':
+        print('No')
+        return
+    if S[9] == '0':
+        print('No')
+        return
+    if S[0] == '1' and S[1] == '1' and S[2] == '0' and S[3] == '1' and S[4] == '1' and S[5] == '1' and S[6] == '0' and S[7] == '1' and S[8] == '0' and S[9] == '1':
+        print('Yes')
+        return
+    if S[0] == '1' and S[1] == '1' and S[2] == '0' and S[3] == '1' and S[4] == '1' and S[5] == '0' and S[6] == '1' and S[7] == '0' and S[8] == '1' and S[9] == '1':
+        print('Yes')
+        return
+    if S[0] == '1' and S[1] == '1' and S[2] == '0' and S[3] == '1' and S[4] == '0' and S[5] == '1' and S[6] == '0' and S[7] == '1' and S[8] == '1' and S[9] == '1':
+        print('Yes')
+        return
+    if S[0] == '1' and S[1] ==
+
+=======
+Suggestion 5
+
+def isSplit(S):
+    if S[0] == '0':
+        return False
+    else:
+        for i in range(1, 10):
+            if S[i] == '0':
+                return True
+        return False
+
+=======
+Suggestion 6
+
+def is_split(S):
+    # 1. 1号被击倒
+    # 2. 两列都有立针
+    # 3. 两列之间有一列被击倒
+    if S[0] == '0':
+        if S[1] == '1':
+            if S[2] == '0':
+                return True
+            else:
+                return False
+        else:
+            return False
+    else:
+        return False
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    if s[0] == '0':
+        print('No')
+        return
+    for i in range(1, 10):
+        if s[i] == '0':
+            print('No')
+            return
+    print('Yes')
+
+=======
+Suggestion 8
+
+def problem267_b(s):
+    s0 = s[0]
+    s1 = s[1]
+    s2 = s[2]
+    s3 = s[3]
+    s4 = s[4]
+    s5 = s[5]
+    s6 = s[6]
+    s7 = s[7]
+    s8 = s[8]
+    s9 = s[9]
+    if s0 == '0':
+        if s1 == '0':
+            if s2 == '0':
+                if s3 == '1':
+                    if s4 == '1':
+                        if s5 == '1':
+                            if s6 == '0':
+                                if s7 == '1':
+                                    if s8 == '0':
+                                        if s9 == '1':
+                                            return 'Yes'
+    return 'No'
+
+=======
+Suggestion 9
+
+def is_split(pin):
+    if pin[0] == '0':
+        return False
+    for i in range(1, 10):
+        if pin[i-1] == '1' and pin[i] == '0':
+            for j in range(i+1, 10):
+                if pin[j] == '1':
+                    return True
+    return False

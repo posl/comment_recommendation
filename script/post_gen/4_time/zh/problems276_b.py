@@ -1,66 +1,207 @@
-#问题陈述
-#有N个编号为1，...，N的城市，以及M条连接城市的道路。
-#第i条路（1≦i≦M）连接城市A_i和城市B_i。
-#打印N行，如下所示。
-#设d_i为与城市i直接相连的城市数量（1 ≦ i ≦ N），这些城市为城市a_{i, 1}, ..., 城市a_{i, d_i}，依次递增。
-#第i行（1 ≦ i ≦ N）应该包含d_i + 1个整数d_i, a_{i, 1}, ..., a_{i, d_i}，按照这个顺序，用空格分开。
-#
-#约束条件
-#2 ≦ N ≦ 10^5
-#1 ≦ M ≦ 10^5
-#1 ≦ A_i < B_i ≦ N (1 ≦ i ≦ M)
-#(A_i, B_i) ≠ (A_j, B_j) if (i ≠ j).
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#按照问题陈述中的规定打印N行。
-#
-#输入样本 1
-#6 6
-#3 6
-#1 3
-#5 6
-#2 5
-#1 2
-#1 6
-#
-#样本输出 1
-#3 2 3 6
-#2 1 5
-#2 1 6
-#0
-#2 2 6
-#3 1 3 5
-#与城市1直接相连的城市是城市2、城市3和城市6。因此，我们有d_1=3，a_{1，1}=2，a_{1，2}=3，a_{1，3}=6，所以你应该在第一行按这个顺序打印3，2，3，6，用空格分开。
-#注意，a_{i, 1}, ..., a_{i, d_i}必须是升序排列。例如，在第一行以这种顺序打印3、3、2、6是不可接受的。
-#
-#输入样本 2
-#5 10
-#1 2
-#1 3
-#1 4
-#1 5
-#2 3
-#2 4
-#2 5
-#3 4
-#3 5
-#4 5
-#
-#样本输出 2
-#4 2 3 4 5
-#4 1 3 4 5
-#4 1 2 4 5
-#4 1 2 3 5
-#4 1 2 3 4
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n, m = map(int, input().split())
+    #print(n, m)
+    #
+
+=======
+Suggestion 2
+
+def main():
+    N, M = map(int, input().split())
+    data = []
+    for i in range(M):
+        data.append(list(map(int, input().split())))
+    data.sort()
+    for i in range(N):
+        count = 0
+        for j in range(M):
+            if i+1 in data[j]:
+                count += 1
+        print(count, end=' ')
+        for j in range(M):
+            if i+1 in data[j]:
+                print(data[j][0] if data[j][0] != i+1 else data[j][1], end=' ')
+        print()
+
+=======
+Suggestion 3
+
+def getCityInfo(N, M, citys):
+    cityInfo = [0] * N
+    for i in range(M):
+        cityInfo[citys[i][0] - 1] += 1
+        cityInfo[citys[i][1] - 1] += 1
+    return cityInfo
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    AB = [list(map(int, input().split())) for _ in range(M)]
+    AB.sort()
+    #print(AB)
+    #print(N, M)
+    #print(AB)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[5][0])
+    #print(AB[5][1])
+    #print(AB[6][0])
+    #print(AB[6][1])
+    #print(AB[7][0])
+    #print(AB[7][1])
+    #print(AB[8][0])
+    #print(AB[8][1])
+    #print(AB[9][0])
+    #print(AB[9][1])
+    #print(AB[10][0])
+    #print(AB[10][1])
+    #print(AB[11][0])
+    #print(AB[11][1])
+    #print(AB[12][0])
+    #print(AB[12][1])
+    #print(AB[13][0])
+    #print(AB[13][1])
+    #print(AB[14][0])
+    #print(AB[14][1])
+    #print(AB[15][0])
+    #print(AB[15][1])
+    #print(AB[16][0])
+    #print(AB[16][1])
+    #print(AB[17][0])
+    #print(AB[17][1])
+    #print(AB[18][0])
+    #print(AB[18][1])
+    #print(AB[19][0])
+    #print(AB[19][1])
+    #print(AB[20][0])
+    #print(AB[20][1])
+    #print(AB[21][0])
+    #print(AB[21][1])
+    #print(AB
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int, input().split())
+    road = []
+    for i in range(m):
+        road.append(list(map(int, input().split())))
+
+    city = [[] for i in range(n)]
+    for i in range(m):
+        city[road[i][0]-1].append(road[i][1])
+        city[road[i][1]-1].append(road[i][0])
+
+    for i in range(n):
+        print(len(city[i]), end = ' ')
+        for j in range(len(city[i])):
+            print(city[i][j], end = ' ')
+        print()
+
+=======
+Suggestion 6
+
+def main():
+    n, m = map(int, input().split())
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    for i in range(n):
+        print(len(graph[i]), end=" ")
+        for j in sorted(graph[i]):
+            print(j+1, end=" ")
+        print()
+
+=======
+Suggestion 7
+
+def main():
+    n, m = map(int, input().split())
+    city = [[] for i in range(n)]
+    for i in range(m):
+        a, b = map(int, input().split())
+        city[a-1].append(b)
+        city[b-1].append(a)
+    for i in range(n):
+        city[i].sort()
+        print(len(city[i]), end=' ')
+        for j in range(len(city[i])):
+            print(city[i][j], end=' ')
+        print()
+
+=======
+Suggestion 8
+
+def main():
+    n,m = map(int,input().split())
+    node = [[] for i in range(n)]
+    for i in range(m):
+        a,b = map(int,input().split())
+        node[a-1].append(b)
+        node[b-1].append(a)
+    for i in range(n):
+        print(len(node[i]),end=' ')
+        for j in node[i]:
+            print(j,end=' ')
+        print()
+
+=======
+Suggestion 9
+
+def main():
+    # 读入数据
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    # 建立邻接表
+    adj = [[] for _ in range(n)]
+    for i in range(m):
+        adj[a[i] - 1].append(b[i] - 1)
+        adj[b[i] - 1].append(a[i] - 1)
+    # 打印结果
+    for i in range(n):
+        print(len(adj[i]), end=" ")
+        for j in range(len(adj[i])):
+            print(adj[i][j] + 1, end=" ")
+        print()
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    d = [0 for i in range(n)]
+    a = [[] for i in range(n)]
+    for i in range(m):
+        a1,a2 = map(int,input().split())
+        a1 -= 1
+        a2 -= 1
+        a[a1].append(a2)
+        a[a2].append(a1)
+        d[a1] += 1
+        d[a2] += 1
+    for i in range(n):
+        print(d[i],end=' ')
+        for j in range(d[i]):
+            print(a[i][j]+1,end=' ')
+        print()

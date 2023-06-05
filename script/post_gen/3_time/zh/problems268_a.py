@@ -1,29 +1,89 @@
-#问题陈述
-#打印给定的五个整数A、B、C、D、E中有多少个不同的整数。
-#
-#限制条件
-#0 ≦ A, B, C, D, E ≦ 100
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#A B C D E
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#31 9 24 31 24
-#
-#样本输出1
-#3
-#在给定的五个整数31、9、24、31和24中，有三个不同的整数9、24和31。
-#因此，3应该被打印出来。
-#
-#输入示例 2
-#0 0 0 0 0
-#
-#样本输出2
-#1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    a, b, c, d, e = map(int, input().split())
+    print(5 - len(set([a, b, c, d, e])))
+
+=======
+Suggestion 2
+
+def main():
+    print(len(set(input().split())))
+
+=======
+Suggestion 3
+
+def main():
+    a = input().split()
+    print(len(set(a)))
+
+=======
+Suggestion 4
+
+def main():
+    a = list(map(int, input().split()))
+    print(len(set(a)))
+
+=======
+Suggestion 5
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    print(len(set([a,b,c,d,e])))
+
+=======
+Suggestion 6
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    if a==b==c==d==e:
+        print(1)
+    elif a==b==c==d or a==b==c==e or a==b==d==e or a==c==d==e or b==c==d==e:
+        print(2)
+    elif a==b==c or a==b==d or a==b==e or a==c==d or a==c==e or a==d==e or b==c==d or b==c==e or b==d==e or c==d==e:
+        print(3)
+    else:
+        print(5)
+
+=======
+Suggestion 7
+
+def main():
+    a,b,c,d,e = map(int,input().split())
+    nums = [a,b,c,d,e]
+    print(len(set(nums)))
+
+=======
+Suggestion 8
+
+def main():
+    # 读取输入
+    a,b,c,d,e = map(int, input().split())
+    # 用set去重
+    l = [a,b,c,d,e]
+    print(len(set(l)))
+
+=======
+Suggestion 9
+
+def main():
+    # 读入
+    input_str = input()
+    # 处理
+    input_list = input_str.split(" ")
+    input_list = list(map(int, input_list))
+    input_set = set(input_list)
+    # 输出
+    print(len(input_set))
+
+=======
+Suggestion 10
+
+def main():
+    s = input()
+    num_list = s.split()
+    num_set = set(num_list)
+    print(len(num_set))

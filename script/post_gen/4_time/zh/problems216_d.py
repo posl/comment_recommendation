@@ -1,57 +1,141 @@
-#问题陈述
-#我们有2N个球。每个球都有一个颜色，由1到N（包括）之间的一个整数表示。对于N种颜色中的每一种，正好有两个该颜色的球。
-#这些球被装在垂直于地面的M个圆柱体中。最初，第i个圆柱体（1 ≦ i ≦ M）包含k_i个球，其中从上往下第j个（1 ≦ j ≦ k_i）的颜色是a_{i, j}。
-#你的目标是通过重复以下操作清空所有M个圆柱体。
-#选择两个不同的非空圆柱体，从每个圆柱体中取出最上面的球。这里，被移走的两个球必须是同一颜色的。
-#判断该目标是否可以实现。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#2 ≦ M ≦ 2 × 10^5
-#1 ≦ k_i (1 ≦ i ≦ M)
-#1 ≦ a_{i,j} ≦ N (1 ≦ i ≦ M,1 ≦ j ≦ k_i)
-#sum_{i=1}^{M} k_i = 2N
-#对于每个x (1 ≦ x ≦ N)，存在正好两对整数(i,j)，使得1 ≦ i ≦ M, 1 ≦ j ≦ k_i, and a_{i,j}=x。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#k_1
-#a_{1,1} a_{1,2} ... a_{1,k_1}
-#k_2
-#a_{2,1} a_{2,2} ... a_{2,k_2}
-#.
-#.
-#.
-#k_M
-#a_{M,1} a_{M,2} ... a_{M,k_M}
-#
-#输出
-#如果目标可以实现，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 2
-#2
-#1 2
-#2
-#1 2
-#
-#样品输出1
-#Yes
-#目标可以通过以下方式实现。
-#选择第一个和第二个圆柱体，从每个圆柱体中取出最上面的球，这是允许的，因为取出的球有相同的颜色：1.
-#选择第一个和第二个圆柱体，从每个圆柱体中取出最上面的球，这是允许的，因为取出的球有相同的颜色：2。
-#
-#输入样本 2
-#2 2
-#2
-#1 2
-#2
-#2 1
-#
-#样本输出2
-#No
-#完全不能进行任何操作，这意味着不可能实现清空M缸的目标。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def resolve():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for i in range(m):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    print(k)
+    print(a)
+
+    print("Yes")
+
+=======
+Suggestion 2
+
+def solve():
+    pass
+
+=======
+Suggestion 3
+
+def solve():
+    n, m = map(int, input().split())
+    k = []
+    a = []
+    for i in range(m):
+        k.append(int(input()))
+        a.append(list(map(int, input().split())))
+    if m == 1:
+        if k[0] == 2 and a[0][0] == a[0][1]:
+            print("Yes")
+        else:
+            print("No")
+    else:
+        for i in range(m):
+            a[i].sort()
+        a.sort()
+        for i in range(m):
+            if a[i][0] != a[i][1]:
+                print("No")
+                return
+        for i in range(m - 1):
+            if a[i][1] == a[i + 1][0]:
+                print("No")
+                return
+        print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    N, M = map(int, input().split())
+    k = [int(input()) for _ in range(M)]
+    a = [list(map(int, input().split())) for _ in range(M)]
+    print(N, M, k, a)
+    pass
+
+=======
+Suggestion 5
+
+def main():
+    N,M = map(int,input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int,input().split())))
+
+    print(k)
+    print(a)
+    print(N,M)
+
+=======
+Suggestion 6
+
+def main():
+    n,m = map(int,input().split())
+    a = []
+    for i in range(m):
+        k = int(input())
+        a.append(list(map(int,input().split())))
+    print(a)
+    #print(n,m,a)
+
+=======
+Suggestion 7
+
+def main():
+    N,M = map(int,input().split())
+    k_list = []
+    a_list = []
+    for i in range(M):
+        k_list.append(int(input()))
+        a_list.append(list(map(int,input().split())))
+    print(N,M,k_list,a_list)
+    print(a_list[0][1])
+    print(a_list[1][1])
+    if a_list[0][1] == a_list[1][1]:
+        print("Yes")
+    else:
+        print("No")
+main()
+
+=======
+Suggestion 8
+
+def solve():
+    n, m = map(int, input().split())
+    a = []
+    for _ in range(m):
+        k = int(input())
+        a.append(list(map(int, input().split())))
+    for i in range(m):
+        if len(a[i]) % 2 == 1:
+            print("No")
+            return
+    for i in range(m):
+        for j in range(0, len(a[i]), 2):
+            if a[i][j] != a[i][j + 1]:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 9
+
+def main():
+    N,M = map(int,input().split())
+    k = []
+    a = []
+    for i in range(M):
+        k.append(int(input()))
+        a.append(list(map(int,input().split())))
+    print(k)
+    print(a)
+    print("Yes")

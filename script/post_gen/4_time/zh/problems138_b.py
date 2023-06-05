@@ -1,45 +1,105 @@
-#问题陈述
-#给出的是一串N个整数A_1, ..., A_N。
-#求这些数的逆数之和的（乘法）逆数，（1/（（1/（A_1））+...+ (1/(A_N)))).
-#
-#限制条件
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 1000
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印一个十进制数字（或一个整数），代表（1/((1/(A_1))+...）的值。+ (1/(A_N))))。
-#当你的输出与法官的输出的绝对或相对误差最多为10^{-5}时，你的输出将被判断为正确。
-#
-#输入样本 1
-#2
-#10 30
-#
-#样本输出1
-#7.5
-#(1/((1/(10)) + (1/(30)))) = (1/((4/(30)))) = ((30)/(4)) = 7.5.
-#打印7.50001、7.49999等也将被接受。
-#
-#输入样本 2
-#3
-#200 200 200
-#
-#样本输出2
-#66.66666666666667
-#(1/((1/(200)) + (1/(200)) + (1/(200)))) = (1/((3/(200)))) = ((200)/(3)) = 66.6666....
-#打印6.66666e+1，以此类推，也将被接受。
-#
-#输入样本 3
-#1
-#1000
-#
-#样本输出3
-#1000
-#(1/((1/(1000)))) = 1000.
-#打印+1000.0等也将被接受。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = 0
+    for i in range(n):
+        x += 1/a[i]
+    print(1/x)
+
+main()
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        sum += 1 / a[i]
+    print(1 / sum)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    result = 0
+    for i in range(n):
+        result += 1 / a[i]
+    print(1 / result)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = 0
+    for i in range(n):
+        b += 1 / a[i]
+    print(1 / b)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    sum = 0
+    for i in range(N):
+        sum += 1/A[i]
+    print(1/sum)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1 / sum(1 / i for i in a))
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1 / sum(map(lambda x: 1 / x, a)))
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    total = 0
+    for i in a:
+        total += 1 / i
+    print(1 / total)
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(1/sum(list(map(lambda x: 1/x, a))))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += 1 / a[i]
+    print(1 / ans)

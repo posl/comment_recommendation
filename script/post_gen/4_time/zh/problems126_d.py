@@ -1,53 +1,158 @@
-#问题陈述
-#我们有一棵树，有N个顶点，编号为1到N。
-#树上的第i条边连接着顶点u_i和顶点v_i，其长度为w_i。
-#你的目标是将树上的每个顶点涂成白色或黑色（将所有顶点涂成相同的颜色也可以），以便满足以下条件：
-#对于任何两个涂成相同颜色的顶点，它们之间的距离是一个偶数。
-#找到一个满足条件的顶点的着色，并打印出来。可以证明，在这个问题的约束下，至少有一个这样的着色存在。
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ u_i < v_i ≦ N
-#1 ≦ w_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#u_1 v_1 w_1
-#u_2 v_2 w_2
-#.
-#.
-#.
-#u_{N - 1} v_{N - 1} w_{N - 1}
-#
-#输出
-#打印符合条件的顶点的着色，共N行。
-#如果顶点i被涂成白色，第i行应该包含0，如果被涂成黑色，则包含1。
-#如果有多个满足条件的着色，其中任何一个都会被接受。
-#
-#输入样本 1
-#3
-#1 2 2
-#2 3 1
-#
-#样本输出 1
-#0
-#0
-#1
-#
-#采样输入2
-#5
-#2 5 2
-#2 3 10
-#1 3 8
-#3 4 2
-#
-#样本输出2
-#1
-#0
-#1
-#0
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def dfs(u, color):
+    visited[u] = True
+    colors[u] = color
+    for v, w in G[u]:
+        if not visited[v]:
+            dfs(v, color ^ (w & 1))
+
+N = int(input())
+G = [[] for i in range(N)]
+for i in range(N - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    G[u].append((v, w))
+    G[v].append((u, w))
+visited = [False] * N
+colors = [0] * N
+dfs(0, 0)
+print("\n".join(map(str, colors)))
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    u = [0] * (n - 1)
+    v = [0] * (n - 1)
+    w = [0] * (n - 1)
+    for i in range(n - 1):
+        u[i], v[i], w[i] = map(int, input().split())
+    print(0)
+    print(0)
+    print(1)
+    print(0)
+    print(1)
+
+=======
+Suggestion 4
+
+def dfs(u, color):
+    color[u] = 1
+    for i in range(len(graph[u])):
+        v = graph[u][i][0]
+        w = graph[u][i][1]
+        if color[v] == -1:
+            if w % 2 == 0:
+                color[v] = color[u]
+            else:
+                color[v] = 1 - color[u]
+            dfs(v, color)
+
+n = int(input())
+graph = [[] for i in range(n)]
+color = [-1 for i in range(n)]
+for i in range(n - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u].append([v, w])
+    graph[v].append([u, w])
+dfs(0, color)
+for i in range(n):
+    print(color[i])
+
+=======
+Suggestion 5
+
+def dfs(i, color):
+    global ans
+    visited[i] = 1
+    ans[i] = color
+    for j in range(len(graph[i])):
+        if visited[graph[i][j][0]] == 0:
+            if graph[i][j][1] % 2 == 0:
+                dfs(graph[i][j][0], color)
+            else:
+                dfs(graph[i][j][0], 1 - color)
+
+n = int(input())
+graph = [[] for i in range(n)]
+for i in range(n - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    graph[u].append([v, w])
+    graph[v].append([u, w])
+visited = [0] * n
+ans = [0] * n
+dfs(0, 0)
+for i in range(n):
+    print(ans[i])
+
+=======
+Suggestion 6
+
+def solve():
+    pass
+
+=======
+Suggestion 7
+
+def dfs(v, c):
+    color[v] = c
+    for i in range(len(edge[v])):
+        e = edge[v][i]
+        if color[e] == -1:
+            dfs(e, c^cost[v][i])
+
+n = int(input())
+edge = [[] for _ in range(n)]
+cost = [[] for _ in range(n)]
+
+for _ in range(n-1):
+    u, v, w = map(int, input().split())
+    edge[u-1].append(v-1)
+    edge[v-1].append(u-1)
+    cost[u-1].append(w%2)
+    cost[v-1].append(w%2)
+
+color = [-1]*n
+dfs(0, 0)
+for c in color:
+    print(c)
+
+=======
+Suggestion 8
+
+def dfs(u, c):
+    color[u] = c
+    for v, w in G[u]:
+        if color[v] == -1:
+            dfs(v, c ^ w)
+
+N = int(input())
+G = [[] for i in range(N)]
+color = [-1] * N
+
+for i in range(N - 1):
+    u, v, w = map(int, input().split())
+    u -= 1
+    v -= 1
+    G[u].append((v, w % 2))
+    G[v].append((u, w % 2))
+
+dfs(0, 0)
+for i in range(N):
+    print(color[i])

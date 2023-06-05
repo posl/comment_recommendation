@@ -1,37 +1,93 @@
-#问题陈述
-#有S只绵羊和W只狼。
-#如果狼的数量大于或等于羊的数量，狼会攻击羊。
-#如果狼会攻击羊，则打印不安全；否则，打印安全。
-#
-#限制条件
-#1 ≦ S ≦ 100
-#1 ≦ W ≦ 100
-#
-#输入
-#输入由标准输入提供，格式如下：
-#S W
-#
-#输出
-#如果狼会攻击羊，就打印不安全，否则就打印安全。
-#
-#输入样本 1
-#4 5
-#
-#输出示例 1
-#不安全
-#有四只羊和五只狼。狼的数量不比羊的数量少，所以它们会攻击羊。
-#
-#样本输入2
-#100 2
-#
-#样本输出2
-#安全
-#许多绵羊赶走了两只狼。
-#
-#样本输入3
-#10 10
-#
-#样本输出3
-#不安全
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    S, W = map(int, input().split())
+    if S > W:
+        print("安全")
+    else:
+        print("不安全")
+
+=======
+Suggestion 2
+
+def solve():
+    S, W = map(int, input().split())
+    if S <= W:
+        print('unsafe')
+    else:
+        print('safe')
+
+=======
+Suggestion 3
+
+def main():
+    str = input()
+    strlist = str.split()
+    s = int(strlist[0])
+    w = int(strlist[1])
+    if s > w:
+        print("安全")
+    else:
+        print("不安全")
+
+=======
+Suggestion 4
+
+def main():
+    S, W = map(int, input().split())
+    if W >= S:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 5
+
+def main():
+    S,W=map(int,input().split())
+    if S>W:
+        print('安全')
+    else:
+        print('不安全')
+
+=======
+Suggestion 6
+
+def main():
+    S, W = map(int, input().split())
+    if S <= W:
+        print("unsafe")
+    else:
+        print("safe")
+
+=======
+Suggestion 7
+
+def f(S,W):
+    if S<=W:
+        print('不安全')
+    else:
+        print('安全')
+
+=======
+Suggestion 8
+
+def main():
+    s,w = map(int,input().split())
+    if s<=w:
+        print('unsafe')
+    else:
+        print('safe')
+
+=======
+Suggestion 9
+
+def main():
+    S, W = map(int, input().split())
+    if W >= S:
+        print('unsafe')
+    else:
+        print('safe')

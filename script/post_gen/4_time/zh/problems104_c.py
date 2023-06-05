@@ -1,73 +1,237 @@
-#问题说明
-#一个编程竞赛网站AtCode提供算法问题。
-#每个问题都根据其难度被分配了一个分数。
-#目前，对于1到D（包括）之间的每个整数i，有p_i个问题，其分数为100i分。
-#这些p_1 + ... + p_D问题是AtCode上的所有问题。
-#一个AtCode的用户有一个叫做总分的数值。
-#一个用户的总分是以下两个元素的总和：
-#基本分数：用户所解决的所有问题的分数之和。
-#完美奖金：当用户解决所有问题的分数达到100i分时，除了基本分数（1≤i≤D）外，他/她还获得了c_i分的完美奖金。
-#高桥是AtCode的新用户，他还没有解决任何问题。
-#他的目标是总分达到或超过G分。
-#为了这个目标，他至少需要解决多少个问题？
-#
-#限制条件
-#1 ≤ D ≤ 10
-#1 ≤ p_i ≤ 100
-#100 ≤ c_i ≤ 10^6
-#100 ≤ G
-#输入的所有数值都是整数。
-#c_i和G都是100的倍数。
-#总分有可能达到G或更多的分数。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#D G
-#p_1 c_1
-#:
-#p_D c_D
-#
-#输出
-#打印需要解决的最小问题数，以使总分达到G或以上。注意，这个目标总是可以实现的（见约束条件）。
-#
-#输入样本 1
-#2 700
-#3 500
-#5 800
-#
-#样本输出1
-#3
-#在这种情况下，有三个问题，每个问题100分，有五个问题，每个问题200分。解决所有100分的问题的完美奖金是500分，而解决所有200分的问题的完美奖金是800分。高桥的目标是总分达到或超过700分。
-#实现这一目标的方法之一是解决四个200分的问题，获得800分的基础分。然而，如果我们解决三个100分的问题，除了300分的基础分之外，我们还可以获得500分的完美奖励，总分是800分，我们可以用更少的问题实现目标。
-#
-#样本输入2
-#2 2000
-#3 500
-#5 800
-#
-#样本输出2
-#7
-#这个案例与样本输入1相似，但这次高桥的目标是2000分以上。在这种情况下，我们不可避免地需要解决所有五个200分的问题，通过解决两个100分的问题，另外我们的总分是2000分。
-#
-#输入样本 3
-#2 400
-#3 500
-#5 800
-#
-#样本输出3
-#2
-#这个案例又与样本输入1相似，但这次高桥的目标是400分以上。在这种情况下，我们只需要解决两个200分的问题就可以实现目标。
-#
-#样本输入4
-#5 25000
-#20 1000
-#40 1000
-#50 1000
-#30 1000
-#1 1000
-#
-#样本输出4
-#66
-#只有一个500分的问题，但即使在这种情况下也能获得完美的奖金。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    # 读取输入
+    d, g = map(int, input().split())
+    p = []
+    c = []
+    for i in range(d):
+        p_i, c_i = map(int, input().split())
+        p.append(p_i)
+        c.append(c_i)
+
+    # 算法
+    ans =
+
+=======
+Suggestion 2
+
+def get_input():
+    input_list = []
+    while True:
+        try:
+            input_list.append(input())
+        except EOFError:
+            break
+    return input_list
+
+=======
+Suggestion 3
+
+def main():
+    D, G = map(int, input().split())
+    p = []
+    c = []
+    for i in range(D):
+        p_i, c_i = map(int, input().split())
+        p.append(p_i)
+        c.append(c_i)
+    ans = 10000000
+    for i in range(2**D):
+        s = 0
+        num = 0
+        rest_max = -1
+        for j in range(D):
+            if (i >> j) & 1:
+                s += 100 * (j+1) * p[j] + c[j]
+                num += p[j]
+            else:
+                rest_max = j
+        if s < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - s + s1 - 1) // s1
+            if need >= p[rest_max]:
+                continue
+            num += need
+        ans = min(ans, num)
+    print(ans)
+
+=======
+Suggestion 4
+
+def solve():
+    D, G = map(int, input().split())
+    pc = [list(map(int, input().split())) for _ in range(D)]
+    ans = float('inf')
+    for i in range(1 << D):
+        score = 0
+        cnt = 0
+        rest_max = -1
+        for j in range(D):
+            if i >> j & 1:
+                score += 100 * (j + 1) * pc[j][0] + pc[j][1]
+                cnt += pc[j][0]
+            else:
+                rest_max = j
+        if score < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - score + s1 - 1) // s1
+            if need >= pc[rest_max][0]:
+                continue
+            cnt += need
+        ans = min(ans, cnt)
+    print(ans)
+
+
+solve()
+
+=======
+Suggestion 5
+
+def solve():
+    D,G = map(int,input().split())
+    pc = [list(map(int,input().split())) for _ in range(D)]
+    ans = float("inf")
+    for i in range(2**D):
+        s = 0
+        cnt = 0
+        rest_max = -1
+        for j in range(D):
+            if ((i>>j) & 1):
+                s += 100*(j+1)*pc[j][0] + pc[j][1]
+                cnt += pc[j][0]
+            else:
+                rest_max = j
+        if s < G:
+            s1 = 100*(rest_max+1)
+            need = (G-s+s1-1)//s1
+            if need >= pc[rest_max][0]:
+                continue
+            cnt += need
+        ans = min(ans,cnt)
+    print(ans)
+
+solve()
+
+=======
+Suggestion 6
+
+def main():
+    D,G = map(int,input().split())
+    pc = [list(map(int,input().split())) for _ in range(D)]
+    ans = 10**9
+    for i in range(2**D):
+        count = 0
+        score = 0
+        rest_max = -1
+        for j in range(D):
+            if ((i >> j) & 1):
+                score += 100 * (j+1) * pc[j][0] + pc[j][1]
+                count += pc[j][0]
+            else:
+                rest_max = j
+        if score < G:
+            s1 = 100 * (rest_max+1)
+            need = (G - score + s1 - 1) // s1
+            if need >= pc[rest_max][0]:
+                continue
+            count += need
+        ans = min(ans,count)
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    D, G = map(int, input().split())
+    pc = [list(map(int, input().split())) for _ in range(D)]
+    ans = float('inf')
+    for i in range(2**D):
+        cnt = 0
+        score = 0
+        rest_max = -1
+        for j in range(D):
+            if (i >> j) & 1:
+                score += pc[j][0] * 100 * (j + 1) + pc[j][1]
+                cnt += pc[j][0]
+            else:
+                rest_max = j
+        if score < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - score + s1 - 1) // s1
+            if need >= pc[rest_max][0]:
+                continue
+            cnt += need
+        ans = min(ans, cnt)
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    D,G = map(int,input().split())
+    p = []
+    c = []
+    for i in range(D):
+        p_tmp,c_tmp = map(int,input().split())
+        p.append(p_tmp)
+        c.append(c_tmp)
+    ans = 1000000000
+    for i in range(2**D):
+        cnt = 0
+        score = 0
+        rest_max = -1
+        for j in range(D):
+            if ((i >> j) & 1):
+                score += 100 * (j+1) * p[j] + c[j]
+                cnt += p[j]
+            else:
+                rest_max = j
+        if score < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - score + s1 - 1) // s1
+            if need >= p[rest_max]:
+                continue
+            cnt += need
+        ans = min(ans,cnt)
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    D, G = map(int, input().split())
+    p = [0] * D
+    c = [0] * D
+    for i in range(D):
+        p[i], c[i] = map(int, input().split())
+
+    ans = 1000000000000000
+    for i in range(2 ** D):
+        s = 0
+        num = 0
+        rest_max = -1
+        for j in range(D):
+            if (i >> j) & 1:
+                s += 100 * (j + 1) * p[j] + c[j]
+                num += p[j]
+            else:
+                rest_max = j
+
+        if s < G:
+            s1 = 100 * (rest_max + 1)
+            need = (G - s + s1 - 1) // s1
+            if need >= p[rest_max]:
+                continue
+            num += need
+        ans = min(ans, num)
+    print(ans)

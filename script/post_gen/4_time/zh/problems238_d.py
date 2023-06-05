@@ -1,53 +1,221 @@
-#问题说明
-#对T个测试用例求解如下问题。
-#是否有一对非负整数(x,y)满足以下两个条件？
-#x和y=a
-#x+y=s
-#
-#        什么是位数和？
-#    
-#        整数A和B的位数和，A AND B，定义如下：
-#        
-#当A和B以二进制书写时，如果A和B的数字都是1，则2^k的位置（k≧0）的数字为1，否则为0。
-#        例如，我们有4和6=4（在二进制中：100和110=100）。
-#
-#
-#限制条件
-#1 ≦ T ≦ 10^5
-#0 ≦ a,s < 2^{60}。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的。第一行的格式如下：
-#T
-#然后，接着是T个测试用例。每个测试用例的格式如下：
-#a s
-#
-#输出
-#打印T行。第i行（1 ≦ i ≦ T）应该包含Yes，如果在第i个测试用例中，有一对非负整数（x,y）满足问题陈述中的两个条件，否则就是No。
-#
-#输入样本 1
-#2
-#1 8
-#4 2
-#
-#样本输出1
-#Yes
-#No
-#在第一个测试案例中，一些配对，如(x,y)=(3,5)满足条件。
-#在第二个测试案例中，没有一对非负整数满足条件。
-#
-#输入样本 2
-#4
-#201408139683277485 381410962404666524
-#360288799186493714 788806911317182736
-#18999951915747344 451273909320288229
-#962424162689761932 1097438793187620758
-#
-#样本输出2
-#No
-#Yes
-#Yes
-#No
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def getBitSum(num):
+    sum = 0
+    while num != 0:
+        sum += num & 1
+        num = num >> 1
+    return sum
+
+=======
+Suggestion 2
+
+def solve(a, s):
+    if a > s:
+        return False
+    if a == s:
+        return True
+    if a == 0:
+        return False
+    if a & 1 == 0:
+        return solve(a >> 1, s >> 1)
+    else:
+        return solve(a >> 1, s >> 1) or solve(a >> 1, (s >> 1) + 1)
+
+=======
+Suggestion 3
+
+def solve(a, s):
+    if s < a:
+        return False
+    if (s - a) & a == 0:
+        return True
+    return False
+
+=======
+Suggestion 4
+
+def get_bit_and(a, b):
+    result = 0
+    for i in range(60):
+        if a & b & (1 << i):
+            result += 1 << i
+    return result
+
+=======
+Suggestion 5
+
+def solve(a, s):
+    if a > s:
+        return "No"
+    if a == s:
+        return "Yes"
+    if (s - a) % 2 == 0:
+        return "Yes"
+    return "No"
+
+t = int(input())
+for i in range(t):
+    a, s = map(int, input().split())
+    print(solve(a, s))
+
+=======
+Suggestion 6
+
+def solve(a, s):
+    if a > s:
+        return "No"
+    if a == 0:
+        if s == 0:
+            return "Yes"
+        else:
+            return "No"
+    if a == s:
+        return "Yes"
+    if a == 1:
+        return "No"
+    if a == 2:
+        if s == 3:
+            return "Yes"
+        else:
+            return "No"
+    if a == 3:
+        if s == 5:
+            return "Yes"
+        else:
+            return "No"
+    if a == 4:
+        if s == 4:
+            return "Yes"
+        else:
+            return "No"
+    if a == 5:
+        if s == 7:
+            return "Yes"
+        else:
+            return "No"
+    if a == 6:
+        if s == 6:
+            return "Yes"
+        else:
+            return "No"
+    if a == 7:
+        if s == 9:
+            return "Yes"
+        else:
+            return "No"
+    if a == 8:
+        if s == 8:
+            return "Yes"
+        else:
+            return "No"
+    if a == 9:
+        if s == 11:
+            return "Yes"
+        else:
+            return "No"
+    if a == 10:
+        if s == 10:
+            return "Yes"
+        else:
+            return "No"
+    if a == 11:
+        if s == 13:
+            return "Yes"
+        else:
+            return "No"
+    if a == 12:
+        if s == 12:
+            return "Yes"
+        else:
+            return "No"
+    if a == 13:
+        if s == 15:
+            return "Yes"
+        else:
+            return "No"
+    if a == 14:
+        if s == 14:
+            return "Yes"
+        else:
+            return "No"
+    if a == 15:
+        if s == 17:
+            return "Yes"
+        else:
+            return "No"
+    if a == 16:
+        if s == 16:
+            return "Yes"
+        else:
+            return "No"
+    if a == 17:
+        if s == 19:
+            return "Yes"
+        else:
+            return "No"
+    if
+
+=======
+Suggestion 7
+
+def getBitSum(a, s):
+    if (a & s == a):
+        return "Yes"
+    else:
+        return "No"
+
+t = int(input())
+for i in range(t):
+    a, s = map(int, input().split())
+    print(getBitSum(a, s))
+
+=======
+Suggestion 8
+
+def get_bit_sum(a, s):
+    if s > a:
+        return "No"
+    else:
+        if s == a:
+            return "Yes"
+        else:
+            if s % 2 == 0:
+                if a % 2 == 0:
+                    return "Yes"
+                else:
+                    return "No"
+            else:
+                if a % 2 == 0:
+                    return "No"
+                else:
+                    return "Yes"
+
+=======
+Suggestion 9
+
+def solve(a, s):
+    if a > s:
+        return "No"
+    if s % 2 == 0:
+        return "Yes"
+    else:
+        return "No"
+
+=======
+Suggestion 10
+
+def main():
+    t = int(input())
+    for i in range(t):
+        a, s = map(int, input().split())
+        if a > s:
+            print('No')
+        else:
+            if (s - a) % 2 == 0:
+                print('Yes')
+            else:
+                print('No')

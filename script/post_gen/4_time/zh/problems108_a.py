@@ -1,40 +1,77 @@
-#问题说明
-#从1到K（包括）之间的正整数中选择一对偶数和奇数的方法有多少？顺序并不重要。
-#
-#限制条件
-#2≦ K≦ 100
-#K是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#K
-#
-#輸出
-#打印从1到K（包括）之间的正整数中选择一对偶数和奇数的方法的数量。
-#
-#输入样本 1
-#3
-#
-#输出示例 1
-#2
-#可以选择两对：（2，1）和（2，3）。
-#
-#样本输入2
-#6
-#
-#样本输出2
-#9
-#
-#样本输入3
-#11
-#
-#样品输出3
-#30
-#
-#样本输入4
-#50
-#
-#样本输出4
-#625
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    k = int(input())
+    print(int(k/2 * (k-k/2)))
+
+=======
+Suggestion 2
+
+def problem108_a():
+    K = int(input())
+    print(K//2*(K-K//2))
+
+=======
+Suggestion 3
+
+def main():
+    k = int(input())
+    count = 0
+    for i in range(1, k + 1):
+        if i % 2 == 0:
+            for j in range(1, k + 1):
+                if j % 2 == 1:
+                    count += 1
+        else:
+            for j in range(1, k + 1):
+                if j % 2 == 0:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def get_even_odd_pair_count(k):
+    even_count = (k // 2) + (k % 2)
+    odd_count = k // 2
+    return even_count * odd_count
+
+=======
+Suggestion 5
+
+def fun(k):
+    sum=0
+    for i in range(1,k+1):
+        if i%2==0:
+            for j in range(1,k+1):
+                if j%2==1:
+                    sum+=1
+    return sum
+
+k=int(input())
+print(fun(k))
+
+=======
+Suggestion 6
+
+def main():
+    K = int(input())
+    if K < 2 or K > 100:
+        print("K must between 2 and 100")
+        return
+    result = 0
+    for i in range(1, K+1):
+        for j in range(1, K+1):
+            if i % 2 == 0 and j % 2 == 1:
+                result += 1
+    print(result)
+
+=======
+Suggestion 7
+
+def main():
+    k = int(input())
+    print(int((k+1)/2)**2)

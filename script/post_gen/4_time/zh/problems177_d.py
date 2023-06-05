@@ -1,62 +1,129 @@
-#问题陈述
-#有N个人，从Person 1到Person N。
-#给你M个事实："人A_i和人B_i是朋友"。同一事实可以被多次给出。
-#如果X和Y是朋友，而Y和Z是朋友，那么X和Z也是朋友。没有什么友谊是不能从M个给定的事实中得出的。
-#邪恶的高桥想把N个人分成若干组，使每个人在他/她的组中没有朋友。
-#他至少需要做多少个小组？
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#0 ≦ M ≦ 2× 10^5
-#1 ≦ A_i,B_i≦ N
-#A_i ≠ B_i
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#5 3
-#1 2
-#3 4
-#5 1
-#
-#样本输出1
-#3
-#将它们分为三组，如{1,3}，{2,4}和{5}，就达到了目的。
-#
-#样本输入2
-#4 10
-#1 2
-#2 1
-#1 2
-#2 1
-#1 2
-#1 3
-#1 4
-#2 3
-#2 4
-#3 4
-#
-#样本输出2
-#4
-#
-#样本输入3
-#10 4
-#3 1
-#4 1
-#5 9
-#2 6
-#
-#输出样本3
-#3
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    AB = []
+    for i in range(M):
+        AB.append(list(map(int, input().split())))
+
+    # print(N, M)
+    # print(AB)
+
+    # 1.所有人都是朋友的情况
+    # 2.所有人都不是朋友的情况
+    # 3.其他情况
+    # 1.所有人都是朋友的情况
+
+    if M == 0:
+        print(N)
+
+=======
+Suggestion 2
+
+def find(x):
+    if x == par[x]:
+        return x
+    else:
+        par[x] = find(par[x])
+        return par[x]
+
+=======
+Suggestion 3
+
+def main():
+    N, M = map(int, input().split())
+    friends = [[] for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        friends[a - 1].append(b - 1)
+        friends[b - 1].append(a - 1)
+
+    colors = [-1] * N
+    colors[0] = 0
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        for u in friends[v]:
+            if colors[u] == -1:
+                colors[u] = 1 - colors[v]
+                stack.append(u)
+            elif colors[u] == colors[v]:
+                print(-1)
+                return
+
+    print(colors.count(0), colors.count(1))
+
+=======
+Suggestion 4
+
+def findRoot(root, i):
+    if root[i] == i:
+        return i
+    else:
+        root[i] = findRoot(root, root[i])
+        return root[i]
+
+=======
+Suggestion 5
+
+def find(x):
+    if x == p[x]:
+        return x
+    else:
+        p[x] = find(p[x])
+        return p[x]
+
+=======
+Suggestion 6
+
+def find(x):
+    if x != p[x]:
+        p[x] = find(p[x])
+    return p[x]
+
+=======
+Suggestion 7
+
+def main():
+    n,m = map(int,input().split())
+    friends = {}
+    for i in range(m):
+        a,b = map(int,input().split())
+        if a in friends:
+            friends[a].append(b)
+        else:
+            friends[a] = [b]
+        if b in friends:
+            friends[b].append(a)
+        else:
+            friends[b] = [a]
+    #print(friends)
+    people = set(range(1,n+1))
+    #print(people)
+    groups = []
+    while people:
+        group = set()
+        queue = [people.pop()]
+        while queue:
+            p = queue.pop(0)
+            group.add(p)
+            if p in friends:
+                for f in friends[p]:
+                    if f in people:
+                        queue.append(f)
+                        people.remove(f)
+        groups.append(group)
+    print(len(groups)-1)
+
+=======
+Suggestion 8
+
+def find(x):
+    if x==parent[x]:
+        return x
+    else:
+        parent[x]=find(parent[x])
+        return parent[x]

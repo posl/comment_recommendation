@@ -1,63 +1,140 @@
-#问题陈述
-#给出的是正整数N，M，Q和Q的四分法（a_i，b_i，c_i，d_i）。
-#考虑一个满足下列条件的序列A：
-#A是一个N个正整数的序列。
-#1 ≦ a_1 ≦ a_2 ≦ ... ≦ a_n ≦ m。
-#让我们把这个序列的得分定义如下：
-#分数是所有指数i的d_i之和，使A_{b_i}-A_{a_i}=c_i。(如果没有这样的i，则分数为0）。
-#找到A的最大可能得分。
-#
-#限制条件
-#输入的所有数值都是整数。
-#2 ≤ N ≤ 10
-#1 ≦ M ≦ 10
-#1 ≦ Q ≦ 50
-#1 ≦ a_i < b_i ≦ N ( i = 1, 2, ..., Q )
-#0 ≦ c_i ≦ M - 1 ( i = 1, 2, ..., Q )
-#(a_i, b_i, c_i) ≠ (a_j, b_j, c_j) ( 其中 i ≠ j)
-#1 ≦ d_i ≦ 10^5 ( i = 1, 2, ..., Q )
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M Q
-#A_1 B_1 C_1 D_1
-#:
-#a_Q b_Q c_Q d_Q
-#
-#输出
-#打印A的最大可能得分。
-#
-#输入样本 1
-#3 4 3
-#1 3 3 100
-#1 2 2 10
-#2 3 2 10
-#
-#样本输出1
-#110
-#当A={1，3，4}时，其得分是110。在这些条件下，没有一个序列的分数大于110，所以答案是110。
-#
-#输入样本2
-#4 6 10
-#2 4 1 86568
-#1 4 0 90629
-#2 3 0 90310
-#3 4 1 29211
-#3 4 3 78537
-#3 4 2 8580
-#1 2 1 96263
-#1 4 2 2156
-#1 2 0 94325
-#1 4 3 94328
-#
-#样本输出2
-#357500
-#
-#样本输入3
-#10 10 1
-#1 10 9 1
-#
-#样本输出3
-#1
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def main():
+    n,m,q=map(int,input().split())
+    abcd=[]
+    for i in range(q):
+        abcd.append(list(map(int,input().split())))
+    print(abcd)
+    print(n,m,q)
+    #print(a,b,c,d)
+
+=======
+Suggestion 3
+
+def get_max_score(N, M, Q, array):
+    # 从小到大排序
+    array = sorted(array)
+    # 记录每个位置的值
+    value = [0 for i in range(N)]
+    for i in range(N):
+        value[i] = i + 1
+    # 记录每个位置的值的总和
+    sum = [0 for i in range(N)]
+    for i in range(N):
+        sum[i] = i + 1
+    # 记录每个位置的值的总和的最大值
+    max_sum = 0
+    # 记录每个位置的值的总和的最大值的位置
+    max_sum_index = 0
+    # 记录每个位置的值的总和的最小值
+    min_sum = 0
+    # 记录每个位置的值的总和的最小值的位置
+    min_sum_index = 0
+    # 记录每个位置的值的总和的最大值的位置
+    max_sum = 0
+    # 记录每个位置的值的总和的最大值的位置
+    max_sum_index = 0
+    for i in range(Q):
+        a = array[i][0]
+        b = array[i][1]
+        c = array[i][2]
+        d = array[i][3]
+        for j in range(a - 1, b):
+            value[j] += c
+            sum[j] += d
+        if (max_sum < sum[b - 1]):
+            max_sum = sum[b - 1]
+            max_sum_index = b - 1
+        if (min_sum > sum[a - 1]):
+            min_sum = sum[a - 1]
+            min_sum_index = a - 1
+    sum[max_sum_index] = 0
+    sum[min_sum_index] = 0
+    for i in range(N):
+        if (max_sum < sum[i]):
+            max_sum = sum[i]
+    return max_sum
+
+=======
+Suggestion 4
+
+def get_max_score(n, m, q, a, b, c, d):
+    score = 0
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            for k in range(1, n + 1):
+                for l in range(1, n + 1):
+                    if i <= j <= k <= l:
+                        score += d[i] + d[j] + d[k] + d[l]
+    return score
+
+=======
+Suggestion 5
+
+def main():
+    N, M, Q = map(int, input().split())
+    query = [list(map(int, input().split())) for _ in range(Q)]
+    ans = 0
+    for A in combinations_with_replacement(range(1,M+1),N):
+        score = 0
+        for a,b,c,d in query:
+            if A[b-1]-A[a-1] == c:
+                score += d
+        ans = max(ans,score)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n,m,q = map(int,input().split())
+    a = [0] * (n+1)
+    b = [0] * (n+1)
+    c = [0] * (n+1)
+    d = [0] * (n+1)
+    for i in range(q):
+        a[i],b[i],c[i],d[i] = map(int,input().split())
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+    return 0
+
+=======
+Suggestion 7
+
+def solve():
+    pass
+
+=======
+Suggestion 8
+
+def max_score(n, m, q, score):
+    max_score = 0
+    for i in range(1, m+1):
+        for j in range(1, m+1):
+            for k in range(1, m+1):
+                for l in range(1, m+1):
+                    s = 0
+                    for x in range(0, q):
+                        if score[x][1] - score[x][0] == i:
+                            s += score[x][2]
+                        if score[x][1] - score[x][0] == j:
+                            s += score[x][2]
+                        if score[x][1] - score[x][0] == k:
+                            s += score[x][2]
+                        if score[x][1] - score[x][0] == l:
+                            s += score[x][2]
+                    if max_score < s:
+                        max_score = s
+    return max_score

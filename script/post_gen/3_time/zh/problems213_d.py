@@ -1,57 +1,284 @@
-#问题陈述
-#AtCoder共和国有N个编号为1到N的城市和N-1条编号为1到N-1的道路。
-#道路i双向连接城市A_i和城市B_i。可以保证人们可以利用道路在每一对城市之间旅行。
-#高桥将从城市1出发，通过重复以下方式进行旅行。
-#如果有未访问过的城市与高桥现在所在的城市直接相连，他就去这些城市中数字最小的城市。
-#否则、
-#如果他在城市1，他就结束旅程；
-#否则，他就去他在第一次访问当前城市之前所在的城市。
-#
-#按照高桥访问城市的顺序，找出他访问城市的顺序。
-#
-#限制条件
-#2 ≦ N ≦ 2× 10^5
-#1 ≦ A_i,B_i ≦ N
-#有可能在每一对城市之间使用公路旅行。
-#
-#输入
-#输入是由标准输入法提供的，其格式如下：
-#N
-#A_1 B_1
-#.
-#.
-#.
-#A_{N-1} B_{N-1}
-#
-#输出
-#按照高桥访问城市的顺序，打印出高桥访问的城市序列，包括城市1在旅程开始和结束时，中间有空格。
-#
-#输入样本 1
-#4
-#1 2
-#4 2
-#3 1
-#
-#样本输出1
-#1 2 4 2 1 3 1
-#他的旅程将是这样的。
-#从城市1开始。
-#与城市1直接相连的未访问的城市是城市2和3。前往数字较小的城市，即城市2。
-#与城市2直接相连的未被访问的城市是城市4。去那里吧。
-#没有与城市4直接相连的未访问的城市。回到城市2。
-#没有未访问过的城市与城市2直接相连。去城市1，他在第一次访问城市2之前就在那里。
-#与城市1直接相连的未访问过的城市是城市3。去那里吧。
-#没有与城市3直接相连的未访问过的城市。回到城市1。
-#没有与城市1直接相连的未访问过的城市。结束旅程。
-#
-#样本输入2
-#5
-#1 2
-#1 3
-#1 4
-#1 5
-#
-#样本输出2
-#1 2 1 3 1 4 1 5 1
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ab = [list(map(int, input().split())) for _ in range(n-1)]
+    ab.sort(key=lambda x: (x[0], x[1]))
+    print(ab)
+    for i in ab:
+        print(i[0], i[1])
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = [0] * (N-1)
+    B = [0] * (N-1)
+    for i in range(N-1):
+        A[i], B[i] = map(int, input().split())
+    print(A)
+    print(B)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    edge = [[] for _ in range(n)]
+    for _ in range(n-1):
+        a, b = map(int, input().split())
+        edge[a-1].append(b-1)
+        edge[b-1].append(a-1)
+    for e in edge:
+        e.sort()
+    ans = []
+    visited = [False] * n
+    stack = [0]
+    while stack:
+        v = stack.pop()
+        ans.append(v+1)
+        visited[v] = True
+        for e in edge[v]:
+            if not visited[e]:
+                stack.append(e)
+    print(*ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    AB = []
+    for i in range(N-1):
+        AB.append(list(map(int,input().split())))
+    #print(AB)
+    #print(N)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[5][0])
+    #print(AB[5][1])
+    #print(AB[6][0])
+    #print(AB[6][1])
+    #print(AB[7][0])
+    #print(AB[7][1])
+    #print(AB[8][0])
+    #print(AB[8][1])
+    #print(AB[9][0])
+    #print(AB[9][1])
+    #print(AB[10][0])
+    #print(AB[10][1])
+    #print(AB[11][0])
+    #print(AB[11][1])
+    #print(AB[12][0])
+    #print(AB[12][1])
+    #print(AB[13][0])
+    #print(AB[13][1])
+    #print(AB[14][0])
+    #print(AB[14][1])
+    #print(AB[15][0])
+    #print(AB[15][1])
+    #print(AB[16][0])
+    #print(AB[16][1])
+    #print(AB[17][0])
+    #print(AB[17][1])
+    #print(AB[18][0])
+    #print(AB[18][1])
+    #print(AB[19][0])
+    #print(AB[19][1])
+    #print(AB[20][0])
+    #print(AB[20][1])
+    #print(AB[21][0])
+    #print(AB[21][1])
+    #print(AB[22][0])
+    #print(AB[22][
+
+=======
+Suggestion 5
+
+def main():
+    pass
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    A = []
+    B = []
+    for i in range(N-1):
+        a,b = map(int,input().split())
+        A.append(a)
+        B.append(b)
+    for i in range(N):
+        print(A[i],B[i])
+
+=======
+Suggestion 7
+
+def dfs(u, p):
+    global time
+    time += 1
+    first[u] = time
+    for v in G[u]:
+        if v == p:
+            continue
+        dfs(v, u)
+    time += 1
+    last[u] = time
+
+N = int(input())
+G = [[] for _ in range(N)]
+for i in range(N - 1):
+    a, b = map(int, input().split())
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
+
+first = [0] * N
+last = [0] * N
+time = 0
+dfs(0, -1)
+
+ans = []
+for i in range(N):
+    ans.append((first[i], i + 1))
+ans.sort()
+
+for i in range(N):
+    ans.append((last[i], -(i + 1)))
+ans.sort()
+
+for i in range(2 * N):
+    print(ans[i][1], end = ' ')
+print()
+
+=======
+Suggestion 8
+
+def dfs(v,p):
+    for u in g[v]:
+        if u==p:continue
+        print(u,end=' ')
+        dfs(u,v)
+        print(v,end=' ')
+
+n=int(input())
+g=[[]for _ in range(n)]
+for _ in range(n-1):
+    a,b=map(int,input().split())
+    g[a-1].append(b-1)
+    g[b-1].append(a-1)
+print(1,end=' ')
+dfs(0,-1)
+print()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    A = [0] * (N-1)
+    B = [0] * (N-1)
+    for i in range(N-1):
+        A[i], B[i] = map(int, input().split())
+    #print(N)
+    #print(A)
+    #print(B)
+    #print("end")
+    visited = [0] * N
+    visited[0] = 1
+    route = [1]
+    city = 1
+    while True:
+        for i in range(N-1):
+            if A[i] == city and visited[B[i]-1] == 0:
+                visited[B[i]-1] = 1
+                city = B[i]
+                route.append(city)
+                break
+            elif B[i] == city and visited[A[i]-1] == 0:
+                visited[A[i]-1] = 1
+                city = A[i]
+                route.append(city)
+                break
+        else:
+            if city == 1:
+                break
+            else:
+                for i in range(N-1):
+                    if A[i] == city:
+                        city = B[i]
+                        route.append(city)
+                        break
+                    elif B[i] == city:
+                        city = A[i]
+                        route.append(city)
+                        break
+    print(*route)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    AB = [list(map(int, input().split())) for _ in range(N-1)]
+    #print(N,AB)
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+
+    #print(AB[0][0])
+    #print(AB[0][1])
+    #print(AB[1][0])
+    #print(AB[1][1])
+    #print(AB[2][0])
+    #print(AB[2][1])
+    #print(AB[3][0])
+    #print(AB[3][1])
+    #print(AB[4][0])
+    #print(AB[4][1])
+    #print(AB[5][0])
+    #print(AB[5][1])
+    #print(AB[6][0])
+    #print(AB[6][1])
+    #print(AB[7][0])
+    #print(AB[7][1])
+    #print(AB[8][0])
+    #print(AB[8][1])
+    #print(AB[9][0])
+    #print(AB[9][1])
+    #print(AB[10][0])
+    #print(AB[10][1])
+    #print(AB[11][0])
+    #print(AB[11][1])
+    #print(AB[12][0])
+    #print(AB[12][1])
+    #print(AB[13][0])
+    #print(AB[13][1])
+    #print(AB[14][0])
+    #print(AB[14][1])
+    #print(AB[15][0])
+    #print(AB[15][1])
+    #print(AB[16][0])
+    #print(AB[16][1])
+    #print(AB[17][0])
+    #print(AB[17][1])
+    #print(AB

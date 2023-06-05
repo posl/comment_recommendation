@@ -1,52 +1,190 @@
-#问题陈述
-#我们有一个有H个横行和W个纵列的网格，每个方格都包含一个整数。
-#写在从上往下第i行和从左往下第j列的方格上的整数是A_{i, j}。
-#请判断该方格是否满足以下条件。
-#A_{i_1, j_1}+ A_{i_2, j_2} ≦ A_{i_2, j_1}+ A_{i_1, j_2}对每一个四元整数（i_1, i_2, j_1, j_2）都成立，使得1 ≦ i_1 < i_2 ≦ H，1 ≦ j_1 < j_2 ≦ W。
-#
-#约束条件
-#2 ≦ H, W ≦ 50
-#1 ≦ A_{i, j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#H W
-#A_{1, 1} A_{1, 2} ...A_{1, W}
-#A_{2, 1} A_{2, 2} ...A_{2, W}
-#.
-#.
-#.
-#A_{H, 1} A_{H, 2} ...A_{H, W}
-#
-#输出
-#如果网格满足问题陈述中的条件，打印Yes；否则，打印No。
-#
-#输入样本 1
-#3 3
-#2 1 4
-#3 1 3
-#6 4 1
-#
-#样本输出1
-#Yes
-#有九个整数的四元组（i_1, i_2, j_1, j_2），使得1 ≦ i_1 < i_2 ≦ H，1 ≦ j_1 < j_2 ≦ W。+ A_{i_2, j_2} ≦ A_{i_2, j_1}+ A_{i_1, j_2}成立。下面是一些例子。
-#对于（i_1, i_2, j_1, j_2）=（1, 2, 1, 2），我们有 A_{i_1, j_1}+ A_{i_2, j_2} = 2 + 1 ≦ 3 + 1 = A_{i_2, j_1}.+ A_{i_1, j_2}。
-#对于（i_1, i_2, j_1, j_2）=（1, 2, 1, 3），我们有A_{i_1, j_1}。+ A_{i_2, j_2} = 2 + 3 ≦ 3 + 4 = A_{i_2, j_1}.+ A_{i_1, j_2}。
-#对于（i_1, i_2, j_1, j_2）=（1, 2, 2, 3），我们有A_{i_1, j_1}。+ A_{i_2, j_2} = 1 + 3 ≦ 1 + 4 = A_{i_2, j_1}.+ A_{i_1, j_2}。
-#对于（i_1, i_2, j_1, j_2）=（1, 3, 1, 2），我们有A_{i_1, j_1}。+ A_{i_2, j_2} = 2 + 4 ≦ 6 + 1 = A_{i_2, j_1}.+ A_{i_1, j_2}。
-#对于（i_1, i_2, j_1, j_2）=（1, 3, 1, 3），我们有A_{i_1, j_1}。+ A_{i_2, j_2} = 2 + 1 ≦ 6 + 4 = A_{i_2, j_1}.+ A_{i_1, j_2}。
-#我们还可以看到，该属性对其他四元组也是成立的：(i_1, i_2, j_1, j_2) = (1, 3, 2, 3), (2, 3, 1, 2), (2, 3, 1, 3) , (2, 3, 2, 3)。
-#因此，我们应该打印是。
-#
-#输入样本 2
-#2 4
-#4 3 2 1
-#5 6 7 8
-#
-#样本输出2
-#No
-#我们应该打印No，因为条件没有得到满足。
-#这是因为，例如，我们有A_{i_1, j_1} + A_{i_2, j_2} = 4 + 8 = A_{i_2, j_1}。+ A_{i_2, j_2} = 4 + 8 > 5 + 1 = A_{i_2, j_1}.+ A_{i_1, j_2}对于（i_1, i_2, j_1, j_2）=（1, 2, 1, 4）。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h,w = map(int,input().split())
+    a = []
+    for i in range(h):
+        a.append(list(map(int,input().split())))
+    for i1 in range(h):
+        for i2 in range(i1+1,h):
+            for j1 in range(w):
+                for j2 in range(j1+1,w):
+                    if a[i1][j1]+a[i2][j2]>a[i2][j1]+a[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+    return
+
+=======
+Suggestion 2
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i1 in range(H):
+        for i2 in range(i1 + 1, H):
+            for j1 in range(W):
+                for j2 in range(j1 + 1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print("No")
+                        return
+    print("Yes")
+
+=======
+Suggestion 3
+
+def main():
+    h,w = map(int,input().split())
+    matrix = []
+    for i in range(h):
+        matrix.append(list(map(int,input().split())))
+    for i in range(h):
+        for j in range(w):
+            for k in range(i+1,h):
+                for l in range(j+1,w):
+                    if matrix[i][j]+matrix[k][l]>matrix[i][l]+matrix[k][j]:
+                        print("No")
+                        exit()
+    print("Yes")
+
+=======
+Suggestion 4
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    result = "Yes"
+    for i in range(H):
+        for j in range(W):
+            for k in range(i+1, H):
+                for l in range(j+1, W):
+                    if A[i][j] + A[k][l] > A[k][j] + A[i][l]:
+                        result = "No"
+                        break
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i1 in range(H):
+        for i2 in range(i1 + 1, H):
+            for j1 in range(W):
+                for j2 in range(j1 + 1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print('No')
+                        return
+    print('Yes')
+    return
+
+=======
+Suggestion 6
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    #print(A)
+    for i1 in range(H):
+        for j1 in range(W):
+            for i2 in range(i1+1, H):
+                for j2 in range(j1+1, W):
+                    if A[i1][j1]+A[i2][j2] > A[i2][j1]+A[i1][j2]:
+                        print("No")
+                        return
+    print("Yes")
+
+=======
+Suggestion 7
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    for i in range(H):
+        for j in range(W):
+            for k in range(i + 1, H):
+                for l in range(j + 1, W):
+                    if A[i][j] + A[k][l] > A[i][l] + A[k][j]:
+                        print("No")
+                        return
+    print("Yes")
+
+=======
+Suggestion 8
+
+def solve(h,w,grid):
+    for i in range(h):
+        for j in range(w):
+            for k in range(i+1,h):
+                for l in range(j+1,w):
+                    if grid[i][j]+grid[k][l]>grid[i][l]+grid[k][j]:
+                        return False
+    return True
+
+=======
+Suggestion 9
+
+def main():
+    H, W = map(int, input().split())
+    A = []
+    for i in range(H):
+        A.append(list(map(int, input().split())))
+    
+    # print(A)
+    for i1 in range(H):
+        for i2 in range(i1+1, H):
+            for j1 in range(W):
+                for j2 in range(j1+1, W):
+                    if A[i1][j1] + A[i2][j2] > A[i2][j1] + A[i1][j2]:
+                        print("No")
+                        return
+    print("Yes")
+
+=======
+Suggestion 10
+
+def main():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+
+    #print(H, W)
+    #print(A)
+
+    #print(A[0][0])
+    #print(A[0][1])
+    #print(A[0][2])
+    #print(A[1][0])
+    #print(A[1][1])
+    #print(A[1][2])
+    #print(A[2][0])
+    #print(A[2][1])
+    #print(A[2][2])
+
+    #print(A[0][0] + A[1][1])
+    #print(A[0][1] + A[1][0])
+    #print(A[0][0] + A[1][2])
+    #print(A[0][2] + A[1][0])
+    #print(A[0][1] + A[1][2])
+    #print(A[0][2] + A[1][1])
+
+    #print(A[0][0] + A[2][1])
+    #print(A[0][1] + A[2][0])
+    #print(A[0][0] + A[2][2])
+    #print(A[0][2] + A[2][0])
+    #print(A[0][1] + A[2][2])
+    #print(A[0][2] + A[2][1])
+
+    #print(A[1][0] + A[2][1])
+    #print(A[1][1] + A[2][0])
+    #print(A[1][0] + A[2][2])
+    #print(A[1][2] + A[2][0])
+    #print(A[1][1] + A[2][2])
+    #print(A[1][2] + A[2][1])
+
+    #print(A[0][0] + A[1][1] <= A[0][1] + A[1][0])
+    #print(A[0][0] + A[1][2] <= A[0][2] + A[1][0])
+    #print(A[0][1] + A[1][2] <= A[0][2] + A[1

@@ -1,35 +1,23 @@
-#问题陈述
-#众所周知，刻在半径为a的圆内的正十二边形的面积为3a^2。
-#给定一个整数r，求刻在半径为r的圆内的正十二边形的面积。
-#
-#限制条件
-#1 ≦ r ≦ 100
-#r是一个整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#r
-#
-#輸出
-#打印一个代表正十二边形面积的整数。
-#
-#输入样本 1
-#4
-#
-#输出样本 1
-#48
-#正十二边形的面积是3×4^2=48。
-#
-#样本输入2
-#15
-#
-#样本输出2
-#675
-#
-#采样输入3
-#80
-#
-#采样输出3
-#19200
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    r = int(input())
+    print(3*r**2)
+
+=======
+Suggestion 2
+
+def main():
+    r = int(input())
+    print(3 * r * r)
+
+=======
+Suggestion 3
+
+def problem134_a():
+    import math
+    r = int(input())
+    print(3*(r**2))

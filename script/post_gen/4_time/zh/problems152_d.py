@@ -1,48 +1,171 @@
-#问题陈述
-#给出的是一个正整数N。
-#求满足下列条件的不大于N的正整数对（A，B）的数目：
-#当A和B以不带前导零的十进制写成时，A的最后一位数字等于B的第一位数字，A的第一位数字等于B的最后一位数字。
-#
-#限制条件
-#1 ≦ N ≦ 2 × 10^5
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印答案。
-#
-#输入样本1
-#25
-#
-#样本输出1
-#17
-#以下17个配对满足条件：（1,1），（1,11），（2,2），（2,22），（3,3），（4,4），（5,5），（6,6），（7,7），（8,8），（9,9），（11,1），（11,11），（12，21），（21，12），（22，2）和（22，22）。
-#
-#样本输入2
-#1
-#
-#样本输出2
-#1
-#
-#样本输入3
-#100
-#
-#样品输出3
-#108
-#
-#样本输入4
-#2020
-#
-#样本输出4
-#40812
-#
-#样本输入5
-#200000
-#
-#样品输出5
-#400000008
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1, n + 1):
+        a = str(i)
+        b = a[::-1]
+        if a[0] == b[-1] and a[-1] == b[0]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    if N<10:
+        print(N)
+    elif N<100:
+        print(9)
+    elif N<1000:
+        print(9+((N-99)//10))
+    elif N<10000:
+        print(9+90+((N-999)//100))
+    elif N<100000:
+        print(9+90+900+((N-9999)//1000))
+    elif N<1000000:
+        print(9+90+900+9000+((N-99999)//10000))
+    elif N<10000000:
+        print(9+90+900+9000+90000+((N-999999)//100000))
+    elif N<100000000:
+        print(9+90+900+9000+90000+900000+((N-9999999)//1000000))
+    elif N<1000000000:
+        print(9+90+900+9000+90000+900000+9000000+((N-99999999)//10000000))
+    elif N<10000000000:
+        print(9+90+900+9000+90000+900000+9000000+90000000+((N-999999999)//100000000))
+    elif N<100000000000:
+        print(9+90+900+9000+90000+900000+9000000+90000000+900000000+((N-9999999999)//1000000000))
+    elif N<1000000000000:
+        print(9+90+900+9000+90000+900000+9000000+90000000+900000000+9000000000+((N-99999999999)//10000000000))
+    elif N<10000000000000:
+        print(9+90+900+9000+90000+900000+9000000+90000000+900000000+9000000000+90000000000+((N-999999999999)//100000000000))
+    elif N<100000000000000:
+        print(9+90+900+9000+90000+900000+9000000+90000000+900000000+9000000000+900000
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    count = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if i % 10 == j // (10 ** (len(str(j))-1)) and i // (10 ** (len(str(i))-1)) == j % 10:
+                count += 1
+    print(count)
+
+=======
+Suggestion 4
+
+def is_ok(n):
+    s = str(n)
+    if len(s) == 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return True
+        else:
+            return False
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    count = 0
+    for i in range(1, n + 1):
+        if i % 10 == 0:
+            continue
+        for j in range(1, n + 1):
+            if j % 10 == 0:
+                continue
+            if str(i)[0] == str(j)[-1] and str(i)[-1] == str(j)[0]:
+                count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            if int(str(i)[-1]) == int(str(j)[0]) and int(str(i)[0]) == int(str(j)[-1]):
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1,N+1):
+        str_i = str(i)
+        if str_i[0] == str_i[-1]:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    # 读入
+    N = int(input())
+    # 初始化
+    ans = 0
+    # 遍历
+    for i in range(1, N + 1):
+        # 求一下最后一位
+        last = i % 10
+        # 如果最后一位是0，那么就跳过
+        if last == 0:
+            continue
+        # 求一下第一位
+        first = int(str(i)[0])
+        # 如果第一位也是0，那么也跳过
+        if first == 0:
+            continue
+        # 如果满足条件，那么就加一
+        if last == first:
+            ans += 1
+    # 打印
+    print(ans)
+main()
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    ans = 0
+    for i in range(1, N+1):
+        if i % 10 == 0:
+            continue
+        else:
+            str_i = str(i)
+            if str_i[0] == str_i[-1]:
+                ans += 1
+            for j in range(i+1, N+1):
+                str_j = str(j)
+                if str_i[-1] == str_j[0] and str_j[-1] == str_i[0]:
+                    ans += 2
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    cnt = 0
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if int(str(i)[-1]) == int(str(j)[0]) and int(str(i)[0]) == int(str(j)[-1]):
+                cnt += 1
+    print(cnt)

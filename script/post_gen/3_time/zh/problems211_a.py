@@ -1,38 +1,49 @@
-#问题陈述
-#给你一个人的收缩压A和舒张压B。
-#找到平均动脉压C，我们定义如下：
-#C=（（A-B）/（3））+B。
-#
-#限制条件
-#50 ≦ b ≦ a ≦ 300
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#A B
-#
-#输出
-#打印数值C。
-#当你的输出与我们的答案的绝对或相对误差最多为10^{-5}时，你的输出被认为是正确的。
-#
-#输入样本 1
-#130 100
-#
-#样本输出1
-#110
-#我们有C=（（130-100）/（3））+100=10+100=110。
-#
-#样本输入2
-#300 50
-#
-#样本输出2
-#133.3333333
-#注意，虽然输入的所有数值都是整数，但输出的数值可能不是整数。
-#
-#输入示例 3
-#123 123
-#
-#输出示例 3
-#123
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    A, B = map(int, input().split())
+    print((A - B) / 3 + B)
+
+=======
+Suggestion 2
+
+def main():
+    a, b = map(int, input().split())
+    print((a+b)/3)
+
+=======
+Suggestion 3
+
+def main():
+    a,b = map(int,input().split())
+    print((a-b)/3+b)
+
+=======
+Suggestion 4
+
+def main():
+    # 读取输入
+    a, b = map(int, input().split())
+    # 计算平均动脉压
+    c = (a - b) / 3 + b
+    # 输出结果
+    print(c)
+
+=======
+Suggestion 5
+
+def main():
+    a, b = map(int, input().split())
+    c = ((a - b) / 3) + b
+    print(c)
+
+=======
+Suggestion 6
+
+def main():
+    a, b = map(int, input().split())
+    c = (a - b) / 3 + b
+    print(c)

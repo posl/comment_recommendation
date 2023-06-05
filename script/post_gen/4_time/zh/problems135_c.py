@@ -1,48 +1,245 @@
-#问题陈述
-#有N+1个城镇。第i个城镇正被A_i个怪物攻击。
-#我们有N个英雄。第i个英雄可以打败攻击第i个或（i+1）个城镇的怪物，总共最多可以打败B_i个怪物。
-#英雄们合作最多可以打败多少个怪物？
-#
-#限制条件
-#输入的所有数值都是整数。
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i ≦ 10^9
-#1 ≦ B_i ≦ 10^9
-#
-#输入
-#输入是由标准输入法提供的，格式如下：
-#N
-#A_1 A_2 ...A_{N+1}
-#B_1 B_2 ...B_N
-#
-#输出
-#打印英雄们能打败的最大怪物总数。
-#
-#输入样本 1
-#2
-#3 5 2
-#4 5
-#
-#样本输出1
-#9
-#如果英雄们按以下方式选择要击败的怪物，他们总共可以击败9个怪物，这是最大的结果。
-#第一位英雄击败了攻击第一个城镇的两个怪物和攻击第二个城镇的两个怪物。
-#第二位英雄击败了攻击第二座城镇的三只怪物和攻击第三座城镇的两只怪物。
-#
-#输入样本2
-#3
-#5 6 3 8
-#5 100 8
-#
-#样本输出2
-#22
-#
-#样本输入3
-#2
-#100 1 1
-#1 100
-#
-#样本输出 3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        a[i] = max(0, a[i] - b[i])
+        b[i] = max(0, b[i] - a[i])
+        ans += min(a[i + 1], b[i])
+        a[i + 1] = max(0, a[i + 1] - b[i])
+        b[i] = max(0, b[i] - a[i + 1])
+    print(ans)
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] >= b[i]:
+            ans += b[i]
+            a[i] -= b[i]
+            b[i] = 0
+        else:
+            ans += a[i]
+            b[i] -= a[i]
+            a[i] = 0
+        if a[i + 1] >= b[i]:
+            ans += b[i]
+            a[i + 1] -= b[i]
+            b[i] = 0
+        else:
+            ans += a[i + 1]
+            b[i] -= a[i + 1]
+            a[i + 1] = 0
+    print(ans)
+
+=======
+Suggestion 3
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        if A[i+1] <= B[i]:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+        else:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        if A[i+1] <= B[i]:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+        else:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            if A[i+1] <= B[i]:
+                ans += A[i+1]
+                A[i+1] = 0
+            else:
+                ans += B[i]
+                A[i+1] -= B[i]
+        else:
+            ans += B[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    b_list = list(map(int, input().split()))
+
+    sum = 0
+    for i in range(n):
+        if a_list[i] > b_list[i]:
+            sum += b_list[i]
+            a_list[i] -= b_list[i]
+            b_list[i] = 0
+        else:
+            sum += a_list[i]
+            b_list[i] -= a_list[i]
+            a_list[i] = 0
+        if a_list[i + 1] > b_list[i]:
+            sum += b_list[i]
+            a_list[i + 1] -= b_list[i]
+            b_list[i] = 0
+        else:
+            sum += a_list[i + 1]
+            b_list[i] -= a_list[i + 1]
+            a_list[i + 1] = 0
+
+    print(sum)
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # print(N, A, B)
+
+    ans = 0
+    for i in range(N):
+        if A[i] <= B[i]:
+            ans += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+        else:
+            ans += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        if A[i+1] <= B[i]:
+            ans += A[i+1]
+            B[i] -= A[i+1]
+            A[i+1] = 0
+        else:
+            ans += B[i]
+            A[i+1] -= B[i]
+            B[i] = 0
+    print(ans)
+
+=======
+Suggestion 8
+
+def max_monster(N,A,B):
+    max_monster = 0
+    for i in range(N):
+        if B[i] >= A[i]:
+            max_monster += A[i]
+            B[i] = B[i] - A[i]
+            A[i] = 0
+        else:
+            max_monster += B[i]
+            A[i] = A[i] - B[i]
+            B[i] = 0
+        if B[i] >= A[i+1]:
+            max_monster += A[i+1]
+            B[i] = B[i] - A[i+1]
+            A[i+1] = 0
+        else:
+            max_monster += B[i]
+            A[i+1] = A[i+1] - B[i]
+            B[i] = 0
+    return max_monster
+
+=======
+Suggestion 9
+
+def solve(n, a, b):
+    ans = 0
+    for i in range(n):
+        ans += min(a[i], b[i])
+        a[i] -= min(a[i], b[i])
+        b[i] -= min(a[i], b[i])
+        ans += min(a[i+1], b[i])
+        a[i+1] -= min(a[i+1], b[i])
+        b[i] -= min(a[i+1], b[i])
+    return ans
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt = 0
+    for i in range(N):
+        if A[i] >= B[i]:
+            cnt += B[i]
+            A[i] -= B[i]
+            B[i] = 0
+        else:
+            cnt += A[i]
+            B[i] -= A[i]
+            A[i] = 0
+            if A[i+1] >= B[i]:
+                cnt += B[i]
+                A[i+1] -= B[i]
+                B[i] = 0
+            else:
+                cnt += A[i+1]
+                B[i] -= A[i+1]
+                A[i+1] = 0
+    print(cnt)

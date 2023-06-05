@@ -1,46 +1,147 @@
-#问题陈述
-#有一个N度的多项式，A(x)=A_Nx^N+A_{N-1}x^{N-1}+...。+A_1x+A_0、
-#和另一个M度的B(x)=B_Mx^M+B_{M-1}x^{M-1}+...。+B_1x+B_0。
-#这里，A(x)和B(x)的每个系数都是一个绝对值最多为100的整数，并且前导系数不为0。
-#同时，让它们的乘积为C(x)=A(x)B(x)=C_{N+M}x^{N+M}+C_{N+M-1}x^{N+M-1}+...+C_1x+C_0。
-#给出A_0,A_1,..., A_N和C_0,C_1,..., C_{N+M}，找到B_0,B_1,..., B_M。
-#这里，给定的输入保证有一个唯一的序列B_0,B_1,...,B_M满足给定条件。
-#
-#限制条件
-#1 ≦ N < 100
-#1 ≦ M < 100
-#|A_i| ≦ 100
-#|C_i| ≦ 10^6
-#A_N ≠ 0
-#C_{N+M}≠ 0
-#有一个唯一的序列B_0, B_1, ..., B_M满足声明中给出的条件。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_0 A_1 ...A_{N-1} A_N
-#C_0 C_1 ...C_{N+M-1} C_{N+M}
-#
-#输出
-#在一行中打印M+1个整数B_0,B_1,..., B_M，中间有空格。
-#
-#输入示例 1
-#1 2
-#2 1
-#12 14 8 2
-#
-#样本输出 1
-#6 4 2
-#对于A(x)=x+2和B(x)=2x^2+4x+6，我们有C(x)=A(x)B(x)=(x+2)(2x^2+4x+6)=2x^3+8x^2+14x+12，所以B(x)=2x^2+4x+6满足所给条件。因此，B_0=6，B_1=4，B_2=2应该按照这个顺序打印，中间有空格。
-#
-#输入样本 2
-#1 1
-#100 1
-#10000 0 -1
-#
-#样本输出2
-#100 -1
-#我们有A(x)=x+100，C(x)=-x^2+10000，其中B(x)=-x+100满足给定条件。
-#因此，100，-1应该按照这个顺序打印，中间有空格。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def readinput():
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    return n,m,a,c
+
+=======
+Suggestion 2
+
+def solve():
+    N,M=map(int,input().split())
+    A=list(map(int,input().split()))
+    C=list(map(int,input().split()))
+    B=[0 for i in range(M+1)]
+    for i in range(N+1):
+        for j in range(M+1):
+            B[j]+=A[i]*C[i+j]
+    print(' '.join(map(str,B)))
+
+solve()
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def main():
+    #输入
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    #计算
+    B = [0] * (M + 1)
+    for i in range(N + M + 1):
+        for j in range(min(i + 1, N + 1)):
+            B[i - j] += A[N - j] * C[i]
+
+    #输出
+    print(' '.join(map(str, B)))
+
+=======
+Suggestion 5
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    b = [0] * m
+    for i in range(m):
+        b[i] = c[i] - sum([a[j] * b[i - j - 1] for j in range(n)])
+    print(' '.join(map(str, b)))
+
+solve()
+
+=======
+Suggestion 6
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    b = [0] * (m + 1)
+    for i in range(m + 1):
+        b[i] = c[i] / a[n]
+    for i in range(m, n - 1, -1):
+        for j in range(n - i):
+            b[j] -= a[j + i] * b[i]
+    print(*b)
+
+solve()
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+    B = [0] * (M + 1)
+    for i in range(M + 1):
+        B[i] = C[i] - sum([A[j] * B[i - j] for j in range(i)])
+    print(' '.join(map(str, B)))
+
+main()
+
+=======
+Suggestion 8
+
+def main():
+    print("start")
+    N,M=map(int,input().split())
+    A=list(map(int,input().split()))
+    C=list(map(int,input().split()))
+    B=[0]*(M+1)
+    for i in range(N+1):
+        for j in range(M+1):
+            B[j]+=A[i]*C[i+j]
+    print(B)
+    print(" ".join(map(str,B)))
+    print("end")
+
+=======
+Suggestion 9
+
+def solve():
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B = [0] * (M + 1)
+
+    for i in range(M, -1, -1):
+        B[i] = C[i + N]
+        for j in range(N - 1, -1, -1):
+            C[j + i] -= A[j] * B[i]
+
+    print(*B)
+
+=======
+Suggestion 10
+
+def main():
+    n,m = map(int,input().split())
+    a = list(map(int,input().split()))
+    c = list(map(int,input().split()))
+    b = [0]*(m+1)
+    for i in range(n+1):
+        b[0] += a[i]*c[i]
+    for j in range(1,m+1):
+        for i in range(n+1):
+            b[j] += a[i]*c[i+j]
+    for i in range(m):
+        print(b[i],end=' ')
+    print(b[m])
+
+main()

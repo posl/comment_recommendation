@@ -1,66 +1,94 @@
-#问题陈述
-#我们有一个由H行和W列的方格。位于从上往下第i行和从左往下第j列（1 ≦ i ≦ H, 1 ≦ j ≦ W）的正方形的颜色以字符c_{i,j}的形式给出：如果c_{i,j}是.，则该正方形为白色；如果c_{i,j}是#，则为黑色。
-#考虑做以下操作：
-#选择一定数量的行（可能是零），和一定数量的列（可能是零）。然后，将所选行中的所有方块和所选列中的所有方块涂成红色。
-#给你一个正整数K。有多少个行和列的选择会导致在操作后正好剩下K个黑色的方块？这里，我们考虑的是，当有一个行或列只在其中一个选择中被选中时，两个选择是不同的。
-#
-#限制条件
-#1 ≦ H, W ≦ 6
-#1 ≦ K ≦ HW
-#c_{i,j}是.或#。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H W K
-#c_{1,1}c_{1,2}...c_{1,W}
-#c_{2,1}c_{2,2}...c_{2,W}
-#:
-#c_{H,1}c_{H,2}...c_{H,W}
-#
-#输出
-#打印一个整数，代表满足条件的行和列的选择数量。
-#
-#输入样本 1
-#2 3 2
-#..#
-####
-#
-#样本输出1
-#5
-#下面五个选项满足条件。
-#第1行和第1列
-#第1行和第2列
-#第1行和第3列
-#第1行和第2列
-#第3列
-#
-#输入样本 2
-#2 3 4
-#..#
-####
-#
-#样本输出2
-#1
-#一个选择，即什么都不选，满足条件。
-#
-#输入样本 3
-#2 2 3
-###
-###
-#
-#样本输出3
-#0
-#
-#样本输入4
-#6 6 8
-#..##..
-#.#..#.
-##....#
-#######
-##....#
-##....#
-#
-#样本输出4
-#208
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    pass
+
+=======
+Suggestion 2
+
+def solve(h,w,k,grid):
+    ans = 0
+    for i in range(2**h):
+        for j in range(2**w):
+            cnt = 0
+            for r in range(h):
+                for c in range(w):
+                    if ((i>>r)&1)==0 and ((j>>c)&1)==0 and grid[r][c]=='#':
+                        cnt += 1
+            if cnt==k:
+                ans += 1
+    return ans
+
+=======
+Suggestion 3
+
+def check(lst):
+    count = 0
+    for i in range(H):
+        for j in range(W):
+            if lst[i][j] == '#':
+                count += 1
+    if count == K:
+        return True
+    else:
+        return False
+
+=======
+Suggestion 4
+
+def count_black(s):
+    return sum([1 if c == '#' else 0 for c in s])
+
+=======
+Suggestion 5
+
+def dfs(x, y, k, a, b, c):
+    if x == 0:
+        if k == 0:
+            return 1
+        else:
+            return 0
+    if y == 0:
+        return dfs(x - 1, b, k, a, b, c)
+    if c[x - 1][y - 1] == "#":
+        return dfs(x, y - 1, k - 1, a, b, c) + dfs(x, y - 1, k, a, b, c)
+    else:
+        return dfs(x, y - 1, k, a, b, c)
+
+=======
+Suggestion 6
+
+def dfs(h, w, k, i, j, k2, w2, h2):
+    if i == h:
+        if k2 == k:
+            return 1
+        else:
+            return 0
+    if j == w:
+        return dfs(h, w, k, i + 1, 0, k2, w2, h2)
+    if k2 + w2[i] + h2[j] > k:
+        return dfs(h, w, k, i, j + 1, k2, w2, h2)
+    return dfs(h, w, k, i, j + 1, k2, w2, h2) + dfs(h, w, k, i + 1, j, k2 + 1, w2, h2)
+
+=======
+Suggestion 7
+
+def dfs(i,j,black):
+    if i == H:
+        if black == K:
+            return 1
+        else:
+            return 0
+    if j == W:
+        return dfs(i+1,0,black)
+    ret = 0
+    ret += dfs(i,j+1,black)
+    ret += dfs(i,j+1,black+1)
+    return ret
+
+H,W,K = map(int,input().split())
+c = [list(input()) for _ in range(H)]
+print(dfs(0,0,0))

@@ -1,45 +1,150 @@
-#问题陈述
-#一个祭坛上供奉着N块石头，从左到右排成一排。左边第i块石头的颜色（1 ≦ i ≦ N）以字符c_i的形式给你；R代表红色，W代表白色。
-#你可以按任何顺序做以下两种操作，次数不限：
-#选择两个石头（不一定是相邻的），然后交换它们。
-#选择一块石头并改变其颜色（从红色到白色，反之亦然）。
-#根据一个算命先生的说法，白色石头放在红色石头的左边会带来灾难。至少需要多少次操作才能达到没有这种白石头的情况？
-#
-#限制条件
-#2 ≦ N ≦ 200000
-#c_i为R或W。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#c_{1}c_{2}...c_{N}
-#
-#输出
-#打印一个代表所需最小操作数的整数。
-#
-#输入样本 1
-#4
-#WWRR
-#
-#采样输出1
-#2
-#例如，下面的两个操作可以达到目的。
-#从左边开始交换第1个和第3个石头，结果是RWWR。
-#从左边开始改变第4个石头的颜色，结果是RWWW。
-#
-#输入样本2
-#2
-#RR
-#
-#采样输出2
-#0
-#可以是不需要操作的情况。
-#
-#样本输入3
-#8
-#WRWWRWRR
-#
-#样本输出3
-#3
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+        return
+    cr = c.count('R', 0, r)
+    cw = c.count('W', r, N)
+    print(min(cr, cw) + abs(r - w))
+
+=======
+Suggestion 2
+
+def main():
+    n = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+    else:
+        print(min(r, w) + (r - min(r, w)) // 2)
+
+=======
+Suggestion 3
+
+def solve():
+    n = int(input())
+    s = input()
+    r = s.count('R')
+    w = s.count('W')
+    if r == 0 or w == 0:
+        print(0)
+        return
+
+    ans = min(r,w)
+    cnt = 0
+    for i in range(n):
+        if s[i] == 'R':
+            cnt += 1
+            if cnt > ans:
+                break
+    print(ans - cnt)
+
+=======
+Suggestion 4
+
+def main():
+    N = int(input())
+    c = input()
+    r, w = 0, 0
+    for i in range(N):
+        if c[i] == 'R':
+            r += 1
+    ans = 0
+    for i in range(r):
+        if c[i] == 'W':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def solve():
+    N = int(input())
+    c = input()
+    c = list(c)
+    r = c.count('R')
+    w = c.count('W')
+    ans = 0
+    for i in range(r):
+        if c[i] == 'W':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    c = input()
+    c_list = list(c)
+    count = 0
+    for i in range(N):
+        if c_list[i] == 'W':
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def min_op(s):
+    l = len(s)
+    r = s.count('R')
+    w = s.count('W')
+    if r == 0 or w == 0:
+        return 0
+    if r == w:
+        return 2
+    if r > w:
+        return w
+    if w > r:
+        return r
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    if r == 0 or w == 0:
+        print(0)
+    else:
+        print(min(r,w))
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    c = input()
+    r = c.count('R')
+    w = c.count('W')
+    ans = 0
+    for i in range(r):
+        if c[i] == 'W':
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def solve():
+    N = int(input())
+    c = input()
+    w = c.count('W')
+    ans = 0
+    for i in range(w):
+        if c[i] == 'R':
+            ans += 1
+    print(ans)

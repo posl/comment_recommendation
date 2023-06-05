@@ -1,59 +1,135 @@
-#问题陈述
-#有一个10^{100}×7的矩阵A，其中第(i,j)项对于每一对整数(i,j)都是(i-1)×7+j(1 ≦ i ≦ 10^{100}, 1 ≦ j ≦ 7) 。
-#给出一个N×M矩阵B，确定B是否是A的某个（未旋转的）矩形部分。
-#
-#限制条件
-#1 ≦ N ≦ 10^4
-#1 ≦ M ≦ 7
-#1 ≦ B_{i,j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N M
-#B_{1,1} B_{1,2} ...B_{1,M}
-#B_{2,1} B_{2,2} ...B_{2,M}
-#.
-#.
-#.
-#B_{N,1} B_{N,2} ...B_{N,M}
-#
-#输出
-#如果B是A的某个矩形部分，打印Yes；否则，打印No。
-#
-#输入样本 1
-#2 3
-#1 2 3
-#8 9 10
-#
-#样本输出1
-#Yes
-#给定的矩阵B是A的左上角2×3子矩阵。
-#
-#输入样本 2
-#2 1
-#1
-#2
-#
-#样本输出2
-#No
-#尽管给定的矩阵B在旋转90度后与A的左上角1×2子矩阵相匹配，但问题陈述中
-# 问的是B是否是A的一个未旋转部分，所以答案是否定的。
-#
-#输入样本 3
-#10 4
-#1346 1347 1348 1349
-#1353 1354 1355 1356
-#1360 1361 1362 1363
-#1367 1368 1369 1370
-#1374 1375 1376 1377
-#1381 1382 1383 1384
-#1388 1389 1390 1391
-#1395 1396 1397 1398
-#1402 1403 1404 1405
-#1409 1410 1411 1412
-#
-#样本输出3
-#Yes
+Synthesizing 9/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[(i-1)*7+j for j in range(1, 8)] for i in range(1, 10**100+1)]
+    for i in range(10**100-N+1):
+        for j in range(7-M+1):
+            if A[i][j:j+M] == B[0]:
+                flag = True
+                for k in range(1, N):
+                    if A[i+k][j:j+M] != B[k]:
+                        flag = False
+                if flag:
+                    print("Yes")
+                    exit()
+    print("No")
+
+=======
+Suggestion 2
+
+def readinput():
+    n,m=list(map(int,input().split()))
+    b=[]
+    for _ in range(n):
+        b.append(list(map(int,input().split())))
+    return n,m,b
+
+=======
+Suggestion 3
+
+def main():
+    n,m = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(n)]
+    A = [[0 for _ in range(7)] for _ in range(100)]
+    for i in range(100):
+        for j in range(7):
+            A[i][j] = (i)*7+j+1
+    for i in range(100-n+1):
+        for j in range(7-m+1):
+            if A[i][j] == B[0][0]:
+                for k in range(n):
+                    for l in range(m):
+                        if A[i+k][j+l] != B[k][l]:
+                            break
+                        if k == n-1 and l == m-1:
+                            print("Yes")
+                            exit()
+    print("No")
+
+=======
+Suggestion 4
+
+def is_submatrix(a, b):
+    for i in range(len(a)-len(b)+1):
+        for j in range(len(a[0])-len(b[0])+1):
+            if a[i][j] == b[0][0]:
+                if a[i:i+len(b)] == b:
+                    return True
+    return False
+
+=======
+Suggestion 5
+
+def main():
+    n,m = map(int,input().split())
+    B = [list(map(int,input().split())) for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            B[i][j] -= i*7+j+1
+    for i in range(n):
+        for j in range(m):
+            if B[i][j] < 0:
+                print('No')
+                return
+    print('Yes')
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    A = [[(i-1)*7+j for j in range(1, 8)] for i in range(1, 10**100+1)]
+    for i in range(10**100-N+1):
+        for j in range(8-M):
+            if [A[i+k][j:j+M] for k in range(N)] == B:
+                print('Yes')
+                return
+    print('No')
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    for i in range(10**100):
+        if B[0] == [(i-1)*7+j for j in range(1, 8)]:
+            break
+    for j in range(1, 10**100):
+        if B[0][0] == (i-1)*7+j:
+            break
+    for k in range(N):
+        for l in range(M):
+            if B[k][l] != (i+k-1)*7+j+l:
+                print("No")
+                return
+    print("Yes")
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(N)]
+    for i in range(10**100):
+        if B[0] == [i*7+j for j in range(1, 8)]:
+            for j in range(1, N):
+                if B[j] != [(i+j)*7+k for k in range(1, 8)]:
+                    break
+            else:
+                print("Yes")
+                break
+    else:
+        print("No")

@@ -1,50 +1,234 @@
-#问题陈述
-#给出三个长度为N的序列：A = (A_1, A_2, ..., A_N), B = (B_1, B_2, ..., B_N), 和 C = (C_1, C_2, ..., C_N), 由1到N（包括）之间的整数组成。
-#有多少对（i，j）1到N（包括）之间的整数满足A_i=B_{C_j}？
-#
-#限制条件
-#1 ≦ N ≦ 10^5
-#1 ≦ A_i, B_i, C_i ≦ N
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#A_1 A_2 ...A_N
-#B_1 B_2 ...B_N
-#C_1 C_2 ...C_N
-#
-#输出
-#打印A_i = B_{C_j}的配对数（i, j）。
-#
-#输入样本 1
-#3
-#1 2 2
-#3 1 2
-#2 3 2
-#
-#样本输出1
-#4
-#有四对满足条件：（1，1），（1，3），（2，2），（3，2）。
-#
-#样本输入2
-#4
-#1 1 1 1
-#1 1 1 1
-#1 2 3 4
-#
-#样本输出2
-#16
-#所有的配对都满足条件。
-#
-#样本输入3
-#3
-#2 3 3
-#1 3 3
-#1 1 1
-#
-#样本输出3
-#0
-#没有一对满足条件。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x) - 1, input().split()))
+    d = [0] * n
+    for i in range(n):
+        d[b[c[i]]] += 1
+    print(sum([d[a[i]] for i in range(n)]))
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    #print(N)
+    #print(A)
+    #print(B)
+    #print(C)
+
+    count = 0
+    A.sort()
+    B.sort()
+    C.sort()
+    #print(A)
+    #print(B)
+    #print(C)
+    i = 0
+    j = 0
+    k = 0
+    while i < N and j < N and k < N:
+        if A[i] == B[C[j] - 1]:
+            count += 1
+            i += 1
+            j += 1
+        elif A[i] < B[C[j] - 1]:
+            i += 1
+        else:
+            j += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x) - 1, input().split()))
+    d = [0] * n
+    for i in range(n):
+        d[b[c[i]]] += 1
+    ans = 0
+    for i in range(n):
+        ans += d[a[i]]
+    print(ans)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(lambda x: int(x)-1, input().split()))
+    d = {}
+    for i in range(n):
+        if b[c[i]] in d:
+            d[b[c[i]]] += 1
+        else:
+            d[b[c[i]]] = 1
+    ans = 0
+    for i in range(n):
+        if a[i] in d:
+            ans += d[a[i]]
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    d = [0] * (n + 1)
+    for j in c:
+        d[b[j - 1]] += 1
+    ans = 0
+    for i in a:
+        ans += d[i]
+    print(ans)
+
+=======
+Suggestion 6
+
+def count_pairs(n, a, b, c):
+    count = 0
+    for i in range(n):
+        for j in range(n):
+            if a[i] == b[c[j] - 1]:
+                count += 1
+    return count
+
+=======
+Suggestion 7
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    B_C = []
+    for i in range(N):
+        B_C.append(B[C[i]-1])
+
+    B_C.sort()
+    A.sort()
+
+    count = 0
+    for i in range(N):
+        if A[i] == B_C[i]:
+            count += 1
+
+    print(count)
+
+=======
+Suggestion 8
+
+def get_n():
+    n = int(input())
+    return n
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split(' ')))
+    b = list(map(int, input().split(' ')))
+    c = list(map(int, input().split(' ')))
+
+    a_dict = {}
+    b_dict = {}
+    c_dict = {}
+    for i in range(n):
+        a_dict[a[i]] = a_dict.get(a[i], 0) + 1
+        b_dict[b[i]] = b_dict.get(b[i], 0) + 1
+        c_dict[c[i]] = c_dict.get(c[i], 0) + 1
+
+    result = 0
+    for i in range(1, n + 1):
+        if i in c_dict:
+            result += a_dict.get(b_dict.get(c_dict[i], 0), 0)
+
+    print(result)
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+
+    # 1. 暴力
+    # ans = 0
+    # for i in range(n):
+    #     for j in range(n):
+    #         if a[i] == b[c[j]-1]:
+    #             ans += 1
+    # print(ans)
+
+    # 2. 哈希表
+    # ans = 0
+    # c_dict = {}
+    # for i in range(n):
+    #     if c[i] not in c_dict:
+    #         c_dict[c[i]] = 1
+    #     else:
+    #         c_dict[c[i]] += 1
+    #
+    # for i in range(n):
+    #     if a[i] in c_dict:
+    #         ans += c_dict[a[i]]
+    #
+    # print(ans)
+
+    # 3. 二分查找
+    # ans = 0
+    # c.sort()
+    # for i in range(n):
+    #     if a[i] in c:
+    #         # 二分查找
+    #         left = 0
+    #         right = n - 1
+    #         while left <= right:
+    #             mid = (left + right) // 2
+    #             if c[mid] == a[i]:
+    #                 ans += 1
+    #                 break
+    #             elif c[mid] < a[i]:
+    #                 left = mid + 1
+    #             else:
+    #                 right = mid - 1
+    # print(ans)
+
+    # 4. 二分查找
+    ans = 0
+    c.sort()
+    for i in range(n):
+        if a[i] in c:
+            # 二分查找
+            left = 0
+            right = n - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if c[mid] == a[i]:
+                    ans += 1
+                    # 从c中删除匹配的元素，防止重复计数
+                    del c[mid]
+                    break
+                elif c[mid] < a[i]:

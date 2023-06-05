@@ -1,63 +1,254 @@
-#问题陈述
-#我们有一个空序列A。
-#给出Q个查询，按顺序处理它们。
-#每个查询都是以下三种类型中的一种。  
-#1 x : 向A插入x。
-#2 x k : 在A中小于或等于x的元素中，打印第k个最大值。  (k不超过5)
-#    如果A中小于等于或等于x的元素少于k，则打印-1。
-#3 x k : 在A中大于或等于x的元素中，打印第k个最小的值。  (k不超过5)
-#    如果A中小于k的元素大于或等于x，则打印-1。
-#
-#
-#限制条件
-#1≦ Q ≦ 2× 10^5
-#1≦ x≦ 10^{18}
-#1≦ k≦ 5
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#Q
-#query_1
-#query_2
-#.
-#.
-#.
-#query_Q
-#在第i个查询query_i中，首先给出查询的类型c_i（是1，2，还是3）。
-#如果c_i=1，则另外给出x；如果c_i=2，3，则另外给出x和k。
-#换句话说，每个查询都是以以下三种格式之一给出的：  
-#1 x
-#2 x k
-#3 x k
-#
-#输出
-#打印q行，其中q是指c_i=2,3的查询的数量。
-#第j行（1≦ j≦ q）应该包含第j个这样的查询的答案。
-#
-#输入样本 1
-#11
-#1 20
-#1 10
-#1 30
-#1 20
-#3 15 1
-#3 15 2
-#3 15 3
-#3 15 4
-#2 100 5
-#1 1
-#2 100 5
-#
-#样本输出1
-#20
-#20
-#30
-#-1
-#-1
-#1
-#在查询_{1,2,3,4}被处理后，我们有A=(20,10,30,20)。  
-#对于查询_{5,6,7}，A中大于或等于15的元素是（20,30,20）。
-#其中第1个最小的值是20；第2个是20；第3个是30。  
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def insert(A,x):
+    A.append(x)
+    return A
+
+=======
+Suggestion 2
+
+def get_min_k(list, k):
+    list.sort(reverse=True)
+    return list[k-1]
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    a = []
+    for _ in range(n):
+        q = input().split()
+        if q[0] == '1':
+            a.append(int(q[1]))
+        elif q[0] == '2':
+            a.sort(reverse=True)
+            print(a[int(q[2])-1])
+        else:
+            a.sort()
+            print(a[int(q[2])-1])
+    return
+
+=======
+Suggestion 4
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            x = int(query[1])
+            a.append(x)
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i <= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort(reverse=True)
+                print(b[k-1])
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            b = [i for i in a if i >= x]
+            if len(b) < k:
+                print(-1)
+            else:
+                b.sort()
+                print(b[k-1])
+
+=======
+Suggestion 5
+
+def main():
+    q = int(input())
+    A = []
+    for i in range(q):
+        query = input().split()
+        if query[0] == '1':
+            A.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            num = 0
+            for a in A:
+                if a <= x:
+                    num += 1
+            if num < k:
+                print(-1)
+            else:
+                B = A.copy()
+                B.sort(reverse=True)
+                print(B[k-1])
+        else:
+            x = int(query[1])
+            k = int(query[2])
+            num = 0
+            for a in A:
+                if a >= x:
+                    num += 1
+            if num < k:
+                print(-1)
+            else:
+                B = A.copy()
+                B.sort()
+                print(B[k-1])
+
+=======
+Suggestion 6
+
+def main():
+    n = int(input())
+    a = []
+    for i in range(n):
+        x = input().split()
+        if x[0] == '1':
+            a.append(int(x[1]))
+        elif x[0] == '2':
+            a.sort()
+            if len(a) >= int(x[2]):
+                print(a[-int(x[2])])
+            else:
+                print(-1)
+        elif x[0] == '3':
+            a.sort()
+            if len(a) >= int(x[2]):
+                print(a[int(x[2])-1])
+            else:
+                print(-1)
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    A = []
+    for _ in range(n):
+        query = input().split()
+        if query[0] == '1':
+            A.append(int(query[1]))
+        elif query[0] == '2':
+            x = int(query[1])
+            k = int(query[2])
+            B = [a for a in A if a <= x]
+            if len(B) < k:
+                print(-1)
+            else:
+                B.sort(reverse=True)
+                print(B[k - 1])
+        elif query[0] == '3':
+            x = int(query[1])
+            k = int(query[2])
+            B = [a for a in A if a >= x]
+            if len(B) < k:
+                print(-1)
+            else:
+                B.sort()
+                print(B[k - 1])
+
+=======
+Suggestion 8
+
+def main():
+    q = int(input())
+    a = []
+    for i in range(q):
+        query = list(map(int,input().split()))
+        if query[0] == 1:
+            a.append(query[1])
+        elif query[0] == 2:
+            a.sort()
+            if len(a) < query[2]:
+                print(-1)
+            else:
+                print(a[-query[2]])
+        else:
+            a.sort(reverse = True)
+            if len(a) < query[2]:
+                print(-1)
+            else:
+                print(a[-query[2]])
+
+=======
+Suggestion 9
+
+def main():
+    pass
+
+=======
+Suggestion 10
+
+def main():
+    import sys
+    from bisect import bisect_left
+    from bisect import bisect_right
+
+    def get_ints(): return map(int, sys.stdin.readline().strip().split())
+    def get_list(): return list(map(int, sys.stdin.readline().strip().split()))
+    def get_int(): return int(sys.stdin.readline().strip())
+    def get_str(): return sys.stdin.readline().strip()
+
+    class BIT:
+        def __init__(self, n):
+            self.n = n
+            self.data = [0] * (n + 1)
+
+        def add(self, i, w):
+            x = i
+            while x <= self.n:
+                self.data[x] += w
+                x += x & -x
+
+        def sum(self, i):
+            ret, x = 0, i
+            while x > 0:
+                ret += self.data[x]
+                x -= x & -x
+            return ret
+
+    class BIT2D:
+        def __init__(self, n):
+            self.n = n
+            self.data = [BIT(n) for _ in range(n + 1)]
+
+        def add(self, i, j, w):
+            x = i
+            while x <= self.n:
+                self.data[x].add(j, w)
+                x += x & -x
+
+        def sum(self, i, j):
+            ret, x = 0, i
+            while x > 0:
+                ret += self.data[x].sum(j)
+                x -= x & -x
+            return ret
+
+    n = get_int()
+    a = []
+    for _ in range(n):
+        t, *args = get_ints()
+        if t == 1:
+            a.append(args[0])
+    a.sort()
+    bit = BIT(n)
+    for i, v in enumerate(a):
+        bit.add(i + 1, v)
+    bit2d = BIT2D(n)
+    for i, v in enumerate(a):
+        bit2d.add(i + 1, bisect_left(a, v), 1)
+
+    q = get_int()
+    for _ in range(q):
+        t, *args = get_ints()
+        if t == 1:
+            v = args[0]
+            i = bisect_left(a, v)
+            a.insert(i, v)
+            bit.add(i + 1, v)
+            bit

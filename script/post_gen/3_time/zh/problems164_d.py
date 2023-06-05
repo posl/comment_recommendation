@@ -1,37 +1,132 @@
-#问题陈述
-#给出的是一个由1到9的数字组成的字符串S。
-#求满足以下条件的整数对(i,j)(1≤i≤j≤|S|)的数量：
-#条件：以10为基数，S的第i至第j个字符构成一个整数，是2019的倍数。
-#
-#限制条件
-#1 ≤ |S| ≤ 200000
-#S是一个由1到9的数字组成的字符串。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#S
-#
-#输出
-#打印满足条件的一对整数(i,j)(1≤i≤j≤|S|)的数量。
-#
-#输入样本 1
-#1817181712114
-#
-#样本输出1
-#3
-#有三对--(1,5), (5,9), 和(9,13)--满足条件。
-#
-#样本输入2
-#14282668646
-#
-#样本输出2
-#2
-#
-#样本输入3
-#2119
-#
-#样品输出3
-#0
-#没有一对满足条件。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    s = input()
+    n = len(s)
+    if n < 4:
+        print(0)
+        return
+    count = 0
+    for i in range(n-3):
+        for j in range(i+3, n):
+            if int(s[i:j+1]) % 2019 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    S = input()
+    # print(S)
+    count = 0
+    for i in range(len(S)):
+        for j in range(i + 3, len(S)):
+            # print(S[i:j])
+            if int(S[i:j]) % 2019 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 3
+
+def get_s():
+    s = input()
+    return s
+
+=======
+Suggestion 4
+
+def main():
+    S = input()
+    N = len(S)
+    ans = 0
+    for i in range(N-3+1):
+        for j in range(i+3,N+1):
+            if int(S[i:j]) % 2019 == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    n = len(s)
+    mod = 2019
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            if int(s[i:j+1]) % mod == 0:
+                ans += 1
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    s = input()
+    n = len(s)
+    count = 0
+    for i in range(n):
+        for j in range(i+3, n):
+            if int(s[i:j+1]) % 2019 == 0:
+                count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    s = input()
+    s = s[::-1]
+    n = len(s)
+    mod = 2019
+    cnt = [0] * mod
+    cnt[0] = 1
+    num = 0
+    ten = 1
+    ans = 0
+    for i in range(n):
+        num += int(s[i]) * ten
+        num %= mod
+        ten = ten * 10 % mod
+        ans += cnt[num]
+        cnt[num] += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    pass
+
+=======
+Suggestion 9
+
+def main():
+    s = input()
+    n = len(s)
+    cnt = 0
+    for i in range(n):
+        for j in range(i+3, n):
+            if int(s[i:j+1]) % 2019 == 0:
+                cnt += 1
+
+    print(cnt)
+
+=======
+Suggestion 10
+
+def main():
+    S = input()
+    lenS = len(S)
+    count = 0
+    for i in range(lenS):
+        for j in range(i,lenS):
+            if int(S[i:j+1]) % 2019 == 0:
+                count += 1
+    print(count)

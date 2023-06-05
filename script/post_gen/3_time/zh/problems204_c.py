@@ -1,55 +1,232 @@
-#问题陈述
-#AtCoder共和国有N个城市，编号为1到N，M条道路，编号为1到M。
-#道路i从城市A_i通向城市B_i，但你不能用它从城市B_i到城市A_i。
-#Puma正在计划她的旅程，她从某个城市开始，沿着0条或更多的道路旅行，然后在某个城市结束。
-#有多少对城市可以作为Puma旅程的起点和终点？我们要区分不同顺序的同一组城市。
-#
-#限制条件
-#2 ≦ N ≦ 2000
-#0 ≦ M ≦ min(2000,N(N-1))
-#1 ≦ A_i,B_i ≦ N
-#A_i ≠ B_i
-#(A_i,B_i)是不同的。
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入给出的，格式如下：
-#N M
-#A_1 B_1
-#.
-#.
-#.
-#A_M B_M
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#3 3
-#1 2
-#2 3
-#3 2
-#
-#样本输出1
-#7
-#我们有七对城市可以作为起点和终点：(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)。
-#
-#样本输入 2
-#3 0
-#
-#样本输出2
-#3
-#我们有三对城市可以作为起点和终点：(1,1), (2,2), (3,3)。
-#
-#输入样本 3
-#4 4
-#1 2
-#2 3
-#3 4
-#4 1
-#
-#样本输出3
-#16
-#每一对城市都可以是起点和终点。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    #print(A)
+    #print(B)
+    #print(N)
+    #print(M)
+    #print("hello")
+    #print(A[0])
+    #print(B[0])
+    #print(A[1])
+    #print(B[1])
+    #print(A[2])
+    #print(B[2])
+    #print(A[3])
+    #print(B[3])
+    #print(A[4])
+    #print(B[4])
+
+    #print("hel
+
+=======
+Suggestion 2
+
+def main():
+    n,m = map(int,input().split())
+    road = []
+    for _ in range(m):
+        road.append(list(map(int,input().split())))
+    #print(road)
+    road = sorted(road,key = lambda x:x[0])
+    #print(road)
+    start = []
+    end = []
+    for i in range(m):
+        start.append(road[i][0])
+        end.append(road[i][1])
+    #print(start,end)
+    #print(road)
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][0] == road[j][1]:
+                start.append(road[j][0])
+                end.append(road[i][1])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][1] == road[j][0]:
+                start.append(road[i][0])
+                end.append(road[j][1])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][1] == road[j][1]:
+                start.append(road[i][0])
+                end.append(road[j][0])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][0] == road[j][0]:
+                start.append(road[j][1])
+                end.append(road[i][1])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][0] == road[j][0]:
+                start.append(road[i][1])
+                end.append(road[j][1])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][1] == road[j][1]:
+                start.append(road[j][0])
+                end.append(road[i][0])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][1] == road[j][0]:
+                start.append(road[i][0])
+                end.append(road[j][1])
+    #print(start,end)
+    for i in range(m):
+        for j in range(m):
+            if road[i][0] == road[j][1]:
+                start.append(road[j
+
+=======
+Suggestion 3
+
+def get_input():
+    n,m = map(int,input().split())
+    return n,m
+
+=======
+Suggestion 4
+
+def main():
+    n,m = map(int,input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i],b[i] = map(int,input().split())
+    a.sort()
+    b.sort()
+    ans = 0
+    for i in range(m):
+        ans += a[i] - a[0] + 1
+        ans += b[i] - b[0] + 1
+    ans -= m
+    print(ans)
+
+=======
+Suggestion 5
+
+def main():
+    n, m = map(int, input().split())
+    a = [0] * m
+    b = [0] * m
+    for i in range(m):
+        a[i], b[i] = map(int, input().split())
+    a.sort()
+    b.sort()
+    a_count = 1
+    b_count = 1
+    for i in range(1, m):
+        if a[i] == a[i - 1]:
+            a_count += 1
+        else:
+            a_count = 1
+    for i in range(1, m):
+        if b[i] == b[i - 1]:
+            b_count += 1
+        else:
+            b_count = 1
+    print(a_count * b_count)
+
+=======
+Suggestion 6
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    print(N * (N - 1) - M)
+
+=======
+Suggestion 7
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    ans = 0
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                if A.count(i+1) > 0 and B.count(j+1) > 0:
+                    if A.index(i+1) != B.index(j+1):
+                        ans += 1
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    N,M = map(int,input().split())
+    A = [0]*M
+    B = [0]*M
+    for i in range(M):
+        A[i],B[i] = map(int,input().split())
+    print(N*(N-1)//2-M)
+
+=======
+Suggestion 9
+
+def main():
+    N, M = map(int, input().split())
+    A = []
+    B = []
+    for i in range(M):
+        a, b = map(int, input().split())
+        A.append(a)
+        B.append(b)
+    count = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            if i != j:
+                if i in A and j in B:
+                    count += 1
+    print(count)
+
+=======
+Suggestion 10
+
+def solve(n, m, ab):
+    # 从一个点出发，最多能到达的点数
+    def dfs(start):
+        visited = [False] * (n + 1)
+        visited[start] = True
+        stack = [start]
+        while stack:
+            v = stack.pop()
+            for u in ab[v]:
+                if not visited[u]:
+                    visited[u] = True
+                    stack.append(u)
+        return sum(visited)
+
+    # 按照题意，从1~n每个点出发，能到达的点数
+    ans = 0
+    for i in range(1, n + 1):
+        ans += dfs(i)
+    return ans

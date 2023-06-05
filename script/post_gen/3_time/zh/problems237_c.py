@@ -1,38 +1,124 @@
-#问题陈述
-#给出一个由小写英文字母组成的字符串S。
-#请判断在S的开头加上一定数量的a（可能是0）是否能使其成为一个宫格。
-#这里，一个长度为N的字符串，A=A_1A_2......A_N，当A_i=A_{N+1-i}，每1≦i≦N时，就可以说是一个宫格。
-#
-#约束条件
-#1 ≦ | S | ≦ 10^6
-#S由小写英文字母组成。
-#
-#输入
-#输入由标准输入法提供，格式如下：
-#S
-#
-#输出
-#如果在S的开头添加一些a的数量（可能是0）可以使它成为一个回文，打印Yes；否则，打印Yes。
-#
-#输入样本1
-#kasaka
-#
-#输出样本1
-#Yes
-#在kasaka的开头加上一个a，我们就有了akasaka，这是一个回文，所以应该打印Yes。
-#
-#输入样本2
-#atcoder
-#
-#样本输出2
-#Yes
-#在atcoder的开头添加任何数量的a，都不会使其成为回文。
-#
-#输入样本3
-#php
-#
-#输出示例 3
-#Yes
-#php本身是一个回文。在S的开头添加0个a是允许的，所以Yes应该被打印出来。
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def is_huiwen(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+s = input()
+n = len(s)
+
+=======
+Suggestion 2
+
+def check_palindromic(s):
+    if len(s) == 1:
+        return True
+    else:
+        for i in range(len(s)//2):
+            if s[i] != s[-(i+1)]:
+                return False
+        return True
+
+=======
+Suggestion 3
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+for i in range(len(s)+1):
+    if is_palindrome(s[:i]+s):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 4
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+s = input()
+for i in range(len(s) + 1):
+    t = 'a' * i + s
+    if is_palindrome(t):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 5
+
+def main():
+    s = input()
+    s1 = s[::-1]
+    if s == s1:
+        print('Yes')
+    else:
+        print('No')
+
+=======
+Suggestion 6
+
+def is_palindrome(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[-(i + 1)]:
+            return False
+    return True
+
+s = input()
+for i in range(len(s) + 1):
+    if is_palindrome(s + 'a' * i):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 7
+
+def is_palindrome(s):
+    for i in range(len(s)//2):
+        if s[i] != s[-(i+1)]:
+            return False
+    return True
+
+s = input()
+for i in range(len(s)+1):
+    if is_palindrome(s[:i]+'a'+s[i:]):
+        print('Yes')
+        exit()
+print('No')
+
+=======
+Suggestion 8
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+=======
+Suggestion 9
+
+def isPalindromic(s):
+    for i in range(len(s)//2):
+        if s[i] != s[len(s)-i-1]:
+            return False
+    return True
+
+=======
+Suggestion 10
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+S = input()
+for i in range(len(S)+1):
+    if is_palindrome('a'*i + S):
+        print('Yes')
+        break
+else:
+    print('No')

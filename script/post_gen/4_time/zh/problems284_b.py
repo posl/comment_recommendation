@@ -1,48 +1,115 @@
-#问题说明
-#在这个问题中，一个输入文件包含多个测试用例。
-#首先给你一个整数T，为T个测试用例解决以下问题。
-#我们有N个正整数A_1, A_2, ..., A_N。其中有多少个是奇数？
-#
-#限制条件
-#1 ≦ T ≦ 100
-#1 ≦ N ≦ 100
-#1 ≦ A_i ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下，其中test_i代表第i个测试案例：
-#T
-#测试_1
-#测试_2
-#.
-#.
-#.
-#test_T
-#每个测试案例的格式如下：
-#N
-#A_1 A_2 ...A_N
-#
-#输出
-#打印T行。第i行应该包含第i个测试案例的答案。
-#
-#输入样本 1
-#4
-#3
-#1 2 3
-#2
-#20 23
-#10
-#6 10 4 1 5 9 8 6 5 1
-#1
-#1000000000
-#
-#样本输出1
-#2
-#1
-#5
-#0
-#这个输入包含四个测试案例。
-#第二行和第三行对应于第一个测试用例，其中N=3，A_1=1，A_2=2，A_3=3。
-#我们在A_1, A_2, 和A_3中有两个奇数，所以第一行应该包含2。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def count_odd(list):
+    count = 0
+    for i in list:
+        if i % 2 == 1:
+            count += 1
+    return count
+
+=======
+Suggestion 2
+
+def count_odd_num(arr):
+    count = 0
+    for i in arr:
+        if i%2 == 1:
+            count += 1
+    return count
+
+T = int(input())
+for i in range(T):
+    N = int(input())
+    arr = list(map(int, input().split()))
+    print(count_odd_num(arr))
+
+=======
+Suggestion 3
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = [int(n) for n in input().split()]
+        result = 0
+        for a in A:
+            if a % 2 == 1:
+                result += 1
+        print(result)
+
+=======
+Suggestion 4
+
+def count_odd_number(a_list):
+    count = 0
+    for a in a_list:
+        if a % 2 == 1:
+            count += 1
+    return count
+
+=======
+Suggestion 5
+
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    count = 0
+    for i in range(n):
+        if a[i] % 2 == 1:
+            count += 1
+    print(count)
+
+=======
+Suggestion 6
+
+def main():
+    count = int(input())
+    for i in range(count):
+        input()
+        l = input().split()
+        print(len([x for x in l if int(x) % 2 != 0]))
+
+=======
+Suggestion 7
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for i in range(N):
+            if A[i] % 2 != 0:
+                count += 1
+        print(count)
+
+=======
+Suggestion 8
+
+def main():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = input().split()
+        count = 0
+        for num in A:
+            if int(num) % 2 == 1:
+                count += 1
+        print(count)
+
+=======
+Suggestion 9
+
+def mymain():
+    T = int(input())
+    for i in range(T):
+        N = int(input())
+        A = list(map(int, input().split()))
+        count = 0
+        for j in range(N):
+            if A[j] % 2 != 0:
+                count += 1
+        print(count)

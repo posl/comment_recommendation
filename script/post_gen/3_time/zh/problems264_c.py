@@ -1,82 +1,198 @@
-#问题陈述
-#给你一个有H_1行和W_1列的矩阵A，以及一个有H_2行和W_2列的矩阵B。
-#对于所有整数对(i, j)，如1 ≦ i ≦ H_1和1 ≦ j ≦ W_1，矩阵A的第i行和第j列的元素是A_{i, j}。
-#对于所有整数对（i, j），使得1 ≦ i ≦ H_2和1 ≦ j ≦ W_2，矩阵B的第i行和第j列的元素是B_{i, j}。
-#你可以对矩阵A按任意顺序进行以下操作（可能是0次）：
-#选择A的任意一行并将其删除。
-#选择A的任意一列并将其删除。
-#判断是否有可能使矩阵A等于矩阵B。
-#
-#限制条件
-#1 ≦ h_2 ≦ h_1 ≦ 10
-#1 ≦ w_2 ≦ w_1 ≦ 10
-#1 ≦ A_{i, j} ≦ 10^9
-#1 ≦ B_{i, j} ≦ 10^9
-#输入的所有数值都是整数。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#H_1 W_1
-#A_{1, 1} A_{1, 2} ...A_{1, W_1}
-#A_{2, 1} A_{2, 2} ...A_{2, W_1}
-#.
-#.
-#.
-#A_{H_1, 1} A_{H_1, 2} ...A_{H_1, W_1}.
-#H_2 W_2
-#B_{1, 1} B_{1, 2} ...B_{1, W_2}
-#B_{2, 1} B_{2, 2} ...B_{2, W_2}
-#.
-#.
-#.
-#B_{H_2, 1} B_{H_2, 2} ...B_{H_2, W_2}
-#
-#输出
-#如果有可能使矩阵A等于矩阵B，则打印Yes；
-#否则打印No。
-#注意，法官是区分大小写的。
-#
-#输入样本 1
-#4 5
-#1 2 3 4 5
-#6 7 8 9 10
-#11 12 13 14 15
-#16 17 18 19 20
-#2 3
-#6 8 9
-#16 18 19
-#
-#样本输出1
-#Yes
-#从最初的A中去掉第2列，结果是：
-#1 3 4 5
-#6 8 9 10
-#11 13 14 15
-#16 18 19 20
-#然后，从A中去掉第3行的结果是：
-#1 3 4 5
-#6 8 9 10
-#16 18 19 20
-#然后，从A中去掉第1行的结果是：
-#6 8 9 10
-#16 18 19 20
-#然后，从A中去掉第4列的结果是：
-#6 8 9
-#16 18 19
-#现在该矩阵等于矩阵B。
-#因此，我们可以通过重复操作使矩阵A等于矩阵B，所以应该打印出是。
-#
-#输入样本 2
-#3 3
-#1 1 1
-#1 1 1
-#1 1 1
-#1 1
-#2
-#
-#样本输出2
-#No
-#无论我们如何进行操作，我们都不能使矩阵A等于矩阵B、
-#所以应该打印No。
+Synthesizing 10/10 solutions (Duplicates hidden)
 
-def 
+=======
+Suggestion 1
+
+def main():
+    h1,w1=map(int,input().split())
+    a=[]
+    for i in range(h1):
+        a.append(list(map(int,input().split())))
+    h2,w2=map(int,input().split())
+    b=[]
+    for i in range(h2):
+        b.append(list(map(int,input().split())))
+    if h1<h2 or w1<w2:
+        print("No")
+    else:
+        for i in range(h1-h2+1):
+            for j in range(w1-w2+1):
+                if a[i][j]==b[0][0]:
+                    flag=True
+                    for k in range(h2):
+                        for l in range(w2):
+                            if a[i+k][j+l]!=b[k][l]:
+                                flag=False
+                                break
+                        if not flag:
+                            break
+                    if flag:
+                        print("Yes")
+                        return
+        print("No")
+    return
+
+=======
+Suggestion 2
+
+def main():
+    # 读取数据
+    h1, w1 = map(int, input().split())
+    a = []
+    for i in range(h1):
+        a.append(list(map(int, input().split())))
+    h2, w2 = map(int, input().split())
+    b = []
+    for i in range(h2):
+        b.append(list(map(int, input().split())))
+
+    # 从a中删除h2行w2列
+    for i in range(h1 - h2 + 1):
+        for j in range(w1 - w2 + 1):
+            # 从a中删除h2行w2列
+            c = [a[i + k][j:j + w2] for k in range(h2)]
+            # 判断c是否等于b
+            if c == b:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 3
+
+def main():
+    pass
+
+=======
+Suggestion 4
+
+def solve():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    for i in range(H1 - H2 + 1):
+        for j in range(W1 - W2 + 1):
+            for k in range(H2):
+                for l in range(W2):
+                    if A[i + k][j + l] != B[k][l]:
+                        break
+                else:
+                    continue
+                break
+            else:
+                print("Yes")
+                return
+    print("No")
+
+=======
+Suggestion 5
+
+def main():
+    h1,w1 = map(int, input().split())
+    a = []
+    for i in range(h1):
+        a.append(list(map(int,input().split())))
+    h2,w2 = map(int, input().split())
+    b = []
+    for i in range(h2):
+        b.append(list(map(int,input().split())))
+    if h1 < h2 or w1 < w2:
+        print("No")
+        exit()
+    for i in range(h1-h2+1):
+        for j in range(w1-w2+1):
+            for k in range(h2):
+                for l in range(w2):
+                    if a[i+k][j+l] != b[k][l]:
+                        break
+                else:
+                    continue
+                break
+            else:
+                print("Yes")
+                exit()
+    print("No")
+    exit()
+
+=======
+Suggestion 6
+
+def main():
+    h1, w1 = map(int, input().split())
+    A = []
+    for i in range(h1):
+        A.append(list(map(int, input().split())))
+    h2, w2 = map(int, input().split())
+    B = []
+    for i in range(h2):
+        B.append(list(map(int, input().split())))
+    for i in range(h1 - h2 + 1):
+        for j in range(w1 - w2 + 1):
+            if A[i][j] == B[0][0]:
+                if A[i:h2 + i] == B:
+                    print("Yes")
+                    exit()
+    print("No")
+
+=======
+Suggestion 7
+
+def solve():
+    H1, W1 = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H1)]
+    H2, W2 = map(int, input().split())
+    B = [list(map(int, input().split())) for _ in range(H2)]
+
+    # 二维数组的行和列的删除
+    # 二维数组的行和列的删除
+    def delete_row_col(A, row, col):
+        # 删除行
+        A.pop(row)
+        # 删除列
+        for i in range(len(A)):
+            A[i].pop(col)
+        return A
+
+    # 判断二维数组是否相等
+    def is_equal(A, B):
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                if A[i][j] != B[i][j]:
+                    return False
+        return True
+
+    # 判断是否可以使A等于B
+    def is_equal(A, B):
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                if A[i][j] != B[i][j]:
+                    return False
+        return True
+
+    # 从A中删除行和列，使A等于B
+    def delete_row_col(A, B):
+        while len(A) > len(B):
+            A.pop()
+        while len(A[0]) > len(B[0]):
+            for i in range(len(A)):
+                A[i].pop()
+        return A
+
+    # 判断是否可以使A等于B
+    def is_equal(A, B):
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                if A[i][j] != B[i][j]:
+                    return False
+        return True
+
+    for i in range(H1):
+        for j in range(W1):
+            A = delete_row_col(A, i, j)
+            if is_equal(A, B):
+                print("Yes")
+                return
+            A = [list(map(int, input().split())) for _ in range(H1)]
+    print("No")

@@ -1,35 +1,121 @@
-#问题陈述
-#对于一个整数N，我们将选择{P_1, P_2, ..., P_N}对{1, 2, ..., N}进行一个排列组合。
-#然后，对于每个i=1,2,...,N，让M_i是i除以P_i时的余数。
-#求M_1+M_2+...的最大可能值。+ M_N。
-#
-#约束条件
-#N是一个整数，满足1 ≦ N ≦ 10^9。
-#
-#输入
-#输入由标准输入提供，格式如下：
-#N
-#
-#輸出
-#打印M_1+M_2+...的最大可能值。+ M_N。
-#
-#样本输入1
-#2
-#
-#样本输出1
-#1
-#当选择排列组合{P_1, P_2}={2, 1}时，M_1+M_2=1+0=1。
-#
-#样本输入2
-#13
-#
-#样本输出2
-#78
-#
-#样本输入3
-#1
-#
-#采样输出3
-#0
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def get_max_remainder_sum(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return (n * (n - 1)) // 2
+
+=======
+Suggestion 2
+
+def problem139_d():
+    n = int(input())
+    if n == 1:
+        print(0)
+        return
+    if n == 2:
+        print(1)
+        return
+    if n % 2 == 0:
+        print((n - 1) * (n // 2))
+    else:
+        print((n - 2) * (n // 2) + n - 1)
+
+=======
+Suggestion 3
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+        return
+    if n == 2:
+        print(1)
+        return
+    if n % 2 == 0:
+        print(n * (n - 1) // 2)
+    else:
+        print((n - 1) * (n - 2) // 2 + n - 1)
+
+=======
+Suggestion 4
+
+def max_sum(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    elif n%2 == 0:
+        return n*(n-1)//2
+    else:
+        return n*(n-1)//2 + (n-1)//2
+
+=======
+Suggestion 5
+
+def solve(n):
+    if n == 1:
+        return 0
+    if n == 2:
+        return 1
+    if n == 3:
+        return 3
+    if n % 2 == 0:
+        return n * (n - 1) // 2
+    else:
+        return n * (n - 1) // 2 - 1
+
+print(solve(int(input())))
+
+=======
+Suggestion 6
+
+def problems139_d():
+    pass
+
+=======
+Suggestion 7
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+    elif n == 2:
+        print(1)
+    elif n == 3:
+        print(4)
+    else:
+        print(n * (n - 1) * (n - 2) * (n - 3))
+
+=======
+Suggestion 8
+
+def gcd(a,b):
+    if a < b:
+        a,b = b,a
+    while b != 0:
+        a,b = b,a%b
+    return a
+
+=======
+Suggestion 9
+
+def main():
+    n = int(input())
+    if n == 1:
+        print(0)
+    else:
+        print(int(n*(n-1)/2))
+
+=======
+Suggestion 10
+
+def main():
+    n = int(input())
+    print(int(n*(n-1)/2))

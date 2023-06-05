@@ -1,51 +1,229 @@
-#问题陈述
-#人0，人1，......，人（N-1）按逆时针顺序坐在转盘周围，均匀地排列着。  盘子p_i在桌子上第i个人的前面。
-#你可以执行以下操作0次或多次：
-#将转盘逆时针旋转N圈。  结果，旋转前在i号人面前的盘子现在在(i+1)N号人面前了。
-#当你完成后，如果菜品i在人(i-1)mod N、人(i)或人(i+1)mod N前面，则人(i)是快乐的。
-#求最大可能的快乐者人数。
-# 什么是a mod m？  对于一个整数a和一个正整数m，a mod m表示介于0和(m-1)(包括)之间的整数x，使得(a-x)是m的倍数。
-#
-#限制条件
-#3 ≦ N ≦ 2 × 10^5
-#0 ≦ p_i ≦ N-1
-#p_i ≠ p_j if i ≠ j.
-#输入的所有数值都是整数。
-#
-#输入
-#输入是由标准输入提供的，格式如下：
-#N
-#p_0 ... p_{N-1}
-#
-#输出
-#打印答案。
-#
-#输入样本 1
-#4
-#1 2 0 3
-#
-#样本输出1
-#4
-#下图显示了一次操作后的表格。
-#在这里，有四个快乐的人：
-#0号人很高兴，因为0号盘子在3号人的前面（=(0-1)mod 4）；
-#人1很高兴，因为盘子1在人1的前面（=1）；
-#2号人很高兴，因为菜品2在2号人面前（=2）；
-#人3很高兴，因为菜3在人0的前面(=(3+1)mod 4)。
-#不可能有五个或更多的快乐者，所以答案是4。
-#
-#输入样本 2
-#3
-#0 1 2
-#
-#样本输出2
-#3
-#
-#样本输入3
-#10
-#3 9 6 1 7 2 8 0 5 4
-#
-#样本输出 3
-#5
+Synthesizing 10/10 solutions
 
-def 
+=======
+Suggestion 1
+
+def main():
+    N = int(input())
+    p = [int(x) for x in input().split()]
+    count = 0
+    for i in range(N):
+        if p[p[i]] == i:
+            count += 1
+    print(count)
+
+=======
+Suggestion 2
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p = [i - 1 for i in p]
+    ans = 0
+    for i in range(N):
+        if p[i] == i:
+            if i == 0:
+                if p[-1] == N - 1:
+                    ans += 1
+            else:
+                if p[i - 1] == i - 1:
+                    ans += 1
+    print(ans)
+
+=======
+Suggestion 3
+
+def main():
+    N = int(input())
+    P = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if P[i] == i:
+            ans += 1
+    if ans == N:
+        print(N)
+    else:
+        print(ans+2)
+
+=======
+Suggestion 4
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    p.insert(0, 0)
+    p.append(0)
+    result = 0
+    for i in range(1, n+1):
+        if p[i-1] == i or p[i+1] == i:
+            result += 1
+    print(result)
+
+=======
+Suggestion 5
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+
+    # 从左到右，从右到左的最大连续数
+    left = [0] * N
+    right = [0] * N
+
+    # 从左到右，从右到左的最大连续数
+    for i in range(N-1):
+        if p[i] < p[i+1]:
+            left[i+1] = left[i] + 1
+
+    for i in range(N-1, 0, -1):
+        if p[i-1] < p[i]:
+            right[i-1] = right[i] + 1
+
+    # 从左到右，从右到左的最大连续数
+    for i in range(N):
+        if p[i] < p[(i+1)%N]:
+            left[i] = left[(i+1)%N] + 1
+
+    for i in range(N-1, -1, -1):
+        if p[i] < p[(i-1)%N]:
+            right[i] = right[(i-1)%N] + 1
+
+    ans = 0
+    for i in range(N):
+        ans = max(ans, left[i]+right[i]+1)
+    print(ans)
+
+=======
+Suggestion 6
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    p = [i-1 for i in p]
+    count = 0
+    for i in range(N):
+        if p[p[i]] == i:
+            count += 1
+    print(count)
+
+=======
+Suggestion 7
+
+def main():
+    #读入数据
+    N = int(input())
+    p = [int(i) for i in input().split()]
+    #初始化
+    ans = 0
+    for i in range(N):
+        if p[i] == (i-1)%N or p[i] == i or p[i] == (i+1)%N:
+            ans += 1
+    #输出
+    print(ans)
+
+=======
+Suggestion 8
+
+def main():
+    n = int(input())
+    p = list(map(int, input().split()))
+    q = [0] * n
+    for i in range(n):
+        q[p[i]] = i
+    ans = 0
+    cnt = 0
+    for i in range(n):
+        if q[i] > cnt:
+            cnt = q[i]
+        else:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 9
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    ans = 0
+    for i in range(N):
+        if p[i] == (i - 1) % N or p[i] == i or p[i] == (i + 1) % N:
+            ans += 1
+    print(ans)
+
+=======
+Suggestion 10
+
+def main():
+    N = int(input())
+    p = list(map(int, input().split()))
+    #print(N)
+    #print(p)
+    #print(len(p))
+    #print(p[0])
+    #print(p[1])
+    #print(p[2])
+    #print(p[3])
+    #print(p[4])
+    #print(p[5])
+    #print(p[6])
+    #print(p[7])
+    #print(p[8])
+    #print(p[9])
+    #print(p[10])
+    #print(p[11])
+    #print(p[12])
+    #print(p[13])
+    #print(p[14])
+    #print(p[15])
+    #print(p[16])
+    #print(p[17])
+    #print(p[18])
+    #print(p[19])
+    #print(p[20])
+    #print(p[21])
+    #print(p[22])
+    #print(p[23])
+    #print(p[24])
+    #print(p[25])
+    #print(p[26])
+    #print(p[27])
+    #print(p[28])
+    #print(p[29])
+    #print(p[30])
+    #print(p[31])
+    #print(p[32])
+    #print(p[33])
+    #print(p[34])
+    #print(p[35])
+    #print(p[36])
+    #print(p[37])
+    #print(p[38])
+    #print(p[39])
+    #print(p[40])
+    #print(p[41])
+    #print(p[42])
+    #print(p[43])
+    #print(p[44])
+    #print(p[45])
+    #print(p[46])
+    #print(p[47])
+    #print(p[48])
+    #print(p[49])
+    #print(p[50])
+    #print(p[51])
+    #print(p[52])
+    #print(p[53])
+    #print(p[54])
+    #print(p[55])
+    #print(p[56])
+    #print(p[57])
+    #print(p[58])
+    #print(p[59])
+    #print(p[60])
+    #print(p[61])
+    #print(p[62])
+    #print(p[63])
+    #print(p[64])
+    #print(p[65])
+    #print
