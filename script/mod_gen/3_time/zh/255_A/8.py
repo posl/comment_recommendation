@@ -1,0 +1,10 @@
+def problems255_a():
+    r,c=map(int,input().split())
+    a=[]
+    for i in range(2):
+        a.append(list(map(int,input().split())))
+    print(a[r-1][c-1])
+    return 0
+
+if __name__ == '__main__':
+    problems255_a()

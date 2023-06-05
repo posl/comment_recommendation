@@ -1,0 +1,36 @@
+def main():
+    s = input()
+    k = int(input())
+    #print(s)
+    #print(k)
+    #print(len(s))
+    #print(s.count('2'))
+    #print(s.count('3'))
+    #print(s.count('4'))
+    #print(s.count('5'))
+    #print(s.count('6'))
+    #print(s.count('7'))
+    #print(s.count('8'))
+    #print(s.count('9'))
+    #print(s.count('1'))
+    #print(s[0])
+    
+    #k = k % 100
+    #print(k)
+    #print(s.count('2') * 2)
+    #print(s.count('3') * 3)
+    #print(s.count('4') * 4)
+    #print(s.count('5') * 5)
+    #print(s.count('6') * 6)
+    #print(s.count('7') * 7)
+    #print(s.count('8') * 8)
+    #print(s.count('9') * 9)
+    #print(s.count('1') * 1)
+    #print(s.count('2') * 2 + s.count('3') * 3 + s.count('4') * 4 + s.count('5') * 5 + s.count('6') * 6 + s.count('7') * 7 + s.count('8') * 8 + s.count('9') * 9 + s.count('1') * 1)
+    #print(len(s))
+    #print(s.count('2') * 2 + s.count('3') * 3 + s.count('4') * 4 + s.count('5') * 5 + s.count('6') * 6 + s.count('7') * 7 + s.count('8') * 8 + s.count('9') * 9 + s.count('1') * 1)
+    #print( k - (s.count('2') * 2 + s.count('3') * 3 + s.count('4') * 4 + s.count('5') * 5 + s.count('6') * 6 + s.count('7') * 7 + s.count('8') * 8 + s.count('9') * 9 + s.count('1') * 1))
+    #print(s.count('2
+
+if __name__ == '__main__':
+    main()

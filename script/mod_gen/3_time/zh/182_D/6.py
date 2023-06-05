@@ -1,0 +1,13 @@
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    ans = 0
+    tmp = 0
+    for i in range(n):
+        tmp += a[i]
+        if tmp > ans:
+            ans = tmp
+    print(ans)
+
+if __name__ == '__main__':
+    solve()

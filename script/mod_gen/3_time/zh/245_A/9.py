@@ -1,0 +1,15 @@
+def main():
+    A,B,C,D = map(int,input().split())
+    if A < C:
+        print('高桥')
+    elif A > C:
+        print('青木')
+    elif B < D:
+        print('高桥')
+    elif B > D:
+        print('青木')
+    else:
+        print('高桥')
+
+if __name__ == '__main__':
+    main()

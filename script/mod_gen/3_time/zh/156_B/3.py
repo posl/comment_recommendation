@@ -1,0 +1,10 @@
+def main():
+    N,K = map(int,input().split())
+    count = 0
+    while N:
+        N = N//K
+        count += 1
+    print(count)
+
+if __name__ == '__main__':
+    main()

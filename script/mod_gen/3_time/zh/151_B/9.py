@@ -1,0 +1,10 @@
+def main():
+    N,K,M = map(int,input().split())
+    A = list(map(int,input().split()))
+    if N*M-sum(A) > K:
+        print(-1)
+    else:
+        print(max(N*M-sum(A),0))
+
+if __name__ == '__main__':
+    main()
