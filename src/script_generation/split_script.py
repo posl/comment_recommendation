@@ -26,7 +26,7 @@ if __name__ == '__main__':
     files_l = os.listdir(base_path + 'en')
     files_l = sorted(files_l)
 
-    for language in ['en', 'ja']:
+    for language in ['en', 'ja', 'zh']:
         
         base_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/post_gen/{0}/{1}/'.format(time, language)
         result_path = '/Users/keikoyanagi/Desktop/comment_recommendation/script/split_gen/{0}/{1}/'.format(time, language)

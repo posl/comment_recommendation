@@ -1,0 +1,1 @@
+def solve(N, A):

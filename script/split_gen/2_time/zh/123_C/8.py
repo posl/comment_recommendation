@@ -1,0 +1,10 @@
+def main():
+    A = int(input())
+    B = int(input())
+    C = int(input())
+    D = int(input())
+    E = int(input())
+    #print(A, B, C, D, E)
+    #print(type(A), type(B), type(C), type(D), type(E))
+    #print(10*round(A/10), 10*round(B/10), 10*round(C/10), 10*round(D/10), 10*round(E/10))
+    print(10*round(A/10)+10*round(B/10)+10*round(C/10)+10*round(D/10)+10*round(E/10)-50)

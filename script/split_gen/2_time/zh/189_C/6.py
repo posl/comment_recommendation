@@ -1,0 +1,13 @@
+def main():
+    N, X = map(int, input().split())
+    V = [0] * N
+    P = [0] * N
+    for i in range(N):
+        V[i], P[i] = map(int, input().split())
+    alc = 0
+    for i in range(N):
+        alc += V[i] * P[i] / 100
+        if alc > X:
+            print(i + 1)
+            exit()
+    print(-1)

@@ -1,0 +1,10 @@
+def main():
+    # 输入
+    N = int(input())
+    # 输出
+    if N == 1:
+        print("Hello World")
+    elif N == 2:
+        A = int(input())
+        B = int(input())
+        print(A+B)

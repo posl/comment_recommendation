@@ -1,0 +1,13 @@
+def main():
+    print("请输入字符串：")
+    s = input()
+    s_min = s
+    s_max = s
+    for i in range(len(s)):
+        s = s[1:] + s[0]
+        if s < s_min:
+            s_min = s
+        if s > s_max:
+            s_max = s
+    print(s_min)
+    print(s_max)
