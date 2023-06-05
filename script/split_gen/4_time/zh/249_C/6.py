@@ -1,0 +1,42 @@
+def main():
+    N, K = map(int, input().split())
+    S = [input() for _ in range(N)]
+    ans = 0
+    for i in range(2**N):
+        #print(i)
+        #print(bin(i))
+        #print(type(bin(i)))
+        #print(len(bin(i)))
+        #print(bin(i)[2:])
+        #print(type(bin(i)[2:]))
+        #print(len(bin(i)[2:]))
+        #print(bin(i)[2:].count('1'))
+        if bin(i)[2:].count('1') != K:
+            continue
+        #print(bin(i))
+        #print(bin(i)[2:])
+        #print(bin(i)[2:].count('1'))
+        #print(bin(i)[2:].count('1') == K)
+        #print(bin(i)[2:].count('1') != K)
+        #print(bin(i)[2:].count('1') > K)
+        #print(bin(i)[2:].count('1') < K)
+        #print(bin(i)[2:].count('1') >= K)
+        #print(bin(i)[2:].count('1') <= K)
+        #print(bin(i)[2:].count('1') == K)
+        #print(bin(i)[2:].count('1') != K)
+        #print(bin(i)[2:].count('1') > K)
+        #print(bin(i)[2:].count('1') < K)
+        #print(bin(i)[2:].count('1') >= K)
+        #print(bin(i)[2:].count('1') <= K)
+        #print(bin(i)[2:].count('1') == K)
+        #print(bin(i)[2:].count('1') != K)
+        #print(bin(i)[2:].count('1') > K)
+        #print(bin(i)[2:].count('1') < K)
+        #print(bin(i)[2:].count('1') >= K)
+        #print(bin(i)[2:].count('1') <= K)
+        #print(bin(i)[2:].count('1') == K)
+        #print(bin(i)[2:].count('1') != K)
+        #print(bin(i)[2:].count('1') > K)
+        #print(bin(i)[2:].count('1') < K)
+        #print(bin(i)[2:].count('1') >= K)
+        #print(bin(i

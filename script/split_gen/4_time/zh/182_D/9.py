@@ -1,0 +1,4 @@
+def read_data():
+    n = int(input())
+    a = list(map(int, input().split()))
+    return n, a

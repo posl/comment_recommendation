@@ -1,0 +1,33 @@
+def main():
+    H, W = map(int, input().split())
+    S = [input() for _ in range(H)]
+    i = 0
+    j = 0
+    while True:
+        if S[i][j] == 'U':
+            if i == 0:
+                print(i+1, j+1)
+                break
+            else:
+                i -= 1
+        elif S[i][j] == 'D':
+            if i == H-1:
+                print(i+1, j+1)
+                break
+            else:
+                i += 1
+        elif S[i][j] == 'L':
+            if j == 0:
+                print(i+1, j+1)
+                break
+            else:
+                j -= 1
+        elif S[i][j] == 'R':
+            if j == W-1:
+                print(i+1, j+1)
+                break
+            else:
+                j += 1
+        else:
+            print(-1)
+            break

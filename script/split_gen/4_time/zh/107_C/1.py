@@ -1,0 +1,12 @@
+def main():
+    print("请输入蜡烛数量和点燃数量：")
+    n,k = input().split()
+    n = int(n)
+    k = int(k)
+    print("请输入蜡烛坐标：")
+    x = input().split()
+    x = list(map(int,x))
+    #print(x)
+    #print(n,k)
+    #print("最小时间为：")
+    print(min_time(n,k,x))

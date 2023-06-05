@@ -1,0 +1,22 @@
+def hamburger(n,x):
+    if n==0:
+        return 0
+    elif x==1:
+        return 0
+    elif x<=1+2*hamburger(n-1,2**(n-1)-1):
+        return hamburger(n-1,x-1)
+    elif x==2+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)
+    elif x<=2+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)
+    elif x==3+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x<=3+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x==4+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1):
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)
+    elif x<=4+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)
+    elif x==5+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1:
+        return 1+2*hamburger(n-1,2**(n-1)-1)+1+2*hamburger(n-1,2**(n-1)-1)+1
+    elif x<=5+2*hamburger(n-1,2**(n-1)-1)+1+

@@ -1,0 +1,4 @@
+def solve():
+    N = int(input())
+    print(N*(N-1)//2/(N-1)+1)
+    #print(N*(N-1)//2/(N-1)+1)
