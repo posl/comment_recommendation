@@ -79,7 +79,7 @@ if __name__ == '__main__':
     times = input() + '_time'
     language_l = []
     while True:
-        print('input language en or ja or zh or end')
+        print('input language (en, ja, zh, or end)')
         language = input()
         if language == 'end':
             break
