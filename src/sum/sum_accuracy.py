@@ -36,9 +36,15 @@ if __name__ == '__main__':
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     print('input times')
     times = input() + '_time'
-    print('input language')
-    language = input()
-    sum_accuracy = Sum_accuracy(base_path, times, language)
-    sum_accuracy_l = sum_accuracy.sum_accuracy()
-    sum_accuracy.write(sum_accuracy_l)
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
+    for language in language_l:
+        sum_accuracy = Sum_accuracy(base_path, times, language)
+        sum_accuracy_l = sum_accuracy.sum_accuracy()
+        sum_accuracy.write(sum_accuracy_l)
     

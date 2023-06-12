@@ -40,8 +40,14 @@ if __name__ == '__main__':
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     print('input times')
     times = input() + '_time'
-    print('input language')
-    language = input()
-    div_accuracy = Div_accuracy(base_path, times, language)
-    div_accuracy_l = div_accuracy.div_accuracy()
-    div_accuracy.write(div_accuracy_l)
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
+    for language in language_l:
+        div_accuracy = Div_accuracy(base_path, times, language)
+        div_accuracy_l = div_accuracy.div_accuracy()
+        div_accuracy.write(div_accuracy_l)

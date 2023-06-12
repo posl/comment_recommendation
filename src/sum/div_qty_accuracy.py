@@ -58,8 +58,14 @@ if __name__ == '__main__':
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     print('input times')
     times = input() + '_time'
-    print('input language')
-    language = input()
-    div_qty = Div_qty(base_path, times, language)
-    div_qty_l = div_qty.div_qty()
-    div_qty.write(div_qty_l)
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
+    for language in language_l:
+        div_qty = Div_qty(base_path, times, language)
+        div_qty_l = div_qty.div_qty()
+        div_qty.write(div_qty_l)
