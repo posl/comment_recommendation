@@ -26,6 +26,7 @@ class Sum_accuracy:
         return sum_accuracy_l
     
     def write(self, sum_accuracy_l):
+        os.makedirs(self.result_path, exist_ok=True)
         with open('{0}/sum_accuracy.csv'.format(self.result_path), 'w') as f:
             writer = csv.writer(f)
             writer.writerow(['difficulty', 'pass_num', 'total_num', 'accuracy'])
