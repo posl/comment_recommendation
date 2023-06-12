@@ -39,8 +39,13 @@ if __name__ == '__main__':
     base_path = '/Users/keikoyanagi/Desktop/comment_recommendation'
     print('input times')
     times = input() + '_time'
-    print('input language')
-    language = input()
+    language_l = []
+    while True:
+        print('input language (en, ja, zh, or end)')
+        language = input()
+        if language == 'end':
+            break
+        language_l.append(language)
     #print('input minimum')
     #minimum = float(input())
     minimum = float(1)
