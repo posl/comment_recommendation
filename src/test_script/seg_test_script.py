@@ -125,6 +125,7 @@ if __name__ == '__main__':
             before_l = each_suggestion_l[:fault_number]
             after_l = each_suggestion_l[fault_number + 1:]
             input_path = '{0}/test_case/ABC{1}/{2}/in/'.format(base_path, each_problem.split('_')[0], each_problem.split('_')[1])
+            test_case_num = len(os.listdir(input_path))
             output_path = '{0}/test_case/ABC{1}/{2}/out/'.format(base_path, each_problem.split('_')[0], each_problem.split('_')[1])
             all_result_path = '{0}/result/ALL/{1}/{2}/'.format(base_path, times, language)
             accu_result_path = '{0}/result/accuracy/each/{1}/{2}/'.format(base_path, times, language)
@@ -142,7 +143,7 @@ if __name__ == '__main__':
             
             with open('{0}/result/accuracy/each/{1}/{2}/{3}_seg_accuracy.csv'.format(base_path, times, language, each_problem.split('_')[0]), 'a') as f:
                 writer = csv.writer(f)
-                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, '', '', 0])
+                writer.writerow([language, each_problem.split('_')[0], each_problem.split('_')[1], fault_number, 0, test_case_num, 0])
             
             for each_suggestion in after_l:
                 script_path = '{0}/script/mod_gen/{1}/{2}/{3}/{4}'.format(base_path, times, language, each_problem, each_suggestion)

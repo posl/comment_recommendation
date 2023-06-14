@@ -104,8 +104,13 @@ if __name__ == '__main__':
                 problem_l.append(problem)
 
         problem_l = sorted(problem_l)
-        if times == '2_time':
+        if (times == '2_time') and (language == 'en'):
             problem_l.remove('111_D')
+        
+        if (times == '5_time') and (language == 'ja'):
+            problem_l.remove('234_D')
+            #543 = 234_D
+            #problem_l = problem_l[544:]
         #print(problem_l)
         #problem_l = ['099_A', '099_B', '099_C', '099_D', '100_A', '100_B']
         for each_problem in problem_l:
